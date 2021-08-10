@@ -9,12 +9,12 @@
 		and live migration of containers.
 	</longdescription>
 	<maintainer type="person">
-		<email>admwiggin@gmail.com</email>
-		<name>Tianon</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
 	</maintainer>
 	<use>
 	<flag name="apparmor">Support for AppArmor</flag>
@@ -24,5 +24,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">containerd/containerd</remote-id>
+		<remote-id type="cpe">cpe:/a:linuxfoundation:containerd</remote-id>
 	</upstream>
 </pkgmetadata>

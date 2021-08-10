@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,13 +6,13 @@ EAPI=7
 inherit cmake linux-info bash-completion-r1
 
 DESCRIPTION="HTTP read-only file system for distributing software"
-HOMEPAGE="http://cernvm.cern.ch/portal/filesystem"
+HOMEPAGE="https://cernvm.cern.ch/fs/"
 SRC_URI="https://ecsft.cern.ch/dist/cvmfs/${P}/source.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc server"
 
 CDEPEND="

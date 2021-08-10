@@ -13,5 +13,6 @@
 	<upstream>
 		<bugs-to>https://github.com/tgalal/consonance/issues</bugs-to>
 		<remote-id type="github">tgalal/consonance</remote-id>
+		<remote-id type="pypi">consonance</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,27 @@
+From 0eff5450cba9514559eefd8c79e98fb6b8134b68 Mon Sep 17 00:00:00 2001
+From: webstrand <webstrand@gmail.com>
+Date: Thu, 27 May 2021 17:09:21 -0400
+Subject: [PATCH 2/2] Set explicit StartupWMClass in launcher
+
+Otherwise startup notification and grouping implicitly use the name of
+the .desktop file to match against the actual WM_CLASS of windows
+belonging to the application.
+---
+ sublime_text.desktop | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/sublime_text.desktop b/sublime_text.desktop
+index b171254..5c812a9 100644
+--- a/sublime_text.desktop
++++ b/sublime_text.desktop
+@@ -10,6 +10,7 @@ MimeType=text/plain;
+ Icon=sublime-text
+ Categories=TextEditor;Development;
+ StartupNotify=true
++StartupWMClass=Sublime_text
+ Actions=new-window;new-file;
+ 
+ [Desktop Action new-window]
+-- 
+2.31.1
+

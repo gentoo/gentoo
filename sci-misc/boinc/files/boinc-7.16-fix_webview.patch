@@ -1,0 +1,11 @@
+--- a/configure.ac	2020-11-08 00:31:06.304751639 +0100
++++ b/configure.ac	2020-11-08 00:32:03.848754956 +0100
+@@ -1238,7 +1238,7 @@
+     CLIENTGUIFLAGS="${CLIENTGUIFLAGS} -DNDEBUG"
+ fi
+ 
+-CLIENTGUILIBS="${WX_LIBS}"
++CLIENTGUILIBS="${WX_LIBS} $($WX_CONFIG_WITH_ARGS --libs webview)"
+ 
+ if test "${enable_client_release}" = "yes" ; then
+    if test "x${WX_LIBS_STATIC}" = "x" ; then

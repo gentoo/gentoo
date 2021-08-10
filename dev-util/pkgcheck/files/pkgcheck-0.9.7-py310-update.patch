@@ -1,0 +1,170 @@
+From 443c0aab158e34196399073e801ae19ae0dce4dc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 9 May 2021 10:59:18 +0200
+Subject: [PATCH] python: Fix treating python3.10 as newer than python3.9
+
+Fix the sorting logic to use a combined lexical-numerical sort, in order
+to sort python3.10 as newer than python3.9.  This fixes
+PythonCompatUpdate check.
+---
+ src/pkgcheck/checks/python.py                 | 25 +++++++++++++++----
+ .../PythonCompatUpdate/expected.json          |  6 ++---
+ .../PythonCompatUpdate/fix.patch              |  6 ++---
+ .../profiles/desc/python_single_target.desc   |  1 +
+ .../python/profiles/desc/python_targets.desc  |  1 +
+ .../stub/python-dep1/python-dep1-0.ebuild     |  2 +-
+ .../stub/python-dep2/python-dep2-0.ebuild     |  2 +-
+ 7 files changed, 30 insertions(+), 13 deletions(-)
+
+diff --git a/src/pkgcheck/checks/python.py b/src/pkgcheck/checks/python.py
+index ed922215..7f0e9be4 100644
+--- a/src/pkgcheck/checks/python.py
++++ b/src/pkgcheck/checks/python.py
+@@ -1,4 +1,5 @@
+ import itertools
++import re
+ 
+ from pkgcore.ebuild.atom import atom
+ from pkgcore.restrictions import packages, values
+@@ -28,6 +29,18 @@ CHECK_EXCLUDE = frozenset(['virtual/pypy', 'virtual/pypy3'])
+ IUSE_PREFIX = 'python_targets_'
+ IUSE_PREFIX_S = 'python_single_target_'
+ 
++TARGET_SPLIT_RE = re.compile(r'([0-9]+)')
++
++
++def target_sort_key(target):
++    def iter():
++        for x in TARGET_SPLIT_RE.split(target):
++            try:
++                yield int(x)
++            except ValueError:
++                yield x
++    return tuple(iter())
++
+ 
+ def get_python_eclass(pkg):
+     eclasses = ECLASSES.intersection(pkg.inherited)
+@@ -281,14 +294,14 @@ class PythonCompatCheck(Check):
+         for target, _desc in repo.config.use_expand_desc.get(IUSE_PREFIX[:-1], ()):
+             if target[len(IUSE_PREFIX):].startswith('python'):
+                 targets.append(target[len(IUSE_PREFIX):])
+-        multi_targets = tuple(sorted(targets))
++        multi_targets = tuple(sorted(targets, key=target_sort_key))
+ 
+         # determine available PYTHON_SINGLE_TARGET use flags
+         targets = []
+         for target, _desc in repo.config.use_expand_desc.get(IUSE_PREFIX_S[:-1], ()):
+             if target[len(IUSE_PREFIX_S):].startswith('python'):
+                 targets.append(target[len(IUSE_PREFIX_S):])
+-        single_targets = tuple(sorted(targets))
++        single_targets = tuple(sorted(targets, key=target_sort_key))
+ 
+         self.params = {
+             'python-r1': (multi_targets, IUSE_PREFIX, None),
+@@ -327,8 +340,9 @@ class PythonCompatCheck(Check):
+         try:
+             # determine the latest supported python version
+             latest_target = sorted(
+-                f"python{x.slot.replace('.', '_')}" for x in deps
+-                if x.key == 'dev-lang/python' and x.slot is not None)[-1]
++                (f"python{x.slot.replace('.', '_')}" for x in deps
++                if x.key == 'dev-lang/python' and x.slot is not None),
++                key=target_sort_key)[-1]
+         except IndexError:
+             # should be flagged by PythonMissingDeps
+             return
+@@ -355,4 +369,5 @@ class PythonCompatCheck(Check):
+             except IndexError:
+                 return
+ 
+-            yield PythonCompatUpdate(sorted(targets), pkg=pkg)
++            yield PythonCompatUpdate(sorted(targets, key=target_sort_key),
++                                     pkg=pkg)
+diff --git a/testdata/data/repos/python/PythonCompatCheck/PythonCompatUpdate/expected.json b/testdata/data/repos/python/PythonCompatCheck/PythonCompatUpdate/expected.json
+index ab7d9b01..f3476eac 100644
+--- a/testdata/data/repos/python/PythonCompatCheck/PythonCompatUpdate/expected.json
++++ b/testdata/data/repos/python/PythonCompatCheck/PythonCompatUpdate/expected.json
+@@ -1,3 +1,3 @@
+-{"__class__": "PythonCompatUpdate", "category": "PythonCompatCheck", "package": "PythonCompatUpdate", "version": "0", "updates": ["python3_8", "python3_9"]}
+-{"__class__": "PythonCompatUpdate", "category": "PythonCompatCheck", "package": "PythonCompatUpdate", "version": "1", "updates": ["python3_9"]}
+-{"__class__": "PythonCompatUpdate", "category": "PythonCompatCheck", "package": "PythonCompatUpdate", "version": "2", "updates": ["python3_9"]}
++{"__class__": "PythonCompatUpdate", "category": "PythonCompatCheck", "package": "PythonCompatUpdate", "version": "0", "updates": ["python3_8", "python3_9", "python3_10"]}
++{"__class__": "PythonCompatUpdate", "category": "PythonCompatCheck", "package": "PythonCompatUpdate", "version": "1", "updates": ["python3_9", "python3_10"]}
++{"__class__": "PythonCompatUpdate", "category": "PythonCompatCheck", "package": "PythonCompatUpdate", "version": "2", "updates": ["python3_9", "python3_10"]}
+diff --git a/testdata/data/repos/python/PythonCompatCheck/PythonCompatUpdate/fix.patch b/testdata/data/repos/python/PythonCompatCheck/PythonCompatUpdate/fix.patch
+index c63184e9..9be4952a 100644
+--- a/testdata/data/repos/python/PythonCompatCheck/PythonCompatUpdate/fix.patch
++++ b/testdata/data/repos/python/PythonCompatCheck/PythonCompatUpdate/fix.patch
+@@ -4,7 +4,7 @@ diff -Naur python/PythonCompatCheck/PythonCompatUpdate/PythonCompatUpdate-0.ebui
+ @@ -1,5 +1,5 @@
+  EAPI=7
+ -PYTHON_COMPAT=( python3_7 )
+-+PYTHON_COMPAT=( python3_{7..9} )
+++PYTHON_COMPAT=( python3_{7..10} )
+  
+  inherit python-r1
+  
+@@ -14,7 +14,7 @@ diff -Naur python/PythonCompatCheck/PythonCompatUpdate/PythonCompatUpdate-1.ebui
+ @@ -1,5 +1,5 @@
+  EAPI=7
+ -PYTHON_COMPAT=( python3_{7,8} )
+-+PYTHON_COMPAT=( python3_{7..9} )
+++PYTHON_COMPAT=( python3_{7..10} )
+  
+  inherit python-single-r1
+  
+@@ -24,7 +24,7 @@ diff -Naur python/PythonCompatCheck/PythonCompatUpdate/PythonCompatUpdate-2.ebui
+ @@ -1,5 +1,5 @@
+  EAPI=7
+ -PYTHON_COMPAT=( python3_{7,8} )
+-+PYTHON_COMPAT=( python3_{7..9} )
+++PYTHON_COMPAT=( python3_{7..10} )
+  
+  inherit python-any-r1
+  
+diff --git a/testdata/repos/python/profiles/desc/python_single_target.desc b/testdata/repos/python/profiles/desc/python_single_target.desc
+index da5be2fd..3c39a224 100644
+--- a/testdata/repos/python/profiles/desc/python_single_target.desc
++++ b/testdata/repos/python/profiles/desc/python_single_target.desc
+@@ -3,4 +3,5 @@ python2_7 - Build with Python 2.7
+ python3_7 - Build with Python 3.7
+ python3_8 - Build with Python 3.8
+ python3_9 - Build with Python 3.9
++python3_10 - Build with Python 3.10
+ pypy3 - Build for PyPy3 only
+diff --git a/testdata/repos/python/profiles/desc/python_targets.desc b/testdata/repos/python/profiles/desc/python_targets.desc
+index b2be59ca..8e55f2da 100644
+--- a/testdata/repos/python/profiles/desc/python_targets.desc
++++ b/testdata/repos/python/profiles/desc/python_targets.desc
+@@ -3,4 +3,5 @@ python2_7 - Build with Python 2.7
+ python3_7 - Build with Python 3.7
+ python3_8 - Build with Python 3.8
+ python3_9 - Build with Python 3.9
++python3_10 - Build with Python 3.10
+ pypy3 - Build for PyPy3 only
+diff --git a/testdata/repos/python/stub/python-dep1/python-dep1-0.ebuild b/testdata/repos/python/stub/python-dep1/python-dep1-0.ebuild
+index 9eebedfd..55c455d9 100644
+--- a/testdata/repos/python/stub/python-dep1/python-dep1-0.ebuild
++++ b/testdata/repos/python/stub/python-dep1/python-dep1-0.ebuild
+@@ -1,5 +1,5 @@
+ EAPI=7
+-PYTHON_COMPAT=( python2_7 python3_{7,8,9} )
++PYTHON_COMPAT=( python2_7 python3_{7,8,9,10} )
+ 
+ inherit python-r1
+ 
+diff --git a/testdata/repos/python/stub/python-dep2/python-dep2-0.ebuild b/testdata/repos/python/stub/python-dep2/python-dep2-0.ebuild
+index 9eebedfd..55c455d9 100644
+--- a/testdata/repos/python/stub/python-dep2/python-dep2-0.ebuild
++++ b/testdata/repos/python/stub/python-dep2/python-dep2-0.ebuild
+@@ -1,5 +1,5 @@
+ EAPI=7
+-PYTHON_COMPAT=( python2_7 python3_{7,8,9} )
++PYTHON_COMPAT=( python2_7 python3_{7,8,9,10} )
+ 
+ inherit python-r1
+ 
+-- 
+2.31.1
+

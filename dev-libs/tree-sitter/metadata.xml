@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>abdelqaderali@protonmail.com</email>
+		<name>Ali Abdel-Qader</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sarnex@gentoo.org</email>
+		<name>Nick Sarnie</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">tree-sitter/tree-sitter</remote-id>
+	</upstream>
+	<longdescription>
+		Tree-sitter is a parser generator tool and an incremental parsing library. It can build a concrete syntax tree for a source file and efficiently update the syntax tree as the source file is edited. 
+	</longdescription>
+</pkgmetadata>

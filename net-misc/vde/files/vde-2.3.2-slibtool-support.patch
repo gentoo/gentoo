@@ -1,0 +1,49 @@
+From d11d9dd8b370016a2d10ffd35c450c9f68e578a5 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Wed, 17 Mar 2021 15:14:45 -0700
+Subject: [PATCH] build: Only use -module for libraries.
+
+---
+ src/vde_l3/Makefile.am     | 9 +++++++--
+ src/vde_router/Makefile.am | 2 +-
+ 2 files changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/src/vde_l3/Makefile.am b/src/vde_l3/Makefile.am
+index 748cb78..855081c 100644
+--- a/src/vde_l3/Makefile.am
++++ b/src/vde_l3/Makefile.am
+@@ -1,7 +1,6 @@
+-
+ moddir = $(pkglibdir)/vde_l3
+ 
+-AM_LDFLAGS = -module -avoid-version -export-dynamic
++AM_LDFLAGS = -avoid-version -export-dynamic
+ AM_LIBTOOLFLAGS = --tag=disable-static
+ AM_CPPFLAGS = -I$(top_srcdir)/include
+ 
+@@ -15,6 +14,12 @@ pfifo_la_SOURCES = pfifo.c  vde_buff.h
+ tbf_la_SOURCES = tbf.c  vde_buff.h
+ bfifo_la_SOURCES = bfifo.c  vde_buff.h
+ 
++vde_l3_lib_LDFLAGS = -module
++
++pfifo_la_LDFLAGS = $(vde_l3_lib_LDFLAGS)
++bfifo_la_LDFLAGS = $(vde_l3_lib_LDFLAGS)
++tbf_la_LDFLAGS = $(vde_l3_lib_LDFLAGS)
++
+ pfifo_la_LIBADD = $(top_builddir)/src/common/libvdecommon.la
+ bfifo_la_LIBADD = $(top_builddir)/src/common/libvdecommon.la
+ tbf_la_LIBADD = $(top_builddir)/src/common/libvdecommon.la
+diff --git a/src/vde_router/Makefile.am b/src/vde_router/Makefile.am
+index d872388..d055259 100644
+--- a/src/vde_router/Makefile.am
++++ b/src/vde_router/Makefile.am
+@@ -1,7 +1,7 @@
+ 
+ moddir = $(pkglibdir)/vde_router
+ 
+-AM_LDFLAGS = -module -avoid-version -export-dynamic
++AM_LDFLAGS = -avoid-version -export-dynamic
+ AM_LIBTOOLFLAGS = --tag=disable-static
+ AM_CPPFLAGS = -I$(top_srcdir)/include
+ 

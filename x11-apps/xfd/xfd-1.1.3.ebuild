@@ -6,7 +6,7 @@ EAPI=7
 inherit xorg-3
 
 DESCRIPTION="X.Org xfd application"
-KEYWORDS="amd64 arm hppa ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ~hppa ~mips ppc ppc64 ~s390 sparc x86"
 IUSE=""
 
 DEPEND="media-libs/freetype:2

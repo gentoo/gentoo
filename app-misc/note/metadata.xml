@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<use>
-  <flag name="general">Add support for ascii flatfile backend</flag>
-  <flag name="text">Add support for text backend</flag>
-</use>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="general">Add support for ascii flatfile backend</flag>
+		<flag name="text">Add support for text backend</flag>
+	</use>
+	<upstream>
+		<changelog>https://www.daemon.de/idisk/txt/note.Changelog</changelog>
+	</upstream>
 </pkgmetadata>

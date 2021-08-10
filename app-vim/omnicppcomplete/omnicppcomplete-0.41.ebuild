@@ -11,7 +11,7 @@ HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=1520"
 SRC_URI="https://www.vim.org/scripts/download_script.php?src_id=7722 -> ${P}.zip"
 
 LICENSE="vim.org"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"

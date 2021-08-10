@@ -1,24 +1,27 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: unbundle allegro[gtk...] (no multilib on amd64 and 5.0.9 soname)
 
-EAPI=6
-inherit eutils unpacker
+EAPI=7
+
+inherit desktop unpacker wrapper
 
 DESCRIPTION="Intense music-driven arcade shooter powered by your music"
 HOMEPAGE="http://www.coldbeamgames.com/"
 SRC_URI="beathazard-installer_03-08-13"
+S="${WORKDIR}"/data
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="bundled-libs"
+
 RESTRICT="bindist fetch splitdebug"
 QA_PREBUILT="/opt/${PN}/BeatHazard_Linux2
 	/opt/${PN}/hge_lib/*"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 RDEPEND="
 	virtual/opengl
 	amd64? (
@@ -44,8 +47,6 @@ RDEPEND="
 			virtual/jpeg
 		)
 	)"
-
-S=${WORKDIR}/data
 
 pkg_nofetch() {
 	einfo "Please buy & download ${SRC_URI} from:"

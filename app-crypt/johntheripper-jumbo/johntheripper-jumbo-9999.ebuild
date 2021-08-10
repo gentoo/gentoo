@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit flag-o-matic toolchain-funcs pax-utils
 
-DESCRIPTION="fast password cracker"
+DESCRIPTION="Fast password cracker"
 HOMEPAGE="http://www.openwall.com/john/"
 
 MY_PN="JohnTheRipper"
@@ -13,7 +13,6 @@ MY_PN="JohnTheRipper"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/magnumripper/${MY_PN}.git"
 	inherit git-r3
-	KEYWORDS=""
 else
 	JUMBO="jumbo-1"
 	MY_PV="${PV}-${JUMBO}"
@@ -28,12 +27,13 @@ SLOT="0"
 #removed rexgen and commoncrypto
 IUSE="custom-cflags kerberos mpi opencl openmp pcap"
 
-DEPEND=">=dev-libs/openssl-1.0.1:0
+DEPEND=">=dev-libs/openssl-1.0.1:0=
+	virtual/libcrypt:=
 	mpi? ( virtual/mpi )
 	opencl? ( virtual/opencl )
 	kerberos? ( virtual/krb5 )
 	pcap? ( net-libs/libpcap )
-	dev-libs/gmp:*
+	dev-libs/gmp:=
 	sys-libs/zlib
 	app-arch/bzip2"
 
@@ -119,5 +119,5 @@ src_install() {
 	doins -r run/rules run/ztex
 
 	# documentation
-	dodoc doc/*
+	dodoc -r doc/*
 }

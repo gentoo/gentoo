@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit systemd toolchain-funcs
+inherit systemd toolchain-funcs tmpfiles
 
 DESCRIPTION="simple & stable nscd replacement"
 HOMEPAGE="https://busybox.net/~vda/unscd/README"
@@ -11,7 +11,7 @@ SRC_URI="https://busybox.net/~vda/unscd/nscd-${PV}.c -> nscd-${PV}-r1.c"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="sys-libs/glibc[nscd(+)]"
@@ -30,7 +30,11 @@ src_compile() {
 
 src_install() {
 	newinitd "${FILESDIR}"/unscd.initd-r1 unscd
-	systemd_newtmpfilesd "${FILESDIR}"/unscd-tmpfiles.conf unscd.conf
+	newtmpfiles "${FILESDIR}"/unscd-tmpfiles.conf unscd.conf
 	systemd_dounit "${FILESDIR}"/unscd.service
 	dosbin unscd
+}
+
+pkg_postinst() {
+	tmpfiles_process unscd.conf
 }

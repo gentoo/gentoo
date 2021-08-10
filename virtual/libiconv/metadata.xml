@@ -4,4 +4,5 @@
 	<maintainer type="project">
 		<email>prefix@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

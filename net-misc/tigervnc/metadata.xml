@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer type="person">
-        <email>otakuto.gentoo@gmail.com</email>
-        <name>Tact Yoshida</name>
-    </maintainer>
-    <maintainer type="project">
-        <email>proxy-maint@gentoo.org</email>
-        <name>Proxy Maintainers</name>
-    </maintainer>
-    <use>
-        <flag name="drm">Build with DRM support</flag>
-        <flag name="server">Build TigerVNC server</flag>
-        <flag name="xorgmodule">Build the Xorg module</flag>
-        <flag name="dri3">Build with DRI3 support</flag>
-    </use>
-    <upstream>
-        <remote-id type="github">TigerVNC/tigervnc</remote-id>
-    </upstream>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="drm">Build with DRM support</flag>
+		<flag name="server">Build TigerVNC server</flag>
+		<flag name="xorgmodule">Build the Xorg module</flag>
+		<flag name="dri3">Build with DRI3 support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">TigerVNC/tigervnc</remote-id>
+	</upstream>
 </pkgmetadata>

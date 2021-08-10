@@ -1,6 +1,5 @@
-diff -ru dieharder-3.31.1/libdieharder/rng_dev_arandom.c dieharder-3.31.1_fixed/libdieharder/rng_dev_arandom.c
---- dieharder-3.31.1/libdieharder/rng_dev_arandom.c	2011-10-14 15:41:37.000000000 +0200
-+++ dieharder-3.31.1_fixed/libdieharder/rng_dev_arandom.c	2014-01-03 22:51:30.010534418 +0100
+--- a/libdieharder/rng_dev_arandom.c
++++ b/libdieharder/rng_dev_arandom.c
 @@ -6,6 +6,7 @@
   */
  
@@ -27,9 +26,8 @@ diff -ru dieharder-3.31.1/libdieharder/rng_dev_arandom.c dieharder-3.31.1_fixed/
  }
  
  static void
-diff -ru dieharder-3.31.1/libdieharder/rng_dev_random.c dieharder-3.31.1_fixed/libdieharder/rng_dev_random.c
---- dieharder-3.31.1/libdieharder/rng_dev_random.c	2011-10-14 15:41:37.000000000 +0200
-+++ dieharder-3.31.1_fixed/libdieharder/rng_dev_random.c	2014-01-03 22:50:57.852321485 +0100
+--- a/libdieharder/rng_dev_random.c
++++ b/libdieharder/rng_dev_random.c
 @@ -6,6 +6,7 @@
   */
  
@@ -56,9 +54,8 @@ diff -ru dieharder-3.31.1/libdieharder/rng_dev_random.c dieharder-3.31.1_fixed/l
  }
  
  static void
-diff -ru dieharder-3.31.1/libdieharder/rng_dev_urandom.c dieharder-3.31.1_fixed/libdieharder/rng_dev_urandom.c
---- dieharder-3.31.1/libdieharder/rng_dev_urandom.c	2011-10-14 15:41:37.000000000 +0200
-+++ dieharder-3.31.1_fixed/libdieharder/rng_dev_urandom.c	2014-01-03 23:06:24.124239582 +0100
+--- a/libdieharder/rng_dev_urandom.c
++++ b/libdieharder/rng_dev_urandom.c
 @@ -3,6 +3,7 @@
   */
  

@@ -9,6 +9,7 @@
     <email>sci-chemistry@gentoo.org</email>
     <name>Gentoo Chemistry Project</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">Becksteinlab/numkit</remote-id>
   </upstream>

@@ -5,7 +5,8 @@
     <email>python@gentoo.org</email>
     <name>Python</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
-    <remote-id type="pypi">et_xmlfile</remote-id>
+    <remote-id type="pypi">et-xmlfile</remote-id>
   </upstream>
 </pkgmetadata>

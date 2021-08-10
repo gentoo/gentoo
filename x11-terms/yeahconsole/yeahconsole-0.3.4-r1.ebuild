@@ -10,7 +10,7 @@ SRC_URI="http://phrat.de/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa x86"
+KEYWORDS="amd64 ~hppa x86"
 RDEPEND="
 	x11-libs/libX11
 "

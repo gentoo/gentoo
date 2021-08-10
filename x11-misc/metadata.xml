@@ -15,7 +15,7 @@
 	</longdescription>
 	<longdescription lang="ja">
 		x11-miscカテゴリーには他のカテゴリーに分類されなかった
-		多種多様なX11アプリケーションが含まれて>います。
+		多種多様なX11アプリケーションが含まれて&gt;います。
 	</longdescription>
 	<longdescription lang="nl">
 		De categorie x11-misc bevat allerlei X11-applicaties die niet in andere
@@ -40,4 +40,3 @@
 		z pozostałych kategorii.
 	</longdescription>
 </catmetadata>
-

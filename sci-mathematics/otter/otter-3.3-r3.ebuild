@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="An Automated Deduction System"
 HOMEPAGE="http://www.cs.unm.edu/~mccune/otter/"
@@ -12,7 +12,6 @@ SRC_URI="http://www.cs.unm.edu/~mccune/otter/${P}.tar.gz"
 LICENSE="otter"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
 
 RDEPEND="
 	x11-libs/libX11
@@ -24,6 +23,10 @@ PATCHES=(
 	"${FILESDIR}"/${P}-build.patch
 	"${FILESDIR}"/${P}-gold.patch
 )
+
+src_configure() {
+	append-cflags -fcommon
+}
 
 src_compile() {
 	tc-export CC

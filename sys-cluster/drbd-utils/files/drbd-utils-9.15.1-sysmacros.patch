@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/616758
+--- a/user/shared/shared_tool.c
++++ b/user/shared/shared_tool.c
+@@ -8,6 +8,7 @@
+ #define _FILE_OFFSET_BITS 64
+ 
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+ #include <fcntl.h>
+--- a/user/v83/drbdadm_adjust.c
++++ b/user/v83/drbdadm_adjust.c
+@@ -25,6 +25,7 @@
+ #define _GNU_SOURCE
+ 
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/stat.h>
+ #include <sys/wait.h>
+ #include <unistd.h>
+--- a/user/v84/drbdadm_adjust.c
++++ b/user/v84/drbdadm_adjust.c
+@@ -27,6 +27,7 @@
+ #define _FILE_OFFSET_BITS 64
+ 
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/stat.h>
+ #include <sys/wait.h>
+ #include <unistd.h>
+--- a/user/v9/drbdadm_adjust.c
++++ b/user/v9/drbdadm_adjust.c
+@@ -27,6 +27,7 @@
+ #define _FILE_OFFSET_BITS 64
+ 
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/stat.h>
+ #include <sys/wait.h>
+ #include <unistd.h>

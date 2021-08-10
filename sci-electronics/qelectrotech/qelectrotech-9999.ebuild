@@ -1,4 +1,4 @@
-# Copyright 2001-2020 Gentoo Authors
+# Copyright 2001-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,12 +8,12 @@ inherit qmake-utils xdg
 DESCRIPTION="Qt5 application to design electric diagrams"
 HOMEPAGE="https://qelectrotech.org/"
 
-if [[ ${PV} = *9999* ]]; then
-	inherit subversion
-	ESVN_REPO_URI="svn://svn.tuxfamily.org/svnroot/qet/qet/trunk"
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://git.tuxfamily.org/qet/qet.git/"
+	inherit git-r3
 else
-	MY_P=${PN}-${PV%0}-src
-	SRC_URI="https://download.tuxfamily.org/qet/tags/20180823/${MY_P}.tar.gz"
+	MY_P=qet-${PV/%0/.0}
+	SRC_URI="https://git.tuxfamily.org/qet/qet.git/snapshot/${MY_P}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}"/${MY_P}
 fi
@@ -23,9 +23,11 @@ SLOT="0"
 IUSE="doc"
 
 BDEPEND="
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
 RDEPEND="
+	dev-db/sqlite:3
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -42,7 +44,19 @@ DEPEND="${RDEPEND}"
 
 DOCS=( CREDIT ChangeLog README )
 
-PATCHES=( "${FILESDIR}/${PN}-0.3-fix-paths.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.80-fix-paths.patch"
+	"${FILESDIR}/${PN}-0.80-nomancompress.patch"
+)
+
+src_prepare() {
+	xdg_src_prepare
+
+	if [[ ${PV} != *9999* ]]; then
+		sed -e "/^DEFINES.*GIT_COMMIT_SHA/s/^/#DONT /" -i ${PN}.pro || die
+		sed -e "/qInfo.*GIT_COMMIT_SHA/d" -i sources/machine_info.cpp || die
+	fi
+}
 
 src_configure() {
 	eqmake5 ${PN}.pro

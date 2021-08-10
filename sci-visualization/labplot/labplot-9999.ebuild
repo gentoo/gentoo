@@ -1,16 +1,17 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="forceoptional"
-KFMIN=5.60.0
-QTMIN=5.12.3
+KFMIN=5.74.0
+QTMIN=5.15.1
+VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Scientific data analysis and visualisation based on KDE Frameworks"
-HOMEPAGE="https://labplot.kde.org/ https://kde.org/applications/education/org.kde.labplot2"
+HOMEPAGE="https://labplot.kde.org/ https://apps.kde.org/en/labplot2"
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
@@ -18,7 +19,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="5"
-IUSE="cantor fftw fits hdf5 libcerf netcdf root"
+IUSE="cantor fftw fits hdf5 libcerf netcdf root serial telemetry"
 
 # not packaged: dev-qt/qtmqtt, bug 683994
 BDEPEND="
@@ -30,7 +31,6 @@ DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtnetwork-${QTMIN}:5
 	>=dev-qt/qtprintsupport-${QTMIN}:5
-	>=dev-qt/qtserialport-${QTMIN}:5
 	>=dev-qt/qtsql-${QTMIN}:5
 	>=dev-qt/qtsvg-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
@@ -50,7 +50,7 @@ DEPEND="
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:5
 	>=sci-libs/gsl-1.15:=
 	cantor? (
-		>=kde-apps/cantor-19.08.0:5
+		>=kde-apps/cantor-19.12.0:5
 		>=kde-frameworks/kparts-${KFMIN}:5
 		>=kde-frameworks/kservice-${KFMIN}:5
 	)
@@ -63,11 +63,15 @@ DEPEND="
 		app-arch/lz4
 		sys-libs/zlib
 	)
+	serial? ( >=dev-qt/qtserialport-${QTMIN}:5 )
+	telemetry? ( dev-libs/kuserfeedback:5 )
 "
 RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
+		-DENABLE_MQTT=OFF # not packaged
+		-DENABLE_READSTAT=OFF # not packaged
 		-DENABLE_CANTOR=$(usex cantor)
 		-DENABLE_FFTW=$(usex fftw)
 		-DENABLE_FITS=$(usex fits)
@@ -75,8 +79,9 @@ src_configure() {
 		-DENABLE_LIBCERF=$(usex libcerf)
 		-DENABLE_NETCDF=$(usex netcdf)
 		-DENABLE_ROOT=$(usex root)
+		-DENABLE_QTSERIALPORT=$(usex serial)
+		$(cmake_use_find_package telemetry KUserFeedback)
 		-DENABLE_TESTS=$(usex test)
-		-DENABLE_MQTT=OFF
 	)
 
 	ecm_src_configure

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<!-- maintainer-needed -->
 	<use>
-	<flag name="gtk3">Enable GTK3 interface (default)</flag>
-	<flag name="gucharmap">Enable gucharmap dictionary plugin</flag>
-	<flag name="spell">Enable spell checking capabilities via enchant library</flag>
-</use>
+		<flag name="gucharmap">Enable gucharmap dictionary plugin</flag>
+		<flag name="spell">Enable spell checking capabilities via enchant library</flag>
+	</use>
 </pkgmetadata>

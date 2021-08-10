@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,7 +38,7 @@ BDEPEND="virtual/fortran
 DEPEND="sci-libs/coinor-osi:=
 	sci-libs/coinor-utils:=
 	glpk? ( sci-mathematics/glpk:= sci-libs/amd )
-	metis? ( || ( sci-libs/metis sci-libs/parmetis ) )
+	metis? ( sci-libs/metis )
 	mumps? ( sci-libs/mumps[-mpi] )
 	sparse? ( sci-libs/cholmod )"
 RDEPEND="${DEPEND}"

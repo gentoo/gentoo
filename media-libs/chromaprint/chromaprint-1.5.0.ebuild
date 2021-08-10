@@ -1,10 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_ECLASS=cmake
 GTEST_VERSION="1.10.0"
+GTEST_DIR_VERSION="1.10.x"
 inherit cmake-multilib
 
 DESCRIPTION="Library implementing a custom algorithm for extracting audio fingerprints"
@@ -15,7 +16,7 @@ SRC_URI="https://github.com/acoustid/${PN}/releases/download/v${PV}/${P}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0/1"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="test tools"
 RESTRICT="!test? ( test )"
 
@@ -30,7 +31,7 @@ DOCS=( NEWS.txt README.md )
 S="${WORKDIR}/${PN}-v${PV}"
 
 multilib_src_configure() {
-	export GTEST_ROOT="${WORKDIR}/googletest-release-${GTEST_VERSION}/googletest/"
+	export GTEST_ROOT="${WORKDIR}/googletest-${GTEST_DIR_VERSION}/googletest/"
 	local mycmakeargs=(
 		-DBUILD_TOOLS=$(multilib_native_usex tools ON OFF)
 		-DBUILD_TESTS=$(usex test ON OFF)
@@ -41,5 +42,5 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	emake check
+	cd tests && (./all_tests || die "Tests failed")
 }

@@ -1,32 +1,34 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 DESCRIPTION="Database of the Czech and Slovak cookies for the fortune(6) program"
 HOMEPAGE="http://ftp.fi.muni.cz/pub/linux/people/zdenek_pytela/"
 SRC_URI="http://ftp.fi.muni.cz/pub/linux/people/zdenek_pytela/${P/-mod/}.tar.bz2"
+S="${WORKDIR}"/${P/-mod/}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE="unicode"
 
 RDEPEND="games-misc/fortune-mod"
-DEPEND="${RDEPEND}
-	unicode? ( virtual/libiconv )"
-
-S=${WORKDIR}/${P/-mod/}
+DEPEND="${RDEPEND}"
+BDEPEND="unicode? ( virtual/libiconv )"
 
 src_prepare() {
-	rm -f LICENSE install.sh fortune-cs.* *xpm
+	default
+
+	rm -f LICENSE install.sh fortune-cs.* *xpm || die
 }
 
 src_compile() {
 	local f
 	for f in [[:lower:]]* ; do
 		if use unicode ; then
-			iconv --from-code iso-8859-2 --to-code utf8 -o${f}.utf8 ${f}
-			mv ${f}.utf8 ${f}
+			iconv --from-code iso-8859-2 --to-code utf8 -o${f}.utf8 ${f} || die
+			mv ${f}.utf8 ${f} || die
 		fi
 		strfile -s ${f} || die "strfile ${f} failed"
 	done

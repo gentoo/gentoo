@@ -1,5 +1,5 @@
---- a/Makefile	2017-06-13 11:08:23.428114301 -0500
-+++ b/Makefile	2017-06-13 11:09:01.084376256 -0500
+--- a/Makefile
++++ b/Makefile
 @@ -28,10 +28,10 @@
  djgppall: nfbtrans.exe
  

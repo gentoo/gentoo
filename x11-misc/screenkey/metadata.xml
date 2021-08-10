@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person" proxied="yes">
+        <email>xgqt@riseup.net</email>
+        <name>Maciej Barć</name>
+    </maintainer>
+    <maintainer type="person">
+        <email>sultan@gentoo.org</email>
+        <name>Stephan Hartmann</name>
+    </maintainer>
+    <upstream>
+        <remote-id type="gitlab">screenkey/screenkey</remote-id>
+    </upstream>
+</pkgmetadata>

@@ -8,4 +8,8 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<!-- not suitable for ALLARCHES - uses cdll -->
+	<upstream>
+		<remote-id type="pypi">ifaddr</remote-id>
+	</upstream>
 </pkgmetadata>

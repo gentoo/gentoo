@@ -4,4 +4,5 @@
 	<maintainer type="project">
 		<email>freedesktop-bugs@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

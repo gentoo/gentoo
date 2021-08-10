@@ -1,0 +1,13 @@
+This fixes build with sys-devel/slibtool
+
+--- gloox-1.0.24/src/Makefile.am
++++ gloox-1.0.24/src/Makefile.am
+@@ -46,7 +46,7 @@
+                         carbons.cpp jinglepluginfactory.cpp jingleiceudp.cpp jinglefiletransfer.cpp \
+                         iodata.cpp
+ 
+-libgloox_la_LDFLAGS = -version-info 18:0:0 -no-undefined -no-allow-shlib-undefined
++libgloox_la_LDFLAGS = -version-info 18:0:0 -Wl,--no-undefined -Wl,--no-allow-shlib-undefined
+ libgloox_la_LIBADD =
+ libgloox_la_CFLAGS = $(CPPFLAGS)
+ 

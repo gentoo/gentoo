@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: lua-single.eclass
@@ -8,7 +8,7 @@
 # @AUTHOR:
 # Marek Szuba <marecki@gentoo.org>
 # Based on python-single-r1.eclass by Michał Górny <mgorny@gentoo.org> et al.
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: An eclass for Lua packages not installed for multiple implementations.
 # @DESCRIPTION:
 # An extension of lua.eclass suite for packages which don't support being
@@ -31,16 +31,41 @@
 # Note that since this eclass always inherits lua-utils as well, in ebuilds
 # using the former there is no need to explicitly inherit the latter in order
 # to use helper functions such as lua_get_CFLAGS.
+#
+# @EXAMPLE:
+# @CODE
+# EAPI=8
+#
+# LUA_COMPAT=( lua5-{1..3} )
+#
+# inherit lua-single
+#
+# [...]
+#
+# REQUIRED_USE="${LUA_REQUIRED_USE}"
+# DEPEND="${LUA_DEPS}"
+# RDEPEND="${DEPEND}
+#     $(lua_gen_cond_dep '
+#         dev-lua/foo[${LUA_USEDEP}]
+#     ')
+# "
+# BDEPEND="virtual/pkgconfig"
+#
+# # Only neeed if the setup phase has to do more than just call lua-single_pkg_setup
+# pkg_setup() {
+#     lua-single_pkg_setup
+#     [...]
+# }
+#
+# src_install() {
+#     emake LUA_VERSION="$(lua_get_version)" install
+# }
+# @CODE
 
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6)
-		die "Unsupported EAPI=${EAPI} (too old) for ${ECLASS}"
+case ${EAPI} in
+	7|8)
 		;;
-	7)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ ! ${_LUA_SINGLE_R0} ]]; then
@@ -122,7 +147,7 @@ EXPORT_FUNCTIONS pkg_setup
 # Example use:
 # @CODE
 # RDEPEND="${LUA_DEPS}
-#   dev-foo/mydep"
+#     dev-foo/mydep"
 # DEPEND="${RDEPEND}"
 # @CODE
 #
@@ -210,7 +235,7 @@ _lua_single_set_globals() {
 	local single_flags="${flags[@]/%/(-)?}"
 	local single_usedep=${single_flags// /,}
 
-	local deps= i PYTHON_PKG_DEP
+	local deps= i LUA_PKG_DEP
 	for i in "${_LUA_SUPPORTED_IMPLS[@]}"; do
 		_lua_export "${i}" LUA_PKG_DEP
 		deps+="lua_single_target_${i}? ( ${LUA_PKG_DEP} ) "
@@ -323,7 +348,7 @@ _lua_verify_patterns() {
 
 	local impl pattern
 	for pattern; do
-		for impl in "${_LUA_ALL_IMPLS[@]}"; do
+		for impl in "${_LUA_ALL_IMPLS[@]}" "${_LUA_HISTORICAL_IMPLS[@]}"; do
 			[[ ${impl} == ${pattern/./-} ]] && continue 2
 		done
 
@@ -351,7 +376,7 @@ _lua_verify_patterns() {
 # @CODE
 # LUA_COMPAT=( lua5-{1..3} )
 # RDEPEND="$(lua_gen_cond_dep \
-#   'dev-lua/backported_core_module[${LUA_USEDEP}]' lua5-1 lua5-2 )"
+#     'dev-lua/backported_core_module[${LUA_USEDEP}]' lua5-1 lua5-2 )"
 # @CODE
 #
 # It will cause the variable to look like:

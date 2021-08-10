@@ -1,4 +1,0 @@
-###
-# Kubernetes Kubelet (worker) config
-
-command_args=""

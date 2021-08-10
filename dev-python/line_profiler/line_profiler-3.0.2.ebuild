@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
@@ -25,6 +25,10 @@ RDEPEND="dev-python/ipython[${PYTHON_USEDEP}]"
 DEPEND="test? (
 	dev-python/coverage[${PYTHON_USEDEP}]
 	dev-python/ubelt[${PYTHON_USEDEP}] )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-python3_9.patch
+)
 
 distutils_enable_tests pytest
 

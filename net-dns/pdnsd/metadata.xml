@@ -12,10 +12,6 @@
     networking).
   </longdescription>
   <use>
-    <flag name="isdn">
-      Linux-only: check status of ippp interfaces with ISDN-specific
-      system calls.
-    </flag>
     <flag name="urandom">
       Linux-only: use /dev/urandom (pseudo-random number generation)
       instead of the default use of random() PRNG.

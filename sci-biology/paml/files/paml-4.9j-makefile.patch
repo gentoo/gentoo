@@ -1,0 +1,42 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -1,27 +1,18 @@
+-PRGS =  baseml codeml basemlg mcmctree pamp evolver yn00 chi2 
+-CC = cc # cc, gcc, cl
++PRGS =  baseml basemlg codeml evolver pamp mcmctree infinitesites yn00 chi2
+ 
+-CFLAGS = -O3
++CFLAGS += -Wno-unused-result
+ #CFLAGS = -fast
+ 
+-LIBS = -lm # -lM
++LDLIBS = -lm
+ 
+ all : $(PRGS)
+ 
+-baseml : baseml.c tools.c treesub.c treespace.c paml.h 
+-	$(CC) $(CFLAGS) -o $@ baseml.c tools.c $(LIBS)
+-basemlg : basemlg.c  tools.c treesub.c treespace.c paml.h 
+-	$(CC) $(CFLAGS) -o $@ basemlg.c tools.c $(LIBS)
+-codeml : codeml.c  tools.c treesub.c treespace.c paml.h 
+-	$(CC) $(CFLAGS) -o $@ codeml.c tools.c $(LIBS)
+-evolver : evolver.c  tools.c treesub.c treespace.c paml.h 
+-	$(CC) $(CFLAGS) -o $@ evolver.c tools.c $(LIBS)
+-pamp : pamp.c  tools.c treesub.c treespace.c paml.h 
+-	$(CC) $(CFLAGS) -o $@ pamp.c tools.c $(LIBS)
+-mcmctree : mcmctree.c  tools.c treesub.c treespace.c paml.h 
+-	$(CC) $(CFLAGS) -o $@ mcmctree.c tools.c $(LIBS)
+-	$(CC) $(CFLAGS) -o infinitesites -D INFINITESITES mcmctree.c tools.c $(LIBS)
+-yn00: yn00.c tools.c paml.h
+-	$(CC) $(CFLAGS) -o $@ yn00.c tools.c $(LIBS)
+-chi2 : chi2.c
+-	$(CC) $(CFLAGS) -o $@ chi2.c $(LIBS)
++baseml: tools.o paml.h 
++basemlg: tools.o paml.h 
++codeml: tools.o paml.h 
++evolver: tools.o paml.h 
++pamp: tools.o paml.h 
++mcmctree: tools.o paml.h 
++infinitesites: tools.o paml.h 
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -DINFINITESITES mcmctree.c -o infinitesites tools.o $(LDLIBS)
++yn00: tools.o paml.h

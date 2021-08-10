@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 JAVA_PKG_IUSE="doc source examples"
+MAVEN_ID="javassist:javassist:3.18.2"
 
 inherit java-pkg-2 java-ant-2
 
@@ -13,7 +14,7 @@ SRC_URI="https://github.com/jboss-javassist/javassist/archive/rel_${PV//./_}_ga_
 
 LICENSE="MPL-1.1"
 SLOT="3"
-KEYWORDS="amd64 ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ~arm64 ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.6"

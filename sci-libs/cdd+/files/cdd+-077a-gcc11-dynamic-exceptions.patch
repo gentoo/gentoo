@@ -1,0 +1,71 @@
+https://bugs.gentoo.org/787941
+
+From 46d95aeac2d3951d79291def284bb610e7cb033f Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 5 Aug 2021 02:00:33 +0100
+Subject: [PATCH] Drop deprecated C++17 dynamic exceptions
+
+---
+ Integer.h   |   6 +++---
+ Rational.cc |   2 +-
+ Rational.h  |   2 +-
+ cddio.o     | Bin 0 -> 154584 bytes
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+ create mode 100644 cddio.o
+
+diff --git a/Integer.h b/Integer.h
+index 8b7f04e..d4a1bdd 100644
+--- a/Integer.h
++++ b/Integer.h
+@@ -179,7 +179,7 @@ public:
+    }
+ 
+    /// Recognizes automatically number base 10, 8, or 16.
+-   Integer& set(const char *s) throw(gmp_error)
++   Integer& set(const char *s)
+    {
+       if (mpz_set_str(rep, s, 0) < 0)
+ 	 throw gmp_error("Integer: syntax error in string");
+@@ -195,14 +195,14 @@ public:
+ 
+    operator double() const { return mpz_get_d(rep); }
+ 
+-   operator long() const throw(gmp_error)
++   operator long() const
+    {
+       if (!mpz_fits_slong_p(rep))
+ 	 throw gmp_error("Integer: value too big");
+       return mpz_get_si(rep);
+    }
+ 
+-   operator int() const throw(gmp_error)
++   operator int() const
+    {
+       if (!mpz_fits_sint_p(rep))
+ 	 throw gmp_error("Integer: value too big");
+diff --git a/Rational.cc b/Rational.cc
+index f1b86a4..c679671 100644
+--- a/Rational.cc
++++ b/Rational.cc
+@@ -19,7 +19,7 @@
+ #include "Rational.h"
+ #include <cstring>
+ 
+-Rational& Rational::set(const char* s) throw (gmp_error)
++Rational& Rational::set(const char* s)
+ {
+    const char* digit=s;
+    while (*digit && *digit!='/') ++digit;
+diff --git a/Rational.h b/Rational.h
+index acaba13..eb30578 100644
+--- a/Rational.h
++++ b/Rational.h
+@@ -421,7 +421,7 @@ public:
+        Numerator and denominator are expected delimited by `/'.
+        Omitted denominator assumed equal to 1.
+    */
+-   Rational& set(const char *s) throw(gmp_error);
++   Rational& set(const char *s);
+ 
+    Rational& operator= (const Rational& b)
+    {

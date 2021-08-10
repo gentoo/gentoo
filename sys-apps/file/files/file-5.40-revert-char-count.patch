@@ -1,0 +1,49 @@
+From c07e242e766242a44ff720c149b1bdd4924ec247 Mon Sep 17 00:00:00 2001
+From: Christos Zoulas <christos@zoulas.com>
+Date: Tue, 27 Apr 2021 19:37:14 +0000
+Subject: [PATCH] Revert the fix for PR/180. It lead to PR/261. Using character
+ count heuristics ends up with confusing behavior, the following should not be
+ producing different results:     echo -n xx | ./file -     echo -n xy |
+ ./file -
+
+---
+[patch backported to 5.40 release -- ulm]
+
+ src/encoding.c | 15 ++-------------
+ 1 file changed, 2 insertions(+), 13 deletions(-)
+
+diff --git a/src/encoding.c b/src/encoding.c
+index 31d4d125..3647a481 100644
+--- a/src/encoding.c
++++ b/src/encoding.c
+@@ -265,9 +265,7 @@ private int \
+ looks_ ## NAME(const unsigned char *buf, size_t nbytes, file_unichar_t *ubuf, \
+     size_t *ulen) \
+ { \
+-	size_t i, u; \
+-	unsigned char dist[256]; \
+-	memset(dist, 0, sizeof(dist)); \
++	size_t i; \
+ \
+ 	*ulen = 0; \
+ \
+@@ -278,16 +276,7 @@ looks_ ## NAME(const unsigned char *buf, size_t nbytes, file_unichar_t *ubuf, \
+ 			return 0; \
+ \
+ 		ubuf[(*ulen)++] = buf[i]; \
+-		dist[buf[i]]++; \
+ 	} \
+-	u = 0; \
+-	for (i = 0; i < __arraycount(dist); i++) { \
+-		if (dist[i]) \
+-			u++; \
+-	} \
+-	if (u < 3) \
+-		return 0; \
+-\
+ 	return 1; \
+ }
+ 
+-- 
+2.32.0
+

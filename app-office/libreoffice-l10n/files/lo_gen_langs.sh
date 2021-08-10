@@ -8,18 +8,18 @@
 #
 
 VERSION=${1:-4.1.5}
-BASE_SRC_URI="http://download.documentfoundation.org/libreoffice/stable/${VERSION}/rpm/x86"
+BASE_SRC_URI="http://download.documentfoundation.org/libreoffice/stable/${VERSION}/rpm/x86_64"
 
 # needs lxml
 print_available_tarballs() {
 	python << EOL
-import sys, urllib
+import sys, urllib.request
 from xml.dom.minidom import parseString
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 
-opener = urllib.urlopen("${BASE_SRC_URI}")
-html = opener.read()
-opener.close()
+with urllib.request.urlopen("${BASE_SRC_URI}") as url:
+	html = url.read()
+
 # broken html, try to sanitize
 html = BeautifulSoup(html).prettify()
 

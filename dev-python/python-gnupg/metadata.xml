@@ -14,5 +14,6 @@
 	<upstream>
 		<bugs-to>https://bitbucket.org/vinay.sajip/python-gnupg/issues/new</bugs-to>
 		<remote-id type="bitbucket">vinay.sajip/python-gnupg</remote-id>
+		<remote-id type="pypi">python-gnupg</remote-id>
 	</upstream>
 </pkgmetadata>

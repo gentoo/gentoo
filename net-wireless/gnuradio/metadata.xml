@@ -9,6 +9,7 @@
 		<flag name="analog">enable analog signal processing blocks</flag>
 		<flag name="audio">enable blocks to connect to audio sources (mic-in) and sinks (speaker-out) ports on a computer</flag>
 		<flag name="channels">enable channel mode blocks</flag>
+		<flag name="ctrlport">enable control port interface</flag>
 		<flag name="digital">enable digital signal processing blocks</flag>
 		<flag name="dtv">enable digital tv signal processing blocks</flag>
 		<flag name="fec">enable block for convolutional encoding using the CCSDS standard polynomial ("Voyager")</flag>
@@ -23,4 +24,7 @@
 		<flag name="wavelet">enable wavelet signal processing blocks</flag>
 		<flag name="zeromq">enable zeromq message passing blocks</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">gnuradio/gnuradio</remote-id>
+	</upstream>
 </pkgmetadata>

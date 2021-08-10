@@ -1,31 +1,28 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit font
+EAPI=7
 
 MY_PN="Ricty"
-DESCRIPTION="A beautiful sans-serif monotype Japanese font designed for code listings"
-HOMEPAGE="http://save.sys.t.u-tokyo.ac.jp/~yusa/fonts/ricty.html"
-#SRC_URI="http://save.sys.t.u-tokyo.ac.jp/~yusa/fonts/ricty/${MY_PN}-${PV}.tar.gz"
+inherit font
+
+DESCRIPTION="Beautiful sans-serif monotype Japanese font designed for code listings"
+HOMEPAGE="https://rictyfonts.github.io/"
 SRC_URI="https://github.com/yascentur/${MY_PN}/tarball/${PV} -> ${MY_PN}-${PV}.tar.gz"
+S="${WORKDIR}/yascentur-${MY_PN}-b9d8b9c"
 
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="media-fonts/inconsolata
+BDEPEND="
+	media-fonts/inconsolata
 	>=media-fonts/mix-mplus-ipa-20111002
-	media-gfx/fontforge"
-RDEPEND=""
-
-#S="${WORKDIR}/yascentur-${MY_PN}-*"
-S="${WORKDIR}/yascentur-${MY_PN}-b9d8b9c"
+	media-gfx/fontforge
+"
 
 FONT_SUFFIX="ttf"
-FONT_S="${S}"
 
 # Only installs fonts.
 RESTRICT="strip binchecks"

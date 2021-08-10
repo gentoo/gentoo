@@ -67,7 +67,7 @@ Index: chessx.pro
 -INCLUDEPATH += $$[QT_INSTALL_PREFIX]/src/3rdparty/zlib
 +
 +CONFIG += link_pkgconfig
-+PKGCONFIG += quazip
++PKGCONFIG += quazip1-qt5
  
  win32 {
      # DEFINES += ZLIB_WINAPI

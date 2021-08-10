@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		The Eastern Russian Scriptures Translation (ERT Project, also known as the CARS Project) was initiated in order to meet the need for a translation of the Holy Scriptures designed for Central Asians and other nationalities of the former Soviet Union who read best in Russian and belong to ethnic groups traditionally considered Islamic. The first edition of this translation was published in 2003 and the second, thoroughly revised and corrected version of this translation came out in 2009.
 	</longdescription>

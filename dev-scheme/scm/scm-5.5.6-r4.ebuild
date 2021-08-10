@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ HOMEPAGE="http://swiss.csail.mit.edu/~jaffer/SCM"
 
 SLOT="0"
 LICENSE="LGPL-3"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-macos"
+KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE="arrays bignums cautious dynamic-linking engineering-notation gsubr inexact ioext libscm macro ncurses posix readline regex sockets unix"
 
 BDEPEND="app-arch/unzip"

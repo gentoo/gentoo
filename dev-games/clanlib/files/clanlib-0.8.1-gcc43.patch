@@ -1,5 +1,5 @@
---- Sources/GL/opengl.cpp
-+++ Sources/GL/opengl.cpp
+--- a/Sources/GL/opengl.cpp
++++ b/Sources/GL/opengl.cpp
 @@ -51,6 +51,8 @@
  #endif
  #endif
@@ -16,8 +16,8 @@
 -}
 \ No newline at end of file
 +}
---- Sources/Network/Socket/ip_address_getsock.cpp
-+++ Sources/Network/Socket/ip_address_getsock.cpp
+--- a/Sources/Network/Socket/ip_address_getsock.cpp
++++ b/Sources/Network/Socket/ip_address_getsock.cpp
 @@ -40,6 +40,7 @@
  #include "ip_address_getsock.h"
  

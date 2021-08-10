@@ -5,7 +5,8 @@
 		<email>layman@gentoo.org</email>
 		<name>Gentoo Layman team</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="github">jauhien/gs-elpa</remote-id>
-	</upstream>
+	<maintainer type="project">
+		<email>gnu-emacs@gentoo.org</email>
+		<name>Gentoo GNU Emacs project</name>
+	</maintainer>
 </pkgmetadata>

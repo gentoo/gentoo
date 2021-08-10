@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">python3-openid</remote-id>
+		<remote-id type="github">necaris/python3-openid</remote-id>
 	</upstream>
 </pkgmetadata>

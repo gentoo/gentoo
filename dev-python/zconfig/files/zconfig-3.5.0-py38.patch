@@ -1,0 +1,105 @@
+Required for python 3.8+ compatibility
+https://github.com/zopefoundation/ZConfig/pull/70
+--- a/ZConfig/components/logger/formatter.py
++++ b/ZConfig/components/logger/formatter.py
+@@ -248,8 +248,17 @@ def __call__(self):
+             else:
+                 # A formatter class that supports style, but our style is
+                 # non-standard, so we reach under the covers a bit.
++                #
++                # Python 3.8 adds a validate option, defaulting to True,
++                # which cases the format string to be checked.  Since
++                # safe-template is not a standard style, we want to
++                # suppress this.
++                #
++                kwargs = dict()
++                if sys.version_info >= (3, 8):
++                    kwargs['validate'] = False
+                 formatter = self.factory(self.format, self.dateformat,
+-                                         style='$')
++                                         style='$', **kwargs)
+                 assert formatter._style._fmt == self.format
+                 formatter._style = stylist
+         else:
+--- a/ZConfig/components/logger/tests/test_formatter.py
++++ b/ZConfig/components/logger/tests/test_formatter.py
+@@ -25,6 +25,17 @@
+ import ZConfig.components.logger.tests.support
+ 
+ 
++# In Python 3.8, a KeyError raised by string interpolation is re-written
++# into a ValueError reporting a reference to an undefined field.  We're
++# not masking the exception, but we want to check for the right one in
++# the tests below (without catching anything else).
++#
++if sys.version_info >= (3, 8):
++    MissingFieldError = ValueError
++else:
++    MissingFieldError = KeyError
++
++
+ class LogFormatStyleTestCase(unittest.TestCase):
+ 
+     def setUp(self):
+@@ -314,7 +325,10 @@ class CustomFormatterFactoryWithoutStyleParamTestCase(
+ class StylelessFormatter(logging.Formatter):
+ 
+     def __init__(self, fmt=None, datefmt=None):
+-        logging.Formatter.__init__(self, fmt=fmt, datefmt=datefmt)
++        kwargs = dict()
++        if sys.version_info >= (3, 8):
++            kwargs['validate'] = False
++        logging.Formatter.__init__(self, fmt=fmt, datefmt=datefmt, **kwargs)
+ 
+ 
+ def styleless_formatter(fmt=None, datefmt=None):
+@@ -552,9 +566,9 @@ def test_classic_arbitrary_field_missing(self):
+             arbitrary_fields=True)
+ 
+         # The formatter still breaks when it references an undefined field:
+-        with self.assertRaises(KeyError) as cm:
++        with self.assertRaises(MissingFieldError) as cm:
+             formatter.format(self.record)
+-        self.assertEqual(str(cm.exception), "'undefined_field'")
++        self.assertIn("'undefined_field'", str(cm.exception))
+ 
+     def test_classic_arbitrary_field_present(self):
+         formatter = self.get_formatter(
+@@ -574,9 +588,9 @@ def test_format_arbitrary_field_missing(self):
+             arbitrary_fields=True)
+ 
+         # The formatter still breaks when it references an undefined field:
+-        with self.assertRaises(KeyError) as cm:
++        with self.assertRaises(MissingFieldError) as cm:
+             formatter.format(self.record)
+-        self.assertEqual(str(cm.exception), "'undefined_field'")
++        self.assertIn("'undefined_field'", str(cm.exception))
+ 
+     def test_format_arbitrary_field_present(self):
+         formatter = self.get_formatter(
+@@ -596,9 +610,9 @@ def test_template_arbitrary_field_missing(self):
+             arbitrary_fields=True)
+ 
+         # The formatter still breaks when it references an undefined field:
+-        with self.assertRaises(KeyError) as cm:
++        with self.assertRaises(MissingFieldError) as cm:
+             formatter.format(self.record)
+-        self.assertEqual(str(cm.exception), "'undefined_field'")
++        self.assertIn("'undefined_field'", str(cm.exception))
+ 
+     def test_template_arbitrary_field_present(self):
+         formatter = self.get_formatter(
+
+--- a/ZConfig/components/logger/formatter.py
++++ b/ZConfig/components/logger/formatter.py
+@@ -250,7 +250,7 @@ def __call__(self):
+                 # non-standard, so we reach under the covers a bit.
+                 #
+                 # Python 3.8 adds a validate option, defaulting to True,
+-                # which cases the format string to be checked.  Since
++                # which causes the format string to be checked.  Since
+                 # safe-template is not a standard style, we want to
+                 # suppress this.
+                 #
+
+

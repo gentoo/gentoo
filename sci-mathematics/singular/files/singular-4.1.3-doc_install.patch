@@ -1,0 +1,62 @@
+diff --git a/Makefile.am b/Makefile.am
+index c21b6ba..ea61758 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -14,10 +14,11 @@ dist-hook:
+ 
+ install-data-local:
+ 	if test -e $(srcdir)/doc/doc.tbz2; then\
+-	  (cat ${top_srcdir}/doc/doc.tbz2| (cd $(DESTDIR)$(datadir)/singular; tar jxf -));\
+ 	   mkdir $(DESTDIR)$(datadir)/info;\
+-	   mkdir $(DESTDIR)$(datadir)/doc;\
+-	   mv  $(DESTDIR)$(datadir)/singular/singular.hlp  $(DESTDIR)$(datadir)/info/.;\
++	   mkdir -p $(DESTDIR)$(docdir);\
++	  (cat ${top_srcdir}/doc/doc.tbz2| (cd $(DESTDIR)$(docdir); tar -jx --no-same-owner -f -));\
++	   mv  $(DESTDIR)$(docdir)/singular.hlp  $(DESTDIR)$(datadir)/info/.;\
++	   @INSTALL_DATA@ doc/singular.idx  $(DESTDIR)$(datadir)/singular/.;\
+ 	fi
+ 
+ uninstall-local:
+diff --git a/configure.ac b/configure.ac
+index 2d53a55..d43b5fe 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -248,6 +248,11 @@ AX_NORMALIZE_PATH([config_datadir],['/'])
+ AC_DEFINE_UNQUOTED([DATA_DIR],"$config_datadir",[datadir])
+ AC_SUBST(DATA_DIR, "$config_datadir")
+ 
++AX_RECURSIVE_EVAL([[$]docdir], [config_docdir])
++AX_NORMALIZE_PATH([config_docdir],['/'])
++AC_DEFINE_UNQUOTED([DOC_DIR],"$config_docdir",[docdir])
++AC_SUBST(DOC_DIR, "$config_docdir")
++
+ SING_SHOW_FLAGS([Compiler/linker flags: ])
+ 
+ 
+diff --git a/resources/configure.ac b/resources/configure.ac
+index cf6720f..ac5f2d0 100644
+--- a/resources/configure.ac
++++ b/resources/configure.ac
+@@ -72,5 +72,9 @@ AX_RECURSIVE_EVAL([[$]datadir], [config_datadir])
+ AX_NORMALIZE_PATH([config_datadir],['/'])
+ AC_DEFINE_UNQUOTED([DATA_DIR],"$config_datadir",[datadir])
+ 
++AX_RECURSIVE_EVAL([[$]htmldir], [config_htmldir])
++AX_NORMALIZE_PATH([config_htmldir],['/'])
++AC_DEFINE_UNQUOTED([HTML_DIR],"$config_datadir",[htmldir])
++
+ AC_CONFIG_FILES([singular_resources.pc Makefile])
+ AC_OUTPUT
+diff --git a/resources/feResource.cc b/resources/feResource.cc
+index 3d75bc9..7e4fc8c 100644
+--- a/resources/feResource.cc
++++ b/resources/feResource.cc
+@@ -85,7 +85,7 @@ VAR feResourceConfig_s feResourceConfigs[] =
+   {"DefaultDir",'d',    feResDir,   "SINGULAR_DEFAULT_DIR",  SINGULAR_DEFAULT_DIR,  (char *)""},
+   {"InfoFile",  'i',    feResFile,  "SINGULAR_INFO_FILE",   "%D/info/singular.hlp", (char *)""},
+   {"IdxFile",   'x',    feResFile,  "SINGULAR_IDX_FILE",    "%D/singular/singular.idx",  (char *)""},
+-  {"HtmlDir",   'h',    feResDir,   "SINGULAR_HTML_DIR",    "%D/singular/html",              (char *)""},
++  {"HtmlDir",   'h',    feResDir,   "SINGULAR_HTML_DIR",    HTML_DIR,              (char *)""},
+   {"ManualUrl", 'u',    feResUrl,   "SINGULAR_URL",         "https://www.singular.uni-kl.de/Manual/",    (char *)""},
+   {"ExDir",     'm',    feResDir,   "SINGULAR_EXAMPLES_DIR","%r/examples",          (char *)""},
+   {"Path",      'p',    feResPath,  NULL,                   "%b;%P;$PATH",             (char *)""},

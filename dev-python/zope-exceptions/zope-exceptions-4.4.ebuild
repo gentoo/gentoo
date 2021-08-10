@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit distutils-r1
 
@@ -14,6 +14,7 @@ MY_P=${MY_PN}-${PV}
 DESCRIPTION="General purpose exceptions for Zope packages"
 HOMEPAGE="https://pypi.org/project/zope.exceptions/ https://github.com/zopefoundation/zope.exceptions"
 SRC_URI="mirror://pypi/${MY_PN::1}/${MY_PN}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="ZPL"
 SLOT="0"
@@ -23,7 +24,9 @@ RDEPEND="dev-python/namespace-zope[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/zope-testrunner[${PYTHON_USEDEP}] )"
 
-S="${WORKDIR}/${MY_P}"
+PATCHES=(
+	"${FILESDIR}/${P}-fix-test-py3.10.patch"
+)
 
 distutils_enable_tests setup.py
 

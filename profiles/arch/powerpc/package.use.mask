@@ -1,5 +1,34 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Thomas Deutschmann <whissi@gentoo.org> (2021-08-04)
+# Requires net-misc/modemmanager[qmi], mask until keyworded
+sys-apps/fwupd modemmanager
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-03-13)
+# virtual/jdk isn't keyworded here
+media-libs/rubberband jni
+
+# Patrick McLean <chutzpah@gentoo.org> (2021-02-25)
+# Requires unkeyworded dev-libs/pmdk, mask until keyworded
+sys-cluster/ceph pmdk rbd-rwl
+
+# Sam James <sam@gentoo.org> (2021-02-17)
+# Unmask dev-libs/libpcre2[jit] support on PHP
+# where available
+dev-lang/php -jit
+
+# Joonas Niilola <juippis@gentoo.org> (2021-01-15)
+# Dependency not keyworded on this arch.
+app-text/enchant voikko
+
+# Sam James <sam@gentoo.org> (2020-12-27)
+# dev-embedded/libftd2xx unavailable here
+dev-embedded/urjtag ftd2xx
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-11-05)
+# makes no sense on power
+sys-apps/fwupd amt dell uefi
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
 # Dependency not keyworded on this arch.
@@ -41,10 +70,6 @@ net-misc/whois xcrypt
 # Unsupported on ppc/ppc64
 www-client/chromium widevine
 
-# Patrick McLean <chutzpah@gentoo.org> (2020-04-03)
-# Lots of deps for little gain
-dev-python/joblib doc
-
 # Matthias Maier <tamiko@gentoo.org> (2020-03-13)
 # requires media-libs/sdl2-image, which is not yet keyworded
 app-emulation/qemu sdl-image
@@ -53,7 +78,7 @@ app-emulation/qemu sdl-image
 # requires fwupd, which is not yet keyworded
 kde-plasma/discover firmware
 
-# Rick Farina <zerochaos@gentoo.com> (2020-01-03)
+# Rick Farina <zerochaos@gentoo.org> (2020-01-03)
 # ubertooth needs net-libs/libbtbb and net-wireless/ubertooth which aren't keyworded
 # rtl-sdr needs net-wireless/rtl-sdr
 net-wireless/kismet rtlsdr ubertooth
@@ -66,17 +91,9 @@ app-admin/syslog-ng test
 # iasl is stable on ppc
 sys-firmware/seabios -debug
 
-# Eugene Bright <eugene@bright.gdn> (2019-09-09)
-# Missing keyword on dev-embedded/libjaylink
-sys-apps/flashrom jlink-spi
-
 # Conrad Kostecki <conikost@gentoo.org> (2019-08-17)
 # app-misc/graphlcd-base won't work on PowerPC/PowerPC64
 app-misc/lcdproc freetype lcd_devices_glcd png
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-01)
-# not yet keyworded
-dev-java/openjdk:11 javafx
 
 # Patrick McLean <chutzpah@gentoo.org> (2019-04-15)
 # deps not available on platform
@@ -87,10 +104,6 @@ sys-cluster/ceph babeltrace lttng
 net-analyzer/rrdtool rados
 sys-fs/multipath-tools rbd
 www-servers/uwsgi uwsgi_plugins_rados
-
-# Virgil Dupras <vdupras@gentoo.org> (2019-03-03)
-# Tests fail with jpeg2k flag. Bug #662686
-dev-python/pillow jpeg2k
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-02-26)
 # nginx_modules_http_lua requires USE=luajit which requires
@@ -109,10 +122,6 @@ net-analyzer/icinga2 mariadb
 # grub pc is not supported on powerpc
 sys-boot/grub:2 grub_platforms_pc grub_platforms_efi-32 grub_platforms_efi-64 grub_platforms_xen grub_platforms_xen-pvh
 
-# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2018-06-08)
-# sys-devel/llvmgold not yet keyworded
-sys-devel/llvm gold
-
 # Tomáš Mózes <hydrapolic@gmail.com> (2018-06-05)
 # Unkeyworded dependencies.
 app-admin/syslog-ng kafka mongodb
@@ -120,11 +129,6 @@ app-admin/syslog-ng kafka mongodb
 # Anthony G. Basile <blueness@gentoo.org> (2018-04-14)
 # net-vpn/tor, tests are broken on ppc/ppc64, bug #653098
 net-vpn/tor test
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2018-03-27)
-# dev-qt/qtwebengine is not ported to powerpc
-net-irc/quassel urlpreview
-www-client/otter webengine
 
 # Matthias Maier <tamiko@gentoo.org> (2018-03-18)
 # dev-libs/capstone not keyworded
@@ -192,7 +196,7 @@ dev-db/percona-server -numa
 # Davide Pesavento <pesa@gentoo.org> (2016-07-28)
 # The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/PyQt5 bluetooth location networkauth
+dev-python/PyQt5 bluetooth location networkauth speech
 
 # Michael Palimaka <kensington@gentoo.org> (2016-07-07)
 # Requires unkeyworded dependencies
@@ -230,11 +234,8 @@ gnome-extra/sushi office
 
 # Mark Wright <gienah@gentoo.org> (2014-12-14/2014-12-24, 2015-04-01)
 # test dependencies need keywording
-dev-haskell/binary test
 dev-haskell/dlist test
 dev-haskell/haskell-src-exts test
-dev-haskell/text test
-dev-haskell/vector test
 dev-util/bnfc test
 
 # Anthony G. Basile <blueness@gentoo.org> (2014-08-17)
@@ -251,7 +252,8 @@ dev-ruby/haml test
 
 # Anthony G. Basile <blueness@gentoo.org> (2014-08-14)
 # Mask these flags since mongodb is broken on ppc/ppc64
-dev-python/ipython doc matplotlib nbconvert notebook test
+dev-python/ipython doc matplotlib nbconvert notebook
+<=dev-python/ipython-7.24.1 test
 
 # Anthony G. Basile <blueness@gentoo.org> (2014-08-12)
 # Ultimately pulls in nodejs which is broken.
@@ -340,10 +342,6 @@ net-misc/connman ofono
 # Mask some use flags for openmpi due to unkeyworded deps
 sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
-# Kacper Kowalik <xarthisius@gentoo.org> (2011-11-20)
-# Dropped dietlibc wrt #364103
-sys-fs/dmraid dietlibc
-
 # Patrick McLean <chutzpah@gentoo.org> (2011-09-07)
 # missing keywords on dependencies
 media-video/x264-encoder ffmpegsource
@@ -372,7 +370,7 @@ sci-chemistry/vmd tachyon
 
 # Pacho Ramos <pacho@gentoo.org>
 # Not keyworded
-media-plugins/gst-plugins-meta dts vcd vpx
+media-plugins/gst-plugins-meta dts vcd
 
 # QA: This entry is moved from INVALID location from default/linux/powerpc.
 # VDPAU is currently not keyworded on PPC since its a nvidia-drivers feature

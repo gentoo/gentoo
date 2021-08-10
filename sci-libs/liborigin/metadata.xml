@@ -8,4 +8,8 @@
 	<use>
 		<flag name="tools">Install opj2dat command line util</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">liborigin</remote-id>
+		<remote-id type="github">SciDAVis/liborigin</remote-id>
+	</upstream>
 </pkgmetadata>

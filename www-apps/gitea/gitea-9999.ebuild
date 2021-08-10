@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,17 +33,19 @@ RDEPEND="${COMMON_DEPEND}
 	dev-vcs/git"
 
 DOCS=(
-	custom/conf/app.ini.sample CONTRIBUTING.md README.md
+	custom/conf/app.example.ini CONTRIBUTING.md README.md
 )
 FILECAPS=(
 	cap_net_bind_service+ep usr/bin/gitea
 )
 
+RESTRICT="test"
+QA_PRESTRIPPED="usr/bin/gitea"
+
 src_prepare() {
 	default
 
 	local sedcmds=(
-		-e "s#^RUN_MODE = dev#RUN_MODE = prod#"
 		-e "s#^ROOT =#ROOT = ${EPREFIX}/var/lib/gitea/gitea-repositories#"
 		-e "s#^ROOT_PATH =#ROOT_PATH = ${EPREFIX}/var/log/gitea#"
 		-e "s#^APP_DATA_PATH = data#APP_DATA_PATH = ${EPREFIX}/var/lib/gitea/data#"
@@ -52,13 +54,11 @@ src_prepare() {
 		-e "s#^LEVEL = Trace#LEVEL = Info#"
 		-e "s#^LOG_SQL = true#LOG_SQL = false#"
 		-e "s#^DISABLE_ROUTER_LOG = false#DISABLE_ROUTER_LOG = true#"
-		-e "s#^APP_ID =#;APP_ID =#"
-		-e "s#^TRUSTED_FACETS =#;TRUSTED_FACETS =#"
 	)
 
-	sed -i "${sedcmds[@]}" custom/conf/app.ini.sample || die
+	sed -i "${sedcmds[@]}" custom/conf/app.example.ini || die
 	if use sqlite ; then
-		sed -i -e "s#^DB_TYPE = .*#DB_TYPE = sqlite3#" custom/conf/app.ini.sample || die
+		sed -i -e "s#^DB_TYPE = .*#DB_TYPE = sqlite3#" custom/conf/app.example.ini || die
 	fi
 
 	einfo "Remove tests which are known to fail with network-sandbox enabled."
@@ -81,8 +81,8 @@ src_compile() {
 		"-X code.gitea.io/gitea/modules/setting.AppWorkPath=${EPREFIX}/var/lib/gitea"
 	)
 	local makeenv=(
-		TAGS="${gitea_tags[@]}"
-		LDFLAGS="-extldflags \"${LDFLAGS}\" ${gitea_settings[@]}"
+		TAGS="${gitea_tags[*]}"
+		LDFLAGS="-extldflags \"${LDFLAGS}\" ${gitea_settings[*]}"
 	)
 	[[ ${PV} != 9999* ]] && makeenv+=("DRONE_TAG=${MY_PV}")
 
@@ -101,10 +101,10 @@ src_install() {
 	newtmpfiles - gitea.conf <<-EOF
 		d /run/gitea 0755 git git
 	EOF
-	systemd_newunit "${FILESDIR}"/gitea.service-r2 gitea.service
+	systemd_newunit "${FILESDIR}"/gitea.service-r3 gitea.service
 
 	insinto /etc/gitea
-	newins custom/conf/app.ini.sample app.ini
+	newins custom/conf/app.example.ini app.ini
 	if use acct ; then
 		fowners root:git /etc/gitea/{,app.ini}
 		fperms g+w,o-rwx /etc/gitea/{,app.ini}
@@ -113,4 +113,10 @@ src_install() {
 		keepdir /var/lib/gitea /var/lib/gitea/custom /var/lib/gitea/data
 		keepdir /var/log/gitea
 	fi
+}
+
+pkg_postinst() {
+	fcaps_pkg_postinst
+	go-module_pkg_postinst
+	tmpfiles_process gitea.conf
 }

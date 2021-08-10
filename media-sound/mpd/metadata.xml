@@ -28,6 +28,7 @@
     <flag name="recorder">Enables output plugin for recording radio streams</flag>
     <flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
     <flag name="signalfd">Use the signalfd function in MPD's event loop</flag>
+    <flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
     <flag name="soundcloud">Build plugin to access soundcloud</flag>
     <flag name="tidal">Build plugin to access tidal</flag>
     <flag name="systemd">Enable support for systemd socket activation</flag>

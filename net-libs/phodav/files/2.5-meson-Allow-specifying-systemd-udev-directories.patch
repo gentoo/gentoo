@@ -1,0 +1,79 @@
+https://gitlab.gnome.org/GNOME/phodav/-/merge_requests/19
+
+From 5f6ca03ab91df31ede9a4435c63cf5af0ef50c06 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Mon, 3 May 2021 22:47:16 -0400
+Subject: [PATCH] meson: Allow specifying systemd/udev directories
+
+Closes: https://gitlab.gnome.org/GNOME/phodav/-/issues/1
+---
+ data/meson.build  | 24 ++++++++++++++++++------
+ meson_options.txt | 12 ++++++------
+ 2 files changed, 24 insertions(+), 12 deletions(-)
+
+diff --git a/data/meson.build b/data/meson.build
+index c466030..26ad939 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -1,16 +1,28 @@
+-systemd = dependency('systemd', required : get_option('systemd'))
+-if systemd.found()
++systemd_systemunitdir = get_option('systemdsystemunitdir')
++if systemd_systemunitdir == ''
++  systemd = dependency('systemd', required : false)
++  if systemd.found()
++    systemd_systemunitdir = systemd.get_pkgconfig_variable('systemdsystemunitdir')
++  endif
++endif
++if systemd_systemunitdir != ''
+   install_data(
+     'spice-webdavd.service',
+-    install_dir : systemd.get_pkgconfig_variable('systemdsystemunitdir')
++    install_dir : systemd_systemunitdir
+   )
+ endif
+ 
+-udev = dependency('udev', required : get_option('udev'))
+-if udev.found()
++udev_rulesdir = get_option('udevrulesdir')
++if udev_rulesdir == ''
++  udev = dependency('udev', required : false)
++  if udev.found()
++    udev_rulesdir = '@0@/@1@'.format(udev.get_pkgconfig_variable('udevdir'), 'rules.d')
++  endif
++endif
++if udev_rulesdir != ''
+   install_data(
+     '70-spice-webdavd.rules',
+-    install_dir : '@0@/@1@'.format(udev.get_pkgconfig_variable('udevdir'), 'rules.d'),
++    install_dir : udev_rulesdir
+   )
+ endif
+ 
+diff --git a/meson_options.txt b/meson_options.txt
+index 724a0d3..1b075f5 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -6,13 +6,13 @@ option('avahi',
+        type : 'feature',
+        description : 'Build with avahi/mdns')
+ 
+-option('systemd',
+-       type : 'feature',
+-       description : 'Install systemd units/configuration')
++option('systemdsystemunitdir',
++       type: 'string',
++       description: 'Directory for systemd system unit files')
+ 
+-option('udev',
+-       type : 'feature',
+-       description : 'Install udev rules')
++option('udevrulesdir',
++       type : 'string',
++       description : 'Directory for udev rules')
+ 
+ option('build-id',
+        type : 'integer',
+-- 
+2.26.3
+

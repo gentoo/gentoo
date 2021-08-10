@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit meson python-any-r1
 
@@ -31,11 +31,11 @@ DEPEND="
 "
 
 BDEPEND="
+	${PYTHON_DEPS}
 	>=dev-util/meson-0.47.0
 	virtual/pkgconfig
 	introspection? (
 		$(python_gen_any_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
-		${PYTHON_DEPS}
 	)
 "
 
@@ -44,7 +44,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	use introspection && python-any-r1_pkg_setup
+	python-any-r1_pkg_setup
 }
 
 src_configure() {

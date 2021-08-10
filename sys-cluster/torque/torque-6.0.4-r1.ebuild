@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,12 +7,13 @@ inherit autotools flag-o-matic linux-info
 
 DESCRIPTION="Resource manager and queuing system based on OpenPBS"
 HOMEPAGE="http://www.adaptivecomputing.com/products/open-source/torque"
-SRC_URI="https://github.com/adaptivecomputing/torque/archive/6a0b37f85c7d644e9217cbab1542792d646f59a6.tar.gz -> ${P}-gh-20170829.tar.gz"
+SRC_URI="https://github.com/adaptivecomputing/torque/archive/6a0b37f85c7d644e9217cbab1542792d646f59a6.tar.gz -> ${P}-gh-20170829.tar.gz
+	https://dev.gentoo.org/~juippis/distfiles/tmp/torque-6.0.4-gcc7.patch"
 
 LICENSE="torque-2.5"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="autorun cgroups cpusets +crypt doc kernel_linux libressl munge nvidia quickcommit server +syslog tk"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+IUSE="autorun cgroups cpusets +crypt doc kernel_linux munge nvidia quickcommit server +syslog tk"
 
 DEPEND_COMMON="
 	sys-libs/zlib
@@ -47,7 +48,7 @@ RDEPEND="${DEPEND_COMMON}
 S="${WORKDIR}"/${PN}-6a0b37f85c7d644e9217cbab1542792d646f59a6
 
 PATCHES=(
-	"${FILESDIR}"/${P}-gcc7.patch
+	"${DISTDIR}"/${P}-gcc7.patch
 	"${FILESDIR}"/${PN}-6.0.3-fix-emptystring-comparison.patch
 	"${FILESDIR}"/${P}-no-openssl.patch
 	"${FILESDIR}"/${P}-error_buf_overflow_prevent.patch

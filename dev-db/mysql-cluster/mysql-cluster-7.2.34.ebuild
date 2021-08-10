@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -24,12 +24,11 @@ HOMEPAGE="https://mysql.com/"
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="bindist client-libs debug extraengine java jemalloc latin1 libressl
+IUSE="bindist client-libs debug extraengine java jemalloc latin1
 	+perl profiling selinux +server	static static-libs systemtap tcmalloc
 	test yassl"
 
-# Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="!bindist? ( bindist ) !test? ( test ) libressl? ( test )"
+RESTRICT="!bindist? ( bindist ) !test? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc )
 	static? ( yassl )"
@@ -78,8 +77,7 @@ COMMON_DEPEND="
 	tcmalloc? ( dev-util/google-perftools:0= )
 	systemtap? ( >=dev-util/systemtap-1.3:0= )
 	!yassl? (
-		!libressl? ( dev-libs/openssl:0= !>=dev-libs/openssl-1.1 )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0= !>=dev-libs/openssl-1.1
 	)
 	>=sys-libs/zlib-1.2.3:0=
 	sys-libs/ncurses:0=
@@ -194,11 +192,6 @@ src_prepare() {
 	# Remove the centos and rhel selinux policies to support mysqld_safe under SELinux
 	if [[ -d "${S}/support-files/SELinux" ]] ; then
 		echo > "${S}/support-files/SELinux/CMakeLists.txt" || die
-	fi
-
-	if use libressl ; then
-		sed -i 's/OPENSSL_MAJOR_VERSION STREQUAL "1"/OPENSSL_MAJOR_VERSION STREQUAL "2"/' \
-			"${S}/cmake/ssl.cmake" || die
 	fi
 
 	local plugin

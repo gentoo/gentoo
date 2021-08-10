@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,9 +6,8 @@ EAPI=7
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/clsync/clsync.git"
 	inherit git-r3
-	KEYWORDS=""
 else
-	SRC_URI="https://github.com/clsync/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+	SRC_URI="https://github.com/clsync/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -20,7 +19,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 IUSE="apidoc +caps +clsync cluster control-socket cgroups doc debug
 examples extra-debug extra-hardened gio +hardened +highload-locks
-+inotify mhash namespaces seccomp socket-library static-libs"
++inotify +lto mhash namespaces seccomp socket-library static-libs"
 
 REQUIRED_USE="
 	|| ( clsync socket-library )
@@ -76,6 +75,7 @@ src_configure() {
 		$(use_enable cluster) \
 		$(use_enable control-socket socket) \
 		$(use_enable highload-locks) \
+		$(use_enable lto) \
 		$(use_enable namespaces unshare) \
 		$(use_enable seccomp) \
 		$(use_enable socket-library) \

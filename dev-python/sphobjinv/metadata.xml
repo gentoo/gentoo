@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>andrewammerlaan@gentoo.org</email>
+    <name>Andrew Ammerlaan</name>
+  </maintainer>
+  <longdescription lang="en">
+Using Sphinx?
+
+Having trouble writing cross-references?
+
+sphobjinv (short for ‘sphinx objects.inv’) can help!
+
+The syntax required for a functional Sphinx cross-reference is highly non-obvious in many cases. Sometimes Sphinx can guess correctly what you mean, but it’s pretty hit-or-miss. The best approach is to provide Sphinx with a completely specified cross-reference, and that’s where sphobjinv comes in.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">bskinn/sphobjinv</remote-id>
+    <remote-id type="pypi">sphobjinv</remote-id>
+  </upstream>
+  <stabilize-allarches/>
+</pkgmetadata>

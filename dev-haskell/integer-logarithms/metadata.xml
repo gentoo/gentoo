@@ -5,12 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		&quot;Math.NumberTheory.Logarithms&quot; and &quot;Math.NumberTheory.Powers.Integer&quot;
-		from the arithmoi package.
-		
-		Also provides &quot;GHC.Integer.Logarithms.Compat&quot; and
-		&quot;Math.NumberTheory.Power.Natural&quot; modules, as well as some
-		additional functions in migrated modules.
-	</longdescription>
 </pkgmetadata>

@@ -1,0 +1,12 @@
+diff -ruN gdbm-1.18.1.orig/configure.ac gdbm-1.18.1/configure.ac
+--- gdbm-1.18.1.orig/configure.ac	2018-10-27 08:46:09.000000000 +0300
++++ gdbm-1.18.1/configure.ac	2020-12-17 14:12:14.249678303 +0200
+@@ -94,7 +94,7 @@
+ 
+ dnl Internationalization macros.
+ AM_GNU_GETTEXT([external], [need-ngettext])
+-AM_GNU_GETTEXT_VERSION(0.18)
++AM_GNU_GETTEXT_REQUIRE_VERSION(0.18)
+ 
+ AC_CHECK_HEADERS([sys/file.h sys/termios.h string.h locale.h getopt.h])
+ 

@@ -6,7 +6,7 @@
     <name>XFCE Team</name>
   </maintainer>
   <use>
-    <flag name='panel-plugin'>Build the power management plugin for
+    <flag name="panel-plugin">Build the power management plugin for
       the XFCE panel</flag>
   </use>
 </pkgmetadata>

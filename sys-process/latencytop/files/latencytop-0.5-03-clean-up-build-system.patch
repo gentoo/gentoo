@@ -7,12 +7,6 @@ Respect env build settings (compiler flags and tools) and install the man
 page for people.
 
 Signed-off-by: Mike Frysinger <vapier@gentoo.org>
----
- src/Makefile |   32 ++++++++++++++++++--------------
- 1 files changed, 18 insertions(+), 14 deletions(-)
-
-diff --git a/src/Makefile b/src/Makefile
-index de24551..9a3cc05 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -3,14 +3,22 @@ HAS_GTK_GUI = 1

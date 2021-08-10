@@ -1,0 +1,25 @@
+Avoid pytest-cov involvement:
+
+https://dev.gentoo.org/~mgorny/python-guide/pytest.html#avoiding-dependencies-on-other-pytest-plugins
+
+Signed-Off-By: John Helmert III <ajak@gentoo.org>
+
+diff --git a/setup.cfg b/setup.cfg
+index 2428e44..117f237 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -1,14 +1,6 @@
+ [wheel]
+ universal = 1
+ 
+-[tool:pytest]
+-addopts = 
+-	--tb=short
+-	--cov-config .coveragerc
+-	--cov=vdirsyncer
+-	--cov-report=term-missing
+-	--no-cov-on-fail
+-
+ [flake8]
+ application-import-names = tests,vdirsyncer
+ extend-ignore = 

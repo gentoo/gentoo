@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 APPLE_PV=${PV}
 DESCRIPTION="Apple branch of the GNU Debugger, Developer Tools 4.3"
@@ -13,7 +13,7 @@ SRC_URI="http://www.opensource.apple.com/darwinsource/tarballs/other/gdb-${APPLE
 LICENSE="APSL-2 GPL-2"
 SLOT="0"
 
-KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~ppc-macos ~x64-macos"
 
 IUSE="nls"
 
@@ -86,7 +86,7 @@ pkg_postinst() {
 		ewarn "  % sudo chgrp procmod ${EPREFIX}/usr/bin/gdb"
 		ewarn "  % sudo chmod g+s ${EPREFIX}/usr/bin/gdb"
 	fi
-	if use x86-macos || use x64-macos ; then
+	if [[ ${CHOST} == *86* ]] ; then
 		einfo "FSF gdb works on Intel-based OSX platforms, sometimes even"
 		einfo "better than gdb-apple.  You can consider installing FSF gdb"
 		einfo "instead of gdb-apple, since the FSF version is surely more"

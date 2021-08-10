@@ -1,6 +1,5 @@
-diff -ur wput-0.6.2+git20130413.orig/src/progress.c wput-0.6.2+git20130413/src/progress.c
---- wput-0.6.2+git20130413.orig/src/progress.c	2013-07-15 00:05:50.000000000 +0200
-+++ wput-0.6.2+git20130413/src/progress.c	2016-10-25 16:48:05.909105000 +0200
+--- a/src/progress.c
++++ b/src/progress.c
 @@ -181,7 +181,7 @@
    static char output[15];
    time_t secs = time (NULL);

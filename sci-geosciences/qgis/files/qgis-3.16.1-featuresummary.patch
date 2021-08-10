@@ -1,0 +1,32 @@
+From f0fd6e80ad034cf7c49f4ba3708819424b6857b2 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 20 Nov 2020 20:41:06 +0100
+Subject: [PATCH] cmake: Use FeatureSummary
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f581b2c889..61b4c863d0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -111,6 +111,8 @@ if (FORCE_STATIC_PROVIDERS)
+   set (HAVE_STATIC_PROVIDERS TRUE)
+ endif()
+ 
++include(FeatureSummary)
++
+ # in generated makefiles use relative paths so the project dir is moveable
+ # Note commented out since it cause problems but it would be nice to resolve these and enable
+ #
+@@ -1035,3 +1037,5 @@ endif()
+ if (UNIX AND NOT APPLE)
+   add_subdirectory(linux)
+ endif()
++
++FEATURE_SUMMARY(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+-- 
+2.29.2
+

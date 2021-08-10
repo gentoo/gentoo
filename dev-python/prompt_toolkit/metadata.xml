@@ -7,7 +7,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
-    <remote-id type="pypi">prompt_toolkit</remote-id>
+    <remote-id type="pypi">prompt-toolkit</remote-id>
     <remote-id type="github">prompt-toolkit/python-prompt-toolkit</remote-id>
   </upstream>
 </pkgmetadata>

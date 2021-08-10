@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,8 +11,8 @@ SRC_URI="https://github.com/wxWidgets/wxWidgets/releases/download/v${PV}/wxWidge
 	https://dev.gentoo.org/~leio/distfiles/wxGTK-3.0.4_p20190713.tar.xz
 	doc? ( https://github.com/wxWidgets/wxWidgets/releases/download/v${PV}/wxWidgets-${PV}-docs-html.tar.bz2 )"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="+X aqua doc debug gstreamer libnotify opengl sdl tiff"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+IUSE="+X doc debug gstreamer libnotify opengl sdl tiff"
 
 SLOT="3.0"
 
@@ -34,11 +34,6 @@ RDEPEND="
 			media-libs/gst-plugins-base:1.0[${MULTILIB_USEDEP}] )
 		libnotify? ( x11-libs/libnotify[${MULTILIB_USEDEP}] )
 		opengl? ( virtual/opengl[${MULTILIB_USEDEP}] )
-		tiff?   ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
-		)
-	aqua? (
-		x11-libs/gtk+:2[aqua=,${MULTILIB_USEDEP}]
-		virtual/jpeg:0=[${MULTILIB_USEDEP}]
 		tiff?   ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
 		)"
 
@@ -96,19 +91,8 @@ multilib_src_configure() {
 			$(use_with opengl)
 			$(use_with tiff libtiff sys)"
 
-	use aqua && \
-		myconf="${myconf}
-			--enable-graphics_ctx
-			--enable-gui
-			--with-libpng=sys
-			--with-libxpm=sys
-			--with-libjpeg=sys
-			--with-mac
-			--with-opengl"
-			# cocoa toolkit seems to be broken
-
 	# wxBase options
-	if use !X && use !aqua ; then
+	if use !X ; then
 		myconf="${myconf}
 			--disable-gui"
 	fi

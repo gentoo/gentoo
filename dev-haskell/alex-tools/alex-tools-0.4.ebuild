@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,5 +29,5 @@ src_prepare() {
 
 	cabal_chdeps \
 		'base >=4.7 && <4.12' 'base >=4.7' \
-		'template-haskell >=2.9.0 && <2.14' 'template-haskell >=2.9.0 && <2.16'
+		'template-haskell >=2.9.0 && <2.14' 'template-haskell >=2.9.0'
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="elogind fish-completion +man systemd zsh-completion"
+IUSE="elogind +man systemd"
 REQUIRED_USE="?? ( elogind systemd )"
 
 DEPEND="
@@ -36,8 +36,8 @@ BDEPEND="
 src_configure() {
 	local emesonargs=(
 		-Dman-pages=$(usex man enabled disabled)
-		$(meson_use fish-completion fish-completions)
-		$(meson_use zsh-completion zsh-completions)
+		"-Dfish-completions=true"
+		"-Dzsh-completions=true"
 		"-Dbash-completions=true"
 		"-Dwerror=false"
 	)

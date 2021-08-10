@@ -1,5 +1,5 @@
---- linux/Makefile.old	2010-10-13 11:37:27.000000000 +0200
-+++ linux/Makefile	2010-10-13 11:38:20.000000000 +0200
+--- a/linux/Makefile
++++ b/linux/Makefile
 @@ -42,7 +42,7 @@
  RELEASE_CFLAGS = $(BASE_CFLAGS) -O2 -march=pentium4 -pipe -msse -mfpmath=sse \
  	-fomit-frame-pointer -fexpensive-optimizations

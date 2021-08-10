@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils
+inherit autotools epatch
 
 DESCRIPTION="a simple yet powerful command line cd player"
 HOMEPAGE="http://libcdaudio.sourceforge.net"

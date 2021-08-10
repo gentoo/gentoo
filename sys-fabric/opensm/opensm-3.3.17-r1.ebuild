@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,16 +8,16 @@ OFED_RC="1"
 OFED_RC_VER="1"
 OFED_SUFFIX="1"
 
-inherit autotools eutils openib
+inherit autotools epatch openib
 
 DESCRIPTION="OpenSM - InfiniBand Subnet Manager and Administration for OpenIB"
-KEYWORDS="amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux"
 IUSE="tools"
 
 DEPEND="
 	sys-fabric/libibmad:${SLOT}
 	sys-fabric/libibumad:${SLOT}"
-RDEPEND="$DEPEND
+RDEPEND="${DEPEND}
 	 tools? (
 		net-misc/iputils
 		net-misc/openssh

@@ -5,7 +5,7 @@
 		<email>desktop-misc@gentoo.org</email>
 		<name>Gentoo Desktop Miscellaneous Project</name>
 	</maintainer>
-<longdescription lang='en'>
+<longdescription lang="en">
 If no user activity is detected after a set timeout, xautolock runs a program
 for you. If you want that program (with optional arguments) to be a screen
 locker, then one of these packages might fit your purpose:

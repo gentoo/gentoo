@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Extracts models of the Point Spread Function from FITS images"
 HOMEPAGE="http://www.astromatic.net/software/psfex"
@@ -14,12 +14,12 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="doc threads plplot"
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	sci-libs/atlas:0[lapack,threads=]
 	sci-libs/fftw:3.0
 	plplot? ( sci-libs/plplot:= )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-have-mmap.patch"
@@ -29,13 +29,16 @@ PATCHES=(
 
 src_prepare() {
 	default
-	local mycblas=atlcblas  myclapack=atlclapack
+
+	local mycblas=atlcblas myclapack=atlclapack
+
 	if use threads; then
-		[[ -e ${EPREFIX}/usr/$(get_libdir)/libptcblas.so ]] && \
+		[[ -e "${EPREFIX}"/usr/$(get_libdir)/libptcblas.so ]] && \
 			mycblas=ptcblas
-		[[ -e ${EPREFIX}/usr/$(get_libdir)/libptclapack.so ]] &&
+		[[ -e "${EPREFIX}"/usr/$(get_libdir)/libptclapack.so ]] &&
 		myclapack=ptclapack
 	fi
+
 	# fix the configure and not the acx_atlas.m4. the eautoreconf will
 	# produce a configure giving  a wrong install Makefile target (to fix)
 	sed -e "s/-lcblas/-l${mycblas}/g" \
@@ -51,6 +54,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #724588
+	append-cflags "-fcommon"
+
 	econf \
 		--with-atlas-incdir="${EPREFIX}/usr/include/atlas" \
 		$(use_enable plplot) \

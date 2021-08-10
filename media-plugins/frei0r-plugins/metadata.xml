@@ -13,4 +13,7 @@
       plugins, which depend on <pkg>media-libs/gavl</pkg>
     </flag>
   </use>
+  <upstream>
+    <remote-id type="github">dyne/frei0r</remote-id>
+  </upstream>
 </pkgmetadata>

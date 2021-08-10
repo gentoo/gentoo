@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+	<use>
+		<flag name="gtk">Build the <pkg>dev-cpp/gtkmm</pkg>:3.0 client.</flag>
+	</use>
+	<longdescription>
+		DroidCam turns your phone/tablet into a webcam for your PC.
+		Use it with chat programs like Zoom, MS Teams, and Skype.
+
+		Main Features:
+		– Chat using “DroidCam Webcam” on your computer, including Sound and Picture.
+		– Connect over WiFi or USB cable.
+		– Unlimited free usage at standard definition.
+		– Keep using your phone with DroidCam in background (Android).
+		– Simple, safe, efficient, and trusted by millions of people worldwide.
+
+		DroidCamX Pro Features:
+		– Switch to HD Mode for 720p/1080p high definition video.
+		– Camera controls: toggle light, enable continuous auto focus, zoom in/out.
+		– Rotate, Flip and Mirror the video to better match your setup.
+		– Adjust brightness, contrast, add video delay and adjust audio volume (Windows).
+		– USB-Only mode for extra privacy and security.
+		– Option to auto-mute phone calls.
+		– No Ads.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">dev47apps/droidcam</remote-id>
+		<bugs-to>https://github.com/dev47apps/droidcam/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

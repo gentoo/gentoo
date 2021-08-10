@@ -1,0 +1,22 @@
+--- a/src/dynprog_end.c
++++ b/src/dynprog_end.c
+@@ -109,7 +109,7 @@
+ static Trieoffset_T *trieoffsets_max;
+ static Triecontent_T *triecontents_max;
+ 
+-bool homopolymerp;
++static bool homopolymerp;
+ 
+ void
+ Dynprog_end_setup (Univcoord_T *splicesites_in, Splicetype_T *splicetypes_in,
+--- a/src/dynprog_single.c
++++ b/src/dynprog_single.c
+@@ -91,7 +91,7 @@
+ 
+ #define T Dynprog_T
+ 
+-bool homopolymerp;
++static bool homopolymerp;
+ 
+ void
+ Dynprog_single_setup (bool homopolymerp_in) {

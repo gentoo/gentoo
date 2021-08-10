@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>alexey+gentoo@asokolov.org</email>
+		<name>Alexey Sokolov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">carygravel/gtk3-imageview</remote-id>
+		<remote-id type="cpan">Gtk3-ImageView</remote-id>
+		<remote-id type="cpan-module">Gtk3::ImageView</remote-id>
+		<remote-id type="cpan-module">Gtk3::ImageView::Tool</remote-id>
+		<remote-id type="cpan-module">Gtk3::ImageView::Tool::Dragger</remote-id>
+		<remote-id type="cpan-module">Gtk3::ImageView::Tool::Selector</remote-id>
+		<remote-id type="cpan-module">Gtk3::ImageView::Tool::SelectorDragger</remote-id>
+	</upstream>
+</pkgmetadata>

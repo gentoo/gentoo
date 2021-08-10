@@ -1,0 +1,13 @@
+diff --git a/src/Makefile b/src/Makefile
+index 5142282..4c0dbb8 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -3,7 +3,7 @@ STRIP = strip
+ 
+ CFLAGS = -O3 -mtune=native -march=native
+-CFLAGS += -Ilib
++override CFLAGS += -Ilib
+ LDFLAGS = -lm
+ 
+ SFLAGS = --strip-all
+ 

@@ -1,29 +1,51 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Automated port scan detector and response tool"
 # Seems like CISCO took the site down?
 HOMEPAGE="https://sourceforge.net/projects/sentrytools/"
 SRC_URI="mirror://sourceforge/sentrytools/${P}.tar.gz"
+S="${WORKDIR}"/${PN}_beta
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ppc x86 ~x64-macos"
+IUSE="kernel_Darwin kernel_linux kernel_FreeBSD kernel_SunOS"
 
-S="${WORKDIR}"/${PN}_beta
+RDEPEND="kernel_Darwin? ( app-shells/tcsh )"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-conf.patch
-	epatch "${FILESDIR}"/${P}-config.h.patch
-	epatch "${FILESDIR}"/${P}-gcc.patch
-	epatch "${FILESDIR}"/${P}-ignore.csh.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-conf.patch
+	"${FILESDIR}"/${P}-config.h.patch
+	"${FILESDIR}"/${P}-gcc.patch
+	"${FILESDIR}"/${P}-ignore.csh.patch
+)
 
 src_compile() {
-	emake CC=$(tc-getCC) CFLAGS="${CFLAGS} ${LDFLAGS}" linux
+	local target
+
+	if use kernel_Darwin ; then
+		target="osx"
+	elif use kernel_linux ; then
+		target="linux"
+	elif use kernel_FreeBSD ; then
+		target="freebsd"
+	elif use kernel_SunOS ; then
+		target="solaris"
+	fi
+
+	if [[ -z "${target}" ]] ; then
+		elog "Using 'generic' target for your platform"
+		target="generic"
+	else
+		elog "Using '${target}' (detected) target for your platform"
+	fi
+
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${CPPFLAGS} ${LDFLAGS}" "${target}"
 }
 
 src_install() {

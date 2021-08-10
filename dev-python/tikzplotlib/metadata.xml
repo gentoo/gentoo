@@ -2,16 +2,17 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>andrewammerlaan@riseup.net</email>
+		<email>andrewammerlaan@gentoo.org</email>
 		<name>Andrew Ammerlaan</name>
 	</maintainer>
 	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>python@gentoo.org</email>
+		<name>Python</name>
 	</maintainer>
 	<longdescription>tikzplotlib is a Python tool for converting matplotlib figures into PGFPlots (TikZ) figures like for native inclusion into LaTeX documents. The output of tikzplotlib is in PGFPlots, a LaTeX library that sits on top of TikZ and describes graphs in terms of axes, data etc. Consequently, the output of tikzplotlib retains more information, can be more easily understood, and is more easily editable than raw TikZ output.</longdescription>
 	<upstream>
 		<remote-id type="github">nschloe/tikzplotlib</remote-id>
 		<remote-id type="pypi">tikzplotlib</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

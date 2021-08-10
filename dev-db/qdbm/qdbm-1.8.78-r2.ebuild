@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 RUBY_OPTIONAL="yes"
 
 inherit autotools flag-o-matic java-pkg-opt-2 perl-functions ruby-ng
@@ -13,7 +13,7 @@ SRC_URI="https://fallabs.com/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 IUSE="bzip2 cxx debug java lzo perl ruby static-libs zlib"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )
@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-perl.patch
 	"${FILESDIR}"/${PN}-ruby19.patch
 	"${FILESDIR}"/${PN}-runpath.patch
+	"${FILESDIR}"/${PN}-1.8.78-darwin.patch
 )
 HTML_DOCS=( doc/. )
 
@@ -99,10 +100,10 @@ src_prepare() {
 		-e "/^JAVACFLAGS/s|$| ${JAVACFLAGS}|" \
 		-e 's/make\( \|$\)/$(MAKE)\1/g' \
 		-e '/^debug/,/^$/s/LDFLAGS="[^"]*" //' \
-		Makefile.in {cgi,java,perl,plus,ruby}/Makefile.in
-	find -name "*~" -delete
+		Makefile.in {cgi,java,perl,plus,ruby}/Makefile.in || die
+	find -name "*~" -delete || die
 
-	mv configure.{in,ac}
+	mv configure.{in,ac} || die
 	eautoreconf
 	qdbm_foreach_api
 }
@@ -111,9 +112,9 @@ each_ruby_prepare() {
 	sed -i \
 		-e "s|ruby |${RUBY} |" \
 		-e "s|\.\./\.\.|${WORKDIR}/all/${P}|" \
-		{Makefile,configure}.in {curia,depot,villa}/extconf.rb
+		{Makefile,configure}.in {curia,depot,villa}/extconf.rb || die
 
-	mv configure.{in,ac}
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
@@ -133,8 +134,12 @@ each_ruby_configure() {
 }
 
 src_compile() {
-	default
-	qdbm_foreach_api
+	if [[ ${CHOST} == *darwin* ]] ; then
+		emake mac
+	else
+		default
+		qdbm_foreach_api
+	fi
 }
 
 each_ruby_compile() {
@@ -142,8 +147,12 @@ each_ruby_compile() {
 }
 
 src_test() {
-	default
-	qdbm_foreach_api
+	if [[ ${CHOST} == *darwin* ]] ; then
+		emake check-mac
+	else
+		default
+		qdbm_foreach_api
+	fi
 }
 
 each_ruby_test() {
@@ -151,23 +160,28 @@ each_ruby_test() {
 }
 
 src_install() {
-	default
+	if [[ ${CHOST} == *darwin* ]] ; then
+		emake install-mac
+	else
+		default
+	fi
+
 	qdbm_foreach_api
 	use static-libs || find "${ED}" -name '*.a' -delete || die
 
-	rm -rf "${ED}"/usr/share/${PN}
+	rm -rf "${ED}"/usr/share/${PN} || die
 
 	if use java; then
 		java-pkg_dojar "${ED}"/usr/$(get_libdir)/*.jar
-		rm -f "${ED}"/usr/$(get_libdir)/*.jar
+		rm -f "${ED}"/usr/$(get_libdir)/*.jar || die
 	fi
 	if use perl; then
 		perl_delete_module_manpages
 		perl_fix_packlist
 	fi
 
-	rm -f "${ED}"/usr/bin/*test
-	rm -f "${ED}"/usr/share/man/man1/*test.1*
+	rm -f "${ED}"/usr/bin/*test || die
+	rm -f "${ED}"/usr/share/man/man1/*test.1* || die
 }
 
 each_ruby_install() {

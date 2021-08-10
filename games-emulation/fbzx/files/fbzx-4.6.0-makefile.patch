@@ -1,0 +1,60 @@
+Respect CXX, CXXFLAGS, CPPFLAGS, and PKG_CONFIG.
+Add way to choose audio backend (alsa, pulse, or neither).
+
+Alternatively, cmake migration has been proposed upstream:
+https://gitlab.com/rastersoft/fbzx/-/merge_requests/10
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -3,8 +3,14 @@
+ CC=g++ -c $(FLAGS)
+-CXX=g++ -c $(FLAGS)
+-LN=g++
++LN=$(CXX)
+ 
+-CFLAGS += `pkg-config --cflags sdl2 libpulse-simple alsa` -D D_SOUND_PULSE -D D_SOUND_ALSA
+-CXXFLAGS += `pkg-config --cflags sdl2 libpulse-simple alsa` -D D_SOUND_PULSE -D D_SOUND_ALSA
+-LDFLAGS += `pkg-config --libs sdl2 libpulse-simple alsa`
++CXXFLAGS:=-c $(CXXFLAGS) $(CPPFLAGS) $(shell $(PKG_CONFIG) --cflags sdl2)
++LDFLAGS:=$(LDFLAGS) $(shell $(PKG_CONFIG) --libs sdl2)
++ifeq ($(ALSA),yes)
++	CXXFLAGS+=$(shell $(PKG_CONFIG) --cflags alsa) -DD_SOUND_ALSA
++	LDFLAGS+=$(shell $(PKG_CONFIG) --libs alsa)
++endif
++ifeq ($(PULSE),yes)
++	CXXFLAGS+=$(shell $(PKG_CONFIG) --cflags libpulse-simple) -DD_SOUND_PULSE
++	LDFLAGS+=$(shell $(PKG_CONFIG) --libs libpulse-simple)
++endif
+ 
+@@ -15,24 +21,24 @@
+ Z80free.o: z80free/Z80free.c z80free/Z80free.h
+-	$(CXX) -o Z80free.o z80free/Z80free.c
++	$(CXX) $(CXXFLAGS) -o Z80free.o z80free/Z80free.c
+ 
+ Z80free_codes.o: z80free/Z80free_codes.c z80free/Z80free.h
+-	$(CXX) -o Z80free_codes.o z80free/Z80free_codes.c
++	$(CXX) $(CXXFLAGS) -o Z80free_codes.o z80free/Z80free_codes.c
+ 
+ Z80free_codesCB.o: z80free/Z80free_codesCB.c z80free/Z80free.h
+-	$(CXX) -o Z80free_codesCB.o z80free/Z80free_codesCB.c
++	$(CXX) $(CXXFLAGS) -o Z80free_codesCB.o z80free/Z80free_codesCB.c
+ 
+ Z80free_codesED.o: z80free/Z80free_codesED.c z80free/Z80free.h
+-	$(CXX) -o Z80free_codesED.o z80free/Z80free_codesED.c
++	$(CXX) $(CXXFLAGS) -o Z80free_codesED.o z80free/Z80free_codesED.c
+ 
+ Z80free_codesDD.o: z80free/Z80free_codesDD.c z80free/Z80free.h
+-	$(CXX) -o Z80free_codesDD.o z80free/Z80free_codesDD.c
++	$(CXX) $(CXXFLAGS) -o Z80free_codesDD.o z80free/Z80free_codesDD.c
+ 
+ Z80free_codesFD.o: z80free/Z80free_codesFD.c z80free/Z80free.h
+-	$(CXX) -o Z80free_codesFD.o z80free/Z80free_codesFD.c
++	$(CXX) $(CXXFLAGS) -o Z80free_codesFD.o z80free/Z80free_codesFD.c
+ 
+ Z80free_codesDDCB.o: z80free/Z80free_codesDDCB.c z80free/Z80free.h
+-	$(CXX) -o Z80free_codesDDCB.o z80free/Z80free_codesDDCB.c
++	$(CXX) $(CXXFLAGS) -o Z80free_codesDDCB.o z80free/Z80free_codesDDCB.c
+ 
+ Z80free_codesFDCB.o: z80free/Z80free_codesFDCB.c z80free/Z80free.h
+-	$(CXX) -o Z80free_codesFDCB.o z80free/Z80free_codesFDCB.c
++	$(CXX) $(CXXFLAGS) -o Z80free_codesFDCB.o z80free/Z80free_codesFDCB.c
+ 

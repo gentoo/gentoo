@@ -9,7 +9,7 @@ SRC_URI="http://5hdumat.samizdat.net/music/eawpats${PV}_full.tar.gz"
 
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 sparc x86"
 RESTRICT="binchecks strip"
 
 # These can be used for libmodplug too, so don't depend on timidity++

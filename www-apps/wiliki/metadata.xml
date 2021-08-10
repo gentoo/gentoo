@@ -5,6 +5,7 @@
 		<email>scheme@gentoo.org</email>
 		<name>Gentoo Scheme Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 	WiLiKi is a lightweight Wiki Engine written in Scheme.
 

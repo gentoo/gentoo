@@ -7,9 +7,10 @@
   </maintainer>
   <upstream>
     <remote-id type="github">Guake/guake</remote-id>
+    <remote-id type="pypi">guake</remote-id>
   </upstream>
   <use>
-    <flag name='utempter'>Include utmp management support
+    <flag name="utempter">Include utmp management support
       via <pkg>sys-libs/libutempter</pkg></flag>
   </use>
 </pkgmetadata>

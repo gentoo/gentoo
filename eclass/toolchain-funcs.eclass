@@ -1,9 +1,10 @@
-# Copyright 2002-2019 Gentoo Authors
+# Copyright 2002-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain-funcs.eclass
 # @MAINTAINER:
 # Toolchain Ninjas <toolchain@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: functions to query common info about the toolchain
 # @DESCRIPTION:
 # The toolchain-funcs aims to provide a complete suite of functions
@@ -11,6 +12,12 @@
 # ugly things like cross-compiling and multilib.  All of this is done
 # in such a way that you can rely on the function always returning
 # something sane.
+
+case ${EAPI:-0} in
+	# EAPI=0 is still used by crossdev, bug #797367
+	0|5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_TOOLCHAIN_FUNCS_ECLASS} ]]; then
 _TOOLCHAIN_FUNCS_ECLASS=1
@@ -505,12 +512,21 @@ tc-ld-is-lld() {
 # If the gold linker is currently selected, configure the compilation
 # settings so that we use the older bfd linker instead.
 tc-ld-disable-gold() {
-	if ! tc-ld-is-gold "$@" ; then
-		# They aren't using gold, so nothing to do!
+	tc-ld-is-gold "$@" && tc-ld-force-bfd "$@"
+}
+
+# @FUNCTION: tc-ld-force-bfd
+# @USAGE: [toolchain prefix]
+# @DESCRIPTION:
+# If the gold or lld linker is currently selected, configure the compilation
+# settings so that we use the bfd linker instead.
+tc-ld-force-bfd() {
+	if ! tc-ld-is-gold "$@" && ! tc-ld-is-lld "$@" ; then
+		# They aren't using gold or lld, so nothing to do!
 		return
 	fi
 
-	ewarn "Forcing usage of the BFD linker instead of GOLD"
+	ewarn "Forcing usage of the BFD linker"
 
 	# Set up LD to point directly to bfd if it's available.
 	# We need to extract the first word in case there are flags appended
@@ -520,7 +536,7 @@ tc-ld-disable-gold() {
 	local path_ld=$(which "${bfd_ld}" 2>/dev/null)
 	[[ -e ${path_ld} ]] && export LD=${bfd_ld}
 
-	# Set up LDFLAGS to select gold based on the gcc / clang version.
+	# Set up LDFLAGS to select bfd based on the gcc / clang version.
 	local fallback="true"
 	if tc-is-gcc; then
 		local major=$(gcc-major-version "$@")
@@ -548,7 +564,7 @@ tc-ld-disable-gold() {
 			ln -sf "${path_ld}" "${d}"/ld
 			export LDFLAGS="${LDFLAGS} -B${d}"
 		else
-			die "unable to locate a BFD linker to bypass gold"
+			die "unable to locate a BFD linker"
 		fi
 	fi
 }
@@ -665,7 +681,7 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 		mips*)		echo mips;;
 		nios2*)		echo nios2;;
 		nios*)		echo nios;;
-		or1k|or32*)	echo openrisc;;
+		or1k*|or32*)	echo openrisc;;
 		powerpc*)
 			# Starting with linux-2.6.15, the 'ppc' and 'ppc64' trees
 			# have been unified into simply 'powerpc', but until 2.6.16,

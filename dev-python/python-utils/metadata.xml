@@ -5,7 +5,11 @@
 		<email>chainsaw@gentoo.org</email>
 		<name>Tony Vroon</name>
 	</maintainer>
-
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">python-utils</remote-id>
 	</upstream>

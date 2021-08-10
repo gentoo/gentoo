@@ -1,8 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -arm64
+
+# Michał Górny <mgorny@gentoo.org> (2021-01-07)
+# Prebuilt kernels are supported here.
+-dist-kernel
 
 # Sam James <sam@gentoo.org> (2020-10-08)
 # PyPy3 works on arm64
@@ -43,11 +47,6 @@ cpu_flags_arm_neon
 appindicator
 ayatana
 
-# Mart Raudsepp <leio@gentoo.org> (2019-01-07)
-# Does not work on arm64 until dev-lang/luajit-2.1
-# https://github.com/LuaJIT/LuaJIT/issues/26
-luajit
-
 # Michał Górny <mgorny@gentoo.org> (2018-07-09)
 # No OpenCL provider is available on arm64.
 opencl
@@ -68,10 +67,6 @@ valgrind
 # Markus Meier <maekke@gentoo.org> (2010-08-22)
 # net-wireless/wimax not tested
 wimax
-
-# Kacper Kowalik <xarthisius@gentoo.org> (2010-08-09)
-# cblas-external as virtual/cblas is also masked
-cblas-external
 
 # Samuli Suominen <drac@gentoo.org>
 # media-libs/amrnb and media-libs/amrwb not tested.
@@ -101,10 +96,8 @@ zvbi
 sid
 mms
 ieee1394
-pm-utils
 darcs
 bs2b
-ladspa
 ggi
 nut
 dvd

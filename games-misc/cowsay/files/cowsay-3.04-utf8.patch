@@ -1,6 +1,5 @@
-diff -Naur cowsay-3.03.orig//cowsay cowsay-3.03/cowsay
---- rank-amateur-cowsay-cowsay-3.04/cowsay.orig	2011-04-21 16:36:03.581377699 +0200
-+++ rank-amateur-cowsay-cowsay-3.04/cowsay	2011-04-21 16:37:07.968430100 +0200
+--- a/cowsay
++++ b/cowsay
 @@ -12,6 +12,13 @@
  use Getopt::Std;
  use Cwd;

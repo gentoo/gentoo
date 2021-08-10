@@ -7,3 +7,4 @@ TryExec=simutrans
 Exec=simutrans
 Icon=simutrans
 Terminal=false
+Categories=Game;Simulation

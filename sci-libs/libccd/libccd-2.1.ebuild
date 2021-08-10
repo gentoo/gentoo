@@ -5,9 +5,9 @@ EAPI=7
 
 inherit cmake
 
-if [ "${PV}" = "9999" ] ; then
+if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/danfis/libccd/${PN}.git"
+	EGIT_REPO_URI="https://github.com/danfis/libccd.git"
 else
 	SRC_URI="https://github.com/danfis/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm"
@@ -19,14 +19,10 @@ HOMEPAGE="http://libccd.danfis.cz/
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="+double-precision doc +shared test"
+IUSE="+double-precision doc test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=""
-
-DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx )
-"
+BDEPEND="doc? ( dev-python/sphinx )"
 
 src_prepare() {
 	# upstream issue 72
@@ -40,11 +36,9 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_DOCUMENTATION=$(usex doc ON OFF)
-		-DBUILD_SHARED_LIBS=$(usex shared ON OFF)
 		-DENABLE_DOUBLE_PRECISION=$(usex double-precision ON OFF)
 	)
 
-	local CMAKE_BUILD_TYPE="Release"
 	cmake_src_configure
 }
 

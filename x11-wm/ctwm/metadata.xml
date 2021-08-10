@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>lillyjsm@gmail.com</email>
+		<name>Jake Lilly</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<changelog>http://www.ctwm.org/CHANGES.html</changelog>
+		<doc>http://www.ctwm.org/docs.html</doc>
+	</upstream>
+	<use>
+		<flag name="jpeg">Enable jpeg image support with <pkg>virtual/jpeg</pkg></flag>
+		<flag name="rplay">Enable sound support from <pkg>media-sound/rplay</pkg></flag>
+		<flag name="test">Enable upstream test suite, build required binary</flag>
+		<flag name="xpm">Enable xpm icon support with <pkg>x11-libs/libXpm</pkg></flag>
+	</use>
 </pkgmetadata>

@@ -1,5 +1,5 @@
---- configure.ac.orig	2015-09-07 16:25:35.000000000 +0200
-+++ configure.ac	2015-09-07 16:26:30.000000000 +0200
+--- a/configure.ac
++++ b/configure.ac
 @@ -7,26 +7,17 @@
  AM_INIT_AUTOMAKE(gsmc, 1.0, ik5nax@amsat.org)
  
@@ -35,8 +35,8 @@
  # Checks for header files.
  AC_HEADER_STDC
 
---- Makefile.am.orig	2011-01-12 18:14:55.633360421 -0200
-+++ Makefile.am	2011-01-12 20:37:21.034615478 -0200
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -2,8 +2,8 @@
       
  bin_PROGRAMS=gsmc

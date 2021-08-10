@@ -1,11 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7..9} )
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Converting Jupyter Notebooks"
@@ -14,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	dev-python/bleach[${PYTHON_USEDEP}]
@@ -54,9 +52,9 @@ python_test() {
 	local deselect=(
 		# Missing pyppeteer for now
 		# TODO: Doesn't skip?
-		--deselect exporters/tests/test_webpdf.py
+		--deselect nbconvert/exporters/tests/test_webpdf.py
 		# Needs pyppeteer too
-		--deselect 'tests/test_nbconvertapp.py::TestNbConvertApp::test_webpdf_with_chromium'
+		--deselect 'nbconvert/tests/test_nbconvertapp.py::TestNbConvertApp::test_webpdf_with_chromium'
 	)
 
 	distutils_install_for_testing bdist_egg

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qt5-build.eclass
@@ -10,15 +10,14 @@
 # @BLURB: Eclass for Qt5 split ebuilds.
 # @DESCRIPTION:
 # This eclass contains various functions that are used when building Qt5.
-# Requires EAPI 7.
 
 if [[ ${CATEGORY} != dev-qt ]]; then
-	die "qt5-build.eclass is only to be used for building Qt 5"
+	die "${ECLASS} is only to be used for building Qt 5"
 fi
 
 case ${EAPI} in
-	7)	: ;;
-	*)	die "qt5-build.eclass: unsupported EAPI=${EAPI:-0}" ;;
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # @ECLASS-VARIABLE: QT5_MODULE
@@ -51,6 +50,7 @@ esac
 # system to obtain the global qmodule.pri file.
 
 # @ECLASS-VARIABLE: VIRTUALX_REQUIRED
+# @PRE_INHERIT
 # @DESCRIPTION:
 # For proper description see virtualx.eclass man page.
 # Here we redefine default value to be manual, if your package needs virtualx
@@ -103,19 +103,19 @@ EGIT_REPO_URI=(
 
 IUSE="debug test"
 
-[[ ${QT5_BUILD_TYPE} == release ]] && RESTRICT+=" test" # bug 457182
+if [[ ${QT5_BUILD_TYPE} == release ]]; then
+	RESTRICT+=" test" # bug 457182
+else
+	RESTRICT+=" !test? ( test )"
+fi
 
 BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
 "
 if [[ ${PN} != qttest ]]; then
-	DEPEND+=" test? ( ~dev-qt/qttest-${PV} )"
+	DEPEND+=" test? ( ~dev-qt/qttest-$(ver_cut 1-3) )"
 fi
-RDEPEND="
-	dev-qt/qtchooser
-"
-
 
 ######  Phase functions  ######
 

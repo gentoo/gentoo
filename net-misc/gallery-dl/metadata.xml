@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person" proxied="yes">
+        <email>xgqt@riseup.net</email>
+        <name>Maciej Barć</name>
+    </maintainer>
+    <maintainer type="project" proxied="proxy">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <upstream>
+        <remote-id type="github">mikf/gallery-dl</remote-id>
+    </upstream>
+    <longdescription>
+        gallery-dl is a command-line program to download image-galleries and -collections from several image hosting sites.
+        It is a cross-platform tool with many configuration options and powerful filenaming capabilities.
+    </longdescription>
+</pkgmetadata>

@@ -10,7 +10,7 @@ SRC_URI="http://downloads.laffeycomputer.com/current_builds/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ppc sparc x86"
+KEYWORDS="amd64 ~hppa ppc sparc x86"
 
 DOCS=( AUTHORS ChangeLog INSTALL NEWS README )
 

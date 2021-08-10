@@ -1,3 +1,6 @@
+Tries to manage started service instead of allowing OpenRC to do it.
+https://bugs.gentoo.org/641836
+https://bugs.gentoo.org/649014
 --- a/script/service
 +++ b/script/service
 @@ -159,23 +160,6 @@ run_via_sysvinit() {

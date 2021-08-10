@@ -18,6 +18,7 @@
   It is the successor of Numeric and numarray.
 </longdescription>
   <upstream>
+    <remote-id type="github">dev-python/numpy</remote-id>
     <remote-id type="pypi">numpy</remote-id>
   </upstream>
 </pkgmetadata>

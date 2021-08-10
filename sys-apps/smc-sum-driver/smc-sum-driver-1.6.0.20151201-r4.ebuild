@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,14 +13,13 @@ MY_P="${MY_PN/smc_/}_V${MY_PV}"
 DESCRIPTION="Supermicro Update Manager (SUM) kernel module"
 HOMEPAGE="https://www.supermicro.com"
 SRC_URI="${MY_P}_${MY_DATE}.tar.gz"
+S="${WORKDIR}/${MY_P}/Linux"
 
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="supermicro"
 SLOT="0"
 
 RESTRICT="bindist fetch mirror"
-
-S="${WORKDIR}"/${MY_P}/Linux
 
 BUILD_TARGETS="default"
 MODULE_NAMES="sum_bios(misc:${S})"

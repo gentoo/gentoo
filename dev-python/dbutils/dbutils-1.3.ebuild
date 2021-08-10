@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7..8} )
 DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1
@@ -13,8 +13,8 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Database connections for multi-threaded environments"
 HOMEPAGE="
-	https://cito.github.io/DBUtils/
-	https://github.com/Cito/DBUtils
+	https://webwareforpython.github.io/DBUtils/
+	https://github.com/WebwareForPython/DBUtils/
 	https://pypi.org/project/DBUtils/
 "
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${MY_P}.tar.gz"

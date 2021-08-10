@@ -1,10 +1,17 @@
 #!/sbin/openrc-run
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-PIDFILE="/var/run/bugzilla/${SVCNAME}.pid"
+command=${JOBQUEUE_PATH}
 JOBQUEUE_USER=${JOBQUEUE_USER:-root}
 JOBQUEUE_GROUP=${JOBQUEUE_GROUP:-root}
+command_user="${JOBQUEUE_USER}:${JOBQUEUE_GROUP}"
+pidfile="/var/run/bugzilla/${RC_SVCNAME}.pid"
+command_args="-p ${pidfile} -n ${RC_SVCNAME} start"
+if [ "${supervisor}" = "supervise-daemon" ]; then
+	command_args="-f ${command_args}"
+	pidfile="/var/run/bugzilla/${RC_SVCNAME}.supervise.pid"
+fi
 
 checkconfig() {
 	[[ -z "${JOBQUEUE_USER}" || -z "$(getent passwd ${JOBQUEUE_USER})" ]] && { eerror "JOBQUEUE_USER not set or doesn't exist"; return 1; }
@@ -13,26 +20,18 @@ checkconfig() {
 	return 0
 }
 
-start() {
-	ebegin "Starting ${SVCNAME}"
+start_pre() {
 	checkconfig || return 1
 
-	piddir="${PIDFILE%/*}"
+	piddir="${pidfile%/*}"
 	if [ ! -d "${piddir}" ]; then
-		checkpath -q -d -o $JOBQUEUE_USER:$JOBQUEUE_GROUP -m 0770 "${piddir}" || {
+		checkpath -q -d -o "${command_user}" -m 0770 "${piddir}" || {
 			eend 1
 			return 1
 		}
 	fi
-
-	start-stop-daemon --start --pidfile $PIDFILE --user $JOBQUEUE_USER --group $JOBQUEUE_GROUP \
-		--exec $JOBQUEUE_PATH -- -p $PIDFILE -n $SVCNAME start 1>/dev/null
-	eend $?
 }
 
-stop() {
-	ebegin "Stopping ${SVCNAME}"
+stop_pre() {
 	checkconfig || return 1
-	start-stop-daemon --pidfile $PIDFILE --stop --exec $JOBQUEUE_PATH -- -p $PIDFILE -n $SVCNAME stop
-	eend $?
 }

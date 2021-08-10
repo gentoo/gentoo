@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="network-uri">Get Network.URI from the network-uri package.</flag>
+		<flag name="lukko">Use @lukko@ for file-locking, otherwise use @GHC.IO.Handle.Lock@</flag>
 	</use>
 	<longdescription>
 		The hackage security library provides both server and
@@ -26,10 +27,5 @@
 		clients (the typical example being @cabal@), and
 		"Hackage.Security.Server" is the main entry point for
 		servers (the typical example being @hackage-server@).
-		
-		This is a beta release.
 	</longdescription>
-	<upstream>
-		<remote-id type="github">well-typed/hackage-security</remote-id>
-	</upstream>
 </pkgmetadata>

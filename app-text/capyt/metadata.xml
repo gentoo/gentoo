@@ -5,4 +5,9 @@
     <email>juippis@gentoo.org</email>
     <name>Joonas Niilola</name>
   </maintainer>
+  <stabilize-allarches/>
+  <upstream>
+    <remote-id type="pypi">capyt</remote-id>
+    <remote-id type="github">lbatalha/capyt</remote-id>
+  </upstream>
 </pkgmetadata>

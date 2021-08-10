@@ -1,0 +1,61 @@
+https://bugs.gentoo.org/794676
+diff --git a/META.json b/META.json
+index 974e2a1..7ac7ad1 100644
+--- a/META.json
++++ b/META.json
+@@ -28,7 +28,7 @@
+             "URI" : "0",
+             "base" : "0",
+             "constant" : "0",
+-            "perl" : "5.008_001",
++            "perl" : "5.008001",
+             "strict" : "0",
+             "warnings" : "0"
+          }
+diff --git a/META.yml b/META.yml
+index d8902d3..388f6f1 100644
+--- a/META.yml
++++ b/META.yml
+@@ -23,7 +23,7 @@ requires:
+   URI: '0'
+   base: '0'
+   constant: '0'
+-  perl: 5.008_001
++  perl: '5.008001'
+   strict: '0'
+   warnings: '0'
+ resources:
+diff --git a/Makefile.PL b/Makefile.PL
+index d30a364..96baeaa 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -2,7 +2,7 @@
+ use strict;
+ use warnings;
+ 
+-use 5.008_001;
++use 5.008001;
+ 
+ use ExtUtils::MakeMaker;
+ 
+@@ -15,7 +15,7 @@ my %WriteMakefileArgs = (
+   "DISTNAME" => "URI-Fetch",
+   "EXE_FILES" => [],
+   "LICENSE" => "perl",
+-  "MIN_PERL_VERSION" => "5.008_001",
++  "MIN_PERL_VERSION" => "5.008001",
+   "NAME" => "URI::Fetch",
+   "PREREQ_PM" => {
+     "Carp" => 0,
+diff --git a/lib/URI/Fetch.pm b/lib/URI/Fetch.pm
+index 136669f..7615b54 100644
+--- a/lib/URI/Fetch.pm
++++ b/lib/URI/Fetch.pm
+@@ -1,6 +1,6 @@
+ package URI::Fetch;
+ $URI::Fetch::VERSION = '0.13';
+-use 5.008_001;
++use 5.008001;
+ use strict;
+ use warnings;
+ 

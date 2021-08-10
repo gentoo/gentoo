@@ -1,0 +1,17 @@
+https://github.com/MegaGlest/megaglest-source/commit/a85d12aed1983eb69d630b431b81ae656d83b3ac
+
+--- /source/shared_lib/sources/platform/posix/socket.cpp
++++ /source/shared_lib/sources/platform/posix/socket.cpp
+@@ -2610,8 +2610,10 @@
+ 				if(SystemFlags::VERBOSE_MODE_ENABLED) printf("UPnP device found: %s %s\n", dev->descURL, dev->st);
+ 
+ 				//printf("UPnP device found: [%s] [%s] lanaddr [%s]\n", dev->descURL, dev->st,lanaddr);
+-#if (defined(MINIUPNPC_API_VERSION)  && MINIUPNPC_API_VERSION >= 9) || (!defined(MINIUPNPC_VERSION_PRE1_7) && !defined(MINIUPNPC_VERSION_PRE1_6))
+-				char *descXML = (char *)miniwget_getaddr(dev->descURL, &descXMLsize, lanaddr, (sizeof(lanaddr) / sizeof(lanaddr[0])),0);
++#if (defined(MINIUPNPC_API_VERSION)  && MINIUPNPC_API_VERSION >= 16)
++				char *descXML = (char *)miniwget_getaddr(dev->descURL, &descXMLsize, lanaddr, (sizeof(lanaddr) / sizeof(lanaddr[0])), 0, NULL);
++#elif (defined(MINIUPNPC_API_VERSION)  && MINIUPNPC_API_VERSION >= 9) || (!defined(MINIUPNPC_VERSION_PRE1_7) && !defined(MINIUPNPC_VERSION_PRE1_6))
++                char *descXML = (char *)miniwget_getaddr(dev->descURL, &descXMLsize, lanaddr, (sizeof(lanaddr) / sizeof(lanaddr[0])), 0);
+ #else
+ 				char *descXML = (char *)miniwget_getaddr(dev->descURL, &descXMLsize, lanaddr, (sizeof(lanaddr) / sizeof(lanaddr[0])));
+ #endif

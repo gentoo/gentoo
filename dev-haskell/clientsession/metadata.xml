@@ -5,11 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Achieves security through AES-CTR encryption and
-		Skein-MAC-512-256 authentication.  Uses Base64
-		encoding to avoid any issues with characters.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">yesodweb/clientsession</remote-id>
 	</upstream>

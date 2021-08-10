@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>embedded@gentoo.org</email>
-    <name>Embedded Gentoo</name>
-  </maintainer>
-  <longdescription lang="en">
-    Minicom is a menu driven communications program. It emulates ANSI and VT102
-    terminals. It has a dialing directory and auto zmodem download.
-  </longdescription>
-  <upstream>
-    <remote-id type="cpe">cpe:/a:minicom_project:minicom</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>embedded@gentoo.org</email>
+		<name>Embedded Gentoo</name>
+	</maintainer>
+	<longdescription>
+		Minicom is a menu driven communications program.
+		It emulates ANSI and VT102 terminals and
+		has a dialing directory and auto zmodem download.
+	</longdescription>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:minicom_project:minicom</remote-id>
+	</upstream>
 </pkgmetadata>

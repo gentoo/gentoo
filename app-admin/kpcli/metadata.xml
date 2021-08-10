@@ -5,10 +5,6 @@
     <email>juippis@gentoo.org</email>
     <name>Joonas Niilola</name>
   </maintainer>
-  <maintainer type="project">
-    <email>perl@gentoo.org</email>
-    <name>Gentoo Perl Project</name>
-  </maintainer>
   <stabilize-allarches/>
   <upstream>
     <remote-id type="sourceforge">kpcli</remote-id>

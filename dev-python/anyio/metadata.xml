@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription lang="en">
+AnyIO is a asynchronous compatibility API that allows applications and libraries written against it to run unmodified on asyncio, curio and trio.
+
+It bridges the following functionality:
+
+Task groups
+Cancellation
+Threads
+Signal handling
+Asynchronous file I/O
+Subprocesses
+Inter-task synchronization and communication (locks, conditions, events, semaphores, object streams)
+High level networking (TCP, UDP and UNIX sockets)
+You can even use it together with native libraries from your selected backend in applications. Doing this in libraries is not advisable however since it limits the usefulness of your library.
+
+AnyIO comes with its own pytest plugin which also supports asynchronous fixtures. It even works with the popular Hypothesis library.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">agronholm/anyio</remote-id>
+		<remote-id type="pypi">anyio</remote-id>
+		<maintainer status="unknown">
+			<email>alex.gronholm@nextday.fi</email>
+			<name>Alex Grönholm</name>
+		</maintainer>
+	</upstream>
+</pkgmetadata>

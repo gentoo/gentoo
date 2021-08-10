@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>gentoo@jonas-toth.eu</email>
 		<name>Jonas Toth</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -15,6 +15,7 @@
 		<flag name="popups">Enable popup support with gtk-layer-shell</flag>
 		<flag name="pulseaudio">Enable support for volume control via PulseAudio</flag>
 		<flag name="tray">Enable support for tray</flag>
+		<flag name="wifi">Enable support for wifi/rfkill</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">Alexays/Waybar</remote-id>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>waebbl-gentoo@posteo.net</email>
+    <name>Bernd Waibel</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Gentoo Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+  The Automatic Component Toolkit (ACT) is a code generator for a thin
+  C89-API, implementation stubs and language bindings for C, C++, Pascal,
+  Python3, Go, NodeJS, C#, based on an instance of an Interface Description
+  Language file.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">Autodesk/AutomaticComponentToolkit</remote-id>
+  </upstream>
+</pkgmetadata>

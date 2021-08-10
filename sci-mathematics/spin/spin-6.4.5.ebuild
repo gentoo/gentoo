@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit eutils toolchain-funcs versionator
+inherit desktop epatch toolchain-funcs versionator
 
 MY_PV=$(replace_all_version_separators '')
 MY_P="${PN}${MY_PV}"

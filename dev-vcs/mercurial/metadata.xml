@@ -8,6 +8,7 @@
 		<flag name="chg">Support Mercurial command server client</flag>
 		<flag name="gpg">Support signing with GnuPG.</flag>
 		<flag name="tk">Install dev-lang/tk for hgk script.</flag>
+		<flag name="rust">Use Rust extensions.</flag>
 	</use>
 	<upstream>
 		<remote-id type="pypi">mercurial</remote-id>

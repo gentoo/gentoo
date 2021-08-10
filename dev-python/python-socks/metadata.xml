@@ -4,4 +4,9 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">python-socks</remote-id>
+		<remote-id type="github">romis2012/python-socks</remote-id>
+	</upstream>
 </pkgmetadata>

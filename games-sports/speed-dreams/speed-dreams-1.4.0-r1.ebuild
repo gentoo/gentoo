@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils versionator
+
+inherit autotools desktop versionator
 
 DESCRIPTION="A fork of the famous open racing car simulator TORCS"
 HOMEPAGE="http://speed-dreams.sourceforge.net/"
@@ -73,9 +74,9 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install datainstall
+	emake DESTDIR="${ED}" install datainstall
 
-	find "${D}" -name Makefile -exec rm -f {} +
+	find "${ED}" -name Makefile -exec rm -f {} + || die
 
 	dodoc CHANGES README TODO
 

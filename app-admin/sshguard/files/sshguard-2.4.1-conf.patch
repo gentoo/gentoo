@@ -1,0 +1,25 @@
+diff --git a/examples/sshguard.conf.sample b/examples/sshguard.conf.sample
+index 556f1ec..a483b1e 100644
+--- a/examples/sshguard.conf.sample
++++ b/examples/sshguard.conf.sample
+@@ -6,14 +6,18 @@
+ 
+ #### REQUIRED CONFIGURATION ####
+ # Full path to backend executable (required, no default)
+-#BACKEND="/usr/local/libexec/sshg-fw-iptables"
++# Example 1: iptables backend
++#BACKEND="/usr/libexec/sshg-fw-iptables"
++# Example 2: firewalld backend; for firewalld configuration instructions see
++# https://www.ctrl.blog/entry/how-to-sshguard-firewalld.html#sshguard-section-firewalld
++#BACKEND="/usr/libexec/sshg-fw-firewalld"
+ 
+ # Space-separated list of log files to monitor. (optional, no default)
+ #FILES="/var/log/auth.log /var/log/authlog /var/log/maillog"
+ 
+ # Shell command that provides logs on standard output. (optional, no default)
+ # Example 1: ssh and sendmail from systemd journal:
+-#LOGREADER="LANG=C /usr/bin/journalctl -afb -p info -n1 -t sshd -t sendmail -o cat"
++#LOGREADER="LANG=C /bin/journalctl -afb -p info -n1 -t sshd -t sendmail -o cat"
+ # Example 2: ssh from os_log (macOS 10.12+)
+ #LOGREADER="/usr/bin/log stream --style syslog --predicate '(processImagePath contains \"sshd\")'"
+ 

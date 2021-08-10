@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>lssndrbarbieri@gmail.com</email>
+		<name>Alessandro Barbieri</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">facelessuser/backrefs</remote-id>
+		<remote-id type="pypi">backrefs</remote-id>
+	</upstream>
+	<longdescription lang="en">
+Backrefs is a wrapper around Python's built-in Re and the 3rd party Regex library. Backrefs adds various additional back references (and a couple other features) that are known to some regular expression engines, but not to Python's Re and/or Regex. The supported back references actually vary depending on the regular expression engine being used as the engine may already have support for some.
+	</longdescription>
+	<stabilize-allarches/>
+</pkgmetadata>

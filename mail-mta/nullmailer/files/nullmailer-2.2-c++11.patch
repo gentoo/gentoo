@@ -1,0 +1,36 @@
+From f63dcd3d7ec69a7150f305ba81380988e0a1e38d Mon Sep 17 00:00:00 2001
+From: Denis Pronin <dannftk@yandex.ru>
+Date: Tue, 25 Feb 2020 10:06:41 +0300
+Subject: [PATCH] fixed compilation with c++11 standard
+
+Signed-off-by: Denis Pronin <dannftk@yandex.ru>
+---
+ src/inject.cc | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/inject.cc b/src/inject.cc
+index 0a555b2..189a70a 100644
+--- a/src/inject.cc
++++ b/src/inject.cc
+@@ -148,9 +148,10 @@ static bool header_add_to = false;
+ 
+ struct header_field
+ {
++  typedef unsigned length_t;
+   // member information
+   const char* name;
+-  unsigned length;
++  length_t length;
+   bool is_address;
+   bool is_recipient;
+   bool is_sender;
+@@ -204,7 +205,8 @@ struct header_field
+ 
+ #define F false
+ #define T true
+-#define X(N,IA,IR,IS,IRS,R) { #N ":",strlen(#N ":"),\
++#define X(N,IA,IR,IS,IRS,R) { #N ":", \
++  static_cast<header_field::length_t>(strlen(#N ":")),\
+   IA,IR,IS,IRS,R,false, false }
+ static header_field header_fields[] = {
+   // Sender address fields, in order of priority

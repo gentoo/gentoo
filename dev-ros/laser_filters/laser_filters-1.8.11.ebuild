@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ RDEPEND="
 	dev-ros/laser_geometry
 	dev-ros/pluginlib
 	dev-ros/angles
-	dev-ros/dynamic_reconfigure
+	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 
 	dev-libs/tinyxml2:=
 	dev-libs/console_bridge:=

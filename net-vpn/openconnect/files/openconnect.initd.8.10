@@ -1,0 +1,105 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+VPN="${RC_SVCNAME#*.}"
+VPNCONF=/etc/openconnect/${VPN}.conf
+VPNDIR="/etc/openconnect/${VPN}"
+VPNLOG="/var/log/openconnect/${VPN}"
+VPNLOGFILE="${VPNLOG}/openconnect.log"
+VPNERRFILE="${VPNLOG}/openconnect.err"
+
+command="/usr/sbin/openconnect"
+name="OpenConnect: ${VPN}"
+pidfile="/run/openconnect/${VPN}.pid"
+stopsig="SIGINT"
+
+depend() {
+	before netmount
+}
+
+checkconfig() {
+	if [ $VPN = "openconnect" ]; then
+		eerror "You cannot call openconnect directly. You must create a symbolic link to it with the vpn name:"
+		eerror
+		eerror "ln -s /etc/init.d/openconnect /etc/init.d/openconnect.vpn0"
+		eerror
+		eerror "And then call it instead:"
+		eerror
+		eerror "/etc/init.d/openconnect.vpn0 start"
+		return 1
+	fi
+	if [ ! -f "${VPNCONF}" ]; then
+	ewarn "The configuration file for ${VPN} does not exist."
+	ewarn "Please create ${VPNCONF}"
+	ewarn "This will become a fatal error in a future release."
+	fi
+	local server vpnopts password
+	eval server=\$server_${VPN}
+	eval vpnopts=\$vpnopts_${VPN}
+	eval password=\$password_${VPN}
+	if [ -n "$server" ] || [ -n "$vpnopts" ] || [ -n "password" ]; then
+	ewarn "server_${VPN}, vpnopts${VPN} and password_${VPN} are deprecated"
+	ewarn"Please move them to the appropriate settings in ${VPNCONF}"
+	ewarn "They will be ignored in the future."
+	fi
+	return 0
+}
+
+checktuntap() {
+	if [ "$RC_UNAME" = "Linux" -a ! -e /dev/net/tun ] ; then
+		if ! modprobe tun ; then
+			eerror "TUN/TAP support is not available in this kernel"
+			return 1
+		fi
+	fi
+}
+
+run_hook() {
+	if [ -x "$1" ]; then
+		"$@"
+	fi
+}
+
+start_pre() {
+	checkconfig || return
+	checktuntap || return
+	checkpath -d "${VPNLOG}" || return
+	checkpath -d /run/openconnect || return
+	run_hook "${VPNDIR}/preup.sh"
+}
+
+start() {
+	local server vpnopts password
+	eval server=\$server_${VPN}
+	eval vpnopts=\$vpnopts_${VPN}
+	eval password=\$password_${VPN}
+
+	ebegin "Starting ${name}"
+	start-stop-daemon --start --exec "${command}" -- \
+		--background \
+		--config="${VPNCONF:-/dev/null}" \
+		--interface="${VPN}" \
+		--pid-file="${pidfile}" \
+		${vpnopts} \
+		"${server}" \
+		>> "${VPNLOGFILE}" \
+		2>> "${VPNERRFILE}" \
+		<<EOF
+${password}
+EOF
+	eend $?
+}
+
+start_post() {
+	run_hook "${VPNDIR}/postup.sh"
+}
+
+stop_pre() {
+	checkconfig || return
+	run_hook "${VPNDIR}/predown.sh"
+}
+
+stop_post() {
+	run_hook "${VPNDIR}/postdown.sh"
+}

@@ -1,69 +1,34 @@
-Fix QA warnings due to implicit declarations:
-* filebuffer.c:123:34: warning: implicit declaration of function ‘toupper’ [-Wimplicit-function-declaration]
-*      temp[i] = (strchr (alphabet, toupper ((char) i)) != 0) ?
-
---- a/src/filebuffer.c
-+++ b/src/filebuffer.c
-@@ -3,6 +3,7 @@
- #include <string.h>
- #include <stdio.h>
- #include <assert.h>
-+#include <ctype.h>
- 
- #ifdef CHAOS__FLAG
- char* alphabet = "ATCGNPCMHDEKRQSILVFYWX*";
 --- a/src/mlagan.c
 +++ b/src/mlagan.c
-@@ -934,6 +934,7 @@
-   return k;
+@@ -46,6 +46,7 @@
+     return 1;
  }
  
 +int printXMFAAlign(FILE* outfile, align* myalign);
  
- int main(int argc, char** argv) {
-   FileBuffer seqfile;
+ void usage(void) {
+   printf("mlagan seqfile_1 seqfile_2 [... seqfile_%d] [-parameters]\n\n",
 --- a/src/order.c
 +++ b/src/order.c
-@@ -398,6 +398,9 @@
-   free(ends);
- }
+@@ -28,6 +28,8 @@
+ 
+ align* makeAlign(dmat* mydm, char* seq1, char* seq2);
  
 +int printMFAAlign(char* seq1, char* seq2, align* myalign, char* n1, char* n2);
 +int printXMFAAlign(char* seq1, char* seq2, align* myalign, char* n1, char* n2);
-+
- void doAlign(dmat* mydm, seq* seq1, seq* seq2) {
-   align *a = (align*) makeAlign(mydm, seq1->lets, seq2->lets);
-   //  printf("into printing\n");
+ 
+ char* alpha = "ATCGN.";
+ 
 --- a/src/prolagan.c
 +++ b/src/prolagan.c
-@@ -949,6 +949,7 @@
-   return k;
+@@ -49,6 +49,7 @@
+     return 1;
  }
  
 +int printXMFAAlign(FILE* outfile, align* myalign);
  
- int main(int argc, char** argv) {
-   FileBuffer seqfile;
---- a/src/utils/contigorder.c
-+++ b/src/utils/contigorder.c
-@@ -12,7 +12,7 @@
-   int dummy, i;
-   
-   if (!(file = fopen (filename, "r"))){
--    fprintf (stderr, "contigorder: Error opening file: %s\n");
-+    fprintf (stderr, "contigorder: Error opening file: %s\n", filename);
-     exit (1);
-   }
-   
-@@ -49,7 +49,7 @@
-   }
- 
-   if (!(file = fopen (filename, "r"))){
--    fprintf (stderr, "contigorder: Error opening file: %s\n");
-+    fprintf (stderr, "contigorder: Error opening file: %s\n", filename);
-     exit (1);
-   }
-   
+ void usage(void) {
+   printf("mlagan seqfile_1 seqfile_2 [... seqfile_%d] [-parameters]\n\n",
 --- a/src/utils/cstat.c
 +++ b/src/utils/cstat.c
 @@ -3,6 +3,7 @@

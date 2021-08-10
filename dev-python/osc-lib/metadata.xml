@@ -13,6 +13,7 @@
     OpenStackClient (aka OSC) is a command-line client for OpenStack. osc-lib
     is a package of common support modules for writing OSC plugins.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">osc-lib</remote-id>
     <remote-id type="github">openstack/osc-lib</remote-id>

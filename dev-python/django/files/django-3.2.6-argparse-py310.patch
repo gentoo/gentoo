@@ -1,0 +1,52 @@
+From dc7d30c03ff72917584952e70b3b25c9a0c59033 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 3 Aug 2021 10:04:22 +0200
+Subject: [PATCH] Refs #32074 -- Update expected argparse error in invalid
+ choice test
+
+Python 3.10.0rc1 changed the error messages issued by argparse on
+invalid choice to include the argument name.  Update the expected test
+output to account for that.
+---
+ django/utils/version.py      | 1 +
+ tests/user_commands/tests.py | 5 +++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/django/utils/version.py b/django/utils/version.py
+index 4b26586b36..54b10e89d7 100644
+--- a/django/utils/version.py
++++ b/django/utils/version.py
+@@ -13,6 +13,7 @@ PY36 = sys.version_info >= (3, 6)
+ PY37 = sys.version_info >= (3, 7)
+ PY38 = sys.version_info >= (3, 8)
+ PY39 = sys.version_info >= (3, 9)
++PY310 = sys.version_info >= (3, 10)
+ 
+ 
+ def get_version(version=None):
+diff --git a/tests/user_commands/tests.py b/tests/user_commands/tests.py
+index 9262e2717a..9da0977c38 100644
+--- a/tests/user_commands/tests.py
++++ b/tests/user_commands/tests.py
+@@ -17,7 +17,7 @@ from django.test import SimpleTestCase, override_settings
+ from django.test.utils import captured_stderr, extend_sys_path, ignore_warnings
+ from django.utils import translation
+ from django.utils.deprecation import RemovedInDjango41Warning
+-from django.utils.version import PY37
++from django.utils.version import PY37, PY310
+ 
+ from .management.commands import dance
+ 
+@@ -334,7 +334,8 @@ class CommandTests(SimpleTestCase):
+         self.assertIn('bar', out.getvalue())
+ 
+     def test_subparser_invalid_option(self):
+-        msg = "Error: invalid choice: 'test' (choose from 'foo')"
++        msg = "Error: %sinvalid choice: 'test' (choose from 'foo')" % (
++            'argument {foo}: ' if PY310 else '')
+         with self.assertRaisesMessage(CommandError, msg):
+             management.call_command('subparser', 'test', 12)
+         if PY37:
+-- 
+2.32.0
+

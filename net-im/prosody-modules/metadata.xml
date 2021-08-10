@@ -5,6 +5,7 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Prosody can be customized extensively using modules (plugins) to change
 		its default behaviour and to add new features and functionality.

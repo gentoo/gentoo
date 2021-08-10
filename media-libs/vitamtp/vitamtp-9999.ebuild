@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,9 +30,13 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	econf --disable-static
+}
+
 src_install() {
 	default
-	find "${D}" -name '*.la' -type f -delete || die
+	find "${ED}" -name '*.la' -delete || die
 	insinto /lib/udev/rules.d
 	newins debian/libvitamtp5.udev 10-vitamtp.rules
 }

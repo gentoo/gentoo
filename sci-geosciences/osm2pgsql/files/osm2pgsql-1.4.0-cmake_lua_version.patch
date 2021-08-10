@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -185,7 +185,7 @@
+         include_directories(SYSTEM ${LUAJIT_INCLUDE_DIR})
+         set(HAVE_LUAJIT 1)
+     else()
+-        find_package(Lua REQUIRED)
++        find_package(Lua ${LUA_VERSION} EXACT REQUIRED)
+         include_directories(SYSTEM ${LUA_INCLUDE_DIR})
+     endif()
+     set(HAVE_LUA 1)

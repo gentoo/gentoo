@@ -1,0 +1,46 @@
+From dad7c5dc4504aa66c39f2a38b3c563d18dd1395a Mon Sep 17 00:00:00 2001
+From: Andrey Lushnikov <lushnikov@chromium.org>
+Date: Mon, 12 Jul 2021 18:47:01 +0000
+Subject: [PATCH] Respect stat collection consent for crashpad user metrics collection
+
+With this patch, crashpad will no longer collect metrics if there is no
+user consent for stats collections.
+
+This is a follow-up to the discussion in https://crrev.com/c/2923889
+
+BUG=1210598
+
+Change-Id: I1eceaa10f9d09f95b74cb4a2d2eac03008ec5b40
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2999433
+Reviewed-by: Mark Mentovai <mark@chromium.org>
+Reviewed-by: Greg Thompson <grt@chromium.org>
+Commit-Queue: Andrey Lushnikov <lushnikov@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#900573}
+---
+
+diff --git a/chrome/app/chrome_crash_reporter_client.cc b/chrome/app/chrome_crash_reporter_client.cc
+index cd9a053..b34ad0d 100644
+--- a/chrome/app/chrome_crash_reporter_client.cc
++++ b/chrome/app/chrome_crash_reporter_client.cc
+@@ -144,6 +144,8 @@
+ #if defined(OS_MAC) || defined(OS_LINUX) || defined(OS_CHROMEOS)
+ bool ChromeCrashReporterClient::GetCrashMetricsLocation(
+     base::FilePath* metrics_dir) {
++  if (!GetCollectStatsConsent())
++    return false;
+   return base::PathService::Get(chrome::DIR_USER_DATA, metrics_dir);
+ }
+ #endif  // defined(OS_MAC) || defined(OS_LINUX) || defined(OS_CHROMEOS)
+diff --git a/chrome/app/chrome_crash_reporter_client_win.cc b/chrome/app/chrome_crash_reporter_client_win.cc
+index 474bf8e..2a66a3aa 100644
+--- a/chrome/app/chrome_crash_reporter_client_win.cc
++++ b/chrome/app/chrome_crash_reporter_client_win.cc
+@@ -160,6 +160,8 @@
+ 
+ bool ChromeCrashReporterClient::GetCrashMetricsLocation(
+     std::wstring* metrics_dir) {
++  if (!GetCollectStatsConsent())
++    return false;
+   install_static::GetUserDataDirectory(metrics_dir, nullptr);
+   return !metrics_dir->empty();
+ }

@@ -8,4 +8,7 @@
 		<flag name="nss">Install xmlsec-nss library</flag>
 		<flag name="openssl">Install xmlsec-openssl library</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">lsh123/xmlsec</remote-id>
+	</upstream>
 </pkgmetadata>

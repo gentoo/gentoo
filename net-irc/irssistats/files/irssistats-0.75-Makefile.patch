@@ -1,0 +1,26 @@
+--- a/Makefile	2020-10-30 22:07:33.519994135 -0000
++++ b/Makefile	2020-10-30 22:26:46.042808724 -0000
+@@ -1,17 +1,18 @@
+-PRE = /usr/local
++CC = gcc
++CFLAGS ?= -O2 -Wall
++PRE = /usr
+ BIN = $(PRE)/bin
+ DAT = $(PRE)/share/irssistats/data
+ DOC = $(PRE)/share/doc/irssistats
+ MAN = $(PRE)/share/man/man1
+-CFLAGS ?= -O2
+ 
+-irssistats:irssistats.c
+-	gcc $(CFLAGS) -o irssistats irssistats.c
++irssistats: irssistats.c
++	$(CC) $(CFLAGS) -o irssistats irssistats.c $(LDFLAGS)
+ 
+ clean:
+ 	rm -f irssistats
+ 
+-install:irssistats
++install: irssistats
+ 	mkdir -p $(BIN) $(DAT) $(DOC) $(MAN)
+ 	cp -f irssistats $(BIN)
+ 	cp -f data/* $(DAT)

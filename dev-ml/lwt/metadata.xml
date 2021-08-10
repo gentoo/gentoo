@@ -5,11 +5,6 @@
 		<email>gienah@gentoo.org</email>
 		<name>Mark Wright</name>
 	</maintainer>
-	<use>
-		<flag name="camlp4">Enable camlp4 syntax extension</flag>
-		<flag name="libev">Enable the <pkg>dev-libs/libev</pkg>-based backend.</flag>
-		<flag name="ppx">Enables the ppx syntax extension</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">ocsigen/lwt</remote-id>
 	</upstream>

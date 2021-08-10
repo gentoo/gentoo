@@ -1,5 +1,5 @@
---- image/png.c
-+++ image/png.c
+--- a/image/png.c
++++ b/image/png.c
 @@ -86,7 +86,7 @@
  		return NULL;
  	}

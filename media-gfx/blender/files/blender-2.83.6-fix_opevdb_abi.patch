@@ -1,0 +1,21 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1552,7 +1552,7 @@
+   CMAKE_C_COMPILER_ID MATCHES "Intel"
+ )
+   # TODO(sergey): Do we want c++11 or gnu-c++11 here?
+-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
++  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+ else()
+   message(FATAL_ERROR "Unknown compiler ${CMAKE_C_COMPILER_ID}, can't enable C++11 build")
+ endif()
+--- a/extern/mantaflow/CMakeLists.txt
++++ b/extern/mantaflow/CMakeLists.txt
+@@ -51,7 +51,6 @@
+
+ if(WITH_OPENVDB)
+   add_definitions(-DOPENVDB=1)
+-  add_definitions(-DOPENVDB_STATICLIB)
+ endif()
+
+ if(WIN32

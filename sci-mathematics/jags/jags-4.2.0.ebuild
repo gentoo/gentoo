@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils ltprune toolchain-funcs
+inherit toolchain-funcs
 
 MYP="JAGS-${PV}"
 
@@ -41,5 +41,5 @@ src_compile() {
 src_install() {
 	default
 	use doc && dodoc doc/manual/*.pdf
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

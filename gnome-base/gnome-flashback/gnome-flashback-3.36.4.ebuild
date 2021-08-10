@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit gnome2
+inherit gnome2 toolchain-funcs
 
 DESCRIPTION="GNOME Flashback session"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-flashback/"
@@ -71,11 +71,12 @@ src_configure() {
 	fi
 
 	if use elogind; then
+		local pkgconfig="$(tc-getPKG_CONFIG)"
 		myconf+=(
-			DESKTOP_CFLAGS=`pkg-config --cflags glib-2.0 gio-2.0 gio-unix-2.0 gnome-desktop-3.0 gtk+-3.0 libelogind x11 2>/dev/null`
-			DESKTOP_LIBS=`pkg-config --libs glib-2.0 gio-2.0 gio-unix-2.0 gnome-desktop-3.0 gtk+-3.0 libelogind x11 2>/dev/null`
-			SCREENSAVER_CFLAGS=`pkg-config --cflags gdm gio-unix-2.0 glib-2.0 gnome-desktop-3.0 gtk+-3.0 libelogind xxf86vm 2>/dev/null`
-			SCREENSAVER_LIBS=`pkg-config --libs gdm gio-unix-2.0 glib-2.0 gnome-desktop-3.0 gtk+-3.0 libelogind xxf86vm 2>/dev/null`
+			DESKTOP_CFLAGS="$(${pkgconfig} --cflags glib-2.0 gio-2.0 gio-unix-2.0 gnome-desktop-3.0 gtk+-3.0 libelogind x11)"
+			DESKTOP_LIBS="$(${pkgconfig} --libs glib-2.0 gio-2.0 gio-unix-2.0 gnome-desktop-3.0 gtk+-3.0 libelogind x11)"
+			SCREENSAVER_CFLAGS="$(${pkgconfig} --cflags gdm gio-unix-2.0 glib-2.0 gnome-desktop-3.0 gtk+-3.0 libelogind xxf86vm)"
+			SCREENSAVER_LIBS="$(${pkgconfig} --libs gdm gio-unix-2.0 glib-2.0 gnome-desktop-3.0 gtk+-3.0 libelogind xxf86vm)"
 		)
 	fi
 

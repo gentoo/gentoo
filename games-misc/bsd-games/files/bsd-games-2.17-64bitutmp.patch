@@ -7,8 +7,8 @@ structure.  Work around is to assign the submembers instead.
 
 http://bugs.gentoo.org/show_bug.cgi?id=102667
 
---- bsd-games/dm/utmpentry.c
-+++ bsd-games/dm/utmpentry.c
+--- a/dm/utmpentry.c
++++ b/dm/utmpentry.c
 @@ -291,7 +291,8 @@
  	e->line[sizeof(e->line) - 1] = '\0';
  	(void)strncpy(e->host, up->ut_host, sizeof(up->ut_host));

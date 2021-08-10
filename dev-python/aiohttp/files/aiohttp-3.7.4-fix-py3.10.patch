@@ -1,0 +1,73 @@
+commit ec87d9f2b6541599dd7fc8aaebf0fdfbb812ade7
+Author: Louis Sautier <sautier.louis@gmail.com>
+Date:   Tue Jul 20 23:37:27 2021 +0200
+
+    Remove deprecated loop argument from asyncio.sleep/gather calls
+
+diff --git a/aiohttp/web.py b/aiohttp/web.py
+index 557e3c3b..52dfdf93 100644
+--- a/aiohttp/web.py
++++ b/aiohttp/web.py
+@@ -441,7 +441,7 @@ def _cancel_tasks(
+         task.cancel()
+ 
+     loop.run_until_complete(
+-        asyncio.gather(*to_cancel, loop=loop, return_exceptions=True)
++        asyncio.gather(*to_cancel, return_exceptions=True)
+     )
+ 
+     for task in to_cancel:
+diff --git a/tests/test_locks.py b/tests/test_locks.py
+index 55fd2330..5f434eac 100644
+--- a/tests/test_locks.py
++++ b/tests/test_locks.py
+@@ -18,7 +18,7 @@ class TestEventResultOrError:
+             return 1
+ 
+         t = loop.create_task(c())
+-        await asyncio.sleep(0, loop=loop)
++        await asyncio.sleep(0)
+         e = Exception()
+         ev.set(exc=e)
+         assert (await t) == e
+@@ -31,7 +31,7 @@ class TestEventResultOrError:
+             return 1
+ 
+         t = loop.create_task(c())
+-        await asyncio.sleep(0, loop=loop)
++        await asyncio.sleep(0)
+         ev.set()
+         assert (await t) == 1
+ 
+@@ -43,7 +43,7 @@ class TestEventResultOrError:
+ 
+         t1 = loop.create_task(c())
+         t2 = loop.create_task(c())
+-        await asyncio.sleep(0, loop=loop)
++        await asyncio.sleep(0)
+         ev.cancel()
+         ev.set()
+ 
+diff --git a/tests/test_proxy_functional.py b/tests/test_proxy_functional.py
+index 68763cd4..65c773a1 100644
+--- a/tests/test_proxy_functional.py
++++ b/tests/test_proxy_functional.py
+@@ -238,7 +238,7 @@ async def test_proxy_http_multi_conn_limit(proxy_test_server, loop) -> None:
+         resp = await sess.get(url, proxy=proxy.url)
+ 
+         current_pid = pid
+-        await asyncio.sleep(0.2, loop=loop)
++        await asyncio.sleep(0.2)
+         assert current_pid == pid
+ 
+         await resp.release()
+@@ -443,7 +443,7 @@ async def xtest_proxy_https_multi_conn_limit(proxy_test_server, loop):
+         resp = await sess.get(url, proxy=proxy.url)
+ 
+         current_pid = pid
+-        await asyncio.sleep(0.2, loop=loop)
++        await asyncio.sleep(0.2)
+         assert current_pid == pid
+ 
+         await resp.release()
+

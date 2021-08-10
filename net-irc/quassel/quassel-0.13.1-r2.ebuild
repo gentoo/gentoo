@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit cmake xdg-utils pax-utils systemd
 if [[ ${PV} != *9999* ]]; then
 	MY_P=${PN}-${PV/_/-}
 	SRC_URI="https://quassel-irc.org/pub/${MY_P}.tar.bz2"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86 ~amd64-linux ~sparc-solaris"
+	KEYWORDS="amd64 ~arm arm64 ~ppc64 x86 ~amd64-linux ~sparc-solaris"
 	S="${WORKDIR}/${MY_P}"
 else
 	EGIT_REPO_URI=( "https://github.com/${PN}/${PN}" )

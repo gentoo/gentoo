@@ -1,0 +1,189 @@
+From ea7d0ca37cce76e1327945c4864b996d7fd6d2e6 Mon Sep 17 00:00:00 2001
+Message-Id: <ea7d0ca37cce76e1327945c4864b996d7fd6d2e6.1618903455.git.mprivozn@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Fri, 16 Apr 2021 16:39:14 +0200
+Subject: [PATCH] vircgroup: Fix virCgroupKillRecursive() wrt nested
+ controllers
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+I've encountered the following bug, but only on Gentoo with
+systemd and CGroupsV2. I've started an LXC container successfully
+but destroying it reported the following error:
+
+  error: Failed to destroy domain 'amd64'
+  error: internal error: failed to get cgroup backend for 'pathOfController'
+
+Debugging showed, that CGroup hierarchy is full of surprises:
+
+/sys/fs/cgroup/machine.slice/machine-lxc\x2d861\x2damd64.scope/
+└── libvirt
+    ├── dev-hugepages.mount
+    ├── dev-mqueue.mount
+    ├── init.scope
+    ├── sys-fs-fuse-connections.mount
+    ├── sys-kernel-config.mount
+    ├── sys-kernel-debug.mount
+    ├── sys-kernel-tracing.mount
+    ├── system.slice
+    │   ├── console-getty.service
+    │   ├── dbus.service
+    │   ├── system-getty.slice
+    │   ├── system-modprobe.slice
+    │   ├── systemd-journald.service
+    │   ├── systemd-logind.service
+    │   └── tmp.mount
+    └── user.slice
+
+For comparison, here's the same container on recent Rawhide:
+
+/sys/fs/cgroup/machine.slice/machine-lxc\x2d13550\x2damd64.scope/
+└── libvirt
+
+Anyway, those nested directories should not be a problem, because
+virCgroupKillRecursiveInternal() removes them recursively, right?
+Sort of. The function really does remove nested directories, but
+it assumes that every directory has the same controller as the
+rest. Just take a look at virCgroupV2KillRecursive() - it gets
+'Any' controller (the first one it found in ".scope") and then
+passes it to virCgroupKillRecursiveInternal().
+
+This assumption is not true though. The controllers found in
+".scope" are the following:
+
+  cpuset cpu io memory pids
+
+while "libvirt" has fewer:
+
+  cpuset cpu io memory
+
+Up until now it's not problem, because of how we order
+controllers internally - "cpu" is the first and thus picking
+"Any" controller returns just that. But the rest of directories
+has no controllers, their "cgroup.controllers" is just empty.
+
+What fixes the bug is dropping @controller argument from
+virCgroupKillRecursiveInternal() and letting each iteration work
+pick its own controller.
+
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+Reviewed-by: Pavel Hrdina <phrdina@redhat.com>
+---
+ src/util/vircgroup.c     | 25 +++++++++++++++++++++++--
+ src/util/vircgrouppriv.h |  1 -
+ src/util/vircgroupv1.c   |  7 +------
+ src/util/vircgroupv2.c   |  7 +------
+ 4 files changed, 25 insertions(+), 15 deletions(-)
+
+diff --git a/src/util/vircgroup.c b/src/util/vircgroup.c
+index 96280a0a4e..37dde2a5ed 100644
+--- a/src/util/vircgroup.c
++++ b/src/util/vircgroup.c
+@@ -1477,6 +1477,24 @@ virCgroupHasController(virCgroup *cgroup, int controller)
+ }
+ 
+ 
++static int
++virCgroupGetAnyController(virCgroup *cgroup)
++{
++    size_t i;
++
++    for (i = 0; i < VIR_CGROUP_BACKEND_TYPE_LAST; i++) {
++        if (!cgroup->backends[i])
++            continue;
++
++        return cgroup->backends[i]->getAnyController(cgroup);
++    }
++
++    virReportError(VIR_ERR_INTERNAL_ERROR, "%s",
++                   _("Unable to get any controller"));
++    return -1;
++}
++
++
+ int
+ virCgroupPathOfController(virCgroup *group,
+                           unsigned int controller,
+@@ -2715,11 +2733,11 @@ int
+ virCgroupKillRecursiveInternal(virCgroup *group,
+                                int signum,
+                                GHashTable *pids,
+-                               int controller,
+                                const char *taskFile,
+                                bool dormdir)
+ {
+     int rc;
++    int controller;
+     bool killedAny = false;
+     g_autofree char *keypath = NULL;
+     g_autoptr(DIR) dp = NULL;
+@@ -2728,6 +2746,9 @@ virCgroupKillRecursiveInternal(virCgroup *group,
+     VIR_DEBUG("group=%p signum=%d pids=%p taskFile=%s dormdir=%d",
+               group, signum, pids, taskFile, dormdir);
+ 
++    if ((controller = virCgroupGetAnyController(group)) < 0)
++        return -1;
++
+     if (virCgroupPathOfController(group, controller, "", &keypath) < 0)
+         return -1;
+ 
+@@ -2760,7 +2781,7 @@ virCgroupKillRecursiveInternal(virCgroup *group,
+             return -1;
+ 
+         if ((rc = virCgroupKillRecursiveInternal(subgroup, signum, pids,
+-                                                 controller, taskFile, true)) < 0)
++                                                 taskFile, true)) < 0)
+             return -1;
+         if (rc == 1)
+             killedAny = true;
+diff --git a/src/util/vircgrouppriv.h b/src/util/vircgrouppriv.h
+index 00193fb101..caf7ed84db 100644
+--- a/src/util/vircgrouppriv.h
++++ b/src/util/vircgrouppriv.h
+@@ -135,6 +135,5 @@ int virCgroupRemoveRecursively(char *grppath);
+ int virCgroupKillRecursiveInternal(virCgroup *group,
+                                    int signum,
+                                    GHashTable *pids,
+-                                   int controller,
+                                    const char *taskFile,
+                                    bool dormdir);
+diff --git a/src/util/vircgroupv1.c b/src/util/vircgroupv1.c
+index 2cc7dd386a..8a04bb2e4a 100644
+--- a/src/util/vircgroupv1.c
++++ b/src/util/vircgroupv1.c
+@@ -812,12 +812,7 @@ virCgroupV1KillRecursive(virCgroup *group,
+                          int signum,
+                          GHashTable *pids)
+ {
+-    int controller = virCgroupV1GetAnyController(group);
+-
+-    if (controller < 0)
+-        return -1;
+-
+-    return virCgroupKillRecursiveInternal(group, signum, pids, controller,
++    return virCgroupKillRecursiveInternal(group, signum, pids,
+                                           "tasks", false);
+ }
+ 
+diff --git a/src/util/vircgroupv2.c b/src/util/vircgroupv2.c
+index e555217355..8881d3a88a 100644
+--- a/src/util/vircgroupv2.c
++++ b/src/util/vircgroupv2.c
+@@ -577,12 +577,7 @@ virCgroupV2KillRecursive(virCgroup *group,
+                          int signum,
+                          GHashTable *pids)
+ {
+-    int controller = virCgroupV2GetAnyController(group);
+-
+-    if (controller < 0)
+-        return -1;
+-
+-    return virCgroupKillRecursiveInternal(group, signum, pids, controller,
++    return virCgroupKillRecursiveInternal(group, signum, pids,
+                                           "cgroup.threads", false);
+ }
+ 
+-- 
+2.26.3
+

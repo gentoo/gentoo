@@ -1,13 +1,24 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: webapp.eclass
 # @MAINTAINER:
 # web-apps@gentoo.org
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: functions for installing applications to run under a web server
 # @DESCRIPTION:
 # The webapp eclass contains functions to handle web applications with
 # webapp-config. Part of the implementation of GLEP #11
+
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+EXPORT_FUNCTIONS pkg_postinst pkg_setup src_install pkg_prerm
+
+if [[ -z ${_WEBAPP_ECLASS} ]]; then
+_WEBAPP_ECLASS=1
 
 # @ECLASS-VARIABLE: WEBAPP_DEPEND
 # @DESCRIPTION:
@@ -16,12 +27,14 @@
 WEBAPP_DEPEND=">=app-admin/webapp-config-1.50.15"
 
 # @ECLASS-VARIABLE: WEBAPP_NO_AUTO_INSTALL
+# @PRE_INHERIT
 # @DESCRIPTION:
 # An ebuild sets this to `yes' if an automatic installation and/or upgrade is
 # not possible. The ebuild should overwrite pkg_postinst() and explain the
 # reason for this BEFORE calling webapp_pkg_postinst().
 
 # @ECLASS-VARIABLE: WEBAPP_OPTIONAL
+# @PRE_INHERIT
 # @DESCRIPTION:
 # An ebuild sets this to `yes' to make webapp support optional, in which case
 # you also need to take care of USE-flags and dependencies.
@@ -32,8 +45,6 @@ if [[ "${WEBAPP_OPTIONAL}" != "yes" ]]; then
 	DEPEND="${WEBAPP_DEPEND}"
 	RDEPEND="${DEPEND}"
 fi
-
-EXPORT_FUNCTIONS pkg_postinst pkg_setup src_install pkg_prerm
 
 INSTALL_DIR="/${PN}"
 IS_UPGRADE=0
@@ -575,3 +586,5 @@ webapp_pkg_prerm() {
 		echo
 	fi
 }
+
+fi

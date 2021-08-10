@@ -1,14 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-# no pypy{,3} support as PyQt5 does not support it at 2020-07-05 (towelday)
-# https://bitbucket.org/pypy/compatibility/wiki/Home#!gui-library-bindings
-PYTHON_COMPAT=( python3_{7,8,9} )
+# Please don't add pypy support before testing if it's actually supported. The
+# old compat matrix is no longer accessible as of 2021-02-13 but stated back
+# in 2020-07-05 that PyQt5 was explicitly not supported.
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit distutils-r1 optfeature virtualx xdg-utils
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
 MY_PN="ReText"
 MY_P="${MY_PN}-${PV/_/~}"
@@ -23,7 +23,7 @@ if [[ ${PV} == *9999 ]]
 	else
 		SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 		KEYWORDS="~amd64 ~x86"
-		S="${WORKDIR}"/${MY_P}
+		S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="GPL-2+"
@@ -34,13 +34,13 @@ RDEPEND="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
-	dev-python/markups[${PYTHON_USEDEP}]
+	>=dev-python/markups-3.1.1[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/python-markdown-math[${PYTHON_USEDEP}]
-	dev-python/PyQt5[gui,network,printsupport,widgets,${PYTHON_USEDEP}]
-	dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
+	dev-python/PyQt5[dbus,gui,printsupport,widgets,${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+BDEPEND="test? ( dev-python/PyQt5[testlib,${PYTHON_USEDEP}] )"
 
 src_test() {
 	virtx distutils-r1_src_test
@@ -55,6 +55,8 @@ pkg_postinst() {
 	xdg_icon_cache_update
 
 	optfeature "dictionary support" dev-python/pyenchant
+	# See https://bugs.gentoo.org/772197.
+	optfeature "rendering with webengine" dev-python/PyQtWebEngine
 
 	einfo "Starting with retext-7.0.4 the markdown-math plugin is installed."
 	einfo "Note that you can use different math delimiters, e.g. \(...\) for inline math."

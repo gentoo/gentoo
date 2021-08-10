@@ -1,11 +1,8 @@
-# Copyright 2017-2020 Gentoo Authors
+# Copyright 2017-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-# generated with cargo-ebuild 0.2.0
-# needs itoa-0.3.4 for tests
-# added bincode-1.2.0 manually
 CRATES="
 "
 
@@ -18,16 +15,19 @@ if [ ${PV} == "9999" ] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mozilla/sccache.git"
 else
-	SRC_URI="https://github.com/mozilla/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	SRC_URI="https://github.com/mozilla/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~ppc64"
 fi
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 ISC MIT Unlicense ZLIB"
 SLOT="0"
 IUSE="azure dist-client dist-server gcs memcached redis s3"
 
+BDEPEND="virtual/pkgconfig"
+
 DEPEND="
+	app-arch/zstd
 	dist-server? ( dev-libs/openssl:0= )
 	gcs? ( dev-libs/openssl:0= )
 "

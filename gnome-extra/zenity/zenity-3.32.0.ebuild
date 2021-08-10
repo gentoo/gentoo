@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit gnome2
 
 DESCRIPTION="Tool to display dialogs from the commandline and shell scripts"
@@ -9,7 +9,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Zenity"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="debug libnotify webkit"
 
 # TODO: X11 dependency is automagically enabled
@@ -22,7 +22,8 @@ RDEPEND="
 	libnotify? ( >=x11-libs/libnotify-0.6.1:= )
 	webkit? ( >=net-libs/webkit-gtk-2.8.1:4 )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.4
 	virtual/pkgconfig

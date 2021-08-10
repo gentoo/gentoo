@@ -1,5 +1,5 @@
---- a/Main.cpp.old	2006-07-28 00:04:46.000000000 +0200
-+++ b/Main.cpp	2006-07-28 00:08:28.000000000 +0200
+--- a/Main.cpp
++++ b/Main.cpp
 @@ -184,7 +184,7 @@
  #ifndef WIN32
  	string settingsPath = userHomePath + "settings.dat";

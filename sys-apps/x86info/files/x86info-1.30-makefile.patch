@@ -1,27 +1,17 @@
---- a/lsmsr/Makefile
-+++ b/lsmsr/Makefile
-@@ -40,7 +40,8 @@
- 	generic_msr.h
- 
- %.h: %.regs createheader.py
--	@python createheader.py $< `basename $< .regs` >$@
-+	$(PYTHON) createheader.py $< `basename $< .regs` >$@.tmp ; \
-+	mv $@.tmp $@
- 
- LSMSR_SRC = \
- 	lsmsr.c \
 --- a/Makefile
 +++ b/Makefile
-@@ -2,7 +2,7 @@
+@@ -1,8 +1,8 @@
+ VERSION=$(shell date +%Y-%m-%d)
  
- CFLAGS = -DVERSION="$(VERSION)"
+-CFLAGS = -DVERSION="$(VERSION)"
++CFLAGS += -DVERSION="$(VERSION)"
  
 -CFLAGS += -Wall -W -g -O2 -D_FORTIFY_SOURCE=2 -I. -Iinclude
 +CFLAGS += -Wall -W -I. -Iinclude
  ifneq ($(SYSROOT),)
  CFLAGS += --sysroot=$(SYSROOT)
  endif
-@@ -18,7 +18,7 @@
+@@ -18,7 +18,7 @@ CFLAGS += -Wstrict-prototypes -Wmissing-prototypes
  CFLAGS += -Wswitch-enum
  CFLAGS += -Wundef
  CFLAGS += -Wwrite-strings
@@ -30,7 +20,7 @@
  
  # gcc specific
  ifneq ($(shell $(CC) -v 2>&1 | grep -c "clang"), 1)
-@@ -33,20 +33,8 @@
+@@ -33,20 +33,8 @@ endif
  CPP_MAJOR := $(shell $(CPP) -dumpversion 2>&1 | cut -d'.' -f1)
  CPP_MINOR := $(shell $(CPP) -dumpversion 2>&1 | cut -d'.' -f2)
  DEVEL   := $(shell grep VERSION Makefile | head -n1 | grep pre | wc -l)
@@ -52,7 +42,7 @@
  
  SHELL = /bin/sh
  
-@@ -68,15 +56,14 @@
+@@ -68,15 +56,14 @@ X86INFO_OBJS = $(sort $(patsubst %.c,%.o,$(wildcard *.c))) \
  	$(sort $(patsubst %.c,%.o,$(wildcard vendors/*/*.c)))
  
  x86info: $(X86INFO_OBJS) $(X86INFO_HEADERS)
@@ -70,3 +60,15 @@
  	@mkdir -p $(DEPDIR)/$(*D)
  	@$(CC) -MM $(CFLAGS) $*.c > $(df).d
  	@mv -f $(df).d $(df).d.tmp
+--- a/lsmsr/Makefile
++++ b/lsmsr/Makefile
+@@ -40,7 +40,8 @@ LSMSR_TMP_HEADERS=AMD_k8.h \
+ 	generic_msr.h
+ 
+ %.h: %.regs createheader.py
+-	@python createheader.py $< `basename $< .regs` >$@
++	$(PYTHON) createheader.py $< `basename $< .regs` >$@.tmp ; \
++	mv $@.tmp $@
+ 
+ LSMSR_SRC = \
+ 	lsmsr.c \

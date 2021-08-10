@@ -1,0 +1,33 @@
+https://gitlab.gnome.org/GNOME/libxml2/-/issues/252
+
+From 5d6403682a3463f29a1f7c27aa54ecb5e3971547 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 13 May 2021 17:40:22 +0000
+Subject: [PATCH] Disable fuzz tests
+
+Not all of the fuzz files are included with the dist tarball,
+so disabling them for now to get the release in with most tests
+given the security bug.
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,9 +2,9 @@
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-SUBDIRS = include . doc example fuzz xstc $(PYTHON_SUBDIR)
++SUBDIRS = include . doc example xstc $(PYTHON_SUBDIR)
+ 
+-DIST_SUBDIRS = include . doc example fuzz python xstc
++DIST_SUBDIRS = include . doc example python xstc
+ 
+ AM_CPPFLAGS = -I$(top_builddir)/include -I$(srcdir)/include
+ 
+@@ -210,7 +210,6 @@ runtests: runtest$(EXEEXT) testrecurse$(EXEEXT) testapi$(EXEEXT) \
+ 	    $(CHECKER) ./runxmlconf$(EXEEXT)
+ 	@(if [ "$(PYTHON_SUBDIR)" != "" ] ; then cd python ; \
+ 	    $(MAKE) tests ; fi)
+-	@cd fuzz; $(MAKE) tests
+ 
+ check: all runtests
+ 
+-- 

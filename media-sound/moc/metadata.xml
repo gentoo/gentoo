@@ -8,6 +8,7 @@
 	<use>
 		<flag name="cache">Enable tags caching support</flag>
 		<flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
+		<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
 		<flag name="tremor">Build vorbis support using an integer implementation
 			of the vorbis library (<pkg>media-libs/tremor</pkg>)</flag>
 	</use>

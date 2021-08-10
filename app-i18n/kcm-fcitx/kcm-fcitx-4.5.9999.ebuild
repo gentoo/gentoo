@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit cmake-utils
+inherit cmake
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
@@ -42,7 +42,6 @@ DEPEND=">=app-i18n/fcitx-4.2.9:4
 	kde-frameworks/ki18n:5
 	kde-frameworks/kio:5
 	kde-frameworks/kitemviews:5
-	kde-frameworks/knewstuff:5
 	kde-frameworks/kwidgetsaddons:5
 	virtual/libintl
 	x11-libs/libX11
@@ -55,5 +54,5 @@ src_configure() {
 		-DKDE_INSTALL_USE_QT_SYS_PATHS=yes
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

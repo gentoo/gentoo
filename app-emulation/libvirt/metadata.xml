@@ -67,12 +67,6 @@
 	<flag name="pcap">
 		Support auto learning IP addreses for routing
 	</flag>
-	<flag name="macvtap">
-		Support for MAC-based TAP (macvlan/macvtap). For networking instead
-		of the normal TUN/TAP.
-	</flag>
-	<flag name="vepa">Virtual Ethernet Port Aggregator (VEPA) / 802.1Qbg
-		support. Relies on macvtap support.</flag>
 	<flag name="virt-network">
 		Enable virtual networking (NAT) support for guests. Includes all
 		the dependencies for NATed network mode. Effectively any network

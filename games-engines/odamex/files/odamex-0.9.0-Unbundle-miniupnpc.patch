@@ -1,0 +1,80 @@
+From 4b9a8ca565e5cd388a49cd0fbe693b5332577c57 Mon Sep 17 00:00:00 2001
+From: William Breathitt Gray <vilhelm.gray@gmail.com>
+Date: Mon, 22 Mar 2021 18:20:15 +0900
+Subject: [PATCH] Unbundle miniupnpc
+
+---
+ libraries/CMakeLists.txt | 42 ----------------------------------------
+ server/CMakeLists.txt    |  3 ++-
+ 2 files changed, 2 insertions(+), 43 deletions(-)
+
+diff --git a/libraries/CMakeLists.txt b/libraries/CMakeLists.txt
+index 177a86a2..2ffe95a5 100644
+--- a/libraries/CMakeLists.txt
++++ b/libraries/CMakeLists.txt
+@@ -227,48 +227,6 @@ endif()
+ 
+ ### MiniUPnPc ###
+ 
+-if(BUILD_SERVER)
+-  message(STATUS "Compiling MiniUPnPc...")
+-
+-  # Figure out the correct library path to attach to our imported target
+-  set(MINIUPNPC_INCLUDE_DIR
+-    "${CMAKE_CURRENT_BINARY_DIR}/local/include/miniupnpc")
+-  set(MINIUPNPC_LIBRARY
+-    "${CMAKE_CURRENT_BINARY_DIR}/local/lib/${libprefix}miniupnpc${libsuffix}")
+-
+-  # This must exist before the target is synthesized.
+-  file(MAKE_DIRECTORY ${MINIUPNPC_INCLUDE_DIR})
+-
+-  # Generate the build.
+-  execute_process(COMMAND "${CMAKE_COMMAND}"
+-    -S "${CMAKE_CURRENT_SOURCE_DIR}/libminiupnpc"
+-    -B "${CMAKE_CURRENT_BINARY_DIR}/libminiupnpc-build"
+-    -G "${CMAKE_GENERATOR}"
+-    -A "${CMAKE_GENERATOR_PLATFORM}"
+-    -T "${CMAKE_GENERATOR_TOOLSET}"
+-    "-DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}"
+-    "-DCMAKE_LINKER=${CMAKE_LINKER}"
+-    "-DCMAKE_RC_COMPILER=${CMAKE_RC_COMPILER}"
+-    "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
+-    "-DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/local"
+-    "-DCMAKE_INSTALL_LIBDIR=lib" # Without this, CentOS installs into lib64
+-    "-DUPNPC_BUILD_SHARED=No"
+-    "-DUPNPC_BUILD_TESTS=No")
+-
+-  # Compile the library.
+-  execute_process(COMMAND "${CMAKE_COMMAND}"
+-    --build "${CMAKE_CURRENT_BINARY_DIR}/libminiupnpc-build"
+-    --config RelWithDebInfo --target install --parallel ${PARALLEL_PROC_COUNT})
+-
+-  # Synthesize an imported target that can be linked against.
+-  add_library(upnpc-static STATIC IMPORTED GLOBAL)
+-  set_target_properties(upnpc-static PROPERTIES
+-    INTERFACE_INCLUDE_DIRECTORIES "${MINIUPNPC_INCLUDE_DIR}"
+-    IMPORTED_LOCATION ${MINIUPNPC_LIBRARY})
+-  if(WIN32)
+-    set_target_properties(upnpc-static PROPERTIES INTERFACE_LINK_LIBRARIES "ws2_32;iphlpapi")
+-  endif()
+-endif()
+ 
+ ### SDL libraries ###
+ 
+diff --git a/server/CMakeLists.txt b/server/CMakeLists.txt
+index 73a70000..e4b085f2 100644
+--- a/server/CMakeLists.txt
++++ b/server/CMakeLists.txt
+@@ -53,7 +53,8 @@ endif()
+ target_link_libraries(odasrv jsoncpp odamex-common)
+ 
+ if(USE_MINIUPNP)
+-  target_link_libraries(odasrv upnpc-static)
++	target_include_directories(odasrv SYSTEM PRIVATE "/usr/include/miniupnpc")
++	target_link_libraries(odasrv -lminiupnpc)
+ endif()
+ 
+ if(WIN32)
+-- 
+2.31.0
+

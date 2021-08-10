@@ -3,13 +3,13 @@
 <pkgmetadata>
 	<maintainer type="project">
 		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
 	</maintainer>
 	<use>
 		<flag name="enc265">Enable build of enc265 tool</flag>
 		<flag name="dec265">Enable build of dec265 example program</flag>
 		<flag name="sdl">Enable video output of dec265 example program with <pkg>media-libs/libsdl</pkg></flag>
 		<flag name="tools">Enable installation of varous binary tools</flag>
-		<flag name="static-libs">Enable build of static libraries</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">strukturag/libde265</remote-id>

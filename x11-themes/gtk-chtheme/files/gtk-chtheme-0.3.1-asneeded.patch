@@ -2,8 +2,8 @@
 # Fixes issue with forced --as-needed
 #
 # https://bugs.gentoo.org/show_bug.cgi?id=248655
---- a/Makefile	2009-02-26 00:43:54.000000000 +0100
-+++ b/Makefile	2009-02-26 00:43:32.000000000 +0100
+--- a/Makefile
++++ b/Makefile
 @@ -2,7 +2,7 @@
  
  CFLAGS := $(if $(RPM_OPT_FLAGS), $(RPM_OPT_FLAGS), $(CFLAGS))

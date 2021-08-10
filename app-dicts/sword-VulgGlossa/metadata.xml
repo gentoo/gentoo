@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Glossa ordinara (Ordinary Glosses), edited by Jacques-Paul Migne (1800-1875), published in 1879. Electronic text prepared by Steven Killings for VulSearch.
 	</longdescription>

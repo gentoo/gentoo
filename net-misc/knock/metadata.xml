@@ -5,4 +5,7 @@
 	<use>
 		<flag name="server">Installs the knockd server daemon.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">jvinet/knock</remote-id>
+	</upstream>
 </pkgmetadata>

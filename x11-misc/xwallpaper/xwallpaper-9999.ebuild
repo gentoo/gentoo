@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,16 +27,17 @@ RDEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( media-libs/libpng:0= )
 	seccomp? ( >=sys-libs/libseccomp-2.3.1:0= )
-	xpm? ( x11-libs/libXpm )"
-
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+	xpm? ( x11-libs/libXpm )
 "
+
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
 	eautoreconf
 }
+
 src_configure() {
 	local myconf=(
 		$(use_with jpeg)

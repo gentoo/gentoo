@@ -9,5 +9,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">Sphinx</remote-id>
+		<remote-id type="github">sphinx-doc/sphinx</remote-id>
 	</upstream>
 </pkgmetadata>

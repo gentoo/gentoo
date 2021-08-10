@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>mario.haustein@hrz.tu-chemnitz.de</email>
 		<name>Mario Haustein</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -23,4 +23,7 @@
 		<flag name="liblas">Include support for LAS and LAZ encoded LiDAR files through <pkg>sci-geosciences/liblas</pkg></flag>
 		<flag name="opencl">Enable OpenCL support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">OSGeo/grass</remote-id>
+	</upstream>
 </pkgmetadata>

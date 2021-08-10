@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/778590
+--- a/configure.in
++++ b/configure.in
+@@ -12,6 +12,7 @@ AC_PROG_CXX
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
++AM_PROG_AR
+ 
+ ###################################################
+ # Check for libm

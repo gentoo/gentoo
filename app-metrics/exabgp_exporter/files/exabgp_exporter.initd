@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Prometheus exporter for exabgp"
+command="/usr/bin/exabgp_exporter"
+command_user="${command_user:-exabgp:exabgp}"
+command_args="${command_args:-standalone}"
+command_background=yes
+error_log="${error_log:-/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log}"
+output_log="${output_log:-/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log}"
+pidfile="${pidfile:-/run/${RC_SVCNAME}.pid}"
+start_stop_daemon_args="--user ${command_user%:*} --group ${command_user#*:}"
+: "${supervisor:=supervise-daemon}"
+: "${respawn_delay:=5}"
+: "${respawn_max:=0}"
+
+start() {
+	checkpath --directory --owner "${command_user}" "${error_log%/*}" "${output_log%/*}"
+	default_start
+}

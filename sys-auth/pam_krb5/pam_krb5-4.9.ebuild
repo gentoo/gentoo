@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,13 +11,13 @@ SRC_URI="https://archives.eyrie.org/software/kerberos/pam-krb5-${PV}.tar.gz"
 
 LICENSE="|| ( BSD-2 GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE=""
 # tests fail without a /etc/krb5.conf
 RESTRICT="test"
 
-DEPEND="
-	virtual/krb5
+DEPEND="virtual/krb5
+	virtual/libcrypt:=
 	sys-libs/pam"
 
 RDEPEND="${DEPEND}"

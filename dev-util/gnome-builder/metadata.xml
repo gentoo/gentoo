@@ -12,6 +12,5 @@
 		(such as setup of Git for New Project, direct cloning for Open Project and changed lines indicators in the editor gutter)</flag>
 	<flag name="glade">Provide integration with <pkg>dev-util/glade</pkg> UI designer for Gtk</flag>
 	<flag name="sysprof">Provide an integrated profiler via <pkg>dev-util/sysprof</pkg></flag>
-	<flag name="vala">Provide an autoindenter, autocompletion, diagnostics, and symbol resolver for Vala</flag>
 </use>
 </pkgmetadata>

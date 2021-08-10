@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -54,11 +54,11 @@ BDEPEND="
 		dev-perl/Sub-Override
 		media-libs/fontconfig
 
-		app-text/djvu[tiff]
+		app-text/djvu[jpeg,tiff]
 		app-text/poppler[utils]
-		app-text/tesseract[-opencl,osd(+),tiff]
+		app-text/tesseract[-opencl,osd(+),png,tiff]
 		app-text/unpaper
-		media-gfx/imagemagick[djvu,png,tiff,perl,postscript]
+		media-gfx/imagemagick[djvu,jpeg,png,tiff,perl,postscript]
 		media-gfx/sane-backends[sane_backends_test]
 		media-gfx/sane-frontends
 	)"

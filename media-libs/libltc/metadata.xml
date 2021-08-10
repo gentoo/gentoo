@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>proaudio@gentoo.org</email>
+		<name>Gentoo ProAudio Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/x42/libltc/issues</bugs-to>
+		<remote-id type="github">x42/libltc</remote-id>
+	</upstream>
+</pkgmetadata>

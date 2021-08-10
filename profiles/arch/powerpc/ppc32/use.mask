@@ -1,5 +1,12 @@
+# Copyright 2008-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 # Unmask the flag which corresponds to ARCH.
 -ppc
+
+# Matt Turner <mattst88@gentoo.org> (07-25-2021)
+# gnome-shell requires rustified librsvg.
+gnome-shell
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
 # net-libs/webkit-gtk has no ppc keywords

@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Definitions and Symbols from The Two Babylons by Rev. Alexander Hissop. Electronic edition formatted for the Online Bible by Gary Gallant.
 	</longdescription>

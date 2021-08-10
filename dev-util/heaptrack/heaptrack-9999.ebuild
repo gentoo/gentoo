@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake kde.org xdg-utils
 
 DESCRIPTION="Fast heap memory profiler"
-HOMEPAGE="https://kde.org/applications/development/org.kde.heaptrack
+HOMEPAGE="https://apps.kde.org/en/heaptrack
 https://milianw.de/blog/heaptrack-a-heap-memory-profiler-for-linux"
 
 LICENSE="LGPL-2.1+"

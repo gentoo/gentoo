@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 FORTRAN_NEEDED=fortran
 
-inherit cuda flag-o-matic fortran-2 java-pkg-opt-2 toolchain-funcs versionator multilib-minimal
+inherit cuda flag-o-matic fortran-2 java-pkg-opt-2 toolchain-funcs multilib-minimal
 
 MY_P=${P/-mpi}
 S=${WORKDIR}/${MY_P}
@@ -27,7 +27,7 @@ IUSE_OPENMPI_OFED_FEATURES="
 
 DESCRIPTION="A high-performance message passing library (MPI)"
 HOMEPAGE="https://www.open-mpi.org"
-SRC_URI="https://www.open-mpi.org/software/ompi/v$(get_version_component_range 1-2)/downloads/${MY_P}.tar.bz2"
+SRC_URI="https://www.open-mpi.org/software/ompi/v$(ver_cut 1-2)/downloads/${MY_P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
@@ -52,7 +52,7 @@ CDEPEND="
 	dev-libs/libltdl:0[${MULTILIB_USEDEP}]
 	<sys-apps/hwloc-2[${MULTILIB_USEDEP},numa?]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
-	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1 )
+	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1:= )
 	openmpi_fabrics_ofed? ( sys-fabric/ofed:* )
 	openmpi_fabrics_knem? ( sys-cluster/knem )
 	openmpi_fabrics_psm? ( sys-fabric/infinipath-psm:* )
@@ -137,14 +137,14 @@ multilib_src_install() {
 	# fortran header cannot be wrapped (bug #540508), workaround part 1
 	if multilib_is_native_abi && use fortran; then
 		mkdir "${T}"/fortran || die
-		mv "${ED}"usr/include/mpif* "${T}"/fortran || die
+		mv "${ED}"/usr/include/mpif* "${T}"/fortran || die
 	else
 		# some fortran files get installed unconditionally
 		rm \
-			"${ED}"usr/include/mpif* \
-			"${ED}"usr/bin/mpif* \
-			"${ED}"usr/bin/oshfort \
-			"${ED}"usr/bin/shmemfort \
+			"${ED}"/usr/include/mpif* \
+			"${ED}"/usr/bin/mpif* \
+			"${ED}"/usr/bin/oshfort \
+			"${ED}"/usr/bin/shmemfort \
 			|| die
 	fi
 }
@@ -152,14 +152,14 @@ multilib_src_install() {
 multilib_src_install_all() {
 	# fortran header cannot be wrapped (bug #540508), workaround part 2
 	if use fortran; then
-		mv "${T}"/fortran/mpif* "${ED}"usr/include || die
+		mv "${T}"/fortran/mpif* "${ED}"/usr/include || die
 	fi
 
 	# Remove la files, no static libs are installed and we have pkg-config
 	find "${ED}" -name '*.la' -delete || die
 
 	if use java; then
-		local mpi_jar="${ED}"usr/$(get_libdir)/mpi.jar
+		local mpi_jar="${ED}"/usr/$(get_libdir)/mpi.jar
 		java-pkg_dojar "${mpi_jar}"
 		# We don't want to install the jar file twice
 		# so let's clean after ourselves.

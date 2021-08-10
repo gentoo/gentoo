@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: opam.eclass
 # @MAINTAINER:
 # Mark Wright <gienah@gentoo.org>
+# ML <ml@gentoo.org>
 # @AUTHOR:
 # Alexis Ballier <aballier@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
@@ -17,15 +18,24 @@ case ${EAPI:-0} in
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
 
+# Do not complain about CFLAGS etc since ml projects do not use them.
+QA_FLAGS_IGNORED='.*'
+
 # @ECLASS-VARIABLE: OPAM_INSTALLER_DEP
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Override dependency for OPAM_INSTALLER
 : ${OPAM_INSTALLER_DEP:="dev-ml/opam-installer"}
 
 RDEPEND=">=dev-lang/ocaml-4:="
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) DEPEND="${RDEPEND} ${OPAM_INSTALLER_DEP}";;
-	*) BDEPEND="${OPAM_INSTALLER_DEP} dev-lang/ocaml"; DEPEND="${RDEPEND}" ;;
+	5|6)
+		DEPEND="${RDEPEND} ${OPAM_INSTALLER_DEP}"
+		;;
+	*)
+		BDEPEND="${OPAM_INSTALLER_DEP} dev-lang/ocaml"
+		DEPEND="${RDEPEND}"
+		;;
 esac
 
 # @ECLASS-VARIABLE: OPAM_INSTALLER

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 PLOCALES="be bg ca cs de en eo es et fa fi fr he hu it ja kk mk nl pl pt pt_BR ru sk sl sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit l10n qmake-utils xdg
+inherit plocale qmake-utils xdg
 
 DESCRIPTION="Qt XMPP client"
 HOMEPAGE="https://psi-im.org"
@@ -16,11 +16,10 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="aspell crypt dbus debug doc enchant +hunspell webengine webkit whiteboarding xscreensaver"
+IUSE="aspell crypt dbus debug doc enchant +hunspell webengine whiteboarding xscreensaver"
 
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
-	webengine? ( !webkit )
 "
 
 BDEPEND="
@@ -50,7 +49,6 @@ DEPEND="
 		dev-qt/qtwebchannel:5
 		dev-qt/qtwebengine:5[widgets]
 	)
-	webkit? ( dev-qt/qtwebkit:5 )
 	whiteboarding? ( dev-qt/qtsvg:5 )
 	xscreensaver? ( x11-libs/libXScrnSaver )
 "
@@ -72,11 +70,11 @@ src_configure() {
 		$(use_enable hunspell)
 		$(use_enable xscreensaver xss)
 		$(use_enable whiteboarding)
+		$(use_enable webengine webkit)
+		$(use_with webengine webkit qtwebengine)
 	)
 
 	use debug && CONF+=("--debug")
-	use webengine && CONF+=("--enable-webkit" "--with-webkit=qtwebengine")
-	use webkit && CONF+=("--enable-webkit" "--with-webkit=qtwebkit")
 
 	# This may generate warnings if passed option already matches with default.
 	# Just ignore them. It's how qconf-based configure works and will be fixed in
@@ -112,7 +110,7 @@ src_install() {
 		"${mylrelease}" "translations/${PN}_${1}.ts" || die "lrelease ${1} failed"
 		doins "translations/${PN}_${1}.qm"
 	}
-	l10n_for_each_locale_do install_locale
+	plocale_for_each_locale install_locale
 }
 
 pkg_postinst() {

@@ -1,0 +1,43 @@
+diff -ruN MIME-Lite-3.033.orig/Makefile.PL MIME-Lite-3.033/Makefile.PL
+--- MIME-Lite-3.033.orig/Makefile.PL	2021-05-30 00:02:41.000000000 +0200
++++ MIME-Lite-3.033/Makefile.PL	2021-07-04 18:17:45.413495198 +0200
+@@ -6,39 +6,12 @@
+ #------------------------------------------------------------
+ # Makefile:
+ #------------------------------------------------------------
+-my %extra_prereq = (
+-  'Mail::Address'     => 1.62,
+-  'MIME::Types'       => 1.28,
+-  'MIME::Base64'      => 0,
+-  'MIME::QuotedPrint' => 0,
+-);
+-
+ my %prereq = (
+   'File::Spec'          => 0,
+   'File::Basename'      => 0,
+   'Email::Date::Format' => '1.000', # first release
+ );
+ 
+-for my $module (sort keys %extra_prereq) {
+-  local $@;
+-  my $ok = eval "require $module; \$extra_prereq{\$module} && \$module->VERSION(\$extra_prereq{\$module}); 1";
+-  $prereq{ $module } = delete $extra_prereq{ $module } if $ok;
+-}
+-
+-if (%extra_prereq) {
+-  print "MIME::Lite is designed to take advantage of a variety of external modules\n",
+-        "if they are not present then MIME::Lite will attempt to do its best\n",
+-        "but its strongly recommend that you install them.\n\n",
+-        "These modules are:\n",
+-        (map {; "\t$_\n" } sort keys %extra_prereq),
+-        "I can add these modules to the prereq list which will cause the files to be\n",
+-        "automatically installed if they aren't already present\n";
+-
+-  if (prompt("Add prereqs?",'Yes')=~/y/i) {
+-    %prereq = (%prereq, %extra_prereq);
+-  }
+-}
+-
+ # Write the Makefile:
+ WriteMakefile(
+   NAME         => 'MIME::Lite',

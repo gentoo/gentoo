@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils fortran-2 multilib versionator toolchain-funcs
+inherit epatch fortran-2 flag-o-matic multilib versionator toolchain-funcs
 
 DESCRIPTION="Library for updating of QR and Cholesky decompositions"
 HOMEPAGE="https://sourceforge.net/projects/qrupdate"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ppc ppc64 sparc x86 ~amd64-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~ppc-macos"
 IUSE="static-libs"
 
 RDEPEND="virtual/lapack"
@@ -22,6 +22,11 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-1.1.1-Makefiles.patch \
 		"${FILESDIR}"/${PN}-1.1.2-install.patch
+
+	# GCC 10 workaround
+	# bug #741524
+	append-fflags $(test-flags-FC -fallow-argument-mismatch)
+
 	sed -i Makeconf \
 		-e "s:gfortran:$(tc-getFC):g" \
 		-e "s:FFLAGS=.*:FFLAGS=${FFLAGS}:" \

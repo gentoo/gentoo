@@ -1,6 +1,5 @@
-diff -ur bogosort-0.4.2.orig/getlines.c bogosort-0.4.2/getlines.c
---- bogosort-0.4.2.orig/getlines.c	2002-05-04 23:22:22.000000000 +0300
-+++ bogosort-0.4.2/getlines.c	2009-08-06 14:32:22.000000000 +0300
+--- a/getlines.c
++++ b/getlines.c
 @@ -49,7 +49,7 @@
      char **ss = NULL;
  
@@ -28,9 +27,8 @@ diff -ur bogosort-0.4.2.orig/getlines.c bogosort-0.4.2/getlines.c
  {
      int c, numchars = 0, allocated = 0;
      char *s = NULL;
-diff -ur bogosort-0.4.2.orig/getlines.h bogosort-0.4.2/getlines.h
---- bogosort-0.4.2.orig/getlines.h	2002-03-16 00:04:38.000000000 +0200
-+++ bogosort-0.4.2/getlines.h	2009-08-06 14:32:48.000000000 +0300
+--- a/getlines.h
++++ b/getlines.h
 @@ -39,6 +39,6 @@
   * getline: return a pointer to a newly allocated string containing the next
   * line in stream

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -10,15 +10,15 @@ HOMEPAGE="
 	http://markusfisch.de/PieDock
 	https://github.com/markusfisch/PieDock
 "
-SRC_URI="
-	https://github.com/markusfisch/PieDock/archive/${PV}.tar.gz -> ${P}.tar.gz
-"
+SRC_URI="https://github.com/markusfisch/PieDock/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/PieDock-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk"
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	media-libs/libpng:0=
 	x11-libs/libX11
@@ -32,8 +32,7 @@ RDEPEND="
 		x11-libs/gtk+:2
 	)
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
 
 DOCS=( res/${PN}rc.sample AUTHORS ChangeLog NEWS )
 
@@ -41,8 +40,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.1-signals.patch
 	"${FILESDIR}"/${PN}-1.6.9-freetype_pkgconfig.patch
 )
-
-S="${WORKDIR}/PieDock-${PV}"
 
 src_prepare() {
 	default

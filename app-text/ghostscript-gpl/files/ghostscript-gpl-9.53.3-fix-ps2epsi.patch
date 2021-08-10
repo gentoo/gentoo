@@ -1,0 +1,16 @@
+https://bugs.ghostscript.com/show_bug.cgi?id=703270
+
+--- a/lib/ps2epsi
++++ b/lib/ps2epsi
+@@ -40,8 +40,8 @@ else
+ 	outfile=$2
+ fi
+ 
+-# Note, we expect 'ps2epsi.ps' to be in the same directory as 'ps2epsi'
++# Note, we expect 'ps2epsi.ps' to be on one of the search paths which can be seen by: gs -h
+ "$GS_EXECUTABLE" -q -dNOOUTERSAVE -dNODISPLAY -dLastPage=1 -sOutputFile="${outfile}" \
+-		--permit-file-all="${infile}" -- "$LIBDIR/ps2epsi.ps"  "${infile}" 1>&2
++		--permit-file-all="${infile}" -- ps2epsi.ps  "${infile}" 1>&2
+ 
+ exit 0
+ 

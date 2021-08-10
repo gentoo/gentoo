@@ -24,9 +24,9 @@ diff --git a/support/junction/junction.c b/support/junction/junction.c
 index ab6caa6..41cce26 100644
 --- a/support/junction/junction.c
 +++ b/support/junction/junction.c
-@@ -23,6 +23,10 @@
-  *	http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
-  */
+@@ -27,6 +27,10 @@
+ #include <config.h>
+ #endif
  
 +#ifdef HAVE_CONFIG_H
 +#include <config.h>
@@ -39,9 +39,9 @@ diff --git a/support/misc/file.c b/support/misc/file.c
 index e7c3819..06f6bb2 100644
 --- a/support/misc/file.c
 +++ b/support/misc/file.c
-@@ -18,6 +18,10 @@
-  * along with nfs-utils.  If not, see <http://www.gnu.org/licenses/>.
-  */
+@@ -22,6 +22,10 @@
+ #include <config.h>
+ #endif
  
 +#ifdef HAVE_CONFIG_H
 +#include <config.h>
@@ -54,9 +54,9 @@ diff --git a/support/misc/mountpoint.c b/support/misc/mountpoint.c
 index c6217f2..14d6731 100644
 --- a/support/misc/mountpoint.c
 +++ b/support/misc/mountpoint.c
-@@ -3,6 +3,10 @@
-  * check if a given path is a mountpoint 
-  */
+@@ -7,6 +7,10 @@
+ #include <config.h>
+ #endif
  
 +#ifdef HAVE_CONFIG_H
 +#include <config.h>
@@ -69,24 +69,24 @@ diff --git a/support/nfs/cacheio.c b/support/nfs/cacheio.c
 index 9dc4cf1..7c4cf37 100644
 --- a/support/nfs/cacheio.c
 +++ b/support/nfs/cacheio.c
-@@ -15,6 +15,10 @@
-  *
-  */
+@@ -19,6 +19,10 @@
+ #include <config.h>
+ #endif
  
 +#ifdef HAVE_CONFIG_H
 +#include <config.h>
 +#endif
 +
  #include <nfslib.h>
+ #include <inttypes.h>
  #include <stdio.h>
- #include <stdio_ext.h>
 diff --git a/utils/mount/fstab.c b/utils/mount/fstab.c
 index eedbdda..8b0aaf1 100644
 --- a/utils/mount/fstab.c
 +++ b/utils/mount/fstab.c
-@@ -7,6 +7,10 @@
-  * - Moved code to nfs-utils/support/nfs from util-linux/mount.
-  */
+@@ -11,6 +11,10 @@
+ #include <config.h>
+ #endif
  
 +#ifdef HAVE_CONFIG_H
 +#include <config.h>
@@ -99,9 +99,9 @@ diff --git a/utils/nfsdcld/legacy.c b/utils/nfsdcld/legacy.c
 index 07f477a..3c6bea6 100644
 --- a/utils/nfsdcld/legacy.c
 +++ b/utils/nfsdcld/legacy.c
-@@ -15,6 +15,10 @@
-  * Boston, MA 02110-1301, USA.
-  */
+@@ -19,6 +19,10 @@
+ #include <config.h>
+ #endif
  
 +#ifdef HAVE_CONFIG_H
 +#include <config.h>

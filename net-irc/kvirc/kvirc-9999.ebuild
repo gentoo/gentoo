@@ -1,9 +1,9 @@
-# Copyright 2009-2020 Gentoo Authors
+# Copyright 2009-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 CMAKE_MAKEFILE_GENERATOR="emake"
-PYTHON_COMPAT=(python{3_7,3_8,3_9})
+PYTHON_COMPAT=(python{3_8,3_9})
 
 inherit cmake flag-o-matic python-single-r1 xdg-utils
 
@@ -30,7 +30,7 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-IUSE="audiofile +dbus dcc_video debug doc gsm kde libressl +nls oss +perl +phonon profile +python spell +ssl theora webkit"
+IUSE="audiofile +dbus dcc-video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora webkit"
 REQUIRED_USE="audiofile? ( oss ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="dev-lang/perl:0
@@ -53,7 +53,7 @@ DEPEND="dev-qt/qtcore:5
 	x11-libs/libXScrnSaver
 	audiofile? ( media-libs/audiofile )
 	dbus? ( dev-qt/qtdbus:5 )
-	dcc_video? ( dev-qt/qtmultimedia:5[widgets] )
+	dcc-video? ( dev-qt/qtmultimedia:5[widgets] )
 	kde? (
 		kde-frameworks/kcoreaddons:5
 		kde-frameworks/ki18n:5
@@ -66,10 +66,7 @@ DEPEND="dev-qt/qtcore:5
 	phonon? ( media-libs/phonon[qt5(+)] )
 	python? ( ${PYTHON_DEPS} )
 	spell? ( app-text/enchant:0= )
-	ssl? (
-		libressl? ( dev-libs/libressl:0= )
-		!libressl? ( dev-libs/openssl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	theora? (
 		media-libs/libogg
 		media-libs/libtheora
@@ -120,7 +117,7 @@ src_configure() {
 		-DWANT_TRANSPARENCY=ON
 
 		-DWANT_AUDIOFILE=$(usex audiofile ON OFF)
-		-DWANT_DCC_VIDEO=$(usex dcc_video ON OFF)
+		-DWANT_DCC_VIDEO=$(usex dcc-video ON OFF)
 		-DWANT_DEBUG=$(usex debug ON OFF)
 		-DWANT_DOXYGEN=$(usex doc ON OFF)
 		-DWANT_GETTEXT=$(usex nls ON OFF)

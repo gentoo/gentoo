@@ -5,13 +5,10 @@
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>
   </maintainer>
-  <maintainer type="project">
-    <email>haskell@gentoo.org</email>
-    <name>Gentoo Haskell</name>
+<maintainer type="project">
+  <email>haskell@gentoo.org</email>
+  <name>Gentoo Haskell</name>
   </maintainer>
-  <use>
-    <flag name="ffi">Install agda-lib-ffi for compilation using the MAlonzo backend</flag>
-  </use>
   <upstream>
     <remote-id type="github">agda/agda-stdlib</remote-id>
   </upstream>

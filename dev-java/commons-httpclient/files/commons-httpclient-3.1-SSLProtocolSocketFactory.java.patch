@@ -1,5 +1,5 @@
---- src/java/org/apache/commons/httpclient/protocol/SSLProtocolSocketFactory.java
-+++ src/java/org/apache/commons/httpclient/protocol/SSLProtocolSocketFactory.java
+--- ./src/java/org/apache/commons/httpclient/protocol/SSLProtocolSocketFactory.java
++++ ./src/java/org/apache/commons/httpclient/protocol/SSLProtocolSocketFactory.java
 @@ -31,10 +31,25 @@
  package org.apache.commons.httpclient.protocol;
  

@@ -1,5 +1,36 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Marek Szuba <marecki@gentoo.org> (2021-08-09)
+# media-plugins/cmt-plugins isn't stable on this arch yet
+media-sound/fluidsynth ladspa
+
+# Sam James <sam@gentoo.org> (2021-06-16)
+# Drags in several not-yet-stable deps on arm64
+# glusterfs: sys-cluster/glusterfs
+# rbd: sys-cluster/ceph
+# bug #796362
+app-emulation/libvirt glusterfs rbd
+
+# Sam James <sam@gentoo.org> (2021-05-28)
+# media-gfx/inkscape is not yet stable on arm64
+# bug #785685
+app-text/dblatex inkscape
+
+# Sam James <sam@gentoo.org> (2021-02-25)
+# Roy Bamford <neddyseagoon@gentoo.org> (2021-02-25)
+# Dependencies not yet stable, migrated from p.u.m.
+app-crypt/qca botan
+gnome-base/nautilus previewer
+
+# Sam James <sam@gentoo.org> (2021-02-05)
+# Thomas Deutschmann <whissi@gentoo.org> (2017-02-14)
+# No lua stable for this arch yet
+www-servers/nginx nginx_modules_http_lua
+
+# Sam James <sam@gentoo.org> (2020-12-23)
+# Needs stable dev-lang/luajit
+kde-apps/cantor lua
 
 # Sam James <sam@gentoo.org> (2020-10-18)
 # Needs dev-tex/hevea which isn't stable yet
@@ -62,12 +93,6 @@ net-misc/curl quiche
 # iasl is keyworded ~arm64
 sys-firmware/seabios debug
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-09-14)
-# media-video/pipewire-0.2 will never be stable, to be dropped.
-<dev-libs/weston-9 pipewire
-<sys-apps/xdg-desktop-portal-1.7.2 screencast
-x11-wm/mutter screencast
-
 # Aaron Bauman (2019-07-29)
 # app-arch/rar not supported
 kde-apps/kdeutils-meta rar
@@ -99,10 +124,6 @@ sys-devel/clang default-libcxx
 # USE=doc requires USE=latex
 app-doc/doxygen clang doxysearch doc
 
-# Mart Raudsepp <leio@gentoo.org> (2018-05-04)
-# sci-libs/mpir fails tests, bug 640424
-dev-python/gmpy mpir
-
 # Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Non-stable dependencies.
 app-admin/syslog-ng spoof-source
@@ -110,10 +131,6 @@ app-text/xmlto latex
 sys-auth/pambase pam_krb5 pam_ssh
 sys-block/thin-provisioning-tools test
 sys-devel/distcc gssapi
-
-# Michał Górny <mgorny@gentoo.org> (2018-03-03)
-# Requires masked dependent flags.
-net-dns/avahi python
 
 # Michał Górny <mgorny@gentoo.org> (2018-02-28)
 # Requires masked dependent flags.

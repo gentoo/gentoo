@@ -12,6 +12,5 @@
 		<flag name="flashexport">Build the flash export plugin</flag>
 		<flag name="mediawiki">Build the mediawiki export plugin</flag>
 		<flag name="remotestorage">Build plugin for remote storage using network protocols such as FTP, SSH, SAMBA via <pkg>kde-frameworks/kio</pkg></flag>
-		<flag name="vkontakte">Build plugin for vkontakte.ru</flag>
 	</use>
 </pkgmetadata>

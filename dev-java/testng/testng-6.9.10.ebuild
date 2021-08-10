@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,7 @@ DESCRIPTION="Testing framework inspired by JUnit and NUnit with new features"
 HOMEPAGE="https://testng.org/"
 SRC_URI="https://github.com/cbeust/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc64 x86"
 SLOT="0"
 IUSE="test"
 RESTRICT="test" # Occasionally fail or run *REALLY* slowly.

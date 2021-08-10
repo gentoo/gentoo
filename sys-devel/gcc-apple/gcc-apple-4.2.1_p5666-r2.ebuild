@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -10,7 +10,6 @@ APPLE_VERS="${PV/*_p/}.3"
 DESCRIPTION="Apple branch of the GNU Compiler Collection, Developer Tools 4.0"
 HOMEPAGE="https://gcc.gnu.org"
 SRC_URI="http://www.opensource.apple.com/darwinsource/tarballs/other/gcc-${APPLE_VERS}.tar.gz
-		http://www.opensource.apple.com/darwinsource/tarballs/other/libstdcxx-16.tar.gz
 		http://www.opensource.apple.com/darwinsource/tarballs/other/libstdcxx-39.tar.gz
 		fortran? (
 			mirror://gnu/gcc/gcc-4.2.4/gcc-fortran-4.2.4.tar.bz2
@@ -19,7 +18,7 @@ SRC_URI="http://www.opensource.apple.com/darwinsource/tarballs/other/gcc-${APPLE
 LICENSE="GPL-2 GPL-3"
 
 SLOT="42"
-KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~ppc-macos ~x64-macos"
 IUSE="bootstrap fortran nls +openmp objc objc++ +cxx"
 
 RDEPEND=">=sys-libs/zlib-1.1.4
@@ -64,24 +63,14 @@ src_prepare() {
 		epatch "${DISTDIR}"/${PN}-4.2.1_p5646-gfortran.patch
 	fi
 
-	# move in libstdc++
-	case ${CHOST} in
-		*-darwin1*|i?86-*-darwin9|powerpc-*-darwin9)
-			LIBSTDCXX_APPLE_VERSION=39
-		;;
-		*)
-			# pre Leopard has no dtrace, which is required by 37.11 and above
-			# Leopard only has 32-bits version of dtrace
-			LIBSTDCXX_APPLE_VERSION=16
-		;;
-	esac
-	mv "${WORKDIR}"/libstdcxx-${LIBSTDCXX_APPLE_VERSION}/libstdcxx/libstdc++-v3 .
-	if [[ ${LIBSTDCXX_APPLE_VERSION} == 16 ]] ; then
-		epatch "${FILESDIR}"/libstdc++-${LIBSTDCXX_APPLE_VERSION}.patch # does it apply on 37?
-		sed -i -e 's/__block\([^_]\)/__blk\1/g' \
-			libstdc++-v3/include/ext/mt_allocator.h \
-			libstdc++-v3/src/mt_allocator.cc || die "conflict fix failed"
-	fi
+	mv "${WORKDIR}"/libstdcxx-39/libstdcxx/libstdc++-v3 .
+
+	# pre Leopard has no dtrace, which is required by 37.11 and above
+	# Leopard only has 32-bits version of dtrace
+	# So back out dtrace support on those platforms using patch
+	# thoughtfully provided by Apple.
+	[[ ${CHOST} == x86_64-apple-darwin9 || ${CHOST##*-darwin} -le 8 ]] && \
+		patch -R -p0 < "${WORKDIR}"/libstdcxx-39/patches-4.2.1/dtrace.patch
 
 	# we use our libtool
 	sed -i -e "s:/usr/bin/libtool:${EPREFIX}/usr/bin/${CTARGET}-libtool:" \
@@ -104,7 +93,7 @@ src_prepare() {
 
 	# dsymutil stuff breaks on 10.4/x86, revert it
 	[[ ${CHOST} == *86*-apple-darwin8 ]] && \
-		epatch "${FILESDIR}"/${PN}-${GCC_VERS}-dsymutil.patch
+		epatch "${FILESDIR}"/${P}-dsymutil.patch
 
 	# support OS X 10.10
 	epatch "${FILESDIR}"/${P}-darwin14.patch
@@ -130,6 +119,7 @@ src_prepare() {
 	fi
 
 	epatch "${FILESDIR}"/${P}-perl-5.18.patch
+	epatch "${FILESDIR}"/${P}-darwin8.patch
 
 	epatch "${FILESDIR}"/${PN}-4.2.1-prefix-search-dirs-r1.patch
 	eprefixify "${S}"/gcc/gcc.c

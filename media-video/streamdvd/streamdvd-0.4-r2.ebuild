@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="fast tool to backup Video DVDs 'on the fly'"
 HOMEPAGE="http://www.badabum.de/streamdvd.html"
@@ -15,11 +15,12 @@ KEYWORDS="~amd64 ~ppc ~x86"
 
 IUSE="X"
 
-DEPEND="media-libs/libdvdread
+DEPEND="
+	app-cdr/cdrtools
+	media-libs/libdvdread
 	media-video/lsdvd
 	X? ( dev-perl/Tk
 	dev-perl/Tk-JPEG-Lite
-	virtual/cdrtools
 	>=media-video/dvdauthor-0.6.5
 	>=app-cdr/dvd+rw-tools-5.13.4.7.4 )"
 

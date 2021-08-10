@@ -5,6 +5,7 @@
     <email>heroxbd@gentoo.org</email>
     <name>Benda Xu</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">objgraph</remote-id>
   </upstream>

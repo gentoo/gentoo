@@ -19,7 +19,10 @@ BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 
-PATCHES=( "${FILESDIR}"/${P}-make.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-make.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_compile() {
 	ICCLIB_SOVERSION="0"

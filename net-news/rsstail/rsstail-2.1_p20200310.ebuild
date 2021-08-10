@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND=">=net-libs/libmrss-0.17.1"
@@ -23,7 +23,7 @@ src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS} -DVERSION=\\\"\$(VERSION)\\\"" \
-		LDFLAGS="${LDFLAGS} $(pkg-config --libs mrss)"
+		LDFLAGS="${LDFLAGS} $($(tc-getPKG_CONFIG) --libs mrss)"
 }
 
 src_test() {

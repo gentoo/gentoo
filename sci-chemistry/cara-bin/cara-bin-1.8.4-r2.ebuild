@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 MY_PN="${PN%%-bin}"
 MY_P="${MY_PN}_${PV}"
@@ -15,7 +15,6 @@ HOMEPAGE="http://www.nmr.ch"
 LICENSE="CARA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="lua"
 
 RDEPEND="
 	!prefix? (
@@ -30,8 +29,7 @@ RDEPEND="
 		>=x11-libs/libXrandr-1.4.2[abi_x86_32(-)]
 		>=x11-libs/libXrender-0.9.8[abi_x86_32(-)]
 	)
-	sys-libs/libstdc++-v3:5
-	lua? ( dev-lang/lua )"
+	sys-libs/libstdc++-v3:5"
 DEPEND=""
 
 RESTRICT="bindist mirror"

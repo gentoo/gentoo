@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		The New Testament in the Tausug language. © International Bible Society. First Edition 1985. Revised Edition 1998.
 	</longdescription>

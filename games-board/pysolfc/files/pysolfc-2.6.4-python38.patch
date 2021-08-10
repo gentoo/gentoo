@@ -1,0 +1,13 @@
+diff --git a/pysollib/mfxutil.py b/pysollib/mfxutil.py
+index f461ed1..c71a61f 100644
+--- a/pysollib/mfxutil.py
++++ b/pysollib/mfxutil.py
+@@ -143,7 +143,7 @@ def getprefdir(package):
+ 
+ 
+ # high resolution clock() and sleep()
+-uclock = time.clock
++uclock = time.process_time
+ usleep = time.sleep
+ if os.name == "posix":
+     uclock = time.time

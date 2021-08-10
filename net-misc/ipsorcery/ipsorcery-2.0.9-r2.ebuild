@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets"
@@ -19,10 +20,11 @@ DEPEND="
 		x11-libs/gtk+:2=
 	)
 "
-RDEPEND="
-	${DEPEND}
-"
+RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
+
 S=${WORKDIR}/ipsorc-${PV}
+
 PATCHES=(
 	"${FILESDIR}"/${P}-_BSD_SOURCE.patch
 	"${FILESDIR}"/${P}-gentoo.patch

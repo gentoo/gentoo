@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>gentoo@tastytea.de</email>
+		<name>Ronny (tastytea) Gutbrod</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Rdfind is a command line tool that is useful for compressing backup
+		directories or just finding duplicate files. It compares files based on
+		their content, NOT on their file names.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">pauldreik/rdfind</remote-id>
+		<bugs-to>https://github.com/pauldreik/rdfind/issues</bugs-to>
+		<doc>https://rdfind.pauldreik.se/rdfind.1.html</doc>
+	</upstream>
+</pkgmetadata>

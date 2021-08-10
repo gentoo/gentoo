@@ -1,0 +1,525 @@
+From 5d5315c5ddf2e3a6d92d6b5dba8a120b7c04f46a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 15 Feb 2021 22:50:56 +0100
+Subject: [PATCH 1/7] Use CMake's CTest which includes BUILD_TESTING option
+
+BUILD_TESTING is default enabled, which is a good default anyway.
+Move the CppUnit check to the root CMakeLists.txt, simpler and clearer.
+BUILD_TESTS is obsolete.
+
+The need for BUILD_SHARED_LIBS=OFF for testing is not clear, it works on Linux.
+But I kept it in the instructions for now.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt        | 13 +++++++++----
+ ConfigureChecks.cmake | 10 ----------
+ INSTALL.md            |  6 +++---
+ 3 files changed, 12 insertions(+), 17 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5fc91cc6..770fa046 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,6 +4,8 @@ project(taglib)
+ 
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
+ 
++include(CTest)
++
+ if(DEFINED ENABLE_STATIC)
+   message(FATAL_ERROR "This option is no longer available, use BUILD_SHARED_LIBS instead")
+ endif()
+@@ -32,7 +34,6 @@ if(ENABLE_CCACHE)
+ endif()
+ 
+ option(VISIBILITY_HIDDEN "Build with -fvisibility=hidden" OFF)
+-option(BUILD_TESTS "Build the test suite" OFF)
+ option(BUILD_EXAMPLES "Build the examples" OFF)
+ option(BUILD_BINDINGS "Build the bindings" ON)
+ 
+@@ -147,9 +148,13 @@ if(BUILD_BINDINGS)
+   add_subdirectory(bindings)
+ endif()
+ 
+-if(BUILD_TESTS AND NOT BUILD_SHARED_LIBS)
+-  enable_testing()
+-  add_subdirectory(tests)
++if(BUILD_TESTING)
++  find_package(CppUnit)
++  if(CppUnit_FOUND)
++    add_subdirectory(tests)
++  else()
++    message(WARNING "BUILD_TESTING requested, but CppUnit not found, skipping tests.")
++  endif()
+ endif()
+ 
+ if(BUILD_EXAMPLES)
+diff --git a/ConfigureChecks.cmake b/ConfigureChecks.cmake
+index bcdbfe20..2fe2f129 100644
+--- a/ConfigureChecks.cmake
++++ b/ConfigureChecks.cmake
+@@ -187,16 +187,6 @@ if(NOT ZLIB_SOURCE)
+   endif()
+ endif()
+ 
+-# Determine whether CppUnit is installed.
+-
+-if(BUILD_TESTS AND NOT BUILD_SHARED_LIBS)
+-  find_package(CppUnit)
+-  if(NOT CppUnit_FOUND)
+-    message(STATUS "CppUnit not found, disabling tests.")
+-    set(BUILD_TESTS OFF)
+-  endif()
+-endif()
+-
+ # Detect WinRT mode
+ if(CMAKE_SYSTEM_NAME STREQUAL "WindowsStore")
+ 	set(PLATFORM WINRT 1)
+diff --git a/INSTALL.md b/INSTALL.md
+index a398654e..19771aca 100644
+--- a/INSTALL.md
++++ b/INSTALL.md
+@@ -167,7 +167,7 @@ Unit Tests
+ 
+ If you want to run the test suite to make sure TagLib works properly on your
+ system, you need to have cppunit installed. To build the tests, include
+-the option `-DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=OFF` when running cmake.
++the option `-DBUILD_TESTING=ON` when running cmake.
+ 
+ The test suite has a custom target in the build system, so you can run
+ the tests using make:
+@@ -183,7 +183,7 @@ Windows MinGW:
+   - `mingw32-make; mingw32-make install DESTDIR=/path/to/install/dir`
+ * Build TagLib with testing enabled:
+   - ```
+-    cmake -G "MinGW Makefiles" -DBUILD_TESTS=ON -DBUILD_EXAMPLES=ON -DBUILD_SHARED_LIBS=OFF \
++    cmake -G "MinGW Makefiles" -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DBUILD_SHARED_LIBS=OFF \
+     -DCPPUNIT_INCLUDE_DIR=/path/to/cppunit/include \
+     -DCPPUNIT_LIBRARIES=/path/to/cppunit/lib/libcppunit.a \
+     -DCPPUNIT_INSTALLED_VERSION=1.15.1
+@@ -200,7 +200,7 @@ Windows MSVS:
+   - It may fail, but the needed libraries should be available in src\cppunit\DebugDll.
+ * Build TagLib with testing enabled:
+   - ```
+-    cmake -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTS=ON -DBUILD_EXAMPLES=ON
++    cmake -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON
+     -DBUILD_SHARED_LIBS=OFF -DENABLE_STATIC_RUNTIME=ON
+     -DCPPUNIT_INCLUDE_DIR=\path\to\cppunit\include
+     -DCPPUNIT_LIBRARIES=\path\to\cppunit\DebugDll\cppunitd_dll.lib
+-- 
+2.30.1
+
+
+From 2cb339f46cc5b544ad1c2bb5528fe39c07d9f56b Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 15 Feb 2021 23:11:38 +0100
+Subject: [PATCH 2/7] Move finding ZLIB to root CMakeLists.txt
+
+Small line decrease, but also easier to read what is happening.
+Now all dependencies can be read from the root CMakeLists.txt file.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt        | 22 +++++++++++++++-------
+ ConfigureChecks.cmake | 11 -----------
+ 2 files changed, 15 insertions(+), 18 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 770fa046..e537aeb3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -101,8 +101,21 @@ math(EXPR TAGLIB_SOVERSION_PATCH "${TAGLIB_SOVERSION_REVISION}")
+ 
+ include(ConfigureChecks.cmake)
+ 
+-if(${ZLIB_FOUND})
+-  set(ZLIB_LIBRARIES_FLAGS -lz)
++# Determine whether zlib is installed.
++
++if(NOT ZLIB_SOURCE)
++  find_package(ZLIB)
++  if(ZLIB_FOUND)
++    set(HAVE_ZLIB 1)
++    set(ZLIB_LIBRARIES_FLAGS -lz)
++  else()
++    set(HAVE_ZLIB 0)
++  endif()
++endif()
++
++if(NOT HAVE_ZLIB AND ZLIB_SOURCE)
++  set(HAVE_ZLIB 1)
++  set(HAVE_ZLIB_SOURCE 1)
+ endif()
+ 
+ if(NOT WIN32)
+@@ -120,11 +133,6 @@ if(NOT BUILD_FRAMEWORK)
+   install(FILES "${CMAKE_CURRENT_BINARY_DIR}/taglib.pc" DESTINATION "${LIB_INSTALL_DIR}/pkgconfig")
+ endif()
+ 
+-if(NOT HAVE_ZLIB AND ZLIB_SOURCE)
+-  set(HAVE_ZLIB 1)
+-  set(HAVE_ZLIB_SOURCE 1)
+-endif()
+-
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ configure_file(config.h.cmake "${CMAKE_CURRENT_BINARY_DIR}/config.h")
+ 
+diff --git a/ConfigureChecks.cmake b/ConfigureChecks.cmake
+index 2fe2f129..7d2ff953 100644
+--- a/ConfigureChecks.cmake
++++ b/ConfigureChecks.cmake
+@@ -176,17 +176,6 @@ check_cxx_source_compiles("
+   }
+ " HAVE_ISO_STRDUP)
+ 
+-# Determine whether zlib is installed.
+-
+-if(NOT ZLIB_SOURCE)
+-  find_package(ZLIB)
+-  if(ZLIB_FOUND)
+-    set(HAVE_ZLIB 1)
+-  else()
+-    set(HAVE_ZLIB 0)
+-  endif()
+-endif()
+-
+ # Detect WinRT mode
+ if(CMAKE_SYSTEM_NAME STREQUAL "WindowsStore")
+ 	set(PLATFORM WINRT 1)
+-- 
+2.30.1
+
+
+From 6d94166dc6d2f12d9b913d8b672af32cec211440 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 15 Feb 2021 23:28:45 +0100
+Subject: [PATCH 3/7] Use GNUInstallDirs
+
+Well-established CMake standard for installation directories.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt               | 14 ++++----------
+ bindings/c/CMakeLists.txt    | 12 ++++++------
+ bindings/c/taglib_c.pc.cmake |  8 ++++----
+ taglib-config.cmake          |  4 ++--
+ taglib-config.cmd.cmake      |  4 ++--
+ taglib.pc.cmake              |  6 +++---
+ taglib/CMakeLists.txt        | 10 +++++-----
+ 7 files changed, 26 insertions(+), 32 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e537aeb3..fb047350 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,6 +5,7 @@ project(taglib)
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
+ 
+ include(CTest)
++include(GNUInstallDirs)
+ 
+ if(DEFINED ENABLE_STATIC)
+   message(FATAL_ERROR "This option is no longer available, use BUILD_SHARED_LIBS instead")
+@@ -47,13 +48,6 @@ endif()
+ add_definitions(-DHAVE_CONFIG_H)
+ set(TESTS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/tests/")
+ 
+-## the following are directories where stuff will be installed to
+-set(LIB_SUFFIX "" CACHE STRING "Define suffix of directory name (32/64)")
+-set(EXEC_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}" CACHE PATH "Base directory for executables and libraries")
+-set(BIN_INSTALL_DIR "${EXEC_INSTALL_PREFIX}/bin" CACHE PATH "The subdirectory to the binaries prefix (default prefix/bin)")
+-set(LIB_INSTALL_DIR "${EXEC_INSTALL_PREFIX}/lib${LIB_SUFFIX}" CACHE PATH "The subdirectory relative to the install prefix where libraries will be installed (default is /lib${LIB_SUFFIX})")
+-set(INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/include" CACHE PATH "The subdirectory to the header prefix")
+-
+ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
+   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+@@ -120,17 +114,17 @@ endif()
+ 
+ if(NOT WIN32)
+   configure_file("${CMAKE_CURRENT_SOURCE_DIR}/taglib-config.cmake" "${CMAKE_CURRENT_BINARY_DIR}/taglib-config" @ONLY)
+-  install(PROGRAMS "${CMAKE_CURRENT_BINARY_DIR}/taglib-config" DESTINATION "${BIN_INSTALL_DIR}")
++  install(PROGRAMS "${CMAKE_CURRENT_BINARY_DIR}/taglib-config" DESTINATION "${CMAKE_INSTALL_BINDIR}")
+ endif()
+ 
+ if(WIN32)
+   configure_file("${CMAKE_CURRENT_SOURCE_DIR}/taglib-config.cmd.cmake" "${CMAKE_CURRENT_BINARY_DIR}/taglib-config.cmd")
+-  install(PROGRAMS "${CMAKE_CURRENT_BINARY_DIR}/taglib-config.cmd" DESTINATION "${BIN_INSTALL_DIR}")
++  install(PROGRAMS "${CMAKE_CURRENT_BINARY_DIR}/taglib-config.cmd" DESTINATION "${CMAKE_INSTALL_BINDIR}")
+ endif()
+ 
+ if(NOT BUILD_FRAMEWORK)
+   configure_file("${CMAKE_CURRENT_SOURCE_DIR}/taglib.pc.cmake" "${CMAKE_CURRENT_BINARY_DIR}/taglib.pc" @ONLY)
+-  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/taglib.pc" DESTINATION "${LIB_INSTALL_DIR}/pkgconfig")
++  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/taglib.pc" DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+ endif()
+ 
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+diff --git a/bindings/c/CMakeLists.txt b/bindings/c/CMakeLists.txt
+index ebb1267f..15f4e440 100644
+--- a/bindings/c/CMakeLists.txt
++++ b/bindings/c/CMakeLists.txt
+@@ -58,18 +58,18 @@ set_target_properties(tag_c PROPERTIES
+   VERSION 0.0.0
+   SOVERSION 0
+   DEFINE_SYMBOL MAKE_TAGLIB_C_LIB
+-  INSTALL_NAME_DIR ${LIB_INSTALL_DIR}
++  INSTALL_NAME_DIR ${CMAKE_INSTALL_LIBDIR}
+ )
+ install(TARGETS tag_c
+ 	FRAMEWORK DESTINATION ${FRAMEWORK_INSTALL_DIR}
+-	LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+-	RUNTIME DESTINATION ${BIN_INSTALL_DIR}
+-	ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
+-	PUBLIC_HEADER DESTINATION ${INCLUDE_INSTALL_DIR}/taglib
++	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++	RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++	PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/taglib
+ )
+ 
+ if(NOT BUILD_FRAMEWORK)
+ 	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/taglib_c.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/taglib_c.pc)
+-	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/taglib_c.pc DESTINATION ${LIB_INSTALL_DIR}/pkgconfig)
++	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/taglib_c.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ endif()
+ 
+diff --git a/bindings/c/taglib_c.pc.cmake b/bindings/c/taglib_c.pc.cmake
+index 232f4f78..97f0b5a1 100644
+--- a/bindings/c/taglib_c.pc.cmake
++++ b/bindings/c/taglib_c.pc.cmake
+@@ -1,12 +1,12 @@
+ prefix=${CMAKE_INSTALL_PREFIX}
+ exec_prefix=${CMAKE_INSTALL_PREFIX}
+-libdir=${LIB_INSTALL_DIR}
+-includedir=${INCLUDE_INSTALL_DIR}
++libdir=${CMAKE_INSTALL_FULL_LIBDIR}
++includedir=${CMAKE_INSTALL_FULL_INCLUDEDIR}
+ 
+ 
+ Name: TagLib C Bindings
+ Description: Audio meta-data library (C bindings)
+ Requires: taglib
+ Version: ${TAGLIB_LIB_VERSION_STRING}
+-Libs: -L${LIB_INSTALL_DIR} -ltag_c
+-Cflags: -I${INCLUDE_INSTALL_DIR}/taglib 
++Libs: -L${CMAKE_INSTALL_FULL_LIBDIR} -ltag_c
++Cflags: -I${CMAKE_INSTALL_FULL_INCLUDEDIR}/taglib
+diff --git a/taglib-config.cmake b/taglib-config.cmake
+index d500fe60..9f251178 100644
+--- a/taglib-config.cmake
++++ b/taglib-config.cmake
+@@ -16,8 +16,8 @@ EOH
+ 
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@LIB_INSTALL_DIR@
+-includedir=@INCLUDE_INSTALL_DIR@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+ 
+ flags=""
+ 
+diff --git a/taglib-config.cmd.cmake b/taglib-config.cmd.cmake
+index 1b807ec8..4e615c5e 100644
+--- a/taglib-config.cmd.cmake
++++ b/taglib-config.cmd.cmake
+@@ -27,8 +27,8 @@ goto theend
+   *       to allow for static, shared or debug builds.
+   * It would be preferable if the top level CMakeLists.txt provided the library name during config. ??
+ :doit
+-if /i "%1#" == "--libs#"    echo -L${LIB_INSTALL_DIR} -llibtag
+-if /i "%1#" == "--cflags#"  echo -I${INCLUDE_INSTALL_DIR} -I${INCLUDE_INSTALL_DIR}/taglib
++if /i "%1#" == "--libs#"    echo -L${CMAKE_INSTALL_FULL_LIBDIR} -llibtag
++if /i "%1#" == "--cflags#"  echo -I${CMAKE_INSTALL_FULL_INCLUDEDIR} -I${CMAKE_INSTALL_FULL_INCLUDEDIR}/taglib
+ if /i "%1#" == "--version#" echo ${TAGLIB_LIB_VERSION_STRING}
+ if /i "%1#" == "--prefix#"  echo ${CMAKE_INSTALL_PREFIX}
+ 
+diff --git a/taglib.pc.cmake b/taglib.pc.cmake
+index 71ee09af..4ddabe12 100644
+--- a/taglib.pc.cmake
++++ b/taglib.pc.cmake
+@@ -1,11 +1,11 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@LIB_INSTALL_DIR@
+-includedir=@INCLUDE_INSTALL_DIR@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+ 
+ Name: TagLib
+ Description: Audio meta-data library
+-Requires: 
++Requires:
+ Version: @TAGLIB_LIB_VERSION_STRING@
+ Libs: -L${libdir} -ltag @ZLIB_LIBRARIES_FLAGS@
+ Cflags: -I${includedir} -I${includedir}/taglib
+diff --git a/taglib/CMakeLists.txt b/taglib/CMakeLists.txt
+index 563583ef..527c0073 100644
+--- a/taglib/CMakeLists.txt
++++ b/taglib/CMakeLists.txt
+@@ -344,7 +344,7 @@ endif()
+ set_target_properties(tag PROPERTIES
+   VERSION ${TAGLIB_SOVERSION_MAJOR}.${TAGLIB_SOVERSION_MINOR}.${TAGLIB_SOVERSION_PATCH}
+   SOVERSION ${TAGLIB_SOVERSION_MAJOR}
+-  INSTALL_NAME_DIR ${LIB_INSTALL_DIR}
++  INSTALL_NAME_DIR ${CMAKE_INSTALL_LIBDIR}
+   DEFINE_SYMBOL MAKE_TAGLIB_LIB
+   LINK_INTERFACE_LIBRARIES ""
+   PUBLIC_HEADER "${tag_HDRS}"
+@@ -365,8 +365,8 @@ endif()
+ 
+ install(TARGETS tag
+   FRAMEWORK DESTINATION ${FRAMEWORK_INSTALL_DIR}
+-  LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+-  RUNTIME DESTINATION ${BIN_INSTALL_DIR}
+-  ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
+-  PUBLIC_HEADER DESTINATION ${INCLUDE_INSTALL_DIR}/taglib
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/taglib
+ )
+-- 
+2.30.1
+
+
+From b23eb1f4208ca8a5806648bf1a442c55a06aeeae Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 15 Feb 2021 23:31:00 +0100
+Subject: [PATCH 4/7] Use FeatureSummary for a nice CMake summary output
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fb047350..0370bd05 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,6 +5,7 @@ project(taglib)
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
+ 
+ include(CTest)
++include(FeatureSummary)
+ include(GNUInstallDirs)
+ 
+ if(DEFINED ENABLE_STATIC)
+@@ -173,3 +174,5 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in" "${CMAKE_C
+ if(NOT TARGET uninstall)
+   add_custom_target(uninstall COMMAND "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
+ endif()
++
++feature_summary(WHAT ALL   FATAL_ON_MISSING_REQUIRED_PACKAGES)
+-- 
+2.30.1
+
+
+From bcdae81dee3ff7e044e862b31f92b4a281fa19d1 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 15 Feb 2021 23:44:11 +0100
+Subject: [PATCH 5/7] Just set CMAKE_MODULE_PATH instead of list(APPEND), drop
+ ENABLE_STATIC err
+
+ENABLE_STATIC error has been there since 2014, that is long enough.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0370bd05..f5b1c479 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,16 +2,12 @@ cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
+ 
+ project(taglib)
+ 
+-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
++set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
+ 
+ include(CTest)
+ include(FeatureSummary)
+ include(GNUInstallDirs)
+ 
+-if(DEFINED ENABLE_STATIC)
+-  message(FATAL_ERROR "This option is no longer available, use BUILD_SHARED_LIBS instead")
+-endif()
+-
+ option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
+ if(APPLE)
+   option(BUILD_FRAMEWORK "Build an OS X framework" OFF)
+-- 
+2.30.1
+
+
+From 5b94ac436b02ee9280de7fd705e7d02d77bd1a43 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 15 Feb 2021 23:47:26 +0100
+Subject: [PATCH 6/7] Install examples after we selected to build them
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ examples/CMakeLists.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/examples/CMakeLists.txt b/examples/CMakeLists.txt
+index f991739d..2360ada0 100644
+--- a/examples/CMakeLists.txt
++++ b/examples/CMakeLists.txt
+@@ -38,3 +38,8 @@ target_link_libraries(framelist tag)
+ add_executable(strip-id3v1 strip-id3v1.cpp)
+ target_link_libraries(strip-id3v1 tag)
+ 
++install(TARGETS tagreader tagreader_c tagwriter framelist strip-id3v1
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++)
+-- 
+2.30.1
+
+
+From b8ee92c5b53df4259fae6499a7e1f9d1cb275a85 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 16 Feb 2021 00:19:05 +0100
+Subject: [PATCH 7/7] Install taglib.png icon into html folder structure
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt      | 2 +-
+ doc/api-header.html | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f5b1c479..759b23c9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -161,7 +161,7 @@ if(BUILD_EXAMPLES)
+ endif()
+ 
+ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.cmake" "${CMAKE_CURRENT_BINARY_DIR}/Doxyfile")
+-file(COPY doc/taglib.png DESTINATION doc)
++file(COPY doc/taglib.png DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/doc/html)
+ add_custom_target(docs doxygen)
+ 
+ # uninstall target
+diff --git a/doc/api-header.html b/doc/api-header.html
+index ab133c25..52617513 100644
+--- a/doc/api-header.html
++++ b/doc/api-header.html
+@@ -12,7 +12,7 @@
+       <table border="0" width="100%">
+           <tr>
+             <td width="1">
+-              <img src="../taglib.png">
++              <img src="taglib.png">
+             </td>
+             <td>
+               <div id="intro">
+-- 
+2.30.1
+

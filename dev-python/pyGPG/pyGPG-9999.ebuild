@@ -1,9 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
+
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1
 
@@ -36,7 +38,7 @@ pkg_postinst() {
 	einfo
 	einfo "Please file any enhancement requests, or bugs"
 	einfo "at https://github.com/dol-sen/pyGPG/issues"
-	einfo "I am also on IRC @ #gentoo-keys of the freenode network"
+	einfo "I am also on IRC @ #gentoo-ci of the Libera.Chat network"
 	einfo
 	ewarn "There may be some python 3 compatibility issues still."
 	ewarn "Please help debug/fix/report them in github or bugzilla."

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 RUBY_FAKEGEM_TASK_TEST="NOTURN=true test"
@@ -48,6 +48,8 @@ all_ruby_prepare() {
 		-i Rakefile || die
 
 	# Tweak test setup to only run unit tests since we don't have a live cluster
-	sed -i -e "s/RUBY_VERSION > '1.9'/false/" \
-		-e '/module Elasticsearch/,$ s:^:#:' test/test_helper.rb || die
+	sed -e "s/RUBY_VERSION > '1.9'/false/" \
+		-e '/module Elasticsearch/,$ s:^:#:' \
+		-e '1igem "faraday", "~> 0.9"; gem "patron"' \
+		-i test/test_helper.rb || die
 }

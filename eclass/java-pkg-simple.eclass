@@ -1,11 +1,12 @@
-# Copyright 2004-2020 Gentoo Authors
+# Copyright 2004-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-pkg-simple.eclass
 # @MAINTAINER:
 # java@gentoo.org
 # @AUTHOR:
-# Java maintainers (java@gentoo.org)
+# Java maintainers <java@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Eclass for packaging Java software with ease.
 # @DESCRIPTION:
 # This class is intended to build pure Java packages from Java sources
@@ -15,13 +16,21 @@
 # addressed by an ebuild by putting corresponding files into the target
 # directory before calling the src_compile function of this eclass.
 
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+EXPORT_FUNCTIONS src_compile src_install src_test
+
+if [[ -z ${_JAVA_PKG_SIMPLE_ECLASS} ]] ; then
+_JAVA_PKG_SIMPLE_ECLASS=1
+
 inherit java-utils-2
 
 if ! has java-pkg-2 ${INHERITED}; then
 	eerror "java-pkg-simple eclass can only be inherited AFTER java-pkg-2"
 fi
-
-EXPORT_FUNCTIONS src_compile src_install src_test
 
 # We are only interested in finding all java source files, wherever they may be.
 S="${WORKDIR}"
@@ -157,6 +166,17 @@ fi
 #
 # @CODE
 # JAVA_TESTING_FRAMEWORKS="junit pkgdiff"
+# @CODE
+
+# @ECLASS-VARIABLE: JAVA_TEST_RUN_ONLY
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# A array of classes that should be executed during src_test(). This variable
+# has precedence over JAVA_TEST_EXCLUDES, that is if this variable is set,
+# the other variable is ignored.
+#
+# @CODE
+# JAVA_TEST_RUN_ONLY=( "net.sf.cglib.AllTests" "net.sf.cglib.TestAll" )
 # @CODE
 
 # @ECLASS-VARIABLE: JAVA_TEST_EXCLUDES
@@ -317,7 +337,7 @@ java-pkg-simple_prepend_resources() {
 # If USE FLAG 'binary' exists and is set, it will just copy
 # ${JAVA_BINJAR_FILENAME} to ${S} and skip the rest of src_compile.
 java-pkg-simple_src_compile() {
-	local sources=sources.lst classes=target/classes apidoc=target/api
+	local sources=sources.lst classes=target/classes apidoc=target/api moduleinfo
 
 	# auto generate classpath
 	java-pkg_gen-cp JAVA_GENTOO_CLASSPATH
@@ -335,7 +355,14 @@ java-pkg-simple_src_compile() {
 	fi
 
 	# gather sources
-	find "${JAVA_SRC_DIR[@]}" -name \*.java > ${sources}
+	# if target < 9, we need to compile module-info.java separately
+	# as this feature is not supported before Java 9
+	if [[ java-pkg_get-target -lt 9 ]]; then
+		find "${JAVA_SRC_DIR[@]}" -name \*.java ! -name module-info.java > ${sources}
+		moduleinfo=$(find "${JAVA_SRC_DIR[@]}" -name module-info.java)
+	else
+		find "${JAVA_SRC_DIR[@]}" -name \*.java > ${sources}
+	fi
 
 	# create the target directory
 	mkdir -p ${classes} || die "Could not create target directory"
@@ -345,9 +372,33 @@ java-pkg-simple_src_compile() {
 	java-pkg-simple_getclasspath
 	java-pkg-simple_prepend_resources ${classes} "${JAVA_RESOURCE_DIRS[@]}"
 
-	ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
-		${classpath:+-classpath ${classpath}} ${JAVAC_ARGS}\
-		@${sources}
+	if [[ -n ${moduleinfo} ]] || [[ java-pkg_get-target -lt 9 ]]; then
+		ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+			${classpath:+-classpath ${classpath}} ${JAVAC_ARGS} @${sources}
+	else
+		ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+			${classpath:+--module-path ${classpath}} --module-version ${PV}\
+			${JAVAC_ARGS} @${sources}
+	fi
+
+	# handle module-info.java separately as it needs at least JDK 9
+	if [[ -n ${moduleinfo} ]]; then
+		if java-pkg_is-vm-version-ge "9" ; then
+			local tmp_source=${JAVA_PKG_WANT_SOURCE} tmp_target=${JAVA_PKG_WANT_TARGET}
+
+			JAVA_PKG_WANT_SOURCE="9"
+			JAVA_PKG_WANT_TARGET="9"
+			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+				${classpath:+--module-path ${classpath}} --module-version ${PV}\
+				${JAVAC_ARGS} "${moduleinfo}"
+
+			JAVA_PKG_WANT_SOURCE=${tmp_source}
+			JAVA_PKG_WANT_TARGET=${tmp_target}
+		else
+			ewarn "Need at least JDK 9 to compile module-info.java in src_compile,"
+			ewarn "see https://bugs.gentoo.org/796875"
+		fi
+	fi
 
 	# javadoc
 	if has doc ${JAVA_PKG_IUSE} && use doc; then
@@ -413,7 +464,7 @@ java-pkg-simple_src_install() {
 # It will perform test with frameworks that are defined in
 # ${JAVA_TESTING_FRAMEWORKS}.
 java-pkg-simple_src_test() {
-	local test_sources=test_sources.lst classes=target/test-classes
+	local test_sources=test_sources.lst classes=target/test-classes moduleinfo
 	local tests_to_run classpath
 
 	# do not continue if the USE FLAG 'test' is explicitly unset
@@ -435,33 +486,71 @@ java-pkg-simple_src_test() {
 	java-pkg-simple_prepend_resources ${classes} "${JAVA_TEST_RESOURCE_DIRS[@]}"
 
 	# gathering sources for testing
-	find "${JAVA_TEST_SRC_DIR[@]}" -name \*.java > ${test_sources}
+	# if target < 9, we need to compile module-info.java separately
+	# as this feature is not supported before Java 9
+	if [[ java-pkg_get-target -lt 9 ]]; then
+		find "${JAVA_TEST_SRC_DIR[@]}" -name \*.java ! -name module-info.java > ${test_sources}
+		moduleinfo=$(find "${JAVA_TEST_SRC_DIR[@]}" -name module-info.java)
+	else
+		find "${JAVA_TEST_SRC_DIR[@]}" -name \*.java > ${test_sources}
+	fi
+
 
 	# compile
-	[[ -s ${test_sources} ]] && ejavac -d ${classes} ${JAVAC_ARGS} \
-		-encoding ${JAVA_ENCODING} ${classpath:+-classpath ${classpath}} \
-		@${test_sources}
+	if [[ -s ${test_sources} ]]; then
+		if [[ -n ${moduleinfo} ]] || [[ java-pkg_get-target -lt 9 ]]; then
+			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+				${classpath:+-classpath ${classpath}} ${JAVAC_ARGS} @${test_sources}
+		else
+			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+				${classpath:+--module-path ${classpath}} --module-version ${PV}\
+				${JAVAC_ARGS} @${test_sources}
+		fi
+	fi
+
+	# handle module-info.java separately as it needs at least JDK 9
+	if [[ -n ${moduleinfo} ]]; then
+		if java-pkg_is-vm-version-ge "9" ; then
+			local tmp_source=${JAVA_PKG_WANT_SOURCE} tmp_target=${JAVA_PKG_WANT_TARGET}
+
+			JAVA_PKG_WANT_SOURCE="9"
+			JAVA_PKG_WANT_TARGET="9"
+			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+				${classpath:+--module-path ${classpath}} --module-version ${PV}\
+				${JAVAC_ARGS} "${moduleinfo}"
+
+			JAVA_PKG_WANT_SOURCE=${tmp_source}
+			JAVA_PKG_WANT_TARGET=${tmp_target}
+		else
+			ewarn "Need at least JDK 9 to compile module-info.java in src_test,"
+			ewarn "see https://bugs.gentoo.org/796875"
+		fi
+	fi
 
 	# grab a set of tests that testing framework will run
-	tests_to_run=$(find "${classes}" -type f\
-		\( -name "*Test.class"\
-		-o -name "Test*.class"\
-		-o -name "*Tests.class"\
-		-o -name "*TestCase.class" \)\
-		! -name "*Abstract*"\
-		! -name "*BaseTest*"\
-		! -name "*TestTypes*"\
-		! -name "*TestUtils*"\
-		! -name "*\$*")
-	tests_to_run=${tests_to_run//"${classes}"\/}
-	tests_to_run=${tests_to_run//.class}
-	tests_to_run=${tests_to_run//\//.}
+	if [[ -n ${JAVA_TEST_RUN_ONLY} ]]; then
+		tests_to_run="${JAVA_TEST_RUN_ONLY[@]}"
+	else
+		tests_to_run=$(find "${classes}" -type f\
+			\( -name "*Test.class"\
+			-o -name "Test*.class"\
+			-o -name "*Tests.class"\
+			-o -name "*TestCase.class" \)\
+			! -name "*Abstract*"\
+			! -name "*BaseTest*"\
+			! -name "*TestTypes*"\
+			! -name "*TestUtils*"\
+			! -name "*\$*")
+		tests_to_run=${tests_to_run//"${classes}"\/}
+		tests_to_run=${tests_to_run//.class}
+		tests_to_run=${tests_to_run//\//.}
 
-	# exclude extra test classes, usually corner cases
-	# that the code above cannot handle
-	for class in "${JAVA_TEST_EXCLUDES[@]}"; do
-		tests_to_run=${tests_to_run//${class}}
-	done
+		# exclude extra test classes, usually corner cases
+		# that the code above cannot handle
+		for class in "${JAVA_TEST_EXCLUDES[@]}"; do
+			tests_to_run=${tests_to_run//${class}}
+		done
+	fi
 
 	# launch test
 	for framework in ${JAVA_TESTING_FRAMEWORKS}; do
@@ -479,3 +568,5 @@ java-pkg-simple_src_test() {
 		esac
 	done
 }
+
+fi

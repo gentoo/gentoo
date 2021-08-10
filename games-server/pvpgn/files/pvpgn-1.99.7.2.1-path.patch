@@ -1,0 +1,33 @@
+--- a/cmake/Modules/DefineInstallationPaths.cmake
++++ b/cmake/Modules/DefineInstallationPaths.cmake
+@@ -37,8 +37,8 @@
+   )
+ else()
+   SET(LOCALSTATE_INSTALL_DIR
+-    "${EXEC_INSTALL_PREFIX}/var/${APPLICATION_NAME}"
+-    CACHE PATH "The ${APPLICATION_NAME} local state install dir (default prefix/var)"
++    "/var/${APPLICATION_NAME}"
++    CACHE PATH "The ${APPLICATION_NAME} local state install dir (default /var)"
+     FORCE
+   )
+ endif()
+@@ -75,4 +75,4 @@
+     CACHE PATH "The ${APPLICATION_NAME} sysconfig install dir (default prefix/etc)"
+     FORCE
+   )
+-endif()
+\ No newline at end of file
++endif()
+--- a/cmake/Modules/DefineInstallationPaths.cmake
++++ b/cmake/Modules/DefineInstallationPaths.cmake
+@@ -71,8 +71,8 @@
+   )
+ else()
+   SET(SYSCONF_INSTALL_DIR
+-    "${EXEC_INSTALL_PREFIX}/etc/${APPLICATION_NAME}"
+-    CACHE PATH "The ${APPLICATION_NAME} sysconfig install dir (default prefix/etc)"
++    "/etc/${APPLICATION_NAME}"
++    CACHE PATH "The ${APPLICATION_NAME} sysconfig install dir (default /etc)"
+     FORCE
+   )
+ endif()

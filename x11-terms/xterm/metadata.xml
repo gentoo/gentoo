@@ -10,4 +10,7 @@
 		<flag name="sixel">Enable sixel graphics support</flag>
 		<flag name="toolbar">Enable the xterm toolbar to be built</flag>
 	</use>
+	<upstream>
+		<changelog>https://invisible-island.net/xterm/xterm.log.html</changelog>
+	</upstream>
 </pkgmetadata>

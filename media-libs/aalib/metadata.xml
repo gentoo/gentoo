@@ -5,8 +5,8 @@
 		<email>media-video@gentoo.org</email>
 	</maintainer>
 	<maintainer type="person">
-		<email>slyfox@gentoo.org</email>
-		<name>Sergei Trofimovich</name>
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">aa-project</remote-id>

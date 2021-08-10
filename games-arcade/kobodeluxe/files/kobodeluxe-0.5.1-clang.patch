@@ -1,0 +1,22 @@
+--- a/filemap.cpp
++++ b/filemap.cpp
+@@ -851,7 +851,7 @@
+ 	while(k)
+ 	{
+ 		if(strcmp(k->key, key) == 0 || all)
+-			fprintf(f, "%s"FM_DEREF_TOKEN" --> \"%s\"\n", k->key, k->path);
++			fprintf(f, "%s" FM_DEREF_TOKEN " --> \"%s\"\n", k->key, k->path);
+ 		k = k->next;
+ 	}
+ }
+--- a/prefs.cpp
++++ b/prefs.cpp
+@@ -30,7 +30,7 @@
+ void prefs_t::init()
+ {
+ 	comment("--------------------------------------------");
+-	comment(" Kobo Deluxe "VERSION" Configuration File");
++	comment(" Kobo Deluxe " VERSION " Configuration File");
+ 	comment("--------------------------------------------");
+ 	comment(" Switches - [no]<switch>");
+ 	comment(" Values - <key> [<value>|\"<string>\"]");

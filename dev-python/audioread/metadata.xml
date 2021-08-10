@@ -2,6 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		Decode audio files using whichever backend is available. The library currently supports:
 		* Gstreamer via gst-python.
@@ -10,6 +11,7 @@
 		* The standard library wave and aifc modules (for WAV and AIFF files).
 	</longdescription>
 	<upstream>
+		<remote-id type="github">sampsyo/audioread</remote-id>
 		<remote-id type="pypi">audioread</remote-id>
 	</upstream>
 </pkgmetadata>

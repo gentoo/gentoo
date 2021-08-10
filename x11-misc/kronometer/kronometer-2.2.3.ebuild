@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Stopwatch application"
-HOMEPAGE="https://kde.org/applications/utilities/org.kde.kronometer https://userbase.kde.org/Kronometer"
+HOMEPAGE="https://apps.kde.org/en/kronometer https://userbase.kde.org/Kronometer"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2+"

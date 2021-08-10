@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,7 +45,7 @@ src_configure() {
 src_install() {
 	default
 
-	rm "${ED}/usr/$(get_libdir)/libcards.la" || die
+	find "${ED}" -name '*.la' -delete || die
 
 	dodoc docs/*
 	newicon docs/as.gif ${PN}.gif
@@ -53,6 +53,6 @@ src_install() {
 	cd "${ED}/usr/bin" || die
 	local p
 	for p in *; do
-		make_desktop_entry $p "Ace ${p/ace-/}" /usr/share/pixmaps/${PN}.gif
+		make_desktop_entry ${p} "Ace ${p/ace-/}" /usr/share/pixmaps/${PN}.gif
 	done
 }

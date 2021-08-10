@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
@@ -6,7 +6,6 @@
   </maintainer>
   <use>
     <flag name="exceptions">Compile with C++ exceptions</flag>
-    <flag name="man">Build and install man pages</flag>
     <flag name="qthelp">Build API documentation in QtHelp format</flag>
   </use>
   <upstream>

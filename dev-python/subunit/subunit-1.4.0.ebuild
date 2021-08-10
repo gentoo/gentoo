@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} pypy3 )
+PYTHON_COMPAT=( python3_{8..9} pypy3 )
 
-inherit distutils-r1 multilib-minimal
+inherit distutils-r1 multilib-minimal autotools
 
 DESCRIPTION="A streaming protocol for test results"
 HOMEPAGE="https://launchpad.net/subunit https://pypi.org/project/python-subunit/"
@@ -13,7 +13,7 @@ SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -34,6 +34,10 @@ DEPEND="
 		dev-python/testscenarios[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=(
+	"${FILESDIR}/subunit-1.4.0-werror.patch"
+)
+
 src_prepare() {
 	sed -i -e 's/os.chdir(os.path.dirname(__file__))//' setup.py || die
 
@@ -44,7 +48,12 @@ src_prepare() {
 	sed -i -e 's:test_add_tag:_&:' \
 		python/subunit/tests/test_subunit_tags.py || die
 
+	# eliminate unittest2
+	sed -i -e 's:unittest2 as ::' \
+		python/subunit/tests/test_test_protocol.py || die
+
 	distutils-r1_src_prepare
+	eautoreconf
 	multilib_copy_sources
 }
 

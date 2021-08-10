@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="A program to organize many kinds of data in one place"
 HOMEPAGE="http://hnb.sourceforge.net/"
@@ -13,19 +14,21 @@ LICENSE="GPL-2"
 KEYWORDS="amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="sys-libs/ncurses"
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-flags.patch
+	"${FILESDIR}"/${P}-include.patch
+	"${FILESDIR}"/${P}-printf.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_prepare() {
+	default
+
 	rm -r ${P} || die
 	rm src/cli_history.o || die
-
-	epatch \
-		"${FILESDIR}"/${P}-flags.patch \
-		"${FILESDIR}"/${P}-include.patch \
-		"${FILESDIR}"/${P}-printf.patch
 
 	tc-export AR CC PKG_CONFIG
 

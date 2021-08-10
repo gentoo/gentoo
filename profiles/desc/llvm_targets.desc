@@ -7,8 +7,10 @@ ARC - ARC (Argonaut RISC Core) embedded CPU target [EXPERIMENTAL]
 ARM - ARM CPU target
 AVR - 8-bit Atmel AVR microcontroller target [EXPERIMENTAL]
 BPF - Berkeley Packet Filter target
+CSKY - C-SKY CPU target [EXPERIMENTAL]
 Hexagon - Qualcomm Hexagon DSP target
 Lanai - Lanai CPU target
+M68k - Motorola 68000 target [EXPERIMENTAL]
 Mips - MIPS CPU target (includes MIPS64)
 MSP430 - MSP430 CPU target (experimental)
 NVPTX - NVIDIA PTX (GPU) target (32-bit and 64-bit)

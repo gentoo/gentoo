@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,14 +11,13 @@ SRC_URI="https://github.com/cisco/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/1"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ppc ppc64 -sparc x86 ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="aesicm console debug doc libressl openssl static-libs syslog test"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ppc ppc64 -sparc x86 ~ppc-macos ~x64-macos"
+IUSE="aesicm console debug doc openssl static-libs syslog test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	openssl? (
-		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
-		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+		dev-libs/openssl:0=[${MULTILIB_USEDEP}]
 	)
 "
 DEPEND="${RDEPEND}"
@@ -45,6 +44,7 @@ src_prepare() {
 
 	mv configure.in configure.ac || die
 	eautoreconf
+	touch ar-lib || die #775680
 }
 
 multilib_src_configure() {

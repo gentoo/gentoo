@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,6 +14,8 @@ KEYWORDS="~amd64 ~x86"
 VIM_PLUGIN_HELPFILES="${PN}"
 
 RESTRICT="test"
+
+DOCS=( README.md CHANGELOG.md )
 
 src_compile() {
 	# safely skip `make test` triggered by `make` as it runs `go get` commands

@@ -1,0 +1,97 @@
+From e23d7e03637e377591a480d87630b746cdaa377f Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Sat, 22 May 2021 22:27:39 -0700
+Subject: [PATCH] systemd: add weekly and monthly scrub timers
+
+timers can be enabled as follows:
+
+systemctl enable zfs-scrub-weekly@rpool.timer --now
+systemctl enable zfs-scrub-monthly@datapool.timer --now
+
+Each timer will pull in zfs-scrub@${poolname}.service, which is not
+schedule-specific.
+
+Signed-off-by: Georgy Yakovlev <gyakovlev@gentoo.org>
+---
+ etc/systemd/system/Makefile.am                 |  5 ++++-
+ etc/systemd/system/zfs-scrub-monthly@.timer.in | 12 ++++++++++++
+ etc/systemd/system/zfs-scrub-weekly@.timer.in  | 12 ++++++++++++
+ etc/systemd/system/zfs-scrub@.service.in       | 12 ++++++++++++
+ 4 files changed, 40 insertions(+), 1 deletion(-)
+ create mode 100644 etc/systemd/system/zfs-scrub-monthly@.timer.in
+ create mode 100644 etc/systemd/system/zfs-scrub-weekly@.timer.in
+ create mode 100644 etc/systemd/system/zfs-scrub@.service.in
+
+diff --git a/etc/systemd/system/Makefile.am b/etc/systemd/system/Makefile.am
+index c374a52ac..5e65e1db4 100644
+--- a/etc/systemd/system/Makefile.am
++++ b/etc/systemd/system/Makefile.am
+@@ -12,7 +12,10 @@ systemdunit_DATA = \
+ 	zfs-volume-wait.service \
+ 	zfs-import.target \
+ 	zfs-volumes.target \
+-	zfs.target
++	zfs.target \
++	zfs-scrub-monthly@.timer \
++	zfs-scrub-weekly@.timer \
++	zfs-scrub@.service
+ 
+ SUBSTFILES += $(systemdpreset_DATA) $(systemdunit_DATA)
+ 
+diff --git a/etc/systemd/system/zfs-scrub-monthly@.timer.in b/etc/systemd/system/zfs-scrub-monthly@.timer.in
+new file mode 100644
+index 000000000..4c585f45f
+--- /dev/null
++++ b/etc/systemd/system/zfs-scrub-monthly@.timer.in
+@@ -0,0 +1,12 @@
++[Unit]
++Description=Monthly zpool scrub timer for %i
++Documentation=man:zpool-scrub(8)
++
++[Timer]
++OnCalendar=monthly
++AccuracySec=1h
++Persistent=true
++Unit=zfs-scrub@%i.service
++
++[Install]
++WantedBy=timers.target
+diff --git a/etc/systemd/system/zfs-scrub-weekly@.timer.in b/etc/systemd/system/zfs-scrub-weekly@.timer.in
+new file mode 100644
+index 000000000..b2454be2c
+--- /dev/null
++++ b/etc/systemd/system/zfs-scrub-weekly@.timer.in
+@@ -0,0 +1,12 @@
++[Unit]
++Description=Weekly zpool scrub timer for %i
++Documentation=man:zpool-scrub(8)
++
++[Timer]
++OnCalendar=weekly
++AccuracySec=1h
++Persistent=true
++Unit=zfs-scrub@%i.service
++
++[Install]
++WantedBy=timers.target
+diff --git a/etc/systemd/system/zfs-scrub@.service.in b/etc/systemd/system/zfs-scrub@.service.in
+new file mode 100644
+index 000000000..720901165
+--- /dev/null
++++ b/etc/systemd/system/zfs-scrub@.service.in
+@@ -0,0 +1,12 @@
++[Unit]
++Description=zpool scrub on %i
++Documentation=man:zpool-scrub(8)
++Requires=zfs.target
++After=zfs.target
++ConditionPathIsDirectory=/sys/module/zfs
++
++[Service]
++Nice=19
++IOSchedulingClass=idle
++KillSignal=SIGINT
++ExecStart=@sbindir@/zpool scrub %i
+-- 
+2.31.1
+

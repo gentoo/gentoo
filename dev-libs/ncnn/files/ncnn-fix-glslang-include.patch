@@ -1,0 +1,9 @@
+Needed to use system's glslang rather than bundled.
+https://github.com/Tencent/ncnn/issues/2622
+--- a/src/gpu.cpp
++++ b/src/gpu.cpp
+@@ -23,3 +23,3 @@
+ #include "glslang/SPIRV/GlslangToSpv.h"
+-#include "glslang/glslang/Public/ShaderLang.h"
++#include "glslang/Public/ShaderLang.h"
+ 

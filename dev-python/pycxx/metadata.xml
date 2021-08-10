@@ -11,5 +11,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">cxx</remote-id>
+		<remote-id type="pypi">pycxx</remote-id>
 	</upstream>
 </pkgmetadata>

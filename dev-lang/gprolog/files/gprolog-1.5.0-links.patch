@@ -1,0 +1,15 @@
+--- gprolog-1.5.0.orig/src/Makefile.in	2021-07-07 16:06:16.000000000 -0000
++++ gprolog-1.5.0/src/Makefile.in	2021-07-10 11:30:29.130370996 -0000
+@@ -84,10 +84,10 @@
+ 
+ # --- Links --- #
+ 
+-install-links: uninstall-links
++install-links: install-system uninstall-links
+ 	if test $(LINKS_DIR) != none; then \
+ 	   ./mkinstalldirs $(LINKS_DIR); \
+-	   (cd $(LINKS_DIR) ; $(LN_S) $(INSTALL_DIR)/bin/* .); \
++	   (cd $(LINKS_DIR) ; $(LN_S) $(wildcard $(INSTALL_DIR)/bin/*) .); \
+ 	fi
+ 
+ uninstall-links:

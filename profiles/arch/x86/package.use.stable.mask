@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,6 +17,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-07-17)
+# Haskell isn't stable on amd64 (or anywhere)
+# bug #801652
+dev-util/diffoscope haskell
+
+# Sam James <sam@gentoo.org> (2021-03-04)
+# Dependencies not yet stable, drags in
+# large amount of fabric. bug #763954
+sys-block/open-iscsi infiniband
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
 # REQUIRED_USE="base? ( firebird )", dev-db/firebird is not stable
 app-office/libreoffice base
@@ -30,25 +40,10 @@ www-client/firefox screencast
 # sys-cluster/slurm has no stable keywords
 app-metrics/collectd collectd_plugins_slurm
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-04)
-# net-libs/libktorrent:5 is not stable anymore, bug #696858
-kde-apps/kget bittorrent
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-09-13)
-# media-video/pipewire-0.2 will never be stable, to be dropped.
-<dev-libs/weston-9 pipewire
-<sys-apps/xdg-desktop-portal-1.7.2 screencast
-x11-wm/mutter screencast
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-05-21)
-# dev-db/oracle-instantclient ain't stable
-dev-qt/qtsql oci8
-
 # Amy Liffey <amynka@gentoo.org> (2019-01-15)
 # Mask experimental contrib repo
 # (except what's needed by digikam, dilfridge)
 media-libs/opencv contribcvv contribhdf contribsfm contribxfeatures2d gflags glog tesseract
-<media-libs/opencv-4.4.0 contrib contribdnn
 
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # unmask sssd for sudo
@@ -65,17 +60,9 @@ media-gfx/digikam mediaplayer
 # Stable mask dev-ruby/haml test till rails is stabilized.
 dev-ruby/haml test
 
-# Michael Palimaka <kensington@gentoo.org> (2017-09-30)
-# Required dependeny is not stable
-sci-libs/gdal oracle
-
-# NP-Hardass <NP-Hardass@gentoo.org> (2017-09-27)
+# Adam Feldman <NP-Hardass@gentoo.org> (2017-09-27)
 # patchset variants are not stable
 virtual/wine staging
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-03-01)
-# Requires not yet stabilised dev-db/oracle-instantclient.
-sci-geosciences/qgis oracle
 
 # Christoph Junghans <junghans@gentoo.org> (2017-02-26)
 # Stable mask some fabrics (bug #525534)

@@ -1,5 +1,5 @@
---- dungeon.c.old	2016-02-07 20:12:39.258150130 +0100
-+++ dungeon.c	2016-02-07 20:12:58.239805610 +0100
+--- a/dungeon.c	2016-02-07 20:12:39.258150130 +0100
++++ b/dungeon.c	2016-02-07 20:12:58.239805610 +0100
 @@ -1489,7 +1489,7 @@
  	{
  		char buf[20];
@@ -9,8 +9,8 @@
  		cmsg_format(TERM_L_GREEN,
  		            "Today it is %s of the %s year of the third age.",
  		            get_month_name(bst(DAY, turn), wizard, FALSE), buf);
---- files.c.old	2016-02-07 20:15:07.736451417 +0100
-+++ files.c	2016-02-07 20:15:27.595089867 +0100
+--- a/files.c	2016-02-07 20:15:07.736451417 +0100
++++ b/files.c	2016-02-07 20:15:27.595089867 +0100
 @@ -4856,7 +4856,7 @@
  
  	/* Terminate */
@@ -20,8 +20,8 @@
  
  	/* Require a "base" name */
  	if (!player_base[0]) strcpy(player_base, "PLAYER");
---- lua_bind.c.old	2016-02-07 20:09:29.071592178 +0100
-+++ lua_bind.c	2016-02-07 20:10:48.094164373 +0100
+--- a/lua_bind.c	2016-02-07 20:09:29.071592178 +0100
++++ b/lua_bind.c	2016-02-07 20:10:48.094164373 +0100
 @@ -490,7 +490,7 @@
  /* Files */
  void lua_print_hook(cptr str)
@@ -31,8 +31,8 @@
  }
  
  
---- plots.c.old	2016-02-07 20:11:35.389308152 +0100
-+++ plots.c	2016-02-07 20:12:19.247513152 +0100
+--- a/plots.c	2016-02-07 20:11:35.389308152 +0100
++++ b/plots.c	2016-02-07 20:12:19.247513152 +0100
 @@ -93,7 +93,7 @@
  	{
  		MAKE(new, hooks_chain);
@@ -42,8 +42,8 @@
  #ifdef DEBUG_HOOK
  		if (wizard) cmsg_format(TERM_VIOLET, "HOOK ADD: %s", name);
  		if (take_notes) add_note(format("HOOK ADD: %s", name), 'D');
---- spells1.c.old	2016-02-07 20:15:47.277731397 +0100
-+++ spells1.c	2016-02-07 20:16:03.373438169 +0100
+--- a/spells1.c	2016-02-07 20:15:47.277731397 +0100
++++ b/spells1.c	2016-02-07 20:16:03.373438169 +0100
 @@ -7312,7 +7312,7 @@
  
  	if (who == -2)
@@ -53,8 +53,8 @@
  	}
  
  	/* Analyze the damage */
---- squeltch.c.old	2016-02-07 20:13:11.872558078 +0100
-+++ squeltch.c	2016-02-07 20:13:42.707997918 +0100
+--- a/squeltch.c	2016-02-07 20:13:11.872558078 +0100
++++ b/squeltch.c	2016-02-07 20:13:42.707997918 +0100
 @@ -399,7 +399,7 @@
  
  				if (!max) continue;
@@ -64,8 +64,8 @@
  				if (input_box("New name?", hgt / 2, wid / 2, name, 15))
  				{
  					exec_lua(format("auto_aux:rename_rule(%d, '%s')", sel, name));
---- util.c.old	2016-02-07 20:14:22.786269296 +0100
-+++ util.c	2016-02-07 20:16:44.227693551 +0100
+--- a/util.c	2016-02-07 20:14:22.786269296 +0100
++++ b/util.c	2016-02-07 20:16:44.227693551 +0100
 @@ -4468,7 +4468,7 @@
  		{
  			char buf2[20];

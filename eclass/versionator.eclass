@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: versionator.eclass
@@ -7,6 +7,7 @@
 # base-system@gentoo.org
 # @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: functions which simplify manipulation of ${PV} and similar version strings
+# @DEPRECATED: ver_* functions from EAPI 7
 # @DESCRIPTION:
 # This eclass provides functions which simplify manipulating $PV and similar
 # variables. Most functions default to working with $PV, although other

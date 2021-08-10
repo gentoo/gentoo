@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="SIFT algorithm for automatic panorama creation in C"
 HOMEPAGE="http://hugin.sourceforge.net/ http://user.cs.tu-berlin.de/~nowozin/autopano-sift/"
@@ -25,4 +25,7 @@ RDEPEND="${DEPEND}
 	!media-gfx/autopano-sift
 "
 
-PATCHES=( "${FILESDIR}"/${P}-lm.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-lm.patch
+	"${FILESDIR}"/${P}-include-order.patch # bug 759514
+)

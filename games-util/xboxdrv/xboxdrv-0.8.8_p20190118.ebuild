@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit linux-info python-any-r1 scons-utils toolchain-funcs systemd udev
 
@@ -37,6 +37,11 @@ BDEPEND="
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 CONFIG_CHECK="~INPUT_EVDEV ~INPUT_JOYDEV ~INPUT_UINPUT ~!JOYSTICK_XPAD"
+
+pkg_setup() {
+	linux-info_pkg_setup
+	python_setup
+}
 
 src_prepare() {
 	default

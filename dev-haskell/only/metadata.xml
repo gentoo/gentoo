@@ -11,8 +11,8 @@
 		
 		NOTE: There is also the &lt;/package/OneTuple OneTuple package&gt; which
 		by using a boxed @data@-type provides a 1-tuple type which has
-		laziness properties which are more faithful to the ones of Haskell&#39;s
-		native tuples; whereas the primary purpose of &#39;Only&#39; is to
+		laziness properties which are more faithful to the ones of Haskell's
+		native tuples; whereas the primary purpose of 'Only' is to
 		provide the traditionally so named type-wrapper for attaching typeclass
 		instances.
 	</longdescription>

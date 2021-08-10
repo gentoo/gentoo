@@ -1,5 +1,25 @@
---- xqf-xqf-1.0.6.2/src/Makefile.am
-+++ xqf-xqf-1.0.6.2/src/Makefile.am
+--- a/configure.in
++++ b/configure.in
+@@ -23,6 +23,7 @@
+ AC_ISC_POSIX
+ AC_PROG_LN_S
+ AC_PROG_RANLIB
++AM_PROG_AR
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -21,6 +21,7 @@
+ #src/rc.c
+ src/rcon.c
+ src/redial.c
++src/scripts.c
+ #src/server.c
+ #src/skin.c
+ #src/skin_pcx.c
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -41,6 +41,7 @@
  	    $(GEOIP_LIB) \
  	    $(PACKAGE_LIBS) \

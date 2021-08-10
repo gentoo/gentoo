@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit gnome2-utils
+inherit gnome2-utils toolchain-funcs
 
 DESCRIPTION="GTK+ 3 Hangul Input Modules"
 HOMEPAGE="https://github.com/libhangul/imhangul"
@@ -28,7 +28,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --with-gtk-im-module-dir="${EPREFIX}"/usr/$(get_libdir)/gtk-3.0/$(pkg-config gtk+-3.0 --variable=gtk_binary_version)/immodules
+	econf --with-gtk-im-module-dir="${EPREFIX}"/usr/$(get_libdir)/gtk-3.0/$($(tc-getPKG_CONFIG) gtk+-3.0 --variable=gtk_binary_version)/immodules
 }
 
 src_install() {

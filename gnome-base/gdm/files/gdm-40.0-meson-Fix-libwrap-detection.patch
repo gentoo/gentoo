@@ -1,0 +1,28 @@
+https://gitlab.gnome.org/GNOME/gdm/-/merge_requests/142
+
+From c713ace4c71a6804734ba5b1bca4abde11ab90d1 Mon Sep 17 00:00:00 2001
+From: Bernd Feige <Bernd.Feige@gmx.net>
+Date: Wed, 19 May 2021 11:28:07 -0700
+Subject: [PATCH] meson: Fix libwrap detection
+
+Bug: https://bugs.gentoo.org/790671
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 0266a938..a490a725 100644
+--- a/meson.build
++++ b/meson.build
+@@ -90,7 +90,7 @@ else
+ endif
+ xdmcp_dep = cc.find_library('Xdmcp', required: get_option('xdmcp'))
+ if xdmcp_dep.found() and get_option('tcp-wrappers')
+-  libwrap_dep = cc.find_library('libwrap')
++  libwrap_dep = cc.find_library('wrap')
+ endif
+ # systemd
+ systemd_dep = dependency('systemd')
+-- 
+2.26.3
+

@@ -1,9 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils git-r3 multilib toolchain-funcs readme.gentoo
+LUA_COMPAT=( lua5-{1..2} )
+
+inherit git-r3 lua-single toolchain-funcs readme.gentoo-r1
 
 DESCRIPTION="Notion is a tiling, tabbed window manager for the X window system"
 HOMEPAGE="https://notionwm.net/"
@@ -14,24 +16,27 @@ SLOT="0"
 KEYWORDS=""
 IUSE="nls xinerama +xrandr"
 
-RDEPEND=">=dev-lang/lua-5.1:0=
+RDEPEND="${LUA_DEPS}
 	x11-libs/libSM
 	x11-libs/libX11
 	x11-libs/libXext
 	nls? ( sys-devel/gettext )
 	xinerama? ( x11-libs/libXinerama )
 	xrandr? ( x11-libs/libXrandr )"
-DEPEND="${RDEPEND}
-		virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+# luac is called at build time
+BDEPEND="${LUA_DEPS}
+	virtual/pkgconfig"
 
 # mod_xrandr references mod_xinerama
-REQUIRED_USE="xrandr? ( xinerama )"
+REQUIRED_USE="${LUA_REQUIRED_USE}
+	xrandr? ( xinerama )"
 
-# needs luaposix,slingshot,... not in tree
+# needs slingshot,... not in tree
 RESTRICT=test
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-3_p2015061300-pkg-config.patch"
+	default
 
 	sed -e "/^CFLAGS/{s: =: +=: ; s:-Os:: ; s:-g::}" \
 		-e "/^LDFLAGS/{s: =: +=: ; s:-Wl,--as-needed::}" \
@@ -41,21 +46,21 @@ src_prepare() {
 
 src_configure() {
 	{	echo "CFLAGS += -D_DEFAULT_SOURCE"
-		echo "PREFIX=${ROOT}usr"
+		echo "PREFIX=${EROOT}/usr"
 		echo "DOCDIR=\$(PREFIX)/share/doc/${PF}"
-		echo "ETCDIR=${ROOT}etc/${PN}"
+		echo "ETCDIR=${EROOT}/etc/${PN}"
 		echo "LIBDIR=\$(PREFIX)/$(get_libdir)"
-		echo "VARDIR=${ROOT}var/cache/${PN}"
-		echo "X11_PREFIX=${ROOT}usr"
+		echo "VARDIR=${EROOT}/var/cache/${PN}"
+		echo "X11_PREFIX=${EROOT}/usr"
 		echo "STRIPPROG=true"
 		echo "CC=$(tc-getCC)"
 		echo "AR=$(tc-getAR)"
 		echo "RANLIB=$(tc-getRANLIB)"
 		echo "LUA_MANUAL=1"
-		echo "LUA=\$(BINDIR)/lua"
-		echo "LUAC=\$(BINDIR)/luac"
-		echo "LUA_LIBS=\$(shell pkg-config --libs lua)"
-		echo "LUA_INCLUDES=\$(shell pkg-config --cflags)"
+		echo "LUA=${LUA}"
+		echo "LUAC=luac"
+		echo "LUA_LIBS=$(lua_get_LIBS)"
+		echo "LUA_INCLUDES=$(lua_get_CFLAGS)"
 		use nls || echo "DEFINES+=-DCF_NO_LOCALE -DCF_NO_GETTEXT"
 	} > system-local.mk
 
@@ -79,7 +84,11 @@ src_install() {
 	insinto /usr/share/xsessions
 	doins "${FILESDIR}"/notion.desktop
 
-	readme.gentoo_src_install
+	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
 
 DOC_CONTENTS="If you want notion to have an ability to view a file based on its

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Organize your Mouse types in libraries"
 
 SLOT="0"
-KEYWORDS="amd64 hppa ~ppc ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

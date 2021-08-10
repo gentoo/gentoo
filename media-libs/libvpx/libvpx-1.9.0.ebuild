@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -21,7 +21,7 @@ SRC_URI="https://github.com/webmproject/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="BSD"
 SLOT="0/6"
-KEYWORDS="amd64 arm arm64 ~ia64 ~ppc ~ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc +highbitdepth postproc static-libs svc test +threads"
 
 REQUIRED_USE="test? ( threads )"
@@ -104,7 +104,9 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	# build verbose by default and do not build examples that will not be installed
-	emake verbose=yes GEN_EXAMPLES=
+	# disable stripping of debug info, bug #752057
+	# (only works as long as upstream does not use non-gnu strip)
+	emake verbose=yes GEN_EXAMPLES= HAVE_GNU_STRIP=no
 }
 
 multilib_src_test() {

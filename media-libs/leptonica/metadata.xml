@@ -13,4 +13,7 @@
 		containing software that is broadly useful for image
 		processing and image analysis applications.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">danbloomberg/leptonica</remote-id>
+	</upstream>
 </pkgmetadata>

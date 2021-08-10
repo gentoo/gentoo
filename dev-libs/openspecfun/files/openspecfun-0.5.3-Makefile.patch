@@ -1,0 +1,67 @@
+--- a/Makefile
++++ b/Makefile
+@@ -35,9 +35,7 @@
+ endif
+ endif
+ 
+-all: libopenspecfun.a libopenspecfun.$(OSF_MAJOR_MINOR_SHLIB_EXT)
+-libopenspecfun.a: $(OBJS)
+-	$(AR) -rcs libopenspecfun.a $(OBJS)
++all: libopenspecfun.$(OSF_MAJOR_MINOR_SHLIB_EXT)
+ libopenspecfun.$(OSF_MAJOR_MINOR_SHLIB_EXT): $(OBJS)
+ 	$(FC) -shared $(OBJS) $(LDFLAGS) $(LDFLAGS_add) -Wl,$(SONAME_FLAG),libopenspecfun.$(OSF_MAJOR_SHLIB_EXT) -o $@
+ ifneq ($(OS),WINNT)
+@@ -50,7 +48,6 @@
+ 	mkdir -p $(DESTDIR)$(libdir)
+ 	mkdir -p $(DESTDIR)$(includedir)
+ 	cp -a libopenspecfun.*$(SHLIB_EXT)* $(DESTDIR)$(shlibdir)/
+-	cp -a libopenspecfun.a $(DESTDIR)$(libdir)/
+ 	cp -a Faddeeva/Faddeeva.h $(DESTDIR)$(includedir)
+ 
+ clean:
+--- a/Make.inc
++++ b/Make.inc
+@@ -14,42 +14,18 @@
+ libdir = $(prefix)/lib
+ includedir = $(prefix)/include
+ 
+-FC = gfortran
+ # CFLAGS_add and FFLAGS_add are flags that we always want to include
+ # They are not overridable by the user, whereas CFLAGS and FFLAGS are
+ # simply defaults and are overridable via environment variables or
+ # `make CFLAGS="foo"` on the command line
+ 
+-FFLAGS = -O3
+-CFLAGS = -std=c99 -Wall -O3
+-CPPFLAGS =
++CFLAGS += -std=c99 -Wall
+ 
+ override FFLAGS_add =
+ override CFLAGS_add =
+ override CPPFLAGS_add =
+ override LDFLAGS_add =
+ 
+-USEGCC = 1
+-USECLANG = 0
+-
+-ifeq ($(OS), Darwin)
+-USEGCC = 0
+-USECLANG = 1
+-endif
+-
+-AR = ar
+-
+-ifeq ($(USECLANG),1)
+-USEGCC = 0
+-CC = clang
+-override CFLAGS_add += -fno-builtin
+-endif
+-
+-ifeq ($(USEGCC),1)
+-CC = gcc
+-override CFLAGS_add += -fno-gnu89-inline -std=c99
+-endif
+-
+ ARCH := $(shell $(CC) -dumpmachine | sed "s/\([^-]*\).*$$/\1/")
+ ifeq ($(ARCH),mingw32)
+ $(error "the mingw32 compiler you are using fails the openblas testsuite. please see the Julia README.windows.md document for a replacement")

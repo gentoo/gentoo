@@ -1,0 +1,96 @@
+From b6ba1f2b1feda529eca20fb8980f7c6c52397df6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 10 May 2018 08:01:08 +0200
+Subject: [PATCH] posix: Also force common toolchain vars for Gentoo
+
+---
+ SCons/Platform/posix.py | 21 +++++++++++++++++++++
+ SCons/Tool/cc.py        |  3 ++-
+ SCons/Tool/cxx.py       |  3 ++-
+ SCons/Tool/link.py      |  3 ++-
+ 4 files changed, 27 insertions(+), 3 deletions(-)
+
+diff --git a/src/SCons/Platform/posix.py b/src/SCons/Platform/posix.py
+index 37cd2377f..1246781de 100644
+--- a/src/SCons/Platform/posix.py
++++ b/src/SCons/Platform/posix.py
+@@ -33,6 +33,7 @@ import subprocess
+ from SCons.Platform import TempFileMunge
+ from SCons.Platform.virtualenv import ImportVirtualenv
+ from SCons.Platform.virtualenv import ignore_virtualenv, enable_virtualenv
++import SCons.Util
+ 
+ exitvalmap = {
+     2 : 127,
+@@ -86,6 +87,26 @@ def generate(env):
+         if 'ENV' in env:
+             new_env.update(env['ENV'])
+         env['ENV'] = new_env
++
++        # Furthermore, force common compiler/linker variables as well
++        envvar_mapping = {
++            'AR': 'AR',
++            'AS': 'AS',
++            'ASFLAGS': 'ASFLAGS',
++            'CC': 'CC',
++            'CXX': 'CXX',
++            'CFLAGS': 'CFLAGS',
++            'CXXFLAGS': 'CXXFLAGS',
++            'CPPFLAGS': 'CPPFLAGS',
++            'LDFLAGS': 'LINKFLAGS',
++        }
++
++        for envvar, toolvar in envvar_mapping.items():
++            if toolvar not in env and envvar in env['ENV']:
++                val = env['ENV'][envvar]
++                if toolvar.endswith('FLAGS'):
++                    val = SCons.Util.CLVar(val)
++                env[toolvar] = val
+     else:
+         if 'ENV' not in env:
+             env['ENV']        = {}
+diff --git a/src/SCons/Tool/cc.py b/src/SCons/Tool/cc.py
+index 590ec5fd3..5f9229a02 100644
+--- a/src/SCons/Tool/cc.py
++++ b/src/SCons/Tool/cc.py
+@@ -80,7 +80,8 @@ def generate(env):
+ 
+     if 'CC' not in env:
+         env['CC']    = env.Detect(compilers) or compilers[0]
+-    env['CFLAGS']    = SCons.Util.CLVar('')
++    if 'CFLAGS' not in env:
++        env['CFLAGS'] = SCons.Util.CLVar('')
+     env['CCCOM']     = '$CC -o $TARGET -c $CFLAGS $CCFLAGS $_CCCOMCOM $SOURCES'
+     env['SHCC']      = '$CC'
+     env['SHCFLAGS'] = SCons.Util.CLVar('$CFLAGS')
+diff --git a/src/SCons/Tool/cxx.py b/src/SCons/Tool/cxx.py
+index 128cdc4f6..1f852b64c 100644
+--- a/src/SCons/Tool/cxx.py
++++ b/src/SCons/Tool/cxx.py
+@@ -69,7 +69,8 @@ def generate(env):
+ 
+     if 'CXX' not in env:
+         env['CXX']    = env.Detect(compilers) or compilers[0]
+-    env['CXXFLAGS']   = SCons.Util.CLVar('')
++    if 'CXXFLAGS' not in env:
++        env['CXXFLAGS'] = SCons.Util.CLVar('')
+     env['CXXCOM']     = '$CXX -o $TARGET -c $CXXFLAGS $CCFLAGS $_CCCOMCOM $SOURCES'
+     env['SHCXX']      = '$CXX'
+     env['SHCXXFLAGS'] = SCons.Util.CLVar('$CXXFLAGS')
+diff --git a/src/SCons/Tool/link.py b/src/SCons/Tool/link.py
+index 24d17a31f..4ea9917e8 100644
+--- a/src/SCons/Tool/link.py
++++ b/src/SCons/Tool/link.py
+@@ -49,7 +49,8 @@ def generate(env):
+ 
+     env['SMARTLINK'] = smart_link
+     env['LINK'] = "$SMARTLINK"
+-    env['LINKFLAGS'] = SCons.Util.CLVar('')
++    if 'LINKFLAGS' not in env:
++        env['LINKFLAGS'] = SCons.Util.CLVar('')
+ 
+     # __RPATH is only set to something ($_RPATH typically) on platforms that support it.
+     env['LINKCOM'] = '$LINK -o $TARGET $LINKFLAGS $__RPATH $SOURCES $_LIBDIRFLAGS $_LIBFLAGS'
+-- 
+2.32.0
+

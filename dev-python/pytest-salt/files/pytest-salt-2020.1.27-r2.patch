@@ -1,0 +1,14 @@
+Fixes a Doctestitem has no attribute 'fixturenames'
+Fix by David Denoncin based on https://github.com/saltstack/pytest-salt/issues/48
+
+--- a/pytestsalt/fixtures/daemons.py  2021-03-02 15:19:40.500254583 +0100
++++ b/pytestsalt/fixtures/daemons.py	2021-03-02 15:20:40.706920871 +0100
+@@ -1658,7 +1658,6 @@
+     Fixtures injection based on markers
+     '''
+     for fixture in ('salt_master', 'salt_minion', 'salt_call', 'salt', 'salt_key', 'salt_run'):
+-        if fixture in item.fixturenames:
+-            after_start_fixture = '{}_after_start'.format(fixture)
++        if fixture in getattr(item, 'fixturenames', ()):
+             if after_start_fixture not in item.fixturenames:
+                 item.fixturenames.append(after_start_fixture)

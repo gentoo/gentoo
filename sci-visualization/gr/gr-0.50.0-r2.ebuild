@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,15 +18,15 @@ DEPEND="
 	dev-qt/qtgui:5
 	media-libs/fontconfig
 	media-libs/glfw
-	media-libs/libjpeg-turbo
-	media-libs/libpng
-	media-libs/qhull
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
+	media-libs/qhull:=
 	sys-libs/zlib
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXt
 	cairo? ( x11-libs/cairo )
-	ffmpeg? ( media-video/ffmpeg )
+	ffmpeg? ( media-video/ffmpeg:= )
 	postscript? ( app-text/ghostscript-gpl )
 	tiff? ( media-libs/tiff )
 	truetype? ( media-libs/freetype )

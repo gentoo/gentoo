@@ -1,0 +1,148 @@
+From 82931a1bcb39d5132910c7fb2ddc086c51d06662 Mon Sep 17 00:00:00 2001
+From: John Wolfe <jwolfe@vmware.com>
+Date: Mon, 19 Apr 2021 11:08:10 -0700
+Subject: [PATCH] Fix issues using GCC 11 with gtk >= 3.20 and glib >=2.66.3
+
+With glib2.0 releases >= 2.66.3, glib header files inside an
+extern "C" block will encounter compilation errors.  This has
+impacted several OSS packages.  Consumers of newer versions of glib2.0
+must not include glib headers in an extern "C" block.
+
+GTK 3.20 has deprecated gdk_display_get_device_manager(); using the
+newer gdk_display_get_default_seat() when the GTK version is >= 3.20.
+
+The return value from read() must be used to avoid an unused result
+warning from the compiler.  This can be avoided by using dummy retyping
+in the case where the return value is not used or in this case, using
+the returned value in a debug log message.
+
+Pull Request: https://github.com/vmware/open-vm-tools/pull/505
+Addresses:    https://github.com/vmware/open-vm-tools/issues/500
+Addresses:    https://github.com/vmware/open-vm-tools/issues/509
+---
+ open-vm-tools/AUTHORS                                 |  3 +++
+ open-vm-tools/lib/include/tracer.hh                   |  4 +---
+ .../services/plugins/dndcp/copyPasteUIX11.cpp         |  3 ++-
+ .../plugins/dndcp/dndGuest/dndCPTransportGuestRpc.hpp |  6 +++---
+ open-vm-tools/services/plugins/dndcp/dndUIX11.cpp     | 11 +++++++++--
+ open-vm-tools/services/plugins/dndcp/dndcp.cpp        |  7 ++++++-
+ 6 files changed, 24 insertions(+), 10 deletions(-)
+
+diff --git a/open-vm-tools/lib/include/tracer.hh b/open-vm-tools/lib/include/tracer.hh
+index 697caedbc..e9ae892cb 100644
+--- a/open-vm-tools/lib/include/tracer.hh
++++ b/open-vm-tools/lib/include/tracer.hh
+@@ -1,5 +1,5 @@
+ /*********************************************************
+- * Copyright (C) 2013-2017 VMware, Inc. All rights reserved.
++ * Copyright (C) 2013-2017,2021 VMware, Inc. All rights reserved.
+  *
+  * This program is free software; you can redistribute it and/or modify it
+  * under the terms of the GNU Lesser General Public License as published
+@@ -28,9 +28,7 @@
+ 
+ #include "vm_basic_defs.h"
+ 
+-extern "C" {
+ #include "glib.h"
+-}
+ 
+ 
+ #ifdef VMX86_DEVEL
+diff --git a/open-vm-tools/services/plugins/dndcp/copyPasteUIX11.cpp b/open-vm-tools/services/plugins/dndcp/copyPasteUIX11.cpp
+index 68212ab8b..080dc3d76 100644
+--- a/open-vm-tools/services/plugins/dndcp/copyPasteUIX11.cpp
++++ b/open-vm-tools/services/plugins/dndcp/copyPasteUIX11.cpp
+@@ -1,5 +1,5 @@
+ /*********************************************************
+- * Copyright (C) 2009-2020 VMware, Inc. All rights reserved.
++ * Copyright (C) 2009-2021 VMware, Inc. All rights reserved.
+  *
+  * This program is free software; you can redistribute it and/or modify it
+  * under the terms of the GNU Lesser General Public License as published
+@@ -1666,6 +1666,7 @@ CopyPasteUIX11::FileBlockMonitorThread(void *arg)   // IN
+       char buf[sizeof(VMBLOCK_FUSE_READ_RESPONSE)];
+       ssize_t size;
+       size = read(fd, buf, sizeof(VMBLOCK_FUSE_READ_RESPONSE));
++      g_debug("%s: Number of bytes read : %" FMTSZ "u\n", __FUNCTION__, size);
+       /*
+        * The current thread will block in read function until
+        * any other application accesses the file params->fileBlockName
+diff --git a/open-vm-tools/services/plugins/dndcp/dndGuest/dndCPTransportGuestRpc.hpp b/open-vm-tools/services/plugins/dndcp/dndGuest/dndCPTransportGuestRpc.hpp
+index 9b70984fc..424481baa 100644
+--- a/open-vm-tools/services/plugins/dndcp/dndGuest/dndCPTransportGuestRpc.hpp
++++ b/open-vm-tools/services/plugins/dndcp/dndGuest/dndCPTransportGuestRpc.hpp
+@@ -1,5 +1,5 @@
+ /*********************************************************
+- * Copyright (C) 2010-2017 VMware, Inc. All rights reserved.
++ * Copyright (C) 2010-2017,2021 VMware, Inc. All rights reserved.
+  *
+  * This program is free software; you can redistribute it and/or modify it
+  * under the terms of the GNU Lesser General Public License as published
+@@ -31,13 +31,13 @@
+ 
+ #include "dnd.h"
+ 
+-extern "C" {
+ #ifdef VMX86_TOOLS
+    #include "vmware/tools/guestrpc.h"
+ #else
++extern "C" {
+    #include "guest_rpc.h"
+-#endif
+ }
++#endif
+ 
+ #define GUEST_RPC_CMD_STR_DND "dnd.transport"
+ #define GUEST_RPC_CMD_STR_CP  "copypaste.transport"
+diff --git a/open-vm-tools/services/plugins/dndcp/dndUIX11.cpp b/open-vm-tools/services/plugins/dndcp/dndUIX11.cpp
+index 50c2bf5e1..03cf3e0d7 100644
+--- a/open-vm-tools/services/plugins/dndcp/dndUIX11.cpp
++++ b/open-vm-tools/services/plugins/dndcp/dndUIX11.cpp
+@@ -1,5 +1,5 @@
+ /*********************************************************
+- * Copyright (C) 2009-2019 VMware, Inc. All rights reserved.
++ * Copyright (C) 2009-2021 VMware, Inc. All rights reserved.
+  *
+  * This program is free software; you can redistribute it and/or modify it
+  * under the terms of the GNU Lesser General Public License as published
+@@ -467,8 +467,15 @@ DnDUIX11::OnSrcDragBegin(const CPClipboard *clip,       // IN
+ #ifndef GTK3
+    event.device = gdk_device_get_core_pointer();
+ #else
+-   GdkDeviceManager* manager = gdk_display_get_device_manager(gdk_window_get_display(event.window));
++#   if GTK_MINOR_VERSION >= 20
++   GdkSeat *seat =
++      gdk_display_get_default_seat(gdk_window_get_display(event.window));
++   event.device = gdk_seat_get_pointer(seat);
++#   else
++   GdkDeviceManager *manager =
++      gdk_display_get_device_manager(gdk_window_get_display(event.window));
+    event.device = gdk_device_manager_get_client_pointer(manager);
++#   endif
+ #endif
+    event.x_root = mOrigin.get_x();
+    event.y_root = mOrigin.get_y();
+diff --git a/open-vm-tools/services/plugins/dndcp/dndcp.cpp b/open-vm-tools/services/plugins/dndcp/dndcp.cpp
+index d1013f4a7..bae4c94c7 100644
+--- a/open-vm-tools/services/plugins/dndcp/dndcp.cpp
++++ b/open-vm-tools/services/plugins/dndcp/dndcp.cpp
+@@ -1,5 +1,5 @@
+ /*********************************************************
+- * Copyright (C) 2010-2019 VMware, Inc. All rights reserved.
++ * Copyright (C) 2010-2021 VMware, Inc. All rights reserved.
+  *
+  * This program is free software; you can redistribute it and/or modify it
+  * under the terms of the GNU Lesser General Public License as published
+@@ -31,6 +31,11 @@
+ 
+ #define G_LOG_DOMAIN "dndcp"
+ 
++/**
++ * Include glib.h before encountering any extern "C".
++ */
++#include <glib.h>
++
+ extern "C" {
+ #include "vmware/guestrpc/tclodefs.h"
+ #include "vmware/tools/plugin.h"

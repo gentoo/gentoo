@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>jkt@kde.org</email>
 	</maintainer>
 	<maintainer type="person">
 		<email>kensington@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">tat/mimetic</remote-id>
+	</upstream>
 </pkgmetadata>

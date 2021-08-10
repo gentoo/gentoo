@@ -1,0 +1,23 @@
+compilefix gcc 11
+
+based on compile fix from upstream
+https://www.gitmemory.com/issue/maekitalo/cxxtools/30/770247974
+
+Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> (09 May 2021)
+diff -Naur cxxtools-3.0.orig/include/cxxtools/char.h cxxtools-3.0/include/cxxtools/char.h
+--- cxxtools-3.0.orig/include/cxxtools/char.h	2021-05-09 18:32:41.415653108 +0200
++++ cxxtools-3.0/include/cxxtools/char.h	2021-05-09 18:33:56.117653108 +0200
+@@ -68,9 +68,10 @@
+             typedef int32_t value_type;
+ 
+             //! Constructs a character with a value of 0.
+-            Char()
+-            : _value(0)
+-            {}
++//            Char()
++//            : _value(0)
++//            {}
++            Char() = default;
+ 
+             //! Constructs a character using the given value as base for the character value.
+             Char(value_type ch)

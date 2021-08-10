@@ -1,0 +1,33 @@
+From 4846d36ad1e9ca709cb3a2eaa839c8c79effe34b Mon Sep 17 00:00:00 2001
+From: Olaf Meeuwissen <paddy-hack@member.fsf.org>
+Date: Sun, 13 Sep 2020 17:56:40 +0900
+Subject: [PATCH] po: Make sure all sane-backends.pot input are available
+
+---
+ po/Makevars | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/po/Makevars b/po/Makevars
+index ebff23f90..86f423ef3 100644
+--- a/po/Makevars
++++ b/po/Makevars
+@@ -1,5 +1,6 @@
+ #  Makevars -- snippet for inclusion in po/ -*- Makefile -*-
+-#  Copyright (C) 2016, 2019  Olaf Meeuwissen and the SANE developers
++#  Copyright (C) 2016, 2019, 2020  Olaf Meeuwissen
++#    and the SANE developers
+ #
+ #  This file is part of the SANE build infra-structure.  See the
+ #  included LICENSE file for license information.
+@@ -47,3 +48,8 @@ width_options     = --width=75
+ #  Locale categories, in addition to LC_MESSAGES, for which message
+ #  catalogs are to be used.
+ EXTRA_LOCALE_CATEGORIES =
++
++#  Selected files in POTFILES.in are generated.  Make sure they are
++#  available when needed.
++$(top_srcdir)/backend/pixma/pixma_sane_options.c:
++	cd ../backend; make pixma/pixma_sane_options.c
+-- 
+GitLab
+

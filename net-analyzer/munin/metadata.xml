@@ -90,6 +90,6 @@
     </flag>
   </use>
   <upstream>
-    <remote-id type="sourceforge">munin</remote-id>
+    <remote-id type="github">munin-monitoring/munin</remote-id>
   </upstream>
 </pkgmetadata>

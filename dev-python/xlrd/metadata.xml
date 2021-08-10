@@ -7,6 +7,7 @@
 	</maintainer>
 	<longdescription lang="en">Extract data from new and old Excel spreadsheets on any platform. Pure
 		Python (2.1 to 2.6). Strong support for Excel dates. Unicode-aware.</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">xlrd</remote-id>
 		<remote-id type="github">python-excel/xlrd</remote-id>

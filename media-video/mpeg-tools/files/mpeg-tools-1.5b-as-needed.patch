@@ -1,5 +1,5 @@
---- convert/Makefile	2009-08-25 21:19:42.000000000 +0200
-+++ convert/Makefile.new	2009-08-25 21:22:54.000000000 +0200
+--- a/convert/Makefile	2009-08-25 21:19:42.000000000 +0200
++++ b/convert/Makefile	2009-08-25 21:22:54.000000000 +0200
 @@ -53,13 +53,13 @@
  all: $(TARGETS)
  
@@ -17,8 +17,8 @@
  
  wc:;		wc -l *.[ch] *.pl *.table
  clean:;		rm -f *.o core *~ gmon.out $(TARGETS)
---- convert/mtv/Makefile	2009-08-25 21:19:42.000000000 +0200
-+++ convert/mtv/Makefile.new	2009-08-25 21:24:31.000000000 +0200
+--- a/convert/mtv/Makefile	2009-08-25 21:19:42.000000000 +0200
++++ b/convert/mtv/Makefile	2009-08-25 21:24:31.000000000 +0200
 @@ -15,12 +15,12 @@
  default: movieToVid
  
@@ -34,8 +34,8 @@
 -	$(PURIFY) $(CC) $(OBJ) -o movieToVid.purify
 +	$(PURIFY) $(CC) $(LDFLAGS) $(OBJ) -o movieToVid.purify
  
---- mpeg_encode//Makefile	2009-08-25 21:19:43.000000000 +0200
-+++ mpeg_encode//Makefile.new	2009-08-25 21:27:12.000000000 +0200
+--- a/mpeg_encode/Makefile	2009-08-25 21:19:43.000000000 +0200
++++ b/mpeg_encode/Makefile	2009-08-25 21:27:12.000000000 +0200
 @@ -203,7 +203,6 @@
  ############
  

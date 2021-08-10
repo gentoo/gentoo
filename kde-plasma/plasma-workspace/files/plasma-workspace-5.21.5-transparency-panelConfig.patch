@@ -1,0 +1,27 @@
+From 1cf02aad96bfe650a1f4d1465ae15234205fb061 Mon Sep 17 00:00:00 2001
+From: Bharadwaj Raju <bharadwaj.raju777@protonmail.com>
+Date: Mon, 26 Apr 2021 18:47:51 +0000
+Subject: [PATCH] Load panelOpacity from config parent, not from config
+
+BUG: 434285
+FIXED-IN: 5.22
+---
+ shell/panelview.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/shell/panelview.cpp b/shell/panelview.cpp
+index 5ed743024..4533e856f 100644
+--- a/shell/panelview.cpp
++++ b/shell/panelview.cpp
+@@ -633,7 +633,7 @@ void PanelView::restore()
+     // the place for this config key is changed in Plasma 5.9
+     // Do NOT use readConfigValueWithFallBack
+     setVisibilityMode((VisibilityMode)panelConfig.parent().readEntry<int>("panelVisibility", panelConfig.readEntry<int>("panelVisibility", (int)NormalPanel)));
+-    setOpacityMode((OpacityMode)readConfigValueWithFallBack("panelOpacity", PanelView::OpacityMode::Adaptive));
++    setOpacityMode((OpacityMode)config().parent().readEntry<int>("panelOpacity", configDefaults().parent().readEntry<int>("panelOpacity", PanelView::OpacityMode::Adaptive)));
+     m_initCompleted = true;
+     resizePanel();
+     positionPanel();
+-- 
+GitLab
+

@@ -5,4 +5,7 @@
 	<use>
 		<flag name="raptor">Use <pkg>media-libs/raptor</pkg> for proper RDF serializing</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">dajobe/flickcurl</remote-id>
+	</upstream>
 </pkgmetadata>

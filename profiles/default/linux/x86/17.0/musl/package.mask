@@ -1,0 +1,10 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2
+
+# Sam James <sam@gentoo.org> (2021-07-06)
+# Forces -fstack-protector, masking for now to allow stage3s to be built.
+# Masking this forces sys-apps/opentmpfiles to provide virtual/tmpfiles.
+# bug #800893
+# Temporarily unmask opentmpfiles here to get working stages.
+sys-apps/systemd-tmpfiles
+-sys-apps/opentmpfiles

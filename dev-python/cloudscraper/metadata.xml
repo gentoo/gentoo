@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>vaartis@kotobank.ch</email>
+		<name>Ekaterina Vaartis</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		A simple Python module to bypass Cloudflare's anti-bot page (also known as "I'm Under Attack Mode", or IUAM),
+		implemented with Requests
+	</longdescription>
+	<upstream>
+		<remote-id type="github">venomous/cloudscraper</remote-id>
+		<remote-id type="pypi">cloudscraper</remote-id>
+	</upstream>
+	<stabilize-allarches/>
+</pkgmetadata>

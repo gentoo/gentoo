@@ -1,9 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-DESCRIPTION="a nice digital clock with 7 different styles either in LCD or LED style"
+inherit toolchain-funcs
+
+DESCRIPTION="A nice digital clock with 7 different styles either in LCD or LED style"
 HOMEPAGE="http://tnemeth.free.fr/projets/dockapps.html"
 SRC_URI="mirror://debian/pool/main/w/${PN}/${PN}_${PV}-1.tar.gz"
 
@@ -17,15 +19,22 @@ RDEPEND="x11-libs/gtk+:2
 	x11-libs/libXpm
 	x11-libs/libICE"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	x11-base/xorg-proto
 	x11-libs/libXt"
+BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${P}-gtk.patch
-	"${FILESDIR}"/${P}-gcc-10.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gtk.patch
+	"${FILESDIR}"/${P}-gcc-10.patch
+)
 
 DOCS=( AUTHORS BUGS ChangeLog NEWS README THANKS TODO \
 	doc/sample2.wmclockmonrc doc/sample1.wmclockmonrc )
+
+src_configure() {
+	tc-export PKG_CONFIG
+	default
+}
 
 src_install() {
 	default

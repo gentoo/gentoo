@@ -1,8 +1,22 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -alpha
+
+# Matt Turner <mattst88@gentoo.org> (2021-07-05)
+nftables
+
+# Michał Górny <mgorny@gentoo.org> (2021-05-20)
+# Unresolved keywordreqs are getting in the way.
+# https://bugs.gentoo.org/773451
+# https://bugs.gentoo.org/789606
+python_targets_python3_10
+python_single_target_python3_10
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
+# media-sound/jack-audio-connection-kit re-keywording timeout, bug #736725
+jack
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
 # net-libs/webkit-gtk has no alpha keywords
@@ -36,12 +50,10 @@ acpi
 
 # Tobias Klausmann <klausman@gentoo.org> (2017-03-03)
 # There is no luajit support on alpha. Bugs #554376, #608322.
+lua_single_target_luajit
+lua_targets_luajit
 luajit
 luajittex
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-02-25)
-# kwallet integration split from kde to distinct flag
-kwallet
 
 # Tobias Klausmann <klausman@gentoo.org> (2016-06-07)
 # We currently do not have the resources to AT qt5 packages.
@@ -76,7 +88,6 @@ wifi
 apm
 battery
 dmi
-pm-utils
 
 # Stuff that doesn't work on alpha, or not tested
 clang
@@ -93,6 +104,7 @@ rtmp
 v4l
 vpx
 kde
+kwallet
 quvi
 metalink
 tremor

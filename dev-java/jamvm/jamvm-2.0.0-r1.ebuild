@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils flag-o-matic multilib java-vm-2 autotools
+inherit epatch flag-o-matic multilib java-vm-2 autotools toolchain-funcs
 
 DESCRIPTION="An extremely small and specification-compliant virtual machine"
 HOMEPAGE="http://jamvm.sourceforge.net/"
@@ -14,12 +14,17 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="debug libffi"
 
-DEPEND="dev-java/gnu-classpath:0.98
+RDEPEND="dev-java/gnu-classpath:0.98
 	|| ( dev-java/eclipse-ecj:* dev-java/ecj-gcj:* )
-	libffi? ( virtual/libffi )
-	ppc64? ( virtual/libffi )
-	sparc? ( virtual/libffi )"
-RDEPEND="${DEPEND}"
+	libffi? ( dev-libs/libffi:= )
+	ppc64? ( dev-libs/libffi:= )
+	sparc? ( dev-libs/libffi:= )"
+DEPEND="
+	${DEPEND}
+	ppc64? ( virtual/pkgconfig )
+	sparc? ( virtual/pkgconfig )
+	libffi? ( virtual/pkgconfig )
+"
 
 PATCHES=(
 	"${FILESDIR}"/"${P}-classes-location.patch"
@@ -44,7 +49,7 @@ src_configure() {
 	filter-flags "-fomit-frame-pointer"
 
 	if use ppc64 || use sparc || use libffi; then
-		append-cflags "$(pkg-config --cflags-only-I libffi)"
+		append-cflags "$($(tc-getPKG_CONFIG) --cflags-only-I libffi)"
 	fi
 
 	local fficonf="--enable-ffi"

@@ -5,7 +5,8 @@
 		<email>slashbeast@gentoo.org</email>
 		<name>Piotr Karbowski</name>
 	</maintainer>
-<upstream>
-	<remote-id type="github">MeanEYE/Sunflower</remote-id>
-</upstream>
+	<upstream>
+		<remote-id type="github">MeanEYE/Sunflower</remote-id>
+		<remote-id type="gitlab">MeanEYE/Sunflower</remote-id>
+	</upstream>
 </pkgmetadata>

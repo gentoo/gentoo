@@ -1,0 +1,96 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# /etc/conf.d/rngd
+# Please see "/usr/sbin/rngd --help" and "man rngd" for more information
+
+# Space-delimited list of entropy sources to enable
+# Note that some of the entropy sources may require certain USE flags
+# to be enabled or require hardware support to function properly
+# Entropy sources not specified here (or in the exclude list below)
+# will be enabled/disabled based on rngd default behavior
+#
+# Choose from the list:
+#         hwrng:  Hardware RNG Device
+#         tpm:    TPM RNG Device (Deprecated)
+#         rdrand: Intel RDRAND Instruction RNG
+#         darn:   Power9 DARN Instruction RNG
+#         nist:   NIST Network Entropy Beacon
+#                 (UNSAFE for cryptographic operations)
+#         jitter: JITTER Entropy Generator
+#         pkcs11: PKCS11 Entropy Generator
+#
+#INCLUDE_ENTROPY_SOURCES="hwrng tpm rdrand darn nist jitter pkcs11"
+
+
+# Space-delimited list of entropy sources to disable
+# This is useful for disabling certain entropy sources even
+# when they are supported on the system
+#
+#EXCLUDE_ENTROPY_SOURCES="nist tpm"
+
+
+# Entropy source specific options:
+#
+#
+# hwrng device used for random number input:
+#
+#HWRNG_DEVICE="/dev/hwrng"
+#
+#
+# rdrand options:
+#         use_aes:(BOOLEAN)
+#
+#RDRAND_OPTIONS="use_aes:1"
+#
+#
+# darn options:
+#         use_aes:(BOOLEAN)
+#
+#DARN_OPTIONS="use_aes:1"
+#
+#
+# nist options:
+#         use_aes:(BOOLEAN)
+#
+#NIST_OPTIONS="use_aes:1"
+#
+#
+# jitter options:
+#         thread_count:(INTEGER)
+#         buffer_size:(INTEGER)
+#         refill_thresh:(INTEGER)
+#         retry_count:(INTEGER)
+#         retry_delay:(INTEGER)
+#         use_aes:(BOOLEAN)
+#
+#JITTER_OPTIONS="thread_count:4 buffer_size:16535 refill_thresh:16535"
+#JITTER_OPTIONS="${JITTER_OPTIONS} retry_count:1 retry_delay:-1 use_aes:1"
+#
+#
+# pkcs11 options:
+#         engine_path:(STRING)
+#         chunk_size:(INTEGER)
+#
+#PKCS11_OPTIONS="engine_path:/usr/lib64/opensc-pkcs11.so chunk_size:1"
+
+
+# Kernel device used for random number output
+#
+#RANDOM_DEVICE="/dev/random"
+
+
+# Random step (Number of bytes written to random-device at a time):
+#
+#STEP=64
+
+
+# Fill watermark
+# 0 <= n <= `sysctl kernel.random.poolsize`
+#
+#WATERMARK=2048
+
+
+# Any extra arguments for rngd
+#
+#EXTRA_ARGS=""

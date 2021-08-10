@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,10 +6,7 @@ EAPI=7
 inherit qmake-utils
 
 DESCRIPTION="Fractal planet and terrain generator"
-HOMEPAGE="
-	http://www.bottlenose.net/share/fracplanet/index.htm
-	https://sourceforge.net/projects/fracplanet/
-"
+HOMEPAGE="https://sourceforge.net/projects/fracplanet/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -21,7 +18,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtopengl:5
+	dev-qt/qtopengl:5[-gles2-only]
 	dev-qt/qtwidgets:5
 	virtual/glu
 	virtual/opengl

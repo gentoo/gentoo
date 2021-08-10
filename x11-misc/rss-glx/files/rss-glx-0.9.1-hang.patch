@@ -1,0 +1,14 @@
+Ensure a signalled process exits even if the GL driver hangs.
+
+https://bugs.gentoo.org/478074
+
+--- a/src/driver.c
++++ b/src/driver.c
+@@ -397,6 +397,7 @@
+ void signalHandler (int sig)
+ {
+ 	signalled = 1;
++	alarm(3);	/* Self-destruct if something goes wrong */
+ }
+ 
+ int main (int argc, char *argv[])

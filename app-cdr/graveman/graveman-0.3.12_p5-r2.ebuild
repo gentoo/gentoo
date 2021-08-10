@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils gnome2
+inherit autotools gnome2
 
 DESCRIPTION="Graphical frontend for cdrecord, mkisofs, readcd and sox using GTK+2"
 HOMEPAGE="http://graveman.tuxfamily.org/"
@@ -15,10 +15,10 @@ IUSE="debug dvdr flac mp3 nls vorbis"
 
 RDEPEND="
 	app-cdr/cdrdao
+	app-cdr/cdrtools
 	>=dev-libs/glib-2.4:2
 	>=gnome-base/libglade-2.4:2.0
 	media-libs/libmng:=
-	virtual/cdrtools
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-2.4:2
 	dvdr? ( app-cdr/dvd+rw-tools )

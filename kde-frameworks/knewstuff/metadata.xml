@@ -5,4 +5,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="opds">Enable support for the Open Publication Distribution System via <pkg>kde-frameworks/syndication</pkg></flag>
+	</use>
 </pkgmetadata>

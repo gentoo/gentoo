@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,4 @@ KEYWORDS="~amd64 ~x86 ~x64-macos"
 
 VIM_PLUGIN_HELPFILES="NERD_tree"
 
-src_prepare() {
-	default
-	rm LICENCE || die
-}
+DOCS=( CHANGELOG.md README.markdown )

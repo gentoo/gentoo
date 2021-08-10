@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,21 @@ LICENSE="GPL-3"
 KEYWORDS="~amd64 ~arm ~mips ~x86"
 IUSE="+acl daemon gd +mysqli postgres"
 REQUIRED_USE="|| ( mysqli postgres )"
-PHP_USE="gd?,mysqli?,postgres?,curl,fileinfo,intl,json,pdo,unicode,xml"
+
+PHP_SLOTS="7.4 7.3 7.2"
+PHP_USE="gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml"
+
+php_rdepend() {
+	local slot
+	echo "|| ("
+	for slot in ${PHP_SLOTS}; do
+		echo "(
+			virtual/httpd-php:${slot}
+			dev-lang/php:${slot}[$1]
+		)"
+	done
+	echo ")"
+}
 
 DEPEND="
 	daemon? ( acl? ( sys-apps/acl ) )
@@ -23,12 +37,11 @@ RDEPEND="
 	daemon? (
 		acct-user/ttrssd
 		acct-group/ttrssd
-		dev-lang/php:*[${PHP_USE},cli,pcntl]
+		$(php_rdepend "${PHP_USE},cli,pcntl")
 	)
 	!daemon? (
-		dev-lang/php:*[${PHP_USE}]
+		$(php_rdepend "${PHP_USE}")
 	)
-	virtual/httpd-php:*
 "
 
 DEPEND="

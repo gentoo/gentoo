@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6..9} )
+PYTHON_COMPAT=( pypy3 python3_{7..9} )
 # TODO: revert to rdepend once this is merged:
 # https://github.com/collective/collective.checkdocs/pull/11
 DISTUTILS_USE_SETUPTOOLS=manual
@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-2"  # until https://github.com/collective/collective.checkdocs/issues/8 is fixed
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]

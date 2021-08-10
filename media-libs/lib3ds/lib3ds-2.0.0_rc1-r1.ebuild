@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ HOMEPAGE="https://code.google.com/p/lib3ds/"
 SRC_URI="https://lib3ds.googlecode.com/files/${MY_P}.zip"
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 IUSE="static-libs"
 
 BDEPEND="app-arch/unzip"
@@ -30,6 +30,6 @@ src_install() {
 	default
 
 	if ! use static-libs; then
-		rm "${ED}/usr/$(get_libdir)/${PN}.la" || die
+		find "${ED}" -name '*.la' -delete || die
 	fi
 }

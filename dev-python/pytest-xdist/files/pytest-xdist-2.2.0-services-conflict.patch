@@ -1,0 +1,31 @@
+From 082beb2ce0fe1f338311d85e656b962df8a16ce1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 15 Dec 2020 11:38:53 +0100
+Subject: [PATCH] Disable pytest-services plugin in test to avoid worker_id
+ conflict
+
+Pass "-p no:pytest-services" in test_worker_id_fixture() to ensure
+that the presence (and implicit loading) of pytest-services will not
+cause the test to fail via overriding worker name.
+
+Fixes #611
+---
+ testing/acceptance_test.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/testing/acceptance_test.py b/testing/acceptance_test.py
+index c273bfa..3bea8fc 100644
+--- a/testing/acceptance_test.py
++++ b/testing/acceptance_test.py
+@@ -1025,7 +1025,7 @@ def test_worker_id_fixture(testdir, n):
+                 f.write(worker_id)
+     """
+     )
+-    result = testdir.runpytest(f, "-n%d" % n)
++    result = testdir.runpytest(f, "-n%d" % n, "-p", "no:pytest-services")
+     result.stdout.fnmatch_lines("* 2 passed in *")
+     worker_ids = set()
+     for fname in glob.glob(str(testdir.tmpdir.join("*.txt"))):
+-- 
+2.29.2
+

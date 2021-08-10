@@ -5,8 +5,9 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">acme</remote-id>
-		<remote-id type="github">letsencrypt/letsencrypt</remote-id>
+		<remote-id type="github">certbot/certbot</remote-id>
 	</upstream>
 </pkgmetadata>

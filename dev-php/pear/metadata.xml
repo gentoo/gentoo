@@ -5,4 +5,5 @@
 		<email>php-bugs@gentoo.org</email>
 		<name>PHP</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

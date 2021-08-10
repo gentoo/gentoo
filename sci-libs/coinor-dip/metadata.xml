@@ -14,4 +14,7 @@
 		Dantzig-Wolfe decomposition, Lagrangian relaxation, and various
 		cutting plane methods.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">coin-or/Dip</remote-id>
+	</upstream>
 </pkgmetadata>

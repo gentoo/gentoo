@@ -4,7 +4,7 @@
 	<maintainer type="person">
 		<email>remi@gentoo.org</email>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>casta@xwing.info</email>
 		<name>Guillaume Castagnino</name>
 	</maintainer>
@@ -12,7 +12,7 @@
 		<email>gnome@gentoo.org</email>
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

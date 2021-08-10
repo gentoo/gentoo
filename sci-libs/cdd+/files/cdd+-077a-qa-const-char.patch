@@ -4,8 +4,8 @@ cddio.C: In function ‘void SetWriteFileName(char*, char, char*)’:
 cddio.C:103:20: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
            extension=".ine"; break;     /* output file for ine data */
 
---- cdd+-077a/cdd.h
-+++ cdd+-077a/cdd.h
+--- a/cdd.h
++++ b/cdd.h
 @@ -185,8 +185,8 @@
  extern int output_digits;  /* Float digits for output.  Does not affect the computation. */
  
@@ -17,8 +17,8 @@ cddio.C:103:20: warning: deprecated conversion from string constant to ‘char*�
  
  myTYPE FABS(myTYPE);
  void SetNumberType(string);
---- cdd+-077a/cddio.C
-+++ cdd+-077a/cddio.C
+--- a/cddio.C
++++ b/cddio.C
 @@ -90,10 +90,10 @@
    }
  }

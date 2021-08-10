@@ -16,8 +16,4 @@
 		cross-platform, and performant C++ library for
 		implementing XMPP applications.
 	</longdescription>
-	<use>
-		<flag name="client">Build the full graphical XMPP client.</flag>
-		<flag name="gconf">Enable configuration through <pkg>gnome-base/gconf</pkg>.</flag>
-	</use>
 </pkgmetadata>

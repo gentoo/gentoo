@@ -1,0 +1,22 @@
+--- a/hamcrest-core/src/main/java/org/hamcrest/core/AllOf.java
++++ b/hamcrest-core/src/main/java/org/hamcrest/core/AllOf.java
+@@ -57,7 +57,7 @@ public class AllOf<T> extends DiagnosingMatcher<T> {
+      */
+     @Factory
+     public static <T> Matcher<T> allOf(Matcher<? super T>... matchers) {
+-        return allOf(Arrays.asList(matchers));
++        return allOf((List<Matcher<? super T>>) Arrays.asList(matchers));
+     }
+ 
+     /**
+--- a/hamcrest-core/src/main/java/org/hamcrest/core/AnyOf.java
++++ b/hamcrest-core/src/main/java/org/hamcrest/core/AnyOf.java
+@@ -47,7 +47,7 @@ public class AnyOf<T> extends ShortcutCombination<T> {
+      */
+     @Factory
+     public static <T> AnyOf<T> anyOf(Matcher<? super T>... matchers) {
+-        return anyOf(Arrays.asList(matchers));
++        return anyOf((List<Matcher<? super T>>) Arrays.asList(matchers));
+     }
+ 
+     /**

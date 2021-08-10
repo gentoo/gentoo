@@ -18,12 +18,12 @@ create_work_directory() {
 			eerror "Directory ${RUNTIMEDIR} could not be created!"
 			return 1
 		fi
+	fi
 
-		# ensure proper ownership
-		if ! chown "${USER}:${GROUP}" "${RUNTIMEDIR}"; then
-			eerror "Changing ownership of '${RUNTIMEDIR}' to '${USER}:${GROUP}' failed!"
-			return 1
-		fi
+	# ensure proper ownership
+	if ! chown "${USER}:${GROUP}" "${RUNTIMEDIR}"; then
+		eerror "Changing ownership of '${RUNTIMEDIR}' to '${USER}:${GROUP}' failed!"
+		return 1
 	fi
 
 	if [ ! -e "${RUNTIMEDIR}"/ca-bundle.crt ]; then
@@ -117,17 +117,6 @@ env_check() {
 	return 0
 }
 
-need_passwd_arg() {
-	local vers=$(${BOINCBIN} --version | tr -d .)
-	[ -z "${vers}" ] && vers="00"
-	[ $(expr substr "${vers}" 1 2) -lt 74 ] && return 0
-
-	# From version 7.4 on, the default is to read
-	# gui_rpc_auth.cfg for the password.
-
-	return 1
-}
-
 start_pre() {
 	env_check || return 1
 	create_work_directory || return 1
@@ -164,7 +153,6 @@ start() {
 }
 
 attach() {
-	local password=""
 	local url=""
 	local key=""
 
@@ -182,14 +170,10 @@ attach() {
 		"${RC_SERVICE}" start
 	fi
 
-	if need_passwd_arg; then
-		password="--passwd \"$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")\""
-	fi
-
 	ebegin "${RC_SVCNAME}: Attaching to project"
 	start-stop-daemon --user "${USER}:${GROUP}" --quiet \
 		--chdir "${RUNTIMEDIR}" --exec "${BOINCCMD}" \
-		-- ${password} --project_attach ${url} ${key}
+		-- --project_attach ${url} ${key}
 	eend $?
 
 	sleep 10
@@ -197,14 +181,9 @@ attach() {
 }
 
 stop() {
-	local password=""
 	local stop_timeout="SIGTERM/60/SIGTERM/30/SIGKILL/30"
 
 	env_check || return 1
-
-	if need_passwd_arg; then
-		password="--passwd \"$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")\""
-	fi
 
 	ebegin "Stopping ${RC_SVCNAME}"
 	start-stop-daemon --stop --quiet --progress \
@@ -216,19 +195,13 @@ stop() {
 resume() {
 	env_check || return 1
 
-	local password=""
-
-	if need_passwd_arg; then
-		password="--passwd \"$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")\""
-	fi
-
 	for url in $(cd "${RUNTIMEDIR}" ; \
-		  "${BOINCCMD}" ${password} --get_project_status | \
+		  "${BOINCCMD}" --get_project_status | \
 		  sed -n 's/\s*master URL: //p'); do
 		ebegin "Resuming ${url}"
 		start-stop-daemon --user "${USER}:${GROUP}" --quiet \
 			--chdir "${RUNTIMEDIR}" --exec "${BOINCCMD}" \
-			-- ${password} --project ${url} resume
+			-- --project ${url} resume
 		eend $?
 	done
 }
@@ -236,19 +209,13 @@ resume() {
 suspend() {
 	env_check || return 1
 
-	local password=""
-
-	if need_passwd_arg; then
-		password="--passwd \"$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")\""
-	fi
-
 	for url in $(cd "${RUNTIMEDIR}" ; \
-		  "${BOINCCMD}" ${password} --get_project_status | \
+		  "${BOINCCMD}" --get_project_status | \
 		  sed -n 's/\s*master URL: //p'); do
 		ebegin "Suspending ${url}"
 		start-stop-daemon --user "${USER}:${GROUP}" --quiet \
 			--chdir "${RUNTIMEDIR}" --exec "${BOINCCMD}" \
-			-- ${password} --project ${url} suspend
+			-- --project ${url} suspend
 		eend $?
 	done
 }

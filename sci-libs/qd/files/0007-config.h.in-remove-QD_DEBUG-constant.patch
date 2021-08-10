@@ -1,0 +1,29 @@
+From 0e7e6933467c76f97c4c1233558c3e1f8f17b52e Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 4 Aug 2021 19:08:36 -0400
+Subject: [PATCH 07/12] config.h.in: remove QD_DEBUG constant.
+
+Having removed the --enable-debug flag from the configure script in an
+earlier commit, the constant QD_DEBUG will never be defined (or used,
+as it happens) in config.h. We remove it too.
+---
+ config.h.in | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/config.h.in b/config.h.in
+index a08fd0e..dcb4272 100644
+--- a/config.h.in
++++ b/config.h.in
+@@ -112,9 +112,6 @@
+ /* Define this macro to be the copysign(x, y) function. */
+ #undef QD_COPYSIGN
+ 
+-/* Define to 1 to enable debugging code. */
+-#undef QD_DEBUG
+-
+ /* If fused multiply-add is available, define correct macro for using it. */
+ #undef QD_FMA
+ 
+-- 
+2.31.1
+

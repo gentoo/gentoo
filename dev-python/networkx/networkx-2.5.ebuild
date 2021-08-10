@@ -1,18 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 virtualx
 
 DESCRIPTION="Python tools to manipulate graphs and complex networks"
-HOMEPAGE="https://networkx.github.io/ https://github.com/networkx/networkx"
+HOMEPAGE="https://networkx.org/ https://github.com/networkx/networkx"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="examples extras pandas scipy test xml yaml"
 RESTRICT="!test? ( test )"
 
@@ -24,10 +24,12 @@ RDEPEND="
 		$(python_gen_cond_dep '
 			>=dev-python/pygraphviz-1.5[${PYTHON_USEDEP}]
 			>=sci-libs/gdal-1.10.0[python,${PYTHON_USEDEP}]
-		' python3_{6,7,8})
+		' python3_8)
 	)
 	pandas? (
-		>=dev-python/pandas-0.23.3[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/pandas-0.23.3[${PYTHON_USEDEP}]
+		' python3_{8..9})
 	)
 	scipy? ( >=dev-python/scipy-1.1.0[${PYTHON_USEDEP}] )
 	xml? ( >=dev-python/lxml-4.2.3[${PYTHON_USEDEP}] )
@@ -39,8 +41,12 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-src_test() {
-	virtx distutils-r1_src_test
+python_test() {
+	local deselect=(
+		# pyyaml upgrade-related regression?
+		networkx/readwrite/tests/test_yaml.py
+	)
+	virtx epytest -p no:django ${deselect[@]/#/--deselect }
 }
 
 python_install_all() {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<bugs-to>https://github.com/wireservice/csvkit/issues</bugs-to>
+		<changelog>https://github.com/wireservice/csvkit/blob/master/CHANGELOG.rst</changelog>
+		<remote-id type="pypi">csvkit</remote-id>
+		<remote-id type="github">wireservice/csvkit</remote-id>
+	</upstream>
+</pkgmetadata>

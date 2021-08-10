@@ -22,29 +22,6 @@
  
  ################################################################
  # Specify our other headers
---- a/src/Makefile.am
-+++ b/src/Makefile.am
-@@ -90,20 +90,12 @@
- 	scan_netviz.cpp \
- 	pcap_writer.h \
- 	iptree.h \
--	http-parser/http_parser.c \
--	http-parser/http_parser.h \
- 	mime_map.cpp \
- 	mime_map.h 
- 
- EXTRA_DIST =\
- 	inet_ntop.c \
- 	inet_ntop.h \
--	http-parser/AUTHORS \
--	http-parser/CONTRIBUTIONS \
--	http-parser/LICENSE-MIT \
--	http-parser/Makefile \
--	http-parser/README.md \
--	http-parser/http_parser.gyp \
- 	wifipcap/README.txt \
- 	wifipcap/TimeVal.cpp \
- 	wifipcap/TimeVal.h \
 --- a/src/scan_http.cpp
 +++ b/src/scan_http.cpp
 @@ -11,7 +11,11 @@
@@ -59,3 +36,29 @@
  
  #include "mime_map.h"
  
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 793ec1a..ecac7a9 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -98,8 +98,6 @@ tcpflow_SOURCES = \
+ 	scan_netviz.cpp \
+ 	pcap_writer.h \
+ 	iptree.h \
+-	http-parser/http_parser.c \
+-	http-parser/http_parser.h \
+ 	mime_map.cpp \
+ 	mime_map.h
+ 
+@@ -110,12 +108,6 @@ tcpflow_SOURCES = \
+ EXTRA_DIST =\
+ 	inet_ntop.c \
+ 	inet_ntop.h \
+-	http-parser/AUTHORS \
+-	http-parser/CONTRIBUTIONS \
+-	http-parser/LICENSE-MIT \
+-	http-parser/Makefile \
+-	http-parser/README.md \
+-	http-parser/http_parser.gyp \
+ 	wifipcap/README.txt \
+ 	wifipcap/TimeVal.cpp \
+ 	wifipcap/TimeVal.h \

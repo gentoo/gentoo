@@ -1,3 +1,6 @@
+# Copyright 2008-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 ### THIS FILE IS ONLY FOR PACKAGES MASKED ON BOTH 64-BIT AND 32-BIT USERLAND!!!
 
 # Michał Górny <mgorny@gentoo.org> (2014-06-27)

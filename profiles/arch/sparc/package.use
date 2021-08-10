@@ -1,6 +1,13 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-01-18)
+# net-libs/mbedtls is not stable on sparc
+# so, let's enable openssl to avoid
+# REQUIRED_USE default conflicts for users.
+# bug #758428
+net-proxy/privoxy openssl
+
 # Michał Górny <mgorny@gentoo.org> (2016-09-24)
 # Enable the GPU targets matching the default VIDEO_CARDS
 dev-ml/llvm-ocaml llvm_targets_AMDGPU

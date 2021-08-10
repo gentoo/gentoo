@@ -5,6 +5,7 @@
 		<email>sci@gentoo.org</email>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">stachenov/quazip</remote-id>
 		<remote-id type="sourceforge">quazip</remote-id>
 	</upstream>
 </pkgmetadata>

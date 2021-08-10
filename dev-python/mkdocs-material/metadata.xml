@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>andrewammerlaan@gentoo.org</email>
+    <name>Andrew Ammerlaan</name>
+  </maintainer>
+  <longdescription lang="en">
+    What to expect
+
+    Responsive design and fluid layout for all kinds of screens and devices, designed to serve your project documentation in a user-friendly way in 41 languages with optimal readability.
+
+    Easily customizable primary and accent color, fonts, favicon and logo; straight forward localization through theme extension; integrated with Google Analytics, Disqus and GitHub.
+
+    Well-designed search interface accessible through hotkeys (F or S), intelligent grouping of search results, search term highlighting and lazy loading.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">squidfunk/mkdocs-material</remote-id>
+    <remote-id type="pypi">mkdocs-material</remote-id>
+  </upstream>
+  <stabilize-allarches/>
+</pkgmetadata>

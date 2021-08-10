@@ -1,0 +1,28 @@
+From a38fcf356de0cbba1ce97c8ef70979ed897a8094 Mon Sep 17 00:00:00 2001
+From: Kai Uwe Broulik <kde@privat.broulik.de>
+Date: Tue, 18 May 2021 19:54:54 +0200
+Subject: [PATCH] [KCoreDirLister] Guard uiDelegate(), it might be null
+
+BUG: 437153
+---
+ src/core/kcoredirlister.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/core/kcoredirlister.cpp b/src/core/kcoredirlister.cpp
+index a836f0aa..58d8791c 100644
+--- a/src/core/kcoredirlister.cpp
++++ b/src/core/kcoredirlister.cpp
+@@ -1288,7 +1288,9 @@ void KCoreDirListerCache::slotResult(KJob *j)
+                 Q_EMIT kdl->jobError(job);
+                 if (kdl->d->m_autoErrorHandling && !errorShown) {
+                     errorShown = true; // do it only once
+-                    job->uiDelegate()->showErrorMessage();
++                    if (job->uiDelegate()) {
++                        job->uiDelegate()->showErrorMessage();
++                    }
+                 }
+ #if KIOCORE_BUILD_DEPRECATED_SINCE(5, 82)
+                 kdl->handleError(job);
+-- 
+2.31.1
+

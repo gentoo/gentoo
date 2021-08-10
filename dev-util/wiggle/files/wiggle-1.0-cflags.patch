@@ -1,7 +1,7 @@
 Respect user CFLAGS and use pkg-config to get ncurses libs.
 
---- wiggle-1.0/Makefile
-+++ wiggle-1.0/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -3,7 +3,7 @@
  #OptDbg=-O3
  #OptDbg=-O3 -march=pentium2
@@ -16,7 +16,7 @@ Respect user CFLAGS and use pkg-config to get ncurses libs.
  MAN1DIR = $(MANDIR)/man1
  MAN5DIR = $(MANDIR)/man5
 -LDLIBS = -lncurses
-+LDLIBS = $(shell pkg-config --libs ncurses)
++LDLIBS = $(shell ${PKG_CONFIG} --libs ncurses)
  
  all: wiggle wiggle.man test
  

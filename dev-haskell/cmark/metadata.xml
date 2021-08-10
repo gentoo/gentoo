@@ -6,7 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name='system-cmark'>use <pkg>app-text/cmark</pkg> instead of bundled copy</flag>
+		<flag name="system-cmark">use <pkg>app-text/cmark</pkg> instead of bundled copy</flag>
 	</use>
 	<longdescription>
 		This package provides Haskell bindings for

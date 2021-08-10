@@ -3,7 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
-		<flag name="applet">Enable gpaste-applet</flag>
 		<flag name="gnome">Enable proper gnome support and
 			enable gnome shell extension.</flag>
 	</use>

@@ -1,0 +1,9 @@
+--- a/data/net.sourceforge.wavbreaker.desktop
++++ b/data/net.sourceforge.wavbreaker.desktop
+@@ -5,5 +5,5 @@ Comment[de]=Teilen Sie .wav-Dateien in mehrere Teile
+ Exec=wavbreaker
+ Icon=net.sourceforge.wavbreaker
+ Type=Application
+-Categories=Application;AudioVideo;Audio;
++Categories=AudioVideo;Audio;
+ MimeType=audio/x-wav

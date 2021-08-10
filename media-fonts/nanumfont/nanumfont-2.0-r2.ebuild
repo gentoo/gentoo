@@ -1,14 +1,14 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit font
 
-MY_P="NanumGothicCoding-${PV}"
 DESCRIPTION="Korean monospace font distributed by NHN"
-HOMEPAGE="http://dev.naver.com/projects/nanumfont"
-SRC_URI="http://dev.naver.com/frs/download.php/441/${MY_P}.zip"
+HOMEPAGE="https://developers.naver.com/projects/nanumfont"
+SRC_URI="http://dev.naver.com/frs/download.php/441/NanumGothicCoding-${PV}.zip"
+S="${WORKDIR}"
 
 LICENSE="OFL-1.1"
 SLOT="0"
@@ -18,11 +18,7 @@ IUSE=""
 # Only installs fonts
 RESTRICT="strip binchecks"
 
-DEPEND="app-arch/unzip"
-RDEPEND=""
-
-S="${WORKDIR}"
-FONT_S="${S}"
+BDEPEND="app-arch/unzip"
 
 FONT_SUFFIX="ttf"
 

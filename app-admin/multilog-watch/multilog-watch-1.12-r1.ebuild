@@ -1,22 +1,21 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Watches a multilog file for irregularities"
 HOMEPAGE="https://www.eyrie.org/~eagle/software/multilog-watch/"
-SRC_URI="https://archives.eyrie.org/software/system/multilog-watch
-https://www.eyrie.org/%7Eeagle/software/multilog-watch/sample.filter"
+SRC_URI="https://archives.eyrie.org/software/system/multilog-watch"
+SRC_URI+=" https://www.eyrie.org/%7Eeagle/software/multilog-watch/sample.filter"
 
 LICENSE="Artistic GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="dev-lang/perl
-		virtual/qmail"
+RDEPEND="
+	dev-lang/perl
+	virtual/qmail
+"
 
 src_unpack() {
 	mkdir "${S}" || die
@@ -31,7 +30,6 @@ src_compile() {
 }
 
 src_install() {
-	dodir /etc/multilog-watch
 	insinto /etc/multilog-watch
 	doins sample.filter
 

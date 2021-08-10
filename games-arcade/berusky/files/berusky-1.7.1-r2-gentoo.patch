@@ -1,0 +1,47 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -5,8 +5,7 @@
+ 
+ SUBDIRS = po src data
+ 
+-beruskydocdir = ${prefix}/doc/berusky
+-beruskydoc_DATA = \
++EXTRA_DIST = \
+ 	README\
+ 	COPYING\
+ 	AUTHORS\
+@@ -15,10 +14,6 @@
+ 	NEWS\
+ 	TODO
+ 
+-EXTRA_DIST = $(beruskydoc_DATA)
+-
+-
+-
+ # Copy all the spec files. Of cource, only one is actually used.
+ dist-hook:
+ 	for specfile in *.spec; do \
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -3,10 +3,3 @@
+ ## Created by Anjuta - will be overwritten
+ ## If you don't want it to overwrite it,
+ ## 	Please disable it in the Anjuta project configuration
+-
+-berusky_datadir = $(prefix)/@NO_PREFIX_PACKAGE_DATA_DIR@/@PACKAGE@
+-
+-berusky_data_DATA = \
+-	berusky.ini
+-
+-EXTRA_DIST = $(berusky_data_DATA)
+--- a/src/defines.h
++++ b/src/defines.h
+@@ -446,7 +446,7 @@
+ #define INI_USER_DIRECTORY "~/.berusky"
+ #define INI_USER_LEVELS    "~/.berusky/User"
+ #define INI_USER_PROFILES  "~/.berusky/Profiles"
+-#define INI_FILE_GLOBAL    "/var/games/berusky/"INI_FILE_NAME
++#define INI_FILE_GLOBAL    "/var/lib/berusky/"INI_FILE_NAME
+ #define INI_FILE_USER      "~/.berusky/"INI_FILE_NAME
+ #define INI_FILE_LOCAL     "./"INI_FILE_NAME
+ #elif WINDOWS

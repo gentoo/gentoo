@@ -1,0 +1,28 @@
+From b1388d0e768f0bedd5704ffae9b13500ad325308 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 17 Oct 2020 21:36:49 +0100
+Subject: [PATCH] Fix TypeError when clicking on the status icon
+
+The error was:
+
+  TypeError: GObject.emit() argument 1 must be str, not bytes
+---
+ scc/gui/statusicon.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scc/gui/statusicon.py b/scc/gui/statusicon.py
+index 61ef9e96..83600492 100644
+--- a/scc/gui/statusicon.py
++++ b/scc/gui/statusicon.py
+@@ -322,7 +322,7 @@ class StatusIconProxy(StatusIcon):
+ 			self._load_fallback()
+ 	
+ 	def _on_click(self, *args):
+-		self.emit(b"clicked")
++		self.emit("clicked")
+ 	
+ 	def _on_notify_active_gtk(self, *args):
+ 		if self._status_fb:
+-- 
+2.26.2
+

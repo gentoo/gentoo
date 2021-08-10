@@ -1,0 +1,54 @@
+From fdddc63be6b5a2b95bd3ff7177b02e58d922bed2 Mon Sep 17 00:00:00 2001
+From: "Friedrich W. H. Kossebau" <kossebau@kde.org>
+Date: Tue, 29 Dec 2020 09:10:33 +0100
+Subject: [PATCH] Drop unused linkage to KF5::Codecs
+
+GIT_SILENT
+
+* asturm 2020-12-29: rebased, added relevant include cleanup part from 44a7ec47
+---
+ CMakeLists.txt          | 2 +-
+ libkcddb/CMakeLists.txt | 1 -
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b9ee121..30a6717 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -21,7 +21,7 @@
+ set(REQUIRED_QT_VERSION 5.4.0)
+ 
+ find_package(Qt5 ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Network Widgets)
+-find_package(KF5 ${KF5_DEP_VERSION} REQUIRED COMPONENTS Config DocTools Codecs I18n KIO WidgetsAddons)
++find_package(KF5 ${KF5_DEP_VERSION} REQUIRED COMPONENTS Config DocTools I18n KIO WidgetsAddons)
+ 
+ ecm_setup_version("5.0.0"
+     VARIABLE_PREFIX KCDDB
+diff --git a/libkcddb/CMakeLists.txt b/libkcddb/CMakeLists.txt
+index e0c0e6a..3b239a9 100644
+--- a/libkcddb/CMakeLists.txt
++++ b/libkcddb/CMakeLists.txt
+@@ -52,7 +52,6 @@ target_link_libraries(KF5Cddb
+     PUBLIC
+         KF5::ConfigGui
+     PRIVATE
+-        KF5::Codecs
+         KF5::I18n
+         KF5::KIOCore
+         Qt5::Network)
+diff --git a/libkcddb/musicbrainz/musicbrainzlookup.cpp b/libkcddb/musicbrainz/musicbrainzlookup.cpp
+index b8e7261..89b89db 100644
+--- a/libkcddb/musicbrainz/musicbrainzlookup.cpp
++++ b/libkcddb/musicbrainz/musicbrainzlookup.cpp
+@@ -21,8 +21,6 @@
+ #include <musicbrainz5/NameCredit.h>
+ #include <musicbrainz5/SecondaryType.h>
+ 
+-#include <KCodecs/KCodecs>
+-
+ #include <QCryptographicHash>
+ #include <QDebug>
+ 
+-- 
+GitLab
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://www.nlnetlabs.nl/downloads/ldns/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="+dane ecdsa ed25519 ed448 examples gost ssl"
 
 REQUIRED_USE="
@@ -32,7 +32,7 @@ S=${WORKDIR}/${MY_P}
 
 src_configure() {
 	# >=openssl-1.1.0 required for dane-ta
-	if has_version "<dev-libs/openssl-1.1.0" || has_version dev-libs/libressl; then
+	if has_version "<dev-libs/openssl-1.1.0" ; then
 		local dane_ta_usage="--disable-dane-ta-usage"
 	else
 		local dane_ta_usage=""

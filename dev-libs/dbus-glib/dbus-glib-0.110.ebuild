@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit bash-completion-r1 eutils ltprune multilib-minimal
+EAPI=7
+inherit autotools bash-completion-r1 multilib-minimal toolchain-funcs
 
 DESCRIPTION="D-Bus bindings for glib"
 HOMEPAGE="https://dbus.freedesktop.org/"
@@ -10,27 +10,37 @@ SRC_URI="https://dbus.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 AFL-2.1 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="debug static-libs test"
 RESTRICT="!test? ( test )"
 
-CDEPEND="
+DEPEND="
 	>=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.40:2[${MULTILIB_USEDEP}]
 	>=sys-apps/dbus-1.8[${MULTILIB_USEDEP}]
 "
-DEPEND="${CDEPEND}
+RDEPEND="${DEPEND}"
+BDEPEND="
+	>=dev-libs/expat-2.1.0-r3
+	>=dev-libs/glib-2.40:2
+	>=sys-apps/dbus-1.8
 	>=dev-util/glib-utils-2.40
 	>=dev-util/gtk-doc-am-1.14
 	virtual/pkgconfig
-"
-RDEPEND="${CDEPEND}"
+" # CBUILD dependencies are needed to make a native tool while cross-compiling.
 
 DOCS=( AUTHORS ChangeLog HACKING NEWS README )
+
+PATCHES=( "${FILESDIR}"/${P}-config-glib-genmarshal.conf )
 
 set_TBD() {
 	# out of sources build dir for make check
 	export TBD="${BUILD_DIR}-tests"
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 multilib_src_configure() {
@@ -41,6 +51,15 @@ multilib_src_configure() {
 		$(use_enable debug asserts)
 		$(use_enable static-libs static)
 	)
+
+	# Configure a CBUILD directory to make a native build tool.
+	if tc-is-cross-compiler; then
+		mkdir "${BUILD_DIR}-build" || die
+		cd "${BUILD_DIR}-build" || die
+		ECONF_SOURCE="${S}" econf_build
+		myconf+=( --with-dbus-binding-tool="$PWD/dbus/dbus-binding-tool" )
+		cd - || die
+	fi
 
 	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 
@@ -60,6 +79,8 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
+	tc-is-cross-compiler && emake -C "${BUILD_DIR}-build"
+
 	emake
 
 	if use test; then
@@ -82,5 +103,5 @@ multilib_src_install_all() {
 	newbashcomp "${ED}"/etc/bash_completion.d/dbus-bash-completion.sh dbus-send
 	rm -rf "${ED}"/etc/bash_completion.d || die
 
-	prune_libtool_files
+	find "${ED}" -type f -name '*.la' -delete || die
 }

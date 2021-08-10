@@ -1,0 +1,30 @@
+From 87fc47f6d992b65d2baaa987bb985bc388457a9b Mon Sep 17 00:00:00 2001
+From: David GUGLIELMI <david.guglielmi@gmail.com>
+Date: Sun, 11 Jul 2021 22:41:42 +0200
+Subject: [PATCH] plparser: Fix uninitialized variable error
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Build failed on systems using -Os cflags with:
+ - totem-pl-parser.c:1776:14: error: ‘ret’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+---
+ plparse/totem-pl-parser.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plparse/totem-pl-parser.c b/plparse/totem-pl-parser.c
+index 404deb3..32fd435 100644
+--- a/plparse/totem-pl-parser.c
++++ b/plparse/totem-pl-parser.c
+@@ -1760,7 +1760,7 @@ totem_pl_parser_glob_is_ignored (TotemPlParser *parser,
+ {
+ 	GHashTableIter iter;
+ 	gpointer key;
+-	int ret;
++	int ret = FNM_NOMATCH;
+ 
+ 	g_mutex_lock (&parser->priv->ignore_mutex);
+ 	g_hash_table_iter_init (&iter, parser->priv->ignore_globs);
+-- 
+2.31.1
+

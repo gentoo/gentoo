@@ -15,5 +15,6 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:zlib:pigz</remote-id>
+		<remote-id type="github">madler/pigz</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,34 @@
+[Unit]
+Description=XMRig Monero Miner
+After=network-online.target
+AssertFileNotEmpty=/etc/xmrig/config.json
+
+[Service]
+ExecStartPre=+/usr/bin/randomx_boost.sh
+ExecStartPre=+/usr/bin/enable_1gb_pages.sh
+ExecStartPre=/usr/bin/xmrig --config=/etc/xmrig/config.json --dry-run
+ExecStart=/usr/bin/xmrig --config=/etc/xmrig/config.json
+StandardOutput=journal
+StandardError=journal
+DynamicUser=true
+CPUSchedulingPolicy=idle
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+NoNewPrivileges=true
+PrivateDevices=true
+CapabilityBoundingSet=
+ProtectClock=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+PrivateUsers=true
+ConfigurationDirectory=xmrig
+
+[Install]
+WantedBy=multi-user.target
+

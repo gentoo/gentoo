@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,8 +21,7 @@ KEYWORDS="-* ~amd64 ~x86"
 DEPEND=">=media-gfx/iscan-2.28.0"
 RDEPEND="${DEPEND}"
 
-QA_PREBUILT="/usr/lib64/iscan/libesdtr.so.0*
-	/usr/lib64/iscan/libesdtr2.so.0*"
+QA_PREBUILT="*"
 
 src_configure() { :; }
 src_compile() { :; }

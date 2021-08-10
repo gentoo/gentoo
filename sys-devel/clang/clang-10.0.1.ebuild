@@ -1,19 +1,21 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit cmake llvm llvm.org multilib-minimal pax-utils \
 	python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
 LLVM_COMPONENTS=( clang clang-tools-extra )
+LLVM_MANPAGES=pregenerated
 LLVM_TEST_COMPONENTS=(
 	llvm/lib/Testing/Support
 	llvm/utils/{lit,llvm-lit,unittest}
 )
+LLVM_PATCHSET=10.0.1-1
 llvm.org_set_globals
 
 # Keep in sync with sys-devel/llvm
@@ -22,7 +24,6 @@ ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
 	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
 	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
-LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 # MSVCSetupApi.h: MIT
 # sorttable.js: MIT
@@ -37,13 +38,19 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
+	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${MULTILIB_USEDEP}]
 	static-analyzer? ( dev-lang/perl:* )
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	${PYTHON_DEPS}"
+for x in "${ALL_LLVM_TARGETS[@]}"; do
+	RDEPEND+="
+		${x}? ( ~sys-devel/llvm-${PV}:${SLOT}[${x}] )"
+done
+unset x
+
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-python/sphinx
+	doc? ( dev-python/sphinx )
 	xml? ( virtual/pkgconfig )
 	${PYTHON_DEPS}"
 RDEPEND="${RDEPEND}
@@ -66,12 +73,6 @@ PDEPEND="
 #
 # Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
-
-PATCHES=(
-	# fix simultaneous linking to .a and dylib
-	"${FILESDIR}"/10.0.1/0003-clang-tools-extra-Prevent-linking-to-duplicate-.a-li.patch
-	"${FILESDIR}"/10.0.1/0004-clang-Avoid-linking-c-index-test-to-duplicate-librar.patch
-)
 
 pkg_setup() {
 	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup
@@ -116,7 +117,7 @@ check_distribution_components() {
 						;;
 					# conditional to USE=doc
 					docs-clang-html|docs-clang-tools-html)
-						continue
+						use doc || continue
 						;;
 				esac
 
@@ -196,11 +197,15 @@ get_distribution_components() {
 			find-all-symbols
 			modularize
 			pp-trace
-
-			# manpages
-			docs-clang-man
-			docs-clang-tools-man
 		)
+
+		if llvm_are_manpages_built; then
+			out+=(
+				# manpages
+				docs-clang-man
+				docs-clang-tools-man
+			)
+		fi
 
 		use doc && out+=(
 			docs-clang-html
@@ -259,16 +264,23 @@ multilib_src_configure() {
 	)
 
 	if multilib_is_native_abi; then
+		local build_docs=OFF
+		if llvm_are_manpages_built; then
+			build_docs=ON
+			mycmakeargs+=(
+				-DLLVM_BUILD_DOCS=ON
+				-DLLVM_ENABLE_SPHINX=ON
+				-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
+				-DCLANG-TOOLS_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/tools-extra"
+				-DSPHINX_WARNINGS_AS_ERRORS=OFF
+			)
+		fi
+
 		mycmakeargs+=(
 			# normally copied from LLVM_INCLUDE_DOCS but the latter
 			# is lacking value in stand-alone builds
-			-DCLANG_INCLUDE_DOCS=ON
-			-DCLANG_TOOLS_EXTRA_INCLUDE_DOCS=ON
-			-DLLVM_BUILD_DOCS=ON
-			-DLLVM_ENABLE_SPHINX=ON
-			-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
-			-DCLANG-TOOLS_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/tools-extra"
-			-DSPHINX_WARNINGS_AS_ERRORS=OFF
+			-DCLANG_INCLUDE_DOCS=${build_docs}
+			-DCLANG_TOOLS_EXTRA_INCLUDE_DOCS=${build_docs}
 		)
 	else
 		mycmakeargs+=(
@@ -389,6 +401,7 @@ multilib_src_install_all() {
 	fi
 
 	docompress "/usr/lib/llvm/${SLOT}/share/man"
+	llvm_install_manpages
 	# match 'html' non-compression
 	use doc && docompress -x "/usr/share/doc/${PF}/tools-extra"
 	# +x for some reason; TODO: investigate

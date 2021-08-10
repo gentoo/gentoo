@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Format validation and more for Net:: related strings"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ~mips ~ppc x86"
+KEYWORDS="~alpha amd64 ~hppa ~mips ~ppc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

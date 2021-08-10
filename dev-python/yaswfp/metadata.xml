@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">yaswfp</remote-id>
+		<remote-id type="github">facundobatista/yaswfp</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,5 +1,5 @@
---- purify_v03-source/purify/Makefile
-+++ purify_v03-source/purify/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -2,8 +2,8 @@
  include phoenix/Makefile
  
@@ -20,23 +20,23 @@
  else ifeq ($(platform),win)
  	windres phoenix/windows/phoenix.rc obj/phoenix-resource.o
  	$(cpp) -shared -o phoenix.dll obj/phoenix.o $(phoenixlink)
---- purify_v03-source/purify/phoenix/Makefile
-+++ purify_v03-source/purify/phoenix/Makefile
+--- a/phoenix/Makefile
++++ b/phoenix/Makefile
 @@ -4,13 +4,13 @@
    endif
  
    ifeq ($(phoenix),gtk)
 -    phoenixflags := -DPHOENIX_GTK `pkg-config --cflags gtk+-2.0`
 -    phoenixlink := `pkg-config --libs gtk+-2.0`
-+    phoenixflags := -DPHOENIX_GTK `pkg-config --cflags gtk+-2.0 x11`
-+    phoenixlink := `pkg-config --libs gtk+-2.0 x11` -ldl
++    phoenixflags := -DPHOENIX_GTK `${PKG_CONFIG} --cflags gtk+-2.0 x11`
++    phoenixlink := `${PKG_CONFIG} --libs gtk+-2.0 x11` -ldl
    endif
  
    ifeq ($(phoenix),qt)
 -    phoenixflags := -DPHOENIX_QT `pkg-config --cflags QtCore QtGui`
 -    phoenixlink := `pkg-config --libs QtCore QtGui`
-+    phoenixflags := -DPHOENIX_QT `pkg-config --cflags QtCore QtGui x11`
-+    phoenixlink := `pkg-config --libs QtCore QtGui x11` -ldl
++    phoenixflags := -DPHOENIX_QT `${PKG_CONFIG} --cflags QtCore QtGui x11`
++    phoenixlink := `${PKG_CONFIG} --libs QtCore QtGui x11` -ldl
    endif
  else ifeq ($(platform),win)
    phoenixflags := -DPHOENIX_WINDOWS

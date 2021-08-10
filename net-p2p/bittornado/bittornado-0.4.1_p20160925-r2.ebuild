@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
+PYTHON_COMPAT=( python3_7 python3_8 )
 
 inherit distutils-r1
 
@@ -35,6 +35,7 @@ S=${WORKDIR}/${MY_PN}-${EGIT_COMMIT}
 python_prepare_all() {
 	# https://github.com/effigies/BitTornado/pull/53
 	sed -e 's:"BitTornado.Tracker":\0, "BitTornado.Types":' -i setup.py || die
+	find "${S}" -name '*.py' -print0 | xargs --null -- sed -i 's:time.clock():time.perf_counter():g' || die
 	distutils-r1_python_prepare_all
 }
 

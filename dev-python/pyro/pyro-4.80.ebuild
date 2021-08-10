@@ -1,11 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6,7,8} )
-
+PYTHON_COMPAT=( python3_{7..9} )
 inherit distutils-r1
 
 MY_PN="Pyro4"
@@ -15,6 +13,7 @@ DESCRIPTION="Distributed object middleware for Python (RPC)"
 HOMEPAGE="https://pypi.org/project/Pyro4/
 	https://github.com/irmen/Pyro4"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="4"
@@ -31,8 +30,6 @@ DEPEND="${RDEPEND}
 		dev-python/dill[${PYTHON_USEDEP}]
 		>=dev-python/msgpack-0.4.6[${PYTHON_USEDEP}]
 	)"
-
-S="${WORKDIR}/${MY_P}"
 
 python_prepare_all() {
 	# Disable tests requiring network connection.

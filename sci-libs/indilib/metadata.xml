@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -10,6 +10,7 @@
 		<remote-id type="sourceforge">indi</remote-id>
 	</upstream>
 	<use>
+		<flag name="rtlsdr">Enable support for devices supported by <pkg>net-wireless/rtl-sdr</pkg></flag>
 		<flag name="websocket">Enable support for WebSocket protocol</flag>
 	</use>
 </pkgmetadata>

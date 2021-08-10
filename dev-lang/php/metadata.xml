@@ -10,6 +10,7 @@
     <name>Michael Orlitzky</name>
   </maintainer>
   <use>
+    <flag name="apparmor">Support FPM application confinement through <pkg>sys-libs/libapparmor</pkg></flag>
     <flag name="argon2">Enable password hashing algorithm from <pkg>app-crypt/argon2</pkg></flag>
     <flag name="bcmath">Add support for libbcmath</flag>
     <flag name="cli">Enable CLI SAPI</flag>
@@ -28,6 +29,7 @@
     <flag name="gd">Adds support for gd (bundled with PHP)</flag>
     <flag name="hash">Enable the hash extension</flag>
     <flag name="inifile">Add dbm support for .ini files</flag>
+    <flag name="jit">Enable PCRE JIT support</flag>
     <flag name="json">Enable JSON support</flag>
     <flag name="ldap-sasl">Add SASL support for the PHP LDAP extension</flag>
     <flag name="lmdb">Enable support for <pkg>dev-db/lmdb</pkg> db backend</flag>

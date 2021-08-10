@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils ltprune multilib toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="a lightweight programmers editor"
 HOMEPAGE="https://packages.qa.debian.org/l/lpe.html"
@@ -13,14 +14,21 @@ SLOT="0"
 KEYWORDS="amd64 ppc sparc x86 ~x86-linux"
 IUSE="nls"
 
-RDEPEND=">=sys-libs/slang-2.2.4
-	>=sys-libs/ncurses-5.7-r7:0="
-DEPEND="${RDEPEND}
+RDEPEND="
+	sys-libs/ncurses:0=
+	sys-libs/slang"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-make-382.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-make-382.patch
+	default
 
 	# You should add PKG_CHECK_MODULES(NCURSES, ncurses) to configure.in and
 	# replace -lncurses in src/Makefile.am with $(NCURSES_LIBS)
@@ -45,5 +53,5 @@ src_install() {
 		exdir="${ED}/usr/share/doc/${PF}/examples" \
 		install
 
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }

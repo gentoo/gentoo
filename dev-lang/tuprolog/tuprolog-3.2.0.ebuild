@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils java-pkg-2 java-ant-2
+inherit java-pkg-2 java-ant-2
 
 PATCHSET_VER="0"
 
@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND=">=virtual/jdk-1.8:=
 	dev-java/javassist:3
-	dev-java/commons-lang:3.1
+	dev-java/commons-lang:3.6
 	dev-java/gson:2.6"
 
 DEPEND="${RDEPEND}
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${P}
 
-EANT_GENTOO_CLASSPATH="javassist:3,commons-lang:3.1,gson:2.6"
+EANT_GENTOO_CLASSPATH="javassist:3,commons-lang:3.6,gson:2.6"
 
 PATCHES=( "${WORKDIR}/${PV}" )
 

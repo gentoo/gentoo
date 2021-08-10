@@ -8,7 +8,7 @@ inherit cmake-utils user
 
 MY_PN=${PN/a/A}
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DESCRIPTION="${MY_PN} is a job scheduler for PostgreSQL"
 HOMEPAGE="https://www.pgadmin.org/download/pgagent-source-code/"

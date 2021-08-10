@@ -1,15 +1,17 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils multilib
+
+inherit autotools epatch multilib
 
 DESCRIPTION="A swiss knife tool for ARP"
 HOMEPAGE="http://sid.rstack.org/arp-sk/"
 SRC_URI="http://sid.rstack.org/arp-sk/files/${P}.tgz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ppc ~riscv x86"
 
 DEPEND=">=net-libs/libnet-1.1"
 RDEPEND="${DEPEND}"

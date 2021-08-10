@@ -1,0 +1,134 @@
+From 6a44d3a6741da48d769353023c8801d41c969663 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sun, 12 Jul 2020 16:30:59 +0300
+Subject: [PATCH 3/3] Allow udev optional on Linux
+
+---
+ meson.build                   |  4 ----
+ plugins/power/gsd-backlight.c | 14 +++++++-------
+ plugins/power/meson.build     |  6 +++---
+ 3 files changed, 10 insertions(+), 14 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 21d9341d..0a527513 100644
+--- a/meson.build
++++ b/meson.build
+@@ -138,9 +138,6 @@ if enable_gudev
+   gudev_dep = dependency('gudev-1.0')
+ endif
+ config_h.set10('HAVE_GUDEV', enable_gudev)
+-if host_is_linux
+-  assert(enable_gudev, 'GUdev is not optional on Linux platforms')
+-endif
+ 
+ # Check for colord
+ enable_colord = get_option('colord')
+@@ -203,7 +200,6 @@ endif
+ 
+ # Rfkill
+ enable_rfkill = get_option('rfkill')
+-assert(enable_rfkill or not host_is_linux, 'rfkill is not optional on Linux platforms')
+ if enable_rfkill
+   assert(cc.has_header('linux/rfkill.h'), 'rfkill support requested but RFKill headers not found')
+   assert(enable_gudev, 'GUdev is required for rfkill support')
+diff --git a/plugins/power/gsd-backlight.c b/plugins/power/gsd-backlight.c
+index ca5f2723..f58f5343 100644
+--- a/plugins/power/gsd-backlight.c
++++ b/plugins/power/gsd-backlight.c
+@@ -25,7 +25,7 @@
+ #include "gsd-power-constants.h"
+ #include "gsd-power-manager.h"
+ 
+-#ifdef __linux__
++#if defined(__linux__) && defined(HAVE_GUDEV)
+ #include <gudev/gudev.h>
+ #endif /* __linux__ */
+ 
+@@ -39,7 +39,7 @@ struct _GsdBacklight
+         gint brightness_target;
+         gint brightness_step;
+ 
+-#ifdef __linux__
++#if defined(__linux__) && defined(HAVE_GUDEV)
+         GDBusProxy *logind_proxy;
+ 
+         GUdevClient *udev;
+@@ -77,7 +77,7 @@ G_DEFINE_TYPE_EXTENDED (GsdBacklight, gsd_backlight, G_TYPE_OBJECT, 0,
+                         G_IMPLEMENT_INTERFACE (G_TYPE_INITABLE,
+                                                gsd_backlight_initable_iface_init);)
+ 
+-#ifdef __linux__
++#if defined(__linux__) && defined(HAVE_GUDEV)
+ static GUdevDevice*
+ gsd_backlight_udev_get_type (GList *devices, const gchar *type)
+ {
+@@ -478,7 +478,7 @@ gsd_backlight_set_brightness_val_async (GsdBacklight *backlight,
+ 
+         task = g_task_new (backlight, cancellable, callback, user_data);
+ 
+-#ifdef __linux__
++#if defined(__linux__) && defined(HAVE_GUDEV)
+         if (backlight->udev_device != NULL) {
+                 BacklightHelperData *task_data;
+ 
+@@ -831,7 +831,7 @@ gsd_backlight_initable_init (GInitable       *initable,
+                 return FALSE;
+         }
+ 
+-#ifdef __linux__
++#if defined(__linux__) && defined(HAVE_GUDEV)
+         backlight->logind_proxy =
+                 g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
+                                                0,
+@@ -908,7 +908,7 @@ gsd_backlight_finalize (GObject *object)
+ {
+         GsdBacklight *backlight = GSD_BACKLIGHT (object);
+ 
+-#ifdef __linux__
++#if defined(__linux__) && defined(HAVE_GUDEV)
+         g_assert (backlight->active_task == NULL);
+         g_assert (g_queue_is_empty (&backlight->tasks));
+         g_clear_object (&backlight->logind_proxy);
+@@ -961,7 +961,7 @@ gsd_backlight_init (GsdBacklight *backlight)
+         backlight->brightness_val = -1;
+         backlight->brightness_step = 1;
+ 
+-#ifdef __linux__
++#if defined(__linux__) && defined(HAVE_GUDEV)
+         backlight->active_task = NULL;
+         g_queue_init (&backlight->tasks);
+ #endif /* __linux__ */
+diff --git a/plugins/power/meson.build b/plugins/power/meson.build
+index 69e619f2..6c6ea939 100644
+--- a/plugins/power/meson.build
++++ b/plugins/power/meson.build
+@@ -24,7 +24,7 @@ native_deps = [
+   dependency('gio-2.0', native:true)
+ ]
+ 
+-if host_is_linux
++if host_is_linux and enable_gudev
+   deps += gudev_dep
+ endif
+ 
+@@ -66,7 +66,7 @@ gsd_power_enums_update = executable(
+   native: true
+ )
+ 
+-if host_is_linux
++if host_is_linux and enable_gudev
+   policy = 'org.gnome.settings-daemon.plugins.power.policy'
+ 
+   policy_in = configure_file(
+@@ -130,7 +130,7 @@ envs.set('BUILDDIR', meson.current_build_dir())
+ envs.set('TOP_BUILDDIR', meson.build_root())
+ envs.set('LD_PRELOAD', 'libumockdev-preload.so.0')
+ envs.set('NO_AT_BRIDGE', '1')
+-envs.set('HAVE_SYSFS_BACKLIGHT', host_is_linux ? '1' : '0')
++envs.set('HAVE_SYSFS_BACKLIGHT', (host_is_linux and enable_gudev) ? '1' : '0')
+ 
+ if get_option('b_sanitize').split(',').contains('address')
+   # libasan needs to be loaded first; so we need to explicitly preload it
+-- 
+2.26.2
+

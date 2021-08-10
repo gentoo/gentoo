@@ -1,0 +1,47 @@
+From 288e3189fce8f466ca60411c27e8f1c0dac5d582 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <siarheit@google.com>
+Date: Sun, 25 Apr 2021 20:50:38 +0100
+Subject: [PATCH] gdb: fix sparc build failure of linux-nat
+
+On sparc build failed as:
+
+```
+gdb/sparc-linux-nat.c: In member function
+  'virtual void sparc_linux_nat_target::fetch_registers(regcache*, int)':
+gdb/sparc-linux-nat.c:36:37:
+  error: cannot convert 'regcache*' to 'process_stratum_target*'
+   36 |   { sparc_fetch_inferior_registers (regcache, regnum); }
+      |                                     ^~~~~~~~
+      |                                     |
+      |                                     regcache*
+```
+
+The fix adopts gdb/sparc-nat.h API change in d1e93af64a6
+("gdb: set current thread in sparc_{fetch,collect}_inferior_registers").
+
+gdb/ChangeLog:
+
+	* sparc-linux-nat.c (sparc_linux_nat_target): fix sparc build
+	by passing `process_stratum_target*` parameter.
+---
+ gdb/sparc-linux-nat.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/gdb/sparc-linux-nat.c
++++ b/gdb/sparc-linux-nat.c
+@@ -33,10 +33,10 @@ class sparc_linux_nat_target final : public linux_nat_target
+ public:
+   /* Add our register access methods.  */
+   void fetch_registers (struct regcache *regcache, int regnum) override
+-  { sparc_fetch_inferior_registers (regcache, regnum); }
++  { sparc_fetch_inferior_registers (this, regcache, regnum); }
+ 
+   void store_registers (struct regcache *regcache, int regnum) override
+-  { sparc_store_inferior_registers (regcache, regnum); }
++  { sparc_store_inferior_registers (this, regcache, regnum); }
+ };
+ 
+ static sparc_linux_nat_target the_sparc_linux_nat_target;
+-- 
+2.31.1
+

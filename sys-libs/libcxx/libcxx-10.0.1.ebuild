@@ -1,21 +1,22 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_ECLASS=cmake
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit cmake-multilib llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="https://libcxx.llvm.org/"
 LLVM_COMPONENTS=( libcxx )
+LLVM_PATCHSET=10.0.1-1
 llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 x86"
-IUSE="elibc_glibc elibc_musl +libcxxabi +libunwind +static-libs test"
+IUSE="elibc_glibc elibc_musl +libcxxabi +libunwind static-libs test"
 REQUIRED_USE="libunwind? ( libcxxabi )"
 RESTRICT="!test? ( test )"
 
@@ -47,14 +48,6 @@ pkg_setup() {
 		eerror "and try again."
 		die
 	fi
-}
-
-src_prepare() {
-	# Add link flag "-Wl,-z,defs" to avoid underlinking; this is needed in a
-	# out-of-tree build.
-	eapply "${FILESDIR}/${PN}-3.9-cmake-link-flags.patch"
-
-	llvm.org_src_prepare
 }
 
 test_compiler() {

@@ -1,0 +1,38 @@
+--- a/configure.in
++++ b/configure.in
+@@ -39,6 +39,7 @@
+ 
+ dnl Replace `main' with a function in -lresolv:
+ AC_CHECK_LIB(curses, refresh)
++AC_SEARCH_LIBS(nodelay, tinfo ncurses curses)
+ 
+ 
+ dnl Checks for header files.
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1,6 +1,6 @@
+ CC = @CC@
+ CFLAGS = @CFLAGS@
+-LDFLAGS = @LIBS@ 
++LIBS = @LIBS@ 
+ SHELL=/bin/sh
+ 
+ srcdir = @srcdir@
+@@ -18,7 +18,7 @@
+ 
+ DEFS = -I. @DEFS@
+ 
+-COMPILE_CFLAGS=$(CFLAGS) $(DEFS) 
++COMPILE_CFLAGS=$(CFLAGS) $(LDFLAGS) $(DEFS) 
+ 
+ .PHONY: clean distclean install installdirs
+ 
+@@ -33,7 +33,7 @@
+ 	rm -f Makefile configure config.log config.cache config.h config.status
+ 
+ liveice: setup.o streams.o encoders.o serverlib.o mpeg.o mixer.o display.o playlist.o wav.o audio_proc.o controls.o meta_data.o url.o liveice.h liveice.c 
+-	$(CC) $(COMPILE_CFLAGS) -o liveice $(OBJS) $(LDFLAGS) liveice.c
++	$(CC) $(COMPILE_CFLAGS) -o liveice $(OBJS) $(LIBS) liveice.c
+ 
+ setup.o: setup.c
+ 	$(CC) $(COMPILE_CFLAGS) -c -o setup.o setup.c

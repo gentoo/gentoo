@@ -1,18 +1,26 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop qmake-utils xdg-utils git-r3 autotools
+inherit cmake desktop qmake-utils xdg
 
 DESCRIPTION="Qt application to control FluidSynth"
 HOMEPAGE="https://qsynth.sourceforge.io/"
-EGIT_REPO_URI="https://git.code.sf.net/p/qsynth/code"
+
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://git.code.sf.net/p/qsynth/code"
+	inherit git-r3
+else
+	SRC_URI="mirror://sourceforge/qsynth/${P}.tar.gz"
+	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+alsa debug jack pulseaudio"
-KEYWORDS=""
+
+REQUIRED_USE="|| ( alsa jack pulseaudio )"
 
 BDEPEND="
 	dev-qt/linguist-tools:5
@@ -26,24 +34,21 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-REQUIRED_USE="|| ( alsa jack pulseaudio )"
-
 src_prepare() {
-	default
-	eautoreconf
+	cmake_src_prepare
+
+	sed -e "/^find_package.*QT/s/Qt6 //" -i CMakeLists.txt || die
 }
 
 src_configure() {
-	sed -e "/@gzip.*mandir)\/man1/d" -i Makefile.in || die
-	econf \
-		$(use_enable debug)
-
-	eqmake5 ${PN}.pro -o ${PN}.mak
+	local mycmakeargs=(
+		-DCONFIG_DEBUG=$(usex debug 1 0)
+	)
+	cmake_src_configure
 }
 
 src_install() {
-	emake DESTDIR="${D}" INSTALL_ROOT="${D}" install
-	einstalldocs
+	cmake_src_install
 
 	# The desktop file is invalid, and we also change the command
 	# depending on useflags
@@ -61,12 +66,4 @@ src_install() {
 	fi
 
 	make_desktop_entry "${cmd}" Qsynth qsynth
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

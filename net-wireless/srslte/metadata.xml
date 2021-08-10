@@ -12,4 +12,7 @@
 		<flag name="simcard">support hardware sim cards</flag>
 		<flag name="zeromq">enable zeromq message passing</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">srsLTE/srsLTE</remote-id>
+	</upstream>
 </pkgmetadata>

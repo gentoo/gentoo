@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-single-r1.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: An eclass for Python packages not installed for multiple implementations.
 # @DESCRIPTION:
 # An extension of the python-r1 eclass suite for packages which
@@ -37,11 +37,10 @@
 # https://dev.gentoo.org/~mgorny/python-guide/
 
 case "${EAPI:-0}" in
-	0|1|2|3|4)
+	[0-5])
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	5|6|7)
-		# EAPI=5 is required for sane USE_EXPAND dependencies
+	[6-8])
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -131,7 +130,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 # RDEPEND="${PYTHON_DEPS}
 #	dev-foo/mydep"
-# DEPEND="${RDEPEND}"
+# BDEPEND="${PYTHON_DEPS}"
 # @CODE
 #
 # Example value:
@@ -179,12 +178,6 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 # python_targets_python3_4(-)
 # @CODE
-
-# @ECLASS-VARIABLE: PYTHON_MULTI_USEDEP
-# @OUTPUT_VARIABLE
-# @DESCRIPTION:
-# This is a backwards-compatibility placeholder.  Use PYTHON_USEDEP
-# instead.
 
 # @ECLASS-VARIABLE: PYTHON_REQUIRED_USE
 # @OUTPUT_VARIABLE
@@ -279,11 +272,10 @@ if [[ ! ${_PYTHON_SINGLE_R1} ]]; then
 # are both in PYTHON_COMPAT and match any of the patterns passed
 # as parameters to the function.
 #
-# The patterns can be either fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
-# appropriately all enabled Python 2/3 implementations (alike
-# python_is_python3). Remember to escape or quote the fnmatch patterns
-# to prevent accidental shell filename expansion.
+# The patterns are fnmatch-style patterns (matched via bash
+# == operator against PYTHON_COMPAT values).  Remember to escape
+# or quote the fnmatch patterns to prevent accidental shell filename
+# expansion.
 #
 # This is an internal function used to implement python_gen_cond_dep.
 _python_gen_usedep() {
@@ -313,11 +305,10 @@ _python_gen_usedep() {
 # are both in PYTHON_COMPAT and match any of the patterns passed
 # as parameters to the function.
 #
-# The patterns can be either fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
-# appropriately all enabled Python 2/3 implementations (alike
-# python_is_python3). Remember to escape or quote the fnmatch patterns
-# to prevent accidental shell filename expansion.
+# The patterns are fnmatch-style patterns (matched via bash
+# == operator against PYTHON_COMPAT values).  Remember to escape
+# or quote the fnmatch patterns to prevent accidental shell filename
+# expansion.
 #
 # Example:
 # @CODE
@@ -351,11 +342,10 @@ python_gen_useflags() {
 # of Python implementations which are both in PYTHON_COMPAT and match
 # any of the patterns passed as the remaining parameters.
 #
-# The patterns can be either fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
-# appropriately all enabled Python 2/3 implementations (alike
-# python_is_python3). Remember to escape or quote the fnmatch patterns
-# to prevent accidental shell filename expansion.
+# The patterns are fnmatch-style patterns (matched via bash
+# == operator against PYTHON_COMPAT values).  Remember to escape
+# or quote the fnmatch patterns to prevent accidental shell filename
+# expansion.
 #
 # In order to enforce USE constraints on the packages, verbatim
 # '${PYTHON_SINGLE_USEDEP}' and '${PYTHON_USEDEP}' (quoted!) may
@@ -396,6 +386,12 @@ python_gen_cond_dep() {
 			fi
 			local multi_usedep="python_targets_${impl}(-)"
 
+			if [[ ${EAPI} != [67] ]]; then
+				if [[ ${dep} == *\$\{PYTHON_MULTI_USEDEP\}* ]]; then
+					die "Replace PYTHON_MULTI_USEDEP with PYTHON_USEDEP in EAPI ${EAPI}"
+				fi
+			fi
+
 			local subdep=${dep//\$\{PYTHON_MULTI_USEDEP\}/${multi_usedep}}
 			matches+=( "python_single_target_${impl}? (
 				${subdep//\$\{PYTHON_USEDEP\}/${multi_usedep}} )" )
@@ -414,11 +410,10 @@ python_gen_cond_dep() {
 # patterns are passed, the output dependencies will be generated only
 # for the implementations matching them.
 #
-# The patterns can be either fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
-# appropriately all enabled Python 2/3 implementations (alike
-# python_is_python3). Remember to escape or quote the fnmatch patterns
-# to prevent accidental shell filename expansion.
+# The patterns are fnmatch-style patterns (matched via bash
+# == operator against PYTHON_COMPAT values).  Remember to escape
+# or quote the fnmatch patterns to prevent accidental shell filename
+# expansion.
 #
 # Use this function when you need to request different USE flags
 # on the Python interpreter depending on package's USE flags. If you

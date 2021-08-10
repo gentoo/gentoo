@@ -10,6 +10,7 @@
 		set/change the PIN, generate credentials, interact with the on-board TRNG, update
 		the firmware, and more. See the output of 'solo key --help' for more information.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">solokeys/solo-python</remote-id>
 		<remote-id type="pypi">solo</remote-id>

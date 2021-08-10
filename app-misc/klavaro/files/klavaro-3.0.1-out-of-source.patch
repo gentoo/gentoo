@@ -1,5 +1,5 @@
---- src/Makefile.am	2014-09-05 10:26:56.000000000 -0400
-+++ src/Makefile.am	2014-12-18 21:27:55.443335860 -0500
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -29,7 +29,7 @@
  
  klavaro_LDADD = @GTK_LIBS@ \

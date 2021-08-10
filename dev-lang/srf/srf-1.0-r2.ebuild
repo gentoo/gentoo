@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils vcs-clean
+inherit vcs-clean
 
 DESCRIPTION="The Simple Recursive Functions programming language"
 HOMEPAGE="http://www.stratigery.com/srf.html"
@@ -12,12 +12,12 @@ SRC_URI="http://www.stratigery.com/srf.html/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-linux ~ppc-macos"
-IUSE=""
 
 DEPEND="
 	sys-devel/flex
 	virtual/yacc"
-RDEPEND=""
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_prepare() {
 	default
@@ -30,6 +30,5 @@ src_install() {
 	doman srf.1
 	dodoc README srf.html
 
-	docinto examples
-	dodoc examples/*
+	dodoc -r examples
 }

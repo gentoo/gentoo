@@ -5,8 +5,16 @@
     <email>python@gentoo.org</email>
     <name>Python</name>
   </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>guillaumeseren@gmail.com</email>
+    <name>Guillaume Seren</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
   <upstream>
-    <remote-id type="pypi">discogs-client</remote-id>
-    <remote-id type="github">discogs/discogs_client</remote-id>
+    <remote-id type="pypi">python3-discogs-client</remote-id>
+    <remote-id type="github">joalla/discogs_client</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,0 +1,72 @@
+From 3ea94a870b6e139399abbf932da1dfa2f9bd37e3 Mon Sep 17 00:00:00 2001
+From: parrt <parrt@cs.usfca.edu>
+Date: Thu, 8 Nov 2018 11:40:24 -0800
+Subject: [PATCH] make tests work with java 10 and 6, 7, 8
+
+---
+ .../stringtemplate/v4/test/TestRenderers.java | 24 +++++++++++++++----
+ 1 file changed, 20 insertions(+), 4 deletions(-)
+
+diff --git a/test/org/stringtemplate/v4/test/TestRenderers.java b/test/org/stringtemplate/v4/test/TestRenderers.java
+index bc5406f7..7b7536e0 100644
+--- a/test/org/stringtemplate/v4/test/TestRenderers.java
++++ b/test/org/stringtemplate/v4/test/TestRenderers.java
+@@ -48,6 +48,8 @@
+ 
+ public class TestRenderers extends BaseTest {
+ 
++	String javaVersion = System.getProperty("java.version");
++
+ 	// Make sure to use the US Locale during the tests
+ 	private Locale origLocale;
+ 
+@@ -73,6 +75,9 @@ public void tearDown() {
+ 		ST st = group.getInstanceOf("dateThing");
+ 		st.add("created", new GregorianCalendar(2005, 7 - 1, 5));
+ 		String expecting = "datetime: 7/5/05, 12:00 AM";
++		if ( javaVersion.startsWith("1.6") || javaVersion.startsWith("1.7") || javaVersion.startsWith("1.8") ) {
++			expecting = "datetime: 7/5/05 12:00 AM";
++		}
+ 		String result = st.render();
+ 		assertEquals(expecting, result);
+ 	}
+@@ -99,7 +104,10 @@ public void tearDown() {
+         ST st = group.getInstanceOf("dateThing");
+         st.add("created", new GregorianCalendar(2005, 7 - 1, 5));
+         String expecting = " datetime: 7/5/05, 12:00 AM ";
+-        String result = st.render();
++	    if ( javaVersion.startsWith("1.6") || javaVersion.startsWith("1.7") || javaVersion.startsWith("1.8") ) {
++		    expecting = " datetime: 7/5/05 12:00 AM ";
++	    }
++	    String result = st.render();
+         assertEquals(expecting, result);
+     }
+ 
+@@ -116,9 +124,13 @@ public void tearDown() {
+         	TimeZone.setDefault(TimeZone.getTimeZone("America/Los_Angeles"));
+         	st.add("created", new GregorianCalendar(2005, 7 - 1, 5));
+         	String expecting = " datetime: Tuesday, July 5, 2005 at 12:00:00 AM Pacific Daylight Time ";
+-        	String result = st.render();
++	        if ( javaVersion.startsWith("1.6") || javaVersion.startsWith("1.7") || javaVersion.startsWith("1.8") ) {
++		        expecting = " datetime: Tuesday, July 5, 2005 12:00:00 AM PDT ";
++	        }
++	        String result = st.render();
+         	assertEquals(expecting, result);
+-        } finally {
++        }
++        finally {
+            	// Restore original Timezone
+            	TimeZone.setDefault(origTimeZone);
+         }
+@@ -371,6 +383,10 @@ public void tearDown() {
+ 		cal.set(2012, Calendar.JUNE, 12);
+ 		st.add("date", cal);
+ 
+-		assertEquals("12 de junho de 2012", st.render(new Locale("pt")));
++		String expected = "12 de junho de 2012";
++		if ( javaVersion.startsWith("1.6") || javaVersion.startsWith("1.7") || javaVersion.startsWith("1.8") ) {
++			expected = "12 de Junho de 2012";
++		}
++		assertEquals(expected, st.render(new Locale("pt")));
+ 	}
+ }

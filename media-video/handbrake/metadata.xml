@@ -14,4 +14,7 @@
 		<flag name="nvenc">Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.</flag>
 		<flag name="x265">Support for encoding h265 using <pkg>media-libs/x265</pkg>.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">HandBrake/HandBrake</remote-id>
+	</upstream>
 </pkgmetadata>

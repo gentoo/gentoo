@@ -1,0 +1,26 @@
+From 2f8cd478df76c029d20870364dae577fe1bf82e5 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 23 Apr 2021 21:45:33 +0200
+Subject: [PATCH] Find KF5TextWidgets instead of KF5TextEditor
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ef9d3084..04f14929 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -62,7 +62,7 @@ find_package(KF5DocTools ${KF5_MIN_VERSION} REQUIRED)
+ find_package(KF5KCMUtils ${KF5_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KF5NotifyConfig ${KF5_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KF5Parts ${KF5_MIN_VERSION} CONFIG REQUIRED)
+-find_package(KF5TextEditor ${KF5_MIN_VERSION} CONFIG REQUIRED)
++find_package(KF5TextWidgets ${KF5_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KF5XmlGui ${KF5_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KF5Notifications ${KF5_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KF5Syndication ${KF5_MIN_VERSION} CONFIG REQUIRED)
+-- 
+2.31.1
+

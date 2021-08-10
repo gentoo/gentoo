@@ -1,0 +1,33 @@
+From d1ed58b2ab82bd5be55881088fc17ff1527511db Mon Sep 17 00:00:00 2001
+From: Christian Hergert <chergert@redhat.com>
+Date: Thu, 15 Apr 2021 08:11:22 -0700
+Subject: [PATCH] build: disable -Werror for incompatible-pointer-types
+
+This causes an issue with volatile and GLib in some configurations, so
+just keep it out for now. We will bring it back at some point going
+forward.
+
+We are already doing the same in 5.0.
+
+Fixes #179
+---
+ meson.build | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 826a3121..6ff5b155 100644
+--- a/meson.build
++++ b/meson.build
+@@ -181,7 +181,8 @@ else
+     '-Werror=empty-body',
+     '-Werror=implicit',
+     '-Werror=implicit-function-declaration',
+-    '-Werror=incompatible-pointer-types',
++    # Disabled due to volatile changes in GLib
++    # '-Werror=incompatible-pointer-types',
+     '-Werror=init-self',
+     '-Werror=int-conversion',
+     '-Werror=int-to-pointer-cast',
+-- 
+2.26.3
+

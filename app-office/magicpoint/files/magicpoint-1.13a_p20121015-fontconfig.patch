@@ -1,6 +1,6 @@
 # Bug #572658
---- kit.orig/configure.in	2009-05-04 09:36:47.000000000 +0200
-+++ kit/configure.in	2016-01-23 04:25:17.047720246 +0100
+--- a/configure.in
++++ b/configure.in
 @@ -16,6 +16,7 @@
  AC_PROG_AWK
  AC_PROG_YACC
@@ -14,10 +14,10 @@
    	  AC_MSG_CHECKING(for xft2 library..)
  	  AC_CHECK_LIB(Xft, XftFontOpen, 
 -		[LIBS="$LIBS -lXft -lfontconfig"
-+		[LIBS="$LIBS -lXft `pkg-config --libs fontconfig`"
++		[LIBS="$LIBS -lXft `${PKG_CONFIG} --libs fontconfig`"
  		 AC_DEFINE(USE_XFT2) 
 -		 mgp_xft2_found=yes], [], [-lfontconfig])
-+		 mgp_xft2_found=yes], [], [`pkg-config --libs fontconfig`])
++		 mgp_xft2_found=yes], [], [`${PKG_CONFIG} --libs fontconfig`])
      fi
    fi
  fi
@@ -26,7 +26,7 @@
  		OPTFLAGS="$OPTFLAGS `m17n-config X --cflags`"
  		LIBS="$LIBS `m17n-config X --libs` -lm17n-core"
 +		if test "x$ac_cv_header_fontconfig_fontconfig_h" = "xyes"; then
-+			LIBS="$LIBS `pkg-config --libs fontconfig`"
++			LIBS="$LIBS `${PKG_CONFIG} --libs fontconfig`"
 +		fi
  	fi
  fi

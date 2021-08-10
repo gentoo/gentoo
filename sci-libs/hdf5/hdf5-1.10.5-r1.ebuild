@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 FORTRAN_NEEDED="fortran"
 
-inherit autotools eutils fortran-2 flag-o-matic toolchain-funcs multilib prefix
+inherit autotools fortran-2 flag-o-matic toolchain-funcs multilib prefix
 
 MY_P="${PN}-${PV/_p/-patch}"
 MAJOR_P="${PN}-$(ver_cut 1-2)"
@@ -16,7 +16,7 @@ SRC_URI="https://www.hdfgroup.org/ftp/HDF5/releases/${MAJOR_P}/${MY_P}/src/${MY_
 
 LICENSE="NCSA-HDF"
 SLOT="0/${PV%%_p*}"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="cxx debug examples fortran +hl mpi szip threads unsupported zlib"
 
 REQUIRED_USE="
@@ -74,6 +74,9 @@ src_prepare() {
 	# enable shared libs by default for h5cc config utility
 	sed -i -e "s/SHLIB:-no/SHLIB:-yes/g" tools/src/misc/h5cc.in || die
 	hprefixify m4/libtool.m4
+
+	# bug #775305
+	use fortran && tc-enables-pie && append-fflags -fPIC
 
 	default
 	eautomake

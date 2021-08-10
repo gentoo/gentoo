@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils toolchain-funcs
+inherit edos2unix toolchain-funcs
 
 MY_PN=FreeImage
 MY_PV=${PV//.}
@@ -12,11 +12,12 @@ MY_P=${MY_PN}${MY_PV}
 DESCRIPTION="Image library supporting many formats"
 HOMEPAGE="https://freeimage.sourceforge.io/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip
-	mirror://sourceforge/${PN}/${MY_P}.pdf"
+	mirror://sourceforge/${PN}/${MY_P}.pdf
+	https://dev.gentoo.org/~juippis/distfiles/tmp/freeimage-3.18.0-unbundling.patch"
 
 LICENSE="|| ( GPL-2 FIPL-1.0 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="jpeg jpeg2k mng openexr png raw static-libs tiff webp"
 
 # The tiff/ilmbase isn't a typo.  The TIFF plugin cheats and
@@ -43,13 +44,14 @@ S=${WORKDIR}/${MY_PN}
 
 DOCS=( "${DISTDIR}"/${MY_P}.pdf README.linux Whatsnew.txt )
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.18.0-unbundling.patch
+	"${DISTDIR}"/${PN}-3.18.0-unbundling.patch
 	"${FILESDIR}"/${PN}-3.18.0-remove-jpeg-transform.patch
 	"${FILESDIR}"/${PN}-3.18.0-rename-jpeg_read_icc_profile.patch
 	"${FILESDIR}"/${PN}-3.18.0-disable-plugin-G3.patch
 	"${FILESDIR}"/${PN}-3.18.0-raw.patch
 	"${FILESDIR}"/${PN}-3.18.0-libjpeg9.patch
 	"${FILESDIR}"/${PN}-3.18.0-CVE-2019-12211-CVE-2019-12213.patch
+	"${FILESDIR}"/${PN}-3.18.0-libraw-0.20.0.patch
 )
 
 src_prepare() {

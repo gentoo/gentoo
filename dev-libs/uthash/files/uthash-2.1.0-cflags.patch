@@ -1,5 +1,5 @@
---- uthash-2.1.0/tests/Makefile
-+++ uthash-2.1.0/tests/Makefile
+--- a/tests/Makefile
++++ b/tests/Makefile
 @@ -18,7 +18,7 @@
  CFLAGS += -I$(HASHDIR)
  #CFLAGS += -DHASH_BLOOM=16

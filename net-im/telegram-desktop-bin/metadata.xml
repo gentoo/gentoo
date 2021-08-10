@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>henning@hennsch.de</email>
     <name>Henning Schild</name>
   </maintainer>
   <maintainer type="person">
-    <email>NP-Hardass@gentoo.org</email>
-    <name>NP-Hardass</name>
+    <email>np-hardass@gentoo.org</email>
+    <name>Adam Feldman</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
@@ -17,4 +17,3 @@
     <remote-id type="github">telegramdesktop/tdesktop</remote-id>
   </upstream>
 </pkgmetadata>
-

@@ -1,5 +1,5 @@
---- data/strings.xml	2006-11-11 23:45:28.000000000 +0000
-+++ data/strings.xml	2007-02-02 14:14:14.000000000 +0000
+--- a/data/strings.xml
++++ b/data/strings.xml
 @@ -35,5 +35,5 @@
  		<es>Español</es>
  		<it>Italiano</it>

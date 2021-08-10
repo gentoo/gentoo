@@ -1,0 +1,47 @@
+From 533f1edd70054a5479ee85719d3cbef0d15627fd Mon Sep 17 00:00:00 2001
+From: Tim Harder <radhermit@gmail.com>
+Date: Sun, 28 Mar 2021 17:18:16 -0600
+Subject: [PATCH] ebuild.processor: register SIGINT and SIGTERM signal handlers
+ on ebd init
+
+Rather than at a global, module level to avoid issues with inadvertent
+issues during 3rd party imports, e.g. the pkgcore pytest plugin getting
+autoloaded by some other project's testsuite.
+---
+ src/pkgcore/ebuild/processor.py | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/src/pkgcore/ebuild/processor.py b/src/pkgcore/ebuild/processor.py
+index e8c3c2cd4..65437efcf 100644
+--- a/src/pkgcore/ebuild/processor.py
++++ b/src/pkgcore/ebuild/processor.py
+@@ -275,9 +275,6 @@ def chuck_KeyboardInterrupt(*args):
+     raise KeyboardInterrupt("ctrl+c encountered")
+ 
+ 
+-signal.signal(signal.SIGINT, chuck_KeyboardInterrupt)
+-
+-
+ def chuck_TermInterrupt(ebp, *args):
+     """Event handler for SIGTERM."""
+     if ebp is None:
+@@ -292,9 +289,6 @@ def chuck_TermInterrupt(ebp, *args):
+         ebp.shutdown_processor()
+ 
+ 
+-signal.signal(signal.SIGTERM, partial(chuck_TermInterrupt, None))
+-
+-
+ def chuck_UnhandledCommand(ebp, line):
+     """Event handler for unhandled commands."""
+     raise UnhandledCommand(line)
+@@ -332,6 +326,9 @@ def __init__(self, userpriv, sandbox, fd_pipes=None):
+         self._outstanding_expects = []
+         self._metadata_paths = None
+ 
++        signal.signal(signal.SIGTERM, partial(chuck_TermInterrupt, None))
++        signal.signal(signal.SIGINT, chuck_KeyboardInterrupt)
++
+         if userpriv:
+             self.__userpriv = True
+             spawn_opts.update({

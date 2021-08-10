@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit cmake llvm llvm.org python-any-r1
 
 DESCRIPTION="The LLVM linker (link editor)"

@@ -15,5 +15,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">xmikos/simplespectral</remote-id>
+		<remote-id type="pypi">SimpleSpectral</remote-id>
 	</upstream>
 </pkgmetadata>

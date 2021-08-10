@@ -1,0 +1,43 @@
+From d421bbfa609426032f07f27934eefb214d59012f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Florian=20M=C3=BCllner?= <fmuellner@gnome.org>
+Date: Tue, 13 Jul 2021 11:54:21 +0200
+Subject: [PATCH] drive-menu: Hide items initially
+
+Now that the check for network mounts is non-blocking, the initial
+sync doesn't take effect immediately. We don't want hidden items
+to briefly flash the indicator, so create them initially hidden.
+
+Part-of: <https://gitlab.gnome.org/GNOME/gnome-shell-extensions/-/merge_requests/176>
+---
+ extensions/drive-menu/extension.js | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/extensions/drive-menu/extension.js b/extensions/drive-menu/extension.js
+index 6c6fd76..f60dab7 100644
+--- a/extensions/drive-menu/extension.js
++++ b/extensions/drive-menu/extension.js
+@@ -41,6 +41,8 @@ class MountMenuItem extends PopupMenu.PopupBaseMenuItem {
+         ejectButton.connect('clicked', this._eject.bind(this));
+         this.add(ejectButton);
+ 
++        this.hide();
++
+         this._changedId = mount.connect('changed', this._syncVisibility.bind(this));
+         this._syncVisibility();
+     }
+@@ -155,10 +157,8 @@ class DriveMenu extends PanelMenu.Button {
+         this.add_child(icon);
+ 
+         this._monitor = Gio.VolumeMonitor.get();
+-        this._addedId = this._monitor.connect('mount-added', (monitor, mount) => {
+-            this._addMount(mount);
+-            this._updateMenuVisibility();
+-        });
++        this._addedId = this._monitor.connect('mount-added',
++            (monitor, mount) => this._addMount(mount));
+         this._removedId = this._monitor.connect('mount-removed', (monitor, mount) => {
+             this._removeMount(mount);
+             this._updateMenuVisibility();
+-- 
+GitLab
+

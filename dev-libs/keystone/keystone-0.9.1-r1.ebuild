@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit cmake distutils-r1 llvm
 
@@ -14,7 +14,6 @@ HOMEPAGE="https://www.keystone-engine.org/"
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/keystone-engine/keystone.git"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/keystone-engine/keystone/archive/${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc64 ~x86"

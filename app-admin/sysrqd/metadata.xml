@@ -7,5 +7,7 @@
 		Its philosophy is to be very responsive under heavy load and try to
 		be somehow reliable. Authentication is made by clear password.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">jd/sysrqd</remote-id>
+	</upstream>
 </pkgmetadata>
-

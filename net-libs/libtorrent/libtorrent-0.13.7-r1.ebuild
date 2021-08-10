@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,16 +17,15 @@ LICENSE="GPL-2"
 # subslot.
 SLOT="0"
 
-KEYWORDS="amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
-IUSE="debug libressl ssl test"
+KEYWORDS="amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris"
+IUSE="debug ssl test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	sys-libs/zlib
 	>=dev-libs/libsigc++-2.2.2:2
 	ssl? (
-	    !libressl? ( dev-libs/openssl:0= )
-	    libressl? ( dev-libs/libressl:= )
+	    dev-libs/openssl:0=
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

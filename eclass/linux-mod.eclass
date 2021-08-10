@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: linux-mod.eclass
@@ -7,6 +7,7 @@
 # @AUTHOR:
 # John Mylchreest <johnm@gentoo.org>,
 # Stefan Schweizer <genstef@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: It provides the functionality required to install external modules against a kernel source tree.
 # @DESCRIPTION:
 # This eclass is used to interface with linux-info.eclass in such a way
@@ -18,11 +19,13 @@
 # These are as follows:
 
 # @ECLASS-VARIABLE: MODULES_OPTIONAL_USE
+# @PRE_INHERIT
 # @DESCRIPTION:
 # A string containing the USE flag to use for making this eclass optional
 # The recommended non-empty value is 'modules'
 
 # @ECLASS-VARIABLE: MODULES_OPTIONAL_USE_IUSE_DEFAULT
+# @PRE_INHERIT
 # @DESCRIPTION:
 # A boolean to control the IUSE default state for the MODULES_OPTIONAL_USE USE
 # flag. Default value is unset (false). True represented by 1 or 'on', other
@@ -132,8 +135,19 @@
 # @DESCRIPTION:
 # It's a read-only variable. It contains the extension of the kernel modules.
 
-inherit eutils linux-info multilib toolchain-funcs
+case ${EAPI:-0} in
+	[567]) inherit eutils ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 EXPORT_FUNCTIONS pkg_setup pkg_preinst pkg_postinst src_install src_compile pkg_postrm
+
+if [[ -z ${_LINUX_MOD_ECLASS} ]] ; then
+_LINUX_MOD_ECLASS=1
+
+# TODO: When adding support for future EAPIs, please audit this list
+# for unused inherits and conditionalise them.
+inherit linux-info multilib toolchain-funcs
 
 case ${MODULES_OPTIONAL_USE_IUSE_DEFAULT:-n} in
   [nNfF]*|[oO][fF]*|0|-) _modules_optional_use_iuse_default='' ;;
@@ -144,9 +158,16 @@ esac
 	0) die "EAPI=${EAPI} is not supported with MODULES_OPTIONAL_USE_IUSE_DEFAULT due to lack of IUSE defaults" ;;
 esac
 
-IUSE="kernel_linux ${MODULES_OPTIONAL_USE:+${_modules_optional_use_iuse_default}}${MODULES_OPTIONAL_USE}"
+IUSE="kernel_linux dist-kernel
+	${MODULES_OPTIONAL_USE:+${_modules_optional_use_iuse_default}}${MODULES_OPTIONAL_USE}"
 SLOT="0"
-RDEPEND="${MODULES_OPTIONAL_USE}${MODULES_OPTIONAL_USE:+? (} kernel_linux? ( sys-apps/kmod[tools] ) ${MODULES_OPTIONAL_USE:+)}"
+RDEPEND="
+	${MODULES_OPTIONAL_USE}${MODULES_OPTIONAL_USE:+? (}
+		kernel_linux? (
+			sys-apps/kmod[tools]
+			dist-kernel? ( virtual/dist-kernel:= )
+		)
+	${MODULES_OPTIONAL_USE:+)}"
 DEPEND="${RDEPEND}
     ${MODULES_OPTIONAL_USE}${MODULES_OPTIONAL_USE:+? (}
 	sys-apps/sed
@@ -760,3 +781,5 @@ linux-mod_pkg_postrm() {
 	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
 	remove_moduledb;
 }
+
+fi

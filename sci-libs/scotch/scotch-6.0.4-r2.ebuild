@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils toolchain-funcs versionator flag-o-matic multilib
+inherit epatch toolchain-funcs versionator flag-o-matic multilib
 
 # use esmumps version to allow linking with mumps
 MYP="${PN}_${PV}_esmumps"
@@ -64,10 +64,12 @@ src_prepare() {
 			-e 's/ -DSCOTCH_PTHREAD//' \
 			src/Make.inc/Makefile.inc.i686_pc_linux3 || die
 	fi
-	sed -e "s/gcc/$(tc-getCC)/" \
+
+	# Be careful with replacing here, bug #577272
+	sed -e "s/= gcc$/= $(tc-getCC)/" \
 		-e "s/-O3/${CFLAGS} -pthread/" \
-		-e "s/ ar/ $(tc-getAR)/" \
-		-e "s/ranlib/$(tc-getRANLIB)/" \
+		-e "s/= ar$/= $(tc-getAR)/" \
+		-e "s/= ranlib$/= $(tc-getRANLIB)/" \
 		-e "s/LDFLAGS/LIBS/" \
 		src/Make.inc/Makefile.inc.i686_pc_linux3 > src/Makefile.inc || die
 }

@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Whole genome association analysis toolset"
 HOMEPAGE="http://pngu.mgh.harvard.edu/~purcell/plink/"
@@ -14,14 +14,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="
-	app-arch/unzip
-	virtual/pkgconfig"
 RDEPEND="
 	sys-libs/zlib
 	virtual/cblas
 	virtual/lapack
-	"
+"
+DEPEND="
+	${RDEPEND}
+	app-arch/unzip
+	virtual/pkgconfig
+"
 
 S="${WORKDIR}/"
 

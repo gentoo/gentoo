@@ -5,4 +5,8 @@
     <email>juippis@gentoo.org</email>
     <name>Joonas Niilola</name>
   </maintainer>
+  <stabilize-allarches/>
+  <upstream>
+    <remote-id type="pypi">CJKwrap</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -1,9 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-23)
+# Rust is available here
+>=media-libs/libheif-1.10.0 -rav1e
+
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
+# Sam James <sam@gentoo.org> (2021-03-11)
 # libavif is keyworded for this profile.
 dev-libs/efl -avif
+kde-frameworks/kimageformats -avif
+media-libs/gd -avif
 
 # Mart Raudsepp <leio@gentoo.org> (2020-08-02)
 # virtual/rust is available here

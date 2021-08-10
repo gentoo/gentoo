@@ -1,0 +1,18 @@
+--- a/tools/libs/stat/Makefile  2021-07-01 19:32:50.696318503 +0200
++++ b/tools/libs/stat/Makefile  2021-07-01 00:16:15.102473301 +0200
+@@ -51,12 +51,13 @@
+ .PHONY: uninstall-bindings
+ uninstall-bindings: uninstall-perl-bindings uninstall-python-bindings
+ 
+-$(BINDINGS): $(SHLIB) $(SHLIB_LINKS) include/xenstat.h
++$(BINDINGS): $(SHLIB) $(SHLIB_LINKS) ../../include/xenstat.h
+ 
+-SWIG_FLAGS=-module xenstat -Iinclude -I.
++SWIG_FLAGS=-module xenstat -Iinclude -I. -I../../include/
+ 
+ # Python bindings
+ PYTHON_FLAGS=`$(PYTHON) -c 'import distutils.sysconfig; print("-I" + distutils.sysconfig.get_python_inc(True) + " " + distutils.sysconfig.get_config_var("BLDLIBRARY"))'`
++PYTHON_FLAGS+=-Wno-error=missing-prototypes -fPIC -lxenstat
+ $(PYMOD): $(PYSRC)
+ $(PYSRC): bindings/swig/xenstat.i
+        swig -python $(SWIG_FLAGS) -outdir $(@D) -o $(PYSRC) $<

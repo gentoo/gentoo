@@ -1,5 +1,5 @@
---- a/Makefile.am	2012-01-12 18:23:23.000000000 +0100
-+++ b/Makefile.am	2018-10-04 01:22:03.656483227 +0200
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -9,9 +9,6 @@
  	$(INSTALL) -d $(DESTDIR)$(mandir)/man1
  	$(INSTALL) -m 0644 $(srcdir)/bristol.1 $(DESTDIR)$(mandir)/man1/

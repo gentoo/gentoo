@@ -1,16 +1,15 @@
-# Copyright 2016-2020 Gentoo Authors
+# Copyright 2016-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8,9} )
-DISTUTILS_USE_SETUPTOOLS="rdepend"
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/mesonbuild/meson"
 	inherit git-r3
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 inherit distutils-r1 toolchain-funcs
@@ -77,6 +76,16 @@ python_test() {
 
 		# test_cross_file_system_paths
 		unset XDG_DATA_HOME
+
+		# 'test cases/unit/73 summary' expects 80 columns
+		export COLUMNS=80
+
+		# If JAVA_HOME is not set, meson looks for javac in PATH.
+		# If javac is in /usr/bin, meson assumes /usr/include is a valid
+		# JDK include path. Setting JAVA_HOME works around this broken
+		# autodection. If no JDK is installed, we should end up with an empty
+		# value in JAVA_HOME, and the tests should get skipped.
+		export JAVA_HOME=$(java-config -O 2>/dev/null)
 
 		${EPYTHON} -u run_tests.py
 	) || die "Testing failed with ${EPYTHON}"

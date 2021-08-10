@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,14 +18,16 @@ fi
 DESCRIPTION="Radeon Open Compute Runtime"
 HOMEPAGE="https://github.com/RadeonOpenCompute/ROCR-Runtime"
 PATCHES=(
-	"${FILESDIR}/${PN}-3.7.0-cmake-install-paths.patch"
+	"${FILESDIR}/${PN}-4.1.0-cmake-install-paths.patch"
 )
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
+IUSE="debug"
 
 COMMON_DEPEND="sys-process/numactl
-	dev-libs/elfutils:="
+	dev-libs/elfutils:=
+	>=sys-devel/llvm-roc-${PV}"
 RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/roct-thunk-interface-${PV}
@@ -40,7 +42,12 @@ src_prepare() {
 	sed -e "s:find_package(Clang REQUIRED HINTS \${CMAKE_INSTALL_PREFIX}/llvm \${CMAKE_PREFIX_PATH}/llvm PATHS /opt/rocm/llvm ):find_package(Clang REQUIRED HINTS /usr/lib/llvm/roc ):" -i image/blit_src/CMakeLists.txt || die
 
 	# Gentoo installs "*.bc" to "/usr/lib" instead of a "[path]/bitcode" directory ...
-	sed -e "s:/opt/rocm/amdgcn/bitcode:/usr/lib:" -i image/blit_src/CMakeLists.txt || die
+	sed -e "s:/opt/rocm/amdgcn/bitcode:/usr/lib/amdgcn/bitcode:" -i image/blit_src/CMakeLists.txt || die
 
 	cmake_src_prepare
+}
+
+src_configure() {
+	use debug || local mycmakeargs=(-DCMAKE_CXX_FLAGS='-DNDEBUG')
+	cmake_src_configure
 }

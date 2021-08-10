@@ -1,0 +1,151 @@
+--- a/geekcode.c
++++ b/geekcode.c
+@@ -24,6 +24,55 @@
+ #include <sys/stat.h>
+ #include "geekcode.h"
+ 
++/* Geek type - gc_type.c */
++int get_type(void),          gc_type;
++
++/* Appearance section - gc_appearance.c */
++int get_dress(void),         gc_dress;
++int get_height(void),        gc_height;
++int get_weight(void),        gc_weight;
++int get_age(void),           gc_age;
++
++/* Computers section - gc_computers.c */
++int get_computers(void),     gc_computers;
++int get_unix_type(void),     gc_unix_type; /* Added in v1.1 */
++int get_unix(int x),         gc_unix;
++int get_perl(void),          gc_perl;
++int get_linux(void),         gc_linux;
++int get_emacs(void),         gc_emacs;
++int get_www(void),           gc_www;
++int get_usenet(void),        gc_usenet;
++int get_oracle(void),        gc_oracle;
++int get_kibo(void),          gc_kibo;
++int get_windows(void),       gc_windows;
++int get_os2(void),           gc_os2;
++int get_mac(void),           gc_mac;
++int get_vms(void),           gc_vms;
++
++/* Politics section - gc_politics.c */
++int get_social(void),        gc_social;
++int get_economic(void),      gc_economic;
++int get_cypher(void),        gc_cypher;
++int get_pgp(void),           gc_pgp;
++
++/* Entertainment section - gc_entertainment.c */
++int get_startrek(void),      gc_startrek;
++int get_babylon5(void),      gc_babylon5;
++int get_xfiles(void),        gc_xfiles;
++int get_rp(void),            gc_rp;
++int get_television(void),    gc_television;
++int get_books(void),         gc_books;
++int get_dilbert(void),       gc_dilbert;
++int get_doom(void),          gc_doom;
++int get_geekcode(void),      gc_geekcode;
++
++/* Lifestyle section - gc_lifestyle.c */
++int get_education(void),     gc_education;
++int get_housing(void),       gc_housing;
++int get_relationships(void), gc_relationships;
++int get_sex_type(void),      gc_sex_type; /* Added in v1.2 */
++int get_sex(int x),          gc_sex;      /* Modified in v1.2 */
++
+ int readgeek(char geekcode[64][16],char *data,int *j,int *k){
+   int i;
+ 
+--- a/geekcode.h
++++ b/geekcode.h
+@@ -34,53 +34,53 @@
+                  */
+ 
+ /* Geek type - gc_type.c */
+-int get_type(void),          gc_type;
++extern int get_type(void),          gc_type;
+ 
+ /* Appearance section - gc_appearance.c */
+-int get_dress(void),         gc_dress;
+-int get_height(void),        gc_height;
+-int get_weight(void),        gc_weight;
+-int get_age(void),           gc_age;
++extern int get_dress(void),         gc_dress;
++extern int get_height(void),        gc_height;
++extern int get_weight(void),        gc_weight;
++extern int get_age(void),           gc_age;
+ 
+ /* Computers section - gc_computers.c */
+-int get_computers(void),     gc_computers;
+-int get_unix_type(void),     gc_unix_type; /* Added in v1.1 */
+-int get_unix(int x),         gc_unix;
+-int get_perl(void),          gc_perl;
+-int get_linux(void),         gc_linux;
+-int get_emacs(void),         gc_emacs;
+-int get_www(void),           gc_www;
+-int get_usenet(void),        gc_usenet;
+-int get_oracle(void),        gc_oracle;
+-int get_kibo(void),          gc_kibo;
+-int get_windows(void),       gc_windows;
+-int get_os2(void),           gc_os2;
+-int get_mac(void),           gc_mac;
+-int get_vms(void),           gc_vms;
++extern int get_computers(void),     gc_computers;
++extern int get_unix_type(void),     gc_unix_type; /* Added in v1.1 */
++extern int get_unix(int x),         gc_unix;
++extern int get_perl(void),          gc_perl;
++extern int get_linux(void),         gc_linux;
++extern int get_emacs(void),         gc_emacs;
++extern int get_www(void),           gc_www;
++extern int get_usenet(void),        gc_usenet;
++extern int get_oracle(void),        gc_oracle;
++extern int get_kibo(void),          gc_kibo;
++extern int get_windows(void),       gc_windows;
++extern int get_os2(void),           gc_os2;
++extern int get_mac(void),           gc_mac;
++extern int get_vms(void),           gc_vms;
+ 
+ /* Politics section - gc_politics.c */
+-int get_social(void),        gc_social;
+-int get_economic(void),      gc_economic;
+-int get_cypher(void),        gc_cypher;
+-int get_pgp(void),           gc_pgp;
++extern int get_social(void),        gc_social;
++extern int get_economic(void),      gc_economic;
++extern int get_cypher(void),        gc_cypher;
++extern int get_pgp(void),           gc_pgp;
+ 
+ /* Entertainment section - gc_entertainment.c */
+-int get_startrek(void),      gc_startrek;
+-int get_babylon5(void),      gc_babylon5;
+-int get_xfiles(void),        gc_xfiles;
+-int get_rp(void),            gc_rp;
+-int get_television(void),    gc_television;
+-int get_books(void),         gc_books;
+-int get_dilbert(void),       gc_dilbert;
+-int get_doom(void),          gc_doom;
+-int get_geekcode(void),      gc_geekcode;
++extern int get_startrek(void),      gc_startrek;
++extern int get_babylon5(void),      gc_babylon5;
++extern int get_xfiles(void),        gc_xfiles;
++extern int get_rp(void),            gc_rp;
++extern int get_television(void),    gc_television;
++extern int get_books(void),         gc_books;
++extern int get_dilbert(void),       gc_dilbert;
++extern int get_doom(void),          gc_doom;
++extern int get_geekcode(void),      gc_geekcode;
+ 
+ /* Lifestyle section - gc_lifestyle.c */
+-int get_education(void),     gc_education;
+-int get_housing(void),       gc_housing;
+-int get_relationships(void), gc_relationships;
+-int get_sex_type(void),      gc_sex_type; /* Added in v1.2 */
+-int get_sex(int x),          gc_sex;      /* Modified in v1.2 */
++extern int get_education(void),     gc_education;
++extern int get_housing(void),       gc_housing;
++extern int get_relationships(void), gc_relationships;
++extern int get_sex_type(void),      gc_sex_type; /* Added in v1.2 */
++extern int get_sex(int x),          gc_sex;      /* Modified in v1.2 */
+ char show_sex_type(int x);                /* Added in v1.2 */
+ 
+ void show_geekcode(int x);                /* Modified in v1.2 */

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools elisp-common eutils
+inherit autotools elisp-common
 
 DESCRIPTION="Bookmarks and browser for the shell builtin cd command"
 HOMEPAGE="http://www.skamphausen.de/cgi-bin/ska/CDargs"
@@ -16,7 +16,8 @@ IUSE="emacs"
 
 DEPEND="
 	sys-libs/ncurses:0=
-	emacs? ( >=app-editors/emacs-23.1:* )"
+	emacs? ( >=app-editors/emacs-23.1:* )
+"
 RDEPEND="${DEPEND}"
 
 SITEFILE=50${PN}-gentoo.el
@@ -24,10 +25,11 @@ SITEFILE=50${PN}-gentoo.el
 PATCHES=(
 	"${FILESDIR}"/${P}-format_security.patch
 	"${FILESDIR}"/${P}-tinfo.patch
-	)
+)
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
+
 	mv configure.{in,ac} || die
 	eautoreconf
 }
@@ -41,12 +43,13 @@ src_compile() {
 src_install() {
 	default
 
-	cd "${S}/contrib" || die
+	cd "${S}"/contrib || die
 	insinto /usr/share/cdargs
 	doins cdargs-bash.sh cdargs-tcsh.csh
+
 	if use emacs ; then
 		elisp-install ${PN} cdargs.{el,elc}
-		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+		elisp-site-file-install "${FILESDIR}"/${SITEFILE}
 	fi
 }
 

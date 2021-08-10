@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils toolchain-funcs
+
+inherit epatch toolchain-funcs
 
 DESCRIPTION="RF Signal Propagation, Loss, And Terrain analysis tool"
 HOMEPAGE="https://www.qsl.net/kd2bd/splat.html"
@@ -15,7 +16,6 @@ IUSE="doc hires l10n_es"
 
 DEPEND="sys-libs/zlib
 	app-arch/bzip2"
-
 RDEPEND="${DEPEND}"
 
 src_prepare() {
@@ -42,7 +42,6 @@ src_configure() {
 }
 
 src_compile() {
-
 	local CC=$(tc-getCC) CXX=$(tc-getCXX)
 
 	${CXX} -Wall ${CXXFLAGS} ${LDFLAGS} itwom3.0.cpp splat.cpp -o rfsplat -lm -lbz2 || die

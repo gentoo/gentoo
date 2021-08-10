@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="https://sourceforge.net/code-snapshots/svn/v/vi/vice-emu/code/${MY_P}.z
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa debug doc ethernet ffmpeg flac gif +gtk headless ipv6 jpeg lame mpg123 ogg oss +opengl parport pci png portaudio pulseaudio sdl zlib"
 REQUIRED_USE="|| ( gtk headless sdl ) gtk? ( zlib )"
 

@@ -5,7 +5,7 @@
 stubby_opts="-C ${STUBBY_CONFIG_FILE:-/etc/stubby/stubby.yml} -v ${STUBBY_LOGLEVEL:-5}"
 command="capsh"
 command_args="--inh=cap_net_bind_service --user=stubby -- -c '/usr/bin/stubby -g ${stubby_opts} >>/var/log/stubby.log 2>&1'"
-pidfile="/run/stubby.pid"
+pidfile="/run/stubby/stubby.pid"
 name="DNS Privacy Daemon"
 
 depend()
@@ -18,11 +18,6 @@ depend()
 
 start_pre()
 {
-	checkpath -f -m 0644 -o stubby:stubby /run/stubby.pid
+	checkpath -d -m 0755 -o stubby:stubby /run/stubby
 	checkpath -f -m 0644 -o stubby:stubby /var/log/stubby.log
-}
-
-stop_post()
-{
-	[ -f /run/stubby.pid ] && rm /run/stubby.pid
 }

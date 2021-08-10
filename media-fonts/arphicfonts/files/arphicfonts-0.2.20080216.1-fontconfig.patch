@@ -1,5 +1,5 @@
---- a/41-ttf-arphic-ukai.conf
-+++ b/41-ttf-arphic-ukai.conf
+--- a/ukai/41-ttf-arphic-ukai.conf
++++ b/ukai/41-ttf-arphic-ukai.conf
 @@ -5,13 +5,28 @@
  <!--
    Sans-serif faces
@@ -38,8 +38,8 @@
 +        <default><family>sans-serif</family></default>
 +    </alias>
  </fontconfig>
---- a/41-ttf-arphic-uming.conf
-+++ b/41-ttf-arphic-uming.conf
+--- a/uming/41-ttf-arphic-uming.conf
++++ b/uming/41-ttf-arphic-uming.conf
 @@ -7,10 +7,25 @@
   -->
  	<alias>
@@ -120,8 +120,8 @@
  		<family>AR PL UMing TW MBE</family>
  		<default><family>monospace</family></default>
  	</alias>
---- a/25-ttf-arphic-uming-bitmaps.conf
-+++ b/25-ttf-arphic-uming-bitmaps.conf
+--- a/uming/25-ttf-arphic-uming-bitmaps.conf
++++ b/uming/25-ttf-arphic-uming-bitmaps.conf
 @@ -5,25 +5,65 @@
  	<match target="font">
  	  <test name="family">

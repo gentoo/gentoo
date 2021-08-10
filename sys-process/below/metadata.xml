@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>hodges.daniel.scott@gmail.com</email>
+		<name>Daniel Hodges</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>flow@gentoo.org</email>
+		<name>Florian Schmaus</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		below is an interactive tool to view and record historical system data. It has support for:
+		information regarding hardware resource utilization,
+		viewing the cgroup hierarchy,
+		cgroup (v2) and process information,
+		pressure stall information (PSI),
+		record mode to record system data,
+		replay mode to replay historical system data,
+		live mode to view live system data,
+		dump subcommand to report script-friendly information (eg JSON and CSV).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">facebookincubator/below</remote-id>
+	</upstream>
+</pkgmetadata>

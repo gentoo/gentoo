@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="fluidsynth">Enable support for <pkg>media-sound/fluidsynth</pkg></flag>
+		<flag name="network">Build Network RT backend</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">drumstick</remote-id>

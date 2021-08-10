@@ -13,6 +13,6 @@
 	<longdescription>
 		The library contains the functionality for reading and writing
 		SFF files (sequencing data from 454 and Ion Torrent).  It duplicates
-		code from (and is incompatible with) the &quot;bio&quot; library.
+		code from (and is incompatible with) the "bio" library.
 	</longdescription>
 </pkgmetadata>

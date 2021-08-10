@@ -1,0 +1,58 @@
+From c0a0a85833cdcceb636dbe986f39a43ac40f839f Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Fri, 30 Oct 2020 15:04:44 +0100
+Subject: [PATCH] Fix build with icu-68.1
+
+icu-68.1 removed public macro definitions for TRUE and FALSE
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ src/LEFontInstance.cpp  | 2 +-
+ src/LEGlyphStorage.cpp  | 2 +-
+ src/LEInsertionList.cpp | 4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/LEFontInstance.cpp b/src/LEFontInstance.cpp
+index e5595f2..89bc3ed 100644
+--- a/src/LEFontInstance.cpp
++++ b/src/LEFontInstance.cpp
+@@ -79,7 +79,7 @@ void LEFontInstance::mapCharsToGlyphs(const LEUnicode chars[], le_int32 offset,
+ 
+ LEGlyphID LEFontInstance::mapCharToGlyph(LEUnicode32 ch, const LECharMapper *mapper) const
+ {
+-    return mapCharToGlyph(ch, mapper, TRUE);
++    return mapCharToGlyph(ch, mapper, true);
+ }
+ 
+ LEGlyphID LEFontInstance::mapCharToGlyph(LEUnicode32 ch, const LECharMapper *mapper, le_bool filterZeroWidth) const
+diff --git a/src/LEGlyphStorage.cpp b/src/LEGlyphStorage.cpp
+index bac403a..b537676 100644
+--- a/src/LEGlyphStorage.cpp
++++ b/src/LEGlyphStorage.cpp
+@@ -659,7 +659,7 @@ le_bool LEGlyphStorage::applyInsertion(le_int32 atPosition, le_int32 count, LEGl
+     // just got replaced by the insertion
+     fSrcIndex -= 1;
+ 
+-    return FALSE;
++    return false;
+ }
+ 
+ U_NAMESPACE_END
+diff --git a/src/LEInsertionList.cpp b/src/LEInsertionList.cpp
+index c64b8a1..3e39952 100644
+--- a/src/LEInsertionList.cpp
++++ b/src/LEInsertionList.cpp
+@@ -86,11 +86,11 @@ le_bool LEInsertionList::applyInsertions(LEInsertionCallback *callback)
+ {
+     for (InsertionRecord *rec = head; rec != NULL; rec = rec->next) {
+         if (callback->applyInsertion(rec->position, rec->count, rec->glyphs)) {
+-            return TRUE;
++            return true;
+         }
+     }
+ 
+-    return FALSE;
++    return false;
+ }
+ 
+ U_NAMESPACE_END

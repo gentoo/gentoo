@@ -1,5 +1,5 @@
---- rank-amateur-cowsay-cowsay-3.04/cows/head-in.cow.old	2007-05-09 20:28:08.000000000 +0200
-+++ rank-amateur-cowsay-cowsay-3.04/cows/head-in.cow	2007-05-09 20:29:32.000000000 +0200
+--- a/cows/head-in.cow
++++ b/cows/head-in.cow
 @@ -7,6 +7,6 @@
      ^__^         /
      ($eyes)\\_______/  _________

@@ -1,0 +1,7 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Force the flag corresponding to the default ABI
+x64-macos
+arm64-macos
+abi_arm64

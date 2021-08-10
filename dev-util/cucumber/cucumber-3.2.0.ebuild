@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ SRC_URI="https://github.com/cucumber/cucumber-ruby/archive/v${PV}.tar.gz -> ${P}
 RUBY_S="cucumber-ruby-${PV}"
 LICENSE="Ruby"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~s390 sparc x86"
 SLOT="0"
 IUSE="examples test"
 
@@ -40,7 +40,7 @@ ruby_add_rdepend "
 	dev-util/cucumber-core:3.2
 	>=dev-util/cucumber-expressions-6.0.1:6.0
 	>=dev-util/cucumber-wire-0.0.1:0
-	=dev-ruby/diff-lcs-1.3*:0
+	>=dev-ruby/diff-lcs-1.3:0
 	>=dev-ruby/gherkin-5.1.0:5
 	>=dev-ruby/multi_json-1.7.5
 	>=dev-ruby/multi_test-0.1.2

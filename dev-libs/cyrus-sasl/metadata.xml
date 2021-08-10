@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<use>
-  <flag name="authdaemond">Add Courier-IMAP authdaemond unix socket
-    support (<pkg>net-mail/courier-imap</pkg>, <pkg>mail-mta/courier</pkg>)
-    </flag>
-  <flag name="openldap">Add ldap support for saslauthd</flag>
-  <flag name="ldapdb">Enable ldapdb plugin</flag>
-  <flag name="sample">Enable sample client and server</flag>
-  <flag name="srp">Enable SRP authentication</flag>
-  <flag name="urandom">Use /dev/urandom instead of /dev/random</flag>
-</use>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="authdaemond">
+			Add Courier-IMAP authdaemond unix socket
+			support (<pkg>net-mail/courier-imap</pkg>, <pkg>mail-mta/courier</pkg>)
+		</flag>
+		<flag name="openldap">Add ldap support for saslauthd</flag>
+		<flag name="ldapdb">Enable ldapdb plugin</flag>
+		<flag name="sample">Enable sample client and server</flag>
+		<flag name="srp">Enable SRP authentication</flag>
+		<flag name="urandom">Use /dev/urandom instead of /dev/random</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">cyrusimap/cyrus-imapd</remote-id>
+	</upstream>
 </pkgmetadata>

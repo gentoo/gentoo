@@ -13,5 +13,7 @@
 	<upstream>
 		<remote-id type="github">cglib/cglib</remote-id>
 		<remote-id type="sourceforge">cglib</remote-id>
+		<bugs-to>https://github.com/cglib/cglib/issues</bugs-to>
+		<doc>https://github.com/cglib/cglib/wiki</doc>
 	</upstream>
 </pkgmetadata>

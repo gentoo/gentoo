@@ -1,8 +1,8 @@
 Author: Michael Meskes <meskes@debian.org>
 Description: Fix reading of ac_adapter information.
 
---- src/ac_adapter.cpp
-+++ src/ac_adapter.cpp
+--- a/src/ac_adapter.cpp
++++ b/src/ac_adapter.cpp
 @@ -149,7 +149,7 @@
  int Do_AC_Info_Sys()
  {

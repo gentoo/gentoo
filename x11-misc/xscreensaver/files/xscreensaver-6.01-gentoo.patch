@@ -1,0 +1,47 @@
+--- a/driver/XScreenSaver.ad.in
++++ b/driver/XScreenSaver.ad.in
+@@ -31,21 +31,21 @@
+ *mode:			random
+ *timeout:		0:10:00
+ *cycle:			0:10:00
+-*lockTimeout:		0:00:00
++*lockTimeout:		0:30:00
+ *passwdTimeout:		0:00:30
+-*dpmsEnabled:		False
++*dpmsEnabled:		True
+ *dpmsQuickoffEnabled:	False
+ *dpmsStandby:		2:00:00
+ *dpmsSuspend:		2:00:00
+ *dpmsOff:		4:00:00
+-*grabDesktopImages:	True
++*grabDesktopImages:	False
+ *grabVideoFrames:	False
+ *chooseRandomImages:	@DEFAULT_IMAGES_P@
+ ! This can be a local directory name, or the URL of an RSS or Atom feed.
+ *imageDirectory:	@DEFAULT_IMAGE_DIRECTORY@
+ *nice:			10
+ *memoryLimit:		0
+-*lock:			False
++*lock:			True
+ *verbose:		False
+ *fade:			True
+ *unfade:		True
+@@ -62,7 +62,7 @@
+ *textLiteral:		XScreenSaver
+ *textFile:		@DEFAULT_TEXT_FILE@
+ *textProgram:		fortune
+-*textURL:		https://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=rss
++*textURL:		https://planet.gentoo.org/rss20.xml
+ 
+ ! This is what the "Settings" button on the splash screen runs.
+ *demoCommand: xscreensaver-settings
+@@ -103,7 +103,8 @@
+ 
+ 
+ ! The strftime(3) format string for printing the time on the password dialog.
+-*dateFormat:		%I:%M %p, %a %b %e
++!*dateFormat:		%I:%M %p, %a %b %e
++*dateFormat:		%x %X
+ ! DD MMM:
+ ! *dateFormat:		%I:%M %p, %e %b (%a)
+ ! 12 hour time only:

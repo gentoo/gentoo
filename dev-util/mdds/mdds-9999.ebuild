@@ -7,12 +7,12 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/mdds/mdds.git"
 	inherit git-r3
 else
-	SRC_URI="https://kohei.us/files/${PN}/src/${P}.tar.bz2"
+	SRC_URI="https://kohei.us/files/${PN}/src/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
 inherit autotools toolchain-funcs
 
-DESCRIPTION="A collection of multi-dimensional data structure and indexing algorithm"
+DESCRIPTION="Collection of multi-dimensional data structure and indexing algorithm"
 HOMEPAGE="https://gitlab.com/mdds/mdds"
 
 LICENSE="MIT"
@@ -60,6 +60,5 @@ src_configure() {
 
 src_test() {
 	tc-export CXX
-
 	default
 }

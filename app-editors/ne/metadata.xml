@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<use>
-<flag name="tinfo">Link against libtinfo from sys-libs/ncurses</flag>
-</use>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="github">vigna/ne</remote-id>
+	</upstream>
 </pkgmetadata>

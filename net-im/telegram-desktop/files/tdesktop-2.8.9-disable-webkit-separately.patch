@@ -1,0 +1,122 @@
+Allow controlling the use of webkit-gtk
+
+WebKitGTK is used to display payment pages when buying things in Telegram
+shops. This library can be disabled properly alongside the GTK integration with
+its flag. However, I reckon *most* users want the GTK integration (fixes
+pasting big images, amongst other things), but hardly anyone actually buys
+things through Telegram. Controlling these two things separately is trivial, and
+the user gets a nice dialog telling them WebKitGTK isn't available in the event
+they *do* attempt to use the related features.
+
+NOTE: GTK integration *must* be enabled for WebKitGTK to work.
+
+--- tdesktop-2.8.9-full.orig/Telegram/SourceFiles/platform/linux/linux_gtk_integration.cpp
++++ tdesktop-2.8.9-full/Telegram/SourceFiles/platform/linux/linux_gtk_integration.cpp
+@@ -587,9 +587,11 @@
+ 		if (const auto integration = BaseGtkIntegration::Instance()) {
+ 			return integration->exec(parentDBusName);
+ 		}
++#ifndef DESKTOP_APP_DISABLE_WEBKIT
+ 	} else if (type == Type::Webview) {
+ 		Webview::WebKit2Gtk::SetServiceName(serviceName.toStdString());
+ 		return Webview::WebKit2Gtk::Exec(parentDBusName.toStdString());
++#endif
+ 	} else if (type == Type::TDesktop) {
+ 		ServiceName = serviceName.toStdString();
+ 		if (const auto integration = Instance()) {
+@@ -602,7 +604,9 @@
+ 
+ void GtkIntegration::Start(Type type) {
+ 	if (type != Type::Base
++#ifndef DESKTOP_APP_DISABLE_WEBKIT
+ 		&& type != Type::Webview
++#endif
+ 		&& type != Type::TDesktop) {
+ 		return;
+ 	}
+@@ -613,11 +617,13 @@
+ 
+ 	if (type == Type::Base) {
+ 		BaseGtkIntegration::SetServiceName(kBaseService.utf16().arg(h));
++#ifndef DESKTOP_APP_DISABLE_WEBKIT
+ 	} else if (type == Type::Webview) {
+ 		Webview::WebKit2Gtk::SetServiceName(
+ 			kWebviewService.utf16().arg(h).arg("%1").toStdString());
+ 
+ 		return;
++#endif
+ 	} else {
+ 		ServiceName = kService.utf16().arg(h).toStdString();
+ 	}
+--- tdesktop-2.8.9-full.orig/Telegram/lib_webview/CMakeLists.txt
++++ tdesktop-2.8.9-full/Telegram/lib_webview/CMakeLists.txt
+@@ -48,7 +48,7 @@
+     nuget_add_webview(lib_webview)
+     nuget_add_winrt(lib_webview)
+ elseif (LINUX)
+-    if (NOT DESKTOP_APP_DISABLE_GTK_INTEGRATION)
++    if (NOT DESKTOP_APP_DISABLE_WEBKIT)
+         find_package(PkgConfig REQUIRED)
+ 
+         if (DESKTOP_APP_USE_PACKAGED AND NOT DESKTOP_APP_USE_PACKAGED_LAZY)
+--- tdesktop-2.8.9-full.orig/Telegram/lib_webview/webview/platform/linux/webview_linux.cpp
++++ tdesktop-2.8.9-full/Telegram/lib_webview/webview/platform/linux/webview_linux.cpp
+@@ -11,14 +11,14 @@
+ namespace Webview {
+ 
+ Available Availability() {
+-#ifndef DESKTOP_APP_DISABLE_GTK_INTEGRATION
++#ifndef DESKTOP_APP_DISABLE_WEBKIT
+ 	return WebKit2Gtk::Availability();
+-#else // !DESKTOP_APP_DISABLE_GTK_INTEGRATION
++#else // !DESKTOP_APP_DISABLE_WEBKIT
+ 	return Available{
+ 		.error = Available::Error::NoGtkOrWebkit2Gtk,
+ 		.details = "This feature was disabled at build time.",
+ 	};
+-#endif // DESKTOP_APP_DISABLE_GTK_INTEGRATION
++#endif // DESKTOP_APP_DISABLE_WEBKIT
+ }
+ 
+ bool SupportsEmbedAfterCreate() {
+@@ -26,11 +26,11 @@
+ }
+ 
+ std::unique_ptr<Interface> CreateInstance(Config config) {
+-#ifndef DESKTOP_APP_DISABLE_GTK_INTEGRATION
++#ifndef DESKTOP_APP_DISABLE_WEBKIT
+ 	return WebKit2Gtk::CreateInstance(std::move(config));
+-#else // !DESKTOP_APP_DISABLE_GTK_INTEGRATION
++#else // !DESKTOP_APP_DISABLE_WEBKIT
+ 	return nullptr;
+-#endif // DESKTOP_APP_DISABLE_GTK_INTEGRATION
++#endif // DESKTOP_APP_DISABLE_WEBKIT
+ }
+ 
+ } // namespace Webview
+--- tdesktop-2.8.9-full.orig/cmake/options.cmake
++++ tdesktop-2.8.9-full/cmake/options.cmake
+@@ -49,6 +49,13 @@
+     )
+ endif()
+ 
++if (DESKTOP_APP_DISABLE_WEBKIT)
++    target_compile_definitions(common_options
++    INTERFACE
++        DESKTOP_APP_DISABLE_WEBKIT
++    )
++endif()
++
+ if (DESKTOP_APP_USE_PACKAGED)
+     target_compile_definitions(common_options
+     INTERFACE
+--- tdesktop-2.8.9-full.orig/cmake/variables.cmake
++++ tdesktop-2.8.9-full/cmake/variables.cmake
+@@ -37,6 +37,7 @@
+ option(DESKTOP_APP_USE_PACKAGED_LAZY "Bundle recommended Qt plugins for self-contained packages. (Linux only)" OFF)
+ option(DESKTOP_APP_USE_PACKAGED_FFMPEG_STATIC "Link ffmpeg statically in packaged mode." OFF)
+ option(DESKTOP_APP_DISABLE_SPELLCHECK "Disable spellcheck library." ${osx_special_target})
++option(DESKTOP_APP_DISABLE_WEBKIT "Disable WebkitGTK library (Linux only)." OFF)
+ option(DESKTOP_APP_DISABLE_CRASH_REPORTS "Disable crash report generation." ${no_special_target})
+ option(DESKTOP_APP_DISABLE_AUTOUPDATE "Disable autoupdate." ${disable_autoupdate})
+ option(DESKTOP_APP_USE_HUNSPELL_ONLY "Disable system spellchecker and use bundled Hunspell only. (For debugging purposes)" OFF)

@@ -1,7 +1,7 @@
 Fix PIC issues in mmx routines
 
---- video/mmxflags_asm.S
-+++ video/mmxflags_asm.S
+--- a/video/mmxflags_asm.S
++++ b/video/mmxflags_asm.S
 @@ -1,11 +1,6 @@
  
  #if defined(i386) && defined(USE_MMX)
@@ -34,8 +34,8 @@ Fix PIC issues in mmx routines
  
  cpu_flags.L1: 
          ret
---- video/mmxidct_asm.S
-+++ video/mmxidct_asm.S
+--- a/video/mmxidct_asm.S
++++ b/video/mmxidct_asm.S
 @@ -31,11 +31,6 @@ preSC:  .short  16384,22725,21407,19266,
  x0005000200010001:
  	.long	0x00010001,0x00050002

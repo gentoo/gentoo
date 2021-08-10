@@ -1,0 +1,68 @@
+From 01b2f6255e05a808b14a9541b7a762277e409edb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 29 May 2021 19:37:04 +0200
+Subject: [PATCH] Fix python_requires to unbreak installed package metadata
+
+The '>=3.6.*' entry in python_requires is invalid and results in broken
+metadata being installed.  This in turn causes distlib to break.
+To reproduce:
+
+    $ pip install distlib symengine
+    $ python -c "import distlib.database; \
+      distlib.database.DistributionPath().get_distribution('symengine')"
+    Traceback (most recent call last):
+      File "/tmp/venv3/lib/python3.9/site-packages/distlib/metadata.py", line 677, in __init__
+        self._data = json.loads(data)
+      File "/usr/lib/python3.9/json/__init__.py", line 346, in loads
+        return _default_decoder.decode(s)
+      File "/usr/lib/python3.9/json/decoder.py", line 337, in decode
+        obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+      File "/usr/lib/python3.9/json/decoder.py", line 355, in raw_decode
+        raise JSONDecodeError("Expecting value", s, err.value) from None
+    json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+    During handling of the above exception, another exception occurred:
+
+    Traceback (most recent call last):
+      File "<string>", line 1, in <module>
+      File "/tmp/venv3/lib/python3.9/site-packages/distlib/database.py", line 240, in get_distribution
+        self._generate_cache()
+      File "/tmp/venv3/lib/python3.9/site-packages/distlib/database.py", line 167, in _generate_cache
+        for dist in self._yield_distributions():
+      File "/tmp/venv3/lib/python3.9/site-packages/distlib/database.py", line 148, in _yield_distributions
+        metadata = Metadata(fileobj=stream, scheme='legacy')
+      File "/tmp/venv3/lib/python3.9/site-packages/distlib/metadata.py", line 686, in __init__
+        self._legacy = LegacyMetadata(fileobj=StringIO(data),
+      File "/tmp/venv3/lib/python3.9/site-packages/distlib/metadata.py", line 261, in __init__
+        self.read_file(fileobj)
+      File "/tmp/venv3/lib/python3.9/site-packages/distlib/metadata.py", line 359, in read_file
+        self.set(field, value)
+      File "/tmp/venv3/lib/python3.9/site-packages/distlib/metadata.py", line 459, in set
+        if not scheme.is_valid_constraint_list(value):
+      File "/tmp/venv3/lib/python3.9/site-packages/distlib/version.py", line 716, in is_valid_constraint_list
+        return self.is_valid_matcher('dummy_name (%s)' % s)
+      File "/tmp/venv3/lib/python3.9/site-packages/distlib/version.py", line 703, in is_valid_matcher
+        self.matcher(s)
+      File "/tmp/venv3/lib/python3.9/site-packages/distlib/version.py", line 115, in __init__
+        raise ValueError('\'.*\' not allowed for '
+    ValueError: '.*' not allowed for '>=' constraints
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 8e64d93..7b2a2d7 100644
+--- a/setup.py
++++ b/setup.py
+@@ -222,7 +222,7 @@ setup(name="symengine",
+       author_email="symengine@googlegroups.com",
+       license="MIT",
+       url="https://github.com/symengine/symengine.py",
+-      python_requires='>=3.6.*,<4',
++      python_requires='>=3.6,<4',
+       zip_safe=False,
+       cmdclass = cmdclass,
+       classifiers=[
+-- 
+2.31.1
+

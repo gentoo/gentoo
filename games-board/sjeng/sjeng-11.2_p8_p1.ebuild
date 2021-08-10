@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,19 +19,20 @@ SRC_URI="
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE=""
 
 RDEPEND="sys-libs/gdbm:0="
 DEPEND="${RDEPEND}"
-BDEPEND="dev-util/quilt"
 
 S="${WORKDIR}/Sjeng-Free-${MY_PV}"
+
+PATCHES=(
+	"${WORKDIR}/sjeng_${MY_DEB_PV}.diff"
+	"${S}/debian/patches"
+)
 
 src_prepare() {
 	default
 
-	eapply "${WORKDIR}/sjeng_${MY_DEB_PV}.diff"
-	QUILT_PATCHES="debian/patches" QUILT_SERIES="debian/patches/series" quilt push -a || die
 	hprefixify book.c rcfile.c
 
 	# Files generated with ancient autotools, regenerate to respect CC.
@@ -44,6 +45,7 @@ src_install() {
 
 	insinto /etc
 	doins sjeng.rc
+
 	insinto /usr/share/games/sjeng
-	doins books/*.opn || die
+	doins books/*.opn
 }

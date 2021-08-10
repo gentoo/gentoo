@@ -5,4 +5,7 @@
 		<email>python@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">Deprecated</remote-id>
+	</upstream>
 </pkgmetadata>

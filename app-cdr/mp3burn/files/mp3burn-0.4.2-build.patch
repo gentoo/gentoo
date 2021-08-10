@@ -1,5 +1,5 @@
---- mp3burn	2013-08-18 23:13:34.843372424 +0000
-+++ mp3burn	2013-08-18 23:14:15.663182707 +0000
+--- a/mp3burn
++++ b/mp3burn
 @@ -412,6 +412,8 @@
  => F<mp3decoder>.  I<(Note:  Currently, the MP3 decoder must be
  able to accept mpg123-style command-line arguments.)>

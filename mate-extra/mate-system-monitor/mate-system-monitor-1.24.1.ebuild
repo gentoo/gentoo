@@ -3,10 +3,10 @@
 
 EAPI=6
 
-inherit mate
+inherit mate toolchain-funcs
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="The MATE System Monitor"
@@ -51,9 +51,10 @@ src_configure() {
 	if use elogind || use systemd; then
 		myconf+=( --enable-systemd )
 		if use elogind; then
+			local pkgconfig="$(tc-getPKG_CONFIG)"
 			myconf+=(
-				SYSTEMD_CFLAGS=`pkg-config --cflags "libelogind" 2>/dev/null`
-				SYSTEMD_LIBS=`pkg-config --libs "libelogind" 2>/dev/null`
+				SYSTEMD_CFLAGS="$(${pkgconfig} --cflags "libelogind")"
+				SYSTEMD_LIBS="$(${pkgconfig} --libs "libelogind")"
 			)
 		fi
 	else

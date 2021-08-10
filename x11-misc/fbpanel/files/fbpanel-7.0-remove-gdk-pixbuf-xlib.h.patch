@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/753908
+
+--- a/panel/plugin.c	2015-12-05 01:34:19.000000000 -0500
++++ b/panel/plugin.c	2020-11-10 13:35:27.794816516 -0500
+@@ -3,5 +3,4 @@
+ 
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+-#include <gdk-pixbuf-xlib/gdk-pixbuf-xlib.h>
+ #include <gdk/gdk.h>
+ #include <string.h>
+--- a/plugins/icons/icons.c	2015-12-05 01:34:19.000000000 -0500
++++ b/plugins/icons/icons.c	2020-11-10 13:35:49.852850997 -0500
+@@ -9,5 +9,4 @@
+ 
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+-#include <gdk-pixbuf-xlib/gdk-pixbuf-xlib.h>
+ #include <gdk/gdk.h>
+ 
+--- a/plugins/taskbar/taskbar.c	2015-12-05 01:34:19.000000000 -0500
++++ b/plugins/taskbar/taskbar.c	2020-11-10 13:35:35.950782862 -0500
+@@ -9,5 +9,4 @@
+ 
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+-#include <gdk-pixbuf-xlib/gdk-pixbuf-xlib.h>
+ #include <gdk/gdk.h>
+ 

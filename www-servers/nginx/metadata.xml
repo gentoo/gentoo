@@ -11,7 +11,6 @@
     <flag name="http2">Enable HTTP2 module support</flag>
     <flag name="http-cache">Enable HTTP cache support</flag>
     <flag name="libatomic">Use libatomic instead of builtin atomic operations</flag>
-    <flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg> for lua support when building the lua http module.</flag>
     <flag name="pcre-jit">Enable JIT for pcre</flag>
     <flag name="ssl">Enable HTTPS module for http. Enable SSL/TLS support for POP3/IMAP/SMTP for mail.</flag>
     <flag name="rtmp">NGINX-based Media Streaming Server</flag>

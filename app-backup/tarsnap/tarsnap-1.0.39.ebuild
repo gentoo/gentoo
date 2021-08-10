@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit bash-completion-r1
+inherit bash-completion-r1 toolchain-funcs
 
 DESCRIPTION="Online backups for the truly paranoid"
 HOMEPAGE="https://www.tarsnap.com/"
@@ -11,12 +11,11 @@ SRC_URI="https://www.tarsnap.com/download/${PN}-autoconf-${PV}.tgz"
 
 LICENSE="tarsnap"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="acl bzip2 libressl lzma xattr"
+KEYWORDS="amd64 x86"
+IUSE="acl bzip2 lzma xattr"
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	sys-libs/e2fsprogs-libs
 	sys-libs/zlib
 	acl? ( sys-apps/acl )
@@ -25,6 +24,8 @@ RDEPEND="
 	xattr? ( sys-apps/attr )"
 DEPEND="${RDEPEND}
 	virtual/os-headers" # Required for "magic.h"
+
+PATCHES=( "${FILESDIR}"/${PN}-1.0.39-respect-AR.patch )
 
 S=${WORKDIR}/${PN}-autoconf-${PV}
 
@@ -35,6 +36,10 @@ src_configure() {
 		$(use_with bzip2 bz2lib) \
 		--without-lzmadec \
 		$(use_with lzma)
+}
+
+src_compile() {
+	emake AR=$(tc-getAR)
 }
 
 src_install() {

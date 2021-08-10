@@ -1,0 +1,7 @@
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+LIBDIR_lp64d="lib64"
+LIBDIR_lp64="lib64"
+LIBDIR_ilp32d="lib"
+LIBDIR_ilp32="lib"

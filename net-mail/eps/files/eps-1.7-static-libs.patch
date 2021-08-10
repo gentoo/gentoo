@@ -1,0 +1,22 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ CC = gcc
+ AR = ar
+ STRIP = strip
+-LIB = libeps.a libeps.so
++LIB = libeps.so
+ 
+ AROPTS = -cru
+ RANLIB = ranlib
+@@ -20,10 +20,6 @@ DEFS = -Wall -I.
+ 
+ all: $(LIB)
+ 
+-libeps.a: $(OBJS)
+-	$(AR) $(AROPTS) libeps.a $(OBJS)
+-	$(RANLIB) libeps.a
+-
+ libeps.so: $(OBJS)
+ 	$(CC) -shared -o libeps.so $(OBJS)
+ 

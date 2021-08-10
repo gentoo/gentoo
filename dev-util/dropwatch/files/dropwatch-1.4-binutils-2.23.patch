@@ -7,8 +7,6 @@ Date:   Thu Nov 17 00:04:47 2016 +0300
     Gentoo-Bug:         457980
     Upstream Ticket:    5
 
-diff --git a/src/lookup.c b/src/lookup.c
-index ba54991..809981b 100644
 --- a/src/lookup.c
 +++ b/src/lookup.c
 @@ -27,13 +27,13 @@
@@ -26,8 +24,6 @@ index ba54991..809981b 100644
  
  extern struct lookup_methods bfd_methods;
  extern struct lookup_methods kallsym_methods;
-diff --git a/src/lookup.h b/src/lookup.h
-index e6568d8..47a7b56 100644
 --- a/src/lookup.h
 +++ b/src/lookup.h
 @@ -28,6 +28,9 @@
@@ -40,8 +36,6 @@ index e6568d8..47a7b56 100644
  
  /*
   * Initalization routine
-diff --git a/src/lookup_bfd.c b/src/lookup_bfd.c
-index cc7010b..271d426 100644
 --- a/src/lookup_bfd.c
 +++ b/src/lookup_bfd.c
 @@ -25,13 +25,13 @@
@@ -59,8 +53,6 @@ index cc7010b..271d426 100644
  
  
  static int lookup_bfd_init(void)
-diff --git a/src/lookup_kas.c b/src/lookup_kas.c
-index 16e639f..556cb62 100644
 --- a/src/lookup_kas.c
 +++ b/src/lookup_kas.c
 @@ -25,7 +25,6 @@

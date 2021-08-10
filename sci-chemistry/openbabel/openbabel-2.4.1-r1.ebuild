@@ -16,7 +16,7 @@ SRC_URI="
 # See src/CMakeLists.txt for LIBRARY_VERSION
 SLOT="0/5.0.0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc openmp test wxwidgets"
 RESTRICT="!test? ( test )"
 

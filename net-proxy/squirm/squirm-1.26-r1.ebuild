@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -12,7 +12,6 @@ SRC_URI="http://squirm.foote.com.au/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ppc x86"
-IUSE=""
 
 RDEPEND="net-proxy/squid"
 DEPEND="${RDEPEND}"
@@ -20,6 +19,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-gcc5.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_compile() {
@@ -27,7 +27,7 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX="${ED%/}/opt/squirm" install
+	emake PREFIX="${ED}/opt/squirm" install
 }
 
 pkg_postinst() {

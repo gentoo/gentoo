@@ -1,54 +1,46 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit eutils toolchain-funcs multilib multilib-minimal
-
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/foo86/${PN}.git"
-	inherit git-r3
-else
-	SRC_URI="https://github.com/foo86/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~mips x86"
-fi
+inherit toolchain-funcs multilib-minimal
 
 DESCRIPTION="DTS Coherent Acoustics decoder with support for HD extensions"
 HOMEPAGE="https://github.com/foo86/dcadec"
+SRC_URI="https://github.com/foo86/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE=""
-DOCS=( CHANGELOG.md README.md )
+KEYWORDS="amd64 ~arm ~arm64 ~mips x86"
 
-src_prepare() {
-	sed -i \
-		-e '/^CFLAGS/s:-O3::' \
-		Makefile || die
+PATCHES=( "${FILESDIR}"/${P}-respect-CFLAGS.patch )
+
+multilib_src_configure() {
+	tc-export AR CC
+
+	# Build shared libs
+	echo 'CONFIG_SHARED=1' >> .config || die
 }
 
 multilib_src_compile() {
-	# Build shared libs
-	echo 'CONFIG_SHARED=1' >> .config
-
 	local target=all
 	multilib_is_native_abi || target=lib
-	tc-export AR CC
-	PREFIX="${EPREFIX}/usr" LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		emake -f "${S}/Makefile" ${target}
+
+	PREFIX="${EPREFIX}"/usr LIBDIR="${EPREFIX}"/usr/$(get_libdir) \
+		emake -f "${S}"/Makefile ${target}
 }
 
 multilib_src_install() {
 	local target=install
 	multilib_is_native_abi || target=install-lib
-	PREFIX="${EPREFIX}/usr" \
-		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		emake -f "${S}/Makefile" DESTDIR="${D}" ${target}
+
+	PREFIX="${EPREFIX}"/usr LIBDIR="${EPREFIX}"/usr/$(get_libdir) \
+		emake -f "${S}"/Makefile DESTDIR="${D}" ${target}
 }
 
 multilib_src_install_all() {
 	# Rename the executable since it conflicts with libdca.
 	mv "${ED}"/usr/bin/dcadec{,-new} || die
 
-	einstalldocs
+	dodoc CHANGELOG.md README.md
 }

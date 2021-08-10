@@ -5,6 +5,7 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		A smart replacement for various live package rebuilding
 		solutions. smart-live-rebuild tries to update the source

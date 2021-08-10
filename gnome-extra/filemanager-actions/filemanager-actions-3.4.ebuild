@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/filemanager-actions"
 
 LICENSE="GPL-2+ FDL-1.3"
 SLOT="3"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="caja +nautilus nemo"
 REQUIRED_USE="|| ( caja nautilus nemo )"
 
@@ -27,6 +27,7 @@ RDEPEND="
 	x11-libs/gdk-pixbuf:2
 "
 DEPEND="${RDEPEND}
+	app-text/gnome-doc-utils
 	dev-util/gdbus-codegen
 	>=dev-util/intltool-0.50.2
 	virtual/pkgconfig

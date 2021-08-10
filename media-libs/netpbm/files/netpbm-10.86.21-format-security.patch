@@ -1,0 +1,18 @@
+Fix compiling with `CFLAGS` `-Werror=format-security`
+See also https://bugs.gentoo.org/517524
+
+--- a/converter/ppm/ximtoppm.c
++++ b/converter/ppm/ximtoppm.c
+@@ -117,9 +117,9 @@
+ */
+     header->bits_channel = atoi(a_head.bits_per_channel);
+     header->alpha_flag = atoi(a_head.alpha_channel);
+-    pm_asprintf(&header->author,  a_head.author);
+-    pm_asprintf(&header->date,    a_head.date);
+-    pm_asprintf(&header->program, a_head.program);
++    pm_asprintf(&header->author,  "%s", a_head.author);
++    pm_asprintf(&header->date,    "%s", a_head.date);
++    pm_asprintf(&header->program, "%s", a_head.program);
+     /* Do double checking for bakwards compatibility */
+     if (header->npics == 0)
+         header->npics = 1;

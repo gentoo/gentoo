@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/stk-code/releases/download/${PV}/${MY_P}.tar.x
 LICENSE="GPL-2 GPL-3 CC-BY-SA-3.0 CC-BY-SA-4.0 CC0-1.0 public-domain ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug libressl nettle recorder sqlite wiimote"
+IUSE="debug nettle recorder sqlite wiimote"
 
 # don't unbundle irrlicht and bullet
 # both are modified and system versions will break the game
@@ -42,8 +42,7 @@ RDEPEND="
 	x11-libs/libXxf86vm
 	nettle? ( dev-libs/nettle:= )
 	!nettle? (
-		libressl? ( dev-libs/libressl:= )
-		!libressl? ( >=dev-libs/openssl-1.0.1d:0= )
+		>=dev-libs/openssl-1.0.1d:0=
 	)
 	recorder? ( media-libs/libopenglrecorder )
 	wiimote? ( net-wireless/bluez )"
@@ -57,6 +56,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1-irrlicht-arch-support.patch
 	"${FILESDIR}"/${PN}-1.2-irrlicht-system-libs.patch
+	"${FILESDIR}"/${P}-new-sdl.patch
 )
 
 src_prepare() {

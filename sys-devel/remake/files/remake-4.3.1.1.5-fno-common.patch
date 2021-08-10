@@ -1,0 +1,103 @@
+Adapted version of https://github.com/rocky/remake/commit/08113a28b9be25cf157ace5d63c2d36d7dbefc04
+--- a/src/debugger/file2line.c
++++ b/src/debugger/file2line.c
+@@ -26,6 +26,8 @@ Boston, MA 02111-1307, USA.  */
+ #include "../src/rule.h"
+ #include "./file2line.h"
+ 
++struct hash_table file2lines;
++
+ unsigned long
+ file2lines_hash_1 (const void *key)
+ {
+--- a/src/debugger/file2line.h
++++ b/src/debugger/file2line.h
+@@ -19,15 +19,15 @@ the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ Boston, MA 02111-1307, USA.  */
+ #ifndef REMAKE_FILE2LINE
+ #define REMAKE_FILE2LINE
+-struct hash_table file2lines;
++extern struct hash_table file2lines;
+ 
+ typedef enum {
+   F2L_TARGET,
+   F2L_PATTERN
+ } f2l_entry_t;
+ 
+-  
+-typedef struct lineo_array_s 
++
++typedef struct lineo_array_s
+ {
+   const char *hname;   /**< Name stored in hash table */
+   unsigned int size;   /**< Number of entries in array */
+@@ -40,13 +40,13 @@ typedef struct lineo_array_s
+   only. So we do this on demand.
+ */
+ extern bool file2lines_init(void);
+-extern file_t *target_for_file_and_line (const char *psz_filename, 
++extern file_t *target_for_file_and_line (const char *psz_filename,
+ 					 unsigned int lineno,
+ 					 /*out*/ f2l_entry_t *entry_type);
+ extern void file2lines_dump(void);
+ #endif
+ 
+-/* 
++/*
+  * Local variables:
+  * eval: (c-set-style "gnu")
+  * indent-tabs-mode: nil
+--- a/src/dep.h
++++ b/src/dep.h
+@@ -139,7 +139,7 @@ struct dep *copy_dep_chain (const struct dep *d);
+ struct goaldep *read_all_makefiles (const char **makefiles);
+ 
+ /*! The chain of makefiles read by read_makefile.  */
+-struct goaldep *read_makefiles;
++extern struct goaldep *read_makefiles;
+ 
+ void eval_buffer (char *buffer, const gmk_floc *floc);
+ enum update_status update_goal_chain (struct goaldep *goals);
+--- a/src/globals.h
++++ b/src/globals.h
+@@ -89,6 +89,6 @@ extern int in_debugger;
+ extern bool b_debugger_preread;
+ 
+ /* Remember the original value of the SHELL variable, from the environment.  */
+-struct variable shell_var;
++extern struct variable shell_var;
+ 
+ #endif /*GLOBALS_H*/
+--- a/src/main.c
++++ b/src/main.c
+@@ -45,6 +45,8 @@ this program.  If not, see <http://www.gnu.org/licenses/>.  */
+ # include <fcntl.h>
+ #endif
+ 
++struct goaldep *read_makefiles;
++
+ extern void initialize_stopchar_map ();
+ 
+ #if defined HAVE_WAITPID || defined HAVE_WAIT3
+--- a/src/make.h
++++ b/src/make.h
+@@ -324,7 +324,7 @@ extern int unixy_shell;
+ #endif
+ #ifdef SET_STACK_SIZE
+ # include <sys/resource.h>
+-struct rlimit stack_limit;
++extern struct rlimit stack_limit;
+ #endif
+ 
+ /* We have to have stdarg.h or varargs.h AND v*printf or doprnt to use
+--- a/src/print.h
++++ b/src/print.h
+@@ -39,7 +39,7 @@ void fatal_err (target_stack_node_t *p_call, const char *fmt, ...);
+ 
+ /* Think of the below not as an enumeration but as #defines done in a
+    way that we'll be able to use the value in a gdb. */
+-enum debug_print_enums_e {
++extern enum debug_print_enums_e {
+   MAX_STACK_SHOW = 1000,
+ } debug_print_enums1;
+ 

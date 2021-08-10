@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit toolchain-funcs eutils savedconfig
+inherit toolchain-funcs savedconfig
 
 GIT_REV="a4f8c6e31f6c62522cfc633bbbffa81b22f9d6f3"
 GIT_SHORT=${GIT_REV:0:7}
@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ppc64 x86"
 IUSE="+binary efi ipv6 iso lkrn +qemu undi usb vmware"
 
 REQUIRED_USE="!amd64? ( !x86? ( binary ) )"
@@ -25,8 +25,8 @@ SOURCE_DEPEND="app-arch/xz-utils
 	dev-lang/perl
 	sys-libs/zlib
 	iso? (
+		app-cdr/cdrtools
 		sys-boot/syslinux
-		virtual/cdrtools
 	)"
 DEPEND="
 	!binary? (

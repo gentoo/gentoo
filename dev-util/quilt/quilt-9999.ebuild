@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-EGIT_REPO_URI="git://git.sv.gnu.org/quilt.git"
+EGIT_REPO_URI="https://git.savannah.gnu.org/git/quilt.git"
 
 [[ ${PV} == 9999 ]] && inherit git-r3
 
@@ -16,7 +16,7 @@ HOMEPAGE="https://savannah.nongnu.org/projects/quilt"
 LICENSE="GPL-2"
 SLOT="0"
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
 IUSE="graphviz elibc_Darwin elibc_SunOS"
 
 RDEPEND="
@@ -25,7 +25,7 @@ RDEPEND="
 	sys-apps/ed
 	elibc_Darwin? ( app-misc/getopt )
 	elibc_SunOS? ( app-misc/getopt )
-	>=sys-apps/coreutils-8.5
+	>=sys-apps/coreutils-8.32-r1
 	graphviz? ( media-gfx/graphviz )
 "
 
@@ -53,7 +53,7 @@ src_install() {
 	rm -rf "${ED}"/etc/bash_completion.d
 	newbashcomp bash_completion ${PN}
 
-	rm -rf "${ED}"usr/share/doc/${PN}
+	rm -rf "${ED}"/usr/share/doc/${PN}
 	dodoc AUTHORS TODO "doc/README" "doc/README.MAIL" "doc/quilt.pdf"
 
 	# Remove the compat symlinks
@@ -64,7 +64,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! has_version app-emacs/quilt-el ; then
+	if ! has_version -r 'app-emacs/quilt-el' ; then
 		elog "If you plan to use quilt with emacs consider installing \"app-emacs/quilt-el\""
 	fi
 }

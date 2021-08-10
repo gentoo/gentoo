@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools eutils python-single-r1
+PYTHON_COMPAT=( python3_{7,8,9} )
+
+inherit autotools python-single-r1
 
 DESCRIPTION="Locate and modify variables in executing processes"
 HOMEPAGE="https://github.com/scanmem/scanmem"
@@ -54,5 +55,6 @@ src_install() {
 		dodoc gui/{README,TODO}
 		python_fix_shebang "${ED}"
 	fi
+
 	find "${ED}" -type f -name "*.la" -delete || die
 }

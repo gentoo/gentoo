@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools eutils ltprune multilib-minimal vala xdg-utils
+inherit autotools multilib-minimal vala xdg-utils
 
 DESCRIPTION="A library to allow applications to export a menu into the Unity Menu bar"
 HOMEPAGE="https://launchpad.net/libappindicator"
@@ -33,6 +33,9 @@ PATCHES=(
 	"${FILESDIR}"/${P}-conditional-py-bindings.patch
 	# http://bazaar.launchpad.net/~indicator-applet-developers/libappindicator/trunk.12.10/revision/244
 	"${FILESDIR}"/${P}-vala-inherit.patch
+	# https://bugs.launchpad.net/archlinux/+source/libappindicator/+bug/1867996
+	"${FILESDIR}"/${P}-lp1867996-fix-g-signal-emit.patch
+	"${FILESDIR}"/${P}-lp1867996-fix-iterate-search-path.patch
 )
 
 src_prepare() {
@@ -56,7 +59,7 @@ multilib_src_configure() {
 		use introspection && vala_src_prepare && export VALA_API_GEN="${VAPIGEN}"
 	fi
 
-	ECONF_SOURCE=${S} \
+	ECONF_SOURCE="${S}" \
 	econf \
 		--disable-static \
 		--with-gtk=3 \
@@ -69,5 +72,5 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

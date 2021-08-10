@@ -1,0 +1,23 @@
+--- a/spotify-dbus.py	2021-04-12 11:11:00.710360694 +0200
++++ b/spotify-dbus.py	2021-04-12 11:50:55.946631871 +0200
+@@ -227,8 +227,7 @@
+ 			if self.debug == True:
+ 				print("Opening " + param + "...")
+ 	
+-			window = self.get_window()
+-			window._openLink(param)
++			self.player.OpenUri(param)
+ 	
+ 	# Action listener
+ 	def action_listener(self, id = 0, action = ''):
+@@ -322,8 +321,8 @@
+ 	# Get the player object
+ 	def get_player(self):
+ 		try:
+-			proxyobj = self.bus.get_object('org.mpris.MediaPlayer2.spotify', '/')
+-			pl = dbus.Interface(proxyobj, 'org.freedesktop.MediaPlayer2')
++			proxyobj = self.bus.get_object('org.mpris.MediaPlayer2.spotify', '/org/mpris/MediaPlayer2')
++			pl = dbus.Interface(proxyobj, 'org.mpris.MediaPlayer2.Player')
+ 		except dbus.DBusException:
+ 			pl = False
+ 	

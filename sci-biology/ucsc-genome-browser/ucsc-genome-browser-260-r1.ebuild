@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,7 +30,12 @@ S="${WORKDIR}/kent"
 
 src_prepare() {
 	default
+
 	use server && webapp_src_preinst
+
+	# bug #708064
+	append-flags -fcommon
+
 	sed \
 		-e 's/-Werror//' \
 		-e "/COPT/s:=.*$:=${LDFLAGS}:g" \
@@ -59,14 +64,16 @@ src_compile() {
 
 	export MYSQLLIBS="none" MYSQLINC="none" DOCUMENTROOT="none" CGI_BIN="none"
 
-	use mysql && export MYSQLLIBS="-L${EROOT}usr/$(get_libdir)/mysql/ -lmysqlclient -lz -lssl" \
-		MYSQLINC="${ROOT}usr/include/mysql"
+	# TODO: Change ${EPREFIX} to ${ESYSROOT} in EAPI 7
+	# (and ideally use pkg-config here)
+	use mysql && export MYSQLLIBS="-L${EPREFIX%/}/usr/$(get_libdir)/mysql/ -lmysqlclient -lz -lssl" \
+		MYSQLINC="${EPREFIX%/}/usr/include/mysql"
 
 	use server && export DOCUMENTROOT="${WORKDIR}/destdir/${MY_HTDOCSDIR}" \
 		CGI_BIN="${WORKDIR}/destdir/${MY_HTDOCSDIR}/cgi-bin"
 
-	mkdir -p "$BINDIR" "$SCRIPTS" "$ENCODE_PIPELINE_BIN" || die
-	use server && mkdir -p "$CGI_BIN" "$DOCUMENTROOT"
+	mkdir -p "${BINDIR}" "${SCRIPTS}" "${ENCODE_PIPELINE_BIN}" || die
+	use server && mkdir -p "${CGI_BIN}" "${DOCUMENTROOT}"
 
 	emake -C src clean
 	emake -C src/lib

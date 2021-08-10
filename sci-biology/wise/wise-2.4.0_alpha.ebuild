@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils toolchain-funcs versionator
+inherit epatch toolchain-funcs versionator
 
 DESCRIPTION="Intelligent algorithms for DNA searches"
 HOMEPAGE="http://www.ebi.ac.uk/Wise2/"

@@ -6,6 +6,6 @@
     <name>William Hubbs</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">defunkt/hub</remote-id>
+    <remote-id type="github">github/hub</remote-id>
   </upstream>
 </pkgmetadata>

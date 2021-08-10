@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="gog">Extract the data from the GOG.com installer.</flag>
+		<flag name="demo">Extract data files from the shareware version.</flag>
+		<flag name="gog">Extract data files from the GOG.com version.</flag>
 	</use>
 </pkgmetadata>

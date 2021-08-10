@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -15,12 +15,13 @@ HOMEPAGE="http://www.kermitproject.org/"
 
 LICENSE="Kermit"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 x86"
 IUSE="ncurses"
 
 DEPEND="ncurses? ( >=sys-libs/ncurses-5.2:= )"
 RDEPEND="${DEPEND}
 	net-dialup/lrzsz"
+BDEPEND="ncurses? ( virtual/pkgconfig )"
 
 S=${WORKDIR}
 

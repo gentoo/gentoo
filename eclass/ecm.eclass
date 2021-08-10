@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ecm.eclass
@@ -10,7 +10,7 @@
 # This eclass is intended to streamline the creation of ebuilds for packages
 # that use cmake and KDE Frameworks' extra-cmake-modules, thereby following
 # some of their packaging conventions. It is primarily intended for the three
-# upstream release groups (Frameworks, Plasma, Applications) but also for any
+# upstream release groups (Frameworks, Plasma, Gear) but also for any
 # other package that follows similar conventions.
 #
 # This eclass unconditionally inherits cmake.eclass and all its public
@@ -19,13 +19,17 @@
 #
 # This eclass's phase functions are not intended to be mixed and matched, so if
 # any phase functions are overridden the version here should also be called.
-#
-# Porting from kde5.class
-# - Convert all add_*_dep dependency functions to regular dependencies
-# - Manually set LICENSE
-# - Manually set SLOT
-# - Rename vars and function names as needed, see kde5.eclass PORTING comments
-# - Instead of FRAMEWORKS_MINIMAL, define KFMIN in ebuilds and use it for deps
+
+case ${EAPI} in
+	7) ;;
+	*) die "EAPI=${EAPI:-0} is not supported" ;;
+esac
+
+if [[ -v KDE_GCC_MINIMAL ]]; then
+	EXPORT_FUNCTIONS pkg_pretend
+fi
+
+EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test pkg_preinst pkg_postinst pkg_postrm
 
 if [[ -z ${_ECM_ECLASS} ]]; then
 _ECM_ECLASS=1
@@ -54,17 +58,6 @@ inherit cmake flag-o-matic toolchain-funcs virtualx
 if [[ ${ECM_NONGUI} = false ]] ; then
 	inherit xdg
 fi
-
-case ${EAPI} in
-	7) ;;
-	*) die "EAPI=${EAPI:-0} is not supported" ;;
-esac
-
-if [[ -v KDE_GCC_MINIMAL ]]; then
-	EXPORT_FUNCTIONS pkg_pretend
-fi
-
-EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test pkg_preinst pkg_postinst pkg_postrm
 
 # @ECLASS-VARIABLE: ECM_KDEINSTALLDIRS
 # @DESCRIPTION:
@@ -266,24 +259,6 @@ COMMONDEPEND+=" dev-qt/qtcore:${KFSLOT}"
 DEPEND+=" ${COMMONDEPEND}"
 RDEPEND+=" ${COMMONDEPEND}"
 unset COMMONDEPEND
-
-# @FUNCTION: _ecm_banned_var
-# @INTERNAL
-# @DESCRIPTION:
-# Banned kde5*.eclass variables are banned.
-_ecm_banned_var() {
-	die "$1 is banned. use $2 instead."
-}
-
-if [[ -z ${_KDE5_ECLASS} ]] ; then
-	[[ -n ${KDE_DEBUG} ]] && _ecm_banned_var KDE_DEBUG ECM_DEBUG
-	[[ -n ${KDE_EXAMPLES} ]] && _ecm_banned_var KDE_EXAMPLES ECM_EXAMPLES
-	[[ -n ${KDE_HANDBOOK} ]] && _ecm_banned_var KDE_HANDBOOK ECM_HANDBOOK
-	[[ -n ${KDE_DOC_DIR} ]] && _ecm_banned_var KDE_DOC_DIR ECM_HANDBOOK_DIR
-	[[ -n ${KDE_PO_DIRS} ]] && _ecm_banned_var KDE_PO_DIRS ECM_PO_DIRS
-	[[ -n ${KDE_QTHELP} ]] && _ecm_banned_var KDE_QTHELP ECM_QTHELP
-	[[ -n ${KDE_TEST} ]] && _ecm_banned_var KDE_TEST ECM_TEST
-fi
 
 # @ECLASS-VARIABLE: KDE_GCC_MINIMAL
 # @DEFAULT_UNSET

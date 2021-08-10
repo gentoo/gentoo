@@ -11,6 +11,7 @@
 	</upstream>
 	<use>
 		<flag name="gevent">Install extra requirement <pkg>dev-python/gevent</pkg> to enable green threads.</flag>
+		<flag name="minimal">Don't depend on <pkg>x11-misc/i3status</pkg> if you don't plan to use any of its built-in modules.</flag>
 		<flag name="udev">Install extra requirement <pkg>dev-python/pyudev</pkg> to enable udev events monitoring on modules.</flag>
 	</use>
 </pkgmetadata>

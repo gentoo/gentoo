@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/netdude/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~sparc x86"
 IUSE="doc static-libs"
 
 DEPEND="net-libs/libpcap"

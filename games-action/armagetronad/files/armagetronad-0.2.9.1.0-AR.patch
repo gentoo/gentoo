@@ -1,0 +1,10 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -28,6 +28,7 @@ dnl those two are apparently included in AC_CANONICAL_TARGET
+ dnl AC_CANONICAL_BUILD
+ dnl AC_CANONICAL_HOST
+ 
++AM_PROG_AR
+ AC_PROG_RANLIB
+ AM_INIT_AUTOMAKE([subdir-objects tar-ustar])
+ 

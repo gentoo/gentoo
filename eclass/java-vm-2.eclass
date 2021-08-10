@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-vm-2.eclass
@@ -186,7 +186,7 @@ set_java_env() {
 
 	# Make the symlink
 	dodir "${JAVA_VM_DIR}"
-	dosym ${java_home#${EPREFIX}} ${JAVA_VM_DIR}/${VMHANDLE}
+	dosym "${java_home}" "${JAVA_VM_DIR}/${VMHANDLE}"
 }
 
 
@@ -228,7 +228,7 @@ java-vm_install-env() {
 
 	# Make the symlink
 	dodir "${JAVA_VM_DIR}"
-	dosym "${java_home#${EPREFIX}}" "${JAVA_VM_DIR}/${VMHANDLE}"
+	dosym "${java_home}" "${JAVA_VM_DIR}/${VMHANDLE}"
 }
 
 

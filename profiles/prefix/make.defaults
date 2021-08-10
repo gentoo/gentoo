@@ -7,9 +7,3 @@
 # ncurses:   a nice working console drawing library
 # ssl:       encrypted connections are a nice feature
 USE="readline zlib ncurses ssl"
-
-
-# In Prefix, aim for Python 3 only, leaving out 2 to avoid unnecessary
-# builds
-# NOTE: Both are incremental variables: Need to drop obsolete base values.
-PYTHON_TARGETS="-python2_7"

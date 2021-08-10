@@ -1,35 +1,34 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop gnome2-utils unpacker
+inherit desktop unpacker xdg
 
-TIMESTAMP="${PV:0:4}-${PV:4:2}-${PV:6:2}"
 MY_PN="Grimrock"
+MY_TIMESTAMP="${PV:0:4}-${PV:4:2}-${PV:6:2}"
+
 DESCRIPTION="Legend of Grimrock: The ultimate dungeon crawling RPG + modding engine"
 HOMEPAGE="http://www.grimrock.net/"
-SRC_URI="Grimrock-Linux-${TIMESTAMP}.sh"
+SRC_URI="Grimrock-Linux-${MY_TIMESTAMP}.sh"
+S="${WORKDIR}"
 
-SLOT="0"
 LICENSE="all-rights-reserved"
+SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-RESTRICT="fetch bindist splitdebug"
+RESTRICT="bindist fetch"
 
-QA_PREBUILT="/opt/${PN}/${MY_PN}.bin"
+QA_PREBUILT="opt/${PN}/${MY_PN}.bin"
 
-RDEPEND="media-libs/freeimage
+RDEPEND="
+	media-libs/freeimage
 	media-libs/freetype:2
-	media-libs/openal
 	media-libs/libsdl2[opengl,sound,video]
 	media-libs/libvorbis
+	media-libs/openal
 	sys-libs/zlib[minizip]
 	virtual/opengl
 	x11-libs/libX11"
-
-DEPEND="app-arch/xz-utils"
-
-S="${WORKDIR}"
 
 pkg_nofetch() {
 	einfo "Please buy and download ${SRC_URI} from:"
@@ -38,25 +37,26 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	myarch=$(usex amd64 x86_64 x86)
+	MY_ARCH=$(usex amd64 x86_64 x86)
+
 	unpack_makeself
 
 	local i
-	for i in subarch instarchive_all instarchive_linux_${myarch}; do
-		ln -snf "${i}" "${i}.tar.xz" || die
-		unpack ./"${i}.tar.xz"
+	for i in subarch instarchive_all instarchive_linux_${MY_ARCH}; do
+		ln -snf ${i} ${i}.tar.xz || die
+		unpack ./${i}.tar.xz
 	done
 }
 
 src_install() {
 	local dir=/opt/${PN}
 
-	insinto "${dir}"
+	insinto ${dir}
 	doins ${PN}.{dat,png}
 
-	exeinto "${dir}"
-	newexe ${MY_PN}.bin{.${myarch},}
-	dosym "../..${dir}"/${MY_PN}.bin /usr/bin/${PN}
+	exeinto ${dir}
+	newexe ${MY_PN}.bin{.${MY_ARCH},}
+	dosym ../..${dir}/${MY_PN}.bin /usr/bin/${PN}
 
 	doicon -s 256 ${PN}.png
 	newicon -s 64 ${MY_PN}.png ${PN}.png
@@ -64,7 +64,3 @@ src_install() {
 
 	dodoc README.linux
 }
-
-pkg_preinst() { gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }

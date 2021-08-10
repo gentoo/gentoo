@@ -1,8 +1,5 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Re-add Cygwin's libc
 -elibc_Cygwin
-
-# we do have only python-3.6 ready on cygwin
-python_targets_python3_7

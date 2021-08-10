@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils flag-o-matic toolchain-funcs user multilib
+inherit flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="A small, fast, and scalable web server"
 HOMEPAGE="http://www.monkey-project.com/"
@@ -11,7 +11,6 @@ MY_P="${PN/d}-${PV}"
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/monkey/monkey.git"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="http://monkey-project.com/releases/${PV:0:3}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
@@ -21,10 +20,10 @@ LICENSE="GPL-2"
 SLOT="0"
 
 # jemalloc is also off until we figure out how to work CMakeLists.txt magic.
-#IUSE="cgi -debug fastcgi jemalloc php static-plugins ${PLUGINS}"
+#IUSE="cgi debug fastcgi jemalloc php static-plugins ${PLUGINS}"
 
 PLUGINS="monkeyd_plugins_auth monkeyd_plugins_cheetah monkeyd_plugins_dirlisting +monkeyd_plugins_liana monkeyd_plugins_logger monkeyd_plugins_mandril monkeyd_plugins_tls"
-IUSE="cgi -debug fastcgi php static-plugins ${PLUGINS}"
+IUSE="cgi debug fastcgi php static-plugins ${PLUGINS}"
 
 # uclibc is often compiled without backtrace info so we should
 # force this off.  If someone complains, consider relaxing it.
@@ -38,17 +37,14 @@ DEPEND="
 	dev-util/cmake
 	monkeyd_plugins_tls? ( net-libs/mbedtls:= )"
 RDEPEND="
+	acct-group/monkeyd
+	acct-user/monkeyd
 	php? ( dev-lang/php )
 	cgi? ( dev-lang/php[cgi] )"
 
 S="${WORKDIR}/${MY_P}"
 
 WEBROOT="/var/www/localhost"
-
-pkg_preinst() {
-	enewgroup monkeyd
-	enewuser monkeyd -1 -1 /var/tmp/monkeyd monkeyd
-}
 
 pkg_setup() {
 	if use debug; then
@@ -63,11 +59,13 @@ pkg_setup() {
 src_prepare() {
 	# Unconditionally get rid of the bundled jemalloc
 	rm -rf "${S}"/deps
-	epatch "${FILESDIR}"/${PN}-1.6.9-fix-pidfile.patch
-	epatch "${FILESDIR}"/${PN}-1.6.8-system-mbedtls.patch
+	eapply "${FILESDIR}"/${PN}-1.6.9-fix-pidfile.patch
+	eapply "${FILESDIR}"/${PN}-1.6.8-system-mbedtls.patch
+	eapply_user
 }
 
 src_configure() {
+	append-cflags -fcommon
 	local myconf=""
 
 	use elibc_uclibc && myconf+=" --uclib-mode"
@@ -137,16 +135,13 @@ src_install() {
 	mv "${D}"${WEBROOT}/htdocs \
 		"${D}"/usr/share/doc/"${PF}"/htdocs.dist || die
 
-	keepdir \
-		/var/tmp/monkeyd \
-		/var/log/monkeyd \
-		${WEBROOT}/htdocs
+	keepdir /var/log/monkeyd ${WEBROOT}/htdocs
 
 	# This needs to be created at runtime
 	rm -rf "${D}"/run
 }
 
 pkg_postinst() {
-	chown monkeyd:monkeyd /var/{log,tmp}/monkeyd
-	chmod 770 /var/{log,tmp}/monkeyd
+	chown monkeyd:monkeyd /var/log/monkeyd
+	chmod 770 /var/log/monkeyd
 }

@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools elisp-common flag-o-matic ltprune
+inherit autotools elisp-common flag-o-matic
 
 DESCRIPTION="Any to PostScript filter"
 HOMEPAGE="https://www.gnu.org/software/a2ps/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="cjk emacs latex nls static-libs userland_BSD userland_GNU vanilla"
 
 RESTRICT=test
@@ -126,7 +126,7 @@ src_install() {
 
 	rm -f "${ED}"/usr/share/{a2ps,a2ps/ppd,ogonkify}/README || die
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 
 	if use emacs; then
 		elisp-site-file-install "${FILESDIR}"/${SITEFILE} || die

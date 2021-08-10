@@ -1,7 +1,7 @@
 respect compiler, ldflags and cflags
 
---- build
-+++ build
+--- a/build
++++ b/build
 @@ -36,7 +36,7 @@
  #define RULES_FILE \"$LIBDIR/en/scrabble_rules\"
  " > src/config.h

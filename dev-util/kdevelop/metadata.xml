@@ -10,6 +10,5 @@
 		<flag name="hex">Enable hex editor plugin via <pkg>app-editors/okteta</pkg></flag>
 		<flag name="qmake">Enable support for QMake build system</flag>
 		<flag name="reviewboard">Enable reviewboard support</flag>
-		<flag name="webkit">Enable deprecated <pkg>dev-qt/qtwebkit</pkg> instead of <pkg>dev-qt/qtwebengine</pkg> for integrated documentation</flag>
 	</use>
 </pkgmetadata>

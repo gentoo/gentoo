@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,14 +9,13 @@ if [[ ${PV} = 9999* ]]; then
 	EXPERIMENTAL="true"
 fi
 
-inherit meson readme.gentoo-r1 toolchain-funcs xdg-utils $GIT_ECLASS
+inherit meson readme.gentoo-r1 xdg-utils ${GIT_ECLASS}
 
 DESCRIPTION="Wayland reference compositor"
 HOMEPAGE="https://wayland.freedesktop.org/ https://gitlab.freedesktop.org/wayland/weston"
 
-if [[ $PV = 9999* ]]; then
+if [[ ${PV} = *9999* ]]; then
 	SRC_URI="${SRC_PATCHES}"
-	KEYWORDS=""
 else
 	SRC_URI="https://wayland.freedesktop.org/releases/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~x86"
@@ -25,7 +24,7 @@ fi
 LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
 
-IUSE="colord +desktop +drm editor examples fbdev fullscreen +gles2 headless ivi jpeg kiosk +launch lcms pipewire rdp remoting +resize-optimization screen-sharing +suid systemd test wayland-compositor webp +X xwayland"
+IUSE="colord +desktop +drm editor examples fbdev fullscreen +gles2 headless ivi jpeg kiosk +launch lcms pipewire rdp remoting +resize-optimization screen-sharing seatd +suid systemd test wayland-compositor webp +X xwayland"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -71,6 +70,7 @@ RDEPEND="
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
 	)
+	seatd? ( sys-auth/seatd:= )
 	systemd? (
 		sys-auth/pambase[systemd]
 		>=sys-apps/dbus-1.6
@@ -82,7 +82,7 @@ RDEPEND="
 		x11-libs/libX11
 	)
 	xwayland? (
-		x11-base/xorg-server[wayland]
+		x11-base/xwayland
 		x11-libs/cairo[X,xcb(+)]
 		>=x11-libs/libxcb-1.9
 		x11-libs/libXcursor
@@ -107,6 +107,7 @@ src_configure() {
 		$(meson_use gles2 renderer-gl)
 		$(meson_use launch weston-launch)
 		$(meson_use xwayland)
+		$(meson_use seatd launcher-libseat)
 		$(meson_use systemd)
 		$(meson_use remoting)
 		$(meson_use pipewire)

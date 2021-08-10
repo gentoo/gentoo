@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit distutils-r1
 
@@ -11,7 +11,7 @@ DESCRIPTION="A simple Python socket pool"
 HOMEPAGE="https://github.com/benoitc/socketpool/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 ~sparc x86 ~x64-macos"
 IUSE="eventlet examples gevent"
 LICENSE="|| ( MIT public-domain )"
 SLOT="0"
@@ -20,12 +20,12 @@ RDEPEND="
 	eventlet? (
 		$(python_gen_cond_dep '
 			dev-python/eventlet[${PYTHON_USEDEP}]
-		' 'python3*')
+		' python3_{7..9})
 	)
 	gevent? (
 		$(python_gen_cond_dep '
 			dev-python/gevent[${PYTHON_USEDEP}]
-		' 'python*')
+		' python3_{7..9})
 	)"
 
 BDEPEND="
@@ -33,10 +33,10 @@ BDEPEND="
 		!alpha? ( !hppa? ( !ia64? (
 			$(python_gen_cond_dep '
 				dev-python/eventlet[${PYTHON_USEDEP}]
-			' 'python3*')
+			' python3_{7..9})
 			$(python_gen_cond_dep '
 				dev-python/gevent[${PYTHON_USEDEP}]
-			' 'python*')
+			' python3_{7..9})
 		) ) )
 	)"
 
@@ -55,7 +55,7 @@ python_test() {
 	cp -r examples tests "${BUILD_DIR}" || die
 
 	pushd "${BUILD_DIR}" >/dev/null || die
-	pytest -vv tests || die "Tests fail with ${EPYTHON}"
+	epytest tests
 	popd >/dev/null || die
 }
 

@@ -1,0 +1,27 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a3a4d99..0015b0f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -99,17 +99,17 @@ set (HSAKMT_LINK_FLAGS "${HSAKMT_LINK_FLAGS} -Wl,--enable-new-dtags -Wl,--versio
+ ## Address Sanitize Flag
+ if ( ${ADDRESS_SANITIZER} )
+     set ( HSAKMT_C_FLAGS "${HSAKMT_C_FLAGS}" -fsanitize=address )
+-    set ( HSAKMT_LINK_FLAGS "${HSAKMT_LINK_FLAGS}" -fsanitize=address )
++    set ( HSAKMT_LINK_FLAGS "${HSAKMT_LINK_FLAGS} -fsanitize=address ")
+     if ( BUILD_SHARED_LIBS )
+-        set ( HSAKMT_LINK_FLAGS "${HSAKMT_LINK_FLAGS}" -shared-libsan )
++        set ( HSAKMT_LINK_FLAGS "${HSAKMT_LINK_FLAGS} -shared-libsan ")
+     else ()
+-        set ( HSAKMT_LINK_FLAGS "${HSAKMT_LINK_FLAGS}" -static-libsan )
++        set ( HSAKMT_LINK_FLAGS "${HSAKMT_LINK_FLAGS} -static-libsan ")
+     endif ()
+ else ()
+     if ( CMAKE_COMPILER_IS_GNUCC )
+-        set ( HSAKMT_LINK_FLAGS "${HSAKMT_LINK_FLAGS}" -Wl,-no-undefined )
++        set ( HSAKMT_LINK_FLAGS "${HSAKMT_LINK_FLAGS} -Wl,-no-undefined ")
+     else ()
+-        set ( HSAKMT_LINK_FLAGS "${HSAKMT_LINK_FLAGS}" -Wl,-undefined,error )
++        set ( HSAKMT_LINK_FLAGS "${HSAKMT_LINK_FLAGS} -Wl,-undefined,error ")
+     endif ()
+ endif ()
+ 

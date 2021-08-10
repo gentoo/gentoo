@@ -19,7 +19,7 @@ SRC_URI="mirror://gentoo/netkit-telnet-${PV}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 IUSE=""
 
 DEPEND=">=sys-libs/ncurses-5.2:=
@@ -36,17 +36,17 @@ src_prepare() {
 	# better to just stay in sync with debian's own netkit-telnet
 	# package. Lots of bug fixes by them over time which were not in
 	# our telnetd.
-	EPATCH_FORCE="yes" EPATCH_SUFFIX="diff" eapply "${WORKDIR}"/debian/patches
+	EPATCH_FORCE="yes" EPATCH_SUFFIX="diff" eapply "${WORKDIR}/debian/patches"
 
 	# Patch: [1]
 	# after the deb patch we need to add a small patch that defines
 	# gnu source. This is needed for gcc-3.4.x (needs to be pushed
 	# back to the deb folk?)
-	eapply "${FILESDIR}"/netkit-telnetd-0.17-cflags-gnu_source.patch
+	eapply "${FILESDIR}/netkit-telnetd-0.17-cflags-gnu_source.patch"
 
 	# Fix portability issues.
 	sed -i \
-		-e 's/echo -n/printf %s/' \
+		-e 's@echo -n@printf %s@' \
 		configure || die
 	default
 }
@@ -58,9 +58,9 @@ src_configure() {
 	./configure --prefix=/usr || die
 
 	sed -i \
-		-e "s/-pipe -O2/${CFLAGS}/" \
-		-e "s/^\(LDFLAGS=\).*/\1${LDFLAGS}/" \
-		-e "s/-Wpointer-arith//" \
+		-e "s@-pipe -O2@${CFLAGS}@" \
+		-e "s@^\(LDFLAGS=\).*@\1${LDFLAGS}@" \
+		-e "s@-Wpointer-arith@@" \
 		MCONFIG || die
 }
 
@@ -81,9 +81,9 @@ src_install() {
 	dosym telnetd.8 /usr/share/man/man8/in.telnetd.8
 	doman telnetlogin/telnetlogin.8
 	dodoc BUGS ChangeLog README
-	dodoc "${FILESDIR}"/net.issue.sample
+	dodoc "${FILESDIR}/net.issue.sample"
 	newdoc telnet/README README.telnet
 	newdoc telnet/TODO TODO.telnet
 	insinto /etc/xinetd.d
-	newins "${FILESDIR}"/telnetd.xinetd telnetd
+	newins "${FILESDIR}/telnetd.xinetd" telnetd
 }

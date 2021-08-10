@@ -1,0 +1,30 @@
+Fix frash in uninitialized driver_format.matrix.
+
+Thread 1 "zsnes" received signal SIGSEGV, Segmentation fault.
+__strlen_sse2_bsf () at ../sysdeps/i386/i686/multiarch/strlen-sse2-bsf.S:50
+50      ../sysdeps/i386/i686/multiarch/strlen-sse2-bsf.S: Нет такого файла или каталога.
+(gdb) bt
+#0  __strlen_sse2_bsf () at ../sysdeps/i386/i686/multiarch/strlen-sse2-bsf.S:50
+#1  0xf7e3c491 in _sanitize_matrix (maxchannels=2, matrix=0x1c00200 <error: Cannot access memory at address 0x1c00200>, device=device@entry=0x57057100)
+    at ../../libao-1.2.2/src/audio_out.c:634
+#2  0xf7e3e9bc in _open_device (driver_id=<optimized out>, format=format@entry=0xffffc638, options=options@entry=0x0, file=0x0) at ../../libao-1.2.2/src/audio_out.c:991
+#3  0xf7e3f579 in ao_open_live (driver_id=<optimized out>, format=0xffffc638, options=0x0) at ../../libao-1.2.2/src/audio_out.c:1337
+#4  0x5699fbb5 in SoundInit_ao () at linux/audio.c:197
+#5  InitSound () at linux/audio.c:338
+#6  0x569a2f7f in initwinvideo () at linux/sdllink.c:1080
+#7  0x569a07d3 in initvideo ()
+#8  0x56ad59bc in regptwa ()
+#9  0x56a3c490 in SA1tableG ()
+#10 0xffffc808 in ?? ()
+#11 0xf78619b5 in __libc_start_main (main=0x1, argc=1450015920, argv=0x0, init=0x566d7ce1 <_start+49>, fini=0x566d7c00 <main>, rtld_fini=0x1, stack_end=0xffffc8c4) at ../csu/libc-start.c:332
+#12 0x569cd000 in ?? ()
+--- a/linux/audio.c
++++ b/linux/audio.c
+@@ -166,6 +166,7 @@ static int SoundInit_ao()
+   if (driver_id < 0) { driver_id = ao_default_driver_id(); }
+ 
+   ao_sample_format driver_format;
++  memset(&driver_format, 0, sizeof(driver_format));
+   driver_format.bits = 16;
+   driver_format.channels = StereoSound+1;
+   driver_format.rate = freqtab[SoundQuality = ((SoundQuality > 6) ? 1 : SoundQuality)];

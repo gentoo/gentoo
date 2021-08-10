@@ -1,6 +1,6 @@
-diff -up PyPAM-0.5.0/PAMmodule.c.memory PyPAM-0.5.0/PAMmodule.c
---- PyPAM-0.5.0/PAMmodule.c.memory	2012-05-07 17:22:54.503914026 +0200
-+++ PyPAM-0.5.0/PAMmodule.c	2012-05-07 17:23:15.644381942 +0200
+diff -up a/PAMmodule.c b/PAMmodule.c
+--- a/PAMmodule.c
++++ b/PAMmodule.c
 @@ -37,33 +37,48 @@ static void PyPAM_Err(PyPAMObject *self,
  
      err_msg = pam_strerror(self->pamh, result);

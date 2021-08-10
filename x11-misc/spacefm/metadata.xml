@@ -14,8 +14,6 @@
 		<remote-id type="github">ignorantguru/spacefm</remote-id>
 	</upstream>
 	<use>
-		<flag name="gtk2">Support GTK+ 2.x instead of GTK+ 3.x</flag>
-		<flag name="gtk3">Support GTK+ 3.x instead of GTK+ 2.x</flag>
 		<flag name="video-thumbnails">Support video thumbnails with <pkg>media-video/ffmpegthumbnailer</pkg></flag>
 	</use>
 	<longdescription lang="en">

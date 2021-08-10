@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,7 @@ OFED_SUFFIX="1.gdc6ef69"
 inherit openib
 
 DESCRIPTION="OpenIB userspace driver for Mellanox ConnectX HCA"
-KEYWORDS="amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux"
 IUSE=""
 
 DEPEND="
@@ -20,3 +20,12 @@ DEPEND="
 RDEPEND="
 		!sys-fabric/openib-userspace"
 block_other_ofed_versions
+
+src_configure() {
+	econf --disable-static
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
+}

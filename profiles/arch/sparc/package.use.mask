@@ -1,5 +1,74 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Matt Turner <mattst88@gentoo.org> (2021-07-23)
+# gui-libs/gtk is not keyworded
+net-libs/gssdp gtk
+
+# Matt Turner <mattst88@gentoo.org> (2021-06-10)
+# dev-python/django is not keyworded here
+dev-python/diskcache test
+
+# Sam James <sam@gentoo.org> (2021-06-03)
+# Mask tests on dev-cpp/eigen for now as they're rather large and
+# eigen itself is only being dragged in as a test dependency for now.
+# bug #760803
+dev-cpp/eigen test
+
+# Marek Szuba <marecki@gentoo.org> (2021-05-07)
+# Legacy interface that depends on kernel headers not available on this arch
+# as well as currently-unkeyworded dev-libs/libx86
+x11-misc/read-edid vbe-mode
+
+# Sam James <sam@gentoo.org> (2021-04-27)
+# Deps not yet tested/keyworded.
+sys-devel/clang default-compiler-rt default-libcxx default-lld
+sys-devel/clang-runtime compiler-rt libcxx
+sys-devel/llvm gold z3
+
+# Sam James <sam@gentoo.org> (2021-03-19)
+# On sparc, we have to force sys-apps/grep[libsigsegv]
+# for accurate stack overflow handling. dev-libs/libsigsegv
+# lacks USE=static-libs, so for now, this means we can't
+# build a static grep on sparc.
+# No real pressing need to add it.
+# bug #768135
+sys-apps/grep static
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-03-13)
+# virtual/jdk isn't keyworded here
+media-libs/rubberband jni
+
+# Sam James <sam@gentoo.org> (2021-03-13)
+# media-libs/libheif isn't keyworded here
+# media-libs/libavif isn't keyworded here
+media-libs/gd avif heif
+
+# Sam James <sam@gentoo.org> (2021-02-26)
+# dev-libs/efl not keyworded here
+# and is a desktop application mainly
+# bug #773178
+app-crypt/pinentry efl
+
+# Joonas Niilola <juippis@gentoo.org> (2021-01-15)
+# Dependency not keyworded on this arch.
+app-text/enchant voikko
+
+# Sam James <sam@gentoo.org> (2020-12-27)
+# dev-embedded/libftd2xx unavailable here
+dev-embedded/urjtag ftd2xx
+
+# Matthias Maier <tamiko@gentoo.org> (2020-12-03)
+# Requires sci-mathematics/z3.
+dev-util/cppcheck z3
+
+# Mart Raudsepp <leio@gentoo.org> (2020-11-26)
+# dev-libs/libmanette not keyworded, limited usefulness
+net-libs/webkit-gtk gamepad
+
+# Joonas Niilola <juippis@gentoo.org> (2020-11-16)
+# app-text/libgepub not yet keyworded on this arch. #754762
+xfce-extra/tumbler epub
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
 # app-i18n/fcitx:4 not keyworded.
@@ -81,7 +150,6 @@ net-im/pidgin gstreamer
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
 # dev-qt/designer is not keyworded on sparc
-sys-libs/gwenhywfar designer
 x11-libs/qwt designer
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
@@ -100,10 +168,6 @@ media-video/ffmpeg srt
 # git useflag requires dev-libs/libgit2
 dev-util/geany-plugins git
 dev-util/geany-plugins workbench
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
-# uses slot 0 of dev-lang/spidermonkey that is broken on sparc
-www-client/elinks javascript
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # Required dependencies are not keyworded.
@@ -173,19 +237,9 @@ dev-lang/spidermonkey jit
 # No ffmpeg keywords on sparc
 media-sound/dir2ogg aac wma
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2018-09-28)
-# No stable nftables yet. Let new iptables stabilization
-# to pick nftables up. Meanwhile keep old iptables off
-# nftables.
-<net-firewall/iptables-1.6.2 nftables
-
 # Virgil Dupras <vdupras@gentoo.org> (2018-10-08)
 # app-text/mupdf sparc keyword was dropped in bug #631970
 net-print/cups-filters pdf
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2018-09-28)
-# mpir fails to build at least on sparc: bug #640424
-dev-python/gmpy mpir
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-08-30)
 # dev-games/openscenegraph is a heavy unkeyworded dependency.
@@ -243,7 +297,7 @@ xfce-base/xfwm4 xpresent
 # Michał Górny <mgorny@gentoo.org> (2017-03-23)
 # Most of clang runtimes are not supported here
 sys-devel/clang-runtime openmp sanitize
-sys-libs/libcxx libunwind libcxxrt
+sys-libs/libcxx libunwind
 sys-libs/libcxxabi libunwind
 
 # Pacho Ramos <pacho@gentoo.org> (2017-02-04)
@@ -346,11 +400,8 @@ media-libs/clutter-gtk wayland
 
 # Mark Wright <gienah@gentoo.org> (2014-12-14/2014-12-23, 2015-04-01)
 # test dependencies need keywording
-dev-haskell/binary test
 dev-haskell/dlist test
 dev-haskell/haskell-src-exts test
-dev-haskell/text test
-dev-haskell/vector test
 
 # Pacho Ramos <pacho@gentoo.org> (2014-10-03)
 # Missing keywords, bug #524352
@@ -429,7 +480,7 @@ media-libs/phonon gstreamer vlc
 # MySQL 5.5 wants systemtap, tcmalloc & jemalloc
 >=dev-db/mysql-5.5 systemtap tcmalloc jemalloc
 >=dev-db/mariadb-5.5 systemtap tcmalloc jemalloc
->=dev-db/percona-server-5.5 systemtap tcmalloc jemalloc
+>=dev-db/percona-server-5.5 tcmalloc jemalloc
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-06-24)
 # Requires libpcre with jit

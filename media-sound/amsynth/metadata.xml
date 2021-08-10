@@ -8,6 +8,8 @@
 	<use>
 		<flag name="dssi">Enable support for DSSI Soft Synth Interface</flag>
 		<flag name="lv2">Add support for Ladspa V2</flag>
+		<flag name="nsm">Build support for Non Session Manager</flag>
+		<flag name="vst">Build VST plug-in</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">amsynth/amsynth</remote-id>

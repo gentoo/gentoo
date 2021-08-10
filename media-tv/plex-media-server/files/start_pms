@@ -1,0 +1,51 @@
+#!/bin/sh
+#
+# Plex Media Server - Manual start script.
+#
+
+# Set Crash Reporting identification variables
+export PLEX_MEDIA_SERVER_INFO_VENDOR="$(grep ^NAME= /etc/os-release|awk -F= '{print $2}'|tr -d \" )"
+export PLEX_MEDIA_SERVER_INFO_DEVICE="PC"
+export PLEX_MEDIA_SERVER_INFO_MODEL="$(uname -m)"
+GENTOO_PROFILE="`readlink /etc/portage/make.profile`"
+export PLEX_MEDIA_SERVER_INFO_PLATFORM_VERSION="${GENTOO_PROFILE#.*/profiles/}"
+
+# Change these parameters in /etc/default/plexmediaserver
+export PLEX_MEDIA_SERVER_USER=plex
+export PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS=6
+export PLEX_MEDIA_SERVER_HOME=/usr/lib/plexmediaserver
+export PLEX_MEDIA_SERVER_MAX_STACK_SIZE=3000
+export LD_LIBRARY_PATH="${PLEX_MEDIA_SERVER_HOME}"
+export PLEX_MEDIA_SERVER_TMPDIR=/tmp
+export PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR="${HOME}/Library/Application Support"
+
+if [ -f /etc/default/locale ]; then
+  export LANG="$(cat /etc/default/locale|awk -F '=' '/LANG=/{print $2}'|sed 's/"//g')"
+  export LC_ALL="$LANG"
+fi
+
+test -f /etc/default/plexmediaserver && . /etc/default/plexmediaserver
+
+# Silently support PLEX_USER if provided as override
+if [ "$PLEX_USER" != "" ]; then
+  export PLEX_MEDIA_SERVER_USER="$PLEX_USER"
+fi
+
+# Create AppSuppDir if not present
+if [ ! -d "$PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR" ]; then
+  mkdir -p "$PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR"
+  if [ ! $? -eq 0 ]; then
+    echo "ERROR: Couldn't create $PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR "
+    exit 1
+  fi
+fi
+
+export LD_LIBRARY_PATH="${PLEX_MEDIA_SERVER_HOME}/lib":"${PLEX_MEDIA_SERVER_HOME}"
+export TMPDIR="${PLEX_MEDIA_SERVER_TMPDIR}"
+
+ulimit -s $PLEX_MEDIA_SERVER_MAX_STACK_SIZE
+
+# Add sleep - for those who launch with this script
+sleep 3
+
+(cd /usr/lib/plexmediaserver; ./Plex\ Media\ Server)

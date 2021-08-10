@@ -1,10 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: netwib, netwox and netwag go together, bump all or bump none
 
-EAPI=5
-inherit multilib toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Toolbox of 217 utilities for testing Ethernet/IP networks"
 HOMEPAGE="
@@ -13,6 +14,7 @@ HOMEPAGE="
 "
 SRC_URI="mirror://sourceforge/ntwox/${P}-src.tgz
 	doc? ( mirror://sourceforge/ntwox/${P}-doc_html.tgz )"
+S="${WORKDIR}"/${P}-src/src
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -26,9 +28,9 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${P}-src/src
-
 src_prepare() {
+	default
+
 	sed -i \
 		-e 's:/man$:/share/man:g' \
 		-e "s:/lib:/$(get_libdir):" \
@@ -57,5 +59,8 @@ DOCS=(
 src_install() {
 	default
 
-	use doc && dohtml -r "${WORKDIR}"/${P}-doc_html/*
+	if use doc ; then
+		docinto html
+		dodoc -r "${WORKDIR}"/${P}-doc_html/*
+	fi
 }

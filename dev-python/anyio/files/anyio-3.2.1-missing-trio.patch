@@ -1,0 +1,125 @@
+From d05f92bddc4b34a8d527f66d5d27513cd91c741a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 24 Jun 2021 09:16:01 +0200
+Subject: [PATCH] Handle missing trio gracefully
+
+Make it possible to use anyio without actually having to install trio.
+This involves modifying get_all_backends() to only return the backends
+that are actually present, and teaching the tests to skip trio if it
+is not importable.
+---
+ src/anyio/_core/_eventloop.py | 13 +++++++++----
+ tests/conftest.py             |  9 ++++++++-
+ tests/test_pytest_plugin.py   |  2 +-
+ tests/test_taskgroups.py      | 10 ++++++++--
+ 4 files changed, 26 insertions(+), 8 deletions(-)
+
+diff --git a/src/anyio/_core/_eventloop.py b/src/anyio/_core/_eventloop.py
+index f2364a3..431a922 100644
+--- a/src/anyio/_core/_eventloop.py
++++ b/src/anyio/_core/_eventloop.py
+@@ -10,8 +10,6 @@ import sniffio
+ # This must be updated when new backends are introduced
+ from ._compat import DeprecatedAwaitableFloat
+ 
+-BACKENDS = 'asyncio', 'trio'
+-
+ T_Retval = TypeVar('T_Retval')
+ threadlocals = threading.local()
+ 
+@@ -106,8 +104,15 @@ def current_time() -> DeprecatedAwaitableFloat:
+ 
+ 
+ def get_all_backends() -> Tuple[str, ...]:
+-    """Return a tuple of the names of all built-in backends."""
+-    return BACKENDS
++    """Return a tuple of the names of all available built-in backends."""
++    backends = ['asyncio']
++    try:
++        import trio
++    except ImportError:
++        pass
++    else:
++        backends.append(trio)
++    return tuple(backends)
+ 
+ 
+ def get_cancelled_exc_class() -> Type[BaseException]:
+diff --git a/tests/conftest.py b/tests/conftest.py
+index f040ac8..5834395 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -8,6 +8,11 @@ import trustme
+ from _pytest.fixtures import SubRequest
+ from trustme import CA
+ 
++try:
++    import trio
++except ImportError:
++    trio = None
++
+ uvloop_marks = []
+ uvloop_policy = None
+ try:
+@@ -30,7 +35,9 @@ pytest_plugins = ['pytester']
+                  id='asyncio'),
+     pytest.param(('asyncio', {'debug': True, 'policy': uvloop_policy}), marks=uvloop_marks,
+                  id='asyncio+uvloop'),
+-    pytest.param('trio')
++    pytest.param('trio',
++                 marks=[pytest.mark.skipif(trio is None,
++                                           reason='trio is not available')])
+ ])
+ def anyio_backend(request: SubRequest) -> Tuple[str, Dict[str, Any]]:
+     return request.param
+diff --git a/tests/test_pytest_plugin.py b/tests/test_pytest_plugin.py
+index bb254a5..d55d511 100644
+--- a/tests/test_pytest_plugin.py
++++ b/tests/test_pytest_plugin.py
+@@ -135,7 +135,7 @@ def test_asyncio(testdir: Testdir) -> None:
+     )
+ 
+     result = testdir.runpytest('-v')
+-    result.assert_outcomes(passed=2, failed=1, errors=2)
++    result.assert_outcomes(passed=2, failed=1, errors=len(get_all_backends()))
+ 
+ 
+ def test_autouse_async_fixture(testdir: Testdir) -> None:
+diff --git a/tests/test_taskgroups.py b/tests/test_taskgroups.py
+index 62a2389..47971c0 100644
+--- a/tests/test_taskgroups.py
++++ b/tests/test_taskgroups.py
+@@ -5,7 +5,6 @@ import time
+ from typing import Any, AsyncGenerator, Coroutine, Dict, Generator, NoReturn, Set
+ 
+ import pytest
+-import trio
+ 
+ import anyio
+ from anyio import (
+@@ -13,6 +12,11 @@ from anyio import (
+     fail_after, get_cancelled_exc_class, move_on_after, sleep, wait_all_tasks_blocked)
+ from anyio.abc import TaskGroup, TaskStatus
+ 
++try:
++    import trio
++except ImportError:
++    trio = None
++
+ if sys.version_info < (3, 7):
+     current_task = asyncio.Task.current_task
+ else:
+@@ -53,7 +57,9 @@ async def test_success() -> None:
+ 
+ @pytest.mark.parametrize('module', [
+     pytest.param(asyncio, id='asyncio'),
+-    pytest.param(trio, id='trio')
++    pytest.param(trio, id='trio',
++                 marks=[pytest.mark.skipif(trio is None,
++                                           reason='trio is not available')])
+ ])
+ def test_run_natively(module: Any) -> None:
+     async def testfunc() -> None:
+-- 
+2.32.0
+

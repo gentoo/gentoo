@@ -9,7 +9,7 @@
 		<email>robbat2@gentoo.org</email>
 		<name>Robin H. Johnson</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>agk@redhat.com</email>
 		<name>Alasdair Kergon</name>
 		<description>Upstream Maintainer (please CC on bugs)</description>

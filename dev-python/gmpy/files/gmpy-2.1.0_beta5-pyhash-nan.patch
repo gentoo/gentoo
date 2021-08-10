@@ -1,0 +1,17 @@
+diff --git a/src/gmpy2_hash.c b/src/gmpy2_hash.c
+index f276a42..1d2bfd1 100644
+--- a/src/gmpy2_hash.c
++++ b/src/gmpy2_hash.c
+@@ -147,7 +147,12 @@ _mpfr_hash(mpfr_t f)
+             }
+         }
+         else {
++#if PY_VERSION_HEX >= 0x030A00A0
++            // Python 3.10
++            return _Py_HashPointer(f);
++#else
+             return _PyHASH_NAN;
++#endif
+         }
+     }
+ 

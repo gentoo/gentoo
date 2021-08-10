@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit multilib eutils flag-o-matic pax-utils toolchain-funcs
+inherit multilib flag-o-matic pax-utils toolchain-funcs
 
 #same order as http://www.sbcl.org/platform-table.html
 BV_X86=1.2.7
@@ -13,7 +13,6 @@ BV_ALPHA=1.0.28
 BV_ARM=1.3.9
 BV_ARM64=1.3.11
 BV_PPC_MACOS=1.0.47
-BV_X86_MACOS=1.1.6
 BV_X64_MACOS=1.2.11
 BV_SPARC_SOLARIS=1.0.23
 BV_X86_SOLARIS=1.2.7
@@ -29,7 +28,6 @@ SRC_URI="mirror://sourceforge/sbcl/${P}-source.tar.bz2
 	alpha? ( mirror://sourceforge/sbcl/${PN}-${BV_ALPHA}-alpha-linux-binary.tar.bz2 )
 	arm? ( mirror://sourceforge/sbcl/${PN}-${BV_ARM}-armhf-linux-binary.tar.bz2 )
 	ppc-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_PPC_MACOS}-powerpc-darwin-binary.tar.bz2 )
-	x86-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_X86_MACOS}-x86-darwin-binary.tar.bz2 )
 	x64-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_X64_MACOS}-x86-64-darwin-binary.tar.bz2 )
 	sparc-solaris? ( mirror://sourceforge/sbcl/${PN}-${BV_SPARC_SOLARIS}-sparc-solaris-binary.tar.bz2 )
 	x86-solaris? ( mirror://sourceforge/sbcl/${PN}-${BV_X86_SOLARIS}-x86-solaris-binary.tar.bz2 )
@@ -37,13 +35,12 @@ SRC_URI="mirror://sourceforge/sbcl/${P}-source.tar.bz2
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
-IUSE="debug doc source +threads +unicode pax_kernel zlib"
+KEYWORDS="amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+IUSE="debug doc source +threads +unicode zlib"
 
 CDEPEND=">=dev-lisp/asdf-3.1:="
 DEPEND="${CDEPEND}
-		doc? ( sys-apps/texinfo >=media-gfx/graphviz-2.26.0 )
-		pax_kernel? ( sys-apps/elfix )"
+		doc? ( sys-apps/texinfo >=media-gfx/graphviz-2.26.0 )"
 RDEPEND="${CDEPEND}
 		!prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.6 ) )"
 
@@ -151,15 +148,6 @@ src_compile() {
 	local bindir="${WORKDIR}"/sbcl-binary
 
 	strip-unsupported-flags ; filter-flags -fomit-frame-pointer
-
-	if use pax_kernel ; then
-		# To disable PaX on hardened systems
-		pax-mark -mr "${bindir}"/src/runtime/sbcl
-
-		# Hack to disable PaX on second GENESIS stage
-		sed -i -e '/^[ \t]*echo \/\/doing warm init - compilation phase$/a\    paxmark.sh -mr \.\/src\/runtime\/sbcl' \
-			"${S}"/make-target-2.sh || die "Cannot disable PaX on second GENESIS runtime"
-	fi
 
 	# clear the environment to get rid of non-ASCII strings, see bug 174702
 	# set HOME for paludis

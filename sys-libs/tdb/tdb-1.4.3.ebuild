@@ -1,34 +1,34 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="threads(+)"
-
 inherit waf-utils multilib-minimal python-single-r1
 
-DESCRIPTION="A simple database API"
+DESCRIPTION="Simple database API"
 HOMEPAGE="https://tdb.samba.org/"
 SRC_URI="https://samba.org/ftp/tdb/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="python"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="test"
 
-RDEPEND="!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
-	python? ( ${PYTHON_DEPS} )"
-DEPEND="
-	${RDEPEND}
-	${PYTHON_DEPS}
-	app-text/docbook-xml-dtd:4.2"
+RDEPEND="
+	!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
+	python? ( ${PYTHON_DEPS} )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}
+	app-text/docbook-xml-dtd:4.2
+"
 
 WAF_BINARY="${S}/buildtools/bin/waf"
-
-RESTRICT="test"
 
 src_prepare() {
 	default

@@ -14,8 +14,8 @@ Gentoo-Bug-URL: https://bugs.gentoo.org/show_bug.cgi?id=255131
 Patch-URL: http://bugs.gentoo.org/attachment.cgi?id=178666&action=view
 Signed-off-by: Thomas Harning <harningt@gmail.com>
 
---- mhash-0.9.9/lib/snefru.c	2009-01-16 00:16:04.000000000 -0500
-+++ mhash-0.9.9-new/lib/snefru.c	2009-01-16 00:16:21.000000000 -0500
+--- a/lib/snefru.c
++++ b/lib/snefru.c
 @@ -859,6 +859,8 @@
  {
  	mutils_word32 i;

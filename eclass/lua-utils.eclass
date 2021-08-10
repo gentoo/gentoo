@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: lua-utils.eclass
@@ -8,7 +8,7 @@
 # @AUTHOR:
 # Marek Szuba <marecki@gentoo.org>
 # Based on python-utils-r1.eclass by Michał Górny <mgorny@gentoo.org> et al.
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Utility functions for packages with Lua parts
 # @DESCRIPTION:
 # A utility eclass providing functions to query Lua implementations,
@@ -17,15 +17,10 @@
 # This eclass neither sets any metadata variables nor exports any phase
 # functions. It can be inherited safely.
 
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6)
-		die "Unsupported EAPI=${EAPI} (too old) for ${ECLASS}"
+case ${EAPI} in
+	7|8)
 		;;
-	7)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ ! ${_LUA_UTILS_R0} ]]; then
@@ -44,6 +39,13 @@ _LUA_ALL_IMPLS=(
 	lua5-4
 )
 readonly _LUA_ALL_IMPLS
+
+# @ECLASS-VARIABLE: _LUA_HISTORICAL_IMPLS
+# @INTERNAL
+# @DESCRIPTION:
+# All historical Lua implementations that are no longer supported.
+_LUA_HISTORICAL_IMPLS=()
+readonly _LUA_HISTORICAL_IMPLS
 
 # @FUNCTION: _lua_set_impls
 # @INTERNAL
@@ -212,7 +214,9 @@ _lua_get_library_file() {
 			die "Invalid implementation: ${impl}"
 			;;
 	esac
+
 	libdir=$($(tc-getPKG_CONFIG) --variable libdir ${impl}) || die
+	libdir="${libdir#${ESYSROOT#${SYSROOT}}}"
 
 	debug-print "${FUNCNAME}: libdir = ${libdir}, libname = ${libname}"
 	echo "${libdir}/${libname}"
@@ -274,6 +278,7 @@ _lua_export() {
 				local val
 
 				val=$($(tc-getPKG_CONFIG) --variable INSTALL_CMOD ${impl}) || die
+				val="${val#${ESYSROOT#${SYSROOT}}}"
 
 				export LUA_CMOD_DIR=${val}
 				debug-print "${FUNCNAME}: LUA_CMOD_DIR = ${LUA_CMOD_DIR}"
@@ -282,6 +287,7 @@ _lua_export() {
 				local val
 
 				val=$($(tc-getPKG_CONFIG) --variable includedir ${impl}) || die
+				val="${val#${ESYSROOT#${SYSROOT}}}"
 
 				export LUA_INCLUDE_DIR=${val}
 				debug-print "${FUNCNAME}: LUA_INCLUDE_DIR = ${LUA_INCLUDE_DIR}"
@@ -298,6 +304,7 @@ _lua_export() {
 				local val
 
 				val=$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD ${impl}) || die
+				val="${val#${ESYSROOT#${SYSROOT}}}"
 
 				export LUA_LMOD_DIR=${val}
 				debug-print "${FUNCNAME}: LUA_LMOD_DIR = ${LUA_LMOD_DIR}"
@@ -342,6 +349,76 @@ _lua_export() {
 				;;
 		esac
 	done
+}
+
+# @FUNCTION: lua_enable_tests
+# @USAGE: <test-runner> <test-directory>
+# @DESCRIPTION:
+# Set up IUSE, RESTRICT, BDEPEND and src_test() for running tests
+# with the specified test runner.  Also copies the current value
+# of RDEPEND to test?-BDEPEND.  The test-runner argument must be one of:
+#
+# - busted: dev-lua/busted
+#
+# Additionally, a second argument can be passed after <test-runner>,
+# so <test-runner> will use that directory to search for tests.
+# If not passed, a default directory of <test-runner> will be used.
+#
+# - busted: spec
+#
+# This function is meant as a helper for common use cases, and it only
+# takes care of basic setup.  You still need to list additional test
+# dependencies manually.  If you have uncommon use case, you should
+# not use it and instead enable tests manually.
+#
+# This function must be called in global scope, after RDEPEND has been
+# declared.  Take care not to overwrite the variables set by it.
+lua_enable_tests() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${#} -ge 1 ]] || die "${FUNCNAME} takes at least one argument: test-runner (test-directory)"
+	local test_directory
+	local test_pkg
+	case ${1} in
+		busted)
+			test_directory="${2:-spec}"
+			test_pkg="dev-lua/busted"
+			if [[ ! ${_LUA_SINGLE_R0} ]]; then
+				eval "lua_src_test() {
+					busted --lua=\"\${ELUA}\" --output=\"plainTerminal\" \"${test_directory}\" || die \"Tests fail with \${ELUA}\"
+				}"
+				src_test() {
+					lua_foreach_impl lua_src_test
+				}
+			else
+				eval "src_test() {
+					busted --lua=\"\${ELUA}\" --output=\"plainTerminal\" \"${test_directory}\" || die \"Tests fail with \${ELUA}\"
+				}"
+			fi
+			;;
+		*)
+			die "${FUNCNAME}: unsupported argument: ${1}"
+	esac
+
+	local test_deps=${RDEPEND}
+	if [[ -n ${test_pkg} ]]; then
+		if [[ ! ${_LUA_SINGLE_R0} ]]; then
+			test_deps+=" ${test_pkg}[${LUA_USEDEP}]"
+		else
+			test_deps+=" $(lua_gen_cond_dep "
+				${test_pkg}[\${LUA_USEDEP}]
+			")"
+		fi
+	fi
+	if [[ -n ${test_deps} ]]; then
+		IUSE+=" test"
+		RESTRICT+=" !test? ( test )"
+		BDEPEND+=" test? ( ${test_deps} )"
+	fi
+
+	# we need to ensure successful return in case we're called last,
+	# otherwise Portage may wrongly assume sourcing failed
+	return 0
 }
 
 # @FUNCTION: lua_get_CFLAGS

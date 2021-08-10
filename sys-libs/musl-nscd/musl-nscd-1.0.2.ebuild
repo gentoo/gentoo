@@ -1,14 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit systemd
+inherit systemd tmpfiles
 
 DESCRIPTION="musl-nscd is an implementation of the NSCD protocol for the musl libc"
 HOMEPAGE="https://github.com/pikhq/musl-nscd"
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/pikhq/musl-nscd"
 	EGIT_BRANCH=master
@@ -25,8 +25,10 @@ DEPEND="
 	!sys-libs/glibc
 	!sys-libs/uclibc"
 
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+
 src_prepare() {
-	eapply_user
+	default
 
 	sed -i '/LDFLAGS_AUTO=-s/d' configure || die 'Cannot patch configure file'
 }
@@ -39,8 +41,14 @@ src_install() {
 
 		newinitd "${FILESDIR}"/nscd.initd nscd
 		systemd_dounit "${FILESDIR}"/nscd.service
-		systemd_newtmpfilesd "${FILESDIR}"/nscd.tmpfilesd nscd.conf
+		newtmpfiles "${FILESDIR}"/nscd.tmpfilesd nscd.conf
 
 		dodoc README
+	fi
+}
+
+pkg_postinst() {
+	if ! use minimal; then
+		tmpfiles_process nscd.conf
 	fi
 }

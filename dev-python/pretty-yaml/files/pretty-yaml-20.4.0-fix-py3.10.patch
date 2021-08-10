@@ -1,0 +1,28 @@
+From 707e14bd714e91dc53295393e2c8eea257aced5a Mon Sep 17 00:00:00 2001
+From: Louis Sautier <sautier.louis@gmail.com>
+Date: Sun, 8 Aug 2021 13:44:52 +0200
+Subject: [PATCH] Fix tests for Python 3.10: abstract base classes have moved
+
+As mentioned in the documentation:
+"Deprecated since version 3.3, will be removed in version 3.10: Moved
+Collections Abstract Base Classes to the collections.abc module. For
+backwards compatibility, they continue to be visible in this module through
+Python 3.9."
+---
+ pyaml/tests/dump.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/pyaml/tests/dump.py b/pyaml/tests/dump.py
+index 882a8e8..e1a93ba 100644
+--- a/pyaml/tests/dump.py
++++ b/pyaml/tests/dump.py
+@@ -2,7 +2,8 @@
+ from __future__ import unicode_literals, print_function
+ 
+ import itertools as it, operator as op, functools as ft
+-from collections import Mapping, OrderedDict, namedtuple
++from collections import OrderedDict, namedtuple
++from collections.abc import Mapping
+ import os, sys, io, yaml, unittest
+ 
+ if sys.version_info.major > 2: unicode = str

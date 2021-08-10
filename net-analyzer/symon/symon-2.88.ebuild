@@ -1,31 +1,27 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils perl-module toolchain-funcs
+EAPI=7
+
+inherit perl-module toolchain-funcs
 
 DESCRIPTION="Performance and information monitoring tool"
 HOMEPAGE="https://wpd.home.xs4all.nl/symon/"
 SRC_URI="https://wpd.home.xs4all.nl/symon/philes/${P}.tar.gz"
+S="${WORKDIR}"/${PN}
 
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
 IUSE="perl +symon symux"
-REQUIRED_USE="
-	|| ( perl symon symux )
-"
+REQUIRED_USE="|| ( perl symon symux )"
 
+BDEPEND="sys-devel/pmake"
 RDEPEND="
 	perl? ( dev-lang/perl )
 	symux? ( net-analyzer/rrdtool )
 "
-DEPEND="
-	${RDEPEND}
-	sys-devel/pmake
-"
-
-S=${WORKDIR}/${PN}
+DEPEND="${RDEPEND}"
 
 # Deletes the directory passed as an argument from the internal pmake
 # variable SUBDIR.
@@ -84,7 +80,6 @@ src_install() {
 		doman symux/symux.8
 		dosbin symux/symux
 
-		dodir /usr/share/symon
 		insinto /usr/share/symon
 		doins symux/c_smrrds.sh
 		fperms a+x /usr/share/symon/c_smrrds.sh

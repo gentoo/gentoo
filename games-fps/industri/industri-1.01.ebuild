@@ -1,13 +1,15 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs games
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Quake/Tenebrae based, single player game"
 HOMEPAGE="http://industri.sourceforge.net/"
 SRC_URI="mirror://sourceforge/industri/industri_BIN-${PV}-src.tar.gz
 	mirror://sourceforge/industri/industri-1.00.zip"
+S="${WORKDIR}"/industri_BIN
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,15 +23,24 @@ RDEPEND="virtual/opengl
 	x11-libs/libXxf86vm
 	media-libs/libpng:0
 	cdinstall? ( games-fps/quake1-data )"
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	x11-base/xorg-proto
-	app-arch/unzip"
+"
+BDEPEND="app-arch/unzip"
 
-S=${WORKDIR}/industri_BIN
+PATCHES=(
+	"${FILESDIR}"/${P}-exec-stack.patch
+	"${FILESDIR}"/${P}-ldflags.patch
+	"${FILESDIR}"/${P}-glext.patch
+)
 
 src_prepare() {
-	mv linux/Makefile{.i386linux,}
-	sed -i -e "s:-mpentiumpro.*:${CFLAGS} \\\\:" linux/Makefile || die
+	mv linux/Makefile{.i386linux,} || die
+	sed -i \
+		-e "s:-mpentiumpro.*:${CFLAGS} \\\\:" \
+		-e "s:CC.*= /usr/bin/gcc:CC?=/usr/bin/gcc:" \
+		linux/Makefile || die
 
 	# Remove duplicated typedefs #71841
 	for typ in PFNGLFLUSHVERTEXARRAYRANGEAPPLEPROC PFNGLVERTEXARRAYRANGEAPPLEPROC ; do
@@ -44,34 +55,35 @@ src_prepare() {
 		-e 's:png_set_gray_1_2_4_to_8:png_set_expand_gray_1_2_4_to_8:g' \
 		gl_warp.c || die
 
-	epatch "${FILESDIR}"/${P}-exec-stack.patch \
-		"${FILESDIR}"/${P}-ldflags.patch \
-		"${FILESDIR}"/${P}-glext.patch
+	default
 }
 
 src_compile() {
+	tc-export CC
+
 	emake \
 		-C linux \
-		MASTER_DIR="${GAMES_DATADIR}"/quake1 \
+		MASTER_DIR=/usr/share/quake1 \
 		build_release
 }
 
 src_install() {
-	newgamesbin linux/release*/bin/industri.run industri
-	dogamesbin "${FILESDIR}"/industri.pretty
+	newbin linux/release*/bin/industri.run industri
+	dobin "${FILESDIR}"/industri.pretty
+
 	insinto /usr/share/icons
 	doins industri.ico quake.ico
 	dodoc linux/README
-	cd "${WORKDIR}"/${PN}
+
+	cd "${WORKDIR}"/${PN} || die
 	dodoc *.txt
-	insinto "${GAMES_DATADIR}"/quake1/${PN}
+
+	insinto /usr/share/quake1/${PN}
 	doins *.pak *.cfg
-	prepgamesdirs
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	if ! use cdinstall ; then
-		elog "You need to copy pak0.pak to ${GAMES_DATADIR}/quake1 to play."
+		elog "You need to copy pak0.pak to /usr/share/quake1 to play."
 	fi
 }

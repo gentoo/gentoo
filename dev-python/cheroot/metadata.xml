@@ -11,7 +11,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">Cheroot</remote-id>
+		<remote-id type="pypi">cheroot</remote-id>
 		<remote-id type="github">cherrypy/cheroot</remote-id>
 	</upstream>
 </pkgmetadata>

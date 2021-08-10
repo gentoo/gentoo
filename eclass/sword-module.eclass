@@ -1,16 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: sword-module.eclass
 # @MAINTAINER:
 # Marek Szuba <marecki@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Simplify installation of SWORD modules
 # @DESCRIPTION:
 # This eclass provides dependencies, ebuild environment and the src_install
 # function common to all app-text/sword modules published by the SWORD Project.
 #
-# Note that as of 2020-07-26 module archives published by SWORD are still
+# Note that as of 2021-06-16 module archives published by SWORD are still
 # not versioned and it is necessary to look at respective module pages in
 # order to see what versions the currently available files are. Once
 # a module file has been replicated to the Gentoo mirror network it will be
@@ -23,7 +23,7 @@
 # sword-Personal-1.0.ebuild, a typical ebuild using sword-module.eclass:
 #
 # @CODE
-# EAPI=7
+# EAPI=8
 #
 # SWORD_MINIMUM_VERSION="1.5.1a"
 #
@@ -40,7 +40,7 @@ case ${EAPI:-0} in
 	0|1|2|3|4|5|6)
 		die "Unsupported EAPI=${EAPI} (too old) for ${ECLASS}"
 		;;
-	7)
+	7|8)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"

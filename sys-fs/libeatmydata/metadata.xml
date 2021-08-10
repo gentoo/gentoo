@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>slyfox@gentoo.org</email>
-		<name>Sergei Trofimovich</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		eatmydata: library and utilities designed to disable fsync and friends.
 		Used as LD_PRELOAD hack to hijack fsync() and open(O_SYNC) calls.

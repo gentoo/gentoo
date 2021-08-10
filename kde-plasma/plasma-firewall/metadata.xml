@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="firewalld">Build <pkg>net-firewall/firewalld</pkg> backend</flag>
+		<flag name="ufw">Build <pkg>net-firewall/ufw</pkg> backend</flag>
+	</use>
+</pkgmetadata>

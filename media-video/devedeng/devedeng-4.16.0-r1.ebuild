@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit distutils-r1 xdg
 
@@ -15,14 +16,15 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-python/pycairo[${PYTHON_USEDEP}]
+RDEPEND="
+	app-cdr/cdrtools
+	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3
 	|| ( media-video/vlc media-video/mpv media-video/mplayer )
 	media-video/ffmpeg
 	media-video/dvdauthor
 	media-video/vcdimager
-	virtual/cdrtools
 	|| ( app-cdr/brasero kde-apps/k3b app-cdr/xfburn )"
 
 DEPEND="${PYTHON_DEPS}"

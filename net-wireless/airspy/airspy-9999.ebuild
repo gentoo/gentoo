@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils udev
+inherit cmake udev
 
 DESCRIPTION="Usemode driver and associated tools for airspy"
 HOMEPAGE="http://www.airspy.com"
@@ -29,11 +29,11 @@ src_configure() {
 	local mycmakeargs=(
 		-DINSTALL_UDEV_RULES=$(usex udev)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use udev; then
 		udev_newrules "${ED}/etc/udev/rules.d/52-airspy.rules" 52-airspy.rules

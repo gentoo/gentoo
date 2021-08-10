@@ -1,0 +1,41 @@
+From 29636baff0f0cf8d769aa75b1c458b96cf83b828 Mon Sep 17 00:00:00 2001
+From: Ismael Asensio <isma.af@gmail.com>
+Date: Sun, 9 May 2021 21:10:44 +0200
+Subject: [PATCH] search/facetswidget: Check for protocol before trying to
+ fetch tags
+
+This was causing an error when trying to list items from the
+non-existent `tags:` protocol.
+
+BUG: 435586
+FIXED-IN: 21.04.1
+---
+ src/search/dolphinfacetswidget.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/search/dolphinfacetswidget.cpp b/src/search/dolphinfacetswidget.cpp
+index d4079f1eb..e8a43101f 100644
+--- a/src/search/dolphinfacetswidget.cpp
++++ b/src/search/dolphinfacetswidget.cpp
+@@ -8,6 +8,7 @@
+ #include "dolphinfacetswidget.h"
+ 
+ #include <KLocalizedString>
++#include <KProtocolInfo>
+ 
+ #include <QComboBox>
+ #include <QDate>
+@@ -245,7 +246,9 @@ void DolphinFacetsWidget::updateTagsSelector()
+ void DolphinFacetsWidget::updateTagsMenu()
+ {
+     updateTagsMenuItems({}, {});
+-    m_tagsLister.openUrl(QUrl(QStringLiteral("tags:/")), KCoreDirLister::OpenUrlFlag::Reload);
++    if (KProtocolInfo::isKnownProtocol(QStringLiteral("tags"))) {
++        m_tagsLister.openUrl(QUrl(QStringLiteral("tags:/")), KCoreDirLister::OpenUrlFlag::Reload);
++    }
+ }
+ 
+ void DolphinFacetsWidget::updateTagsMenuItems(const QUrl&, const KFileItemList& items)
+-- 
+GitLab
+

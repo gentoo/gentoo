@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils java-pkg-2 multilib
+inherit epatch java-pkg-2 multilib
 
 MY_P=${P/gnu-/}
 DESCRIPTION="Free core class libraries for use with Java VMs and compilers"
@@ -12,7 +12,7 @@ HOMEPAGE="https://www.gnu.org/software/classpath"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0.98"
-KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux"
 
 IUSE="alsa debug doc dssi examples gconf +gjdoc gmp gtk xml"
 REQUIRED_USE="doc? ( gjdoc )"
@@ -109,7 +109,7 @@ src_install() {
 
 	if use doc; then
 		# Strangely the Makefile doesn't install these.
-		insinto "/usr/${PN}-${SLOT}/share/classpath/api"
+		insinto /usr/${PN}-${SLOT}/share/classpath/api
 		doins -r doc/api/html/*
 	fi
 }

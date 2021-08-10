@@ -1,0 +1,26 @@
+diff --git a/libtmux/session.py b/libtmux/session.py
+index cd6af00..e4c02e2 100644
+--- a/libtmux/session.py
++++ b/libtmux/session.py
+@@ -263,7 +263,7 @@ class Session(TmuxMappingObject, TmuxRelationalObject, EnvironmentMixin):
+             if isinstance(target_window, int):
+                 target = '-t%s:%d' % (self.name, target_window)
+             else:
+-                target = '-t%s' % target_window
++                target = '-t%s:%s' % (self.name, target_window)
+ 
+         proc = self.cmd('kill-window', target)
+ 
+diff --git a/libtmux/window.py b/libtmux/window.py
+index e62e8df..f452575 100644
+--- a/libtmux/window.py
++++ b/libtmux/window.py
+@@ -366,7 +366,7 @@ class Window(TmuxMappingObject, TmuxRelationalObject):
+         if target_pane in ['-l', '-U', '-D', '-L', '-R']:
+             proc = self.cmd('select-pane', '-t%s' % self.id, target_pane)
+         else:
+-            proc = self.cmd('select-pane', '-t%s' % target_pane)
++            proc = self.cmd('select-pane', '-t%%%s' % target_pane)
+ 
+         if proc.stderr:
+             raise exc.LibTmuxException(proc.stderr)

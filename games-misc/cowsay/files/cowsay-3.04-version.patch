@@ -1,5 +1,5 @@
---- rank-amateur-cowsay-cowsay-3.04/cowsay.orig	2019-10-19 08:44:59.442928870 +0200
-+++ rank-amateur-cowsay-cowsay-3.04/cowsay	2019-10-19 08:45:16.165928638 +0200
+--- a/cowsay
++++ b/cowsay
 @@ -1,7 +1,7 @@
  #!/usr/bin/perl
  

@@ -1,10 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
-inherit cmake-utils python-single-r1
+PYTHON_COMPAT=( python3_{7,8,9} )
+inherit cmake python-single-r1
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
@@ -19,15 +19,16 @@ HOMEPAGE="https://www.intra2net.com/en/developer/libftdi/"
 
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="cxx doc examples python"
+IUSE="cxx doc examples python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+BDEPEND="
+	doc? ( app-doc/doxygen )
+	python? ( dev-lang/swig )"
 RDEPEND="virtual/libusb:0
 	cxx? ( dev-libs/boost )
 	python? ( ${PYTHON_DEPS} )"
-DEPEND="${RDEPEND}
-	python? ( dev-lang/swig )
-	doc? ( app-doc/doxygen )"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cmake-include.patch
@@ -48,7 +49,7 @@ src_prepare() {
 		-e '/SET(LIB_SUFFIX /d' \
 		CMakeLists.txt || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -59,23 +60,27 @@ src_configure() {
 		-DPYTHON_BINDINGS=$(usex python)
 		-DCMAKE_SKIP_BUILD_RPATH=ON
 	)
-	cmake-utils_src_configure
+
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	use python && python_optimize
 	dodoc ChangeLog README
 
 	if use doc ; then
 		# Clean up crap man pages. #356369
-		rm -vf "${CMAKE_BUILD_DIR}"/doc/man/man3/{_,usb_,deprecated}*
+		rm -vf "${BUILD_DIR}"/doc/man/man3/{_,usb_,deprecated}* || die
 
-		doman "${CMAKE_BUILD_DIR}"/doc/man/man3/*
-		dodoc -r "${CMAKE_BUILD_DIR}"/doc/html
+		doman "${BUILD_DIR}"/doc/man/man3/*
+		dodoc -r "${BUILD_DIR}"/doc/html
 	fi
+
 	if use examples ; then
 		docinto examples
 		dodoc examples/*.c
 	fi
+
+	use static-libs || rm "${ED}"/usr/$(get_libdir)/${PN}.a || die
 }

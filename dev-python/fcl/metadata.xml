@@ -10,6 +10,7 @@
         library for performing proximity and collision queries on pairs of geometric models.
     </longdescription>
     <upstream>
+        <bugs-to>https://github.com/BerkeleyAutomation/python-fcl/issues</bugs-to>
         <remote-id type="github">BerkeleyAutomation/python-fcl</remote-id>
         <remote-id type="pypi">python-fcl</remote-id>
     </upstream>

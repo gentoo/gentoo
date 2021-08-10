@@ -11,7 +11,6 @@
 	</maintainer>
 	<use>
 		<flag name="libcxxabi">Build on top of <pkg>sys-libs/libcxxabi</pkg> instead of gcc's libsupc++ (avoids depending on gcc).</flag>
-		<flag name="libcxxrt">Build on top of libcxxrt instead of gcc's libsupc++ (avoids depending on gcc).</flag>
 		<flag name="libunwind">Use libunwind instead of libgcc_s for stack unwinding, thus avoiding dependence on gcc.</flag>
 	</use>
 </pkgmetadata>

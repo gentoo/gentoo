@@ -1,39 +1,45 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils multilib toolchain-funcs
+inherit toolchain-funcs
 
 MY_P=purify_v${PV}-source
-
 DESCRIPTION="Rom purifier for higan"
 HOMEPAGE="http://byuu.org/higan/"
 SRC_URI="https://higan.googlecode.com/files/${MY_P}.tar.xz"
+S="${WORKDIR}"/${MY_P}/purify
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	dev-games/higan-ananke
 	x11-libs/gtk+:2
 	x11-libs/libX11"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}"/${MY_P}/purify
+PATCHES=(
+	"${FILESDIR}"/${P}-QA.patch
+	"${FILESDIR}"/${PN}-03-respect-CXX.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-QA.patch
+	default
+
 	sed -i \
 		-e "/handle/s#/usr/local/lib#/usr/$(get_libdir)#" \
 		nall/dl.hpp || die
 }
 
 src_compile() {
+	tc-export CXX
+
 	emake \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)"
 		platform="x" \
 		compiler="$(tc-getCXX)" \
 		phoenix="gtk"

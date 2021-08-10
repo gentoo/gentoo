@@ -1,5 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Thomas Deutschmann <whissi@gentoo.org> (2021-05-11)
+# Satisfy REQUIRED_USE on arm
+app-emulation/xen debug
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-06-18)
 # Force host target

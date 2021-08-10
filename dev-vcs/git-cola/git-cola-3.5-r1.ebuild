@@ -1,10 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_8 )
 DISTUTILS_SINGLE_IMPL=true
+DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1 readme.gentoo-r1 virtualx xdg-utils
 
 DESCRIPTION="The highly caffeinated git GUI"
@@ -13,28 +14,31 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86"
 IUSE="doc test"
 
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygments[${PYTHON_MULTI_USEDEP}]
-		dev-python/QtPy[gui,${PYTHON_MULTI_USEDEP}]
-		dev-python/send2trash[${PYTHON_MULTI_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/pygments[${PYTHON_USEDEP}]
+		dev-python/PyQt5[network,${PYTHON_USEDEP}]
+		dev-python/QtPy[gui,${PYTHON_USEDEP}]
+		dev-python/send2trash[${PYTHON_USEDEP}]
 	')
 	dev-vcs/git"
 BDEPEND="sys-devel/gettext
 	$(python_gen_cond_dep "
-		doc? ( dev-python/sphinx[\${PYTHON_MULTI_USEDEP}] )
+		doc? ( dev-python/sphinx[\${PYTHON_USEDEP}] )
 		test? (
 			${VIRTUALX_DEPEND}
-			dev-python/mock[\${PYTHON_MULTI_USEDEP}]
-			dev-python/nose[\${PYTHON_MULTI_USEDEP}]
+			dev-python/mock[\${PYTHON_USEDEP}]
+			dev-python/nose[\${PYTHON_USEDEP}]
 		)
 	")"
+
+PATCHES=( "${FILESDIR}/${P}-py3.8-line-buffering.patch" )
 
 python_prepare_all() {
 	# make sure that tests also use the system provided QtPy
@@ -73,6 +77,7 @@ python_compile_all() {
 }
 
 python_test() {
+	GIT_CONFIG_NOSYSTEM=true \
 	PYTHONPATH="${S}:${S}/build/lib:${PYTHONPATH}" LC_ALL="en_US.utf8" \
 	virtx nosetests --verbose --with-id --with-doctest \
 		--exclude=sphinxtogithub
@@ -92,6 +97,9 @@ python_install_all() {
 
 	python_fix_shebang "${ED}/usr/share/git-cola/bin/git-xbase" "${ED}"/usr/bin/git-cola
 	python_optimize "${ED}/usr/share/git-cola/lib/cola"
+
+	# fix appdata installation
+	mv "${D}"/usr/share/appdata "${D}"/usr/share/metainfo || die "moving appdata failed"
 
 	use doc || HTML_DOCS=( "${FILESDIR}"/index.html )
 

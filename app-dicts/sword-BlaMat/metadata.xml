@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		The Gospel of Matthew in Blackfoot, published 1890 by the British and Foreign Bible Society, translated by Rev. John William Tims. This text was transcribed by The Digital Bible Society (http://dbs.org)
 	</longdescription>

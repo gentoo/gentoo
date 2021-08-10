@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>waebbl-gentoo@posteo.net</email>
+		<name>Bernd Waibel</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="addonmgr">
+			Build the addon manager module for automatic handling of 3rd 
+			party addons
+		</flag>
+		<flag name="cloud">
+			Build the Cloud workbench, to access cloud providers (mostly
+			Amazon S3).
+		</flag>
+		<flag name="fem">
+			Build the FEM module and workbench which provides Finite Element 
+			Analysis (FEA) workflows
+		</flag>
+		<flag name="headless">
+			Build FreeCAD without a GUI, usable for server-side instances.
+			The Python modules are still available, without their GUI parts though.
+		</flag>
+		<flag name="idf">
+			Build the IDF module to provide file exchange capabilities with
+			IDF files
+		</flag>
+		<flag name="image">
+			Build the image module and workbench for working with bitmap
+			images
+		</flag>
+		<flag name="inspection">
+			Build the inspection workbench which gives you specific tools
+			for examination of shapes (experimental)
+		</flag>
+		<flag name="material">
+			Build the material module and workbench to work with materials
+		</flag>
+		<flag name="openscad">
+			Build the OpenSCAD module for interoperability with OpenSCAD 
+			and repairing Constructive Solid Geometry (CSG) history
+		</flag>
+		<flag name="part-design">
+			Build the part design module and workbench for build part shapes
+			from sketches
+		</flag>
+		<flag name="path"><!-- FIXME: auto-enable through robot? -->
+			Build the path module and workbench to procude G-Code instructions 
+			for CNC
+		</flag>
+		<flag name="pcl">
+			Use external <pkg>sci-libs/pcl</pkg> for point clouds support.
+		</flag>
+		<flag name="plot">
+			Build the internal plot workbench. NOTE: This conflicts with the
+			external plot workbench, which you can add via the Addon Manager!
+		</flag>
+		<flag name="points">
+			Build the points module and workbench for working with point clouds
+		</flag>
+		<flag name="raytracing">
+			Build the raytracing module and workbench for raytracing and rendering
+		</flag>
+		<flag name="robot">
+			Build the robot module and workbench for studying robot movements
+		</flag>
+		<flag name="ship">
+			Build the ship module and workbench which works over ship entities, 
+			that must be created on top of provided geometry. NOTE: This conflicts
+			with the external ship workbench, which you can add via the Addon Manager!
+		</flag>
+		<flag name="show">
+			Build the show module, a helper module for visibility automation
+		</flag>
+		<flag name="surface">
+			Build the surface module and workbench
+		</flag>
+		<flag name="techdraw">
+			Build the techdraw module and workbench, a more advanced and 
+			feature-rich successor of the drawing workbench
+		</flag>
+		<flag name="tux">
+			Build the Tux module
+		</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://www.freecadweb.org/tracker/</bugs-to>
+		<remote-id type="github">FreeCAD/FreeCAD</remote-id>
+		<doc lang="en">https://www.freecadweb.org/wiki/MainPage</doc>
+	</upstream>
+</pkgmetadata>

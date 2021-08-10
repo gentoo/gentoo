@@ -1,0 +1,29 @@
+From cbb61fb81955a8cdbb5cdeedc9bcfffa39a5f270 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Thu, 22 Apr 2021 21:04:49 +0200
+Subject: [PATCH] Relax a test regex to match new enum repr in Python 3.10.0a7+
+ (#186)
+
+bpo-40066: Enum: adjust repr() to show only enum and member name (not value,
+nor angle brackets) and str() to show only member name.
+https://bugs.python.org/issue40066
+---
+ test/test_pgen2.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/test_pgen2.py b/test/test_pgen2.py
+index 9b0dd34..85ccacf 100644
+--- a/test/test_pgen2.py
++++ b/test/test_pgen2.py
+@@ -339,7 +339,7 @@ def test_left_recursion():
+ @pytest.mark.parametrize(
+     'grammar, error_match', [
+         ['foo: bar | baz\nbar: NAME\nbaz: NAME\n',
+-         r"foo is ambiguous.*given a PythonTokenTypes\.NAME.*bar or baz"],
++         r"foo is ambiguous.*given a (PythonTokenTypes\.)?NAME.*bar or baz"],
+         ['''foo: bar | baz\nbar: 'x'\nbaz: "x"\n''',
+          r"foo is ambiguous.*given a ReservedString\(x\).*bar or baz"],
+         ['''foo: bar | 'x'\nbar: 'x'\n''',
+-- 
+2.32.0
+

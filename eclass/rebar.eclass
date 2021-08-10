@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rebar.eclass
@@ -6,7 +6,7 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Amadeusz Żołnowski <aidecoe@gentoo.org>
-# @SUPPORTED_EAPIS: 6
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Build Erlang/OTP projects using dev-util/rebar.
 # @DESCRIPTION:
 # An eclass providing functions to build Erlang/OTP projects using
@@ -23,7 +23,7 @@ case "${EAPI:-0}" in
 	0|1|2|3|4|5)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	6)
+	6|7)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -33,9 +33,14 @@ esac
 EXPORT_FUNCTIONS src_prepare src_compile src_test src_install
 
 RDEPEND="dev-lang/erlang:="
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/rebar
-	>=sys-apps/gawk-4.1"
+	>=sys-apps/gawk-4.1
+"
+if [[ ${EAPI} == 6 ]]; then
+	DEPEND+="${BDEPEND}"
+fi
 
 # @ECLASS-VARIABLE: REBAR_APP_SRC
 # @DESCRIPTION:
@@ -53,19 +58,17 @@ get_erl_libs() {
 # @FUNCTION: _rebar_find_dep
 # @INTERNAL
 # @USAGE: <project_name>
-# @RETURN: full path with EPREFIX to a Erlang package/project on success,
-# code 1 when dependency is not found and code 2 if multiple versions of
-# dependency are found.
+# @RETURN: 0 success, 1 dependency not found, 2 multiple versions found
 # @DESCRIPTION:
 # Find a Erlang package/project by name in Erlang lib directory. Project
 # directory is usually suffixed with version. It is matched to '<project_name>'
 # or '<project_name>-*'.
 _rebar_find_dep() {
-	local pn="$1"
+	local pn="${1}"
 	local p
 	local result
 
-	pushd "${EPREFIX}$(get_erl_libs)" >/dev/null || return 1
+	pushd "${EPREFIX%/}/$(get_erl_libs)" >/dev/null || return 1
 	for p in ${pn} ${pn}-*; do
 		if [[ -d ${p} ]]; then
 			# Ensure there's at most one matching.
@@ -104,7 +107,7 @@ erebar() {
 
 	(( $# > 0 )) || die "erebar: at least one target is required"
 
-	local -x ERL_LIBS="${EPREFIX}$(get_erl_libs)"
+	local -x ERL_LIBS="${EPREFIX%/}/$(get_erl_libs)"
 	[[ ${1} == eunit ]] && local -x ERL_LIBS="."
 
 	rebar -v skip_deps=true "$@" || die -n "rebar $@ failed"
@@ -123,9 +126,9 @@ erebar() {
 rebar_fix_include_path() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local pn="$1"
+	local pn="${1}"
 	local rebar_config="${2:-rebar.config}"
-	local erl_libs="${EPREFIX}$(get_erl_libs)"
+	local erl_libs="${EPREFIX%/}/$(get_erl_libs)"
 	local p
 
 	p="$(_rebar_find_dep "${pn}")" \
@@ -214,7 +217,7 @@ rebar_src_prepare() {
 rebar_src_configure() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local -x ERL_LIBS="${EPREFIX}$(get_erl_libs)"
+	local -x ERL_LIBS="${EPREFIX%/}/$(get_erl_libs)"
 	default
 }
 
@@ -254,7 +257,7 @@ rebar_src_install() {
 	[[ -d bin ]] && for bin in bin/*; do dobin "$bin"; done
 
 	if [[ -d priv ]]; then
-		cp -pR priv "${ED}${dest}/" || die "failed to install priv/"
+		cp -pR priv "${ED%/}/${dest}/" || die "failed to install priv/"
 	fi
 
 	einstalldocs

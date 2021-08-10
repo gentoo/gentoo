@@ -1,5 +1,5 @@
---- Makefile.orig	2013-01-01 20:19:30.061522843 +0400
-+++ Makefile	2013-01-01 20:20:00.356551208 +0400
+--- a/Makefile	2013-01-01 20:19:30.061522843 +0400
++++ b/Makefile	2013-01-01 20:20:00.356551208 +0400
 @@ -2,19 +2,7 @@
  # system.  Most of the configurable stuff is in config.h
  #

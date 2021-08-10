@@ -1,9 +1,0 @@
-diff -r -U2 curtsies-0.3.0.orig/setup.py curtsies-0.3.0/setup.py
---- curtsies-0.3.0.orig/setup.py	2018-02-14 05:54:06.000000000 +0700
-+++ curtsies-0.3.0/setup.py	2019-02-26 17:10:07.076471372 +0700
-@@ -42,5 +42,4 @@
-           'blessings>=1.5',
-           'wcwidth>=0.1.4',
--          'typing',
-       ],
-       tests_require = [

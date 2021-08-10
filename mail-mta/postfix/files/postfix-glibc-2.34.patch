@@ -1,0 +1,12 @@
+--- a/src/util/sys_defs.h	2020-05-21 16:34:23.000000000 +0300
++++ b/src/util/sys_defs.h	2021-08-07 19:14:20.000000000 +0300
+@@ -827,6 +827,9 @@
+ #define HAVE_POSIX_GETPW_R
+ #endif
+ #endif
++#if HAVE_GLIBC_API_VERSION_SUPPORT(2, 34)
++#define HAS_CLOSEFROM
++#endif
+ 
+ #endif
+ 

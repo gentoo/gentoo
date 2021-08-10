@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,15 +12,14 @@ SRC_URI="https://jedsoft.org/releases/${PN}/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
-IUSE="canlock libressl nls ssl uudeview"
+IUSE="canlock nls ssl uudeview"
 
 RDEPEND="app-arch/sharutils
 	>=sys-libs/slang-2.2.3
 	virtual/mta
 	canlock? ( net-libs/canlock )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 	uudeview? ( dev-libs/uulib )"
 DEPEND="${RDEPEND}

@@ -1,29 +1,28 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Unpacks BioZip archives"
 HOMEPAGE="http://biounzip.sourceforge.net/"
 SRC_URI="mirror://sourceforge/biounzip/${P}.tar.bz2"
+S="${WORKDIR}"/${P/a/}
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="sys-libs/zlib"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${P/a/}
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-64bit.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-64bit.patch
+)
 
 src_compile() {
-	$(tc-getCC) ${CFLAGS} ${LDFLAGS} -o ${PN} *.c -lz || die
+	$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -o ${PN} *.c -lz || die
 }
 
 src_install() {

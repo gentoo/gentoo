@@ -1,0 +1,93 @@
+From 445b5bd7e19245c08de6a0e669dd9211d2597bfa Mon Sep 17 00:00:00 2001
+From: Olaf Meeuwissen <paddy-hack@member.fsf.org>
+Date: Fri, 1 Jan 2021 15:53:11 +0900
+Subject: [PATCH] Drop use of obsoleted autoconf AC_HEADER_STDC macro.  Fixes
+ #409
+
+Use of the STDC_HEADER pre-processor macro that the autoconf macro
+used to define has been removed.  Conditionalized code is now used
+unconditionally.  This should be fine as the macro checks for ANSI
+C, i.e. C89 (ISO C90), compliant headers.  We already require C99.
+---
+ acinclude.m4        |  3 ---
+ lib/md5.c           | 10 ++--------
+ sanei/sanei_pa4s2.c |  8 +++-----
+ sanei/sanei_pp.c    |  8 +++-----
+ 4 files changed, 8 insertions(+), 21 deletions(-)
+
+diff --git a/acinclude.m4 b/acinclude.m4
+index e10f8ceb2..9393278c2 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -73,9 +73,6 @@ AC_DEFUN([SANE_CHECK_MISSING_HEADERS],
+   if test "${ac_cv_header_unistd_h}" != "yes" ; then
+     MISSING_HEADERS="${MISSING_HEADERS}\"unistd.h\" "
+   fi
+-  if test "${ac_cv_header_stdc}" != "yes" ; then
+-    MISSING_HEADERS="${MISSING_HEADERS}\"ANSI C headers\" "
+-  fi
+   if test "${MISSING_HEADERS}" != "" ; then
+     echo "*** The following essential header files couldn't be found:"
+     echo "*** ${MISSING_HEADERS}"
+diff --git a/lib/md5.c b/lib/md5.c
+index 923a17c78..009c6d9a0 100644
+--- a/lib/md5.c
++++ b/lib/md5.c
+@@ -26,14 +26,8 @@
+ 
+ #include <sys/types.h>
+ 
+-#if STDC_HEADERS || defined _LIBC
+-# include <stdlib.h>
+-# include <string.h>
+-#else
+-# ifndef HAVE_MEMCPY
+-#  define memcpy(d, s, n) bcopy ((s), (d), (n))
+-# endif
+-#endif
++#include <stdlib.h>
++#include <string.h>
+ 
+ #include "md5.h"
+ 
+diff --git a/sanei/sanei_pa4s2.c b/sanei/sanei_pa4s2.c
+index b1d95fe02..5365151fd 100644
+--- a/sanei/sanei_pa4s2.c
++++ b/sanei/sanei_pa4s2.c
+@@ -150,11 +150,9 @@ static int sanei_pa4s2_dbg_init_called = SANE_FALSE;
+ 
+ #endif /* NDEBUG */
+ 
+-#if defined(STDC_HEADERS)
+-# include <errno.h>
+-# include <stdio.h>
+-# include <stdlib.h>
+-#endif
++#include <errno.h>
++#include <stdio.h>
++#include <stdlib.h>
+ #if defined(HAVE_STRING_H)
+ # include <string.h>
+ #elif defined(HAVE_STRINGS_H)
+diff --git a/sanei/sanei_pp.c b/sanei/sanei_pp.c
+index 3077342e4..752945a89 100644
+--- a/sanei/sanei_pp.c
++++ b/sanei/sanei_pp.c
+@@ -135,11 +135,9 @@ inb( u_long port )
+ #include "../include/sane/sanei_debug.h"
+ #include "../include/sane/sanei_pp.h"
+ 
+-#if defined(STDC_HEADERS)
+-# include <errno.h>
+-# include <stdio.h>
+-# include <stdlib.h>
+-#endif
++#include <errno.h>
++#include <stdio.h>
++#include <stdlib.h>
+ #if defined(HAVE_STRING_H)
+ # include <string.h>
+ #elif defined(HAVE_STRINGS_H)
+-- 
+GitLab
+

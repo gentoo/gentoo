@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Remember: we cannot leverage autotools in this ebuild in order
@@ -6,7 +6,7 @@
 
 EAPI=7
 
-inherit multilib toolchain-funcs libtool multilib-minimal preserve-libs usr-ldscript
+inherit libtool multilib multilib-minimal preserve-libs usr-ldscript
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://git.tukaani.org/xz.git"
@@ -17,7 +17,7 @@ else
 	MY_P="${PN/-utils}-${PV/_}"
 	SRC_URI="https://tukaani.org/xz/${MY_P}.tar.gz"
 	[[ "${PV}" == *_alpha* ]] || [[ "${PV}" == *_beta* ]] || \
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -27,7 +27,7 @@ HOMEPAGE="https://tukaani.org/xz/"
 # See top-level COPYING file as it outlines the various pieces and their licenses.
 LICENSE="public-domain LGPL-2.1+ GPL-2+"
 SLOT="0"
-IUSE="elibc_FreeBSD +extra-filters nls static-libs +threads"
+IUSE="elibc_FreeBSD +extra-filters nls static-libs"
 
 RDEPEND="!<app-arch/lzma-4.63
 	!<app-arch/p7zip-4.57
@@ -49,8 +49,8 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myconf=(
+		--enable-threads
 		$(use_enable nls)
-		$(use_enable threads)
 		$(use_enable static-libs static)
 	)
 	multilib_is_native_abi ||

@@ -1,18 +1,17 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit eutils autotools flag-o-matic
+inherit autotools epatch
 
 MY_PV="${PV//_beta/b}"
 MY_PV="${MY_PV/_p/p}"
 MY_P="${PN}-${MY_PV}"
 
-DESCRIPTION="An automated suite of programs for configuring and maintaining
-Unix-like computers"
+DESCRIPTION="An automated suite of programs for configuring and maintaining Unix-like computers"
 HOMEPAGE="http://www.cfengine.org/"
-SRC_URI="http://cfengine.package-repos.s3.amazonaws.com/tarballs/${MY_P}.tar.gz -> ${MY_P}.tar.gz
+SRC_URI="http://cfengine.package-repos.s3.amazonaws.com/tarballs/${MY_P}.tar.gz
 	masterfiles? ( http://cfengine.package-repos.s3.amazonaws.com/tarballs/masterfiles-${MY_PV}.tar.gz -> ${PN}-masterfiles-${MY_PV}.tar.gz )"
 
 LICENSE="GPL-3"
@@ -29,7 +28,7 @@ DEPEND="acl? ( virtual/acl )
 	qdbm? ( dev-db/qdbm )
 	libvirt? ( app-emulation/libvirt )
 	xml? ( dev-libs/libxml2:2  ) \
-	dev-libs/openssl
+	dev-libs/openssl:=
 	dev-libs/libpcre
 	net-libs/libnsl"
 RDEPEND="${DEPEND}"

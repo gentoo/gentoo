@@ -1,21 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python{3_7,3_8,3_9} )
 PYTHON_REQ_USE="xml"
 
 inherit multilib python-r1 toolchain-funcs bash-completion-r1
 
-MY_P="${P//_/-}"
-
-MY_RELEASEDATE="20200710"
 EXTRAS_VER="1.37"
-SEMNG_VER="${PV}"
-SELNX_VER="${PV}"
-SEPOL_VER="${PV}"
 
-IUSE="audit dbus pam split-usr"
+IUSE="audit pam split-usr"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DESCRIPTION="SELinux core utilities"
@@ -25,14 +19,14 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/SELinuxProject/selinux.git"
 	SRC_URI="https://dev.gentoo.org/~perfinion/distfiles/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
-	S1="${WORKDIR}/${MY_P}/${PN}"
+	S1="${WORKDIR}/${PN}"
 	S2="${WORKDIR}/policycoreutils-extra"
 	S="${S1}"
 else
-	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${MY_RELEASEDATE}/${MY_P}.tar.gz
+	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${PV}/${P}.tar.gz
 		https://dev.gentoo.org/~perfinion/distfiles/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
-	KEYWORDS="~amd64 ~arm64 ~mips ~x86"
-	S1="${WORKDIR}/${MY_P}"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+	S1="${WORKDIR}/${P}"
 	S2="${WORKDIR}/policycoreutils-extra"
 	S="${S1}"
 fi
@@ -40,24 +34,18 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python,${PYTHON_USEDEP}]
-	>=sys-libs/libcap-1.10-r10:=
-	>=sys-libs/libsemanage-${SEMNG_VER}:=[python(+),${PYTHON_USEDEP}]
+DEPEND=">=sys-libs/libselinux-${PV}:=[python,${PYTHON_USEDEP}]
+	>=sys-libs/libsemanage-${PV}:=[python(+),${PYTHON_USEDEP}]
+	>=sys-libs/libsepol-${PV}:=
 	sys-libs/libcap-ng:=
-	>=sys-libs/libsepol-${SEPOL_VER}:=
 	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
-	sys-devel/gettext
-	dev-python/ipy[${PYTHON_USEDEP}]
-	dbus? (
-		sys-apps/dbus
-		dev-libs/dbus-glib:=
-	)
 	audit? ( >=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}] )
 	pam? ( sys-libs/pam:= )
 	${PYTHON_DEPS}"
 
-### libcgroup -> seunshare
-### dbus -> restorecond
+# Avoid dependency loop in the cross-compile case, bug #755173
+# (Still exists in native)
+BDEPEND="sys-devel/gettext"
 
 # pax-utils for scanelf used by rlpkg
 RDEPEND="${DEPEND}
@@ -107,7 +95,6 @@ src_compile() {
 			AUDIT_LOG_PRIVS="y" \
 			AUDITH="$(usex audit y n)" \
 			PAMH="$(usex pam y n)" \
-			INOTIFYH="$(usex dbus y n)" \
 			SESANDBOX="n" \
 			CC="$(tc-getCC)" \
 			LIBDIR="\$(PREFIX)/$(get_libdir)"
@@ -126,7 +113,6 @@ src_install() {
 			AUDIT_LOG_PRIVS="y" \
 			AUDITH="$(usex audit y n)" \
 			PAMH="$(usex pam y n)" \
-			INOTIFYH="$(usex dbus y n)" \
 			SESANDBOX="n" \
 			CC="$(tc-getCC)" \
 			LIBDIR="\$(PREFIX)/$(get_libdir)" \

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matthew Thode</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">resolvelib</remote-id>
+    <remote-id type="github">sarugaku/resolvelib</remote-id>
+    <bugs-to>https://github.com/sarugaku/resolvelib/issues</bugs-to>
+  </upstream>
+  <longdescription lang="en">
+ResolveLib at the highest level provides a Resolver class that includes
+dependency resolution logic. You give it some things, and a little
+information on how it should interact with them, and it will spit out
+a resolution result.
+</longdescription>
+</pkgmetadata>

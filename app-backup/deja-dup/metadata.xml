@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<name>Oz Tiram</name>
+		<email>oz.tiram@gmail.com</email>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Déjà Dup is a simple backup tool. It hides the complexity of backing up the
+	Right Way (encrypted, off-site, and regular) and uses
+	duplicity as the backend.
+
+	Support for local, remote, or cloud backup locations such as Google Drive
+	Securely encrypts and compresses your data
+	Incrementally backs up, letting you restore from any particular backup
+	Schedules regular backups
+	Integrates well into your GNOME desktop
+
+	Déjà Dup focuses on ease of use and personal, accidental data loss.
+	If you need a full system backup or an archival program, you may prefer other
+	backup apps.
+	</longdescription>
+	<upstream>
+		<remote-id type="gitlab">https://gitlab.gnome.org/World/deja-dup</remote-id>
+		<bugs-to>https://gitlab.gnome.org/World/deja-dup/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

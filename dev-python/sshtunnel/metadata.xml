@@ -6,4 +6,7 @@
 		<name>Aaron W. Swenson</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">sshtunnel</remote-id>
+	</upstream>
 </pkgmetadata>

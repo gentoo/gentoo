@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">yapsy</remote-id>
+		<remote-id type="pypi">Yapsy</remote-id>
 	</upstream>
 </pkgmetadata>

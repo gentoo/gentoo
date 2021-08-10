@@ -11,4 +11,5 @@
 		* What directories to backup
 		* When backup should be done (manual, every hour, every day, every week, every month)
 	</longdescription>
+	<stabilize-allarches/>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,13 +12,12 @@ SRC_URI="https://github.com/sandstorm-io/capnproto/archive/v${PV}.tar.gz -> ${P}
 LICENSE="MIT"
 SLOT="0/080"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="libressl +ssl static-libs test zlib"
+IUSE="+ssl static-libs test zlib"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 	zlib? ( sys-libs/zlib:0= )
 "

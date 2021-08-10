@@ -1,6 +1,5 @@
-diff -ur tokyodystopia-0.9.13/Makefile.in tokyodystopia-0.9.13-new/Makefile.in
---- tokyodystopia-0.9.13/Makefile.in	2009-07-05 04:06:06.000000000 +0200
-+++ tokyodystopia-0.9.13-new/Makefile.in	2009-10-20 22:39:18.000000000 +0200
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -55,8 +55,8 @@
  LDFLAGS = @MYLDFLAGS@
  CMDLDFLAGS = @MYCMDLDFLAGS@
@@ -12,9 +11,8 @@ diff -ur tokyodystopia-0.9.13/Makefile.in tokyodystopia-0.9.13-new/Makefile.in
  POSTCMD = @MYPOSTCMD@
  
  
-diff -ur tokyodystopia-0.9.13/configure.in tokyodystopia-0.9.13-new/configure.in
---- tokyodystopia-0.9.13/configure.in	2009-06-14 05:44:54.000000000 +0200
-+++ tokyodystopia-0.9.13-new/configure.in	2009-10-20 22:40:00.000000000 +0200
+--- a/configure.in
++++ b/configure.in
 @@ -26,31 +26,14 @@
  MYPCFILES="tokyodystopia.pc"
  
@@ -49,9 +47,8 @@ diff -ur tokyodystopia-0.9.13/configure.in tokyodystopia-0.9.13-new/configure.in
  
  #================================================================
  # Options
-diff -ur tokyodystopia-0.9.13/tokyodystopia.pc.in tokyodystopia-0.9.13-new/tokyodystopia.pc.in
---- tokyodystopia-0.9.13/tokyodystopia.pc.in	2008-02-21 10:45:01.000000000 +0100
-+++ tokyodystopia-0.9.13-new/tokyodystopia.pc.in	2009-10-20 22:40:17.000000000 +0200
+--- a/tokyodystopia.pc.in
++++ b/tokyodystopia.pc.in
 @@ -10,5 +10,5 @@
  Name: Tokyo Dystopia
  Description: a full-text search system

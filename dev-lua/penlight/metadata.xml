@@ -5,7 +5,12 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
-	<longdescription lang="en">
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription>
 		Penlight is a set of pure Lua libraries for making it easier to work
 		with common tasks like iterating over directories, reading
 		configuration files and the like. Provides functional operations

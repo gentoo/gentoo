@@ -1,13 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils systemd tmpfiles
+inherit systemd tmpfiles
 DESCRIPTION="coturn TURN server project"
 HOMEPAGE="https://github.com/coturn/coturn"
 
 if [ ${PV} = 9999 ]; then
-	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 	inherit git-r3
 	DEPEND="dev-vcs/git"
@@ -22,7 +21,7 @@ SLOT="0"
 IUSE="mongodb mysql postgres redis sqlite"
 RDEPEND="acct-group/turnserver
 	 acct-user/turnserver
-	 || ( dev-libs/libevent[-ssl,libressl] dev-libs/libevent[ssl,-libressl] >dev-libs/libevent-2.1.8[ssl,libressl] )
+	 >dev-libs/libevent-2.1.8
 	 mongodb? ( dev-libs/mongo-c-driver )
 	 mysql?  ( dev-db/mysql-connector-c )
 	 postgres? ( dev-db/postgresql:* )

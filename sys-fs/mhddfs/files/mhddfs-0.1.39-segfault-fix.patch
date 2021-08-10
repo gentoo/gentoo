@@ -178,23 +178,6 @@ Thanks to Gabor Kovari <gabor.kovari@gmail.com>
  		" mhddfs dir1,dir2.. mountpoint [ -o OPTIONS ]\n"
 --- a/Makefile	2016-01-05 16:45:10.184105001 +0100
 +++ b/Makefile	2015-12-21 16:32:29.000000000 +0100
-@@ -22,13 +22,13 @@
- 
- TARGET	=	mhddfs
- 
--CFLAGS	+=	-Wall $(shell pkg-config fuse --cflags) \
--			-DFUSE_USE_VERSION=26 -MMD
-+CFLAGS	=	-Wall $(shell pkg-config fuse glib-2.0 --cflags) \
-+			-DFUSE_USE_VERSION=26 -MMD -g -rdynamic -O0
- ifdef WITHOUT_XATTR
- CFLAGS	+=	-DWITHOUT_XATTR
- endif
- 
--LIBS		=	$(shell pkg-config fuse --libs)
-+LDFLAGS	=	$(shell pkg-config fuse glib-2.0 --libs)
- 
- FORTAR	=	src COPYING LICENSE README Makefile \
- 		README.ru.UTF-8 ChangeLog mhddfs.1 \
 @@ -53,7 +53,7 @@
  ifeq ($(DEBVERSION), $(VERSION))
  all: $(TARGET)

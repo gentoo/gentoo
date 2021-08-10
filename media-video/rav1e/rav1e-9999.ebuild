@@ -1,4 +1,4 @@
-# Copyright 2017-2020 Gentoo Authors
+# Copyright 2017-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,8 +27,10 @@ SLOT="0"
 IUSE="+capi"
 
 ASM_DEP=">=dev-lang/nasm-2.14"
-DEPEND="amd64? ( ${ASM_DEP} )"
-RDEPEND="capi? ( dev-util/cargo-c )"
+BDEPEND="
+	amd64? ( ${ASM_DEP} )
+	capi? ( dev-util/cargo-c )
+"
 
 src_unpack() {
 	if [[ "${PV}" == *9999* ]]; then
@@ -49,7 +51,7 @@ src_compile() {
 
 	if use capi; then
 		cargo cbuild ${args} \
-			--prefix="/usr" --libdir="/usr/$(get_libdir)" --destdir="${ED}" \
+			--prefix="/usr" --libdir="/usr/$(get_libdir)" \
 			|| die "cargo cbuild failed"
 	fi
 }

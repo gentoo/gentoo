@@ -5,9 +5,4 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<use>
-		<flag name="bundled-libs">
-			Use the upstream provided bundled libraries.
-		</flag>
-	</use>
 </pkgmetadata>

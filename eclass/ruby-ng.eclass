@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-ng.eclass
@@ -8,7 +8,7 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: An eclass for installing Ruby packages with proper support for multiple Ruby slots.
 # @DESCRIPTION:
 # The Ruby eclass is designed to allow an easier installation of Ruby packages
@@ -68,7 +68,7 @@
 
 local inherits=""
 case ${EAPI} in
-	4|5)
+	5)
 		inherits="eutils toolchain-funcs"
 		;;
 	6)
@@ -83,15 +83,12 @@ inherit ${inherits} multilib ruby-utils
 
 EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_test src_install pkg_setup
 
+# S is no longer automatically assigned when it doesn't exist.
+S="${WORKDIR}"
+
 case ${EAPI} in
-	0|1|2|3)
-		die "Unsupported EAPI=${EAPI} (too old) for ruby-ng.eclass" ;;
-	4|5|6|7)
-		# S is no longer automatically assigned when it doesn't exist.
-		S="${WORKDIR}"
-		;;
-	*)
-		die "Unknown EAPI=${EAPI} for ruby-ng.eclass"
+	5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # @FUNCTION: ruby_implementation_depend
@@ -111,6 +108,7 @@ ruby_implementation_depend() {
 # @FUNCTION: _ruby_get_all_impls
 # @INTERNAL
 # @RETURN: list of valid values in USE_RUBY
+# @DESCRIPTION:
 # Return a list of valid implementations in USE_RUBY, skipping the old
 # implementations that are no longer supported.
 _ruby_get_all_impls() {
@@ -209,7 +207,7 @@ ruby_add_rdepend() {
 		1) ;;
 		2)
 			case ${EAPI} in
-				4|5|6)
+				5|6)
 					[[ "${GENTOO_DEV}" == "yes" ]] && eqawarn "You can now use the usual syntax in ruby_add_rdepend for $CATEGORY/$PF"
 					ruby_add_rdepend "$(_ruby_wrap_conditions "$1" "$2")"
 					return
@@ -231,7 +229,7 @@ ruby_add_rdepend() {
 	# Add the dependency as a test-dependency since we're going to
 	# execute the code during test phase.
 	case ${EAPI} in
-		4|5|6) DEPEND="${DEPEND} test? ( ${dependency} )" ;;
+		5|6) DEPEND="${DEPEND} test? ( ${dependency} )" ;;
 		*) BDEPEND="${BDEPEND} test? ( ${dependency} )" ;;
 	esac
 	if ! has test "$IUSE"; then
@@ -254,7 +252,7 @@ ruby_add_bdepend() {
 		1) ;;
 		2)
 			case ${EAPI} in
-				4|5|6)
+				5|6)
 					[[ "${GENTOO_DEV}" == "yes" ]] && eqawarn "You can now use the usual syntax in ruby_add_bdepend for $CATEGORY/$PF"
 					ruby_add_bdepend "$(_ruby_wrap_conditions "$1" "$2")"
 					return
@@ -272,7 +270,7 @@ ruby_add_bdepend() {
 	local dependency=$(_ruby_atoms_samelib "$1")
 
 	case ${EAPI} in
-		4|5|6) DEPEND="${DEPEND} $dependency" ;;
+		5|6) DEPEND="${DEPEND} $dependency" ;;
 		*) BDEPEND="${BDEPEND} $dependency" ;;
 	esac
 	RDEPEND="${RDEPEND}"
@@ -285,7 +283,7 @@ ruby_add_bdepend() {
 # ruby_add_bdepend.
 ruby_add_depend() {
 	case ${EAPI} in
-		4|5|6) die "only available in EAPI 7 and newer" ;;
+		5|6) die "only available in EAPI 7 and newer" ;;
 		*) ;;
 	esac
 
@@ -353,7 +351,7 @@ if [[ ${RUBY_OPTIONAL} != yes ]]; then
 	RDEPEND="${RDEPEND} $(ruby_implementations_depend)"
 	REQUIRED_USE+=" || ( $(ruby_get_use_targets) )"
 	case ${EAPI} in
-		4|5|6) ;;
+		5|6) ;;
 		*) BDEPEND="${BDEPEND} $(ruby_implementations_depend)" ;;
 	esac
 fi
@@ -457,7 +455,7 @@ ruby-ng_src_unpack() {
 
 _ruby_apply_patches() {
 	case ${EAPI} in
-		4|5)
+		5)
 			for patch in "${RUBY_PATCHES[@]}"; do
 				if [ -f "${patch}" ]; then
 					epatch "${patch}"
@@ -505,7 +503,7 @@ ruby-ng_src_prepare() {
 
 	# Handle PATCHES and user supplied patches via the default phase
 	case ${EAPI} in
-		4|5)
+		5)
 			;;
 		*)
 			_ruby_invoke_environment all default
@@ -606,7 +604,7 @@ ruby-ng_src_install() {
 # @USAGE: rbconfig item
 # @RETURN: Returns the value of the given rbconfig item of the Ruby interpreter in ${RUBY}.
 ruby_rbconfig_value() {
-	echo $(${RUBY} -rrbconfig -e "puts RbConfig::CONFIG['$1']")
+	echo $(${RUBY} --disable=did_you_mean -rrbconfig -e "puts RbConfig::CONFIG['$1']" || die "Could not read ruby configuration for '${1}'")
 }
 
 # @FUNCTION: doruby

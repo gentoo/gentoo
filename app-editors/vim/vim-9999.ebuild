@@ -1,13 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 VIM_VERSION="8.2"
-PYTHON_COMPAT=( python3_{6,7,8} )
+LUA_COMPAT=( lua5-1 luajit )
+PYTHON_COMPAT=( python3_{7..10} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
-inherit vim-doc flag-o-matic bash-completion-r1 python-single-r1 ruby-single desktop xdg-utils
+inherit vim-doc flag-o-matic bash-completion-r1 lua-single python-single-r1 ruby-single desktop xdg-utils
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
@@ -15,7 +16,7 @@ if [[ ${PV} == 9999* ]] ; then
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~zlogene/distfiles/app-editors/vim/vim-8.2.0360-gentoo-patches.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Vim, an improved vi-style text editor"
@@ -23,8 +24,9 @@ HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
 
 SLOT="0"
 LICENSE="vim"
-IUSE="X acl cscope debug gpm lua luajit minimal nls perl python racket ruby selinux sound tcl terminal vim-pager"
+IUSE="X acl cscope debug gpm lua minimal nls perl python racket ruby selinux sound tcl terminal vim-pager"
 REQUIRED_USE="
+	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	vim-pager? ( !minimal )
 "
@@ -36,9 +38,8 @@ RDEPEND="
 	acl? ( kernel_linux? ( sys-apps/acl ) )
 	cscope? ( dev-util/cscope )
 	gpm? ( >=sys-libs/gpm-1.19.3 )
-	lua? (
-		luajit? ( dev-lang/luajit:2= )
-		!luajit? ( dev-lang/lua:0[deprecated] )
+	lua? ( ${LUA_DEPS}
+		$(lua_gen_impl_dep 'deprecated' lua5-1)
 	)
 	!minimal? ( ~app-editors/vim-core-${PV} )
 	vim-pager? ( app-editors/vim-core[-minimal] )
@@ -57,6 +58,8 @@ DEPEND="
 	sys-devel/autoconf
 	nls? ( sys-devel/gettext )
 "
+# configure runs the Lua interpreter
+BDEPEND="lua? ( ${LUA_DEPS} )"
 
 pkg_setup() {
 	# people with broken alphabets run into trouble. bug 82186.
@@ -67,6 +70,7 @@ pkg_setup() {
 	mkdir -p "${T}"/home || die "mkdir failed"
 	export HOME="${T}"/home
 
+	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
 }
 
@@ -198,13 +202,10 @@ src_configure() {
 			$(use_enable acl)
 			$(use_enable cscope)
 			$(use_enable gpm)
-			$(use_enable lua luainterp)
-			$(usex lua "--with-lua-prefix=${EPREFIX}/usr" "")
-			$(use_with luajit)
 			$(use_enable nls)
 			$(use_enable perl perlinterp)
 			$(use_enable python python3interp)
-			$(use_with python python3-command $(type -P $(eselect python show --python3)))
+			$(use_with python python3-command "${PYTHON}")
 			$(use_enable racket mzschemeinterp)
 			$(use_enable ruby rubyinterp)
 			$(use_enable selinux)
@@ -217,6 +218,14 @@ src_configure() {
 		if ! use cscope; then
 			sed -i -e \
 				'/# define FEAT_CSCOPE/d' src/feature.h || die "sed failed"
+		fi
+
+		if use lua; then
+			myconf+=(
+				--enable-luainterp
+				$(use_with lua_single_target_luajit luajit)
+				--with-lua-prefix="${EPREFIX}/usr"
+			)
 		fi
 
 		# don't test USE=X here ... see bug #19115
@@ -276,7 +285,9 @@ src_install() {
 	# Note: Do not install symlinks for 'vi', 'ex', or 'view', as these are
 	#       managed by eselect-vi
 	dobin src/vim
-	dosym vim /usr/bin/vimdiff
+	if ! use minimal ; then
+		dosym vim /usr/bin/vimdiff
+	fi
 	dosym vim /usr/bin/rvim
 	dosym vim /usr/bin/rview
 	if use vim-pager ; then

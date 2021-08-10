@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils toolchain-funcs
+inherit edos2unix toolchain-funcs
 
 DESCRIPTION="Produces drawings of two- or three-dimensional solid objects and scenes for TeX"
 HOMEPAGE="https://www.frontiernet.net/~eugene.ressler/"

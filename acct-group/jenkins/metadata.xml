@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>patrick@gentoo.org</email>
+		<name>Patrick Lauer</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>graaff@gentoo.org</email>
+		<name>Hans de Graaff</name>
+		<description>lts versions</description>
+	</maintainer>
+</pkgmetadata>

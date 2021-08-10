@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit font
+inherit font toolchain-funcs
 
 MY_P="jmk-x11-fonts-${PV}"
 
@@ -12,10 +12,10 @@ SRC_URI="http://www.pobox.com/~jmknoble/fonts/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ppc ~s390 sparc x86"
 
 BDEPEND="
-	x11-misc/imake
+	>=x11-misc/imake-1.0.8-r1
 	>=x11-apps/mkfontscale-1.2.0
 	x11-apps/bdftopcf"
 
@@ -25,9 +25,9 @@ PATCHES=( "${FILESDIR}"/gzip.patch )
 
 S="${WORKDIR}/${MY_P}"
 
-src_compile() {
-	xmkmf || die
-	default
+src_configure() {
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
 }
 
 src_install() {

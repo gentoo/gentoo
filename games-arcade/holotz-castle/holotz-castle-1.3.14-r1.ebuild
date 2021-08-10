@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit desktop toolchain-funcs
 
 DESCRIPTION="2D platform game"
@@ -29,10 +29,11 @@ PATCHES=(
 	"${FILESDIR}"/${P}-build.patch
 	"${FILESDIR}"/${P}-gcc44.patch
 	"${FILESDIR}"/${P}-underlink.patch
+	"${FILESDIR}"/${P}-gcc-11.patch
 )
 
 src_compile() {
-	tc-export AR
+	tc-export AR CXX
 	emake -C JLib
 	emake -C src HC_BASE=/usr/share/${PN}/
 }

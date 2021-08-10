@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>desktop-misc@gentoo.org</email>
-<name>Gentoo Desktop Miscellaneous Project</name>
-</maintainer>
-<use>
-<flag name='gtk2'>Install theme for GTK+-2.0</flag>
-<flag name='gtk3'>Install theme for GTK+-3.0</flag>
-<flag name='xfce'>Install theme for <pkg>xfce-base/xfwm4</pkg></flag>
-</use>
+  <maintainer type="project">
+    <email>desktop-misc@gentoo.org</email>
+    <name>Gentoo Desktop Miscellaneous Project</name>
+  </maintainer>
+  <longdescription>
+    Greybird Xfce Desktop Suite. Contains the default Xubuntu theme for 
+    gnome-shell, gtk-2, gtk-3, metacity, pantheon, unity and Xfce. Comes with 
+    light and dark variants (&gt;=3.22.14).
+  </longdescription>
 <upstream>
 <remote-id type="github">shimmerproject/Greybird</remote-id>
 </upstream>

@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools cvs desktop vcs-clean
+inherit autotools cvs desktop vcs-clean prefix
 
 DESCRIPTION="rxvt clone with xft and unicode support"
 HOMEPAGE="http://software.schmorp.de/pkg/rxvt-unicode.html"
@@ -55,6 +55,9 @@ src_prepare() {
 
 	# kill the rxvt-unicode terminfo file - #192083
 	sed -i -e "/rxvt-unicode.terminfo/d" doc/Makefile.in || die "sed failed"
+
+	# use xsubpp from Prefix - #506500
+	hprefixify -q '"' -w "/xsubpp/" src/Makefile.in
 
 	eautoreconf
 }

@@ -16,6 +16,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">ddt</remote-id>
-    <remote-id type="github">txels/ddt</remote-id>
+    <remote-id type="github">datadriventests/ddt</remote-id>
   </upstream>
 </pkgmetadata>

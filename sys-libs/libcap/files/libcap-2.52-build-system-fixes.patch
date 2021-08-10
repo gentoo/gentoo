@@ -1,0 +1,219 @@
+From 0e977b8595d4e8690bd3f3a816c9ec407dca5ba6 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Wed, 4 Nov 2020 22:46:20 +0100
+Subject: [PATCH] build system fixes
+
+This touches up the homebrewed build system to work much better "out of the
+box" for people.  Specifically:
+        - allow toolchain vars to be set via environment
+        - CC / BUILD_CC / AR / RANLIB
+        - CFLAGS / CPPFLAGS / LDFLAGS
+        - split CPPFLAGS out of CFLAGS
+        - break -fPIC out of global CFLAGS and only use where needed
+        - use LDLIBS for libraries, not LDFLAGS
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+
+Forward ported from libcap-2.24 to libcap-2.25
+Forward ported from libcap-2.25 to libcap-2.28
+Forward ported from libcap-2.28 to libcap-2.29
+Forward ported from libcap-2.29 to libcap-2.33
+Forward ported from libcap-2.33 to libcap-2.34
+Forward ported from libcap-2.34 to libcap-2.37
+Forward ported from libcap-2.37 to libcap-2.39
+Forward ported from libcap-2.39 to libcap-2.42
+Forward ported from libcap-2.42 to libcap-2.44
+Forward ported from libcap-2.44 to libcap-2.45
+Forward ported from libcap-2.45 to libcap-2.48
+Forward ported from libcap-2.48 to libcap-2.50
+Forward ported from libcap-2.50 to libcap-2.52
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ Make.Rules       | 10 ++++++----
+ Makefile         |  1 -
+ libcap/Makefile  |  7 ++++---
+ pam_cap/Makefile | 10 ++++++----
+ progs/Makefile   |  4 ++--
+ tests/Makefile   |  6 ++++--
+ 6 files changed, 22 insertions(+), 16 deletions(-)
+
+diff --git a/Make.Rules b/Make.Rules
+index 8f7906c..fea4c78 100644
+--- a/Make.Rules
++++ b/Make.Rules
+@@ -52,18 +52,13 @@ GOMAJOR=1
+ # Compilation specifics
+ 
+ KERNEL_HEADERS := $(topdir)/libcap/include/uapi
+-IPATH += -fPIC -I$(KERNEL_HEADERS) -I$(topdir)/libcap/include
+ 
+-CC := $(CROSS_COMPILE)gcc
+ DEFINES := -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
+ COPTS ?= -O2
+ CFLAGS ?= $(COPTS) $(DEFINES)
+ BUILD_CC ?= $(CC)
+ BUILD_COPTS ?= -O2
+-BUILD_CFLAGS ?= $(BUILD_COPTS) $(DEFINES) $(IPATH)
+-AR := $(CROSS_COMPILE)ar
+-RANLIB := $(CROSS_COMPILE)ranlib
+-OBJCOPY := $(CROSS_COMPILE)objcopy
++BUILD_CFLAGS ?= $(CFLAGS)
+ DEBUG = -g #-DDEBUG
+ WARNINGS=-Wall -Wwrite-strings \
+         -Wpointer-arith -Wcast-qual -Wcast-align \
+@@ -77,10 +72,13 @@
+ 
+ BUILD_GPERF := $(shell which gperf >/dev/null 2>/dev/null && echo yes)
+ 
+-SYSTEM_HEADERS = /usr/include
++LIBCAP_CPPFLAGS = -I$(KERNEL_HEADERS) -I$(topdir)/libcap/include $(DEFINES)
++CPPFLAGS += $(LIBCAP_CPPFLAGS)
++BUILD_CPPFLAGS += $(LIBCAP_CPPFLAGS)
+ INCS=$(topdir)/libcap/include/sys/capability.h
+ LDFLAGS += -L$(topdir)/libcap
+-CFLAGS += -Dlinux $(WARNINGS) $(DEBUG)
++CPPFLAGS += -Dlinux
++CFLAGS += $(WARNINGS) $(DEBUG)
+ INDENT := $(shell if [ -n "$$(which indent 2>/dev/null)" ]; then echo "| indent -kr" ; fi)
+ 
+ # SHARED tracks whether or not the SHARED libraries (libcap.so,
+diff --git a/Makefile b/Makefile
+index 984d502..a917238 100644
+--- a/Makefile
++++ b/Makefile
+@@ -17,7 +17,6 @@ ifeq ($(GOLANG),yes)
+ 	$(MAKE) -C go $@
+ 	rm -f cap/go.sum
+ endif
+-	$(MAKE) -C tests $@
+ 	$(MAKE) -C progs $@
+ 	$(MAKE) -C doc $@
+ 	$(MAKE) -C kdebug $@
+diff --git a/libcap/Makefile b/libcap/Makefile
+index 47cf8f4..5125ffb 100644
+--- a/libcap/Makefile
++++ b/libcap/Makefile
+@@ -32,6 +32,7 @@ MINCAPLIBNAME=$(MAJCAPLIBNAME).$(MINOR)
+ PSXOBJS=$(addsuffix .o, $(PSXFILES))
+ MAJPSXLIBNAME=$(PSXLIBNAME).$(VERSION)
+ MINPSXLIBNAME=$(MAJPSXLIBNAME).$(MINOR)
++CFLAGS += -fPIC
+ 
+ all: pcs $(STACAPLIBNAME)
+ ifeq ($(SHARED),yes)
+@@ -73,7 +74,7 @@ $(PSXTITLE).pc: $(PSXTITLE).pc.in
+ 		$< >$@
+ 
+ _makenames: _makenames.c cap_names.list.h
+-	$(BUILD_CC) $(BUILD_CFLAGS) $< -o $@
++	$(BUILD_CC) $(BUILD_CFLAGS) $(BUILD_CPPFLAGS) $< -o $@
+ 
+ cap_names.h: _makenames
+ 	./_makenames > cap_names.h
+@@ -125,10 +126,10 @@ $(PSXLIBNAME) $(MAJPSXLIBNAME) $(MINPSXLIBNAME): $(PSXOBJS) include/sys/psx_sysc
+ endif
+ 
+ %.o: %.c $(INCLS)
+-	$(CC) $(CFLAGS) $(IPATH) -c $< -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+ 
+ cap_text.o: cap_text.c $(USE_GPERF_OUTPUT) $(INCLS)
+-	$(CC) $(CFLAGS) $(IPATH) $(INCLUDE_GPERF_OUTPUT) -c $< -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(INCLUDE_GPERF_OUTPUT) -c $< -o $@
+ 
+ cap_test: cap_test.c libcap.h $(CAPOBJS)
+ 	$(CC) $(CFLAGS) $(IPATH) $< $(CAPOBJS) -o $@
+diff --git a/pam_cap/Makefile b/pam_cap/Makefile
+index a4c4891..a15feae 100644
+--- a/pam_cap/Makefile
++++ b/pam_cap/Makefile
+@@ -3,6 +3,8 @@
+ topdir=$(shell pwd)/..
+ include ../Make.Rules
+ 
++CFLAGS += -fPIC
++
+ all: pam_cap.so
+ 	$(MAKE) testlink
+ 
+@@ -19,13 +21,13 @@ install: all
+ 	$(MAKE) -C ../libcap loader.txt
+ 
+ execable.o: execable.c ../libcap/execable.h ../libcap/loader.txt
+-	$(CC) $(CFLAGS) $(IPATH) -DLIBCAP_VERSION=\"libcap-$(VERSION).$(MINOR)\" -DSHARED_LOADER=\"$(shell cat ../libcap/loader.txt)\" -c execable.c -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $(CPPFLAGS) -DLIBCAP_VERSION=\"libcap-$(VERSION).$(MINOR)\" -DSHARED_LOADER=\"$(shell cat ../libcap/loader.txt)\" -c execable.c -o $@
+ 
+ pam_cap.so: pam_cap.o execable.o
+-	$(LD) -o pam_cap.so $+ $(LIBCAPLIB) $(LDFLAGS) --entry=__so_start
++	$(LD) $(CFLAGS) -o pam_cap.so $+ $(LIBCAPLIB) $(LDFLAGS) --entry=__so_start
+ 
+ pam_cap.o: pam_cap.c
+-	$(CC) $(CFLAGS) $(IPATH) -c $< -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+ 
+ ../libcap/libcap.a:
+ 	$(MAKE) -C ../libcap libcap.a
+@@ -34,7 +36,7 @@ test_pam_cap: test_pam_cap.c pam_cap.c ../libcap/libcap.a
+ 	$(CC) $(CFLAGS) $(IPATH) -o $@ test_pam_cap.c $(LIBCAPLIB) $(LDFLAGS) --static
+ 
+ testlink: test.c pam_cap.o
+-	$(CC) $(CFLAGS) -o $@ $+ -lpam -ldl $(LIBCAPLIB) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ $+ -lpam -ldl $(LIBCAPLIB) $(LDFLAGS)
+ 
+ test: testlink test_pam_cap pam_cap.so
+ 	$(MAKE) testlink
+diff --git a/progs/Makefile b/progs/Makefile
+index 3e82862..dba7e8f 100644
+--- a/progs/Makefile
++++ b/progs/Makefile
+@@ -28,7 +28,7 @@ $(BUILD): %: %.o $(DEPS)
+ 	$(CC) $(CFLAGS) -o $@ $< $(LIBCAPLIB) $(LDFLAGS)
+ 
+ %.o: %.c $(INCS)
+-	$(CC) $(IPATH) $(CFLAGS) -c $< -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+ 
+ install: all
+ 	mkdir -p -m 0755 $(FAKEROOT)$(SBINDIR)
+@@ -46,7 +46,7 @@ capshdoc.h.cf: capshdoc.h ./mkcapshdoc.sh
+ 	diff -u capshdoc.h $@ || (rm $@ ; exit 1)
+ 
+ capsh: capsh.c capshdoc.h.cf $(DEPS)
+-	$(CC) $(IPATH) $(CAPSH_SHELL) $(CFLAGS) -o $@ $< $(LIBCAPLIB) $(LDFLAGS)
++	$(CC) $(CAPSH_SHELL) $(CFLAGS) $(CPPFLAGS) -o $@ $< $(LIBCAPLIB) $(LDFLAGS)
+ 
+ tcapsh-static: capsh.c capshdoc.h.cf $(DEPS)
+ 	$(CC) $(IPATH) $(CAPSH_SHELL) $(CFLAGS) -o $@ $< $(LIBCAPLIB) $(LDFLAGS) --static
+diff --git a/tests/Makefile b/tests/Makefile
+index 3a917c4..07eb2d5 100644
+--- a/tests/Makefile
++++ b/tests/Makefile
+@@ -13,6 +13,8 @@ ifeq ($(PTHREADS),yes)
+ 	$(MAKE) psx_test libcap_psx_test libcap_psx_launch_test
+ endif
+ 
++CFLAGS += -fPIC
++
+ install: all
+ 
+ ifeq ($(DYNAMIC),yes)
+@@ -63,13 +65,13 @@ run_psx_test: psx_test
+ 	./psx_test
+ 
+ psx_test: psx_test.c $(DEPS)
+-	$(CC) $(CFLAGS) $(IPATH) $< -o $@ $(LINKEXTRA) $(LIBPSXLIB) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $< -o $@ $(LINKEXTRA) $(LIBPSXLIB) $(LDFLAGS)
+ 
+ run_libcap_psx_test: libcap_psx_test
+ 	./libcap_psx_test
+ 
+ libcap_psx_test: libcap_psx_test.c $(DEPS)
+-	$(CC) $(CFLAGS) $(IPATH) $< -o $@ $(LINKEXTRA) $(LIBCAPLIB) $(LIBPSXLIB) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $< -o $@ $(LINKEXTRA) $(LIBCAPLIB) $(LIBPSXLIB) $(LDFLAGS)
+ 
+ # privileged
+ uns_test: uns_test.c $(DEPS)
+-- 
+2.32.0
+

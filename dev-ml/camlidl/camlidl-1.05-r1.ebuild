@@ -1,32 +1,34 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="CamlIDL is a stub code generator for using C/C++ libraries from O'Caml"
 HOMEPAGE="http://caml.inria.fr/camlidl/"
 SRC_URI="http://caml.inria.fr/distrib/bazar-ocaml/${P}.tar.gz"
+
 LICENSE="QPL-1.0 LGPL-2"
 SLOT="0/${PV}"
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
-IUSE=""
+
 DEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt]"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}/tests.patch"
-	epatch "${FILESDIR}/includes.patch"
-	epatch "${FILESDIR}/nowarn.patch"
-}
+PATCHES=(
+	"${FILESDIR}/tests.patch"
+	"${FILESDIR}/includes.patch"
+	"${FILESDIR}/nowarn.patch"
+)
 
 src_compile() {
 	# Use the UNIX makefile
-	libdir=`ocamlc -where`
-	sed -i -e "s|OCAMLLIB=.*|OCAMLLIB=${libdir}|" config/Makefile.unix
-	sed -i -e "s|BINDIR=.*|BINDIR=${EPREFIX}/usr/bin|" config/Makefile.unix
-	ln -s Makefile.unix config/Makefile
+	libdir=$(ocamlc -where || die)
+
+	sed -i -e "s|OCAMLLIB=.*|OCAMLLIB=${libdir}|" config/Makefile.unix || die
+	sed -i -e "s|BINDIR=.*|BINDIR=${EPREFIX}/usr/bin|" config/Makefile.unix || die
+	ln -s Makefile.unix config/Makefile || die
 
 	# Make
 	emake -j1
@@ -34,13 +36,14 @@ src_compile() {
 
 src_test() {
 	einfo "Running tests..."
-	cd tests
+	cd tests || die
 	emake CCPP="$(tc-getCXX)"
 }
 
 src_install() {
-	libdir=`ocamlc -where`
+	libdir=$(ocamlc -where || die)
 	dodir ${libdir#${EPREFIX}}/caml
+
 	dodir /usr/bin
 	# Install
 	emake BINDIR="${ED}/usr/bin" OCAMLLIB="${D}${libdir}" install

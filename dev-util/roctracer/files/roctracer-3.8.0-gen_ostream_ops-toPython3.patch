@@ -1,0 +1,28 @@
+--- a/script/gen_ostream_ops.py	2020-09-27 11:23:37.833756185 +0200
++++ b/script/gen_ostream_ops.py	2020-09-27 11:21:25.763756688 +0200
+@@ -176,9 +176,9 @@
+             process_struct(f, c, cppHeader, "", apiname)
+             global_str = "\n".join(global_str.split("\n")[0:-2])
+             if structs_depth != -1: #reindent
+-              global_str = string.split(global_str, '\n')
+-              global_str = ['    ' + string.lstrip(line) for line in global_str]
+-              global_str = string.join(global_str, '\n')
++              global_str = global_str.split('\n')
++              global_str = ['    ' + line.lstrip() for line in global_str]
++              global_str = str.join('\n', global_str)
+             f.write(global_str+"\n")
+             if structs_depth != -1:
+               f.write("  };\n")
+@@ -199,9 +199,9 @@
+             process_struct(f, c, cppHeader, "", apiname)
+             global_str = "\n".join(global_str.split("\n")[0:-2])
+             if structs_depth != -1: #reindent
+-              global_str = string.split(global_str, '\n')
+-              global_str = ['    ' + string.lstrip(line) for line in global_str]
+-              global_str = string.join(global_str, '\n')
++              global_str = global_str.split('\n')
++              global_str = ['    ' + line.lstrip() for line in global_str]
++              global_str = str.join('\n', global_str)
+             f.write(global_str+"\n")
+             if structs_depth != -1:
+               f.write("  };\n")

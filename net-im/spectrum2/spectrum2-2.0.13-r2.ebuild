@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake systemd
+inherit cmake systemd tmpfiles
 
 DESCRIPTION="An open source instant messaging transport"
 HOMEPAGE="https://www.spectrum.im"
@@ -104,7 +104,11 @@ src_install() {
 
 	newinitd "${FILESDIR}"/spectrum2.initd spectrum2
 	systemd_newunit "${FILESDIR}"/spectrum2.service spectrum2.service
-	systemd_newtmpfilesd "${FILESDIR}"/spectrum2.tmpfiles-r1 spectrum2.conf
+	newtmpfiles "${FILESDIR}"/spectrum2.tmpfiles-r1 spectrum2.conf
 
 	einstalldocs
+}
+
+pkg_postinst() {
+	tmpfiles_process spectrum2.conf
 }

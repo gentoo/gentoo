@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,12 +12,11 @@ EGIT_REPO_URI="https://github.com/atheme/libmowgli-2.git"
 LICENSE="BSD-2"
 SLOT="2"
 KEYWORDS=""
-IUSE="libressl ssl"
+IUSE="ssl"
 
 RDEPEND="
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)"
 DEPEND="${RDEPEND}"
 

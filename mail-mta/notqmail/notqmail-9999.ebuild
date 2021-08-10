@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,8 +10,6 @@ QMAIL_TLS_PV=20200107
 QMAIL_TLS_F=notqmail-1.08-tls-${QMAIL_TLS_PV}.patch
 
 QMAIL_BIGTODO_F=notqmail-1.08-big-todo.patch
-
-QMAIL_LARGE_DNS="qmail-103.patch"
 
 inherit qmail systemd
 
@@ -31,7 +29,6 @@ HOMEPAGE="
 "
 SRC_URI="${SRC_URI}
 	https://github.com/DerDakon/genqmail/releases/download/genqmail-${GENQMAIL_PV}/${GENQMAIL_F}
-	https://www.ckdhr.com/ckd/${QMAIL_LARGE_DNS}
 	!vanilla? (
 		highvolume? (
 			https://github.com/notqmail/notqmail/commit/3a22b45974ddd1230da0dfa21f886c3401bee020.patch -> ${QMAIL_BIGTODO_F}
@@ -56,18 +53,15 @@ SRC_URI="${SRC_URI}
 
 LICENSE="public-domain"
 SLOT="0"
-IUSE="authcram gencertdaily highvolume libressl -pop3 qmail-spp ssl test vanilla"
-REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume !authcram !gencertdaily ) gencertdaily? ( ssl ) libressl? ( ssl )"
+IUSE="authcram gencertdaily highvolume pop3 qmail-spp ssl test vanilla"
+REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume !authcram !gencertdaily ) gencertdaily? ( ssl )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	net-dns/libidn2
 	net-mail/queue-repair
 	sys-apps/gentoo-functions
-	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.1:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( >=dev-libs/openssl-1.1:0= )
 	test? ( dev-libs/check )
 "
 RDEPEND="${DEPEND}
@@ -107,11 +101,9 @@ src_unpack() {
 	[[ ${PV} != "9999" ]] && default
 }
 
-PATCHES=(
-	"${DISTDIR}/${QMAIL_LARGE_DNS}"
-)
-
 src_prepare() {
+	PATCHES=()
+
 	if ! use vanilla; then
 		if use qmail-spp; then
 			PATCHES+=( "${DISTDIR}/${P}-auth.patch" )

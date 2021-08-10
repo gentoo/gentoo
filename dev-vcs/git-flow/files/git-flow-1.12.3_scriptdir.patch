@@ -1,0 +1,72 @@
+Keeps the auxiliary, non-executable script files out of /usr/bin, and
+avoids calling uname every time git-flow runs.
+
+--- a/git-flow
++++ b/git-flow
+@@ -41,41 +41,9 @@
+ 	set -x
+ fi
+ 
+-# Setup the GITFLOW_DIR for different operating systems.
+-# This is mostly to make sure that we get the correct directory when the
+-# git-flow file is a symbolic link
+-case $(uname -s) in
+-Linux)
+-	export GITFLOW_DIR=$(dirname "$(readlink -e "$0")")
+-	;;
+-FreeBSD|OpenBSD|NetBSD)
+-	export FLAGS_GETOPT_CMD='/usr/local/bin/getopt'
+-	export GITFLOW_DIR=$(dirname "$(realpath "$0")")
+-	;;
+-Darwin)
+-	PRG="$0"
+-	while [ -h "$PRG" ]; do
+-		link=$(readlink "$PRG")
+-		if expr "$link" : '/.*' > /dev/null; then
+-			PRG="$link"
+-		else
+-			PRG="$(dirname "$PRG")/$link"
+-		fi
+-	done
+-	export GITFLOW_DIR=$(dirname "$PRG")
+-	;;
+-*MINGW*)
+-	export GITFLOW_DIR=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+-	pwd () {
+-		builtin pwd -W
+-	}
+-	;;
+-*)
+-	# The sed expression here replaces all backslashes by forward slashes.
+-	# This helps our Windows users, while not bothering our Unix users.)
+-	export GITFLOW_DIR=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+-	;;
+-esac
++# Setup GITFLOW_DIR
++GITFLOW_DIR="@PREFIX@/libexec/git-flow"
++export GITFLOW_DIR
+ 
+ # Extra environment settings
+ if [ -f ~/.gitflow_export ]; then
+--- a/Makefile
++++ b/Makefile
+@@ -30,6 +30,7 @@
+ 
+ datarootdir=$(prefix)/share
+ docdir=$(datarootdir)/doc/gitflow
++scriptdir=$(prefix)/libexec/git-flow
+ # files that need mode 755
+ EXEC_FILES=git-flow
+ 
+@@ -55,9 +56,10 @@
+ 
+ install:
+ 	install -d -m 0755 $(prefix)/bin
++	install -d -m 0755 $(scriptdir)
+ 	install -d -m 0755 $(docdir)/hooks
+ 	install -m 0755 $(EXEC_FILES) $(prefix)/bin
+-	install -m 0644 $(SCRIPT_FILES) $(prefix)/bin
++	install -m 0644 $(SCRIPT_FILES) $(scriptdir)
+ 	install -m 0644 $(HOOK_FILES) $(docdir)/hooks
+ 
+ uninstall:

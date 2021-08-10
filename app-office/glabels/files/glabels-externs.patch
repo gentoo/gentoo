@@ -1,0 +1,24 @@
+diff -up glabels-3.4.1/src/font-history.h.f32 glabels-3.4.1/src/font-history.h
+--- glabels-3.4.1/src/font-history.h.f32	2016-03-04 05:01:15.000000000 +0100
++++ glabels-3.4.1/src/font-history.h	2020-02-03 08:41:46.371176433 +0100
+@@ -28,7 +28,7 @@
+ G_BEGIN_DECLS
+ 
+ 
+-glFontHistoryModel *gl_font_history;
++extern glFontHistoryModel *gl_font_history;
+ 
+ 
+ void            gl_font_history_init (void);
+diff -up glabels-3.4.1/src/template-history.h.f32 glabels-3.4.1/src/template-history.h
+--- glabels-3.4.1/src/template-history.h.f32	2016-03-04 05:01:15.000000000 +0100
++++ glabels-3.4.1/src/template-history.h	2020-02-03 08:42:28.547175850 +0100
+@@ -28,7 +28,7 @@
+ G_BEGIN_DECLS
+ 
+ 
+-glTemplateHistoryModel *gl_template_history;
++extern glTemplateHistoryModel *gl_template_history;
+ 
+ 
+ void            gl_template_history_init (void);

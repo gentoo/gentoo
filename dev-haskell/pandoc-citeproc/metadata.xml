@@ -25,6 +25,6 @@
 		databases into CSL JSON and pandoc YAML metadata formats.
 		
 		pandoc-citeproc originated as a fork of Andrea
-		Rossato&#39;s citeproc-hs.
+		Rossato's citeproc-hs.
 	</longdescription>
 </pkgmetadata>

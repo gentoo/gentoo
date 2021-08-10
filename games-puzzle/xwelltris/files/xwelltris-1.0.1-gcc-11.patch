@@ -1,0 +1,11 @@
+--- a/src/sdl/sdlwelldrawing.cxx
++++ b/src/sdl/sdlwelldrawing.cxx
+@@ -72,7 +72,7 @@ void SDLWellDrawingEngine::init(int inum_fields, int idx, int idy,
+ 
+ 	fields[i]=SDL_DisplayFormat(surface);
+ 	SDL_FreeSurface(surface);
+-	if(fields[i]>0)
++	if(fields[i])
+ 	    clear_field(i);
+     }
+     bg_color=colors[BackColor];

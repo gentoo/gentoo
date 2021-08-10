@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 USE_RUBY="ruby26 ruby25"
 RUBY_OPTIONAL="yes"
 
@@ -34,7 +34,7 @@ LIB_DEPEND="
 	>=dev-libs/glib-2.32.0[static-libs(+)]
 	>=dev-libs/libzip-0.8:=[static-libs(+)]
 	cxx? ( dev-cpp/glibmm:2[static-libs(+)] )
-	ftdi? ( >=dev-embedded/libftdi-0.16:=[static-libs(+)] )
+	ftdi? ( dev-embedded/libftdi:1[static-libs(+)] )
 	parport? ( sys-libs/libieee1284[static-libs(+)] )
 	python? (
 		${PYTHON_DEPS}
@@ -45,7 +45,7 @@ LIB_DEPEND="
 	usb? ( virtual/libusb:1[static-libs(+)] )
 "
 RDEPEND="
-	java? ( >=virtual/jre-1.4 )
+	java? ( >=virtual/jre-1.8:* )
 	!static-libs? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	static-libs? ( ${LIB_DEPEND} )
 "
@@ -53,7 +53,7 @@ DEPEND="${LIB_DEPEND//\[static-libs(+)]}
 	cxx? ( app-doc/doxygen )
 	java? (
 		>=dev-lang/swig-3.0.6
-		>=virtual/jdk-1.4
+		>=virtual/jdk-1.8:*
 	)
 	python? (
 		>=dev-lang/swig-3.0.6

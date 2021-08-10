@@ -1,11 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+LUA_COMPAT=( lua5-{1..4} luajit )
+PYTHON_COMPAT=( python3_{7..9} )
 
-inherit meson mono-env python-single-r1 xdg
+inherit lua-single meson mono-env python-single-r1 xdg
 
 DESCRIPTION="Graphical IRC client based on XChat"
 HOMEPAGE="https://hexchat.github.io/"
@@ -16,13 +17,14 @@ if [[ "${PV}" == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 else
 	SRC_URI="https://dl.hexchat.net/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
 fi
 
 LICENSE="GPL-2 plugin-fishlim? ( MIT )"
 SLOT="0"
-IUSE="dbus debug +gtk libcanberra libnotify libproxy libressl lua perl plugin-checksum plugin-fishlim plugin-sysinfo python ssl theme-manager"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="dbus debug +gtk libcanberra libnotify libproxy lua perl plugin-checksum plugin-fishlim plugin-sysinfo python ssl theme-manager"
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
+	python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -36,14 +38,11 @@ RDEPEND="
 	libcanberra? ( media-libs/libcanberra )
 	libproxy? ( net-libs/libproxy )
 	libnotify? ( x11-libs/libnotify )
-	lua? ( dev-lang/lua:= )
+	lua? ( ${LUA_DEPS} )
 	perl? ( dev-lang/perl:= )
 	plugin-sysinfo? ( sys-apps/pciutils )
 	python? ( ${PYTHON_DEPS} )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	theme-manager? (
 		|| (
 			( dev-lang/mono[minimal] dev-dotnet/libgdiplus )
@@ -61,6 +60,7 @@ BDEPEND="
 "
 
 pkg_setup() {
+	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
 	if use theme-manager ; then
 		mono-env_pkg_setup
@@ -82,7 +82,7 @@ src_configure() {
 		-Ddbus-service-use-appid=false
 		-Dwith-checksum="$(usex plugin-checksum true false)"
 		-Dwith-fishlim="$(usex plugin-fishlim true false)"
-		-Dwith-lua="$(usex lua lua false)"
+		-Dwith-lua="$(usex lua ${ELUA} false)"
 		-Dwith-perl="$(usex perl "${EPREFIX}"/usr/bin/perl false)"
 		-Dwith-python="$(usex python "${EPYTHON/.*}" false)"
 		-Dwith-sysinfo="$(usex plugin-sysinfo true false)"

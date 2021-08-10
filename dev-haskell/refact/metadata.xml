@@ -5,8 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This library provides a datatype which can be interpreted by apply-refact. It exists
-		as a seperate library so that applications can specify refactorings without depending on GHC.
-	</longdescription>
 </pkgmetadata>

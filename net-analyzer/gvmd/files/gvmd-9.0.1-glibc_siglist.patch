@@ -1,0 +1,96 @@
+From ed07f5a23dd0644d0bbd3f2ddc1cec3b6ce922c6 Mon Sep 17 00:00:00 2001
+From: Timo Gurr <timo.gurr@gmail.com>
+Date: Tue, 1 Sep 2020 10:03:34 +0200
+Subject: [PATCH] Replace deprecated sys_siglist with strsignal
+
+Required to work with glibc >= 2.32.
+
+https://sourceware.org/pipermail/libc-announce/2020/000029.html
+
+  The deprecated arrays sys_siglist, _sys_siglist, and sys_sigabbrev
+  are no longer available to newly linked binaries, and their declarations
+  have been removed from <string.h>. They are exported solely as
+  compatibility symbols to support old binaries. All programs should use
+  strsignal instead.
+
+--- ./src/manage.c	2020-05-12 18:54:26.000000000 +0200
++++ ./src/manage.c	2020-10-27 13:32:20.423421085 +0100
+@@ -3283,7 +3283,7 @@
+               {
+                 g_debug ("%s: Received %s signal.",
+                          __FUNCTION__,
+-                         sys_siglist[get_termination_signal()]);
++                         strsignal(get_termination_signal()));
+               }
+             if (global_current_report)
+               {
+@@ -3305,7 +3305,7 @@
+         {
+           g_debug ("%s: Received %s signal.",
+                    __FUNCTION__,
+-                   sys_siglist[get_termination_signal()]);
++                   strsignal(get_termination_signal()));
+           if (global_current_report)
+             {
+               set_report_scan_run_status (global_current_report,
+--- ./src/gvmd.c	2020-05-12 18:54:26.000000000 +0200
++++ ./src/gvmd.c	2020-10-27 13:34:47.606424207 +0100
+@@ -922,7 +922,7 @@
+   if (sigaction (signal, &action, NULL) == -1)
+     {
+       g_critical ("%s: failed to register %s handler",
+-                  __FUNCTION__, sys_siglist[signal]);
++                  __FUNCTION__, strsignal(termination_signal));
+       exit (EXIT_FAILURE);
+     }
+ }
+@@ -953,7 +953,7 @@
+   if (sigaction (signal, &action, NULL) == -1)
+     {
+       g_critical ("%s: failed to register %s handler",
+-                  __FUNCTION__, sys_siglist[signal]);
++                  __FUNCTION__, strsignal(termination_signal));
+       exit (EXIT_FAILURE);
+     }
+ }
+@@ -1258,7 +1258,7 @@
+       if (termination_signal)
+         {
+           g_debug ("Received %s signal",
+-                   sys_siglist[termination_signal]);
++                   strsignal(termination_signal));
+           cleanup ();
+           /* Raise signal again, to exit with the correct return value. */
+           setup_signal_handler (termination_signal, SIG_DFL, 0);
+@@ -1347,7 +1347,7 @@
+       if (termination_signal)
+         {
+           g_debug ("Received %s signal",
+-                   sys_siglist[termination_signal]);
++                   strsignal(termination_signal));
+           cleanup ();
+           /* Raise signal again, to exit with the correct return value. */
+           setup_signal_handler (termination_signal, SIG_DFL, 0);
+--- ./src/manage_sql.c	2020-05-12 18:54:26.000000000 +0200
++++ ./src/manage_sql.c	2020-10-27 13:36:19.071426148 +0100
+@@ -18711,7 +18711,7 @@
+ void
+ manage_cleanup_process_error (int signal)
+ {
+-  g_debug ("Received %s signal", sys_siglist[signal]);
++  g_debug ("Received %s signal", strsignal(signal));
+   if (sql_is_open ())
+     {
+       if (current_scanner_task)
+--- ./src/gmpd.c	2020-05-12 18:54:26.000000000 +0200
++++ ./src/gmpd.c	2020-10-27 13:46:29.687439101 +0100
+@@ -496,8 +496,7 @@
+         {
+           g_debug ("%s: Received %s signal.",
+                    __FUNCTION__,
+-                   sys_siglist[get_termination_signal()]);
+-
++                   strsignal(get_termination_signal()));
+           goto client_free;
+         }
+ 

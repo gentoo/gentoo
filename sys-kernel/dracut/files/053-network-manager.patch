@@ -1,0 +1,24 @@
+From ba4bcf5f4f11ad624c647ddf4f566997186135e7 Mon Sep 17 00:00:00 2001
+From: Harald Hoyer <harald@redhat.com>
+Date: Wed, 31 Mar 2021 16:11:41 +0200
+Subject: [PATCH] fix(network-manager): no default deps for nm-run.service
+
+Otherwise nm-run.service will run only in basic.target, which is too
+late in the initramfs.
+---
+ modules.d/35network-manager/nm-run.service | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/modules.d/35network-manager/nm-run.service b/modules.d/35network-manager/nm-run.service
+index 63fe7564d0..f3493c41a3 100644
+--- a/modules.d/35network-manager/nm-run.service
++++ b/modules.d/35network-manager/nm-run.service
+@@ -2,6 +2,8 @@
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ [Unit]
++DefaultDependencies=no
++
+ #make sure all devices showed up
+ Wants=systemd-udev-settle.service
+ After=systemd-udev-settle.service

@@ -5,7 +5,7 @@
         <email>titanofold@gentoo.org</email>
         <name>Aaron W. Swenson</name>
     </maintainer>
-    <maintainer type="person">
+    <maintainer type="person" proxied="yes">
         <email>stefantalpalaru@yahoo.com</email>
         <name>Ștefan Talpalaru</name>
     </maintainer>

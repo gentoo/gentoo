@@ -1,0 +1,24 @@
+--- a/src/dial.c
++++ b/src/dial.c
+@@ -39,11 +39,9 @@
+ #include "intl.h"
+ 
+ #ifdef VC_MUSIC
+-#  if defined(__GLIBC__)
+ #    include <sys/ioctl.h>
+ #    include <sys/kd.h>
+ #    include <sys/time.h>
+-#  endif
+ #endif
+ 
+ enum { CURRENT_VERSION = 6 };
+--- a/src/getsdir.h
++++ b/src/getsdir.h
+@@ -22,6 +22,7 @@
+  *	and licensing conditions.  See the source, Luke.
+  */
+ 
++#include <sys/param.h>
+ #include <dirent.h>
+ 
+ typedef struct dirEntry {		/* structure of data item */

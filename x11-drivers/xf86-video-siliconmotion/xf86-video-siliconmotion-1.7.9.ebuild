@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit xorg-2
+EAPI=7
+
+inherit xorg-3
 
 DESCRIPTION="Silicon Motion video driver"
 
 KEYWORDS="amd64 ~mips x86"
-IUSE=""
 
-RDEPEND=">=x11-base/xorg-server-1.0.99"
+RDEPEND="x11-base/xorg-server"
 DEPEND="${RDEPEND}"

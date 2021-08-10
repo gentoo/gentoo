@@ -1,20 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils flag-o-matic toolchain-funcs vcs-clean
+inherit epatch flag-o-matic toolchain-funcs vcs-clean
 
 DESCRIPTION="Snort plugin that allows automated blocking of IP addresses on several firewalls"
 HOMEPAGE="http://www.snortsam.net/"
 SRC_URI="http://www.snortsam.net/files/snortsam/${PN}-src-${PV}.tar.gz"
+S="${WORKDIR}"/${PN}
 
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 IUSE="debug"
-
-S=${WORKDIR}/${PN}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gentoo.patch

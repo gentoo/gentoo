@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Check whether Perl files compile correctly"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~ia64 ppc sparc x86"
 IUSE="minimal test"
 RESTRICT="!test? ( test )"
 

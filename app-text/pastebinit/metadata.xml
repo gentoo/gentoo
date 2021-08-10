@@ -2,6 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!--maintainer-needed-->
+	<stabilize-allarches/>
 	<use>
 		<flag name="crypt">Install pbputs for gpg-encrypted pastes</flag>
 	</use>

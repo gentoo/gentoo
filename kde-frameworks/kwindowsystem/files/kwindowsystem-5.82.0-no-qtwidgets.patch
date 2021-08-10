@@ -1,0 +1,75 @@
+From 374a29075694f530d2d0673e33a166c836d02a84 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 2 May 2021 12:38:58 +0200
+Subject: [PATCH] Drop Qt5Widgets dependency if KWINDOWSYSTEM_NO_WIDGETS=ON
+
+Use existing option to do that. Dependency remains for autotests/tests.
+---
+ CMakeLists.txt                 | 5 ++++-
+ KF5WindowSystemConfig.cmake.in | 5 ++++-
+ autotests/CMakeLists.txt       | 2 +-
+ tests/CMakeLists.txt           | 2 +-
+ 4 files changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 49eb05a..ecf98a1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -48,7 +48,10 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KWINDOWSYSTEM
+ 
+ # Dependencies
+ set(REQUIRED_QT_VERSION 5.15.0)
+-find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Gui Widgets)
++find_package(Qt5Gui ${REQUIRED_QT_VERSION} CONFIG REQUIRED)
++if(NOT KWINDOWSYSTEM_NO_WIDGETS)
++    find_package(Qt5Widgets ${REQUIRED_QT_VERSION} CONFIG REQUIRED)
++endif()
+ 
+ if (APPLE)
+     cmake_find_frameworks(Carbon)
+diff --git a/KF5WindowSystemConfig.cmake.in b/KF5WindowSystemConfig.cmake.in
+index 8267ef4..6c1b4c0 100644
+--- a/KF5WindowSystemConfig.cmake.in
++++ b/KF5WindowSystemConfig.cmake.in
+@@ -1,8 +1,11 @@
+ @PACKAGE_INIT@
+ 
+ include(CMakeFindDependencyMacro)
+-find_dependency(Qt5Widgets @REQUIRED_QT_VERSION@)
++find_dependency(Qt5Gui @REQUIRED_QT_VERSION@)
+ 
++if(NOT @KWINDOWSYSTEM_NO_WIDGETS@)
++find_dependency(Qt5Widgets @REQUIRED_QT_VERSION@)
++endif()
+ 
+ include("${CMAKE_CURRENT_LIST_DIR}/KF5WindowSystemTargets.cmake")
+ @PACKAGE_INCLUDE_QCHTARGETS@
+diff --git a/autotests/CMakeLists.txt b/autotests/CMakeLists.txt
+index c1121a7..c964947 100644
+--- a/autotests/CMakeLists.txt
++++ b/autotests/CMakeLists.txt
+@@ -6,7 +6,7 @@ add_definitions(-DAUTOTEST_BUILD_DIR="${CMAKE_CURRENT_BINARY_DIR}")
+ include(ECMMarkAsTest)
+ include(ECMAddTests)
+ 
+-find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Test)
++find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Test Widgets)
+ 
+ add_subdirectory(helper)
+ 
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index c0865d9..c72eb1f 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -3,7 +3,7 @@ remove_definitions(-DQT_NO_CAST_TO_ASCII)
+ 
+ include(ECMMarkAsTest)
+ 
+-find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Test)
++find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Test Widgets)
+ 
+ macro(kwindowsystem_executable_tests)
+   foreach(_testname ${ARGN})
+-- 
+GitLab
+

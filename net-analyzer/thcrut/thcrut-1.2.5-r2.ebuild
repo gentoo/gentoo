@@ -10,7 +10,7 @@ SRC_URI="https://github.com/vanhauser-thc/THC-Archive/raw/master/Tools/${P}.tar.
 
 LICENSE="free-noncomm PCRE GPL-1+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 
 DEPEND="
 	dev-libs/libpcre

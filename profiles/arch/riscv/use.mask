@@ -1,18 +1,26 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -riscv
 
-# Our Python has a lot of trouble with the two-level libdir.
-python_targets_python2_7
-python_targets_python3_6
-python_single_target_python2_7
-python_single_target_python3_6
+# Unmask systemd
+-systemd
 
-# Ben Kohler <bkohler@gentoo.org> (2019-01-09)
-# no fam providers keyworded yet
-fam
+# Yixun Lan <dlan@gentoo.org> (2021-05-19)
+# Unmask for more testing
+-elogind
+-gtk
+-gtk2
+-gtk3
+-introspection
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-05)
+# dev-lang/lua:5.2 and dev-lang/luajit known not to work here
+lua_single_target_lua5-2
+lua_single_target_luajit
+lua_targets_lua5-2
+lua_targets_luajit
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-11-27)
 # valgrind has no RISCV port.
@@ -20,29 +28,57 @@ valgrind
 
 # Not tested yet
 bluetooth
-dbus
-elogind
 emacs
-fontconfig
 fuse
-gtk
-gtk2
-gtk3
-introspection
+jack
 java
-kerberos
 latex
 libedit
-libressl
-lua
+mono
+motif
+opencl
 qt5
-ruby
+pulseaudio
+rsh
 slang
 sound
-systemtap
-X
+webkit
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependencies not keyworded.
 appindicator
 ayatana
+
+# not supported / tested cards
+
+video_cards_ast
+video_cards_dummy
+video_cards_freedreno
+video_cards_geode
+video_cards_glint
+video_cards_i915
+video_cards_i965
+video_cards_intel
+video_cards_mga
+video_cards_nv
+video_cards_omap
+video_cards_qxl
+video_cards_r128
+video_cards_radeonsi
+video_cards_siliconmotion
+video_cards_tegra
+video_cards_vc4
+video_cards_vesa
+video_cards_via
+video_cards_virtualbox
+video_cards_vmware
+video_cards_nvidia
+
+# input devices
+
+input_devices_elographics
+input_devices_joystick
+input_devices_vmmouse
+input_devices_void
+input_devices_synaptics
+input_devices_wacom

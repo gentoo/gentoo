@@ -1,5 +1,21 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-02-09)
+# Requires net-libs/nodejs, plus mask all reverse-dependencies.
+app-i18n/fcitx-libpinyin dictionary-manager
+games-util/lgogdownloader gui
+kde-apps/kde-apps-meta:5 pim
+kde-apps/kdenetwork-meta:5 bittorrent
+kde-apps/umbrello:5 php
+kde-misc/kio-gdrive kaccounts
+media-gfx/gmic krita
+net-irc/quassel urlpreview
+net-misc/fatrat bittorrent
+net-misc/seafile-client shibboleth
+sci-geosciences/gpsbabel gui
+sci-mathematics/yacas gui
+sci-physics/root qt5
 
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-05)
 # sys-cluster/ceph no longer supports x86, versions that support
@@ -30,6 +46,7 @@ dev-ruby/tilt test
 net-analyzer/netdata nodejs
 www-apps/gitea build-client
 www-apps/jekyll test
+dev-python/QtPy test
 
 # Davide Pesavento <pesa@gentoo.org> (2011-11-30)
 # The QML (V4) and JSC JITs do not work on x32.

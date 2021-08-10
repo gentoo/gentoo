@@ -10,6 +10,6 @@
 		Liblarch supports multiple views of one data structure and complex filtering. That way, you have a clear separation between your data themselves (Model) and how they are displayed (View).
 	</longdescription>
 	<upstream>
-		<remote-id type="github">liblarch/liblarch</remote-id>
+		<remote-id type="github">getting-things-gnome/liblarch</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -13,4 +13,11 @@
     <bugs-to>https://github.com/mgorny/python-exec/issues/</bugs-to>
     <remote-id type="github">mgorny/python-exec</remote-id>
   </upstream>
+  <use>
+    <flag name="native-symlinks">
+      Install generic symlinks like python and python3.  If this flag
+      is disabled, only versioned python3.X executables will
+      be available to end users and ebuilds not using python eclasses.
+    </flag>
+  </use>
 </pkgmetadata>

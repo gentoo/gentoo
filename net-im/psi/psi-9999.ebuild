@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 PLOCALES="be bg ca cs de el en eo es et fa fi fr he hu it ja kk mk nl pl pt_BR pt ru sk sl sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit git-r3 cmake l10n qmake-utils xdg
+inherit git-r3 cmake plocale qmake-utils xdg
 
 DESCRIPTION="Qt XMPP client"
 HOMEPAGE="https://psi-im.org"
@@ -20,7 +20,7 @@ EGIT_MIN_CLONE_TYPE="single"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets keyring webengine webkit xscreensaver"
+IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets keyring webengine xscreensaver"
 
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
@@ -47,6 +47,7 @@ DEPEND="
 	dev-qt/qtxml:5
 	net-dns/libidn:0
 	net-libs/http-parser:=
+	net-libs/usrsctp
 	sys-libs/zlib[minizip]
 	x11-libs/libX11
 	x11-libs/libxcb
@@ -60,7 +61,6 @@ DEPEND="
 		dev-qt/qtwebengine:5[widgets]
 		net-libs/http-parser
 	)
-	webkit? ( dev-qt/qtwebkit:5 )
 "
 RDEPEND="${DEPEND}
 	dev-qt/qtimageformats
@@ -113,10 +113,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local chattype=basic
-	use webengine && chattype=webengine
-	use webkit && chattype=webkit
-
 	local mycmakeargs=(
 		-DPRODUCTION=OFF
 		-DUSE_ASPELL=$(usex aspell)
@@ -125,7 +121,7 @@ src_configure() {
 		-DUSE_DBUS=$(usex dbus)
 		-DINSTALL_PLUGINS_SDK=1
 		-DUSE_KEYCHAIN=$(usex keyring)
-		-DCHAT_TYPE=$chattype
+		-DCHAT_TYPE=$(usex webengine webengine basic)
 		-DUSE_XSS=$(usex xscreensaver)
 		-DPSI_PLUS=$(usex extras)
 	)
@@ -158,7 +154,7 @@ src_install() {
 		"${mylrelease}" "translations/${PN}_${1}.ts" || die "lrelease ${1} failed"
 		doins "translations/${PN}_${1}.qm"
 	}
-	l10n_for_each_locale_do install_locale
+	plocale_for_each_locale install_locale
 }
 
 pkg_postinst() {

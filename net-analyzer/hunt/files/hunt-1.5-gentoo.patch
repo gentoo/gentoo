@@ -8,7 +8,10 @@
  
 --- a/tpserv/Makefile
 +++ b/tpserv/Makefile
-@@ -3,7 +3,7 @@
+@@ -1,9 +1,8 @@
+-CFLAGS=-Wall -O2 -g
+-
++CFLAGS += -Wall
  all: tpserv
  
  tpserv: tpserv.o

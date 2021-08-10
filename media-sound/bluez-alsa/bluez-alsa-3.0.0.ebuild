@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/Arkq/${PN}"
 else
 	SRC_URI="https://github.com/Arkq/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="MIT"
@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 # bluez-alsa does not directly link to upower but
 # is using the upower interface via dbus calls.
 RDEPEND="
-	>=dev-libs/glib-2.26[dbus,${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.26[${MULTILIB_USEDEP}]
 	>=media-libs/alsa-lib-1.1.2[${MULTILIB_USEDEP}]
 	>=media-libs/sbc-1.2[${MULTILIB_USEDEP}]
 	>=net-wireless/bluez-5.0[${MULTILIB_USEDEP}]

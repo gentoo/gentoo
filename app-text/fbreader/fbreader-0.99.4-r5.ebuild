@@ -1,13 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic qmake-utils
+inherit qmake-utils xdg
 
 DESCRIPTION="E-Book Reader. Supports many e-book formats"
 HOMEPAGE="https://www.fbreader.org/"
-SRC_URI="https://www.fbreader.org/files/desktop/${PN}-sources-${PV}.tgz"
+SRC_URI="https://www.fbreader.org/files/desktop/${PN}-sources-${PV}.tgz
+	https://dev.gentoo.org/~juippis/distfiles/tmp/fbreader-0.99.4-combined.patch"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -33,12 +34,10 @@ BDEPEND="
 "
 
 # bugs #452636, #515698, #516794, #437262, #592588
-PATCHES=( "${FILESDIR}"/${P}-combined.patch )
+PATCHES=( "${DISTDIR}"/${P}-combined.patch )
 
 src_prepare() {
 	default
-
-	append-cflags -std=c++11
 
 	# Let portage decide about the compiler
 	sed -e "/^CC = /d" \

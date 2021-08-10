@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>flow@gentoo.org</email>
+	<name>Florian Schmaus</name>
+</maintainer>
+<use>
+	<flag name="launcher">Install the launcher</flag>
+</use>
+</pkgmetadata>

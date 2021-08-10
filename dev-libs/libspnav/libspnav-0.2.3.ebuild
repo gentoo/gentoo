@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit multilib toolchain-funcs
+inherit toolchain-funcs
 
 MY_PN='spacenav'
 DESCRIPTION="libspnav is a replacement for the magellan library with a cleaner API"
@@ -34,7 +34,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)"
+	emake AR="$(tc-getAR)" CC="$(tc-getCC)"
 }
 
 src_install() {

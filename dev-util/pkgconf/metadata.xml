@@ -9,6 +9,9 @@
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+	</maintainer>
 	<slots>
 		<subslots>SONAME version of libpkgconf</subslots>
 	</slots>

@@ -1,0 +1,284 @@
+diff --git a/build.xml b/build.xml
+index 8338af0..db9eec8 100644
+--- a/build.xml
++++ b/build.xml
+@@ -1034,6 +1034,7 @@
+       addOSGi="true" />
+ 
+     <!-- Servlet Implementation JAR File -->
++<!--
+     <jarIt jarfile="${servlet-api.jar}"
+       filesDir="${tomcat.classes}"
+       filesId="files.servlet-api"
+@@ -1041,21 +1042,23 @@
+       notice="${tomcat.manifests}/servlet-api.jar.notice"
+       license="${tomcat.manifests}/servlet-api.jar.license"
+       addOSGi="true" />
+-
++-->
+     <!-- EL Implementation JAR File -->
++<!--
+     <jarIt jarfile="${el-api.jar}"
+       filesDir="${tomcat.classes}"
+       filesId="files.el-api"
+       manifest="${tomcat.manifests}/el-api.jar.manifest"
+       addOSGi="true" />
+-
++-->
+     <!-- JSP Implementation JAR File -->
++<!--
+     <jarIt jarfile="${jsp-api.jar}"
+       filesDir="${tomcat.classes}"
+       filesId="files.jsp-api"
+       manifest="${tomcat.manifests}/jsp-api.jar.manifest"
+       addOSGi="true" />
+-
++-->
+     <!-- WebSocket API JAR File -->
+     <jarIt jarfile="${websocket-api.jar}"
+       filesDir="${tomcat.classes}"
+@@ -1168,10 +1171,10 @@
+       addOSGi="true" />
+ 
+     <!-- Re-packaged Apache Commons DBCP 2-->
+-    <jarIt jarfile="${tomcat-dbcp.jar}"
++<!--    <jarIt jarfile="${tomcat-dbcp.jar}"
+       filesDir="${tomcat.classes}"
+       filesId="files.tomcat-dbcp"
+-      addOSGi="true" />
++      addOSGi="true" /> -->
+ 
+     <!-- i18n JARs -->
+     <jar jarfile="${tomcat.build}/lib/tomcat-i18n-cs.jar"
+@@ -1399,9 +1402,9 @@
+ 
+   <target name="deploy" depends="package,build-docs,build-tomcat-jdbc,compile-webapp-examples"
+           description="Default. Builds a working Tomcat instance">
+-
++<!--
+     <copy tofile="${tomcat.build}/bin/commons-daemon.jar" file="${commons-daemon.jar}" />
+-
++-->
+     <!-- Copy scripts -->
+     <copy todir="${tomcat.build}/bin">
+       <fileset dir="bin">
+@@ -1461,7 +1464,7 @@
+         <exclude name="${jdt.jar.filename}"/>
+       </fileset>
+     </delete>
+-    <copy file="${jdt.jar}" todir="${tomcat.build}/lib"/>
++<!--    <copy file="${jdt.jar}" todir="${tomcat.build}/lib"/> -->
+ 
+     <!-- Delete all other versions of Tomcat Migration Tool for Jakarta EE and copy the current one -->
+     <local name="migration.jar.filename" />
+@@ -1472,7 +1475,7 @@
+         <exclude name="${migration-lib.jar.filename}"/>
+       </fileset>
+     </delete>
+-    <copy file="${migration-lib.jar}" todir="${tomcat.build}/lib"/>
++<!--    <copy file="${migration-lib.jar}" todir="${tomcat.build}/lib"/> -->
+ 
+     <!-- Add sources for examples -->
+     <antcall target="examples-sources" />
+@@ -1515,7 +1518,7 @@
+ 
+   </target>
+ 
+-  <target name="build-tomcat-jdbc" depends="package">
++  <target name="build-tomcat-jdbc" depends="package" unless="noget">
+     <!-- build the jdbc-pool jar and source jar-->
+     <echo message="Building Tomcat JDBC pool libraries"/>
+     <ant antfile="${tomcat.jdbc.dir}/build.xml" dir="${tomcat.jdbc.dir}"
+@@ -1530,7 +1533,7 @@
+     <copy file="${tomcat-jdbc.jar}" todir="${tomcat.build}/lib"/>
+   </target>
+ 
+-  <target name="build-tomcat-jdbc-src">
++  <target name="build-tomcat-jdbc-src" unless="noget">
+     <!-- build the jdbc-pool source jar-->
+     <echo message="Building Tomcat JDBC pool src JAR"/>
+     <ant antfile="${tomcat.jdbc.dir}/build.xml" dir="${tomcat.jdbc.dir}"
+@@ -1633,9 +1636,11 @@
+ 
+     <copy file="${basedir}/LICENSE" todir="${tomcat.embed}" />
+     <copy file="${basedir}/NOTICE" todir="${tomcat.embed}" />
++<!--
+     <copy file="${tomcat-dbcp.jar}" todir="${tomcat.embed}"
+       failonerror="false"/>
+     <copy file="${jdt.jar}" todir="${tomcat.embed}" />
++-->
+     <copy file="${annotations-api.jar}" todir="${tomcat.embed}" />
+ 
+     <!-- Note the meta-inf below will work as long as there is only one JAR
+@@ -2209,11 +2214,12 @@
+     </copy>
+ 
+     <!-- Source bundles for native components -->
++<!--
+     <copy tofile="${tomcat.dist}/bin/tomcat-native.tar.gz"
+             file="${tomcat-native.tar.gz}" />
+     <copy tofile="${tomcat.dist}/bin/commons-daemon-native.tar.gz"
+             file="${commons-daemon.native.src.tgz}" />
+-
++-->
+     <!-- platform README files -->
+     <echo append="false" file="${tomcat.dist}/bin/x64/README">
+ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
+@@ -2244,6 +2250,7 @@ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
+         <path location="${ant.core.lib}"/>
+       </classpath>
+     </javadoc>
++<!--
+     <javadoc packagenames="jakarta.servlet.*"
+       excludepackagenames="jakarta.servlet.jsp.*"
+       sourcepath="${tomcat.dist}/src/java"
+@@ -2308,6 +2315,7 @@ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
+         <path location="${ant.core.lib}"/>
+       </classpath>
+     </javadoc>
++-->
+     <javadoc packagenames="jakarta.websocket.*"
+       sourcepath="${tomcat.dist}/src/java"
+       destdir="${tomcat.dist}/webapps/docs/websocketapi"
+@@ -2370,13 +2378,17 @@ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
+         <path location="${osgi-annotations.jar}"/>
+       </classpath>
+       <link href="../annotationapi"/>
++<!--
+       <link href="../servletapi"/>
+       <link href="../jspapi"/>
+       <link href="../elapi"/>
++-->
+       <link href="../websocketapi"/>
+       <link href="../jaspicapi"/>
++<!--
+       <link href="https://docs.oracle.com/javase/8/docs/api/"/>
+       <link href="https://javaee.github.io/javaee-spec/javadocs/"/>
++-->
+       <packageset dir="${tomcat.dist}/src/java/">
+         <include name="org/**"/>
+         <exclude name="org/apache/el/parser/**"/>
+@@ -3150,7 +3162,7 @@ skip.installer property in build.properties" />
+   </target>
+ 
+   <target name="download-test-compile"
+-          description="Download additional components for the tests" >
++          description="Download additional components for the tests">
+ 
+     <antcall target="downloadfile">
+       <param name="sourcefile" value="${junit.loc}"/>
+@@ -3228,7 +3240,7 @@ skip.installer property in build.properties" />
+   </target>
+ 
+   <target name="download-dist"
+-          description="Download additional components for a distribution" >
++          description="Download additional components for a distribution">
+ 
+     <antcall target="downloadfile-2">
+       <param name="sourcefile.1" value="${tomcat-native.loc.1}"/>
+@@ -3283,13 +3295,13 @@ skip.installer property in build.properties" />
+ 
+   <!-- =============== Utility Targets to support downloads ================ -->
+ 
+-  <target name="setproxy" if="${proxy.use}">
++  <target name="setproxy" if="${proxy.use}" unless="noget">
+     <setproxy proxyhost="${proxy.host}" proxyport="${proxy.port}"
+               proxyuser="${proxy.user}" proxypassword="${proxy.password}" />
+     <echo message="Using ${proxy.host}:${proxy.port} to download ${sourcefile}"/>
+   </target>
+ 
+-  <target name="testexist">
++  <target name="testexist" unless="noget">
+     <echo message="Testing  for ${destfile}"/>
+     <available file="${destfile}" property="exist"/>
+   </target>
+@@ -3411,7 +3423,7 @@ skip.installer property in build.properties" />
+     </sequential>
+   </macrodef>
+ 
+-  <target name="downloadgz" unless="exist" if="${execute.download}" depends="testexist,setproxy">
++  <target name="downloadgz" unless="noget" if="${execute.download}" depends="testexist,setproxy">
+     <!-- Download and extract the package -->
+     <local name="temp.file"/>
+     <mkdir dir="${base.path}"/>
+@@ -3428,7 +3440,7 @@ skip.installer property in build.properties" />
+     <delete file="${temp.file}.tar.gz"/>
+   </target>
+ 
+-  <target name="downloadgz-2" unless="exist" if="${execute.download}" depends="testexist">
++  <target name="downloadgz-2" unless="noget" if="${execute.download}" depends="testexist">
+     <!-- Download and extract the package from the two alternative locations -->
+     <local name="temp.file"/>
+     <mkdir dir="${base.path}"/>
+@@ -3453,7 +3465,7 @@ skip.installer property in build.properties" />
+     <delete file="${temp.file}.tar.gz"/>
+   </target>
+ 
+-  <target name="downloadzip" unless="exist" if="${execute.download}" depends="testexist,setproxy">
++  <target name="downloadzip" unless="noget" if="${execute.download}" depends="testexist,setproxy">
+     <!-- Download and extract the package -->
+     <local name="temp.file"/>
+     <mkdir dir="${base.path}"/>
+@@ -3469,7 +3481,7 @@ skip.installer property in build.properties" />
+     <delete file="${temp.file}"/>
+   </target>
+ 
+-  <target name="downloadzip-2" unless="exist" if="${execute.download}" depends="testexist">
++  <target name="downloadzip-2" unless="noget" if="${execute.download}" depends="testexist">
+     <!-- Download and extract the package from the two alternative locations -->
+     <local name="temp.file"/>
+     <mkdir dir="${base.path}"/>
+@@ -3493,7 +3505,7 @@ skip.installer property in build.properties" />
+     <delete file="${temp.file}"/>
+   </target>
+ 
+-  <target name="downloadfile" unless="exist" if="${execute.download}" depends="testexist,setproxy">
++  <target name="downloadfile" unless="noget" if="${execute.download}" depends="testexist,setproxy">
+     <!-- Download the file -->
+     <local name="temp.file"/>
+     <mkdir dir="${base.path}"/>
+@@ -3508,7 +3520,7 @@ skip.installer property in build.properties" />
+     <move file="${temp.file}" tofile="${destfile}"/>
+   </target>
+ 
+-  <target name="downloadfile-2" unless="exist" if="${execute.download}" depends="testexist">
++  <target name="downloadfile-2" unless="noget" if="${execute.download}" depends="testexist">
+     <!-- Download the file from the two alternative locations -->
+     <local name="temp.file"/>
+     <mkdir dir="${base.path}"/>
+@@ -3536,7 +3548,7 @@ skip.installer property in build.properties" />
+     <move file="${temp.file}" tofile="${destfile}"/>
+   </target>
+ 
+-  <target name="trydownload.check" depends="setproxy">
++  <target name="trydownload.check" depends="setproxy" unless="noget">
+     <condition property="trydownload.run">
+       <and>
+         <not>
+@@ -3547,7 +3559,7 @@ skip.installer property in build.properties" />
+     </condition>
+   </target>
+ 
+-  <target name="trydownload" if="trydownload.run" depends="trydownload.check">
++  <target name="trydownload" if="trydownload.run" depends="trydownload.check" unless="noget">
+     <!-- Downloads a file if not yet downloaded and the source URL is available -->
+     <get src="${sourcefile}" httpusecaches="${trydownload.httpusecaches}" dest="${destfile}" />
+   </target>
+@@ -3558,7 +3570,7 @@ skip.installer property in build.properties" />
+ 
+   <target name="ide-eclipse"
+           depends="download-compile, download-test-compile"
+-          description="Prepares the source tree to be built in Eclipse">
++          description="Prepares the source tree to be built in Eclipse" unless="noget">
+ 
+     <!-- Copy the sample project files into the root directory -->
+     <copy file="${tomcat.home}/res/ide-support/eclipse/eclipse.project" tofile="${tomcat.home}/.project"/>
+@@ -3576,7 +3588,7 @@ Read the Building page on the Apache Tomcat documentation site for details on ho
+ 
+   <target name="ide-intellij"
+           depends="download-compile, download-test-compile"
+-          description="Creates project directory .idea for IntelliJ IDEA">
++          description="Creates project directory .idea for IntelliJ IDEA" unless="noget">
+ 
+     <copy todir="${tomcat.home}/.idea">
+       <fileset dir="${tomcat.home}/res/ide-support/idea"/>

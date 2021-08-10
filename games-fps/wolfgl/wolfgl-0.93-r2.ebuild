@@ -1,12 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 #ECVS_SERVER="wolfgl.cvs.sourceforge.net:/cvsroot/wolfgl"
 #ECVS_MODULE="wolfgl"
 #inherit cvs
-
-inherit eutils
 
 DESCRIPTION="Wolfenstein and Spear of Destiny port using OpenGL"
 HOMEPAGE="http://wolfgl.sourceforge.net/"

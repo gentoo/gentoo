@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -18,16 +18,16 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="caps pcre systemd tcpd"
+IUSE="caps systemd tcpd"
 
 RDEPEND="caps? ( sys-libs/libcap )
 	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )
-	>=dev-libs/libconfig-1.5"
+	>=dev-libs/libconfig-1.5:=
+	dev-libs/libpcre2:="
 DEPEND="${RDEPEND}
 	dev-util/conf2struct
-	dev-lang/perl
-	pcre? ( dev-libs/libpcre:= )"
+	dev-lang/perl"
 
 RESTRICT="test"
 
@@ -49,7 +49,6 @@ src_compile() {
 
 	emake \
 		CC="$(tc-getCC)" \
-		USELIBPCRE=$(usev pcre) \
 		USELIBCAP=$(usev caps) \
 		USELIBWRAP=$(usev tcpd) \
 		USESYSTEMD=$(usev systemd)

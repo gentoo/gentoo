@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		This text is based on the Westminster Leningrad Codex, tagged with Strong's numbers, and maintained by OpenScriptures.org. OpenScriptures is currently adding morphology tagging. To contribute to this effort or follow its progress, see https://groups.google.com/forum/#!forum/openscriptures-hb.
 	</longdescription>

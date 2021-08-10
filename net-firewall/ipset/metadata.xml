@@ -4,7 +4,6 @@
 	<maintainer type="project">
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
-		<description>Please assign bugs to this mail alias.</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>robbat2@gentoo.org</email>

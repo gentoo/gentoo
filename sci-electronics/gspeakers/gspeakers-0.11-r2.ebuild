@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 GCONF_DEBUG="no"
 
-inherit autotools eutils flag-o-matic gnome2
+inherit autotools epatch flag-o-matic gnome2
 
 DESCRIPTION="GTK based loudspeaker enclosure and crossovernetwork designer"
 HOMEPAGE="http://gspeakers.sourceforge.net/"

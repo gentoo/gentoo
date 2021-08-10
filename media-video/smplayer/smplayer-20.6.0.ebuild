@@ -1,4 +1,4 @@
-# Copyright 2007-2020 Gentoo Authors
+# Copyright 2007-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ he_IL hr hu id it ja ka ko ku lt mk ms_MY nl nn_NO pl pt_BR pt ro_RO ru_RU
 sk sl_SI sq_AL sr sv th tr uk_UA uz vi_VN zh_CN zh_TW"
 PLOCALE_BACKUP="en_US"
 
-inherit l10n qmake-utils toolchain-funcs xdg
+inherit plocale qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="Great Qt GUI front-end for mplayer/mpv"
 HOMEPAGE="https://www.smplayer.eu/"
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86 ~amd64-linux"
 IUSE="autoshutdown bidi debug mpris"
 
 BDEPEND="dev-qt/linguist-tools:5"
@@ -34,7 +34,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	|| (
-		media-video/mpv[libass,X]
+		media-video/mpv[libass(+),X]
 		media-video/mplayer[bidi?,libass,png,X]
 	)
 "
@@ -86,7 +86,7 @@ src_prepare() {
 	fi
 
 	# Commented out because it gives false positives
-	#l10n_find_plocales_changes "${S}"/src/translations ${PN}_ .ts
+	#plocale_find_changes "${S}"/src/translations ${PN}_ .ts
 
 	# Do not default compress man page
 	sed '/gzip -9.*\.1$/d' -i Makefile || die
@@ -110,7 +110,7 @@ src_compile() {
 	emake CC="$(tc-getCC)"
 
 	cd src/translations || die
-	l10n_for_each_locale_do gen_translation
+	plocale_for_each_locale gen_translation
 }
 
 src_install() {

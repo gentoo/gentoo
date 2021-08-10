@@ -1,0 +1,50 @@
+From 637cc045ee464909c261d6fa16c71ed15cd455e3 Mon Sep 17 00:00:00 2001
+From: Alex Xu <351006+Hello71@users.noreply.github.com>
+Date: Wed, 16 Jun 2021 13:58:25 +0000
+Subject: [PATCH] build-sys: Update configure.ac
+
+1. the test incorrectly used AC_COMPILE_IFELSE instead of
+   AC_LINK_IFELSE, defeating the purpose of checking -lcrypt.
+2. the test did not properly restore LIBS, causing later checks to all
+   fail if libcrypt wasn't found.
+3. HAVE_LIBCRYPT only controls whether to use -lcrypt, it is not
+   needed or used in any source files.
+
+[kzak@redhat.com: - improve commit message
+                  - use UL_{SET,RESTORE}_FLAGS() rather than directly
+		    modify $LIBS]
+
+Signed-off-by: Karel Zak <kzak@redhat.com>
+---
+ configure.ac | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 5181d524c..939c6d2d3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -845,8 +845,8 @@ char *c = crypt("abc","pw");
+   have_libcrypt=no
+   have_crypt=yes
+ ],[
+-  LIBS="$LIBS -lcrypt"
+-  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++  UL_SET_FLAGS([], [], [-lcrypt])
++  AC_LINK_IFELSE([AC_LANG_PROGRAM([[
+   #ifdef HAVE_CRYPT_H
+   #include <crypt.h>
+   #else
+@@ -856,12 +856,12 @@ char *c = crypt("abc","pw");
+   ]], [[
+   char *c = crypt("abc","pw");
+   ]])],[
+-  AC_DEFINE([HAVE_LIBCRYPT], [1], [Do we need -lcrypt?])
+   have_libcrypt=yes
+   have_crypt=yes
+   ],[
+   AC_MSG_WARN([crypt() is not available])
+   ])
++  UL_RESTORE_FLAGS
+ ])
+ AM_CONDITIONAL([HAVE_LIBCRYPT], [test "x$have_libcrypt" = xyes])
+ 

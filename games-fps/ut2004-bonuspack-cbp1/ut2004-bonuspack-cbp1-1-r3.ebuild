@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="UT2003 Community Bonus Pack for UT2004 Volume 1"
 HOMEPAGE="https://liandri.beyondunreal.com/Unreal_Tournament_2004"
-SRC_URI="https://ut2004.ut-files.com/BonusPacks/cbp1.zip"
+SRC_URI="http://ut2004.ut-files.com/BonusPacks/cbp1.zip"
 LICENSE="free-noncomm"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

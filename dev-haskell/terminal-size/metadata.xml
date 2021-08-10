@@ -5,9 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Get terminal window height and width without ncurses dependency
-		
-		Only tested to work on GNU/Linux systems
-	</longdescription>
 </pkgmetadata>

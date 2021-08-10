@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,14 +24,15 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1-respect-CFLAGS-LDFLAGS.patch
 	"${FILESDIR}"/${PN}-3.1-create-destdir-path.patch
 	"${FILESDIR}"/add-freebsd-elf-defs.patch
+	"${FILESDIR}"/${PN}-3.1-AR.patch
+	"${FILESDIR}"/${PN}-3.1-CC.patch
 )
 
 src_prepare() {
 	default
-	sed -i -e "s:^prefix = /usr/local:prefix = ${D}:" Makefile \
-		|| die "sed failed"
-}
 
-src_compile() {
-	emake CC=$(tc-getCC) all
+	tc-export AR CC
+
+	sed -i -e "s:^prefix = /usr/local:prefix = \${DESTDIR}/:" Makefile \
+		|| die "sed failed"
 }

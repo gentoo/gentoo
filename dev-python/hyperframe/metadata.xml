@@ -11,6 +11,7 @@
 			<name>Cory Benfield</name>
 		</maintainer>
 		<remote-id type="pypi">hyperframe</remote-id>
+		<remote-id type="github">python-hyper/hyperframe</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 	<longdescription>This library contains the HTTP/2 framing code used in the

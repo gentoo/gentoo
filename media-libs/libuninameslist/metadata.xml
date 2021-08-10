@@ -10,6 +10,7 @@
 		<name>Fonts</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">fontforge/libuninameslist</remote-id>
 		<remote-id type="sourceforge">libuninameslist</remote-id>
 	</upstream>
 </pkgmetadata>

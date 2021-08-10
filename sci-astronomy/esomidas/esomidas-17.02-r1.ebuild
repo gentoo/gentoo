@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils fortran-2 toolchain-funcs flag-o-matic
+inherit fortran-2 toolchain-funcs flag-o-matic
 
 # MIDVERS is actually used by MIDAS configuration scripts
 export MIDVERS="17FEBpl1.2"
@@ -96,6 +96,8 @@ src_configure() {
 	${MID_INSTALL}/preinstall -a || die "preinstallation failed"
 	${MID_INSTALL}/install2 || die "configuration failed"
 	chmod 755 ${MID_HOME}/local/make_shared
+	append-fflags -fallow-argument-mismatch
+	append-cflags -fcommon
 }
 
 src_compile() {

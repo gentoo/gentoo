@@ -11,8 +11,8 @@
 |  symbolic link.
 |
 
---- src/c/wrapper.c.old	2014-07-21 09:12:55.000000000 +0200
-+++ src/c/wrapper.c	2014-07-21 09:13:22.000000000 +0200
+--- a/src/c/wrapper.c.old	2014-07-21 09:12:55.000000000 +0200
++++ b/src/c/wrapper.c	2014-07-21 09:13:22.000000000 +0200
 @@ -4908,7 +4908,7 @@
      if (!path) {
          log_printf(WRAPPER_SOURCE_WRAPPER, LEVEL_WARN, TEXT("The configured wrapper.java.command could not be found, attempting to launch anyway: %s"), *para);

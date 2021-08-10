@@ -1,14 +1,17 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop eutils gnome2-utils
+inherit desktop wrapper xdg
 
 DESCRIPTION="Atmospheric side-scrolling action adventure platformer set in a gorgeous forest"
 HOMEPAGE="http://badlandgame.com"
-SRC_URI="Badland_GotY_${PV}.tar
+SRC_URI="
+	Badland_GotY_${PV}.tar
 	https://dev.gentoo.org/~chewi/distfiles/${PN}.png"
+S="${WORKDIR}"
+
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
@@ -16,10 +19,7 @@ RESTRICT="bindist fetch mirror splitdebug"
 
 QA_PREBUILT="opt/${PN}/*"
 
-DEPEND="
-	app-admin/chrpath
-"
-
+BDEPEND="app-admin/chrpath"
 RDEPEND="
 	dev-db/sqlite:3[abi_x86_32]
 	media-libs/fontconfig:1.0[abi_x86_32]
@@ -32,8 +32,6 @@ RDEPEND="
 	virtual/opengl[abi_x86_32]
 	x11-libs/libX11[abi_x86_32]
 "
-
-S="${WORKDIR}"
 
 pkg_nofetch() {
 	einfo "Please buy and download ${SRC_URI} from:"
@@ -62,6 +60,3 @@ src_install() {
 
 	doicon -s 128 "${DISTDIR}"/${PN}.png
 }
-
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }

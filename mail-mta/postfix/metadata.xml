@@ -24,7 +24,4 @@
 		<flag name="lmdb">Add support for using <pkg>dev-db/lmdb</pkg>
 			for lookup tables</flag>
 	</use>
-	<upstream>
-		<remote-id type="sourceforge">vda</remote-id>
-	</upstream>
 </pkgmetadata>

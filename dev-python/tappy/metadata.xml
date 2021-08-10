@@ -6,7 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<use>
-		<flag name='yaml'>Pull dependencies needed to support YAML
+		<flag name="yaml">Pull dependencies needed to support YAML
 			blocks associated with test results.</flag>
 	</use>
 	<upstream>

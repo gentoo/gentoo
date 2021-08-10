@@ -8,5 +8,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">lotabout/skim</remote-id>
+		<changelog>https://github.com/lotabout/skim/blob/master/CHANGELOG.md</changelog>
 	</upstream>
 </pkgmetadata>

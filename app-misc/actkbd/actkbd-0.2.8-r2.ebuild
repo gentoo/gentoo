@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit linux-info eutils toolchain-funcs
+inherit linux-info toolchain-funcs
 
 DESCRIPTION="A keyboard shortcut daemon"
 HOMEPAGE="http://users.softlab.ece.ntua.gr/~thkala/projects/actkbd/"
@@ -12,16 +12,12 @@ SRC_URI="http://users.softlab.ece.ntua.gr/~thkala/projects/actkbd/files/${P}.tar
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
-
-DEPEND=""
-RDEPEND=""
 
 CONFIG_CHECK="~INPUT_EVDEV"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.2.7-amd64.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.2.7-amd64.patch
+)
 
 src_compile() {
 	emake CFLAGS="${CFLAGS}" CC="$(tc-getCC)"
@@ -30,10 +26,12 @@ src_compile() {
 src_install() {
 	dobin actkbd
 	dodoc AUTHORS ChangeLog FAQ README TODO
+
 	docinto samples
 	dodoc samples/actkbd.conf
-	newconfd "${FILESDIR}/${PN}.confd" ${PN}
-	newinitd "${FILESDIR}/${PN}.initd" ${PN}
+
+	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 }
 
 pkg_postinst() {

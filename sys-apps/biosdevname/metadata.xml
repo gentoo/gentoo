@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<longdescription lang="en">
-biosdevname in its simplest form takes a kernel device name as an argument, and
-returns the BIOS-given name it "should" be.  This is necessary on systems where
-the BIOS name for a given device (e.g. the label on the chassis is "Gb1")
-doesn't map directly and obviously to the kernel name (e.g. eth0).
-</longdescription>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+	biosdevname in its simplest form takes a kernel device name as an argument, and
+	returns the BIOS-given name it "should" be.  This is necessary on systems where
+	the BIOS name for a given device (e.g. the label on the chassis is "Gb1")
+	doesn't map directly and obviously to the kernel name (e.g. eth0).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">dell/biosdevname</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,0 +1,18 @@
+# Config file for /etc/init.d/radiusd
+
+# see man pages for radiusd run `radiusd -h`
+# for valid cmdline options
+#RADIUSD_OPTS=""
+
+# Change this value if you change it in /etc/raddb/radiusd.conf
+pidfile=/var/run/radiusd/radiusd.pid
+
+# Change these values if you change them in /etc/raddb/radiusd.conf
+RADIUSD_USER=radius
+RADIUSD_GROUP=radius
+
+RADIUSD_LOGPATH=/var/log/radius
+
+# If you set up logging to syslog in /etc/raddb/radiusd.conf, you want
+# to uncomment the following line.
+#rc_use="logger"

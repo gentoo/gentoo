@@ -1,6 +1,5 @@
-diff -Naur a/Makefile b/Makefile
---- a/Makefile	2017-07-07 17:42:49.613728707 -0400
-+++ b/Makefile	2017-07-07 17:44:39.393726882 -0400
+--- a/Makefile
++++ b/Makefile
 @@ -3,16 +3,13 @@
  
  VERSION=0.9.73
@@ -35,7 +34,7 @@ diff -Naur a/Makefile b/Makefile
  
  jack_capture_gui2: jack_capture_gui2.cpp
 -	$(CPP) $(CPPFLAGS) $(OPTIMIZE) jack_capture_gui2.cpp $(LDFLAGS) `pkg-config --libs --cflags gtk+-2.0` -o jack_capture_gui2
-+	$(CXX) $(CXXFLAGS) jack_capture_gui2.cpp $(LDFLAGS) `pkg-config --libs --cflags gtk+-2.0` -o jack_capture_gui2
++	$(CXX) $(CXXFLAGS) jack_capture_gui2.cpp $(LDFLAGS) `${PKG_CONFIG} --libs --cflags gtk+-2.0` -o jack_capture_gui2
  
  config_flags: Makefile das_config.h
  	cat das_config.h |grep COMPILEFLAGS|sed s/\\/\\/COMPILEFLAGS//|tr '\n' ' ' >config_flags

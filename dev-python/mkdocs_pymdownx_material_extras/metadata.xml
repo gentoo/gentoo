@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>lssndrbarbieri@gmail.com</email>
+		<name>Alessandro Barbieri</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">facelessuser/mkdocs_pymdownx_material_extras</remote-id>
+		<remote-id type="pypi">mkdocs-pymdownx-material-extras</remote-id>
+	</upstream>
+	<longdescription lang="en">
+A plugin that for MkDocs and specifically the MkDocs Material Theme. 
+Adds additional resources that are used in the PyMdown Extensions documentation, and other @facelessuser projects.
+While this is not specifically meant for outside consumption, and was originally written for @facelessuser projects, it can be freely used if desired.
+Files are copied from the pymdown-extensions project.
+	</longdescription>
+	<stabilize-allarches/>
+</pkgmetadata>

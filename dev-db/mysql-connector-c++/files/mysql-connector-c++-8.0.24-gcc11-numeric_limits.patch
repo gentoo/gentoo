@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/786252
+
+--- a/include/mysqlx/common/util.h
++++ b/include/mysqlx/common/util.h
+@@ -112,6 +112,7 @@ PUSH_SYS_WARNINGS
+ #include <ostream>
+ #include <memory>
+ #include <forward_list>
++#include <limits>    // std::numeric_limits
+ #include <string.h>  // for memcpy
+ #include <utility>   // std::move etc
+ #include <algorithm>
+ 

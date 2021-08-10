@@ -1,0 +1,25 @@
+From 4917d9c8b6227256a4a83ff937119d6aa53d654e Mon Sep 17 00:00:00 2001
+From: "Robin H. Johnson" <robbat2@gentoo.org>
+Date: Sun, 9 May 2021 11:02:54 +0200
+Subject: [PATCH] Add libm to static libs
+
+---
+ make.tmpl.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/make.tmpl.in b/make.tmpl.in
+index ae189546d0..8ee00bd9e8 100644
+--- a/make.tmpl.in
++++ b/make.tmpl.in
+@@ -64,7 +64,7 @@ PYCOMPILE = $(top_srcdir)/autoconf/py-compile
+ LIBS += @LIBS@ $(SELINUX_LIBS) $(UDEV_LIBS) $(RT_LIBS) $(M_LIBS)
+ LVMLIBS = $(DMEVENT_LIBS) $(READLINE_LIBS) $(EDITLINE_LIBS) $(SYSTEMD_LIBS) $(BLKID_LIBS) $(AIO_LIBS) $(LIBS)
+ # Extra libraries always linked with static binaries
+-STATIC_LIBS = $(PTHREAD_LIBS) $(SELINUX_STATIC_LIBS) $(UDEV_STATIC_LIBS) $(BLKID_STATIC_LIBS)
++STATIC_LIBS = $(PTHREAD_LIBS) $(SELINUX_STATIC_LIBS) $(UDEV_STATIC_LIBS) $(BLKID_STATIC_LIBS) $(M_LIBS)
+ DEFS += @DEFS@
+ # FIXME set this only where it's needed, not globally?
+ CFLAGS ?= @COPTIMISE_FLAG@ @CFLAGS@
+-- 
+2.31.1
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -14,7 +14,7 @@ SRC_URI="https://dev.mysql.com/get/Downloads/${URI_DIR}/${P}-src.tar.gz"
 LICENSE="Artistic GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="+legacy libressl"
+IUSE="+legacy"
 
 RDEPEND="
 	dev-libs/protobuf:=
@@ -22,14 +22,13 @@ RDEPEND="
 		dev-libs/boost:=
 		>=dev-db/mysql-connector-c-6.1.8:=
 	)
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+	dev-libs/openssl:0=
+	"
 DEPEND="${RDEPEND}"
 S="${WORKDIR}/${P}-src"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.19-fix-build.patch
-	"${FILESDIR}"/${PN}-8.0.20-fix-libressl-support.patch
 )
 
 src_configure() {

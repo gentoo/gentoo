@@ -1,13 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 VIM_VERSION="8.2"
-PYTHON_COMPAT=( python3_{6,7,8} )
+LUA_COMPAT=( lua5-1 luajit )
+PYTHON_COMPAT=( python3_{7..10} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
-inherit vim-doc flag-o-matic xdg-utils bash-completion-r1 prefix python-single-r1 ruby-single
+inherit vim-doc flag-o-matic xdg-utils bash-completion-r1 prefix lua-single python-single-r1 ruby-single
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -16,7 +17,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
 		https://dev.gentoo.org/~zlogene/distfiles/app-editors/vim/vim-8.2.0360-gentoo-patches.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 fi
 
 DESCRIPTION="GUI version of the Vim text editor"
@@ -24,8 +25,9 @@ HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
 
 SLOT="0"
 LICENSE="vim"
-IUSE="acl aqua cscope debug gtk gtk2 lua luajit motif neXt netbeans nls perl python racket ruby selinux session sound tcl"
+IUSE="acl aqua cscope debug gtk gtk2 lua motif neXt netbeans nls perl python racket ruby selinux session sound tcl"
 REQUIRED_USE="
+	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
@@ -59,8 +61,8 @@ RDEPEND="
 	)
 	cscope? ( dev-util/cscope )
 	lua? (
-		luajit? ( dev-lang/luajit:2= )
-		!luajit? ( dev-lang/lua:0[deprecated] )
+		${LUA_DEPS}
+		$(lua_gen_impl_dep 'deprecated' lua5-1)
 	)
 	nls? ( virtual/libintl )
 	perl? ( dev-lang/perl:= )
@@ -77,6 +79,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
+# configure runs the Lua interpreter
+BDEPEND="lua? ( ${LUA_DEPS} )"
 
 # various failures (bugs #630042 and #682320)
 RESTRICT="test"
@@ -92,6 +96,7 @@ pkg_setup() {
 	mkdir -p "${T}"/home || die
 	export HOME="${T}"/home
 
+	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
 }
 
@@ -194,13 +199,11 @@ src_configure() {
 		$(use_enable sound canberra)
 		$(use_enable acl)
 		$(use_enable cscope)
-		$(use_enable lua luainterp)
-		$(use_with luajit)
 		$(use_enable netbeans)
 		$(use_enable nls)
 		$(use_enable perl perlinterp)
 		$(use_enable python python3interp)
-		$(use_with python python3-command $(type -P $(eselect python show --python3)))
+		$(use_with python python3-command "${PYTHON}")
 		$(use_enable racket mzschemeinterp)
 		$(use_enable ruby rubyinterp)
 		$(use_enable selinux)
@@ -213,6 +216,14 @@ src_configure() {
 	if ! use cscope; then
 		sed -i -e \
 			'/# define FEAT_CSCOPE/d' src/feature.h || die "couldn't disable cscope"
+	fi
+
+	if use lua; then
+		myconf+=(
+			--enable-luainterp
+			$(use_with lua_single_target_luajit luajit)
+			--with-lua-prefix="${EPREFIX}/usr"
+		)
 	fi
 
 	# gvim's GUI preference order is as follows:

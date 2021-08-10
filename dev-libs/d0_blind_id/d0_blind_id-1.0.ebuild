@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -11,14 +11,20 @@ SRC_URI="https://github.com/divVerent/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="static-libs"
 
 RDEPEND="dev-libs/gmp:0"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 DOCS=( d0_blind_id.txt )
+
+PATCHES=(
+	"${FILESDIR}/${P}-slibtool.patch"
+)
 
 src_prepare() {
 	default
@@ -44,8 +50,5 @@ src_configure() {
 
 src_install() {
 	default
-
-	if ! use static-libs ; then
-		find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
-	fi
+	find "${ED}" -name "*.la" -delete || die
 }

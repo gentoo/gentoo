@@ -6,7 +6,7 @@
 		<name>Georgy Yakovlev</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">k-bx/python-semver</remote-id>
 		<remote-id type="pypi">semver</remote-id>
+		<remote-id type="github">python-semver/python-semver</remote-id>
 	</upstream>
 </pkgmetadata>

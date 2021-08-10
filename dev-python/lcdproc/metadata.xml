@@ -12,5 +12,6 @@
 	<upstream>
 		<bugs-to>https://github.com/jinglemansweep/lcdproc/issues</bugs-to>
 		<remote-id type="github">jinglemansweep/lcdproc</remote-id>
+		<remote-id type="pypi">lcdproc</remote-id>
 	</upstream>
 </pkgmetadata>

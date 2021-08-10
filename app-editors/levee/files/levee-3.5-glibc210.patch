@@ -1,6 +1,5 @@
-diff -NrU5 levee-3.5.original/editcor.c levee-3.5/editcor.c
---- levee-3.5.original/editcor.c	2009-07-21 22:58:18.000000000 +0000
-+++ levee-3.5/editcor.c	2009-07-21 23:07:21.000000000 +0000
+--- a/editcor.c
++++ b/editcor.c
 @@ -183,11 +183,11 @@
  
      strcpy(scratch, "/tmp/lv.XXXXXX");
@@ -14,9 +13,8 @@ diff -NrU5 levee-3.5.original/editcor.c levee-3.5/editcor.c
      if ( (tf = mkstemp(scratch)) < 0 ) {
  	prints("[tempfile error]");
  	return FALSE;
-diff -NrU5 levee-3.5.original/extern.h levee-3.5/extern.h
---- levee-3.5.original/extern.h	2009-07-21 22:58:18.000000000 +0000
-+++ levee-3.5/extern.h	2009-07-21 23:02:39.000000000 +0000
+--- a/extern.h
++++ b/extern.h
 @@ -195,11 +195,11 @@
  extern exec_type PROC editcore();
  
@@ -30,9 +28,8 @@ diff -NrU5 levee-3.5.original/extern.h levee-3.5/extern.h
  extern bool PROC pushb(),pushi(),pushmem(),uputcmd(), delete_to_undo();
  extern bool PROC ok_to_scroll(), move_to_undo();
  
-diff -NrU5 levee-3.5.original/main.c levee-3.5/main.c
---- levee-3.5.original/main.c	2009-07-21 22:58:18.000000000 +0000
-+++ levee-3.5/main.c	2009-07-21 23:09:52.000000000 +0000
+--- a/main.c
++++ b/main.c
 @@ -251,11 +251,11 @@
  	println();
  
@@ -46,9 +43,8 @@ diff -NrU5 levee-3.5.original/main.c levee-3.5/main.c
  	if (mode == E_VISUAL && zotscreen && noquit) {	/*ask for more*/
  	    prints(" [more]");
  	    if ((ch=peekc()) == 13 || ch == ' ' || ch == ':')
-diff -NrU5 levee-3.5.original/misc.c levee-3.5/misc.c
---- levee-3.5.original/misc.c	2009-07-21 22:58:18.000000000 +0000
-+++ levee-3.5/misc.c	2009-07-21 23:09:10.000000000 +0000
+--- a/misc.c
++++ b/misc.c
 @@ -19,11 +19,11 @@
   */
  #include "levee.h"
@@ -62,9 +58,8 @@ diff -NrU5 levee-3.5.original/misc.c levee-3.5/misc.c
      int len;
      char flag;
      
-diff -NrU5 levee-3.5.original/move.c levee-3.5/move.c
---- levee-3.5.original/move.c	2009-07-21 22:58:18.000000000 +0000
-+++ levee-3.5/move.c	2009-07-21 23:10:26.000000000 +0000
+--- a/move.c
++++ b/move.c
 @@ -158,11 +158,11 @@
      case FSEARCH:
      case BSEARCH:

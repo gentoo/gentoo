@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,10 +11,11 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="udev"
 
 RDEPEND="
+	app-cdr/cdrtools
 	app-shells/bash
 	net-dialup/mingetty
 	net-fs/nfs-utils
@@ -25,7 +26,6 @@ RDEPEND="
 	sys-apps/util-linux
 	sys-block/parted
 	sys-boot/syslinux
-	virtual/cdrtools
 	udev? ( virtual/udev )
 "
 
@@ -55,6 +55,6 @@ pkg_postinst() {
 		udev_reload
 	fi
 
-	optfeature "if you want to save backups on smb/cifs servers" net-fs/cifs-utils
-	optfeature "if you want to encrypt your backups" dev-libs/openssl dev-libs/libressl
+	optfeature "saving backups on smb/cifs servers" net-fs/cifs-utils
+	optfeature "encrypting backups" dev-libs/openssl
 }

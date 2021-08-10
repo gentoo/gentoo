@@ -1,0 +1,32 @@
+From e62605321d739b941fdf0861bd24843ba1137216 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 14 May 2021 16:13:01 +0200
+Subject: [PATCH] Port away from deprecated API (NET::StaysOnTop ->
+ NET::KeepAbove)
+
+Deprecated since 5.0.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ app/wm/xwindowinterface.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/app/wm/xwindowinterface.cpp b/app/wm/xwindowinterface.cpp
+index 932f8e43..cc66ff4b 100644
+--- a/app/wm/xwindowinterface.cpp
++++ b/app/wm/xwindowinterface.cpp
+@@ -666,9 +666,9 @@ void XWindowInterface::requestToggleKeepAbove(WindowId wid)
+     NETWinInfo ni(QX11Info::connection(), wid.toUInt(), QX11Info::appRootWindow(), NET::WMState, NET::Properties2());
+ 
+     if (wInfo.isKeepAbove()) {
+-        ni.setState(NET::States(), NET::StaysOnTop);
++        ni.setState(NET::States(), NET::KeepAbove);
+     } else {
+-        ni.setState(NET::StaysOnTop, NET::StaysOnTop);
++        ni.setState(NET::KeepAbove, NET::KeepAbove);
+     }
+ }
+ 
+-- 
+2.31.1
+

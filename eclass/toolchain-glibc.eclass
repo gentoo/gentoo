@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain-glibc.eclass
@@ -12,8 +12,10 @@
 
 if [[ -z ${_TOOLCHAIN_GLIBC_ECLASS} ]]; then
 
+TMPFILES_OPTIONAL=1
+
 inherit eutils versionator toolchain-funcs flag-o-matic gnuconfig \
-	multilib systemd unpacker multiprocessing prefix
+	multilib systemd tmpfiles unpacker multiprocessing prefix
 
 case ${EAPI:-0} in
 	0|1|2|3) EXPORT_FUNCTIONS pkg_setup src_unpack src_compile src_test \
@@ -1240,7 +1242,6 @@ toolchain-glibc_do_src_install() {
 		n64     /lib64/ld.so.1
 		# powerpc
 		ppc     /lib/ld.so.1
-		ppc64   /lib64/ld64.so.1
 		# s390
 		s390    /lib/ld.so.1
 		s390x   /lib/ld64.so.1
@@ -1253,12 +1254,16 @@ toolchain-glibc_do_src_install() {
 		ldso_abi_list+=(
 			# arm
 			arm64   /lib/ld-linux-aarch64.so.1
+			# ELFv2 (glibc does not support ELFv1 on LE)
+			ppc64   /lib64/ld64.so.2
 		)
 		;;
 	big)
 		ldso_abi_list+=(
 			# arm
 			arm64   /lib/ld-linux-aarch64_be.so.1
+			# ELFv1 (glibc does not support ELFv2 on BE)
+			ppc64   /lib64/ld64.so.1
 		)
 		;;
 	esac
@@ -1345,10 +1350,10 @@ toolchain-glibc_do_src_install() {
 		# TODO: Drop the $FILESDIR copy once 2.19 goes stable.
 		if version_is_at_least 2.19 ; then
 			systemd_dounit nscd/nscd.service || die
-			systemd_newtmpfilesd nscd/nscd.tmpfiles nscd.conf || die
+			newtmpfiles nscd/nscd.tmpfiles nscd.conf || die
 		else
 			systemd_dounit "${FILESDIR}"/nscd.service || die
-			systemd_newtmpfilesd "${FILESDIR}"/nscd.tmpfilesd nscd.conf || die
+			newtmpfiles "${FILESDIR}"/nscd.tmpfilesd nscd.conf || die
 		fi
 	else
 		# Do this since extra/etc/*.conf above might have nscd.conf.

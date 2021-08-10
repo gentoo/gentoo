@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>x11@gentoo.org</email>
+	<name>X11</name>
+</maintainer>
+<use>
+	<flag name="unwind">Enable libunwind usage for backtraces</flag>
+	<flag name="xcsecurity">Build Security extension</flag>
+	<flag name="rpc">Enable secure rpc</flag>
+</use>
+<upstream>
+	<remote-id type="cpe">cpe:/a:x.org:xorg-server</remote-id>
+</upstream>
+</pkgmetadata>

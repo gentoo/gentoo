@@ -11,8 +11,8 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Getting things done application by KDE"
-HOMEPAGE="https://zanshin.kde.org/ https://userbase.kde.org/Zanshin
-https://kde.org/applications/utilities/org.kde.zanshin"
+HOMEPAGE="https://zanshin.kde.org/ https://apps.kde.org/en/zanshin
+https://userbase.kde.org/Zanshin"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"

@@ -1,0 +1,54 @@
+From 6485b6d45ad165cf976138cf8ab683c42515e794 Mon Sep 17 00:00:00 2001
+From: Kai Koehne <kai.koehne@qt.io>
+Date: Tue, 13 Oct 2020 15:47:31 +0200
+Subject: [PATCH] Fix allocated memory of QByteArray returned by
+ QIODevice::readLine
+
+If the maxSize argument is 0 (the default), QIODevice::readLine will
+allocate a QByteArray with the size of the next chunk of data, which
+may be quite large. Before returning, it then resizes the byte array
+to the actual size that was read.
+
+But since change 6b884d2aa129, QByteArray::resize() does no
+longer shrink the capacity. This means that the returned QByteArray
+keeps it's maximum size as allocated memory. This can lead to
+excessive memory consumption, especially if the returned QByteArray's
+are stored for further processing in the client code.
+
+Fix this by explicitly calling QByteArray::squeeze() before returning.
+
+[ChangeLog][QtCore][QIODevice] Fixes a regression in Qt 5.15 causing
+QByteArray's that are returned by QIODevice::readLine() to
+consume large amounts of memory.
+
+Fixes: QTBUG-87010
+Change-Id: I1f95fc4098849e900680fc945238bfeda881022c
+Reviewed-by: Thiago Macieira <thiago.macieira@intel.com>
+(cherry picked from commit 263b29eedb223dec1ecaee193302070af87a1852,
+limited squeeze() call if bytes are actually read to preserve retVal.isNull()
+behavior in 5.15)
+---
+ src/corelib/io/qiodevice.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/corelib/io/qiodevice.cpp b/src/corelib/io/qiodevice.cpp
+index cc1d1102522..0f11c2e805c 100644
+--- a/src/corelib/io/qiodevice.cpp
++++ b/src/corelib/io/qiodevice.cpp
+@@ -1480,10 +1480,12 @@ QByteArray QIODevice::readLine(qint64 maxSize)
+     } else
+         readBytes = readLine(result.data(), result.size());
+ 
+-    if (readBytes <= 0)
++    if (readBytes <= 0) {
+         result.clear();
+-    else
++    } else {
+         result.resize(readBytes);
++        result.squeeze();
++    }
+ 
+     return result;
+ }
+-- 
+2.16.3

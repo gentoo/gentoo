@@ -1,0 +1,15 @@
+generate_gni.sh: update_readme() runs git at the end of process, prevent it.
+
+Thanks-to: Georgy Yakovlev <gyakovlev@gentoo.org>
+
+--- a/src/3rdparty/chromium/third_party/libvpx/generate_gni.sh	2021-02-07 12:51:49.438514897 +0100
++++ b/src/3rdparty/chromium/third_party/libvpx/generate_gni.sh	2021-02-21 16:23:38.375724515 +0100
+@@ -519,8 +519,3 @@
+ 
+ gn format --in-place $BASE_DIR/BUILD.gn
+ gn format --in-place $BASE_DIR/libvpx_srcs.gni
+-
+-cd $BASE_DIR/$LIBVPX_SRC_DIR
+-update_readme
+-
+-cd $BASE_DIR

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{8,9} )
 PYTHON_REQ_USE="xml"
 MY_P="${P/_/}"
 inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1 git-r3
@@ -28,14 +28,14 @@ BDEPEND="
 "
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/poppler-0.57.0:=[cairo]
-	>=dev-cpp/cairomm-1.12
-	>=dev-cpp/glibmm-2.54.1
+	>=dev-cpp/cairomm-1.12:0
+	>=dev-cpp/glibmm-2.54.1:2
 	dev-cpp/gtkmm:3.0
-	>=dev-cpp/pangomm-2.40
+	>=dev-cpp/pangomm-2.40:1.4
 	>=dev-libs/boehm-gc-7.1:=
 	dev-libs/double-conversion:=
 	>=dev-libs/glib-2.41
-	>=dev-libs/libsigc++-2.8
+	>=dev-libs/libsigc++-2.8:2
 	>=dev-libs/libxml2-2.7.4
 	>=dev-libs/libxslt-1.1.25
 	dev-libs/gdl:3
@@ -50,8 +50,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=x11-libs/pango-1.37.2
 	x11-libs/gtk+:3
 	$(python_gen_cond_dep '
-		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
-		media-gfx/scour[${PYTHON_MULTI_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
+		media-gfx/scour[${PYTHON_USEDEP}]
 	')
 	cdr? (
 		app-text/libwpg:0.3
@@ -87,7 +87,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 # on that.
 RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 	')
 	dia? ( app-office/dia )
 	postscript? ( app-text/ghostscript-gpl )
@@ -152,4 +152,7 @@ src_install() {
 	if [[ -e "${extdir}" ]] && [[ -n $(find "${extdir}" -mindepth 1) ]]; then
 		python_optimize "${ED}"/usr/share/${PN}/extensions
 	fi
+
+	# Empty directory causes sandbox issues, see bug #761915
+	rm -r "${ED}/usr/share/inkscape/fonts" || die "Failed to remove fonts directory."
 }

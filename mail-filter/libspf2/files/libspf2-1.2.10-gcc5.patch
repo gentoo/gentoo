@@ -1,10 +1,8 @@
 https://github.com/shevek/libspf2/issues/13
 https://bugs.gentoo.org/show_bug.cgi?id=570486
 
-Index: libspf2-1.2.10/src/include/spf_log.h
-===================================================================
---- libspf2-1.2.10/src/include/spf_log.h
-+++ libspf2-1.2.10/src/include/spf_log.h    2015-10-20 23:23:04.579055906 +0200
+--- a/src/include/spf_log.h
++++ b/src/include/spf_log.h
 @@ -60,10 +60,10 @@
 
  #if defined( __STDC_VERSION__ ) && __STDC_VERSION__ >= 199901L

@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit cmake-utils eutils
+inherit cmake-utils epatch
 
 DESCRIPTION="a graphical disassembler for a large number of instruction sets"
 HOMEPAGE="http://www.emilpro.com/"
@@ -11,7 +11,6 @@ HOMEPAGE="http://www.emilpro.com/"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/SimonKagstrom/emilpro"
 	inherit git-r3
-	KEYWORDS=""
 	SRC_URI="!system-binutils? ( mirror://gnu/binutils/binutils-2.23.2.tar.bz2 )"
 else
 	SRC_URI="http://www.emilpro.com/${P}.tar.gz
@@ -24,12 +23,12 @@ SLOT="0"
 IUSE="+system-binutils"
 
 DEPEND="
+	dev-cpp/cairomm:0
+	dev-cpp/glibmm:2
 	dev-cpp/gtkmm:3.0
 	dev-cpp/gtksourceviewmm:3.0
 	dev-cpp/libxmlpp:2.6
-	dev-cpp/glibmm
-	dev-cpp/pangomm
-	dev-cpp/cairomm
+	dev-cpp/pangomm:1.4
 	dev-libs/libsigc++:2
 	dev-libs/glib:2
 	system-binutils? ( >=sys-libs/binutils-libs-2.25.1-r2:=[multitarget] )

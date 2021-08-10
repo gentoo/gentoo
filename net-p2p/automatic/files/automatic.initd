@@ -15,7 +15,6 @@ EXEC=${EXEC:-/usr/bin/automatic}
 
 depend() {
 	need net
-	provide automatic
 }
 
 start() {

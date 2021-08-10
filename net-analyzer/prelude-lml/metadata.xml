@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>thomas.andrejak@gmail.com</email>
 		<name>Thomas Andrejak</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -16,8 +16,4 @@
 		them into Prelude-IDMEF alerts. Prelude-LML handles events generated
 		by a large set of applications
 	</longdescription>
-	<use>
-		<flag name="tls">Enables Prelude LML support Syslog through TLS
-		using <pkg>net-libs/gnutls</pkg>.</flag>
-	</use>
 </pkgmetadata>

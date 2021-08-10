@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
-inherit autotools bash-completion-r1 gnome2-utils l10n linux-info python-single-r1 systemd xdg-utils
+PYTHON_COMPAT=( python3_{8,9} )
+inherit autotools bash-completion-r1 gnome2-utils linux-info plocale python-single-r1 systemd xdg-utils
 
 DESCRIPTION="A firewall daemon with D-BUS interface providing a dynamic firewall"
 HOMEPAGE="http://www.firewalld.org/"
@@ -27,13 +27,13 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	|| ( >=sys-apps/openrc-0.11.5 sys-apps/systemd )
 	$(python_gen_cond_dep '
-		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
-		dev-python/decorator[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/python-slip-0.2.7[dbus,${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/dbus-python[${PYTHON_USEDEP}]
+		dev-python/decorator[${PYTHON_USEDEP}]
+		>=dev-python/python-slip-0.2.7[dbus,${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		gui? (
 			x11-libs/gtk+:3
-			dev-python/PyQt5[gui,widgets,${PYTHON_MULTI_USEDEP}]
+			dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 		)
 	')"
 DEPEND="${RDEPEND}
@@ -60,8 +60,8 @@ src_prepare() {
 	default
 	eautoreconf
 
-	l10n_find_plocales_changes "po" "" ".po"
-	l10n_get_locales | sed -e 's/ /\n/g' > po/LINGUAS
+	plocale_find_changes "po" "" ".po"
+	plocale_get_locales | sed -e 's/ /\n/g' > po/LINGUAS
 }
 
 src_configure() {

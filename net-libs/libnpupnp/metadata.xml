@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>stasibear@gentoo.org</email>
+    <description>Primary maintainer</description>
+  </maintainer>
+  <longdescription>
+    The libupnpp library, which provides the C++ interface for
+    upmpdcli and upplay, used to rely on the venerable libupnp library
+    (a.k.a pupnp: Portable UPnP) to provide the base UPnP protocol
+    functionality.
+  </longdescription>
+</pkgmetadata>

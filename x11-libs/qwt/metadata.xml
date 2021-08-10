@@ -18,5 +18,6 @@
   </use>
   <upstream>
     <remote-id type="sourceforge">qwt</remote-id>
+    <remote-id type="github">SciDAVis/qwt5-qt5</remote-id>
   </upstream>
 </pkgmetadata>

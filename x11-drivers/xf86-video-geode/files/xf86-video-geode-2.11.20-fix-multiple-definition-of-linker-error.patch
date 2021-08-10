@@ -1,0 +1,93 @@
+From ba63bf6821c40707237ad2e7a13352a537e5b588 Mon Sep 17 00:00:00 2001
+From: Christian Gmeiner <christian.gmeiner@gmail.com>
+Date: Thu, 3 Dec 2020 14:22:23 +0100
+Subject: [PATCH] fix 'multiple definition of' linker error
+
+Fix for FTBFS due to -fno-common on GCC 10.
+
+Signed-off-by: Christian Gmeiner <christian.gmeiner@gmail.com>
+---
+ src/geode.h     | 8 ++++----
+ src/gx_driver.c | 2 +-
+ src/gx_video.c  | 2 +-
+ src/lx_driver.c | 2 +-
+ 4 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/geode.h b/src/geode.h
+index eb61c28..1b144ff 100644
+--- a/src/geode.h
++++ b/src/geode.h
+@@ -343,7 +343,7 @@ typedef struct _geodeRec {
+ 
+ /* option flags are self-explanatory */
+ #ifdef HAVE_LX
+-enum {
++enum LX_GeodeOpts {
+     LX_OPTION_SW_CURSOR,
+     LX_OPTION_HW_CURSOR,
+     LX_OPTION_NOCOMPRESSION,
+@@ -357,11 +357,11 @@ enum {
+     LX_OPTION_FBSIZE,
+     LX_OPTION_PANEL_MODE,
+     LX_OPTION_DONT_PROGRAM
+-} LX_GeodeOpts;
++};
+ #endif
+ 
+ #ifdef HAVE_GX
+-enum {
++enum GX_GeodeOpts {
+     GX_OPTION_SW_CURSOR,
+     GX_OPTION_HW_CURSOR,
+     GX_OPTION_NOCOMPRESSION,
+@@ -378,7 +378,7 @@ enum {
+     GX_OPTION_FBSIZE,
+     GX_OPTION_PANEL_GEOMETRY,
+     GX_OPTION_DONT_PROGRAM
+-} GX_GeodeOpts;
++};
+ #endif
+ 
+ /* geode_dcon.c */
+diff --git a/src/gx_driver.c b/src/gx_driver.c
+index 4de336e..188828c 100644
+--- a/src/gx_driver.c
++++ b/src/gx_driver.c
+@@ -78,7 +78,7 @@
+ 
+ extern OptionInfoRec GX_GeodeOptions[];
+ 
+-unsigned char *XpressROMPtr;
++extern unsigned char *XpressROMPtr;
+ 
+ static inline void
+ gx_enable_dac_power(void)
+diff --git a/src/gx_video.c b/src/gx_video.c
+index 0d3e1c5..7964d17 100644
+--- a/src/gx_video.c
++++ b/src/gx_video.c
+@@ -112,7 +112,7 @@ void GXSetVideoPosition(int x, int y, int width, int height,
+ 
+ extern void GXAccelSync(ScrnInfoPtr pScrni);
+ 
+-int DeltaX, DeltaY;
++extern int DeltaX, DeltaY;
+ 
+ unsigned long graphics_lut[256];
+ static int lutflag = 0;
+diff --git a/src/lx_driver.c b/src/lx_driver.c
+index 47f6875..9cb8889 100644
+--- a/src/lx_driver.c
++++ b/src/lx_driver.c
+@@ -74,7 +74,7 @@
+ 
+ extern OptionInfoRec LX_GeodeOptions[];
+ 
+-unsigned char *XpressROMPtr;
++extern unsigned char *XpressROMPtr;
+ 
+ static Bool
+ LXSaveScreen(ScreenPtr pScrn, int mode)
+-- 
+2.26.2
+

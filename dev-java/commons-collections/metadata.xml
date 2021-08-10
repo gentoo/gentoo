@@ -5,7 +5,4 @@
     <email>java@gentoo.org</email>
     <name>Java</name>
   </maintainer>
-  <use>
-    <flag name="test-framework">Install the test framework</flag>
-  </use>
 </pkgmetadata>

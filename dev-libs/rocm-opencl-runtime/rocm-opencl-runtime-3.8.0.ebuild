@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake
+inherit cmake flag-o-matic
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/"
@@ -27,7 +27,6 @@ RDEPEND=">=dev-libs/rocr-runtime-${PV}
 	>=virtual/opencl-3
 	media-libs/mesa"
 DEPEND="${RDEPEND}
-	dev-lang/ocaml
 	dev-ml/findlib"
 BDEPEND=">=dev-util/rocm-cmake-${PV}"
 

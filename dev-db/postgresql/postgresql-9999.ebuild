@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 
 inherit flag-o-matic git-r3 linux-info multilib pam prefix python-single-r1 \
-		systemd
+		systemd tmpfiles
 
 KEYWORDS=""
 
@@ -18,9 +18,9 @@ LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
-IUSE="debug icu kerberos kernel_linux ldap libressl llvm nls pam perl
-	  python +readline selinux server systemd ssl static-libs tcl
-	  threads uuid xml zlib"
+IUSE="debug icu kerberos kernel_linux ldap llvm lz4
+	nls pam perl python +readline selinux server systemd
+	ssl static-libs tcl threads uuid xml zlib"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -37,14 +37,12 @@ llvm? (
 	sys-devel/llvm:=
 	sys-devel/clang:=
 )
+lz4? ( app-arch/lz4 )
 pam? ( sys-libs/pam )
 perl? ( >=dev-lang/perl-5.8:= )
 python? ( ${PYTHON_DEPS} )
 readline? ( sys-libs/readline:0= )
-ssl? (
-	!libressl? ( >=dev-libs/openssl-0.9.6-r1:0= )
-	libressl? ( dev-libs/libressl:= )
-)
+ssl? ( >=dev-libs/openssl-0.9.6-r1:0= )
 systemd? ( sys-apps/systemd )
 tcl? ( >=dev-lang/tcl-8:0= )
 uuid? ( dev-libs/ossp-uuid )
@@ -78,8 +76,8 @@ uuid? (
 DEPEND="${CDEPEND}
 >=dev-lang/perl-5.8
 app-text/docbook-dsssl-stylesheets
-app-text/docbook-sgml-dtd:4.2
-app-text/docbook-xml-dtd:4.2
+app-text/docbook-sgml-dtd:4.5
+app-text/docbook-xml-dtd:4.5
 app-text/docbook-xsl-stylesheets
 app-text/openjade
 dev-libs/libxml2
@@ -153,14 +151,13 @@ src_configure() {
 		[[ -z $uuid_config ]] && uuid_config="--with-uuid=ossp"
 	fi
 
-	econf \
+	local myconf="\
 		--prefix="${PO}/usr/$(get_libdir)/postgresql-${SLOT}" \
 		--datadir="${PO}/usr/share/postgresql-${SLOT}" \
 		--includedir="${PO}/usr/include/postgresql-${SLOT}" \
 		--mandir="${PO}/usr/share/postgresql-${SLOT}/man" \
 		--sysconfdir="${PO}/etc/postgresql-${SLOT}" \
 		--with-system-tzdata="${PO}/usr/share/zoneinfo" \
-		$(use_enable !alpha spinlocks) \
 		$(use_enable debug) \
 		$(use_enable nls) \
 		$(use_enable threads thread-safety) \
@@ -168,6 +165,7 @@ src_configure() {
 		$(use_with kerberos gssapi) \
 		$(use_with ldap) \
 		$(use_with llvm) \
+		$(use_with lz4) \
 		$(use_with pam) \
 		$(use_with perl) \
 		$(use_with python) \
@@ -178,7 +176,14 @@ src_configure() {
 		$(use_with xml libxslt) \
 		$(use_with zlib) \
 		$(use_with systemd) \
-		${uuid_config}
+		${uuid_config}"
+	if use alpha || use riscv; then
+		myconf+=" --disable-spinlocks"
+	else
+		# Should be the default but just in case
+		myconf+=" --enable-spinlocks"
+	fi
+	econf ${myconf}
 }
 
 src_compile() {
@@ -209,7 +214,7 @@ src_install() {
 		sed -e "s|@SLOT@|${SLOT}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
 			"${FILESDIR}/${PN}.service-9.6-r1" | \
 			systemd_newunit - ${PN}-${SLOT}.service
-		systemd_newtmpfilesd "${FILESDIR}"/${PN}.tmpfiles ${PN}-${SLOT}.conf
+		newtmpfiles "${FILESDIR}"/${PN}.tmpfiles ${PN}-${SLOT}.conf
 	fi
 
 	newbin "${FILESDIR}"/${PN}-check-db-dir ${PN}-${SLOT}-check-db-dir
@@ -293,7 +298,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	use systemd && systemd_tmpfiles_create ${PN}-${SLOT}.conf
+	use systemd && tmpfiles_process ${PN}-${SLOT}.conf
 	postgresql-config update
 
 	elog "If you need a global psqlrc-file, you can place it in:"
@@ -403,7 +408,7 @@ pkg_config() {
 	einfo "Initializing the database ..."
 
 	if [[ ${EUID} == 0 ]] ; then
-		su postgres -c "${EROOT}/usr/$(get_libdir)/postgresql-${SLOT}/bin/initdb -D \"${DATA_DIR}\" ${PG_INITDB_OPTS}"
+		su - postgres -c "${EROOT}/usr/$(get_libdir)/postgresql-${SLOT}/bin/initdb -D \"${DATA_DIR}\" ${PG_INITDB_OPTS}"
 	else
 		"${EROOT}"/usr/$(get_libdir)/postgresql-${SLOT}/bin/initdb -U postgres -D "${DATA_DIR}" ${PG_INITDB_OPTS}
 	fi
@@ -455,7 +460,12 @@ pkg_config() {
 
 src_test() {
 	if [[ ${UID} -ne 0 ]] ; then
+		# Some ICU tests fail if LC_CTYPE and LC_COLLATE aren't the same. We set
+		# LC_CTYPE to be equal to LC_COLLATE since LC_COLLATE is set by Portage.
+		local old_ctype=${LC_CTYPE}
+		export LC_CTYPE=${LC_COLLATE}
 		emake check
+		export LC_CTYPE=${old_ctype}
 
 		einfo "If you think other tests besides the regression tests are necessary, please"
 		einfo "submit a bug including a patch for this ebuild to enable them."

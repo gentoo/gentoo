@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/656340
+--- a/config/amanda/amanda_configure.m4
++++ b/config/amanda/amanda_configure.m4
+@@ -257,6 +257,12 @@ AMANDA_CHECK_READLINE
+ AC_CHECK_LIB(m,modf)
+ AMANDA_CHECK_LIBDL
+ AMANDA_GLIBC_BACKTRACE
++PKG_CHECK_MODULES([TIRPC],[libtirpc],[
++	CPPFLAGS="${CPPFLAGS} ${TIRPC_CFLAGS} -DHAVE_RPC_RPC_H"
++	LIBS="${LIBS} ${TIRPC_LIBS}"
++], [
++	AC_MSG_ERROR([libtirpc requested but library not found])
++])
+ AC_SEARCH_LIBS([shm_open], [rt], [], [
+   AC_MSG_ERROR([unable to find the shm_open() function])
+ ])

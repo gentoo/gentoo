@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6..9} )
+PYTHON_COMPAT=( pypy3 python3_{7..9} )
 PYTHON_REQ_USE="threads(+)"
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
@@ -11,9 +11,9 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="Human friendly output for text interfaces using Python"
-HOMEPAGE="https://pypi.org/project/humanfriendly
-	https://github.com/xolox/python-humanfriendly
-	https://humanfriendly.readthedocs.org"
+HOMEPAGE="https://pypi.org/project/humanfriendly/
+	https://github.com/xolox/python-humanfriendly/
+	https://humanfriendly.readthedocs.io/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"

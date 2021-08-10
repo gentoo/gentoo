@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+		<name>Brian Dolbec</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<maintainer>
+			<email>mbordese@gmail.com</email>
+			<name>Matias Bordese</name>
+		</maintainer>
+		<remote-id type="pypi">unidiff</remote-id>
+		<remote-id type="github">matiasb/python-unidiff</remote-id>
+	</upstream>
+</pkgmetadata>

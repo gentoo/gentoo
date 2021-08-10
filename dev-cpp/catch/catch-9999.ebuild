@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7..9} )
 
-inherit cmake-utils python-any-r1
+inherit cmake python-any-r1
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -13,9 +13,9 @@ if [[ ${PV} == *9999 ]]; then
 else
 	MY_P=${PN^}2-${PV}
 	SRC_URI="https://github.com/catchorg/Catch2/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
-	S=${WORKDIR}/${MY_P}
+	S="${WORKDIR}/${MY_P}"
 fi
 
 DESCRIPTION="Modern C++ header-only framework for unit-tests"
@@ -36,9 +36,10 @@ src_configure() {
 	local mycmakeargs=(
 		-DCATCH_ENABLE_WERROR=OFF
 		-DBUILD_TESTING=$(usex test)
+		-DCATCH_DEVELOPMENT_BUILD=$(usex test)
 	)
 	use test &&
 		mycmakeargs+=(-DPYTHON_EXECUTABLE="${PYTHON}")
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="ncurses"
 
 inherit python-r1
@@ -20,8 +20,7 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
-RDEPEND="${DEPEND}
-	net-proxy/haproxy"
+RDEPEND="${DEPEND}"
 
 src_install() {
 	python_foreach_impl python_doscript bin/hatop

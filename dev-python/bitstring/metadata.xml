@@ -18,5 +18,6 @@
 	<upstream>
 		<remote-id type="google-code">python-bitstring</remote-id>
 		<remote-id type="github">scott-griffiths/bitstring</remote-id>
+		<remote-id type="pypi">bitstring</remote-id>
 	</upstream>
 </pkgmetadata>

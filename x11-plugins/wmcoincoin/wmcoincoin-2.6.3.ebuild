@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,15 +9,16 @@ SRC_URI="http://hules.free.fr/${PN}/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="nls xinerama"
 
 RDEPEND="x11-libs/gtk+:2
 	media-libs/imlib2[X]
-	x11-libs/libXext
-	x11-libs/libXpm
 	x11-libs/libX11
+	x11-libs/libXext
 	x11-libs/libXft
+	x11-libs/libXmu
+	x11-libs/libXpm
 	xinerama? ( x11-libs/libXinerama )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

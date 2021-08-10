@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit autotools eutils
+inherit autotools epatch
 
 ZLIB_PV=1.2.3
 ZLIB_P="zlib-${ZLIB_PV}"
@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ppc ppc64 x86"
 IUSE=""
 
 ZLIB_S="${WORKDIR}/${ZLIB_P}"

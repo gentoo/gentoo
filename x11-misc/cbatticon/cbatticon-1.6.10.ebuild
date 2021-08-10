@@ -1,16 +1,17 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A lightweight and fast battery icon that sits in your system tray"
-HOMEPAGE="https://github.com/ColinJones/cbatticon"
-SRC_URI="https://github.com/ColinJones/cbatticon/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/valr/cbatticon"
+SRC_URI="https://github.com/valr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="libnotify"
 
 RDEPEND="

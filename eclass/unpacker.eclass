@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: unpacker.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: helpers for extraneous file formats and consistent behavior across EAPIs
 # @DESCRIPTION:
 # Some extraneous file formats are not part of PMS, or are only in certain
@@ -14,12 +15,18 @@
 #  - merge rpm unpacking
 #  - support partial unpacks?
 
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 if [[ -z ${_UNPACKER_ECLASS} ]]; then
 _UNPACKER_ECLASS=1
 
 inherit toolchain-funcs
 
 # @ECLASS-VARIABLE: UNPACKER_BZ2
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Utility to use to decompress bzip2 files.  Will dynamically pick between
@@ -27,6 +34,7 @@ inherit toolchain-funcs
 # Note: this is meant for users to set, not ebuilds.
 
 # @ECLASS-VARIABLE: UNPACKER_LZIP
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Utility to use to decompress lzip files.  Will dynamically pick between
@@ -356,6 +364,8 @@ _unpacker() {
 	*.lz)
 		: ${UNPACKER_LZIP:=$(type -P plzip || type -P pdlzip || type -P lzip)}
 		comp="${UNPACKER_LZIP} -dc" ;;
+	*.zst)
+		comp="zstd -dfc" ;;
 	esac
 
 	# then figure out if there are any archiving aspects
@@ -459,6 +469,8 @@ unpacker_src_uri_depends() {
 			d="app-arch/unzip" ;;
 		*.lz)
 			d="|| ( app-arch/plzip app-arch/pdlzip app-arch/lzip )" ;;
+		*.zst)
+			d="app-arch/zstd" ;;
 		esac
 		deps+=" ${d}"
 	done

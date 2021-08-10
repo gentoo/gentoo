@@ -1,0 +1,6 @@
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Matt Turner <mattst88@gentoo.org> (07-25-2021)
+# gdm requires gnome-shell requires rustified librsvg.
+x11-misc/xscreensaver gdm

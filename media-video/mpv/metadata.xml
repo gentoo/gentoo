@@ -16,7 +16,6 @@
 		<flag name="gamepad">Enable gamepad input support</flag>
 		<flag name="gbm">Enable Graphics Buffer Manager based EGL video backend</flag>
 		<flag name="jpeg">Enable support for saving screenshots in JPEG format</flag>
-		<flag name="libass">Enable OSD (On Screen Display) and subtitles support via <pkg>media-libs/libass</pkg></flag>
 		<flag name="libmpv">Build mpv shared library</flag>
 		<flag name="lua">Enable Lua scripting, OSC (On Screen Controller) GUI and <pkg>net-misc/youtube-dl</pkg> hook-script</flag>
 		<flag name="opengl" restrict="&lt;media-video/mpv-0.28.0">Enable the recommended 'opengl' video output</flag>

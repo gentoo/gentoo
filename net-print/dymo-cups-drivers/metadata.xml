@@ -6,6 +6,6 @@
     <description>Occasional access to Dymo LabelWriter 450 Turbo</description>
   </maintainer>
   <use>
-    <flag name="usb_modeswitch">Include usb_modeswitch for some hardware (bug #601242)</flag>
+    <flag name="usb-modeswitch">Include usb_modeswitch for some hardware (bug #601242)</flag>
   </use>
 </pkgmetadata>

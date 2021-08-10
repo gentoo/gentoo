@@ -1,6 +1,5 @@
-diff -ru arc-5.21o.orig/arcdos.c arc-5.21o/arcdos.c
---- arc-5.21o.orig/arcdos.c	2008-03-30 15:44:53 +0200
-+++ arc-5.21o/arcdos.c	2008-03-30 15:45:51 +0200
+--- a/arcdos.c
++++ b/arcdos.c
 @@ -30,7 +30,7 @@
  #if	UNIX
  #include <sys/types.h>

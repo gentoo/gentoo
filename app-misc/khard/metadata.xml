@@ -5,11 +5,11 @@
 	<email>andrey_utkin@gentoo.org</email>
 	<name>Andrey Utkin</name>
 </maintainer>
-<maintainer type="person">
+<maintainer type="person" proxied="yes">
 	<email>holgersson@posteo.de</email>
 	<name>Nils Freydank</name>
 </maintainer>
-<maintainer type="project">
+<maintainer type="project" proxied="proxy">
 	<email>proxy-maint@gentoo.org</email>
 	<name>Proxy Maintainers</name>
 </maintainer>

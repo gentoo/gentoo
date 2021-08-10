@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit distutils-r1
 
 MY_PN="pypillowfight"
 
 DESCRIPTION="Small library containing various image processing algorithms"
-HOMEPAGE="https://github.com/openpaperwork/libpillowfight"
+HOMEPAGE="https://gitlab.gnome.org/World/OpenPaperwork/libpillowfight"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="GPL-3"

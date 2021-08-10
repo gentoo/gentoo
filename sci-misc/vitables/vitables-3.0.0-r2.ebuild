@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit distutils-r1
 
@@ -20,9 +20,9 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
-		dev-python/pytables[${PYTHON_MULTI_USEDEP}]
-		dev-python/QtPy[gui,${PYTHON_MULTI_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
+		dev-python/pytables[${PYTHON_USEDEP}]
+		dev-python/QtPy[gui,${PYTHON_USEDEP}]
 	')"
 DEPEND="${RDEPEND}"
 

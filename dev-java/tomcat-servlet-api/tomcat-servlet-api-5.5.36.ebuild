@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils java-pkg-2 java-ant-2 java-osgi
+inherit java-pkg-2 java-ant-2 java-osgi
 
 MY_P="apache-${P/-servlet-api/}-src"
 DESCRIPTION="Tomcat's Servlet API 2.4/JSP API 2.0 implementation"
@@ -12,7 +12,7 @@ SRC_URI="https://archive.apache.org/dist/tomcat/tomcat-5/v${PV}/src/${MY_P}.tar.
 
 LICENSE="Apache-2.0"
 SLOT="2.4"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="doc source"
 
 DEPEND=">=virtual/jdk-1.8

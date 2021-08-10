@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -30,8 +30,7 @@ DEPEND="
 	sys-libs/zlib:0=
 	http2? ( net-libs/nghttp2:0= )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 	php_targets_php7-1? ( dev-lang/php:7.1[cli,sockets?] )
 	php_targets_php7-2? ( dev-lang/php:7.2[cli,sockets?] )
@@ -47,17 +46,17 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-IUSE="debug http2 libressl mysql sockets ssl"
+IUSE="debug http2 mysql sockets ssl"
 
 src_configure() {
-	# JEMalloc not included as it refuses to find a ${EROOT}/usr/includes/jemalloc subdirectory
+	# JEMalloc not included as it refuses to find a ${ESYSROOT}/usr/includes/jemalloc subdirectory
 	local PHP_EXT_ECONF_ARGS=(
 		--enable-swoole
 		$(use_enable debug)
 		$(use_enable http2)
 		$(use_enable mysql mysqlnd)
 		$(use_enable ssl openssl)
-		$(use_with ssl openssl-dir "${EROOT}/usr")
+		$(use_with ssl openssl-dir "${ESYSROOT}/usr")
 		$(use_enable sockets)
 	)
 

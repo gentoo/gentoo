@@ -1,8 +1,8 @@
 Put HTML documentation in proper directory.
 Patch by Chris Mayo, https://bugs.gentoo.org/show_bug.cgi?id=296112
 
---- doc/Makefile.am.orig
-+++ doc/Makefile.am
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
 @@ -182,8 +182,6 @@
  # Install (automake)
  #

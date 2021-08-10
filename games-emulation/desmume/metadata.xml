@@ -5,7 +5,13 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<use>
+		<flag name="gdb">Enable support for the remote GDB stub</flag>
+		<flag name="openal">Use <pkg>media-libs/openal</pkg> for microphone input</flag>
+		<flag name="wifi">Enable support for Wi-Fi (experimental and discouraged)</flag>
+	</use>
 	<upstream>
+		<remote-id type="github">TASVideos/desmume</remote-id>
 		<remote-id type="sourceforge">desmume</remote-id>
 	</upstream>
 </pkgmetadata>

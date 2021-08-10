@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit versionator eutils flag-o-matic
+inherit versionator flag-o-matic
 
 #version magic thanks to masterdriverz and UberLord using bash array instead of tr
 trarr="0abcdefghi"
@@ -17,7 +17,7 @@ HOMEPAGE="http://swiss.csail.mit.edu/~jaffer/SCM"
 
 SLOT="0"
 LICENSE="LGPL-3"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-macos"
+KEYWORDS="amd64 x86 ~amd64-linux"
 IUSE="arrays bignums cautious dynamic-linking engineering-notation gsubr inexact ioext libscm macro ncurses posix readline regex sockets unix"
 
 #unzip for unpacking

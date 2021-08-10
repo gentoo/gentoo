@@ -1,19 +1,19 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>davidroman96@gmail.com</email>
 		<name>David Roman</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>jchelmert3@posteo.net</email>
+		<email>ajak@gentoo.org</email>
 		<name>John Helmert III</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">jarun/Buku</remote-id>
+		<remote-id type="github">jarun/buku</remote-id>
 	</upstream>
 </pkgmetadata>

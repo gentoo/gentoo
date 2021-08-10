@@ -9,7 +9,6 @@
 		<remote-id type="github">deathkiller/jazz2</remote-id>
 	</upstream>
 	<use>
-		<flag name="gles2-only">Use GLES 2.0 or later instead of full OpenGL 2.1</flag>
 		<flag name="server">Build the multiplayer game server</flag>
 	</use>
 </pkgmetadata>

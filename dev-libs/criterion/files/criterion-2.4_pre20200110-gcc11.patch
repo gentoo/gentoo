@@ -1,0 +1,12 @@
+diff --git a/include/criterion/internal/assert/ieee.h b/include/criterion/internal/assert/ieee.h
+index 3b6de3b..2063d87 100644
+--- a/include/criterion/internal/assert/ieee.h
++++ b/include/criterion/internal/assert/ieee.h
+@@ -29,6 +29,7 @@
+ #ifdef __cplusplus
+ 
+ # include <cmath>
++# include <limits>
+ 
+ namespace criterion { namespace internal { namespace operators {
+ 

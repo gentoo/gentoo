@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: test phase
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/cea-hpc/clustershell/archive/v${PV}.tar.gz -> ${P}.t
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc libressl test"
+IUSE="doc test"
 
 CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="
@@ -27,9 +27,7 @@ DEPEND="
 RDEPEND="
 	${CDEPEND}
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
-
+	dev-libs/openssl:0="
 RESTRICT="test" # currently fail
 
 python_install() {

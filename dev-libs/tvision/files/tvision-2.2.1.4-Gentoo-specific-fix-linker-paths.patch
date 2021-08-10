@@ -1,0 +1,33 @@
+From 62fce1e63e92ae71e2ce061c40ba736f4b22f71d Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Mon, 8 Feb 2021 23:43:47 +0100
+Subject: [PATCH] [Gentoo-specific] fix linker paths
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ config.pl | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/config.pl b/config.pl
+index 4664baa..9e2cb96 100644
+--- a/config.pl
++++ b/config.pl
+@@ -179,13 +179,13 @@ if ($OS eq 'UNIX')
+    # QNX 6.2 beta 3 workaround
+    $MakeDefsRHIDE[3].='/lib ' if ($OSf eq 'QNXRtP');
+    # Link with installed libraries
+-   $MakeDefsRHIDE[3].=$realPrefix.'/lib';
++   #$MakeDefsRHIDE[3].=$realPrefix.'/lib';
+    $MakeDefsRHIDE[3].='/'.$conf{'libs-subdir'} if $conf{'libs-subdir'};
+    $MakeDefsRHIDE[3].=' ';
+    $MakeDefsRHIDE[3].='../../makes ' unless $conf{'libs-here'} eq 'no';
+    $MakeDefsRHIDE[3].=$here.'/makes ' unless $conf{'libs-here'} eq 'no';
+    $MakeDefsRHIDE[3].='../../intl/dummy ' if $UseDummyIntl;
+-   $MakeDefsRHIDE[3].=$conf{'X11LibPath'}.' ' if ($conf{'HAVE_X11'} eq 'yes');
++   #$MakeDefsRHIDE[3].=$conf{'X11LibPath'}.' ' if ($conf{'HAVE_X11'} eq 'yes');
+    $MakeDefsRHIDE[3].=$AllegroPath.' ' if $conf{'HAVE_ALLEGRO'} eq 'yes';
+   }
+ elsif ($OS eq 'DOS')
+-- 
+2.30.0
+

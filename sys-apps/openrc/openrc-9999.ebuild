@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,15 +18,11 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="audit bash debug ncurses pam newnet prefix +netifrc selinux sysv-utils
-	unicode"
+IUSE="audit bash debug ncurses pam newnet prefix +netifrc selinux sysv-utils unicode"
 
 COMMON_DEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
-	pam? (
-		sys-auth/pambase
-		sys-libs/pam
-	)
+	pam? ( sys-libs/pam )
 	audit? ( sys-process/audit )
 	sys-process/psmisc
 	!<sys-process/procps-3.3.9-r2
@@ -42,7 +38,10 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	bash? ( app-shells/bash )
 	!prefix? (
-		sysv-utils? ( !sys-apps/sysvinit )
+		sysv-utils? (
+			!sys-apps/systemd[sysv-utils(-)]
+			!sys-apps/sysvinit
+		)
 		!sysv-utils? ( >=sys-apps/sysvinit-2.86-r6[selinux?] )
 		virtual/tmpfiles
 	)
@@ -65,10 +64,9 @@ src_prepare() {
 }
 
 src_compile() {
-	unset LIBDIR #266688
-
 	MAKE_ARGS="${MAKE_ARGS}
 		LIBNAME=$(get_libdir)
+		LIBDIR=${EPREFIX}/$(get_libdir)
 		LIBEXECDIR=${EPREFIX}/lib/rc
 		MKBASHCOMP=yes
 		MKNET=$(usex newnet)
@@ -78,13 +76,11 @@ src_compile() {
 		MKPAM=$(usev pam)
 		MKSTATICLIBS=no
 		MKZSHCOMP=yes
+		OS=Linux
 		SH=$(usex bash /bin/bash /bin/sh)"
 
-	local brand="Unknown"
-	MAKE_ARGS="${MAKE_ARGS} OS=Linux"
-	brand="Linux"
-	export BRANDING="Gentoo ${brand}"
 	use prefix && MAKE_ARGS="${MAKE_ARGS} MKPREFIX=yes PREFIX=${EPREFIX}"
+export BRANDING="Gentoo Linux"
 	export DEBUG=$(usev debug)
 	export MKTERMCAP=$(usev ncurses)
 
@@ -125,9 +121,11 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/openrc.logrotate openrc
 
-	# install gentoo pam.d files
-	newpamd "${FILESDIR}"/start-stop-daemon.pam start-stop-daemon
-	newpamd "${FILESDIR}"/start-stop-daemon.pam supervise-daemon
+	if use pam; then
+		# install gentoo pam.d files
+		newpamd "${FILESDIR}"/start-stop-daemon.pam start-stop-daemon
+		newpamd "${FILESDIR}"/start-stop-daemon.pam supervise-daemon
+	fi
 
 	# install documentation
 	dodoc ChangeLog *.md
@@ -170,7 +168,7 @@ pkg_postinst() {
 		ewarn "You have emerged OpenRc without network support. This"
 		ewarn "means you need to SET UP a network manager such as"
 		ewarn "	net-misc/netifrc, net-misc/dhcpcd, net-misc/connman,"
-		ewarn "net-misc/NetworkManager, or net-vpn/badvpn."
+		ewarn " net-misc/NetworkManager, or net-vpn/badvpn."
 		ewarn "Or, you have the option of emerging openrc with the newnet"
 		ewarn "use flag and configuring /etc/conf.d/network and"
 		ewarn "/etc/conf.d/staticroute if you only use static interfaces."

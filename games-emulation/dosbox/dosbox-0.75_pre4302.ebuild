@@ -1,27 +1,27 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools desktop flag-o-matic
 
-case "${PV}" in
-9999)
-	MY_P=${PN}
-	ESVN_REPO_URI="https://svn.code.sf.net/p/dosbox/code-0/dosbox/trunk"
-	inherit subversion
-	;;
-*_pre*)
-	MY_PV=0-r${PV#*_pre}
-	MY_P=${PN}-code-${MY_PV}-${PN}-trunk
-	SRC_URI="https://sourceforge.net/code-snapshots/svn/d/do/dosbox/code-0/${MY_P}.zip"
-	BDEPEND="app-arch/unzip"
-	;;
-*)
-	MY_PV=$(ver_rs 2 -)
-	MY_P=${PN}-${MY_PV}
-	SRC_URI="mirror://sourceforge/dosbox/${MY_P}.tar.gz"
-	;;
+case ${PV} in
+	9999)
+		MY_P=${PN}
+		ESVN_REPO_URI="https://svn.code.sf.net/p/dosbox/code-0/dosbox/trunk"
+		inherit subversion
+		;;
+	*_pre*)
+		MY_PV=0-r${PV#*_pre}
+		MY_P=${PN}-code-${MY_PV}-${PN}-trunk
+		SRC_URI="https://sourceforge.net/code-snapshots/svn/d/do/dosbox/code-0/${MY_P}.zip"
+		BDEPEND="app-arch/unzip"
+		;;
+	*)
+		MY_PV=$(ver_rs 2 -)
+		MY_P=${PN}-${MY_PV}
+		SRC_URI="mirror://sourceforge/dosbox/${MY_P}.tar.gz"
+		;;
 esac
 
 GLIDE_PATCH=841e1071597b64ead14dd08c25a03206b2d1d1b6
@@ -29,6 +29,8 @@ SRC_URI+=" glide? ( https://raw.githubusercontent.com/voyageur/openglide/${GLIDE
 
 DESCRIPTION="DOS emulator"
 HOMEPAGE="https://www.dosbox.com/"
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
@@ -44,10 +46,7 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 	media-libs/sdl-net
 	media-libs/sdl-sound
 	sys-libs/zlib"
-
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.74-ncurses.patch

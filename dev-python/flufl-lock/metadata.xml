@@ -8,4 +8,7 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="pypi">flufl.lock</remote-id>
+	</upstream>
 </pkgmetadata>

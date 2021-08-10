@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>matt@offtopica.uk</email>
+    <name>Matt Smith</name>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>telans@posteo.de</email>
+    <name>James Beddek</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>candrews@gentoo.org</email>
+    <name>Craig Andrews</name>
+  </maintainer>
+  <longdescription lang="en">
+    XMRig High performance, open source, cross platform RandomX,
+    CryptoNight, KawPow, AstroBWT, and Argon2 CPU/GPU miner.
+  </longdescription>
+  <use>
+    <flag name="donate">
+      Set the default donation level to 1% instead of 0
+    </flag>
+    <flag name="hwloc">
+      Use <pkg>sys-apps/hwloc</pkg> for CPU affinity support
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">xmrig/xmrig</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,5 +1,5 @@
---- a/ext/hiredis_ext/extconf.rb	2015-12-29 15:53:00.000000000 +0100
-+++ b/ext/hiredis_ext/extconf.rb	2018-04-21 07:40:15.973747727 +0200
+--- a/ext/hiredis_ext/extconf.rb
++++ b/ext/hiredis_ext/extconf.rb
 @@ -27,15 +27,8 @@
  end
  
@@ -13,7 +13,7 @@
 -  # Statically link to hiredis (mkmf can't do this for us)
 -  $CFLAGS << " -I#{hiredis_dir}"
 -  $LDFLAGS << " #{hiredis_dir}/libhiredis.a"
-+  $CFLAGS << ' ' << `pkg-config hiredis --cflags-only-I`.chomp
++  $CFLAGS << ' ' << `${PKG_CONFIG} hiredis --cflags-only-I`.chomp
 +  $LDFLAGS << ' -lhiredis'
  
    have_func("rb_thread_fd_select")

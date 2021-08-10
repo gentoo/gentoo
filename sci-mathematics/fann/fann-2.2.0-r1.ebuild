@@ -1,13 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MY_P=FANN-${PV}-Source
-inherit cmake-multilib
+inherit cmake
 
 DESCRIPTION="Fast Artificial Neural Network Library"
-HOMEPAGE="http://leenissen.dk/fann/"
+HOMEPAGE="http://leenissen.dk/fann/wp/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="examples"
 
 RDEPEND=""
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -30,7 +30,7 @@ src_test() {
 }
 
 src_install() {
-	cmake-multilib_src_install
+	cmake_src_install
 	if use examples; then
 		insinto /usr/share/doc/${PF}
 		doins -r examples

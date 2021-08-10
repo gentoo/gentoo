@@ -1,0 +1,53 @@
+From 8ad6921524c92a0cf1b58336b3ce29e159e83b7d Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Wed, 14 Jul 2021 17:06:59 +0100
+Subject: [PATCH] Fix selecting binaries from component chooser KCM
+
+In the kcmshell for a component chooser we use the open with dialog to
+select services for various scheme handlers.
+
+If you select a binary instead of a .desktop file a temporary .desktop
+file is created in ~/.local/share/applications
+
+This is in the format
+Exec=someBinary
+MimeType=x-scheme-handler/http
+
+When we then use this application for launching KIO::DesktopExecParser
+then (sort of correctly) determines that that the chosen service cannot
+handle the http scheme because even though it is a scheme handler it
+does not have a "%u" in the exec line.
+
+This leads to us potentially loading websites via kioclient or kio-fuse.
+
+Testing done:
+ - kcmshell5 component chooser
+ - web browser -> other -> type "/usr/bin/firefox"
+ - kde-open5 http://kde.org
+ - Previously this gave a local URL, now it is correct
+---
+ src/widgets/kopenwithdialog.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/widgets/kopenwithdialog.cpp b/src/widgets/kopenwithdialog.cpp
+index 1831878ca..31295044d 100644
+--- a/src/widgets/kopenwithdialog.cpp
++++ b/src/widgets/kopenwithdialog.cpp
+@@ -1088,6 +1088,14 @@ bool KOpenWithDialogPrivate::checkAccept()
+             KConfigGroup cg = desktopFile.desktopGroup();
+             cg.writeEntry("Type", "Application");
+             cg.writeEntry("Name", initialServiceName);
++
++            // if we select a binary for a scheme handler, then it's safe to assume it can handle URLs
++            if (qMimeType.startsWith(QLatin1String("x-scheme-handler/"))) {
++                if (!typedExec.contains(QLatin1String("%u"), Qt::CaseInsensitive) && !typedExec.contains(QLatin1String("%f"), Qt::CaseInsensitive)) {
++                    fullExec += QStringLiteral(" %u");
++                }
++            }
++
+             cg.writeEntry("Exec", fullExec);
+             cg.writeEntry("NoDisplay", true); // don't make it appear in the K menu
+             if (terminal->isChecked()) {
+-- 
+GitLab
+

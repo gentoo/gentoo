@@ -1,0 +1,23 @@
+Don't let PATH get in the way of proper Qt5 detection.
+It could lead to broken configure due to mismanaged qtchooser config.
+
+--- a/configure.ac	2020-11-21 16:35:58.433794709 +0100
++++ b/configure.ac	2020-11-21 18:02:41.835207197 +0100
+@@ -11819,7 +11819,7 @@
+     qt5_test_library="libQt5Widgets.so"
+ 
+     dnl Check for qmake5
+-    AC_PATH_PROGS( QMAKE5, [qmake-qt5 qmake], no, [$QT5DIR/bin:$PATH])
++    AC_PATH_PROGS( QMAKE5, [qmake-qt5 qmake], no, [$QT5DIR/bin])
+     if test "$QMAKE5" = "no"; then
+         AC_MSG_ERROR([Qmake not found.  Please specify the root of your Qt5 installation by exporting QT5DIR before running "configure".])
+     else
+@@ -11886,7 +11886,7 @@
+ 
+     dnl Check for Meta Object Compiler
+ 
+-    AC_PATH_PROGS( MOC5, [moc-qt5 moc], no, [`dirname $qt5_libdir`/bin:$QT5DIR/bin:$PATH])
++    AC_PATH_PROGS( MOC5, [moc-qt5 moc], no, [$QT5DIR/bin])
+     if test "$MOC5" = "no"; then
+         AC_MSG_ERROR([Qt Meta Object Compiler not found.  Please specify
+ the root of your Qt installation by exporting QT5DIR before running "configure".])

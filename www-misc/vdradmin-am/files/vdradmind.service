@@ -6,8 +6,6 @@ Documentation=file:///usr/share/doc/vdradmin-am/INSTALL
 [Service]
 ExecStart=/usr/bin/vdradmind --nofork
 User=vdradmin
-StandardOutput=syslog
-SyslogLevel=warning
 
 [Install]
 WantedBy=multi-user.target

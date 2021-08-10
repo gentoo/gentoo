@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<longdescription>Picocli is a modern framework for building powerful, user-friendly, GraalVM-enabled command line apps with ease. It supports colors, autocompletion, subcommands, and more. In 1 source file so apps can include as source and avoid adding a dependency. Written in Java, usable from Groovy, Kotlin, Scala, etc.</longdescription>
+	<upstream>
+		<remote-id type="github">remkop/picocli</remote-id>
+		<bugs-to>https://github.com/remkop/picocli/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit toolchain-funcs eutils
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="ARM software emulator"
 HOMEPAGE="http://softgun.sourceforge.net/"
@@ -12,13 +12,15 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
 DEPEND="media-libs/alsa-lib"
-RDEPEND=""
+RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.22-make.patch
+PATCHES=( "${FILESDIR}"/${PN}-0.22-make.patch )
+
+src_configure() {
+	append-cflags -fcommon
+	default
 }
 
 src_compile() {

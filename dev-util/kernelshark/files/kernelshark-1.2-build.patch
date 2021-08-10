@@ -1,0 +1,39 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -67,11 +67,11 @@ set(KS_LOGO_LABEL  KS_logo_horizontal.svg)
+ 
+ set(CMAKE_INSTALL_RPATH "${_LIBDIR}/${KS_APP_NAME}/")
+ 
+-if (CMAKE_BUILD_TYPE MATCHES Package)
++if (NOT CMAKE_BUILD_TYPE MATCHES Package)
+ 
+     set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+ 
+-else (CMAKE_BUILD_TYPE MATCHES Package)
++else (CMAKE_BUILD_TYPE MATCHES Gentoo)
+ 
+     set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+ 
+--- a/build/FindTraceCmd.cmake
++++ b/build/FindTraceCmd.cmake
+@@ -38,17 +38,17 @@ find_path(TRACEFS_INCLUDE_DIR   NAMES  tracefs/tracefs.h
+                                        ${CMAKE_SOURCE_DIR}/../include/
+                                 NO_DEFAULT_PATH)
+ 
+-find_library(TRACECMD_LIBRARY   NAMES  trace-cmd/libtracecmd.a
++find_library(TRACECMD_LIBRARY   NAMES  trace-cmd/libtracecmd.so
+                                 PATHS  $ENV{TRACE_CMD}/lib/
+                                        ${CMAKE_SOURCE_DIR}/../lib/
+                                 NO_DEFAULT_PATH)
+ 
+-find_library(TRACEFS_LIBRARY    NAMES  tracefs/libtracefs.a
++find_library(TRACEFS_LIBRARY    NAMES  tracefs/libtracefs.so
+                                 PATHS  $ENV{TRACE_CMD}/lib/
+                                        ${CMAKE_SOURCE_DIR}/../lib/
+                                 NO_DEFAULT_PATH)
+ 
+-find_library(TRACEEVENT_LIBRARY NAMES  traceevent/libtraceevent.a
++find_library(TRACEEVENT_LIBRARY NAMES  traceevent/libtraceevent.so
+                                 PATHS  $ENV{TRACE_CMD}/lib/
+                                        ${CMAKE_SOURCE_DIR}/../lib/
+                                 NO_DEFAULT_PATH)

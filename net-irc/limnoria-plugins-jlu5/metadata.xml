@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>wraeth@gentoo.org</email>
+		<name>Sam Jorna</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">jlu5/SupyPlugins</remote-id>
+		<bugs-to>https://github.com/jlu5/SupyPlugins/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

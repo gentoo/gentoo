@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake-utils desktop gnome2-utils python-single-r1 qmake-utils toolchain-funcs
+PYTHON_COMPAT=( python3_{8,9} )
+inherit cmake desktop python-single-r1 qmake-utils toolchain-funcs xdg-utils
 
 MAIN_PV=$(ver_cut 0-1)
 MAJOR_PV=$(ver_cut 1-2)
@@ -15,8 +15,8 @@ HOMEPAGE="https://www.paraview.org"
 SRC_URI="https://www.paraview.org/files/v${MAJOR_PV}/${MY_P}.tar.xz"
 
 LICENSE="paraview GPL-2"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="boost cg coprocessing development doc examples ffmpeg mpi mysql nvcontrol openmp offscreen plugins python +qt5 +sqlite test tk +webengine"
 
 RESTRICT="mirror test"
@@ -64,17 +64,17 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/constantly[${PYTHON_MULTI_USEDEP}]
-			dev-python/incremental[${PYTHON_MULTI_USEDEP}]
-			dev-python/matplotlib[${PYTHON_MULTI_USEDEP}]
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
-			dev-python/pygments[${PYTHON_MULTI_USEDEP}]
-			dev-python/sip[${PYTHON_MULTI_USEDEP}]
-			dev-python/six[${PYTHON_MULTI_USEDEP}]
-			dev-python/twisted[${PYTHON_MULTI_USEDEP}]
-			dev-python/zope-interface[${PYTHON_MULTI_USEDEP}]
+			dev-python/constantly[${PYTHON_USEDEP}]
+			dev-python/incremental[${PYTHON_USEDEP}]
+			dev-python/matplotlib[${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
+			dev-python/pygments[${PYTHON_USEDEP}]
+			dev-python/sip[${PYTHON_USEDEP}]
+			dev-python/six[${PYTHON_USEDEP}]
+			dev-python/twisted[${PYTHON_USEDEP}]
+			dev-python/zope-interface[${PYTHON_USEDEP}]
 			mpi? ( dev-python/mpi4py )
-			qt5? ( dev-python/PyQt5[opengl,${PYTHON_MULTI_USEDEP}] )
+			qt5? ( dev-python/PyQt5[opengl,${PYTHON_USEDEP}] )
 		')
 	)
 	qt5? (
@@ -95,7 +95,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	boost? (
 		$(python_gen_cond_dep '
-			dev-libs/boost[mpi?,${PYTHON_MULTI_USEDEP}]
+			dev-libs/boost[mpi?,${PYTHON_USEDEP}]
 		')
 	)
 	doc? ( app-doc/doxygen )"
@@ -106,9 +106,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.1-xdmf-cstring.patch
 	"${FILESDIR}"/${PN}-5.3.0-fix_buildsystem.patch
 	"${FILESDIR}"/${PN}-5.5.0-allow_custom_build_type.patch
+	"${FILESDIR}"/${PN}-5.8.0-w-vtk-8.2.0-qt-5.15.patch # bug 729348
+	"${FILESDIR}"/${P}-find-xmlpatterns.patch # bug 755977, downstream patch
 )
-
-CMAKE_MAKEFILE_GENERATOR="emake" #579474
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != "binary" ]] && use openmp && tc-check-openmp
@@ -117,11 +117,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-
 	# Bug #661812
 	mkdir -p Plugins/StreamLinesRepresentation/doc || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# lib64 fixes
 	sed -i \
@@ -133,10 +132,6 @@ src_prepare() {
 }
 
 src_configure() {
-	if use qt5; then
-		export QT_SELECT=qt5
-	fi
-
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_LIBDIR="${PVLIBDIR}"
 		-UBUILD_SHARED_LIBS
@@ -219,36 +214,37 @@ src_configure() {
 			-DOPENGL_gl_LIBRARY="${EPREFIX}"/usr/$(get_libdir)/libGL.so
 			-DOPENGL_glu_LIBRARY="${EPREFIX}"/usr/$(get_libdir)/libGLU.so
 			-DQT_MOC_EXECUTABLE="$(qt5_get_bindir)/moc"
+			-Dqt_xmlpatterns_executable="$(qt5_get_bindir)/xmlpatterns"
 		)
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
-		# remove wrapper binaries and put the actual executable in place
-		for i in {paraview-config,pvserver,pvdataserver,pvrenderserver,pvbatch,pvpython,paraview}; do
-			if [ -f "${ED}"/usr/lib/"$i" ]; then
-				mv "${ED}"/usr/lib/"$i" "${ED}"/usr/bin/"$i" || die
-			fi
-		done
+	# remove wrapper binaries and put the actual executable in place
+	for i in {paraview-config,pvserver,pvdataserver,pvrenderserver,pvbatch,pvpython,paraview}; do
+		if [ -f "${ED}"/usr/lib/"$i" ]; then
+			mv "${ED}"/usr/lib/"$i" "${ED}"/usr/bin/"$i" || die
+		fi
+	done
 
-		# set up the environment
-		echo "LDPATH=${EPREFIX}/usr/${PVLIBDIR}" > "${T}"/40${PN} || die
-		doenvd "${T}"/40${PN}
+	# set up the environment
+	echo "LDPATH=${EPREFIX}/usr/${PVLIBDIR}" > "${T}"/40${PN} || die
+	doenvd "${T}"/40${PN}
 
-		newicon "${S}"/Clients/ParaView/pvIcon-96x96.png paraview.png
-		make_desktop_entry paraview "Paraview" paraview
+	newicon "${S}"/Clients/ParaView/pvIcon-96x96.png paraview.png
+	make_desktop_entry paraview "Paraview" paraview
 
-		use python && python_optimize "${D}"/usr/$(get_libdir)/${PN}-${MAJOR_PV}
-	}
+	use python && python_optimize "${D}"/usr/$(get_libdir)/${PN}-${MAJOR_PV}
+}
 
-	pkg_postinst() {
-		xdg_icon_cache_update
-	}
+pkg_postinst() {
+	xdg_icon_cache_update
+}
 
-	pkg_postrm() {
-		xdg_icon_cache_update
-	}
+pkg_postrm() {
+	xdg_icon_cache_update
+}

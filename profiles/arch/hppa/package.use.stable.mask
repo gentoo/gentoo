@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,6 +17,96 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2021-06-20)
+# dev-libs/libzip does not have stable keywords on hppa
+>=media-gfx/imagemagick-7 zip
+
+# Matt Turner <mattst88@gentoo.org> (2021-06-02)
+# dev-util/gi-docgen does not have stable keywords on hppa
+x11-libs/gdk-pixbuf gtk-doc
+x11-libs/pango gtk-doc
+
+# Sam James <sam@gentoo.org> (2021-06-01)
+# sys-apps/systemd is not stable on hppa
+sys-auth/pambase homed
+
+# Sam James <sam@gentoo.org> (2021-02-18)
+# Requires dev-lang/vala to be stable
+gnome-base/librsvg vala
+
+# Rolf Eike Beer <eike@sf-mail.de> (2021-01-26)
+# The following packages have no stable keywords on hppa:
+#       openntpd: net-misc/openntpd
+#   parse-clocks: net-misc/pps-tools
+#           snmp: net-analyzer/net-snmp
+net-misc/ntp openntpd parse-clocks snmp
+
+# Sam James <sam@gentoo.org> (2021-01-21)
+# media-gfx/transfig ends up pulling in Xorg
+# bug #766051
+dev-util/ragel doc
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-31)
+# The following packages have no stable keywords on hppa:
+#           amqp: net-libs/rabbitmq
+#            dbi: dev-db/libdbi
+#         geoip2: dev-libs/libmaxminddb
+#          kafka: dev-libs/librdkafka
+#        mongodb: dev-libs/mongo-c-driver
+#          redis: dev-db/redis
+#           smtp: net-libs/libesmtp
+#           snmp: net-analyzer/net-snmp
+#   spoof-source: net-libs/libnet
+app-admin/syslog-ng amqp dbi geoip2 kafka mongodb redis smtp snmp spoof-source
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-30)
+# dev-libs/libfido2 is not stable on hppa
+net-misc/openssh security-key
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-30)
+# app-text/aspell is not stable on hppa
+app-misc/mc spell
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# app-crypt/heimdal is not stable on hppa
+net-nds/openldap smbkrb5passwd
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-python/subunit is not stable on hppa
+dev-libs/check subunit
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-libs/xapian is not stable on hppa
+app-doc/doxygen doxysearch
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# x11-base/xorg-server not stable.
+# Mask USE=test for packages using virtualx.eclass.
+dev-lang/tk test
+dev-python/cmd2 test
+dev-python/fonttools test
+dev-python/pillow test
+dev-python/pygobject test
+dev-python/pyperclip test
+dev-python/twisted test
+dev-tcltk/bwidget test
+dev-tcltk/snack test
+dev-tcltk/tcllib test
+dev-util/cmake test
+sys-apps/dbus test
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-12-14)
+# noone actually tests it on real hardware anymore
+x11-base/xorg-server xorg
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-12-11)
+# not all needed sphinx modules are stable on hppa.
+dev-python/aiohttp doc
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-11-14)
+# sys-apps/systemd has no stable keywords on hppa.
+sys-apps/ipmitool openbmc
+
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
 # app-i18n/fcitx:4 not stable.
 media-libs/libsdl2 fcitx4
@@ -24,16 +114,11 @@ media-libs/libsdl2 fcitx4
 # Rolf Eike Beer <eike@sf-mail.de> (2020-06-10)
 # not stable dev-vcs/mercurial because of broken dependencies: bug #727390
 app-portage/layman mercurial
-dev-python/hgdistver test
 dev-python/setuptools_scm test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-24)
 # dependencies not stable yet
 dev-python/pytest-cov test
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
-# No stable app-arch/rpm on hppa, bug #471456
-dev-util/patchutils test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # no stable app-editors/{,g}vim

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="fish-completion +gdk-pixbuf +man +pam zsh-completion"
+IUSE="+gdk-pixbuf +man +pam"
 
 DEPEND="
 	dev-libs/wayland
@@ -39,13 +39,14 @@ src_configure() {
 		-Dman-pages=$(usex man enabled disabled)
 		-Dpam=$(usex pam enabled disabled)
 		-Dgdk-pixbuf=$(usex gdk-pixbuf enabled disabled)
-		$(meson_use fish-completion fish-completions)
-		$(meson_use zsh-completion zsh-completions)
+		"-Dfish-completions=true"
+		"-Dzsh-completions=true"
 		"-Dbash-completions=true"
 		"-Dwerror=false"
 	)
+
 	if [[ ${PV} != 9999 ]]; then
-		emesonargs+=("-Dswaylock-version=${PV}")
+		emesonargs+=( "-Dswaylock-version=${PV}" )
 	fi
 
 	meson_src_configure

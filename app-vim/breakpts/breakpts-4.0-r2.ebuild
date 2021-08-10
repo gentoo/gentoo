@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ RDEPEND="
 	>=app-vim/multvals-3.6.1
 	>=app-vim/genutils-1.13
 	>=app-vim/foldutil-1.6"
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 VIM_PLUGIN_HELPTEXT=\
 "This plugin allows breakpoints to be set and cleared visually. To start,

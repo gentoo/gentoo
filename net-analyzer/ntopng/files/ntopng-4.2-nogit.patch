@@ -1,0 +1,44 @@
+diff --git a/Makefile.in b/Makefile.in
+index 38209c7..6945ce7 100755
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -171,7 +171,6 @@ $(LIBRRDTOOL_LIB):
+ 	cd $(LIBRRDTOOL_HOME); ./configure --disable-libdbi --disable-libwrap --disable-rrdcgi --disable-libtool-lock --disable-nls --disable-rpath --disable-perl --disable-ruby --disable-lua --disable-tcl --disable-python --disable-dependency-tracking --disable-rrd_graph ; cd src; @GMAKE@ librrd_th.la
+ 
+ hooks/.enabled:
+-	git config core.hooksPath hooks || true
+ 	touch hooks/.enabled
+ 
+ clean:
+diff --git a/configure.seed b/configure.seed
+index 7e2eced..dd3257d 100644
+--- a/configure.seed
++++ b/configure.seed
+@@ -77,7 +77,6 @@ fi
+ # On CentOS 6 `git rev-list HEAD --count` does not work
+ #
+ #
+-REVISION=`git log --pretty=oneline | wc -l`
+ 
+ if test -d "/usr/local/include"; then
+   CFLAGS="${CFLAGS} -I/usr/local/include"
+@@ -323,7 +322,6 @@ else
+   AC_MSG_RESULT(not found)
+ fi
+ 
+-GIT_COMMITS=`git rev-list --all |wc -l | tr -d '[[:space:]]'`
+ AC_DEFINE_UNQUOTED(PACKAGE_REVISION, "${GIT_COMMITS}", [Package Revision])
+ 
+ AC_DEFINE_UNQUOTED(NTOPNG_GIT_RELEASE, "${GIT_BRANCH}:${GIT_RELEASE}", [GIT Release])
+@@ -671,11 +669,6 @@ AC_DEFINE_UNQUOTED(_CRT_SECURE_NO_WARNINGS, 1, [Disable warning on windows])
+ 
+ GMAKE='$(MAKE)'
+ 
+-GIT=`which git`
+-if test x$GIT = x; then
+-  AC_MSG_RESULT(FATAL ERROR: git is not installed on your host)
+-fi
+-
+ WGET=`which wget`
+ if test x$WGET = x; then
+   AC_MSG_RESULT(ERROR. wget is not installed on your host: you cannot download GeoIP data)

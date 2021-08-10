@@ -1,0 +1,28 @@
+From a21522afa9fcd0f299923767f71577feac34be4c Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Sun, 10 Jan 2021 00:51:36 +0100
+Subject: [PATCH] configure: Fix build against ncurses with separate tinfo lib
+
+Gentoo-bug: https://bugs.gentoo.org/685712
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ configure | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/configure b/configure
+index 857ce4e..e0f26ee 100755
+--- a/configure
++++ b/configure
+@@ -161,6 +161,9 @@ set -x
+ if (LDFLAGS=-lcurses check_curses); then
+ 	HAVE_CURSES=1
+ 	LDFLAGS="${LDFLAGS} -lcurses"
++elif (LDFLAGS=-ltinfow check_curses); then
++	HAVE_NCURSESW=1
++	LDFLAGS="${LDFLAGS} -ltinfow"
+ elif (LDFLAGS=-lncursesw check_curses); then
+ 	HAVE_NCURSESW=1
+ 	LDFLAGS="${LDFLAGS} -lncursesw"
+-- 
+2.30.0
+

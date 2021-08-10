@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit cmake llvm llvm.org python-any-r1
 
 DESCRIPTION="OCaml bindings for LLVM"
@@ -17,7 +17,6 @@ ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
 	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
 	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
-LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0/${PV}"
@@ -29,13 +28,19 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-lang/ocaml-4.00.0:0=
 	dev-ml/ocaml-ctypes:=
-	~sys-devel/llvm-${PV}:=[${LLVM_TARGET_USEDEPS// /,},debug?]
+	~sys-devel/llvm-${PV}:=[debug?]
 	!sys-devel/llvm[ocaml(-)]"
+for x in "${ALL_LLVM_TARGETS[@]}"; do
+	RDEPEND+="
+		${x}? ( ~sys-devel/llvm-${PV}[${x}] )"
+done
+unset x
+
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-lang/perl
 	dev-ml/findlib
-	test? ( dev-ml/ounit )
+	test? ( dev-ml/ounit2 )
 	${PYTHON_DEPS}"
 
 pkg_setup() {

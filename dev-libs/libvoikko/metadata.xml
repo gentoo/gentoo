@@ -6,7 +6,7 @@
     <name>Joonas Niilola</name>
   </maintainer>
   <use>
-    <flag name='expvfst'>Enable experimental features of VFST morphology backend</flag>
-    <flag name='hfst'>Enable HFST morphology backend</flag>
+    <flag name="expvfst">Enable experimental features of VFST morphology backend</flag>
+    <flag name="hfst">Enable HFST morphology backend</flag>
   </use>
 </pkgmetadata>

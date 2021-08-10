@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # As upstream (and we aswell) are not allowed to redistribute scansyn,
@@ -7,8 +7,10 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
-inherit cmake python-single-r1 toolchain-funcs
+LUA_COMPAT=( lua5-1 luajit )
+PYTHON_COMPAT=( python3_{7,8,9} )
+
+inherit cmake lua-single python-single-r1 toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/csound/csound.git"
@@ -28,23 +30,24 @@ HOMEPAGE="https://csound.github.io/"
 
 LICENSE="LGPL-2.1 doc? ( FDL-1.2+ )"
 SLOT="0"
-# java doesn't work atm as it needs to have some variables specified to work, see src_configure
 IUSE="+alsa beats chua curl +cxx debug doc double-precision dssi examples
-fltk +fluidsynth hdf5 +image jack keyboard linear lua luajit mp3 nls osc portaudio
+fltk +fluidsynth hdf5 jack java keyboard linear lua mp3 nls osc portaudio
 portaudio portmidi pulseaudio python samples static-libs stk test +threads +utils
 vim-syntax websocket"
 
 REQUIRED_USE="
+	alsa? ( threads )
+	java? ( cxx )
 	linear? ( double-precision )
-	lua? ( cxx )
+	lua? ( ${LUA_REQUIRED_USE} cxx )
 	python? ( ${PYTHON_REQUIRED_USE} cxx )
 "
-#	java? ( cxx )
 
 BDEPEND="
 	sys-devel/flex
 	virtual/yacc
 	chua? ( dev-libs/boost )
+	lua? ( dev-lang/swig )
 	python? ( dev-lang/swig )
 	nls? ( sys-devel/gettext )
 	test? (
@@ -54,8 +57,6 @@ BDEPEND="
 "
 # linear currently works only with sci-mathematics-gmm-5.1
 #   https://github.com/csound/csound/issues/920
-# currently not used deps due to some issues
-#	java? ( virtual/jdk:* )
 CDEPEND="
 	dev-cpp/eigen:3
 	>=media-libs/libsndfile-1.0.16
@@ -70,14 +71,11 @@ CDEPEND="
 	fluidsynth? ( media-sound/fluidsynth:= )
 	fltk? ( x11-libs/fltk:1[threads?] )
 	hdf5? ( sci-libs/hdf5 )
-	image? ( media-libs/libpng:0= )
 	jack? ( virtual/jack )
+	java? ( >=virtual/jdk-1.8:* )
 	keyboard? ( x11-libs/fltk:1[threads?] )
 	linear? ( =sci-mathematics/gmm-5.1* )
-	lua? (
-		luajit? ( dev-lang/luajit:2 )
-		!luajit? ( dev-lang/lua:0 )
-	)
+	lua? ( ${LUA_DEPS} )
 	mp3? ( >=media-sound/lame-3.100-r3 )
 	osc? ( media-libs/liblo )
 	portaudio? ( media-libs/portaudio )
@@ -107,6 +105,8 @@ PATCHES=(
 )
 
 pkg_setup() {
+	use lua && lua-single_pkg_setup
+
 	if use python || use test ; then
 		python-single-r1_pkg_setup
 	fi
@@ -132,14 +132,12 @@ src_configure() {
 		-DBUILD_DSSI_OPCODES=$(usex dssi)
 		-DBUILD_EMUGENS_OPCODES=ON
 		-DBUILD_EXCITER_OPCODES=ON
-		-DBUILD_FAUST_OPCODES=OFF
 		-DBUILD_FLUID_OPCODES=$(usex fluidsynth)
 		-DBUILD_FRAMEBUFFER_OPCODES=ON
 		-DBUILD_HDF5_OPCODES=$(usex hdf5)
-		-DBUILD_IMAGE_OPCODES=$(usex image)
 		-DBUILD_INSTALLER=OFF
 		-DBUILD_JACK_OPCODES=$(usex jack)
-		-DBUILD_JAVA_INTERFACE=OFF
+		-DBUILD_JAVA_INTERFACE=$(usex java)
 		-DBUILD_LINEAR_ALGEBRA_OPCODES=$(usex linear)
 		-DBUILD_LUA_INTERFACE=$(usex lua)
 		-DBUILD_MP3OUT_OPCODE=$(usex mp3)
@@ -151,7 +149,6 @@ src_configure() {
 		-DBUILD_PLATEREV_OPCODES=ON
 		-DBUILD_PVSGENDY_OPCODE=OFF
 		-DBUILD_PYTHON_INTERFACE=$(usex python)
-		-DBUILD_PYTHON_OPCODES=$(usex python)
 		-DBUILD_RELEASE=ON
 		-DBUILD_SCANSYN_OPCODES=OFF # this is not allowed to be redistributed: https://github.com/csound/csound/issues/1148
 		-DBUILD_SELECT_OPCODE=ON
@@ -192,35 +189,15 @@ src_configure() {
 
 	)
 
-	#use java && mycmakeargs+=(
-		#-DJAVA_INCLUDE_PATH="${JAVA_HOME}/include"
-		#-DJAVA_AWT_LIBRARY="?"
-		#-DJAVA_JVM_LIBRARY="?"
-		#-DJAVA_INCLUDE_PATH2="?"
-		#-DJAVA_AWT_INCLUDE_PATH="?"
-	#)
+	use java && mycmakeargs+=(
+		-DJAVA_HOME="$(java-config -g JAVA_HOME)"
+	)
 
-	# set the library that we want to use
-	if use lua ; then
-		local libdir
-		local libname
-
-		if use luajit ; then
-			libdir=$(pkg-config --variable=libdir luajit)
-			libname=$(pkg-config --variable=libname luajit)
-		else
-			libdir=$(pkg-config --variable=libdir lua)
-			libname=$(pkg-config --variable=libname lua)
-			[[ -z "${libname}" ]] && libname="lua"
-		fi
-
-		mycmakeargs+=(
-			-DLUA_LIBRARY="${libdir}/lib${libname}.so"
-		)
-	fi
-
-	use python && mycmakeargs+=(
-		-DPYTHON_MODULE_INSTALL_DIR="$(python_get_sitedir)"
+	use lua && mycmakeargs+=(
+		-DLUA_H_PATH="$(lua_get_include_dir)"
+		-DLUA_LIBRARY="$(lua_get_shared_lib)"
+		# LUA_MODULE_INSTALL_DIR omitted on purpose, csound Lua module links against liblua
+		# so it must NOT be installed into cmod_dir.
 	)
 
 	cmake_src_configure
@@ -258,6 +235,8 @@ src_install() {
 	mv "${ED}"/usr/bin/{,csound_}extract || die
 
 	use python && python_optimize
+
+	use java && (dosym lib_jcsound6.so usr/lib64/lib_jcsound.so.1 || die "Failed to create java lib symlink")
 
 	# install docs
 	if [[ ${PV} != "9999" ]] && use doc ; then

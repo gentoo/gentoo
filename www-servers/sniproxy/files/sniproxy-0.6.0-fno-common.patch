@@ -1,0 +1,24 @@
+Taken from: https://github.com/dlundquist/sniproxy/commit/822bb80df9b7b345cc9eba55df74a07b498819ba
+Author: Pierre-Olivier Mercier <nemunaire@nemunai.re>
+
+--- a/src/http.h
++++ b/src/http.h
+@@ -29,6 +29,6 @@
+ #include <stdio.h>
+ #include "protocol.h"
+ 
+-const struct Protocol *const http_protocol;
++extern const struct Protocol *const http_protocol;
+ 
+ #endif
+--- a/src/tls.h
++++ b/src/tls.h
+@@ -28,6 +28,6 @@
+ 
+ #include "protocol.h"
+ 
+-const struct Protocol *const tls_protocol;
++extern const struct Protocol *const tls_protocol;
+ 
+ #endif
+

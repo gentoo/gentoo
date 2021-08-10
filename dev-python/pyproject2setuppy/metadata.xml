@@ -9,4 +9,7 @@
 		<email>python@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">pyproject2setuppy</remote-id>
+	</upstream>
 </pkgmetadata>

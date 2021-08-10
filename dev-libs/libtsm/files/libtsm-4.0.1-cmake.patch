@@ -1,0 +1,15 @@
+--- a/CMakeLists.txt	2018-10-09 19:40:23.000000000 +0200
++++ b/CMakeLists.txt	2021-03-06 17:37:02.596380373 +0100
+@@ -24,12 +24,6 @@
+ # For feature_summary
+ include(FeatureSummary)
+ 
+-# Extra build types
+-if(NOT CMAKE_BUILD_TYPE)
+-    set(CMAKE_BUILD_TYPE "Debug")
+-endif()
+-include(cmake/BuildTypes.cmake)
+-
+ #---------------------------------------------------------------------------------------
+ # Options
+ #---------------------------------------------------------------------------------------

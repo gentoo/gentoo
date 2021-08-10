@@ -1,5 +1,3 @@
-diff --git a/Makefile b/Makefile
-index eb2b8ad..c89fa17 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1,39 +1,12 @@
@@ -48,6 +46,3 @@ index eb2b8ad..c89fa17 100644
 -	rm -f $(HOME)/.gkrellm2/plugins/gkrellaclock.so
 -
 +	rm -f gkrellaclock.*o
-diff --git a/gkrellaclock.o b/gkrellaclock.o
-index e2db7c1..002ab3a 100644
-Binary files a/gkrellaclock.o and b/gkrellaclock.o differ

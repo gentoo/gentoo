@@ -6,7 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>jer@gentoo.org</email>
+		<email>jakov.smolic@sartura.hr</email>
+		<name>Jakov Smolic</name>
 	</maintainer>
 	<longdescription lang="en">
 		libuv is a platform layer for node.js. Its purpose is to abstract

@@ -80,7 +80,6 @@ src_install() {
 	default
 	docinto html
 	dodoc docs/doc/*.html
-	use pam && pamd_mimic_system vlock auth account
 
 	# USE="test" installs .la files
 	find "${ED}" -type f -name "*.la" -delete || die

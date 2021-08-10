@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 09e6e39..bed335b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -31,7 +31,7 @@ endif
+ OPTLEVEL ?= 3
+ MAX_ERRORS ?= 5
+ BASE_WARNINGS := \
+-	-Werror -Wall -Wextra \
++	-Wall -Wextra \
+ 	-Wno-register \
+ 	-Wno-missing-field-initializers \
+ 	-Wsign-compare \

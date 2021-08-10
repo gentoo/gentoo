@@ -10,5 +10,8 @@
   MP is a C-API interface library that supports most of the
   functionality of the CLP (Coin LP), CBC (Coin Branch-and-Cut), and
   CGL (Cut Generation Library) projects.
-</longdescription>
+  </longdescription>
+  <upstream>
+    <remote-id type="github">coin-or/CoinMP</remote-id>
+  </upstream>
 </pkgmetadata>

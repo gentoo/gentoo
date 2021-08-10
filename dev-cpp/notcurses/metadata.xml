@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>dankamongmen@gmail.com</email>
+    <name>nick black</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription lang="en">
+    Notcurses facilitates the creation of modern TUI programs,
+    making full use of Unicode and 24-bit TrueColor. It presents
+    an API similar to that of Curses, and rides atop Terminfo.
+  </longdescription>
+  <longdescription lang="es">
+    Notcurses facilita la creación de programas TUI actuales,
+    haciendo un uso completo de Unicode y color real de 24 bits.
+    Presenta una API similar a la de Curses y funciona sobre Terminfo.
+  </longdescription>
+</pkgmetadata>

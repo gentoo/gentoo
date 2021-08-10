@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,14 +10,13 @@ HOMEPAGE="http://www.live555.com/"
 SRC_URI="http://www.live555.com/liveMedia/public/${P/-/.}.tar.gz"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="libressl ssl"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
+IUSE="ssl"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 "
 RDEPEND="${DEPEND}"
@@ -77,7 +76,7 @@ src_configure() {
 
 src_compile() {
 	export suffix="${LIVE_ABI_VERSION}.so"
-	local link_opts="$(usex ssl "$(pkg-config --libs libssl libcrypto)" '') -L. ${LDFLAGS}"
+	local link_opts="$(usex ssl "$($(tc-getPKG_CONFIG) --libs libssl libcrypto)" '') -L. ${LDFLAGS}"
 	local lib_suffix="${suffix#.}"
 
 	einfo "Beginning shared library build"

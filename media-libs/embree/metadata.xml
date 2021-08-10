@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>darkdefende@gmail.com</email>
+		<name>Sebastian Parborg</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Intel® Embree is a collection of high-performance ray tracing kernels,
+		developed at Intel. The target users of Intel® Embree are graphics
+		application engineers who want to improve the performance of their
+		photo-realistic rendering application by leveraging Embree's
+		performance-optimized ray tracing kernels.
+	</longdescription>
+	<use>
+		<flag restrict="&gt;=media-libs/embree-3.12.2" name="compact-polys">
+			Enables double indexed poly layout.
+		</flag>
+		<flag restrict="&gt;=media-libs/embree-3.12.2" name="ispc">
+			Build Embree with support for ISPC applications.
+		</flag>
+		<flag restrict="&gt;=media-libs/embree-3.12.2" name="raymask">
+			Enables ray mask support.
+		</flag>
+		<flag restrict="&gt;=media-libs/embree-3.12.2" name="ssp">
+			When enabled, Embree compiles with stack protection against return address overrides.
+			Stack protection will wield a minor performance decrease in return for higher security.
+		</flag>
+		<flag restrict="&gt;=media-libs/embree-3.12.2" name="tbb">
+			Use TBB instead of the built-in Embree tasking system.
+		</flag>
+		<flag restrict="&gt;=media-libs/embree-3.12.2" name="tutorial">
+			Enable to build Embree tutorials programs.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">embree/embree</remote-id>
+	</upstream>
+</pkgmetadata>

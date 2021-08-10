@@ -5,4 +5,5 @@
 		<email>perl@gentoo.org</email>
 		<name>Gentoo Perl Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
