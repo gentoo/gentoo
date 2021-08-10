@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.src.tar.gz"
 
 LICENSE="HPND MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="doc static-libs"
 
 RDEPEND="
@@ -31,6 +31,7 @@ BDEPEND="
 	sys-devel/flex
 	x11-base/xorg-proto
 	x11-misc/gccmakedep
+	riscv? ( >=x11-misc/xorg-cf-files-1.0.7-r1 )
 	>=x11-misc/imake-1.0.8-r1"
 
 DOCS=( BUILDNOTES FAQ HISTORY README RELEASE TODO )
