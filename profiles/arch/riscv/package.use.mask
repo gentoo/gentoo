@@ -1,6 +1,11 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-08-10)
+# media-sound/pulseaudio needs this but we've got a global mask on this
+# USE flag for now
+media-plugins/alsa-plugins -pulseaudio
+
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-09)
 # ipython[qt5] depends on qtconsole, which depends on QtPy.
 # QtPy cannot be tested atm because QtPy[test] has a hard
@@ -117,6 +122,8 @@ media-libs/devil nvtt
 media-libs/libvpx doc
 #  - media-libs/portaudio
 media-sound/mpg123 portaudio
+#  - bluetooth, net-misc/ofono
+media-sound/pulseaudio native-headset ofono-headset
 #  - maaaaaany
 media-video/ffmpeg amrenc bluray bs2b cdio chromaprint codec2 fdk frei0r gme iec61883 ieee1394 kvazaar libaribb24 libilbc libsoxr libtesseract lv2 openh264 rubberband sdl speex srt vidstab xvid zimg zvbi
 #  - media-libs/libquicktime, media-libs/sdl-gfx
