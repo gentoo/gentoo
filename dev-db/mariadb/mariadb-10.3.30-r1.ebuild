@@ -10,7 +10,7 @@ inherit eutils systemd flag-o-matic prefix toolchain-funcs \
 	multiprocessing java-pkg-opt-2 cmake
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/${PN}/${PN}-10.4.19-patches-01.tar.xz"
+PATCH_SET="https://dev.gentoo.org/~whissi/dist/${PN}/${PN}-10.3.30-patches-01.tar.xz"
 
 SRC_URI="https://downloads.mariadb.org/interstitial/${P}/source/${P}.tar.gz
 	${PATCH_SET}"
@@ -18,8 +18,8 @@ SRC_URI="https://downloads.mariadb.org/interstitial/${P}/source/${P}.tar.gz
 HOMEPAGE="https://mariadb.org/"
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2 LGPL-2.1+"
-SLOT="10.4/${SUBSLOT:-0}"
-IUSE="+backup bindist cracklib debug extraengine galera innodb-lz4
+SLOT="10.3/${SUBSLOT:-0}"
+IUSE="+backup bindist client-libs cracklib debug extraengine galera innodb-lz4
 	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 mroonga
 	numa odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
 	sst-rsync sst-mariabackup static systemd systemtap tcmalloc
@@ -32,7 +32,7 @@ REQUIRED_USE="jdbc? ( extraengine server !static )
 	?? ( tcmalloc jemalloc )
 	static? ( yassl !pam )"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -96,16 +96,17 @@ RDEPEND="selinux? ( sec-policy/selinux-mysql )
 	!dev-db/mariadb:5.5
 	!dev-db/mariadb:10.1
 	!dev-db/mariadb:10.2
-	!dev-db/mariadb:10.3
+	!dev-db/mariadb:10.4
 	!dev-db/mariadb:10.5
 	!dev-db/mariadb:10.6
+	!dev-db/mariadb:10.7
+	!dev-db/mariadb:10.8
 	!<virtual/mysql-5.6-r11
-	!<virtual/libmysqlclient-18-r1
 	${COMMON_DEPEND}
 	server? (
 		galera? (
 			sys-apps/iproute2
-			=sys-cluster/galera-26*
+			=sys-cluster/galera-25*
 			sst-rsync? ( sys-process/lsof )
 			sst-mariabackup? ( net-misc/socat[ssl] )
 		)
@@ -253,7 +254,6 @@ src_prepare() {
 			_disable_plugin "${plugin}"
 		done
 		_disable_engine test_sql_discovery
-		echo > "${S}/plugin/auth_pam/testing/CMakeLists.txt" || die
 	fi
 
 	_disable_engine example
@@ -270,18 +270,9 @@ src_prepare() {
 		_disable_engine mroonga
 	fi
 
-	# Fix static bindings in galera replication
-	sed -i -e 's~add_library(wsrep_api_v26$~add_library(wsrep_api_v26 STATIC~' \
-		"${S}"/wsrep-lib/wsrep-API/CMakeLists.txt || die
-	sed -i -e 's~add_library(wsrep-lib$~add_library(wsrep-lib STATIC~' \
-		"${S}"/wsrep-lib/src/CMakeLists.txt || die
-
 	# Fix galera_recovery.sh script
 	sed -i -e "s~@bindir@/my_print_defaults~${EPREFIX}/usr/libexec/mariadb/my_print_defaults~" \
 		scripts/galera_recovery.sh || die
-
-	sed -i -e 's~ \$basedir/lib/\*/mariadb19/plugin~~' \
-		"${S}"/scripts/mysql_install_db.sh || die
 
 	cmake_src_prepare
 	java-pkg-opt-2_src_prepare
@@ -292,9 +283,6 @@ src_configure() {
 	tc-ld-disable-gold
 	# Bug #114895, bug #110149
 	filter-flags "-O" "-O[01]"
-
-	# It fails on alpha without this
-	use alpha && append-ldflags "-Wl,--no-relax"
 
 	append-cxxflags -felide-constructors
 
@@ -570,24 +558,21 @@ src_test() {
 	disabled_tests+=( "innodb_gis.gis;25095;Known rounding error with latest AMD processors" )
 	disabled_tests+=( "main.explain_non_select;0;Sporadically failing test" )
 	disabled_tests+=( "main.func_time;0;Dependent on time test was written" )
+	disabled_tests+=( "main.grant;0;Sporadically failing test" )
 	disabled_tests+=( "main.plugin_auth;0;Needs client libraries built" )
 	disabled_tests+=( "main.stat_tables;0;Sporadically failing test" )
 	disabled_tests+=( "main.stat_tables_innodb;0;Sporadically failing test" )
-	disabled_tests+=( "main.upgrade_MDEV-19650;25096;Known to be broken" )
 	disabled_tests+=( "mariabackup.*;0;Broken test suite" )
-	disabled_tests+=( "perfschema.nesting;23458;Known to be broken" )
 	disabled_tests+=( "plugins.auth_ed25519;0;Needs client libraries built" )
 	disabled_tests+=( "plugins.cracklib_password_check;0;False positive due to varying policies" )
 	disabled_tests+=( "plugins.two_password_validations;0;False positive due to varying policies" )
 	disabled_tests+=( "roles.acl_statistics;0;False positive due to a user count mismatch caused by previous test" )
-	disabled_tests+=( "sys_vars.wsrep_on_without_provider;25625;Known to be broken" )
 
 	if ! use latin1 ; then
 		disabled_tests+=( "funcs_1.is_columns_mysql;0;Requires USE=latin1" )
 		disabled_tests+=( "main.information_schema;0;Requires USE=latin1" )
 		disabled_tests+=( "main.sp2;24177;Requires USE=latin1" )
 		disabled_tests+=( "main.system_mysql_db;0;Requires USE=latin1" )
-		disabled_tests+=( "main.upgrade_MDEV-19650;24178;Requires USE=latin1" )
 	fi
 
 	local test_infos_str test_infos_arr
@@ -696,10 +681,6 @@ src_install() {
 		# but are needed for galera and initial installation
 		exeinto /usr/libexec/mariadb
 		doexe "${BUILD_DIR}/extra/my_print_defaults" "${BUILD_DIR}/extra/perror"
-
-		if use pam ; then
-			keepdir /usr/$(get_libdir)/mariadb/plugin/auth_pam_tool_dir
-		fi
 	fi
 
 	# Remove bundled mytop in favor of dev-db/mytop
@@ -729,6 +710,17 @@ src_install() {
 
 pkg_preinst() {
 	java-pkg-opt-2_pkg_preinst
+
+	# Here we need to see if the implementation switched client libraries
+	# We check if this is a new instance of the package and a client library already exists
+	local SHOW_ABI_MESSAGE libpath
+	if [[ -z ${REPLACING_VERSIONS} && -e "${EROOT}/usr/$(get_libdir)/libmysqlclient.so" ]] ; then
+		libpath=$(readlink "${EROOT}/usr/$(get_libdir)/libmysqlclient.so")
+		elog "Due to ABI changes when switching between different client libraries,"
+		elog "revdep-rebuild must find and rebuild all packages linking to libmysqlclient."
+		elog "Please run: revdep-rebuild --library ${libpath}"
+		ewarn "Failure to run revdep-rebuild may cause issues with other programs or libraries"
+	fi
 }
 
 pkg_postinst() {
@@ -745,7 +737,6 @@ pkg_postinst() {
 			elog "To activate and configure the PAM plugin, please read:"
 			elog "https://mariadb.com/kb/en/mariadb/pam-authentication-plugin/"
 			einfo
-			chown mysql:mysql "${EROOT}/usr/$(get_libdir)/mariadb/plugin/auth_pam_tool_dir" || die
 		fi
 
 		if [[ -z "${REPLACING_VERSIONS}" ]] ; then
@@ -772,16 +763,6 @@ pkg_postinst() {
 			elog "--wsrep-new-cluster to the options in /etc/conf.d/mysql for one node."
 			elog "This option should then be removed for subsequent starts."
 			einfo
-			if [[ -n "${REPLACING_VERSIONS}" ]] ; then
-				local rver
-				for rver in ${REPLACING_VERSIONS} ; do
-					if ver_test "${rver}" -lt "10.4.0" ; then
-						ewarn "Upgrading galera from a previous version requires admin restart of the entire cluster."
-						ewarn "Please refer to https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-104/#galera-4"
-						ewarn "for more information"
-					fi
-				done
-			fi
 		fi
 	fi
 
