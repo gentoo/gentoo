@@ -1009,13 +1009,15 @@ pkg_config() {
 		unset _my_tmpdir_testfile
 	fi
 
-	if [[ -n "${MYSQL_LOG_BIN}" && ! -d "${MYSQL_LOG_BIN}" ]] ; then
+	if [[ "${MYSQL_LOG_BIN}" == /* && ! -d "${MYSQL_LOG_BIN}" ]] ; then
+		# Only create directory when MYSQL_LOG_BIN is an absolute path
 		einfo "Creating ${PN} log-bin directory '${MYSQL_LOG_BIN}' ..."
 		install -d -m 770 -o ${MYSQL_USER} -g ${MYSQL_GROUP} "${MYSQL_LOG_BIN}" \
 			|| die "Failed to create ${PN} log-bin directory '${MYSQL_LOG_BIN}'"
 	fi
 
-	if [[ -n "${MYSQL_LOG_BIN}" ]] ; then
+	if [[ "${MYSQL_LOG_BIN}" == /* ]] ; then
+		# Only test when MYSQL_LOG_BIN is an absolute path
 		local _my_logbin_testfile="$(_mktemp_dry "${MYSQL_LOG_BIN}/.pkg_config-access-test.XXXXXXXXX")"
 		[[ -z "${_my_logbin_testfile}" ]] \
 			&& die "_mktemp_dry() for '${MYSQL_LOG_BIN}/.pkg_config-access-test.XXXXXXXXX' failed!"
@@ -1034,13 +1036,15 @@ pkg_config() {
 		fi
 	fi
 
-	if [[ -n "${MYSQL_RELAY_LOG}" && ! -d "${MYSQL_RELAY_LOG}" ]] ; then
+	if [[ "${MYSQL_RELAY_LOG}" == /* && ! -d "${MYSQL_RELAY_LOG}" ]] ; then
+		# Only create directory when MYSQL_RELAY_LOG is an absolute path
 		einfo "Creating ${PN} relay-log directory '${MYSQL_RELAY_LOG}' ..."
 		install -d -m 770 -o ${MYSQL_USER} -g ${MYSQL_GROUP} "${MYSQL_RELAY_LOG}" \
 			|| die "Failed to create ${PN} relay-log directory '${MYSQL_RELAY_LOG}'!"
 	fi
 
-	if [[ -n "${MYSQL_RELAY_LOG}" ]] ; then
+	if [[ "${MYSQL_RELAY_LOG}" == /* ]] ; then
+		# Only test when MYSQL_RELAY_LOG is an absolute path
 		local _my_relaylog_testfile="$(_mktemp_dry "${MYSQL_RELAY_LOG}/.pkg_config-access-test.XXXXXXXXX")"
 		[[ -z "${_my_relaylog_testfile}" ]] \
 			&& die "_mktemp_dry() for '${MYSQL_RELAY_LOG}/.pkg_config-access-test.XXXXXXXXX' failed!"
@@ -1077,11 +1081,13 @@ pkg_config() {
 	einfo "MySQL DATA directory:\t\t${MY_DATADIR}"
 	einfo "MySQL TMP directory:\t\t\t${MYSQL_TMPDIR}"
 
-	if [[ -n "${MYSQL_LOG_BIN}" ]] ; then
+	if [[ "${MYSQL_LOG_BIN}" == /* ]] ; then
+		# Absolute path for binary log files specified
 		einfo "MySQL Binary Log File location:\t${MYSQL_LOG_BIN}"
 	fi
 
-	if [[ -n "${MYSQL_RELAY_LOG}" ]] ; then
+	if [[ "${MYSQL_RELAY_LOG}" == /* ]] ; then
+		# Absolute path for relay log files specified
 		einfo "MySQL Relay Log File location:\t${MYSQL_RELAY_LOG}"
 	fi
 
