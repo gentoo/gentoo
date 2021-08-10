@@ -113,6 +113,8 @@ media-libs/allegro dumb openal
 media-libs/devil nvtt
 #  - dev-lang/php
 media-libs/libvpx doc
+#  - media-libs/portaudio
+media-sound/mpg123 portaudio
 #  - media-libs/libdv, media-libs/libquicktime, media-libs/sdl-gfx
 media-video/mjpegtools dv quicktime sdlgfx
 #  - sys-cluster/ceph, dev-ruby/rrdtool-bindings
