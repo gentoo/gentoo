@@ -129,10 +129,6 @@ dev-php/symfony-finder test
 # bug #723438
 app-i18n/enca doc
 
-# Marek Szuba <marecki@gentoo.org> (2020-12-26)
-# User manual is only available for releases
-=media-gfx/darktable-9999 doc
-
 # Rick Farina <zerochaos@gentoo.org> (2020-12-21)
 # This use flag enables code which appears to be broken
 net-wireless/gr-osmosdr xtrx
