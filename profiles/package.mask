@@ -479,16 +479,6 @@ dev-ruby/rash
 # Removal after 2021-08-04.
 dev-db/postgresql:9.5
 
-# Michał Górny <mgorny@gentoo.org> (2021-07-06)
-# Various Python 2-specific backports.  All the reverse dependencies
-# (except for deps between these packages) have been eliminated.
-# Removal on 2021-08-05.  Bug #800698.
-dev-python/contextlib2
-dev-python/linecache2
-dev-python/pathlib2
-dev-python/traceback2
-dev-python/unittest2
-
 # David Seifert <soap@gentoo.org> (2021-07-01)
 # Berkeley DB slots that are long past EOL by Oracle,
 # maintenance burden, and no real path forward by Oracle.
