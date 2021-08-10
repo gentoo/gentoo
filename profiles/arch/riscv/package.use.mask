@@ -106,6 +106,8 @@ dev-python/networkx extras
 dev-util/ragel doc
 #  - Qt5 & KDE
 dev-vcs/subversion kwallet
+#  - media-sound/pavucontrol-qt
+lxqt-base/lxqt-panel pulseaudio
 #  - media-libs/dumb
 media-libs/allegro dumb
 #  - media-gfx/nvidia-texture-tools
