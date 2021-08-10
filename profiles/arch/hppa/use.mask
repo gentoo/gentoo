@@ -7,6 +7,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# James Le Cuirot <chewi@gentoo.org> (2021-08-10)
+# media-video/pipewire is not keyworded. Bug #807616.
+pipewire
+
 # Michał Górny <mgorny@gentoo.org> (2021-05-20)
 # Unresolved keywordreqs are getting in the way.
 # https://bugs.gentoo.org/789606
