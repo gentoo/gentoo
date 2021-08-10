@@ -18,6 +18,7 @@ RDEPEND="
 	>=dev-qt/qtwidgets-5.12:5=
 	dev-qt/qtwayland:5=
 	dev-qt/qtx11extras:5=
+	gnome-base/gsettings-desktop-schemas
 	sys-apps/xdg-desktop-portal
 	x11-libs/gtk+:3[X]
 	>=x11-themes/adwaita-qt-1.3.1
