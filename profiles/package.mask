@@ -494,11 +494,6 @@ dev-python/unittest2
 # Masked for removal in 30 days.
 dev-ruby/shotgun
 
-# Hans de Graaff <graaff@gentoo.org> (2021-07-04)
-# Last release in 2012, no working tests, no dependencies.
-# Masked for removal in 30 days.
-dev-ruby/source_map
-
 # David Seifert <soap@gentoo.org> (2021-07-01)
 # Berkeley DB slots that are long past EOL by Oracle,
 # maintenance burden, and no real path forward by Oracle.
