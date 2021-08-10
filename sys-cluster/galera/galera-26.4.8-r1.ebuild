@@ -14,9 +14,13 @@ LICENSE="GPL-2 BSD"
 
 SLOT="0"
 
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ppc64 x86"
 IUSE="cpu_flags_x86_sse4_2 garbd test"
-RESTRICT="!test? ( test )"
+
+# Tests are currently broken, see
+#   - https://github.com/codership/galera/issues/595
+#   - https://github.com/codership/galera/issues/596
+RESTRICT="test"
 
 CDEPEND="
 	dev-libs/openssl:0=
@@ -28,7 +32,7 @@ BDEPEND=">=sys-devel/gcc-4.4"
 DEPEND="${BDEPEND}
 	${CDEPEND}
 	dev-libs/check
-	>=dev-cpp/asio-1.10.1[ssl]
+	>=dev-cpp/asio-1.10.1[ssl(+)]
 	<dev-cpp/asio-1.12.0
 	"
 
@@ -38,7 +42,7 @@ RDEPEND="${CDEPEND}"
 # Respect {C,LD}FLAGS.
 PATCHES=(
 	"${FILESDIR}"/${PN}-26.4.6-strip-extra-cflags.patch
-	"${FILESDIR}"/${PN}-26.4.5-respect-toolchain.patch
+	"${FILESDIR}"/${PN}-26.4.8-respect-toolchain.patch
 )
 
 S="${WORKDIR}/galera-4-${PV}"

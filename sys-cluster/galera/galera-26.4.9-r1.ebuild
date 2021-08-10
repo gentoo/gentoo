@@ -9,31 +9,43 @@ inherit python-any-r1 scons-utils toolchain-funcs flag-o-matic
 
 DESCRIPTION="Synchronous multi-master replication engine that provides the wsrep API"
 HOMEPAGE="https://galeracluster.com"
-SRC_URI="http://nyc2.mirrors.digitalocean.com/mariadb/mariadb-10.3.20/${P}/src/${P}.tar.gz"
+SRC_URI="https://releases.galeracluster.com/galera-4/source/galera-4-${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2 BSD"
 
 SLOT="0"
 
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ppc ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="cpu_flags_x86_sse4_2 garbd test"
-RESTRICT="!test? ( test )"
+
+# Tests are currently broken, see
+#   - https://github.com/codership/galera/issues/595
+#   - https://github.com/codership/galera/issues/596
+RESTRICT="test"
 
 CDEPEND="
 	dev-libs/openssl:0=
 	>=dev-libs/boost-1.41:0=
 	"
+
 BDEPEND=">=sys-devel/gcc-4.4"
+
 DEPEND="${BDEPEND}
 	${CDEPEND}
 	dev-libs/check
-	>=dev-cpp/asio-1.10.1[ssl]
+	>=dev-cpp/asio-1.10.1[ssl(+)]
 	<dev-cpp/asio-1.12.0
 	"
+
 #Run time only
 RDEPEND="${CDEPEND}"
 
 # Respect {C,LD}FLAGS.
-PATCHES=( "${FILESDIR}/galera-4.1-strip-extra-cflags.patch" )
+PATCHES=(
+	"${FILESDIR}"/${PN}-26.4.6-strip-extra-cflags.patch
+	"${FILESDIR}"/${PN}-26.4.8-respect-toolchain.patch
+)
+
+S="${WORKDIR}/galera-4-${PV}"
 
 src_prepare() {
 	default
@@ -48,16 +60,12 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-export CC CXX
-	# Uses hardware specific code that seems to depend on SSE4.2
-	if use cpu_flags_x86_sse4_2 ; then
-		append-cflags -msse4.2
-	else
-		append-cflags -DCRC32C_NO_HARDWARE
-	fi
+	tc-export AR CC CXX OBJDUMP
+
 	# strict_build_flags=0 disables -Werror, -pedantic, -Weffc++,
 	# and -Wold-style-cast
 	MYSCONS=(
+		crc32c_no_hardware=$(usex cpu_flags_x86_sse4_2 0 1)
 		tests=$(usex test 1 0)
 		strict_build_flags=0
 		system_asio=1
