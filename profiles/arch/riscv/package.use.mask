@@ -1,11 +1,6 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Marek Szuba <marecki@gentoo.org> (2021-08-10)
-# media-sound/pulseaudio needs this but we've got a global mask on this
-# USE flag for now
-media-plugins/alsa-plugins -pulseaudio
-
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-09)
 # ipython[qt5] depends on qtconsole, which depends on QtPy.
 # QtPy cannot be tested atm because QtPy[test] has a hard
@@ -13,12 +8,9 @@ media-plugins/alsa-plugins -pulseaudio
 dev-python/ipython qt5
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-08)
-# portaudio & pulseaudio are not tested yet
+# portaudio is not tested yet
 app-accessibility/espeak portaudio
-
-# Alex Fan <alexfanqi@yahoo.com> (2021-08-08)
-# portaudio & pulseaudio are not tested yet
-media-libs/openal portaudio pulseaudio
+media-libs/openal portaudio
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-05)
 # pdfannotextractor depends on java, not (sustainably) supported yet
@@ -143,8 +135,6 @@ sys-cluster/slurm ofed slurmdbd
 # Dependencies not keyworded, not tested
 dev-libs/libdbusmenu test
 virtual/notification-daemon gnome kde
-media-libs/libsdl nas pulseaudio
-media-libs/libsdl2 nas pulseaudio
 media-libs/libcaca doc imlib
 dev-libs/libbytesize test
 sys-libs/libblockdev dmraid escrow

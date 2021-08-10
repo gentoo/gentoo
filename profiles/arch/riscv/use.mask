@@ -37,7 +37,6 @@ libedit
 mono
 motif
 opencl
-pulseaudio
 rsh
 slang
 sound
