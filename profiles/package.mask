@@ -489,15 +489,6 @@ dev-python/pathlib2
 dev-python/traceback2
 dev-python/unittest2
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-04)
-# severely broken nfs
-# possibly depper problem due to bug in mm/page_alloc
-# https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ff4b2b4014cbffb3d32b22629252f4dc8616b0fe
-# feel free to unmask if required, but be aware of
-# possible silent data corruption
-=sys-kernel/gentoo-sources-5.13.0
-=sys-kernel/vanilla-sources-5.13.0
-
 # Matt Turner <mattst88@gentoo.org> (2021-07-04)
 # Not used by any package. Has not worked for a very long time
 # as far as I can tell.
