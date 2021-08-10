@@ -91,10 +91,12 @@ dev-python/ipython nbconvert notebook
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # Dependencies not keyworded here yet:
-#  - gnome-base/gconf, dev-libs/libotf & dev-libs/m17n-lib
-app-editors/emacs gconf m17n-lib
 #  - net-fs/openafs
 app-crypt/heimdal afs
+#  - gnome-base/gconf, dev-libs/libotf & dev-libs/m17n-lib
+app-editors/emacs gconf m17n-lib
+#  - media-libs/portaudio, dev-embedded/libftdi, app-misc/inputlircd
+app-misc/lirc audio ftdi inputlirc
 #  - app-xemacs/ruby-modes (and by extension xemacs itself)
 dev-lang/ruby xemacs
 #  - media-libs/libcddb
