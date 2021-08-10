@@ -54,11 +54,6 @@ BDEPEND="
 src_prepare() {
 	default
 
-	# if wayland-only, don't automagic on libGL and force libOpenGL
-	if ! use X; then
-		sed -i "/dependency('gl'/{s/'gl'/'opengl'/;s/false/true/}" meson.build || die
-	fi
-
 	# glu isn't used by anything
 	sed -i "/dependency('glu')/d" meson.build || die
 }
