@@ -14,7 +14,7 @@ DESCRIPTION="NVIDIA Accelerated Graphics Driver"
 HOMEPAGE="https://www.nvidia.com/download/index.aspx"
 SRC_URI="
 	amd64? ( ${NV_URI}Linux-x86_64/${PV}/NVIDIA-Linux-x86_64-${PV}.run )
-	x86? ( ${NV_URI}Linux-aarch64/${PV}/NVIDIA-Linux-x86-${PV}.run )
+	x86? ( ${NV_URI}Linux-x86/${PV}/NVIDIA-Linux-x86-${PV}.run )
 	${NV_URI}nvidia-installer/nvidia-installer-${PV}.tar.bz2
 	${NV_URI}nvidia-modprobe/nvidia-modprobe-${PV}.tar.bz2
 	${NV_URI}nvidia-persistenced/nvidia-persistenced-${PV}.tar.bz2
