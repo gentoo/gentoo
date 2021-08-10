@@ -35,15 +35,14 @@ net-irc/kvirc webkit
 dev-libs/libffi exec-static-trampoline
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-14)
-# Several known issues (possibly with older pastix versions as well but
-# in v6 they result in clear errors):
-# * CUDA support needs testing, may or may not work as it is;
-# * With MPI enabled two tests fail (when linked against openmpi, at least)
-#   due to incorrect implementation of either MPI support itself or
-#   said tests - example_drv_facto0_d_reentrant tries to initialise MPI
-#   more than once, test_bvec_gemv_tests calls MPI_Query_thread() after
-#   invocation of MPI_FINALIZE.
->=sci-libs/pastix-6.0.0 cuda mpi
+# Makes two tests fail (when linked against openmpi, at least) due to
+# incorrect implementation of either MPI support itself or said tests:
+# - example_drv_facto0_d_reentrant tries to initialise MPI more than once,
+# - test_bvec_gemv_tests calls MPI_Query_thread() after invocation of MPI_FINALIZE.
+# This might be a problem with pastix-5 as well but those versions have
+# got very limited test coverage so even if the problem is there, it
+# doesn't trigger test failures.
+>=sci-libs/pastix-6.0.0 mpi
 
 # Alfredo Tupone <tupone@gentoo.org> (2021-06-27)
 # lto does not work on dev-lang/gnat-gpl-2021
