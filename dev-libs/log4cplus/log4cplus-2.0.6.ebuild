@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}-stable/${PV}/${P}.tar.bz2"
 
 LICENSE="|| ( Apache-2.0 BSD-2 )"
 SLOT="0/3"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 IUSE="explicit-initialization iconv qt5 server test threads"
 RESTRICT="!test? ( test )"
