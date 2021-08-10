@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ROOT="/"
@@ -121,6 +121,13 @@ sanitize() {
 	echo $drs
 }
 
+changed() {
+	[[ -f $ETC_LDSO_PATH ]] || return 0
+	local current=$(<$ETC_LDSO_PATH)
+	current=${current//$'\n'/ }
+	[[ $current != $drs ]] || return 1
+}
+
 get_options "$@"
 drs=$(read_ldso_conf "$LDSO_CONF")
 drs=$(sanitize $drs)
@@ -136,6 +143,7 @@ LDSO_ARCH=$(basename $LDSO_PATH)
 LDSO_NAME=${LDSO_ARCH%.so.1}
 ETC_LDSO_PATH=/etc/${LDSO_NAME}.path
 
+changed || exit 0
 X=$(mktemp -p /tmp ${LDSO_NAME}.XXXXXX)
 for d in $drs; do
 	echo $d >> $X
