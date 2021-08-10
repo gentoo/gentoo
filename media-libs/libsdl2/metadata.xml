@@ -32,6 +32,7 @@
 		<flag name="joystick">Control joystick support (disable at your own risk)</flag>
 		<flag name="kms">Build the KMSDRM video driver</flag>
 		<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
+		<flag name="pipewire">Enable support for the <pkg>media-video/pipewire</pkg> audio backend</flag>
 		<flag name="sound">Control audio support (disable at your own risk)</flag>
 		<flag name="video">Control video support (disable at your own risk)</flag>
 		<flag name="vulkan">Enable Vulkan support</flag>
