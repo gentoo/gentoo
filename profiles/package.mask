@@ -364,11 +364,6 @@ dev-ruby/spork
 # Removal on 2021-08-13.  Bugs #755896, #781467.
 net-proxy/polipo
 
-# Marek Szuba <marecki@gentoo.org> (2021-07-14)
-# New, considerably refactored major version with a new build system.
-# Masked for further testing.
->=sci-libs/pastix-6.0.0
-
 # Marco Scardovi <marco@scardovi.vom> (2021-07-13)
 # These packages were only ported for netbox. Not useful for anything else
 # No revdeps. Removal in 30 days (Bug #801991)
