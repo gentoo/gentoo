@@ -143,9 +143,8 @@ app-misc/geoclue modemmanager
 gnome-base/gvfs bluray cdda mtp ios
 sys-power/upower ios
 net-libs/gnome-online-accounts gnome
-net-libs/webkit-gtk gstreamer
 xfce-base/xfce4-settings libcanberra
-xfce-extra/tumbler epub ffmpeg gstreamer odf pdf raw
+xfce-extra/tumbler epub ffmpeg odf pdf raw
 xfce-extra/xfce4-power-manager networkmanager
 xfce-base/xfce4-meta pulseaudio
 # KDE not tested, so mask
@@ -170,18 +169,9 @@ x11-base/xwayland unwind
 # Dependencies not keyworded, not tested
 net-libs/libproxy spidermonkey kde networkmanager
 
-# Sam James <sam@gentoo.org> (2021-03-11)
-# Yixun Lan <dlan@gentoo.org> (2021-07-27)
-# media-libs/libheif isn't keyworded here
-media-libs/gd heif
-
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
-
-# Patrick McLean <chutzpah@gentoo.org> (2020-04-16)
-# dev-python/breathe not keyworded here
-dev-libs/libcbor doc
 
 # This doesn't work for (any) riscv yet.
 dev-libs/libpcre2 jit
