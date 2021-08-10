@@ -598,12 +598,6 @@ media-sound/loudness-scanner
 # Mask development versions now that they were bumped...
 =net-misc/kea-1.9*
 
-# Marek Szuba <marecki@gentoo.org> (2021-01-21)
-# Masked for testing and further work - the golang-vcs-snapshot variant
-# seems to be incompatible with revdeps using go-module, the variant
-# using the latter is still broken.
-dev-go/qt
-
 # Michał Górny <mgorny@gentoo.org> (2020-11-10)
 # This old Kodi version requires vulnerable dev-python/pillow
 # and prevents users from upgrading.  Masked for the time being.
