@@ -67,7 +67,7 @@ PATCHES=(
 src_prepare() {
 	default
 
-	cat <<- EOF > "${T}"/i3wm
+	cat > "${T}"/i3wm <<- EOF || die
 		#!/bin/sh
 		exec /usr/bin/i3
 	EOF
@@ -83,15 +83,15 @@ src_configure() {
 	meson_src_configure
 }
 
+src_test() {
+	virtx meson_src_test
+}
+
 src_install() {
 	meson_src_install
 
 	exeinto /etc/X11/Sessions
 	doexe "${T}"/i3wm
-}
-
-src_test() {
-	virtx meson_src_test
 }
 
 pkg_postinst() {
