@@ -7,6 +7,10 @@
 # Unmask systemd
 -systemd
 
+# James Le Cuirot <chewi@gentoo.org> (2021-08-10)
+# media-video/pipewire is not keyworded. Bug #807616.
+pipewire
+
 # Yixun Lan <dlan@gentoo.org> (2021-05-19)
 # Unmask for more testing
 -elogind

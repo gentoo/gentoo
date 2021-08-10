@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -ia64
 
+# James Le Cuirot <chewi@gentoo.org> (2021-08-10)
+# media-video/pipewire is not keyworded. Bug #807616.
+pipewire
+
 # Matt Turner <mattst88@gentoo.org> (07-25-2021)
 # gnome-shell requires rustified librsvg.
 gnome-shell
