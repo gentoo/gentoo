@@ -53,6 +53,7 @@ GL_DEPS="
 	)
 	wayland? (
 		dev-libs/wayland[${MULTILIB_USEDEP}]
+		>=dev-libs/wayland-protocols-1.15
 	)
 
 	>=media-libs/graphene-1.4.0[${MULTILIB_USEDEP}]
