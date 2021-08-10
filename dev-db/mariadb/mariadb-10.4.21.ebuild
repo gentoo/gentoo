@@ -800,18 +800,33 @@ pkg_postinst() {
 pkg_config() {
 	_getoptval() {
 		local section="${1}"
-		local flag="--${2}="
+		local option="--${2}"
 		local extra_options="${3}"
 		local cmd=(
 			"${my_print_defaults_binary}"
 			"${extra_options}"
 			"${section}"
 		)
-		local results=( $(eval "${cmd[@]}" 2>/dev/null | sed -n "/^${flag}/s,${flag},,gp") )
 
-		if [[ ${#results[@]} -gt 0 ]] ; then
-			# When option is set multiple times only return last value
-			echo "${results[-1]}"
+		local values=()
+		local parameters=( $(eval "${cmd[@]}" 2>/dev/null) )
+		for parameter in "${parameters[@]}"
+		do
+			# my_print_defaults guarantees output of options, one per line,
+			# in the form that they would be specified on the command line.
+			# So checking for --option=* should be safe.
+			case ${parameter} in
+				${option}=*)
+					values+=( "${parameter#*=}" )
+					;;
+			esac
+		done
+
+		if [[ ${#values[@]} -gt 0 ]] ; then
+			# Option could have been set multiple times
+			# in which case only the last occurrence
+			# contains the current value
+			echo "${values[-1]}"
 		fi
 	}
 
