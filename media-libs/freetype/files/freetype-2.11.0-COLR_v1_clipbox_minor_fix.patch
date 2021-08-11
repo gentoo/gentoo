@@ -1,0 +1,26 @@
+From fed5521016227bf8cc4475f66450a9963568d162 Mon Sep 17 00:00:00 2001
+From: Werner Lemberg <wl@gnu.org>
+Date: Mon, 9 Aug 2021 19:27:34 +0200
+Subject: [PATCH] * src/sfnt/ttcolr.c (tt_face_get_color_glyph_clipbox): Minor
+ fix.
+
+---
+ src/sfnt/ttcolr.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/sfnt/ttcolr.c b/src/sfnt/ttcolr.c
+index 2f3e8846d..68807127f 100644
+--- a/src/sfnt/ttcolr.c
++++ b/src/sfnt/ttcolr.c
+@@ -863,7 +863,7 @@
+ 
+         format = FT_NEXT_BYTE( p1 );
+ 
+-        if ( format < 0 || format > 1 )
++        if ( format > 1 )
+           return 0;
+ 
+         /* `face->root.size->metrics.x_scale` and `y_scale` are factors   */
+-- 
+GitLab
+
