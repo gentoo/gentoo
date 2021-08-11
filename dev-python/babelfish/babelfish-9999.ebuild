@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 git-r3
@@ -14,4 +15,4 @@ EGIT_REPO_URI="https://github.com/Diaoul/${PN}.git"
 LICENSE="BSD"
 SLOT="0"
 
-distutils_enable_tests setup.py
+distutils_enable_tests pytest
