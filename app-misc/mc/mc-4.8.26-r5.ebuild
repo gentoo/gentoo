@@ -88,7 +88,7 @@ src_configure() {
 
 src_test() {
 	# Bug #759466
-	if ! has userpriv ${FEATURES} && [[ $(id -u) == 0 ]]; then
+	if [[ ${EUID} == 0 ]]; then
 		ewarn "You are emerging ${PN} as root with 'userpriv' disabled." \
 			"Expect some test failures, or emerge with 'FEATURES=userpriv'!"
 	fi
