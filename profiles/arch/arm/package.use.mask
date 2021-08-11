@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-08-11)
+# dev-ruby/tty-editor not keyworded here yet (Bug #807685)
+app-text/htmltidy test
+
 # Sam James <sam@gentoo.org> (2021-07-25)
 # At present, dev-lang/fpc doesn't support arm64.
 # Java isn't here either.

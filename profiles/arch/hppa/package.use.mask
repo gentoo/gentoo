@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Marek Szuba <marecki@gentoo.org> (2021-08-11)
+# dev-ruby/tty-editor not keyworded here yet (Bug #807685)
+app-text/htmltidy test
+
 # Michał Górny <mgorny@gentoo.org> (2021-07-25)
 # PyQt5 and wxpython are not keyworded.
 dev-python/matplotlib qt5 wxwidgets
