@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Joonas Niilola <juippis@gentoo.org> (2021-08-11)
+# Broken since 2016. Latest upstream release 2014, no ebuild activity
+# from maintainer since 2016, EAPI-5 and the rest. HOMEPAGE leads to
+# some scammy site. Removal in ~30 days. #584668
+dev-util/emilpro
+
+# Joonas Niilola <juippis@gentoo.org> (2021-08-11)
 # A library without revdeps, broken for a long time. No maintainer
 # reply. Package not updated in Gentoo since 2016 even though upstream
 # is still active. Removal in ~30 days. #774147
