@@ -1,0 +1,5 @@
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Does work properly with the one-level libdirs
+<dev-lang/python-3.7
