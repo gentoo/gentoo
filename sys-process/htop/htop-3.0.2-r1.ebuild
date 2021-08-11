@@ -46,7 +46,7 @@ src_prepare() {
 }
 
 src_configure() {
-	[[ $CBUILD != $CHOST ]] && export ac_cv_file__proc_{meminfo,stat}=yes #328971
+	[[ ${CBUILD} != ${CHOST} ]] && export ac_cv_file__proc_{meminfo,stat}=yes #328971
 
 	local myeconfargs=(
 		# fails to build against recent hwloc versions
