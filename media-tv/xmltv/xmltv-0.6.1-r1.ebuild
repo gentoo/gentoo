@@ -155,6 +155,7 @@ RDEPEND="
 		dev-perl/HTTP-Message
 		dev-perl/LWP-Protocol-https
 		dev-perl/Try-Tiny
+		dev-perl/XML-LibXML
 	)
 	zz-sdjson-sqlite? (
 		dev-lang/perl
@@ -169,6 +170,7 @@ RDEPEND="
 		dev-perl/File-Which
 		dev-perl/List-MoreUtils
 		dev-perl/LWP-UserAgent-Determined
+		dev-perl/XML-LibXML
 	)
 	tv-check? (
 		dev-perl/Tk
