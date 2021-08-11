@@ -85,6 +85,9 @@ src_prepare() {
 		die "please sync ebuild & source"
 	fi
 
+	# bug #807661
+	sed -i -e 's:$SRCDIR/gpsd.hotplug:$SRCDIR/../gpsd.hotplug:' SConscript || die
+
 	default
 
 	use python && distutils-r1_src_prepare
@@ -183,7 +186,7 @@ src_compile() {
 }
 
 src_install() {
-	DESTDIR="${D}" escons install "${scons_opts[@]}" $(usex udev udev-install "")
+	DESTDIR="${D}" escons install "${scons_opts[@]}" $(usex udev udev-install '')
 
 	newconfd "${FILESDIR}"/gpsd.conf-2 gpsd
 	newinitd "${FILESDIR}"/gpsd.init-2 gpsd
