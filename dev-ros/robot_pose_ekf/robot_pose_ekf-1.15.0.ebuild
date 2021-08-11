@@ -29,3 +29,28 @@ DEPEND="${RDEPEND}
 		dev-cpp/gtest
 	)
 	virtual/pkgconfig"
+
+TEST_DATA="ekf_test2_indexed.bag zero_covariance_indexed.bag"
+
+SRC_URI="${SRC_URI} test? ( "
+for i in ${TEST_DATA}; do
+	SRC_URI="${SRC_URI} http://download.ros.org/data/robot_pose_ekf/${i} -> ${P}-${i}"
+done
+SRC_URI="${SRC_URI} )"
+
+src_prepare() {
+	ros-catkin_src_prepare
+	if use test; then
+		for i in ${TEST_DATA} ; do
+			cp "${DISTDIR}/${P}-${i}" "${S}/${i}" || die
+		done
+		sed \
+			-e "s#http://download.ros.org/data/robot_pose_ekf#file://${S}#" \
+			-i CMakeLists.txt || die
+	fi
+}
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}
