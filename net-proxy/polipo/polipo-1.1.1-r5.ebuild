@@ -36,7 +36,7 @@ src_compile() {
 }
 
 src_install() {
-	einstall PREFIX=/usr MANDIR=/usr/share/man INFODIR=/usr/share/info "TARGET=${D}"
+	emake install PREFIX=/usr MANDIR=/usr/share/man INFODIR=/usr/share/info "TARGET=${D}"
 
 	newinitd "${FILESDIR}/${PN}.initd-5" ${PN}
 	insinto /etc/${PN} ; doins "${FILESDIR}/config"
