@@ -1,10 +1,6 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Marek Szuba <marecki@gentoo.org> (2021-08-11)
-# dev-ruby/{thor,tty-editor} not keyworded here yet (Bug #807685)
-app-text/htmltidy test
-
 # Michał Górny <mgorny@gentoo.org> (2021-07-25)
 # PyQt5 and wxpython are not keyworded.
 dev-python/matplotlib wxwidgets
@@ -95,6 +91,8 @@ dev-python/socketpool eventlet gevent
 # - direct ruby dependency:
 app-admin/augeas test
 sys-block/thin-provisioning-tools test
+# - Ruby-based test suite, with additional dependencies
+app-text/htmltidy test
 # - texlive japan modules: ruby runtime scripts
 app-text/texlive l10n_ja context
 # - net-libs/webkit-gtk: ruby build system
