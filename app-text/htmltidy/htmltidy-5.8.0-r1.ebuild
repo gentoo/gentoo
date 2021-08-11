@@ -20,11 +20,8 @@ SLOT="0/58" # subslot is SOVERSION
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="deprecated test"
 
-# TODO: in principle this works but the new dependencies have got WAY fewer
-# keywords at the moment, keep tests restricted until the situation has improved.
-#RESTRICT="!test? ( test )"
-#ruby_add_bdepend "test? ( dev-ruby/thor dev-ruby/tty-editor )"
-RESTRICT="test"
+RESTRICT="!test? ( test )"
+ruby_add_bdepend "test? ( dev-ruby/thor dev-ruby/tty-editor )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.8.0-no_static_lib.patch
