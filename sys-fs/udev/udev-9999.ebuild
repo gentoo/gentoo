@@ -195,32 +195,30 @@ multilib_src_compile() {
 	eninja "${targets[@]}"
 }
 
-multilib_src_test() {
+src_test() {
 	# The testsuite is *very* finicky. Don't try running it in
 	# containers or anything but a full VM or on bare metal.
 	# udev calls 'mknod' a number of times, and this interacts
 	# badly with kernel namespaces.
 
-	if [[ ${EUID} -ne 0 ]]; then
-		ewarn "udev tests need to run under uid 0"
-		ewarn "Skipping tests"
-	elif has sandbox ${FEATURES}; then
-		ewarn "\'FEATURES=sandbox\' detected"
+	if [[ ! -w /dev ]]; then
 		ewarn "udev tests needs full access to /dev"
 		ewarn "Skipping tests"
 	else
-		einfo Running tests
-
-		# two binaries required by udev-test.pl
-		eninja systemd-detect-virt test-udev
-		local -x PATH="${PWD}:${PATH}"
-
-		# prepare ${BUILD_DIR}/test/sys, required by udev-test.pl
-		"${EPYTHON}" "${S}"/test/sys-script.py test || die
-
-		# the perl script contains all the udev tests
-		"${S}"/test/udev-test.pl || die
+		meson-multilib_src_test
 	fi
+}
+
+multilib_src_test() {
+	# two binaries required by udev-test.pl
+	eninja systemd-detect-virt test-udev
+	local -x PATH="${PWD}:${PATH}"
+
+	# prepare ${BUILD_DIR}/test/sys, required by udev-test.pl
+	"${EPYTHON}" "${S}"/test/sys-script.py test || die
+
+	# the perl script contains all the udev tests
+	"${S}"/test/udev-test.pl || die
 }
 
 multilib_src_install() {
