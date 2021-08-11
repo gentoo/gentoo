@@ -16,7 +16,12 @@ KEYWORDS="amd64 x86"
 IUSE="openmp tcmalloc"
 
 RDEPEND="
+	dev-cpp/atkmm:=
+	dev-cpp/cairomm:=
+	dev-cpp/glibmm:=
+	dev-cpp/pangomm:=
 	dev-libs/expat
+	dev-libs/glib:=
 	dev-libs/libsigc++:2
 	media-libs/lcms:2
 	media-libs/lensfun
