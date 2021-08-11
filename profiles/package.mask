@@ -32,10 +32,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Andrew Savchenko <bircoph@gentoo.org> (2021-08-11)
-# Affected by CVE-2020-36420. #755896
-<net-proxy/polipo-1.1.1-r5
-
 # Joonas Niilola <juippis@gentoo.org> (2021-08-11)
 # Broken since 2016. Latest upstream release 2014, no ebuild activity
 # from maintainer since 2016, EAPI-5 and the rest. HOMEPAGE leads to
@@ -373,6 +369,11 @@ net-p2p/go-ipfs-bin
 # No dependencies.
 # Masked for removal in 30 days.
 dev-ruby/spork
+
+# John Helmert III <ajak@gentoo.org> (2021-07-14)
+# Dead upstream, unfixed security issue.
+# Removal on 2021-08-13.  Bugs #755896, #781467.
+net-proxy/polipo
 
 # Marco Scardovi <marco@scardovi.vom> (2021-07-13)
 # These packages were only ported for netbox. Not useful for anything else
