@@ -6,6 +6,9 @@
 # (Bug #807727). That said, with httpclient-2.8.3 installed manually
 # (and without testing) all webmock-3.13.0 tests passed.
 dev-ruby/webmock test
+# Currently requires dev-lang/spidermonkey:68, which explicitly
+# does not support riscv. Hopefully temporary, see Bug #807772.
+net-libs/libproxy spidermonkey
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-09)
 # ipython[qt5] depends on qtconsole, which depends on QtPy.
@@ -140,6 +143,7 @@ sys-libs/libblockdev dmraid escrow
 gnome-base/gvfs bluray cdda mtp ios
 sys-power/upower ios
 net-libs/gnome-online-accounts gnome
+net-libs/libproxy kde
 xfce-base/xfce4-settings libcanberra
 xfce-extra/tumbler epub ffmpeg odf pdf raw
 xfce-base/xfce4-meta pulseaudio
@@ -168,10 +172,6 @@ x11-base/xwayland unwind
 dev-qt/qtnetwork networkmanager
 net-libs/libproxy networkmanager
 xfce-extra/xfce4-power-manager networkmanager
-
-# Yixun Lan <dlan@gentoo.org> (2021-05-19)
-# Dependencies not keyworded, not tested
-net-libs/libproxy spidermonkey kde
 
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
 # Dependency not keyworded on this arch.

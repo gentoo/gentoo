@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 WANT_AUTOCONF="2.1"
 
@@ -49,7 +49,8 @@ SRC_URI="${MOZ_SRC_URI}
 DESCRIPTION="SpiderMonkey is Mozilla's JavaScript engine written in C and C++"
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
+# riscv support requires a patch currently only available in firefox-78 patch sets
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 -riscv ~s390 sparc x86"
 
 SLOT="68"
 LICENSE="MPL-2.0"
