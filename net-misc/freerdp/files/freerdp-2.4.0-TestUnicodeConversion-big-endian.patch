@@ -1,0 +1,28 @@
+From 7f53e1c6c8503e9d3966c96bd403573f44879b0c Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sat, 7 Aug 2021 21:49:12 -0400
+Subject: [PATCH] Fix TestUnicodeConversion on big endian machines
+
+Wide character literals are stored in native byte order.
+Use an array of bytes as a reference instead.
+
+Fixes: https://github.com/FreeRDP/FreeRDP/issues/6968
+---
+ winpr/libwinpr/crt/test/TestUnicodeConversion.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/winpr/libwinpr/crt/test/TestUnicodeConversion.c b/winpr/libwinpr/crt/test/TestUnicodeConversion.c
+index 3bc9c245181..cc2a2597dd8 100644
+--- a/winpr/libwinpr/crt/test/TestUnicodeConversion.c
++++ b/winpr/libwinpr/crt/test/TestUnicodeConversion.c
+@@ -403,8 +403,8 @@ static BOOL test_ConvertToUnicode_wrapper(void)
+ 	/* Test static string buffers of differing sizes */
+ 	{
+ 		char name[] = "someteststring";
+-		const WCHAR cmp[] = { L's', L'o', L'm', L'e', L't', L'e', L's', L't',
+-			                  L's', L't', L'r', L'i', L'n', L'g', 0 };
++		const BYTE cmp[] = { 's', 0, 'o', 0, 'm', 0, 'e', 0, 't', 0, 'e', 0, 's', 0, 't', 0,
++				     's', 0, 't', 0, 'r', 0, 'i', 0, 'n', 0, 'g', 0, 0, 0 };
+ 		WCHAR xname[128] = { 0 };
+ 		LPWSTR aname = NULL;
+ 		LPWSTR wname = &xname[0];
