@@ -71,6 +71,29 @@ PERL_RM_FILES=( t/{90_MANIFEST,91_critic,99_pod}.t )
 
 mydoc="History"
 
+src_test() {
+	einfo "Using:"
+	einfo "  $(best_version app-text/djvu)"
+	einfo "  $(best_version app-text/poppler)"
+	einfo "  $(best_version app-text/tesseract)"
+	einfo "  $(best_version dev-perl/Gtk3-ImageView)"
+	einfo "  $(best_version dev-perl/Image-Sane)"
+	einfo "  $(best_version dev-perl/PDF-Builder)"
+	einfo "  $(best_version media-gfx/imagemagick)"
+	einfo "  $(best_version media-gfx/sane-backends)"
+	einfo "  $(best_version media-libs/tiff)"
+
+	local confdir="${HOME}/.config/ImageMagick"
+	mkdir -p "${confdir}" || die
+	cat > "${confdir}/policy.xml" <<-EOT || die
+		<policymap>
+			<policy domain="coder" rights="read|write" pattern="PDF" />
+			<policy domain="coder" rights="read" pattern="PS" />
+		</policymap>
+	EOT
+	NO_AT_BRIDGE=1 virtx perl-module_src_test
+}
+
 pkg_postinst() {
 	xdg_desktop_database_update
 
@@ -86,27 +109,4 @@ pkg_postinst() {
 
 pkg_postrm() {
 	xdg_desktop_database_update
-}
-
-src_test() {
-	echo "Using:"
-	echo "  $(best_version app-text/djvu)"
-	echo "  $(best_version app-text/poppler)"
-	echo "  $(best_version app-text/tesseract)"
-	echo "  $(best_version dev-perl/Gtk3-ImageView)"
-	echo "  $(best_version dev-perl/Image-Sane)"
-	echo "  $(best_version dev-perl/PDF-Builder)"
-	echo "  $(best_version media-gfx/imagemagick)"
-	echo "  $(best_version media-gfx/sane-backends)"
-	echo "  $(best_version media-libs/tiff)"
-
-	local confdir="${HOME}/.config/ImageMagick"
-	mkdir -p "${confdir}" || die
-	cat > "${confdir}/policy.xml" <<-EOT || die
-		<policymap>
-			<policy domain="coder" rights="read|write" pattern="PDF" />
-			<policy domain="coder" rights="read" pattern="PS" />
-		</policymap>
-	EOT
-	NO_AT_BRIDGE=1 virtx perl-module_src_test
 }
