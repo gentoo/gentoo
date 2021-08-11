@@ -69,6 +69,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}/yamlcpp.patch" )
+
 src_test() {
 	virtx ros-catkin_src_test
 }
