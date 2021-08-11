@@ -34,6 +34,7 @@ RDEPEND="
 	sys-libs/zlib
 	sci-libs/octomap:=
 	dev-libs/boost:=
+	dev-cpp/yaml-cpp:=
 	ieee1394? ( media-libs/libdc1394:2= )
 	openni2? ( dev-libs/OpenNI2 )
 	qt5? (
@@ -45,6 +46,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}/yamlcpp.patch" )
 
 src_configure() {
 	local mycmakeargs=(
