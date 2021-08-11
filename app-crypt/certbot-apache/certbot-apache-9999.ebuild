@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=(python{3_7,3_8,3_9})
+
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 if [[ ${PV} == 9999* ]]; then
@@ -28,3 +29,5 @@ RDEPEND=">=app-crypt/acme-${PV}[${PYTHON_USEDEP}]
 	dev-python/python-augeas[${PYTHON_USEDEP}]
 	dev-python/zope-component[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]"
+
+distutils_enable_tests pytest
