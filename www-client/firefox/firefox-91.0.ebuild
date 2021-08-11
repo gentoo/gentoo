@@ -1019,6 +1019,7 @@ src_install() {
 	local desktop_file="${FILESDIR}/icon/${PN}-r2.desktop"
 	local desktop_filename="${PN}.desktop"
 	local exec_command="${PN}"
+	local icon="${PN}"
 	local use_wayland="false"
 
 	if use wayland ; then
