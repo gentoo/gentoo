@@ -5,4 +5,9 @@
 		<email>php-bugs@gentoo.org</email>
 		<name>PHP</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">pear/DB</remote-id>
+		<remote-id type="pear">DB</remote-id>
+	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
