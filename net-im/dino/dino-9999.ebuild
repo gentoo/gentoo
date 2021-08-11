@@ -9,9 +9,11 @@ inherit cmake vala xdg
 
 DESCRIPTION="Modern Jabber/XMPP Client using GTK+/Vala"
 HOMEPAGE="https://dino.im"
+
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+gpg +http +omemo +notification-sound"
+IUSE="+gpg +http +omemo +notification-sound test"
+RESTRICT="!test? ( test )"
 
 MY_REPO_URI="https://github.com/dino/dino"
 if [[ ${PV} == "9999" ]]; then
@@ -68,11 +70,8 @@ src_configure() {
 		"-DENABLED_PLUGINS=$(local IFS=";"; echo "${enabled_plugins[*]}")"
 		"-DDISABLED_PLUGINS=$(local IFS=";"; echo "${disabled_plugins[*]}")"
 		"-DVALA_EXECUTABLE=${VALAC}"
+		"-DBUILD_TESTS=$(usex test)"
 	)
-
-	if has test ${FEATURES}; then
-		mycmakeargs+=("-DBUILD_TESTS=yes")
-	fi
 
 	cmake_src_configure
 }
