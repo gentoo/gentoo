@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="HPND RSA GPL-2" # GPL-2 only for init script
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="debug finger maxsess tcpd skey static-libs"
 
 DEPEND="
