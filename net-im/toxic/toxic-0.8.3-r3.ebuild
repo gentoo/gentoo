@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 
 inherit python-single-r1 xdg
 
@@ -17,11 +17,12 @@ KEYWORDS="amd64 x86"
 IUSE="notification python qrcode +sound +video +X"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="
-	dev-libs/libconfig:=
-	>=net-libs/tox-0.2.8:=
+BDEPEND="dev-libs/libconfig"
+
+RDEPEND="net-libs/tox:=
 	net-misc/curl
 	sys-libs/ncurses:=
+	sys-kernel/linux-headers
 	notification? ( x11-libs/libnotify )
 	python? ( ${PYTHON_DEPS} )
 	qrcode? ( media-gfx/qrencode:= )
@@ -45,6 +46,8 @@ src_prepare() {
 	default
 	#prevent man files from being compressed.
 	sed -i -e "/gzip/d" cfg/targets/install.mk || die "Unable to prevent compression of man pages."
+	#Fix incorrect include declarations for NAME_MAX and PATH_MAX.
+	eapply -p0 "${FILESDIR}/${P}-NAME_MAX-and-PATH_MAX.patch" || die "Unable to fix include statements"
 }
 
 src_configure() {

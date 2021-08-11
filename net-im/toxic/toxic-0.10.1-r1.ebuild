@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 
 inherit python-single-r1 xdg
 
@@ -18,10 +18,12 @@ IUSE="+audio-notify debug doc llvm notification png python qrcode +sound +video 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	video? ( sound X ) "
 
-RDEPEND="dev-libs/libconfig:=
-	net-libs/tox:=
+BDEPEND="dev-libs/libconfig"
+
+RDEPEND="net-libs/tox:=
 	net-misc/curl
 	sys-libs/ncurses:=
+	sys-kernel/linux-headers
 	audio-notify? (
 		media-libs/freealut
 		media-libs/openal
@@ -58,6 +60,10 @@ src_prepare() {
 	#This line changes the "lazy set if absent" assignment to a "lazy set" assignment.
 	#look below in src_configure to see how CFLAGS are passed to the makefile in USER_CFLAGS
 	sed -i -e 's/?=/=/g' Makefile || die "Unable to force CFLAGS and LDFLAGS"
+	#Fix incomplete invocation of python-config
+	sed -i -e "s/--ldflags/--ldflags --embed/" cfg/checks/python.mk || die "Unable to fix python linking"
+	#Fix incorrect include statements for NAME_MAX and PATH_MAX macros
+	eapply -p0 "${FILESDIR}/${P}-NAME_MAX-and-PATH_MAX.patch" || die "Unable to fix header inclusion"
 }
 
 src_configure() {
@@ -101,6 +107,6 @@ src_configure() {
 src_install() {
 	default
 	if ! use audio-notify; then
-		rm -r "${ED}"/usr/share/${PN}/sounds || die "Could not remove sounds directory"
+		rm -r "${ED}"/usr/share/"${PN}"/sounds || die "Could not remove sounds directory"
 	fi
 }
