@@ -10,11 +10,6 @@
 # The ORBlite scanner plugin only works on amd64 and x86.
 net-print/hplip-plugin orblite
 
-# Sam James <sam@gentoo.org> (2021-08-04)
-# Needs last-rited app-dicts/kasumi
-# bug #786738
-app-i18n/scim-anthy kasumi
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-08-02)
 # Two years after the tracker was opened it is time to mask dev-qt/qtwebkit
 # for good. No commits to upstream repository for >9 months, latest available
