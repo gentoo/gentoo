@@ -18,7 +18,7 @@ else
 		https://github.com/gentoo/portage/compare/285d3ae987a079f32b909c6e6eddde9bc45a4a25...b09b4071151d8e3a81f3576843d00f88eb407799.patch -> ${P}-unit-test-bug-779055.patch
 		https://github.com/gentoo/portage/commit/e29177fcd2950199afa4f83673c0771afb261123.patch -> ${P}-version-bug-779508.patch
 		https://github.com/gentoo/portage/commit/2eb3ca092a528e0722e0ca32f616836ed8039936.patch -> ${P}-unit-test-bug-779967.patch"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Repoman is a Quality Assurance tool for Gentoo ebuilds"
