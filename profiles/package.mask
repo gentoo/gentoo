@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Joonas Niilola <juippis@gentoo.org> (2021-08-11)
+# A library without revdeps, broken for a long time. No maintainer
+# reply. Package not updated in Gentoo since 2016 even though upstream
+# is still active. Removal in ~30 days. #774147
+dev-libs/caliper
+
+# Joonas Niilola <juippis@gentoo.org> (2021-08-11)
 # Broken with gcc >=10, even the latest upstream release fails with
 # gcc-11. Unmaintained. Removal in ~30 days. #739904
 app-office/plan
