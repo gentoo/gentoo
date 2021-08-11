@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit autotools linux-info python-any-r1
+inherit autotools linux-info python-any-r1 xdg-utils
 
 DESCRIPTION="interactive process viewer"
 HOMEPAGE="https://htop.dev/ https://github.com/htop-dev/htop"
@@ -64,4 +64,14 @@ src_configure() {
 	fi
 
 	econf ${myeconfargs[@]}
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
