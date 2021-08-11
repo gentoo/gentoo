@@ -80,7 +80,7 @@ src_install() {
 	)
 	# Set the CHECKDIR to a dummy location so we always get the same set of
 	# files installed regardless of what is in / or ROOT or wherever.
-	[[ ${#args[@]} -gt 0 ]] && emake DESTDIR="${ED}" CHECKDIR="${ED}" "${args[@]}"
+	[[ ${#args[@]} -gt 0 ]] && emake DESTDIR="${D}" CHECKDIR="${D}" "${args[@]}"
 
 	use otf && FONT_SUFFIX=otb font_src_install
 
