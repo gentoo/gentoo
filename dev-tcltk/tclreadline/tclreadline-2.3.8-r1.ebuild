@@ -27,14 +27,16 @@ src_prepare() {
 }
 
 src_configure() {
-	local myConf=--with-tcl="${EPREFIX}/usr/$(get_libdir)"
+	local myConf=(
+		--with-tcl="${EPREFIX}/usr/$(get_libdir)"
+		--with-readline-includes="${EPREFIX}/usr/include/readline"
+	)
 	if ! use tk; then
-		myConf="$myConf --without-tk"
+		myConf+=(--without-tk)
 	fi
-	econf $myConf
+	econf "${myConf[@]}"
 }
-
 src_install() {
 	default
-	find "${D}" -name \*.la -delete
+	find "${ED}" -name \*.la -delete
 }
