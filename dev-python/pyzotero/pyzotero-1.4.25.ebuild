@@ -33,7 +33,7 @@ distutils_enable_tests pytest
 
 python_prepare_all() {
 	# do not install tests
-	sed -i "s/find_packages(),/find_packages(exclude=('test*')),/g" setup.py || die
+	sed -i "s/find_packages(),/find_packages(exclude=('test*',)),/g" setup.py || die
 
 	distutils-r1_python_prepare_all
 }
