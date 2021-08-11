@@ -1250,11 +1250,30 @@ build_sphinx() {
 	HTML_DOCS+=( "${dir}/_build/html/." )
 }
 
+# @VARIABLE: EPYTEST_DESELECT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Specifies an array of tests to be deselected via pytest's --deselect
+# parameter, when calling epytest.  The list can include file paths,
+# specific test functions or parametrized test invocations.
+#
+# Note that the listed files will still be subject to collection,
+# i.e. modules imported in global scope will need to be available.
+# If this is undesirable, EPYTEST_IGNORE can be used instead.
+
+# @VARIABLE: EPYTEST_IGNORE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Specifies an array of paths to be ignored via pytest's --ignore
+# parameter, when calling epytest.  The listed files will be entirely
+# skipped from test collection.
+
 # @FUNCTION: epytest
 # @USAGE: [<args>...]
 # @DESCRIPTION:
-# Run pytest, passing the standard set of pytest options, followed
-# by user-specified options.
+# Run pytest, passing the standard set of pytest options, then
+# --deselect and --ignore options based on EPYTEST_DESELECT
+# and EPYTEST_IGNORE, then user-specified options.
 #
 # This command dies on failure and respects nonfatal.
 epytest() {
@@ -1274,6 +1293,13 @@ epytest() {
 		# for end users, as it tends to fail on new warnings from deps
 		-Wdefault
 	)
+	local x
+	for x in "${EPYTEST_DESELECT[@]}"; do
+		args+=( --deselect "${x}" )
+	done
+	for x in "${EPYTEST_IGNORE[@]}"; do
+		args+=( --ignore "${x}" )
+	done
 	set -- "${EPYTHON}" -m pytest "${args[@]}" "${@}"
 
 	echo "${@}" >&2
