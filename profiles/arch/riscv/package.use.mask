@@ -1,6 +1,11 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-08-11)
+# dev-ruby/thor not keyworded here yet - many unkeyworded dependencies,
+# some exhibiting problems in tests.
+app-text/htmltidy test
+
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-09)
 # ipython[qt5] depends on qtconsole, which depends on QtPy.
 # QtPy cannot be tested atm because QtPy[test] has a hard
