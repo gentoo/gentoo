@@ -117,7 +117,7 @@ src_prepare() {
 
 	eapply_user #332661
 
-	if has test ${FEATURES} && use sctp && has network-sandbox ${FEATURES}; then
+	if use test && use sctp && has network-sandbox ${FEATURES}; then
 		ebegin "Disabling test '80-test_ssl_new.t' which is known to fail with FEATURES=network-sandbox"
 		rm test/recipes/80-test_ssl_new.t || die
 		eend $?
