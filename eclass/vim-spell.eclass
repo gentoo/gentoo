@@ -36,23 +36,23 @@
 #   as maintainers. There is no need to join the Vim project just for spell
 #   files. Here's an example of a metadata.xml file:
 #
-#     <?xml version="1.0" encoding="UTF-8"?>
-#     <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-#     <pkgmetadata>
-#        <maintainer type="person">
-#                <email>your@email.tld</email>
-#                <name>Your Name</name>
-#        </maintainer>
-#        <maintainer type="project">
-#                <email>vim@gentoo.org</email>
-#                <name>Vim Maintainers</name>
-#        </maintainer>
+#	<?xml version="1.0" encoding="UTF-8"?>
+#	<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+#	<pkgmetadata>
+#		<maintainer type="person">
+#			<email>your@email.tld</email>
+#			<name>Your Name</name>
+#		</maintainer>
+#		<maintainer type="project">
+#			<email>vim@gentoo.org</email>
+#			<name>Vim Maintainers</name>
+#		</maintainer>
 #
-#     	<longdescription lang="en">
-#     		Vim spell files for French (fr). Supported character sets are
-#     		UTF-8 and latin1.
-#     	</longdescription>
-#     </pkgmetadata>
+#		<longdescription lang="en">
+#			Vim spell files for French (fr). Supported character sets are
+#			UTF-8 and latin1.
+#		</longdescription>
+#	</pkgmetadata>
 #
 # * Send an email to vim@gentoo.org to let us know.
 #
@@ -94,7 +94,7 @@ SLOT="0"
 # @INTERNAL
 # @DESCRIPTION:
 # This variable defines the path to Vim spell files.
-: ${VIM_SPELL_DIRECTORY:="${EPREFIX}/usr/share/vim/vimfiles/spell/"}
+: ${VIM_SPELL_DIRECTORY:="/usr/share/vim/vimfiles/spell/"}
 
 # @ECLASS-VARIABLE: DESCRIPTION
 # @DESCRIPTION:
