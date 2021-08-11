@@ -1,0 +1,27 @@
+Fixes build on arm64 (and other platforms with unsigned char).
+
+https://github.com/xmrig/xmrig/commit/f4cdc527b00571150e8521331928c75b44e071f9.patch
+https://github.com/xmrig/xmrig/issues/2527
+
+From f4cdc527b00571150e8521331928c75b44e071f9 Mon Sep 17 00:00:00 2001
+From: XMRig <support@xmrig.com>
+Date: Tue, 10 Aug 2021 01:40:36 +0700
+Subject: [PATCH] #2527 Fix narrowing conversion.
+
+---
+ src/base/net/stratum/DaemonClient.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/base/net/stratum/DaemonClient.cpp b/src/base/net/stratum/DaemonClient.cpp
+index 77818f34c..76f30c653 100644
+--- a/src/base/net/stratum/DaemonClient.cpp
++++ b/src/base/net/stratum/DaemonClient.cpp
+@@ -65,7 +65,7 @@ static const char *kJsonRPC                 = "/json_rpc";
+ 
+ static constexpr size_t kBlobReserveSize    = 8;
+ 
+-static const char kZMQGreeting[64] = { -1, 0, 0, 0, 0, 0, 0, 0, 0, 127, 3, 0, 'N', 'U', 'L', 'L' };
++static const char kZMQGreeting[64] = { static_cast<char>(-1), 0, 0, 0, 0, 0, 0, 0, 0, 127, 3, 0, 'N', 'U', 'L', 'L' };
+ static constexpr size_t kZMQGreetingSize1 = 11;
+ 
+ static const char kZMQHandshake[] = "\4\x19\5READY\xbSocket-Type\0\0\0\3SUB";

@@ -30,7 +30,10 @@ RDEPEND="
 	!arm64? ( sys-apps/msr-tools )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-6.12.2-nonotls.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.12.2-nonotls.patch
+	"${FILESDIR}"/${PN}-6.14.0-narrowing-conversion-arm64.patch
+)
 
 src_prepare() {
 	if ! use donate ; then
