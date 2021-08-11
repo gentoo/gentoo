@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 VALA_MIN_API_VERSION="0.34"
-inherit cmake gnome2-utils vala xdg-utils
+inherit cmake vala xdg
 
 DESCRIPTION="Modern Jabber/XMPP Client using GTK+/Vala"
 HOMEPAGE="https://dino.im"
@@ -77,17 +77,4 @@ src_configure() {
 
 src_test() {
 	"${BUILD_DIR}"/xmpp-vala-test || die
-}
-
-update_caches() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postinst() {
-	update_caches
-}
-
-pkg_postrm() {
-	update_caches
 }
