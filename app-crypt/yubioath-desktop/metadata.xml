@@ -5,4 +5,8 @@
 		<email>soap@gentoo.org</email>
 		<name>David Seifert</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
 </pkgmetadata>
