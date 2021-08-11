@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=MSCHILLI
 DIST_VERSION=0.48
@@ -20,7 +20,8 @@ RDEPEND="
 	dev-perl/libwww-perl
 	>=dev-perl/Log-Log4perl-1.280.0
 	dev-perl/TermReadKey
-	hammer? ( dev-perl/Expect )"
-DEPEND="${RDEPEND}
+	hammer? ( dev-perl/Expect )
+"
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
