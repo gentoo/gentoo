@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{7..9} )
-inherit meson gnome2-utils virtualx python-r1
+inherit xdg meson gnome2-utils virtualx python-r1
 
 if [[ ${PV} =~ [9]{4,} ]]; then
 	inherit git-r3
@@ -69,8 +69,10 @@ src_install() {
 
 pkg_postinst() {
 	gnome2_schemas_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
 	gnome2_schemas_update
+	xdg_pkg_postrm
 }
