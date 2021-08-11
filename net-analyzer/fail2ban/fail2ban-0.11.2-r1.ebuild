@@ -31,14 +31,14 @@ RDEPEND="
 			|| (
 				dev-python/python-systemd[${PYTHON_USEDEP}]
 				sys-apps/systemd[python(-),${PYTHON_USEDEP}]
-			)
-		' 'python*')
+			)' 'python*' )
 	)
 "
 
 DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 
 PATCHES=(
+	"${FILESDIR}"/${P}-fix-tests-for-2021.patch
 	"${FILESDIR}"/${PN}-0.11.2-adjust-apache-logs-paths.patch
 )
 
@@ -98,7 +98,7 @@ pkg_preinst() {
 pkg_postinst() {
 	tmpfiles_process ${PN}-tmpfiles.conf
 
-	if [[ ${previous_less_than_0_7} == 0 ]] ; then
+	if [[ ${previous_less_than_0_7} = 0 ]] ; then
 		elog
 		elog "Configuration files are now in /etc/fail2ban/"
 		elog "You probably have to manually update your configuration"
