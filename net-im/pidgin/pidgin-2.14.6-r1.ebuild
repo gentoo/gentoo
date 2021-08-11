@@ -161,7 +161,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	xdg_src_prepare
 	eautoreconf
 }
 
@@ -267,6 +267,7 @@ src_install() {
 
 src_test() {
 	# make default build logs slightly more useful
+	local -x GST_PLUGIN_SYSTEM_PATH_1_0=
 	emake check VERBOSE=1
 }
 
