@@ -21,6 +21,7 @@ DEPEND="test? ( dev-cpp/gtest[${MULTILIB_USEDEP}] )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-gtest.patch"
+	"${FILESDIR}/${P}-pkg-config.patch"
 )
 
 src_prepare() {
