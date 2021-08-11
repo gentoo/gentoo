@@ -10,6 +10,10 @@ dev-ruby/webmock test
 # does not support riscv. Hopefully temporary, see Bug #807772.
 net-libs/libproxy spidermonkey
 
+# Alex Fan <alexfanqi@yahoo.com> (2021-08-12)
+# lua requires specifically luajit for gimp
+media-gfx/gimp lua unwind
+
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-09)
 # ipython[qt5] depends on qtconsole, which depends on QtPy.
 # QtPy cannot be tested atm because QtPy[test] has a hard
