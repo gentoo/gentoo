@@ -29,7 +29,7 @@ RDEPEND="
 	dev-libs/urdfdom:=
 	dev-libs/tinyxml2:=
 
-	dev-ros/angles
+	dev-ros/angles:0
 	dev-ros/image_geometry
 	dev-ros/image_transport
 	dev-ros/interactive_markers
