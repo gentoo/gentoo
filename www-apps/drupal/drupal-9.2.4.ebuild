@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit webapp
 
@@ -30,7 +30,7 @@ REQUIRED_USE="|| ( mysql postgres sqlite )"
 src_install() {
 	webapp_src_preinst
 
-	local docs="LICENSE.txt README.txt core/MAINTAINERS.txt core/INSTALL.txt core/CHANGELOG.txt \
+	local docs="LICENSE.txt README.md core/MAINTAINERS.txt core/INSTALL.txt core/CHANGELOG.txt \
 		core/INSTALL.mysql.txt core/INSTALL.pgsql.txt core/INSTALL.sqlite.txt core/UPDATE.txt "
 
 	dodoc ${docs}
