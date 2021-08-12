@@ -19,7 +19,7 @@ RDEPEND="
 	dev-ros/message_filters
 	dev-ros/laser_geometry
 	dev-ros/pluginlib
-	dev-ros/angles
+	dev-ros/angles:0
 	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 
 	dev-libs/tinyxml2:=
