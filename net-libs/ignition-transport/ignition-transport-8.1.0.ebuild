@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Combines ZeroMQ with Protobufs to create a message passing system"
 HOMEPAGE="https://github.com/ignitionrobotics/ign-transport"
