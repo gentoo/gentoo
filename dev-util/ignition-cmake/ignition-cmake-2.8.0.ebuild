@@ -12,14 +12,15 @@ SRC_URI="https://osrf-distributions.s3.amazonaws.com/ign-cmake/releases/${PN}2-$
 LICENSE="Apache-2.0"
 SLOT="2"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		"-DBUILD_TESTING=OFF"
+		"-DBUILD_TESTING=$(usex test)"
 	)
 	cmake-utils_src_configure
 }
