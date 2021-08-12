@@ -24,6 +24,7 @@
 		<flag name="il">Israel tv listing grabber</flag>
 		<flag name="is">Iceland tv listing grabber</flag>
 		<flag name="it">Italy tv listing grabber (RUV)</flag>
+		<flag name="it-dvb">Italy tv listing grabber</flag>
 		<flag name="na-dd">North America tv listing grabber</flag>
 		<flag name="na-dtv">North America Direct TV grabber</flag>
 		<flag name="na-tvmedia">Grabber for North America (TVMedia)</flag>
