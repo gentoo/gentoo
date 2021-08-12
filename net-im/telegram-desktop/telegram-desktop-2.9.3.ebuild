@@ -16,7 +16,7 @@ SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${
 LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE="+dbus enchant +gtk +hunspell +spell wayland webkit +X"
+IUSE="+dbus enchant +gtk +hunspell screencast +spell wayland webkit +X"
 REQUIRED_USE="
 	spell? (
 		^^ ( enchant hunspell )
@@ -24,6 +24,7 @@ REQUIRED_USE="
 	webkit? ( gtk )
 	gtk? ( dbus )
 "
+# Future: webkit doesn't depend on gtk anymore (version: >2.9.3)
 
 RDEPEND="
 	!net-im/telegram-desktop-bin
@@ -44,7 +45,7 @@ RDEPEND="
 	media-libs/openal
 	media-libs/opus:=
 	media-libs/rnnoise
-	~media-libs/tg_owt-0_pre20210626
+	~media-libs/tg_owt-0_pre20210626[screencast=,X=]
 	media-video/ffmpeg:=[opus]
 	sys-libs/zlib:=[minizip]
 	dbus? (
@@ -71,8 +72,7 @@ BDEPEND="
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}/tdesktop-2.8.10-jemalloc-only-telegram.patch"
-	"${FILESDIR}/tdesktop-2.9.0-fix-disable-wayland-integration.patch"
+	"${FILESDIR}/tdesktop-2.9.3-jemalloc-only-telegram.patch"
 )
 
 pkg_pretend() {
