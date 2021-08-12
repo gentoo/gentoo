@@ -7,5 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">requests-file</remote-id>
+		<remote-id type="github">dashea/requests-file</remote-id>
+		<bugs-to>https://github.com/dashea/requests-file/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
