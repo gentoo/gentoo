@@ -13,7 +13,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/angles
+	dev-ros/angles:0
 	dev-ros/roscpp
 	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep "dev-python/numpy[\${PYTHON_USEDEP}]")
