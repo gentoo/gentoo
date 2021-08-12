@@ -7,5 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">tldextract</remote-id>
+		<remote-id type="github">john-kurkowski/tldextract</remote-id>
+		<bugs-to>https://github.com/john-kurkowski/tldextract/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
