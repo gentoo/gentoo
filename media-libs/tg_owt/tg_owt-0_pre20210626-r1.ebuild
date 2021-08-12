@@ -18,8 +18,11 @@ S="${WORKDIR}/${PN}-${TG_OWT_COMMIT}"
 LICENSE="BSD"
 SLOT="0/${PV##*pre}"
 KEYWORDS="amd64 ~ppc64"
-IUSE="+alsa pulseaudio screencast +X"
-REQUIRED_USE="pulseaudio? ( alsa )"
+IUSE="screencast +X"
+
+# This package's USE flags may change the ABI and require a rebuild of
+#  dependent pacakges. As such, one should make sure to depend on
+#  media-libs/tg_owt[x=,y=,z=] for any package that uses this.
 
 # Bundled libs:
 # - libyuv (no stable versioning, www-client/chromium and media-libs/libvpx bundle it)
@@ -37,8 +40,6 @@ DEPEND="
 	media-libs/opus
 	media-video/ffmpeg:=
 	net-libs/usrsctp
-	alsa? ( media-libs/alsa-lib )
-	pulseaudio? ( media-sound/pulseaudio )
 	screencast? (
 		dev-libs/glib:2
 		media-video/pipewire:=
@@ -61,7 +62,6 @@ PATCHES=(
 	"${FILESDIR}/tg_owt-0_pre20210626-allow-disabling-pipewire.patch"
 	"${FILESDIR}/tg_owt-0_pre20210626-allow-disabling-X11.patch"
 	"${FILESDIR}/tg_owt-0_pre20210626-allow-disabling-pulseaudio.patch"
-	"${FILESDIR}/tg_owt-0_pre20210626-expose-set_allow_pipewire.patch"
 )
 
 src_unpack() {
@@ -83,10 +83,14 @@ src_configure() {
 	append-cppflags '-DNDEBUG'
 
 	local mycmakeargs=(
-		-DTG_OWT_USE_X11=$(usex X ON OFF)
-		-DTG_OWT_USE_PIPEWIRE=$(usex screencast ON OFF)
-		-DTG_OWT_BUILD_AUDIO_BACKENDS=$(usex alsa ON OFF)
-		-DTG_OWT_BUILD_PULSE_BACKEND=$(usex pulseaudio ON OFF)
+		-DTG_OWT_USE_X11=$(usex X)
+		-DTG_OWT_USE_PIPEWIRE=$(usex screencast)
+
+		# Not required by net-im/telegram-desktop right now, I'd rather avoid
+		#  the (ABI compatibility) headache.
+		-DTG_OWT_BUILD_AUDIO_BACKENDS=OFF
+		#-DTG_OWT_BUILD_AUDIO_BACKENDS=$(usex alsa)
+		#-DTG_OWT_BUILD_PULSE_BACKEND=$(usex pulseaudio)
 	)
 	cmake_src_configure
 }
