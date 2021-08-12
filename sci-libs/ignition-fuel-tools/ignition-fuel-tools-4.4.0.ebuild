@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_BUILD_TYPE=RelWithDebInfo
-inherit cmake-utils
+inherit cmake
 
 IGN_MAJOR=4
 
@@ -40,5 +40,5 @@ src_configure() {
 	local mycmakeargs=(
 		"-DBUILD_TESTING=$(usex test)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
