@@ -4,11 +4,11 @@
 # @ECLASS: qmail.eclass
 # @MAINTAINER:
 # Rolf Eike Beer <eike@sf-mail.de>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: common qmail functions
 
 case ${EAPI:-0} in
-	[67]) ;;
+	[678]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
