@@ -65,8 +65,6 @@ BDEPEND="
 		media-gfx/sane-frontends
 	)"
 
-IDEPEND="dev-util/desktop-file-utils"
-
 PERL_RM_FILES=( t/{90_MANIFEST,91_critic,99_pod}.t )
 
 mydoc="History"
