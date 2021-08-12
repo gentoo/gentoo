@@ -72,9 +72,8 @@ is_prime() {
 }
 
 dospp() {
-	insinto "${QMAIL_HOME}"/plugins/
-	insopts -o root -g "${GROUP_ROOT}" -m 0755
-	newins $1 ${2:-$(basename $1)}
+	exeinto "${QMAIL_HOME}"/plugins/
+	newexe ${1} ${2:-$(basename ${1})}
 }
 
 # @FUNCTION: dosupervise
@@ -86,17 +85,14 @@ dosupervise() {
 	local runfile=${2:-${service}} logfile=${3:-${service}-log}
 	[[ -z "${service}" ]] && die "no service given"
 
-	insopts -o root -g "${GROUP_ROOT}" -m 0755
-	diropts -o root -g "${GROUP_ROOT}" -m 0755
-
 	dodir ${SUPERVISE_DIR}/${service}{,/log}
 	fperms +t ${SUPERVISE_DIR}/${service}{,/log}
 
-	insinto ${SUPERVISE_DIR}/${service}
-	newins ${runfile} run
+	exeinto ${SUPERVISE_DIR}/${service}
+	newexe ${runfile} run
 
-	insinto ${SUPERVISE_DIR}/${service}/log
-	newins ${logfile} run
+	exeinto ${SUPERVISE_DIR}/${service}/log
+	newexe ${logfile} run
 }
 
 # @FUNCTION: qmail_set_cc
@@ -149,41 +145,45 @@ qmail_spp_src_compile() {
 }
 
 qmail_base_install() {
+	# subshell to not leak the install options
+	(
 	einfo "Setting up basic directory hierarchy"
-	diropts -o root -g qmail -m 755
+	diropts -o root -g qmail
 	keepdir "${QMAIL_HOME}"/{,bin,control}
 	keepdir "${QMAIL_HOME}"/users
-	diropts -o alias -g qmail -m 755
+	diropts -o alias -g qmail
 	keepdir "${QMAIL_HOME}"/alias
 
 	einfo "Adding env.d entry for qmail"
 	doenvd "${GENQMAIL_S}"/conf/99qmail
 
 	einfo "Installing all qmail software"
-	insinto "${QMAIL_HOME}"/bin
+	exeinto "${QMAIL_HOME}"/bin
 
-	insopts -o root -g qmail -m 755
-	doins bouncesaying condredirect config-fast datemail except forward maildir2mbox \
+	exeopts -o root -g qmail
+	doexe bouncesaying condredirect config-fast datemail except forward maildir2mbox \
 		maildirmake mailsubj predate preline qbiff \
 		qmail-{inject,qmqpc,qmqpd,qmtpd,qread,qstat,smtpd,tcpok,tcpto,showctl} \
 		qreceipt sendmail tcp-env
 
 	# obsolete tools, install if they are still present
 	for i in elq maildirwatch pinq qail qsmhook; do
-		[[ -x ${i} ]] && doins ${i}
+		[[ -x ${i} ]] && doexe ${i}
 	done
 
-	use pop3 && doins qmail-pop3d
+	use pop3 && doexe qmail-pop3d
 
-	insopts -o root -g qmail -m 711
-	doins qmail-{clean,getpw,local,pw2u,remote,rspawn,send} splogger
-	use pop3 && doins qmail-popup
+	exeopts -o root -g qmail -m 711
+	doexe qmail-{clean,getpw,local,pw2u,remote,rspawn,send} splogger
+	use pop3 && doexe qmail-popup
 
-	insopts -o root -g qmail -m 700
-	doins qmail-{lspawn,newmrh,newu,start}
+	exeopts -o root -g qmail -m 700
+	doexe qmail-{lspawn,newmrh,newu,start}
 
-	insopts -o qmailq -g qmail -m 4711
-	doins qmail-queue
+	exeopts -o qmailq -g qmail -m 4711
+	doexe qmail-queue
+
+	)
 
 	declare -F qmail_base_install_hook >/dev/null && \
 		qmail_base_install_hook
@@ -192,12 +192,10 @@ qmail_base_install() {
 qmail_config_install() {
 	einfo "Installing stock configuration files"
 	insinto "${QMAIL_HOME}"/control
-	insopts -o root -g "${GROUP_ROOT}" -m 644
 	doins "${GENQMAIL_S}"/control/{conf-*,defaultdelivery}
 
 	einfo "Installing configuration sanity checker and launcher"
 	insinto "${QMAIL_HOME}"/bin
-	insopts -o root -g "${GROUP_ROOT}" -m 644
 	doins "${GENQMAIL_S}"/control/qmail-config-system
 
 	declare -F qmail_config_install_hook >/dev/null && \
@@ -224,7 +222,6 @@ qmail_man_install() {
 
 qmail_sendmail_install() {
 	einfo "Installing sendmail replacement"
-	diropts -m 755
 	dodir /usr/sbin /usr/lib
 
 	dosym "${QMAIL_HOME}"/bin/sendmail /usr/sbin/sendmail
@@ -235,11 +232,20 @@ qmail_sendmail_install() {
 }
 
 qmail_maildir_install() {
+	# subshell to not leak the install options
+	(
 	# use the correct maildirmake
 	# the courier-imap one has some extensions that are nicer
 	MAILDIRMAKE="${D}${QMAIL_HOME}/bin/maildirmake"
 	[[ -e /usr/bin/maildirmake ]] && \
 		MAILDIRMAKE="/usr/bin/maildirmake"
+
+	einfo "Setting up default maildirs in the account skeleton"
+	diropts -m 700
+	insinto /etc/skel
+	newins "${GENQMAIL_S}"/control/defaultdelivery .qmail.example
+	"${MAILDIRMAKE}" "${D}"/etc/skel/.maildir
+	keepdir /etc/skel/.maildir/{cur,new,tmp}
 
 	einfo "Setting up the default aliases"
 	diropts -o alias -g qmail -m 700
@@ -253,13 +259,7 @@ qmail_maildir_install() {
 		fi
 	done
 
-	einfo "Setting up default maildirs in the account skeleton"
-	diropts -o root -g "${GROUP_ROOT}" -m 755
-	insinto /etc/skel
-	insopts -o root -g "${GROUP_ROOT}" -m 644
-	newins "${GENQMAIL_S}"/control/defaultdelivery .qmail.sample
-	"${MAILDIRMAKE}" "${D}"/etc/skel/.maildir
-	keepdir /etc/skel/.maildir/{cur,new,tmp}
+	)
 
 	declare -F qmail_maildir_install_hook >/dev/null && \
 		qmail_maildir_install_hook
@@ -268,7 +268,6 @@ qmail_maildir_install() {
 qmail_tcprules_install() {
 	dodir "${TCPRULES_DIR}"
 	insinto "${TCPRULES_DIR}"
-	insopts -o root -g "${GROUP_ROOT}" -m 0644
 	doins "${GENQMAIL_S}"/tcprules/Makefile.qmail
 	doins "${GENQMAIL_S}"/tcprules/tcp.qmail-*
 	use ssl && use pop3 || rm -f "${D}${TCPRULES_DIR}"/tcp.qmail-pop3sd
@@ -276,8 +275,11 @@ qmail_tcprules_install() {
 
 qmail_supervise_install_one() {
 	dosupervise ${1}
-	diropts -o qmaill -g "${GROUP_ROOT}" -m 755
+	# subshell to not leak the install options
+	(
+	diropts -o qmaill -g root
 	keepdir /var/log/qmail/${1}
+	)
 }
 
 qmail_supervise_install() {
@@ -301,7 +303,6 @@ qmail_supervise_install() {
 qmail_spp_install() {
 	einfo "Installing qmail-spp configuration files"
 	insinto "${QMAIL_HOME}"/control/
-	insopts -o root -g "${GROUP_ROOT}" -m 0644
 	doins "${GENQMAIL_S}"/spp/smtpplugins
 
 	einfo "Installing qmail-spp plugins"
@@ -321,17 +322,14 @@ qmail_ssl_install() {
 
 	einfo "Installing SSL Certificate creation script"
 	insinto "${QMAIL_HOME}"/control
-	insopts -o root -g "${GROUP_ROOT}" -m 0644
 	doins "${GENQMAIL_S}"/ssl/servercert.cnf
 
-	insinto "${QMAIL_HOME}"/bin
-	insopts -o root -g "${GROUP_ROOT}" -m 0755
-	doins "${GENQMAIL_S}"/ssl/mkservercert
+	exeinto "${QMAIL_HOME}"/bin
+	doexe "${GENQMAIL_S}"/ssl/mkservercert
 
 	einfo "Installing RSA key generation cronjob"
-	insinto /etc/${CRON_FOLDER}
-	insopts -o root -g "${GROUP_ROOT}" -m 0755
-	doins "${GENQMAIL_S}"/ssl/qmail-genrsacert.sh
+	exeinto /etc/${CRON_FOLDER}
+	doexe "${GENQMAIL_S}"/ssl/qmail-genrsacert.sh
 
 	keepdir "${QMAIL_HOME}"/control/tlshosts
 
@@ -340,7 +338,6 @@ qmail_ssl_install() {
 }
 
 qmail_src_install() {
-	export GROUP_ROOT="$(id -gn root)"
 	qmail_base_install
 	qmail_config_install
 	qmail_man_install
