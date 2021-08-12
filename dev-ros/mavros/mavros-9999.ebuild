@@ -19,7 +19,7 @@ RDEPEND="
 		dev-libs/tinyxml2:=
 	dev-ros/roscpp
 	dev-ros/tf
-	dev-ros/angles
+	dev-ros/angles:0
 	dev-ros/libmavconn
 	dev-ros/rosconsole_bridge
 	dev-libs/boost:=
