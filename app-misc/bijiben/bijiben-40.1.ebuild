@@ -21,6 +21,7 @@ DEPEND="
 	>=gnome-extra/evolution-data-server-3.33.2:=
 	>=gui-libs/libhandy-1.0.0:1=
 	dev-libs/libxml2:2
+	net-misc/curl
 	sys-apps/util-linux
 	>=net-libs/webkit-gtk-2.26:4
 "
@@ -38,7 +39,7 @@ BDEPEND="
 src_configure() {
 	local emesonargs=(
 		-Dupdate_mimedb=false
-		-Dprivate_store=false # private store is mainly meant for flatpak builds
+		-Dprivate_store=false # private store gets automatically enabled with tracker3
 	)
 	meson_src_configure
 }
