@@ -71,8 +71,7 @@ src_install() {
 	use examples && docompress -x /usr/share/doc/${PF}/examples
 	cmake_src_install
 
-	cat > "${T}"/99${PN}3 <<-EOF || die
-	LDPATH=/usr/$(get_libdir)/${MY_P}
+	newenvd - 99${PN}3 <<-EOF
+		LDPATH=/usr/$(get_libdir)/${MY_P}
 	EOF
-	doenvd "${T}"/99${PN}3
 }
