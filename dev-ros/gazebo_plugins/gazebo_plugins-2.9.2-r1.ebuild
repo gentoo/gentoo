@@ -19,7 +19,7 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/rospy
 	dev-ros/nodelet
-	dev-ros/angles
+	dev-ros/angles:0
 	dev-ros/std_srvs
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/urdf
