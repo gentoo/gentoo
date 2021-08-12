@@ -42,6 +42,7 @@ kde-apps/akonadiconsole:5
 kde-apps/akregator:5
 kde-apps/calendarjanitor:5
 kde-apps/calendarsupport:5
+>=kde-apps/cantor-21.08.0:5
 kde-apps/eventviews:5
 kde-apps/grantlee-editor:5
 kde-apps/incidenceeditor:5
