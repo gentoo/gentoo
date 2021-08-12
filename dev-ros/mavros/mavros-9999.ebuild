@@ -27,6 +27,7 @@ RDEPEND="
 	sci-geosciences/GeographicLib
 	>=dev-ros/mavlink-gbp-release-2020.9.10
 	dev-libs/console_bridge:=
+	dev-ros/tf2_eigen
 "
 DEPEND="${RDEPEND}
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
