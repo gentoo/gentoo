@@ -16,7 +16,7 @@ SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${
 LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc64"
-IUSE="+dbus enchant +gtk +hunspell +spell wayland webkit +X"
+IUSE="+dbus enchant +gtk +hunspell screencast +spell wayland webkit +X"
 REQUIRED_USE="
 	spell? (
 		^^ ( enchant hunspell )
@@ -44,7 +44,7 @@ RDEPEND="
 	media-libs/openal
 	media-libs/opus:=
 	media-libs/rnnoise
-	~media-libs/tg_owt-0_pre20210626
+	~media-libs/tg_owt-0_pre20210626[screencast=,X=]
 	media-video/ffmpeg:=[opus]
 	sys-libs/zlib:=[minizip]
 	dbus? (
