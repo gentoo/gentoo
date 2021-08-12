@@ -137,4 +137,7 @@ src_configure() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	use gtk || elog "enable the 'gtk' useflag if you have image copy-paste problems"
+	if ! use X && ! use screencast; then
+		elog "both the 'X' and 'screencast' useflags are disabled, screen sharing won't work!"
+	fi
 }
