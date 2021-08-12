@@ -30,4 +30,3 @@ BDEPEND="
 	virtual/pkgconfig"
 CMAKE_BUILD_TYPE=RelWithDebInfo
 S="${WORKDIR}/ign-transport-${PN}8_${PV}"
-PATCHES=( "${FILESDIR}/zmq.patch" )
