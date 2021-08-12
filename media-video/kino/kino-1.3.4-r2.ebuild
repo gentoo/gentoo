@@ -1,10 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit autotools udev xdg
 
-DESCRIPTION="Kino is a non-linear DV editor for GNU/Linux"
+DESCRIPTION="Non-linear DV editor for GNU/Linux"
 HOMEPAGE="http://www.kinodv.org/"
 SRC_URI="mirror://sourceforge/kino/${P}.tar.gz"
 
@@ -15,8 +16,7 @@ IUSE="alsa dvdr gpac lame quicktime sox vorbis"
 
 # Optional dependency on cinelerra-cvs (as a replacement for libquicktime)
 # dropped because kino may run with it but won't build anymore.
-
-CDEPEND="
+DEPEND="
 	>=x11-libs/gtk+-2.6.0:2
 	>=gnome-base/libglade-2.5.0
 	>=dev-libs/glib-2:2
@@ -33,10 +33,7 @@ CDEPEND="
 	>=media-video/ffmpeg-3:0=
 	quicktime? ( >=media-libs/libquicktime-0.9.5 )
 "
-DEPEND="${CDEPEND}
-	dev-util/intltool
-"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	media-video/mjpegtools
 	media-sound/rawrec
 	dvdr? ( media-video/dvdauthor
@@ -45,6 +42,10 @@ RDEPEND="${CDEPEND}
 	lame? ( media-sound/lame )
 	sox? ( media-sound/sox )
 	vorbis? ( media-sound/vorbis-tools )
+"
+BDEPEND="
+	dev-util/glib-utils
+	dev-util/intltool
 "
 
 src_prepare() {
@@ -93,12 +94,12 @@ src_configure() {
 		$(use_enable quicktime) \
 		$(use_with sparc dv1394) \
 		--with-udev-rules-dir="$(get_udevdir)"/rules.d \
-		CPPFLAGS="-I${ROOT}usr/include/libavcodec -I${ROOT}usr/include/libavformat -I${ROOT}usr/include/libswscale"
+		CPPFLAGS="-I${ESYSROOT}usr/include/libavcodec -I${ESYSROOT}usr/include/libavformat -I${ESYSROOT}usr/include/libswscale"
 }
 
 src_install() {
 	default
-	mv "${ED}/$(get_udevdir)"/rules.d/{,99-}kino.rules
+	mv "${ED}/$(get_udevdir)"/rules.d/{,99-}kino.rules || die
 	fowners root:root -R /usr/share/kino/help #177378
 	find "${ED}" -name '*.la' -delete || die #385361
 }
