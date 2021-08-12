@@ -121,6 +121,7 @@ DEPEND="
 		$(for slot in ${BERKDB_SLOTS[@]} ; do printf '%s\n' "sys-libs/db:${slot}" ; done)
 	)
 	sys-libs/cracklib
+	sys-libs/e2fsprogs-libs
 	sys-libs/zlib
 	pam-passthru? ( sys-libs/pam )
 	selinux? (
