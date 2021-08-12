@@ -16,7 +16,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/angles
+	dev-ros/angles:0
 	>=dev-ros/costmap_2d-1.16
 	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 	dev-cpp/eigen:3
