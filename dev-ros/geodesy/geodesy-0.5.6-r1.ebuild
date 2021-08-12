@@ -14,7 +14,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/angles
+	dev-ros/angles:0
 	dev-ros/geographic_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/tf
