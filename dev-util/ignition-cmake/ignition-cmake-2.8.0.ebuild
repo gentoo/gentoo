@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="CMake modules to be used by the Ignition projects."
 HOMEPAGE="https://github.com/ignitionrobotics/ign-cmake"
@@ -22,5 +22,5 @@ src_configure() {
 	local mycmakeargs=(
 		"-DBUILD_TESTING=$(usex test)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
