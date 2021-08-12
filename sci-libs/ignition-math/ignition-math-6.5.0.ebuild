@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 inherit cmake vcs-snapshot
 
 DESCRIPTION="A small, fast, and high performance math library for robot applications"
-HOMEPAGE="https://ignitionrobotics.org/libraries/math"
+HOMEPAGE="https://github.com/ignitionrobotics/ign-math"
 SRC_URI="https://github.com/ignitionrobotics/ign-math/archive/${PN}6_${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
