@@ -1,0 +1,18 @@
+From f189ebb3ecf60b9764852021988112df5c9e25c7 Mon Sep 17 00:00:00 2001
+From: Louis Sautier <sautier.louis@gmail.com>
+Date: Thu, 12 Aug 2021 13:34:52 +0200
+Subject: [PATCH] tests: do not run pylint by default
+
+There is already a separate tox environment to run pylint tests.
+---
+ pytest.ini | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pytest.ini b/pytest.ini
+index 6d94ff5..df3eb51 100644
+--- a/pytest.ini
++++ b/pytest.ini
+@@ -1,2 +1,2 @@
+ [pytest]
+-addopts = --doctest-modules --pylint
++addopts = --doctest-modules
