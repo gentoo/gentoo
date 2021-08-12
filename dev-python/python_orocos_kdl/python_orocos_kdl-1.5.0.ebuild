@@ -10,6 +10,10 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/orocos/orocos_kinematics_dynamics"
 fi
 
+# pybind11 strips targets at build otherwise...
+# https://bugs.gentoo.org/806857
+CMAKE_BUILD_TYPE=RelWithDebInfo
+
 inherit ${SCM} python-r1 cmake
 
 if [ "${PV#9999}" != "${PV}" ] ; then
