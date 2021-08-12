@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/boost:=[threads(+)]
-	dev-ros/angles
+	dev-ros/angles:0
 	dev-ros/message_filters
 	dev-ros/rosconsole
 	dev-ros/rostime
