@@ -1,8 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-PYTHON_COMPAT=( python3_{8,9} )
+EAPI="8"
+PYTHON_COMPAT=( python3_{8,9,10} )
 
 inherit python-r1
 
@@ -21,7 +21,7 @@ DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	>=app-portage/gentoolkit-0.5.1
 	|| (
-		>=sys-apps/portage-3.0.18[${PYTHON_USEDEP}]
+		>=sys-apps/portage-3.0.20[${PYTHON_USEDEP}]
 	)"
 
 src_install() {
