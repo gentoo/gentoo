@@ -45,7 +45,7 @@ RDEPEND="
 		virtual/libudev:=
 	)
 	xvmc? (
-		x11-libs/libXvMC
+		>=x11-libs/libXvMC-1.0.12-r1
 		>=x11-libs/libxcb-1.5
 		x11-libs/xcb-util
 	)
