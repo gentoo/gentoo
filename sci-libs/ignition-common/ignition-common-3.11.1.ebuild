@@ -15,7 +15,10 @@ SRC_URI="https://github.com/ignitionrobotics/ign-common/archive/${PN}${IGN_MAJOR
 LICENSE="Apache-2.0"
 SLOT="${IGN_MAJOR}"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="test"
+#RESTRICT="!test? ( test )"
+# tests dont even build
+RESTRICT="test"
 
 RDEPEND="
 	dev-libs/tinyxml2:=
@@ -34,7 +37,7 @@ S="${WORKDIR}/ign-common-${PN}${IGN_MAJOR}_${PV}"
 
 src_configure() {
 	local mycmakeargs=(
-		"-DBUILD_TESTING=OFF"
+		"-DBUILD_TESTING=$(usex test)"
 	)
 	cmake-utils_src_configure
 }
