@@ -14,7 +14,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/angles
+	dev-ros/angles:0
 	dev-ros/base_local_planner
 	dev-ros/costmap_2d
 	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
