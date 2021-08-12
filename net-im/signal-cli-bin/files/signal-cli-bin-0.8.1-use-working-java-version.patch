@@ -1,7 +1,7 @@
 Signed-off-by: Martin Dummer <martin.dummer@gmx.net>
---- a/bin/signal-cli	2021-03-02 20:56:06.000000000 +0100
-+++ b/bin/signal-cli	2021-05-03 12:05:45.406811750 +0200
-@@ -84,13 +84,20 @@
+--- a/bin/signal-cli
++++ b/bin/signal-cli
+@@ -84,13 +84,19 @@
  
  
  # Determine the Java command to use to start the JVM.
@@ -14,8 +14,7 @@ Signed-off-by: Martin Dummer <martin.dummer@gmx.net>
 -    fi
 +# This package needs Java 11, but Java 11 is currently not part of the gentoo eselect config system
 +# so we must search for matching java binaries
-+JAVA_DIRS="$JAVA_HOME /opt/openjdk-jre-bin-11 /opt/openjdk-bin-11"
-+for I in $JAVA_DIRS ; do
++for I in /usr/lib*/openjdk-11 /opt/openjdk-bin-11 /opt/openjdk-jre-bin-11; do
 +	J_TRY="$I/bin/java"
 +	if [ -x "$J_TRY" ] ; then
 +		"$J_TRY" -version 2>&1 | grep --fixed-strings --quiet "11."

@@ -33,7 +33,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/signal-cli-bin-${PV}-use-working-java-version.patch"
+	"${FILESDIR}/${P}-use-working-java-version.patch"
 )
 
 src_unpack() {
