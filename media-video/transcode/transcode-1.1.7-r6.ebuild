@@ -1,4 +1,4 @@
-# Copyright 2002-2020 Gentoo Authors
+# Copyright 2002-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ RDEPEND="
 	imagemagick? ( media-gfx/imagemagick:= )
 	jpeg? ( virtual/jpeg:0= )
 	lzo? ( >=dev-libs/lzo-2 )
-	mjpeg? ( media-video/mjpegtools )
+	mjpeg? ( media-video/mjpegtools:= )
 	mp3? ( media-sound/lame )
 	mpeg? ( media-libs/libmpeg2 )
 	ogg? ( media-libs/libogg )
