@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-1 luajit )
 
-inherit cmake lua-single systemd xdg
+inherit cmake flag-o-matic lua-single systemd xdg
 
 DESCRIPTION="A free open-source voxel game engine with easy modding and game creation"
 HOMEPAGE="https://www.minetest.net"
@@ -72,6 +72,9 @@ src_prepare() {
 
 	# remove bundled libraries
 	rm -rf lib || die
+
+	# To avoid TEXTRELs on riscv
+	append-flags -fPIC
 }
 
 src_configure() {
