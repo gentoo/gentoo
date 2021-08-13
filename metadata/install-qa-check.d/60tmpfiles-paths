@@ -1,0 +1,37 @@
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# QA check: ensure that packages installing tmpfiles configuration inherit the eclass
+# Maintainer: Sam James <sam@gentoo.org>
+
+# Implements two checks:
+# 1) Installation to /etc/tmpfiles.d (which is a user-customization location);
+# 2) Installation of any tmpfiles to /usr/lib/tmpfiles.d without inheriting the eclass
+#    (needed for tmpfiles_process in pkg_postinst)
+tmpfiles_check() {
+	# Check 1
+	# Scan image for files in /etc/tmpfiles.d which is a forbidden location
+	if [[ -d "${ED}"/etc/tmpfiles.d/ ]] ; then
+		eqawarn "QA Notice: files installed to /etc/tmpfiles.d"
+		eqawarn "tmpfiles configuration files must be installed by ebuilds /usr/lib/tmpfiles.d!"
+	fi
+
+	# Check 2
+	# We're now going to check for whether we install files to /usr/lib/tmpfiles.d without
+	# inheriting the eclass (weak catch for ebuilds not calling tmpfiles_process in pkg_postinst)
+
+	# No need to carry on if we're inheriting the eclass
+	if has tmpfiles ${INHERITED} ; then
+		return
+	fi
+
+	if [[ -d "${ED}"/usr/lib/tmpfiles.d/ ]] ; then
+		eqawarn "QA Notice: package is installing tmpfiles without inheriting tmpfiles.eclass!"
+		eqawarn "Packages must inherit tmpfiles.eclass then call tmpfiles_process in pkg_postinst."
+	fi
+}
+
+tmpfiles_check
+: # guarantee successful exit
+
+# vim:ft=sh
