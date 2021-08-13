@@ -1,0 +1,25 @@
+From 5c00346f72de5b966ebb0841c87a22c6b11c1b38 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Thu, 12 Aug 2021 16:51:55 -0400
+Subject: [PATCH] Fix link command
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index c63ed1b..c3454c3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -26,7 +26,7 @@ OBJS	=	main.o utility.o prelogin.o ftpcmdio.o postlogin.o privsock.o \
+ 	$(CC) -c $*.c $(CFLAGS) $(IFLAGS)
+ 
+ vsftpd: $(OBJS) 
+-	$(CC) -o vsftpd $(OBJS) $(LINK) $(LDFLAGS) $(LIBS)
++	$(CC) -o vsftpd $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBS)
+ 
+ install:
+ 	if [ -x /usr/local/sbin ]; then \
+-- 
+2.32.0
+
