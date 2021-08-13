@@ -79,6 +79,7 @@ PATCHES=(
 	"${FILESDIR}/tdesktop-2.8.10-jemalloc-only-telegram.patch"
 	# Already upstream
 	"${FILESDIR}/tdesktop-2.8.11-load-gtk-with-qlibrary.patch"
+	"${FILESDIR}/tdesktop-2.8.11-fix-build-without-pipewire.patch"
 )
 
 pkg_pretend() {
