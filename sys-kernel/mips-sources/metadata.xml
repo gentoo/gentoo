@@ -5,13 +5,19 @@
 		<email>mips@gentoo.org</email>
 		<name>Mips Team</name>
 	</maintainer>
+
+	<upstream>
+		<remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
+	</upstream>
+
+	<longdescription>
+		mips-sources are based on kernel.org linux releases wth custom patches for MIPS-Based machines
+	</longdescription>
+
 	<use>
 		<flag name="ip27">Enables additional support for SGI Origin (IP27)</flag>
 		<flag name="ip28">Enables additional support for SGI Indigo2 Impact R10000 (IP28)</flag>
 		<flag name="ip30">Enables support for SGI Octane (IP30, 'Speedracer')</flag>
 		<flag name="experimental">Apply experimental (80xx) patches.</flag>
 	</use>
-	<upstream>
-		<remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
-	</upstream>
 </pkgmetadata>
