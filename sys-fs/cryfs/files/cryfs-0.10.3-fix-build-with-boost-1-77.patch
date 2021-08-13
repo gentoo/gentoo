@@ -1,0 +1,26 @@
+https://github.com/cryfs/cryfs/pull/395
+
+From dcc072d51d0bbb56c9d8709214ce49f8bd6de73c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 13 Aug 2021 18:46:55 +0100
+Subject: [PATCH] Add missing memory.h include for std::shared_ptr
+
+---
+ src/fspp/fuse/Fuse.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/fspp/fuse/Fuse.h b/src/fspp/fuse/Fuse.h
+index 0b384d8..2ed98da 100644
+--- a/src/fspp/fuse/Fuse.h
++++ b/src/fspp/fuse/Fuse.h
+@@ -11,6 +11,7 @@
+ #include <boost/optional.hpp>
+ #include <cpp-utils/macros.h>
+ #include <atomic>
++#include <memory>
+ #include "stat_compatibility.h"
+ 
+ namespace fspp {
+-- 
+2.32.0
+
