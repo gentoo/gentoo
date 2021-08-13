@@ -1,7 +1,7 @@
 # Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit linux-info
 
@@ -74,6 +74,6 @@ src_install() {
 		my_arch=aarch64
 	fi
 
-	newbin "firecracker-v${PV}-${my_arch}" firecracker
-	newbin "jailer-v${PV}-${my_arch}" jailer
+	newbin "release-v${PV}/firecracker-v${PV}-${my_arch}" firecracker
+	newbin "release-v${PV}/jailer-v${PV}-${my_arch}" jailer
 }
