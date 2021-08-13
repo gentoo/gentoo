@@ -123,7 +123,7 @@ COMMON_DEPEND="
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
 	system-libevent? ( >=dev-libs/libevent-2.0:0= )
 	system-libvpx? ( >=media-libs/libvpx-1.8.0:0=[postproc] )
-	system-sqlite? ( >=dev-db/sqlite-3.19.3:3[secure-delete,debug=] )
+	system-sqlite? ( >=dev-db/sqlite-3.31.0:3[secure-delete,debug=] )
 	wifi? (
 		kernel_linux? (
 			>=dev-libs/dbus-glib-0.72
