@@ -110,6 +110,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# still needed as of 2021-08-13
+	eapply "${FILESDIR}"/${PN}-13.3-riscv-spinlocks.patch
+
 	# Set proper run directory
 	sed "s|\(PGSOCKET_DIR\s\+\)\"/tmp\"|\1\"${EPREFIX}/run/postgresql\"|" \
 		-i src/include/pg_config_manual.h || die
@@ -177,7 +180,7 @@ src_configure() {
 		$(use_with zlib) \
 		$(use_with systemd) \
 		${uuid_config}"
-	if use alpha || use riscv; then
+	if use alpha; then
 		myconf+=" --disable-spinlocks"
 	else
 		# Should be the default but just in case
