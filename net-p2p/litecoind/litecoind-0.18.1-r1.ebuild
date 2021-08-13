@@ -21,11 +21,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_sse2 upnp +wallet"
 
+# uses an internal leveldb API (MemEnv) which newer versions no longer expose
 RDEPEND="
 	acct-group/litecoin
 	acct-user/litecoin
 	dev-libs/boost:=[threads(+)]
-	dev-libs/leveldb:=
+	<dev-libs/leveldb-1.23:=
 	dev-libs/libevent:=[threads(+)]
 	dev-libs/openssl:=[-bindist(-)]
 	sys-libs/db:$(db_ver_to_slot ${DB_VER})[cxx]
