@@ -11,7 +11,9 @@
 	</upstream>
 
 	<longdescription>
-		mips-sources are based on kernel.org linux releases wth custom patches for MIPS-Based machines
+		Kernel.org LTS releases that focus on fixing any issues with
+		current in-tree MIPS systems (primarily SGI), as well as adding
+		missing support for any out-of-tree systems via custom patches.
 	</longdescription>
 
 	<use>
