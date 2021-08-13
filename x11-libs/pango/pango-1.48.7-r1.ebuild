@@ -17,7 +17,7 @@ IUSE="debug +introspection sysprof X"
 
 RDEPEND="
 	>=dev-libs/glib-2.62.2:2[${MULTILIB_USEDEP}]
-	>=dev-libs/fribidi-0.19.7[${MULTILIB_USEDEP}]
+	>=dev-libs/fribidi-1.0.6[${MULTILIB_USEDEP}]
 	>=media-libs/harfbuzz-2.0:=[glib(+),introspection?,truetype(+),${MULTILIB_USEDEP}]
 	>=media-libs/fontconfig-2.12.92:1.0=[${MULTILIB_USEDEP}]
 	>=x11-libs/cairo-1.12.10:=[X?,${MULTILIB_USEDEP}]

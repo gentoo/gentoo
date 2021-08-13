@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="gtk-doc? ( introspection )"
 
 RDEPEND="
-	>=dev-libs/fribidi-0.19.7[${MULTILIB_USEDEP}]
+	>=dev-libs/fribidi-1.0.6[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.62.2:2[${MULTILIB_USEDEP}]
 	>=media-libs/fontconfig-2.12.92:1.0=[${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.5.0.1:2=[harfbuzz,png,${MULTILIB_USEDEP}]
