@@ -36,7 +36,7 @@
 # @CODE
 # EAPI=8
 #
-# LUA_COMPAT=( lua5-{1..3} )
+# LUA_COMPAT=( lua5-{3..4} )
 #
 # inherit lua-single
 #
@@ -90,7 +90,7 @@ EXPORT_FUNCTIONS pkg_setup
 #
 # Example:
 # @CODE
-# LUA_COMPAT=( lua5-1 lua5-2 lua5-3 )
+# LUA_COMPAT=( lua5-1 lua5-3 lua5-4 )
 # @CODE
 #
 # Please note that you can also use bash brace expansion if you like:
@@ -115,7 +115,7 @@ EXPORT_FUNCTIONS pkg_setup
 #
 # Example:
 # @CODE
-# LUA_COMPAT_OVERRIDE='lua5-2' emerge -1v dev-lua/foo
+# LUA_COMPAT_OVERRIDE='luajit' emerge -1v dev-lua/foo
 # @CODE
 
 # @ECLASS-VARIABLE: LUA_REQ_USE
@@ -154,7 +154,7 @@ EXPORT_FUNCTIONS pkg_setup
 # Example value:
 # @CODE
 # lua_targets_lua5-1? ( dev-lang/lua:5.1 )
-# lua_targets_lua5-2? ( dev-lang/lua:5.2 )
+# lua_targets_lua5-3? ( dev-lang/lua:5.2 )
 # @CODE
 
 # @ECLASS-VARIABLE: LUA_REQUIRED_USE
@@ -173,7 +173,7 @@ EXPORT_FUNCTIONS pkg_setup
 #
 # Example value:
 # @CODE
-# || ( lua_targets_lua5-1 lua_targets_lua5-2 )
+# || ( lua_targets_lua5-1 lua_targets_lua5-3 )
 # @CODE
 
 # @ECLASS-VARIABLE: LUA_SINGLE_USEDEP
@@ -210,7 +210,7 @@ EXPORT_FUNCTIONS pkg_setup
 #
 # Example value:
 # @CODE
-# lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?
+# lua_targets_lua5-1(-)?,lua_targets_lua5-3(-)?
 # @CODE
 
 # @FUNCTION: _lua_single_set_globals
@@ -376,15 +376,15 @@ _lua_verify_patterns() {
 # @CODE
 # LUA_COMPAT=( lua5-{1..3} )
 # RDEPEND="$(lua_gen_cond_dep \
-#     'dev-lua/backported_core_module[${LUA_USEDEP}]' lua5-1 lua5-2 )"
+#     'dev-lua/backported_core_module[${LUA_USEDEP}]' lua5-1 lua5-3 )"
 # @CODE
 #
 # It will cause the variable to look like:
 # @CODE
 # RDEPEND="lua_single_target_lua5-1? (
 #     dev-lua/backported_core_module[lua_targets_lua5-1(-)?,...] )
-#	lua_single_target_lua5-2? (
-#     dev-lua/backported_core_module[lua_targets_lua5-2(-)?,...] )"
+#	lua_single_target_lua5-3? (
+#     dev-lua/backported_core_module[lua_targets_lua5-3(-)?,...] )"
 # @CODE
 lua_gen_cond_dep() {
 	debug-print-function ${FUNCNAME} "${@}"
@@ -436,13 +436,13 @@ lua_gen_cond_dep() {
 # Example:
 # @CODE
 # LUA_COMPAT=( lua5-{1..3} )
-# RDEPEND="foo? ( $(lua_gen_impl_dep 'deprecated(+)' lua5-3 ) )"
+# RDEPEND="foo? ( $(lua_gen_impl_dep 'deprecated(+)' lua5-4 ) )"
 # @CODE
 #
 # It will cause the variable to look like:
 # @CODE
 # RDEPEND="foo? (
-#	lua_single_target_lua5-3? ( dev-lang/lua:5.3[deprecated(+)] )
+#	lua_single_target_lua5-4? ( dev-lang/lua:5.3[deprecated(+)] )
 # )"
 # @CODE
 lua_gen_impl_dep() {
