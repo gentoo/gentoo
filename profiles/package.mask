@@ -32,11 +32,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2021-08-13)
-# Fails to build with make error in src_install phase.
-# See bug #808063.
-=net-libs/nodejs-16.6.2
-
 # David Seifert <soap@gentoo.org> (2021-08-13)
 # Dead upstream, new "forked" upstream that just added the last version
 # on Github but doesn't maintain them. Unmaintained for the past 10
