@@ -9,7 +9,4 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
-  <use>
-    <flag name="custom-optimization">Use user-defined compiler optimization level</flag>
-  </use>
 </pkgmetadata>
