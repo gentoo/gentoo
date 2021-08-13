@@ -75,6 +75,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.9.0-cmake_lua_impl.patch
+	"${FILESDIR}"/${PN}-5.9.0-fno-common.patch
 )
 
 DOCS=( Changelog KNOWN_LIMITATIONS README )
