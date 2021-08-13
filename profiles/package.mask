@@ -370,11 +370,6 @@ dev-ruby/factory_girl
 # Masked for removal in 30 days.
 dev-ruby/bourne
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-07-16)
-# library with no consumer, multiple vulnerabilities
-# removal in 30 days (bug #713098)
-dev-java/xmlrpc
-
 # Hans de Graaff <graaff@gentoo.org> (2021-07-15)
 # Dead upstream, no longer maintained, last release in 2013.
 # No dependencies.
