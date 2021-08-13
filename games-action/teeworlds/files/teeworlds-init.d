@@ -1,9 +1,9 @@
 #!/sbin/openrc-run
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 PIDFILE=/var/run/teeworlds.pid
-GAME_DIRECTORY=/usr/games/bin
+GAME_DIRECTORY=/usr/bin
 CONFIG=/etc/teeworlds/teeworlds_srv.cfg
 
 depend() {
