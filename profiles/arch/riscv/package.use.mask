@@ -98,6 +98,8 @@ dev-python/ipython nbconvert notebook
 app-crypt/heimdal afs
 #  - gnome-base/gconf, dev-libs/libotf & dev-libs/m17n-lib
 app-editors/emacs gconf m17n-lib
+#  - media-libs/libcanberra
+app-editors/vim sound
 #  - media-libs/portaudio, dev-embedded/libftdi, app-misc/inputlircd
 app-misc/lirc audio ftdi inputlirc
 #  - app-xemacs/ruby-modes (and by extension xemacs itself)
@@ -123,7 +125,7 @@ media-libs/libvpx doc
 #  - bluetooth, net-misc/ofono
 media-sound/pulseaudio native-headset ofono-headset
 #  - maaaaaany
-media-video/ffmpeg amrenc bluray bs2b cdio chromaprint codec2 fdk frei0r gme iec61883 ieee1394 kvazaar libaribb24 libilbc libsoxr libtesseract lv2 openh264 rubberband sdl speex srt vidstab xvid zimg zvbi
+media-video/ffmpeg amrenc bluray bs2b cdio chromaprint codec2 fdk frei0r gme iec61883 ieee1394 kvazaar libaribb24 libilbc libsoxr libtesseract lv2 openh264 rubberband speex srt vidstab xvid zimg zvbi
 #  - media-libs/libquicktime, media-libs/sdl-gfx
 media-video/mjpegtools quicktime sdlgfx
 #  - sys-cluster/ceph
