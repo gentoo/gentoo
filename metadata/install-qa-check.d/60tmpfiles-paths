@@ -11,7 +11,12 @@
 tmpfiles_check() {
 	# Check 1
 	# Scan image for files in /etc/tmpfiles.d which is a forbidden location
-	if [[ -d "${ED}"/etc/tmpfiles.d/ ]] ; then
+	# (We use this glob to avoid triggering on keepdir)
+	shopt -s nullglob
+	local files=( "${ED}"/etc/tmpfiles.d/*.conf )
+	shopt -u nullglob
+
+	if [[ ${#files[@]} -gt 0 ]]; then
 		eqawarn "QA Notice: files installed to /etc/tmpfiles.d"
 		eqawarn "tmpfiles configuration files must be installed by ebuilds /usr/lib/tmpfiles.d!"
 	fi
