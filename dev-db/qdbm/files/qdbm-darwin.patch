@@ -1,8 +1,6 @@
-diff --git a/Makefile.in b/Makefile.in
-index 2fec03a..2a1c3a3 100644
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -52,18 +52,18 @@ DESTDIR =
+@@ -52,18 +52,18 @@
  # Building binaries
  CC = @CC@
  CPPFLAGS = @CPPFLAGS@ -I$(srcdir) -I$(MYHEADDIR) \

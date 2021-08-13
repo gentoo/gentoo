@@ -32,7 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-perl.patch
 	"${FILESDIR}"/${PN}-ruby19.patch
 	"${FILESDIR}"/${PN}-runpath.patch
-	"${FILESDIR}"/${PN}-1.8.78-darwin.patch
+	"${FILESDIR}"/${PN}-darwin.patch
 )
 HTML_DOCS=( doc/. )
 
