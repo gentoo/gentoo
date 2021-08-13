@@ -20,12 +20,6 @@ media-gfx/gimp lua unwind
 # dependency on PyQt5[bluetooth].
 dev-python/ipython qt5
 
-# Alex Fan <alexfanqi@yahoo.com> (2021-08-08)
-# portaudio is not tested yet
-app-accessibility/espeak portaudio
-media-libs/openal portaudio
-media-sound/mpg123 portaudio
-
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-05)
 # pdfannotextractor depends on java, not (sustainably) supported yet
 app-text/texlive pdfannotextractor
@@ -100,8 +94,8 @@ app-crypt/heimdal afs
 app-editors/emacs gconf m17n-lib
 #  - media-libs/libcanberra
 app-editors/vim sound
-#  - media-libs/portaudio, dev-embedded/libftdi, app-misc/inputlircd
-app-misc/lirc audio ftdi inputlirc
+#  - dev-embedded/libftdi, app-misc/inputlircd
+app-misc/lirc ftdi inputlirc
 #  - app-xemacs/ruby-modes (and by extension xemacs itself)
 dev-lang/ruby xemacs
 #  - media-libs/libcddb
