@@ -419,7 +419,6 @@ dev-vcs/git-num
 # framework with known issues.
 # Masked for removal in 30 days.
 dev-ruby/compass
-dev-ruby/compass-core
 
 # Hans de Graaff <graaff@gentoo.org> (2021-07-09)
 # Mask ruby25 for removal. This version is no longer supported
