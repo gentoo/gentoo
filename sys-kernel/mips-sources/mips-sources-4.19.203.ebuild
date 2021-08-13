@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # EAPI Version
-EAPI="6"
+EAPI="8"
 
 #//------------------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ K_FROM_GIT="yes"
 ETYPE="sources"
 
 # Inherit Eclasses
-inherit kernel-2 eapi7-ver
+inherit kernel-2
 detect_version
 
 # Version Data
@@ -73,15 +73,17 @@ err_disabled_mach() {
 
 	# See if this machine needs a USE passed or skip dying
 	local has_use
-	[ ! -z "${m_use}" -a "${m_use}" != "skip" ] && has_use="USE=\"${m_use}\" "
+	[[ "${m_use}" != "skip" ]] \
+		&& has_use="USE=\"${m_use}\" "
 
 	# Print error && (maybe) die
 	echo -e ""
-	if [ "${is_test}" != "test" ]; then
+	if [[ "${is_test}" != "test" ]]; then
 		eerror "${m_name} Support has been disabled in this ebuild"
 		eerror "revision.  If you wish to merge ${m_name} sources, then"
 		eerror "run ${has_use}emerge =mips-sources-${stable_ver}"
-		[ "${m_use}" != "skip" ] && die "${m_name} Support disabled."
+		[[ "${m_use}" != "skip" ]] \
+			&& die "${m_name} Support disabled."
 	else
 		ewarn "${m_name} Support has been marked as needing testing in this"
 		ewarn "ebuild revision.  This usually means that any patches to support"
@@ -105,17 +107,33 @@ err_only_one_mach_allowed() {
 	die "Only one machine-type patchset allowed"
 }
 
-pkg_postinst() {
-	# Symlink /usr/src/linux as appropriate
-	local my_ksrc="${S##*/}"
+fkv_to_machtype() {
+	# For any machines that use external patches, we rename the source
+	# tree to match the machine type.
+	local fkv="${F_KV%-*}"
+	local v="${fkv}"
 	for x in {ip27,ip28,ip30}; do
-		use ${x} && my_ksrc="${my_ksrc}.${x}"
+		use ${x} && v="${v}.${x}" && break
 	done
 
-	if [ ! -e "${ROOT}usr/src/linux" ]; then
-		rm -f "${ROOT}usr/src/linux"
-		ln -sf "${my_ksrc}" "${ROOT}/usr/src/linux"
+	echo "${v}"
+}
+
+pkg_postinst() {
+	if ! use symlink; then
+		return 0
 	fi
+
+	local kern_sym="/usr/src/linux"
+
+	# Check that /usr/src/linux is safe to overwrite
+	if [[ -e "${kern_sym}" && ! -L "${kern_sym}" ]]; then
+		die "${kern_sym} already exists, but is not a symbolic link"
+	fi
+
+	# Symlink /usr/src/linux as appropriate
+	local kern_ver=$(fkv_to_machtype)
+	ln -snf "linux-${kern_ver}" "${kern_sym}"
 }
 
 pkg_setup() {
@@ -135,35 +153,37 @@ pkg_setup() {
 		shift			# Shift the positions
 		m_name="${*}"		# Get the rest (Name)
 
-		if use ${m_ip}; then
-			# Fetch the value indiciating if the machine is enabled or not
-			m_enable="DO_${m_ip/ip/IP}"
-			m_enable="${!m_enable}"
-
-			# Make sure only one of these exclusive machine patches is selected
-			[ "${arch_is_selected}" = "no" ]				\
-				&& arch_is_selected="yes"				\
-				|| err_only_one_mach_allowed
-
-			# Is the machine support disabled or marked as needing testing?
-			[ "${m_enable}" = "test" ]					\
-				&& err_disabled_mach "${m_name}" "${m_ip/ip/IP}" "${m_ip}" "test"
-			[ "${m_enable}" = "no" ]					\
-				&& err_disabled_mach "${m_name}" "${m_ip/ip/IP}" "${m_ip}"
-
-			# Show relevant information about the machine
-			show_${m_ip}_info
+		if ! use ${m_ip}; then
+			continue
 		fi
+
+		# Fetch the value indiciating if the machine is enabled or not
+		m_enable="DO_${m_ip/ip/IP}"
+		m_enable="${!m_enable}"
+
+		# Make sure only one of these exclusive machine patches is selected
+		[[ "${arch_is_selected}" = "no" ]]				\
+			&& arch_is_selected="yes"				\
+			|| err_only_one_mach_allowed
+
+		# Is the machine support disabled or marked as needing testing?
+		case "${m_enable}" in
+			"test") err_disabled_mach "${m_name}" "${m_ip/ip/IP}" "${m_ip}" "test" ;;
+			"no") err_disabled_mach "${m_name}" "${m_ip/ip/IP}" "${m_ip}" ;;
+		esac
+
+		# Show relevant information about the machine
+		show_${m_ip}_info
 	done
 
 	# All other systems that don't have a USE flag go here
 	# These systems have base-line support included in linux-mips git, so
 	# instead of failing, if disabled, we simply warn the user
-	if [ "${arch_is_selected}" = "no" ]; then
-		[ "${DO_IP22}" = "no" ]							\
+	if [[ "${arch_is_selected}" = "no" ]]; then
+		[[ "${DO_IP22}" = "no" ]]						\
 			&& err_disabled_mach "SGI Indy/Indigo2 R4x00" "IP22" "skip"	\
 			|| show_ip22_info
-		[ "${DO_IP32}" = "no" ]							\
+		[[ "${DO_IP32}" = "no" ]]						\
 			&& err_disabled_mach "SGI O2" "IP32" "skip"			\
 			|| show_ip32_info
 
@@ -276,9 +296,8 @@ src_unpack() {
 	# Create a new folder called 'patch-symlinks' and create symlinks to
 	# all mips-patches in there.  If we want to exclude a patch, we'll
 	# just delete the symlink instead of the actual patch.
-	local psym="patch-symlinks"
-	mkdir "${psym}"
-	cd "${psym}"
+	mkdir patch-symlinks
+	cd patch-symlinks
 	for x in ../mips-patches-${BASE_KV}/*.patch; do
 		ln -s "${x}" "${x##../mips-patches-*/}"
 	done
@@ -307,17 +326,10 @@ src_unpack() {
 		do rm -f "./${x}"
 	done
 
-	# Rename the source tree to match the linux-mips git checkout date and
-	# machine type.
-	local fkv="${F_KV%-*}"
-	local v="${fkv}"
-	for x in {ip27,ip28,ip30}; do
-		use ${x} && v="${v}.${x}" && break
-	done
-
-	local old="${WORKDIR}/linux-${fkv/_/-}"
-	local new="${WORKDIR}/linux-${v}"
-	if [ "${old}" != "${new}" ]; then
+	# Rename the source tree, if needed.
+	local old="${WORKDIR}/linux-${F_KV%-*/_/-}"
+	local new="${WORKDIR}/linux-$(fkv_to_machtype)"
+	if [[ "${old}" != "${new}" ]]; then
 		mv "${old}" "${new}" || die
 	fi
 	S="${new}"
@@ -328,13 +340,8 @@ src_unpack() {
 }
 
 src_prepare() {
-	local psym="patch-symlinks"
-
-	# Now go into the kernel source and patch it.
-	cd "${S}"
-	eapply "${WORKDIR}/${psym}"/
+	# Apply patches to the kernel tree.
+	eapply "${WORKDIR}/patch-symlinks"/
 
 	eapply_user
 }
-
-#//------------------------------------------------------------------------------
