@@ -21,7 +21,7 @@ HOMEPAGE="https://transmissionbt.com/"
 # MIT is in several libtransmission/ headers
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT="0"
-IUSE="appindicator gtk lightweight nls mbedtls qt5 systemd test"
+IUSE="appindicator gtk lightweight nls mbedtls qt5 static-libs systemd test"
 RESTRICT="!test? ( test )"
 
 ACCT_DEPEND="
