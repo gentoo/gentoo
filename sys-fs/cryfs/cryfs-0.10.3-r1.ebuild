@@ -31,9 +31,9 @@ RDEPEND="
 	dev-libs/openssl:0=
 "
 DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
 	test? ( dev-cpp/gtest )
 "
+BDEPEND="${PYTHON_DEPS}"
 
 PATCHES=(
 	# TODO upstream:
