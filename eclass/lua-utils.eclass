@@ -34,7 +34,6 @@ inherit toolchain-funcs
 _LUA_ALL_IMPLS=(
 	luajit
 	lua5-1
-	lua5-2
 	lua5-3
 	lua5-4
 )
@@ -44,7 +43,9 @@ readonly _LUA_ALL_IMPLS
 # @INTERNAL
 # @DESCRIPTION:
 # All historical Lua implementations that are no longer supported.
-_LUA_HISTORICAL_IMPLS=()
+_LUA_HISTORICAL_IMPLS=(
+	lua5-2
+)
 readonly _LUA_HISTORICAL_IMPLS
 
 # @FUNCTION: _lua_set_impls
