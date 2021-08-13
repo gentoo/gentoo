@@ -124,6 +124,8 @@ media-libs/devil nvtt
 media-libs/libvpx doc
 #  - bluetooth, net-misc/ofono
 media-sound/pulseaudio native-headset ofono-headset
+#  - media-sound/jack2
+media-video/pipewire jack-client
 #  - maaaaaany
 media-video/ffmpeg amrenc bluray bs2b cdio chromaprint codec2 fdk frei0r gme iec61883 ieee1394 kvazaar libaribb24 libilbc libsoxr libtesseract lv2 openh264 rubberband speex srt vidstab xvid zimg zvbi
 #  - media-libs/libquicktime, media-libs/sdl-gfx
