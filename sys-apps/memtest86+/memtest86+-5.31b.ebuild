@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit mount-boot eutils toolchain-funcs
 
@@ -19,7 +19,8 @@ QA_PRESTRIPPED="${BOOTDIR}/memtest /usr/share/${PN}/memtest"
 QA_FLAGS_IGNORED="${BOOTDIR}/memtest /usr/share/${PN}/memtest"
 
 RDEPEND="floppy? ( sys-fs/mtools )"
-DEPEND="iso? ( app-cdr/cdrtools )"
+DEPEND="${RDEPEND}"
+BDEPEND="iso? ( app-cdr/cdrtools )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-gcc-473.patch"
@@ -38,10 +39,8 @@ src_prepare() {
 	sed -i 's:genisoimage:mkisofs:' makeiso.sh || die
 
 	if use serial ; then
-		sed -i \
-			-e '/^#define SERIAL_CONSOLE_DEFAULT/s:0:1:' \
-			config.h \
-			|| die "sed failed"
+		sed -i -e '/^#define SERIAL_CONSOLE_DEFAULT/s:0:1:' \
+			config.h || die "sed failed"
 	fi
 	default
 }
@@ -61,7 +60,7 @@ src_compile() {
 src_test() { :; }
 
 src_install() {
-	if use boot; then
+	if use boot ; then
 		insinto "${BOOTDIR}"
 		doins memtest memtest.bin
 	fi
