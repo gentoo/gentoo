@@ -90,6 +90,9 @@ src_configure() {
 		-DENABLE_QT=$(usex qt5 ON OFF)
 		-DENABLE_TESTS=$(usex test ON OFF)
 
+		# https://bugs.gentoo.org/807993
+		-DINSTALL_LIB=$(usex static-libs ON OFF)
+
 		-DUSE_SYSTEM_EVENT2=ON
 		-DUSE_SYSTEM_DHT=OFF
 		-DUSE_SYSTEM_MINIUPNPC=ON
