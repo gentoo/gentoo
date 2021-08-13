@@ -73,17 +73,6 @@ src_prepare() {
 	export V=1
 	export BUILDTYPE=Release
 
-	# There have been cases of other bundled deps bypassing --shared-foo / USE=system-bar,
-	# therefore play it safe and make sure dependencies which are not supposed to be bundled
-	# aren't there in the first place.
-	rm -r deps/{brotli,cares,nghttp2,uv,zlib} || die "Failed to remove undesired bundled deps"
-	if use system-icu; then
-		rm -r deps/icu-small || die "Failed to remove bundled ICU"
-	fi
-	if use system-ssl; then
-		rm -r deps/openssl || die "Failed to remoce bundled OpenSSL"
-	fi
-
 	# fix compilation on Darwin
 	# https://code.google.com/p/gyp/issues/detail?id=260
 	sed -i -e "/append('-arch/d" tools/gyp/pylib/gyp/xcode_emulation.py || die
