@@ -31,18 +31,12 @@ valgrind
 # Not tested yet
 bluetooth
 emacs
-fuse
 jack
 java
-latex
-libedit
 mono
 motif
 opencl
 rsh
-slang
-sound
-webkit
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependencies not keyworded.
