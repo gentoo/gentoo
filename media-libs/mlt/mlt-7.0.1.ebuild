@@ -14,7 +14,6 @@ LICENSE="GPL-3"
 SLOT="0/7"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug ffmpeg frei0r gtk jack kernel_linux libsamplerate opencv opengl python qt5 rtaudio rubberband sdl test vdpau vidstab xine xml"
-# TODO: swig bindings for java perl php tcl (and restore lua?)
 
 # Needs unpackaged 'kwalify'
 RESTRICT="test"
@@ -22,11 +21,6 @@ RESTRICT="test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 SWIG_DEPEND=">=dev-lang/swig-2.0"
-#	java? ( ${SWIG_DEPEND} >=virtual/jdk-1.5 )
-#	perl? ( ${SWIG_DEPEND} )
-#	php? ( ${SWIG_DEPEND} )
-#	tcl? ( ${SWIG_DEPEND} )
-#	ruby? ( ${SWIG_DEPEND} )
 BDEPEND="
 	virtual/pkgconfig
 	python? ( ${SWIG_DEPEND} )
@@ -93,12 +87,10 @@ pkg_setup() {
 
 src_prepare() {
 	# respect CFLAGS LDFLAGS when building shared libraries. Bug #308873
-	local x
-	for x in python; do
-		sed -i "/mlt.so/s/ -lmlt++ /& ${CFLAGS} ${LDFLAGS} /" src/swig/${x}/build || die
-	done
-
-	use python && python_fix_shebang src/swig/python
+	if use python; then
+		sed -i "/mlt.so/s/ -lmlt++ /& ${CFLAGS} ${LDFLAGS} /" src/swig/python/build || die
+		python_fix_shebang src/swig/python
+	fi
 
 	cmake_src_prepare
 }
@@ -133,16 +125,12 @@ src_configure() {
 
 	# TODO: We currently have USE=fftw but both Qt and plus require it, removing flag for now.
 	# TODO: rework upstream CMake to allow controlling MMX/SSE/SSE2
-	# TODO: add swig language bindings
+	# TODO: add swig language bindings?
 	# see also https://www.mltframework.org/twiki/bin/view/MLT/ExtremeMakeover
 
-	local swig_lang=()
-	# Not done: java perl php ruby tcl
-	# Handled separately: lua (in the past)
-	for i in python; do
-		# bug #806484 wrt capitalisation
-		use ${i} && mycmakeargs+=( -DSWIG_${i^^}=ON )
-	done
+	if use python; then
+		mycmakeargs+=( -DSWIG_PYTHON=ON )
+	fi
 
 	cmake_src_configure
 }
@@ -163,6 +151,4 @@ src_install() {
 		dodoc "${S}"/src/swig/python/play.py
 		python_optimize
 	fi
-
-	# Not done: java perl php ruby tcl (lua anymore)
 }
