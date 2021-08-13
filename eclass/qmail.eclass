@@ -134,8 +134,8 @@ qmail_base_install() {
 	(
 	einfo "Setting up basic directory hierarchy"
 	diropts -o root -g qmail
-	keepdir "${QMAIL_HOME}"/{,bin,control}
-	keepdir "${QMAIL_HOME}"/users
+	dodir "${QMAIL_HOME}"/bin
+	keepdir "${QMAIL_HOME}"/{control,users}
 	diropts -o alias -g qmail
 	keepdir "${QMAIL_HOME}"/alias
 
