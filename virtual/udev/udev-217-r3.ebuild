@@ -9,8 +9,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 
 RDEPEND="
 	|| (
-		>=sys-fs/udev-249
+		>=sys-fs/udev-217
 		>=sys-fs/eudev-2.1.1
-		>=sys-apps/systemd-249
+		>=sys-apps/systemd-217
 	)
 "
