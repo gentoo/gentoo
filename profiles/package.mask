@@ -32,6 +32,18 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-08-13)
+# Dead upstream, new "forked" upstream that just added the last version
+# on Github but doesn't maintain them. Unmaintained for the past 10
+# years in ::gentoo, no other real distros package these anymore.
+# HOMEPAGE leads to some scammy site.
+# Bug #318143, #626666, #626668, Removal in ~30 days.
+dev-libs/libbrahe
+dev-libs/libcoyotl
+dev-libs/libevocosm
+app-benchmarks/acovea
+app-benchmarks/acovea-gtk
+
 # Agostino Sarubbo <ago@gentoo.org> (2021-08-12)
 # Latest release 2012, not anymore useful for current routers
 # Removal in ~30 days.
