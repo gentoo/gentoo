@@ -499,12 +499,6 @@ sys-libs/db:4.6
 sys-libs/db:4.7
 sys-libs/db:5.1
 
-# Matthias Maier <tamiko@gentoo.org> (2021-06-27)
-# Last release in 2013. Fails to build. No reverse dependencies.
-# Bugs #735260
-# Removal on 2021-07-27
-media-sound/loudness-scanner
-
 # Conrad Kostecki <conikost@gentoo.org> (2021-06-20)
 # New Minecraft server release needs at least Java 16,
 # which is currently not available in Gentoo.
