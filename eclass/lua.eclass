@@ -29,7 +29,7 @@
 # @CODE
 # EAPI=8
 #
-# LUA_COMPAT=( lua5-{1..3} )
+# LUA_COMPAT=( lua5-{3..4} )
 #
 # inherit lua
 #
@@ -76,7 +76,7 @@ fi
 #
 # Example:
 # @CODE
-# LUA_COMPAT=( lua5-1 lua5-2 lua5-3 )
+# LUA_COMPAT=( lua5-1 lua5-3 lua5-4 )
 # @CODE
 #
 # Please note that you can also use bash brace expansion if you like:
@@ -101,7 +101,7 @@ fi
 #
 # Example:
 # @CODE
-# LUA_COMPAT_OVERRIDE='lua5-2' emerge -1v dev-lua/foo
+# LUA_COMPAT_OVERRIDE='luajit' emerge -1v dev-lua/foo
 # @CODE
 
 # @ECLASS-VARIABLE: LUA_REQ_USE
@@ -157,7 +157,7 @@ fi
 # Example value:
 # @CODE
 # lua_targets_lua5-1? ( dev-lang/lua:5.1 )
-# lua_targets_lua5-2? ( dev-lang/lua:5.2 )
+# lua_targets_lua5-3? ( dev-lang/lua:5.2 )
 # @CODE
 
 # @ECLASS-VARIABLE: LUA_REQUIRED_USE
@@ -176,7 +176,7 @@ fi
 #
 # Example value:
 # @CODE
-# || ( lua_targets_lua5-1 lua_targets_lua5-2 )
+# || ( lua_targets_lua5-1 lua_targets_lua5-3 )
 # @CODE
 
 # @ECLASS-VARIABLE: LUA_USEDEP
@@ -193,7 +193,7 @@ fi
 #
 # Example value:
 # @CODE
-# lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?
+# lua_targets_lua5-1(-)?,lua_targets_lua5-3(-)?
 # @CODE
 
 if [[ ! ${_LUA_R0} ]]; then
