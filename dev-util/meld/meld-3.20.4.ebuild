@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit gnome2 distutils-r1
+inherit gnome2 distutils-r1 virtualx
 
 DESCRIPTION="A graphical diff and merge tool"
 HOMEPAGE="http://meldmerge.org/"
@@ -39,6 +39,8 @@ BDEPEND="
 # but it's mainly needed for debian and derivatives - seems the fallback
 # works fine, as we aren't a special_case, just an annoying warning.
 
+distutils_enable_tests pytest
+
 python_check_deps() {
 	has_version -b "dev-python/distro[${PYTHON_USEDEP}]"
 }
@@ -52,4 +54,9 @@ python_install() {
 	distutils-r1_python_install
 	rm "${ED}"/usr/share/doc/meld-${PV}/{COPYING,NEWS} || die
 	rmdir "${ED}"/usr/share/doc/meld-${PV} || die
+}
+
+python_test() {
+	# test_gutterrendererchunk.py needs a GdkScreen for Gtk.IconTheme.get_default() to work
+	virtx epytest
 }
