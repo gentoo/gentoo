@@ -169,19 +169,19 @@ src_install() {
 	qdbm_foreach_api
 	use static-libs || find "${ED}" -name '*.a' -delete || die
 
-	rm -rf "${ED}"/usr/share/${PN} || die
+	rm -rf "${ED}"/usr/share/${PN}
 
 	if use java; then
 		java-pkg_dojar "${ED}"/usr/$(get_libdir)/*.jar
-		rm -f "${ED}"/usr/$(get_libdir)/*.jar || die
+		rm -f "${ED}"/usr/$(get_libdir)/*.jar
 	fi
 	if use perl; then
 		perl_delete_module_manpages
 		perl_fix_packlist
 	fi
 
-	rm -f "${ED}"/usr/bin/*test || die
-	rm -f "${ED}"/usr/share/man/man1/*test.1* || die
+	rm -f "${ED}"/usr/bin/*test
+	rm -f "${ED}"/usr/share/man/man1/*test.1*
 }
 
 each_ruby_install() {
