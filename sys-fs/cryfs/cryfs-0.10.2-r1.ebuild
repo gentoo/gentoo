@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/cryfs/cryfs"
 else
 	SRC_URI="https://github.com/cryfs/cryfs/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 	S="${WORKDIR}"
 fi
 
@@ -20,7 +20,7 @@ HOMEPAGE="https://www.cryfs.org/"
 
 LICENSE="LGPL-3 MIT"
 SLOT="0"
-IUSE="custom-optimization debug test"
+IUSE="debug test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -37,11 +37,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	# TODO upstream:
-	"${FILESDIR}/${PN}-0.10.2-unbundle-libs.patch"
-	"${FILESDIR}/${PN}-0.10.2-install-targets.patch"
-	# From upstream
-	"${FILESDIR}/${PN}-0.10.3-gcc11.patch"
-	"${FILESDIR}/${PN}-0.10.3-fix-build-with-boost-1-77.patch"
+	"${FILESDIR}/${P}-unbundle-libs.patch"
+	"${FILESDIR}/${P}-install-targets.patch"
 )
 
 pkg_setup() {
@@ -75,7 +72,6 @@ src_configure() {
 		-DBUILD_TESTING=$(usex test)
 	)
 
-	use custom-optimization || append-flags -O3
 	use debug || append-flags -DNDEBUG
 
 	cmake_src_configure
