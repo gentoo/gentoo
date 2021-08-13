@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="tcp_wrappers_license"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="ipv6 netgroups static-libs"
+IUSE="ipv6 netgroups"
 
 RDEPEND="netgroups? ( net-libs/libnsl:= )"
 DEPEND="${RDEPEND}"
@@ -54,7 +54,7 @@ temake() {
 		NETGROUP=$(usex netgroups -DNETGROUPS "")
 		STYLE="-DPROCESS_OPTIONS"
 		LIBS=$(usex netgroups -lnsl "")
-		LIB=$(usex static-libs libwrap.a "")
+		LIB="" # disable static-libs
 		AR="$(tc-getAR)" ARFLAGS=rc
 		CC="$(tc-getCC)"
 		RANLIB="$(tc-getRANLIB)"
@@ -79,7 +79,6 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	into /usr
-	use static-libs && dolib.a libwrap.a
 	dolib.so shared/libwrap.so*
 
 	insinto /usr/include
