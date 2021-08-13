@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2
+
+instance=${RC_SVCNAME#*.}
+
+: ${command=/usr/sbin/vsftpd}
+command_background=true
+
+if [ "${instance}" = "${RC_SVCNAME}" ]; then
+	: ${pidfile=/run/vsftpd.pid}
+else
+	: ${command_args=/etc/vsftpd/${instance}.conf}
+	: ${pidfile=/run/vsftpd.${instance}.pid}
+fi
+
+depend() {
+	use dns logger net
+}
