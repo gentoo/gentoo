@@ -1,40 +1,42 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit multilib toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Maximum likelihood superpositioning and analysis of macromolecular structures"
 HOMEPAGE="http://www.theseus3d.org/"
 SRC_URI="http://www.theseus3d.org/src/${PN}_${PV}.tar.gz"
+S="${WORKDIR}"/${PN}_src
 
-SLOT="0"
 LICENSE="GPL-3"
+SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
 RDEPEND="
 	sci-libs/gsl:=
 	|| (
+		sci-biology/clustalw:2
+		sci-biology/kalign
+		sci-biology/mafft
 		sci-biology/muscle
 		sci-biology/probcons
-		sci-biology/mafft
 		sci-biology/t-coffee
-		sci-biology/kalign
-		sci-biology/clustalw:2
-		)"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
-
-S="${WORKDIR}"/${PN}_src/
+	)
+"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-	cat >> make.inc <<- EOF
+	default
+
+	cat >> make.inc <<- EOF || die
 	ARCH = $(tc-getAR)
 	ARCHFLAGS = -rvs
 	RANLIB = $(tc-getRANLIB)
-	LOCALLIBDIR = "${EPREFIX}/usr/$(get_libdir)
+	LOCALLIBDIR = "${EPREFIX}"/usr/$(get_libdir)
 	SYSLIBS = $($(tc-getPKG_CONFIG) --libs gsl) -lpthread
 	LIBS = -ldistfit -lmsa -ldssplite -ldltmath -lDLTutils -ltheseus
 	LIBDIR = -L./lib
