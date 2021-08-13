@@ -11,7 +11,7 @@ SRC_URI="https://github.com/CESNET/libnetconf2/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
