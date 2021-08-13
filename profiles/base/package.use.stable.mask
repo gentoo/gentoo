@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Joonas Niilola <juippis@gentoo.org> (2021-08-13)
+# dev-libs/efl is only stabilized on two arches.
+app-crypt/pinentry efl
+
 # Conrad Kostecki <conikost@gentoo.org> (2021-07-18)
 # For docs, app-text/pandoc is needed, which is currently
 # not stabilized and probably will not be in near future.

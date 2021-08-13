@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2021-08-13)
+# dev-libs/efl is stabilized on amd64.
+app-crypt/pinentry -efl
+
 # Sam James <sam@gentoo.org> (2021-07-17)
 # Haskell isn't stable on amd64 (or anywhere)
 # bug #801652
