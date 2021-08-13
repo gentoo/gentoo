@@ -20,10 +20,8 @@ pipewire
 -introspection
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
-# dev-lang/lua:5.2 and dev-lang/luajit known not to work here
-lua_single_target_lua5-2
+# dev-lang/luajit does not support this arch
 lua_single_target_luajit
-lua_targets_lua5-2
 lua_targets_luajit
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-11-27)
