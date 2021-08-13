@@ -378,12 +378,6 @@ dev-ruby/factory_girl
 # Masked for removal in 30 days.
 dev-ruby/bourne
 
-# Hans de Graaff <graaff@gentoo.org> (2021-07-15)
-# Dead upstream, no longer maintained, last release in 2013.
-# No dependencies.
-# Masked for removal in 30 days.
-dev-ruby/spork
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-07-12)
 # Version 3.3.0 suffers from ridiculously high CPU usage, this version has
 # therefore been retracted upstream.
