@@ -35,7 +35,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=app-arch/brotli-1.0.9
 	>=dev-libs/libuv-1.39.0:=
-	>=net-dns/c-ares-1.16.0
+	>=net-dns/c-ares-1.17.2
 	>=net-libs/http-parser-2.9.3:=
 	>=net-libs/nghttp2-1.40.0
 	sys-libs/zlib
@@ -60,6 +60,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-12.20.1-fix_ppc64_crashes.patch
 	"${FILESDIR}"/${PN}-12.22.1-jinja_collections_abc.patch
 	"${FILESDIR}"/${PN}-12.22.1-uvwasi_shared_libuv.patch
+	"${FILESDIR}"/${PN}-12.22.5-shared_c-ares_nameser_h.patch
 	"${FILESDIR}"/${PN}-99999999-llhttp.patch
 )
 
@@ -86,6 +87,14 @@ src_prepare() {
 	tc-export CC CXX PKG_CONFIG
 	export V=1
 	export BUILDTYPE=Release
+
+	# There have been cases of other bundled deps bypassing --shared-foo / USE=system-bar,
+	# therefore play it safe and make sure dependencies which are not supposed to be bundled
+	# aren't there in the first place.
+	rm -r deps/{brotli,cares,nghttp2,uv,zlib} || die "Failed to remove undesired bundled deps"
+	if use system-ssl; then
+		rm -r deps/openssl || die "Failed to remoce bundled OpenSSL"
+	fi
 
 	# fix compilation on Darwin
 	# https://code.google.com/p/gyp/issues/detail?id=260
