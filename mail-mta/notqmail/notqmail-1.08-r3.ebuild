@@ -173,10 +173,6 @@ pkg_postinst() {
 	elog
 }
 
-pkg_preinst() {
-	qmail_tcprules_fixup
-}
-
 pkg_config() {
 	# avoid some weird locale problems
 	export LC_ALL=C

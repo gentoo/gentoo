@@ -367,28 +367,6 @@ qmail_rootmail_fixup() {
 	chown -R alias:qmail "${ROOT}${QMAIL_HOME}"/alias/.maildir 2>/dev/null
 }
 
-qmail_tcprules_fixup() {
-	mkdir -p "${TCPRULES_DIR}"
-	local POP_FILES=
-	use pop3 && POP_FILES="pop3 pop3.cdb"
-	for f in {smtp,qmtp,qmqp}{,.cdb} ${POP_FILES}; do
-		old="/etc/tcp.${f}"
-		new="${TCPRULES_DIR}/tcp.qmail-${f}"
-		fail=0
-		if [[ -f "${old}" && ! -f "${new}" ]]; then
-			einfo "Moving ${old} to ${new}"
-			cp "${old}" "${new}" || fail=1
-		else
-			fail=1
-		fi
-		if [[ "${fail}" = 1 && -f "${old}" ]]; then
-			eerror "Error moving ${old} to ${new}, be sure to check the"
-			eerror "configuration! You may have already moved the files,"
-			eerror "in which case you can delete ${old}"
-		fi
-	done
-}
-
 qmail_tcprules_build() {
 	for f in tcp.qmail-{smtp,qmtp,qmqp,pop3,pop3s}; do
 		# please note that we don't check if it exists
