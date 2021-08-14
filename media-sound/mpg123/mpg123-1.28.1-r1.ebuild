@@ -22,7 +22,7 @@ RDEPEND="
 	nas? ( media-libs/nas )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
-	sdl? ( media-libs/libsdl )"
+	sdl? ( media-libs/libsdl2 )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/libtool
