@@ -351,7 +351,6 @@ app-accessibility/eflite
 perl-core/Archive-Tar
 perl-core/CPAN-Meta
 perl-core/CPAN-Meta-Requirements
-perl-core/Data-Dumper
 
 # Hans de Graaff <graaff@gentoo.org> (2021-07-17)
 # Deprecated upstream, replaced with factory_bot.
