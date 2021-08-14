@@ -1,12 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=7
 
 inherit gnome2
 
-DESCRIPTION="LibGRSS is a library for easy management of RSS/Atom/Pie feeds"
+DESCRIPTION="Library for easy management of RSS/Atom/Pie feeds"
 HOMEPAGE="https://wiki.gnome.org/Projects/Libgrss"
 
 LICENSE="LGPL-3"
@@ -20,7 +19,8 @@ RDEPEND="
 	>=net-libs/libsoup-2.48:2.4
 	introspection? ( >=dev-libs/gobject-introspection-1.42 )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=dev-util/gtk-doc-am-1.10
 	virtual/pkgconfig
 "
