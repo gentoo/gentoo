@@ -1,0 +1,174 @@
+From: PrettyWood <em.jolibois@gmail.com>
+Date: Tue, 10 Aug 2021 18:00:16 +0200
+Subject: [PATCH 1/2] refactor: rename `is_union` into `is_union_origin`
+https://github.com/samuelcolvin/pydantic/pull/3085
+
+--- a/pydantic/fields.py
++++ b/pydantic/fields.py
+@@ -41,7 +41,7 @@
+     is_literal_type,
+     is_new_type,
+     is_typeddict,
+-    is_union,
++    is_union_origin,
+     new_type_supertype,
+ )
+ from .utils import PyObjectStr, Representation, ValueItems, lenient_issubclass, sequence_like, smart_deepcopy
+@@ -557,7 +557,7 @@ def _type_analysis(self) -> None:  # noqa: C901 (ignore complexity)
+             return
+         if origin is Callable:
+             return
+-        if is_union(origin):
++        if is_union_origin(origin):
+             types_ = []
+             for type_ in get_args(self.type_):
+                 if type_ is NoneType:
+--- a/pydantic/main.py
++++ b/pydantic/main.py
+@@ -38,7 +38,7 @@
+     get_origin,
+     is_classvar,
+     is_namedtuple,
+-    is_union,
++    is_union_origin,
+     resolve_annotations,
+     update_field_forward_refs,
+ )
+@@ -176,7 +176,7 @@ def is_untouched(v: Any) -> bool:
+                 elif is_valid_field(ann_name):
+                     validate_field_name(bases, ann_name)
+                     value = namespace.get(ann_name, Undefined)
+-                    allowed_types = get_args(ann_type) if is_union(get_origin(ann_type)) else (ann_type,)
++                    allowed_types = get_args(ann_type) if is_union_origin(get_origin(ann_type)) else (ann_type,)
+                     if (
+                         is_untouched(value)
+                         and ann_type != PyObject
+--- a/pydantic/schema.py
++++ b/pydantic/schema.py
+@@ -71,7 +71,7 @@
+     is_callable_type,
+     is_literal_type,
+     is_namedtuple,
+-    is_union,
++    is_union_origin,
+ )
+ from .utils import ROOT_KEY, get_model, lenient_issubclass, sequence_like
+ 
+@@ -966,7 +966,7 @@ def go(type_: Any) -> Type[Any]:
+ 
+             if origin is Annotated:
+                 return go(args[0])
+-            if is_union(origin):
++            if is_union_origin(origin):
+                 return Union[tuple(go(a) for a in args)]  # type: ignore
+ 
+             if issubclass(origin, List) and (field_info.min_items is not None or field_info.max_items is not None):
+--- a/pydantic/typing.py
++++ b/pydantic/typing.py
+@@ -191,14 +191,14 @@ def get_args(tp: Type[Any]) -> Tuple[Any, ...]:
+ 
+ if sys.version_info < (3, 10):
+ 
+-    def is_union(tp: Type[Any]) -> bool:
++    def is_union_origin(tp: Type[Any]) -> bool:
+         return tp is Union
+ 
+ 
+ else:
+     import types
+ 
+-    def is_union(tp: Type[Any]) -> bool:
++    def is_union_origin(tp: Type[Any]) -> bool:
+         return tp is Union or tp is types.Union
+ 
+ 
+@@ -251,7 +251,7 @@ def is_union(tp: Type[Any]) -> bool:
+     'get_origin',
+     'typing_base',
+     'get_all_type_hints',
+-    'is_union',
++    'is_union_origin',
+ )
+ 
+ 
+
+From: PrettyWood <em.jolibois@gmail.com>
+Date: Tue, 10 Aug 2021 18:02:57 +0200
+Subject: [PATCH 2/2] fix: "new" union and generic types are not the same as
+ `typing.GenericAlias`
+
+--- a/pydantic/typing.py
++++ b/pydantic/typing.py
+@@ -28,10 +28,10 @@
+     from typing import _Final as typing_base  # type: ignore
+ 
+ try:
+-    from typing import GenericAlias  # type: ignore
++    from typing import GenericAlias as TypingGenericAlias  # type: ignore
+ except ImportError:
+     # python < 3.9 does not have GenericAlias (list[int], tuple[str, ...] and so on)
+-    GenericAlias = ()
++    TypingGenericAlias = ()
+ 
+ 
+ if sys.version_info < (3, 7):
+@@ -194,12 +194,16 @@ def get_args(tp: Type[Any]) -> Tuple[Any, ...]:
+     def is_union_origin(tp: Type[Any]) -> bool:
+         return tp is Union
+ 
++    WithArgsTypes = (TypingGenericAlias,)
+ 
+ else:
+     import types
++    import typing
+ 
+     def is_union_origin(tp: Type[Any]) -> bool:
+-        return tp is Union or tp is types.Union
++        return tp is Union or tp is types.UnionType  # type: ignore  # noqa: E721
++
++    WithArgsTypes = (typing._GenericAlias, types.GenericAlias, types.UnionType)  # type: ignore
+ 
+ 
+ if TYPE_CHECKING:
+@@ -246,7 +250,7 @@ def is_union_origin(tp: Type[Any]) -> bool:
+     'CallableGenerator',
+     'ReprArgs',
+     'CallableGenerator',
+-    'GenericAlias',
++    'WithArgsTypes',
+     'get_args',
+     'get_origin',
+     'typing_base',
+@@ -260,10 +264,10 @@ def is_union_origin(tp: Type[Any]) -> bool:
+ 
+ 
+ def display_as_type(v: Type[Any]) -> str:
+-    if not isinstance(v, typing_base) and not isinstance(v, GenericAlias) and not isinstance(v, type):
++    if not isinstance(v, typing_base) and not isinstance(v, WithArgsTypes) and not isinstance(v, type):
+         v = v.__class__
+ 
+-    if isinstance(v, GenericAlias):
++    if isinstance(v, WithArgsTypes):
+         # Generic alias are constructs like `list[int]`
+         return str(v).replace('typing.', '')
+ 
+--- a/pydantic/utils.py
++++ b/pydantic/utils.py
+@@ -23,7 +23,7 @@
+     Union,
+ )
+ 
+-from .typing import GenericAlias, NoneType, display_as_type
++from .typing import NoneType, WithArgsTypes, display_as_type
+ from .version import version_info
+ 
+ if TYPE_CHECKING:
+@@ -152,7 +152,7 @@ def lenient_issubclass(cls: Any, class_or_tuple: Union[Type[Any], Tuple[Type[Any
+     try:
+         return isinstance(cls, type) and issubclass(cls, class_or_tuple)
+     except TypeError:
+-        if isinstance(cls, GenericAlias):
++        if isinstance(cls, WithArgsTypes):
+             return False
+         raise  # pragma: no cover
+ 
