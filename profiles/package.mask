@@ -350,7 +350,6 @@ app-accessibility/eflite
 # Removal in 30 days.
 perl-core/Archive-Tar
 perl-core/CPAN-Meta
-perl-core/CPAN-Meta-Requirements
 
 # Hans de Graaff <graaff@gentoo.org> (2021-07-17)
 # Deprecated upstream, replaced with factory_bot.
