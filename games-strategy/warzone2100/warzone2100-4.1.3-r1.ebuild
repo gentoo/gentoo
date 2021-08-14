@@ -39,10 +39,6 @@ CDEPEND="
 	media-libs/openal
 	net-misc/curl
 	sys-libs/zlib
-	virtual/glu
-	virtual/opengl
-	x11-libs/libX11
-	x11-libs/libXrandr
 	nls? ( virtual/libintl )
 	vulkan? ( media-libs/libsdl2:=[vulkan] )
 "
