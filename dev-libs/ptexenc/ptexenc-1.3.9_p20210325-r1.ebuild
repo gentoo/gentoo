@@ -16,7 +16,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x
 IUSE="iconv"
 
 DEPEND="
-	dev-libs/kpathsea
+	dev-libs/kpathsea:=
 	iconv? ( virtual/libiconv )"
 RDEPEND="${DEPEND}"
 
