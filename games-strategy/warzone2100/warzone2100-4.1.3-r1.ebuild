@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/warzone2100/releases/${PV}/${PN}_src.tar.xz -> ${P
 	videos? ( mirror://sourceforge/warzone2100/warzone2100/Videos/${VIDEOS_PV}/high-quality-en/sequences.wz -> ${VIDEOS_P} )"
 S="${WORKDIR}/${PN}"
 
-LICENSE="GPL-2+ CC-BY-SA-3.0 public-domain"
+LICENSE="GPL-2+ CC-BY-SA-3.0 public-domain vulkan? ( GPL-3 )"
 SLOT="0"
 #[[ "${PV}" == *_beta* ]] || \
 KEYWORDS="~amd64 ~x86"
