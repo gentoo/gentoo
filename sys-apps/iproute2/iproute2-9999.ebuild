@@ -23,12 +23,12 @@ IUSE="atm berkdb bpf caps elf +iptables ipv6 libbsd minimal selinux"
 # We could make libmnl optional, but it's tiny, so eh
 RDEPEND="
 	!net-misc/arpd
-	!minimal? ( net-libs/libmnl )
+	!minimal? ( net-libs/libmnl:= )
 	atm? ( net-dialup/linux-atm )
 	berkdb? ( sys-libs/db:= )
-	bpf? ( dev-libs/libbpf )
+	bpf? ( dev-libs/libbpf:= )
 	caps? ( sys-libs/libcap )
-	elf? ( virtual/libelf )
+	elf? ( virtual/libelf:= )
 	iptables? ( >=net-firewall/iptables-1.4.20:= )
 	libbsd? ( dev-libs/libbsd )
 	selinux? ( sys-libs/libselinux )
