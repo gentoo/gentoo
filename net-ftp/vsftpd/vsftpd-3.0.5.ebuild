@@ -31,7 +31,6 @@ src_prepare() {
 		"${FILESDIR}"/vsftpd-2.3.2-kerberos.patch
 		"${FILESDIR}"/vsftpd-3.0.2-alpha.patch
 		"${FILESDIR}"/vsftpd-3.0.3-sparc.patch
-		"${FILESDIR}"/vsftpd-3.0.5-fix-link-command.patch
 	)
 	default
 }
@@ -71,6 +70,7 @@ src_compile() {
 		CFLAGS="${CFLAGS}"
 		LDFLAGS="${LDFLAGS}"
 		LIBS="${libs[*]}"
+		LINK=
 	)
 	emake "${args[@]}"
 }
