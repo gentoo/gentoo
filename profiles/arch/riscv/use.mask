@@ -15,6 +15,11 @@
 -gtk3
 -introspection
 
+# Marek Szuba <marecki@gentoo.org> (2021-08-14)
+# sci-libs/netcdf fails tests in a way suggesting it might be completely
+# unreliable on this arch as far as I/O is concerned.
+netcdf
+
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # dev-lang/luajit does not support this arch
 lua_single_target_luajit
