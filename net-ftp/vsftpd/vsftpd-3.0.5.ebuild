@@ -12,7 +12,7 @@ SRC_URI="https://security.appspot.com/downloads/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="pam ssl tcpd"
+IUSE="elibc_musl pam ssl tcpd"
 
 DEPEND="
 	>=sys-libs/libcap-2
@@ -36,11 +36,11 @@ src_prepare() {
 }
 
 define() {
-	sed -i -e "/#undef $1/c#define $1" "${S}"/builddefs.h || die
+	sed -i -e "/#undef $2/c#define $2${3:+ }$3" "$1" || die
 }
 
 undef() {
-	sed -i -e "/#define $1/c#undef $1" "${S}"/builddefs.h || die
+	sed -i -e "/#define $2/c#undef $2" "$1" || die
 }
 
 src_configure() {
@@ -49,18 +49,24 @@ src_configure() {
 	if use pam; then
 		libs+=( -lpam )
 	else
-		undef VSF_BUILD_PAM
+		undef builddefs.h VSF_BUILD_PAM
 		libs+=( -lcrypt )
 	fi
 
 	if use ssl; then
-		define VSF_BUILD_SSL
+		define builddefs.h VSF_BUILD_SSL
 		libs+=( -lcrypto -lssl )
 	fi
 
 	if use tcpd; then
-		define VSF_BUILD_TCPWRAPPERS
+		define builddefs.h VSF_BUILD_TCPWRAPPERS
 		libs+=( -lwrap )
+	fi
+
+	if use elibc_musl; then
+		# musl does not support utmp/wtmp
+		# https://bugs.gentoo.org/713952
+		undef sysdeputil.c VSF_SYSDEP_HAVE_UTMPX
 	fi
 }
 
