@@ -24,9 +24,9 @@ RDEPEND="dev-db/qdbm
 	perl? ( dev-lang/perl )
 	ruby? ( $(ruby_implementations_depend) )
 	zlib? ( sys-libs/zlib )"
-DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
+DEPEND="${RDEPEND}
 	java? ( >=virtual/jdk-1.4:* )"
+BDEPEND="virtual/pkgconfig"
 S="${WORKDIR}/all/${P}"
 
 PATCHES=(
