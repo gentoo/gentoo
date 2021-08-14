@@ -20,7 +20,7 @@ else
 fi
 
 LICENSE="GPL-2"
-SLOT="6"
+SLOT="7"
 IUSE="altivec doc jack nls phonehome pulseaudio cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
@@ -163,6 +163,9 @@ src_install() {
 	for s in 16 22 32 48 256 512; do
 		newicon -s ${s} gtk2_ardour/resources/Ardour-icon_${s}px.png ardour${SLOT}.png
 	done
+
+	# the build system still installs ardour6.png files so we get rid of those to not conflict with ardour:6
+	find "${D}/usr/share/icons/" -name ardour6.png -delete
 
 	sed -i \
 		-e "s/\(^Name=\).*/\1Ardour ${SLOT}/" \
