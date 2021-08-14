@@ -21,7 +21,12 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/requests-file[${PYTHON_USEDEP}]
 "
-BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]"
+BDEPEND="
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	test? (
+		dev-python/responses[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
