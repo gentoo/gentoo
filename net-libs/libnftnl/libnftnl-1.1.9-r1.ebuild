@@ -16,7 +16,7 @@ IUSE="examples static-libs test"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=net-libs/libmnl-1.0.4"
+RDEPEND=">=net-libs/libmnl-1.0.4:="
 BDEPEND="virtual/pkgconfig"
 DEPEND="${RDEPEND}"
 
