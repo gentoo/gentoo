@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=EVDB
 DIST_VERSION=0.03
@@ -11,11 +11,10 @@ DESCRIPTION="Simple progess bars"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND="
 	dev-perl/Term-ProgressBar-Quiet
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
