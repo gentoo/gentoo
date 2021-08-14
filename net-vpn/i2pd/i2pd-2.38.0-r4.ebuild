@@ -12,23 +12,15 @@ SRC_URI="https://github.com/PurpleI2P/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="cpu_flags_x86_aes cpu_flags_x86_avx i2p-hardening static +upnp"
+IUSE="cpu_flags_x86_aes cpu_flags_x86_avx i2p-hardening +upnp"
 
 RDEPEND="
 	acct-user/i2pd
 	acct-group/i2pd
-	!static? (
-		dev-libs/boost:=[threads(+)]
-		dev-libs/openssl:0=[-bindist(-)]
-		upnp? ( net-libs/miniupnpc:= )
-	)"
-DEPEND="${RDEPEND}
-	static? (
-		dev-libs/boost:=[static-libs,threads(+)]
-		sys-libs/zlib[static-libs]
-		dev-libs/openssl:0=[static-libs]
-		upnp? ( net-libs/miniupnpc:=[static-libs] )
-	)"
+	dev-libs/boost:=[threads(+)]
+	dev-libs/openssl:0=[-bindist(-)]
+	upnp? ( net-libs/miniupnpc:= )"
+DEPEND="${RDEPEND}"
 
 CMAKE_USE_DIR="${S}/build"
 
@@ -45,11 +37,11 @@ pkg_pretend() {
 }
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DWITH_AESNI=$(usex cpu_flags_x86_aes ON OFF)
 		-DWITH_HARDENING=$(usex i2p-hardening ON OFF)
 		-DWITH_PCH=OFF
-		-DWITH_STATIC=$(usex static ON OFF)
+		-DWITH_STATIC=OFF
 		-DWITH_UPNP=$(usex upnp ON OFF)
 		-DWITH_LIBRARY=ON
 		-DWITH_BINARY=ON
