@@ -102,8 +102,6 @@ dev-python/ipython nbconvert notebook
 app-crypt/heimdal afs
 #  - gnome-base/gconf, dev-libs/libotf & dev-libs/m17n-lib
 app-editors/emacs gconf m17n-lib
-#  - media-libs/libcanberra
-app-editors/vim sound
 #  - dev-embedded/libftdi, app-misc/inputlircd
 app-misc/lirc ftdi inputlirc
 #  - app-xemacs/ruby-modes (and by extension xemacs itself)
@@ -154,7 +152,6 @@ gnome-base/gvfs bluray cdda mtp ios
 sys-power/upower ios
 net-libs/gnome-online-accounts gnome
 net-libs/libproxy kde
-xfce-base/xfce4-settings libcanberra
 xfce-extra/tumbler epub ffmpeg odf pdf raw
 xfce-base/xfce4-meta pulseaudio
 # KDE not tested, so mask
