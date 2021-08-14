@@ -15,8 +15,10 @@ KEYWORDS="amd64 ppc ppc64 sparc x86"
 IUSE="dvd"
 
 RDEPEND="
+	media-libs/libogg
+	media-libs/libvorbis
 	media-sound/vorbis-tools
-	dvd? ( media-libs/libdvdread )"
+	dvd? ( media-libs/libdvdread:= )"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
