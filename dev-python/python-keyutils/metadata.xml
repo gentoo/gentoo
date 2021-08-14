@@ -5,4 +5,8 @@
 		<email>bkohler@gentoo.org</email>
 		<name>Ben Kohler</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">sassoftware/python-keyutils</remote-id>
+		<remote-id type="pypi">keyutils</remote-id>
+	</upstream>
 </pkgmetadata>
