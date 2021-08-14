@@ -1,12 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit desktop toolchain-funcs
 
 DESCRIPTION="2D platform game"
-HOMEPAGE="http://www.mainreactor.net/holotzcastle/en/index_en.html"
-SRC_URI="http://www.mainreactor.net/holotzcastle/download/${P}-src.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="https://dev.gentoo.org/~chewi/distfiles/holotz-castle-1.3.14-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,7 +17,7 @@ RDEPEND="
 	virtual/opengl
 	virtual/glu
 	media-libs/sdl-mixer
-	media-libs/libsdl
+	media-libs/libsdl[joystick]
 	media-libs/sdl-ttf
 	media-libs/sdl-image
 "
