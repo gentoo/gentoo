@@ -4,10 +4,9 @@
 # Marek Szuba <marecki@gentoo.org> (2021-08-14)
 # virtual/mysql & co. round-up:
 #  dev-db/mariadb fails tests here, see Bug #807995
-#  >=dev-db/mysql-8.0.22 do not support this arch
-#  dev-db/percona-server not tested yet, WIP
+#  dev-db/mysql and dev-db/percona-server do not support this arch
 #  dev-db/mariadb-galera has been absent from the tree since June 2019
-#  dev-db/mysql-cluster not tested yet, seriously outdated
+#  dev-db/mysql-cluster not tested yet, seriously outdated in the tree
 sci-libs/gdal mysql
 sys-cluster/slurm slurmdbd
 
