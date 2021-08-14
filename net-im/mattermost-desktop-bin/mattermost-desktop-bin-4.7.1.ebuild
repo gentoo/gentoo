@@ -22,13 +22,29 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	app-accessibility/at-spi2-atk:2
 	app-accessibility/at-spi2-core:2[X]
+	dev-libs/atk
 	dev-libs/expat
+	dev-libs/glib:2
+	dev-libs/nspr
 	dev-libs/nss
 	media-libs/alsa-lib
+	media-libs/mesa
 	net-print/cups
 	sys-apps/dbus
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3[X]
-	x11-libs/libXScrnSaver
+	x11-libs/libX11
+	x11-libs/libXcomposite
+	x11-libs/libXdamage
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libXrandr
+	x11-libs/libdrm
+	x11-libs/libxcb
+	x11-libs/libxkbcommon
+	x11-libs/libxshmfence
+	x11-libs/pango
 "
 
 QA_PREBUILT="
