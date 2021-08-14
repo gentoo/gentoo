@@ -20,6 +20,7 @@ RDEPEND=">=dev-libs/expat-2:=
 	dev-libs/libxml2:=
 	media-libs/fontconfig:=
 	media-libs/freetype:2=
+	media-libs/harfbuzz:=
 	x11-libs/cairo:=
 	x11-libs/pango:=
 	x11-libs/wxGTK:${WX_GTK_VER}=[X]
