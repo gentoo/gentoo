@@ -18,7 +18,7 @@ IUSE="video"
 
 DEPEND="
 	app-text/hunspell:=
-	app-text/poppler[qt5]
+	app-text/poppler:=[qt5]
 	>=dev-libs/quazip-0.7.3-r1:0=
 	dev-qt/designer:5
 	dev-qt/qtcore:5
