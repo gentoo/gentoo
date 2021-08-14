@@ -29,7 +29,9 @@ BDEPEND="
 		' python3_{8,9})
 	)"
 
-distutils_enable_sphinx "docs/source"
+distutils_enable_sphinx docs \
+	dev-python/jaraco-packaging \
+	dev-python/rst-linker
 distutils_enable_tests pytest
 
 python_prepare_all() {
