@@ -15,6 +15,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc 
 IUSE="cpu_flags_x86_3dnow cpu_flags_x86_3dnowext cpu_flags_ppc_altivec alsa coreaudio int-quality ipv6 jack cpu_flags_x86_mmx nas oss portaudio pulseaudio sdl cpu_flags_x86_sse"
 
 # No MULTILIB_USEDEP here since we only build libmpg123 for non native ABIs.
+# Note: build system prefers libsdl2 > libsdl. We could in theory add both
+# but it's tricky when it comes to handling switching between them properly.
+# We'd need a USE flag for both sdl1 and sdl2 and to make them clash.
 RDEPEND="
 	dev-libs/libltdl:0
 	alsa? ( media-libs/alsa-lib )
