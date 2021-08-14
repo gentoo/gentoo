@@ -23,7 +23,7 @@ RDEPEND="
 		allegro? ( media-libs/allegro:5 )
 		fluidsynth? ( media-sound/fluidsynth )
 		icu? (
-			dev-libs/icu-layoutex
+			dev-libs/icu-layoutex:=
 			dev-libs/icu-le-hb
 			>=dev-libs/icu-58.1:=
 		)
