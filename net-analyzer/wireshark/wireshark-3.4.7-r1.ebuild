@@ -32,8 +32,8 @@ IUSE+=" sdjournal test +text2pcap tfshark +tshark +udpdump zlib +zstd"
 CDEPEND="
 	acct-group/pcap
 	>=dev-libs/glib-2.32:2
-	>=net-dns/c-ares-1.5
-	dev-libs/libgcrypt:0
+	>=net-dns/c-ares-1.5:=
+	dev-libs/libgcrypt:0:=
 	bcg729? ( media-libs/bcg729 )
 	brotli? ( app-arch/brotli )
 	ciscodump? ( >=net-libs/libssh-0.6 )
@@ -65,7 +65,7 @@ CDEPEND="
 	sshdump? ( >=net-libs/libssh-0.6 )
 	ssl? ( net-libs/gnutls:= )
 	zlib? ( sys-libs/zlib )
-	zstd? ( app-arch/zstd )
+	zstd? ( app-arch/zstd:= )
 "
 # We need perl for `pod2html`. The rest of the perl stuff is to block older
 # and broken installs. #455122
