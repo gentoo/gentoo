@@ -110,6 +110,8 @@ dev-lang/ruby xemacs
 dev-libs/nanomsg doc
 #  - sci-libs/gdal
 dev-python/networkx extras
+#  - dev-ruby{kramdown,maruku,rdiscount}
+dev-ruby/yard doc
 #  - app-text/dblatex & media-gfx/transfig
 dev-util/ragel doc
 #  - Qt5 & KDE
