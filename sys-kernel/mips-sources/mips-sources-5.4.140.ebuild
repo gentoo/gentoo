@@ -34,7 +34,7 @@ BASE_KV="$(ver_cut 1-2)"
 # Portage Vars
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:MIPS"
 KEYWORDS="-* ~mips"
-IUSE="experimental ip27 ip28 ip30"
+IUSE="experimental ip27 ip28 ip30 symlink"
 
 # Specify any patches or patch familes to NOT apply here.
 # Use only the 4-digit number followed by a '*'.
