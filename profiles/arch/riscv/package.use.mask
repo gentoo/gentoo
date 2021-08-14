@@ -1,6 +1,16 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-08-14)
+# virtual/mysql & co. round-up:
+#  dev-db/mariadb fails tests here, see Bug #807995
+#  >=dev-db/mysql-8.0.22 do not support this arch
+#  dev-db/percona-server not tested yet, WIP
+#  dev-db/mariadb-galera has been absent from the tree since June 2019
+#  dev-db/mysql-cluster not tested yet, seriously outdated
+sci-libs/gdal mysql
+sys-cluster/slurm slurmdbd
+
 # Marek Szuba <marecki@gentoo.org> (2021-08-11)
 # dev-ruby/httpclient not keyworded here due to failing tests
 # (Bug #807727). That said, with httpclient-2.8.3 installed manually
@@ -130,8 +140,8 @@ net-misc/connman iwd ofono
 sys-block/thin-provisioning-tools test
 #  - sys-cluster/knem, sys-fabric/infinipath-psm
 sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_psm
-#  - sys-fabric/ofed, dev-db/mariadb | dev-db/mysql
-sys-cluster/slurm ofed slurmdbd
+#  - sys-fabric/ofed
+sys-cluster/slurm ofed
 
 # Yixun Lan <dlan@gentoo.org> (2021-05-24)
 # Dependencies not keyworded, not tested
