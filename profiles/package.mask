@@ -355,7 +355,6 @@ perl-core/Data-Dumper
 perl-core/Digest
 perl-core/Digest-MD5
 perl-core/Digest-SHA
-perl-core/Dumpvalue
 
 # Hans de Graaff <graaff@gentoo.org> (2021-07-17)
 # Deprecated upstream, replaced with factory_bot.
