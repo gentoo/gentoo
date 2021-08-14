@@ -29,9 +29,13 @@ media-gfx/gimp lua unwind
 # dependency on PyQt5[bluetooth].
 dev-python/ipython qt5
 
+# Marek Szuba <marecki@gentoo.org> (2021-08-14)
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-05)
-# pdfannotextractor depends on java, not (sustainably) supported yet
+# These USE flags depend on java, not (sustainably) supported yet
+#  - dev-tex/pdfannotextractor
 app-text/texlive pdfannotextractor
+#  - dev-java/jackcess
+sci-libs/gdal mdb
 
 # Yixun Lan <dlan@gentoo.org> (2021-08-05)
 # Boost.Context can be built on riscv
@@ -107,8 +111,6 @@ app-misc/lirc ftdi inputlirc
 dev-lang/ruby xemacs
 #  - dev-ruby/asciidoctor
 dev-libs/nanomsg doc
-#  - sci-libs/gdal
-dev-python/networkx extras
 #  - dev-ruby{kramdown,maruku,rdiscount}
 dev-ruby/yard doc
 #  - app-text/dblatex & media-gfx/transfig
