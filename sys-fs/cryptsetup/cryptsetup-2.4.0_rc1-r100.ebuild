@@ -124,8 +124,8 @@ src_install() {
 
 	dodoc docs/v*ReleaseNotes
 
-	newconfd "${FILESDIR}"/1.6.7-dmcrypt.confd dmcrypt
-	newinitd "${FILESDIR}"/1.6.7-dmcrypt.rc dmcrypt
+	newconfd "${FILESDIR}"/2.4.0-dmcrypt.confd dmcrypt
+	newinitd "${FILESDIR}"/2.4.0-dmcrypt.rc dmcrypt
 }
 
 pkg_postinst() {
