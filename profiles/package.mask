@@ -349,7 +349,6 @@ app-accessibility/eflite
 # are newer, and no virtuals currently pull these packages.
 # Removal in 30 days.
 perl-core/Archive-Tar
-perl-core/CPAN-Meta
 
 # Hans de Graaff <graaff@gentoo.org> (2021-07-17)
 # Deprecated upstream, replaced with factory_bot.
