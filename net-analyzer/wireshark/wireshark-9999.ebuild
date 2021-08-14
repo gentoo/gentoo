@@ -32,19 +32,19 @@ IUSE+=" sdjournal test +text2pcap tfshark +tshark +udpdump zlib +zstd"
 CDEPEND="
 	acct-group/pcap
 	>=dev-libs/glib-2.32:2
-	>=net-dns/c-ares-1.5
-	dev-libs/libgcrypt:0
+	>=net-dns/c-ares-1.5:=
+	dev-libs/libgcrypt:=
 	bcg729? ( media-libs/bcg729 )
-	brotli? ( app-arch/brotli )
+	brotli? ( app-arch/brotli:= )
 	ciscodump? ( >=net-libs/libssh-0.6 )
 	filecaps? ( sys-libs/libcap )
-	http2? ( net-libs/nghttp2 )
+	http2? ( net-libs/nghttp2:= )
 	ilbc? ( media-libs/libilbc )
 	kerberos? ( virtual/krb5 )
 	libxml2? ( dev-libs/libxml2 )
 	lua? ( ${LUA_DEPS} )
-	lz4? ( app-arch/lz4 )
-	maxminddb? ( dev-libs/libmaxminddb )
+	lz4? ( app-arch/lz4:= )
+	maxminddb? ( dev-libs/libmaxminddb:= )
 	minizip? ( sys-libs/zlib[minizip] )
 	netlink? ( dev-libs/libnl:3 )
 	opus? ( media-libs/opus )
