@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit cmake desktop xdg
+PLOCALES="af_ZA bg_BG ca_ES cs da de el en_GB eo es et_EE fa_IR fi fr fy ga he_IL hr hu id_ID id it ko la lt nb nl pl pt_BR pt ro ru sk sl tr tt_RU uk_UA zh_CN zh_TW"
+inherit cmake desktop plocale xdg
 
 MY_PV=$(ver_cut 1-2)
 VIDEOS_PV=2.2
@@ -70,6 +71,15 @@ src_prepare() {
 
 	sed -i -e 's/#top_builddir/top_builddir/' po/Makevars || die
 
+	# Delete translations we're not using
+	cleanup_po() {
+		local locale=${1}
+		einfo "Cleaning up disabled locale: ${1}"
+		rm po/${1}.po || die
+	}
+
+	plocale_for_each_disabled_locale cleanup_po
+
 	cmake_src_prepare
 }
 
@@ -92,24 +102,15 @@ src_compile() {
 }
 
 src_install() {
-	default
+	cmake_src_install
 
-	insinto /usr/bin
-	dobin "${BUILD_DIR}"/src/${PN}
+	rm "${ED}"/usr/bin/.portable || die
 
-	insinto /usr/share/${PN}
-	doins "${BUILD_DIR}"/data/base.wz
-	doins "${BUILD_DIR}"/data/mp.wz
+	# We cover licencing within the ebuild itself
+	rm "${ED}"/usr/share/doc/${PF}/COPYING* \
+		"${ED}"/usr/share/doc/${PF}/copyright || die
 
 	if use videos ; then
 		newins "${DISTDIR}"/${VIDEOS_P} sequences.wz
 	fi
-
-	insinto /usr/share/${PN}
-	doins -r data/music
-
-	doman "${BUILD_DIR}"/doc/warzone2100.6
-
-	doicon -s 128 icons/warzone2100.png
-	domenu icons/warzone2100.desktop
 }
