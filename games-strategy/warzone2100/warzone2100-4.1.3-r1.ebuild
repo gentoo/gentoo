@@ -45,7 +45,6 @@ CDEPEND="
 "
 DEPEND="
 	${CDEPEND}
-	app-text/asciidoc
 	dev-libs/fribidi
 	media-libs/fontconfig
 "
@@ -55,6 +54,7 @@ RDEPEND="
 "
 BDEPEND="
 	app-arch/zip
+	app-text/asciidoc
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
