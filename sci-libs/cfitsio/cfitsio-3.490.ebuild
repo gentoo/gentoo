@@ -25,8 +25,9 @@ RDEPEND="
 	bzip2? ( app-arch/bzip2[${MULTILIB_USEDEP}] )
 	curl? ( net-misc/curl[${MULTILIB_USEDEP}] )
 "
+# Bug #803350
 DEPEND="${RDEPEND}
-	dev-lang/cfortran
+	<dev-lang/cfortran-20110621
 "
 
 PATCHES=(
