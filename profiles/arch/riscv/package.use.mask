@@ -98,8 +98,6 @@ app-editors/vim sound
 app-misc/lirc ftdi inputlirc
 #  - app-xemacs/ruby-modes (and by extension xemacs itself)
 dev-lang/ruby xemacs
-#  - media-libs/libcddb
-dev-libs/libcdio cddb
 #  - dev-ruby/asciidoctor
 dev-libs/nanomsg doc
 #  - sci-libs/gdal
