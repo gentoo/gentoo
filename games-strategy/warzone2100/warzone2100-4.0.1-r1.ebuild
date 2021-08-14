@@ -24,13 +24,13 @@ IUSE="debug discord nls videos vulkan"
 # quesoglc-0.7.2 is buggy: http://developer.wz2100.net/ticket/2828
 CDEPEND="
 	>=dev-games/physfs-2[zip]
-	>=dev-libs/libsodium-1.0.14
+	>=dev-libs/libsodium-1.0.14:=
 	dev-libs/openssl:0=
 	media-libs/freetype:2
 	media-libs/glew:=
-	media-libs/harfbuzz
+	media-libs/harfbuzz:=
 	media-libs/libogg
-	media-libs/libpng:0
+	media-libs/libpng:=
 	media-libs/libsdl2[opengl,video,X]
 	media-libs/libtheora
 	media-libs/libvorbis
