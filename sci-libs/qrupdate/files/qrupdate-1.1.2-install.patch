@@ -1,5 +1,5 @@
---- src/Makefile.orig	2010-02-07 15:58:01 +0100
-+++ src/Makefile	2010-02-07 16:02:18 +0100
+--- a/src/Makefile
++++ b/src/Makefile
 @@ -65,14 +65,17 @@
  install-shlib: ../libqrupdate$(SOEXT) install-lib$(SOEXT)
  
