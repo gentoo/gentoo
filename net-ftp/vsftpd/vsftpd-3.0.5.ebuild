@@ -14,10 +14,6 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="pam ssl tcpd"
 
-BDEPEND="
-	virtual/pkgconfig
-"
-
 DEPEND="
 	>=sys-libs/libcap-2
 	pam? ( sys-libs/pam )
@@ -49,13 +45,7 @@ undef() {
 }
 
 src_configure() {
-	cflags=()
-	libs=()
-
-	local PKG_CONFIG=$(tc-getPKG_CONFIG)
-
-	cflags+=( $(${PKG_CONFIG} --cflags libcap) ) || die
-	libs+=( $(${PKG_CONFIG} --libs libcap) ) || die
+	libs=( -lcap )
 
 	if use pam; then
 		libs+=( -lpam )
@@ -66,8 +56,7 @@ src_configure() {
 
 	if use ssl; then
 		define VSF_BUILD_SSL
-		cflags+=( $(${PKG_CONFIG} --cflags libcrypto libssl) ) || die
-		libs+=( $(${PKG_CONFIG} --libs libcrypto libssl) ) || die
+		libs+=( -lcrypto -lssl )
 	fi
 
 	if use tcpd; then
@@ -79,8 +68,8 @@ src_configure() {
 src_compile() {
 	local args=(
 		CC="$(tc-getCC)"
-		CFLAGS="${CFLAGS} ${cflags[*]}"
-		LDFLAGS="${CFLAGS} ${LDFLAGS}"
+		CFLAGS="${CFLAGS}"
+		LDFLAGS="${LDFLAGS}"
 		LIBS="${libs[*]}"
 	)
 	emake "${args[@]}"
