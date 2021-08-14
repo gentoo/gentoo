@@ -89,7 +89,7 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	!app-text/epspdf
 	!app-text/pdfjam
 	sys-libs/zlib
-	>=media-libs/harfbuzz-1.4.5[icu,graphite]
+	>=media-libs/harfbuzz-1.4.5:=[icu,graphite]
 	>=media-libs/libpng-1.2.43-r2:0=
 	media-libs/gd[png]
 	media-gfx/graphite2
@@ -107,7 +107,7 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	xindy? ( dev-lisp/clisp:= )
 	media-libs/freetype:2
 	>=dev-libs/icu-50:=
-	>=dev-libs/kpathsea-6.3.2"
+	>=dev-libs/kpathsea-6.3.2:="
 
 BDEPEND="sys-apps/ed
 	sys-devel/flex
