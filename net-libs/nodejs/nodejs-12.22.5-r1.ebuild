@@ -23,38 +23,45 @@ else
 	S="${WORKDIR}/node-v${PV}"
 fi
 
-IUSE="cpu_flags_x86_sse2 debug doc +icu inspector lto +npm pax-kernel +snapshot +ssl +system-icu +system-ssl systemtap test"
-REQUIRED_USE="inspector? ( icu ssl )
+IUSE="cpu_flags_x86_sse2 debug doc icu inspector lto +npm +snapshot +ssl +system-ssl systemtap test"
+REQUIRED_USE="
+	inspector? ( icu ssl )
 	npm? ( ssl )
-	system-icu? ( icu )
-	system-ssl? ( ssl )"
+	system-ssl? ( ssl )
+"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=app-arch/brotli-1.0.9
-	>=dev-libs/libuv-1.40.0:=
-	>=net-dns/c-ares-1.17.2
-	>=net-libs/nghttp2-1.41.0
+RDEPEND="
+	>=app-arch/brotli-1.0.9:=
+	>=dev-libs/libuv-1.39.0:=
+	>=net-dns/c-ares-1.17.2:=
+	>=net-libs/http-parser-2.9.3:=
+	>=net-libs/nghttp2-1.40.0:=
 	sys-libs/zlib
-	system-icu? ( >=dev-libs/icu-67:= )
+	icu? ( >=dev-libs/icu-64.2:= )
 	system-ssl? (
 		>=dev-libs/openssl-1.1.1:0=
 		<dev-libs/openssl-3.0.0_beta1:0=
-	)"
-BDEPEND="${PYTHON_DEPS}
+	)
+"
+BDEPEND="
+	${PYTHON_DEPS}
 	sys-apps/coreutils
 	virtual/pkgconfig
 	systemtap? ( dev-util/systemtap )
 	test? ( net-misc/curl )
-	pax-kernel? ( sys-apps/elfix )"
-DEPEND="${RDEPEND}"
-
+"
+DEPEND="
+	${RDEPEND}
+"
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
+	"${FILESDIR}"/${PN}-12.20.1-fix_ppc64_crashes.patch
 	"${FILESDIR}"/${PN}-12.22.1-jinja_collections_abc.patch
 	"${FILESDIR}"/${PN}-12.22.1-uvwasi_shared_libuv.patch
 	"${FILESDIR}"/${PN}-12.22.5-shared_c-ares_nameser_h.patch
-	"${FILESDIR}"/${PN}-14.15.0-fix_ppc64_crashes.patch
+	"${FILESDIR}"/${PN}-99999999-llhttp.patch
 )
 
 pkg_pretend() {
@@ -77,7 +84,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	tc-export AR CC CXX PKG_CONFIG
+	tc-export CC CXX PKG_CONFIG
 	export V=1
 	export BUILDTYPE=Release
 
@@ -98,21 +105,14 @@ src_prepare() {
 
 	sed -i -e "/'-O3'/d" common.gypi node.gypi || die
 
+	# Known-to-fail test of a deprecated, legacy HTTP parser. Just don't bother.
+	rm -f test/parallel/test-http-transfer-encoding-smuggling-legacy.js
+
 	# debug builds. change install path, remove optimisations and override buildtype
 	if use debug; then
 		sed -i -e "s|out/Release/|out/Debug/|g" tools/install.py || die
 		BUILDTYPE=Debug
 	fi
-
-	# We need to disable mprotect on two files when it builds Bug 694100.
-	use pax-kernel && PATCHES+=( "${FILESDIR}"/${PN}-13.8.0-paxmarking.patch )
-
-	# All this test does is check if the npm CLI produces warnings of any sort,
-	# failing if it does. Overkill, much? Especially given one possible warning
-	# is that there is a newer version of npm available upstream (yes, it does
-	# use the network if available), thus making it a real possibility for this
-	# test to begin failing one day even though it was fine before.
-	rm -f test/parallel/test-release-npm.js
 
 	default
 }
@@ -126,19 +126,14 @@ src_configure() {
 	local myconf=(
 		--shared-brotli
 		--shared-cares
+		--shared-http-parser
 		--shared-libuv
 		--shared-nghttp2
 		--shared-zlib
 	)
 	use debug && myconf+=( --debug )
 	use lto && myconf+=( --enable-lto )
-	if use system-icu; then
-		myconf+=( --with-intl=system-icu )
-	elif use icu; then
-		myconf+=( --with-intl=full-icu )
-	else
-		myconf+=( --with-intl=none )
-	fi
+	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
 	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
 	use snapshot || myconf+=( --without-node-snapshot )
@@ -170,6 +165,8 @@ src_configure() {
 }
 
 src_compile() {
+	emake -C out mksnapshot
+	pax-mark m "out/${BUILDTYPE}/mksnapshot"
 	emake -C out
 }
 
@@ -239,5 +236,14 @@ src_test() {
 	fi
 
 	out/${BUILDTYPE}/cctest || die
-	"${EPYTHON}" tools/test.py --mode=${BUILDTYPE,,} --flaky-tests=dontcare -J message parallel sequential || die
+	"${PYTHON}" tools/test.py --mode=${BUILDTYPE,,} --flaky-tests=dontcare -J message parallel sequential || die
+}
+
+pkg_postinst() {
+	elog "The global npm config lives in /etc/npm. This deviates slightly"
+	elog "from upstream which otherwise would have it live in /usr/etc/."
+	elog ""
+	elog "Protip: When using node-gyp to install native modules, you can"
+	elog "avoid having to download extras by doing the following:"
+	elog "$ node-gyp --nodedir /usr/include/node <command>"
 }
