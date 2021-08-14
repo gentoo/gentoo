@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/kino/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="alsa dvdr gpac lame quicktime sox vorbis"
 
 # Optional dependency on cinelerra-cvs (as a replacement for libquicktime)
