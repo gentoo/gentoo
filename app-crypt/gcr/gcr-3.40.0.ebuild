@@ -13,7 +13,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gcr"
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0/1" # subslot = suffix of libgcr-base-3 and co
 
-IUSE="gtk gtk-doc +introspection test +vala"
+IUSE="gtk gtk-doc +introspection test +vala wayland"
 REQUIRED_USE="vala? ( introspection )"
 RESTRICT="!test? ( test )"
 
@@ -23,7 +23,7 @@ DEPEND="
 	>=dev-libs/glib-2.44.0:2
 	>=dev-libs/libgcrypt-1.2.2:0=
 	>=app-crypt/p11-kit-0.19.0
-	gtk? ( >=x11-libs/gtk+-3.22:3[introspection?] )
+	gtk? ( >=x11-libs/gtk+-3.22:3[introspection?,wayland=] )
 	>=sys-apps/dbus-1
 	introspection? ( >=dev-libs/gobject-introspection-1.58:= )
 "
