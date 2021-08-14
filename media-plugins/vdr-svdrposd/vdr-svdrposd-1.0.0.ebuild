@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR plugin: export OSD via TCP to vdr-remoteosd"
-HOMEPAGE="http://vdr.schmirler.de/"
-SRC_URI="http://vdr.schmirler.de/svdrpext/${P}.tgz"
+HOMEPAGE="https://vdr.schmirler.de/"
+SRC_URI="https://vdr.schmirler.de/svdrposd/${P}.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"
