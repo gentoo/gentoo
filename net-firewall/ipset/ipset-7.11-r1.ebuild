@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~arm arm64 ppc ~ppc64 x86"
 BDEPEND="virtual/pkgconfig"
 
 RDEPEND=">=net-firewall/iptables-1.4.7
-	net-libs/libmnl"
+	net-libs/libmnl:="
 DEPEND="${RDEPEND}"
 
 DOCS=( ChangeLog INSTALL README UPGRADE )
