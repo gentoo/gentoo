@@ -475,16 +475,6 @@ dev-ruby/rash
 # is resolved.  Bug #791259.
 >=media-libs/libopenaptx-0.2.1
 
-# Aaron W. Swenon <titanofold@gentoo.org> (2021-07-05)
-# PostgreSQL 9.5 has reached end of life and will no longer receive any
-# updates -- security or otherwise -- from upstream or Gentoo.
-# You should migrate immediately.
-#     https://wiki.gentoo.org/wiki/PostgreSQL/QuickStart#Post-9.0_Migration
-# For more information about PostgreSQL's versioning policy, see:
-#     https://www.postgresql.org/support/versioning/#
-# Removal after 2021-08-04.
-dev-db/postgresql:9.5
-
 # David Seifert <soap@gentoo.org> (2021-07-01)
 # Berkeley DB slots that are long past EOL by Oracle,
 # maintenance burden, and no real path forward by Oracle.
