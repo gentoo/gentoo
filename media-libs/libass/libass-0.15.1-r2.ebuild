@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-libs/fribidi-0.19.5-r1[${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}]
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
-	>=media-libs/harfbuzz-0.9.12[truetype,${MULTILIB_USEDEP}]
+	>=media-libs/harfbuzz-0.9.12:=[truetype,${MULTILIB_USEDEP}]
 	fontconfig? ( >=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
