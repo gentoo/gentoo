@@ -29,6 +29,7 @@ BDEPEND="
 RDEPEND="
 	dev-libs/libltdl:0=
 	>=media-sound/gsm-1.0.12-r1
+	sys-apps/file
 	alsa? ( media-libs/alsa-lib )
 	amr? ( media-libs/opencore-amr )
 	ao? ( media-libs/libao )
