@@ -6,8 +6,8 @@ EAPI=7
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: offers SVDRP connections as a service to other plugins"
-HOMEPAGE="http://vdr.schmirler.de/"
-SRC_URI="http://vdr.schmirler.de/svdrpservice/${P}.tgz"
+HOMEPAGE="https://vdr.schmirler.de/"
+SRC_URI="https://vdr.schmirler.de/svdrpservice/${P}.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"
