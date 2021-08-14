@@ -19,5 +19,9 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/backports-zoneinfo[${PYTHON_USEDEP}]
 	' python3_8 pypy3)"
+BDEPEND="
+	test? (
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests pytest
