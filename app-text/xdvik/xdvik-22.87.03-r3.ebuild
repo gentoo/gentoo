@@ -29,7 +29,7 @@ CDEPEND=">=media-libs/freetype-2.9.1-r2:2
 			!Xaw3d? ( x11-libs/libXaw )
 		)
 	)
-	dev-libs/kpathsea"
+	dev-libs/kpathsea:="
 DEPEND="sys-devel/flex
 	virtual/yacc
 	virtual/pkgconfig
