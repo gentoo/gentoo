@@ -73,6 +73,7 @@ sci-libs/hdf5 fortran debug
 # systems fails tests even with the mask above in place), masked for
 # further testing.
 dev-libs/starpu hdf5
+sci-libs/armadillo hdf5
 sci-libs/gdal hdf5
 # (via dev-python/pytables)
 dev-python/pandas doc full-support test
