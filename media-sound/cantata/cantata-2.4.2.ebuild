@@ -23,10 +23,9 @@ REQUIRED_USE="
 	musicbrainz? ( || ( cdio cdda ) taglib )
 	replaygain? ( taglib )
 "
+# cantata has no tests
+RESTRICT="test"
 
-BDEPEND="
-	dev-qt/linguist-tools:5
-"
 COMMON_DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -62,13 +61,14 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	dev-qt/qtconcurrent:5
 "
-
-# cantata has no tests
-RESTRICT="test"
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.0-headers.patch"
 	"${FILESDIR}/${P}-solid-musl.patch" # bug 792555
+	"${FILESDIR}/${P}-main-musl.patch" # bug 807763
 )
 
 src_prepare() {
