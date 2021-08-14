@@ -17,12 +17,11 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0 public-domain vulkan? ( GPL-3 )"
 SLOT="0"
-#[[ "${PV}" == *_beta* ]] || \
 KEYWORDS="~amd64 ~x86"
-# upstream requested debug support
+# Upstream requested debug support
 IUSE="debug discord nls videos vulkan"
 
-# TODO: unbundle miniupnpc and quesoglc
+# TODO: unbundle miniupnpc and quesoglc, bug #477610
 # quesoglc-0.7.2 is buggy: http://developer.wz2100.net/ticket/2828
 CDEPEND="
 	>=dev-games/physfs-2[zip]
@@ -74,8 +73,8 @@ src_prepare() {
 	# Delete translations we're not using
 	cleanup_po() {
 		local locale=${1}
-		einfo "Cleaning up disabled locale: ${1}"
-		rm po/${1}.po || die
+		einfo "Cleaning up disabled locale: ${locale}"
+		rm po/${locale}.po || die
 	}
 
 	plocale_for_each_disabled_locale cleanup_po
@@ -86,12 +85,13 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DWZ_DISTRIBUTOR="Gentoo Linux"
-		-DWZ_ENABLE_WARNINGS_AS_ERRORS="OFF"
-		-DWZ_ENABLE_BACKEND_VULKAN="$(usex vulkan)"
-		-DBUILD_SHARED_LIBS="OFF"
-		-DENABLE_NLS="$(usex nls)"
-		-DENABLE_DISCORD="$(usex discord)"
+		-DWZ_ENABLE_WARNINGS_AS_ERRORS=OFF
+		-DWZ_ENABLE_BACKEND_VULKAN=$(usex vulkan)
+		-DBUILD_SHARED_LIBS=OFF
+		-DENABLE_NLS=$(usex nls)
+		-DENABLE_DISCORD=$(usex discord)
 	)
+
 	cmake_src_configure
 }
 
