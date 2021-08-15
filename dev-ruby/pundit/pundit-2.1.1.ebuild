@@ -23,5 +23,5 @@ ruby_add_bdepend "test? ( >=dev-ruby/actionpack-3.0.0
 	>=dev-ruby/activemodel-3.0.0 )"
 
 all_ruby_prepare() {
-	sed -i -e "/pry/d" spec/spec_helper.rb || die
+	sed -i -e "/pry/d" -e '/simplecov/,/^end/ s:^:#:' spec/spec_helper.rb || die
 }
