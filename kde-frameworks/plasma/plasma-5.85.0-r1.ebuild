@@ -61,6 +61,8 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
 
+PATCHES=( "${FILESDIR}"/${P}-fix-plasma-scaling-w-int-scale-factors.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package !gles2-only OpenGL)
