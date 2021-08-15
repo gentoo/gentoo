@@ -161,9 +161,12 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 DEPEND=""
 RDEPEND="sys-libs/zlib
 	dev-libs/openssl:0=
+	dev-libs/libgit2
 	net-libs/libssh2
 	net-misc/curl[ssl]
 "
+
+export LIBSSH2_SYS_USE_PKG_CONFIG=1
 
 src_unpack() {
 	cargo_src_unpack
