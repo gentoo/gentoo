@@ -1,0 +1,32 @@
+From 2187b62588b060bc27143dd326b5171aec930454 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sat, 7 Aug 2021 19:38:43 +0000
+Subject: [PATCH] [kpropertiesdialog] Allow editing icons for root-owned
+ desktop files
+
+---
+ src/widgets/kpropertiesdialog.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/widgets/kpropertiesdialog.cpp b/src/widgets/kpropertiesdialog.cpp
+index 76155338e..2288ccc08 100644
+--- a/src/widgets/kpropertiesdialog.cpp
++++ b/src/widgets/kpropertiesdialog.cpp
+@@ -1206,6 +1206,14 @@ KFilePropsPlugin::KFilePropsPlugin(KPropertiesDialog *_props)
+ bool KFilePropsPlugin::enableIconButton() const
+ {
+     const KFileItem item = properties->item();
++
++    // desktop files are special, files in /usr/share/applications can be
++    // edited by overlaying them in .local/share/applications
++    // https://bugs.kde.org/show_bug.cgi?id=429613
++    if (item.isDesktopFile()) {
++        return true;
++    }
++
+     // If the current item is a directory, check if it's writable,
+     // so we can create/update a .directory
+     // Current item is a file, same thing: check if it is writable
+-- 
+GitLab
+
