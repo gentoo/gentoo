@@ -16,6 +16,7 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_BRANCH="master"
 else
 	SRC_URI="https://github.com/OpenImageDenoise/${PN}/releases/download/v${PV}/${P}.src.tar.gz -> ${P}.tar.gz"
+	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-glibc.patch.bz2"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -33,6 +34,8 @@ DEPEND="
 	dev-util/cmake"
 
 CMAKE_BUILD_TYPE=Release
+
+PATCHES=( "${WORKDIR}"/oidn-1.3.0-glibc.patch )
 
 pkg_setup() {
 	python-single-r1_pkg_setup
