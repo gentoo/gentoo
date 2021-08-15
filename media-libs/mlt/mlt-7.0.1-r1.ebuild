@@ -15,16 +15,11 @@ SLOT="0/7"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug ffmpeg frei0r gtk jack kernel_linux libsamplerate opencv opengl python qt5 rtaudio rubberband sdl test vdpau vidstab xine xml"
 
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
 # Needs unpackaged 'kwalify'
 RESTRICT="test"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-
-SWIG_DEPEND=">=dev-lang/swig-2.0"
-BDEPEND="
-	virtual/pkgconfig
-	python? ( ${SWIG_DEPEND} )
-"
 # rtaudio will use OSS on non linux OSes
 DEPEND="
 	>=media-libs/libebur128-1.2.2:=
@@ -40,7 +35,7 @@ DEPEND="
 		virtual/jack
 	)
 	libsamplerate? ( >=media-libs/libsamplerate-0.1.2 )
-	opencv? ( >=media-libs/opencv-4.5.1:= )
+	opencv? ( >=media-libs/opencv-4.5.1:=[contrib] )
 	opengl? ( media-video/movit )
 	python? ( ${PYTHON_DEPS} )
 	qt5? (
@@ -64,7 +59,8 @@ DEPEND="
 	)
 	vidstab? ( media-libs/vidstab )
 	xine? ( >=media-libs/xine-lib-1.1.2_pre20060328-r7 )
-	xml? ( >=dev-libs/libxml2-2.5 )"
+	xml? ( >=dev-libs/libxml2-2.5 )
+"
 #	java? ( >=virtual/jre-1.5 )
 #	perl? ( dev-lang/perl )
 #	php? ( dev-lang/php )
@@ -72,6 +68,10 @@ DEPEND="
 #	sox? ( media-sound/sox )
 #	tcl? ( dev-lang/tcl:0= )
 RDEPEND="${DEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+	python? ( >=dev-lang/swig-2.0 )
+"
 
 DOCS=( AUTHORS NEWS README.md )
 
