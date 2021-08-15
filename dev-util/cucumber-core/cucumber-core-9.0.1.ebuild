@@ -12,7 +12,7 @@ RUBY_FAKEGEM_GEMSPEC="cucumber-core.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Executable feature scenarios"
-HOMEPAGE="https://github.com/aslakhellesoy/cucumber/wikis"
+HOMEPAGE="https://cucumber.io/"
 SRC_URI="https://github.com/cucumber/cucumber-ruby-core/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="cucumber-ruby-core-${PV}"
 LICENSE="Ruby"
