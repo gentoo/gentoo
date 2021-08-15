@@ -22,3 +22,9 @@ RDEPEND="
 BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.300.0
 "
+
+# Test requires internet access and gets easily confused regarding
+# presence / absence of ipv6 support
+# See https://rt.cpan.org/Public/Bug/Display.html?id=104651
+# It succeeds here as user with "ebuild" but fails as root with "emerge"...
+PERL_RM_FILES=( t/01-basic.t )
