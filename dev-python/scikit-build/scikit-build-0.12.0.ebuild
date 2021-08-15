@@ -30,6 +30,10 @@ DEPEND="
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.12.0-tests-no-coverage.patch
+)
+
 distutils_enable_sphinx docs \
 	dev-python/sphinx_rtd_theme \
 	dev-python/sphinx-issues
