@@ -17,7 +17,7 @@ RUBY_FAKEGEM_BINWRAP=""
 inherit ruby-fakegem
 
 DESCRIPTION="Executable feature scenarios for Rails"
-HOMEPAGE="https://github.com/cucumber/cucumber/wikis"
+HOMEPAGE="https://cucumber.io/"
 SRC_URI="https://github.com/cucumber/cucumber-rails/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Ruby"
 

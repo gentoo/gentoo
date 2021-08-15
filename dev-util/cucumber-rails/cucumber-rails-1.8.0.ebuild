@@ -15,7 +15,7 @@ RUBY_FAKEGEM_GEMSPEC="cucumber-rails.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Executable feature scenarios for Rails"
-HOMEPAGE="https://github.com/cucumber/cucumber/wikis"
+HOMEPAGE="https://cucumber.io/"
 LICENSE="Ruby"
 
 KEYWORDS="~amd64"
