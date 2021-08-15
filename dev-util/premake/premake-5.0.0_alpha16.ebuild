@@ -3,21 +3,27 @@
 
 EAPI=8
 
+inherit toolchain-funcs
+
 MY_PV=${PV/_/-}
 
 DESCRIPTION="A makefile generation tool"
 HOMEPAGE="https://premake.github.io"
 SRC_URI="https://github.com/premake/premake-core/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-
 S="${WORKDIR}/${PN}-core-${MY_PV}"
 
 LICENSE="BSD"
 SLOT="5"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-BDEPEND=""
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.0.0_alpha16-respect-MAKEOPTS-jobs.patch
+)
 
 src_compile() {
+	# bug #773505
+	tc-export CC
+
 	emake -f Bootstrap.mak linux
 }
 
