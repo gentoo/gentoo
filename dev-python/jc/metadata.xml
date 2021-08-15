@@ -5,6 +5,7 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">kellyjonbrazil/jc</remote-id>
 		<remote-id type="pypi">jc</remote-id>
