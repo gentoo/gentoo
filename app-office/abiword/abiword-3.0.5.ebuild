@@ -16,7 +16,16 @@ SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~x86 ~amd64-linux ~x86-linux"
 IUSE="calendar collab cups debug eds +goffice grammar +introspection latex map math ots +plugins readline redland spell wordperfect wmf thesaurus"
 # You need 'plugins' enabled if want to enable the extra plugins
-REQUIRED_USE="!plugins? ( !collab !grammar !latex !math !ots !readline !thesaurus !wordperfect !wmf )"
+REQUIRED_USE="
+	collab? ( plugins )
+	grammar? ( plugins )
+	latex? ( plugins )
+	math? ( plugins )
+	ots? ( plugins )
+	readline? ( plugins )
+	thesaurus? ( plugins )
+	wordperfect? ( plugins )
+	wmf? ( plugins )"
 
 RDEPEND="
 	>=app-text/wv-1.2
