@@ -57,6 +57,8 @@ python_test() {
 		# assume pristine virtualenv
 		test/test_utils.py::TestSetupReadline::test_local_import
 		test/test_inference/test_imports.py::test_os_issues
+		# fragile
+		test/test_speed.py
 	)
 	[[ ${EPYTHON} == python3.10 ]] && deselect+=(
 		# new features increased the match count again
