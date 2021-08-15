@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Configurable talking ASCII cow (and other characters)"
 HOMEPAGE="https://cowsay.diamonds https://github.com/cowsay-org/cowsay"
-SRC_URI="https://github.com/cowsay-org/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cowsay-org/cowsay/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -15,12 +15,21 @@ RDEPEND="dev-lang/perl"
 BDEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.0.7-head-in.patch"
-	"${FILESDIR}/${PN}-3.0.7-mech-and-cow.patch"
+	"${FILESDIR}/${P}-head-in.patch"
+	"${FILESDIR}/${P}-mech-and-cow.patch"
 )
 
 src_prepare() {
 	default
 
-	sed -i 's#/usr/local#/${EPREFIX}/usr#' Makefile || die
+	# no |g leaves one %PREFIX% but it makes sense in context
+	sed -i "s|%PREFIX%|${EPREFIX}/usr|" cowsay.1 || die
+
+	# patch fixes the file but need extension to be recognized
+	mv share/cows/mech-and-cow{,.cow} || die
+}
+
+src_install() {
+	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" install
+	einstalldocs
 }
