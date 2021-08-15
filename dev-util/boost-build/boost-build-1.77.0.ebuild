@@ -8,7 +8,7 @@ inherit flag-o-matic toolchain-funcs
 MY_PV="$(ver_rs 1- _)"
 
 DESCRIPTION="A system for large project software construction, simple to use and powerful"
-HOMEPAGE="https://boostorg.github.io/build/"
+HOMEPAGE="https://www.boost.org/build/"
 SRC_URI="https://boostorg.jfrog.io/artifactory/main/release/${PV}/source/boost_${MY_PV}.tar.bz2"
 S="${WORKDIR}/boost_${MY_PV}/tools/build/src"
 
