@@ -24,6 +24,7 @@ RDEPEND="
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
 	)
 "
