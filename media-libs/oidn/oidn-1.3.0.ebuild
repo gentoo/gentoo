@@ -34,6 +34,8 @@ DEPEND="
 
 CMAKE_BUILD_TYPE=Release
 
+PATCHES=( "${FILESDIR}"/oidn-1.3.0-glibc.patch )
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 }
