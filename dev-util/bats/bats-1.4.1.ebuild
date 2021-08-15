@@ -24,7 +24,7 @@ src_test() {
 	if ! command -v parallel; then
 		my_jobs=1
 	fi
-	bin/bats --tap --jobs "$my_jobs" test || die "Tests failed"
+	bin/bats --tap --jobs "${my_jobs}" test || die "Tests failed"
 }
 
 src_install() {
