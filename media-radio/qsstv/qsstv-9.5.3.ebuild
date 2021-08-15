@@ -24,9 +24,12 @@ CDEPEND="dev-qt/qtcore:5
 	media-libs/hamlib:=
 	media-libs/openjpeg:2
 	media-libs/alsa-lib
-	media-sound/pulseaudio
 	media-libs/libv4l
-	sci-libs/fftw:3.0="
+	sci-libs/fftw:3.0=
+	|| (
+		media-sound/pulseaudio
+		media-sound/apulse[sdk]
+	)"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
