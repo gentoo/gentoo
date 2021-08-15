@@ -40,7 +40,10 @@ BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.8.2-fix-cxx11-detection.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.8.2-fix-cxx11-detection.patch
+	"${FILESDIR}"/${PN}-1.8.2-boost-1.77.0.patch
+)
 
 src_prepare() {
 	default
