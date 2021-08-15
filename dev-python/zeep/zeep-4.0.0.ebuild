@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="async tornado"
+IUSE="async"
 
 # TODO: remove six dependency when this is merged:
 # https://github.com/mvantellingen/python-zeep/pull/1250
@@ -31,10 +31,6 @@ RDEPEND="
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	async? ( >=dev-python/aiohttp-1.0[${PYTHON_USEDEP}] )
-	tornado? (
-		>=www-servers/tornado-4.0.2[${PYTHON_USEDEP}]
-		<www-servers/tornado-5[${PYTHON_USEDEP}]
-	)
 	test? (
 		dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/aioresponses[${PYTHON_USEDEP}]
