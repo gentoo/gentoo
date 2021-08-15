@@ -1,0 +1,44 @@
+From 837bb6975f6a0661d211107823b7587808fc3d4e Mon Sep 17 00:00:00 2001
+From: Nate Graham <nate@kde.org>
+Date: Sun, 15 Aug 2021 09:33:10 -0600
+Subject: [PATCH] Fix Plasma (non-Qt) icon scaling with integer scale factors
+
+An embarrassing error in 4edb830f53aac4833ece024df59441029b01fde6
+caused the function which returns an appropriate scale factor for icons
+to both take and return integer values rather than floating point
+values, preventing it from working properly with any scale factor other
+than an integer scale factor (e.g. 200%). This commit fixes that issue.
+---
+ src/declarativeimports/core/units.cpp | 2 +-
+ src/declarativeimports/core/units.h   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/declarativeimports/core/units.cpp b/src/declarativeimports/core/units.cpp
+index 6788ed952..fbcc6d888 100644
+--- a/src/declarativeimports/core/units.cpp
++++ b/src/declarativeimports/core/units.cpp
+@@ -174,7 +174,7 @@ int Units::roundToIconSize(int size)
+     }
+ }
+ 
+-int Units::bestIconScaleForDevicePixelRatio(const int ratio)
++qreal Units::bestIconScaleForDevicePixelRatio(const qreal ratio)
+ {
+     if (ratio < 1.5) {
+         return 1;
+diff --git a/src/declarativeimports/core/units.h b/src/declarativeimports/core/units.h
+index c19cf0dd8..855738e7d 100644
+--- a/src/declarativeimports/core/units.h
++++ b/src/declarativeimports/core/units.h
+@@ -271,7 +271,7 @@ private:
+      * Note that this function is only relevant when using Plasma scaling and
+      * when using Qt scaling, it always returns 1.
+      */
+-    static int bestIconScaleForDevicePixelRatio(const int ratio);
++    static qreal bestIconScaleForDevicePixelRatio(const qreal ratio);
+ 
+     /**
+      * @return The dpi-adjusted size for a given icon size
+-- 
+GitLab
+
