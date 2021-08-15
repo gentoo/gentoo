@@ -3,7 +3,6 @@
 
 EAPI=8
 
-WANT_AUTOMAKE=1.15
 inherit autotools
 
 DESCRIPTION="Find duplicate files based on their content"
@@ -15,7 +14,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="dev-libs/nettle"
+RDEPEND="dev-libs/nettle:="
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/autoconf-archive"
 
