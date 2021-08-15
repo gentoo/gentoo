@@ -111,6 +111,7 @@ src_install() {
 		"${ED}"/usr/share/doc/${PF}/copyright || die
 
 	if use videos ; then
+		insinto /usr/share/${PN}
 		newins "${DISTDIR}"/${VIDEOS_P} sequences.wz
 	fi
 }
