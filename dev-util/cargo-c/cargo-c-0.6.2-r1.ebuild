@@ -161,3 +161,5 @@ RDEPEND="sys-libs/zlib
 	net-libs/libssh2
 	net-misc/curl[ssl]
 "
+
+export LIBSSH2_SYS_USE_PKG_CONFIG=1
