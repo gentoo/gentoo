@@ -71,6 +71,10 @@ DEPEND="${RDEPEND}
 "
 PDEPEND=">=kde-frameworks/kded-${PVCUT}:5"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-KDirOperator-exp-to-url-only-in-detail-treeview.patch # KDE-bug 440475
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DKIO_NO_PUBLIC_QTCONCURRENT=ON
