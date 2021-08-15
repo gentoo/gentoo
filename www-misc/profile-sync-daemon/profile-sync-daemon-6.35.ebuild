@@ -11,15 +11,17 @@ KEYWORDS="~amd64 ~x86"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
+IUSE="systemd"
 
 RDEPEND="
 	app-shells/bash
 	net-misc/rsync[xattr]
-	sys-apps/systemd"
+	systemd? ( sys-apps/systemd )"
 
 src_install() {
-	emake DESTDIR="${D}" COMPRESS_MAN=0 install
+	emake DESTDIR="${D}" COMPRESS_MAN=0 install-bin
+	emake DESTDIR="${D}" COMPRESS_MAN=0 install-man
+		"$(usex systemd "install-systemd")"
 }
 
 pkg_postinst() {
