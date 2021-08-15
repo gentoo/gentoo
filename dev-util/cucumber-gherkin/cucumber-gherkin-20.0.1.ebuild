@@ -17,7 +17,7 @@ RUBY_FAKEGEM_GEMSPEC="cucumber-gherkin.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Fast Gherkin lexer and parser"
-HOMEPAGE="https://github.com/cucumber/gherkin"
+HOMEPAGE="https://cucumber.io/"
 SRC_URI="https://github.com/cucumber/common/archive/gherkin/v${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="common-gherkin-v${PV}/gherkin/ruby"
 LICENSE="MIT"
