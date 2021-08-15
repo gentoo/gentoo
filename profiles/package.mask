@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-08-15)
+# Broken-ish, upstream unmaintained, only one un-used revdep.
+# Removal in 30 days. Bug 623674.
+dev-perl/MooseX-Types-DateTime-ButMaintained
+dev-perl/MooseX-Types-DateTimeX
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-08-15)
 # Broken for years, see bug 642466. No reverse dependencies,
 # no easy fix. Removal in 30 days.
 dev-perl/Perlbal-XS-HTTPHeaders
