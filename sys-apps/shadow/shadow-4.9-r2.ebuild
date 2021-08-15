@@ -57,6 +57,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-libsubid_pam_linking.patch"
 	"${FILESDIR}/${P}-libsubid_oot_build.patch"
 	"${FILESDIR}/shadow-4.9-libcrack.patch"
+	"${FILESDIR}/shadow-4.9-SHA-rounds.patch"
 )
 
 src_prepare() {
