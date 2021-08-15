@@ -131,7 +131,7 @@ RDEPEND=""
 if [[ ${AUTOTOOLS_AUTO_DEPEND} != "no" ]] ; then
 	case ${EAPI} in
 		5|6) DEPEND=${AUTOTOOLS_DEPEND} ;;
-		7) BDEPEND=${AUTOTOOLS_DEPEND} ;;
+		*) BDEPEND=${AUTOTOOLS_DEPEND} ;;
 	esac
 fi
 __AUTOTOOLS_AUTO_DEPEND=${AUTOTOOLS_AUTO_DEPEND} # See top of eclass
