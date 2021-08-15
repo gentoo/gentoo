@@ -44,6 +44,7 @@ RDEPEND="
 	acct-user/gpsd
 	acct-group/dialout
 	>=net-misc/pps-tools-0.0.20120407
+	$(python_gen_any_dep 'dev-util/scons[${PYTHON_USEDEP}]')
 	bluetooth? ( net-wireless/bluez )
 	dbus? (
 		sys-apps/dbus
@@ -72,6 +73,10 @@ BDEPEND="virtual/pkgconfig
 if [[ ${PV} == *9999* ]] ; then
 	BDEPEND+=" dev-ruby/asciidoctor"
 fi
+
+python_check_deps() {
+	has_version -b "dev-util/scons[${PYTHON_USEDEP}]" || return 1
+}
 
 src_prepare() {
 	# Make sure our list matches the source.

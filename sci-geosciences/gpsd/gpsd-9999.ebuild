@@ -44,6 +44,7 @@ RDEPEND="
 	acct-user/gpsd
 	acct-group/dialout
 	>=net-misc/pps-tools-0.0.20120407
+	$(python_gen_any_dep 'dev-util/scons[${PYTHON_USEDEP}]')
 	bluetooth? ( net-wireless/bluez )
 	dbus? (
 		sys-apps/dbus
@@ -73,6 +74,10 @@ if [[ ${PV} == *9999* ]] ; then
 	BDEPEND+=" dev-ruby/asciidoctor"
 fi
 
+python_check_deps() {
+	has_version -b "dev-util/scons[${PYTHON_USEDEP}]" || return 1
+}
+
 src_prepare() {
 	# Make sure our list matches the source.
 	local src_protocols=$(echo $(
@@ -84,6 +89,9 @@ src_prepare() {
 		eerror "Ebuild protocols:   ${GPSD_PROTOCOLS[*]}"
 		die "please sync ebuild & source"
 	fi
+
+	# bug #807661
+	sed -i -e 's:$SRCDIR/gpsd.hotplug:$SRCDIR/../gpsd.hotplug:' SConscript || die
 
 	default
 
@@ -183,7 +191,7 @@ src_compile() {
 }
 
 src_install() {
-	DESTDIR="${D}" escons install "${scons_opts[@]}" $(usex udev udev-install "")
+	DESTDIR="${D}" escons install "${scons_opts[@]}" $(usex udev udev-install '')
 
 	newconfd "${FILESDIR}"/gpsd.conf-2 gpsd
 	newinitd "${FILESDIR}"/gpsd.init-2 gpsd
