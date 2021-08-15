@@ -12,6 +12,7 @@
 		due to its heavy leverage of numpy for number crunching
 		and Qt's GraphicsView framework for fast display. 
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">pyqtgraph/pyqtgraph</remote-id>
 		<remote-id type="pypi">pyqtgraph</remote-id>
