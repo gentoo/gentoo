@@ -19,6 +19,8 @@ RDEPEND="dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 	dev-python/xmltodict[${PYTHON_USEDEP}]"
 
+distutils_enable_tests unittest
+
 python_prepare_all() {
 	sed -e "s|\\(^[[:space:]]*'[.[:alnum:]]\+\\)>=[^']*|\\1|" -i setup.py || die
 	distutils-r1_python_prepare_all
