@@ -38,6 +38,10 @@ BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.8.2-boost-1.77.0.patch"
+)
+
 src_prepare() {
 	default
 	[[ ${PV} = *9999 ]] && eautoreconf
