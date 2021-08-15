@@ -8,10 +8,6 @@
 # Mask Ruby 2.5 as EOL
 ruby_targets_ruby25
 
-# Aaron W. Swenson <titanofold@gentoo.org> (2021-07-05)
-# PostgreSQL 9.5 masked for removal
-postgres_targets_postgres9_5
-
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # PHP 7.2 is security vulnerable and end-of-life
 # Please upgrade to a newer slot
