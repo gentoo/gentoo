@@ -80,7 +80,7 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
 	opencl? ( virtual/opencl )
-	oidn? ( >=media-libs/oidn-1.3.0 )
+	oidn? ( >=media-libs/oidn-1.4.1 )
 	openimageio? ( >=media-libs/openimageio-2.2.13.1:= )
 	openexr? (
 		media-libs/ilmbase:=
