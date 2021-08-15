@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND+=" net-misc/curl[ssl]"
+DEPEND+=" net-misc/curl[ssl] test? ( net-misc/curl[samba] )"
 RDEPEND+=" net-misc/curl[ssl]"
 
 all_ruby_prepare() {
@@ -39,4 +39,7 @@ all_ruby_prepare() {
 	# avoid failing tests where failure condition seems weird, no
 	# upstream travis so not clear if the test is indeed broken.
 	sed -i -e '/test_multi_easy_http/,/^  end/ s:^:#:' tests/tc_curl_multi.rb || die
+
+	# avoid test requiring ntlm support on curl which is no longer available in gentoo
+	sed -i -e '/test_username_password/aomit "ntlm support in curl needed"' -i tests/tc_curl_easy.rb || die
 }
