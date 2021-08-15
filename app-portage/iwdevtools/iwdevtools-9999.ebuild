@@ -22,3 +22,14 @@ RDEPEND="
 src_configure() {
 	meson_src_configure -Ddocdir=${PF}
 }
+
+pkg_postinst() {
+	if [[ ! ${REPLACING_VERSIONS} ]]; then
+		elog "To integrate with portage, inspect the .bashrc files installed"
+		elog "at ${EROOT}/usr/share/${PN}. If not already using a bashrc, you"
+		elog "can use the example bashrc directly by creating a symlink:"
+		elog
+		elog "    ln -s ../../../usr/share/${PN}/bashrc ${EROOT}/etc/portage/bashrc"
+		elog
+	fi
+}
