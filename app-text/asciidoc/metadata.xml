@@ -11,5 +11,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">asciidoc</remote-id>
+		<remote-id type="github">asciidoc-py/asciidoc-py</remote-id>
+		<bugs-to>https://github.com/asciidoc-py/asciidoc-py/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
