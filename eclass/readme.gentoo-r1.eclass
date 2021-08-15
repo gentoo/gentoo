@@ -76,7 +76,10 @@ readme.gentoo_create_doc() {
 		die "You are not specifying README.gentoo contents!"
 	fi
 
-	dodoc "${T}"/README.gentoo
+	( # subshell to avoid pollution of calling environment
+		docinto .
+		dodoc "${T}"/README.gentoo
+	) || die
 	README_GENTOO_DOC_VALUE=$(< "${T}/README.gentoo")
 }
 
