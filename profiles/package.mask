@@ -462,6 +462,7 @@ sys-libs/db:5.1
 # Masked for revdep testing.
 >=dev-python/sip-6
 >=dev-python/PyQt5-5.15.5_pre
+>=dev-python/PyQtWebEngine-5.15.5_pre
 >=dev-python/qscintilla-python-2.13
 
 # Sam James <sam@gentoo.org> (2021-06-12)
