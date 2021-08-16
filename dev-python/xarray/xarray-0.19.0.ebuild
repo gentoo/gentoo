@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-python/numpy-1.17[${PYTHON_USEDEP}]
@@ -29,6 +29,10 @@ BDEPEND="
 		dev-python/toolz[${PYTHON_USEDEP}]
 		>=dev-python/scipy-1.4[${PYTHON_USEDEP}]
 	)"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.19.0-riscv_tests_datetime.patch
+)
 
 distutils_enable_tests pytest
 
