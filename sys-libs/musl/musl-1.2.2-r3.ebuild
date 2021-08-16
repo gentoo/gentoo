@@ -76,7 +76,7 @@ src_prepare() {
 
 	# Expand gethostid instead of being just a stub
 	eapply "${FILESDIR}/${PN}-1.2.2-gethostid.patch"
-}	
+}
 
 src_configure() {
 	tc-getCC ${CTARGET}
