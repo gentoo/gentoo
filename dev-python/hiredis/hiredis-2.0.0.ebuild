@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..10} )
 
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Python extension that wraps hiredis"
@@ -27,5 +27,5 @@ src_prepare() {
 
 python_test() {
 	cd test || die
-	"${EPYTHON}" -m unittest reader.ReaderTest || die "tests failed"
+	"${EPYTHON}" -m unittest -v reader.ReaderTest || die "tests failed"
 }
