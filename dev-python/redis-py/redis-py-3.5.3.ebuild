@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 
 inherit distutils-r1
 
@@ -18,15 +18,20 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-DEPEND="
+BDEPEND="
 	test? (
 		dev-db/redis
 		dev-python/mock[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	# https://github.com/andymccurdy/redis-py/issues/1459
+	"${FILESDIR}/${P}-fix-user-tests.patch"
+)
+
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
@@ -73,5 +78,3 @@ src_test() {
 	# Clean up afterwards
 	kill "$(<"${redis_pid}")" || die
 }
-
-distutils_enable_tests pytest
