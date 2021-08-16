@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit flag-o-matic
 
 DESCRIPTION="Pulseaudio Volume Control, GTK based mixer for Pulseaudio"
 HOMEPAGE="https://freedesktop.org/software/pulseaudio/pavucontrol/"
@@ -18,7 +17,7 @@ RDEPEND="
 	>=dev-cpp/gtkmm-3.22:3.0[X]
 	>=dev-libs/libsigc++-2.2:2
 	>=media-libs/libcanberra-0.16[gtk3]
-	>=media-sound/pulseaudio-5[glib]
+	>=media-sound/pulseaudio-15.0[glib]
 	virtual/freedesktop-icon-theme
 "
 DEPEND="${RDEPEND}"
