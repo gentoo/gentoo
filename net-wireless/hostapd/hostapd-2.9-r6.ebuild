@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs systemd savedconfig
+inherit flag-o-matic systemd savedconfig toolchain-funcs
 
 DESCRIPTION="IEEE 802.11 wireless LAN Host AP daemon"
 HOMEPAGE="https://w1.fi/ https://w1.fi/cgit/hostap/"
@@ -40,6 +40,7 @@ DEPEND="
 	netlink? ( net-libs/libnfnetlink )
 	sqlite? ( >=dev-db/sqlite-3 )"
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 pkg_pretend() {
 	if use internal-tls; then
@@ -194,6 +195,7 @@ src_configure() {
 	# support it.
 	if has_version ">=dev-libs/libnl-3.2"; then
 		echo "CONFIG_LIBNL32=y" >> ${CONFIG} || die
+		append-cflags $($(tc-getPKG_CONFIG) --cflags libnl-3.0)
 	fi
 
 	# TODO: Add support for BSD drivers
