@@ -14,8 +14,8 @@ KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~
 IUSE="alsa ipv6"
 
 RDEPEND="app-eselect/eselect-mpg123
-	>=media-libs/libao-1
-	media-libs/libid3tag
+	>=media-libs/libao-1:=
+	media-libs/libid3tag:=
 	media-libs/libmad
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )"
