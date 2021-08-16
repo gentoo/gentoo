@@ -16,7 +16,7 @@ IUSE="doc flac pcre"
 
 RDEPEND="
 	media-libs/libmad
-	media-libs/libid3tag
+	media-libs/libid3tag:=
 	media-libs/libogg
 	media-libs/libvorbis
 	flac? ( media-libs/flac )
