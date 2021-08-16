@@ -5,7 +5,6 @@
 # virtual/mysql & co. round-up:
 #  dev-db/mariadb fails tests here, see Bug #807995
 #  dev-db/mysql and dev-db/percona-server do not support this arch
-#  dev-db/mariadb-galera has been absent from the tree since June 2019
 #  dev-db/mysql-cluster not tested yet, seriously outdated in the tree
 dev-python/pymysql test
 sci-libs/gdal mysql
@@ -69,10 +68,6 @@ app-admin/sudo sssd
 # passes all tests on at least some systems. No longer needed for 1.12,
 # though.
 <sci-libs/hdf5-1.12.1 fortran debug
-
-# Marek Szuba <marecki@gentoo.org> (2021-07-19)
-# dependencies not keyworded here yet
-dev-python/pandas doc full-support test
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-14)
 # LuaJIT does not support riscv
