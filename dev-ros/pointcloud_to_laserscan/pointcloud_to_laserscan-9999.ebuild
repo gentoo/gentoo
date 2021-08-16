@@ -25,4 +25,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? (
+		dev-ros/roslint
+	)
 "
