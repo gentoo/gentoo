@@ -22,6 +22,7 @@ BDEPEND="
 	test? (
 		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
+		dev-python/scipy[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest
