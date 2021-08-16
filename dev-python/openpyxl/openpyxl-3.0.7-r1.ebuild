@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ SRC_URI="https://foss.heptapod.net/openpyxl/openpyxl/-/archive/${PV}/${P}.tar.bz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~riscv x86"
 
 RDEPEND="
 	dev-python/et_xmlfile[${PYTHON_USEDEP}]
