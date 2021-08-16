@@ -52,4 +52,8 @@ DEPEND="${RDEPEND}
 	dev-ros/trajectory_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/moveit_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-cpp/gtest
+	)
 "
