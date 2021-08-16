@@ -38,4 +38,7 @@ DEPEND="${RDEPEND}
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/trajectory_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? (
+		dev-cpp/gtest
+	)
 "
