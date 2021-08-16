@@ -1,18 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools git-r3
 
 DESCRIPTION="Supporting tools for IMA and EVM"
 HOMEPAGE="http://linux-ima.sourceforge.net"
-EGIT_REPO_URI="git://git.code.sf.net/p/linux-ima/ima-evm-utils"
+EGIT_REPO_URI="https://git.code.sf.net/p/linux-ima/ima-evm-utils"
 
 RDEPEND="
 	dev-libs/openssl:0=
 	sys-apps/keyutils:="
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-text/asciidoc
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt"
