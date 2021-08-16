@@ -10,7 +10,7 @@ HOMEPAGE="http://www.indexdata.dk/yaz"
 SRC_URI="http://ftp.indexdata.dk/pub/${PN}/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
-SLOT="0"
+SLOT="0/5"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="gnutls tcpd ziffy"
 
@@ -36,12 +36,11 @@ BDEPEND="
 
 src_prepare() {
 	default
-	AT_M4DIR="m4" eautoreconf
+	eautoreconf
 }
 
 src_configure() {
 	econf \
-		--disable-static \
 		--enable-shared \
 		$(use_with gnutls) \
 		$(use_enable tcpd tcpd /usr)
