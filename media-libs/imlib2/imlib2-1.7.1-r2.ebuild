@@ -8,11 +8,11 @@ inherit multilib-minimal toolchain-funcs
 DESCRIPTION="Version 2 of an advanced replacement library for libraries like libXpm"
 HOMEPAGE="https://www.enlightenment.org/
 	https://sourceforge.net/projects/enlightenment/files/imlib2-src/"
-SRC_URI="https://downloads.sourceforge.net/enlightenment/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/enlightenment/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+X bzip2 cpu_flags_x86_mmx cpu_flags_x86_sse2 doc +gif +jpeg mp3 +png +shm
 	static-libs +tiff +webp zlib"
 
@@ -21,7 +21,7 @@ REQUIRED_USE="shm? ( X )"
 RDEPEND="
 	media-libs/freetype:2[${MULTILIB_USEDEP}]
 	bzip2? ( app-arch/bzip2[${MULTILIB_USEDEP}] )
-	gif? ( media-libs/giflib[${MULTILIB_USEDEP}] )
+	gif? ( media-libs/giflib:=[${MULTILIB_USEDEP}] )
 	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
 	mp3? ( media-libs/libid3tag:=[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}] )
@@ -32,7 +32,7 @@ RDEPEND="
 		x11-libs/libXext[${MULTILIB_USEDEP}]
 	)
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
-	!<media-plugins/imlib2_loaders-1.6.0
+	!<media-plugins/imlib2_loaders-1.7.0
 "
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
