@@ -20,15 +20,15 @@ RDEPEND="
 	acct-group/minidlna
 	acct-user/minidlna
 	dev-db/sqlite:3
-	media-libs/flac:=
-	media-libs/libexif:=
+	media-libs/flac
+	media-libs/libexif
 	media-libs/libid3tag:=
-	media-libs/libogg:=
-	media-libs/libvorbis:=
+	media-libs/libogg
+	media-libs/libvorbis
 	media-video/ffmpeg:0=
 	virtual/jpeg:0=
 	elibc_musl? ( sys-libs/queue-standalone )
-	zeroconf? ( net-dns/avahi:= )"
+	zeroconf? ( net-dns/avahi )"
 DEPEND=${RDEPEND}
 BDEPEND="
 	virtual/pkgconfig"
