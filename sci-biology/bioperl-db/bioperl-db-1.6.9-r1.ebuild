@@ -14,7 +14,7 @@ DESCRIPTION="Perl tools for bioinformatics - Perl API that accesses the BioSQL s
 HOMEPAGE="http://www.bioperl.org/"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 RESTRICT="test"
 IUSE="test"
 
