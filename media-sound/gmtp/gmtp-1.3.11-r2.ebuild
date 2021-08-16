@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,8 +16,8 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	dev-libs/glib:2
 	media-libs/flac
-	media-libs/libid3tag
-	media-libs/libmtp
+	media-libs/libid3tag:=
+	media-libs/libmtp:=
 	media-libs/libvorbis
 	x11-libs/gtk+:3"
 DEPEND="${RDEPEND}"
