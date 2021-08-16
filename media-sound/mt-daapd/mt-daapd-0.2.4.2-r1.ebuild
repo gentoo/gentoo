@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,15 +16,15 @@ IUSE="vorbis"
 
 RDEPEND="
 	media-libs/libid3tag:=
-	net-dns/avahi:=[dbus]
+	net-dns/avahi[dbus]
 	sys-libs/gdbm:=
 	sys-libs/zlib:=
 	vorbis? (
-		media-libs/libvorbis:=
-		media-libs/libogg:=
+		media-libs/libvorbis
+		media-libs/libogg
 	)"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.3-sparc.patch
