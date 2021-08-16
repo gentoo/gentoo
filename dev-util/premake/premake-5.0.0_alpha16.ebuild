@@ -22,7 +22,7 @@ PATCHES=(
 
 src_compile() {
 	# bug #773505
-	tc-export CC
+	tc-export AR CC
 
 	emake -f Bootstrap.mak linux
 }
