@@ -23,14 +23,17 @@ RDEPEND="
 	>=x11-libs/gtk+-2.4:2
 	dvdr? ( app-cdr/dvd+rw-tools )
 	flac? ( media-libs/flac )
-	mp3? ( 	media-libs/libid3tag
+	mp3? (
+		media-libs/libid3tag:=
 		media-libs/libmad
-		media-sound/sox )
+		media-sound/sox
+	)
 	nls? ( virtual/libintl )
 	vorbis? (
 		media-libs/libogg
 		media-libs/libvorbis
-		media-sound/sox )
+		media-sound/sox
+	)
 "
 DEPEND="${RDEPEND}
 	dev-util/intltool
