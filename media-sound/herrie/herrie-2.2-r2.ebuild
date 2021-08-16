@@ -17,12 +17,12 @@ REQUIRED_USE="|| ( ao alsa pulseaudio oss )"
 
 RDEPEND="sys-libs/ncurses:=[unicode(+)?]
 	>=dev-libs/glib-2:2
-	ao? ( media-libs/libao )
+	ao? ( media-libs/libao:= )
 	alsa? ( media-libs/alsa-lib )
 	http? ( net-misc/curl )
 	modplug? ( media-libs/libmodplug )
 	mp3? ( media-libs/libmad
-		media-libs/libid3tag )
+		media-libs/libid3tag:= )
 	pulseaudio? ( media-sound/pulseaudio )
 	sndfile? ( media-libs/libsndfile )
 	vorbis? ( media-libs/libvorbis )
