@@ -62,7 +62,10 @@ DOCS=(
 	THANKS
 )
 
-PATCHES=( "${FILESDIR}/define-own-mysql-port-constant.patch" )
+PATCHES=(
+	"${FILESDIR}/define-own-mysql-port-constant.patch"
+	"${FILESDIR}/check_smtp-implicit-tls.patch"
+)
 
 src_prepare() {
 	default
