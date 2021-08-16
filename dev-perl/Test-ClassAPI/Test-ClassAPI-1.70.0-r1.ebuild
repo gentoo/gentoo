@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=ETHER
 DIST_VERSION=1.07
@@ -11,7 +11,6 @@ DESCRIPTION="Provides basic first-pass API testing for large class trees"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
-IUSE=""
 
 RDEPEND="
 	>=dev-perl/Class-Inspector-1.120.0
@@ -20,6 +19,6 @@ RDEPEND="
 	>=dev-perl/Params-Util-1.0.0
 	>=virtual/perl-Test-Simple-0.470.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
