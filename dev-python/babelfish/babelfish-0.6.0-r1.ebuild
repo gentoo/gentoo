@@ -5,6 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 PYTHON_COMPAT=( python3_{8..10} )
+
 inherit distutils-r1
 
 DESCRIPTION="Python library to work with countries and languages"
@@ -18,5 +19,8 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+
+BDEPEND="
+	>=dev-python/pyproject2setuppy-20[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
