@@ -211,8 +211,8 @@ src_install() {
 	keepdir /var/lib/postfix
 	fowners -R postfix:postfix /var/lib/postfix
 	fperms 0750 /var/lib/postfix
-	fowners root:postdrop /usr/sbin/post{drop,queue}
-	fperms 02755 /usr/sbin/post{drop,queue}
+	fowners root:postdrop /usr/sbin/post{drop,queue,log}
+	fperms 02755 /usr/sbin/post{drop,queue,log}
 
 	keepdir /etc/postfix
 	keepdir /etc/postfix/postfix-files.d
