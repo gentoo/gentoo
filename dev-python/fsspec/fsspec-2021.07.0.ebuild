@@ -18,7 +18,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 BDEPEND="
 	dev-python/versioneer[${PYTHON_USEDEP}]
