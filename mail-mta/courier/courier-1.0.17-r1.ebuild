@@ -11,19 +11,19 @@ SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="postgres ldap mysql pam nls ipv6 spell fax crypt norewrite \
 	fam web webmail gnutls"
 
 DEPEND="
-	>=net-libs/courier-authlib-0.71.2
-	>=net-libs/courier-unicode-2.2.3
+	>=net-libs/courier-authlib-0.71.1
+	>=net-libs/courier-unicode-2.1.2:=
 	net-dns/libidn:=
 	gnutls? ( net-libs/gnutls:= )
 	!gnutls? (
 		dev-libs/openssl:0=
 	)
-	>=sys-libs/gdbm-1.8.0
+	>=sys-libs/gdbm-1.8.0:=
 	dev-libs/libpcre
 	app-misc/mime-types
 	fax? ( >=media-libs/netpbm-9.12 app-text/ghostscript-gpl >=net-dialup/mgetty-1.1.28 )
