@@ -68,7 +68,7 @@ RDEPEND="
 	taglib? ( >=media-libs/taglib-1.5 )
 	v4l? ( >=media-libs/libv4l-0.8.3 )
 	xmp? ( >=media-libs/exempi-2 )
-	yaz? ( >=dev-libs/yaz-2:0 )
+	yaz? ( >=dev-libs/yaz-2:0= )
 "
 DEPEND="${RDEPEND}"
 
