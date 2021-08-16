@@ -21,7 +21,7 @@ IUSE="oss vorbis"
 
 DEPEND="media-libs/imlib2
 	media-libs/libmad
-	media-libs/libid3tag
+	media-libs/libid3tag:=
 	media-libs/libsndfile
 	media-video/vdr
 	sys-libs/zlib
