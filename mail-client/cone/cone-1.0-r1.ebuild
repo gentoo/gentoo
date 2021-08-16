@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ IUSE="crypt fam gnutls idn ipv6 ldap spell"
 RDEPEND="
 	dev-libs/libxml2
 	sys-libs/ncurses:0=
-	>=net-libs/courier-unicode-2
+	>=net-libs/courier-unicode-2:=
 	spell? ( app-text/aspell )
 	crypt? ( >=app-crypt/gnupg-1.0.4 )
 	fam? ( virtual/fam )
