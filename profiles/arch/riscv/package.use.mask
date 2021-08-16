@@ -65,9 +65,10 @@ kde-frameworks/solid ios
 app-admin/sudo sssd
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-07-20)
-# sci-libs/hdf5 fails tests with these 2 use flags enabled,
-# otherwise passes all tests
-sci-libs/hdf5 fortran debug
+# hdf5-1.10 always fails tests with these 2 use flags enabled, otherwise
+# passes all tests on at least some systems. No longer needed for 1.12,
+# though.
+<sci-libs/hdf5-1.12.1 fortran debug
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-19)
 # dependencies not keyworded here yet
