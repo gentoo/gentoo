@@ -40,7 +40,7 @@ RDEPEND="
 	>=dev-libs/nss-3.26
 	media-fonts/liberation-fonts
 	media-libs/alsa-lib
-	media-libs/mesa[gbm]
+	media-libs/mesa[gbm(+)]
 	net-misc/curl
 	net-print/cups
 	sys-apps/dbus
