@@ -44,7 +44,7 @@ RDEPEND="
 		media-sound/alsa-utils
 	)
 
-	ao? ( media-libs/libao[alsa?,pulseaudio?] )
+	ao? ( media-libs/libao:=[alsa?,pulseaudio?] )
 	audiofile? ( media-libs/audiofile:= )
 
 	cdio? (
@@ -63,7 +63,7 @@ RDEPEND="
 	fluidsynth? ( media-sound/fluidsynth )
 	gme? ( >=media-libs/game-music-emu-0.6.0_pre20120802 )
 	icu? (  dev-libs/icu:= )
-	id3tag? ( media-libs/libid3tag )
+	id3tag? ( media-libs/libid3tag:= )
 	jack? ( virtual/jack )
 	lame? ( network? ( media-sound/lame ) )
 	libmpdclient? ( media-libs/libmpdclient )
@@ -101,7 +101,7 @@ RDEPEND="
 	wavpack? ( media-sound/wavpack )
 	wildmidi? ( media-sound/wildmidi )
 	zeroconf? ( net-dns/avahi[dbus] )
-	zip? ( dev-libs/zziplib )
+	zip? ( dev-libs/zziplib:= )
 	zlib? ( sys-libs/zlib:= )"
 
 DEPEND="${RDEPEND}

@@ -11,13 +11,13 @@ SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
-IUSE="+alsa ao +audiofile bzip2 cdio chromaprint +cue +curl doc +dbus
+KEYWORDS="~alpha amd64 ~arm ppc ppc64 x86"
+IUSE="+alsa ao +audiofile bzip2 cdio chromaprint +cue +curl +dbus debug
 	+eventfd expat faad +ffmpeg +fifo flac fluidsynth gme +icu +id3tag +inotify
 	+ipv6 jack lame libmpdclient libsamplerate libsoxr +mad mikmod mms
 	modplug mpg123 musepack +network nfs openal opus oss pipe pulseaudio qobuz
 	recorder samba selinux sid signalfd sndfile sndio soundcloud sqlite systemd
-	test tidal twolame udisks vorbis wavpack webdav wildmidi upnp
+	test tidal twolame udisks unicode vorbis wavpack webdav wildmidi upnp
 	zeroconf zip zlib"
 
 OUTPUT_PLUGINS="alsa ao fifo jack network openal oss pipe pulseaudio sndio recorder"
@@ -38,13 +38,12 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-user/mpd
-	sys-libs/liburing:=
 	alsa? (
 		media-libs/alsa-lib
 		media-sound/alsa-utils
 	)
 
-	ao? ( media-libs/libao[alsa?,pulseaudio?] )
+	ao? ( media-libs/libao:=[alsa?,pulseaudio?] )
 	audiofile? ( media-libs/audiofile:= )
 
 	cdio? (
@@ -55,7 +54,6 @@ RDEPEND="
 	chromaprint? ( media-libs/chromaprint )
 	curl? ( net-misc/curl )
 	dbus? ( sys-apps/dbus )
-	doc? ( dev-python/sphinx )
 	expat? ( dev-libs/expat )
 	faad? ( media-libs/faad2 )
 	ffmpeg? ( media-video/ffmpeg:0= )
@@ -63,7 +61,7 @@ RDEPEND="
 	fluidsynth? ( media-sound/fluidsynth )
 	gme? ( >=media-libs/game-music-emu-0.6.0_pre20120802 )
 	icu? (  dev-libs/icu:= )
-	id3tag? ( media-libs/libid3tag )
+	id3tag? ( media-libs/libid3tag:= )
 	jack? ( virtual/jack )
 	lame? ( network? ( media-sound/lame ) )
 	libmpdclient? ( media-libs/libmpdclient )
@@ -101,7 +99,7 @@ RDEPEND="
 	wavpack? ( media-sound/wavpack )
 	wildmidi? ( media-sound/wildmidi )
 	zeroconf? ( net-dns/avahi[dbus] )
-	zip? ( dev-libs/zziplib )
+	zip? ( dev-libs/zziplib:= )
 	zlib? ( sys-libs/zlib:= )"
 
 DEPEND="${RDEPEND}
@@ -110,6 +108,10 @@ DEPEND="${RDEPEND}
 
 BDEPEND=">=dev-util/meson-0.49.2
 	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.18.conf.patch
+)
 
 pkg_setup() {
 	if use eventfd; then
@@ -136,18 +138,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i \
-		-e 's:^#filesystem_charset.*$:filesystem_charset "UTF-8":' \
-		-e 's:^#user.*$:user "mpd":' \
-		-e 's:^#bind_to_address.*any.*$:bind_to_address "localhost":' \
-		-e 's:^#bind_to_address.*$:bind_to_address "/var/lib/mpd/socket":' \
-		-e 's:^#music_directory.*$:music_directory "/var/lib/mpd/music":' \
-		-e 's:^#playlist_directory.*$:playlist_directory "/var/lib/mpd/playlists":' \
-		-e 's:^#db_file.*$:db_file "/var/lib/mpd/database":' \
-		-e 's:^#log_file.*$:log_file "/var/lib/mpd/log":' \
-		-e 's:^#pid_file.*$:pid_file "/var/lib/mpd/pid":' \
-		-e 's:^#state_file.*$:state_file "/var/lib/mpd/state":' \
-		doc/mpdconf.example || die
+	cp -f doc/mpdconf.example doc/mpdconf.dist || die "cp failed"
 	default
 }
 
@@ -159,6 +150,7 @@ src_configure() {
 		-Dcue=$(usex cue true false)
 		-Dcurl=$(usex curl enabled disabled)
 		-Ddbus=$(usex dbus enabled disabled)
+		-Ddebug=$(usex debug true false)
 		-Deventfd=$(usex eventfd true false)
 		-Dexpat=$(usex expat enabled disabled)
 		-Dicu=$(usex icu enabled disabled)
@@ -248,12 +240,11 @@ src_configure() {
 
 	emesonargs+=(
 		--libdir="/usr/$(get_libdir)"
-		-Ddocumentation=$(usex doc enabled disabled)
+		-Ddocumentation=false
 		-Dsolaris_output=disabled
 
 		-Ddatabase=true
 		-Ddsd=true
-		-Dio_uring=enabled
 		-Dtcp=true
 
 		-Dsystemd_system_unit_dir="$(systemd_get_systemunitdir)"
@@ -273,18 +264,24 @@ src_install() {
 	meson_src_install
 
 	insinto /etc
-	newins doc/mpdconf.example mpd.conf
+	newins doc/mpdconf.dist mpd.conf
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/${PN}-0.21.1.logrotate ${PN}
 
 	newinitd "${FILESDIR}"/${PN}-0.21.4.init ${PN}
 
+	if use unicode; then
+		sed -i -e 's:^#filesystem_charset.*$:filesystem_charset "UTF-8":' \
+			"${ED}"/etc/mpd.conf || die "sed failed"
+	fi
+
+	doman doc/mpd.1
+	doman doc/mpd.conf.5
+
 	keepdir /var/lib/mpd
 	keepdir /var/lib/mpd/music
 	keepdir /var/lib/mpd/playlists
-
-	rm -r "${ED}"/usr/share/doc/mpd || die
 
 	fowners mpd:audio -R /var/lib/mpd
 
