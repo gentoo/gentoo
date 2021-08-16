@@ -8,8 +8,11 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Converts the output of popular command-line tools and file-types to JSON"
-HOMEPAGE="https://github.com/kellyjonbrazil/jc/tags"
-SRC_URI="https://github.com/kellyjonbrazil/jc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/kellyjonbrazil/jc"
+SRC_URI="
+	https://github.com/kellyjonbrazil/jc/archive/v${PV}.tar.gz
+		-> ${P}.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
@@ -20,8 +23,3 @@ RDEPEND="dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/xmltodict[${PYTHON_USEDEP}]"
 
 distutils_enable_tests unittest
-
-python_prepare_all() {
-	sed -e "s|\\(^[[:space:]]*'[.[:alnum:]]\+\\)>=[^']*|\\1|" -i setup.py || die
-	distutils-r1_python_prepare_all
-}
