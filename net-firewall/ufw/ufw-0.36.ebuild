@@ -166,6 +166,27 @@ pkg_postinst() {
 	local print_check_req_warn
 	print_check_req_warn=false
 
+	local found=()
+	local apps=("${CATEGORY}/arno-iptables-firewall"
+		    "${CATEGORY}/ferm"
+		    "${CATEGORY}/firehol"
+		    "${CATEGORY}/firewalld"
+		    "${CATEGORY}/ipkungfu")
+
+	for exe in "${apps[@]}"
+	do
+		if has_version ''"${exe}"''; then
+			found+=( "${exe}" )
+		fi
+	done
+
+	if [ -n "$found" ]; then
+		echo
+		ewarn "WARNING: Detected other firewall applications:"
+		ewarn "${found[@]}"
+		ewarn "If enabled, these applications may interfere with ufw!"
+	fi
+
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		echo
 		elog "To enable ufw, add it to boot sequence and activate it:"
