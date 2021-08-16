@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ COMMON_DEPEND="
 	>=dev-libs/libxml2-2.7.7:2
 	>=dev-util/anjuta-3.6
 	>=media-libs/libgpod-0.8.2:=
-	>=media-libs/libid3tag-0.15
+	>=media-libs/libid3tag-0.15:=
 	>=x11-libs/gtk+-3.0.8:3
 	aac? ( media-libs/faad2 )
 	clutter? ( >=media-libs/clutter-gtk-1.2:1.0 )
