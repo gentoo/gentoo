@@ -535,6 +535,11 @@ cmake_src_configure() {
 		echo 'set(CMAKE_COLOR_MAKEFILE OFF CACHE BOOL "pretty colors during make" FORCE)' >> "${common_config}" || die
 	fi
 
+	# See bug 735820
+	if [[ ${EAPI} != 7 ]]; then
+		echo 'set(CMAKE_INSTALL_ALWAYS 1)' >> "${common_config}" || die
+	fi
+
 	# Wipe the default optimization flags out of CMake
 	if [[ ${CMAKE_BUILD_TYPE} != Gentoo ]]; then
 		cat >> ${common_config} <<- _EOF_ || die
