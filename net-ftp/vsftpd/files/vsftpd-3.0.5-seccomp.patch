@@ -1,0 +1,25 @@
+From 8a0ec911c17b64747b7cb2ff6e912c7cbb87d39f Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sat, 14 Aug 2021 09:31:04 -0400
+Subject: [PATCH] Fix seccomp failures in the postlogin broker
+
+---
+ seccompsandbox.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/seccompsandbox.c b/seccompsandbox.c
+index bcd96a0..5411d69 100644
+--- a/seccompsandbox.c
++++ b/seccompsandbox.c
+@@ -515,6 +515,8 @@ seccomp_sandbox_setup_postlogin_broker()
+   seccomp_sandbox_setup_base();
+   seccomp_sandbox_setup_data_connections();
+   allow_nr_1_arg_match(__NR_sendmsg, 3, 0);
++  allow_nr(__NR_alarm);
++  allow_nr(__NR_wait4);
+ }
+ 
+ void
+-- 
+2.32.0
+
