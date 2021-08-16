@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.31:2
 	>=dev-libs/libxml2-2.7.7:2
 	>=dev-util/anjuta-3.6
-	>=media-libs/libgpod-0.8.2:=
+	>=media-libs/libgpod-0.8.2
 	>=media-libs/libid3tag-0.15:=
 	>=x11-libs/gtk+-3.0.8:3
 	aac? ( media-libs/faad2 )
@@ -39,13 +39,13 @@ COMMON_DEPEND="
 			>=app-cdr/brasero-3
 			>=media-libs/libdiscid-0.2.2
 			media-libs/musicbrainz:5
-			)
 		)
+	)
 	mp3? ( media-sound/lame )
 	vorbis? (
 		media-libs/libvorbis
 		media-sound/vorbis-tools
-		)
+	)
 "
 
 # to pull in at least -flac and -vorbis plugins , but others at the same time
