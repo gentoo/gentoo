@@ -27,7 +27,7 @@ RDEPEND="
 	flac? ( >=media-libs/flac-1.3 )
 	mp3? (
 		>=media-libs/id3lib-3.8.3-r8
-		>=media-libs/libid3tag-0.15.1b-r4
+		>=media-libs/libid3tag-0.15.1b-r4:=
 	)
 	mp4? ( >=media-libs/taglib-1.9.1[mp4(+)] )
 	nautilus? ( gnome-base/nautilus )
