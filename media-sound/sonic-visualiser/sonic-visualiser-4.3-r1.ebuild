@@ -39,7 +39,7 @@ RDEPEND="
 	media-libs/speex
 	media-libs/vamp-plugin-sdk
 	sci-libs/fftw:3.0=
-	id3tag? ( media-libs/libid3tag )
+	id3tag? ( media-libs/libid3tag:= )
 	jack? ( virtual/jack )
 	mad? ( media-libs/libmad )
 	ogg? (
