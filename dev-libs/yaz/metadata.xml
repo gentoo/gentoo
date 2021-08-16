@@ -5,4 +5,7 @@
 	<use>
 		<flag name="ziffy">Install ziffy, a promiscuous Z39.50 APDU sniffer</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">indexdata/yaz</remote-id>
+	</upstream>
 </pkgmetadata>
