@@ -19,8 +19,8 @@ CDEPEND="!mail-mta/courier
 	net-mail/mailbase
 	dev-libs/libpcre
 	net-dns/libidn:0=
-	>=net-libs/courier-unicode-2.0
-	gdbm?     ( >=sys-libs/gdbm-1.8.0 )
+	>=net-libs/courier-unicode-2.0:=
+	gdbm?     ( >=sys-libs/gdbm-1.8.0:= )
 	mysql?    ( net-libs/courier-authlib )
 	postgres? ( net-libs/courier-authlib )
 	ldap?     ( net-libs/courier-authlib )
@@ -35,11 +35,12 @@ CDEPEND="!mail-mta/courier
 		!mail-mta/mini-qmail
 		!mail-mta/qmail-ldap
 	)"
-DEPEND="${CDEPEND}
-	virtual/pkgconfig"
+DEPEND="${CDEPEND}"
 RDEPEND="${CDEPEND}
 	dev-lang/perl
 	dovecot? ( net-mail/dovecot )"
+BDEPEND="virtual/pkgconfig"
+
 REQUIRED_USE="
 	mysql? ( authlib )
 	postgres? ( authlib )
