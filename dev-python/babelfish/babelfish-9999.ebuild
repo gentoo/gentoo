@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 PYTHON_COMPAT=( python3_{8..10} )
@@ -14,5 +14,8 @@ EGIT_REPO_URI="https://github.com/Diaoul/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
+
+BDEPEND="
+	>=dev-python/pyproject2setuppy-20[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
