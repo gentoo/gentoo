@@ -24,7 +24,7 @@ RDEPEND=">=dev-libs/libltdl-2:0
 	flac? ( media-libs/flac )
 	jack? ( media-sound/jack-audio-connection-kit )
 	libsamplerate? ( media-libs/libsamplerate )
-	mad? ( media-libs/libmad sys-libs/zlib media-libs/libid3tag )
+	mad? ( media-libs/libmad sys-libs/zlib media-libs/libid3tag:= )
 	magic? ( sys-apps/file )
 	modplug? ( media-libs/libmodplug )
 	musepack? ( media-sound/musepack-tools media-libs/taglib )
