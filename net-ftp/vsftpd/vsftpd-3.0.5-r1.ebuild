@@ -31,6 +31,7 @@ src_prepare() {
 		"${FILESDIR}"/vsftpd-2.3.2-kerberos.patch
 		"${FILESDIR}"/vsftpd-3.0.2-alpha.patch
 		"${FILESDIR}"/vsftpd-3.0.3-sparc.patch
+		"${FILESDIR}"/vsftpd-3.0.5-seccomp.patch
 	)
 	default
 }
