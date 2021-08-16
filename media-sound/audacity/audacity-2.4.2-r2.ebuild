@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ RESTRICT="test"
 
 RDEPEND="dev-libs/expat
 	media-libs/libsndfile
-	media-libs/libsoundtouch
+	media-libs/libsoundtouch:=
 	media-libs/portaudio[alsa?]
 	media-libs/soxr
 	>=media-sound/lame-3.100-r3
@@ -33,7 +33,7 @@ RDEPEND="dev-libs/expat
 	alsa? ( media-libs/alsa-lib )
 	ffmpeg? ( media-video/ffmpeg:= )
 	flac? ( media-libs/flac[cxx] )
-	id3tag? ( media-libs/libid3tag )
+	id3tag? ( media-libs/libid3tag:= )
 	jack? ( virtual/jack )
 	lv2? (
 		dev-libs/serd
