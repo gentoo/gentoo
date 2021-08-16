@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,8 +19,8 @@ IUSE="nls"
 
 RDEPEND="
 	dev-libs/libgudev:=
-	media-libs/libid3tag
-	media-libs/libmtp
+	media-libs/libid3tag:=
+	media-libs/libmtp:=
 	media-libs/libnjb
 	media-libs/taglib
 	>=x11-libs/gtk+-2.24:2"
