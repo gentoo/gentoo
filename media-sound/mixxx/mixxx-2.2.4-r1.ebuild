@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9})
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit flag-o-matic python-any-r1 scons-utils toolchain-funcs
 
@@ -43,7 +43,7 @@ RDEPEND="
 	dev-qt/qtxml:5
 	media-libs/chromaprint
 	media-libs/flac
-	media-libs/libid3tag
+	media-libs/libid3tag:=
 	media-libs/libogg
 	media-libs/libsndfile
 	>=media-libs/libsoundtouch-1.5
