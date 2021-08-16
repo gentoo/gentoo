@@ -16,10 +16,10 @@ SLOT="0"
 IUSE="alsa ao flac mad modplug musepack oss timidity vorbis"
 
 # musicbrainz disabled upstream for now
-RDEPEND="media-libs/audiofile
+RDEPEND="media-libs/audiofile:=
 	media-libs/taglib
 	alsa? ( media-libs/alsa-lib )
-	ao? ( media-libs/libao )
+	ao? ( media-libs/libao:= )
 	flac? ( media-libs/flac )
 	mad? (
 		media-libs/libid3tag:=
