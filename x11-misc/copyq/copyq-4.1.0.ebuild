@@ -17,7 +17,9 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	dev-libs/wayland
 	dev-qt/qtcore:5
+	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
@@ -26,7 +28,6 @@ RDEPEND="
 	dev-qt/qtx11extras:5
 	kde-frameworks/knotifications:5
 	x11-libs/libX11
-	x11-libs/libXfixes
 	x11-libs/libXtst
 "
 DEPEND="${RDEPEND}
