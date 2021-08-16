@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,11 +17,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+mp3 +mp4 +flac +vorbis +cache mysql archive"
 
-DEPEND="mp3? ( media-libs/libmad media-libs/libid3tag )
+DEPEND="mp3? ( media-libs/libmad media-libs/libid3tag:= )
 	mp4? ( media-libs/libmp4v2:0 )
 	flac? ( media-libs/flac )
 	vorbis? ( media-libs/libvorbis )
-	archive? ( app-arch/libarchive )
+	archive? ( app-arch/libarchive:= )
 	mysql? ( dev-db/mysql-connector-c:0= )"
 RDEPEND="${DEPEND}
 	sys-devel/libtool"
