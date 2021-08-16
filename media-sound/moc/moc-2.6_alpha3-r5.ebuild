@@ -31,7 +31,7 @@ RDEPEND="
 	mad? (
 		media-libs/libmad
 		sys-libs/zlib
-		media-libs/libid3tag
+		media-libs/libid3tag:=
 	)
 	magic? ( sys-apps/file )
 	modplug? ( >=media-libs/libmodplug-0.7 )
