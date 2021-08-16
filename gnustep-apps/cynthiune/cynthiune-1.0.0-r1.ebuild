@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,13 +21,17 @@ RDEPEND="media-libs/audiofile
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )
 	flac? ( media-libs/flac )
-	mad? ( media-libs/libid3tag
-		media-libs/libmad )
+	mad? (
+		media-libs/libid3tag:=
+		media-libs/libmad
+	)
 	musepack? ( >=media-sound/musepack-tools-444 )
 	modplug? ( media-libs/libmodplug )
 	timidity? ( media-sound/timidity++ )
-	vorbis? ( >=media-libs/libogg-1.1.2
-		>=media-libs/libvorbis-1.0.1-r2 )"
+	vorbis? (
+		>=media-libs/libogg-1.1.2
+		>=media-libs/libvorbis-1.0.1-r2
+	)"
 DEPEND="${RDEPEND}
 	mad? ( virtual/pkgconfig )"
 
