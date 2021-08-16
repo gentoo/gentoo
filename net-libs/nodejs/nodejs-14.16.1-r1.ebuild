@@ -14,7 +14,7 @@ SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="amd64 arm arm64 ppc64 x86 ~amd64-linux ~x64-macos"
+KEYWORDS="arm64 ppc64 x86"
 
 IUSE="cpu_flags_x86_sse2 debug doc +icu inspector +npm pax-kernel +snapshot +ssl system-icu +system-ssl systemtap test"
 REQUIRED_USE="inspector? ( icu ssl )
