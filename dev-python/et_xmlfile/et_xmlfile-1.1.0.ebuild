@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -20,7 +20,7 @@ S=${WORKDIR}/${MY_P}
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="dev-python/lxml[${PYTHON_USEDEP}]"
 
