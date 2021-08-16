@@ -16,8 +16,8 @@ IUSE="alsa nls"
 
 RDEPEND="
 	media-libs/libid3tag:=
-	media-libs/libmad:=
-	alsa? ( media-libs/alsa-lib:= )"
+	media-libs/libmad
+	alsa? ( media-libs/alsa-lib )"
 DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"
 
