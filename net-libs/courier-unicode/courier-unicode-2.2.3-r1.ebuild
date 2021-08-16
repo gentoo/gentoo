@@ -6,10 +6,10 @@ EAPI=7
 DESCRIPTION="Unicode library used by the courier mail server"
 HOMEPAGE="https://www.courier-mta.org/"
 SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
+
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/7"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE=""
 
 src_configure() {
 	econf --disable-static
