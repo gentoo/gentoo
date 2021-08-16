@@ -18,10 +18,6 @@ IUSE="static-libs"
 DEPEND="sys-devel/libtool"
 RDEPEND="!sys-apps/rescan-scsi-bus"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.26-stdint.patch #580236
-)
-
 src_configure() {
 	econf $(use_enable static-libs static)
 }
