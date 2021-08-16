@@ -6,24 +6,24 @@ EAPI=7
 inherit flag-o-matic multilib
 
 DESCRIPTION="An MTA designed specifically for maildirs"
-HOMEPAGE="https://www.courier-mta.org/"
+HOMEPAGE="http://www.courier-mta.org/"
 SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 
-LICENSE="GPL-3"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 IUSE="postgres ldap mysql pam nls ipv6 spell fax crypt norewrite \
 	fam web webmail gnutls"
 
 DEPEND="
-	>=net-libs/courier-authlib-0.70.0
-	>=net-libs/courier-unicode-2.1
+	>=net-libs/courier-authlib-0.69.0-r1
+	>=net-libs/courier-unicode-2.1:=
 	net-dns/libidn:=
 	gnutls? ( net-libs/gnutls:= )
 	!gnutls? (
 		dev-libs/openssl:0=
 	)
-	>=sys-libs/gdbm-1.8.0
+	>=sys-libs/gdbm-1.8.0:=
 	dev-libs/libpcre
 	app-misc/mime-types
 	fax? ( >=media-libs/netpbm-9.12 app-text/ghostscript-gpl >=net-dialup/mgetty-1.1.28 )
@@ -252,6 +252,11 @@ src_test() {
 pkg_postinst() {
 	use fam && elog "fam daemon is needed for courier-imapd" \
 		|| ewarn "courier was built without fam support"
+
+	ewarn "If you are updating from pre-1.0 courier versions to"
+	ewarn "1.x versions you may need to update your maildir's"
+	ewarn "to the new Unicode format, see also:"
+	ewarn "https://www.courier-mta.org/maildirmake.html"
 }
 
 pkg_config() {
