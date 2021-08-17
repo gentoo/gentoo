@@ -28,7 +28,7 @@ SLOT="0"
 IUSE="debug lto"
 
 RDEPEND="
-	dev-libs/libsodium
+	dev-libs/libsodium:=
 	media-fonts/sil-charis
 	media-libs/libsdl2[haptic]
 	media-libs/sdl2-mixer
