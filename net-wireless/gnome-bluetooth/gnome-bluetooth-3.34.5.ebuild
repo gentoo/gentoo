@@ -35,7 +35,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? (
 		$(python_gen_any_dep '
-			dev-python/dbusmock[${PYTHON_USEDEP}]
+			dev-python/python-dbusmock[${PYTHON_USEDEP}]
 			dev-python/dbus-python[${PYTHON_USEDEP}]
 		')
 	)
@@ -43,7 +43,7 @@ BDEPEND="
 
 python_check_deps() {
 	if use test; then
-		has_version -b "dev-python/dbusmock[${PYTHON_USEDEP}]" && \
+		has_version -b "dev-python/python-dbusmock[${PYTHON_USEDEP}]" &&
 		has_version -b "dev-python/dbus-python[${PYTHON_USEDEP}]"
 	fi
 }

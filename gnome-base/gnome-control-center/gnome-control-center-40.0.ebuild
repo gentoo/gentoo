@@ -117,7 +117,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	test? ( $(python_gen_any_dep '
-		dev-python/dbusmock[${PYTHON_USEDEP}]
+		dev-python/python-dbusmock[${PYTHON_USEDEP}]
 	') )
 "
 
@@ -131,7 +131,7 @@ PATCHES=(
 
 python_check_deps() {
 	use test || return 0
-	has_version "dev-python/dbusmock[${PYTHON_USEDEP}]"
+	has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
