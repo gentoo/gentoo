@@ -6,21 +6,18 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..9} )
 inherit distutils-r1
 
-# TODO: pkgmove to cfn-lint
-MY_P=${P/-python}
 DESCRIPTION="CloudFormation Linter"
 HOMEPAGE="https://pypi.org/project/cfn-lint/ https://github.com/aws-cloudformation/cfn-lint/"
 SRC_URI="
 	https://github.com/aws-cloudformation/cfn-lint/archive/v${PV}.tar.gz
-		-> ${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
+		-> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 RDEPEND="
-	>=dev-python/aws-sam-translator-1.35.0[${PYTHON_USEDEP}]
+	>=dev-python/aws-sam-translator-1.38.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/importlib_resources[${PYTHON_USEDEP}]
 	' python3_6)
@@ -41,7 +38,7 @@ BDEPEND="
 distutils_enable_tests --install unittest
 
 PATCHES=(
-	"${FILESDIR}/cfn-python-lint-0.30.1-tests.patch"
+	"${FILESDIR}/cfn-lint-0.30.1-tests.patch"
 )
 
 src_prepare() {

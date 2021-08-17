@@ -1,3 +1,4 @@
 move x11-misc/xrestop x11-apps/xrestop
 move media-sound/zam-plugins media-plugins/zam-plugins
 slotmove =dev-ruby/elasticsearch-transport-6.8.3 6 6.8.3
+move dev-python/cfn-python-lint dev-python/cfn-lint

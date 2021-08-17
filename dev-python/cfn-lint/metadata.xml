@@ -11,8 +11,8 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">aws-cloudformation/cfn-python-lint</remote-id>
+		<remote-id type="github">aws-cloudformation/cfn-lint</remote-id>
 		<remote-id type="pypi">cfn-lint</remote-id>
-		<bugs-to>https://github.com/aws-cloudformation/cfn-python-lint/issues</bugs-to>
+		<bugs-to>https://github.com/aws-cloudformation/cfn-lint/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
