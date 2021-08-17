@@ -3,8 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-inherit flag-o-matic python-any-r1 readme.gentoo-r1 systemd verify-sig
+inherit flag-o-matic readme.gentoo-r1 systemd verify-sig
 
 MY_PV="$(ver_rs 4 -)"
 MY_PF="${PN}-${MY_PV}"
@@ -17,9 +16,7 @@ S="${WORKDIR}/${MY_PF}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-if [[ ${PV} != *_alpha* && ${PV} != *_beta* && ${PV} != *_rc* ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~ppc-macos"
-fi
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~ppc-macos"
 IUSE="caps doc lzma +man scrypt seccomp selinux +server systemd tor-hardening test zstd"
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/torproject.org.asc
 
@@ -41,24 +38,14 @@ RDEPEND="
 	${DEPEND}
 	selinux? ( sec-policy/selinux-tor )"
 
-# bug #764260
-DEPEND+="
-	test? (
-		${DEPEND}
-		${PYTHON_DEPS}
-	)"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
+	"${FILESDIR}"/${PN}-0.4.5.5_rc1-LDFLAGS-typo.patch
 )
 
 DOCS=()
 
 RESTRICT="!test? ( test )"
-
-pkg_setup() {
-	use test && python-any-r1_pkg_setup
-}
 
 src_configure() {
 	use doc && DOCS+=( README ChangeLog ReleaseNotes doc/HACKING )
