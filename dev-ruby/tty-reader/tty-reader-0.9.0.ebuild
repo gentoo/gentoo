@@ -20,7 +20,7 @@ SRC_URI="https://github.com/piotrmurach/tty-reader/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~hppa ~riscv ~sparc"
 IUSE=""
 
 ruby_add_rdepend "
