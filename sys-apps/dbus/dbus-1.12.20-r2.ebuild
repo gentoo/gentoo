@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-inherit autotools flag-o-matic linux-info python-any-r1 readme.gentoo-r1 systemd virtualx multilib-minimal
+PYTHON_COMPAT=( python3_{8,9} )
+inherit autotools flag-o-matic linux-info python-any-r1 readme.gentoo-r1 systemd tmpfiles virtualx multilib-minimal
 
 DESCRIPTION="A message bus system, a simple way for applications to talk to each other"
 HOMEPAGE="https://dbus.freedesktop.org/"
@@ -246,9 +246,12 @@ multilib_src_install_all() {
 pkg_postinst() {
 	readme.gentoo_print_elog
 
+	tmpfiles_process dbus.conf
+
 	# Ensure unique id is generated and put it in /etc wrt #370451 but symlink
 	# for DBUS_MACHINE_UUID_FILE (see tools/dbus-launch.c) and reverse
 	# dependencies with hardcoded paths (although the known ones got fixed already)
+	# TODO: should be safe to remove at least the ln because of the above tmpfiles_process?
 	dbus-uuidgen --ensure="${EROOT}"/etc/machine-id
 	ln -sf "${EPREFIX}"/etc/machine-id "${EROOT}"/var/lib/dbus/machine-id
 
