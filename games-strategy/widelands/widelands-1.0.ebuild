@@ -42,6 +42,10 @@ BDEPEND="
 	${PYTHON_DEPS}
 	sys-devel/gettext"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-boost-1.77.patch
+)
+
 src_configure() {
 	CMAKE_BUILD_TYPE="Release"
 
