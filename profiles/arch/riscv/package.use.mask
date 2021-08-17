@@ -4,7 +4,7 @@
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # dependencies not keyworded/tested
 kde-frameworks/kfilemetadata ffmpeg
-kde-plasma/plasma-workspace appstream screencast gps
+kde-plasma/plasma-workspace appstream screencast gps geolocation
 kde-plasma/kdeplasma-addons webengine
 kde-plasma/plasma-meta networkmanager accessibility grub
 kde-plasma/discover firmware flatpak
