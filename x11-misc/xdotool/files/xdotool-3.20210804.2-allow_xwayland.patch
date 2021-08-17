@@ -1,0 +1,14 @@
+See
+https://github.com/jordansissel/xdotool/issues/346
+for details.
+
+--- a/xdo.c
++++ b/xdo.c
+@@ -121,7 +121,6 @@
+   // Try to detect XWayland and warn the user about problems.
+   if (appears_to_be_wayland(xdpy)) {
+     fprintf(stderr, "The X server at %s appears to be XWayland. Unfortunately, XWayland does not correctly support the features used by libxdo and xdotool.\n", display);
+-    return NULL;
+   }
+ 
+ 
