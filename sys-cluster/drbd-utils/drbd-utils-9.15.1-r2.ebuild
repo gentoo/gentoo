@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools bash-completion-r1 udev
+inherit autotools bash-completion-r1 tmpfiles udev
 
 DESCRIPTION="mirror/replicate block-devices across a network-connection"
 SRC_URI="https://www.linbit.com/downloads/drbd/utils/${P}.tar.gz"
@@ -93,6 +93,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process drbd.conf
+
 	einfo
 	einfo "Please copy and gunzip the configuration file:"
 	einfo "from /usr/share/doc/${PF}/${PN/-utils/}.conf.example.bz2 to /etc/${PN/-utils/}.conf"
