@@ -1,6 +1,15 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
+# dependencies not keyworded/tested
+kde-plasma/plasma-meta networkmanager accessibility grub
+kde-plasma/discover firmware flatpak
+kde-plasma/kwin accessibility screencast
+kde-plasma/plasma-firewall firewalld
+# vlc has libatomic issue, bug #803473
+media-libs/phonon vlc gstreamer
+
 # Marek Szuba <marecki@gentoo.org> (2021-08-17)
 # sys-libs/libfaketime does not work properly on this arch
 sys-auth/sssd test
