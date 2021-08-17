@@ -33,6 +33,7 @@ DEPEND=">=net-analyzer/icinga2-2.1.1
 			dev-lang/php:8.0[apache2?,cli,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
 		)
 		dev-libs/icinga-php-library
+		dev-libs/icinga-php-thirdparty
 		acct-group/icingacmd
 		acct-group/icingaweb2"
 RDEPEND="${DEPEND}"
