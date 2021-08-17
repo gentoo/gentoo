@@ -12,7 +12,7 @@ inherit eutils systemd flag-o-matic prefix toolchain-funcs \
 # Patch version
 PATCH_SET="https://dev.gentoo.org/~whissi/dist/${PN}/${PN}-10.5.11-patches-01.tar.xz"
 
-SRC_URI="https://downloads.mariadb.org/interstitial/${P}/source/${P}.tar.gz
+SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
 	${PATCH_SET}"
 
 HOMEPAGE="https://mariadb.org/"
