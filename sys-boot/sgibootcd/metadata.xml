@@ -5,4 +5,9 @@
 		<email>mips@gentoo.org</email>
 		<name>Mips Team</name>
 	</maintainer>
+
+	<longdescription>
+		sgibootcd is a small utility used to create the burnable,
+		non-ISO9660 image format for bootable CDs for SGI systems.
+	</longdescription>
 </pkgmetadata>
