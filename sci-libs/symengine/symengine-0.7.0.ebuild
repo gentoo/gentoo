@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.7.0-cmake-build-type.patch"
+	"${FILESDIR}/${PN}-0.7.0-boost-1.77.patch"
 )
 
 pkg_pretend() {
