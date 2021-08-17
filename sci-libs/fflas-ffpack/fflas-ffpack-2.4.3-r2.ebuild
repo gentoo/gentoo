@@ -25,10 +25,11 @@ RDEPEND="${DEPEND}"
 
 # The no-test-echelon patch works around a test failure that may
 # eventually be fixed upstream. Gentoo bug 725446 and upstream
-# Github issue 282.
+# Github issue 282. Same for test-fgesv (bug 807100).
 PATCHES=(
 	"${FILESDIR}/${PN}-2.3.2-blaslapack.patch"
 	"${FILESDIR}/${P}-no-test-echelon.patch"
+	"${FILESDIR}/${P}-no-test-fgesv.patch"
 	"${FILESDIR}/${P}-fix-internal-linking.patch"
 	"${FILESDIR}/${P}-no-fabi-version.patch"
 )
