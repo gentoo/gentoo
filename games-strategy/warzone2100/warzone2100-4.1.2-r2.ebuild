@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PLOCALES="af_ZA bg_BG ca_ES cs da de el en_GB eo es et_EE fa_IR fi fr fy ga he_IL hr hu id_ID id it ko la lt nb nl pl pt_BR pt ro ru sk sl tr tt_RU uk_UA zh_CN zh_TW"
-inherit cmake desktop plocale xdg
+inherit cmake desktop xdg
 
 MY_PV=$(ver_cut 1-2)
 VIDEOS_PV=2.2
@@ -15,17 +14,17 @@ SRC_URI="mirror://sourceforge/warzone2100/releases/${PV}/${PN}_src.tar.xz -> ${P
 	videos? ( mirror://sourceforge/warzone2100/warzone2100/Videos/${VIDEOS_PV}/high-quality-en/sequences.wz -> ${VIDEOS_P} )"
 S="${WORKDIR}/${PN}"
 
-LICENSE="GPL-2+ CC-BY-SA-3.0 public-domain vulkan? ( GPL-3 )"
+LICENSE="GPL-2+ CC-BY-SA-3.0 public-domain"
 SLOT="0"
+#[[ "${PV}" == *_beta* ]] || \
 KEYWORDS="~amd64 ~x86"
-# Upstream requested debug support
+# upstream requested debug support
 IUSE="debug discord nls videos vulkan"
 
-# TODO: unbundle miniupnpc and quesoglc, bug #477610
+# TODO: unbundle quesoglc
 # quesoglc-0.7.2 is buggy: http://developer.wz2100.net/ticket/2828
 CDEPEND="
 	>=dev-games/physfs-2[zip]
-	dev-db/sqlite
 	>=dev-libs/libsodium-1.0.14:=
 	dev-libs/openssl:0=
 	media-libs/freetype:2
@@ -37,13 +36,18 @@ CDEPEND="
 	media-libs/libtheora
 	media-libs/libvorbis
 	media-libs/openal
-	net-misc/curl
+	net-libs/miniupnpc:=
 	sys-libs/zlib
+	virtual/glu
+	virtual/opengl
+	x11-libs/libX11
+	x11-libs/libXrandr
 	nls? ( virtual/libintl )
 	vulkan? ( media-libs/libsdl2:=[vulkan] )
 "
 DEPEND="
 	${CDEPEND}
+	app-text/asciidoc
 	dev-libs/fribidi
 	media-libs/fontconfig
 "
@@ -53,7 +57,6 @@ RDEPEND="
 "
 BDEPEND="
 	app-arch/zip
-	app-text/asciidoc
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
@@ -70,28 +73,18 @@ src_prepare() {
 
 	sed -i -e 's/#top_builddir/top_builddir/' po/Makevars || die
 
-	# Delete translations we're not using
-	cleanup_po() {
-		local locale=${1}
-		einfo "Cleaning up disabled locale: ${locale}"
-		rm po/${locale}.po || die
-	}
-
-	plocale_for_each_disabled_locale cleanup_po
-
 	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DWZ_DISTRIBUTOR="Gentoo Linux"
-		-DWZ_ENABLE_WARNINGS_AS_ERRORS=OFF
-		-DWZ_ENABLE_BACKEND_VULKAN=$(usex vulkan)
-		-DBUILD_SHARED_LIBS=OFF
-		-DENABLE_NLS=$(usex nls)
-		-DENABLE_DISCORD=$(usex discord)
+		-DWZ_ENABLE_WARNINGS_AS_ERRORS="OFF"
+		-DWZ_ENABLE_BACKEND_VULKAN="$(usex vulkan)"
+		-DBUILD_SHARED_LIBS="OFF"
+		-DENABLE_NLS="$(usex nls)"
+		-DENABLE_DISCORD="$(usex discord)"
 	)
-
 	cmake_src_configure
 }
 
@@ -102,16 +95,24 @@ src_compile() {
 }
 
 src_install() {
-	cmake_src_install
+	default
 
-	rm "${ED}"/usr/bin/.portable || die
+	insinto /usr/bin
+	dobin "${BUILD_DIR}"/src/${PN}
 
-	# We cover licencing within the ebuild itself
-	rm "${ED}"/usr/share/doc/${PF}/COPYING* \
-		"${ED}"/usr/share/doc/${PF}/copyright || die
+	insinto /usr/share/${PN}
+	doins "${BUILD_DIR}"/data/base.wz
+	doins "${BUILD_DIR}"/data/mp.wz
 
 	if use videos ; then
-		insinto /usr/share/${PN}
 		newins "${DISTDIR}"/${VIDEOS_P} sequences.wz
 	fi
+
+	insinto /usr/share/${PN}
+	doins -r data/music
+
+	doman "${BUILD_DIR}"/doc/warzone2100.6
+
+	doicon -s 128 icons/warzone2100.png
+	domenu icons/warzone2100.desktop
 }
