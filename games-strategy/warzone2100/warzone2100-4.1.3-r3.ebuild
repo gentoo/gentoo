@@ -21,8 +21,6 @@ KEYWORDS="~amd64 ~x86"
 # Upstream requested debug support
 IUSE="debug discord nls videos vulkan"
 
-# TODO: unbundle quesoglc, bug #477610
-# quesoglc-0.7.2 is buggy: http://developer.wz2100.net/ticket/2828
 CDEPEND="
 	>=dev-games/physfs-2[zip]
 	dev-db/sqlite
