@@ -18,7 +18,7 @@ RDEPEND="
 	>=dev-python/aws-xray-sdk-python-0.93[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/backports-tempfile[${PYTHON_USEDEP}]' python3_{6,7})
 	dev-python/boto[${PYTHON_USEDEP}]
-	dev-python/cfn-python-lint[${PYTHON_USEDEP}]
+	dev-python/cfn-lint[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-3.3.1[${PYTHON_USEDEP}]
 	dev-python/cookies[${PYTHON_USEDEP}]
 	dev-python/dicttoxml[${PYTHON_USEDEP}]
