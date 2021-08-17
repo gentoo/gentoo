@@ -31,7 +31,6 @@ valgrind
 
 # Not tested yet
 bluetooth
-emacs
 jack
 java
 mono
