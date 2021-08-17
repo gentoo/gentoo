@@ -18,4 +18,4 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-python/pytest[${PYTHON_USEDEP}]
-	dev-python/u-msgpack[${PYTHON_USEDEP}]"
+	dev-python/u-msgpack-python[${PYTHON_USEDEP}]"
