@@ -41,3 +41,11 @@ python_prepare_all() {
 	mv pytest_trio/_tests/conftest.py conftest.py || die
 	distutils-r1_python_prepare_all
 }
+
+python_test() {
+	# disable autoloading pytest-asyncio in nested pytest calls
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	# since we disabled autoloading, force loading pytest-trio
+	local -x PYTEST_PLUGINS=pytest_trio.plugin
+	epytest
+}
