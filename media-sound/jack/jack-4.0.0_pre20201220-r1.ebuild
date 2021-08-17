@@ -6,7 +6,6 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8,9} )
 PYTHON_REQ_USE="ncurses"
 DISTUTILS_SINGLE_IMPL=1
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
