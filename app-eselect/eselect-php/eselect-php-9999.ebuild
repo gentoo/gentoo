@@ -3,6 +3,7 @@
 
 EAPI=7
 
+TMPFILES_OPTIONAL="yes"
 inherit autotools git-r3 tmpfiles
 
 DESCRIPTION="PHP eselect module"
@@ -16,7 +17,8 @@ IUSE="fpm apache2"
 
 # The "DirectoryIndex" line in 70_mod_php.conf requires mod_dir.
 RDEPEND="app-admin/eselect
-	apache2? ( www-servers/apache[apache2_modules_dir] )"
+	apache2? ( www-servers/apache[apache2_modules_dir] )
+	fpm? ( virtual/tmpfiles )"
 
 src_prepare() {
 	default
