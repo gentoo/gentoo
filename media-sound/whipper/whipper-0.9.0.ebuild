@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-libs/libcdio-paranoia-0.94_p2
 	>=dev-python/pycdio-2.1.0[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/python-musicbrainz-ngs[${PYTHON_USEDEP}]
+	dev-python/python-musicbrainzngs[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 	media-libs/mutagen[${PYTHON_USEDEP}]
