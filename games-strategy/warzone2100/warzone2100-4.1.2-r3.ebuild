@@ -24,9 +24,7 @@ IUSE="debug discord nls videos vulkan"
 CDEPEND="
 	>=dev-games/physfs-2[zip]
 	>=dev-libs/libsodium-1.0.14:=
-	dev-libs/openssl:0=
 	media-libs/freetype:2
-	media-libs/glew:=
 	media-libs/harfbuzz:=
 	media-libs/libogg
 	media-libs/libpng:=
