@@ -46,13 +46,17 @@ BDEPEND="
 	eds? ( gnome-extra/evolution-data-server[vala] )
 	test? (
 		sys-apps/dbus
-		bluetooth? ( $(python_gen_any_dep 'dev-python/dbusmock[${PYTHON_USEDEP}]') )
+		bluetooth? (
+			$(python_gen_any_dep '
+				dev-python/python-dbusmock[${PYTHON_USEDEP}]
+			')
+		)
 	)
 "
 
 python_check_deps() {
 	if use test && use bluetooth; then
-		has_version "dev-python/dbusmock[${PYTHON_USEDEP}]"
+		has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
 	fi
 }
 

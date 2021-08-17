@@ -274,7 +274,7 @@ media-plugins/gst-plugins-meta ffmpeg
 dev-db/mariadb numa
 
 # Gilles Dartiguelongue <eva@gentoo.org> (2017-08-16)
-# missing keyword on dev-python/dbusmock, bug #620024
+# missing keyword on dev-python/python-dbusmock, bug #620024
 >=gnome-base/gnome-settings-daemon-3.24 test
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)

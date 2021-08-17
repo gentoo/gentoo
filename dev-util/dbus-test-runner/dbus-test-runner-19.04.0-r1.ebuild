@@ -30,20 +30,20 @@ COMMON_DEPEND="${PYTHON_DEPS}
 DEPEND="${COMMON_DEPEND}
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/dbusmock[${PYTHON_USEDEP}]
+			dev-python/python-dbusmock[${PYTHON_USEDEP}]
 		')
 	)
 "
 RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/dbusmock[${PYTHON_USEDEP}]
+		dev-python/python-dbusmock[${PYTHON_USEDEP}]
 	')
 "
 
 src_prepare() {
 	default
 
-	# bind to specific Python version (with dbusmock installed)
+	# bind to specific Python version (with python-dbusmock installed)
 	sed -i -e "s:python3:${EPYTHON}:" \
 		libdbustest/dbus-mock.c tests/test-libdbustest-mock.c || die
 }

@@ -81,7 +81,7 @@ BDEPEND="
 	test? (
 		$(python_gen_any_dep '
 			dev-python/pygobject:3[${PYTHON_USEDEP}]
-			dev-python/dbusmock[${PYTHON_USEDEP}]
+			dev-python/python-dbusmock[${PYTHON_USEDEP}]
 		')
 		gnome-base/gnome-session
 	)
@@ -98,7 +98,7 @@ PATCHES=(
 python_check_deps() {
 	if use test; then
 		has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]" &&
-		has_version "dev-python/dbusmock[${PYTHON_USEDEP}]"
+		has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
 	fi
 }
 
