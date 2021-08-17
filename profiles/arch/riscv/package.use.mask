@@ -63,10 +63,6 @@ dev-python/pymongo test
 # lack an ios device to test it
 kde-frameworks/solid ios
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-20)
-# sys-auth/sssd and its deps not keyworded yet
-app-admin/sudo sssd
-
 # Alex Fan <alexfanqi@yahoo.com> (2021-07-20)
 # hdf5-1.10 always fails tests with these 2 use flags enabled, otherwise
 # passes all tests on at least some systems. No longer needed for 1.12,
