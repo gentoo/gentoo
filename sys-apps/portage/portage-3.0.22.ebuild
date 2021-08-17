@@ -83,21 +83,6 @@ pkg_pretend() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
-	# Revert due to regressions:
-	# https://bugs.gentoo.org/777492
-	# https://github.com/gentoo/portage/pull/728
-	eapply -R "${DISTDIR}/portage-3.0.20-bug-777492-209be9a.patch"
-	eapply -R "${DISTDIR}/portage-3.0.20-bug-777492-a4d8829.patch"
-
-	# Apply regression fix for https://bugs.gentoo.org/796584.
-	eapply "${DISTDIR}/portage-3.0.20-bug-796584-693f6bf.patch"
-
-	# Apply EAPI 8 fix for https://bugs.gentoo.org/796812.
-	eapply "${DISTDIR}/portage-3.0.20-bug-796812-2ce11f0.patch"
-
-	# Apply EAPI 8 fix for https://bugs.gentoo.org/796959
-	eapply "${DISTDIR}/portage-3.0.20-bug-796959-c8a52e1-c3e4919.patch"
-
 	sed -e "s:^VERSION = \"HEAD\"$:VERSION = \"${PV}\":" -i lib/portage/__init__.py || die
 
 	if use gentoo-dev; then
