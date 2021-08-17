@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-08-17)
+# net-wireless/rtl-sdr not keyworded here
+sys-apps/rng-tools rtlsdr
+
 # Joshua Kinard <kumba@gentoo.org> (2021-07-31)
 # Mask USE 'test' on MIPS for libgudev.  This requires dev-util/umockdev,
 # which has apparently never had a MIPS keyword.  Running the testsuite can be
