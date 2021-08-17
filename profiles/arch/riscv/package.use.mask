@@ -3,6 +3,7 @@
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # dependencies not keyworded/tested
+kde-plasma/powerdevil wireless
 kde-plasma/plasma-vault networkmanager
 kde-plasma/plasma-desktop emoji
 kde-plasma/ksystemstats networkmanager
