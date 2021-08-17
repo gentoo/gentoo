@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{7..10} pypy3 )
 PYTHON_REQ_USE="xml(+),threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 tmpfiles
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gentoolkit.git"
@@ -46,9 +46,7 @@ python_prepare_all() {
 }
 
 pkg_postinst() {
-	# Create cache directory for revdep-rebuild
-	mkdir -p -m 0755 "${EROOT}"/var/cache
-	mkdir -p -m 0700 "${EROOT}"/var/cache/revdep-rebuild
+	tmpfiles_process revdep-rebuild.conf
 
 	# Only show the elog information on a new install
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
