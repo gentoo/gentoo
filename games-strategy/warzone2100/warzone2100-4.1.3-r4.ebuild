@@ -58,13 +58,15 @@ BDEPEND="
 HTML_DOCS=( doc/quickstartguide.html doc/docbook-xsl.css doc/ScriptingManual.htm )
 DOCS=( README.md doc/images doc/Scripting.md doc/js-globals.md )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.1.3-no-compress-manpages.patch
+)
+
 src_unpack() {
 	unpack ${P}.tar.xz
 }
 
 src_prepare() {
-	default
-
 	sed -i -e 's/#top_builddir/top_builddir/' po/Makevars || die
 
 	# Delete translations we're not using
