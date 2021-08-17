@@ -6,15 +6,13 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..9} )
 inherit distutils-r1
 
-MY_P=podman-py-${PV}
 DESCRIPTION="A library to interact with a Podman server"
 HOMEPAGE="
 	https://github.com/containers/podman-py/
 	https://pypi.org/project/podman/"
 SRC_URI="
 	https://github.com/containers/podman-py/archive/v${PV}.tar.gz
-		-> ${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
+		-> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
