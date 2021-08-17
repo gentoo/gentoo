@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools linux-info multilib systemd toolchain-funcs udev flag-o-matic
+inherit autotools linux-info multilib systemd toolchain-funcs tmpfiles udev flag-o-matic
 
 DESCRIPTION="User-land utilities for LVM2 (device-mapper) software"
 HOMEPAGE="https://sourceware.org/lvm2/"
@@ -252,6 +252,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process lvm2.conf
+
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		# This is a new installation
 		ewarn "Make sure the \"lvm\" init script is in the runlevels:"
