@@ -17,17 +17,15 @@ IUSE="pam static-libs"
 
 # While the build system optionally uses gperf, we don't DEPEND on it because
 # the build automatically falls back when it's unavailable.  #604802
-RDEPEND=">=sys-apps/attr-2.4.47-r1[${MULTILIB_USEDEP}]"
 PDEPEND="pam? ( sys-libs/pam[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}
-	${PDEPEND}
+DEPEND="${PDEPEND}
 	sys-kernel/linux-headers"
 
 # Requires test suite being run as root (via sudo)
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.50-build-system-fixes.patch
+	"${FILESDIR}"/${PN}-2.52-build-system-fixes.patch
 	"${FILESDIR}"/${PN}-2.38-no_perl.patch
 	"${FILESDIR}"/${PN}-2.25-ignore-RAISE_SETFCAP-install-failures.patch
 	"${FILESDIR}"/${PN}-2.21-include.patch
@@ -47,15 +45,12 @@ run_emake() {
 		PAM_CAP="$(usex pam yes no)"
 		DYNAMIC=yes
 		GOLANG=no
-		CC="$(tc-getCC)"
-		AR="$(tc-getAR)"
-		RANLIB="$(tc-getRANLIB)"
 	)
 	emake "${args[@]}" "$@"
 }
 
 src_configure() {
-	tc-export AR CC RANLIB
+	tc-export AR CC OBJCOPY RANLIB
 	tc-export_build_env BUILD_CC
 	multilib-minimal_src_configure
 }
