@@ -22,6 +22,7 @@ IUSE="autoshutdown bidi debug mpris"
 BDEPEND="dev-qt/linguist-tools:5"
 DEPEND="
 	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
 	dev-qt/qtgui:5=
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtscript:5
