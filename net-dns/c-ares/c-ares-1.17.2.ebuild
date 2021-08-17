@@ -40,7 +40,19 @@ multilib_src_test() {
 
 	# We're skipping the "real" network tests with the filter
 	# see https://github.com/c-ares/c-ares/tree/main/test
-	./arestest --gtest_filter=-*Live* || die "arestest failed!"
+	local network_tests=(
+		# Most live tests have Live in the name
+		*Live*
+		# These don't but are still in ares-test-live.cc => live
+		*GetTCPSock*
+		*TimeoutValue*
+		*GetSock*
+		*GetSock_virtualized*
+	)
+
+	# The format for disabling test1, test2, and test3 looks like:
+	# -test1:test2:test3
+	./arestest --gtest_filter=-$(echo $(IFS=:; echo "${network_tests[*]}")) || die "arestest failed!"
 }
 
 multilib_src_install_all() {
