@@ -268,7 +268,7 @@ multilib_src_install_all() {
 			use "${1}" && echo "-D${define}" || echo "-U${define}"
 		}
 
-		unifdef \
+		unifdef -x 1 \
 			$(use_define zeroconf AVAHI) \
 			$(use_define alsa) \
 			$(use_define bluetooth) \
