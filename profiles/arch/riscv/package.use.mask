@@ -1,6 +1,15 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
+# dependencies not keyworded/tested
+kde-plasma/plasma-meta networkmanager accessibility grub
+kde-plasma/discover firmware flatpak
+kde-plasma/kwin accessibility screencast
+kde-plasma/plasma-firewall firewalld
+# vlc has libatomic issue
+media-libs/phonon vlc gstreamer
+
 # Marek Szuba <marecki@gentoo.org> (2021-08-14)
 # virtual/mysql & co. round-up:
 #  dev-db/mariadb fails tests here, see Bug #807995
