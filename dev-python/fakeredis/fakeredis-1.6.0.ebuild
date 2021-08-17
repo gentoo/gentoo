@@ -25,6 +25,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
+		dev-db/redis
 		dev-python/aioredis[${PYTHON_USEDEP}]
 		dev-python/async_generator[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
