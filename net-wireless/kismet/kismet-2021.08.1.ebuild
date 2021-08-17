@@ -17,9 +17,15 @@ else
 	MY_P=${MY_P/./-R}
 	S=${WORKDIR}/${MY_P/BETA/beta}
 
+	#normally we want an official release
 	SRC_URI="https://www.kismetwireless.net/code/${MY_P}.tar.xz"
 
-	KEYWORDS="amd64 arm ~arm64 ~ppc x86"
+	#but sometimes we want a git commit
+	#COMMIT="9ca7e469cf115469f392db7436816151867e1654"
+	#SRC_URI="https://github.com/kismetwireless/kismet/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	#S="${WORKDIR}/${PN}-${COMMIT}"
+
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 fi
 
 DESCRIPTION="IEEE 802.11 wireless LAN sniffer"
@@ -60,6 +66,8 @@ CDEPEND="
 	"
 
 DEPEND="${CDEPEND}
+	dev-libs/boost
+	dev-libs/libfmt
 	virtual/pkgconfig
 "
 
@@ -85,6 +93,18 @@ src_prepare() {
 	sed -i -e 's#-Wno-unknown-warning-option ##g' Makefile.inc.in || die
 
 	#sed -i -e 's#root#kismet#g' packaging/systemd/kismet.service.in
+
+	rm -r boost || die
+	rm -r fmt || die
+
+	#dev-libs/jsoncpp
+	#rm -r json || die
+	#sed -i 's#"json/json.h"#<json/json.h>#' jsoncpp.cc kis_net_beast_httpd.h \
+	#	log_tools/kismetdb_clean.cc log_tools/kismetdb_dump_devices.cc \
+	#	log_tools/kismetdb_statistics.cc log_tools/kismetdb_to_gpx.cc \
+	#	log_tools/kismetdb_to_kml.cc log_tools/kismetdb_to_pcap.cc \
+	#	log_tools/kismetdb_to_wiglecsv.cc trackedcomponent.h \
+	#	trackedelement.h trackedelement_workers.h
 
 	# Don't strip and set correct mangrp
 	sed -i -e 's| -s||g' \
@@ -120,6 +140,10 @@ src_install() {
 
 	insinto /usr/share/${PN}
 	doins Makefile.inc
+	if [ "${PV}" = "9999" ];then
+		doins "${FILESDIR}"/gdb
+		dobin "${FILESDIR}"/kismet-gdb
+	fi
 
 	dodoc CHANGELOG README*
 	newinitd "${FILESDIR}"/${PN}.initd-r3 kismet
