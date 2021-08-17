@@ -10,7 +10,7 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">containers/python-podman</remote-id>
+		<remote-id type="github">containers/podman-py</remote-id>
 		<remote-id type="pypi">podman</remote-id>
 	</upstream>
 </pkgmetadata>
