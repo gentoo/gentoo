@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop
+inherit autotools desktop
 
 DESCRIPTION="Model-airplane flight simulation program"
 HOMEPAGE="https://sourceforge.net/projects/crrcsim/"
@@ -28,16 +28,19 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc6.patch
+	"${FILESDIR}"/${P}-overlink.patch
 )
 
 DOCS=( AUTHORS HISTORY )
 
-src_configure() {
-	econf ac_cv_header_portaudio_h=$(usex portaudio)
+src_prepare() {
+	default
+
+	eautoreconf
 }
 
-src_compile() {
-	emake CGAL_LIBS=
+src_configure() {
+	econf ac_cv_header_portaudio_h=$(usex portaudio)
 }
 
 src_install() {
