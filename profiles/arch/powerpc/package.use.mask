@@ -80,8 +80,7 @@ kde-plasma/discover firmware
 
 # Rick Farina <zerochaos@gentoo.org> (2020-01-03)
 # ubertooth needs net-libs/libbtbb and net-wireless/ubertooth which aren't keyworded
-# rtl-sdr needs net-wireless/rtl-sdr
-net-wireless/kismet rtlsdr ubertooth
+net-wireless/kismet ubertooth
 
 # Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
 # dev-libs/criterion is not keyworded yet
