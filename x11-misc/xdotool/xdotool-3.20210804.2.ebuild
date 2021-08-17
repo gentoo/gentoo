@@ -31,6 +31,7 @@ BDEPEND="virtual/pkgconfig
 	x11-base/xorg-proto"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-3.20210804.2-allow_xwayland.patch
 	"${FILESDIR}"/${PN}-3.20210804.2-no_hardcoded_pkg-config.patch
 	"${FILESDIR}"/${PN}-3.20210804.2-no_ldconfig.patch
 )
