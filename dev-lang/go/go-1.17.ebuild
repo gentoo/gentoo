@@ -38,6 +38,9 @@ BDEPEND="|| (
 		dev-lang/go-bootstrap )"
 RDEPEND="!<dev-go/go-tools-0_pre20150902"
 
+# the *.syso files have writable/executable stacks
+QA_EXECSTACK='*.syso'
+
 # Do not complain about CFLAGS, etc, since Go doesn't use them.
 QA_FLAGS_IGNORED='.*'
 
