@@ -36,13 +36,10 @@ jack
 java
 mono
 motif
-opencl
 rsh
 
-# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
-# Dependencies not keyworded.
-appindicator
-ayatana
+# Neither the virtual nor any of the runtimes (except mesa) keyworded here yet
+opencl
 
 # not supported / tested cards
 
