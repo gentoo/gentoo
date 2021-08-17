@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-EGIT_COMMIT="51b8ddbc22cf5b10dd76dd9243924aa66ad7db39"
+EGIT_COMMIT="152952fe6b18581615c3efd1fafef2d8142738e8"
 
-inherit bash-completion-r1 flag-o-matic go-module
+inherit bash-completion-r1 flag-o-matic go-module tmpfiles
 
 DESCRIPTION="Library and podman tool for running OCI-based containers in Pods"
 HOMEPAGE="https://github.com/containers/podman/"
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/containers/podman/archive/v${PV}.tar.gz -> ${MY_P}.t
 LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="apparmor btrfs +fuse +rootless selinux"
 RESTRICT="test"
 
@@ -140,6 +140,8 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	tmpfiles_process podman.conf
+
 	local want_newline=false
 	if [[ ! ( -e ${EROOT%/*}/etc/containers/policy.json && -e ${EROOT%/*}/etc/containers/registries.conf ) ]]; then
 		elog "You need to create the following config files:"
