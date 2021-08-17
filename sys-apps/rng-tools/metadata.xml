@@ -19,6 +19,9 @@
 	<flag name="pkcs11">
 		Enable PKCS11 entropy support
 	</flag>
+	<flag name="rtlsdr">
+		Enable atmospheric-static entropy support with <pkg>net-wireless/rtl-sdr</pkg>
+	</flag>
 </use>
 <upstream>
 	<remote-id type="github">nhorman/rng-tools</remote-id>
