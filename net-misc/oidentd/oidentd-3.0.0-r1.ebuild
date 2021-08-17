@@ -28,6 +28,8 @@ BDEPEND="
 	sys-devel/flex
 "
 
+PATCHES=( "${FILESDIR}/${P}-ipv6-masquerade.patch" )
+
 src_prepare() {
 	sed -i '/ExecStart/ s|$| -u oidentd -g oidentd|' contrib/systemd/*.service || die
 
