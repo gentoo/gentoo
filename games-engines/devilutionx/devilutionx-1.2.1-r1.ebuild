@@ -50,7 +50,9 @@ src_configure() {
 		-DASAN="OFF"
 		-DDEBUG="$(usex debug)"
 		-DDISABLE_LTO="$(usex !lto)"
-		-DDIST="ON"
+		# Must be off to force dynamic linking.
+		# See bug #791031
+		-DDIST="OFF"
 		-DUBSAN="OFF"
 	)
 
