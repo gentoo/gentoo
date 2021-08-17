@@ -156,8 +156,6 @@ net-libs/gnome-online-accounts gnome
 net-libs/libproxy kde
 xfce-extra/tumbler epub ffmpeg odf pdf raw
 xfce-base/xfce4-meta pulseaudio
-# KDE not tested, so mask
-sys-auth/polkit kde
 
 # Ye Cao <ye.c@rioslab.org> (2021-07-31)
 # Piotr Karbowski <slashbeast@gentoo.org> (2021-06-22)
