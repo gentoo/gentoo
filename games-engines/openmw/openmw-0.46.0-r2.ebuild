@@ -73,6 +73,7 @@ PATCHES=(
 	"${DISTDIR}"/openmw-0.46.0-floattest.patch
 	"${FILESDIR}"/openmw-0.46.0-floattest2.patch
 	"${FILESDIR}"/openmw-0.46.0-gcc11.patch
+	"${FILESDIR}"/openmw-0.46.0-boost-1.77.patch
 )
 
 src_prepare() {

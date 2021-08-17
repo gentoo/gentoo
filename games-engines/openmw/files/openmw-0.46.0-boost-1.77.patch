@@ -1,0 +1,10 @@
+https://bugs.gentoo.org/808763
+
+--- a/components/vfs/filesystemarchive.cpp
++++ b/components/vfs/filesystemarchive.cpp
+@@ -1,4 +1,5 @@
+ #include "filesystemarchive.hpp"
+ 
++#include <algorithm>
+ #include <boost/filesystem.hpp>
+ 
