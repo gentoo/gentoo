@@ -31,12 +31,11 @@ valgrind
 
 # Not tested yet
 bluetooth
-emacs
 jack
-java
 mono
-motif
-rsh
+
+# No proper support for this arch yet
+java
 
 # Neither the virtual nor any of the runtimes (except mesa) keyworded here yet
 opencl
