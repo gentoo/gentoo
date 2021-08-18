@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -32,7 +32,3 @@ RDEPEND="
 "
 
 distutils_enable_tests unittest
-
-python_test() {
-	"${EPYTHON}" ./run_tests.py || die "Tests failed with ${EPYTHON}"
-}
