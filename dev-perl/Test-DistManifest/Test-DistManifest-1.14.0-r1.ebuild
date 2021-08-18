@@ -1,18 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-MODULE_AUTHOR=ETHER
-MODULE_VERSION=1.014
+DIST_AUTHOR=ETHER
+DIST_VERSION=1.014
 inherit perl-module
 
 DESCRIPTION="Author test that validates a package MANIFEST"
 
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-ExtUtils-Manifest
@@ -20,12 +18,10 @@ RDEPEND="
 	>=dev-perl/Module-Manifest-0.70.0
 	virtual/perl-Test-Simple
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-Tiny-0.39.0
 	test? (
 		virtual/perl-ExtUtils-MakeMaker
 		virtual/perl-if
 	)
 "
-
-SRC_TEST="do"
