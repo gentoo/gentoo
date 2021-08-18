@@ -45,7 +45,7 @@ RDEPEND="
 	acct-group/dialout
 	>=net-misc/pps-tools-0.0.20120407
 	$(python_gen_any_dep 'dev-util/scons[${PYTHON_USEDEP}]')
-	bluetooth? ( net-wireless/bluez )
+	bluetooth? ( net-wireless/bluez:= )
 	dbus? (
 		sys-apps/dbus
 		dev-libs/dbus-glib
