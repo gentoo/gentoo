@@ -37,7 +37,6 @@ RDEPEND="${LUA_DEPS}
 	dev-libs/libev
 	dev-libs/libsodium
 	dev-libs/snowball-stemmer
-	net-libs/libnsl
 	sys-apps/file
 	blas? (
 		virtual/blas
