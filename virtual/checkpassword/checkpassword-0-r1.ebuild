@@ -13,5 +13,4 @@ RDEPEND="|| (
 	net-mail/checkpassword-pam
 	net-mail/cmd5checkpw
 	net-mail/vpopmail
-	mail-mta/qmail-ldap
 )"
