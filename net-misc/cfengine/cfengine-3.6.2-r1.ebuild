@@ -29,8 +29,8 @@ DEPEND="acl? ( virtual/acl )
 	libvirt? ( app-emulation/libvirt )
 	xml? ( dev-libs/libxml2:2  ) \
 	dev-libs/openssl:=
-	dev-libs/libpcre
-	net-libs/libnsl"
+	dev-libs/libpcre:=
+	net-libs/libnsl:="
 RDEPEND="${DEPEND}"
 PDEPEND="vim-syntax? ( app-vim/cfengine-syntax )"
 
