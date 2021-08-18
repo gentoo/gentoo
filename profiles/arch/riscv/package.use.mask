@@ -1,6 +1,29 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-08-18)
+# media-libs/libffado does not recognise this arch, fails src_configure
+# (Bug #808853).
+media-sound/jack2 ieee1394
+
+# Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
+# dependencies not keyworded/tested
+sys-apps/xdg-desktop-portal screencast
+kde-plasma/powerdevil wireless
+kde-plasma/plasma-vault networkmanager
+kde-plasma/plasma-desktop emoji
+kde-plasma/ksystemstats networkmanager
+kde-plasma/libksysguard webengine
+kde-frameworks/kfilemetadata ffmpeg
+kde-plasma/plasma-workspace appstream screencast gps geolocation
+kde-plasma/kdeplasma-addons webengine
+kde-plasma/plasma-meta networkmanager accessibility grub plymouth pulseaudio
+kde-plasma/discover firmware flatpak
+kde-plasma/kwin accessibility screencast
+kde-plasma/plasma-firewall firewalld
+# vlc has libatomic issue, bug #803473
+media-libs/phonon vlc gstreamer
+
 # Marek Szuba <marecki@gentoo.org> (2021-08-17)
 # sys-libs/libfaketime does not work properly on this arch
 sys-auth/sssd test
@@ -117,8 +140,6 @@ media-libs/devil nvtt
 media-libs/libvpx doc
 #  - bluetooth, net-misc/ofono
 media-sound/pulseaudio native-headset ofono-headset
-#  - media-sound/jack2
-media-video/pipewire jack-client
 #  - media-libs/libquicktime, media-libs/sdl-gfx
 media-video/mjpegtools quicktime sdlgfx
 #  - sys-cluster/ceph
@@ -145,8 +166,6 @@ net-libs/gnome-online-accounts gnome
 net-libs/libproxy kde
 xfce-extra/tumbler epub ffmpeg odf pdf raw
 xfce-base/xfce4-meta pulseaudio
-# KDE not tested, so mask
-sys-auth/polkit kde
 
 # Ye Cao <ye.c@rioslab.org> (2021-07-31)
 # Piotr Karbowski <slashbeast@gentoo.org> (2021-06-22)

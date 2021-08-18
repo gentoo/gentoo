@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: server part for MediaMVP device"
-HOMEPAGE="http://www.loggytronic.com/vomp.php"
-SRC_URI="http://www.loggytronic.com/dl/${P}.tgz"
+HOMEPAGE="https://www.loggytronic.com/vomp.php"
+SRC_URI="https://www.loggytronic.com/dl/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

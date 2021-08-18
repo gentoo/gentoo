@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ RUBY_FAKEGEM_VERSION="${PV/_p/.}"
 inherit multilib ruby-fakegem
 
 DESCRIPTION="Numerical N-dimensional Array class"
-HOMEPAGE="http://www.ir.isas.ac.jp/~masa/ruby/index-e.html"
+HOMEPAGE="https://masa16.github.io/narray/"
 SRC_URI="https://github.com/masa16/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Ruby"
