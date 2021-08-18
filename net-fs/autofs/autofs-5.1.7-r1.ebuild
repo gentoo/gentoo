@@ -15,7 +15,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="dmalloc ldap +libtirpc mount-locking sasl systemd"
 
 # currently, sasl code assumes the presence of kerberosV
-RDEPEND=">=sys-apps/util-linux-2.20
+RDEPEND="
+	net-libs/libnsl:=
+	>=sys-apps/util-linux-2.20
 	dmalloc? ( dev-libs/dmalloc[threads] )
 	ldap? ( >=net-nds/openldap-2.0
 		sasl? (
@@ -33,6 +35,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	sys-devel/flex
+	virtual/pkgconfig
 	virtual/yacc
 "
 
