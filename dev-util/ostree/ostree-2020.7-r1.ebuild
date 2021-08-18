@@ -9,7 +9,7 @@ DESCRIPTION="Operating system and container binary deployment and upgrades"
 HOMEPAGE="https://ostreedev.github.io/ostree/"
 SRC_URI="https://github.com/ostreedev/ostree/releases/download/v${PV}/lib${P}.tar.xz -> ${P}.tar.xz"
 
-KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 LICENSE="LGPL-2+"
 SLOT="0"
 
@@ -18,7 +18,7 @@ RESTRICT="test"
 REQUIRED_USE="httpd? ( || ( curl soup ) )"
 
 COMMON_DEPEND="
-	archive? ( app-arch/libarchive )
+	archive? ( app-arch/libarchive:= )
 	app-arch/xz-utils
 	curl? ( net-misc/curl )
 	soup? ( net-libs/libsoup )
@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	grub? ( sys-boot/grub:2= )
 	introspection? ( dev-libs/gobject-introspection )
 	ssl? (
-		gnutls? ( net-libs/gnutls )
+		gnutls? ( net-libs/gnutls:= )
 		!gnutls? (
 			dev-libs/openssl:0=
 		)
@@ -41,7 +41,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	libmount? ( sys-apps/util-linux )
 	selinux? ( sys-libs/libselinux )
-	sodium? ( >=dev-libs/libsodium-1.0.14 )
+	sodium? ( >=dev-libs/libsodium-1.0.14:= )
 	systemd? ( sys-apps/systemd:0= )
 	zeroconf? ( net-dns/avahi[dbus] )"
 

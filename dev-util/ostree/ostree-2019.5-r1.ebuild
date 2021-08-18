@@ -18,7 +18,7 @@ RESTRICT="test"
 REQUIRED_USE="httpd? ( || ( curl soup ) )"
 
 COMMON_DEPEND="
-	archive? ( app-arch/libarchive )
+	archive? ( app-arch/libarchive:= )
 	app-crypt/gpgme
 	app-arch/xz-utils
 	curl? ( net-misc/curl )
@@ -30,7 +30,7 @@ COMMON_DEPEND="
 	grub? ( sys-boot/grub:2= )
 	introspection? ( dev-libs/gobject-introspection )
 	ssl? (
-		gnutls? ( net-libs/gnutls )
+		gnutls? ( net-libs/gnutls:= )
 		!gnutls? ( dev-libs/openssl:0= ) )
 	>=sys-fs/fuse-2.9.2:0
 	sys-libs/zlib
@@ -69,7 +69,7 @@ src_configure() {
 		$(use_with curl)
 		$(use_with dracut)
 		$(use_enable doc gtk-doc)
-		$(usex introspection --enable-introspection={,} yes no)
+		$(use_enable introspection)
 		$(use_enable http2)
 		$(use_enable httpd trivial-httpd-cmdline)
 		$(use_with selinux )

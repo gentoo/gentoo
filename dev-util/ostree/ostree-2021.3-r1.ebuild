@@ -6,36 +6,42 @@ EAPI=7
 inherit autotools systemd
 
 DESCRIPTION="Operating system and container binary deployment and upgrades"
-HOMEPAGE="https://ostree.readthedocs.io/en/latest/"
+HOMEPAGE="https://ostreedev.github.io/ostree/"
 SRC_URI="https://github.com/ostreedev/ostree/releases/download/v${PV}/lib${P}.tar.xz -> ${P}.tar.xz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 LICENSE="LGPL-2+"
 SLOT="0"
 
-IUSE="archive curl doc dracut gnutls grub http2 httpd introspection libmount selinux ssl +soup systemd zeroconf"
+IUSE="archive curl doc dracut gnutls +gpg grub http2 httpd introspection libmount selinux sodium ssl +soup systemd zeroconf"
 RESTRICT="test"
 REQUIRED_USE="httpd? ( || ( curl soup ) )"
 
 COMMON_DEPEND="
-	archive? ( app-arch/libarchive )
-	app-crypt/gpgme
+	archive? ( app-arch/libarchive:= )
 	app-arch/xz-utils
 	curl? ( net-misc/curl )
 	soup? ( net-libs/libsoup )
 	dev-libs/libassuan
-	dev-libs/libgpg-error
 	dev-libs/glib:2
 	dracut? ( sys-kernel/dracut )
+	gpg? (
+		app-crypt/gpgme
+		dev-libs/libgpg-error
+	)
 	grub? ( sys-boot/grub:2= )
 	introspection? ( dev-libs/gobject-introspection )
 	ssl? (
-		gnutls? ( net-libs/gnutls )
-		!gnutls? ( dev-libs/openssl:0= ) )
+		gnutls? ( net-libs/gnutls:= )
+		!gnutls? (
+			dev-libs/openssl:0=
+		)
+	)
 	>=sys-fs/fuse-2.9.2:0
 	sys-libs/zlib
 	libmount? ( sys-apps/util-linux )
 	selinux? ( sys-libs/libselinux )
+	sodium? ( >=dev-libs/libsodium-1.0.14:= )
 	systemd? ( sys-apps/systemd:0= )
 	zeroconf? ( net-dns/avahi[dbus] )"
 
@@ -56,7 +62,6 @@ S="${WORKDIR}/lib${P}"
 src_prepare() {
 	sed -Ee 's:(XSLT_STYLESHEET = ).*:\1/usr/share/sgml/docbook/xsl-stylesheets/manpages/docbook.xsl:' \
 		-i Makefile.in Makefile-man.am || die
-
 	eautoreconf
 	default
 }
@@ -69,16 +74,22 @@ src_configure() {
 		$(use_with curl)
 		$(use_with dracut)
 		$(use_enable doc gtk-doc)
-		$(use_enable introspection)
+		$(usex introspection --enable-introspection={,} yes no)
+		$(use_with gpg gpgme)
 		$(use_enable http2)
 		$(use_enable httpd trivial-httpd-cmdline)
 		$(use_with selinux )
 		$(use_with soup)
 		$(use_with libmount)
 		$(use ssl && { use gnutls && echo --with-crypto=gnutls || echo --with-crypto=openssl; })
+		$(use_with sodium ed25519-libsodium)
 		$(use_with systemd libsystemd)
 		$(use_with zeroconf avahi)
 	)
+
+	if use systemd; then
+		econfargs+=(--with-systemdsystemunitdir="$(systemd_get_systemunitdir)")
+	fi
 
 	unset ${!XDG_*} #657346 g-ir-scanner sandbox violation
 	econf ${econfargs[*]}
@@ -87,4 +98,5 @@ src_configure() {
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
+	rm -f "${ED}/etc/grub.d/15_ostree"
 }
