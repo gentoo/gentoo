@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit desktop autotools
+
+inherit autotools desktop
 
 DESCRIPTION="Atari 800 emulator"
 HOMEPAGE="https://atari800.github.io/"
@@ -18,7 +19,7 @@ REQUIRED_USE="opengl? ( sdl )"
 
 RDEPEND="
 	sdl? (
-		>=media-libs/libsdl-1.2.0[opengl?,sound?,video]
+		>=media-libs/libsdl-1.2.0[joystick,opengl?,sound?,video]
 	)
 	!sdl? (
 		sys-libs/ncurses:=
@@ -30,7 +31,7 @@ RDEPEND="
 	media-libs/libpng:=
 	sys-libs/zlib
 "
-DEPEND=${RDEPEND}
+DEPEND="${RDEPEND}"
 BDEPEND="
 	app-arch/unzip
 "
