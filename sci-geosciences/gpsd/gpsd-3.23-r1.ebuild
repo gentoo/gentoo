@@ -187,7 +187,10 @@ src_compile() {
 	export SHLINKFLAGS=${LDFLAGS} LINKFLAGS=${LDFLAGS}
 	escons "${scons_opts[@]}"
 
+	pushd "${P}" || die
+	ln -sf ../setup.py . || die
 	use python && distutils-r1_src_compile
+	popd || die
 }
 
 src_install() {
@@ -200,6 +203,7 @@ src_install() {
 	rm -rf  "${D}"/python-discard/gps*
 	find "${D}"/python-discard/ -type d -delete
 	# Install correct multi-python copy
+	pushd "${P}" || die
 	use python && distutils-r1_src_install
-
+	popd || die
 }
