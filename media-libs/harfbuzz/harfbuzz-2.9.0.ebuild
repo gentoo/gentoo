@@ -21,7 +21,7 @@ fi
 LICENSE="Old-MIT ISC icu"
 SLOT="0/0.9.18" # 0.9.18 introduced the harfbuzz-icu split; bug #472416
 
-IUSE="+cairo debug doc experimental +glib +graphite icu +introspection static-libs test +truetype"
+IUSE="+cairo debug doc experimental +glib +graphite icu +introspection test +truetype"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="introspection? ( glib )"
 
@@ -91,7 +91,6 @@ multilib_src_configure() {
 		$(meson_native_use_feature introspection)
 
 		$(meson_use experimental experimental_api)
-		$(meson_use static-libs static)
 	)
 	meson_src_configure
 }
