@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
 inherit cmake-utils
 
@@ -11,12 +11,13 @@ SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 IUSE=""
 
-RDEPEND="app-arch/brotli"
-DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+RDEPEND="app-arch/brotli:="
+DEPEND="${RDEPEND}
+	virtual/pkgconfig
+"
 
 src_configure() {
 	local mycmakeargs=(
@@ -24,14 +25,4 @@ src_configure() {
 		-DCANONICAL_PREFIXES=ON #661942
 	)
 	cmake-utils_src_configure
-}
-
-src_install() {
-	cmake-utils_src_install
-
-	dobin ${BUILD_DIR}/woff2_compress
-	dobin ${BUILD_DIR}/woff2_decompress
-	dobin ${BUILD_DIR}/woff2_info
-
-	einstalldocs
 }
