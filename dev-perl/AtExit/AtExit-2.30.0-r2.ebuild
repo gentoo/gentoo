@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=NEILB
 DIST_VERSION=2.03
@@ -16,13 +16,11 @@ LICENSE="Artistic"
 
 SLOT="0"
 KEYWORDS="amd64 ~ia64 ppc sparc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Exporter
 "
-BEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/Capture-Tiny
