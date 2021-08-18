@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -31,8 +31,8 @@ RDEPEND="
 	${DEPEND}
 "
 
-distutils_enable_tests unittest
+PATCHES=(
+	"${FILESDIR}/${P}-fix-py3.10.patch"
+)
 
-python_test() {
-	"${EPYTHON}" ./run_tests.py || die "Tests failed with ${EPYTHON}"
-}
+distutils_enable_tests unittest
