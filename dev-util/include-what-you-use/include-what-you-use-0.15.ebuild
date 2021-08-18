@@ -3,16 +3,13 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit cmake flag-o-matic llvm python-single-r1
 
-# Sometimes the tag is clang_9, sometimes it's IWYU-0.13
-UPSTREAM_PV=0.15
-
 DESCRIPTION="Find unused include directives in C/C++ programs"
 HOMEPAGE="https://include-what-you-use.org/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${UPSTREAM_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,8 +24,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
-
-S=${WORKDIR}/${PN}-${UPSTREAM_PV}
 
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"
