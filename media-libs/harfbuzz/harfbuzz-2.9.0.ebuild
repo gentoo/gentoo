@@ -77,7 +77,7 @@ multilib_src_configure() {
 	# harfbuzz-gobject only used for instrospection, bug #535852
 	local emesonargs=(
 		-Dcoretext="disabled"
-		-Dfontconfig="disabled" #609300
+		-Dchafa="disabled"
 
 		$(meson_feature glib)
 		$(meson_feature graphite)
