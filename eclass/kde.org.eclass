@@ -104,8 +104,7 @@ readonly KDE_ORG_CATEGORIES
 # @DESCRIPTION:
 # If set to "false", do nothing.
 # If set to "true", set SRC_URI accordingly and apply KDE_UNRELEASED.
-# Backward compatibility: Picks up KDE_RELEASE_SERVICE value if set.
-: ${KDE_GEAR:=${KDE_RELEASE_SERVICE:-false}}
+: ${KDE_GEAR:=false}
 
 # @ECLASS-VARIABLE: KDE_SELINUX_MODULE
 # @PRE_INHERIT
