@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -20,6 +20,11 @@ RESTRICT="test"
 
 RDEPEND=">=dev-python/pycares-3[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	# https://github.com/saghul/aiodns/commit/146286601fe80eb4ede8126769e79b5d5e63f64e
+	"${FILESDIR}/${P}-py3.10-tests.patch"
+)
 
 python_test() {
 	"${EPYTHON}" tests.py -v || die
