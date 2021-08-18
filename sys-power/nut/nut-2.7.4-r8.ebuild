@@ -22,16 +22,16 @@ CDEPEND="
 "
 
 DEPEND="
-	dev-libs/libltdl:*
-	net-libs/libnsl
+	dev-libs/libltdl
+	net-libs/libnsl:=
 	virtual/udev
 	cgi? ( >=media-libs/gd-2[png] )
 	ipmi? ( sys-libs/freeipmi )
-	snmp? ( net-analyzer/net-snmp )
+	snmp? ( net-analyzer/net-snmp:= )
 	ssl? ( >=dev-libs/openssl-1:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	usb? ( virtual/libusb:0= )
-	xml? ( >=net-libs/neon-0.25.0 )
+	xml? ( >=net-libs/neon-0.25.0:= )
 	zeroconf? ( net-dns/avahi )"
 
 BDEPEND="
