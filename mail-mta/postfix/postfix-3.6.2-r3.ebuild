@@ -29,9 +29,9 @@ DEPEND="
 	eai? ( dev-libs/icu:= )
 	ldap? ( net-nds/openldap )
 	ldap-bind? ( net-nds/openldap[sasl] )
-	lmdb? ( >=dev-db/lmdb-0.9.11 )
+	lmdb? ( >=dev-db/lmdb-0.9.11:= )
 	mysql? ( dev-db/mysql-connector-c:0= )
-	nis? ( net-libs/libnsl )
+	nis? ( net-libs/libnsl:= )
 	pam? ( sys-libs/pam )
 	postgres? ( dev-db/postgresql:* )
 	sasl? (  >=dev-libs/cyrus-sasl-2 )
@@ -56,10 +56,6 @@ RDEPEND="${DEPEND}
 REQUIRED_USE="ldap-bind? ( ldap sasl )"
 
 S="${WORKDIR}/${MY_SRC}"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-glibc-2.34.patch"
-)
 
 src_prepare() {
 	default

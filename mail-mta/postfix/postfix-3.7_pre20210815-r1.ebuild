@@ -4,9 +4,9 @@
 EAPI=7
 inherit pam systemd toolchain-funcs
 
-MY_PV="${PV/_rc/-RC}"
+MY_PV="${PV/_pre/-}"
 MY_SRC="${PN}-${MY_PV}"
-MY_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/official"
+MY_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/experimental"
 RC_VER="2.7"
 
 DESCRIPTION="A fast and secure drop-in replacement for sendmail"
@@ -29,9 +29,9 @@ DEPEND="
 	eai? ( dev-libs/icu:= )
 	ldap? ( net-nds/openldap )
 	ldap-bind? ( net-nds/openldap[sasl] )
-	lmdb? ( >=dev-db/lmdb-0.9.11 )
+	lmdb? ( >=dev-db/lmdb-0.9.11:= )
 	mysql? ( dev-db/mysql-connector-c:0= )
-	nis? ( net-libs/libnsl )
+	nis? ( net-libs/libnsl:= )
 	pam? ( sys-libs/pam )
 	postgres? ( dev-db/postgresql:* )
 	sasl? (  >=dev-libs/cyrus-sasl-2 )
@@ -193,7 +193,7 @@ src_install() {
 	# Provide another link for legacy FSH
 	dosym ../sbin/sendmail /usr/$(get_libdir)/sendmail
 
-	# Install qshape, posttls-finger and collate and tlstype
+	# Install qshape, posttls-finger, collate and tlstype
 	dobin auxiliary/qshape/qshape.pl
 	doman man/man1/qshape.1
 	dobin bin/posttls-finger
@@ -211,8 +211,8 @@ src_install() {
 	keepdir /var/lib/postfix
 	fowners -R postfix:postfix /var/lib/postfix
 	fperms 0750 /var/lib/postfix
-	fowners root:postdrop /usr/sbin/post{drop,queue}
-	fperms 02755 /usr/sbin/post{drop,queue}
+	fowners root:postdrop /usr/sbin/post{drop,queue,log}
+	fperms 02755 /usr/sbin/post{drop,queue,log}
 
 	keepdir /etc/postfix
 	keepdir /etc/postfix/postfix-files.d
