@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 PYTHON_COMPAT=( python3_{8,9} )
+TMPFILES_OPTIONAL=1
+
 inherit autotools flag-o-matic linux-info python-any-r1 readme.gentoo-r1 systemd tmpfiles virtualx multilib-minimal
 
 DESCRIPTION="A message bus system, a simple way for applications to talk to each other"
@@ -246,7 +247,9 @@ multilib_src_install_all() {
 pkg_postinst() {
 	readme.gentoo_print_elog
 
-	tmpfiles_process dbus.conf
+	if use systemd; then
+		tmpfiles_process dbus.conf
+	fi
 
 	# Ensure unique id is generated and put it in /etc wrt #370451 but symlink
 	# for DBUS_MACHINE_UUID_FILE (see tools/dbus-launch.c) and reverse
