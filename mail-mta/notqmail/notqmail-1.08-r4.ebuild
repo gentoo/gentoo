@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 GENQMAIL_PV=20200817
 QMAIL_SPP_PV=0.42
@@ -78,8 +78,6 @@ RDEPEND="${DEPEND}
 	acct-user/qmailr
 	acct-user/qmails
 	sys-apps/ucspi-tcp
-	virtual/checkpassword
-	virtual/daemontools
 	authcram? ( >=net-mail/cmd5checkpw-0.30 )
 	ssl? (
 		pop3? ( sys-apps/ucspi-ssl )
@@ -95,6 +93,10 @@ RDEPEND="${DEPEND}
 	!mail-mta/netqmail
 	!mail-mta/sendmail
 	!mail-mta/ssmtp[mta]
+"
+PDEPEND="
+	virtual/checkpassword
+	virtual/daemontools
 "
 
 src_unpack() {
