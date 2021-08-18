@@ -1,0 +1,21 @@
+From c97b83d3eded3e2232a9f938fee52771ebe09c9c Mon Sep 17 00:00:00 2001
+From: Oliver Jowett <oliver.jowett@flightaware.com>
+Date: Sat, 13 Mar 2021 20:24:01 +0800
+Subject: [PATCH] Maybe fix alignment warnings in arm neon code with recent gcc
+
+---
+ dsp-types.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dsp-types.h b/dsp-types.h
+index a3ef98dab..962b608be 100644
+--- a/dsp-types.h
++++ b/dsp-types.h
+@@ -16,6 +16,6 @@ typedef union {
+ typedef struct {
+     int16_t I;
+     int16_t Q;
+-} __attribute__((__packed__)) sc16_t;
++} __attribute__((__packed__, __aligned__(2))) sc16_t;
+ 
+ #endif
