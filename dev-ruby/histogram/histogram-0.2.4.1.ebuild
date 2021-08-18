@@ -18,6 +18,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+ruby_add_bdepend "test? ( dev-ruby/narray )"
+
 all_ruby_prepare() {
 	sed -i -e '/simplecov/I s:^:#:' spec/spec_helper.rb || die
 }
