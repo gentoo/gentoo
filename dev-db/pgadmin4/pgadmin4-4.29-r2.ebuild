@@ -46,7 +46,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
 		>=dev-python/blinker-1.4[${PYTHON_USEDEP}]
-		>=dev-python/flask-1.0.2[${PYTHON_USEDEP}]
+		<dev-python/flask-2.0.0[${PYTHON_USEDEP}]
 		>=dev-python/flask-compress-1.4.0[${PYTHON_USEDEP}]
 		>=dev-python/flask-gravatar-0.5.0[${PYTHON_USEDEP}]
 		>=dev-python/flask-login-0.4.1[${PYTHON_USEDEP}]
