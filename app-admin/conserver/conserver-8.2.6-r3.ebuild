@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 ~sparc x86"
 IUSE="debug ipv6 freeipmi kerberos pam ssl test tcpd"
 RESTRICT="!test? ( test )"
 
-DEPEND="net-libs/libnsl
+DEPEND="net-libs/libnsl:=
 	virtual/libcrypt:=
 	debug? ( dev-libs/dmalloc:= )
 	freeipmi? ( sys-libs/freeipmi:= )
