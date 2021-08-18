@@ -56,8 +56,8 @@ src_prepare() {
 	xdg_environment_reset
 
 	sed -i \
-		-e 's:tests/macos.tests::' \
-		test/shaping/data/in-house/Makefile.sources \
+		-e '/tests\/macos\.tests/d' \
+		test/shape/data/in-house/Makefile.sources \
 		|| die # bug 726120
 
 	# bug 618772
