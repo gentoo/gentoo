@@ -165,6 +165,10 @@ DOCS=( NEWS README )
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/pulseaudio-15.0-xice-xsm-xtst-daemon-only.patch
+)
+
 src_prepare() {
 	default
 
