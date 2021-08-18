@@ -1,11 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{7,8,9} )
+EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=bdepend
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Setuptools plugin that makes unit tests execute with trial instead of pyunit"
@@ -22,7 +20,13 @@ RDEPEND="
 	>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 "
 
-BDEPEND="${RDEPEND}"
+BDEPEND="test? ( ${RDEPEND} )"
+
+src_prepare() {
+	# don't install docs into wrong location
+	sed -e '/data_files=/d' -i setup.py || die
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	distutils_install_for_testing
