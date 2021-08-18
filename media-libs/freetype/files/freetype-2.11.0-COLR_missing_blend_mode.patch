@@ -1,0 +1,58 @@
+From e40ae7569aa4ef591f66ff9066df2f91de75bb77 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dominik=20R=C3=B6ttsches?= <drott@chromium.org>
+Date: Mon, 9 Aug 2021 13:44:55 +0300
+Subject: [PATCH] [sfnt] Add missing blend mode 'plus' to 'COLR' v1.
+
+* include/freetype/ftcolor.h (FT_Composite_Mode): Add missing blend mode
+'plus' after it was added to the spec.
+---
+ include/freetype/ftcolor.h | 33 +++++++++++++++++----------------
+ 1 file changed, 17 insertions(+), 16 deletions(-)
+
+diff --git a/include/freetype/ftcolor.h b/include/freetype/ftcolor.h
+index b98289917..cbd2d85bb 100644
+--- a/include/freetype/ftcolor.h
++++ b/include/freetype/ftcolor.h
+@@ -740,22 +740,23 @@ FT_BEGIN_HEADER
+     FT_COLR_COMPOSITE_SRC_ATOP       = 9,
+     FT_COLR_COMPOSITE_DEST_ATOP      = 10,
+     FT_COLR_COMPOSITE_XOR            = 11,
+-    FT_COLR_COMPOSITE_SCREEN         = 12,
+-    FT_COLR_COMPOSITE_OVERLAY        = 13,
+-    FT_COLR_COMPOSITE_DARKEN         = 14,
+-    FT_COLR_COMPOSITE_LIGHTEN        = 15,
+-    FT_COLR_COMPOSITE_COLOR_DODGE    = 16,
+-    FT_COLR_COMPOSITE_COLOR_BURN     = 17,
+-    FT_COLR_COMPOSITE_HARD_LIGHT     = 18,
+-    FT_COLR_COMPOSITE_SOFT_LIGHT     = 19,
+-    FT_COLR_COMPOSITE_DIFFERENCE     = 20,
+-    FT_COLR_COMPOSITE_EXCLUSION      = 21,
+-    FT_COLR_COMPOSITE_MULTIPLY       = 22,
+-    FT_COLR_COMPOSITE_HSL_HUE        = 23,
+-    FT_COLR_COMPOSITE_HSL_SATURATION = 24,
+-    FT_COLR_COMPOSITE_HSL_COLOR      = 25,
+-    FT_COLR_COMPOSITE_HSL_LUMINOSITY = 26,
+-    FT_COLR_COMPOSITE_MAX            = 27
++    FT_COLR_COMPOSITE_PLUS           = 12,
++    FT_COLR_COMPOSITE_SCREEN         = 13,
++    FT_COLR_COMPOSITE_OVERLAY        = 14,
++    FT_COLR_COMPOSITE_DARKEN         = 15,
++    FT_COLR_COMPOSITE_LIGHTEN        = 16,
++    FT_COLR_COMPOSITE_COLOR_DODGE    = 17,
++    FT_COLR_COMPOSITE_COLOR_BURN     = 18,
++    FT_COLR_COMPOSITE_HARD_LIGHT     = 19,
++    FT_COLR_COMPOSITE_SOFT_LIGHT     = 20,
++    FT_COLR_COMPOSITE_DIFFERENCE     = 21,
++    FT_COLR_COMPOSITE_EXCLUSION      = 22,
++    FT_COLR_COMPOSITE_MULTIPLY       = 23,
++    FT_COLR_COMPOSITE_HSL_HUE        = 24,
++    FT_COLR_COMPOSITE_HSL_SATURATION = 25,
++    FT_COLR_COMPOSITE_HSL_COLOR      = 26,
++    FT_COLR_COMPOSITE_HSL_LUMINOSITY = 27,
++    FT_COLR_COMPOSITE_MAX            = 28
+ 
+   } FT_Composite_Mode;
+ 
+-- 
+GitLab
+

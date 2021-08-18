@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.10.3-sizeof-types.patch # 459966
 	"${WORKDIR}"/${P}-COLR_v1_clipbox.patch
 	"${FILESDIR}"/${P}-COLR_v1_clipbox_minor_fix.patch
+	"${FILESDIR}"/${P}-COLR_missing_blend_mode.patch
 )
 
 _egit_repo_handler() {
