@@ -72,6 +72,9 @@ src_prepare() {
 	# *FLAGS settings.
 	QA_FLAGS_IGNORED="usr/lib(64)?/(rt)?postgis-${PGIS}\.so"
 
+	# bug #775968
+	touch build-aux/ar-lib || die
+
 	local AT_M4DIR="macros"
 	eautoreconf
 
