@@ -36,7 +36,13 @@ RESTRICT="test"
 src_prepare() {
 	default
 
+	# Remove prebuilt lde binary (so that failures to compile are fatal!)
+	# bug #776862
+	rm lde || die
+
 	cd macros || die
+	# bug #775968 again
+	touch ar-lib install-sh || die
 	mv configure.{in,ac} || die
 	eautoreconf
 }
