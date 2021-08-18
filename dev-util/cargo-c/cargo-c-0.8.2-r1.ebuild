@@ -160,18 +160,23 @@ LICENSE="Apache-2.0 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
-RDEPEND="dev-libs/openssl:0=
-	dev-libs/libgit2
-	net-libs/libssh2
+RDEPEND="dev-libs/libgit2:=
+	dev-libs/openssl:0=
+	net-libs/libssh2:=
 	net-misc/curl[ssl]
-	sys-libs/zlib
-"
+	sys-libs/zlib"
 DEPEND="${RDEPEND}"
-
-export LIBSSH2_SYS_USE_PKG_CONFIG=1
 
 src_unpack() {
 	cargo_src_unpack
 
 	tar -xf "${DISTDIR}"/"${MY_P}.crate" -C "${WORKDIR}" || die
+}
+
+src_configure() {
+	# Some crates will auto-build and statically link C libraries(!)
+	# Tracker bug #709568
+	export LIBSSH2_SYS_USE_PKG_CONFIG=1
+	export LIBGIT2_SYS_USE_PKG_CONFIG=1
+	export PKG_CONFIG_ALLOW_CROSS=1
 }

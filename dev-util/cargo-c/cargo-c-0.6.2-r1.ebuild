@@ -155,11 +155,15 @@ LICENSE="Apache-2.0 MIT"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc64 x86"
 
-DEPEND=""
-RDEPEND="sys-libs/zlib
-	dev-libs/openssl:0=
-	net-libs/libssh2
+RDEPEND="dev-libs/openssl:0=
+	net-libs/libssh2:=
 	net-misc/curl[ssl]
-"
+	sys-libs/zlib"
+DEPEND="${RDEPEND}"
 
-export LIBSSH2_SYS_USE_PKG_CONFIG=1
+src_configure() {
+	# Some crates will auto-build and statically link C libraries(!)
+	# Tracker bug #709568
+	export LIBSSH2_SYS_USE_PKG_CONFIG=1
+	export PKG_CONFIG_ALLOW_CROSS=1
+}
