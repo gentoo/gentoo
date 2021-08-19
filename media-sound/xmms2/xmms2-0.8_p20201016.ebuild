@@ -232,5 +232,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	use fluidsynth && optfeature "for the default MIDI soundfont" media-sound/fluid-soundfont
+	use fluidsynth && optfeature "the default MIDI soundfont" media-sound/fluid-soundfont
 }
