@@ -28,12 +28,12 @@ tmpfiles_check() {
 	# We're now going to check for whether we install files to /usr/lib/tmpfiles.d without
 	# inheriting the eclass (weak catch for ebuilds not calling tmpfiles_process in pkg_postinst)
 
-	# It's okay for some packages to do this because of circular dependencies and such
-	# See: https://archives.gentoo.org/gentoo-dev/message/0a96793036a4fdd9ac311a46950d7e7b
-	# TODO: Standardize some way of allowing ebuilds to opt-out of checks like this
-	local package=${CATEGORY}/${PN}
-
-	if [[ ${package} == "sys-apps/systemd" || ${package} == "sys-libs/pam" ]] ; then
+	if [[ -n ${TMPFILES_OPTIONAL} ]] ; then
+		# While imperfect, using ${TMPFILES_OPTIONAL} is good enough to allow opting out
+		# for e.g. sys-apps/portage, sys-apps/systemd, sys-libs/pam, etc. We may want
+		# a better/more standardised way to opt out from QA checks in future.
+		# It's okay for some packages to do this because of circular dependencies and such
+		# See: https://archives.gentoo.org/gentoo-dev/message/0a96793036a4fdd9ac311a46950d7e7b
 		return
 	fi
 
