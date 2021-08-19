@@ -40,6 +40,8 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	# https://github.com/colobot/colobot/pull/1300
 	"${FILESDIR}"/${P}-includes.patch
+	# https://github.com/colobot/colobot/pull/1453
+	"${FILESDIR}"/${P}-sndfile-link.patch
 )
 
 src_prepare() {
