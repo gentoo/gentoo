@@ -1,0 +1,25 @@
+From 2c881f1ec456bab7deb4163a2f96814b479a81d7 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 19 Aug 2021 01:19:30 +0100
+Subject: [PATCH] Fix implicit declaration of sprintf
+
+--- a/exports.c
++++ b/exports.c
+@@ -1,6 +1,7 @@
+ 
+ 
+ #include <stdlib.h>
++#include <stdio.h>
+ 
+ #include "rc.h"
+ 
+--- a/sys/linux/fbdev.c
++++ b/sys/linux/fbdev.c
+@@ -9,6 +9,7 @@
+ 
+ 
+ #include <stdlib.h>
++#include <stdio.h>
+ #include <string.h>
+ #include <unistd.h>
+ #include <sys/mman.h>
