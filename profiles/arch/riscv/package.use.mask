@@ -20,6 +20,7 @@ dev-lang/ruby xemacs
 # Yixun Lan <dlan@gentoo.org> (2021-08-20)
 # dependencies not keyworded/tested
 net-misc/networkmanager ofono
+app-misc/tracker miners
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-18)
 # media-libs/libffado does not recognise this arch, fails src_configure
