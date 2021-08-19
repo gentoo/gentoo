@@ -19,7 +19,7 @@ RDEPEND="
 	gnome-base/librsvg:2
 	>=media-libs/libpng-1.2:0=
 	>=media-libs/freetype-2:2
-	media-libs/libsdl
+	media-libs/libsdl[joystick]
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer
 	media-libs/sdl-pango
@@ -35,6 +35,7 @@ BDEPEND="
 
 src_prepare() {
 	xdg_src_prepare
+
 	sed -i \
 		-e 's|linux_ARCH_INSTALL:=install-xdg|linux_ARCH_INSTALL:=|' \
 		-e "s|linux_PREFIX:=/usr/local|linux_PREFIX:=/usr|" \
