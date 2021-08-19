@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="media-libs/libsdl[video]
+RDEPEND="media-libs/libsdl[joystick,video]
 	media-libs/sdl-image
 	media-libs/sdl-mixer
 	media-libs/sdl-ttf
