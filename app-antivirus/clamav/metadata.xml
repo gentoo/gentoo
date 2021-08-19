@@ -5,6 +5,12 @@
     <email>antivirus@gentoo.org</email>
     <name>Gentoo Antivirus Project</name>
   </maintainer>
+
+  <maintainer type="person">
+    <!-- for the LTS 0.103.x branch only -->
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+
   <use>
     <flag name="clamonacc">Build the clamonacc on-access scanner</flag>
     <flag name="clamdtop">A Top like tool which shows what clamd is currently scanning amongst other things</flag>
