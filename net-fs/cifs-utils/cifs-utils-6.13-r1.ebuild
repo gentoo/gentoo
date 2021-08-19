@@ -11,6 +11,8 @@ DESCRIPTION="Tools for Managing Linux CIFS Client Filesystems"
 HOMEPAGE="https://wiki.samba.org/index.php/LinuxCIFS_utils"
 SRC_URI="https://ftp.samba.org/pub/linux-cifs/${PN}/${P}.tar.bz2"
 
+SRC_URI+=" https://dev.gentoo.org/~polynomial-c/${P}-kerberos_mount_regression_fix.patch.xz"
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc ~x86 ~x86-linux"
@@ -42,6 +44,7 @@ DOCS="doc/linux-cifs-client-guide.odt"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.12-ln_in_destdir.patch" #766594
+	"${WORKDIR}/${P}-kerberos_mount_regression_fix.patch" #809023
 )
 
 pkg_setup() {
