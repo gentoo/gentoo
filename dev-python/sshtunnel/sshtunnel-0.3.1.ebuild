@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Pure Python SSH tunnels"
@@ -14,9 +13,7 @@ SRC_URI="mirror://pypi/s/sshtunnel/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
-IUSE=""
 
 RESTRICT="test"
 
 RDEPEND="dev-python/paramiko[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
