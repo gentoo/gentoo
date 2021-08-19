@@ -63,10 +63,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.5.2-no-werror.patch
-	"${FILESDIR}"/${PN}-2.4.2-Ensure-consistent-struct-stat.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-2.5.2-no-werror.patch )
 
 pkg_setup() {
 	linux-info_pkg_setup
