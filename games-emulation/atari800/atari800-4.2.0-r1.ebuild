@@ -40,6 +40,8 @@ src_prepare() {
 	local PATCHES=(
 		# Bug 544608
 		"${FILESDIR}"/atari800-3.1.0-tgetent-detection.patch
+		# https://github.com/atari800/atari800/pull/140
+		"${FILESDIR}"/${P}-bashisms.patch
 	)
 
 	default
