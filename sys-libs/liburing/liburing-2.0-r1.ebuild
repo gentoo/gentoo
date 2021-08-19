@@ -21,6 +21,10 @@ IUSE="static-libs"
 # fsync test hangs forever
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}/${P}-spec_version.patch" #809095
+)
+
 src_prepare() {
 	default
 	multilib_copy_sources
