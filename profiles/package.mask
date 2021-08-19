@@ -420,7 +420,6 @@ dev-vcs/git-num
 # Masked for removal in 30 days.
 dev-ruby/compass
 dev-ruby/compass-core
-dev-ruby/compass-import-once
 
 # Hans de Graaff <graaff@gentoo.org> (2021-07-09)
 # Mask ruby25 for removal. This version is no longer supported
