@@ -12,6 +12,7 @@ MY_PN="smw"
 DESCRIPTION="Fan-made multiplayer Super Mario Bros. style deathmatch game"
 HOMEPAGE="https://github.com/mmatyas/supermariowar"
 SRC_URI="https://github.com/mmatyas/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,6 +21,7 @@ IUSE="server"
 
 RDEPEND="
 	dev-cpp/yaml-cpp
+	media-libs/libsdl[joystick]
 	media-libs/sdl-mixer[vorbis]
 	media-libs/sdl-image[png,jpeg]
 	net-libs/enet:1.3=
@@ -30,8 +32,6 @@ BDEPEND="
 	app-arch/unzip
 	virtual/pkgconfig
 "
-
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 PATCHES=( "${FILESDIR}"/${P}-cmake-add_library-static.patch )
 
