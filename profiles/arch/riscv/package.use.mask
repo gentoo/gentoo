@@ -22,6 +22,7 @@ dev-lang/ruby xemacs
 net-misc/networkmanager ofono
 app-misc/tracker miners
 gnome-extra/sushi office
+gnome-base/nautilus previewer sendto
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-18)
 # media-libs/libffado does not recognise this arch, fails src_configure
