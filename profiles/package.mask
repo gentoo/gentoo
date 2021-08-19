@@ -415,12 +415,6 @@ dev-ruby/spork
 dev-vcs/git-num
 
 # Hans de Graaff <graaff@gentoo.org> (2021-07-09)
-# Last release in 2014 and no longer supported upstream. Obsolete CSS
-# framework with known issues.
-# Masked for removal in 30 days.
-dev-ruby/compass
-
-# Hans de Graaff <graaff@gentoo.org> (2021-07-09)
 # Mask ruby25 for removal. This version is no longer supported
 # upstream. Use a newer ruby version, e.g ruby26.
 # Masked for removal in 30 days.
