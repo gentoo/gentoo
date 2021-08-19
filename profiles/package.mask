@@ -366,12 +366,6 @@ dev-ruby/sfl
 # Removal in 30 days (2021-08-16) (bug #602594).
 app-accessibility/eflite
 
-# Hans de Graaff <graaff@gentoo.org> (2021-07-17)
-# Deprecated upstream, replaced with factory_bot.
-# Last release in 2017, no dependencies.
-# Masked for removal in 30 days.
-dev-ruby/factory_girl
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-07-12)
 # Version 3.3.0 suffers from ridiculously high CPU usage, this version has
 # therefore been retracted upstream.
