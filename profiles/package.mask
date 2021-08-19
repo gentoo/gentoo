@@ -38,6 +38,7 @@
 # bugs open. Removal on 2021-09-19.
 # bug #711088, bug #775944, bug #790680, bug #806953.
 net-analyzer/netwox
+net-analyzer/netwag
 
 # Sam James <sam@gentoo.org> (2021-08-17)
 # Fails to build with >= Boost 1.73, so broken for well over a year.
