@@ -4,13 +4,6 @@ Date: Sun, 14 Jun 2020 14:11:00 -0600
 Subject: [PATCH] Move definitions that don't need to be exposed from opl.h to
  opl.c
 
----
- src/opl.c | 153 +++++++++++++++++++++++++++++++++++++++++++++++++++-
- src/opl.h | 157 ++----------------------------------------------------
- 2 files changed, 154 insertions(+), 156 deletions(-)
-
-diff --git a/src/opl.c b/src/opl.c
-index a4071c5..f15474c 100644
 --- a/src/opl.c
 +++ b/src/opl.c
 @@ -23,12 +23,161 @@
@@ -177,8 +170,6 @@ index a4071c5..f15474c 100644
  
  static Bit32u generator_add;	// should be a chip parameter
  
-diff --git a/src/opl.h b/src/opl.h
-index c8e643b..cbb56ad 100644
 --- a/src/opl.h
 +++ b/src/opl.h
 @@ -25,11 +25,8 @@

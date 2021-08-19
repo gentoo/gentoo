@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,19 +14,20 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="media-libs/libsdl[video]
+DEPEND="media-libs/libsdl[joystick,video]
 	media-libs/sdl-net"
 RDEPEND="${DEPEND}"
 BDEPEND="app-arch/unzip"
 
 PATCHES=(
-	"${FILESDIR}/${PV}-datapath.diff"
-	"${FILESDIR}/${PV}-cflag-idiocy.diff"
-	"${FILESDIR}/${PV}-gcc10.patch"
+	"${FILESDIR}/${P}-datapath.patch"
+	"${FILESDIR}/${P}-cflags.patch"
+	"${FILESDIR}/${P}-gcc10.patch"
 )
 
 src_prepare() {
 	default
+
 	rm "${WORKDIR}"/tyrian21/{*.exe,dpmi16bi.ovl,loudness.awe} || die "Failed to remove win32 binaries"
 }
 
