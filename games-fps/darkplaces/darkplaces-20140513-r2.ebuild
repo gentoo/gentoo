@@ -32,7 +32,7 @@ UIRDEPEND="
 	media-libs/libvorbis
 	virtual/opengl
 	alsa? ( media-libs/alsa-lib )
-	sdl? ( media-libs/libsdl )
+	sdl? ( media-libs/libsdl[joystick] )
 	x11-libs/libX11
 	x11-libs/libXpm
 	x11-libs/libXxf86dga
