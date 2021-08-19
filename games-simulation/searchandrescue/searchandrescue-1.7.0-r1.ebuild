@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit desktop flag-o-matic prefix toolchain-funcs xdg
 
 MY_PN=SearchAndRescue
@@ -10,13 +11,14 @@ HOMEPAGE="http://searchandrescue.sourceforge.net/"
 SRC_URI="mirror://sourceforge/searchandrescue/${MY_PN}-${PV}.tar.gz -> ${MY_PN}-${PV}.tar
 	mirror://sourceforge/searchandrescue/${MY_PN}-data-${PV}.tar.gz -> ${MY_PN}-data-${PV}.tar
 	mirror://sourceforge/searchandrescue/${MY_PN}-data-guadarrama-${PV}.tar.gz -> ${MY_PN}-data-guadarrama-${PV}.tar"
+S="${WORKDIR}"/${PN}_${PV}
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	media-libs/libsdl
+	media-libs/libsdl[joystick]
 	media-libs/sdl-mixer
 	virtual/glu
 	virtual/opengl
@@ -30,8 +32,6 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
-
-S=${WORKDIR}/${PN}_${PV}
 
 src_unpack() {
 	unpack ${MY_PN}-${PV}.tar
@@ -52,7 +52,7 @@ src_prepare() {
 }
 
 src_configure() {
-	export CC="$(tc-getCC) ${CFLAGS} ${LDFLAGS}" \
+	export CC="$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS}" \
 		   CPP="$(tc-getCXX) ${LDFLAGS}"
 
 	append-flags -DNEW_GRAPHICS -DHAVE_SDL_MIXER
