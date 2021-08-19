@@ -1,5 +1,5 @@
---- src/foecommand.h.old	2006-04-21 23:26:03.000000000 +0200
-+++ src/foecommand.h	2006-04-21 23:26:26.000000000 +0200
+--- a/foecommand.h
++++ b/foecommand.h
 @@ -39,10 +39,10 @@
    
    virtual void doChangeDirection(double d);
@@ -15,8 +15,8 @@
    
   private:
    struct foe *foe;
---- src/screen.c.old	2006-04-21 23:50:01.000000000 +0200
-+++ src/screen.c	2006-04-21 23:50:30.000000000 +0200
+--- a/screen.c
++++ b/screen.c
 @@ -73,7 +73,7 @@
  void loadGLTexture(char *fileName, GLuint *texture) {
    SDL_Surface *surface;

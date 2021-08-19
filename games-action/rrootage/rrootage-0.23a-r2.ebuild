@@ -1,7 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+inherit toolchain-funcs
 
 MY_PN="rRootage"
 MY_P="${MY_PN}-${PV}"
@@ -9,11 +11,11 @@ DESCRIPTION="Abstract shooter - defeat auto-created huge battleships"
 HOMEPAGE="http://www.asahi-net.or.jp/~cs8k-cyu/windows/rr_e.html
 	http://rrootage.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_PN}/src
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="
 	>=dev-libs/libbulletml-0.0.3
@@ -21,9 +23,7 @@ DEPEND="
 	media-libs/sdl-mixer[vorbis]
 	virtual/glu
 	virtual/opengl"
-RDEPEND=${DEPEND}
-
-S=${WORKDIR}/${MY_PN}/src
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}"-gcc41.patch
@@ -50,6 +50,8 @@ src_prepare() {
 
 src_compile() {
 	emake \
+		CC=$(tc-getCC) \
+		CXX=$(tc-getCXX) \
 		MORE_CFLAGS="-DLINUX ${CFLAGS}" \
 		MORE_CXXFLAGS="-DLINUX ${CXXFLAGS}"
 }
