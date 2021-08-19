@@ -21,6 +21,7 @@ dev-lang/ruby xemacs
 # dependencies not keyworded/tested
 net-misc/networkmanager ofono
 app-misc/tracker miners
+gnome-extra/sushi office
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-18)
 # media-libs/libffado does not recognise this arch, fails src_configure
