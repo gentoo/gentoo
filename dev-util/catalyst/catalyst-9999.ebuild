@@ -51,6 +51,10 @@ RDEPEND="
 		amd64? (
 			sys-boot/grub[grub_platforms_efi-32,grub_platforms_efi-64]
 		)
+		arm64?  (
+			sys-boot/grub[grub_platforms_efi-64]
+			sys-fs/mtools
+		)
 		ia64?  (
 			sys-boot/grub[grub_platforms_efi-64]
 			sys-fs/mtools
