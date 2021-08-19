@@ -130,6 +130,7 @@ src_configure() {
 		$(meson_use uefi plugin_uefi_pk)
 	)
 	use ppc64 && plugins+=( -Dplugin_msr="false" )
+	use riscv && plugins+=( -Dplugin_msr="false" )
 
 	local emesonargs=(
 		--localstatedir "${EPREFIX}"/var
