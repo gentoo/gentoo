@@ -1,26 +1,26 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit desktop
 
 MY_P="KoboDeluxe-${PV/_/}"
 DESCRIPTION="An SDL port of xkobo, a addictive space shoot-em-up"
 HOMEPAGE="http://www.olofson.net/kobodl/"
 SRC_URI="http://www.olofson.net/kobodl/download/${MY_P}.tar.bz2"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc64 ~x86"
 IUSE="opengl"
 
-DEPEND="media-libs/libsdl
+DEPEND="media-libs/libsdl[joystick]
 	media-libs/sdl-image[png]
 	opengl? ( virtual/opengl )
 "
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-glibc29.patch
@@ -36,11 +36,13 @@ src_unpack() {
 
 src_prepare() {
 	default
+
 	# Fix paths
 	sed -i \
 		-e 's:\$(datadir)/kobo-deluxe:$(datadir)/kobodeluxe:' \
 		-e 's:\$(sharedstatedir)/kobo-deluxe/scores:$(localstatedir)/kobodeluxe:' \
 		configure || die "sed configure failed"
+
 	sed -i \
 		-e 's:kobo-deluxe:kobodeluxe:' \
 		data/gfx/Makefile.in \
@@ -53,6 +55,7 @@ src_configure() {
 
 src_install() {
 	default
+
 	newicon icons/KDE/icons/32x32/kobodl.png ${PN}.png
 	make_desktop_entry kobodl "Kobo Deluxe"
 	keepdir /var/lib/${PN}
