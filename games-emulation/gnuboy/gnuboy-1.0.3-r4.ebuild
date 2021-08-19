@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -12,16 +12,18 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+sdl X"
+IUSE="X +sdl"
 REQUIRED_USE="!X? ( sdl )"
 
 RDEPEND="
-	sdl? ( media-libs/libsdl )
-	X? ( x11-libs/libXext )
-"
-DEPEND="${RDEPEND}
-	X? ( x11-base/xorg-proto )
-"
+	X? (
+		x11-libs/libX11
+		x11-libs/libXext
+	)
+	sdl? ( media-libs/libsdl[joystick,sound,video] )"
+DEPEND="
+	${RDEPEND}
+	X? ( x11-base/xorg-proto )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-exec-stack.patch
@@ -33,28 +35,24 @@ PATCHES=(
 src_prepare() {
 	default
 
-	mv configure.in configure.ac || die
 	eautoreconf
 }
 
 src_configure() {
-	local myconf
-
-	econf \
-		$(use_with X x) \
-		$(use_with sdl) \
-		$(use_enable x86 asm) \
-		${myconf} \
-		--disable-arch \
+	local econfargs=(
+		$(use_with X x)
+		$(use_with sdl)
+		$(use_enable x86 asm)
+		--disable-arch
 		--disable-optimize
+	)
+
+	econf "${econfargs[@]}"
 }
 
 src_install() {
-	for f in sdlgnuboy xgnuboy; do
-		if [[ -f ${f} ]] ; then
-			dobin ${f}
-		fi
-	done
+	use X && dobin xgnuboy
+	use sdl && dobin sdlgnuboy
 
 	dodoc README docs/{CHANGES,CONFIG,CREDITS,FAQ,HACKING,WHATSNEW}
 }
