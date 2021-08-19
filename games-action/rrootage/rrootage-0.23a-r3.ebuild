@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	>=dev-libs/libbulletml-0.0.3
-	media-libs/libsdl[video]
+	media-libs/libsdl[joystick,video]
 	media-libs/sdl-mixer[vorbis]
 	virtual/glu
 	virtual/opengl"
