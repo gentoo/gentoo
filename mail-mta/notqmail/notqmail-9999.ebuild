@@ -75,8 +75,6 @@ RDEPEND="${DEPEND}
 	acct-user/qmailr
 	acct-user/qmails
 	sys-apps/ucspi-tcp
-	virtual/checkpassword
-	virtual/daemontools
 	authcram? ( >=net-mail/cmd5checkpw-0.30 )
 	ssl? (
 		pop3? ( sys-apps/ucspi-ssl )
@@ -92,6 +90,10 @@ RDEPEND="${DEPEND}
 	!mail-mta/netqmail
 	!mail-mta/sendmail
 	!mail-mta/ssmtp[mta]
+"
+PDEPEND="
+	virtual/checkpassword
+	virtual/daemontools
 "
 
 src_unpack() {
