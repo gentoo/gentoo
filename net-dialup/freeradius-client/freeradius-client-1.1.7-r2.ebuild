@@ -15,7 +15,10 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 
 IUSE="scp shadow static-libs"
 
-DEPEND="!net-dialup/radiusclient-ng"
+DEPEND="
+	!net-dialup/radiusclient-ng
+	virtual/libcrypt:=
+"
 RDEPEND="${DEPEND}"
 
 DOCS=(
