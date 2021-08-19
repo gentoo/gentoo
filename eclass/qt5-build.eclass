@@ -6,7 +6,7 @@
 # qt@gentoo.org
 # @AUTHOR:
 # Davide Pesavento <pesa@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 8
 # @BLURB: Eclass for Qt5 split ebuilds.
 # @DESCRIPTION:
 # This eclass contains various functions that are used when building Qt5.
@@ -16,7 +16,7 @@ if [[ ${CATEGORY} != dev-qt ]]; then
 fi
 
 case ${EAPI} in
-	7|8) ;;
+	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -105,9 +105,9 @@ SLOT=5/$(ver_cut 1-2)
 IUSE="debug test"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	RESTRICT+=" test" # bug 457182
+	RESTRICT="test" # bug 457182
 else
-	RESTRICT+=" !test? ( test )"
+	RESTRICT="!test? ( test )"
 fi
 
 BDEPEND="
@@ -175,9 +175,7 @@ qt5-build_src_configure() {
 		qt5_base_configure
 	fi
 	if [[ ${QT5_MODULE} == qttools ]]; then
-		if [[ ${EAPI} != 7 || -z ${QT5_TARGET_SUBDIRS[@]} ]]; then
-			qt5_tools_configure
-		fi
+		qt5_tools_configure
 	fi
 
 	qt5_foreach_target_subdir qt5_qmake
@@ -684,11 +682,9 @@ qt5_tools_configure() {
 	# allow the ebuild to override what we set here
 	myqmakeargs=( "${qmakeargs[@]}" "${myqmakeargs[@]}" )
 
-	if [[ ${EAPI} != 7 ]]; then
-		mkdir -p "${QT5_BUILD_DIR}" || die
-		qt5_qmake "${QT5_BUILD_DIR}"
-		cp qttools-config.pri "${QT5_BUILD_DIR}" || die
-	fi
+	mkdir -p "${QT5_BUILD_DIR}" || die
+	qt5_qmake "${QT5_BUILD_DIR}"
+	cp qttools-config.pri "${QT5_BUILD_DIR}" || die
 }
 
 # @FUNCTION: qt5_qmake_args
