@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-exec-stack.patch
 	"${FILESDIR}"/${P}-linux-headers.patch
 	"${FILESDIR}"/${P}-include.patch
+	"${FILESDIR}"/${P}-fix-implicit-decl-sprintf.patch
 )
 
 src_prepare() {
