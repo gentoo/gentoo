@@ -1,15 +1,8 @@
-From e87745721deaf46d7054ac40cc55838561c9f552 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?J=C3=A9r=C3=B4me=20Carretero?= <cJ@zougloub.eu>
+https://github.com/xmms2/xmms2-devel/pull/2
+
+From: Jérôme Carretero <cJ@zougloub.eu>
 Date: Tue, 24 Oct 2017 18:43:26 -0400
 Subject: [PATCH] plugins: mac: support newer mac API version
-
----
- src/plugins/mac/mac.cpp          | 6 +++++-
- src/plugins/mac/source_adapter.h | 8 +++++++-
- 2 files changed, 12 insertions(+), 2 deletions(-)
-
-diff --git a/src/plugins/mac/mac.cpp b/src/plugins/mac/mac.cpp
-index cec43e52..d8d3d1b9 100644
 --- a/src/plugins/mac/mac.cpp
 +++ b/src/plugins/mac/mac.cpp
 @@ -210,8 +210,12 @@ xmms_mac_get_media_info (xmms_xform_t *xform)
@@ -26,8 +19,6 @@ index cec43e52..d8d3d1b9 100644
  				memset (field_value, 0, 255);
  				int size = 255;
  				p_ape_tag->GetFieldString (field_name, (char *)field_value, &size, TRUE);
-diff --git a/src/plugins/mac/source_adapter.h b/src/plugins/mac/source_adapter.h
-index 94f75359..70617514 100644
 --- a/src/plugins/mac/source_adapter.h
 +++ b/src/plugins/mac/source_adapter.h
 @@ -38,7 +38,13 @@ public:
@@ -45,6 +36,3 @@ index 94f75359..70617514 100644
  	int Close () { return ERROR_SUCCESS; }
  
  	// read / write
--- 
-2.15.0
-
