@@ -60,6 +60,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.0_pre20200723-cmake_lua_version.patch
 	"${FILESDIR}"/${P}-gcc11-include.patch
+	"${FILESDIR}"/${P}-boost-1.77-missing-include.patch
 )
 
 S="${WORKDIR}/s25client-${COMMIT}"
@@ -98,6 +99,8 @@ src_configure() {
 		-DRTTR_INCLUDE_DEVTOOLS=OFF
 		-DRTTR_LIBDIR="$(get_libdir)/${PN}"
 		-DRTTR_REVISION="${COMMIT}"
+		-DRTTR_USE_SYSTEM_LIBS=ON
+		# Just to be ultra explicit.
 		-DRTTR_USE_SYSTEM_LIBSAMPLERATE=ON
 		-DRTTR_VERSION="${PV##*_pre}" # Tests expect a date.
 		-DLUA_VERSION=$(lua_get_version)
