@@ -1,9 +1,9 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Server to test HTTP clients"
@@ -13,22 +13,14 @@ SRC_URI="https://github.com/lorien/test_server/archive/v${PV}.tar.gz -> ${P}.tar
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	>=dev-python/bottle-0.12.13[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/webtest[${PYTHON_USEDEP}]"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-py3.10.patch"
+)
+
 distutils_enable_tests pytest
-
-src_prepare() {
-	distutils-r1_src_prepare
-
-	# broken on py2.7, upstream knows
-	sed -i -e '5a\
-import sys' \
-		-e '/test_null_bytes/i\
-@pytest.mark.skipif(sys.hexversion < 0x03000000, reason="broken on py2")' \
-		test/server.py || die
-}
