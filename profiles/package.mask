@@ -372,12 +372,6 @@ app-accessibility/eflite
 # Masked for removal in 30 days.
 dev-ruby/factory_girl
 
-# Hans de Graaff <graaff@gentoo.org> (2021-07-17)
-# Deprecated upstream, no longer needed with rspec 2+
-# Last release in 2016, factory_girl was last dependency.
-# Masked for removal in 30 days.
-dev-ruby/bourne
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-07-12)
 # Version 3.3.0 suffers from ridiculously high CPU usage, this version has
 # therefore been retracted upstream.
