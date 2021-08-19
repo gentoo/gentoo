@@ -1,5 +1,5 @@
---- openmortal-0.7/src/sge_tt_text.cpp.old
-+++ openmortal-0.7/src/sge_tt_text.cpp
+--- a/src/sge_tt_text.cpp
++++ b/src/sge_tt_text.cpp
 @@ -37,9 +37,9 @@
  
  #ifndef _SGE_NOTTF
