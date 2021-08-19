@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,14 +17,17 @@ IUSE="nls +unique xspf"
 RDEPEND="
 	dev-db/sqlite:3=
 	dev-libs/glib:2
-	dev-libs/libxml2:2=
+	dev-libs/libxml2:2
 	media-libs/libmpd:=
-	net-libs/libsoup:2.4=
+	net-libs/libsoup:2.4
+	sys-libs/zlib
 	x11-libs/gtk+:2
+	x11-libs/libICE
+	x11-libs/libSM
 	x11-libs/libX11
 	x11-themes/hicolor-icon-theme
-	unique? ( dev-libs/libunique:1= )
-	xspf? ( media-libs/libxspf:= )"
+	unique? ( dev-libs/libunique:1 )
+	xspf? ( media-libs/libxspf )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	$(vala_depend)
