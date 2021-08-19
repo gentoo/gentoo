@@ -1,13 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit desktop
 
 DESCRIPTION="A cartoon style multiplayer first-person shooter"
 HOMEPAGE="https://worldofpadman.net/"
 SRC_URI="mirror://sourceforge/${PN}/wop-1.5-unified.zip
 	mirror://sourceforge/${PN}/wop-1.5.x-to-1.6-patch-unified.zip"
+S="${WORKDIR}/${P}_svn2178-src"
 
 LICENSE="GPL-2 worldofpadman"
 SLOT="0"
@@ -19,7 +21,7 @@ RDEPEND="sys-libs/zlib
 		>=media-libs/speex-1.2.0
 		media-libs/speexdsp
 		virtual/jpeg:0
-		media-libs/libsdl[opengl,video,X]
+		media-libs/libsdl[joystick,opengl,video,X]
 		virtual/opengl
 		virtual/glu
 		openal? ( media-libs/openal )
@@ -31,11 +33,8 @@ RDEPEND="sys-libs/zlib
 		)
 	)
 "
-DEPEND="${RDEPEND}
-	app-arch/unzip
-"
-
-S="${WORKDIR}/${P}_svn2178-src"
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip"
 
 src_unpack() {
 	unpack ${A}
@@ -79,11 +78,13 @@ src_compile() {
 
 src_install() {
 	newbin build/release-*/wopded.* ${PN}-ded
+
 	if ! use dedicated ; then
 		newbin build/release-*/wop.* ${PN}
 		newicon misc/quake3.png ${PN}.png
 		make_desktop_entry ${PN} "World of Padman"
 	fi
+
 	insinto /usr/share/${PN}
 	doins -r ../wop
 
@@ -92,5 +93,6 @@ src_install() {
 		voip-readme.txt \
 		../XTRAS/changelog.txt \
 		../XTRAS/sounds_readme.txt
+
 	HTML_DOCS="../XTRAS/readme ../XTRAS/readme.html" einstalldocs
 }
