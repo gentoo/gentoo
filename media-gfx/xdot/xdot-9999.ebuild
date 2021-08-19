@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8,9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{7..10} )
 
 MY_PN=xdot.py
 EGIT_REPO_URI="https://github.com/jrfonseca/${MY_PN}"
