@@ -1,5 +1,5 @@
---- a/Makefile.old	2011-06-14 22:12:00.920386798 +0200
-+++ b/Makefile	2011-06-14 22:12:22.118716548 +0200
+--- a/Makefile
++++ b/Makefile
 @@ -11,7 +11,7 @@
  EDTOB = editor
  EDWOB = editworld

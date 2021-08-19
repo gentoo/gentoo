@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="music"
 
 DEPEND="
-	media-libs/libsdl[opengl,video]
+	media-libs/libsdl[joystick,opengl,video]
 	media-libs/sdl-image[jpeg,png]
 	media-libs/sdl-mixer[vorbis]
 	media-libs/sdl-ttf
