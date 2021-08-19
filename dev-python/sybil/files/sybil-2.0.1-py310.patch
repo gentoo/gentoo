@@ -1,0 +1,94 @@
+From 022fe7d654bdeba6db6eb26c0f9434f0882174bf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Wed, 9 Jun 2021 10:49:33 +0200
+Subject: [PATCH 1/3] tests: adjust for slightly different whitespace under
+ python3.10
+
+'>   raise' is now '>    raise' (extra space).
+
+For https://bugzilla.redhat.com/show_bug.cgi?id=1908278.
+The tests now pass with python3-3.9.5-2.fc34.x86_64 and
+python3-3.10.0~b2-3.fc35.x86_64.
+---
+ tests/test_functional.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_functional.py b/tests/test_functional.py
+index f8d41de..5a2e356 100644
+--- a/tests/test_functional.py
++++ b/tests/test_functional.py
+@@ -99,14 +99,14 @@ def pytest_sessionfinish(self, session):
+                   'sybil teardown 4\n'
+                   'session_fixture teardown')
+     out.then_find('_ fail.rst line=1 column=1 _')
+-    out.then_find(  ">   raise Exception('the start!')")
++    out.then_find(  "   raise Exception('the start!')")
+     out.then_find('_ fail.rst line=8 column=1 _')
+     out.then_find('Y count was 3 instead of 2')
+     out.then_find('fail.rst:8: SybilFailure')
+     out.then_find('_ fail.rst line=10 column=1 _')
+     out.then_find('ValueError: X count was 3 instead of 4')
+     out.then_find('_ fail.rst line=14 column=1 _')
+-    out.then_find(">       raise Exception('boom!')")
++    out.then_find("       raise Exception('boom!')")
+     out.then_find('fail.rst:18: Exception')
+ 
+ 
+
+From 9723fc90f0b1f8f48c1109d501a31309f93add92 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Wed, 9 Jun 2021 10:50:06 +0200
+Subject: [PATCH 2/3] tests: adjust for different line numbers under python3.10
+
+I think this is related to
+https://docs.python.org/3.10/whatsnew/3.10.html#pep-626-precise-line-numbers-for-debugging-and-other-tools
+
+For https://bugzilla.redhat.com/show_bug.cgi?id=1908278.
+The tests now pass with python3-3.9.5-2.fc34.x86_64 and
+python3-3.10.0~b2-3.fc35.x86_64.
+---
+ tests/test_codeblock.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_codeblock.py b/tests/test_codeblock.py
+index c9f8b17..c30ae3a 100644
+--- a/tests/test_codeblock.py
++++ b/tests/test_codeblock.py
+@@ -44,7 +44,7 @@ def test_future_imports():
+     )
+     # the future import line drops the firstlineno by 1
+     code = compile_codeblock(regions[0].parsed, document.path)
+-    assert code.co_firstlineno == 2
++    assert code.co_firstlineno in (1, 2)  # we get 1 under python3.10
+     assert evaluate_region(regions[1], namespace) is None
+     assert buffer.getvalue() == (
+         'pathalogical worst case for line numbers\n'
+@@ -52,7 +52,7 @@ def test_future_imports():
+     )
+     # the future import line drops the firstlineno by 1
+     code = compile_codeblock(regions[1].parsed, document.path)
+-    assert code.co_firstlineno == 8
++    assert code.co_firstlineno in (1, 8)  # we get 1 under python3.10
+ 
+ 
+ def test_windows_line_endings(tmp_path):
+
+From 11862367a760045cc34c11cf888b04f9ca6f4e2d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Wed, 9 Jun 2021 10:51:56 +0200
+Subject: [PATCH 3/3] gitignore: ignore __pycache__ directories
+
+---
+ .gitignore | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/.gitignore b/.gitignore
+index ee824be..0afa48a 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -5,4 +5,5 @@
+ .coverage*
+ _build/
+ .*cache/
++__pycache__/
+ pytestdebug.log
