@@ -1,0 +1,60 @@
+From 020ebef66523e9496f8042beb9384f3f770a6412 Mon Sep 17 00:00:00 2001
+From: Arthur Zamarin <arthurzam@gentoo.org>
+Date: Thu, 19 Aug 2021 20:39:04 +0300
+Subject: [PATCH] Fix with_args not working with sys.stdout.write
+
+https://github.com/flexmock/flexmock/commit/513265e731fc4daceeb19123a4e71d652b990a1a
+
+Backported to 0.10.6 by Arthur Zamarin <arthurzam@gentoo.org>
+
+--- a/flexmock.py
++++ b/flexmock.py
+@@ -254,13 +254,13 @@ class Expectation(object):
+         #  - it's not a static method
+         #  - the mocked object is a module - module "methods" are in fact plain functions;
+         #    unless they're classes, which means they still have __init__
+-        is_method = ((inspect.ismethod(self.original) or inspect.isfunction(self.original)
+-                      or _isclass(self.original)) and
+-                     self.method_type is not staticmethod and
+-                     (not isinstance(self._mock, types.ModuleType) or
+-                      _isclass(self.original)))
++        is_builtin_method = isinstance(self.original, types.BuiltinMethodType)
++        is_method = inspect.ismethod(self.original) and self.method_type is not staticmethod
++        is_class = inspect.isclass(self.original)
++        is_class_method = (inspect.isfunction(self.original) and inspect.isclass(self.mock)
++                           and self.method_type is not staticmethod)
+         args_len = len(allowed.args)
+-        if is_method:
++        if is_builtin_method or is_method or is_class or is_class_method:
+             args_len -= 1
+         minimum = args_len - (allowed.defaults and len(allowed.defaults) or 0)
+         maximum = None
+--- a/tests/flexmock_test.py
++++ b/tests/flexmock_test.py
+@@ -17,6 +17,7 @@ from flexmock import ReturnValue
+ from flexmock import flexmock_teardown
+ from flexmock import _format_args
+ from flexmock import _isproperty
++import random
+ import flexmock
+ import re
+ import sys
+@@ -308,6 +309,15 @@ class RegularClass(object):
+         assertEqual('got an int', mock.method_foo(23))
+         assertRaises(MethodSignatureError, mock.method_foo, 2.0)
+ 
++    def test_with_args_should_work_with_builtin_c_functions_and_methods(self):
++        flexmock(sys.stdout).should_call("write")  # set fall-through
++        flexmock(sys.stdout).should_receive("write").with_args("flexmock_builtin_test").once()
++        sys.stdout.write("flexmock_builtin_test")
++
++    def test_with_args_should_work_with_builtin_python_methods(self):
++        flexmock(random).should_receive("randint").with_args(1, 10).once()
++        random.randint(1, 10)
++
+     def test_flexmock_should_match_expectations_against_user_defined_classes(self):
+         mock = flexmock(name='temp')
+ 
+-- 
+2.33.0
+
