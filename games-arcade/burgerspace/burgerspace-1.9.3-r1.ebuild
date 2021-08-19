@@ -15,7 +15,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="network"
 RESTRICT="test" # doesn't really test anything
 
-RDEPEND=">=dev-games/flatzebra-0.1.7"
+RDEPEND=">=dev-games/flatzebra-0.1.7
+	media-libs/libsdl[joystick]
+	media-libs/sdl-image
+	media-libs/sdl-mixer"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
