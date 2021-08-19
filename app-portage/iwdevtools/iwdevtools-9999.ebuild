@@ -14,10 +14,11 @@ SLOT="0"
 KEYWORDS=""
 
 RDEPEND="
+	app-misc/pax-utils
 	app-portage/portage-utils
 	sys-apps/diffutils
-	sys-apps/portage
 	sys-apps/file
+	sys-apps/portage
 	sys-apps/util-linux"
 
 src_configure() {
