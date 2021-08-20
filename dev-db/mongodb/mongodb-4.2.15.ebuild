@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-fix-scons.patch"
 	"${FILESDIR}/${PN}-4.4.1-gcc11.patch"
 	"${FILESDIR}/${PN}-4.2.15-no-compass.patch"
+	"${FILESDIR}/${PN}-5.0.2-glibc-2.34.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
