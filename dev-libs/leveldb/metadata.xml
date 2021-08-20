@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <upstream>
-    <remote-id type="github">google/leveldb</remote-id>
-    <bugs-to>https://github.com/google/leveldb/issues</bugs-to>
-  </upstream>
-  <use>
-    <flag name="crc32c">Link against <pkg>dev-libs/crc32c</pkg> for accelerated CRC32C calculation</flag>
-  </use>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">google/leveldb</remote-id>
+		<bugs-to>https://github.com/google/leveldb/issues</bugs-to>
+	</upstream>
+	<use>
+		<flag name="crc32c">Link against <pkg>dev-libs/crc32c</pkg> for accelerated CRC32C calculation</flag>
+	</use>
 </pkgmetadata>
