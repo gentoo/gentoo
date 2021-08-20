@@ -42,6 +42,7 @@ DEPEND="
 		)
 	)
 	logwatch? ( sys-apps/logwatch )
+	ndmp? ( net-libs/rpcsvc-proto )
 	tcpd? ( sys-apps/tcp-wrappers )
 	readline? ( sys-libs/readline:0 )
 	static? (
@@ -184,6 +185,9 @@ src_install() {
 	# remove some scripts we don't need at all
 	rm -f "${D}"/usr/libexec/bareos/{bareos,bareos-ctl-dir,bareos-ctl-fd,bareos-ctl-sd,startmysql,stopmysql}
 	rm -f "${D}"/usr/sbin/bareos
+
+	# remove timelimit to fix #778557
+	rm -f "${D}"/usr/{,s}bin/timelimit
 
 	# remove upstream init scripts
 	rm -f "${D}"/etc/init.d/bareos-*
