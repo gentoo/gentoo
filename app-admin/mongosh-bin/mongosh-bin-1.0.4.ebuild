@@ -19,6 +19,9 @@ KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="dev-libs/cyrus-sasl[kerberos]"
 
+# Do not complain about CFLAGS etc since we don't use them
+QA_FLAGS_IGNORED='.*'
+
 src_unpack() {
 	if use amd64; then
 		S="${WORKDIR}/${MY_P}-linux-x64"
