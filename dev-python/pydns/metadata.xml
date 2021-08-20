@@ -9,6 +9,7 @@
 		applications. This was originally based on Guido van Rossum's DNS
 		library code, but has drifted further and further away from it over
 		time.</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pydns</remote-id>
 		<remote-id type="launchpad">py3dns</remote-id>
