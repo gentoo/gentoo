@@ -29,14 +29,12 @@ media-sound/jack2 ieee1394
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # dependencies not keyworded/tested
 kde-plasma/powerdevil wireless
-kde-plasma/plasma-vault networkmanager
 kde-plasma/plasma-desktop emoji
-kde-plasma/ksystemstats networkmanager
 kde-plasma/libksysguard webengine
 kde-frameworks/kfilemetadata ffmpeg
 kde-plasma/plasma-workspace appstream screencast gps geolocation
 kde-plasma/kdeplasma-addons webengine
-kde-plasma/plasma-meta networkmanager accessibility grub plymouth pulseaudio
+kde-plasma/plasma-meta accessibility grub plymouth pulseaudio
 kde-plasma/discover firmware flatpak
 kde-plasma/kwin accessibility screencast
 
