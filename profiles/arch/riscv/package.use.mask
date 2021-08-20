@@ -14,14 +14,12 @@ media-sound/jack2 ieee1394
 # dependencies not keyworded/tested
 sys-apps/xdg-desktop-portal screencast
 kde-plasma/powerdevil wireless
-kde-plasma/plasma-vault networkmanager
 kde-plasma/plasma-desktop emoji
-kde-plasma/ksystemstats networkmanager
 kde-plasma/libksysguard webengine
 kde-frameworks/kfilemetadata ffmpeg
 kde-plasma/plasma-workspace appstream screencast gps geolocation
 kde-plasma/kdeplasma-addons webengine
-kde-plasma/plasma-meta networkmanager accessibility grub plymouth pulseaudio
+kde-plasma/plasma-meta accessibility grub plymouth pulseaudio
 kde-plasma/discover firmware flatpak
 kde-plasma/kwin accessibility screencast
 kde-plasma/plasma-firewall firewalld
@@ -192,13 +190,6 @@ net-libs/zeromq unwind
 net-mail/dovecot unwind
 x11-base/xorg-server unwind
 x11-base/xwayland unwind
-
-# Alex Fan <alexfanqi@yahoo.com> (2021-07-22)
-# Yixun Lan <dlan@gentoo.org> (2021-05-24)
-# net-misc/networkmanager fails tests on this arch (Bug #807553)
-dev-qt/qtnetwork networkmanager
-net-libs/libproxy networkmanager
-xfce-extra/xfce4-power-manager networkmanager
 
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
 # Dependency not keyworded on this arch.
