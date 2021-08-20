@@ -138,8 +138,6 @@ dev-vcs/subversion kwallet
 kde-frameworks/purpose bluetooth
 #  - kde-plasma/bluedevil
 kde-plasma/plasma-meta bluetooth
-#  - media-sound/pavucontrol-qt
-lxqt-base/lxqt-panel pulseaudio
 #  - media-libs/dumb
 media-libs/allegro dumb
 #  - media-gfx/nvidia-texture-tools
