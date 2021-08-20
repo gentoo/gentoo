@@ -130,8 +130,6 @@ app-misc/lirc ftdi inputlirc
 dev-lang/ruby xemacs
 #  - dev-ruby/asciidoctor
 dev-libs/nanomsg doc
-#  - dev-qt/qtbluetooth
-dev-python/PyQt5 bluetooth
 #  - app-text/dblatex & media-gfx/transfig
 dev-util/ragel doc
 #  - Qt5 & KDE
