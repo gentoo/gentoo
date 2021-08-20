@@ -8,7 +8,7 @@ depend() {
 
 start() {
 	ebegin "Starting bareos storage daemon"
-	checkpath -d -m 0750 -o bareos:bareos /run/bareos
+	checkpath -d -m 0750 -o root:bareos /run/bareos
 	start-stop-daemon --start --quiet --exec /usr/sbin/bareos-sd \
 		-- ${SD_OPTIONS}
 	eend $?
