@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2021-08-20)
+# Inactive upstream.
+# Fully superseded by dev-python/dnspython. All reverse dependencies support
+# and recommend usage of dev-python/dnspython.
+# No other distros package it anymore.
+# Removal on 2021-09-19.  Bug #809239.
+dev-python/pydns
+
 # Sam James <sam@gentoo.org> (2021-08-18)
 # Fails to build with glibc-2.34. End of maintenance
 # upstream was declared in 2007. Several other serious
