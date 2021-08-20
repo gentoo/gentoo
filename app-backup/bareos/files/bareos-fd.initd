@@ -8,7 +8,7 @@ depend() {
 
 start() {
 	ebegin "Starting bareos file daemon"
-	checkpath -d -m 0750 /run/bareos
+	checkpath -d -m 0750 -o root:bareos /run/bareos
 	start-stop-daemon --start --quiet --exec /usr/sbin/bareos-fd \
 		-- ${FD_OPTIONS}
 	eend $?
