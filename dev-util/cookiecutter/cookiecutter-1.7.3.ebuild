@@ -4,8 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-DISTUTILS_USE_SETUPTOOLS="rdepend"
-
 inherit distutils-r1
 
 DESCRIPTION="Command-line utility to create projects from cookiecutters (project templates)"
@@ -18,11 +16,11 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-python/binaryornot-0.4.4[${PYTHON_USEDEP}]
+	>=dev-python/click-7.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.7[${PYTHON_USEDEP}]
 	<dev-python/jinja-4.0.0[${PYTHON_USEDEP}]
-	>=dev-python/click-7.0[${PYTHON_USEDEP}]
-	>=dev-python/poyo-0.5.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja2-time-0.2.0[${PYTHON_USEDEP}]
+	>=dev-python/poyo-0.5.0[${PYTHON_USEDEP}]
 	>=dev-python/python-slugify-4.0.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.23.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10[${PYTHON_USEDEP}]
@@ -40,10 +38,12 @@ DOCS=( README.md HISTORY.md CONTRIBUTING.md )
 
 PATCHES=(
 	"${FILESDIR}/test_cli-1.7.2.patch"
-	)
+)
 
 distutils_enable_tests pytest
-distutils_enable_sphinx docs dev-python/sphinx_rtd_theme dev-python/recommonmark
+distutils_enable_sphinx docs \
+	dev-python/sphinx_rtd_theme \
+	dev-python/recommonmark
 
 python_test() {
 	epytest -o addopts=
