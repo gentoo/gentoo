@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="ipv6?"
 
 DISTUTILS_USE_SETUPTOOLS=no
@@ -23,12 +23,12 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-python/authres[${PYTHON_USEDEP}]
 	|| (
-		dev-python/pydns:3[${PYTHON_USEDEP}]
 		dev-python/dnspython[${PYTHON_USEDEP}]
+		dev-python/pydns:3[${PYTHON_USEDEP}]
 	)
 "
 
-DEPEND="
+BDEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -36,7 +36,6 @@ DEPEND="
 "
 
 python_test() {
-	pushd test &> /dev/null || die
-	"${PYTHON}" testspf.py || die
-	popd &> /dev/null || die
+	cd test || die
+	"${EPYTHON}" testspf.py || die "Test fail with ${EPYTHON}"
 }
