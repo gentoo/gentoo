@@ -31,7 +31,6 @@ valgrind
 
 # Not tested yet
 bluetooth
-jack
 
 # As of August 2021, RISC-V support in dev-lang/mono is minimal and some
 # versions do not even build on this arch. See
