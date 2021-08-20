@@ -41,6 +41,13 @@ DEPEND="${RDEPEND}"
 DOCS=( AUTHORS ChangeLog NEWS README doc/gutenprint-users-manual.{pdf,odt} )
 PATCHES=( "${FILESDIR}"/${PN}-5.3.1-cflags.patch )
 
+src_prepare() {
+	default
+
+	# Needed for cflags patch
+	eautoreconf
+}
+
 src_configure() {
 	local myeconfargs=(
 		--enable-test

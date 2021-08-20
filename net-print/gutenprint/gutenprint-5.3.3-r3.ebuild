@@ -45,6 +45,13 @@ PATCHES=(
 	"${FILESDIR}"/${P}-selphy-typo.patch
 )
 
+src_prepare() {
+	default
+
+	# Needed for cflags patch
+	eautoreconf
+}
+
 src_configure() {
 	local myeconfargs=(
 		--enable-test
