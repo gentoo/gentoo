@@ -24,6 +24,7 @@ app-misc/tracker miners
 gnome-extra/sushi office
 gnome-base/gnome-control-center v4l
 gnome-base/nautilus previewer sendto
+media-plugins/grilo-plugins chromaprint upnp-av
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-18)
 # media-libs/libffado does not recognise this arch, fails src_configure
