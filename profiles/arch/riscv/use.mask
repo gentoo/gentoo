@@ -29,9 +29,6 @@ lua_targets_luajit
 # valgrind has no RISCV port.
 valgrind
 
-# Not tested yet
-bluetooth
-
 # As of August 2021, RISC-V support in dev-lang/mono is minimal and some
 # versions do not even build on this arch. See
 # https://github.com/dotnet/runtime/issues/36748

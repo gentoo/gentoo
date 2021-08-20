@@ -130,10 +130,16 @@ app-misc/lirc ftdi inputlirc
 dev-lang/ruby xemacs
 #  - dev-ruby/asciidoctor
 dev-libs/nanomsg doc
+#  - dev-qt/qtbluetooth
+dev-python/PyQt5 bluetooth
 #  - app-text/dblatex & media-gfx/transfig
 dev-util/ragel doc
 #  - Qt5 & KDE
 dev-vcs/subversion kwallet
+#  - kde-frameworks/bluez-qt
+kde-frameworks/purpose bluetooth
+#  - kde-plasma/bluedevil
+kde-plasma/plasma-meta bluetooth
 #  - media-sound/pavucontrol-qt
 lxqt-base/lxqt-panel pulseaudio
 #  - media-libs/dumb
@@ -142,8 +148,8 @@ media-libs/allegro dumb
 media-libs/devil nvtt
 #  - dev-lang/php
 media-libs/libvpx doc
-#  - bluetooth, net-misc/ofono
-media-sound/pulseaudio native-headset ofono-headset
+#  - net-misc/ofono
+media-sound/pulseaudio ofono-headset
 #  - media-libs/vo-amrwbenc, media-libs/libbluray, media-libs/libbs2b, dev-libs/libcdio-paranoia,
 #    media-libs/chromaprint, media-libs/codec2, media-plugins/frei0r-plugins,
 #    media-libs/game-music-emu, media-libs/kvazaar, media-libs/aribb24, media-libs/libilbc,
