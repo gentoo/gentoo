@@ -22,10 +22,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/authres[${PYTHON_USEDEP}]
-	|| (
-		dev-python/dnspython[${PYTHON_USEDEP}]
-		dev-python/pydns:3[${PYTHON_USEDEP}]
-	)
+	dev-python/dnspython[${PYTHON_USEDEP}]
 "
 
 BDEPEND="
