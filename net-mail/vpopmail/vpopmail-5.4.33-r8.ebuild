@@ -18,6 +18,7 @@ REQUIRED_USE="mysql? ( !postgres )"
 DEPEND="
 	acct-group/vpopmail
 	acct-user/vpopmail
+	virtual/libcrypt:=
 	virtual/qmail
 	maildrop? ( mail-filter/maildrop )
 	mysql? ( dev-db/mysql-connector-c:0= )
