@@ -149,10 +149,10 @@ media-libs/libvpx doc
 media-sound/pulseaudio ofono-headset
 #  - media-libs/vo-amrwbenc, media-libs/libbluray, media-libs/libbs2b, dev-libs/libcdio-paranoia,
 #    media-libs/chromaprint, media-libs/codec2, media-plugins/frei0r-plugins,
-#    media-libs/game-music-emu, media-libs/kvazaar, media-libs/aribb24, media-libs/libilbc,
-#    app-text/tesseract, media-libs/lv2 & media-libs/lilv, media-libs/openh264, media-libs/rubberband,
+#    media-libs/kvazaar, media-libs/aribb24, media-libs/libilbc,
+#    app-text/tesseract, media-libs/lv2 & media-libs/lilv, media-libs/rubberband,
 #    net-libs/srt, media-libs/vidstab, media-libs/xvid, media-libs/zimg, media-libs/zvbi
-media-video/ffmpeg amrenc bluray bs2b cdio chromaprint codec2 frei0r gme kvazaar libaribb24 libilbc libtesseract lv2 openh264 rubberband srt vidstab xvid zimg zvbi
+media-video/ffmpeg amrenc bluray bs2b cdio chromaprint codec2 frei0r kvazaar libaribb24 libilbc libtesseract lv2 rubberband srt vidstab xvid zimg zvbi
 #  - media-libs/libquicktime, media-libs/sdl-gfx
 media-video/mjpegtools quicktime sdlgfx
 #  - sys-cluster/ceph
