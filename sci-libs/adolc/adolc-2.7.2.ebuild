@@ -45,7 +45,8 @@ src_configure() {
 	# needs work. Revisit with >=2.7.3.
 	# https://bugs.gentoo.org/730750
 	# https://github.com/coin-or/ADOL-C/issues/20
-	econf \
+	# Can drop CONFIG_SHELL once fixed up dash/bashisms patch
+	CONFIG_SHELL="${BROOT}/bin/bash" econf \
 		--disable-python \
 		--disable-static \
 		--enable-advanced-branching \
