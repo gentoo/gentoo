@@ -28,6 +28,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.18-nonbash.patch
+)
+
 src_prepare() {
 	default
 	# The ac macro AC_PATH_KDE was provided by "acinclude.m4" in 1.17.
