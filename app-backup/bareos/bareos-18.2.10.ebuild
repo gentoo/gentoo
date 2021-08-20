@@ -175,7 +175,7 @@ src_configure() {
 		-Ddynamic-storage-backends=yes
 		-Dbatch-insert=yes
 		-Dhost=${CHOST}
-		-Dcoverage=yes
+		-Dcoverage=no
 		-Dpython=no
 		-Dsmartalloc=yes
 		-Ddir-password="`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`"

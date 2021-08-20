@@ -138,7 +138,7 @@ src_configure() {
 		-Dbatch-insert=yes
 		-Dbsrdir=/var/lib/bareos/bsr
 		-Dconfdir=/etc/bareos
-		-Dcoverage=yes
+		-Dcoverage=no
 		-Ddb_password=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1`
 		-Ddir-group=bareos
 		-Ddir-password="`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`"
