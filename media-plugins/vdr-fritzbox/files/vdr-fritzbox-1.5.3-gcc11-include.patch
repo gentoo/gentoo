@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/808665
+https://github.com/jowi24/libnetpp/pull/1
+
+From: Sam James <sam@gentoo.org>
+Date: Fri, 20 Aug 2021 02:03:34 +0100
+Subject: [PATCH] Add missing <map> include
+
+Needed for std::map. Fixes GCC 11 build.
+--- a/libnet++/HttpClient.h
++++ b/libnet++/HttpClient.h
+@@ -22,6 +22,7 @@
+ #ifndef HTTPCLIENT_H
+ #define HTTPCLIENT_H
+ 
++#include <map>
+ #include <string>
+ 
+ #include "TcpClient.h"

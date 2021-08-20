@@ -21,9 +21,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-		"${FILESDIR}/${P}-boost-1.67.patch"
-		"${FILESDIR}/${P}_clang.patch"
-		)
+	"${FILESDIR}/${P}-boost-1.67.patch"
+	"${FILESDIR}/${P}_clang.patch"
+	"${FILESDIR}/${P}-gcc11-include.patch"
+)
 
 src_prepare() {
 	vdr-plugin-2_src_prepare

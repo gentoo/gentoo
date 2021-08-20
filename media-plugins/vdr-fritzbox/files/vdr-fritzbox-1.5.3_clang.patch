@@ -3,9 +3,8 @@ compile fix llvm/clang
 https://bugs.gentoo.org/740290
 
 Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> (14 May 2021)
-diff -Naur fritzbox-1.5.3.orig/notifyosd.cpp fritzbox-1.5.3/notifyosd.cpp
---- fritzbox-1.5.3.orig/notifyosd.cpp	2021-05-14 14:20:08.973067369 +0200
-+++ fritzbox-1.5.3/notifyosd.cpp	2021-05-14 14:21:17.945067369 +0200
+--- a/notifyosd.cpp
++++ b/notifyosd.cpp
 @@ -128,7 +128,7 @@
  		delete osd;
  	osd = cOsdProvider::NewOsd(left, top);
