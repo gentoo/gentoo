@@ -6,8 +6,8 @@
     <name>Marc Schiffbauer</name>
   </maintainer>
   <use>
-    <flag name="cephfs">Enable cephfs storage backend</flag>
     <flag name="ceph">Enable ceph support</flag>
+    <flag name="cephfs">Enable cephfs storage backend</flag>
     <flag name="clientonly">Only install file-daemon (client)</flag>
     <flag name="director">Install director</flag>
     <flag name="fastlz">Enable support vor lz4, lz4hc and lzfast using dev-libs/bareos-fastlzlib</flag>
@@ -22,6 +22,7 @@
     <flag name="scsi-crypto">Enable low level SCSI crypto support</flag>
     <flag name="sql-pooling">Enable SQL pooling support</flag>
     <flag name="storage-daemon">Install storage daemon (bareos-sd)</flag>
+    <flag name="vmware">Enable bareos-fd VMware plugin</flag>
   </use>
   <upstream>
     <remote-id type="github">bareos/bareos</remote-id>
