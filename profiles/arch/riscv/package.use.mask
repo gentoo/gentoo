@@ -37,6 +37,7 @@ sys-auth/sssd test
 #  dev-db/mariadb fails tests here, see Bug #807995
 #  dev-db/mysql and dev-db/percona-server do not support this arch
 #  dev-db/mysql-cluster not tested yet, seriously outdated in the tree
+dev-python/mysqlclient test
 dev-python/pymysql test
 sci-libs/gdal mysql
 sys-cluster/slurm slurmdbd
