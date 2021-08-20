@@ -19,6 +19,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc10.patch
+	"${FILESDIR}"/${P}-ar.patch
 )
 
 pkg_setup() {
@@ -29,6 +30,8 @@ pkg_setup() {
 src_compile() {
 	emake \
 		CC=$(tc-getCC) \
+		AR=$(tc-getAR) \
+		RANLIB=$(tc-getRANLIB) \
 		CFLAGS="-I. ${CFLAGS}" \
 		DIET="${EPREFIX}/usr/bin/diet -Os" \
 		prefix="${EPREFIX}/usr" \
