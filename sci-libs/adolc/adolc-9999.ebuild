@@ -45,7 +45,8 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
+	# Can drop CONFIG_SHELL once fixed up dash/bashisms patch
+	CONFIG_SHELL="${BROOT}/bin/bash" econf \
 		--disable-python \
 		--disable-static \
 		--enable-advanced-branching \
