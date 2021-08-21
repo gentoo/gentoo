@@ -368,12 +368,6 @@ dev-ml/cstruct
 # Masked for removal in 30 days.
 dev-ruby/sfl
 
-# William Hubbs <williamh@gentoo.org> (2021-07-17)
-# Does not build and has multiple open bugs including a security issue.
-# Dead upstream (last release in 2006).
-# Removal in 30 days (2021-08-16) (bug #602594).
-app-accessibility/eflite
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-07-12)
 # Version 3.3.0 suffers from ridiculously high CPU usage, this version has
 # therefore been retracted upstream.
