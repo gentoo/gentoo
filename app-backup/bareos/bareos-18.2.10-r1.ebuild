@@ -1,33 +1,32 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="7"
 
-PYTHON_COMPAT=( python3_{7..10} )
 CMAKE_WARN_UNUSED_CLI=no
 #CMAKE_REMOVE_MODULES=yes
 
-inherit python-any-r1 systemd cmake tmpfiles
+inherit desktop systemd cmake
 
 DESCRIPTION="Featureful client/server network backup suite"
-HOMEPAGE="https://www.bareos.org/"
+HOMEPAGE="http://www.bareos.org/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/Release/${PV}.tar.gz -> ${P}.tar.gz"
 RESTRICT="mirror"
 
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="X acl ceph clientonly +director glusterfs ipv6 jansson lmdb
-	logwatch mysql ndmp +postgres readline scsi-crypto
-	sqlite static +storage-daemon systemd tcpd vim-syntax -vmware xattr"
+IUSE="X acl cephfs clientonly +director fastlz glusterfs gnutls ipv6 jansson lmdb
+	logwatch mysql ndmp +postgres rados rados-striper readline scsi-crypto
+	sql-pooling sqlite ssl static +storage-daemon systemd tcpd vim-syntax"
+REQUIRED_USE="!clientonly? ( || ( mysql postgres sqlite ) )"
 
-# get cmake variables from core/cmake/BareosSetVariableDefaults.cmake
 DEPEND="
 	!app-backup/bacula
 	acct-group/${PN}
-	!x86? (
-		ceph? ( sys-cluster/ceph )
-	)
+	cephfs? ( sys-cluster/ceph )
+	rados? ( sys-cluster/ceph )
+	rados-striper? ( >=sys-cluster/ceph-0.94.2 )
 	glusterfs? ( sys-cluster/glusterfs )
 	lmdb? ( dev-db/lmdb )
 	dev-libs/gmp:0
@@ -41,8 +40,8 @@ DEPEND="
 			jansson? ( dev-libs/jansson )
 		)
 	)
+	fastlz? ( dev-libs/bareos-fastlzlib )
 	logwatch? ( sys-apps/logwatch )
-	ndmp? ( net-libs/rpcsvc-proto )
 	tcpd? ( sys-apps/tcp-wrappers )
 	readline? ( sys-libs/readline:0 )
 	static? (
@@ -50,16 +49,25 @@ DEPEND="
 		sys-libs/zlib[static-libs]
 		dev-libs/lzo[static-libs]
 		sys-libs/ncurses:=[static-libs]
-		dev-libs/openssl:0=[static-libs]
+		ssl? (
+			!gnutls? (
+				dev-libs/openssl:0=[static-libs]
+			)
+			gnutls? ( net-libs/gnutls[static-libs] )
+		)
 	)
 	!static? (
 		acl? ( virtual/acl )
 		dev-libs/lzo
-		dev-libs/openssl:0=
+		ssl? (
+			!gnutls? (
+				dev-libs/openssl:0=
+			)
+			gnutls? ( net-libs/gnutls )
+		)
 		sys-libs/ncurses:=
 		sys-libs/zlib
 	)
-	vmware? ( dev-lang/python:2.7 )
 	"
 RDEPEND="${DEPEND}
 	!clientonly? (
@@ -68,15 +76,9 @@ RDEPEND="${DEPEND}
 			app-arch/mt-st
 		)
 	)
-	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
-	"
-BDEPEND="${PYTHON_DEPS}"
+	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )"
 
-REQUIRED_USE="
-	!clientonly? ( || ( mysql postgres sqlite ) )
-	static? ( clientonly )
-	x86? ( !ceph )
-"
+REQUIRED_USE="static? ( clientonly )"
 
 S=${WORKDIR}/${PN}-Release-${PV}
 
@@ -91,18 +93,23 @@ src_prepare() {
 			|| die "sed on MyCatalog.conf.in failed"
 	popd >&/dev/null || die
 
-	# fix gentoo platform support
-	eapply -p1 "${FILESDIR}/${P}-cmake-gentoo.patch"
+	eapply -p0 "${FILESDIR}/bareos-cmake-rados.patch"
+
+	# fix gentoo version detection
+	eapply -p0 "${FILESDIR}/bareos-cmake-gentoo.patch"
 
 	# fix missing DESTDIR in symlink creation
-	sed -i '/bareos-symlink-default-db-backend.cmake/d' "${S}/core/src/cats/CMakeLists.txt"
+	eapply -p2 "${FILESDIR}/bareos-cmake-symlink-default-db-backend.patch"
 
 	# disable dird and stored plugins, because of
 	# py2 dependency
 	cd "${S}/core/src/plugins"
+	cmake_comment_add_subdirectory filed
 	cmake_comment_add_subdirectory dird
 	cmake_comment_add_subdirectory stored
 	cd -
+
+	eapply_user
 
 	CMAKE_USE_DIR="$S/core"
 	cmake_src_prepare
@@ -119,86 +126,82 @@ src_configure() {
 
 	if use clientonly; then
 		mycmakeargs+=(
-			-Dclient-only=ON
+			-Dclient-only=YES
 			-Dstatic-cons=$(usex static)
 			-Dstatic-fd=$(usex static)
 		)
 	fi
 
-	for useflag in acl ipv6 ndmp scsi-crypto \
-		systemd mysql lmdb; do
+	for useflag in acl ipv6 ndmp readline scsi-crypto sql-pooling \
+		systemd fastlz mysql lmdb glusterfs rados \
+		rados-striper cephfs jansson; do
+
 		mycmakeargs+=( -D$useflag=$(usex $useflag) )
 	done
 
 	mycmakeargs+=(
-		-DHAVE_PYTHON=0
 		-DDEFAULT_DB_TYPE=${mydbtypes[0]}
-		-Darchivedir=/var/lib/bareos/storage
-		-Dbackenddir=/usr/$(get_libdir)/${PN}/backend
-		-Dbasename="`hostname -s`"
-		-Dbatch-insert=yes
-		-Dbsrdir=/var/lib/bareos/bsr
-		-Dconfdir=/etc/bareos
-		-Dcoverage=no
-		-Ddb_password=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1`
-		-Ddir-group=bareos
-		-Ddir-password="`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`"
-		-Ddir-user=bareos
+		-Dx=$(usex X)
+		-Dpostgresql=$(usex postgres)
+		-Dmysql=$(usex mysql)
+		-Dsqlite3=$(usex sqlite)
+		-Dopenssl=$(usex ssl)
+		-Dtcp-wrapper=$(usex tcpd)
+		-Dlibdir=/usr/$(get_libdir)
+		-Dsbindir=/usr/sbin
+		-Dmandir=/usr/share/man
 		-Ddocdir=/usr/share/doc/${PF}
+		-Dhtmldir=/usr/share/doc/${PF}/html
+		-Darchivedir=/var/lib/bareos/storage
+		-Dbsrdir=/var/lib/bareos/bsr
+		-Dpiddir=/run/bareos
+		-Dsysconfdir=/etc
+		-Dconfdir=/etc/bareos
+		-Dsubsys-dir=/run/lock/subsys
+		-Dworkingdir=/var/lib/bareos
+		-Dlogdir=/var/log/bareos
+		-Dscriptdir=/usr/libexec/bareos
+		-Dplugindir=/usr/$(get_libdir)/${PN}/plugin
+		-Dbackenddir=/usr/$(get_libdir)/${PN}/backend
+		-Ddir-user=bareos
+		-Ddir-group=bareos
+		-Dsd-user=root
+		-Dsd-group=bareos
+		-Dfd-user=root
+		-Dfd-group=bareos
+		-Dsbin-perm=0755
+		-Ddb_password=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1`
 		-Ddynamic-cats-backends=yes
 		-Ddynamic-storage-backends=yes
-		-Dfd-group=bareos
-		-Dfd-password="`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`"
-		-Dfd-user=root
+		-Dbatch-insert=yes
 		-Dhost=${CHOST}
-		-Dhostname="`hostname -s`"
-		-Dhtmldir=/usr/share/doc/${PF}/html
-		-Dlibdir=/usr/$(get_libdir)
-		-Dlogdir=/var/log/bareos
-		-Dmandir=/usr/share/man
+		-Dcoverage=no
+		-Dpython=no
+		-Dsmartalloc=yes
+		-Ddir-password="`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`"
+		-Dfd-password="`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`"
+		-Dsd-password="`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`"
 		-Dmon-dir-password="`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`"
 		-Dmon-fd-password="`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`"
 		-Dmon-sd-password="`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`"
-		-Dmysql=$(usex mysql)
-		-Dopenssl=yes
-		-Dpiddir=/run/bareos
-		-Dplugindir=/usr/$(get_libdir)/${PN}/plugin
-		-Dpostgresql=$(usex postgres)
-		-Dsbin-perm=0755
-		-Dsbindir=/usr/sbin
-		-Dscriptdir=/usr/libexec/bareos
-		-Dsd-group=bareos
-		-Dsd-password="`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`"
-		-Dsd-user=root
-		-Dsqlite3=$(usex sqlite)
-		-Dsubsysdir=/run/lock/subsys
-		-Dsysconfdir=/etc
-		-Dworkingdir=/var/lib/bareos
-		-Dx=$(usex X)
+		-Dbasename="`hostname -s`"
+		-Dhostname="`hostname -s`"
 		)
-
-		# disable droplet support for now as it does not build with gcc 10
-		# ... and this is a bundled lib, which should have its own package
-		cd core && cmake_comment_add_subdirectory "src/droplet"
 
 		cmake_src_configure
 }
 
 src_install() {
+	#emake DESTDIR="${D}" install
 	cmake_src_install
+	newicon core/src/images/bareos_logo_shadow.png bareos.png
 
 	# remove some scripts we don't need at all
 	rm -f "${D}"/usr/libexec/bareos/{bareos,bareos-ctl-dir,bareos-ctl-fd,bareos-ctl-sd,startmysql,stopmysql}
 	rm -f "${D}"/usr/sbin/bareos
 
-	# remove upstream init scripts
-	rm -f "${D}"/etc/init.d/bareos-*
-
-	# get rid of py2 stuff if USE=-vmware
-	if ! use vmware; then
-		rm -f "$D"/usr/lib64/bareos/plugin/{BareosFdPluginVMware.py,bareos-fd-vmware.py,python-fd.so}
-		rm -rf "$D"/usr/lib64/python2.7
-	fi
+	# remove upstream init scripts and systemd units
+	rm -f "${D}"/etc/init.d/bareos-* "${D}"/lib/systemd/system/bareos-*.service
 
 	# rename statically linked apps
 	if use clientonly && use static ; then
@@ -244,9 +247,6 @@ src_install() {
 
 	rm -vf "${D}"/usr/share/man/man1/bareos-bwxconsole.1*
 	if use clientonly || ! use director; then
-		if use systemd; then
-			rm -vf "${D}"/lib/systemd/system/bareos-dir.service
-		fi
 		rm -vf "${D}"/usr/share/man/man8/bareos-dir.8*
 		rm -vf "${D}"/usr/share/man/man8/bareos-dbcheck.8*
 		rm -vf "${D}"/usr/share/man/man1/bsmtp.1*
@@ -262,9 +262,6 @@ src_install() {
 		rm -vf "${D}"/usr/libexec/bareos/*_catalog_backup
 	fi
 	if use clientonly || ! use storage-daemon; then
-		if use systemd; then
-			rm -vf "${D}"/lib/systemd/system/bareos-sd.service
-		fi
 		rm -vf "${D}"/usr/share/man/man8/bareos-sd.8*
 		rm -vf "${D}"/usr/share/man/man8/bcopy.8*
 		rm -vf "${D}"/usr/share/man/man8/bextract.8*
@@ -328,10 +325,10 @@ src_install() {
 	# install systemd unit files
 	if use systemd; then
 		if ! use clientonly; then
-			use director && systemd_dounit core/platforms/systemd/bareos-dir.service
-			use storage-daemon && systemd_dounit core/platforms/systemd/bareos-sd.service
+			use director && systemd_dounit "${FILESDIR}"/bareos-dir.service
+			use storage-daemon && systemd_dounit "${FILESDIR}"/bareos-sd.service
 		fi
-		systemd_dounit core/platforms/systemd/bareos-fd.service
+		systemd_dounit "${FILESDIR}"/bareos-fd.service
 	fi
 
 	# make sure the working directory exists
@@ -342,15 +339,11 @@ src_install() {
 	diropts -m0755
 	keepdir /var/log/bareos
 
-	newtmpfiles "${FILESDIR}"/tmpfiles.d-bareos.conf bareos.conf
-
 	# make sure bareos group can execute bareos libexec scripts
 	fowners -R root:bareos /usr/libexec/bareos
 }
 
 pkg_postinst() {
-	tmpfiles_process bareos.conf
-
 	if use clientonly; then
 		fowners root:bareos /var/lib/bareos
 	else
