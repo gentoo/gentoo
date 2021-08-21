@@ -33,8 +33,8 @@ RDEPEND="
 	x11-libs/libXxf86vm
 "
 
-MY_DIR=opt/${PN}
-QA_PREBUILT="${MY_DIR}/ezquake*"
+MY_DIR=/opt/${PN}
+QA_PREBUILT="${MY_DIR#/}/ezquake*"
 
 src_unpack() {
 	unpack ${A}
@@ -50,9 +50,9 @@ src_unpack() {
 
 src_install() {
 	exeinto ${MY_DIR}
-	insinto ${MY_DIR}
-
 	doexe ezquake-gl.glx
+
+	insinto ${MY_DIR}
 	doins -r ezquake qw
 	dosym ../../usr/share/quake1/id1 ${MY_DIR}/id1
 	make_wrapper ezquake-gl.glx ./ezquake-gl.glx "${MY_DIR}" "${MY_DIR}"
