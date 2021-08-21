@@ -14,7 +14,6 @@ SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 
 RESTRICT="strip"
-QA_EXECSTACK="opt/jardinains/jardinains"
 
 RDEPEND="
 	acct-group/gamestat
@@ -26,8 +25,9 @@ RDEPEND="
 	amd64? ( sys-libs/libstdc++-v3:5[multilib] )
 "
 
-dir=opt/${PN}
-QA_PREBUILT="${dir}/${PN}"
+dir=/opt/${PN}
+QA_PREBUILT="${dir#/}/${PN}"
+QA_EXECSTACK="${dir#/}${PN}/jardinains"
 
 PATCHES=(
 	"${FILESDIR}"/strings-pt.patch
