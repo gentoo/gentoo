@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	test? (
 		dev-db/mariadb[server]
+		dev-python/mock[${PYTHON_USEDEP}]
 	)
 "
 
