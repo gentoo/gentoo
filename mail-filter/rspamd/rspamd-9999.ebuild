@@ -3,7 +3,7 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..3} luajit )
+LUA_COMPAT=( lua5-{1..4} luajit )
 
 inherit cmake lua-single pax-utils systemd tmpfiles
 
@@ -19,10 +19,13 @@ DESCRIPTION="Rapid spam filtering system"
 HOMEPAGE="https://rspamd.com https://github.com/rspamd/rspamd"
 LICENSE="Apache-2.0 Boost-1.0 BSD BSD-1 BSD-2 CC0-1.0 LGPL-3 MIT public-domain unicode ZLIB"
 SLOT="0"
-IUSE="blas cpu_flags_x86_ssse3 jemalloc +jit pcre2"
+IUSE="blas cpu_flags_x86_ssse3 jemalloc +jit pcre2 test"
+RESTRICT="!test? ( test )"
 
+# A part of tests use ffi luajit extension
 REQUIRED_USE="${LUA_REQUIRED_USE}
-	jit? ( lua_single_target_luajit )"
+	jit? ( lua_single_target_luajit )
+	test? ( lua_single_target_luajit )"
 
 RDEPEND="${LUA_DEPS}
 	$(lua_gen_cond_dep '
@@ -35,6 +38,7 @@ RDEPEND="${LUA_DEPS}
 	dev-libs/glib:2
 	dev-libs/icu:=
 	dev-libs/libev
+	dev-libs/libfmt:=
 	dev-libs/libsodium:=
 	dev-libs/snowball-stemmer
 	sys-apps/file
@@ -54,16 +58,15 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/rspamd-2.7-cmake-lua-version.patch"
+	"${FILESDIR}/rspamd-3.0-cmake-lua-version.patch"
 	"${FILESDIR}/rspamd-2.6-unbundle-lua.patch"
-	"${FILESDIR}/rspamd-2.7-unbundle-zstd.patch"
 	"${FILESDIR}/rspamd-2.5-unbundle-snowball.patch"
 )
 
 src_prepare() {
 	cmake_src_prepare
 
-	rm -vrf contrib/{lua-bit,snowball,zstd} || die
+	rm -vrf contrib/{fmt,lua-bit,snowball,zstd} || die
 
 	sed -i -e 's/User=_rspamd/User=rspamd/g' \
 		rspamd.service \
@@ -76,6 +79,10 @@ src_configure() {
 		-DRUNDIR=/var/run/rspamd
 		-DDBDIR=/var/lib/rspamd
 		-DLOGDIR=/var/log/rspamd
+
+		-DSYSTEM_FMT=ON
+		-DSYSTEM_ZSTD=ON
+
 		-DENABLE_BLAS=$(usex blas ON OFF)
 		-DENABLE_HYPERSCAN=$(usex cpu_flags_x86_ssse3 ON OFF)
 		-DENABLE_JEMALLOC=$(usex jemalloc ON OFF)
@@ -86,7 +93,7 @@ src_configure() {
 }
 
 src_test() {
-	cmake_src_test
+	cmake_build run-test
 }
 
 src_install() {
