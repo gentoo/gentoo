@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 # no functional changes since 0.8.16, so no point in upgrading
-KEYWORDS=""
+KEYWORDS="~m68k"
 SLOT="0"
 
 RDEPEND="dev-libs/openssl:0="
