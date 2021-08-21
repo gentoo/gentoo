@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )
 	test? (
 		sci-physics/geant[gdml]
-		sci-physics/geant-vmc[g4root]
+		sci-physics/geant4_vmc[g4root]
 	)"
 RESTRICT="
 	!geant4? ( test )

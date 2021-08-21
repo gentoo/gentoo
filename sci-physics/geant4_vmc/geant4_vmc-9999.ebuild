@@ -7,11 +7,11 @@ inherit cmake
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/vmc-project/geant4_vmc.git"
+	EGIT_REPO_URI="https://github.com/vmc-project/${PN}.git"
 else
-	MY_PV=$(ver_rs 1-2 - $(ver_cut 2-))
-	SRC_URI="https://github.com/vmc-project/geant4_vmc/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/geant4_vmc-${MY_PV}"
+	MY_PV=$(ver_rs 1- -)
+	SRC_URI="https://github.com/vmc-project/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${MY_PV}"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -23,7 +23,7 @@ SLOT="4"
 IUSE="doc examples geant3 +g4root +mtroot vgm test"
 
 RDEPEND="
-	<sci-physics/geant-4.11[c++17,opengl,geant3?]
+	sci-physics/geant[c++17,opengl,geant3?]
 	sci-physics/root:=[c++17,-vmc]
 	sci-physics/vmc:=[c++17]
 	vgm? ( sci-physics/vgm:= )"
