@@ -9,4 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 </pkgmetadata>

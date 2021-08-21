@@ -5,4 +5,7 @@
 		<email>fonts@gentoo.org</email>
 		<name>Fonts</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 </pkgmetadata>
