@@ -33,6 +33,10 @@ DEPEND="${PYTHON_DEPS}
 	test? ( dev-util/cunit )
 	websockets? ( net-libs/libwebsockets[lejp] )"
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-Fix-installation-using-WITH_TLS-no.patch
+)
+
 _emake() {
 	local LIBDIR=$(get_libdir)
 	emake \
