@@ -33,6 +33,7 @@ src_prepare() {
 	cd "${WORKDIR}/llvm-project-rocm-${PV}" || die
 	eapply "${FILESDIR}/${PN}-3.0.0-add_libraries.patch"
 	eapply "${FILESDIR}/${PN}-4.0.0-remove-isystem-usr-include.patch"
+	eapply "${FILESDIR}/${PN}-4.3.0-hip-location.patch"
 	eapply "${FILESDIR}/${PN}-4.2.0-cyclades.patch"
 
 	if [[ -n ${EPREFIX} ]]; then
@@ -66,6 +67,8 @@ src_configure() {
 		PROJECTS+=";compiler-rt"
 	fi
 
+	# export ROCM_PATH=${EPREFIX}/usr # Currently $ROCM_PATH only affects configuration of mlir component, 
+	# so it's not necessary to set. See https://github.com/gentoo/gentoo/pull/22060.
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/roc"
 		-DCMAKE_DISABLE_FIND_PACKAGE_CUDA=ON
