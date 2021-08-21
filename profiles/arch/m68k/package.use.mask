@@ -55,6 +55,3 @@ sys-devel/gcc graphite awt
 # Mike Frysinger <vapier@gentoo.org> (2011-02-10)
 # Waiting for keywording #354309
 net-firewall/iptables netlink
-
-# Masking these to keep repoman happy
-media-gfx/graphviz perl
