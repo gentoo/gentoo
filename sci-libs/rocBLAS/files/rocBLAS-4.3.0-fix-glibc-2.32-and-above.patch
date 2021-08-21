@@ -1,0 +1,25 @@
+https://sourceware.org/glibc/wiki/Release/2.32#Deprectation_sys_siglist.2C__sys_siglist.2C_sys_sigabbrev
+
+--- rocBLAS-rocm-4.1.0/clients/gtest/rocblas_test.cpp
++++ rocBLAS-rocm-4.1.0/clients/gtest/rocblas_test.cpp
+@@ -173,7 +173,7 @@ void catch_signals_and_exceptions_as_fai
+     // Set up the return point, and handle siglongjmp returning back to here
+     if(sigsetjmp(t_handler.sigjmp_buf, true))
+     {
+-        FAIL() << "Received " << sys_siglist[t_handler.signal] << " signal";
++        FAIL() << "Received " << strsignal(t_handler.signal) << " signal";
+     }
+     else
+     {
+
+--- rocBLAS-rocm-4.1.0/clients/include/utility.hpp
++++ rocBLAS-rocm-4.1.0/clients/include/utility.hpp
+@@ -39,7 +39,7 @@
+ // puts, putchar, fputs, printf, fprintf, vprintf, vfprintf: Use rocblas_cout or rocblas_cerr
+ // sprintf, vsprintf: Possible buffer overflows; us snprintf or vsnprintf instead
+ // strerror: Thread-unsafe; use snprintf / dprintf with %m or strerror_* alternatives
+-// strsignal: Thread-unsafe; use sys_siglist[signal] instead
++// strsignal: Thread-unsafe; use strsignal(signal) instead
+ // strtok: Thread-unsafe; use strtok_r
+ // gmtime, ctime, asctime, localtime: Thread-unsafe
+ // tmpnam: Thread-unsafe; use mkstemp or related functions instead
