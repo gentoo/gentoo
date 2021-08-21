@@ -3,9 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 PYTHON_REQ_USE="sqlite"
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit bash-completion-r1 distutils-r1
 
@@ -36,10 +35,6 @@ DEPEND="${RDEPEND}
 		>=dev-python/vcrpy-4.0.2[${PYTHON_USEDEP}]
 	)
 "
-
-PATCHES=(
-	#"${FILESDIR}/${P}-hypothesis-fix.patch"
-)
 
 python_prepare_all() {
 	# Remove support for bukuserver - complex depgraph which isn't all
@@ -91,5 +86,5 @@ python_test() {
 	)
 
 	# tests/test_server.py is bukuserver tests, ignore it
-	pytest -v --ignore tests/test_server.py ${skipped_tests[@]/#/--deselect } || die "Tests failed with ${EPYTHON}"
+	pytest -p no:verbose-parametrize -v --ignore tests/test_server.py ${skipped_tests[@]/#/--deselect } || die "Tests failed with ${EPYTHON}"
 }
