@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-08-18)
+# net-fs/openafs does not support riscv
+app-crypt/heimdal afs
+
 # Yixun Lan <dlan@gentoo.org> (2021-08-20)
 # dependencies not keyworded/tested
 net-misc/networkmanager ofono
@@ -121,8 +125,6 @@ dev-python/ipython nbconvert notebook
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # Dependencies not keyworded here yet:
-#  - net-fs/openafs
-app-crypt/heimdal afs
 #  - gnome-base/gconf, dev-libs/libotf & dev-libs/m17n-lib
 app-editors/emacs gconf m17n-lib
 #  - dev-embedded/libftdi, app-misc/inputlircd
