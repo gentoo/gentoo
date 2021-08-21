@@ -18,8 +18,8 @@ KEYWORDS="-* ~amd64 ~x86"
 IUSE="bundled-libs"
 
 RESTRICT="bindist fetch splitdebug"
-QA_PREBUILT="/opt/${PN}/BeatHazard_Linux2
-	/opt/${PN}/hge_lib/*"
+QA_PREBUILT="opt/${PN}/BeatHazard_Linux2
+	opt/${PN}/hge_lib/*"
 
 BDEPEND="app-arch/unzip"
 RDEPEND="
