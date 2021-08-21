@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="C++ interface for MediaWiki based web service as wikipedia.org"
-HOMEPAGE="https://www.digikam.org/"
+HOMEPAGE="https://invent.kde.org/libraries/libmediawiki"
 SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
@@ -25,6 +25,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${P}-tests-optional.patch"
 	"${FILESDIR}/${P}-fix-warnings.patch"
+	"${FILESDIR}/${P}-qt-5.15.patch"
 )
 
 src_test() {
