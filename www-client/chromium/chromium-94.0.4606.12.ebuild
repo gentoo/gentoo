@@ -13,11 +13,10 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="2"
+PATCHSET="3"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
-	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz
-	arm64? ( https://github.com/google/highway/archive/refs/tags/0.12.1.tar.gz -> highway-0.12.1.tar.gz )"
+	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -55,7 +54,8 @@ COMMON_DEPEND="
 	>=dev-libs/nss-3.26:=
 	>=media-libs/alsa-lib-1.0.19:=
 	media-libs/fontconfig:=
-	>=media-libs/freetype-2.11.0:=
+	>=media-libs/freetype-2.11.0-r1:=
+	>=media-libs/harfbuzz-2.9.0:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	pulseaudio? ( media-sound/pulseaudio:= )
@@ -245,12 +245,6 @@ src_prepare() {
 	# adjust python interpreter version
 	sed -i -e "s|\(^script_executable = \).*|\1\"${EPYTHON}\"|g" .gn || die
 
-	# bundled highway library does not support arm64 with GCC
-	if use arm64; then
-		rm -r third_party/highway/src || die
-		ln -s "${WORKDIR}/highway-0.12.1" third_party/highway/src || die
-	fi
-
 	local keeplibs=(
 		base/third_party/cityhash
 		base/third_party/double_conversion
@@ -348,7 +342,7 @@ src_prepare() {
 		third_party/google_input_tools/third_party/closure_library
 		third_party/google_input_tools/third_party/closure_library/third_party/closure
 		third_party/googletest
-		third_party/harfbuzz-ng
+		third_party/harfbuzz-ng/utils
 		third_party/hunspell
 		third_party/iccjpeg
 		third_party/inspector_protocol
@@ -611,8 +605,7 @@ src_configure() {
 	build/linux/unbundle/replace_gn_files.py --system-libraries "${gn_system_libraries[@]}" || die
 
 	# See dependency logic in third_party/BUILD.gn
-	# Depends on unreleased harfbuzz features
-	# myconf_gn+=" use_system_harfbuzz=true"
+	myconf_gn+=" use_system_harfbuzz=true"
 
 	# Disable deprecated libgnome-keyring dependency, bug #713012
 	myconf_gn+=" use_gnome_keyring=false"
