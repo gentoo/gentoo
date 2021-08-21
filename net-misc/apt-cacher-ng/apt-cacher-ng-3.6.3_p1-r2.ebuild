@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake tmpfiles
 
 DESCRIPTION="Yet another caching HTTP proxy for Debian/Ubuntu software packages"
 HOMEPAGE="https://www.unix-ag.uni-kl.de/~bloch/acng/
@@ -94,4 +94,8 @@ src_install() {
 	fowners -R ${PN}:${PN} "/var/log/${PN}"
 
 	cmake_src_install
+}
+
+pkg_postinst() {
+	tmpfiles_process "${PN}.conf"
 }
