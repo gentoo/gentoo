@@ -193,12 +193,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
 
 BDEPEND="
-	|| (
-		dev-lang/rust[rustfmt]
-		dev-lang/rust-bin[rustfmt]
-	)
 	sys-devel/clang
 	virtual/pkgconfig
+	virtual/rust[rustfmt]
 "
 RDEPEND="
 	virtual/libelf
