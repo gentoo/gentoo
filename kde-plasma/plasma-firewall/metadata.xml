@@ -5,6 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="firewalld">Build <pkg>net-firewall/firewalld</pkg> backend</flag>
 		<flag name="ufw">Build <pkg>net-firewall/ufw</pkg> backend</flag>

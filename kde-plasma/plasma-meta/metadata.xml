@@ -5,6 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="browser-integration">Enable integration with Chrome/Firefox with browser extensions</flag>
 		<flag name="colord">Enable <pkg>kde-plasma/kwin</pkg> color management via <pkg>x11-misc/colord</pkg></flag>

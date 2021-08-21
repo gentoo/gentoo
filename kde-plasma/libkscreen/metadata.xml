@@ -5,6 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<slots>
 		<subslots>Reflects ABI compatibility of libKF5Screen.so</subslots>
 	</slots>

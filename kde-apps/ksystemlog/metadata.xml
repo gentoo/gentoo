@@ -5,6 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="kdesu">Run as root using kdesu from <pkg>kde-plasma/kde-cli-tools</pkg></flag>
 	</use>

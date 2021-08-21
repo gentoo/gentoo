@@ -8,6 +8,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="addressbook">Enable akonadi contact integration</flag>
 		<flag name="heif">Enable support for ISO/IEC 23008-12:2017 HEIF files using <pkg>media-libs/x265</pkg></flag>

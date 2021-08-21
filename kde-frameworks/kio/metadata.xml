@@ -5,6 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
 		<flag name="kwallet">Enable permanent storage of passwords for kpasswdserver with <pkg>kde-frameworks/kwallet</pkg></flag>

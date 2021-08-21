@@ -5,6 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="bwscheduler">Schedule upload and download limits over a period of a week</flag>
 		<flag name="downloadorder">Specify the download order of a multi-file torrent</flag>

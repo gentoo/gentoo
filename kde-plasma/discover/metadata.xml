@@ -5,6 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="firmware">Enable support for firmware upgrades using <pkg>sys-apps/fwupd</pkg></flag>
 		<flag name="flatpak">Enable support for flatpak repositories using <pkg>sys-apps/flatpak</pkg></flag>

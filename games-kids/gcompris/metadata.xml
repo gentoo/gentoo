@@ -9,6 +9,9 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="kiosk">Enable kiosk mode by default (for use by small children or on a self-service host machine)</flag>
 	</use>

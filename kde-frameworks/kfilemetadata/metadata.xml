@@ -5,6 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="epub">Enable support for reading EPUB ebook metadata</flag>
 		<flag name="office">Enable support for reading ODF and OOXML metadata</flag>
