@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake git-r3
+inherit cmake git-r3 tmpfiles
 
 DESCRIPTION="Yet another caching HTTP proxy for Debian/Ubuntu software packages"
 HOMEPAGE="https://www.unix-ag.uni-kl.de/~bloch/acng/
@@ -13,7 +13,7 @@ EGIT_BRANCH="upstream/sid"
 
 LICENSE="BSD-4 ZLIB public-domain"
 SLOT="0"
-IUSE="doc fuse tcpd"
+IUSE="doc fuse systemd tcpd"
 
 DEPEND="acct-user/apt-cacher-ng
 	acct-group/apt-cacher-ng
@@ -22,6 +22,7 @@ DEPEND="acct-user/apt-cacher-ng
 	dev-libs/openssl:0=
 	sys-libs/zlib
 	fuse? ( sys-fs/fuse:0 )
+	systemd? ( sys-apps/systemd )
 	tcpd? ( sys-apps/tcp-wrappers )"
 BDEPEND="virtual/pkgconfig"
 RDEPEND="${DEPEND}
@@ -41,10 +42,11 @@ src_prepare() {
 	# Make sure we install everything the same way it used to be after
 	# switching from mostly custom src_install to relying on build system
 	# installation
-	sed -ie "/install/s/LIBDIR/CFGDIR/" conf/CMakeLists.txt || die
-	sed -ie '/install.*acng\.conf/s/)$/ RENAME '"${PN}"'.conf)/' conf/CMakeLists.txt || die
-	sed -ie '/file/s/)$/ "*hooks" "backends_debian")/' conf/CMakeLists.txt || die
+	sed -e "/install/s/LIBDIR/CFGDIR/" \
+		-e '/install.*acng\.conf/s/)$/ RENAME '"${PN}"'.conf)/' \
+		-e '/file/s/)$/ "*hooks" "backends_debian")/' -i conf/CMakeLists.txt || die
 	sed -ie "/INSTALL.*acngtool/s/LIBDIR/CMAKE_INSTALL_SBINDIR/" source/CMakeLists.txt || die
+
 	cmake_src_prepare
 }
 
@@ -52,15 +54,8 @@ src_configure() {
 	local mycmakeargs=(
 		"-DHAVE_FUSE_25=$(usex fuse)"
 		"-DHAVE_LIBWRAP=$(usex tcpd)"
-		# Unconditionally install systemd service file
-		"-DSDINSTALL=1"
+		"-DSDINSTALL=$(usex systemd)"
 	)
-
-	if tc-ld-is-gold; then
-		mycmakeargs+=( "-DUSE_GOLD=yes" )
-	else
-		mycmakeargs+=( "-DUSE_GOLD=no" )
-	fi
 
 	cmake_src_configure
 
@@ -68,6 +63,12 @@ src_configure() {
 }
 
 src_install() {
+	# README is a symlink to doc/README and README automatically gets
+	# installed, leading to a broken symlink installed. Fix this by removing
+	# the symlink then installing the actual README. https://bugs.gentoo.org/770046
+	rm README || die
+	dodoc doc/README
+
 	newinitd "${FILESDIR}/initd-r3" "${PN}"
 	newconfd "${FILESDIR}/confd-r2" "${PN}"
 
@@ -92,4 +93,8 @@ src_install() {
 	fowners -R ${PN}:${PN} "/var/log/${PN}"
 
 	cmake_src_install
+}
+
+pkg_postinst() {
+	tmpfiles_process "${PN}.conf"
 }
