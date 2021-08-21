@@ -39,4 +39,5 @@ src_configure() {
 	export xcb=1
 	# Do not add -g or -s to CFLAGS
 	export plain=1
+	export PREFIX="${EPREFIX}"/usr
 }
