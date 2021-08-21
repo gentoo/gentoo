@@ -16,7 +16,7 @@ KEYWORDS="-* ~amd64 ~x86"
 
 RESTRICT="bindist fetch splitdebug"
 
-MYGAMEDIR=opt/${PN}
+MYGAMEDIR=/opt/${PN}
 QA_PREBUILT="
 	${MYGAMEDIR#/}/Splice*
 	${MYGAMEDIR#/}/Splice_Data/Mono/*
