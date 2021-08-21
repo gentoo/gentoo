@@ -1,12 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit epatch toolchain-funcs
+inherit toolchain-funcs
 
 MY_P=netkit-ntalk-${PV}
-S=${WORKDIR}/netkit-ntalk-${PV}
+S="${WORKDIR}"/netkit-ntalk-${PV}
 
 DESCRIPTION="Netkit - talkd"
 HOMEPAGE="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/"
@@ -17,19 +17,18 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="ipv6"
 
-COMMON_DEPEND=">=sys-libs/ncurses-5.2:="
-DEPEND="
-	${COMMON_DEPEND}
-	virtual/pkgconfig
-"
+DEPEND=">=sys-libs/ncurses-5.2:="
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
-	${COMMON_DEPEND}
+	${DEPEND}
 	virtual/inetd
 "
 
+PATCHES=( "${FILESDIR}"/${P}-time.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-time.patch
-	use ipv6 && epatch "${FILESDIR}"/${P}-ipv6.diff
+	default
+	use ipv6 && eapply "${FILESDIR}"/${P}-ipv6.patch
 	sed -i configure -e '/^LDFLAGS=/d' || die
 }
 
