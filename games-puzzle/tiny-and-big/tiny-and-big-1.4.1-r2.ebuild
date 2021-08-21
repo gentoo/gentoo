@@ -17,7 +17,7 @@ IUSE="bundled-libs"
 
 RESTRICT="bindist fetch bundled-libs? ( splitdebug )"
 
-MYGAMEDIR=opt/${PN}
+MYGAMEDIR=/opt/${PN}
 QA_PREBUILT="${MYGAMEDIR#/}/bin32/*
 	${MYGAMEDIR#/}/bin64/*"
 
