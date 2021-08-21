@@ -24,8 +24,8 @@ RDEPEND="
 "
 BDEPEND="app-arch/unzip"
 
-game_dest="opt/${MY_PN}"
-QA_PREBUILT="${game_dest}/Barbarian"
+game_dest="/opt/${MY_PN}"
+QA_PREBUILT="${game_dest#/}/Barbarian"
 
 src_install() {
 	dodir ${game_dest}
