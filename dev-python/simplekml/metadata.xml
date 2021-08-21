@@ -12,5 +12,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">simplekml</remote-id>
+    <remote-id type="github">eisoldt/simplekml</remote-id>
   </upstream>
 </pkgmetadata>
