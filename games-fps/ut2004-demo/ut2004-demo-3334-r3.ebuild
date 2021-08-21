@@ -23,9 +23,9 @@ RDEPEND="
 	virtual/opengl[abi_x86_32(-)]
 "
 
-dir=opt/${PN}
-Ddir="${ED}"/${dir}
-QA_PREBUILT="${dir}/System/*"
+dir=/opt/${PN}
+Ddir="${ED}"/${dir#/}
+QA_PREBUILT="${dir#/}/System/*"
 
 src_unpack() {
 	unpack_makeself
