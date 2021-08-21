@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 inherit cmake python-single-r1
 
 MY_P="${PN}1-${PV}"
@@ -12,7 +12,7 @@ if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="git://developer.intra2net.com/${PN}"
 else
 	SRC_URI="https://www.intra2net.com/en/developer/${PN}/download/${MY_P}.tar.bz2"
-	KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 sparc x86"
+	KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 ~riscv sparc x86"
 fi
 
 DESCRIPTION="Userspace access to FTDI USB interface chips"
