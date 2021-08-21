@@ -9,4 +9,9 @@
 		<flag name="epub">Enable support for reading EPUB ebook metadata</flag>
 		<flag name="office">Enable support for reading ODF and OOXML metadata</flag>
 	</use>
+	<slots>
+		<subslots>
+			Must only be used by packages that are known to use private parts of the Frameworks API.
+		</subslots>
+	</slots>
 </pkgmetadata>

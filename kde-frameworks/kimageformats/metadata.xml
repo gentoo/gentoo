@@ -10,4 +10,9 @@
 		<flag name="eps">Support the EPS graphics file format</flag>
 		<flag name="heif">Support for HEIF/HEIC images</flag>
 	</use>
+	<slots>
+		<subslots>
+			Must only be used by packages that are known to use private parts of the Frameworks API.
+		</subslots>
+	</slots>
 </pkgmetadata>
