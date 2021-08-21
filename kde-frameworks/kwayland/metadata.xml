@@ -5,4 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<slots>
+		<subslots>
+			Must only be used by packages that are known to use private parts of the Frameworks API.
+		</subslots>
+	</slots>
 </pkgmetadata>
