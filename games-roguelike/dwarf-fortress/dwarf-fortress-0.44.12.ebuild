@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,11 +13,13 @@ DESCRIPTION="A single-player fantasy game"
 HOMEPAGE="https://www.bay12games.com/dwarves"
 SRC_URI="amd64? ( https://www.bay12games.com/dwarves/${MY_P}_linux.tar.bz2 )
 	x86? ( https://www.bay12games.com/dwarves/${MY_P}_linux32.tar.bz2 )"
+S="${WORKDIR}"/${MY_PN}_linux
 
 LICENSE="free-noncomm BSD BitstreamVera"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="debug"
+RESTRICT="strip"
 
 RDEPEND="media-libs/glew:0
 	media-libs/libsdl[joystick,video]
@@ -34,11 +36,8 @@ DEPEND="${RDEPEND}
 	sys-libs/ncurses-compat:5[unicode]
 	virtual/pkgconfig"
 
-S=${WORKDIR}/${MY_PN}_linux
-
 gamesdir="/opt/${PN}"
 QA_PREBUILT="${gamesdir#/}/libs/Dwarf_Fortress"
-RESTRICT="strip"
 
 src_prepare() {
 	rm -f libs/*.so* || die
