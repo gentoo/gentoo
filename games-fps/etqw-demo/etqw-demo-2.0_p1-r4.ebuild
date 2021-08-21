@@ -31,12 +31,12 @@ RDEPEND="
 
 BDEPEND="app-arch/unzip"
 
-dir=opt/${PN}
+dir=/opt/${PN}
 
 QA_PREBUILT="
-	${dir:1}/guis/libmojosetupgui_ncurses.so
-	${dir:1}/data/*
-	${dir:1}/data/pb/*.so
+	${dir#/}/guis/libmojosetupgui_ncurses.so
+	${dir#/}/data/*
+	${dir#/}/data/pb/*.so
 "
 
 src_unpack() {
