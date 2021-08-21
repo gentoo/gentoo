@@ -23,8 +23,8 @@ RDEPEND="
 "
 BDEPEND="games-util/loki_patch"
 
-dir=opt/${PN}
-QA_PREBUILT="${dir}/*"
+dir=/opt/${PN}
+QA_PREBUILT="${dir#/}/*"
 QA_TEXTRELS="opt/heretic2-demo/ref_glx.so"
 
 src_install() {
