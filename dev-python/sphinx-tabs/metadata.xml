@@ -7,5 +7,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">sphinx-tabs</remote-id>
+		<remote-id type="github">executablebooks/sphinx-tabs</remote-id>
 	</upstream>
 </pkgmetadata>
