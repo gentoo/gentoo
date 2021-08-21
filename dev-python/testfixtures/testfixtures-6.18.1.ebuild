@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="A collection of helpers and mock objects for unit tests and doc tests"
@@ -26,6 +26,11 @@ BDEPEND="
 
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/Simplistix/testfixtures/commit/8fb2122eea0f1d0de1ccca7a3a0f5426bc6d4964
+	"${FILESDIR}/${P}-py3.10.patch"
+)
 
 python_prepare_all() {
 	# kill weird way of declaring build deps
