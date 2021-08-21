@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="bindist fetch"
 
-MYGAMEDIR=opt/${PN}
+MYGAMEDIR=/opt/${PN}
 QA_PREBUILT="${MYGAMEDIR#/}"/${PN}
 
 COMMON_DEPEND="
@@ -55,7 +55,7 @@ pkg_nofetch() {
 src_unpack() { :; }
 
 src_install() {
-	exeinto "/${MYGAMEDIR}"
+	exeinto "${MYGAMEDIR}"
 	newexe "${DISTDIR}"/${SRC_URI} ${PN}
 
 	make_wrapper ${PN} "${MYGAMEDIR}"/${PN}
