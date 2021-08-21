@@ -9,7 +9,7 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
-		<flag name="phonon">Add sound support via <pkg>media-libs/phonon</pkg></flag>
+		<flag name="phonon">Play notification sounds via <pkg>media-libs/phonon</pkg> instead of <pkg>media-libs/libcanberra</pkg></flag>
 	</use>
 	<slots>
 		<subslots>
