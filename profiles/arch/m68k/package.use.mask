@@ -5,10 +5,6 @@
 # The CLI requires many unkeyworded dependencies.
 dev-python/hypothesis cli
 
-# Lars Wendler <polynomial-c@gentoo.org> (2021-07-09)
-# dev-libs/libbpf is not keyworded for m68k (yet?)
-sys-apps/iproute2 bpf
-
 # Matt Turner <mattst88@gentoo.org> (2020-12-05)
 # dev-python/parameterized is not keyworded
 dev-util/gtk-doc test
