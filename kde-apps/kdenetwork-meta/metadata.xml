@@ -5,6 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="bittorrent">Pull in <pkg>net-p2p/ktorrent</pkg> for BitTorrent protocol support</flag>
 		<flag name="dropbox">Enable support for Dropbox in <pkg>kde-apps/dolphin</pkg> via <pkg>kde-apps/dolphin-plugins-dropbox</pkg></flag>

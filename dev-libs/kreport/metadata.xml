@@ -5,6 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="marble">Enable displaying of maps using <pkg>kde-apps/marble</pkg></flag>
 		<flag name="scripting">Support Qml scripting using <pkg>dev-qt/qtdeclarative</pkg></flag>

@@ -13,6 +13,6 @@
 		<flag name="mpv">Build mpv backend support</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">maxrd2/subtitlecomposer</remote-id>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 </pkgmetadata>

@@ -5,6 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="geogebra">Support files created by <pkg>sci-mathematics/geogebra-bin</pkg></flag>
 		<flag name="scripting">Support Python scripting</flag>

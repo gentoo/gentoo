@@ -5,6 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="chm">Enable support for Microsoft Compiled HTML Help files</flag>
 		<flag name="epub">Enable E-Book support via <pkg>app-text/ebook-tools</pkg></flag>

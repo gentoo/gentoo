@@ -5,6 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="sso">Enable support for Single sign-on through KAccounts</flag>
 		<flag name="otr">Enable support for encrypted conversations using Off-The-Records messaging</flag>

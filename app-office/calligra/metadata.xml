@@ -9,6 +9,9 @@
 		<email>office@gentoo.org</email>
 		<name>Gentoo Office project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="activities">Enable kactivities support</flag>
 		<flag name="charts">Build chartshape plugin for creating business charts with <pkg>dev-libs/kdiagram</pkg></flag>
