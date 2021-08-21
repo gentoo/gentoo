@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
@@ -15,6 +15,9 @@ S="${WORKDIR}/${PN}-${PN}-${PV//./-}"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ia64 ppc ppc64 x86"
+
+# Entire testsuite relies on connecting to the i'net
+PROPERTIES="test_network"
 RESTRICT="test"
 
 RDEPEND="
@@ -30,8 +33,7 @@ PATCHES=(
 )
 
 python_test() {
-	# Entire testsuite relies on connecting to the i'net, added for reference
 	URLGRABBER_EXT_DOWN="${S}/scripts/urlgrabber-ext-down" \
 	PYTHON_PATH="${S}" \
-	"${PYTHON}" test/runtests.py -v 2 || die "tests failed under ${EPYTHON}"
+	"${EPYTHON}" test/runtests.py -v 2 || die "Tests failed under ${EPYTHON}"
 }
