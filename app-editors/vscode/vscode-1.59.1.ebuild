@@ -88,6 +88,8 @@ src_install() {
 	doins -r *
 	fperms +x /opt/${PN}/{,bin/}code
 	fperms 4711 /opt/${PN}/chrome-sandbox
+	fperms 755 /opt/${PN}/resources/app/extensions/git/dist/askpass.sh
+	fperms 755 /opt/${PN}/resources/app/extensions/git/dist/askpass-empty.sh
 	fperms -R +x /opt/${PN}/resources/app/out/vs/base/node
 	fperms +x /opt/${PN}/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg
 	dosym "../../opt/${PN}/bin/code" "usr/bin/vscode"
