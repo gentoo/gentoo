@@ -44,7 +44,6 @@ pkg_setup() {
 		STRIP=true
 		RANLIB="$(tc-getRANLIB)"
 		OPTIMIZATION="${CFLAGS} ${CPPFLAGS}"
-		DESTDIR="${D}"
 		)
 
 	use debug && append-cppflags -DDEBUG
@@ -69,7 +68,7 @@ src_compile() {
 }
 
 src_install() {
-	emake "${mypcmciaopts[@]}" install
+	emake "${mypcmciaopts[@]}" DESTDIR="${D}" install
 
 	dodoc doc/*.txt
 }
