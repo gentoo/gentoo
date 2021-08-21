@@ -3,12 +3,13 @@
 
 EAPI=7
 
-inherit desktop unpacker wrapper xdg-utils
+inherit desktop unpacker wrapper xdg
 
 MY_PN="ShovelKnight"
 DESCRIPTION="Sweeping classic action adventure with an 8-bit retro aesthetic"
 HOMEPAGE="https://yachtclubgames.com/shovel-knight/"
 SRC_URI="${PN//-/_}_treasure_trove_en_3_3_15418.sh"
+S="${WORKDIR}/data/noarch/game"
 
 LICENSE="Yacht-Club-Games-EULA"
 SLOT="0"
@@ -23,8 +24,6 @@ RDEPEND="
 	media-libs/libsdl2[opengl,sound,video]
 	virtual/opengl
 "
-
-S="${WORKDIR}/data/noarch/game"
 
 DIR="/opt/${PN}"
 QA_PREBUILT="${DIR#/}/*"
@@ -62,6 +61,3 @@ src_install() {
 	newicon -s 256 ../support/icon.png ${PN}.png
 	make_desktop_entry ${MY_PN} "Shovel Knight"
 }
-
-pkg_postinst() { xdg_icon_cache_update; }
-pkg_postrm() { xdg_icon_cache_update; }
