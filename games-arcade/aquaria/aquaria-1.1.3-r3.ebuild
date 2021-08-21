@@ -20,7 +20,7 @@ RDEPEND="
 	>=media-libs/openal-1.15.1[abi_x86_32(-)]"
 BDEPEND="app-arch/unzip"
 
-dir=opt/${PN}
+dir=/opt/${PN}
 QA_PREBUILT="${dir#/}/aquaria"
 
 pkg_nofetch() {
@@ -36,10 +36,11 @@ src_unpack() {
 
 src_install() {
 	insinto ${dir}
-	exeinto ${dir}
-
 	doins -r *.xml */
+
+	exeinto ${dir}
 	doexe ${PN}
+
 	doicon ${PN}.png
 
 	dodoc README-linux.txt
