@@ -1,7 +1,7 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop xdg
 
@@ -26,6 +26,7 @@ RDEPEND="
 	media-libs/alsa-lib
 	media-libs/openal
 	net-libs/gnutls[idn]
+	net-misc/curl[adns]
 	net-print/cups
 	sys-apps/dbus
 	virtual/jre:1.8
