@@ -1,0 +1,26 @@
+From 6bc5860575d491e8cf1edbabee7b07f1c072bdba Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 21 Aug 2021 09:45:45 +0200
+Subject: [PATCH] Do not install tests.myapp
+
+Fix options.packages.find.exclude to cover subpackages of "tests"
+recursively.  Otherwise, tests.myapp is installed.
+---
+ setup.cfg | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/setup.cfg b/setup.cfg
+index b4094dc..b8ebee3 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -44,6 +44,7 @@ tests =
+ [options.packages.find]
+ exclude =
+     tests
++    tests.*
+     myapp
+ 
+ [flake8]
+-- 
+2.33.0
+
