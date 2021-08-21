@@ -112,6 +112,7 @@ src_prepare() {
 			-e 's:(pamrgbatopng|pngtopnm).*::' \
 			test/legacy-names.{ok,test} || die
 		sed -i -e '/^$/d' test/legacy-names.ok || die
+		sed -i -e 's:png-roundtrip.*::' test/Test-Order || die
 	fi
 }
 
