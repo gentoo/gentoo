@@ -29,11 +29,11 @@ RDEPEND="
 "
 BDEPEND="app-arch/unzip"
 
-MY_DIR=opt/etqw
+MY_DIR=/opt/etqw
 
 QA_PREBUILT="
-	${MY_DIR}/*.x86
-	${MY_DIR}/*.so*
+	${MY_DIR#/}/*.x86
+	${MY_DIR#/}/*.so*
 "
 
 src_unpack() {
