@@ -1,0 +1,26 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+#
+# Bareos File Daemon
+#
+[Unit]
+Description=Bareos File Daemon
+Documentation=man:bareos-fd(8)
+Requires=nss-lookup.target network.target remote-fs.target time-sync.target
+After=nss-lookup.target network.target remote-fs.target time-sync.target
+
+[Service]
+Type=forking
+User=root
+Group=bareos
+WorkingDirectory=/var/lib/bareos
+PIDFile=/run/bareos/bareos-fd.9102.pid
+StandardError=journal
+ExecStartPre=/usr/sbin/bareos-fd -f -t
+ExecStart=/usr/sbin/bareos-fd
+SuccessExitStatus=0 15
+#Restart=on-failure
+
+[Install]
+Alias=bareos-filedaemon.service
+WantedBy=multi-user.target
