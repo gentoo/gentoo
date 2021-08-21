@@ -43,8 +43,9 @@ src_install() {
 	loki_patch patch.dat data/ || die
 
 	insinto ${dir}
-	exeinto ${dir}
 	doins -r "${demo}"/*
+
+	exeinto ${dir}
 	doexe "${demo}/${exe}"
 
 	# Required directory
