@@ -24,7 +24,7 @@ else
 	#else
 	#	SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 	#fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv -sparc ~x86"
 fi
 
 inherit autotools flag-o-matic lua-single toolchain-funcs virtualx xdg
@@ -459,6 +459,11 @@ src_configure() {
 
 	# FIXME: Needs libresid-builder from libsidplay:2 which is in another directory...
 	append-ldflags "-L/usr/$(get_libdir)/sidplay/builders/"
+
+	if use riscv; then
+		# Bug #803473
+		append-libs -latomic
+	fi
 
 	if use truetype || use bidi; then
 		myeconfargs+=( --enable-freetype )
