@@ -16,7 +16,7 @@ KEYWORDS="-* ~amd64 ~x86"
 IUSE="bundled-libs"
 RESTRICT="bindist fetch splitdebug"
 
-MYGAMEDIR=opt/${PN}
+MYGAMEDIR=/opt/${PN}
 QA_PREBUILT="
 	${MYGAMEDIR#/}/bin/*
 	${MYGAMEDIR#/}/lib/*
