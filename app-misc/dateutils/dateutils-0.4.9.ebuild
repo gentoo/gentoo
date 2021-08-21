@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-DESCRIPTION="command line date and time utilities"
+DESCRIPTION="Command line date and time utilities"
 HOMEPAGE="https://www.fresse.org/dateutils/ https://github.com/hroptatyr/dateutils"
 
 case "${PV}" in
@@ -25,8 +25,6 @@ DEPEND="sys-libs/timezone-data"
 # bug 429810
 RDEPEND="${DEPEND}
 	!sys-fabric/dapl"
-
-PATCHES=( "${FILESDIR}"/${P}-unportable-sys-sysctl_h.patch )
 
 src_prepare() {
 	default
