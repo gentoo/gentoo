@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="static-libs"
 
-RDEPEND="media-libs/libsdl[video]
+RDEPEND="media-libs/libsdl[joystick,video]
 	media-libs/sdl-image
 	media-libs/sdl-mixer"
 DEPEND="${RDEPEND}"
