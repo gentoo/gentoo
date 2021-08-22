@@ -48,6 +48,7 @@ src_install() {
 	doins ext/config/conf.d/repl.ini
 	doins ext/config/conf.d/database.ini
 	doins ext/config/conf.d/config.ini
+	doins ext/config/conf.d/auth.conf
 	insopts -m0755
 	insinto /opt/puppetlabs/server/apps/puppetdb/scripts
 	doins install.sh
