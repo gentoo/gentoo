@@ -179,6 +179,9 @@ src_configure() {
 	for protocol in ${GPSD_PROTOCOLS[@]} ; do
 		scons_opts+=( ${protocol}=$(usex gpsd_protocols_${protocol}) )
 	done
+
+	# bug #809260
+	python_setup
 }
 
 src_compile() {
