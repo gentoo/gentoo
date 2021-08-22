@@ -1,0 +1,14 @@
+diff --git a/miniupnpd/testgetifaddr.sh b/miniupnpd/testgetifaddr.sh
+index 7ad56d9..2a26a24 100755
+--- a/testgetifaddr.sh
++++ b/testgetifaddr.sh
+@@ -12,7 +12,8 @@ case $OS in
+ 	*)
+ 	IP="`which ip`" || exit 1
+ 	EXTIF="`LC_ALL=C $IP -4 route | grep 'default' | sed -e 's/.*dev[[:space:]]*//' -e 's/[[:space:]].*//'`" || exit 1
+-	EXTIP="`LC_ALL=C $IP -4 addr show $EXTIF | awk '/inet/ { print $2 }' | cut -d "/" -f 1`"
++	EXTIF="`LC_ALL=C $IP -4 addr show $EXTIF | awk '/[0-9]+:/ { print $2; exit 0 }' | cut -d ":" -f 1`"
++	EXTIP="`LC_ALL=C $IP -4 addr show $EXTIF | awk '/inet/ { print $2; exit 0 }' | cut -d "/" -f 1`"
+ 	;;
+ esac
+ 
