@@ -26,7 +26,7 @@ RDEPEND="
 BDEPEND="app-arch/unzip"
 
 DIR="/opt/${PN}"
-QA_PREBUILT="${DIR}/*"
+QA_PREBUILT="${DIR#/}/*"
 
 pkg_nofetch() {
 	einfo "Please buy and download ${SRC_URI} from:"
