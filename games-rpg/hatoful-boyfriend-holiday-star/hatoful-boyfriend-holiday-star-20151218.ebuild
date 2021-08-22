@@ -8,6 +8,7 @@ inherit desktop wrapper xdg-utils
 DESCRIPTION="Holiday-themed sequel to the Japanese visual novel and dating sim about birds"
 HOMEPAGE="https://www.devolverdigital.com/games/hatoful-boyfriend-holiday-star"
 SRC_URI="Linux-Standalone-${PV}.rar"
+S="${WORKDIR}/Linux-Standalone"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -28,8 +29,6 @@ RDEPEND="
 		x11-libs/gtk+:2
 	)
 "
-
-S="${WORKDIR}/Linux-Standalone"
 
 DIR="/opt/${PN}"
 QA_PREBUILT="${DIR#/}/*"
