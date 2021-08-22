@@ -23,7 +23,8 @@ IUSE="gui"
 BDEPEND="
 	test? (
 		app-text/ghostscript-gpl
-		app-text/poppler[cairo]
+		app-text/mupdf
+		app-text/poppler[cairo,png,tiff]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pdfrw[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
