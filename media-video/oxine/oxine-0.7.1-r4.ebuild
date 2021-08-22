@@ -8,14 +8,16 @@ inherit flag-o-matic
 DESCRIPTION="OSD frontend for Xine"
 HOMEPAGE="http://oxine.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 SLOT="0"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="curl debug dvb exif joystick jpeg lirc nls png v4l X"
 
 COMMON_DEPEND="
 	dev-libs/libcdio
 	media-libs/xine-lib[v4l?,X,imagemagick]
+	virtual/libcrypt:=
 	curl? ( net-misc/curl )
 	dvb? ( media-libs/xine-lib[v4l] )
 	joystick? ( media-libs/libjsw )
