@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit qmail webapp autotools
+WEBAPP_MANUAL_SLOT="yes"
+inherit autotools qmail webapp
 
 MY_P=${P/_rc/-rc}
 
@@ -13,16 +14,17 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm ~hppa ~ia64 ppc ~s390 sparc x86"
 IUSE="maildrop"
 # the RESTRICT is because the vpopmail lib directory is locked down
 # and non-root can't access them.
 RESTRICT="userpriv"
 
-RDEPEND="virtual/qmail
-	>=net-mail/vpopmail-5.4.33
+RDEPEND="
 	net-mail/autorespond
+	>=net-mail/vpopmail-5.4.33
+	virtual/libcrypt:=
+	virtual/qmail
 	maildrop? ( >=mail-filter/maildrop-2.0.1 )"
 DEPEND="${RDEPEND}"
 
@@ -30,6 +32,8 @@ S="${WORKDIR}"/${MY_P}
 
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-1.2.9-maildir.patch
+	eapply "${FILESDIR}"/${PN}-1.2.12-quota-overflow.patch
+	eapply "${FILESDIR}"/${PN}-1.2.15-quota-security.patch
 	eapply_user
 	eautoreconf
 }
@@ -78,20 +82,10 @@ src_install() {
 	default
 
 	webapp_src_install
-
-	# CGI needs to be able to read /etc/vpopmail.conf
-	# Which is 0640 root:vpopmail, as it contains passwords
-	cgi=/usr/share/webapps/${PN}/${PV}/hostroot/cgi-bin/qmailadmin
-	fowners root:vpopmail ${cgi}
-	fperms g+s ${cgi}
 }
 
 pkg_postinst() {
 	einfo "If you would like support for ezmlm mailing lists inside qmailadmin,"
 	einfo "please emerge some variant of ezmlm-idx."
 	webapp_pkg_postinst
-	einfo "For complete webapp-config support:"
-	einfo "1. Add this for the Apache cgi-bin dir: Options +ExecCGI -MultiViews +FollowSymLinks"
-	einfo "2. Run: webapp-config -I -h localhost -d qmailadmin ${PN} ${PV}"
-	einfo "3. Symlink: ln -s {/usr/share/webapps/${PN}/${PV}/hostroot,/var/www/localhost}/cgi-bin/${PN}"
 }
