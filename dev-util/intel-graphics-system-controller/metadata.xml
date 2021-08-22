@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+	<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<use>
+		<flag name="cli">Build CLI tools for flashing manually a firmware upgrade.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">intel/igsc</remote-id>
+	</upstream>
+</pkgmetadata>
