@@ -10,9 +10,22 @@ DESCRIPTION="WebRTC plugins for GStreamer"
 KEYWORDS="~amd64"
 IUSE=""
 
+# == ext/webrtc/meson.build
+# dev-libs/glib (eclass): gio_dep
+# net-libs/libnice: libnice_dep
+# media-libs/gst-plugins-base: gstbase_dep, gstsdp_dep, gstapp_dep, gstrtp_dep
+# media-plugins/gst-plugins-sctp: gstsctp_dep
+# == ext/webrtcdsp/meson.build
+# media-libs/gst-plugins-base: gstbase_dep, gstaudio_dep
+# media-libs/gst-plugins-bad: gstbadaudio_dep
+# media-libs/webrtc-audio-processing: webrtc_dep
+# (android): gnustl_dep
+# == gst-libs/gst/webrtc/meson.build
+# media-libs/gst-plugins-base: gstbase_dep, gstsdp_dep
 RDEPEND="
 	>=media-libs/gst-plugins-base-${PV}:1.0[${MULTILIB_USEDEP}]
 	>=media-libs/gst-plugins-bad-${PV}:1.0[${MULTILIB_USEDEP}]
+	>=media-plugins/gst-plugins-sctp-${PV}:1.0[${MULTILIB_USEDEP}]
 	>=media-libs/webrtc-audio-processing-0.2[${MULTILIB_USEDEP}]
 	<media-libs/webrtc-audio-processing-0.4
 	>=net-libs/libnice-0.1.14[${MULTILIB_USEDEP}]
