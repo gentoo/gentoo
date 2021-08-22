@@ -138,6 +138,9 @@ src_configure() {
 		$(use_enable maildrop) \
 		$(use_enable maildrop maildrop-prog /usr/bin/maildrop) \
 		$(use_enable spamassassin)
+
+	sed "s|'ar |'$(tc-getAR) |;s|'ranlib |'$(tc-getRANLIB) |" -i cdb/Makefile || die
+	sed "/^AR =/s|= .*|= $(tc-getAR)|" -i Makefile || die
 }
 
 src_install() {
