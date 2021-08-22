@@ -1,14 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+CHECKREQS_DISK_BUILD="2400M"
 inherit desktop check-reqs unpacker wrapper xdg
 
 TIMESTAMP=${PV:4:2}${PV:6:2}${PV:0:4}
 DESCRIPTION="An original action role-playing game set in a lush imaginative world"
 HOMEPAGE="https://supergiantgames.com/games/bastion/"
 SRC_URI="bastion-${TIMESTAMP}-bin"
+S="${WORKDIR}/data"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -27,9 +29,6 @@ RDEPEND="
 BDEPEND="
 	app-arch/unzip
 "
-
-CHECKREQS_DISK_BUILD="2400M"
-S="${WORKDIR}/data"
 
 pkg_nofetch() {
 	einfo "Please buy and download ${SRC_URI} from:"
