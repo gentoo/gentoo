@@ -46,6 +46,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	sys-apps/dmidecode
 	sys-auth/polkit-qt
 	>=sys-libs/kpmcore-4.0.0:5=
+	virtual/libcrypt:=
 "
 DEPEND="${COMMON_DEPEND}
 	test? ( dev-qt/qttest:5 )
