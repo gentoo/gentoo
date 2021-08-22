@@ -25,8 +25,8 @@ RDEPEND="
 	virtual/opengl[abi_x86_32(-)]
 "
 
-dir=opt/${PN}
-QA_PREBUILT="${dir:1}/lib/darwinia.bin.x86"
+dir=/opt/${PN}
+QA_PREBUILT="${dir#1}/lib/darwinia.bin.x86"
 
 src_unpack() {
 	use cdinstall && cdrom_get_cds gamefiles/main.dat
