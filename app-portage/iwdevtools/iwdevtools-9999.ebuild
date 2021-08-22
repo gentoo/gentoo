@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit git-r3 meson
+inherit git-r3 meson optfeature
 
 DESCRIPTION="Small tools to aid with Gentoo development, primarily intended for QA"
 HOMEPAGE="https://github.com/ionenwks/iwdevtools"
@@ -34,4 +34,6 @@ pkg_postinst() {
 		elog "    ln -s ../../../usr/share/${PN}/bashrc ${EROOT}/etc/portage/bashrc"
 		elog
 	fi
+
+	optfeature "detecting potential ABI issues using abidiff" dev-util/libabigail
 }
