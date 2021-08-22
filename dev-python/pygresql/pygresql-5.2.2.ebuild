@@ -3,7 +3,7 @@
 
 EAPI=7
 
-POSTGRES_COMPAT=( 9.{5..6} {10..13} )
+POSTGRES_COMPAT=( 9.6 {10..13} )
 PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1 postgres
