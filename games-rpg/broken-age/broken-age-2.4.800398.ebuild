@@ -9,6 +9,7 @@ MY_PN="BrokenAge"
 DESCRIPTION="Point-and-click adventure from Tim Schafer's Double Fine Productions"
 HOMEPAGE="http://www.brokenagegame.com"
 SRC_URI="${MY_PN}_linux.tar.gz"
+S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -20,10 +21,9 @@ RDEPEND="
 	virtual/opengl[abi_x86_32]
 "
 
-S="${WORKDIR}"
 
 DIR="/opt/${PN}"
-QA_PREBUILT="${DIR}/*"
+QA_PREBUILT="${DIR#/}/*"
 
 pkg_nofetch() {
 	einfo "Please buy and download ${SRC_URI} from:"
