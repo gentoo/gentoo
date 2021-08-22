@@ -26,11 +26,11 @@ IUSE="avdevice +audiofilters +alsa cdio cuvid dbus extensions
 
 REQUIRED_USE="
 	audiofilters? ( || ( alsa pipewire portaudio pulseaudio ) )
-	extensions? ( dbus )
 	shaders? ( vulkan )"
 
 RDEPEND="
 	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
@@ -41,7 +41,6 @@ RDEPEND="
 	)
 	alsa? ( media-libs/alsa-lib )
 	cdio? ( dev-libs/libcdio[cddb] )
-	dbus? ( dev-qt/qtdbus:5 )
 	extensions? (
 		dev-qt/qtdeclarative:5
 		media-libs/taglib
@@ -67,9 +66,7 @@ RDEPEND="
 	xv? ( x11-libs/libXv )"
 
 DEPEND="${RDEPEND}"
-BDEPEND="
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig"
+BDEPEND="dev-qt/linguist-tools:5"
 
 src_prepare() {
 	# disable compress man pages
