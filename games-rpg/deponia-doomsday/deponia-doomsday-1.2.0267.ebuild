@@ -9,6 +9,8 @@ MY_PN="Deponia Doomsday"
 DESCRIPTION="The fourth and final instalment of the Deponia point-and-click adventures"
 HOMEPAGE="https://www.daedalic.com/deponia"
 SRC_URI="Deponia4_${PV}_DEB_Full_Multi_Daedalic_ESD.tar"
+S="${WORKDIR}/${MY_PN}"
+
 LICENSE="all-rights-reserved BSD LGPL-2.1 MIT OFL-1.1"
 SLOT="0"
 KEYWORDS="-* ~amd64"
@@ -25,10 +27,8 @@ RDEPEND="
 	virtual/opengl
 "
 
-S="${WORKDIR}/${MY_PN}"
-
 DIR="/opt/${PN}"
-QA_PREBUILT="${DIR}/*"
+QA_PREBUILT="${DIR#/}/*"
 
 pkg_nofetch() {
 	einfo "Please buy and download ${SRC_URI} from:"
