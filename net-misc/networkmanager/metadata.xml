@@ -6,6 +6,7 @@
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<use>
+		<flag name="concheck">Enable connectivity checking support</flag>
 		<flag name="connection-sharing">
 			Support connection sharing (uses <pkg>net-dns/dnsmasq</pkg>)
 		</flag>
@@ -23,6 +24,10 @@
 			Use <pkg>net-wireless/iwd</pkg> instead of
 			<pkg>net-wireless/wpa_supplicant</pkg> for wifi support by default
 		</flag>
+		<flag name="psl">
+			Use public suffix list via <pkg>net-libs/libpsl</pkg>
+		</flag>
+		<flag name="lto">Build using Link Time Optimizations (LTO)</flag>
 		<flag name="modemmanager">
 			Enable support for mobile broadband devices using
 			<pkg>net-misc/modemmanager</pkg>
@@ -44,6 +49,9 @@
 			create a symlink to /run/systemd/resolve/stub-resolv.conf.
 		</flag>
 		<flag name="teamd">Enable Teamd control support</flag>
+		<flag name="tools">
+			Build cli tools such as nmcli, nmtui and nm_cloud_setup
+		</flag>
 		<flag name="wifi">Enable support for wifi and 802.1x security</flag>
 		<flag name="wext">
 			Enable support for the deprecated Wext (Wireless Extensions) API; needed
