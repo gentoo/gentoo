@@ -10,6 +10,7 @@ DESCRIPTION="A ruthless top-down cyberpunk shooter with rogue-like elements"
 HOMEPAGE="https://neonchromegame.com/"
 SRC_URI="${MY_PN}-Linux-${PV}.tar"
 #	https://dev.gentoo.org/~chewi/distfiles/${PN}.png"
+S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -21,10 +22,8 @@ RDEPEND="
 	media-libs/openal
 "
 
-S="${WORKDIR}"
-
 DIR="/opt/${PN}"
-QA_PREBUILT="${DIR}/*"
+QA_PREBUILT="${DIR#/}/*"
 
 pkg_nofetch() {
 	einfo "Please buy and download ${SRC_URI} from:"
