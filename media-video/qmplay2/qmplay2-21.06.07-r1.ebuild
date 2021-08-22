@@ -87,6 +87,7 @@ src_configure() {
 		-DUSE_LINK_TIME_OPTIMIZATION=false
 		-DUSE_ALSA=$(usex alsa)
 		-DUSE_AUDIOCD=$(usex cdio)
+		-DUSE_DBUS_SUSPEND=$(usex dbus)
 		-DUSE_FREEDESKTOP_NOTIFICATIONS=$(usex dbus) # https://github.com/zaps166/QMPlay2/issues/134
 		-DUSE_LIBASS=$(usex libass)
 		-DUSE_NOTIFY=$(usex notifications)
