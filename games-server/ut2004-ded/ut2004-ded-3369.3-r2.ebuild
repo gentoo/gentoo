@@ -14,6 +14,7 @@ SRC_URI="
 	http://ut2004.ut-files.com/Patches/Linux/${PATCH_P}
 	https://dev.gentoo.org/~chewi/distfiles/ut2004-v${PV/./-}-linux-dedicated.7z
 "
+S="${WORKDIR}"
 
 LICENSE="ut2003"
 SLOT="0"
@@ -36,7 +37,6 @@ RDEPEND="
 CHECKREQS_DISK_BUILD="2G"
 QA_PREBUILT="*"
 
-S="${WORKDIR}"
 DIR="/opt/${PN%-ded}"
 
 src_prepare() {
