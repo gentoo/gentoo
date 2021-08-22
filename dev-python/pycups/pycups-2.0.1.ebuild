@@ -13,12 +13,17 @@ HOMEPAGE="https://github.com/OpenPrinting/pycups"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="examples"
 
 RDEPEND="net-print/cups"
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	# https://github.com/OpenPrinting/pycups/commit/8cbf6d40a0132764ad51e7416aa7034966875091
+	"${FILESDIR}/${P}-py3.10.patch"
+)
 
 python_install_all() {
 	if use examples; then
@@ -27,8 +32,3 @@ python_install_all() {
 	fi
 	distutils-r1_python_install_all
 }
-
-PATCHES=(
-	# https://github.com/OpenPrinting/pycups/commit/8cbf6d40a0132764ad51e7416aa7034966875091
-	"${FILESDIR}/${P}-py3.10.patch"
-)
