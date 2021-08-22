@@ -47,6 +47,12 @@ src_configure() {
 		append-ldflags -static
 	fi
 
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		# https://lists.gnu.org/archive/html/bug-findutils/2021-01/msg00050.html
+		# https://lists.gnu.org/archive/html/bug-findutils/2021-01/msg00051.html
+		append-cppflags '-D__nonnull\(X\)='
+	fi
+
 	program_prefix=$(usex userland_GNU '' g)
 	local myeconfargs=(
 		--with-packager="Gentoo"
