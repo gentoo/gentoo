@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,12 +15,14 @@ KEYWORDS="amd64 x86"
 IUSE="debug"
 
 DEPEND="
+	dev-libs/libpcre
 	net-mail/vpopmail
+	virtual/libcrypt:=
 	|| (
 		mail-mta/netqmail[qmail-spp]
 		mail-mta/qmail-ldap[qmail-spp]
 	)"
-RDEPEND=""
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/hollow-${PN}-8a048f7"
 
