@@ -9,6 +9,8 @@ MY_PN="${PN//-}"
 DESCRIPTION="A fwooshy rogue-lite action flight simulator"
 HOMEPAGE="https://skyroguegame.com/"
 SRC_URI="${PN}-linux.zip"
+S="${WORKDIR}"
+
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
@@ -22,8 +24,6 @@ RDEPEND="
 BDEPEND="
 	app-arch/unzip
 "
-
-S="${WORKDIR}"
 
 DIR="/opt/${PN}"
 QA_PREBUILT="${DIR#/}/*"
