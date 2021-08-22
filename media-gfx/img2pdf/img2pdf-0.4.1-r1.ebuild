@@ -23,14 +23,14 @@ IUSE="gui"
 BDEPEND="
 	test? (
 		app-text/ghostscript-gpl
-		app-text/poppler
+		app-text/poppler[cairo]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pdfrw[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
 		media-gfx/imagemagick[jpeg,jpeg2k,png,q8,q32,tiff]
 		media-libs/exiftool
-		media-libs/netpbm
+		media-libs/netpbm[jpeg]
 	)
 "
 RDEPEND="
