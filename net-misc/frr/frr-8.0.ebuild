@@ -49,7 +49,10 @@ RDEPEND="
 	!net-misc/quagga
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-7.5-ipctl-forwarding.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.5-ipctl-forwarding.patch
+	"${FILESDIR}"/${P}-c-ares.patch
+)
 
 src_prepare() {
 	default
