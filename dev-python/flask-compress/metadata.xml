@@ -12,5 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">Flask-Compress</remote-id>
+		<remote-id type="github">colour-science/flask-compress</remote-id>
 	</upstream>
 </pkgmetadata>
