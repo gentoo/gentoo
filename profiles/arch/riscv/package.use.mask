@@ -30,19 +30,6 @@ kde-plasma/kdeplasma-addons webengine
 kde-plasma/plasma-meta networkmanager accessibility grub plymouth pulseaudio
 kde-plasma/discover firmware flatpak
 kde-plasma/kwin accessibility screencast
-kde-plasma/plasma-firewall firewalld
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-08-21)
-# Please don't keyword media-libs/phonon w/o at least one of those.
-# vlc has libatomic issue, bug #803473
-media-libs/phonon vlc gstreamer
-kde-frameworks/knotifications phonon
-kde-frameworks/knotifyconfig phonon
-kde-apps/kio-extras phonon
-kde-apps/marble phonon
-app-office/calligra phonon
-media-sound/yarock phonon
-net-irc/kvirc phonon
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-17)
 # sys-libs/libfaketime does not work properly on this arch
@@ -66,10 +53,6 @@ dev-ruby/webmock test
 # Currently requires dev-lang/spidermonkey:68, which explicitly
 # does not support riscv. Hopefully temporary, see Bug #807772.
 net-libs/libproxy spidermonkey
-
-# Alex Fan <alexfanqi@yahoo.com> (2021-08-12)
-# lua requires specifically luajit for gimp
-media-gfx/gimp lua unwind
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-09)
 # ipython[qt5] depends on qtconsole, which depends on QtPy.
@@ -113,10 +96,12 @@ kde-frameworks/solid ios
 # though.
 <sci-libs/hdf5-1.12.1 fortran debug
 
+# Alex Fan <alexfanqi@yahoo.com> (2021-08-12)
 # Marek Szuba <marecki@gentoo.org> (2021-07-14)
 # LuaJIT does not support riscv
 app-text/texlive-core luajittex
 dev-texlive/texlive-basic luajittex
+media-gfx/gimp lua
 www-servers/nginx nginx_modules_http_lua
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-11)
@@ -137,24 +122,14 @@ dev-python/ipython nbconvert notebook
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # Dependencies not keyworded here yet:
-#  - gnome-base/gconf, dev-libs/libotf & dev-libs/m17n-lib
-app-editors/emacs gconf m17n-lib
-#  - dev-embedded/libftdi, app-misc/inputlircd
-app-misc/lirc ftdi inputlirc
-#  - app-xemacs/ruby-modes (and by extension xemacs itself)
-dev-lang/ruby xemacs
 #  - dev-ruby/asciidoctor
 dev-libs/nanomsg doc
-#  - app-text/dblatex & media-gfx/transfig
-dev-util/ragel doc
 #  - Qt5 & KDE
 dev-vcs/subversion kwallet
 #  - kde-frameworks/bluez-qt
 kde-frameworks/purpose bluetooth
 #  - kde-plasma/bluedevil
 kde-plasma/plasma-meta bluetooth
-#  - media-libs/dumb
-media-libs/allegro dumb
 #  - media-gfx/nvidia-texture-tools
 media-libs/devil nvtt
 #  - dev-lang/php
@@ -194,6 +169,7 @@ net-libs/libproxy kde
 xfce-extra/tumbler epub ffmpeg odf pdf raw
 xfce-base/xfce4-meta pulseaudio
 
+# Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # Ye Cao <ye.c@rioslab.org> (2021-07-31)
 # Piotr Karbowski <slashbeast@gentoo.org> (2021-06-22)
 # Yixun Lan <dlan@gentoo.org> (2021-05-21)
@@ -203,6 +179,7 @@ xfce-base/xfce4-meta pulseaudio
 dev-libs/efl unwind
 dev-util/perf unwind
 dev-util/strace unwind
+media-gfx/gimp unwind
 media-libs/gstreamer unwind
 media-libs/mesa unwind
 net-libs/zeromq unwind
