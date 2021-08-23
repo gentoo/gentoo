@@ -11,7 +11,7 @@ SRC_URI="https://github.com/OISF/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~riscv ~x86"
 IUSE="debug static-libs"
 
 RDEPEND="sys-libs/zlib[static-libs?]"
