@@ -20,7 +20,7 @@ RESTRICT="bindist mirror"
 
 BDEPEND=""
 RDEPEND="
-	<sys-devel/gcc-11_pre[cxx]
+	<sys-devel/gcc-12_pre[cxx]
 	>=x11-drivers/nvidia-drivers-${DRIVER_PV}
 	debugger? (
 		dev-libs/openssl
@@ -41,7 +41,7 @@ pkg_setup() {
 
 src_prepare() {
 	# ATTENTION: change requires revbump
-	local cuda_supported_gcc="8.5 9.3 9.4 10.2 10.3 11.1 11.2"
+	local cuda_supported_gcc="8.5 9.4 10.3 11.1 11.2"
 
 	sed \
 		-e "s:CUDA_SUPPORTED_GCC:${cuda_supported_gcc}:g" \
