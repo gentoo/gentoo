@@ -1,0 +1,55 @@
+From dba351b178ae06b56985cc77a291918a0fc4aff4 Mon Sep 17 00:00:00 2001
+From: Piotr Murach <pmurach@gmail.com>
+Date: Mon, 16 Aug 2021 22:13:27 +0200
+Subject: [PATCH] Fix ioctl call test to stub terminal size encoding for
+ big-endian systems
+
+Fixes #13
+---
+ CHANGELOG.md             | 6 ++++++
+ spec/unit/screen_spec.rb | 8 +++++++-
+ 2 files changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 91dd6ab..0f369bd 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -1,5 +1,10 @@
+ # Change log
+ 
++## [v0.8.2] - unreleased
++
++### Fixed
++* Fix ioctl call test to stub terminal size encoding for big-endian systems
++
+ ## [v0.8.1] - 2020-07-17
+ 
+ ### Fixed
+@@ -136,6 +141,7 @@
+ ### Fixed
+ * Fix bug with screen detection from_io_console by @luxflux
+ 
++[v0.8.2]: https://github.com/piotrmurach/tty-screen/compare/v0.8.1...v0.8.2
+ [v0.8.1]: https://github.com/piotrmurach/tty-screen/compare/v0.8.0...v0.8.1
+ [v0.8.0]: https://github.com/piotrmurach/tty-screen/compare/v0.7.1...v0.8.0
+ [v0.7.1]: https://github.com/piotrmurach/tty-screen/compare/v0.7.0...v0.7.1
+diff --git a/spec/unit/screen_spec.rb b/spec/unit/screen_spec.rb
+index 3666a3c..de78ff3 100644
+--- a/spec/unit/screen_spec.rb
++++ b/spec/unit/screen_spec.rb
+@@ -6,8 +6,14 @@ def winsize
+       [100, 200]
+     end
+ 
++    def big_endian?
++      [1].pack("S") == [1].pack("n")
++    end
++
+     def ioctl(control, buf)
+-      buf.replace("3\x00\xD3\x00\xF2\x04\xCA\x02\x00")
++      little_endian = "3\x00\xD3\x00\xF2\x04\xCA\x02\x00"
++      big_endian = "\x003\x00\xD3\x04\xF2\x02\xCA"
++      buf.replace(big_endian? ? big_endian : little_endian)
+       0
+     end
+   end
