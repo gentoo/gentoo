@@ -1,6 +1,11 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-08-23)
+# sys-cluster/ceph keywording blocked by libatomic issues in dev-libs/rocksdb-6.14,
+# see Bug #809830.
+net-analyzer/rrdtool rados
+
 # Marek Szuba <marecki@gentoo.org> (2021-08-22)
 # net-fs/openafs does not support riscv
 app-crypt/heimdal afs
@@ -18,7 +23,6 @@ media-sound/jack2 ieee1394
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # dependencies not keyworded/tested
-sys-apps/xdg-desktop-portal screencast
 kde-plasma/powerdevil wireless
 kde-plasma/plasma-vault networkmanager
 kde-plasma/plasma-desktop emoji
@@ -124,8 +128,6 @@ dev-python/ipython nbconvert notebook
 # Dependencies not keyworded here yet:
 #  - dev-ruby/asciidoctor
 dev-libs/nanomsg doc
-#  - Qt5 & KDE
-dev-vcs/subversion kwallet
 #  - kde-frameworks/bluez-qt
 kde-frameworks/purpose bluetooth
 #  - kde-plasma/bluedevil
@@ -144,8 +146,6 @@ media-sound/pulseaudio ofono-headset
 media-video/ffmpeg amrenc bs2b cdio codec2 frei0r kvazaar libilbc libtesseract lv2 rubberband vidstab xvid zimg
 #  - media-libs/libquicktime, media-libs/sdl-gfx
 media-video/mjpegtools quicktime sdlgfx
-#  - sys-cluster/ceph
-net-analyzer/rrdtool rados
 #  - net-wireless/iwd, net-misc/ofono
 net-misc/connman iwd ofono
 #  - dev-util/aruba
