@@ -14,7 +14,7 @@ SRC_URI="https://www.openinfosecfoundation.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/6"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="+af-packet bpf control-socket cuda debug +detection geoip hardened lua lz4 nflog +nfqueue redis systemd test"
 
 RESTRICT="!test? ( test )"
