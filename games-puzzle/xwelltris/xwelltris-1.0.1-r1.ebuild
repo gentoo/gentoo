@@ -67,7 +67,7 @@ src_install() {
 	# Move score file to our location
 	mv "${ED}"/usr/share/${PN}/welltris.scores "${ED}"/var/lib/${PN}/welltris.scores || die
 
-	fowners root:gamestat /var/lib/${PN}/welltris.scores
+	fowners root:gamestat /var/lib/${PN}/welltris.scores /usr/bin/${PN}
 	fperms 660 /var/lib/${PN}/welltris.scores
 	fperms g+s /usr/bin/${PN}
 }
