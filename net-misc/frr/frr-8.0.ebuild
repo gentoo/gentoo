@@ -23,6 +23,7 @@ COMMON_DEPEND="
 	${PYTHON_DEPS}
 	acct-user/frr
 	dev-libs/json-c:0=
+	net-dns/c-ares:=
 	>=net-libs/libyang-2.0.0
 	sys-libs/libcap
 	sys-libs/readline:0=
