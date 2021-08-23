@@ -25,6 +25,9 @@
 			gzip-compressed files (via <pkg>sys-libs/zlib</pkg>).
 		</flag>
 	</use>
+	<slots>
+		<subslots>Reflects binary compatibility for libpcre2-posix.so.</subslots>
+	</slots>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:pcre:pcre</remote-id>
 		<remote-id type="sourceforge">pcre</remote-id>
