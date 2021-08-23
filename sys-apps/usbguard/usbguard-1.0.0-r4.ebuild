@@ -82,6 +82,7 @@ src_install() {
 
 	keepdir /etc/usbguard/IPCAccessControl.d  # bug 808801
 	keepdir /var/lib/log/usbguard
+	chmod 0600 "${ED}"/etc/usbguard/IPCAccessControl.d/.keep* || die  # bug 808801
 
 	newinitd "${FILESDIR}"/${PN}-0.7.6-usbguard.openrc usbguard
 	use dbus && newinitd "${FILESDIR}"/${PN}-0.7.6-usbguard-dbus.openrc usbguard-dbus
