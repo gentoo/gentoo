@@ -48,7 +48,7 @@ src_install() {
 	touch "${ED}"/var/lib/${PN}/${PN}{3,4,6}.hi || die "touch failed"
 	fperms 660 /var/lib/${PN}/${PN}{3,4,6}.hi
 
-	fowners root:gamestat /var/lib/${PN}
+	fowners root:gamestat /var/lib/${PN} /usr/bin/${PN}
 	fperms g+s /usr/bin/${PN}
 
 	make_desktop_entry xbomb XBomb
