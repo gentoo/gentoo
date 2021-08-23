@@ -51,6 +51,6 @@ src_install() {
 	touch "${ED}"/var/lib/${PN}/seatris.score || die
 	fperms 660 /var/lib/${PN}/seatris.score
 
-	fowners -R root:gamestat /var/lib/${PN}
+	fowners -R root:gamestat /var/lib/${PN} /usr/bin/${PN}
 	fperms g+s /usr/bin/${PN}
 }
