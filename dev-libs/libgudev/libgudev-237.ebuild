@@ -28,6 +28,11 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# https://gitlab.gnome.org/GNOME/libgudev/-/merge_requests/19
+	"${FILESDIR}/libgudev-test-double.patch"
+)
+
 multilib_src_configure() {
 	local emesonargs=(
 		$(meson_native_use_feature introspection)
