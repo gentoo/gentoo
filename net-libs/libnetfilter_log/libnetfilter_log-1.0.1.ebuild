@@ -11,7 +11,7 @@ SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc ~sparc x86"
+KEYWORDS="amd64 ~ia64 ppc ~riscv ~sparc x86"
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND=">=net-libs/libnfnetlink-1.0.0"
