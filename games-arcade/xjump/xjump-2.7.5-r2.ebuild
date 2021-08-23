@@ -58,6 +58,6 @@ src_install() {
 	touch "${ED}"/var/games/${PN}/xjump.hiscores || die
 
 	fperms -R 660 /var/games/${PN}
-	fowners -R root:gamestat /var/games/${PN}
-	fperms g+s /usr/bin/xjump
+	fowners -R root:gamestat /var/games/${PN} /usr/bin/${PN}
+	fperms g+s /usr/bin/${PN}
 }
