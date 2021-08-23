@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Login session support for Flask"
@@ -27,9 +27,13 @@ DEPEND="
 		dev-python/semantic_version[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-tests-py3.10.patch"
+)
+
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
 
 python_test() {
-	pytest -vv -p no:httpbin || die "Tests failed with ${EPYTHON}"
+	epytest -p no:httpbin
 }
