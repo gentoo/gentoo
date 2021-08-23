@@ -42,10 +42,10 @@ src_install() {
 	# High-score file
 	dodir /var/games/${PN}
 	touch "${ED}"/var/games/${PN}/heroes.hoh || die
-	dosym ../../var/games/${PN}/heroes.hoh ${game_dest}/heroes.hoh
+	dosym ../../var/games/${PN}/heroes.hoh /opt/${MY_PN}/heroes.hoh
 
 	fperms 660 /var/games/${PN}/heroes.hoh
-	fowners -R root:gamestat /var/games/${PN}
+	fowners -R root:gamestat /var/games/${PN} /opt/${MY_PN}/Barbarian
 	fperms g+s /opt/${MY_PN}/Barbarian
 
 	newicon gfx/sprites/player_attack_2_1.bmp barbarian.bmp
