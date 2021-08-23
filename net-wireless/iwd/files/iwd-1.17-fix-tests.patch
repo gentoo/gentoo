@@ -1,0 +1,35 @@
+From ed10b00afa3f4c087b46d7ba0b60a47bd05d8b39 Mon Sep 17 00:00:00 2001
+From: Denis Kenzior <denkenz@gmail.com>
+Date: Mon, 23 Aug 2021 08:51:35 -0500
+Subject: unit: Fix eapol IP Allocation test failure
+
+This test was failing due to a change introduced in commit
+5c9de0cf23f9 which changed handshake state storage of IPs from host
+order to network byte order.  Update the test to set IPs in network
+byte-order.
+
+Fixes: 5c9de0cf23f9 ("eapol: Store IP address in network byte order")
+---
+ unit/test-eapol.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/unit/test-eapol.c b/unit/test-eapol.c
+index b6a6adcb..470e0e9f 100644
+--- a/unit/test-eapol.c
++++ b/unit/test-eapol.c
+@@ -3802,9 +3802,9 @@ static void eapol_ap_sta_handshake_ip_alloc_ok_test(const void *data)
+ 	handshake_state_set_ssid(s.ap_hs, (void *) ssid, strlen(ssid));
+ 	handshake_state_set_pmk(s.ap_hs, psk, 32);
+ 	s.ap_hs->support_ip_allocation = true;
+-	s.ap_hs->client_ip_addr = 0x01020304;
+-	s.ap_hs->subnet_mask = 0xffff0000;
+-	s.ap_hs->go_ip_addr = 0x01020305;
++	s.ap_hs->client_ip_addr = L_CPU_TO_BE32(0x01020304);
++	s.ap_hs->subnet_mask = L_CPU_TO_BE32(0xffff0000);
++	s.ap_hs->go_ip_addr = L_CPU_TO_BE32(0x01020305);
+ 
+ 	handshake_state_set_authenticator(s.sta_hs, false);
+ 	handshake_state_set_event_func(s.sta_hs, test_ap_sta_hs_event, &s);
+-- 
+cgit 1.2.3-1.el7
+
