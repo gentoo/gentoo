@@ -14,10 +14,8 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
-# TODO: linuxfb
-
 IUSE="accessibility dbus egl eglfs evdev +gif gles2-only ibus jpeg
-	+libinput +png tslib tuio +udev vnc vulkan wayland +X"
+	+libinput linuxfb +png tslib tuio +udev vnc vulkan wayland +X"
 REQUIRED_USE="
 	|| ( eglfs X )
 	accessibility? ( dbus X )
@@ -170,6 +168,7 @@ src_configure() {
 		-system-harfbuzz
 		$(qt_use jpeg libjpeg system)
 		$(qt_use libinput)
+		$(qt_use linuxfb)
 		-opengl $(usex gles2-only es2 desktop)
 		$(qt_use png libpng system)
 		$(qt_use tslib)
