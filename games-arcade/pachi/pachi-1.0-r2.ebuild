@@ -44,7 +44,7 @@ src_install() {
 	newicon Tgfx/icon.bmp ${PN}.bmp
 	make_desktop_entry ${PN} Pachi /usr/share/pixmaps/${PN}.bmp
 
-	fowners root:gamestat /var/lib/${PN}/data/scores.dat
+	fowners root:gamestat /var/lib/${PN}/data/scores.dat /usr/bin/${PN}
 	fperms 660 /var/lib/${PN}/data/scores.dat
 	fperms g+s /usr/bin/${PN}
 }
