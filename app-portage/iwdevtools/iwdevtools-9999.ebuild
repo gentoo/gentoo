@@ -26,6 +26,8 @@ src_configure() {
 }
 
 pkg_postinst() {
+	optfeature "detecting potential ABI issues using abidiff" dev-util/libabigail
+
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog "To (optionally) integrate with portage, inspect the .bashrc files installed"
 		elog "at ${EROOT}/usr/share/${PN}. If not already using a bashrc, you can use"
@@ -33,7 +35,6 @@ pkg_postinst() {
 		elog
 		elog "    ln -s ../../../usr/share/${PN}/bashrc ${EROOT}/etc/portage/bashrc"
 		elog
+		elog "See ${EROOT}/usr/share/doc/${PF}/README.rst* for info on tools."
 	fi
-
-	optfeature "detecting potential ABI issues using abidiff" dev-util/libabigail
 }
