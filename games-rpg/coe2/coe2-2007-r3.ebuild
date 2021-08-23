@@ -58,6 +58,6 @@ src_install() {
 		fperms 660 ${state_dir}/${f}
 	done
 
-	fowners -R root:gamestat /var/lib/${PN}/
+	fowners -R root:gamestat /var/lib/${PN}/ /opt/${PN}/coe_linux
 	fperms g+s /opt/${PN}/coe_linux
 }
