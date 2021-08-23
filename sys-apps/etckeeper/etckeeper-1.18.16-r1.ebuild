@@ -71,6 +71,11 @@ if [ -e /etc/etckeeper/daily ] && [ -e /etc/etckeeper/etckeeper.conf ]; then
 fi
 _EOF_
 	fi
+
+	local conf_update_dir="/etc/portage/conf-update.d"
+	insinto "${conf_update_dir}"
+	newins "${FILESDIR}/${PN}-conf-update-hook" "${PN}"
+	fperms 755 "${conf_update_dir}/${PN}"
 }
 
 pkg_postinst() {
