@@ -23,6 +23,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~riscv ~sparc"
 IUSE=""
 
+PATCHES=( "${FILESDIR}/${P}-ioctl-test.patch" )
+
 all_ruby_prepare() {
 	echo '-rspec_helper' > .rspec || die
 	sed -i -e 's:require_relative ":require "./:' ${RUBY_FAKEGEM_GEMSPEC} || die
