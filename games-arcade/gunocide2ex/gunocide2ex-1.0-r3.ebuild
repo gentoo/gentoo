@@ -76,7 +76,7 @@ src_install() {
 	newins hscore.dat ${PN}-hscore.dat
 
 	fperms 660 /var/games/${PN}/${PN}-hscore.dat
-	fowners -R root:gamestat /var/games/${PN}
+	fowners -R root:gamestat /var/games/${PN} /usr/bin/g2ex
 	fperms g+s /usr/bin/g2ex
 
 	dodoc history doc/MANUAL_DE
