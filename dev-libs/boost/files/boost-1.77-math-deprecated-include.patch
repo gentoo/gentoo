@@ -1,0 +1,40 @@
+https://github.com/boostorg/math/commit/720536a08e4e33639869e1b7a99d9ec923409c0b
+https://github.com/boostorg/math/issues/675
+https://github.com/boostorg/math/pull/676
+
+From 720536a08e4e33639869e1b7a99d9ec923409c0b Mon Sep 17 00:00:00 2001
+From: Matt Borland <matt@mattborland.com>
+Date: Mon, 23 Aug 2021 17:48:28 +0300
+Subject: [PATCH] Fix for issue 675 (#676)
+
+--- a/boost/math/tools/header_deprecated.hpp
++++ a/boost/math/tools/header_deprecated.hpp
+@@ -6,12 +6,22 @@
+ #ifndef BOOST_MATH_TOOLS_HEADER_DEPRECATED
+ #define BOOST_MATH_TOOLS_HEADER_DEPRECATED
+ 
+-#ifdef _MSC_VER
+-// Expands to "This header is deprecated; use expr instead."
+-#define BOOST_MATH_HEADER_DEPRECATED(expr) __pragma("This header is deprecated; use " expr " instead.")
+-#else // GNU, Clang, Intel, IBM, etc.
++#ifndef BOOST_MATH_STANDALONE
++
++#   include <boost/config/header_deprecated.hpp>
++#   define BOOST_MATH_HEADER_DEPRECATED(expr) BOOST_HEADER_DEPRECATED(expr)
++
++#else
++
++#   ifdef _MSC_VER
+ // Expands to "This header is deprecated; use expr instead."
+-#define BOOST_MATH_HEADER_DEPRECATED(expr) _Pragma("This header is deprecated; use " expr " instead.")
+-#endif
++#       define BOOST_MATH_HEADER_DEPRECATED(expr) __pragma("This header is deprecated; use " expr " instead.")
++#   else // GNU, Clang, Intel, IBM, etc.
++// Expands to "This header is deprecated use expr instead"
++#       define BOOST_MATH_HEADER_DEPRECATED_MESSAGE(expr) _Pragma(#expr)
++#       define BOOST_MATH_HEADER_DEPRECATED(expr) BOOST_MATH_HEADER_DEPRECATED_MESSAGE(message "This header is deprecated use " expr " instead")
++#   endif
++
++#endif // BOOST_MATH_STANDALONE
+ 
+ #endif // BOOST_MATH_TOOLS_HEADER_DEPRECATED
