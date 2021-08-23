@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">Flask-Script</remote-id>
+		<remote-id type="github">smurfix/flask-script</remote-id>
 	</upstream>
 </pkgmetadata>
