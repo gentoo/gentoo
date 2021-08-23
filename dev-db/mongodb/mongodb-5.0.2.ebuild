@@ -21,7 +21,8 @@ SRC_URI="https://fastdl.mongodb.org/src/${MY_P}.tar.gz"
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 -riscv"
-IUSE="debug kerberos lto mongosh ssl +tools"
+CPU_FLAGS="cpu_flags_x86_avx"
+IUSE="debug kerberos lto mongosh ssl +tools ${CPU_FLAGS}"
 
 # https://github.com/mongodb/mongo/wiki/Test-The-Mongodb-Server
 # resmoke needs python packages not yet present in Gentoo
@@ -77,6 +78,13 @@ python_check_deps() {
 }
 
 pkg_pretend() {
+	# Bug 809692
+	if ! use cpu_flags_x86_avx; then
+		eerror "MongoDB 5.0 requires use of the AVX instruction set"
+		eerror "https://docs.mongodb.com/v5.0/administration/production-notes/"
+		die "MongoDB requires AVX"
+	fi
+
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
 		if ver_test "$REPLACING_VERSIONS" -lt 4.4; then
 			ewarn "To upgrade from a version earlier than the 4.4-series, you must"
