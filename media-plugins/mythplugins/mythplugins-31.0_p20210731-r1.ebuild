@@ -1,23 +1,29 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-# Grab only the major version number.
-MAJOR_PV=${PV%%.*}
-
-PYTHON_COMPAT=( python3_{7,8} )
-PYTHON_REQ_USE="xml"
-
-#BACKPORTS="03f44039848bd09444ff4baa8dc158bd61454079"
-MY_P=${P%_p*}
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit python-single-r1 readme.gentoo-r1
 
+# Grab only the major version number.
+MAJOR_PV=$(ver_cut 1)
+
+MY_COMMIT="5824c588db24b4e71a7d94e829e6419f71089297"
+
 DESCRIPTION="Official MythTV plugins"
 HOMEPAGE="https://www.mythtv.org https://github.com/MythTV/mythtv"
-# mythtv and mythplugins are separate builds in the same github MythTV/mythtv repository
-SRC_URI="https://github.com/MythTV/mythtv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+if [[ $(ver_cut 3) == "p" ]] ; then
+	SRC_URI="https://github.com/MythTV/mythtv/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
+	# mythtv and mythplugins are separate builds in the same github MythTV/mythtv repository
+	S="${WORKDIR}/mythtv-${MY_COMMIT}/mythplugins"
+else
+	SRC_URI="https://github.com/MythTV/mythtv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	# mythtv and mythplugins are separate builds in the same github MythTV/mythtv repository
+	SRC_URI="https://github.com/MythTV/mythtv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/mythtv-${PV}/mythplugins"
+fi
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
@@ -98,7 +104,6 @@ RDEPEND="
 	mythnetvision? (
 		${PYTHON_DEPS}
 		dev-python/lxml
-		dev-python/oauth2
 		dev-python/pycurl
 		dev-python/urllib3
 		=media-tv/mythtv-${MAJOR_PV}*[python]
@@ -120,9 +125,6 @@ RDEPEND="
 	xvid? ( media-libs/xvid )
 "
 DEPEND=${RDEPEND}
-
-# mythtv and mythplugins are separate builds in the same github MythTV/mythtv repository
-S="${WORKDIR}/mythtv-${PV}/mythplugins"
 
 DOC_CONTENTS="
 Mythgallery code moved to mythtv and is no longer a plugin in version 31.0.
