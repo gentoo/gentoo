@@ -128,8 +128,8 @@ dev-python/ipython nbconvert notebook
 # Dependencies not keyworded here yet:
 #  - dev-ruby/asciidoctor
 dev-libs/nanomsg doc
-#  - kde-frameworks/bluez-qt
-kde-frameworks/purpose bluetooth
+#  - dev-libs/weston
+gui-libs/gtk wayland
 #  - kde-plasma/bluedevil
 kde-plasma/plasma-meta bluetooth
 #  - media-gfx/nvidia-texture-tools
@@ -138,12 +138,12 @@ media-libs/devil nvtt
 media-libs/libvpx doc
 #  - net-misc/ofono
 media-sound/pulseaudio ofono-headset
-#  - media-libs/vo-amrwbenc, media-libs/libbs2b, dev-libs/libcdio-paranoia,
+#  - media-libs/vo-amrwbenc, media-libs/libbs2b,
 #    media-libs/codec2, media-plugins/frei0r-plugins,
 #    media-libs/kvazaar, media-libs/libilbc,
 #    app-text/tesseract, media-libs/lv2 & media-libs/lilv, media-libs/rubberband,
 #    media-libs/vidstab, media-libs/xvid, media-libs/zimg
-media-video/ffmpeg amrenc bs2b cdio codec2 frei0r kvazaar libilbc libtesseract lv2 rubberband vidstab xvid zimg
+media-video/ffmpeg amrenc bs2b codec2 frei0r kvazaar libilbc libtesseract lv2 rubberband vidstab xvid zimg
 #  - media-libs/libquicktime, media-libs/sdl-gfx
 media-video/mjpegtools quicktime sdlgfx
 #  - net-wireless/iwd, net-misc/ofono
@@ -157,16 +157,9 @@ sys-cluster/slurm ofed
 
 # Yixun Lan <dlan@gentoo.org> (2021-05-24)
 # Dependencies not keyworded, not tested
-dev-libs/libdbusmenu test
-virtual/notification-daemon gnome kde
-media-libs/libcaca doc imlib
-dev-libs/libbytesize test
-sys-libs/libblockdev dmraid escrow
-gnome-base/gvfs bluray cdda mtp ios
-sys-power/upower ios
+virtual/notification-daemon gnome
 net-libs/gnome-online-accounts gnome
-net-libs/libproxy kde
-xfce-extra/tumbler epub ffmpeg odf pdf raw
+xfce-extra/tumbler epub
 xfce-base/xfce4-meta pulseaudio
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
@@ -186,17 +179,6 @@ net-libs/zeromq unwind
 net-mail/dovecot unwind
 x11-base/xorg-server unwind
 x11-base/xwayland unwind
-
-# Alex Fan <alexfanqi@yahoo.com> (2021-07-22)
-# Yixun Lan <dlan@gentoo.org> (2021-05-24)
-# net-misc/networkmanager fails tests on this arch (Bug #807553)
-dev-qt/qtnetwork networkmanager
-net-libs/libproxy networkmanager
-xfce-extra/xfce4-power-manager networkmanager
-
-# Joonas Niilola <juippis@gentoo.org> (2021-01-15)
-# Dependency not keyworded on this arch.
-app-text/enchant voikko
 
 # This doesn't work for (any) riscv yet.
 dev-libs/libpcre2 jit
