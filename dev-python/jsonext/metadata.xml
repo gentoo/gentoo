@@ -11,5 +11,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">jsonext</remote-id>
+		<remote-id type="github">mbr/jsonext</remote-id>
 	</upstream>
 </pkgmetadata>
