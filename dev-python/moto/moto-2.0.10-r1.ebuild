@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 PYTHON_COMPAT=( python3_{8..9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
@@ -21,7 +21,6 @@ RDEPEND="
 	dev-python/cfn-lint[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-3.3.1[${PYTHON_USEDEP}]
 	dev-python/cookies[${PYTHON_USEDEP}]
-	dev-python/dicttoxml[${PYTHON_USEDEP}]
 	>=dev-python/docker-py-2.5.1[${PYTHON_USEDEP}]
 	>=dev-python/idna-2.5[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.10.1[${PYTHON_USEDEP}]
@@ -41,6 +40,7 @@ RDEPEND="
 	>=dev-python/responses-0.9.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.5[${PYTHON_USEDEP}]
 	dev-python/xmltodict[${PYTHON_USEDEP}]
+	>=dev-python/six-1.9[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	dev-python/zipp[${PYTHON_USEDEP}]
 "
@@ -55,20 +55,15 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	# unpin indirect dep on ecdsa that's supposed to workaround pip bugs
+	# unping indirect dep on ecdsa that's supposed to workaround pip
+	# bugs
 	sed -i -e '/ecdsa/s:<0.15::' setup.py || die
 
 	distutils-r1_python_prepare_all
 }
 
 python_test() {
-	local ignore=(
-		# incompatible versions?
-		tests/test_core/test_decorator_calls.py
-		tests/test_s3/test_s3_classdecorator.py
-	)
-
 	# pytest-django causes freezegun try to mangle stuff inside django
 	# which fails when django is not really used
-	epytest -p no:django -m 'not network' ${ignore[@]/#/--ignore }
+	epytest -p no:django -m 'not network'
 }
