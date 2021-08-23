@@ -135,7 +135,7 @@ src_install() {
 	touch "${ED}/var/games/${PN}-scores.raw" || die
 
 	fperms 660 /var/games/${PN}-scores.raw
-	fowners root:gamestat /var/games/${PN}-scores.raw
+	fowners root:gamestat /var/games/${PN}-scores.raw /usr/bin/${PN}
 	fperms g+s /usr/bin/${PN}
 }
 
