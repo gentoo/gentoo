@@ -37,7 +37,7 @@ src_install() {
 
 	insinto /var/lib/moria
 	doins umoria/scores.dat
-	fowners root:gamestat /var/lib/moria/scores.dat
+	fowners root:gamestat /var/lib/moria/scores.dat /usr/bin/${PN}
 	fperms g+w /var/lib/moria/scores.dat
 
 	doman "${FILESDIR}"/${PN}.6
