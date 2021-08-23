@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Some USE-flags that only die-hards don't want:
@@ -7,3 +7,8 @@
 # ncurses:   a nice working console drawing library
 # ssl:       encrypted connections are a nice feature
 USE="readline zlib ncurses ssl"
+
+# disable tmpfiles eclass depending on virtual/tmpfiles, which currently
+# only resolves to systemd-tmpfiles and that one isn't even close to
+# compilation on non-Linux (musl already is a challenge).
+TMPFILES_OPTIONAL=yes_please
