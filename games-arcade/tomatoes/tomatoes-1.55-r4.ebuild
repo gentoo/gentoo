@@ -67,7 +67,7 @@ src_install() {
 	touch "${ED}"/var/games/${PN}/hiscore.lst || die "touch failed"
 
 	fperms 660 /var/games/${PN}/hiscore.lst
-	fowners -R root:gamestat /var/games/${PN}
+	fowners -R root:gamestat /var/games/${PN} /usr/bin/${PN}
 	fperms g+s /usr/bin/${PN}
 
 	insinto /etc/${PN}
