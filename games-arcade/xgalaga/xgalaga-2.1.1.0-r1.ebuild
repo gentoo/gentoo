@@ -60,6 +60,6 @@ src_install() {
 	touch "${ED}"/var/games/${PN}/scores || die
 
 	fperms -R 660 /var/games/${PN}
-	fowners -R root:gamestat /var/games/${PN}
+	fowners -R root:gamestat /var/games/${PN} /usr/bin/{xgalaga,xgal.sndsrv.oss,xgalaga-hyperspace}
 	fperms g+s /usr/bin/{xgalaga,xgal.sndsrv.oss,xgalaga-hyperspace}
 }
