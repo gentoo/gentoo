@@ -61,7 +61,7 @@ src_install() {
 	chmod -R g+rw "${ED}"/${dir}/data/players || die
 
 	fperms -R 660 /opt/${PN}/data
-	fowners -R root:gamestat /opt/${PN}/data
+	fowners -R root:gamestat /opt/${PN}/data /opt/${PN}/jardinains
 	fperms g+s /opt/${PN}/${PN}
 }
 
