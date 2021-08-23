@@ -17,8 +17,6 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/Babel-1[${PYTHON_USEDEP}]
@@ -33,8 +31,9 @@ RDEPEND="
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
 
-python_prepare_all() {
+EPYTEST_DESELECT=(
 	# tries to access things over the network
-	rm tests/test_recaptcha.py || die
-	distutils-r1_python_prepare_all
-}
+	tests/test_recaptcha.py
+	# unpackaged Flask-Uploads
+	tests/test_file.py
+)
