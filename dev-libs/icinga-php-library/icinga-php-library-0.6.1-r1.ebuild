@@ -18,5 +18,6 @@ BDEPEND=""
 
 src_install() {
 	insinto "/usr/share/icinga-php/ipl"
-	doins -r "${S}"/vendor
+	cd "${S}"
+	doins -r *
 }
