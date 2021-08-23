@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 RDEPEND="
 	>=dev-python/aws-xray-sdk-python-0.93[${PYTHON_USEDEP}]
@@ -21,7 +21,6 @@ RDEPEND="
 	dev-python/cfn-lint[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-3.3.1[${PYTHON_USEDEP}]
 	dev-python/cookies[${PYTHON_USEDEP}]
-	dev-python/dicttoxml[${PYTHON_USEDEP}]
 	>=dev-python/docker-py-2.5.1[${PYTHON_USEDEP}]
 	>=dev-python/idna-2.5[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.10.1[${PYTHON_USEDEP}]

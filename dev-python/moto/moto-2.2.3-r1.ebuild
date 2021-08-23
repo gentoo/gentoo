@@ -21,7 +21,6 @@ RDEPEND="
 	dev-python/cfn-lint[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-3.3.1[${PYTHON_USEDEP}]
 	dev-python/cookies[${PYTHON_USEDEP}]
-	dev-python/dicttoxml[${PYTHON_USEDEP}]
 	>=dev-python/docker-py-2.5.1[${PYTHON_USEDEP}]
 	>=dev-python/idna-2.5[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.10.1[${PYTHON_USEDEP}]
