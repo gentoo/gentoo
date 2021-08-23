@@ -21,7 +21,6 @@ RDEPEND="
 	virtual/opengl[abi_x86_32]
 "
 
-
 DIR="/opt/${PN}"
 QA_PREBUILT="${DIR#/}/*"
 
