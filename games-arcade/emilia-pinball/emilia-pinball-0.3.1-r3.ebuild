@@ -71,6 +71,6 @@ src_install() {
 	make_desktop_entry emilia-pinball "Emilia pinball"
 
 	fperms -R 660 /var/games/pinball
-	fowners -R root:gamestat /var/games/pinball
+	fowners -R root:gamestat /usr/bin/pinball /var/games/pinball
 	fperms g+s /usr/bin/pinball
 }
