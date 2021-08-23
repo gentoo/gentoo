@@ -17,7 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="${PYTHON_DEPS}"
+DEPEND="
+	${PYTHON_DEPS}
+	virtual/libelf:=
+"
 RDEPEND="${DEPEND}"
 BDEPEND="sys-devel/flex"
 
