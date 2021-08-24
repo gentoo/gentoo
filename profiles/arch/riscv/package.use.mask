@@ -138,16 +138,10 @@ kde-plasma/plasma-meta bluetooth
 media-libs/devil nvtt
 #  - dev-lang/php
 media-libs/libvpx doc
-#  - dev-cpp/glog, app-text/tesseract, sci-libs/vtk, media-libs/xine-lib
-media-libs/opencv contribsfm glog tesseract vtk xine
+#  - dev-cpp/glog, sci-libs/vtk, media-libs/xine-lib
+media-libs/opencv contribsfm glog vtk xine
 #  - net-misc/ofono
 media-sound/pulseaudio ofono-headset
-#  - media-libs/vo-amrwbenc, media-libs/libbs2b,
-#    media-libs/codec2, media-plugins/frei0r-plugins,
-#    media-libs/kvazaar, media-libs/libilbc,
-#    app-text/tesseract, media-libs/lv2 & media-libs/lilv, media-libs/rubberband,
-#    media-libs/vidstab, media-libs/xvid, media-libs/zimg
-media-video/ffmpeg amrenc bs2b codec2 frei0r kvazaar libilbc libtesseract lv2 rubberband vidstab xvid zimg
 #  - media-libs/libquicktime, media-libs/sdl-gfx
 media-video/mjpegtools quicktime sdlgfx
 #  - net-wireless/iwd, net-misc/ofono
