@@ -309,6 +309,7 @@ src_compile() {
 	if use capi; then
 		cargo cbuild ${args} --target-dir="capi" \
 			--prefix="/usr" --libdir="/usr/$(get_libdir)" \
+			--library-type=cdylib \
 			|| die "cargo cbuild failed"
 	fi
 }
@@ -320,6 +321,7 @@ src_install() {
 	if use capi; then
 		cargo cinstall $args --target-dir="capi" \
 			--prefix="/usr" --libdir="/usr/$(get_libdir)" --destdir="${ED}" \
+			--library-type=cdylib \
 			|| die "cargo cinstall failed"
 	fi
 
