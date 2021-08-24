@@ -18,7 +18,8 @@ IUSE="+audio-notify debug games llvm notification png python qrcode +sound +vide
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	video? ( sound X ) "
 
-BDEPEND="dev-libs/libconfig:="
+BDEPEND="dev-libs/libconfig:=
+	virtual/pkgconfig"
 
 RDEPEND="net-libs/tox:=
 	net-misc/curl
