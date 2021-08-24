@@ -27,7 +27,7 @@ src_prepare() {
 
 src_test() {
 	local my_jobs=$(makeopts_jobs)
-	if ! command -v parallel; then
+	if ! command -v parallel >/dev/null; then
 		my_jobs=1
 	fi
 	bin/bats --tap --jobs "${my_jobs}" test || die "Tests failed"
