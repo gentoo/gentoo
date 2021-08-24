@@ -51,7 +51,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-no-flash-on-session-close.patch" ) # bug 807933
+PATCHES=(
+	"${FILESDIR}/${P}-no-flash-on-session-close.patch" # bug 807933
+	"${FILESDIR}/${P}-dont-close-window-while-split.patch" # bug 808510
+)
 
 src_prepare() {
 	ecm_src_prepare

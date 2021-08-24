@@ -52,6 +52,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-21.04.3-no-flash-on-session-close.patch" # bug 807933
+	"${FILESDIR}/${PN}-21.04.3-dont-close-window-while-split.patch" # bug 808510
 	"${FILESDIR}/${P}-fix-crash-w-blur.patch" # bug 807905, fixed in 21.08.1
 	"${FILESDIR}/${P}-fix-KXmlGUI-toolbars-and-MainWindow-size.patch" # KDE-bugs 430036, 439339
 	"${FILESDIR}/${P}-fix-MainWindow-size-w-o-saved-size.patch" # KDE-bug 437791
