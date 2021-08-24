@@ -26,6 +26,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( drm wayland X )
 	putsurface? ( || ( wayland X ) )
+	putsurface? ( drm )
 	|| ( examples putsurface test-va-api vainfo )
 "
 
