@@ -1,0 +1,37 @@
+From 2799a7a3c2cf87fdc2d0c19a0890acea425091ce Mon Sep 17 00:00:00 2001
+From: Ivan Babrou <github@ivan.computer>
+Date: Tue, 23 Feb 2021 22:27:05 -0800
+Subject: [PATCH] Fix flaky test_cache_last_used_update
+
+Sometimes time moves slowly and strict comparison is not enough:
+
+```
+>       assert now < node_cache_item.last_used < time.time()
+E       assert 1614147958.869299 < 1614147958.869299
+E        +  where 1614147958.869299 = <parso.cache._NodeCacheItem object at 0x10456fe80>.last_used
+E        +  and   1614147958.869299 = <built-in function time>()
+E        +    where <built-in function time> = time.time
+
+test/test_cache.py:149: AssertionError
+```
+
+In particular, macOS timings can be a bit coarse.
+
+The test failure is from Apple Silicon M1.
+---
+ test/test_cache.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/test_cache.py b/test/test_cache.py
+index bfdbaf5..f4291c2 100644
+--- a/test/test_cache.py
++++ b/test/test_cache.py
+@@ -146,7 +146,7 @@ def test_cache_last_used_update(diff_cache, use_file_io):
+         parse('somecode2', cache=True, path=p, diff_cache=diff_cache)
+ 
+     node_cache_item = next(iter(parser_cache.values()))[p]
+-    assert now < node_cache_item.last_used < time.time()
++    assert now <= node_cache_item.last_used <= time.time()
+ 
+ 
+ @skip_pypy

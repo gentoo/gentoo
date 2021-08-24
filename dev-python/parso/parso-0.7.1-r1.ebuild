@@ -18,6 +18,11 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${P}-flaky-test.patch
+	"${FILESDIR}"/${PN}-0.8.2-flaky-test.patch
+)
+
 python_test() {
 	local deselect=()
 	[[ ${EPYTHON} == python3.10 ]] && deselect+=(
