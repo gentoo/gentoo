@@ -741,7 +741,7 @@ linux-mod_src_install() {
 
 		einfo "Installing ${modulename} module"
 		cd "${objdir}" || die "${objdir} does not exist"
-		insinto /lib/modules/${KV_FULL}/${libdir}
+		insinto "${INSTALL_MOD_PATH}"/lib/modules/${KV_FULL}/${libdir}
 		doins ${modulename}.${KV_OBJ} || die "doins ${modulename}.${KV_OBJ} failed"
 		cd "${OLDPWD}"
 
