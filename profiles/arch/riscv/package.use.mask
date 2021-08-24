@@ -69,6 +69,8 @@ dev-python/ipython qt5
 # These USE flags depend on java, not (sustainably) supported yet
 #  - dev-tex/pdfannotextractor
 app-text/texlive pdfannotextractor
+#  - JDK
+media-libs/rubberband jni
 #  - dev-java/jackcess
 sci-libs/gdal mdb
 
