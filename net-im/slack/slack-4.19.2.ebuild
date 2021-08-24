@@ -49,9 +49,8 @@ QA_PREBUILT="/opt/slack/chrome-sandbox
 	/opt/slack/libffmpeg.so
 	/opt/slack/libGLESv2.so
 	/opt/slack/libvk_swiftshader.so
-	/opt/slack/libvulkan.so
-	/opt/slack/resources/app.asar.unpacked/node_modules/*/*/build/Release/*.node
-	/opt/slack/resources/app.asar.unpacked/node_modules/*/build/Release/*.node
+	/opt/slack/libvulkan.so*
+	/opt/slack/resources/app.asar.unpacked/node_modules/*
 	/opt/slack/slack
 	/opt/slack/swiftshader/libEGL.so
 	/opt/slack/swiftshader/libGLESv2.so"
