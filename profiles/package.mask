@@ -320,12 +320,6 @@ app-portage/deltup
 # No revdeps. Removal on 2021-08-26. Bug #752408.
 app-text/lout
 
-# David Seifert <soap@gentoo.org> (2021-07-26)
-# Fails to build with GCC 11, terrible codebase, tests fail with
-# modern ImageMagick, last release over 12 years ago.
-# Bug #725436, #786915, removal in 30 days.
-sci-electronics/drawtiming
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-07-12)
 # Version 3.3.0 suffers from ridiculously high CPU usage, this version has
 # therefore been retracted upstream.
