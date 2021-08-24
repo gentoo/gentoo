@@ -40,10 +40,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="test" #315725
 
-PATCHES=(
-	"${FILESDIR}/${P}-autoconf-2.70.patch" #751190
-)
-
 src_prepare() {
 	# Remove -Werror bug #528354
 	sed -i -e 's/-Werror\([^=]\)/\1/g' configure.ac
@@ -91,7 +87,15 @@ src_install() {
 	systemd_dounit "${FILESDIR}/${PN}d.service"
 
 	insinto /etc/varnish/
-	doins lib/libvmod_std/vmod_std.vcc
+	doins vmod/vmod_vtc.vcc
+	doins vmod/vmod_directors.vcc
+	doins vmod/vmod_blob.vcc
+	doins vmod/vmod_proxy.vcc
+	doins vmod/vmod_debug.vcc
+	doins vmod/vmod_std.vcc
+	doins vmod/vmod_unix.vcc
+	doins vmod/vmod_cookie.vcc
+	doins vmod/vmod_purge.vcc
 	doins etc/example.vcl
 
 	dodoc README.rst
