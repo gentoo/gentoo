@@ -1,0 +1,38 @@
+From 562128212376305bac8edd10d80c24f1223f1870 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Thu, 19 Aug 2021 12:03:39 +0200
+Subject: [PATCH plocate] meson: use feature option for libiouring
+
+source-based distributions would prefer to allow this option to be
+disabled without a hack, regardless of is libiouring installed or not,
+and meson already supports feature options for this purpose.
+---
+ meson.build       | 2 +-
+ meson_options.txt | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 6fb0f74..fb79e3f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -10,7 +10,7 @@ add_project_arguments('-DPACKAGE_VERSION="' + meson.project_version() + '"', lan
+ add_project_arguments('-DPACKAGE_BUGREPORT="steinar+plocate@gunderson.no"', language: 'cpp')
+ 
+ cxx = meson.get_compiler('cpp')
+-uringdep = dependency('liburing', required: false)
++uringdep = dependency('liburing', required: get_option('use_libiouring'))
+ zstddep = dependency('libzstd')
+ threaddep = dependency('threads')
+ atomicdep = cxx.find_library('atomic', required: false)
+diff --git a/meson_options.txt b/meson_options.txt
+index 8ac13c5..9c90bf0 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -3,3 +3,4 @@ option('install_systemd', type: 'boolean', value: true, description: 'Install sy
+ option('systemunitdir', type: 'string', description: 'Where to install systemd units to (default: autodetect)')
+ option('locategroup', type: 'string', value: 'plocate', description: 'Group that the install script will use for the .db file')
+ option('updatedb_progname', type: 'string', value: 'updatedb', description: 'Binary name of updatedb')
++option('use_libiouring', type: 'feature', value: 'auto', description: 'Enable libiouring dependency (default: autodetect)')
+-- 
+2.31.1
+
