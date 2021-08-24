@@ -32,6 +32,28 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolic <jakov.smolic@sartura.hr> (2021-08-24)
+# Discontinued development, upstream shifted to LXQt,
+# unmaintained in Gentoo.
+# Some of the avaliable alternatives in Gentoo are
+# LXQt, Xfce, MATE or Cinnamon desktop environments.
+# Those also offer replacements for individual
+# LXDE components.
+# Removal in 30 days. Bug #810091
+media-sound/lxmusic
+lxde-base/lxappearance
+lxde-base/lxappearance-obconf
+lxde-base/lxde-common
+lxde-base/lxde-icon-theme
+lxde-base/lxde-meta
+lxde-base/lxinput
+lxde-base/lxlauncher
+lxde-base/lxpanel
+lxde-base/lxrandr
+lxde-base/lxsession
+lxde-base/lxtask
+lxde-base/lxterminal
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2021-08-20)
 # Inactive upstream.
 # Fully superseded by dev-python/dnspython. All reverse dependencies support
