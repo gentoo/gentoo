@@ -40,6 +40,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="test" #315725
 
+PATCHES=(
+	"${FILESDIR}/varnish-6.5.1-autoconf-2.70.patch" #751190
+)
+
 src_prepare() {
 	# Remove -Werror bug #528354
 	sed -i -e 's/-Werror\([^=]\)/\1/g' configure.ac
@@ -49,16 +53,17 @@ src_prepare() {
 	# the original location
 	ln -sf ../varnish.m4 m4/varnish.m4
 
-	eapply_user
-
+	default
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		$(use_enable static-libs static) \
-		$(use_enable jit pcre-jit ) \
+	local myeconfargs=(
+		$(use_enable static-libs static)
+		$(use_enable jit pcre-jit)
 		$(use_with jemalloc)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
