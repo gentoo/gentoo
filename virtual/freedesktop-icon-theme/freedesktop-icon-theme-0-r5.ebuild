@@ -10,7 +10,6 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~a
 RDEPEND="|| (
 	x11-themes/adwaita-icon-theme
 	x11-themes/faenza-icon-theme
-	lxde-base/lxde-icon-theme
 	x11-themes/tango-icon-theme
 	kde-frameworks/breeze-icons
 	kde-frameworks/oxygen-icons
