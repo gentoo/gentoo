@@ -74,6 +74,11 @@ src_prepare() {
 	# libvpx source files aren't included in the repository
 	sed -i '/include(cmake\/libvpx.cmake)/d' CMakeLists.txt || die
 
+	# libopenh264 has GENERATED files with yasm that aren't excluded by
+	# EXCLUDE_FROM_ALL, and I have no clue how to avoid this.
+	# These source files aren't used with system-openh264, anyway.
+	sed -i '/include(cmake\/libopenh264.cmake)/d' CMakeLists.txt || die
+
 	cmake_src_prepare
 }
 
