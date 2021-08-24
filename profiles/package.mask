@@ -307,7 +307,6 @@ net-im/minbif
 # Removal on 2021-08-26. bug #787113, bug #735714, bug #657510.
 dev-cpp/libxsd-frontend
 dev-cpp/libcutl
-dev-util/build
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-07-12)
 # Version 3.3.0 suffers from ridiculously high CPU usage, this version has
