@@ -246,7 +246,7 @@ pkg_postinst() {
 		elog "To enable seccomp in a stricter mode, please modify:"
 		elog "- /etc/conf.d/chronyd for OpenRC"
 		elog "- systemctl edit chronyd for systemd"
-		elog "By default, we now use -F 2 which is a baseline/minimal filter."
 		elog "to use -F 1 or -F -1 instead of -F 2 (see man chronyd)"
+		elog "By default, we now use -F 2 which is a baseline/minimal filter."
 	fi
 }
