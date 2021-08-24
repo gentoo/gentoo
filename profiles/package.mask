@@ -326,13 +326,6 @@ app-text/lout
 # Bug #725436, #786915, removal in 30 days.
 sci-electronics/drawtiming
 
-# Sam James <sam@gentoo.org> (2021-07-25)
-# No activity upstream since 2014. Fails to build with GCC 11.
-# Only one reverse dependency (media-libs/openexr_ctl) which
-# is uninstallable.
-# Removal on 2021-08-25. bug #789792, bug #715298.
-media-libs/openexr_ctl
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-07-12)
 # Version 3.3.0 suffers from ridiculously high CPU usage, this version has
 # therefore been retracted upstream.
