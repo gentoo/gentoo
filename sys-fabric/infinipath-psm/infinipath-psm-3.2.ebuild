@@ -13,7 +13,7 @@ OFED_SRC_SNAPSHOT="1"
 inherit epatch openib udev
 
 DESCRIPTION="OpenIB userspace driver for the PathScale InfiniBand HCAs"
-KEYWORDS="amd64 x86 ~amd64-linux"
+KEYWORDS="amd64 -riscv x86 ~amd64-linux"
 
 RDEPEND="sys-fabric/libibverbs:${SLOT}"
 DEPEND="${RDEPEND}
