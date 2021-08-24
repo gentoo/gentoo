@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 inherit distutils-r1
 
 DESCRIPTION="Minimal pure-CSS Sphinx theme using the LV2 plugin documentation style"
@@ -12,6 +12,6 @@ SRC_URI="https://gitlab.com/lv2/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86"
 
 S="${WORKDIR}/${PN}-v${PV}"
