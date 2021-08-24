@@ -3,15 +3,12 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
-inherit distutils-r1
+PYTHON_COMPAT=( python3_{8..10} )
+inherit distutils-r1 multiprocessing
 
 DESCRIPTION="Optional static typing for Python"
 HOMEPAGE="http://www.mypy-lang.org/"
-TYPESHED_COMMIT="add4d92f050fb11d3901c6f0ee579a122d4a7a98"
-SRC_URI="
-	https://github.com/python/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-"
+SRC_URI="https://github.com/python/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -41,18 +38,28 @@ BDEPEND="
 distutils_enable_sphinx docs/source dev-python/sphinx_rtd_theme
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/python/mypy/pull/11017
+	"${FILESDIR}/${P}-py3.10-tests.patch"
+)
+
 # this requires packaging a lot of type stubs
 export MYPY_USE_MYPYC=0
 
 python_test() {
-	local deselect=(
-		# TODO
+	local EPYTEST_DESELECT=(
+		# Fails with pytest-xdist 2.3.0
+		# https://github.com/python/mypy/issues/11019
 		mypy/test/teststubtest.py
+	)
+
+	[[ "${EPYTHON}" == "python3.10" ]] && EPYTEST_DESELECT+=(
+		# https://github.com/python/mypy/issues/11018
+		mypyc/test/test_commandline.py::TestCommandLine::testErrorOutput
 	)
 
 	# Some mypy/test/testcmdline.py::PythonCmdlineSuite tests
 	# fail with high COLUMNS values
 	local -x COLUMNS=80
-	epytest ${deselect[@]/#/--deselect } \
-		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
+	epytest -n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
 }
