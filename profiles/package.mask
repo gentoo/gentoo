@@ -350,12 +350,6 @@ dev-java/jsr101
 # Removal on 2021-08-06.  Bug #803212.
 sys-kernel/bliss-kernel-bin
 
-# Conrad Kostecki <conikost@gentoo.org> (2021-07-23)
-# Outdated and multiple bugs open.
-# Other alternatives in tree available.
-# Removal in 30 days (2021-08-22)
-www-servers/resin
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-07-12)
 # Version 3.3.0 suffers from ridiculously high CPU usage, this version has
 # therefore been retracted upstream.
