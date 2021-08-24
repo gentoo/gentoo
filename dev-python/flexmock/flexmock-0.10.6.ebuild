@@ -21,6 +21,10 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-with_args-sys.stdout.write.patch"
 )
 
+python_test() {
+	epytest -p no:flaky
+}
+
 python_install_all() {
 	distutils-r1_python_install_all
 	dodoc -r docs
