@@ -8,7 +8,6 @@
 	<use>
 		<flag name="osggraph">Enable the new work-in-progress 3D engine using <pkg>dev-games/openscenegraph</pkg></flag>
 		<flag name="webstats">Enable support for sending racing statistics to a web server (experimental)</flag>
-		<flag name="xrandr">Enable support for the X xrandr extension</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">speed-dreams</remote-id>
