@@ -20,7 +20,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
-	>dev-lang/crystal-0.11.1[yaml]
+	>dev-lang/crystal-0.11.1
+	dev-libs/libyaml
 "
 RDEPEND="${DEPEND}"
 
