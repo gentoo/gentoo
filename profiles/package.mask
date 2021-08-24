@@ -356,11 +356,6 @@ sys-kernel/bliss-kernel-bin
 # Removal in 30 days (2021-08-22)
 www-servers/resin
 
-# Alfredo Tupone <tupone@gentoo.org> (2021-07-23)
-# Requirements conflicts so it is not buildable
-# No revdep. Retire in 30 days (2021-08-22)
-dev-ml/cstruct
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-07-12)
 # Version 3.3.0 suffers from ridiculously high CPU usage, this version has
 # therefore been retracted upstream.
