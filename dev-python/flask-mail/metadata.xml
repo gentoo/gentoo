@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">Flask-Mail</remote-id>
+		<remote-id type="github">mattupstate/flask-mail</remote-id>
 	</upstream>
 </pkgmetadata>
