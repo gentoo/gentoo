@@ -8,6 +8,10 @@ inherit go-module systemd
 DESCRIPTION="Official golang implementation of the Energi Core"
 HOMEPAGE="https://www.energi.world/"
 
+PATCHES=(
+	"${FILESDIR}/${PV}-tidy.patch"
+)
+
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/energicryptocurrency/${PN}.git"
 	EGIT_SUBMODULES=()
