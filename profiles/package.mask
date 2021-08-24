@@ -296,11 +296,6 @@ media-sound/tapestrea
 # bug #793020, bug #692976, bug #741600, bug #703948, bug #674334.
 sci-misc/tango
 
-# Sam James <sam@gentoo.org> (2021-07-26)
-# Fails to build with GCC 11.
-# Removal on 2021-08-26. bug #788577.
-net-im/minbif
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-07-12)
 # Version 3.3.0 suffers from ridiculously high CPU usage, this version has
 # therefore been retracted upstream.
