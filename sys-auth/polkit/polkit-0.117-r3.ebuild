@@ -11,7 +11,7 @@ SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~mips ppc64 ~riscv ~s390 x86"
+KEYWORDS="~alpha ~amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 sparc ~x86"
 IUSE="elogind examples gtk +introspection kde nls pam selinux systemd test"
 RESTRICT="!test? ( test )"
 
@@ -32,7 +32,7 @@ BDEPEND="
 	introspection? ( dev-libs/gobject-introspection )
 "
 DEPEND="
-	dev-lang/spidermonkey:78[-debug]
+	dev-lang/spidermonkey:68[-debug]
 	dev-libs/glib:2
 	dev-libs/expat
 	elogind? ( sys-auth/elogind )
@@ -48,10 +48,7 @@ RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-policykit )
 "
 PDEPEND="
-	gtk? ( || (
-		>=gnome-extra/polkit-gnome-0.105
-		>=lxde-base/lxsession-0.5.2
-	) )
+	gtk? ( >=gnome-extra/polkit-gnome-0.105 )
 	kde? ( kde-plasma/polkit-kde-agent )
 "
 

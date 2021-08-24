@@ -48,10 +48,7 @@ RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-policykit )
 "
 PDEPEND="
-	gtk? ( || (
-		>=gnome-extra/polkit-gnome-0.105
-		>=lxde-base/lxsession-0.5.2
-	) )
+	gtk? ( >=gnome-extra/polkit-gnome-0.105 )
 	kde? ( kde-plasma/polkit-kde-agent )
 "
 
