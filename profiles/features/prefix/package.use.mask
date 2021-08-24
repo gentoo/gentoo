@@ -4,7 +4,6 @@
 # Sam James <sam@gentoo.org> (2021-01-27)
 # Requires PAM
 gnome-base/gdm elogind fprint
-lxde-base/lxdm elogind
 
 # Fabian Groffen <grobian@gentoo.org> (2020-10-15)
 # Requires PAM
