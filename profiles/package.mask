@@ -315,11 +315,6 @@ dev-util/build
 app-portage/getdelta
 app-portage/deltup
 
-# John Helmert III <ajak@gentoo.org> (2021-07-26)
-# Maintained needed, open security bug, uninterested upstream.
-# No revdeps. Removal on 2021-08-26. Bug #752408.
-app-text/lout
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-07-12)
 # Version 3.3.0 suffers from ridiculously high CPU usage, this version has
 # therefore been retracted upstream.
