@@ -8,6 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">curtsies</remote-id>
-    <remote-id type="github">thomasballinger/curtsies</remote-id>
+    <remote-id type="github">bpython/curtsies</remote-id>
   </upstream>
 </pkgmetadata>
