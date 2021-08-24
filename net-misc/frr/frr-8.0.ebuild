@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	snmp? ( net-analyzer/net-snmp:= )
 "
 BDEPEND="
-	dev-util/clippy
+	>=dev-util/clippy-${PV}
 	sys-devel/flex
 	virtual/yacc
 	doc? ( dev-python/sphinx )
