@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	new-login? (
 		gdm? ( gnome-base/gdm )
-		!gdm? ( || ( x11-misc/lightdm lxde-base/lxdm ) )
+		!gdm? ( x11-misc/lightdm )
 		)
 	opengl? (
 		virtual/glu
