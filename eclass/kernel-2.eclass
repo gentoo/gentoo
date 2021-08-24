@@ -583,6 +583,7 @@ if [[ ${ETYPE} == sources ]]; then
 	[[ ${EAPI} == 6 ]] && DEPEND="!build? ( sys-apps/sed )" ||
 	BDEPEND="!build? ( sys-apps/sed )"
 	RDEPEND="!build? (
+		app-arch/cpio
 		dev-lang/perl
 		sys-devel/bc
 		sys-devel/bison
