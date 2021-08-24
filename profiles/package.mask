@@ -309,11 +309,6 @@ dev-cpp/libxsd-frontend
 dev-cpp/libcutl
 dev-util/build
 
-# John Helmert III <ajak@gentoo.org> (2021-07-26)
-# Open security bug, service backing it seems to be dead, making these
-# packages useless. Old EAPIs. Removal on 2021-08-26. Bug #630814
-app-portage/getdelta
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-07-12)
 # Version 3.3.0 suffers from ridiculously high CPU usage, this version has
 # therefore been retracted upstream.
