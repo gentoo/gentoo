@@ -333,12 +333,6 @@ sci-electronics/drawtiming
 # Removal on 2021-08-25. bug #789792, bug #715298.
 media-libs/openexr_ctl
 
-# Michał Górny <mgorny@gentoo.org> (2021-07-25)
-# Conflicts with dev-python/pyxdg.  Upstream is unwilling to resolve
-# this.  The only revdep has been patched to use pyxdg.
-# Removal on 2021-08-24.  Bug #804127.
-dev-python/xdg
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-07-12)
 # Version 3.3.0 suffers from ridiculously high CPU usage, this version has
 # therefore been retracted upstream.
