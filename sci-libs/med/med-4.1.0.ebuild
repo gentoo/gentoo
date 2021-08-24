@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 FORTRAN_NEEDED=fortran
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake fortran-2 python-single-r1
 
@@ -30,9 +30,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="python? ( >=dev-lang/swig-3.0.8 )"
 
+#	"${FILESDIR}/${P}-0003-fix-hdf5-version-check.patch"
 PATCHES=(
 	"${FILESDIR}/${P}-0001-Gentoo-specific-Adjust-install-path-for-build-dir.patch"
 	"${FILESDIR}/${P}-0002-Re-add-option-for-building-Fortran-library.patch"
+	"${FILESDIR}/${P}-0003-build-against-hdf5-1.12.patch"
 )
 
 DOCS=( AUTHORS ChangeLog NEWS README README.CMAKE TODO )
