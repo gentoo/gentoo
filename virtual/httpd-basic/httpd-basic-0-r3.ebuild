@@ -19,7 +19,6 @@ RDEPEND="
 		www-servers/hiawatha
 		www-servers/monkeyd
 		www-servers/nginx
-		www-servers/resin
 		www-servers/thttpd
 		www-servers/tomcat
 	)
