@@ -7,8 +7,3 @@
 # ncurses:   a nice working console drawing library
 # ssl:       encrypted connections are a nice feature
 USE="readline zlib ncurses ssl"
-
-# disable tmpfiles eclass depending on virtual/tmpfiles, which currently
-# only resolves to systemd-tmpfiles and that one isn't even close to
-# compilation on non-Linux (musl already is a challenge).
-TMPFILES_OPTIONAL=yes_please
