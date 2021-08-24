@@ -62,7 +62,6 @@ src_compile() {
 		pushd "python" || die
 		python_foreach_impl distutils-r1_python_compile
 		popd || die
-		python_compile_all
 	fi
 }
 
