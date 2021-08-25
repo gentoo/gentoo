@@ -14,7 +14,7 @@ HOMEPAGE="http://gtk2-perl.sf.net/ https://metacpan.org/release/Gtk2-GladeXML"
 
 SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="~alpha ~amd64 ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~ppc64 ~x86"
 
 RDEPEND="x11-libs/gtk+:2
 	gnome-base/libglade:2.0
