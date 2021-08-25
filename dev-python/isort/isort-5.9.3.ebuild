@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="A python utility/library to sort imports"
@@ -51,9 +51,9 @@ python_test() {
 		popd >/dev/null || die
 	done
 
-	local deselect=(
+	local EPYTEST_IGNORE=(
 		# Excluded from upstream's test script
 		tests/unit/test_deprecated_finders.py
 	)
-	epytest tests/unit ${deselect[@]/#/--deselect }
+	epytest tests/unit
 }
