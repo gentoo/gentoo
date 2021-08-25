@@ -3,8 +3,7 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=bdepend
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 
 inherit distutils-r1
 
@@ -22,5 +21,15 @@ RDEPEND="
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? ( $(python_gen_cond_dep '
+		dev-python/numpy[${PYTHON_USEDEP}]
+		' 'python*' )
+	)
+"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-py3.10.patch"
+)
 
 distutils_enable_tests nose
