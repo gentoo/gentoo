@@ -6,11 +6,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-08-24)
-# Needs sci-libs/hdf5[mpi], which is currently masked.
-# Mask until hdf5 builds with MPI support.
-sci-libs/med mpi
-
 # Marek Szuba <marecki@gentoo.org> (2021-07-14)
 # Even on a clean install, 8 phdf5 tests fail (Bug #808612)
 # Mask for further study.
