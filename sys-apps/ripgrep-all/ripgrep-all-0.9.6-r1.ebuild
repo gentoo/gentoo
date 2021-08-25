@@ -5,6 +5,8 @@
 
 EAPI=7
 
+inherit optfeature
+
 CRATES="
 	addr2line-0.12.0
 	adler32-1.0.4
@@ -182,10 +184,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	app-text/pandoc
-	app-text/poppler
+	app-arch/xz-utils
 	sys-apps/ripgrep
-	media-video/ffmpeg
 "
 DEPEND="${RDEPEND}"
 
@@ -193,3 +193,9 @@ QA_FLAGS_IGNORED="
 	usr/bin/rga
 	usr/bin/rga-preproc
 "
+
+pkg_postinst() {
+	optfeature "pandoc support" app-text/pandoc
+	optfeature "pdf support" app-text/poppler
+	optfeature "media support" media-video/ffmpeg
+}
