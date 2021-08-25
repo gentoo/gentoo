@@ -9,7 +9,7 @@ inherit multilib python-r1 toolchain-funcs bash-completion-r1
 
 EXTRAS_VER="1.37"
 
-IUSE="audit pam split-usr"
+IUSE="audit pam split-usr setools"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DESCRIPTION="SELinux core utilities"
@@ -38,9 +38,9 @@ DEPEND=">=sys-libs/libselinux-${PV}:=[python,${PYTHON_USEDEP}]
 	>=sys-libs/libsemanage-${PV}:=[python(+),${PYTHON_USEDEP}]
 	>=sys-libs/libsepol-${PV}:=
 	sys-libs/libcap-ng:=
-	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
 	audit? ( >=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}] )
 	pam? ( sys-libs/pam:= )
+	setools? ( >=app-admin/setools-4.2.0[${PYTHON_USEDEP}] )
 	${PYTHON_DEPS}"
 
 # Avoid dependency loop in the cross-compile case, bug #755173
