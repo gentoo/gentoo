@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
 
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="A powerful declarative parser for binary data"
@@ -25,9 +25,9 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-python_test() {
-	epytest --ignore tests/test_benchmarks.py
-}
+EPYTEST_IGNORE=(
+	tests/test_benchmarks.py
+)
 
 pkg_postinst() {
 	ewarn "Version 2.10.x has significant API and implementation changes from"
