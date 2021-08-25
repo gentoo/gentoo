@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit distutils-r1
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Python module for calculations with uncertainties"
 HOMEPAGE="https://pythonhosted.org/uncertainties/"
@@ -15,13 +15,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
-RDEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
-	dev-python/future[${PYTHON_USEDEP}]
-"
-DEPEND="${RDEPEND}"
-BDEPEND="
+RDEPEND="dev-python/future[${PYTHON_USEDEP}]"
+BDEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	test? (	dev-python/numpy[${PYTHON_USEDEP}] )
 "
 
 distutils_enable_tests nose
@@ -33,4 +30,8 @@ python_compile_all() {
 python_install_all() {
 	use doc && local HTML_DOCS=( build/sphinx/html/. )
 	distutils-r1_python_install_all
+}
+
+pkg_postinst() {
+	optfeature "numpy support" dev-python/numpy
 }
