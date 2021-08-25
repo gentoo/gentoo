@@ -3,8 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7..9} )
-DISTUTILS_USE_SETUPTOOLS="rdepend"
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -41,8 +40,10 @@ python_prepare_all() {
 }
 
 python_test() {
-	# Disable eradicate until it is fixed:
-	# https://github.com/klen/pylama/issues/190
-	pytest -vv tests --deselect tests/test_linters.py::test_eradicate \
-		|| die "Tests failed with ${EPYTHON}"
+	local EPYTEST_DESELECT=(
+		# Disable eradicate until it is fixed:
+		# https://github.com/klen/pylama/issues/190
+		tests/test_linters.py::test_eradicate
+	)
+	epytest tests
 }
