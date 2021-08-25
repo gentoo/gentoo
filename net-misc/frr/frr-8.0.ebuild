@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit autotools pam python-single-r1 systemd
+inherit autotools optfeature pam python-single-r1 systemd
 
 DESCRIPTION="The FRRouting Protocol Suite"
 HOMEPAGE="https://frrouting.org/"
@@ -23,7 +23,6 @@ COMMON_DEPEND="
 	${PYTHON_DEPS}
 	acct-user/frr
 	dev-libs/json-c:0=
-	net-dns/c-ares:=
 	>=net-libs/libyang-2.0.0
 	sys-libs/libcap
 	sys-libs/readline:0=
@@ -34,16 +33,19 @@ COMMON_DEPEND="
 	rpki? ( >=net-libs/rtrlib-0.6.3[ssh] )
 	snmp? ( net-analyzer/net-snmp:= )
 "
+
 BDEPEND="
-	>=dev-util/clippy-${PV}
+	~dev-util/clippy-"${PV}"
 	sys-devel/flex
 	virtual/yacc
 	doc? ( dev-python/sphinx )
 "
+
 DEPEND="
 	${COMMON_DEPEND}
 	test? ( $(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]') )
 "
+
 RDEPEND="
 	${COMMON_DEPEND}
 	$(python_gen_cond_dep 'dev-python/ipaddr[${PYTHON_USEDEP}]')
@@ -52,7 +54,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.5-ipctl-forwarding.patch
-	"${FILESDIR}"/${P}-c-ares.patch
+	"${FILESDIR}/${P}-c-ares-vtysh.patch"
 )
 
 src_prepare() {
@@ -148,4 +150,8 @@ src_install() {
 
 	# Conflict files, installed by net-libs/libsmi, bug #758383
 	rm "${ED}"/usr/share/yang/ietf-interfaces.yang || die
+}
+
+pkg_postinst() {
+	optfeature "dns" net-dns/c-ares
 }

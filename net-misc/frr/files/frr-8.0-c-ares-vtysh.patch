@@ -1,4 +1,5 @@
-https://bugs.gentoo.org/809728
+diff --git a/lib/subdir.am b/lib/subdir.am
+index 75f3d91b9..05910349e 100644
 --- a/lib/subdir.am
 +++ b/lib/subdir.am
 @@ -144,7 +144,6 @@ vtysh_scan += \
