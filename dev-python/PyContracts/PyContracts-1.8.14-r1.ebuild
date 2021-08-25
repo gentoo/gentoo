@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Declare constraints on function parameters and return values"
 HOMEPAGE="https://andreacensi.github.com/contracts/ https://pypi.org/project/PyContracts/"
@@ -33,3 +33,7 @@ PATCHES=(
 )
 
 distutils_enable_tests nose
+
+pkg_postinst() {
+	optfeature "constraints on numpy arrays" dev-python/numpy
+}
