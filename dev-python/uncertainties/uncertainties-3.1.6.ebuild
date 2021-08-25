@@ -13,24 +13,14 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc"
 
 RDEPEND="dev-python/future[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (	dev-python/numpy[${PYTHON_USEDEP}] )
 "
 
 distutils_enable_tests nose
-
-python_compile_all() {
-	use doc && "${PYTHON}" setup.py build_sphinx
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( build/sphinx/html/. )
-	distutils-r1_python_install_all
-}
+distutils_enable_sphinx doc --no-autodoc
 
 pkg_postinst() {
 	optfeature "numpy support" dev-python/numpy
