@@ -67,6 +67,7 @@ DEPEND="${CDEPEND}
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/mpi.h
 	/usr/include/openmpi/ompi/mpi/java/mpiJava.h
+	/usr/include/openmpi/mpiext/mpiext_cuda_c.h
 )
 
 pkg_setup() {
