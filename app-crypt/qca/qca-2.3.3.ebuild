@@ -17,7 +17,7 @@ IUSE="botan debug doc examples gcrypt gpg logger nss pkcs11 sasl softstore +ssl 
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-qt/qtcore:5
+	>=dev-qt/qtcore-5.14:5
 	botan? ( dev-libs/botan:= )
 	gcrypt? ( dev-libs/libgcrypt:= )
 	gpg? ( app-crypt/gnupg )
