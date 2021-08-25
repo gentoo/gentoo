@@ -49,7 +49,7 @@ CDEPEND="
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.14[profiler] )
 	opencl? ( virtual/opencl )
 	fftw? ( sci-libs/fftw:3.0 )
-	hwloc? ( sys-apps/hwloc )
+	hwloc? ( sys-apps/hwloc:= )
 	lapack? ( virtual/lapack )
 	lmfit? ( sci-libs/lmfit )
 	mkl? ( sci-libs/mkl )
