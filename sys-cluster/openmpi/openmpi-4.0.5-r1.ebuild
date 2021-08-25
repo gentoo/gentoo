@@ -59,10 +59,10 @@ CDEPEND="
 	openmpi_ofed_features_rdmacm? ( || ( sys-cluster/rdma-core sys-fabric/librdmacm:* ) )"
 
 RDEPEND="${CDEPEND}
-	java? ( >=virtual/jre-1.6 )"
+	java? ( >=virtual/jre-1.8:* )"
 
 DEPEND="${CDEPEND}
-	java? ( >=virtual/jdk-1.6 )"
+	java? ( >=virtual/jdk-1.8:* )"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/mpi.h
