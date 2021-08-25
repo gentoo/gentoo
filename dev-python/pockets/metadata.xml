@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">pockets</remote-id>
+    <remote-id type="github">RobRuana/pockets</remote-id>
   </upstream>
 </pkgmetadata>
