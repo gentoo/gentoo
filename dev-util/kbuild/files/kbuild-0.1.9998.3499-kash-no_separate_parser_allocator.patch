@@ -1,0 +1,11 @@
+--- kbuild-0.1.9998.3499/src/kash/Makefile.kmk
++++ kbuild-0.1.9998.3499/src/kash/Makefile.kmk
+@@ -35,7 +35,7 @@
+ kash_TEMPLATE = BIN-THREADED
+ kash_NAME = kmk_ash
+ kash_ASTOOL = YASM
+-kash_DEFS = lint SHELL SMALL KASH_SEPARATE_PARSER_ALLOCATOR
++kash_DEFS = lint SHELL SMALL
+ if "$(KBUILD_TARGET)" != "win" || defined(KASH_WIN_FORKED_MODE)
+ kash_DEFS += SH_FORKED_MODE
+ else
