@@ -11,7 +11,7 @@ inherit distutils-r1
 COMMIT="777724c8eabaf76f6d0c5e4837c982d110509b2e"
 
 DESCRIPTION="Collection of helpful Python tools"
-HOMEPAGE="https://pypi.org/project/pockets/"
+HOMEPAGE="https://pockets.readthedocs.io/ https://pypi.org/project/pockets/"
 SRC_URI="
 	https://github.com/RobRuana/pockets/archive/${COMMIT}.tar.gz
 		-> ${P}.gh.tar.gz
