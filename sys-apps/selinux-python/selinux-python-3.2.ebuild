@@ -7,7 +7,7 @@ PYTHON_REQ_USE="xml"
 
 inherit python-r1 toolchain-funcs
 
-IUSE="test"
+IUSE="test setools"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -29,8 +29,8 @@ SLOT="0"
 RDEPEND=">=sys-libs/libselinux-${PV}:=[python]
 	>=sys-libs/libsemanage-${PV}:=[python(+)]
 	>=sys-libs/libsepol-${PV}:=
-	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
 	>=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}]
+	setools? ( >=app-admin/setools-4.2.0[${PYTHON_USEDEP}] )
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 BDEPEND="
