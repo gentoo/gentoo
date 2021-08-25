@@ -16,4 +16,7 @@
   <upstream>
     <remote-id type="github">ROCmSoftwarePlatform/rocSPARSE</remote-id>
   </upstream>
+    <use>
+        <flag name="benchmark">Build and install rocblas-bench.</flag>
+    </use>
 </pkgmetadata>
