@@ -58,10 +58,12 @@ IUSE="${IUSE} ${CPU_FEATURES_MAP[@]%:*}"
 # OpenGL needs gtk or Qt installed to activate, otherwise build system
 # will silently disable it Wwithout the user knowing, which defeats the
 # purpose of the opengl use flag.
+# cuda needs contrib, bug #701712
 REQUIRED_USE="
 	cpu_flags_x86_avx2? ( cpu_flags_x86_f16c )
 	cpu_flags_x86_f16c? ( cpu_flags_x86_avx )
-	cuda? ( tesseract? ( opencl ) )
+	cuda? ( contrib
+		tesseract? ( opencl ) )
 	dnnsamples? ( examples )
 	gflags? ( contrib )
 	glog? ( contrib )
