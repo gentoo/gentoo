@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">progressbar2</remote-id>
+		<remote-id type="github">WoLpH/python-progressbar</remote-id>
 	</upstream>
 </pkgmetadata>
