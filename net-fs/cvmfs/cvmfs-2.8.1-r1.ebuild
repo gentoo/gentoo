@@ -22,7 +22,7 @@ CDEPEND="
 	dev-cpp/gtest
 	dev-cpp/sparsehash
 	dev-db/sqlite:3=
-	dev-libs/leveldb:0=
+	<dev-libs/leveldb-1.23:0=
 	dev-libs/openssl:0=
 	dev-libs/protobuf:0=
 	net-dns/c-ares:0=
