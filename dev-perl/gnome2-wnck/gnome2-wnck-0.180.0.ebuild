@@ -14,7 +14,7 @@ HOMEPAGE="http://gtk2-perl.sourceforge.net/ https://metacpan.org/release/Gnome2-
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND=">=dev-perl/glib-perl-1.180.0
 	>=dev-perl/Gtk2-1.42.0
