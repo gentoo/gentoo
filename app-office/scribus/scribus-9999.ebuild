@@ -76,7 +76,7 @@ PATCHES=(
 	# non(?)-upstreamable
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
 	"${FILESDIR}"/${PN}-1.5.6-docdir.patch
-	"${FILESDIR}"/${PN}-1.5.5-findhyphen-1.patch
+	"${FILESDIR}"/${PN}-1.5.8-findhyphen-1.patch
 	"${FILESDIR}"/${PN}-1.5.6-findhyphen.patch
 )
 
