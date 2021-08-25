@@ -1,6 +1,11 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-08-25)
+# sys-fabric/infinipath-psm does not support riscv
+sys-cluster/openmpi openmpi_fabrics_psm
+sys-fabric/ofed ofed_drivers_psm
+
 # Marek Szuba <marecki@gentoo.org> (2021-08-23)
 # sys-cluster/ceph keywording blocked by libatomic issues in dev-libs/rocksdb-6.14,
 # see Bug #809830.
@@ -130,26 +135,20 @@ dev-python/ipython nbconvert notebook
 # Dependencies not keyworded here yet:
 #  - dev-ruby/asciidoctor
 dev-libs/nanomsg doc
-#  - dev-libs/weston
-gui-libs/gtk wayland
 #  - kde-plasma/bluedevil
 kde-plasma/plasma-meta bluetooth
 #  - media-gfx/nvidia-texture-tools
 media-libs/devil nvtt
 #  - dev-lang/php
 media-libs/libvpx doc
-#  - dev-cpp/glog, sci-libs/vtk, media-libs/xine-lib
-media-libs/opencv contribsfm glog vtk xine
+#  - dev-cpp/glog, sci-libs/vtk
+media-libs/opencv contribsfm glog vtk
 #  - net-misc/ofono
 media-sound/pulseaudio ofono-headset
-#  - media-libs/libquicktime, media-libs/sdl-gfx
-media-video/mjpegtools quicktime sdlgfx
 #  - net-wireless/iwd, net-misc/ofono
 net-misc/connman iwd ofono
 #  - dev-util/aruba
 sys-block/thin-provisioning-tools test
-#  - sys-cluster/knem, sys-fabric/infinipath-psm
-sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_psm
 #  - sys-fabric/ofed
 sys-cluster/slurm ofed
 
