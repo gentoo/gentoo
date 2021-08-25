@@ -54,6 +54,8 @@ PATCHES=(
 	# TODO: fix properly
 	"${FILESDIR}/${PN}-0.16.0-ck2-revert.patch" # bug 633920
 	"${FILESDIR}/pam-1.4-substack.patch"
+	# upstream git develop branch:
+	"${FILESDIR}/${P}-qt-5.15.2.patch"
 )
 
 src_prepare() {
