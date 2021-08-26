@@ -18,6 +18,7 @@ KEYWORDS="amd64 x86"
 RDEPEND="
 	dev-python/importlib_metadata[${PYTHON_USEDEP}]
 	dev-util/patchelf
+	virtual/libcrypt:=
 "
 
 PATCHES=(
