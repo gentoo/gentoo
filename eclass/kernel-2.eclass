@@ -558,7 +558,6 @@ kernel_is() {
 	local v n=0
 	for v in OKV KV_{MAJOR,MINOR,PATCH} ; do [[ -z ${!v} ]] && n=1 ; done
 	[[ ${n} -eq 1 ]] && detect_version
-	unset v n
 
 	# Now we can continue
 	local operator
