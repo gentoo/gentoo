@@ -16,4 +16,7 @@
   <upstream>
     <remote-id type="github">ROCmSoftwarePlatform/rocRAND</remote-id>
   </upstream>
+    <use>
+        <flag name="benchmark">Build and install benchmark programs.</flag>
+    </use>
 </pkgmetadata>
