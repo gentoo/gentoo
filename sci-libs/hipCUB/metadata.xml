@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sci@gentoo.org</email>
-  </maintainer>
-  <maintainer type="person">
-    <email>candrews@gentoo.org</email>
-    <name>Craig Andrews</name>
-  </maintainer>
-  <maintainer type="person" proxied="yes">
-    <email>gentoo@holzke.net</email>
-    <name>Wilfried Holzke</name>
-  </maintainer>
-  <upstream>
-    <remote-id type="github">ROCm-Developer-Tools/hipCUB</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>candrews@gentoo.org</email>
+		<name>Craig Andrews</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>gentoo@holzke.net</email>
+		<name>Wilfried Holzke</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">ROCm-Developer-Tools/hipCUB</remote-id>
+	</upstream>
+	<use>
+		<flag name="benchmark">Build and install benchmark binaries.</flag>
+	</use>
 </pkgmetadata>
