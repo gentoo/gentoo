@@ -220,11 +220,6 @@ fi
 HOMEPAGE="https://www.kernel.org/ https://wiki.gentoo.org/wiki/Kernel ${HOMEPAGE}"
 : ${LICENSE:="GPL-2"}
 
-# This is the latest KV_PATCH of the deblob tool available from the
-# libre-sources upstream. If you bump this, you MUST regenerate the Manifests
-# for ALL kernel-2 consumer packages where deblob is available.
-: ${DEBLOB_MAX_VERSION:=38}
-
 # No need to run scanelf/strip on kernel sources/headers (bug #134453).
 RESTRICT="binchecks strip"
 
@@ -600,11 +595,6 @@ if [[ ${ETYPE} == sources ]]; then
 
 	# Bug #266157, deblob for libre support
 	if [[ -z ${K_PREDEBLOBBED} ]]; then
-		# Bug #359865, force a call to detect_version if needed
-		kernel_is ge 2 6 27 && \
-			[[ -z ${K_DEBLOB_AVAILABLE} ]] && \
-				kernel_is le 2 6 ${DEBLOB_MAX_VERSION} && \
-					K_DEBLOB_AVAILABLE=1
 		# deblob less than 5.10 require python 2.7
 		if kernel_is lt 5 10; then
 			K_DEBLOB_AVAILABLE=0
@@ -621,7 +611,6 @@ if [[ ${ETYPE} == sources ]]; then
 			# tree has been dropped from the kernel.
 			kernel_is lt 4 14 && LICENSE+=" !deblob? ( linux-firmware )"
 
-			[[ ${EAPI} == 6 ]] && DEPEND+=" deblob? ( ${PYTHON_DEPS} )" ||
 			BDEPEND+=" deblob? ( ${PYTHON_DEPS} )"
 
 			if [[ -n KV_MINOR ]]; then
