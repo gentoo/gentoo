@@ -94,6 +94,7 @@ BDEPEND="${PYTHON_DEPS}
 	dev-util/re2c
 	net-libs/nodejs[ssl]
 	sys-devel/bison
+	sys-devel/flex
 	ppc64? ( >=dev-util/gn-0.1807 )
 "
 
