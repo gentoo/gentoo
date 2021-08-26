@@ -33,7 +33,7 @@ BDEPEND="
 "
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-cpp/asio
+	>=dev-cpp/asio-1.12.0
 	dev-libs/boost:=
 	sys-apps/hwloc
 	sys-libs/zlib
