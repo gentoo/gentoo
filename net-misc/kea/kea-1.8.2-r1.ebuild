@@ -24,9 +24,10 @@ fi
 
 LICENSE="ISC BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
-IUSE="mysql +openssl postgres +samples"
+IUSE="mysql +openssl postgres +samples test"
+RESTRICT="!test? ( test )"
 
-DEPEND="
+COMMON_DEPEND="
 	dev-libs/boost:=
 	dev-libs/log4cplus
 	mysql? ( dev-db/mysql-connector-c )
@@ -34,12 +35,20 @@ DEPEND="
 	openssl? ( dev-libs/openssl:0= )
 	postgres? ( dev-db/postgresql:* )
 "
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	test? ( dev-cpp/gtest )"
+RDEPEND="${COMMON_DEPEND}
 	acct-group/dhcp
 	acct-user/dhcp"
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.8.2-fix-cxx11-detection.patch
+	"${FILESDIR}"/${PN}-1.8.2-boost-1.77.0.patch
+	"${FILESDIR}"/${PN}-1.8.2-gtest.patch
+)
 
 src_prepare() {
 	default
@@ -66,6 +75,7 @@ src_configure() {
 		$(use_with mysql)
 		$(use_with openssl)
 		$(use_with postgres pgsql)
+		$(use_enable test gtest)
 	)
 	econf "${myeconfargs[@]}"
 }
