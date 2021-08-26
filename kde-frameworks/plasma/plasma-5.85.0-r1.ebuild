@@ -64,6 +64,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-plasma-scaling-w-int-scale-factors.patch
 	"${FILESDIR}"/${P}-fix-pinned-calendar-dots.patch # KDE-bug 440627
+	"${FILESDIR}"/${P}-fix-cmake.patch # bug 809815
 )
 
 src_configure() {

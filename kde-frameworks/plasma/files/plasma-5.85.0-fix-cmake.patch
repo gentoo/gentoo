@@ -1,0 +1,48 @@
+From e496ef0440c92e119da0b1088f1ab788cebeae33 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 26 Aug 2021 19:12:00 +0200
+Subject: [PATCH] CMake: do not expand variables beforehand
+
+Fixes build when FindOpenGL is disabled, producing a syntax error:
+"Function invoked with incorrect arguments for function named: ADD_FEATURE_INFO"
+
+See also: https://invent.kde.org/frameworks/plasma-framework/-/merge_requests/267
+
+Downstream report: https://bugs.gentoo.org/809815
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e27ebd914..25abbf921 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -110,20 +110,20 @@ set_package_properties(EGL PROPERTIES
+                        TYPE OPTIONAL
+                       )
+ 
+-add_feature_info(GLX ${OpenGL_GLX_FOUND} "OpenGL GLX libraries.")
++add_feature_info(GLX OpenGL_GLX_FOUND "OpenGL GLX libraries.")
+ if(OpenGL_GLX_FOUND AND X11_FOUND AND (Qt5Gui_OPENGL_IMPLEMENTATION STREQUAL "GL"))
+     set(HAVE_GLX 1)
+ else()
+     set(HAVE_GLX 0)
+ endif()
+ 
+-add_feature_info(EGL ${OpenGL_EGL_FOUND}
++add_feature_info(EGL OpenGL_EGL_FOUND
+                  "A platform-agnostic mechanism for creating rendering surfaces for use with other graphics libraries, such as OpenGL|ES and OpenVG.")
+ # OpenGL_EGL_FOUND is defined by FindOpenGL
+ if(TARGET OpenGL::EGL)
+     set(HAVE_EGL ${OpenGL_EGL_FOUND})
+     set(EGL_TARGET OpenGL::EGL)
+-elseif(${EGL_FOUND})
++elseif(EGL_FOUND)
+     set(HAVE_EGL ${EGL_FOUND})
+     set(EGL_TARGET EGL::EGL)
+     message(STATUS "Switch to EGL compatibility target EGL::EGL because OpenGL::EGL is not available")
+-- 
+2.33.0
+
