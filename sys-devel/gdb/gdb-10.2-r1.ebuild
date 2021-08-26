@@ -46,7 +46,7 @@ SLOT="0"
 if [[ ${PV} != 9999* ]] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
-IUSE="cet lzma multitarget nls +python +server source-highlight test vanilla xml xxhash"
+IUSE="cet guile lzma multitarget nls +python +server source-highlight test vanilla xml xxhash"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
@@ -65,6 +65,7 @@ RDEPEND="
 	sys-libs/zlib
 	lzma? ( app-arch/xz-utils )
 	python? ( ${PYTHON_DEPS} )
+	guile? ( >=dev-scheme/guile-2.0 )
 	xml? ( dev-libs/expat )
 	source-highlight? (
 		dev-util/source-highlight
@@ -159,8 +160,6 @@ src_configure() {
 		--enable-64-bit-bfd
 		--disable-install-libbfd
 		--disable-install-libiberty
-		# Disable guile for now as it requires guile-2.x #562902
-		--without-guile
 		--enable-obsolete
 		# This only disables building in the readline subdir.
 		# For gdb itself, it'll use the system version.
@@ -178,6 +177,7 @@ src_configure() {
 		$(use multitarget && echo --enable-targets=all)
 		$(use_with python python "${EPYTHON}")
 		$(use_with xxhash)
+		$(use_with guile)
 	)
 	if use sparc-solaris || use x86-solaris ; then
 		# disable largefile support
