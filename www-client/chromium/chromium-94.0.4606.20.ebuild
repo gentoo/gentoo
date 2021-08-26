@@ -560,6 +560,9 @@ src_configure() {
 	# GN needs explicit config for Debug/Release as opposed to inferring it from build directory.
 	myconf_gn+=" is_debug=false"
 
+	# make DCHECK configurable at runtime for non-official builds.
+	myconf_gn+=" dcheck_is_configurable=$(usex official false true)"
+
 	# Component build isn't generally intended for use by end users. It's mostly useful
 	# for development and debugging.
 	myconf_gn+=" is_component_build=$(usex component-build true false)"
@@ -734,11 +737,6 @@ src_configure() {
 
 	# Chromium relies on this, but was disabled in >=clang-10, crbug.com/1042470
 	append-cxxflags $(test-flags-CXX -flax-vector-conversions=all)
-
-	# highway/libjxl relies on this with arm64
-	if use arm64 && tc-is-gcc; then
-		append-cxxflags -flax-vector-conversions
-	fi
 
 	# Disable unknown warning message from clang.
 	tc-is-clang && append-flags -Wno-unknown-warning-option
