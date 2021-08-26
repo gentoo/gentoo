@@ -28,6 +28,14 @@ DEPEND="${RDEPEND}
 	vulkan? ( dev-util/vulkan-headers )
 "
 
+src_configure() {
+	local myqmakeargs=(
+		--
+		-system-assimp
+	)
+	qt5-build_src_configure
+}
+
 src_prepare() {
 	rm -r src/3rdparty/assimp/{code,contrib,include} || die
 
