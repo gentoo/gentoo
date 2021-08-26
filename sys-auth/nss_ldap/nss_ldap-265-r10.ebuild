@@ -32,7 +32,7 @@ src_prepare() {
 	# eprefixify is safe on non-Prefix systems, so go unconditional
 	# Note: comment this out or make it conditional on 'use prefix'
 	# if needs rebasing. Don't remove.
-	eapply "${FILESDIR}"/${P}-r9-libdir.patch
+	eapply "${FILESDIR}"/${P}-r10-libdir.patch
 	eprefixify Makefile.am
 
 	# bug 438692
