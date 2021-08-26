@@ -77,12 +77,6 @@ fi
 # Optional meson arguments as Bash array; this should be defined before
 # calling meson_src_configure.
 
-# @VARIABLE: emesontestargs
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Optional meson test arguments as Bash array; this should be defined before
-# calling meson_src_test.
-
 # @VARIABLE: MYMESONARGS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -379,7 +373,17 @@ meson_src_configure() {
 meson_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	eninja -C "${BUILD_DIR}" "$@"
+	local mesoncompileargs=(
+		-C "${BUILD_DIR}"
+		--jobs "$(makeopts_jobs "${MAKEOPTS}" 0)"
+		--load-average "$(makeopts_loadavg "${MAKEOPTS}" 0)"
+		--verbose
+		"$@"
+	)
+
+	set -- meson compile "${mesoncompileargs[@]}"
+	echo "$@" >&2
+	"$@" || die "compile failed"
 }
 
 # @FUNCTION: meson_src_test
@@ -391,28 +395,31 @@ meson_src_test() {
 
 	local mesontestargs=(
 		-C "${BUILD_DIR}"
+		--num-processes "$(makeopts_jobs "${MAKEOPTS}")"
+		"$@"
 	)
-	[[ -n ${NINJAOPTS} || -n ${MAKEOPTS} ]] &&
-		mesontestargs+=(
-			--num-processes "$(makeopts_jobs ${NINJAOPTS:-${MAKEOPTS}})"
-		)
 
-	# Append additional arguments from ebuild
-	mesontestargs+=("${emesontestargs[@]}")
-
-	set -- meson test "${mesontestargs[@]}" "$@"
+	set -- meson test "${mesontestargs[@]}"
 	echo "$@" >&2
 	"$@" || die "tests failed"
 }
 
 # @FUNCTION: meson_src_install
-# @USAGE: [extra ninja install arguments]
+# @USAGE: [extra meson install arguments]
 # @DESCRIPTION:
 # This is the meson_src_install function.
 meson_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	DESTDIR="${D}" eninja -C "${BUILD_DIR}" install "$@"
+	local mesoninstallargs=(
+		-C "${BUILD_DIR}"
+		--destdir "${D}"
+		"$@"
+	)
+
+	set -- meson install "${mesoninstallargs[@]}"
+	echo "$@" >&2
+	"$@" || die "install failed"
 
 	pushd "${S}" > /dev/null || die
 	einstalldocs
