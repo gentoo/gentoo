@@ -561,7 +561,7 @@ kernel_is() {
 	unset v n
 
 	# Now we can continue
-	local operator test value
+	local operator
 
 	case ${1#-} in
 	  lt) operator="-lt"; shift;;
@@ -573,9 +573,10 @@ kernel_is() {
 	esac
 	[[ $# -gt 3 ]] && die "Error in kernel-2_kernel_is(): too many parameters"
 
-	: $(( test = (KV_MAJOR << 16) + (KV_MINOR << 8) + KV_PATCH ))
-	: $(( value = (${1:-${KV_MAJOR}} << 16) + (${2:-${KV_MINOR}} << 8) + ${3:-${KV_PATCH}} ))
-	[ ${test} ${operator} ${value} ]
+	ver_test \
+		"${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}" \
+		"${operator}" \
+		"${1:-${KV_MAJOR}}.${2:-${KV_MINOR}}.${3:-${KV_PATCH}}"
 }
 
 # Capture the sources type and set DEPENDs
