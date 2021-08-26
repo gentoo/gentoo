@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (2021-08-26)
+# Preparing for final 5.0.0 release
+>=app-text/tesseract-5.0.0_beta
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2021-08-20)
 # Inactive upstream.
 # Fully superseded by dev-python/dnspython. All reverse dependencies support
