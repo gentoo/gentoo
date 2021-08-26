@@ -4,7 +4,7 @@
 # @ECLASS: unpacker.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: helpers for extraneous file formats and consistent behavior across EAPIs
 # @DESCRIPTION:
 # Some extraneous file formats are not part of PMS, or are only in certain
@@ -16,7 +16,7 @@
 #  - support partial unpacks?
 
 case ${EAPI:-0} in
-	[567]) ;;
+	[5678]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -335,6 +335,47 @@ unpack_zip() {
 	[[ $? -le 1 ]] || die "unpacking ${zip} failed (arch=unpack_zip)"
 }
 
+# @FUNCTION: unpack_7z
+# @USAGE: <7z file>
+# @DESCRIPTION:
+# Unpack 7z archives.
+unpack_7z() {
+	[[ $# -eq 1 ]] || die "Usage: ${FUNCNAME} <file>"
+
+	local p7z=$(find_unpackable_file "$1")
+	unpack_banner "${p7z}"
+	local output="$(7z x -y "${p7z}")"
+
+	if [ $? -ne 0 ]; then
+		echo "${output}" >&2
+		die "unpacking ${p7z} failed (arch=unpack_7z)"
+	fi
+}
+
+# @FUNCTION: unpack_rar
+# @USAGE: <rar file>
+# @DESCRIPTION:
+# Unpack RAR archives.
+unpack_rar() {
+	[[ $# -eq 1 ]] || die "Usage: ${FUNCNAME} <file>"
+
+	local rar=$(find_unpackable_file "$1")
+	unpack_banner "${rar}"
+	unrar x -idq -o+ "${rar}" || die "unpacking ${rar} failed (arch=unpack_rar)"
+}
+
+# @FUNCTION: unpack_lha
+# @USAGE: <lha file>
+# @DESCRIPTION:
+# Unpack LHA/LZH archives.
+unpack_lha() {
+	[[ $# -eq 1 ]] || die "Usage: ${FUNCNAME} <file>"
+
+	local lha=$(find_unpackable_file "$1")
+	unpack_banner "${lha}"
+	lha xfq "${lha}" || die "unpacking ${lha} failed (arch=unpack_lha)"
+}
+
 # @FUNCTION: _unpacker
 # @USAGE: <one archive to unpack>
 # @INTERNAL
@@ -394,6 +435,18 @@ _unpacker() {
 	*.zip)
 		arch="unpack_zip" ;;
 	esac
+
+	# 7z, rar and lha/lzh are handled by package manager in EAPI < 8
+	if [[ ${EAPI} != [567] ]]; then
+		case ${m} in
+		*.7z)
+			arch="unpack_7z" ;;
+		*.rar|*.RAR)
+			arch="unpack_rar" ;;
+		*.LHA|*.LHa|*.lha|*.lzh)
+			arch="unpack_lha" ;;
+		esac
+	fi
 
 	# finally do the unpack
 	if [[ -z ${arch}${comp} ]] ; then
@@ -471,6 +524,8 @@ unpacker_src_uri_depends() {
 			d="|| ( app-arch/plzip app-arch/pdlzip app-arch/lzip )" ;;
 		*.zst)
 			d="app-arch/zstd" ;;
+		*.LHA|*.LHa|*.lha|*.lzh)
+			d="app-arch/lha" ;;
 		esac
 		deps+=" ${d}"
 	done
