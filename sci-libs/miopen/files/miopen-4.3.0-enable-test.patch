@@ -1,0 +1,31 @@
+This create option BUILD_TESTS for miopen, like other rocm math libs, and
+
+testing executables are always built if test enabled. The original behaviour, is
+
+always add test/CMakeLists.txt without adding test exes as targets, and compile them
+
+during test.
+--- orig/CMakeLists.txt
++++ MIOpen-rocm-4.3.0/CMakeLists.txt
+@@ -590,6 +590,9 @@ add_subdirectory(src)
+ if(MIOPEN_BUILD_DRIVER)
+     add_subdirectory(driver)
+ endif()
+-add_subdirectory(test)
++option(BUILD_TESTS "Build binaries for tests" OFF)
++if(BUILD_TESTS)
++	add_subdirectory(test)
++endif()
+ add_subdirectory(speedtests)
+ add_subdirectory(utils)
+--- orig/test/CMakeLists.txt
++++ MIOpen-rocm-4.3.0/test/CMakeLists.txt
+@@ -142,7 +142,7 @@ function(add_test_command NAME EXE)
+ endfunction()
+ 
+ function(add_test_executable TEST_NAME)
+-    add_executable (${TEST_NAME} EXCLUDE_FROM_ALL ${ARGN})
++    add_executable (${TEST_NAME} ${ARGN})
+     clang_tidy_check(${TEST_NAME})
+     target_link_libraries(${TEST_NAME} ${CMAKE_THREAD_LIBS_INIT})
+     # Cmake does not add flags correctly for gcc
