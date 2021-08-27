@@ -6,6 +6,7 @@
 		<name>Gentoo Toolchain Project</name>
 	</maintainer>
 	<use>
+		<flag name="redis">Enable Redis backend for storage via <pkg>dev-libs/hiredis</pkg></flag>
 		<flag name="static-c++">Avoid dynamic dependency on gcc's libstdc++.</flag>
 	</use>
 	<longdescription lang="en">
