@@ -13,7 +13,7 @@ SRC_URI="https://github.com/snowballstem/snowball/archive/v${PV}.tar.gz -> ${P}.
 	test? ( https://github.com/snowballstem/snowball-data/archive/${MY_TESTDATA_COMMIT}.tar.gz -> snowball-data-${MY_TESTDATA_COMMIT}.tar.gz )"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/$(ver_cut 1)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~sparc-solaris ~sparc64-solaris"
 IUSE="static-libs test"
 
