@@ -26,12 +26,12 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="acct-group/mongodb
 	acct-user/mongodb
-	>=app-arch/snappy-1.1.3
+	>=app-arch/snappy-1.1.3:=
 	>=dev-cpp/yaml-cpp-0.6.2:=
 	>=dev-libs/boost-1.70:=[threads(+),nls]
 	>=dev-libs/libpcre-8.42[cxx]
-	app-arch/zstd
-	dev-libs/snowball-stemmer
+	app-arch/zstd:=
+	dev-libs/snowball-stemmer:=
 	net-libs/libpcap
 	>=sys-libs/zlib-1.2.11:=
 	kerberos? ( dev-libs/cyrus-sasl[kerberos] )

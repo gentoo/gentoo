@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-SCONS_MIN_VERSION="2.5.0"
+SCONS_MIN_VERSION="3.3.1"
 CHECKREQS_DISK_BUILD="2400M"
 CHECKREQS_DISK_USR="512M"
 CHECKREQS_MEMORY="1024M"
@@ -20,18 +20,18 @@ SRC_URI="https://fastdl.mongodb.org/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="debug kerberos lto ssl test +tools"
 RESTRICT="!test? ( test )"
 
 RDEPEND="acct-group/mongodb
 	acct-user/mongodb
-	>=app-arch/snappy-1.1.3
+	>=app-arch/snappy-1.1.3:=
 	>=dev-cpp/yaml-cpp-0.6.2:=
-	>=dev-libs/boost-1.70:=[threads(+)]
+	>=dev-libs/boost-1.70:=[threads(+),nls]
 	>=dev-libs/libpcre-8.42[cxx]
-	app-arch/zstd
-	dev-libs/snowball-stemmer
+	app-arch/zstd:=
+	dev-libs/snowball-stemmer:=
 	net-libs/libpcap
 	>=sys-libs/zlib-1.2.11:=
 	kerberos? ( dev-libs/cyrus-sasl[kerberos] )
@@ -42,7 +42,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	$(python_gen_any_dep '
 		test? ( dev-python/pymongo[${PYTHON_USEDEP}] dev-python/requests[${PYTHON_USEDEP}] )
-		>=dev-util/scons-2.5.0[${PYTHON_USEDEP}]
+		>=dev-util/scons-3.1.1[${PYTHON_USEDEP}]
 		dev-python/cheetah3[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -50,13 +50,14 @@ DEPEND="${RDEPEND}
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
 	debug? ( dev-util/valgrind )"
-PDEPEND="tools? ( >=app-admin/mongo-tools-${PV} )"
+PDEPEND="tools? ( >=app-admin/mongo-tools-100 )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.2.0-fix-scons.patch"
+	"${FILESDIR}/${PN}-4.4.1-fix-scons.patch"
+	"${FILESDIR}/${PN}-4.4.1-no-compass.patch"
+	"${FILESDIR}/${PN}-4.4.1-unwind-gcc10.patch"
+	"${FILESDIR}/${PN}-4.4.1-boost.patch"
 	"${FILESDIR}/${PN}-4.4.1-gcc11.patch"
-	"${FILESDIR}/${PN}-4.2.15-no-compass.patch"
-	"${FILESDIR}/${PN}-5.0.2-glibc-2.34.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
@@ -75,12 +76,12 @@ python_check_deps() {
 
 pkg_pretend() {
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
-		if ver_test "$REPLACING_VERSIONS" -lt 4.0; then
-			ewarn "To upgrade from a version earlier than the 4.0-series, you must"
+		if ver_test "$REPLACING_VERSIONS" -lt 4.2; then
+			ewarn "To upgrade from a version earlier than the 4.2-series, you must"
 			ewarn "successively upgrade major releases until you have upgraded"
-			ewarn "to 4.0-series. Then upgrade to 4.2 series."
+			ewarn "to 4.2-series. Then upgrade to 4.4 series."
 		else
-			ewarn "Be sure to set featureCompatibilityVersion to 4.0 before upgrading."
+			ewarn "Be sure to set featureCompatibilityVersion to 4.2 before upgrading."
 		fi
 	fi
 }
@@ -89,7 +90,7 @@ src_prepare() {
 	default
 
 	# remove bundled libs
-	rm -r src/third_party/{boost-*,pcre-*,scons-*,snappy-*,yaml-cpp-*,zlib-*,zstandard-*} || die
+	rm -r src/third_party/{boost-*,pcre-*,scons-*,snappy-*,yaml-cpp-*,zlib-*} || die
 
 	# remove compass
 	rm -r src/mongo/installer/compass || die
@@ -130,7 +131,7 @@ src_configure() {
 }
 
 src_compile() {
-	escons "${scons_opts[@]}" core tools
+	PREFIX="${EPREFIX}/usr" escons "${scons_opts[@]}" --nostrip install-core
 }
 
 # FEATURES="test -usersandbox" emerge dev-db/mongodb
@@ -140,7 +141,7 @@ src_test() {
 }
 
 src_install() {
-	escons "${scons_opts[@]}" --nostrip install --prefix="${ED}"/usr
+	dobin build/install/bin/{mongo,mongod,mongos}
 
 	doman debian/mongo*.1
 	dodoc README docs/building.md
