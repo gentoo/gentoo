@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="odbc"
 
 RDEPEND="
-	app-text/tidy-html5
+	|| ( app-text/tidy-html5 >=app-text/htmltidy-5.0.0 )
 	dev-lang/duktape:=
 	dev-libs/libpcre
 	net-misc/curl
