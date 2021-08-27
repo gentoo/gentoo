@@ -1,11 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-WANT_AUTOMAKE=1.15
-
-inherit epatch autotools toolchain-funcs
+inherit autotools toolchain-funcs
 
 #MY_P=${P/_/-}
 MY_P=${P}-release
@@ -16,25 +14,25 @@ SRC_URI="http://sphinxsearch.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris"
-IUSE="debug +id64 mariadb mysql odbc postgres re2 stemmer syslog xml"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris"
+IUSE="debug +id64 mariadb mysql odbc postgres stemmer syslog xml"
 
 REQUIRED_USE="mysql? ( !mariadb ) mariadb? ( !mysql )"
 
 RDEPEND="
-	mysql? ( dev-db/mysql-connector-c )
-	mariadb? ( dev-db/mariadb-connector-c )
+	mysql? ( dev-db/mysql-connector-c:= )
+	mariadb? ( dev-db/mariadb-connector-c:= )
 	postgres? ( dev-db/postgresql:* )
 	odbc? ( dev-db/unixODBC )
-	re2? ( dev-libs/re2 )
-	stemmer? ( dev-libs/snowball-stemmer )
+	stemmer? ( dev-libs/snowball-stemmer:= )
 	xml? ( dev-libs/expat )
 	virtual/libiconv"
 
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.0.1_beta-darwin8.patch
+	eapply -p0 "${FILESDIR}"/${PN}-2.0.1_beta-darwin8.patch
+	eapply "${FILESDIR}"/${P}-automake-1.16.patch
 
 	# drop nasty hardcoded search path breaking Prefix
 	# We patch configure directly since otherwise we need to run
@@ -56,7 +54,7 @@ src_prepare() {
 
 	# Drop bundled code to ensure building against system versions. We
 	# cannot remove libstemmer_c since configure updates its Makefile.
-	rm -rf libexpat libre2 || die
+	rm -rf libexpat || die
 }
 
 src_configure() {
@@ -77,8 +75,6 @@ src_configure() {
 		${mysql_with} \
 		$(use_with odbc unixodbc) \
 		$(use_with postgres pgsql) \
-		$(use_with re2) \
-		--with-re2-libs="${EPREFIX}/usr/$(get_libdir)/libre2.so" \
 		$(use_with stemmer libstemmer) \
 		$(use_with syslog syslog) \
 		$(use_with xml libexpat )
@@ -103,10 +99,13 @@ src_install() {
 	emake DESTDIR="${D}" install
 	emake DESTDIR="${D}" -C api/libsphinxclient install
 
+	# Remove unneeded empty directories.
+	rmdir "${D}"/var/lib/{data,log}
+
 	dodoc doc/*
 
-	dodir /var/lib/sphinx
-	dodir /var/log/sphinx
+	keepdir /var/lib/sphinx
+	keepdir /var/log/sphinx
 
 	newinitd "${FILESDIR}"/searchd.rc searchd
 }
