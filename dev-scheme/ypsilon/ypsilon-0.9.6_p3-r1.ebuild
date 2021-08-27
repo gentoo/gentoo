@@ -21,6 +21,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-asneeded.patch
+	"${FILESDIR}"/${P}-clang-cflags.patch
 )
 
 src_compile() {
