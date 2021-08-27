@@ -37,12 +37,24 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND} test? ( net-misc/memcached )"
 
+PATCHES=( "${FILESDIR}/3.1.5-fix-tests.patch" )
+
 src_unpack() {
 	default
 	mv "${WORKDIR}/php-memcached-${REPO_COMMIT}" "${S}" || die
-	# These tests always fail and only exist for "experimental" features
-	# Not present in 3.1.5 release
-	rm -r "${S}/tests/experimental/" || die
+	ln -s "${S}/tests/skipif.inc" "${S}/tests/experimental/skipif.inc" || die
+	ln -s "${S}/tests/skipif.inc" "${S}/tests/experimental/serializer/skipif.inc" || die
+	local x
+	local broken_tests=(
+	# Known broken tests. https://github.com/php-memcached-dev/php-memcached/issues/386
+		get_bykey_cas getdelayed_bykey_cas getdelayed_cbthrows
+		stats stats_badserver getmulti_badserver
+	# Excessive warnings make them "BORK"
+		serializer/serializer_php_bad_serialize serializer/serializer_php_bad_unserialize
+	)
+	for x in "${broken_tests[@]}" ; do
+		rm "${S}/tests/experimental/${x}.phpt" || die
+	done
 }
 
 src_configure() {
@@ -56,7 +68,8 @@ src_configure() {
 }
 
 src_test() {
-	local memcached_opts=( -d -P "${T}/memcached.pid" -p 11211 -l 127.0.0.1 )
+	touch "${T}/memcached.pid" || die
+	local memcached_opts=( -d -P "${T}/memcached.pid" -p 11211 -l 127.0.0.1 -U 11211 )
 	[[ ${EUID} == 0 ]] && memcached_opts+=( -u portage )
 	memcached "${memcached_opts[@]}" || die "Can't start memcached test server"
 
