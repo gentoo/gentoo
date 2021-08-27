@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
@@ -17,13 +17,15 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-DEPEND="dev-python/libsass[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/libsass[${PYTHON_USEDEP}]"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-py3.10.patch"
+)
 
 distutils_enable_tests pytest
 
-python_prepare_all() {
+EPYTEST_DESELECT=(
 	# assert 1 == 2
-	sed -i -e 's:test_watchers:_&:' tests/test_watchers.py || die
-
-	distutils-r1_python_prepare_all
-}
+	tests/test_watchers.py::test_watchers
+)
