@@ -125,7 +125,7 @@ meson-multilib_src_install() {
 }
 
 multilib_src_install() {
-	meson_src_install "${_meson_args[@]}"
+	meson_install "${_meson_args[@]}"
 }
 
 fi
