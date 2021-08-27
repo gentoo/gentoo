@@ -23,6 +23,7 @@ net-misc/networkmanager ofono
 app-misc/tracker miners
 gnome-extra/sushi office
 gnome-base/gnome-control-center v4l
+gnome-base/gnome-shell telepathy browser-extension
 gnome-base/nautilus previewer sendto
 media-plugins/grilo-plugins chromaprint upnp-av
 
