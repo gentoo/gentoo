@@ -33,6 +33,10 @@ DEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/meson-mcompile-treat-load-average-as-a-float.patch"
+)
+
 python_prepare_all() {
 	local disable_unittests=(
 		# ASAN and sandbox both want control over LD_PRELOAD

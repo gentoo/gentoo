@@ -1,0 +1,28 @@
+From bb07c850c77e2bd07e1261547bc6b1e6b024f31d Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 27 Aug 2021 10:17:14 -0400
+Subject: [PATCH] mcompile: treat load-average as a float
+
+`ninja -l` accepts a double. We should do the same.
+
+Bug: https://bugs.gentoo.org/810655
+---
+ mesonbuild/mcompile.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mesonbuild/mcompile.py b/mesonbuild/mcompile.py
+index bb7ecae9b..e20485c76 100644
+--- a/mesonbuild/mcompile.py
++++ b/mesonbuild/mcompile.py
+@@ -305,7 +305,7 @@ def add_arguments(parser: 'argparse.ArgumentParser') -> None:
+         '-l', '--load-average',
+         action='store',
+         default=0,
+-        type=int,
++        type=float,
+         help='The system load average to try to maintain (if supported).'
+     )
+     parser.add_argument(
+-- 
+2.33.0
+
