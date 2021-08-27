@@ -40,7 +40,7 @@ DEPEND="
 	png? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
 	test? ( dev-cpp/gtest )
 	webready? (
-		>net-libs/libssh-0.9.1[${MULTILIB_USEDEP}]
+		>net-libs/libssh-0.9.1[sftp,${MULTILIB_USEDEP}]
 		net-misc/curl[${MULTILIB_USEDEP}]
 	)
 	xmp? ( dev-libs/expat[${MULTILIB_USEDEP}] )
