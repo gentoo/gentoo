@@ -35,6 +35,7 @@ RDEPEND="
 	x11-libs/libXext
 	x11-libs/libXfixes
 	x11-libs/libXi
+	x11-libs/libxkbcommon
 	x11-libs/libXrandr
 	x11-libs/libXrender
 	x11-libs/libXtst
