@@ -1,0 +1,28 @@
+From 6021c352a009121870107ed37f07ee520110d4c2 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 27 Aug 2021 03:24:26 +0100
+Subject: [PATCH] Drop automagic ccache usage
+
+---
+ CMakeLists.txt | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 97477b0..cd17c6a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,11 +5,6 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9"
+     CACHE STRING "Minimum macOS deployment version"
+ )
+ 
+-find_program(CCACHE_PROGRAM ccache)
+-if(CCACHE_PROGRAM)
+-    set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
+-endif()
+-
+ project(firewallbuilder LANGUAGES CXX C)
+ 
+ ### Version variables and include file
+-- 
+2.33.0
+
