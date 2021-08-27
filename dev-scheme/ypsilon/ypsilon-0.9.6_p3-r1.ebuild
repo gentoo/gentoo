@@ -44,7 +44,7 @@ src_install() {
 	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" install
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins example/*
+		docinto examples
+		dodoc example/*
 	fi
 }
