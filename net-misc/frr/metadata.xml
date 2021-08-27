@@ -6,8 +6,8 @@
 		<name>Sergey Popov</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>jakov.smolic@sartura.hr</email>
-		<name>Jakov Smolic</name>
+		<email>jsmolic@gentoo.org</email>
+		<name>Jakov Smolić</name>
 	</maintainer>
 	<use>
 		<flag name="grpc">Enable gRPC plugin</flag>
