@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,7 +41,7 @@ DEPEND="
 	midi? ( media-libs/libsmf )
 	mp4? ( media-libs/libmp4v2:0 )
 	mpeg? ( media-libs/libmpeg2 )
-	tidy? ( app-text/tidy-html5 )
+	tidy? ( || ( app-text/tidy-html5 >=app-text/htmltidy-5.0.0 ) )
 	tiff? ( media-libs/tiff:0 )
 	vorbis? (
 		media-libs/libogg
