@@ -17,7 +17,7 @@ IUSE="gtk-doc fonts +introspection stemmer"
 RDEPEND="
 	>=dev-libs/glib-2.58.0:2
 	sys-apps/util-linux
-	app-arch/libarchive
+	app-arch/libarchive:=
 	>=net-libs/libsoup-2.51.92:2.4
 	>=dev-libs/json-glib-1.1.2
 	>=x11-libs/gdk-pixbuf-2.31.5:2[introspection?]
@@ -26,7 +26,7 @@ RDEPEND="
 		>=media-libs/freetype-2.4:2 )
 	>=media-libs/fontconfig-2.11:1.0
 	dev-libs/libyaml
-	stemmer? ( dev-libs/snowball-stemmer )
+	stemmer? ( dev-libs/snowball-stemmer:= )
 	x11-libs/pango
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
@@ -44,7 +44,7 @@ BDEPEND="
 	)
 	>=sys-devel/gettext-0.19.8
 "
-# ${PN} superseeds appdata-tools
+# ${PN} supersedes appdata-tools
 RDEPEND="${RDEPEND}
 	!<dev-util/appdata-tools-0.1.8-r1
 "
