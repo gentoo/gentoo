@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Multimedia processing graphs"
@@ -20,7 +20,7 @@ HOMEPAGE="https://pipewire.org/"
 
 LICENSE="MIT LGPL-2.1+ GPL-2"
 SLOT="0/0.3"
-IUSE="bluetooth doc extra gstreamer jack-client jack-sdk pipewire-alsa systemd test v4l"
+IUSE="bluetooth doc echo-cancel extra gstreamer jack-client jack-sdk pipewire-alsa systemd test v4l"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -55,6 +55,7 @@ RDEPEND="
 		media-libs/sbc
 		>=net-wireless/bluez-4.101:=
 	)
+	echo-cancel? ( media-libs/webrtc-audio-processing )
 	extra? (
 		>=media-libs/libsndfile-1.0.20
 	)
@@ -150,6 +151,7 @@ multilib_src_configure() {
 		$(meson_native_use_feature bluetooth bluez5-codec-aac)
 		$(meson_native_use_feature bluetooth bluez5-codec-aptx)
 		$(meson_native_use_feature bluetooth bluez5-codec-ldac)
+		$(meson_native_use_feature echo-cancel echo-cancel-webrtc) #807889
 		-Dcontrol=enabled # Matches upstream
 		-Daudiotestsrc=enabled # Matches upstream
 		-Dffmpeg=disabled # Disabled by upstream and no major developments to spa/plugins/ffmpeg/ since May 2020
