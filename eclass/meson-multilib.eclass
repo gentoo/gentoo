@@ -3,10 +3,10 @@
 
 # @ECLASS: meson-multilib.eclass
 # @MAINTAINER:
-# Author: Matt Turner <mattst88@gentoo.org>
+# Matt Turner <mattst88@gentoo.org>
 # @AUTHOR:
-# Author: Michał Górny <mgorny@gentoo.org>
-# Author: Matt Turner <mattst88@gentoo.org>
+# Michał Górny <mgorny@gentoo.org>
+# Matt Turner <mattst88@gentoo.org>
 # @SUPPORTED_EAPIS: 7 8
 # @BLURB: meson wrapper for multilib builds
 # @DESCRIPTION:
