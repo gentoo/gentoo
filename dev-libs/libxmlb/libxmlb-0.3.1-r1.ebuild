@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/glib:2
 	sys-apps/util-linux
-	stemmer? ( dev-libs/snowball-stemmer )
+	stemmer? ( dev-libs/snowball-stemmer:= )
 "
 
 DEPEND="
