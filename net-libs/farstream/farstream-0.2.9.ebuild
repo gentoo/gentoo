@@ -66,5 +66,7 @@ src_compile() {
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744135
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744134
 	addpredict /dev
-	gnome2_src_compile
+
+	# bug #776175 for -j1
+	MAKEOPTS="-j1" gnome2_src_compile
 }
