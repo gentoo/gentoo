@@ -19,7 +19,6 @@
 		<flag name="quiche">Enable HTTP/3.0 support using <pkg>net-libs/quiche</pkg></flag>
 		<flag name="metalink">Enable metalink support</flag>
 		<flag name="nss">Enable nss ssl backend</flag>
-		<flag name="ntlm">Enable ntlm support</flag>
 		<flag name="openssl">Enable openssl ssl backend</flag>
 		<flag name="pop3">Enable Post Office Protocol 3 support</flag>
 		<flag name="progress-meter">Enable the progress meter</flag>
