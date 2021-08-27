@@ -34,7 +34,7 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 	)
 	sdl? ( media-libs/libsdl2[${MULTILIB_USEDEP}] )
-	sndio? ( media-sound/sndio[${MULTILIB_USEDEP}] )
+	sndio? ( media-sound/sndio:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
 	oss? ( virtual/os-headers )"
@@ -54,7 +54,8 @@ src_configure() {
 			-DALSOFT_REQUIRE_PORTAUDIO=$(usex portaudio)
 			-DALSOFT_REQUIRE_PULSEAUDIO=$(usex pulseaudio)
 			-DALSOFT_REQUIRE_SDL2=$(usex sdl)
-			-DALSOFT_REQUIRE_SNDIO=$(usex sndio)
+			# See bug #809314 for getting both options for sndio
+			-DALSOFT_{BACKEND,REQUIRE}_SNDIO=$(usex sndio)
 			-DALSOFT_UTILS=$(multilib_is_native_abi && echo "ON" || echo "OFF")
 			-DALSOFT_NO_CONFIG_UTIL=$(usex qt5 "$(multilib_is_native_abi && echo "OFF" || echo "ON")" ON)
 			-DALSOFT_EXAMPLES=OFF
