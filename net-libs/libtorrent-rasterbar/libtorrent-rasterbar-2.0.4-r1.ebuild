@@ -19,6 +19,7 @@ IUSE="+dht debug gnutls python ssl test"
 RESTRICT="!test? ( test ) test" # not yet fixed
 RDEPEND="dev-libs/boost:=[threads(+)]"
 DEPEND="
+	${RDEPEND}
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_any_dep '
@@ -28,8 +29,11 @@ DEPEND="
 		gnutls? ( net-libs/gnutls:= )
 		!gnutls? ( dev-libs/openssl:= )
 	)
-	${DEPEND}
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-boost-1.77.patch
+)
 
 pkg_setup() {
 	use python && python-any-r1_pkg_setup
