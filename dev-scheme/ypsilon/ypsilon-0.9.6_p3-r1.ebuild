@@ -33,6 +33,7 @@ src_compile() {
 
 	emake \
 		PREFIX="${EPREFIX}/usr" \
+		AS="$(tc-getAS)" \
 		CXX="$(tc-getCXX)" \
 		CPPFLAGS="${CPPFLAGS}" \
 		CXXFLAGS="${CXXFLAGS}" \
