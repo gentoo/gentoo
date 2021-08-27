@@ -40,7 +40,7 @@ RDEPEND="${LUA_DEPS}
 	dev-libs/libev
 	dev-libs/libfmt:=
 	dev-libs/libsodium:=
-	dev-libs/snowball-stemmer
+	dev-libs/snowball-stemmer:=
 	sys-apps/file
 	blas? (
 		virtual/blas
