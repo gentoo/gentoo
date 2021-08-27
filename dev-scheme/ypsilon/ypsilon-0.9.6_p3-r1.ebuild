@@ -1,14 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit epatch flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 MY_P="${P/_p/.update}"
 DESCRIPTION="R6RS-compliant Scheme implementation for real-time applications"
 HOMEPAGE="https://code.google.com/p/ypsilon/"
 SRC_URI="https://ypsilon.googlecode.com/files/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
@@ -18,21 +19,28 @@ IUSE="examples threads"
 DEPEND="app-arch/cpio"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${MY_P}"
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-asneeded.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-asneeded.patch
+)
 
 src_compile() {
 	use threads && append-flags "-pthread"
 
-	emake PREFIX="/usr" CXX="$(tc-getCXX)" \
-		CXXFLAGS="${CXXFLAGS}" LDFLAGS="$LDFLAGS"
+	# Fix build failure with GCC 11
+	# bug #787866
+	append-cppflags -DNO_TLS
+
+	emake \
+		PREFIX="${EPREFIX}/usr" \
+		CXX="$(tc-getCXX)" \
+		CPPFLAGS="${CPPFLAGS}" \
+		CXXFLAGS="${CXXFLAGS}" \
+		LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
-	emake PREFIX="/usr" DESTDIR="${D}" install
+	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" install
+
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples
 		doins example/*
