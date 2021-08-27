@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 S="${WORKDIR}/libtorrent-${PV}"
 
 RDEPEND="
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	virtual/libiconv
 	examples? ( !net-p2p/mldonkey )
 	python? (
@@ -44,7 +44,6 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	mkdir -p "${S}"/build-aux || die
 	touch "${S}"/build-aux/config.rpath || die
-	append-cxxflags -std=c++14
 	eautoreconf
 
 	default
@@ -80,8 +79,7 @@ src_configure() {
 		python_configure() {
 			econf "${myeconfargs[@]}" \
 				--enable-python-binding \
-				--with-boost-python="boost_${EPYTHON/./} \
-				--b2-args=cxxstd=14"
+				--with-boost-python="boost_${EPYTHON/./}"
 		}
 		distutils-r1_src_configure
 	fi
