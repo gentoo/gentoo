@@ -48,9 +48,9 @@ src_install() {
 
 	dodir /var/games/${PN}
 	touch "${ED}"/var/games/${PN}/${PN}{3,4,6}.hi || die "touch failed"
-	fperms 660 /var/games/${PN}/${PN}{3,4,6}.hi
 
-	fowners root:gamestat /var/games/${PN} /usr/bin/${PN}
+	fowners :gamestat /var/games/${PN}{,/${PN}{3,4,6}.hi} /usr/bin/${PN}
+	fperms 660 /var/games/${PN}/${PN}{3,4,6}.hi
 	fperms g+s /usr/bin/${PN}
 
 	make_desktop_entry xbomb XBomb
