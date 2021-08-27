@@ -1,0 +1,17 @@
+From: Arthur Zamarin <arthurzam@gentoo.org>
+Date: Fri, 27 Aug 2021 08:23:16 +0300
+Subject: [PATCH] test_syntax_error: fix for python 3.10
+
+Signed-off-by: Arthur Zamarin <arthurzam@gentoo.org>
+--- a/test_flakes.py
++++ b/test_flakes.py
+@@ -20,7 +20,8 @@ for x in []
+     pass
+ """)
+     result = testdir.runpytest("--flakes", "--ignore", testdir.tmpdir)
+-    assert "1: invalid syntax" in result.stdout.str()
++    assert ("1: invalid syntax" in result.stdout.str() or
++            "1: expected ':'" in result.stdout.str())
+     assert 'passed' not in result.stdout.str()
+ 
+ 
