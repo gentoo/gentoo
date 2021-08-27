@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop toolchain-funcs
 
@@ -13,10 +13,15 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 
-DEPEND="x11-libs/libXaw"
+DEPEND="
+	acct-group/gamestat
+	x11-libs/libX11
+	x11-libs/libXaw
+	x11-libs/libXt
+"
 RDEPEND="
 	${DEPEND}
-	acct-group/gamestat
+	media-fonts/font-misc-misc
 "
 
 PATCHES=(
@@ -27,28 +32,25 @@ PATCHES=(
 src_prepare() {
 	default
 
+	sed -i -e '/strip/d' Makefile || die
 	sed -i \
-		-e '/strip/d' \
-		-e '/^CC=/d' \
-		-e "/^CFLAGS/ { s:=.*:=${CFLAGS}: }" \
-		Makefile || die
-	sed -i \
-		-e "s:/var/tmp:/var/lib/${PN}:g" \
+		-e "s:/var/tmp:${EPREFIX}/var/games/${PN}:g" \
 		hiscore.c || die
 }
 
-src_configure() {
-	tc-export CC
+src_compile() {
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
 }
 
 src_install() {
-	default
+	emake DESTDIR="${ED}" install
+	einstalldocs
 
-	dodir /var/lib/${PN}
-	touch "${ED}"/var/lib/${PN}/${PN}{3,4,6}.hi || die "touch failed"
-	fperms 660 /var/lib/${PN}/${PN}{3,4,6}.hi
+	dodir /var/games/${PN}
+	touch "${ED}"/var/games/${PN}/${PN}{3,4,6}.hi || die "touch failed"
+	fperms 660 /var/games/${PN}/${PN}{3,4,6}.hi
 
-	fowners root:gamestat /var/lib/${PN} /usr/bin/${PN}
+	fowners root:gamestat /var/games/${PN} /usr/bin/${PN}
 	fperms g+s /usr/bin/${PN}
 
 	make_desktop_entry xbomb XBomb
