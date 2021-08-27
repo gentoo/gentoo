@@ -37,7 +37,7 @@ DEPEND="
 	>=gui-libs/libhandy-1.2.1:1=
 	>=dev-libs/libpeas-1.24.0[gtk]
 	>=app-crypt/libsecret-0.11
-	dev-libs/snowball-stemmer
+	dev-libs/snowball-stemmer:=
 	>=net-libs/libsoup-2.48:2.4
 	>=dev-libs/libxml2-2.7.8:2
 	ytnef? ( >=net-mail/ytnef-1.9.3 )
