@@ -99,8 +99,7 @@ src_prepare() {
 
 	if use systemd ; then
 		einfo "Enabling systemd notification"
-		sed '/SYSTEMD=/s@^#@@' -i pppd/Makefile.linux \
-			die
+		sed '/SYSTEMD=/s@^#@@' -i pppd/Makefile.linux || die
 	fi
 
 	# Respect our pkg-config settings.
