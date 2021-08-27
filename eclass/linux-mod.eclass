@@ -20,12 +20,14 @@
 
 # @ECLASS-VARIABLE: MODULES_OPTIONAL_USE
 # @PRE_INHERIT
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string containing the USE flag to use for making this eclass optional
 # The recommended non-empty value is 'modules'
 
 # @ECLASS-VARIABLE: MODULES_OPTIONAL_USE_IUSE_DEFAULT
 # @PRE_INHERIT
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A boolean to control the IUSE default state for the MODULES_OPTIONAL_USE USE
 # flag. Default value is unset (false). True represented by 1 or 'on', other
@@ -35,21 +37,26 @@
 # @DESCRIPTION:
 # A string containing the directory of the target kernel sources. The default value is
 # "/usr/src/linux"
+: ${KERNEL_DIR:=/usr/src/linux}
 
 # @ECLASS-VARIABLE: ECONF_PARAMS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # It's a string containing the parameters to pass to econf.
 # If this is not set, then econf isn't run.
 
 # @ECLASS-VARIABLE: BUILD_PARAMS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # It's a string with the parameters to pass to emake.
 
 # @ECLASS-VARIABLE: BUILD_TARGETS
 # @DESCRIPTION:
 # It's a string with the build targets to pass to make. The default value is "clean module"
+: ${BUILD_TARGETS:=clean module}
 
 # @ECLASS-VARIABLE: MODULE_NAMES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # It's a string containing the modules to be built automatically using the default
 # src_compile/src_install. It will only make ${BUILD_TARGETS} once in any directory.
@@ -94,12 +101,14 @@
 # This can be explicitly enabled by setting any of the following variables.
 
 # @ECLASS-VARIABLE: MODULESD_<modulename>_ENABLED
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is used to disable the modprobe.d file generation otherwise the file will be
 # always generated (unless no MODULESD_<modulename>_* variable is provided). Set to "no" to disable
 # the generation of the file and the installation of the documentation.
 
 # @ECLASS-VARIABLE: MODULESD_<modulename>_EXAMPLES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is a bash array containing a list of examples which should
 # be used. If you want us to try and take a guess set this to "guess".
@@ -111,6 +120,7 @@
 # where array_component is "<modulename> options" (see modprobe.conf(5))
 
 # @ECLASS-VARIABLE: MODULESD_<modulename>_ALIASES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is a bash array containing a list of associated aliases.
 #
@@ -121,17 +131,20 @@
 # where array_component is "wildcard <modulename>" (see modprobe.conf(5))
 
 # @ECLASS-VARIABLE: MODULESD_<modulename>_ADDITIONS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is a bash array containing a list of additional things to
 # add to the bottom of the file. This can be absolutely anything.
 # Each entry is a new line.
 
 # @ECLASS-VARIABLE: MODULESD_<modulename>_DOCS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is a string list which contains the full path to any associated
 # documents for <modulename>. These files are installed in the live tree.
 
 # @ECLASS-VARIABLE: KV_OBJ
+# @INTERNAL
 # @DESCRIPTION:
 # It's a read-only variable. It contains the extension of the kernel modules.
 
