@@ -11,9 +11,9 @@ DESCRIPTION="Library to help create and query binary XML blobs"
 HOMEPAGE="https://github.com/hughsie/libxmlb"
 SRC_URI="https://github.com/hughsie/libxmlb/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+"
-SLOT="0"
+SLOT="0/2" # libxmlb.so version
 
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="doc introspection stemmer test"
 
 RESTRICT="!test? ( test )"
@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/glib:2
 	sys-apps/util-linux
-	stemmer? ( dev-libs/snowball-stemmer )
+	stemmer? ( dev-libs/snowball-stemmer:= )
 "
 
 DEPEND="
