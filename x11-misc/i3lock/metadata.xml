@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>jakov.smolic@sartura.hr</email>
-		<name>Jakov Smolic</name>
+	<maintainer type="person">
+		<email>jsmolic@gentoo.org</email>
+		<name>Jakov Smolić</name>
 	</maintainer>
 	<maintainer type="person">
 		<email>marecki@gentoo.org</email>
