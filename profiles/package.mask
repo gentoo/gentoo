@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Anthony G. Basile <blueness@gentoo.org> (2021-08-27)
+# Masked for removal in 30 days.  Deprecated upstream.
+net-vpn/ipsec-tools
+
 # Bernard Cafarelli <voyageur@gentoo.org> (2021-08-26)
 # Preparing for final 5.0.0 release
 >=app-text/tesseract-5.0.0_beta
