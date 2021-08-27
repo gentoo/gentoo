@@ -46,7 +46,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/icu-57.1:=
 	dev-libs/libinput:=
 	>=dev-libs/dbus-glib-0.106
-	dev-libs/snowball-stemmer
+	dev-libs/snowball-stemmer:=
 	>=sys-apps/dbus-1.10.8
 	$(python_gen_cond_dep '
 		>=dev-python/apsw-3.25.2_p1[${PYTHON_USEDEP}]
