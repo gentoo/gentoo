@@ -4,9 +4,9 @@
   <maintainer type="person">
     <email>zmedico@gentoo.org</email>
   </maintainer>
-  <maintainer type="person" proxied="yes">
-    <email>jakov.smolic@sartura.hr</email>
-    <name>Jakov Smolic</name>
+  <maintainer type="person">
+    <email>jsmolic@gentoo.org</email>
+    <name>Jakov Smolić</name>
   </maintainer>
   <maintainer type="person" proxied="yes">
     <email>luka.perkov@sartura.hr</email>
