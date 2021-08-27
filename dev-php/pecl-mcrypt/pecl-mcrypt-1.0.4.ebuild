@@ -21,10 +21,3 @@ DEPEND="dev-libs/libmcrypt"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
-
-#src_prepare() {
-	# PHP Warning: Use of undefined constant MCRYPT_CBC - assumed 'MCRYPT_CBC'
-#	sed -i '/MODE3/s/MCRYPT_CBC/"MCRYPT_CBC"/g' tests/bug8040.phpt || die
-
-#	php-ext-source-r3_src_prepare
-#}
