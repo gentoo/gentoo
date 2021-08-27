@@ -31,7 +31,7 @@ RDEPEND="
 	>=dev-libs/libxml2-2.7
 	>=dev-db/sqlite-3.20.0
 	networkmanager? ( >=net-misc/networkmanager-0.8 )
-	stemmer? ( dev-libs/snowball-stemmer )
+	stemmer? ( dev-libs/snowball-stemmer:= )
 	sys-apps/util-linux
 "
 DEPEND="${RDEPEND}"
