@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_8,3_9} )
 
-inherit cmake python-any-r1
+inherit cmake python-single-r1
 
 DESCRIPTION="C++ BitTorrent implementation focusing on efficiency and scalability"
 HOMEPAGE="https://libtorrent.org/ https://github.com/arvidn/libtorrent"
@@ -15,28 +15,30 @@ LICENSE="BSD"
 SLOT="0/2.0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+dht debug gnutls python ssl test"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="!test? ( test ) test" # not yet fixed
-RDEPEND="dev-libs/boost:=[threads(+)]"
 DEPEND="
-	${RDEPEND}
+	dev-libs/boost:=[threads(+)]
 	python? (
 		${PYTHON_DEPS}
-		$(python_gen_any_dep '
-			dev-libs/boost[python,${PYTHON_USEDEP}]')
+		$(python_gen_cond_dep '
+			dev-libs/boost[python,${PYTHON_USEDEP}]
+		')
 	)
 	ssl? (
 		gnutls? ( net-libs/gnutls:= )
 		!gnutls? ( dev-libs/openssl:= )
 	)
 "
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-boost-1.77.patch
 )
 
 pkg_setup() {
-	use python && python-any-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 }
 
 src_configure() {
@@ -52,7 +54,9 @@ src_configure() {
 		-Dbuild_tests=$(usex test ON OFF)
 	)
 
-	use python && mycmakeargs+=( -Dboost-python-module-name="${EPYTHON}" )
+	# We need to drop the . from the Python version to satisfy Boost's
+	# FindBoost.cmake module, bug #793038.
+	use python && mycmakeargs+=( -Dboost-python-module-name="${EPYTHON/./}" )
 
 	cmake_src_configure
 }
