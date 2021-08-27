@@ -404,11 +404,11 @@ meson_src_test() {
 	"$@" || die "tests failed"
 }
 
-# @FUNCTION: meson_src_install
+# @FUNCTION: meson_install
 # @USAGE: [extra meson install arguments]
 # @DESCRIPTION:
-# This is the meson_src_install function.
-meson_src_install() {
+# Calls meson install with suitable arguments
+meson_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local mesoninstallargs=(
@@ -420,10 +420,17 @@ meson_src_install() {
 	set -- meson install "${mesoninstallargs[@]}"
 	echo "$@" >&2
 	"$@" || die "install failed"
+}
 
-	pushd "${S}" > /dev/null || die
+# @FUNCTION: meson_src_install
+# @USAGE: [extra meson install arguments]
+# @DESCRIPTION:
+# This is the meson_src_install function.
+meson_src_install() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	meson_install "$@"
 	einstalldocs
-	popd > /dev/null || die
 }
 
 fi
