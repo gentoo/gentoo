@@ -25,7 +25,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="
-	>=dev-libs/libfmt-6.1.2:=
+	>=dev-libs/libfmt-8.0.0:=
 "
 RDEPEND="${DEPEND}"
 
