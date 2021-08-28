@@ -37,7 +37,7 @@ dev-lang/php -jit
 # No SELinux on ARM
 net-im/prosody selinux
 
-# Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-23)
+# Jakov Smolić <jsmolic@gentoo.org> (2021-01-23)
 # Depends on media-video/rav1e which needs Rust
 >=media-libs/libheif-1.10.0 rav1e
 
