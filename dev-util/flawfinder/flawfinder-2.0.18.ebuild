@@ -15,6 +15,8 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 
+PATCHES=( "${FILESDIR}"/${P}-setup.patch )
+
 src_prepare() {
 	sed -e "s/${PN}.1.gz/${PN}.1/g" -i setup.py || die 'sed failed'
 	default
