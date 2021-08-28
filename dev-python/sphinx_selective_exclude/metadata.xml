@@ -10,7 +10,7 @@
     <name>Python</name>
   </maintainer>
   <upstream>
-    <remote-id type="pypi">sphinx_selective_exclude</remote-id>
+    <remote-id type="pypi">sphinx-selective-exclude</remote-id>
     <remote-id type="github">pfalcon/sphinx_selective_exclude</remote-id>
   </upstream>
 </pkgmetadata>
