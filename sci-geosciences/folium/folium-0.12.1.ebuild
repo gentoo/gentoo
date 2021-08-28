@@ -26,6 +26,7 @@ RDEPEND="sci-libs/branca[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}
 	test? (
 		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pandas[${PYTHON_USEDEP}]
 	)"
 BDEPEND=""
 
