@@ -25,7 +25,7 @@ RDEPEND="
 BDEPEND="test? ( ${RDEPEND} )"
 
 src_configure() {
-	meson_src_configure -Ddocdir=${PF}
+	meson_src_configure -Ddocdir=${PF} $(meson_use test)
 }
 
 pkg_postinst() {
