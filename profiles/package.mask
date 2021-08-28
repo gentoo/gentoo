@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-08-28)
+# EOL kernel with known vulnerabilities.  Please move to 5.13 or one
+# of the LTS branches.  Bug #808990.
+=sys-kernel/gentoo-kernel-5.12*
+=sys-kernel/gentoo-kernel-bin-5.12*
+=sys-kernel/vanilla-kernel-5.12*
+=virtual/dist-kernel-5.12*
+
 # Anthony G. Basile <blueness@gentoo.org> (2021-08-27)
 # Masked for removal in 30 days.  Deprecated upstream.
 net-vpn/ipsec-tools
