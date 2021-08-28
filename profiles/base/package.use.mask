@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matt Turner <mattst88@gentoo.org> (2021-08-28)
+# Mask experimental options.
+gui-libs/gtk ffmpeg vulkan
+
 # Marek Szuba <marecki@gentoo.org> (2021-07-14)
 # Even on a clean install, 8 phdf5 tests fail (Bug #808612)
 # Mask for further study.
