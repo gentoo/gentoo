@@ -8,6 +8,9 @@ inherit autotools flag-o-matic linux-info udev
 DESCRIPTION="An interface for filesystems implemented in userspace"
 HOMEPAGE="https://github.com/libfuse/libfuse"
 SRC_URI="https://github.com/libfuse/libfuse/releases/download/${P}/${P}.tar.gz"
+# For bug #809920 to avoid a gettext dependency
+# extracted from sys-devel/gettext-0.21-r1
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/iconv.m4.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -38,6 +41,8 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	# Can be dropped along with additional SRC_URI if dropping eautoreconf
+	cp "${WORKDIR}"/iconv.m4 m4/ || die
 	eautoreconf
 }
 
