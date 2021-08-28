@@ -30,7 +30,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}
 RDEPEND="${LUA_DEPS}
 	$(lua_gen_cond_dep '
 		dev-lua/LuaBitOp[${LUA_USEDEP}]
-	' lua5-{1,2})
+	')
 	acct-group/rspamd
 	acct-user/rspamd
 	app-arch/zstd:=
