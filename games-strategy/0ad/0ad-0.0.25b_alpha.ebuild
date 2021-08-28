@@ -5,7 +5,7 @@ EAPI=8
 
 WX_GTK_VER="3.0-gtk3"
 PYTHON_COMPAT=( python3_{7..9} )
-inherit desktop toolchain-funcs multiprocessing python-any-r1 verify-sig wxwidgets xdg
+inherit desktop toolchain-funcs multiprocessing python-any-r1 wxwidgets xdg
 
 DESCRIPTION="A free, real-time strategy game"
 HOMEPAGE="https://play0ad.com/"
@@ -21,8 +21,8 @@ elif [[ ${PV} == *_pre* ]]; then
 	SRC_URI="https://github.com/0ad/0ad/archive/${ZEROAD_GIT_REVISION}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${ZEROAD_GIT_REVISION}"
 else
-	inherit verify-sig
-	IUSE+="verify-sig"
+	# Trailing whitespace for IUSE append below
+	IUSE="verify-sig "
 	MINISIGN_KEY="RWT0hFWv57I2RFoJwLVjxEr44JOq/RkEx1oT0IA3PPPICnSF7HFKW1CT"
 	MY_P="0ad-${PV/_/-}"
 	SRC_URI="
@@ -37,7 +37,7 @@ else
 fi
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="editor +lobby nvtt pch test"
+IUSE+="editor +lobby nvtt pch test"
 
 RESTRICT="test"
 CHECKREQS_DISK_BUILD="9000M" # 8769732 KiB (8.3 GiB) for alpha 25
@@ -59,7 +59,7 @@ BDEPEND="
 # Upstream uses minisign which is not supported by verify-sign, bug #783066.
 # Signatures are only provided for releases.
 if [[ ( ${PV} != *9999 ) && ( ${PV} != *_p* ) ]]; then
-	BDEPEND+="app-crypt/minisign"
+	BDEPEND+=" app-crypt/minisign"
 fi
 
 # Removed dependency on nvtt as we use the bundled one.
