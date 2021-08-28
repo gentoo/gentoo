@@ -81,7 +81,7 @@ CDEPEND="
 	!!x11-drivers/nvidia-drivers[-libglvnd(+)]
 "
 DEPEND="${CDEPEND}
-	>=x11-base/xorg-proto-2018.4
+	>=x11-base/xorg-proto-2021.4.99.2
 	>=x11-libs/xtrans-1.3.5
 	dmx? (
 		doc? (
