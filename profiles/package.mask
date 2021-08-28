@@ -429,11 +429,6 @@ sys-libs/db:5.1
 >=sci-libs/proj-8.0.0
 >=sci-geosciences/qmapshack-1.16
 
-# Sam James <sam@gentoo.org> (2021-02-18)
-# 0.9.27 included a regression wrt deletes
-# bug #768948
-=dev-db/lmdb-0.9.27
-
 # Lars Wendler <polynomial-c@gentoo.org> (2021-02-15)
 # Mask development versions now that they were bumped...
 =net-misc/kea-1.9*
