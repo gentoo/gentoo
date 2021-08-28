@@ -38,7 +38,11 @@ RDEPEND+="
 	>=dev-python/tree-sitter-0.19.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		dev-vcs/git
+	)
 "
 
 distutils_enable_tests setup.py
