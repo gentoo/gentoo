@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">astor</remote-id>
+		<remote-id type="github">berkerpeksag/astor</remote-id>
 	</upstream>
 </pkgmetadata>
