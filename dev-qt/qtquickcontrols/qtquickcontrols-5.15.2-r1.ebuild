@@ -1,7 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit qt5-build
 
 DESCRIPTION="Set of Qt Quick controls to create complete user interfaces (deprecated)"
@@ -13,10 +14,10 @@ fi
 IUSE="+widgets"
 
 DEPEND="
-	~dev-qt/qtcore-${PV}
-	~dev-qt/qtdeclarative-${PV}
-	~dev-qt/qtgui-${PV}
-	widgets? ( ~dev-qt/qtwidgets-${PV} )
+	=dev-qt/qtcore-${QT5_PV}*
+	=dev-qt/qtdeclarative-${QT5_PV}*
+	=dev-qt/qtgui-${QT5_PV}*
+	widgets? ( =dev-qt/qtwidgets-${QT5_PV}* )
 "
 RDEPEND="${DEPEND}"
 

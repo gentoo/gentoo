@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 QT5_MODULE="qtconnectivity"
 inherit qt5-build
@@ -15,14 +15,14 @@ fi
 IUSE="qml"
 
 RDEPEND="
-	~dev-qt/qtconcurrent-${PV}
-	~dev-qt/qtcore-${PV}:5=
-	~dev-qt/qtdbus-${PV}
+	=dev-qt/qtconcurrent-${QT5_PV}*
+	=dev-qt/qtcore-${QT5_PV}*:5=
+	=dev-qt/qtdbus-${QT5_PV}*
 	>=net-wireless/bluez-5:=
-	qml? ( ~dev-qt/qtdeclarative-${PV} )
+	qml? ( =dev-qt/qtdeclarative-${QT5_PV}* )
 "
 DEPEND="${RDEPEND}
-	~dev-qt/qtnetwork-${PV}
+	=dev-qt/qtnetwork-${QT5_PV}*
 "
 
 PATCHES=( "${FILESDIR}/${P}-gcc11.patch" ) # bug 752012

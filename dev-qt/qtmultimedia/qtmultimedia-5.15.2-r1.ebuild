@@ -1,7 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit qt5-build
 
 DESCRIPTION="Multimedia (audio, video, radio, camera) library for the Qt5 framework"
@@ -13,9 +14,9 @@ fi
 IUSE="alsa gles2-only gstreamer openal pulseaudio qml widgets"
 
 RDEPEND="
-	~dev-qt/qtcore-${PV}
-	~dev-qt/qtgui-${PV}[gles2-only=]
-	~dev-qt/qtnetwork-${PV}
+	=dev-qt/qtcore-${QT5_PV}*
+	=dev-qt/qtgui-${QT5_PV}*[gles2-only=]
+	=dev-qt/qtnetwork-${QT5_PV}*
 	alsa? ( media-libs/alsa-lib )
 	gstreamer? (
 		dev-libs/glib:2
@@ -25,13 +26,13 @@ RDEPEND="
 	)
 	pulseaudio? ( media-sound/pulseaudio[glib] )
 	qml? (
-		~dev-qt/qtdeclarative-${PV}
-		gles2-only? ( ~dev-qt/qtgui-${PV}[egl] )
+		=dev-qt/qtdeclarative-${QT5_PV}*
+		gles2-only? ( =dev-qt/qtgui-${QT5_PV}*[egl] )
 		openal? ( media-libs/openal )
 	)
 	widgets? (
-		~dev-qt/qtopengl-${PV}
-		~dev-qt/qtwidgets-${PV}[gles2-only=]
+		=dev-qt/qtopengl-${QT5_PV}*
+		=dev-qt/qtwidgets-${QT5_PV}*[gles2-only=]
 	)
 "
 DEPEND="${RDEPEND}
