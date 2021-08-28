@@ -2,11 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 inherit go-module systemd tmpfiles
 
-# This is obtained using ./build_dist.sh tailscale.com/cmd/tailscaled in the
-# upstream repo and substituting ${PV} appropriately.
+# These settings are obtained by running ./build_dist.sh shellvars` in
+# the upstream repo and substituting ${PV} appropriately.
 VERSION_SHORT="${PV}"
 VERSION_LONG="${PV}-t62a458f7f"
 VERSION_GIT_HASH="62a458f7f4474ac2e26676ed8f06d43e80e5a34a"
@@ -1034,6 +1033,7 @@ src_install() {
 	dosbin tailscaled
 	dobin tailscale
 
+	systemd_dounit cmd/tailscaled/tailscaled.service
 	insinto /etc/default
 	newins cmd/tailscaled/tailscaled.defaults tailscaled
 	keepdir /var/lib/${PN}
@@ -1043,7 +1043,6 @@ src_install() {
 
 	newinitd "${FILESDIR}/${PN}d.initd" ${PN}
 	newconfd "${FILESDIR}/${PN}d.confd" ${PN}
-	systemd_dounit cmd/tailscaled/tailscaled.service
 }
 
 pkg_postinst() {
