@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN="OpenCL-Headers"
 MY_P="${MY_PN}-${PV}"
@@ -12,11 +12,7 @@ SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
-
-# To avoid file collisions in /usr/include/CL/
-DEPEND="!app-eselect/eselect-opencl"
-RDEPEND="${DEPEND}"
+KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}/${MY_P}"
 
