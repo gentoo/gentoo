@@ -21,6 +21,7 @@ S="${WORKDIR}/${MY_P}"
 
 RDEPEND="virtual/udev
 	acct-group/video
+	!dev-libs/light
 	${PYTHON_DEPS}
 	!x11-apps/xbacklight"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
