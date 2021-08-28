@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 PATCHES=(
 	"${FILESDIR}"/${P}-scm.patch
 	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-setup.patch
 )
 
 RDEPEND="sci-libs/branca[${PYTHON_USEDEP}]
