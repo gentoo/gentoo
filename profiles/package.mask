@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2021-08-28)
+# Upstream changed toml to tomli handling, which resulted in a lot of
+# breakage in various packages.
+# Reported upstream in https://github.com/pypa/setuptools_scm/issues/611
+=dev-python/setuptools_scm-6.2.0
+
 # Stephan Hartmann <sultan@gentoo.org> (2021-08-28)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
