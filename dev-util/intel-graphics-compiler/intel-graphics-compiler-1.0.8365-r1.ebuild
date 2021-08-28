@@ -7,8 +7,9 @@ CMAKE_BUILD_TYPE="Release"
 LLVM_MAX_SLOT="10"
 MY_PN="igc"
 MY_P="${MY_PN}-${PV}"
+PYTHON_COMPAT=( python3_{8..10} )
 
-inherit cmake flag-o-matic llvm
+inherit cmake flag-o-matic llvm python-any-r1
 
 DESCRIPTION="LLVM-based OpenCL compiler for OpenCL targetting Intel Gen graphics hardware"
 HOMEPAGE="https://github.com/intel/intel-graphics-compiler"
@@ -27,7 +28,10 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-BDEPEND=">=sys-devel/lld-${LLVM_MAX_SLOT}"
+BDEPEND="
+	${PYTHON_DEPS}
+	>=sys-devel/lld-${LLVM_MAX_SLOT}
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.9-no_Werror.patch"
@@ -37,6 +41,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.0.8365-cmake-project.patch"
 	"${FILESDIR}/${PN}-1.0.8365-cmake-minimum-version.patch"
 )
+
+pkg_setup() {
+	llvm_pkg_setup
+	python-any-r1_pkg_setup
+}
 
 src_configure() {
 	# Since late March 2020 cmake.eclass does not set -DNDEBUG any more,
@@ -52,10 +61,9 @@ src_configure() {
 		-DIGC_OPTION__ARCHITECTURE_TARGET="Linux64"
 		-DIGC_OPTION__CLANG_MODE="Prebuilds"
 		-DIGC_OPTION__LLD_MODE="Prebuilds"
+		-DIGC_OPTION__LLDELF_H_DIR="${EPREFIX}/usr/include/lld/Common"
 		-DIGC_OPTION__LLVM_MODE="Prebuilds"
 		-DIGC_OPTION__LLVM_PREFERRED_VERSION="${LLVM_MAX_SLOT}"
-		-DIGC_OPTION__SPIRV_TRANSLATOR_MODE="Prebuilds"
-		-DIGC_OPTION__USE_KHRONOS_SPIRV_TRANSLATOR_IN_VC="ON"
 
 		# VectorCompiler needs work, as at the moment upstream
 		# only supports building vc-intrinsics in place.
