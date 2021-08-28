@@ -3,7 +3,7 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..3} luajit )
+LUA_COMPAT=( lua5-{1..2} luajit )
 
 inherit cmake lua-single pax-utils systemd tmpfiles
 
