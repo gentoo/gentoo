@@ -94,6 +94,8 @@ PATCHES=(
 
 pkg_setup() {
 	use editor && setup-wxwidgets
+
+	python-any-r1_pkg_setup
 }
 
 src_unpack() {
