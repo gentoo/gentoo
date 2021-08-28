@@ -21,10 +21,11 @@ RDEPEND="
 	sys-apps/util-linux
 	sys-libs/efivar
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	sys-boot/gnu-efi
+"
 BDEPEND="
 	sys-apps/help2man
-	sys-boot/gnu-efi
 	virtual/pkgconfig
 "
 
