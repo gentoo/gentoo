@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit qt5-build
 
@@ -14,13 +14,11 @@ fi
 IUSE="qml"
 
 DEPEND="
-	~dev-qt/qtcore-${PV}
-	~dev-qt/qtnetwork-${PV}
-	qml? ( ~dev-qt/qtdeclarative-${PV} )
+	=dev-qt/qtcore-${QT5_PV}*
+	=dev-qt/qtnetwork-${QT5_PV}*
+	qml? ( =dev-qt/qtdeclarative-${QT5_PV}* )
 "
-RDEPEND="${DEPEND}
-	dev-qt/qtchooser
-"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	qt_use_disable_mod qml qml \
