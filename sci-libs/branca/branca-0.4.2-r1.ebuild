@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-python/selenium[${PYTHON_USEDEP}]
 		dev-python/nbconvert[${PYTHON_USEDEP}]
+		dev-python/ipykernel[${PYTHON_USEDEP}]
 	)"
 BDEPEND=""
 
