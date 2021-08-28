@@ -1,7 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 QT5_MODULE="qtlocation"
 inherit qt5-build
 
@@ -14,9 +15,9 @@ fi
 IUSE="geoclue +qml"
 
 RDEPEND="
-	~dev-qt/qtcore-${PV}
-	geoclue? ( ~dev-qt/qtdbus-${PV} )
-	qml? ( ~dev-qt/qtdeclarative-${PV} )
+	=dev-qt/qtcore-${QT5_PV}*
+	geoclue? ( =dev-qt/qtdbus-${QT5_PV}* )
+	qml? ( =dev-qt/qtdeclarative-${QT5_PV}* )
 "
 DEPEND="${RDEPEND}"
 PDEPEND="

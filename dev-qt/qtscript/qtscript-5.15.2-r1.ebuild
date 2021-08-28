@@ -1,7 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit qt5-build
 
 DESCRIPTION="Application scripting library for the Qt5 framework (deprecated)"
@@ -13,10 +14,10 @@ fi
 IUSE="+jit scripttools"
 
 DEPEND="
-	~dev-qt/qtcore-${PV}
+	=dev-qt/qtcore-${QT5_PV}*
 	scripttools? (
-		~dev-qt/qtgui-${PV}
-		~dev-qt/qtwidgets-${PV}
+		=dev-qt/qtgui-${QT5_PV}*
+		=dev-qt/qtwidgets-${QT5_PV}*
 	)
 "
 RDEPEND="${DEPEND}"
