@@ -1,0 +1,37 @@
+From d0f801a178755504c2f8956841823b2aa6a124c4 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conikost@gentoo.org>
+Date: Sat, 28 Aug 2021 00:57:59 +0200
+Subject: [PATCH] IGC: CMakeLists: drop git
+
+Dropping git, as we don't have any git release.
+
+Signed-off-by: Conrad Kostecki <conrad@kostecki.com>
+---
+ visa/iga/IGALibrary/CMakeLists.txt | 11 -----------
+ 1 file changed, 11 deletions(-)
+
+diff --git a/visa/iga/IGALibrary/CMakeLists.txt b/visa/iga/IGALibrary/CMakeLists.txt
+index 061476d94..2fd44807c 100644
+--- a/visa/iga/IGALibrary/CMakeLists.txt
++++ b/visa/iga/IGALibrary/CMakeLists.txt
+@@ -14,17 +14,6 @@ set(CMAKE_CXX_STANDARD 14)
+ 
+ ##############################################
+ # compute the version string from the git repo
+-execute_process(
+-    COMMAND git rev-parse --short HEAD
+-    OUTPUT_VARIABLE GIT_COMMIT
+-    OUTPUT_STRIP_TRAILING_WHITESPACE
+-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+-#
+-execute_process(
+-    COMMAND git diff-index --quiet HEAD --
+-    RESULT_VARIABLE GIT_DIRTY
+-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+-
+ set(IGA_VERSION_SUFFIX "")
+ if(GIT_COMMIT)
+     set(IGA_VERSION_DIRTY_TAG "")
+-- 
+2.33.0
+
