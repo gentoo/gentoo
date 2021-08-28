@@ -22,7 +22,12 @@ RDEPEND="
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 "
 
-BDEPEND="test? ( app-doc/doxygen )"
+BDEPEND="
+	test? (
+		app-doc/doxygen
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx doc
