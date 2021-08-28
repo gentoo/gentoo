@@ -52,7 +52,8 @@ src_prepare() {
 	eapply_user
 
 	local confCCOPTS="${CFLAGS}"
-	local confENVDEF="-DMAXDAEMONS=64 -DHAS_GETHOSTBYNAME2=1"
+	# See bug #808954 for FLOCK
+	local confENVDEF="-DMAXDAEMONS=64 -DHAS_GETHOSTBYNAME2=1 -DHASFLOCK=1"
 	local confLDOPTS="${LDFLAGS}"
 	local confLIBS=
 	local confMAPDEF="-DMAP_REGEX"
