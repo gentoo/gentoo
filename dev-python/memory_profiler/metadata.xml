@@ -7,10 +7,10 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">memory_profiler</remote-id>
+    <remote-id type="github">pythonprofilers/memory_profiler</remote-id>
     <maintainer status="unknown">
       <email>f@bianp.net</email>
       <name>Fabian Pedregosa</name>
     </maintainer>
-    <remote-id type="github">fabianp/memory_profiler</remote-id>
   </upstream>
 </pkgmetadata>
