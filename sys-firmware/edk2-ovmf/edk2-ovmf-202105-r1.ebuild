@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 
 inherit python-any-r1 readme.gentoo-r1
 
@@ -54,6 +54,7 @@ DEPEND+="
 RDEPEND=""
 
 PATCHES=(
+	"${FILESDIR}/${PN}-202105-werror.patch"
 )
 
 S="${WORKDIR}/edk2-edk2-stable${PV}"
