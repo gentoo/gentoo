@@ -4,6 +4,7 @@
 	<upstream>
 		<remote-id type="github">zmedico/socket-burst-dampener</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
 	</maintainer>
