@@ -15,10 +15,8 @@ SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~ppc64 x86"
 IUSE=""
 
-# At the moment, newer versions of setuptools_scm break this package:
-# https://bugs.gentoo.org/810808
 RDEPEND="
-	<dev-python/setuptools_scm-6.1.0[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 "
 BDEPEND="${RDEPEND}"
 
