@@ -36,3 +36,7 @@ src_prepare() {
 	rm -r tests/selenium || die
 	default
 }
+
+python_test() {
+	epytest -m 'not web'
+}
