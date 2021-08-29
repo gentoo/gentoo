@@ -144,8 +144,6 @@ dev-libs/nanomsg doc
 kde-plasma/plasma-meta bluetooth
 #  - media-gfx/nvidia-texture-tools
 media-libs/devil nvtt
-#  - dev-lang/php
-media-libs/libvpx doc
 #  - dev-cpp/glog, sci-libs/vtk
 media-libs/opencv contribsfm glog vtk
 #  - net-misc/ofono
