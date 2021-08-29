@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">django-polymorphic</remote-id>
+		<remote-id type="github">django-polymorphic/django-polymorphic</remote-id>
 	</upstream>
 </pkgmetadata>
