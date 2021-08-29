@@ -90,6 +90,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-build-Fix-detection-for-pre-compiled-css-files.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		# GDK backends
