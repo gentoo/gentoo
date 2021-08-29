@@ -30,7 +30,7 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}
-	gtk? ( app-crypt/gcr )
+	gtk? ( app-crypt/gcr[gtk] )
 "
 BDEPEND="
 	sys-devel/gettext
