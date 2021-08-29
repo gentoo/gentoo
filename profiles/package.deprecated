@@ -26,11 +26,6 @@ dev-perl/Mail-Sender
 dev-perl/Gtk2-SourceView2
 dev-perl/Gtk2-Unique
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-18)
-# version older than 3 don't compile with java 1.5+ and will be removed
-# see: https://bugs.gentoo.org/779472
-<dev-java/commons-lang-3.6
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-14)
 # because of unmasking java 11, which does not support bytecode older
 # than 1.6, those are deprecated in the ebuild. also, as the lowest
