@@ -6,7 +6,7 @@ OLD_PN=udev-gentoo-scripts
 OLD_P=${OLD_PN}-${PV}
 
 if [ "${PV}" = "9999" ]; then
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/${OLD_PN}.git"
+	EGIT_REPO_URI="https://anongit.gentoo.org/proj/${OLD_PN}.git"
 	inherit git-r3
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/${OLD_PN}.git/snapshot/${OLD_P}.tar.gz -> ${P}.tar.gz"
