@@ -1,0 +1,35 @@
+From c73c99d6b024047d9f9e53e263be56093b6bf986 Mon Sep 17 00:00:00 2001
+From: Matt Smith <matt@offtopica.uk>
+Date: Sun, 29 Aug 2021 19:15:01 +0100
+Subject: [PATCH] Prevent rendering glyphs twice
+
+Characters are loaded with FT_LOAD_RENDER.  Calling FT_Render_Glyph
+again causes an error in Freetype 2.11.0 and later.
+
+Thanks to Stephan Hartmann <sultan@gentoo.org> for debugging and creating initial patch.
+
+Bug: https://bugs.gentoo.org/809611
+---
+ src/font.cc | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/src/font.cc b/src/font.cc
+index f8da582..350a1a6 100644
+--- a/src/font.cc
++++ b/src/font.cc
+@@ -255,12 +255,6 @@ namespace zutty
+             std::to_string (c));
+       }
+ 
+-      if (FT_Render_Glyph (face->glyph, FT_RENDER_MODE_NORMAL))
+-         throw std::runtime_error (
+-            std::string ("FreeType: Failed to render glyph for char ") +
+-            std::to_string (c));
+-
+-
+       // destination pixel offset
+       const unsigned int dx = face->glyph->bitmap_left > 0
+                             ? face->glyph->bitmap_left : 0;
+-- 
+2.33.0
+
