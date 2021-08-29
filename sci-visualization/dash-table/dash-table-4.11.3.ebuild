@@ -18,3 +18,12 @@ KEYWORDS="~amd64 ~x86"
 DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+distutils_enable_tests pytest
+
+python_prepare_all() {
+	# Needs percy - not available
+	rm -r tests/selenium || die
+
+	distutils-r1_python_prepare_all
+}
