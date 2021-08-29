@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-08-29)
+# Broken for the past 5 years (#585942), no new upstream release in over
+# 5 years. Same issues as sci-biology/wgs-assembler, use a modern
+# assembler like sci-biology/abyss or canu.
+# Bug #585942, #731880, #808667, removal in 30 days.
+sci-biology/mira
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2021-08-28)
 # Both versions have several bugs and have been pulled off PyPI
 # Bugs #810808 and #810790.
