@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 DIST_AUTHOR=AKZHAN
 DIST_VERSION=0.54
 inherit perl-module
@@ -9,8 +10,6 @@ inherit perl-module
 DESCRIPTION="Write tests in a declarative specification style"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Carp
@@ -23,7 +22,7 @@ RDEPEND="
 	dev-perl/Test-Trap
 	dev-perl/Tie-IxHash
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/Devel-GlobalPhase
