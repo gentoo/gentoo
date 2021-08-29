@@ -216,7 +216,7 @@ multilib_src_configure() {
 		if [[ ${PV} == *9999 ]] ; then
 			myeconfargs+=( --enable-asciidoc )
 		else
-			# We ship pre-generated man-pages for releases
+			# Upstream is shipping pre-generated man-pages for releases
 			myeconfargs+=( --disable-asciidoc )
 		fi
 	else
