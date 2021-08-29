@@ -10,6 +10,7 @@
 		<name>Lars Wendler</name>
 	</maintainer>
 	<use>
+		<flag name="delayacct">Enable Linux delay accounting support via <pkg>dev-libs/libnl</pkg></flag>
 		<flag name="hwloc">Use <pkg>sys-apps/hwloc</pkg> for CPU affinity support</flag>
 		<flag name="openvz">Enable openvz support</flag>
 		<flag name="vserver">Enable vserver support</flag>
