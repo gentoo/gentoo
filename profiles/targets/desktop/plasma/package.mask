@@ -1,0 +1,5 @@
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Breaks build of kde-plasma/kwin, bug 810511, KDE-bug 440372
+~media-libs/libglvnd-1.3.4
