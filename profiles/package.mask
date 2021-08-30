@@ -209,7 +209,6 @@ mail-client/trojita
 perl-core/ExtUtils-MakeMaker
 perl-core/ExtUtils-Manifest
 perl-core/File-Path
-perl-core/Getopt-Long
 
 # Joonas Niilola <juippis@gentoo.org> (2021-07-29)
 # Upstream provided migration instructions from 2. -> 3. update,
