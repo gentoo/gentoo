@@ -207,7 +207,6 @@ mail-client/trojita
 # are newer, and no virtuals currently pull these packages.
 # Removal in 30 days.
 perl-core/ExtUtils-MakeMaker
-perl-core/ExtUtils-Manifest
 
 # Joonas Niilola <juippis@gentoo.org> (2021-07-29)
 # Upstream provided migration instructions from 2. -> 3. update,
