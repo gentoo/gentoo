@@ -49,6 +49,10 @@ DOCS=( AUTHORS NEWS README ChangeLog )
 
 S="${WORKDIR}/${PN}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc-11.patch
+)
+
 src_prepare() {
 	use cuda && cuda_src_prepare
 	cmake_src_prepare
@@ -78,6 +82,8 @@ src_install() {
 	local i docdir="${S}"
 
 	cmake_src_install
+
+	python_optimize
 
 	insinto /usr/share/${PN}/
 	doins "${BUILD_DIR}/myconfig-sample.hpp"
