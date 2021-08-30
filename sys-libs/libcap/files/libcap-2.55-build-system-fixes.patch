@@ -1,4 +1,4 @@
-From 4cdf9413b7b4ff27299c14f05d7a6fa038e4d59f Mon Sep 17 00:00:00 2001
+From abedd3c42100a636ae14a5c860ee2ed236af66ab Mon Sep 17 00:00:00 2001
 From: Sam James <sam@gentoo.org>
 Date: Mon, 30 Aug 2021 07:04:15 +0100
 Subject: [PATCH] Build system fixes
@@ -19,15 +19,6 @@ and was forward-ported by Lars Wendler <polynomial-c@gentoo.org>.
 Bug: https://bugs.gentoo.org/808807 (given this is where discussion occurred)
 Bug: https://bugzilla.kernel.org/show_bug.cgi?id=214085
 Signed-off-by: Sam James <sam@gentoo.org>
----
- Make.Rules       | 13 +++++--------
- Makefile         |  1 -
- pam_cap/Makefile |  2 +-
- progs/Makefile   |  6 +++---
- 4 files changed, 9 insertions(+), 13 deletions(-)
-
-diff --git a/Make.Rules b/Make.Rules
-index 66207b4..1e0366e 100644
 --- a/Make.Rules
 +++ b/Make.Rules
 @@ -64,24 +64,20 @@ KERNEL_HEADERS := $(topdir)/libcap/include/uapi
@@ -68,8 +59,6 @@ index 66207b4..1e0366e 100644
  INDENT := $(shell if [ -n "$$(which indent 2>/dev/null)" ]; then echo "| indent -kr" ; fi)
  
  # SHARED tracks whether or not the SHARED libraries (libcap.so,
-diff --git a/Makefile b/Makefile
-index 1c195dd..3f71b12 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -17,7 +17,6 @@ ifeq ($(GOLANG),yes)
@@ -80,24 +69,89 @@ index 1c195dd..3f71b12 100644
  	$(MAKE) -C progs $@
  	$(MAKE) -C doc $@
  	$(MAKE) -C kdebug $@
-diff --git a/pam_cap/Makefile b/pam_cap/Makefile
-index d5da6be..0cba3e1 100644
+--- a/libcap/Makefile
++++ b/libcap/Makefile
+@@ -111,7 +111,7 @@ loader.txt: empty
+ 	$(OBJCOPY) --dump-section .interp=$@ $< /dev/null
+ 
+ cap_magic.o: execable.h execable.c loader.txt
+-	$(CC) $(CFLAGS) $(CPPFLAGS) -DLIBRARY_VERSION=\"$(LIBTITLE)-$(VERSION).$(MINOR)\" -DSHARED_LOADER=\"$(shell cat loader.txt)\" -c execable.c -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) -DLIBRARY_VERSION=\"$(LIBTITLE)-$(VERSION).$(MINOR)\" -DSHARED_LOADER=\"$(shell cat loader.txt)\" $(LDFLAGS) -c execable.c -o $@
+ 
+ $(CAPLIBNAME) $(MAJCAPLIBNAME) $(MINCAPLIBNAME): $(CAPOBJS) $(CAPMAGICOBJ)
+ 	$(LD) $(CFLAGS) $(LDFLAGS) -Wl,-soname,$(MAJCAPLIBNAME) -o $(MINCAPLIBNAME) $^ $(MAGIC)
+@@ -119,22 +119,22 @@ $(CAPLIBNAME) $(MAJCAPLIBNAME) $(MINCAPLIBNAME): $(CAPOBJS) $(CAPMAGICOBJ)
+ 	ln -sf $(MAJCAPLIBNAME) $(CAPLIBNAME)
+ 
+ psx_magic.o: execable.h execable.c loader.txt
+-	$(CC) $(CFLAGS) $(CPPFLAGS) -DLIBRARY_VERSION=\"$(PSXTITLE)-$(VERSION).$(MINOR)\" -DSHARED_LOADER=\"$(shell cat loader.txt)\" -c execable.c -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) -DLIBRARY_VERSION=\"$(PSXTITLE)-$(VERSION).$(MINOR)\" -DSHARED_LOADER=\"$(shell cat loader.txt)\" $(LDFLAGS) -c execable.c -o $@
+ 
+ $(PSXLIBNAME) $(MAJPSXLIBNAME) $(MINPSXLIBNAME): $(PSXOBJS) include/sys/psx_syscall.h $(PSXMAGICOBJ)
+-	$(LD) $(CFLAGS) $(LDFLAGS) -Wl,-soname,$(MAJPSXLIBNAME) -o $(MINPSXLIBNAME) $(PSXOBJS) $(PSXMAGICOBJ) $(MAGIC) $(PSXLINKFLAGS)
++	$(LD) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -Wl,-soname,$(MAJPSXLIBNAME) -o $(MINPSXLIBNAME) $(PSXOBJS) $(PSXMAGICOBJ) $(MAGIC) $(PSXLINKFLAGS)
+ 	ln -sf $(MINPSXLIBNAME) $(MAJPSXLIBNAME)
+ 	ln -sf $(MAJPSXLIBNAME) $(PSXLIBNAME)
+ endif
+ 
+ %.o: %.c $(INCLS)
+-	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -c $< -o $@
+ 
+ cap_text.o: cap_text.c $(USE_GPERF_OUTPUT) $(INCLS)
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(INCLUDE_GPERF_OUTPUT) -c $< -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(INCLUDE_GPERF_OUTPUT) -c $< -o $@
+ 
+ cap_test: cap_test.c libcap.h $(CAPOBJS)
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $< $(CAPOBJS) -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $< $(CAPOBJS) -o $@
+ 
+ libcapsotest: $(CAPLIBNAME)
+ 	./$(CAPLIBNAME)
 --- a/pam_cap/Makefile
 +++ b/pam_cap/Makefile
-@@ -65,7 +65,7 @@ test_pam_cap: test_pam_cap.c pam_cap.c ../libcap/libcap.a
- 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ test_pam_cap.c $(LIBCAPLIB) $(LDFLAGS) --static
+@@ -17,10 +17,10 @@ install: all
+ 	$(MAKE) -C ../libcap loader.txt
+ 
+ execable.o: execable.c ../libcap/execable.h ../libcap/loader.txt
+-	$(CC) $(CFLAGS) $(CPPFLAGS) -DLIBCAP_VERSION=\"libcap-$(VERSION).$(MINOR)\" -DSHARED_LOADER=\"$(shell cat ../libcap/loader.txt)\" -c execable.c -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) -DLIBCAP_VERSION=\"libcap-$(VERSION).$(MINOR)\" -DSHARED_LOADER=\"$(shell cat ../libcap/loader.txt)\" $(LDFLAGS) -c execable.c -o $@
+ 
+ pam_cap.so: pam_cap.o execable.o pam_cap_linkopts
+-	cat pam_cap_linkopts | xargs -e $(LD) -o $@ pam_cap.o execable.o $(LIBCAPLIB) $(LDFLAGS)
++	cat pam_cap_linkopts | xargs -e $(LD) $(LDFLAGS) -o $@ pam_cap.o execable.o $(LIBCAPLIB)
+ 
+ # Some distributions force link everything at compile time, and don't
+ # take advantage of libpam's dlopen runtime options to resolve ill
+@@ -51,21 +51,21 @@ pam_cap_linkopts: lazylink.so
+ 	./lazylink.so || echo "-lpam" >> $@
+ 
+ lazylink.so: lazylink.c ../libcap/execable.h ../libcap/loader.txt
+-	$(LD) -o $@ $(CFLAGS) $(CPPFLAGS) lazylink.c -DSHARED_LOADER=\"$(shell cat ../libcap/loader.txt)\" $(LDFLAGS) -Wl,-e,__so_start
++	$(LD) -o $@ $(CFLAGS) $(CPPFLAGS) -DSHARED_LOADER=\"$(shell cat ../libcap/loader.txt)\" $(LDFLAGS) lazylink.c -Wl,-e,__so_start
+ endif
+ endif
+ 
+ pam_cap.o: pam_cap.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -c $< -o $@
+ 
+ ../libcap/libcap.a:
+ 	$(MAKE) -C ../libcap libcap.a
+ 
+ test_pam_cap: test_pam_cap.c pam_cap.c ../libcap/libcap.a
+-	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ test_pam_cap.c $(LIBCAPLIB) $(LDFLAGS) --static
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ test_pam_cap.c $(LIBCAPLIB) --static
  
  testlink: test.c pam_cap.o
 -	$(CC) $(CFLAGS) -o $@ $+ -lpam -ldl $(LIBCAPLIB) $(LDFLAGS)
-+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ $+ -lpam -ldl $(LIBCAPLIB) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $+ -lpam -ldl $(LIBCAPLIB)
  
  test: testlink test_pam_cap pam_cap.so
  	$(MAKE) testlink
-diff --git a/progs/Makefile b/progs/Makefile
-index 51e9a63..98fe1b0 100644
 --- a/progs/Makefile
 +++ b/progs/Makefile
-@@ -22,13 +22,13 @@ DEPS = ../libcap/libcap.a
+@@ -22,16 +22,16 @@ DEPS = ../libcap/libcap.a
  endif
  
  ../libcap/libcap.a:
@@ -110,10 +164,78 @@ index 51e9a63..98fe1b0 100644
  
  $(BUILD): %: %.o $(DEPS)
 -	$(CC) $(CFLAGS) -o $@ $< $(LIBCAPLIB) $(LDFLAGS)
-+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ $< $(LIBCAPLIB) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $< $(LIBCAPLIB)
  
  %.o: %.c $(INCS)
- 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
--- 
-2.33.0
-
+-	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -c $< -o $@
+ 
+ install: all
+ 	mkdir -p -m 0755 $(FAKEROOT)$(SBINDIR)
+@@ -49,10 +49,10 @@ capshdoc.h.cf: capshdoc.h ./mkcapshdoc.sh
+ 	diff -u capshdoc.h $@ || (rm $@ ; exit 1)
+ 
+ capsh: capsh.c capshdoc.h.cf $(DEPS)
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(CAPSH_SHELL) -o $@ $< $(LIBCAPLIB) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(CAPSH_SHELL) -o $@ $< $(LIBCAPLIB)
+ 
+ tcapsh-static: capsh.c capshdoc.h.cf $(DEPS)
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(CAPSH_SHELL) -o $@ $< $(LIBCAPLIB) --static
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(CAPSH_SHELL) -o $@ $< $(LIBCAPLIB) --static
+ 
+ uns_test: ../tests/uns_test.c
+ 	$(MAKE) -C ../tests uns_test
+--- a/tests/Makefile
++++ b/tests/Makefile
+@@ -66,17 +66,17 @@ run_psx_test: psx_test
+ 	./psx_test
+ 
+ psx_test: psx_test.c $(DEPS)
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $< -o $@ $(LINKEXTRA) $(LIBPSXLIB) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $< -o $@ $(LINKEXTRA) $(LIBPSXLIB)
+ 
+ run_libcap_psx_test: libcap_psx_test
+ 	./libcap_psx_test
+ 
+ libcap_psx_test: libcap_psx_test.c $(DEPS)
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $< -o $@ $(LINKEXTRA) $(LIBCAPLIB) $(LIBPSXLIB) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $< -o $@ $(LINKEXTRA) $(LIBCAPLIB) $(LIBPSXLIB)
+ 
+ # privileged
+ uns_test: uns_test.c $(DEPS)
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $< -o $@ $(LINKEXTRA) $(LIBCAPLIB) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $< -o $@ $(LINKEXTRA) $(LIBCAPLIB)
+ 
+ run_uns_test: uns_test
+ 	echo exit | $(SUDO) ./uns_test
+@@ -88,13 +88,13 @@ run_libcap_psx_launch_test: libcap_psx_launch_test ../progs/tcapsh-static
+ 	$(SUDO) ./libcap_psx_launch_test
+ 
+ libcap_launch_test: libcap_launch_test.c $(DEPS)
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $< -o $@ $(LINKEXTRA) $(LIBCAPLIB) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $< -o $@ $(LINKEXTRA) $(LIBCAPLIB)
+ 
+ # This varies only slightly from the above insofar as it currently
+ # only links in the pthreads fork support. TODO() we need to change
+ # the source to do something interesting with pthreads.
+ libcap_psx_launch_test: libcap_launch_test.c $(DEPS)
+-	$(CC) $(CFLAGS) $(CPPFLAGS) -DWITH_PTHREADS $< -o $@ $(LINKEXTRA) $(LIBCAPLIB) $(LIBPSXLIB) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) -DWITH_PTHREADS $(LDFLAGS) $< -o $@ $(LINKEXTRA) $(LIBCAPLIB) $(LIBPSXLIB)
+ 
+ 
+ # This test demonstrates that libpsx is needed to secure multithreaded
+@@ -109,12 +109,12 @@ exploit.o: exploit.c
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $<
+ 
+ exploit: exploit.o $(DEPS)
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $< -o $@ $(LINKEXTRA) $(LIBCAPLIB) -lpthread $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $< -o $@ $(LINKEXTRA) $(LIBCAPLIB) -lpthread
+ 
+ # Note, for some reason, the order of libraries is important to avoid
+ # the exploit working for dynamic linking.
+ noexploit: exploit.o $(DEPS)
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $< -o $@ $(LINKEXTRA) $(LIBPSXLIB) $(LIBCAPLIB) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $< -o $@ $(LINKEXTRA) $(LIBPSXLIB) $(LIBCAPLIB)
+ 
+ # This one runs in a chroot with no shared library files.
+ noop: noop.c
