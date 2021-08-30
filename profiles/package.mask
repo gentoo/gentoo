@@ -313,7 +313,6 @@ app-eselect/eselect-renpy
 # see bug: https://bugs.gentoo.org/805152
 dev-java/jgoodies-animation
 dev-java/jgoodies-binding
-dev-java/jgoodies-forms
 
 # Joonas Niilola <juippis@gentoo.org> (2021-07-29)
 # Upstream provided migration instructions from 2. -> 3. update,
