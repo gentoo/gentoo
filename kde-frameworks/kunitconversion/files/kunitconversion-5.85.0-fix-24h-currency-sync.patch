@@ -1,0 +1,91 @@
+From 6e41104426a3ae59bcb90be708abcc3092155436 Mon Sep 17 00:00:00 2001
+From: Andreas Cord-Landwehr <cordlandwehr@kde.org>
+Date: Tue, 24 Aug 2021 21:06:47 +0200
+Subject: [PATCH] Fix automatic currency file sync after 24h
+
+Conversion plugin in Krunner depends on automatic refresh of currency
+table. std::call_once does not work there, because process is never
+stopped.
+
+BUG: 441337
+---
+ autotests/convertertest.cpp | 16 ++++++++++++++++
+ autotests/convertertest.h   |  6 ++++++
+ src/currency.cpp            |  9 ++++++---
+ 3 files changed, 28 insertions(+), 3 deletions(-)
+
+diff --git a/autotests/convertertest.cpp b/autotests/convertertest.cpp
+index aa0ccae..e36b7fe 100644
+--- a/autotests/convertertest.cpp
++++ b/autotests/convertertest.cpp
+@@ -8,9 +8,11 @@
+ #include <QStandardPaths>
+ #include <QThread>
+ #include <QVector>
++#include <currency_p.h>
+ #include <kunitconversion/unitcategory.h>
+ 
+ using namespace KUnitConversion;
++using namespace std::chrono_literals;
+ 
+ void ConverterTest::initTestCase()
+ {
+@@ -113,4 +115,18 @@ void ConverterTest::testCurrency()
+     qDeleteAll(threads);
+ }
+ 
++void ConverterTest::testCurrencyConversionTableUpdate()
++{
++    const QString cache = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QStringLiteral("/libkunitconversion/currency.xml");
++
++    // Missing conversion table must lead to update of table
++    // note that this is the same code path as for last modified updates
++    QFile::remove(cache);
++    QVERIFY(Currency::lastConversionTableUpdate().isNull());
++    Converter c;
++    Value input = Value(1000, Eur);
++    Value v = c.convert(input, QStringLiteral("$"));
++    QVERIFY(!Currency::lastConversionTableUpdate().isNull());
++}
++
+ QTEST_MAIN(ConverterTest)
+diff --git a/autotests/convertertest.h b/autotests/convertertest.h
+index 21d5213..d3d6303 100644
+--- a/autotests/convertertest.h
++++ b/autotests/convertertest.h
+@@ -23,6 +23,12 @@ private Q_SLOTS:
+     void testConvert();
+     void testInvalid();
+     void testCurrency();
++    /**
++     * Checks that conversion tables are updated after timeout
++     *
++     * Regression test for https://bugs.kde.org/show_bug.cgi?id=441337
++     */
++    void testCurrencyConversionTableUpdate();
+ };
+ 
+ #endif // CONVERTERTEST_H
+diff --git a/src/currency.cpp b/src/currency.cpp
+index 038e928..ead7ce5 100644
+--- a/src/currency.cpp
++++ b/src/currency.cpp
+@@ -745,9 +745,12 @@ void CurrencyCategoryPrivate::syncConversionTable(std::chrono::seconds updateSki
+ Value CurrencyCategoryPrivate::convert(const Value &value, const Unit &to)
+ {
+     // TODO KF6 remove this blocking call and change behavior that explicit call to syncConversionTable is mandatory before
+-    // right now, if a sync is performed at application start, then this call will not block anymore for 24 hours
+-    static std::once_flag updateFlag;
+-    std::call_once(updateFlag, &CurrencyCategoryPrivate::syncConversionTable, this, 24h);
++    // first access to converted data, also to make syncs more explicit
++    static QMutex updateFlag;
++    {
++        QMutexLocker locker(&updateFlag);
++        CurrencyCategoryPrivate::syncConversionTable(24h);
++    }
+ 
+     Value v = UnitCategoryPrivate::convert(value, to);
+     return v;
+-- 
+GitLab
+
