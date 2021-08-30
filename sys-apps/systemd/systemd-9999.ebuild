@@ -162,6 +162,7 @@ python_check_deps() {
 	has_version -b "dev-python/lxml[${PYTHON_USEDEP}]"
 }
 
+QA_FLAGS_IGNORED="usr/lib/systemd/boot/efi/.*"
 QA_EXECSTACK="usr/lib/systemd/boot/efi/*"
 
 pkg_pretend() {
