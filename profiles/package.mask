@@ -202,12 +202,6 @@ app-text/fb2edit
 mail-client/trojita
 <media-video/openshot-2.5.1_p20210228
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-31)
-# Obsolete; all versions in current Perl core distributions
-# are newer, and no virtuals currently pull these packages.
-# Removal in 30 days.
-perl-core/ExtUtils-MakeMaker
-
 # Joonas Niilola <juippis@gentoo.org> (2021-07-29)
 # Upstream provided migration instructions from 2. -> 3. update,
 # breaks if not all at least many revdeps. #805011 for tracker bug.
