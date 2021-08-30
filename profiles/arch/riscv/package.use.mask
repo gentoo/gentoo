@@ -19,14 +19,12 @@ dev-lang/ruby xemacs
 
 # Yixun Lan <dlan@gentoo.org> (2021-08-20)
 # dependencies not keyworded/tested
-net-misc/networkmanager ofono
 app-misc/tracker miners
 gnome-extra/sushi office
 gnome-base/gnome-control-center v4l
 gnome-base/gnome-shell telepathy browser-extension
 gnome-base/gdm plymouth accessibility
 gnome-base/nautilus previewer sendto
-media-plugins/grilo-plugins chromaprint upnp-av
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-18)
 # media-libs/libffado does not recognise this arch, fails src_configure
@@ -146,10 +144,6 @@ kde-plasma/plasma-meta bluetooth
 media-libs/devil nvtt
 #  - dev-cpp/glog, sci-libs/vtk
 media-libs/opencv contribsfm glog vtk
-#  - net-misc/ofono
-media-sound/pulseaudio ofono-headset
-#  - net-wireless/iwd, net-misc/ofono
-net-misc/connman iwd ofono
 #  - dev-util/aruba
 sys-block/thin-provisioning-tools test
 #  - sys-fabric/ofed
