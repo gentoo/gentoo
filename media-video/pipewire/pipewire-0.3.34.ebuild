@@ -34,6 +34,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	app-doc/xmltoman
+	>=dev-util/meson-0.59
 	virtual/pkgconfig
 	${PYTHON_DEPS}
 	doc? (
