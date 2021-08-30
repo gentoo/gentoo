@@ -267,13 +267,6 @@ mail-client/trojita
 # Removal on 2021-09-01.
 sys-apps/lmctfy
 
-# Sam James <sam@gentoo.org> (2021-08-01)
-# Fails to build with network-sandbox and variety
-# of other open bugs. Unmaintained.
-# bug #632638, bug #688530, bug #709992, bug #757768,
-# bug #796920. Removal on 2021-09-01.
-sys-apps/habitat
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-31)
 # Obsolete; all versions in current Perl core distributions
 # are newer, and no virtuals currently pull these packages.
