@@ -74,18 +74,21 @@ arm		default/linux/arm/17.0/armv4t/desktop		dev
 arm		default/linux/arm/17.0/armv4t/desktop/gnome	dev
 arm		default/linux/arm/17.0/armv4t/desktop/plasma	dev
 arm		default/linux/arm/17.0/armv4t/developer		exp
+arm		default/linux/arm/17.0/armv4t/selinux		exp
 arm		default/linux/arm/17.0/armv4t/systemd		dev
 arm		default/linux/arm/17.0/armv5te			dev
 arm		default/linux/arm/17.0/armv5te/desktop		dev
 arm		default/linux/arm/17.0/armv5te/desktop/gnome	dev
 arm		default/linux/arm/17.0/armv5te/desktop/plasma	dev
 arm		default/linux/arm/17.0/armv5te/developer	exp
+arm		default/linux/arm/17.0/armv5te/selinux		exp
 arm		default/linux/arm/17.0/armv5te/systemd		dev
 arm		default/linux/arm/17.0/armv6j			stable
 arm		default/linux/arm/17.0/armv6j/desktop		dev
 arm		default/linux/arm/17.0/armv6j/desktop/gnome	dev
 arm		default/linux/arm/17.0/armv6j/desktop/plasma	dev
 arm		default/linux/arm/17.0/armv6j/developer		exp
+arm		default/linux/arm/17.0/armv6j/selinux		dev
 arm		default/linux/arm/17.0/armv6j/systemd		dev
 arm		default/linux/arm/17.0/armv7a			stable
 arm		default/linux/arm/17.0/armv7a/hardened		exp
@@ -93,6 +96,7 @@ arm		default/linux/arm/17.0/armv7a/desktop		dev
 arm		default/linux/arm/17.0/armv7a/desktop/gnome	dev
 arm		default/linux/arm/17.0/armv7a/desktop/plasma	dev
 arm		default/linux/arm/17.0/armv7a/developer		exp
+arm		default/linux/arm/17.0/armv7a/selinux		dev
 arm		default/linux/arm/17.0/armv7a/systemd		dev
 
 # ARM64 Profiles
