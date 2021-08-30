@@ -52,6 +52,10 @@ sci-biology/mira
 =dev-python/setuptools_scm-6.1.0
 =dev-python/setuptools_scm-6.2.0
 
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2021-08-30)
+# Homepage dead, uses gtk2, fails to build, https://bugs.gentoo.org/711344
+games-puzzle/gnudoku
+
 # Stephan Hartmann <sultan@gentoo.org> (2021-08-28)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
