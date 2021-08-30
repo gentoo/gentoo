@@ -231,8 +231,8 @@ _lua_get_library_file() {
 # as parameters.
 #
 # The optional first parameter may specify the requested Lua
-# implementation (either as LUA_TARGETS value, e.g. lua5-2,
-# or an ELUA one, e.g. lua5.2). If no implementation passed,
+# implementation (either as LUA_TARGETS value, e.g. lua5-4,
+# or an ELUA one, e.g. lua5.4). If no implementation passed,
 # the current one will be obtained from ${ELUA}.
 _lua_export() {
 	debug-print-function ${FUNCNAME} "${@}"
