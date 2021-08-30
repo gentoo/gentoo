@@ -1,0 +1,235 @@
+From 2a57f9d1c6b2f8d9e2babcdaca66f1cf2a3c5849 Mon Sep 17 00:00:00 2001
+From: Andreas Cord-Landwehr <cordlandwehr@kde.org>
+Date: Sat, 28 Aug 2021 11:42:06 +0200
+Subject: [PATCH] Fix initialization of currency values
+
+If there is already a recent currency.xml file provided then use this to
+initialize the currency converter.
+
+BUG: 441337
+---
+ autotests/CMakeLists.txt                     |  8 ++++
+ autotests/currencytableinittest.cpp          | 33 +++++++++++++++
+ autotests/currencytableinittest.h            | 26 ++++++++++++
+ autotests/currencytableinittest/currency.xml | 43 ++++++++++++++++++++
+ autotests/currencytableinittest/data.qrc     |  5 +++
+ autotests/valuetest.cpp                      |  6 +++
+ src/currency.cpp                             | 10 +++--
+ 7 files changed, 128 insertions(+), 3 deletions(-)
+ create mode 100644 autotests/currencytableinittest.cpp
+ create mode 100644 autotests/currencytableinittest.h
+ create mode 100644 autotests/currencytableinittest/currency.xml
+ create mode 100644 autotests/currencytableinittest/data.qrc
+
+diff --git a/autotests/CMakeLists.txt b/autotests/CMakeLists.txt
+index ec457a5..8225bf2 100644
+--- a/autotests/CMakeLists.txt
++++ b/autotests/CMakeLists.txt
+@@ -8,3 +8,11 @@ ecm_add_tests(
+     convertertest.cpp
+     LINK_LIBRARIES KF5::UnitConversion KF5::I18n Qt5::Test
+ )
++
++qt5_add_resources(CURRENCY_TEST_RESOURCES currencytableinittest/data.qrc)
++ecm_add_test(
++    currencytableinittest.cpp
++    ${CURRENCY_TEST_RESOURCES}
++    TEST_NAME currencytableinittest
++    LINK_LIBRARIES KF5::UnitConversion KF5::I18n Qt5::Test
++)
+diff --git a/autotests/currencytableinittest.cpp b/autotests/currencytableinittest.cpp
+new file mode 100644
+index 0000000..c83709a
+--- /dev/null
++++ b/autotests/currencytableinittest.cpp
+@@ -0,0 +1,33 @@
++/*
++ *   SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
++ *
++ *   SPDX-License-Identifier: LGPL-2.0-or-later
++ */
++
++#include "currencytableinittest.h"
++#include <QStandardPaths>
++#include <cmath>
++
++using namespace KUnitConversion;
++
++void CurrencyTableInitTest::testCategoryInit()
++{
++    QStandardPaths::setTestModeEnabled(true);
++    const QString cache = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QStringLiteral("/libkunitconversion/currency.xml");
++
++    QVERIFY(QFile::exists(QLatin1String(":/currency.xml")));
++    if (QFile::exists(cache)) {
++        QFile::remove(cache);
++    }
++    // note: copy of file updates the file's modified timestamp and thus file is seen as recently downloaded file
++    QVERIFY(QFile::copy(QLatin1String(":/currency.xml"), cache));
++
++    Converter c;
++    Value input = Value(1000, Eur);
++    Value v = c.convert(input, QStringLiteral("$"));
++    qDebug() << "converted value to:" << v.number();
++    QVERIFY(v.isValid());
++    QVERIFY(!std::isnan(v.number()));
++}
++
++QTEST_MAIN(CurrencyTableInitTest)
+diff --git a/autotests/currencytableinittest.h b/autotests/currencytableinittest.h
+new file mode 100644
+index 0000000..0b835d0
+--- /dev/null
++++ b/autotests/currencytableinittest.h
+@@ -0,0 +1,26 @@
++/*
++ *   SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
++ *
++ *   SPDX-License-Identifier: LGPL-2.0-or-later
++ */
++
++#ifndef CURRENCYTABLEINIT_TEST_H
++#define CURRENCYTABLEINIT_TEST_H
++
++#include <QObject>
++#include <QTest>
++#include <kunitconversion/converter.h>
++
++using namespace KUnitConversion;
++
++class CurrencyTableInitTest : public QObject
++{
++    Q_OBJECT
++private Q_SLOTS:
++    /**
++     * Check that the currency converter is correctly initialized when currency.xml is recent and available
++     */
++    void testCategoryInit();
++};
++
++#endif
+diff --git a/autotests/currencytableinittest/currency.xml b/autotests/currencytableinittest/currency.xml
+new file mode 100644
+index 0000000..dca42d5
+--- /dev/null
++++ b/autotests/currencytableinittest/currency.xml
+@@ -0,0 +1,43 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<gesmes:Envelope xmlns:gesmes="http://www.gesmes.org/xml/2002-08-01" xmlns="http://www.ecb.int/vocabulary/2002-08-01/eurofxref">
++	<gesmes:subject>Reference rates</gesmes:subject>
++	<gesmes:Sender>
++		<gesmes:name>European Central Bank</gesmes:name>
++	</gesmes:Sender>
++	<Cube>
++		<Cube time='2021-08-24'>
++			<Cube currency='USD' rate='1.1740'/>
++			<Cube currency='JPY' rate='128.74'/>
++			<Cube currency='BGN' rate='1.9558'/>
++			<Cube currency='CZK' rate='25.533'/>
++			<Cube currency='DKK' rate='7.4370'/>
++			<Cube currency='GBP' rate='0.85578'/>
++			<Cube currency='HUF' rate='349.69'/>
++			<Cube currency='PLN' rate='4.5792'/>
++			<Cube currency='RON' rate='4.9280'/>
++			<Cube currency='SEK' rate='10.2090'/>
++			<Cube currency='CHF' rate='1.0711'/>
++			<Cube currency='ISK' rate='150.00'/>
++			<Cube currency='NOK' rate='10.4003'/>
++			<Cube currency='HRK' rate='7.4938'/>
++			<Cube currency='RUB' rate='86.7484'/>
++			<Cube currency='TRY' rate='9.8836'/>
++			<Cube currency='AUD' rate='1.6203'/>
++			<Cube currency='BRL' rate='6.2681'/>
++			<Cube currency='CAD' rate='1.4822'/>
++			<Cube currency='CNY' rate='7.6042'/>
++			<Cube currency='HKD' rate='9.1448'/>
++			<Cube currency='IDR' rate='16897.00'/>
++			<Cube currency='ILS' rate='3.7789'/>
++			<Cube currency='INR' rate='87.0625'/>
++			<Cube currency='KRW' rate='1369.00'/>
++			<Cube currency='MXN' rate='23.8606'/>
++			<Cube currency='MYR' rate='4.9525'/>
++			<Cube currency='NZD' rate='1.6893'/>
++			<Cube currency='PHP' rate='58.783'/>
++			<Cube currency='SGD' rate='1.5918'/>
++			<Cube currency='THB' rate='38.595'/>
++			<Cube currency='ZAR' rate='17.6902'/>
++		</Cube>
++	</Cube>
++</gesmes:Envelope>
+\ No newline at end of file
+diff --git a/autotests/currencytableinittest/data.qrc b/autotests/currencytableinittest/data.qrc
+new file mode 100644
+index 0000000..19f9d69
+--- /dev/null
++++ b/autotests/currencytableinittest/data.qrc
+@@ -0,0 +1,5 @@
++<RCC>
++    <qresource prefix="/">
++        <file>currency.xml</file>
++    </qresource>
++</RCC>
+diff --git a/autotests/valuetest.cpp b/autotests/valuetest.cpp
+index 0b348d7..53be1b7 100644
+--- a/autotests/valuetest.cpp
++++ b/autotests/valuetest.cpp
+@@ -55,6 +55,12 @@ void ValueTest::testInvalid()
+ 
+ void ValueTest::testCurrencyNotDownloaded()
+ {
++    // ensure that no local conversion table is available
++    const QString cache = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QStringLiteral("/libkunitconversion/currency.xml");
++    if (!QFile::exists(cache)) {
++        QFile::remove(cache);
++    }
++
+     auto pounds = Value(100, Gbp);
+     auto eur = pounds.convertTo(Eur);
+     QVERIFY(!eur.isValid());
+diff --git a/src/currency.cpp b/src/currency.cpp
+index ead7ce5..43161e2 100644
+--- a/src/currency.cpp
++++ b/src/currency.cpp
+@@ -47,6 +47,7 @@ public:
+     Value convert(const Value &value, const Unit &toUnit) override;
+     bool hasOnlineConversionTable() const override;
+     void syncConversionTable(std::chrono::seconds updateSkipSeconds) override;
++    bool m_initialized{false}; //!< indicates if units are prepared from currency table
+ };
+ 
+ bool CurrencyCategoryPrivate::hasOnlineConversionTable() const
+@@ -668,12 +669,12 @@ QDateTime Currency::lastConversionTableUpdate()
+ void CurrencyCategoryPrivate::syncConversionTable(std::chrono::seconds updateSkipPeriod)
+ {
+     // sync call is expected to be guarded as being called only once
+-    auto updateCurrencyConversionTable = [this](const QString &cachePath) {
++    auto updateCurrencyConversionTable = [this](const QString &cachePath, bool performNetworkSync) {
+         qCDebug(LOG_KUNITCONVERSION) << "currency conversion table sync started";
+         static QMutex mutex;
+         QMutexLocker locker(&mutex);
+         bool updateError{false};
+-        if (isConnected()) {
++        if (performNetworkSync && isConnected()) {
+             // Bug 345750: QNetworkReply does not work without an event loop and doesn't implement waitForReadyRead()
+             QEventLoop loop;
+             QNetworkAccessManager manager;
+@@ -733,12 +734,15 @@ void CurrencyCategoryPrivate::syncConversionTable(std::chrono::seconds updateSki
+                 }
+             }
+         }
++        m_initialized = !updateError;
+         return !updateError;
+     };
+ 
+     QFileInfo info(cacheLocation());
+     if (!info.exists() || info.lastModified().secsTo(QDateTime::currentDateTime()) > updateSkipPeriod.count()) {
+-        updateCurrencyConversionTable(cacheLocation());
++        updateCurrencyConversionTable(cacheLocation(), true);
++    } else if (!m_initialized) {
++        updateCurrencyConversionTable(cacheLocation(), false);
+     }
+ }
+ 
+-- 
+GitLab
+
