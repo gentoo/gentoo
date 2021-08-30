@@ -47,7 +47,7 @@ inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
 
 EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 
-_MESON_DEPEND=">=dev-util/meson-0.56.0
+_MESON_DEPEND=">=dev-util/meson-0.57.0
 	>=dev-util/ninja-1.8.2
 	dev-util/meson-format-array
 "
