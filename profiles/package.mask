@@ -260,13 +260,6 @@ app-text/fb2edit
 mail-client/trojita
 <media-video/openshot-2.5.1_p20210228
 
-# Sam James <sam@gentoo.org> (2021-08-01)
-# Fails to compile, multiple open bugs.
-# No activity upstream since 2015.
-# bug #570484, bug #715412, bug #723204.
-# Removal on 2021-09-01.
-sys-apps/lmctfy
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-31)
 # Obsolete; all versions in current Perl core distributions
 # are newer, and no virtuals currently pull these packages.
