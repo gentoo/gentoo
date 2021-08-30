@@ -274,12 +274,6 @@ sys-apps/lmctfy
 # bug #796920. Removal on 2021-09-01.
 sys-apps/habitat
 
-# David Seifert <soap@gentoo.org> (2021-08-01)
-# Dropped into ::gentoo, then unmaintained. Multiple versions behind
-# upstream, GCC 11 bug open, lacks python 3.10, python library without
-# revdeps. Bug #790137, #792870, removal in 30 days.
-sci-libs/sktime
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-31)
 # Obsolete; all versions in current Perl core distributions
 # are newer, and no virtuals currently pull these packages.
