@@ -286,7 +286,6 @@ sci-libs/sktime
 # Bug #798015, removal in 30 days.
 sci-biology/ncbi-tools
 sci-biology/njplot
-sci-biology/psipred
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-31)
 # Obsolete; all versions in current Perl core distributions
