@@ -1,0 +1,119 @@
+From 4cdf9413b7b4ff27299c14f05d7a6fa038e4d59f Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 30 Aug 2021 07:04:15 +0100
+Subject: [PATCH] Build system fixes
+
+Summary:
+- Respect tool choices: CC/AR/OBJCOPY/RANLIB
+- Respect *FLAGS: CFLAGS/CPPFLAGS
+- Use existing make process to spawn new jobs
+- Only build tests conditionally (when we're going to run them)
+
+Much smaller version of patches from before thanks
+to upstream incorporating some of our changes.
+
+See < 2.55 patches for some more context/history; the
+original patch was from Mike Frysinger <vapier@gentoo.org>
+and was forward-ported by Lars Wendler <polynomial-c@gentoo.org>.
+
+Bug: https://bugs.gentoo.org/808807 (given this is where discussion occurred)
+Bug: https://bugzilla.kernel.org/show_bug.cgi?id=214085
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ Make.Rules       | 13 +++++--------
+ Makefile         |  1 -
+ pam_cap/Makefile |  2 +-
+ progs/Makefile   |  6 +++---
+ 4 files changed, 9 insertions(+), 13 deletions(-)
+
+diff --git a/Make.Rules b/Make.Rules
+index 66207b4..1e0366e 100644
+--- a/Make.Rules
++++ b/Make.Rules
+@@ -64,24 +64,20 @@ KERNEL_HEADERS := $(topdir)/libcap/include/uapi
+ LIBCAP_INCLUDES = -I$(KERNEL_HEADERS) -I$(topdir)/libcap/include
+ DEFINES := -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
+ 
+-CC := $(CROSS_COMPILE)gcc
+ LD=$(CC) -Wl,-x -shared
+ SUDO := sudo
+ COPTS ?= -O2
+-CFLAGS ?= $(COPTS) $(DEFINES)
++CFLAGS ?= $(COPTS)
+ LDFLAGS ?= #-g
+-CPPFLAGS += $(LIBCAP_INCLUDES)
++CPPFLAGS += $(LIBCAP_INCLUDES) $(DEFINES)
+ 
+ BUILD_CC ?= $(CC)
+ BUILD_LD ?= $(BUILD_CC) -Wl,-x -shared
+ BUILD_COPTS ?= $(COPTS)
+-BUILD_CFLAGS ?= $(BUILD_COPTS) $(DEFINES)
++BUILD_CFLAGS ?= $(CFLAGS)
+ BUILD_LDFLAGS ?= $(LDFLAGS)
+ BUILD_CPPFLAGS += $(LIBCAP_INCLUDES)
+ 
+-AR := $(CROSS_COMPILE)ar
+-RANLIB := $(CROSS_COMPILE)ranlib
+-OBJCOPY := $(CROSS_COMPILE)objcopy
+ DEBUG = -g #-DDEBUG
+ WARNINGS=-Wall -Wwrite-strings \
+         -Wpointer-arith -Wcast-qual -Wcast-align \
+@@ -95,7 +91,8 @@ BUILD_GPERF := $(shell which gperf >/dev/null 2>/dev/null && echo yes)
+ 
+ SYSTEM_HEADERS = /usr/include
+ INCS=$(topdir)/libcap/include/sys/capability.h
+-CFLAGS += -Dlinux $(WARNINGS) $(DEBUG)
++CPPFLAGS += -Dlinux
++CFLAGS += $(WARNINGS) $(DEBUG)
+ INDENT := $(shell if [ -n "$$(which indent 2>/dev/null)" ]; then echo "| indent -kr" ; fi)
+ 
+ # SHARED tracks whether or not the SHARED libraries (libcap.so,
+diff --git a/Makefile b/Makefile
+index 1c195dd..3f71b12 100644
+--- a/Makefile
++++ b/Makefile
+@@ -17,7 +17,6 @@ ifeq ($(GOLANG),yes)
+ 	$(MAKE) -C go $@
+ 	rm -f cap/go.sum
+ endif
+-	$(MAKE) -C tests $@
+ 	$(MAKE) -C progs $@
+ 	$(MAKE) -C doc $@
+ 	$(MAKE) -C kdebug $@
+diff --git a/pam_cap/Makefile b/pam_cap/Makefile
+index d5da6be..0cba3e1 100644
+--- a/pam_cap/Makefile
++++ b/pam_cap/Makefile
+@@ -65,7 +65,7 @@ test_pam_cap: test_pam_cap.c pam_cap.c ../libcap/libcap.a
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ test_pam_cap.c $(LIBCAPLIB) $(LDFLAGS) --static
+ 
+ testlink: test.c pam_cap.o
+-	$(CC) $(CFLAGS) -o $@ $+ -lpam -ldl $(LIBCAPLIB) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ $+ -lpam -ldl $(LIBCAPLIB) $(LDFLAGS)
+ 
+ test: testlink test_pam_cap pam_cap.so
+ 	$(MAKE) testlink
+diff --git a/progs/Makefile b/progs/Makefile
+index 51e9a63..98fe1b0 100644
+--- a/progs/Makefile
++++ b/progs/Makefile
+@@ -22,13 +22,13 @@ DEPS = ../libcap/libcap.a
+ endif
+ 
+ ../libcap/libcap.a:
+-	make -C ../libcap libcap.a
++	$(MAKE) -C ../libcap libcap.a
+ 
+ ../libcap/libcap.so:
+-	make -C ../libcap libcap.so
++	$(MAKE) -C ../libcap libcap.so
+ 
+ $(BUILD): %: %.o $(DEPS)
+-	$(CC) $(CFLAGS) -o $@ $< $(LIBCAPLIB) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ $< $(LIBCAPLIB) $(LDFLAGS)
+ 
+ %.o: %.c $(INCS)
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+-- 
+2.33.0
+
