@@ -208,7 +208,6 @@ mail-client/trojita
 # Removal in 30 days.
 perl-core/ExtUtils-MakeMaker
 perl-core/ExtUtils-Manifest
-perl-core/File-Path
 
 # Joonas Niilola <juippis@gentoo.org> (2021-07-29)
 # Upstream provided migration instructions from 2. -> 3. update,
