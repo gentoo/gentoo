@@ -1,0 +1,39 @@
+From 9ee33f09bdae6bea94641ce39e24dc180df5517a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 30 Aug 2021 23:07:38 +0200
+Subject: [PATCH] Revert "Fix string assertion for python3.10"
+
+This reverts commit dbb604946745ed90c6e9f6ed17f2bde253042d52.
+The relevant change has been reverted in Python 3.10.0rc1, breaking
+the test again.
+---
+ traitlets/tests/test_traitlets_enum.py | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/traitlets/tests/test_traitlets_enum.py b/traitlets/tests/test_traitlets_enum.py
+index a87dd70..769e830 100644
+--- a/traitlets/tests/test_traitlets_enum.py
++++ b/traitlets/tests/test_traitlets_enum.py
+@@ -5,7 +5,6 @@ Test the trait-type ``UseEnum``.
+ 
+ import unittest
+ import enum
+-import sys
+ from traitlets import HasTraits, TraitError, Enum, UseEnum, CaselessStrEnum, FuzzyEnum
+ 
+ 
+@@ -88,10 +87,7 @@ class TestUseEnum(unittest.TestCase):
+             example = self.Example()
+             example.color = value
+             self.assertIsInstance(example.color, Color)
+-            if sys.version_info < (3, 10):
+-                self.assertEqual(str(example.color), value)
+-            else:
+-                self.assertEqual(repr(example.color), value)
++            self.assertEqual(str(example.color), value)
+ 
+     def test_assign_bad_enum_value_name__raises_error(self):
+         # -- CONVERT: string => Enum value (item)
+-- 
+2.33.0
+
