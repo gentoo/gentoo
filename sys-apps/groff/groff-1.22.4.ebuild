@@ -62,6 +62,14 @@ src_prepare() {
 }
 
 src_configure() {
+	if use elibc_musl ; then
+		# This should be safe to drop in the release after 1.22.4
+		# gnulib was rather out of date and didn't include musl in its
+		# CHOST checks.
+		# bug #678026
+		export gl_cv_func_signbit_gcc=yes
+	fi
+
 	local myeconfargs=(
 		--with-appresdir="${EPREFIX}"/usr/share/X11/app-defaults
 		$(use_with uchardet)
