@@ -8,8 +8,8 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="Core Library for Google Client Libraries"
-HOMEPAGE="https://github.com/googleapis/python-api-core
-	https://googleapis.dev/python/google-api-core/latest"
+HOMEPAGE="https://github.com/googleapis/python-api-core/
+	https://googleapis.dev/python/google-api-core/latest/index.html"
 SRC_URI="https://github.com/googleapis/${PN//google/python}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P//google/python}"
 
