@@ -312,7 +312,6 @@ app-eselect/eselect-renpy
 # these libs have no consumers, removal in 30 days
 # see bug: https://bugs.gentoo.org/805152
 dev-java/jgoodies-animation
-dev-java/jgoodies-binding
 
 # Joonas Niilola <juippis@gentoo.org> (2021-07-29)
 # Upstream provided migration instructions from 2. -> 3. update,
