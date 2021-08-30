@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit toolchain-funcs
+
 DESCRIPTION="A set of tools that use the proc filesystem"
 HOMEPAGE="http://psmisc.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
@@ -28,6 +30,16 @@ PATCHES=(
 )
 
 src_configure() {
+	if tc-is-cross-compiler ; then
+		# This isn't ideal but upstream don't provide a placement
+		# when malloc is missing anyway, leading to errors like:
+		# pslog.c:(.text.startup+0x108): undefined reference to `rpl_malloc'
+		# See https://sourceforge.net/p/psmisc/bugs/71/
+		# (and https://lists.gnu.org/archive/html/autoconf/2011-04/msg00019.html)
+		export ac_cv_func_malloc_0_nonnull=yes \
+			ac_cv_func_realloc_0_nonnull=yes
+	fi
+
 	local myeconfargs=(
 		--disable-harden-flags
 		$(use_enable ipv6)
