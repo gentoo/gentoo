@@ -106,6 +106,7 @@ arm64		default/linux/arm64/17.0/desktop/plasma		stable
 arm64		default/linux/arm64/17.0/desktop/plasma/systemd stable
 arm64		default/linux/arm64/17.0/desktop/systemd	stable
 arm64		default/linux/arm64/17.0/developer		exp
+arm64		default/linux/arm64/17.0/selinux		dev
 arm64		default/linux/arm64/17.0/systemd		stable
 
 # ARM64 Profiles (big-endian)
