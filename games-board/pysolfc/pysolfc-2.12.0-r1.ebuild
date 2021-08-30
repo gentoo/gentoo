@@ -19,8 +19,7 @@ DESCRIPTION="Exciting collection of more than 1000 solitaire card games"
 HOMEPAGE="https://pysolfc.sourceforge.io/"
 SRC_URI="mirror://sourceforge/pysolfc/${MY_P}.tar.xz
 	extra-cardsets? ( mirror://sourceforge/pysolfc/${PS_CARD_P}.tar.bz2 )
-	!extra-cardsets? ( mirror://sourceforge/pysolfc/${PS_CARD_MIN_P}.tar.xz )
-	sound? ( mirror://sourceforge/pysolfc/${PS_MUSIC_P}.tar.xz )"
+	!extra-cardsets? ( mirror://sourceforge/pysolfc/${PS_CARD_MIN_P}.tar.xz )"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+ GPL-2+"
@@ -39,10 +38,7 @@ RDEPEND="
 			dev-python/pillow[jpeg,tk,${PYTHON_USEDEP}]
 			dev-tcltk/tktable
 		)
-		sound? (
-			dev-python/pygame[${PYTHON_USEDEP}]
-			media-libs/sdl2-mixer[mod]
-		)
+		sound? ( dev-python/pygame[${PYTHON_USEDEP}] )
 	')"
 
 distutils_enable_tests unittest
@@ -55,11 +51,6 @@ python_install_all() {
 
 	insinto /usr/share/${MY_PN}
 	doins -r ../$(usex extra-cardsets ${PS_CARD_P} ${PS_CARD_MIN_P})/.
-
-	if use sound; then
-		insinto /usr/share/${MY_PN}/music
-		doins ../${PS_MUSIC_P}/data/music/*.{it,mod,s3m}
-	fi
 
 	# html files are used at runtime, keep at default location
 	dosym -r /usr/share/{${MY_PN},doc/${PF}}/html
