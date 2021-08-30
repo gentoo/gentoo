@@ -42,6 +42,14 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.3.12-proc-tests.patch # 583036
 )
 
+src_prepare() {
+	default
+
+	# Please drop this after 3.3.17 and instead use --disable-w on musl.
+	# bug #794997
+	use elibc_musl && eapply "${FILESDIR}"/${PN}-3.3.17-musl-fix.patch
+}
+
 multilib_src_configure() {
 	# http://www.freelists.org/post/procps/PATCH-enable-transparent-large-file-support
 	append-lfs-flags #471102
