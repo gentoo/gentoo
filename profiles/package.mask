@@ -288,7 +288,6 @@ sci-biology/ncbi-tools
 sci-biology/njplot
 sci-biology/psipred
 sci-chemistry/mars
-sci-libs/rosetta-fragments
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-31)
 # Obsolete; all versions in current Perl core distributions
