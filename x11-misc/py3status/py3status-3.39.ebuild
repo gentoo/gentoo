@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python{3_7,3_8,3_9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
@@ -19,6 +19,9 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gevent minimal +udev"
+# It feels useless to run tests on this simple package
+# since upstream (I) runs tox on CI
+RESTRICT="test"
 
 RDEPEND="
 	!minimal? ( x11-misc/i3status )
