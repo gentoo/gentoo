@@ -212,7 +212,6 @@ perl-core/File-Path
 perl-core/Getopt-Long
 perl-core/HTTP-Tiny
 perl-core/JSON-PP
-perl-core/libnet
 
 # Joonas Niilola <juippis@gentoo.org> (2021-07-29)
 # Upstream provided migration instructions from 2. -> 3. update,
