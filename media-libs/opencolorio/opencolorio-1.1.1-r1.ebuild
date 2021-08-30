@@ -21,7 +21,7 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	>=dev-cpp/yaml-cpp-0.5
+	<dev-cpp/yaml-cpp-0.7.0:=
 	dev-libs/tinyxml
 	opengl? (
 		media-libs/lcms:2
