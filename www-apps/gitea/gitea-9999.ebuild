@@ -36,7 +36,7 @@ DOCS=(
 	custom/conf/app.example.ini CONTRIBUTING.md README.md
 )
 FILECAPS=(
-	cap_net_bind_service+ep usr/bin/gitea
+	-m 0755 cap_net_bind_service+ep usr/bin/gitea
 )
 
 RESTRICT="test"
