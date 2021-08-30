@@ -5,7 +5,7 @@ EAPI=7
 
 ECM_HANDBOOK="optional"
 ECM_TEST="true"
-KFMIN=5.80.0
+KFMIN=5.84.0
 QTMIN=5.15.2
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/konsole/ https://konsole.kde.org"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="X"
 
 DEPEND="
@@ -34,7 +34,6 @@ DEPEND="
 	>=kde-frameworks/kguiaddons-${KFMIN}:5
 	>=kde-frameworks/kjobwidgets-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
-	>=kde-frameworks/kinit-${KFMIN}:5
 	>=kde-frameworks/kiconthemes-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
 	>=kde-frameworks/knewstuff-${KFMIN}:5
@@ -52,14 +51,13 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-no-flash-on-session-close.patch" # bug 807933
-	"${FILESDIR}/${P}-dont-close-window-while-split.patch" # bug 808510
+	"${FILESDIR}/${PN}-21.04.3-no-flash-on-session-close.patch" # bug 807933
+	"${FILESDIR}/${PN}-21.04.3-dont-close-window-while-split.patch" # bug 808510
+	"${FILESDIR}/${PN}-21.04.3-emit-empty-in-SessionFinished-only-in-TabbedNavigation-mode.patch" # bug 810598
+	"${FILESDIR}/${P}-fix-crash-w-blur.patch" # bug 807905, fixed in 21.08.1
+	"${FILESDIR}/${P}-fix-KXmlGUI-toolbars-and-MainWindow-size.patch" # KDE-bugs 430036, 439339
+	"${FILESDIR}/${P}-fix-MainWindow-size-w-o-saved-size.patch" # KDE-bug 437791
 )
-
-src_prepare() {
-	ecm_src_prepare
-	ecm_punt_bogus_dep KF5 Completion
-}
 
 src_configure() {
 	local mycmakeargs=(
