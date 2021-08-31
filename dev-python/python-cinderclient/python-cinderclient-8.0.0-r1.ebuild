@@ -32,7 +32,7 @@ BDEPEND="
 	test? (
 		dev-python/ddt[${PYTHON_USEDEP}]
 		dev-python/fixtures[${PYTHON_USEDEP}]
-		dev-python/oslo-serialization
+		dev-python/oslo-serialization[${PYTHON_USEDEP}]
 		dev-python/requests-mock[${PYTHON_USEDEP}]
 		dev-python/stestr[${PYTHON_USEDEP}]
 		dev-python/testtools[${PYTHON_USEDEP}]
