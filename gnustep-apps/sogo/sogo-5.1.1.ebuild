@@ -63,7 +63,6 @@ src_configure() {
 		--with-ssl="${ssl_provider}" \
 		$(use_enable debug) \
 		$(use_enable sodium) \
-		--disable-mfa \
 		--disable-saml2 \
 		|| die "configure failed"
 }
