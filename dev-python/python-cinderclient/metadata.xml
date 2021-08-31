@@ -13,5 +13,6 @@
   <upstream>
     <remote-id type="pypi">python-cinderclient</remote-id>
     <remote-id type="launchpad">python-cinderclient</remote-id>
+    <remote-id type="github">openstack/python-cinderclient</remote-id>
   </upstream>
 </pkgmetadata>
