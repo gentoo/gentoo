@@ -9,6 +9,9 @@
 		<email>amadio@gentoo.org</email>
 		<name>Guilherme Amadio</name>
 	</maintainer>
+	<use>
+		<flag name="lib-only">Don't build lz4 and lz4c programs</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">lz4/lz4</remote-id>
 		<remote-id type="cpe">cpe:/a:lz4_project:lz4</remote-id>

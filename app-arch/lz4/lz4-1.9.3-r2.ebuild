@@ -14,7 +14,7 @@ LICENSE="BSD-2 GPL-2"
 # https://abi-laboratory.pro/tracker/timeline/lz4/
 SLOT="0/r132"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="static-libs"
+IUSE="lib-only static-libs"
 
 CMAKE_USE_DIR=${S}/build/cmake
 
@@ -24,6 +24,8 @@ PATCHES=(
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DLZ4_BUILD_CLI=$(usex !lib-only)
+		-DLZ4_BUILD_LEGACY_LZ4C=$(usex !lib-only)
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
 	)
 
