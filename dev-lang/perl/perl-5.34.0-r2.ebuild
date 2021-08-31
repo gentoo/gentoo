@@ -586,6 +586,11 @@ src_configure() {
 		myconf -DDEBUGGING=none
 	fi
 
+	# modifying 'optimize' prevents cross configure script from appending required flags
+	if tc-is-cross-compiler; then
+		append-cflags "-fwrapv -fno-strict-aliasing"
+	fi
+
 	# Autodiscover all old version directories, some of them will even be newer
 	# if you downgrade
 	if [[ -z ${PERL_OLDVERSEN} ]]; then
