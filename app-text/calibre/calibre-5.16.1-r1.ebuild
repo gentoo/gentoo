@@ -1,16 +1,17 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 PYTHON_COMPAT=( python3_{8..9} )
-PYTHON_REQ_USE="ipv6,sqlite,ssl"
+PYTHON_REQ_USE="ipv6(+),sqlite,ssl"
 
 inherit bash-completion-r1 desktop toolchain-funcs python-single-r1 xdg-utils
 
 DESCRIPTION="Ebook management application"
 HOMEPAGE="https://calibre-ebook.com/"
-SRC_URI="https://download.calibre-ebook.com/${PV}/${P}.tar.xz"
+SRC_URI="https://download.calibre-ebook.com/${PV}/${P}.tar.xz
+	https://dev.gentoo.org/~zmedico/dist/calibre-5.16.0-SIP-v4.patch.xz"
 
 LICENSE="
 	GPL-3+
@@ -31,7 +32,7 @@ LICENSE="
 	OFL-1.1
 	PSF-2
 "
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 SLOT="0"
 IUSE="ios +udisks"
 
@@ -46,7 +47,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/icu-57.1:=
 	dev-libs/libinput:=
 	>=dev-libs/dbus-glib-0.106
-	dev-libs/snowball-stemmer:=
 	>=sys-apps/dbus-1.10.8
 	$(python_gen_cond_dep '
 		>=dev-python/apsw-3.25.2_p1[${PYTHON_USEDEP}]
@@ -59,7 +59,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-python/feedparser-5.2.1[${PYTHON_USEDEP}]
 		>=dev-python/html2text-2019.8.11[${PYTHON_USEDEP}]
 		>=dev-python/html5-parser-0.4.9[${PYTHON_USEDEP}]
-		dev-python/jeepney[${PYTHON_USEDEP}]
 		>=dev-python/lxml-3.8.0[${PYTHON_USEDEP}]
 		>=dev-python/markdown-3.0.1[${PYTHON_USEDEP}]
 		>=dev-python/mechanize-0.3.5[${PYTHON_USEDEP}]
@@ -70,8 +69,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-python/pychm-0.8.6[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.3.1[${PYTHON_USEDEP}]
 		>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
-		>=dev-python/PyQt5-5.15.5_pre2107091435[gui,svg,widgets,network,printsupport,${PYTHON_USEDEP}]
-		>=dev-python/PyQt-builder-1.10.3[${PYTHON_USEDEP}]
+		>=dev-python/PyQt5-5.12[gui,svg,widgets,network,printsupport,${PYTHON_USEDEP}]
 		>=dev-python/PyQtWebEngine-5.12[${PYTHON_USEDEP}]
 		dev-python/regex[${PYTHON_USEDEP}]
 		dev-python/zeroconf[${PYTHON_USEDEP}]
@@ -107,7 +105,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
 		>=dev-python/setuptools-23.1.0[${PYTHON_USEDEP}]
-		>=dev-python/sip-5[${PYTHON_USEDEP}]
+		<dev-python/sip-5[${PYTHON_USEDEP}]
 	')
 	>=virtual/podofo-build-0.9.6_pre20171027
 	virtual/pkgconfig"
@@ -125,7 +123,13 @@ src_prepare() {
 	# disable_plugins: walking sec-hole, wait for upstream to use GHNS interface
 	eapply \
 		"${FILESDIR}/${PN}-2.9.0-no_updates_dialog.patch" \
-		"${FILESDIR}/${PN}-disable_plugins.patch"
+		"${FILESDIR}/${PN}-disable_plugins.patch" \
+		"${FILESDIR}/${P}-zeroconf.patch"
+
+	if ! has_version ">=dev-python/sip-5"; then
+		einfo "Applying SIP v4 patch because SIP v5 was not detected"
+		eapply "${WORKDIR}/${PN}-5.16.0-SIP-v4.patch"
+	fi
 
 	eapply_user
 
