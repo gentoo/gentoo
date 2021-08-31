@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-PYTHON_REQ_USE="ipv6?"
+PYTHON_REQ_USE="ipv6(+)"
 
 DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1
@@ -16,8 +16,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="PSF-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="ipv6 test"
-REQUIRED_USE="test? ( ipv6 )"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
