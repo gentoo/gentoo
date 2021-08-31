@@ -20,8 +20,6 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-EXPORT_FUNCTIONS pkg_nofetch src_unpack
-
 if [[ -z ${_KDE_ORG_ECLASS} ]]; then
 _KDE_ORG_ECLASS=1
 
@@ -354,3 +352,5 @@ kde.org_src_unpack() {
 }
 
 fi
+
+EXPORT_FUNCTIONS pkg_nofetch src_unpack
