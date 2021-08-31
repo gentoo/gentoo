@@ -14,5 +14,7 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">PasteDeploy</remote-id>
+		<remote-id type="github">Pylons/pastedeploy</remote-id>
+		<doc>https://docs.pylonsproject.org/projects/pastedeploy/en/latest/</doc>
 	</upstream>
 </pkgmetadata>
