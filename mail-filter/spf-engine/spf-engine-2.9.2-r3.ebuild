@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_7 python3_8 python3_9 )
 # python is built without ipv6 support, then ipaddress can't parse ipv6
 # addresses, and the daemon will crash if it sees an ipv6 SPF record. In
 # other words, it's completely broken.
-PYTHON_REQ_USE="ipv6"
+PYTHON_REQ_USE="ipv6(+)"
 
 # setup.py defines entry_points
 DISTUTILS_USE_SETUPTOOLS=rdepend
