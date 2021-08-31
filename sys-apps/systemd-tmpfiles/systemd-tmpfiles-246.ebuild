@@ -23,6 +23,7 @@ RDEPEND="
 	>=sys-apps/util-linux-2.30:0=
 	sys-libs/libcap:0=
 	selinux? ( sys-libs/libselinux:0= )
+	virtual/libcrypt:=
 	!sys-apps/opentmpfiles
 	!sys-apps/systemd
 "
