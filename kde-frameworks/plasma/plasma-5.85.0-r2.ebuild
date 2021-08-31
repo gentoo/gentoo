@@ -20,7 +20,7 @@ RESTRICT+=" test"
 RDEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5[gles2-only=]
+	>=dev-qt/qtgui-${QTMIN}:5[gles2-only=,X=]
 	>=dev-qt/qtquickcontrols-${QTMIN}:5
 	>=dev-qt/qtsql-${QTMIN}:5
 	>=dev-qt/qtsvg-${QTMIN}:5
@@ -43,10 +43,10 @@ RDEPEND="
 	=kde-frameworks/kwidgetsaddons-${PVCUT}*:5
 	=kde-frameworks/kwindowsystem-${PVCUT}*:5
 	=kde-frameworks/kxmlgui-${PVCUT}*:5
-	!gles2-only? ( virtual/opengl )
+	!gles2-only? ( media-libs/libglvnd[X?] )
 	wayland? (
 		=kde-frameworks/kwayland-${PVCUT}*:5
-		media-libs/mesa[egl(+)]
+		media-libs/libglvnd
 	)
 	X? (
 		>=dev-qt/qtx11extras-${QTMIN}:5
