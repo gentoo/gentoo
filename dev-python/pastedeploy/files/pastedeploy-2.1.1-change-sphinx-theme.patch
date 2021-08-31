@@ -1,0 +1,30 @@
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -13,7 +13,6 @@
+
+ import datetime
+ import pkg_resources
+-import pylons_sphinx_themes
+
+ # If your extensions are in another directory, add it here.
+ #sys.path.append('some/directory')
+@@ -83,8 +82,7 @@ pygments_style = 'sphinx'
+ # Options for HTML output
+ # -----------------------
+
+-html_theme = 'pylons'
+-html_theme_path = pylons_sphinx_themes.get_html_themes_path()
++html_theme = 'sphinx_rtd_theme'
+ html_theme_options = dict(
+     canonical_url='https://docs.pylonsproject.org/projects/pastedeploy/en/latest/'
+ )
+--- a/setup.py
++++ b/setup.py
+@@ -8,7 +8,6 @@ readme = open(readme_path).read()
+
+ docs_extras = [
+     "Sphinx >= 1.7.5",  # Read The Docs minimum version
+-    "pylons-sphinx-themes",
+ ]
+
+ setup(
