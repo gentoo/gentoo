@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="PSF-2"
 SLOT="${PYVER}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="berkdb bluetooth build elibc_uclibc examples gdbm hardened +ncurses +readline +sqlite +ssl +threads tk +wide-unicode wininst +xml"
+IUSE="berkdb bluetooth build elibc_uclibc examples gdbm hardened +ncurses +readline +sqlite +ssl tk +wide-unicode wininst +xml"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
 # If you need to apply a patch which requires python for bootstrapping, please
@@ -191,7 +191,7 @@ src_configure() {
 		--with-fpectl
 		--enable-shared
 		--enable-ipv6
-		$(use_with threads)
+		--with-threads
 		$(use wide-unicode && echo "--enable-unicode=ucs4" || echo "--enable-unicode=ucs2")
 		--infodir='${prefix}/share/info'
 		--mandir='${prefix}/share/man'
@@ -206,7 +206,7 @@ src_configure() {
 
 	OPT="" econf "${myeconfargs[@]}"
 
-	if use threads && grep -q "#define POSIX_SEMAPHORES_NOT_ENABLED 1" pyconfig.h; then
+	if grep -q "#define POSIX_SEMAPHORES_NOT_ENABLED 1" pyconfig.h; then
 		eerror "configure has detected that the sem_open function is broken."
 		eerror "Please ensure that /dev/shm is mounted as a tmpfs with mode 1777."
 		die "Broken sem_open function (bug 496328)"
@@ -293,7 +293,6 @@ src_install() {
 	use tk || rm -r "${ED}/usr/bin/idle${PYVER}" "${libdir}/"{idlelib,lib-tk} || die
 	use elibc_uclibc && rm -fr "${libdir}/"{bsddb/test,test}
 
-	use threads || rm -r "${libdir}/multiprocessing" || die
 	use wininst || rm "${libdir}/distutils/command/"wininst-*.exe || die
 
 	dodoc Misc/{ACKS,HISTORY,NEWS}
