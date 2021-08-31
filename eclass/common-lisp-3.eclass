@@ -15,8 +15,6 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-EXPORT_FUNCTIONS src_compile src_install
-
 inherit eutils
 
 if [[ -z ${_COMMON_LISP_3_ECLASS} ]]; then
@@ -246,3 +244,5 @@ common-lisp-export-impl-args() {
 }
 
 fi
+
+EXPORT_FUNCTIONS src_compile src_install
