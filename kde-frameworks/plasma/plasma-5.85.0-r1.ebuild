@@ -13,13 +13,10 @@ DESCRIPTION="Plasma framework"
 
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="gles2-only wayland X"
+IUSE="gles2-only man wayland X"
 
 RESTRICT+=" test"
 
-BDEPEND="
-	>=kde-frameworks/kdoctools-${PVCUT}:5
-"
 RDEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5
@@ -60,6 +57,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
+BDEPEND="man? ( >=kde-frameworks/kdoctools-${PVCUT}:5 )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-plasma-scaling-w-int-scale-factors.patch
@@ -70,6 +68,7 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package !gles2-only OpenGL)
+		$(cmake_use_find_package man KF5DocTools)
 		$(cmake_use_find_package wayland EGL)
 		$(cmake_use_find_package wayland KF5Wayland)
 		$(cmake_use_find_package X X11)
