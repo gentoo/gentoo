@@ -34,6 +34,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.177-disable-large.patch
 	"${FILESDIR}"/${PN}-0.180-PaX-support.patch
 	"${FILESDIR}"/${PN}-0.185-static-inline.patch
+	"${FILESDIR}"/${PN}-0.185-pull-advance_pc-in-file-scope.patch
+	"${FILESDIR}"/${PN}-0.185-configure.ac-rework-gnu99-ext-check-to-allow-clang.patch
 )
 
 src_prepare() {
