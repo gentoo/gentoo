@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="PSF-2"
 SLOT="${PYVER}/${PYVER}m"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="bluetooth build examples gdbm hardened ipv6 +ncurses +readline +sqlite +ssl test +threads tk wininst +xml"
+IUSE="bluetooth build examples gdbm hardened +ncurses +readline +sqlite +ssl test +threads tk wininst +xml"
 RESTRICT="!test? ( test )"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
@@ -151,7 +151,7 @@ src_configure() {
 
 		--with-fpectl
 		--enable-shared
-		$(use_enable ipv6)
+		--enable-ipv6
 		$(use_with threads)
 		--infodir='${prefix}/share/info'
 		--mandir='${prefix}/share/man'

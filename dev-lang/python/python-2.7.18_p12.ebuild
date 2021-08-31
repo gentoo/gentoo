@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="PSF-2"
 SLOT="${PYVER}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="berkdb bluetooth build elibc_uclibc examples gdbm hardened ipv6 +ncurses +readline +sqlite +ssl +threads tk +wide-unicode wininst +xml"
+IUSE="berkdb bluetooth build elibc_uclibc examples gdbm hardened +ncurses +readline +sqlite +ssl +threads tk +wide-unicode wininst +xml"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
 # If you need to apply a patch which requires python for bootstrapping, please
@@ -190,7 +190,7 @@ src_configure() {
 
 		--with-fpectl
 		--enable-shared
-		$(use_enable ipv6)
+		--enable-ipv6
 		$(use_with threads)
 		$(use wide-unicode && echo "--enable-unicode=ucs4" || echo "--enable-unicode=ucs2")
 		--infodir='${prefix}/share/info'
