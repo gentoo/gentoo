@@ -17,10 +17,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="|| ( app-text/tidy-html5 >=app-text/htmltidy-5.0.0 )"
-DEPEND="dev-python/six[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
-distutils_enable_sphinx doc
+distutils_enable_sphinx docs
 
 EPYTEST_DESELECT=(
 	# https://github.com/nijel/utidylib/issues/9
