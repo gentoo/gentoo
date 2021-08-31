@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5=[egl]
 	>=dev-qt/qtwayland-${QTMIN}:5
-	media-libs/mesa[egl(+)]
+	media-libs/libglvnd
 "
 DEPEND="${RDEPEND}
 	>=dev-libs/plasma-wayland-protocols-1.3.0
