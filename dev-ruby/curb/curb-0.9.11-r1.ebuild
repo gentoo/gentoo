@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND+=" net-misc/curl[ssl] test? ( net-misc/curl[samba] )"
+DEPEND+=" net-misc/curl[ssl] test? ( net-misc/curl )"
 RDEPEND+=" net-misc/curl[ssl]"
 
 all_ruby_prepare() {
