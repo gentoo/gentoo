@@ -10,5 +10,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pytest-helpers-namespace</remote-id>
+		<remote-id type="github">saltstack/pytest-helpers-namespace</remote-id>
 	</upstream>
 </pkgmetadata>
