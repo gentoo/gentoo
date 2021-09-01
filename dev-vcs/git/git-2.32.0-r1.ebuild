@@ -145,6 +145,10 @@ PATCHES=(
 
 	# Make submodule output quiet
 	"${FILESDIR}"/git-2.21.0-quiet-submodules-testcase.patch
+
+	# See bug #751907
+	# Test fails due to exported ${D} in src_test
+	"${FILESDIR}"/git-2.32.0-r1-test-t5582.patch
 )
 
 pkg_setup() {
