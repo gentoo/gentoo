@@ -12,6 +12,7 @@ SRC_URI="https://github.com/tsujan/FeatherPad/archive/V${PV}.tar.gz -> ${P}.tar.
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="+X"
 
 RDEPEND="app-text/hunspell
 	dev-qt/qtcore:5
@@ -20,9 +21,18 @@ RDEPEND="app-text/hunspell
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
-	x11-libs/libX11"
+	X? (
+		dev-qt/qtx11extras:5
+		x11-libs/libX11
+	)"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
 
 S="${WORKDIR}/FeatherPad-${PV}"
+
+src_configure() {
+	local mycmakeargs=(
+		-DWITHOUT_X11=$(usex !X)
+	)
+	cmake_src_configure
+}
