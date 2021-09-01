@@ -8,6 +8,7 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pytest-helpers-namespace</remote-id>
 		<remote-id type="github">saltstack/pytest-helpers-namespace</remote-id>
