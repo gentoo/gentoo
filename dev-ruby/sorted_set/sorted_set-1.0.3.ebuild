@@ -22,3 +22,7 @@ ruby_add_rdepend "
 	dev-ruby/rbtree
 	dev-ruby/set:0
 "
+
+all_ruby_prepare() {
+	sed -i -e 's/git ls-files -z/find * -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
+}
