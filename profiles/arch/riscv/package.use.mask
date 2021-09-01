@@ -46,7 +46,7 @@ kde-frameworks/kfilemetadata ffmpeg
 kde-plasma/plasma-workspace appstream screencast gps geolocation
 kde-plasma/kdeplasma-addons webengine
 kde-plasma/plasma-meta accessibility grub plymouth pulseaudio
-kde-plasma/discover firmware flatpak
+kde-plasma/discover flatpak
 kde-plasma/kwin accessibility screencast
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-17)
