@@ -24,17 +24,17 @@ COMMON_DEPEND="
 		sys-fs/e2fsprogs[static-libs]
 		sys-libs/ncurses:0[static-libs]
 		jpeg? ( virtual/jpeg:0[static-libs] )
-		ntfs? ( sys-fs/ntfs3g:=[static-libs] )
+		ntfs? ( sys-fs/ntfs3g[static-libs] )
 		reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8[static-libs] )
 		zlib? ( sys-libs/zlib[static-libs] )
-		!arm? ( ewf? ( app-forensics/libewf:=[static-libs] ) )
+		!arm? ( ewf? ( app-forensics/libewf[static-libs] ) )
 	)
 	!static? (
 		sys-apps/util-linux
 		sys-fs/e2fsprogs
 		sys-libs/ncurses:0=
 		jpeg? ( virtual/jpeg:0 )
-		ntfs? ( sys-fs/ntfs3g )
+		ntfs? ( sys-fs/ntfs3g:= )
 		qt5? (
 			dev-qt/qtcore:5
 			dev-qt/qtgui:5
