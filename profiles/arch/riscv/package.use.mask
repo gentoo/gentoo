@@ -48,7 +48,6 @@ media-sound/jack2 ieee1394
 kde-plasma/powerdevil wireless
 kde-plasma/plasma-desktop emoji
 kde-plasma/libksysguard webengine
-kde-frameworks/kfilemetadata ffmpeg
 kde-plasma/plasma-workspace appstream screencast gps geolocation
 kde-plasma/kdeplasma-addons webengine
 kde-plasma/plasma-meta accessibility grub plymouth pulseaudio
