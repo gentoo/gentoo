@@ -30,8 +30,8 @@ RDEPEND="
 		app-arch/cabextract
 		app-cdr/cdrtools
 	)
-	ntfs? ( sys-fs/ntfs3g )
-	ssl? ( dev-libs/openssl:0= )
+	ntfs? ( sys-fs/ntfs3g:= )
+	ssl? ( dev-libs/openssl:= )
 "
 
 src_prepare() {
