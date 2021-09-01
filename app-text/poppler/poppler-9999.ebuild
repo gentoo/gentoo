@@ -70,7 +70,7 @@ src_prepare() {
 
 	# Clang doesn't grok this flag, the configure nicely tests that, but
 	# cmake just uses it, so remove it if we use clang
-	if [[ ${CC} == clang ]] ; then
+	if tc-is-clang ; then
 		sed -e 's/-fno-check-new//' -i cmake/modules/PopplerMacros.cmake || die
 	fi
 
