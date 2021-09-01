@@ -22,7 +22,9 @@ RDEPEND="
 	sys-apps/file
 	sys-apps/portage
 	sys-apps/util-linux"
-BDEPEND="test? ( ${RDEPEND} )"
+BDEPEND="
+	sys-apps/help2man
+	test? ( ${RDEPEND} )"
 
 src_configure() {
 	local emesonargs=(
