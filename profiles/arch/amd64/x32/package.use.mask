@@ -47,6 +47,7 @@ dev-ruby/tilt test
 net-analyzer/netdata nodejs
 www-apps/gitea build-client
 www-apps/jekyll test
+www-apps/xpra-html5 minify
 dev-python/QtPy test
 
 # Davide Pesavento <pesa@gentoo.org> (2011-11-30)
