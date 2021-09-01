@@ -138,8 +138,6 @@ dev-python/ipython nbconvert notebook
 # Dependencies not keyworded here yet:
 #  - dev-ruby/asciidoctor
 dev-libs/nanomsg doc
-#  - kde-plasma/bluedevil
-kde-plasma/plasma-meta bluetooth
 #  - media-gfx/nvidia-texture-tools
 media-libs/devil nvtt
 #  - dev-cpp/glog, sci-libs/vtk
