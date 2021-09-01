@@ -17,7 +17,7 @@ SRC_URI="https://repo1.maven.org/maven2/mysql/mysql-connector-java/${PV}/mysql-c
 
 LICENSE="GPL-2-with-MySQL-FLOSS-exception"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="amd64 ppc64 x86"
 
 # Common dependencies
 # POM: mysql-connector-java-${PV}.pom.xml
