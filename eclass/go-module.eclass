@@ -75,9 +75,7 @@ export GOCACHE="${T}/go-build"
 # The following go flags should be used for all builds.
 # -v prints the names of packages as they are compiled
 # -x prints commands as they are executed
-# -mod=readonly do not update go.mod/go.sum but fail if updates are needed
-# -mod=vendor use the vendor directory instead of downloading dependencies
-export GOFLAGS="-v -x -mod=readonly"
+export GOFLAGS="-v -x"
 
 # Do not complain about CFLAGS etc since go projects do not use them.
 QA_FLAGS_IGNORED='.*'
