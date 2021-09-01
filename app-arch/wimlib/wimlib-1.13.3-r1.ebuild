@@ -33,9 +33,9 @@ BDEPEND="
 "
 RDEPEND="
 	dev-libs/libxml2:2
-	ntfs? ( sys-fs/ntfs3g )
+	ntfs? ( sys-fs/ntfs3g:= )
 	fuse? ( sys-fs/fuse:0 )
-	openssl? ( dev-libs/openssl:0= )
+	openssl? ( dev-libs/openssl:= )
 	iso? (
 		app-arch/cabextract
 		app-cdr/cdrtools
