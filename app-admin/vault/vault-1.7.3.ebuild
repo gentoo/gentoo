@@ -71,8 +71,3 @@ src_install() {
 	keepdir /var/log/${PN}
 	fowners ${PN}:${PN} /var/log/${PN}
 }
-
-pkg_postinst() {
-	fcaps_pkg_postinst
-	go-module_pkg_postinst
-}
