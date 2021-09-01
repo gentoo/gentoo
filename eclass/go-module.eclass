@@ -83,7 +83,7 @@ QA_FLAGS_IGNORED='.*'
 # Go packages should not be stripped with strip(1).
 RESTRICT+=" strip"
 
-EXPORT_FUNCTIONS src_unpack pkg_postinst
+EXPORT_FUNCTIONS src_unpack
 
 # @ECLASS-VARIABLE: EGO_SUM
 # @DESCRIPTION:
@@ -413,21 +413,6 @@ go-module_live_vendor() {
 	pushd "${S}" >& /dev/null || die
 	go mod vendor || die
 	popd >& /dev/null || die
-}
-
-# @FUNCTION: go-module_pkg_postinst
-# @DESCRIPTION:
-# Display a warning about security updates for Go programs.
-go-module_pkg_postinst() {
-	debug-print-function "${FUNCNAME}" "$@"
-	[[ -n ${REPLACING_VERSIONS} ]] && return 0
-	ewarn "${PN} is written in the Go programming language."
-	ewarn "Since this language is statically linked, security"
-	ewarn "updates will be handled in individual packages and will be"
-	ewarn "difficult for us to track as a distribution."
-	ewarn "For this reason, please update any go packages asap when new"
-	ewarn "versions enter the tree or go stable if you are running the"
-	ewarn "stable tree."
 }
 
 # @FUNCTION: _go-module_gomod_encode
