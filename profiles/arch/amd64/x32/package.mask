@@ -142,6 +142,7 @@ dev-ruby/coffee-script
 dev-ruby/execjs
 dev-ruby/turbolinks
 dev-ruby/uglifier
+dev-util/uglifyjs
 net-libs/nodejs
 sys-apps/yarn
 www-apps/jekyll-coffeescript
