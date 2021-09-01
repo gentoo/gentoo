@@ -14,6 +14,12 @@
 		plain-text editor for Linux. It is independent of any desktop
 		environment.
 	</longdescription>
+	<use>
+		<flag name="X">
+			Link application against X11 libraries which adds
+			support for virtual desktop awareness and tab DND.
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">tsujan/FeatherPad</remote-id>
 	</upstream>
