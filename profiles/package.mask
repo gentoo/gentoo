@@ -193,13 +193,6 @@ net-libs/openmq-cclient
 # bug #729106, bug #786648. Removal on 2021-09-04.
 app-backup/zbackup
 
-# Sam James <sam@gentoo.org> (2021-08-04)
-# Fails to build with GCC 11, large number of open bugs,
-# no activity upstream. bug #692806, bug #694674, bug #712832,
-# bug #725166, bug #740792, bug #788637, bug #798042.
-# Removal on 2021-09-04.
-net-misc/stargazer
-
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
 # ecosystem has switched to dev-util/pkgconf, which is alive. Testing
