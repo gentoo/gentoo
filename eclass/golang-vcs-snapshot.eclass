@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
+# @PROVIDES: golang-base
 # @BLURB: eclass to unpack VCS snapshot tarballs for Go software
 # @DESCRIPTION:
 # This eclass provides a convenience src_unpack() which unpacks the
