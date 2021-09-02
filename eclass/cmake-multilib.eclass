@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # @SUPPORTED_EAPIS: 7 8
+# @PROVIDES: cmake cmake-utils multilib-minimal
 # @BLURB: cmake wrapper for multilib builds
 # @DESCRIPTION:
 # The cmake-multilib.eclass provides a glue between cmake.eclass(5)
