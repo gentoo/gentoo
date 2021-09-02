@@ -33,13 +33,6 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2021-08-29)
-# Version in tree is over 7 years old with numerous bugs. A modern
-# version 4 is available, but this really requires a dedicated
-# maintainer.
-# Bug #802417, #808669, removal in 30 days.
-sci-chemistry/dssp
-
-# David Seifert <soap@gentoo.org> (2021-08-29)
 # Broken for the past 5 years (#585942), no new upstream release in over
 # 5 years. Same issues as sci-biology/wgs-assembler, use a modern
 # assembler like sci-biology/abyss or canu.
