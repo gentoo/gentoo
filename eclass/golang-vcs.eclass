@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
+# @PROVIDES: golang-base
 # @BLURB: Eclass for fetching and unpacking go repositories.
 # @DESCRIPTION:
 # This eclass is written to ease the maintenance of live ebuilds
