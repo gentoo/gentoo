@@ -6,6 +6,11 @@
 # That said, with pebble-4.6.3 installed manually
 # (and without testing) all nbconvert-6.0.7 tests passed.
 dev-python/nbconvert test
+# ceph-mgr indirectly depends on dev-python/loky, which fails tests
+# on this arch. Note that since modern versions of Ceph require ceph-mgr
+# for normal operations, masking this flag means one cannot presently
+# have a riscv-only Gentoo-based Ceph cluster.
+sys-cluster/ceph mgr
 
 # Yixun Lan <dlan@gentoo.org> (2021-08-29)
 #  sys-apps/fwupd not tested, USE=spi,uefi,dell
@@ -19,8 +24,8 @@ sys-cluster/openmpi openmpi_fabrics_psm
 sys-fabric/ofed ofed_drivers_psm
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-23)
-# sys-cluster/ceph keywording blocked by libatomic issues in dev-libs/rocksdb-6.14,
-# see Bug #809830.
+# sys-cluster/ceph not keyworded here yet due to several dependencies
+# failing tests
 net-analyzer/rrdtool rados
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-22)
