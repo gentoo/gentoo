@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib systemd toolchain-funcs autotools flag-o-matic usr-ldscript
+inherit systemd toolchain-funcs autotools flag-o-matic usr-ldscript
 
 DESCRIPTION="Linux kernel (2.4+) firewall, NAT and packet mangling tools"
 HOMEPAGE="https://www.netfilter.org/projects/iptables/"
