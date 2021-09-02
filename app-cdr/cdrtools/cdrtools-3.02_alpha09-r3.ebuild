@@ -88,6 +88,9 @@ src_prepare() {
 	cd "${S}"/RULES || die
 	local tcCC=$(tc-getCC)
 	local tcCXX=$(tc-getCXX)
+	# fix RISC-V build err, bug 811375
+	ln -s i586-linux-cc.rul riscv64-linux-cc.rul || die
+
 	sed -i -e "/cc-config.sh/s|\$(C_ARCH:%64=%) \$(CCOM_DEF)|${tcCC} ${tcCC}|" \
 		rules1.top || die "sed rules1.top"
 	sed -i -e "/^CC_COM_DEF=/s|gcc|${tcCC}|" \
