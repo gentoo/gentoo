@@ -29,7 +29,6 @@ RDEPEND="app-text/hunspell:=
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
 
-
 src_configure() {
 	local mycmakeargs=(
 		-DWITHOUT_X11=$(usex !X)
