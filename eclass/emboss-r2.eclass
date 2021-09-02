@@ -40,8 +40,6 @@ case ${EAPI:-0} in
 	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
 
-EXPORT_FUNCTIONS src_prepare src_configure src_install
-
 if [[ ! ${_EMBOSS_R2_ECLASS} ]]; then
 _EMBOSS_R2_ECLASS=1
 
@@ -156,3 +154,5 @@ emboss-r2_src_install() {
 }
 
 fi
+
+EXPORT_FUNCTIONS src_prepare src_configure src_install
