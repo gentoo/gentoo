@@ -20,8 +20,6 @@ case ${EAPI:-0} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS src_unpack
-
 if [[ -z ${_MERCURIAL_ECLASS} ]] ; then
 _MERCURIAL_ECLASS=1
 
@@ -219,3 +217,5 @@ function mercurial_src_unpack {
 }
 
 fi
+
+EXPORT_FUNCTIONS src_unpack
