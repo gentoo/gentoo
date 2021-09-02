@@ -12,5 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">authheaders</remote-id>
+		<remote-id type="github">ValiMail/authentication-headers</remote-id>
 	</upstream>
 </pkgmetadata>
