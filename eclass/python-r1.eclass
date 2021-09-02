@@ -8,6 +8,7 @@
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
 # @SUPPORTED_EAPIS: 6 7 8
+# @PROVIDES: multibuild python-utils-r1
 # @BLURB: A common, simple eclass for Python packages.
 # @DESCRIPTION:
 # A common eclass providing helper functions to build and install
