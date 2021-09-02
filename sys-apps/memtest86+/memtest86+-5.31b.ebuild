@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit mount-boot eutils toolchain-funcs
+inherit mount-boot toolchain-funcs
 
 DESCRIPTION="Memory tester based on memtest86"
 HOMEPAGE="http://www.memtest.org/"
@@ -15,8 +15,8 @@ KEYWORDS="-* ~amd64 ~x86"
 IUSE="+boot floppy iso serial"
 
 BOOTDIR="/boot/memtest86plus"
-QA_PRESTRIPPED="${BOOTDIR}/memtest /usr/share/${PN}/memtest"
-QA_FLAGS_IGNORED="${BOOTDIR}/memtest /usr/share/${PN}/memtest"
+QA_PRESTRIPPED="${BOOTDIR#/}/memtest usr/share/${PN}/memtest"
+QA_FLAGS_IGNORED="${BOOTDIR#/}/memtest usr/share/${PN}/memtest"
 
 RDEPEND="floppy? ( sys-fs/mtools )"
 DEPEND="${RDEPEND}"
