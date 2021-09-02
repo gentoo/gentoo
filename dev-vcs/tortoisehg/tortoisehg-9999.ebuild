@@ -39,8 +39,8 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	test? (
-		dev-python/mock
-		dev-python/pytest
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
 
