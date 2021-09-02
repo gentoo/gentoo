@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit pam
-
 if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3
 	#EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/legion/kbd.git"
