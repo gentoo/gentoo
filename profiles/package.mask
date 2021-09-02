@@ -226,7 +226,6 @@ media-libs/memphis
 # upstream disappeared, last distro that still packages this.
 # Bug #722376, #742938, #742941, removal in 30 days.
 app-i18n/libtabe
-app-i18n/xcin
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-08-02)
 # Two years after the tracker was opened it is time to mask dev-qt/qtwebkit
