@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/scikit-learn/scikit-learn/archive/${PV}.tar.gz -> ${
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 IUSE="examples"
 
 DEPEND="
