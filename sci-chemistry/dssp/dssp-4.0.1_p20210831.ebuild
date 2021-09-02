@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 BDEPEND="
-	>=dev-libs/boost-1.70.0:=[threads(+)]
+	>=dev-libs/boost-1.70.0:=[bzip2,zlib,threads(+)]
 	>=sci-libs/libcifpp-1.1.1
 "
 DEPEND=""
