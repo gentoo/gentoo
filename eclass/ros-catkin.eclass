@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Alexis Ballier <aballier@gentoo.org>
 # @SUPPORTED_EAPIS: 7
+# @PROVIDES: cmake python-single-r1
 # @BLURB: Template eclass for catkin based ROS packages.
 # @DESCRIPTION:
 # Provides function for building ROS packages on Gentoo.
