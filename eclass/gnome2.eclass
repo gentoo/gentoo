@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # gnome@gentoo.org
 # @SUPPORTED_EAPIS: 5 6 7
+# @PROVIDES: gnome2-utils
 # @BLURB: Provides phases for Gnome/Gtk+ based packages.
 # @DESCRIPTION:
 # Exports portage base functions used by ebuilds written for packages using the
