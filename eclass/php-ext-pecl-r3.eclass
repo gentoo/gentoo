@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # Gentoo PHP team <php-bugs@gentoo.org>
 # @SUPPORTED_EAPIS: 6 7
+# @PROVIDES: php-ext-source-r3
 # @BLURB: A uniform way to install PECL extensions
 # @DESCRIPTION:
 # This eclass should be used by all dev-php/pecl-* ebuilds as a uniform
