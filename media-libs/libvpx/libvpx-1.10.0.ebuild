@@ -22,7 +22,7 @@ SRC_URI="https://github.com/webmproject/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="BSD"
 SLOT="0/6"
 KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
-IUSE="doc +highbitdepth postproc static-libs svc test +threads"
+IUSE="doc +highbitdepth postproc static-libs test +threads"
 
 REQUIRED_USE="test? ( threads )"
 
@@ -69,7 +69,6 @@ multilib_src_configure() {
 		--enable-shared
 		--extra-cflags="${CFLAGS}"
 		$(use_enable postproc)
-		$(use_enable svc experimental)
 		$(use_enable static-libs static)
 		$(use_enable test unit-tests)
 		$(use_enable threads multithread)
