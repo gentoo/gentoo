@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-mod linux-info
+inherit linux-mod linux-info toolchain-funcs
 
 SRC_URI="https://github.com/leogx9r/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"

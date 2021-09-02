@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-mod linux-info
+inherit linux-mod linux-info toolchain-funcs
 
 SRC_URI="https://dev.gentoo.org/~slashbeast/distfiles/${PN}/${P}.tar.xz"
 KEYWORDS="~amd64 ~x86"
