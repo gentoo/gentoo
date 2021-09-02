@@ -9,6 +9,7 @@
 # Marek Szuba <marecki@gentoo.org>
 # Based on python-single-r1.eclass by Michał Górny <mgorny@gentoo.org> et al.
 # @SUPPORTED_EAPIS: 7 8
+# @PROVIDES: lua-utils
 # @BLURB: An eclass for Lua packages not installed for multiple implementations.
 # @DESCRIPTION:
 # An extension of lua.eclass suite for packages which don't support being
