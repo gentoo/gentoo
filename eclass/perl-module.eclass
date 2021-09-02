@@ -8,6 +8,7 @@
 # Seemant Kulleen <seemant@gentoo.org>
 # Andreas K. Hüttel <dilfridge@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7 8
+# @PROVIDES: perl-functions
 # @BLURB: eclass for installing Perl module distributions
 # @DESCRIPTION:
 # The perl-module eclass is designed to allow easier installation of Perl
