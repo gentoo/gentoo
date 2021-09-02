@@ -1,11 +1,11 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
-DESCRIPTION="a tapedrive tool for speeding up reading from and writing to tape"
+DESCRIPTION="A tapedrive tool for speeding up reading from and writing to tape"
 HOMEPAGE="http://www.microwerks.net/~hugo/"
 
 DEBIAN_PR=12
@@ -22,16 +22,17 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
-IUSE=""
 
 src_prepare() {
+	local f
 	for f in $(<"${WORKDIR}"/debian/patches/series) ; do
 		p="${WORKDIR}"/debian/patches/${f}.patch
 		ln -sf "${f}" "${p}" || die
-		einfo $p
+		einfo ${p}
 		eapply -p1 "${p}" || die
 	done
-	cd "${S}"
+
+	cd "${S}" || die
 	emake clean
 	eapply_user
 }
