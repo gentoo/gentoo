@@ -312,10 +312,6 @@ dev-python/statsmodels doc
 sys-block/open-iscsi slp
 sys-block/open-isns slp
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-28)
-# media-fonts/hkscs-ming is slated for removal.
-app-i18n/xcin unicode
-
 # Craig Andrews <candrews@gentoo.org> (2019-09-12)
 # OpenSSL (as of version 1.1.1) doesn't have APIs for QUIC support
 # see https://github.com/openssl/openssl/pull/8797
