@@ -8,6 +8,7 @@ inherit xdg cmake
 DESCRIPTION="Lightweight Qt5 Plain-Text Editor for Linux"
 HOMEPAGE="https://github.com/tsujan/FeatherPad"
 SRC_URI="https://github.com/tsujan/FeatherPad/archive/V${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/FeatherPad-${PV}"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -28,7 +29,6 @@ RDEPEND="app-text/hunspell
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
 
-S="${WORKDIR}/FeatherPad-${PV}"
 
 src_configure() {
 	local mycmakeargs=(
