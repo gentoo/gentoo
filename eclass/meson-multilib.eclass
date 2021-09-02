@@ -8,6 +8,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # Matt Turner <mattst88@gentoo.org>
 # @SUPPORTED_EAPIS: 7 8
+# @PROVIDES: meson multilib-minimal
 # @BLURB: meson wrapper for multilib builds
 # @DESCRIPTION:
 # The meson-multilib.eclass provides a glue between meson.eclass(5)
