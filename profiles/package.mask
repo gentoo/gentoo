@@ -233,7 +233,6 @@ app-i18n/xcin
 # last distro that still packages this.
 # Bug #629610, #646690, removal in 30 days.
 dev-libs/hyperleveldb
-dev-libs/replicant
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-08-02)
 # Two years after the tracker was opened it is time to mask dev-qt/qtwebkit
