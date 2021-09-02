@@ -221,12 +221,6 @@ dev-util/pkgconfig
 # Bug #586586, removal in 30 days.
 media-libs/memphis
 
-# David Seifert <soap@gentoo.org> (2021-08-04)
-# Last release 16 years ago, multiple build failures, unmaintained,
-# upstream disappeared, last distro that still packages this.
-# Bug #722376, #742938, #742941, removal in 30 days.
-app-i18n/libtabe
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-08-02)
 # Two years after the tracker was opened it is time to mask dev-qt/qtwebkit
 # for good. No commits to upstream repository for >9 months, latest available
