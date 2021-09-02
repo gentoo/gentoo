@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # candrews@gentoo.org
 # @SUPPORTED_EAPIS: 4 5 6 7
+# @PROVIDES: cmake cmake-utils
 # @BLURB: Helper for correct building and (importantly) installing Kodi addon packages.
 # @DESCRIPTION:
 # Provides a src_configure function for correct CMake configuration
