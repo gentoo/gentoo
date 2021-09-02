@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # gnome@gentoo.org
 # @SUPPORTED_EAPIS: 5 6 7
+# @PROVIDES: xdg-utils
 # @BLURB: Auxiliary functions commonly used by Gnome packages.
 # @DESCRIPTION:
 # This eclass provides a set of auxiliary functions needed by most Gnome
