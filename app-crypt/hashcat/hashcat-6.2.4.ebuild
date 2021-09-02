@@ -30,6 +30,10 @@ DEPEND="
 	!video_cards_nvidia? ( virtual/opencl )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.2.4-brainless.patch
+)
+
 src_prepare() {
 	# remove bundled stuff
 	rm -r deps/OpenCL-Headers || die "Failed to remove bundled OpenCL Headers"
