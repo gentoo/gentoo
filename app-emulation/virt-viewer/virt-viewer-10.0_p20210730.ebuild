@@ -16,19 +16,22 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+libvirt sasl +spice +vnc"
 
-RDEPEND=">=dev-libs/libxml2-2.6
+RDEPEND="dev-libs/glib:2
+	>=dev-libs/libxml2-2.6
+	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
+	x11-libs/pango
 	libvirt? (
-		>=app-emulation/libvirt-0.10.0[sasl?]
+		>=app-emulation/libvirt-0.10.0:=[sasl?]
 		app-emulation/libvirt-glib
 	)
 	spice? ( >=net-misc/spice-gtk-0.35[sasl?,gtk3] )
 	vnc? ( >=net-libs/gtk-vnc-0.5.0[sasl?,gtk3(+)] )"
 DEPEND="${RDEPEND}
-	dev-lang/perl
-	>=dev-util/intltool-0.35.0
-	virtual/pkgconfig
 	spice? ( >=app-emulation/spice-protocol-0.12.10 )"
+BDEPEND="dev-lang/perl
+	>=dev-util/intltool-0.35.0
+	virtual/pkgconfig"
 
 REQUIRED_USE="|| ( spice vnc )"
 
