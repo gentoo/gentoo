@@ -17,8 +17,6 @@ case ${EAPI:-0} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS src_install
-
 if [[ -z ${_JAVA_VIRTUALS_2_ECLASS} ]] ; then
 _JAVA_VIRTUALS_2_ECLASS=1
 
@@ -63,3 +61,5 @@ java-virtuals-2_do_write() {
 }
 
 fi
+
+EXPORT_FUNCTIONS src_install
