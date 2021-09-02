@@ -9,6 +9,7 @@
 # Marek Szuba <marecki@gentoo.org>
 # Based on python-r1.eclass by Michał Górny <mgorny@gentoo.org> et al.
 # @SUPPORTED_EAPIS: 7 8
+# @PROVIDES: lua-utils
 # @BLURB: A common eclass for Lua packages
 # @DESCRIPTION:
 # A common eclass providing helper functions to build and install
