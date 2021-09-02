@@ -11,6 +11,7 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_compile src_install src_test
 # @AUTHOR:
 # Aaron W. Swenson <titanofold@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
+# @PROVIDES: multibuild postgres
 # @BLURB: An eclass to build PostgreSQL-related packages against multiple slots
 # @DESCRIPTION:
 # postgres-multi enables ebuilds, particularly PostgreSQL extensions, to
