@@ -50,8 +50,6 @@ case ${EAPI} in
 	*)     die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-EXPORT_FUNCTIONS src_compile src_install pkg_postinst
-
 if [[ -z ${_APACHE_MODULE_ECLASS} ]]; then
 _APACHE_MODULE_ECLASS=1
 
@@ -247,3 +245,5 @@ apache-module_pkg_postinst() {
 }
 
 fi
+
+EXPORT_FUNCTIONS src_compile src_install pkg_postinst
