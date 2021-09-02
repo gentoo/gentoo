@@ -539,14 +539,11 @@ get_version() {
 
 	# And contrary to existing functions I feel we shouldn't trust the
 	# directory name to find version information as this seems insane.
-	# So we parse ${KERNEL_MAKEFILE}.  We should be able to trust that
-	# the Makefile is simple enough to use the noexec extract function.
-	# This has been true for every release thus far, and it's faster
-	# than using make to evaluate the Makefile every time.
-	KV_MAJOR=$(getfilevar_noexec VERSION "${KERNEL_MAKEFILE}")
-	KV_MINOR=$(getfilevar_noexec PATCHLEVEL "${KERNEL_MAKEFILE}")
-	KV_PATCH=$(getfilevar_noexec SUBLEVEL "${KERNEL_MAKEFILE}")
-	KV_EXTRA=$(getfilevar_noexec EXTRAVERSION "${KERNEL_MAKEFILE}")
+	# So we parse ${KERNEL_MAKEFILE}.  
+	KV_MAJOR=$(getfilevar VERSION "${KERNEL_MAKEFILE}")
+	KV_MINOR=$(getfilevar PATCHLEVEL "${KERNEL_MAKEFILE}")
+	KV_PATCH=$(getfilevar SUBLEVEL "${KERNEL_MAKEFILE}")
+	KV_EXTRA=$(getfilevar EXTRAVERSION "${KERNEL_MAKEFILE}")
 
 	if [ -z "${KV_MAJOR}" -o -z "${KV_MINOR}" -o -z "${KV_PATCH}" ]
 	then
