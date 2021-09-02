@@ -18,14 +18,22 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-text/yelp-tools
-	>=dev-libs/glib-2.62.0:2
-	>=gnome-base/gnome-vfs-2.0.0
-	>=x11-libs/gtk+-2.24.0:2
+	dev-libs/atk
+	dev-libs/glib:2
+	gnome-base/gconf:2
+	gnome-base/gnome-vfs
+	media-libs/fontconfig
+	media-libs/freetype
+	media-libs/harfbuzz:=
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:2
+	x11-libs/pango
 	chm? ( dev-libs/chmlib )
 	exif? ( >=media-gfx/exiv2-0.14 )
-	gsf? ( >=gnome-extra/libgsf-1.12.0 )
+	gsf? ( gnome-extra/libgsf:= )
 	pdf? ( >=app-text/poppler-0.18 )
-	samba? ( >=gnome-base/gnome-vfs-2.0.0[samba] )
+	samba? ( gnome-base/gnome-vfs:=[samba] )
 	taglib? ( >=media-libs/taglib-1.4 )
 	unique? ( >=dev-libs/libunique-0.9.3:1 )
 "
