@@ -39,13 +39,6 @@ DEPEND="
 	test? ( >=dev-cpp/gtest-1.7.0 )
 "
 
-pkg_pretend() {
-	if tc-is-gcc && [[ $(gcc-major-version) -lt 8 ]]; then
-		eerror "Compilation with gcc older than version 8 is not supported"
-		die "GCC too old, please use gcc-8 or above"
-	fi
-}
-
 src_configure() {
 	gnome2_src_configure \
 		--disable-static \
