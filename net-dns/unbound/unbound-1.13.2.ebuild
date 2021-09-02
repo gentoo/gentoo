@@ -14,7 +14,7 @@ SRC_URI="https://nlnetlabs.nl/downloads/unbound/${MY_P}.tar.gz"
 LICENSE="BSD GPL-2"
 SLOT="0/8" # ABI version of libunbound.so
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86"
-IUSE="debug dnscrypt dnstap +ecdsa ecs gost +http2 python redis selinux static-libs systemd test threads"
+IUSE="debug dnscrypt dnstap +ecdsa ecs gost +http2 python redis selinux static-libs systemd test +tfo threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
@@ -100,12 +100,12 @@ multilib_src_configure() {
 		$(multilib_native_use_with python pyunbound) \
 		$(use_with threads pthreads) \
 		$(use_with http2 libnghttp2) \
+		$(use_enable tfo tfo-client) \
+		$(use_enable tfo tfo-server) \
 		--disable-flto \
 		--disable-rpath \
 		--enable-event-api \
 		--enable-ipsecmod \
-		--enable-tfo-client \
-		--enable-tfo-server \
 		--with-libevent="${EPREFIX}"/usr \
 		$(multilib_native_usex redis --with-libhiredis="${EPREFIX}/usr" --without-libhiredis) \
 		--with-pidfile="${EPREFIX}"/run/unbound.pid \
