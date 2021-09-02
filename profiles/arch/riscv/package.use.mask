@@ -151,6 +151,8 @@ media-libs/devil nvtt
 media-libs/opencv contribsfm glog vtk
 #  - dev-util/aruba
 sys-block/thin-provisioning-tools test
+#  - app-text/pandoc (-> dev-haskell/*)
+sys-cluster/ceph pmdk
 #  - sys-fabric/ofed
 sys-cluster/slurm ofed
 
