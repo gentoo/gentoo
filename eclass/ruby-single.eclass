@@ -8,6 +8,7 @@
 # Author: Hans de Graaff <graaff@gentoo.org>
 # Based on python-single-r1 by: Michał Górny <mgorny@gentoo.org>
 # @SUPPORTED_EAPIS: 4 5 6 7 8
+# @PROVIDES: ruby-utils
 # @BLURB: An eclass for Ruby packages not installed for multiple implementations.
 # @DESCRIPTION:
 # An eclass for packages which don't support being installed for
