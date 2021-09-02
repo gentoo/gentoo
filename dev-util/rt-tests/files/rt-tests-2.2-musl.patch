@@ -1,0 +1,352 @@
+From 0b7a1e0d3463aa8aa4b7dcad0ec154e658d68036 Mon Sep 17 00:00:00 2001
+From: Kurt Kanzenbach <kurt@kmk-computers.de>
+Date: Wed, 1 Apr 2020 20:15:24 +0200
+Subject: [PATCH] all: Fix musl build
+
+There are a few problems:
+
+ * pi stress:  pthread_attr_setaffinity_np() is not supported
+ * cyclictest: SIGEV_THREAD_ID is not supported
+ * hackbench:  Fix include
+ * all:        Fix sched_* calls
+
+With these changes applied, the rt-tests seem to run fine.
+
+Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
+---
+ Makefile                              |    5 --
+ src/backfire/sendme.c                 |    1 
+ src/cyclictest/cyclictest.c           |   70 ++++------------------------------
+ src/hackbench/hackbench.c             |    4 +
+ src/include/musl.h                    |   28 +++++++++++++
+ src/lib/rt-utils.c                    |    1 
+ src/pi_tests/classic_pi.c             |    2 
+ src/pi_tests/tst-mutexpi10.c          |    2 
+ src/pmqtest/pmqtest.c                 |    1 
+ src/ptsematest/ptsematest.c           |    1 
+ src/rt-migrate-test/rt-migrate-test.c |    1 
+ src/sched_deadline/cyclicdeadline.c   |    1 
+ 12 files changed, 50 insertions(+), 67 deletions(-)
+ create mode 100644 src/include/musl.h
+
+--- a/Makefile
++++ b/Makefile
+@@ -7,7 +7,6 @@ OBJDIR = bld
+ sources = cyclictest.c \
+ 	  hackbench.c \
+ 	  pip_stress.c \
+-	  pi_stress.c \
+ 	  pmqtest.c \
+ 	  ptsematest.c \
+ 	  rt-migrate-test.c \
+@@ -42,7 +41,6 @@ ifeq (${PYLIB},)
+ endif
+ 
+ MANPAGES = src/cyclictest/cyclictest.8 \
+-	   src/pi_tests/pi_stress.8 \
+ 	   src/ptsematest/ptsematest.8 \
+ 	   src/rt-migrate-test/rt-migrate-test.8 \
+ 	   src/sigwaittest/sigwaittest.8 \
+@@ -130,9 +128,6 @@ deadline_test: $(OBJDIR)/deadline_test.o
+ signaltest: $(OBJDIR)/signaltest.o $(OBJDIR)/librttest.a $(OBJDIR)/librttestnuma.a
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS) $(RTTESTLIB) $(RTTESTNUMA)
+ 
+-pi_stress: $(OBJDIR)/pi_stress.o $(OBJDIR)/librttest.a
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS) $(RTTESTLIB)
+-
+ hwlatdetect:  src/hwlatdetect/hwlatdetect.py
+ 	chmod +x src/hwlatdetect/hwlatdetect.py
+ 	ln -s src/hwlatdetect/hwlatdetect.py hwlatdetect
+--- a/src/backfire/sendme.c
++++ b/src/backfire/sendme.c
+@@ -29,6 +29,7 @@
+ #include <string.h>
+ #include <time.h>
+ #include <errno.h>
++#include "musl.h"
+ #include "rt-utils.h"
+ #include "rt-get_cpu.h"
+ 
+--- a/src/cyclictest/cyclictest.c
++++ b/src/cyclictest/cyclictest.c
+@@ -33,6 +33,7 @@
+ #include <sys/utsname.h>
+ #include <sys/mman.h>
+ #include <sys/syscall.h>
++#include "musl.h"
+ #include "rt_numa.h"
+ 
+ #include "rt-utils.h"
+@@ -502,12 +503,8 @@ static void *timerthread(void *param)
+ {
+ 	struct thread_param *par = param;
+ 	struct sched_param schedp;
+-	struct sigevent sigev;
+ 	sigset_t sigset;
+-	timer_t timer;
+ 	struct timespec now, next, interval, stop;
+-	struct itimerval itimer;
+-	struct itimerspec tspec;
+ 	struct thread_stat *stat = par->stats;
+ 	int stopped = 0;
+ 	cpu_set_t mask;
+@@ -538,14 +535,6 @@ static void *timerthread(void *param)
+ 	sigaddset(&sigset, par->signal);
+ 	sigprocmask(SIG_BLOCK, &sigset, NULL);
+ 
+-	if (par->mode == MODE_CYCLIC) {
+-		sigev.sigev_notify = SIGEV_THREAD_ID | SIGEV_SIGNAL;
+-		sigev.sigev_signo = par->signal;
+-		sigev.sigev_notify_thread_id = stat->tid;
+-		timer_create(par->clock, &sigev, &timer);
+-		tspec.it_interval = interval;
+-	}
+-
+ 	memset(&schedp, 0, sizeof(schedp));
+ 	schedp.sched_priority = par->prio;
+ 	if (setscheduler(0, par->policy, &schedp))
+@@ -600,20 +589,6 @@ static void *timerthread(void *param)
+ 		stop = now;
+ 		stop.tv_sec += duration;
+ 	}
+-	if (par->mode == MODE_CYCLIC) {
+-		if (par->timermode == TIMER_ABSTIME)
+-			tspec.it_value = next;
+-		else
+-			tspec.it_value = interval;
+-		timer_settime(timer, par->timermode, &tspec, NULL);
+-	}
+-
+-	if (par->mode == MODE_SYS_ITIMER) {
+-		itimer.it_interval.tv_sec = interval.tv_sec;
+-		itimer.it_interval.tv_usec = interval.tv_nsec / 1000;
+-		itimer.it_value = itimer.it_interval;
+-		setitimer(ITIMER_REAL, &itimer, NULL);
+-	}
+ 
+ 	stat->threadstarted++;
+ 
+@@ -621,16 +596,10 @@ static void *timerthread(void *param)
+ 
+ 		uint64_t diff;
+ 		unsigned long diff_smi = 0;
+-		int sigs, ret;
++		int ret;
+ 
+ 		/* Wait for next period */
+ 		switch (par->mode) {
+-		case MODE_CYCLIC:
+-		case MODE_SYS_ITIMER:
+-			if (sigwait(&sigset, &sigs) < 0)
+-				goto out;
+-			break;
+-
+ 		case MODE_CLOCK_NANOSLEEP:
+ 			if (par->timermode == TIMER_ABSTIME) {
+ 				ret = clock_nanosleep(par->clock, TIMER_ABSTIME,
+@@ -751,11 +720,6 @@ static void *timerthread(void *param)
+ 
+ 		next.tv_sec += interval.tv_sec;
+ 		next.tv_nsec += interval.tv_nsec;
+-		if (par->mode == MODE_CYCLIC) {
+-			int overrun_count = timer_getoverrun(timer);
+-			next.tv_sec += overrun_count * interval.tv_sec;
+-			next.tv_nsec += overrun_count * interval.tv_nsec;
+-		}
+ 		tsnorm(&next);
+ 
+ 		while (tsgreater(&now, &next)) {
+@@ -780,17 +744,6 @@ out:
+ 		pthread_mutex_unlock(&refresh_on_max_lock);
+ 	}
+ 
+-	if (par->mode == MODE_CYCLIC)
+-		timer_delete(timer);
+-
+-	if (par->mode == MODE_SYS_ITIMER) {
+-		itimer.it_value.tv_sec = 0;
+-		itimer.it_value.tv_usec = 0;
+-		itimer.it_interval.tv_sec = 0;
+-		itimer.it_interval.tv_usec = 0;
+-		setitimer(ITIMER_REAL, &itimer, NULL);
+-	}
+-
+ 	/* close msr file */
+ 	if (smi)
+ 		close(par->msr_fd);
+@@ -1174,7 +1127,8 @@ static void process_options(int argc, ch
+ 		case OPT_VERBOSE: verbose = 1; break;
+ 		case 'x':
+ 		case OPT_POSIX_TIMERS:
+-			use_nanosleep = MODE_CYCLIC; break;
++			fatal("--posix_timers is not available on your libc\n");
++			break;
+ 		case '?':
+ 		case OPT_HELP:
+ 			display_help(0); break;
+@@ -1207,13 +1161,6 @@ static void process_options(int argc, ch
+ 		}
+ 	}
+ 
+-	if ((use_system == MODE_SYS_OFFSET) && (use_nanosleep == MODE_CYCLIC)) {
+-		warn("The system option requires clock_nanosleep\n");
+-		warn("and is not compatible with posix_timers\n");
+-		warn("Using clock_nanosleep\n");
+-		use_nanosleep = MODE_CLOCK_NANOSLEEP;
+-	}
+-
+ 	/* if smp wasn't requested, test for numa automatically */
+ 	if (!smp) {
+ 		numa = numa_initialize();
+@@ -1943,7 +1890,6 @@ int main(int argc, char **argv)
+ 
+ 	}
+ 
+-
+ 	mode = use_nanosleep + use_system;
+ 
+ 	sigemptyset(&sigset);
+@@ -1993,16 +1939,18 @@ int main(int argc, char **argv)
+ 			void *stack;
+ 			void *currstk;
+ 			size_t stksize;
++			int err;
+ 
+ 			/* find the memory node associated with the cpu i */
+ 			node = rt_numa_numa_node_of_cpu(cpu);
+ 
+-			/* get the stack size set for this thread */
+-			if (pthread_attr_getstack(&attr, &currstk, &stksize))
++			/* get the stack size set for for this thread */
++			err = pthread_attr_getstack(&attr, &currstk, &stksize);
++			if (err != EINVAL)
+ 				fatal("failed to get stack size for thread %d\n", i);
+ 
+ 			/* if the stack size is zero, set a default */
+-			if (stksize == 0)
++			if (err == EINVAL || stksize == 0)
+ 				stksize = PTHREAD_STACK_MIN * 2;
+ 
+ 			/*  allocate memory for a stack on appropriate node */
+--- a/src/hackbench/hackbench.c
++++ b/src/hackbench/hackbench.c
+@@ -24,13 +24,15 @@
+ #include <sys/socket.h>
+ #include <sys/wait.h>
+ #include <sys/time.h>
+-#include <sys/poll.h>
++#include <poll.h>
+ #include <limits.h>
+ #include <getopt.h>
+ #include <signal.h>
+ #include <setjmp.h>
+ #include <sched.h>
+ 
++#include "musl.h"
++
+ static unsigned int datasize = 100;
+ static unsigned int loops = 100;
+ static unsigned int num_groups = 10;
+--- /dev/null
++++ b/src/include/musl.h
+@@ -0,0 +1,28 @@
++/*
++ * Copyright (C) 2020 Kurt Kanzenbach <kurt@kmk-computers.de>
++ * Time-stamp: <2020-04-04 10:54:01 kurt>
++ */
++
++#ifndef _MUSL_H_
++#define _MUSL_H_
++
++#include <unistd.h>
++#include <sys/syscall.h>
++
++/*
++ * Musl someshow defines sched_* to ENOSYS which is not correct ...
++ * See commit 1e21e78bf7a5 ("add support for thread scheduling (POSIX TPS option)")
++ *
++ * Workaround: define them to syscall(...)
++ */
++
++#define sched_getparam(pid, param)		\
++	syscall(SYS_sched_getparam, pid, param)
++#define sched_setparam(pid, param)		\
++	syscall(SYS_sched_setparam, pid, param)
++#define sched_getscheduler(pid)			\
++	syscall(SYS_sched_getscheduler, pid)
++#define sched_setscheduler(pid, policy, param)			\
++	syscall(SYS_sched_setscheduler, pid, policy, param)
++
++#endif /* _MUSL_H_ */
+--- a/src/lib/rt-utils.c
++++ b/src/lib/rt-utils.c
+@@ -24,6 +24,7 @@
+ #include <time.h>
+ #include <sys/time.h>
+ 
++#include "musl.h"
+ #include "rt-utils.h"
+ #include "rt-sched.h"
+ #include "rt-error.h"
+--- a/src/pi_tests/classic_pi.c
++++ b/src/pi_tests/classic_pi.c
+@@ -34,6 +34,8 @@
+ #include <signal.h>
+ #include <getopt.h>
+ 
++#include "musl.h"
++
+ /* test timeout */
+ #define TIMEOUT 2
+ 
+--- a/src/pi_tests/tst-mutexpi10.c
++++ b/src/pi_tests/tst-mutexpi10.c
+@@ -35,6 +35,8 @@
+ #include <string.h>
+ #include <signal.h>
+ 
++#include "musl.h"
++
+ /* test timeout */
+ #define TIMEOUT 2
+ 
+--- a/src/pmqtest/pmqtest.c
++++ b/src/pmqtest/pmqtest.c
+@@ -24,6 +24,7 @@
+ #include <pthread.h>
+ #include <inttypes.h>
+ 
++#include "musl.h"
+ #include "rt-utils.h"
+ #include "rt-get_cpu.h"
+ #include "rt-error.h"
+--- a/src/ptsematest/ptsematest.c
++++ b/src/ptsematest/ptsematest.c
+@@ -22,6 +22,7 @@
+ #include <pthread.h>
+ #include <inttypes.h>
+ 
++#include "musl.h"
+ #include "rt-utils.h"
+ #include "rt-get_cpu.h"
+ #include "rt-error.h"
+--- a/src/rt-migrate-test/rt-migrate-test.c
++++ b/src/rt-migrate-test/rt-migrate-test.c
+@@ -27,6 +27,7 @@
+ 
+ #include <linux/unistd.h>
+ 
++#include "musl.h"
+ #include "rt-utils.h"
+ 
+ int nr_tasks;
+--- a/src/sched_deadline/cyclicdeadline.c
++++ b/src/sched_deadline/cyclicdeadline.c
+@@ -30,6 +30,7 @@
+ #include <linux/unistd.h>
+ #include <linux/magic.h>
+ 
++#include "musl.h"
+ #include "rt-utils.h"
+ #include "rt-sched.h"
+ #include "rt-error.h"
