@@ -16,8 +16,6 @@ case ${EAPI:-0} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS src_install src_test
-
 if [[ -z ${_PHP_EXT_PECL_R3_ECLASS} ]] ; then
 _PHP_EXT_PECL_R3_ECLASS=1
 
@@ -96,3 +94,5 @@ php-ext-pecl-r3_src_test() {
 }
 
 fi
+
+EXPORT_FUNCTIONS src_install src_test
