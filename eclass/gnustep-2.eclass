@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # GNUstep Herd <gnustep@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7 8
+# @PROVIDES: gnustep-base
 # @BLURB: eclass for GNUstep Apps, Frameworks, and Bundles build
 # @DESCRIPTION:
 # This eclass sets up GNUstep environment to properly install
