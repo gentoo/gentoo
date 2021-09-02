@@ -1,0 +1,29 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -325,6 +325,26 @@
+   add_definitions(-DROCKSDB_SUPPORT_THREAD_LOCAL)
+ endif()
+ 
++set(ATOMIC_TEST_SOURCE "
++#include <atomic>
++int main() {
++  std::atomic<bool> y (false);
++  std::atomic<uint64_t> x (0);
++  bool expected = true;
++  bool j = y.compare_exchange_weak(expected,false);
++  x++;
++  return 0;
++}")
++CHECK_CXX_SOURCE_COMPILES("${ATOMIC_TEST_SOURCE}" ATOMICS_ARE_BUILTIN)
++if (NOT ATOMICS_ARE_BUILTIN)
++  set(CMAKE_REQUIRED_LIBRARIES atomic)
++  check_cxx_source_compiles("${ATOMIC_TEST_SOURCE}" ATOMICS_REQUIRE_LIBATOMIC)
++  unset(CMAKE_REQUIRED_LIBRARIES)
++  if (ATOMICS_REQUIRE_LIBATOMIC)
++    string(APPEND CMAKE_CXX_STANDARD_LIBRARIES " -latomic")
++  endif ()
++endif ()
++
+ option(FAIL_ON_WARNINGS "Treat compile warnings as errors" ON)
+ if(FAIL_ON_WARNINGS)
+   if(MSVC)
