@@ -5,6 +5,7 @@
 		<email>dolsen@gentoo.org</email>
 		<name>Brian Dolbec</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">repoze.sphinx.autointerface</remote-id>
 	</upstream>
