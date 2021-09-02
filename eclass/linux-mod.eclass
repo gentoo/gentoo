@@ -8,6 +8,7 @@
 # John Mylchreest <johnm@gentoo.org>,
 # Stefan Schweizer <genstef@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
+# @PROVIDES: linux-info
 # @BLURB: It provides the functionality required to install external modules against a kernel source tree.
 # @DESCRIPTION:
 # This eclass is used to interface with linux-info.eclass in such a way
