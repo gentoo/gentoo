@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic readme.gentoo-r1 toolchain-funcs
+inherit autotools readme.gentoo-r1 toolchain-funcs
 
 PPP_P="ppp-2.4.9"
 PATCHES="${PN}-3.14-patches-01"
