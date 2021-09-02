@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit autotools elisp-common python-single-r1 systemd
+inherit autotools elisp-common python-single-r1 tmpfiles
 
 SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(ver_cut 1)/${PV}/${P}.tar.gz"
 KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
