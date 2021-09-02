@@ -18,8 +18,6 @@ case ${EAPI:-0} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS pkg_setup src_prepare pkg_preinst
-
 if [[ -z ${_JAVA_PKG_OPT_2_ECLASS} ]] ; then
 _JAVA_PKG_OPT_2_ECLASS=1
 
@@ -67,3 +65,5 @@ java-pkg-opt-2_pkg_preinst() {
 }
 
 fi
+
+EXPORT_FUNCTIONS pkg_setup src_prepare pkg_preinst
