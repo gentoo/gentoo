@@ -1,10 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kodi-addon.eclass
 # @MAINTAINER:
 # candrews@gentoo.org
 # @SUPPORTED_EAPIS: 4 5 6 7
+# @PROVIDES: cmake cmake-utils
 # @BLURB: Helper for correct building and (importantly) installing Kodi addon packages.
 # @DESCRIPTION:
 # Provides a src_configure function for correct CMake configuration
