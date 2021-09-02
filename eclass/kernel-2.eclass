@@ -199,12 +199,11 @@
 # that of course does not mean we're not willing to help.
 
 inherit estack toolchain-funcs
-[[ ${EAPI:-0} == 6 ]] && inherit eapi7-ver
-case ${EAPI:-0} in
-	6|7|8)
-		EXPORT_FUNCTIONS src_{unpack,prepare,compile,install,test} \
-			pkg_{setup,preinst,postinst,postrm} ;;
-	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
+[[ ${EAPI} == 6 ]] && inherit eapi7-ver
+
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # Added by Daniel Ostrow <dostrow@gentoo.org>
@@ -1566,3 +1565,6 @@ kernel-2_pkg_postrm() {
 	ewarn "For more detailed kernel removal instructions, please see: "
 	ewarn "https://wiki.gentoo.org/wiki/Kernel/Removal"
 }
+
+EXPORT_FUNCTIONS src_{unpack,prepare,compile,install,test} \
+	pkg_{setup,preinst,postinst,postrm}
