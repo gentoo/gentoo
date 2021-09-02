@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
 # @SUPPORTED_EAPIS: 7
+# @PROVIDES: kernel-install
 # @BLURB: Build mechanics for Distribution Kernels
 # @DESCRIPTION:
 # This eclass provides the logic to build a Distribution Kernel from
