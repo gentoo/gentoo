@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit cmake python-single-r1 systemd tmpfiles udev
+inherit cmake python-single-r1 systemd tmpfiles udev xdg-utils
 
 DESCRIPTION="Utility for advanced configuration of Razer mice"
 HOMEPAGE="https://bues.ch/cms/hacking/razercfg.html https://github.com/mbuesch/razer"
