@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: go-module.eclass
@@ -8,6 +8,7 @@
 # William Hubbs <williamh@gentoo.org>
 # Robin H. Johnson <robbat2@gentoo.org>
 # @SUPPORTED_EAPIS: 7 8
+# @PROVIDES: golang-base
 # @BLURB: basic eclass for building software written as go modules
 # @DESCRIPTION:
 # This eclass provides basic settings and functions needed by all software
