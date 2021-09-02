@@ -183,11 +183,6 @@ app-eselect/eselect-audicle
 app-eselect/eselect-miniaudicle
 media-sound/audicle
 
-# Sam James <sam@gentoo.org> (2021-08-04)
-# Fails to build with GCC 11. Library with no reverse-dependencies.
-# bug #731254, bug #787905. Removal on 2021-09-04.
-net-libs/openmq-cclient
-
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
 # ecosystem has switched to dev-util/pkgconf, which is alive. Testing
