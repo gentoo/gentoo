@@ -61,6 +61,10 @@ RDEPEND="${DEPEND}
 	>=kde-apps/kio-extras-${PVCUT}:5
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-21.08.1-port-to-KTerminalLauncherJob.patch" # KDE-bug 441072
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_PackageKitQt5=ON
