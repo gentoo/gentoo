@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Java maintainers <java@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
+# @PROVIDES: java-utils-2
 # @BLURB: Java OSGi eclass
 # @DESCRIPTION:
 # This eclass provides functionality which is used by packages that need to be
