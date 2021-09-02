@@ -15,18 +15,22 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="
-	>=dev-libs/libxml2-2.5:2
-	>=dev-libs/glib-2.44.0:2
-	>=x11-libs/gtk+-3.20:3
+	dev-libs/glib:2
+	dev-libs/libxml2:2
+	gnome-extra/libgsf
+	sys-libs/zlib
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:3
+	x11-libs/pango
 	x11-misc/xdg-utils
-	>=gnome-extra/libgsf-1.14
 	ssl? ( >=dev-libs/openssl-1.0.0:0= )
 	ofx? ( >=dev-libs/libofx-0.9.0:= )
 	goffice? ( >=x11-libs/goffice-0.10.0 )
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-util/intltool
+	virtual/pkgconfig"
 
 src_configure() {
 	gnome2_src_configure \
