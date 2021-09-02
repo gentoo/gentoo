@@ -14,18 +14,10 @@
 
 ESVN="${ECLASS}"
 
-case ${EAPI:-0} in
-	4|5)
-		inherit eutils
-		EXPORT_FUNCTIONS src_unpack src_prepare pkg_preinst
-		;;
-	6|7)
-		inherit estack
-		EXPORT_FUNCTIONS src_unpack pkg_preinst
-		;;
-	*)
-		die "${ESVN}: EAPI ${EAPI:-0} is not supported"
-		;;
+case ${EAPI} in
+	4|5) inherit eutils ;;
+	6|7) inherit estack ;;
+	*) die "${ESVN}: EAPI ${EAPI:-0} is not supported" ;;
 esac
 
 PROPERTIES+=" live"
@@ -543,3 +535,8 @@ subversion__get_peg_revision() {
 
 	echo "${peg_rev}"
 }
+
+EXPORT_FUNCTIONS src_unpack pkg_preinst
+if [[ ${EAPI} == [45] ]]; then
+	EXPORT_FUNCTIONS src_prepare
+fi
