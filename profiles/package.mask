@@ -188,11 +188,6 @@ media-sound/audicle
 # bug #731254, bug #787905. Removal on 2021-09-04.
 net-libs/openmq-cclient
 
-# Sam James <sam@gentoo.org> (2021-08-04)
-# Fails to build with GCC 11, no activity upstream.
-# bug #729106, bug #786648. Removal on 2021-09-04.
-app-backup/zbackup
-
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
 # ecosystem has switched to dev-util/pkgconf, which is alive. Testing
