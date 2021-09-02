@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit toolchain-funcs
-
 DESCRIPTION="GNU awk pattern-matching language"
 HOMEPAGE="https://www.gnu.org/software/gawk/gawk.html"
 SRC_URI="mirror://gnu/gawk/${P}.tar.xz"
@@ -48,6 +46,7 @@ src_prepare() {
 }
 
 src_configure() {
+	# Avoid automagic dependency on libsigsegv
 	export ac_cv_libsigsegv=no
 
 	local myeconfargs=(
