@@ -7,7 +7,7 @@ ETYPE=sources
 K_DEFCONFIG="bcmrpi_defconfig"
 K_SECURITY_UNSUPPORTED=1
 
-inherit kernel-2 eapi7-ver
+inherit kernel-2 eapi7-ver linux-info
 detect_version
 
 MY_P=$(ver_cut 4-)
