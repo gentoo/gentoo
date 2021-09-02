@@ -12,8 +12,6 @@
 
 inherit autotools
 
-EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test
-
 case ${EAPI:-0} in
 	6) inherit eapi7-ver ;;
 	7) ;;
@@ -461,3 +459,5 @@ php-ext-source-r3_addtoinifiles() {
 		done
 	done
 }
+
+EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test
