@@ -53,6 +53,7 @@ DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-2.69-r5
 	virtual/rust"
 
+# TODO: get rid of hyperscan automagic as well
 PATCHES=(
 	"${FILESDIR}/${PN}-5.0.1_configure-no-lz4-automagic.patch"
 	"${FILESDIR}/${PN}-5.0.1_default-config.patch"
