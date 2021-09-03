@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="dev-libs/libunistring
 	media-video/ffmpeg
+	syslibs/gpm
 	>=sys-libs/readline-8.0
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"
@@ -23,6 +24,7 @@ RDEPEND="${DEPEND}"
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_DOCTEST=OFF
+		-DUSE_GPM=ON
 		-DUSE_MULTIMEDIA=ffmpeg
 		-DUSE_PANDOC=OFF
 		-DUSE_QRCODEGEN=OFF
