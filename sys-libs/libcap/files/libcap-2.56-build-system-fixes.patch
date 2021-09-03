@@ -1,0 +1,42 @@
+From 35989c0ae0073009b1f9c0338410162a11d399fc Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Fri, 3 Sep 2021 09:41:26 +0200
+Subject: [PATCH] Build system fixes
+
+Summary:
+- Always respect CFLAGS
+- Only build tests conditionally (when we're going to run them)
+---
+ Make.Rules | 3 ++-
+ Makefile   | 1 -
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Make.Rules b/Make.Rules
+index 3eeb098..04dd8dc 100644
+--- a/Make.Rules
++++ b/Make.Rules
+@@ -81,7 +81,8 @@ WARNINGS=-Wall -Wwrite-strings -Wpointer-arith -Wcast-qual -Wcast-align \
+         -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs       \
+ 	-Winline -Wshadow
+ COPTS ?= -O2
+-CFLAGS ?= $(COPTS) $(WARNINGS) $(DEBUG)
++CFLAGS ?= $(COPTS) $(DEBUG)
++CFLAGS += $(WARNINGS)
+ CPPFLAGS += -Dlinux $(DEFINES) $(LIBCAP_INCLUDES)
+ LDFLAGS ?= # -g
+ 
+diff --git a/Makefile b/Makefile
+index 1c195dd..3f71b12 100644
+--- a/Makefile
++++ b/Makefile
+@@ -17,7 +17,6 @@ ifeq ($(GOLANG),yes)
+ 	$(MAKE) -C go $@
+ 	rm -f cap/go.sum
+ endif
+-	$(MAKE) -C tests $@
+ 	$(MAKE) -C progs $@
+ 	$(MAKE) -C doc $@
+ 	$(MAKE) -C kdebug $@
+-- 
+2.33.0
+
