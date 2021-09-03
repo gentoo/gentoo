@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit meson xdg
+PYTHON_COMPAT=( python3_{8..10} )
+
+inherit meson python-any-r1 xdg
 
 DESCRIPTION="Graphical console client for connecting to virtual machines"
 HOMEPAGE="https://virt-manager.org/"
@@ -29,11 +31,20 @@ RDEPEND="dev-libs/glib:2
 	vnc? ( >=net-libs/gtk-vnc-0.5.0[sasl?,gtk3(+)] )"
 DEPEND="${RDEPEND}
 	spice? ( >=app-emulation/spice-protocol-0.12.10 )"
-BDEPEND="dev-lang/perl
+BDEPEND="${PYTHON_DEPS}
+	dev-lang/perl
 	>=dev-util/intltool-0.35.0
 	virtual/pkgconfig"
 
 REQUIRED_USE="|| ( spice vnc )"
+
+src_prepare() {
+	default
+
+	# Fix python shebangs for python-exec[-native-symlinks], #811408
+	local shebangs=($(grep -rl "#!/usr/bin/env python3" || die))
+	python_fix_shebang -q ${shebangs[*]}
+}
 
 src_configure() {
 	local emesonargs=(
