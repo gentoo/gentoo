@@ -33,14 +33,18 @@ RDEPEND="
 	app-text/discount
 	app-text/poppler:=[cairo]
 	dev-libs/glib:2
+	dev-libs/json-glib
 	dev-libs/libgee:0.8=
 	gnome-base/librsvg
-	net-libs/webkit-gtk:4
-	sys-apps/dbus
+	net-libs/webkit-gtk:4=
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
+	x11-libs/libX11
+	x11-libs/pango
 	gstreamer? (
-		media-libs/gstreamer:1.0=
-		media-libs/gst-plugins-base:1.0=
+		media-libs/gstreamer:1.0
+		media-libs/gst-plugins-base:1.0
 		media-plugins/gst-plugins-gtk:1.0=
 		media-plugins/gst-plugins-cairo:1.0=
 	)
