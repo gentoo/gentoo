@@ -41,7 +41,7 @@ DEPEND="${DEPEND_COMMON}
 	static? (
 		selinux? ( sys-libs/libselinux[static-libs] )
 		>=sys-apps/util-linux-2.16[static-libs]
-		udev? ( >=virtual/libudev-208:=[static-libs] )"
+		udev? ( >=virtual/libudev-208:=[static-libs] )
 	)"
 BDEPEND="
 	sys-devel/autoconf-archive
