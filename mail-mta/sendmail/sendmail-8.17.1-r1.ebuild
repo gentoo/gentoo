@@ -74,7 +74,7 @@ src_prepare() {
 		# Bug #542370 - lets add support for modern crypto (PFS)
 		confCCOPTS+=" $($(tc-getPKG_CONFIG) --cflags openssl)"
 		confENVDEF+=" -DSTARTTLS -D_FFR_DEAL_WITH_ERROR_SSL"
-		confENVDEF+=" -D_FFR_TLS_1 -D_FFR_TLS_EC"
+		confENVDEF+=" -D_FFR_TLS_1 -D_FFR_TLS_EC -D_FFR_TLS_USE_CERTIFICATE_CHAIN_FILE"
 		conf_sendmail_LIBS+=" $($(tc-getPKG_CONFIG) --libs openssl)"
 	fi
 
