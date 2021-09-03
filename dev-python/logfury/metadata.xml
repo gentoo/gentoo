@@ -9,6 +9,7 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy maintainers</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">logfury</remote-id>
     <remote-id type="github">ppolewicz/logfury</remote-id>
