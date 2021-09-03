@@ -25,7 +25,7 @@ src_configure() {
 	cat <<EOF > vcs-info || die
 BRANCH=gentoo
 REVISION=${PR#r}
-LOCATION_MODIFICATIONS=0
+LOCAL_MODIFICATIONS=0
 EOF
 }
 
