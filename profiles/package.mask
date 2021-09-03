@@ -39,12 +39,6 @@
 # Bug #585942, #731880, #808667, removal in 30 days.
 sci-biology/mira
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2021-08-28)
-# Both versions have several bugs and have been pulled off PyPI
-# Bugs #810808 and #810790.
-=dev-python/setuptools_scm-6.1.0
-=dev-python/setuptools_scm-6.2.0
-
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2021-08-30)
 # Homepage dead, uses gtk2, fails to build, https://bugs.gentoo.org/711344
 games-puzzle/gnudoku
