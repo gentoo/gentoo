@@ -1,10 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} )
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Read Image Files"
@@ -20,14 +19,10 @@ RDEPEND="
 	media-libs/libpng:0
 	media-libs/libwebp:0
 	media-libs/tiff:0
-	"
-
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )
+	virtual/jpeg
 "
+DEPEND="${RDEPEND}"
+BDEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
-distutils_enable_sphinx docs \
-	'dev-python/numpydoc'
-
+distutils_enable_sphinx docs/source
 distutils_enable_tests setup.py
