@@ -1,0 +1,33 @@
+From 2c08fd50d62e4255602ee3c0d41157df7608e773 Mon Sep 17 00:00:00 2001
+From: Stefan Behnel <stefan_ml@behnel.de>
+Date: Wed, 1 Sep 2021 00:09:02 +0200
+Subject: [PATCH] Avoid copying unaligned 16-bit values since some platforms
+ require them to be aligned. Use memcpy() instead to let the C compiler decide
+ how to do it.
+
+Closes https://github.com/cython/cython/issues/4343
+---
+ Cython/Utility/TypeConversion.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Cython/Utility/TypeConversion.c b/Cython/Utility/TypeConversion.c
+index 751d12b62a..3669bc9ec1 100644
+--- a/Cython/Utility/TypeConversion.c
++++ b/Cython/Utility/TypeConversion.c
+@@ -829,14 +829,14 @@ static CYTHON_INLINE PyObject* {{TO_PY_FUNCTION}}({{TYPE}} value, Py_ssize_t wid
+             digit_pos = abs((int)(remaining % (8*8)));
+             remaining = ({{TYPE}}) (remaining / (8*8));
+             dpos -= 2;
+-            *(uint16_t*)dpos = ((const uint16_t*)DIGIT_PAIRS_8)[digit_pos]; /* copy 2 digits at a time */
++            memcpy(dpos, DIGIT_PAIRS_8 + digit_pos * 2, 2); /* copy 2 digits at a time, unaligned */
+             last_one_off = (digit_pos < 8);
+             break;
+         case 'd':
+             digit_pos = abs((int)(remaining % (10*10)));
+             remaining = ({{TYPE}}) (remaining / (10*10));
+             dpos -= 2;
+-            *(uint16_t*)dpos = ((const uint16_t*)DIGIT_PAIRS_10)[digit_pos]; /* copy 2 digits at a time */
++            memcpy(dpos, DIGIT_PAIRS_10 + digit_pos * 2, 2); /* copy 2 digits at a time, unaligned */
+             last_one_off = (digit_pos < 10);
+             break;
+         case 'x':
