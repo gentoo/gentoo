@@ -15,10 +15,11 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 RDEPEND="
-	=dev-libs/libgit2-1.1*
+	=dev-libs/libgit2-1.1*:=
 	dev-python/cached-property[${PYTHON_USEDEP}]
 	>=dev-python/cffi-1.0:=[${PYTHON_USEDEP}]
 "
+DEPEND="${RDEPEND}"
 
 distutils_enable_tests pytest
 
