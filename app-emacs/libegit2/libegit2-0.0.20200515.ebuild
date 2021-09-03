@@ -17,7 +17,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=">=dev-libs/libgit2-1.0.0"
+DEPEND=">=dev-libs/libgit2-1.0.0:="
 RDEPEND="${DEPEND}
 	>=app-editors/emacs-26:*[dynamic-loading]"
 
