@@ -31,6 +31,7 @@ BDEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-0.29.22-spawn-multiprocessing.patch"
 	"${FILESDIR}/${PN}-0.29.23-test_exceptions-py310.patch"
+	"${FILESDIR}/${PN}-0.29.24-unaligned-format.patch"
 )
 
 SITEFILE=50cython-gentoo.el
