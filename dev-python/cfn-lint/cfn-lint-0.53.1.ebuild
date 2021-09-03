@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="CloudFormation Linter"
@@ -18,9 +18,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 RDEPEND="
 	>=dev-python/aws-sam-translator-1.38.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/importlib_resources[${PYTHON_USEDEP}]
-	' python3_6)
 	dev-python/jsonpatch[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-3.0[${PYTHON_USEDEP}]
 	dev-python/junit-xml[${PYTHON_USEDEP}]
