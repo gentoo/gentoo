@@ -53,11 +53,11 @@ DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-2.69-r5
 	virtual/rust"
 
-# TODO: get rid of hyperscan automagic as well
 PATCHES=(
 	"${FILESDIR}/${PN}-5.0.1_configure-no-lz4-automagic.patch"
 	"${FILESDIR}/${PN}-5.0.1_default-config.patch"
 	"${FILESDIR}/${PN}-5.0.6_configure-no-sphinx-pdflatex-automagic.patch"
+	"${FILESDIR}/${PN}-5.0.7_configure-no-hyperscan-automagic.patch"
 )
 
 pkg_pretend() {
@@ -94,6 +94,7 @@ src_configure() {
 		$(use_enable geoip) \
 		$(use_enable hardened gccprotect) \
 		$(use_enable hardened pie) \
+		$(use_enable hyperscan) \
 		$(use_enable lz4) \
 		$(use_enable nflog) \
 		$(use_enable nfqueue) \
