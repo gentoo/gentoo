@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.0.8365-disable-git.patch"
 	"${FILESDIR}/${PN}-1.0.8365-cmake-project.patch"
 	"${FILESDIR}/${PN}-1.0.8365-cmake-minimum-version.patch"
+	"${FILESDIR}/${PN}-1.0.8517-fix-missing-limits.patch"
 )
 
 pkg_setup() {
