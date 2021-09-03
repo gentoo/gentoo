@@ -7,7 +7,9 @@ inherit autotools multilib-minimal
 
 DESCRIPTION="Standard GNU database libraries"
 HOMEPAGE="https://www.gnu.org/software/gdbm/"
-SRC_URI="mirror://gnu/gdbm/${P}.tar.gz"
+SRC_URI="mirror://gnu/gdbm/${P}.tar.gz
+	https://dev.gentoo.org/~dilfridge/distfiles/${PN}-1.21-gettext.patch.gz
+"
 
 LICENSE="GPL-3"
 SLOT="0/6" # libgdbm.so version
@@ -20,13 +22,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.18.1-gettext.patch #696838
+	"${WORKDIR}"/${PN}-1.21-gettext.patch #696838 #811303
 )
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 multilib_src_configure() {
 	# gdbm doesn't appear to use either of these libraries
