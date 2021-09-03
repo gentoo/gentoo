@@ -8,7 +8,7 @@ inherit autotools multilib-minimal
 DESCRIPTION="Standard GNU database libraries"
 HOMEPAGE="https://www.gnu.org/software/gdbm/"
 SRC_URI="mirror://gnu/gdbm/${P}.tar.gz
-	https://dev.gentoo.org/~dilfridge/distfiles/${PN}-1.21-gettext.patch.gz
+	https://dev.gentoo.org/~dilfridge/distfiles/${PN}-1.21-gettext-ac.patch.gz
 "
 
 LICENSE="GPL-3"
@@ -22,7 +22,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${WORKDIR}"/${PN}-1.21-gettext.patch #696838 #811303
+	"${WORKDIR}"/${PN}-1.21-gettext-ac.patch #696838 #811303
 )
 
 multilib_src_configure() {
