@@ -1,0 +1,37 @@
+https://github.com/karelzak/util-linux/commit/597ccb7bf564f65bb059bfe420224cab0fba46ac.patch
+
+From 597ccb7bf564f65bb059bfe420224cab0fba46ac Mon Sep 17 00:00:00 2001
+From: Chris Hofstaedtler <zeha@debian.org>
+Date: Fri, 20 Aug 2021 10:30:50 +0000
+Subject: [PATCH] tests: Skip lsns/ioctl_ns test if unshare fails
+
+Some parts of the Debian build infrastructure uses unshare to run the
+package build, and that appears to cause a "nested" unshare in the
+lsns/ioctl_ns test to fail. Unfortunately the tests then hang at this
+point.
+
+Try running unshare before the actual test, and skip the test if unshare
+already fails.
+
+[kzak@redhat.com: - add --fork to the test
+                  - don't write to stdout/err]
+
+Signed-off-by: Chris Hofstaedtler <zeha@debian.org>
+Signed-off-by: Karel Zak <kzak@redhat.com>
+---
+ tests/ts/lsns/ioctl_ns | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tests/ts/lsns/ioctl_ns b/tests/ts/lsns/ioctl_ns
+index ef6360607..fa626bfda 100755
+--- a/tests/ts/lsns/ioctl_ns
++++ b/tests/ts/lsns/ioctl_ns
+@@ -34,6 +34,8 @@ ts_check_prog "mkfifo"
+ ts_check_prog "touch"
+ ts_check_prog "uniq"
+ 
++$TS_CMD_UNSHARE --user --pid --mount-proc --fork true &> /dev/null || ts_skip "no namespace support"
++
+ ts_cd "$TS_OUTDIR"
+ 
+ # The parent process receives namespaces ids via FIFO_DATA from bash
