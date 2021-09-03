@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit linux-info linux-mod toolchain-funcs udev
+# pkgcheck note: toolchain-funcs is not unused
+inherit linux-mod toolchain-funcs udev
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
