@@ -13,9 +13,9 @@ HOMEPAGE="https://suricata.io/"
 SRC_URI="https://www.openinfosecfoundation.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0/6"
-KEYWORDS="~amd64 ~riscv ~x86"
-IUSE="+af-packet bpf control-socket cuda debug +detection geoip hardened lua lz4 nflog +nfqueue redis systemd test"
+SLOT="0/5"
+KEYWORDS="~amd64 ~x86"
+IUSE="+af-packet bpf control-socket cuda debug +detection geoip hardened hyperscan lua lz4 nflog +nfqueue redis systemd test"
 
 RESTRICT="!test? ( test )"
 
@@ -43,6 +43,7 @@ RDEPEND="${PYTHON_DEPS}
 	bpf?        ( >=dev-libs/libbpf-0.1.0 )
 	cuda?       ( dev-util/nvidia-cuda-toolkit )
 	geoip?      ( dev-libs/libmaxminddb )
+	hyperscan?  ( dev-libs/hyperscan )
 	lua?        ( ${LUA_DEPS} )
 	lz4?        ( app-arch/lz4 )
 	nflog?      ( net-libs/libnetfilter_log )
@@ -54,8 +55,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.0.1_configure-no-lz4-automagic.patch"
+	"${FILESDIR}/${PN}-5.0.1_default-config.patch"
 	"${FILESDIR}/${PN}-5.0.6_configure-no-sphinx-pdflatex-automagic.patch"
-	"${FILESDIR}/${PN}-6.0.0_default-config.patch"
 )
 
 pkg_pretend() {
@@ -192,11 +193,7 @@ pkg_postinst() {
 	fi
 
 	elog
-	if [[ -n "${REPLACING_VERSIONS}" ]]; then
-		ewarn "Since version 6.0.0 Suricata no longer supports the unified2 output format commonly used"
-		ewarn "in legacy, Snort-compatible IDS solutions, e.g. ones based on net-analyzer/barnyard2."
-		ewarn "If you need unified2 support, please continue to use suricata-5."
-	else
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		elog "To download and install an initial set of rules, run:"
 		elog "    emerge --config =${CATEGORY}/${PF}"
 	fi
