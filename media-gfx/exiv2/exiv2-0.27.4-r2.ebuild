@@ -34,18 +34,18 @@ BDEPEND="
 	)
 	nls? ( sys-devel/gettext )
 "
-DEPEND="
+RDEPEND="
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
 	png? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
-	test? ( dev-cpp/gtest )
 	webready? (
 		>net-libs/libssh-0.9.1[sftp,${MULTILIB_USEDEP}]
 		net-misc/curl[${MULTILIB_USEDEP}]
 	)
 	xmp? ( dev-libs/expat[${MULTILIB_USEDEP}] )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${DEPEND}
+	test? ( dev-cpp/gtest )"
 
 DOCS=( README.md doc/ChangeLog doc/cmd.txt )
 
