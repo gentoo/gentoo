@@ -17,7 +17,7 @@
 	<use>
 		<flag name="X">
 			Link application against X11 libraries which adds
-			support for virtual desktop awareness and tab DND.
+			support for virtual desktop awareness and tab DND
 		</flag>
 	</use>
 	<upstream>
