@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# David Seifert <soap@gentoo.org> (2021-09-04)
+# dev-lang/go not keyworded here
+sys-libs/libcap tools
+
 # Marek Szuba <marecki@gentoo.org> (2021-08-11)
 # dev-ruby/tty-editor not keyworded here yet (Bug #807685)
 app-text/htmltidy test
