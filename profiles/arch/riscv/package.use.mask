@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jonathan Davies <jpds@protonmail.com> (2021-09-03)
+# Requires CPU with SSSE3 support
+net-analyzer/suricata hyperscan
+
 # Marek Szuba <marecki@gentoo.org> (2021-09-02)
 # dev-python/pebble not keyworded here due to failing tests.
 # That said, with pebble-4.6.3 installed manually
