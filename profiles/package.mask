@@ -33,12 +33,10 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2021-09-03)
-# Mask *potentially* broken versions of some dev-python/* pkgs.
-# Investigation ongoing.
+# Mask broken version of setuptools_scm with
+# missing runtime dependency.
 # bug #811504
 =dev-python/setuptools_scm-6.3.0
-=dev-python/setuptools_scm-6.3.0-r1
-=dev-python/tomli-1.2.1
 
 # David Seifert <soap@gentoo.org> (2021-08-29)
 # Broken for the past 5 years (#585942), no new upstream release in over
