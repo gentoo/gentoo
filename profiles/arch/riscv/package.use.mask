@@ -97,10 +97,6 @@ sci-libs/gdal mdb
 # Boost.Context can be built on riscv
 dev-libs/boost -context
 
-# Marek Szuba <marecki@gentoo.org> (2021-07-28)
-# app-cdr/cdrtools fails to compile on riscv
-dev-util/catalyst iso
-
 # Marek Szuba <marecki@gentoo.org> (2021-07-27)
 # dev-libs/boxfort does not support riscv yet, meaning
 # dev-libs/criterion cannot be keyworded here
