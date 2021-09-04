@@ -3,13 +3,14 @@
 
 EAPI=8
 
-inherit cmake git-r3
+inherit cmake
 
 DESCRIPTION="Unofficial GOG.com downloader for Linux"
 HOMEPAGE="https://sites.google.com/site/gogdownloader/"
-EGIT_REPO_URI="https://github.com/Sude-/lgogdownloader.git"
+SRC_URI="https://sites.google.com/site/gogdownloader/${P}.tar.gz"
 LICENSE="WTFPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="gui"
 
 RDEPEND=">=app-crypt/rhash-1.3.3-r2:0=
