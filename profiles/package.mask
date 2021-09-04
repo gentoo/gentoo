@@ -187,7 +187,6 @@ sci-biology/wgs-assembler
 # bug #740308, bug #789816. Removal on 2021-09-05.
 app-eselect/eselect-audicle
 app-eselect/eselect-miniaudicle
-media-sound/audicle
 
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
