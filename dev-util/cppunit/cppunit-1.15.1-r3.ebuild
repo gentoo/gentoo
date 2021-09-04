@@ -13,7 +13,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~
 
 LICENSE="LGPL-2.1"
 SLOT="0/1.15"
-IUSE="doc examples static-libs"
+IUSE="doc examples"
 
 BDEPEND="
 	doc? (
@@ -40,7 +40,6 @@ multilib_src_configure() {
 		--disable-werror
 		$(multilib_native_use_enable doc dot)
 		$(multilib_native_use_enable doc doxygen)
-		$(use_enable static-libs static)
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
