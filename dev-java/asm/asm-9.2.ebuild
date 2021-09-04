@@ -13,7 +13,7 @@ MY_P="ASM_${PV//./_}"
 SRC_URI="https://gitlab.ow2.org/asm/asm/-/archive/${MY_P}/asm-${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="9"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~x64-macos"
 RESTRICT="test"
 
 CDEPEND=""
