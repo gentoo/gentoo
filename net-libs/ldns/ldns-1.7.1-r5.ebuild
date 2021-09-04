@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python3_{7,8} )
-inherit epatch multilib-minimal python-single-r1
+EAPI=8
+PYTHON_COMPAT=( python3_{7,8,9,10} )
+inherit multilib-minimal python-single-r1
 
 DESCRIPTION="a library with the aim to simplify DNS programming in C"
 HOMEPAGE="http://www.nlnetlabs.nl/projects/ldns/"
@@ -11,11 +11,13 @@ SRC_URI="http://www.nlnetlabs.nl/downloads/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/3"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+dane doc +ecdsa ed25519 ed448 gost python static-libs vim-syntax"
 
 # configure will die if ecdsa is enabled and ssl is not
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
+"
 
 RDEPEND="
 	python? ( ${PYTHON_DEPS} )
@@ -73,7 +75,7 @@ multilib_src_configure() {
 
 src_prepare() {
 	default
-	epatch "${FILESDIR}/${P}-Makefile.patch"
+	eapply -p0 "${FILESDIR}/${P}-Makefile.patch"
 	# remove non-existing dependency for target packaging/libldns.pc
 	sed -i 's,packaging/libldns.pc.in,,' "${S}"/Makefile.in || die 'could not patch Makefile.in'
 }
@@ -97,7 +99,7 @@ multilib_src_install() {
 multilib_src_install_all() {
 	dodoc Changelog README*
 
-	find "${ED}" -name '*.la' -delete || die
+	find "${D}" -name '*.la' -delete || die
 	use python && python_optimize
 
 	if use vim-syntax ; then
