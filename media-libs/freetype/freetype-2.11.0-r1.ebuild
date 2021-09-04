@@ -17,7 +17,7 @@ if [[ "${PV}" != 9999 ]] ; then
 		doc?	( mirror://sourceforge/freetype/${PN}-doc-${PV}.tar.xz
 			mirror://nongnu/freetype/${PN}-doc-${PV}.tar.xz )"
 	SRC_URI+=" https://dev.gentoo.org/~polynomial-c/${P}-COLR_v1_clipbox.patch.xz"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 	IUSE+=" doc"
 else
 	inherit autotools git-r3
