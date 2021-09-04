@@ -22,7 +22,7 @@ SRC_URI="https://github.com/PiotrDabkowski/${MY_PN}/archive/${MY_COMMIT}.tar.gz 
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 
 RDEPEND="
 	>=dev-python/pyjsparser-2.5.1[${PYTHON_USEDEP}]
