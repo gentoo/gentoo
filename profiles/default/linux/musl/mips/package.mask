@@ -1,5 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation.
+# Copyright 1999-2021 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
-dev-util/pkgconfig
 >sys-apps/kbd-1.15.5-r99
