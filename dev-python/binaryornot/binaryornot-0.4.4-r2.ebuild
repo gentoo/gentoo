@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz -> ${P}.r1.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND=">=dev-python/chardet-3.0.2[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/hypothesis[${PYTHON_USEDEP}] )"
