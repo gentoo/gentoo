@@ -15,9 +15,6 @@
 	<slots>
 		<subslots>SONAME version of libpkgconf</subslots>
 	</slots>
-	<use>
-		<flag name="pkg-config">Install as a replacement for dev-util/pkgconfig</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">pkgconf/pkgconf</remote-id>
 	</upstream>
