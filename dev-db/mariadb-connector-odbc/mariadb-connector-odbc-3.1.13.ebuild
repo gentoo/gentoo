@@ -23,7 +23,7 @@ S="${S}-src"
 # it doesn't make sense enable these configuration options unless the
 # underlying mariadb-connector-c has ssl enabled, thus if we have USE=ssl,
 # require mariadb-connector-c to have it too.
-DEPEND="=dev-db/mariadb-connector-c-$(ver_cut 1-2)*[ssl?]
+DEPEND="=dev-db/mariadb-connector-c-$(ver_cut 1-2)*:=[ssl?]
 	dev-db/unixODBC"
 RDEPEND="${DEPEND}"
 
