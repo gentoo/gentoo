@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit multilib toolchain-funcs
 
 MY_PV=$(ver_cut 1-3)
 DEB_PV=$(ver_cut 4-5)
@@ -14,10 +14,9 @@ S="${WORKDIR}"/${PN}-${MY_PV}
 
 LICENSE="GPL-2"
 SLOT="0"
-# Note: The code assumes sizeof(long) == 4 everywhere.  If you try to
-# use this on 64bit systems (where sizeof(long) == 8), then misbehavior
-# and memory corruption will ensue.
-KEYWORDS="-* ~m68k ~x86"
+# Note: The code assumes sizeof(long) == 4 everywhere. 64-bit platforms need to
+# build a 32-bit binary below to avoid memory corruption issues.
+KEYWORDS="~amd64 ~m68k ~x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.1.5.4-prompt-logic.patch
@@ -25,11 +24,20 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.1.5.4-globals.patch
 )
 
+src_configure() {
+	if use amd64; then
+		multilib_toolchain_setup x86
+	else
+		tc-export CC LD
+	fi
+}
+
 src_compile() {
 	emake \
+		CC="${CC}" \
+		LD="${LD}" \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
-		CC="$(tc-getCC)" \
 		COMPILE_ARCH=m68k
 }
 
