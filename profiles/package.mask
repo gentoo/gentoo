@@ -196,13 +196,20 @@ app-i18n/man-pages-it
 dev-util/pkgconfig
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-08-02)
-# Two years after the tracker was opened it is time to mask dev-qt/qtwebkit
-# for good. No commits to upstream repository for >9 months, latest available
-# tarball still "alpha" with warning about known unpatched vulnerabilities.
-# Bugs: #684580, #685750, #740416
-dev-qt/qtwebkit:5
-app-text/fb2edit
+# Depends on Qt5WebKit with more holes in it than swiss cheese. Bug #685750
+# Last release in 2016. Removal on 2021-10-04.
 mail-client/trojita
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-08-02)
+# Depends on Qt5WebKit with more holes in it than swiss cheese. Bug #740416
+# Removal on 2021-10-04.
+app-text/fb2edit
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-08-02)
+# No commits to upstream repository for >9 months, latest available tarball
+# still "alpha" with warning about known unpatched vulnerabilities. Bug #684580
+# Removal on 2021-10-04.
+dev-qt/qtwebkit:5
 
 # Joonas Niilola <juippis@gentoo.org> (2021-07-29)
 # Upstream provided migration instructions from 2. -> 3. update,
