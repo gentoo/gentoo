@@ -148,6 +148,7 @@ src_test() {
 	rm -f test-convert-tla*		# GNU Arch tla
 	rm -f test-largefiles*		# tends to time out
 	rm -f test-https*			# requires to support tls1.0
+	rm -rf test-removeemptydirs*	# requires access to access parent directories
 	if [[ ${EUID} -eq 0 ]]; then
 		einfo "Removing tests which require user privileges to succeed"
 		rm -f test-convert*
