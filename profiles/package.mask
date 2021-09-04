@@ -199,11 +199,10 @@ dev-util/pkgconfig
 # Two years after the tracker was opened it is time to mask dev-qt/qtwebkit
 # for good. No commits to upstream repository for >9 months, latest available
 # tarball still "alpha" with warning about known unpatched vulnerabilities.
-# Bugs: #684580, #685750, #709858, #740416
+# Bugs: #684580, #685750, #740416
 dev-qt/qtwebkit:5
 app-text/fb2edit
 mail-client/trojita
-<media-video/openshot-2.5.1_p20210228
 
 # Joonas Niilola <juippis@gentoo.org> (2021-07-29)
 # Upstream provided migration instructions from 2. -> 3. update,
