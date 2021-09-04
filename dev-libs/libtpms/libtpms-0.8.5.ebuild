@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64"
 
 DEPEND="dev-libs/openssl:="
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.8.0-Remove-WError.patch"
