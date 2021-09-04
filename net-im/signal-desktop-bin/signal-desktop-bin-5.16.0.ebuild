@@ -20,18 +20,18 @@ IUSE="+sound"
 RESTRICT="splitdebug"
 
 RDEPEND="
-	app-accessibility/at-spi2-atk
-	app-accessibility/at-spi2-core
+	app-accessibility/at-spi2-atk:2
+	app-accessibility/at-spi2-core:2
 	dev-libs/atk
 	dev-libs/expat
-	dev-libs/glib
+	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
 	media-libs/alsa-lib
 	media-libs/mesa[X(+)]
 	net-print/cups
 	sys-apps/dbus[X]
-	x11-libs/gdk-pixbuf
+	x11-libs/gdk-pixbuf:2
 	x11-libs/cairo
 	x11-libs/gtk+:3[X]
 	x11-libs/libdrm
