@@ -186,7 +186,6 @@ sci-biology/wgs-assembler
 # Fails to build with GCC 11. No activity upstream.
 # bug #740308, bug #789816. Removal on 2021-09-05.
 app-eselect/eselect-audicle
-app-eselect/eselect-miniaudicle
 
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
