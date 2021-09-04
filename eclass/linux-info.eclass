@@ -988,8 +988,8 @@ linux-info_pkg_setup() {
 # Order of checking and valid Makefiles names:  GNUMakefile, makefile, Makefile
 kernel_get_makefile() {
 
-	[[ -s ${KV_DIR}/GNUMakefile ]] && KERNEL_MAKEFILE="${KV_DIR}/GNUMakefile"
-	[[ -s ${KV_DIR}/makefile ]] && KERNEL_MAKEFILE="${KV_DIR}/makefile"
-	[[ -s ${KV_DIR}/Makefile ]] && KERNEL_MAKEFILE="${KV_DIR}/Makefile"
+	[[ -s ${KV_DIR}/GNUMakefile ]] && KERNEL_MAKEFILE="${KV_DIR}/GNUMakefile" && return
+	[[ -s ${KV_DIR}/makefile ]] && KERNEL_MAKEFILE="${KV_DIR}/makefile" && return
+	[[ -s ${KV_DIR}/Makefile ]] && KERNEL_MAKEFILE="${KV_DIR}/Makefile" && return
 
 }
