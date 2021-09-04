@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	COMMIT="ddbd243638c7bc2baecf43a78aff46cdc12e9b2e"
 	SRC_URI="https://github.com/Bumblebee-Project/bbswitch/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 x86"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/bbswitch-${COMMIT}"
 fi
 
