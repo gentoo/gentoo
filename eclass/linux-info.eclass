@@ -80,6 +80,15 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # There are also a couple of variables which are set by this, and shouldn't be
 # set by hand. These are as follows:
 
+# @ECLASS-VARIABLE: KERNEL_MAKEFILE
+# @INTERNAL
+# @DESCRIPTION:
+# According to upstream documentation, by default, when make looks for the makefile, it tries
+# the following names, in order: GNUmakefile, makefile and Makefile. Set this variable to the
+# proper Makefile name or the eclass will search in this order for it.
+# See https://www.gnu.org/software/make/manual/make.html
+: ${KERNEL_MAKEFILE:=""}
+
 # @ECLASS-VARIABLE: KV_FULL
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
@@ -510,7 +519,9 @@ get_version() {
 		qeinfo "    ${KV_DIR}"
 	fi
 
-	if [ ! -s "${KV_DIR}/Makefile" ]
+	kernel_get_makefile
+
+	if [[ ! -s ${KERNEL_MAKEFILE} ]]
 	then
 		if [ -z "${get_version_warning_done}" ]; then
 			get_version_warning_done=1
@@ -525,9 +536,6 @@ get_version() {
 	# so we better find it eh?
 	# do we pass KBUILD_OUTPUT on the CLI?
 	local OUTPUT_DIR=${KBUILD_OUTPUT}
-
-	# keep track of it
-	KERNEL_MAKEFILE="${KV_DIR}/Makefile"
 
 	if [[ -z ${OUTPUT_DIR} ]]; then
 		# Decide the function used to extract makefile variables.
@@ -970,4 +978,18 @@ linux-info_pkg_setup() {
 	fi
 
 	[ -n "${CONFIG_CHECK}" ] && check_extra_config;
+}
+
+# @FUNCTION: kernel_get_makefile
+# @DESCRIPTION:
+# Support the possibility that the Makefile could be one of the following and should
+# be checked in the order described here:
+# https://www.gnu.org/software/make/manual/make.html
+# Order of checking and valid Makefiles names:  GNUMakefile, makefile, Makefile
+kernel_get_makefile() {
+
+	[[ -s ${KV_DIR}/GNUMakefile ]] && KERNEL_MAKEFILE="${KV_DIR}/GNUMakefile"
+	[[ -s ${KV_DIR}/makefile ]] && KERNEL_MAKEFILE="${KV_DIR}/makefile"
+	[[ -s ${KV_DIR}/Makefile ]] && KERNEL_MAKEFILE="${KV_DIR}/Makefile"
+
 }
