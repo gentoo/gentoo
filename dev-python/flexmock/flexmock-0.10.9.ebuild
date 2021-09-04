@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Testing library to create mocks, stubs and fakes"
-HOMEPAGE="https://flexmock.readthedocs.org/"
+HOMEPAGE="https://flexmock.readthedocs.io/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
