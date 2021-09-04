@@ -1,0 +1,41 @@
+From f393bace87e5fc8c0e68eff9faf0656df64715ed Mon Sep 17 00:00:00 2001
+From: Nate Graham <nate@kde.org>
+Date: Wed, 1 Sep 2021 12:30:01 -0600
+Subject: [PATCH] ExpandableListItem: Fix overlapping entries with many
+ expanded items
+
+A previous hack was done wrong, and was not taking into account disabled
+items.
+
+BUG: 428102
+FIXED-IN: 5.86
+---
+ .../plasmaextracomponents/qml/ExpandableListItem.qml         | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml b/src/declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml
+index 47b3e3684..851961a4c 100644
+--- a/src/declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml
++++ b/src/declarativeimports/plasmaextracomponents/qml/ExpandableListItem.qml
+@@ -523,7 +523,7 @@ Item {
+ 
+         // Container for actions list, so that we can add left and right margins to it
+         Item {
+-            height: actionsList.contentHeight
++            height: actionsList.height
+             width: mainRowLayout.width
+ 
+             // TODO: Implement keyboard focus
+@@ -538,7 +538,8 @@ Item {
+                 anchors.leftMargin: listItemIcon.width + PlasmaCore.Units.smallSpacing
+                 anchors.rightMargin: listItemIcon.width + PlasmaCore.Units.smallSpacing * 2
+ 
+-                height: PlasmaCore.Units.gridUnit * 2 * actionsList.count
++                // Need to take into account disabled/invisible items
++                height: PlasmaCore.Units.gridUnit * 2 * Array.from(contextualActionsModel).filter(item => item.enabled).length
+ 
+                 focus: true
+                 clip: true
+-- 
+GitLab
+
