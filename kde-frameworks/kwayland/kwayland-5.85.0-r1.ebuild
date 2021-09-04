@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 ECM_TEST="true"
 PVCUT=$(ver_cut 1-2)
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 # All failing, I guess we need a virtual wayland server
-RESTRICT+=" test"
+RESTRICT="test"
 
 # slot op: includes qpa/qplatformnativeinterface.h
 RDEPEND="
