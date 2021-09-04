@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2021-09-04)
+# This code assumes 32-bit longs and must therefore be built as a 32-bit binary.
+sys-fs/atari-fdisk
+
 # David Seifert <soap@gentoo.org> (2018-01-03)
 # Requires 32-bit multilib compatibility
 sys-block/megamgr
