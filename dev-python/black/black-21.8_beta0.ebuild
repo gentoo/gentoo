@@ -40,8 +40,15 @@ distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${MY_PV}
 
+src_prepare() {
+	# remove unnecessary bind that worked around broken 6.1.0/6.2.0 releases
+	sed -i -e '/setuptools_scm/s:~=:>=:' setup.cfg || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
-	cp "${S}"/src/black_primer/primer.json "${BUILD_DIR}"/lib/black_primer/primer.json || die
+	cp "${S}"/src/black_primer/primer.json \
+		"${BUILD_DIR}"/lib/black_primer/primer.json || die
 	distutils_install_for_testing
 	epytest -m "not python2"
 }
