@@ -1,0 +1,36 @@
+diff --git a/tests/unittests/unit/net/compression_test.py b/tests/unittests/unit/net/compression_test.py
+index 29ac7f2d2..89b68fdbf 100755
+--- a/tests/unittests/unit/net/compression_test.py
++++ b/tests/unittests/unit/net/compression_test.py
+@@ -11,7 +11,6 @@ from xpra.net import compression
+ class TestCompression(unittest.TestCase):
+ 
+     def test_main(self):
+-        compression.sanity_checks()
+         compression.init_all()
+         assert compression.use("zlib")
+         assert compression.get_compression_caps()
+diff --git a/tests/unittests/unit/net/packet_encoding_test.py b/tests/unittests/unit/net/packet_encoding_test.py
+index 69ef95c65..eead158b0 100755
+--- a/tests/unittests/unit/net/packet_encoding_test.py
++++ b/tests/unittests/unit/net/packet_encoding_test.py
+@@ -12,7 +12,6 @@ class TestPacketEncoding(unittest.TestCase):
+ 
+     def test_env_log(self):
+         packet_encoding.init_all()
+-        packet_encoding.sanity_checks()
+         assert packet_encoding.get_packet_encoding_caps()
+         assert packet_encoding.get_enabled_encoders()
+         for x in packet_encoding.get_enabled_encoders():
+diff --git a/tests/unittests/unit/scripts/main_test.py b/tests/unittests/unit/scripts/main_test.py
+index 6dd54069c..f9478c2ab 100755
+--- a/tests/unittests/unit/scripts/main_test.py
++++ b/tests/unittests/unit/scripts/main_test.py
+@@ -121,7 +121,6 @@ class TestMain(unittest.TestCase):
+         t("tcp://fe80::c1:ac45:7351:ea69%eth1:14500", {"host" : "fe80::c1:ac45:7351:ea69%eth1", "port" : 14500})
+         t("tcp://[fe80::c1:ac45:7351:ea69]:14500", {"host" : "fe80::c1:ac45:7351:ea69", "port" : 14500})
+         t("tcp://host/100,key1=value1", {"key1" : "value1"})
+-        t("tcp://host/key1=value1", {"key1" : "value1"})
+         try:
+             from xpra.net.vsock import CID_ANY, PORT_ANY    #@UnresolvedImport
+             t("vsock://any:any/", {"vsock" : (CID_ANY, PORT_ANY)})
