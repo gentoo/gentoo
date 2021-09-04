@@ -18,7 +18,7 @@ HOMEPAGE="https://git.sr.ht/~kaniini/pkgconf"
 
 LICENSE="ISC"
 SLOT="0/3"
-IUSE="+pkg-config test"
+IUSE="test"
 
 # tests require 'kyua'
 RESTRICT="!test? ( test )"
@@ -30,7 +30,7 @@ BDEPEND="
 	)
 "
 RDEPEND="
-	pkg-config? ( !dev-util/pkgconfig )
+	!dev-util/pkgconfig
 "
 
 MULTILIB_CHOST_TOOLS=(
@@ -41,11 +41,9 @@ src_prepare() {
 	default
 
 	[[ ${PV} == "9999" ]] && eautoreconf
-	if use pkg-config; then
-		MULTILIB_CHOST_TOOLS+=(
-			/usr/bin/pkg-config$(get_exeext)
-		)
-	fi
+	MULTILIB_CHOST_TOOLS+=(
+		/usr/bin/pkg-config$(get_exeext)
+	)
 }
 
 multilib_src_configure() {
@@ -66,15 +64,8 @@ multilib_src_test() {
 multilib_src_install() {
 	default
 
-	if use pkg-config; then
-		dosym pkgconf$(get_exeext) /usr/bin/pkg-config$(get_exeext)
-		dosym pkgconf.1 /usr/share/man/man1/pkg-config.1
-	else
-		rm "${ED}"/usr/share/aclocal/pkg.m4 || die
-		rmdir "${ED}"/usr/share/aclocal || die
-		rm "${ED}"/usr/share/man/man7/pkg.m4.7 || die
-		rmdir "${ED}"/usr/share/man/man7 || die
-	fi
+	dosym pkgconf$(get_exeext) /usr/bin/pkg-config$(get_exeext)
+	dosym pkgconf.1 /usr/share/man/man1/pkg-config.1
 }
 
 multilib_src_install_all() {
