@@ -189,7 +189,6 @@ app-i18n/man-pages-it
 # (If you hit blockers, please run:
 # $ emerge --deselect dev-util/pkgconfig
 # This is necessary as your world file should not contain dependencies.)
-# Bug #245228, #632124, #691268, #767853, removal in 30 days.
 dev-util/pkgconfig
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-08-02)
