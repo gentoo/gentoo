@@ -14,10 +14,11 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="dev-libs/libunistring
-	media-video/ffmpeg
+DEPEND="dev-libs/libunistring:=
+	media-video/ffmpeg:=
 	sys-libs/gpm
-	>=sys-libs/readline-8.0
+	sys-libs/ncurses:=
+	>=sys-libs/readline-8.0:=
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"
 
