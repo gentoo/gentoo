@@ -64,6 +64,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-pinned-calendar-dots.patch # KDE-bug 440627
 	"${FILESDIR}"/${P}-fix-cmake.patch # bug 809815
 	"${FILESDIR}"/${P}-fix-ExpandableListItem-overlapping.patch # KDE-bug 428102
+	"${FILESDIR}"/${P}-fix-theme-memleak.patch # in KF-5.86
+	"${FILESDIR}"/${P}-fix-svgicon-memleak.patch # in KF-5.86
 )
 
 src_configure() {

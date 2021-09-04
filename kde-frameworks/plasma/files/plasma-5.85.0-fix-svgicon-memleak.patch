@@ -1,0 +1,37 @@
+From 73782c8b39d1cc41fef003acca8df75ccdf384e4 Mon Sep 17 00:00:00 2001
+From: Matt Whitlock <kde@mattwhitlock.name>
+Date: Mon, 16 Aug 2021 19:37:28 -0400
+Subject: [PATCH] avoid holding onto old Svg object when changing source of an
+ IconItem
+
+A long-lived IconItem instance can have its source changed many times
+over its lifetime. Because SvgSource parents its internal Plasma::Svg
+instance to the IconItem instance, this means that such Plasma::Svg
+instance was not being destroyed when its responsible SvgSource
+instance is destroyed and indeed would not be destroyed until the
+IconItem instance is eventually destroyed, which could be arbitrarily
+much later. This commit adds an explicit call in the SvgSource
+destructor to delete the Plasma::Svg instance so it does not hang
+around in memory until the IconItem instance is destroyed. This fixes
+one of the major memory "leaks" in plasmashell.
+---
+ src/declarativeimports/core/iconitem.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/declarativeimports/core/iconitem.cpp b/src/declarativeimports/core/iconitem.cpp
+index 0db750acd..3f06b8b0e 100644
+--- a/src/declarativeimports/core/iconitem.cpp
++++ b/src/declarativeimports/core/iconitem.cpp
+@@ -196,6 +196,9 @@ public:
+     {
+         if (m_svgIcon) {
+             QObject::disconnect(m_iconItem, nullptr, m_svgIcon, nullptr);
++            // the parent IconItem can outlive this IconItemSource, so delete our Plasma::Svg object
++            // explicitly to avoid leaving unreferenced Plasma::Svg objects parented to the IconItem
++            delete m_svgIcon;
+         }
+     }
+ 
+-- 
+GitLab
+
