@@ -181,7 +181,7 @@ SRC_URI="$(cargo_crate_uris)"
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 MIT MPL-2.0 Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 # Rust packages ignore CFLAGS and LDFLAGS so let's silence the QA warnings
 QA_FLAGS_IGNORED="usr/bin/btm"
