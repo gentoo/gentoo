@@ -13,4 +13,9 @@
 		<remote-id type="github">OpenShot/libopenshot</remote-id>
 		<bugs-to>https://github.com/OpenShot/libopenshot/issues</bugs-to>
 	</upstream>
+	<use>
+		<flag name="opencv">
+			Enable <pkg>media-libs/opencv</pkg> support
+		</flag>
+	</use>
 </pkgmetadata>
