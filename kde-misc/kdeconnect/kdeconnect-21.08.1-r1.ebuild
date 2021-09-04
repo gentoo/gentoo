@@ -58,7 +58,7 @@ DEPEND="
 		x11-libs/libX11
 		x11-libs/libXtst
 	)
-	pulseaudio? ( media-libs/pulseaudio-qt )
+	pulseaudio? ( media-libs/pulseaudio-qt:= )
 "
 RDEPEND="${DEPEND}
 	dev-libs/kpeoplevcard
