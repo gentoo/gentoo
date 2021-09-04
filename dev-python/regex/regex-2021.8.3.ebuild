@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} pypy3 )
-inherit distutils-r1 flag-o-matic
+inherit distutils-r1
 
 DESCRIPTION="Alternative regular expression module to replace re"
 HOMEPAGE="https://bitbucket.org/mrabarnett/mrab-regex"
