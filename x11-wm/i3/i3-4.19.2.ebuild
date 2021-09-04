@@ -4,15 +4,13 @@
 EAPI=7
 
 inherit meson optfeature virtualx
-if [[ "${PV}" = *9999 ]]; then
-	inherit git-r3
-fi
 
 DESCRIPTION="An improved dynamic tiling window manager"
 HOMEPAGE="https://i3wm.org/"
 if [[ "${PV}" = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/i3/i3"
 	EGIT_BRANCH="next"
+	inherit git-r3
 else
 	SRC_URI="https://i3wm.org/downloads/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
@@ -21,12 +19,16 @@ fi
 LICENSE="BSD"
 SLOT="0"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="dev-libs/libev
+COMMON_DEPEND="
+	dev-libs/libev
 	dev-libs/libpcre
 	dev-libs/yajl
+	x11-libs/cairo[X,xcb(+)]
 	x11-libs/libxcb[xkb]
 	x11-libs/libxkbcommon[X]
+	x11-libs/pango[X]
 	x11-libs/startup-notification
 	x11-libs/xcb-util
 	x11-libs/xcb-util-cursor
@@ -34,17 +36,17 @@ COMMON_DEPEND="dev-libs/libev
 	x11-libs/xcb-util-wm
 	x11-libs/xcb-util-xrm
 	x11-misc/xkeyboard-config
-	x11-libs/cairo[X,xcb(+)]
-	x11-libs/pango[X]"
-DEPEND="${COMMON_DEPEND}
+"
+DEPEND="
+	${COMMON_DEPEND}
 	test? (
 		dev-perl/AnyEvent
-		dev-perl/X11-XCB
+		dev-perl/ExtUtils-PkgConfig
 		dev-perl/Inline
 		dev-perl/Inline-C
 		dev-perl/IPC-Run
-		dev-perl/ExtUtils-PkgConfig
 		dev-perl/local-lib
+		dev-perl/X11-XCB
 		virtual/perl-Test-Simple
 		x11-base/xorg-server[xephyr]
 		x11-misc/xvfb-run
@@ -53,15 +55,18 @@ DEPEND="${COMMON_DEPEND}
 		app-text/asciidoc
 		app-text/xmlto
 		dev-lang/perl
-	)"
-RDEPEND="${COMMON_DEPEND}
+	)
+"
+RDEPEND="
+	${COMMON_DEPEND}
 	dev-lang/perl
 	dev-perl/AnyEvent-I3
-	dev-perl/JSON-XS"
+	dev-perl/JSON-XS
+"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.16-musl-GLOB_TILDE.patch"
+	"${FILESDIR}"/${PN}-4.16-musl-GLOB_TILDE.patch
 )
 
 src_prepare() {
@@ -75,7 +80,7 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
+		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
 		$(meson_use doc docs)
 		$(meson_use doc mans)
 	)
