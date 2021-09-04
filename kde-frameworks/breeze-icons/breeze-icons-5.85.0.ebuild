@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PVCUT=$(ver_cut 1-2)
 PYTHON_COMPAT=( python3_{8..10} )
@@ -13,7 +13,7 @@ LICENSE="LGPL-3"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="test"
 
-RESTRICT+=" !test? ( test )"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-qt/qttest:5 )"
 BDEPEND="${PYTHON_DEPS}

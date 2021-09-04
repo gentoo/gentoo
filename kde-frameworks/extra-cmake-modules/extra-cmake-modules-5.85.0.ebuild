@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 QTMIN=5.15.2
@@ -14,7 +14,7 @@ LICENSE="BSD"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc test"
 
-RESTRICT+=" !test? ( test )"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	doc? (
