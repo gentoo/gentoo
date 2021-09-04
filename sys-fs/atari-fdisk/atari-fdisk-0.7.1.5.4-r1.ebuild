@@ -46,11 +46,5 @@ src_install() {
 	doman debian/atari-fdisk.8
 
 	into /
-	if [[ $(tc-arch) == "m68k" ]] ; then
-		dosbin fdisk
-		dosym fdisk /sbin/atari-fdisk
-		dosym atari-fdisk.8 /usr/share/man/man8/fdisk.8
-	else
-		dosbin atari-fdisk
-	fi
+	dosbin atari-fdisk
 }
