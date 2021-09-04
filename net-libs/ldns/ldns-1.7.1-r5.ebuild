@@ -92,7 +92,7 @@ multilib_src_install() {
 	default
 
 	if multilib_is_native_abi && use doc ; then
-		dohtml -r doc/html/.
+		dodoc -r doc/html
 	fi
 }
 
