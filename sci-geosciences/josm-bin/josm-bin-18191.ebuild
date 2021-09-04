@@ -15,6 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=virtual/jre-1.8"
+BDEPEND="app-arch/unzip"
 
 src_install() {
 	java-pkg_newjar "${DISTDIR}/${A}" ${PN}.jar
