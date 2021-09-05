@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ECM_HANDBOOK="optional"
+ECM_HANDBOOK="forceoptional"
 KDE_ORG_COMMIT=39b9d1c1702a21a6e0fae82876c29c1f6bb77fae
 KFMIN=5.82.0
 QTMIN=5.15.2
