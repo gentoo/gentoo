@@ -260,7 +260,7 @@ _kde.org_calculate_live_repo() {
 	# (anongit) with anything else you might want to use.
 	EGIT_MIRROR=${EGIT_MIRROR:=https://invent.kde.org/${KDE_ORG_CATEGORY}}
 
-	if [[ ${PV} == ?.??.9999 && ${CATEGORY} == dev-qt ]]; then
+	if [[ ${PV} == 5.??(.?)*.9999 && ${CATEGORY} == dev-qt ]]; then
 		EGIT_BRANCH="kde/$(ver_cut 1-2)"
 	fi
 
