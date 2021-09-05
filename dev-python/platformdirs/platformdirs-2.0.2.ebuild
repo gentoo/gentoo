@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 BDEPEND="
 	test? ( dev-python/appdirs[${PYTHON_USEDEP}] )"
