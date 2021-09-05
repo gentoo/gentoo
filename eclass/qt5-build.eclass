@@ -166,8 +166,10 @@ qt5-build_src_configure() {
 	if [[ ${QT5_MODULE} == qtbase ]]; then
 		qt5_base_configure
 	fi
-	if [[ ${QT5_MODULE} == qttools ]] && [[ -z ${QT5_TARGET_SUBDIRS[@]} ]]; then
-		qt5_tools_configure
+	if [[ ${QT5_MODULE} == qttools ]]; then
+		if [[ ${EAPI} != 7 || -z ${QT5_TARGET_SUBDIRS[@]} ]]; then
+			qt5_tools_configure
+		fi
 	fi
 
 	qt5_foreach_target_subdir qt5_qmake
@@ -643,7 +645,10 @@ qt5_base_configure() {
 # @FUNCTION: qt5_tools_configure
 # @INTERNAL
 # @DESCRIPTION:
-# Disables modules other than ${PN} belonging to qttools.
+# Most of qttools require files that are only generated when qmake is
+# run in the root directory. Related bugs: 676948, 716514.
+# Runs qt5_qmake in root directory to create qttools-config.pri and copy to
+# ${QT5_BUILD_DIR}, disabling modules other than ${PN} belonging to qttools.
 qt5_tools_configure() {
 	# configure arguments
 	local qmakeargs=(
@@ -659,13 +664,23 @@ qt5_tools_configure() {
 		-no-feature-winrtrunner
 	)
 
-	local i
+	local i module=${PN}
+	case ${PN} in
+		linguist-tools) module=linguist ;;
+		*) ;;
+	esac
 	for i in assistant designer linguist pixeltool qdbus qdoc qtdiag qtpaths qtplugininfo; do
-		[[ ${PN} == ${i} ]] || qmakeargs+=( -no-feature-${i} )
+		[[ ${module} != ${i} ]] && qmakeargs+=( -no-feature-${i} )
 	done
 
 	# allow the ebuild to override what we set here
 	myqmakeargs=( "${qmakeargs[@]}" "${myqmakeargs[@]}" )
+
+	if [[ ${EAPI} != 7 ]]; then
+		mkdir -p "${QT5_BUILD_DIR}" || die
+		qt5_qmake "${QT5_BUILD_DIR}"
+		cp qttools-config.pri "${QT5_BUILD_DIR}" || die
+	fi
 }
 
 # @FUNCTION: qt5_qmake_args
