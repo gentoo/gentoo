@@ -66,16 +66,6 @@ kde-plasma/kwin accessibility screencast
 # sys-libs/libfaketime does not work properly on this arch
 sys-auth/sssd test
 
-# Marek Szuba <marecki@gentoo.org> (2021-08-14)
-# virtual/mysql & co. round-up:
-#  dev-db/mariadb fails tests here, see Bug #807995
-#  dev-db/mysql and dev-db/percona-server do not support this arch
-#  dev-db/mysql-cluster not tested yet, seriously outdated in the tree
-dev-python/mysqlclient test
-dev-python/pymysql test
-sci-libs/gdal mysql
-sys-cluster/slurm slurmdbd
-
 # Marek Szuba <marecki@gentoo.org> (2021-08-11)
 # dev-ruby/httpclient not keyworded here due to failing tests
 # (Bug #807727). That said, with httpclient-2.8.3 installed manually
