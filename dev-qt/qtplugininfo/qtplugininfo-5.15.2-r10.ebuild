@@ -3,6 +3,7 @@
 
 EAPI=8
 
+KDE_ORG_COMMIT=33693a928986006d79c1ee743733cde5966ac402
 QT5_MODULE="qttools"
 inherit qt5-build
 
@@ -14,10 +15,11 @@ fi
 
 IUSE=""
 
-RDEPEND="
-	~dev-qt/qtcore-${PV}
+DEPEND="
+	=dev-qt/qtcore-${QT5_PV}*
 "
-# TODO: we know it is bogus, figure out how to disable checks, bug 795237
-DEPEND="${RDEPEND}
-	~dev-qt/qtxml-${PV}
-"
+RDEPEND="${DEPEND}"
+
+QT5_TARGET_SUBDIRS=(
+	src/qtplugininfo
+)
