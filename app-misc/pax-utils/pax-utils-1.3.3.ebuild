@@ -3,6 +3,9 @@
 
 EAPI="7"
 
+# Note: if bumping pax-utils because of syscall changes in glibc, please
+# revbump glibc and update the dependency in its ebuild for the affected
+# versions.
 PYTHON_COMPAT=( python3_{8,9,10} )
 
 inherit python-single-r1 toolchain-funcs
