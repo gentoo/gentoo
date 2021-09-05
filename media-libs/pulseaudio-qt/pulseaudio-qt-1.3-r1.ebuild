@@ -18,7 +18,7 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 fi
 
 LICENSE="LGPL-2.1"
-SLOT="0"
+SLOT="0/3"
 
 RDEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
