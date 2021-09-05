@@ -6,7 +6,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_{7,8,9,10} )
 PYTHON_REQ_USE="ncurses,readline"
 
-FIRMWARE_ABI_VERSION="5.2.0-r50"
+FIRMWARE_ABI_VERSION="6.0.0-r50"
 
 inherit eutils linux-info toolchain-funcs multilib python-r1
 inherit udev fcaps readme.gentoo-r1 pax-utils xdg-utils
@@ -23,7 +23,7 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://download.qemu.org/${P}.tar.xz"
-	KEYWORDS="amd64 arm64 ~ppc ppc64 x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -109,7 +109,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	qemu_softmmu_targets_riscv32? ( fdt )
 	qemu_softmmu_targets_riscv64? ( fdt )
 	sdl-image? ( sdl )
-	static? ( static-user !alsa !gtk !jack !opengl !pulseaudio !plugins !rbd !snappy )
+	static? ( static-user !alsa !gtk !jack !opengl !pulseaudio !plugins !rbd !snappy !udev )
 	static-user? ( !plugins )
 	vhost-user-fs? ( caps seccomp )
 	virgl? ( opengl )
@@ -202,7 +202,7 @@ SOFTMMU_TOOLS_DEPEND="
 		>=app-emulation/spice-0.12.0[static-libs(+)]
 	)
 	ssh? ( >=net-libs/libssh-0.8.6[static-libs(+)] )
-	udev? ( virtual/libudev[static-libs(+)] )
+	udev? ( virtual/libudev:= )
 	usb? ( >=virtual/libusb-1-r2[static-libs(+)] )
 	usbredir? ( >=sys-apps/usbredir-0.6[static-libs(+)] )
 	vde? ( net-misc/vde[static-libs(+)] )
@@ -213,17 +213,18 @@ SOFTMMU_TOOLS_DEPEND="
 	zstd? ( >=app-arch/zstd-1.4.0[static-libs(+)] )
 "
 
+EDK2_OVMF_VERSION="202105"
 SEABIOS_VERSION="1.14.0"
 
 X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/edk2-ovmf-202008[binary]
+		~sys-firmware/edk2-ovmf-${EDK2_OVMF_VERSION}[binary]
 		~sys-firmware/ipxe-1.21.1[binary,qemu]
 		~sys-firmware/seabios-${SEABIOS_VERSION}[binary,seavgabios]
 		~sys-firmware/sgabios-0.1_pre10[binary]
 	)
 	!pin-upstream-blobs? (
-		sys-firmware/edk2-ovmf
+		>=sys-firmware/edk2-ovmf-${EDK2_OVMF_VERSION}
 		sys-firmware/ipxe[qemu]
 		>=sys-firmware/seabios-${SEABIOS_VERSION}[seavgabios]
 		sys-firmware/sgabios
