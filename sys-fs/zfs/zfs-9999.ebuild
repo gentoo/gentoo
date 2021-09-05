@@ -34,14 +34,14 @@ LICENSE="BSD-2 CDDL MIT"
 # possible candidates: libuutil, libzpool, libnvpair. Those do not provide stable abi, but are considered.
 # see libsoversion_check() below as well
 SLOT="0/5"
-IUSE="custom-cflags debug dist-kernel kernel-builtin minimal nls pam python +rootfs test-suite static-libs"
+IUSE="custom-cflags debug dist-kernel kernel-builtin minimal nls pam python +rootfs test-suite"
 
 DEPEND="
-	net-libs/libtirpc[static-libs?]
-	sys-apps/util-linux[static-libs?]
-	sys-libs/zlib[static-libs(+)?]
-	virtual/libudev[static-libs(-)?]
-	dev-libs/openssl:0=[static-libs?]
+	net-libs/libtirpc
+	sys-apps/util-linux
+	sys-libs/zlib
+	virtual/libudev:=
+	dev-libs/openssl:0=
 	!minimal? ( ${PYTHON_DEPS} )
 	pam? ( sys-libs/pam )
 	python? (
@@ -201,7 +201,7 @@ src_configure() {
 		$(use_enable nls)
 		$(use_enable pam)
 		$(use_enable python pyzfs)
-		$(use_enable static-libs static)
+		--disable-static
 		$(usex minimal --without-python --with-python="${EPYTHON}")
 	)
 
@@ -226,9 +226,7 @@ src_install() {
 
 	use test-suite || { rm -r "${ED}/usr/share/zfs" || die ; }
 
-	if ! use static-libs; then
-		find "${ED}" -name '*.la' -delete || die
-	fi
+	find "${ED}" -name '*.la' -delete || die
 
 	dobashcomp contrib/bash_completion.d/zfs
 	bashcomp_alias zfs zpool

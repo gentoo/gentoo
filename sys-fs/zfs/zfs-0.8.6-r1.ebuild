@@ -22,15 +22,15 @@ fi
 
 LICENSE="BSD-2 CDDL MIT"
 SLOT="0/2" # just libzfs soname major for now. possible candidates: libuutil, libzpool, libnvpair
-IUSE="custom-cflags debug dist-kernel kernel-builtin minimal nls pam python +rootfs test-suite static-libs"
+IUSE="custom-cflags debug dist-kernel kernel-builtin minimal nls pam python +rootfs test-suite"
 
 DEPEND="
-	net-libs/libtirpc[static-libs?]
-	sys-apps/util-linux[static-libs?]
-	sys-libs/zlib[static-libs(+)?]
+	net-libs/libtirpc
+	sys-apps/util-linux
+	sys-libs/zlib
 	virtual/awk
-	virtual/libudev[static-libs(-)?]
-	dev-libs/openssl:0=[static-libs?]
+	virtual/libudev:=
+	dev-libs/openssl:0=
 	!minimal? ( ${PYTHON_DEPS} )
 	python? (
 		virtual/python-cffi[${PYTHON_USEDEP}]
@@ -154,7 +154,7 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable nls)
 		$(use_enable python pyzfs)
-		$(use_enable static-libs static)
+		--disable-static
 		$(usex minimal --without-python --with-python="${EPYTHON}")
 	)
 
@@ -177,9 +177,7 @@ src_install() {
 
 	use test-suite || rm -rf "${ED}/usr/share/zfs"
 
-	if ! use static-libs; then
-		find "${ED}/" -name '*.la' -delete || die
-	fi
+	find "${ED}/" -name '*.la' -delete || die
 
 	dobashcomp contrib/bash_completion.d/zfs
 	bashcomp_alias zfs zpool
