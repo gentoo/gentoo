@@ -37,7 +37,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
-IUSE="acl +kmod selinux static-libs test"
+IUSE="acl +kmod selinux test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -128,7 +128,6 @@ multilib_src_configure() {
 		-Dlink-udev-shared=false
 		-Dsplit-usr=true
 		-Drootlibdir="${EPREFIX}/usr/$(get_libdir)"
-		$(meson_use static-libs static-libudev)
 
 		# Prevent automagic deps
 		-Dgcrypt=false
@@ -169,9 +168,6 @@ multilib_src_compile() {
 		${libudev}
 		src/libudev/libudev.pc
 	)
-	if use static-libs; then
-		targets+=( libudev.a )
-	fi
 	if multilib_is_native_abi; then
 		targets+=(
 			udevadm
@@ -226,7 +222,6 @@ multilib_src_install() {
 
 	dolib.so {${libudev},libudev.so.1,libudev.so}
 	gen_usr_ldscript -a udev
-	use static-libs && dolib.a libudev.a
 
 	insinto "/usr/$(get_libdir)/pkgconfig"
 	doins src/libudev/libudev.pc
