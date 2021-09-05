@@ -4,6 +4,9 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 
+# Avoid QA warnings
+TMPFILES_OPTIONAL=1
+
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
