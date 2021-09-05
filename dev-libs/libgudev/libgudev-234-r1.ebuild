@@ -11,11 +11,11 @@ HOMEPAGE="https://wiki.gnome.org/Projects/libgudev"
 LICENSE="LGPL-2.1+"
 SLOT="0/0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="introspection static-libs"
+IUSE="introspection"
 
 DEPEND="
-	>=dev-libs/glib-2.38.0:2[${MULTILIB_USEDEP},static-libs?]
-	>=virtual/libudev-199:=[${MULTILIB_USEDEP},static-libs(-)?]
+	>=dev-libs/glib-2.38.0:2[${MULTILIB_USEDEP}]
+	>=virtual/libudev-199:=[${MULTILIB_USEDEP}]
 	introspection? ( >=dev-libs/gobject-introspection-1.31.1 )
 "
 RDEPEND="${DEPEND}
@@ -32,7 +32,7 @@ BDEPEND="
 multilib_src_configure() {
 	local myconf=(
 		$(multilib_native_use_enable introspection)
-		$(use_enable static-libs static)
+		--disable-static
 		--disable-umockdev # umockdev tests currently don't pass (might need extra setup)
 	)
 	local ECONF_SOURCE="${S}"
