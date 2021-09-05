@@ -86,6 +86,11 @@ RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.37.1-agetty_ctrl-c_erase.patch #804972
+	"${FILESDIR}"/${P}-ioctl_ns-test-hang.patch # upstream test hang patch
+)
+
 src_prepare() {
 	default
 
