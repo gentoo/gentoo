@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+wg-quick"
+IUSE="+wg-quick selinux"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND=""
@@ -27,6 +27,7 @@ RDEPEND="${DEPEND}
 		|| ( net-firewall/nftables net-firewall/iptables )
 		virtual/resolvconf
 	)
+	selinux? ( sec-policy/selinux-wireguard )
 "
 
 wg_quick_optional_config_nob() {
