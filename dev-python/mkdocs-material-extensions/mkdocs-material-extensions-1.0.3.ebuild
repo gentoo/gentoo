@@ -23,6 +23,10 @@ PDEPEND=">=dev-python/mkdocs-material-5.0.0[${PYTHON_USEDEP}]"
 
 # we still need mkdocs-material for test, but the circular dep can be avoided
 # by first emerging with FEATURES="-test"
-BDEPEND="test? ( ${PDEPEND} )"
+BDEPEND="
+	test? ( ${PDEPEND}
+		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
