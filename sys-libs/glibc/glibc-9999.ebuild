@@ -17,8 +17,8 @@ SLOT="2.2"
 EMULTILIB_PKG="true"
 
 # Gentoo patchset (ignored for live ebuilds)
-PATCH_VER=16
-PATCH_DEV=slyfox
+PATCH_VER=2
+PATCH_DEV=dilfridge
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -45,6 +45,9 @@ IUSE="audit caps cet compile-locales +crypt custom-cflags doc gd headers-only +m
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
+# Minimum pax-utils version needed (which contains any new syscall changes for
+# its seccomp filter!). Please double check this!
+MIN_PAX_UTILS_VER="1.3.3"
 
 # Here's how the cross-compile logic breaks down ...
 #  CTARGET - machine that will target the binaries
@@ -98,7 +101,7 @@ fi
 
 BDEPEND="
 	${PYTHON_DEPS}
-	>=app-misc/pax-utils-1.3.3
+	>=app-misc/pax-utils-${MIN_PAX_UTILS_VER}
 	sys-devel/bison
 	doc? ( sys-apps/texinfo )
 	!compile-locales? (
@@ -130,7 +133,7 @@ RDEPEND="${COMMON_DEPEND}
 	sys-apps/grep
 	virtual/awk
 	sys-apps/gentoo-functions
-	!<app-misc/pax-utils-1.3.3
+	!<app-misc/pax-utils-${MIN_PAX_UTILS_VER}
 	!<net-misc/openssh-8.1_p1-r2
 "
 
