@@ -154,12 +154,12 @@ src_configure() {
 
 src_compile() {
 	export CARGO_HOME="${ECARGO_HOME}"
-	emake prefix="/usr" CXX="$(tc-getCXX)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)"
+	emake prefix="/usr" CC="$(tc-getCC)" CXX="$(tc-getCXX)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)"
 }
 
 src_test() {
 	# tests require UTF-8 locale
-	emake CXX="$(tc-getCXX)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" test
+	emake CC="${tc-getCC}" CXX="$(tc-getCXX)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" test
 	# Tests fail if in ${S} rather than in ${S}/test
 	cd "${S}"/test || die
 	./test || die
