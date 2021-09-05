@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 KDE_ORG_COMMIT=be78a85b627e90d854da0de1049e8f191e67f228
 inherit cmake kde.org
@@ -18,12 +18,8 @@ REQUIRED_USE="gtk? ( X )
 	|| ( gtk qt5 )
 	plasma? ( qt5 )
 "
+RESTRICT="test"
 
-BDEPEND="
-	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
-	plasma? ( kde-frameworks/extra-cmake-modules:5 )
-"
 DEPEND="
 	gtk? ( x11-libs/gtk+:2 )
 	plasma? (
@@ -56,8 +52,11 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}"
-
-RESTRICT+=" test"
+BDEPEND="
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+	plasma? ( kde-frameworks/extra-cmake-modules:5 )
+"
 
 DOCS=( AUTHORS ChangeLog.md README.md TODO.md )
 
