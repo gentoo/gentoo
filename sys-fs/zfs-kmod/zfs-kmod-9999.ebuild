@@ -122,8 +122,12 @@ src_configure() {
 
 	filter-ldflags -Wl,*
 
+	# Set CROSS_COMPILE in the environment.
+	# This allows the user to override it via make.conf or via a local Makefile.
+	# https://bugs.gentoo.org/811600
+	export CROSS_COMPILE=${CROSS_COMPILE-${CHOST}-}
+
 	local myconf=(
-		CROSS_COMPILE="${CHOST}-"
 		HOSTCC="$(tc-getBUILD_CC)"
 		--bindir="${EPREFIX}/bin"
 		--sbindir="${EPREFIX}/sbin"
@@ -140,7 +144,6 @@ src_compile() {
 	set_arch_to_kernel
 
 	myemakeargs=(
-		CROSS_COMPILE="${CHOST}-"
 		HOSTCC="$(tc-getBUILD_CC)"
 		V=1
 	)
