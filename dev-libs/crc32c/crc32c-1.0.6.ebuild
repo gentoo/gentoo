@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="CRC32C implementation with support for CPU-specific acceleration instructions"
 HOMEPAGE="https://github.com/google/crc32c"
@@ -12,9 +12,13 @@ SRC_URI="https://github.com/google/crc32c/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~riscv x86"
-IUSE=""
 
 DOCS=( README.md )
+
+src_prepare() {
+	sed -e '/-Werror/d' -i CMakeLists.txt || die
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
@@ -23,5 +27,5 @@ src_configure() {
 		-DCRC32C_USE_GLOG=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
