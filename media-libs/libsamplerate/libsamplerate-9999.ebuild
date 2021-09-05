@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit multilib-minimal
 
@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/libsndfile/libsamplerate.git"
 else
-	SRC_URI="https://github.com/libsndfile/libsamplerate/releases/download/${PV}/${P}.tar.bz2"
+	SRC_URI="https://github.com/libsndfile/libsamplerate/releases/download/${PV}/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
@@ -38,7 +38,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
-		--disable-static \
 		$(use_enable test alsa) \
 		$(use_enable test fftw) \
 		$(use_enable test sndfile)
