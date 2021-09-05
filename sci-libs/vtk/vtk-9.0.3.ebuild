@@ -195,15 +195,6 @@ src_prepare() {
 			-i Utilities/Doxygen/CMakeLists.txt || die
 	fi
 
-	if use test; then
-		if use java; then
-			eapply "${FILESDIR}/${P}-0004-disable-failing-java-test.patch"
-		fi
-		if use examples; then
-			eapply "${FILESDIR}/${P}-0005-disable-failing-tests.patch"
-		fi
-	fi
-
 	cmake_src_prepare
 
 	if use cuda; then
