@@ -37,6 +37,12 @@ readonly QT5_BUILD_TYPE
 # SRC_URI and EGIT_REPO_URI. Must be set before inheriting the eclass.
 : ${QT5_MODULE:=${PN}}
 
+# @ECLASS-VARIABLE: QT5_PV
+# @DESCRIPTION:
+# 3-component version for use in dependency declarations on other dev-qt/ pkgs.
+QT5_PV=$(ver_cut 1-3)
+readonly QT5_PV
+
 # @ECLASS-VARIABLE: _QT5_P
 # @INTERNAL
 # @DESCRIPTION:
@@ -109,7 +115,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 if [[ ${PN} != qttest ]]; then
-	DEPEND+=" test? ( ~dev-qt/qttest-$(ver_cut 1-3) )"
+	DEPEND+=" test? ( =dev-qt/qttest-${QT5_PV}* )"
 fi
 
 ######  Phase functions  ######
@@ -127,7 +133,7 @@ qt5-build_src_prepare() {
 		# 5.15.3 release is closed and this will never be more than a Qt 5.15.2
 		# with patches on top.
 		einfo "Preparing KDE Qt5PatchCollection snapshot at ${KDE_ORG_COMMIT}"
-		sed -e "/^MODULE_VERSION/s/5\.15\.3/5\.15\.2/" -i .qmake.conf || die
+		sed -e "/^MODULE_VERSION/s/5\.15\.[3456789]/${QT5_PV}/" -i .qmake.conf || die
 		mkdir -p .git || die # need to fake a git repository for configure
 	fi
 
