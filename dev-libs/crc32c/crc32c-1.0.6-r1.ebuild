@@ -13,6 +13,10 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~riscv x86"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-big-endian.patch"
+)
+
 DOCS=( README.md )
 
 src_prepare() {
