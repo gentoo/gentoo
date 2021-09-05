@@ -71,6 +71,13 @@ src_configure() {
 			$(use_enable lm-sensors sensors)
 		)
 	else
+		if use kernel_Darwin ; then
+			# Upstream default to checking but --enable-affinity
+			# overrides this. Simplest to just disable on Darwin
+			# given it works on BSD anyway.
+			myeconfargs+=( --disable-affinity )
+		fi
+
 		myeconfargs+=(
 			--disable-capabilities
 			--disable-delayacct
