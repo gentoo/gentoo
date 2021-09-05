@@ -25,7 +25,7 @@ if [ -z "${COMMITSHA}" ]; then
 else
 	# This is a _pre release
 	SRC_URI="
-		https://github.com/crawl/crawl/archive/${COMMITSHA}.zip
+		https://github.com/crawl/crawl/archive/${COMMITSHA}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~stasibear/distfiles/${PN}.png -> ${PN}-${SLOT}.png
 		https://dev.gentoo.org/~stasibear/distfiles/${PN}.svg -> ${PN}-${SLOT}.svg
 	"
