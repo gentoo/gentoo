@@ -62,6 +62,13 @@ index 859b608..e5ac11d 100644
  
  case "$machine" in
      i?86) GENKERNEL_ARCH="x86" ;;
--- 
-2.3.0
-
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -252,6 +252,7 @@
+   GRUB_BADRAM \
+   GRUB_OS_PROBER_SKIP_LIST \
+   GRUB_DISABLE_SUBMENU
++export GRUB_LINUX_KERNEL_GLOBS
+ 
+ if test "x${grub_cfg}" != "x"; then
+   rm -f "${grub_cfg}.new"
