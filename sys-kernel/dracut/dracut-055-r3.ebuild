@@ -63,6 +63,7 @@ PATCHES=(
 	"${FILESDIR}"/055-fix-crypt-remove-quotes-from-cryptsetupopts.patch
 	"${FILESDIR}"/055-fix-base-do-not-quote-initargs-for-switch_root.patch
 	"${FILESDIR}"/055-fix-usrmount-do-not-empty-_dev-variable.patch
+	"${FILESDIR}"/055-tpm2-tss-typo.patch
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
 )
 
