@@ -194,6 +194,9 @@ src_install() {
 	# remove upstream init scripts and systemd units
 	rm -f "${D}"/etc/init.d/bareos-* "${D}"/lib/systemd/system/bareos-*.service
 
+	# remove misc stuffwe do not need in production
+	rm -f "${D}"/etc/bareos/bareos-regress.conf
+
 	# get rid of py2 stuff if USE=-vmware
 	if ! use vmware; then
 		rm -f "$D"/usr/lib64/bareos/plugin/{BareosFdPluginVMware.py,bareos-fd-vmware.py,python-fd.so}
