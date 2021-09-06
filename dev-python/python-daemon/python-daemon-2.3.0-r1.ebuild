@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{8..9} pypy3 )
 
 inherit distutils-r1
 
@@ -29,4 +29,11 @@ BDEPEND="
 	)
 "
 
-distutils_enable_tests setup.py
+distutils_enable_tests unittest
+
+src_prepare() {
+	# fix for >=testtools-2.5.0
+	sed -e 's/testtools.helpers.safe_hasattr/hasattr/' \
+		-i test/test_metadata.py || die
+	distutils-r1_src_prepare
+}
