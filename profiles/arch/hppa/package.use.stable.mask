@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2021-09-06)
+# net-dialup/linux-atm does not have stable keywords on hppa
+# dev-libs/libbpf does not have stable keywords on hppa
+# net-firewall/iptables does not have stable keywords on hppa
+sys-apps/iproute2 atm bpf iptables
+
 # Thomas Deutschmann <whissi@gentoo.org> (2021-06-20)
 # dev-libs/libzip does not have stable keywords on hppa
 >=media-gfx/imagemagick-7 zip
