@@ -29,6 +29,7 @@ BDEPEND="
 DOCS=( ANNOUNCE.rst README.rst RELEASE_NOTES.rst )
 PATCHES=(
 	"${FILESDIR}"/blosc-1.10.0-unbundle.patch
+	"${FILESDIR}"/blosc-1.10.4-cpu-flags.patch
 )
 
 python_prepare_all() {
