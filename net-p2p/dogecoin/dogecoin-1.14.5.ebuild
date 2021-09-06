@@ -20,7 +20,7 @@ DEPEND="
 	sys-devel/libtool
 	sys-devel/automake:=
 	=dev-libs/boost-1.76.0-r1
-	wallet? ( sys-libs/db:=[cxx] )
+	wallet? ( sys-libs/db:"${DB_VER}"=[cxx] )
 	gui? ( dev-qt/qtcore dev-qt/qtgui dev-qt/qtwidgets dev-qt/qtdbus dev-qt/linguist-tools:= media-gfx/qrencode )
 	zmq? ( net-libs/cppzmq )
 "
