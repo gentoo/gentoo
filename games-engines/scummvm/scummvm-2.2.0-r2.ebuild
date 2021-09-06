@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit desktop flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="Reimplementation of the SCUMM game engine used in Lucasarts adventures"
@@ -29,13 +29,17 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	mp3? ( media-libs/libmad )
 	mpeg2? ( media-libs/libmpeg2 )
-	net? ( media-libs/sdl2-net )
+	net? (
+		media-libs/sdl2-net
+		net-misc/curl
+	)
 	opengl? ( || (
 		virtual/opengl
 		media-libs/mesa[gles2]
 		media-libs/mesa[gles1]
 	) )
 	png? ( media-libs/libpng:0 )
+	sndio? ( media-sound/sndio:= )
 	speech? ( app-accessibility/speech-dispatcher )
 	truetype? ( media-libs/freetype:2 )
 	theora? ( media-libs/libtheora )
@@ -60,7 +64,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	xdg_src_prepare
+	default
 
 	# -g isn't needed for nasm here
 	sed -i \
@@ -75,6 +79,7 @@ src_prepare() {
 
 src_configure() {
 	use x86 && append-ldflags -Wl,-z,noexecstack
+	tc-export STRINGS
 
 	local myconf=(
 		--backend=sdl
@@ -97,6 +102,7 @@ src_configure() {
 		$(use_enable lua)
 		$(use_enable mp3 mad)
 		$(use_enable mpeg2)
+		$(use_enable net libcurl)
 		$(use_enable net sdlnet)
 		$(use_enable png)
 		$(use_enable sndio)
@@ -117,8 +123,7 @@ src_configure() {
 src_compile() {
 	emake \
 		AR="$(tc-getAR) cru" \
-		RANLIB="$(tc-getRANLIB)" \
-		STRINGS="$(tc-getSTRINGS)"
+		RANLIB="$(tc-getRANLIB)"
 }
 
 src_install() {
