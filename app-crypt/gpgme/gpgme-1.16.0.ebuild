@@ -29,6 +29,10 @@ BDEPEND="python? ( dev-lang/swig )"
 
 REQUIRED_USE="qt5? ( cxx ) python? ( ${PYTHON_REQUIRED_USE} )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-glibc-2.34.patch
+)
+
 do_python() {
 	if use python; then
 		pushd "lang/python" > /dev/null || die
