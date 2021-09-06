@@ -20,7 +20,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.18.1-gettext.patch #696838
+	"${FILESDIR}"/${PN}-1.18.1-gettext.patch # bug #696838
+	"${FILESDIR}"/${PN}-1.20-uclibc-types.patch # bug #808480
 )
 
 src_prepare() {
