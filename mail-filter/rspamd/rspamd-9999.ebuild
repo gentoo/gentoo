@@ -35,6 +35,7 @@ RDEPEND="${LUA_DEPS}
 	acct-user/rspamd
 	app-arch/zstd:=
 	dev-db/sqlite:3
+	dev-cpp/doctest
 	dev-libs/glib:2
 	dev-libs/icu:=
 	dev-libs/libev
@@ -66,7 +67,7 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 
-	rm -vrf contrib/{fmt,lua-bit,snowball,zstd} || die
+	rm -vrf contrib/{doctest,fmt,lua-bit,snowball,zstd} || die
 
 	sed -i -e 's/User=_rspamd/User=rspamd/g' \
 		rspamd.service \
@@ -80,6 +81,7 @@ src_configure() {
 		-DDBDIR=/var/lib/rspamd
 		-DLOGDIR=/var/log/rspamd
 
+		-DSYSTEM_DOCTEST=ON
 		-DSYSTEM_FMT=ON
 		-DSYSTEM_ZSTD=ON
 
