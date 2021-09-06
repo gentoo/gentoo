@@ -22,12 +22,9 @@ SLOT="0"
 DEPEND="
 	dev-libs/libevdev
 	dev-libs/libxml2
-	~gui-libs/wlroots-9999:=
 	media-libs/glm
 "
-
 RDEPEND="${DEPEND}"
-
 BDEPEND="
 	dev-libs/wayland-protocols
 	virtual/pkgconfig
