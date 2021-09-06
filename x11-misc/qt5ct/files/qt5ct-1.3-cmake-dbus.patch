@@ -1,0 +1,36 @@
+diff -ur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2021-04-20 20:29:54.000000000 +0100
++++ b/CMakeLists.txt	2021-08-28 11:20:28.130637732 +0100
+@@ -21,10 +21,17 @@
+ set(CMAKE_AUTOUIC ON)
+ set(QT_MINIMUM_VERSION "5.12.0")
+ 
++option(DISABLE_DBUS "disable D-Bus support (global menu and D-Bus tray icon implementation)" OFF)
+ 
+ ADD_DEFINITIONS(-DQT_DISABLE_DEPRECATED_BEFORE=0x050C00 -DUSE_WIDGETS)
+ 
+-find_package(Qt5 ${QT_MINIMUM_VERSION} COMPONENTS Widgets Concurrent LinguistTools DBus ThemeSupport REQUIRED)
++if(NOT ${DISABLE_DBUS})
++    find_package(Qt5 ${QT_MINIMUM_VERSION} COMPONENTS Widgets Concurrent LinguistTools DBus ThemeSupport REQUIRED)
++    message("D-Bus support: Enabled")
++else()
++    find_package(Qt5 ${QT_MINIMUM_VERSION} COMPONENTS Widgets Concurrent LinguistTools REQUIRED)
++    message("D-Bus support: Disabled")
++endif()
+ find_package(Qt5Gui ${QT_MINIMUM_VERSION} CONFIG REQUIRED Private)
+ 
+ get_target_property(QT_LRELEASE_EXECUTABLE Qt5::lrelease IMPORTED_LOCATION)
+diff -ur a/src/qt5ct-qtplugin/CMakeLists.txt b/src/qt5ct-qtplugin/CMakeLists.txt
+--- a/src/qt5ct-qtplugin/CMakeLists.txt	2021-04-20 20:29:54.000000000 +0100
++++ b/src/qt5ct-qtplugin/CMakeLists.txt	2021-08-28 11:10:48.257462406 +0100
+@@ -10,5 +10,9 @@
+ 
+ add_library(qt5ct-qtplugin MODULE ${app_SRCS})
+ set_target_properties(qt5ct-qtplugin PROPERTIES OUTPUT_NAME qt5ct)
+-target_link_libraries(qt5ct-qtplugin PRIVATE Qt5::Widgets Qt5::GuiPrivate Qt5::DBus Qt5::ThemeSupportPrivate)
++if(NOT ${DISABLE_DBUS})
++    target_link_libraries(qt5ct-qtplugin PRIVATE Qt5::Widgets Qt5::GuiPrivate Qt5::DBus Qt5::ThemeSupportPrivate)
++else()
++    target_link_libraries(qt5ct-qtplugin PRIVATE Qt5::Widgets Qt5::GuiPrivate)
++endif()
+ install(TARGETS qt5ct-qtplugin DESTINATION ${PLUGINDIR}/platformthemes)
