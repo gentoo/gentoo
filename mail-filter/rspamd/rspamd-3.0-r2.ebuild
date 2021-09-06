@@ -60,6 +60,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${P}-cmake-lua-version.patch"
 	"${FILESDIR}/${P}-system-libfmt.patch"
+	"${FILESDIR}/${P}-fix-null-dereference.patch"
 	"${FILESDIR}/${PN}-2.6-unbundle-lua.patch"
 	"${FILESDIR}/${PN}-2.5-unbundle-snowball.patch"
 )
