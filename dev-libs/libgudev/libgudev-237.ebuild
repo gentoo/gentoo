@@ -11,7 +11,7 @@ SRC_URI="https://download.gnome.org/sources/libgudev/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86"
 IUSE="introspection static-libs test"
 RESTRICT="!test? ( test )"
 
