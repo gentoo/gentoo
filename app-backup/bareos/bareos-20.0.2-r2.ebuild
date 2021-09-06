@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="X acl ceph clientonly +director glusterfs ipv6 jansson lmdb
 	logwatch mysql ndmp +postgres readline scsi-crypto
-	sqlite static +storage-daemon systemd tcpd vim-syntax -vmware xattr"
+	sqlite static +storage-daemon systemd tcpd vim-syntax vmware xattr"
 
 # get cmake variables from core/cmake/BareosSetVariableDefaults.cmake
 DEPEND="
