@@ -32,11 +32,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2021-09-05)
-# Generates broken configurations (no meters) on new
-# installs. bug #811687.
-=sys-process/htop-3.1.0_rc1
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-09-04)
 # EAPI-5, dead, unused, bug 808213; Removal on 2021-10-04.
 x11-libs/mx
