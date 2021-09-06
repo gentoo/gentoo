@@ -11,7 +11,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">Pyphen</remote-id>
+		<remote-id type="pypi">pyphen</remote-id>
 		<remote-id type="github">Kozea/Pyphen</remote-id>
 	</upstream>
 </pkgmetadata>
