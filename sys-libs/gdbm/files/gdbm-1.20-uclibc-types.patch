@@ -15,4 +15,3 @@ Subject: Fix https://puszcza.gnu.org.ua/bugs/?515
  
  /* GDBM C++ support */
  # if defined(__cplusplus) || defined(c_plusplus)
-cgit v1.2.1
