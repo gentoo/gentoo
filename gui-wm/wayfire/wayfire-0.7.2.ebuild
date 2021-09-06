@@ -91,6 +91,6 @@ pkg_postinst() {
 		elog "until you install a configuration file. The default config"
 		elog "file is installed at \"/usr/share/wayfire/wayfire.ini\""
 		elog "To install the file execute"
-		elog "\$ cp /usr/share/wayfire.ini ~/.config/wayfire.ini"
+		elog "\$ cp /usr/share/wayfire/wayfire.ini ~/.config/wayfire.ini"
 	fi
 }
