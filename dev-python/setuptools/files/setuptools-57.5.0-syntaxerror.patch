@@ -1,0 +1,37 @@
+From ad05b5dfebbc9025b631d6afffa25cdda8079d25 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 6 Sep 2021 07:41:24 +0200
+Subject: [PATCH] Fix syntax error in test_build_meta's pyproject.toml files
+
+Fix missing closing quotes in pyproject.toml files used
+in test_build_meta's tests.  This fixes the test failures due
+to TOMLDecodeError.
+---
+ setuptools/tests/test_build_meta.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/setuptools/tests/test_build_meta.py b/setuptools/tests/test_build_meta.py
+index ab75a189..0f4a1a73 100644
+--- a/setuptools/tests/test_build_meta.py
++++ b/setuptools/tests/test_build_meta.py
+@@ -167,7 +167,7 @@ class TestBuildMetaBackend:
+             'pyproject.toml': DALS("""
+                 [build-system]
+                 requires = ["setuptools", "wheel"]
+-                build-backend = "setuptools.build_meta
++                build-backend = "setuptools.build_meta"
+             """),
+         }
+ 
+@@ -260,7 +260,7 @@ class TestBuildMetaBackend:
+             'pyproject.toml': DALS("""
+                 [build-system]
+                 requires = ["setuptools", "wheel"]
+-                build-backend = "setuptools.build_meta
++                build-backend = "setuptools.build_meta"
+                 """),
+         }
+         path.build(files)
+-- 
+2.33.0
+
