@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2021-09-07)
+# Masked while being tested and reverse deps aren't fully compatible
+# bug #797325.
+=dev-libs/openssl-3.0*
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-09-07)
 # EAPI-5, dead upstream, last (and only) version added in 2011
 # Bug 644344; Removal on 2021-10-07.
