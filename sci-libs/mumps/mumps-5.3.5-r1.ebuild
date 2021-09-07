@@ -25,6 +25,7 @@ RDEPEND="
 		mpi? ( >=sci-libs/parmetis-4 )
 	)
 	mpi? ( sci-libs/scalapack )
+	!mpi? ( virtual/lapack )
 	scotch? ( >=sci-libs/scotch-6.0.1:=[mpi=] )
 "
 DEPEND="${RDEPEND}"
@@ -83,6 +84,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# We abuse LIBADD here to work around the fact that MUMPS is criminally
+	# underlinked.
 	LIBADD="$($(tc-getPKG_CONFIG) --libs blas) -Llib -lpord"
 	local ord="-Dpord"
 
@@ -132,6 +135,7 @@ src_configure() {
 			-e "s;^\(SCALAP\s*=\).*;\1;" \
 			-e 's;^LIBSEQNEEDED =;LIBSEQNEEDED = libseqneeded;g' \
 			Makefile.inc || die
+		LIBADD="${LIBADD} $($(tc-getPKG_CONFIG) --libs lapack)"
 		export LINK="$(tc-getFC)"
 	fi
 	sed -i -e "s;^\s*\(ORDERINGSF\s*=\).*;\1 ${ord};" Makefile.inc || die
