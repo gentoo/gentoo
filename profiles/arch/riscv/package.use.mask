@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-09-07)
+# net-misc/memcached not keyworded yet due to failing tests (Bug #811477)
+dev-ruby/dalli test
+
 # Yixun Lan <dlan@gentoo.org> (2021-09-03)
 # dependencies not keyworded/tested
 media-sound/cmus pidgin
