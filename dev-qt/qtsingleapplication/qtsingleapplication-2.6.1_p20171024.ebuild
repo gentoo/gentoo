@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_P=qt-solutions-${PV#*_p}
 inherit qmake-utils
@@ -9,6 +9,7 @@ inherit qmake-utils
 DESCRIPTION="Qt library to start applications only once per user"
 HOMEPAGE="https://code.qt.io/cgit/qt-solutions/qt-solutions.git/"
 SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.xz"
+S="${WORKDIR}/${MY_P}/${PN}"
 
 LICENSE="|| ( LGPL-2.1 GPL-3 )"
 SLOT="0"
@@ -25,8 +26,6 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${MY_P}/${PN}"
 
 PATCHES=(
 	"${FILESDIR}/2.6.1_p20130904-unbundle-qtlockedfile.patch"
