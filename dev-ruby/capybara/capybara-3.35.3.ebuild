@@ -15,7 +15,7 @@ DESCRIPTION="Capybara aims to simplify the process of integration testing Rack a
 HOMEPAGE="https://github.com/jnicklas/capybara"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 SLOT="3"
 IUSE="test"
 
