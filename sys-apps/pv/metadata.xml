@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="google-code">pipeviewer</remote-id>
+		<remote-id type="github">a-j-wood/pv</remote-id>
 	</upstream>
 </pkgmetadata>
