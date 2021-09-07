@@ -10,7 +10,9 @@ HOMEPAGE="https://google.github.io/flatbuffers/"
 SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+# From 1.2.0->2.0.0, incremented SONAME, although the interface didn't actually change.
+# (Apparently to adopt semver.)
+SLOT="0/2"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="static-libs test"
 
