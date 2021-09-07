@@ -1,15 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit cmake-utils xdg-utils
+EAPI=8
 
 MY_P=Kst-${PV}
+inherit cmake xdg-utils
 
 DESCRIPTION="Fast real-time large-dataset viewing and plotting tool"
 HOMEPAGE="https://kst-plot.kde.org/ https://invent.kde.org/graphics/kst-plot"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 LGPL-2 FDL-1.2"
 SLOT="0"
@@ -34,11 +34,9 @@ RDEPEND="
 	sci-libs/netcdf-cxx:3
 "
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
 	test? ( dev-qt/qttest:5 )
 "
-
-S=${WORKDIR}/${MY_P}
+BDEPEND="dev-qt/linguist-tools:5"
 
 DOCS=( AUTHORS README.kstScript )
 
@@ -59,7 +57,7 @@ src_configure() {
 		-Dkst_test=$(usex test)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {
