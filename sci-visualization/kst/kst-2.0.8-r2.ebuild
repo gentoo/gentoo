@@ -24,13 +24,13 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
-	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	sci-libs/cfitsio
-	sci-libs/getdata
+	sci-libs/cfitsio:=
+	sci-libs/getdata[cxx]
 	sci-libs/gsl:=
+	sci-libs/matio:=
 	sci-libs/netcdf-cxx:3
 "
 DEPEND="${RDEPEND}
