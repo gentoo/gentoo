@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2021-09-07)
+# Reduce the stabilization nightmare.
+dev-python/ipython notebook smp
+
 # Michał Górny <mgorny@gentoo.org> (2021-08-11)
 # Indirectly requires wxGTK[gstreamer] that is stable-masked here.
 dev-python/matplotlib wxwidgets
