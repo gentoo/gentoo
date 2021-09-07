@@ -187,7 +187,6 @@ net-dialup/xc
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-08-09)
 # EAPI-5, dead, unused; bug #776403. Removal on 2021-09-08.
 dev-perl/Goo-Canvas
-x11-libs/goocanvas:0
 
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
