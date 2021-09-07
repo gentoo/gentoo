@@ -24,10 +24,6 @@ BDEPEND="
 
 DOCS=( AUTHORS BUGS NEWS README THANKS TODO ChangeLog doc/FAQ )
 
-src_prepare() {
-	default
-}
-
 src_configure() {
 	# Anything else than -O0 breaks on alpha
 	use alpha && replace-flags "-O?" -O0
