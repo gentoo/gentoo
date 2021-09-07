@@ -8,7 +8,7 @@ inherit cmake-utils xdg-utils
 MY_P=Kst-${PV}
 
 DESCRIPTION="Fast real-time large-dataset viewing and plotting tool"
-HOMEPAGE="https://kst.kde.org/"
+HOMEPAGE="https://kst-plot.kde.org/ https://invent.kde.org/graphics/kst-plot"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2 FDL-1.2"

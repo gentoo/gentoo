@@ -4,7 +4,7 @@
 	<maintainer type="project">
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
-		</maintainer>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">kst</remote-id>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
