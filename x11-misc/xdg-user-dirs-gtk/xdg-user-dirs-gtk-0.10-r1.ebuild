@@ -5,7 +5,7 @@ EAPI=7
 inherit gnome.org readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="Integrates xdg-user-dirs into the Gnome desktop and Gtk+ applications"
-HOMEPAGE="https://www.freedesktop.org/wiki/Software/xdg-user-dirs"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/xdg-user-dirs-gtk"
 
 LICENSE="GPL-2"
 SLOT="0"
