@@ -17,7 +17,7 @@ SRC_URI+="
 	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.extras.tar.xz
 	arm64? (
 		https://dev.gentoo.org/~sam/binpkg/arm64/kernel/sys-kernel/gentoo-kernel/${BINPKG}.xpak
-			-> ${BINPKG}.arm64.xpak
+			-> ${BINPKG}.arm64-r1.xpak
 	)"
 S=${WORKDIR}
 
