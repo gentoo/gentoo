@@ -45,6 +45,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-qt-5.11.patch"
 	"${FILESDIR}/${P}-gsl-2.0.patch"
 	"${FILESDIR}/${P}-cmake-3.20.patch" # bug 778560
+	"${FILESDIR}/${P}-getdata-drop-bogus-lib_debug.patch" # bug 593848
+	"${FILESDIR}/${P}-qt-5.15.patch" # bug 593848
 )
 
 src_configure() {
