@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-includes.patch"
 	"${FILESDIR}/${P}-qt-5.11.patch"
 	"${FILESDIR}/${P}-gsl-2.0.patch"
+	"${FILESDIR}/${P}-cmake-3.20.patch" # bug 778560
 )
 
 src_configure() {
