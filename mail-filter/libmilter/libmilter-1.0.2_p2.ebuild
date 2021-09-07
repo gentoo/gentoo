@@ -23,7 +23,7 @@ LICENSE="Sendmail"
 # We change the actual "main version" (1.0.2 at time of writing) when the version
 # of libmilter included in the tarball changes.
 SLOT="0/$(ver_cut 1-3)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="ipv6 poll"
 
 RDEPEND="!<mail-mta/sendmail-8.16.1"
