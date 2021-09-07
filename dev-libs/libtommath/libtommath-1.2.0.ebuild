@@ -16,6 +16,10 @@ IUSE="doc examples static-libs"
 
 BDEPEND="sys-devel/libtool"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-sparc.patch
+)
+
 src_prepare() {
 	default
 
