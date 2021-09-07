@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="http://gupnp.org"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/1.2" # pkg-config file links in gupnp API, so some consumers of gupnp-igd need to be relinked for it
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv ~sparc x86"
 IUSE="+introspection"
 
 RDEPEND="
