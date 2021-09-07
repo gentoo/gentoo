@@ -11,7 +11,7 @@ SRC_URI="https://github.com/espeak-ng/espeak-ng/archive/${PV}.tar.gz -> ${P}.tar
 
 LICENSE="GPL-3+ Turkowski unicode"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="+async +klatt l10n_ru l10n_zh man mbrola +sound"
 
 COMMON_DEPEND="
