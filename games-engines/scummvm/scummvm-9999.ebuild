@@ -1,16 +1,23 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit desktop flag-o-matic git-r3 toolchain-funcs xdg
+EAPI=8
+inherit desktop flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="Reimplementation of the SCUMM game engine used in Lucasarts adventures"
 HOMEPAGE="https://www.scummvm.org/"
-EGIT_REPO_URI="https://github.com/scummvm/scummvm"
+
+if [[ ${PV} == *9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/scummvm/scummvm"
+else
+	SRC_URI="https://scummvm.org/frs/scummvm/${PV}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+	S="${WORKDIR}/${PN}-${P}"
+fi
 
 LICENSE="GPL-2+ LGPL-2.1 BSD GPL-3-with-font-exception"
 SLOT="0"
-KEYWORDS=""
 IUSE="a52 aac alsa debug flac fluidsynth fribidi glew +gtk jpeg lua mpeg2 mp3 +net opengl png sndio speech theora truetype unsupported vorbis zlib"
 RESTRICT="test"  # it only looks like there's a test there #77507
 
@@ -20,7 +27,7 @@ RDEPEND="
 	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
 	flac? ( media-libs/flac )
-	fluidsynth? ( media-sound/fluidsynth )
+	fluidsynth? ( media-sound/fluidsynth:= )
 	fribidi? ( dev-libs/fribidi )
 	gtk? (
 		dev-libs/glib:2
@@ -29,7 +36,10 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	mp3? ( media-libs/libmad )
 	mpeg2? ( media-libs/libmpeg2 )
-	net? ( media-libs/sdl2-net )
+	net? (
+		media-libs/sdl2-net
+		net-misc/curl
+	)
 	opengl? (
 		|| (
 			virtual/opengl
@@ -39,6 +49,7 @@ RDEPEND="
 		glew? ( media-libs/glew:0= )
 	)
 	png? ( media-libs/libpng:0 )
+	sndio? ( media-sound/sndio:= )
 	speech? ( app-accessibility/speech-dispatcher )
 	truetype? ( media-libs/freetype:2 )
 	theora? ( media-libs/libtheora )
@@ -58,7 +69,7 @@ BDEPEND="
 S="${WORKDIR}/${P/_/}"
 
 src_prepare() {
-	xdg_src_prepare
+	default
 
 	# -g isn't needed for nasm here
 	sed -i \
@@ -73,6 +84,7 @@ src_prepare() {
 
 src_configure() {
 	use x86 && append-ldflags -Wl,-z,noexecstack
+	tc-export STRINGS
 
 	local myconf=(
 		--backend=sdl
@@ -96,6 +108,7 @@ src_configure() {
 		$(use_enable lua)
 		$(use_enable mp3 mad)
 		$(use_enable mpeg2)
+		$(use_enable net libcurl)
 		$(use_enable net sdlnet)
 		$(use_enable png)
 		$(use_enable sndio)
@@ -116,8 +129,7 @@ src_configure() {
 src_compile() {
 	emake \
 		AR="$(tc-getAR) cru" \
-		RANLIB="$(tc-getRANLIB)" \
-		STRINGS="$(tc-getSTRINGS)"
+		RANLIB="$(tc-getRANLIB)"
 }
 
 src_install() {

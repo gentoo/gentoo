@@ -6,11 +6,18 @@ inherit desktop flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="Reimplementation of the SCUMM game engine used in Lucasarts adventures"
 HOMEPAGE="https://www.scummvm.org/"
-SRC_URI="https://scummvm.org/frs/scummvm/${PV}/${P}.tar.xz"
+
+if [[ ${PV} == *9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/scummvm/scummvm"
+else
+	SRC_URI="https://scummvm.org/frs/scummvm/${PV}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+	S="${WORKDIR}/${PN}-${P}"
+fi
 
 LICENSE="GPL-2+ LGPL-2.1 BSD GPL-3-with-font-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="a52 aac alsa debug flac fluidsynth fribidi +gtk jpeg lua mpeg2 mp3 +net opengl png sndio speech theora truetype unsupported vorbis zlib"
 RESTRICT="test"  # it only looks like there's a test there #77507
 
@@ -117,7 +124,7 @@ src_configure() {
 	echo "configure ${myconf[@]}"
 	# NOT AN AUTOCONF SCRIPT SO DONT CALL ECONF
 	SDL_CONFIG="sdl2-config" \
-	./configure "${myconf[@]}" "${EXTRA_ECONF}" || die
+	./configure "${myconf[@]}" ${EXTRA_ECONF} || die
 }
 
 src_compile() {
