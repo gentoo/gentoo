@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ BDEPEND="
 "
 RDEPEND="
 	dev-db/lmdb:=
-	dev-libs/flatbuffers
+	dev-libs/flatbuffers:=
 	>=dev-libs/kasync-0.3:5
 	>=dev-libs/xapian-1.4.4:0=
 	dev-qt/qtcore:5
