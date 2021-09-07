@@ -11,7 +11,7 @@ HOMEPAGE="https://rubygems.org/gems/sdoc"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ppc ~x86"
+KEYWORDS="~amd64 ~arm ppc ~riscv ~x86"
 IUSE="test"
 
 ruby_add_rdepend ">=dev-ruby/rdoc-5.0"
