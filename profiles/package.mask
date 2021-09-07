@@ -189,11 +189,6 @@ net-dialup/xc
 dev-perl/Goo-Canvas
 x11-libs/goocanvas:0
 
-# Louis Sautier <sbraz@gentoo.org> (2021-08-07)
-# No reverse dependencies, no upstream activity for more than 5 years,
-# failing tests with Python 3.10. Removal on 2021-09-06.
-dev-python/pydiff
-
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
 # ecosystem has switched to dev-util/pkgconf, which is alive. Testing
