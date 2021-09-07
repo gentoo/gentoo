@@ -154,7 +154,6 @@ sys-cluster/slurm ofed
 # Dependencies not keyworded, not tested
 virtual/notification-daemon gnome
 net-libs/gnome-online-accounts gnome
-xfce-extra/tumbler epub
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # Ye Cao <ye.c@rioslab.org> (2021-07-31)
