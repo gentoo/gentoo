@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">rpl</remote-id>
+		<remote-id type="github">rrthomas/rpl</remote-id>
 	</upstream>
 </pkgmetadata>
