@@ -5,6 +5,7 @@
 		<email>shell-tools@gentoo.org</email>
 		<name>Gentoo Shell Tools Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="sourceforge">rpl</remote-id>
 		<remote-id type="github">rrthomas/rpl</remote-id>
