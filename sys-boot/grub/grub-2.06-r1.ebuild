@@ -38,6 +38,7 @@ else
 fi
 
 PATCHES=(
+	"${FILESDIR}"/grub-2.06-xfs-v4.patch
 	"${FILESDIR}"/gfxpayload.patch
 	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
 	"${FILESDIR}"/grub-2.06-test-words.patch
