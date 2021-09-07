@@ -1,0 +1,1248 @@
+From 4da5b5658dff57b7540bfc97133629d2a8ccf53d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Caol=C3=A1n=20McNamara?= <caolanm@redhat.com>
+Date: Sat, 14 Aug 2021 21:43:19 +0100
+Subject: [PATCH] Revert "tdf#101630 - gdrive support w/oAuth and Drive API v3"
+
+This reverts commit b8b66a26f8f519a30b8e6b860a9247a8ffbb71cc.
+---
+ config_host/config_oauth2.h.in                |   8 +-
+ external/libcmis/UnpackedTarball_libcmis.mk   |   2 -
+ external/libcmis/libcmis_gdrive.patch.1       | 702 ------------------
+ .../libcmis_oauth_pw_as_refreshtoken.patch.1  | 185 -----
+ .../data/org/openoffice/Office/Common.xcu     |   2 +-
+ ucb/source/ucp/cmis/auth_provider.cxx         | 130 +---
+ ucb/source/ucp/cmis/auth_provider.hxx         |   8 +-
+ ucb/source/ucp/cmis/cmis_content.cxx          |  21 +-
+ ucb/source/ucp/cmis/cmis_repo_content.cxx     |   4 +-
+ 9 files changed, 55 insertions(+), 1007 deletions(-)
+ delete mode 100644 external/libcmis/libcmis_gdrive.patch.1
+ delete mode 100644 external/libcmis/libcmis_oauth_pw_as_refreshtoken.patch.1
+
+diff --git a/config_host/config_oauth2.h.in b/config_host/config_oauth2.h.in
+index 9945dda3dda5..a95015b41f3e 100644
+--- a/config_host/config_oauth2.h.in
++++ b/config_host/config_oauth2.h.in
+@@ -15,13 +15,13 @@
+ 
+ 
+ /* Google Drive settings */
+-#define GDRIVE_BASE_URL "https://www.googleapis.com/drive/v3"
++#define GDRIVE_BASE_URL "https://www.googleapis.com/drive/v2"
+ #define GDRIVE_CLIENT_ID ""
+ #define GDRIVE_CLIENT_SECRET ""
+-#define GDRIVE_AUTH_URL "https://accounts.google.com/o/oauth2/v2/auth"
+-#define GDRIVE_TOKEN_URL "https://oauth2.googleapis.com/token"
++#define GDRIVE_AUTH_URL "https://accounts.google.com/o/oauth2/auth"
++#define GDRIVE_TOKEN_URL "https://accounts.google.com/o/oauth2/token"
+ #define GDRIVE_REDIRECT_URI "urn:ietf:wg:oauth:2.0:oob"
+-#define GDRIVE_SCOPE "https://www.googleapis.com/auth/drive.file"
++#define GDRIVE_SCOPE "https://www.googleapis.com/auth/drive"
+ 
+ 
+ /* Alfresco Cloud */
+diff --git a/external/libcmis/UnpackedTarball_libcmis.mk b/external/libcmis/UnpackedTarball_libcmis.mk
+index 8398853e4511..a5be3078c95a 100644
+--- a/external/libcmis/UnpackedTarball_libcmis.mk
++++ b/external/libcmis/UnpackedTarball_libcmis.mk
+@@ -17,8 +17,6 @@ $(eval $(call gb_UnpackedTarball_add_patches,libcmis, \
+ 	external/libcmis/libcmis-libxml2_compatibility.patch \
+ 	external/libcmis/0001-rename-class-GetObject-to-avoid-name-clash-on-Window.patch \
+ 	external/libcmis/libcmis_onedrive.patch \
+-	external/libcmis/libcmis_oauth_pw_as_refreshtoken.patch.1 \
+-	external/libcmis/libcmis_gdrive.patch.1 \
+ ))
+ 
+ # vim: set noet sw=4 ts=4:
+diff --git a/external/libcmis/libcmis_gdrive.patch.1 b/external/libcmis/libcmis_gdrive.patch.1
+deleted file mode 100644
+index 24ff65d1ef15..000000000000
+--- a/external/libcmis/libcmis_gdrive.patch.1
++++ /dev/null
+@@ -1,702 +0,0 @@
+-diff -ur libcmis.org/src/libcmis/gdrive-document.cxx libcmis/src/libcmis/gdrive-document.cxx
+---- libcmis.org/src/libcmis/gdrive-document.cxx	2021-07-27 19:11:02.679247008 +0200
+-+++ libcmis/src/libcmis/gdrive-document.cxx	2021-07-27 19:11:18.873246420 +0200
+-@@ -145,23 +145,17 @@
+- {
+-     if ( !os.get( ) )
+-         throw libcmis::Exception( "Missing stream" );
+--    if ( !isImmutable( ) )
+--        throw libcmis::Exception( string ( "Document " + getId( )+ 
+--                                    " is not editable" ) );
+--    string putUrl = getUploadUrl( ) + getId( );
+--    putUrl += "?uploadType=media";
+--    
+--    // If it's a Google document, convert it 
+--    if ( isGoogleDoc( ) )
+--        putUrl  += "&convert=true";
+-+
+-+    string putUrl = GDRIVE_UPLOAD_LINK + getId( ) + "?uploadType=media";
+- 
+-     // Upload stream
+-     boost::shared_ptr< istream> is ( new istream ( os->rdbuf( ) ) );
+-     vector <string> headers;
+-     headers.push_back( string( "Content-Type: " ) + contentType );
+-+    string res;
+-     try
+-     {
+--        getSession()->httpPutRequest( putUrl, *is, headers );
+-+        res = getSession()->httpPatchRequest( putUrl, *is, headers )->getStream()->str();
+-     }
+-     catch ( const CurlException& e )
+-     {
+-@@ -181,35 +175,10 @@
+- {
+-     if ( !os.get( ) )
+-         throw libcmis::Exception( "Missing stream" );
+--    
+--    if ( !isImmutable( ) )
+--        throw libcmis::Exception( string ( "Document " + getId( )+ 
+--                                    " is not editable" ) );
+--    string metaUrl = getUrl( );
+--
+--    // If it's a Google document, convert it 
+--    if ( isGoogleDoc( ) )
+--        metaUrl += "?convert=true";
+--
+--    // Update file name meta information
+--    if ( !fileName.empty( ) && fileName != getContentFilename( ) )
+--    {
+--        Json metaJson;
+--        Json fileJson( fileName.c_str( ) );
+--        metaJson.add("title", fileJson );
+--
+--        std::istringstream is( metaJson.toString( ) );
+--        vector<string> headers;
+--        headers.push_back( "Content-Type: application/json" );
+--        try
+--        {
+--            getSession()->httpPutRequest( metaUrl, is, headers );
+--        }
+--        catch ( const CurlException& e )
+--        {
+--            throw e.getCmisException( );
+--        }
+--    }
+-+
+-+    // TODO: when would the filename need an update?
+-+    if (!fileName.empty() && fileName != getContentFilename())
+-+        std::cout << "filename change is not implemented in setContentStream" << std::endl;
+- 
+-     // Upload stream
+-     uploadStream( os, contentType );
+-@@ -251,7 +220,7 @@
+- vector< libcmis::DocumentPtr > GDriveDocument::getAllVersions( ) 
+- {   
+-     vector< libcmis::DocumentPtr > revisions;
+--    string versionUrl = getUrl( ) + "/revisions";
+-+    string versionUrl = GDRIVE_METADATA_LINK + getId( ) + "/revisions";
+-     // Run the http request to get the properties definition
+-     string res;
+-     try
+-@@ -263,7 +232,7 @@
+-         throw e.getCmisException( );
+-     }
+-     Json jsonRes = Json::parse( res );        
+--    Json::JsonVector objs = jsonRes["items"].getList( );
+-+    Json::JsonVector objs = jsonRes["revisions"].getList( );
+-    
+-     string parentId = getStringProperty( "cmis:parentId" );
+- 
+-diff -ur libcmis.org/src/libcmis/gdrive-folder.cxx libcmis/src/libcmis/gdrive-folder.cxx
+---- libcmis.org/src/libcmis/gdrive-folder.cxx	2021-07-27 19:11:02.678247008 +0200
+-+++ libcmis/src/libcmis/gdrive-folder.cxx	2021-07-27 19:11:18.874246420 +0200
+-@@ -62,8 +62,8 @@
+-     // Instead of sending multiple queries for children,
+-     // we send a single query to search for objects where parents
+-     // include the folderID.
+--    string query = getSession( )->getBindingUrl( ) + 
+--        "/files?q=\"" + getId( ) + "\"+in+parents+and+trashed+=+false";
+-+    string query = GDRIVE_METADATA_LINK + "?q=\"" + getId( ) + "\"+in+parents+and+trashed+=+false" +
+-+        "&fields=files(kind,id,name,parents,mimeType,createdTime,modifiedTime,thumbnailLink,size)";
+- 
+-     string res;
+-     try
+-@@ -76,7 +76,7 @@
+-     }
+- 
+-     Json jsonRes = Json::parse( res );
+--    Json::JsonVector objs = jsonRes["items"].getList( );
+-+    Json::JsonVector objs = jsonRes["files"].getList( );
+-     
+-     // Create children objects from Json objects
+-     for(unsigned int i = 0; i < objs.size(); i++)
+-@@ -95,7 +95,7 @@
+- string GDriveFolder::uploadProperties( Json properties )
+- {
+-     // URL for uploading meta data
+--    string metaUrl =  getSession()->getBindingUrl() + "/files/";
+-+    string metaUrl =  GDRIVE_METADATA_LINK + "?fields=kind,id,name,parents,mimeType,createdTime,modifiedTime";
+- 
+-     // add parents to the properties    
+-     properties.add( "parents", GdriveUtils::createJsonFromParentId( getId( ) ) );
+-@@ -147,9 +147,15 @@
+-     
+-     Json propsJson = GdriveUtils::toGdriveJson( properties );
+- 
+--    // Add filename to properties
+--    Json jsonFilename( fileName.c_str( ) );
+--    propsJson.add( "title", jsonFilename );
+-+    if(!fileName.empty()) {
+-+        // use provided filename
+-+        Json jsonFilename( fileName.c_str( ) );
+-+
+-+        propsJson.add( "name", jsonFilename );
+-+    }
+-+    if(!contentType.empty()) {
+-+        propsJson.add( "mimeType", Json(contentType.c_str()));
+-+    }
+-     
+-     // Upload meta-datas
+-     string res = uploadProperties( propsJson);
+-@@ -171,12 +177,9 @@
+-     libcmis::UnfileObjects::Type /*unfile*/, 
+-     bool /*continueOnError*/ ) 
+- {
+--    // Object remove doesn't work with folder
+--    // Using trash instead
+-     try
+-     {   
+--        istringstream is( "" );
+--        getSession( )->httpPostRequest( getUrl( ) + "/trash", is, "" );
+-+        getSession( )->httpDeleteRequest( GDRIVE_METADATA_LINK + getId( ) );
+-     }
+-     catch ( const CurlException& e )
+-     {
+-diff -ur libcmis.org/src/libcmis/gdrive-object.cxx libcmis/src/libcmis/gdrive-object.cxx
+---- libcmis.org/src/libcmis/gdrive-object.cxx	2021-07-27 19:11:02.675247009 +0200
+-+++ libcmis/src/libcmis/gdrive-object.cxx	2021-07-27 19:11:18.874246420 +0200
+-@@ -89,8 +89,8 @@
+-             property.reset( new GDriveProperty( it->first, it->second ) );
+-             m_properties[ property->getPropertyType( )->getId()] = property;
+-            
+--            // we map "title" to both "cmis:name" and "cmis:getContentStreamFileName"
+--            if ( it->first == "title" )
+-+            // we map "name" to both "cmis:name" and "cmis:getContentStreamFileName"
+-+            if ( it->first == "name" )
+-             {
+-                 property.reset( new GDriveProperty( "cmis:name", it->second) );
+-                 m_properties[ property->getPropertyType( )->getId()] = property;
+-@@ -142,16 +142,13 @@
+- {
+-     if ( m_renditions.empty( ) )
+-     {
+--        string downloadUrl = getStringProperty( "downloadUrl" );
+--        if ( !downloadUrl.empty( ) )
+--        {
+--            string mimeType = getStringProperty( "cmis:contentStreamMimeType" );
+--            if ( !mimeType.empty( ) )
+--            { 
+--                RenditionPtr rendition( 
+--                    new Rendition( mimeType, mimeType, mimeType, downloadUrl ));
+--                m_renditions.push_back( rendition );
+--            }
+-+        string downloadUrl = GDRIVE_METADATA_LINK + getId( ) + "?alt=media";
+-+        string mimeType = getStringProperty( "cmis:contentStreamMimeType" );
+-+        if ( !mimeType.empty( ) )
+-+        {
+-+            RenditionPtr rendition(
+-+                new Rendition( mimeType, mimeType, mimeType, downloadUrl ));
+-+            m_renditions.push_back( rendition );
+-         }
+- 
+-         vector< string > exportLinks = getMultiStringProperty( "exportLinks" );
+-@@ -192,7 +189,7 @@
+-     {   
+-         vector< string > headers;
+-         headers.push_back( "Content-Type: application/json" );
+--        response = getSession( )->httpPutRequest( getUrl( ), is, headers );
+-+        response = getSession( )->httpPatchRequest( getUrl( ), is, headers );
+-     }
+-     catch ( const CurlException& e )
+-     {   
+-@@ -228,7 +225,7 @@
+- {
+-     try
+-     {
+--        getSession( )->httpDeleteRequest( getUrl( ) );
+-+        getSession( )->httpDeleteRequest( GDRIVE_METADATA_LINK + getId( ) );
+-     }
+-     catch ( const CurlException& e )
+-     {
+-@@ -239,8 +236,8 @@
+- void GDriveObject::move( FolderPtr /*source*/, FolderPtr destination ) 
+- {  
+-     Json parentsJson;
+--    Json parentsValue = GdriveUtils::createJsonFromParentId( destination->getId( ) );
+--    parentsJson.add( "parents", parentsValue );
+-+    parentsJson.add( "addParents", Json(destination->getId( ).c_str()) );
+-+    parentsJson.add( "removeParents", Json(getStringProperty( "cmis:parentId" ).c_str()) );
+-     
+-     istringstream is( parentsJson.toString( ) );
+-     libcmis::HttpResponsePtr response;
+-@@ -248,7 +245,7 @@
+-     {   
+-         vector< string > headers;
+-         headers.push_back( "Content-Type: application/json" );
+--        response = getSession( )->httpPutRequest( getUrl( ), is, headers );
+-+        response = getSession( )->httpPatchRequest( getUrl( ), is, headers );
+-     }
+-     catch ( const CurlException& e )
+-     {   
+-@@ -262,12 +259,10 @@
+- 
+- string GDriveObject::getUrl( )
+- {
+--    return getSession( )->getBindingUrl( ) + "/files/" + getId( );
+--}
+--
+--string GDriveObject::getUploadUrl( )
+--{
+--    return GDRIVE_UPLOAD_LINKS;
+-+    // thumbnailLink causes some operations to fail with internal server error,
+-+    // see https://issuetracker.google.com/issues/36760667
+-+    return GDRIVE_METADATA_LINK + getId( ) +
+-+                "?fields=kind,id,name,parents,mimeType,createdTime,modifiedTime,size";
+- }
+- 
+- vector< string> GDriveObject::getMultiStringProperty( const string& propertyName )
+-diff -ur libcmis.org/src/libcmis/gdrive-repository.cxx libcmis/src/libcmis/gdrive-repository.cxx
+---- libcmis.org/src/libcmis/gdrive-repository.cxx	2021-07-27 19:11:02.676247009 +0200
+-+++ libcmis/src/libcmis/gdrive-repository.cxx	2021-07-27 19:11:18.874246420 +0200
+-@@ -35,7 +35,7 @@
+-     m_name = "Google Drive";
+-     m_description = "Google Drive repository";
+-     m_productName = "Google Drive";
+--    m_productVersion = "v2";
+-+    m_productVersion = "v3";
+-     m_rootId = "root";
+-  
+-     m_capabilities[ ACL ] = "discover";
+-diff -ur libcmis.org/src/libcmis/gdrive-session.cxx libcmis/src/libcmis/gdrive-session.cxx
+---- libcmis.org/src/libcmis/gdrive-session.cxx	2021-07-27 19:11:02.675247009 +0200
+-+++ libcmis/src/libcmis/gdrive-session.cxx	2021-07-27 19:11:18.874246420 +0200
+-@@ -124,9 +124,13 @@
+- 
+- libcmis::ObjectPtr GDriveSession::getObject( string objectId )
+- {
+-+    if(objectId == "root") {
+-+        return getRootFolder();
+-+    }
+-     // Run the http request to get the properties definition
+-     string res;
+--    string objectLink = m_bindingUrl + "/files/" + objectId;
+-+    string objectLink = GDRIVE_METADATA_LINK + objectId +
+-+         "?fields=kind,id,name,parents,mimeType,createdTime,modifiedTime,thumbnailLink,size";
+-     try
+-     {
+-         res = httpGetRequest( objectLink )->getStream()->str();
+-@@ -188,9 +192,10 @@
+-         {
+-             // Normal child case
+-             // Ask for the ID of the child if there is any
+--            string childIdUrl = m_bindingUrl + "/files/" + objectId +
+--                                "/children/?q=title+=+'" + segment +
+--                                "'&fields=items:id";
+-+            // somewhat flawed as names are not necessarily unique in GDrive...
+-+            string query = libcmis::escape("'" + objectId + "' in parents and trashed = false and name='" + segment + "'");
+-+
+-+            string childIdUrl = m_bindingUrl + "/files/?q=" + query + "&fields=files(id)";
+- 
+-             string res;
+-             try
+-@@ -204,7 +209,7 @@
+-             Json jsonRes = Json::parse( res );
+- 
+-             // Did we get an id?
+--            Json::JsonVector items = jsonRes["items"].getList();
+-+            Json::JsonVector items = jsonRes["files"].getList();
+-             if ( items.empty( ) )
+-                 throw libcmis::Exception( "Object not found: " + path, "objectNotFound" );
+- 
+-@@ -219,6 +224,27 @@
+-     return getObject( objectId );
+- }
+- 
+-+libcmis::FolderPtr GDriveSession::getRootFolder()
+-+{
+-+    // permissions/scope with just drive.file don't allow to get it with the "root" alias/by its actual object-ID
+-+    Json propsJson;
+-+
+-+    // GDrive folder is a file with a different mime type.
+-+    string mimeType = GDRIVE_FOLDER_MIME_TYPE;
+-+
+-+    // Add mimetype to the propsJson
+-+    Json jsonMimeType( mimeType.c_str( ) );
+-+    propsJson.add( "mimeType", jsonMimeType );
+-+    propsJson.add( "id", "root" );
+-+
+-+    // Upload meta-datas
+-+    propsJson.add("cmis:name", "VirtualRoot");
+-+
+-+    libcmis::FolderPtr folderPtr( new GDriveFolder( this, propsJson ) );
+-+
+-+    return folderPtr;
+-+}
+-+
+- libcmis::ObjectTypePtr GDriveSession::getType( string id )
+- {
+-     libcmis::ObjectTypePtr type( new GdriveObjectType( id ) );
+-diff -ur libcmis.org/src/libcmis/gdrive-session.hxx libcmis/src/libcmis/gdrive-session.hxx
+---- libcmis.org/src/libcmis/gdrive-session.hxx	2021-07-27 19:11:02.675247009 +0200
+-+++ libcmis/src/libcmis/gdrive-session.hxx	2021-07-27 19:11:18.875246420 +0200
+-@@ -57,6 +57,8 @@
+- 
+-         virtual std::vector< libcmis::ObjectTypePtr > getBaseTypes( );
+- 
+-+        virtual libcmis::FolderPtr getRootFolder();
+-+
+-         virtual std::string getRefreshToken();
+- 
+-     private:
+-diff -ur libcmis.org/src/libcmis/gdrive-utils.cxx libcmis/src/libcmis/gdrive-utils.cxx
+---- libcmis.org/src/libcmis/gdrive-utils.cxx	2021-07-27 19:11:02.677247008 +0200
+-+++ libcmis/src/libcmis/gdrive-utils.cxx	2021-07-27 19:11:18.875246420 +0200
+-@@ -44,17 +44,17 @@
+-         convertedKey = "cmis:createdBy";
+-     else if ( key == "description" )
+-         convertedKey = "cmis:description";
+--    else if ( key == "createdDate" )
+-+    else if ( key == "createdTime" )
+-         convertedKey = "cmis:creationDate";
+-     else if ( key == "lastModifyingUserName" )
+-         convertedKey = "cmis:lastModifiedBy";
+--    else if ( key == "modifiedDate" )
+-+    else if ( key == "modifiedTime" )
+-         convertedKey = "cmis:lastModificationDate";
+--    else if ( key == "title" )
+-+    else if ( key == "name" )
+-         convertedKey = "cmis:contentStreamFileName";
+-     else if ( key == "mimeType" )
+-         convertedKey = "cmis:contentStreamMimeType";
+--    else if ( key == "fileSize" )
+-+    else if ( key == "size" )
+-         convertedKey = "cmis:contentStreamLength";
+-     else if ( key == "editable" )
+-         convertedKey = "cmis:isImmutable";
+-@@ -72,21 +72,21 @@
+-     else if ( key == "cmis:createdBy" )
+-         convertedKey = "ownerNames";
+-     else if ( key == "cmis:creationDate" )
+--        convertedKey = "createdDate";
+-+        convertedKey = "createdTime";
+-     else if ( key == "cmis:description" )
+-         convertedKey = "description";
+-     else if ( key == "cmis:lastModifiedBy" )
+-         convertedKey = "lastModifyingUserName";
+-     else if ( key == "cmis:lastModificationDate" )
+--        convertedKey = "modifiedDate";
+-+        convertedKey = "modifiedTime";
+-     else if ( key == "cmis:contentStreamFileName" )
+--        convertedKey = "title";
+-+        convertedKey = "name";
+-     else if ( key == "cmis:name" )
+--        convertedKey = "title";
+-+        convertedKey = "name";
+-     else if ( key == "cmis:contentStreamMimeType" )
+-         convertedKey = "mimeType";
+-     else if ( key == "cmis:contentStreamLength" )
+--        convertedKey = "fileSize";
+-+        convertedKey = "size";
+-     else if ( key == "cmis:isImmutable" )
+-         convertedKey = "editable";
+-     else if ( key == "cmis:parentId" )
+-@@ -124,9 +124,9 @@
+- bool GdriveUtils::checkUpdatable( const string& key )
+- {
+-     // taken from https://developers.google.com/drive/v2/reference/files
+--    bool updatable = ( key == "title" ||
+-+    bool updatable = ( key == "name" ||
+-                   key == "description" ||
+--                  key == "modifiedDate" ||
+-+                  key == "modifiedTime" ||
+-                   key == "lastViewedByMeDate" );
+-     return updatable;    
+- }
+-@@ -143,18 +143,11 @@
+- 
+- Json GdriveUtils::createJsonFromParentId( const string& parentId )
+- {
+--    Json parentValue( parentId.c_str( ) );
+--    
+-     // parents is a Json array
+-     Json firstParent;
+--    firstParent.add( "id", parentValue );
+--    
+--    Json::JsonVector parents;
+--    parents.insert( parents.begin( ), firstParent );
+-+    firstParent.add( Json( parentId.c_str() ) );
+-     
+--    Json parentsValue( parents );
+--
+--    return parentsValue;
+-+    return firstParent;
+- }
+- 
+- vector< string > GdriveUtils::parseGdriveProperty( string key, Json json )
+-diff -ur libcmis.org/src/libcmis/gdrive-utils.hxx libcmis/src/libcmis/gdrive-utils.hxx
+---- libcmis.org/src/libcmis/gdrive-utils.hxx	2021-07-27 19:11:02.677247008 +0200
+-+++ libcmis/src/libcmis/gdrive-utils.hxx	2021-07-27 19:11:18.875246420 +0200
+-@@ -35,7 +35,8 @@
+- #include "json-utils.hxx"
+- 
+- static const std::string GDRIVE_FOLDER_MIME_TYPE = "application/vnd.google-apps.folder" ;
+--static const std::string GDRIVE_UPLOAD_LINKS = "https://www.googleapis.com/upload/drive/v2/files/";
+-+static const std::string GDRIVE_UPLOAD_LINK = "https://www.googleapis.com/upload/drive/v3/files/";
+-+static const std::string GDRIVE_METADATA_LINK = "https://www.googleapis.com/drive/v3/files/";
+- 
+- class GdriveUtils
+- {
+-diff -ur libcmis.org/src/libcmis/oauth2-handler.cxx libcmis/src/libcmis/oauth2-handler.cxx
+---- libcmis.org/src/libcmis/oauth2-handler.cxx	2021-07-27 19:11:02.676247009 +0200
+-+++ libcmis/src/libcmis/oauth2-handler.cxx	2021-07-27 19:11:18.875246420 +0200
+-@@ -92,8 +92,11 @@
+-         "code="              + authCode +
+-         "&client_id="        + m_data->getClientId() +
+-         "&redirect_uri="     + m_data->getRedirectUri() +
+--        "&scope="            + libcmis::escape( m_data->getScope() ) +
+-         "&grant_type=authorization_code" ;
+-+    if(boost::starts_with(m_data->getTokenUrl(), "https://oauth2.googleapis.com/"))
+-+        post += "&client_secret="    + m_data->getClientSecret();
+-+    else
+-+        post += "&scope="            + libcmis::escape( m_data->getScope() );
+- 
+-     istringstream is( post );
+- 
+-@@ -104,7 +107,7 @@
+-         resp = m_session->httpPostRequest ( m_data->getTokenUrl(), is,
+-                                         "application/x-www-form-urlencoded" );
+-     }
+--    catch ( const CurlException& )
+-+    catch ( const CurlException& e)
+-     {
+-         throw libcmis::Exception(
+-                 "Couldn't get tokens from the authorization code ");
+-@@ -122,6 +125,8 @@
+-         "refresh_token="     + m_refresh +
+-         "&client_id="        + m_data->getClientId() +
+-         "&grant_type=refresh_token" ;
+-+    if(boost::starts_with(m_data->getTokenUrl(), "https://oauth2.googleapis.com/"))
+-+        post += "&client_secret="    + m_data->getClientSecret();
+- 
+-     istringstream is( post );
+-     libcmis::HttpResponsePtr resp;
+-@@ -130,7 +135,7 @@
+-         resp = m_session->httpPostRequest( m_data->getTokenUrl( ), is,
+-                                            "application/x-www-form-urlencoded" );
+-     }
+--    catch (const CurlException& )
+-+    catch (const CurlException& e )
+-     {
+-         throw libcmis::Exception( "Couldn't refresh token ");
+-     }
+-diff -ur libcmis.org/src/libcmis/oauth2-providers.cxx libcmis/src/libcmis/oauth2-providers.cxx
+---- libcmis.org/src/libcmis/oauth2-providers.cxx	2021-07-27 19:11:02.679247008 +0200
+-+++ libcmis/src/libcmis/oauth2-providers.cxx	2021-07-27 19:11:18.886246420 +0200
+-@@ -80,172 +80,8 @@
+- 
+- }
+- 
+--string OAuth2Providers::OAuth2Gdrive( HttpSession* session, const string& authUrl,
+--                                      const string& username, const string& password )
+--{
+--    /* This member function implements 'Google OAuth 2.0'
+--     *
+--     * The interaction is carried out by libcmis, with no web browser involved.
+--     *
+--     * Normal sequence (without 2FA) is:
+--     * 1) a get to activate login page
+--     *    receive first login page, html format
+--     * 2) subsequent post to sent email
+--     *    receive html page for password input
+--     * 3) subsequent post to send password
+--     *    receive html page for application consent
+--     * 4) subsequent post to send a consent for the application
+--     *    receive a single-use authorization code
+--     *    this code is returned as a string
+--     *
+--     * Sequence with 2FA is:
+--     * 1) a get to activate login page
+--     *    receive first login page, html format
+--     * 2) subsequent post to sent email
+--     *    receive html page for password input
+--     * 3) subsequent post to send password
+--     *    receive html page for pin input
+--     * 3b) subsequent post to send pin number
+--     *    receive html page for application consent
+--     * 4) subsequent post to send a consent for the application
+--     *    receive a single-use authorization code
+--     *    this code is returned as a string
+--     */
+--
+--    static const string CONTENT_TYPE( "application/x-www-form-urlencoded" );
+--    // STEP 1: get login page
+--    string res;
+--    try
+--    {
+--        // send the first get, receive the html login page
+--        res = session->httpGetRequest( authUrl )->getStream( )->str( );
+--    }
+--    catch ( const CurlException& )
+--    {
+--        return string( );
+--    }
+--
+--    // STEP 2: send email
+--
+--    string loginEmailPost, loginEmailLink;
+--    if ( !parseResponse( res.c_str( ), loginEmailPost, loginEmailLink ) )
+--        return string( );
+--
+--    loginEmailPost += "Email=";
+--    loginEmailPost += escapeForm( username );
+--
+--    istringstream loginEmailIs( loginEmailPost );
+--    string loginEmailRes;
+--    try
+--    {
+--        // send a post with user email, receive the html page for password input
+--        loginEmailRes = session->httpPostRequest ( loginEmailLink, loginEmailIs, CONTENT_TYPE )
+--                        ->getStream( )->str( );
+--    }
+--    catch ( const CurlException& )
+--    {
+--        return string( );
+--    }
+--
+--    // STEP 3: password page
+--
+--    string loginPasswdPost, loginPasswdLink;
+--    if ( !parseResponse( loginEmailRes.c_str( ), loginPasswdPost, loginPasswdLink ) )
+--        return string( );
+--
+--    loginPasswdPost += "Passwd=";
+--    loginPasswdPost += escapeForm( password );
+--
+--    istringstream loginPasswdIs( loginPasswdPost );
+--    string loginPasswdRes;
+--    try
+--    {
+--        // send a post with user password, receive the application consent page
+--        loginPasswdRes = session->httpPostRequest ( loginPasswdLink, loginPasswdIs, CONTENT_TYPE )
+--                        ->getStream( )->str( );
+--    }
+--    catch ( const CurlException& )
+--    {
+--        return string( );
+--    }
+--
+--    string approvalPost, approvalLink;
+--    if ( !parseResponse( loginPasswdRes. c_str( ), approvalPost, approvalLink) )
+--        return string( );
+--
+--    // when 2FA is enabled, link doesn't start with 'http'
+--    if ( approvalLink.compare(0, 4, "http") != 0 )
+--    {
+--        // STEP 3b: 2 Factor Authentication, pin code request
+--
+--        string loginChallengePost( approvalPost );
+--        string loginChallengeLink( approvalLink );
+--
+--        libcmis::OAuth2AuthCodeProvider fallbackProvider = libcmis::SessionFactory::getOAuth2AuthCodeProvider( );
+--        unique_ptr< char, void (*)( void * ) > pin{ fallbackProvider( "", "", "" ), free };
+--
+--        if( !pin )
+--        {
+--            // unset OAuth2AuthCode Provider to avoid showing pin request again in the HttpSession::oauth2Authenticate
+--            libcmis::SessionFactory::setOAuth2AuthCodeProvider( NULL );
+--            return string( );
+--        }
+--
+--        loginChallengeLink = "https://accounts.google.com" + loginChallengeLink;
+--        loginChallengePost += string( PIN_INPUT_NAME ) + "=";
+--        loginChallengePost += string( pin.get() );
+--
+--        istringstream loginChallengeIs( loginChallengePost );
+--        string loginChallengeRes;
+--        try
+--        {
+--            // send a post with pin, receive the application consent page
+--            loginChallengeRes = session->httpPostRequest ( loginChallengeLink, loginChallengeIs, CONTENT_TYPE )
+--                            ->getStream( )->str( );
+--        }
+--        catch ( const CurlException& )
+--        {
+--            return string( );
+--        }
+--
+--        approvalPost = string();
+--        approvalLink = string();
+--
+--        if ( !parseResponse( loginChallengeRes. c_str( ), approvalPost, approvalLink) )
+--            return string( );
+--    }
+--    else if( approvalLink.compare( "https://accounts.google.com/ServiceLoginAuth" ) == 0 )
+--    {
+--        // wrong password,
+--        // unset OAuth2AuthCode Provider to avoid showing pin request again in the HttpSession::oauth2Authenticate
+--        libcmis::SessionFactory::setOAuth2AuthCodeProvider( NULL );
+--        return string( );
+--    }
+--
+--    // STEP 4: allow libcmis to access google drive
+--    approvalPost += "submit_access=true";
+--
+--    istringstream approvalIs( approvalPost );
+--    string approvalRes;
+--    try
+--    {
+--        // send a post with application consent
+--        approvalRes = session->httpPostRequest ( approvalLink, approvalIs,
+--                            CONTENT_TYPE) ->getStream( )->str( );
+--    }
+--    catch ( const CurlException& e )
+--    {
+--        throw e.getCmisException( );
+--    }
+--
+--    // Take the authentication code from the text bar
+--    string code = parseCode( approvalRes.c_str( ) );
+--
+--    return code;
+--}
+--
+--string OAuth2Providers::OAuth2Onedrive( HttpSession* /*session*/, const string& /*authUrl*/,
+--                                      const string& /*username*/, const string& /*password*/ )
+-+string OAuth2Providers::OAuth2Dummy( HttpSession* /*session*/, const string& /*authUrl*/,
+-+                                     const string& /*username*/, const string& /*password*/ )
+- {
+-     return string( );
+- }
+-@@ -314,12 +150,8 @@
+-         // For Alfresco in the cloud, only match the hostname as there can be several
+-         // binding URLs created with it.
+-         return OAuth2Alfresco;
+--    else if ( boost::starts_with( url, "https://www.googleapis.com/drive/v2" ) )
+--        return OAuth2Gdrive;
+--    else if ( boost::starts_with( url, "https://graph.microsoft.com/v1.0" ) )
+--        return OAuth2Onedrive;
+- 
+--    return OAuth2Gdrive;
+-+    return OAuth2Dummy;
+- }
+- 
+- int OAuth2Providers::parseResponse ( const char* response, string& post, string& link )
+-diff -ur libcmis.org/src/libcmis/oauth2-providers.hxx libcmis/src/libcmis/oauth2-providers.hxx
+---- libcmis.org/src/libcmis/oauth2-providers.hxx	2021-07-27 19:11:02.678247008 +0200
+-+++ libcmis/src/libcmis/oauth2-providers.hxx	2021-07-27 19:11:18.886246420 +0200
+-@@ -39,12 +39,8 @@
+- class OAuth2Providers
+- {
+-     public :
+--        static std::string OAuth2Gdrive( HttpSession* session, const std::string& authUrl, 
+-+        static std::string OAuth2Dummy( HttpSession* session, const std::string& authUrl,
+-                                        const std::string& username, const std::string& password );
+--
+--        static std::string OAuth2Onedrive( HttpSession* session, const std::string& authUrl, 
+--                                       const std::string& username, const std::string& password );
+--
+-         static std::string OAuth2Alfresco( HttpSession* session, const std::string& authUrl, 
+-                                        const std::string& username, const std::string& password );
+- 
+-diff -ur libcmis.org/src/libcmis/session-factory.cxx libcmis/src/libcmis/session-factory.cxx
+---- libcmis.org/src/libcmis/session-factory.cxx	2021-07-27 19:11:02.679247008 +0200
+-+++ libcmis/src/libcmis/session-factory.cxx	2021-07-27 19:11:18.886246420 +0200
+-@@ -66,7 +66,7 @@
+-         if ( !bindingUrl.empty( ) )
+-         {
+-             // Try the special cases based on the binding URL
+--            if ( bindingUrl == "https://www.googleapis.com/drive/v2" )
+-+            if ( bindingUrl == "https://www.googleapis.com/drive/v3" )
+-             {
+-                 session = new GDriveSession( bindingUrl, username, password,
+-                                              oauth2, verbose );
+diff --git a/external/libcmis/libcmis_oauth_pw_as_refreshtoken.patch.1 b/external/libcmis/libcmis_oauth_pw_as_refreshtoken.patch.1
+deleted file mode 100644
+index a8cb06509421..000000000000
+--- a/external/libcmis/libcmis_oauth_pw_as_refreshtoken.patch.1
++++ /dev/null
+@@ -1,185 +0,0 @@
+-diff -ur libcmis.org/inc/libcmis/session.hxx libcmis/inc/libcmis/session.hxx
+---- libcmis.org/inc/libcmis/session.hxx	2021-07-27 19:09:42.580249917 +0200
+-+++ libcmis/inc/libcmis/session.hxx	2021-07-27 19:10:02.368249199 +0200
+-@@ -95,6 +95,8 @@
+-                 certificate exception feature available on common web browser.
+-               */
+-             virtual void setNoSSLCertificateCheck( bool noCheck ) = 0;
+-+
+-+            virtual std::string getRefreshToken() { return ""; };
+-     };
+- }
+- 
+-diff -ur libcmis.org/src/libcmis/gdrive-session.cxx libcmis/src/libcmis/gdrive-session.cxx
+---- libcmis.org/src/libcmis/gdrive-session.cxx	2021-07-27 19:09:42.581249917 +0200
+-+++ libcmis/src/libcmis/gdrive-session.cxx	2021-07-27 19:10:02.369249198 +0200
+-@@ -70,6 +70,46 @@
+- {
+- }
+- 
+-+
+-+void GDriveSession::setOAuth2Data( libcmis::OAuth2DataPtr oauth2 )
+-+{
+-+    m_oauth2Handler = new OAuth2Handler( this, oauth2 );
+-+    m_oauth2Handler->setOAuth2Parser( OAuth2Providers::getOAuth2Parser( getBindingUrl( ) ) );
+-+
+-+    oauth2Authenticate( );
+-+}
+-+
+-+void GDriveSession::oauth2Authenticate()
+-+{
+-+    // treat the supplied password as refresh token
+-+    if (!m_password.empty())
+-+    {
+-+        try
+-+        {
+-+            m_inOAuth2Authentication = true;
+-+
+-+            m_oauth2Handler->setRefreshToken(m_password);
+-+            // Try to get new access tokens using the stored refreshtoken
+-+            m_oauth2Handler->refresh();
+-+            m_inOAuth2Authentication = false;
+-+        }
+-+        catch (const CurlException &e)
+-+        {
+-+            m_inOAuth2Authentication = false;
+-+            // refresh token expired or invalid, trigger initial auth (that in turn will hit the fallback with copy'n'paste method)
+-+            BaseSession::oauth2Authenticate();
+-+        }
+-+    }
+-+    else
+-+    {
+-+        BaseSession::oauth2Authenticate();
+-+    }
+-+}
+-+
+-+string GDriveSession::getRefreshToken() {
+-+    return HttpSession::getRefreshToken();
+-+}
+-+
+- libcmis::RepositoryPtr GDriveSession::getRepository( )
+- {
+-     // Return a dummy repository since GDrive doesn't have that notion
+-diff -ur libcmis.org/src/libcmis/gdrive-session.hxx libcmis/src/libcmis/gdrive-session.hxx
+---- libcmis.org/src/libcmis/gdrive-session.hxx	2021-07-27 19:09:42.583249917 +0200
+-+++ libcmis/src/libcmis/gdrive-session.hxx	2021-07-27 19:10:02.369249198 +0200
+-@@ -57,8 +57,14 @@
+- 
+-         virtual std::vector< libcmis::ObjectTypePtr > getBaseTypes( );
+- 
+-+        virtual std::string getRefreshToken();
+-+
+-     private:
+-         GDriveSession( );
+-+
+-+        virtual void setOAuth2Data( libcmis::OAuth2DataPtr oauth2 );
+-+
+-+        void oauth2Authenticate( );
+- };
+- 
+- #endif /* _GDRIVE_SESSION_HXX_ */
+-diff -ur libcmis.org/src/libcmis/http-session.hxx libcmis/src/libcmis/http-session.hxx
+---- libcmis.org/src/libcmis/http-session.hxx	2021-07-27 19:09:42.582249917 +0200
+-+++ libcmis/src/libcmis/http-session.hxx	2021-07-27 19:10:02.369249198 +0200
+-@@ -148,7 +148,7 @@
+- 
+-         void setNoSSLCertificateCheck( bool noCheck );
+- 
+--        std::string getRefreshToken( );
+-+        virtual std::string getRefreshToken( );
+- 
+-     protected:
+-         HttpSession( );
+-diff -ur libcmis.org/src/libcmis/oauth2-handler.cxx libcmis/src/libcmis/oauth2-handler.cxx
+---- libcmis.org/src/libcmis/oauth2-handler.cxx	2021-07-27 19:09:42.582249917 +0200
+-+++ libcmis/src/libcmis/oauth2-handler.cxx	2021-07-27 19:10:02.369249198 +0200
+-@@ -158,6 +158,11 @@
+-     return m_refresh;
+- }
+- 
+-+void OAuth2Handler::setRefreshToken( string refreshToken )
+-+{
+-+    m_refresh = refreshToken;
+-+}
+-+
+- string OAuth2Handler::getHttpHeader( )
+- {
+-     string header;
+-diff -ur libcmis.org/src/libcmis/oauth2-handler.hxx libcmis/src/libcmis/oauth2-handler.hxx
+---- libcmis.org/src/libcmis/oauth2-handler.hxx	2021-07-27 19:09:42.582249917 +0200
+-+++ libcmis/src/libcmis/oauth2-handler.hxx	2021-07-27 19:10:02.370249198 +0200
+-@@ -61,6 +61,7 @@
+- 
+-         std::string getAccessToken( ) ;
+-         std::string getRefreshToken( ) ;
+-+        void setRefreshToken( std::string refreshToken ) ;
+- 
+-         // adding HTTP auth header
+-         std::string getHttpHeader( ) ;
+-diff -ur libcmis.org/src/libcmis/onedrive-session.cxx libcmis/src/libcmis/onedrive-session.cxx
+---- libcmis.org/src/libcmis/onedrive-session.cxx	2021-07-27 19:09:42.583249917 +0200
+-+++ libcmis/src/libcmis/onedrive-session.cxx	2021-07-27 19:10:02.370249198 +0200
+-@@ -68,6 +68,45 @@
+- {
+- }
+- 
+-+void OneDriveSession::setOAuth2Data( libcmis::OAuth2DataPtr oauth2 )
+-+{
+-+    m_oauth2Handler = new OAuth2Handler( this, oauth2 );
+-+    m_oauth2Handler->setOAuth2Parser( OAuth2Providers::getOAuth2Parser( getBindingUrl( ) ) );
+-+
+-+    oauth2Authenticate( );
+-+}
+-+
+-+void OneDriveSession::oauth2Authenticate()
+-+{
+-+    // treat the supplied password as refresh token
+-+    if (!m_password.empty())
+-+    {
+-+        try
+-+        {
+-+            m_inOAuth2Authentication = true;
+-+
+-+            m_oauth2Handler->setRefreshToken(m_password);
+-+            // Try to get new access tokens using the stored refreshtoken
+-+            m_oauth2Handler->refresh();
+-+            m_inOAuth2Authentication = false;
+-+        }
+-+        catch (const CurlException &e)
+-+        {
+-+            m_inOAuth2Authentication = false;
+-+            // refresh token expired or invalid, trigger initial auth (that in turn will hit the fallback with copy'n'paste method)
+-+            BaseSession::oauth2Authenticate();
+-+        }
+-+    }
+-+    else
+-+    {
+-+        BaseSession::oauth2Authenticate();
+-+    }
+-+}
+-+
+-+string OneDriveSession::getRefreshToken() {
+-+    return HttpSession::getRefreshToken();
+-+}
+-+
+- libcmis::RepositoryPtr OneDriveSession::getRepository( )
+- {
+-     // Return a dummy repository since OneDrive doesn't have that notion
+-diff -ur libcmis.org/src/libcmis/onedrive-session.hxx libcmis/src/libcmis/onedrive-session.hxx
+---- libcmis.org/src/libcmis/onedrive-session.hxx	2021-07-27 19:09:42.583249917 +0200
+-+++ libcmis/src/libcmis/onedrive-session.hxx	2021-07-27 19:10:02.370249198 +0200
+-@@ -62,8 +62,14 @@
+- 
+-        bool isAPathMatch( Json objectJson, std::string path );
+- 
+-+       virtual std::string getRefreshToken();
+-+
+-     private:
+-         OneDriveSession( );
+-+
+-+        virtual void setOAuth2Data( libcmis::OAuth2DataPtr oauth2 );
+-+
+-+        void oauth2Authenticate( );
+- };
+- 
+- #endif /* _ONEDRIVE_SESSION_HXX_ */
+diff --git a/officecfg/registry/data/org/openoffice/Office/Common.xcu b/officecfg/registry/data/org/openoffice/Office/Common.xcu
+index d9c2d5df34e3..2277b42bdf74 100644
+--- a/officecfg/registry/data/org/openoffice/Office/Common.xcu
++++ b/officecfg/registry/data/org/openoffice/Office/Common.xcu
+@@ -431,7 +431,7 @@
+     </prop>
+     <prop oor:name="CmisServersUrls">
+       <value>
+-        <it>https://www.googleapis.com/drive/v3</it>
++        <it>https://www.googleapis.com/drive/v2</it>
+         <it>https://graph.microsoft.com/v1.0</it>
+         <it>https://api.alfresco.com/cmis/versions/1.0/atom/</it>
+         <it></it>
+diff --git a/ucb/source/ucp/cmis/auth_provider.cxx b/ucb/source/ucp/cmis/auth_provider.cxx
+index 05a8846a11a7..5c2ded12986e 100644
+--- a/ucb/source/ucp/cmis/auth_provider.cxx
++++ b/ucb/source/ucp/cmis/auth_provider.cxx
+@@ -11,10 +11,7 @@
+ #define STD_TO_OUSTR( str ) OUString( str.c_str(), str.length( ), RTL_TEXTENCODING_UTF8 )
+ 
+ #include <com/sun/star/task/XInteractionHandler.hpp>
+-#include <com/sun/star/task/PasswordContainer.hpp>
+-#include <com/sun/star/task/XPasswordContainer2.hpp>
+ 
+-#include <comphelper/processfactory.hxx>
+ #include <ucbhelper/simpleauthenticationrequest.hxx>
+ #include <ucbhelper/authenticationfallback.hxx>
+ 
+@@ -67,91 +64,6 @@ namespace cmis
+         return false;
+     }
+ 
+-    string AuthProvider::getRefreshToken(string& rUsername)
+-    {
+-        string refreshToken;
+-        const css::uno::Reference<css::ucb::XCommandEnvironment> xEnv = getXEnv();
+-        if (xEnv.is())
+-        {
+-            uno::Reference<task::XInteractionHandler> xIH = xEnv->getInteractionHandler();
+-
+-            if (rUsername.empty())
+-            {
+-                rtl::Reference<ucbhelper::SimpleAuthenticationRequest> xRequest
+-                    = new ucbhelper::SimpleAuthenticationRequest(
+-                        m_sUrl, m_sBindingUrl,
+-                        ucbhelper::SimpleAuthenticationRequest::EntityType::ENTITY_NA, OUString(),
+-                        ucbhelper::SimpleAuthenticationRequest::EntityType::ENTITY_MODIFY,
+-                        STD_TO_OUSTR(rUsername),
+-                        ucbhelper::SimpleAuthenticationRequest::EntityType::ENTITY_NA, OUString());
+-                xIH->handle(xRequest);
+-
+-                rtl::Reference<ucbhelper::InteractionContinuation> xSelection
+-                    = xRequest->getSelection();
+-
+-                if (xSelection.is())
+-                {
+-                    // Handler handled the request.
+-                    uno::Reference<task::XInteractionAbort> xAbort(xSelection.get(),
+-                                                                   uno::UNO_QUERY);
+-                    if (!xAbort.is())
+-                    {
+-                        const rtl::Reference<ucbhelper::InteractionSupplyAuthentication>& xSupp
+-                            = xRequest->getAuthenticationSupplier();
+-
+-                        rUsername = OUSTR_TO_STDSTR(xSupp->getUserName());
+-                    }
+-                }
+-            }
+-
+-            uno::Reference<uno::XComponentContext> xContext
+-                = ::comphelper::getProcessComponentContext();
+-            uno::Reference<task::XPasswordContainer2> xMasterPasswd
+-                = task::PasswordContainer::create(xContext);
+-            if (xMasterPasswd->hasMasterPassword())
+-            {
+-                xMasterPasswd->authorizateWithMasterPassword(xIH);
+-            }
+-            if (xMasterPasswd->isPersistentStoringAllowed())
+-            {
+-                task::UrlRecord aRec
+-                    = xMasterPasswd->findForName(m_sBindingUrl, STD_TO_OUSTR(rUsername), xIH);
+-                if (aRec.UserList.hasElements() && aRec.UserList[0].Passwords.hasElements())
+-                    refreshToken = OUSTR_TO_STDSTR(aRec.UserList[0].Passwords[0]);
+-            }
+-        }
+-        return refreshToken;
+-    }
+-
+-    bool AuthProvider::storeRefreshToken(const string& username, const string& password,
+-                                         const string& refreshToken)
+-    {
+-        if (refreshToken.empty())
+-            return false;
+-        if (password == refreshToken)
+-            return true;
+-        const css::uno::Reference<css::ucb::XCommandEnvironment> xEnv = getXEnv();
+-        if (xEnv.is())
+-        {
+-            uno::Reference<task::XInteractionHandler> xIH = xEnv->getInteractionHandler();
+-            uno::Reference<uno::XComponentContext> xContext
+-                = ::comphelper::getProcessComponentContext();
+-            uno::Reference<task::XPasswordContainer2> xMasterPasswd
+-                = task::PasswordContainer::create(xContext);
+-            uno::Sequence<OUString> aPasswd{ STD_TO_OUSTR(refreshToken) };
+-            if (xMasterPasswd->isPersistentStoringAllowed())
+-            {
+-                if (xMasterPasswd->hasMasterPassword())
+-                {
+-                    xMasterPasswd->authorizateWithMasterPassword(xIH);
+-                }
+-                xMasterPasswd->addPersistent(m_sBindingUrl, STD_TO_OUSTR(username), aPasswd, xIH);
+-                return true;
+-            }
+-        }
+-        return false;
+-    }
+-
+     css::uno::WeakReference< css::ucb::XCommandEnvironment> AuthProvider::sm_xEnv;
+ 
+     void AuthProvider::setXEnv(const css::uno::Reference< css::ucb::XCommandEnvironment>& xEnv )
+@@ -164,7 +76,7 @@ namespace cmis
+         return sm_xEnv;
+     }
+ 
+-    char* AuthProvider::copyWebAuthCodeFallback( const char* url,
++    char* AuthProvider::onedriveAuthCodeFallback( const char* url,
+             const char* /*username*/,
+             const char* /*password*/ )
+     {
+@@ -208,6 +120,46 @@ namespace cmis
+ 
+         return strdup( "" );
+     }
++
++    char* AuthProvider::gdriveAuthCodeFallback( const char* /*url*/,
++            const char* /*username*/,
++            const char* /*password*/ )
++    {
++        const css::uno::Reference<
++            css::ucb::XCommandEnvironment> xEnv = getXEnv( );
++
++        if ( xEnv.is() )
++        {
++            uno::Reference< task::XInteractionHandler > xIH
++                = xEnv->getInteractionHandler();
++
++            if ( xIH.is() )
++            {
++                rtl::Reference< ucbhelper::AuthenticationFallbackRequest > xRequest
++                    = new ucbhelper::AuthenticationFallbackRequest (
++                            "PIN:", "" );
++
++                xIH->handle( xRequest );
++
++                rtl::Reference< ucbhelper::InteractionContinuation > xSelection
++                    = xRequest->getSelection();
++
++                if ( xSelection.is() )
++                {
++                    // Handler handled the request.
++                    const rtl::Reference< ucbhelper::InteractionAuthFallback >&
++                        xAuthFallback = xRequest->getAuthFallbackInter( );
++                    if ( xAuthFallback.is() )
++                    {
++                        OUString code = xAuthFallback->getCode( );
++                        return strdup( OUSTR_TO_STDSTR( code ).c_str( ) );
++                    }
++                }
++            }
++        }
++
++        return strdup( "" );
++    }
+ }
+ 
+ /* vim:set shiftwidth=4 softtabstop=4 expandtab: */
+diff --git a/ucb/source/ucp/cmis/auth_provider.hxx b/ucb/source/ucp/cmis/auth_provider.hxx
+index 9092f3c6bd25..d9864c45b230 100644
+--- a/ucb/source/ucp/cmis/auth_provider.hxx
++++ b/ucb/source/ucp/cmis/auth_provider.hxx
+@@ -38,11 +38,11 @@ namespace cmis
+ 
+             bool authenticationQuery( std::string& username, std::string& password ) override;
+ 
+-            std::string getRefreshToken( std::string& username );
+-            bool storeRefreshToken(const std::string& username, const std::string& password,
+-                                   const std::string& refreshToken);
++            static char* onedriveAuthCodeFallback( const char* url,
++                    const char* /*username*/,
++                    const char* /*password*/ );
+ 
+-            static char* copyWebAuthCodeFallback( const char* url,
++            static char* gdriveAuthCodeFallback( const char* /*url*/,
+                     const char* /*username*/,
+                     const char* /*password*/ );
+ 
+diff --git a/ucb/source/ucp/cmis/cmis_content.cxx b/ucb/source/ucp/cmis/cmis_content.cxx
+index b5fb4ac3bda3..aa7628199a8c 100644
+--- a/ucb/source/ucp/cmis/cmis_content.cxx
++++ b/ucb/source/ucp/cmis/cmis_content.cxx
+@@ -347,15 +347,12 @@ namespace cmis
+             string rPassword = OUSTR_TO_STDSTR( m_aURL.getPassword( ) );
+ 
+             bool bSkipInitialPWAuth = false;
+-            if (m_aURL.getBindingUrl() == ONEDRIVE_BASE_URL
+-                || m_aURL.getBindingUrl() == GDRIVE_BASE_URL)
+-            {
++            if ( m_aURL.getBindingUrl( ) == ONEDRIVE_BASE_URL ) {
+                 // skip the initial username and pw-auth prompt, the only supported method is the
+                 // auth-code-fallback one (login with your browser, copy code into the dialog)
+                 // TODO: if LO were to listen on localhost for the request, it would be much nicer
+                 // user experience
+                 bSkipInitialPWAuth = true;
+-                rPassword = aAuthProvider.getRefreshToken(rUsername);
+             }
+ 
+             bool bIsDone = false;
+@@ -368,9 +365,7 @@ namespace cmis
+                     libcmis::OAuth2DataPtr oauth2Data;
+                     if ( m_aURL.getBindingUrl( ) == GDRIVE_BASE_URL )
+                     {
+-                        // reset the skip, so user gets a chance to cancel
+-                        bSkipInitialPWAuth = false;
+-                        libcmis::SessionFactory::setOAuth2AuthCodeProvider(AuthProvider::copyWebAuthCodeFallback);
++                        libcmis::SessionFactory::setOAuth2AuthCodeProvider(AuthProvider::gdriveAuthCodeFallback);
+                         oauth2Data.reset( new libcmis::OAuth2Data(
+                             GDRIVE_AUTH_URL, GDRIVE_TOKEN_URL,
+                             GDRIVE_SCOPE, GDRIVE_REDIRECT_URI,
+@@ -385,7 +380,7 @@ namespace cmis
+                     {
+                         // reset the skip, so user gets a chance to cancel
+                         bSkipInitialPWAuth = false;
+-                        libcmis::SessionFactory::setOAuth2AuthCodeProvider(AuthProvider::copyWebAuthCodeFallback);
++                        libcmis::SessionFactory::setOAuth2AuthCodeProvider(AuthProvider::onedriveAuthCodeFallback);
+                         oauth2Data.reset( new libcmis::OAuth2Data(
+                             ONEDRIVE_AUTH_URL, ONEDRIVE_TOKEN_URL,
+                             ONEDRIVE_SCOPE, ONEDRIVE_REDIRECT_URI,
+@@ -417,12 +412,6 @@ namespace cmis
+                         else
+                         {
+                             m_pProvider->registerSession(sSessionId, m_aURL.getUsername( ), m_pSession);
+-                            if (m_aURL.getBindingUrl() == ONEDRIVE_BASE_URL
+-                                || m_aURL.getBindingUrl() == GDRIVE_BASE_URL)
+-                            {
+-                                aAuthProvider.storeRefreshToken(rUsername, rPassword,
+-                                                                m_pSession->getRefreshToken());
+-                            }
+                         }
+ 
+                         bIsDone = true;
+@@ -430,10 +419,7 @@ namespace cmis
+                     catch( const libcmis::Exception & e )
+                     {
+                         if ( e.getType() != "permissionDenied" )
+-                        {
+-                            SAL_INFO("ucb.ucp.cmis", "Unexpected libcmis exception: " << e.what());
+                             throw;
+-                        }
+                     }
+                 }
+                 else
+@@ -525,7 +511,6 @@ namespace cmis
+                 }
+                 catch ( const libcmis::Exception& )
+                 {
+-                    SAL_INFO( "ucb.ucp.cmis", "object: " << OUSTR_TO_STDSTR(m_sObjectId));
+                     throw libcmis::Exception( "Object not found" );
+                 }
+             }
+diff --git a/ucb/source/ucp/cmis/cmis_repo_content.cxx b/ucb/source/ucp/cmis/cmis_repo_content.cxx
+index 87a3f38dc792..507cade426ad 100644
+--- a/ucb/source/ucp/cmis/cmis_repo_content.cxx
++++ b/ucb/source/ucp/cmis/cmis_repo_content.cxx
+@@ -165,7 +165,7 @@ namespace cmis
+                     libcmis::OAuth2DataPtr oauth2Data;
+                     if ( m_aURL.getBindingUrl( ) == GDRIVE_BASE_URL )
+                     {
+-                        libcmis::SessionFactory::setOAuth2AuthCodeProvider( AuthProvider::copyWebAuthCodeFallback );
++                        libcmis::SessionFactory::setOAuth2AuthCodeProvider( AuthProvider::gdriveAuthCodeFallback );
+                         oauth2Data.reset( new libcmis::OAuth2Data(
+                             GDRIVE_AUTH_URL, GDRIVE_TOKEN_URL,
+                             GDRIVE_SCOPE, GDRIVE_REDIRECT_URI,
+@@ -178,7 +178,7 @@ namespace cmis
+                             ALFRESCO_CLOUD_CLIENT_ID, ALFRESCO_CLOUD_CLIENT_SECRET ) );
+                     if ( m_aURL.getBindingUrl( ) == ONEDRIVE_BASE_URL )
+                     {
+-                        libcmis::SessionFactory::setOAuth2AuthCodeProvider( AuthProvider::copyWebAuthCodeFallback );
++                        libcmis::SessionFactory::setOAuth2AuthCodeProvider( AuthProvider::onedriveAuthCodeFallback );
+                         oauth2Data.reset( new libcmis::OAuth2Data(
+                             ONEDRIVE_AUTH_URL, ONEDRIVE_TOKEN_URL,
+                             ONEDRIVE_SCOPE, ONEDRIVE_REDIRECT_URI,
+-- 
+2.31.1
+

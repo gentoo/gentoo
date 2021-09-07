@@ -1,0 +1,67 @@
+diff --git a/external/skia/UnpackedTarball_skia.mk b/external/skia/UnpackedTarball_skia.mk
+index e1ea21b3cd35..003bddbbaa6c 100644
+--- a/external/skia/UnpackedTarball_skia.mk
++++ b/external/skia/UnpackedTarball_skia.mk
+@@ -39,6 +39,7 @@ skia_patches := \
+     fast-png-write.patch.1 \
+     skia_sk_cpu_sse_level_0_by_default.patch.1 \
+     fix-warnings.patch.1 \
++    libreoffice-skia_m90-freetype-2.11.patch \
+ 
+ $(eval $(call gb_UnpackedTarball_set_patchlevel,skia,1))
+ 
+diff --git a/external/skia/libreoffice-skia_m90-freetype-2.11.patch b/external/skia/libreoffice-skia_m90-freetype-2.11.patch
+new file mode 100644
+index 000000000000..0c993b7b6dce
+--- /dev/null
++++ b/external/skia/libreoffice-skia_m90-freetype-2.11.patch
+@@ -0,0 +1,49 @@
++--- a/src/ports/SkFontHost_FreeType_common.cpp	2021-03-01 15:53:09.178606791 +0100
+++++ b/src/ports/SkFontHost_FreeType_common.cpp	2021-08-14 01:44:48.384570702 +0200
++@@ -665,12 +665,21 @@
++             canvas->drawPaint(paint);
++             break;
++         }
+++#if FREETYPE_MAJOR == 2 && FREETYPE_MINOR >= 11
+++        case FT_COLR_PAINTFORMAT_TRANSFORM: {
+++            SkMatrix transform = ToSkMatrix(colrv1_paint.u.transform.affine);
+++
+++            canvas->concat(transform);
+++            break;
+++        }
+++#else
++         case FT_COLR_PAINTFORMAT_TRANSFORMED: {
++             SkMatrix transform = ToSkMatrix(colrv1_paint.u.transformed.affine);
++
++             canvas->concat(transform);
++             break;
++         }
+++#endif
++         case FT_COLR_PAINTFORMAT_ROTATE: {
++             SkMatrix rotation = SkMatrix::RotateDeg(
++                     SkFixedToScalar(colrv1_paint.u.rotate.angle),
++@@ -760,6 +769,16 @@
++             traverse_result = colrv1_start_glyph(canvas, palette, face, paint.u.colr_glyph.glyphID,
++                                                  FT_COLOR_NO_ROOT_TRANSFORM);
++             break;
+++#if FREETYPE_MAJOR == 2 && FREETYPE_MINOR >= 11
+++        case FT_COLR_PAINTFORMAT_TRANSFORM:
+++            canvas->saveLayer(nullptr, nullptr);
+++            // Traverse / draw operation will apply transform.
+++            colrv1_draw_paint(canvas, palette, face, paint);
+++            traverse_result =
+++                    colrv1_traverse_paint(canvas, palette, face, paint.u.transform.paint);
+++            canvas->restore();
+++            break;
+++#else
++         case FT_COLR_PAINTFORMAT_TRANSFORMED:
++             canvas->saveLayer(nullptr, nullptr);
++             // Traverse / draw operation will apply transform.
++@@ -768,6 +787,7 @@
++                     colrv1_traverse_paint(canvas, palette, face, paint.u.transformed.paint);
++             canvas->restore();
++             break;
+++#endif
++       case FT_COLR_PAINTFORMAT_ROTATE:
++             canvas->saveLayer(nullptr, nullptr);
++             // Traverse / draw operation will apply transform.
