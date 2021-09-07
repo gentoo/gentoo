@@ -19,7 +19,7 @@ if [[ -n ${GRUB_AUTORECONF} ]]; then
 	inherit autotools
 fi
 
-inherit bash-completion-r1 flag-o-matic multibuild optfeature pax-utils toolchain-funcs
+inherit bash-completion-r1 flag-o-matic multibuild optfeature toolchain-funcs
 
 if [[ ${PV} != 9999 ]]; then
 	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
@@ -69,7 +69,6 @@ REQUIRED_USE="
 
 BDEPEND="
 	${PYTHON_DEPS}
-	app-misc/pax-utils
 	sys-devel/flex
 	sys-devel/bison
 	sys-apps/help2man
