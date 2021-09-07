@@ -28,6 +28,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=sys-apps/gawk-3.1.6
+	sys-devel/flex
 	virtual/yacc
 	test? ( !~sys-apps/gawk-4.2.1 )
 "
