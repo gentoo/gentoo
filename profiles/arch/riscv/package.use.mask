@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Marek Szuba <marecki@gentoo.org> (2021-09-07)
+# firefox needs nodejs to build, no firefox-bin for riscv
+dev-ruby/capybara test
 # net-misc/memcached not keyworded yet due to failing tests (Bug #811477)
 dev-ruby/dalli test
 
