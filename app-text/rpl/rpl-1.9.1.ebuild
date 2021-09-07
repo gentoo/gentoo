@@ -11,7 +11,7 @@ DESCRIPTION="Intelligent recursive search/replace utility"
 HOMEPAGE="http://rpl.sourceforge.net/ https://github.com/rrthomas/rpl"
 SRC_URI="https://github.com/rrthomas/rpl/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
