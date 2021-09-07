@@ -14,4 +14,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+PATCHES=(
+	"${FILESDIR}/${P}-remove-six-dep.patch"
+)
+
 distutils_enable_tests pytest
