@@ -44,6 +44,9 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
+	# broken against latest upstream release, too many patches on top:
+	# https://github.com/tdf/libcmis/pull/43
+	"${ADDONS_URI}/libcmis-0.5.2.tar.xz"
 	# not packaged in Gentoo, https://www.netlib.org/fp/dtoa.c
 	"${ADDONS_URI}/dtoa-20180411.tgz"
 	# not packaged in Gentoo, https://skia.org/
@@ -507,6 +510,7 @@ src_configure() {
 		--with-system-gpgmepp
 		--without-system-jfreereport
 		--without-system_apache_commons
+		--without-system-libcmis
 		--without-system-sane
 		--without-system-qrcodegen
 		$(use_enable base report-builder)
