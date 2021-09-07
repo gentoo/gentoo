@@ -14,13 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	dev-libs/atk
 	dev-libs/glib:2
-	media-libs/fontconfig
-	media-libs/freetype
-	media-libs/harfbuzz:=
-	x11-libs/cairo
-	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
 	x11-libs/pango"
 DEPEND="${RDEPEND}"
