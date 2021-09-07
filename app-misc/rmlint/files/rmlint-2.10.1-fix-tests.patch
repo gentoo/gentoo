@@ -1,0 +1,135 @@
+--- a/tests/test_options/test_replay.py
++++ b/tests/test_options/test_replay.py
+@@ -69,7 +69,7 @@ def test_replay_match_basename():
+     create_file('xxx', 'test1/b')
+     create_file('xxx', 'test2/a')
+ 
+-    replay_path = '/tmp/replay.json'
++    replay_path = os.path.join(TESTDIR_NAME, 'replay.json')
+ 
+     head, *data, footer = run_rmlint('-o json:{p}'.format(
+         p=replay_path
+@@ -104,7 +104,7 @@ def test_replay_hidden():
+     create_file('xxx', 'test/.a')
+     create_file('xxx', 'test/.b')
+ 
+-    replay_path = '/tmp/replay.json'
++    replay_path = os.path.join(TESTDIR_NAME, 'replay.json')
+ 
+     head, *data, footer = run_rmlint('--hidden -o json:{p}'.format(
+         p=replay_path
+@@ -130,7 +130,7 @@ def test_replay_must_match_tagged():
+     create_file('xxx', 'test_a/a')
+     create_file('xxx', 'test_b/a')
+ 
+-    replay_path = '/tmp/replay.json'
++    replay_path = os.path.join(TESTDIR_NAME, 'replay.json')
+ 
+     head, *data, footer = run_rmlint('-o json:{p}'.format(
+         p=replay_path
+@@ -182,7 +182,7 @@ def test_sorting():
+             (''.join(p) for p in permutations(all_opts, n_terms))
+         )
+ 
+-    replay_path = '/tmp/replay.json'
++    replay_path = os.path.join(TESTDIR_NAME, 'replay.json')
+ 
+     for combo in combos:
+         combo_str = '-y ' + combo
+@@ -218,7 +218,7 @@ def test_replay_no_dir():
+ 
+     try:
+         os.chdir(TESTDIR_NAME)
+-        replay_path = '/tmp/replay.json'
++        replay_path = os.path.join(TESTDIR_NAME, 'replay.json')
+         head, *data, footer = run_rmlint(
+                 '-o json:{p}'.format(p=replay_path),
+                 use_default_dir=False,
+@@ -242,7 +242,7 @@ def test_replay_unicode_fuckup():
+     create_file('xxx', names[1])
+     create_file('xxx', names[2])
+ 
+-    replay_path = '/tmp/replay.json'
++    replay_path = os.path.join(TESTDIR_NAME, 'replay.json')
+ 
+     head, *data, footer = run_rmlint('-o json:{p}'.format(p=replay_path))
+     assert len(data) == 3
+@@ -260,8 +260,8 @@ def test_replay_tagged_order():
+     create_file('xxx', 'b/1')
+     create_file('xxx', 'b/2')
+ 
+-    replay_path_a = '/tmp/replay-a.json'
+-    replay_path_b = '/tmp/replay-b.json'
++    replay_path_a = os.path.join(TESTDIR_NAME, 'replay-a.json')
++    replay_path_b = os.path.join(TESTDIR_NAME, 'replay-b.json')
+ 
+     # Create replay-a.json
+     head, *data, footer = run_rmlint(
+@@ -326,7 +326,7 @@ def test_replay_duplicate_directory_size():
+     create_file('xxx', 'a/xxx')
+     create_file('xxx', 'b/xxx')
+ 
+-    replay_path = '/tmp/replay.json'
++    replay_path = os.path.join(TESTDIR_NAME, 'replay.json')
+     head, *data, footer = run_rmlint('-o json:{p} -S a'.format(p=replay_path))
+     assert len(data) == 2
+ 
+@@ -427,7 +427,7 @@ def test_replay_pack_directories():
+     create_pack_and_unpack_scenario()
+ 
+     # Do a run without -D and pack it later during --replay.
+-    replay_path = '/tmp/replay.json'
++    replay_path = os.path.join(TESTDIR_NAME, 'replay.json')
+ 
+     head, *data, footer = run_rmlint('-o json:{p} -S ahD'.format(p=replay_path))
+     assert len(data) == 13
+@@ -449,7 +449,7 @@ def test_replay_unpack_directories():
+     create_pack_and_unpack_scenario()
+ 
+     # Do a run with -D and pack it later during --replay.
+-    replay_path = '/tmp/replay.json'
++    replay_path = os.path.join(TESTDIR_NAME, 'replay.json')
+     head, *data, footer = run_rmlint('-o json:{p} -S ahD -D'.format(p=replay_path))
+ 
+     assert len(data) == 21
+--- a/tests/test_options/test_size.py
++++ b/tests/test_options/test_size.py
+@@ -90,7 +90,7 @@ def test_replay_size():
+     create_file('yyy', 'b/yyy')
+     create_testdir('empty_dir')
+ 
+-    replay_path = '/tmp/replay.json'
++    replay_path = os.path.join(TESTDIR_NAME, 'replay.json')
+     head, *data, footer = run_rmlint('-o json:{p}'.format(
+         p=replay_path
+     ))
+--- a/tests/test_options/test_stdin.py
++++ b/tests/test_options/test_stdin.py
+@@ -69,7 +69,6 @@ def test_path_starting_with_dash():
+         os.chdir(TESTDIR_NAME)
+         data = check_output(
+             [cwd + '/rmlint', '-o', 'json', '-S', 'a', '--', subdir],
+-            stderr=STDOUT
+         )
+     finally:
+         os.chdir(cwd)
+--- a/tests/utils.py
++++ b/tests/utils.py
+@@ -133,7 +133,7 @@ def run_rmlint_once(*args,
+ 
+     cmd += shlex.split(' '.join(args))
+     if with_json:
+-        cmd += ['-o', 'json:/tmp/out.json', '-c', 'json:oneline']
++        cmd += ['-o', 'json:' + os.path.join(TESTDIR_NAME, 'out.json'), '-c', 'json:oneline']
+ 
+     for idx, output in enumerate(outputs or []):
+         cmd.append('-o')
+@@ -168,7 +168,7 @@ def run_rmlint_once(*args,
+         return output
+ 
+     if with_json:
+-        with open('/tmp/out.json', 'r') as f:
++        with open(os.path.join(TESTDIR_NAME, 'out.json'), 'r') as f:
+             json_data = json.loads(f.read())
+     else:
+         json_data = []
