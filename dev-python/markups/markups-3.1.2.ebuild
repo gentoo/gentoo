@@ -35,3 +35,4 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
+distutils_enable_sphinx docs
