@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc64-solaris ~x86-solaris"
 IUSE="debug nls"
 
-PLOCALES="de en fr pt_BR zh_CN"
+PLOCALES="de fr pl pt"
 PLOCALE_BACKUP="en"
 
 DOCS=( README doc/NEWS doc/TODO )
@@ -48,10 +48,10 @@ src_prepare() {
 
 	disable_locale() {
 		local locale=${1}
-		einfo "Disabling locale ${locale}"
-		sed -i configure -e "/ALL_LINGUAS=/s:${lingua}::g" || die
+		sed -i configure -e "/ALL_LINGUAS=/s:${locale}::g" || die
 	}
 
+	plocale_find_changes src/nls '' '.po'
 	plocale_for_each_disabled_locale disable_locale
 }
 
