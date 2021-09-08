@@ -179,11 +179,6 @@ app-office/plan
 # Removal on 2021-09-09.
 net-print/libgnomecups
 
-# Joshua Kinard <kumba@gentoo.org> (2021-08-09)
-# Dead upstream and has build issues in modern times.
-# See bugs #551786 and #715846.  Removal in 30 days.
-net-dialup/xc
-
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
 # ecosystem has switched to dev-util/pkgconf, which is alive. Testing
