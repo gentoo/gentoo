@@ -101,6 +101,7 @@ python_compile_all() {
 }
 
 python_test() {
+	local -x IPYTHON_TESTING_TIMEOUT_SCALE=20
 	local deselect=()
 	[[ ${EPYTHON} == python3.10 ]] && deselect+=(
 		# fails due to changed argparse output
