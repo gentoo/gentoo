@@ -37,6 +37,8 @@ PATCHES=(
 	"${FILESDIR}/simdjson-1.0.0-dont-bundle-cxxopts.patch"
 	"${FILESDIR}/simdjson-0.9.0-tests.patch"
 	"${FILESDIR}/simdjson-1.0.0-dont-fetch-data-tarball.patch"
+	"${FILESDIR}/simdjson-1.0.0-install-tools.patch"
+	"${FILESDIR}/simdjson-1.0.0-tests.patch"
 )
 
 DOCS=(
@@ -48,27 +50,35 @@ DOCS=(
 )
 
 src_prepare() {
-	mv "${WORKDIR}/${PN}-data-${DATA_HASH}" "${S}/dependencies/${PN}-data" || die
+	if use test; then
+		mv "${WORKDIR}/${PN}-data-${DATA_HASH}" "${S}/dependencies/${PN}-data" || die
+	fi
+
 	sed -e 's:-Werror ::' -i cmake/developer-options.cmake || die
 	sed -e "s:^c++ :$(tc-getCXX) :" -i singleheader/README.md || die
+	mv tools/{,simd}jsonpointer.cpp || die
 	cmake_src_prepare
 }
 
 src_configure() {
 	local -a mycmakeargs=(
 		-DSIMDJSON_ENABLE_THREADS=ON
-		-DSIMDJSON_ALLOW_DOWNLOADS=OFF
+	)
+	use test && mycmakeargs+=(
+		-DSIMDJSON_TESTS=ON
 	)
 
 	if use tools; then
 		mycmakeargs+=(
-			-DSIMDJSON_JUST_LIBRARY=OFF
+			-DSIMDJSON_DEVELOPER_MODE=ON
+			-DSIMDJSON_ALLOW_DOWNLOADS=OFF
 			-DSIMDJSON_GOOGLE_BENCHMARKS=OFF
 			-DSIMDJSON_COMPETITION=OFF
+			-DSIMDJSON_TOOLS=ON
 		)
-	else
+	elif ! use test; then
 		mycmakeargs+=(
-			-DSIMDJSON_DEVELOPER_MODE=ON
+			-DSIMDJSON_DEVELOPER_MODE=OFF
 		)
 	fi
 
