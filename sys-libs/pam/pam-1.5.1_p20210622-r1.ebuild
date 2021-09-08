@@ -3,6 +3,10 @@
 
 EAPI=7
 
+# Avoid QA warnings
+# Can reconsider w/ EAPI 8 and IDEPEND, bug #810979
+TMPFILES_OPTIONAL=1
+
 inherit autotools db-use fcaps toolchain-funcs usr-ldscript multilib-minimal
 
 GIT_COMMIT="fe1307512fb8892b5ceb3d884c793af8dbd4c16a"
