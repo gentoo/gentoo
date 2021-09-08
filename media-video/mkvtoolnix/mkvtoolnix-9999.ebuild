@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic toolchain-funcs multiprocessing qmake-utils xdg
+inherit autotools flag-o-matic multiprocessing qmake-utils xdg
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/mbunkus/mkvtoolnix.git"
