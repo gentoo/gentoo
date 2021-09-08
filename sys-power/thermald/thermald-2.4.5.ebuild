@@ -48,10 +48,3 @@ my_src_install_all() {
 	rm -rf "${ED}"/etc/init || die
 	doinitd "${FILESDIR}"/thermald
 }
-
-pkg_postinst() {
-	if ! has_version sys-power/dptfxtract; then
-		elog "dptfxtract can be used to generate a more specific"
-		elog "thermald configuration for your system"
-	fi
-}
