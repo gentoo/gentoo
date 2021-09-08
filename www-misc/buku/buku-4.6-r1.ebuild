@@ -19,7 +19,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-python/beautifulsoup-4.6.0[${PYTHON_USEDEP}]
+	>=dev-python/beautifulsoup4-4.6.0[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	>=dev-python/html5lib-1.0.1[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]

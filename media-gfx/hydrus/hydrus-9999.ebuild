@@ -57,7 +57,7 @@ RDEPEND="
 		media-video/mpv[libmpv,${PYTHON_USEDEP}]
 
 		>=dev-python/QtPy-1.9.0-r4[pyside2,${PYTHON_USEDEP}]
-		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 	')
 "
 BDEPEND="

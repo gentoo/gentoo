@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
 RDEPEND="
-	>=dev-python/beautifulsoup-4.7[${PYTHON_USEDEP}]
+	>=dev-python/beautifulsoup4-4.7[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.22.0[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 "

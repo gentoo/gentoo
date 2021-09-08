@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,7 @@ BDEPEND="
 RDEPEND="
 	>=dev-python/appdirs-1.3[${PYTHON_USEDEP}]
 	>=dev-python/babelfish-0.5.2[${PYTHON_USEDEP}]
-	>=dev-python/beautifulsoup-4.4.0:4[${PYTHON_USEDEP}]
+	>=dev-python/beautifulsoup4-4.4.0[${PYTHON_USEDEP}]
 	>=dev-python/chardet-2.3.0[${PYTHON_USEDEP}]
 	>=dev-python/click-4.0[${PYTHON_USEDEP}]
 	dev-python/decorator[${PYTHON_USEDEP}]

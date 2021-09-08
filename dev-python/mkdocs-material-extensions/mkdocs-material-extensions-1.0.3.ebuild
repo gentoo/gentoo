@@ -25,7 +25,7 @@ PDEPEND=">=dev-python/mkdocs-material-5.0.0[${PYTHON_USEDEP}]"
 # by first emerging with FEATURES="-test"
 BDEPEND="
 	test? ( ${PDEPEND}
-		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 	)
 "
 

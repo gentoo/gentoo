@@ -51,7 +51,7 @@ BDEPEND="
 	$(python_gen_cond_dep '
 		test? (
 			dev-db/sqlite[icu]
-			dev-python/beautifulsoup[${PYTHON_USEDEP}]
+			dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 			dev-python/bluelet[${PYTHON_USEDEP}]
 			dev-python/discogs-client[${PYTHON_USEDEP}]
 			dev-python/flask[${PYTHON_USEDEP}]

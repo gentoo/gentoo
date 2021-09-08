@@ -16,6 +16,6 @@ KEYWORDS="~amd64"
 
 DEPEND="dev-python/dnspython
 	dev-python/urllib3
-	dev-python/beautifulsoup"
+	dev-python/beautifulsoup4"
 RDEPEND="${DEPEND}"
 DOCS=( README.md TESTS.md )

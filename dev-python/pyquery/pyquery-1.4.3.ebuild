@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-python/webob-1.1.9[${PYTHON_USEDEP}]"
 DEPEND="
 	test? (
-		dev-python/beautifulsoup[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/webtest[${PYTHON_USEDEP}]
 	)"
@@ -39,5 +39,5 @@ python_test() {
 }
 
 pkg_postinst() {
-	optfeature "Support for BeautifulSoup3 as a parser backend" dev-python/beautifulsoup
+	optfeature "Support for BeautifulSoup3 as a parser backend" dev-python/beautifulsoup4
 }

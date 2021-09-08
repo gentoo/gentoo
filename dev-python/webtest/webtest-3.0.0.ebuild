@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/pastedeploy[${PYTHON_USEDEP}]
 	>=dev-python/webob-1.2[${PYTHON_USEDEP}]
 	>=dev-python/waitress-0.8.5[${PYTHON_USEDEP}]
-	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]"
+	dev-python/beautifulsoup4[${PYTHON_USEDEP}]"
 BDEPEND="
 	app-arch/unzip
 	test? (
