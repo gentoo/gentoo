@@ -5,7 +5,7 @@ EAPI=6
 
 MYP=dx-${PV}
 
-inherit autotools eutils flag-o-matic
+inherit autotools desktop flag-o-matic
 
 DESCRIPTION="3D data visualization tool"
 HOMEPAGE="http://www.opendx.org/"
