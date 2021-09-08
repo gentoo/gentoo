@@ -5,6 +5,10 @@ EAPI=7
 
 MY_P="Linux-${PN^^}-${PV}"
 
+# Avoid QA warnings
+# Can reconsider w/ EAPI 8 and IDEPEND, bug #810979
+TMPFILES_OPTIONAL=1
+
 inherit autotools db-use fcaps toolchain-funcs usr-ldscript multilib-minimal
 
 DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
