@@ -25,7 +25,7 @@ RDEPEND="
 	!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	>=dev-util/cmocka-1.1.3[${MULTILIB_USEDEP}]
-	>=sys-libs/talloc-2.3.1[${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.3.2[${MULTILIB_USEDEP}]
 	>=sys-libs/tdb-1.4.3[${MULTILIB_USEDEP}]
 	>=sys-libs/tevent-0.10.2[${MULTILIB_USEDEP}]
 	ldap? ( net-nds/openldap )
