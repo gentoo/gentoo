@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib-minimal
+
+inherit multilib-minimal preserve-libs
 
 MY_PV=${PV/_rc/-rc}
 MY_P=${PN}-${MY_PV}
@@ -10,21 +11,21 @@ MY_P=${PN}-${MY_PV}
 DESCRIPTION="a portable, high level programming interface to various calling conventions"
 HOMEPAGE="https://sourceware.org/libffi/"
 SRC_URI="https://github.com/libffi/libffi/releases/download/v${MY_PV}/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="MIT"
+# This is a core package which is depended on by e.g. Python
+# Please use preserve-libs.eclass in pkg_{pre,post}inst to cover users
+# with FEATURES="-preserved-libs" or another package manager if SONAME
+# changes.
 SLOT="0/8" # SONAME=libffi.so.8
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug exec-static-trampoline pax-kernel static-libs test"
 
 RESTRICT="!test? ( test )"
-
-RDEPEND=""
-DEPEND=""
 BDEPEND="test? ( dev-util/dejagnu )"
 
 DOCS="ChangeLog* README.md"
-
-S=${WORKDIR}/${MY_P}
 
 ECONF_SOURCE=${S}
 
@@ -62,4 +63,12 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	find "${ED}" -name "*.la" -delete || die
 	einstalldocs
+}
+
+pkg_preinst() {
+	preserve_old_lib /usr/$(get_libdir)/libffi.so.7
+}
+
+pkg_postinst() {
+	preserve_old_lib_notify /usr/$(get_libdir)/libffi.so.7
 }
