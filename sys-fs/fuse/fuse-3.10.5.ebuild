@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 inherit meson-multilib udev python-any-r1
 
 DESCRIPTION="An interface for filesystems implemented in userspace"
