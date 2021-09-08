@@ -22,7 +22,7 @@ RDEPEND="
 
 BDEPEND="
 	test? (
-		dev-python/beautifulsoup[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/pytest-regressions[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/sphinx-testing[${PYTHON_USEDEP}]

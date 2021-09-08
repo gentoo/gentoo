@@ -24,7 +24,7 @@ RDEPEND="${PYTHON_DEPS}
 		>=dev-python/PyQt5-5.12[gui,svg,widgets,${PYTHON_USEDEP}]
 		>=dev-python/PyQtWebEngine-5.12[${PYTHON_USEDEP}]
 		>=dev-python/httplib2-0.7.4[${PYTHON_USEDEP}]
-		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/decorator[${PYTHON_USEDEP}]
 		dev-python/jsonschema[${PYTHON_USEDEP}]
 		dev-python/markdown[${PYTHON_USEDEP}]

@@ -27,7 +27,7 @@ DEPEND="
 		>=dev-python/stestr-2.5.0
 		>=dev-python/testscenarios-0.5.0[${PYTHON_USEDEP}]
 		>=dev-python/testtools-2.3.0[${PYTHON_USEDEP}]
-		>=dev-python/beautifulsoup-4.8.0[${PYTHON_USEDEP}]
+		>=dev-python/beautifulsoup4-4.8.0[${PYTHON_USEDEP}]
 		>=dev-python/pylint-1.9.4[${PYTHON_USEDEP}]
 	)"
 RDEPEND="

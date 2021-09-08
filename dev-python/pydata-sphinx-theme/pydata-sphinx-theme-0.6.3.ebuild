@@ -17,7 +17,7 @@ KEYWORDS="amd64 x86"
 
 BDEPEND="
 	test? (
-		dev-python/beautifulsoup[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/pytest-regressions[${PYTHON_USEDEP}]
 	)"
 

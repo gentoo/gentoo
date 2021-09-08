@@ -17,7 +17,7 @@ SLOT=0
 
 RDEPEND="
 	net-irc/limnoria
-	dev-python/beautifulsoup
+	dev-python/beautifulsoup4
 "
 
 DOCS=(

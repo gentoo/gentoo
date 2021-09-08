@@ -25,7 +25,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	|| ( app-text/aspell app-text/hunspell )
 
-	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+	dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 	dev-python/html5lib[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]

@@ -63,7 +63,7 @@ pkg_postinst() {
 		fi
 		elog "HTML parsing can be improved by installing one of the following packages"
 		elog "and changing the html2text subfilter parameter:"
-		elog "dev-python/beautifulsoup:4"
+		elog "dev-python/beautifulsoup4"
 		elog "app-text/html2text"
 		elog "dev-python/html2text"
 		elog "www-client/lynx"

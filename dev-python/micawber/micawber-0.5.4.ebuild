@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	test? (
 		$(python_gen_impl_dep sqlite)
-		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/django[${PYTHON_USEDEP}]
 	)"
 

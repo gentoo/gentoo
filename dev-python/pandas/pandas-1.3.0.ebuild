@@ -29,7 +29,7 @@ RECOMMENDED_DEPEND="
 
 # TODO: add pandas-gbq to the tree
 OPTIONAL_DEPEND="
-	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+	dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 	dev-python/blosc[${PYTHON_USEDEP}]
 	|| (
 		dev-python/html5lib[${PYTHON_USEDEP}]
@@ -66,7 +66,7 @@ DEPEND="${COMMON_DEPEND}
 	doc? (
 		${VIRTUALX_DEPEND}
 		app-text/pandoc
-		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
@@ -87,7 +87,7 @@ DEPEND="${COMMON_DEPEND}
 		${VIRTUALX_DEPEND}
 		${RECOMMENDED_DEPEND}
 		${OPTIONAL_DEPEND}
-		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/openpyxl[${PYTHON_USEDEP}]
 		dev-python/pymysql[${PYTHON_USEDEP}]
@@ -178,7 +178,7 @@ python_install_all() {
 pkg_postinst() {
 	optfeature "accelerating certain types of NaN evaluations, using specialized cython routines to achieve large speedups." dev-python/bottleneck
 	optfeature "accelerating certain numerical operations, using multiple cores as well as smart chunking and caching to achieve large speedups" ">=dev-python/numexpr-2.1"
-	optfeature "needed for pandas.io.html.read_html" dev-python/beautifulsoup:4 dev-python/html5lib dev-python/lxml
+	optfeature "needed for pandas.io.html.read_html" dev-python/beautifulsoup4 dev-python/html5lib dev-python/lxml
 	optfeature "for msgpack compression using blosc" dev-python/blosc
 	optfeature "Template engine for conditional HTML formatting" dev-python/jinja
 	optfeature "Plotting support" dev-python/matplotlib
