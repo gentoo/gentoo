@@ -37,3 +37,8 @@ BDEPEND="
 	)"
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	sed -i -e 's:^TIMEOUT = .*:TIMEOUT = 120:' ipykernel/tests/*.py || die
+	distutils-r1_src_prepare
+}
