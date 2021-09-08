@@ -13,6 +13,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gui +src test +wallet zmq"
 REQUIRED_USE="^^ ( wallet )"
 RESTRICT="!test? ( test )"
+BINDIR="/opt/${PN}"
 DEPEND="
 	dev-libs/libevent:=
 	dev-libs/protobuf
@@ -35,7 +36,6 @@ S=${WORKDIR_}
 src_configure() {
 	chmod 755 ./autogen.sh
 	./autogen.sh || die "autogen failed"
-
 	local my_econf=(
 		--enable-cxx
 		--with-incompatible-bdb
@@ -49,14 +49,16 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	mkdir -p "${ED}/${BINDIR}"
+	emake DESTDIR="${ED}/${BINDIR}" install
 }
 
 pkg_postinst() {
 	elog "${P} (unstable) development release has been installed."
-	elog "Doge executables have been placed in /usr/bin."
+	elog "Doge binaries have been placed in ${BINDIR}/usr/bin."
 	if use src; then
-		mv "${WORKDIR_}" "/usr/src"
-		elog "Doge source files have been placed in /usr/src directory under ${P} name."
+		mkdir -p "${BINDIR}/src"
+		mv "${WORKDIR_}" "${BINDIR}/src"
+		elog "Doge source files have been placed in ${BINDIR}/src."
 	fi
 }
