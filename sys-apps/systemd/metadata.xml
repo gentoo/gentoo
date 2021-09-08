@@ -17,6 +17,7 @@
 		<flag name="dns-over-tls">Enable DNS-over-TLS support</flag>
 		<flag name="gnuefi">Enable EFI boot manager and stub loader (built using <pkg>sys-boot/gnu-efi</pkg>)</flag>
 		<flag name="elfutils">Enable coredump stacktraces in the journal</flag>
+		<flag name="fido2">Enable FIDO2 support</flag>
 		<flag name="gcrypt">Enable sealing of journal files using gcrypt</flag>
 		<flag name="homed">Enable portable home directories</flag>
 		<flag name="http">Enable embedded HTTP server in journald</flag>
