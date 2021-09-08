@@ -4,7 +4,6 @@
 EAPI=8
 
 PYTHON_COMPAT=( python2_7 )
-QTVER=$(ver_cut 1-3)
 inherit estack flag-o-matic multiprocessing python-any-r1 qt5-build
 
 DESCRIPTION="Library for rendering dynamic web content in Qt5 C++ and QML applications"
@@ -12,7 +11,7 @@ HOMEPAGE="https://www.qt.io/"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-	if [[ ${PV} == ${QTVER}_p* ]]; then
+	if [[ ${PV} == ${QT5_PV}_p* ]]; then
 		SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 		S="${WORKDIR}/${P}"
 		QT5_BUILD_DIR="${S}_build"
@@ -42,12 +41,12 @@ RDEPEND="
 	dev-libs/libxml2[icu]
 	dev-libs/libxslt
 	dev-libs/re2:=
-	~dev-qt/qtcore-${QTVER}
-	~dev-qt/qtdeclarative-${QTVER}
-	~dev-qt/qtgui-${QTVER}
-	~dev-qt/qtnetwork-${QTVER}
-	~dev-qt/qtprintsupport-${QTVER}
-	~dev-qt/qtwebchannel-${QTVER}[qml]
+	=dev-qt/qtcore-${QT5_PV}*
+	=dev-qt/qtdeclarative-${QT5_PV}*
+	=dev-qt/qtgui-${QT5_PV}*
+	=dev-qt/qtnetwork-${QT5_PV}*
+	=dev-qt/qtprintsupport-${QT5_PV}*
+	=dev-qt/qtwebchannel-${QT5_PV}*[qml]
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/harfbuzz:=
@@ -76,15 +75,15 @@ RDEPEND="
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
 	alsa? ( media-libs/alsa-lib )
-	designer? ( ~dev-qt/designer-${QTVER} )
-	geolocation? ( ~dev-qt/qtpositioning-${QTVER} )
+	designer? ( =dev-qt/designer-${QT5_PV}* )
+	geolocation? ( =dev-qt/qtpositioning-${QT5_PV}* )
 	kerberos? ( virtual/krb5 )
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? ( media-video/ffmpeg:0= )
 	system-icu? ( >=dev-libs/icu-69.1:= )
 	widgets? (
-		~dev-qt/qtdeclarative-${QTVER}[widgets]
-		~dev-qt/qtwidgets-${QTVER}
+		=dev-qt/qtdeclarative-${QT5_PV}*[widgets]
+		=dev-qt/qtwidgets-${QT5_PV}*
 	)
 "
 DEPEND="${RDEPEND}"
@@ -137,13 +136,13 @@ src_unpack() {
 }
 
 src_prepare() {
-	if [[ ${PV} == ${QTVER}_p* ]]; then
+	if [[ ${PV} == ${QT5_PV}_p* ]]; then
 		# This is made from git, and for some reason will fail w/o .git directories.
 		mkdir -p .git src/3rdparty/chromium/.git || die
 
 		# We need to make sure this integrates well into Qt 5.15.2 installation.
 		# Otherwise revdeps fail w/o heavy changes. This is the simplest way to do it.
-		sed -e "/^MODULE_VERSION/s/5.*/${QTVER}/" -i .qmake.conf || die
+		sed -e "/^MODULE_VERSION/s/5.*/${QT5_PV}*/" -i .qmake.conf || die
 	fi
 
 	# QTBUG-88657 - jumbo-build could still make trouble
