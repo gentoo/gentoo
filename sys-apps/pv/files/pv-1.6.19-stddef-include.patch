@@ -1,0 +1,17 @@
+https://github.com/a-j-wood/pv/pull/1
+
+From: Sam James <sam@gentoo.org>
+Date: Wed, 8 Sep 2021 01:03:29 +0100
+Subject: [PATCH] src/pv/number.c: add missing <stddef.h> include for NULL
+
+--- a/src/pv/number.c
++++ b/src/pv/number.c
+@@ -2,6 +2,8 @@
+  * Functions for converting strings to numbers.
+  */
+ 
++#include <stddef.h>
++
+ #ifdef HAVE_CONFIG_H
+ #include "config.h"
+ #endif
