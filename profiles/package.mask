@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-09-09)
+# Fails to build with USE=-test.
+# bug #812185
+=dev-libs/simdjson-1.0.0
+
 # Thomas Deutschmann <whissi@gentoo.org> (2021-09-07)
 # Masked while being tested and reverse deps aren't fully compatible
 # bug #797325.
