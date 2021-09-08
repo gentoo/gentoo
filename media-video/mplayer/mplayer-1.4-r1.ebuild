@@ -150,7 +150,7 @@ RDEPEND+="
 SLOT="0"
 LICENSE="GPL-2"
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~sparc x86"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
 fi
 
 # faac codecs are nonfree
