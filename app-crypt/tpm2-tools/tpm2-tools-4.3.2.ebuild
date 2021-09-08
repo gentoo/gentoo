@@ -33,8 +33,8 @@ src_prepare() {
 	sed -i \
 	"s/m4_esyscmd_s(\[git describe --tags --always --dirty\])/${PV}/" \
 	"${S}/configure.ac" || die
-	eautoreconf
 	default
+	eautoreconf
 }
 
 src_configure() {
