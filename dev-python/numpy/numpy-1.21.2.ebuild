@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads(+)"
 
 FORTRAN_NEEDED=lapack
 
-inherit distutils-r1 flag-o-matic fortran-2 multiprocessing toolchain-funcs
+inherit distutils-r1 flag-o-matic fortran-2 toolchain-funcs
 
 DOC_PV=${PV}
 DESCRIPTION="Fast array and numerical python library"
