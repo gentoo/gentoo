@@ -24,6 +24,9 @@ RDEPEND="
 	dev-python/html5lib[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	<dev-python/setuptools-58[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests nose
 distutils_enable_sphinx doc/source
