@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 sparc x86"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
