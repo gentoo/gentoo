@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<remote-id type="github">martinrotter/rssguard</remote-id>
-	</upstream>
-	<use>
-		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> for embedded web browser</flag>
-	</use>
+<!-- maintainer-needed -->
+<upstream>
+	<maintainer>
+		<name>Martin Rotter</name>
+		<email>rotter.martinos@gmail.com</email>
+	</maintainer>
+	<remote-id type="github">martinrotter/rssguard</remote-id>
+	<bugs-to>https://github.com/martinrotter/rssguard/issues</bugs-to>
+</upstream>
+<use>
+	<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> for embedded web browser</flag>
+</use>
+<longdescription>
+	RSS Guard is simple (yet powerful) feed reader. It is able to fetch the
+	most known feed formats, including RSS/RDF and ATOM. RSS Guard is
+	developed on top of the Qt library.
+</longdescription>
 </pkgmetadata>
