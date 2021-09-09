@@ -35,6 +35,12 @@
 # Jakov Smolić <jsmolic@gentoo.org> (2021-09-09)
 # Relies on setuptools' deprecated use_2to3 option.
 # Last release in 2019, no revdeps.
+# Removal on 2021-10-09. Bug #812236
+dev-python/sparql-wrapper
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-09-09)
+# Relies on setuptools' deprecated use_2to3 option.
+# Last release in 2019, no revdeps.
 # Removal on 2021-10-09. Bug #812233
 dev-python/pybluez
 
