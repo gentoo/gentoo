@@ -15,9 +15,10 @@ KEYWORDS="~amd64 ~arm64"
 IUSE="lz4 test zfs"
 RESTRICT="!test? ( test )"
 
-DEPEND="dev-libs/libuv
-	lz4? ( app-arch/lz4 )"
+DEPEND="dev-libs/libuv:=
+	lz4? ( app-arch/lz4:= )"
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/raft-0.9.25-Always-skip-init-oom-test.patch
