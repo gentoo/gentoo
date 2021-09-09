@@ -21,7 +21,7 @@ HPN_PATCHES=(
 )
 
 SCTP_VER="1.2" SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
-X509_VER="13.2" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
+X509_VER="13.2.1" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="https://www.openssh.com/"
