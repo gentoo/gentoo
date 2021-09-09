@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Yubico/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0/1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="nfc +static-libs"
+IUSE="nfc static-libs"
 
 DEPEND="
 	dev-libs/libcbor:=
