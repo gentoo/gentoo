@@ -32,6 +32,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="nls? ( >=sys-devel/gettext-0.19.6 )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-undo-gnulib-nonnul.patch"
+)
+
 src_prepare() {
 	default
 
