@@ -15,7 +15,8 @@ SLOT="0/3"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="+legacy"
 
-BDEPEND="virtual/yacc"
+BDEPEND="sys-devel/flex
+	virtual/yacc"
 
 DOCS=( ChangeLog{,_V{0..2}} README doc/sec_review.txt )
 
