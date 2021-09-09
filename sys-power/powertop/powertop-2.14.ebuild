@@ -39,6 +39,12 @@ RDEPEND="
 	virtual/libintl
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.8-ncurses_tinfo.patch
+	"${FILESDIR}"/${PV}-Revert-configure-Remove-AX-macros-from-configure.ac-.patch
+	"${FILESDIR}"/${PV}-configure-Use-AX_REQUIRE_DEFINED.patch
+)
+
 pkg_setup() {
 	CONFIG_CHECK="
 		~X86_MSR
