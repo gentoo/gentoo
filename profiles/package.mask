@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Anna Vyalkova <cyber+gentoo@sysrq.in> (2021-09-07)
+# Mask backwards-incompatible version to avoid autodeletion of previous one.
+# Data migration is not supported upstream and can't be done automatically.
+# https://github.com/martinrotter/rssguard/releases/tag/4.0.0
+# https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#migratt
+>=net-news/rssguard-4.0.0
+
 # Louis Sautier <sbraz@gentoo.org> (2021-09-09)
 # No reverse dependencies, no upstream activity for more than 3 years.
 # dev-python/oauthlib is maintained and provides the same functionality.
