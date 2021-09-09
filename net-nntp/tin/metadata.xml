@@ -3,9 +3,9 @@
 <pkgmetadata>
 <!-- maintainer-needed -->
 <use>
-<flag name="cancel-locks">Enable Cancel-Lock header functionality (also enables USE=evil)</flag>
+<flag name="cancel-locks">Enable Cancel-Lock header functionality</flag>
 <flag name="gpg">Enable <pkg>app-crypt/gnupg</pkg> support</flag>
-<flag name="etiquette">Enable the display off posting etiquettes</flag>
-<flag name="mime">Add MIME support</flag>
+<flag name="etiquette" restrict="&lt;net-nntp/tin-2.6.0">Enable the display off posting etiquettes</flag>
+<flag name="mime" restrict="&lt;net-nntp/tin-2.6.0">Add MIME support</flag>
 </use>
 </pkgmetadata>

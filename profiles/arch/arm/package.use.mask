@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Anna Vyalkova <cyber@gentoo@sysrq.in> (2021-09-04)
+# net-libs/canlock not keyworded
+>=net-nntp/tin-2.6.0 cancel-locks
+
 # Sam James <sam@gentoo.org> (2021-08-14)
 # Needs Raspberry Pi specific applications
 media-video/mjpg-streamer -input-raspicam
