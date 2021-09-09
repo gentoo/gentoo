@@ -11,7 +11,7 @@ SRC_URI="https://github.com/unbrice/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc x86"
 IUSE=""
 
 RDEPEND="sys-apps/attr"
