@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/krisleech/wisper"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~riscv ~sparc"
+KEYWORDS="~amd64 ~arm64 ~hppa ~riscv ~sparc"
 IUSE=""
 
 all_ruby_prepare() {
