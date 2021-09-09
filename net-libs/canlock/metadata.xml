@@ -2,4 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <!-- maintainer-needed -->
+<upstream>
+	<maintainer>
+		<name>Michael Baeuerle</name>
+		<email>michael.baeuerle@gmx.net</email>
+	</maintainer>
+</upstream>
+<use>
+	<flag name="legacy" restrict="&gt;=net-libs/canlock-3.0">
+		Enable or disable building legacy code (v2 compatible)
+	</flag>
+</use>
 </pkgmetadata>
