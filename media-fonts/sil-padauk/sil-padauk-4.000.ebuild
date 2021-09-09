@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="OFL"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE=""
 
 BDEPEND="app-arch/unzip"
