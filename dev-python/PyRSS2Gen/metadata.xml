@@ -5,6 +5,7 @@
 		<email>whissi@gentoo.org</email>
 		<name>Thomas Deutschmann</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">PyRSS2Gen</remote-id>
 	</upstream>
