@@ -25,6 +25,7 @@ RDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="${RDEPEND}"
+BDEPEND="dev-lang/perl"
 
 RESTRICT="test"
 
