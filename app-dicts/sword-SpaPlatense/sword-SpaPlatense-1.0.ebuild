@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="The Platense Bible (Straubinger)"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=SpaPlatense"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Dictionnaire encyclopédique de la Bible A. Westphal (1932)"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=FreDAW"
 LICENSE="crosswire free-noncomm"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

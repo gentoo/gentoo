@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Matthew Henry's Concise Commentary on the Whole Bible"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=MHCC"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="German Darby Unrevidierte Elberfelder (1905)"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=GerElb1905"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

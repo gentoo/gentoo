@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="The Bible of the Jewish-Hungarian Literature Society (Jewish)"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=HunIMIT"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

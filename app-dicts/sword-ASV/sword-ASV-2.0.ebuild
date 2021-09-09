@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="American Standard Version (1901)"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=ASV"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

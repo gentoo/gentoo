@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Káldi-Neovulgáta (Catholic) 2013"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=HunKNB"
 LICENSE="crosswire"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"
