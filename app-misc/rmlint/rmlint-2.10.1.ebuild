@@ -68,6 +68,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.10.1-skip-tests.patch"
 	# https://github.com/sahib/rmlint/pull/523
 	"${FILESDIR}/${PN}-2.10.1-x86-fix-size.patch"
+	# https://github.com/sahib/rmlint/pull/526
+	"${FILESDIR}/${PN}-2.10.1-fix-cc.patch"
 )
 
 src_prepare() {
@@ -82,7 +84,7 @@ src_prepare() {
 
 src_configure() {
 	# Needed for USE=-native-symlinks
-	tc-export CC
+	tc-export AR CC
 	scons_opts=(
 		VERBOSE=1
 		$(use_with doc docs)
