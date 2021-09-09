@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 MY_P="${P}a"
 
@@ -17,7 +17,7 @@ IUSE="canlock nls ssl uudeview"
 RDEPEND="app-arch/sharutils
 	>=sys-libs/slang-2.2.3
 	virtual/mta
-	canlock? ( net-libs/canlock )
+	canlock? ( net-libs/canlock:=[legacy(+)] )
 	ssl? (
 		dev-libs/openssl:0=
 	)
@@ -31,7 +31,7 @@ src_configure() {
 	econf \
 		--with-docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--with-slrnpull \
-		$(use_with canlock) \
+		$(use_with canlock canlock /usr) \
 		$(use_enable nls) \
 		$(use_with ssl) \
 		$(use_with uudeview uu)
