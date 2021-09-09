@@ -8,7 +8,7 @@ HOMEPAGE="https://www.crosswire.org/sword/modules/"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 
 LANGS=" af ar az be bea bg bla br ch chr ckb cop cs cu cy da de el en eo es et eu fa fi fr ga gd gez got grc gv he hi hr ht hu hy it ja kek kk km ko kpg ktu la ln lt lv mg mi ml mn my nb nd nl nn pl pon pot ppk prs pt rmq ro ru sl sml sn so sq sr sv sw syr th tl tlh tr tsg ug uk ur vi vls zh"
 IUSE="esoteric ${LANGS// / l10n_}"
