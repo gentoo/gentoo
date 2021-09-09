@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit bash-completion-r1 flag-o-matic linux-info meson-multilib ninja-utils python-any-r1 toolchain-funcs udev usr-ldscript
 
