@@ -45,7 +45,7 @@ REQUIRED_USE="
 	ldns? ( ssl )
 	pie? ( !static )
 	static? ( !kerberos !pam )
-	X509? ( !sctp !security-key ssl !xmss )
+	X509? ( !sctp ssl !xmss )
 	xmss? ( ssl  )
 	test? ( ssl )
 "
