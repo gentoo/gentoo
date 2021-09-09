@@ -18,7 +18,7 @@ SRC_URI="https://github.com/piotrmurach/tty-prompt/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~riscv ~sparc"
+KEYWORDS="~amd64 ~arm64 ~hppa ~riscv ~sparc"
 IUSE=""
 
 ruby_add_rdepend "
