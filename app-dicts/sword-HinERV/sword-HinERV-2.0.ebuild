@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Holy Bible: Easy-to-Read Version (Hindi ERV)"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=HinERV"
 LICENSE="crosswire"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

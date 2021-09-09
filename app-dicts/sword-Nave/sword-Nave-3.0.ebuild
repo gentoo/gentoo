@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Nave's Topical Bible"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Nave"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

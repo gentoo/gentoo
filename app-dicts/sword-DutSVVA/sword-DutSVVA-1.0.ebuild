@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Dutch Statenvertaling Bijbel including deuterocanonical books"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=DutSVVA"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

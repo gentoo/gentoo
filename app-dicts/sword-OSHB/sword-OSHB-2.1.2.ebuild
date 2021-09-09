@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Open Scriptures Hebrew Bible"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=OSHB"
 LICENSE="CC-BY-4.0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

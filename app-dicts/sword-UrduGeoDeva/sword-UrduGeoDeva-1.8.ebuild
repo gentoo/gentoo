@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Urdu Geo Version (UGV) Bible, Devanagari script"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=UrduGeoDeva"
 LICENSE="crosswire"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Masonama ya Santu par le Père Widart et l’équipe de Verbum Bible Kinshasa"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=KtuVb"
 LICENSE="crosswire"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

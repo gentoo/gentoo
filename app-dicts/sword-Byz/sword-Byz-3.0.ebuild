@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="The New Testament in Original Greek: Byzantine Textform 2005"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Byz"
 LICENSE="CC-BY-NC-SA-4.0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Offene Bibel - Studienfassung"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=GerOffBiSt"
 LICENSE="CC-BY-SA-4.0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"
