@@ -19,7 +19,6 @@ BDEPEND=">=dev-util/patchelf-0.10"
 RDEPEND="
 	dev-libs/nss
 	dev-python/dbus-python
-	dev-python/pygobject:3
 	libnotify? ( x11-libs/libnotify )
 	dev-libs/openssl:0=
 	media-libs/alsa-lib
@@ -32,7 +31,7 @@ RDEPEND="
 	!pulseaudio? ( media-sound/apulse )
 	local-playback? ( media-video/ffmpeg:0/56.58.58 )
 	systray? ( gnome-extra/gnome-integration-spotify )
-	x11-libs/gtk+:2
+	x11-libs/gtk+:3
 	app-accessibility/at-spi2-atk
 	x11-libs/libxkbcommon
 	x11-libs/libXScrnSaver
