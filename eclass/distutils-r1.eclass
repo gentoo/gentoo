@@ -86,7 +86,7 @@ esac
 #
 # - no -- do not add the dependency (pure distutils package)
 # - bdepend -- add it to BDEPEND (the default)
-# - rdepend -- add it to BDEPEND+RDEPEND (when using entry_points)
+# - rdepend -- add it to BDEPEND+RDEPEND (e.g. when using pkg_resources)
 # - pyproject.toml -- use pyproject2setuptools to install a project
 #                     using pyproject.toml (flit, poetry...)
 # - manual -- do not add the dependency and suppress the checks
