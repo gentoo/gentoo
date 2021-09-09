@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolić <jsmolic@gentoo.org> (2021-09-09)
+# Relies on setuptools' use_2to3 option.
+# Last release in 2017, no revdeps.
+# Removal on 2021-10-09. Bug #812221
+dev-python/fudge
+
 # Anna Vyalkova <cyber+gentoo@sysrq.in> (2021-09-07)
 # Mask backwards-incompatible version to avoid autodeletion of previous one.
 # Data migration is not supported upstream and can't be done automatically.
