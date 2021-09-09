@@ -9,7 +9,7 @@ SRC_URI="https://github.com/downloads/dm0-/${PN#pidgin-}/${P#pidgin-}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE=""
 
 RDEPEND="dev-libs/glib:2=
