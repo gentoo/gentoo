@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-09-10)
+# no stable dev-ruby/{thor,tty-editor} on this arch yet
+# and there are many dependencies to go through before there are
+app-text/htmltidy test
+
 # Marek Szuba <marecki@gentoo.org> (2021-08-09)
 # media-plugins/cmt-plugins isn't stable on this arch yet
 media-sound/fluidsynth ladspa
