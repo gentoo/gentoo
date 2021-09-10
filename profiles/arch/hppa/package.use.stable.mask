@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2021-09-10)
+# dev-libs/tomsfastmath does not have stable keywords on hppa
+dev-libs/libtomcrypt tomsfastmath
+
 # Marek Szuba <marecki@gentoo.org> (2021-09-10)
 # no stable dev-ruby/{thor,tty-editor} on this arch yet
 # and there are many dependencies to go through before there are
