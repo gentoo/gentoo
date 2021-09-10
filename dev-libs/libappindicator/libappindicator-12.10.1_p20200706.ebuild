@@ -62,6 +62,12 @@ multilib_src_configure() {
 		$(multilib_native_use_enable introspection)
 }
 
+multilib_src_compile() {
+	# Was initially reported in 638782, then fixed, and then fix disappeared.
+	# But I facing it every time I (mva) trying to rebuild it on my machine even now (Sep'21)
+	emake -j1
+}
+
 multilib_src_test() {
 	# Prevent tests from trying to write on /dev/fuse
 	GVFS_DISABLE_FUSE=1 dbus-run-session emake check
