@@ -194,11 +194,6 @@ app-benchmarks/acovea-gtk
 # Removal in ~30 days.
 app-crypt/WiRouterKeyRec
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-08-10)
-# EAPI-5, dead, unused; last consumer dropped in bug #352952
-# Removal on 2021-09-09.
-net-print/libgnomecups
-
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
 # ecosystem has switched to dev-util/pkgconf, which is alive. Testing
