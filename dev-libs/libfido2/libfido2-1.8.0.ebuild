@@ -42,6 +42,9 @@ pkg_pretend() {
 src_configure() {
 	local mycmakeargs=(
 		-DNFC_LINUX="$(usex nfc)"
+		# Un-comment this once this issue is resolved.
+		# https://github.com/Yubico/libfido2/issues/389
+		#-DBUILD_STATIC_LIBS=$(usex static-libs ON OFF)
 	)
 	cmake_src_configure
 }
@@ -50,7 +53,7 @@ src_install() {
 	cmake_src_install
 
 	if ! use static-libs; then
-		rm -f "${ED}/$(get_libdir)"/*.a || die
+		rm "${ED}/usr/$(get_libdir)/libfido2.a" || die
 	fi
 
 	udev_newrules udev/70-u2f.rules 70-libfido2-u2f.rules
