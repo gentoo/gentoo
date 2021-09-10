@@ -5,10 +5,6 @@
 # Needs Raspberry Pi specific applications
 media-video/mjpg-streamer -input-raspicam
 
-# Marek Szuba <marecki@gentoo.org> (2021-08-11)
-# dev-ruby/tty-editor not keyworded here yet (Bug #807685)
-app-text/htmltidy test
-
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2021-08-08)
 # dev-games/ogre doesn't build on arm64, see https://bugs.gentoo.org/806776#c12
 dev-games/mygui ogre
