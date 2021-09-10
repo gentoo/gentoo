@@ -20,13 +20,6 @@ dev-python/matplotlib wxwidgets
 # bug #766051
 app-text/dblatex inkscape
 
-# Sam James <sam@gentoo.org> (2020-01-18)
-# net-libs/mbedtls is not stable on sparc
-# see also: package.use entry to allow
-# installs for now (+openssl).
-# bug #758428
-net-proxy/privoxy mbedtls
-
 # Sam James <sam@gentoo.org> (2021-01-04)
 # Drags in qt which is not stable here
 # bug #763405
@@ -73,14 +66,6 @@ net-libs/libssh mbedtls
 net-libs/libssh2 mbedtls
 net-vpn/openvpn mbedtls
 
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-04)
-# Needs stable x11-terms/xterm, bug #706118
-app-editors/joe xterm
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-04)
 # Needs stable net-libs/webkit-gtk, bug #712260
 app-editors/emacs xwidgets
-
-# Matt Turner <mattst88@gentoo.org> (2019-08-27)
-# No stable nftables yet.
-net-firewall/iptables nftables
