@@ -200,12 +200,6 @@ app-crypt/WiRouterKeyRec
 # some scammy site. Removal in ~30 days. #584668
 dev-util/emilpro
 
-# Joonas Niilola <juippis@gentoo.org> (2021-08-11)
-# A library without revdeps, broken for a long time. No maintainer
-# reply. Package not updated in Gentoo since 2016 even though upstream
-# is still active. Removal in ~30 days. #774147
-dev-libs/caliper
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-08-10)
 # EAPI-5, dead, unused; last consumer dropped in bug #352952
 # Removal on 2021-09-09.
