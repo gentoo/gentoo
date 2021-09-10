@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="threads(+),xml"
-inherit cmake python-r1
+inherit cmake flag-o-matic python-r1
 
 DESCRIPTION="C++ computer vision library emphasizing customizable algorithms and structures"
 HOMEPAGE="https://ukoethe.github.io/vigra/"
@@ -102,6 +102,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# Needed for now ("fix" compatibility with >=sci-libs/hdf5-1.12)
+	# bug #808731
+	use hdf5 && append-cppflags -DH5_USE_110_API
+
 	vigra_configure() {
 		local mycmakeargs=(
 			-DAUTOEXEC_TESTS=OFF
