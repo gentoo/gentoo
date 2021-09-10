@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="All the unlocked modules for app-text/sword, grouped by language"
 HOMEPAGE="https://www.crosswire.org/sword/modules/"
@@ -10,7 +10,7 @@ LICENSE="metapackage"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 
-LANGS=" af ar az be bea bg bla br ch chr ckb cop cs cu cy da de el en eo es et eu fa fi fr ga gd gez got grc gv he hi hr ht hu hy it ja kek kk km ko kpg ktu la ln lt lv mg mi ml mn my nb nd nl nn pl pon pot ppk prs pt rmq ro ru sl sml sn so sq sr sv sw syr th tl tlh tr tsg ug uk ur vi vls zh"
+LANGS=" af ar az be bea bg br ceb ch chr ckb cop cs cu cy da de el en eo es et eu fa fi fr ga gd gez got grc gv he hi hr ht hu hy it ja kek kk km ko kpg ktu la ln lt lv mg mi ml mn my nb nd nl nn pl pon pot ppk prs pt rmq ro ru sl sml sn so sq sr sv sw syr th tl tlh tr tsg ug uk ur vi vls zh"
 IUSE="esoteric ${LANGS// / l10n_}"
 
 RDEPEND="
@@ -41,12 +41,12 @@ RDEPEND="
 	l10n_bg? (
 		app-dicts/sword-BulVeren
 	)
-	l10n_bla? (
-		app-dicts/sword-BlaMat
-	)
 	l10n_br? (
 		app-dicts/sword-BretonNT
 		app-dicts/sword-br_en
+	)
+	l10n_ceb? (
+		app-dicts/sword-CebPinadayag
 	)
 	l10n_ch? (
 		app-dicts/sword-Chamorro
@@ -92,7 +92,6 @@ RDEPEND="
 		app-dicts/sword-GerKingComm
 		app-dicts/sword-GerLeoNA28
 		app-dicts/sword-GerLeoRP18
-		app-dicts/sword-GerLut1545
 		app-dicts/sword-GerLutherpredigten
 		app-dicts/sword-GerMenge
 		app-dicts/sword-GerNeUe
@@ -124,6 +123,7 @@ RDEPEND="
 		app-dicts/sword-BBE
 		app-dicts/sword-BDBGlosses_Strongs
 		app-dicts/sword-BWE
+		app-dicts/sword-BaptistConfession1646
 		app-dicts/sword-BaptistConfession1689
 		app-dicts/sword-Barnes
 		app-dicts/sword-Burkitt
@@ -354,6 +354,7 @@ RDEPEND="
 		app-dicts/sword-HunIMIT
 		app-dicts/sword-HunKNB
 		app-dicts/sword-HunKar
+		app-dicts/sword-HunRUF
 		app-dicts/sword-HunUj
 	)
 	l10n_hy? (
