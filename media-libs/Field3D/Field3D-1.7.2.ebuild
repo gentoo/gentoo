@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="A library for storing voxel data"
 HOMEPAGE="http://opensource.imageworks.com/?p=field3d"
@@ -26,6 +26,10 @@ DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}/${P}-Use-PkgConfig-for-IlmBase.patch" )
 
 src_configure() {
+	# Needed for now ("fix" compatibility with >=sci-libs/hdf5-1.12)
+	# bug #808731
+	append-cppflags -DH5_USE_110_API
+
 	local mycmakeargs=(
 		-DINSTALL_DOCS=OFF # Docs are not finished yet.
 		-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=ON
