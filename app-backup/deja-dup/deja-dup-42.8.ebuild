@@ -25,15 +25,16 @@ BDEPEND="
 "
 
 DEPEND="
+	dev-libs/atk
 	>=app-backup/duplicity-0.7.14
 	>=app-crypt/libsecret-0.18.6[vala]
 	>=dev-libs/glib-2.64:2[dbus]
 	>=dev-libs/json-glib-1.2
 	dev-libs/libgpg-error
 	>=gui-libs/libhandy-1.0:1
-	>=net-libs/libsoup-2.48
+	>=net-libs/libsoup-2.48:2.4
+	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-3.22:3
-	>=x11-libs/libnotify-0.7
 "
 
 RDEPEND="${DEPEND}
