@@ -16,7 +16,13 @@ LICENSE="EPL-1.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-BDEPEND="test? ( dev-python/untangle[${PYTHON_USEDEP}] )"
+BDEPEND="
+	test? (
+		dev-python/untangle[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
