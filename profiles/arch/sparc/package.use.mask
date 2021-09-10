@@ -5,10 +5,6 @@
 # dev-lang/go not keyworded here
 sys-libs/libcap tools
 
-# Marek Szuba <marecki@gentoo.org> (2021-08-11)
-# dev-ruby/tty-editor not keyworded here yet (Bug #807685)
-app-text/htmltidy test
-
 # Matt Turner <mattst88@gentoo.org> (2021-07-23)
 # gui-libs/gtk is not keyworded
 net-libs/gssdp gtk
