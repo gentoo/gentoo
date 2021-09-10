@@ -197,6 +197,7 @@ src_install() {
 		font_xfont_config
 	else
 		rm -v "${ED}${FONTDIR}"/*.{ttf,otf} || die
+		rmdir -v "${ED}${FONTDIR}" || die #812473
 	fi
 
 	dodoc README{,.hacking}
