@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">funcparserlib</remote-id>
+		<remote-id type="github">vlasovskikh/funcparserlib</remote-id>
 	</upstream>
 </pkgmetadata>
