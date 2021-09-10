@@ -1,11 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-1 )
 
-inherit lua-single toolchain-funcs xdg-utils
+inherit lua-single toolchain-funcs xdg
 
 DESCRIPTION="A very powerful, highly configurable, small editor with syntax coloring"
 HOMEPAGE="https://www.scintilla.org/SciTE.html"
@@ -111,14 +111,4 @@ src_compile() {
 src_install() {
 	default
 	dosym SciTE /usr/bin/scite
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
 }
