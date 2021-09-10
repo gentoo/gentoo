@@ -21,6 +21,7 @@ BDEPEND="
 		dev-python/untangle[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
+		sys-devel/gdb
 	)
 "
 
