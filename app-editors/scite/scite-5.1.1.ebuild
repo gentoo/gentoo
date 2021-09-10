@@ -19,9 +19,10 @@ IUSE="lua"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
 RDEPEND="
+	dev-libs/atk
 	dev-libs/glib:2
 	x11-libs/cairo
-	x11-libs/gdk-pixbuf
+	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/pango
 	lua? ( ${LUA_DEPS} )"
