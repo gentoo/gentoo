@@ -95,6 +95,60 @@ inherit multiprocessing
 # @DESCRIPTION:
 # LLVM patchset version.  No patchset is used if unset.
 
+# @ECLASS-VARIABLE: LLVM_USE_TARGETS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Add LLVM_TARGETS flags.  The following values are supported:
+#
+# - provide - this package provides LLVM targets.  USE flags
+#   and REQUIRED_USE will be added but no dependencies.
+#
+# - llvm - this package uses targets from LLVM.  RDEPEND+DEPEND
+#   on matching sys-devel/llvm versions with requested flags will
+#   be added.
+#
+# Note that you still need to pass enabled targets to the build system,
+# usually grabbing them from ${LLVM_TARGETS} (via USE_EXPAND).
+
+
+# == global data ==
+
+# @ECLASS-VARIABLE: ALL_LLVM_EXPERIMENTAL_TARGETS
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# The complete list of LLVM experimental targets available in this LLVM
+# version.  The value depends on ${PV}.
+
+# @ECLASS-VARIABLE: ALL_LLVM_PRODUCTION_TARGETS
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# The complete list of LLVM production-ready targets available in this
+# LLVM version.  The value depends on ${PV}.
+
+# @ECLASS-VARIABLE: ALL_LLVM_TARGET_FLAGS
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# The list of USE flags corresponding to all LLVM targets in this LLVM
+# version.  The value depends on ${PV}.
+
+case ${PV} in
+	10*|11*|12*)
+		# this API is not present for old LLVM versions
+		;;
+	*)
+		ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY M68k VE )
+		ALL_LLVM_PRODUCTION_TARGETS=(
+			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
+			PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
+		)
+		;;
+esac
+
+ALL_LLVM_TARGET_FLAGS=(
+	"${ALL_LLVM_PRODUCTION_TARGETS[@]/#/llvm_targets_}"
+	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]/#/llvm_targets_}"
+)
+
 
 # == global scope logic ==
 
@@ -155,6 +209,25 @@ llvm.org_set_globals() {
 		SRC_URI+="
 			https://dev.gentoo.org/~mgorny/dist/llvm/llvm-gentoo-patchset-${LLVM_PATCHSET}.tar.xz"
 	fi
+
+	local x
+	case ${LLVM_USE_TARGETS:-__unset__} in
+		__unset__)
+			;;
+		provide|llvm)
+			IUSE+=" ${ALL_LLVM_TARGET_FLAGS[*]}"
+			REQUIRED_USE+=" || ( ${ALL_LLVM_TARGET_FLAGS[*]} )"
+			;;&
+		llvm)
+			local dep=
+			for x in "${ALL_LLVM_TARGET_FLAGS[@]}"; do
+				dep+="
+					${x}? ( ~sys-devel/llvm-${PV}[${x}] )"
+			done
+			RDEPEND+=" ${dep}"
+			DEPEND+=" ${dep}"
+			;;
+	esac
 
 	# === useful defaults for cmake-based packages ===
 
