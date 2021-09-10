@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{7..9} )
+PYTHON_COMPAT=( pypy3 python3_{8..9} )
 
 inherit distutils-r1
 
@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 x86 ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86 ~x64-macos"
 
 RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]"
 
