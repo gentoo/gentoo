@@ -1,0 +1,28 @@
+From 01fbb65d4626e1c122e329075526bd6035cb0be6 Mon Sep 17 00:00:00 2001
+From: Tormod Volden <debian.tormod@gmail.com>
+Date: Thu, 2 Sep 2021 16:25:57 +0200
+Subject: [PATCH 06/15] stm32: Fix typo from recent commit
+
+Oops, I got this wrong while amending commit b079cd09.
+
+Signed-off-by: Tormod Volden <debian.tormod@gmail.com>
+---
+ stm32.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/stm32.c b/stm32.c
+index 6e2e402..0edaf01 100644
+--- a/stm32.c
++++ b/stm32.c
+@@ -851,7 +851,7 @@ static stm32_err_t stm32_pages_erase(const stm32_t *stm, uint32_t spage, uint32_
+ 		buf[i++] = pages - 1;
+ 		cs ^= (pages-1);
+ 		/* For I2C send a checksum after the number of pages (AN4221) */
+-		if (port->flags && PORT_NPAG_CSUM) {
++		if (port->flags & PORT_NPAG_CSUM) {
+ 			buf[i++] = cs;
+ 			p_err = port->write(port, buf, i);
+ 			if (p_err != PORT_ERR_OK) {
+-- 
+2.33.0.309.g3052b89438-goog
+
