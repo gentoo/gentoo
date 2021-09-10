@@ -14,7 +14,7 @@ if [[ ${PV} != 9999* ]]; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
-IUSE_SERVERS="dmx kdrive xephyr xnest xorg xvfb"
+IUSE_SERVERS="kdrive xephyr xnest xorg xvfb"
 IUSE="${IUSE_SERVERS} debug +elogind ipv6 minimal selinux suid systemd test +udev unwind xcsecurity"
 RESTRICT="!test? ( test )"
 
@@ -36,19 +36,6 @@ CDEPEND="
 	>=x11-libs/pixman-0.27.2
 	>=x11-misc/xbitmaps-1.0.1
 	>=x11-misc/xkeyboard-config-2.4.1-r3
-	dmx? (
-		x11-libs/libXt
-		>=x11-libs/libdmx-1.0.99.1
-		>=x11-libs/libX11-1.1.5
-		>=x11-libs/libXaw-1.0.4
-		>=x11-libs/libXext-1.0.99.4
-		>=x11-libs/libXfixes-5.0
-		>=x11-libs/libXi-1.2.99.1
-		>=x11-libs/libXmu-1.0.3
-		x11-libs/libXrender
-		>=x11-libs/libXres-1.0.3
-		>=x11-libs/libXtst-1.0.99.2
-	)
 	kdrive? (
 		>=x11-libs/libXext-1.0.5
 		x11-libs/libXv
@@ -84,15 +71,6 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	>=x11-base/xorg-proto-2021.4.99.2
 	>=x11-libs/xtrans-1.3.5
-	dmx? (
-		doc? (
-			|| (
-				www-client/links
-				www-client/lynx
-				www-client/w3m
-			)
-		)
-	)
 "
 RDEPEND="${CDEPEND}
 	!systemd? ( gui-libs/display-manager-init )
@@ -130,7 +108,6 @@ src_configure() {
 	local XORG_CONFIGURE_OPTIONS=(
 		$(use_enable ipv6)
 		$(use_enable debug)
-		$(use_enable dmx)
 		$(use_enable kdrive)
 		$(use_enable test unit-tests)
 		$(use_enable unwind libunwind)
