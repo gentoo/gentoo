@@ -16,7 +16,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
