@@ -16,7 +16,7 @@ KEYWORDS="amd64 arm ~arm64 ~ppc64 ~riscv x86"
 IUSE=""
 
 RDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	<dev-python/setuptools_scm-6.1.0[${PYTHON_USEDEP}]
 "
 BDEPEND="${RDEPEND}"
 
