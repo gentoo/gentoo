@@ -6,10 +6,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="Color Bandwidth Meter"
-HOMEPAGE="
-	http://www.isotton.com/software/unix/cbm/
-	https://github.com/resurrecting-open-source-projects/cbm
-"
+HOMEPAGE="https://github.com/resurrecting-open-source-projects/cbm"
 SRC_URI="https://github.com/resurrecting-open-source-projects/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
