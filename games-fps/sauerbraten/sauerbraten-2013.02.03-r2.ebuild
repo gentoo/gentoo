@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop flag-o-matic gnome2-utils toolchain-funcs vcs-clean wrapper
+inherit desktop flag-o-matic toolchain-funcs vcs-clean wrapper xdg
 
 EDITION="collect_edition"
 DESCRIPTION="Sauerbraten is a FOSS game engine (Cube 2) with freeware game data (Sauerbraten)"
@@ -118,17 +118,9 @@ src_install() {
 	dodoc -r README.html docs/*
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_pkg_postinst
 
 	elog "If you plan to use map editor feature copy all map data from ${DATADIR}"
 	elog "to corresponding folder in your HOME/.${PN}"
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }
