@@ -1,6 +1,11 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-09-10)
+# no stable dev-ruby/{thor,tty-editor} on this arch yet
+# and there are many dependencies to go through before there are
+app-text/htmltidy test
+
 # Michał Górny <mgorny@gentoo.org> (2021-09-07)
 # Reduce the stabilization nightmare.
 dev-python/ipython nbconvert notebook smp
