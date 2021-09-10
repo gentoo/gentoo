@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_IN_SOURCE_BUILD=1
 
-inherit autotools cmake flag-o-matic java-pkg-opt-2 systemd xdg-utils gnome2-utils
+inherit autotools cmake flag-o-matic java-pkg-opt-2 systemd xdg
 
 XSERVER_VERSION="1.20.0"
 
@@ -185,14 +185,4 @@ src_install() {
 			rm usr/share/man/man1/$f.1 || die
 		done
 	fi
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
 }
