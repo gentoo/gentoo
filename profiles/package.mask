@@ -32,6 +32,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2021-09-11)
+# Upstream repository was archived. No reverse dependencies (only blocked
+# by one other package). Implements GitHub API in python, while better and
+# maintained packages are in tree. Has non trivial issues with bump to
+# python 3.10. No other distros package it anymore.
+# Extra bugs: #791673, #723542, #802999
+# Removal on 2021-10-11.  Bug #812521.
+dev-python/txgithub
+
 # Jakov Smolić <jsmolic@gentoo.org> (2021-09-09)
 # Relies on setuptools' deprecated use_2to3 option.
 # Last release in 2019, no revdeps.
