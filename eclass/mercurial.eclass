@@ -61,7 +61,7 @@ BDEPEND="dev-vcs/mercurial"
 # between several ebuilds.
 [[ -z "${EHG_PROJECT}" ]] && EHG_PROJECT="${PN}"
 
-# @ECLASS-VARIABLE: EGIT_CHECKOUT_DIR
+# @ECLASS-VARIABLE: EHG_CHECKOUT_DIR
 # @DESCRIPTION:
 # The directory to check the hg sources out to.
 #
