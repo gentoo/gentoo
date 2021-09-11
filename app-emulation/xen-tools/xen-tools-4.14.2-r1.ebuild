@@ -69,7 +69,7 @@ SLOT="0/$(ver_cut 1-2)"
 # Inclusion of IUSE ocaml on stabalizing requires maintainer of ocaml to (get off his hands and) make
 # >=dev-lang/ocaml-4 stable
 # Masked in profiles/eapi-5-files instead
-IUSE="api debug doc flask +hvm +ipxe ocaml ovmf +pam pygrub python +qemu +qemu-traditional +rombios screen sdl static-libs system-ipxe system-qemu system-seabios"
+IUSE="api debug doc +hvm +ipxe ocaml ovmf +pam pygrub python +qemu +qemu-traditional +rombios screen sdl selinux static-libs system-ipxe system-qemu system-seabios"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -144,7 +144,8 @@ RDEPEND="${COMMON_DEPEND}
 	screen? (
 		app-misc/screen
 		app-admin/logrotate
-	)"
+	)
+	selinux? ( sec-policy/selinux-xen )"
 
 # hvmloader is used to bootstrap a fully virtualized kernel
 # Approved by QA team in bug #144032
