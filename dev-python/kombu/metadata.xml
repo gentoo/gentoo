@@ -10,11 +10,4 @@
 		<remote-id type="pypi">kombu</remote-id>
 		<remote-id type="github">celery/kombu</remote-id>
 	</upstream>
-	<use>
-		<flag name="sqs">Enables Amazon SQS transport module for Kombu</flag>
-		<flag name="mongodb">Enables MongoDB backend</flag>
-		<flag name="msgpack">Enables MessagePack (de)serializer for Python</flag>
-		<flag name="redis">Enables Redis backend</flag>
-		<flag name="yaml">Enables yaml backend</flag>
-	</use>
 </pkgmetadata>
