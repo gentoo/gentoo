@@ -17,7 +17,7 @@ REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
 	>=dev-libs/glib-2.50:2
-	>=x11-libs/gtk+-3.22:3[introspection?]
+	>=x11-libs/gtk+-3.22:3[introspection?,X]
 	x11-libs/libX11
 	x11-libs/libICE
 	x11-libs/libSM
