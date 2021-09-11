@@ -460,7 +460,7 @@ distutils_enable_tests() {
 esetup.py() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	[[ -n ${EPYTHON} ]] || die "EPYTHON unset, invalid call context"
+	_python_check_EPYTHON
 
 	[[ ${BUILD_DIR} ]] && _distutils-r1_create_setup_cfg
 
@@ -743,6 +743,8 @@ _distutils-r1_copy_egg_info() {
 distutils-r1_python_compile() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	_python_check_EPYTHON
+
 	_distutils-r1_copy_egg_info
 
 	# distutils is parallel-capable since py3.5
@@ -821,6 +823,8 @@ distutils-r1_python_test() {
 		die "${FUNCNAME} can be only used after calling distutils_enable_tests"
 	fi
 
+	_python_check_EPYTHON
+
 	if [[ ${_DISTUTILS_TEST_INSTALL} ]]; then
 		distutils_install_for_testing
 	fi
@@ -859,6 +863,8 @@ distutils-r1_python_test() {
 # This phase updates the setup.cfg file with install directories.
 distutils-r1_python_install() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	_python_check_EPYTHON
 
 	local root=${D%/}/_${EPYTHON}
 	[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D%/}
