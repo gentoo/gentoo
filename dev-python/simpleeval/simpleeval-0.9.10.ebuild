@@ -15,3 +15,8 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 distutils_enable_tests setup.py
+
+src_prepare() {
+	sed -e '/use_2to3/d' -i setup.py || die
+	distutils-r1_src_prepare
+}
