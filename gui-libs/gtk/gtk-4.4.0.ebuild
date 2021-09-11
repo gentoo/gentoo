@@ -176,10 +176,12 @@ src_install() {
 }
 
 pkg_preinst() {
+	xdg_pkg_preinst
 	gnome2_schemas_savelist
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
 	gnome2_schemas_update
 
 	if ! has_version "app-text/evince"; then
@@ -190,5 +192,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	xdg_pkg_postrm
 	gnome2_schemas_update
 }
