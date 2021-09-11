@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# stuff that doesn't support llvm 11.x at all
+dev-libs/intel-neo
+dev-util/intel-graphics-compiler
+
 # Jakov Smolić <jsmolic@gentoo.org> (2021-09-09)
 # Relies on setuptools' deprecated use_2to3 option.
 # Last release in 2019, no revdeps.
