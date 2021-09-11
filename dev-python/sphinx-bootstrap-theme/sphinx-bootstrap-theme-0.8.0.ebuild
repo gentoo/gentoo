@@ -8,11 +8,18 @@ PYTHON_COMPAT=( pypy3 python3_{8..10} )
 
 inherit distutils-r1
 
+# Upstream decided to move the v0.8.0 tag to another commit
+# Restore the same git commit for old v0.8.0
+MY_COMMIT="a6dfc6f9054f6b4cf3eb1acadf715a679ed53a7b"
+
 DESCRIPTION="Sphinx theme integrates the Bootstrap CSS / JavaScript framework"
 HOMEPAGE="https://ryan-roemer.github.io/sphinx-bootstrap-theme/README.html"
 # Latest version isn't on PyPI
 # https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/210
-SRC_URI="https://github.com/ryan-roemer/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/ryan-roemer/${PN}/archive/${MY_COMMIT}.tar.gz
+		-> ${PN}-${MY_COMMIT}.tar.gz"
+S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 LICENSE="MIT"
 SLOT="0"
