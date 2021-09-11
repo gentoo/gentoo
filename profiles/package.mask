@@ -37,6 +37,7 @@ dev-libs/intel-neo
 dev-util/intel-graphics-compiler
 sys-devel/sparse
 dev-util/idea-community
+dev-libs/keystone
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-09-09)
 # Relies on setuptools' deprecated use_2to3 option.
