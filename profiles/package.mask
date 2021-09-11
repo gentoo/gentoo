@@ -33,6 +33,15 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2021-09-11)
+# No reverse dependencies. Has issues with porting to python 3.10.
+# Has known upstream issues with latest GitHub's markdown parsing.
+# Last year upstream planned to archive the repository, no activity
+# since. No other distros package it anymore.
+# Extra bug: #798195
+# Removal on 2021-10-11.  Bug #812530.
+dev-python/py-gfm
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2021-09-11)
 # Upstream repository was archived. No reverse dependencies (only blocked
 # by one other package). Implements GitHub API in python, while better and
 # maintained packages are in tree. Has non trivial issues with bump to
