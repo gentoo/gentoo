@@ -27,7 +27,7 @@ SRC_URI="
 
 LICENSE="GPL-2+ SGI-B-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="debug deep-sky doc gps media nls stars telescope test"
 
 # Python interpreter is used while building RemoteControl plugin
