@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit cmake llvm llvm.org python-single-r1 toolchain-funcs
+inherit cmake llvm llvm.org python-single-r1
 
 DESCRIPTION="The LLVM debugger"
 HOMEPAGE="https://llvm.org/"
