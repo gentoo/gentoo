@@ -44,7 +44,6 @@ move app-dicts/sword-geneva app-dicts/sword-Geneva
 move app-dicts/sword-geneva1599 app-dicts/sword-Geneva1599
 move app-dicts/sword-gerelb1871 app-dicts/sword-GerElb1871
 move app-dicts/sword-gerelb1905 app-dicts/sword-GerElb1905
-move app-dicts/sword-gerlut1545 app-dicts/sword-GerLut1545
 move app-dicts/sword-gersch app-dicts/sword-GerSch
 move app-dicts/sword-greekhebrew app-dicts/sword-GreekHebrew
 move app-dicts/sword-hebrewgreek app-dicts/sword-HebrewGreek
