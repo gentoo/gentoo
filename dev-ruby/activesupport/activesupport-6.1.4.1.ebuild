@@ -36,10 +36,12 @@ ruby_add_rdepend "
 # but there are tests using this code.
 ruby_add_bdepend "test? (
 	>=dev-ruby/dalli-2.2.1
-	>=dev-ruby/nokogiri-1.4.5
+	dev-ruby/connection_pool
+	>=dev-ruby/nokogiri-1.8.1
 	>=dev-ruby/builder-3.1.0
 	>=dev-ruby/listen-3.3:3
 	dev-ruby/rack
+	dev-ruby/rexml
 	dev-ruby/mocha
 	)"
 
@@ -49,7 +51,7 @@ all_ruby_prepare() {
 
 	# Remove items from the common Gemfile that we don't need for this
 	# test run. This also requires handling some gemspecs.
-	sed -i -e "/\(system_timer\|sdoc\|w3c_validators\|pg\|execjs\|jquery-rails\|mysql\|journey\|ruby-prof\|stackprof\|benchmark-ips\|kindlerb\|turbolinks\|coffee-rails\|debugger\|sprockets-rails\|redcarpet\|bcrypt\|uglifier\|minitest\|sprockets\|stackprof\|rack-cache\|redis\|sqlite\|websocket-client-simple\|\libxml-ruby\|bootsnap\|blade\|aws-sdk\|webmock\|capybara\|sass-rails\|selenium-webdriver\)/ s:^:#:" \
+	sed -i -e "/\(system_timer\|pg\|execjs\|jquery-rails\|mysql\|journey\|ruby-prof\|stackprof\|benchmark-ips\|turbolinks\|coffee-rails\|debugger\|sprockets-rails\|bcrypt\|uglifier\|minitest\|sprockets\|stackprof\|rack-cache\|sqlite\|websocket-client-simple\|\libxml-ruby\|bootsnap\|aws-sdk\|webmock\|capybara\|sass-rails\|selenium-webdriver\|webpacker\|webrick\)/ s:^:#:" \
 		-e '/group :\(doc\|rubocop\|job\|cable\|storage\|ujs\|test\) do/,/^end/ s:^:#:' \
 		-e 's/gemspec/gemspec path: "activesupport"/' \
 		-e '5igem "builder"; gem "rack"' ../Gemfile || die
