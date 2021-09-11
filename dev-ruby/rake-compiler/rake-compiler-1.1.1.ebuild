@@ -35,6 +35,10 @@ all_ruby_prepare() {
 
 	# Avoid failing features for native gems, this also fails with rubygems
 	sed -i -e '/generate native gem/,$ s:^:#:' features/package.feature || die
+
+	# Fix compatibility with newer cucumber versions. The not syntax has
+	# been supported since cucumber 3.x.
+	sed -i -e "s/~@java/'not @java'/" cucumber.yml || die
 }
 
 each_ruby_test() {
