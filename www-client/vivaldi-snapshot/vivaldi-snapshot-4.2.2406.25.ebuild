@@ -161,7 +161,7 @@ src_prepare() {
 	rmdir etc/{cron.daily/,} ${VIVALDI_HOME}/cron/ || die
 
 	# Remove scripts that will most likely break things.
-	rm ${VIVALDI_HOME}/update-{ffmpeg,widevine} || die
+	rm -vf ${VIVALDI_HOME}/update-{ffmpeg,widevine} || die
 
 	pushd ${VIVALDI_HOME}/locales > /dev/null || die
 	rm ja-KS.pak || die # No flag for Kansai as not in IETF list.
