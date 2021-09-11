@@ -13,7 +13,7 @@ SRC_URI="https://github.com/microsoft/${PN}/archive/refs/tags/v${PV}.tar.gz -> $
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~riscv ~sparc"
 
 # There is not enough time in the universe for this test suite
 RESTRICT="test"
