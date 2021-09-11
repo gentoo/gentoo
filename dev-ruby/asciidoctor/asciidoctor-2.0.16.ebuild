@@ -37,6 +37,8 @@ ruby_add_bdepend "test? (
 
 all_ruby_prepare() {
 	rm Gemfile || die
+
+	sed -i -e "s:_relative ': './:" ${RUBY_FAKEGEM_GEMSPEC} || die
 }
 
 all_ruby_install() {
