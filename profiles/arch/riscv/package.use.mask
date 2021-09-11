@@ -45,12 +45,10 @@ dev-lang/ruby xemacs
 
 # Yixun Lan <dlan@gentoo.org> (2021-08-20)
 # dependencies not keyworded/tested
-app-misc/tracker miners
 gnome-extra/sushi office
 gnome-base/gnome-control-center v4l
 gnome-base/gnome-shell telepathy browser-extension
-gnome-base/gdm plymouth accessibility
-gnome-base/nautilus previewer sendto
+gnome-base/gdm accessibility
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-18)
 # media-libs/libffado does not recognise this arch, fails src_configure
