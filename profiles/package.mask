@@ -33,6 +33,14 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2021-09-11)
+# No reverse dependencies. Implements ordered set, which was needed
+# for the python 2.6 era, and since python 2.7 isn't needed and is
+# builtin in the language. Upstream isn't active at all.
+# No other distros package it anymore.
+# Removal on 2021-10-11.  Bug #812554
+dev-python/oset
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2021-09-11)
 # No reverse dependencies. Has issues with porting to python 3.10.
 # Has known upstream issues with latest GitHub's markdown parsing.
 # Last year upstream planned to archive the repository, no activity
