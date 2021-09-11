@@ -14,7 +14,7 @@ S="${WORKDIR}/PyDev.Debugger-pydev_debugger_${PV//./_}"
 
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~riscv ~sparc"
 
 # After removing and recompiling the prebuilt lib the tests fail?
 # For some reason the test suite is executing a slightly different gdb command
