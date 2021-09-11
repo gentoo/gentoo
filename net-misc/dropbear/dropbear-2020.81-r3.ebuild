@@ -23,7 +23,7 @@ RDEPEND="
 	acct-group/sshd
 	acct-user/sshd
 	!static? (
-		>=dev-libs/libtomcrypt-1.18.2-r2
+		>=dev-libs/libtomcrypt-1.18.2-r2[libtommath]
 		>=dev-libs/libtommath-1.2.0
 		${LIB_DEPEND//\[static-libs(+)]}
 	)
