@@ -40,6 +40,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.0_pre20200723-boost-1.77-missing-include.patch
 	"${FILESDIR}"/${PN}-0.9.0_pre20200723-cmake_lua_version.patch
 	"${FILESDIR}"/${PN}-0.9.1-libsamplerate.patch
 	"${FILESDIR}"/${PN}-0.9.1-cxx-std.patch
