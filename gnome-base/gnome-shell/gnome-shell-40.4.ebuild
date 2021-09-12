@@ -122,7 +122,7 @@ BDEPEND="
 	>=dev-util/gdbus-codegen-2.45.3
 	dev-util/glib-utils
 	gtk-doc? ( >=dev-util/gtk-doc-1.17
-		app-text/docbook-xml-dtd:4.3 )
+		app-text/docbook-xml-dtd:4.5 )
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
