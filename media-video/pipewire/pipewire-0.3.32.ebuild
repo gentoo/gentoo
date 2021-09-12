@@ -263,7 +263,7 @@ pkg_postinst() {
 	elog
 
 	optfeature_header "The following can be installed for optional runtime features:"
-	optfeature "restricted realtime capabilities vai D-Bus" sys-auth/rtkit
+	optfeature "restricted realtime capabilities via D-Bus" sys-auth/rtkit
 	# Once hsphfpd lands in tree, both it and ofono will need to be checked for presence here!
 	if use bluetooth; then
 		optfeature "better BT headset support (daemon startup required)" net-misc/ofono
