@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools desktop flag-o-matic toolchain-funcs pax-utils
+inherit autotools desktop flag-o-matic multilib toolchain-funcs pax-utils
 
 DESCRIPTION="SNES (Super Nintendo) emulator that uses x86 assembly"
 HOMEPAGE="https://www.zsnes.com/ http://ipherswipsite.com/zsnes/"
