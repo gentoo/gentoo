@@ -84,6 +84,11 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
+multilib_src_test() {
+	# See https://github.com/libgd/libgd/issues/763 (although it still passed without it here?)
+	TMPDIR="${T}" default
+}
+
 multilib_src_install_all() {
 	dodoc README.md
 	find "${ED}" -name '*.la' -delete || die
