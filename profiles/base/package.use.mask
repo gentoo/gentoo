@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Petr Vanek <arkamar@atlas.cz> (2021-09-12)
+# rspamd-3.0 segfaults a lot with jemalloc enabled (Bug #810337)
+# It is caused by -Wl,--as-needed linker flag,
+# see also: https://github.com/rspamd/rspamd/issues/3871
+~mail-filter/rspamd-3.0 jemalloc
+
 # James Le Cuirot <chewi@gentoo.org> (2021-09-04)
 # Currently requires an unreleased version of FFmpeg. If you really want it,
 # unmask the flag and emerge ffmpeg-9999 with this environment variable set:
