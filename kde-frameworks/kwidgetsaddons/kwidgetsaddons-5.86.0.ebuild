@@ -30,7 +30,7 @@ src_configure() {
 }
 
 src_test() {
-	# bug 650216, 653186, 697866
-	local myctestargs=( -E "(kdatecomboboxtest|ksqueezedtextlabelautotest)" )
+	# bug 650216, 653186, 697866, 808216
+	local myctestargs=( -E "(kdatecomboboxtest|ksqueezedtextlabelautotest|ktwofingertaptest|ktwofingerswipetest)" )
 	ecm_src_test
 }
