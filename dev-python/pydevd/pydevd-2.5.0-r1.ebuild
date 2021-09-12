@@ -42,6 +42,12 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	# Drop -O3 and -flto compiler args
+	sed -i \
+		-e 's/extra_link_args = extra_compile_args\[\:\]/pass/g' \
+		-e '/extra_compile_args/d' \
+		setup.py || die
+
 	# Clean up some prebuilt files
 	rm -r third_party || die
 	cd pydevd_attach_to_process || die
