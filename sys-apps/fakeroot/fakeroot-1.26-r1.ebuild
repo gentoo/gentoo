@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic
+inherit autotools flag-o-matic plocale
 
 DESCRIPTION="A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery"
 HOMEPAGE="https://packages.qa.debian.org/f/fakeroot.html"
@@ -12,16 +12,35 @@ SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}.orig.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="acl debug test"
+IUSE="acl debug nls test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
-	sys-libs/libcap
+DEPEND="sys-libs/libcap
 	acl? ( sys-apps/acl )
 	test? ( app-arch/sharutils )"
-BDEPEND="app-text/po4a"
+BDEPEND="nls? ( app-text/po4a )"
 
 DOCS=( AUTHORS BUGS DEBUG README doc/README.saving )
+
+PLOCALES="de es fr nl pt sv"
+
+src_prepare() {
+	default
+
+	disable_locale() {
+		local locale=${1}
+
+		sed -i -e "s: ${locale}::" doc/po4a/po4a.cfg doc/Makefile.am || die
+	}
+
+	plocale_find_changes doc/po4a/po '' '.po'
+	plocale_for_each_disabled_locale disable_locale
+
+	# We could make this conditional and disable the autodependency in
+	# autotools.eclass but it'd make it too easy for NLS builds to be broken
+	# and us not realise.
+	eautoreconf
+}
 
 src_configure() {
 	export ac_cv_header_sys_acl_h=$(usex acl)
@@ -32,10 +51,14 @@ src_configure() {
 }
 
 src_compile() {
-	# Create translated man pages
-	pushd doc >/dev/null || die
-	po4a -v -k 0 --variable "srcdir=${S}/doc/" po4a/po4a.cfg || die
-	popd >/dev/null || die
+	local enabled_locales=$(plocale_get_locales)
+
+	if use nls && [[ -n ${enabled_locales} ]] ; then
+		# Create translated man pages
+		pushd doc >/dev/null || die
+		po4a -v -k 0 --variable "srcdir=${S}/doc/" po4a/po4a.cfg || die
+		popd >/dev/null || die
+	fi
 
 	default
 }
