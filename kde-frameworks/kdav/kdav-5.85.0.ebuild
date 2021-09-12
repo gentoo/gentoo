@@ -12,7 +12,7 @@ inherit ecm kde.org
 DESCRIPTION="DAV protocol implemention with KJobs"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="
