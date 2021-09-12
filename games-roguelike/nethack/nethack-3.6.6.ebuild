@@ -11,7 +11,7 @@ SRC_URI="https://nethack.org/download/${PV}/nethack-${PV//.}-src.tgz -> ${P}.tar
 
 LICENSE="nethack"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 IUSE="X"
 
 RDEPEND="
