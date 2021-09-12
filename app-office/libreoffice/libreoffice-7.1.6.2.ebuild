@@ -296,6 +296,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-7.0.3.1-qt5detect.patch"
 
+	# 7.1 branch
+	"${FILESDIR}/${P}-KF5-fix-double-buffer-graphics.patch"
+
 	# master branch
 	"${FILESDIR}/${PN}-7.1.3.2-bashism.patch" # bug 780432
 )
