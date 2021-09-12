@@ -5,10 +5,11 @@ EAPI=7
 
 LUA_COMPAT=( lua5-3 )
 
+inherit desktop lua-single qmake-utils xdg
+
 MY_PV="${PV/_beta/-beta}"
 MY_PV="${MY_PV/_rc/-RC}"
 MY_P="${PN}-${MY_PV}"
-inherit desktop flag-o-matic lua-single qmake-utils xdg
 
 DESCRIPTION="Multiplayer strategy game (Civilization Clone)"
 HOMEPAGE="http://www.freeciv.org/"
