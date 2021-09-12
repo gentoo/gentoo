@@ -211,7 +211,6 @@ dev-perl/Perlbal-XS-HTTPHeaders
 # Bug #318143, #626666, #626668, Removal in ~30 days.
 dev-libs/libbrahe
 dev-libs/libcoyotl
-dev-libs/libevocosm
 
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
