@@ -37,9 +37,9 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_test() {
-	# Files are missing; whatever. Bugs 650290, 668198
+	# Files are missing; whatever. Bugs 650290, 668198, 808216
 	local myctestargs=(
-		-E "(ktoolbar_unittest|kxmlgui_unittest)"
+		-E "(ktoolbar_unittest|kxmlgui_unittest|ktooltiphelper_unittest)"
 	)
 
 	ecm_src_test
