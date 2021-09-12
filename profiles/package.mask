@@ -215,11 +215,6 @@ dev-libs/libevocosm
 app-benchmarks/acovea
 app-benchmarks/acovea-gtk
 
-# Agostino Sarubbo <ago@gentoo.org> (2021-08-12)
-# Latest release 2012, not anymore useful for current routers
-# Removal in ~30 days.
-app-crypt/WiRouterKeyRec
-
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
 # ecosystem has switched to dev-util/pkgconf, which is alive. Testing
