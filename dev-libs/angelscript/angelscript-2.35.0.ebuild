@@ -10,7 +10,7 @@ HOMEPAGE="http://www.angelcode.com/angelscript/"
 SRC_URI="http://www.angelcode.com/angelscript/sdk/files/angelscript_${PV}.zip"
 LICENSE="ZLIB"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="doc static-libs"
 
 BDEPEND="app-arch/unzip"
