@@ -18,7 +18,7 @@ SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${XORGHDRS}.tar.xz"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="emoji ibus +kaccounts +policykit scim +semantic-desktop"
+IUSE="emoji ibus +kaccounts +policykit scim +semantic-desktop telemetry"
 
 COMMON_DEPEND="
 	>=dev-qt/qtconcurrent-${QTMIN}:5
@@ -99,6 +99,7 @@ COMMON_DEPEND="
 	policykit? ( >=kde-frameworks/kwallet-${KFMIN}:5 )
 	scim? ( app-i18n/scim )
 	semantic-desktop? ( >=kde-frameworks/baloo-${KFMIN}:5 )
+	telemetry? ( dev-libs/kuserfeedback:5 )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
@@ -156,6 +157,7 @@ src_configure() {
 		$(cmake_use_find_package kaccounts AccountsQt5)
 		$(cmake_use_find_package kaccounts KAccounts)
 		$(cmake_use_find_package semantic-desktop KF5Baloo)
+		$(cmake_use_find_package telemetry KUserFeedback)
 	)
 	if ! use emoji && ! use ibus; then
 		mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_GLIB2=ON )
