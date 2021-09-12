@@ -267,14 +267,6 @@ dev-qt/qtwebkit:5
 # Masked for testing
 >=mail-client/claws-mail-4.0.0
 
-# Hans de Graaff <graaff@gentoo.org> (2021-07-09)
-# Mask ruby25 for removal. This version is no longer supported
-# upstream. Use a newer ruby version, e.g ruby26.
-# Masked for removal in 30 days.
-dev-lang/ruby:2.5
-=dev-ruby/rubygems-2.7*
-dev-ruby/did_you_mean:2.5
-
 # Michał Górny <mgorny@gentoo.org> (2021-07-06)
 # Upstream changed license to GPL-3+ in order to deliberately cause
 # incompatiblity with revdep licenses.  Mask until the situation
