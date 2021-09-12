@@ -13,7 +13,7 @@ SRC_URI="https://github.com/rrthomas/rpl/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 RDEPEND="dev-python/chardet[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}
