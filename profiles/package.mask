@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2021-09-12)
+# Stuck on x86 / amd64-multilib, no upstream, code relies on
+# several implicit constructs and undefined behavior, ebuild
+# semi-broken and runtime seems broken even if built.
+# Removal on 2021-10-12. bug #701414, bug #739188.
+games-emulation/nestra
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2021-09-11)
 # No reverse dependencies. Implements ordered set, which was needed
 # for the python 2.6 era, and since python 2.7 isn't needed and is
