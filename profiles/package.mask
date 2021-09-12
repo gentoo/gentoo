@@ -203,14 +203,6 @@ dev-perl/MooseX-Types-DateTimeX
 # no easy fix. Removal in 30 days.
 dev-perl/Perlbal-XS-HTTPHeaders
 
-# David Seifert <soap@gentoo.org> (2021-08-13)
-# Dead upstream, new "forked" upstream that just added the last version
-# on Github but doesn't maintain them. Unmaintained for the past 10
-# years in ::gentoo, no other real distros package these anymore.
-# HOMEPAGE leads to some scammy site.
-# Bug #318143, #626666, #626668, Removal in ~30 days.
-dev-libs/libbrahe
-
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
 # ecosystem has switched to dev-util/pkgconf, which is alive. Testing
