@@ -13,5 +13,6 @@
   </longdescription>
   <upstream>
     <remote-id type="pypi">munkres</remote-id>
+    <remote-id type="github">bmc/munkres</remote-id>
   </upstream>
 </pkgmetadata>
