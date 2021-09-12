@@ -22,10 +22,6 @@ DOCS=( README doc/NEWS doc/TODO )
 # Doesn't build a library.
 QA_CONFIGURE_OPTIONS="--disable-static"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-stddef-include.patch
-)
-
 pkg_setup() {
 	if use kernel_linux; then
 		CONFIG_CHECK="~SYSVIPC"
