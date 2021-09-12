@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Ionen Wolkens <ionen@gentoo.org> (2021-09-12)
+# No reverse dependencies, stuck on EAPI-5, last release in 2006.
+# Please report if anyone still need this.
+# Removal on 2021-10-12. bug #776904
+media-libs/sdl-terminal
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-09-12)
 # Stuck on x86 / amd64-multilib, no upstream, code relies on
 # several implicit constructs and undefined behavior, ebuild
 # semi-broken and runtime seems broken even if built.
