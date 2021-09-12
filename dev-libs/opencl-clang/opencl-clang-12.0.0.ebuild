@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${PV}"
 
 LICENSE="UoI-NCSA"
 SLOT="12"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	>=dev-util/spirv-llvm-translator-12.0.0:12=[${MULTILIB_USEDEP}]
