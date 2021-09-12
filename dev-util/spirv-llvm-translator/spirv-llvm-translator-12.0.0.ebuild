@@ -16,7 +16,7 @@ SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="UoI-NCSA"
 SLOT="12"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test +tools"
 
 RESTRICT="!test? ( test )"
