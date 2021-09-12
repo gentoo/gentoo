@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Ionen Wolkens <ionen@gentoo.org> (2021-09-12)
+# No reverse dependencies, stuck on EAPI-5.
+# Replaced by dev-libs/spsdeclib.
+# Removal on 2021-10-12. bug #812806
+games-emulation/caps
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-09-12)
 # No reverse dependencies, stuck on EAPI-5, last release in 2006.
 # Please report if anyone still need this.
 # Removal on 2021-10-12. bug #776904
