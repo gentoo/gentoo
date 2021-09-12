@@ -212,7 +212,6 @@ dev-perl/Perlbal-XS-HTTPHeaders
 dev-libs/libbrahe
 dev-libs/libcoyotl
 dev-libs/libevocosm
-app-benchmarks/acovea
 
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
