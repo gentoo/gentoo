@@ -12,7 +12,7 @@ SRC_URI="https://github.com/robotools/defcon/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE=""
 
 RDEPEND=">=dev-python/fonttools-3.31.0[${PYTHON_USEDEP}]"
