@@ -173,7 +173,6 @@ multilib_src_configure() {
 		${ec_nistp_64_gcc_128} \
 		enable-idea \
 		enable-mdc2 \
-		enable-rc5 \
 		$(use_ssl sslv3 ssl3) \
 		$(use_ssl sslv3 ssl3-method) \
 		$(use_ssl asm) \

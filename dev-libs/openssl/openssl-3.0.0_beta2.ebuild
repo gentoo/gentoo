@@ -171,7 +171,6 @@ multilib_src_configure() {
 		$(use elibc_musl && echo "no-async")
 		enable-idea
 		enable-mdc2
-		enable-rc5
 		$(use_ssl asm)
 		$(use_ssl ktls)
 		$(use_ssl rfc3779)
