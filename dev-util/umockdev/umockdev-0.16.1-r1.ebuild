@@ -39,6 +39,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/umockdev-0.16.1-Werror.patch"
+	)
 	default
 	vala_src_prepare
 }
