@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib multilib-minimal
+
+inherit multilib multilib-minimal toolchain-funcs
 
 MY_P="SDL2_image-${PV}"
 MY_COMMIT="f36684864e82538da2d2cf57fa3db077a3be42c7"
