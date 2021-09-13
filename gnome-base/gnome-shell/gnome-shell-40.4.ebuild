@@ -116,9 +116,7 @@ PDEPEND="
 	browser-extension? ( gnome-extra/chrome-gnome-shell )
 "
 BDEPEND="
-	dev-lang/sassc
 	dev-libs/libxslt
-	app-text/asciidoc
 	>=dev-util/gdbus-codegen-2.45.3
 	dev-util/glib-utils
 	gtk-doc? ( >=dev-util/gtk-doc-1.17
@@ -126,6 +124,9 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
+# These are not needed from tarballs, unless stylesheets or manpage get patched with patchset:
+# dev-lang/sassc
+# app-text/asciidoc
 
 PATCHES=(
 	# Fix automagic gnome-bluetooth dep, bug #398145
