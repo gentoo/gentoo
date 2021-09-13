@@ -21,6 +21,7 @@ RDEPEND="
 	acct-group/gamestat
 	media-libs/allegro:0[X]"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-bitmap.patch
