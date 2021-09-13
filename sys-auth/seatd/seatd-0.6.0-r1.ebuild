@@ -34,8 +34,10 @@ src_configure() {
 		$(meson_feature server)
 	)
 
-	if use elogind || use systemd; then
-		emesonargs+=( -Dlibseat-logind=enabled )
+	if use elogind ; then
+		emesonargs+=( -Dlibseat-logind=elogind )
+	elif use systemd; then
+		emesonargs+=( -Dlibseat-logind=systemd )
 	else
 		emesonargs+=( -Dlibseat-logind=disabled )
 	fi
