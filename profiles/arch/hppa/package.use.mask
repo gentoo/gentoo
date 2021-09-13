@@ -4,6 +4,12 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2021-09-14)
+# fdk-aac, libfreeaptx not keyworded here
+# nor is jack2
+# bug #807616
+media-video/pipewire bluetooth jack-client
+
 # David Seifert <soap@gentoo.org> (2021-09-04)
 # dev-lang/go not keyworded here
 sys-libs/libcap tools
