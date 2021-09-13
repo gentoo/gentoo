@@ -36,8 +36,7 @@ RDEPEND="
 	sys-apps/util-linux:0=[static-libs(+)?]
 	sys-libs/zlib:0=
 	convert? (
-		sys-fs/e2fsprogs:0=
-		sys-libs/e2fsprogs-libs:0=
+		sys-fs/e2fsprogs:=
 		reiserfs? (
 			>=sys-fs/reiserfsprogs-3.6.27
 		)
@@ -57,8 +56,7 @@ DEPEND="${RDEPEND}
 		sys-apps/util-linux:0[static-libs(+)]
 		sys-libs/zlib:0[static-libs(+)]
 		convert? (
-			sys-fs/e2fsprogs:0[static-libs(+)]
-			sys-libs/e2fsprogs-libs:0[static-libs(+)]
+			sys-fs/e2fsprogs[static-libs(+)]
 			reiserfs? (
 				>=sys-fs/reiserfsprogs-3.6.27[static-libs(+)]
 			)
