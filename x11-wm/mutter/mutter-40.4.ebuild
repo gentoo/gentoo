@@ -151,6 +151,7 @@ src_configure() {
 }
 
 src_test() {
+	gnome2_environment_reset # Avoid dconf that looks at XDG_DATA_DIRS, which can sandbox fail if flatpak is installed
 	glib-compile-schemas "${BUILD_DIR}"/data
 	GSETTINGS_SCHEMA_DIR="${BUILD_DIR}"/data virtx meson_src_test
 }
