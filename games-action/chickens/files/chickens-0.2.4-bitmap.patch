@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/638246
+--- a/gem.h
++++ b/gem.h
+@@ -22,3 +22,2 @@
+ 	
+-	BITMAP image;
+ 	void draw();
+@@ -33,2 +32,3 @@
+ 	bool active;
++	BITMAP image;
+ };
+--- a/smoke.cpp
++++ b/smoke.cpp
+@@ -40,3 +40,3 @@
+ 
+-int SMOKE::release() {
++void SMOKE::release() {
+ 	
+@@ -62,3 +62,3 @@
+ 
+-int SMOKE::draw() {
++void SMOKE::draw() {
+ 
+--- a/smoke.h
++++ b/smoke.h
+@@ -32,5 +32,5 @@
+ 	
+-	int draw();
++	void draw();
+ 	int run();
+-	int release();
++	void release();
+ 	
