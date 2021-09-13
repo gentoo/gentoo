@@ -12,5 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pyscreenshot</remote-id>
+		<remote-id type="github">ponty/pyscreenshot</remote-id>
 	</upstream>
 </pkgmetadata>
