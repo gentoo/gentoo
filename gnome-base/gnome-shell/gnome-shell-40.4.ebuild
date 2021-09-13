@@ -29,7 +29,7 @@ DEPEND="
 	>=x11-libs/gtk+-3.15.0:3[introspection]
 	>=x11-wm/mutter-40.0:0/8[introspection]
 	>=sys-auth/polkit-0.100[introspection]
-	>=gnome-base/gsettings-desktop-schemas-3.33.1
+	>=gnome-base/gsettings-desktop-schemas-3.33.1[introspection]
 	>=x11-libs/startup-notification-0.11
 	>=app-i18n/ibus-1.5.2
 	>=gnome-base/gnome-desktop-3.35.90:3=[introspection]
@@ -68,27 +68,33 @@ DEPEND="
 	media-libs/mesa[X(+)]
 "
 # Runtime-only deps are probably incomplete and approximate.
-# Introspection deps generated using:
-#  grep -roe "imports.gi.*" gnome-shell-* | cut -f2 -d: | sort | uniq
+# Introspection deps generated from inspection of the output of:
+#  for i in `rg -INUo 'const(?s).*imports.gi' |cut -d= -f1 |cut -c7- |sort -u`; do echo $i ;done |cut -d, -f1 |sort -u
+# or
+#  rg -INUo 'const(?s).*imports.gi' |cut -d= -f1 |cut -c7- | sed -e 's:[{}]::g' | awk '{$1=$1; print}' | awk -F',' '{$1=$1;print}' | tr ' ' '\n' | sort -u | sed -e 's/://g'
+# These will give a lot of unnecessary things due to greey matching (TODO), and `(?s).*?` doesn't seem to work as desired.
+# Compare with `grep -rhI 'imports.gi.versions' |sort -u` for any SLOT requirements
 # Each block:
-# 1. Introspection stuff needed via imports.gi.*
+# 1. Introspection stuff needed via imports.gi (those that build time check may be listed above already)
 # 2. gnome-session needed for shutdown/reboot/inhibitors/etc
 # 3. Control shell settings
-# 4. logind interface needed for suspending support
-# 5. xdg-utils needed for xdg-open, used by extension tool
-# 6. adwaita-icon-theme needed for various icons & arrows (3.26 for new video-joined-displays-symbolic and co icons; review for 3.28+)
-# 7. mobile-broadband-provider-info, timezone-data for shell-mobile-providers.c  # TODO: Review
-# 8. IBus is needed for nls integration
-# 9. Optional telepathy chat integration
-# 10. Cantarell font used in gnome-shell global CSS (if removing this for some reason, make sure it's pulled in somehow for non-meta users still too)
+# 4. xdg-utils needed for xdg-open, used by extension tool
+# 5. adwaita-icon-theme needed for various icons & arrows (3.26 for new video-joined-displays-symbolic and co icons; review for 3.28+)
+# 6. mobile-broadband-provider-info, timezone-data for shell-mobile-providers.c  # TODO: Review
+# 7. IBus is needed for nls integration
+# 8. Optional telepathy chat integration
+# 9. Cantarell font used in gnome-shell global CSS (if removing this for some reason, make sure it's pulled in somehow for non-meta users still too)
+# 10. xdg-desktop-portal-gtk for various integration, e.g. #764632
 # 11. TODO: semi-optional webkit-gtk[introspection] for captive portal helper
 RDEPEND="${DEPEND}
 	>=sys-apps/accountsservice-0.6.14[introspection]
 	app-accessibility/at-spi2-core:2[introspection]
 	app-misc/geoclue[introspection]
+	media-libs/graphene[introspection]
 	>=dev-libs/libgweather-3.26:2[introspection]
-	>=sys-power/upower-0.99:=[introspection]
 	x11-libs/pango[introspection]
+	net-libs/libsoup:2.4[introspection]
+	>=sys-power/upower-0.99:=[introspection]
 	gnome-base/librsvg:2[introspection]
 
 	>=gnome-base/gnome-session-2.91.91
