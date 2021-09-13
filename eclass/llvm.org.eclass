@@ -214,11 +214,11 @@ llvm.org_set_globals() {
 	case ${LLVM_USE_TARGETS:-__unset__} in
 		__unset__)
 			;;
-		provide)
+		provide|llvm)
 			IUSE+=" ${ALL_LLVM_TARGET_FLAGS[*]}"
 			REQUIRED_USE+=" || ( ${ALL_LLVM_TARGET_FLAGS[*]} )"
 			;;&
-		provide|llvm)
+		llvm)
 			local dep=
 			for x in "${ALL_LLVM_TARGET_FLAGS[@]}"; do
 				dep+="
