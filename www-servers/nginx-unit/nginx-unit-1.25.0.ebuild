@@ -30,8 +30,11 @@ DEPEND="perl? ( dev-lang/perl:= )
 		dev-lang/ruby:*
 		dev-ruby/rubygems:*
 	)
-	ssl? ( dev-libs/openssl:0= )"
+	ssl? ( dev-libs/openssl:0= )
+	virtual/libcrypt:0="
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-glibc-2.34.patch )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -40,6 +43,7 @@ pkg_setup() {
 src_prepare() {
 	eapply_user
 	sed -i '/^CFLAGS/d' auto/make || die
+	default
 }
 
 src_configure() {
