@@ -629,34 +629,27 @@ get_running_version() {
 		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
 	fi
 
-	KV_FULL=$(uname -r)
+	local kv=$(uname -r)
 
-	if [[ -f ${ROOT%/}/lib/modules/${KV_FULL}/source/Makefile && -f ${ROOT%/}/lib/modules/${KV_FULL}/build/Makefile ]]; then
-		KERNEL_DIR=$(readlink -f ${ROOT%/}/lib/modules/${KV_FULL}/source)
-		KBUILD_OUTPUT=$(readlink -f ${ROOT%/}/lib/modules/${KV_FULL}/build)
-		unset KV_FULL
-		get_version
-		return $?
-	elif [[ -f ${ROOT%/}/lib/modules/${KV_FULL}/source/Makefile ]]; then
-		KERNEL_DIR=$(readlink -f ${ROOT%/}/lib/modules/${KV_FULL}/source)
-		unset KV_FULL
-		get_version
-		return $?
-	elif [[ -f ${ROOT%/}/lib/modules/${KV_FULL}/build/Makefile ]]; then
-		KERNEL_DIR=$(readlink -f ${ROOT%/}/lib/modules/${KV_FULL}/build)
-		unset KV_FULL
-		get_version
-		return $?
-	else
-		# This handles a variety of weird kernel versions.  Make sure to update
-		# tests/linux-info_get_running_version.sh if you want to change this.
-		local kv_full=${KV_FULL//[-+_]*}
-		KV_MAJOR=$(ver_cut 1 ${kv_full})
-		KV_MINOR=$(ver_cut 2 ${kv_full})
-		KV_PATCH=$(ver_cut 3 ${kv_full})
-		KV_EXTRA="${KV_FULL#${KV_MAJOR}.${KV_MINOR}${KV_PATCH:+.${KV_PATCH}}}"
-		: ${KV_PATCH:=0}
+	if [[ -f ${ROOT%/}/lib/modules/${kv}/source/Makefile ]]; then
+		KERNEL_DIR=$(readlink -f "${ROOT%/}/lib/modules/${kv}/source")
+		if [[ -f ${ROOT%/}/lib/modules/${kv}/build/Makefile ]]; then
+			KBUILD_OUTPUT=$(readlink -f "${ROOT%/}/lib/modules/${kv}/build")
+		fi
+		get_version && return 0
 	fi
+
+	KV_FULL=${kv}
+
+	# This handles a variety of weird kernel versions.  Make sure to update
+	# tests/linux-info_get_running_version.sh if you want to change this.
+	local kv_full=${KV_FULL//[-+_]*}
+	KV_MAJOR=$(ver_cut 1 ${kv_full})
+	KV_MINOR=$(ver_cut 2 ${kv_full})
+	KV_PATCH=$(ver_cut 3 ${kv_full})
+	KV_EXTRA="${KV_FULL#${KV_MAJOR}.${KV_MINOR}${KV_PATCH:+.${KV_PATCH}}}"
+	: ${KV_PATCH:=0}
+
 	return 0
 }
 
