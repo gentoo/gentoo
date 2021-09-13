@@ -11,10 +11,6 @@ dev-ruby/capybara test
 # net-misc/memcached not keyworded yet due to failing tests (Bug #811477)
 dev-ruby/dalli test
 
-# Yixun Lan <dlan@gentoo.org> (2021-09-03)
-# dependencies not keyworded/tested
-media-sound/cmus pidgin
-
 # Jonathan Davies <jpds@protonmail.com> (2021-09-03)
 # Requires CPU with SSSE3 support
 net-analyzer/suricata hyperscan
