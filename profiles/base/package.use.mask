@@ -38,7 +38,6 @@ net-print/hplip-plugin orblite
 # Bugs: #684580, #750893
 app-office/kexi webkit
 dev-libs/kreport webkit
-dev-python/PyQt5 webkit
 media-plugins/mythplugins mythbrowser mythmusic
 net-irc/kvirc webkit
 
