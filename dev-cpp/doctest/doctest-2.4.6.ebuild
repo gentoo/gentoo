@@ -15,6 +15,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+PATCHES=( "${FILESDIR}/${P}-remove-unused-bla2.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DDOCTEST_WITH_TESTS=$(usex test)
