@@ -16,7 +16,7 @@ IUSE="acl bzip2 lzma xattr"
 
 RDEPEND="
 	dev-libs/openssl:0=
-	sys-libs/e2fsprogs-libs
+	sys-fs/e2fsprogs
 	sys-libs/zlib
 	acl? ( sys-apps/acl )
 	bzip2? ( app-arch/bzip2 )
