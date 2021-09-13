@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/muennich/sxiv/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="exif gif +jpeg +png +webp"
+IUSE="exif gif +jpeg +png webp"
 
 RDEPEND="
 	exif? ( media-libs/libexif )
