@@ -27,7 +27,7 @@ RDEPEND="acct-user/fetchmail
 		>=dev-libs/openssl-1.0.2:=
 	)
 	nls? ( virtual/libintl )
-	!elibc_glibc? ( sys-libs/e2fsprogs-libs )
+	!elibc_glibc? ( sys-fs/e2fsprogs )
 	socks? ( net-proxy/dante )
 	tk? (
 		${PYTHON_DEPS}
