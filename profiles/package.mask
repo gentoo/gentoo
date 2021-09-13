@@ -294,14 +294,6 @@ sys-libs/db:5.1
 # which is currently not available in Gentoo.
 >=games-server/minecraft-server-1.17
 
-# Davide Pesavento <pesa@gentoo.org> (2021-06-15)
-# Masked for revdep testing.
->=dev-python/sip-6
->=dev-python/PyQt5-5.15.5_pre
->=dev-python/PyQtWebEngine-5.15.5_pre
->=dev-python/qscintilla-python-2.13
->=app-text/calibre-5.25.0
-
 # Sam James <sam@gentoo.org> (2021-06-12)
 # Masked until all reverse dependencies support
 # OCaml 4.12.
