@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Interpreter for the PostScript language and PDF"
 HOMEPAGE="https://ghostscript.com/"
