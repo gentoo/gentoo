@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="sqlite"
 
-ANTLR_VERSION=4.7.1
+ANTLR_VERSION=4.9.1
 
 inherit gnome2 flag-o-matic python-single-r1 cmake
 
@@ -48,7 +48,7 @@ CDEPEND="${PYTHON_DEPS}
 		dev-libs/libpcre[cxx]
 		>=sci-libs/gdal-1.11.1-r1
 		virtual/opengl
-		|| ( sys-libs/e2fsprogs-libs dev-libs/ossp-uuid )
+		|| ( sys-fs/e2fsprogs dev-libs/ossp-uuid )
 		dev-libs/tinyxml[stl]
 		>=dev-db/mysql-connector-c++-1.1.8 =dev-db/mysql-connector-c++-1*
 		dev-db/vsqlite++
@@ -71,7 +71,6 @@ S="${WORKDIR}"/"${MY_P}"
 PATCHES=(
 	"${FILESDIR}/${PN}-6.2.5-wbcopytables.patch"
 	"${FILESDIR}/${PN}-8.0.19-mysql-connector-8.patch"
-	"${FILESDIR}/${PN}-8.0.23-findlibssh.patch"
 )
 
 src_unpack() {
@@ -84,7 +83,7 @@ src_prepare() {
 	## And avoid -Werror
 	sed -i -e 's/-Werror//' CMakeLists.txt || die
 	## Fix doc install directory
-	sed -i -e "/WB_INSTALL_DOC_DIR/ s/mysql-workbench/${P}/" CMakeLists.txt || die
+	sed -i -e "/WB_INSTALL_DOC_DIR/ s/mysql-workbench/${P}/ ; /WB_INSTALL_DOC_DIR/ s/-community//" CMakeLists.txt || die
 
 	## package is very fragile...
 	strip-flags
