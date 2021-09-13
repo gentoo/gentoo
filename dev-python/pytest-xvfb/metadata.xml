@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pytest-xvfb</remote-id>
+		<remote-id type="github">The-Compiler/pytest-xvfb</remote-id>
 	</upstream>
 </pkgmetadata>
