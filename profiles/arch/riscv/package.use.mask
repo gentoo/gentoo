@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alex Fan <alexfanqi@yahoo.com> (2021-09-13)
+# dev-vcs/darcs depends on haskell
+app-portage/layman darcs
+
 # Sam James <sam@gentoo.org> (2021-09-12)
 # dev-ruby/asciidoctor isn't keyworded here
 dev-util/ccache doc
