@@ -199,7 +199,7 @@ dev-db/percona-server -numa
 # Davide Pesavento <pesa@gentoo.org> (2016-07-28)
 # The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/PyQt5 bluetooth location networkauth speech
+dev-python/PyQt5 bluetooth location speech
 
 # Michael Palimaka <kensington@gentoo.org> (2016-07-07)
 # Requires unkeyworded dependencies

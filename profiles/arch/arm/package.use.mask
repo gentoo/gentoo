@@ -188,11 +188,6 @@ net-im/ejabberd hipe
 # (SM)BIOS/Thunderbolt outside of amd64/x86? - citation needed
 sys-apps/fwupd dell thunderbolt
 
-# Davide Pesavento <pesa@gentoo.org> (2018-12-27)
-# The corresponding Qt5 modules are not keyworded on arm, and we don't want to
-# keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/PyQt5 networkauth
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)
 # Requires www-client/firefox which isn't available on ARM yet
 # due to dev-lang/rust requirement
