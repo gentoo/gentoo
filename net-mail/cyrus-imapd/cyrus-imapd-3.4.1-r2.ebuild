@@ -23,7 +23,7 @@ CDEPEND="
 	>=dev-libs/cyrus-sasl-2.1.13:2
 	dev-libs/jansson
 	dev-libs/icu:0=
-	sys-libs/e2fsprogs-libs
+	sys-fs/e2fsprogs
 	afs? ( net-fs/openafs )
 	calalarm? ( dev-libs/libical:0= )
 	caps? ( sys-libs/libcap )
