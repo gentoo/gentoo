@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
 	<longdescription>
 		fido2 provides library functionality for communicating with a FIDO
 		device over USB as well as verifying attestation and assertion
