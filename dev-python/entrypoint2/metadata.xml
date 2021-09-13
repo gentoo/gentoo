@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">entrypoint2</remote-id>
+		<remote-id type="github">ponty/entrypoint2</remote-id>
 	</upstream>
 </pkgmetadata>
