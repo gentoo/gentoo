@@ -35,7 +35,10 @@ DEPEND="
 	x11-libs/cairo:=[X?,svg]
 	x11-libs/libxkbcommon:=[X?]
 	x11-libs/pixman
-	X? ( x11-libs/libxcb )
+	X? (
+		x11-libs/libxcb
+		x11-base/xwayland
+	)
 	system-wfconfig? ( ~gui-libs/wf-config-9999:= )
 	!system-wfconfig? ( !gui-libs/wf-config )
 	system-wlroots? ( ~gui-libs/wlroots-9999:=[X?] )
@@ -54,9 +57,9 @@ BDEPEND="
 
 src_configure() {
 	sed -e "s:@EPREFIX@:${EPREFIX}:" \
-	    "${FILESDIR}"/wayfire-session > "${T}"/wayfire-session || die
+		"${FILESDIR}"/wayfire-session > "${T}"/wayfire-session || die
 	sed -e "s:@EPREFIX@:${EPREFIX}:" \
-	    "${FILESDIR}"/wayfire-session.desktop > "${T}"/wayfire-session.desktop || die
+		"${FILESDIR}"/wayfire-session.desktop > "${T}"/wayfire-session.desktop || die
 	local emesonargs=(
 		$(meson_feature system-wfconfig use_system_wfconfig)
 		$(meson_feature system-wlroots use_system_wlroots)
