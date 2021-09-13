@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit go-module optfeature desktop xdg-utils
+inherit go-module optfeature desktop xdg
 
 # Building this list can be done by:
 # cd $(mktemp -d)
@@ -107,32 +107,27 @@ LICENSE="MIT Apache-2.0 BSD MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="dev-vcs/git"
-RDEPEND="${DEPEND}"
+BDEPEND="dev-vcs/git"
 
 src_compile() {
 	go build -v -work -x -o ${PN} -ldflags \
-		"-s -w -X github.com/zyedidia/micro/v2/internal/util.Version=2.0.10 -X github.com/zyedidia/micro/v2/internal/util.CompileDate=$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+		"-s -w -X github.com/zyedidia/micro/v2/internal/util.Version=${PV} -X github.com/zyedidia/micro/v2/internal/util.CompileDate=$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
 		./cmd/micro || die
 }
 
 src_install() {
 	dobin ${PN}
 	doman ./assets/packaging/micro.1
-	einstalldocs
 	domenu assets/packaging/micro.desktop
+	einstalldocs
 }
 
 pkg_postinst() {
 	# update desktop file mime cache
 	xdg_desktop_database_update
+	xdg_pkg_postinst
 
 	optfeature_header "Clipboard support with display servers:"
 	optfeature "Xorg" x11-misc/xsel x11-misc/xclip
 	optfeature "Wayland" gui-apps/wl-clipboard
-}
-
-pkg_postrm() {
-	# update desktop file mime cache
-	xdg_desktop_database_update
 }
