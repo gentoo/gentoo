@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit pam multilib libtool systemd tmpfiles toolchain-funcs
+inherit pam libtool tmpfiles toolchain-funcs
 
 MY_P="${P/_/}"
 MY_P="${MY_P/beta/b}"
