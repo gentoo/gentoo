@@ -18,12 +18,12 @@ HOMEPAGE="https://github.com/muennich/sxiv/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="exif gif +jpeg +png"
+IUSE="exif gif +jpeg +png +webp"
 
 RDEPEND="
 	exif? ( media-libs/libexif )
 	gif? ( media-libs/giflib:0= )
-	media-libs/imlib2[X,gif?,jpeg?,png?]
+	media-libs/imlib2[X,gif?,jpeg?,png?,webp?]
 	x11-libs/libX11
 	x11-libs/libXft
 "
