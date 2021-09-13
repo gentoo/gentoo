@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-09-14)
+# jack2 not keyworded here
+# bug #807616
+media-video/pipewire jack-client
+
 # Sam James <sam@gentoo.org> (2021-09-12)
 # dev-ruby/asciidoctor isn't keyworded here
 dev-util/ccache doc
