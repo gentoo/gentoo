@@ -9,4 +9,4 @@ inherit perl-module
 
 DESCRIPTION="Isolated String helpers from B"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
