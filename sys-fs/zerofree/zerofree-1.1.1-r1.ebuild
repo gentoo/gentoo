@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit toolchain-funcs
 
 DESCRIPTION="Zeroes out all free space on a filesystem"
@@ -11,9 +12,8 @@ SRC_URI="http://frippery.org/uml/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~mips x86"
-IUSE=""
 
-DEPEND="sys-libs/e2fsprogs-libs"
+DEPEND="sys-fs/e2fsprogs"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
