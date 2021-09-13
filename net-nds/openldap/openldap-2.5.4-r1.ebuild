@@ -58,7 +58,7 @@ COMMON_DEPEND="
 	sasl? ( dev-libs/cyrus-sasl:= )
 	!minimal? (
 		dev-libs/libltdl
-		sys-libs/e2fsprogs-libs
+		sys-fs/e2fsprogs
 		>=dev-db/lmdb-0.9.18:=
 		crypt? ( virtual/libcrypt:= )
 		tcpd? ( sys-apps/tcp-wrappers )
