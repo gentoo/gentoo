@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 inherit autotools flag-o-matic pam ssl-cert
 
 DESCRIPTION="The Cyrus IMAP Server"
@@ -11,7 +10,7 @@ SRC_URI="https://github.com/cyrusimap/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD-with-attribution GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86"
 IUSE="afs backup calalarm caps clamav http kerberos ldap lmdb \
 	mysql nntp pam perl postgres replication +server sieve snmp \
 	sqlite ssl static-libs tcpd test xapian"
@@ -23,7 +22,7 @@ CDEPEND="
 	>=dev-libs/cyrus-sasl-2.1.13:2
 	dev-libs/jansson
 	dev-libs/icu:0=
-	sys-libs/e2fsprogs-libs
+	sys-fs/e2fsprogs
 	afs? ( net-fs/openafs )
 	calalarm? ( dev-libs/libical:0= )
 	caps? ( sys-libs/libcap )
@@ -75,7 +74,13 @@ REQUIRED_USE="
 # TODO: check underlinking for other libraries
 PATCHES=(
 	"${FILESDIR}/cyrus-imapd-libcap-libs-r1.patch"
-)
+	"${FILESDIR}/cyrus-imapd-libcap.patch"
+	)
+
+pkg_setup() {
+	# https://bugs.gentoo.org/604466
+	append-ldflags $(no-as-needed)
+}
 
 src_prepare() {
 	default
@@ -100,15 +105,10 @@ src_prepare() {
 
 src_configure() {
 	local myconf
-
-	# https://bugs.gentoo.org/604466
-	append-ldflags $(no-as-needed)
-
 	if use afs ; then
 		myconf+=" --with-afs-libdir=/usr/$(get_libdir)"
 		myconf+=" --with-afs-incdir=/usr/include/afs"
 	fi
-
 	# sphinx is unmaintained and dead, bug #662944
 	econf \
 		--enable-unit-tests \
