@@ -10,14 +10,6 @@ inherit cmake llvm.org multilib-minimal pax-utils python-any-r1 \
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
 
-# Those are in lib/Targets, without explicit CMakeLists.txt mention
-ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY M68k VE )
-# Keep in sync with CMakeLists.txt
-ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430
-	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
-	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
-ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
-
 # Additional licenses:
 # 1. OpenBSD regex: Henry Spencer's license ('rc' in Gentoo) + BSD.
 # 2. xxhash: BSD.
@@ -28,8 +20,7 @@ LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA BSD public-domain rc"
 SLOT="$(ver_cut 1)"
 KEYWORDS=""
 IUSE="debug doc exegesis gold libedit +libffi ncurses test xar xml z3
-	kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
-REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )"
+	kernel_Darwin"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -68,6 +59,7 @@ PDEPEND="sys-devel/llvm-common
 LLVM_COMPONENTS=( llvm )
 LLVM_MANPAGES=build
 LLVM_PATCHSET=9999-1
+LLVM_USE_TARGETS=provide
 llvm.org_set_globals
 
 python_check_deps() {
@@ -92,8 +84,6 @@ check_live_ebuild() {
 	for i in "${all_targets[@]}"; do
 		has "${i}" "${prod_targets[@]}" || exp_targets+=( "${i}" )
 	done
-	# reorder
-	all_targets=( "${prod_targets[@]}" "${exp_targets[@]}" )
 
 	if [[ ${exp_targets[*]} != ${ALL_LLVM_EXPERIMENTAL_TARGETS[*]} ]]; then
 		eqawarn "ALL_LLVM_EXPERIMENTAL_TARGETS is outdated!"
@@ -102,10 +92,10 @@ check_live_ebuild() {
 		eqawarn
 	fi
 
-	if [[ ${all_targets[*]} != ${ALL_LLVM_TARGETS[*]#llvm_targets_} ]]; then
-		eqawarn "ALL_LLVM_TARGETS is outdated!"
-		eqawarn "    Have: ${ALL_LLVM_TARGETS[*]#llvm_targets_}"
-		eqawarn "Expected: ${all_targets[*]}"
+	if [[ ${prod_targets[*]} != ${ALL_LLVM_PRODUCTION_TARGETS[*]} ]]; then
+		eqawarn "ALL_LLVM_PRODUCTION_TARGETS is outdated!"
+		eqawarn "    Have: ${ALL_LLVM_PRODUCTION_TARGETS[*]}"
+		eqawarn "Expected: ${prod_targets[*]}"
 	fi
 }
 
