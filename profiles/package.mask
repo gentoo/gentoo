@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Gnome Team <gnome@gentoo.org> (13 Sep 2021)
+# GNOME 41 mask, bug #812986
+>=dev-util/gdbus-codegen-2.69
+
 # Ionen Wolkens <ionen@gentoo.org> (2021-09-12)
 # No reverse dependencies, stuck on EAPI-5.
 # Replaced by dev-libs/spsdeclib.
