@@ -9,18 +9,10 @@ inherit cmake llvm llvm.org python-any-r1
 DESCRIPTION="OCaml bindings for LLVM"
 HOMEPAGE="https://llvm.org/"
 
-# Keep in sync with sys-devel/llvm
-ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY M68k VE )
-ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430
-	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
-	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
-ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
-
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0/${PV}"
 KEYWORDS=""
-IUSE="debug test ${ALL_LLVM_TARGETS[*]}"
-REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )"
+IUSE="debug test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -28,11 +20,6 @@ RDEPEND="
 	dev-ml/ocaml-ctypes:=
 	~sys-devel/llvm-${PV}:=[debug?]
 	!sys-devel/llvm[ocaml(-)]"
-for x in "${ALL_LLVM_TARGETS[@]}"; do
-	RDEPEND+="
-		${x}? ( ~sys-devel/llvm-${PV}[${x}] )"
-done
-unset x
 
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -43,6 +30,7 @@ BDEPEND="
 	${PYTHON_DEPS}"
 
 LLVM_COMPONENTS=( llvm )
+LLVM_USE_TARGETS=llvm
 llvm.org_set_globals
 
 pkg_setup() {
