@@ -32,7 +32,7 @@ DEPEND="
 	dev-libs/libxml2
 	net-libs/libtirpc:=
 	>=net-nds/rpcbind-0.2.4
-	sys-libs/e2fsprogs-libs
+	sys-fs/e2fsprogs
 	caps? ( sys-libs/libcap )
 	ldap? ( net-nds/openldap )
 	libmount? ( sys-apps/util-linux )
