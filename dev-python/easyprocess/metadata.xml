@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">EasyProcess</remote-id>
+		<remote-id type="github">ponty/EasyProcess</remote-id>
 	</upstream>
 </pkgmetadata>
