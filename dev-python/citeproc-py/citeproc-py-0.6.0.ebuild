@@ -1,0 +1,42 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+PYTHON_COMPAT=( python3_{8..9} )
+
+# Keep synced with tests/citeproc-test.py
+TEST_SUITE_COMMIT="c3db429ab7c6b9b9ccaaa6d3c6bb9e503f0d7b11"
+
+inherit distutils-r1
+
+DESCRIPTION="Yet another Python CSL Processor"
+HOMEPAGE="https://pypi.org/project/citeproc-py/"
+SRC_URI="
+	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+	test? (
+		https://github.com/citation-style-language/test-suite/archive/${TEST_SUITE_COMMIT}.tar.gz -> ${PN}-test-suite-${TEST_SUITE_COMMIT}.tar.gz
+	)"
+
+LICENSE="BSD-2"
+SLOT="0"
+KEYWORDS="~amd64"
+IUSE="test"
+
+BDEPEND=">=app-text/rnc2rng-2.6.3[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/lxml[${PYTHON_USEDEP}]"
+DEPEND="test? ( ${RDEPEND} )"
+
+PATCHES=( "${FILESDIR}/stop_test_from_accessing_git-${PV}.patch" )
+
+distutils_enable_tests nose
+
+src_prepare() {
+	default_src_prepare
+	mv "${WORKDIR}/test-suite-${TEST_SUITE_COMMIT}" "${S}/tests/test-suite" || die
+}
+
+python_test() {
+	nosetests -v --ignore-files=citeproc-test.py || die "Tests failed with ${EPYTHON}"
+	${EPYTHON} tests/citeproc-test.py -vs || die "Tests failed with ${EPYTHON}"
+}
