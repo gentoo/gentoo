@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools multilib-minimal prefix toolchain-funcs virtualx
+inherit autotools multilib-minimal multilib prefix toolchain-funcs virtualx
 
 MY_P="${PN}${PV/_beta/b}"
 
