@@ -12,5 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">PyVirtualDisplay</remote-id>
+		<remote-id type="github">ponty/PyVirtualDisplay</remote-id>
 	</upstream>
 </pkgmetadata>
