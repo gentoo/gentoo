@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Be a rampaging monster and destroy the city"
 HOMEPAGE="https://www.evl.uic.edu/aej/AndyBattalion.html"
@@ -36,7 +36,7 @@ src_prepare() {
 		-e "/getenv.*SCOREDIR/s|= .*|= \"${EPREFIX}/var/games\";|" \
 		-i battalion.c || die
 
-	sed '1s/1/6/' ../${PN}SUN4/${PN}.man > "${T}"/${PN}.6
+	sed '1s/1/6/' ../${PN}SUN4/${PN}.man > "${T}"/${PN}.6 || die
 
 	# Only .raw sound files are used on Linux. The .au files are not needed.
 	rm {SOUNDS,MUSIC}/*.au || die
@@ -63,6 +63,8 @@ src_install() {
 	fowners :gamestat /usr/bin/${PN} /var/games/${PN}_hiscore
 	fperms g+s /usr/bin/${PN}
 	fperms 660 /var/games/${PN}_hiscore
+
+	make_desktop_entry ${PN} ${PN^} applications-games
 }
 
 pkg_postinst() {
