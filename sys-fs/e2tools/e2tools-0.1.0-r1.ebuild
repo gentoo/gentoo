@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,8 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="sys-fs/e2fsprogs
-	sys-libs/e2fsprogs-libs"
+DEPEND="
+	sys-fs/e2fsprogs"
 RDEPEND="${DEPEND}"
 
 src_configure() {
