@@ -24,7 +24,6 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=sys-fs/e2fsprogs-1.27:=
-	>=sys-libs/e2fsprogs-libs-1.27:=
 	sys-apps/util-linux
 	bzip2? (
 		app-arch/bzip2:=
