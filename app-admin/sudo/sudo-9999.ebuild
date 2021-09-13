@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit pam multilib libtool systemd tmpfiles toolchain-funcs
+inherit pam libtool tmpfiles toolchain-funcs
 
 MY_P="${P/_/}"
 MY_P="${MY_P/beta/b}"
@@ -43,7 +43,6 @@ DEPEND="
 			net-nds/openldap[sasl]
 		)
 	)
-	nls? ( virtual/libintl )
 	pam? ( sys-libs/pam )
 	sasl? ( dev-libs/cyrus-sasl )
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
@@ -62,7 +61,6 @@ RDEPEND="
 BDEPEND="
 	sys-devel/bison
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
 "
 
 S="${WORKDIR}/${MY_P}"
