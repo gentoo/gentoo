@@ -48,6 +48,7 @@ RDEPEND="
 	dev-libs/nss
 	media-libs/alsa-lib
 	media-libs/mesa
+	net-print/cups
 	sys-apps/dbus
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
