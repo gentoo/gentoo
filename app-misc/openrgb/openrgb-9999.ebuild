@@ -39,8 +39,7 @@ BDEPEND="
 "
 
 PATCHES+=(
-	"${FILESDIR}"/OpenRGB-0.6-pkgconf.patch
-	"${FILESDIR}"/OpenRGB-0.6-plugins.patch
+	"${FILESDIR}"/OpenRGB-0.7-plugins.patch
 )
 
 src_prepare() {
