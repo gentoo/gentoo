@@ -4,7 +4,7 @@
 # Sam James <sam@gentoo.org> (2021-09-14)
 # JACK2 isn't keyworded here
 # bug #807616
-media-video/pipewire jack-sdk
+media-video/pipewire jack-client
 
 # Sam James <sam@gentoo.org> (2021-09-12)
 # dev-ruby/asciidoctor isn't keyworded here
