@@ -5,7 +5,7 @@ EAPI=8
 inherit go-module
 
 DESCRIPTION="check source code for non-inclusive language"
-HOMEPAGE="http://github.com/get-woke/woke"
+HOMEPAGE="https://getwoke.tech/"
 
 EGO_SUM=(
 	"cloud.google.com/go v0.26.0/go.mod"
