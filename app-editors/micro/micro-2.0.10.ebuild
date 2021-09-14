@@ -124,7 +124,6 @@ src_install() {
 
 pkg_postinst() {
 	# update desktop file mime cache
-	xdg_desktop_database_update
 	xdg_pkg_postinst
 
 	optfeature_header "Clipboard support with display servers:"
