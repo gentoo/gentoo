@@ -56,6 +56,10 @@ src_compile() {
 	mv pypy/module/cpyext/parse/*.h include/ || die
 	pax-mark m pypy-c
 
+	# verify the subslot
+	local soabi=$(./pypy-c -c 'import sysconfig; print sysconfig.get_config_var("SOABI")')
+	[[ ${soabi#pypy-} == ${SLOT#*/} ]] || die "update subslot to ${soabi}"
+
 	einfo "Generating caches and CFFI modules ..."
 
 	# Generate Grammar and PatternGrammar pickles.
