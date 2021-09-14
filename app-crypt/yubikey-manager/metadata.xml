@@ -10,4 +10,7 @@
 		configuring any YubiKey over all USB transports. It's a CLI
 		successor of yubikey-neo-manager.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">Yubico/yubikey-manager</remote-id>
+	</upstream>
 </pkgmetadata>
