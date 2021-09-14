@@ -20,10 +20,13 @@ HOMEPAGE="https://pwmt.org/projects/zathura-cb/"
 LICENSE="ZLIB"
 SLOT="0"
 
-DEPEND=">=app-text/zathura-0.3.9
+DEPEND="app-arch/libarchive:=
+	>=app-text/zathura-0.3.9
 	dev-libs/girara
 	dev-libs/glib:2
-	x11-libs/cairo"
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:3"
 
 RDEPEND="${DEPEND}"
 
