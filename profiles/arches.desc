@@ -27,6 +27,7 @@ sparc		stable
 x86		stable
 
 # Prefix keywords
+amd64-linux	testing
 arm-linux	testing
 arm64-linux	testing
 ppc64-linux	testing
