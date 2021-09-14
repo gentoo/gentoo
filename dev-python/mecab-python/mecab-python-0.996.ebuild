@@ -8,7 +8,7 @@ DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1
 
 DESCRIPTION="Python binding for MeCab"
-HOMEPAGE="http://taku910.github.io/mecab/"
+HOMEPAGE="https://taku910.github.io/mecab/"
 SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN%-*}/${P}.tar.gz"
 
 LICENSE="|| ( BSD LGPL-2.1 GPL-2 )"
