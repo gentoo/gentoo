@@ -10,8 +10,8 @@ PYTHON_REQ_USE="ssl(+)"
 inherit bash-completion-r1 distutils-r1
 
 DESCRIPTION="Modern command line HTTP client"
-HOMEPAGE="https://httpie.org/ https://pypi.org/project/httpie/"
-SRC_URI="https://github.com/jakubroztocil/httpie/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://httpie.io/ https://pypi.org/project/httpie/"
+SRC_URI="https://github.com/httpie/httpie/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -28,7 +28,6 @@ RDEPEND="
 BDEPEND="
 	test? (
 		${RDEPEND}
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		dev-python/pytest-httpbin[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
@@ -38,18 +37,7 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
-	local skipped_tests=()
-
-	skipped_tests+=(
-		tests/test_uploads.py::test_chunked_json
-		tests/test_uploads.py::test_chunked_form
-		tests/test_uploads.py::test_chunked_stdin
-		tests/test_uploads.py::TestMultipartFormDataFileUpload::test_multipart_chunked
-		tests/test_uploads.py::TestRequestBodyFromFilePath::test_request_body_from_file_by_path_chunked
-		tests/test_tokens.py::test_verbose_chunked
-	)
-
-	pytest -v ${skipped_tests[@]/#/--deselect } || die "Tests failed with ${EPYTHON}"
+	pytest -v || die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
