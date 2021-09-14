@@ -22,7 +22,6 @@ IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	!dev-python/pyro:0
 	>=dev-python/serpent-1.27[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? (
