@@ -1,0 +1,41 @@
+From 160203e974945ce520fe8f569458634ef898c61c Mon Sep 17 00:00:00 2001
+From: Yu Watanabe <watanabe.yu+github@gmail.com>
+Date: Fri, 10 Sep 2021 08:09:56 +0900
+Subject: [PATCH] network: fix handling of network interface renaming
+
+Fixes #20657.
+---
+ src/network/networkd-link.c | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/src/network/networkd-link.c b/src/network/networkd-link.c
+index 4afd540d2015..caad6205ae83 100644
+--- a/src/network/networkd-link.c
++++ b/src/network/networkd-link.c
+@@ -1470,17 +1470,21 @@ static int link_initialized(Link *link, sd_device *device) {
+         assert(link);
+         assert(device);
+ 
+-        if (link->state != LINK_STATE_PENDING)
+-                return 0;
++        /* Always replace with the new sd_device object. As the sysname (and possibly other properties
++         * or sysattrs) may be outdated. */
++        sd_device_ref(device);
++        sd_device_unref(link->sd_device);
++        link->sd_device = device;
+ 
+-        if (link->sd_device)
++        /* Do not ignore unamanaged state case here. If an interface is renamed after being once
++         * configured, and the corresponding .network file has Name= in [Match] section, then the
++         * interface may be already in unmanaged state. See #20657. */
++        if (!IN_SET(link->state, LINK_STATE_PENDING, LINK_STATE_UNMANAGED))
+                 return 0;
+ 
+         log_link_debug(link, "udev initialized link");
+         link_set_state(link, LINK_STATE_INITIALIZED);
+ 
+-        link->sd_device = sd_device_ref(device);
+-
+         /* udev has initialized the link, but we don't know if we have yet
+          * processed the NEWLINK messages with the latest state. Do a GETLINK,
+          * when it returns we know that the pending NEWLINKs have already been
