@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 RDEPEND="
-	>=app-misc/openrgb-0.6-r1:=
+	=app-misc/openrgb-0.6*:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
