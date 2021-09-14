@@ -17,10 +17,6 @@ IUSE="X"
 
 RESTRICT="test"
 
-BDEPEND="
-	dev-lang/perl
-	dev-perl/URI
-"
 COMMON_DEPEND="
 	app-text/docbook-xml-dtd:4.2
 	dev-libs/openssl:0
@@ -49,13 +45,13 @@ COMMON_DEPEND="
 	=kde-frameworks/kio-${PVCUT}*:5
 	=kde-frameworks/kitemviews-${PVCUT}*:5
 	=kde-frameworks/kjobwidgets-${PVCUT}*:5
-	=kde-frameworks/knotifications-${PVCUT}*:5
+	=kde-frameworks/knotifications-${PVCUT}*:5[X=]
 	=kde-frameworks/kparts-${PVCUT}*:5
 	=kde-frameworks/kservice-${PVCUT}*:5
 	=kde-frameworks/ktextwidgets-${PVCUT}*:5
 	=kde-frameworks/kunitconversion-${PVCUT}*:5
 	=kde-frameworks/kwidgetsaddons-${PVCUT}*:5
-	=kde-frameworks/kwindowsystem-${PVCUT}*:5
+	=kde-frameworks/kwindowsystem-${PVCUT}*:5[X=]
 	=kde-frameworks/kxmlgui-${PVCUT}*:5
 	=kde-frameworks/solid-${PVCUT}*:5
 	virtual/libintl
@@ -75,6 +71,10 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtxml-${QTMIN}:5
 	=kde-frameworks/kinit-${PVCUT}*:5
 	=kde-frameworks/kitemmodels-${PVCUT}*:5
+"
+BDEPEND="
+	dev-lang/perl
+	dev-perl/URI
 "
 
 PATCHES=(
