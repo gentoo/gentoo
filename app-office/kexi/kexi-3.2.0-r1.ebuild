@@ -68,6 +68,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-missing-header.patch
 	"${FILESDIR}"/${P}-postgresql-9.12.patch
 	"${FILESDIR}"/${P}-glib-2.68.patch # bug 784974
+	"${FILESDIR}"/${P}-fix-find-marble.patch # bug 812392
 )
 
 src_prepare() {
@@ -84,7 +85,7 @@ src_configure() {
 		-DKEXI_MIGRATEMANAGER_DEBUG=$(usex debug)
 		-DKEXI_AUTORISE_TABBED_TOOLBAR=$(usex experimental)
 		-DKEXI_SCRIPTS_SUPPORT=$(usex experimental)
-		$(cmake_use_find_package marble KexiMarble)
+		$(cmake_use_find_package marble Marble)
 		$(cmake_use_find_package mdb GLIB2)
 		$(cmake_use_find_package mysql MySQL)
 		$(cmake_use_find_package postgres PostgreSQL)
