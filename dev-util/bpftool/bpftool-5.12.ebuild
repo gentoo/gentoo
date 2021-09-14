@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit estack linux-info optfeature toolchain-funcs
+PYTHON_COMPAT=( python3_{8..10} )
+inherit estack linux-info optfeature python-any-r1 toolchain-funcs
 
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-pre/-git}"
@@ -39,6 +40,7 @@ DEPEND="
 "
 BDEPEND="
 	${LINUX_PATCH+dev-util/patchutils}
+	${PYTHON_DEPS}
 	dev-python/docutils
 "
 
