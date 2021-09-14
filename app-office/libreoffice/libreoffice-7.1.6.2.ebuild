@@ -107,9 +107,10 @@ SLOT="0"
 [[ ${MY_PV} == *9999* ]] || \
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux"
 
+# Bison upper bound due to bug #812923
 BDEPEND="
 	dev-util/intltool
-	sys-devel/bison
+	<sys-devel/bison-3.8.1
 	sys-devel/flex
 	sys-devel/gettext
 	virtual/pkgconfig
