@@ -65,7 +65,8 @@ dev-lang/gnat-gpl:10 lto
 
 # Stephan Hartmann <sultan@gentoo.org> (2021-06-26)
 # Requires unreleased media-video/ffmpeg.
->=www-client/chromium-93 system-ffmpeg
+>=www-client/chromium-94 system-ffmpeg
+=www-client/chromium-93.0.4577.63 system-ffmpeg
 
 # Mike Gilbert <floppym@gentoo.org> (2021-06-14)
 # Avoid running failing tests by default.
