@@ -37,6 +37,7 @@ BDEPEND="
 	>=dev-util/meson-0.59
 	virtual/pkgconfig
 	${PYTHON_DEPS}
+	$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')
 	doc? (
 		app-doc/doxygen
 		media-gfx/graphviz
@@ -103,6 +104,10 @@ PATCHES=(
 # limitsdfile related code taken from =sys-auth/realtime-base-0.1
 # with changes as necessary.
 limitsdfile=40-${PN}.conf
+
+python_check_deps() {
+	has_version -b "dev-python/docutils[${PYTHON_USEDEP}]"
+}
 
 src_prepare() {
 	default
