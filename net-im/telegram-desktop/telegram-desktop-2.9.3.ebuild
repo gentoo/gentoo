@@ -73,6 +73,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/tdesktop-2.9.3-jemalloc-only-telegram.patch"
+	"${FILESDIR}/tdesktop-2.9.3-add-libdl-dependency.patch"
 )
 
 pkg_pretend() {
