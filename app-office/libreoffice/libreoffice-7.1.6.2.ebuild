@@ -107,10 +107,9 @@ SLOT="0"
 [[ ${MY_PV} == *9999* ]] || \
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux"
 
-# Bison upper bound due to bug #812923
 BDEPEND="
 	dev-util/intltool
-	<sys-devel/bison-3.8.1
+	sys-devel/bison
 	sys-devel/flex
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -302,6 +301,7 @@ PATCHES=(
 
 	# master branch
 	"${FILESDIR}/${PN}-7.1.3.2-bashism.patch" # bug 780432
+	"${FILESDIR}/${PN}-7.1.5.2-bison-3.8.patch" # bug 812923
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"

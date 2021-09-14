@@ -1,0 +1,53 @@
+From 45227d9b79dc4f2a2aa6874cd4e3c02b7934b197 Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <sbergman@redhat.com>
+Date: Tue, 14 Sep 2021 12:20:48 +0200
+Subject: Adapt to Bison 3.8 internal yyn -> yyrule rename
+
+see
+<https://git.savannah.gnu.org/cgit/bison.git/commit/?id=f30067ed51f23802fc91761ede1506dfa72b2865>
+"glr2.cc: log the execution of deferred actions" including "Rename argument yyn
+as yyrule for clarity."
+
+YYBISON was defined as 1 rather than as a representation of the Bison version
+prior to
+<https://git.savannah.gnu.org/cgit/bison.git/commit/?id=21c147b6e5372563b7c4741deadaddb9354f4b09>
+"yacc.c: provide the Bison version as an integral macro", which shouldn't be a
+problem here.  And YYBISON is apparently completely undefined with
+/usr/bin/bison on macOS.
+
+(The preceding comment always mentioned "yyi" and "yyrmap" in apparent mismatch
+with the actually used "yyn" and "yyr1" ever since
+c25ec0608a167bcf1d891043f02273761c351701 "initial import", so just leave it
+untouched.)
+
+Change-Id: I4f901407aa21ed4abec84e661d813ee7599f02f0
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/122082
+Tested-by: Jenkins
+Reviewed-by: Stephan Bergmann <sbergman@redhat.com>
+---
+ connectivity/source/parse/sqlbison.y | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/connectivity/source/parse/sqlbison.y b/connectivity/source/parse/sqlbison.y
+index d14f36e7794f..c4be0bc00bd0 100644
+--- a/connectivity/source/parse/sqlbison.y
++++ b/connectivity/source/parse/sqlbison.y
+@@ -74,9 +74,15 @@ inline connectivity::OSQLInternalNode* newNode(const OUString& _newValue,
+ 
+ // yyi is the internal number of the rule that is currently being reduced
+ // This can be mapped to external rule number via the yyrmap.
++#if defined YYBISON && YYBISON >= 30800
++#define SQL_NEW_RULE 			newNode("", SQLNodeType::Rule, yyr1[yyrule])
++#define SQL_NEW_LISTRULE 		newNode("", SQLNodeType::ListRule, yyr1[yyrule])
++#define SQL_NEW_COMMALISTRULE   newNode("", SQLNodeType::CommaListRule, yyr1[yyrule])
++#else
+ #define SQL_NEW_RULE 			newNode("", SQLNodeType::Rule, yyr1[yyn])
+ #define SQL_NEW_LISTRULE 		newNode("", SQLNodeType::ListRule, yyr1[yyn])
+ #define SQL_NEW_COMMALISTRULE   newNode("", SQLNodeType::CommaListRule, yyr1[yyn])
++#endif
+ 
+ 
+ extern connectivity::OSQLParser* xxx_pGLOBAL_SQLPARSER;
+-- 
+cgit v1.2.1
+
