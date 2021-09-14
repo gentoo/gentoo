@@ -58,7 +58,7 @@ RDEPEND="${COMMON_DEPEND}
 	!<kde-plasma/plasma-workspace-5.18.80:5
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.16.0-no-detailed-mem-message.patch" )
+PATCHES=( "${FILESDIR}/${P}-no-detailed-mem-message.patch" )
 
 src_configure() {
 	local mycmakeargs=(
