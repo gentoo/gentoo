@@ -24,6 +24,10 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
+	test? (
+		media-libs/sdl2-image[png]
+		media-libs/sdl2-mixer[vorbis]
+	)
 "
 
 S="${WORKDIR}/${MY_P}"
