@@ -35,7 +35,7 @@ BDEPEND="virtual/pkgconfig"
 pkg_postinst() {
 	xdg_desktop_database_update
 
-	optfeature "jpeg support" x11-libs/gdk-pixbuf:=[jpeg]
+	optfeature "jpeg support" x11-libs/gdk-pixbuf[jpeg]
 }
 
 pkg_postrm() {
