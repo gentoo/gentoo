@@ -790,6 +790,9 @@ src_compile() {
 	# Calling this here supports resumption via FEATURES=keepwork
 	python_setup
 
+	# Don't inherit PYTHONPATH from environment, bug #789021, #812689
+	local -x PYTHONPATH=
+
 	#"${EPYTHON}" tools/clang/scripts/update.py --force-local-build --gcc-toolchain /usr --skip-checkout --use-system-cmake --without-android || die
 
 	# Build mksnapshot and pax-mark it.
