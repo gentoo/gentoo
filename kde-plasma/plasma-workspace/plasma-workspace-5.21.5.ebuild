@@ -170,6 +170,8 @@ src_prepare() {
 	# KDE-bug: 433730
 	use calculator ||
 		cmake_run_in runners cmake_comment_add_subdirectory calculator
+
+	cp "${FILESDIR}"/${P}-FindFontconfig.cmake cmake/FindFontconfig.cmake || die # bug 813041
 }
 
 src_configure() {
