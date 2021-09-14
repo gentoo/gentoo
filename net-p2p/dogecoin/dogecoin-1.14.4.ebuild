@@ -15,8 +15,6 @@ REQUIRED_USE="^^ ( wallet )"
 RESTRICT="!test? ( test )"
 DOGEDIR="/opt/${PN}"
 DEPEND="
-	acct-user/dogecoin
-	acct-group/dogecoin
 	dev-libs/libevent:=
 	dev-libs/protobuf
 	dev-libs/openssl
