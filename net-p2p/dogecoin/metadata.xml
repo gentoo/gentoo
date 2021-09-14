@@ -22,6 +22,6 @@
 		<flag name="zmq">Enables ZeroMQ notifications</flag>
 	</use>
 	<longdescription lang="en">
-		This package is intended for use by Dogecoin developers and testers. The goal of this package is to simplify Dogecoin build configuration and installation process by taking advantage of Gentoo's package management tools.  
+		This package is intended for use by Dogecoin developers and testers. The goal of this package is to simplify and make more convenient Dogecoin build configuration and installation process by taking advantage of Gentoo's package management tools.  
 	</longdescription>
 </pkgmetadata>

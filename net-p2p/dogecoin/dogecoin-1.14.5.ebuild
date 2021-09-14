@@ -13,8 +13,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gui +src test +wallet zmq"
 REQUIRED_USE="^^ ( wallet )"
 RESTRICT="!test? ( test )"
-BINDIR="/opt/${PN}"
+DOGEDIR="/opt/${PN}"
 DEPEND="
+	acct-user/dogecoin
+	acct-group/dogecoin
 	dev-libs/libevent:=
 	dev-libs/protobuf
 	dev-libs/openssl
@@ -39,6 +41,8 @@ src_configure() {
 	local my_econf=(
 		--enable-cxx
 		--with-incompatible-bdb
+		--bindir="${DOGEDIR}/bin"
+		--datadir="${DOGEDIR}/dogecoind"
 		CPPFLAGS="-I/usr/include/db${DB_VER}" CFLAGS="-I/usr/include/db${DB_VER}"
 		--with-gui=$(usex gui qt5 no)
 		$(use_enable test tests)
@@ -49,16 +53,22 @@ src_configure() {
 }
 
 src_install() {
-	mkdir -p "${ED}/${BINDIR}"
-	emake DESTDIR="${ED}/${BINDIR}" install
+	emake DESTDIR="${D}" install
+	insinto "${DOGEDIR}/dogecoind"
+	#Derived from net-p2p/bitcoind file operations.
+	newins "${FILESDIR}/dogecoin.conf" "dogecoin.conf"
+	newins "${FILESDIR}/dogecoin.example.conf" "dogecoin.example.conf"
+	fperms 600 "${DOGEDIR}/dogecoind/dogecoin.conf"
+	fperms 600 "${DOGEDIR}/dogecoind/dogecoin.example.conf"
+	if use src; then
+		insinto "${DOGEDIR}/src"
+		doins -r "${WORKDIR_}"
+		elog "Doge source files have been placed in ${DOGEDIR}/src."
+	fi
 }
 
 pkg_postinst() {
 	elog "${P} (unstable) development release has been installed."
-	elog "Doge binaries have been placed in ${BINDIR}/usr/bin."
-	if use src; then
-		mkdir -p "${BINDIR}/src"
-		mv "${WORKDIR_}" "${BINDIR}/src"
-		elog "Doge source files have been placed in ${BINDIR}/src."
-	fi
+	elog "Doge binaries have been placed in ${DOGEDIR}/bin."
+	elog "dogecoin.conf is in ${DOGEDIR}/dogecoind/dogecoin.conf.  It can be symlinked with where the .dogecoin resides, for example: 'ln -s ${DOGEDIR}/dogecoind/dogecoin.conf /root/.dogecoin/dogecoin.conf'."
 }
