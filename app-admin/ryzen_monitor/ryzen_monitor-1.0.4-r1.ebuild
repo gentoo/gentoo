@@ -19,7 +19,7 @@ DEPEND=""
 RDEPEND="app-admin/ryzen_smu"
 
 PATCHES=(
-	"${FILESDIR}"/CFLAGS_override_fix.patch
+	"${FILESDIR}"/fix-Makefile.patch
 )
 
 src_compile() {
