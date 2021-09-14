@@ -16,7 +16,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
-SLOT="4"
+SLOT="0"
 KEYWORDS="amd64 ~arm64 ppc x86"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
