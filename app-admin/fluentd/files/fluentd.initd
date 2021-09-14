@@ -5,7 +5,7 @@
 command=/usr/bin/fluentd
 logfile=/var/log/fluentd/fluent.log
 pidfile=/var/run/fluentd.pid
-command_args="--daemon ${pidfile} --no-supervisor -o ${logfile} ${fluentd_opts}"
+command_args="--no-supervisor -o ${logfile} ${fluentd_opts}"
 command_background=yes
 command_user=fluentd:fluentd
 retry="${retry:-TERM/10/KILL/30}"
