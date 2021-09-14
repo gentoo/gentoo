@@ -1,0 +1,85 @@
+From: 52c3e9c0f140a8742034e107fb0f371c0d73bf1d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marek=20Beh=C3=BAn?= <kabel@kernel.org>
+Date: Sun, 12 Sep 2021 04:20:11 +0200
+Subject: [PATCH] chromium-93: fix building with system-ffmpeg
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The version of ffmpeg bundled in Chromium changed ABI a little, which
+affected the code in that the type of the last parameter of
+av_packet_get_side_data() is now size_t instead of int.
+
+This causes Chromium to fail to build with system-ffmpeg if the system
+ffmpeg's version does not yet have this ABI change.
+
+Fix the code to be able to compile with older ffmpeg as well.
+
+Signed-off-by: Marek Behún <kabel@kernel.org>
+---
+ media/filters/audio_decoder_unittest.cc |  4 ++++
+ media/filters/ffmpeg_demuxer.cc         | 16 ++++++++++++++++
+ 2 files changed, 20 insertions(+)
+
+diff --git a/media/filters/audio_decoder_unittest.cc b/media/filters/audio_decoder_unittest.cc
+--- a/media/filters/audio_decoder_unittest.cc
++++ b/media/filters/audio_decoder_unittest.cc
+@@ -109,7 +109,11 @@ void SetDiscardPadding(AVPacket* packet,
+   }
+ 
+   // If the timestamp is positive, try to use FFmpeg's discard data.
++#if LIBAVUTIL_VERSION_MAJOR < 57
++  int skip_samples_size = 0;
++#else
+   size_t skip_samples_size = 0;
++#endif
+   const uint32_t* skip_samples_ptr =
+       reinterpret_cast<const uint32_t*>(av_packet_get_side_data(
+           packet, AV_PKT_DATA_SKIP_SAMPLES, &skip_samples_size));
+diff --git a/media/filters/ffmpeg_demuxer.cc b/media/filters/ffmpeg_demuxer.cc
+--- a/media/filters/ffmpeg_demuxer.cc
++++ b/media/filters/ffmpeg_demuxer.cc
+@@ -427,11 +427,19 @@ void FFmpegDemuxerStream::EnqueuePacket(
+   scoped_refptr<DecoderBuffer> buffer;
+ 
+   if (type() == DemuxerStream::TEXT) {
++#if LIBAVUTIL_VERSION_MAJOR < 57
++    int id_size = 0;
++#else
+     size_t id_size = 0;
++#endif
+     uint8_t* id_data = av_packet_get_side_data(
+         packet.get(), AV_PKT_DATA_WEBVTT_IDENTIFIER, &id_size);
+ 
++#if LIBAVUTIL_VERSION_MAJOR < 57
++    int settings_size = 0;
++#else
+     size_t settings_size = 0;
++#endif
+     uint8_t* settings_data = av_packet_get_side_data(
+         packet.get(), AV_PKT_DATA_WEBVTT_SETTINGS, &settings_size);
+ 
+@@ -443,7 +451,11 @@ void FFmpegDemuxerStream::EnqueuePacket(
+     buffer = DecoderBuffer::CopyFrom(packet->data, packet->size,
+                                      side_data.data(), side_data.size());
+   } else {
++#if LIBAVUTIL_VERSION_MAJOR < 57
++    int side_data_size = 0;
++#else
+     size_t side_data_size = 0;
++#endif
+     uint8_t* side_data = av_packet_get_side_data(
+         packet.get(), AV_PKT_DATA_MATROSKA_BLOCKADDITIONAL, &side_data_size);
+ 
+@@ -504,7 +516,11 @@ void FFmpegDemuxerStream::EnqueuePacket(
+                                        packet->size - data_offset);
+     }
+ 
++#if LIBAVUTIL_VERSION_MAJOR < 57
++    int skip_samples_size = 0;
++#else
+     size_t skip_samples_size = 0;
++#endif
+     const uint32_t* skip_samples_ptr =
+         reinterpret_cast<const uint32_t*>(av_packet_get_side_data(
+             packet.get(), AV_PKT_DATA_SKIP_SAMPLES, &skip_samples_size));
