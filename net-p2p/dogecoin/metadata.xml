@@ -15,13 +15,13 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="gui">Build Dogecoin with dogecoin-qt GUI support</flag>
-		<flag name="src">Include Doge source files with this build</flag>
+		<flag name="gui">Build Dogecoin Core with dogecoin-qt GUI support</flag>
+		<flag name="src">Include Dogecoin Core source files with this build</flag>
 		<flag name="test">Compile with tests</flag>
-		<flag name="wallet">Build Dogecoin with required wallet support</flag>
+		<flag name="wallet">Build Dogecoin Core with required wallet support</flag>
 		<flag name="zmq">Enables ZeroMQ notifications</flag>
 	</use>
 	<longdescription lang="en">
-		This package is intended for use by Dogecoin developers and testers. The goal of this package is to simplify and make more convenient Dogecoin build configuration and installation process by taking advantage of Gentoo's package management tools.  
+		This package is intended for use by Dogecoin Core developers and testers. The goal of this package is to simplify and make more convenient Dogecoin Core build configuration and installation process by taking advantage of Gentoo's package management tools.  
 	</longdescription>
 </pkgmetadata>

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="Dogecoin (unstable) 1.14.4 Development version with new code for future release."
+DESCRIPTION="Dogecoin Core 1.14.4 development version of blockchain node and RPC server."
 HOMEPAGE="https://github.com/dogecoin"
 SRC_URI="https://github.com/${PN}/${PN}/archive/refs/heads/${PV}-dev.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
@@ -61,12 +61,12 @@ src_install() {
 	if use src; then
 		insinto "${DOGEDIR}/src"
 		doins -r "${WORKDIR_}"
-		elog "Doge source files have been placed in ${DOGEDIR}/src."
+		elog "Dogecoin Core source files have been placed in ${DOGEDIR}/src."
 	fi
 }
 
 pkg_postinst() {
 	elog "${P} (unstable) development release has been installed."
-	elog "Doge binaries have been placed in ${DOGEDIR}/bin."
+	elog "Dogecoin Core binaries have been placed in ${DOGEDIR}/bin."
 	elog "dogecoin.conf is in ${DOGEDIR}/dogecoind/dogecoin.conf.  It can be symlinked with where the .dogecoin resides, for example: 'ln -s ${DOGEDIR}/dogecoind/dogecoin.conf /root/.dogecoin/dogecoin.conf'."
 }
