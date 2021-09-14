@@ -104,6 +104,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.15.2_p20210224-disable-git.patch" # downstream snapshot fix
 	"${FILESDIR}/${PN}-5.15.2_p20210406-glibc-2.33.patch" # by Fedora, bug 769989
 	"${FILESDIR}/${PN}-5.15.2_p20210521-gcc11.patch" # by Fedora, bug 768261
+	"${FILESDIR}/${PN}-5.15.2_p20210824-abseil-cpp-glibc-2.34.patch" # bug 811312
+	"${FILESDIR}/${PN}-5.15.2_p20210824-breakpad-glibc-2.34.patch" # bug 811312
 )
 
 pkg_preinst() {
