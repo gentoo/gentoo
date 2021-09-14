@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -43,8 +43,9 @@ bazel-get-flags() {
 }
 
 pkg_setup() {
-	echo ${PATH} | grep -q ccache && \
+	if has ccache ${FEATURES}; then
 		ewarn "${PN} usually fails to compile with ccache, you have been warned"
+	fi
 	java-pkg-2_pkg_setup
 }
 
@@ -63,6 +64,8 @@ src_prepare() {
 	# R: /proc/24939/setgroups
 	# C: /usr/lib/systemd/systemd
 	addpredict /proc
+
+	eapply "${FILESDIR}/${PN}-0.22.0-include-limits-for-gcc-11.patch"
 }
 
 src_compile() {

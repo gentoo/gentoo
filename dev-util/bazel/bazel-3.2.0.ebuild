@@ -44,8 +44,9 @@ bazel-get-flags() {
 }
 
 pkg_setup() {
-	echo ${PATH} | grep -q ccache && \
+	if has ccache ${FEATURES}; then
 		ewarn "${PN} usually fails to compile with ccache, you have been warned"
+	fi
 	java-pkg-2_pkg_setup
 }
 
@@ -64,6 +65,8 @@ src_prepare() {
 	# R: /proc/24939/setgroups
 	# C: /usr/lib/systemd/systemd
 	addpredict /proc
+
+	eapply "${FILESDIR}/${P}-include-limits-for-gcc-11.patch"
 }
 
 src_compile() {
