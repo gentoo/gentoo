@@ -103,7 +103,10 @@ PDEPEND="
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
 "
 
-PATCHES=( "${FILESDIR}/${P}-libglvnd-1.3.4.patch" ) # KDE-bug 440372, bug 810511
+PATCHES=(
+	"${FILESDIR}/${P}-libglvnd-1.3.4.patch" # KDE-bug 440372, bug 810511
+	"${FILESDIR}/${P}-32bit.patch" # bug 813228
+)
 
 src_prepare() {
 	ecm_src_prepare

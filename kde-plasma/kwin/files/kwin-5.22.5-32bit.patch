@@ -1,0 +1,29 @@
+From 38e24ecd6416a975db0989c21b70d6a4cc242f35 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 15 Sep 2021 19:06:23 +0200
+Subject: [PATCH] Fix build with 32-bit
+
+Follow-up to 839710201c389b7f4ed248cb3818e755a37ce977
+
+Tested-by: David Flogeras <dflogeras2@gmail.com>
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/plugins/platforms/x11/common/eglonxbackend.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/plugins/platforms/x11/common/eglonxbackend.cpp b/src/plugins/platforms/x11/common/eglonxbackend.cpp
+index d2900c7c3..c8acefe82 100644
+--- a/src/plugins/platforms/x11/common/eglonxbackend.cpp
++++ b/src/plugins/platforms/x11/common/eglonxbackend.cpp
+@@ -214,7 +214,7 @@ EGLSurface EglOnXBackend::createSurface(xcb_window_t window)
+     }
+ 
+     // Window is 64 bits on a 64-bit architecture whereas xcb_window_t is always 32 bits.
+-    unsigned long nativeWindow = window;
++    uintptr_t nativeWindow = window;
+ 
+     EGLSurface surface = EGL_NO_SURFACE;
+     if (havePlatformBase()) {
+-- 
+2.33.0
+
