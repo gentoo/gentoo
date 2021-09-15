@@ -141,11 +141,10 @@ src_prepare() {
 	if [[ ${PV} == ${QT5_PV}_p* ]]; then
 		# This is made from git, and for some reason will fail w/o .git directories.
 		mkdir -p .git src/3rdparty/chromium/.git || die
-
-		# We need to make sure this integrates well into Qt 5.15.2 installation.
-		# Otherwise revdeps fail w/o heavy changes. This is the simplest way to do it.
-		sed -e "/^MODULE_VERSION/s/5.*/${QT5_PV}*/" -i .qmake.conf || die
 	fi
+	# We need to make sure this integrates well into Qt 5.15.2 installation.
+	# Otherwise revdeps fail w/o heavy changes. This is the simplest way to do it.
+	sed -e "/^MODULE_VERSION/s/5\.15\.[3456789]/${QT5_PV}/" -i .qmake.conf || die
 
 	# QTBUG-88657 - jumbo-build could still make trouble
 	if ! use jumbo-build; then
