@@ -17,7 +17,7 @@ IUSE="declarative"
 
 DEPEND="
 	=dev-qt/qtcore-${QT5_PV}*:5=
-	=dev-qt/qtgui-${QT5_PV}*:5=
+	=dev-qt/qtgui-${QT5_PV}*:5=[png]
 	=dev-qt/qtnetwork-${QT5_PV}*
 	=dev-qt/qtprintsupport-${QT5_PV}*
 	=dev-qt/qtwidgets-${QT5_PV}*
