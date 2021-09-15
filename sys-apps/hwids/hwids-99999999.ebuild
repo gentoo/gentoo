@@ -28,6 +28,7 @@ RDEPEND="
 
 if [[ ${PV} == 99999999 ]]; then
 	BDEPEND="
+		dev-vcs/git-tools
 		net-misc/curl
 		udev? ( $(python_gen_any_dep 'dev-python/pyparsing[${PYTHON_USEDEP}]') )
 	"
@@ -48,6 +49,7 @@ src_unpack() {
 	if [[ ${PV} == 99999999 ]]; then
 		git-r3_src_unpack
 		cd "${S}" || die
+		git-restore-mtime || die
 		emake fetch
 	else
 		default
