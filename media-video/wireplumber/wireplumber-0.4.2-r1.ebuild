@@ -51,7 +51,11 @@ RDEPEND="${DEPEND}"
 DOCS=( {NEWS,README}.rst )
 
 PATCHES=(
-        "${FILESDIR}"/${PN}-0.4.2-meson-Build-tests-conditionally.patch
+	"${FILESDIR}"/${PN}-0.4.2-meson-Build-tests-conditionally.patch
+	"${FILESDIR}"/${PN}-0.4.2-lua-api-fix-object-constructors-to-fail-gracefully.patch
+	"${FILESDIR}"/${PN}-0.4.2-bluez-add-basic-check-for-nil-monitor.patch
+	"${FILESDIR}"/${PN}-0.4.2-v4l-add-basic-check-for-nil-monitor.patch
+	"${FILESDIR}"/${PN}-0.4.2-lib-wp-device-demote-missing-SPA-warning-to-message.patch
 )
 
 src_configure() {
