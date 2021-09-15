@@ -17,7 +17,7 @@ IUSE=""
 
 DEPEND="
 	=dev-qt/qtcore-${QT5_PV}*:5=
-	=dev-qt/qtgui-${QT5_PV}*
+	=dev-qt/qtgui-${QT5_PV}*[png]
 	=dev-qt/qthelp-${QT5_PV}*
 	=dev-qt/qtnetwork-${QT5_PV}*
 	=dev-qt/qtprintsupport-${QT5_PV}*
