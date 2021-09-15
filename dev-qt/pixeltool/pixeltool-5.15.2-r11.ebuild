@@ -17,7 +17,7 @@ IUSE=""
 
 DEPEND="
 	=dev-qt/qtcore-${QT5_PV}*:5=
-	=dev-qt/qtgui-${QT5_PV}*:5=
+	=dev-qt/qtgui-${QT5_PV}*:5=[png]
 	=dev-qt/qtwidgets-${QT5_PV}*
 "
 RDEPEND="${DEPEND}"
