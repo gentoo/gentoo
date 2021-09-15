@@ -6,7 +6,7 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Max Kalika <max@gentoo.org>
-# @SUPPORTED_EAPIS: 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Eclass for SSL certificates
 # @DESCRIPTION:
 # This eclass implements a standard installation procedure for installing
@@ -14,17 +14,13 @@
 # @EXAMPLE:
 # "install_cert /foo/bar" installs ${ROOT}/foo/bar.{key,csr,crt,pem}
 
-# Guard against unsupported EAPIs.  We need EAPI >= 1 for slot dependencies.
-case "${EAPI:-0}" in
-	0)
-		die "${ECLASS}.eclass: EAPI=0 is not supported.  Please upgrade to EAPI >= 1."
-		;;
-	1|2|3|4|5|6|7)
-		;;
-	*)
-		die "${ECLASS}.eclass: EAPI=${EAPI} is not supported yet."
-		;;
+case "${EAPI}" in
+	6|7|8) ;;
+	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
+
+if [[ ! ${_SSL_CERT_ECLASS} ]]; then
+_SSL_CERT_ECLASS=1
 
 # @ECLASS-VARIABLE: SSL_CERT_MANDATORY
 # @PRE_INHERIT
@@ -53,7 +49,7 @@ if [[ "${SSL_DEPS_SKIP}" == "0" ]]; then
 	fi
 
 	case "${EAPI}" in
-		1|2|3|4|5|6)
+		6)
 			DEPEND="${SSL_DEPEND}"
 		;;
 		*)
@@ -283,3 +279,5 @@ install_cert() {
 		ewarn "Some requested certificates were not generated"
 	fi
 }
+
+fi
