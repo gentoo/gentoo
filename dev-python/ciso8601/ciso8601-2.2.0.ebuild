@@ -3,13 +3,13 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit distutils-r1
 
 DESCRIPTION="Fast ISO8601 date time parser for Python written in C"
 HOMEPAGE="https://github.com/closeio/ciso8601 https://pypi.org/project/ciso8601/"
-SRC_URI="https://pypi/${P:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/closeio/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

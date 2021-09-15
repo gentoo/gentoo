@@ -3,15 +3,12 @@
 <pkgmetadata>
   <maintainer type="person" proxied="yes">
     <email>root@xakru.me</email>
-    <name>Ruslan Kh.</name>
+    <name>Ruslan Khakimov</name>
   </maintainer>
   <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
-  <use>
-    <flag name="test">Enable test support</flag>
-  </use>
   <longdescription>
     Converts ISO 8601 or RFC 3339 date time strings into Python datetime objects
     Since it’s written as a C module, it is much faster than other Python 
