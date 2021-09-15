@@ -173,6 +173,6 @@ pkg_config() {
 	if [[ -n ${ROOT} ]]; then
 		echo
 		ewarn "Mono's cert-sync cannot write to your ROOT system so you must manually"
-		ewarn "copy the certificates from ${BROOT}/usr/share/.mono to ${EROOT}/usr/share/.mono."
+		ewarn "copy the certificates from ${EPREFIX}/usr/share/.mono to ${EROOT}/usr/share/.mono."
 	fi
 }

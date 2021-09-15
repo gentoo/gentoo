@@ -28,6 +28,7 @@ RDEPEND="
 	sci-libs/hdf5[cxx]
 	sci-libs/libecpint
 	sci-libs/libxc
+	sci-libs/libint:2
 	~sci-libs/votca-tools-${PV}
 "
 DEPEND="${RDEPEND}"

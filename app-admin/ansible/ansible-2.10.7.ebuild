@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_USE_SETUPTOOLS=bdepend
 
-inherit distutils-r1 eutils
+inherit distutils-r1
 
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
 HOMEPAGE="https://ansible.com/"
@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_BRANCH="devel"
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86 ~x64-macos"
 fi
 
 LICENSE="GPL-3"
@@ -36,18 +36,17 @@ RDEPEND="
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	net-misc/sshpass
 	virtual/ssh
-	app-admin/ansible-base
+	<app-admin/ansible-base-2.11
 "
 DEPEND="
 	>=dev-python/packaging-16.6[${PYTHON_USEDEP}]
-	app-admin/ansible-base
+	<app-admin/ansible-base-2.11
 	test? (
 		${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
 		>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]
 		dev-python/passlib[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}]
-		dev-python/unittest2[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)"
 

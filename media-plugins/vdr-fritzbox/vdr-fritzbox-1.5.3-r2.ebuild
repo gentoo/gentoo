@@ -1,7 +1,7 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
 inherit vdr-plugin-2
 
@@ -11,27 +11,17 @@ SRC_URI="https://github.com/jowi24/vdr-fritz/releases/download/${PV}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND="dev-libs/libgcrypt:0
-	dev-libs/boost[threads]
-	media-video/vdr"
+DEPEND="
+	dev-libs/libgcrypt:=
+	dev-libs/boost:=[threads(+)]
+	>=media-video/vdr-1.7.34
+"
 RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}-boost-1.67.patch" )
-
-src_prepare() {
-	vdr-plugin-2_src_prepare
-
-	# do not call ar directly
-	export _VDRAR="$(tc-getAR)"
-	sed -e "s:\@ar :\@\$(_VDRAR) :" \
-		-i libconv++/Makefile \
-		-i libfritz++/Makefile \
-		-i liblog++/Makefile \
-		-i libnet++/Makefile || die
-}
 
 pkg_postinst() {
 	elog "It is recommend to update your firmware release to the latest."

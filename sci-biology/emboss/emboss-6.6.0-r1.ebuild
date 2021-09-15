@@ -8,7 +8,9 @@ EBO_EAUTORECONF=1
 inherit emboss-r2 readme.gentoo-r1
 
 DESCRIPTION="The European Molecular Biology Open Software Suite - A sequence analysis package"
-SRC_URI="ftp://emboss.open-bio.org/pub/${PN^^}/${P^^}.tar.gz"
+SRC_URI="
+	ftp://emboss.open-bio.org/pub/${PN^^}/${P^^}.tar.gz
+	https://dev.gentoo.org/~soap/distfiles/${P}-patches.tar.xz"
 S="${WORKDIR}/${P^^}"
 
 LICENSE+=" Apache-2.0 GPL-3+ CC-BY-3.0"
@@ -29,10 +31,12 @@ PDEPEND="
 	)"
 
 PATCHES=(
-	"${FILESDIR}"/${P}_fix-build-system.patch
-	"${FILESDIR}"/${P}_FORTIFY_SOURCE-fix.patch
-	"${FILESDIR}"/${P}_plplot-declarations.patch
-	"${FILESDIR}"/${P}_qa-implicit-declarations.patch
+	"${WORKDIR}"/patches/${P}-fix-build-system.patch
+	"${WORKDIR}"/patches/${P}-FORTIFY_SOURCE-fix.patch
+	"${WORKDIR}"/patches/${P}-plplot-declarations.patch
+	"${WORKDIR}"/patches/${P}-qa-implicit-declarations.patch
+	"${WORKDIR}"/patches/${P}-C99-bool.patch
+	"${WORKDIR}"/patches/${P}-Wimplicit-function-declaration.patch
 )
 
 src_install() {

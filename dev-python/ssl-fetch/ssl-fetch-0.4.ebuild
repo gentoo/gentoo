@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~dolsen/releases/ssl-fetch/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos"
 
 RDEPEND=">=dev-python/requests-1.2.1[${PYTHON_USEDEP}]"
 
@@ -24,5 +24,5 @@ pkg_postinst() {
 	elog
 	elog "Please file any enhancement requests, or bugs"
 	elog "at https://github.com/dol-sen/ssl-fetch/issues"
-	elog "I am also on IRC @ #gentoo-portage, #gentoo-keys,... of the Freenode network"
+	einfo "I am also on IRC @ #gentoo-ci of the Libera.Chat network"
 }

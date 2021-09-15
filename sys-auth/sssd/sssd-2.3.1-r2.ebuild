@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -62,15 +62,12 @@ DEPEND="
 		dev-libs/jansson:0=
 		net-libs/http-parser:0=
 		net-misc/curl:0=
-	)
-	"
-
+	)"
 RDEPEND="${DEPEND}
 	>=sys-libs/glibc-2.17[nscd]
-	selinux? ( >=sec-policy/selinux-sssd-2.20120725-r9 )
-	"
-BDEPEND="${DEPEND}
-	>=sys-devel/autoconf-2.69-r5
+	selinux? ( >=sec-policy/selinux-sssd-2.20120725-r9 )"
+BDEPEND=">=sys-devel/autoconf-2.69-r5
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	test? (
 		dev-libs/check

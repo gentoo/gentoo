@@ -1,0 +1,19 @@
+diff --git a/src/Makefile b/src/Makefile
+index 5b2cf1c..9e1239d 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -87,6 +87,14 @@ FINAL_LIBS=-lm
+ FINAL_LIBS+=@LUA_LIBS@
+ DEBUG=-g -ggdb
+ 
++ifneq (,$(filter powerpc ppc,$(uname_M)))
++        FINAL_LIBS+=-latomic
++else
++ifneq (,$(findstring ppc,$(uname_M)))
++        FINAL_LIBS+=-latomic
++endif
++endif
++
+ # Linux ARM32 needs -latomic at linking time
+ ifneq (,$(findstring armv,$(uname_M)))
+         FINAL_LIBS+=-latomic

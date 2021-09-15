@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -13,7 +13,7 @@ S="${WORKDIR}"/kiwi-${PV}
 
 LICENSE="Clear-BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	>=dev-python/cppy-1.1.0[${PYTHON_USEDEP}]

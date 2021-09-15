@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1
 
@@ -17,12 +17,13 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="
 	app-eselect/eselect-vi
-	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/docopt[${PYTHON_USEDEP}]
-	dev-python/wcwidth[${PYTHON_USEDEP}]
+	dev-python/prompt_toolkit[${PYTHON_USEDEP}]
 	dev-python/pyflakes[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
-	dev-python/prompt_toolkit[${PYTHON_USEDEP}]"
+	dev-python/six[${PYTHON_USEDEP}]
+	dev-python/wcwidth[${PYTHON_USEDEP}]
+"
 
 eselect_vi_update() {
 	einfo "Calling eselect vi update..."

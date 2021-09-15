@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>sudinave@gmail.com</email>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
 		<name>Ionen Wolkens</name>
 	</maintainer>
 	<maintainer type="person">
 		<email>soap@gentoo.org</email>
+		<name>David Seifert</name>
 	</maintainer>
 	<use>
-		<flag name="compat">Install non-GLVND libGL for backwards compatibility</flag>
 		<flag name="driver">Install kernel driver modules</flag>
-		<flag name="kms">Enable support for kernel mode setting (KMS)</flag>
 		<flag name="tools">Install additional tools such as nvidia-settings</flag>
-		<flag name="uvm">Install the Unified Memory kernel module (nvidia-uvm) for sharing memory between CPU and GPU in CUDA programs</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:nvidia:gpu_driver</remote-id>

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils pam autotools multilib readme.gentoo-r1
+inherit pam autotools multilib readme.gentoo-r1
 
 DESCRIPTION="PAM interface for the S/Key authentication system"
 HOMEPAGE="http://freshmeat.net/projects/pam_skey/"
@@ -19,7 +19,7 @@ RDEPEND="net-libs/libnsl:0=
 	>=sys-auth/skey-1.1.5-r4"
 DEPEND="${RDEPEND}"
 
-PATCHES="${WORKDIR}/patch"
+PATCHES=("${WORKDIR}/patch")
 DOCS="README INSTALL"
 
 src_prepare() {

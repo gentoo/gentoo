@@ -1,5 +1,5 @@
---- taglist-3.4/plugin/taglist.vim.orig	2004-10-02 00:12:58.400215576 +0100
-+++ taglist-3.4/plugin/taglist.vim	2004-10-02 00:26:28.535056360 +0100
+--- a/plugin/taglist.vim
++++ b/plugin/taglist.vim
 @@ -205,6 +205,9 @@
  let s:tlist_def_cobol_settings = 'cobol;d:data;f:file;g:group;p:paragraph;' .
                                 \ 'P:program;s:section'

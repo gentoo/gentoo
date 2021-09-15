@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils
+inherit edos2unix
 
 DESCRIPTION="RATS - Rough Auditing Tool for Security"
 HOMEPAGE="https://code.google.com/p/rough-auditing-tool-for-security/"

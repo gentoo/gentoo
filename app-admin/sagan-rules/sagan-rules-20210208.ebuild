@@ -10,8 +10,7 @@ S="${WORKDIR}/rules"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="+lognorm"
+KEYWORDS="amd64 x86"
 
 PDEPEND="app-admin/sagan"
 
@@ -20,7 +19,5 @@ src_install() {
 	doins *.config
 	doins *rules
 	doins *map
-	if use lognorm ; then
-		doins normalization.rulebase
-	fi
+	doins normalization.rulebase
 }

@@ -1,4 +1,5 @@
 https://bugs.gentoo.org/706154
+https://bugs.gentoo.org/810658
 --- a/configure
 +++ b/configure
 @@ -2583,7 +2583,7 @@ EOF
@@ -6,7 +7,7 @@ https://bugs.gentoo.org/706154
  				echo '#define TIFFVERSION TIFF_VERSION'
  				echo '#define TIFFHEADER TIFFHeader';;
 -		4.[01])		tiff_runlen_t="uint32"
-+		4.[012])	tiff_runlen_t="uint32"
++		4.[0123456789])	tiff_runlen_t="uint32"
  				tiff_offset_t="uint64"
  				echo '#define TIFFSTRIPBYTECOUNTS uint64'
  				echo '#define TIFFVERSION TIFF_VERSION_CLASSIC'

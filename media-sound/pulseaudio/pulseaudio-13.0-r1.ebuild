@@ -19,7 +19,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x
 
 # +alsa-plugin as discussed in bug #519530
 IUSE="+alsa +alsa-plugin +asyncns bluetooth +caps dbus doc equalizer elogind gconf
-+gdbm +glib gtk ipv6 jack libsamplerate libressl lirc native-headset cpu_flags_arm_neon
++gdbm +glib gtk ipv6 jack libsamplerate lirc native-headset cpu_flags_arm_neon
 ofono-headset +orc oss qt5 realtime selinux sox ssl systemd system-wide tcpd test
 +udev +webrtc-aec +X zeroconf"
 
@@ -71,10 +71,7 @@ RDEPEND="
 	ofono-headset? ( >=net-misc/ofono-1.13 )
 	orc? ( >=dev-lang/orc-0.4.15 )
 	sox? ( >=media-libs/soxr-0.1.1 )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	media-libs/speexdsp
 	gdbm? ( sys-libs/gdbm:= )
 	webrtc-aec? ( >=media-libs/webrtc-audio-processing-0.2 )
@@ -114,6 +111,7 @@ RDEPEND="${RDEPEND}
 
 BDEPEND="
 	doc? ( app-doc/doxygen )
+	orc? ( >=dev-lang/orc-0.4.15 )
 	system-wide? ( dev-util/unifdef )
 	test? ( >=dev-libs/check-0.9.10 )
 	sys-devel/gettext
@@ -123,6 +121,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/pulseaudio-11.1-disable-flat-volumes.patch # bug 627894
+	"${FILESDIR}"/${P}-clang.patch
 )
 
 pkg_pretend() {
@@ -182,6 +181,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with equalizer fftw)
 		$(multilib_native_use_with sox soxr)
 		$(multilib_native_usex gdbm '--with-database=gdbm' '--with-database=simple')
+		$(multilib_native_usex orc "ORCC=${BROOT}/usr/bin/orcc" '')
 		$(use_enable glib glib2)
 		$(use_enable asyncns)
 		$(use_enable cpu_flags_arm_neon neon-opt)
@@ -313,6 +313,8 @@ multilib_src_install_all() {
 pkg_postinst() {
 	gnome2_schemas_update
 	if use system-wide; then
+		tmpfiles_process "${PN}.conf"
+
 		elog "You have enabled the 'system-wide' USE flag for pulseaudio."
 		elog "This mode should only be used on headless servers, embedded systems,"
 		elog "or thin clients. It will usually require manual configuration, and is"

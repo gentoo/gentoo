@@ -15,7 +15,7 @@ LUA_COMPAT=( lua5-{1..2} )
 VIRTUALX_REQUIRED="manual"
 
 WX_GTK_VER="3.0"
-inherit cmake desktop flag-o-matic lua-single virtualx wxwidgets xdg-utils
+inherit cmake desktop lua-single virtualx wxwidgets xdg-utils
 
 DESCRIPTION="Cross-platform 3D realtime strategy game"
 HOMEPAGE="https://megaglest.org/ https://github.com/MegaGlest/megaglest-source"

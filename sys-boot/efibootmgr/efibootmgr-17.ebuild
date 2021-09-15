@@ -11,13 +11,14 @@ SRC_URI="https://github.com/rhboot/efibootmgr/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ia64 x86"
 
 RDEPEND="
 	sys-apps/pciutils
 	>=sys-libs/efivar-37:=
 "
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-efivar-37-conflict.patch"

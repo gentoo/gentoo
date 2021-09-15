@@ -7,7 +7,7 @@ GNOME2_LA_PUNT="yes"
 
 inherit gnome2
 
-DESCRIPTION="Search tool for GNOME 3"
+DESCRIPTION="Search tool for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Attic/GnomeUtils"
 
 LICENSE="GPL-2 FDL-1.1"

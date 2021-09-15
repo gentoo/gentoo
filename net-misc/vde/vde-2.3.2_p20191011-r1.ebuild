@@ -14,13 +14,13 @@ elif [[ ${PV} = *_p* ]]; then
 	MY_PN="vde-2"
 	COMMIT="c7b36a57831a9067c8619c3e17a03e595623b3eb"
 	SRC_URI="https://github.com/virtualsquare/${MY_PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 	S="${WORKDIR}/${MY_PN}-${COMMIT}"
 else
 	MY_P="${PN}2-${PV}"
 	SRC_URI="mirror://sourceforge/vde/${MY_P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -29,16 +29,10 @@ HOMEPAGE="https://virtualsquare.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-#IUSE="pcap selinux ssl libressl static-libs"
 # upstream switched to wolfssl
 IUSE="pcap selinux static-libs"
 
 COMMON_DEPS="pcap? ( net-libs/libpcap )"
-# upstream switched to wolfssl
-#	ssl? (
-#		!libressl? ( dev-libs/openssl:0= )
-#		libressl? ( dev-libs/libressl:0= )
-#	)"
 DEPEND="${COMMON_DEPS}"
 RDEPEND="${COMMON_DEPS}
 	acct-group/qemu

@@ -26,7 +26,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	media-gfx/imagemagick[png]
 	virtual/pkgconfig
-	www-client/lynx"
+	www-client/lynx
+	dev-vcs/git"
 
 PATCHES=( "${FILESDIR}"/${P}-automake.patch )
 

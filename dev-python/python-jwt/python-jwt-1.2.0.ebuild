@@ -1,8 +1,9 @@
 # Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_8 python3_9 )
+EAPI=8
+
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="JSON Web Token library for python 3"
@@ -20,7 +21,10 @@ LICENSE="Apache-2.0"
 SLOT="0"
 
 BDEPEND="test? ( dev-python/freezegun[${PYTHON_USEDEP}] )"
-RDEPEND="dev-python/cryptography[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/cryptography[${PYTHON_USEDEP}]
+	!dev-python/pyjwt
+"
 
 distutils_enable_tests pytest
 

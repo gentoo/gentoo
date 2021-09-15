@@ -1,0 +1,15 @@
+upstream issue - https://github.com/igraph/igraph/issues/1694
+
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -678,10 +678,8 @@ add_examples(
+   FOLDER examples/simple NAMES
+   igraph_scg_grouping
+   igraph_scg_grouping2
+-  igraph_scg_grouping3
+   igraph_scg_grouping4
+   igraph_scg_semiprojectors
+-  igraph_scg_semiprojectors2
+   igraph_scg_semiprojectors3
+   scg
+ )

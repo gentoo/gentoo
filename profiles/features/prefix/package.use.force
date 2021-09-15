@@ -5,5 +5,5 @@
 # We want to use rust-bin (with fixes) or source-built rust
 # to bootstrap rust properly.
 # See https://github.com/gentoo/gentoo/pull/19815 for discussion
-# And https://bugs.gentoo.org/682370 https://bugs.gentoo.org/682370
+# and bug #682370, bug #682370
 dev-lang/rust system-bootstrap

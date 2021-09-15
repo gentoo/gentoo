@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools multilib-minimal prefix toolchain-funcs virtualx
+inherit autotools multilib-minimal multilib prefix toolchain-funcs virtualx
 
 MY_P="${PN}${PV/_beta/b}"
 
@@ -28,7 +28,7 @@ RDEPEND="
 	~dev-lang/tcl-${PV}:0=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	!aqua? ( x11-base/xorg-proto )"
-
+BDEPEND="virtual/pkgconfig"
 # Not bumped to 8.6
 #RESTRICT=test
 

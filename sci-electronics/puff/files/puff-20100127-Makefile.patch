@@ -1,0 +1,19 @@
+--- Makefile.old	2010-01-22 18:02:32.000000000 +0100
++++ Makefile	2021-07-03 16:55:59.092249878 +0200
+@@ -1,12 +1,13 @@
+ X11LIBDIR = /usr/X11R6/lib
+ PASCALCOMPILER = fpc
+-CC = gcc
+-CFLAGS = -O2 -g
++#CC = gcc
++#CFLAGS = -O2 -g
+ 
+ POBJS =	puff.o pfart.o pffft.o pfmsc.o pfrw.o pfst.o pfun1.o pfun2.o pfun3.o xgraph.o
+ 
+ puff:	$(POBJS) puff_c.o ppas.sh
+-	sed 's/link.res/link.res puff_c.o \/usr\/lib\/libX11.so/' <ppas.sh  >ppasx.sh
++	sed -i -e 's!^[^[:space:]]\+ -b!$(LD) -b!g' ppas.sh
++	sed 's/.res/.res $(LDFLAGS) puff_c.o \/usr\/lib64\/libX11.so/' <ppas.sh  >ppasx.sh
+ 	sh ppasx.sh
+ 
+ %.o:	%.pas

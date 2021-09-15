@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools
 
 DESCRIPTION="MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application"
@@ -32,7 +33,7 @@ done
 # program itself is GPL-2, and mascots are free-noncomm
 LICENSE="GPL-2 free-noncomm"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="gnutls nls"
 
 RDEPEND="
@@ -43,15 +44,17 @@ RDEPEND="
 	!gnutls? ( dev-libs/openssl:0= )
 	x11-libs/gtk+:3
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 "
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.0-CVE-2015-8614.patch
 	"${FILESDIR}"/${PN}-3.4.0-Werror.patch
 	"${FILESDIR}"/${PN}-3.4.0-fno-common.patch
 	"${FILESDIR}"/${PN}-3.4.0-windres.patch
+	"${FILESDIR}"/${PN}-3.4.0-openssl-1.1.0.patch
 )
 
 src_prepare() {

@@ -1,6 +1,45 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-08-14)
+# Needs Raspberry Pi specific applications
+media-video/mjpg-streamer -input-raspicam
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2021-08-08)
+# dev-games/ogre doesn't build on arm64, see https://bugs.gentoo.org/806776#c12
+dev-games/mygui ogre
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-08-02)
+# pandoc not keyworded on arm64
+sys-apps/exa man
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-24)
+# not supported on arm64
+sys-boot/grub grub_platforms_qemu grub_platforms_uboot
+
+# Sam James <sam@gentoo.org> (2021-07-25)
+# At present, dev-lang/fpc doesn't support arm64.
+# bug #801649
+dev-util/diffoscope pascal
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-18)
+# media-libs/rnnoise, media-plugins/gst-plugins-webrtc
+# and media-plugins/zam-plugins not keyworded here
+media-sound/easyeffects rnnoise webrtc zamaudio
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-07-04)
+# Needed until media-libs/libsdl2[vulkan] is unmasked on this arch.
+games-fps/yamagi-quake2 vulkan
+
+# Stefan Strogin <steils@gentoo.org> (2021-06-27)
+# Requires dev-python/adblock which is not keyworded on arm64 yet
+www-client/qutebrowser adblock
+
+# Sam James <sam@gentoo.org> (2021-04-14)
+# Supports 64-bit NEON
+# Note: libpng-compat 1.5.30 does NOT seem to.
+media-libs/libpng -cpu_flags_arm_neon
+
 # Mike Gilbert <floppym@gentoo.org> (2021-03-29)
 # Unmask TPM on supported archs.
 sys-apps/systemd -tpm
@@ -61,22 +100,9 @@ net-proxy/haproxy device-atlas
 # media-libs/liblastfm fails to build with tests Bug #758896
 media-sound/clementine lastfm
 
-# Roy Bamford <neddyseagoon@gentoo.org< (2020-12-01)
-# hfs xfs fail build and/or tests on arm64
-# See bug #747181
-sys-block/gparted xfs
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-08)
 # dev-util/kdevelop-php is not keyworded, bug #751337
 >=kde-apps/umbrello-20.08.3 php
-
-# Marek Szuba <marecki@gentoo.org> (2020-11-06)
-# media-gfx/digikam has no arm64 keyword yet. Bug #753362.
-media-gfx/gmic digikam
-
-# Marek Szuba <marecki@gentoo.org> (2020-11-06)
-# media-gfx/gmic has no arm64 keyword yet. Bug #753356.
-media-gfx/darktable gmic
 
 # Sam James <sam@gentoo.org> (2020-10-03)
 # Builds & tests pass on arm64.
@@ -107,11 +133,6 @@ sys-block/tgt rbd
 # dev-lua/busted is not keyworded yet
 dev-lua/mpack test
 
-# Sam James <sam@gentoo.org> (2020-07-09)
-# mariadb[rocksdb] fails to build on arm64
-# bug #731998
-dev-db/mariadb rocksdb
-
 # Sam James <sam@gentoo.org> (2020-07-03)
 # Rust is available here
 # bug #728558
@@ -122,7 +143,7 @@ media-video/ffmpeg -rav1e
 sys-block/fio -io-uring
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-19)
-# Requires dev-util/dwarves.
+# Requires dev-util/pahole.
 sys-kernel/gentoo-kernel debug
 sys-kernel/vanilla-kernel debug
 
@@ -199,10 +220,6 @@ sys-apps/flashrom jlink-spi
 # Aaron Bauman <bman@gentoo.org> (2019-08-05)
 # dep not keyworded here
 media-gfx/gnome-photos upnp-av
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-01)
-# not yet keyworded
-dev-java/openjdk javafx
 
 # Aaron Bauman <bman@gentoo.org> (2019-04-08)
 # app-text/dblatex not keyword yet
@@ -362,10 +379,6 @@ app-crypt/heimdal afs
 # Only available on some architectures.
 dev-java/icedtea -shenandoah
 
-# Markus Meier <maekke@gentoo.org> (2017-03-24)
-# unkeyworded deps, bug #552330
-app-portage/g-sorcery bson
-
 # Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
 # Unkeyworded dependencies
 app-admin/rsyslog mongodb
@@ -379,10 +392,6 @@ net-libs/libpcap bluetooth
 app-text/evince dvi nautilus postscript t1lib xps
 net-wireless/blueman appindicator
 x11-libs/gtk+ cloudprint
-
-# Steev Klimaszewski <steev@gentoo.org> (2016-03-04)
-# Chromium uses an internal tcmalloc that doesn't support this arch yet.
-www-client/chromium tcmalloc
 
 # Markus Meier <maekke@gentoo.org> (2013-12-26)
 # Unkeyworded deps, bug #488724

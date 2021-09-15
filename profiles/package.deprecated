@@ -17,6 +17,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-06-30)
+# Deprecated upstream, see HOMEPAGE
+dev-perl/Mail-Sender
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-06-11)
+# gtk2. Nuff said. See HOMEPAGE, too.
+dev-perl/Gtk2-SourceView2
+dev-perl/Gtk2-Unique
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-14)
+# because of unmasking java 11, which does not support bytecode older
+# than 1.6, those are deprecated in the ebuild. also, as the lowest
+# java version we support is 1.8, the restriction is lifted even more.
+<virtual/jdk-1.8
+<virtual/jre-1.8
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-20)
 # dev-qt/qtwebkit is in the process of being removed, tracker bug #684580
 dev-qt/qtwebkit
@@ -40,11 +56,6 @@ gnome-base/gnome-vfs
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-08)
 # x11-libs/gtkglext is in the process of being removed, tracker bug #698950
 x11-libs/gtkglext
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-02-22)
-# virtual/libffi has only one dev-libs/libffi provider. Use that instead.
-# bug #699796.
-virtual/libffi
 
 # Zac Medico <zmedico@gentoo.org> (2019-12-06)
 # These golang libraries should be vendored either by upstream or via

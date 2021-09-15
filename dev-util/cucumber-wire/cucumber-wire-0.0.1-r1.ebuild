@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Executable feature scenarios"
-HOMEPAGE="https://github.com/aslakhellesoy/cucumber/wikis"
+HOMEPAGE="https://cucumber.io/"
 LICENSE="Ruby"
 
 KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~s390 sparc x86"

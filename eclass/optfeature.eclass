@@ -4,11 +4,12 @@
 # @ECLASS: optfeature.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Advertise optional functionality that might be useful to users
 
-case ${EAPI:-0} in
-	[0-7]) ;;
-	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
 esac
 
 if [[ -z ${_OPTFEATURE_ECLASS} ]]; then
@@ -52,11 +53,13 @@ _OPTFEATURE_DOHEADER=true
 # two optfeature calls. Then a custom header is set that is going to be
 # displayed in case dev-db/a or dev-db/b are not installed.
 # @CODE
-#	optfeature "foo support" app-misc/foo
-#	optfeature "bar support" app-misc/bar
-#	optfeature_header "Install optional database backends:"
-#	optfeature "a DB backend" dev-db/a
-#	optfeature "b DB backend" dev-db/b
+# pkg_postinst() {
+# 	optfeature "foo support" app-misc/foo
+# 	optfeature "bar support" app-misc/bar
+# 	optfeature_header "Install optional database backends:"
+# 	optfeature "a DB backend" dev-db/a
+# 	optfeature "b DB backend" dev-db/b
+# }
 # @CODE
 optfeature_header() {
 	debug-print-function ${FUNCNAME} "$@"
@@ -74,9 +77,11 @@ optfeature_header() {
 # app-misc/bar or app-misc/baz[bar] for optional bar support
 # and either both app-misc/a and app-misc/b or app-misc/c for alphabet support.
 # @CODE
-#	optfeature "foo support" app-misc/foo
-#	optfeature "bar support" app-misc/bar app-misc/baz[bar]
-#	optfeature "alphabet support" "app-misc/a app-misc/b" app-misc/c
+# pkg_postinst() {
+# 	optfeature "foo support" app-misc/foo
+# 	optfeature "bar support" app-misc/bar app-misc/baz[bar]
+# 	optfeature "alphabet support" "app-misc/a app-misc/b" app-misc/c
+# }
 # @CODE
 optfeature() {
 	debug-print-function ${FUNCNAME} "$@"

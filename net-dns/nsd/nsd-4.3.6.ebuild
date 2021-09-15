@@ -16,8 +16,8 @@ SRC_URI="http://www.nlnetlabs.nl/downloads/${PN}/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~amd64 ~x86"
-IUSE="bind8-stats dnstap ipv6 libevent minimal-responses mmap munin +nsec3 ratelimit root-server runtime-checks ssl systemd libressl"
+KEYWORDS="amd64 x86"
+IUSE="bind8-stats dnstap ipv6 libevent minimal-responses mmap munin +nsec3 ratelimit root-server runtime-checks ssl systemd"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -31,8 +31,7 @@ RDEPEND="
 	libevent? ( dev-libs/libevent )
 	munin? ( net-analyzer/munin )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		dev-libs/openssl:0=
 	)
 	systemd? ( sys-apps/systemd )
 "

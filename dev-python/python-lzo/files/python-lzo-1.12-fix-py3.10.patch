@@ -1,0 +1,159 @@
+diff --git a/lzomodule.c b/lzomodule.c
+index b5fa542..e9ca432 100644
+--- a/lzomodule.c
++++ b/lzomodule.c
+@@ -31,6 +31,8 @@
+ 
+ #define MODULE_VERSION  "1.12"
+ 
++#define PY_SSIZE_T_CLEAN
++
+ #include <Python.h>
+ #include <lzo/lzo1x.h>
+ 
+@@ -83,7 +85,7 @@ compress(PyObject *dummy, PyObject *args)
+     lzo_uint in_len;
+     lzo_uint out_len;
+     lzo_uint new_len;
+-    int len;
++    Py_ssize_t len;
+     int level = 1;
+     int header = 1;
+     int err;
+@@ -95,6 +97,16 @@ compress(PyObject *dummy, PyObject *args)
+     if (len < 0)
+         return NULL;
+ 
++    if (len > LZO_UINT_MAX) {
++      PyErr_SetString(LzoError, "Input size is larger than LZO_UINT_MAX");
++      return NULL;
++    }
++
++    if ((len + len / 16 + 64 + 3) > LZO_UINT_MAX) {
++      PyErr_SetString(LzoError, "Output size is larger than LZO_UINT_MAX");
++      return NULL;
++    }
++
+     in_len = len;
+     out_len = in_len + in_len / 16 + 64 + 3;
+ 
+@@ -189,7 +201,7 @@ decompress(PyObject *dummy, PyObject *args)
+     lzo_uint in_len;
+     lzo_uint out_len;
+     lzo_uint new_len;
+-    int len;
++    Py_ssize_t len;
+     int buflen = -1;
+     int header = 1;
+     int err;
+@@ -274,7 +286,7 @@ optimize(PyObject *dummy, PyObject *args)
+     lzo_uint in_len;
+     lzo_uint out_len;
+     lzo_uint new_len;
+-    int len;
++    Py_ssize_t len;
+     int err;
+     int header = 1;
+     int buflen = -1;
+@@ -356,7 +368,7 @@ static PyObject *
+ adler32(PyObject *dummy, PyObject *args)
+ {
+     char *buf;
+-    int len;
++    Py_ssize_t len;
+     unsigned long val = 1; /* == lzo_adler32(0, NULL, 0); */
+ 
+     UNUSED(dummy);
+@@ -392,7 +404,7 @@ static PyObject *
+ crc32(PyObject *dummy, PyObject *args)
+ {
+     char *buf;
+-    int len;
++    Py_ssize_t len;
+     unsigned long val = 0; /* == lzo_crc32(0, NULL, 0); */
+ 
+     UNUSED(dummy);
+diff --git a/tests/test.py b/tests/test.py
+index 9a96ce7..af761d9 100644
+--- a/tests/test.py
++++ b/tests/test.py
+@@ -96,11 +96,17 @@ def test_version():
+ 
+ def test_lzo():
+     yield gen, b"aaaaaaaaaaaaaaaaaaaaaaaa"
+-    yield gen_raw, b"aaaaaaaaaaaaaaaaaaaaaaaa"
+     yield gen, b"abcabcabcabcabcabcabcabc"
+-    yield gen_raw, b"abcabcabcabcabcabcabcabc"
+     yield gen, b"abcabcabcabcabcabcabcabc", 9
++
++
++def test_lzo_raw():
++    yield gen_raw, b"aaaaaaaaaaaaaaaaaaaaaaaa"
++    yield gen_raw, b"abcabcabcabcabcabcabcabc"
+     yield gen_raw, b"abcabcabcabcabcabcabcabc", 9
++
++
++def test_lzo_empty():
+     yield gen, b""
+     yield gen_raw, b""
+ 
+@@ -113,41 +119,8 @@ def test_lzo_raw_big():
+     gen_raw(b" " * 131072)
+ 
+ 
+-def main(args):
+-    # display version information and module documentation
+-    print("LZO version %s (0x%x), %s" % (lzo.LZO_VERSION_STRING, lzo.LZO_VERSION, lzo.LZO_VERSION_DATE))
+-    print(lzo.__file__)
+-    print()
+-    print(lzo.__doc__)
+-
+-    # display additional module information
+-    ## print dir(lzo)
+-    ## print_modinfo()
+-
+-    # compress some simple strings
+-    gen(b"aaaaaaaaaaaaaaaaaaaaaaaa")
+-    gen_raw(b"aaaaaaaaaaaaaaaaaaaaaaaa")
+-    gen(b"abcabcabcabcabcabcabcabc")
+-    gen_raw(b"abcabcabcabcabcabcabcabc")
+-    gen(b"abcabcabcabcabcabcabcabc", level=9)
+-    gen_raw(b"abcabcabcabcabcabcabcabc", level=9)
+-    gen(b" " * 131072)
+-    gen_raw(b" " * 131072)
+-    gen(b"")
+-    gen_raw(b"")
+-    print("Simple compression test passed.")
+-
+-    test_version()
+-
+-    # force an exception (because of invalid compressed data)
+-    assert issubclass(lzo.error, Exception)
+-    try:
+-        x = lzo.decompress("xx")
+-    except lzo.error:
+-        pass
+-    else:
+-        print("Exception handling does NOT work !")
+-    return 0
+-
+-if __name__ == '__main__':
+-    sys.exit(main(sys.argv))
++if sys.maxsize > 1<<32:
++    # This test raises OverflowError on 32-bit Pythons. Compressing
++    # this much data requires a 64-bit system.
++    def test_lzo_compress_extremely_big():
++        b = lzo.compress(bytes(bytearray((1024**3)*2)))
+diff --git a/tests/util.py b/tests/util.py
+index 0a2f4ed..c7bd5f0 100644
+--- a/tests/util.py
++++ b/tests/util.py
+@@ -45,7 +45,7 @@ def get_sys_path(p=None):
+     if p: p0 = p[0]
+     #
+     plat = get_platform()
+-    plat_specifier = "%s-%s" % (plat, sys.version[:3])
++    plat_specifier = "%s-%d.%d" % (plat, sys.version_info[0], sys.version_info[1])
+     ##print plat, plat_specifier
+     #
+     for prefix in (p0, os.curdir, os.pardir,):

@@ -1,0 +1,18 @@
+Gentoo's spsdeclib ebuild installs headers in caps5/
+while upstream now expects them in caps/
+
+See: https://github.com/hatari/hatari/commit/367a87b
+--- a/cmake/FindCapsImage.cmake
++++ b/cmake/FindCapsImage.cmake
+@@ -6,3 +6,3 @@
+ 
+-SET(CAPSIMAGE_DIR caps)
++SET(CAPSIMAGE_DIR caps5)
+ FIND_PATH(CAPSIMAGE_INCLUDE_DIR ${CAPSIMAGE_DIR}/CapsAPI.h)
+--- a/src/floppy_ipf.c
++++ b/src/floppy_ipf.c
+@@ -34,3 +34,3 @@
+ #endif
+-#include <caps/CapsLibAll.h>
++#include <caps5/CapsLibAll.h>
+ #define CapsLong SDWORD

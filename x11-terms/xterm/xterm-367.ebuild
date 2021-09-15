@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop flag-o-matic
+inherit desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="Terminal Emulator for X Windows"
 HOMEPAGE="https://invisible-island.net/xterm/"
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.invisible-island.net/${PN}/${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+openpty sixel toolbar truetype unicode Xaw3d xinerama"
 
 BDEPEND="virtual/pkgconfig
@@ -47,7 +47,7 @@ src_configure() {
 	# Workaround for ncurses[tinfo] until upstream fixes their buildsystem using
 	# something sane like pkg-config or ncurses5-config and stops guessing libs
 	# Everything gets linked against ncurses anyways, so don't shout
-	append-libs $(pkg-config --libs ncurses)
+	append-libs $($(tc-getPKG_CONFIG) --libs ncurses)
 
 	local myeconfargs=(
 		--disable-full-tgetent
@@ -95,5 +95,5 @@ src_install() {
 	fperms 0755 /usr/bin/xterm
 
 	# restore the navy blue
-	sed -i -e 's:blue2$:blue:' "${ED}${DEFAULTS_DIR}"/XTerm-color || die
+	sed -i -e 's:blue2$:blue:' "${D}${DEFAULTS_DIR}"/XTerm-color || die
 }

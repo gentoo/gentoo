@@ -1,0 +1,68 @@
+From: Sam James <sam@gentoo.org>
+Date: Wed, 30 Jun 2021 08:09:19 +0100
+Subject: [PATCH] Add various missing includes
+--- a/pamsmbd/md5.c
++++ b/pamsmbd/md5.c
+@@ -39,6 +39,7 @@
+  */
+ 
+ #include "md5.h"
++#include <string.h>
+ 
+ #ifdef TEST
+ /*
+@@ -46,7 +47,6 @@
+  * The test program should print out the same values as given in section
+  * A.5 of RFC 1321, reproduced below.
+  */
+-#include <string.h>
+ main()
+ {
+     static const char *const test[7] = {
+--- a/pamsmbd/md5driver.c
++++ b/pamsmbd/md5driver.c
+@@ -38,6 +38,7 @@ Bug reports and feature requests should be sent to bugs@zetetic.net.
+ */
+ 
+ #include <strings.h>
++#include <string.h>
+ #include "constants.h"
+ #include "md5.h"
+ #include "md5driver.h"
+--- a/smbval/session.c
++++ b/smbval/session.c
+@@ -22,11 +22,8 @@
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+-#if defined(__FreeBSD__) || defined(__APPLE__)
+ #include <stdlib.h>
+-#else
+ #include <malloc.h>
+-#endif
+ #include <string.h>
+ 
+ int RFCNB_errno = 0;
+--- a/smbval/smblib-util.c
++++ b/smbval/smblib-util.c
+@@ -23,6 +23,7 @@
+    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
++#include <string.h>
+ #include "smblib-priv.h"
+ #if defined(__FreeBSD__) || defined(__APPLE__)
+ #include <stdlib.h>
+--- a/smbval/smblib.c
++++ b/smbval/smblib.c
+@@ -25,6 +25,7 @@
+ */
+ 
+ #include "config.h"
++#include <ctype.h>
+ #include <string.h>
+ #if defined(__FreeBSD__) || defined(__APPLE__)
+ #include <stdlib.h>
+-- 
+2.32.0
+

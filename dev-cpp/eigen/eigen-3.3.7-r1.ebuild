@@ -7,7 +7,7 @@ FORTRAN_NEEDED="test"
 inherit cmake cuda fortran-2
 
 DESCRIPTION="C++ template library for linear algebra"
-HOMEPAGE="http://eigen.tuxfamily.org/index.php?title=Main_Page"
+HOMEPAGE="https://eigen.tuxfamily.org/index.php?title=Main_Page"
 SRC_URI="https://gitlab.com/libeigen/eigen/-/archive/${PV}/${P}.tar.bz2 -> ${P}-gitlab.tar.bz2"
 
 LICENSE="MPL-2.0"

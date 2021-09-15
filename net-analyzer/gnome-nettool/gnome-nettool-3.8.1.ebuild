@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 GCONF_DEBUG="yes"
 
-inherit eutils gnome2
+inherit gnome2
 
 DESCRIPTION="Graphical front-ends to various networking command-line"
-HOMEPAGE="https://git.gnome.org/browse/gnome-nettool/"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-nettool"
 
 LICENSE="GPL-2"
 SLOT="0"

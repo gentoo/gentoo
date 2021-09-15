@@ -17,6 +17,34 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2021-09-10)
+# dev-libs/tomsfastmath does not have stable keywords on hppa
+dev-libs/libtomcrypt tomsfastmath
+
+# Marek Szuba <marecki@gentoo.org> (2021-09-10)
+# no stable dev-ruby/{thor,tty-editor} on this arch yet
+# and there are many dependencies to go through before there are
+app-text/htmltidy test
+
+# Matt Turner <mattst88@gentoo.org> (2021-09-06)
+# net-dialup/linux-atm does not have stable keywords on hppa
+# dev-libs/libbpf does not have stable keywords on hppa
+# net-firewall/iptables does not have stable keywords on hppa
+sys-apps/iproute2 atm bpf iptables
+
+# Thomas Deutschmann <whissi@gentoo.org> (2021-06-20)
+# dev-libs/libzip does not have stable keywords on hppa
+>=media-gfx/imagemagick-7 zip
+
+# Matt Turner <mattst88@gentoo.org> (2021-06-02)
+# dev-util/gi-docgen does not have stable keywords on hppa
+x11-libs/gdk-pixbuf gtk-doc
+x11-libs/pango gtk-doc
+
+# Sam James <sam@gentoo.org> (2021-06-01)
+# sys-apps/systemd is not stable on hppa
+sys-auth/pambase homed
+
 # Sam James <sam@gentoo.org> (2021-02-18)
 # Requires dev-lang/vala to be stable
 gnome-base/librsvg vala

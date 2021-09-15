@@ -5,11 +5,13 @@ EAPI=7
 
 inherit cmake
 
+# Check https://github.com/nlohmann/json/blob/develop/cmake/download_test_data.cmake to find test archive version
+TEST_VERSION="3.0.0"
 DESCRIPTION="JSON for Modern C++"
 HOMEPAGE="https://github.com/nlohmann/json https://nlohmann.github.io/json/"
 SRC_URI="
 	https://github.com/nlohmann/json/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	test? ( https://github.com/nlohmann/json_test_data/archive/v3.0.0.tar.gz -> ${P}-testdata.tar.gz )"
+	test? ( https://github.com/nlohmann/json_test_data/archive/v${TEST_VERSION}.tar.gz -> ${PN}-testdata-${TEST_VERSION}.tar.gz )"
 S="${WORKDIR}/json-${PV}"
 
 LICENSE="MIT"

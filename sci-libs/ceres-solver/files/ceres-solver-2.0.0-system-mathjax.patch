@@ -1,0 +1,10 @@
+diff -urN a/docs/source/conf.py b/docs/source/conf.py
+--- a/docs/source/conf.py	2020-10-25 22:25:47.000000000 -0500
++++ b/docs/source/conf.py	2021-07-29 09:44:35.488893188 -0500
+@@ -252,3 +252,6 @@
+         'scale' : 90
+    }
+ }
++
++# Use system MathJax
++mathjax_path = "/usr/share/mathjax/MathJax.js?config=TeX-MML-AM_CHTML"

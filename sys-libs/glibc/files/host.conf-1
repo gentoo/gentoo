@@ -1,5 +1,4 @@
 # /etc/host.conf:
-# $Header: /var/cvsroot/gentoo/src/patchsets/glibc/extra/etc/host.conf,v 1.1 2006/09/29 23:52:23 vapier Exp $
 
 # The  file /etc/host.conf contains configuration information specific to
 # the resolver library.  It should contain one configuration keyword  per

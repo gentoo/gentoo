@@ -5,7 +5,7 @@ EAPI=7
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 
-inherit meson multilib-minimal ninja-utils systemd
+inherit meson-multilib systemd
 
 DESCRIPTION="Optimise Linux system performance on demand"
 HOMEPAGE="https://github.com/FeralInteractive/gamemode"
@@ -89,12 +89,7 @@ multilib_src_configure() {
 	meson_src_configure
 }
 
-multilib_src_compile() {
-	eninja
-}
-
-multilib_src_install() {
-	DESTDIR="${D}" eninja install
+multilib_src_install_all() {
 	if multilib_is_native_abi; then
 		insinto /etc/security/limits.d
 		newins - 45-gamemode.conf <<-EOF

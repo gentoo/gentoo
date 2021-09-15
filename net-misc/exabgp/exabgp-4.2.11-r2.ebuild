@@ -57,3 +57,7 @@ python_install_all() {
 
 	doman doc/man/*.?
 }
+
+pkg_postinst() {
+	tmpfiles_process ${PN}.conf
+}

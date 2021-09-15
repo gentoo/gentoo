@@ -63,7 +63,7 @@ src_configure() {
 		$(usex policykit WITH_POLKIT=1 WITH_POLKIT=0)
 		$(usex spell EDITOR_SPELLCHECK=1 EDITOR_SPELLCHECK=0)
 		$(usex udisks WITH_UDISKS=1 WITH_UDISKS=0)
-		DOC_DIR="${EROOT}/usr/share/doc/${PF}"
+		DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
 		DOCS_VERSION=1
 		STRIP=0
 		WITH_TRANSPARENCY=1

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,8 +13,3 @@ KEYWORDS="amd64 x86"
 VIM_PLUGIN_HELPFILES="${PN}"
 
 PATCHES=( "${FILESDIR}/${PN}-doc.patch" )
-
-src_prepare() {
-	rm -v LICENSE README.md || die
-	default
-}

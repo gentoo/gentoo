@@ -1,9 +1,9 @@
-# Copyright 2014-2020 Gentoo Authors
+# Copyright 2014-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 if [[ "${PV}" == 9999 ]]; then
 	inherit git-r3
@@ -50,6 +50,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 if [[ "${PV}" == 9999 ]]; then
+	# We wget dictionary files in addition to using git
 	PROPERTIES="live"
 fi
 
@@ -188,7 +189,7 @@ src_configure() {
 		-DEMBED_SQLITE=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

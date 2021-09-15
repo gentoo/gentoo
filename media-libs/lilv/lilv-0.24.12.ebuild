@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit python-single-r1 waf-utils bash-completion-r1 multilib-build multilib-minimal
@@ -14,7 +14,7 @@ SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86"
 IUSE="doc +dyn-manifest static-libs test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
@@ -25,11 +25,6 @@ BDEPEND="
 		app-doc/doxygen
 		dev-python/sphinx
 		dev-python/sphinx_lv2_theme
-	)
-	test? (
-		$(python_gen_cond_dep '
-			dev-python/unittest2[${PYTHON_USEDEP}]
-		')
 	)
 "
 RDEPEND="

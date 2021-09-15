@@ -11,6 +11,8 @@ DESCRIPTION="Small C library to run an HTTP server as part of another applicatio
 HOMEPAGE="https://www.gnu.org/software/libmicrohttpd/"
 SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz"
 
+PATCHES=( "${FILESDIR}"/${PN}-0.9.73-test-ssl3.patch )
+
 LICENSE="LGPL-2.1"
 SLOT="0/12"
 KEYWORDS="amd64 x86"

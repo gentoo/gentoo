@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,6 +23,7 @@ IUSE=""
 
 RDEPEND+=" >=dev-libs/hiredis-0.14:="
 DEPEND+=" dev-libs/hiredis test? ( dev-ruby/test-unit:2 )"
+DEPEND+=" virtual/pkgconfig"
 
 RUBY_S="${MY_P}"
 
@@ -33,6 +34,7 @@ all_ruby_prepare() {
 }
 
 each_ruby_configure() {
+	tc-export PKG_CONFIG
 	CC=$(tc-getCC) ${RUBY} -Cext/hiredis_ext extconf.rb || die
 }
 

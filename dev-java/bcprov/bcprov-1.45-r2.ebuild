@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ MY_PN="${PN}-jdk16"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Java cryptography APIs"
-HOMEPAGE="http://www.bouncycastle.org/java.html"
+HOMEPAGE="https://www.bouncycastle.org/java.html"
 SRC_URI="http://central.maven.org/maven2/org/bouncycastle/${MY_PN}/${PV}/${MY_P}-sources.jar"
 LICENSE="BSD"
 SLOT="1.45"

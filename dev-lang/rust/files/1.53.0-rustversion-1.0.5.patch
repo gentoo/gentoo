@@ -1,0 +1,234 @@
+From 12efa21eb88cb43d3b927952da0c5635373ac92b Mon Sep 17 00:00:00 2001
+From: David Tolnay <dtolnay@gmail.com>
+Date: Thu, 17 Jun 2021 22:34:55 -0700
+Subject: [PATCH] Update rustversion to 1.0.5
+
+---
+ Cargo.lock                                   |  4 +--
+ vendor/rustversion/.cargo-checksum.json      |  2 +-
+ vendor/rustversion/Cargo.toml                |  2 +-
+ vendor/rustversion/build/build.rs            |  6 ++++
+ vendor/rustversion/build/rustc.rs            | 30 +++++++++-----------
+ vendor/rustversion/src/lib.rs                | 15 ++++++++++
+ vendor/rustversion/src/time.rs               | 13 +++++++--
+ vendor/rustversion/tests/test_parse.rs       | 10 +++++++
+ vendor/rustversion/tests/ui/bad-bound.stderr |  4 +--
+ vendor/rustversion/tests/ui/bad-date.stderr  |  4 +--
+ 10 files changed, 63 insertions(+), 27 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 0939f19cdfe..26a89caf050 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -4582,9 +4582,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "rustversion"
+-version = "1.0.4"
++version = "1.0.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "cb5d2a036dc6d2d8fd16fde3498b04306e29bd193bf306a57427019b823d5acd"
++checksum = "61b3909d758bb75c79f23d4736fac9433868679d3ad2ea7a61e3c25cfda9a088"
+ 
+ [[package]]
+ name = "ryu"
+diff --git a/vendor/rustversion/.cargo-checksum.json b/vendor/rustversion/.cargo-checksum.json
+index e1277df7b59..0a134695aaf 100644
+--- a/vendor/rustversion/.cargo-checksum.json
++++ b/vendor/rustversion/.cargo-checksum.json
+@@ -1 +1 @@
+-{"files":{"Cargo.toml":"1a91782510461d54726e816ae776042b95c79c9949d49c11b8782caefc22ead2","LICENSE-APACHE":"a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2","LICENSE-MIT":"23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3","README.md":"01dc6a1bf499a12bd0bfbbfe4db2ca8460b2c151235bcf2aad2356de4c2ec50a","build/build.rs":"481daf363b7004c90ffc3e012863a4102e9f26b9aaa2a4a295c2dd78f690be28","build/rustc.rs":"4dc8f1764672137bd15758cc19242740b0d6ab99e4a69171ad0999f9112a15a6","src/attr.rs":"9301cd4aff5a9648c057d5d8de9eb66921f0c3a715c51ada4459576bd49c8b19","src/bound.rs":"44bda74d3aacfeeeac9dae2f7eef3acc844d4c3c7eaa9d3e6288e5aeff269dff","src/constfn.rs":"613b8f53b21cc06b4f619fce9000993d3e7873b650701ca01cef1e53bed5b40a","src/date.rs":"454c749a60db8144a706a813e06fe3ae39c981920ba9832ef82f3f9debe1f052","src/error.rs":"cb37102f03ebbaca313d80f9714fe08dfef92fe956789ee87d93eb6121705f4f","src/expr.rs":"8e8ca76f4f5838436d9d7273f499c698bb41f6c15bc07d32ec5c1cb8bd3dd731","src/iter.rs":"8d4b817b9abc4e817105b673e15f29ef9bb8284a010ce01ac2d83387fe136947","src/lib.rs":"f8347832d8072058dbb4af6b8d67a834a02fe9c5460bbaa26defec4b66317f1b","src/release.rs":"abb8ddd877c39a023bf5e7bd67063d6e4144e79758a8bafa338167f9d15b89f1","src/time.rs":"45fb48ff0a0046a5a1b108b9ce53b14885637ad868ede1d66970379c2b7f16ef","src/token.rs":"824ce765f692db73afa02d3ebb0281c750748035efc98fa547be29d3072665ce","src/version.rs":"afdb048bba95bbb885945eba5527b6bf0eca0105642bfc304c2f82a8b7d556df","tests/compiletest.rs":"0a52a44786aea1c299c695bf948b2ed2081e4cc344e5c2cadceab4eb03d0010d","tests/test_const.rs":"a8297ca6559f895a3b2664964a42b6f82bbbc3c8faa9556a513006e6e1827995","tests/test_eval.rs":"6f0ee3f49c9a0d0c374a4d0e9a9dce753cd9fc2ca7725e000a435dbd5f4a9ce3","tests/test_parse.rs":"fbf9695f4208263743715e6c8b6294dfffee21462a65dfeb9339a70c0e18dbc6","tests/ui/bad-bound.rs":"25bde278fcaabf62868417148a5e5f2006bf589d7ebd7bf6004fb8d78e47594f","tests/ui/bad-bound.stderr":"bc9297f758c2541fb0a8b48d5785f4bbcd0d2a07d876ba0baf2fc9de9275e7e6","tests/ui/bad-date.rs":"6e23714dae8b6346fefe50dacd4abba3265248bbadfdd60c739138aa8a0037ba","tests/ui/bad-date.stderr":"1ac3cab13ee900fc8344e8fab21ff4d9cad476aca44925a4c1b2293a6b59b742","tests/ui/bad-not.rs":"f003df8bd245e9dd8edc3a6d94078ee5162fac7a98db881271f0f5b6db98d45d","tests/ui/bad-not.stderr":"d4ef78fae4a82419e737757158796cb103a5920df498956eaf57ed201797b463","tests/ui/bad-version.rs":"f4ea2cd038e6c63deb9c2e3ceffce93dbf179d9ce18c16d88f3b6cd7138a8c8e","tests/ui/bad-version.stderr":"60ed51c62f4c2fb6ff95cff7523cfca379ed434f319da9d82704318588792338","tests/ui/const-not-fn.rs":"10bbe38f0d89391fff0698756e4cfd4e72a41090360393a0c951b67df14d1c35","tests/ui/const-not-fn.stderr":"9551f7f222445b31d7af2415d467301c332d55bb3d5a143846484f2f00047a01"},"package":"cb5d2a036dc6d2d8fd16fde3498b04306e29bd193bf306a57427019b823d5acd"}
+\ No newline at end of file
++{"files":{"Cargo.toml":"a09ee758f816eddff8a8c7fb5be54dd95e74caad18a207251faedd251ecfaf1c","LICENSE-APACHE":"a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2","LICENSE-MIT":"23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3","README.md":"01dc6a1bf499a12bd0bfbbfe4db2ca8460b2c151235bcf2aad2356de4c2ec50a","build/build.rs":"bae427f344972e6e0e348ec48dce0947274b3ec6cac0938497a8d3da5c9834e5","build/rustc.rs":"3e4acf7ea679f9331dd4e8dbe42a08a312f58379ea1eee5898793a9848d06d8c","src/attr.rs":"9301cd4aff5a9648c057d5d8de9eb66921f0c3a715c51ada4459576bd49c8b19","src/bound.rs":"44bda74d3aacfeeeac9dae2f7eef3acc844d4c3c7eaa9d3e6288e5aeff269dff","src/constfn.rs":"613b8f53b21cc06b4f619fce9000993d3e7873b650701ca01cef1e53bed5b40a","src/date.rs":"454c749a60db8144a706a813e06fe3ae39c981920ba9832ef82f3f9debe1f052","src/error.rs":"cb37102f03ebbaca313d80f9714fe08dfef92fe956789ee87d93eb6121705f4f","src/expr.rs":"8e8ca76f4f5838436d9d7273f499c698bb41f6c15bc07d32ec5c1cb8bd3dd731","src/iter.rs":"8d4b817b9abc4e817105b673e15f29ef9bb8284a010ce01ac2d83387fe136947","src/lib.rs":"5652f6f84fc80136bd29b2125f7676e80e0df7d40aac274b0658c99cecbd871d","src/release.rs":"abb8ddd877c39a023bf5e7bd67063d6e4144e79758a8bafa338167f9d15b89f1","src/time.rs":"bdd05a743b07a6bbfa0dbc9d4e415e051aba4a51a430c3be1e23447eae298c8b","src/token.rs":"824ce765f692db73afa02d3ebb0281c750748035efc98fa547be29d3072665ce","src/version.rs":"afdb048bba95bbb885945eba5527b6bf0eca0105642bfc304c2f82a8b7d556df","tests/compiletest.rs":"0a52a44786aea1c299c695bf948b2ed2081e4cc344e5c2cadceab4eb03d0010d","tests/test_const.rs":"a8297ca6559f895a3b2664964a42b6f82bbbc3c8faa9556a513006e6e1827995","tests/test_eval.rs":"6f0ee3f49c9a0d0c374a4d0e9a9dce753cd9fc2ca7725e000a435dbd5f4a9ce3","tests/test_parse.rs":"cdfe376020b9391330292968046117b0935c828d73385e8faeb2e333ec897088","tests/ui/bad-bound.rs":"25bde278fcaabf62868417148a5e5f2006bf589d7ebd7bf6004fb8d78e47594f","tests/ui/bad-bound.stderr":"a03dc78b380191c10d3b3406b1fd3208bb2609d4c26b9c33ccd335721e3cd072","tests/ui/bad-date.rs":"6e23714dae8b6346fefe50dacd4abba3265248bbadfdd60c739138aa8a0037ba","tests/ui/bad-date.stderr":"3a607fb950a69f7dc1b503295bce53541f9dee9f4674edc5d13ee3a69ff0e8cd","tests/ui/bad-not.rs":"f003df8bd245e9dd8edc3a6d94078ee5162fac7a98db881271f0f5b6db98d45d","tests/ui/bad-not.stderr":"d4ef78fae4a82419e737757158796cb103a5920df498956eaf57ed201797b463","tests/ui/bad-version.rs":"f4ea2cd038e6c63deb9c2e3ceffce93dbf179d9ce18c16d88f3b6cd7138a8c8e","tests/ui/bad-version.stderr":"60ed51c62f4c2fb6ff95cff7523cfca379ed434f319da9d82704318588792338","tests/ui/const-not-fn.rs":"10bbe38f0d89391fff0698756e4cfd4e72a41090360393a0c951b67df14d1c35","tests/ui/const-not-fn.stderr":"9551f7f222445b31d7af2415d467301c332d55bb3d5a143846484f2f00047a01"},"package":"61b3909d758bb75c79f23d4736fac9433868679d3ad2ea7a61e3c25cfda9a088"}
+\ No newline at end of file
+diff --git a/vendor/rustversion/Cargo.toml b/vendor/rustversion/Cargo.toml
+index 56995ff0792..c72b1b2b343 100644
+--- a/vendor/rustversion/Cargo.toml
++++ b/vendor/rustversion/Cargo.toml
+@@ -13,7 +13,7 @@
+ [package]
+ edition = "2018"
+ name = "rustversion"
+-version = "1.0.4"
++version = "1.0.5"
+ authors = ["David Tolnay <dtolnay@gmail.com>"]
+ build = "build/build.rs"
+ description = "Conditional compilation according to rustc compiler version"
+diff --git a/vendor/rustversion/build/build.rs b/vendor/rustversion/build/build.rs
+index 2a8bc4af39f..15312510d68 100644
+--- a/vendor/rustversion/build/build.rs
++++ b/vendor/rustversion/build/build.rs
+@@ -1,3 +1,9 @@
++#![allow(
++    clippy::enum_glob_use,
++    clippy::must_use_candidate,
++    clippy::single_match_else
++)]
++
+ mod rustc;
+ 
+ use std::env;
+diff --git a/vendor/rustversion/build/rustc.rs b/vendor/rustversion/build/rustc.rs
+index 723e6bdd0e2..dfc6a05166f 100644
+--- a/vendor/rustversion/build/rustc.rs
++++ b/vendor/rustversion/build/rustc.rs
+@@ -48,23 +48,21 @@ pub fn parse(string: &str) -> Option<Version> {
+         Some(channel) if channel == "dev" => Dev,
+         Some(channel) if channel.starts_with("beta") => Beta,
+         Some(channel) if channel == "nightly" => match words.next() {
+-            Some(hash) => {
+-                if !hash.starts_with('(') {
+-                    return None;
++            Some(hash) if hash.starts_with('(') => match words.next() {
++                None if hash.ends_with(')') => Dev,
++                Some(date) if date.ends_with(')') => {
++                    let mut date = date[..date.len() - 1].split('-');
++                    let year = date.next()?.parse().ok()?;
++                    let month = date.next()?.parse().ok()?;
++                    let day = date.next()?.parse().ok()?;
++                    match date.next() {
++                        None => Nightly(Date { year, month, day }),
++                        Some(_) => return None,
++                    }
+                 }
+-                let date = words.next()?;
+-                if !date.ends_with(')') {
+-                    return None;
+-                }
+-                let mut date = date[..date.len() - 1].split('-');
+-                let year = date.next()?.parse().ok()?;
+-                let month = date.next()?.parse().ok()?;
+-                let day = date.next()?.parse().ok()?;
+-                match date.next() {
+-                    None => Nightly(Date { year, month, day }),
+-                    Some(_) => return None,
+-                }
+-            }
++                None | Some(_) => return None,
++            },
++            Some(_) => return None,
+             None => Dev,
+         },
+         Some(_) => return None,
+diff --git a/vendor/rustversion/src/lib.rs b/vendor/rustversion/src/lib.rs
+index 2614105dd1a..172eb89382f 100644
+--- a/vendor/rustversion/src/lib.rs
++++ b/vendor/rustversion/src/lib.rs
+@@ -145,6 +145,21 @@
+ //!
+ //! <br>
+ 
++#![allow(
++    clippy::cast_lossless,
++    clippy::cast_possible_truncation,
++    clippy::doc_markdown,
++    clippy::enum_glob_use,
++    clippy::from_iter_instead_of_collect,
++    clippy::module_name_repetitions,
++    clippy::must_use_candidate,
++    clippy::needless_doctest_main,
++    clippy::needless_pass_by_value,
++    clippy::redundant_else,
++    clippy::toplevel_ref_arg,
++    clippy::unreadable_literal
++)]
++
+ extern crate proc_macro;
+ 
+ mod attr;
+diff --git a/vendor/rustversion/src/time.rs b/vendor/rustversion/src/time.rs
+index 1e6dd9066b4..3c21463dd80 100644
+--- a/vendor/rustversion/src/time.rs
++++ b/vendor/rustversion/src/time.rs
+@@ -1,4 +1,5 @@
+ use crate::date::Date;
++use std::env;
+ use std::time::{SystemTime, UNIX_EPOCH};
+ 
+ // Timestamp of 2016-03-01 00:00:00 in UTC.
+@@ -13,14 +14,20 @@
+ 
+ pub fn today() -> Date {
+     let default = Date {
+-        year: 2019,
+-        month: 1,
+-        day: 1,
++        year: 2020,
++        month: 2,
++        day: 25,
+     };
+     try_today().unwrap_or(default)
+ }
+ 
+ fn try_today() -> Option<Date> {
++    if let Some(pkg_name) = env::var_os("CARGO_PKG_NAME") {
++        if pkg_name.to_str() == Some("rustversion-tests") {
++            return None; // Stable date for ui testing.
++        }
++    }
++
+     let now = SystemTime::now();
+     let since_epoch = now.duration_since(UNIX_EPOCH).ok()?;
+     let secs = since_epoch.as_secs();
+diff --git a/vendor/rustversion/tests/test_parse.rs b/vendor/rustversion/tests/test_parse.rs
+index 843bd73d3e5..cb39b3179f5 100644
+--- a/vendor/rustversion/tests/test_parse.rs
++++ b/vendor/rustversion/tests/test_parse.rs
+@@ -1,3 +1,5 @@
++#![allow(clippy::enum_glob_use, clippy::must_use_candidate)]
++
+ include!("../build/rustc.rs");
+ 
+ #[test]
+@@ -76,6 +78,14 @@ fn test_parse() {
+                 }),
+             },
+         ),
++        (
++            "rustc 1.52.1-nightly (gentoo)",
++            Version {
++                minor: 52,
++                patch: 1,
++                channel: Dev,
++            },
++        ),
+     ];
+ 
+     for (string, expected) in cases {
+diff --git a/vendor/rustversion/tests/ui/bad-bound.stderr b/vendor/rustversion/tests/ui/bad-bound.stderr
+index f8c498c8577..2c56acbdb33 100644
+--- a/vendor/rustversion/tests/ui/bad-bound.stderr
++++ b/vendor/rustversion/tests/ui/bad-bound.stderr
+@@ -1,10 +1,10 @@
+-error: expected rustc release number like 1.31, or nightly date like 2020-10-26
++error: expected rustc release number like 1.31, or nightly date like 2020-02-25
+  --> $DIR/bad-bound.rs:1:22
+   |
+ 1 | #[rustversion::since(stable)]
+   |                      ^^^^^^
+ 
+-error: expected rustc release number like 1.31, or nightly date like 2020-10-26
++error: expected rustc release number like 1.31, or nightly date like 2020-02-25
+  --> $DIR/bad-bound.rs:4:26
+   |
+ 4 | #[rustversion::any(since(stable))]
+diff --git a/vendor/rustversion/tests/ui/bad-date.stderr b/vendor/rustversion/tests/ui/bad-date.stderr
+index 734d7889075..c523ccc02bf 100644
+--- a/vendor/rustversion/tests/ui/bad-date.stderr
++++ b/vendor/rustversion/tests/ui/bad-date.stderr
+@@ -1,10 +1,10 @@
+-error: expected nightly date, like 2020-10-26
++error: expected nightly date, like 2020-02-25
+  --> $DIR/bad-date.rs:1:24
+   |
+ 1 | #[rustversion::nightly(stable)]
+   |                        ^^^^^^
+ 
+-error: expected nightly date, like 2020-10-26
++error: expected nightly date, like 2020-02-25
+  --> $DIR/bad-date.rs:4:28
+   |
+ 4 | #[rustversion::any(nightly(stable))]
+-- 
+2.32.0
+

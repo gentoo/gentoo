@@ -13,7 +13,7 @@ else
 fi
 
 DESCRIPTION="Provides a daemon for managing internet connections"
-HOMEPAGE="https://01.org/connman"
+HOMEPAGE="https://git.kernel.org/pub/scm/network/connman/connman.git/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -97,5 +97,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	tmpfiles_process /usr/lib/tmpfiles.d/connman_resolvconf.conf
+	tmpfiles_process connman_resolvconf.conf
 }

@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
 inherit autotools git-r3
@@ -13,13 +13,11 @@ SRC_URI=""
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug doc static-libs"
+IUSE="debug static-libs"
 
 RDEPEND="sys-apps/dbus:0="
-DEPEND="${RDEPEND}
-	>=dev-util/gtk-doc-1.18
-	virtual/pkgconfig
-	doc? ( >=dev-util/gtk-doc-1.18 )"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
@@ -29,7 +27,6 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		$(use_enable debug)
-		$(use_enable doc gtk-doc)
 		$(use_enable static-libs static)
 	)
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
 		<email>arfrever.fta@gmail.com</email>
@@ -10,7 +10,7 @@
 		<name>Mike Gilbert</name>
 	</maintainer>
 	<use>
-		<flag name="dcc_video">Support video connections over DCC protocol</flag>
+		<flag name="dcc-video">Support video connections over DCC protocol</flag>
 		<flag name="phonon">Support Phonon for audio output</flag>
 	</use>
 	<upstream>

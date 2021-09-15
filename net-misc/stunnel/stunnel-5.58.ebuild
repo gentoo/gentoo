@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib ssl-cert systemd tmpfiles
+inherit ssl-cert systemd tmpfiles
 
 DESCRIPTION="TLS/SSL - Port Wrapper"
 HOMEPAGE="https://www.stunnel.org/index.html"
@@ -91,6 +91,8 @@ pkg_postinst() {
 		chown stunnel:stunnel "${EROOT}"/etc/stunnel/stunnel.{crt,csr,key,pem}
 		chmod 0640 "${EROOT}"/etc/stunnel/stunnel.{crt,csr,key,pem}
 	fi
+
+	tmpfiles_process stunnel.conf
 
 	einfo "If you want to run multiple instances of stunnel, create a new config"
 	einfo "file ending with .conf in /etc/stunnel/. **Make sure** you change "

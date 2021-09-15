@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 # libanjuta-language-vala.so links to a specific slot of libvala; we want to
 # avoid automagic behavior.
 VALA_MIN_API_VERSION="0.46" # 3.34.0 upstream release supports up to 0.44, but 0.46 vala LTS support was added without any other adjustments post-release; 0.48 will need patches
@@ -59,7 +59,7 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	introspection? (
 		$(python_gen_cond_dep '
-			>=dev-python/pygobject-3.2:3[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/pygobject-3.2:3[${PYTHON_USEDEP}]
 		')
 	)
 	gnome-base/gsettings-desktop-schemas

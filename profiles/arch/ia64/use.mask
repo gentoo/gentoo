@@ -4,6 +4,14 @@
 # Unmask the flag which corresponds to ARCH.
 -ia64
 
+# James Le Cuirot <chewi@gentoo.org> (2021-08-10)
+# media-video/pipewire is not keyworded. Bug #807616.
+pipewire
+
+# Matt Turner <mattst88@gentoo.org> (07-25-2021)
+# gnome-shell requires rustified librsvg.
+gnome-shell
+
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
 # sys-libs/llvm-libunwind not supported on IA64.
 llvm-libunwind
@@ -63,11 +71,9 @@ lm-sensors
 
 # Stuff that doesn't work on ia64, or not tested
 afs
-blas
 djbfft
 emboss
 jack
-lapack
 lqr
 capi
 lensfun

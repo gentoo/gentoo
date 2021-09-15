@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1
 
@@ -27,3 +27,24 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# From https://github.com/python-hyper/h2/pull/1248
+	# Disables some failing healthchecks
+	"${FILESDIR}/${PN}-3.2.0-failed-healthcheck.patch"
+)
+
+python_test() {
+	local deselect=()
+	[[ ${EPYTHON} == python3.10 ]] && deselect+=(
+		# these rely on fixed string repr() and fail because enum repr
+		# changed in py3.10
+		test/test_basic_logic.py::TestBasicServer::test_stream_repr
+		test/test_events.py::TestEventReprs::test_remotesettingschanged_repr
+		test/test_events.py::TestEventReprs::test_streamreset_repr
+		test/test_events.py::TestEventReprs::test_settingsacknowledged_repr
+		test/test_events.py::TestEventReprs::test_connectionterminated_repr
+	)
+
+	epytest ${deselect[@]/#/--deselect }
+}

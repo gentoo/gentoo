@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/785760
+https://savannah.gnu.org/bugs/?60201
+--- a/configure.ac
++++ b/configure.ac
+@@ -25,6 +25,9 @@
+ AC_PROG_LN_S
+ AC_PROG_MAKE_SET
+ AC_PROG_RANLIB
++AC_PROG_MKDIR_P
++mkdir_p="${MKDIR_P}"
++AC_SUBST([mkdir_p])
+ AC_PATH_PROGS(PERL, perl, /usr/local/bin/perl)
+ AC_PATH_PROGS(NKF, nkf, /usr/local/bin/nkf)
+ AC_PATH_PROGS(MAN, man, /usr/bin/man)
+@@ -42,9 +45,8 @@
+ AC_DEFINE_UNQUOTED(W3M_TARGET, $W3M_TARGET)
+ 
+ AC_W3M_M17N
+-if test x$enable_messagel10n = xno; then
+- AM_GNU_GETTEXT([external])
+-fi
++AM_GNU_GETTEXT_REQUIRE_VERSION([0.18])
++AM_GNU_GETTEXT([external])
+ 
+ NLSTARGET=""
+ if test x"$USE_NLS" = xyes; then

@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: acct-group.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Michael Orlitzky <mjo@gentoo.org>
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Eclass used to create and maintain a single group entry
 # @DESCRIPTION:
 # This eclass represents and creates a single group entry.  The name
@@ -20,22 +20,23 @@
 # and add an ebuild with the following contents:
 #
 # @CODE
-# EAPI=7
+# EAPI=8
 # inherit acct-group
 # ACCT_GROUP_ID=200
 # @CODE
 #
-# Then you add appropriate dependency to your package.  The dependency
-# type(s) should be:
-# - DEPEND (+ RDEPEND) if the group is already needed at build time,
-# - RDEPEND if it is needed at install time (e.g. you 'fowners' files
-#   in pkg_preinst) or run time.
+# Then you add appropriate dependencies to your package.  Note that
+# the build system might need to resolve names, too.  The dependency
+# type(s) should be: BDEPEND if the group must be resolvable at build
+# time (e.g. 'fowners' uses it in src_install), IDEPEND if it must be
+# resolvable at install time (e.g. 'fowners' uses it in pkg_preinst),
+# and RDEPEND in every case.
 
 if [[ -z ${_ACCT_GROUP_ECLASS} ]]; then
 _ACCT_GROUP_ECLASS=1
 
 case ${EAPI:-0} in
-	7) ;;
+	7|8) ;;
 	*) die "EAPI=${EAPI:-0} not supported";;
 esac
 

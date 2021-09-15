@@ -1,6 +1,14 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# David Seifert <soap@gentoo.org> (2021-09-04)
+# dev-lang/go not keyworded here
+sys-libs/libcap tools
+
+# Thomas Deutschmann <whissi@gentoo.org> (2021-08-04)
+# Requires net-misc/modemmanager[qmi], mask until keyworded
+sys-apps/fwupd modemmanager
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-03-13)
 # virtual/jdk isn't keyworded here
 media-libs/rubberband jni
@@ -76,8 +84,7 @@ kde-plasma/discover firmware
 
 # Rick Farina <zerochaos@gentoo.org> (2020-01-03)
 # ubertooth needs net-libs/libbtbb and net-wireless/ubertooth which aren't keyworded
-# rtl-sdr needs net-wireless/rtl-sdr
-net-wireless/kismet rtlsdr ubertooth
+net-wireless/kismet ubertooth
 
 # Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
 # dev-libs/criterion is not keyworded yet
@@ -90,10 +97,6 @@ sys-firmware/seabios -debug
 # Conrad Kostecki <conikost@gentoo.org> (2019-08-17)
 # app-misc/graphlcd-base won't work on PowerPC/PowerPC64
 app-misc/lcdproc freetype lcd_devices_glcd png
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-01)
-# not yet keyworded
-dev-java/openjdk:11 javafx
 
 # Patrick McLean <chutzpah@gentoo.org> (2019-04-15)
 # deps not available on platform
@@ -196,7 +199,7 @@ dev-db/percona-server -numa
 # Davide Pesavento <pesa@gentoo.org> (2016-07-28)
 # The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/PyQt5 bluetooth location networkauth
+dev-python/PyQt5 bluetooth location speech
 
 # Michael Palimaka <kensington@gentoo.org> (2016-07-07)
 # Requires unkeyworded dependencies
@@ -252,7 +255,8 @@ dev-ruby/haml test
 
 # Anthony G. Basile <blueness@gentoo.org> (2014-08-14)
 # Mask these flags since mongodb is broken on ppc/ppc64
-dev-python/ipython doc matplotlib nbconvert notebook test
+dev-python/ipython doc matplotlib nbconvert notebook
+<=dev-python/ipython-7.24.1 test
 
 # Anthony G. Basile <blueness@gentoo.org> (2014-08-12)
 # Ultimately pulls in nodejs which is broken.
@@ -369,7 +373,7 @@ sci-chemistry/vmd tachyon
 
 # Pacho Ramos <pacho@gentoo.org>
 # Not keyworded
-media-plugins/gst-plugins-meta dts vcd vpx
+media-plugins/gst-plugins-meta dts vcd
 
 # QA: This entry is moved from INVALID location from default/linux/powerpc.
 # VDPAU is currently not keyworded on PPC since its a nvidia-drivers feature

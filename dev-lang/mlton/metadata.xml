@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
@@ -9,7 +9,7 @@
 		<flag name="stage3">After bootstrap building mlton with
 		dev-lang/smlnj, rebuild mlton with the second stage build of
 		mlton (recommended).</flag>
-		<flag name="pax_kernel">Enable if the user plans to run the
+		<flag name="pax-kernel">Enable if the user plans to run the
 		package under a pax enabled hardened kernel</flag>
 	</use>
 	<upstream>

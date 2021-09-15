@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1
 
@@ -44,6 +44,6 @@ python_test() {
 	# Append to sys.path to avoid ImportError
 	# https://bugs.gentoo.org/667758
 	# Skip tests which require internet access
-	pytest --import-mode=append -vv ${skipped_tests[@]/#/--deselect } \
-		-m "not online" || die "Tests failed with ${EPYTHON}"
+	epytest --import-mode=append -vv ${skipped_tests[@]/#/--deselect } \
+		-m "not online"
 }

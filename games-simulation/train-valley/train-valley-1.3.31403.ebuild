@@ -1,13 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils desktop unpacker xdg-utils
+inherit desktop unpacker wrapper xdg-utils
 
 DESCRIPTION="Build railroads in order to connect cities, tunnels, and bridges"
 HOMEPAGE="http://train-valley.com/tv1.html"
 SRC_URI="${P//[-.]/_}.sh"
+S="${WORKDIR}/data/noarch/game"
+
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
@@ -25,10 +27,8 @@ RDEPEND="
 	)
 "
 
-S="${WORKDIR}/data/noarch/game"
-
 DIR="/opt/${PN}"
-QA_PREBUILT="${DIR}/*"
+QA_PREBUILT="${DIR#/}/*"
 
 pkg_nofetch() {
 	einfo "Please buy and download ${SRC_URI} from:"
@@ -57,5 +57,10 @@ src_install() {
 	make_desktop_entry ${PN} "Train Valley"
 }
 
-pkg_postinst() { xdg_icon_cache_update; }
-pkg_postrm() { xdg_icon_cache_update; }
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
+}

@@ -1,6 +1,28 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Lars Wendler <polynomial-c@gentoo.org> (2021-08-27)
+# Lacks various keywords in media-libs/webrtc-audio-processing
+media-video/pipewire echo-cancel
+
+# Sam James <sam@gentoo.org> (2021-08-14)
+# Needs Raspberry Pi specific applications
+media-video/mjpg-streamer input-raspicam
+
+# Sam James <sam@gentoo.org> (2021-07-12)
+# Haskell is only available on amd64/x86 right now in Gentoo
+# bug #801649
+dev-util/diffoscope haskell
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
+# gui-libs/egl-wayland with nvidia-drivers is only usable on some arches.
+x11-base/xwayland video_cards_nvidia
+x11-wm/mutter video_cards_nvidia
+
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-06-11)
+# Has unpackaged depdencies, bug #795459
+>=media-libs/opencolorio-2.0.0 doc
+
 # Mike Gilbert <floppym@gentoo.org> (2021-03-29)
 # TPM only exists on some archs.
 sys-apps/systemd tpm
@@ -29,7 +51,7 @@ net-misc/asterisk blocks
 sys-libs/compiler-rt-sanitizers asan dfsan lsan msan hwasan tsan
 sys-libs/compiler-rt-sanitizers ubsan safestack cfi scudo
 sys-libs/compiler-rt-sanitizers shadowcallstack gwp-asan
-sys-libs/compiler-rt-sanitizers libfuzzer memprof profile xray
+sys-libs/compiler-rt-sanitizers libfuzzer memprof orc profile xray
 
 # Sam James <sam@gentoo.org> (2020-10-24)
 # asm redc is only available on amd64,
@@ -89,6 +111,8 @@ dev-libs/glib sysprof
 gnome-extra/cjs sysprof
 x11-libs/gtk+ sysprof
 net-libs/libsoup sysprof
+x11-libs/pango sysprof
+gui-libs/gtk sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan support is only available on few selected arches atm.
@@ -105,7 +129,7 @@ sys-block/fio python gnuplot
 # Craig Andrews <candrews@gentoo.org> (2019-10-08)
 # net-libs/quiche is not available on all arches
 # Track addition arch keywording of quiche at:
-# https://bugs.gentoo.org/694320
+# bug #694320
 net-misc/curl quiche
 
 # Craig Andrews <candrews@gentoo.org> (2019-10-08)
@@ -126,7 +150,8 @@ dev-lang/rust-bin doc
 media-tv/kodi raspberry-pi
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-22)
-# mask javafx until it's keyworded on other arches
+# mask here and unmask in profiles for specific arches
+dev-java/openjdk:8 javafx
 dev-java/openjdk:11 javafx
 
 # Matt Turner <mattst88@gentoo.org> (2019-06-20)

@@ -13,7 +13,7 @@ SRC_URI="https://github.com/openresty/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+internal-fpconv test +threads"
 REQUIRED_USE="
 	threads? ( internal-fpconv )

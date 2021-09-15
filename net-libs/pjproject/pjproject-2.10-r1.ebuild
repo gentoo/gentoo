@@ -17,7 +17,7 @@ SLOT="0/${PV}"
 CODEC_FLAGS="g711 g722 g7221 gsm ilbc speex l16"
 VIDEO_FLAGS="sdl ffmpeg v4l2 openh264 libyuv vpx"
 SOUND_FLAGS="alsa portaudio"
-IUSE="amr debug epoll examples ipv6 libressl opus resample silk ssl static-libs webrtc
+IUSE="amr debug epoll examples ipv6 opus resample silk ssl static-libs webrtc
 	${CODEC_FLAGS} g729
 	${VIDEO_FLAGS}
 	${SOUND_FLAGS}"
@@ -46,8 +46,7 @@ RDEPEND="net-libs/libsrtp:=
 		media-libs/speexdsp
 	)
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 "
 DEPEND="${RDEPEND}"

@@ -10,7 +10,8 @@ inherit perl-module
 DESCRIPTION="The Twofish Encryption Algorithm"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="amd64 ~ia64 ~ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+
 PATCHES=("${FILESDIR}/no-dot-inc.patch")
 
 src_compile() {

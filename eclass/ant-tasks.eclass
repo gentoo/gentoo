@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Vlastimil Babka <caster@gentoo.org>
 # @SUPPORTED_EAPIS: 6 7
+# @PROVIDES: java-utils-2
 # @BLURB: Eclass for building dev-java/ant-* packages
 # @DESCRIPTION:
 # This eclass provides functionality and default ebuild variables for building

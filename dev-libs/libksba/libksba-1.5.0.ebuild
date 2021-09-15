@@ -19,8 +19,8 @@ BDEPEND="sys-devel/bison"
 src_configure() {
 	local myeconfargs=(
 		$(use_enable static-libs static)
-		GPG_ERROR_CONFIG="${EROOT}/usr/bin/${CHOST}-gpg-error-config"
-		LIBGCRYPT_CONFIG="${EROOT}/usr/bin/${CHOST}-libgcrypt-config"
+		GPG_ERROR_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpg-error-config"
+		LIBGCRYPT_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-libgcrypt-config"
 		$("${S}/configure" --help | grep -o -- '--without-.*-prefix')
 	)
 	econf "${myeconfargs[@]}"

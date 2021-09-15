@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: lua-utils.eclass
@@ -8,7 +8,7 @@
 # @AUTHOR:
 # Marek Szuba <marecki@gentoo.org>
 # Based on python-utils-r1.eclass by Michał Górny <mgorny@gentoo.org> et al.
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Utility functions for packages with Lua parts
 # @DESCRIPTION:
 # A utility eclass providing functions to query Lua implementations,
@@ -17,15 +17,10 @@
 # This eclass neither sets any metadata variables nor exports any phase
 # functions. It can be inherited safely.
 
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6)
-		die "Unsupported EAPI=${EAPI} (too old) for ${ECLASS}"
+case ${EAPI} in
+	7|8)
 		;;
-	7)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ ! ${_LUA_UTILS_R0} ]]; then
@@ -39,11 +34,19 @@ inherit toolchain-funcs
 _LUA_ALL_IMPLS=(
 	luajit
 	lua5-1
-	lua5-2
 	lua5-3
 	lua5-4
 )
 readonly _LUA_ALL_IMPLS
+
+# @ECLASS-VARIABLE: _LUA_HISTORICAL_IMPLS
+# @INTERNAL
+# @DESCRIPTION:
+# All historical Lua implementations that are no longer supported.
+_LUA_HISTORICAL_IMPLS=(
+	lua5-2
+)
+readonly _LUA_HISTORICAL_IMPLS
 
 # @FUNCTION: _lua_set_impls
 # @INTERNAL
@@ -212,7 +215,9 @@ _lua_get_library_file() {
 			die "Invalid implementation: ${impl}"
 			;;
 	esac
+
 	libdir=$($(tc-getPKG_CONFIG) --variable libdir ${impl}) || die
+	libdir="${libdir#${ESYSROOT#${SYSROOT}}}"
 
 	debug-print "${FUNCNAME}: libdir = ${libdir}, libname = ${libname}"
 	echo "${libdir}/${libname}"
@@ -226,8 +231,8 @@ _lua_get_library_file() {
 # as parameters.
 #
 # The optional first parameter may specify the requested Lua
-# implementation (either as LUA_TARGETS value, e.g. lua5-2,
-# or an ELUA one, e.g. lua5.2). If no implementation passed,
+# implementation (either as LUA_TARGETS value, e.g. lua5-4,
+# or an ELUA one, e.g. lua5.4). If no implementation passed,
 # the current one will be obtained from ${ELUA}.
 _lua_export() {
 	debug-print-function ${FUNCNAME} "${@}"
@@ -274,6 +279,7 @@ _lua_export() {
 				local val
 
 				val=$($(tc-getPKG_CONFIG) --variable INSTALL_CMOD ${impl}) || die
+				val="${val#${ESYSROOT#${SYSROOT}}}"
 
 				export LUA_CMOD_DIR=${val}
 				debug-print "${FUNCNAME}: LUA_CMOD_DIR = ${LUA_CMOD_DIR}"
@@ -282,6 +288,7 @@ _lua_export() {
 				local val
 
 				val=$($(tc-getPKG_CONFIG) --variable includedir ${impl}) || die
+				val="${val#${ESYSROOT#${SYSROOT}}}"
 
 				export LUA_INCLUDE_DIR=${val}
 				debug-print "${FUNCNAME}: LUA_INCLUDE_DIR = ${LUA_INCLUDE_DIR}"
@@ -298,6 +305,7 @@ _lua_export() {
 				local val
 
 				val=$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD ${impl}) || die
+				val="${val#${ESYSROOT#${SYSROOT}}}"
 
 				export LUA_LMOD_DIR=${val}
 				debug-print "${FUNCNAME}: LUA_LMOD_DIR = ${LUA_LMOD_DIR}"

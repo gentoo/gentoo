@@ -1,7 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+inherit unpacker
 
 PV_FULL=${PV/_p/-0-}
 PV_NODOTS=$(ver_rs 1-3 '' ${PV%_p*})
@@ -53,7 +55,7 @@ HOMEPAGE="https://doc.qt.io/"
 
 LICENSE="FDL-1.3"
 SLOT="5"
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 
 IUSE="charts datavis +html networkauth +qch script timeline virtualkeyboard webengine"
 REQUIRED_USE="|| ( html qch )"
@@ -80,12 +82,12 @@ for DOCUSE in ${!QT5_DOCS[@]}; do
 done
 unset DOCTAR DOCUSE
 
+S=${WORKDIR}/Docs/Qt-${PV%_p*}
+
 BDEPEND="
 	app-arch/p7zip
 	media-libs/libpng:0
 "
-
-S=${WORKDIR}/Docs/Qt-${PV%_p*}
 
 src_prepare() {
 	default

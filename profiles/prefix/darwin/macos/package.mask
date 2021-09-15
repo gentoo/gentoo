@@ -1,8 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Fabian Groffen <grobian@gentoo.org> (2021-01-10)
-# fails to compile on regex and nonull definitions in
-# gnulib/malloc/dynarray-skeleton.c
-=net-misc/wget-1.21.1
-=sys-apps/findutils-4.8.0
+# Sam James <sam@gentoo.org> (2021-09-05)
+# gdbm-1.21 fails to build right now on macOS with:
+# ```gdbmshell.c:1013:54: error: ‘struct stat’ has no member named ‘st_mtim’```
+# bug #811792
+=sys-libs/gdbm-1.21

@@ -4,3 +4,4 @@
 # we, kinda, need this on riscv ...
 sys-devel/llvm llvm_targets_RISCV
 sys-devel/clang llvm_targets_RISCV
+dev-lang/rust llvm_targets_RISCV

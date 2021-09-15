@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -14,7 +14,7 @@ SRC_URI="https://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2
 LICENSE="BSD"
 SLOT="0/15"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="cairo +cpuid cuda debug gl libudev netloc nvml +pci static-libs svg xml X"
+IUSE="cairo +cpuid cuda debug gl netloc nvml +pci static-libs svg udev xml X"
 
 # opencl support dropped with x11-drivers/ati-drivers being removed (#582406).
 # Anyone with hardware is welcome to step up and help test to get it re-added.
@@ -24,13 +24,13 @@ RDEPEND=">=sys-libs/ncurses-5.9-r3:0[${MULTILIB_USEDEP}]
 	cairo?		( >=x11-libs/cairo-1.12.14-r4[X?,svg?,${MULTILIB_USEDEP}] )
 	cuda?		( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1:= )
 	gl?		( x11-drivers/nvidia-drivers[static-libs,tools] )
-	libudev?	( virtual/libudev )
 	netloc?		( !sys-apps/netloc )
 	nvml?		( x11-drivers/nvidia-drivers[${MULTILIB_USEDEP}] )
 	pci?		(
 				>=sys-apps/pciutils-3.3.0-r2[${MULTILIB_USEDEP}]
 				>=x11-libs/libpciaccess-0.13.1-r1[${MULTILIB_USEDEP}]
 			)
+	udev?	( virtual/libudev )
 	xml?		( >=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 
@@ -48,8 +48,8 @@ src_prepare() {
 	eautoreconf
 
 	if use cuda ; then
-		append-cflags "-I${EPREFIX}/opt/cuda/include"
-		append-cppflags "-I${EPREFIX}/opt/cuda/include"
+		append-cflags "-I${ESYSROOT}/opt/cuda/include"
+		append-cppflags "-I${ESYSROOT}/opt/cuda/include"
 	fi
 }
 
@@ -58,7 +58,7 @@ multilib_src_configure() {
 
 	if use cuda ; then
 		local -x LDFLAGS="${LDFLAGS}"
-		append-ldflags "-L${EPREFIX}/opt/cuda/$(get_libdir)"
+		append-ldflags "-L${ESYSROOT}/opt/cuda/$(get_libdir)"
 	fi
 
 	local myconf=(
@@ -72,7 +72,7 @@ multilib_src_configure() {
 		$(use_enable cairo)
 		$(use_enable cpuid)
 		$(use_enable debug)
-		$(use_enable libudev)
+		$(use_enable udev libudev)
 		$(use_enable netloc)
 		$(use_enable nvml)
 		$(use_enable pci)

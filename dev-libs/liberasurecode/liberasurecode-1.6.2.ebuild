@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils ltprune multilib toolchain-funcs
+inherit autotools
 
 DESCRIPTION="Erasure Code API library written in C with pluggable Erasure Code backends."
 HOMEPAGE="https://bitbucket.org/tsg-/liberasurecode/overview"
@@ -14,9 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc static-libs"
 
-RDEPEND=""
-DEPEND="sys-devel/autoconf
-	doc? ( app-doc/doxygen )"
+DEPEND="doc? ( app-doc/doxygen )"
 
 src_prepare() {
 	eapply_user
@@ -33,5 +31,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

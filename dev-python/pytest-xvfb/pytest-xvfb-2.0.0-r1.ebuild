@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_REQ_USE="tk"
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/The-Compiler/pytest-xvfb/archive/v${PV}.tar.gz -> ${
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=dev-python/pytest-2.8.1[${PYTHON_USEDEP}]
@@ -22,13 +22,4 @@ RDEPEND="
 	x11-base/xorg-server[xvfb]
 "
 
-distutils_enable_tests pytest
-
-python_test() {
-	local -x PYTHONPATH="${BUILD_DIR}/install/lib"
-	esetup.py install \
-		--root="${BUILD_DIR}/install" \
-		--install-lib=lib
-
-	pytest -vv || die "Tests fail with ${EPYTHON}"
-}
+distutils_enable_tests --install pytest

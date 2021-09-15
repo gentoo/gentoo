@@ -1,0 +1,62 @@
+https://bugs.gentoo.org/787845
+--- a/src/common/constants.h
++++ b/src/common/constants.h
+@@ -970,7 +970,7 @@ struct t3DModel {
+ 
+ char *getAn( const char *name );
+ 
+-typedef unsigned char byte;
++typedef unsigned char scourge_byte;
+ 
+ extern void ComputeNormals( t3DModel *pModel );
+ extern void CreateTexture( GLuint textureArray[], char *strFileName, int textureID );
+--- a/src/render/Md2.h
++++ b/src/render/Md2.h
+@@ -52,8 +52,8 @@ struct tMd2Header {
+ 
+ /// This is used to store the vertices that are read in for the current frame.
+ struct tMd2AliasTriangle {
+-	byte vertex[3];
+-	byte lightNormalIndex;
++	scourge_byte vertex[3];
++	scourge_byte lightNormalIndex;
+ };
+ 
+ /// This stores the animation scale, translation and name information for a frame, plus verts.
+--- a/src/render/glshape.cpp
++++ b/src/render/glshape.cpp
+@@ -35,7 +35,7 @@ class Map;
+ // poor man's dynamic lightmaps: shaded sides
+ static GLuint lightmap_tex_num = 0;
+ static GLuint lightmap_tex_num2 = 0;
+-static unsigned char data[LIGHTMAP_SIZE * LIGHTMAP_SIZE * 3];
++static unsigned char data1[LIGHTMAP_SIZE * LIGHTMAP_SIZE * 3];
+ static unsigned char data2[LIGHTMAP_SIZE * LIGHTMAP_SIZE * 3];
+ 
+ GLShape::GLShape( Texture tex[], int width, int depth, int height, char const* name, int descriptionGroup,
+@@ -514,11 +514,11 @@ void GLShape::createDarkTexture( WallTheme *theme ) {
+ 			if ( !theme || !theme->getMultiTexSmooth( 0 ) ) d = Util::roll( 127.0f, 255.0f );
+ 
+ 			// purple
+-			data[i * LIGHTMAP_SIZE * 3 + j * 3 + 0] =
++			data1[i * LIGHTMAP_SIZE * 3 + j * 3 + 0] =
+ 			  ( unsigned char )( d * tmp * ( theme ? theme->getMultiTexRed( 0 ) : 0.8f ) );
+-			data[i * LIGHTMAP_SIZE * 3 + j * 3 + 1] =
++			data1[i * LIGHTMAP_SIZE * 3 + j * 3 + 1] =
+ 			  ( unsigned char )( d * tmp * ( theme ? theme->getMultiTexGreen( 0 ) : 0.4f ) );
+-			data[i * LIGHTMAP_SIZE * 3 + j * 3 + 2] =
++			data1[i * LIGHTMAP_SIZE * 3 + j * 3 + 2] =
+ 			  ( unsigned char )( d * tmp * ( theme ? theme->getMultiTexBlue( 0 ) : 1.0f ) );
+ 
+ 			d = 255.0f;
+@@ -542,8 +542,8 @@ void GLShape::createDarkTexture( WallTheme *theme ) {
+ 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+ 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR );
+ 	glTexEnvi( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
+-	glTexImage2D( GL_TEXTURE_2D, 0, GL_RGB, LIGHTMAP_SIZE, LIGHTMAP_SIZE, 0, GL_RGB, GL_UNSIGNED_BYTE, data );
+-	gluBuild2DMipmaps( GL_TEXTURE_2D, GL_RGB, LIGHTMAP_SIZE, LIGHTMAP_SIZE, GL_RGB, GL_UNSIGNED_BYTE, data );
++	glTexImage2D( GL_TEXTURE_2D, 0, GL_RGB, LIGHTMAP_SIZE, LIGHTMAP_SIZE, 0, GL_RGB, GL_UNSIGNED_BYTE, data1 );
++	gluBuild2DMipmaps( GL_TEXTURE_2D, GL_RGB, LIGHTMAP_SIZE, LIGHTMAP_SIZE, GL_RGB, GL_UNSIGNED_BYTE, data1 );
+ 
+ 	glBindTexture( GL_TEXTURE_2D, lightmap_tex_num2 );
+ 	glPixelStorei( GL_UNPACK_ALIGNMENT, 1 );

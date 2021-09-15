@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit toolchain-funcs linux-info flag-o-matic python-r1
+inherit toolchain-funcs linux-info python-r1
 
 DESCRIPTION="utility to checkpoint/restore a process tree"
 HOMEPAGE="https://criu.org/"
@@ -13,7 +13,7 @@ SRC_URI="https://download.openvz.org/criu/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm ~arm64 ppc64"
 IUSE="doc selinux setproctitle static-libs"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}"/2.2/${PN}-2.2-flags.patch
 	"${FILESDIR}"/2.3/${PN}-2.3-no-git.patch
 	"${FILESDIR}"/${PN}-3.12-automagic-libbsd.patch
+	"${FILESDIR}"/${PN}-3.15-pkg-config.patch
 )
 
 criu_arch() {
@@ -93,6 +94,7 @@ src_compile() {
 		CC="$(tc-getCC)" \
 		LD="$(tc-getLD)" \
 		AR="$(tc-getAR)" \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 		PYTHON="${EPYTHON%.?}" \
 		FULL_PYTHON="${PYTHON%.?}" \
 		OBJCOPY="$(tc-getOBJCOPY)" \

@@ -10,6 +10,3 @@ net-im/telegram-desktop
 # to build openjdk:11, but it's possible to build openjdk:8 with icedtea{,-bin}
 dev-java/openjdk:11
 dev-java/openjdk-bin
-
-# <gcc-4 does not compile with >=gcc-4 on ppc64
-sys-libs/libstdc++-v3

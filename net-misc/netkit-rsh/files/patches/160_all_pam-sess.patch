@@ -1,0 +1,12 @@
+--- a/rexecd/rexecd.c
++++ b/rexecd/rexecd.c
+@@ -307,6 +307,9 @@
+        PAM_BAIL;
+        pam_error = pam_setcred(pamh, PAM_ESTABLISH_CRED);
+        PAM_BAIL;
++       pam_error = pam_open_session(pamh, 0);
++       PAM_BAIL;
++       pam_close_session(pamh, 0);
+        pam_end(pamh, PAM_SUCCESS);
+        /* If this point is reached, the user has been authenticated. */
+        setpwent();

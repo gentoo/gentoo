@@ -26,7 +26,7 @@ MODULES=(
 	translate waf wellarchitected
 )
 
-IUSE="+http libressl pulseaudio +rtti +ssl static-libs test unity-build ${MODULES[*]}"
+IUSE="+http pulseaudio +rtti +ssl static-libs test unity-build ${MODULES[*]}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -34,8 +34,7 @@ DEPEND="
 	http? ( net-misc/curl:= )
 	pulseaudio? ( media-sound/pulseaudio )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 	>=dev-libs/aws-c-common-0.5.2:=[static-libs=]
 	>=dev-libs/aws-c-event-stream-0.2.7:=[static-libs=]

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils rpm multilib versionator
+inherit desktop rpm multilib versionator
 
 MY_PV=$(replace_version_separator 3 '-')
 MY_P="${P/_p/-}"
@@ -61,10 +61,10 @@ src_install() {
 	JRE_DIR="${WORKDIR}"/${PN}-${MY_PV}/opt/novell/groupwise/client/java;
 
 	# Undo Sun's funny-business with packed .jar's
-	for i in $JRE_DIR/lib/*.pack; do
-		i_b=`echo $i | sed 's/\.pack$//'`;
-		einfo "Unpacking `basename $i` -> `basename $i_b.jar`";
-		$JRE_DIR/bin/unpack200 $i $i_b.jar || die "Unpack failed";
+	for i in ${JRE_DIR}/lib/*.pack; do
+		i_b=`echo ${i} | sed 's/\.pack$//'`;
+		einfo "Unpacking `basename ${i}` -> `basename ${i_b}.jar`";
+		${JRE_DIR}/bin/unpack200 ${i} ${i_b}.jar || die "Unpack failed";
 	done;
 
 	domenu "${WORKDIR}"/${PN}-${MY_PV}/opt/novell/groupwise/client/gwclient.desktop

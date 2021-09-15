@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-c-${PV}"
 
 LICENSE="UCAR-Unidata"
 SLOT="0/18"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ppc ppc64 -riscv x86 ~amd64-linux ~x86-linux"
 IUSE="+dap doc examples hdf +hdf5 mpi szip test tools"
 RESTRICT="!test? ( test )"
 

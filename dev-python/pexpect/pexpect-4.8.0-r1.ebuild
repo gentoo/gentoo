@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -30,6 +30,13 @@ distutils_enable_tests pytest
 
 python_compile_all() {
 	use doc && emake -C doc html
+}
+
+src_test() {
+	# workaround new readline defaults
+	echo "set enable-bracketed-paste off" > "${T}"/inputrc || die
+	local -x INPUTRC="${T}"/inputrc
+	distutils-r1_src_test
 }
 
 python_install() {

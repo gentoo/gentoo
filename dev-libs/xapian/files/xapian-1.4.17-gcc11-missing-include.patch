@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/788046
+--- a/api/omdocument.cc
++++ b/api/omdocument.cc
+@@ -39,6 +39,7 @@
+ 
+ #include <algorithm>
+ #include <string>
++#include <limits>
+ 
+ using namespace std;
+ 

@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
-inherit distutils-r1
+PYTHON_COMPAT=( python3_{8..10} )
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Python SNMP library"
 HOMEPAGE="https://pypi.org/project/pysnmp/ https://github.com/etingof/pysnmp"
@@ -38,8 +38,7 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	elog "You may also be interested in the following packages: "
-	elog "dev-python/pysnmp-apps - example programs using pysnmp"
-	elog "dev-python/pysnmp-mibs - IETF and other mibs"
-	elog "dev-python/pysmi - to dump MIBs in python format"
+	optfeature "Example programs using pysnmp" dev-python/pysnmp-apps
+	optfeature "IETF and other mibs" dev-python/pysnmp-mibs
+	optfeature "Dump MIBs in python format" dev-python/pysmi
 }

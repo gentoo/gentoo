@@ -1,0 +1,56 @@
+--- a/man/Makefile.am
++++ b/man/Makefile.am
+@@ -41,7 +41,7 @@
+ 	$(nil)
+ 
+ $(md2_FUNCS): md2.3
+-	$(LN_S) -f $< $(DESTDIR)$(man3dir)/$@.3
++	cd "$(DESTDIR)$(man3dir)" && $(LN_S) -f md2.3 $@.3
+ 
+ md4_FUNCS = \
+ 	MD4Transform \
+@@ -56,7 +56,7 @@
+ 	$(nil)
+ 
+ $(md4_FUNCS): md4.3
+-	$(LN_S) -f $< $(DESTDIR)$(man3dir)/$@.3
++	cd "$(DESTDIR)$(man3dir)" && $(LN_S) -f md4.3 $@.3
+ 
+ md5_FUNCS = \
+ 	MD5Transform \
+@@ -71,7 +71,7 @@
+ 	$(nil)
+ 
+ $(md5_FUNCS): md5.3
+-	$(LN_S) -f $< $(DESTDIR)$(man3dir)/$@.3
++	cd "$(DESTDIR)$(man3dir)" && $(LN_S) -f md5.3 $@.3
+ 
+ rmd160_FUNCS = \
+ 	RMD160Transform \
+@@ -86,7 +86,7 @@
+ 	$(nil)
+ 
+ $(rmd160_FUNCS): rmd160.3
+-	$(LN_S) -f $< $(DESTDIR)$(man3dir)/$@.3
++	cd "$(DESTDIR)$(man3dir)" && $(LN_S) -f rmd160.3 $@.3
+ 
+ sha1_FUNCS = \
+ 	SHA1Transform \
+@@ -101,7 +101,7 @@
+ 	$(nil)
+ 
+ $(sha1_FUNCS): sha1.3
+-	$(LN_S) -f $< $(DESTDIR)$(man3dir)/$@.3
++	cd "$(DESTDIR)$(man3dir)" && $(LN_S) -f sha1.3 $@.3
+ 
+ sha2_FUNCS = \
+ 	SHA256Init \
+@@ -134,7 +134,7 @@
+ 	$(nil)
+ 
+ $(sha2_FUNCS): sha2.3
+-	$(LN_S) -f $< $(DESTDIR)$(man3dir)/$@.3
++	cd "$(DESTDIR)$(man3dir)" && $(LN_S) -f sha2.3 $@.3
+ 
+ digest_FUNCS = \
+ 	$(md2_FUNCS) \

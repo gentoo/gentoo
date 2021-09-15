@@ -1,0 +1,67 @@
+Silence annoying #warning's on musl
+
+https://github.com/systemd/systemd/pull/20362
+https://github.com/systemd/systemd/pull/20364
+
+From f8d54f7810aeea5ff27a5db03e1aab7ea54c8268 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Mon, 2 Aug 2021 12:41:38 +0200
+Subject: [PATCH] Use correct `<fcntl.h>` include
+
+* `<sys/fcntl.h>` is not specified in POSIX
+---
+ src/basic/fileio.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/basic/fileio.h b/src/basic/fileio.h
+index af797cfafdbf..4295b84a85c5 100644
+--- a/src/basic/fileio.h
++++ b/src/basic/fileio.h
+@@ -2,11 +2,11 @@
+ #pragma once
+ 
+ #include <dirent.h>
++#include <fcntl.h>
+ #include <stdbool.h>
+ #include <stddef.h>
+ #include <stdio.h>
+ #include <sys/stat.h>
+-#include <sys/fcntl.h>
+ #include <sys/types.h>
+ 
+ #include "macro.h"
+From 2b6c0bb2a341c95223ce672249e43c743b03d78c Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Mon, 2 Aug 2021 16:09:10 +0200
+Subject: [PATCH] Use correct `<poll.h>` include
+
+* `<sys/poll.h>` is not specified in POSIX
+---
+ src/shared/nscd-flush.c | 2 +-
+ src/shared/varlink.c    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/shared/nscd-flush.c b/src/shared/nscd-flush.c
+index dfc47c423441..19e16d93455c 100644
+--- a/src/shared/nscd-flush.c
++++ b/src/shared/nscd-flush.c
+@@ -1,5 +1,5 @@
+ /* SPDX-License-Identifier: LGPL-2.1-or-later */
+-#include <sys/poll.h>
++#include <poll.h>
+ 
+ #include "fd-util.h"
+ #include "io-util.h"
+diff --git a/src/shared/varlink.c b/src/shared/varlink.c
+index 3a53c16a7242..4033947d3b8c 100644
+--- a/src/shared/varlink.c
++++ b/src/shared/varlink.c
+@@ -1,7 +1,7 @@
+ /* SPDX-License-Identifier: LGPL-2.1-or-later */
+ 
+ #include <malloc.h>
+-#include <sys/poll.h>
++#include <poll.h>
+ 
+ #include "alloc-util.h"
+ #include "errno-util.h"

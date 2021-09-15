@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils autotools flag-o-matic elisp-common
+inherit epatch autotools flag-o-matic elisp-common
 
 DESCRIPTION="Scheme interpreter"
 HOMEPAGE="https://www.gnu.org/software/guile/"
@@ -19,6 +19,7 @@ RDEPEND="
 	dev-libs/libltdl:0=
 	sys-devel/gettext
 	sys-libs/ncurses:0=
+	virtual/libcrypt:=
 	emacs? ( >=app-editors/emacs-23.1:* )
 	readline? ( sys-libs/readline:0= )"
 DEPEND="${RDEPEND}

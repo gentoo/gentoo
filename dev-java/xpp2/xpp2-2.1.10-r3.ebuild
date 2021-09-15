@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="pull-parser:pull-parser:2"
 
 inherit java-pkg-2 java-ant-2
 
@@ -10,8 +12,8 @@ MY_PN="PullParser"
 MY_P="${MY_PN}${PV}"
 
 DESCRIPTION="A streaming pull XML parser used to quickly process input elements"
-HOMEPAGE="http://www.extreme.indiana.edu/xgws/xsoap/xpp/mxp1/index.html"
-SRC_URI="http://www.extreme.indiana.edu/xgws/xsoap/xpp/download/${MY_PN}2/${MY_P}.tgz"
+HOMEPAGE="https://web.archive.org/web/20130904163229/http://www.extreme.indiana.edu/xgws/xsoap/xpp/xpp2/"
+SRC_URI="https://web.archive.org/web/20130904173708/http://www.extreme.indiana.edu/xgws/xsoap/xpp/download/PullParser2/${MY_P}.tgz"
 
 LICENSE="Apache-1.1 IBM"
 SLOT="0"

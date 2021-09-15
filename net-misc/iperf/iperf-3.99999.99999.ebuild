@@ -12,11 +12,10 @@ S="${WORKDIR}/${P/_/}"
 
 LICENSE="BSD"
 SLOT="3"
-IUSE="libressl sctp static-libs"
+IUSE="sctp static-libs"
 
 DEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	sctp? ( net-misc/lksctp-tools )
 "
 RDEPEND="${DEPEND}"

@@ -1,9 +1,0 @@
-diff --git a/MANIFEST.in b/MANIFEST.in
---- a/MANIFEST.in
-+++ b/MANIFEST.in
-@@ -4,5 +4,3 @@
- include tox.ini
- include LICENSE
- include test_pep8.py
--graft doc
--graft test_pep8.py

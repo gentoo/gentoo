@@ -12,7 +12,7 @@ S="${WORKDIR}/lcms2-${PV}"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc jpeg static-libs test +threads tiff zlib"
 REQUIRED_USE="tiff? ( zlib )"
 
@@ -21,12 +21,15 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
 	tiff? ( >=media-libs/tiff-4.0.3-r6:0=[${MULTILIB_USEDEP}] )
+	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
-	elibtoolize  # for Prefix/Solaris
+
+	# for Prefix/Solaris
+	elibtoolize
 }
 
 multilib_src_configure() {
@@ -37,6 +40,7 @@ multilib_src_configure() {
 		$(use_with tiff)
 		$(use_with zlib)
 	)
+
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 

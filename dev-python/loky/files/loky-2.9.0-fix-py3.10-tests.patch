@@ -1,0 +1,41 @@
+From 0d31dc24ca9688c11d1fe53fa1283728ecc50706 Mon Sep 17 00:00:00 2001
+From: Arthur Zamarin <arthurzam@gmail.com>
+Date: Mon, 2 Aug 2021 18:35:31 +0300
+Subject: [PATCH] Fix no attribute import_module for python 3.10
+
+In python 3.10, the `import_module` has moved from the
+`test.support` module to `test.support.import_helper`.
+
+As fix, try to import the from the new place and if unknown try from
+the old place.
+---
+ tests/_test_process_executor.py | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/tests/_test_process_executor.py b/tests/_test_process_executor.py
+index 65d9a2c9..3bd0b12d 100644
+--- a/tests/_test_process_executor.py
++++ b/tests/_test_process_executor.py
+@@ -1,15 +1,18 @@
+ from __future__ import print_function
+ try:
+-    import test.support
++    try:
++        from test.support.import_helper import import_module
++    except ImportError:
++        from test.support import import_module
+ 
+     # Skip tests if _multiprocessing wasn't built.
+-    test.support.import_module('_multiprocessing')
++    import_module('_multiprocessing')
+     # Skip tests if sem_open implementation is broken.
+-    test.support.import_module('multiprocessing.synchronize')
++    import_module('multiprocessing.synchronize')
+     # import threading after _multiprocessing to raise a more revelant error
+     # message: "No module named _multiprocessing" if multiprocessing is not
+     # compiled without thread support.
+-    test.support.import_module('threading')
++    import_module('threading')
+ except ImportError:
+     pass
+ 

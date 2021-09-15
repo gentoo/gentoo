@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit eutils toolchain-funcs multilib
+inherit toolchain-funcs multilib
 
 DESCRIPTION="Software modem that uses an IAX channel instead of a traditional phone line"
 HOMEPAGE="https://sourceforge.net/projects/iaxmodem/"
@@ -13,11 +13,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE=""
-
 RDEPEND="media-libs/tiff:=
 	sys-process/procps"
-
 DEPEND="${RDEPEND}"
 
 src_prepare() {

@@ -17,7 +17,6 @@ IUSE="test"
 DEPEND=">=dev-lang/ocaml-4.08:="
 RDEPEND="${DEPEND}
 	!dev-ml/jbuilder"
-BDEPEND=""
 
 RESTRICT="test"
 
@@ -32,6 +31,6 @@ src_compile() {
 
 src_install() {
 	default
-	mv "${D}"/usr/doc "${D}"/usr/share/doc/${PF}
-	mv "${D}"/usr/man "${D}"/usr/share/man
+	mv "${ED}"/usr/doc "${ED}"/usr/share/doc/${PF} || die
+	mv "${ED}"/usr/man "${ED}"/usr/share/man || die
 }

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_PN="wmspaceweather"
 MY_PV_ORIG="${PV/_p*}"
@@ -33,16 +33,17 @@ RDEPEND="${CDEPEND}
 
 S="${WORKDIR}/${MY_P_ORIG/_/-}/${PN}"
 
-src_unpack() {
-	unpack ${MY_P_ORIG}.tar.gz
-	epatch "${DISTDIR}"/${MY_P_PATCH}.gz
-	epatch "${FILESDIR}"/${P}-gcc-10.patch
+src_prepare() {
+	default
+
+	cd .. || die
+
+	eapply "${WORKDIR}"/${MY_P_PATCH}
+	eapply "${FILESDIR}"/${P}-gcc-10.patch
 
 	# need to apply patches from Debian first, do NOT change the order
 	cd "${S}" || die
-	mv ../debian/patches "${WORKDIR}"/patch || die
-	EPATCH_SUFFIX="dpatch" EPATCH_FORCE="yes" \
-		EPATCH_MULTI_MSG="Applying Debian patches ..." epatch
+	eapply -p2 ../debian/patches/*.dpatch
 	eapply "${FILESDIR}"/${P}-gentoo.patch
 	eapply "${FILESDIR}"/${P}-getkp.patch
 }

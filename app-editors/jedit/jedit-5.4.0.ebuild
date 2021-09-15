@@ -1,18 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 JAVA_PKG_IUSE="doc test"
-
-inherit eutils java-pkg-2 java-ant-2 xdg-utils
+inherit desktop java-pkg-2 java-ant-2 xdg-utils
 
 DESCRIPTION="Programmer's editor written in Java"
 HOMEPAGE="http://www.jedit.org"
 SRC_URI="mirror://sourceforge/${PN}/${PN}${PV}source.tar.bz2"
 
 LICENSE="BSD GPL-2"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 SLOT="0"
 
 CP_DEPEND="dev-java/jsr305:0"

@@ -14,6 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="https://www.kernel.org/pub/linux/network/wireless/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	MYRST2MAN="RST2MAN=:"
 fi
 
 DESCRIPTION="Wireless daemon for linux"
@@ -53,7 +54,6 @@ pkg_setup() {
 		~ASYMMETRIC_PUBLIC_KEY_SUBTYPE
 		~CFG80211
 		~CRYPTO_AES
-		~CRYPTO_ARC4
 		~CRYPTO_CBC
 		~CRYPTO_CMAC
 		~CRYPTO_DES
@@ -151,8 +151,12 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+src_compile() {
+	emake ${MYRST2MAN}
+}
+
 src_install() {
-	default
+	emake DESTDIR="${D}" ${MYRST2MAN} install
 	keepdir /var/lib/${PN}
 
 	newinitd "${FILESDIR}/iwd.initd-r1" iwd
@@ -173,6 +177,7 @@ src_install() {
 		echo "EnableNetworkConfiguration=true" >> "${iwdconf}"
 		echo "[Network]" >> "${iwdconf}"
 		echo "NameResolvingService=$(usex systemd systemd resolvconf)" >> "${iwdconf}"
+		dodir /etc/conf.d
 		echo "rc_provide=\"net\"" > ${ED}/etc/conf.d/iwd
 	fi
 }

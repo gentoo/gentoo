@@ -19,10 +19,9 @@ HOMEPAGE="https://dracut.wiki.kernel.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="selinux"
+IUSE="selinux test"
 
-# Tests need root privileges, bug #298014
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-arch/cpio
@@ -58,13 +57,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-DOCS=( AUTHORS HACKING NEWS README.md README.generic README.kernel README.modules
-	README.testsuite TODO )
-
 QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
 PATCHES=(
-	"${FILESDIR}"/gentoo-ldconfig-paths.patch
+	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
 )
 
 src_configure() {
@@ -86,11 +82,29 @@ src_configure() {
 	fi
 }
 
-src_install() {
-	default
+src_test() {
+	if [[ ${EUID} != 0 ]]; then
+		# Tests need root privileges, bug #298014
+		ewarn "Skipping tests: Not running as root."
+	elif [[ ! -w /dev/kvm ]]; then
+		ewarn "Skipping tests: Unable to access /dev/kvm."
+	else
+		emake -C test check
+	fi
+}
 
-	insinto /etc/logrotate.d
-	newins dracut.logrotate dracut
+src_install() {
+	local DOCS=(
+		AUTHORS
+		NEWS.md
+		README.md
+		docs/README.cross
+		docs/README.generic
+		docs/README.kernel
+		docs/SECURITY.md
+	)
+
+	default
 
 	docinto html
 	dodoc dracut.html

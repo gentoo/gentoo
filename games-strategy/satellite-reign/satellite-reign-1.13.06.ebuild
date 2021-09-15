@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils desktop xdg-utils
+inherit desktop wrapper xdg-utils
 
 MY_PN="SatelliteReignLinux"
 MY_PV="${PV/.}"
@@ -12,6 +12,8 @@ MY_PV="0${MY_PV/./_}"
 DESCRIPTION="Real-time, class-based strategy game set in a cyberpunk city"
 HOMEPAGE="http://satellitereign.com/"
 SRC_URI="${MY_PN}${MY_PV}.zip"
+S="${WORKDIR}"
+
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
@@ -32,10 +34,8 @@ RDEPEND="
 	)
 "
 
-S="${WORKDIR}"
-
 DIR="/opt/${PN}"
-QA_PREBUILT="${DIR}/*"
+QA_PREBUILT="${DIR#/}/*"
 
 pkg_nofetch() {
 	einfo "Please buy and download ${SRC_URI} from:"

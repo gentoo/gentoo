@@ -30,7 +30,7 @@ DEPEND="
 "
 BDEPEND="
 	app-text/rman
-	x11-misc/imake
+	>=x11-misc/imake-1.0.8-r1
 	xft? ( virtual/pkgconfig )
 "
 S=${WORKDIR}/${P/_p*/}
@@ -53,7 +53,8 @@ src_configure() {
 		sed -i -e '/EXTRA_LIBRARIES/s|^|#|g' Imakefile || die
 	fi
 
-	xmkmf || die
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
 }
 
 src_compile() {

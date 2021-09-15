@@ -38,6 +38,7 @@ RDEPEND="
 	>=dev-python/txaio-2.2.2[${PYTHON_USEDEP}]
 	dev-python/pyjwt[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/unidiff[${PYTHON_USEDEP}]
 	>=dev-python/zope-interface-4.1.1[${PYTHON_USEDEP}]
 	~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
 	crypt? (
@@ -96,10 +97,10 @@ src_compile() {
 
 	if use doc; then
 		einfo "Generation of documentation"
-		pushd docs > /dev/null
+		pushd docs > /dev/null || die
 		#'man' target is currently broken
 		emake html
-		popd > /dev/null
+		popd > /dev/null || die
 	fi
 }
 

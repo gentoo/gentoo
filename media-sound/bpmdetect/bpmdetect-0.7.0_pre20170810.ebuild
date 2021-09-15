@@ -32,6 +32,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=("${FILESDIR}"/${P}-gcc-11.patch)
+
 src_install() {
 	einstalldocs
 	dobin "${BUILD_DIR}"/src/${PN}

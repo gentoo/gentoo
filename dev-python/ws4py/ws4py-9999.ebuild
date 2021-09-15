@@ -40,7 +40,6 @@ RDEPEND=">=dev-python/greenlet-0.4.1[${PYTHON_USEDEP}]
 
 DEPEND="test? (
 		>=dev-python/cherrypy-3.2.4[${PYTHON_USEDEP}]
-		dev-python/unittest2[${PYTHON_USEDEP}]
 		>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]
 	)"
 

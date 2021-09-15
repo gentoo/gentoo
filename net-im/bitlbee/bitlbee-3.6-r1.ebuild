@@ -21,14 +21,15 @@ HOMEPAGE="https://www.bitlbee.org/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE_PROTOCOLS="msn oscar purple twitter +xmpp"
-IUSE="debug +gnutls ipv6 libevent libressl nss otr +plugins selinux test xinetd
+IUSE="debug +gnutls ipv6 libevent nss otr +plugins selinux test xinetd
 	${IUSE_PROTOCOLS}"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	|| ( purple xmpp msn oscar )
-	xmpp? ( !nss )
+	purple? ( plugins )
 	test? ( plugins )
+	xmpp? ( !nss )
 "
 
 COMMON_DEPEND="
@@ -42,8 +43,7 @@ COMMON_DEPEND="
 	!gnutls? (
 		nss? ( dev-libs/nss )
 		!nss? (
-			libressl? ( dev-libs/libressl:= )
-			!libressl? ( dev-libs/openssl:0= )
+			dev-libs/openssl:0=
 		)
 	)
 "
@@ -64,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-systemd-user.patch
 	"${FILESDIR}"/${PN}-3.5-libcheck.patch
 	"${FILESDIR}"/${PN}-3.5-libevent.patch
+	"${FILESDIR}"/${P}-disabled-plugins-use.patch
 )
 
 src_configure() {

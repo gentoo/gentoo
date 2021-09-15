@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,8 +12,9 @@ MY_PV="$(ver_cut 1-3)"
 DESCRIPTION="Supermicro Thin-Agent Service for monitoring through the BMC/IPMI"
 HOMEPAGE="https://www.supermicro.com"
 SRC_URI="https://www.supermicro.com/wftp/utility/${MY_PN}/${MY_PN}_${MY_PV}_build.${MY_DATE}.zip"
+S="${WORKDIR}"
 
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="BSD supermicro"
 SLOT="0"
 
@@ -30,8 +31,6 @@ RDEPEND="
 BDEPEND="app-arch/unzip"
 
 RESTRICT="bindist mirror"
-
-S="${WORKDIR}"
 
 QA_PREBUILT="usr/bin/IPMITAS"
 

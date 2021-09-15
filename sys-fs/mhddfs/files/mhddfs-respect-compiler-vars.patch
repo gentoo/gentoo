@@ -1,12 +1,12 @@
---- a/Makefile	2012-11-19 15:25:21.665692111 +0400
-+++ b/Makefile	2012-11-19 15:27:08.406691288 +0400
+--- a/Makefile
++++ b/Makefile
 @@ -22,13 +22,13 @@
  
  TARGET	=	mhddfs
  
 -CFLAGS	=	-Wall $(shell pkg-config fuse --cflags) \
 -			-DFUSE_USE_VERSION=26 -MMD
-+CFLAGS	+=	-Wall $(shell pkg-config fuse glib-2.0 --cflags) \
++CFLAGS	+=	-Wall $(shell ${PKG_CONFIG} fuse glib-2.0 --cflags) \
 +			-DFUSE_USE_VERSION=26 -MMD -rdynamic
  ifdef WITHOUT_XATTR
  CFLAGS	+=	-DWITHOUT_XATTR

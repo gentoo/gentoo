@@ -4,6 +4,7 @@
 EAPI=7
 
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="org.apache.commons:commons-collections4:4.1"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -14,7 +15,7 @@ DESCRIPTION="Extends the JCF classes with new interfaces, implementations and ut
 HOMEPAGE="https://commons.apache.org/collections/"
 SRC_URI="mirror://apache/${PN/-//}/source/${MY_P}-src.tar.gz"
 LICENSE="Apache-2.0"
-KEYWORDS="~amd64 ~ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils flag-o-matic multilib prefix toolchain-funcs
+inherit flag-o-matic prefix
 
 DESCRIPTION="Return the canonicalized absolute pathname"
 HOMEPAGE="http://packages.debian.org/unstable/utils/realpath"
@@ -18,9 +18,16 @@ IUSE="nls"
 
 RDEPEND="
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	nls? ( sys-devel/gettext )
-	elibc_mintlib? ( virtual/libiconv )"
+"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.17-build.patch
+	"${FILESDIR}"/${PN}-1.14-no-po4a.patch
+	"${FILESDIR}"/${PN}-1.15-prefix.patch
+)
 
 src_unpack() {
 	unpack ${PN}_${PV}.tar.gz
@@ -36,18 +43,22 @@ src_unpack() {
 }
 
 src_prepare() {
-	use nls || epatch "${FILESDIR}"/${PN}-1.16-nonls.patch
-	epatch \
-		"${FILESDIR}"/${PN}-1.17-build.patch \
-		"${FILESDIR}"/${PN}-1.14-no-po4a.patch \
-		"${FILESDIR}"/${PN}-1.15-prefix.patch
+	if ! use nls ; then
+		eapply "${FILESDIR}"/${PN}-1.16-nonls.patch
+	fi
+
+	default
+
+	# Don't compress man pages
+	sed -i -e 's:gzip -9f:true:' common.mk || die
+
 	eprefixify common.mk
 }
 
 src_compile() {
 	tc-export CC
-	use nls && use !elibc_glibc && append-libs -lintl
-	[[ ${CHOST} == *-mint* ]] && append-libs "-liconv"
+
+	use nls && ! use elibc_glibc && append-libs -lintl
 
 	local subdir
 	for subdir in src man $(usex nls po ''); do
@@ -61,12 +72,13 @@ src_install() {
 		SUBDIRS="src man $(usex nls po '')" \
 		DESTDIR="${D}" \
 		install
+
 	newdoc debian/changelog ChangeLog.debian
 
 	if use nls; then
 		local dir
 		for dir in "${WORKDIR}"/deb/usr/share/man/*; do
-			[ -f "${dir}"/man1/realpath.1 ] || continue
+			[[ -f "${dir}"/man1/realpath.1 ]] || continue
 			newman "${dir}"/man1/realpath.1 realpath.${dir##*/}.1
 		done
 	fi

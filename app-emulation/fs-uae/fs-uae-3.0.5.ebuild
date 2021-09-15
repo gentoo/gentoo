@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -50,6 +50,10 @@ src_prepare() {
 	# used? Lua is bundled but differs from upstream. We keep the
 	# default of disabling the Lua feature anyway as it is unfinished.
 	rm -r libmpeg2/ libudis86/ || die
+
+	# Fix building with GCC 11 / C++-17. This code was removed from master so
+	# this change has not been sent upstream.
+	sed -i "s/ throw([^)]*)//g" src/dosbox/setup.h || die
 }
 
 src_configure() {

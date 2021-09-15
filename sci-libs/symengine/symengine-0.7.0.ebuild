@@ -11,7 +11,7 @@ SRC_URI="https://github.com/sympy/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/0.4"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="arb benchmarks boost debug doc ecm flint llvm mpc mpfr openmp test tcmalloc threads"
 RESTRICT="!test? ( test )"
 
@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.7.0-cmake-build-type.patch"
+	"${FILESDIR}/${PN}-0.7.0-boost-1.77.patch"
 )
 
 pkg_pretend() {

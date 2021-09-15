@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,8 +40,8 @@ src_configure() {
 	export LIBDIR="/usr/$(get_libdir)"
 	export USE_seccomp="$(usex seccomp)"
 	export USE_SYSTEM_GTEST=yes
-	export GTEST_CXXFLAGS="$(pkg-config --cflags gtest_main)"
-	export GTEST_LIBS="$(pkg-config --libs gtest_main)"
+	export GTEST_CXXFLAGS="$($(tc-getPKG_CONFIG) --cflags gtest_main)"
+	export GTEST_LIBS="$($(tc-getPKG_CONFIG) --libs gtest_main)"
 }
 
 src_compile() {

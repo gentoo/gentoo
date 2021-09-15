@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 DISTUTILS_SINGLE_IMPL=1
 
 inherit bash-completion-r1 distutils-r1
@@ -13,22 +13,22 @@ SRC_URI="mirror://debian/pool/main/d/${PN}/${PN}_${PV}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/python-debian[${PYTHON_MULTI_USEDEP}]
-		dev-python/paramiko[${PYTHON_MULTI_USEDEP}]
-		dev-util/distro-info[python,${PYTHON_MULTI_USEDEP}]
+		dev-python/python-debian[${PYTHON_USEDEP}]
+		dev-python/paramiko[${PYTHON_USEDEP}]
+		dev-util/distro-info[python,${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}
 	app-text/asciidoc
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/nose[${PYTHON_MULTI_USEDEP}]
-			dev-python/python-debian[${PYTHON_MULTI_USEDEP}]
+			dev-python/nose[${PYTHON_USEDEP}]
+			dev-python/python-debian[${PYTHON_USEDEP}]
 		')
 		dev-util/debhelper
 	)"

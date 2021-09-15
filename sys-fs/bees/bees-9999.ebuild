@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info systemd
+inherit linux-info systemd toolchain-funcs
 
 DESCRIPTION="Best-Effort Extent-Same, a btrfs dedup agent"
 HOMEPAGE="https://github.com/Zygo/bees"
@@ -28,8 +28,6 @@ RDEPEND="${DEPEND}"
 
 CONFIG_CHECK="~BTRFS_FS"
 ERROR_BTRFS_FS="CONFIG_BTRFS_FS: bees does currently only work with btrfs"
-
-PATCHES=( "${FILESDIR}/v9999-0001-HACK-musl-does-not-define-pthread_getname_np.patch" )
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
@@ -74,19 +72,24 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export CC CXX AR
 	cat >localconf <<-EOF || die
-		LIBEXEC_PREFIX=/usr/libexec
-		PREFIX=/usr
-		LIBDIR="$(get_libdir)"
+		ETC_PREFIX="${EPREFIX}/etc"
+		LIBEXEC_PREFIX="${EPREFIX}/usr/libexec"
+		PREFIX="${EPREFIX}/usr"
 		SYSTEMD_SYSTEM_UNIT_DIR="$(systemd_get_systemunitdir)"
 		DEFAULT_MAKE_TARGET=all
 	EOF
 	if [[ ${PV} != "9999" ]] ; then
-		cat >>localconf <<-EOF || die
-			BEES_VERSION=v${PV}
-		EOF
+		echo BEES_VERSION=v${PV} >>localconf || die
 	fi
 	if use tools; then
 		echo OPTIONAL_INSTALL_TARGETS=install_tools >>localconf || die
 	fi
+}
+
+src_compile() {
+	default
+	# localconf quotes leak in the systemd unit but are still needed for spaces
+	sed -i 's/"//g' scripts/beesd@.service || die
 }

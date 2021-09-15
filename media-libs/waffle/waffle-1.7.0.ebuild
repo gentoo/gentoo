@@ -11,7 +11,7 @@ else
 	KEYWORDS="amd64 arm ~arm64 ~ppc ~ppc64 x86"
 	S="${WORKDIR}"/${PN}-v${PV}
 fi
-inherit meson multilib-minimal ${GIT_ECLASS}
+inherit meson-multilib ${GIT_ECLASS}
 
 DESCRIPTION="Library that allows selection of GL API and of window system at runtime"
 HOMEPAGE="http://www.waffle-gl.org/ https://gitlab.freedesktop.org/mesa/waffle"
@@ -23,14 +23,15 @@ RESTRICT="test" # gl_basic tests don't work when run from portage
 
 RDEPEND="
 	>=media-libs/mesa-9.1.6[egl?,gbm?,${MULTILIB_USEDEP}]
-	>=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]
-	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
-	>=x11-libs/libxcb-1.9.1[${MULTILIB_USEDEP}]
+	X? (
+		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
+		>=x11-libs/libxcb-1.9.1[${MULTILIB_USEDEP}]
+	)
 	gbm? ( >=virtual/libudev-208:=[${MULTILIB_USEDEP}] )
 	wayland? ( >=dev-libs/wayland-1.10[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
-	>=x11-base/xcb-proto-1.8-r3[${MULTILIB_USEDEP}]
+	X? ( >=x11-base/xcb-proto-1.8-r3[${MULTILIB_USEDEP}] )
 "
 BDEPEND="
 	dev-libs/libxslt
@@ -48,14 +49,10 @@ multilib_src_configure() {
 		$(meson_feature X x11_egl)
 		$(meson_feature gbm)
 		$(meson_feature egl surfaceless_egl)
-		-Dbuild-manpages=$(multilib_is_native_abi && echo true || echo false)
+		$(meson_native_true build-manpages)
 		-Dbuild-tests=false
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
 }
 
 multilib_src_install() {

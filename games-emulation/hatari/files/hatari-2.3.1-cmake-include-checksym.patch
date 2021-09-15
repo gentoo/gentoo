@@ -1,0 +1,12 @@
+Fix edge case build failure triggered by passing every
+DISABLE_FIND_PACKAGE, including disabling the normally
+always-enabled readline.
+
+CMake Error at CMakeLists.txt:229 (check_symbol_exists):
+  Unknown CMake command "check_symbol_exists".
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,2 +12,3 @@
+ include(CheckStructHasMember)
++include(CheckSymbolExists)
+ include(CheckCCompilerFlag)

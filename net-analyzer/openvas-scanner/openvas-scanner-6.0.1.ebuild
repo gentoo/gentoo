@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -55,7 +55,7 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 	# QA-Fix | Correct FHS/Gentoo policy paths for 6.0.1
-	sed -i -e "s*/doc/openvas-scanner/*/doc/openvas-scanner-${PV}/*g" "$S"/src/CMakeLists.txt || die
+	sed -i -e "s*/doc/openvas-scanner/*/doc/openvas-scanner-${PV}/*g" "${S}"/src/CMakeLists.txt || die
 	# QA-Fix | Remove !CLANG doxygen warnings for 6.0.1
 	if use extras; then
 		if ! tc-is-clang; then

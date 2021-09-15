@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils toolchain-funcs autotools flag-o-matic ltprune multilib-minimal
+
+inherit autotools epatch flag-o-matic multilib-minimal
 
 DESCRIPTION="SDL MPEG Player Library"
 HOMEPAGE="https://icculus.org/smpeg/"
@@ -68,5 +69,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	use static-libs || prune_libtool_files
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 }

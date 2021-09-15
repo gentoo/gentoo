@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools flag-o-matic
 
@@ -12,13 +12,10 @@ SRC_URI="https://github.com/Tripwire/tripwire-open-source/archive/${PV}.tar.gz -
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="libressl selinux ssl static +tools"
+IUSE="selinux ssl static +tools"
 
 DEPEND="
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 "
 RDEPEND="${DEPEND}
 	virtual/cron
@@ -39,8 +36,17 @@ src_configure() {
 	# see #32613, #45823, and others.
 	# 	-taviso@gentoo.org
 	strip-flags
-	append-cppflags -DCONFIG_DIR='"\"/etc/tripwire\""' -fno-strict-aliasing
-	econf $(use_enable ssl openssl) $(use_enable static)
+
+	append-cppflags -DCONFIG_DIR='"\"/etc/tripwire\""'
+	append-flags -fno-strict-aliasing
+
+	# "integer.cpp:1162:24: error: reference to ‘byte’ is ambiguous"
+	# bug #786465
+	append-cxxflags -std=c++14
+
+	econf \
+		$(use_enable ssl openssl) \
+		$(use_enable static)
 }
 
 src_install() {

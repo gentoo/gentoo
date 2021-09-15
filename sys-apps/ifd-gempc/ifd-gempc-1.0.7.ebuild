@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ src_install() {
 	emake CC="$(tc-getCC)" DESTDIR="${D}" install
 	einstalldocs
 
-	local pcscdir="$(pkg-config --variable=usbdropdir libpcsclite)"
+	local pcscdir="$($(tc-getPKG_CONFIG) --variable=usbdropdir libpcsclite)"
 	local conf="/etc/reader.conf.d/${PN}.conf"
 	dodir "$(dirname "${conf}")"
 	insinto "$(dirname "${conf}")"

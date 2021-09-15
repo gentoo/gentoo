@@ -3,23 +3,21 @@
 
 EAPI=7
 
-inherit multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Video Acceleration (VA) API for Linux"
 HOMEPAGE="https://01.org/linuxmedia/vaapi"
-
-inherit autotools
 
 if [[ ${PV} = *9999 ]] ; then
 	inherit git-r3
 	EGIT_BRANCH=master
 	EGIT_REPO_URI="https://github.com/intel/libva"
 else
-	# SRC_URI="https://github.com/intel/libva/releases/download/${PV}/${P}.tar.bz2"
+	SRC_URI="https://github.com/intel/libva/releases/download/${PV}/${P}.tar.bz2"
 	# The upstream provides periodically tarball with pre-built 'configure'.
 	# To simplify updates, portage use tarballs without pre-build 'configure'
 	# which are always available.
-	SRC_URI="https://github.com/intel/libva/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	# SRC_URI="https://github.com/intel/libva/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
@@ -33,9 +31,12 @@ for x in ${VIDEO_CARDS}; do
 done
 
 RDEPEND="
-	>=x11-libs/libdrm-2.4.46[${MULTILIB_USEDEP}]
+	>=x11-libs/libdrm-2.4.60[${MULTILIB_USEDEP}]
 	opengl? ( >=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}] )
-	wayland? ( >=dev-libs/wayland-1.11[${MULTILIB_USEDEP}] )
+	wayland? (
+		>=dev-libs/wayland-1.11[${MULTILIB_USEDEP}]
+		dev-util/wayland-scanner[${MULTILIB_USEDEP}]
+	)
 	X? (
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
@@ -57,8 +58,7 @@ PDEPEND="video_cards_nvidia? ( >=x11-libs/libva-vdpau-driver-0.7.4-r1[${MULTILIB
 REQUIRED_USE="|| ( drm wayland X )
 	opengl? ( X )"
 
-# CONTRIBUTING.md and README.md are avaialbe only in .tar.gz tarballs and in git
-DOCS=( NEWS CONTRIBUTING.md README.md )
+DOCS=( NEWS )
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/va/va_backend_glx.h

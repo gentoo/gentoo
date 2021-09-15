@@ -5,7 +5,8 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit desktop eutils python-any-r1 scons-utils toolchain-funcs xdg
+inherit desktop python-any-r1 scons-utils toolchain-funcs xdg
+
 if [[ "${PV}" = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/dxx-rebirth/dxx-rebirth"
@@ -15,6 +16,8 @@ else
 	SRC_URI="https://codeload.github.com/dxx-rebirth/dxx-rebirth/tar.gz/${MY_COMMIT} -> ${PN}-${PVR}.tar.gz"
 	unset MY_COMMIT
 
+	# Games under Gentoo are marked as 'testing' by convention
+	#
 	# Other architectures are reported to work, but not tested regularly by
 	# the core team.
 	#
@@ -149,6 +152,8 @@ REQUIRED_USE='
 	sc55-musicpack? ( vorbis )
 	sdl2? ( opengl )
 '
+
+BDEPEND="virtual/pkgconfig"
 
 # As of this writing, IUSE_RUNTIME is a GLEP, but not an implemented
 # feature.  This variable is stored here to be ready to activate when

@@ -1,0 +1,56 @@
+From 3fbe31a6d6e76ddac08d5da8eaa1c00fa54060e7 Mon Sep 17 00:00:00 2001
+From: zhaozg <zhaozg@gmail.com>
+Date: Sun, 1 Aug 2021 18:50:43 +0800
+Subject: [PATCH] update openssl.crl
+
+---
+ src/crl.c           | 9 +++++----
+ test/5.x509_crl.lua | 3 ++-
+ 2 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/src/crl.c b/src/crl.c
+index d35e3e0..091c31e 100644
+--- a/src/crl.c
++++ b/src/crl.c
+@@ -525,13 +525,14 @@ static LUA_FUNCTION(openssl_crl_nextUpdate)
+ /***
+ get updateTime time
+ @function updateTime
+-@treturn string lastUpdate
++@treturn asn1_time lastUpdate
++@treturn asn1_time nextUpdate
+ */
+ /***
+ set updateTime time
+ @function updateTime
+ @tparam[opt=os.time()] lastUpdate, default use current time
+-@tparam number periord periord how long time(seconds)
++@tparam number period period how long time(seconds)
+ @treturn boolean result
+ */
+ static LUA_FUNCTION(openssl_crl_updateTime)
+@@ -561,8 +562,8 @@ static LUA_FUNCTION(openssl_crl_updateTime)
+     else
+     {
+       last = luaL_checkint(L, 2);
+-      next = last + luaL_checkint(L, 3);
+-      luaL_argcheck(L, next > last, 3, "value must after #2");
++      next = luaL_checkint(L, 3);
++      next = last + next;
+     }
+ 
+     ltm = ASN1_TIME_new();
+diff --git a/test/5.x509_crl.lua b/test/5.x509_crl.lua
+index 747fb0e..d0686c9 100644
+--- a/test/5.x509_crl.lua
++++ b/test/5.x509_crl.lua
+@@ -45,7 +45,8 @@ function TestCRL:testNew()
+   assert(other:verify(ca.cacert))
+   local pem = other:export()
+ 
+-  assert(other:updateTime(os.time(), os.time()+3600))
++  assert(other:updateTime(3600))
++  assert(other:updateTime(os.time(), 3600))
+ 
+   assert(other:extensions({
+     openssl.x509.extension.new_extension(

@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MYSPELL_DICT=(
 	"pt_PT.aff"
@@ -20,7 +20,7 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="Portuguese dictionaries for myspell/hunspell"
-HOMEPAGE="http://natura.di.uminho.pt/wiki/doku.php?id=dicionarios:main"
+HOMEPAGE="https://natura.di.uminho.pt/wiki/doku.php?id=dicionarios:main"
 # The dicts are not versioned.
 # Version is determined by its date of upload to the server.
 # Check at: http://darkstar.ist.utl.pt/openoffice.org/pt/

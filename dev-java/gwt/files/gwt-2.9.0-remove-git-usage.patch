@@ -1,0 +1,26 @@
+# This git stuff in the ant configs is useful during development, since it does
+# something or other withe git revision and sets some sort of sentinel file.
+# Since this package is for a release, we don't need it.
+--- a/common.ant.xml
++++ b/common.ant.xml
+@@ -277,16 +277,16 @@
+ 
+   <macrodef name="gwt.getgitinfo" description="Identifies the GIT info of a workspace">
+     <sequential>
+-      <exec executable="git" searchpath="true" outputproperty="gwt.gitrev">
+-        <arg line="rev-parse --short HEAD"/>
+-      </exec>
++      <!-- <exec executable="git" searchpath="true" outputproperty="gwt.gitrev"> -->
++      <!--   <arg line="rev-parse - -short HEAD"/> -->
++      <!-- </exec> -->
+       <!-- Generally, filtering requires a sentinel file so that changes to git rev will
+          be noticed as invalidating the previously-generated filter output.  This property
+          names where such a sentinel lives; it is tested with <available/> and created
+          with <touch/> -->
+       <mkdir dir="${project.build}/sentinels"/>
+       <property name="filter.sentinel"
+-                location="${project.build}/sentinels/gwt-${gwt.version}-git-${gwt.gitrev}"/>
++                location="${project.build}/sentinels/gwt-${gwt.version}"/>
+     </sequential>
+   </macrodef>
+ 

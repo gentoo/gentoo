@@ -11,7 +11,7 @@ SRC_URI="https://github.com/libLAS/libLAS/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm ~ia64 ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ppc ppc64 x86"
 IUSE="gdal"
 
 DEPEND="
@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-CVE-2018-20540-fixup.patch # bug 698846
 	"${FILESDIR}"/${P}-fix-debug.patch # bug 668778
 	"${FILESDIR}"/${P}-boost-1.73.patch # bug 722878
+	"${FILESDIR}"/${P}-gcc11.patch # bug 789732
 )
 
 src_prepare() {

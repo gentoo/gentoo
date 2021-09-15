@@ -73,37 +73,6 @@ index 0bb8a530..38e98303 100644
          "-I", file("modules/graphics/src/main/native-glass/monocle/")].flatten();
  def monocleLFlags = [extraLFlags, "-ldl", "-lm"].flatten()
  def glassCFlags = ["-ffast-math"]
-diff --git a/buildSrc/linux.gradle b/buildSrc/linux.gradle
-index f233b817..0f9d5252 100644
---- a/buildSrc/linux.gradle
-+++ b/buildSrc/linux.gradle
-@@ -203,7 +203,7 @@ LINUX.glass.javahInclude = [
-     "com/sun/glass/ui/gtk/*"]
- LINUX.glass.glass.nativeSource = ft_gtk_launcher.getFiles()
- LINUX.glass.glass.compiler = compiler
--LINUX.glass.glass.ccFlags = [ccFlags, gtk2CCFlags,  "-Werror"].flatten()
-+LINUX.glass.glass.ccFlags = [ccFlags, gtk2CCFlags].flatten()
- LINUX.glass.glass.linker = linker
- LINUX.glass.glass.linkFlags = [linkFlags, "-lX11", "-ldl" ].flatten()
- LINUX.glass.glass.lib = "glass"
-@@ -211,7 +211,7 @@ LINUX.glass.glass.lib = "glass"
- LINUX.glass.glassgtk2 = [:]
- LINUX.glass.glassgtk2.nativeSource =  ft_gtk.getFiles()
- LINUX.glass.glassgtk2.compiler = compiler
--LINUX.glass.glassgtk2.ccFlags = [ccFlags, gtk2CCFlags, "-Werror"].flatten()
-+LINUX.glass.glassgtk2.ccFlags = [ccFlags, gtk2CCFlags].flatten()
- LINUX.glass.glassgtk2.linker = linker
- LINUX.glass.glassgtk2.linkFlags = [linkFlags, gtk2LinkFlags ].flatten()
- LINUX.glass.glassgtk2.lib = "glassgtk2"
-@@ -219,7 +219,7 @@ LINUX.glass.glassgtk2.lib = "glassgtk2"
- LINUX.glass.glassgtk3 = [:]
- LINUX.glass.glassgtk3.nativeSource =  ft_gtk.getFiles()
- LINUX.glass.glassgtk3.compiler = compiler
--LINUX.glass.glassgtk3.ccFlags = [ccFlags, gtk3CCFlags, "-Werror"].flatten()
-+LINUX.glass.glassgtk3.ccFlags = [ccFlags, gtk3CCFlags].flatten()
- LINUX.glass.glassgtk3.linker = linker
- LINUX.glass.glassgtk3.linkFlags = [linkFlags, gtk3LinkFlags ].flatten()
- LINUX.glass.glassgtk3.lib = "glassgtk3"
 diff --git a/buildSrc/x86egl.gradle b/buildSrc/x86egl.gradle
 index 6bf6196b..ff24207d 100644
 --- a/buildSrc/x86egl.gradle

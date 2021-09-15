@@ -1,27 +1,28 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 MY_P=${P/zapper/zap}
-
-inherit eutils
 
 DESCRIPTION="Redirector for squid to intercept advertising, page counters and web bugs"
 HOMEPAGE="http://adzapper.sourceforge.net/"
 SRC_URI="http://adzapper.sourceforge.net/${MY_P}.tar.gz"
+S="${WORKDIR}"/${P/per/}
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ppc sparc x86"
-IUSE=""
 
 RDEPEND="dev-lang/perl"
 
-S="${WORKDIR}"/${P/per/}
+PATCHES=(
+	"${FILESDIR}"/20110915-flush.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/20110915-flush.patch
+	default
+
 	# update the zapper path in various scripts
 	local SCRPATH="/etc/adzapper/squid_redirect"
 	sed -i \

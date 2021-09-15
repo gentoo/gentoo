@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>cjk@gentoo.org</email>
@@ -8,7 +8,6 @@
 	<use>
 		<flag name="brltty">Enable support for <pkg>app-accessibility/brltty</pkg></flag>
 		<flag name="fcitx">Enable support for <pkg>app-i18n/fcitx</pkg></flag>
-		<flag name="gtk2">Build with <pkg>x11-libs/gtk+</pkg>:2 instead of <pkg>x11-libs/gtk+</pkg>:3</flag>
 		<flag name="harfbuzz">Enable support for OpenType Layout (<pkg>media-libs/harfbuzz</pkg>)</flag>
 		<flag name="ibus">Enable support for <pkg>app-i18n/ibus</pkg></flag>
 		<flag name="libssh2">Enable support for <pkg>net-libs/libssh2</pkg></flag>

@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}
 	dev-python/scipy[${PYTHON_USEDEP}]"
 BDEPEND=""
 
-src_prepare(){
+src_prepare() {
 	sed -i "s#find_packages()#find_packages(exclude=['test'])#" setup.py
 	distutils-r1_src_prepare
 }

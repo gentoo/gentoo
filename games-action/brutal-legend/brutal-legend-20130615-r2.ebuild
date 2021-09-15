@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: unbundle libsdl-2
 
-EAPI=6
+EAPI=7
 
-inherit eutils unpacker gnome2-utils
+inherit desktop unpacker wrapper xdg
 
 TIMESTAMP=${PV:0:4}-${PV:4:2}-${PV:6:2}
 DESCRIPTION="Unleash the power of Heavy Metal to reign down fire from the sky"
@@ -14,8 +14,7 @@ SRC_URI="BrutalLegend-Linux-${TIMESTAMP}-setup.bin"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
+KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="bindist fetch splitdebug"
 
 MYGAMEDIR="/opt/${PN}"
@@ -44,9 +43,9 @@ RDEPEND="
 		x11-libs/libxcb
 
 	)"
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
-S=${WORKDIR}/data
+S="${WORKDIR}"/data
 
 pkg_nofetch() {
 	einfo "Please buy & download ${SRC_URI} from:"
@@ -65,19 +64,7 @@ src_install() {
 
 	dodir "${MYGAMEDIR}"
 	# this is over 9000!!!! ...eh, 8GB data
-	mv * "${D%/}/${MYGAMEDIR}" || die
+	mv * "${D}/${MYGAMEDIR}" || die
 
 	fperms +x "${MYGAMEDIR}/Buddha.bin.x86"
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }

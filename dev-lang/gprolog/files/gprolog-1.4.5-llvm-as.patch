@@ -1,0 +1,38 @@
+--- gprolog-1.4.5.orig/src/configure.in	2018-07-14 08:19:12.000000000 -0000
++++ gprolog-1.4.5/src/configure.in	2021-06-27 10:13:31.004977355 -0000
+@@ -334,15 +334,26 @@
+ dnl we use AS0 instead of AS else AC_CHECK_TOOL does not work 
+ dnl (instead of testing a prefix like x86_64-w64-mingw32- it will
+ dnl think the user wants to override the test)
+-    AS0=as
+-    case "$host" in
+-        sparc64*bsd*)    ASFLAGS='-Av9a -64 -K PIC';;
+-        i*86*darwin1*)   ASFLAGS='-arch i686';;
+-        i*86*linux*)     ASFLAGS='--32';;
+-        x86_64*solaris*) AS0=gas; ASFLAGS='--64';;
+-        x86_64*darwin*)  ASFLAGS='-arch x86_64';;
+-        x86_64*linux*)   ASFLAGS='--64';;
+-        *)               if test "$with_gas" = yes; then AS0=gas; fi;;
++    case "$CC" in
++        *cc)
++            AS0=as
++            case "$host" in
++                sparc64*bsd*)    ASFLAGS='-Av9a -64 -K PIC';;
++                i*86*darwin1*)   ASFLAGS='-arch i686';;
++                i*86*linux*)     ASFLAGS='--32';;
++                x86_64*solaris*) AS0=gas; ASFLAGS='--64';;
++                x86_64*darwin*)  ASFLAGS='-arch x86_64';;
++                x86_64*linux*)   ASFLAGS='--64';;
++                *)               if test "$with_gas" = yes; then AS0=gas; fi;;
++            esac
++            ;;
++        *clang)
++            AS0=$CC
++            ASFLAGS='-c'
++            ;;
++        *)
++            AC_MSG_ERROR([unsupported compiler $CC])
++            ;;
+     esac
+     AC_CHECK_TOOL([AS],[$AS0])
+     AC_PROG_RANLIB

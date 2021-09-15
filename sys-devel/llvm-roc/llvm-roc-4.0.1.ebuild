@@ -19,7 +19,6 @@ RDEPEND="virtual/cblas
 	sys-libs/zlib
 	sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
-PDEPEND="dev-libs/rocr-runtime"
 
 S="${WORKDIR}/llvm-project-rocm-${PV}/llvm"
 
@@ -40,7 +39,7 @@ src_prepare() {
 		pushd "${S}"/../clang >/dev/null || die
 		sed -i -e "s@DEFAULT_SYSROOT \"\"@DEFAULT_SYSROOT \"${EPREFIX}\"@" CMakeLists.txt
 		eend $?
-		ebegin "Use ${EPREFIX} as default sysroot"
+		ebegin "Use "${EPREFIX}" as default sysroot"
 		cd lib/Driver/ToolChains >/dev/null || die
 		ebegin "Use dynamic linker from ${EPREFIX}"
 		sed -i -e "/LibDir.*Loader/s@return \"\/\"@return \"${EPREFIX}/\"@" Linux.cpp

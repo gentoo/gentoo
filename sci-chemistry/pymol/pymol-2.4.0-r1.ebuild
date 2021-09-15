@@ -11,7 +11,7 @@ inherit desktop optfeature flag-o-matic xdg distutils-r1
 DESCRIPTION="A Python-extensible molecular graphics system"
 HOMEPAGE="https://www.pymol.org/"
 SRC_URI="
-	https://dev.gentoo.org/~jlec/distfiles/${PN}-1.8.4.0.png.xz
+	https://dev.gentoo.org/~pacho/${PN}/${PN}-1.8.4.0.png.xz
 	https://github.com/schrodinger/pymol-open-source/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	"
 RESTRICT="mirror"

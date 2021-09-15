@@ -1,0 +1,56 @@
+https://bugs.gentoo.org/787854
+
+From b807854fc6573d59350551578375075fc61a21e1 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 15 Jun 2021 01:31:40 +0000
+Subject: [PATCH] Drop -Werror
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ Makefile                         | 2 +-
+ src/example/pegtl/CMakeLists.txt | 2 +-
+ src/test/pegtl/CMakeLists.txt    | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 3ecca07..2b8fa20 100644
+--- a/Makefile
++++ b/Makefile
+@@ -30,7 +30,7 @@ endif
+ # changed if desired.
+ 
+ CPPFLAGS ?= -pedantic
+-CXXFLAGS ?= -Wall -Wextra -Wshadow -Werror -O3 $(MINGW_CXXFLAGS)
++CXXFLAGS ?= -Wall -Wextra -Wshadow $(MINGW_CXXFLAGS)
+ 
+ HEADERS := $(shell find include -name '*.hpp')
+ SOURCES := $(shell find src -name '*.cpp')
+diff --git a/src/example/pegtl/CMakeLists.txt b/src/example/pegtl/CMakeLists.txt
+index d416731..4d1a417 100644
+--- a/src/example/pegtl/CMakeLists.txt
++++ b/src/example/pegtl/CMakeLists.txt
+@@ -60,7 +60,7 @@ foreach(examplesourcefile ${example_sources})
+   if(MSVC)
+     target_compile_options(${exename} PRIVATE /W4 /WX /utf-8)
+   else()
+-    target_compile_options(${exename} PRIVATE -pedantic -Wall -Wextra -Wshadow -Werror)
++    target_compile_options(${exename} PRIVATE -pedantic -Wall -Wextra -Wshadow)
+   endif()
+ endforeach()
+ 
+diff --git a/src/test/pegtl/CMakeLists.txt b/src/test/pegtl/CMakeLists.txt
+index 577e310..84a8ab8 100644
+--- a/src/test/pegtl/CMakeLists.txt
++++ b/src/test/pegtl/CMakeLists.txt
+@@ -146,7 +146,7 @@ foreach(testsourcefile ${test_sources})
+   if(MSVC)
+     target_compile_options(${exename} PRIVATE /W4 /WX /utf-8)
+   else()
+-    target_compile_options(${exename} PRIVATE -pedantic -Wall -Wextra -Wshadow -Werror)
++    target_compile_options(${exename} PRIVATE -pedantic -Wall -Wextra -Wshadow)
+   endif()
+   if(ANDROID)
+     add_test(NAME ${exename} WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} COMMAND ${CMAKE_COMMAND} "-DANDROID_NDK=${ANDROID_NDK}" "-DTEST_RESOURCES_DIR=${CMAKE_SOURCE_DIR}" "-DTEST_RESOURCES=src/test/pegtl/data;src/test/pegtl/file_data.txt;Makefile" "-DUNITTEST=${exename}" -P ${CMAKE_CURRENT_SOURCE_DIR}/ExecuteOnAndroid.cmake)
+-- 
+2.32.0
+

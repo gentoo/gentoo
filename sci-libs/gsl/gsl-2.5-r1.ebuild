@@ -17,6 +17,7 @@ IUSE="cblas-external +deprecated static-libs"
 
 RDEPEND="cblas-external? ( virtual/cblas:= )"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${WORKDIR}"/${PN}-2.3-cblas.patch )
 

@@ -1,5 +1,5 @@
---- tk8.5.9/unix/configure.in.old	2010-09-02 20:12:14.000000000 +0200
-+++ tk8.5.9/unix/configure.in	2011-02-17 13:32:22.719116636 +0100
+--- a/unix/configure.in
++++ b/unix/configure.in
 @@ -530,8 +530,8 @@
  	XFT_LIBS=`xft-config --libs 2>/dev/null` || found_xft="no"
  	if test "$found_xft" = "no" ; then

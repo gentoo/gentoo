@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
 # @SUPPORTED_EAPIS: 7
+# @PROVIDES: dist-kernel-utils
 # @BLURB: Installation mechanics for Distribution Kernels
 # @DESCRIPTION:
 # This eclass provides the logic needed to test and install different
@@ -184,13 +185,26 @@ kernel-install_create_init() {
 
 	cat <<-_EOF_ >"${T}/init.c" || die
 		#include <stdio.h>
+		#include <sys/utsname.h>
+
 		int main() {
+			struct utsname u;
+			int ret = uname(&u);
+			if (ret != 0) {
+				printf("uname() failed, but that's fine\n");
+			}
+			else {
+				// Booted: Linux 5.10.47 ppc64le #1 SMP Fri Jul 2 12:55:24 PDT 2021
+				printf("Booted: %s %s %s %s\n", u.sysname, u.release,
+						u.machine, u.version);
+			}
+
 			printf("Hello, World!\n");
 			return 0;
 		}
 	_EOF_
 
-	$(tc-getBUILD_CC) -Os -static "${T}/init.c" -o "${output}" || die 
+	$(tc-getBUILD_CC) -Os -static "${T}/init.c" -o "${output}" || die
 	$(tc-getBUILD_STRIP) "${output}" || die
 }
 
@@ -238,6 +252,16 @@ kernel-install_test() {
 
 	local qemu_arch=$(kernel-install_get_qemu_arch)
 
+	# some modules may complicate or even fail the test boot
+	local omit_mods=(
+		crypt dm dmraid lvm mdraid multipath nbd # no need for blockdev tools
+		network network-manager # no need for network
+		btrfs cifs nfs zfs zfsexpandknowledge # we don't need it
+		plymouth # hangs, or sometimes steals output
+		rngd # hangs or segfaults sometimes
+		i18n # copies all the fonts from /usr/share/consolefonts
+	)
+
 	# NB: if you pass a path that does not exist or is not a regular
 	# file/directory, dracut will silently ignore it and use the default
 	# https://github.com/dracutdevs/dracut/issues/1136
@@ -249,6 +273,10 @@ kernel-install_test() {
 		--confdir "${T}"/empty-directory \
 		--no-hostonly \
 		--kmoddir "${modules}" \
+		--force-add "qemu" \
+		--omit "${omit_mods[*]}" \
+		--nostrip \
+		--no-early-microcode \
 		"${T}/initrd" "${version}" || die
 
 	kernel-install_create_qemu_image "${T}/fs.img"
@@ -361,11 +389,23 @@ kernel-install_src_test() {
 
 # @FUNCTION: kernel-install_pkg_preinst
 # @DESCRIPTION:
-# Stub out mount-boot.eclass.
+# Verify whether the kernel has been installed correctly.
 kernel-install_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	# (no-op)
+	local ver="${PV}${KV_LOCALVERSION}"
+	local kdir="${ED}/usr/src/linux-${ver}"
+	local relfile="${kdir}/include/config/kernel.release"
+	[[ ! -d ${kdir} ]] && die "Kernel directory ${kdir} not installed!"
+	[[ ! -f ${relfile} ]] && die "Release file ${relfile} not installed!"
+	local release="$(<"${relfile}")"
+	if [[ ${release} != ${PV}* ]]; then
+		eerror "Kernel release mismatch!"
+		eerror "  expected (PV): ${PV}*"
+		eerror "          found: ${release}"
+		eerror "Please verify that you are applying the correct patches."
+		die "Kernel release mismatch (${release} instead of ${PV}*)"
+	fi
 }
 
 # @FUNCTION: kernel-install_install_all

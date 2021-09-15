@@ -11,7 +11,7 @@ LICENSE="BSD BSD-4 ISC RSA"
 
 SRC_URI="https://ftp.sdaoden.eu/${P}.tar.xz"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="idn kerberos net ssl"
 
 RDEPEND="
@@ -27,7 +27,10 @@ RDEPEND="
 	!mail-client/nail
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/awk"
+BDEPEND="
+	app-arch/xz-utils[extra-filters(-)]
+	virtual/awk
+"
 
 src_configure() {
 	local confopts=(

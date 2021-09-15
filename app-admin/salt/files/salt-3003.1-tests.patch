@@ -1,0 +1,25 @@
+diff --git a/tests/integration/files/file/base/_modules/runtests_helpers.py b/tests/integration/files/file/base/_modules/runtests_helpers.py
+index 3ee0e2da5f..abf9b71431 100644
+--- a/tests/integration/files/file/base/_modules/runtests_helpers.py
++++ b/tests/integration/files/file/base/_modules/runtests_helpers.py
+@@ -27,7 +27,7 @@ except ImportError:
+         else "/tmp"
+     )
+     # This tempdir path is defined on tests.integration.__init__
+-    TMP = os.path.join(SYS_TMP_DIR, "salt-tests-tmpdir")
++    TMP = os.path.join(SYS_TMP_DIR, "salt-t")
+ 
+     class RUNTIME_VARS:
+         TMP = TMP
+diff --git a/tests/unit/ext/test_ipaddress.py b/tests/unit/ext/test_ipaddress.py
+index 4fd87d1c3f..43306ba8f4 100644
+--- a/tests/unit/ext/test_ipaddress.py
++++ b/tests/unit/ext/test_ipaddress.py
+@@ -137,6 +137,7 @@ class CommonTestMixin:
+ 
+ 
+ class CommonTestMixin_v4(CommonTestMixin):
++    @pytest.mark.skipif(sys.hexversion >= 0x03090000, reason="leading zeros disallowed in 3.9+")
+     def test_leading_zeros(self):
+         self.assertInstancesEqual("000.000.000.000", "0.0.0.0")
+         self.assertInstancesEqual("192.168.000.001", "192.168.0.1")

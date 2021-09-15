@@ -1,0 +1,65 @@
+Taken from alpine, with additional fixes
+https://bugs.gentoo.org/713306
+
+--- a/libhashkit/fnv_64.cc
++++ b/libhashkit/fnv_64.cc
+@@ -37,8 +37,9 @@
+ 
+ 
+ #include <libhashkit/common.h>
++#include <limits.h>
+ 
+-#if __WORDSIZE == 64 && defined(HAVE_FNV64_HASH)
++#if (LONG_BIT == 64) && defined(HAVE_FNV64_HASH)
+ 
+ /* FNV hash'es lifted from Dustin Sallings work */
+ static uint64_t FNV_64_INIT= 0xcbf29ce484222325;
+--- a/libhashkit/has.cc
++++ b/libhashkit/has.cc
+@@ -37,6 +37,7 @@
+ 
+ 
+ #include <libhashkit/common.h>
++#include <limits.h>
+ 
+ bool libhashkit_has_algorithm(const hashkit_hash_algorithm_t algo)
+ {
+@@ -44,7 +45,7 @@
+   {
+   case HASHKIT_HASH_FNV1_64:
+   case HASHKIT_HASH_FNV1A_64:
+-#if __WORDSIZE == 64 && defined(HAVE_FNV64_HASH)
++#if (LONG_BIT == 64) && defined(HAVE_FNV64_HASH)
+     return true;
+ #else
+     return false;
+--- a/libmemcachedutil/pool.cc
++++ b/libmemcachedutil/pool.cc
+@@ -42,6 +42,7 @@
+ #include <cerrno>
+ #include <pthread.h>
+ #include <memory>
++#include <string.h>
+ 
+ struct memcached_pool_st
+ {
+--- a/libtest/cmdline.cc
++++ b/libtest/cmdline.cc
+@@ -61,7 +61,7 @@
+ #include <algorithm>
+ #include <stdexcept>
+ 
+-#ifndef __USE_GNU
++#ifndef _GNU_SOURCE
+ static char **environ= NULL;
+ #endif
+ 
+@@ -201,7 +201,7 @@
+ 
+   fatal_assert(posix_spawnattr_setsigmask(&spawnattr, &mask) == 0);
+ 
+-#if defined(POSIX_SPAWN_USEVFORK) || defined(__linux__)
++#if defined(POSIX_SPAWN_USEVFORK) || defined(__GLIBC__)
+   // Use USEVFORK on linux
+   flags |= POSIX_SPAWN_USEVFORK;
+ #endif

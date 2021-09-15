@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
-		<flag name="notification">Adds support for GTK Status Notifier tray backends</flag>
+		<flag name="notification">Use snorenotify for desktop notifications</flag>
+		<flag name="spellcheck">Enable spell cheching support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">qTox/qTox</remote-id>

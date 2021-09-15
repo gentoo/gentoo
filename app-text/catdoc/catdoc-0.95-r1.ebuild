@@ -31,7 +31,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --with-install-root="${D}" \
+	econf \
 		$(use_with tk wish "${EPREFIX}"/usr/bin/wish) \
 		$(use_enable tk wordview)
 }
@@ -41,7 +41,7 @@ src_compile() {
 }
 
 src_install() {
-	default
+	emake install installroot="${ED}"
 
 	# dev-libs/libxls and app-text/catdoc both provide xls2cvs
 	if [[ -e ${ED}/usr/bin/xls2csv ]]; then

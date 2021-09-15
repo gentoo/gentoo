@@ -24,6 +24,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-QA.patch
+	"${FILESDIR}"/${PN}-03-respect-CXX.patch
 )
 
 src_prepare() {
@@ -35,7 +36,10 @@ src_prepare() {
 }
 
 src_compile() {
+	tc-export CXX
+
 	emake \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)"
 		platform="x" \
 		compiler="$(tc-getCXX)" \
 		phoenix="gtk"

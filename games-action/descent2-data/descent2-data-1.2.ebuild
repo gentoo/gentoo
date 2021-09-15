@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 CDROM_OPTIONAL="yes"
-inherit cdrom estack eutils
+inherit cdrom estack
 
 # Not possible to apply official 1.2 patch under Linux. A Gentoo user
 # created Xdelta patches and the DXX-Rebirth project kindly hosted them.

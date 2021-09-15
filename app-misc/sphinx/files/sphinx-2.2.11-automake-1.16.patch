@@ -1,0 +1,10 @@
+diff --git a/api/libsphinxclient/Makefile.am b/api/libsphinxclient/Makefile.am
+index a4abfef..10d5914 100644
+--- a/api/libsphinxclient/Makefile.am
++++ b/api/libsphinxclient/Makefile.am
+@@ -10,4 +10,4 @@ libsphinxclient_la_LIBADD = @LTLIBOBJS@
+ libsphinxclient_la_LDFLAGS = -release @VERSION@
+ 
+ include_HEADERS =   sphinxclient.h 
+-test_LDADD = .libs/libsphinxclient.a
++test_LDADD = $(lib_LTLIBRARIES)

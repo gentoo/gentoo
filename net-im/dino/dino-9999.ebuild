@@ -5,13 +5,15 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 VALA_MIN_API_VERSION="0.34"
-inherit cmake gnome2-utils vala xdg-utils
+inherit cmake vala xdg
 
 DESCRIPTION="Modern Jabber/XMPP Client using GTK+/Vala"
 HOMEPAGE="https://dino.im"
+
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+gpg +http +omemo +notification-sound"
+IUSE="+gpg +http +omemo +notification-sound test"
+RESTRICT="!test? ( test )"
 
 MY_REPO_URI="https://github.com/dino/dino"
 if [[ ${PV} == "9999" ]]; then
@@ -29,7 +31,9 @@ RDEPEND="
 	dev-libs/icu
 	dev-libs/libgee:0.8
 	net-libs/glib-networking
+	>=net-libs/libnice-0.1.15
 	net-libs/libsignal-protocol-c
+	net-libs/libsrtp:2
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
@@ -66,28 +70,12 @@ src_configure() {
 		"-DENABLED_PLUGINS=$(local IFS=";"; echo "${enabled_plugins[*]}")"
 		"-DDISABLED_PLUGINS=$(local IFS=";"; echo "${disabled_plugins[*]}")"
 		"-DVALA_EXECUTABLE=${VALAC}"
+		"-DBUILD_TESTS=$(usex test)"
 	)
-
-	if has test ${FEATURES}; then
-		mycmakeargs+=("-DBUILD_TESTS=yes")
-	fi
 
 	cmake_src_configure
 }
 
 src_test() {
 	"${BUILD_DIR}"/xmpp-vala-test || die
-}
-
-update_caches() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postinst() {
-	update_caches
-}
-
-pkg_postrm() {
-	update_caches
 }

@@ -1,0 +1,37 @@
+From f9a13dbb3b8f1ffefef483bdb4c14f04f7743ff1 Mon Sep 17 00:00:00 2001
+From: Jason Grout <jgrout6@bloomberg.net>
+Date: Tue, 31 Dec 2019 12:57:52 -0800
+Subject: [PATCH] Fix more python 3 deprecations
+
+---
+ ipywidgets/widgets/interaction.py            | 2 +-
+ ipywidgets/widgets/tests/test_interaction.py | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/ipywidgets/widgets/interaction.py b/ipywidgets/widgets/interaction.py
+index 3dd7272047..6e3b9fc955 100644
+--- a/ipywidgets/widgets/interaction.py
++++ b/ipywidgets/widgets/interaction.py
+@@ -246,7 +246,7 @@ def update(self, *args):
+         except Exception as e:
+             ip = get_ipython()
+             if ip is None:
+-                self.log.warn("Exception in interact callback: %s", e, exc_info=True)
++                self.log.warning("Exception in interact callback: %s", e, exc_info=True)
+             else:
+                 ip.showtraceback()
+         finally:
+diff --git a/ipywidgets/widgets/tests/test_interaction.py b/ipywidgets/widgets/tests/test_interaction.py
+index 1ee946744e..c792c5377a 100644
+--- a/ipywidgets/widgets/tests/test_interaction.py
++++ b/ipywidgets/widgets/tests/test_interaction.py
+@@ -249,7 +249,8 @@ def test_iterable_tuple():
+     check_widgets(c, lis=d)
+ 
+ def test_mapping():
+-    from collections import Mapping, OrderedDict
++    from collections.abc import Mapping
++    from collections import OrderedDict
+     class TestMapping(Mapping):
+         def __init__(self, values):
+             self.values = values

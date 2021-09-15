@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+command=/usr/bin/edac-ctl
+
+start() {
+	ebegin "Registering edac-utils labels"
+	/usr/sbin/edac-ctl --register-labels
+	eend $?
+}
+
+stop() {
+	ebegin "Unregistering edac-utils labels"
+	/usr/sbin/edac-ctl --unload
+	eend $?
+}

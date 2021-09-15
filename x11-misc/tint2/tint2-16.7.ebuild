@@ -12,7 +12,7 @@ S=${WORKDIR}/${PN}-v${PV}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ~arm64 ~ppc x86"
 IUSE="battery startup-notification svg tint2conf"
 
 DEPEND="

@@ -1,7 +1,5 @@
-Index: ACR38_LINUX_100711_P/configure.ac
-===================================================================
---- ACR38_LINUX_100711_P.orig/configure.ac
-+++ ACR38_LINUX_100711_P/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -58,74 +58,21 @@ if test x${debug} = xtrue ; then
  	AC_DEFINE(USBDEBUG, 1, [enable USB debug messaging.])
  fi
@@ -119,10 +117,8 @@ Index: ACR38_LINUX_100711_P/configure.ac
  # Select OS specific versions of source files.
  AC_SUBST(BUNDLE_HOST)
  AC_SUBST(DYN_LIB_EXT)
-Index: ACR38_LINUX_100711_P/src/controllib/Makefile.am
-===================================================================
---- ACR38_LINUX_100711_P.orig/src/controllib/Makefile.am
-+++ ACR38_LINUX_100711_P/src/controllib/Makefile.am
+--- a/src/controllib/Makefile.am
++++ b/src/controllib/Makefile.am
 @@ -6,7 +6,7 @@
  
  ACR38_CONTROLLIB = libacr38ucontrol.$(DYN_LIB_EXT)
@@ -143,10 +139,8 @@ Index: ACR38_LINUX_100711_P/src/controllib/Makefile.am
 -pcdir= @prefix@/lib/pkgconfig
 -pc_DATA = libacr38ucontrol.pc
 +pkgconfig_DATA = libacr38ucontrol.pc
-Index: ACR38_LINUX_100711_P/src/driver/Makefile.am
-===================================================================
---- ACR38_LINUX_100711_P.orig/src/driver/Makefile.am
-+++ ACR38_LINUX_100711_P/src/driver/Makefile.am
+--- a/src/driver/Makefile.am
++++ b/src/driver/Makefile.am
 @@ -9,7 +9,7 @@ DRIVER_LIB_NAME = lib$(DRIVER_NAME).$(DY
  DRIVER_BUNDLE_DIR = $(DRIVER_NAME).bundle
  DRIVER_INSTALL_HOME_DIR = pcsc/drivers/$(DRIVER_LIB_NAME).bundle/Contents/Linux

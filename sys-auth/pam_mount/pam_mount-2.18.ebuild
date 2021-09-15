@@ -11,7 +11,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-IUSE="crypt libressl ssl selinux"
+IUSE="crypt ssl selinux"
 
 DEPEND="
 	>=sys-libs/pam-0.99
@@ -20,10 +20,7 @@ DEPEND="
 	>=dev-libs/libxml2-2.6:=
 	>=dev-libs/libpcre-7:=
 	crypt? ( >=sys-fs/cryptsetup-1.1.0:= )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	selinux? ( sys-libs/libselinux )"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"

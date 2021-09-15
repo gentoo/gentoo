@@ -1,16 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 inherit opam
 
 DESCRIPTION="Functional reactive programming with incremental changes in data structures"
 HOMEPAGE="https://github.com/ocsigen/reactiveData"
 
-if [ "${PV#9999}" != "${PV}" ] ; then
+if [[ "${PV#9999}" != "${PV}" ]] ; then
 	inherit git-r3
-	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/ocsigen/reactiveData"
 else
 	SRC_URI="https://github.com/ocsigen/reactiveData/archive/${PV}.tar.gz -> ${P}.tar.gz"

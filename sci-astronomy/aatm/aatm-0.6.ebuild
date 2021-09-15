@@ -1,9 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit eutils ltprune
 
 DESCRIPTION="Atmospheric Modelling for ALMA Observatory"
 HOMEPAGE="https://svn.cv.nrao.edu/view/aatm/devel/casa/"
@@ -31,7 +29,11 @@ src_compile() {
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files --all
+
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
+
 	if use doc; then
 		insinto /usr/share/doc/${PF}
 		doins -r developer/html

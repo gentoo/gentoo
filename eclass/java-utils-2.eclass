@@ -6,6 +6,7 @@
 # java@gentoo.org
 # @AUTHOR:
 # Thomas Matthijs <axxo@gentoo.org>, Karl Trygve Kalleberg <karltk@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Base eclass for Java packages
 # @DESCRIPTION:
 # This eclass provides functionality which is used by java-pkg-2.eclass,
@@ -16,17 +17,22 @@
 # that have optional Java support. In addition you can inherit java-ant-2 for
 # Ant-based packages.
 
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_JAVA_UTILS_2_ECLASS} ]] ; then
+_JAVA_UTILS_2_ECLASS=1
+
 # EAPI 7 has version functions built-in. Use eapi7-ver for all earlier eclasses.
 # Keep versionator inheritance in case consumers are using it implicitly.
-[[ ${EAPI} == [0123456] ]] && inherit eapi7-ver eutils multilib versionator
+[[ ${EAPI} == [56] ]] && inherit eapi7-ver eutils multilib versionator
 
 IUSE="elibc_FreeBSD"
 
 # Make sure we use java-config-2
 export WANT_JAVA_CONFIG="2"
-
-# Prefix variables are only available for EAPI>=3
-has "${EAPI:-0}" 0 1 2 && ED="${D}" EPREFIX= EROOT="${ROOT}"
 
 has test ${JAVA_PKG_IUSE} && RESTRICT+=" !test? ( test )"
 
@@ -112,11 +118,27 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 # Normally this is determined from the jre/jdk version specified in RDEPEND.
 # See java-pkg_get-target function below.
 #
-# Should generallyonly be used for testing and debugging.
+# Should generally only be used for testing and debugging.
 #
 # emerge bar to be compatible with 1.3
 # @CODE
 #	JAVA_PKG_WANT_TARGET=1.3 emerge bar
+# @CODE
+
+# @ECLASS-VARIABLE: JAVA_TEST_EXTRA_ARGS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Array of extra arguments that should be passed to java command when running tests.
+# It is useful when you need to pass a value to a Java program that uses
+# System.getProperty(). If it uses System.getenv(), use `export var=value` instead.
+#
+# It is used only when running tests.
+#
+# @CODE
+#	JAVA_TEST_EXTRA_ARGS=(
+#		-Dsome.var=x
+#		"-Dother.var=\"y z\""
+#	)
 # @CODE
 
 # @ECLASS-VARIABLE: JAVA_PKG_DEBUG
@@ -351,7 +373,7 @@ java-pkg_dojar() {
 					insinto "${JAVA_PKG_JARDEST}"
 					doins "${jar}"
 				) || die "failed to install ${jar}"
-				java-pkg_append_ JAVA_PKG_CLASSPATH "${EPREFIX}/${JAVA_PKG_JARDEST}/${jar_basename}"
+				java-pkg_append_ JAVA_PKG_CLASSPATH "${EPREFIX}${JAVA_PKG_JARDEST}/${jar_basename}"
 				debug-print "installed ${jar} to ${ED}${JAVA_PKG_JARDEST}"
 			# make a symlink to the original jar if it's symlink
 			else
@@ -975,10 +997,6 @@ java-pkg_jar-from() {
 
 	[[ -z ${target_pkg} ]] && die "Must specify a package"
 
-	if [[ "${EAPI}" == "1" ]]; then
-		target_pkg="${target_pkg//:/-}"
-	fi
-
 	# default destjar to the target jar
 	[[ -z "${destjar}" ]] && destjar="${target_jar}"
 
@@ -1114,10 +1132,6 @@ java-pkg_getjars() {
 
 	local pkgs="${1}"
 
-	if [[ "${EAPI}" == "1" ]]; then
-		pkgs="${pkgs//:/-}"
-	fi
-
 	jars="$(java-config ${deep} --classpath=${pkgs})"
 	[[ $? != 0 ]] && die "java-config --classpath=${pkgs} failed"
 	debug-print "${pkgs}:${jars}"
@@ -1182,10 +1196,6 @@ java-pkg_getjar() {
 	[[ ${#} -ne 2 ]] && die "${FUNCNAME} takes only two arguments besides --*"
 
 	local pkg="${1}" target_jar="${2}" jar
-
-	if [[ "${EAPI}" == "1" ]]; then
-		pkg="${pkg//:/-}"
-	fi
 
 	[[ -z ${pkg} ]] && die "Must specify package to get a jar from"
 	[[ -z ${target_jar} ]] && die "Must specify jar to get"
@@ -1272,10 +1282,6 @@ java-pkg_register-dependency() {
 
 	[[ -z "${pkgs}" ]] && die "${FUNCNAME} called with no package(s) specified"
 
-	if [[ "${EAPI}" == "1" ]]; then
-		pkgs="${pkgs//:/-}"
-	fi
-
 	if [[ -z "${jar}" ]]; then
 		for pkg in ${pkgs//,/ }; do
 			java-pkg_ensure-dep runtime "${pkg}"
@@ -1328,10 +1334,6 @@ java-pkg_register-optional-dependency() {
 	local jar="${2}"
 
 	[[ -z "${pkgs}" ]] && die "${FUNCNAME} called with no package(s) specified"
-
-	if [[ "${EAPI}" == "1" ]]; then
-		pkgs="${pkgs//:/-}"
-	fi
 
 	if [[ -z "${jar}" ]]; then
 		for pkg in ${pkgs//,/ }; do
@@ -1811,8 +1813,8 @@ ejunit_() {
 	if [[ "${junit}" == "junit-4" ]] ; then
 		runner=org.junit.runner.JUnitCore
 	fi
-	debug-print "Calling: java -cp \"${cp}\" -Djava.io.tmpdir=\"${T}\" -Djava.awt.headless=true ${runner} ${@}"
-	java -cp "${cp}" -Djava.io.tmpdir="${T}/" -Djava.awt.headless=true ${runner} "${@}" || die "Running junit failed"
+	debug-print "Calling: java -cp \"${cp}\" -Djava.io.tmpdir=\"${T}\" -Djava.awt.headless=true ${JAVA_TEST_EXTRA_ARGS[@]} ${runner} ${@}"
+	java -cp "${cp}" -Djava.io.tmpdir="${T}/" -Djava.awt.headless=true ${JAVA_TEST_EXTRA_ARGS[@]} ${runner} "${@}" || die "Running junit failed"
 }
 
 # @FUNCTION: ejunit
@@ -1891,9 +1893,9 @@ etestng() {
 	done
 
 	debug-print "java -cp \"${cp}\" -Djava.io.tmpdir=\"${T}\""\
-		"-Djava.awt.headless=true ${runner}"\
+		"-Djava.awt.headless=true ${JAVA_TEST_EXTRA_ARGS[@]} ${runner}"\
 		"-usedefaultlisteners false -testclass ${tests}"
-	java -cp "${cp}" -Djava.io.tmpdir=\"${T}\" -Djava.awt.headless=true\
+	java -cp "${cp}" -Djava.io.tmpdir=\"${T}\" -Djava.awt.headless=true ${JAVA_TEST_EXTRA_ARGS[@]}\
 		${runner} -usedefaultlisteners false -testclass ${tests}\
 		|| die "Running TestNG failed."
 }
@@ -1904,7 +1906,7 @@ etestng() {
 # Don't call directly, but via java-pkg-2_src_prepare!
 java-utils-2_src_prepare() {
 	case ${EAPI:-0} in
-		[0-5])
+		5)
 			java-pkg_func-exists java_prepare && java_prepare ;;
 		*)
 			java-pkg_func-exists java_prepare &&
@@ -2191,9 +2193,6 @@ java-pkg_init() {
 
 	# Don't set up build environment if installing from binary. #206024 #258423
 	[[ "${MERGE_TYPE}" == "binary" ]] && return
-	# Also try Portage's nonstandard EMERGE_FROM for old EAPIs, if it doesn't
-	# work nothing is lost.
-	has ${EAPI:-0} 0 1 2 3 && [[ "${EMERGE_FROM}" == "binary" ]] && return
 
 	unset JAVAC
 	unset JAVA_HOME
@@ -2956,3 +2955,5 @@ java-pkg_gen-cp() {
 		fi
 	done
 }
+
+fi

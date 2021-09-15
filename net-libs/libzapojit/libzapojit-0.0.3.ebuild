@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 inherit gnome2
 
 DESCRIPTION="GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs"
-HOMEPAGE="https://git.gnome.org/browse/libzapojit"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libzapojit"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

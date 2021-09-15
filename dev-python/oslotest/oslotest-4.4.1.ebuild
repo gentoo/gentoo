@@ -12,11 +12,14 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 x86 ~amd64-linux ~x86-linux"
 
 BDEPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
 RDEPEND="
 	>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/subunit-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
-	>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]"
+	>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
+"
+
+distutils_enable_tests unittest

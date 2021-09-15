@@ -12,7 +12,7 @@ else
 	S="${WORKDIR}/${PN}-v${PV}"
 fi
 
-inherit meson multilib-minimal
+inherit meson-multilib
 
 DESCRIPTION="Reusable library for GPU-accelerated image processing primitives"
 HOMEPAGE="https://code.videolan.org/videolan/libplacebo"
@@ -51,14 +51,6 @@ multilib_src_configure() {
 	meson_src_configure
 }
 
-multilib_src_compile() {
-	meson_src_compile
-}
-
 multilib_src_test() {
 	meson_src_test -t 10
-}
-
-multilib_src_install() {
-	meson_src_install
 }

@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/786549
+
+gcc-11 defines __rdtsc as a macro:
+    // include/ia32intrin.h:110
+    #define __rdtsc() __builtin_ia32_rdtsc ()
+and causes build failure:
+    intrincs/rdtsc.c:15:30: error: macro "__rdtsc" passed 1 arguments, but takes just 0
+       15 | unsigned __int64 __rdtsc(void)
+          |                              ^
+
+Let's avoid __rdtsc definition on systems with #define __rdtsc present.
+
+There is still a chance that it might be a '#define __rdtsc __rdtsc'.
+We'll revisit it then.
+--- a/mingw-w64-crt/intrincs/rdtsc.c
++++ b/mingw-w64-crt/intrincs/rdtsc.c
+@@ -11,7 +11,7 @@
+   #define __has_builtin(x) 0
+ #endif
+ 
+-#if !__has_builtin(__rdtsc)
++#if !__has_builtin(__rdtsc) && !defined(__rdtsc)
+ unsigned __int64 __rdtsc(void)
+ {
+ #ifdef _WIN64

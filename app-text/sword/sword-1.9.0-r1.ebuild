@@ -11,7 +11,7 @@ SRC_URI="https://www.crosswire.org/ftpmirror/pub/${PN}/source/v${PV%.*}/${P}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~ppc-macos"
+KEYWORDS="amd64 ~ppc ~riscv x86 ~ppc-macos"
 IUSE="clucene curl debug doc icu"
 
 RDEPEND="sys-libs/zlib

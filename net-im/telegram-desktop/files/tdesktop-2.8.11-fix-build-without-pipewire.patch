@@ -1,0 +1,26 @@
+Fix build without pipewire
+
+set_allow_pipewire isn't available if WEBRTC_USE_PIPEWIRE isn't set
+
+--- tdesktop-2.8.11-full.orig/Telegram/ThirdParty/tgcalls/tgcalls/desktop_capturer/DesktopCaptureSourceHelper.cpp
++++ tdesktop-2.8.11-full/Telegram/ThirdParty/tgcalls/tgcalls/desktop_capturer/DesktopCaptureSourceHelper.cpp
+@@ -286,7 +286,7 @@
+     options.set_allow_use_magnification_api(false);
+ #elif defined WEBRTC_MAC
+     options.set_allow_iosurface(true);
+-#elif defined WEBRTC_LINUX
++#elif defined WEBRTC_USE_PIPEWIRE
+     options.set_allow_pipewire(true);
+ #endif // WEBRTC_WIN || WEBRTC_MAC
+ 
+--- tdesktop-2.8.11-full.orig/Telegram/ThirdParty/tgcalls/tgcalls/desktop_capturer/DesktopCaptureSourceManager.cpp
++++ tdesktop-2.8.11-full/Telegram/ThirdParty/tgcalls/tgcalls/desktop_capturer/DesktopCaptureSourceManager.cpp
+@@ -33,7 +33,7 @@
+     result.set_allow_use_magnification_api(false);
+ #elif defined WEBRTC_MAC
+     result.set_allow_iosurface(type == DesktopCaptureType::Screen);
+-#elif defined WEBRTC_LINUX
++#elif defined WEBRTC_USE_PIPEWIRE
+     result.set_allow_pipewire(true);
+ #endif // WEBRTC_WIN || WEBRTC_MAC
+     result.set_detect_updated_region(true);

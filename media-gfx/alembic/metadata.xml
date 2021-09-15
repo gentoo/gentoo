@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person" proxied="yes">
 	<email>waebbl-gentoo@posteo.net</email>
@@ -16,7 +16,6 @@
 <use>
 	<flag name="hdf5">Add support <pkg>sci-libs/hdf5</pkg></flag>
 	<flag name="test">Build and run the test-suite</flag>
-	<flag name="zlib">Use <pkg>sys-libs/zlib</pkg> for compressions</flag>
 </use>
 <upstream>
 	<bugs-to>https://github.com/alembic/alembic/issues</bugs-to>

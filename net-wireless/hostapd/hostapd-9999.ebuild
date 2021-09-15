@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs systemd savedconfig
+inherit flag-o-matic systemd savedconfig toolchain-funcs
 
 DESCRIPTION="IEEE 802.11 wireless LAN Host AP daemon"
 HOMEPAGE="https://w1.fi/ https://w1.fi/cgit/hostap/"
@@ -28,39 +28,30 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="internal-tls ipv6 libressl logwatch netlink sqlite +suiteb +wps +crda"
-
-# suiteb impl uses openssl feature not available in libressl, see bug 710992
-REQUIRED_USE="?? ( libressl suiteb )"
+IUSE="internal-tls ipv6 netlink sqlite +suiteb +wps +crda"
 
 DEPEND="
-	libressl? ( dev-libs/libressl:0= )
-	!libressl? (
-		internal-tls? ( dev-libs/libtommath )
-		!internal-tls? ( dev-libs/openssl:0=[-bindist] )
-	)
+	internal-tls? ( dev-libs/libtommath )
+	!internal-tls? ( dev-libs/openssl:0=[-bindist(-)] )
 	kernel_linux? (
 		dev-libs/libnl:3
 		crda? ( net-wireless/crda )
 	)
 	netlink? ( net-libs/libnfnetlink )
 	sqlite? ( >=dev-db/sqlite-3 )"
-
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 pkg_pretend() {
 	if use internal-tls; then
-		if use libressl; then
-			elog "libressl flag takes precedence over internal-tls"
-		else
-			ewarn "internal-tls implementation is experimental and provides fewer features"
-		fi
+		ewarn "internal-tls implementation is experimental and provides fewer features"
 	fi
 }
 
 src_unpack() {
 	# Override default one because we need the SRC_URI ones even in case of 9999 ebuilds
 	default
+
 	if [[ ${PV} == 9999 ]] ; then
 		git-r3_src_unpack
 	fi
@@ -69,24 +60,16 @@ src_unpack() {
 src_prepare() {
 	# Allow users to apply patches to src/drivers for example,
 	# i.e. anything outside ${S}/${PN}
-	pushd ../ >/dev/null || die
+	pushd ../ &>/dev/null || die
 	default
-
-	# CVE-2019-16275 bug #696032
-	eapply "${FILESDIR}/hostapd-2.9-AP-Silently-ignore-management-frame-from-unexpected.patch"
-	# CVE-2020-12695 bug #727542
-	eapply "${FILESDIR}/${P}-0001-WPS-UPnP-Do-not-allow-event-subscriptions-with-URLs-.patch"
-	eapply "${FILESDIR}/${P}-0002-WPS-UPnP-Fix-event-message-generation-using-a-long-U.patch"
-	eapply "${FILESDIR}/${P}-0003-WPS-UPnP-Handle-HTTP-initiation-failures-for-events-.patch"
-
-	popd >/dev/null || die
+	popd &>/dev/null || die
 
 	sed -i -e "s:/etc/hostapd:/etc/hostapd/hostapd:g" \
 		"${S}/hostapd.conf" || die
 }
 
 src_configure() {
-	local CONFIG="${S}/.config"
+	local CONFIG="${S}"/.config
 
 	restore_config "${CONFIG}"
 	if [[ -f "${CONFIG}" ]]; then
@@ -107,7 +90,7 @@ src_configure() {
 		echo "CONFIG_SUITEB192=y" >> ${CONFIG} || die
 	fi
 
-	if use internal-tls && ! use libressl; then
+	if use internal-tls ; then
 		echo "CONFIG_TLS=internal" >> ${CONFIG} || die
 	else
 		# SSL authentication methods
@@ -171,6 +154,7 @@ src_configure() {
 	echo "CONFIG_IEEE80211W=y" >> ${CONFIG} || die
 	echo "CONFIG_IEEE80211N=y" >> ${CONFIG} || die
 	echo "CONFIG_IEEE80211AC=y" >> ${CONFIG} || die
+	echo "CONFIG_OCV=y" >> ${CONFIG} || die
 	echo "CONFIG_PEERKEY=y" >> ${CONFIG} || die
 	echo "CONFIG_RSN_PREAUTH=y" >> ${CONFIG} || die
 	echo "CONFIG_INTERWORKING=y" >> ${CONFIG} || die
@@ -201,6 +185,7 @@ src_configure() {
 	# support it.
 	if has_version ">=dev-libs/libnl-3.2"; then
 		echo "CONFIG_LIBNL32=y" >> ${CONFIG} || die
+		append-cflags $($(tc-getPKG_CONFIG) --cflags libnl-3.0)
 	fi
 
 	# TODO: Add support for BSD drivers
@@ -211,7 +196,7 @@ src_configure() {
 src_compile() {
 	emake V=1
 
-	if use libressl || ! use internal-tls; then
+	if ! use internal-tls; then
 		emake V=1 nt_password_hash
 		emake V=1 hlr_auc_gw
 	fi
@@ -226,7 +211,7 @@ src_install() {
 	dosbin ${PN}
 	dobin ${PN}_cli
 
-	if use libressl || ! use internal-tls; then
+	if ! use internal-tls; then
 		dobin nt_password_hash hlr_auc_gw
 	fi
 
@@ -242,20 +227,18 @@ src_install() {
 	docinto examples
 	dodoc wired.conf
 
-	if use logwatch; then
-		insinto /etc/log.d/conf/services/
-		doins logwatch/${PN}.conf
+	insinto /etc/log.d/conf/services/
+	doins logwatch/${PN}.conf
 
-		exeinto /etc/log.d/scripts/services/
-		doexe logwatch/${PN}
-	fi
+	exeinto /etc/log.d/scripts/services/
+	doexe logwatch/${PN}
 
 	save_config .config
 }
 
 pkg_postinst() {
 	einfo
-	einfo "If you are running openRC you need to follow this instructions:"
+	einfo "If you are running OpenRC you need to follow this instructions:"
 	einfo "In order to use ${PN} you need to set up your wireless card"
 	einfo "for master mode in /etc/conf.d/net and then start"
 	einfo "/etc/init.d/${PN}."
@@ -276,7 +259,7 @@ pkg_postinst() {
 
 	if use wps; then
 		einfo "You have enabled Wi-Fi Protected Setup support, please"
-		einfo "read the README-WPS file in /usr/share/doc/${P}"
+		einfo "read the README-WPS file in /usr/share/doc/${PF}"
 		einfo "for info on how to use WPS"
 	fi
 }

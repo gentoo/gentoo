@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: lua.eclass
@@ -8,7 +8,8 @@
 # @AUTHOR:
 # Marek Szuba <marecki@gentoo.org>
 # Based on python-r1.eclass by Michał Górny <mgorny@gentoo.org> et al.
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
+# @PROVIDES: lua-utils
 # @BLURB: A common eclass for Lua packages
 # @DESCRIPTION:
 # A common eclass providing helper functions to build and install
@@ -27,9 +28,9 @@
 #
 # @EXAMPLE:
 # @CODE
-# EAPI=7
+# EAPI=8
 #
-# LUA_COMPAT=( lua5-{1..3} )
+# LUA_COMPAT=( lua5-{3..4} )
 #
 # inherit lua
 #
@@ -50,15 +51,10 @@
 # }
 # @CODE
 
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6)
-		die "Unsupported EAPI=${EAPI} (too old) for ${ECLASS}"
+case ${EAPI} in
+	7|8)
 		;;
-	7)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ ! ${_LUA_R0} ]]; then
@@ -81,7 +77,7 @@ fi
 #
 # Example:
 # @CODE
-# LUA_COMPAT=( lua5-1 lua5-2 lua5-3 )
+# LUA_COMPAT=( lua5-1 lua5-3 lua5-4 )
 # @CODE
 #
 # Please note that you can also use bash brace expansion if you like:
@@ -106,7 +102,7 @@ fi
 #
 # Example:
 # @CODE
-# LUA_COMPAT_OVERRIDE='lua5-2' emerge -1v dev-lua/foo
+# LUA_COMPAT_OVERRIDE='luajit' emerge -1v dev-lua/foo
 # @CODE
 
 # @ECLASS-VARIABLE: LUA_REQ_USE
@@ -162,7 +158,7 @@ fi
 # Example value:
 # @CODE
 # lua_targets_lua5-1? ( dev-lang/lua:5.1 )
-# lua_targets_lua5-2? ( dev-lang/lua:5.2 )
+# lua_targets_lua5-3? ( dev-lang/lua:5.3 )
 # @CODE
 
 # @ECLASS-VARIABLE: LUA_REQUIRED_USE
@@ -181,7 +177,7 @@ fi
 #
 # Example value:
 # @CODE
-# || ( lua_targets_lua5-1 lua_targets_lua5-2 )
+# || ( lua_targets_lua5-1 lua_targets_lua5-3 )
 # @CODE
 
 # @ECLASS-VARIABLE: LUA_USEDEP
@@ -198,7 +194,7 @@ fi
 #
 # Example value:
 # @CODE
-# lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?
+# lua_targets_lua5-1(-)?,lua_targets_lua5-3(-)?
 # @CODE
 
 if [[ ! ${_LUA_R0} ]]; then

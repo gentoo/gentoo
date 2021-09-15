@@ -1,6 +1,35 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-09-14)
+# JACK2 isn't keyworded here
+# bug #807616
+media-video/pipewire jack-client
+
+# Sam James <sam@gentoo.org> (2021-09-12)
+# dev-ruby/asciidoctor isn't keyworded here
+dev-util/ccache doc
+
+# David Seifert <soap@gentoo.org> (2021-09-04)
+# dev-lang/go not keyworded here
+sys-libs/libcap tools
+
+# Marek Szuba <marecki@gentoo.org> (2021-08-17)
+# net-wireless/rtl-sdr not keyworded here
+sys-apps/rng-tools rtlsdr
+
+# Michał Górny <mgorny@gentoo.org> (2021-07-25)
+# PyQt5 and wxpython are not keyworded.
+dev-python/matplotlib wxwidgets
+
+# Matt Turner <mattst88@gentoo.org> (2021-07-23)
+# gui-libs/gtk is not keyworded
+net-libs/gssdp gtk
+
+# Matt Turner <mattst88@gentoo.org> (2021-06-10)
+# dev-python/django is not keyworded here
+dev-python/diskcache test
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-03-13)
 # virtual/jdk isn't keyworded here
 media-libs/rubberband jni
@@ -78,8 +107,9 @@ dev-python/socketpool eventlet gevent
 # These pull in:
 # - direct ruby dependency:
 app-admin/augeas test
-app-i18n/canna doc
 sys-block/thin-provisioning-tools test
+# - Ruby-based test suite, with additional dependencies
+app-text/htmltidy test
 # - texlive japan modules: ruby runtime scripts
 app-text/texlive l10n_ja context
 # - net-libs/webkit-gtk: ruby build system

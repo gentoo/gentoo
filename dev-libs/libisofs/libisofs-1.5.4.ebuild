@@ -4,12 +4,12 @@
 EAPI=7
 
 DESCRIPTION="Open-source library for reading, mastering and writing optical discs"
-HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wikis/home"
+HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wiki/Libisofs"
 SRC_URI="http://files.libburnia-project.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="acl debug static-libs verbose-debug xattr zlib"
 
 BDEPEND="

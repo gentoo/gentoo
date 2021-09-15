@@ -1,0 +1,30 @@
+From caa55523aca6997d55fc9c68ed121c2c2bccc569 Mon Sep 17 00:00:00 2001
+From: Fabian Groffen <grobian@gentoo.org>
+Date: Mon, 24 May 2021 10:06:54 +0200
+Subject: [PATCH] librtasevent: include endian.h for beXXtoh macros
+
+In particular using musl libc, without this include, the calls to
+be16toh/be32toh result in a compiler warning about an undefined symbol.
+Since in musl these are actually implemented by macros, the symbols
+remain undefined in the final shared library, making the library
+unusable.
+
+Issue: https://github.com/ibm-power-utilities/librtas/issues/10
+Signed-off-by: Fabian Groffen <grobian@gentoo.org>
+---
+ librtasevent_src/rtas_event.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/librtasevent_src/rtas_event.h b/librtasevent_src/rtas_event.h
+index ece6f1d..b38cd7a 100644
+--- a/librtasevent_src/rtas_event.h
++++ b/librtasevent_src/rtas_event.h
+@@ -23,6 +23,8 @@
+ #ifndef _H_RTAS_EVENT
+ #define _H_RTAS_EVENT
+ 
++#include <endian.h>
++
+ #define PRNT_FMT        "%-20s%08x"
+ #define PRNT_FMT_L      PRNT_FMT"    "
+ #define PRNT_FMT_R      PRNT_FMT"\n"

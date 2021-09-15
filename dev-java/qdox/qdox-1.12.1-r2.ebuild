@@ -5,7 +5,7 @@ EAPI=7
 
 JAVA_PKG_IUSE="doc source test"
 
-inherit eutils java-pkg-2 java-ant-2
+inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Parser for extracting class/interface/method definitions"
 HOMEPAGE="https://github.com/codehaus/qdox"

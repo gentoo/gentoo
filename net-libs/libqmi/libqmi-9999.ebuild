@@ -3,7 +3,6 @@
 
 EAPI=7
 
-inherit multilib
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mobile-broadband/libqmi.git"
@@ -16,16 +15,16 @@ DESCRIPTION="Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol 
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/libqmi/ https://gitlab.freedesktop.org/mobile-broadband/libqmi"
 
 LICENSE="LGPL-2"
-SLOT="0/5.7"	# soname of libqmi-glib.so
-IUSE="doc +mbim"
+SLOT="0/5.8"	# soname of libqmi-glib.so
+IUSE="gtk-doc +mbim"
 
-RDEPEND=">=dev-libs/glib-2.48
-	dev-libs/libgudev
+RDEPEND=">=dev-libs/glib-2.56
+	>=dev-libs/libgudev-232
 	mbim? ( >=net-libs/libmbim-1.18.0 )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( dev-util/gtk-doc )"
+	gtk-doc? ( dev-util/gtk-doc )"
 [[ ${PV} == "9999" ]] && BDEPEND+=" dev-util/gtk-doc" #469214
 
 src_prepare() {
@@ -39,7 +38,7 @@ src_configure() {
 		--disable-static
 		--disable-qrtr # libqrtr-glib not packaged
 		$(use_enable mbim mbim-qmux)
-		$(use_enable {,gtk-}doc)
+		$(use_enable gtk-doc)
 	)
 	econf "${myconf[@]}"
 }

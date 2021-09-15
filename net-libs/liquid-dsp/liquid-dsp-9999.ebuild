@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools multilib
+inherit autotools
 
 DESCRIPTION="digital signal processing library for software-defined radios"
 HOMEPAGE="https://liquidsdr.org"

@@ -7,7 +7,7 @@ CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="Low bit rate speech codec"
-HOMEPAGE="https://freedv.org/ http://www.rowetel.com/?page_id=452"
+HOMEPAGE="https://freedv.org/ https://www.rowetel.com/?page_id=452 https://github.com/drowe67/codec2"
 SRC_URI="https://github.com/drowe67/codec2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

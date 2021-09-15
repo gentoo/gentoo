@@ -1,6 +1,59 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Lars Wendler <polynomial-c@gentoo.org> (2021-08-27)
+# media-libs/webrtc-audio-processing only has amd64 and x86 keywords
+media-video/pipewire -echo-cancel
+
+# Marek Szuba <marecki@gentoo.org> (2021-08-11)
+# dev-ruby/tty-editor not keyworded here yet (Bug #807685)
+app-text/htmltidy test
+
+# James Le Cuirot <chewi@gentoo.org> (2021-08-07)
+# The ORBlite scanner plugin only works on amd64 and x86.
+net-print/hplip-plugin -orblite
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-07-26)
+# nvenc on x86 needs both legacy 390 drivers and old vulnerable
+# <=media-video/ffmpeg-4.2.4, nvidia has no real x86 support.
+media-video/obs-studio nvenc
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-17)
+# media-libs/rnnoise, media-plugins/gst-plugins-webrtc
+# and media-plugins/zam-plugins not keyworded here
+media-sound/easyeffects rnnoise webrtc zamaudio
+media-sound/pulseeffects rnnoise webrtc zamaudio
+
+# Sam James <sam@gentoo.org> (2021-07-12)
+# Haskell is (only) available on amd64/x86 right now in Gentoo
+# bug #801649
+dev-util/diffoscope -haskell
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-07-04)
+# Needed until media-libs/libsdl2[vulkan] is unmasked on this arch.
+games-fps/yamagi-quake2 vulkan
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
+# Feature currently relies on amd64 prebuilt binaries.
+media-video/obs-studio browser
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
+# gui-libs/egl-wayland with nvidia-drivers does not function well with
+# the last drivers to support x86 (needed here to override use.mask).
+x11-base/xwayland video_cards_nvidia
+x11-wm/mutter video_cards_nvidia
+
+# Stefan Strogin <steils@gentoo.org> (2021-06-27)
+# Requires dev-python/adblock which is not keyworded on x86 yet
+www-client/qutebrowser adblock
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-25)
+# Depends on either unkeyworded dev-java/openjdk:11
+# or unavailable >=dev-java/icedtea-4, bug #785640
+>=app-office/libreoffice-7 base java
+>=app-office/libreoffice-bin-7 java
+>=app-office/libreoffice-bin-debug-7 java
+
 # Mike Gilbert <floppym@gentoo.org> (2021-03-29)
 # Unmask TPM on supported archs.
 sys-apps/systemd -tpm
@@ -36,31 +89,14 @@ sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 sys-libs/compiler-rt-sanitizers -gwp-asan
 sys-libs/compiler-rt-sanitizers -profile
 
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2020-10-28)
-# dev-qt/linguist-tools-5.15.0 and 5.15.1 OOM with bad_alloc.
-# https://bugs.gentoo.org/751418
->=sci-astronomy/stellarium-0.20.3 nls
-
 # Sam James <sam@gentoo.org> (2020-10-05)
 # Guile only supports JIT on some arches
 # (See 9.3.8 in the Guile manual)
 dev-scheme/guile -jit
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-18)
-# swt 4.10 not keyworded on x86
-dev-java/openjdk:8 javafx
-
-# Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
-# Columnstore engine is supported on x86
-dev-db/mariadb -columnstore
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-07-27)
 # media-video/pipewire:0/0.3 is available for x86
 www-client/firefox -screencast
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-11)
-# net-libs/libslirp is not yet keyworded on x86, bug #732144
-app-emulation/qemu slirp
 
 # Sam James <sam@gentoo.org> (2020-07-03)
 # Rust is available here
@@ -117,6 +153,8 @@ dev-libs/glib -sysprof
 gnome-extra/cjs -sysprof
 x11-libs/gtk+ -sysprof
 net-libs/libsoup -sysprof
+x11-libs/pango -sysprof
+gui-libs/gtk -sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan is available on x86.
@@ -200,10 +238,6 @@ media-gfx/imagemagick -heif
 # Tomáš Mózes <hydrapolic@gmail.com> (2018-09-28)
 # Requires dev-db/mongodb which has dropped x86 support
 dev-python/pymongo test
-
-# Bernard Cafarelli <voyageur@gentoo.org> (2018-09-27)
-# media-libs/qtav not keyworded
-media-video/orion qtav
 
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst has support for assembling bootloader on this arch
@@ -298,10 +332,6 @@ sys-apps/systemd -gnuefi
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # media-libs/libbdplus is keyworded on x86, so unmask the useflag
 media-libs/libbluray -bdplus
-
-# Jeroen Roovers <jer@gentoo.org> (2015-01-31)
-# >x11-drivers/nvidia-drivers-346 on x86 has no UVM support (bug #534156)
->x11-drivers/nvidia-drivers-346 uvm
 
 # Yixun Lan <dlan@gentoo.org> (2014-05-21)
 # sys-fs/zfs not keyworded on x86

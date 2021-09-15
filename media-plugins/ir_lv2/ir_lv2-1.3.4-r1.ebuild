@@ -1,14 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs flag-o-matic multilib
+inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="LV2 convolver plugin especially for creating reverb effects"
 HOMEPAGE="https://tomszilagyi.github.io/plugins/ir.lv2/"
 SRC_URI="https://github.com/tomszilagyi/ir.lv2/archive/${PV}.tar.gz -> ${P}.tar.gz"
-S=${WORKDIR}/${PN/_/.}-${PV}
+S="${WORKDIR}"/${PN/_/.}-${PV}
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -31,7 +31,7 @@ PATCHES=(
 DOCS=( README.md sshot.png ChangeLog )
 
 src_compile() {
-	tc-export CC CXX
+	tc-export CC CXX PKG_CONFIG
 	emake
 	use tools && emake convert4chan
 }

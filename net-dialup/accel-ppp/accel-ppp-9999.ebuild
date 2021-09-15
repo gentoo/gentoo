@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,13 +15,14 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug doc ipoe lua postgres radius shaper snmp valgrind"
+IUSE="debug doc ipoe libtomcrypt lua postgres radius shaper snmp valgrind"
 
-RDEPEND="lua? ( ${LUA_DEPS} )
+RDEPEND="!libtomcrypt? ( dev-libs/openssl:0= )
+	libtomcrypt? ( dev-libs/libtomcrypt:0= )
+	lua? ( ${LUA_DEPS} )
 	postgres? ( dev-db/postgresql:* )
 	snmp? ( net-analyzer/net-snmp )
-	dev-libs/libpcre
-	dev-libs/openssl:0="
+	dev-libs/libpcre"
 DEPEND="${RDEPEND}
 	valgrind? ( dev-util/valgrind )"
 PDEPEND="net-dialup/ppp-scripts"
@@ -60,13 +61,12 @@ src_prepare() {
 
 src_configure() {
 	local libdir="$(get_libdir)"
-	# There must be also dev-libs/tomcrypt (TOMCRYPT) as crypto alternative to OpenSSL
 	local mycmakeargs=(
 		-DLIB_SUFFIX="${libdir#lib}"
 		-DBUILD_IPOE_DRIVER="$(usex ipoe)"
 		-DBUILD_PPTP_DRIVER=no
 		-DBUILD_VLAN_MON_DRIVER="$(usex ipoe)"
-		-DCRYPTO=OPENSSL
+		-DCRYPTO="$(usex libtomcrypt TOMCRYPT OPENSSL)"
 		-DLOG_PGSQL="$(usex postgres)"
 		-DLUA="$(usex lua TRUE FALSE)"
 		-DMEMDEBUG="$(usex debug)"

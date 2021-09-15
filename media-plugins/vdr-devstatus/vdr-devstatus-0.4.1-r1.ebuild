@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR plugin: display the usage status of the available DVB devices"
-HOMEPAGE="http://www.u32.de/vdr.html"
-SRC_URI="http://www.u32.de/download/${P}.tgz"
+HOMEPAGE="https://www.u32.de/vdr.html"
+SRC_URI="https://www.u32.de/download/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

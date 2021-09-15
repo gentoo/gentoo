@@ -1,0 +1,12 @@
+--- a/include/automount.h
++++ b/include/automount.h
+@@ -25,6 +25,9 @@
+ #include "list.h"
+ 
+ #include <linux/auto_fs4.h>
++#ifndef __GLIBC__
++#include <bits/reg.h>
++#endif
+ 
+ #include "defaults.h"
+ #include "state.h"

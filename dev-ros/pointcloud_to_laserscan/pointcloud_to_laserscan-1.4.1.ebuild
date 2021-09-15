@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,11 @@ RDEPEND="
 	dev-ros/tf2_sensor_msgs
 	dev-libs/boost:=
 	dev-libs/console_bridge:=
+	dev-ros/laser_geometry
 "
 DEPEND="${RDEPEND}
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? (
+		dev-ros/roslint
+	)
 "

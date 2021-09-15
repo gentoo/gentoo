@@ -5,7 +5,7 @@ EAPI=6
 inherit gnome2
 
 DESCRIPTION="Extra GNOME icons for specific devices and file types"
-HOMEPAGE="https://git.gnome.org/browse/gnome-icon-theme-extras/"
+HOMEPAGE="https://gitlab.gnome.org/Archive/gnome-icon-theme-extras"
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"

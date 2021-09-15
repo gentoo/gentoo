@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -37,6 +37,7 @@ src_configure() {
 src_install() {
 	default
 	dosym qstat /usr/bin/quakestat
+
 	docinto html
 	dodoc template/*.html qstatdoc.html
 }

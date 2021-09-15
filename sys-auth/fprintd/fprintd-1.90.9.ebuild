@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.freedesktop.org/libfprint/${PN}/-/archive/v${PV}/${PN}-v
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc64 ~riscv ~sparc ~x86"
 IUSE="doc pam systemd test"
 RESTRICT="!test? ( test )"
 
@@ -36,7 +36,7 @@ BDEPEND="
 		dev-util/gtk-doc
 	)
 	test? (
-		dev-python/dbusmock
+		dev-python/python-dbusmock
 		dev-python/dbus-python
 		dev-python/pycairo
 		pam? ( sys-libs/pam_wrapper )

@@ -1,0 +1,11 @@
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -10,7 +10,7 @@
+ 
+ [tool:pytest]
+ testpaths = tests
+-addopts = -v --cov --cov-report xml -ra --strict-markers --showlocals --color=yes
++addopts = -v -ra --strict-markers --showlocals --color=yes
+ markers = 
+ 	fortran: fortran testing
+ 

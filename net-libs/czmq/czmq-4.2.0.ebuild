@@ -9,7 +9,7 @@ SRC_URI="https://github.com/zeromq/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0/4"
-KEYWORDS="amd64 arm ~arm64 ~hppa x86"
+KEYWORDS="amd64 arm arm64 ~hppa x86"
 IUSE="curl drafts http-client http-server lz4 static-libs systemd +uuid"
 
 BDEPEND="app-text/asciidoc

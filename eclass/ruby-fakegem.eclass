@@ -8,7 +8,8 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 4 5 6 7 8
+# @PROVIDES: ruby-ng
 # @BLURB: An eclass for installing Ruby packages to behave like RubyGems.
 # @DESCRIPTION:
 # This eclass allows to install arbitrary Ruby libraries (including Gems),
@@ -60,7 +61,7 @@ RUBY_FAKEGEM_TASK_TEST="${RUBY_FAKEGEM_TASK_TEST-test}"
 #  - yard (calls `yard`, adds dev-ruby/yard to the dependencies);
 #  - none
 case ${EAPI} in
-	4|5|6)
+	5|6)
 		RUBY_FAKEGEM_RECIPE_DOC="${RUBY_FAKEGEM_RECIPE_DOC-rake}"
 		;;
 	*)
@@ -129,16 +130,10 @@ RUBY_FAKEGEM_BINDIR="${RUBY_FAKEGEM_BINDIR-bin}"
 # legacy way to install extensions for a long time.
 RUBY_FAKEGEM_EXTENSION_LIBDIR="${RUBY_FAKEGEM_EXTENSION_LIBDIR-lib}"
 
-case "${EAPI:-0}" in
-	0|1|2|3)
-		die "Unsupported EAPI=${EAPI} (too old) for ruby-fakegem.eclass" ;;
-	4|5|6|7)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+case ${EAPI} in
+	5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
 
 RUBY_FAKEGEM_SUFFIX="${RUBY_FAKEGEM_SUFFIX:-}"
 
@@ -203,7 +198,7 @@ SRC_URI="https://rubygems.org/gems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}$
 ruby_add_bdepend "virtual/rubygems !!dev-ruby/psych"
 ruby_add_rdepend virtual/rubygems
 case ${EAPI} in
-	4|5|6)
+	5|6)
 		;;
 	*)
 		ruby_add_depend virtual/rubygems
@@ -290,7 +285,7 @@ ruby_fakegem_install_gemspec() {
 # RUBY_FAKEGEM_GEMSPEC. This file is eval'ed to produce a final specification
 # in a way similar to packaging the gemspec file.
 ruby_fakegem_gemspec_gemspec() {
-	${RUBY} -e "puts eval(File::open('$1').read).to_ruby" > $2
+	${RUBY} --disable=did_you_mean -e "puts eval(File::open('$1').read).to_ruby" > $2
 }
 
 # @FUNCTION: ruby_fakegem_metadata_gemspec
@@ -300,7 +295,7 @@ ruby_fakegem_gemspec_gemspec() {
 # the metadata distributed by the gem itself. This is similar to how
 # rubygems creates an installation from a .gem file.
 ruby_fakegem_metadata_gemspec() {
-	${RUBY} -r yaml -e "puts Gem::Specification.from_yaml(File::open('$1', :encoding => 'UTF-8').read).to_ruby" > $2
+	${RUBY} --disable=did_you_mean -r yaml -e "puts Gem::Specification.from_yaml(File::open('$1', :encoding => 'UTF-8').read).to_ruby" > $2
 }
 
 # @FUNCTION: ruby_fakegem_genspec
@@ -318,7 +313,7 @@ ruby_fakegem_metadata_gemspec() {
 # See RUBY_FAKEGEM_REQUIRE_PATHS for setting extra require paths.
 ruby_fakegem_genspec() {
 	case ${EAPI} in
-		4|5|6) ;;
+		5|6) ;;
 		*)
 			eqawarn "Generating generic fallback gemspec *without* dependencies"
 			eqawarn "This will only work when there are no runtime dependencies"
@@ -408,7 +403,7 @@ EOF
 # Configure extensions defined in RUBY_FAKEGEM_EXTENSIONS, if any.
 each_fakegem_configure() {
 	for extension in "${RUBY_FAKEGEM_EXTENSIONS[@]}" ; do
-		${RUBY} -C ${extension%/*} ${extension##*/} || die
+		${RUBY} --disable=did_you_mean -C ${extension%/*} ${extension##*/} || die
 	done
 }
 
@@ -517,7 +512,7 @@ all_ruby_compile() {
 each_fakegem_test() {
 	case ${RUBY_FAKEGEM_RECIPE_TEST} in
 		rake)
-			${RUBY} -S rake ${RUBY_FAKEGEM_TASK_TEST} || die "tests failed"
+			${RUBY} --disable=did_you_mean -S rake ${RUBY_FAKEGEM_TASK_TEST} || die "tests failed"
 			;;
 		rspec)
 			RSPEC_VERSION=2 ruby-ng_rspec
@@ -562,7 +557,7 @@ each_fakegem_install() {
 		local _extensionsdir="$(ruby_fakegem_gemsdir)/extensions/$(ruby_rbconfig_value 'arch')/$(ruby_rbconfig_value 'ruby_version')/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}"
 
 		for extension in ${RUBY_FAKEGEM_EXTENSIONS[@]} ; do
-			emake V=1 sitearchdir="${ED}/${_extensionsdir}" -C ${extension%/*} install
+			emake V=1 sitearchdir="${ED}${_extensionsdir}" -C ${extension%/*} install
 		done
 
 		# Add the marker to indicate that the extensions are installed

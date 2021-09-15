@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/786855
+
+From 4ec818f0d337a54ff3d4ff587bbd6f5f05363700 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 4 Aug 2021 23:14:21 +0100
+Subject: [PATCH] Add missing include
+
+---
+ lib/include/srslte/adt/observer.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/include/srslte/adt/observer.h b/lib/include/srslte/adt/observer.h
+index 38a881d..9ad33a0 100644
+--- a/lib/include/srslte/adt/observer.h
++++ b/lib/include/srslte/adt/observer.h
+@@ -26,6 +26,7 @@
+ #include <functional>
+ #include <limits>
+ #include <vector>
++#include <cstddef>
+ 
+ namespace srslte {
+ 
+-- 
+2.32.0
+

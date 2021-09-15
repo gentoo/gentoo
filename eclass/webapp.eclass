@@ -4,10 +4,21 @@
 # @ECLASS: webapp.eclass
 # @MAINTAINER:
 # web-apps@gentoo.org
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: functions for installing applications to run under a web server
 # @DESCRIPTION:
 # The webapp eclass contains functions to handle web applications with
 # webapp-config. Part of the implementation of GLEP #11
+
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+EXPORT_FUNCTIONS pkg_postinst pkg_setup src_install pkg_prerm
+
+if [[ -z ${_WEBAPP_ECLASS} ]]; then
+_WEBAPP_ECLASS=1
 
 # @ECLASS-VARIABLE: WEBAPP_DEPEND
 # @DESCRIPTION:
@@ -34,8 +45,6 @@ if [[ "${WEBAPP_OPTIONAL}" != "yes" ]]; then
 	DEPEND="${WEBAPP_DEPEND}"
 	RDEPEND="${DEPEND}"
 fi
-
-EXPORT_FUNCTIONS pkg_postinst pkg_setup src_install pkg_prerm
 
 INSTALL_DIR="/${PN}"
 IS_UPGRADE=0
@@ -577,3 +586,5 @@ webapp_pkg_prerm() {
 		echo
 	fi
 }
+
+fi

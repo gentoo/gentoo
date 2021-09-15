@@ -3,3 +3,9 @@
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
+
+# Michał Górny <mgorny@gentoo.org> (2021-05-04)
+# Python 3.10 is not yet stable (and will not be until it's out of beta,
+# around September.
+python_single_target_python3_10
+python_targets_python3_10

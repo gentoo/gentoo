@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ IUSE="nls unicode X"
 DEPEND="
 	dev-libs/libnl:3
 	sys-apps/pciutils
-	sys-libs/ncurses:=[unicode?]
+	sys-libs/ncurses:=[unicode(+)?]
 "
 
 BDEPEND="
@@ -99,9 +99,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	# Bug 599114
-	sed -i '1s|^|AX_REQUIRE_DEFINED([AX_CXX_COMPILE_STDCXX])|' configure.ac || die
 
 	eautoreconf
 }

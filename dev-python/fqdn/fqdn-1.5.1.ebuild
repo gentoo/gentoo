@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 
 inherit distutils-r1
 
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/cached-property[${PYTHON_USEDEP}]
-	' python3_7 pypy3)"
+	' pypy3)"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs

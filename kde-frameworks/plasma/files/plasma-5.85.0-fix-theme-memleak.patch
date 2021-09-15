@@ -1,0 +1,86 @@
+From 14b495f933dadace7832fa6cbc809c3abdb7c682 Mon Sep 17 00:00:00 2001
+From: Matt Whitlock <kde@mattwhitlock.name>
+Date: Mon, 28 Jun 2021 18:01:14 -0400
+Subject: [PATCH] don't make duplicate connections to
+ ThemePrivate::onAppExitCleanup
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Plasma::Theme::Theme(…) and Plasma::Theme::setThemeName(…) were
+unconditionally connecting the QCoreApplication::aboutToQuit signal to
+the ThemePrivate::onAppExitCleanup slot, even though the ThemePrivate
+instances are cached and shared across multiple Theme instances. In
+long-running applications that make heavy use of the Svg class (such as
+plasmashell), a single ThemePrivate instance can be reused by huge
+numbers of Theme instances. If the reference count of that ThemePrivate
+instance never reaches zero, then the connections just keep piling up,
+contributing to excessive memory usage. This commit moves the relevant
+connect(…) call so that it only happens in the case that a new
+ThemePrivate instance is constructed. Thus, there will only ever be one
+connection from QCoreApplication::aboutToQuit to
+ThemePrivate::onAppExitCleanup per instance of ThemePrivate.
+---
+ src/plasma/theme.cpp | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/src/plasma/theme.cpp b/src/plasma/theme.cpp
+index fabf98f4e..f403d393b 100644
+--- a/src/plasma/theme.cpp
++++ b/src/plasma/theme.cpp
+@@ -39,13 +39,13 @@ Theme::Theme(QObject *parent)
+     if (!ThemePrivate::globalTheme) {
+         ThemePrivate::globalTheme = new ThemePrivate;
+         ThemePrivate::globalTheme->settingsChanged(false);
++        if (QCoreApplication::instance()) {
++            connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, ThemePrivate::globalTheme, &ThemePrivate::onAppExitCleanup);
++        }
+     }
+     ThemePrivate::globalTheme->ref.ref();
+     d = ThemePrivate::globalTheme;
+ 
+-    if (QCoreApplication::instance()) {
+-        connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, d, &ThemePrivate::onAppExitCleanup);
+-    }
+     connect(d, &ThemePrivate::themeChanged, this, &Theme::themeChanged);
+     connect(d, &ThemePrivate::defaultFontChanged, this, &Theme::defaultFontChanged);
+     connect(d, &ThemePrivate::smallestFontChanged, this, &Theme::smallestFontChanged);
+@@ -57,6 +57,9 @@ Theme::Theme(const QString &themeName, QObject *parent)
+     auto &priv = ThemePrivate::themes[themeName];
+     if (!priv) {
+         priv = new ThemePrivate;
++        if (QCoreApplication::instance()) {
++            connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, priv, &ThemePrivate::onAppExitCleanup);
++        }
+     }
+ 
+     priv->ref.ref();
+@@ -68,9 +71,6 @@ Theme::Theme(const QString &themeName, QObject *parent)
+     d->setThemeName(themeName, false, false);
+     d->cacheTheme = useCache;
+     d->fixedName = true;
+-    if (QCoreApplication::instance()) {
+-        connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, d, &ThemePrivate::onAppExitCleanup);
+-    }
+     connect(d, &ThemePrivate::themeChanged, this, &Theme::themeChanged);
+ }
+ 
+@@ -105,12 +105,12 @@ void Theme::setThemeName(const QString &themeName)
+         auto &priv = ThemePrivate::themes[themeName];
+         if (!priv) {
+             priv = new ThemePrivate;
++            if (QCoreApplication::instance()) {
++                connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, priv, &ThemePrivate::onAppExitCleanup);
++            }
+         }
+         priv->ref.ref();
+         d = priv;
+-        if (QCoreApplication::instance()) {
+-            connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, d, &ThemePrivate::onAppExitCleanup);
+-        }
+         connect(d, &ThemePrivate::themeChanged, this, &Theme::themeChanged);
+     }
+ 
+-- 
+GitLab
+

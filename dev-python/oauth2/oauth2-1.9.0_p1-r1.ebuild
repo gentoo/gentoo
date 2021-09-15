@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -31,9 +31,10 @@ PATCHES=(
 
 distutils_enable_tests pytest
 
-python_test() {
-	# Skip tests which require network access
-	py.test -k "not (test_access_token_post or test_access_token_get \
-		or test_two_legged_post or test_two_legged_get)" || die \
-		"tests failed with ${EPYTHON}"
-}
+EPYTEST_DESELECT=(
+	# These tests require network access
+	tests/test_oauth.py::TestClient::test_access_token_get
+	tests/test_oauth.py::TestClient::test_access_token_post
+	tests/test_oauth.py::TestClient::test_two_legged_get
+	tests/test_oauth.py::TestClient::test_two_legged_post
+)

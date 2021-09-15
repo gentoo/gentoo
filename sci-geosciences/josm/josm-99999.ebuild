@@ -45,6 +45,6 @@ src_install() {
 	java-pkg_newjar "dist/${PN}-custom-optimized.jar" "${PN}.jar" || die "java-pkg_newjar failed"
 	java-pkg_dolauncher "${PN}" --jar "${PN}.jar" || die "java-pkg_dolauncher failed"
 
-	newicon images/logo.png josm.png || die "newicon failed"
+	newicon images/logo.svg josm.svg || die "newicon failed"
 	make_desktop_entry "${PN}" "Java OpenStreetMap Editor" josm "Utility;Science;Geoscience"
 }

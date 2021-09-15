@@ -21,8 +21,8 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	x11-libs/xtrans"
 
-pkg_setup() {
-	XORG_CONFIGURE_OPTIONS=(
+src_configure() {
+	local XORG_CONFIGURE_OPTIONS=(
 		$(use_enable ipv6)
 		$(use_enable doc devel-docs)
 		$(use_with doc xmlto)
@@ -30,4 +30,5 @@ pkg_setup() {
 		$(use_enable truetype freetype)
 		--without-fop
 	)
+	xorg-3_src_configure
 }

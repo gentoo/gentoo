@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # QA check: ensure that gtk-doc files are installed in /usr/share/gtk-doc
@@ -14,8 +14,8 @@ gtk_doc_path_check() {
 
 	if [[ ${found[@]} ]]; then
 		eqawarn
-		eqawarn "This package seems to install gtk-doc documentation into the following"
-		eqawarn "location(s):"
+		eqawarn "QA Notice: This package seems to install gtk-doc documentation into the"
+		eqawarn "following location(s):"
 		eqawarn
 		eqatag -v gtk-doc-paths.invalid-path "${found[@]#${D%/}}"
 		eqawarn

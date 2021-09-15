@@ -1,0 +1,32 @@
+From 86a38621fbbf96edf489a0efd2b9c24c123e2051 Mon Sep 17 00:00:00 2001
+From: Dmitry Kazakov <dimula73@gmail.com>
+Date: Tue, 3 Aug 2021 11:57:33 +0300
+Subject: [PATCH] Disable finalizing of the PyQt to prevent crash on exit
+
+CCBUG:417465
+---
+ plugins/extensions/pykrita/plugin/plugin.cpp | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/plugins/extensions/pykrita/plugin/plugin.cpp b/plugins/extensions/pykrita/plugin/plugin.cpp
+index 028798e2f4..cc06c07fbe 100644
+--- a/plugins/extensions/pykrita/plugin/plugin.cpp
++++ b/plugins/extensions/pykrita/plugin/plugin.cpp
+@@ -89,11 +89,10 @@ KritaPyQtPlugin::KritaPyQtPlugin(QObject *parent, const QVariantList &)
+ 
+ KritaPyQtPlugin::~KritaPyQtPlugin()
+ {
+-    // XXX: With Qt 5.14, this crashes Krita on exit. See https://bugs.kde.org/show_bug.cgi?id=417465
+-    //      So, for now, we just don't call finalize...
+-#if QT_VERSION < QT_VERSION_CHECK(5,14,0)
+-    PyKrita::finalize();
+-#endif
++    /// XXX: Don't call PyKrita::finalize here, because that can result in a crash
++    ///      deep inside Qt. See https://bugs.kde.org/show_bug.cgi?id=417465
++
++    // PyKrita::finalize();
+ }
+ 
+ #include "plugin.moc"
+-- 
+GitLab

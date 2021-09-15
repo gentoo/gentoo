@@ -10,9 +10,8 @@ frommacbinary.c:58: warning: too few arguments for format
 Upstream: https://sourceforge.net/tracker/?func=detail&aid=2875547&group_id=39411&atid=425133
 Author: Peter Volkov <pva@gentoo.org>
 
-=== modified file 'fondu.c'
---- fondu.c	2009-10-09 07:24:15 +0000
-+++ fondu.c	2009-10-09 07:25:49 +0000
+--- a/fondu.c
++++ b/fondu.c
 @@ -473,7 +473,7 @@
  	}
  	if ( styleoff!=0 ) {
@@ -55,9 +54,8 @@ Author: Peter Volkov <pva@gentoo.org>
  		pt += strings[ 0 ][0];
  		if ( format!=0 && format!=-1 )
 
-=== modified file 'frommacbinary.c'
---- frommacbinary.c	2009-10-09 07:24:15 +0000
-+++ frommacbinary.c	2009-10-09 07:27:54 +0000
+--- a/frommacbinary.c
++++ b/frommacbinary.c
 @@ -55,7 +55,7 @@
  /* frombin filenames */
  

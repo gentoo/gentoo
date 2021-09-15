@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -16,10 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-python/inflect[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
+RDEPEND="
+	dev-python/inflect[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]"
 
-python_test() {
-	esetup.py test || die "tests failed with ${EPYTHON}"
-}
+distutils_enable_tests setup.py

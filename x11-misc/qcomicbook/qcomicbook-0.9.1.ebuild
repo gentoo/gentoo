@@ -6,7 +6,7 @@ EAPI=7
 MY_PN="QComicBook"
 CMAKE_IN_SOURCE_BUILD=1
 PLOCALES="cs_CZ de_DE es_ES fi_FI fr_CA fr_FR it_IT ko_KR nl_NL pl_PL pt_BR ru_RU uk_UA zh_CN"
-inherit cmake flag-o-matic l10n xdg
+inherit cmake flag-o-matic plocale xdg
 
 DESCRIPTION="Viewer for comic book archives containing jpeg/png images"
 HOMEPAGE="https://github.com/stolowski/QComicBook"
@@ -36,8 +36,8 @@ src_prepare() {
 		rm "i18n/${PN}_${1}.ts" || die "removing ${1} locale failed"
 	}
 	rm "i18n/${PN}_en_EN.ts" || die 'removing redundant english locale failed'
-	l10n_find_plocales_changes "i18n" "${PN}_" ".ts"
-	l10n_for_each_disabled_locale_do rm_loc
+	plocale_find_changes "i18n" "${PN}_" ".ts"
+	plocale_for_each_disabled_locale rm_loc
 
 	# fix desktop file
 	sed -e '/^Encoding/d' \

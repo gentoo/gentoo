@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit python-single-r1
 
@@ -19,7 +19,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=x11-libs/gtk+-3.20:3
 	>=xfce-base/thunar-1.7.0
 	$(python_gen_cond_dep '
-		>=dev-python/pygobject-3.20:3[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygobject-3.20:3[${PYTHON_USEDEP}]
 	')"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

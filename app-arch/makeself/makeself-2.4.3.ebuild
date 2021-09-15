@@ -6,13 +6,13 @@ EAPI=7
 inherit optfeature
 
 DESCRIPTION="Shell script that generates a self-extractible tar.gz"
-HOMEPAGE="http://www.megastep.org/makeself/"
+HOMEPAGE="https://makeself.io/"
 SRC_URI="https://github.com/megastep/makeself/archive/refs/tags/release-${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-release-${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~hppa ppc x86 ~amd64-linux ~x86-linux"
 
 src_prepare() {
 	default

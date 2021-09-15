@@ -17,6 +17,24 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (2021-08-27)
+# media-libs/webrtc-audio-processing only has amd64 and x86 keywords
+media-video/pipewire -echo-cancel
+
+# James Le Cuirot <chewi@gentoo.org> (2021-08-07)
+# The ORBlite scanner plugin only works on amd64 and x86.
+net-print/hplip-plugin -orblite
+
+# Sam James <sam@gentoo.org> (2021-07-12)
+# Haskell is (only) available on amd64/x86 right now in Gentoo
+# bug #801649
+dev-util/diffoscope -haskell
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
+# gui-libs/egl-wayland with nvidia-drivers is supported on this arch.
+x11-base/xwayland -video_cards_nvidia
+x11-wm/mutter -video_cards_nvidia
+
 # Mike Gilbert <floppym@gentoo.org> (2021-03-29)
 # Unmask TPM on supported archs.
 sys-apps/systemd -tpm
@@ -43,7 +61,7 @@ net-misc/asterisk -blocks
 sys-libs/compiler-rt-sanitizers -asan -dfsan -lsan -msan -hwasan -tsan
 sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 sys-libs/compiler-rt-sanitizers -gwp-asan
-sys-libs/compiler-rt-sanitizers -libfuzzer -memprof -profile -xray
+sys-libs/compiler-rt-sanitizers -libfuzzer -memprof -orc -profile -xray
 
 # Sam James <sam@gentoo.org> (2020-10-24)
 # asm redc is only available on amd64,
@@ -109,6 +127,8 @@ dev-libs/glib -sysprof
 gnome-extra/cjs -sysprof
 x11-libs/gtk+ -sysprof
 net-libs/libsoup -sysprof
+x11-libs/pango -sysprof
+gui-libs/gtk -sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan is available on amd64.
@@ -148,6 +168,7 @@ mail-client/claws-mail -litehtml
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-22)
 # openjfx is keyworded on amd64
+dev-java/openjdk:8 -javafx
 dev-java/openjdk:11 -javafx
 
 # Matt Turner <mattst88@gentoo.org> (2019-06-20)

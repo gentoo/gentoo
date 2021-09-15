@@ -1,7 +1,8 @@
-diff -Nur qrupdate-1.1.1.orig/Makefile qrupdate-1.1.1/Makefile
---- qrupdate-1.1.1.orig/Makefile	2009-02-06 09:12:00.000000000 +0000
-+++ qrupdate-1.1.1/Makefile	2010-05-13 17:27:15.000000000 +0100
-@@ -32,22 +32,22 @@
+diff --git a/Makefile b/Makefile
+index f9dbe86..2b11b59 100644
+--- a/Makefile
++++ b/Makefile
+@@ -32,22 +32,22 @@ help:
  	@echo "   make install - installs everything"
  
  lib:
@@ -32,10 +33,11 @@ diff -Nur qrupdate-1.1.1.orig/Makefile qrupdate-1.1.1/Makefile
  install-staticlib:
 -	make -C src/ install-staticlib
 +	$(MAKE) -C src install-staticlib
-diff -Nur qrupdate-1.1.1.orig/src/Makefile qrupdate-1.1.1/src/Makefile
---- qrupdate-1.1.1.orig/src/Makefile	2010-01-19 11:32:35.000000000 +0000
-+++ qrupdate-1.1.1/src/Makefile	2010-05-13 17:28:30.000000000 +0100
-@@ -34,6 +34,8 @@
+diff --git a/src/Makefile b/src/Makefile
+index 65ef49a..c338882 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -34,6 +34,8 @@ clup1up.f dlup1up.f slup1up.f zlup1up.f
  
  OBJS = $(SRC:%.f=%.o)
  
@@ -44,7 +46,7 @@ diff -Nur qrupdate-1.1.1.orig/src/Makefile qrupdate-1.1.1/src/Makefile
  lib: ../libqrupdate.a
  
  ifeq ($(shell uname),Darwin)
-@@ -46,19 +48,22 @@
+@@ -46,19 +48,22 @@ solib: ../libqrupdate$(SOEXT)
  ../libqrupdate.a: $(OBJS)
  	ar -cr $@ $(OBJS)
  
@@ -73,10 +75,11 @@ diff -Nur qrupdate-1.1.1.orig/src/Makefile qrupdate-1.1.1/src/Makefile
  
  install: install-shlib install-staticlib
  
-diff -Nur qrupdate-1.1.1.orig/test/Makefile qrupdate-1.1.1/test/Makefile
---- qrupdate-1.1.1.orig/test/Makefile	2010-02-11 08:25:37.000000000 +0000
-+++ qrupdate-1.1.1/test/Makefile	2010-05-13 17:15:51.000000000 +0100
-@@ -41,7 +41,7 @@
+diff --git a/test/Makefile b/test/Makefile
+index 45a843d..3be917f 100644
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -41,7 +41,7 @@ utils.o: utils.f
  	$(FC) $(FFLAGS) -c $<
  
  ../libqrupdate.a:

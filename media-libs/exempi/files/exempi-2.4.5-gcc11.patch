@@ -1,0 +1,11 @@
+--- a/XMPFiles/source/FormatSupport/P2_Support.hpp
++++ b/XMPFiles/source/FormatSupport/P2_Support.hpp
+@@ -79,7 +79,7 @@
+ }; // class P2_Clip
+ struct P2SpannedClip_Order
+ {
+-	bool operator()( P2_Clip* lhs,  P2_Clip* rhs)   
++	bool operator()( P2_Clip* lhs,  P2_Clip* rhs) const
+ 	{  
+ 		return lhs->GetOffsetInShot() < rhs->GetOffsetInShot();
+ 	}

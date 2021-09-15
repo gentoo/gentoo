@@ -1,0 +1,16 @@
+Fix mouse-key input with ncurses6 in terminals without basic X10 mouse
+support, at the cost of breaking it with ncurses5. See discussion in
+https://midnight-commander.org/ticket/4144 .
+
+--- a/lib/tty/key.c
++++ b/lib/tty/key.c
+@@ -2124,8 +2124,7 @@
+         gboolean extended = c == MCKEY_EXTENDED_MOUSE;
+ 
+ #ifdef KEY_MOUSE
+-        extended = extended || (c == KEY_MOUSE && xmouse_seq == NULL
+-                                && xmouse_extended_seq != NULL);
++        extended = extended || (c == KEY_MOUSE && xmouse_extended_seq != NULL);
+ #endif /* KEY_MOUSE */
+ 
+         xmouse_get_event (event, extended);

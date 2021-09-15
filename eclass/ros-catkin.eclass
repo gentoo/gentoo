@@ -6,18 +6,16 @@
 # ros@gentoo.org
 # @AUTHOR:
 # Alexis Ballier <aballier@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 7
+# @PROVIDES: cmake python-single-r1
 # @BLURB: Template eclass for catkin based ROS packages.
 # @DESCRIPTION:
 # Provides function for building ROS packages on Gentoo.
 # It supports selectively building messages, single-python installation, live ebuilds (git only).
 
 case "${EAPI:-0}" in
-	0|1|2|3|4|5|6)
-		die "EAPI='${EAPI}' is not supported"
-		;;
-	*)
-		;;
+	7) ;;
+	*) die "EAPI='${EAPI}' is not supported" ;;
 esac
 
 # @ECLASS-VARIABLE: ROS_REPO_URI
@@ -46,7 +44,7 @@ fi
 # ROS only really works with one global python version and the target
 # version depends on the release. Noetic targets 3.7 and 3.8.
 # py3.9 or later are ok to add there as long as dev-ros/* have their deps satisfied.
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit ${SCM} python-single-r1 cmake flag-o-matic
 

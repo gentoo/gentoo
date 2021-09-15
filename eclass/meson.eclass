@@ -1,11 +1,11 @@
-# Copyright 2017-2020 Gentoo Authors
+# Copyright 2017-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: meson.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
 # Mike Gilbert <floppym@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: common ebuild functions for meson-based packages
 # @DESCRIPTION:
 # This eclass contains the default phase functions for packages which
@@ -15,7 +15,7 @@
 # Typical ebuild using meson.eclass:
 #
 # @CODE
-# EAPI=6
+# EAPI=8
 #
 # inherit meson
 #
@@ -23,7 +23,7 @@
 #
 # src_configure() {
 # 	local emesonargs=(
-# 		$(meson_use qt4)
+# 		$(meson_use qt5)
 # 		$(meson_feature threads)
 # 		$(meson_use bindist official_branding)
 # 	)
@@ -34,35 +34,28 @@
 #
 # @CODE
 
-case ${EAPI:-0} in
-	6|7) ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-if [[ -z ${_MESON_ECLASS} ]]; then
-
-inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
-
-if [[ ${EAPI} == 6 ]]; then
-	inherit eapi7-ver
-fi
-
-fi
-
-EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 
 if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
-MESON_DEPEND=">=dev-util/meson-0.54.0
+[[ ${EAPI} == 6 ]] && inherit eapi7-ver
+inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
+
+EXPORT_FUNCTIONS src_configure src_compile src_test src_install
+
+_MESON_DEPEND=">=dev-util/meson-0.57.0
 	>=dev-util/ninja-1.8.2
 	dev-util/meson-format-array
 "
 
-if [[ ${EAPI:-0} == [6] ]]; then
-	DEPEND=${MESON_DEPEND}
+if [[ ${EAPI} == 6 ]]; then
+	DEPEND=${_MESON_DEPEND}
 else
-	BDEPEND=${MESON_DEPEND}
+	BDEPEND=${_MESON_DEPEND}
 fi
 
 # @ECLASS-VARIABLE: BUILD_DIR
@@ -83,12 +76,6 @@ fi
 # @DESCRIPTION:
 # Optional meson arguments as Bash array; this should be defined before
 # calling meson_src_configure.
-
-# @VARIABLE: emesontestargs
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Optional meson test arguments as Bash array; this should be defined before
-# calling meson_src_test.
 
 # @VARIABLE: MYMESONARGS
 # @DEFAULT_UNSET
@@ -142,6 +129,11 @@ _meson_get_machine_info() {
 	case ${cpu_family} in
 		amd64) cpu_family=x86_64 ;;
 		arm64) cpu_family=aarch64 ;;
+		riscv)
+			case ${tuple} in
+				riscv32*) cpu_family=riscv32 ;;
+				riscv64*) cpu_family=riscv64 ;;
+			esac ;;
 	esac
 
 	# This may require adjustment based on CFLAGS
@@ -175,7 +167,7 @@ _meson_create_cross_file() {
 	strip = $(_meson_env_array "$(tc-getSTRIP)")
 	windres = $(_meson_env_array "$(tc-getRC)")
 
-	[properties]
+	[built-in options]
 	c_args = $(_meson_env_array "${CFLAGS} ${CPPFLAGS}")
 	c_link_args = $(_meson_env_array "${CFLAGS} ${LDFLAGS}")
 	cpp_args = $(_meson_env_array "${CXXFLAGS} ${CPPFLAGS}")
@@ -186,6 +178,8 @@ _meson_create_cross_file() {
 	objc_link_args = $(_meson_env_array "${OBJCFLAGS} ${LDFLAGS}")
 	objcpp_args = $(_meson_env_array "${OBJCXXFLAGS} ${CPPFLAGS}")
 	objcpp_link_args = $(_meson_env_array "${OBJCXXFLAGS} ${LDFLAGS}")
+
+	[properties]
 	needs_exe_wrapper = true
 	sys_root = '${SYSROOT}'
 	pkg_config_libdir = '${PKG_CONFIG_LIBDIR:-${EPREFIX}/usr/$(get_libdir)/pkgconfig}'
@@ -227,7 +221,7 @@ _meson_create_native_file() {
 	strip = $(_meson_env_array "$(tc-getBUILD_STRIP)")
 	windres = $(_meson_env_array "$(tc-getBUILD_PROG RC windres)")
 
-	[properties]
+	[built-in options]
 	c_args = $(_meson_env_array "${BUILD_CFLAGS} ${BUILD_CPPFLAGS}")
 	c_link_args = $(_meson_env_array "${BUILD_CFLAGS} ${BUILD_LDFLAGS}")
 	cpp_args = $(_meson_env_array "${BUILD_CXXFLAGS} ${BUILD_CPPFLAGS}")
@@ -238,6 +232,8 @@ _meson_create_native_file() {
 	objc_link_args = $(_meson_env_array "${BUILD_OBJCFLAGS} ${BUILD_LDFLAGS}")
 	objcpp_args = $(_meson_env_array "${BUILD_OBJCXXFLAGS} ${BUILD_CPPFLAGS}")
 	objcpp_link_args = $(_meson_env_array "${BUILD_OBJCXXFLAGS} ${BUILD_LDFLAGS}")
+
+	[properties]
 	needs_exe_wrapper = false
 	pkg_config_libdir = '${BUILD_PKG_CONFIG_LIBDIR:-${EPREFIX}/usr/$(get_libdir)/pkgconfig}'
 
@@ -377,7 +373,17 @@ meson_src_configure() {
 meson_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	eninja -C "${BUILD_DIR}" "$@"
+	local mesoncompileargs=(
+		-C "${BUILD_DIR}"
+		--jobs "$(makeopts_jobs "${MAKEOPTS}" 0)"
+		--load-average "$(makeopts_loadavg "${MAKEOPTS}" 0)"
+		--verbose
+		"$@"
+	)
+
+	set -- meson compile "${mesoncompileargs[@]}"
+	echo "$@" >&2
+	"$@" || die "compile failed"
 }
 
 # @FUNCTION: meson_src_test
@@ -389,28 +395,41 @@ meson_src_test() {
 
 	local mesontestargs=(
 		-C "${BUILD_DIR}"
+		--num-processes "$(makeopts_jobs "${MAKEOPTS}")"
+		"$@"
 	)
-	[[ -n ${NINJAOPTS} || -n ${MAKEOPTS} ]] &&
-		mesontestargs+=(
-			--num-processes "$(makeopts_jobs ${NINJAOPTS:-${MAKEOPTS}})"
-		)
 
-	# Append additional arguments from ebuild
-	mesontestargs+=("${emesontestargs[@]}")
-
-	set -- meson test "${mesontestargs[@]}" "$@"
+	set -- meson test "${mesontestargs[@]}"
 	echo "$@" >&2
 	"$@" || die "tests failed"
 }
 
+# @FUNCTION: meson_install
+# @USAGE: [extra meson install arguments]
+# @DESCRIPTION:
+# Calls meson install with suitable arguments
+meson_install() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	local mesoninstallargs=(
+		-C "${BUILD_DIR}"
+		--destdir "${D}"
+		"$@"
+	)
+
+	set -- meson install "${mesoninstallargs[@]}"
+	echo "$@" >&2
+	"$@" || die "install failed"
+}
+
 # @FUNCTION: meson_src_install
-# @USAGE: [extra ninja install arguments]
+# @USAGE: [extra meson install arguments]
 # @DESCRIPTION:
 # This is the meson_src_install function.
 meson_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	DESTDIR="${D}" eninja -C "${BUILD_DIR}" install "$@"
+	meson_install "$@"
 	einstalldocs
 }
 

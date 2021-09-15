@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib cmake
+inherit cmake
 
 DESCRIPTION="A library to decode Bluetooth baseband packets"
 HOMEPAGE="http://libbtbb.sourceforge.net/"

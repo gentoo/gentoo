@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>tamiko@gentoo.org</email>
@@ -21,8 +21,6 @@
 	this for all the file formats it supports -- Ogg Vorbis, FLAC, MP3, 
 	Musepack, and MOD.</longdescription>
 	<upstream>
-		<remote-id type="google-code">quodlibet</remote-id>
 		<remote-id type="github">quodlibet/quodlibet</remote-id>
-		<remote-id type="bitbucket">lazka/quodlibet-files</remote-id>
 	</upstream>
 </pkgmetadata>

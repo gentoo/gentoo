@@ -1,0 +1,42 @@
+From f1b416400479d861deffb4c5a40422dcdf190e85 Mon Sep 17 00:00:00 2001
+From: Martin Pitt <martin@piware.de>
+Date: Fri, 23 Oct 2020 14:58:50 +0200
+Subject: [PATCH] =?UTF-8?q?preload:=20Declare=20=5F=5Fxstat*()=20prototype?=
+ =?UTF-8?q?s=20for=20glibc=20=E2=89=A5=202.32.9000?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Recent glibc deprecated/dropped the `__xstat*()` family from the header
+files, so the build started to fail on "no previous prototype". However,
+umockdev still needs needs to keep the wrappers to run programs that got
+built against an earlier glibc.
+
+Thus declare the prototype explicitly. It should still fail to build if
+glibc defines it differently.
+
+Fixes #108
+---
+ src/libumockdev-preload.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/libumockdev-preload.c b/src/libumockdev-preload.c
+index 9328dc1..9bbec62 100644
+--- a/src/libumockdev-preload.c
++++ b/src/libumockdev-preload.c
+@@ -1215,8 +1215,11 @@ int prefix ## stat ## suffix (const char *path, struct stat ## suffix *st) \
+ 
+ /* wrapper template for __xstat family; note that we abuse the sticky bit in
+  * the emulated /dev to indicate a block device (the sticky bit has no
+- * real functionality for device nodes) */
++ * real functionality for device nodes)
++ * This family got deprecated/dropped in glibc 2.32.9000, but we still need
++ * to keep it for a while for programs that were built against previous versions */
+ #define WRAP_VERSTAT(prefix, suffix) \
++int prefix ## stat ## suffix (int ver, const char *path, struct stat ## suffix *st); \
+ int prefix ## stat ## suffix (int ver, const char *path, struct stat ## suffix *st) \
+ { \
+     const char *p;								\
+-- 
+2.31.1
+

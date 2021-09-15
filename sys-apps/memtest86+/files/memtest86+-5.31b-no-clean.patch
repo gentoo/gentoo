@@ -1,0 +1,19 @@
+http://forum.canardpc.com/threads/110954-PATCH-fix-parallel-build-issues
+
+
+don't run the clean target when building all as we run into parallel races:
+ - memtest kicks off building of a bunch of .o files
+ - clean runs in parallel which runs `rm` and deletes some of the new .o
+ - memtest goes to link and fails because objects are missing
+
+--- a/Makefile
++++ b/Makefile
+@@ -22,7 +22,7 @@
+ 
+ SELF_TEST_OBJS = test.o self_test.o cpuid.o random.o
+ 
+-all: clean memtest.bin memtest
++all: memtest.bin memtest
+ 
+ run_self_test : self_test
+ 	./self_test && touch run_self_test

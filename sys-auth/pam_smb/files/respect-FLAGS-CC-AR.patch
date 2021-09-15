@@ -1,0 +1,132 @@
+https://bugs.gentoo.org/341087
+https://bugs.gentoo.org/728146
+https://bugs.gentoo.org/725736
+
+From: Sam James <sam@gentoo.org>
+Date: Wed, 30 Jun 2021 07:54:21 +0100
+Subject: [PATCH] Respect *FLAGS, CC, AR
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -12,7 +12,7 @@ EXTRALIBS = @MLIBS@
+ LDFLAGS = @LDFLAGS@
+ CC = @CC@
+ 
+-SHELL=/bin/sh
++SHELL?=/bin/sh
+ 
+ INSTALL= @INSTALL@
+ 
+@@ -49,7 +49,7 @@ LIBOBJS = $(addprefix static/,$(LIBOBJ))
+ export CFLAGS CC SHLIB_LD SHLIB_CFLAGS SHLIB_SUFFIX DOBJS MOBJS MSRCS INSTALL INSTALLDIR MLIBS DLIBS EXTRALIBS
+ 
+ %.o : %.c
+-	$(CC) $(CFLAGS) $(DYNAMIC) $(CPPFLAGS) -c $< -o $@
++	$(CC) $(CFLAGS) $(DYNAMIC) $(CPPFLAGS) $(LDFLAGS) -c $< -o $@
+ 
+ 
+ ########################### don't edit below #######################
+@@ -80,4 +80,4 @@ distclean: clean
+ 	rm -f *.a *.out *.o *.so *.bak config.log config.cache config.status config.h Makefile include/config.h
+ 
+ .c.o:	
+-	$(CC) -c $(CFLAGS) $<
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $<
+--- a/pamsmbd/Makefile
++++ b/pamsmbd/Makefile
+@@ -8,7 +8,7 @@ CFLAGS += ${INCLUDE}
+ TARGET = pamsmbd
+ 
+ ${TARGET}: ${OBJS} ../smbval/smbvalid.a ../tdb/tdb.o ../tdb/spinlock.o
+-	$(CC) -g -o ${TARGET} ${INCLUDE} ${OBJS} ../tdb/tdb.o ../tdb/spinlock.o ../smbval/smbvalid.a $(DLIBS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o ${TARGET} ${INCLUDE} ${OBJS} ../tdb/tdb.o ../tdb/spinlock.o ../smbval/smbvalid.a $(DLIBS)
+ 
+ clean:
+ 	rm -f ${TARGET} ${OBJS}
+--- a/pamsmbd/Makefile.crypt
++++ b/pamsmbd/Makefile.crypt
+@@ -8,7 +8,7 @@ CFLAGS += ${INCLUDE}  -Wall
+ TARGET = pamsmbd
+ 
+ ${TARGET}: ${OBJS} ../smbval/smbvalid.a ../tdb/tdb.o
+-	$(CC) -DCRYPT -g -o ${TARGET} ${INCLUDE} ${OBJS} ../tdb/tdb.o ../smbval/smbvalid.a $(DLIBS) -lcrypt
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -DCRYPT -o ${TARGET} ${INCLUDE} ${OBJS} ../tdb/tdb.o ../smbval/smbvalid.a $(DLIBS) -lcrypt
+ 
+ clean:
+ 	rm -f ${TARGET} ${OBJS}
+--- a/pamsmbd/Makefile.md5
++++ b/pamsmbd/Makefile.md5
+@@ -8,7 +8,7 @@ CFLAGS += ${INCLUDE}  -Wall
+ TARGET = pamsmbd
+ 
+ ${TARGET}: ${OBJS} ../smbval/smbvalid.a ../tdb/tdb.o
+-	$(CC) -g -o ${TARGET} ${INCLUDE} ${OBJS} ../tdb/tdb.o ../smbval/smbvalid.a $(DLIBS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o ${TARGET} ${INCLUDE} ${OBJS} ../tdb/tdb.o ../smbval/smbvalid.a $(DLIBS)
+ 
+ clean:
+ 	rm -f ${TARGET} ${OBJS}
+--- a/pamsmbm/Makefile
++++ b/pamsmbm/Makefile
+@@ -4,7 +4,7 @@
+ #
+ #
+ 
+-CFLAGS = -DHAVE_CONFIG_H -I../include -I..
++CFLAGS += -DHAVE_CONFIG_H -I../include -I..
+ 
+ LIBAUTHSH = pam_smb_auth$(SHLIB_SUFFIX)
+ 
+@@ -16,7 +16,7 @@ LIBSRC = $(LIBAUTHSRC)
+ LIBSHARED = $(LIBAUTHSH) 
+ 
+ %.o : %.c
+-	$(CC) $(CFLAGS) $(SHLIB_CFLAGS) $(DYNAMIC) $(CPPFLAGS) -c $< -o $@
++	$(CC) $(CFLAGS) $(SHLIB_CFLAGS) $(DYNAMIC) $(CPPFLAGS) $(LDFLAGS) -c $< -o $@
+ 
+ 
+ ########################### don't edit below #######################
+@@ -26,7 +26,7 @@ dummy: all
+ all: $(LIBSHARED) Makefile
+ 
+ smb_auth: smb_auth.o
+-	gcc -o smb_auth smb_auth.o queue_valid.o ../smbval/smbvalid.a
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o smb_auth smb_auth.o queue_valid.o ../smbval/smbvalid.a
+ 
+ $(LIBOBJD): $(LIBSRC)
+
+@@ -43,4 +43,4 @@ extraclean: clean
+ 	rm -f *.a *.out *.o *.so
+ 
+ .c.o:	
+-	$(CC) -c $(CFLAGS) $<
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $<
+--- a/smbval/Makefile
++++ b/smbval/Makefile
+@@ -3,7 +3,7 @@
+ # Copyright (c) Dave Airlie 2000 (airlied@samba.org)
+ #
+ 
+-AR = ar
++AR ?= ar
+ 
+ INCLUDES = smblib.h smblib-priv.h
+ 
+@@ -27,7 +27,7 @@ all: smbvalid.a
+ 
+ .c.o:	$(INCLUDES)
+ 	@echo Compiling $*.c
+-	$(CC) -I../include $(CFLAGS) -c $*.c
++	$(CC) -I../include $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -c $*.c
+ 
+ clean:
+ 	rm -f *.o smbvalid.a
+--- a/pamsmbm/Makefile
++++ b/pamsmbm/Makefile
+@@ -31,7 +31,7 @@ smb_auth: smb_auth.o
+ $(LIBOBJD): $(LIBSRC)
+ 
+ $(LIBAUTHSH):	$(LIBAUTHSRC) $(LIBOBJ) 
+-		$(SHLIB_LD) $(LD_FLAGS) -o $@ $(LIBAUTHOBJ) $(EXTRALIBS)
++		$(SHLIB_LD) $(LDFLAGS) $(LD_FLAGS) -o $@ $(LIBAUTHOBJ) $(EXTRALIBS)
+ 
+ clean:
+ 	rm -f $(LIBAUTHSH) $(LIBAUTHOBJ) a.out core *~

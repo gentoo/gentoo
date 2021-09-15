@@ -1,0 +1,49 @@
+diff -ruN src/autocomplete.c src/autocomplete.c
+--- src/autocomplete.c	2021-07-26 10:43:37.453154392 -0400
++++ src/autocomplete.c	2021-07-26 10:59:29.856460938 -0400
+@@ -27,8 +27,11 @@
+ #ifdef __APPLE__
+ #include <sys/types.h>
+ #include <sys/dir.h>
+-#else
++//This include NAME_MAX
++#include <sys/sysinfo.h>
++#elif __linux__
+ #include <dirent.h>
++#include <linux/limits.h>//This includes NAME_MAX
+ #endif /* __APPLE__ */
+ 
+ #include "windows.h"
+diff -ruN src/file_transfers.h src/file_transfers.h
+--- src/file_transfers.h	2021-07-26 10:43:37.456487724 -0400
++++ src/file_transfers.h	2021-07-26 11:41:30.513057111 -0400
+@@ -24,6 +24,12 @@
+ #define FILE_TRANSFERS_H
+ 
+ #include <limits.h>
++//This includes PATH_MAX
++#ifdef __APPLE__
++#include <sys/sysinfo.h>
++#elif __linux__
++#include <linux/limits.h>
++#endif
+ 
+ #include "toxic.h"
+ #include "windows.h"
+diff -ruN src/settings.h src/settings.h
+--- src/settings.h	2021-07-26 10:43:37.459821058 -0400
++++ src/settings.h	2021-07-26 11:45:46.709716594 -0400
+@@ -25,6 +25,13 @@
+ 
+ #include <limits.h>
+ 
++//This includes PATH_MAX
++#ifdef __APPLE__
++#include <sys/sysinfo.h>
++#elif __linux__
++#include <linux/limits.h>
++#endif
++
+ #include <tox/tox.h>
+ 
+ /* Represents line_* hints max strlen */

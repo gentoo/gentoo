@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit git-r3 autotools
+TMPFILES_OPTIONAL="yes"
+inherit autotools git-r3 tmpfiles
 
 DESCRIPTION="PHP eselect module"
 HOMEPAGE="https://gitweb.gentoo.org/proj/eselect-php.git/"
@@ -16,7 +17,8 @@ IUSE="fpm apache2"
 
 # The "DirectoryIndex" line in 70_mod_php.conf requires mod_dir.
 RDEPEND="app-admin/eselect
-	apache2? ( www-servers/apache[apache2_modules_dir] )"
+	apache2? ( www-servers/apache[apache2_modules_dir] )
+	fpm? ( virtual/tmpfiles )"
 
 src_prepare() {
 	default
@@ -35,4 +37,8 @@ src_configure() {
 		  --with-piddir="${EPREFIX}/run" \
 		  $(use_enable apache2) \
 		  $(use_enable fpm)
+}
+
+pkg_postinst() {
+	use fpm && tmpfiles_process php-fpm.conf
 }

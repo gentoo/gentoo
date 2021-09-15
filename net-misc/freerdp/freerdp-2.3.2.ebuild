@@ -15,7 +15,7 @@ else
 	MY_P=${P/_/-}
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://pub.freerdp.com/releases/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 x86"
 fi
 
 DESCRIPTION="Free implementation of the Remote Desktop Protocol"
@@ -23,12 +23,11 @@ HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
-IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg libressl openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
+IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	sys-libs/zlib:0
 	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
@@ -88,6 +87,11 @@ BDEPEND="
 		app-text/xmlto
 	) )
 "
+
+PATCHES=(
+	"${FILESDIR}/freerdp-2-openssl-3.0.patch"
+	"${FILESDIR}/freerdp-2.4.0-TestUnicodeConversion-big-endian.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(

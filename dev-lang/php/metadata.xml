@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>php-bugs@gentoo.org</email>
@@ -10,6 +10,7 @@
     <name>Michael Orlitzky</name>
   </maintainer>
   <use>
+    <flag name="apparmor">Support FPM application confinement through <pkg>sys-libs/libapparmor</pkg></flag>
     <flag name="argon2">Enable password hashing algorithm from <pkg>app-crypt/argon2</pkg></flag>
     <flag name="bcmath">Add support for libbcmath</flag>
     <flag name="cli">Enable CLI SAPI</flag>

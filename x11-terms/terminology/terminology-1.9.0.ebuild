@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit meson python-any-r1 xdg-utils
 
@@ -13,7 +13,7 @@ SRC_URI="https://download.enlightenment.org/rel/apps/terminology/${P}.tar.xz htt
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
 IUSE="extras nls"
 
 RDEPEND="|| ( dev-libs/efl[gles2-only] dev-libs/efl[opengl] )

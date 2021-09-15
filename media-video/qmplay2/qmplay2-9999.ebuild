@@ -124,15 +124,10 @@ src_configure() {
 		-DUSE_MPRIS2=$(usex extensions)
 	)
 
-	# find and link vulkan libs permanently
-	if use vulkan; then
-		mycmakeargs+=( -DQMVK_FIND_VULKAN=true )
-	fi
-
 	if [[ ${PV} == *9999 ]]; then
-		mycmakeargs+=( USE_GIT_VERSION=true )
+		mycmakeargs+=( -DUSE_GIT_VERSION=true )
 	else
-		mycmakeargs+=( USE_GIT_VERSION=false )
+		mycmakeargs+=( -DUSE_GIT_VERSION=false )
 	fi
 
 	cmake_src_configure

@@ -1,0 +1,81 @@
+commit 245245841d3117d81cff1b560b7ac4b1aad1aa78
+Author: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+Date:   Sat Jul 3 19:29:01 2021 +0300
+
+    Patch gst-plugins-bad 1.18.4 to also install opencv integration libs
+    
+    Signed-off-by: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+
+diff --git a/ext/meson.build b/ext/meson.build
+index 2cbddbf82..c70a07bbe 100644
+--- a/ext/meson.build
++++ b/ext/meson.build
+@@ -58,7 +58,6 @@ subdir('ttml')
+ subdir('voaacenc')
+ subdir('voamrwbenc')
+ subdir('vulkan')
+-subdir('wayland')
+ subdir('webrtc')
+ subdir('webrtcdsp')
+ subdir('webp')
+diff --git a/gst-libs/gst/meson.build b/gst-libs/gst/meson.build
+index 6cbed6c6c..d44943189 100644
+--- a/gst-libs/gst/meson.build
++++ b/gst-libs/gst/meson.build
+@@ -1,18 +1 @@
+-subdir('uridownloader')
+-
+-subdir('adaptivedemux')
+-subdir('audio')
+-subdir('basecamerabinsrc')
+-subdir('codecparsers')
+-subdir('codecs')
+-subdir('insertbin')
+-subdir('interfaces')
+-subdir('isoff')
+-subdir('mpegts')
+ subdir('opencv')
+-subdir('player')
+-subdir('sctp')
+-subdir('transcoder')
+-subdir('vulkan')
+-subdir('wayland')
+-subdir('webrtc')
+diff --git a/meson.build b/meson.build
+index e456c32da..cfa265061 100644
+--- a/meson.build
++++ b/meson.build
+@@ -462,13 +462,8 @@ if get_option('default_library') == 'shared'
+ endif
+ 
+ subdir('gst-libs')
+-subdir('gst')
+ subdir('sys')
+ subdir('ext')
+-subdir('tests')
+-subdir('data')
+-subdir('tools')
+-subdir('pkgconfig')
+ 
+ if have_orcc
+   update_orc_dist_files = find_program('scripts/update-orc-dist-files.py')
+@@ -496,7 +491,6 @@ endif
+ # xgettext is optional (on Windows for instance)
+ if find_program('xgettext', required : get_option('nls')).found()
+   cdata.set('ENABLE_NLS', 1)
+-  subdir('po')
+ endif
+ 
+ subdir('scripts')
+diff --git a/sys/meson.build b/sys/meson.build
+index cf39e5770..31d943d4b 100644
+--- a/sys/meson.build
++++ b/sys/meson.build
+@@ -17,7 +17,6 @@ subdir('mediafoundation')
+ subdir('msdk')
+ subdir('nvcodec')
+ subdir('opensles')
+-subdir('shm')
+ subdir('tinyalsa')
+ subdir('uvch264')
+ subdir('v4l2codecs')

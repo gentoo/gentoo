@@ -15,13 +15,13 @@ if [[ "${PV}" = *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/whoozle/android-file-transfer-linux.git"
 else
 	SRC_URI="https://github.com/whoozle/android-file-transfer-linux/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 
-IUSE="fuse libressl python qt5 taglib zune"
+IUSE="fuse python qt5 taglib zune"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -43,8 +43,7 @@ RDEPEND="
 	)
 	taglib? ( media-libs/taglib )
 	zune? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 "
 

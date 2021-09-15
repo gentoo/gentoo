@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake flag-o-matic llvm python-any-r1
 if [[ ${PV} = *9999* ]]; then
@@ -25,7 +25,7 @@ RESTRICT="!doc? ( test )"
 
 BDEPEND="sys-devel/bison
 	sys-devel/flex
-	doc? ( ${PYTHON_DEPS} )
+	${PYTHON_DEPS}
 "
 RDEPEND="app-text/ghostscript-gpl
 	dev-lang/perl
@@ -59,13 +59,14 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.8.16-link_with_pthread.patch"
 	"${FILESDIR}/${PN}-1.8.17-ensure_static_support_libraries.patch"
 	"${FILESDIR}/${PN}-1.9.1-ignore-bad-encoding.patch"
+	"${FILESDIR}/${PN}-1.9.1-header-dep.patch"
 )
 
 DOCS=( LANGUAGE.HOWTO README.md )
 
 pkg_setup() {
 	use clang && llvm_pkg_setup
-	use doc && python-any-r1_pkg_setup
+	python-any-r1_pkg_setup
 }
 
 src_prepare() {

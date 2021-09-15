@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
 		<email>agrigo2001@yahoo.com.au</email>
@@ -26,6 +26,9 @@
 		</flag>
 		<flag restrict="&gt;=media-gfx/openvdb-7.0.0" name="abi7-compat">
 			Disables newer features to maintain compatibility with ABI7.
+		</flag>
+		<flag restrict="&gt;=media-gfx/openvdb-8.0.0" name="abi8-compat">
+			Disables newer features to maintain compatibility with ABI8.
 		</flag>
 		<flag restrict="&gt;=media-gfx/openvdb-7.0.0" name="utils">
 			Build utility binaries

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Visual database applications creator"
-HOMEPAGE="https://apps.kde.org/en/kexi-3.3 http://kexi-project.org/
+HOMEPAGE="https://apps.kde.org/kexi-3.3/ http://kexi-project.org/
 https://userbase.kde.org/Kexi"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
@@ -67,6 +67,8 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-missing-header.patch
 	"${FILESDIR}"/${P}-postgresql-9.12.patch
+	"${FILESDIR}"/${P}-glib-2.68.patch # bug 784974
+	"${FILESDIR}"/${P}-fix-find-marble.patch # bug 812392
 )
 
 src_prepare() {
@@ -83,7 +85,7 @@ src_configure() {
 		-DKEXI_MIGRATEMANAGER_DEBUG=$(usex debug)
 		-DKEXI_AUTORISE_TABBED_TOOLBAR=$(usex experimental)
 		-DKEXI_SCRIPTS_SUPPORT=$(usex experimental)
-		$(cmake_use_find_package marble KexiMarble)
+		$(cmake_use_find_package marble Marble)
 		$(cmake_use_find_package mdb GLIB2)
 		$(cmake_use_find_package mysql MySQL)
 		$(cmake_use_find_package postgres PostgreSQL)

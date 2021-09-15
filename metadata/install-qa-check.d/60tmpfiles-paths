@@ -1,0 +1,64 @@
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# QA check: ensure that packages installing tmpfiles configuration inherit the eclass
+# Maintainer: Sam James <sam@gentoo.org>
+# Maintainer: Georgy Yakovlev <gyakovlev@gentoo.org>
+
+# Implements two checks:
+# 1) Installation to /etc/tmpfiles.d (which is a user-customization location);
+# 2) Installation of any tmpfiles to /usr/lib/tmpfiles.d without inheriting the eclass
+#    (needed for tmpfiles_process in pkg_postinst);
+# 3) Check for installation of tmpfiles without calling tmpfiles_process in
+#    pkg_postinst.
+tmpfiles_check() {
+	# Check 1
+	# Scan image for files in /etc/tmpfiles.d which is a forbidden location
+	# (We use this glob to avoid triggering on keepdir)
+	shopt -s nullglob
+	local files=( "${ED}"/etc/tmpfiles.d/*.conf )
+	shopt -u nullglob
+
+	if [[ ${#files[@]} -gt 0 ]]; then
+		eqawarn "QA Notice: files installed to /etc/tmpfiles.d found"
+		eqawarn "tmpfiles configuration files supplied by ebuilds must be installed to /usr/lib/tmpfiles.d"
+	fi
+
+	# Check 2
+	# We're now going to check for whether we install files to /usr/lib/tmpfiles.d without
+	# inheriting the eclass (weak catch for ebuilds not calling tmpfiles_process in pkg_postinst)
+
+	if [[ -n ${TMPFILES_OPTIONAL} ]] ; then
+		# While imperfect, using ${TMPFILES_OPTIONAL} is good enough to allow opting out
+		# for e.g. sys-apps/portage, sys-apps/systemd, sys-libs/pam, etc. We may want
+		# a better/more standardised way to opt out from QA checks in future.
+		# It's okay for some packages to do this because of circular dependencies and such
+		# See: https://archives.gentoo.org/gentoo-dev/message/0a96793036a4fdd9ac311a46950d7e7b
+		return
+	fi
+
+	if [[ -d "${ED}"/usr/lib/tmpfiles.d/ ]] ; then
+		if ! has tmpfiles ${INHERITED} ; then
+			eqawarn "QA Notice: package is installing tmpfiles without inheriting tmpfiles.eclass!"
+			eqawarn "Packages must inherit tmpfiles.eclass then call tmpfiles_process in pkg_postinst."
+			return
+		fi
+
+		# Check 3
+		# Check whether we're installing tmpfiles without explicitly
+		# calling tmpfiles_process in pkg_postinst, but we have inherited
+		# the eclass.
+		# Small risk of false positives if called indirectly.
+		# See: https://archives.gentoo.org/gentoo-dev/message/7bdfdc9a7560fd07436defd0253af0b8
+		local pkg_postinst_body="$(declare -fp pkg_postinst 2>&1)"
+		if [[ ! ${pkg_postinst_body} == *tmpfiles_process* ]] ; then
+			eqawarn "QA Notice: package is installing tmpfiles without calling"
+			eqawarn "tmpfiles_process in pkg_postinst phase"
+		fi
+	fi
+}
+
+tmpfiles_check
+: # guarantee successful exit
+
+# vim:ft=sh

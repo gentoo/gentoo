@@ -1,0 +1,49 @@
+From d6350119bccb896744e574d0f10e34c1309bc1b1 Mon Sep 17 00:00:00 2001
+From: Michael Carroll <ineffable@gmail.com>
+Date: Wed, 16 Jun 2021 00:11:26 +1000
+Subject: [PATCH] dont reset blur on disable() if never enabled #113
+
+---
+ blur.js | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/blur.js b/blur.js
+index 613e301..c16af6f 100644
+--- a/blur.js
++++ b/blur.js
+@@ -27,6 +27,7 @@ var blur_strength = 2;
+ var blur_brightness = 55;
+ var debug = false;
+ 
++let blurEnabled = false;
+ var blurMode = whichVersion();
+ 
+ function log(msg) {
+@@ -63,6 +64,7 @@ var Blur = class Blur {
+         let effect = new Shell.BlurEffect({ brightness: blur_brightness * 0.01, sigma: blur_strength * themeContext.scale_factor / 5 }); // fix me, should this be /5?
+         this._scaleChangedId = themeContext.connect('notify::scale-factor', () => { effect.sigma = blur_strength * themeContext.scale_factor / 5; });
+         widget.add_effect(effect);
++        blurEnabled = true;
+     }
+ 
+     _do_blur_v2(monitorIndex) {
+@@ -74,8 +76,8 @@ var Blur = class Blur {
+                 brightness: blur_brightness * 0.01,
+                 sigma: blur_strength * themeContext.scale_factor,
+             });
+-        } 
+-    
++        }
++        blurEnabled = true;
+     }
+ 
+     set_blur_strength(value) {
+@@ -119,6 +121,8 @@ var Blur = class Blur {
+     }
+ 
+     _disable() {
++        if (blurEnabled == false) // nothing to do, don't clash without other extensions that do the same
++            return;
+         log("_lockscreen_blur_disable() called");
+         if (blurMode == 1) {
+             UnlockDialog.prototype._createBackground = _createBackground;

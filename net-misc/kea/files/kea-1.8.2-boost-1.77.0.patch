@@ -1,0 +1,10 @@
+--- kea-1.8.2/src/lib/dhcpsrv/timer_mgr.cc
++++ kea-1.8.2/src/lib/dhcpsrv/timer_mgr.cc
+@@ -9,6 +9,7 @@
+ #include <asiolink/io_service.h>
+ #include <dhcpsrv/dhcpsrv_log.h>
+ #include <dhcpsrv/timer_mgr.h>
++#include <map>
+ #include <exceptions/exceptions.h>
+ 
+ #include <functional>

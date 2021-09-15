@@ -1,5 +1,5 @@
 # -*- mode: shell-script; -*-
-# Copyright 2018-2020 Gentoo Authors
+# Copyright 2018-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # RAP specific patches pending upstream:
@@ -14,7 +14,11 @@ if [[ ${CATEGORY}/${PN} == sys-devel/gcc && ${EBUILD_PHASE} == configure ]]; the
     einfo "Prefixifying dynamic linkers..."
     for h in gcc/config/*/*linux*.h; do
 	ebegin "  Updating $h"
-	sed -i -r "/_DYNAMIC_LINKER/s,([\":])(/lib),\1${EPREFIX}\2,g" $h
+	if [[ "${h}" == gcc/config/rs6000/linux*.h ]]; then
+	    sed -i -r "s,(DYNAMIC_LINKER_PREFIX\s+)\"\",\1\"${EPREFIX}\",g" $h
+	else
+	    sed -i -r "/_DYNAMIC_LINKER/s,([\":])(/lib),\1${EPREFIX}\2,g" $h
+	fi
 	eend $?
     done
 
@@ -105,4 +109,11 @@ elif [[ ${CATEGORY}/${PN} == dev-lang/php && ${EBUILD_PHASE} == prepare ]]; then
     ebegin "Prefixifying ext/iconv/config.m4 paths"
     sed -i -r "/for i in/s,(/usr(/local|)),${EPREFIX}\1,g" "${S}"/ext/iconv/config.m4
     eend $?
+elif [[ ${CATEGORY}/${PN} == dev-util/cmake && ${EBUILD_PHASE} == prepare ]]; then
+    einfo "Removing Debian magic..."
+    for f in Modules/{CMakeFindPackageMode,FindPkgConfig,GNUInstallDirs,Platform/{GNU,Linux}}.cmake; do
+	ebegin "  Updating $f"
+	sed -i -e 's,EXISTS "/etc/debian_version",FALSE,' "${S}"/$f
+	eend $?
+    done
 fi

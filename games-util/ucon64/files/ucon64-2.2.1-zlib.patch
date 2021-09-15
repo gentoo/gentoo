@@ -1,0 +1,26 @@
+Fix undefined macro issue when compiling with zlib.
+https://bugs.gentoo.org/753950
+
+From upstream:
+https://sourceforge.net/p/ucon64/svn/2817/
+https://sourceforge.net/p/ucon64/svn/2819/
+--- a/libdiscmage/ioapi.h
++++ b/libdiscmage/ioapi.h
+@@ -35,4 +35,7 @@
+ extern "C" {
+ #endif
++#ifndef OF
++#define OF(x) x
++#endif
+ 
+ typedef voidpf (ZCALLBACK *open_file_func) OF((voidpf opaque, const char* filename, int mode));
+--- a/misc/ioapi.h
++++ b/misc/ioapi.h
+@@ -35,4 +35,7 @@
+ extern "C" {
+ #endif
++#ifndef OF
++#define OF(x) x
++#endif
+ 
+ typedef voidpf (ZCALLBACK *open_file_func) OF((voidpf opaque, const char* filename, int mode));

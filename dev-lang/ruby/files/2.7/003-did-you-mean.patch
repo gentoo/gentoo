@@ -1,0 +1,16 @@
+--- ruby27/gem_prelude.rb	2021-04-28 19:07:46.875571113 +0200
++++ ruby30/gem_prelude.rb	2021-04-28 19:07:35.971511765 +0200
+@@ -1,2 +1,11 @@
+-require 'rubygems.rb' if defined?(Gem)
+-require 'did_you_mean' if defined?(DidYouMean)
++begin
++  require 'rubygems'
++rescue LoadError
++  warn "`RubyGems' were not loaded."
++end if defined?(Gem)
++
++begin
++  require 'did_you_mean'
++rescue LoadError
++  warn "`did_you_mean' was not loaded."
++end if defined?(DidYouMean)

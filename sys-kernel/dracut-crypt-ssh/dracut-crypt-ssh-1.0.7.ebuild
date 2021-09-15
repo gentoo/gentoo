@@ -25,7 +25,16 @@ RDEPEND="${DEPEND}
 	)
 	net-misc/dropbear"
 
-PATCHES=( "${FILESDIR}"/${P}-ldflags.patch )
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
+
+src_prepare() {
+	default
+
+	# Fix libdir (hard-coded to "lib64")
+	sed "s@/lib64/@/$(get_libdir)/@" \
+		-i modules/60crypt-ssh/module-setup.sh \
+		|| die
+}
 
 src_configure() {
 	tc-export CC

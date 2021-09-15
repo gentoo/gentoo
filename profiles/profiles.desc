@@ -34,6 +34,7 @@ amd64		default/linux/amd64/17.1/developer			stable
 amd64		default/linux/amd64/17.1/no-multilib			stable
 amd64		default/linux/amd64/17.1/no-multilib/hardened		stable
 amd64		default/linux/amd64/17.1/no-multilib/hardened/selinux	stable
+amd64		default/linux/amd64/17.1/no-multilib/systemd		dev
 amd64		default/linux/amd64/17.1/systemd			stable
 
 # AMD64 Profiles
@@ -159,13 +160,11 @@ ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop			stable
 ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome		stable
 ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome/systemd	stable
 ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/developer		stable
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland				stable
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop			stable
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop/gnome		stable
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop/gnome/systemd	stable
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/developer		stable
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian		stable
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian/systemd	stable
+ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland				dev
+ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop			dev
+ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop/gnome		dev
+ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop/gnome/systemd	dev
+ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/developer		dev
 
 # PPC/PPC64 flat Profiles
 # @MAINTAINER: gyakovlev@gentoo.org, ppc64@gentoo.org, musl@gentoo.org
@@ -178,17 +177,20 @@ ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian/systemd	sta
 #ppc		 default/linux/ppc/17.0/musl/hardened			exp
 #ppc		 default/linux/ppc/17.0/uclibc				exp
 #ppc		 default/linux/ppc/17.0/uclibc/hardened			exp
-ppc64		default/linux/ppc64/17.0				exp
-#ppc64		 default/linux/ppc64/17.0/desktop			exp
-#ppc64		 default/linux/ppc64/17.0/desktop/gnome			exp
-#ppc64		 default/linux/ppc64/17.0/desktop/gnome/systemd		exp
-#ppc64		 default/linux/ppc64/17.0/developer			exp
+ppc64		default/linux/ppc64/17.0				stable
+ppc64		default/linux/ppc64/17.0/desktop			stable
+ppc64		default/linux/ppc64/17.0/desktop/gnome			stable
+ppc64		default/linux/ppc64/17.0/desktop/gnome/systemd		stable
+ppc64		default/linux/ppc64/17.0/systemd			stable
+ppc64		default/linux/ppc64/17.0/developer			stable
 ppc64		default/linux/ppc64/17.0/musl				exp
 ppc64		default/linux/ppc64/17.0/musl/hardened			exp
 ppc64		default/linux/ppc64le/17.0				stable
 ppc64		default/linux/ppc64le/17.0/desktop			stable
-ppc64		default/linux/ppc64le/17.0/desktop/plasma		dev
-ppc64		default/linux/ppc64le/17.0/desktop/plasma/systemd	dev
+ppc64		default/linux/ppc64le/17.0/desktop/gnome		stable
+ppc64		default/linux/ppc64le/17.0/desktop/gnome/systemd	stable
+ppc64		default/linux/ppc64le/17.0/desktop/plasma		stable
+ppc64		default/linux/ppc64le/17.0/desktop/plasma/systemd	stable
 ppc64		default/linux/ppc64le/17.0/systemd			stable
 ppc64		default/linux/ppc64le/17.0/developer			stable
 ppc64		default/linux/ppc64le/17.0/musl				exp
@@ -196,13 +198,31 @@ ppc64		default/linux/ppc64le/17.0/musl/hardened		exp
 
 # RISC-V Profiles
 # @MAINTAINER: riscv@gentoo.org
-riscv		default/linux/riscv/17.0/rv64gc			exp
-riscv		default/linux/riscv/17.0/rv64gc/lp64d		stable
-riscv		default/linux/riscv/17.0/rv64gc/lp64d/systemd	stable
-riscv		default/linux/riscv/17.0/rv64gc/lp64		stable
-riscv		default/linux/riscv/17.0/rv64gc/lp64/systemd	stable
-riscv		default/linux/riscv/17.0/rv32imac/ilp32		exp
-riscv		default/linux/riscv/17.0/rv32imac/ilp32d	exp
+riscv		default/linux/riscv/17.0/rv64gc						exp
+riscv		default/linux/riscv/17.0/rv64gc/lp64d					exp
+riscv		default/linux/riscv/17.0/rv64gc/lp64d/systemd				exp
+riscv		default/linux/riscv/17.0/rv64gc/lp64					exp
+riscv		default/linux/riscv/17.0/rv64gc/lp64/systemd				exp
+riscv		default/linux/riscv/17.0/rv32imac/ilp32					exp
+riscv		default/linux/riscv/17.0/rv32imac/ilp32d				exp
+riscv		default/linux/riscv/20.0/rv64gc/lp64d					stable
+riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop				dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/gnome			dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/gnome/systemd		dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/plasma			dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/plasma/systemd		dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/systemd			dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64d/systemd				stable
+riscv		default/linux/riscv/20.0/rv64gc/lp64					stable
+riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop				dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/gnome			dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/gnome/systemd		dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/plasma			dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/plasma/systemd		dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/systemd			dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64/systemd				stable
+riscv		default/linux/riscv/20.0/rv64gc/multilib				exp
+riscv		default/linux/riscv/20.0/rv64gc/multilib/systemd			exp
 
 # S390 Profiles
 # @MAINTAINER: s390@gentoo.org

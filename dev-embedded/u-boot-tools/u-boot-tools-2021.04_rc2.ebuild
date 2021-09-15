@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.denx.de/pub/u-boot/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm ~arm64 ~ppc ~ppc64 ~riscv x86"
 IUSE=""
 
 RDEPEND="dev-libs/openssl:0="
@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
+	virtual/pkgconfig
 "
 
 S=${WORKDIR}/${MY_P}

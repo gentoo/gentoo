@@ -1,0 +1,72 @@
+From 78b1bcff4d9b977313e9ea15068168e1b11f5ba1 Mon Sep 17 00:00:00 2001
+From: Martin Jansa <Martin.Jansa@gmail.com>
+Date: Wed, 4 Aug 2021 19:08:03 +0200
+Subject: [PATCH] chromium: abseil-cpp: fix build with glibc-2.34
+
+* backport a fix from upstream abseil-cpp:
+  https://github.com/abseil/abseil-cpp/commit/a9831f1cbf93fb18dd951453635f488037454ce9
+
+  to fix:
+
+[97/24505] CXX obj/third_party/abseil-cpp/absl/debugging/failure_signal_handler/failure_signal_handler.o
+FAILED: obj/third_party/abseil-cpp/absl/debugging/failure_signal_handler/failure_signal_handler.o
+/OE/build/luneos-honister/webos-ports/tmp-glibc/work/core2-64-webos-linux/qtwebengine/5.15.4+gitAUTOINC+dd7f7a9166_555f348ae8-r0/recipe-sysroot-native/usr/bin/x86_64-webos-linux/x86_64-webos-linux-g++ -m64 -march=core2 -mtune=core2 -msse3 -mfpmath=sse -Wdate-time --sysroot=/OE/build/luneos-honister/webos-ports/tmp-glibc/work/core2-64-webos-linux/qtwebengine/5.15.4+gitAUTOINC+dd7f7a9166_555f348ae8-r0/recipe-sysroot -MMD -MF obj/third_party/abseil-cpp/absl/debugging/failure_signal_handler/failure_signal_handler.o.d -DUSE_UDEV -DUSE_AURA=1 -DUSE_NSS_CERTS=1 -DUSE_OZONE=1 -DOFFICIAL_BUILD -DTOOLKIT_QT -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -DNO_UNWIND_TABLES -DCR_SYSROOT_HASH=5f64b417e1018dcf8fcc81dc2714e0f264b9b911 -DNDEBUG -DNVALGRIND -DDYNAMIC_ANNOTATIONS_ENABLED=0 -DABSL_ALLOCATOR_NOTHROW=1 -Igen -I../../../../git/src/3rdparty/chromium -I../../../../git/src/3rdparty/chromium/third_party/abseil-cpp -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -fno-unwind-tables -fno-asynchronous-unwind-tables -fPIC -pipe -pthread -m64 -O2 -fno-ident -fdata-sections -ffunction-sections -fno-omit-frame-pointer -g1 -fvisibility=hidden -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wno-deprecated-declarations -fno-delete-null-pointer-checks -Wno-comments -Wno-packed-not-aligned -Wno-dangling-else -Wno-missing-field-initializers -Wno-unused-parameter -std=gnu++14 -fno-exceptions -fno-rtti --sysroot=../../../../recipe-sysroot -fvisibility-inlines-hidden -Wno-narrowing -Wno-class-memaccess -Wno-attributes -Wno-class-memaccess -Wno-subobject-linkage -Wno-invalid-offsetof -Wno-return-type -Wno-deprecated-copy -c ../../../../git/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc -o obj/third_party/abseil-cpp/absl/debugging/failure_signal_handler/failure_signal_handler.o
+../../../../git/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc: In function 'bool absl::SetupAlternateStackOnce()':
+../../../../git/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc:138:32: error: no matching function for call to 'max(long int, int)'
+  138 |   size_t stack_size = (std::max(SIGSTKSZ, 65536) + page_mask) & ~page_mask;
+      |                        ~~~~~~~~^~~~~~~~~~~~~~~~~
+In file included from ../../../../recipe-sysroot/usr/include/c++/11.2.0/algorithm:61,
+                 from ../../../../git/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc:35:
+../../../../recipe-sysroot/usr/include/c++/11.2.0/bits/stl_algobase.h:254:5: note: candidate: 'template<class _Tp> constexpr const _Tp& std::max(const _Tp&, const _Tp&)'
+  254 |     max(const _Tp& __a, const _Tp& __b)
+      |     ^~~
+../../../../recipe-sysroot/usr/include/c++/11.2.0/bits/stl_algobase.h:254:5: note:   template argument deduction/substitution failed:
+../../../../git/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc:138:32: note:   deduced conflicting types for parameter 'const _Tp' ('long int' and 'int')
+  138 |   size_t stack_size = (std::max(SIGSTKSZ, 65536) + page_mask) & ~page_mask;
+      |                        ~~~~~~~~^~~~~~~~~~~~~~~~~
+In file included from ../../../../recipe-sysroot/usr/include/c++/11.2.0/algorithm:61,
+                 from ../../../../git/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc:35:
+../../../../recipe-sysroot/usr/include/c++/11.2.0/bits/stl_algobase.h:300:5: note: candidate: 'template<class _Tp, class _Compare> constexpr const _Tp& std::max(const _Tp&, const _Tp&, _Compare)'
+  300 |     max(const _Tp& __a, const _Tp& __b, _Compare __comp)
+      |     ^~~
+../../../../recipe-sysroot/usr/include/c++/11.2.0/bits/stl_algobase.h:300:5: note:   template argument deduction/substitution failed:
+../../../../git/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc:138:32: note:   deduced conflicting types for parameter 'const _Tp' ('long int' and 'int')
+  138 |   size_t stack_size = (std::max(SIGSTKSZ, 65536) + page_mask) & ~page_mask;
+      |                        ~~~~~~~~^~~~~~~~~~~~~~~~~
+In file included from ../../../../recipe-sysroot/usr/include/c++/11.2.0/algorithm:62,
+                 from ../../../../git/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc:35:
+../../../../recipe-sysroot/usr/include/c++/11.2.0/bits/stl_algo.h:3461:5: note: candidate: 'template<class _Tp> constexpr _Tp std::max(std::initializer_list<_Tp>)'
+ 3461 |     max(initializer_list<_Tp> __l)
+      |     ^~~
+../../../../recipe-sysroot/usr/include/c++/11.2.0/bits/stl_algo.h:3461:5: note:   template argument deduction/substitution failed:
+../../../../git/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc:138:32: note:   mismatched types 'std::initializer_list<_Tp>' and 'long int'
+  138 |   size_t stack_size = (std::max(SIGSTKSZ, 65536) + page_mask) & ~page_mask;
+      |                        ~~~~~~~~^~~~~~~~~~~~~~~~~
+In file included from ../../../../recipe-sysroot/usr/include/c++/11.2.0/algorithm:62,
+                 from ../../../../git/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc:35:
+../../../../recipe-sysroot/usr/include/c++/11.2.0/bits/stl_algo.h:3467:5: note: candidate: 'template<class _Tp, class _Compare> constexpr _Tp std::max(std::initializer_list<_Tp>, _Compare)'
+ 3467 |     max(initializer_list<_Tp> __l, _Compare __comp)
+      |     ^~~
+../../../../recipe-sysroot/usr/include/c++/11.2.0/bits/stl_algo.h:3467:5: note:   template argument deduction/substitution failed:
+../../../../git/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc:138:32: note:   mismatched types 'std::initializer_list<_Tp>' and 'long int'
+  138 |   size_t stack_size = (std::max(SIGSTKSZ, 65536) + page_mask) & ~page_mask;
+      |                        ~~~~~~~~^~~~~~~~~~~~~~~~~
+
+Signed-off-by: Martin Jansa <Martin.Jansa@gmail.com>
+---
+ .../abseil-cpp/absl/debugging/failure_signal_handler.cc         | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc b/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc
+index 5d13bdbbbd1..150a43f2660 100644
+--- a/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc
++++ b/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc
+@@ -135,7 +135,7 @@ static bool SetupAlternateStackOnce() {
+ #else
+   const size_t page_mask = sysconf(_SC_PAGESIZE) - 1;
+ #endif
+-  size_t stack_size = (std::max(SIGSTKSZ, 65536) + page_mask) & ~page_mask;
++  size_t stack_size = (std::max<size_t>(SIGSTKSZ, 65536) + page_mask) & ~page_mask;
+ #if defined(ABSL_HAVE_ADDRESS_SANITIZER) || \
+     defined(ABSL_HAVE_MEMORY_SANITIZER) || defined(ABSL_HAVE_THREAD_SANITIZER)
+   // Account for sanitizer instrumentation requiring additional stack space.

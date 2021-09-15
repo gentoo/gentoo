@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils linux-info toolchain-funcs
+inherit epatch linux-info toolchain-funcs
 
 DESCRIPTION="utility to administer the IP virtual server services"
 HOMEPAGE="http://linuxvirtualserver.org/"
@@ -39,7 +39,7 @@ src_prepare() {
 src_compile() {
 	local libnl_include
 	if has_version ">=dev-libs/libnl-3.0"; then
-		libnl_include=$(pkg-config --cflags libnl-3.0)
+		libnl_include=$($(tc-getPKG_CONFIG) --cflags libnl-3.0)
 	else
 		libnl_include=""
 	fi
@@ -48,7 +48,7 @@ src_compile() {
 		CC="$(tc-getCC)" \
 		HAVE_NL=1 \
 		STATIC=${STATIC} \
-		POPT_LIB="$(pkg-config --libs popt)"
+		POPT_LIB="$($(tc-getPKG_CONFIG) --libs popt)"
 }
 
 src_install() {

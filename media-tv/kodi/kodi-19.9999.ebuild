@@ -3,14 +3,14 @@
 
 EAPI=7
 
-PYTHON_REQ_USE="libressl?,sqlite,ssl"
+PYTHON_REQ_USE="sqlite,ssl"
 LIBDVDCSS_VERSION="1.4.2-Leia-Beta-5"
 LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-3"
 LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-3"
-FFMPEG_VERSION="4.3.1"
+FFMPEG_VERSION="4.3.2"
 CODENAME="Matrix"
-FFMPEG_KODI_VERSION="Beta1"
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+FFMPEG_KODI_VERSION="19.1"
+PYTHON_COMPAT=( python3_{8,9} )
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_VERSION}.tar.gz -> libdvdread-${LIBDVDREAD_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_VERSION}.tar.gz -> libdvdnav-${LIBDVDNAV_VERSION}.tar.gz
@@ -25,9 +25,9 @@ else
 	MY_PV=${MY_PV/_beta/b}
 	MY_PV=${MY_PV/_rc/RC}
 	MY_P="${PN}-${MY_PV}"
-	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz"
+	SRC_URI+=" https://github.com/xbmc/xbmc/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	S=${WORKDIR}/xbmc-${MY_PV}-${CODENAME}
+	S=${WORKDIR}/xbmc-${MY_PV}
 fi
 
 inherit autotools cmake desktop linux-info pax-utils python-single-r1 xdg
@@ -40,7 +40,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dav1d dbus eventclients gbm gles lcms libressl libusb lirc mariadb mysql nfs +optical power-control pulseaudio raspberry-pi samba +system-ffmpeg test udf udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dav1d dbus eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical power-control pulseaudio raspberry-pi samba +system-ffmpeg test udf udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
 IUSE="${IUSE} cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -62,7 +62,7 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	>=dev-libs/lzo-2.04
-	>=dev-libs/flatbuffers-1.11.0
+	>=dev-libs/flatbuffers-1.12.0:=
 	>=media-libs/libjpeg-turbo-2.0.4:=
 	>=media-libs/libpng-1.6.26:0=
 "
@@ -84,8 +84,8 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/spdlog-1.5.0:=
 	dev-libs/tinyxml[stl]
 	$(python_gen_cond_dep '
-		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
-		dev-python/pycryptodome[${PYTHON_MULTI_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pycryptodome[${PYTHON_USEDEP}]
 	')
 	>=dev-libs/libcdio-2.1.0[cxx]
 	>=dev-libs/libfmt-6.1.2
@@ -108,8 +108,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	>=media-libs/taglib-1.11.1
 	system-ffmpeg? (
 		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[dav1d?,encode,postproc]
-		libressl? ( media-video/ffmpeg[libressl,-openssl] )
-		!libressl? ( media-video/ffmpeg[-libressl,openssl] )
+		media-video/ffmpeg[openssl]
 	)
 	!system-ffmpeg? (
 		app-arch/bzip2
@@ -120,8 +119,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	>=net-misc/curl-7.68.0[http2]
 	nfs? ( >=net-fs/libnfs-2.0.0:= )
 	!gles? ( media-libs/glu )
-	!libressl? ( >=dev-libs/openssl-1.0.2l:0= )
-	libressl? ( dev-libs/libressl:0= )
+	>=dev-libs/openssl-1.0.2l:0=
 	raspberry-pi? (
 		|| ( media-libs/raspberrypi-userland media-libs/raspberrypi-userland-bin media-libs/mesa[egl,gles2,video_cards_vc4] )
 	)

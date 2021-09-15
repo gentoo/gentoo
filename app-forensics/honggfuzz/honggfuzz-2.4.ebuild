@@ -1,12 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
 DESCRIPTION="A general purpose fuzzer with feedback support"
-HOMEPAGE="https://google.github.io/honggfuzz/"
+HOMEPAGE="https://honggfuzz.dev/"
 SRC_URI="https://github.com/google/honggfuzz/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -49,6 +49,7 @@ src_prepare() {
 
 src_install() {
 	dobin ${PN}
+	dobin hfuzz_cc/hfuzz-cc
 
 	einstalldocs
 }

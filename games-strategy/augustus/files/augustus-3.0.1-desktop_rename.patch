@@ -1,0 +1,11 @@
+--- a/res/augustus.desktop
++++ b/res/augustus.desktop
+@@ -2,7 +2,7 @@
+ [Desktop Entry]
+ Type=Application
+ Version=1.0
+-Exec=augustus
++Exec=augustus-game
+ Icon=com.github.keriew.augustus
+ Name=Augustus
+ GenericName=Roman city management game

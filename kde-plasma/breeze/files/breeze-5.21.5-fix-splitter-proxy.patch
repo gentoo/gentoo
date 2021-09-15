@@ -1,0 +1,50 @@
+From f99b7ef621c9c69544158d245699fd8104db6753 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 15 May 2021 17:45:54 +0200
+Subject: [PATCH] Fix informing the underlying widget when leaving
+ SplitterProxy
+
+While the SplitterProxy is active, it intercepts all relevant events, so that
+the underlying widget still thinks it's in the same "on splitter" state. When
+the SplitterProxy is left, the underlying widget is sent a HoverLeave/HoverMove
+event to make it aware of the new current cursor position. Without this, it
+doesn't know that it's not supposed to be in the "on splitter" state, and when
+it regains focus it just re-activates the SplitterProxy at the current cursor
+position.
+
+This was broken by accident in d201a1f187 ("Fix SplitterProxy not clearing
+when above another QSplitterHandle"), which moved the hide() call past the
+call to QCoreApplication::sendEvent. Previously that made isVisible() false,
+which also prevented the interception of the HoverLeave/HoverMove events.
+
+BUG: 436473
+---
+ kstyle/breezesplitterproxy.cpp | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/kstyle/breezesplitterproxy.cpp b/kstyle/breezesplitterproxy.cpp
+index 0cf5685f..d4db407b 100644
+--- a/kstyle/breezesplitterproxy.cpp
++++ b/kstyle/breezesplitterproxy.cpp
+@@ -341,11 +341,14 @@ namespace Breeze
+         // send hover event
+         if( _splitter )
+         {
+-            QHoverEvent hoverEvent(
+-                qobject_cast<QSplitterHandle*>(_splitter.data()) ? QEvent::HoverLeave : QEvent::HoverMove,
+-                _splitter.data()->mapFromGlobal(QCursor::pos()), _hook);
+-            QCoreApplication::sendEvent( _splitter.data(), &hoverEvent );
++            // SplitterProxy intercepts HoverLeave/HoverMove events to _splitter,
++            // but this is meant to reach it directly. Unset _splitter to stop interception.
++            auto splitter = _splitter;
+             _splitter.clear();
++            QHoverEvent hoverEvent(
++                qobject_cast<QSplitterHandle*>(splitter.data()) ? QEvent::HoverLeave : QEvent::HoverMove,
++                splitter.data()->mapFromGlobal(QCursor::pos()), _hook);
++            QCoreApplication::sendEvent( splitter.data(), &hoverEvent );
+         }
+ 
+         // kill timer if any
+-- 
+GitLab
+

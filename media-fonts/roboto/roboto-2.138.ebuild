@@ -12,9 +12,9 @@ S="${WORKDIR}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 FONT_CONF=( "${FILESDIR}"/90-roboto-regular.conf )
 FONT_SUFFIX="ttf"

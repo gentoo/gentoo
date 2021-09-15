@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils ltprune
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="Open Dynamics Engine SDK"
 HOMEPAGE="http://ode.org/"
@@ -13,16 +14,25 @@ SLOT="0/6"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug doc double-precision examples gyroscopic static-libs"
 
-RDEPEND="examples? (
-	virtual/glu
-	virtual/opengl )"
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
+RDEPEND="
+	examples? (
+		virtual/glu
+		virtual/opengl
+	)
+"
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 MY_EXAMPLES_DIR=/usr/share/doc/${PF}/examples
 
+DOCS=( CHANGELOG.txt README.md )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.14-gcc7.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.14-gcc7.patch
+	default
 
 	sed -i \
 		-e "s:\$.*/drawstuff/textures:${MY_EXAMPLES_DIR}:" \
@@ -47,28 +57,35 @@ src_configure() {
 src_compile() {
 	emake
 	if use doc ; then
-		cd ode/doc
+		cd ode/doc || die
 		doxygen Doxyfile || die
 	fi
 }
 
 src_install() {
-	DOCS="CHANGELOG.txt README.md" \
-		default
-	prune_libtool_files
+	default
+
+	find "${ED}" -name '*.la' -delete || die
+
 	if use doc ; then
-		dohtml docs/*
+		docinto html
+		dodoc docs/*
 	fi
-	if use examples; then
-		docompress -x "${MY_EXAMPLES_DIR}"
-		insinto "${MY_EXAMPLES_DIR}"
-		exeinto "${MY_EXAMPLES_DIR}"
+
+	if use examples ; then
+		docompress -x ${MY_EXAMPLES_DIR}
+
+		insinto ${MY_EXAMPLES_DIR}
+		exeinto ${MY_EXAMPLES_DIR}
+
 		doexe drawstuff/dstest/dstest
 		doins ode/demo/*.{c,cpp,h} \
 			drawstuff/textures/*.ppm \
 			drawstuff/dstest/dstest.cpp \
 			drawstuff/src/{drawstuff.cpp,internal.h,x11.cpp}
-		cd ode/demo
+
+		cd ode/demo || die
+
 		local f
 		for f in *.c* ; do
 			doexe .libs/${f%.*}

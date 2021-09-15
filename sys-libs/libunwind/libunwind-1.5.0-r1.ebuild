@@ -13,7 +13,7 @@ SRC_URI="mirror://nongnu/libunwind/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/8" # libunwind.so.8
-KEYWORDS="amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 -sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 -riscv -sparc x86 ~amd64-linux ~x86-linux"
 IUSE="debug debug-frame doc libatomic lzma static-libs zlib"
 
 RESTRICT="test" # some tests are broken (toolchain version dependent, rely on external binaries)
@@ -49,6 +49,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.2-coredump-regs.patch #586092
 	"${FILESDIR}"/${PN}-1.2-ia64-ptrace-coredump.patch
 	"${FILESDIR}"/${PN}-1.2-ia64-missing.patch
+	"${FILESDIR}"/${PN}-1.5.0-x32.patch
 	# needs refresh:
 	#"${FILESDIR}"/${PN}-1.2.1-only-include-execinfo_h-if-avaliable.patch
 )

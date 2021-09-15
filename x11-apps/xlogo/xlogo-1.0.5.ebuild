@@ -20,4 +20,4 @@ RDEPEND="x11-libs/libXrender
 	x11-libs/libX11"
 DEPEND="${RDEPEND}"
 
-XORG_CONFIGURE_OPTIONS="--with-render"
+XORG_CONFIGURE_OPTIONS=( --with-render )

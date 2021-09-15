@@ -1,0 +1,56 @@
+--- a/Imake.cf
++++ b/Imake.cf
+@@ -1037,6 +1037,17 @@
+ #   define AArch64Architecture
+ #   undef __aarch64__
+ # endif
++# if defined(__riscv)
++#   undef __riscv
++#   if __riscv_xlen == 64
++#     undef __riscv_xlen
++#     define RV64Architecture
++#   endif
++#   if __riscv_xlen == 32
++#     undef __riscv_xlen
++#     define RV32Architecture
++#   endif
++# endif
+ #endif /* linux || __GLIBC__ */
+ 
+ #if (defined(__Lynx__) || defined(Lynx)) && (defined(i386) || defined(__i386__) || defined(__x86__) || defined(__powerpc__) || defined(__sparc__) || defined(sparc))
+--- a/linux.cf
++++ b/linux.cf
+@@ -584,7 +584,7 @@
+ #define MkdirHierCmd		mkdir -p
+ 
+ #ifndef HaveLib64
+-# if defined (AMD64Architecture) || defined (s390xArchitecture) || defined (Ppc64Architecture) || defined (AArch64Architecture)
++# if defined (AMD64Architecture) || defined (s390xArchitecture) || defined (Ppc64Architecture) || defined (AArch64Architecture) || defined (RV64Architecture)
+ #  define HaveLib64	YES
+ # else
+ #  define HaveLib64	NO
+@@ -1000,6 +1000,24 @@
+ # define ServerExtraDefines    -DGCCUSESGAS XFree86ServerDefines -D_XSERVER64
+ #endif /* AArch64Architecture */
+ 
++#ifdef RV64Architecture
++# ifndef OptimizedCDebugFlags
++#  define OptimizedCDebugFlags -O2 GccAliasingArgs
++# endif
++# define LinuxMachineDefines	-D__riscv -D__riscv_xlen=64
++# define ServerOSDefines	XFree86ServerOSDefines -DDDXTIME
++# define ServerExtraDefines	-DGCCUSESGAS XFree86ServerDefines -D_XSERVER64
++#endif /* RV64Architecture */
++
++#ifdef RV32Architecture
++# ifndef OptimizedCDebugFlags
++#  define OptimizedCDebugFlags -O2 GccAliasingArgs
++# endif
++# define LinuxMachineDefines	-D__riscv -D__riscv_xlen=32
++# define ServerOSDefines	XFree86ServerOSDefines -DDDXTIME
++# define ServerExtraDefines	-DGCCUSESGAS XFree86ServerDefines
++#endif /* RV32Architecture */
++
+ #ifndef StandardDefines
+ # ifdef __linux__
+ #  define StandardDefines	-Dlinux LinuxMachineDefines LinuxSourceDefines

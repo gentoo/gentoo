@@ -1,0 +1,30 @@
+diff '--color=auto' -NarU 2 a/external/Box2D/Source/Makefile b/external/Box2D/Source/Makefile
+--- a/external/Box2D/Source/Makefile	2021-06-18 07:19:06.000000000 -0400
++++ b/external/Box2D/Source/Makefile	2021-07-16 17:01:57.254825075 -0400
+@@ -7,5 +7,5 @@
+ endif
+ 
+-CXXFLAGS=	-g -O2
++CXXFLAGS ?=	-g -O2
+ 
+ SOURCES = \
+diff '--color=auto' -NarU 2 a/makefile b/makefile
+--- a/makefile	2021-06-18 07:19:06.000000000 -0400
++++ b/makefile	2021-07-16 17:00:51.421009113 -0400
+@@ -38,5 +38,5 @@
+ $(TARGET): $(OBJECTS) $(LOCAL_LIBS)
+ 	$(SILENTMSG) "\tLD\t$@\n"
+-	$(SILENTCMD) $(CXX) -o $@ $^ $(LIBS)
++	$(SILENTCMD) $(CXX) -o $@ $^ $(LDFLAGS) $(LIBS)
+ 
+ clean: $(ADDITIONAL_CLEAN_TARGETS)
+diff '--color=auto' -NarU 2 a/mk/pkgs.mk b/mk/pkgs.mk
+--- a/mk/pkgs.mk	2021-06-18 07:19:06.000000000 -0400
++++ b/mk/pkgs.mk	2021-07-16 17:10:28.636268435 -0400
+@@ -1,4 +1,4 @@
+ ifneq ($(PKGS),)
+-CXXFLAGS += $(shell $(CROSS_COMPILE)pkg-config --cflags $(PKGS))
+-LIBS += $(shell $(CROSS_COMPILE)pkg-config --libs $(PKGS))
++CXXFLAGS += $(shell $(PKG_CONFIG) --cflags $(PKGS))
++LIBS += $(shell $(PKG_CONFIG) --libs $(PKGS))
+ endif

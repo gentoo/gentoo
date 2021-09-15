@@ -27,7 +27,7 @@
 # isn't used anymore.
 # If you are going to change UNIX socket location or change COLLECTD_USER
 # setting above, make sure you overwrite /usr/lib/tmpfiles.d/collectd.conf
-# via copy in /etc/tmpfiles.d/collectd.conf to match your setup.
+# via copy in /usr/lib/tmpfiles.d/collectd.conf to match your setup.
 #COLLECTD_GROUP="collectd"
 
 # You can use this configuration option to pass additional options to the

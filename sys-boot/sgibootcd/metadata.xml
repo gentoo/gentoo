@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>mips@gentoo.org</email>
 		<name>Mips Team</name>
 	</maintainer>
+
+	<longdescription>
+		sgibootcd is a small utility used to create the burnable,
+		non-ISO9660 image format for bootable CDs for SGI systems.
+	</longdescription>
 </pkgmetadata>

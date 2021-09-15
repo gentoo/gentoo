@@ -20,6 +20,10 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MYP}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-slibtool.patch
+)
+
 src_configure() {
 	econf --disable-static
 }

@@ -3,19 +3,18 @@
 
 EAPI=7
 
-MY_PV="$(ver_rs 0- -)"
 inherit autotools fortran-2 toolchain-funcs
+
+MY_PV="$(ver_rs 0- -)"
 
 DESCRIPTION="Matrix elements (integrals) evaluation over Cartesian Gaussian functions"
 HOMEPAGE="https://github.com/evaleev/libint"
 SRC_URI="https://github.com/evaleev/libint/archive/release-${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-release-${MY_PV}"
 
 LICENSE="GPL-2"
 SLOT="1"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-IUSE="static-libs"
-
-S="${WORKDIR}/${PN}-release-${MY_PV}"
 
 PATCHES=( "${FILESDIR}"/${P}-as-needed.patch )
 

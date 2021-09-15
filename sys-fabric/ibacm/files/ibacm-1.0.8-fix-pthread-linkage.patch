@@ -1,0 +1,20 @@
+https://github.com/ofiwg/ibacm/commit/7a781f6d554532995181b9efbe445599b25c271a.patch
+https://bugs.gentoo.org/611778
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,12 +1,13 @@
+ AM_CPPFLAGS = -I$(srcdir)/include -I$(srcdir)/linux
+ 
+ AM_CFLAGS = -g -Wall -D_GNU_SOURCE -DSYSCONFDIR=\"$(sysconfdir)\" -DBINDIR=\"$(bindir)\" -DRDMADIR=\"@rdmadir@\"
+-
++AM_LDFLAGS = -lpthread -ldl
+ bin_PROGRAMS = util/ib_acme
+ sbin_PROGRAMS = svc/ibacm
+ svc_ibacm_SOURCES = src/acm.c
+ util_ib_acme_SOURCES = src/acme.c linux/acme_linux.c src/libacm.c linux/libacm_linux.c src/parse.c
+ svc_ibacm_CFLAGS = $(AM_CFLAGS)
++svc_ibacm_LDFLAGS = -rdynamic $(AM_LDFLAGS)
+ util_ib_acme_CFLAGS = $(AM_CFLAGS)
+ 
+ ibacmincludedir = $(includedir)/infiniband

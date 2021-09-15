@@ -3,8 +3,10 @@
 
 EAPI="7"
 
+LUA_COMPAT=( lua5-3 )
+
 [[ ${PV} == *9999 ]] && SCM="git-r3"
-inherit toolchain-funcs flag-o-matic systemd linux-info ${SCM}
+inherit toolchain-funcs flag-o-matic lua-single systemd linux-info ${SCM}
 
 MY_P="${PN}-${PV/_beta/-dev}"
 
@@ -20,31 +22,33 @@ fi
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="+crypt doc examples libressl slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter
+IUSE="+crypt doc examples slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter
 ssl systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
 	pcre2-jit? ( pcre2 )
 	pcre? ( !pcre2 )
+	lua? ( ${LUA_REQUIRED_USE} )
 	device-atlas? ( pcre )
 	?? ( slz zlib )"
 
+BDEPEND="virtual/pkgconfig"
 DEPEND="
+	crypt? ( virtual/libcrypt:= )
 	pcre? (
 		dev-libs/libpcre
 		pcre-jit? ( dev-libs/libpcre[jit] )
 	)
 	pcre2? (
-		dev-libs/libpcre
-		pcre2-jit? ( dev-libs/libpcre2[jit] )
+		dev-libs/libpcre2:=
+		pcre2-jit? ( dev-libs/libpcre2:=[jit] )
 	)
 	ssl? (
-		!libressl? ( dev-libs/openssl:0=[zlib?] )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 	slz? ( dev-libs/libslz:= )
 	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
-	lua? ( dev-lang/lua:5.3 )
+	lua? ( ${LUA_DEPS} )
 	device-atlas? ( dev-libs/device-atlas-api-c )"
 RDEPEND="${DEPEND}
 	acct-group/haproxy
@@ -66,6 +70,7 @@ haproxy_use() {
 }
 
 pkg_setup() {
+	use lua && lua-single_pkg_setup
 	if use net_ns; then
 		CONFIG_CHECK="~NET_NS"
 		linux-info_pkg_setup

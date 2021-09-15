@@ -3,12 +3,12 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-2 )
+LUA_COMPAT=( lua5-{1..4} luajit )
 
 inherit autotools desktop lua-single xdg
 
 DESCRIPTION="Music player for a wide range of formats designed for gapless playback"
-HOMEPAGE="http://aqualung.jeremyevans.net/ https://github.com/jeremyevans/aqualung"
+HOMEPAGE="https://aqualung.jeremyevans.net/ https://github.com/jeremyevans/aqualung"
 SRC_URI="https://github.com/jeremyevans/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -17,6 +17,8 @@ KEYWORDS="amd64 x86"
 IUSE="alsa cdda cddb debug flac ffmpeg ifp jack ladspa lame libsamplerate
 	lua mac modplug mp3 musepack oss podcast pulseaudio sndfile speex systray
 	vorbis wavpack"
+
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -53,12 +55,18 @@ DEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/${P}-configure-lua-version.patch"
 	"${FILESDIR}/${P}-ifp.patch"
 	"${FILESDIR}/${P}-var-collision.patch"
 )
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 src_configure() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,8 +33,8 @@ RDEPEND="
 	>=dev-perl/Moose-0.940.0
 	dev-perl/MooseX-Role-Parameterized
 	dev-perl/Net-HTTP
-	!=dev-perl/Net-HTTP-6.40.0
-	!=dev-perl/Net-HTTP-6.50.0
+	!~dev-perl/Net-HTTP-6.40.0
+	!~dev-perl/Net-HTTP-6.50.0
 	virtual/perl-libnet
 	>=dev-perl/Net-OAuth-0.25
 	virtual/perl-Time-HiRes

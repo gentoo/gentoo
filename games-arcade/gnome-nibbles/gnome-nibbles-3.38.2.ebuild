@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+VALA_MAX_API_VERSION="0.50"
 
 inherit gnome.org gnome2-utils meson vala xdg
 
@@ -10,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Nibbles https://gitlab.gnome.org/GNOME/gno
 
 LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 RDEPEND="
@@ -30,6 +31,12 @@ BDEPEND="
 	$(vala_depend)
 	media-libs/gsound[vala]
 "
+
+PATCHES=(
+	# backport for https://gitlab.gnome.org/GNOME/gnome-nibbles/-/issues/52
+	"${FILESDIR}"/${P}-vala-0.50.4-GtkChild-1.patch
+	"${FILESDIR}"/${P}-vala-0.50.4-GtkChild-2.patch
+)
 
 src_prepare() {
 	xdg_src_prepare

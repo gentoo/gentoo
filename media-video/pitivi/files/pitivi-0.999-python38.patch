@@ -1,0 +1,49 @@
+From 3c2c03828efb986e66ba2a35e341127e8161c799 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alexandru=20B=C4=83lu=C8=9B?= <alexandru.balut@gmail.com>
+Date: Tue, 28 Jan 2020 22:34:40 +0100
+Subject: [PATCH] meson: Support Python 3.8
+
+To link to Python we need to use python-3.8-embed.
+---
+ meson.build       | 13 ++++++++++---
+ meson_options.txt |  3 ++-
+ 2 files changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 17a7312d..289e0086 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1,11 +1,18 @@
+-project('pitivi', 'c', version : '0.999', meson_version : '>= 0.41.0')
++project('pitivi', 'c', version : '0.999', meson_version : '>= 0.46.0')
+ 
+-python = find_program('python3')
+ intltool_merge = find_program('intltool-merge')
+ itstool = find_program('itstool')
+ msgfmt = find_program('msgfmt')
+ 
+-python_dep = dependency('python3', version : '>= 3.3')
++pymod = import('python')
++python = pymod.find_installation(get_option('python'))
++pythonver = python.language_version()
++# Workaround for https://github.com/mesonbuild/meson/issues/5629
++# https://gitlab.freedesktop.org/gstreamer/gst-python/issues/28
++python_dep = dependency('python-@0@-embed'.format(pythonver), version: '>= 3.3', required: false)
++if not python_dep.found()
++  python_dep = python.dependency('python3', version: '>= 3.3')
++endif
+ 
+ if get_option('build-gst')
+     subproject('gst-build', default_options: ['enable_python=true',
+diff --git a/meson_options.txt b/meson_options.txt
+index c6590dd1..7d6bad29 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,2 +1,3 @@
+-option('disable-help', type : 'boolean', value : false)
+ option('build-gst', type : 'boolean', value : false)
++option('disable-help', type : 'boolean', value : false)
++option('python', type : 'string', value : 'python3')
+-- 
+2.26.2
+

@@ -4,10 +4,9 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Michał Górny <mgorny@gentoo.org> (2021-02-01)
-# dev-libs/libressl is masked for removal.
-libressl
-curl_ssl_libressl
+# Hans de Graaff <graaff@gentoo.org> (2021-07-09)
+# Mask Ruby 2.5 as EOL
+ruby_targets_ruby25
 
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # PHP 7.2 is security vulnerable and end-of-life
@@ -19,7 +18,7 @@ php7-2
 # Nothing depends on those ROS messages. dev-ros/geneus
 # is half broken in our setup where it looks for packages
 # on the filesystem and causes build failures.
-# See e.g. https://bugs.gentoo.org/741076
+# See e.g. bug #741076
 ros_messages_eus
 
 # Hans de Graaff <graaff@gentoo.org> (2020-06-13)

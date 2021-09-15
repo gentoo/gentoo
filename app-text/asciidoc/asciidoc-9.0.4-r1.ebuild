@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
 inherit autotools optfeature python-single-r1 readme.gentoo-r1
 
 DESCRIPTION="A plain text human readable/writable document format"
-HOMEPAGE="https://asciidoc.org/ https://github.com/asciidoc/asciidoc-py3/"
+HOMEPAGE="https://asciidoc.org/ https://github.com/asciidoc-py/asciidoc-py/"
 SRC_URI="https://github.com/asciidoc-py/asciidoc-py/releases/download/${PV}/${P}.tar.gz -> ${P}.new.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

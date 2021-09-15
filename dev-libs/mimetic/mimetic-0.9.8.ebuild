@@ -16,7 +16,10 @@ IUSE="doc examples"
 
 BDEPEND="doc? ( app-doc/doxygen )"
 
-PATCHES=( "${FILESDIR}/signed-char.patch" )
+PATCHES=(
+	"${FILESDIR}/signed-char.patch"
+	"${FILESDIR}/${P}-build-mmap.patch"
+)
 
 src_prepare() {
 	default

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 RUBY_OPTIONAL="yes"
 
 inherit autotools flag-o-matic java-pkg-opt-2 perl-functions ruby-ng
@@ -32,7 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-perl.patch
 	"${FILESDIR}"/${PN}-ruby19.patch
 	"${FILESDIR}"/${PN}-runpath.patch
-	"${FILESDIR}"/${PN}-1.8.78-darwin.patch
+	"${FILESDIR}"/${PN}-darwin.patch
 )
 HTML_DOCS=( doc/. )
 
@@ -169,19 +169,19 @@ src_install() {
 	qdbm_foreach_api
 	use static-libs || find "${ED}" -name '*.a' -delete || die
 
-	rm -rf "${ED}"/usr/share/${PN} || die
+	rm -rf "${ED}"/usr/share/${PN}
 
 	if use java; then
 		java-pkg_dojar "${ED}"/usr/$(get_libdir)/*.jar
-		rm -f "${ED}"/usr/$(get_libdir)/*.jar || die
+		rm -f "${ED}"/usr/$(get_libdir)/*.jar
 	fi
 	if use perl; then
 		perl_delete_module_manpages
 		perl_fix_packlist
 	fi
 
-	rm -f "${ED}"/usr/bin/*test || die
-	rm -f "${ED}"/usr/share/man/man1/*test.1* || die
+	rm -f "${ED}"/usr/bin/*test
+	rm -f "${ED}"/usr/share/man/man1/*test.1*
 }
 
 each_ruby_install() {

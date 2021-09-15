@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
-inherit bash-completion-r1 eutils
+inherit bash-completion-r1
 
 DESCRIPTION="quilt patch manager"
 HOMEPAGE="https://savannah.nongnu.org/projects/quilt"
@@ -48,7 +48,7 @@ src_configure() {
 src_install() {
 	emake BUILD_ROOT="${D}" install
 
-	rm -rf "${ED}"usr/share/doc/${P}
+	rm -rf "${ED}"/usr/share/doc/${P}
 	dodoc AUTHORS TODO "doc/README" "doc/README.MAIL" "doc/quilt.pdf"
 
 	rm -rf "${ED}"/etc/bash_completion.d

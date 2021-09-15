@@ -1,0 +1,146 @@
+From: Sam James <sam@gentoo.org>
+Date: Thu, 22 Apr 2021 13:47:33 +0000
+Subject: Respect *FLAGS, don't strip symbols
+
+--- a/src/enet/Makefile
++++ b/src/enet/Makefile
+@@ -1,4 +1,3 @@
+-CFLAGS=-O3 -fomit-frame-pointer
+ override CFLAGS:= $(CFLAGS) -Iinclude $(shell ./check_cflags.sh $(CC) $(CFLAGS))
+ 
+ OBJS= \
+--- a/src/rpggame/Makefile
++++ b/src/rpggame/Makefile
+@@ -1,4 +1,3 @@
+-CXXFLAGS= -Os
+ override CXXFLAGS+= -Wall -fsigned-char -fno-exceptions -fno-rtti
+ 
+ PLATFORM= $(shell uname -s)
+@@ -7,11 +6,6 @@ PLATFORM_PREFIX= native
+ INCLUDES= -I../shared -I../engine -I../rpggame -I../enet/include
+ 
+ STRIP=
+-ifeq (,$(findstring -g,$(CXXFLAGS)))
+-ifeq (,$(findstring -pg,$(CXXFLAGS)))
+-  STRIP=strip
+-endif
+-endif
+ 
+ MV=mv
+ 
+@@ -118,7 +112,7 @@ clean:
+ $(filter-out shared/%,$(CLIENT_PCH)): $(filter shared/%,$(CLIENT_PCH))
+ 
+ %.h.gch: %.h
+-	$(CXX) $(CXXFLAGS) -x c++-header -o $@.tmp $<
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -x c++-header -o $@.tmp $<
+ 	$(MV) $@.tmp $@
+ 
+ $(CLIENT_OBJS): CXXFLAGS += $(CLIENT_INCLUDES)
+@@ -129,13 +123,13 @@ $(filter ../rpggame/%,$(CLIENT_OBJS)): $(filter ../rpggame/%,$(CLIENT_PCH))
+ ifneq (,$(findstring MINGW,$(PLATFORM)))
+ client: $(CLIENT_OBJS)
+ 	$(WINDRES) -I ../vcpp -i ../vcpp/mingw.rc -J rc -o ../vcpp/mingw.res -O coff 
+-	$(CXX) $(CXXFLAGS) -o ../$(WINBIN)/rpg.exe ../vcpp/mingw.res $(CLIENT_OBJS) $(CLIENT_LIBS)
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o ../$(WINBIN)/rpg.exe ../vcpp/mingw.res $(CLIENT_OBJS) $(CLIENT_LIBS)
+ ifneq (,$(STRIP))
+ 	$(STRIP) ../../bin/rpg.exe
+ endif
+ else
+ client:	libenet $(CLIENT_OBJS)
+-	$(CXX) $(CXXFLAGS) -o rpg_client $(CLIENT_OBJS) $(CLIENT_LIBS)
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o rpg_client $(CLIENT_OBJS) $(CLIENT_LIBS)
+ endif
+ 
+ depend:
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -1,4 +1,3 @@
+-CXXFLAGS= -O3 -fomit-frame-pointer -ffast-math
+ override CXXFLAGS+= -Wall -fsigned-char -fno-exceptions -fno-rtti
+ 
+ PLATFORM= $(shell uname -s | tr '[:lower:]' '[:upper:]')
+@@ -7,12 +6,6 @@ PLATFORM_PREFIX= native
+ INCLUDES= -Ishared -Iengine -Ifpsgame -Ienet/include
+ 
+ STRIP=
+-ifeq (,$(findstring -g,$(CXXFLAGS)))
+-ifeq (,$(findstring -pg,$(CXXFLAGS)))
+-  STRIP=strip
+-endif
+-endif
+-
+ MV=mv
+ 
+ ifneq (,$(findstring MINGW,$(PLATFORM)))
+@@ -65,8 +58,8 @@ CLIENT_LIBS= -F../sauerbraten.app/Contents/Frameworks/ -framework SDL2 -framewor
+ CLIENT_LIBS+= -framework SDL2_mixer -framework CoreAudio -framework AudioToolbox
+ CLIENT_LIBS+= -framework AudioUnit -framework OpenGL -framework Cocoa -lz -Lenet -lenet
+ else
+-CLIENT_INCLUDES= $(INCLUDES) -I/usr/X11R6/include `sdl2-config --cflags`
+-CLIENT_LIBS= -Lenet -lenet -L/usr/X11R6/lib -lX11 `sdl2-config --libs` -lSDL2_image -lSDL2_mixer -lz -lGL
++CLIENT_INCLUDES= $(INCLUDES) `sdl2-config --cflags`
++CLIENT_LIBS= -Lenet -lenet -lX11 `sdl2-config --libs` -lSDL2_image -lSDL2_mixer -lz -lGL
+ endif
+ endif
+ ifeq ($(PLATFORM),LINUX)
+@@ -173,11 +166,11 @@ clean:
+ $(filter-out shared/%,$(CLIENT_PCH)): $(filter shared/%,$(CLIENT_PCH))
+ 
+ %.h.gch: %.h
+-	$(CXX) $(CXXFLAGS) -x c++-header -o $@.tmp $<
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -x c++-header -o $@.tmp $<
+ 	$(MV) $@.tmp $@
+ 
+ %-standalone.o: %.cpp
+-	$(CXX) $(CXXFLAGS) -c -o $@ $<
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
+ 
+ $(CLIENT_OBJS): CXXFLAGS += $(CLIENT_INCLUDES)
+ $(filter shared/%,$(CLIENT_OBJS)): $(filter shared/%,$(CLIENT_PCH))
+@@ -188,35 +181,35 @@ $(SERVER_MASTER_OBJS): CXXFLAGS += $(SERVER_INCLUDES)
+ 
+ ifneq (,$(findstring MINGW,$(PLATFORM)))
+ client: $(CLIENT_OBJS)
+-	$(WINDRES) -I vcpp -i vcpp/mingw.rc -J rc -o vcpp/mingw.res -O coff
+-	$(CXX) $(CXXFLAGS) -o $(WINBIN)/sauerbraten.exe vcpp/mingw.res $(CLIENT_OBJS) $(CLIENT_LIBS)
++	$(WINDRES) -I vcpp -i vcpp/mingw.rc -J rc $(LDFLAGS) -o vcpp/mingw.res $(LDFLAGS) -o coff
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $(WINBIN)/sauerbraten.exe vcpp/mingw.res $(CLIENT_OBJS) $(CLIENT_LIBS)
+ 
+ server: $(SERVER_OBJS)
+-	$(WINDRES) -I vcpp -i vcpp/mingw.rc -J rc -o vcpp/mingw.res -O coff
+-	$(CXX) $(CXXFLAGS) -o $(WINBIN)/sauer_server.exe vcpp/mingw.res $(SERVER_OBJS) $(SERVER_LIBS)
++	$(WINDRES) -I vcpp -i vcpp/mingw.rc -J rc $(LDFLAGS) -o vcpp/mingw.res $(LDFLAGS) -o coff
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $(WINBIN)/sauer_server.exe vcpp/mingw.res $(SERVER_OBJS) $(SERVER_LIBS)
+ 
+ master: $(MASTER_OBJS)
+-	$(CXX) $(CXXFLAGS) -o $(WINBIN)/sauer_master.exe $(MASTER_OBJS) $(MASTER_LIBS)
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $(WINBIN)/sauer_master.exe $(MASTER_OBJS) $(MASTER_LIBS)
+ 
+ install: all
+ else
+ client:	libenet $(CLIENT_OBJS)
+-	$(CXX) $(CXXFLAGS) -o sauer_client $(CLIENT_OBJS) $(CLIENT_LIBS)
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o sauer_client $(CLIENT_OBJS) $(CLIENT_LIBS)
+ ifneq (,$(findstring DARWIN,$(PLATFORM)))
+ 	install_name_tool -add_rpath @executable_path/../Frameworks sauer_client
+ endif
+ 
+ server:	libenet $(SERVER_OBJS)
+-	$(CXX) $(CXXFLAGS) -o sauer_server $(SERVER_OBJS) $(SERVER_LIBS)
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o sauer_server $(SERVER_OBJS) $(SERVER_LIBS)
+ 
+ master: libenet $(MASTER_OBJS)
+-	$(CXX) $(CXXFLAGS) -o sauer_master $(MASTER_OBJS) $(MASTER_LIBS)
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o sauer_master $(MASTER_OBJS) $(MASTER_LIBS)
+ 
+ shared/cube2font.o: shared/cube2font.c
+-	$(CXX) $(CXXFLAGS) -c -o $@ $< `freetype-config --cflags`
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c -o $@ $< `freetype-config --cflags`
+ 
+ cube2font: shared/cube2font.o
+-	$(CXX) $(CXXFLAGS) -o cube2font shared/cube2font.o `freetype-config --libs` -lz
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o cube2font shared/cube2font.o `freetype-config --libs` -lz
+ 
+ ifneq (,$(findstring DARWIN,$(PLATFORM)))
+ install: client

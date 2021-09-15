@@ -1,5 +1,5 @@
---- glightoff.desktop.in.old	2014-11-22 17:57:47.019838007 +0100
-+++ glightoff.desktop.in	2014-11-22 17:58:15.484321664 +0100
+--- a/glightoff.desktop.in
++++ b/glightoff.desktop.in
 @@ -1,10 +1,9 @@
  [Desktop Entry]
 -Encoding=UTF-8

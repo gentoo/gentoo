@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit toolchain-funcs
+
 DESCRIPTION="Ambassador of Pain is a curses based game with only 64 lines of code"
 HOMEPAGE="http://raffi.at/view/code/aop"
 SRC_URI="http://www.raffi.at/code/${PN}/${P}.tar.gz"
@@ -22,6 +24,8 @@ PATCHES=(
 src_prepare() {
 	default
 
+	tc-export CC PKG_CONFIG
+
 	sed -i \
 		-e "s#/usr/local/share#/usr/share/${PN}#" \
 		aop.c || die
@@ -30,7 +34,7 @@ src_prepare() {
 src_install() {
 	dobin aop
 
-	insinto "/usr/share/${PN}"
+	insinto /usr/share/${PN}
 	doins aop-level-*.txt
 
 	einstalldocs

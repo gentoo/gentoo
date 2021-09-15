@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 
 inherit python-any-r1
 
@@ -52,7 +52,8 @@ PATCHES=(
 # All patches have been submitted upstream.
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	# Avoid python-any-r1_pkg_setup
+	:
 }
 
 src_prepare() {
@@ -67,6 +68,11 @@ src_prepare() {
 	if ! has_version sys-apps/texinfo ; then
 		touch doc/{stamp-vti,version.texi,automake.info} || die
 	fi
+}
+
+src_configure() {
+	use test && python_setup
+	default
 }
 
 # slot the info pages.  do this w/out munging the source so we don't have

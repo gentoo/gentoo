@@ -1,12 +1,18 @@
 #!/sbin/openrc-run
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+get_config_option() {
+	awk -v option="${1}" -F = '$1 == option { print $2 }' "${PDNS_CONFIG}"
+}
 
 PDNS_CONFIGDIR="${PDNS_CONFIGDIR:-/etc/powerdns}"
 
 PDNS_CONFIG="${PDNS_CONFIGDIR}/recursor.conf"
-PDNS_CHROOTDIR="$( awk -F = '$1 == "chroot" { print $2 }' "${PDNS_CONFIG}" )"
-PDNS_SOCKETDIR="$( awk -F = '$1 == "socket-dir" { print $2 }' "${PDNS_CONFIG}" )"
+PDNS_CHROOTDIR="$( get_config_option chroot )"
+PDNS_SOCKETDIR="$( get_config_option socket-dir )"
+PDNS_SETUID="$( get_config_option setuid )"
+PDNS_SETGID="$( get_config_option setgid )"
 [ -z "${PDNS_SOCKETDIR}" -a -z "${PDNS_CHROOTDIR}" ] && PDNS_SOCKETDIR="/var/run/pdns-recursor"
 
 name="PowerDNS Recursor"
@@ -31,7 +37,7 @@ depend() {
 }
 
 start_pre() {
-	checkpath --directory --mode 750 "${PDNS_CHROOTDIR}/${PDNS_SOCKETDIR}"
+	checkpath --directory --owner "${PDNS_SETUID:-root}:${PDNS_SETGID:-root}" --mode 750 "${PDNS_CHROOTDIR}/${PDNS_SOCKETDIR}"
 }
 
 ping() {

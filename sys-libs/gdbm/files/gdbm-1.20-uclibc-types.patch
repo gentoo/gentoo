@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/808480
+
+From: Sergey Poznyakoff <gray@gnu.org>
+Date: Wed, 7 Jul 2021 09:36:22 +0300
+Subject: Fix https://puszcza.gnu.org.ua/bugs/?515
+
+* src/gdbm.h.in: Include sys/types.h
+--- a/src/gdbm.h.in
++++ b/src/gdbm.h.in
+@@ -30,6 +30,7 @@
+ # define _GDBM_H_
+ 
+ # include <stdio.h>
++# include <sys/types.h>
+ 
+ /* GDBM C++ support */
+ # if defined(__cplusplus) || defined(c_plusplus)

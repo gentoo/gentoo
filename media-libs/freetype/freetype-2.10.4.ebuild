@@ -43,7 +43,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 "
-PDEPEND="infinality? ( media-libs/fontconfig-infinality )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.10.3-sizeof-types.patch # 459966
@@ -235,7 +234,4 @@ multilib_src_install_all() {
 	fi
 
 	find "${ED}" -name '*.la' -delete || die
-	if ! use static-libs ; then
-		find "${ED}" -name '*.a' -delete || die
-	fi
 }

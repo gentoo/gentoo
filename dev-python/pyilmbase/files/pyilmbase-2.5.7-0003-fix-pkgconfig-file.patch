@@ -1,0 +1,30 @@
+From 7469db402e2affb094585c374518765c69af703d Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Tue, 22 Jun 2021 11:47:01 +0200
+Subject: [PATCH 2/2] fix pkgconfig file
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ config/CMakeLists.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/config/CMakeLists.txt b/config/CMakeLists.txt
+index a4139bc..45dcca4 100644
+--- a/config/CMakeLists.txt
++++ b/config/CMakeLists.txt
+@@ -15,9 +15,9 @@ if(PYILMBASE_INSTALL_PKG_CONFIG)
+   # use a helper function to avoid variable pollution, but pretty simple
+   function(pyilmbase_pkg_config_help pcinfile)
+     set(prefix ${CMAKE_INSTALL_PREFIX})
+-    set(exec_prefix ${CMAKE_INSTALL_BINDIR})
+-    set(libdir ${CMAKE_INSTALL_LIBDIR})
+-    set(includedir ${CMAKE_INSTALL_INCLUDEDIR})
++    set(exec_prefix "\${prefix}")
++    set(libdir "\${exec_prefix}/${CMAKE_INSTALL_LIBDIR}")
++    set(includedir "\${prefix}/${CMAKE_INSTALL_INCLUDEDIR}")
+     string(TOUPPER "${CMAKE_BUILD_TYPE}" uppercase_CMAKE_BUILD_TYPE)
+     set(LIB_SUFFIX_DASH ${OPENEXR_LIB_SUFFIX}${CMAKE_${uppercase_CMAKE_BUILD_TYPE}_POSTFIX})
+     string(REPLACE ".in" "" pcout ${pcinfile})
+-- 
+2.32.0
+

@@ -86,6 +86,7 @@ test_downgrade_arch_flags 10  "-march=native"     "-march=native"
 test_downgrade_arch_flags 8   "-march=znver1"     "-march=znver2"
 test_downgrade_arch_flags 4.2 "-march=native"     "-march=native"
 test_downgrade_arch_flags 4.1 "-march=nocona"     "-march=native"
+test_downgrade_arch_flags 9   "-march=znver2"     "-march=znver3"
 
 test_downgrade_arch_flags 10  "-march=foo -mno-sha -mno-rtm -mno-avx2 -mno-avx -mno-sse4.1" "-march=foo -mno-sha -mno-rtm -mno-avx2 -mno-avx -mno-sse4.1"
 test_downgrade_arch_flags 4.9 "-march=foo -mno-sha -mno-rtm -mno-avx2 -mno-avx -mno-sse4.1" "-march=foo -mno-sha -mno-rtm -mno-avx2 -mno-avx -mno-sse4.1"

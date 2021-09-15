@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit flag-o-matic
+
 DESCRIPTION="Basic CD Player for blackbox wm"
 HOMEPAGE="http://tranber1.free.fr/bbcd.html"
 SRC_URI="http://tranber1.free.fr/${P}.tar.gz"
@@ -22,6 +24,11 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc3.3.patch
 	"${FILESDIR}"/${P}-gcc4.3.patch
 )
+
+src_configure() {
+	append-cxxflags -std=c++14
+	default
+}
 
 src_install() {
 	default

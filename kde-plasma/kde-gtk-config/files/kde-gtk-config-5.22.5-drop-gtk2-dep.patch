@@ -1,0 +1,25 @@
+From 090cfb2db4bc9c032cd7a7c12cf2a317c248e3c6 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Mon, 2 Aug 2021 13:52:38 +0200
+Subject: [PATCH] Drop unused dependency on gtk+-2.0
+
+FWICT it's not actually used anywhere.
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 45d02ef..f102642 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,6 @@ find_package(Sass REQUIRED)
+ find_package(XSettingsd)
+ 
+ pkg_check_modules(GTK+3 REQUIRED IMPORTED_TARGET gtk+-3.0)
+-pkg_check_modules(GTK+2 REQUIRED IMPORTED_TARGET gtk+-2.0)
+ pkg_check_modules(GLib2 REQUIRED IMPORTED_TARGET glib-2.0)
+ pkg_check_modules(GObject REQUIRED IMPORTED_TARGET gobject-2.0)
+ pkg_check_modules(GIO REQUIRED IMPORTED_TARGET gio-2.0)
+-- 
+GitLab
+

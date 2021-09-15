@@ -12,12 +12,11 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Hex editor by KDE"
-HOMEPAGE="https://apps.kde.org/en/okteta
-https://utils.kde.org/projects/okteta/"
+HOMEPAGE="https://apps.kde.org/okteta/ https://utils.kde.org/projects/okteta/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 LICENSE="GPL-2 handbook? ( FDL-1.2 )"

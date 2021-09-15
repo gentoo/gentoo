@@ -1,0 +1,31 @@
+From 0bf4e428c76270f4534a0a8df3cf6912157f22ab Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Sch=C3=A4pers?= <bjoern@hazardy.de>
+Date: Sat, 17 Apr 2021 20:57:10 +0200
+Subject: [PATCH] Fix build with LLVM 13
+
+---
+ src/ClazyStandaloneMain.cpp | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/ClazyStandaloneMain.cpp b/src/ClazyStandaloneMain.cpp
+index 41c4fcf9..7b4cf5d3 100644
+--- a/src/ClazyStandaloneMain.cpp
++++ b/src/ClazyStandaloneMain.cpp
+@@ -158,7 +158,13 @@ llvm::IntrusiveRefCntPtr<vfs::FileSystem> getVfsFromFile(const std::string &over
+ 
+ int main(int argc, const char **argv)
+ {
+-    CommonOptionsParser optionsParser(argc, argv, s_clazyCategory, cl::ZeroOrMore);
++    auto expectedParser = CommonOptionsParser::create(argc, argv, s_clazyCategory, cl::ZeroOrMore);
++    if (!expectedParser) {
++       llvm::errs() << expectedParser.takeError();
++       return 1;
++    }
++
++    auto &optionsParser = expectedParser.get();
+     // llvm::errs() << optionsParser.getSourcePathList().size() << "\n";
+ 
+     if (s_supportedChecks.getValue()) {
+-- 
+GitLab
+

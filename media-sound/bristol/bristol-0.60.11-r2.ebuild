@@ -40,6 +40,8 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export PKG_CONFIG
+
 	append-cflags -fcommon
 	econf \
 		--disable-static \

@@ -17,6 +17,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2021-08-13)
+# dev-libs/efl is stabilized on x86.
+app-crypt/pinentry -efl
+
+# Sam James <sam@gentoo.org> (2021-07-17)
+# Haskell isn't stable on amd64 (or anywhere)
+# bug #801652
+dev-util/diffoscope haskell
+
 # Sam James <sam@gentoo.org> (2021-03-04)
 # Dependencies not yet stable, drags in
 # large amount of fabric. bug #763954
@@ -39,7 +48,6 @@ app-metrics/collectd collectd_plugins_slurm
 # Mask experimental contrib repo
 # (except what's needed by digikam, dilfridge)
 media-libs/opencv contribcvv contribhdf contribsfm contribxfeatures2d gflags glog tesseract
-<media-libs/opencv-4.4.0 contrib contribdnn
 
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # unmask sssd for sudo

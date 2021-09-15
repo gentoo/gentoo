@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,14 +12,13 @@ DESCRIPTION="Support for the SSH 2 protocol via libssh2"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gcrypt libressl"
+IUSE="gcrypt"
 
 RDEPEND="
 	sys-libs/zlib
 	net-libs/libssh2
 	!gcrypt? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		dev-libs/openssl:0
 	)
 	gcrypt? (
 		dev-libs/libgcrypt:0

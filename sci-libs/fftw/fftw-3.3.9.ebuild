@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/FFTW/fftw3.git"
 else
 	SRC_URI="http://www.fftw.org/${PN}-${PV/_p/-pl}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 LICENSE="GPL-2+"
@@ -147,13 +147,16 @@ src_install() {
 		rm -r "${ED}"/usr/share/doc/${PF}/html || die
 	fi
 
-	local x
-	for x in "${ED}"/usr/lib*/pkgconfig/*.pc; do
-		local u
-		for u in $(usev mpi) $(usev threads) $(usex openmp omp ""); do
-			sed -e "s|-lfftw3[flq]\?|&_${u} &|" "$x" > "${x%.pc}_${u}.pc" || die
+	augment_pc_files() {
+		local x
+		for x in "${ED}"/usr/$(get_libdir)/pkgconfig/*.pc; do
+			local u
+			for u in $(usev mpi) $(usev threads) $(usex openmp omp ""); do
+				sed -e "s|-lfftw3[flq]\?|&_${u} &|" "${x}" > "${x%.pc}_${u}.pc" || die
+			done
 		done
-	done
+	}
+	multilib_foreach_abi augment_pc_files
 
 	# fftw uses pkg-config to record its private dependencies
 	find "${ED}" -name '*.la' -delete || die

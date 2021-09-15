@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="Bitstream Vera font family"
 HOMEPAGE="https://www.gnome.org/fonts/"
-SRC_URI=mirror://gnome/sources/ttf-bitstream-vera/1.10/ttf-bitstream-vera-1.10.tar.bz2
+SRC_URI="mirror://gnome/sources/ttf-bitstream-vera/${PV}/${P}.tar.bz2"
 
 LICENSE="BitstreamVera"
 SLOT="0"

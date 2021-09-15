@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Robust and reusable Executor for joblib"
@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 ~riscv x86"
 
 RDEPEND="
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
@@ -27,6 +27,7 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/${P}-libc.patch
+	"${FILESDIR}"/${P}-fix-py3.10-tests.patch
 )
 
 python_test() {
@@ -38,6 +39,8 @@ python_test() {
 		# one test that uses a lot of memory, also broken on 32-bit
 		# platforms
 		--skip-high-memory
+		# breaks teardown
+		-p no:xvfb
 	)
 
 	epytest "${args[@]}"

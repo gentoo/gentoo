@@ -42,6 +42,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.2.1-fix-build-boost-1-76.patch
+)
+
 pkg_pretend() {
 	if use python; then
 		check-reqs_pkg_pretend

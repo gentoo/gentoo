@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit apache-module eutils tmpfiles
+inherit apache-module epatch tmpfiles
 
 DESCRIPTION="An Apache authentication module using Kerberos"
 HOMEPAGE="http://modauthkerb.sourceforge.net/"
@@ -51,4 +51,8 @@ src_compile() {
 src_install() {
 	apache-module_src_install
 	dotmpfiles "${FILESDIR}/${PN}.conf"
+}
+
+pkg_postinst() {
+	tmpfiles_process ${PN}.conf
 }

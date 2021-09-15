@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ ECM_HANDBOOK="forceoptional"
 inherit ecm kde.org
 
 DESCRIPTION="Backup scheduler for the Plasma desktop"
-HOMEPAGE="https://apps.kde.org/en/kup"
+HOMEPAGE="https://apps.kde.org/kup/"
 SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+"

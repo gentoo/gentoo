@@ -3,6 +3,7 @@
 
 EAPI=7
 
+# pkgcheck note: toolchain-funcs is not unused
 inherit linux-mod toolchain-funcs udev
 
 if [[ ${PV} == 9999 ]]; then
@@ -20,10 +21,10 @@ HOMEPAGE="https://atar-axis.github.io/xpadneo/"
 LICENSE="GPL-3"
 SLOT="0"
 
-S+="/hid-${PN}"
+S="${WORKDIR}/${P}/hid-${PN}"
 MODULE_NAMES="hid-${PN}(kernel/drivers/hid::src)"
 BUILD_PARAMS='V=1 LD="$(tc-getLD)" KERNEL_SOURCE_DIR="${KV_OUT_DIR}"'
-BUILD_TARGETS="src/version.h modules"
+BUILD_TARGETS="modules"
 
 CONFIG_CHECK="INPUT_FF_MEMLESS"
 
@@ -42,19 +43,28 @@ pkg_postinst() {
 	linux-mod_pkg_postinst
 	udev_reload
 
-	local ertm=/sys/module/bluetooth/parameters/disable_ertm
-	if ! [[ ${REPLACING_VERSIONS} && $(<${ertm}) == Y ]]; then
+	local disable_ertm=/sys/module/bluetooth/parameters/disable_ertm
+	if kernel_is -ge 5 12; then
+		if [[ $(<${disable_ertm}) == Y ]]; then
+			elog "Warning: bluetooth ERTM (Enhanced ReTransmission Mode) is disabled."
+			elog "This is no longer recommended with kernel >=5.12 to use ${PN}."
+			elog "Can remove ${EROOT}/etc/modprobe.d/no-ertm.conf if it exists, and run:"
+			elog "  echo N > ${disable_ertm}"
+			elog "After changing, may need to re-pair the gamepad with bluetooth."
+		fi
+	elif [[ $(<${disable_ertm}) == N ]]; then
+		elog "Warning: bluetooth ERTM (Enhanced ReTransmission Mode) is enabled."
+		elog "While keeping enabled is recommended for rumble usage stability, it can"
+		elog "cause connection issues without a fix included in kernel >=5.12"
+		elog "If needed, this mode can be disabled by running:"
+		elog "  echo Y > ${disable_ertm}"
+		elog "  echo 'options bluetooth disable_ertm=y' > ${EROOT}/etc/modprobe.d/no-ertm.conf"
+		elog "After changing, may need to re-pair the gamepad with bluetooth."
+	fi
+
+	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog "To pair the gamepad and view module options, see documentation in:"
-		elog "  ${EROOT}/usr/share/doc/${PF}"
-		elog
-		elog "Be warned that bluetooth's ERTM (Enhanced ReTransmission Mode) can"
-		elog "cause the gamepad to enter a re-connection loop."
-		elog "- To disable immediately:"
-		elog "    echo Y > ${ertm}"
-		elog "- To disable for next and subsequent boot:"
-		elog "    echo 'options bluetooth disable_ertm=y' > ${EROOT}/etc/modprobe.d/no-ertm.conf"
-		elog "- Or, if bluetooth isn't a module, add to the kernel's command line:"
-		elog "    bluetooth.disable_ertm=y"
+		elog "  ${EROOT}/usr/share/doc/${PF}/"
 	fi
 }
 

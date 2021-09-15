@@ -1,0 +1,229 @@
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sat, 22 May 2021 17:04:12 +0200
+Subject: [PATCH] add version to binaries for slotting
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ src/bin/exr2aces/CMakeLists.txt       | 10 +++++-----
+ src/bin/exrenvmap/CMakeLists.txt      | 10 +++++-----
+ src/bin/exrheader/CMakeLists.txt      | 10 +++++-----
+ src/bin/exrmakepreview/CMakeLists.txt | 10 +++++-----
+ src/bin/exrmaketiled/CMakeLists.txt   | 10 +++++-----
+ src/bin/exrmultipart/CMakeLists.txt   | 10 +++++-----
+ src/bin/exrmultiview/CMakeLists.txt   | 10 +++++-----
+ src/bin/exrstdattr/CMakeLists.txt     | 10 +++++-----
+ 8 files changed, 40 insertions(+), 40 deletions(-)
+
+diff --git a/src/bin/exr2aces/CMakeLists.txt b/src/bin/exr2aces/CMakeLists.txt
+index 72c4e1c..ede5973 100644
+--- a/src/bin/exr2aces/CMakeLists.txt
++++ b/src/bin/exr2aces/CMakeLists.txt
+@@ -1,14 +1,14 @@
+ # SPDX-License-Identifier: BSD-3-Clause
+ # Copyright (c) Contributors to the OpenEXR Project.
+ 
+-add_executable(exr2aces main.cpp)
+-target_link_libraries(exr2aces OpenEXR::OpenEXR)
+-set_target_properties(exr2aces PROPERTIES
++add_executable(exr2aces-${OpenEXR_VERSION_MAJOR} main.cpp)
++target_link_libraries(exr2aces-${OpenEXR_VERSION_MAJOR} OpenEXR::OpenEXR)
++set_target_properties(exr2aces-${OpenEXR_VERSION_MAJOR} PROPERTIES
+   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+ )
+ if(OPENEXR_INSTALL_TOOLS)
+-  install(TARGETS exr2aces DESTINATION ${CMAKE_INSTALL_BINDIR})
++  install(TARGETS exr2aces-${OpenEXR_VERSION_MAJOR} DESTINATION ${CMAKE_INSTALL_BINDIR})
+ endif()
+ if(WIN32 AND BUILD_SHARED_LIBS)
+-  target_compile_definitions(exr2aces PRIVATE OPENEXR_DLL)
++  target_compile_definitions(exr2aces-${OpenEXR_VERSION_MAJOR} PRIVATE OPENEXR_DLL)
+ endif()
+diff --git a/src/bin/exrenvmap/CMakeLists.txt b/src/bin/exrenvmap/CMakeLists.txt
+index bbd26c0..cbe8401 100644
+--- a/src/bin/exrenvmap/CMakeLists.txt
++++ b/src/bin/exrenvmap/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ # SPDX-License-Identifier: BSD-3-Clause
+ # Copyright (c) Contributors to the OpenEXR Project.
+ 
+-add_executable( exrenvmap
++add_executable( exrenvmap-${OpenEXR_VERSION_MAJOR}
+   makeLatLongMap.cpp
+   readInputImage.cpp
+   resizeImage.cpp
+@@ -11,13 +11,13 @@ add_executable( exrenvmap
+   EnvmapImage.cpp
+ )
+ 
+-target_link_libraries(exrenvmap OpenEXR::OpenEXR)
+-set_target_properties(exrenvmap PROPERTIES
++target_link_libraries(exrenvmap-${OpenEXR_VERSION_MAJOR} OpenEXR::OpenEXR)
++set_target_properties(exrenvmap-${OpenEXR_VERSION_MAJOR} PROPERTIES
+   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+ )
+ if(OPENEXR_INSTALL_TOOLS)
+-  install(TARGETS exrenvmap DESTINATION ${CMAKE_INSTALL_BINDIR})
++  install(TARGETS exrenvmap-${OpenEXR_VERSION_MAJOR} DESTINATION ${CMAKE_INSTALL_BINDIR})
+ endif()
+ if(WIN32 AND BUILD_SHARED_LIBS)
+-  target_compile_definitions(exrenvmap PRIVATE OPENEXR_DLL)
++  target_compile_definitions(exrenvmap-${OpenEXR_VERSION_MAJOR} PRIVATE OPENEXR_DLL)
+ endif()
+diff --git a/src/bin/exrheader/CMakeLists.txt b/src/bin/exrheader/CMakeLists.txt
+index c427445..b8b0e9a 100644
+--- a/src/bin/exrheader/CMakeLists.txt
++++ b/src/bin/exrheader/CMakeLists.txt
+@@ -1,14 +1,14 @@
+ # SPDX-License-Identifier: BSD-3-Clause
+ # Copyright (c) Contributors to the OpenEXR Project.
+ 
+-add_executable(exrheader main.cpp)
+-target_link_libraries(exrheader OpenEXR::OpenEXR)
+-set_target_properties(exrheader PROPERTIES
++add_executable(exrheader-${OpenEXR_VERSION_MAJOR} main.cpp)
++target_link_libraries(exrheader-${OpenEXR_VERSION_MAJOR} OpenEXR::OpenEXR)
++set_target_properties(exrheader-${OpenEXR_VERSION_MAJOR} PROPERTIES
+   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+ )
+ if(OPENEXR_INSTALL_TOOLS)
+-  install(TARGETS exrheader DESTINATION ${CMAKE_INSTALL_BINDIR})
++  install(TARGETS exrheader-${OpenEXR_VERSION_MAJOR} DESTINATION ${CMAKE_INSTALL_BINDIR})
+ endif()
+ if(WIN32 AND BUILD_SHARED_LIBS)
+-  target_compile_definitions(exrheader PRIVATE OPENEXR_DLL)
++  target_compile_definitions(exrheader-${OpenEXR_VERSION_MAJOR} PRIVATE OPENEXR_DLL)
+ endif()
+diff --git a/src/bin/exrmakepreview/CMakeLists.txt b/src/bin/exrmakepreview/CMakeLists.txt
+index bb8b548..03c0687 100644
+--- a/src/bin/exrmakepreview/CMakeLists.txt
++++ b/src/bin/exrmakepreview/CMakeLists.txt
+@@ -1,17 +1,17 @@
+ # SPDX-License-Identifier: BSD-3-Clause
+ # Copyright (c) Contributors to the OpenEXR Project.
+ 
+-add_executable(exrmakepreview
++add_executable(exrmakepreview-${OpenEXR_VERSION_MAJOR}
+   main.cpp
+   makePreview.cpp
+ )
+-target_link_libraries(exrmakepreview OpenEXR::OpenEXR)
+-set_target_properties(exrmakepreview PROPERTIES
++target_link_libraries(exrmakepreview-${OpenEXR_VERSION_MAJOR} OpenEXR::OpenEXR)
++set_target_properties(exrmakepreview-${OpenEXR_VERSION_MAJOR} PROPERTIES
+   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+ )
+ if(OPENEXR_INSTALL_TOOLS)
+-  install(TARGETS exrmakepreview DESTINATION ${CMAKE_INSTALL_BINDIR})
++  install(TARGETS exrmakepreview-${OpenEXR_VERSION_MAJOR} DESTINATION ${CMAKE_INSTALL_BINDIR})
+ endif()
+ if(WIN32 AND BUILD_SHARED_LIBS)
+-  target_compile_definitions(exrmakepreview PRIVATE OPENEXR_DLL)
++  target_compile_definitions(exrmakepreview-${OpenEXR_VERSION_MAJOR} PRIVATE OPENEXR_DLL)
+ endif()
+diff --git a/src/bin/exrmaketiled/CMakeLists.txt b/src/bin/exrmaketiled/CMakeLists.txt
+index 6c8dfa5..7116b54 100644
+--- a/src/bin/exrmaketiled/CMakeLists.txt
++++ b/src/bin/exrmaketiled/CMakeLists.txt
+@@ -1,18 +1,18 @@
+ # SPDX-License-Identifier: BSD-3-Clause
+ # Copyright (c) Contributors (c) to the OpenEXR Project.
+ 
+-add_executable(exrmaketiled 
++add_executable(exrmaketiled-${OpenEXR_VERSION_MAJOR}
+   makeTiled.cpp
+   main.cpp
+   Image.cpp
+ )
+-target_link_libraries(exrmaketiled OpenEXR::OpenEXR)
+-set_target_properties(exrmaketiled PROPERTIES
++target_link_libraries(exrmaketiled-${OpenEXR_VERSION_MAJOR} OpenEXR::OpenEXR)
++set_target_properties(exrmaketiled-${OpenEXR_VERSION_MAJOR} PROPERTIES
+   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+ )
+ if(OPENEXR_INSTALL_TOOLS)
+-  install(TARGETS exrmaketiled DESTINATION ${CMAKE_INSTALL_BINDIR})
++  install(TARGETS exrmaketiled-${OpenEXR_VERSION_MAJOR} DESTINATION ${CMAKE_INSTALL_BINDIR})
+ endif()
+ if(WIN32 AND BUILD_SHARED_LIBS)
+-  target_compile_definitions(exrmaketiled PRIVATE OPENEXR_DLL)
++  target_compile_definitions(exrmaketiled-${OpenEXR_VERSION_MAJOR} PRIVATE OPENEXR_DLL)
+ endif()
+diff --git a/src/bin/exrmultipart/CMakeLists.txt b/src/bin/exrmultipart/CMakeLists.txt
+index 7f8fc1b..dad8c8d 100644
+--- a/src/bin/exrmultipart/CMakeLists.txt
++++ b/src/bin/exrmultipart/CMakeLists.txt
+@@ -1,14 +1,14 @@
+ # SPDX-License-Identifier: BSD-3-Clause
+ # Copyright (c) Contributors to the OpenEXR Project.
+ 
+-add_executable(exrmultipart exrmultipart.cpp)
+-target_link_libraries(exrmultipart OpenEXR::OpenEXR)
+-set_target_properties(exrmultipart PROPERTIES
++add_executable(exrmultipart-${OpenEXR_VERSION_MAJOR} exrmultipart.cpp)
++target_link_libraries(exrmultipart-${OpenEXR_VERSION_MAJOR} OpenEXR::OpenEXR)
++set_target_properties(exrmultipart-${OpenEXR_VERSION_MAJOR} PROPERTIES
+   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+ )
+ if(OPENEXR_INSTALL_TOOLS)
+-  install(TARGETS exrmultipart DESTINATION ${CMAKE_INSTALL_BINDIR})
++  install(TARGETS exrmultipart-${OpenEXR_VERSION_MAJOR} DESTINATION ${CMAKE_INSTALL_BINDIR})
+ endif()
+ if(WIN32 AND BUILD_SHARED_LIBS)
+-  target_compile_definitions(exrmultipart PRIVATE OPENEXR_DLL)
++  target_compile_definitions(exrmultipart-${OpenEXR_VERSION_MAJOR} PRIVATE OPENEXR_DLL)
+ endif()
+diff --git a/src/bin/exrmultiview/CMakeLists.txt b/src/bin/exrmultiview/CMakeLists.txt
+index bbac3a6..eba48c1 100644
+--- a/src/bin/exrmultiview/CMakeLists.txt
++++ b/src/bin/exrmultiview/CMakeLists.txt
+@@ -1,18 +1,18 @@
+ # SPDX-License-Identifier: BSD-3-Clause
+ # Copyright (c) Contributors to the OpenEXR Project.
+ 
+-add_executable(exrmultiview
++add_executable(exrmultiview-${OpenEXR_VERSION_MAJOR}
+   makeMultiView.cpp
+   main.cpp
+   Image.cpp
+ )
+-target_link_libraries(exrmultiview OpenEXR::OpenEXR)
+-set_target_properties(exrmultiview PROPERTIES
++target_link_libraries(exrmultiview-${OpenEXR_VERSION_MAJOR} OpenEXR::OpenEXR)
++set_target_properties(exrmultiview-${OpenEXR_VERSION_MAJOR} PROPERTIES
+   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+ )
+ if(OPENEXR_INSTALL_TOOLS)
+-  install(TARGETS exrmultiview DESTINATION ${CMAKE_INSTALL_BINDIR})
++  install(TARGETS exrmultiview-${OpenEXR_VERSION_MAJOR} DESTINATION ${CMAKE_INSTALL_BINDIR})
+ endif()
+ if(WIN32 AND BUILD_SHARED_LIBS)
+-  target_compile_definitions(exrmultiview PRIVATE OPENEXR_DLL)
++  target_compile_definitions(exrmultiview-${OpenEXR_VERSION_MAJOR} PRIVATE OPENEXR_DLL)
+ endif()
+diff --git a/src/bin/exrstdattr/CMakeLists.txt b/src/bin/exrstdattr/CMakeLists.txt
+index 79205fc..35ac580 100644
+--- a/src/bin/exrstdattr/CMakeLists.txt
++++ b/src/bin/exrstdattr/CMakeLists.txt
+@@ -1,14 +1,14 @@
+ # SPDX-License-Identifier: BSD-3-Clause
+ # Copyright (c) Contributors to the OpenEXR Project.
+ 
+-add_executable(exrstdattr main.cpp)
+-target_link_libraries(exrstdattr OpenEXR::OpenEXR)
+-set_target_properties(exrstdattr PROPERTIES
++add_executable(exrstdattr-${OpenEXR_VERSION_MAJOR} main.cpp)
++target_link_libraries(exrstdattr-${OpenEXR_VERSION_MAJOR} OpenEXR::OpenEXR)
++set_target_properties(exrstdattr-${OpenEXR_VERSION_MAJOR} PROPERTIES
+   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+ )
+ if(OPENEXR_INSTALL_TOOLS)
+-  install(TARGETS exrstdattr DESTINATION ${CMAKE_INSTALL_BINDIR})
++  install(TARGETS exrstdattr-${OpenEXR_VERSION_MAJOR} DESTINATION ${CMAKE_INSTALL_BINDIR})
+ endif()
+ if(WIN32 AND BUILD_SHARED_LIBS)
+-  target_compile_definitions(exrstdattr PRIVATE OPENEXR_DLL)
++  target_compile_definitions(exrstdattr-${OpenEXR_VERSION_MAJOR} PRIVATE OPENEXR_DLL)
+ endif()
+-- 
+2.31.1
+

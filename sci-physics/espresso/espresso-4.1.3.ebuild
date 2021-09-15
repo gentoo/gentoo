@@ -3,10 +3,10 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake python-single-r1 savedconfig
+inherit cmake cuda python-single-r1 savedconfig
 
 DESCRIPTION="Extensible Simulation Package for Research on Soft matter"
 HOMEPAGE="http://espressomd.org"
@@ -31,8 +31,8 @@ REQUIRED_USE="
 RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/cython-0.26.1[${PYTHON_MULTI_USEDEP}]
-		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/cython-0.26.1[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 	')
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
 	fftw? ( sci-libs/fftw:3.0 )
@@ -48,6 +48,10 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS NEWS README ChangeLog )
 
 S="${WORKDIR}/${PN}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc-11.patch
+)
 
 src_prepare() {
 	use cuda && cuda_src_prepare
@@ -78,6 +82,8 @@ src_install() {
 	local i docdir="${S}"
 
 	cmake_src_install
+
+	python_optimize
 
 	insinto /usr/share/${PN}/
 	doins "${BUILD_DIR}/myconfig-sample.hpp"

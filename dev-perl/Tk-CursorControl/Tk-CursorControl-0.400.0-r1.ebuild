@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 MODULE_AUTHOR=DUNNIGANJ
 MODULE_VERSION=0.4
-inherit eutils perl-module
+inherit edos2unix perl-module
 
 DESCRIPTION="Manipulate the mouse cursor programmatically"
 

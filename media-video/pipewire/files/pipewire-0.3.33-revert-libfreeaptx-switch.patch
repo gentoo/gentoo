@@ -1,0 +1,38 @@
+commit f405a4e6069725934f9ae0f1b978497a34197d8d
+Author:     Thomas Deutschmann <whissi@gentoo.org>
+AuthorDate: Tue Aug 24 14:22:36 2021 +0200
+Commit:     Thomas Deutschmann <whissi@gentoo.org>
+CommitDate: Tue Aug 24 14:22:43 2021 +0200
+
+    Revert "bluez5: Use libfreeaptx instead of libopenaptx"
+    
+    This reverts commit 1216371f8c06f548f8ade6468b66612f43df1436.
+    
+    Delay decision for now since both aptx libs haven't diverged yet.
+
+diff --git a/spa/meson.build b/spa/meson.build
+index 483536b54..e13802e94 100644
+--- a/spa/meson.build
++++ b/spa/meson.build
+@@ -28,7 +28,7 @@ if not get_option('spa-plugins').disabled()
+     summary({'LDAC': ldac_dep.found()}, bool_yn: true, section: 'Bluetooth audio codecs')
+     ldac_abr_dep = dependency('ldacBT-abr', required : get_option('bluez5-codec-ldac'))
+     summary({'LDAC ABR': ldac_abr_dep.found()}, bool_yn: true, section: 'Bluetooth audio codecs')
+-    aptx_dep = dependency('libfreeaptx', required : get_option('bluez5-codec-aptx'))
++    aptx_dep = dependency('libopenaptx', version : '< 0.2.1', required : get_option('bluez5-codec-aptx'))
+     summary({'aptX': aptx_dep.found()}, bool_yn: true, section: 'Bluetooth audio codecs')
+     fdk_aac_dep = dependency('fdk-aac', required : get_option('bluez5-codec-aac'))
+     summary({'AAC': fdk_aac_dep.found()}, bool_yn: true, section: 'Bluetooth audio codecs')
+diff --git a/spa/plugins/bluez5/a2dp-codec-aptx.c b/spa/plugins/bluez5/a2dp-codec-aptx.c
+index f8d7d6dd8..62ecde348 100644
+--- a/spa/plugins/bluez5/a2dp-codec-aptx.c
++++ b/spa/plugins/bluez5/a2dp-codec-aptx.c
+@@ -32,7 +32,7 @@
+ 
+ #include <sbc/sbc.h>
+ 
+-#include <freeaptx.h>
++#include <openaptx.h>
+ 
+ #include "defs.h"
+ #include "rtp.h"

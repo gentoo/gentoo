@@ -6,7 +6,7 @@
 
 EAPI="5"
 
-inherit versionator eutils webapp db-use
+inherit versionator epatch webapp db-use
 
 WEBAPP_MANUAL_SLOT="yes"
 XTENDED_VER="RB30"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info flag-o-matic
+inherit autotools linux-info
 
 MY_PV=${PV/_/.}-3
 
@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}/${MY_PV}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="intel_led led mini static"
 
 RDEPEND=">=sys-fs/lvm2-2.02.45"

@@ -1,0 +1,47 @@
+From 6c982d00f9d6f03f916bb6a572e7f938cd56fa74 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Fri, 22 Mar 2019 19:44:40 +0200
+Subject: [PATCH] build: Add optionality for introspection build
+
+---
+ devhelp/meson.build | 2 ++
+ meson_options.txt   | 6 ++++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/devhelp/meson.build b/devhelp/meson.build
+index eef055e7..eeaa51eb 100644
+--- a/devhelp/meson.build
++++ b/devhelp/meson.build
+@@ -120,6 +120,7 @@ PKG_CONFIG.generate(
+   requires_private: LIBDEVHELP_PRIVATE_DEPS
+ )
+ 
++if get_option('introspection')
+ GNOME.generate_gir(
+   libdevhelp_shared_lib,
+   export_packages: 'libdevhelp-@0@'.format(LIBDEVHELP_API_VERSION_FULL),
+@@ -140,3 +141,4 @@ GNOME.generate_gir(
+     '--quiet',
+   ],
+ )
++endif
+diff --git a/meson_options.txt b/meson_options.txt
+index 17dc85f5..c69a2906 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -10,6 +10,12 @@ option(
+   description: 'Build the API reference'
+ )
+ 
++option(
++  'introspection',
++  type: 'boolean', value: true,
++  description: 'Build GObject Introspection data'
++)
++
+ option(
+   'plugin_emacs',
+   type: 'boolean', value: false,
+-- 
+2.26.3
+

@@ -29,7 +29,7 @@ DEPEND="
 	freeimage? ( media-libs/freeimage )
 	gl2ps? ( x11-libs/gl2ps )
 	tbb? ( dev-cpp/tbb )
-	vtk? ( =sci-libs/vtk-8*[boost,imaging,qt5,python,rendering,views,xdmf2] )"
+	vtk? ( =sci-libs/vtk-8*[boost,imaging,qt5,python,rendering,views] )"
 RDEPEND="${DEPEND}"
 
 CHECKREQS_MEMORY="256M"

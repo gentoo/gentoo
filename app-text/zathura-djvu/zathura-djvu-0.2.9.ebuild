@@ -3,14 +3,14 @@
 
 EAPI=7
 
-inherit meson xdg-utils
+inherit meson xdg
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.pwmt.org/pwmt/zathura-djvu.git"
 	EGIT_BRANCH="develop"
 else
-	KEYWORDS="amd64 arm x86"
+	KEYWORDS="amd64 arm ~riscv x86"
 	SRC_URI="https://pwmt.org/projects/zathura-djvu/download/${P}.tar.xz"
 fi
 
@@ -28,13 +28,3 @@ RDEPEND="app-text/djvu
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-pkg_postinst() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
-}

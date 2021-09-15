@@ -11,7 +11,7 @@ SRC_URI="https://libkate.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="debug doc"
 

@@ -9,7 +9,7 @@ inherit gnome2
 DESCRIPTION="Grisbi is a personal accounting application for Linux"
 HOMEPAGE="http://www.grisbi.org https://github.com/grisbi/grisbi"
 SRC_URI="mirror://sourceforge/${PN}/grisbi%20stable/1.2.x/${P}.tar.bz2"
-IUSE="goffice libressl nls ofx ssl"
+IUSE="goffice nls ofx ssl"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,9 +21,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.20:3
 	x11-misc/xdg-utils
 	>=gnome-extra/libgsf-1.14
-	ssl? (
-		libressl? ( dev-libs/libressl:0= )
-		!libressl? ( >=dev-libs/openssl-1.0.0:0= ) )
+	ssl? ( >=dev-libs/openssl-1.0.0:0= )
 	ofx? ( >=dev-libs/libofx-0.9.0:= )
 	goffice? ( >=x11-libs/goffice-0.10.0 )
 "

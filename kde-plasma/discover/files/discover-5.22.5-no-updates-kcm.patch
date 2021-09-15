@@ -1,0 +1,30 @@
+From 725ae1f2b9d4a8995881faafb323c541ff6d3c1b Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Thu, 1 Jul 2021 22:24:40 +0200
+Subject: [PATCH] Make building updates KCM optional
+
+Some distros (such as Arch) don't support offline updates or automatic updates, so the options in the KCM are misleading and can cause unexpected behavior.
+---
+ CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fa27fc77a..26387b2f0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -53,7 +53,11 @@ add_subdirectory(libdiscover)
+ add_subdirectory(discover)
+ add_subdirectory(exporter)
+ add_subdirectory(update)
+-add_subdirectory(kcm)
++
++option(WITH_KCM "Build and install the updates KCM" ON)
++if(WITH_KCM)
++    add_subdirectory(kcm)
++endif()
+ 
+ option(WITH_NOTIFIER "Build and install the notifier plasmoid" ON)
+ if(WITH_NOTIFIER)
+-- 
+GitLab
+

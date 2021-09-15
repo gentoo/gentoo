@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>johu@gentoo.org</email>
@@ -10,4 +10,7 @@
 		<flag name="sixel">Enable sixel graphics support</flag>
 		<flag name="toolbar">Enable the xterm toolbar to be built</flag>
 	</use>
+	<upstream>
+		<changelog>https://invisible-island.net/xterm/xterm.log.html</changelog>
+	</upstream>
 </pkgmetadata>

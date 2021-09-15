@@ -2,13 +2,6 @@ From 44525d34b738f733a81037286ece603ca0fdcf10 Mon Sep 17 00:00:00 2001
 From: Kornel <kornel@geekhood.net>
 Date: Wed, 27 Jan 2021 17:36:33 +0000
 Subject: [PATCH] Update OMP pragma
-
----
- libimagequant.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
-
-diff --git a/libimagequant.c b/libimagequant.c
-index 4f0b48f..828f768 100644
 --- a/libimagequant.c
 +++ b/libimagequant.c
 @@ -1279,10 +1279,7 @@ LIQ_NONNULL static float remap_to_palette(liq_image *const input_image, unsigned

@@ -1,0 +1,18 @@
+#!/usr/bin/openrc-run
+
+pidfile="/run/ananicy.pid"
+command="/usr/bin/ananicy"
+command_args="start"
+command_background=true
+
+start_pre() {
+	/usr/sbin/sysctl -e kernel.sched_autogroup_enabled=0
+}
+
+stop_post() {
+	/usr/sbin/sysctl -e kernel.sched_autogroup_enabled=1
+}
+
+stop() {
+	start-stop-daemon --stop --pidfile "$pidfile"
+}

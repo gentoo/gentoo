@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/764977
+https://invent.kde.org/qt/qt/qtbase/-/commit/c9543da6998b0827fb75ffe22327c99e2da7d364
+
+From c9543da6998b0827fb75ffe22327c99e2da7d364 Mon Sep 17 00:00:00 2001
+From: Sona Kurazyan <sona.kurazyan@qt.io>
+Date: Wed, 17 Mar 2021 16:04:00 +0100
+Subject: [PATCH] Remove the unnecessary template parameter from the class
+ specialization
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This seems to cause errors when compiling with gcc-11. Although this is
+most likely a compiler bug, specifiying the template parameter type in
+this case isn't necessary.
+
+Fixes: QTBUG-91909
+Fixes: QTBUG-90568
+Change-Id: Ib231257ccb2e16cc533f23ca5840d31e26a66d53
+Reviewed-by: MÃ¥rten Nordheim <marten.nordheim@qt.io>
+(cherry picked from commit 659f7a06e91c04b239e3f4c0bcfccbe3581af1c3)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+(cherry picked from commit 049e14870c13235cd066758f29c42dc96c1ccdf8)
+---
+ src/concurrent/qtconcurrentthreadengine.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/concurrent/qtconcurrentthreadengine.h b/src/concurrent/qtconcurrentthreadengine.h
+index af413707e4..a4c8548cc4 100644
+--- a/src/concurrent/qtconcurrentthreadengine.h
++++ b/src/concurrent/qtconcurrentthreadengine.h
+@@ -247,8 +247,8 @@ template <>
+ class ThreadEngineStarter<void> : public ThreadEngineStarterBase<void>
+ {
+ public:
+-    ThreadEngineStarter<void>(ThreadEngine<void> *_threadEngine)
+-    :ThreadEngineStarterBase<void>(_threadEngine) {}
++    ThreadEngineStarter(ThreadEngine<void> *_threadEngine)
++        : ThreadEngineStarterBase<void>(_threadEngine) {}
+ 
+     void startBlocking()
+     {
+-- 
+GitLab
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -47,7 +47,7 @@ src_configure() {
 	# Because this crazy package uses XSLT, we need to escape this.
 	sed -i 's:\${gentoo\.classpath}:${{gentoo.classpath}}:g' build.xsl || die
 
-	EANT_EXTRA_ARGS="-Djavacc.dir=${EROOT}usr/share/javacc/lib"
+	EANT_EXTRA_ARGS="-Djavacc.dir=${EPREFIX}usr/share/javacc/lib"
 	export LOCALCLASSPATH=$(java-pkg_getjars --build-only --with-dependencies saxon-6.5)
 }
 

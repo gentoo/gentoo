@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>llvm@gentoo.org</email>
@@ -9,6 +9,7 @@
 			than the default CC/CXX).</flag>
 		<flag name="libfuzzer">Build fuzzing runtime.</flag>
 		<flag name="memprof">Build memory profiler runtime.</flag>
+		<flag name="orc">Build ORC runtime.</flag>
 		<flag name="profile">Build profiling runtime.</flag>
 		<flag name="sanitize">Build sanitizer runtimes.</flag>
 		<flag name="xray">Build XRay runtime.</flag>

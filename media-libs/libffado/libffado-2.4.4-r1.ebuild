@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit desktop python-single-r1 scons-utils toolchain-funcs udev multilib-minimal
 
@@ -15,7 +15,7 @@ if [[ "${PV}" = "9999" ]]; then
 	ESVN_REPO_URI="http://subversion.ffado.org/ffado/trunk/${PN}"
 else
 	SRC_URI="http://www.ffado.org/files/${P}.tgz"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 -riscv x86"
 fi
 
 LICENSE="GPL-2 GPL-3"
@@ -37,8 +37,8 @@ CDEPEND="${PYTHON_DEPS}
 	sys-libs/libraw1394[${MULTILIB_USEDEP}]
 	qt5? (
 		$(python_gen_cond_dep '
-			dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
-			dev-python/PyQt5[dbus,${PYTHON_MULTI_USEDEP}]
+			dev-python/dbus-python[${PYTHON_USEDEP}]
+			dev-python/PyQt5[dbus,${PYTHON_USEDEP}]
 		')
 		x11-misc/xdg-utils
 	)"

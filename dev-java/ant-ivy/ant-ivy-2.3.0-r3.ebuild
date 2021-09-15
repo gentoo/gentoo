@@ -11,7 +11,7 @@ WANT_SPLIT_ANT="true"
 # Don't rewrite examples, that's bad.
 JAVA_PKG_BSFIX_ALL="no"
 
-inherit java-pkg-2 java-ant-2 eutils
+inherit java-pkg-2 java-ant-2
 
 MY_PN="apache-ivy"
 MY_P="${MY_PN}-${PV}"

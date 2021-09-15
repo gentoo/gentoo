@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop wrapper xdg-utils
+inherit desktop wrapper xdg
 
 DESCRIPTION="A top-down shooter with a touch of RPG"
 HOMEPAGE="https://crimsonland.com/"
@@ -22,7 +22,7 @@ RDEPEND="
 "
 
 DIR="/opt/${PN}"
-QA_PREBUILT="${DIR}/*"
+QA_PREBUILT="${DIR#/}/*"
 
 pkg_nofetch() {
 	einfo "Please buy and download ${SRC_URI} from:"
@@ -40,9 +40,6 @@ src_install() {
 
 	dodoc README.txt
 
-#	doicon -s 64 "${DISTDIR}"/${PN}.png
+	#doicon -s 64 "${DISTDIR}"/${PN}.png
 	make_desktop_entry ${PN} Crimsonland applications-games
 }
-
-pkg_postinst() { xdg_icon_cache_update; }
-pkg_postrm() { xdg_icon_cache_update; }

@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit flag-o-matic
-
 DESCRIPTION="C++ port of the Log for Java (log4j) logging library"
 HOMEPAGE="http://log4cplus.sourceforge.net/ https://github.com/log4cplus/log4cplus"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}-stable/${PV}/${P}.tar.bz2"
@@ -26,10 +24,6 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}/${PN}-1.2.0-fix-c++14.patch" )
 
 src_configure() {
-	# bug 648714
-	# Qt5 now requires C++11
-	append-cxxflags -std=c++11
-
 	econf \
 		--disable-static \
 		$(use_with iconv) \

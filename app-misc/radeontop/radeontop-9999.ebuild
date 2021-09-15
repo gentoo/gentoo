@@ -17,12 +17,12 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	sys-libs/ncurses:0=
+	sys-libs/ncurses:=
 	x11-libs/libdrm[video_cards_amdgpu?,video_cards_radeon?]
 	x11-libs/libpciaccess
 	x11-libs/libxcb
 	nls? (
-		sys-libs/ncurses:0=[unicode]
+		sys-libs/ncurses:=[unicode(+)]
 		virtual/libintl
 	)
 "
@@ -39,4 +39,5 @@ src_configure() {
 	export xcb=1
 	# Do not add -g or -s to CFLAGS
 	export plain=1
+	export PREFIX="${EPREFIX}"/usr
 }

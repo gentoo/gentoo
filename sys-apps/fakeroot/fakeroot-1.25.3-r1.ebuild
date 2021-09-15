@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}.orig.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="acl debug test"
 RESTRICT="!test? ( test )"
 
@@ -24,6 +24,9 @@ BDEPEND="app-text/po4a"
 DOCS=( AUTHORS BUGS DEBUG README doc/README.saving )
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/fakeroot-1.25.3-glibc-2.33.patch"
+	)
 	default
 	eautoreconf
 }

@@ -3,15 +3,17 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( pypy3 python3_{7..9} )
+DISTUTILS_USE_SETUPTOOLS=bdepend
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 TMPFILES_OPTIONAL=1
 
 inherit distutils-r1 git-r3 linux-info tmpfiles prefix
 
-DESCRIPTION="Portage is the package management and distribution system for Gentoo"
+DESCRIPTION="The package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
+EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/portage.git
+	https://github.com/gentoo/portage.git"
 
 LICENSE="GPL-2"
 KEYWORDS=""
@@ -19,7 +21,8 @@ SLOT="0"
 IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux test xattr"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( dev-vcs/git )"
+BDEPEND="
+	test? ( dev-vcs/git )"
 DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	>=app-arch/tar-1.27
 	dev-lang/python-exec:2
@@ -32,6 +35,8 @@ DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 # Require sandbox-2.2 for bug #288863.
 # For whirlpool hash, require python[ssl] (bug #425046).
 # For compgen, require bash[readline] (bug #445576).
+# app-portage/gemato goes without PYTHON_USEDEP since we're calling
+# the executable.
 RDEPEND="
 	acct-user/portage
 	app-arch/zstd
@@ -57,7 +62,10 @@ RDEPEND="
 	xattr? ( kernel_linux? (
 		>=sys-apps/install-xattr-0.3
 	) )
-	!<app-admin/logrotate-3.8.0"
+	!<app-admin/logrotate-3.8.0
+	!<app-portage/gentoolkit-0.4.6
+	!<app-portage/repoman-2.3.10
+	!~app-portage/repoman-3.0.0"
 PDEPEND="
 	!build? (
 		>=net-misc/rsync-2.6.4
@@ -65,20 +73,6 @@ PDEPEND="
 	)"
 # coreutils-6.4 rdep is for date format in emerge-webrsync #164532
 # NOTE: FEATURES=installsources requires debugedit and rsync
-
-SRC_ARCHIVES="https://dev.gentoo.org/~dolsen/releases/portage"
-
-prefix_src_archives() {
-	local x y
-	for x in ${@}; do
-		for y in ${SRC_ARCHIVES}; do
-			echo ${y}/${x}
-		done
-	done
-}
-
-EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/portage.git
-	https://github.com/gentoo/portage.git"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
@@ -101,7 +95,7 @@ python_prepare_all() {
 	fi
 
 	if use native-extensions; then
-		printf "[build_ext]\nportage-ext-modules=true\n" >> \
+		printf "[build_ext]\nportage_ext_modules=true\n" >> \
 			setup.cfg || die
 	fi
 
@@ -120,6 +114,7 @@ python_prepare_all() {
 
 	if use build || ! use rsync-verify; then
 		sed -e '/^sync-rsync-verify-metamanifest/s|yes|no|' \
+			-e '/^sync-webrsync-verify-signature/s|yes|no|' \
 			-i cnf/repos.conf || die "sed failed"
 	fi
 
@@ -144,7 +139,7 @@ python_prepare_all() {
 		einfo "Adjusting make.globals, repos.conf and etc-update ..."
 		hprefixify cnf/{make.globals,repos.conf} bin/etc-update
 
-		if prefix-guest ; then
+		if use prefix-guest ; then
 			sed -e "s|^\(main-repo = \).*|\\1gentoo_prefix|" \
 				-e "s|^\\[gentoo\\]|[gentoo_prefix]|" \
 				-e "s|^\(sync-uri = \).*|\\1rsync://rsync.prefix.bitzolder.nl/gentoo-portage-prefix|" \
@@ -217,7 +212,7 @@ python_install_all() {
 	dotmpfiles "${FILESDIR}"/portage-ccache.conf
 
 	# Due to distutils/python-exec limitations
-	# they must be installed to /usr/bin.
+	# these must be installed to /usr/bin.
 	local sbin_relocations='archive-conf dispatch-conf emaint env-update etc-update fixpackages regenworld'
 	einfo "Moving admin scripts to the correct directory"
 	dodir /usr/sbin

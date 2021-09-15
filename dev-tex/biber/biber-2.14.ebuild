@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -63,5 +63,6 @@ DEPEND="${RDEPEND}
 	dev-perl/ExtUtils-LibBuilder
 	test? ( dev-perl/File-Which
 			dev-perl/Test-Differences )"
+BDEPEND="dev-perl/Module-Build"
 
 mydoc="doc/biber.tex"

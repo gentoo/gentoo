@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
 		<email>gentoo@chymera.eu</email>
@@ -15,6 +15,7 @@
 		video, volumetric data, and scientific formats. It is cross-platform,
 		runs on Python 2.x and 3.x, and is easy to install.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">imageio/imageio</remote-id>
 		<remote-id type="pypi">imageio</remote-id>

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,15 +17,14 @@ LICENSE="BSD"
 SLOT="0/2.1-7"
 KEYWORDS=""
 IUSE="
-	+clock-gettime debug libressl malloc-replacement +ssl static-libs test
+	+clock-gettime debug malloc-replacement +ssl static-libs test
 	+threads verbose-debug
 "
 RESTRICT="test"
 
 DEPEND="
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
-		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+		>=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}]
 	)
 "
 RDEPEND="

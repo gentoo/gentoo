@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit multilib toolchain-funcs multilib-minimal
+inherit toolchain-funcs multilib-minimal
 
 MY_PV="${PV//_/-}"
 MY_P="${PN}-${MY_PV}"
@@ -17,16 +17,12 @@ if [[ ${PV} == 9999 ]]; then
 	S="${WORKDIR}/${P}/${PN}"
 else
 	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~mips ~riscv x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="GPL-2"
 SLOT="0/2"
-IUSE=""
-
-DEPEND=""
-RDEPEND=""
 
 # tests are not meant to be run outside of the full SELinux userland repo
 RESTRICT="test"

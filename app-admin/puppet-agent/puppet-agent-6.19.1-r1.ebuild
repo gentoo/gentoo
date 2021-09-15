@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils systemd unpacker tmpfiles
+inherit systemd unpacker tmpfiles
 
 DESCRIPTION="general puppet client utils along with hiera and facter"
 HOMEPAGE="https://puppetlabs.com/"
@@ -73,4 +73,8 @@ src_install() {
 	dosym ../../opt/puppetlabs/bin/puppet /usr/bin/puppet
 	dosym ../../opt/puppetlabs/puppet/bin/virt-what /usr/bin/virt-what
 	dosym ../../../../usr/lib64/xcrypt/libcrypt.so.1 /opt/puppetlabs/puppet/lib/libcrypt.so.1
+}
+
+pkg_postinst() {
+	tmpfiles_process puppet-agent.conf
 }

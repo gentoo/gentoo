@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/xstow/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="ncurses"
 
 DEPEND="ncurses? ( sys-libs/ncurses:0= )"

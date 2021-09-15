@@ -3,19 +3,19 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{8..9} pypy3 )
 
 if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/libsndfile/libsndfile.git"
 else
 	SRC_URI="https://github.com/libsndfile/libsndfile/releases/download/${PV}/${P}.tar.bz2"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 inherit python-any-r1 multilib-minimal
 
 DESCRIPTION="C library for reading and writing files containing sampled sound"
-HOMEPAGE="http://libsndfile.github.io/libsndfile/"
+HOMEPAGE="https://libsndfile.github.io/libsndfile/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

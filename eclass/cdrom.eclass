@@ -4,6 +4,7 @@
 # @ECLASS: cdrom.eclass
 # @MAINTAINER:
 # games@gentoo.org
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Functions for CD-ROM handling
 # @DESCRIPTION:
 # Acquire CD(s) for those lovely CD-based emerges.  Yes, this violates
@@ -13,6 +14,11 @@
 # should not be used for binary packages.  Most packages using this
 # eclass will require RESTRICT="bindist" but the point still stands.
 # The functions are generally called in src_unpack.
+
+case ${EAPI:-0} in
+	[67]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_CDROM_ECLASS} ]]; then
 _CDROM_ECLASS=1

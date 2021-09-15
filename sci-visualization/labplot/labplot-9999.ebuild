@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,10 +7,11 @@ ECM_HANDBOOK="forceoptional"
 ECM_TEST="forceoptional"
 KFMIN=5.74.0
 QTMIN=5.15.1
+VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Scientific data analysis and visualisation based on KDE Frameworks"
-HOMEPAGE="https://labplot.kde.org/ https://apps.kde.org/en/labplot2"
+HOMEPAGE="https://labplot.kde.org/ https://apps.kde.org/labplot2/"
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
@@ -18,13 +19,8 @@ fi
 
 LICENSE="GPL-2"
 SLOT="5"
-IUSE="cantor fftw fits hdf5 libcerf netcdf root serial telemetry"
+IUSE="cantor fftw fits hdf5 libcerf markdown matio netcdf origin root serial telemetry"
 
-# not packaged: dev-qt/qtmqtt, bug 683994
-BDEPEND="
-	sys-devel/bison
-	sys-devel/gettext
-"
 DEPEND="
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -57,7 +53,10 @@ DEPEND="
 	fits? ( sci-libs/cfitsio:= )
 	hdf5? ( sci-libs/hdf5:= )
 	libcerf? ( sci-libs/libcerf )
+	markdown? ( app-text/discount )
+	matio? ( sci-libs/matio:= )
 	netcdf? ( sci-libs/netcdf:= )
+	origin? ( sci-libs/liborigin:2 )
 	root? (
 		app-arch/lz4
 		sys-libs/zlib
@@ -66,6 +65,11 @@ DEPEND="
 	telemetry? ( dev-libs/kuserfeedback:5 )
 "
 RDEPEND="${DEPEND}"
+# not packaged: dev-qt/qtmqtt, bug 683994
+BDEPEND="
+	sys-devel/bison
+	sys-devel/gettext
+"
 
 src_configure() {
 	local mycmakeargs=(
@@ -76,7 +80,10 @@ src_configure() {
 		-DENABLE_FITS=$(usex fits)
 		-DENABLE_HDF5=$(usex hdf5)
 		-DENABLE_LIBCERF=$(usex libcerf)
+		-DENABLE_DISCOUNT=$(usex markdown)
+		-DENABLE_MATIO=$(usex matio)
 		-DENABLE_NETCDF=$(usex netcdf)
+		-DENABLE_LIBORIGIN=$(usex origin)
 		-DENABLE_ROOT=$(usex root)
 		-DENABLE_QTSERIALPORT=$(usex serial)
 		$(cmake_use_find_package telemetry KUserFeedback)

@@ -85,7 +85,7 @@ DEPEND="!!sys-devel/llvm:0"
 # @INTERNAL
 # @DESCRIPTION:
 # Correct values of LLVM slots, newest first.
-declare -g -r _LLVM_KNOWN_SLOTS=( {13..8} )
+declare -g -r _LLVM_KNOWN_SLOTS=( {14..8} )
 
 # @FUNCTION: get_llvm_prefix
 # @USAGE: [-b|-d] [<max_slot>]
@@ -177,7 +177,7 @@ get_llvm_prefix() {
 		die "${FUNCNAME}: invalid max_slot=${max_slot}"
 	fi
 
-	die "No LLVM slot${1:+ <= ${1}} found installed!"
+	die "No LLVM slot${1:+ <= ${1}} satisfying the package's dependencies found installed!"
 }
 
 # @FUNCTION: llvm_pkg_setup

@@ -1,0 +1,45 @@
+--- a/linux/sdllink.c
++++ b/linux/sdllink.c
+@@ -1170,7 +1170,7 @@ void sem_sleep_die(void)
+   }
+ }
+ 
+-void UpdateVFrame(void)
++void __attribute__((force_align_arg_pointer)) UpdateVFrame(void)
+ {
+   //Quick fix for GUI CPU usage
+   if (GUIOn || GUIOn2 || EMUPause) { usleep(6000); }
+@@ -1237,16 +1237,16 @@ void UnloadSDL()
+   SDL_Quit();
+ }
+ 
+-int GetMouseX(void)
++int __attribute__((force_align_arg_pointer)) GetMouseX(void)
+ {
+   return ((int) MouseX);
+ }
+-int GetMouseY(void)
++int __attribute__((force_align_arg_pointer)) GetMouseY(void)
+ {
+   return ((int) MouseY);
+ }
+ 
+-int GetMouseMoveX(void)
++int __attribute__((force_align_arg_pointer)) GetMouseMoveX(void)
+ {
+   //   InputRead();
+   //SDL_GetRelativeMouseState(&MouseMove2X, NULL);
+@@ -1254,11 +1254,11 @@ int GetMouseMoveX(void)
+   return (MouseMove2X);
+ }
+ 
+-int GetMouseMoveY(void)
++int __attribute__((force_align_arg_pointer)) GetMouseMoveY(void)
+ {
+   return (MouseMove2Y);
+ }
+-int GetMouseButton(void)
++int __attribute__((force_align_arg_pointer)) GetMouseButton(void)
+ {
+   return ((int) MouseButton);
+ }

@@ -4,7 +4,7 @@
 EAPI=7
 
 XORG_DOC=doc
-XORG_EAUTORECONF="yes"
+XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3 multilib flag-o-matic toolchain-funcs
 EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"
 
@@ -14,14 +14,13 @@ if [[ ${PV} != 9999* ]]; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
-IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug +elogind ipv6 libressl minimal selinux suid systemd test +udev unwind xcsecurity"
+IUSE_SERVERS="kdrive xephyr xnest xorg xvfb"
+IUSE="${IUSE_SERVERS} debug +elogind ipv6 minimal selinux suid systemd test +udev unwind xcsecurity"
 RESTRICT="!test? ( test )"
 
 CDEPEND="
 	media-libs/libglvnd[X]
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	>=x11-apps/iceauth-1.0.2
 	>=x11-apps/rgb-1.0.3
 	>=x11-apps/xauth-1.0.3
@@ -31,24 +30,12 @@ CDEPEND="
 	>=x11-libs/libXau-1.0.4
 	>=x11-libs/libXdmcp-1.0.2
 	>=x11-libs/libXfont2-2.0.1
+	>=x11-libs/libxcvt-0.1.0
 	>=x11-libs/libxkbfile-1.0.4
 	>=x11-libs/libxshmfence-1.1
 	>=x11-libs/pixman-0.27.2
 	>=x11-misc/xbitmaps-1.0.1
 	>=x11-misc/xkeyboard-config-2.4.1-r3
-	dmx? (
-		x11-libs/libXt
-		>=x11-libs/libdmx-1.0.99.1
-		>=x11-libs/libX11-1.1.5
-		>=x11-libs/libXaw-1.0.4
-		>=x11-libs/libXext-1.0.99.4
-		>=x11-libs/libXfixes-5.0
-		>=x11-libs/libXi-1.2.99.1
-		>=x11-libs/libXmu-1.0.3
-		x11-libs/libXrender
-		>=x11-libs/libXres-1.0.3
-		>=x11-libs/libXtst-1.0.99.2
-	)
 	kdrive? (
 		>=x11-libs/libXext-1.0.5
 		x11-libs/libXv
@@ -64,16 +51,11 @@ CDEPEND="
 	!minimal? (
 		>=x11-libs/libX11-1.1.5
 		>=x11-libs/libXext-1.0.5
-		>=media-libs/mesa-18[X(+),egl,gbm]
+		>=media-libs/mesa-18[X(+),egl(+),gbm(+)]
 		>=media-libs/libepoxy-1.5.4[X,egl(+)]
 	)
 	udev? ( virtual/libudev:= )
 	unwind? ( sys-libs/libunwind )
-	wayland? (
-		>=dev-libs/wayland-1.3.0
-		>=media-libs/libepoxy-1.5.4[egl(+)]
-		>=dev-libs/wayland-protocols-1.18
-	)
 	>=x11-apps/xinit-1.3.3-r1
 	systemd? (
 		sys-apps/dbus
@@ -87,17 +69,8 @@ CDEPEND="
 	!!x11-drivers/nvidia-drivers[-libglvnd(+)]
 "
 DEPEND="${CDEPEND}
-	>=x11-base/xorg-proto-2018.4
+	>=x11-base/xorg-proto-2021.4.99.2
 	>=x11-libs/xtrans-1.3.5
-	dmx? (
-		doc? (
-			|| (
-				www-client/links
-				www-client/lynx
-				www-client/w3m
-			)
-		)
-	)
 "
 RDEPEND="${CDEPEND}
 	!systemd? ( gui-libs/display-manager-init )
@@ -105,7 +78,6 @@ RDEPEND="${CDEPEND}
 "
 BDEPEND="
 	sys-devel/flex
-	wayland? ( dev-util/wayland-scanner )
 "
 PDEPEND="
 	xorg? ( >=x11-base/xorg-drivers-$(ver_cut 1-2) )"
@@ -115,7 +87,6 @@ REQUIRED_USE="!minimal? (
 	)
 	elogind? ( udev )
 	?? ( elogind systemd )
-	minimal? ( !wayland )
 	xephyr? ( kdrive )"
 
 UPSTREAMED_PATCHES=(
@@ -128,26 +99,18 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.18-support-multiple-Files-sections.patch
 )
 
-pkg_setup() {
-	if use wayland && use minimal; then
-		ewarn "glamor is necessary for acceleration under Xwayland."
-		ewarn "Performance may be unacceptable without it."
-		ewarn "Build with USE=-minimal to enable glamor."
-	fi
-
+src_configure() {
 	# localstatedir is used for the log location; we need to override the default
 	#	from ebuild.sh
 	# sysconfdir is used for the xorg.conf location; same applies
 	# NOTE: fop is used for doc generating; and I have no idea if Gentoo
 	#	package it somewhere
-	XORG_CONFIGURE_OPTIONS=(
+	local XORG_CONFIGURE_OPTIONS=(
 		$(use_enable ipv6)
 		$(use_enable debug)
-		$(use_enable dmx)
 		$(use_enable kdrive)
 		$(use_enable test unit-tests)
 		$(use_enable unwind libunwind)
-		$(use_enable wayland xwayland)
 		$(use_enable !minimal record)
 		$(use_enable !minimal xfree86-utils)
 		$(use_enable !minimal dri)
@@ -164,6 +127,7 @@ pkg_setup() {
 		$(use_with doc doxygen)
 		$(use_with doc xmlto)
 		$(use_with systemd systemd-daemon)
+		--disable-xwayland
 		--enable-libdrm
 		--sysconfdir="${EPREFIX}"/etc/X11
 		--localstatedir="${EPREFIX}"/var
@@ -179,16 +143,27 @@ pkg_setup() {
 
 	if use systemd || use elogind; then
 		XORG_CONFIGURE_OPTIONS+=(
-			"--enable-systemd-logind"
-			"--disable-install-setuid"
-			"$(use_enable suid suid-wrapper)"
+			--enable-systemd-logind
+			--disable-install-setuid
+			$(use_enable suid suid-wrapper)
 		)
 	else
 		XORG_CONFIGURE_OPTIONS+=(
-			"--disable-systemd-logind"
-			"--disable-suid-wrapper"
-			"$(use_enable suid install-setuid)"
+			--disable-systemd-logind
+			--disable-suid-wrapper
+			$(use_enable suid install-setuid)
 		)
+	fi
+
+	xorg-3_src_configure
+}
+
+server_based_install() {
+	if ! use xorg; then
+		rm -f "${ED}"/usr/share/man/man1/Xserver.1x \
+			"${ED}"/usr/$(get_libdir)/xserver/SecurityPolicy \
+			"${ED}"/usr/$(get_libdir)/pkgconfig/xorg-server.pc \
+			"${ED}"/usr/share/man/man1/Xserver.1x || die
 	fi
 }
 
@@ -213,14 +188,5 @@ pkg_postrm() {
 	# Get rid of module dir to ensure opengl-update works properly
 	if [[ -z ${REPLACED_BY_VERSION} && -e ${EROOT}/usr/$(get_libdir)/xorg/modules ]]; then
 		rm -rf "${EROOT}"/usr/$(get_libdir)/xorg/modules
-	fi
-}
-
-server_based_install() {
-	if ! use xorg; then
-		rm "${ED}"/usr/share/man/man1/Xserver.1x \
-			"${ED}"/usr/$(get_libdir)/xserver/SecurityPolicy \
-			"${ED}"/usr/$(get_libdir)/pkgconfig/xorg-server.pc \
-			"${ED}"/usr/share/man/man1/Xserver.1x
 	fi
 }

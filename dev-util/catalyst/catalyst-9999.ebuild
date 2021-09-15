@@ -30,7 +30,7 @@ BDEPEND="
 DEPEND="
 	sys-apps/portage[${PYTHON_USEDEP}]
 	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
-	<dev-python/snakeoil-0.9.6[${PYTHON_USEDEP}]
+	dev-python/fasteners[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
 	sys-apps/util-linux[python,${PYTHON_USEDEP}]
 "
@@ -46,28 +46,26 @@ RDEPEND="
 
 	iso? (
 		app-cdr/cdrtools
+		dev-libs/libisoburn
 
 		amd64? (
 			sys-boot/grub[grub_platforms_efi-32,grub_platforms_efi-64]
 		)
-		alpha? (
-			dev-libs/libisoburn
+		arm64?  (
+			sys-boot/grub[grub_platforms_efi-64]
+			sys-fs/mtools
 		)
 		ia64?  (
-			dev-libs/libisoburn
 			sys-boot/grub[grub_platforms_efi-64]
 			sys-fs/mtools
 		)
 		ppc?   (
-			dev-libs/libisoburn
 			sys-boot/grub:2[grub_platforms_ieee1275]
 		)
 		ppc64? (
-			dev-libs/libisoburn
 			sys-boot/grub:2[grub_platforms_ieee1275]
 		)
 		sparc? (
-			dev-libs/libisoburn
 			sys-boot/grub:2[grub_platforms_ieee1275]
 		)
 		x86?   (

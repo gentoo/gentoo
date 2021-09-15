@@ -1,0 +1,79 @@
+From eda78d802b11dd7c920cd8e0396ca064f34e2a8b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 5 Aug 2021 00:27:23 +0100
+Subject: [PATCH] Fix configure with non-bash (dash)
+
+---
+ configure.in | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index 95c59da..b549092 100644
+--- a/configure.in
++++ b/configure.in
+@@ -10,7 +10,7 @@ AC_CONFIG_HEADER(src/libmix++/mix/lmconfig.h)
+ 
+ AC_PROG_CC
+ AC_MSG_CHECKING(accepted compiler flags)
+-if test $ac_cv_prog_gcc = yes; then
++if test x$ac_cv_prog_gcc = xyes; then
+     AC_MSG_RESULT(GNU CC/ANSI (good))
+ else
+     AC_MSG_RESULT(crappy :P)
+@@ -41,7 +41,7 @@ case "`${UNAME}`" in
+   AC_MSG_RESULT(found Linux. Ph33r.)
+   AC_DEFINE(HAVE_LINUX)
+   AC_DEFINE(MY_HDRINCL,3)
+-if test $LEETCC = yes; then
++if test x$LEETCC = xyes; then
+     CCOPTS='-Wall -O6 -funroll-loops -ansi -fPIC -DLINUX'
+ else
+     CCOPTS="${CFLAGS} -DLINUX"
+@@ -54,7 +54,7 @@ fi
+   AC_MSG_RESULT(found MAC OS X)
+   AC_DEFINE(HAVE_BSD)
+   AC_DEFINE(MY_HDRINCL,2)
+-if test $LEETCC = yes; then
++if test x$LEETCC = xyes; then
+    CCOPTS='-Wall -O -funroll-loops -ansi -fPIC -DBSD44 -DDARWIN'
+ else
+    CCOPTS='-DBSD44 -DOBSD'
+@@ -67,7 +67,7 @@ fi
+   AC_MSG_RESULT(found OpenBSD. Yay.)
+   AC_DEFINE(HAVE_BSD)
+   AC_DEFINE(MY_HDRINCL,2)
+-if test $LEETCC = yes; then
++if test x$LEETCC = xyes; then
+    CCOPTS='-Wall -O6 -funroll-loops -ansi -fPIC -DBSD44 -DOBSD'
+ else
+    CCOPTS='-DBSD44 -DOBSD'
+@@ -80,7 +80,7 @@ fi
+   AC_MSG_RESULT(found BSD. Yay.)
+   AC_DEFINE(HAVE_BSD)
+   AC_DEFINE(MY_HDRINCL,2)
+-if test $LEETCC = yes; then
++if test x$LEETCC = xyes; then
+     CCOPTS='-Wall -O6 -funroll-loops -ansi -fPIC -DBSD44'
+ else
+     CCOPTS='-DBSD44'
+@@ -95,7 +95,7 @@ fi
+   AC_DEFINE(MY_HDRINCL,2)
+   AC_CHECK_LIB(socket, socket, [ CLIB="$CLIB -lsocket " ], AC_MSG_ERROR(libsocket not found.))
+   AC_CHECK_LIB(nsl, gethostbyname, [ CLIB="$CLIB -lnsl " ], AC_MSG_ERROR(libnsl not found.))
+-if test $LEETCC = yes; then
++if test x$LEETCC = xyes; then
+     CCOPTS='-Wall -O6 -funroll-loops -ansi -fPIC -DSOLARIS'
+ else
+     CCOPTS='-DSOLARIS'
+@@ -169,7 +169,7 @@ AC_HEADER_STDC
+ AC_CHECK_HEADERS(fcntl.h unistd.h sys/select.h sys/time.h sys/types.h sys/socket.h stdarg.h std_args.h strings.h netdb.h netinet/in.h arpa/inet.h signal.h stdlib.h errno.h ctype.h sys/file.h sys/ioctl.h sys/signal.h sys/stream.h sys/dlpi.h sys/bufmod.h sys/stropts.h sys/param.h sys/termios.h sys/filio.h net/if.h netinet/in_systm.h netinet/ip.h netinet/ip_var.h netinet/ip_icmp.h sys/resource.h X11/Xlib.h)
+  
+ AC_C_BIGENDIAN
+- if test $ac_cv_c_bigendian = yes; then
++ if test x$ac_cv_c_bigendian = xyes; then
+   ENDIANESS1="#ifndef WORDS_BIGENDIAN"
+   ENDIANESS2="#define WORDS_BIGENDIAN	/* this is a big endian machine */"
+  else
+-- 
+2.32.0
+

@@ -3,12 +3,12 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 FINDLIB_USE="ocaml"
 JAVA_PKG_WANT_SOURCE="1.8"
 JAVA_PKG_WANT_TARGET="1.8"
 
-inherit findlib eutils multilib toolchain-funcs java-pkg-opt-2 flag-o-matic usr-ldscript \
+inherit findlib multilib toolchain-funcs java-pkg-opt-2 flag-o-matic usr-ldscript \
 	autotools udev systemd python-r1 tmpfiles
 
 DESCRIPTION="Daemon that provides access to the Linux/Unix console for a blind person"
@@ -207,8 +207,10 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN}.tmpfiles.conf
+
 	elog
-	elog "please be sure ${ROOT}/etc/brltty.conf is correct for your system."
+	elog "please be sure ${EROOT}/etc/brltty.conf is correct for your system."
 	elog
 	elog "To make brltty start on boot, type this command as root:"
 	elog

@@ -1,0 +1,54 @@
+From 51737430fcd963a04a4eddbb166114ae25430814 Mon Sep 17 00:00:00 2001
+From: Ahmad Samir <a.samirh78@gmail.com>
+Date: Wed, 4 Aug 2021 23:22:10 +0200
+Subject: [PATCH] KDirOperator: expand to url only in detail tree view
+
+When "allow expansion" is disabled in the menu, the view type is KFile::Tree,
+however when selecting an item from the location (Name:) combobox history,
+the item model would expand to show the file; that should only happen if
+"allow expansion" is enabled, i.e. when the view type is KFile::DetailTree.
+
+BUG: 440475
+FIXED-IN: 5.86
+
+asturm 2021-08-15: fixed by merge with 8039f8b399757001ffa919ef56ede283c287dcd4
+---
+ src/filewidgets/kdiroperator.cpp | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/src/filewidgets/kdiroperator.cpp b/src/filewidgets/kdiroperator.cpp
+index bc80d93fe..7af20a057 100644
+--- a/src/filewidgets/kdiroperator.cpp
++++ b/src/filewidgets/kdiroperator.cpp
+@@ -1870,7 +1870,11 @@ void KDirOperator::setCurrentItem(const QUrl &url)
+     KFileItem item = d->m_dirLister->findByUrl(url);
+     if (d->m_shouldFetchForItems && item.isNull()) {
+         d->m_itemsToBeSetAsCurrent << url;
+-        d->m_dirModel->expandToUrl(url);
++
++        if (d->m_viewKind == KFile::DetailTree) {
++            d->m_dirModel->expandToUrl(url);
++        }
++
+         return;
+     }
+ 
+@@ -1909,9 +1913,14 @@ void KDirOperator::setCurrentItems(const QList<QUrl> &urls)
+         KFileItem item = d->m_dirLister->findByUrl(url);
+         if (d->m_shouldFetchForItems && item.isNull()) {
+             d->m_itemsToBeSetAsCurrent << url;
+-            d->m_dirModel->expandToUrl(url);
++
++            if (d->m_viewKind == KFile::DetailTree) {
++                d->m_dirModel->expandToUrl(url);
++            }
++
+             continue;
+         }
++
+         itemList << item;
+     }
+ 
+-- 
+GitLab
+

@@ -1,35 +1,44 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit desktop toolchain-funcs
 
-DESCRIPTION="A multi-player 2D client/server space game"
+DESCRIPTION="Multi-player 2D client/server space game"
 HOMEPAGE="http://www.xpilot.org/"
-SRC_URI="mirror://sourceforge/xpilotgame/${P}.tar.bz2"
+SRC_URI="
+	https://dev.gentoo.org/~ionen/distfiles/${PN}.png
+	mirror://sourceforge/xpilotgame/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="x11-libs/libX11
+RDEPEND="
+	x11-libs/libX11
 	x11-libs/libXext"
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto"
+BDEPEND="
 	app-text/rman
-	x11-base/xorg-proto
 	x11-misc/gccmakedep
-	x11-misc/imake"
+	>=x11-misc/imake-1.0.8-r1"
+
+DOCS=(
+	README.txt
+	doc/{ChangeLog,CREDITS,FAQ,TODO}
+	doc/README.{MAPS,MAPS2,SHIPS,sounds,talkmacros}
+)
 
 src_prepare() {
-	#default
-	eapply_user
+	default
 
 	sed -i \
-		-e '/^INSTMAN/s:=.*:=/usr/share/man/man6:' \
-		-e "/^INSTLIB/s:=.*:=/usr/share/${PN}:" \
-		-e "/^INSTBIN/s:=.*:=/usr/bin:" \
+		-e "/^INSTMAN/s|=.*|=${EPREFIX}/usr/share/man/man6|" \
+		-e "/^INSTLIB/s|=.*|=${EPREFIX}/usr/share/${PN}|" \
+		-e "/^INSTBIN/s|=.*|=${EPREFIX}/usr/bin|" \
 		Local.config || die
 
 	# work with glibc-2.20
@@ -38,18 +47,24 @@ src_prepare() {
 		src/client/textinterface.c || die
 }
 
+src_configure() {
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf -a || die
+}
+
 src_compile() {
-	xmkmf || die
-	emake Makefiles
-	emake includes
-	emake depend
-	emake CC="$(tc-getCC)" CDEBUGFLAGS="${CFLAGS} ${LDFLAGS}"
+	emake \
+		AR="$(tc-getAR) cq" \
+		CC="$(tc-getCC)" \
+		RANLIB="$(tc-getRANLIB)" \
+		CDEBUGFLAGS="${CFLAGS}" \
+		LOCAL_LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 	emake DESTDIR="${D}" install.man
-	newicon lib/textures/logo.ppm ${PN}.ppm
-	make_desktop_entry ${PN} XPilot /usr/share/pixmaps/${PN}.ppm
-	dodoc README.txt doc/{ChangeLog,CREDITS,FAQ,README*,TODO}
+
+	doicon "${DISTDIR}"/${PN}.png
+	make_desktop_entry ${PN} XPilot
 }

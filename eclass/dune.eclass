@@ -30,7 +30,7 @@ QA_FLAGS_IGNORED='.*'
 
 EXPORT_FUNCTIONS src_compile src_test src_install
 
-RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt?]"
+RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt?] dev-ml/dune:="
 case ${EAPI:-0} in
 	5|6)
 		DEPEND="${RDEPEND} dev-ml/dune"

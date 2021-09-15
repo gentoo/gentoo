@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1
@@ -14,6 +14,7 @@ HOMEPAGE="https://github.com/txamqp/txamqp"
 # pypi tarball misses doc files
 # https://github.com/txamqp/txamqp/pull/10
 SRC_URI="https://github.com/txamqp/txamqp/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 KEYWORDS="~amd64 ~x86 ~x64-solaris"
@@ -24,13 +25,11 @@ RDEPEND="
 	dev-python/twisted[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	test? (
 		${RDEPEND}
 		net-misc/rabbitmq-server
 	)"
-
-S=${WORKDIR}/${MY_P}
 
 # Tests connect to the system rabbitmq server
 # TODO: figure out how to start an isolated instance

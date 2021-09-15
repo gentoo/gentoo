@@ -39,8 +39,8 @@
  RPLYDIR = rply
 
 -CPP = g++
--CPPFLAGS = -c -O3 -W -Wall `pkg-config --cflags gtk+-2.0` -I$(OPENCTMDIR) -I$(RPLYDIR) -I$(GLEWDIR)
-+CXXFLAGS += -W -Wall `pkg-config --cflags gtk+-2.0` -I$(OPENCTMDIR) -I$(RPLYDIR) -I$(GLEWDIR)
+-CPPFLAGS = -c -O3 -W -Wall `${PKG_CONFIG} --cflags gtk+-2.0` -I$(OPENCTMDIR) -I$(RPLYDIR) -I$(GLEWDIR)
++CXXFLAGS += -W -Wall `${PKG_CONFIG} --cflags gtk+-2.0` -I$(OPENCTMDIR) -I$(RPLYDIR) -I$(GLEWDIR)
 
  MESHOBJS = mesh.o meshio.o ctm.o ply.o rply.o stl.o 3ds.o dae.o obj.o lwo.o off.o wrl.o
  CTMCONVOBJS = ctmconv.o common.o systimer.o convoptions.o $(MESHOBJS)

@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 WX_GTK_VER=3.0-gtk3
 inherit wxwidgets toolchain-funcs
@@ -17,7 +17,7 @@ IUSE="flac iconv mad png vorbis"
 RESTRICT="test" # some tests require external files
 
 RDEPEND="
-	>=dev-libs/boost-1.32:=
+	dev-libs/boost:=
 	sys-libs/zlib
 	x11-libs/wxGTK:${WX_GTK_VER}
 	flac? ( media-libs/flac )
@@ -35,17 +35,18 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.8.0-binprefix.patch"
+	"${FILESDIR}/${PN}-2.2.0-strings.patch"
 )
 
 src_prepare() {
 	default
 
-	rm -rf *.bat dists/win32 || die
-	sed -ri -e '/^(CC|CXX)\b/d' Makefile || die
+	rm -r *.bat dists/win32 || die
 }
 
 src_configure() {
 	setup-wxwidgets
+	tc-export CXX STRINGS
 
 	# Not an autoconf script
 	./configure \
@@ -59,10 +60,6 @@ src_configure() {
 		$(use_enable mad) \
 		$(use_enable png) \
 		$(use_enable vorbis) || die
-}
-
-src_compile() {
-	emake STRINGS="$(tc-getSTRINGS)"
 }
 
 src_install() {

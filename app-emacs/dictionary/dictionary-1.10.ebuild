@@ -1,13 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit elisp
 
 DESCRIPTION="Emacs package for talking to a dictionary server"
-HOMEPAGE="http://www.myrkr.in-berlin.de/dictionary/index.html"
-SRC_URI="http://www.myrkr.in-berlin.de/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.myrkr.in-berlin.de/dictionary/index.html"
+SRC_URI="https://www.myrkr.in-berlin.de/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils apache-module
+inherit apache-module
 
 DESCRIPTION="mod_caucho connects Resin and Apache2"
 HOMEPAGE="http://www.caucho.com/"

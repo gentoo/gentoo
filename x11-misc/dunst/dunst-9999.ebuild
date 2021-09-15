@@ -5,7 +5,7 @@ EAPI=7
 inherit systemd toolchain-funcs
 
 DESCRIPTION="Customizable and lightweight notification-daemon"
-HOMEPAGE="https://dunst-project.org/"
+HOMEPAGE="https://dunst-project.org/ https://github.com/dunst-project/dunst"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -27,6 +27,7 @@ DEPEND="
 	x11-libs/gdk-pixbuf
 	x11-libs/libX11
 	x11-libs/libXScrnSaver
+	x11-libs/libXext
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libnotify
@@ -40,7 +41,15 @@ BDEPEND="
 	wayland? ( dev-libs/wayland-protocols )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-1.6.1-no-Os.patch )
+src_prepare() {
+	default
+
+	sed -i \
+		-e "/^DEFAULT_CFLAGS/s/-g //" \
+		-e "/^DEFAULT_CFLAGS/s/-Os //" \
+		config.mk \
+		|| die "sed failed"
+}
 
 src_configure() {
 	tc-export CC PKG_CONFIG
@@ -50,11 +59,11 @@ src_configure() {
 src_compile() {
 	emake WAYLAND=$(usex wayland 1 0) SYSTEMD=0
 	sed -e "s|##PREFIX##|${EPREFIX}/usr|" \
-	    -i dunst.systemd.service.in > dunst.service
+		dunst.systemd.service.in > dunst.service || die
 }
 
 src_install() {
 	emake WAYLAND=$(usex wayland 1 0) SYSTEMD=0 \
-	      DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
-	systemd_dounit dunst.service
+		DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
+	systemd_douserunit dunst.service
 }

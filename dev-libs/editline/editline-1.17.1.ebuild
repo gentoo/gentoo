@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="line editing library for UNIX call compatible with the FSF readline"
-HOMEPAGE="http://troglobit.com/projects/editline/"
+HOMEPAGE="https://troglobit.com/projects/editline/"
 SRC_URI="https://github.com/troglobit/editline/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="Apache-2.0"

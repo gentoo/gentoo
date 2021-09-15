@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit multilib eutils autotools
+inherit multilib epatch autotools
 
 DESCRIPTION="The VLSI design CAD tool"
 HOMEPAGE="http://www.opencircuitdesign.com/magic/index.html"
@@ -34,6 +34,12 @@ src_prepare() {
 	cd .. || die
 
 	sed -i -e "s: -pg : :" tcltk/Makefile || die
+
+	# required for >=autoconf-2.70 (bug #775422)
+	local ac_aux_file
+	for ac_aux_file in install-sh config.guess config.sub ; do
+		ln -s scripts/${ac_aux_file} ${ac_aux_file} || die
+	done
 }
 
 src_configure() {

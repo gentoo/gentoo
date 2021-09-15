@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit autotools flag-o-matic java-pkg-opt-2 multilib-minimal python-single-r1 virtualx
 
@@ -67,7 +67,7 @@ DEPEND="${COMMON_DEPEND}
 	test? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+			dev-python/pillow[${PYTHON_USEDEP}]
 		')
 	)"
 
@@ -87,6 +87,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.23_fix_Qt5X11Extras_detect.patch"
 	"${FILESDIR}/${PN}-0.23_fix_python_detect.patch"
 	"${FILESDIR}/${P}-autoconf-2.70.patch"
+	"${FILESDIR}/${PN}-0.23.1_python_tp_print.patch"
 )
 
 DOCS=( README.md NEWS.md TODO.md HACKING.md TODO.md ChangeLog )

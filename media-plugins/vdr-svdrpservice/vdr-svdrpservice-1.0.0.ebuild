@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: offers SVDRP connections as a service to other plugins"
-HOMEPAGE="http://vdr.schmirler.de/"
-SRC_URI="http://vdr.schmirler.de/svdrpservice/${P}.tgz"
+HOMEPAGE="https://vdr.schmirler.de/"
+SRC_URI="https://vdr.schmirler.de/svdrpservice/${P}.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"

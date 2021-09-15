@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -55,8 +55,7 @@ src_configure() {
 		$(use_enable static static-libc)
 }
 
-pkg_postinst()
-{
+pkg_postinst() {
 	einfo "The generated init script requires additional packages."
 	einfo "Read ${ROOT}usr/share/doc/${PF}/INSTALL for details."
 }

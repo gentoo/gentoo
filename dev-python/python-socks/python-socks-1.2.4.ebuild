@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9}  )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="SOCKS4, SOCKS5, HTTP tunneling functionality for Python"
@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 
 # trio, curio are not packaged
 # asyncio is the only backend we have, so dep on its deps unconditionally

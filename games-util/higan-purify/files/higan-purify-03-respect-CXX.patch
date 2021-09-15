@@ -1,0 +1,28 @@
+diff --git a/Makefile b/Makefile
+index 2a56366..59a3795 100755
+--- a/Makefile
++++ b/Makefile
+@@ -15,18 +15,18 @@ endif
+ all: build;
+ 
+ obj/phoenix.o: phoenix/phoenix.cpp
+-	$(cpp) $(flags) -o obj/phoenix.o -c phoenix/phoenix.cpp $(phoenixflags)
++	$(CXX) $(flags) -o obj/phoenix.o -c phoenix/phoenix.cpp $(phoenixflags)
+ 
+ obj/purify.o: purify.cpp
+-	$(cpp) $(flags) -o obj/purify.o -c purify.cpp
++	$(CXX) $(flags) -o obj/purify.o -c purify.cpp
+ 
+ build: $(objects)
+ ifeq ($(platform),x)
+-	$(cpp) $(flags) -pthread $(link) -o purify $(objects) $(phoenixlink)
++	$(CXX) $(flags) -pthread $(link) -o purify $(objects) $(phoenixlink)
+ else ifeq ($(platform),win)
+ 	windres phoenix/windows/phoenix.rc obj/phoenix-resource.o
+-	$(cpp) -shared -o phoenix.dll obj/phoenix.o $(phoenixlink)
+-	$(cpp) -o purify obj/purify.o obj/phoenix-resource.o $(link) -L. -lphoenix
++	$(CXX) -shared -o phoenix.dll obj/phoenix.o $(phoenixlink)
++	$(CXX) -o purify obj/purify.o obj/phoenix-resource.o $(link) -L. -lphoenix
+ endif
+ 
+ resource: force

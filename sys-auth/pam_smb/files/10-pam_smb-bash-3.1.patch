@@ -1,6 +1,5 @@
-diff -Nurp pam_smb-2.0.0_rc6.orig/configure pam_smb-2.0.0_rc6/configure
---- a/configure	2006-03-17 15:02:01.000000000 +0000
-+++ b/configure	2006-03-17 15:02:01.000000000 +0000
+--- a/configure
++++ b/configure
 @@ -1486,7 +1486,7 @@ else
          # results, and the version is kept in special file).
  

@@ -52,6 +52,10 @@ src_compile() {
 	 ./build || die
 }
 
+src_test() {
+	./test || die
+}
+
 src_install() {
 	dobin bin/etcdctl
 	use doc && dodoc -r Documentation
@@ -75,6 +79,8 @@ src_install() {
 	fi
 }
 
-src_test() {
-	./test || die
+pkg_postinst() {
+	if use server; then
+		tmpfiles_process ${PN}.conf
+	fi
 }

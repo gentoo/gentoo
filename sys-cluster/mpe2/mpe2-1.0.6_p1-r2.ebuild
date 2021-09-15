@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 FORTRAN_NEEDED=fortran
 
-inherit eutils fortran-2 java-pkg-opt-2 toolchain-funcs
+inherit epatch fortran-2 java-pkg-opt-2 toolchain-funcs
 
 MY_P=${P/_/}
 
@@ -123,7 +123,7 @@ src_test() {
 		echo "MPD_SECRETWORD=junk" > "${T}"/mpd.conf || die
 		chmod 600 "${T}"/mpd.conf || die
 		export MPD_CONF_FILE="${T}/mpd.conf"
-		"${ROOT}"usr/bin/mpd -d --pidfile="${T}"/mpd.pid || die
+		"${EPREFIX%/}"/usr/bin/mpd -d --pidfile="${T}"/mpd.pid || die
 	elif [[ "${MPE_IMP}" == openmpi* ]] && [ -z "${MPE2_FORCE_OPENMPI_TEST}" ]; then
 		echo
 		einfo "Skipping tests for openmpi"
@@ -136,12 +136,12 @@ src_test() {
 	emake -j1 \
 		CC="${S}"/bin/mpecc \
 		FC="${S}"/bin/mpefc \
-		MPERUN="${ROOT}/usr/bin/mpiexec -n 4" \
+		MPERUN="${EPREFIX%/}/usr/bin/mpiexec -n 4" \
 		CLOG2TOSLOG2="${S}/src/slog2sdk/bin/clog2TOslog2" \
 		check;
 		rc=${?}
 	if [[ "${MPE_IMP}" == mpich2 ]]; then
-		"${ROOT}"usr/bin/mpdallexit || kill $(<"${T}"/mpd.pid)
+		"${EPREFIX%/}"/usr/bin/mpdallexit || kill $(<"${T}"/mpd.pid)
 	fi
 
 	return ${rc}

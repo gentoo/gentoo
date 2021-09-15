@@ -3,17 +3,17 @@
 
 EAPI=7
 
-inherit eutils multilib
+inherit multilib
 
 DESCRIPTION="Pure Tcl implementation of an XML parser"
 HOMEPAGE="http://tclxml.sourceforge.net/"
 SRC_URI="https://github.com/wjoye/${PN}/archive/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
-IUSE="debug threads"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc sparc x86"
+IUSE="debug threads"
 
 DEPEND="
 	>=dev-lang/tcl-8.2:0
@@ -27,8 +27,8 @@ RDEPEND="${DEPEND}"
 RESTRICT="test"
 
 PATCHES=(
-		"${FILESDIR}"/${PN}-3.2-fix-implicit-declarations.patch
-		"${FILESDIR}"/${P}-bool.patch
+	"${FILESDIR}"/${PN}-3.2-fix-implicit-declarations.patch
+	"${FILESDIR}"/${P}-bool.patch
 )
 
 src_configure() {

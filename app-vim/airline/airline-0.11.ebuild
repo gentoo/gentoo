@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,9 +21,11 @@ HOMEPAGE="https://github.com/vim-airline/vim-airline/ https://www.vim.org/script
 LICENSE="MIT"
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 
+DOCS=( CHANGELOG.md README.md )
+
 src_prepare() {
 	default
 
-	# remove unwanted files
-	rm -r t Gemfile Rakefile LICENSE README* .travis.yml .gitignore || die
+	# remove test dir
+	rm -r t || die
 }

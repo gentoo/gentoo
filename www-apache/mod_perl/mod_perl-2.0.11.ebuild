@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -61,6 +61,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}"-2.0.4-inline.patch        # 550244
 	"${FILESDIR}/${PN}"-2.0.10_rc1-bundled-Apache-Test.patch # 352724
 	"${FILESDIR}/${PN}"-2.0.10_rc1-Gentoo-not-Unix.patch
+	"${FILESDIR}/${PN}"-2.0.11-ranlib.patch       # 728554
+	"${FILESDIR}/${PN}"-2.0.11-perl534.patch      # 791403
 )
 
 src_prepare() {

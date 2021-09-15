@@ -1,0 +1,40 @@
+diff --git a/tests/unittests/unit/net/net_util_test.py b/tests/unittests/unit/net/net_util_test.py
+index 1ceaf4573..870801666 100755
+--- a/tests/unittests/unit/net/net_util_test.py
++++ b/tests/unittests/unit/net/net_util_test.py
+@@ -6,6 +6,7 @@
+
+ import unittest
+
++from collections import defaultdict
+ from xpra.net.net_util import (
+     get_info, get_interfaces, get_interfaces_addresses, #get_interface,
+     get_gateways, get_bind_IPs, do_get_bind_ifacemask,
+@@ -26,10 +27,8 @@ class TestVersionUtilModule(unittest.TestCase):
+         ifaces = get_interfaces()
+         if not ifaces:
+             return
++        ip_ifaces = defaultdict(list)
+         for iface in ifaces:
+-            ipmasks = do_get_bind_ifacemask(iface)
+-            for ip, _ in ipmasks:
+-                assert get_iface(ip)==iface
+             if if_nametoindex:
+                 try:
+                     i = if_nametoindex(iface)
+@@ -37,7 +36,14 @@ class TestVersionUtilModule(unittest.TestCase):
+                     pass
+                 else:
+                     if if_indextoname:
+-                        assert if_indextoname(i)==iface
++                        assert if_indextoname(i)==iface, "expected interface %s for index %i but got %s" % (
++                            iface, i, if_indextoname(i))
++            ipmasks = do_get_bind_ifacemask(iface)
++            for ip, _ in ipmasks:
++                ip_ifaces[ip].append(iface)
++        for ip, ifaces in ip_ifaces.items():
++            assert get_iface(ip) in ifaces, "expected interface for ip %s to be one of %s but got %s" % (
++                    ip, ifaces, get_iface(ip))
+         ia = get_interfaces_addresses()
+         assert ia
+         #for iface, address in ia.items():

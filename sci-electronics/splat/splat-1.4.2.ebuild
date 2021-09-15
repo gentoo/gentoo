@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs
+EAPI=8
+
+inherit toolchain-funcs
 
 DESCRIPTION="RF Signal Propagation, Loss, And Terrain analysis tool"
 HOMEPAGE="https://www.qsl.net/kd2bd/splat.html"
@@ -13,19 +14,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc hires l10n_es"
 
-DEPEND="sys-libs/zlib
-	app-arch/bzip2"
-
+DEPEND="
+	app-arch/bzip2
+	sys-libs/zlib
+"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-1.2.2-gcc43.patch"
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.2-gcc43.patch
+)
 
 src_configure() {
 	# fake resulting file from interactive configuration script
 	# using default resolution
-	cat <<- EOF > "${S}/splat.h"
+	cat <<- EOF > "${S}/splat.h" || die
 		/* Parameters for 3 arc-second standard resolution mode of operation */
 		#define MAXPAGES 9
 		#define HD_MODE 0
@@ -33,7 +35,7 @@ src_configure() {
 	if use hires; then
 		# fake resulting file from interactive configuration script
 		# using default resolution
-		cat <<- EOF > "${S}/hires.h"
+		cat <<- EOF > "${S}/hires.h" || die
 			/* Parameters for 3 arc-second hires resolution mode of operation */
 			#define MAXPAGES 9
 			#define HD_MODE 1
@@ -42,21 +44,21 @@ src_configure() {
 }
 
 src_compile() {
+	tc-export CC CXX
 
-	local CC=$(tc-getCC) CXX=$(tc-getCXX)
-
-	${CXX} -Wall ${CXXFLAGS} ${LDFLAGS} itwom3.0.cpp splat.cpp -o rfsplat -lm -lbz2 || die
+	cp {splat,rfsplat}.cpp || die
+	emake LDLIBS="-lm -lbz2" -E "rfsplat: itwom3.0.o"
 	if use hires; then
-		cp "${S}/hires.h" "${S}/splat.h"
-		${CXX} -Wall ${CXXFLAGS} ${LDFLAGS} itwom3.0.cpp splat.cpp -o rfsplat-hd -lm -lbz2 || die
+		cp {hires,splat}.h || die
+		cp {splat,rfsplat-hd}.cpp || die
+		emake LDLIBS="-lm -lbz2" -E "rfsplat-hd: itwom3.0.o"
 	fi
 
-	cd utils
-	${CC} -Wall ${CFLAGS} ${LDFLAGS} citydecoder.c -o citydecoder
-	${CC} -Wall ${CFLAGS} ${LDFLAGS} usgs2sdf.c    -o usgs2sdf
-	${CC} -Wall ${CFLAGS} ${LDFLAGS} srtm2sdf.c    -o srtm2sdf   -lbz2
-	#${CC} -Wall ${CFLAGS} ${LDFLAGS} fontdata.c    -o fontdata   -lz
-	${CC} -Wall ${CFLAGS} ${LDFLAGS} bearing.c     -o bearing    -lm
+	cd utils || die
+
+	emake citydecoder usgs2sdf
+	emake LDLIBS=-lbz2 srtm2sdf
+	emake LDLIBS=-lm bearing
 }
 
 src_install() {
@@ -64,9 +66,8 @@ src_install() {
 	use l10n_es && SPLAT_LANG="spanish"
 	# splat binary
 	dobin rfsplat
-	if use hires; then
-		dobin rfsplat-hd
-	fi
+
+	use hires && dobin rfsplat-hd
 
 	# utilities
 	dobin utils/{citydecoder,usgs2sdf,srtm2sdf,postdownload,bearing}
@@ -75,17 +76,16 @@ src_install() {
 	dodoc CHANGES README utils/fips.txt
 	newdoc utils/README README.UTILS
 
-	if use doc; then
-		dodoc docs/${SPLAT_LANG}/{pdf/splat.pdf,postscript/splat.ps}
-	fi
+	use doc && dodoc docs/${SPLAT_LANG}/{pdf/splat.pdf,postscript/splat.ps}
+
 	#sample data
 	docinto sample_data
-	dodoc sample_data/*
+	dodoc -r sample_data/.
 }
 
 pkg_postinst() {
 	elog "The original SPLAT! command got renamed to 'rfsplat' to avoid"
-	elog "filename collission with app-portage/splat."
+	elog "filename collision with app-portage/splat."
 	elog ""
 	elog "Be aware that it is still referenced as 'splat' in the documentation."
 }

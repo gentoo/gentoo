@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ MODULE_AUTHOR="DUNCS"
 # CHANGE ME AT EVERY VERSION BUMP
 MODULE_VERSION="4.03_06"
 
-inherit eutils perl-module
+inherit perl-module
 
 DESCRIPTION="Concurrent Multi-Server Terminal Access"
 HOMEPAGE="https://github.com/duncs/clusterssh"

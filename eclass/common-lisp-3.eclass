@@ -4,12 +4,21 @@
 # @ECLASS: common-lisp-3.eclass
 # @MAINTAINER:
 # Common Lisp project <common-lisp@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: functions to support the installation of Common Lisp libraries
 # @DESCRIPTION:
 # Since Common Lisp libraries share similar structure, this eclass aims
 # to provide a simple way to write ebuilds with these characteristics.
 
+case ${EAPI} in
+	[67]) ;;
+	*) die "EAPI=${EAPI:-0} is not supported" ;;
+esac
+
 inherit eutils
+
+if [[ -z ${_COMMON_LISP_3_ECLASS} ]]; then
+_COMMON_LISP_3_ECLASS=1
 
 # @ECLASS-VARIABLE: CLIMPLEMENTATIONS
 # @DESCRIPTION:
@@ -35,8 +44,6 @@ CLSYSTEMROOT="${ROOT%/}"/usr/share/common-lisp/systems
 CLPACKAGE="${PN}"
 
 PDEPEND="virtual/commonlisp"
-
-EXPORT_FUNCTIONS src_compile src_install
 
 # @FUNCTION: common-lisp-3_src_compile
 # @DESCRIPTION:
@@ -197,6 +204,7 @@ common-lisp-export-impl-args() {
 	CL_BINARY="${1}"
 	case "${CL_BINARY}" in
 		sbcl)
+			CL_BINARY="${CL_BINARY} --non-interactive"
 			CL_NORC="--sysinit /dev/null --userinit /dev/null"
 			CL_LOAD="--load"
 			CL_EVAL="--eval"
@@ -234,3 +242,7 @@ common-lisp-export-impl-args() {
 	esac
 	export CL_BINARY CL_NORC CL_LOAD CL_EVAL
 }
+
+fi
+
+EXPORT_FUNCTIONS src_compile src_install

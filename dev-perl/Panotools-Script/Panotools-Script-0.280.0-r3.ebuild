@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DIST_AUTHOR=BPOSTLE
 DIST_VERSION=0.28
-inherit eutils perl-module
+inherit desktop perl-module
 
 DESCRIPTION="A perl module for reading, writing, and manipulating hugin script files"
 

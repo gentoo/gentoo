@@ -47,7 +47,7 @@ python_install_all() {
 	distutils-r1_python_install_all
 }
 
-test_instructions(){
+test_instructions() {
 	ewarn "The 'test' USE flag and FEATURE only ensures that the correct"
 	ewarn "dependenciess are installed for this package."
 	ewarn "Please run eg:"

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils
+inherit autotools epatch
 
 MY_P="${PN}${PV}"
 DESCRIPTION="tool for automating interactive applications"

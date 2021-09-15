@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ KEYWORDS="~amd64"
 IUSE="cuda mpi +python xla"
 CPU_USE_FLAGS_X86="sse sse2 sse3 sse4_1 sse4_2 avx avx2 fma3 fma4"
 for i in $CPU_USE_FLAGS_X86; do
-	IUSE+=" cpu_flags_x86_$i"
+	IUSE+=" cpu_flags_x86_${i}"
 done
 
 # distfiles that bazel uses for the workspace, will be copied to basel-distdir
@@ -127,6 +127,7 @@ BDEPEND="
 	>=dev-libs/protobuf-3.8.0
 	dev-java/java-config
 	=dev-util/bazel-3*
+	virtual/pkgconfig
 	cuda? (
 		>=dev-util/nvidia-cuda-toolkit-9.1[profiler]
 	)
@@ -161,7 +162,7 @@ pkg_setup() {
 
 	local num_pythons_enabled
 	num_pythons_enabled=0
-	count_impls(){
+	count_impls() {
 		num_pythons_enabled=$((${num_pythons_enabled} + 1))
 	}
 	use python && python_foreach_impl count_impls
@@ -232,7 +233,7 @@ src_configure() {
 			einfo "Setting CUDA version: $TF_CUDA_VERSION"
 			einfo "Setting CUDNN version: $TF_CUDNN_VERSION"
 
-			if [[ *$(gcc-version)* != $(cuda-config -s) ]]; then
+			if [[ $(cuda-config -s) != *$(gcc-version)* ]]; then
 				ewarn "TensorFlow is being built with Nvidia CUDA support. Your default compiler"
 				ewarn "version is not supported by the currently installed CUDA. TensorFlow will"
 				ewarn "instead be compiled using: ${GCC_HOST_COMPILER_PATH}."
@@ -303,7 +304,7 @@ src_configure() {
 		echo 'build --config=noaws --config=nohdfs' >> .bazelrc || die
 		echo 'build --define tensorflow_mkldnn_contraction_kernel=0' >> .bazelrc || die
 
-		for cflag in $(pkg-config jsoncpp --cflags)
+		for cflag in $($(tc-getPKG_CONFIG) jsoncpp --cflags)
 		do
 			echo "build --copt=\"$cflag\"" >> .bazelrc || die
 			echo "build --host_copt=\"$cflag\"" >> .bazelrc || die
@@ -385,7 +386,7 @@ src_install() {
 	doins -r bazel-bin/tensorflow/include/*
 
 	einfo "Installing libs"
-	# Generate pkg-config file
+	# Generate $(tc-getPKG_CONFIG) file
 	${PN}/c/generate-pc.sh --prefix="${EPREFIX}"/usr --libdir=$(get_libdir) --version=${MY_PV} || die
 	insinto /usr/$(get_libdir)/pkgconfig
 	doins ${PN}.pc ${PN}_cc.pc

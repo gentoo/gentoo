@@ -1,17 +1,17 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools flag-o-matic gnome2-utils xdg-utils
+inherit autotools flag-o-matic xdg-utils
 
 DESCRIPTION="A background browser and setter for X"
 HOMEPAGE="https://github.com/l3ib/nitrogen"
 SRC_URI="https://github.com/l3ib/nitrogen/releases/download/${PV}/${P}.tar.gz"
+KEYWORDS="amd64 ~ppc x86"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
 IUSE="nls xinerama"
 
 BDEPEND="virtual/pkgconfig"
@@ -43,11 +43,11 @@ src_configure() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 }

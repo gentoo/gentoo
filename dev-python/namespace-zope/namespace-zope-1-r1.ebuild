@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{7,8,9} )
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 inherit python-r1
 
 DESCRIPTION="Namespace package declaration for zope"

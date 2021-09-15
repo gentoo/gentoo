@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/judy/Judy-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="static-libs"
 DOCS=( AUTHORS ChangeLog README )
 
@@ -28,7 +28,7 @@ multilib_src_configure() {
 	ECONF_SOURCE=${BUILD_DIR} econf $(use_enable static-libs static)
 }
 
-multilib_src_install_all(){
+multilib_src_install_all() {
 	einstalldocs
 	find "${ED}" -name '*.la' -delete || die
 }

@@ -1,0 +1,47 @@
+Fix build with clang
+Bug: https://bugs.gentoo.org/739386
+
+--- a/carpettrack.h
++++ b/carpettrack.h
+@@ -15,7 +15,7 @@ class CarpetTrack
+       trackspace = dSimpleSpaceCreate(staticspace);
+       track  = new StaticWorldObject(trackmodel, trackspace, initialpos);
+       sgVec3 sz = { 2.0, 1.2, 0.08 };
+-      sgVec3 cpos = { initialpos[0]+5, initialpos[1], initialpos[2]+0.6 };
++      sgVec3 cpos = { initialpos[0]+5, initialpos[1], initialpos[2]+0.6f };
+       carpet = new DynamicBoxObject(carpetmodel, world, trackspace, cpos, sz);
+       carpet->name = "carpet";
+       carpet->SetMass(1.0);
+--- a/doorstand.h
++++ b/doorstand.h
+@@ -63,7 +63,7 @@ class DoorStand : public WorldObject
+ 
+       // Do the door
+       dReal sz[3] = { 0.1, 1.4, 1.6 };
+-      dReal ps[3] = { initialpos[0], initialpos[1], initialpos[2]+0.85 };
++      dReal ps[3] = { initialpos[0], initialpos[1], initialpos[2]+0.85f };
+       door_body = dBodyCreate(world);
+       dBodySetAutoDisableFlag(door_body, false);
+       dBodySetPosition(door_body, ps[0], ps[1], ps[2]);
+--- a/spikejump.h
++++ b/spikejump.h
+@@ -17,7 +17,7 @@ class SpikeJump
+       spikespace = dSimpleSpaceCreate(staticspace);
+       spikegate = new StaticWorldObject(spikemodel, spikespace, initialpos);
+       sgVec3 sz = { 2.0, 1.2, 0.08 };
+-      sgVec3 cpos = { initialpos[0], initialpos[1], initialpos[2]+0.6 };
++      sgVec3 cpos = { initialpos[0], initialpos[1], initialpos[2]+0.6f };
+       jumpboard = new DynamicBoxObject(boardmodel, world, spikespace, cpos, sz);
+       jumpboard->name = "jumpboard";
+       jumpboard->SetMass(1.0);
+--- a/ferriswheel.h
++++ b/ferriswheel.h
+@@ -20,7 +20,7 @@ class FerrisWheelCart : public DynamicObject
+       dBodySetPosition (body,initialpos[0],initialpos[1],initialpos[2]-1.45);
+ 
+       dReal sizes[2][3] = {{ 2.0, 2.9, 0.1 },  {0.2, 0.3, 1.5}};
+-      dReal xlats[2][4] = {{initialpos[0], initialpos[1], initialpos[2]-1.45}, {0,0,0.70}};
++      dReal xlats[2][4] = {{initialpos[0], initialpos[1], initialpos[2]-1.45f}, {0,0,0.70}};
+ 
+       dMass m;
+       dMassSetZero(&m);

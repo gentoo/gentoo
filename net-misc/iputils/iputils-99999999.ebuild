@@ -12,7 +12,7 @@ EAPI="7"
 
 PLOCALES="de fr ja pt_BR tr uk zh_CN"
 
-inherit fcaps flag-o-matic l10n meson systemd toolchain-funcs
+inherit fcaps flag-o-matic meson plocale systemd toolchain-funcs
 
 if [[ ${PV} == "99999999" ]] ; then
 	EGIT_REPO_URI="https://github.com/iputils/iputils.git"
@@ -28,14 +28,19 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iputils"
 
 LICENSE="BSD GPL-2+ rdisc"
 SLOT="0"
-IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle nls rarpd rdisc ssl static tftpd tracepath traceroute6"
+IUSE="+arping caps clockdiff doc gcrypt idn ipv6 nettle nls rarpd rdisc ssl static test tftpd tracepath traceroute6"
+RESTRICT="!test? ( test )"
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	test? ( sys-apps/iproute2 )
+	nls? ( sys-devel/gettext )
+"
 
 LIB_DEPEND="
 	caps? ( sys-libs/libcap[static-libs(+)] )
 	idn? ( net-dns/libidn2:=[static-libs(+)] )
-	nls? ( sys-devel/gettext[static-libs(+)] )
+	nls? ( virtual/libintl[static-libs(+)] )
 "
 
 RDEPEND="
@@ -59,12 +64,10 @@ if [[ ${PV} == "99999999" ]] ; then
 	"
 fi
 
-PATCHES=()
-
 src_prepare() {
 	default
 
-	l10n_get_locales > po/LINGUAS || die
+	plocale_get_locales > po/LINGUAS || die
 }
 
 src_configure() {
@@ -87,6 +90,7 @@ src_configure() {
 		-DNO_SETCAP_OR_SUID="true"
 		-Dsystemdunitdir="$(systemd_get_systemunitdir)"
 		-DUSE_GETTEXT="$(usex nls true false)"
+		$(meson_use !test SKIP_TESTS)
 	)
 
 	if [[ "${PV}" == 99999999 ]] ; then
@@ -107,6 +111,15 @@ src_configure() {
 src_compile() {
 	tc-export CC
 	meson_src_compile
+}
+
+src_test() {
+	if [[ ${EUID} != 0 ]]; then
+		einfo "Tests require root privileges; Skipping ..."
+		return
+	fi
+
+	meson_src_test
 }
 
 src_install() {

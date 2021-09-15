@@ -7,6 +7,17 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# James Le Cuirot <chewi@gentoo.org> (2021-08-10)
+# media-video/pipewire is not keyworded. Bug #807616.
+bluetooth
+pipewire
+
+# Michał Górny <mgorny@gentoo.org> (2021-05-20)
+# Unresolved keywordreqs are getting in the way.
+# https://bugs.gentoo.org/789606
+python_targets_python3_10
+python_single_target_python3_10
+
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
 # sys-libs/llvm-libunwind not supported on HPPA.
 llvm-libunwind
@@ -199,7 +210,7 @@ networkmanager
 gcj
 
 # Samuli Suominen <drac@gentoo.org> (2007-03-02)
-# See https://bugs.gentoo.org/show_bug.cgi?id=157881#c3
+# See bug #157881#c3
 battery
 
 # Saleem Abdulrasool <compnerd@gentoo.org> (2006-08-18)

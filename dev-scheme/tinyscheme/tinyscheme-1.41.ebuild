@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit flag-o-matic multilib toolchain-funcs
+inherit epatch flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="Lightweight scheme interpreter"
 HOMEPAGE="http://tinyscheme.sourceforge.net"

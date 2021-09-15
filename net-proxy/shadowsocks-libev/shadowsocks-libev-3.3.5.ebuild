@@ -4,7 +4,7 @@
 EAPI=7
 
 MY_PV="v${PV}"
-inherit autotools eutils systemd
+inherit autotools systemd
 
 DESCRIPTION="A lightweight secured SOCKS5 proxy for embedded devices and low end boxes"
 HOMEPAGE="https://github.com/shadowsocks/shadowsocks-libev"

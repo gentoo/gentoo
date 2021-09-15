@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit l10n autotools systemd
+inherit autotools strip-linguas systemd
 
 DESCRIPTION="LXDE Display Manager"
 HOMEPAGE="https://wiki.lxde.org/en/LXDM"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ppc x86"
+KEYWORDS="amd64 arm ~arm64 ppc ~ppc64 ~riscv x86"
 
 IUSE="debug elogind nls pam systemd"
 

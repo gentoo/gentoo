@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/787101
+--- a/libevolvotron/mutatable_image_computer_farm.h
++++ b/libevolvotron/mutatable_image_computer_farm.h
+@@ -45,7 +45,7 @@ class MutatableImageComputerFarm
+     {
+     public:
+       //! Compare task priorities.
+-      bool operator()(const boost::shared_ptr<const MutatableImageComputerTask>& t0,const boost::shared_ptr<const MutatableImageComputerTask>& t1) 
++      bool operator()(const boost::shared_ptr<const MutatableImageComputerTask>& t0,const boost::shared_ptr<const MutatableImageComputerTask>& t1) const
+ 	{ 
+ 	  return (t0->priority() < t1->priority());
+ 	}
+@@ -56,7 +56,7 @@ class MutatableImageComputerFarm
+     {
+     public:
+       //! Compare task priorities.
+-      bool operator()(const boost::shared_ptr<const MutatableImageComputerTask>& t0,const boost::shared_ptr<const MutatableImageComputerTask>& t1) 
++      bool operator()(const boost::shared_ptr<const MutatableImageComputerTask>& t0,const boost::shared_ptr<const MutatableImageComputerTask>& t1) const
+ 	{ 
+ 	  return (t0->priority() > t1->priority());
+ 	}

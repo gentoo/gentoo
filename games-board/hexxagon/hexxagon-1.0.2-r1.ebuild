@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils flag-o-matic
+EAPI=8
+
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Clone of the original DOS game"
 HOMEPAGE="https://www.nesqi.se/"
@@ -11,23 +12,25 @@ SRC_URI="https://www.nesqi.se/download/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="dev-cpp/glibmm:2
+RDEPEND="
+	dev-cpp/glibmm:2
 	dev-cpp/gtkmm:2.4
 	x11-libs/gtk+:2"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-src_prepare() {
-	default
+PATCHES=(
+	"${FILESDIR}"/${P}-glibc-2.31.patch
+)
 
-	append-cxxflags -std=c++11
+src_compile() {
+	emake AR="$(tc-getAR)"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
+
 	newicon images/board_N_2.xpm ${PN}.xpm
 	make_desktop_entry ${PN} Hexxagon
-	dodoc README
 }

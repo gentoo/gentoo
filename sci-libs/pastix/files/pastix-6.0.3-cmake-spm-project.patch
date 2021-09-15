@@ -1,0 +1,12 @@
+--- a/spm/CMakeLists.txt
++++ b/spm/CMakeLists.txt
+@@ -8,9 +8,6 @@
+ #  @date 2013-06-24
+ #
+ ###
+-cmake_minimum_required (VERSION 3.0)
+-project (SPM C Fortran)
+-
+ # Check if compiled independently or within another project
+ if ( ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
+   set( BUILD_AS_SUBPROJECT OFF )

@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -21,7 +21,7 @@ IUSE=""
 
 RUBY_S="hipchat-rb-${PV}"
 
-ruby_add_rdepend "dev-ruby/httparty dev-ruby/mimemagic"
+ruby_add_rdepend "dev-ruby/httparty dev-ruby/mimemagic:*"
 ruby_add_bdepend "test? (
 		dev-ruby/rr
 		dev-ruby/rake

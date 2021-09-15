@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools desktop l10n
+inherit autotools desktop strip-linguas
 
 DESCRIPTION="Very fast real-time fractal zoomer"
 HOMEPAGE="http://matek.hu/xaos/doku.php"
@@ -14,7 +14,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86 ~amd64-linux ~x86-linux"
-IUSE="aalib doc -gtk nls png svga threads X"
+IUSE="aalib doc gtk nls png svga threads X"
 
 RDEPEND="
 	sci-libs/gsl:=

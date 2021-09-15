@@ -12,11 +12,13 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="+debug device-mapper nls readline"
 
+# util-linux for libuuid
 RDEPEND="
 	>=sys-fs/e2fsprogs-1.27
+	sys-apps/util-linux
 	device-mapper? ( >=sys-fs/lvm2-2.02.45 )
 	readline? (
 		>=sys-libs/ncurses-5.7-r7:0=
@@ -31,7 +33,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH=${EPREFIX}/usr/share/openpgp-keys/bcl.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/bcl.asc
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2-po4a-mandir.patch

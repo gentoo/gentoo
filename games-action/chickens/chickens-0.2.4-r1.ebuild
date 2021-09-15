@@ -1,62 +1,75 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit desktop
+inherit desktop flag-o-matic toolchain-funcs
 
 MY_P="ChickensForLinux-Linux-${PV}"
+
 DESCRIPTION="Target chickens with rockets and shotguns. Funny"
 HOMEPAGE="http://www.chickensforlinux.com/"
 SRC_URI="http://www.chickensforlinux.com/${MY_P}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-RESTRICT="mirror bindist"
+RESTRICT="bindist mirror"
 
-DEPEND="acct-group/gamestat
-	<media-libs/allegro-5"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	acct-group/gamestat
+	media-libs/allegro:0[X]"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-S=${WORKDIR}/${PN}
+PATCHES=(
+	"${FILESDIR}"/${P}-bitmap.patch
+	"${FILESDIR}"/${P}-settings.patch
+)
 
 src_prepare() {
 	default
 
-	sed -i \
-		-e "s:HighScores:/var/games//${PN}/HighScores:" \
-		-e "s:....\(.\)\(_\)\(.*.4x0\)\(.\):M\4\2\x42\x6Fn\1s\2:" \
-		highscore.cpp HighScores || die
-	sed -i \
-		-e "s:options.cfg:/etc/${PN}/options.cfg:" \
-		-e "s:\"sound/:\"/usr/share/${PN}/sound/:" \
-		-e "s:\"dat/:\"/usr/share/${PN}/dat/:" \
-		main.cpp README || die
-	sed -i \
-		-e '/^CPPFLAGS/d' \
-		-e 's:g++:\\$(CXX) \\$(CXXFLAGS) \\$(LDFLAGS):' \
-		configure || die
+	# sed kept for historical reasons
+	sed -i 's|....\(.\)\(_\)\(.*.4x0\)\(.\)|M\4\2\x42\x6Fn\1s\2|' HighScores || die
+
+	sed -i "s|HighScores|${EPREFIX}/var/games/${PN}.hs|" highscore.cpp || die
+
+	sed -e "s|options.cfg|${EPREFIX}/etc/${PN}/&|" \
+		-e "s|sound/|${EPREFIX}/usr/share/${PN}/&|" \
+		-e "s|dat/|${EPREFIX}/usr/share/${PN}/&|" \
+		-i main.cpp README || die
 }
 
 src_configure() {
-	# econf (sometimes) fails, see https://bugs.gentoo.org/588544
-	bash ./configure || die
+	: # this configure file does no good
+}
+
+src_compile() {
+	local obj=([!m]*.cpp)
+	tc-export CXX
+	append-cppflags $($(tc-getPKG_CONFIG) --cflags allegro || die)
+	append-libs $($(tc-getPKG_CONFIG) --libs allegro || die)
+	emake -E "main: ${obj[*]/.cpp/.o}" LDLIBS="${LIBS}"
 }
 
 src_install() {
-	dobin ${PN}
+	newbin main ${PN}
+	dodoc AUTHOR README
+
 	insinto /usr/share/${PN}
 	doins -r dat sound
-	dodoc AUTHOR README
-	insinto /var/games/${PN}
-	doins HighScores
+
 	insinto /etc/${PN}
 	doins options.cfg
-	make_desktop_entry ${PN} Chickens
 
-	fowners root:gamestat /usr/bin/${PN} /var/games/${PN}/HighScores
-	fperms 2755 /usr/bin/${PN}
-	fperms 660  /var/games/${PN}/HighScores
+	insinto /var/games
+	newins HighScores ${PN}.hs
+
+	fowners :gamestat /usr/bin/${PN} /var/games/${PN}.hs
+	fperms g+s /usr/bin/${PN}
+	fperms 660  /var/games/${PN}.hs
+
+	make_desktop_entry ${PN} ${PN^} applications-games
 }

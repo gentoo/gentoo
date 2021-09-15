@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit toolchain-funcs multilib
+inherit toolchain-funcs
 
 MY_PN=${PN}-ng
 MY_P=${MY_PN}-${PV}

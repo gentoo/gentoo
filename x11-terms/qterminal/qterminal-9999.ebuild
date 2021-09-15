@@ -19,7 +19,7 @@ fi
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
 
-BDEPEND=">=dev-util/lxqt-build-tools-0.8.0"
+BDEPEND=">=dev-util/lxqt-build-tools-0.9.0"
 DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -29,9 +29,7 @@ DEPEND="
 	x11-libs/libX11
 	~x11-libs/qtermwidget-${PV}
 "
-RDEPEND="${DEPEND}
-	!lxqt-base/lxqt-l10n
-"
+RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${PN}-0.16.1-appdata.patch" )
 

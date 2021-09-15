@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils gnome2-utils
+
+inherit autotools epatch gnome2-utils
 
 DESCRIPTION="Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet"
 HOMEPAGE="http://www.clayo.org/kanatest"
@@ -11,14 +12,13 @@ SRC_URI="http://www.clayo.org/${PN}/${P}.tar.gz"
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE=""
 
 RDEPEND=">=x11-libs/gtk+-2.12:2=
 	dev-libs/libxml2:="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-DOCS="AUTHORS TRANSLATORS ChangeLog README"
+DOCS=( AUTHORS TRANSLATORS ChangeLog README )
 
 src_prepare() {
 	epatch \
@@ -35,6 +35,14 @@ src_prepare() {
 	eautoreconf
 }
 
-pkg_preinst() {	gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }
+pkg_preinst() {
+	gnome2_icon_savelist
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+}

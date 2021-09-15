@@ -1,0 +1,11 @@
+--- ./lib/Apache2/Build.pm~	2019-10-05 12:04:39.000000000 +0100
++++ ./lib/Apache2/Build.pm	2020-10-28 19:20:40.809279091 +0000
+@@ -1664,7 +1664,7 @@
+ 
+     my $ranlib = "\t" . '$(MODPERL_RANLIB) $@' . "\n";
+ 
+-    $link .= "\n" . $ranlib unless (DARWIN or OPENBSD);
++    #$link .= "\n" . $ranlib unless (DARWIN or OPENBSD);
+ 
+     $link;
+ }

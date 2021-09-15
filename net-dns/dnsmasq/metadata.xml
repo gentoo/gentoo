@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
 <email>chutzpah@gentoo.org</email>
@@ -13,6 +13,7 @@
 	<flag name="dnssec">Enable support DNSSEC validation and caching.</flag>
 	<flag name="dumpfile">Include code to dump packets to a libpcap-format file for debugging</flag>
 	<flag name="id">Whether report *.bind CHAOS info to clients, otherwise forward such requests upstream instead</flag>
+	<flag name="loop">Include functionality to probe for and remove DNS forwarding loops</flag>
 	<flag name="libidn2">Enable support for Internationalized Domain Names, via <pkg>net-dns/libidn2</pkg> rather than <pkg>net-dns/libidn</pkg></flag>
 	<flag name="nettlehash">Use hashing functions from <pkg>dev-libs/nettle</pkg></flag>
 	<flag name="script">Enable support for calling scripts when leases change.</flag>

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit distutils-r1 optfeature toolchain-funcs
 
@@ -20,13 +20,12 @@ RESTRICT="!test? ( test )"
 
 # Note: lib{xml2,xslt} are used as C libraries, not Python modules.
 RDEPEND="
-	>=dev-libs/libxml2-2.9.5
+	<dev-libs/libxml2-2.9.12
 	>=dev-libs/libxslt-1.1.28"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	dev-python/cython[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		$(python_gen_any_dep '
 			dev-python/docutils[${PYTHON_USEDEP}]
@@ -96,6 +95,6 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	optfeature "Support for BeautifulSoup as a parser backend" dev-python/beautifulsoup
+	optfeature "Support for BeautifulSoup as a parser backend" dev-python/beautifulsoup4
 	optfeature "Translates CSS selectors to XPath 1.0 expressions" dev-python/cssselect
 }

@@ -6,7 +6,7 @@ EAPI=7
 CMAKE_BUILD_TYPE="Release"
 #CMAKE_MAKEFILE_GENERATOR=emake
 
-POSTGRES_COMPAT=( 9.{5..6} {10..13} )
+POSTGRES_COMPAT=( 9.6 {10..13} )
 POSTGRES_USEDEP="server"
 
 inherit cmake postgres-multi

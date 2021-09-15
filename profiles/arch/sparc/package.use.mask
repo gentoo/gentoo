@@ -1,9 +1,43 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
-# sys-devel/clang not keyworded on SPARC.
-sys-libs/llvm-libunwind test
+# Sam James <sam@gentoo.org> (2021-09-14)
+# jack2 not keyworded here
+# bug #807616
+media-video/pipewire jack-client
+
+# Sam James <sam@gentoo.org> (2021-09-12)
+# dev-ruby/asciidoctor isn't keyworded here
+dev-util/ccache doc
+
+# David Seifert <soap@gentoo.org> (2021-09-04)
+# dev-lang/go not keyworded here
+sys-libs/libcap tools
+
+# Matt Turner <mattst88@gentoo.org> (2021-07-23)
+# gui-libs/gtk is not keyworded
+net-libs/gssdp gtk
+
+# Matt Turner <mattst88@gentoo.org> (2021-06-10)
+# dev-python/django is not keyworded here
+dev-python/diskcache test
+
+# Sam James <sam@gentoo.org> (2021-06-03)
+# Mask tests on dev-cpp/eigen for now as they're rather large and
+# eigen itself is only being dragged in as a test dependency for now.
+# bug #760803
+dev-cpp/eigen test
+
+# Marek Szuba <marecki@gentoo.org> (2021-05-07)
+# Legacy interface that depends on kernel headers not available on this arch
+# as well as currently-unkeyworded dev-libs/libx86
+x11-misc/read-edid vbe-mode
+
+# Sam James <sam@gentoo.org> (2021-04-27)
+# Deps not yet tested/keyworded.
+sys-devel/clang default-compiler-rt default-libcxx default-lld
+sys-devel/clang-runtime compiler-rt libcxx
+sys-devel/llvm gold z3
 
 # Sam James <sam@gentoo.org> (2021-03-19)
 # On sparc, we have to force sys-apps/grep[libsigsegv]
@@ -220,10 +254,6 @@ media-sound/dir2ogg aac wma
 # app-text/mupdf sparc keyword was dropped in bug #631970
 net-print/cups-filters pdf
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2018-09-28)
-# mpir fails to build at least on sparc: bug #640424
-dev-python/gmpy mpir
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-08-30)
 # dev-games/openscenegraph is a heavy unkeyworded dependency.
 # Skip keywording it for now.
@@ -253,7 +283,7 @@ media-plugins/gst-plugins-meta ffmpeg
 dev-db/mariadb numa
 
 # Gilles Dartiguelongue <eva@gentoo.org> (2017-08-16)
-# missing keyword on dev-python/dbusmock, bug #620024
+# missing keyword on dev-python/python-dbusmock, bug #620024
 >=gnome-base/gnome-settings-daemon-3.24 test
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)

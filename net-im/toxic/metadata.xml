@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
 		<email>JoMull01@protonmail.com</email>
@@ -21,6 +21,7 @@
 	</longdescription>
 	<use>
 		<flag name="audio-notify">Enables native sound notifications</flag>
+		<flag name="games">Enables some small mini-games</flag>
 		<flag name="llvm">Enables support for LLVM Address Sanitizer</flag>
 		<flag name="notification">Enables desktop notifications with libnotify, with sound support.</flag>
 		<flag name="qrcode">Enables QR code support</flag>

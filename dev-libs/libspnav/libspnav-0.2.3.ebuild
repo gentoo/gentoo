@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit multilib toolchain-funcs
+inherit toolchain-funcs
 
 MY_PN='spacenav'
 DESCRIPTION="libspnav is a replacement for the magellan library with a cleaner API"

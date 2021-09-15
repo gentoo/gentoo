@@ -1,6 +1,5 @@
-diff -ruN lnxhc-1.2/Makefile lnxhc-1.2-patched/Makefile
---- lnxhc-1.2/Makefile	2013-02-06 04:14:17.000000000 -0500
-+++ lnxhc-1.2-patched/Makefile	2013-02-09 13:39:25.096883794 -0500
+--- a/Makefile
++++ b/Makefile
 @@ -71,7 +71,6 @@
  pycheckdir	:= $(libdir)/python/check
  exampledir	:= $(docdir)/examples

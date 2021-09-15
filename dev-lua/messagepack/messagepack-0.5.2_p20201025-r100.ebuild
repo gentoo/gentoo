@@ -1,16 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGIT_COMMIT="18f316b3f62c02bf2b7a3096701780f78a4d2c67"
-LUA_COMPAT=( lua5-{1..2} luajit )
+LUA_COMPAT=( lua5-{1..4} luajit )
 MY_PN="lua-MessagePack"
 MY_P="${MY_PN}-${EGIT_COMMIT}"
 
-inherit lua toolchain-funcs
+inherit lua
 
-DESCRIPTION="A pure Lua implementation of the MessagePack serialization format"
+DESCRIPTION="pure Lua implementation of the MessagePack serialization format"
 HOMEPAGE="https://fperrad.frama.io/lua-MessagePack"
 SRC_URI="https://framagit.org/fperrad/${MY_PN}/-/archive/${EGIT_COMMIT}/${MY_P}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"

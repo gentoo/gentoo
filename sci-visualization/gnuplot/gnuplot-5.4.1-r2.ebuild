@@ -6,7 +6,7 @@ EAPI=7
 LUA_COMPAT=( lua5-{1,2,3} )
 WX_GTK_VER="3.0-gtk3"
 
-inherit autotools flag-o-matic lua-single readme.gentoo-r1 toolchain-funcs wxwidgets
+inherit autotools lua-single readme.gentoo-r1 toolchain-funcs wxwidgets
 
 DESCRIPTION="Command-line driven interactive plotting program"
 HOMEPAGE="http://www.gnuplot.info/"
@@ -20,7 +20,7 @@ if [[ -z ${PV%%*9999} ]]; then
 else
 	MY_P="${P/_/.}"
 	SRC_URI="mirror://sourceforge/gnuplot/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 S="${WORKDIR}/${MY_P}"
@@ -28,7 +28,9 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="gnuplot"
 SLOT="0"
 IUSE="aqua bitmap cairo doc examples +gd ggi latex libcaca libcerf lua qt5 readline regis wxwidgets X"
-REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
+REQUIRED_USE="
+	doc? ( gd )
+	lua? ( ${LUA_REQUIRED_USE} )"
 
 RDEPEND="
 	cairo? (
@@ -67,15 +69,14 @@ BDEPEND="
 		virtual/latex-base
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-langgreek
+		dev-texlive/texlive-mathscience
 		app-text/ghostscript-gpl )
 	qt5? ( dev-qt/linguist-tools:5 )"
 
 GP_VERSION="${PV%.*}"
-E_SITEFILE="lisp/50${PN}-gentoo.el"
 TEXMF="${EPREFIX}/usr/share/texmf-site"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.0.1-fix-underlinking.patch
 	"${FILESDIR}"/${PN}-5.0.6-no-picins.patch
 )
 

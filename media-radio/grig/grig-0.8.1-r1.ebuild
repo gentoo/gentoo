@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/groundstation/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -26,8 +26,19 @@ src_configure() {
 	econf --enable-hardware
 }
 
+src_prepare() {
+	# prepare for media-radio/hamlib-4.2 change of API
+	if has_version '>=media-libs/hamlib-4.2' ; then
+		eapply -p1 "${FILESDIR}"/${P}-hamlib42.patch
+	fi
+
+	eapply ${PATCHES}
+
+	eapply_user
+}
+
 src_install() {
 	default
 	make_desktop_entry ${PN} "GRig" "/usr/share/pixmaps/grig/grig-logo.png" "HamRadio"
-	rm -rf "${D}/usr/share/grig" || die "cleanup docs failed"
+	rm -rf "${ED}/usr/share/grig" || die "cleanup docs failed"
 }

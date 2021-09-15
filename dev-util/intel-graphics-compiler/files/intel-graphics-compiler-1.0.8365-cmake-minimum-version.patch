@@ -1,0 +1,43 @@
+From 419ae48d0e2cb932a6618e9012b4164e93e58279 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conikost@gentoo.org>
+Date: Sat, 28 Aug 2021 00:16:23 +0200
+Subject: [PATCH] IGC: CMakeLists: adjust minimum_version
+
+As CMake warns about possible compatibility problems,
+the minimum version should be updated, as it should be compatible.
+
+Otherwise, the warning is printed:
+Compatibility with CMake < 2.8.12 will be removed from a future version of CMake.
+
+Signed-off-by: Conrad Kostecki <conrad@kostecki.com>
+---
+ visa/CMakeLists.txt                             | 2 +-
+ visa/iga/GEDLibrary/GED_external/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/visa/CMakeLists.txt b/visa/CMakeLists.txt
+index c70d80d5726..3e54bd93079 100644
+--- a/visa/CMakeLists.txt
++++ b/visa/CMakeLists.txt
+@@ -68,7 +68,7 @@ if(WIN32)
+   cmake_minimum_required(VERSION 3.1)
+   cmake_policy(SET CMP0043 OLD)
+ else()
+-  cmake_minimum_required(VERSION 2.8)
++  cmake_minimum_required(VERSION 2.8.12)
+ endif(WIN32)
+ 
+ # In the case where this is the IGC build we need to add a dummy custom target check_headers
+diff --git a/visa/iga/GEDLibrary/GED_external/CMakeLists.txt b/visa/iga/GEDLibrary/GED_external/CMakeLists.txt
+index d3011ddae6a..e40313fc194 100644
+--- a/visa/iga/GEDLibrary/GED_external/CMakeLists.txt
++++ b/visa/iga/GEDLibrary/GED_external/CMakeLists.txt
+@@ -10,7 +10,7 @@
+ if(WIN32)
+     cmake_minimum_required(VERSION 3.1)
+ else()
+-    cmake_minimum_required(VERSION 2.8)
++    cmake_minimum_required(VERSION 2.8.12)
+ endif(WIN32)
+ 
+ project(GEDLibrary)

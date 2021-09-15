@@ -6,7 +6,7 @@ EAPI=7
 LUA_COMPAT=( lua5-1 )
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit autotools bash-completion-r1 l10n linux-info lua-single perl-functions python-single-r1 xdg-utils flag-o-matic
+inherit autotools bash-completion-r1 linux-info lua-single perl-functions python-single-r1 strip-linguas xdg-utils flag-o-matic
 
 MY_PV_1="$(ver_cut 1-2)"
 MY_PV_2="$(ver_cut 2)"
@@ -20,7 +20,7 @@ LICENSE="GPL-2 LGPL-2"
 SLOT="0/"${MY_PV_1}""
 
 KEYWORDS="~amd64"
-IUSE="doc erlang +fuse gtk inspect-icons introspection libvirt lua ocaml +perl python ruby selinux static-libs systemtap test"
+IUSE="doc erlang +fuse gtk inspect-icons introspection libvirt lua +ocaml +perl python ruby selinux static-libs systemtap test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
@@ -138,8 +138,10 @@ src_configure() {
 	# configured kernel.
 	export vmchannel_test=no
 
-	# bug #703118
-	append-ldflags "-L/usr/$(get_libdir)/xcrypt"
+	# Give a nudge to help find libxcrypt[-system]
+	# bug #703118, bug #789354
+	append-ldflags "-L${ESYSROOT}/usr/$(get_libdir)/xcrypt"
+	append-ldflags "-Wl,-R${ESYSROOT}/usr/$(get_libdir)/xcrypt"
 
 	econf \
 		--with-bashcompletiondir="$(get_bashcompdir)" \
@@ -178,9 +180,11 @@ pkg_postinst() {
 	if ! use gtk ; then
 		einfo "virt-p2v NOT installed"
 	fi
+
 	if ! use ocaml ; then
-		einfo "Ocaml based tools and bindings (sysprep, ...) NOT installed"
+		einfo "OCaml based tools and bindings (virt-resize, virt-sparsify, virt-sysprep, ...) NOT installed"
 	fi
+
 	if ! use perl ; then
 		einfo "Perl based tools NOT build"
 	fi

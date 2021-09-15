@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Unicode-aware text to PostScript converter"
 HOMEPAGE="http://paps.sourceforge.net/"
@@ -12,18 +12,20 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND="x11-libs/pango"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-as-needed-build.patch
+	"${FILESDIR}"/${P}-fix-doxygen-acinclude.patch
+	"${FILESDIR}"/${P}-fix-freetype-include.patch
+	"${FILESDIR}"/${P}-fix-empty-file.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-fix-as-needed-build.patch \
-		"${FILESDIR}"/${P}-fix-doxygen-acinclude.patch \
-		"${FILESDIR}"/${P}-fix-freetype-include.patch \
-		"${FILESDIR}"/${P}-fix-empty-file.patch
+	default
 
 	mv configure.in configure.ac || die
 

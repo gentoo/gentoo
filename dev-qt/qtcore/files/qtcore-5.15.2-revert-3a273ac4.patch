@@ -1,0 +1,56 @@
+From d9a85af5f24d0608c79b2d87b01213833bee01e5 Mon Sep 17 00:00:00 2001
+From: David Faure <david.faure@kdab.com>
+Date: Thu, 19 Aug 2021 15:07:13 +0200
+Subject: [PATCH] Revert "QString::lastIndexOf: fix off-by-one for zero length
+ matches"
+
+This reverts commit 3a273ac47f20e82a1f2f63411b210025ca0f4495.
+
+See QTBUG-94215
+
+6cee204d56205e250b0675c9c6d4dd8a2367f3c4 for qtbase/dev changes the
+behaviour even further, I'm pretty sure we don't want that in Qt 5.15.x,
+see discussion in https://codereview.qt-project.org/c/qt/qtbase/+/365179.
+
+Change-Id: I663d74e0d44ebf46291fe0e8a7dc609be82eedc6
+---
+ src/corelib/text/qstring.cpp                    | 4 ++--
+ tests/auto/corelib/text/qstring/tst_qstring.cpp | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/corelib/text/qstring.cpp b/src/corelib/text/qstring.cpp
+index 02a9fe3a30..e6e7cbaad4 100644
+--- a/src/corelib/text/qstring.cpp
++++ b/src/corelib/text/qstring.cpp
+@@ -4558,13 +4558,13 @@ int QString::lastIndexOf(const QRegularExpression &re, int from, QRegularExpress
+         return -1;
+     }
+ 
+-    int endpos = (from < 0) ? (size() + from + 1) : (from);
++    int endpos = (from < 0) ? (size() + from + 1) : (from + 1);
+     QRegularExpressionMatchIterator iterator = re.globalMatch(*this);
+     int lastIndex = -1;
+     while (iterator.hasNext()) {
+         QRegularExpressionMatch match = iterator.next();
+         int start = match.capturedStart();
+-        if (start <= endpos) {
++        if (start < endpos) {
+             lastIndex = start;
+             if (rmatch)
+                 *rmatch = std::move(match);
+diff --git a/tests/auto/corelib/text/qstring/tst_qstring.cpp b/tests/auto/corelib/text/qstring/tst_qstring.cpp
+index 8f53824050..4c4a8f0416 100644
+--- a/tests/auto/corelib/text/qstring/tst_qstring.cpp
++++ b/tests/auto/corelib/text/qstring/tst_qstring.cpp
+@@ -1674,7 +1674,7 @@ void tst_QString::lastIndexOf()
+     QCOMPARE(haystack.lastIndexOf(needle.toLatin1(), from, cs), expected);
+     QCOMPARE(haystack.lastIndexOf(needle.toLatin1().data(), from, cs), expected);
+ 
+-    if (from >= -1 && from < haystack.size() && needle.size() > 0) {
++    if (from >= -1 && from < haystack.size()) {
+         // unfortunately, QString and QRegExp don't have the same out of bound semantics
+         // I think QString is wrong -- See file log for contact information.
+         {
+-- 
+GitLab
+

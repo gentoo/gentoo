@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 MYP=dx-${PV}
 
-inherit autotools eutils flag-o-matic
+inherit autotools desktop flag-o-matic
 
 DESCRIPTION="3D data visualization tool"
 HOMEPAGE="http://www.opendx.org/"
@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-szip.patch"
 	"${FILESDIR}/${P}-null.patch"
 	"${FILESDIR}/${P}-invalid-conversion.patch"
+	"${FILESDIR}/${P}-slibtool.patch"
 	"${WORKDIR}/${PN}-4.4.4_p20160917-fix-c++14.patch"
 )
 
@@ -60,6 +61,9 @@ src_configure() {
 	# check flag filtering
 	# with gcc 3.3.2 I had an infinite loop on src/exec/libdx/zclipQ.c
 	append-flags -fno-strength-reduce
+
+	# bug #786627
+	append-cppflags -std=c++14
 
 	# (#82672)
 	filter-flags -finline-functions

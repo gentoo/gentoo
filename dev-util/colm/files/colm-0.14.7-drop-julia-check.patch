@@ -1,0 +1,45 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -284,41 +284,7 @@ AC_PATH_PROG([OCAML_BIN], [ocaml])
+ AC_PATH_PROG([RUST_BIN], [rustc])
+ AC_PATH_PROG([JULIA_BIN], [julia])
+ 
+-dnl
+-dnl Julia requires a large virtual address space. On systems where this is
+-dnl limited by ulimit, julia will fail to run.
+-dnl
+-
+-if test "x$JULIA_BIN" != x; then
+-	echo 'println( "can run julia programs" );' > conftest.jl
+-	AC_MSG_CHECKING([checking if julia is able to run programs ... ])
+-	if sh -c "$JULIA_BIN conftest.jl" >>config.log 2>&1; then
+-		AC_MSG_RESULT([yes])
+-	else
+-		AC_MSG_RESULT([no])
+-		JULIA_BIN=""
+-	fi
+-	rm -f conftest.jl
+-fi
+-
+-dnl We can run julia, now make sure we have 1.0
+-if test "x$JULIA_BIN" != x; then
+-	AC_MSG_CHECKING([checking if julia is version 1.0 or later ... ])
+-
+-	dnl We assume the form "julia version X.X.X"
+-	dnl   1. everything before the version number.
+-	dnl   2. Remove trailing version.
+-	dnl   3. Verify it is plain number greater than 1.
+-	dnl Any failure comes out as empty string. Note the sed command is wrapped
+-	dnl in [] so autotools do not interpret anything in it.
+-	JULIA1="`$JULIA_BIN -v | sed ['s/[A-Za-z ]\+//g; s/\.[0-9\.]*//; /^[1-9][0-9]*/!d;']`"
+-	if test "x$JULIA1" != x; then
+-		AC_MSG_RESULT([yes]) 
+-	else
+-		AC_MSG_RESULT([no]) 
+-		JULIA_BIN=""
+-	fi
+-fi
++JULIA_BIN=""
+ 
+ AC_PATH_PROG([GNUSTEP_CONFIG], [gnustep-config])
+ 

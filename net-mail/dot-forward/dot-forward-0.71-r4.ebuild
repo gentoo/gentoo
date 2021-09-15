@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils fixheadtails qmail
+inherit fixheadtails qmail
 
 DESCRIPTION="reads sendmail's .forward files under qmail"
 HOMEPAGE="http://cr.yp.to/dot-forward.html"

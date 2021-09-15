@@ -13,7 +13,7 @@ SRC_URI="https://github.com/bbidulock/bbkeys/archive/${MY_PV}.tar.gz -> ${P}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND="

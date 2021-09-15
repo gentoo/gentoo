@@ -11,7 +11,7 @@ SRC_URI="https://github.com/plk/biber/archive/v${PV}.tar.gz  -> ${P}.tar.gz"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -65,6 +65,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-perl/File-Which
 			dev-perl/Parse-RecDescent
 			dev-perl/Test-Differences )"
+BDEPEND="dev-perl/Module-Build"
 
 mydoc="doc/biber.tex"
 

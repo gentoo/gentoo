@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vcs-clean.eclass
@@ -6,7 +6,16 @@
 # base-system@gentoo.org
 # @AUTHOR:
 # Benedikt Böhm <hollow@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: helper functions to remove VCS directories
+
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_VCS_CLEAN_ECLASS} ]] ; then
+_VCS_CLEAN_ECLASS=1
 
 # @FUNCTION: ecvs_clean
 # @USAGE: [list of dirs]
@@ -38,3 +47,5 @@ egit_clean() {
 	[[ $# -eq 0 ]] && set -- .
 	find "$@" -type d -name '.git*' -prune -exec rm -rf '{}' +
 }
+
+fi

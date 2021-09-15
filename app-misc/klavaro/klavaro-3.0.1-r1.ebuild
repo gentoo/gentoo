@@ -17,7 +17,6 @@ KEYWORDS="amd64 x86"
 
 BDEPEND="
 	dev-util/intltool
-	dev-util/gtk-builder-convert
 	>=sys-devel/gettext-0.18.3
 "
 RDEPEND="

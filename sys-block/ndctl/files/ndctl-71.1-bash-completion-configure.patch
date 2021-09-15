@@ -1,0 +1,48 @@
+https://github.com/pmem/ndctl/pull/174
+
+From 92485810ce872c92b925ccdf4e3b58fa37ccbb8e Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 17 Jul 2021 19:31:56 +0100
+Subject: [PATCH] change bash-completion
+
+---
+ configure.ac | 17 ++++++++++-------
+ 1 file changed, 10 insertions(+), 7 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 5ec8d2f..f7b1aed 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -133,19 +133,22 @@ PKG_CHECK_MODULES([UUID], [uuid],
+ 	[AC_DEFINE([HAVE_UUID], [1], [Define to 1 if using libuuid])])
+ PKG_CHECK_MODULES([JSON], [json-c])
+ 
+-AC_ARG_WITH([bash],
+-	AS_HELP_STRING([--with-bash],
+-		[Enable bash auto-completion. @<:@default=yes@:>@]),
++AC_ARG_WITH([bash-completion-dir],
++	AS_HELP_STRING([--with-bash-completion-dir[=PATH]],
++		[Enable bash auto-completion. Uses pkgconfig if no path given. @<:@default=yes@:>@]),
+ 	[],
+-	[with_bash=yes])
++	[with_bash_completion_dir=yes])
+ 
+-if test "x$with_bash" = "xyes"; then
++if test "x$with_bash_completion_dir" = "xyes"; then
+ 	PKG_CHECK_MODULES([BASH_COMPLETION], [bash-completion >= 2.0],
+-		[BASH_COMPLETION_DIR=$($PKG_CONFIG --variable=completionsdir bash-completion)], [])
++		[BASH_COMPLETION_DIR=$($PKG_CONFIG --variable=completionsdir bash-completion)],
++		[BASH_COMPLETION_DIR="$datadir/bash-completion/completions"])
++else
++	BASH_COMPLETION_DIR="$with_bash_completion_dir"
+ fi
+ 
+ AC_SUBST([BASH_COMPLETION_DIR])
+-AM_CONDITIONAL([ENABLE_BASH_COMPLETION], [test "x$with_bash" = "xyes"])
++AM_CONDITIONAL([ENABLE_BASH_COMPLETION], [test "x$with_bash_completion_dir" != "xno"])
+ 
+ AC_ARG_ENABLE([local],
+         AS_HELP_STRING([--disable-local], [build against kernel ndctl.h @<:@default=system@:>@]),
+-- 
+2.32.0
+

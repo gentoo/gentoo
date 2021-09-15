@@ -2,8 +2,8 @@ allow selection of default cache compressor
 
 http://bugs.gentoo.org/205147
 
---- configure
-+++ configure
+--- a/configure
++++ b/configure
 @@ -1012,6 +1012,10 @@
        done
      done

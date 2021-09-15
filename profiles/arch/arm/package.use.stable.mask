@@ -118,10 +118,6 @@ dev-db/mariadb galera
 # Not going to be stable for now
 dev-util/geany-plugins gtkspell
 
-# Christoph Junghans <junghans@gentoo.org> (2016-11-27)
-# no stable mpi on arm yet, but maybe in the future
-<=sci-libs/fftw-3.3.4 mpi
-
 # Markus Meier <maekke@gentoo.org> (2016-09-27)
 # Missing stable
 dev-db/mariadb jdbc

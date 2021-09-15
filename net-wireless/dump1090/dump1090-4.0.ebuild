@@ -26,11 +26,12 @@ DEPEND="
 	bladerf? ( net-wireless/bladerf:= )
 	rtlsdr? ( net-wireless/rtl-sdr:= )"
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
-	sed -i -e 's#-O3 -g -Wall -Wmissing-declarations -Werror -W##' Makefile || die
-	sed -i -e "s#-lncurses#$($(tc-getPKG_CONFIG) --libs ncurses)#" Makefile || die
+	sed -i -e '/CFLAGS/s# -O3 -g -Wall -Wmissing-declarations -Werror -W # #' Makefile || die
+	sed -i -e "/LIBS_CURSES/s#-lncurses#$($(tc-getPKG_CONFIG) --libs ncurses)#" Makefile || die
 }
 
 src_compile() {

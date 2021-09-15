@@ -13,7 +13,7 @@ SRC_URI="http://users.telenet.be/on4qz/qsstv/downloads/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 CDEPEND="dev-qt/qtcore:5
@@ -40,6 +40,12 @@ src_prepare() {
 	sed -i -e "s:/doc/\$\$TARGET:/doc/${PF}:" \
 		-e "s:-lhamlib:-L/usr/$(get_libdir)/hamlib -lhamlib:g" \
 		qsstv.pro || die
+
+	# prepare for media-radio/hamlib-4.2 change of API
+	if has_version '>=media-libs/hamlib-4.2' ; then
+		sed -i -e "s/FILPATHLEN/HAMLIB_FILPATHLEN/g" "${S}"/rig/rigcontrol.cpp \
+			|| die
+	fi
 }
 
 src_configure() {

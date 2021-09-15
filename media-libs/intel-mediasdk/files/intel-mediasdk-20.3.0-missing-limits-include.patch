@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/789726
+
+From fb9829058e35405081c8b361fb402eeaa6b78ed9 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 4 Aug 2021 21:47:49 +0100
+Subject: [PATCH] Add missing limits include
+
+---
+ _studio/mfx_lib/mctf_package/mctf/src/mctf_common.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/_studio/mfx_lib/mctf_package/mctf/src/mctf_common.cpp b/_studio/mfx_lib/mctf_package/mctf/src/mctf_common.cpp
+index 5774702..ed1c1b7 100644
+--- a/_studio/mfx_lib/mctf_package/mctf/src/mctf_common.cpp
++++ b/_studio/mfx_lib/mctf_package/mctf/src/mctf_common.cpp
+@@ -44,6 +44,7 @@
+ #include <algorithm>
+ #include <climits>
+ #include <cmath>
++#include <limits>
+ #include "cmrt_cross_platform.h"
+ 
+ using std::min;
+-- 
+2.32.0
+

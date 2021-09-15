@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+KFMIN=5.85.0
 ESVN_REPO_URI="https://svn.code.sf.net/p/kuroo/code/kuroo4/trunk"
 inherit ecm subversion
 
@@ -18,23 +19,23 @@ DEPEND="
 	dev-db/sqlite:3
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
-	kde-frameworks/kauth:5
-	kde-frameworks/kconfig:5
-	kde-frameworks/kconfigwidgets:5
-	kde-frameworks/kcoreaddons:5
-	kde-frameworks/ki18n:5
-	kde-frameworks/kio:5
-	kde-frameworks/kitemviews:5
-	kde-frameworks/knotifications:5
-	kde-frameworks/ktextwidgets:5
-	kde-frameworks/kwidgetsaddons:5
-	kde-frameworks/kxmlgui:5
-	kde-frameworks/threadweaver:5
+	>=kde-frameworks/extra-cmake-modules-${KFMIN}:5
+	>=kde-frameworks/kauth-${KFMIN}:5
+	>=kde-frameworks/kconfig-${KFMIN}:5
+	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
+	>=kde-frameworks/kcoreaddons-${KFMIN}:5
+	>=kde-frameworks/ki18n-${KFMIN}:5
+	>=kde-frameworks/kio-${KFMIN}:5
+	>=kde-frameworks/kitemviews-${KFMIN}:5
+	>=kde-frameworks/knotifications-${KFMIN}:5
+	>=kde-frameworks/ktextwidgets-${KFMIN}:5
+	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
+	>=kde-frameworks/kxmlgui-${KFMIN}:5
+	>=kde-frameworks/threadweaver-${KFMIN}:5
 "
 RDEPEND="${DEPEND}
 	app-portage/gentoolkit
 	kde-apps/kompare:5
-	kde-plasma/kde-cli-tools:5[kdesu]
 "
 
 pkg_postinst() {

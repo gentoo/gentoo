@@ -12,7 +12,7 @@ SRC_URI="https://www.clamav.net/downloads/production/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
-IUSE="bzip2 doc clamonacc clamdtop clamsubmit iconv ipv6 libclamav-only libressl milter metadata-analysis-api selinux systemd test uclibc xml"
+IUSE="bzip2 doc clamonacc clamdtop clamsubmit iconv ipv6 libclamav-only milter metadata-analysis-api selinux systemd test uclibc xml"
 
 REQUIRED_USE="libclamav-only? ( !clamonacc !clamdtop !clamsubmit !milter !metadata-analysis-api )"
 
@@ -34,8 +34,7 @@ CDEPEND="acct-group/clamav
 	elibc_musl? ( sys-libs/fts-standalone )
 	iconv? ( virtual/libiconv )
 	!libclamav-only? ( net-misc/curl )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	milter? ( || ( mail-filter/libmilter mail-mta/sendmail ) )
 	xml? ( dev-libs/libxml2 )"
 
@@ -216,6 +215,12 @@ src_test() {
 }
 
 pkg_postinst() {
+	if ! use libclamav-only ; then
+		if use systemd ; then
+			tmpfiles_process clamav.conf
+		fi
+	fi
+
 	if use milter ; then
 		elog "For simple instructions how to setup the clamav-milter read the"
 		elog "clamav-milter.README.gentoo in /usr/share/doc/${PF}"

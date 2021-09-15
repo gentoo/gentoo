@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.cs.arizona.edu/${PN}/${P}.tar.Z"
 
 LICENSE="AGREP"
 SLOT="0"
-KEYWORDS="amd64 arm ~mips ppc ppc64 sparc x86 ~ppc-macos ~sparc-solaris"
+KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 sparc x86 ~ppc-macos ~sparc-solaris"
 
 RDEPEND="
 	!dev-libs/tre

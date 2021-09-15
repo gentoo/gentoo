@@ -19,12 +19,12 @@ RDEPEND="virtual/cblas
 	sys-libs/zlib
 	sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
-PDEPEND="dev-libs/rocr-runtime"
 
 S="${WORKDIR}/llvm-project-rocm-${PV}/llvm"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.7.0-current_pos.patch"
+	"${FILESDIR}/${PN}-4.1.0-fix-missing-include.patch"
 )
 
 CMAKE_BUILD_TYPE=RelWithDebInfo
@@ -77,6 +77,7 @@ src_configure() {
 		-DLLVM_INSTALL_UTILS=ON
 		-DLLVM_VERSION_SUFFIX=roc
 		-DOCAMLFIND=NO
+		-DCMAKE_DISABLE_FIND_PACKAGE_CUDA=ON
 	)
 
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"

@@ -15,13 +15,13 @@ else
 fi
 
 DESCRIPTION="The Persistence of Vision Raytracer"
-HOMEPAGE="http://www.povray.org/"
+HOMEPAGE="https://www.povray.org/"
 SRC_URI="https://github.com/POV-Ray/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~soap/distfiles/${P}_p20160914-fix-c++14.patch.bz2"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="debug +io-restrictions openexr static-libs tiff X"
 
 DEPEND="
@@ -30,8 +30,8 @@ DEPEND="
 	sys-libs/zlib
 	virtual/jpeg:0
 	openexr? (
-		media-libs/ilmbase
-		media-libs/openexr )
+		media-libs/ilmbase:=
+		<media-libs/openexr-3.0.0:0= )
 	tiff? ( media-libs/tiff:0 )
 	X? ( media-libs/libsdl )"
 RDEPEND="${DEPEND}"

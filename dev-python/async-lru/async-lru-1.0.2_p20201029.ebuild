@@ -1,9 +1,9 @@
 # Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 EGIT_COMMIT=17a5d207f603c0c142f01a69fbf6f487b3fef5c4
@@ -14,7 +14,7 @@ HOMEPAGE="
 SRC_URI="
 	https://github.com/aio-libs/async-lru/archive/${EGIT_COMMIT}.tar.gz
 		-> ${PN}-${EGIT_COMMIT}.tar.gz"
-S=${WORKDIR}/${PN}-${EGIT_COMMIT}
+S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -22,7 +22,7 @@ KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
 	test? (
-		<dev-python/pytest-6.2[${PYTHON_USEDEP}]
+		>=dev-python/pytest-6.2.4[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 	)"
 

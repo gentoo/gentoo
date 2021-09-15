@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/docker/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 
 RDEPEND="
 	>=dev-python/requests-2.24.0[${PYTHON_USEDEP}]
@@ -40,5 +40,5 @@ src_prepare() {
 }
 
 python_test() {
-	pytest -vv tests/unit/ || die "tests failed under ${EPYTHON}"
+	epytest -vv tests/unit
 }

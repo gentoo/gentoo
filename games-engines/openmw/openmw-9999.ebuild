@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic xdg-utils readme.gentoo-r1
+LUA_COMPAT=( lua5-{1,3,4} luajit )
+inherit cmake lua-single xdg-utils readme.gentoo-r1
 
 DESCRIPTION="Open source reimplementation of TES III: Morrowind"
 HOMEPAGE="https://openmw.org/ https://gitlab.com/OpenMW/openmw"
@@ -20,24 +21,25 @@ fi
 LICENSE="GPL-3 MIT BitstreamVera ZLIB"
 SLOT="0"
 IUSE="doc devtools +osg-fork test +qt5"
+REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 # FIXME: Unbundle dev-games/openscenegraph-qt in extern/osgQt directory,
 # used when BUILD_OPENCS flag is enabled. See bug #676266.
 
-RDEPEND="
+RDEPEND="${LUA_DEPS}
 	app-arch/lz4
 	dev-games/mygui
 	dev-games/recastnavigation
-	dev-libs/boost:=[threads]
-	dev-libs/tinyxml[stl]
+	dev-libs/boost:=[threads(+),zlib]
+	dev-libs/tinyxml:=[stl]
 	media-libs/libsdl2[joystick,opengl,video]
 	media-libs/openal
 	media-video/ffmpeg:=
 	>=sci-physics/bullet-2.86:=[double-precision]
 	virtual/opengl
-	osg-fork? ( dev-games/openscenegraph-openmw:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
-	!osg-fork? ( >=dev-games/openscenegraph-3.5.5:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
+	osg-fork? ( >=dev-games/openscenegraph-openmw-3.6:=[collada(-),ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
+	!osg-fork? ( >=dev-games/openscenegraph-3.5.5:=[collada(-),ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
 	qt5? (
 		app-arch/unshield
 		dev-qt/qtcore:5
@@ -48,7 +50,9 @@ RDEPEND="
 	)
 "
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-cpp/sol2
+"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -63,7 +67,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/openmw-0.47.0-mygui-license.patch
-	"${FILESDIR}"/openmw-0.47.0-bullet-debian.patch
 )
 
 src_prepare() {
@@ -71,13 +74,12 @@ src_prepare() {
 
 	# Use the system tinyxml headers
 	rm -v extern/oics/tiny{str,xml}* || die
+	rm -rv extern/sol3.2.2 || die
 }
 
 src_configure() {
 	use devtools && ! use qt5 && \
 		elog "'qt5' USE flag is disabled, 'openmw-cs' will not be installed"
-
-	append-cxxflags "-I${EPREFIX}/usr/include/recastnavigation"
 
 	local mycmakeargs=(
 		-DBUILD_BSATOOL=$(usex devtools)
@@ -96,6 +98,20 @@ src_configure() {
 		-DDESIRED_QT_VERSION=5
 		-DBULLET_USE_DOUBLES=ON
 	)
+
+	if [[ ${ELUA} == luajit ]]; then
+		mycmakeargs+=(
+			-DUSE_LUAJIT=ON
+		)
+	else
+		mycmakeargs+=(
+			-DUSE_LUAJIT=OFF
+			-DLua_FIND_VERSION_MAJOR=$(ver_cut 1 $(lua_get_version))
+			-DLua_FIND_VERSION_MINOR=$(ver_cut 2 $(lua_get_version))
+			-DLua_FIND_VERSION_COUNT=2
+			-DLua_FIND_VERSION_EXACT=ON
+		)
+	fi
 
 	cmake_src_configure
 }

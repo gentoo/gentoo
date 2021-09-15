@@ -1,0 +1,13 @@
+diff --git a/src/headers/gx_system.h b/src/headers/gx_system.h
+index d334ecfc..88d97567 100644
+--- a/src/headers/gx_system.h
++++ b/src/headers/gx_system.h
+@@ -132,7 +132,7 @@ inline T *atomic_get(T*& p) {
+ 
+ template <class T>
+ inline bool atomic_compare_and_exchange(T **p, T *oldv, T *newv) {
+-    return g_atomic_pointer_compare_and_exchange(reinterpret_cast<void* volatile*>(p), static_cast<void*>(oldv), newv);
++    return g_atomic_pointer_compare_and_exchange(reinterpret_cast<void**>(p), static_cast<void*>(oldv), newv);
+ }
+ 
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,6 +9,8 @@ MY_PN="Deponia - The Complete Journey"
 DESCRIPTION="The Complete Journey: The first three Deponia point-and-click adventures"
 HOMEPAGE="https://www.daedalic.com/deponia"
 SRC_URI="DeponiaTCJ_${PV}_Full_DEB_DE_EN_FR_IT_RU_PL_Daedalic_ESD.tar.gz"
+S="${WORKDIR}/${MY_PN}"
+
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64"
@@ -20,10 +22,8 @@ RDEPEND="
 	virtual/opengl
 "
 
-S="${WORKDIR}/${MY_PN}"
-
 DIR="/opt/${PN}"
-QA_PREBUILT="${DIR}/*"
+QA_PREBUILT="${DIR#/}/*"
 
 pkg_nofetch() {
 	einfo "Please buy and download ${SRC_URI} from:"

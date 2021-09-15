@@ -1,0 +1,37 @@
+From 19fe24ef9377178413438d7749630053995af229 Mon Sep 17 00:00:00 2001
+From: Eugene Popov <popov895@ukr.net>
+Date: Mon, 9 Aug 2021 15:56:02 +0000
+Subject: [PATCH] [Calendar] Fix pinned calendar displaying the wrong number of
+ dots
+
+Use assignment instead of binding for the rootIndex property of the DelegateModel.
+
+BUG: 440627
+FIXED-IN: 5.86
+---
+ src/declarativeimports/calendar/qml/DayDelegate.qml | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/declarativeimports/calendar/qml/DayDelegate.qml b/src/declarativeimports/calendar/qml/DayDelegate.qml
+index af31991db..3f7fc681b 100644
+--- a/src/declarativeimports/calendar/qml/DayDelegate.qml
++++ b/src/declarativeimports/calendar/qml/DayDelegate.qml
+@@ -81,13 +81,14 @@ PlasmaComponents3.AbstractButton {
+             Repeater {
+                 model: DelegateModel {
+                     model: dayStyle.dayModel
+-                    rootIndex: modelIndex(index)
+                     delegate: Rectangle {
+                         width: PlasmaCore.Units.smallSpacing * 1.5
+                         height: width
+                         radius: width / 2
+                         color: model.eventColor ? Kirigami.ColorUtils.linearInterpolation(model.eventColor, PlasmaCore.Theme.textColor, 0.2) : PlasmaCore.Theme.highlightColor
+                     }
++
++                    Component.onCompleted: rootIndex = modelIndex(index)
+                 }
+             }
+         }
+-- 
+GitLab
+

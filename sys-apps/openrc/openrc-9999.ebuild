@@ -3,22 +3,22 @@
 
 EAPI=7
 
-inherit flag-o-matic pam toolchain-funcs
+inherit flag-o-matic meson pam toolchain-funcs
 
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="https://github.com/openrc/openrc/"
 
-if [[ ${PV} == "9999" ]]; then
+if [[ ${PV} =~ ^9{4,}$ ]]; then
 	EGIT_REPO_URI="https://github.com/OpenRC/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/OpenRC/openrc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="audit bash debug ncurses pam newnet prefix +netifrc selinux sysv-utils unicode"
+IUSE="audit bash debug ncurses pam newnet +netifrc selinux sysv-utils unicode"
 
 COMMON_DEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
@@ -55,37 +55,20 @@ RDEPEND="${COMMON_DEPEND}
 
 PDEPEND="netifrc? ( net-misc/netifrc )"
 
-src_prepare() {
-	default
-	if [[ ${PV} == "9999" ]] ; then
-		local ver="git-${EGIT_VERSION:0:6}"
-		sed -i "/^GITVER[[:space:]]*=/s:=.*:=${ver}:" mk/gitver.mk || die
-	fi
-}
-
-src_compile() {
-	MAKE_ARGS="${MAKE_ARGS}
-		LIBNAME=$(get_libdir)
-		LIBDIR=${EPREFIX}/$(get_libdir)
-		LIBEXECDIR=${EPREFIX}/lib/rc
-		MKBASHCOMP=yes
-		MKNET=$(usex newnet)
-		MKSELINUX=$(usex selinux)
-		MKSYSVINIT=$(usex sysv-utils)
-		MKAUDIT=$(usex audit)
-		MKPAM=$(usev pam)
-		MKSTATICLIBS=no
-		MKZSHCOMP=yes
-		OS=Linux
-		SH=$(usex bash /bin/bash /bin/sh)"
-
-	use prefix && MAKE_ARGS="${MAKE_ARGS} MKPREFIX=yes PREFIX=${EPREFIX}"
-export BRANDING="Gentoo Linux"
-	export DEBUG=$(usev debug)
-	export MKTERMCAP=$(usev ncurses)
-
-	tc-export CC AR RANLIB
-	emake ${MAKE_ARGS}
+src_configure() {
+	local emesonargs=(
+	$(meson_feature audit)
+	"-Dbranding=\"Gentoo Linux\""
+		$(meson_use newnet)
+		-Dos=Linux
+		$(meson_use pam)
+		$(meson_feature selinux)
+		-Dshell=$(usex bash /bin/bash /bin/sh)
+		$(meson_use sysv-utils sysvinit)
+		-Dtermcap=$(usev ncurses)
+	)
+	# export DEBUG=$(usev debug)
+	meson_src_configure
 }
 
 # set_config <file> <option name> <yes value> <no value> test
@@ -102,7 +85,7 @@ set_config_yes_no() {
 }
 
 src_install() {
-	emake ${MAKE_ARGS} DESTDIR="${D}" install
+	meson_install
 
 	keepdir /lib/rc/tmp
 
@@ -129,9 +112,6 @@ src_install() {
 
 	# install documentation
 	dodoc ChangeLog *.md
-	if use newnet; then
-		dodoc README.newnet
-	fi
 }
 
 pkg_preinst() {

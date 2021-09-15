@@ -1,0 +1,55 @@
+Only look for one single version of Lua: the one pointed to by the
+pkgconfig package 'lua'. The wrapper set up by lua eclasses will take care
+of the rest.
+
+--- a/configure.ac	2021-06-11 12:20:01.222417096 +0200
++++ b/configure.ac	2021-06-11 12:21:00.257419197 +0200
+@@ -1907,44 +1907,10 @@
+     [disable LUA scripting support (default enabled)]))
+ if test "${enable_lua}" != "no"
+ then
+-  PKG_CHECK_MODULES(LUA, lua5.2, [ have_lua=yes ], [:])
+-
+-  AS_IF([test "${have_lua}" != "yes"], [
+-    AC_MSG_WARN([${LUA_PKG_ERRORS}, trying lua 5.1 instead])
+-    PKG_CHECK_MODULES(LUA, lua5.1, [ have_lua=yes ], [:]) ])
+-
+-  AS_IF([test "${have_lua}" != "yes"], [
+-    AC_MSG_WARN([${LUA_PKG_ERRORS}, trying lua >= 5.1 instead])
+-    PKG_CHECK_MODULES(LUA, lua >= 5.1, [ have_lua=yes ], [:]) ])
+-
+-  AS_IF([test "${have_lua}" != "yes"], [
+-     AC_MSG_WARN([${LUA_PKG_ERRORS}, trying manual detection instead])
+-     have_lua_lib=no
+-     AC_CHECK_LIB( lua5.2 , luaL_newstate, [
+-       LUA_LIBS="-llua5.2"
+-       have_lua_lib=yes], [])
+-
+-     AS_IF([test "${have_lua_lib}" != "yes"], [
+-       AC_CHECK_LIB( lua5.1 , luaL_newstate, [
+-         LUA_LIBS="-llua5.1"
+-         have_lua_lib=yes], [] ) ])
+-
+-     AS_IF([test "${have_lua_lib}" != "yes"], [
+-       AC_CHECK_LIB( lua51 , luaL_newstate, [
+-         LUA_LIBS="-llua51"
+-         have_lua_lib=yes], [] ) ])
+-
+-     AS_IF([test "${have_lua_lib}" != "yes"], [
+-       AC_CHECK_LIB( lua , luaL_newstate,
+-         [LUA_LIBS="-llua"
+-          have_lua_lib=yes],
+-         [ have_lua=no ], [-lm] ) ])
+-
+-     dnl If we found any lib, check that we have the headers too
+-     AS_IF([test "${have_lua_lib}" = "yes"], [
+-       AC_CHECK_HEADERS([lua.h lauxlib.h lualib.h], [ have_lua=yes ], []) ])
+-  ])
+-
++  PKG_CHECK_MODULES(LUA, lua,
++    [ have_lua=yes ],
++    [ have_lua=no ]
++    )
+   if test "x${have_lua}" != "xyes" ;  then
+       AC_MSG_ERROR([Could not find lua. Lua is needed for some interfaces (rc, telnet, http) as well as many other custom scripts. Use --disable-lua to ignore this error.])
+   fi

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 inherit python-single-r1 xdg-utils
 
 DESCRIPTION="Simple application to manage Xfce panel layouts"
@@ -20,7 +20,7 @@ BDEPEND="${PYTHON_DEPS}"
 RDEPEND="${BDEPEND}
 	dev-libs/gobject-introspection
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	x11-libs/gtk+:3[introspection]
 	xfce-base/libxfce4ui[introspection]

@@ -1,0 +1,20 @@
+This was added ahead of time (for next version), currently unused.
+--- a/configure.ac
++++ b/configure.ac
+@@ -249,16 +249,4 @@
+ dnl libt4kcommon is now required: --------------------------------------------
+ 
+-PKG_CHECK_MODULES([T4K_COMMON],
+-	[t4k_common],
+-	[],
+-	[AC_MSG_NOTICE([t4k_common not located by pkg-config, checking with AC CHECK LIB:])
+-	 AC_CHECK_LIB([t4k_common],
+-		[InitT4KCommon],
+-		[],
+-		[AC_MSG_ERROR([libt4k_common is required: git://git.debian.org/tux4kids/t4kcommon.git])])])
+-
+-AC_DEFINE([HAVE_LIBT4K_COMMON],[1],[Define to 1 if you have the `t4k_common` library])
+-CFLAGS="$CFLAGS $T4K_COMMON_CFLAGS"
+-LIBS="$LIBS $T4K_COMMON_LIBS"
+ 
+ 

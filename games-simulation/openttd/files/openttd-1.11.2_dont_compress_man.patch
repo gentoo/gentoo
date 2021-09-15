@@ -1,0 +1,29 @@
+From 985c2f4937573ce80add1aa84e4e57148c0a1815 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sun, 23 May 2021 17:39:53 +0300
+Subject: [PATCH] Don't compress man file on install
+
+---
+ cmake/InstallAndPackage.cmake | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/cmake/InstallAndPackage.cmake b/cmake/InstallAndPackage.cmake
+index 9b7d65788..b5b23c95f 100644
+--- a/cmake/InstallAndPackage.cmake
++++ b/cmake/InstallAndPackage.cmake
+@@ -51,11 +51,10 @@ if(OPTION_INSTALL_FHS)
+     install(CODE
+             "
+                 execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${MAN_SOURCE_FILE} ${MAN_BINARY_FILE})
+-                execute_process(COMMAND gzip -9 -n -f ${MAN_BINARY_FILE})
+             "
+             COMPONENT manual)
+     install(FILES
+-                    ${MAN_BINARY_FILE}.gz
++                    ${MAN_BINARY_FILE}
+             DESTINATION ${MAN_DESTINATION_DIR}/man6
+             COMPONENT manual)
+ endif()
+-- 
+2.26.3
+

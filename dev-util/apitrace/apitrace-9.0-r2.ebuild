@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_ECLASS=cmake
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..10} )
 inherit cmake-multilib python-single-r1
 
 DESCRIPTION="Tool for tracing, analyzing, and debugging graphics APIs"
@@ -61,6 +61,7 @@ src_configure() {
 			-DENABLE_GUI=$(multilib_native_usex qt5)
 			-DENABLE_STATIC_SNAPPY=OFF
 			-DENABLE_WAFFLE=ON
+			-DPYTHON_EXECUTABLE="${PYTHON}"
 		)
 		cmake_src_configure
 	}

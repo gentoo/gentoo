@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>base-system@gentoo.org</email>
@@ -13,7 +13,6 @@
 	</longdescription>
 	<use>
 		<flag name="gcrypt">Use message digest functions from <pkg>dev-libs/libgcrypt</pkg> instead of sudo's</flag>
-		<flag name="libressl">Use message digest functions from <pkg>dev-libs/libressl</pkg> instead of sudo's</flag>
 		<flag name="offensive">Let sudo print insults when the user types the wrong password</flag>
 		<flag name="sendmail">Allow sudo to send emails with sendmail</flag>
 		<flag name="sssd">Add System Security Services Daemon support</flag>

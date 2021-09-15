@@ -4,12 +4,13 @@
 EAPI=7
 
 DOCS_BUILDER="doxygen"
+DOCS_DEPEND="dev-texlive/texlive-fontutils"
 DOCS_DIR="${S}/doc"
 
 LUA_REQ_USE="deprecated(+)"
-LUA_COMPAT=( lua5-{1..3} luajit )
+LUA_COMPAT=( lua5-{1,2} luajit )
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit docs lua-single meson python-any-r1 xdg-utils
 
@@ -19,9 +20,9 @@ SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
 IUSE="+X avif bmp connman cpu_flags_arm_neon dds debug drm +eet efl-one elogind examples fbcon
-	+fontconfig fribidi gif gles2-only gnutls glib +gstreamer harfbuzz hyphen ibus ico libressl
+	+fontconfig fribidi gif gles2-only gnutls glib +gstreamer harfbuzz hyphen ibus ico
 	jpeg2k json nls mono opengl +pdf physics pmaps postscript psd pulseaudio raw scim
 	sdl +sound +ssl +svg +system-lz4 systemd tga tgv tiff tslib unwind v4l vnc wayland webp xcf
 	xim xpm xpresent zeroconf"
@@ -109,8 +110,7 @@ RDEPEND="${LUA_DEPS}
 	ssl? (
 		gnutls? ( net-libs/gnutls:= )
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:= )
+			dev-libs/openssl:0=
 		)
 	)
 	svg? ( gnome-base/librsvg )

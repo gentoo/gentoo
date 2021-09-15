@@ -11,11 +11,7 @@ SRC_URI="https://github.com/3MFConsortium/${PN}/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="BSD"
 SLOT="0/2"
-# the included ACT binary is a statically x86_64 built one
-# see https://github.com/3MFConsortium/lib3mf/issues/199
-# Keyword arm64 can be re-added after we have dev-go/act
-# package keyworded
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+system-act test"
 RESTRICT="!test? ( test )"
 

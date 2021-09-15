@@ -1,0 +1,13 @@
+diff --git a/gtk2_ardour/wscript b/gtk2_ardour/wscript
+index f5d0533..a68cb3f 100644
+--- a/gtk2_ardour/wscript
++++ b/gtk2_ardour/wscript
+@@ -943,7 +943,7 @@ def build(bld):
+         obj.chmod        = Utils.O644
+         obj.dict         = freedesktop_subst_dict
+         set_subst_dict(obj, freedesktop_subst_dict)
+-        bld.install_files (os.path.join (bld.env['PREFIX'], 'share/appdata'), obj.target)
++        bld.install_files (os.path.join (bld.env['PREFIX'], 'share/metadata'), obj.target)
+ 
+         # install desktop icon files
+         bld.install_as('${PREFIX}/share/icons/hicolor/16x16/apps/ardour6.png', 'resources/Ardour-icon_16px.png')

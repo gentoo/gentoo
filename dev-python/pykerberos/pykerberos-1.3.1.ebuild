@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 MY_P=PyKerberos-${PV}
@@ -18,7 +18,7 @@ S=${WORKDIR}/ccs-pykerberos-${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc64 ~riscv x86"
 # test environment is non-trivial to set up, so just use docker
 # (see python_test below)
 # also for alpha/beta Python releases support:

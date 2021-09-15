@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit desktop eutils toolchain-funcs
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Interactive tool for astronomical ephemeris and sky simulation"
 HOMEPAGE="https://www.clearskyinstitute.com/xephem"

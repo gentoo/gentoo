@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: apache-2.eclass
@@ -93,7 +93,7 @@ SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2
 # built-in modules
 
 IUSE_MPMS="${IUSE_MPMS_FORK} ${IUSE_MPMS_THREAD}"
-IUSE="${IUSE} debug doc gdbm ldap libressl selinux ssl static suexec +suexec-caps suexec-syslog split-usr threads"
+IUSE="${IUSE} debug doc gdbm ldap selinux ssl static suexec +suexec-caps suexec-syslog split-usr threads"
 
 for module in ${IUSE_MODULES} ; do
 	case ${module} in
@@ -140,6 +140,7 @@ RDEPEND="
 	>=dev-libs/apr-1.5.1:=
 	=dev-libs/apr-util-1*:=[gdbm=,ldap?]
 	dev-libs/libpcre
+	virtual/libcrypt:=
 	apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
 	apache2_modules_deflate? ( sys-libs/zlib )
 	apache2_modules_http2? (
@@ -153,15 +154,13 @@ RDEPEND="
 		kernel_linux? ( sys-apps/util-linux )
 	)
 	apache2_modules_session_crypto? (
-		libressl? ( dev-libs/apr-util[libressl] )
-		!libressl? ( dev-libs/apr-util[openssl] )
+		dev-libs/apr-util[openssl]
 	)
 	gdbm? ( sys-libs/gdbm:= )
 	ldap? ( =net-nds/openldap-2* )
 	selinux? ( sec-policy/selinux-apache )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.2:0= )
-		libressl? ( dev-libs/libressl:0= )
+		>=dev-libs/openssl-1.0.2:0=
 		kernel_linux? ( sys-apps/util-linux )
 	)
 "

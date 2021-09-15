@@ -19,11 +19,16 @@ RDEPEND=">=dev-scheme/guile-2.0:=
 	dev-libs/libxml2"
 DEPEND="${RDEPEND}"
 
+# We don't pass the flag explicitly, bug #796776.
+# Let's fix it upstream after next autogen release if it happens.
+QA_CONFIGURE_OPTIONS+=" --enable-snprintfv-convenience"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.18.16-no-werror.patch
 	"${FILESDIR}"/${PN}-5.18.16-rpath.patch
 	"${FILESDIR}"/${PN}-5.18.16-respect-TMPDIR.patch
 	"${FILESDIR}"/${PN}-5.18.16-make-4.3.patch
+	"${FILESDIR}"/${PN}-5.18.16-guile-3.patch
 )
 
 src_prepare() {

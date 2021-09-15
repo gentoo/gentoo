@@ -1,10 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7..9} )
-DISTUTILS_USE_SETUPTOOLS="rdepend"
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -16,7 +15,7 @@ SRC_URI="https://github.com/klen/pylama/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~riscv sparc x86 ~x64-macos"
 
 RDEPEND="
 	>=dev-python/mccabe-0.5.2[${PYTHON_USEDEP}]
@@ -41,8 +40,10 @@ python_prepare_all() {
 }
 
 python_test() {
-	# Disable eradicate until it is fixed:
-	# https://github.com/klen/pylama/issues/190
-	pytest -vv tests --deselect tests/test_linters.py::test_eradicate \
-		|| die "Tests failed with ${EPYTHON}"
+	local EPYTEST_DESELECT=(
+		# Disable eradicate until it is fixed:
+		# https://github.com/klen/pylama/issues/190
+		tests/test_linters.py::test_eradicate
+	)
+	epytest tests
 }

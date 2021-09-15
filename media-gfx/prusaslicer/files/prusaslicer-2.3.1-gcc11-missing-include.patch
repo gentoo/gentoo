@@ -1,0 +1,24 @@
+https://github.com/prusa3d/PrusaSlicer/commit/62592ca
+https://bugs.gentoo.org/788196
+
+From 62592cab48cfb6a20d84041b1992aecc6a2b659c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Luk=C3=A1=C5=A1=20Hejl?= <hejl.lukas@gmail.com>
+Date: Sat, 1 May 2021 22:33:59 +0200
+Subject: [PATCH] Added missing include (GCC 11.1)
+
+---
+ src/libslic3r/Optimize/Optimizer.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/libslic3r/Optimize/Optimizer.hpp b/src/libslic3r/Optimize/Optimizer.hpp
+index 05191eba26..8ae55c61c5 100644
+--- a/src/libslic3r/Optimize/Optimizer.hpp
++++ b/src/libslic3r/Optimize/Optimizer.hpp
+@@ -8,6 +8,7 @@
+ #include <functional>
+ #include <limits>
+ #include <cassert>
++#include <optional>
+ 
+ namespace Slic3r { namespace opt {
+ 

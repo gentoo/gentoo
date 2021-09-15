@@ -1,0 +1,14 @@
+--- a/ananicy.service
++++ b/ananicy.service
+@@ -4,9 +4,9 @@
+ 
+ [Service]
+ Type=notify
+-ExecStartPre=/sbin/sysctl -e kernel.sched_autogroup_enabled=0
++ExecStartPre=/usr/sbin/sysctl -e kernel.sched_autogroup_enabled=0
+ ExecStart=/usr/bin/ananicy start
+-ExecStopPost=/sbin/sysctl -e kernel.sched_autogroup_enabled=1
++ExecStopPost=/usr/sbin/sysctl -e kernel.sched_autogroup_enabled=1
+ Nice=19
+ SuccessExitStatus=143
+ OOMScoreAdjust=-999

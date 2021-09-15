@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PLOCALES="de en"
-inherit l10n toolchain-funcs
+inherit plocale toolchain-funcs
 
 DESCRIPTION="Nintendo Gameboy sound player for GBS format"
 HOMEPAGE="https://www.cgarbs.de/gbsplay.en.html"
@@ -52,5 +52,5 @@ remove_disabled_locale() {
 src_install() {
 	default
 
-	l10n_for_each_disabled_locale_do remove_disabled_locale
+	plocale_for_each_disabled_locale remove_disabled_locale
 }

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit check-reqs cuda toolchain-funcs unpacker
+inherit check-reqs toolchain-funcs unpacker
 
 DRIVER_PV="455.32.00"
 
@@ -20,7 +20,7 @@ RESTRICT="bindist mirror"
 BDEPEND=""
 RDEPEND="
 	<sys-devel/gcc-11_pre[cxx]
-	>=x11-drivers/nvidia-drivers-${DRIVER_PV}[X,uvm(+)]
+	>=x11-drivers/nvidia-drivers-${DRIVER_PV}
 	debugger? (
 		dev-libs/openssl
 		sys-libs/libtermcap-compat
@@ -28,7 +28,7 @@ RDEPEND="
 	)
 	vis-profiler? (
 		dev-libs/openssl
-		>=virtual/jre-1.6
+		>=virtual/jre-1.8:*
 	)"
 
 S="${WORKDIR}"
@@ -38,7 +38,6 @@ QA_PREBUILT="opt/cuda/*"
 CHECKREQS_DISK_BUILD="6800M"
 
 pkg_setup() {
-	# We don't like to run cuda_pkg_setup as it depends on us
 	check-reqs_pkg_setup
 }
 

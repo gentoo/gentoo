@@ -1,0 +1,36 @@
+Fixes immediate crash on titlescreen with gcc10+
+Patch from debian:
+https://bugs.debian.org/986623
+--- a/src/titlescreen.c
++++ b/src/titlescreen.c
+@@ -57,3 +57,3 @@
+     unsigned char type;
+-} blits[MAX_UPDATES];
++} tmblits[MAX_UPDATES];
+ 
+@@ -1021,4 +1021,4 @@
+     for (i = 0; i < MAX_UPDATES; ++i) {
+-	blits[i].srcrect = &srcupdate[i];
+-	blits[i].dstrect = &dstupdate[i];
++	tmblits[i].srcrect = &srcupdate[i];
++	tmblits[i].dstrect = &dstupdate[i];
+     }
+@@ -1034,4 +1034,4 @@
+     for (i = 0; i < numupdates; i++)
+-	if (blits[i].type == 'E')
+-	    SDL_LowerBlit(blits[i].src, blits[i].srcrect, screen, blits[i].dstrect);
++	if (tmblits[i].type == 'E')
++	    SDL_LowerBlit(tmblits[i].src, tmblits[i].srcrect, screen, tmblits[i].dstrect);
+     //        SNOW_erase();
+@@ -1040,4 +1040,4 @@
+     for (i = 0; i < numupdates; i++)
+-	if (blits[i].type == 'D')
+-	    SDL_BlitSurface(blits[i].src, blits[i].srcrect, screen, blits[i].dstrect);
++	if (tmblits[i].type == 'D')
++	    SDL_BlitSurface(tmblits[i].src, tmblits[i].srcrect, screen, tmblits[i].dstrect);
+     //        SNOW_draw();
+@@ -1069,3 +1069,3 @@
+ 
+-    update = &blits[numupdates++];
++    update = &tmblits[numupdates++];
+ 

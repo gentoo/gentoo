@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 PYTHON_REQ_USE="threads(+)"
 inherit python-single-r1 waf-utils multilib-minimal
 
@@ -48,17 +48,13 @@ DEPEND="${PYTHON_DEPS}
 RDEPEND="${DEPEND}
 	dbus? (
 		$(python_gen_cond_dep '
-			dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+			dev-python/dbus-python[${PYTHON_USEDEP}]
 		')
 	)
 	pam? ( sys-auth/realtime-base )
 	!media-sound/jack-audio-connection-kit:0"
 
 DOCS=( AUTHORS.rst ChangeLog.rst README.rst README_NETJACK2 )
-
-PATCHES=(
-	"${FILESDIR}/${PN}-1.9.14-fix-doc.patch"
-)
 
 src_prepare() {
 	default

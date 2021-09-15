@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8} )
 
-inherit eutils distutils-r1
+inherit distutils-r1
 
 DESCRIPTION="Required testing tools needed in the several Salt Stack projects"
 HOMEPAGE="https://saltstack.com/community/"
@@ -17,7 +17,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="https://github.com/saltstack/salt-testing/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/salt-testing-${PV}"
-	KEYWORDS="amd64 ~arm x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 LICENSE="Apache-2.0"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1
 
@@ -20,7 +20,7 @@ distutils_enable_tests pytest
 python_compile() {
 	distutils-r1_python_compile build_ecodes \
 		--evdev-headers \
-		"${SYSROOT}"/usr/include/linux/input.h:"${SYSROOT}"/usr/include/linux/input-event-codes.h
+		"${SYSROOT}/usr/include/linux/input.h:${SYSROOT}/usr/include/linux/input-event-codes.h"
 }
 
 python_test() {

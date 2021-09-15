@@ -10,7 +10,7 @@ JAVA_ANT_DISABLE_ANT_CORE_DEP="true"
 JAVA_PKG_BSFIX_ALL="no"
 JAVA_PKG_IUSE="doc source"
 
-inherit eutils java-pkg-2 java-ant-2 prefix
+inherit java-pkg-2 java-ant-2 prefix
 
 MY_P="apache-ant-${PV}"
 

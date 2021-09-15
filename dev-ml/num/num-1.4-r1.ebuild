@@ -12,11 +12,13 @@ SRC_URI="https://github.com/ocaml/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="amd64 arm arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE="+ocamlopt"
 
+RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
+
 src_compile() {
-	emake CFLAGS="${CFLAGS}"
+	emake CFLAGS="${CFLAGS}" NATDYNLINK="$(usex ocamlopt true false)"
 }
 
 src_test() {
@@ -26,5 +28,5 @@ src_test() {
 
 src_install() {
 	findlib_src_preinst
-	OCAMLPATH="${OCAMLFIND_DESTDIR}" emake install DESTDIR="${D}"
+	OCAMLPATH="${OCAMLFIND_DESTDIR}" emake install DESTDIR="${D}" NATDYNLINK="$(usex ocamlopt true false)"
 }

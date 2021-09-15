@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils linux-info readme.gentoo-r1 systemd tmpfiles
+inherit autotools linux-info readme.gentoo-r1 systemd tmpfiles
 
 DESCRIPTION="Single Packet Authorization and Port Knocking application"
 HOMEPAGE="https://www.cipherdyne.org/fwknop/"
@@ -107,6 +107,8 @@ src_install() {
 pkg_postinst() {
 	if use server; then
 		readme.gentoo_print_elog
+
+		tmpfiles_process fwknopd.conf
 
 		if ! linux_config_exists || ! linux_chkconfig_present NETFILTER_XT_MATCH_COMMENT; then
 			echo

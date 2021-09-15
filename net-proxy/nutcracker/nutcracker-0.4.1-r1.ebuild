@@ -1,14 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools eutils
+inherit autotools
 
-DESCRIPTION="A fast, light-weight proxy for Memcached and Redis.
-(Twitter's Twemproxy)"
+DESCRIPTION="A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)"
 HOMEPAGE="https://github.com/twitter/twemproxy"
-SRC_URI="https://github.com/twitter/twemproxy/archive/v0.4.1.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/twitter/twemproxy/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/twemproxy-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -17,12 +17,16 @@ IUSE="debug doc"
 
 DEPEND=">=dev-libs/libyaml-0.1.4"
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/twemproxy-${PV}"
+PATCHES=(
+	# Let's use system libyaml
+	"${FILESDIR}"/${PN}-0.3.0-use-system-libyaml.patch
+)
 
 src_prepare() {
-	# Lets use system libyaml
-	epatch "${FILESDIR}/${PN}-0.3.0-use-system-libyaml.patch"
+	default
+
 	eautoreconf
 }
 
@@ -31,7 +35,7 @@ src_configure() {
 }
 
 src_install() {
-	default_src_install
+	default
 
 	insinto /etc/nutcracker
 	newins conf/nutcracker.yml nutcracker.yml.example

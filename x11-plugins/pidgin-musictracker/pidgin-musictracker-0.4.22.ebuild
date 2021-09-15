@@ -11,7 +11,7 @@ SRC_URI="https://pidgin-musictracker.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ppc ~riscv x86"
 IUSE="debug"
 
 DEPEND="

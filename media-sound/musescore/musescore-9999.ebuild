@@ -39,6 +39,7 @@ DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qthelp:5
 	dev-qt/qtnetwork:5
+	dev-qt/qtnetworkauth:5
 	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtquickcontrols2:5

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>games@gentoo.org</email>
@@ -15,6 +15,7 @@
     <flag name="glew">enable support for OpenGL Extension Wrangler Library (<pkg>media-libs/glew</pkg>)</flag>
     <flag name="mpeg2">enable mpeg2 codec for cutscenes</flag>
     <flag name="net">enable cloud support via <pkg>media-libs/sdl2-net</pkg></flag>
+    <flag name="sndio">Enable support for MIDI music using <pkg>media-sound/sndio</pkg></flag>
     <flag name="speech">enable text-to-speech support through <pkg>app-accessibility/speech-dispatcher</pkg></flag>
     <flag name="unsupported">enable unsupported and/or broken game engines (you're on your own)</flag>
   </use>

@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 VALA_USE_DEPEND="vapigen"
 
-inherit gnome.org meson multilib-minimal vala xdg
+inherit gnome.org meson-multilib vala xdg
 
 DESCRIPTION="GObject-based API for handling resource discovery and announcement over SSDP"
 HOMEPAGE="https://wiki.gnome.org/Projects/GUPnP"
@@ -39,23 +39,11 @@ src_prepare() {
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Dgtk_doc=$(multilib_native_usex gtk-doc true false)
-		-Dsniffer=$(multilib_native_usex gtk true false)
-		-Dintrospection=$(multilib_native_usex introspection true false)
-		-Dvapi=$(multilib_native_usex vala true false)
+		$(meson_native_use_bool gtk-doc gtk_doc)
+		$(meson_native_use_bool gtk sniffer)
+		$(meson_native_use_bool introspection)
+		$(meson_native_use_bool vala vapi)
 		-Dexamples=false
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_test() {
-	meson_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
 }

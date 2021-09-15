@@ -3,8 +3,7 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -15,7 +14,7 @@ SRC_URI="https://github.com/nicfit/eyeD3/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0.7"
-KEYWORDS="amd64 arm ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	dev-python/deprecation[${PYTHON_USEDEP}]

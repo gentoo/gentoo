@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Lightsoff"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE=""
 
 RDEPEND="
@@ -33,6 +33,13 @@ BDEPEND="
 src_prepare() {
 	xdg_src_prepare
 	vala_src_prepare
+
+	# Bug #778845
+	sed -i \
+		-e 's:40\.rc:40~rc:' \
+		-e 's:40\.beta:40~beta:' \
+		-e 's:40\.alpha:40~alpha:' \
+		data/org.gnome.LightsOff.appdata.xml.in || die
 }
 
 pkg_postinst() {

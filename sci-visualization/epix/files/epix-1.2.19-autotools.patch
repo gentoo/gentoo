@@ -1,0 +1,78 @@
+diff --git a/Makefile.am b/Makefile.am
+index 382230e..a0ff51d 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -86,11 +86,6 @@ epix elaps flix laps: %: %.in epix.el
+ 	    -e 's%@RUNTIME_COMPILER\@%$(CXX)%;' $< > $@-local
+ 	chmod a+x $@ $@-local
+ 
+-# libepix.a
+-libepix.a: $(libepix_a_OBJECTS)
+-	ar -ru libepix.a $(libepix_a_OBJECTS)
+-	$(RANLIB) libepix.a
+-
+ # object file dependencies
+ $(libepix_a_LIBADD): %.o: %.cc %.h
+ 
+diff --git a/configure.ac b/configure.ac
+index 9089c35..2d5fe60 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -9,6 +9,7 @@ AM_MAINTAINER_MODE
+ dnl Checks for programs.
+ AC_PROG_CXX
+ AC_PROG_LN_S
++AM_PROG_AR
+ AC_PROG_RANLIB
+ AC_PROG_MAKE_SET
+ AC_PROG_INSTALL
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index c888b9a..4789c0a 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -1,7 +1,7 @@
+ # Makefile.am for ePiX v1.x "doc" directory
+ #
+ 
+-EPIXFLAGS = --no-defaults -I.. -L.. -lepix -v
++EPIXFLAGS = --no-defaults -I.. -L.. -lepix -q
+ 
+ %.eepic: %.xp
+ 	../epix-local $(EPIXFLAGS) $<
+@@ -13,13 +13,13 @@ EEPICS = $(XPS:.xp=.eepic)
+ CLEANFILES = *~ *.aux *.dvi *.log *.out *.toc \
+ 	*.idx *.ilg *.ind \
+ 	manual_src.tar manual.pdf manual.ps \
+-	manual_src.tar.gz manual.pdf.gz manual.ps.gz manual-stamp
++	manual_src.tar.gz manual.pdf manual.ps.gz manual-stamp
+ 
+ MAINTAINERCLEANFILES = *.eepic *.aux *.dvi *.log *.out *.toc \
+ 	*.idx *.ilg *.ind
+ 
+ ## Targets ##
+-doc_DATA = manual.pdf.gz manual.ps.gz manual_src.tar.gz
++doc_DATA =
+ 
+ info_TEXINFOS = epix.texi
+ 
+@@ -42,7 +42,6 @@ manual.ps.gz: manual-stamp
+ 
+ #PDF
+ manual.pdf.gz: manual-stamp
+-	gzip -9 -c manual.pdf > manual.pdf.gz
+ 
+ epix.info: manual-stamp epix.texi
+ 	makeinfo epix.texi
+diff --git a/samples/Makefile.am b/samples/Makefile.am
+index 38bb5cd..7cd7cd4 100644
+--- a/samples/Makefile.am
++++ b/samples/Makefile.am
+@@ -7,7 +7,7 @@ FLX = $(wildcard *.flx)
+ CLEANFILES = *~ *.eepic *.eps sample_src.tar sample_src.tar.gz sample-stamp
+ 
+ ## Targets ##
+-doc_DATA = sample_src.tar.gz
++doc_DATA =
+ 
+ 
+ # tar up tex, xp, and eepic files

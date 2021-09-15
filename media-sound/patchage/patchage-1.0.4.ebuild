@@ -22,8 +22,6 @@ BDEPEND="
 "
 RDEPEND="dev-cpp/glibmm:2
 	dev-cpp/gtkmm:2.4
-	dev-cpp/libglademm:2.4
-	dev-cpp/libgnomecanvasmm:2.6
 	media-libs/ganv
 	virtual/jack
 	alsa? ( media-libs/alsa-lib )

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,7 +38,6 @@ each_ruby_install() {
 }
 
 all_ruby_install() {
-	rm Gemfile* Rakefile LICENSE README.md || die
 	rm -r appstream bin fixtures data ruby/${PN}/{ext,lib,*.gemspec} spec vendor || die
 
 	vim-plugin_src_install

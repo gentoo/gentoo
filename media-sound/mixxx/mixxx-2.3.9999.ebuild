@@ -43,7 +43,7 @@ RDEPEND="
 	media-libs/chromaprint
 	media-libs/flac
 	media-libs/libebur128
-	media-libs/libid3tag
+	media-libs/libid3tag:=
 	media-libs/libogg
 	media-libs/libsndfile
 	media-libs/libsoundtouch

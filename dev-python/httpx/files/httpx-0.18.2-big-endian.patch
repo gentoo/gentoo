@@ -1,0 +1,40 @@
+From 88a0a85ff795d8c23d5cd2cd113eeac957cc818a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 5 Aug 2021 17:35:54 +0200
+Subject: [PATCH] Fix JSON wrong encoding tests on big endian platforms
+
+Fix test_json_without_specified_encoding_*_error tests on big endian
+platforms.  The tests wrongly assume that data encoded as "utf-32-be"
+can not be decoded as "utf-32".  This is true on little endian platforms
+but on big endian platforms "utf-32" is equivalent to "utf-32-be".
+To avoid the problem, explicitly decode as "utf-32-le", as this should
+trigger the expected exception independently of platform's endianness.
+---
+ tests/models/test_responses.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/models/test_responses.py b/tests/models/test_responses.py
+index f1815dc..b7c2d57 100644
+--- a/tests/models/test_responses.py
++++ b/tests/models/test_responses.py
+@@ -735,7 +735,7 @@ def test_json_without_specified_encoding_decode_error():
+     content = json.dumps(data).encode("utf-32-be")
+     headers = {"Content-Type": "application/json"}
+     # force incorrect guess from `guess_json_utf` to trigger error
+-    with mock.patch("httpx._models.guess_json_utf", return_value="utf-32"):
++    with mock.patch("httpx._models.guess_json_utf", return_value="utf-32-le"):
+         response = httpx.Response(
+             200,
+             content=content,
+@@ -750,7 +750,7 @@ def test_json_without_specified_encoding_value_error():
+     content = json.dumps(data).encode("utf-32-be")
+     headers = {"Content-Type": "application/json"}
+     # force incorrect guess from `guess_json_utf` to trigger error
+-    with mock.patch("httpx._models.guess_json_utf", return_value="utf-32"):
++    with mock.patch("httpx._models.guess_json_utf", return_value="utf-32-le"):
+         response = httpx.Response(200, content=content, headers=headers)
+         with pytest.raises(json.decoder.JSONDecodeError):
+             response.json()
+-- 
+2.32.0
+

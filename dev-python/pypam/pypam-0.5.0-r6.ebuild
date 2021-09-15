@@ -10,7 +10,8 @@ inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Python Bindings for PAM (Pluggable Authentication Modules)"
 HOMEPAGE="http://www.pangalactic.org/PyPAM"
-SRC_URI="http://www.pangalactic.org/PyPAM/${MY_P}.tar.gz"
+SRC_URI="http://www.pangalactic.org/PyPAM/${MY_P}.tar.gz
+	https://distfiles.gentoo.org/distfiles/ad/PyPAM-0.5.0.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"

@@ -45,10 +45,13 @@ DOCS=( AUTHORS BUGS ChangeLog FAQ NEWS README TODO )
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.18-linker.patch
 	"${FILESDIR}"/${P}-libgnomeui-only-for-applets.patch
+	"${FILESDIR}"/${P}-slibtool.patch
 )
 
 src_prepare() {
 	default
+
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 

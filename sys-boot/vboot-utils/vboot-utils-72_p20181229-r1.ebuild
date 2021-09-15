@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 # This is the latest commit in the latest branch.
 GIT_SHA1="a32c930e8c46424a3bba3c296fd78b3e60f50aeb"
@@ -18,14 +18,13 @@ SRC_URI="mirror://gentoo/${P}.tar.xz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
-IUSE="libressl minimal static"
+IUSE="minimal static"
 
 LIB_DEPEND="
 	dev-libs/libyaml:=[static-libs(+)]
 	app-arch/xz-utils:=[static-libs(+)]"
 LIB_DEPEND_MINIMAL="
-	!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
-	libressl? ( dev-libs/libressl:0=[static-libs(+)] )
+	dev-libs/openssl:0=[static-libs(+)]
 	sys-apps/util-linux:=[static-libs(+)]
 	dev-libs/libzip:=[static-libs(+)]"
 RDEPEND="!static? (
@@ -38,13 +37,12 @@ DEPEND="${RDEPEND}
 		${LIB_DEPEND_MINIMAL}
 		!minimal? ( ${LIB_DEPEND} )
 	)
-	app-crypt/trousers"
+	app-crypt/trousers
+	virtual/pkgconfig"
 
 S=${WORKDIR}
 
 src_prepare() {
-	eapply "${FILESDIR}"/${P}-libressl.patch
-
 	default
 	sed -i \
 		-e 's:${DESTDIR}/\(bin\|${LIBDIR}\):${DESTDIR}/usr/\1:g' \

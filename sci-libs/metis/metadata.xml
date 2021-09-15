@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>sci@gentoo.org</email>
@@ -11,5 +11,9 @@
   orderings for sparse matrices. The algorithms implemented in METIS are
   based on the multilevel recursive-bisection, multilevel k-way, and
   multi-constraint partitioning schemes.
-</longdescription>
+  </longdescription>
+  <use>
+    <flag name="double-precision">Use double- rather than single-precision floating-point representation</flag>
+    <flag name="int64">Use 64- rather than 32-bit integer representation (needed for &gt; 2^31 vertices)</flag>
+  </use>
 </pkgmetadata>

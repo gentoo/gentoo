@@ -1,11 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=bdepend
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
-
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Container class boilerplate killer"
@@ -28,9 +26,11 @@ python_prepare_all() {
 	sed -r \
 		-e "/--benchmark-disable/d" \
 		-e 's|\[pytest\]|\[tool:pytest\]|' \
-		-e '/^[[:space:]]*--doctest-modules[[:space:]]*$/ d' \
 		-i setup.cfg || die
 
-	rm -rf tests/test_perf.py || die
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	epytest --ignore tests/test_perf.py tests
 }

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 MY_PN="${PN/-/.}"
@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ~ia64 ppc ~ppc64 x86"
 
 RDEPEND="
 	dev-python/jaraco-classes[${PYTHON_USEDEP}]
@@ -23,10 +23,6 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 "
-
-PATCHES=(
-	"${FILESDIR}/jaraco-collections-3.0.0-pypy.patch"
-)
 
 distutils_enable_sphinx docs '>=dev-python/jaraco-packaging-3.2' \
 	'>=dev-python/rst-linker-1.9'

@@ -6,42 +6,45 @@
 
 EAPI="7"
 
-inherit bash-completion-r1
+PYTHON_COMPAT=( python3_{7..10} )
+
+inherit bash-completion-r1 python-single-r1
 
 # Whenever you bump a GKPKG, check if you have to move
 # or add new patches!
 VERSION_BCACHE_TOOLS="1.0.8_p20141204"
-VERSION_BOOST="1.75.0"
-VERSION_BTRFS_PROGS="5.11"
-VERSION_BUSYBOX="1.33.0"
+VERSION_BOOST="1.76.0"
+VERSION_BTRFS_PROGS="5.12.1"
+VERSION_BUSYBOX="1.33.1"
 VERSION_COREUTILS="8.32"
-VERSION_CRYPTSETUP="2.3.5"
+VERSION_CRYPTSETUP="2.3.6"
 VERSION_DMRAID="1.0.0.rc16-3"
 VERSION_DROPBEAR="2020.81"
 VERSION_EUDEV="3.2.10"
-VERSION_EXPAT="2.2.10"
+VERSION_EXPAT="2.4.1"
 VERSION_E2FSPROGS="1.46.2"
 VERSION_FUSE="2.9.9"
 VERSION_GPG="1.4.23"
-VERSION_HWIDS="20201207"
+VERSION_HWIDS="20210613"
 VERSION_ISCSI="2.0.878"
 VERSION_JSON_C="0.13.1"
-VERSION_KMOD="28"
+VERSION_KMOD="29"
 VERSION_LIBAIO="0.3.112"
-VERSION_LIBGCRYPT="1.9.2"
-VERSION_LIBGPGERROR="1.41"
-VERSION_LVM="2.02.187"
+VERSION_LIBGCRYPT="1.9.3"
+VERSION_LIBGPGERROR="1.42"
+VERSION_LIBXCRYPT="4.4.23"
+VERSION_LVM="2.02.188"
 VERSION_LZO="2.10"
 VERSION_MDADM="4.1"
 VERSION_POPT="1.18"
-VERSION_STRACE="5.11"
+VERSION_STRACE="5.12"
 VERSION_THIN_PROVISIONING_TOOLS="0.9.0"
 VERSION_UNIONFS_FUSE="2.0"
-VERSION_UTIL_LINUX="2.36.2"
-VERSION_XFSPROGS="5.11.0"
+VERSION_UTIL_LINUX="2.37"
+VERSION_XFSPROGS="5.12.0"
 VERSION_XZ="5.2.5"
 VERSION_ZLIB="1.2.11"
-VERSION_ZSTD="1.4.9"
+VERSION_ZSTD="1.5.0"
 
 COMMON_URI="
 	https://github.com/g2p/bcache-tools/archive/399021549984ad27bf4a13ae85e458833fe003d7.tar.gz -> bcache-tools-${VERSION_BCACHE_TOOLS}.tar.gz
@@ -64,6 +67,7 @@ COMMON_URI="
 	https://releases.pagure.org/libaio/libaio-${VERSION_LIBAIO}.tar.gz
 	mirror://gnupg/libgcrypt/libgcrypt-${VERSION_LIBGCRYPT}.tar.bz2
 	mirror://gnupg/libgpg-error/libgpg-error-${VERSION_LIBGPGERROR}.tar.bz2
+	https://github.com/besser82/libxcrypt/archive/v${VERSION_LIBXCRYPT}.tar.gz -> libxcrypt-${VERSION_LIBXCRYPT}.tar.gz
 	https://mirrors.kernel.org/sourceware/lvm2/LVM2.${VERSION_LVM}.tgz
 	https://www.oberhumer.com/opensource/lzo/download/lzo-${VERSION_LZO}.tar.gz
 	https://www.kernel.org/pub/linux/utils/raid/mdadm/mdadm-${VERSION_MDADM}.tar.xz
@@ -96,6 +100,7 @@ LICENSE="GPL-2"
 SLOT="0"
 RESTRICT=""
 IUSE="ibm +firmware"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Note:
 # We need sys-devel/* deps like autoconf or automake at _runtime_
@@ -103,7 +108,7 @@ IUSE="ibm +firmware"
 # mdadm... during initramfs generation which will require these
 # things.
 DEPEND=""
-RDEPEND="${DEPEND}
+RDEPEND="${PYTHON_DEPS}
 	app-arch/cpio
 	>=app-misc/pax-utils-1.2.2
 	app-portage/elt-patches
@@ -168,6 +173,7 @@ src_prepare() {
 		-e "s:VERSION_LIBAIO:${VERSION_LIBAIO}:"\
 		-e "s:VERSION_LIBGCRYPT:${VERSION_LIBGCRYPT}:"\
 		-e "s:VERSION_LIBGPGERROR:${VERSION_LIBGPGERROR}:"\
+		-e "s:VERSION_LIBXCRYPT:${VERSION_LIBXCRYPT}:"\
 		-e "s:VERSION_LVM:${VERSION_LVM}:"\
 		-e "s:VERSION_LZO:${VERSION_LZO}:"\
 		-e "s:VERSION_MDADM:${VERSION_MDADM}:"\
@@ -211,6 +217,9 @@ src_install() {
 	doins -r "${S}"/*
 
 	fperms +x /usr/share/genkernel/gen_worker.sh
+	fperms +x /usr/share/genkernel/path_expander.py
+
+	python_fix_shebang "${ED}"/usr/share/genkernel/path_expander.py
 
 	newbashcomp "${FILESDIR}"/genkernel-4.bash "${PN}"
 	insinto /etc

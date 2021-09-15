@@ -1,0 +1,50 @@
+From 0d7cef3ddbd2aacbea8c11e8524a3de68dfb8ff6 Mon Sep 17 00:00:00 2001
+From: Karel Zak <kzak@redhat.com>
+Date: Fri, 30 Jul 2021 14:35:25 +0200
+Subject: [PATCH] lscpu: fix NULL dereference
+
+Fixes: https://github.com/karelzak/util-linux/issues/1401
+Signed-off-by: Karel Zak <kzak@redhat.com>
+---
+ sys-utils/lscpu-cputype.c | 2 +-
+ sys-utils/lscpu.c         | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/sys-utils/lscpu-cputype.c b/sys-utils/lscpu-cputype.c
+index 795a4acf5..be16199e0 100644
+--- a/sys-utils/lscpu-cputype.c
++++ b/sys-utils/lscpu-cputype.c
+@@ -569,7 +569,7 @@ int lscpu_read_cpuinfo(struct lscpu_cxt *cxt)
+ 	/* Set the default type to CPUs which are missing (or not parsed)
+ 	 * in cpuinfo */
+ 	ct = lscpu_cputype_get_default(cxt);
+-	for (i = 0; i < cxt->npossibles; i++) {
++	for (i = 0; ct && i < cxt->npossibles; i++) {
+ 		struct lscpu_cpu *cpu = cxt->cpus[i];
+ 
+ 		if (cpu && !cpu->type)
+diff --git a/sys-utils/lscpu.c b/sys-utils/lscpu.c
+index 827e84a6d..e11b2f42f 100644
+--- a/sys-utils/lscpu.c
++++ b/sys-utils/lscpu.c
+@@ -991,7 +991,7 @@ static void print_summary(struct lscpu_cxt *cxt)
+ 		*(p - 2) = '\0';
+ 		add_summary_s(tb, sec, _("CPU op-mode(s):"), buf);
+ 	}
+-	if (ct->addrsz)
++	if (ct && ct->addrsz)
+ 		add_summary_s(tb, sec, _("Address sizes:"), ct->addrsz);
+ #if !defined(WORDS_BIGENDIAN)
+ 	add_summary_s(tb, sec, _("Byte Order:"), "Little Endian");
+@@ -1033,9 +1033,9 @@ static void print_summary(struct lscpu_cxt *cxt)
+ 	sec = NULL;
+ 
+ 	/* Section: cpu type description */
+-	if (ct->vendor)
++	if (ct && ct->vendor)
+ 		sec = add_summary_s(tb, NULL, _("Vendor ID:"), ct->vendor);
+-	if (ct->bios_vendor)
++	if (ct && ct->bios_vendor)
+ 		add_summary_s(tb, sec, _("BIOS Vendor ID:"), ct->bios_vendor);
+ 
+ 	for (i = 0; i < cxt->ncputypes; i++)

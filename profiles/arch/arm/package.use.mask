@@ -1,6 +1,33 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Anna Vyalkova <cyber@gentoo@sysrq.in> (2021-09-04)
+# net-libs/canlock not keyworded
+>=net-nntp/tin-2.6.0 cancel-locks
+
+# Sam James <sam@gentoo.org> (2021-08-14)
+# Needs Raspberry Pi specific applications
+media-video/mjpg-streamer -input-raspicam
+
+# Marek Szuba <marecki@gentoo.org> (2021-08-11)
+# dev-ruby/tty-editor not keyworded here yet (Bug #807685)
+app-text/htmltidy test
+
+# Sam James <sam@gentoo.org> (2021-07-25)
+# At present, dev-lang/fpc doesn't support arm64.
+# Java isn't here either.
+# bug #801649
+dev-util/diffoscope pascal pdf
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-18)
+# media-libs/rnnoise, media-plugins/gst-plugins-webrtc
+# and media-plugins/zam-plugins not keyworded here
+media-sound/easyeffects rnnoise webrtc zamaudio
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-12)
+# no stable virtual/jdk on this arch
+media-libs/rubberband jni
+
 # Mike Gilbert <floppym@gentoo.org> (2021-03-29)
 # Unmask TPM on supported archs.
 sys-apps/systemd -tpm
@@ -14,7 +41,7 @@ dev-lang/php -jit
 # No SELinux on ARM
 net-im/prosody selinux
 
-# Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-23)
+# Jakov Smolić <jsmolic@gentoo.org> (2021-01-23)
 # Depends on media-video/rav1e which needs Rust
 >=media-libs/libheif-1.10.0 rav1e
 
@@ -88,7 +115,7 @@ kde-plasma/kdeplasma-addons webengine
 dev-libs/rapidjson test
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-19)
-# Requires dev-util/dwarves.
+# Requires dev-util/pahole.
 sys-kernel/gentoo-kernel debug
 sys-kernel/vanilla-kernel debug
 
@@ -161,11 +188,6 @@ net-im/ejabberd hipe
 # (SM)BIOS/Thunderbolt outside of amd64/x86? - citation needed
 sys-apps/fwupd dell thunderbolt
 
-# Davide Pesavento <pesa@gentoo.org> (2018-12-27)
-# The corresponding Qt5 modules are not keyworded on arm, and we don't want to
-# keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/PyQt5 networkauth
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)
 # Requires www-client/firefox which isn't available on ARM yet
 # due to dev-lang/rust requirement
@@ -185,7 +207,6 @@ net-analyzer/zmap mongo
 
 # Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Unkeyworded dep masks moved from default/linux.
-app-admin/diamond mongo
 net-libs/gnutls test-full
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-03-02)
@@ -219,7 +240,7 @@ sys-power/nut ups_drivers_nut-ipmipsu
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-10)
 # Requires USE=octave which is masked in this profile.
-dev-python/ipython test
+<=dev-python/ipython-7.24.1 test
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=opencl that is masked in this profile.
@@ -341,7 +362,6 @@ net-vpn/strongswan strongswan_plugins_unbound
 
 # Benda Xu <heroxbd@gentoo.org> (2015-01-03)
 # not tested
-app-i18n/anthy canna-2ch
 app-i18n/scim-anthy kasumi
 
 # Markus Meier <maekke@gentoo.org> (2014-11-29)
@@ -360,10 +380,6 @@ sys-block/fio glusterfs rbd
 # Rick Farina <zerochaos@gentoo.org> (2014-07-27)
 # net-misc/dahdi doesn't build
 net-voip/yate dahdi
-
-# Rick Farina <zerochaos@gentoo.org> (2014-07-22)
-# sci-libs/mpir doesn't build
-dev-python/gmpy mpir
 
 # Markus Meier <maekke@gentoo.org> (2014-06-24)
 # Unkeyworded deps, bug #513108

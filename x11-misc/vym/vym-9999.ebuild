@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 PLOCALES="cs_CZ de_DE el es fr hr_HR ia it ja pt_BR ru sv zh_CN zh_TW"
-inherit desktop git-r3 l10n qmake-utils
+inherit desktop git-r3 plocale qmake-utils
 
 DESCRIPTION="View Your Mind, a mindmap tool"
 HOMEPAGE="https://www.insilmaril.de/vym/"
@@ -54,8 +54,8 @@ src_prepare() {
 	rm lang/vym.en.ts || die
 	remove_locale en
 
-	l10n_find_plocales_changes lang ${PN}. .ts
-	l10n_for_each_disabled_locale_do remove_locale
+	plocale_find_changes lang ${PN}. .ts
+	plocale_for_each_disabled_locale remove_locale
 
 	"$(qt5_get_bindir)"/lrelease vym.pro || die
 }

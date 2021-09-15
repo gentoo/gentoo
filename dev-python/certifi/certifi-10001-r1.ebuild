@@ -1,18 +1,19 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# please keep this ebuild at EAPI 7 -- sys-apps/portage dep
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit distutils-r1
 
 MY_P=certifi-shim-${PV}
 DESCRIPTION="Thin replacement for certifi using system certificate store"
 HOMEPAGE="
-	https://github.com/mgorny/certifi-shim
-	https://pypi.org/project/certifi"
+	https://github.com/mgorny/certifi-shim/
+	https://pypi.org/project/certifi/"
 SRC_URI="
 	https://github.com/mgorny/certifi-shim/archive/v${PV}.tar.gz
 		-> ${MY_P}.tar.gz"

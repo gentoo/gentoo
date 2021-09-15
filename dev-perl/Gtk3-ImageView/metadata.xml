@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
 		<email>alexey+gentoo@asokolov.org</email>
@@ -14,6 +14,7 @@
 		<name>Gentoo Perl Project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">carygravel/gtk3-imageview</remote-id>
 		<remote-id type="cpan">Gtk3-ImageView</remote-id>
 		<remote-id type="cpan-module">Gtk3::ImageView</remote-id>
 		<remote-id type="cpan-module">Gtk3::ImageView::Tool</remote-id>

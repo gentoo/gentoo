@@ -13,10 +13,8 @@ SRC_URI="http://bitop.luajit.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86 ~x64-macos"
-IUSE="test"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86 ~x64-macos"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
-RESTRICT="!test? ( test )"
 
 RDEPEND="${LUA_DEPS}"
 DEPEND="${RDEPEND}"

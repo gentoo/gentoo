@@ -4,7 +4,7 @@
 EAPI=7
 DISTUTILS_SINGLE_IMPL="yes"
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit distutils-r1
 
@@ -20,12 +20,12 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		>=dev-python/asteval-0.9.11[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/lmfit-0.9.11[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/matplotlib-1.1[${PYTHON_MULTI_USEDEP}]
-		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
-		dev-python/setuptools_scm[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/scipy-0.11[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/asteval-0.9.11[${PYTHON_USEDEP}]
+		>=dev-python/lmfit-0.9.11[${PYTHON_USEDEP}]
+		>=dev-python/matplotlib-1.1[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/setuptools_scm[${PYTHON_USEDEP}]
+		>=dev-python/scipy-0.11[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}"

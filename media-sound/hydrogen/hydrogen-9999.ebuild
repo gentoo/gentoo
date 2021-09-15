@@ -57,7 +57,7 @@ RDEPEND="${CDEPEND}"
 DOCS=( AUTHORS ChangeLog DEVELOPERS README.txt )
 
 PATCHES=(
-	"${FILESDIR}/${P}-gnuinstalldirs.patch"
+	"${FILESDIR}/${PN}-1.1.0-gnuinstalldirs.patch"
 )
 
 src_prepare() {
@@ -70,7 +70,6 @@ src_configure() {
 		-DWANT_CPPUNIT=OFF
 		-DWANT_DEBUG=OFF
 		-DWANT_JACK=$(usex jack)
-		-DWANT_JACKSESSION=$(usex jack)
 		-DWANT_LADSPA=$(usex ladspa)
 		-DWANT_LASH=$(usex lash)
 		-DWANT_LIBARCHIVE=$(usex archive)

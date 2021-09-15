@@ -1,0 +1,56 @@
+From 9bdae154bb3711b0220d0a8a685b2329f487d1f2 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 15 Feb 2021 17:35:19 +0100
+Subject: [PATCH] Revert "Activate KRunner instead of running the binary"
+
+Causes applications to be started with cwd "/".
+
+See also: https://bugs.gentoo.org/767478
+
+This reverts commit 0e575a20ef36532b5b40a40ea30f915976942477.
+---
+ krunner/CMakeLists.txt                             | 3 ++-
+ krunner/{krunner.desktop => krunner.desktop.cmake} | 4 ++--
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+ rename krunner/{krunner.desktop => krunner.desktop.cmake} (94%)
+
+diff --git a/krunner/CMakeLists.txt b/krunner/CMakeLists.txt
+index 07d27c1dc..8e1f2e3bd 100644
+--- a/krunner/CMakeLists.txt
++++ b/krunner/CMakeLists.txt
+@@ -31,7 +31,8 @@ target_compile_definitions(krunner PRIVATE -DPROJECT_VERSION="${PROJECT_VERSION}
+ install(TARGETS krunner ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+ install(FILES ${krunner_dbusAppXML} DESTINATION ${KDE_INSTALL_DBUSINTERFACEDIR} )
+ 
+-install(FILES krunner.desktop DESTINATION ${DATA_INSTALL_DIR}/kglobalaccel)
++configure_file(krunner.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/krunner.desktop @ONLY)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/krunner.desktop DESTINATION ${DATA_INSTALL_DIR}/kglobalaccel)
+ 
+ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KRunnerAppDBusInterface")
+ configure_package_config_file(KRunnerAppDBusInterfaceConfig.cmake.in
+diff --git a/krunner/krunner.desktop b/krunner/krunner.desktop.cmake
+similarity index 94%
+rename from krunner/krunner.desktop
+rename to krunner/krunner.desktop.cmake
+index 7a0398696..c4c8c9d92 100644
+--- a/krunner/krunner.desktop
++++ b/krunner/krunner.desktop.cmake
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Exec=dbus-send --type=method_call --dest=org.kde.krunner /App org.kde.krunner.App.toggleDisplay
++Exec=@CMAKE_INSTALL_PREFIX@/bin/krunner
+ Name=KRunner
+ Name[ar]=مشغّل.ك
+ Name[ast]=KRunner
+@@ -60,7 +60,7 @@ Actions=RunClipboard
+ X-KDE-Wayland-Interfaces=org_kde_plasma_window_management
+ 
+ [Desktop Action RunClipboard]
+-Exec=dbus-send --type=method_call --dest=org.kde.krunner /App org.kde.krunner.App.displayWithClipboardContents
++Exec=krunner -c
+ Name=Run command on clipboard contents
+ Name[az]=Əmri, mübadilə buferindən başlatmaq
+ Name[ca]=Executa una ordre al contingut del porta-retalls
+-- 
+2.31.1
+

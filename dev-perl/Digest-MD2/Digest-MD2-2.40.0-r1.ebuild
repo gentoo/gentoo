@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl interface to the MD2 Algorithm"
 LICENSE="|| ( Artistic GPL-1+ ) RSA"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ~ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 
 src_compile() {
 	mymake=(

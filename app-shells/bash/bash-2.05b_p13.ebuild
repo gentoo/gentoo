@@ -47,18 +47,19 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.05b-destdir.patch
-	"${FILESDIR}"/autoconf-mktime-2.53.patch #220040
+	"${FILESDIR}"/autoconf-mktime-2.53.patch # bug #220040
 	"${FILESDIR}"/${PN}-2.05b-protos.patch
 	"${FILESDIR}"/${PN}-2.05b-empty-herestring.patch
-	"${FILESDIR}"/${PN}-2.05b-rbash.patch #26854
-	"${FILESDIR}"/${PN}-2.05b-parallel-build.patch #41002
+	"${FILESDIR}"/${PN}-2.05b-rbash.patch # bug #26854
+	"${FILESDIR}"/${PN}-2.05b-parallel-build.patch # bug #41002
 	"${FILESDIR}"/${PN}-2.05b-jobs.patch
 	"${FILESDIR}"/${PN}-2.05b-fix-job-warning.patch
-	"${FILESDIR}"/${PN}-3.1-dev-fd-buffer-overflow.patch #431850
+	"${FILESDIR}"/${PN}-3.1-dev-fd-buffer-overflow.patch # bug #431850
 )
 
 pkg_setup() {
-	if is-flag -malign-double ; then #7332
+	# bug #7332
+	if is-flag -malign-double ; then
 		eerror "Detected bad CFLAGS '-malign-double'.  Do not use this"
 		eerror "as it breaks LFS (struct stat64) on x86."
 		die "remove -malign-double from your CFLAGS mr ricer"
@@ -84,7 +85,13 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		--with-installed-readline=.
+
+		# Force linking with system curses ... the bundled termcap lib
+		# sucks bad compared to ncurses.  For the most part, ncurses
+		# is here because readline needs it.  But bash itself calls
+		# ncurses in one or two small places :(.
 		--with-curses
+
 		$(use_with afs)
 		$(use_enable net net-redirections)
 		--disable-profiling
@@ -121,16 +128,13 @@ src_configure() {
 	# is at least what's in the DEPEND up above.
 	export ac_cv_rl_version=6.2
 
-	# Force linking with system curses ... the bundled termcap lib
-	# sucks bad compared to ncurses.  For the most part, ncurses
-	# is here because readline needs it.  But bash itself calls
-	# ncurses in one or two small places :(.
+	# bug #444070
+	tc-export AR
 
-	tc-export AR #444070
 	# This old autoconf script does not re-exec itself properly and fails when
 	# /bin/sh is not bash.  Rather than try to regen everything, just force the
 	# use of bash directly.
-	CONFIG_SHELL="/bin/bash" econf "${myconf[@]}"
+	CONFIG_SHELL="${BROOT}/bin/bash" econf "${myconf[@]}"
 }
 
 src_install() {

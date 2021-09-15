@@ -1,8 +1,8 @@
 Author: Evgeni Golov <evgeni@debian.org>, Michael Meskes <meskes@debian.org>
 Description: Fix reading of battery information.
 
---- src/acpitool.h
-+++ src/acpitool.h
+--- a/src/acpitool.h
++++ b/src/acpitool.h
 @@ -39,6 +39,9 @@
      char Serial[13];
      char Bat_Type[13];
@@ -13,8 +13,8 @@ Description: Fix reading of battery information.
  };
  
  
---- src/battery.cpp
-+++ src/battery.cpp
+--- a/src/battery.cpp
++++ b/src/battery.cpp
 @@ -107,6 +107,9 @@
  	    memset(Batt_Info[i]->Serial, '\0', 13);
  	    memset(Batt_Info[i]->Bat_Type, '\0', 13); 

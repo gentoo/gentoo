@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -51,7 +51,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_SYSCONFDIR="${EROOT}/etc"
+		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
 		-DDCMTK_WITH_ICU=ON
 		-DDCMTK_WITH_TIFF=$(usex tiff)
 		-DDCMTK_WITH_PNG=$(usex png)

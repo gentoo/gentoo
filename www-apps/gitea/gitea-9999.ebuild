@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,7 +36,7 @@ DOCS=(
 	custom/conf/app.example.ini CONTRIBUTING.md README.md
 )
 FILECAPS=(
-	cap_net_bind_service+ep usr/bin/gitea
+	-m 0755 cap_net_bind_service+ep usr/bin/gitea
 )
 
 RESTRICT="test"
@@ -101,7 +101,7 @@ src_install() {
 	newtmpfiles - gitea.conf <<-EOF
 		d /run/gitea 0755 git git
 	EOF
-	systemd_newunit "${FILESDIR}"/gitea.service-r2 gitea.service
+	systemd_newunit "${FILESDIR}"/gitea.service-r3 gitea.service
 
 	insinto /etc/gitea
 	newins custom/conf/app.example.ini app.ini
@@ -117,6 +117,5 @@ src_install() {
 
 pkg_postinst() {
 	fcaps_pkg_postinst
-	go-module_pkg_postinst
 	tmpfiles_process gitea.conf
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -44,6 +44,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	!dedicated? ( ${UIDEPEND} )"
 BDEPEND="app-arch/unzip"
+
+PATCHES=("${FILESDIR}"/${P}-gcc-11.patch)
 
 DOCS="Docs/*.txt"
 

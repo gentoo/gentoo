@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit flag-o-matic toolchain-funcs python-any-r1
+inherit flag-o-matic python-any-r1
 
 DESCRIPTION="GNU utilities for finding files"
 HOMEPAGE="https://www.gnu.org/software/findutils/"
@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="nls selinux static test"
 RESTRICT="!test? ( test )"
 
@@ -45,6 +45,12 @@ src_configure() {
 	if use static; then
 		append-flags -pthread
 		append-ldflags -static
+	fi
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		# https://lists.gnu.org/archive/html/bug-findutils/2021-01/msg00050.html
+		# https://lists.gnu.org/archive/html/bug-findutils/2021-01/msg00051.html
+		append-cppflags '-D__nonnull\(X\)='
 	fi
 
 	program_prefix=$(usex userland_GNU '' g)

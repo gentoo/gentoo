@@ -1,0 +1,12 @@
+diff --git a/src/qml/qml.pro b/src/qml/qml.pro
+index 7d5a92a..01f3b79 100644
+--- a/src/qml/qml.pro
++++ b/src/qml/qml.pro
+@@ -19,6 +19,7 @@ solaris-cc*:QMAKE_CXXFLAGS_RELEASE -= -O2
+ 
+ # Ensure this gcc optimization is switched off for mips platforms to avoid trouble with JIT.
+ gcc:isEqual(QT_ARCH, "mips"): QMAKE_CXXFLAGS += -fno-reorder-blocks
++gcc:isEqual(QT_ARCH, "riscv64"): LIBS += -latomic
+ 
+ DEFINES += QT_NO_FOREACH
+

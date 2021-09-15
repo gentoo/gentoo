@@ -5,7 +5,7 @@ EAPI=7
 
 PLOCALES="da de eo es fr fur hu ja nb nl pl pt_BR ru sr sv uk vi zh_CN zh_TW"
 
-inherit l10n toolchain-funcs
+inherit plocale toolchain-funcs
 
 DESCRIPTION="Convert DOS or MAC text files to UNIX format or vice versa"
 HOMEPAGE="http://www.xs4all.nl/~waterlan/dos2unix.html https://sourceforge.net/projects/dos2unix/"
@@ -50,7 +50,7 @@ handle_locales() {
 
 	# Deal with selective install of locales.
 	rm_loc() { rm po*/$1.po || die; }
-	l10n_for_each_disabled_locale_do rm_loc
+	plocale_for_each_disabled_locale rm_loc
 }
 
 src_prepare() {

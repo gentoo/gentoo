@@ -1,0 +1,251 @@
+--- a/rexec/ruserpass.c
++++ b/rexec/ruserpass.c
+@@ -0,0 +1,214 @@
++/*
++ * Copyright (c) 1985 Regents of the University of California.
++ * All rights reserved.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 3. All advertising materials mentioning features or use of this software
++ *    must display the following acknowledgement:
++ *	This product includes software developed by the University of
++ *	California, Berkeley and its contributors.
++ * 4. Neither the name of the University nor the names of its contributors
++ *    may be used to endorse or promote products derived from this software
++ *    without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
++ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++ * SUCH DAMAGE.
++ */
++
++/*
++ * from: @(#)ruserpass.c	5.3 (Berkeley) 3/1/91
++ */
++char ruserpass_rcsid[] = 
++  "$Id: 150_all_rexec-netrc.patch,v 1.1 2006/10/14 23:09:28 drizzt Exp $";
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <utmp.h>
++#include <ctype.h>
++#include <sys/stat.h>
++#include <sys/param.h>
++#include <errno.h>
++#include <string.h>
++#include <unistd.h>
++
++static FILE *cfile;
++static int token(void);
++
++#define MACBUF_LEN 4096
++
++#define	DEFAULT	1
++#define	LOGIN	2
++#define	PASSWD	3
++#define	ACCOUNT 4
++#define MACDEF  5
++#define	ID	10
++#define	MACH	11
++
++static char tokval[100];
++
++static struct toktab {
++	const char *tokstr;
++	int tval;
++} toktab[]= {
++	{ "default",	DEFAULT },
++	{ "login",	LOGIN },
++	{ "password",	PASSWD },
++	{ "passwd",	PASSWD },
++	{ "account",	ACCOUNT },
++	{ "machine",	MACH },
++	{ "macdef",	MACDEF },
++	{ NULL,		0 }
++};
++
++int
++xruserpass(const char *host, char **aname, char **apass)
++{
++	const char *hdir;
++	char buf[BUFSIZ], *tmp;
++	char myname[MAXHOSTNAMELEN];
++	const char *mydomain;
++	int t, usedefault = 0;
++	struct stat stb;
++
++	hdir = getenv("HOME");
++	if (hdir == NULL)
++		hdir = ".";
++	snprintf(buf, sizeof(buf), "%s/.netrc", hdir);
++	cfile = fopen(buf, "r");
++	if (cfile == NULL) {
++		if (errno != ENOENT)
++			perror(buf);
++		return(0);
++	}
++	if (gethostname(myname, sizeof(myname)) < 0)
++		myname[0] = '\0';
++	if ((mydomain = strchr(myname, '.')) == NULL)
++		mydomain = "";
++next:
++	while ((t = token())) switch(t) {
++
++	case DEFAULT:
++		usedefault = 1;
++		/* FALL THROUGH */
++
++	case MACH:
++		if (!usedefault) {
++			if (token() != ID)
++				continue;
++			/*
++			 * Allow match of incompletely-specified host in 
++			 * local domain.
++			 */
++			if (strcasecmp(host, tokval) == 0)
++				goto match;
++			if ((tmp = index(host, '.')) != NULL &&
++			    strcasecmp(tmp, mydomain) == 0 &&
++			    strncasecmp(host, tokval, tmp - host) == 0 &&
++			    tokval[tmp - host] == '\0')
++				goto match;
++			continue;
++		}
++	match:
++		while ((t = token()) && t != MACH && t != DEFAULT) switch(t) {
++
++		case LOGIN:
++			if (token()) {
++				if (*aname == 0) { 
++					*aname = malloc((unsigned) strlen(tokval) + 1);
++					(void) strcpy(*aname, tokval);
++				} else {
++					if (strcmp(*aname, tokval))
++						goto next;
++				}
++			}
++			break;
++		case PASSWD:
++			if (*aname==NULL) {
++	fprintf(stderr, "Error: `password' must follow `login' in .netrc\n");
++				goto bad;
++			}
++			if (strcmp(*aname, "anonymous") &&
++			    fstat(fileno(cfile), &stb) >= 0 &&
++			    (stb.st_mode & 077) != 0) {
++	fprintf(stderr, "Error - .netrc file not correct permissions.\n");
++	fprintf(stderr, "Remove password or correct mode (should be 600).\n");
++				goto bad;
++			}
++			if (token() && *apass == 0) {
++				*apass = malloc((unsigned) strlen(tokval) + 1);
++				(void) strcpy(*apass, tokval);
++			}
++			break;
++		case ACCOUNT:
++			break;
++		case MACDEF:
++			break;
++		default:
++	fprintf(stderr, "Unknown .netrc keyword %s\n", tokval);
++			break;
++		}
++		goto done;
++	}
++done:
++	(void) fclose(cfile);
++	return(0);
++bad:
++	(void) fclose(cfile);
++	return(-1);
++}
++
++static 
++int
++token(void)
++{
++	char *cp;
++	int c;
++	struct toktab *t;
++
++	if (feof(cfile))
++		return (0);
++	while ((c = getc(cfile)) != EOF &&
++	    (c == '\n' || c == '\t' || c == ' ' || c == ','))
++		continue;
++	if (c == EOF)
++		return (0);
++	cp = tokval;
++	if (c == '"') {
++		while ((c = getc(cfile)) != EOF && c != '"') {
++			if (c == '\\')
++				c = getc(cfile);
++			*cp++ = c;
++		}
++	} else {
++		*cp++ = c;
++		while ((c = getc(cfile)) != EOF
++		    && c != '\n' && c != '\t' && c != ' ' && c != ',') {
++			if (c == '\\')
++				c = getc(cfile);
++			*cp++ = c;
++		}
++	}
++	*cp = 0;
++	if (tokval[0] == 0)
++		return (0);
++	for (t = toktab; t->tokstr; t++)
++		if (!strcmp(t->tokstr, tokval))
++			return (t->tval);
++	return (ID);
++}
+--- a/rexec/rexec.c
++++ b/rexec/rexec.c
+@@ -100,6 +100,8 @@
+ void echo_sig(int sig);
+ void safe_write_error(const char *message);
+ 
++int xruserpass(const char *host, char **aname, char **apass);
++
+ /* These need to be global for signal passing. */
+ int aux_sock=-1; /* Socket for auxiliary channel. */
+ int extra_error = 1; /* Setup special channel for standard error? */
+@@ -165,7 +167,10 @@
+ 					      a newline. */
+     passwd = getpass("Password: ");
+   } else {
+-
++    if (xruserpass(host, &user_name, &passwd) < 0) {
++	user_name = NULL;
++	passwd = NULL;
++    }
+     if ( user_name == NULL )
+       user_name = getenv("REXEC_USER");
+     if ( user_name == NULL ) {
+--- a/rexec/Makefile.netrc
++++ b/rexec/Makefile
+@@ -11,7 +11,7 @@
+ 
+ all: rexec
+ 
+-rexec: rexec.c
++rexec: rexec.o ruserpass.o
+ 
+ rexec.1:
+ 

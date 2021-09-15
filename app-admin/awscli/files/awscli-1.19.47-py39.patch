@@ -1,0 +1,60 @@
+From 85361123d2fa12eaedf912c046ffe39aebdd2bad Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 22 May 2021 19:42:14 +0200
+Subject: [PATCH] Replace use of deprecated base64.encodestring()
+
+Replace the uses of deprecated base64.encodestring() in favor
+of botocore.compat.encodebytes().  This fixes incompatibility with
+Python 3.9 where the former function has finally been removed.
+---
+ awscli/customizations/ec2/bundleinstance.py  | 4 +++-
+ tests/functional/ec2/test_bundle_instance.py | 4 +++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/awscli/customizations/ec2/bundleinstance.py b/awscli/customizations/ec2/bundleinstance.py
+index f704ec301..775e75718 100644
+--- a/awscli/customizations/ec2/bundleinstance.py
++++ b/awscli/customizations/ec2/bundleinstance.py
+@@ -17,6 +17,8 @@ import hmac
+ import base64
+ import datetime
+ 
++from botocore.compat import encodebytes
++
+ from awscli.compat import six
+ 
+ from awscli.arguments import CustomArgument
+@@ -135,7 +137,7 @@ def _generate_signature(params):
+         policy = base64.b64encode(six.b(policy)).decode('utf-8')
+         new_hmac = hmac.new(sak.encode('utf-8'), digestmod=sha1)
+         new_hmac.update(six.b(policy))
+-        ps = base64.encodestring(new_hmac.digest()).strip().decode('utf-8')
++        ps = encodebytes(new_hmac.digest()).strip().decode('utf-8')
+         params['UploadPolicySignature'] = ps
+         del params['_SAK']
+ 
+diff --git a/tests/functional/ec2/test_bundle_instance.py b/tests/functional/ec2/test_bundle_instance.py
+index 3eee363da..ca36d7cd5 100644
+--- a/tests/functional/ec2/test_bundle_instance.py
++++ b/tests/functional/ec2/test_bundle_instance.py
+@@ -17,6 +17,8 @@ import datetime
+ import mock
+ from six.moves import cStringIO
+ 
++from botocore.compat import encodebytes
++
+ import awscli.customizations.ec2.bundleinstance
+ from awscli.compat import six
+ from awscli.testutils import BaseAWSCommandParamsTest
+@@ -70,7 +72,7 @@ class TestBundleInstance(BaseAWSCommandParamsTest):
+ 
+     def test_policy_provided(self):
+         policy = '{"notarealpolicy":true}'
+-        base64policy = base64.encodestring(six.b(policy)).strip().decode('utf-8')
++        base64policy = encodebytes(six.b(policy)).strip().decode('utf-8')
+         policy_signature = 'a5SmoLOxoM0MHpOdC25nE7KIafg='
+         args = ' --instance-id i-12345678 --owner-akid AKIAIOSFODNN7EXAMPLE'
+         args += ' --owner-sak wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'
+-- 
+2.31.1
+

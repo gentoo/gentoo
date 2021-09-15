@@ -1,0 +1,12 @@
+diff --git a/src/buildtools/config/common.pri b/src/buildtools/config/common.pri
+index cf990c79..910a88ca 100644
+--- a/src/buildtools/config/common.pri
++++ b/src/buildtools/config/common.pri
+@@ -26,6 +26,7 @@ gn_args += \
+     skia_use_dawn=false \
+     toolkit_views=false \
+     treat_warnings_as_errors=false \
++    fatal_linker_warnings=false \
+     use_allocator_shim=false \
+     use_allocator=\"none\" \
+     use_custom_libcxx=false \

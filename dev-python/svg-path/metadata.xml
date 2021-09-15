@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
 		<email>gentoo@chymera.eu</email>
@@ -18,6 +18,7 @@
 		implement the different path commands in SVG, as well as a parser for
 		SVG path definitions.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">regebro/svg.path</remote-id>
 		<remote-id type="pypi">svg.path</remote-id>

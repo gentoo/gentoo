@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 PYTHON_REQ_USE='threads(+)'
 PLOCALES="cs de el en_GB es eu fr it ja nn pl pt pt_PT ru sv zh"
-inherit eutils toolchain-funcs flag-o-matic l10n python-any-r1 waf-utils desktop xdg
+inherit eutils toolchain-funcs flag-o-matic plocale python-any-r1 waf-utils desktop xdg
 
 DESCRIPTION="Digital Audio Workstation"
 HOMEPAGE="https://ardour.org/"
@@ -20,7 +20,7 @@ else
 fi
 
 LICENSE="GPL-2"
-SLOT="6"
+SLOT="7"
 IUSE="altivec doc jack nls phonehome pulseaudio cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
@@ -71,6 +71,10 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )
 	jack? ( virtual/jack )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-6.8-metadata.patch"
+)
+
 pkg_pretend() {
 	[[ $(tc-getLD) == *gold* ]] && (has_version sci-libs/fftw[openmp] || has_version sci-libs/fftw[threads]) && \
 		ewarn "Linking with gold linker might produce broken executable, see bug #733972"
@@ -84,7 +88,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
 	xdg_src_prepare
 
 	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript || die
@@ -99,7 +102,7 @@ src_prepare() {
 	fi
 	if use cpu_flags_x86_mmx; then
 		if [[ ${MARCH} == "i486" ]]; then
-		    elog "You enabled mmx with i486 set as march! You have been warned!"
+			elog "You enabled mmx with i486 set as march! You have been warned!"
 		fi
 		OPTFLAGS="${OPTFLAGS} mmx"
 	fi
@@ -115,11 +118,14 @@ src_prepare() {
 	my_lcmsg() {
 		rm -f {gtk2_ardour,gtk2_ardour/appdata,libs/ardour,libs/gtkmm2ext}/po/${1}.po
 	}
-	l10n_for_each_disabled_locale_do my_lcmsg
+	plocale_for_each_disabled_locale my_lcmsg
 }
 
 src_configure() {
-	local backends="alsa"
+	# avoid bug https://bugs.gentoo.org/800067
+	local -x AS="$(tc-getCC) -c"
+
+	local backends="alsa,dummy"
 	use jack && backends+=",jack"
 	use pulseaudio && backends+=",pulseaudio"
 
@@ -158,6 +164,9 @@ src_install() {
 		newicon -s ${s} gtk2_ardour/resources/Ardour-icon_${s}px.png ardour${SLOT}.png
 	done
 
+	# the build system still installs ardour6.png files so we get rid of those to not conflict with ardour:6
+	find "${D}/usr/share/icons/" -name ardour6.png -delete
+
 	sed -i \
 		-e "s/\(^Name=\).*/\1Ardour ${SLOT}/" \
 		-e 's/;AudioEditing;/;X-AudioEditing;/' \
@@ -166,9 +175,6 @@ src_install() {
 
 	insinto /usr/share/mime/packages
 	newins build/gtk2_ardour/ardour.xml ardour${SLOT}.xml
-
-	insinto /usr/share/metainfo
-	doins build/gtk2_ardour/ardour${SLOT}.appdata.xml
 }
 
 pkg_postinst() {

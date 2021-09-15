@@ -1,5 +1,3 @@
-Index: smpeg-0.4.4/glmovie.c
-===================================================================
 --- smpeg-0.4.4.orig/glmovie.c
 +++ smpeg-0.4.4/glmovie.c
 @@ -6,7 +6,6 @@
@@ -10,8 +8,6 @@ Index: smpeg-0.4.4/glmovie.c
  #include <string.h>
  #include <unistd.h>
  #include "glmovie.h"
-Index: smpeg-0.4.4/glmovie-tile.c
-===================================================================
 --- smpeg-0.4.4.orig/glmovie-tile.c
 +++ smpeg-0.4.4/glmovie-tile.c
 @@ -16,7 +16,7 @@

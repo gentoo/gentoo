@@ -1,42 +1,37 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGIT_REPO_URI="https://git.postgresql.org/git/pgpool2.git"
 
-POSTGRES_COMPAT=( 9.{5..6} {10..13} )
+POSTGRES_COMPAT=( 9.6 {10..13} )
 
 inherit autotools git-r3 postgres-multi
 
 DESCRIPTION="Connection pool server for PostgreSQL"
 HOMEPAGE="https://www.pgpool.net/"
-SRC_URI=""
+
 LICENSE="BSD"
 SLOT="0"
-
-KEYWORDS=""
-
-IUSE="doc libressl memcached pam ssl static-libs"
+IUSE="doc memcached pam ssl static-libs"
 
 RDEPEND="
 	${POSTGRES_DEP}
 	net-libs/libnsl:0=
+	virtual/libcrypt:=
 	memcached? ( dev-libs/libmemcached )
 	pam? ( sys-auth/pambase )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( dev-libs/openssl:= )
 "
 DEPEND="${RDEPEND}
 	sys-devel/bison
 	virtual/pkgconfig
 	doc? (
-		 app-text/openjade
-		 dev-libs/libxml2
-		 dev-libs/libxslt
-	 )
+		app-text/openjade
+		dev-libs/libxml2
+		dev-libs/libxslt
+	)
 "
 
 pkg_setup() {

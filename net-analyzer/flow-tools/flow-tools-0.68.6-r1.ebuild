@@ -12,7 +12,7 @@ SRC_URI="https://github.com/5u623l20/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="debug libressl mysql postgres ssl static-libs"
+IUSE="debug mysql postgres ssl static-libs"
 
 RDEPEND="
 	acct-group/flows
@@ -21,10 +21,7 @@ RDEPEND="
 	sys-libs/zlib
 	mysql? ( dev-db/mysql-connector-c:0= )
 	postgres? ( dev-db/postgresql:* )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 "
 DEPEND="
 	${RDEPEND}

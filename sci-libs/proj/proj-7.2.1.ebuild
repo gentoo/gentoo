@@ -7,7 +7,7 @@ DATUMGRID="${PN}-datumgrid-1.8.tar.gz"
 EUROPE_DATUMGRID="${PN}-datumgrid-europe-1.6.tar.gz"
 
 DESCRIPTION="PROJ coordinate transformation software"
-HOMEPAGE="https://proj4.org/"
+HOMEPAGE="https://proj.org/"
 SRC_URI="
 	https://download.osgeo.org/proj/${P}.tar.gz
 	https://download.osgeo.org/proj/${DATUMGRID}
@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0/19"
-KEYWORDS="amd64 ~arm arm64 ~ia64 ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="curl europe static-libs test +tiff"
 REQUIRED_USE="test? ( !europe )"
 

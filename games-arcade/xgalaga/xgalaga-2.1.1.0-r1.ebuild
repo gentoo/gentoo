@@ -41,10 +41,6 @@ src_prepare() {
 		-e "/SOUNDDEFS/ s:(SOUNDSRVDIR):(SOUNDSRVDIR)/bin:" \
 		-e 's:make ;:$(MAKE) ;:' \
 		Makefile.in || die "sed Makefile.in failed"
-
-	sed -i \
-		-e 's/AR = ar/AR = @AR@/' \
-		libsprite/Makefile.in || die
 }
 
 src_install() {
@@ -64,6 +60,6 @@ src_install() {
 	touch "${ED}"/var/games/${PN}/scores || die
 
 	fperms -R 660 /var/games/${PN}
-	fowners -R root:gamestat /var/games/${PN}
+	fowners -R root:gamestat /var/games/${PN} /usr/bin/{xgalaga,xgal.sndsrv.oss,xgalaga-hyperspace}
 	fperms g+s /usr/bin/{xgalaga,xgal.sndsrv.oss,xgalaga-hyperspace}
 }

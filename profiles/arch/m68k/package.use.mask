@@ -1,5 +1,31 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# James Le Cuirot <chewi@gentoo.org> (2021-08-21)
+# Avoid having to keyword dev-python/sphinx and friends for now.
+dev-python/more-itertools doc
+dev-python/pexpect doc
+dev-python/cython doc
+dev-python/cffi doc
+dev-python/cssselect doc
+dev-python/execnet doc
+dev-python/jinja doc
+dev-python/lxml doc
+dev-python/py doc
+dev-python/pyasn1 doc
+dev-python/pygments doc
+
+# James Le Cuirot <chewi@gentoo.org> (2021-08-21)
+# Avoid lots of unkeyworded dependencies of Python tests.
+dev-python/argcomplete test
+dev-python/nose test
+dev-python/requests test
+dev-python/setuptools test
+dev-python/urllib3 test
+
+# James Le Cuirot <chewi@gentoo.org> (2021-08-20)
+# The CLI requires many unkeyworded dependencies.
+dev-python/hypothesis cli
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-05)
 # dev-python/parameterized is not keyworded
@@ -30,10 +56,6 @@ net-libs/gnutls test-full
 # Needs libepoxy keywording, bug #510940
 x11-base/xorg-server wayland
 
-# Mikle Kolyada <zlogene@gentoo.org> (2013-07-11)
-# Tests for dev-perl/Error require >=dev-perl/Test-Pod-Coverage-1.40.0 (bug #351636)
-dev-perl/Error test
-
 # Raúl Porcel <armin76@gentoo.org> (2013-01-23)
 # Architecture is unsupported
 dev-libs/libpcre jit
@@ -43,10 +65,3 @@ dev-libs/libpcre2 jit
 # graphite requires dev-libs/ppl & dev-libs/cloog-ppl
 # (bugs #269087 and #269088)
 sys-devel/gcc graphite awt
-
-# Mike Frysinger <vapier@gentoo.org> (2011-02-10)
-# Waiting for keywording #354309
-net-firewall/iptables netlink
-
-# Masking these to keep repoman happy
-media-gfx/graphviz perl

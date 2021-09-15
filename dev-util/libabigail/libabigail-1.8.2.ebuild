@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit autotools python-any-r1 out-of-source
 
@@ -13,7 +13,7 @@ SRC_URI="https://mirrors.kernel.org/sourceware/libabigail/${P}.tar.gz"
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 ~ppc64"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 

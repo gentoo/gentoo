@@ -6,6 +6,8 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="xml"
 
+VALA_MAX_API_VERSION="0.50"
+
 inherit gnome.org gnome2-utils python-single-r1 vala
 
 DESCRIPTION="Input assistive technology intended for switch and pointer users"
@@ -15,7 +17,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}

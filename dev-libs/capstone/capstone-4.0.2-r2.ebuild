@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python{3_7,3_8,3_9} )
+PYTHON_COMPAT=( python{3_7,3_8,3_9,3_10} )
 
 inherit cmake distutils-r1 toolchain-funcs
 
@@ -16,7 +16,8 @@ LICENSE="BSD"
 SLOT="0/4" # libcapstone.so.4
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
-RESTRICT="!test? ( test )"
+# A few disassembly outputs need an update
+RESTRICT="test"
 
 IUSE="python static-libs test"
 RDEPEND="python? ( ${PYTHON_DEPS} )"

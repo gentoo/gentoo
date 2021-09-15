@@ -22,13 +22,13 @@ RDEPEND="
 	${DEPEND}
 	net-dialup/ppp"
 
-DOCS=(CREDITS README.md BUGS CHANGES TODO doc/README.patents)
+DOCS=( CREDITS README.md BUGS CHANGES TODO doc/README.patents )
 
 src_compile() {
 	tc-export CC
 	local OSFLAGS="-DLINUX"
 	use kernel && OSFLAGS+=" -DUSE_KERNEL"
-	emake OSFLAGS="$OSFLAGS"
+	emake OSFLAGS="${OSFLAGS}"
 }
 
 src_install() {
@@ -45,4 +45,8 @@ src_install() {
 	newins doc/l2tpd.conf.sample xl2tpd.conf
 	insopts -m 0600
 	newins doc/l2tp-secrets.sample l2tp-secrets
+}
+
+pkg_postinst() {
+	tmpfiles_process xl2tpd.conf
 }

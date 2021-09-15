@@ -1,0 +1,31 @@
+From 85ea545db65d7c6fbb94988b85f1e8cf1c9cbba5 Mon Sep 17 00:00:00 2001
+From: Marcin Wojdyr <wojdyr@gmail.com>
+Date: Sun, 17 Jan 2021 19:18:47 +0100
+Subject: [PATCH] allow building with wxGTK3 (closes #32)
+
+It works, but with some problems.
+
+The separator in wxSplitterWindow is not updated, as per:
+http://trac.wxwidgets.org/ticket/16890
+
+wxSpinCtrl is much wider (it has [+][-] instead of arrows)
+---
+ wxgui/app.cpp | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/wxgui/app.cpp b/wxgui/app.cpp
+index 526c8f14..1041eccf 100644
+--- a/wxgui/app.cpp
++++ b/wxgui/app.cpp
+@@ -8,11 +8,6 @@
+ #include <wx/filesys.h>
+ #include <wx/tooltip.h>
+ 
+-#ifdef __WXGTK3__
+-#error "Not everything is working with wxGTK3. Use default wxGTK instead, " \
+-       "based on GTK+2. If you want to test it, just remove this #error."
+-#endif
+-
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <vector>

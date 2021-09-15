@@ -87,6 +87,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-bison-3.7.patch" # bug 736499
 	"${FILESDIR}/${P}-icu-68.patch" # bug 753260
 	"${FILESDIR}/${P}-python-3.9.patch" # bug 766303
+	"${FILESDIR}/${P}-glib-2.68.patch" # bug 777759
 )
 
 _check_reqs() {

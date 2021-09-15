@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
 		<email>esteve.varela@gmail.com</email>
@@ -12,7 +12,6 @@
 	<use>
 		<flag name="enchant">Enable the app-text/aspell spell-checking backend</flag>
 		<flag name="hunspell">Enable the app-text/hunspell spell-checking backend</flag>
-		<flag name="lto">Enable Link Time Optimization (LTO / IPO)</flag>
-		<flag name="webrtc">WebRTC based audio/video call support ( via <pkg>media-libs/tg_owt</pkg> )</flag>
+		<flag name="screencast">Enable support for remote desktop and screen cast using <pkg>media-video/pipewire</pkg></flag>
 	</use>
 </pkgmetadata>

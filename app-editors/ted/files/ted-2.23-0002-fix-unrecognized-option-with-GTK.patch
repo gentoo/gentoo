@@ -1,0 +1,134 @@
+From 75913fec2f0b168d08c28eaa84fd69f52767802d Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sat, 3 Apr 2021 10:54:08 +0200
+Subject: [PATCH] fix unrecognized option --with-GTK
+
+Closes: https://bugs.gentoo.org/470652
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ Makefile | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 08224f9..b210d8a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -128,84 +128,84 @@ lib/bitmap.a: bitmap/makefile
+ 	cd bitmap && $(MAKE)
+ 
+ bitmap/makefile: bitmap/makefile.in Makefile
+-	cd bitmap && ./configure $(CONFIGURE_OPTIONS)
++	cd bitmap && ./configure
+ 
+ ####
+ lib/docBuf.a: docBuf/makefile
+ 	cd docBuf && $(MAKE)
+ 
+ docBuf/makefile: docBuf/makefile.in Makefile
+-	cd docBuf && ./configure $(CONFIGURE_OPTIONS)
++	cd docBuf && ./configure
+ 
+ ####
+ lib/docBase.a: docBase/makefile
+ 	cd docBase && $(MAKE)
+ 
+ docBase/makefile: docBase/makefile.in Makefile
+-	cd docBase && ./configure $(CONFIGURE_OPTIONS)
++	cd docBase && ./configure
+ 
+ ####
+ lib/docHtml.a: docHtml/makefile
+ 	cd docHtml && $(MAKE)
+ 
+ docHtml/makefile: docHtml/makefile.in Makefile
+-	cd docHtml && ./configure $(CONFIGURE_OPTIONS)
++	cd docHtml && ./configure
+ 
+ ####
+ lib/docLayout.a: docLayout/makefile
+ 	cd docLayout && $(MAKE)
+ 
+ docLayout/makefile: docLayout/makefile.in Makefile
+-	cd docLayout && ./configure $(CONFIGURE_OPTIONS)
++	cd docLayout && ./configure
+ 
+ ####
+ lib/docRtf.a: docRtf/makefile
+ 	cd docRtf && $(MAKE)
+ 
+ docRtf/makefile: docRtf/makefile.in Makefile
+-	cd docRtf && ./configure $(CONFIGURE_OPTIONS)
++	cd docRtf && ./configure
+ 
+ ####
+ lib/docEdit.a: docEdit/makefile
+ 	cd docEdit && $(MAKE)
+ 
+ docEdit/makefile: docEdit/makefile.in Makefile
+-	cd docEdit && ./configure $(CONFIGURE_OPTIONS)
++	cd docEdit && ./configure
+ 
+ ####
+ lib/ind.a: ind/makefile
+ 	cd ind && $(MAKE)
+ 
+ ind/makefile: ind/makefile.in Makefile
+-	cd ind && ./configure $(CONFIGURE_OPTIONS)
++	cd ind && ./configure
+ 
+ ####
+ lib/appUtil.a: appUtil/makefile
+ 	cd appUtil && $(MAKE)
+ 
+ appUtil/makefile: appUtil/makefile.in Makefile
+-	cd appUtil && ./configure $(CONFIGURE_OPTIONS)
++	cd appUtil && ./configure
+ 
+ ####
+ lib/textEncoding.a: textEncoding/makefile
+ 	cd textEncoding && $(MAKE)
+ 
+ textEncoding/makefile: textEncoding/makefile.in Makefile
+-	cd textEncoding && ./configure $(CONFIGURE_OPTIONS)
++	cd textEncoding && ./configure
+ 
+ ####
+ lib/utilPs.a: utilPs/makefile
+ 	cd utilPs && $(MAKE)
+ 
+ utilPs/makefile: utilPs/makefile.in Makefile
+-	cd utilPs && ./configure $(CONFIGURE_OPTIONS)
++	cd utilPs && ./configure
+ 
+ ####
+ lib/docFont.a: docFont/makefile
+ 	cd docFont && $(MAKE)
+ 
+ docFont/makefile: docFont/makefile.in Makefile
+-	cd docFont && ./configure $(CONFIGURE_OPTIONS)
++	cd docFont && ./configure
+ 
+ ####
+ lib/appFrame.a: appFrame/makefile
+@@ -219,7 +219,7 @@ lib/drawMeta.a: drawMeta/makefile
+ 	cd drawMeta && $(MAKE)
+ 
+ drawMeta/makefile: drawMeta/makefile.in Makefile
+-	cd drawMeta && ./configure $(CONFIGURE_OPTIONS)
++	cd drawMeta && ./configure
+ 
+ ####
+ ####	Compile and link Ted
+@@ -252,7 +252,7 @@ package.shared: compile.shared tedPackage/makefile
+ 	: To install Ted, you can now run 'make install' AS ROOT
+ 
+ tedPackage/makefile: tedPackage/makefile.in Makefile
+-	cd tedPackage && ./configure $(CONFIGURE_OPTIONS)
++	cd tedPackage && ./configure
+ 
+ sysvpkg: compile tedPackage/makefile
+ 	cd tedPackage && $(MAKE) $@
+-- 
+2.31.1
+

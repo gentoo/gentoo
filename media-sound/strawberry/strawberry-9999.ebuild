@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic l10n virtualx xdg
+inherit cmake flag-o-matic plocale virtualx xdg
 
 PLOCALES="cs de es fr hu id it ko nb pl ru sv"
 
@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cdda +dbus debug +gstreamer ipod mtp pulseaudio +udisks vlc"
+IUSE="cdda debug +gstreamer ipod mtp pulseaudio +udisks vlc"
 
 REQUIRED_USE="
 	udisks? ( dbus )
@@ -38,6 +38,7 @@ COMMON_DEPEND="
 	dev-libs/protobuf:=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtsql:5[sqlite]
@@ -50,7 +51,6 @@ COMMON_DEPEND="
 	virtual/glu
 	x11-libs/libX11
 	cdda? ( dev-libs/libcdio:= )
-	dbus? ( dev-qt/qtdbus:5 )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -86,7 +86,7 @@ REQUIRED_USE="
 "
 
 src_prepare() {
-	l10n_find_plocales_changes "src/translations" "" ".po"
+	plocale_find_changes "src/translations" "" ".po"
 
 	cmake_src_prepare
 }
@@ -98,9 +98,8 @@ src_configure() {
 		# avoid automagically enabling of ccache (bug #611010)
 		-DCCACHE_EXECUTABLE=OFF
 		-DENABLE_GIO=ON
-		-DLINGUAS="$(l10n_get_locales)"
+		-DLINGUAS="$(plocale_get_locales)"
 		-DENABLE_AUDIOCD="$(usex cdda)"
-		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5DBus=$(usex !dbus)
 		-DENABLE_GSTREAMER="$(usex gstreamer)"
 		-DENABLE_LIBGPOD="$(usex ipod)"
 		-DENABLE_LIBMTP="$(usex mtp)"

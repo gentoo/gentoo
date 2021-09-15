@@ -1,0 +1,10 @@
+--- a/src/Implicit/impSurface.h
++++ b/src/Implicit/impSurface.h
+@@ -25,6 +25,7 @@
+ #ifdef WIN32
+ 	#include <windows.h>
+ #endif
++#include <cstddef>
+ #include <vector>
+ #include <GL/gl.h>
+ 

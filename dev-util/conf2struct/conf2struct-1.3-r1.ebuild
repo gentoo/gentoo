@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/yrutschle/conf2struct.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~s390 ~x86"
+	KEYWORDS="~amd64 -mips ~s390 ~x86"
 	SRC_URI="https://github.com/yrutschle/conf2struct/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 

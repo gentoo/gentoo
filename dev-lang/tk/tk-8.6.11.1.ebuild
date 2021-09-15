@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools multilib-minimal prefix toolchain-funcs virtualx
+inherit autotools multilib-minimal multilib prefix toolchain-funcs virtualx
 
 MY_P="${PN}${PV/_beta/b}"
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/tcl/${MY_P}-src.tar.gz"
 
 LICENSE="tcltk"
 SLOT="0/8.6"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug +threads truetype aqua xscreensaver"
 RESTRICT="!test? ( test )"
 
@@ -28,7 +28,7 @@ RDEPEND="
 	~dev-lang/tcl-$(ver_cut 1-3):0=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	!aqua? ( x11-base/xorg-proto )"
-
+BDEPEND="virtual/pkgconfig"
 # Not bumped to 8.6
 #RESTRICT=test
 

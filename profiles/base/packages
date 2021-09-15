@@ -24,6 +24,7 @@
 # of the minimum set of packages needed for any Gentoo based system.
 
 *>=sys-apps/baselayout-2
+*app-admin/eselect
 *app-arch/bzip2
 *app-arch/gzip
 *app-arch/tar

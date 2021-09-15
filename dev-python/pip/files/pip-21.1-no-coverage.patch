@@ -1,0 +1,51 @@
+From 66ca1e64ce3fb971ec30d5f8b2a0bda49721bc2d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 29 Jul 2020 07:42:25 +0200
+Subject: [PATCH] Disable coverage testing support inside test venvs
+
+---
+ tests/conftest.py | 14 +-------------
+ 1 file changed, 1 insertion(+), 13 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index a53e0c4f7..c91d1e1ae 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -315,11 +315,6 @@ def wheel_install(tmpdir_factory, common_wheels):
+     return _common_wheel_editable_install(tmpdir_factory, common_wheels, "wheel")
+ 
+ 
+-@pytest.fixture(scope="session")
+-def coverage_install(tmpdir_factory, common_wheels):
+-    return _common_wheel_editable_install(tmpdir_factory, common_wheels, "coverage")
+-
+-
+ def install_egg_link(venv, project_name, egg_info_dir):
+     with open(venv.site / "easy-install.pth", "a") as fp:
+         fp.write(str(egg_info_dir.resolve()) + "\n")
+@@ -329,7 +324,7 @@ def install_egg_link(venv, project_name, egg_info_dir):
+ 
+ @pytest.fixture(scope="session")
+ def virtualenv_template(
+-    request, tmpdir_factory, pip_src, setuptools_install, coverage_install
++    request, tmpdir_factory, pip_src, setuptools_install
+ ):
+ 
+     if request.config.getoption("--use-venv"):
+@@ -355,13 +350,6 @@ def virtualenv_template(
+         [venv.bin / "python", "setup.py", "-q", "develop"], cwd=pip_editable
+     )
+ 
+-    # Install coverage and pth file for executing it in any spawned processes
+-    # in this virtual environment.
+-    install_egg_link(venv, "coverage", coverage_install)
+-    # zz prefix ensures the file is after easy-install.pth.
+-    with open(venv.site / "zz-coverage-helper.pth", "a") as f:
+-        f.write("import coverage; coverage.process_startup()")
+-
+     # Drop (non-relocatable) launchers.
+     for exe in os.listdir(venv.bin):
+         if not (
+-- 
+2.31.1
+

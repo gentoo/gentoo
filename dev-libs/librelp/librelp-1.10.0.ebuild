@@ -15,17 +15,14 @@ LICENSE="GPL-3+ doc? ( FDL-1.3 )"
 # subslot = soname version
 SLOT="0/0.5.1"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~sparc ~x86"
-IUSE="debug doc +ssl +gnutls libressl openssl static-libs test"
+KEYWORDS="amd64 arm arm64 ~hppa sparc x86"
+IUSE="debug doc +ssl +gnutls openssl static-libs test"
 REQUIRED_USE="ssl? ( ^^ ( gnutls openssl ) )"
 
 RDEPEND="
 	ssl? (
 		gnutls? ( >=net-libs/gnutls-3.3.17.1:0= )
-		openssl? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
-		)
+		openssl? ( dev-libs/openssl:0= )
 	)"
 DEPEND="${RDEPEND}
 	test? ( ${PYTHON_DEPS} )

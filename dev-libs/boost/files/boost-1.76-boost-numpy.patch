@@ -1,0 +1,23 @@
+From 0796305c863804a2b31610507c531da5c0408422 Mon Sep 17 00:00:00 2001
+From: Peter Dimov <pdimov@gmail.com>
+Date: Mon, 24 May 2021 22:14:55 +0300
+Subject: [PATCH] Use the /python//numpy target instead of [ numpy.include ]
+ (fixes #361)
+
+---
+ libs/python/build/Jamfile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libs/python/build/Jamfile b/libs/python/build/Jamfile
+index dbc9fb203..03b69a25d 100644
+--- a/libs/python/build/Jamfile
++++ b/libs/python/build/Jamfile
+@@ -117,7 +117,7 @@ lib boost_numpy
+         <define>BOOST_NUMPY_SOURCE
+         [ cond [ python.numpy ] : <library>/python//python_for_extensions ]
+         [ unless [ python.numpy ] : <build>no ]
+-        <include>$(numpy-include)
++        <library>/python//numpy
+         <library>boost_python
+         <python-debugging>on:<define>BOOST_DEBUG_PYTHON
+         -<tag>@$(BOOST_JAMROOT_MODULE)%$(BOOST_JAMROOT_MODULE).tag

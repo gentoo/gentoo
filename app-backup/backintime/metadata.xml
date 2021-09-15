@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription lang="en">
@@ -11,4 +11,5 @@
 		* What directories to backup
 		* When backup should be done (manual, every hour, every day, every week, every month)
 	</longdescription>
+	<stabilize-allarches/>
 </pkgmetadata>

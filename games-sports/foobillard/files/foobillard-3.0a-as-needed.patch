@@ -1,10 +1,10 @@
---- foobillard-3.0a.old/src/Makefile.am	2004-02-25 07:23:56.000000000 +0100
-+++ foobillard-3.0a/src/Makefile.am	2008-12-06 21:57:03.000000000 +0100
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -83,6 +83,5 @@ AM_CFLAGS = -Wall `freetype-config --cfl
  
  #LIBS   = -L$(LIBDIR) -lglut -lGLU -lGL -lXext -lXaw -lm -lXi -lpng -lz
  #LIBS   = -L$(LIBDIR) -lglut -lGLU -lGL -lXext -lXaw -lm -lXi -lpng -lz
--AM_LDFLAGS = ${all_libraries} `pkg-config --libs freetype2` ${SDL_LIBS} ${GLUT_LIBS}
+-AM_LDFLAGS = ${all_libraries} `${PKG_CONFIG} --libs freetype2` ${SDL_LIBS} ${GLUT_LIBS}
  #LDADD = ${X_PRE_LIBS} ${X_LIBS} ${X_EXTRA_LIBS} -lGL -lGLU -lXaw -lm -lXi -lpng -lz -L/home/floh/nvsdk/OpenGL/lib/ -lnvparse
 -LDADD = ${X_PRE_LIBS} ${X_LIBS} ${X_EXTRA_LIBS} -lGL -lGLU -lXaw -lm -lXi -lpng -lz
-+LIBS = ${all_libraries} `pkg-config --libs freetype2` ${SDL_LIBS} ${GLUT_LIBS} ${X_PRE_LIBS} ${X_LIBS} ${X_EXTRA_LIBS} -lGL -lGLU -lXaw -lm -lXi -lpng -lz
++LIBS = ${all_libraries} `${PKG_CONFIG} --libs freetype2` ${SDL_LIBS} ${GLUT_LIBS} ${X_PRE_LIBS} ${X_LIBS} ${X_EXTRA_LIBS} -lGL -lGLU -lXaw -lm -lXi -lpng -lz

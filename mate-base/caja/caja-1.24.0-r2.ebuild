@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,14 +8,14 @@ MATE_LA_PUNT="yes"
 inherit mate virtualx
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="Caja file manager for the MATE desktop"
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 
-IUSE="+introspection +mate packagekit selinux xmp"
+IUSE="+introspection +mate packagekit xmp"
 
 COMMON_DEPEND="
 	dev-libs/atk
@@ -38,7 +38,6 @@ COMMON_DEPEND="
 	>=x11-libs/pango-1.1.2
 	introspection? ( >=dev-libs/gobject-introspection-0.6.4:= )
 	packagekit? ( app-admin/packagekit-base )
-	selinux? ( sys-libs/libselinux )
 	xmp? ( >=media-libs/exempi-1.99.5:2 )
 "
 
@@ -63,8 +62,6 @@ PDEPEND="mate? ( >=x11-themes/mate-icon-theme-${MATE_BRANCH} )"
 # GLib-GIO-ERROR **: Settings schema 'org.mate.caja.preferences' is not installed
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}/${PN}-1.24.0-fix-selinux-automagic-dep.patch" )
-
 src_prepare() {
 	# Remove unnecessary CFLAGS.
 	sed -i -e 's:-DG.*DISABLE_DEPRECATED::g' \
@@ -78,7 +75,6 @@ src_configure() {
 		--disable-update-mimedb \
 		$(use_enable introspection) \
 		$(use_enable packagekit) \
-		$(use_enable selinux) \
 		$(use_enable xmp)
 }
 
@@ -86,7 +82,7 @@ src_test() {
 	unset SESSION_MANAGER
 	unset DBUS_SESSION_BUS_ADDRESS
 
-	virtx emake check || die "Test phase failed"
+	Xemake check || die "Test phase failed"
 }
 
 pkg_postinst() {

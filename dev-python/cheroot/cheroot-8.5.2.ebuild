@@ -1,13 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="Cheroot is the high-performance, pure-Python HTTP server used by CherryPy."
+DESCRIPTION="High-performance, pure-Python HTTP server used by CherryPy"
 HOMEPAGE="https://cherrypy.org/
 	https://pypi.org/project/cheroot/
 	https://github.com/cherrypy/cheroot/"
@@ -15,7 +14,7 @@ SRC_URI="mirror://pypi/C/${PN/c/C}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ia64 ppc ~ppc64 x86"
+KEYWORDS="amd64 arm arm64 ~ia64 ppc ~ppc64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/six-1.11.0[${PYTHON_USEDEP}]
@@ -57,5 +56,5 @@ python_prepare_all() {
 
 python_test() {
 	cd "${BUILD_DIR}" || die
-	pytest -vv || die "Tests failed with ${EPYTHON}"
+	epytest
 }

@@ -40,6 +40,10 @@ DEPEND="${RDEPEND}
 # Installs reference docs into /usr/share/doc/gstreamermm-1.0/
 # but that's okay, because the rest of dev-cpp/*mm stuff does the same
 
+PATCHES=(
+	"${FILESDIR}"/${P}-no-volatile.patch
+)
+
 src_prepare() {
 	if ! use examples; then
 		# don't waste time building examples

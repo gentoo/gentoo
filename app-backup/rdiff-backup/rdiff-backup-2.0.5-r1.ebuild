@@ -13,7 +13,7 @@ SRC_URI="https://github.com/rdiff-backup/${PN}/releases/download/v${PV}/${P}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="examples"
 
 DEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]

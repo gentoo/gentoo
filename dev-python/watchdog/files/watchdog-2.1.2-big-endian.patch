@@ -1,0 +1,76 @@
+From ab6508716f95fb65481ab6232301a095452e9b49 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 19 Aug 2021 15:13:39 +0200
+Subject: [PATCH] Fix test mocks for big endian systems
+
+Fix the mocked inotify data to respect system endianness.  Instead of
+harcoding the raw data, reconstruct it using struct.pack(), respecting
+host endianness.  This should also benefit readability a bit.
+
+Closes #804
+---
+ tests/test_inotify_c.py | 28 ++++++++++++++++++++--------
+ 1 file changed, 20 insertions(+), 8 deletions(-)
+
+diff --git a/tests/test_inotify_c.py b/tests/test_inotify_c.py
+index 81f6586..dc336a3 100644
+--- a/tests/test_inotify_c.py
++++ b/tests/test_inotify_c.py
+@@ -10,6 +10,7 @@ import ctypes
+ import errno
+ import logging
+ import os
++import struct
+ from functools import partial
+ from queue import Queue
+ 
+@@ -52,6 +53,19 @@ def teardown_function(function):
+         pass
+ 
+ 
++def struct_inotify(wd, mask, cookie, length, name):
++    assert len(name) <= length
++    struct_format = (
++        "=" # (native endianness, standard sizes)
++        "i" # int      wd
++        "i" # uint32_t mask
++        "i" # uint32_t cookie
++        "i" # uint32_t len
++        "%ds" % (length,) # char[] name
++    )
++    return struct.pack(struct_format, wd, mask, cookie, length, name)
++
++
+ def test_late_double_deletion(monkeypatch):
+     inotify_fd = type(str("FD"), (object,), {})()  # Empty object
+     inotify_fd.last = 0
+@@ -60,20 +74,18 @@ def test_late_double_deletion(monkeypatch):
+     # CREATE DELETE CREATE DELETE DELETE_SELF IGNORE DELETE_SELF IGNORE
+     inotify_fd.buf = (
+         # IN_CREATE|IS_DIR (wd = 1, path = subdir1)
+-        b"\x01\x00\x00\x00\x00\x01\x00\x40\x00\x00\x00\x00\x10\x00\x00\x00"
+-        b"\x73\x75\x62\x64\x69\x72\x31\x00\x00\x00\x00\x00\x00\x00\x00\x00"
++        struct_inotify(1, 0x40000100, 0, 16, b"subdir1") +
+         # IN_DELETE|IS_DIR (wd = 1, path = subdir1)
+-        b"\x01\x00\x00\x00\x00\x02\x00\x40\x00\x00\x00\x00\x10\x00\x00\x00"
+-        b"\x73\x75\x62\x64\x69\x72\x31\x00\x00\x00\x00\x00\x00\x00\x00\x00"
++        struct_inotify(1, 0x40000200, 0, 16, b"subdir1")
+     ) * 2 + (
+         # IN_DELETE_SELF (wd = 2)
+-        b"\x02\x00\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
++        struct_inotify(2, 0x00000400, 0, 0, b"") +
+         # IN_IGNORE (wd = 2)
+-        b"\x02\x00\x00\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
++        struct_inotify(2, 0x00008000, 0, 0, b"") +
+         # IN_DELETE_SELF (wd = 3)
+-        b"\x03\x00\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
++        struct_inotify(3, 0x00000400, 0, 0, b"") +
+         # IN_IGNORE (wd = 3)
+-        b"\x03\x00\x00\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
++        struct_inotify(3, 0x00008000, 0, 0, b"")
+     )
+ 
+     os_read_bkp = os.read
+-- 
+2.33.0
+

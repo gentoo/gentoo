@@ -63,7 +63,7 @@ multilib_src_install_all() {
 	find "${ED}" -name '*.la' -delete || die
 
 	if use examples ; then
-		insinto /usr/share/doc/${PF}/examples
-		doins "${S}"/examples/*.c
+		docinto examples
+		dodoc "${S}"/examples/*.c
 	fi
 }

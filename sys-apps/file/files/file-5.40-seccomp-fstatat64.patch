@@ -1,0 +1,29 @@
+From e3d0265a147878b6c2903bcc83b9842dff68ceb4 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 23 Apr 2021 15:00:42 -0400
+Subject: [PATCH] seccomp: allow fstatat64
+
+This is needed for the libsandbox LD_PRELOAD wrapper on Gentoo Linux.
+
+Bug: https://bugs.gentoo.org/784857
+---
+ src/seccomp.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/seccomp.c b/src/seccomp.c
+index 81842cf5..43abc684 100644
+--- a/src/seccomp.c
++++ b/src/seccomp.c
+@@ -178,6 +178,9 @@ enable_sandbox_full(void)
+  	ALLOW_RULE(fcntl64);
+ 	ALLOW_RULE(fstat);
+  	ALLOW_RULE(fstat64);
++#ifdef __NR_fstatat64
++	ALLOW_RULE(fstatat64);
++#endif
+ 	ALLOW_RULE(futex);
+ 	ALLOW_RULE(getdents);
+ #ifdef __NR_getdents64
+-- 
+2.31.1
+

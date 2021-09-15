@@ -1,0 +1,13 @@
+diff --git a/src/test/java/com/healthmarketscience/jackcess/DatabaseTest.java b/src/test/java/com/healthmarketscience/jackcess/DatabaseTest.java
+index d127f9f..03885f2 100644
+--- a/src/test/java/com/healthmarketscience/jackcess/DatabaseTest.java
++++ b/src/test/java/com/healthmarketscience/jackcess/DatabaseTest.java
+@@ -687,7 +687,7 @@ public class DatabaseTest extends TestCase
+ 
+   public void testAncientDates() throws Exception
+   {
+-    TimeZone tz = TimeZone.getTimeZone("America/New_York");
++    TimeZone tz = TimeZone.getTimeZone("UTC");
+     SimpleDateFormat sdf = DatabaseBuilder.createDateFormat("yyyy-MM-dd");
+     sdf.getCalendar().setTimeZone(tz);
+ 
