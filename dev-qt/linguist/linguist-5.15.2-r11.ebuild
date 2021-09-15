@@ -18,7 +18,7 @@ IUSE=""
 DEPEND="
 	=dev-qt/designer-${QT5_PV}*
 	=dev-qt/qtcore-${QT5_PV}*:5=
-	=dev-qt/qtgui-${QT5_PV}*:5=
+	=dev-qt/qtgui-${QT5_PV}*:5=[png]
 	=dev-qt/qtprintsupport-${QT5_PV}*
 	=dev-qt/qtwidgets-${QT5_PV}*
 	=dev-qt/qtxml-${QT5_PV}*
