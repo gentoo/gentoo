@@ -1,0 +1,42 @@
+From 3b41df35a885b4db04528d839b87e88bf1345240 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Nikl=C4=81vs=20Ko=C4=BCes=C5=86ikovs?=
+ <89q1r14hd@relay.firefox.com>
+Date: Wed, 15 Sep 2021 13:08:04 +0300
+Subject: [PATCH 4/5] v4l: add basic check for nil monitor
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+If PipeWire is built without V4L support, then
+
+`monitor = SpaDevice("api.v4l2.enum.udev", config.properties or {})`
+
+will result in a nil monitor. This commit adds a basic sanity check
+to avoid further using the nil variable.
+
+Thanks-to: Pascal Flöschel (initial bug report)
+Thanks-to: George Kiagiadakis <george.kiagiadakis@collabora.com>
+Bug: https://bugs.gentoo.org/813043
+---
+ src/scripts/monitors/v4l2.lua | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/scripts/monitors/v4l2.lua b/src/scripts/monitors/v4l2.lua
+index e698cd7..fd9a20d 100644
+--- a/src/scripts/monitors/v4l2.lua
++++ b/src/scripts/monitors/v4l2.lua
+@@ -131,5 +131,9 @@ function createDevice(parent, id, type, factory, properties)
+ end
+ 
+ monitor = SpaDevice("api.v4l2.enum.udev", config.properties or {})
+-monitor:connect("create-object", createDevice)
+-monitor:activate(Feature.SpaDevice.ENABLED)
++if monitor then
++  monitor:connect("create-object", createDevice)
++  monitor:activate(Feature.SpaDevice.ENABLED)
++else
++  Log.message("PipeWire's V4L SPA missing or broken. Video4Linux not supported.")
++end
+-- 
+2.33.0
+
