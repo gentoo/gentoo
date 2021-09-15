@@ -32,6 +32,7 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	dev-libs/libxslt
 	dev-util/gdbus-codegen
+	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	test? (
