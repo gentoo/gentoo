@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
@@ -87,11 +87,6 @@ RESTRICT="!test? ( test )"
 if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
 fi
-
-PATCHES=(
-	"${FILESDIR}/${PN}-2020-pytest.patch"
-	"${FILESDIR}/${PN}-2021-nblib.patch"
-)
 
 pkg_pretend() {
 	[[ $(gcc-version) == "4.1" ]] && die "gcc 4.1 is not supported by gromacs"
