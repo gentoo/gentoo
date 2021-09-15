@@ -22,7 +22,7 @@ src_configure() {
 	econf \
 		--with-bashcompletiondir="$(get_bashcompdir)" \
 		--with-systemdunitdir="$(systemd_get_systemunitdir)" \
-		--localstatedir="${EPREFIX}"/var
+		--localstatedir="${EPREFIX}"/
 }
 
 src_install() {
