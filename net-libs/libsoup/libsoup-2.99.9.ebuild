@@ -42,6 +42,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
+	test? ( net-libs/gnutls[pkcs11] )
 "
 #	test? (	www-servers/apache[ssl,apache2_modules_auth_digest,apache2_modules_alias,apache2_modules_auth_basic,
 #		apache2_modules_authn_file,apache2_modules_authz_host,apache2_modules_authz_user,apache2_modules_dir,
@@ -82,13 +83,11 @@ multilib_src_configure() {
 		$(meson_native_use_feature introspection)
 		$(meson_native_use_feature vala vapi)
 		$(meson_native_use_bool gtk-doc gtk_doc)
+		# TODO: Tests fail with network-sandbox or 32bit (upstream issue #236) for 2.99.9
 		$(meson_use test tests)
 		-Dinstalled_tests=false
 		$(meson_feature sysprof)
-		# Avoid gnutls[pkcs11] test dep for now, consider adding them back or fixing
-		# upstream to skip them when pkcs11 API isn't there (in 2.99.9 it automatically
-		# skips these only if gnutls overall is missing)
-		-Dpkcs11_tests=disabled
+		$(meson_feature test pkcs11_tests)
 	)
 	meson_src_configure
 }
