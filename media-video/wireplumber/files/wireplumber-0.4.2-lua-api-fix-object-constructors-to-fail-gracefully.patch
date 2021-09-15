@@ -1,0 +1,100 @@
+From 2a5f9c51f2f8dd29cd19a14f165ca2b425a172fc Mon Sep 17 00:00:00 2001
+From: George Kiagiadakis <george.kiagiadakis@collabora.com>
+Date: Wed, 15 Sep 2021 12:51:47 +0300
+Subject: [PATCH 2/5] lua/api: fix object constructors to fail gracefully
+
+---
+ modules/module-lua-scripting/api.c | 35 ++++++++++++++++++------------
+ 1 file changed, 21 insertions(+), 14 deletions(-)
+
+diff --git a/modules/module-lua-scripting/api.c b/modules/module-lua-scripting/api.c
+index 5691b63..2830477 100644
+--- a/modules/module-lua-scripting/api.c
++++ b/modules/module-lua-scripting/api.c
+@@ -836,8 +836,9 @@ device_new (lua_State *L)
+ 
+   WpDevice *d = wp_device_new_from_factory (get_wp_export_core (L),
+       factory, properties);
+-  wplua_pushobject (L, d);
+-  return 1;
++  if (d)
++    wplua_pushobject (L, d);
++  return d ? 1 : 0;
+ }
+ 
+ /* WpSpaDevice */
+@@ -855,8 +856,9 @@ spa_device_new (lua_State *L)
+ 
+   WpSpaDevice *d = wp_spa_device_new_from_spa_factory (get_wp_export_core (L),
+       factory, properties);
+-  wplua_pushobject (L, d);
+-  return 1;
++  if (d)
++    wplua_pushobject (L, d);
++  return d ? 1 : 0;
+ }
+ 
+ static int
+@@ -903,8 +905,9 @@ node_new (lua_State *L)
+ 
+   WpNode *d = wp_node_new_from_factory (get_wp_export_core (L),
+       factory, properties);
+-  wplua_pushobject (L, d);
+-  return 1;
++  if (d)
++    wplua_pushobject (L, d);
++  return d ? 1 : 0;
+ }
+ 
+ static int
+@@ -1011,8 +1014,9 @@ impl_node_new (lua_State *L)
+ 
+   WpImplNode *d = wp_impl_node_new_from_pw_factory (get_wp_export_core (L),
+      factory, properties);
+-  wplua_pushobject (L, d);
+-  return 1;
++  if (d)
++    wplua_pushobject (L, d);
++  return d ? 1 : 0;
+ }
+ 
+ /* Port */
+@@ -1045,8 +1049,9 @@ link_new (lua_State *L)
+   }
+ 
+   WpLink *l = wp_link_new_from_factory (get_wp_core (L), factory, properties);
+-  wplua_pushobject (L, l);
+-  return 1;
++  if (l)
++    wplua_pushobject (L, l);
++  return l ? 1 : 0;
+ }
+ 
+ /* Client */
+@@ -1124,8 +1129,9 @@ session_item_new (lua_State *L)
+ {
+   const char *type = luaL_checkstring (L, 1);
+   WpSessionItem *si = wp_session_item_make (get_wp_core (L), type);
+-  wplua_pushobject (L, si);
+-  return 1;
++  if (si)
++    wplua_pushobject (L, si);
++  return si ? 1 : 0;
+ }
+ 
+ static int
+@@ -1135,8 +1141,9 @@ session_item_get_associated_proxy (lua_State *L)
+   const char *typestr = luaL_checkstring (L, 2);
+   WpProxy *proxy = wp_session_item_get_associated_proxy (si,
+       parse_gtype (typestr));
+-  wplua_pushobject (L, proxy);
+-  return 1;
++  if (proxy)
++    wplua_pushobject (L, proxy);
++  return proxy ? 1 : 0;
+ }
+ 
+ static int
+-- 
+2.33.0
+

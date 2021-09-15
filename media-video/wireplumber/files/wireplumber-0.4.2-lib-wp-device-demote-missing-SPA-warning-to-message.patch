@@ -1,0 +1,28 @@
+From 05334c1ec72af68f915ea18e32b230857918f600 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Nikl=C4=81vs=20Ko=C4=BCes=C5=86ikovs?=
+ <89q1r14hd@relay.firefox.com>
+Date: Wed, 15 Sep 2021 13:23:45 +0300
+Subject: [PATCH 5/5] lib/wp/device: demote missing SPA warning to message
+
+Warnings can be scary, so best not to scare users with what's likely
+intentional omission of a particular SPA plugin (currently V4L & BlueZ).
+---
+ lib/wp/device.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/wp/device.c b/lib/wp/device.c
+index f0c32af..9a0b995 100644
+--- a/lib/wp/device.c
++++ b/lib/wp/device.c
+@@ -617,7 +617,7 @@ wp_spa_device_new_from_spa_factory (WpCore * core,
+   handle = pw_context_load_spa_handle (pw_context, factory_name,
+       props ? wp_properties_peek_dict (props) : NULL);
+   if (!handle) {
+-    wp_warning ("SPA handle '%s' could not be loaded; is it installed?",
++    wp_message ("SPA handle '%s' could not be loaded; is it installed?",
+         factory_name);
+     return NULL;
+   }
+-- 
+2.33.0
+
