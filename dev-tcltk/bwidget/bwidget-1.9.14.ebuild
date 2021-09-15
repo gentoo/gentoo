@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib virtualx
+inherit virtualx
 
 MY_PN=${PN/bw/BW}
 MY_P=${MY_PN}-${PV}
