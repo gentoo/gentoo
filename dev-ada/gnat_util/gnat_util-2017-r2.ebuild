@@ -4,7 +4,7 @@
 EAPI=7
 
 ADA_COMPAT=( gnat_2017 )
-inherit ada toolchain-funcs multiprocessing
+inherit ada multiprocessing
 
 MYP=${PN}-gpl-${PV}
 
