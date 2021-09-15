@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
 ADA_COMPAT=( gnat_201{7..9} gnat_202{0..1} )
-inherit ada multilib multiprocessing python-single-r1
+inherit ada multiprocessing python-single-r1
 
 MYP=${P}-${PV}0518-19B15-src
 ADAMIRROR=https://community.download.adacore.com/v1
