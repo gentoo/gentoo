@@ -204,13 +204,13 @@ src_configure() {
 		-printing-and-pdf
 		-system-opus
 		-system-webp
-		$(usex alsa '-alsa' '-no-alsa')
-		$(usex bindist '-no-proprietary-codecs' '-proprietary-codecs')
-		$(usex geolocation '-webengine-geolocation' '-no-webengine-geolocation')
-		$(usex kerberos '-webengine-kerberos' '-no-webengine-kerberos')
-		$(usex pulseaudio '-pulseaudio' '-no-pulseaudio')
-		$(usex system-ffmpeg '-system-ffmpeg' '-qt-ffmpeg')
-		$(usex system-icu '-webengine-icu' '-no-webengine-icu')
+		$(qt_use alsa)
+		$(qt_use !bindist proprietary-codecs)
+		$(qt_use geolocation webengine-geolocation)
+		$(qt_use kerberos webengine-kerberos)
+		$(qt_use pulseaudio)
+		$(usex system-ffmpeg -system-ffmpeg -qt-ffmpeg)
+		$(qt_use system-icu webengine-icu)
 	)
 	qt5-build_src_configure
 }
