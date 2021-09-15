@@ -59,6 +59,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.8.16-link_with_pthread.patch"
 	"${FILESDIR}/${PN}-1.8.17-ensure_static_support_libraries.patch"
 	"${FILESDIR}/${PN}-1.9.1-ignore-bad-encoding.patch"
+	"${FILESDIR}/${PN}-1.9.1-header-dep.patch"
 )
 
 DOCS=( LANGUAGE.HOWTO README.md )
