@@ -32,7 +32,7 @@ DEPEND="
 	samba? ( net-fs/samba )
 "
 RDEPEND="${DEPEND}
-	>=net-libs/glib-networking-2.38.2[ssl?,${MULTILIB_USEDEP}]
+	>=net-libs/glib-networking-2.70_alpha[ssl?,${MULTILIB_USEDEP}]
 "
 BDEPEND="
 	dev-libs/glib
