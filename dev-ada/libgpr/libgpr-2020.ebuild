@@ -4,7 +4,7 @@
 EAPI=7
 
 ADA_COMPAT=( gnat_201{7..9} )
-inherit ada toolchain-funcs multiprocessing
+inherit ada multiprocessing
 
 MYP=gprbuild-${PV}-20200429-19BD2-src
 
