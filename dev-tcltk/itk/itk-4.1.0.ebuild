@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools multilib virtualx
+inherit autotools virtualx
 
 MY_PV=${PV/_beta/b}
 
