@@ -23,7 +23,7 @@ BDEPEND="
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	dev-util/glib-utils
-	gtk-doc? ( >=dev-util/gtk-doc-1.20 )
+	gtk-doc? ( >=dev-util/gi-docgen-2021.6 )
 	>=sys-devel/gettext-0.18
 	virtual/pkgconfig
 "
@@ -38,9 +38,21 @@ src_prepare() {
 
 multilib_src_configure() {
 	local emesonargs=(
+		# Never use gi-docgen subproject
+		--wrap-mode nofallback
+
 		$(meson_native_use_feature introspection)
 		$(meson_native_use_feature gtk-doc gtk_doc)
 		$(meson_native_true man)
 	)
 	meson_src_configure
+}
+
+multilib_src_install_all() {
+	einstalldocs
+	if use gtk-doc ; then
+		# Move to location that <devhelp-41 will see, reconsider once devhelp-41 is stable
+		mkdir -p "${ED}"/usr/share/gtk-doc/html || die
+		mv "${ED}"/usr/share/doc/json-glib-1.0 "${ED}"/usr/share/gtk-doc/html/ || die
+	fi
 }
