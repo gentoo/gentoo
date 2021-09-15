@@ -8,7 +8,4 @@
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
-	<use>
-		<flag name="networkmanager">Enable improved backend for Network statistics using <pkg>kde-frameworks/networkmanager-qt</pkg></flag>
-	</use>
 </pkgmetadata>
