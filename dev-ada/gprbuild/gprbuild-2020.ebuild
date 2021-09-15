@@ -5,7 +5,7 @@ EAPI=7
 
 ADA_COMPAT=( gnat_201{7,8,9} )
 
-inherit ada toolchain-funcs multiprocessing
+inherit ada multiprocessing
 
 MYP=${P}-20200429-19BD2-src
 XMLADA=xmlada-${PV}-20200429-19A99-src
