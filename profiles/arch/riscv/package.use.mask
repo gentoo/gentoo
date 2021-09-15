@@ -59,11 +59,14 @@ gnome-base/gdm accessibility
 # (Bug #808853).
 media-sound/jack2 ieee1394
 
+# Alex Fan <alexfanqi@yahoo.com> (2021-09-15)
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # dev-qt/qtwebengine requires nodejs to build.
 kde-plasma/kdeplasma-addons webengine
 kde-plasma/libksysguard webengine
 # dependencies not keyworded/tested
+kde-apps/marble webengine geolocation gps
+kde-plasma/powerdevil wireless
 kde-plasma/plasma-desktop emoji
 kde-plasma/plasma-meta accessibility grub plymouth pulseaudio
 
