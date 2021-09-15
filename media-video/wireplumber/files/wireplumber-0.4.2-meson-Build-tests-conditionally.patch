@@ -1,0 +1,41 @@
+From 3b24c419b497c283e64df23b3b5eecd4c3d51927 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 14 Sep 2021 05:07:41 +0100
+Subject: [PATCH 1/5] meson: Build tests conditionally
+
+It's useful downstream to be able to control building
+tests, as there's not much use building them if we're
+not going to run them.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ meson.build       | 5 ++++-
+ meson_options.txt | 2 ++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 3712a82..5f87ade 100644
+--- a/meson.build
++++ b/meson.build
+@@ -109,4 +109,7 @@ subdir('lib')
+ subdir('docs')
+ subdir('modules')
+ subdir('src')
+-subdir('tests')
++
++if get_option('tests')
++  subdir('tests')
++endif
+diff --git a/meson_options.txt b/meson_options.txt
+index a7a0a89..4008864 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -24,3 +24,5 @@ option('systemd-user-unit-dir',
+        description : 'Directory for user systemd units')
+ option('glib-supp', type : 'string', value : '',
+        description: 'The glib.supp valgrind suppressions file to be used when running valgrind')
++option('tests', type : 'boolean', value : 'true',
++       description : 'Build the test suite')
+-- 
+2.33.0
+
