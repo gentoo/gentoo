@@ -118,7 +118,7 @@ python_prepare_all() {
 	fi
 
 	if use native-extensions; then
-		printf "[build_ext]\nportage-ext-modules=true\n" >> \
+		printf "[build_ext]\nportage_ext_modules=true\n" >> \
 			setup.cfg || die
 	fi
 
