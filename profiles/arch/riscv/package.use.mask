@@ -60,15 +60,12 @@ gnome-base/gdm accessibility
 media-sound/jack2 ieee1394
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
-# dependencies not keyworded/tested
-kde-plasma/powerdevil wireless
-kde-plasma/plasma-desktop emoji
-kde-plasma/libksysguard webengine
-kde-plasma/plasma-workspace appstream screencast gps geolocation
+# dev-qt/qtwebengine requires nodejs to build.
 kde-plasma/kdeplasma-addons webengine
+kde-plasma/libksysguard webengine
+# dependencies not keyworded/tested
+kde-plasma/plasma-desktop emoji
 kde-plasma/plasma-meta accessibility grub plymouth pulseaudio
-kde-plasma/discover flatpak
-kde-plasma/kwin accessibility screencast
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-17)
 # sys-libs/libfaketime does not work properly on this arch
@@ -85,8 +82,8 @@ net-libs/libproxy spidermonkey
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-09)
 # ipython[qt5] depends on qtconsole, which depends on QtPy.
-# QtPy cannot be tested atm because QtPy[test] has a hard
-# dependency on PyQt5[bluetooth].
+# QtPy cannot be tested atm because QtPy[test] has an indirect hard
+# dependency on dev-qt/qtwebengine, which requires nodejs to build.
 dev-python/ipython qt5
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-14)
@@ -112,10 +109,6 @@ app-admin/syslog-ng test
 # dev-db/mongodb does not support riscv, fails src_configure
 dev-libs/mongo-c-driver test
 dev-python/pymongo test
-
-# Alex Fan <alexfanqi@yahoo.com> (2021-07-22)
-# lack an ios device to test it
-kde-frameworks/solid ios
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-07-20)
 # hdf5-1.10 always fails tests with these 2 use flags enabled, otherwise
