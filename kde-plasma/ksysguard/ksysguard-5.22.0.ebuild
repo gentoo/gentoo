@@ -16,7 +16,7 @@ HOMEPAGE="https://apps.kde.org/ksysguard/ https://userbase.kde.org/KSysGuard"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+	KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 fi
 
 LICENSE="GPL-2+"
