@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm ~riscv"
 fi
 
 DESCRIPTION="Multimedia processing graphs"
@@ -73,10 +73,7 @@ RDEPEND="
 	)
 	pipewire-alsa? (
 		>=media-libs/alsa-lib-1.1.7[${MULTILIB_USEDEP}]
-		|| (
-			media-plugins/alsa-plugins[-pulseaudio]
-			!media-plugins/alsa-plugins
-		)
+		!media-plugins/alsa-plugins[pulseaudio]
 	)
 	!pipewire-alsa? ( media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio] )
 	systemd? ( sys-apps/systemd )
