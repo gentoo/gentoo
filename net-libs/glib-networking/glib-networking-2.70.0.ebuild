@@ -13,9 +13,6 @@ SLOT="0"
 IUSE="+gnome +libproxy +ssl test"
 RESTRICT="!test? ( test )"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-MY_PV=${PV/_/.}
-SRC_URI="mirror://gnome/sources/${GNOME_ORG_MODULE}/$(ver_cut 1-2)/${GNOME_ORG_MODULE}-${MY_PV}.tar.${GNOME_TARBALL_SUFFIX}"
-S="${WORKDIR}/${GNOME_ORG_MODULE}-${MY_PV}"
 
 RDEPEND="
 	>=dev-libs/glib-2.69.0:2[${MULTILIB_USEDEP}]
