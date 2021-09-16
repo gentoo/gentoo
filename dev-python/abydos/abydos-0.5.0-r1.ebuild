@@ -11,7 +11,7 @@ DESCRIPTION="Abydos NLP/IR library"
 HOMEPAGE="https://github.com/chrislit/abydos"
 SRC_URI="https://github.com/chrislit/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
