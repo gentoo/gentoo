@@ -39,7 +39,7 @@ RDEPEND="
 		>=dev-libs/openssl-0.9.8g:0=[-bindist(-)]
 	)
 	jingle? (
-		>=net-libs/libsoup-2.42
+		>=net-libs/libsoup-2.42:2.4
 		>=net-libs/libnice-0.0.11 )
 	plugins? ( x11-libs/gtksourceview:3.0[introspection] )
 
