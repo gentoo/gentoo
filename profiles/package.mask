@@ -224,11 +224,6 @@ sys-fs/e4rat
 # Broken since Perl 5.22, bug 662318. Removal in 30 days.
 dev-perl/POE-API-Peek
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-08-15)
-# Broken-ish, upstream unmaintained, only one un-used revdep.
-# Removal in 30 days. Bug 623674.
-dev-perl/MooseX-Types-DateTime-ButMaintained
-
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
 # ecosystem has switched to dev-util/pkgconf, which is alive. Testing
