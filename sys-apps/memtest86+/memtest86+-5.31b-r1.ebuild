@@ -99,6 +99,10 @@ pkg_postinst() {
 		elog ""
 		elog "Note: For older configs, you might have to change from 'memtest' to 'memtest.bin'."
 	fi
+
+	if use boot && [ -e /sys/firmware/efi ]; then
+		ewarn "WARNING: You appear to be booted in EFI mode but ${PN} is a BIOS-only tool."
+	fi
 }
 
 pkg_prerm() {
