@@ -43,7 +43,8 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=${MY_PV}
 
 src_prepare() {
 	# remove unnecessary bind that worked around broken 6.1.0/6.2.0 releases
-	sed -i -e '/setuptools_scm/s:~=:>=:' setup.cfg || die
+	sed -i -e '/setuptools_scm/s:~=:>=:' \
+		-e 's/setuptools_scm\[toml\]>=[0-9.]*/setuptools_scm[toml]/' setup.cfg || die
 	distutils-r1_src_prepare
 }
 
