@@ -54,10 +54,6 @@ BDEPEND="virtual/awk
 	nls? ( sys-devel/gettext )
 	python? (
 		dev-python/setuptools[${PYTHON_USEDEP}]
-		|| (
-			dev-python/packaging[${PYTHON_USEDEP}]
-			dev-python/distlib[${PYTHON_USEDEP}]
-		)
 	)
 "
 
@@ -95,6 +91,8 @@ REQUIRED_USE="
 "
 
 RESTRICT="test"
+
+PATCHES=( "${FILESDIR}/2.0.4-scrub-timers.patch" )
 
 pkg_pretend() {
 	use rootfs || return 0
