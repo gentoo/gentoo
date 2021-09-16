@@ -22,7 +22,7 @@ COMMON_DEPEND="
 	app-crypt/gpgme
 	app-arch/xz-utils
 	curl? ( net-misc/curl )
-	soup? ( net-libs/libsoup )
+	soup? ( net-libs/libsoup:2.4 )
 	dev-libs/libassuan
 	dev-libs/libgpg-error
 	dev-libs/glib:2
@@ -69,7 +69,7 @@ src_configure() {
 		$(use_with curl)
 		$(use_with dracut)
 		$(use_enable doc gtk-doc)
-		$(use_enable introspection)
+		$(usex introspection --enable-introspection={,} yes no)
 		$(use_enable http2)
 		$(use_enable httpd trivial-httpd-cmdline)
 		$(use_with selinux )
