@@ -14,7 +14,7 @@ IUSE="+ofx"
 KEYWORDS="amd64 ppc ~ppc64 x86"
 
 RDEPEND=">=dev-libs/glib-2.39
-	>=net-libs/libsoup-2.26
+	>=net-libs/libsoup-2.26:2.4
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
 	>=x11-libs/gtk+-3.22:3
