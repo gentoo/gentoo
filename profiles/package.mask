@@ -246,12 +246,6 @@ dev-python/pydns
 net-analyzer/netwox
 net-analyzer/netwag
 
-# Sam James <sam@gentoo.org> (2021-08-17)
-# Fails to build with >= Boost 1.73, so broken for well over a year.
-# Several open bugs: bug #722882, bug #742290, bug #808673.
-# Removal on 2021-09-17.
-sys-fs/e4rat
-
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
 # ecosystem has switched to dev-util/pkgconf, which is alive. Testing
