@@ -21,7 +21,7 @@ COMMON_DEPEND="
 	archive? ( app-arch/libarchive:= )
 	app-arch/xz-utils
 	curl? ( net-misc/curl )
-	soup? ( net-libs/libsoup )
+	soup? ( net-libs/libsoup:2.4 )
 	dev-libs/libassuan
 	dev-libs/glib:2
 	dracut? ( sys-kernel/dracut )
