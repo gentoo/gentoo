@@ -8,7 +8,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 MY_PN="${PN/_/-}"
-MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Collection of Python scripts for extracting data from UBI and UBIFS images"
 HOMEPAGE="https://github.com/jrspruitt/ubi_reader"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${P}.tar.gz"
