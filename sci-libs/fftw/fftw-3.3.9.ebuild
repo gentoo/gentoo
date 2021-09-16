@@ -8,7 +8,7 @@ FORTRAN_NEEDED=fortran
 inherit flag-o-matic fortran-2 multibuild multilib-minimal toolchain-funcs
 
 DESCRIPTION="Fast C library for the Discrete Fourier Transform"
-HOMEPAGE="http://www.fftw.org/"
+HOMEPAGE="https://www.fftw.org/"
 
 MY_P=${PN}-${PV/_p/-pl}
 
@@ -16,7 +16,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/FFTW/fftw3.git"
 else
-	SRC_URI="http://www.fftw.org/${PN}-${PV/_p/-pl}.tar.gz"
+	SRC_URI="https://www.fftw.org/${PN}-${PV/_p/-pl}.tar.gz"
 	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
