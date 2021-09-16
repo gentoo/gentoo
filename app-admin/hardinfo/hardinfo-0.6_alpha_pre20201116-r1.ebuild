@@ -18,7 +18,7 @@ IUSE="debug"
 
 RDEPEND="dev-libs/glib:2
 	dev-libs/json-glib
-	net-libs/libsoup
+	net-libs/libsoup:2.4
 	sys-libs/zlib
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.0:3"
