@@ -16,15 +16,16 @@ KEYWORDS="amd64 ~arm64 x86"
 DEPEND="dev-libs/glib:2
 	dev-libs/gobject-introspection:0=
 	dev-libs/json-glib
-	net-libs/libsoup
+	net-libs/libsoup:2.4
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:3"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	eautoreconf
 	default
+
+	eautoreconf
 }
 
 src_install() {
