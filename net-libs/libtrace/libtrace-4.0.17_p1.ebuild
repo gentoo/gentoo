@@ -3,16 +3,16 @@
 
 EAPI=8
 
-inherit autotools git-r3
+inherit autotools
 
 DESCRIPTION="A library and tools for trace processing"
 HOMEPAGE="https://research.wand.net.nz/software/libtrace.php"
-S="${WORKDIR}/${P/_beta/}"
-EGIT_REPO_URI="https://github.com/LibtraceTeam/libtrace"
-EGIT_SUBMODULES=()
+SRC_URI="https://github.com/${PN^}Team/${PN}/archive//${PV/_p/-}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P/_p/-}"
 
 LICENSE="LGPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc ncurses numa"
 
 BDEPEND="
@@ -42,6 +42,8 @@ PATCHES=(
 src_prepare() {
 	default
 
+	mv configure.{in,ac} || die
+
 	eautoreconf
 
 	# Comment out FILE_PATTERNS definition (bug #706230)
@@ -57,7 +59,8 @@ src_configure() {
 	econf \
 		$(use_with ncurses) \
 		$(use_with numa) \
-		--with-man
+		--with-man \
+		--without-dpdk
 }
 
 src_install() {
