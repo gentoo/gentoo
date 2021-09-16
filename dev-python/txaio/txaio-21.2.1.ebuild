@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
 
-inherit distutils-r1
+PYTHON_COMPAT=( python3_{8..10} )
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Compatibility API between asyncio/Twisted/Trollius"
 HOMEPAGE="https://github.com/crossbario/txaio https://pypi.org/project/txaio/"
@@ -24,9 +24,12 @@ distutils_enable_sphinx docs \
 	'>=dev-python/sphinx_rtd_theme-0.1.9'
 distutils_enable_tests pytest
 
-src_prepare() {
-	default_src_prepare
+EPYTEST_DESELECT=(
 	# Take out failing tests known to pass when run manually
 	# we certainly don't need to test "python setup.py sdist" here
-	rm "${S}/test/test_packaging.py" || die
+	test/test_packaging.py
+)
+
+pkg_postinst() {
+	optfeature "Twisted support" "dev-python/twisted dev-python/zope-interface"
 }
