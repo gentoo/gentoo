@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ RDEPEND="dev-db/sqlite:3
 		media-plugins/gst-plugins-meta:1.0[X]
 		media-plugins/gst-plugins-soup:1.0 )
 	spellcheck? ( app-text/gspell:=[vala] )
-	net-libs/libsoup
+	net-libs/libsoup:2.4
 	x11-libs/gtk+:3"
 DEPEND="${RDEPEND}
 	$(vala_depend)
