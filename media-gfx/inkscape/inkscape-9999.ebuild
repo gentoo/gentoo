@@ -44,7 +44,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/libpng:0=
-	net-libs/libsoup
+	net-libs/libsoup:2.4
 	sci-libs/gsl:=
 	x11-libs/libX11
 	>=x11-libs/pango-1.37.2
