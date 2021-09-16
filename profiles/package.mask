@@ -32,6 +32,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-09-16)
+# POSIX CPU timers are broken.  Please downgrade or wait for next bump
+# before rebooting.
+# See e.g. https://lkml.org/lkml/2021/9/15/799
+~sys-kernel/gentoo-kernel-5.13.17
+~sys-kernel/gentoo-kernel-5.10.65
+~sys-kernel/gentoo-kernel-5.4.146
+~sys-kernel/gentoo-kernel-bin-5.13.17
+~sys-kernel/gentoo-kernel-bin-5.10.65
+~sys-kernel/gentoo-kernel-bin-5.4.146
+~sys-kernel/vanilla-kernel-5.13.17
+~sys-kernel/vanilla-kernel-5.10.65
+~sys-kernel/vanilla-kernel-5.4.146
+
 # Mart Raudsepp <leio@gentoo.org> (15 Sep 2021)
 # New major parallel-installable release which needs special care to not
 # end up loaded into the same process together with the earlier libsoup ABI.
