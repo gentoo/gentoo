@@ -228,7 +228,6 @@ dev-perl/POE-API-Peek
 # Broken-ish, upstream unmaintained, only one un-used revdep.
 # Removal in 30 days. Bug 623674.
 dev-perl/MooseX-Types-DateTime-ButMaintained
-dev-perl/MooseX-Types-DateTimeX
 
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
