@@ -36,11 +36,16 @@
 # Alice Ferrazzi <alicef@gentoo.org> (2021-09-16)
 # Regression in POSIX CPU timers.
 # Please upgrade your gentoo-sources.
+# Adding affected vanilla-sources
 # https://www.spinics.net/lists/stable/msg499206.html
 =sys-kernel/gentoo-sources-5.14.4
 =sys-kernel/gentoo-sources-5.13.17
 =sys-kernel/gentoo-sources-5.10.65
 =sys-kernel/gentoo-sources-5.4.146
+=sys-kernel/vanilla-sources-5.14.4
+=sys-kernel/vanilla-sources-5.13.17
+=sys-kernel/vanilla-sources-5.10.65
+=sys-kernel/vanilla-sources-5.4.146
 
 # Michał Górny <mgorny@gentoo.org> (2021-09-16)
 # POSIX CPU timers are broken.  Please downgrade or wait for next bump
