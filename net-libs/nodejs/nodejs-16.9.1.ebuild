@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
@@ -145,6 +145,7 @@ src_configure() {
 		amd64) myarch="x64";;
 		arm) myarch="arm";;
 		arm64) myarch="arm64";;
+		lp64*) myarch="riscv64";;
 		ppc64) myarch="ppc64";;
 		x32) myarch="x32";;
 		x86) myarch="ia32";;
