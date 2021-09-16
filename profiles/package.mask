@@ -230,11 +230,6 @@ dev-perl/POE-API-Peek
 dev-perl/MooseX-Types-DateTime-ButMaintained
 dev-perl/MooseX-Types-DateTimeX
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-08-15)
-# Broken for years, see bug 642466. No reverse dependencies,
-# no easy fix. Removal in 30 days.
-dev-perl/Perlbal-XS-HTTPHeaders
-
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
 # ecosystem has switched to dev-util/pkgconf, which is alive. Testing
