@@ -220,10 +220,6 @@ net-analyzer/netwag
 # Removal on 2021-09-17.
 sys-fs/e4rat
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-08-15)
-# Broken since Perl 5.22, bug 662318. Removal in 30 days.
-dev-perl/POE-API-Peek
-
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
 # ecosystem has switched to dev-util/pkgconf, which is alive. Testing
