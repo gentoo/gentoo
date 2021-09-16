@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_7,3_8,3_9} )
+
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -13,19 +14,7 @@ SRC_URI="https://github.com/ament/ament_package/archive/${PV}.tar.gz -> ${P}.tar
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="${DEPEND}
-	test? (
-		dev-python/flake8[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)
-"
+BDEPEND="test? ( dev-python/flake8[${PYTHON_USEDEP}] )"
 
-python_test() {
-	py.test || die
-}
+distutils_enable_tests pytest
