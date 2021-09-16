@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 DOCS_BUILDER="mkdocs"
 
@@ -27,6 +27,6 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-python_test() {
-	epytest --ignore tests/acceptance_tests
-}
+EPYTEST_DESELECT=(
+	tests/acceptance_tests
+)
