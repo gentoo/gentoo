@@ -14,20 +14,21 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="test-full"
 
+REQUIRED_USE="test-full? ( test )"
+
+# ansible-molecule is invoked as an executable so no need for PYTHON_USEDEP
 BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/enrich[${PYTHON_USEDEP}]
 		' python3_{8,9})
+		test-full? ( app-admin/ansible-molecule )
 	)"
 
 distutils_enable_tests pytest
-# Depends on app-admin/ansible-molecule, which pulls in A LOT of other
-# ebuilds - including subprocess-tee itself. Too much trouble for a single
-# test if you ask me.
-EPYTEST_DESELECT=( "src/${PN/-/_}/test/test_func.py::test_molecule" )
 
 # dev-python/{,en}rich ebuilds do not support python3_10 yet.
 # We test fine (modulo some deprecation warnings) against 3.10 under tox, though.
@@ -35,6 +36,9 @@ python_test() {
 	if [[ ${EPYTHON} == "python3.10" ]]; then
 		ewarn "Skipping tests for ${EPYTHON} due to missing dependencies"
 		return 0
+	fi
+	if ! use test-full; then
+		local -x EPYTEST_DESELECT=( "src/${PN/-/_}/test/test_func.py::test_molecule" )
 	fi
 	distutils-r1_python_test
 }
