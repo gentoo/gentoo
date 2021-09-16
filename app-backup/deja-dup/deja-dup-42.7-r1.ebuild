@@ -31,7 +31,7 @@ DEPEND="
 	>=dev-libs/json-glib-1.2
 	dev-libs/libgpg-error
 	>=gui-libs/libhandy-1.0:1
-	>=net-libs/libsoup-2.48
+	>=net-libs/libsoup-2.48:2.4
 	>=x11-libs/gtk+-3.22:3
 	>=x11-libs/libnotify-0.7
 "
