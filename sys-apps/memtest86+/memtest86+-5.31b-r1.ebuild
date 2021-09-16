@@ -90,14 +90,10 @@ pkg_postinst() {
 		mount-boot_pkg_postinst
 
 		elog "memtest86+ has been installed in ${BOOTDIR}/"
-		elog "You may wish to update your bootloader configs by adding these lines:"
-		elog " - For grub2 just run grub-mkconfig, a configuration file is installed"
-		elog "   as /etc/grub.d/39_${PN}"
-		elog " - For grub legacy: (replace '?' with correct numbers for your boot partition)"
-		elog "    > title=${PN}"
-		elog "    > root (hd?,?)"
-		elog "    > kernel ${BOOTDIR}/memtest.bin"
-		elog " - For lilo:"
+		elog "You may wish to update your bootloader configs:"
+		elog " - For grub2 just re-run grub-mkconfig -o /boot/grub/grub.cfg, since a"
+		elog "   config generator has been installed at /etc/grub.d/39_${PN}"
+		elog " - For lilo, add the following to /etc/lilo.conf and re-run lilo:"
 		elog "    > image  = ${BOOTDIR}/memtest.bin"
 		elog "    > label  = ${PN}"
 		elog ""
