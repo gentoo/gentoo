@@ -3,13 +3,13 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Compute distance between the two texts"
 HOMEPAGE="https://github.com/life4/textdistance"
 SRC_URI="https://github.com/life4/textdistance/archive/v.${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-v.${PV}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -25,17 +25,8 @@ BDEPEND="test? (
 	dev-python/pyxDamerauLevenshtein[${PYTHON_USEDEP}]
 )"
 
-S="${WORKDIR}/${PN}-v.${PV}"
-
 distutils_enable_tests --install pytest
 
-python_prepare_all() {
-	# RuntimeError: cannot import distance.hamming
-	# these optional things are missing at the moment
-	sed -i -e 's:test_compare:_&:' \
-		-e 's:test_qval:_&:' \
-		-e 's:test_list_of_numbers:_&:' \
-		tests/test_external.py || die
-
-	distutils-r1_python_prepare_all
-}
+EPYTEST_DESELECT=(
+	tests/test_external.py
+)
