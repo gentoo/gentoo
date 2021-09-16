@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Stephan Hartmann <sultan@gentoo.org> (2021-09-16)
+# Uses a function that is not available in media-video/ffmpeg.
+>=www-client/chromium-94 system-ffmpeg
+
 # Petr Vanek <arkamar@atlas.cz> (2021-09-12)
 # rspamd-3.0 segfaults a lot with jemalloc enabled (Bug #810337)
 # It is caused by -Wl,--as-needed linker flag,
@@ -62,11 +66,6 @@ dev-libs/libffi exec-static-trampoline
 # Alfredo Tupone <tupone@gentoo.org> (2021-06-27)
 # lto does not work on dev-lang/gnat-gpl-2021
 dev-lang/gnat-gpl:10 lto
-
-# Stephan Hartmann <sultan@gentoo.org> (2021-06-26)
-# Requires unreleased media-video/ffmpeg.
->=www-client/chromium-94 system-ffmpeg
-=www-client/chromium-93.0.4577.63 system-ffmpeg
 
 # Mike Gilbert <floppym@gentoo.org> (2021-06-14)
 # Avoid running failing tests by default.
