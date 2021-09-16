@@ -10,4 +10,11 @@
 		<remote-id type="github">pycontribs/subprocess-tee</remote-id>
 		<remote-id type="pypi">subprocess-tee</remote-id>
 	</upstream>
+	<use>
+		<flag name="test-full">
+			Enable full test mode. Pulls in many additional dependencies,
+			and requires having been emerged without this flag first
+			in order to avoid a circular dependency.
+		</flag>
+	</use>
 </pkgmetadata>
