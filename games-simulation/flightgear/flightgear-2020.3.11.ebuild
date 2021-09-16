@@ -65,6 +65,7 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2020.3.8-cmake.patch"
+	"${FILESDIR}/${PN}-2020.3.11-fix-assert.patch"
 )
 
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)
