@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_7,3_8,3_9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+
+PYTHON_COMPAT=( python3_{8..10} )
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -27,26 +27,16 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/catkin_pkg[${PYTHON_USEDEP}]
 	dev-python/distro[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-	)"
-DEPEND="${RDEPEND} ${BDEPEND}
-	test? (
-		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 	)
 "
 PATCHES=( "${FILESDIR}/gentoo.patch" "${FILESDIR}/yaml_load.patch" )
 
-python_test() {
-	nosetests --with-coverage --cover-package=rospkg --with-xunit test || die
-}
+distutils_enable_tests nose
