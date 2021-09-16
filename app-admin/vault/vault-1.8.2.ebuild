@@ -1130,8 +1130,8 @@ EGO_SUM=(
 "github.com/sean-/pager v0.0.0-20180208200047-666be9bf53b5/go.mod"
 "github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529"
 "github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529/go.mod"
-"github.com/sethvargo/go-limiter v0.3.0"
-"github.com/sethvargo/go-limiter v0.3.0/go.mod"
+"github.com/sethvargo/go-limiter v0.7.1"
+"github.com/sethvargo/go-limiter v0.7.1/go.mod"
 "github.com/shirou/gopsutil v3.21.5+incompatible"
 "github.com/shirou/gopsutil v3.21.5+incompatible/go.mod"
 "github.com/shopspring/decimal v0.0.0-20180709203117-cd690d0c9e24"
@@ -1779,6 +1779,8 @@ COMMON_DEPEND="acct-group/vault
 FILECAPS=(
 	-m 755 'cap_ipc_lock=+ep' usr/bin/${PN}
 )
+
+PATCHES=( "${FILESDIR}"/${P}-go-limiter.patch )
 
 RESTRICT+=" test"
 
