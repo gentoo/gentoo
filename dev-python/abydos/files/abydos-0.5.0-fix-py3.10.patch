@@ -1,0 +1,33 @@
+--- a/abydos/distance/_synoname.py
++++ b/abydos/distance/_synoname.py
+@@ -19,7 +19,7 @@
+ Synoname.
+ """
+
+-from collections import Iterable
++from collections.abc import Iterable
+
+ from deprecation import deprecated
+
+--- a/abydos/tokenizer/_q_grams.py
++++ b/abydos/tokenizer/_q_grams.py
+@@ -19,7 +19,7 @@
+ QGrams multi-set class
+ """
+
+-from collections import Iterable
++from collections.abc import Iterable
+
+ from ._tokenizer import _Tokenizer
+
+--- a/abydos/tokenizer/_q_skipgrams.py
++++ b/abydos/tokenizer/_q_skipgrams.py
+@@ -19,7 +19,7 @@
+ Q-Skipgrams multi-set class
+ """
+
+-from collections import Iterable
++from collections.abc import Iterable
+ from itertools import combinations
+
+ from ._tokenizer import _Tokenizer
