@@ -45,6 +45,9 @@
 ~sys-kernel/vanilla-kernel-5.13.17
 ~sys-kernel/vanilla-kernel-5.10.65
 ~sys-kernel/vanilla-kernel-5.4.146
+~virtual/dist-kernel-5.13.17
+~virtual/dist-kernel-5.10.65
+~virtual/dist-kernel-5.4.146
 
 # Mart Raudsepp <leio@gentoo.org> (2021-09-15)
 # New major parallel-installable release which needs special care to not
