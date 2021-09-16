@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_7,3_8,3_9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="URDF parser for Python"
@@ -13,24 +13,16 @@ SRC_URI="https://github.com/ros/urdf_parser_py/archive/${PV}.tar.gz -> ${P}.tar.
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-DEPEND=""
-RDEPEND="${DEPEND}
+RDEPEND="
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/catkin_pkg[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
-	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
-	)"
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+	)
 "
 
-python_test() {
-	nosetests --with-coverage || die
-}
+distutils_enable_tests nose
