@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -17,6 +17,7 @@ KEYWORDS="amd64 x86"
 
 # Requires access to the internet
 RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="
 	dev-python/deprecation[${PYTHON_USEDEP}]
@@ -26,6 +27,10 @@ RDEPEND="
 BDEPEND="test? (
 	dev-python/nltk[${PYTHON_USEDEP}]
 )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-py3.10.patch"
+)
 
 distutils_enable_tests pytest
 # Extension error: You must configure the bibtex_bibfiles setting
