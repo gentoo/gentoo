@@ -11,7 +11,7 @@ HOMEPAGE="https://invent.kde.org/system/qtcurve"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ppc ppc64 ~sparc x86"
 IUSE="gtk nls plasma +qt5 test +X"
 
 REQUIRED_USE="gtk? ( X )
