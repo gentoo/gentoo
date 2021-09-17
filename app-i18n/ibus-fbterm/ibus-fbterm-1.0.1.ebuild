@@ -3,6 +3,8 @@
 
 EAPI="7"
 
+inherit autotools
+
 DESCRIPTION="IBus client for FbTerm"
 HOMEPAGE="https://github.com/fujiwarat/ibus-fbterm"
 SRC_URI="https://github.com/fujiwarat/${PN}/releases/download/${PV}/${P}.tar.gz"
@@ -17,3 +19,12 @@ RDEPEND="app-i18n/ibus
 	dev-libs/glib:2"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${PN}-man.patch )
+
+AT_M4DIR="m4"
+
+src_prepare() {
+	default
+	eautoreconf
+}
