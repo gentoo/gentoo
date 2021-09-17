@@ -4,12 +4,6 @@ Date: Thu, 31 Dec 2020 23:23:56 -0800
 Subject: [PATCH] [tests] fix test to make it insensitive to the current date
 
 Signed-off-by: Randy Barlow <randy@electronsweatshop.com>
----
- test/test_sql.sh | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/test/test_sql.sh b/test/test_sql.sh
-index c7480ecc..bbb98dce 100644
 --- a/test/test_sql.sh
 +++ b/test/test_sql.sh
 @@ -1012,13 +1012,13 @@ EOF
@@ -31,6 +25,3 @@ index c7480ecc..bbb98dce 100644
  EOF
  
  
--- 
-2.31.1
-

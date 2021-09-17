@@ -3,8 +3,8 @@
 # mvattrline: Fails on some testers boxes. Documented here: https://github.com/tstack/lnav/issues/911
 # logfile: Flaky. Fails some times and not others. i.e. Race condition
 # tui: Can hang the build
---- lnav-0.10.0/test/Makefile.am
-+++ lnav-0.10.0/test/Makefile.am
+--- a/test/Makefile.am
++++ b/test/Makefile.am
 @@ -355,14 +355,14 @@
  	test_cli.sh \
  	test_cmds.sh \
