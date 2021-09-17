@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 DESCRIPTION="IBus client for FbTerm"
 HOMEPAGE="https://github.com/fujiwarat/ibus-fbterm"
@@ -15,5 +15,5 @@ IUSE=""
 RDEPEND="app-i18n/ibus
 	app-i18n/fbterm
 	dev-libs/glib:2"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
