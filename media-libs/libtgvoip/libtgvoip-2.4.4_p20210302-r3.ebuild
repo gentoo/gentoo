@@ -18,7 +18,8 @@ KEYWORDS="amd64 ~ppc64"
 IUSE="+dsp +alsa pulseaudio"
 
 DEPEND="
-	media-libs/opus:=
+	dev-libs/openssl:=
+	media-libs/opus
 	alsa? ( media-libs/alsa-lib )
 	dsp? ( media-libs/tg_owt:= )
 	pulseaudio? ( media-sound/pulseaudio )
@@ -40,6 +41,7 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
+		# EAPI8: Remove --disable-static
 		--disable-static
 		--disable-dsp  # WebRTC is linked from tg_owt
 		$(use_with alsa)
