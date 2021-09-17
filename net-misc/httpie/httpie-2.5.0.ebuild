@@ -16,8 +16,6 @@ SRC_URI="https://github.com/httpie/httpie/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/defusedxml[${PYTHON_USEDEP}]
@@ -35,10 +33,6 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-
-python_test() {
-	pytest -v || die "Tests failed with ${EPYTHON}"
-}
 
 python_install_all() {
 	newbashcomp extras/httpie-completion.bash http
