@@ -15,22 +15,23 @@ SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${
 
 LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE="+dbus enchant +gtk +hunspell screencast +spell wayland webkit +X"
 REQUIRED_USE="
 	spell? (
 		^^ ( enchant hunspell )
 	)
-	webkit? ( gtk )
 	gtk? ( dbus )
+	webkit? ( dbus )
 "
-# Future: webkit doesn't depend on gtk anymore (version: >2.9.3)
 
 RDEPEND="
 	!net-im/telegram-desktop-bin
 	app-arch/lz4:=
+	dev-cpp/abseil-cpp:=
 	dev-cpp/glibmm:2
 	dev-libs/jemalloc:=[-lazy-lock]
+	dev-libs/openssl:=
 	dev-libs/xxhash
 	>=dev-qt/qtcore-5.15:5
 	>=dev-qt/qtgui-5.15:5[dbus?,jpeg,png,wayland?,X?]
@@ -68,12 +69,12 @@ BDEPEND="
 	>=dev-util/cmake-3.16
 	virtual/pkgconfig
 "
+# dev-libs/jemalloc:=[-lazy-lock] -> https://bugs.gentoo.org/803233
 
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/tdesktop-2.9.3-jemalloc-only-telegram.patch"
-	"${FILESDIR}/tdesktop-2.9.3-add-libdl-dependency.patch"
 )
 
 pkg_pretend() {
