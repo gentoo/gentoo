@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="A free Open Source test tool / traffic generator for the SIP protocol"
 HOMEPAGE="http://sipp.sourceforge.net/ https://github.com/SIPp/sipp/releases"
-SRC_URI="https://github.com/SIPp/sipp/releases/download/v${PV}/${PF}.tar.gz"
+SRC_URI="https://github.com/SIPp/sipp/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2 ISC"
 SLOT="0"
@@ -46,7 +46,8 @@ src_configure() {
 }
 
 src_install() {
-	default
+	cmake_src_install
+
 	insinto /usr/share/${PN}
 	use pcap && doins pcap/*.pcap
 	dodoc CHANGES.md README.md
