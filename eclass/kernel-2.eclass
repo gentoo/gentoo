@@ -599,7 +599,7 @@ if [[ ${ETYPE} == sources ]]; then
 			K_DEBLOB_AVAILABLE=0
 		fi
 		if [[ ${K_DEBLOB_AVAILABLE} == 1 ]]; then
-			PYTHON_COMPAT=( python3_{7..10} )
+			PYTHON_COMPAT=( python3_{8..10} )
 
 			inherit python-any-r1
 
