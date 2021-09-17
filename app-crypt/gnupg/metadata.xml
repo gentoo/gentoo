@@ -9,6 +9,10 @@
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
 	<use>
 		<flag name="scd-shared-access">
 		Allow concurrent access to scdaemon by multiple apps from same
