@@ -337,7 +337,7 @@ pkg_postinst() {
 		cd "${T}" || die
 		mkdir _install
 		tar xf busybox-links.tar -C _install || die
-		false | cp -vpPR _install/* "${ROOT}"/ || die "copying links for ${x} failed"
+		echo n | cp -ivpPR _install/* "${ROOT}"/ || die "copying links for ${x} failed"
 	fi
 
 	if use sep-usr ; then
