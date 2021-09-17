@@ -30,8 +30,10 @@ src_configure() {
 	local emesonargs=(
 		-Ddocdir=${PF}
 		-Deprefix="${EPREFIX}"
+		-Dshellcheck=false
 		$(meson_use test)
 	)
+
 	meson_src_configure
 }
 
