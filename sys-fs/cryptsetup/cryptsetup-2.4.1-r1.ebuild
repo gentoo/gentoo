@@ -22,11 +22,13 @@ REQUIRED_USE="^^ ( ${CRYPTO_BACKENDS//+/} )
 
 LIB_DEPEND="
 	dev-libs/json-c:=[static-libs(+)]
-	dev-libs/libgpg-error[static-libs(+)]
 	dev-libs/popt[static-libs(+)]
 	>=sys-apps/util-linux-2.31-r1[static-libs(+)]
 	argon2? ( app-crypt/argon2:=[static-libs(+)] )
-	gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
+	gcrypt? (
+		dev-libs/libgcrypt:0=[static-libs(+)]
+		dev-libs/libgpg-error[static-libs(+)]
+	)
 	nettle? ( >=dev-libs/nettle-2.4[static-libs(+)] )
 	openssl? ( dev-libs/openssl:0=[static-libs(+)] )
 	pwquality? ( dev-libs/libpwquality[static-libs(+)] )
