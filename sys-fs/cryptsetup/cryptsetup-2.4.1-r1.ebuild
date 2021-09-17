@@ -46,7 +46,10 @@ BDEPEND="
 
 S="${WORKDIR}/${P/_/-}"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.0.4-fix-static-pwquality-build.patch )
+PATCHES=(
+	"${FILESDIR}"/cryptsetup-2.0.4-fix-static-pwquality-build.patch
+	"${FILESDIR}"/cryptsetup-2.4.1-external-tokens.patch
+)
 
 pkg_setup() {
 	local CONFIG_CHECK="~DM_CRYPT ~CRYPTO ~CRYPTO_CBC ~CRYPTO_SHA256"
@@ -82,6 +85,7 @@ src_configure() {
 		$(use_enable nls)
 		$(use_enable pwquality)
 		$(use_enable reencrypt cryptsetup-reencrypt)
+		$(use_enable !static external-tokens)
 		$(use_enable static static-cryptsetup)
 		$(use_enable static-libs static)
 		$(use_enable udev)
