@@ -66,7 +66,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "${P} (unstable) development release has been installed."
+	elog "${P} development version has been installed."
 	elog "Dogecoin Core binaries have been placed in ${DOGEDIR}/bin."
 	elog "dogecoin.conf is in ${DOGEDIR}/dogecoind/dogecoin.conf.  It can be symlinked with where the .dogecoin resides, for example: 'ln -s ${DOGEDIR}/dogecoind/dogecoin.conf /root/.dogecoin/dogecoin.conf'."
 }

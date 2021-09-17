@@ -3,13 +3,13 @@
 
 EAPI=8
 
-DESCRIPTION="Dogecoin Core 1.14.4 development version of blockchain node and RPC server."
+DESCRIPTION="Dogecoin Core live development version of blockchain node and RPC server."
 HOMEPAGE="https://github.com/dogecoin"
-SRC_URI="https://github.com/${PN}/${PN}/archive/refs/heads/${PV}-dev.tar.gz -> ${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/dogecoin/dogecoin.git"
+inherit git-r3
 LICENSE="MIT"
 SLOT="0"
 DB_VER="5.3"
-KEYWORDS="~amd64 ~x86"
 IUSE="gui +src test +wallet zmq"
 REQUIRED_USE="^^ ( wallet )"
 RESTRICT="!test? ( test )"
@@ -30,7 +30,7 @@ BDEPEND="
 	sys-devel/autoconf
 	sys-devel/automake
 "
-WORKDIR_="${WORKDIR}/dogecoin-${PV}-dev"
+WORKDIR_="${WORKDIR}/dogecoin-9999"
 S=${WORKDIR_}
 
 src_configure() {
@@ -66,7 +66,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "${P} development version has been installed."
+	elog "${P} live development version has been installed."
 	elog "Dogecoin Core binaries have been placed in ${DOGEDIR}/bin."
 	elog "dogecoin.conf is in ${DOGEDIR}/dogecoind/dogecoin.conf.  It can be symlinked with where the .dogecoin resides, for example: 'ln -s ${DOGEDIR}/dogecoind/dogecoin.conf /root/.dogecoin/dogecoin.conf'."
 }
