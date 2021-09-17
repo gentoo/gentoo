@@ -31,7 +31,6 @@ RDEPEND="
 		openal? ( media-libs/openal )
 	)
 	widgets? (
-		=dev-qt/qtopengl-${QT5_PV}*
 		=dev-qt/qtwidgets-${QT5_PV}*[gles2-only=]
 		media-libs/libglvnd
 	)
@@ -39,6 +38,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	gstreamer? ( x11-base/xorg-proto )
 "
+
+PATCHES=( "${FILESDIR}/${PN}-5.15.2-no-qtopengl.patch" )
 
 src_prepare() {
 	sed -i -e '/CONFIG\s*+=/ s/optimize_full//' \
