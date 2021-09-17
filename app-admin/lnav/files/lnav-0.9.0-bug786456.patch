@@ -7,16 +7,6 @@ Subject: [PATCH] [logfile] add notes for automatic decisions and fix compile
 Fixes #864
 
 Signed-off-by: Randy Barlow <randy@electronsweatshop.com>
----
- m4/ax_cxx_compile_stdcxx.m4 | 462 +++++++++++++++++++++++++++++++++---
- src/base/result.h           |   1 +
- src/logfile.hh              |  13 +
- src/optional.hpp            |  45 +++-
- src/pcrepp/pcrepp.hh        |   1 +
- 5 files changed, 482 insertions(+), 40 deletions(-)
-
-diff --git a/m4/ax_cxx_compile_stdcxx.m4 b/m4/ax_cxx_compile_stdcxx.m4
-index 2c18e49c..9413da62 100644
 --- a/m4/ax_cxx_compile_stdcxx.m4
 +++ b/m4/ax_cxx_compile_stdcxx.m4
 @@ -1,5 +1,5 @@
