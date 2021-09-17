@@ -20,7 +20,10 @@ RDEPEND="app-i18n/ibus
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${PN}-man.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-clang.patch
+	"${FILESDIR}"/${PN}-man.patch
+)
 
 AT_M4DIR="m4"
 
