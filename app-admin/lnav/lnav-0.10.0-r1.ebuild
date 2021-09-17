@@ -16,6 +16,7 @@ IUSE="unicode"
 
 RDEPEND="
 	app-arch/bzip2:0=
+	app-arch/libarchive:=
 	>=dev-db/sqlite-3.9.0
 	dev-libs/libpcre[cxx]
 	>=net-misc/curl-7.23.0
