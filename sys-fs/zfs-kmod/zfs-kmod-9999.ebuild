@@ -22,7 +22,7 @@ else
 	ZFS_KERNEL_COMPAT="5.14"
 
 	if [[ ${PV} != *_rc* ]]; then
-		KEYWORDS="~amd64 ~arm64 ~ppc64"
+		KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
 	fi
 fi
 
