@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -m68k
 
+# James Le Cuirot <chewi@gentoo.org> (2021-09-17)
+# Ruby just crashes on startup.
+ruby
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-08-22)
 # app-arch/zstd is broken
 zstd
@@ -41,58 +45,10 @@ elogind
 # Unmask as this profile is big endian.
 -big-endian
 
-hardened
-
 # Paul de Vrieze <pauldv@gentoo.org>
 # There is no java in this profile (if there is it must be available). Without
 # this repoman will fail on apps like sys-libs/db
 java
-
-# see email to gentoo-dev with subject "use.mask and PHP5's crazy IUSE"
-# Dated Sat, 31 Jul 2004 14:49:28 -0700, from robbat2@gentoo.org
-# all of these are binary-only, and not presently available on this
-# architecture.
-php
-djbfft
-qdbm
-
-emacs
-xemacs
-
-gnome-keyring
-afs
-tcl
-tk
-ldap
-slang
-diet
-gtk
-mono
-cairo
-svg
-X
-mysql
-samba
-dbus
-xpm
-ruby
-ocaml
-guile
-lua
-djvu
-nss
-diet
-emf
-R
-octave
-bluetooth
-lqr
-policykit
-latex
-nettle
-systemd
-tk
-clang
 
 # USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
 # Bug #184563, (2007-09-18)
@@ -116,3 +72,41 @@ unwind
 
 # sys-libs/libseccomp has not been ported to this arch yet #524148
 seccomp
+
+afs
+bluetooth
+cairo
+clang
+dbus
+diet
+djbfft
+djvu
+emacs
+emf
+gnome-keyring
+gtk
+guile
+hardened
+latex
+ldap
+lqr
+lua
+mono
+mysql
+nettle
+nss
+ocaml
+octave
+php
+policykit
+qdbm
+R
+samba
+slang
+svg
+systemd
+tcl
+tk
+X
+xemacs
+xpm
