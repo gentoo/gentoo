@@ -5,7 +5,6 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{8,9,10} )
 DISTUTILS_SINGLE_IMPL=1
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 vcs-snapshot
 
