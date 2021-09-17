@@ -1,0 +1,48 @@
+--- a/backend/fbio.c
++++ b/backend/fbio.c
+@@ -204,7 +204,7 @@
+ int
+ fb_io_get_fd (FbIo *io)
+ {
+-    g_return_if_fail (FB_IS_IO (io));
++    g_return_val_if_fail (FB_IS_IO (io), -1);
+     return io->priv->fd;
+ }
+ 
+--- a/backend/fbshell.c
++++ b/backend/fbshell.c
+@@ -17,11 +17,11 @@
+  * You should have received a copy of the GNU General Public License
+  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+-#include <glib.h>
+-
+-#define _XOPEN_SOURCE
++#define _XOPEN_SOURCE 600
+ #define __USE_XOPEN
+ 
++#include <glib.h>
++
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <pty.h>
+--- a/backend/fbshellman.c
++++ b/backend/fbshellman.c
+@@ -81,7 +81,7 @@
+     FbShellManagerPrivate *priv;
+     int index, temp, i;
+ 
+-    g_return_if_fail (FB_IS_SHELL_MANAGER (shell_manager));
++    g_return_val_if_fail (FB_IS_SHELL_MANAGER (shell_manager), NR_SHELLS);
+ 
+ #define STEP() do { \
+     if (forward) temp++; \
+@@ -267,7 +267,7 @@
+ FbShell *
+ fb_shell_manager_active_shell (FbShellManager *shell_manager)
+ {
+-    g_return_if_fail (FB_IS_SHELL_MANAGER (shell_manager));
++    g_return_val_if_fail (FB_IS_SHELL_MANAGER (shell_manager), NULL);
+ 
+     return shell_manager->priv->active_shell;
+ }
