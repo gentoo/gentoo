@@ -6,7 +6,6 @@
 		<name>Alice Ferrazzi</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">mkuoppal/tiobench</remote-id>
-		<remote-id type="sourceforge">tiobench</remote-id>
+		<remote-id type="github">aliceinwire/tiobench</remote-id>
 	</upstream>
 </pkgmetadata>
