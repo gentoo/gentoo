@@ -74,6 +74,11 @@ DEPEND="${CDEPEND}
 		opengl? ( >=media-libs/mesa-10.3.4-r1 )
 	)"
 
+PATCHES=(
+	# Restore Java viewer
+	"${FILESDIR}"/${PN}-1.11.0-install-java-viewer.patch
+)
+
 src_prepare() {
 	if use server; then
 		cp -r "${WORKDIR}"/xorg-server-${XSERVER_VERSION}/. unix/xserver || die
