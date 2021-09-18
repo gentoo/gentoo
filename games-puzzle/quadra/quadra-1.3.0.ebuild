@@ -20,6 +20,10 @@ RDEPEND="
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-clang.patch
+)
+
 src_prepare() {
 	default
 	sed -i -e "/^datagamesdir/s|\/games|\/${PN}|" Makefile.am || die
