@@ -48,6 +48,9 @@ _systemd_get_dir() {
 	[[ ${#} -eq 2 ]] || die "Usage: ${FUNCNAME} <variable-name> <fallback-directory>"
 	local variable=${1} fallback=${2} d
 
+	# https://github.com/pkgconf/pkgconf/issues/205
+	local -x PKG_CONFIG_FDO_SYSROOT_RULES=1
+
 	if $(tc-getPKG_CONFIG) --exists systemd; then
 		d=$($(tc-getPKG_CONFIG) --variable="${variable}" systemd) || die
 		d=${d#${EPREFIX}}
