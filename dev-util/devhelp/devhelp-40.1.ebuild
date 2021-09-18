@@ -18,7 +18,7 @@ REQUIRED_USE="gedit? ( ${PYTHON_REQUIRED_USE} )"
 DEPEND="
 	>=dev-libs/glib-2.64:2
 	>=x11-libs/gtk+-3.22:3[introspection?]
-	>=net-libs/webkit-gtk-2.24:4[introspection?]
+	>=net-libs/webkit-gtk-2.26:4[introspection?]
 	>=gui-libs/amtk-5.0:5
 	gnome-base/gsettings-desktop-schemas
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
