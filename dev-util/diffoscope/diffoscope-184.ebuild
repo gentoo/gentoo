@@ -25,13 +25,10 @@ RESTRICT="!test? ( test )"
 # pull in optional tools for tests:
 # img2txt: bug #797688
 # docx2txt: bug #797688
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (
+BDEPEND="test? (
 		app-text/docx2txt
 		media-libs/libcaca
-	)
-"
+	)"
 RDEPEND="dev-python/python-magic[${PYTHON_USEDEP}]
 	dev-python/libarchive-c[${PYTHON_USEDEP}]
 	dev-python/distro[${PYTHON_USEDEP}]
