@@ -135,6 +135,7 @@ multilib_src_configure() {
 		--with-system-pid-file="${EPREFIX}${rundir}"/dbus.pid
 		--with-system-socket="${EPREFIX}${rundir}"/dbus/system_bus_socket
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
+		--with-systemduserunitdir="$(systemd_get_userunitdir)"
 		--with-dbus-user=messagebus
 		$(use_with X x)
 	)
