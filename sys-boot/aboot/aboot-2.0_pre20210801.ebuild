@@ -9,7 +9,9 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/mattst88/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/mattst88/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	COMMIT_ID="dde7f7b85f7631668f1da7c0b0ecf7ddbbde004e"
+	SRC_URI="https://github.com/mattst88/${PN}/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${COMMIT_ID}"
 	KEYWORDS="-* ~alpha"
 fi
 
