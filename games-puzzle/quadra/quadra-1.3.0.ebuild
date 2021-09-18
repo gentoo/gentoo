@@ -28,5 +28,6 @@ src_prepare() {
 
 src_install() {
 	default
+	dodoc NEWS.md
 	make_desktop_entry ${PN} ${PN^}
 }
