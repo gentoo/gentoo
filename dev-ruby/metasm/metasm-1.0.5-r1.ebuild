@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
@@ -10,26 +11,29 @@ RUBY_FAKEGEM_EXTRAINSTALL="metasm metasm.rb misc samples"
 
 inherit ruby-fakegem
 
-DESCRIPTION="cross-architecture assembler, disassembler, linker, and debugger"
+DESCRIPTION="Cross-architecture assembler, disassembler, linker, and debugger"
 HOMEPAGE="https://metasm.cr0.org/"
 
 LICENSE="LGPL-2.1"
-SLOT="${PV}"
-IUSE=""
-
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
+RDEPEND="!dev-ruby/metasm:1.0.5
+	!dev-ruby/metasm:1.0.4
+	!dev-ruby/metasm:1.0.2"
+DEPEND="${RDEPEND}"
+
 all_ruby_prepare() {
-	mkdir bin
-	ln -s ../samples/disassemble.rb ./bin/disassemble
+	mkdir bin || die
+	ln -s ../samples/disassemble.rb ./bin/disassemble || die
+}
+
+each_ruby_test() {
+	${RUBY} -Ilib:. -e "Dir['tests/*.rb'].each{|f| require f}" || die
 }
 
 all_ruby_install() {
 	all_fakegem_install
 
 	ruby_fakegem_binwrapper disassemble
-}
-
-each_ruby_test() {
-	${RUBY} -Ilib:. -e "Dir['tests/*.rb'].each{|f| require f}" || die
 }
