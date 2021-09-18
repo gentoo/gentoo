@@ -1,0 +1,107 @@
+https://github.com/curl/curl/commit/beb8990d934a01acf103871e463d4e61afc9ded2
+
+From: Daniel Stenberg <daniel@haxx.se>
+Date: Fri, 17 Sep 2021 16:31:25 +0200
+Subject: [PATCH] http: fix the broken >3 digit response code detection
+
+When the "reason phrase" in the HTTP status line starts with a digit,
+that was treated as the forth response code digit and curl would claim
+the response to be non-compliant.
+
+Added test 1466 to verify this case.
+
+Regression brought by 5dc594e44f73b17
+Reported-by: Glenn de boer
+Fixes #7738
+Closes #7739
+--- a/lib/http.c
++++ b/lib/http.c
+@@ -4232,9 +4232,9 @@ CURLcode Curl_http_readwrite_headers(struct Curl_easy *data,
+         char separator;
+         char twoorthree[2];
+         int httpversion = 0;
+-        int digit4 = -1; /* should remain untouched to be good */
++        char digit4 = 0;
+         nc = sscanf(HEADER1,
+-                    " HTTP/%1d.%1d%c%3d%1d",
++                    " HTTP/%1d.%1d%c%3d%c",
+                     &httpversion_major,
+                     &httpversion,
+                     &separator,
+@@ -4250,13 +4250,13 @@ CURLcode Curl_http_readwrite_headers(struct Curl_easy *data,
+ 
+         /* There can only be a 4th response code digit stored in 'digit4' if
+            all the other fields were parsed and stored first, so nc is 5 when
+-           digit4 is not -1 */
+-        else if(digit4 != -1) {
++           digit4 a digit */
++        else if(ISDIGIT(digit4)) {
+           failf(data, "Unsupported response code in HTTP response");
+           return CURLE_UNSUPPORTED_PROTOCOL;
+         }
+ 
+-        if((nc == 4) && (' ' == separator)) {
++        if((nc >= 4) && (' ' == separator)) {
+           httpversion += 10 * httpversion_major;
+           switch(httpversion) {
+           case 10:
+--- a/tests/data/Makefile.inc
++++ b/tests/data/Makefile.inc
+@@ -182,7 +182,7 @@ test1432 test1433 test1434 test1435 test1436 test1437 test1438 test1439 \
+ test1440 test1441 test1442 test1443 test1444 test1445 test1446 test1447 \
+ test1448 test1449 test1450 test1451 test1452 test1453 test1454 test1455 \
+ test1456 test1457 test1458 test1459 test1460 test1461 test1462 test1463 \
+-test1464 test1465 \
++test1464 test1465 test1466 \
+ \
+ test1500 test1501 test1502 test1503 test1504 test1505 test1506 test1507 \
+ test1508 test1509 test1510 test1511 test1512 test1513 test1514 test1515 \
+--- /dev/null
++++ b/tests/data/test1466
+@@ -0,0 +1,45 @@
++<testcase>
++<info>
++<keywords>
++HTTP
++HTTP GET
++</keywords>
++</info>
++
++<reply>
++<data>
++HTTP/1.1 405 405
++Content-Length: 6
++Connection: close
++
++-foo-
++</data>
++</reply>
++
++#
++# Client-side
++<client>
++<server>
++http
++</server>
++
++<name>
++HTTP GET with 3-digit response and only digits in reason
++ </name>
++ <command>
++http://%HOSTIP:%HTTPPORT/%TESTNUMBER
++</command>
++</client>
++
++#
++# Verify data after the test has been "shot"
++<verify>
++<protocol>
++GET /%TESTNUMBER HTTP/1.1
++Host: %HOSTIP:%HTTPPORT
++User-Agent: curl/%VERSION
++Accept: */*
++
++</protocol>
++</verify>
++</testcase>
+
