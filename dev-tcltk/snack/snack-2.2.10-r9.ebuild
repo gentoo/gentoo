@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_USE_SETUPTOOLS=no
 DISTUTILS_OPTIONAL=yes
 
-inherit autotools distutils-r1 multilib toolchain-funcs virtualx
+inherit distutils-r1 toolchain-funcs virtualx
 
 DESCRIPTION="The Snack Sound Toolkit (Tcl)"
 HOMEPAGE="http://www.speech.kth.se/snack/"
