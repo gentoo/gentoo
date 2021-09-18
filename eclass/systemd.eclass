@@ -145,6 +145,24 @@ systemd_get_systemgeneratordir() {
 	echo "${EPREFIX}$(_systemd_get_systemgeneratordir)"
 }
 
+# @FUNCTION: _systemd_get_systempresetdir
+# @INTERNAL
+# @DESCRIPTION:
+# Get unprefixed systempresetdir.
+_systemd_get_systempresetdir() {
+	_systemd_get_dir systemdsystempresetdir /lib/systemd/system-preset
+}
+
+# @FUNCTION: systemd_get_systempresetdir
+# @DESCRIPTION:
+# Output the path for the systemd system preset directory (not including
+# ${D}). This function always succeeds, even if systemd is not installed.
+systemd_get_systempresetdir() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	echo "${EPREFIX}$(_systemd_get_systempresetdir)"
+}
+
 # @FUNCTION: systemd_dounit
 # @USAGE: <unit>...
 # @DESCRIPTION:
