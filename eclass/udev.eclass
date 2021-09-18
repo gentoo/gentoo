@@ -49,6 +49,8 @@ fi
 # @DESCRIPTION:
 # Get unprefixed udevdir.
 _udev_get_udevdir() {
+	# https://github.com/pkgconf/pkgconf/issues/205
+	local -x PKG_CONFIG_FDO_SYSROOT_RULES=1
 	if $($(tc-getPKG_CONFIG) --exists udev); then
 		local udevdir="$($(tc-getPKG_CONFIG) --variable=udevdir udev)"
 		echo "${udevdir#${EPREFIX%/}}"
