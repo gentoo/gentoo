@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-autoar"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE="gtk gtk-doc +introspection test vala"
-REQUIRED_USE="vala? ( introspection )"
+REQUIRED_USE="vala? ( introspection ) gtk-doc? ( gtk )"
 RESTRICT="!test? ( test )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
@@ -27,6 +27,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-util/meson-0.58
 	virtual/pkgconfig
+	gtk-doc? ( dev-util/gtk-doc
+		app-text/docbook-xml-dtd:4.3 )
 	vala? ( $(vala_depend) )
 "
 
