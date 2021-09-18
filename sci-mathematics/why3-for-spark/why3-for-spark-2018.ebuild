@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit autotools
-
 MYP=${PN}-gpl-${PV}-src
 
 DESCRIPTION="Platform for deductive program verification"
