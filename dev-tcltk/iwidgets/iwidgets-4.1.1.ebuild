@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit virtualx multilib
+inherit virtualx
 
 BASE_URI_ITCLTK="mirror://sourceforge/incrtcl/%5BIncr%20Tcl_Tk%5D-4-source"
 ITCL_VER=4.1.1
