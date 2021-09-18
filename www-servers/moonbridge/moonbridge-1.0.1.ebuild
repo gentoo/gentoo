@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{2,3} )
 
-inherit lua-single
+inherit lua-single toolchain-funcs
 
 MYP=${PN}-v${PV}
 
