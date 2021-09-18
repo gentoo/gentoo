@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-09-18)
+# sys-devel/automake version 1.11 is EOL and is only useful for testing
+# old de-ANSI-fication/ansi2knr/AM_C_PROTOTYPES code. Please uninstall.
+sys-devel/automake:1.11
+
 # Alice Ferrazzi <alicef@gentoo.org> (2021-09-16)
 # Regression in POSIX CPU timers.
 # Please upgrade your gentoo-sources.
@@ -485,21 +490,6 @@ app-office/texmacs
 # Java 11 then install openjdk-(jdk|jre)-bin directly.
 virtual/jdk:11
 virtual/jre:11
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-10-18)
-# sys-devel/automake versions 1.4, 1.5, 1.6, 1.7, 1.8
-# have known security vulnerabilities, are broken with
-# recent Perl (>=5.26.0), and are not used by anything in
-# the Gentoo repository. Please uninstall.
-sys-devel/automake:1.4
-sys-devel/automake:1.5
-sys-devel/automake:1.6
-sys-devel/automake:1.7
-sys-devel/automake:1.8
-sys-devel/automake:1.9
-sys-devel/automake:1.10
-sys-devel/automake:1.11
-sys-devel/automake:1.12
 
 # Nicolas Bock <nicolasbock@gentoo.org> (2017-10-31)
 # There are multiple unresolved upstream issues with >=jabref-bin-4.0 (#636036).
