@@ -10,7 +10,8 @@ inherit db-use distutils-r1
 
 DESCRIPTION="Python bindings for Berkeley DB"
 HOMEPAGE="https://www.jcea.es/programacion/pybsddb.htm https://pypi.org/project/bsddb3/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+	https://dev.gentoo.org/~arthurzam/patches/dev-python/${P}-fix-py3.10.patch.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -29,7 +30,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-fix-py3.10.patch"
+	"${WORKDIR}/${P}-fix-py3.10.patch"
 )
 
 python_prepare_all() {
