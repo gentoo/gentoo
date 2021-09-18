@@ -223,7 +223,7 @@ src_install() {
 
 	use pam && { rm -rv "${ED}/unwanted_files" || die ; }
 
-	use test-suite || { rm -r "${ED}/usr/share/zfs" || die ; }
+	use test-suite || { rm -r "${ED}"/usr/share/zfs/{test-runner,zfs-tests,runfiles,*sh} || die ; }
 
 	find "${ED}" -name '*.la' -delete || die
 
