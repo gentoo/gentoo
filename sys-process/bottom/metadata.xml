@@ -16,4 +16,7 @@
 	<upstream>
 		<remote-id type="github">ClementTsang/bottom</remote-id>
 	</upstream>
+	<use>
+		<flag name='battery'>Include support for laptop battery information.</flag>
+	</use>
 </pkgmetadata>
