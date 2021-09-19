@@ -8,6 +8,10 @@ EGL_NO_PLATFORM_SPECIFIC_TYPES, EGLNativeWindowType is defined as an
 opaque pointer, i.e. void*.
 
 BUG: 440372
+
+* asturm 2021-09-21: Merged with upstream commits:
+38e24ecd6416a975db0989c21b70d6a4cc242f35 "Fix build with 32-bit"
+e26ea6bf2313c021db7e5ca5454cd8b1e2e2037f "Fix build on 32bit platforms"
 ---
  src/plugins/platforms/x11/common/eglonxbackend.cpp | 13 +++++++------
  1 file changed, 7 insertions(+), 6 deletions(-)
@@ -21,7 +25,7 @@ index c62ec170d..d2900c7c3 100644
      }
  
 +    // Window is 64 bits on a 64-bit architecture whereas xcb_window_t is always 32 bits.
-+    unsigned long nativeWindow = window;
++    Window nativeWindow = window;
 +
      EGLSurface surface = EGL_NO_SURFACE;
      if (havePlatformBase()) {
