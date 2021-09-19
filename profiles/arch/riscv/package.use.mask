@@ -6,16 +6,31 @@
 media-libs/devil nvtt
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-09-13)
-# dev-vcs/darcs depends on haskell
+# These depend on Haskell:
+#  - dev-vcs/darcs
 app-portage/layman darcs
+#  - app-text/pandoc
+sys-cluster/ceph pmdk
 
 # Sam James <sam@gentoo.org> (2021-09-12)
+# Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # dev-ruby/asciidoctor isn't keyworded here
+dev-libs/nanomsg doc
 dev-util/ccache doc
 
+# Alex Fan <alexfanqi@yahoo.com> (2021-09-15)
 # Marek Szuba <marecki@gentoo.org> (2021-09-07)
-# firefox needs nodejs to build, no firefox-bin for riscv
+# All of these require net-libs/nodejs, which now builds on riscv
+# but fails tests (Bug #782913).
+#  - www-client/firefox (bdepend)
 dev-ruby/capybara test
+#  - dev-qt/qtwebengine (bdepend)
+dev-python/ipython qt5
+kde-apps/marble webengine
+kde-plasma/kdeplasma-addons webengine
+kde-plasma/libksysguard webengine
+
+# Marek Szuba <marecki@gentoo.org> (2021-09-07)
 # net-misc/memcached not keyworded yet due to failing tests (Bug #811477)
 dev-ruby/dalli test
 
@@ -58,15 +73,9 @@ gnome-base/gnome-control-center v4l
 gnome-base/gnome-shell telepathy browser-extension
 gnome-base/gdm accessibility
 
-# Alex Fan <alexfanqi@yahoo.com> (2021-09-15)
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
-# dev-qt/qtwebengine requires nodejs to build.
-kde-plasma/kdeplasma-addons webengine
-kde-plasma/libksysguard webengine
 # dependencies not keyworded/tested
-kde-apps/marble webengine geolocation gps
 kde-plasma/powerdevil wireless
-kde-plasma/plasma-desktop emoji
 kde-plasma/plasma-meta accessibility grub plymouth pulseaudio
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-17)
@@ -81,12 +90,6 @@ dev-ruby/webmock test
 # Currently requires dev-lang/spidermonkey:68, which explicitly
 # does not support riscv. Hopefully temporary, see Bug #807772.
 net-libs/libproxy spidermonkey
-
-# Alex Fan <alexfanqi@yahoo.com> (2021-08-09)
-# ipython[qt5] depends on qtconsole, which depends on QtPy.
-# QtPy cannot be tested atm because QtPy[test] has an indirect hard
-# dependency on dev-qt/qtwebengine, which requires nodejs to build.
-dev-python/ipython qt5
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-14)
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-05)
@@ -140,21 +143,12 @@ mail-mta/courier fax
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # Dependencies not keyworded here yet:
-#  - dev-ruby/asciidoctor
-dev-libs/nanomsg doc
 #  - dev-cpp/glog, sci-libs/vtk
 media-libs/opencv contribsfm glog vtk
 #  - dev-util/aruba
 sys-block/thin-provisioning-tools test
-#  - app-text/pandoc (-> dev-haskell/*)
-sys-cluster/ceph pmdk
 #  - sys-fabric/ofed
 sys-cluster/slurm ofed
-
-# Yixun Lan <dlan@gentoo.org> (2021-05-24)
-# Dependencies not keyworded, not tested
-virtual/notification-daemon gnome
-net-libs/gnome-online-accounts gnome
 
 # This doesn't work for (any) riscv yet.
 dev-libs/libpcre2 jit
