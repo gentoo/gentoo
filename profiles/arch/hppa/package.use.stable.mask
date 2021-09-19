@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-09-19)
+# Non-stable deps.
+dev-python/matplotlib cairo gtk3
+
 # Michał Górny <mgorny@gentoo.org> (2021-09-18)
 # Prepare for stabilizing a minimal xorg-server, for Xvfb.
 media-libs/libglvnd -X
