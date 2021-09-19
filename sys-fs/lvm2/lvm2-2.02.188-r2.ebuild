@@ -3,7 +3,7 @@
 
 EAPI=7
 TMPFILES_OPTIONAL=1
-inherit autotools linux-info multilib systemd toolchain-funcs tmpfiles udev flag-o-matic
+inherit autotools linux-info systemd toolchain-funcs tmpfiles udev flag-o-matic
 
 DESCRIPTION="User-land utilities for LVM2 (device-mapper) software"
 HOMEPAGE="https://sourceware.org/lvm2/"
