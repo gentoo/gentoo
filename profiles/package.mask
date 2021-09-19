@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2021-09-19)
+# Mask gnat-gpl-2018 and gnat-gpl-2019. Please switch
+# to a fresher gnat-gpl branch.
+<dev-lang/gnat-gpl-2019
+
 # Sam James <sam@gentoo.org> (2021-09-18)
 # Drops an unstable API which some projects were using
 # including Chromium. Masked to avoid runtime breakage.
