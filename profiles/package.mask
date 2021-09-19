@@ -251,13 +251,6 @@ net-vpn/ipsec-tools
 # Removal on 2021-09-19.  Bug #809239.
 dev-python/pydns
 
-# Sam James <sam@gentoo.org> (2021-08-18)
-# Fails to build with glibc-2.34. End of maintenance
-# upstream was declared in 2007. Several other serious
-# bugs open. Removal on 2021-09-19.
-# bug #711088, bug #775944, bug #790680, bug #806953.
-net-analyzer/netwox
-
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
 # ecosystem has switched to dev-util/pkgconf, which is alive. Testing
