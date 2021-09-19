@@ -80,7 +80,6 @@ seccomp
 afs
 avif
 bluetooth
-cairo
 clang
 cups
 dbus
@@ -112,7 +111,6 @@ qdbm
 R
 samba
 slang
-svg
 systemd
 tcl
 tk
