@@ -8,6 +8,8 @@ PYTHON_COMPAT=( python3_{8,9,10} )
 # check this on updates
 LLVM_MAX_SLOT=13
 
+CMAKE_REMOVE_MODULES_LIST=()
+
 inherit cmake llvm toolchain-funcs python-single-r1
 
 DESCRIPTION="Advanced shading language for production GI renderers"
