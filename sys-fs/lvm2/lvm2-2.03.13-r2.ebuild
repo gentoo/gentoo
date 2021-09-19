@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+TMPFILES_OPTIONAL=1
 inherit autotools linux-info multilib systemd toolchain-funcs tmpfiles udev flag-o-matic
 
 DESCRIPTION="User-land utilities for LVM2 (device-mapper) software"
@@ -36,6 +37,7 @@ RDEPEND="${DEPEND_COMMON}
 	!!sys-fs/lvm-user
 	>=sys-apps/util-linux-2.16
 	lvm2create_initrd? ( sys-apps/makedev )
+	!device-mapper-only? ( virtual/tmpfiles )
 	thin? ( >=sys-block/thin-provisioning-tools-0.3.0 )"
 # note: thin- 0.3.0 is required to avoid --disable-thin_check_needs_check
 DEPEND="${DEPEND_COMMON}
@@ -253,7 +255,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	tmpfiles_process lvm2.conf
+	if ! use device-mapper-only; then
+		tmpfiles_process lvm2.conf
+	fi
 
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		# This is a new installation
