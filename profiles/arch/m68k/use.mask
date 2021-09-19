@@ -78,19 +78,24 @@ unwind
 seccomp
 
 afs
+avif
 bluetooth
 cairo
 clang
+cups
 dbus
+devil
 diet
 djbfft
 djvu
 emacs
 emf
 gnome-keyring
+graphite
 gtk
 guile
 hardened
+heif
 latex
 ldap
 lqr
