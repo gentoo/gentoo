@@ -35,6 +35,7 @@ RDEPEND="sys-libs/readline:0=
 	sndfile? ( media-libs/libsndfile:= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+BDEPEND="sys-apps/ed"
 PATCHES=(
 	"${FILESDIR}"/${P}-ldflags.patch
 	"${FILESDIR}"/${PN}-2.9.1-tinfo.patch
@@ -47,10 +48,9 @@ pkg_setup() {
 src_prepare() {
 	default
 
-#	if use python ; then
-#		sed -i -e "s:\$(ecasoundc_libs):\0 $(python_get_library -l):" \
-#			pyecasound/Makefile.am || die "sed failed"
-#	fi
+	# https://bugs.gentoo.org/787620
+	printf '%s\n' H '/^EXTRACXXFLAGS="-std=c++98"$/s/98/11/' w q |
+		ed -s configure.ac || die "Couldn't patch EXTRACXXFLAGS in configure.ac"
 
 	eautoreconf
 }
