@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="bs2b calf rnnoise rubberband webrtc zamaudio"
+IUSE="bs2b calf +doc rnnoise rubberband webrtc zamaudio"
 
 DEPEND=">=dev-libs/boost-1.72:=
 	>=dev-cpp/glibmm-2.56.0:2
@@ -39,7 +39,6 @@ DEPEND=">=dev-libs/boost-1.72:=
 	rnnoise? ( media-libs/rnnoise )"
 RDEPEND="!media-sound/easyeffects
 	${DEPEND}
-	gnome-extra/yelp
 	>=media-libs/gst-plugins-good-1.12.5:1.0
 	>=media-libs/lsp-plugins-1.1.24[lv2]
 	>=media-plugins/gst-plugins-ladspa-1.12.5:1.0
@@ -47,6 +46,7 @@ RDEPEND="!media-sound/easyeffects
 	>=media-plugins/gst-plugins-pulse-1.12.5:1.0
 	sys-apps/dbus
 	calf? ( >=media-plugins/calf-0.90.1[lv2] )
+	doc? ( gnome-extra/yelp )
 	rubberband? ( media-libs/rubberband[ladspa] )
 	webrtc? ( media-plugins/gst-plugins-webrtc )
 	zamaudio? ( media-plugins/zam-plugins )"
