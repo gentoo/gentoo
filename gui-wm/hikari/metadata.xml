@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <longdescription>
-        hikari is a minimalistic wayland window manager
-        based on wlroots trying inspired by the simplicity
-        of CWM in the X days. It aims stay out of your way
-        and focus more on the task than the windows.
-    </longdescription>
     <maintainer type="person" proxied="yes">
         <email>gentoo@aisha.cc</email>
         <name>Aisha Tammy</name>
@@ -15,7 +9,14 @@
         <email>proxy-maint@gentoo.org</email>
         <name>Proxy Maintainers</name>
     </maintainer>
+    <longdescription>
+        Hikari is a minimalistic wayland window manager
+        based on wlroots trying inspired by the simplicity
+        of CWM in the X days. It aims stay out of your way
+        and focus more on the task than the windows.
+    </longdescription>
     <use>
+        <flag name="X">Enable support for X11 applications (XWayland)</flag>
         <flag name="gamma">add gamma control for redshift</flag>
         <flag name="layershell">add support for wayland apps using layer shell</flag>
         <flag name="screencopy">add support for screen grabbing</flag>
