@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Python toolkit for stream-based generation of output for the web"
@@ -21,6 +21,10 @@ BDEPEND="
 	test? ( dev-python/six[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests setup.py
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-py3.10.patch"
+)
 
 python_install_all() {
 	if use doc; then
