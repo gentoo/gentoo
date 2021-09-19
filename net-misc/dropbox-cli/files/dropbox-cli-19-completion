@@ -1,2 +1,0 @@
-# dropbox-cli completion
-complete -W 'autostart exclude filestatus help lansync ls proxy puburl running sharelink start status stop throttle update' dropbox-cli

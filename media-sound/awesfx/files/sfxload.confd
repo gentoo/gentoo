@@ -1,7 +1,0 @@
-# /etc/conf.d/sfxload
-
-# sfxload or asfxload
-sfxload="asfxload"
-
-# Example location of sound bank for sfxload init script
-sfxbank="/usr/share/sounds/sf2/foobar.bin"

@@ -1,9 +1,0 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 5d0092f..d0f45b5 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -10,4 +10,3 @@ file(GLOB_RECURSE SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/*.c")
- add_library(zstd-jni-${NATIVE_VERSION} SHARED ${SOURCES})
- add_definitions("-DZSTD_MULTITHREAD=1")
- add_definitions("-DZSTD_LEGACY_SUPPORT=4")
--add_definitions("-Oz")

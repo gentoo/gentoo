@@ -1,6 +1,0 @@
-# Copyright 1999-2008 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License v2
-
-# base generic embedded profile
-
-*>=sys-apps/busybox-0.60.5-r1

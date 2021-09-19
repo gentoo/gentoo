@@ -1,5 +1,0 @@
---- a/src/haskell/Graphics/UI/WXCore/WxcTypes.hs
-+++ b/src/haskell/Graphics/UI/WXCore/WxcTypes.hs
-@@ -125 +125 @@ import Data.Ix
--import Foreign.C
-+import Foreign.C hiding (CBool)

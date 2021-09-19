@@ -1,5 +1,0 @@
-/var/log/cluster/corosync.log {
-        missingok
-        notifempty
-        sharedscripts
-}

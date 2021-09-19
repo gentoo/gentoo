@@ -1,8 +1,0 @@
-/var/log/auth.log /var/log/daemon.log /var/log/debug /var/log/kern.log /var/log/lpr.log /var/log/mail.err /var/log/mail.info /var/log/mail.log /var/log/mail.warn /var/log/messages /var/log/news/news.crit /var/log/news/news.err /var/log/news/news.notice /var/log/syslog /var/log/user.log {
-  create 640 root root
-  sharedscripts
-  missingok
-  postrotate
-    /etc/init.d/sysklogd -q reload
-  endscript
-}

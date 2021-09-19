@@ -1,4 +1,0 @@
-MYDNS_CONFFILE="/etc/mydns.conf"
-
-#MYDNS_EXTRA_OPTS="--verbose"
-MYDNS_EXTRA_OPTS=""

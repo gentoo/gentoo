@@ -1,9 +1,0 @@
-[Unit]
-Description=Dell laptop thermal monitoring
-ConditionPathExists=/proc/i8k
-
-[Service]
-ExecStart=/usr/bin/i8kmon -d
-
-[Install]
-WantedBy=multi-user.target

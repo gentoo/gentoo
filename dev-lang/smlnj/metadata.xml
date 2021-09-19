@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-<!-- maintainer-needed -->
-	<use>
-		<flag name="pax-kernel">Enable if the user plans to run the
-		package under a pax enabled hardened kernel</flag>
-	</use>
-</pkgmetadata>

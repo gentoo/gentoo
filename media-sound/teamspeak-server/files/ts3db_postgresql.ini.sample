@@ -1,7 +1,0 @@
-[config]
-host=localhost
-port=5432
-username=teamspeak
-password=teamspeak
-database=teamspeak
-socket=

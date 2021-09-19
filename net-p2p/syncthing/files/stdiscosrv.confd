@@ -1,3 +1,0 @@
-# Options to pass to discosrv
-# see /usr/libexec/syncthing/stdiscosrv --help for more information
-SD_OPTS=

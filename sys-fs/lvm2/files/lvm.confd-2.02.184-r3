@@ -1,9 +1,0 @@
-# If LVM is built with udev, you must ensure udev is running first!
-# Otherwise it will hang
-rc_need="udev"
-
-# LVM should normally only be started after mdraid is available
-# this is because LVM physical volumes are very often MD devices.
-rc_after="mdraid"
-
-# vim: ft=gentoo-conf-d

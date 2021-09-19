@@ -128,7 +128,7 @@ src_configure() {
 	export CROSS_COMPILE=${CROSS_COMPILE-${CHOST}-}
 
 	local myconf=(
-		HOSTCC="$(tc-getBUILD_CC)"
+		CC="${CC}"
 		--bindir="${EPREFIX}/bin"
 		--sbindir="${EPREFIX}/sbin"
 		--with-config=kernel
@@ -144,7 +144,7 @@ src_compile() {
 	set_arch_to_kernel
 
 	myemakeargs=(
-		HOSTCC="$(tc-getBUILD_CC)"
+		CC="${CC}"
 		V=1
 	)
 

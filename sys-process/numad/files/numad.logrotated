@@ -1,5 +1,0 @@
-/var/log/numad.log {
-	copytruncate
-	missingok
-	notifempty
-}

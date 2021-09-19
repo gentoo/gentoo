@@ -1,3 +1,0 @@
-/var/log/k3s/*.log {
-	copytruncate
-}

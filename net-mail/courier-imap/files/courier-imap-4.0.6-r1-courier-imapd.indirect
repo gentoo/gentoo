@@ -1,3 +1,0 @@
-#!/bin/bash
-XMAILDIR="$1"
-exec ${LOGINRUN} /usr/sbin/courier-imapd "${XMAILDIR}"

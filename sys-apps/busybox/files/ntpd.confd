@@ -1,6 +1,0 @@
-# Config file for /etc/init.d/busybox-ntpd
-
-# run "/sbin/ntpd --help" to see all possible options.
-
-# Get time from specified server and run in background
-NTPD_OPTS="-N -p pool.ntp.org"

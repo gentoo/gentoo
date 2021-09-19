@@ -1,8 +1,0 @@
---- a/CMakeLists.txt	2020-09-03 22:33:16.000000000 -0400
-+++ b/CMakeLists.txt	2021-01-08 14:38:26.299273173 -0500
-@@ -731,4 +731,5 @@
- set(PkgConfigLocation lib/pkgconfig)
- foreach(pkgconfig IN ITEMS "${qhull_SHAREDR};Qhull reentrant shared library"
-+                           "${qhull_SHARED};Qhull deprecated shared library"
-                            "${qhull_STATIC};Qhull static library"
-                            "${qhull_STATICR};Qhull reentrant static library"

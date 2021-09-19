@@ -1,1 +1,0 @@
-d /run/snort 0755 snort snort -

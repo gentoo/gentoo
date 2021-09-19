@@ -1,2 +1,0 @@
-#!/bin/sh
-exec industri +sh_glares 1 "$@"

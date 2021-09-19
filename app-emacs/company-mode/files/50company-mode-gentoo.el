@@ -1,5 +1,0 @@
-(add-to-list 'load-path "@SITELISP@")
-(autoload 'company-mode "company" nil t)
-(autoload 'global-company-mode "company" nil t)
-(autoload 'company-manual-begin "company" nil t)
-(autoload 'company-complete "company" nil t)

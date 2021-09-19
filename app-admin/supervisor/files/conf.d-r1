@@ -1,7 +1,0 @@
-# /etc/conf.d/supervisord
-
-# Configuration file (default: /etc/supervisord.conf)
-#SUPD_CONFIG_FILE="/etc/supervisord.conf"
-
-# Options to pass to the supervisord process
-SUPD_OPTS=""

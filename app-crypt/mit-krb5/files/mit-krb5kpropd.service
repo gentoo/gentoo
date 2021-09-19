@@ -1,8 +1,0 @@
-[Unit]
-Description=Kerberos 5 propagation server
-
-[Service]
-ExecStart=/usr/sbin/kpropd -S
-
-[Install]
-WantedBy=multi-user.target

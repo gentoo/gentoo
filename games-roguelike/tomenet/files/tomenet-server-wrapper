@@ -1,6 +1,0 @@
-#!/bin/sh
-
-TOMENET_PATH="@LIBDIR@"
-export TOMENET_PATH
-cd "${TOMENET_PATH}"
-exec tomenet.server.bin "$@"

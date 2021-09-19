@@ -1,7 +1,0 @@
-# Copyright 2010-2019 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Adding -Wl,--defsym=__gentoo_check_ldflags__=0 to default LDFLAGS for linux/amd64 dev profile
-# This will help developers track packages, that don't respect LDFLAGS, down
-# more effectively
-LDFLAGS="${LDFLAGS} -Wl,--defsym=__gentoo_check_ldflags__=0"

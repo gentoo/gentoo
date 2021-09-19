@@ -1,3 +1,0 @@
-amanda	dgram	udp	wait	amanda	/usr/libexec/amanda/amandad	amandad -auth=bsd amdump amindexd amidxtaped
-amandaidx	stream	tcp	nowait	amanda	/usr/libexec/amanda/amindexd	amindexd -auth=bsd amdump amindexd amidxtaped
-amidxtape	stream	tcp	nowait	amanda	/usr/libexec/amanda/amidxtaped	amidxtaped -auth=bsd amdump amindexd amidxtaped

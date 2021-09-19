@@ -1,8 +1,0 @@
-# vim: ts=4 sts=4 sw=4 noexpandtab:
-# Machine-name for those hosts which are permitted to back up (fully-qualified
-# is best).  An entry in /etc/hosts adds fail-safe against DNS death :-)
-# |
-# |                                     permitted user-name
-# |                                     |
-
-__AMANDA_SERVER__			__AMANDA_USER_NAME__ amdump

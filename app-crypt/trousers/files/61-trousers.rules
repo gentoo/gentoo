@@ -1,2 +1,0 @@
-KERNEL=="tpm[0-9]*", MODE="0660", OWNER="tss", GROUP="tss", SYMLINK+="tpm"
-# vim: ft=udevrules:

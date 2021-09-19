@@ -1,2 +1,0 @@
-#elasticsearch instance to connect to
-ES_INSTANCE=http://localhost:9200

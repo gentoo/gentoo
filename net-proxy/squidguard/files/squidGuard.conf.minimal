@@ -1,7 +1,0 @@
-logdir /var/log/squidGuard
-
-acl {
-	default {
-		pass all
-	}
-}

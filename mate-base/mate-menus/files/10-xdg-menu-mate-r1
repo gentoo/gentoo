@@ -1,9 +1,0 @@
-#!/bin/sh
-
-if [ -z "$XDG_MENU_PREFIX" ] && \
-	[ "$XDG_CURRENT_DESKTOP" = "MATE" -o \
-	"$XDG_SESSION_DESKTOP" = "mate" -o \
-	"$DESKTOP_SESSION" = "mate" ]
-then
-	export XDG_MENU_PREFIX=mate-
-fi

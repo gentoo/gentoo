@@ -1,4 +1,0 @@
-# 
-
-UPDATEMAXDELAY=600 # Maximum delay before running cron job to avoid server peaks
-RESTART_DELAY=10 # time to wait before restarting mailscanner

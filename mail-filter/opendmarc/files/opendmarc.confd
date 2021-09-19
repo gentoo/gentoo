@@ -1,3 +1,0 @@
-# user/group to run opendmarc daemon as
-OPENDMARC_USER=milter
-OPENDMARC_GROUP=milter

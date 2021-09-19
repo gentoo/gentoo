@@ -1,2 +1,0 @@
-#!/bin/sh
-gdb kismet --command=/usr/share/kismet/gdb

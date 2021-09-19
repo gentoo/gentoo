@@ -1,8 +1,0 @@
-[Unit]
-Description=Audio Entropy Daemon
-
-[Service]
-ExecStart=/usr/sbin/audio-entropyd -n
-
-[Install]
-WantedBy=multi-user.target

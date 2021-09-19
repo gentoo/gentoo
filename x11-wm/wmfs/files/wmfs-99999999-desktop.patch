@@ -1,8 +1,0 @@
---- a/wmfs.desktop
-+++ b/wmfs.desktop
-@@ -1,5 +1,4 @@
- [Desktop Entry]
--Encoding=UTF-8
- Type=Application
- Name=wmfs
- Comment=Window Manager From Scratch

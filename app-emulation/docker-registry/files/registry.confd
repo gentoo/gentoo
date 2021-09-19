@@ -1,2 +1,0 @@
-# arguments for docker-registry
-command_args="serve /etc/docker/registry/config.yml"

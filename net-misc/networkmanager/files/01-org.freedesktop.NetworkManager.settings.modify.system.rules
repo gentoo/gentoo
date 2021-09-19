@@ -1,7 +1,0 @@
-// Let users in plugdev group modify NetworkManager
-polkit.addRule(function(action, subject) {
-    if (action.id == "org.freedesktop.NetworkManager.settings.modify.system" &&
-        subject.isInGroup("plugdev") && subject.active) {
-        return "yes";
-    }
-});

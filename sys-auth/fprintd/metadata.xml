@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<bugs-to>https://gitlab.freedesktop.org/libfprint/fprintd/issues</bugs-to>
-	</upstream>
-</pkgmetadata>

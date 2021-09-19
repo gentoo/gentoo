@@ -1,2 +1,0 @@
-# Define startup options for Kerberos incremental propagation server
-KPROPD_OPTS=""

@@ -1,3 +1,0 @@
-# Keepalived options
-# Increase logging:
-#KEEPALIVED_OPTS="-D"

@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=WmRecord
-Comment=Audio recorder for WindowMaker
-Comment[pl]=Rekorder dźwięku dla WindowMakera
-Exec=wmrecord
-Type=Application
-Terminal=false
-Categories=AudioVideo;Audio;Recorder;

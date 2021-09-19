@@ -1,5 +1,0 @@
-# Copyright 1999-2020 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Options for your started MPDlcd
-# MPDLCD_OPTS="--mpd=mpd.example.org:1234 --lcdproc=lcd.example.org:456 --syslog --syslog-facility=user2 --loglevel=debug --lcdd-debug"

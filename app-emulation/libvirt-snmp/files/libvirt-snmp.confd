@@ -1,6 +1,0 @@
-
-# Specify the URI where your libvirt instance is listening
-LIBVIRT_DEFAULT_URI="qemu:///system"
-
-# additional options
-LIBVIRT_SNMP_OPTIONS=""

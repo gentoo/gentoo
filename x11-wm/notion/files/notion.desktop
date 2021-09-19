@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Notion
-Comment=A tiling tabbed window manager designed with keyboard users in mind.
-Exec=notion
-TryExec=notion
-# no icon yet, only the top three are currently used
-Icon=
-Type=Application

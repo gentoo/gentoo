@@ -1,8 +1,0 @@
---- a/gtkdatabox/Makefile.am
-+++ b/gtkdatabox/Makefile.am
-@@ -1,4 +1,4 @@
--lib_LTLIBRARIES		= libgtkdataboks.la
-+noinst_LTLIBRARIES		= libgtkdataboks.la
- libgtkdataboks_la_SOURCES= \
- 			gtkdatabox.c\
- 			gtkdatabox_marshal.c\

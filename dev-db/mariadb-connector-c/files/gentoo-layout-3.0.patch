@@ -1,9 +1,0 @@
---- a/mariadb_config/CMakeLists.txt	2016-02-12 21:21:06.981021227 -0500
-+++ b/mariadb_config/CMakeLists.txt	2016-02-12 22:06:02.397130410 -0500
-@@ -40,5 +44,5 @@
- # Installation
- #
- INSTALL(TARGETS mariadb_config
--        DESTINATION "bin"
-+        DESTINATION ${INSTALL_BINDIR}
-         COMPONENT Development)

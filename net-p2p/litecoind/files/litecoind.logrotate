@@ -1,7 +1,0 @@
-/var/lib/litecoin/.litecoin/debug.log {
-	weekly
-	sharedscripts
-	postrotate
-		killall -HUP litecoind
-	endscript
-}

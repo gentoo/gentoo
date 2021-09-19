@@ -1,9 +1,0 @@
-# Copyright 1999-2021 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-06)
-# Root privilege escalation, CVE-2017-18925, bug 751415
-sys-apps/opentmpfiles
-
-# (above is added here instead of in ../package.mask so x86 musl can
-# override it for the moment)

@@ -1,9 +1,0 @@
---- a/src/tools/Makefile.am
-+++ b/src/tools/Makefile.am
-@@ -4,5 +4,5 @@
- 
- bin_PROGRAMS = adtool
- 
--adtool_LDADD = @top_srcdir@/src/lib/libactive_directory.a -lldap -llber -lldap_r -lpthread -lresolv 
-+adtool_LDADD = @top_builddir@/src/lib/libactive_directory.a -lldap -llber -lldap_r -lpthread -lresolv
- 

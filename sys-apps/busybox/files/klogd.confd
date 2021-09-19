@@ -1,9 +1,0 @@
-# Config file for /etc/init.d/busybox-sysklogd
-
-# run "/sbin/klogd --help" to see all possible options.
-
-# activate if you need remote logging
-#rc_need="net"
-
-# send warnings and above to the console
-KLOGD_OPTS="-c 3"

@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=VirtualBox Client Service
-Exec=VBoxClient-all
-Terminal=false
-X-KDE-StartupNotify=false
-StartupNotify=false

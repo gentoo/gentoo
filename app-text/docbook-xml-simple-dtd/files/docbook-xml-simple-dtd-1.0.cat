@@ -1,7 +1,0 @@
-OVERRIDE YES
-
-DTDDECL "-//OASIS//DTD Simplified DocBook XML V1.0//EN" "/usr/share/sgml/xml.dcl"
-PUBLIC  "-//OASIS//DTD Simplified DocBook XML V1.0//EN" "/usr/share/sgml/docbook/xml-simple-dtd-1.0/sdocbook.dtd"
-
-DTDDECL "-//OASIS//DTD Simplified DocBook RefEntry XML V1.0//EN" "/usr/share/sgml/xml.dcl"
-PUBLIC  "-//OASIS//DTD Simplified DocBook RefEntry XML V1.0//EN" "/usr/share/sgml/docbook/xml-simple-dtd-1.0/sdocbookref.dtd"

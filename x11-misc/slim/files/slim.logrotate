@@ -1,9 +1,0 @@
-/var/log/slim.log {
-	compress
-	rotate 4
-	weekly
-	delaycompress
-	copytruncate
-	missingok
-	notifempty
-}

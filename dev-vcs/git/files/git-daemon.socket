@@ -1,9 +1,0 @@
-[Unit]
-Description=Git Activation Socket
-
-[Socket]
-ListenStream=9418
-Accept=true
-
-[Install]
-WantedBy=sockets.target

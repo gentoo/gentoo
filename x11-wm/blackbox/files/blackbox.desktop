@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Blackbox
-Comment=This session logs you into Blackbox
-Exec=blackbox
-TryExec=blackbox
-Icon=
-Type=Application

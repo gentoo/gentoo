@@ -1,5 +1,0 @@
-define(`confOPTIMIZE', `@@CFLAGS@@')
-define(`confLDOPTS', `@@LDFLAGS@@')
-define(`confCC', `@@CC@@')
-define(`confENVDEF', `@@ENVDEF@@')
-define(`confCCOPTS_SO', `-fPIC')

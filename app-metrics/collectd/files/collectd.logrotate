@@ -1,9 +1,0 @@
-#
-#      /etc/logrotate.d/collectd
-#
-/var/log/collectd.log {
-    daily
-    rotate 5
-    notifempty
-    missingok
-}

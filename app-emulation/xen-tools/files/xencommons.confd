@@ -1,4 +1,0 @@
-# /etc/conf.d/xencommons
-
-# Load xen's kernel modules, and this will override defaults
-XEN_KERNEL_MODULES=""

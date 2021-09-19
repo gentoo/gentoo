@@ -1,1 +1,0 @@
-SUBSYSTEM=="usb", ATTR{product}=="G15 Gaming Keyboard", RUN+="/usr/bin/g15daemon-hotplug"

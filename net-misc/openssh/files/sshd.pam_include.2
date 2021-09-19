@@ -1,4 +1,0 @@
-auth       include	system-remote-login
-account    include	system-remote-login
-password   include	system-remote-login
-session	   include	system-remote-login

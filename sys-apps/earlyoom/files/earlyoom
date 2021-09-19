@@ -1,6 +1,0 @@
-#!/sbin/openrc-run
-name=earlyoom
-command=/usr/bin/earlyoom
-command_args=-k
-command_background=1
-pidfile=/run/earlyoom.pid

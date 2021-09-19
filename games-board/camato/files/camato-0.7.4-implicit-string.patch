@@ -1,8 +1,0 @@
-Crashes on keyboard events otherwise.
---- a/map.rb
-+++ b/map.rb
-@@ -35,3 +35,3 @@
-       if i < 0 or i > 255 then i = 0 end
--      my_str[0] = i
-+      my_str[0] = i.to_s
-       set_resource(my_str)

@@ -1,4 +1,0 @@
-# Substitute <HOSTNAME> with the FQDN of your Amanda-client here.
-# The usage of localhost will *break* your restores.
-<HOSTNAME> hda1 normal local
-<HOSTNAME> hda3	normal local

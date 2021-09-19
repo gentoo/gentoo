@@ -1,4 +1,0 @@
-# /etc/conf.d/smartd: config file for /etc/init.d/smartd
-
-# Insert any other options needed
-SMARTD_OPTS=""

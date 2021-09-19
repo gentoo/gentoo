@@ -1,3 +1,0 @@
-# Comment this out if you are using VirtualGL also for other purposes and this
-# slows down things for you.
-VGL_READBACK="pbo"

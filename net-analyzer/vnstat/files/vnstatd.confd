@@ -1,7 +1,0 @@
-# /etc/conf.d/vnstatd: config file for /etc/init.d/vnstatd
-
-# Adjust scheduling priority on vnstatd (default: 0)
-#VNSTATD_NICELEVEL="0"
-
-# Pass extra options to vnstatd
-#VNSTATD_EXTRAOPTS="--config /etc/vnstat.conf"

@@ -1,4 +1,0 @@
-This script makes use of optional programs if installed:
-
-  media-sound/sox      -> for creating spectrograms (enable USE=png)
-  media-sound/aucdtect -> for determining authenticity of FLAC files (CDDA)

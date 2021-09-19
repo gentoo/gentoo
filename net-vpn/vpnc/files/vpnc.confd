@@ -1,4 +1,0 @@
-# If you wish to see the output made by vpnc, for example the password
-# prompt, set this variable to yes
-
-VPNCOUTPUT="no"

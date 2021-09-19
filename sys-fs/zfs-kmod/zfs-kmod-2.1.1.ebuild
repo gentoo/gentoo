@@ -125,10 +125,9 @@ src_configure() {
 	# Set CROSS_COMPILE in the environment.
 	# This allows the user to override it via make.conf or via a local Makefile.
 	# https://bugs.gentoo.org/811600
-	export CROSS_COMPILE=${CROSS_COMPILE-${CHOST}-}
 
 	local myconf=(
-		HOSTCC="$(tc-getBUILD_CC)"
+		CC=${CC}
 		--bindir="${EPREFIX}/bin"
 		--sbindir="${EPREFIX}/sbin"
 		--with-config=kernel
@@ -144,7 +143,7 @@ src_compile() {
 	set_arch_to_kernel
 
 	myemakeargs=(
-		HOSTCC="$(tc-getBUILD_CC)"
+		CC=${CC}
 		V=1
 	)
 

@@ -1,9 +1,0 @@
-# Options to pass to the irexec process
-IREXEC_OPTS="/etc/lircrc"
-
-# User to execute irexec as.
-# Warning: Running irexec as root can open security holes
-#IREXEC_USER="root"
-
-# Use this to disable the warning printed when starting irexec as root
-# IREXEC_DISABLE_ROOT_WARNING=yes

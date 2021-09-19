@@ -1,9 +1,0 @@
-[Unit]
-Description=Simple Network Management Protocol (SNMP) TRAP Daemon
-After=syslog.target network.target
-
-[Service]
-ExecStart=/usr/sbin/snmptrapd -f
-
-[Install]
-WantedBy=multi-user.target

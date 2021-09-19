@@ -1,6 +1,0 @@
-XIM=uim
-XIM_PROGRAM="@EPREFIX@/usr/bin/uim-xim"
-XIM_ARGS=
-GTK_IM_MODULE=uim
-QT_IM_MODULE=uim
-SHORT_DESC=UIM

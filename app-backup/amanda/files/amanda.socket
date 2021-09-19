@@ -1,7 +1,0 @@
-[Unit]
-Description=Amanda Socket
-[Socket]
-ListenStream=10080
-Accept=true
-[Install]
-WantedBy=sockets.target

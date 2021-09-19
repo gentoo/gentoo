@@ -1,9 +1,0 @@
---- awesome-3.5.2/awesome.desktop	2013-10-12 12:48:49.000000000 -0400
-+++ awesome.desktop	2014-03-29 23:24:01.137547594 -0400
-@@ -3,5 +3,5 @@
- Name=awesome
- Comment=Highly configurable framework window manager
- TryExec=awesome
--Exec=awesome
-+Exec=/etc/X11/Sessions/awesome
- Type=Application

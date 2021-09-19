@@ -1,3 +1,0 @@
-# Options to pass to relaysrv
-# see /usr/libexec/syncthing/strelaysrv --help for more information
-SR_OPTS=

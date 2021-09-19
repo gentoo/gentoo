@@ -1,5 +1,0 @@
-# Please configure everything at /etc/jabber/ejabberdctl.cfg
-# Put here only command line arguments for ejabberdctl (if any are required)
-
-#EJABBERDCTL_OPTS=""
-

@@ -1,2 +1,0 @@
-# redis runtime directory
-d /run/redis 0755 redis root -

@@ -1,7 +1,0 @@
---- a/src/Language/Css/Pretty.hs
-+++ b/src/Language/Css/Pretty.hs
-@@ -6,3 +6,3 @@ import Text.PrettyPrint
- import Language.Css.Syntax
--
-+import Prelude hiding ((<>))
- 

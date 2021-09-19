@@ -1,3 +1,0 @@
-d	/run/exabgp			0755	exabgp	exabgp	-	-
-p	/run/exabgp/exabgp.in		0600	exabgp	exabgp	-	-
-p	/run/exabgp/exabgp.out		0600	exabgp	exabgp	-	-

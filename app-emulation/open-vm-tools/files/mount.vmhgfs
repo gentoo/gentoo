@@ -1,2 +1,0 @@
-#!/bin/sh
-hgfsmounter "$@" >/dev/null 2>&1 || vmhgfs-fuse "$@"

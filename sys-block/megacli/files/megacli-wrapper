@@ -1,3 +1,0 @@
-#!/bin/sh
-export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/opt/megacli/lib"
-exec /opt/megacli/megacli "$@"

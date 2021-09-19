@@ -1,9 +1,0 @@
-# Copyright 1999-2014 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License v2
-
-CHOST="mipsel-gentoo-linux-musl"
-CHOST_o32="${CHOST}"
-
-# Disable sandbox because its currently broken on mipsel-musl
-FEATURES="-sandbox"
-

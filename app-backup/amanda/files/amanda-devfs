@@ -1,7 +1,0 @@
-# raw access to partitions for amanda
-#REGISTER   ^scsi/host.*/bus.*/target.*/lun.*/part[0-9]    PERMISSIONS root.disk 660"
-#REGISTER   ^ide/host.*/bus.*/target.*/lun.*/part[0-9]    PERMISSIONS root.disk 660"
-
-# allow amanda to have access to tape changers
-#REGISTER   ^scsi/host.*/bus.*/target.*/lun.*/generic      PERMISSIONS root.disk 660
-						

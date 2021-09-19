@@ -1,8 +1,0 @@
-/var/log/automatic/*.log {
-	daily
-	missingok
-	rotate 90
-	compress
-	notifempty
-	copytruncate
-}

@@ -1,5 +1,0 @@
-/var/log/xen-consoles/*.log {
-	rotate 7
-	missingok
-	compress
-}

@@ -1,2 +1,0 @@
-# arguments for reg server
-command_args="--asset-path=/var/lib/reg"

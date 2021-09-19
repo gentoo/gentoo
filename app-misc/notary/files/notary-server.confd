@@ -1,2 +1,0 @@
-# arguments for notary server
-command_args="-config=/var/lib/notary/fixtures/server-config-local.json"

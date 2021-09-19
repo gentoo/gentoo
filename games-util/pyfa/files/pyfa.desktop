@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Pyfa
-Comment=Ship fitting application for EVE Online
-Icon=pyfa
-Terminal=false
-Type=Application
-Categories=Game;RolePlaying;
-Exec=pyfa

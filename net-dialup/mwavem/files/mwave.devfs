@@ -1,2 +1,0 @@
-REGISTER     ^misc/mwave$    EXECUTE /usr/sbin/mwave-dev-handler register
-UNREGISTER   ^misc/mwave$    EXECUTE /usr/sbin/mwave-dev-handler unregister

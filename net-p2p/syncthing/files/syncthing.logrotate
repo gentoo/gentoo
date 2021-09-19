@@ -1,6 +1,0 @@
-/var/log/syncthing/syncthing.log {
-    missingok
-    notifempty
-    sharedscripts
-    copytruncate
-}

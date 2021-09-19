@@ -1,8 +1,0 @@
-# Copyright 1999-2012 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# on OSX one should have objc available
-USE="objc objc++"
-
-# we have OSX, so let's use it's virtues
-USE="${USE} aqua coreaudio ipv6"
