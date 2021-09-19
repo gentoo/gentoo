@@ -18,6 +18,7 @@ dev-python/lxml doc
 dev-python/py doc
 dev-python/pyasn1 doc
 dev-python/pygments doc
+dev-python/smartypants doc
 
 # James Le Cuirot <chewi@gentoo.org> (2021-08-21)
 # Avoid lots of unkeyworded dependencies of Python tests.
