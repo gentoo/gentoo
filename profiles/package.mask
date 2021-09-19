@@ -257,7 +257,6 @@ dev-python/pydns
 # bugs open. Removal on 2021-09-19.
 # bug #711088, bug #775944, bug #790680, bug #806953.
 net-analyzer/netwox
-net-analyzer/netwag
 
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
