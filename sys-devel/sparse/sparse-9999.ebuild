@@ -4,7 +4,7 @@
 EAPI=7
 
 LLVM_MAX_SLOT=12
-inherit llvm multilib toolchain-funcs
+inherit llvm toolchain-funcs
 
 DESCRIPTION="C semantic parser"
 HOMEPAGE="https://sparse.wiki.kernel.org/index.php/Main_Page"
