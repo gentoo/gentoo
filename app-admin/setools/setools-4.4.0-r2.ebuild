@@ -44,7 +44,8 @@ python_prepare_all() {
 	sed -i "s@^lib_dirs = .*@lib_dirs = ['${ROOT:-/}usr/$(get_libdir)']@" "${S}"/setup.py || \
 		die "failed to set lib_dirs"
 
-	use X || local PATCHES=( "${FILESDIR}"/setools-4.4.0-remove-gui.patch )
+	local PATCHES=( "${FILESDIR}"/0001-__init__.py-Make-NetworkX-dep-optional.patch )
+	use X || PATCHES+=( "${FILESDIR}"/setools-4.4.0-remove-gui.patch )
 	distutils-r1_python_prepare_all
 }
 
