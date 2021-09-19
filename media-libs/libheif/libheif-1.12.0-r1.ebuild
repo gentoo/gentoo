@@ -18,20 +18,20 @@ HOMEPAGE="https://github.com/strukturag/libheif"
 
 LICENSE="GPL-3"
 SLOT="0/1.12"
-IUSE="+aom gdk-pixbuf go libde265 rav1e test +threads x265"
-REQUIRED_USE="test? ( go libde265 )"
+IUSE="+aom gdk-pixbuf go rav1e test +threads x265"
+REQUIRED_USE="test? ( go )"
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-lang/go )"
 DEPEND="
 	media-libs/dav1d:=[${MULTILIB_USEDEP}]
+	media-libs/libde265:=[${MULTILIB_USEDEP}]
 	media-libs/libpng:0=[${MULTILIB_USEDEP}]
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	virtual/jpeg:0=[${MULTILIB_USEDEP}]
 	aom? ( >=media-libs/libaom-2.0.0:=[${MULTILIB_USEDEP}] )
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}] )
 	go? ( dev-lang/go )
-	libde265? ( media-libs/libde265:=[${MULTILIB_USEDEP}] )
 	rav1e? ( media-video/rav1e:= )
 	x265? ( media-libs/x265:=[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}"
@@ -50,10 +50,10 @@ src_prepare() {
 multilib_src_configure() {
 	export GO111MODULE=auto
 	local econf_args=(
+		--enable-libde265
 		--disable-static
 		$(multilib_is_native_abi && use go || echo --disable-go)
 		$(use_enable aom)
-		$(use_enable libde265)
 		$(use_enable gdk-pixbuf)
 		$(use_enable rav1e)
 		$(use_enable threads multithreading)
