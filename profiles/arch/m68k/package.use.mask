@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2021-09-19)
+# Requires texlive and friends to be keyworded.
+app-doc/doxygen doc
+
 # James Le Cuirot <chewi@gentoo.org> (2021-08-21)
 # Avoid having to keyword dev-python/sphinx and friends for now.
 dev-python/more-itertools doc
