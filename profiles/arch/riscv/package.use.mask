@@ -66,7 +66,6 @@ kde-plasma/kdeplasma-addons webengine
 kde-plasma/libksysguard webengine
 # dependencies not keyworded/tested
 kde-apps/marble webengine geolocation gps
-kde-plasma/powerdevil wireless
 kde-plasma/plasma-desktop emoji
 kde-plasma/plasma-meta accessibility grub plymouth pulseaudio
 
