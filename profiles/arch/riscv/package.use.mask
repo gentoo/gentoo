@@ -58,11 +58,6 @@ gnome-base/gnome-control-center v4l
 gnome-base/gnome-shell telepathy browser-extension
 gnome-base/gdm accessibility
 
-# Marek Szuba <marecki@gentoo.org> (2021-08-18)
-# media-libs/libffado does not recognise this arch, fails src_configure
-# (Bug #808853).
-media-sound/jack2 ieee1394
-
 # Alex Fan <alexfanqi@yahoo.com> (2021-09-15)
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # dev-qt/qtwebengine requires nodejs to build.
