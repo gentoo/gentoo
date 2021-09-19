@@ -45,6 +45,7 @@ QA_PREBUILT="/usr/share/afl/testcases/others/elf/small_exec.elf"
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0c-LDFLAGS.patch"
 	"${FILESDIR}/${PN}-3.13c-CFLAGS.patch"
+	"${FILESDIR}/${PN}-3.14c-no-ignore-errors-makefile.patch"
 )
 
 llvm_check_deps() {
@@ -59,7 +60,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
 	sed -i -e 's/-O3 -fno-unroll-loops//' GNUmakefile || die
 }
 
