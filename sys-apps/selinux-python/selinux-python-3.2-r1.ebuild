@@ -39,6 +39,10 @@ BDEPEND="
 		>=sys-apps/secilc-${PV}
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.2-optional-networkx.patch
+)
+
 src_prepare() {
 	default
 	sed -i 's/-Werror//g' "${S}"/*/Makefile || die "Failed to remove Werror"
