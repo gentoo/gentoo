@@ -31,9 +31,8 @@ BDEPEND="gtk? ( virtual/pkgconfig )
 	xml? ( virtual/pkgconfig )"
 
 llvm_check_deps() {
-	has_version "sys-devel/llvm:${LLVM_MAX_SLOT}" || \
-		has_version "sys-devel/llvm:$((${LLVM_MAX_SLOT} - 1))" \
-		has_version "sys-devel/llvm:$((${LLVM_MAX_SLOT} - 2))"
+	has_version "sys-devel/llvm:${LLVM_SLOT}" && \
+		has_version -r "sys-devel/llvm:${LLVM_SLOT}"
 }
 
 pkg_setup() {
