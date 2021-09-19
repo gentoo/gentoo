@@ -1,5 +1,6 @@
 Fix build with clang https://bugs.gentoo.org/739144
 
+Fixed upstream in: https://github.com/TASVideos/desmume/commit/92cb90f
 --- a/desmume/src/texcache.cpp
 +++ b/desmume/src/texcache.cpp
 @@ -1165,8 +1165,8 @@ void NDSTextureUnpack4x4(const size_t sr
