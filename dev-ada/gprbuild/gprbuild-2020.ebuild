@@ -3,7 +3,7 @@
 
 EAPI=7
 
-ADA_COMPAT=( gnat_201{7,8,9} )
+ADA_COMPAT=( gnat_2019 )
 
 inherit ada multiprocessing
 
