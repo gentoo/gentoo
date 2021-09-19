@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="calf mda-lv2 zamaudio"
+IUSE="calf +doc mda-lv2 zamaudio"
 
 # Tests fail since 6.1.0 due to upstream changes to the metainfo file.
 # TODO: check this every release.
@@ -42,10 +42,10 @@ DEPEND=">=dev-cpp/glibmm-2.68:2.68
 	sci-libs/fftw:3.0
 	>=gui-libs/gtk-4.2.1:4"
 RDEPEND="${DEPEND}
-	gnome-extra/yelp
 	>=media-libs/lsp-plugins-1.1.24[lv2]
 	sys-apps/dbus
 	calf? ( >=media-plugins/calf-0.90.1[lv2] )
+	doc? ( gnome-extra/yelp )
 	mda-lv2? ( media-plugins/mda-lv2 )
 	zamaudio? ( media-plugins/zam-plugins )"
 # Only header files are used from libsamplerate so put it here rather than DEPEND
