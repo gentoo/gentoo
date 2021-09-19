@@ -243,14 +243,6 @@ net-vpn/ipsec-tools
 # Preparing for final 5.0.0 release
 >=app-text/tesseract-5.0.0_beta
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2021-08-20)
-# Inactive upstream.
-# Fully superseded by dev-python/dnspython. All reverse dependencies support
-# and recommend usage of dev-python/dnspython.
-# No other distros package it anymore.
-# Removal on 2021-09-19.  Bug #809239.
-dev-python/pydns
-
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
 # ecosystem has switched to dev-util/pkgconf, which is alive. Testing
