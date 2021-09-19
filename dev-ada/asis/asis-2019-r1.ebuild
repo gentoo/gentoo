@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-ADA_COMPAT=( gnat_201{7,8,9} )
+ADA_COMPAT=( gnat_2019 )
 inherit ada multiprocessing
 MYP=${P}-20190517-18AB5-src
 
