@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -15,7 +16,6 @@ SRC_URI="
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
 RDEPEND="
 	>=dev-python/botocore-1.12.122[${PYTHON_USEDEP}]
@@ -33,6 +33,10 @@ BDEPEND="
 		dev-python/webtest[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-py3.10-loops.patch"
+)
+
 distutils_enable_tests pytest
 
 python_test() {
@@ -40,34 +44,28 @@ python_test() {
 	local -x AWS_SECRET_ACCESS_KEY=fake_key
 	local -x AWS_ACCESS_KEY_ID=fake_id
 
-	local args=(
-		# unpackaged deps
-		--ignore tests/ext/aiobotocore
-		--ignore tests/ext/pg8000
-		--ignore tests/ext/psycopg2
-		--ignore tests/ext/pymysql
-		--ignore tests/ext/pynamodb
-		--ignore tests/ext/sqlalchemy_core/test_postgres.py
-		--deselect tests/ext/django/test_db.py
-
+	local EPYTEST_DESELECT=(
 		# Internet access
-		--deselect
 		tests/test_patcher.py::test_external_file
-		--deselect
 		tests/test_patcher.py::test_external_module
-		--deselect
 		tests/test_patcher.py::test_external_submodules_full
-		--deselect
 		tests/test_patcher.py::test_external_submodules_ignores_file
-		--deselect
 		tests/test_patcher.py::test_external_submodules_ignores_module
-		--deselect
 		tests/ext/aiohttp/test_client.py
-		--ignore
+	)
+	local EPYTEST_IGNORE=(
+		# unpackaged deps
+		tests/ext/aiobotocore
+		tests/ext/pg8000
+		tests/ext/psycopg2
+		tests/ext/pymysql
+		tests/ext/pynamodb
+		tests/ext/sqlalchemy_core/test_postgres.py
+		tests/ext/django/test_db.py
+		# Internet access
 		tests/ext/httplib
-		--ignore
 		tests/ext/requests
 	)
 
-	epytest -p no:django "${args[@]}"
+	epytest -p no:django
 }
