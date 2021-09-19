@@ -159,24 +159,6 @@ sys-cluster/slurm ofed
 virtual/notification-daemon gnome
 net-libs/gnome-online-accounts gnome
 
-# Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
-# Ye Cao <ye.c@rioslab.org> (2021-07-31)
-# Piotr Karbowski <slashbeast@gentoo.org> (2021-06-22)
-# Yixun Lan <dlan@gentoo.org> (2021-05-21)
-# Mikle Kolyada <zlogene@gentoo.org> (2020-12-03)
-# Göktürk Yüksek <gokturk@gentoo.org> (2019-10-10)
-#   sys-libs/libunwind do not support riscv
-dev-libs/efl unwind
-dev-util/perf unwind
-dev-util/strace unwind
-media-gfx/gimp unwind
-media-libs/gstreamer unwind
-media-libs/mesa unwind
-net-libs/zeromq unwind
-net-mail/dovecot unwind
-x11-base/xorg-server unwind
-x11-base/xwayland unwind
-
 # This doesn't work for (any) riscv yet.
 dev-libs/libpcre2 jit
 dev-libs/libpcre jit
