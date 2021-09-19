@@ -58,7 +58,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @DESCRIPTION:
 # All supported Ada implementations, most preferred last.
 _ADA_ALL_IMPLS=(
-	gnat_2017 gnat_2018 gnat_2019 gnat_2020 gnat_2021
+	gnat_2019 gnat_2020 gnat_2021
 )
 readonly _ADA_ALL_IMPLS
 
@@ -83,7 +83,7 @@ _ada_impl_supported() {
 	# keep in sync with _ADA_ALL_IMPLS!
 	# (not using that list because inline patterns shall be faster)
 	case "${impl}" in
-		gnat_201[789])
+		gnat_2019)
 			return 0
 			;;
 		gnat_202[01])
@@ -200,14 +200,6 @@ ada_export() {
 	local gcc_pv
 	local slot
 	case "${impl}" in
-		gnat_2017)
-			gcc_pv=6.3.0
-			slot=6.3.0
-			;;
-		gnat_2018)
-			gcc_pv=7.3.1
-			slot=7.3.1
-			;;
 		gnat_2019)
 			gcc_pv=8.3.1
 			slot=8.3.1
