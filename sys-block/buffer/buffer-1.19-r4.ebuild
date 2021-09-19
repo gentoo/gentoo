@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc sparc ~x86"
+KEYWORDS="amd64 ~arm ~ppc sparc x86"
 
 src_prepare() {
 	local f
