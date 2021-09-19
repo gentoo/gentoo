@@ -20,15 +20,15 @@ fi
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-IUSE="X test"
+IUSE="test infoflow X"
 RESTRICT="!test? ( test )"
 S="${WORKDIR}/${PN}"
 
 RDEPEND="${PYTHON_DEPS}
-	>=dev-python/networkx-2.0[${PYTHON_USEDEP}]
 	dev-python/setuptools
 	>=sys-libs/libsepol-2.8:=
 	>=sys-libs/libselinux-2.8:=
+	infoflow? ( >=dev-python/networkx-2.0[${PYTHON_USEDEP}] )
 	X? (
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 	)"
