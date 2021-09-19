@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-09-19)
+# media-gfx/nvidia-texture-tools reports arch as unknown, fails to build
+media-libs/devil nvtt
+
 # Alex Fan <alexfanqi@yahoo.com> (2021-09-13)
 # dev-vcs/darcs depends on haskell
 app-portage/layman darcs
@@ -143,8 +147,6 @@ mail-mta/courier fax
 # Dependencies not keyworded here yet:
 #  - dev-ruby/asciidoctor
 dev-libs/nanomsg doc
-#  - media-gfx/nvidia-texture-tools
-media-libs/devil nvtt
 #  - dev-cpp/glog, sci-libs/vtk
 media-libs/opencv contribsfm glog vtk
 #  - dev-util/aruba
