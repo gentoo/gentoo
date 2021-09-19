@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-ADA_COMPAT=( gnat_201{8,9} )
+ADA_COMPAT=( gnat_2019 )
 inherit ada
 
 MYP=${P}-20190429-19761-src
