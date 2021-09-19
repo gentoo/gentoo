@@ -14,9 +14,7 @@ if [[ "${PV}" = "9999" ]]; then
 	inherit subversion
 	ESVN_REPO_URI="http://subversion.ffado.org/ffado/trunk/${PN}"
 else
-	CONFIG_GUESS_COMMIT="45e181800a6a27268a9c5d79dcc60492fef9a9a0"
-	SRC_URI="http://www.ffado.org/files/${P}.tgz
-		https://git.savannah.gnu.org/cgit/config.git/plain/config.guess?id=${CONFIG_GUESS_COMMIT} -> config.guess-${CONFIG_GUESS_COMMIT}"
+	SRC_URI="http://www.ffado.org/files/${P}.tgz"
 	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 -riscv x86"
 fi
 
@@ -82,9 +80,7 @@ src_prepare() {
 	default
 
 	# Bug #808853
-	if [[ -n "${CONFIG_GUESS_COMMIT}" ]]; then
-		cp -a "${DISTDIR}"/config.guess-${CONFIG_GUESS_COMMIT} admin/config.guess || die "Failed to update config.guess"
-	fi
+	cp "${BROOT}"/usr/share/gnuconfig/config.guess admin/ || die "Failed to update config.guess"
 
 	# Always use Qt5
 	sed -i -e 's/try:/if False:/' -e 's/except.*/else:/' support/mixer-qt4/ffado/import_pyqt.py || die
