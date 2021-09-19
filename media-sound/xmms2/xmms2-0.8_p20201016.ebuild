@@ -221,7 +221,7 @@ src_test() {
 }
 
 src_install() {
-	./waf install --destdir="${D}" --without-ldconfig || die
+	./waf install --destdir="${D}" --without-ldconfig --notests || die
 
 	einstalldocs
 
