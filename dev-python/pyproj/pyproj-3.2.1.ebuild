@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Python interface to the PROJ library"
@@ -26,7 +26,7 @@ BDEPEND="
 	)"
 
 distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
-distutils_enable_tests --install pytest
+distutils_enable_tests pytest
 
 python_test() {
 	local EPYTEST_DESELECT=(
