@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2021-09-20)
+# Requires zstd, which is currently broken on m68k.
+dev-util/cmake test
+
 # James Le Cuirot <chewi@gentoo.org> (2021-09-19)
 # Avoid having to keyword Poppler and X11 libraries for now.
 media-gfx/graphviz lefty pdf
