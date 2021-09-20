@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DOCS_BUILDER="sphinx"
 DOCS_DIR="docs"
@@ -81,6 +81,7 @@ BDEPEND="
 
 DEPEND="${PYTHON_DEPS}
 	dev-qt/qtdeclarative:5[widgets]
+	dev-qt/qtquickcontrols:5[widgets]
 	dev-qt/qtquickcontrols2:5[widgets]
 "
 
