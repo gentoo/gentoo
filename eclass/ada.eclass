@@ -279,7 +279,7 @@ _ada_single_set_globals() {
 
 	local flags=( "${_ADA_SUPPORTED_IMPLS[@]/#/ada_target_}" )
 	local unflags=( "${_ADA_UNSUPPORTED_IMPLS[@]/#/-ada_target_}" )
-	local allflags=( ${flags[@]} ${unflags[@]} )
+	local allflags=( "${_ADA_ALL_IMPLS[@]/#/ada_target_}" )
 
 	local optflags=${flags[@]/%/(-)?}
 
