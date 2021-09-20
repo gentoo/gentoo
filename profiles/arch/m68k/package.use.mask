@@ -7,6 +7,7 @@ media-gfx/graphviz lefty pdf
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-19)
 # Requires Rust, which is currently unavailable on m68k.
+app-editors/emacs svg
 media-gfx/graphviz svg
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-19)
