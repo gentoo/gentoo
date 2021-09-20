@@ -13,11 +13,8 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 x86 ~amd64-linux ~x
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-DEPEND=">=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?]"
-RDEPEND="${DEPEND}
-	!<dev-ml/findlib-1.6.1-r1
-"
-DEPEND="${DEPEND}
+RDEPEND=">=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?]"
+DEPEND="${RDEPEND}
 	test? ( dev-ml/findlib )"
 
 PATCHES=(

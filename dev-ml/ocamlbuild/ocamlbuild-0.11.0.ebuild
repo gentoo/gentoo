@@ -14,11 +14,8 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 # does not compile with ocaml-4.09 (bug # 708696 and #708872)
-DEPEND="<dev-lang/ocaml-4.09:=[ocamlopt?]"
-RDEPEND="${DEPEND}
-	!<dev-ml/findlib-1.6.1-r1
-"
-DEPEND="${DEPEND}
+RDEPEND="<dev-lang/ocaml-4.09:=[ocamlopt?]"
+DEPEND="${RDEPEND}
 	test? ( dev-ml/findlib )"
 
 src_prepare() {
