@@ -92,7 +92,7 @@ src_prepare() {
 	popd >&/dev/null || die
 
 	# fix gentoo platform support
-	eapply -p1 "${FILESDIR}/${P}-cmake-gentoo.patch"
+	eapply -p1 "${FILESDIR}/${PN}-20.0.2-cmake-gentoo.patch"
 
 	# fix missing DESTDIR in symlink creation
 	sed -i '/bareos-symlink-default-db-backend.cmake/d' "${S}/core/src/cats/CMakeLists.txt"
