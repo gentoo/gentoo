@@ -227,25 +227,27 @@ pkg_postinst() {
 	fi
 
 	if use systemd; then
-		elog "To use PipeWire for audio, the user units must be manually enabled:"
+		elog "To use PipeWire for audio, the user units must be manually enabled"
+		elog "by running this command as each user you use for desktop activities:"
 		elog
-		elog "  systemctl --user enable pipewire.socket pipewire-pulse.socket"
+		elog "  systemctl --user enable --now pipewire.socket pipewire-pulse.socket"
 		elog
-		elog "When switching from PulseAudio, do not forget to disable PulseAudio:"
+		elog "When switching from PulseAudio, do not forget to disable PulseAudio likewise:"
 		elog
-		elog "  systemctl --user disable pulseaudio.service pulseaudio.socket"
+		elog "  systemctl --user disable --now pulseaudio.service pulseaudio.socket"
 		elog
 		elog "A reboot is recommended to avoid interferences from still running"
 		elog "PulseAudio daemon."
 		elog
-		elog "Both, new users and those upgrading, need to enable pipewire-media-session:"
+		elog "Both, new users and those upgrading, need to enable pipewire-media-session"
+		elog "for relevant users:"
 		elog
-		elog "  systemctl --user enable pipewire-media-session.service"
+		elog "  systemctl --user enable --now pipewire-media-session.service"
 		elog
 	else
 		elog "This ebuild auto-enables PulseAudio replacement. Because of that, users"
-		elog "are recommended to edit: ${EROOT}/etc/pulse/client.conf and disable "
-		elog "autospawn'ing of the original daemon by setting:"
+		elog "are recommended to edit: ${EROOT}/etc/pulse/client.conf and disable"
+		elog "autospawning of the original daemon by setting:"
 		elog
 		elog "  autospawn = no"
 		elog
@@ -258,10 +260,10 @@ pkg_postinst() {
 		elog "#\"/usr/bin/pipewire\" = { args = \"-c pipewire-pulse.conf\" }"
 		elog
 		elog "NOTE:"
-		elog "Starting with PipeWire-0.3.30, package is no longer installing config"
+		elog "Starting with PipeWire-0.3.30, this package is no longer installing its config"
 		elog "into ${EROOT}/etc/pipewire by default. In case you need to change"
-		elog "config, please start by copying default config from ${EROOT}/usr/share/pipewire"
-		elog "and just override sections you want to change."
+		elog "its config, please start by copying default config from ${EROOT}/usr/share/pipewire"
+		elog "and just override the sections you want to change."
 	fi
 
 	elog "For latest tips and tricks, troubleshooting information and documentation"
@@ -270,6 +272,7 @@ pkg_postinst() {
 
 	optfeature_header "The following can be installed for optional runtime features:"
 	optfeature "restricted realtime capabilities via D-Bus" sys-auth/rtkit
+
 	# Once hsphfpd lands in tree, both it and ofono will need to be checked for presence here!
 	if use bluetooth; then
 		optfeature "better BT headset support (daemon startup required)" net-misc/ofono
