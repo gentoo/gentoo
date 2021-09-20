@@ -38,10 +38,6 @@ PDEPEND="dev-python/nltk-data"
 
 distutils_enable_tests pytest
 
-PATCHES=(
-	"${FILESDIR}"/${P}-metadata.patch
-)
-
 src_prepare() {
 	# requires unpackaged pycrfsuite
 	sed -i -e '/>>>/s@$@ # doctest: +SKIP@' nltk/tag/crf.py || die
