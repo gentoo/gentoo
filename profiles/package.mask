@@ -188,6 +188,11 @@ dev-python/oauth2
 # bug #797325.
 =dev-libs/openssl-3.0*
 
+# Craig Andrews <candrews@gentoo.org> (2021-09-20)
+# Requires OpenSSL >= 3.0.0
+# Masked until dev-libs/openssl-3.0* is unmasked
+=dev-libs/gost-engine-3.0*
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-09-07)
 # EAPI-5, dead upstream, last (and only) version added in 2011
 # Bug 644344; Removal on 2021-10-07.
