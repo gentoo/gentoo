@@ -41,6 +41,9 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# require old sqlalchemy
 		dask/dataframe/io/tests/test_sql.py
+		# https://github.com/dask/dask/issues/8137
+		# https://github.com/dask/dask/pull/8139
+		dask/dataframe/tests/test_groupby.py::test_groupby_index_array
 	)
 
 	epytest -p no:flaky -m "not network"
