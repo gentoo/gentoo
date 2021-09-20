@@ -33,3 +33,11 @@ src_install() {
 
 	dodoc MemTest86_User_Guide_UEFI.pdf
 }
+
+pkg_postinst() {
+	mount-boot_pkg_postinst
+
+	if [ ! -e /sys/firmware/efi ]; then
+		ewarn "WARNING: You appear to be booted in BIOS mode but ${PN} is an EFI-only tool."
+	fi
+}
