@@ -22,7 +22,7 @@ COMMON_DEPEND="
 	dev-libs/openssl:0=
 	net-misc/curl
 	sys-apps/util-linux
-	sys-libs/ncurses:=[unicode]
+	sys-libs/ncurses:=[unicode(+)]
 	virtual/libcrypt:=
 	gpg? ( app-crypt/gpgme:= )
 	libnotify? ( x11-libs/libnotify )
