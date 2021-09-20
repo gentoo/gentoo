@@ -194,8 +194,9 @@ src_install() {
 	# remove upstream init scripts and systemd units
 	rm -f "${D}"/etc/init.d/bareos-* "${D}"/lib/systemd/system/bareos-*.service
 
-	# remove misc stuffwe do not need in production
+	# remove misc stuff we do not need in production
 	rm -f "${D}"/etc/bareos/bareos-regress.conf
+	rm -f "${D}"/etc/logrotate.d/bareos-dir
 
 	# get rid of py2 stuff if USE=-vmware
 	if ! use vmware; then
