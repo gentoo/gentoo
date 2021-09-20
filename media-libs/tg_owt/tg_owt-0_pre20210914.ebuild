@@ -8,7 +8,7 @@ inherit cmake
 DESCRIPTION="WebRTC build for Telegram"
 HOMEPAGE="https://github.com/desktop-app/tg_owt"
 
-TG_OWT_COMMIT="91d836dc84a16584c6ac52b36c04c0de504d9c34"
+TG_OWT_COMMIT="575fb17d2853c43329e45f6693370f5e41668055"
 LIBYUV_COMMIT="ad890067f661dc747a975bc55ba3767fe30d4452"
 SRC_URI="https://github.com/desktop-app/tg_owt/archive/${TG_OWT_COMMIT}.tar.gz -> ${P}.tar.gz
 	https://archive.org/download/libyuv-${LIBYUV_COMMIT}.tar/libyuv-${LIBYUV_COMMIT}.tar.gz"
@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-${TG_OWT_COMMIT}"
 
 LICENSE="BSD"
 SLOT="0/${PV##*pre}"
-KEYWORDS="amd64 ~ppc64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE="screencast +X"
 
 # This package's USE flags may change the ABI and require a rebuild of
@@ -104,6 +104,9 @@ src_install() {
 	cmake_src_install
 
 	# Save about 15MB of useless headers
+	rm -r "${ED}/usr/include/tg_owt/base/third_party" || die
+	rm -r "${ED}/usr/include/tg_owt/common_audio/third_party" || die
+	rm -r "${ED}/usr/include/tg_owt/modules/third_party" || die
 	rm -r "${ED}/usr/include/tg_owt/third_party" || die
 
 	# Install third_party/libyuv anyway...
