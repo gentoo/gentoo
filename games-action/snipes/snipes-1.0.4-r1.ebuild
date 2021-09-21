@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop flag-o-matic toolchain-funcs
+inherit desktop flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="2D scrolling shooter, resembles the old DOS game of same name"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -23,16 +23,13 @@ PATCHES=(
 src_compile() {
 	tc-export CC LD
 
-	# lld requires arch flags to be passed even if native (bug #730852)
-	local archflags=
-	tc-ld-is-lld && eval archflags=\${LDFLAGS_${ARCH}}
-
-	LDLIBS=-lm emake RAW_LDFLAGS="${archflags} $(raw-ldflags)"
+	# lld requires abi flags to be passed even if native (bug #730852)
+	LDLIBS=-lm emake RAW_LDFLAGS="$(get_abi_LDFLAGS) $(raw-ldflags)"
 }
 
 src_install() {
-	dobin snipes
-	doman snipes.6
+	dobin ${PN}
+	doman ${PN}.6
 	einstalldocs
 
 	doicon ${PN}.png
