@@ -108,6 +108,7 @@ php
 policykit
 qdbm
 R
+rdma
 samba
 slang
 systemd
