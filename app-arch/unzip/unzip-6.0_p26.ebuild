@@ -76,7 +76,7 @@ src_configure() {
 }
 
 src_compile() {
-	ASFLAGS="${ASFLAGS} $(get_abi_var CFLAGS)" \
+	ASFLAGS="${ASFLAGS} $(get_abi_CFLAGS)" \
 		emake -f unix/Makefile ${TARGET}
 }
 
