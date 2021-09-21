@@ -19,10 +19,6 @@ dev-lang/python:3.6
 # Python 2, you should really look into moving away from it.
 dev-lang/python:2.7
 
-# Fabian Groffen <grobian@gentoo.org> (2017-04-15)
-# reentrant patch breaks prefix option, bug #615560
-=sys-devel/flex-2.6.3-r1
-
 # Elias Pipping <pipping@gentoo.org> (2007-10-09)
 # darwin-miscutils are only available on darwin
 sys-apps/darwin-miscutils
