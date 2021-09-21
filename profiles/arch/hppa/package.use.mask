@@ -53,10 +53,6 @@ app-text/enchant voikko
 # Requires sci-mathematics/z3.
 dev-util/cppcheck z3
 
-# Michał Górny <mgorny@gentoo.org> (2020-11-18)
-# Requires dev-python/coverage, bug #743355.
-dev-python/nose coverage
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
 # media-sound/lash not keyworded, bug #736725
 media-sound/fluidsynth lash

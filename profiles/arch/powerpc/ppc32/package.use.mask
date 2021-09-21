@@ -153,10 +153,6 @@ sys-devel/clang-runtime openmp sanitize
 # Cannot test non-free dependency dev-libs/device-atlas-api-c
 net-proxy/haproxy device-atlas
 
-# Bernard Cafarelli <voyageur@gentoo.org> (2017-01-25)
-# Requires a Java dependency
-app-text/tesseract scrollview
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2016-12-13)
 # Dropping ppc from sci-libs/armadillo, bug 555896
 sci-libs/gdal armadillo
@@ -176,10 +172,6 @@ net-irc/kvirc kde
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2016-06-28)
 # Missing keywords on app-text/gspell - bug #587368
 >=app-editors/gedit-3.20 spell
-
-# James Le Cuirot <chewi@gentoo.org> (2016-01-30)
-# scrollview requires Java, which is unsupported on ppc.
-app-text/tesseract scrollview
 
 # James Le Cuirot <chewi@gentoo.org> (2015-01-12)
 # Java is no longer supported on ppc.

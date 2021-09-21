@@ -151,10 +151,6 @@ media-tv/kodi system-ffmpeg
 # (probably after stabilization of refind-0.11.4).
 sys-boot/refind gnuefi
 
-# Mike Gilbert <floppym@gentoo.org> (2016-10-13)
-# Python without threads breaks in many ways.
-dev-lang/python threads
-
 # Maciej Mrozowski <reavertm@gentoo.org> (2016-09-01)
 # Workaround until resolved upstream (bug #586840)
 >=dev-games/simgear-2016.2.1 dns
@@ -189,12 +185,6 @@ dev-lang/python-exec python_targets_pypy3
 # bug #315615, and makes subshell die support more robust
 # (so that repoman's ebuild.nesteddie check is irrelevant).
 sys-apps/portage ipc
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
-# Python should use wide Unicode implementation by default.
-# Switching of "wide-unicode" USE flag changes ABI of Python
-# and requires reinstallation of many Python modules.
-dev-lang/python wide-unicode
 
 # Peter Alfredsen <loki_val@gentoo.org> (2009-04-11)
 # Forcing w.r.t. bug 265336. When unicode use-flag is

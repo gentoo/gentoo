@@ -317,11 +317,6 @@ dev-python/statsmodels doc
 >=sys-libs/glibc-2.33-r2 crypt
 <sys-libs/libxcrypt-4.4.23-r1 split-usr system
 
-# Michał Górny <mgorny@gentoo.org> (2019-10-05)
-# net-libs/openslp is being removed.
-sys-block/open-iscsi slp
-sys-block/open-isns slp
-
 # Craig Andrews <candrews@gentoo.org> (2019-09-12)
 # OpenSSL (as of version 1.1.1) doesn't have APIs for QUIC support
 # see https://github.com/openssl/openssl/pull/8797
@@ -593,10 +588,6 @@ net-analyzer/nmap system-lua
 # Mike Frysinger <vapier@gentoo.org> (2014-10-21)
 # Most targets do not support ASAN/etc... #504200.
 sys-devel/gcc sanitize
-
-# Rick Farina <zerochaos@gentoo.org> (2014-08-26)
-# mirisdr does not seem to like making releases
-<net-wireless/gr-osmosdr-9999 mirisdr
 
 # Mike Frysinger <vapier@gentoo.org> (2014-02-03)
 # Upstream says to not use this for now.

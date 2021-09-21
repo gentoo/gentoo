@@ -99,11 +99,9 @@ ieee1394
 darcs
 bs2b
 ggi
-nut
 dvd
 fits
 lpsol
-quvi
 zvbi
 gts
 anthy

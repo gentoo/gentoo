@@ -111,7 +111,7 @@ www-servers/uwsgi uwsgi_plugins_rados
 # Thomas Deutschmann <whissi@gentoo.org> (2019-02-26)
 # nginx_modules_http_lua requires USE=luajit which requires
 # dev-lang/luajit which is not keyworded on PowerPC
-www-servers/nginx luajit nginx_modules_http_lua
+www-servers/nginx nginx_modules_http_lua
 
 # Alon Bar-Lev <alonbl@gentoo.org> (2018-12-21)
 # Requires USE=dane that is masked in this profile.
@@ -272,10 +272,6 @@ media-libs/opencv vtk
 # Pacho Ramos <pacho@gentoo.org> (2013-02-22)
 # Missing keywords, bug #495250
 >=gnome-base/gnome-extra-apps-3.10 tracker
-
-# Pacho Ramos <pacho@gentoo.org> (2014-02-10)
-# Missing keywords, bug #495254
->=dev-libs/totem-pl-parser-3.10 quvi
 
 # Pacho Ramos <pacho@gentoo.org> (2013-11-28)
 # Missing keywords, bug #492820

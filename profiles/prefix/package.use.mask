@@ -17,7 +17,7 @@ sys-apps/debianutils installkernel
 
 # Michael Haubenwallner <haubi@gentoo.org> (2019-05-02)
 # gold is linux only, and is required by cxx
-sys-devel/binutils cxx gold default-gold
+sys-devel/binutils gold default-gold
 
 # Fabian Groffen <grobian@gentoo.org> (2018-12-27)
 # USE-dep fixing, bugs #665088, #667266, #671730, 

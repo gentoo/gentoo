@@ -316,10 +316,6 @@ sci-mathematics/flint ntl
 # unmask scanner for net-print/hplip, bug #518456
 media-sound/moc timidity
 
-# James Le Cuirot <chewi@gentoo.org> (2016-01-30)
-# scrollview requires SWT, which is currently unsupported on ARM.
-app-text/tesseract scrollview
-
 # Brian Evans <grknight@gentoo.org> (2015-11-23)
 # unmask galera for dev-db/mariadb
 >=dev-db/mariadb-10.1.0 -galera

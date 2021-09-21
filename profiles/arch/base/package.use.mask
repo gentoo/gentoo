@@ -63,13 +63,6 @@ sci-mathematics/gmp-ecm custom-tune
 # (See 9.3.8 in the Guile manual)
 dev-scheme/guile jit
 
-# Sam James <sam@gentoo.org> (2020-09-20)
-# (for Mikle Kolyada <zlogene@gentoo.org>)
-# libgcrypt et al no longer support static-libs
-# Need to determine whether dar's static use
-# is worthwhile without it.
-app-backup/dar static static-libs
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-07)
 # dev-util/nvidia-cuda-toolkit is only available on amd64
 app-metrics/collectd collectd_plugins_gpu_nvidia
@@ -121,7 +114,6 @@ dev-qt/qt3d vulkan
 dev-qt/qtdeclarative vulkan
 dev-qt/qtgui vulkan
 dev-qt/qtwayland vulkan
-media-video/pipewire vulkan
 
 # dev-python/pandas is only keyworded for amd64 & x86
 sys-block/fio python gnuplot

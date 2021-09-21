@@ -162,7 +162,6 @@ dev-qt/qt3d -vulkan
 dev-qt/qtdeclarative -vulkan
 dev-qt/qtgui -vulkan
 dev-qt/qtwayland -vulkan
-media-video/pipewire -vulkan
 
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-04)
 # zfs is not keyworded on x86
