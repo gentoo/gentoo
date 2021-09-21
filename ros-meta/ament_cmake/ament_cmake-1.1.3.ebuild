@@ -23,9 +23,7 @@ HOMEPAGE="https://github.com/ament/ament_cmake"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-if [ "${PV#9999}" != "${PV}" ] ; then
-	KEYWORDS=""
-else
+if [[ "${PV#9999}" == "${PV}" ]] ; then
 	KEYWORDS="~amd64"
 fi
 IUSE=""
