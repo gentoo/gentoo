@@ -55,10 +55,6 @@ RDEPEND="${COMMON_DEPEND}
 
 PDEPEND="netifrc? ( net-misc/netifrc )"
 
-PATCHES=(
-	"${FILESDIR}/${P}-fix-build.patch"
-)
-
 src_configure() {
 	local emesonargs=(
 	$(meson_feature audit)
