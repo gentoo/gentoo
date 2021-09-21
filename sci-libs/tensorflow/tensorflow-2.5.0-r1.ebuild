@@ -145,6 +145,9 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/0008-patch-ruy-for-gcc-11.patch"
+)
 DOCS=( AUTHORS CONTRIBUTING.md ISSUE_TEMPLATE.md README.md RELEASE.md )
 CHECKREQS_MEMORY="5G"
 CHECKREQS_DISK_BUILD="10G"
@@ -187,6 +190,8 @@ src_prepare() {
 	export JAVA_HOME=$(java-config --jre-home) # so keepwork works
 
 	append-flags $(get-cpu-flags)
+	append-cxxflags -std=c++14 # bug 787938
+	filter-flags '-fvtable-verify=@(std|preinit)'
 	bazel_setup_bazelrc
 
 	eapply "${WORKDIR}"/patches/*.patch
@@ -356,7 +361,7 @@ src_compile() {
 }
 
 src_install() {
-	local i j
+	local i l
 	export JAVA_HOME=$(java-config --jre-home) # so keepwork works
 	export KERAS_HOME="${T}/.keras" # otherwise sandbox violation writing ~/.keras
 
