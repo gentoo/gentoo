@@ -10,13 +10,6 @@ inherit cmake llvm llvm.org multilib multilib-minimal \
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
 
-# Keep in sync with sys-devel/llvm
-ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY M68k VE )
-ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430
-	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
-	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
-ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
-
 # MSVCSetupApi.h: MIT
 # sorttable.js: MIT
 
@@ -24,9 +17,8 @@ LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS=""
 IUSE="debug default-compiler-rt default-libcxx default-lld
-	doc llvm-libunwind +static-analyzer test xml kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	|| ( ${ALL_LLVM_TARGETS[*]} )"
+	doc llvm-libunwind +static-analyzer test xml kernel_FreeBSD"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -34,11 +26,6 @@ RDEPEND="
 	static-analyzer? ( dev-lang/perl:* )
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	${PYTHON_DEPS}"
-for x in "${ALL_LLVM_TARGETS[@]}"; do
-	RDEPEND+="
-		${x}? ( ~sys-devel/llvm-${PV}:${SLOT}[${x}] )"
-done
-unset x
 
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -65,6 +52,7 @@ LLVM_TEST_COMPONENTS=(
 	llvm/utils/{UpdateTestChecks,update_cc_test_checks.py}
 )
 LLVM_PATCHSET=13.0.0-rc3
+LLVM_USE_TARGETS=llvm
 llvm.org_set_globals
 
 # Multilib notes:
