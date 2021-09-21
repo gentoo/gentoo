@@ -41,6 +41,11 @@ RDEPEND="${COMMON_DEPEND}
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/jconfig.h )
 
+PATCHES=(
+	# Upstream patch
+	"${FILESDIR}"/${P}-arm64-relro.patch
+)
+
 src_prepare() {
 	local FILE
 	ln -snf ../debian/extra/*.c . || die
