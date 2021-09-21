@@ -1,10 +1,14 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# @NAME: stardict.eclass
-# @AUTHOR: Alastair Tse <liquidx@gentoo.org>
+# @ECLASS: stardict.eclass
+# @MAINTAINER:
+# No maintainer <maintainer-needed@gentoo.org>
+# @AUTHOR:
+# Alastair Tse <liquidx@gentoo.org>
 # @SUPPORTED_EAPIS: 6 7
 # @BLURB: Convenience class to do stardict dictionary installations.
+# @DESCRIPTION:
 # Usage:
 #   - Variables to set :
 #      * FROM_LANG     -  From this language
