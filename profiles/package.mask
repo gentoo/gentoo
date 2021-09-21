@@ -220,12 +220,6 @@ dev-util/trinity
 # Should be safe to unmask if you are using x11-wm/mutter instead.
 >=gui-libs/egl-wayland-1.1.8
 
-# Sam James <sam@gentoo.org> (2021-09-03)
-# Mask broken version of setuptools_scm with
-# missing runtime dependency.
-# bug #811504
-=dev-python/setuptools_scm-6.3.0
-
 # David Seifert <soap@gentoo.org> (2021-08-29)
 # Broken for the past 5 years (#585942), no new upstream release in over
 # 5 years. Same issues as sci-biology/wgs-assembler, use a modern
@@ -258,15 +252,6 @@ net-vpn/ipsec-tools
 # Bernard Cafarelli <voyageur@gentoo.org> (2021-08-26)
 # Preparing for final 5.0.0 release
 >=app-text/tesseract-5.0.0_beta
-
-# David Seifert <soap@gentoo.org> (2021-08-04)
-# Last release over 4 years ago, upstream pretty much dead, the
-# ecosystem has switched to dev-util/pkgconf, which is alive. Testing
-# and prefix bugs, blocks WANT_AUTOMAKE=1.12 removal.
-# (If you hit blockers, please run:
-# $ emerge --deselect dev-util/pkgconfig
-# This is necessary as your world file should not contain dependencies.)
-dev-util/pkgconfig
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-08-02)
 # Depends on Qt5WebKit with more holes in it than swiss cheese. Bug #685750
@@ -360,7 +345,6 @@ sys-libs/db:5.1
 # Mask gcc-7 branch (ended upstream support). Please switch
 # to a fresher gcc branch.
 <sys-devel/gcc-8
-<dev-util/nvidia-cuda-toolkit-10
 <dev-util/nvidia-cuda-sdk-10
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2021-05-16)
@@ -442,10 +426,7 @@ media-plugins/kodi-game-libretro-dosbox
 # Mismatched version (bug #695022). Masked to force upgrade to 2.0.4_pre20200306162733.
 # (Mask should remain after ebuilds are deleted, until 2021-03-01 or
 # until new upstream release with proper versioning.)
-~app-i18n/sunpinyin-3.0.0_rc1
-~app-i18n/ibus-sunpinyin-3.0.0_rc1
 ~app-i18n/scim-sunpinyin-3.0.0_rc1
-~app-i18n/xsunpinyin-3.0.0_rc1
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2020-02-27)
 # >=dev-java/ant-eclipse-ecj-4.10 depends on masked >=virtual/{jdk,jre}-11
@@ -523,7 +504,6 @@ virtual/jre:11
 # (isolated) use case, feel free to unmask them on your system.
 <sys-libs/glibc-2.33
 <sys-devel/binutils-2.35.2
-<sys-devel/binutils-hppa64-2.35.2
 
 # Michael Orlitzky <mjo@gentoo.org> (2017-01-07)
 # This package has some dangerous quality and security issues, but
