@@ -30,11 +30,13 @@ dev-python/cython doc
 dev-python/cffi doc
 dev-python/cssselect doc
 dev-python/execnet doc
+dev-python/greenlet doc
 dev-python/jinja doc
 dev-python/lxml doc
 dev-python/py doc
 dev-python/pyasn1 doc
 dev-python/pygments doc
+dev-python/pytest-cov doc
 dev-python/smartypants doc
 
 # James Le Cuirot <chewi@gentoo.org> (2021-08-21)
