@@ -29,6 +29,12 @@ python_test() {
 	virtx epytest -p no:django
 }
 
+src_install() {
+	distutils-r1_src_install
+	# those examples use various assets and pre-compressed files
+	docompress -x /usr/share/doc/${PF}/examples
+}
+
 pkg_postinst() {
 	optfeature "recommended dependencies" "dev-python/matplotlib dev-python/numpy dev-python/pandas dev-python/scipy"
 	optfeature "graph drawing and graph layout algorithms" "dev-python/pygraphviz dev-python/pydot"
