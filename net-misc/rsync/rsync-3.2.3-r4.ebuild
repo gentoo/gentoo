@@ -81,7 +81,7 @@ src_configure() {
 		myeconfargs+=( --disable-simd )
 	fi
 
-	econf "${myeconfargs[@]}"
+	econf --disable-asm "${myeconfargs[@]}"
 }
 
 src_install() {
