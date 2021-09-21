@@ -35,7 +35,7 @@ else
 		https://dev.gentoo.org/~${PATCH_DEV}/distfiles/binutils-${PATCH_BINUTILS_VER}-patches-${PATCH_VER}.tar.xz"
 	SLOT=$(ver_cut 1-2)
 	# live ebuild
-	KEYWORDS="-* ~hppa"
+	KEYWORDS="-* hppa"
 fi
 
 #
