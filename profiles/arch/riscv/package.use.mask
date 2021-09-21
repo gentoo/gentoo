@@ -75,8 +75,6 @@ gnome-base/gdm accessibility
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # dependencies not keyworded/tested
-kde-apps/marble webengine geolocation gps
-kde-plasma/plasma-desktop emoji
 kde-plasma/plasma-meta accessibility grub plymouth pulseaudio
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-17)
