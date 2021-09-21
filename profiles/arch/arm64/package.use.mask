@@ -290,7 +290,6 @@ net-fs/samba addc addns ads cluster python test
 
 # Michał Górny <mgorny@gentoo.org> (2018-03-03)
 # Some more unkeyworded dependencies.
-app-text/tesseract scrollview
 dev-cpp/eigen test
 mate-base/mate help
 mate-base/mate-applets-meta appindicator sensors
@@ -305,7 +304,6 @@ www-client/vivaldi-snapshot widevine
 # Michał Górny <mgorny@gentoo.org> (2018-02-17)
 # Requires unkeyworded dependencies.
 dev-python/ipython notebook
-dev-python/networkx scipy
 dev-ruby/haml test
 
 # Michał Górny <mgorny@gentoo.org> (2018-02-16)

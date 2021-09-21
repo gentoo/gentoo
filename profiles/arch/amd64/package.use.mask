@@ -136,7 +136,6 @@ dev-qt/qt3d -vulkan
 dev-qt/qtdeclarative -vulkan
 dev-qt/qtgui -vulkan
 dev-qt/qtwayland -vulkan
-media-video/pipewire -vulkan
 
 # James Le Cuirot <chewi@gentoo.org> (2019-12-10)
 # The JIT feature only works on amd64 and x86.

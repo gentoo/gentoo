@@ -1,10 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 sys-apps/hwloc gl
 
 sys-devel/gcc -hardened
-sys-libs/glibc -hardened
 
 # Ian Stakenvicius <axs@gentoo.org> (2014-12-03)
 # Have no way of knowing what Gecko Media Plugins will install in profiles

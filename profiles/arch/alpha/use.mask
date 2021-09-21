@@ -109,7 +109,6 @@ v4l
 vpx
 kde
 kwallet
-quvi
 metalink
 tremor
 fdk

@@ -354,10 +354,6 @@ app-office/planner eds
 # Missing keywords, bug #560382
 media-video/ffmpeg snappy
 
-# James Le Cuirot <chewi@gentoo.org> (2016-01-30)
-# scrollview requires Java, which is unsupported on SPARC.
-app-text/tesseract scrollview
-
 # Justin Lecher <jlec@gentoo.org> (2015-11-18)
 # requires dev-python/restkit which requires
 # dev-python/socketpool which requires dev-python/gevent which requires
@@ -435,10 +431,6 @@ net-misc/modemmanager mbim
 # Pacho Ramos <pacho@gentoo.org> (2014-02-22)
 # Missing keywords, bug #495250
 >=gnome-base/gnome-extra-apps-3.10 tracker
-
-# Pacho Ramos <pacho@gentoo.org> (2014-02-10)
-# Missing keywords, bug #495254
->=dev-libs/totem-pl-parser-3.10 quvi
 
 # Raúl Porcel <armin76@gentoo.org> (2014-02-01)
 # Sigbuses

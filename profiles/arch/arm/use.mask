@@ -75,7 +75,6 @@ mtp
 ieee1394
 darcs
 ggi
-nut
 fits
 vaapi
 lpsol
