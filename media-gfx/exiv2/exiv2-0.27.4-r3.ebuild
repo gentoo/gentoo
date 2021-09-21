@@ -21,7 +21,7 @@ HOMEPAGE="https://www.exiv2.org/"
 
 LICENSE="GPL-2"
 SLOT="0/27"
-IUSE="doc examples nls +png test webready +xmp bmff"
+IUSE="doc examples nls +png test webready +xmp +bmff"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
