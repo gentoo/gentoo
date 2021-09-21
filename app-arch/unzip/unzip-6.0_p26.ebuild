@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs flag-o-matic
+inherit flag-o-matic multilib toolchain-funcs
 
 MY_PV="${PV//.}"
 MY_PV="${MY_PV%_p*}"
