@@ -69,7 +69,9 @@ src_prepare() {
 		eapply "${WORKDIR}/patches/"*.patch
 	fi
 
+	# Upstream patches
 	eapply "${FILESDIR}"/${P}-CVE-2021-3781.patch
+	eapply "${FILESDIR}"/${P}-makefile-deps.patch
 
 	default
 
