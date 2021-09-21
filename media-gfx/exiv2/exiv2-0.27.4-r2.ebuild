@@ -21,7 +21,7 @@ HOMEPAGE="https://www.exiv2.org/"
 
 LICENSE="GPL-2"
 SLOT="0/27"
-IUSE="doc examples nls +png test webready +xmp"
+IUSE="+bmff doc examples nls +png test webready +xmp"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -78,6 +78,7 @@ multilib_src_configure() {
 		-DEXIV2_ENABLE_SSH=$(usex webready)
 		-DEXIV2_ENABLE_WEBREADY=$(usex webready)
 		-DEXIV2_ENABLE_XMP=$(usex xmp)
+		-DEXIV2_ENABLE_BMFF=$(usex bmff)
 		$(multilib_is_native_abi || echo -DEXIV2_BUILD_EXIV2_COMMAND=NO)
 		$(multilib_is_native_abi && echo -DEXIV2_BUILD_DOC=$(usex doc))
 		$(multilib_is_native_abi && echo -DEXIV2_BUILD_UNIT_TESTS=$(usex test))
