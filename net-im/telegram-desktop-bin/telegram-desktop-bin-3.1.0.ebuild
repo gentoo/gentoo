@@ -22,10 +22,7 @@ RDEPEND="
 	dev-libs/glib:2
 	>=media-libs/fontconfig-2.13
 	media-libs/freetype:2
-	sys-libs/zlib
 	virtual/opengl
-	x11-libs/libSM
-	x11-libs/libdrm
 	x11-libs/libX11
 	>=x11-libs/libxcb-1.10[xkb]
 "
