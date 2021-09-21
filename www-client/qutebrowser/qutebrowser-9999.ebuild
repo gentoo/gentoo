@@ -1,18 +1,18 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..9} )
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
-inherit desktop distutils-r1 git-r3 optfeature xdg-utils
+inherit desktop distutils-r1 git-r3 optfeature xdg
 
-DESCRIPTION="A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine"
+DESCRIPTION="Keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine"
 HOMEPAGE="https://www.qutebrowser.org/ https://github.com/qutebrowser/qutebrowser"
 EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 IUSE="scripts test"
 
@@ -22,7 +22,7 @@ RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/cssutils[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' python3_{7,8})
+	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' python3_8)
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
@@ -88,14 +88,7 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	optfeature "PDF display support" www-plugins/pdfjs
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-}
+	xdg_pkg_postinst
 
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
+	optfeature "PDF display support" www-plugins/pdfjs
 }

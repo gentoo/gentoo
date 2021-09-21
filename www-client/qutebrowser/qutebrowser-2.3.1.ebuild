@@ -1,24 +1,24 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
-inherit desktop distutils-r1 optfeature xdg-utils
+inherit desktop distutils-r1 optfeature xdg
 
-DESCRIPTION="A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine"
+DESCRIPTION="Keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine"
 HOMEPAGE="https://www.qutebrowser.org/ https://github.com/qutebrowser/qutebrowser"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+adblock test"
 
 BDEPEND="app-text/asciidoc"
 RDEPEND=">=dev-python/colorama-0.4.4[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' python3_{7,8})
+	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' python3_8)
 	>=dev-python/jinja-3.0.1[${PYTHON_USEDEP}]
 	>=dev-python/markupsafe-2.0.1[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
@@ -53,7 +53,7 @@ python_install_all() {
 	doins misc/userscripts/README.md
 	exeinto /usr/share/qutebrowser/userscripts
 	for f in misc/userscripts/*; do
-		if [[ "${f}" == "__pycache__" ]]; then
+		if [[ ${f} == __pycache__ ]]; then
 			continue
 		fi
 		doexe "${f}"
@@ -61,13 +61,13 @@ python_install_all() {
 
 	exeinto /usr/share/qutebrowser/scripts
 	for f in scripts/*; do
-		if [[ "${f}" == "scripts/__init__.py" || \
-		      "${f}" == "scripts/__pycache__" || \
-		      "${f}" == "scripts/dev" || \
-		      "${f}" == "scripts/testbrowser" || \
-		      "${f}" == "scripts/asciidoc2html.py" || \
-		      "${f}" == "scripts/setupcommon.py" || \
-		      "${f}" == "scripts/link_pyqt.py" ]]; then
+		if [[ ${f} == scripts/__init__.py ||
+		      ${f} == scripts/__pycache__ ||
+		      ${f} == scripts/dev ||
+		      ${f} == scripts/testbrowser ||
+		      ${f} == scripts/asciidoc2html.py ||
+		      ${f} == scripts/setupcommon.py ||
+		      ${f} == scripts/link_pyqt.py ]]; then
 			continue
 		fi
 		doexe "${f}"
@@ -77,14 +77,7 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	optfeature "PDF display support" www-plugins/pdfjs
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-}
+	xdg_pkg_postinst
 
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
+	optfeature "PDF display support" www-plugins/pdfjs
 }
