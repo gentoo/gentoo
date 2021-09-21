@@ -1,0 +1,37 @@
+diff --git a/third_party/ruy/commit-3c93cda.patch b/third_party/ruy/commit-3c93cda.patch
+new file mode 100644
+index 00000000000..e530a842717
+--- /dev/null
++++ b/third_party/ruy/commit-3c93cda.patch
+@@ -0,0 +1,21 @@
++From 3c93cda8211efa01128d48950f0d6ee5233c5b9b Mon Sep 17 00:00:00 2001
++From: stha09 <51720730+stha09@users.noreply.github.com>
++Date: Thu, 6 May 2021 18:31:30 +0200
++Subject: [PATCH] IWYU: include limits for std::numeric_limits (#253)
++
++---
++ ruy/block_map.cc | 1 +
++ 1 file changed, 1 insertion(+)
++
++diff --git a/ruy/block_map.cc b/ruy/block_map.cc
++index 6c01e52a02..e04e7aff4a 100644
++--- a/ruy/block_map.cc
+++++ b/ruy/block_map.cc
++@@ -17,6 +17,7 @@ limitations under the License.
++ 
++ #include <algorithm>
++ #include <cstdint>
+++#include <limits>
++ 
++ #ifdef RUY_MAKEBLOCKMAP_DEBUG
++ #include <cstdio>
+diff --git a/third_party/ruy/workspace.bzl b/third_party/ruy/workspace.bzl
+index 50769621770..7e91d640469 100644
+--- a/third_party/ruy/workspace.bzl
++++ b/third_party/ruy/workspace.bzl
+@@ -12,4 +12,5 @@ def repo():
+             "https://github.com/google/ruy/archive/54774a7a2cf85963777289193629d4bd42de4a59.zip",
+         ],
+         build_file = "//third_party/ruy:BUILD",
++        patch_file = "//third_party/ruy:commit-3c93cda.patch"
+     )
