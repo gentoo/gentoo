@@ -19,6 +19,7 @@ RDEPEND="
 	acct-group/i2pd
 	dev-libs/boost:=[threads(+)]
 	dev-libs/openssl:0=[-bindist(-)]
+	sys-libs/zlib
 	upnp? ( net-libs/miniupnpc:= )"
 DEPEND="${RDEPEND}"
 
