@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome2-utils
+inherit gnome2-utils xdg
 
 DESCRIPTION="A simple MTP client for MP3 players"
 HOMEPAGE="http://gmtp.sourceforge.net/"
@@ -32,16 +32,16 @@ src_configure() {
 }
 
 pkg_preinst() {
-	gnome2_icon_savelist
+	xdg_pkg_preinst
 	gnome2_schemas_savelist
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_pkg_postinst
 	gnome2_schemas_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_pkg_postrm
 	gnome2_schemas_update
 }

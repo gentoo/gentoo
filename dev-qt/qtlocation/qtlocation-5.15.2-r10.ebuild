@@ -9,6 +9,8 @@ inherit qt5-build
 DESCRIPTION="Location (places, maps, navigation) library for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
+	MAPBOXGL_COMMIT=d3101bbc22edd41c9036ea487d4a71eabd97823d
+	SRC_URI+=" https://invent.kde.org/qt/qt/${PN}-mapboxgl/-/archive/${MAPBOXGL_COMMIT}/${PN}-mapboxgl-${MAPBOXGL_COMMIT}.tar.gz -> ${PN}-mapboxgl-${PV}-${MAPBOXGL_COMMIT:0:8}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
@@ -38,6 +40,13 @@ QT5_TARGET_SUBDIRS=(
 	src/imports/locationlabs
 	src/plugins/geoservices
 )
+
+if [[ ${QT5_BUILD_TYPE} == release ]]; then
+src_prepare() {
+	mv "${WORKDIR}"/${PN}-mapboxgl-${MAPBOXGL_COMMIT}/* src/3rdparty/mapbox-gl-native || die
+	qt5-build_src_prepare
+}
+fi
 
 src_configure() {
 	# src/plugins/geoservices requires files that are only generated when

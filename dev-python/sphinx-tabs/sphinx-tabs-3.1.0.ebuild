@@ -13,7 +13,7 @@ SRC_URI="https://github.com/executablebooks/sphinx-tabs/archive/v${PV}.tar.gz ->
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~x86"
 
 RDEPEND="
 	dev-python/docutils[${PYTHON_USEDEP}]
@@ -22,7 +22,7 @@ RDEPEND="
 
 BDEPEND="
 	test? (
-		dev-python/beautifulsoup[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/pytest-regressions[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/sphinx-testing[${PYTHON_USEDEP}]

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-mod linux-info
+inherit linux-mod linux-info toolchain-funcs
 
 SRC_URI="https://dev.gentoo.org/~slashbeast/distfiles/${PN}/${P}.tar.xz"
 KEYWORDS="~amd64 ~x86"
@@ -26,7 +26,7 @@ pkg_setup() {
 	linux-mod_pkg_setup
 
 	BUILD_TARGETS="modules"
-	BUILD_PARAMS="CC=$(tc-getBUILD_CC) KERNEL_BUILD=${KERNEL_DIR}"
+	BUILD_PARAMS="CC=$(tc-getCC) KERNEL_BUILD=${KERNEL_DIR}"
 }
 
 src_install() {

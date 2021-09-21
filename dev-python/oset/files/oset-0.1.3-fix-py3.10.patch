@@ -1,0 +1,14 @@
+--- a/src/oset/pyoset.py
++++ b/src/oset/pyoset.py
+@@ -13,7 +13,10 @@
+     def next(it):
+         return it.next()
+ else:
+-    from collections import MutableSet
++    try:
++        from collections.abc import MutableSet
++    except ImportError:
++        from collections import MutableSet
+
+ KEY, PREV, NEXT = range(3)
+

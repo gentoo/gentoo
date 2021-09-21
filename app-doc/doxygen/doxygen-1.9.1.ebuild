@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake flag-o-matic llvm python-any-r1
 if [[ ${PV} = *9999* ]]; then
@@ -11,7 +11,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/doxygen/doxygen.git"
 else
 	SRC_URI="http://doxygen.nl/files/${P}.src.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ~ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Documentation system for most programming languages"
@@ -59,6 +59,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.8.16-link_with_pthread.patch"
 	"${FILESDIR}/${PN}-1.8.17-ensure_static_support_libraries.patch"
 	"${FILESDIR}/${PN}-1.9.1-ignore-bad-encoding.patch"
+	"${FILESDIR}/${PN}-1.9.1-header-dep.patch"
 )
 
 DOCS=( LANGUAGE.HOWTO README.md )

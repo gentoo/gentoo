@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>polynomial-c@gentoo.org</email>
@@ -9,8 +9,18 @@
 		<email>chainsaw@gentoo.org</email>
 		<name>Tony Vroon</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>expeditioneer@gentoo.org</email>
+		<name>Dennis Lamm</name>
+	</maintainer>
 	<use>
 		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> instead of <pkg>dev-libs/botan</pkg></flag>
 		<flag name="samples">Install sample configuration files</flag>
 	</use>
+	<upstream>
+		<bugs-to>https://gitlab.isc.org/isc-projects/kea/-/issues</bugs-to>
+		<doc>https://kea.readthedocs.io</doc>
+		<remote-id type="cpe">cpe:/a:isc:kea</remote-id>
+		<remote-id type="github">isc-projects/kea</remote-id>
+	</upstream>
 </pkgmetadata>

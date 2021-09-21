@@ -4,7 +4,8 @@
 # @ECLASS: ecm.eclass
 # @MAINTAINER:
 # kde@gentoo.org
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
+# @PROVIDES: cmake
 # @BLURB: Support eclass for packages that use KDE Frameworks with ECM.
 # @DESCRIPTION:
 # This eclass is intended to streamline the creation of ebuilds for packages
@@ -21,15 +22,9 @@
 # any phase functions are overridden the version here should also be called.
 
 case ${EAPI} in
-	7) ;;
-	*) die "EAPI=${EAPI:-0} is not supported" ;;
+	7|8) ;;
+	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
 esac
-
-if [[ -v KDE_GCC_MINIMAL ]]; then
-	EXPORT_FUNCTIONS pkg_pretend
-fi
-
-EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test pkg_preinst pkg_postinst pkg_postrm
 
 if [[ -z ${_ECM_ECLASS} ]]; then
 _ECM_ECLASS=1
@@ -40,6 +35,8 @@ _ECM_ECLASS=1
 # Here we redefine default value to be manual, if your package needs virtualx
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
+
+inherit cmake flag-o-matic toolchain-funcs virtualx
 
 # @ECLASS-VARIABLE: ECM_NONGUI
 # @DEFAULT_UNSET
@@ -52,8 +49,6 @@ if [[ ${CATEGORY} = kde-frameworks ]] ; then
 	: ${ECM_NONGUI:=true}
 fi
 : ${ECM_NONGUI:=false}
-
-inherit cmake flag-o-matic toolchain-funcs virtualx
 
 if [[ ${ECM_NONGUI} = false ]] ; then
 	inherit xdg
@@ -154,7 +149,7 @@ fi
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: ${KFMIN:=$(ver_cut 1-2)}
 fi
-: ${KFMIN:=5.64.0}
+: ${KFMIN:=5.82.0}
 
 # @ECLASS-VARIABLE: KFSLOT
 # @INTERNAL
@@ -271,7 +266,7 @@ unset COMMONDEPEND
 # @DESCRIPTION:
 # Determine if the current GCC version is acceptable, otherwise die.
 _ecm_check_gcc_version() {
-	if [[ ${MERGE_TYPE} != binary && -v KDE_GCC_MINIMAL ]] && tc-is-gcc; then
+	if [[ ${MERGE_TYPE} != binary && -v ${KDE_GCC_MINIMAL} ]] && tc-is-gcc; then
 
 		local version=$(gcc-version)
 
@@ -535,12 +530,26 @@ ecm_src_test() {
 
 # @FUNCTION: ecm_src_install
 # @DESCRIPTION:
-# Wrapper for cmake_src_install. Currently doesn't do anything extra, but
-# is included as part of the API just in case it's needed in the future.
+# Wrapper for cmake_src_install. Drops executable bit from .desktop files
+# installed inside /usr/share/applications. This is set by cmake when install()
+# is called in PROGRAM form, as seen in many kde.org projects.
 ecm_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	cmake_src_install
+
+	# bug 621970
+	if [[ ${EAPI} != 7 ]]; then
+		if [[ -d "${ED}"/usr/share/applications ]]; then
+			local f
+			for f in "${ED}"/usr/share/applications/*.desktop; do
+				if [[ -x ${f} ]]; then
+					einfo "Removing executable bit from ${f#${ED}}"
+					fperms a-x "${f#${ED}}"
+				fi
+			done
+		fi
+	fi
 }
 
 # @FUNCTION: ecm_pkg_preinst
@@ -585,4 +594,14 @@ ecm_pkg_postrm() {
 	esac
 }
 
+fi
+
+if [[ -v ${KDE_GCC_MINIMAL} ]]; then
+	EXPORT_FUNCTIONS pkg_pretend
+fi
+
+EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test pkg_preinst pkg_postinst pkg_postrm
+
+if [[ ${EAPI} != 7 ]]; then
+	EXPORT_FUNCTIONS src_install
 fi

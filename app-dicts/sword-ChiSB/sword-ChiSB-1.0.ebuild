@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="The Studium Biblicum Version in traditional Chinese"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=ChiSB"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

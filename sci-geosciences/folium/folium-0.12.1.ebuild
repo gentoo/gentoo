@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 PATCHES=(
 	"${FILESDIR}"/${P}-scm.patch
 	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-setup.patch
 )
 
 RDEPEND="sci-libs/branca[${PYTHON_USEDEP}]
@@ -25,6 +26,7 @@ RDEPEND="sci-libs/branca[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}
 	test? (
 		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pandas[${PYTHON_USEDEP}]
 	)"
 BDEPEND=""
 
@@ -33,4 +35,8 @@ distutils_enable_tests pytest
 src_prepare() {
 	rm -r tests/selenium || die
 	default
+}
+
+python_test() {
+	epytest -m 'not web'
 }

@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Secure File Transfer Protocol client"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=dev-perl/Math-Int64-0.540.0

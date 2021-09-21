@@ -5,10 +5,6 @@
 # Needs Raspberry Pi specific applications
 media-video/mjpg-streamer -input-raspicam
 
-# Marek Szuba <marecki@gentoo.org> (2021-08-11)
-# dev-ruby/tty-editor not keyworded here yet (Bug #807685)
-app-text/htmltidy test
-
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2021-08-08)
 # dev-games/ogre doesn't build on arm64, see https://bugs.gentoo.org/806776#c12
 dev-games/mygui ogre
@@ -294,7 +290,6 @@ net-fs/samba addc addns ads cluster python test
 
 # Michał Górny <mgorny@gentoo.org> (2018-03-03)
 # Some more unkeyworded dependencies.
-app-text/tesseract scrollview
 dev-cpp/eigen test
 mate-base/mate help
 mate-base/mate-applets-meta appindicator sensors
@@ -309,7 +304,6 @@ www-client/vivaldi-snapshot widevine
 # Michał Górny <mgorny@gentoo.org> (2018-02-17)
 # Requires unkeyworded dependencies.
 dev-python/ipython notebook
-dev-python/networkx scipy
 dev-ruby/haml test
 
 # Michał Górny <mgorny@gentoo.org> (2018-02-16)

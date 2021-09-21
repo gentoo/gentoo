@@ -11,7 +11,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/Farstream"
 SRC_URI="https://freedesktop.org/software/farstream/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE="+introspection test upnp valgrind"
 SLOT="0.2/5" # .so version
 
@@ -66,5 +66,7 @@ src_compile() {
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744135
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744134
 	addpredict /dev
-	gnome2_src_compile
+
+	# bug #776175 for -j1
+	MAKEOPTS="-j1" gnome2_src_compile
 }

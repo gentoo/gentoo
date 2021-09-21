@@ -40,7 +40,6 @@ src_test() {
 src_install() {
 	kernel-2_src_install
 
-	# hrm, build system sucks
 	find "${ED}" '(' -name '.install' -o -name '*.cmd' ')' -delete
 	find "${ED}" -depth -type d -delete 2>/dev/null
 }

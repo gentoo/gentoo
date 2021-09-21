@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Original author: Gilles Dartiguelongue <eva@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7 8
+# @PROVIDES: xdg-utils
 # @BLURB: Provides phases for XDG compliant packages.
 # @DESCRIPTION:
 # Utility eclass to update the desktop, icon and shared mime info as laid

@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit multilib
-
 DESCRIPTION="Pure Tcl implementation of an XML parser"
 HOMEPAGE="http://tclxml.sourceforge.net/"
 SRC_URI="https://github.com/wjoye/${PN}/archive/v${PV}.tar.gz

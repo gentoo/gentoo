@@ -11,14 +11,17 @@ After=nss-lookup.target network.target remote-fs.target time-sync.target postgre
 ConditionPathIsDirectory=/var/lib/bareos
 
 [Service]
-Type=forking
+# see bug #631598
+#Type=forking
+Type=simple
 User=bareos
 Group=bareos
 WorkingDirectory=/var/lib/bareos
-PIDFile=/run/bareos/bareos-dir.9101.pid
+#PIDFile=/run/bareos/bareos-dir.9101.pid
 StandardError=journal
 ExecStartPre=/usr/sbin/bareos-dir -t -f
-ExecStart=/usr/sbin/bareos-dir
+#ExecStart=/usr/sbin/bareos-dir
+ExecStart=/usr/sbin/bareos-dir -f
 SuccessExitStatus=0 1 15
 #Restart=on-failure
 

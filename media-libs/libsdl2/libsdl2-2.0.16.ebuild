@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic toolchain-funcs multilib-minimal
+inherit autotools flag-o-matic multilib-minimal
 
 MY_P="SDL2-${PV}"
 DESCRIPTION="Simple Direct Media Layer"
@@ -14,7 +14,7 @@ LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-IUSE="alsa aqua cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags dbus fcitx4 gles1 gles2 haptic ibus jack +joystick kms libsamplerate nas opengl oss pipewire pulseaudio sndio +sound static-libs +threads udev +video video_cards_vc4 vulkan wayland X xinerama xscreensaver"
+IUSE="alsa aqua cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags dbus doc fcitx4 gles1 gles2 haptic ibus jack +joystick kms libsamplerate nas opengl oss pipewire pulseaudio sndio +sound static-libs +threads udev +video video_cards_vc4 vulkan wayland X xinerama xscreensaver"
 REQUIRED_USE="
 	alsa? ( sound )
 	fcitx4? ( dbus )
@@ -80,6 +80,10 @@ DEPEND="${CDEPEND}
 "
 BDEPEND="
 	virtual/pkgconfig
+	doc? (
+		app-doc/doxygen
+		media-gfx/graphviz
+	)
 "
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -201,6 +205,15 @@ multilib_src_compile() {
 	emake V=1
 }
 
+src_compile() {
+	multilib-minimal_src_compile
+
+	if use doc; then
+		cd docs || die
+		doxygen || die
+	fi
+}
+
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 }
@@ -209,5 +222,8 @@ multilib_src_install_all() {
 	# Do not delete the static .a libraries here as some are
 	# mandatory. They may be needed even when linking dynamically.
 	find "${ED}" -type f -name "*.la" -delete || die
+
 	dodoc {BUGS,CREDITS,README-SDL,TODO,WhatsNew}.txt README.md docs/README*.md
+	doman debian/sdl2-config.1
+	use doc && dodoc -r docs/output/html/
 }

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs flag-o-matic
+inherit flag-o-matic multilib toolchain-funcs
 
 MY_PV="${PV//.}"
 MY_PV="${MY_PV%_p*}"
@@ -76,7 +76,7 @@ src_configure() {
 }
 
 src_compile() {
-	ASFLAGS="${ASFLAGS} $(get_abi_var CFLAGS)" \
+	ASFLAGS="${ASFLAGS} $(get_abi_CFLAGS)" \
 		emake -f unix/Makefile ${TARGET}
 }
 

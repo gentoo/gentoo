@@ -53,7 +53,7 @@ RDEPEND="
 	)
 	webdav? (
 		net-libs/phodav:2.0
-		>=net-libs/libsoup-2.49.91 )
+		>=net-libs/libsoup-2.49.91:2.4 )
 "
 # TODO: spice-gtk has an automagic dependency on x11-libs/libva without a
 # configure knob. The package is relatively lightweight so we just depend

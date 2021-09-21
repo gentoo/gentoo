@@ -29,7 +29,7 @@ BDEPEND="
 		>=dev-python/msgpack-0.3.0[${PYTHON_USEDEP}]
 		dev-python/pycurl[${PYTHON_USEDEP}]
 		>=dev-python/pymongo-3.3.0[${PYTHON_USEDEP}]
-		dev-python/pyro:4[${PYTHON_USEDEP}]
+		dev-python/Pyro4[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-3.10[${PYTHON_USEDEP}]
 		>=dev-python/redis-py-3.3.11[${PYTHON_USEDEP}]
@@ -66,7 +66,7 @@ pkg_postinst() {
 	optfeature "Amazon SQS backend" "dev-python/boto3 dev-python/pycurl"
 	optfeature "Etcd backend" dev-python/python-etcd
 	optfeature "MongoDB backend" dev-python/pymongo
-	optfeature "Pyro 4 backend" dev-python/pyro:4
+	optfeature "Pyro 4 backend" dev-python/Pyro4
 	optfeature "Redis backend" dev-python/redis-py
 	optfeature "sqlalchemy backend" dev-python/sqlalchemy
 	optfeature "yaml backend" dev-python/pyyaml

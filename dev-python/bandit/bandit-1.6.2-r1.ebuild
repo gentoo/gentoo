@@ -32,7 +32,7 @@ DEPEND="
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-3.2.0[${PYTHON_USEDEP}]
-		>=dev-python/beautifulsoup-4.6.0[${PYTHON_USEDEP}]
+		>=dev-python/beautifulsoup4-4.6.0[${PYTHON_USEDEP}]
 		>=dev-python/pylint-1.4.5[${PYTHON_USEDEP}]
 	)"
 RDEPEND="

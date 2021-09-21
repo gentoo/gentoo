@@ -14,8 +14,6 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS src_unpack
-
 if [[ -z ${_RPM_ECLASS} ]] ; then
 _RPM_ECLASS=1
 
@@ -145,3 +143,5 @@ rpm_spec_epatch() {
 }
 
 fi
+
+EXPORT_FUNCTIONS src_unpack

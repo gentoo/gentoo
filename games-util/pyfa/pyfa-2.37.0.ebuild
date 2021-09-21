@@ -36,7 +36,7 @@ DEPEND="
 	${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		>=dev-python/beautifulsoup-4.6.0[${PYTHON_USEDEP}]
+		>=dev-python/beautifulsoup4-4.6.0[${PYTHON_USEDEP}]
 		>=dev-python/markdown2-2.3.5[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.19.2[${PYTHON_USEDEP}]
 		>=dev-python/packaging-16.8[${PYTHON_USEDEP}]

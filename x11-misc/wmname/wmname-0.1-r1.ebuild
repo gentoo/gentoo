@@ -11,7 +11,7 @@ SRC_URI="https://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11"

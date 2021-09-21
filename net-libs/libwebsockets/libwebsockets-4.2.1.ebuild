@@ -11,7 +11,7 @@ SRC_URI="https://github.com/warmcat/libwebsockets/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0/18" # libwebsockets.so.18
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc ~ppc64 x86"
 IUSE="access-log caps cgi client dbus generic-sessions http-proxy http2 ipv6
 	+lejp libev libevent libuv mbedtls peer-limits server-status smtp socks5
 	sqlite3 ssl threads zip"
@@ -51,6 +51,7 @@ src_configure() {
 		-DLWS_HAVE_LIBCAP=$(usex caps)
 		-DLWS_IPV6=$(usex ipv6)
 		-DLWS_ROLE_DBUS=$(usex dbus)
+		-DLWS_SUPPRESS_DEPRECATED_API_WARNINGS=ON
 		-DLWS_WITHOUT_CLIENT=$(usex !client)
 		-DLWS_WITHOUT_TEST_CLIENT=$(usex !client)
 		-DLWS_WITH_ACCESS_LOG=$(usex access-log)

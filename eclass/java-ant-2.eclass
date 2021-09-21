@@ -8,6 +8,7 @@
 # kiorky <kiorky@cryptelium.net>
 # Petteri Räty <betelgeuse@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
+# @PROVIDES: java-utils-2
 # @BLURB: eclass for ant based Java packages
 # @DESCRIPTION:
 # Eclass for Ant-based Java packages. Provides support for both automatic and

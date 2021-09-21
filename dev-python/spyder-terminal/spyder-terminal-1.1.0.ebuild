@@ -11,7 +11,7 @@ DESCRIPTION="Run system terminals inside Spyder"
 HOMEPAGE="https://github.com/spyder-ide/spyder-terminal"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-LICENSE="MIT"
+LICENSE="MIT BSD Apache-2.0 BSD-2 ISC CC-BY-4.0 ZLIB WTFPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 

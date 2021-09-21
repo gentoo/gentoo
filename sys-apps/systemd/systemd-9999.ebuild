@@ -4,6 +4,9 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 
+# Avoid QA warnings
+TMPFILES_OPTIONAL=1
+
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
@@ -27,7 +30,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi homed http +hwdb idn importd +kmod +lz4 lzma nat pam pcre pkcs11 policykit pwquality qrcode repart +resolvconf +seccomp selinux split-usr static-libs +sysv-utils test tpm vanilla xkb +zstd"
+IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils fido2 +gcrypt gnuefi homed http +hwdb idn importd +kmod +lz4 lzma nat pam pcre pkcs11 policykit pwquality qrcode repart +resolvconf +seccomp selinux split-usr +sysv-utils test tpm vanilla xkb +zstd"
 
 REQUIRED_USE="
 	homed? ( cryptsetup pam )
@@ -50,6 +53,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	curl? ( net-misc/curl:0= )
 	dns-over-tls? ( >=net-libs/gnutls-3.6.0:0= )
 	elfutils? ( >=dev-libs/elfutils-0.158:0= )
+	fido2? ( dev-libs/libfido2:0= )
 	gcrypt? ( >=dev-libs/libgcrypt-1.4.5:0=[${MULTILIB_USEDEP}] )
 	homed? ( ${OPENSSL_DEP} )
 	http? (
@@ -162,6 +166,7 @@ python_check_deps() {
 	has_version -b "dev-python/lxml[${PYTHON_USEDEP}]"
 }
 
+QA_FLAGS_IGNORED="usr/lib/systemd/boot/efi/.*"
 QA_EXECSTACK="usr/lib/systemd/boot/efi/*"
 
 pkg_pretend() {
@@ -268,6 +273,7 @@ multilib_src_configure() {
 		$(meson_native_use_bool curl libcurl)
 		$(meson_native_use_bool dns-over-tls dns-over-tls)
 		$(meson_native_use_bool elfutils)
+		$(meson_native_use_bool fido2 libfido2)
 		$(meson_use gcrypt)
 		$(meson_native_use_bool gnuefi gnu-efi)
 		-Defi-includedir="${ESYSROOT}/usr/include/efi"
@@ -322,9 +328,6 @@ multilib_src_configure() {
 		$(meson_native_true timesyncd)
 		$(meson_native_true tmpfiles)
 		$(meson_native_true vconsole)
-
-		# static-libs
-		$(meson_use static-libs static-libudev)
 	)
 
 	meson_src_configure "${myconf[@]}"

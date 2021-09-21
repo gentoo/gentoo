@@ -299,7 +299,7 @@ mozlinguas_src_compile() {
 		# leverage BUILD_OBJ_DIR if set otherwise assume PWD.
 		local x y targets=( "langpack" ) localedir="${BUILD_OBJ_DIR:-.}"
 		case ${PN} in
-			*firefox)
+			*firefox|waterfox*)
 				localedir+="/browser/locales"
 				;;
 			seamonkey)

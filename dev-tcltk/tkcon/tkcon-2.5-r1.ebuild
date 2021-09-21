@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit multilib
-
 DESCRIPTION="Tk GUI console"
 HOMEPAGE="http://tkcon.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"

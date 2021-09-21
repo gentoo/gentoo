@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/gdbm/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/6" # libgdbm.so version
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+berkdb nls +readline static-libs"
 
 DEPEND="
@@ -20,7 +20,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.18.1-gettext.patch #696838
+	"${FILESDIR}"/${PN}-1.18.1-gettext.patch # bug #696838
+	"${FILESDIR}"/${PN}-1.20-uclibc-types.patch # bug #808480
 )
 
 src_prepare() {

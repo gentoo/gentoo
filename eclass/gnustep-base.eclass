@@ -15,8 +15,6 @@ case ${EAPI:-0} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_install pkg_postinst
-
 if [[ -z ${_GNUSTEP_BASE_ECLASS} ]] ; then
 _GNUSTEP_BASE_ECLASS=1
 
@@ -263,3 +261,5 @@ EOF
 }
 
 fi
+
+EXPORT_FUNCTIONS src_{prepare,configure,compile,install} pkg_{setup,postinst}

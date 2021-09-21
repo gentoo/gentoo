@@ -100,9 +100,6 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# Bug 599114
-	sed -i '1s|^|AX_REQUIRE_DEFINED([AX_CXX_COMPILE_STDCXX])|' configure.ac || die
-
 	eautoreconf
 }
 

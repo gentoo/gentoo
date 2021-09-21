@@ -15,7 +15,7 @@ SRC_URI="https://gitweb.gentoo.org/proj/g-sorcery.git/snapshot/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="bson git test"
 RESTRICT="!test? ( test )"
 

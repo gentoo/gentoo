@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="kerberos ntlm"
 
-RDEPEND="dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+RDEPEND="dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/mako[${PYTHON_USEDEP}]
 	>=dev-python/requests-1.2.3[${PYTHON_USEDEP}]

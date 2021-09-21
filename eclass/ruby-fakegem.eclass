@@ -9,6 +9,7 @@
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
 # @SUPPORTED_EAPIS: 4 5 6 7 8
+# @PROVIDES: ruby-ng
 # @BLURB: An eclass for installing Ruby packages to behave like RubyGems.
 # @DESCRIPTION:
 # This eclass allows to install arbitrary Ruby libraries (including Gems),

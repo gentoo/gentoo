@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 
 inherit distutils-r1 optfeature
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
 RDEPEND="
 	>=dev-python/lxml-2.1[${PYTHON_USEDEP}]
@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-python/webob-1.1.9[${PYTHON_USEDEP}]"
 DEPEND="
 	test? (
-		dev-python/beautifulsoup[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/webtest[${PYTHON_USEDEP}]
 	)"
@@ -39,5 +39,5 @@ python_test() {
 }
 
 pkg_postinst() {
-	optfeature "Support for BeautifulSoup3 as a parser backend" dev-python/beautifulsoup
+	optfeature "Support for BeautifulSoup3 as a parser backend" dev-python/beautifulsoup4
 }

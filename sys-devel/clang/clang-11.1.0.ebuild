@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
-inherit cmake llvm llvm.org multilib-minimal pax-utils \
+inherit cmake llvm llvm.org multilib multilib-minimal \
 	prefix python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
@@ -46,9 +46,6 @@ BDEPEND="
 	doc? ( dev-python/sphinx )
 	xml? ( virtual/pkgconfig )
 	${PYTHON_DEPS}"
-RDEPEND="${RDEPEND}
-	!<sys-devel/llvm-4.0.0_rc:0
-	!sys-devel/clang:0"
 PDEPEND="
 	sys-devel/clang-common
 	~sys-devel/clang-runtime-${PV}

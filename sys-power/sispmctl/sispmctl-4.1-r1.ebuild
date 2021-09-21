@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit bash-completion-r1 systemd udev
+inherit systemd udev
 
 DESCRIPTION="GEMBIRD SiS-PM control utility"
 HOMEPAGE="http://sispmctl.sourceforge.net/"

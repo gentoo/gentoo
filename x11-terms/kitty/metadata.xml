@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
 		<email>pabloorduna98@gmail.com</email>
@@ -11,5 +11,8 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">kovidgoyal/kitty</remote-id>
+		<bugs-to>https://github.com/kovidgoyal/kitty/issues</bugs-to>
+		<doc>https://sw.kovidgoyal.net/kitty</doc>
+		<changelog>https://sw.kovidgoyal.net/kitty/changelog</changelog>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,105 @@
+From 38d79de10da65d234c70cbb36c24c58d189f76db Mon Sep 17 00:00:00 2001
+From: mrambacher <mrambach@gmail.com>
+Date: Mon, 12 Apr 2021 20:06:57 -0400
+Subject: [PATCH 1/3] Add check to cmake to see if we need to link against
+ -latomic
+
+For some compilers/environments (e.g. Clang, riscv64), we need to link against -latomic.  Check if this is a requirement and add the library to the third-party libs if it is.
+---
+ CMakeLists.txt | 21 ++++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 984c6197cb..460d350054 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -312,7 +312,6 @@ int main() {
+   auto d = _mm_cvtsi128_si64(c);
+ }
+ " HAVE_SSE42)
+-unset(CMAKE_REQUIRED_FLAGS)
+ if(HAVE_SSE42)
+   add_definitions(-DHAVE_SSE42)
+   add_definitions(-DHAVE_PCLMUL)
+@@ -320,6 +319,26 @@ elseif(FORCE_SSE42)
+   message(FATAL_ERROR "FORCE_SSE42=ON but unable to compile with SSE4.2 enabled")
+ endif()
+ 
++# Check if -latomic is required or not
++if (NOT MSVC)
++  set(CMAKE_REQUIRED_FLAGS "--std=c++11")
++  CHECK_CXX_SOURCE_COMPILES("
++#include <atomic>
++std::atomic<uint64_t> x(0);
++int main() {
++  uint64_t i = x.load(std::memory_order_relaxed);
++  bool b = x.is_lock_free();
++  return 0;
++}
++" BUILTIN_ATOMIC)
++if (NOT BUILTIN_ATOMIC)
++  #TODO: Check if -latomic exists 
++  list(APPEND THIRDPARTY_LIBS atomic)
++endif()
++endif()
++
++unset(CMAKE_REQUIRED_FLAGS)
++
+ CHECK_CXX_SOURCE_COMPILES("
+ #if defined(_MSC_VER) && !defined(__thread)
+ #define __thread __declspec(thread)
+
+From df7fdd69ac19f26601a80e35f70ec51913838a6e Mon Sep 17 00:00:00 2001
+From: mrambacher <mrambach@gmail.com>
+Date: Wed, 14 Apr 2021 10:33:47 -0400
+Subject: [PATCH 2/3] Reset CMAKE_REQUIRED_FLAGS after compilation checks
+
+---
+ CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 460d350054..5d167855a7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -296,6 +296,7 @@ else()
+ endif()
+ 
+ include(CheckCXXSourceCompiles)
++set(OLD_CMAKE_REQUIRED_FLAGS ${CMAKE_REQUIRED_FLAGS})
+ if(NOT MSVC)
+   set(CMAKE_REQUIRED_FLAGS "-msse4.2 -mpclmul")
+ endif()
+@@ -337,7 +338,8 @@ if (NOT BUILTIN_ATOMIC)
+ endif()
+ endif()
+ 
+-unset(CMAKE_REQUIRED_FLAGS)
++# Reset the required flags
++set(CMAKE_REQUIRED_FLAGS ${OLD_CMAKE_REQUIRED_FLAGS})
+ 
+ CHECK_CXX_SOURCE_COMPILES("
+ #if defined(_MSC_VER) && !defined(__thread)
+
+From 4793c5c75351d5d7c609c27d0243c2138729c7b0 Mon Sep 17 00:00:00 2001
+From: mrambacher <mrambach@gmail.com>
+Date: Fri, 16 Apr 2021 08:53:48 -0400
+Subject: [PATCH 3/3] Fix lint warning
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5d167855a7..558b985073 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -333,7 +333,7 @@ int main() {
+ }
+ " BUILTIN_ATOMIC)
+ if (NOT BUILTIN_ATOMIC)
+-  #TODO: Check if -latomic exists 
++  #TODO: Check if -latomic exists
+   list(APPEND THIRDPARTY_LIBS atomic)
+ endif()
+ endif()

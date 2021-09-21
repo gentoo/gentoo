@@ -15,7 +15,7 @@ S=${WORKDIR}/${P^}
 
 LICENSE="GPL-2+ LGPL-2+ MPL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="
 	>=dev-python/pyproject2setuppy-18[${PYTHON_USEDEP}]"

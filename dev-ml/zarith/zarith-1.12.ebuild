@@ -29,8 +29,10 @@ src_configure() {
 	tc-export CC AR
 	./configure \
 		-ocamllibdir /usr/$(get_libdir)/ocaml \
-		-installdir "${ED}"/usr/$(get_libdir)/ocaml \
 		$(usex mpir "-mpir" "-gmp") || die
+	sed -i \
+		-e 's|$(INSTALLDIR)|$(DESTDIR)$(INSTALLDIR)|g' \
+		project.mak || die
 }
 
 src_compile() {
@@ -48,6 +50,7 @@ src_install() {
 	emake \
 		HASOCAMLOPT=$(usex ocamlopt yes no) \
 		HASDYNLINK=$(usex ocamlopt yes no) \
+		DESTDIR="${ED}" \
 		install
 
 	dosym zarith/libzarith.a /usr/$(get_libdir)/ocaml/libzarith.a

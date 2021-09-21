@@ -13,7 +13,7 @@ DESCRIPTION="Highly flexible server for git directory version tracker, Gentoo fo
 HOMEPAGE="https://cgit.gentoo.org/proj/gitolite-gentoo.git"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI="mirror://gentoo/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 else
 	SRC_URI=""
 fi

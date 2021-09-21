@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~arm ~x86 ~x64-macos"
 RDEPEND="
 	sys-apps/groff
 	$(python_gen_cond_dep '
-		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
 	')
 "

@@ -6,7 +6,7 @@ EAPI=7
 ADA_COMPAT=( gnat_2021 )
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit ada python-any-r1 toolchain-funcs multiprocessing
+inherit ada python-any-r1
 
 ADA_MIRROR=https://community.download.adacore.com/v1
 ID=969ce28e217bd5aa4db549a544d20846408a5229

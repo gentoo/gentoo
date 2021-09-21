@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Xpra-org/xpra-html5</remote-id>
+	</upstream>
+	<use>
+		<flag name="brotli">Install assets compressed with brotli</flag>
+		<flag name="gzip">Install assets compressed with gzip</flag>
+		<flag name="minify">Minify JavaScript code for smaller transfers</flag>
+	</use>
+</pkgmetadata>

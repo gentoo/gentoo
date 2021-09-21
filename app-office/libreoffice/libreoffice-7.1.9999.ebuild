@@ -44,6 +44,9 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
+	# broken against latest upstream release, too many patches on top:
+	# https://github.com/tdf/libcmis/pull/43
+	"${ADDONS_URI}/libcmis-0.5.2.tar.xz"
 	# not packaged in Gentoo, https://www.netlib.org/fp/dtoa.c
 	"${ADDONS_URI}/dtoa-20180411.tgz"
 	# not packaged in Gentoo, https://skia.org/
@@ -102,7 +105,7 @@ LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 
 [[ ${MY_PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux"
 
 BDEPEND="
 	dev-util/intltool
@@ -292,6 +295,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-7.0.3.1-qt5detect.patch"
+
+	# master branch
+	"${FILESDIR}/${PN}-7.1.3.2-bashism.patch" # bug 780432
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
@@ -507,6 +513,7 @@ src_configure() {
 		--with-system-gpgmepp
 		--without-system-jfreereport
 		--without-system_apache_commons
+		--without-system-libcmis
 		--without-system-sane
 		--without-system-qrcodegen
 		$(use_enable base report-builder)

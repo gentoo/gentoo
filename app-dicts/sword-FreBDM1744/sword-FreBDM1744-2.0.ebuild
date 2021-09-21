@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Bible David Martin (1744)"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=FreBDM1744"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

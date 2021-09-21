@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>python@gentoo.org</email>
@@ -33,7 +33,7 @@
   </longdescription>
   <upstream>
     <bugs-to>mailto:reportlab-users@lists2.reportlab.com</bugs-to>
-    <doc lang="en">https://www.reportlab.com/dev/docs</doc>
+    <doc lang="en">https://www.reportlab.com/dev/docs/</doc>
     <remote-id type="pypi">reportlab</remote-id>
   </upstream>
 </pkgmetadata>

@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit toolchain-funcs
-
 PN_F=${PN}
 PV_F=v${PV}
 MY_P=${PN}-v${PV}

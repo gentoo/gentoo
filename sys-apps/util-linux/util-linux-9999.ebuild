@@ -25,7 +25,7 @@ HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/ https://github.com/
 
 LICENSE="GPL-2 GPL-3 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
-IUSE="audit build caps +cramfs cryptsetup fdformat hardlink kill +logger magic ncurses nls pam python +readline selinux slang static-libs su +suid systemd test tty-helpers udev unicode userland_GNU"
+IUSE="audit build caps +cramfs cryptsetup fdformat +hardlink kill +logger magic ncurses nls pam python +readline selinux slang static-libs su +suid systemd test tty-helpers udev unicode userland_GNU"
 
 # Most lib deps here are related to programs rather than our libs,
 # so we rarely need to specify ${MULTILIB_USEDEP}.
@@ -190,12 +190,12 @@ multilib_src_configure() {
 			--disable-newgrp
 			--disable-nologin
 			--disable-pylibmount
+			--disable-raw
 			--disable-vipw
 			--enable-agetty
 			--enable-bash-completion
 			--enable-line
 			--enable-partx
-			--enable-raw
 			--enable-rename
 			--enable-rfkill
 			--enable-schedutils
@@ -216,7 +216,7 @@ multilib_src_configure() {
 		if [[ ${PV} == *9999 ]] ; then
 			myeconfargs+=( --enable-asciidoc )
 		else
-			# We ship pre-generated man-pages for releases
+			# Upstream is shipping pre-generated man-pages for releases
 			myeconfargs+=( --disable-asciidoc )
 		fi
 	else

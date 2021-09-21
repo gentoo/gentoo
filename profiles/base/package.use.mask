@@ -6,6 +6,26 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Stephan Hartmann <sultan@gentoo.org> (2021-09-16)
+# Uses a function that is not available in media-video/ffmpeg.
+>=www-client/chromium-94 system-ffmpeg
+
+# Petr Vanek <arkamar@atlas.cz> (2021-09-12)
+# rspamd-3.0 segfaults a lot with jemalloc enabled (Bug #810337)
+# It is caused by -Wl,--as-needed linker flag,
+# see also: https://github.com/rspamd/rspamd/issues/3871
+~mail-filter/rspamd-3.0 jemalloc
+
+# James Le Cuirot <chewi@gentoo.org> (2021-09-04)
+# Currently requires an unreleased version of FFmpeg. If you really want it,
+# unmask the flag and emerge ffmpeg-9999 with this environment variable set:
+# EGIT_OVERRIDE_COMMIT_FFMPEG=8649f5dca6688feb66f787dcf232d42ed20fdb28
+>=www-client/vivaldi-snapshot-4.2.2406.4 proprietary-codecs
+
+# Matt Turner <mattst88@gentoo.org> (2021-08-28)
+# Mask experimental options.
+gui-libs/gtk ffmpeg vulkan
+
 # Marek Szuba <marecki@gentoo.org> (2021-07-14)
 # Even on a clean install, 8 phdf5 tests fail (Bug #808612)
 # Mask for further study.
@@ -22,7 +42,6 @@ net-print/hplip-plugin orblite
 # Bugs: #684580, #750893
 app-office/kexi webkit
 dev-libs/kreport webkit
-dev-python/PyQt5 webkit
 media-plugins/mythplugins mythbrowser mythmusic
 net-irc/kvirc webkit
 
@@ -47,10 +66,6 @@ dev-libs/libffi exec-static-trampoline
 # Alfredo Tupone <tupone@gentoo.org> (2021-06-27)
 # lto does not work on dev-lang/gnat-gpl-2021
 dev-lang/gnat-gpl:10 lto
-
-# Stephan Hartmann <sultan@gentoo.org> (2021-06-26)
-# Requires unreleased media-video/ffmpeg.
->=www-client/chromium-93 system-ffmpeg
 
 # Mike Gilbert <floppym@gentoo.org> (2021-06-14)
 # Avoid running failing tests by default.
@@ -144,18 +159,17 @@ x11-libs/colord-gtk doc
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-04)
 # Mask the experimental targets in release ebuilds.
+# Note to self: remember to move still-applicable masks to the newer
+# version when master is bumped.
 <dev-ml/llvm-ocaml-11 llvm_targets_AVR
 <sys-devel/clang-11 llvm_targets_AVR
 <sys-devel/llvm-11 llvm_targets_AVR
-<dev-ml/llvm-ocaml-12 llvm_targets_ARC llvm_targets_VE
-<sys-devel/clang-12 llvm_targets_ARC llvm_targets_VE
-<sys-devel/llvm-12 llvm_targets_ARC llvm_targets_VE
-<dev-ml/llvm-ocaml-13 llvm_targets_CSKY
-<sys-devel/clang-13 llvm_targets_CSKY
-<sys-devel/llvm-13 llvm_targets_CSKY
-<dev-ml/llvm-ocaml-14 llvm_targets_M68k
-<sys-devel/clang-14 llvm_targets_M68k
-<sys-devel/llvm-14 llvm_targets_M68k
+<dev-ml/llvm-ocaml-14 llvm_targets_ARC llvm_targets_VE
+<sys-devel/clang-14 llvm_targets_ARC llvm_targets_VE
+<sys-devel/llvm-14 llvm_targets_ARC llvm_targets_VE
+<dev-ml/llvm-ocaml-14 llvm_targets_CSKY llvm_targets_M68k
+<sys-devel/clang-14 llvm_targets_CSKY llvm_targets_M68k
+<sys-devel/llvm-14 llvm_targets_CSKY llvm_targets_M68k
 
 # Joonas Niilola <juippis@gentoo.org> (2020-12-03)
 # Doc building seem to be very random without any predictability,
@@ -302,15 +316,6 @@ dev-python/statsmodels doc
 # Here we are following that path too.
 >=sys-libs/glibc-2.33-r2 crypt
 <sys-libs/libxcrypt-4.4.23-r1 split-usr system
-
-# Michał Górny <mgorny@gentoo.org> (2019-10-05)
-# net-libs/openslp is being removed.
-sys-block/open-iscsi slp
-sys-block/open-isns slp
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-28)
-# media-fonts/hkscs-ming is slated for removal.
-app-i18n/xcin unicode
 
 # Craig Andrews <candrews@gentoo.org> (2019-09-12)
 # OpenSSL (as of version 1.1.1) doesn't have APIs for QUIC support
@@ -583,10 +588,6 @@ net-analyzer/nmap system-lua
 # Mike Frysinger <vapier@gentoo.org> (2014-10-21)
 # Most targets do not support ASAN/etc... #504200.
 sys-devel/gcc sanitize
-
-# Rick Farina <zerochaos@gentoo.org> (2014-08-26)
-# mirisdr does not seem to like making releases
-<net-wireless/gr-osmosdr-9999 mirisdr
 
 # Mike Frysinger <vapier@gentoo.org> (2014-02-03)
 # Upstream says to not use this for now.

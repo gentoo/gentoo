@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -26,8 +26,9 @@ RESTRICT="test"
 RDEPEND="dev-python/easyprocess[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
-		$(python_gen_cond_dep \
-			'dev-python/backports-tempfile[${PYTHON_USEDEP}]' python3_7 python3_8 )
+		$(python_gen_cond_dep '
+			dev-python/backports-tempfile[${PYTHON_USEDEP}]
+		' python3_8 )
 		dev-python/entrypoint2[${PYTHON_USEDEP}]
 		dev-python/path-py[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]

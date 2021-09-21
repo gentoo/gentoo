@@ -122,7 +122,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 MIT Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc64 x86"
 
 RDEPEND="
 	>=dev-db/sqlite-3.5:3
@@ -154,12 +154,12 @@ src_configure() {
 
 src_compile() {
 	export CARGO_HOME="${ECARGO_HOME}"
-	emake prefix="/usr" CXX="$(tc-getCXX)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)"
+	emake prefix="/usr" CC="$(tc-getCC)" CXX="$(tc-getCXX)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)"
 }
 
 src_test() {
 	# tests require UTF-8 locale
-	emake CXX="$(tc-getCXX)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" test
+	emake CC="${tc-getCC}" CXX="$(tc-getCXX)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" test
 	# Tests fail if in ${S} rather than in ${S}/test
 	cd "${S}"/test || die
 	./test || die

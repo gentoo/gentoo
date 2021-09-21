@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # Gentoo PHP team <php-bugs@gentoo.org>
 # @SUPPORTED_EAPIS: 6 7
+# @PROVIDES: php-ext-source-r3
 # @BLURB: A uniform way to install PECL extensions
 # @DESCRIPTION:
 # This eclass should be used by all dev-php/pecl-* ebuilds as a uniform
@@ -15,8 +16,6 @@ case ${EAPI:-0} in
 	[67]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-EXPORT_FUNCTIONS src_install src_test
 
 if [[ -z ${_PHP_EXT_PECL_R3_ECLASS} ]] ; then
 _PHP_EXT_PECL_R3_ECLASS=1
@@ -96,3 +95,5 @@ php-ext-pecl-r3_src_test() {
 }
 
 fi
+
+EXPORT_FUNCTIONS src_install src_test

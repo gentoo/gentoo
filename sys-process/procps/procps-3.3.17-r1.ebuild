@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic multilib-minimal usr-ldscript
+inherit flag-o-matic multilib-minimal toolchain-funcs usr-ldscript
 
 DESCRIPTION="Standard informational utilities and process-handling tools"
 HOMEPAGE="http://procps-ng.sourceforge.net/ https://gitlab.com/procps-ng/procps"
@@ -42,7 +42,25 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.3.12-proc-tests.patch # 583036
 )
 
+src_prepare() {
+	default
+
+	# Please drop this after 3.3.17 and instead use --disable-w on musl.
+	# bug #794997
+	use elibc_musl && eapply "${FILESDIR}"/${PN}-3.3.17-musl-fix.patch
+}
+
 multilib_src_configure() {
+	if tc-is-cross-compiler ; then
+		# This isn't ideal but upstream don't provide a placement
+		# when malloc is missing anyway, leading to errors like:
+		# pslog.c:(.text.startup+0x108): undefined reference to `rpl_malloc'
+		# See https://sourceforge.net/p/psmisc/bugs/71/
+		# (and https://lists.gnu.org/archive/html/autoconf/2011-04/msg00019.html)
+		export ac_cv_func_malloc_0_nonnull=yes \
+			ac_cv_func_realloc_0_nonnull=yes
+	fi
+
 	# http://www.freelists.org/post/procps/PATCH-enable-transparent-large-file-support
 	append-lfs-flags #471102
 	local myeconfargs=(

@@ -16,7 +16,7 @@ SRC_URI="https://archive.mozilla.org/pub/security/nss/releases/${RTM_NAME}/src/$
 LICENSE="|| ( MPL-2.0 GPL-2 LGPL-2.1 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
-IUSE="cacert utils"
+IUSE="cacert utils cpu_flags_ppc_altivec cpu_flags_ppc_vsx"
 # pkg-config called by nss-config -> virtual/pkgconfig in RDEPEND
 RDEPEND="
 	>=dev-libs/nspr-${NSPR_VER}[${MULTILIB_USEDEP}]
@@ -167,6 +167,15 @@ multilib_src_compile() {
 	elif tc-is-clang; then
 		export CC_IS_CLANG=1
 	fi
+
+	# explicitly disable altivec/vsx if not requested
+	# https://bugs.gentoo.org/789114
+	case ${ARCH} in
+		ppc*)
+			use cpu_flags_ppc_altivec || export NSS_DISABLE_ALTIVEC=1
+			use cpu_flags_ppc_vsx || export NSS_DISABLE_CRYPTO_VSX=1
+			;;
+	esac
 
 	local d
 

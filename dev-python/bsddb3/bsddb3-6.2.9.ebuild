@@ -3,15 +3,15 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
-DISTUTILS_USE_SETUPTOOLS=no
 DISTUTILS_IN_SOURCE_BUILD=1
 inherit db-use distutils-r1
 
 DESCRIPTION="Python bindings for Berkeley DB"
 HOMEPAGE="https://www.jcea.es/programacion/pybsddb.htm https://pypi.org/project/bsddb3/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+	https://dev.gentoo.org/~arthurzam/patches/dev-python/${P}-fix-py3.10.patch.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -28,6 +28,10 @@ RDEPEND="
 		sys-libs/db:4.7
 	)"
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${WORKDIR}/${P}-fix-py3.10.patch"
+)
 
 python_prepare_all() {
 	# This list should be kept in sync with setup.py.
@@ -58,5 +62,5 @@ python_configure_all() {
 }
 
 python_test() {
-	PYTHONPATH=Lib3 "${EPYTHON}" test3.py -v || die "Testing failed with ${EPYTHON}"
+	PYTHONPATH=Lib3 "${EPYTHON}" test3.py -vv || die "Testing failed with ${EPYTHON}"
 }

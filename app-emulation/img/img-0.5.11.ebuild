@@ -536,10 +536,9 @@ RDEPEND="${DEPEND}
 	app-emulation/runc"
 
 src_compile() {
-	GOCACHE="${T}/go-cache" \
 		IMG_DISABLE_EMBEDDED_RUNC=1 \
-		go build -v -work -x -tags "noembed $(usev seccomp)" \
-		-ldflags="-s -w -X version.VERSION=${PV}" || die
+		go build -tags "noembed $(usev seccomp)" \
+		-ldflags="-X version.VERSION=${PV}" || die
 }
 
 src_install() {

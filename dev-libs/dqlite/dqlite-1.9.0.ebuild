@@ -11,12 +11,12 @@ SRC_URI="https://github.com/canonical/dqlite/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="LGPL-3-with-linking-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-db/sqlite:3
-	dev-libs/libuv
+	dev-libs/libuv:=
 	dev-libs/raft"
 DEPEND="${RDEPEND}
 	test? ( >=dev-libs/raft-0.11.1[lz4,test] )"

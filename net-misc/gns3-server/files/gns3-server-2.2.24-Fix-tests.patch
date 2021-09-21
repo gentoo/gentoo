@@ -1,0 +1,73 @@
+From 4eb8491cfa61310066395f078009ccc822488eb8 Mon Sep 17 00:00:00 2001
+From: grossmj <grossmj@gns3.net>
+Date: Wed, 1 Sep 2021 19:31:37 +0930
+Subject: [PATCH] Fix tests. Fixes #1950
+
+---
+ tests/compute/qemu/test_qemu_manager.py |  1 -
+ tests/compute/qemu/test_qemu_vm.py      | 12 ++++++------
+ tests/compute/test_manager.py           |  2 +-
+ 3 files changed, 7 insertions(+), 8 deletions(-)
+
+--- a/tests/compute/qemu/test_qemu_manager.py
++++ b/tests/compute/qemu/test_qemu_manager.py
+@@ -71,7 +71,6 @@ async def test_binary_list(monkeypatch, tmpdir):
+         assert {"path": os.path.join(os.environ["PATH"], "qemu-kvm"), "version": version} in qemus
+         assert {"path": os.path.join(os.environ["PATH"], "qemu-system-x42"), "version": version} in qemus
+         assert {"path": os.path.join(os.environ["PATH"], "hello"), "version": version} not in qemus
+-        assert {"path": os.path.join(os.environ["PATH"], "qemu-system-x86_64-spice"), "version": version} not in qemus
+ 
+         qemus = await Qemu.binary_list(["x86"])
+ 
+--- a/tests/compute/qemu/test_qemu_vm.py
++++ b/tests/compute/qemu/test_qemu_vm.py
+@@ -818,21 +818,21 @@ def test_options(linux_platform, vm):
+     assert vm.kvm is False
+ 
+     vm.options = "-no-kvm"
+-    assert vm.options == "-no-kvm"
++    assert vm.options == "-machine accel=tcg"
+ 
+     vm.options = "-enable-kvm"
+-    assert vm.options == "-enable-kvm"
++    assert vm.options == "-machine accel=kvm"
+ 
+     vm.options = "-icount 12"
+-    assert vm.options == "-no-kvm -icount 12"
++    assert vm.options == "-icount 12"
+ 
+     vm.options = "-icount 12 -no-kvm"
+-    assert vm.options == "-icount 12 -no-kvm"
++    assert vm.options == "-icount 12 -machine accel=tcg"
+ 
+ 
+ def test_options_windows(windows_platform, vm):
+     vm.options = "-no-kvm"
+-    assert vm.options == ""
++    assert vm.options == "-machine accel=tcg"
+ 
+     vm.options = "-enable-kvm"
+     assert vm.options == ""
+@@ -878,7 +878,7 @@ async def test_run_with_kvm_linux_options_no_kvm(linux_platform, vm):
+ 
+     with patch("os.path.exists", return_value=True) as os_path:
+         vm.manager.config.set("Qemu", "enable_kvm", True)
+-        assert await vm._run_with_hardware_acceleration("qemu-system-x86_64", "-no-kvm") is False
++        assert await vm._run_with_hardware_acceleration("qemu-system-x86_64", "-machine accel=tcg") is False
+ 
+ 
+ async def test_run_with_kvm_not_x86(linux_platform, vm):
+--- a/tests/compute/test_manager.py
++++ b/tests/compute/test_manager.py
+@@ -190,7 +190,7 @@ def test_get_abs_image_recursive_ova(qemu, tmpdir, config):
+     config.set_section_config("Server", {
+         "images_path": str(tmpdir / "images1"),
+         "local": False})
+-    assert qemu.get_abs_image_path("test.ova/test1.bin") == path1
++    assert qemu.get_abs_image_path("demo/test.ova/test1.bin") == path1
+     assert qemu.get_abs_image_path("test.ova/test2.bin") == path2
+     # Absolute path
+     assert qemu.get_abs_image_path(str(path1)) == path1
+-- 
+2.33.0
+

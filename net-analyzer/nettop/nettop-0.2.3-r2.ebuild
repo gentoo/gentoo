@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc x86"
 
 DEPEND="
 	sys-libs/slang

@@ -1,0 +1,42 @@
+From 32d96189b807ab53317a33217c661ce4b1ac8e49 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Nikl=C4=81vs=20Ko=C4=BCes=C5=86ikovs?=
+ <89q1r14hd@relay.firefox.com>
+Date: Wed, 15 Sep 2021 12:21:40 +0300
+Subject: [PATCH 3/5] bluez: add basic check for nil monitor
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+If PipeWire is built without Bluetooth support, then
+
+`monitor = SpaDevice("api.bluez5.enum.dbus", monitor_props)`
+
+will result in a nil monitor. This commit adds a basic sanity check
+to avoid further using the nil variable.
+
+Thanks-to: Pascal Flöschel (initial bug report)
+Thanks-to: George Kiagiadakis <george.kiagiadakis@collabora.com>
+Bug: https://bugs.gentoo.org/813043
+---
+ src/scripts/monitors/bluez.lua | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/scripts/monitors/bluez.lua b/src/scripts/monitors/bluez.lua
+index fc229fa..4066536 100644
+--- a/src/scripts/monitors/bluez.lua
++++ b/src/scripts/monitors/bluez.lua
+@@ -129,5 +129,9 @@ local monitor_props = config.properties or {}
+ monitor_props["api.bluez5.connection-info"] = true
+ 
+ monitor = SpaDevice("api.bluez5.enum.dbus", monitor_props)
+-monitor:connect("create-object", createDevice)
+-monitor:activate(Feature.SpaDevice.ENABLED)
++if monitor then
++  monitor:connect("create-object", createDevice)
++  monitor:activate(Feature.SpaDevice.ENABLED)
++else
++  Log.message("PipeWire's BlueZ SPA missing or broken. Bluetooth not supported.")
++end
+-- 
+2.33.0
+

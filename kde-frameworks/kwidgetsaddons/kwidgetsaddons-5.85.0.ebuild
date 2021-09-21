@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 ECM_DESIGNERPLUGIN="true"
 QTMIN=5.15.2
@@ -10,7 +10,7 @@ inherit ecm kde.org
 
 DESCRIPTION="An assortment of high-level widgets for common tasks"
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 IUSE="nls"
 
 BDEPEND="
@@ -30,7 +30,7 @@ src_configure() {
 }
 
 src_test() {
-	# bug 650216, 653186, 697866
-	local myctestargs=( -E "(kdatecomboboxtest|ksqueezedtextlabelautotest)" )
+	# bug 650216, 653186, 697866, 808216
+	local myctestargs=( -E "(kdatecomboboxtest|ksqueezedtextlabelautotest|ktwofingertaptest|ktwofingerswipetest)" )
 	ecm_src_test
 }

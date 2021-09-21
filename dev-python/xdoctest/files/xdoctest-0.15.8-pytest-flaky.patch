@@ -1,0 +1,28 @@
+From ec14218904fdd1c06597277deb11c8d3bb33c675 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 3 Sep 2021 07:27:22 +0200
+Subject: [PATCH] Fix test failure if pytest's flaky plugin is installed
+
+Disable pytest's flaky plugin in test_simple_pytest_import_error_cli
+in order to fix a test failure due to it mangling pytest's return code
+on import error.
+---
+ testing/test_pytest_cli.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/testing/test_pytest_cli.py b/testing/test_pytest_cli.py
+index 25c8363..8ef9251 100644
+--- a/testing/test_pytest_cli.py
++++ b/testing/test_pytest_cli.py
+@@ -67,7 +67,7 @@ def test_simple_pytest_import_error_cli():
+             """
+         ''')
+     temp_module = util_misc.TempModule(module_text, modname='imperr_test_mod')
+-    command = sys.executable + ' -m pytest -v -s --xdoctest-verbose=3 --xdoctest ' + temp_module.dpath
++    command = sys.executable + ' -m pytest -p no:flaky -v -s --xdoctest-verbose=3 --xdoctest ' + temp_module.dpath
+     print(command)
+     info = cmd(command)
+     print(info['out'])
+-- 
+2.33.0
+

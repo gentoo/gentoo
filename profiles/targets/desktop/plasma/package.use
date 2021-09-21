@@ -56,8 +56,6 @@ sys-libs/zlib minizip
 <x11-base/xorg-server-1.20.13-r1 wayland
 
 # Keep existing defaults after dropping IUSE=phonon from make.defaults
-<kde-frameworks/knotifications-5.85 phonon
-<kde-frameworks/knotifyconfig-5.85 phonon
 <app-office/calligra-3.3 phonon
 kde-apps/kio-extras phonon
 kde-apps/marble phonon

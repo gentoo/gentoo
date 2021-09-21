@@ -14,7 +14,7 @@ SRC_URI="https://lttng.org/files/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/${MY_SLOT}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 BUILD_TARGETS="default"

@@ -12,7 +12,7 @@ SRC_URI="https://github.com/cookiecutter/cookiecutter/archive/${PV}.tar.gz -> ${
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=dev-python/binaryornot-0.4.4[${PYTHON_USEDEP}]

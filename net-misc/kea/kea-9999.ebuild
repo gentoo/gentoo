@@ -9,22 +9,25 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="High-performance production grade DHCPv4 & DHCPv6 server"
 HOMEPAGE="http://www.isc.org/kea/"
+
+inherit autotools systemd tmpfiles
+
 if [[ ${PV} = 9999* ]] ; then
-	inherit autotools git-r3
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/isc-projects/kea.git"
 else
-	SRC_URI="https://downloads.isc.org/isc/kea/${MY_PV}/${PN}-${MY_PV}.tar.gz"
+	SRC_URI="ftp://ftp.isc.org/isc/kea/${MY_P}.tar.gz
+		ftp://ftp.isc.org/isc/kea/${MY_PV}/${MY_P}.tar.gz"
 	[[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-		KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="ISC BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
-IUSE="mysql +openssl postgres samples"
+IUSE="mysql +openssl postgres +samples"
 
 DEPEND="
 	dev-libs/boost:=
-	dev-cpp/gtest
 	dev-libs/log4cplus
 	mysql? ( dev-db/mysql-connector-c )
 	!openssl? ( dev-libs/botan:2= )
@@ -40,23 +43,29 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
-	[[ ${PV} = *9999 ]] && eautoreconf
 	# Brand the version with Gentoo
 	sed -i \
-		-e "/VERSION=/s:'$: Gentoo-${PR}':" \
-		configure || die
+		-e "s/AC_INIT(kea,${PV}.*, kea-dev@lists.isc.org)/AC_INIT(kea,${PVR}-gentoo, kea-dev@lists.isc.org)/g" \
+		configure.ac || die
+
+	sed -i \
+		-e '/mkdir -p $(DESTDIR)${runstatedir}\/${PACKAGE_NAME}/d' \
+		Makefile.am || die "Fixing Makefile.am failed"
+
+	eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=(
+		--disable-install-configurations
 		--disable-static
 		--enable-perfdhcp
 		--localstatedir="${EPREFIX}/var"
+		--runstatedir="${EPREFIX}/run"
 		--without-werror
 		$(use_with mysql)
 		$(use_with openssl)
 		$(use_with postgres pgsql)
-		$(use_enable samples install-configurations)
 	)
 	econf "${myeconfargs[@]}"
 }
@@ -65,7 +74,29 @@ src_install() {
 	default
 	newconfd "${FILESDIR}"/${PN}-confd-r1 ${PN}
 	newinitd "${FILESDIR}"/${PN}-initd-r1 ${PN}
-	keepdir /var/lib/${PN} /var/log
-	rm -rf "${ED}"/var/run || die
+
+	if use samples; then
+		diropts -m 0750 -o root -g dhcp
+		dodir /etc/kea
+		insopts -m 0640 -o root -g dhcp
+		insinto /etc/kea
+		doins "${FILESDIR}"/${PN}-ctrl-agent.conf
+		doins "${FILESDIR}"/${PN}-ddns-server.conf
+		doins "${FILESDIR}"/${PN}-dhcp4.conf
+		doins "${FILESDIR}"/${PN}-dhcp6.conf
+	fi
+
+	systemd_dounit "${FILESDIR}"/${PN}-ctrl-agent.service
+	systemd_dounit "${FILESDIR}"/${PN}-ddns-server.service
+	systemd_dounit "${FILESDIR}"/${PN}-dhcp4-server.service
+	systemd_dounit "${FILESDIR}"/${PN}-dhcp6-server.service
+
+	newtmpfiles "${FILESDIR}"/${PN}.tmpfiles.conf ${PN}.conf
+
+	keepdir /var/lib/${PN} /var/log/${PN}
 	find "${ED}" -type f -name "*.la" -delete || die
+}
+
+pkg_postinst() {
+	tmpfiles_process ${PN}.conf
 }

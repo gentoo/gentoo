@@ -10,6 +10,7 @@
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
 # @SUPPORTED_EAPIS: 6 7 8
+# @PROVIDES: elisp-common
 # @BLURB: Eclass for Emacs Lisp packages
 # @DESCRIPTION:
 #

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop flag-o-matic wrapper unpacker
+inherit desktop flag-o-matic toolchain-funcs wrapper unpacker
 
 # Latest versions are in http://icculus.org/twilight/darkplaces/files/
 MY_PV="${PV/_beta/beta}"

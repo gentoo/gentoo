@@ -1,0 +1,70 @@
+From 779c57ea864d104bad88455535df9b26336349fd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Timm=20B=C3=A4der?= <tbaeder@redhat.com>
+Date: Thu, 18 Mar 2021 10:25:24 +0100
+Subject: [PATCH] readelf: Pull advance_pc() in file scope
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Make advance_pc() a static function so we can get rid of another nested
+function. Rename it to run_advance_pc() and use a local advance_pc()
+macro to pass all the local variables. This is similar to what the
+equivalent code in libdw/dwarf_getsrclines.c is doing.
+
+Upstream-Status: Backport [master commit 779c57ea]
+
+Signed-off-by: Timm Bäder <tbaeder@redhat.com>
+[Adrian: backported to v0.185]
+Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+---
+ src/ChangeLog |  7 +++++++
+ src/readelf.c | 26 +++++++++++++++++++-------
+ 2 files changed, 26 insertions(+), 7 deletions(-)
+
+diff --git a/src/readelf.c b/src/readelf.c
+index 161d7e65..8191bde2 100644
+--- a/src/readelf.c
++++ b/src/readelf.c
+@@ -8373,6 +8373,23 @@ print_form_data (Dwarf *dbg, int form, const unsigned char *readp,
+   return readp;
+ }
+ 
++/* Only used via run_advance_pc() macro */
++static inline void
++run_advance_pc (unsigned int op_advance,
++                unsigned int minimum_instr_len,
++                unsigned int max_ops_per_instr,
++                unsigned int *op_addr_advance,
++                Dwarf_Word *address,
++                unsigned int *op_index)
++{
++  const unsigned int advanced_op_index = (*op_index) + op_advance;
++
++  *op_addr_advance = minimum_instr_len * (advanced_op_index
++                                         / max_ops_per_instr);
++  *address = *address + *op_addr_advance;
++  *op_index = advanced_op_index % max_ops_per_instr;
++}
++
+ static void
+ print_debug_line_section (Dwfl_Module *dwflmod, Ebl *ebl, GElf_Ehdr *ehdr,
+ 			  Elf_Scn *scn, GElf_Shdr *shdr, Dwarf *dbg)
+@@ -8763,13 +8780,8 @@ print_debug_line_section (Dwfl_Module *dwflmod, Ebl *ebl, GElf_Ehdr *ehdr,
+       /* Apply the "operation advance" from a special opcode
+ 	 or DW_LNS_advance_pc (as per DWARF4 6.2.5.1).  */
+       unsigned int op_addr_advance;
+-      inline void advance_pc (unsigned int op_advance)
+-      {
+-	op_addr_advance = minimum_instr_len * ((op_index + op_advance)
+-					       / max_ops_per_instr);
+-	address += op_addr_advance;
+-	op_index = (op_index + op_advance) % max_ops_per_instr;
+-      }
++#define advance_pc(op_advance) run_advance_pc(op_advance, minimum_instr_len, \
++                      max_ops_per_instr, &op_addr_advance, &address, &op_index)
+ 
+       if (max_ops_per_instr == 0)
+ 	{
+-- 
+2.32.0
+

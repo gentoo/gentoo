@@ -12,7 +12,7 @@ depend() {
 }
 
 DEFAULTFILE="/etc/conf.d/drbd"
-DRBDADM="/sbin/drbdadm"
+DRBDADM="/usr/sbin/drbdadm"
 PROC_DRBD="/proc/drbd"
 MODPROBE="/sbin/modprobe"
 RMMOD="/sbin/rmmod"

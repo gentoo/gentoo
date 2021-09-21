@@ -1,3 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-09-05)
+# gdbm-1.21 fails to build right now on macOS with:
+# ```gdbmshell.c:1013:54: error: ‘struct stat’ has no member named ‘st_mtim’```
+# bug #811792
+=sys-libs/gdbm-1.21

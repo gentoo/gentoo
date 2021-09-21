@@ -4,12 +4,6 @@ Date: Thu, 31 Dec 2020 23:26:57 -0800
 Subject: [PATCH] [tests] update another date-sensitive test
 
 Signed-off-by: Randy Barlow <randy@electronsweatshop.com>
----
- test/test_sql.sh | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/test/test_sql.sh b/test/test_sql.sh
-index bbb98dce..22941c2a 100644
 --- a/test/test_sql.sh
 +++ b/test/test_sql.sh
 @@ -1023,11 +1023,11 @@ EOF
@@ -27,6 +21,3 @@ index bbb98dce..22941c2a 100644
  EOF
  
  # Create a dummy database for the next couple of tests to consume.
--- 
-2.31.1
-

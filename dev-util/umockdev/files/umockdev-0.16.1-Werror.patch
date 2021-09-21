@@ -1,0 +1,24 @@
+From 623286923d88990cf5f723004539b6d6d8a4a475 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 12 Sep 2021 15:41:35 -0400
+Subject: [PATCH] Drop -Werror from project arguments
+
+---
+ meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 37509a9..7931a9c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -7,7 +7,6 @@ testsdir = meson.current_source_dir() / 'tests'
+ lib_version = '0.3.0'
+ 
+ add_project_arguments(
+-  '-Werror',
+   '-Werror=missing-prototypes',
+   '-Werror=strict-prototypes',
+   '-Werror=nested-externs',
+-- 
+2.33.0
+

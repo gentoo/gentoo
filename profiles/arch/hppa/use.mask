@@ -9,6 +9,7 @@
 
 # James Le Cuirot <chewi@gentoo.org> (2021-08-10)
 # media-video/pipewire is not keyworded. Bug #807616.
+bluetooth
 pipewire
 
 # Michał Górny <mgorny@gentoo.org> (2021-05-20)

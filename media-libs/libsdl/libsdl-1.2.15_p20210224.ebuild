@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic multilib-minimal
+inherit autotools flag-o-matic multilib-minimal toolchain-funcs
 
 MY_COMMIT="99d7f1d1c5492f0fb3c799255042ca7a3f4a5de4"
 DESCRIPTION="Simple Direct Media Layer"

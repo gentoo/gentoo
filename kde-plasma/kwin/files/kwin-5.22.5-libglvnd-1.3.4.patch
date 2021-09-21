@@ -1,0 +1,44 @@
+From 839710201c389b7f4ed248cb3818e755a37ce977 Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Fri, 10 Sep 2021 13:36:04 +0300
+Subject: [PATCH] x11: Fix build with EGL_NO_PLATFORM_SPECIFIC_TYPES
+
+eglCreateWindowSurface() wants a Window (unsigned long), but with
+EGL_NO_PLATFORM_SPECIFIC_TYPES, EGLNativeWindowType is defined as an
+opaque pointer, i.e. void*.
+
+BUG: 440372
+---
+ src/plugins/platforms/x11/common/eglonxbackend.cpp | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/src/plugins/platforms/x11/common/eglonxbackend.cpp b/src/plugins/platforms/x11/common/eglonxbackend.cpp
+index c62ec170d..d2900c7c3 100644
+--- a/src/plugins/platforms/x11/common/eglonxbackend.cpp
++++ b/src/plugins/platforms/x11/common/eglonxbackend.cpp
+@@ -213,15 +213,16 @@ EGLSurface EglOnXBackend::createSurface(xcb_window_t window)
+         return EGL_NO_SURFACE;
+     }
+ 
++    // Window is 64 bits on a 64-bit architecture whereas xcb_window_t is always 32 bits.
++    unsigned long nativeWindow = window;
++
+     EGLSurface surface = EGL_NO_SURFACE;
+     if (havePlatformBase()) {
+-        // Note: Window is 64 bits on a 64-bit architecture whereas xcb_window_t is
+-        //       always 32 bits. eglCreatePlatformWindowSurfaceEXT() expects the
+-        //       native_window parameter to be pointer to a Window, so this variable
+-        //       cannot be an xcb_window_t.
+-        surface = eglCreatePlatformWindowSurfaceEXT(eglDisplay(), config(), (void *) &window, nullptr);
++        // eglCreatePlatformWindowSurfaceEXT() expects a pointer to the Window.
++        surface = eglCreatePlatformWindowSurfaceEXT(eglDisplay(), config(), (void *) &nativeWindow, nullptr);
+     } else {
+-        surface = eglCreateWindowSurface(eglDisplay(), config(), window, nullptr);
++        // eglCreateWindowSurface() expects a Window, not a pointer to the Window.
++        surface = eglCreateWindowSurface(eglDisplay(), config(), reinterpret_cast<EGLNativeWindowType>(nativeWindow), nullptr);
+     }
+ 
+     return surface;
+-- 
+GitLab
+

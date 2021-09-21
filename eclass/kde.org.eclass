@@ -20,8 +20,6 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-EXPORT_FUNCTIONS pkg_nofetch src_unpack
-
 if [[ -z ${_KDE_ORG_ECLASS} ]]; then
 _KDE_ORG_ECLASS=1
 
@@ -262,7 +260,7 @@ _kde.org_calculate_live_repo() {
 	# (anongit) with anything else you might want to use.
 	EGIT_MIRROR=${EGIT_MIRROR:=https://invent.kde.org/${KDE_ORG_CATEGORY}}
 
-	if [[ ${PV} == ?.??.9999 && ${CATEGORY} == dev-qt ]]; then
+	if [[ ${PV} == 5.??(.?)*.9999 && ${CATEGORY} == dev-qt ]]; then
 		EGIT_BRANCH="kde/$(ver_cut 1-2)"
 	fi
 
@@ -354,3 +352,5 @@ kde.org_src_unpack() {
 }
 
 fi
+
+EXPORT_FUNCTIONS pkg_nofetch src_unpack

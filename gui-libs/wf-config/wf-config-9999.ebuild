@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/WayfireWM/wf-config.git"
 else
 	SRC_URI="https://github.com/WayfireWM/wf-config/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="MIT"
@@ -22,12 +22,9 @@ SLOT="0"
 DEPEND="
 	dev-libs/libevdev
 	dev-libs/libxml2
-	~gui-libs/wlroots-9999:=
 	media-libs/glm
 "
-
 RDEPEND="${DEPEND}"
-
 BDEPEND="
 	dev-libs/wayland-protocols
 	virtual/pkgconfig

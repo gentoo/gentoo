@@ -911,6 +911,5 @@ src_test() {
 
 pkg_postinst() {
 	fcaps_pkg_postinst
-	go-module_pkg_postinst
 	tmpfiles_process ${PN}.conf
 }

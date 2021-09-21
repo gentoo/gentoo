@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7 8
+# @PROVIDES: multilib-build
 # @BLURB: wrapper for multilib builds providing convenient multilib_src_* functions
 # @DESCRIPTION:
 #

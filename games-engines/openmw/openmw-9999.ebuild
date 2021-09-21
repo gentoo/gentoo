@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1,3,4} luajit )
-inherit cmake flag-o-matic lua-single xdg-utils readme.gentoo-r1
+inherit cmake lua-single xdg-utils readme.gentoo-r1
 
 DESCRIPTION="Open source reimplementation of TES III: Morrowind"
 HOMEPAGE="https://openmw.org/ https://gitlab.com/OpenMW/openmw"

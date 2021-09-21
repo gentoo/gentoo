@@ -18,7 +18,7 @@ KEYWORDS="~amd64"
 DEPEND="test? ( dev-python/responses[${PYTHON_USEDEP}] )"
 
 RDEPEND="
-	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+	dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 "

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome2-utils meson xdg-utils
+inherit meson xdg
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -28,13 +28,3 @@ RDEPEND="app-text/djvu
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-}

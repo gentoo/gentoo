@@ -9,6 +9,7 @@
 # Marek Szuba <marecki@gentoo.org>
 # Based on python-single-r1.eclass by Michał Górny <mgorny@gentoo.org> et al.
 # @SUPPORTED_EAPIS: 7 8
+# @PROVIDES: lua-utils
 # @BLURB: An eclass for Lua packages not installed for multiple implementations.
 # @DESCRIPTION:
 # An extension of lua.eclass suite for packages which don't support being
@@ -154,7 +155,7 @@ EXPORT_FUNCTIONS pkg_setup
 # Example value:
 # @CODE
 # lua_targets_lua5-1? ( dev-lang/lua:5.1 )
-# lua_targets_lua5-3? ( dev-lang/lua:5.2 )
+# lua_targets_lua5-3? ( dev-lang/lua:5.3 )
 # @CODE
 
 # @ECLASS-VARIABLE: LUA_REQUIRED_USE

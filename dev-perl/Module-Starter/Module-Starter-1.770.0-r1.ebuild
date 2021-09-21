@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A simple starter kit for any module"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	virtual/perl-File-Path

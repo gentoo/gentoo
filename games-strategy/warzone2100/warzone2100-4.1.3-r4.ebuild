@@ -4,7 +4,7 @@
 EAPI=7
 
 PLOCALES="af_ZA bg_BG ca_ES cs da de el en_GB eo es et_EE fa_IR fi fr fy ga he_IL hr hu id_ID id it ko la lt nb nl pl pt_BR pt ro ru sk sl tr tt_RU uk_UA zh_CN zh_TW"
-inherit cmake desktop plocale xdg
+inherit cmake plocale xdg
 
 MY_PV=$(ver_cut 1-2)
 VIDEOS_PV=2.2

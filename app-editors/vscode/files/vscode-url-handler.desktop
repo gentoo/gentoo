@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Visual Studio Code - URL Handler
+Name=VSCode - URL Handler
 Comment=Editing evolved
 GenericName=Code Editor
 Exec=/usr/bin/vscode --open-url %U
@@ -9,4 +9,4 @@ NoDisplay=true
 StartupNotify=true
 Categories=Utility;TextEditor;Development;IDE;
 MimeType=x-scheme-handler/vscode;
-Keywords=vscode;
+Keywords=vscode;code;

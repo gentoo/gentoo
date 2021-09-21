@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit cmake llvm llvm.org multilib-minimal pax-utils \
+inherit cmake llvm llvm.org multilib multilib-minimal \
 	prefix python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
@@ -22,7 +22,7 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x64-macos"
 IUSE="debug default-compiler-rt default-libcxx default-lld
 	doc llvm-libunwind +static-analyzer test xml kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -46,9 +46,6 @@ BDEPEND="
 	doc? ( dev-python/sphinx )
 	xml? ( virtual/pkgconfig )
 	${PYTHON_DEPS}"
-RDEPEND="${RDEPEND}
-	!<sys-devel/llvm-4.0.0_rc:0
-	!sys-devel/clang:0"
 PDEPEND="
 	sys-devel/clang-common
 	~sys-devel/clang-runtime-${PV}

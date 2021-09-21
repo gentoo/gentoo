@@ -1,0 +1,110 @@
+From 27bfcde4efaf936243fc41e4a61d0cac32105ef6 Mon Sep 17 00:00:00 2001
+From: Nate Graham <nate@kde.org>
+Date: Tue, 31 Aug 2021 09:09:14 -0600
+Subject: [PATCH] Port to KTerminalLauncherJob
+
+Dolphin still uses KToolInvocation::invokeTerminal() which is
+deprecated and requires KInit. However Dolphin was ported away from
+requiring it in other ways, so it is now possible to have Dolphin
+running but not KInit, which breaks the "Open in Terminal"
+functionality.
+
+Using KTerminalLauncherJob fixes this. It was introduced in Frameworks
+5.83, so the CMake dependency version is accordingly increased.
+
+BUG: 441072
+FIXED-IN: 21.12
+---
+ CMakeLists.txt            |  2 +-
+ src/dolphinmainwindow.cpp | 14 ++++++++++----
+ src/dolphinpart.cpp       |  6 ++++--
+ 3 files changed, 15 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7d50205bc..ec87cdecc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,7 +8,7 @@ set (RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE
+ project(Dolphin VERSION ${RELEASE_SERVICE_VERSION})
+ 
+ set(QT_MIN_VERSION "5.15.0")
+-set(KF5_MIN_VERSION "5.81.0")
++set(KF5_MIN_VERSION "5.83.0")
+ 
+ set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+diff --git a/src/dolphinmainwindow.cpp b/src/dolphinmainwindow.cpp
+index 62e347032..f3a5e3b4e 100644
+--- a/src/dolphinmainwindow.cpp
++++ b/src/dolphinmainwindow.cpp
+@@ -56,10 +56,10 @@
+ #include <KStandardAction>
+ #include <KStartupInfo>
+ #include <KSycoca>
++#include <KTerminalLauncherJob>
+ #include <KToggleAction>
+ #include <KToolBar>
+ #include <KToolBarPopupAction>
+-#include <KToolInvocation>
+ #include <KUrlComboBox>
+ #include <KUrlNavigator>
+ #include <KWindowSystem>
+@@ -1033,7 +1033,9 @@ void DolphinMainWindow::openTerminal()
+     const QUrl url = m_activeViewContainer->url();
+ 
+     if (url.isLocalFile()) {
+-        KToolInvocation::invokeTerminal(QString(), {}, url.toLocalFile());
++        auto job = new KTerminalLauncherJob(QString());
++        job->setWorkingDirectory(url.toLocalFile());
++        job->start();
+         return;
+     }
+ 
+@@ -1047,14 +1049,18 @@ void DolphinMainWindow::openTerminal()
+                 statUrl = job->mostLocalUrl();
+             }
+ 
+-            KToolInvocation::invokeTerminal(QString(), {}, statUrl.isLocalFile() ? statUrl.toLocalFile() : QDir::homePath());
++            auto job = new KTerminalLauncherJob(QString());
++            job->setWorkingDirectory(statUrl.isLocalFile() ? statUrl.toLocalFile() : QDir::homePath());
++            job->start();
+         });
+ 
+         return;
+     }
+ 
+     // Nothing worked, just use $HOME
+-    KToolInvocation::invokeTerminal(QString(), {}, QDir::homePath());
++    auto job = new KTerminalLauncherJob(QString());
++    job->setWorkingDirectory(QDir::homePath());
++    job->start();
+ }
+ 
+ void DolphinMainWindow::editSettings()
+diff --git a/src/dolphinpart.cpp b/src/dolphinpart.cpp
+index 9c551d67a..8d528f418 100644
+--- a/src/dolphinpart.cpp
++++ b/src/dolphinpart.cpp
+@@ -32,7 +32,7 @@
+ #include <KPluginFactory>
+ #include <KIO/CommandLauncherJob>
+ #include <KSharedConfig>
+-#include <KToolInvocation>
++#include <KTerminalLauncherJob>
+ 
+ #include <QActionGroup>
+ #include <QApplication>
+@@ -567,7 +567,9 @@ QString DolphinPart::localFilePathOrHome() const
+ 
+ void DolphinPart::slotOpenTerminal()
+ {
+-    KToolInvocation::invokeTerminal(QString(), {}, localFilePathOrHome());
++    auto job = new KTerminalLauncherJob(QString());
++    job->setWorkingDirectory(localFilePathOrHome());
++    job->start();
+ }
+ 
+ void DolphinPart::slotFindFile()
+-- 
+GitLab
+

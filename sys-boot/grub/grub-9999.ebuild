@@ -3,12 +3,25 @@
 
 EAPI=7
 
+# This ebuild uses 3 special global variables:
+# GRUB_BOOTSTRAP: Depend on python and invoke bootstrap (gnulib).
+# GRUB_AUTOGEN: Depend on python and invoke the autogen.sh.
+# GRUB_AUTORECONF: Inherit autotools and invoke eautoreconf.
+#
+# When applying patches:
+# If gnulib is updated, set GRUB_BOOTSTRAP=1
+# If *.def is updated, set GRUB_AUTOGEN=1
+# If gnulib, *.def, or any autotools files are updated, set GRUB_AUTORECONF=1
+#
+# If any of the above applies to a user patch, the user should set the
+# corresponding variable in make.conf or the environment.
+
 if [[ ${PV} == 9999  ]]; then
 	GRUB_AUTORECONF=1
 	GRUB_BOOTSTRAP=1
 fi
 
-PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} )
+PYTHON_COMPAT=( python3_{8..10} )
 WANT_LIBTOOL=none
 
 if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
@@ -19,7 +32,7 @@ if [[ -n ${GRUB_AUTORECONF} ]]; then
 	inherit autotools
 fi
 
-inherit bash-completion-r1 flag-o-matic multibuild optfeature pax-utils toolchain-funcs
+inherit bash-completion-r1 flag-o-matic multibuild optfeature toolchain-funcs
 
 if [[ ${PV} != 9999 ]]; then
 	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
@@ -68,7 +81,6 @@ REQUIRED_USE="
 
 BDEPEND="
 	${PYTHON_DEPS}
-	app-misc/pax-utils
 	sys-devel/flex
 	sys-devel/bison
 	sys-apps/help2man

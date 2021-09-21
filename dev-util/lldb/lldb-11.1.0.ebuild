@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..9} )
-inherit cmake llvm llvm.org python-single-r1 toolchain-funcs
+inherit cmake llvm llvm.org python-single-r1
 
 DESCRIPTION="The LLVM debugger"
 HOMEPAGE="https://llvm.org/"
@@ -27,8 +27,7 @@ RDEPEND="
 		${PYTHON_DEPS}
 	)
 	~sys-devel/clang-${PV}[xml]
-	~sys-devel/llvm-${PV}
-	!<sys-devel/llvm-4.0"
+	~sys-devel/llvm-${PV}"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-util/cmake-3.16

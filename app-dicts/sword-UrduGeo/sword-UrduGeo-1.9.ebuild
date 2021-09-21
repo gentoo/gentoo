@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Urdu Geo Version (UGV) of the Bible, Urdu script"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=UrduGeo"
 LICENSE="crosswire"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

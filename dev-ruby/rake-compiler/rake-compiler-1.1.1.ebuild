@@ -19,7 +19,7 @@ LICENSE="MIT"
 
 SRC_URI="https://github.com/luislavena/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="0"
 IUSE=""
 
@@ -35,6 +35,10 @@ all_ruby_prepare() {
 
 	# Avoid failing features for native gems, this also fails with rubygems
 	sed -i -e '/generate native gem/,$ s:^:#:' features/package.feature || die
+
+	# Fix compatibility with newer cucumber versions. The not syntax has
+	# been supported since cucumber 3.x.
+	sed -i -e "s/~@java/'not @java'/" cucumber.yml || die
 }
 
 each_ruby_test() {

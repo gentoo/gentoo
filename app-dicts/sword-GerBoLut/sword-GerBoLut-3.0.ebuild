@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Deutsch Bolsingerߴs Luther 1545 Bibel (moderne Rechtschreibung)"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=GerBoLut"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

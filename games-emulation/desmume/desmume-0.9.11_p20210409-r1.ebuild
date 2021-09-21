@@ -36,6 +36,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-gtk-cliopts.patch
 	"${FILESDIR}"/${P}-openal-automagic.patch
+	"${FILESDIR}"/${P}-clang.patch
 )
 
 DOCS=( ${PN}/{AUTHORS,ChangeLog,README,README.LIN,doc/.} )

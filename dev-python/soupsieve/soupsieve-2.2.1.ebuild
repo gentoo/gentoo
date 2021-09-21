@@ -18,7 +18,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x
 
 BDEPEND="
 	test? (
-		dev-python/beautifulsoup[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		<dev-python/lxml-4.6.3-r1[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
 	)

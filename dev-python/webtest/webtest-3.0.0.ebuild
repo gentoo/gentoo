@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/pastedeploy[${PYTHON_USEDEP}]
 	>=dev-python/webob-1.2[${PYTHON_USEDEP}]
 	>=dev-python/waitress-0.8.5[${PYTHON_USEDEP}]
-	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]"
+	dev-python/beautifulsoup4[${PYTHON_USEDEP}]"
 BDEPEND="
 	app-arch/unzip
 	test? (

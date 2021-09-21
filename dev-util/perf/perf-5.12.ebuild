@@ -96,6 +96,8 @@ pkg_setup() {
 	python_setup
 }
 
+# src_unpack and src_prepare are copied to dev-util/bpftool since
+# it's building from the same tarball, please keep it in sync with bpftool
 src_unpack() {
 	local paths=(
 		tools/arch tools/build tools/include tools/lib tools/perf tools/scripts

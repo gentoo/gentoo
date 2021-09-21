@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,9 +8,7 @@ inherit bash-completion-r1 java-pkg-2 multiprocessing
 DESCRIPTION="Fast and correct automated build system"
 HOMEPAGE="https://bazel.build/"
 
-GLIBC_GETTID_PATCH="${P}-rename-gettid-functions.patch"
-SRC_URI="https://github.com/bazelbuild/bazel/releases/download/${PV}/${P}-dist.zip
-	https://raw.githubusercontent.com/clearlinux-pkgs/bazel/adefd9046582cb52f39579033132e6265ef6ddb0/rename-gettid-functions.patch -> ${GLIBC_GETTID_PATCH}"
+SRC_URI="https://github.com/bazelbuild/bazel/releases/download/${PV}/${P}-dist.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -45,17 +43,15 @@ bazel-get-flags() {
 }
 
 pkg_setup() {
-	echo ${PATH} | grep -q ccache && \
+	if has ccache ${FEATURES}; then
 		ewarn "${PN} usually fails to compile with ccache, you have been warned"
+	fi
 	java-pkg-2_pkg_setup
 }
 
 src_unpack() {
 	# Only unpack the main distfile
 	unpack ${P}-dist.zip
-	pushd third_party/grpc/src >/dev/null || die
-	eapply "${DISTDIR}/${GLIBC_GETTID_PATCH}"
-	popd >/dev/null || die
 }
 
 src_prepare() {
@@ -68,6 +64,9 @@ src_prepare() {
 	# R: /proc/24939/setgroups
 	# C: /usr/lib/systemd/systemd
 	addpredict /proc
+
+	eapply "${FILESDIR}/${PN}-0.24.1-rename-gettid-functions.patch"
+	eapply "${FILESDIR}/${PN}-0.22.0-include-limits-for-gcc-11.patch"
 }
 
 src_compile() {

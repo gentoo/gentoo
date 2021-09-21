@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 ECM_EXAMPLES="true"
 ECM_QTHELP="false"
@@ -15,7 +15,7 @@ DESCRIPTION="QtQuick plugin providing high-performance charts"
 HOMEPAGE="https://invent.kde.org/frameworks/kquickcharts"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 IUSE=""
 
 DEPEND="

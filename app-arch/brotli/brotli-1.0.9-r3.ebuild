@@ -1,32 +1,13 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
 DISTUTILS_OPTIONAL="1"
-DISTUTILS_IN_SOURCE_BUILD="1"
-CMAKE_ECLASS=cmake
-
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit cmake-multilib distutils-r1
 
-DESCRIPTION="Generic-purpose lossless compression algorithm"
-HOMEPAGE="https://github.com/google/brotli"
-
-SLOT="0/$(ver_cut 1)"
-
-RDEPEND="python? ( ${PYTHON_DEPS} )"
-DEPEND="${RDEPEND}"
-
-IUSE="python static-libs test"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-
-LICENSE="MIT python? ( Apache-2.0 )"
-
-DOCS=( README.md CONTRIBUTING.md )
-
-if [[ ${PV} == "9999" ]] ; then
-	SRC_URI=""
+if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/google/${PN}.git"
 	inherit git-r3
 else
@@ -34,16 +15,28 @@ else
 	SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
+DESCRIPTION="Generic-purpose lossless compression algorithm"
+HOMEPAGE="https://github.com/google/brotli"
+
+LICENSE="MIT python? ( Apache-2.0 )"
+SLOT="0/$(ver_cut 1)"
+IUSE="python static-libs test"
+
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
 # tests are currently broken, see https://github.com/google/brotli/issues/850
 RESTRICT="test"
 
-PATCHES=(
-	"${FILESDIR}/${PV}-linker.patch"
-)
+DOCS=( README.md CONTRIBUTING.md )
+
+PATCHES=( "${FILESDIR}/${PV}-linker.patch" )
+
+RDEPEND="python? ( ${PYTHON_DEPS} )"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
-	use python && distutils-r1_src_prepare
 	cmake_src_prepare
+	use python && distutils-r1_src_prepare
 }
 
 multilib_src_configure() {

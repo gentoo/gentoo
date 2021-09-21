@@ -496,6 +496,7 @@ multilib_toolchain_setup() {
 		FC
 		LD
 		NM
+		OBJCOPY
 		OBJDUMP
 		PKG_CONFIG
 		RANLIB
@@ -544,6 +545,7 @@ multilib_toolchain_setup() {
 		export FC="$(tc-getFC) $(get_abi_CFLAGS)"
 		export LD="$(tc-getLD) $(get_abi_LDFLAGS)"
 		export NM="$(tc-getNM)" # Avoid 'nm', use '${CHOST}-nm'
+		export OBJCOPY="$(tc-getOBJCOPY)" # Avoid 'objcopy', use '${CHOST}-objcopy'
 		export OBJDUMP="$(tc-getOBJDUMP)" # Avoid 'objdump', use '${CHOST}-objdump'
 		export PKG_CONFIG="$(tc-getPKG_CONFIG)"
 		export RANLIB="$(tc-getRANLIB)" # Avoid 'ranlib', use '${CHOST}-ranlib'

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~sparc"
 
 RDEPEND="
 	>=dev-python/debugpy-1.0.0[${PYTHON_USEDEP}]
@@ -37,3 +37,8 @@ BDEPEND="
 	)"
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	sed -i -e 's:^TIMEOUT = .*:TIMEOUT = 120:' ipykernel/tests/*.py || die
+	distutils-r1_src_prepare
+}

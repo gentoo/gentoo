@@ -9,7 +9,7 @@ DISTUTILS_USE_SETUPTOOLS=no
 inherit desktop distutils-r1 optfeature xdg-utils
 
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 	SRC_URI="https://foss.heptapod.net/mercurial/${PN}/thg/-/archive/${PV}/thg-${PV}.tar.gz -> ${P}.tar.gz"
 	HG_DEPEND=">=dev-vcs/mercurial-5.7[${PYTHON_USEDEP}]
 		<dev-vcs/mercurial-5.9[${PYTHON_USEDEP}]"
@@ -39,8 +39,8 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	test? (
-		dev-python/mock
-		dev-python/pytest
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
 

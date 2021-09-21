@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Chinese Union Version of the Bible, simplified script"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=ChiUns"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

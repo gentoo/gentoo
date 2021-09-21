@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools libtool readme.gentoo-r1 systemd
+inherit autotools readme.gentoo-r1 systemd
 
 DESCRIPTION="An IMAP daemon designed specifically for maildirs"
 HOMEPAGE="https://www.courier-mta.org/imap/"

@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Smith and van Dyck's al-Kitab al-Muqaddas (Arabic Bible)"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=AraSVD"
 LICENSE="free-noncomm"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

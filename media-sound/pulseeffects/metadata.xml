@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>marecki@gentoo.org</email>
@@ -12,6 +12,7 @@
 	<use>
 		<flag name="bs2b">Enable use of <pkg>media-libs/libbs2b</pkg> for the crossfeed FX</flag>
 		<flag name="calf">Enable use of <pkg>media-plugins/calf</pkg> for adding various FX</flag>
+		<flag name="doc">Install packages needed to display built-in user documentation</flag>
 		<flag name="rnnoise">Enable use of <pkg>media-libs/rnnoise</pkg> for the neural network-based
 			noise-reduction FX</flag>
 		<flag name="rubberband">Enable use of <pkg>media-libs/rubberband</pkg> for the pitch-shifting FX</flag>

@@ -9,7 +9,7 @@ GNOME2_EAUTORECONF=yes
 VALA_MIN_API_VERSION="0.44"
 VALA_USE_DEPEND=vapigen
 
-inherit autotools gnome2 lua-single python-single-r1 toolchain-funcs vala virtualx
+inherit gnome2 lua-single python-single-r1 toolchain-funcs vala virtualx
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"

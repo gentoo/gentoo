@@ -5,3 +5,4 @@
 # Avoid conflict between kde-plasma/plasma-workspace[systemd] requiring sys-apps/dbus[user-session]
 # and net-wireless/bluez[systemd,-user-session] requiring sys-apps/dbus[-user-session].
 net-wireless/bluez user-session
+sys-apps/dbus user-session

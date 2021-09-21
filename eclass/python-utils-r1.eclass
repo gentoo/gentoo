@@ -1250,6 +1250,16 @@ build_sphinx() {
 	HTML_DOCS+=( "${dir}/_build/html/." )
 }
 
+# @FUNCTION: _python_check_EPYTHON
+# @INTERNAL
+# @DESCRIPTION:
+# Check if EPYTHON is set, die if not.
+_python_check_EPYTHON() {
+	if [[ -z ${EPYTHON} ]]; then
+		die "EPYTHON unset, invalid call context"
+	fi
+}
+
 # @VARIABLE: EPYTEST_DESELECT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -1279,7 +1289,7 @@ build_sphinx() {
 epytest() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	[[ -n ${EPYTHON} ]] || die "EPYTHON unset, invalid call context"
+	_python_check_EPYTHON
 
 	local args=(
 		# verbose progress reporting and tracebacks
@@ -1322,7 +1332,7 @@ epytest() {
 eunittest() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	[[ -n ${EPYTHON} ]] || die "EPYTHON unset, invalid call context"
+	_python_check_EPYTHON
 
 	set -- "${EPYTHON}" -m unittest_or_fail discover -v "${@}"
 

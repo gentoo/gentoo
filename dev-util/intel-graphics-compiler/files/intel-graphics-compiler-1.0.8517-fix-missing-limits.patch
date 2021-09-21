@@ -1,0 +1,21 @@
+From 212e98dd569187455976a8d2b26ce6398a9c3cc1 Mon Sep 17 00:00:00 2001
+From: Troels Nielsen <bn.troels@gmail.com>
+Date: Tue, 31 Aug 2021 23:02:08 +0200
+Subject: [PATCH] Include limits
+
+---
+ visa/Passes/InstCombine.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/visa/Passes/InstCombine.cpp b/visa/Passes/InstCombine.cpp
+index 10152aaab36..29b9d5e50e2 100644
+--- a/visa/Passes/InstCombine.cpp
++++ b/visa/Passes/InstCombine.cpp
+@@ -7,6 +7,7 @@ SPDX-License-Identifier: MIT
+ ============================= end_copyright_notice ===========================*/
+ #include "InstCombine.hpp"
+ 
++#include <limits>
+ #include <functional>
+ #include <unordered_set>
+ 

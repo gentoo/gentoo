@@ -7,14 +7,6 @@ Subject: [PATCH] [view_curses] use VC_ROLE instead of VC_STYLE where possible
 Fixes #806
 
 Signed-off-by: Randy Barlow <randy@electronsweatshop.com>
----
- src/highlighter.cc        |  4 +++-
- src/logfile_sub_source.cc | 17 ++++++++++-------
- src/view_curses.cc        |  9 ++++++---
- 3 files changed, 19 insertions(+), 11 deletions(-)
-
-diff --git a/src/highlighter.cc b/src/highlighter.cc
-index 24aafebd..110ca03f 100644
 --- a/src/highlighter.cc
 +++ b/src/highlighter.cc
 @@ -115,7 +115,9 @@ void highlighter::annotate(attr_line_t &al, int start) const
@@ -28,8 +20,6 @@ index 24aafebd..110ca03f 100644
                  }
                  sa.emplace_back(lr, &view_curses::VC_STYLE, attrs);
  
-diff --git a/src/logfile_sub_source.cc b/src/logfile_sub_source.cc
-index 14e87002..dce0d4ae 100644
 --- a/src/logfile_sub_source.cc
 +++ b/src/logfile_sub_source.cc
 @@ -468,25 +468,28 @@ void logfile_sub_source::text_attrs_for_line(textview_curses &lv,
@@ -68,8 +58,6 @@ index 14e87002..dce0d4ae 100644
      }
  
      lr.lr_start = 0;
-diff --git a/src/view_curses.cc b/src/view_curses.cc
-index 4a36a3ad..2456d53d 100644
 --- a/src/view_curses.cc
 +++ b/src/view_curses.cc
 @@ -402,13 +402,16 @@ void view_curses::mvwattrline(WINDOW *window,
@@ -92,6 +80,3 @@ index 4a36a3ad..2456d53d 100644
  
          attr_range.lr_end = min(line_width_chars, attr_range.lr_end - lr_chars.lr_start);
  
--- 
-2.31.1
-

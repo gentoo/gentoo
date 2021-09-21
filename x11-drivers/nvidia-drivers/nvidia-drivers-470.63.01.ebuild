@@ -7,7 +7,7 @@ MODULES_OPTIONAL_USE="driver"
 inherit desktop linux-info linux-mod multilib-build \
 	readme.gentoo-r1 systemd toolchain-funcs unpacker
 
-NV_KERNEL_MAX="5.13"
+NV_KERNEL_MAX="5.14"
 NV_URI="https://download.nvidia.com/XFree86/"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
@@ -25,7 +25,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2 MIT NVIDIA-r2 ZLIB"
 SLOT="0/${PV%%.*}"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE="+X +driver static-libs +tools wayland"
 
 COMMON_DEPEND="

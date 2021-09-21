@@ -8,6 +8,7 @@
 # Original author: Andres Loeh <kosmikus@gentoo.org>
 # Original author: Duncan Coutts <dcoutts@gentoo.org>
 # @SUPPORTED_EAPIS: 6 7 8
+# @PROVIDES: ghc-package
 # @BLURB: for packages that make use of the Haskell Common Architecture for Building Applications and Libraries (cabal)
 # @DESCRIPTION:
 # Basic instructions:

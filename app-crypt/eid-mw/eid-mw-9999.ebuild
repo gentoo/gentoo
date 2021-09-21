@@ -56,6 +56,14 @@ src_prepare() {
 	# See bug #751472
 	eapply "${FILESDIR}/use-printf-in-Makefile.patch"
 
+	# See bug #811270 (remove uml build)
+	sed -i \
+		-e 's:cardlayer/uml::' \
+		cardcomm/pkcs11/src/Makefile.am || die
+	sed -i \
+		-e 's:uml::' \
+		plugins_tools/eid-viewer/Makefile.am || die
+
 	eautoreconf
 }
 

@@ -86,3 +86,15 @@ src_install() {
 
 	einstalldocs
 }
+
+pkg_postinst() {
+	if use otf || use pcf-8bit || use pcf-unicode; then
+		font_pkg_postinst
+	fi
+}
+
+pkg_postrm() {
+	if use otf || use pcf-8bit || use pcf-unicode; then
+		font_pkg_postrm
+	fi
+}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
 		<email>hansfn@gmail.com</email>
@@ -14,6 +14,12 @@
 		plain-text editor for Linux. It is independent of any desktop
 		environment.
 	</longdescription>
+	<use>
+		<flag name="X">
+			Link application against X11 libraries which adds
+			support for virtual desktop awareness and tab DND
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">tsujan/FeatherPad</remote-id>
 	</upstream>

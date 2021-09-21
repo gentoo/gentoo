@@ -30,17 +30,18 @@ REQUIRED_USE="${LUA_REQUIRED_USE}
 RDEPEND="${LUA_DEPS}
 	$(lua_gen_cond_dep '
 		dev-lua/LuaBitOp[${LUA_USEDEP}]
-	' lua5-{1,2})
+	')
 	acct-group/rspamd
 	acct-user/rspamd
 	app-arch/zstd:=
 	dev-db/sqlite:3
+	dev-cpp/doctest
 	dev-libs/glib:2
 	dev-libs/icu:=
 	dev-libs/libev
 	dev-libs/libfmt:=
 	dev-libs/libsodium:=
-	dev-libs/snowball-stemmer
+	dev-libs/snowball-stemmer:=
 	sys-apps/file
 	blas? (
 		virtual/blas
@@ -66,7 +67,7 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 
-	rm -vrf contrib/{fmt,lua-bit,snowball,zstd} || die
+	rm -vrf contrib/{doctest,fmt,lua-bit,snowball,zstd} || die
 
 	sed -i -e 's/User=_rspamd/User=rspamd/g' \
 		rspamd.service \
@@ -80,6 +81,7 @@ src_configure() {
 		-DDBDIR=/var/lib/rspamd
 		-DLOGDIR=/var/log/rspamd
 
+		-DSYSTEM_DOCTEST=ON
 		-DSYSTEM_FMT=ON
 		-DSYSTEM_ZSTD=ON
 

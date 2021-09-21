@@ -1,6 +1,0 @@
-# Location of the formatdb data sets
-BLASTDB="/usr/share/ncbi/formatdb"
-# Location of the BLAST matrixes.
-BLASTMAT="/usr/share/ncbi/data"
-# Location of the ".ncbi.rc" file which sets the default path for shared data.
-NCBI=/etc/ncbi

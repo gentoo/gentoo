@@ -15,7 +15,7 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="https://libvirt.org/sources/${P}.tar.xz
 		verify-sig? ( https://libvirt.org/sources/${P}.tar.xz.asc )"
-	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+	KEYWORDS="amd64 arm64 ~ppc64 x86"
 	SLOT="0/${PV}"
 fi
 

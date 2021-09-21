@@ -1,10 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 virtualx
 
@@ -18,10 +18,17 @@ KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 IUSE="examples"
 
 RDEPEND="dev-python/dbus-python[${PYTHON_USEDEP}]"
-DEPEND="test? ( sys-apps/dbus[X] )"
+BDEPEND="test? (
+	dev-python/pygobject[${PYTHON_USEDEP}]
+	sys-apps/dbus[X]
+	x11-libs/gdk-pixbuf[introspection]
+	virtual/notification-daemon
+)"
 
-python_test() {
-	virtx ${EPYTHON} test_notify2.py
+distutils_enable_tests unittest
+
+src_test() {
+	virtx distutils-r1_src_test
 }
 
 python_install_all() {

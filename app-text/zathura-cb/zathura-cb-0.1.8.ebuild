@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson xdg-utils
+inherit meson xdg-utils optfeature
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -20,10 +20,13 @@ HOMEPAGE="https://pwmt.org/projects/zathura-cb/"
 LICENSE="ZLIB"
 SLOT="0"
 
-DEPEND=">=app-text/zathura-0.3.9
+DEPEND="app-arch/libarchive:=
+	>=app-text/zathura-0.3.9
 	dev-libs/girara
 	dev-libs/glib:2
-	x11-libs/cairo"
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:3"
 
 RDEPEND="${DEPEND}"
 
@@ -31,6 +34,8 @@ BDEPEND="virtual/pkgconfig"
 
 pkg_postinst() {
 	xdg_desktop_database_update
+
+	optfeature "jpeg support" x11-libs/gdk-pixbuf[jpeg]
 }
 
 pkg_postrm() {

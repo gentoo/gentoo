@@ -199,12 +199,11 @@
 # that of course does not mean we're not willing to help.
 
 inherit estack toolchain-funcs
-[[ ${EAPI:-0} == 6 ]] && inherit eapi7-ver
-case ${EAPI:-0} in
-	6|7|8)
-		EXPORT_FUNCTIONS src_{unpack,prepare,compile,install,test} \
-			pkg_{setup,preinst,postinst,postrm} ;;
-	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
+[[ ${EAPI} == 6 ]] && inherit eapi7-ver
+
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # Added by Daniel Ostrow <dostrow@gentoo.org>
@@ -219,11 +218,6 @@ fi
 
 HOMEPAGE="https://www.kernel.org/ https://wiki.gentoo.org/wiki/Kernel ${HOMEPAGE}"
 : ${LICENSE:="GPL-2"}
-
-# This is the latest KV_PATCH of the deblob tool available from the
-# libre-sources upstream. If you bump this, you MUST regenerate the Manifests
-# for ALL kernel-2 consumer packages where deblob is available.
-: ${DEBLOB_MAX_VERSION:=38}
 
 # No need to run scanelf/strip on kernel sources/headers (bug #134453).
 RESTRICT="binchecks strip"
@@ -558,10 +552,9 @@ kernel_is() {
 	local v n=0
 	for v in OKV KV_{MAJOR,MINOR,PATCH} ; do [[ -z ${!v} ]] && n=1 ; done
 	[[ ${n} -eq 1 ]] && detect_version
-	unset v n
 
 	# Now we can continue
-	local operator test value
+	local operator
 
 	case ${1#-} in
 	  lt) operator="-lt"; shift;;
@@ -573,9 +566,10 @@ kernel_is() {
 	esac
 	[[ $# -gt 3 ]] && die "Error in kernel-2_kernel_is(): too many parameters"
 
-	: $(( test = (KV_MAJOR << 16) + (KV_MINOR << 8) + KV_PATCH ))
-	: $(( value = (${1:-${KV_MAJOR}} << 16) + (${2:-${KV_MINOR}} << 8) + ${3:-${KV_PATCH}} ))
-	[ ${test} ${operator} ${value} ]
+	ver_test \
+		"${KV_MAJOR:-0}.${KV_MINOR:-0}.${KV_PATCH:-0}" \
+		"${operator}" \
+		"${1:-${KV_MAJOR:-0}}.${2:-${KV_MINOR:-0}}.${3:-${KV_PATCH:-0}}"
 }
 
 # Capture the sources type and set DEPENDs
@@ -600,17 +594,12 @@ if [[ ${ETYPE} == sources ]]; then
 
 	# Bug #266157, deblob for libre support
 	if [[ -z ${K_PREDEBLOBBED} ]]; then
-		# Bug #359865, force a call to detect_version if needed
-		kernel_is ge 2 6 27 && \
-			[[ -z ${K_DEBLOB_AVAILABLE} ]] && \
-				kernel_is le 2 6 ${DEBLOB_MAX_VERSION} && \
-					K_DEBLOB_AVAILABLE=1
 		# deblob less than 5.10 require python 2.7
 		if kernel_is lt 5 10; then
 			K_DEBLOB_AVAILABLE=0
 		fi
 		if [[ ${K_DEBLOB_AVAILABLE} == 1 ]]; then
-			PYTHON_COMPAT=( python3_{7..10} )
+			PYTHON_COMPAT=( python3_{8..10} )
 
 			inherit python-any-r1
 
@@ -621,7 +610,6 @@ if [[ ${ETYPE} == sources ]]; then
 			# tree has been dropped from the kernel.
 			kernel_is lt 4 14 && LICENSE+=" !deblob? ( linux-firmware )"
 
-			[[ ${EAPI} == 6 ]] && DEPEND+=" deblob? ( ${PYTHON_DEPS} )" ||
 			BDEPEND+=" deblob? ( ${PYTHON_DEPS} )"
 
 			if [[ -n KV_MINOR ]]; then
@@ -771,83 +759,6 @@ unpack_fix_install_path() {
 	sed -i -e 's:#export\tINSTALL_PATH:export\tINSTALL_PATH:' "${S}"/Makefile || die
 }
 
-# Compile Functions
-
-# @FUNCTION: compile_headers
-# @USAGE:
-# @DESCRIPTION:
-# header compilation
-
-compile_headers() {
-	env_setup_xmakeopts
-
-	# if we couldnt obtain HOSTCFLAGS from the Makefile,
-	# then set it to something sane
-	local HOSTCFLAGS=$(getfilevar HOSTCFLAGS "${S}"/Makefile)
-	HOSTCFLAGS=${HOSTCFLAGS:--Wall -Wstrict-prototypes -O2 -fomit-frame-pointer}
-
-	if kernel_is 2 4; then
-		yes "" | make oldconfig ${xmakeopts}
-		einfo ">>> make oldconfig complete"
-		make dep ${xmakeopts}
-	elif kernel_is 2 6; then
-		# 2.6.18 introduces headers_install which means we dont need any
-		# of this crap anymore :D
-		kernel_is ge 2 6 18 && return 0
-
-		# autoconf.h isnt generated unless it already exists. plus, we have
-		# no guarantee that any headers are installed on the system...
-		[[ -f ${EROOT%/}/usr/include/linux/autoconf.h ]] \
-			|| touch include/linux/autoconf.h || die
-
-		# if K_DEFCONFIG isn't set, force to "defconfig"
-		# needed by mips
-		if [[ -z ${K_DEFCONFIG} ]]; then
-			if kernel_is ge 2 6 16; then
-				case ${CTARGET} in
-					powerpc64*)	K_DEFCONFIG="ppc64_defconfig";;
-					powerpc*)	K_DEFCONFIG="pmac32_defconfig";;
-					*)		K_DEFCONFIG="defconfig";;
-				esac
-			else
-				K_DEFCONFIG="defconfig"
-			fi
-		fi
-
-		# if there arent any installed headers, then there also isnt an asm
-		# symlink in /usr/include/, and make defconfig will fail, so we have
-		# to force an include path with $S.
-		HOSTCFLAGS="${HOSTCFLAGS} -I${S}/include/"
-		ln -sf asm-${KARCH} "${S}"/include/asm || die
-		cross_pre_c_headers && return 0
-
-		make ${K_DEFCONFIG} HOSTCFLAGS="${HOSTCFLAGS}" ${xmakeopts} || die "defconfig failed (${K_DEFCONFIG})"
-		if compile_headers_tweak_config; then
-			yes "" | make oldconfig HOSTCFLAGS="${HOSTCFLAGS}" ${xmakeopts} || die "2nd oldconfig failed"
-		fi
-		make prepare HOSTCFLAGS="${HOSTCFLAGS}" ${xmakeopts} || die "prepare failed"
-		make prepare-all HOSTCFLAGS="${HOSTCFLAGS}" ${xmakeopts} || die "prepare failed"
-	fi
-}
-
-# @FUNCTION: compile_headers_tweak_config
-# @USAGE:
-# @DESCRIPTION:
-# some targets can be very very picky, so let's finesse the
-# .config based upon any info we may have
-
-compile_headers_tweak_config() {
-	case ${CTARGET} in
-	sh*)
-		sed -i '/CONFIG_CPU_SH/d' .config || die
-		echo "CONFIG_CPU_SH${CTARGET:2:1}=y" >> .config
-		return 0;;
-	esac
-
-	# no changes, so lets do nothing
-	return 1
-}
-
 # install functions
 
 # @FUNCTION: install_universal
@@ -868,36 +779,12 @@ install_universal() {
 install_headers() {
 	local ddir=$(kernel_header_destdir)
 
-	# 2.6.18 introduces headers_install which means we dont need any
-	# of this crap anymore :D
-	if kernel_is ge 2 6 18; then
-		env_setup_xmakeopts
-		emake headers_install INSTALL_HDR_PATH="${ED%/}"${ddir}/.. ${xmakeopts}
+	env_setup_xmakeopts
+	emake headers_install INSTALL_HDR_PATH="${ED%/}"${ddir}/.. ${xmakeopts}
 
-		# let other packages install some of these headers
-		rm -rf "${ED%/}"${ddir}/scsi || die #glibc/uclibc/etc...
-		return 0
-	fi
-
-	# Do not use "linux/*" as that can cause problems with very long
-	# $S values where the cmdline to cp is too long
-	pushd "${S}" >/dev/null || die
-	dodir ${ddir}/linux
-	cp -pPR "${S}"/include/linux "${ED%/}"${ddir}/ || die
-	rm -rf "${ED%/}"${ddir}/linux/modules || die
-
-	dodir ${ddir}/asm
-	cp -pPR "${S}"/include/asm/* "${ED%/}"${ddir}/asm || die
-
-	if kernel_is 2 6; then
-		dodir ${ddir}/asm-generic
-		cp -pPR "${S}"/include/asm-generic/* "${ED%/}"${ddir}/asm-generic || die
-	fi
-
-	# clean up
-	find "${D}" -name '*.orig' -exec rm -f {} \; || die
-
-	popd >/dev/null || die
+	# let other packages install some of these headers
+	rm -rf "${ED%/}"${ddir}/scsi || die #glibc/uclibc/etc...
+	return 0
 }
 
 # @FUNCTION: install_sources
@@ -1491,7 +1378,6 @@ kernel-2_src_prepare() {
 
 kernel-2_src_compile() {
 	cd "${S}" || die
-	[[ ${ETYPE} == headers ]] && compile_headers
 
 	if [[ ${K_DEBLOB_AVAILABLE} == 1 ]] && use deblob; then
 		einfo ">>> Running deblob script ..."
@@ -1577,3 +1463,6 @@ kernel-2_pkg_postrm() {
 	ewarn "For more detailed kernel removal instructions, please see: "
 	ewarn "https://wiki.gentoo.org/wiki/Kernel/Removal"
 }
+
+EXPORT_FUNCTIONS src_{unpack,prepare,compile,install,test} \
+	pkg_{setup,preinst,postinst,postrm}

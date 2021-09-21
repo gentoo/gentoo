@@ -20,8 +20,6 @@ case ${EAPI:-0} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS src_unpack
-
 if [[ -z ${_MERCURIAL_ECLASS} ]] ; then
 _MERCURIAL_ECLASS=1
 
@@ -63,7 +61,7 @@ BDEPEND="dev-vcs/mercurial"
 # between several ebuilds.
 [[ -z "${EHG_PROJECT}" ]] && EHG_PROJECT="${PN}"
 
-# @ECLASS-VARIABLE: EGIT_CHECKOUT_DIR
+# @ECLASS-VARIABLE: EHG_CHECKOUT_DIR
 # @DESCRIPTION:
 # The directory to check the hg sources out to.
 #
@@ -219,3 +217,5 @@ function mercurial_src_unpack {
 }
 
 fi
+
+EXPORT_FUNCTIONS src_unpack

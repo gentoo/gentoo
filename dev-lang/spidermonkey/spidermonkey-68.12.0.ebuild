@@ -98,6 +98,7 @@ src_prepare() {
 	rm "${WORKDIR}"/firefox/2016_set_CARGO_PROFILE_RELEASE_LTO.patch
 	eapply "${WORKDIR}"/firefox
 	eapply "${WORKDIR}"/spidermonkey-patches
+	eapply "${FILESDIR}"/spidermonkey-68.0-add-riscv-support.patch
 
 	default
 

@@ -25,5 +25,5 @@ distutils_enable_tests setup.py
 
 pkg_postinst() {
 	optfeature "Gui support" dev-python/wxpython
-	optfeature "Support of remote readers with Pyro" dev-python/pyro
+	optfeature "Support of remote readers with Pyro" dev-python/Pyro4
 }

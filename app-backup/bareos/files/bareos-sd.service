@@ -10,14 +10,17 @@ Requires=nss-lookup.target network.target remote-fs.target time-sync.target
 After=nss-lookup.target network.target remote-fs.target time-sync.target
 
 [Service]
-Type=forking
+# see bug #631598
+#Type=forking
+Type=simple
 User=root
 Group=bareos
 WorkingDirectory=/var/lib/bareos
-PIDFile=/run/bareos/bareos-sd.9103.pid
+#PIDFile=/run/bareos/bareos-sd.9103.pid
 StandardError=journal
 ExecStartPre=/usr/sbin/bareos-sd -t -f
-ExecStart=/usr/sbin/bareos-sd
+#ExecStart=/usr/sbin/bareos-sd
+ExecStart=/usr/sbin/bareos-sd -f
 # enable this for scsicrypto-sd
 # CapabilityBoundingSet=cap_sys_rawio+ep
 SuccessExitStatus=0 15

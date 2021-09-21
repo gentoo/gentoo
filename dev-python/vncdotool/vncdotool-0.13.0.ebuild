@@ -1,11 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Command line VNC client"
@@ -16,8 +14,9 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-# No clue why this happens:
+# A lot of errors such as the following appear
 # pexpect.exceptions.ExceptionPexpect: The command was not found or was not executable: vncev.
+# to install those, a manual compile and install of examples from net-libs/libvncserver is needed
 RESTRICT="test"
 
 BDEPEND="test? (
@@ -30,8 +29,7 @@ BDEPEND="test? (
 	dev-python/tox[${PYTHON_USEDEP}]
 	dev-python/virtualenv[${PYTHON_USEDEP}]
 )"
-
-DEPEND="
+RDEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/twisted[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]

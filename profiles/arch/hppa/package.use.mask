@@ -4,9 +4,15 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
-# Marek Szuba <marecki@gentoo.org> (2021-08-11)
-# dev-ruby/tty-editor not keyworded here yet (Bug #807685)
-app-text/htmltidy test
+# Sam James <sam@gentoo.org> (2021-09-14)
+# fdk-aac, libfreeaptx not keyworded here
+# nor is jack2
+# bug #807616
+media-video/pipewire bluetooth jack-client
+
+# David Seifert <soap@gentoo.org> (2021-09-04)
+# dev-lang/go not keyworded here
+sys-libs/libcap tools
 
 # Michał Górny <mgorny@gentoo.org> (2021-07-25)
 # PyQt5 and wxpython are not keyworded.
@@ -46,10 +52,6 @@ app-text/enchant voikko
 # Matthias Maier <tamiko@gentoo.org> (2020-12-03)
 # Requires sci-mathematics/z3.
 dev-util/cppcheck z3
-
-# Michał Górny <mgorny@gentoo.org> (2020-11-18)
-# Requires dev-python/coverage, bug #743355.
-dev-python/nose coverage
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
 # media-sound/lash not keyworded, bug #736725

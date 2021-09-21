@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 ECM_DESIGNERPLUGIN="true"
 PVCUT=$(ver_cut 1-2)
@@ -11,7 +11,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Framework for managing menu and toolbar actions in an abstract way"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 LICENSE="LGPL-2+"
 IUSE=""
 
@@ -37,9 +37,9 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_test() {
-	# Files are missing; whatever. Bugs 650290, 668198
+	# Files are missing; whatever. Bugs 650290, 668198, 808216
 	local myctestargs=(
-		-E "(ktoolbar_unittest|kxmlgui_unittest)"
+		-E "(ktoolbar_unittest|kxmlgui_unittest|ktooltiphelper_unittest)"
 	)
 
 	ecm_src_test

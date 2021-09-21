@@ -1,0 +1,170 @@
+From 439f8cbfe0b5d1f931c2233d1790e1280170c24c Mon Sep 17 00:00:00 2001
+From: Jan Paul Batrina <jpmbatrina01@gmail.com>
+Date: Sat, 28 Aug 2021 21:27:41 +0800
+Subject: [PATCH] Python: Add "yield from" keyword
+
+BUG: 441540
+---
+ autotests/folding/test.py.fold   |  9 +++++++++
+ autotests/html/test.py.dark.html |  9 +++++++++
+ autotests/html/test.py.html      |  9 +++++++++
+ autotests/input/test.py          |  9 +++++++++
+ autotests/reference/test.py.ref  |  9 +++++++++
+ data/syntax/python.xml           | 17 +++++++++++++++--
+ 6 files changed, 60 insertions(+), 2 deletions(-)
+
+diff --git a/autotests/folding/test.py.fold b/autotests/folding/test.py.fold
+index 7bbf054c..5e7a3ba8 100644
+--- a/autotests/folding/test.py.fold
++++ b/autotests/folding/test.py.fold
+@@ -118,6 +118,15 @@ match<beginfold id='2'>(</beginfold id='2'>command.split<beginfold id='2'>(</beg
+     case <beginfold id='5'>[</beginfold id='5'>"quit"<endfold id='5'>]</endfold id='5'>:
+         print<beginfold id='2'>(</beginfold id='2'>"Goodbye!"<endfold id='2'>)</endfold id='2'>
+ 
++def func1<beginfold id='2'>(</beginfold id='2'><endfold id='2'>)</endfold id='2'>:
++    yield 1
++    yield  from <beginfold id='5'>[</beginfold id='5'>func<beginfold id='2'>(</beginfold id='2'><endfold id='2'>)</endfold id='2'>, 1, 2, "3"<endfold id='5'>]</endfold id='5'>
++    # invalid, "from" no longer part of "yield from"
++    yield, from 1
++
++async def func2<beginfold id='2'>(</beginfold id='2'><endfold id='2'>)</endfold id='2'>:
++    await asyncio.sleep<beginfold id='2'>(</beginfold id='2'>1<endfold id='2'>)</endfold id='2'>
++
+ "\\\\\\\\\\ENSURE THAT THIS AND THE FOLLOWING LINES ARE AT THE <endfold id='6'>END</endfold id='6'> OF THE FILE\\\\\\\\\\ \
+ "
+ </indentfold>a = 'otherwise all succeeding lines will be
+diff --git a/autotests/html/test.py.dark.html b/autotests/html/test.py.dark.html
+index 23718b11..1d6c1dd2 100644
+--- a/autotests/html/test.py.dark.html
++++ b/autotests/html/test.py.dark.html
+@@ -124,6 +124,15 @@ match(command.split())
+     <span style="color:#fdbc4b;font-weight:bold;">case</span> [<span style="color:#f44f4f;">&quot;quit&quot;</span>]:
+         <span style="color:#7f8c8d;">print</span>(<span style="color:#f44f4f;">&quot;Goodbye!&quot;</span>)
+ 
++<span style="font-weight:bold;">def</span> func1():
++    <span style="color:#fdbc4b;font-weight:bold;">yield</span> <span style="color:#f67400;">1</span>
++    <span style="color:#fdbc4b;font-weight:bold;">yield</span>  <span style="color:#fdbc4b;font-weight:bold;">from</span> [func(), <span style="color:#f67400;">1</span>, <span style="color:#f67400;">2</span>, <span style="color:#f44f4f;">&quot;3&quot;</span>]
++    <span style="color:#7a7c7d;"># invalid, &quot;from&quot; no longer part of &quot;yield from&quot;</span>
++    <span style="color:#fdbc4b;font-weight:bold;">yield</span>, <span style="color:#27ae60;">from</span> <span style="color:#f67400;">1</span>
++
++<span style="color:#fdbc4b;font-weight:bold;">async</span> <span style="font-weight:bold;">def</span> func2():
++    <span style="color:#fdbc4b;font-weight:bold;">await</span> asyncio.sleep(<span style="color:#f67400;">1</span>)
++
+ <span style="color:#7a7c7d;">&quot;</span><span style="color:#3daee9;">\\\\\\\\\\</span><span style="color:#7a7c7d;">ENSURE THAT THIS AND THE FOLLOWING LINES ARE AT THE </span><span style="color:#2980b9;background-color:#153042;">END</span><span style="color:#7a7c7d;"> OF THE FILE</span><span style="color:#3daee9;">\\\\\\\\\\</span><span style="color:#7a7c7d;"> </span><span style="color:#3daee9;">\</span>
+ <span style="color:#7a7c7d;">&quot;</span>
+ a <span style="color:#3f8058;">=</span> <span style="color:#f44f4f;">'otherwise all succeeding lines will be</span>
+diff --git a/autotests/html/test.py.html b/autotests/html/test.py.html
+index 55cfefb0..4d7a2709 100644
+--- a/autotests/html/test.py.html
++++ b/autotests/html/test.py.html
+@@ -124,6 +124,15 @@ match(command.split())
+     <span style="font-weight:bold;">case</span> [<span style="color:#bf0303;">&quot;quit&quot;</span>]:
+         <span style="color:#644a9b;font-weight:bold;">print</span>(<span style="color:#bf0303;">&quot;Goodbye!&quot;</span>)
+ 
++<span style="font-weight:bold;">def</span> func1():
++    <span style="font-weight:bold;">yield</span> <span style="color:#b08000;">1</span>
++    <span style="font-weight:bold;">yield</span>  <span style="font-weight:bold;">from</span> [func(), <span style="color:#b08000;">1</span>, <span style="color:#b08000;">2</span>, <span style="color:#bf0303;">&quot;3&quot;</span>]
++    <span style="color:#898887;"># invalid, &quot;from&quot; no longer part of &quot;yield from&quot;</span>
++    <span style="font-weight:bold;">yield</span>, <span style="color:#ff5500;">from</span> <span style="color:#b08000;">1</span>
++
++<span style="font-weight:bold;">async</span> <span style="font-weight:bold;">def</span> func2():
++    <span style="font-weight:bold;">await</span> asyncio.sleep(<span style="color:#b08000;">1</span>)
++
+ <span style="color:#898887;">&quot;</span><span style="color:#924c9d;">\\\\\\\\\\</span><span style="color:#898887;">ENSURE THAT THIS AND THE FOLLOWING LINES ARE AT THE </span><span style="color:#0057ae;background-color:#e0e9f8;">END</span><span style="color:#898887;"> OF THE FILE</span><span style="color:#924c9d;">\\\\\\\\\\</span><span style="color:#898887;"> </span><span style="color:#924c9d;">\</span>
+ <span style="color:#898887;">&quot;</span>
+ a <span style="color:#ca60ca;">=</span> <span style="color:#bf0303;">'otherwise all succeeding lines will be</span>
+diff --git a/autotests/input/test.py b/autotests/input/test.py
+index 3eb8378d..d91db578 100644
+--- a/autotests/input/test.py
++++ b/autotests/input/test.py
+@@ -118,6 +118,15 @@ match(command.split()):
+     case ["quit"]:
+         print("Goodbye!")
+ 
++def func1():
++    yield 1
++    yield  from [func(), 1, 2, "3"]
++    # invalid, "from" no longer part of "yield from"
++    yield, from 1
++
++async def func2():
++    await asyncio.sleep(1)
++
+ "\\\\\\\\\\ENSURE THAT THIS AND THE FOLLOWING LINES ARE AT THE END OF THE FILE\\\\\\\\\\ \
+ "
+ a = 'otherwise all succeeding lines will be
+diff --git a/autotests/reference/test.py.ref b/autotests/reference/test.py.ref
+index 9c5bdb54..1742da2b 100644
+--- a/autotests/reference/test.py.ref
++++ b/autotests/reference/test.py.ref
+@@ -118,6 +118,15 @@
+ <Normal Text>    </Normal Text><Flow Control Keyword>case</Flow Control Keyword><Normal Text> [</Normal Text><String>"quit"</String><Normal Text>]:</Normal Text><br/>
+ <Normal Text>        </Normal Text><Builtin Function>print</Builtin Function><Normal Text>(</Normal Text><String>"Goodbye!"</String><Normal Text>)</Normal Text><br/>
+ <Normal Text></Normal Text><br/>
++<Definition Keyword>def</Definition Keyword><Normal Text> func1():</Normal Text><br/>
++<Normal Text>    </Normal Text><Flow Control Keyword>yield</Flow Control Keyword><Normal Text> </Normal Text><Int>1</Int><br/>
++<Normal Text>    </Normal Text><Flow Control Keyword>yield</Flow Control Keyword><Normal Text>  </Normal Text><Flow Control Keyword>from</Flow Control Keyword><Normal Text> [func(), </Normal Text><Int>1</Int><Normal Text>, </Normal Text><Int>2</Int><Normal Text>, </Normal Text><String>"3"</String><Normal Text>]</Normal Text><br/>
++<Normal Text>    </Normal Text><Comment># invalid, "from" no longer part of "yield from"</Comment><br/>
++<Normal Text>    </Normal Text><Flow Control Keyword>yield</Flow Control Keyword><Normal Text>, </Normal Text><Import>from</Import><Normal Text> </Normal Text><Int>1</Int><br/>
++<Normal Text></Normal Text><br/>
++<Flow Control Keyword>async</Flow Control Keyword><Normal Text> </Normal Text><Definition Keyword>def</Definition Keyword><Normal Text> func2():</Normal Text><br/>
++<Normal Text>    </Normal Text><Flow Control Keyword>await</Flow Control Keyword><Normal Text> asyncio.sleep(</Normal Text><Int>1</Int><Normal Text>)</Normal Text><br/>
++<Normal Text></Normal Text><br/>
+ <Comment>"</Comment><String Char>\\\\\\\\\\</String Char><Comment>ENSURE THAT THIS AND THE FOLLOWING LINES ARE AT THE </Comment><Region Marker>END</Region Marker><Comment> OF THE FILE</Comment><String Char>\\\\\\\\\\</String Char><Comment> </Comment><String Char>\</String Char><br/>
+ <Comment>"</Comment><br/>
+ <Normal Text>a </Normal Text><Operator>=</Operator><Normal Text> </Normal Text><String>'otherwise all succeeding lines will be</String><br/>
+diff --git a/data/syntax/python.xml b/data/syntax/python.xml
+index 7143bf30..676872f0 100644
+--- a/data/syntax/python.xml
++++ b/data/syntax/python.xml
+@@ -52,7 +52,7 @@
+ <!-- v2.07 add support for %prog and co, see bug 142832 -->
+ <!-- v2.08 add missing overloaders, new Python 3 statements, builtins, and keywords -->
+ <!-- v2.29 recognize escape sequenzes correctly -->
+-<language name="Python" version="21" style="python" indenter="python" kateversion="5.0" section="Scripts" extensions="*.py;*.pyw;SConstruct;SConscript;*.FCMacro" mimetype="application/x-python;text/x-python;text/x-python3" casesensitive="1" author="Michael Bueker" license="">
++<language name="Python" version="22" style="python" indenter="python" kateversion="5.0" section="Scripts" extensions="*.py;*.pyw;SConstruct;SConscript;*.FCMacro" mimetype="application/x-python;text/x-python;text/x-python3" casesensitive="1" author="Michael Bueker" license="">
+ 	<highlighting>
+ 		<list name="import">
+ 			<item>import</item>
+@@ -90,10 +90,17 @@
+ 			<item>try</item>
+ 			<item>while</item>
+ 			<item>with</item>
+-			<item>yield</item>
+ 			<item>async</item>
+ 			<item>await</item>
+ 		</list>
++		<list name="flow_yield">
++			<item>yield</item>
++			<!--
++				"yield from" added here as a keyword for autocompletion. The actual handling
++				is in context="yield" so that we won't need to add space as a weakDeliminator.
++			-->
++			<item>yield from</item>
++		</list>
+ 		<list name="patternmatching">
+ 			<item>match</item>
+ 			<item>case</item>
+@@ -380,6 +387,7 @@
+ 				<keyword attribute="Definition Keyword" String="defs" context="#stay"/>
+ 				<keyword attribute="Operator Keyword" String="operators" context="#stay"/>
+ 				<keyword attribute="Flow Control Keyword" String="flow" context="#stay"/>
++				<keyword attribute="Flow Control Keyword" String="flow_yield" context="yield"/>
+ 				<keyword attribute="Flow Control Keyword" String="patternmatching" context="Pattern Matching" lookAhead="1" firstNonSpace="1"/>
+ 				<keyword attribute="Builtin Function" String="builtinfuncs" context="#stay"/>
+ 				<keyword attribute="Special Variable" String="specialvars" context="#stay"/>
+@@ -428,6 +436,11 @@
+ 				<RegExpr attribute="Error" String="[\w\d]+" context="#pop#pop"/>
+ 			</context>
+ 
++			<context name="yield" attribute="Flow Control Keyword" lineEndContext="#pop" fallthrough="1" fallthroughContext="#pop">
++				<DetectSpaces attribute="Normal Text" context="#stay"/>
++				<WordDetect attribute="Flow Control Keyword" context="#pop" String="from"/>
++			</context>
++
+ 			<context name="Pattern Matching" attribute="Flow Control Keyword" lineEndContext="#pop">
+ 				<!--
+ 					Python 3.10: https://docs.python.org/3.10/reference/compound_stmts.html#the-match-statement
+-- 
+GitLab
+

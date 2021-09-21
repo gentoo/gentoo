@@ -45,3 +45,8 @@ src_prepare() {
 	# Avoid tests requiring unpackaged test data
 	rm -f rbtools/clients/tests/test_scanning.py || die
 }
+
+python_test() {
+	distutils_install_for_testing
+	distutils-r1_python_test
+}

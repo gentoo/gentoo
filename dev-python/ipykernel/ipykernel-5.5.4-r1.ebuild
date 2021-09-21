@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="test"
 
 RDEPEND="
@@ -30,6 +30,11 @@ BDEPEND="
 	)"
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	sed -i -e 's:^TIMEOUT = .*:TIMEOUT = 120:' ipykernel/tests/*.py || die
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	local deselect=(

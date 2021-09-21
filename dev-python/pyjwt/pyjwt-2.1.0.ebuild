@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 optfeature
 
@@ -15,7 +15,7 @@ S="${WORKDIR}"/${MY_PN}-${PV}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ppc ~ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="!dev-python/python-jwt"
 BDEPEND="

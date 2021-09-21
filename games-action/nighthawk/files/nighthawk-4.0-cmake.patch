@@ -1,0 +1,25 @@
+Fix OpenGL underlink, man dir, and skip installing in $HOME.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -111,5 +111,6 @@
+ # Check for OpenGL and GLU
+ #
+-pkg_check_modules (OPENGL glu)
++set(OpenGL_GL_PREFERENCE GLVND)
++find_package(OpenGL)
+ if (NOT OPENGL_FOUND)
+ 	message(FATAL_ERROR "OpenGL/GLU devel library not installed.")
+@@ -277,5 +278,5 @@
+ # Install nighthawk in games section of man page tree (iaw "man man")
+ #
+-install(FILES man/nighthawk.6 DESTINATION man/man6)
++install(FILES man/nighthawk.6 DESTINATION share/man/man6)
+ 
+ # From investigation work and a strong recommendation by GCB (aka wotnot),
+@@ -287,5 +288,5 @@
+ # risk that install will break on future distributions. JN, 08NOV20
+ #
+-if (UNIX AND NOT APPLE)
++if (0)
+ 	install(FILES ${CMAKE_BINARY_DIR}/nighthawk.desktop DESTINATION ${HOME_PATH}/Desktop)
+ 	install(CODE "execute_process(COMMAND chown ${USERNAME}.${USERNAME} ${HOME_PATH}/Desktop/nighthawk.desktop)")

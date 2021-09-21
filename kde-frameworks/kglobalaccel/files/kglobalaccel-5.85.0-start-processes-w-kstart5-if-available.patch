@@ -1,0 +1,67 @@
+From c6c14830a98050cbee5aa48dd8812e2197515de3 Mon Sep 17 00:00:00 2001
+From: David Redondo <kde@david-redondo.de>
+Date: Mon, 30 Aug 2021 15:45:36 +0200
+Subject: [PATCH] Start processes with kstart5 if available
+
+The intention of 717e4ea9f8e9d3f9ea5e6c8de2efbffd5ef2af82 was to start
+processes with kstart5 so they are in the correct cgroup. We should
+always check if it's available first as we still want to prefer it once
+klauncher is registered.
+BUG:433362
+
+* asturm 2021-09-04: Merged with:
+
+From 061c45df933f6a346c85c34fe10df6f1bd857908 Mon Sep 17 00:00:00 2001
+From: Nikos Chantziaras <realnc@gmail.com>
+Date: Thu, 2 Sep 2021 09:42:51 -0600
+Subject: [PATCH] Fix launching commands with args using kstart5
+
+By prepending "--" to the command, kstart5 parses it all as one thing,
+so additional arguments are executed as expected.
+
+BUG: 433362
+---
+ src/runtime/kserviceactioncomponent.cpp | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/src/runtime/kserviceactioncomponent.cpp b/src/runtime/kserviceactioncomponent.cpp
+index 8bb6962..09b3d7a 100644
+--- a/src/runtime/kserviceactioncomponent.cpp
++++ b/src/runtime/kserviceactioncomponent.cpp
+@@ -48,7 +48,13 @@
+     }
+ 
+     const QString command = parts.takeFirst();
+-    if (klauncherAvailable) {
++
++    const auto kstart = QStandardPaths::findExecutable(QStringLiteral("kstart5"));
++    if (!kstart.isEmpty()) {
++        parts.prepend(command);
++        parts.prepend(QStringLiteral("--"));
++        QProcess::startDetached(kstart, parts);
++    } else if (klauncherAvailable) {
+         QDBusMessage msg = QDBusMessage::createMethodCall(QStringLiteral("org.kde.klauncher5"),
+                                                           QStringLiteral("/KLauncher"),
+                                                           QStringLiteral("org.kde.KLauncher"),
+@@ -57,18 +63,14 @@
+ 
+         QDBusConnection::sessionBus().asyncCall(msg);
+     } else {
+-        const auto kstart = QStandardPaths::findExecutable(QStringLiteral("kstart5"));
+-        if (kstart.isEmpty()) {
+-            QProcess::startDetached(command, parts);
+-        } else {
+-            parts.prepend(command);
+-            QProcess::startDetached(kstart, parts);
+-        }
++        QProcess::startDetached(command, parts);
+     }
+ }
+ 
+ void KServiceActionComponent::emitGlobalShortcutPressed(const GlobalShortcut &shortcut)
+ {
++    // TODO KF6 use ApplicationLauncherJob to start processes when it's available in a framework that we depend on
++
+     // DBusActivatatable spec as per https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#dbus
+     if (m_desktopFile->desktopGroup().readEntry("DBusActivatable", false)) {
+         QString method;

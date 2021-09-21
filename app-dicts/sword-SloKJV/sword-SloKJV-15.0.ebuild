@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Slovenian translation of Holy Bible King James Version (1769)"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=SloKJV"
 LICENSE="CC-BY-NC-ND-4.0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

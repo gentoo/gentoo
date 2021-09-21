@@ -15,7 +15,7 @@ HOMEPAGE="https://code.launchpad.net/lazr.config"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-LICENSE="Apache-2.0"
+LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 

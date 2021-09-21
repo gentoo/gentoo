@@ -15,7 +15,7 @@ if [[ "${PV}" = "9999" ]]; then
 	ESVN_REPO_URI="http://subversion.ffado.org/ffado/trunk/${PN}"
 else
 	SRC_URI="http://www.ffado.org/files/${P}.tgz"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 -riscv x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
 fi
 
 LICENSE="GPL-2 GPL-3"
@@ -78,6 +78,9 @@ myescons() {
 
 src_prepare() {
 	default
+
+	# Bug #808853
+	cp "${BROOT}"/usr/share/gnuconfig/config.guess admin/ || die "Failed to update config.guess"
 
 	# Always use Qt5
 	sed -i -e 's/try:/if False:/' -e 's/except.*/else:/' support/mixer-qt4/ffado/import_pyqt.py || die

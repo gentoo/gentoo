@@ -8,6 +8,7 @@
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
 # @SUPPORTED_EAPIS: 6 7 8
+# @PROVIDES: python-utils-r1
 # @BLURB: An eclass for packages having build-time dependency on Python.
 # @DESCRIPTION:
 # A minimal eclass for packages which need any Python interpreter

@@ -54,6 +54,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.36-flags.patch
 	"${FILESDIR}"/${PN}-1.3.19-perl.patch
+	"${FILESDIR}"/${PN}-1.3.36-bzip-no-zlib.patch
 )
 
 src_prepare() {

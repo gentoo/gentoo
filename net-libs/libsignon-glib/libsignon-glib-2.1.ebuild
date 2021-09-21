@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.com/accounts-sso/${PN}/-/archive/VERSION_${PV}/${PN}-VER
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm64 x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 IUSE="debug doc +introspection python test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} introspection )"

@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{7..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 # The package uses pkg_resources
 DISTUTILS_USE_SETUPTOOLS=manual
 
@@ -20,22 +20,19 @@ S="${WORKDIR}/ianb-${PN}-${MY_COMMIT}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
-"
+BDEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-pypy-tests.patch"
 	# cgi.escape has been removed in Python 3.9
 	"${FILESDIR}/${P}-cgi-escape.patch"
+	# The 2to3 option for setuptools is deprecated
+	"${FILESDIR}/${P}-2to3.patch"
 )
 
 distutils_enable_sphinx docs
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	# Remove reference to a non-existent CSS file
@@ -45,8 +42,5 @@ python_prepare_all() {
 }
 
 python_test() {
-	# We need to append to sys.path, otherwise pytest imports
-	# the module from ${S} (before it was 2to3'd)
-	pytest --import-mode=append -vv tests/test_template.txt docs/index.txt \
-		|| die "Tests failed with ${EPYTHON}"
+	epytest tests/test_template.txt docs/index.txt
 }

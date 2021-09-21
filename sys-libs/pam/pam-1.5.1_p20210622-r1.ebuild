@@ -3,6 +3,10 @@
 
 EAPI=7
 
+# Avoid QA warnings
+# Can reconsider w/ EAPI 8 and IDEPEND, bug #810979
+TMPFILES_OPTIONAL=1
+
 inherit autotools db-use fcaps toolchain-funcs usr-ldscript multilib-minimal
 
 GIT_COMMIT="fe1307512fb8892b5ceb3d884c793af8dbd4c16a"
@@ -16,7 +20,7 @@ SRC_URI="https://github.com/linux-pam/linux-pam/archive/${GIT_COMMIT}.tar.gz -> 
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="audit berkdb debug nis selinux"
 
 BDEPEND="

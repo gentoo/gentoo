@@ -115,7 +115,7 @@ BDEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 	)
 "

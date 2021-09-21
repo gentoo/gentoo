@@ -3,11 +3,12 @@
 
 # @ECLASS: meson-multilib.eclass
 # @MAINTAINER:
-# Author: Matt Turner <mattst88@gentoo.org>
+# Matt Turner <mattst88@gentoo.org>
 # @AUTHOR:
-# Author: Michał Górny <mgorny@gentoo.org>
-# Author: Matt Turner <mattst88@gentoo.org>
+# Michał Górny <mgorny@gentoo.org>
+# Matt Turner <mattst88@gentoo.org>
 # @SUPPORTED_EAPIS: 7 8
+# @PROVIDES: meson multilib-minimal
 # @BLURB: meson wrapper for multilib builds
 # @DESCRIPTION:
 # The meson-multilib.eclass provides a glue between meson.eclass(5)
@@ -125,7 +126,7 @@ meson-multilib_src_install() {
 }
 
 multilib_src_install() {
-	meson_src_install "${_meson_args[@]}"
+	meson_install "${_meson_args[@]}"
 }
 
 fi

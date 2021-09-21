@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="1876 Russian Synodal Bible"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=RusSynodal"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic multilib toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="An embeddable JavaScript interpreter in C"
 HOMEPAGE="https://mujs.com/ https://github.com/ccxvii/mujs"
@@ -15,7 +15,7 @@ LICENSE="ISC"
 SLOT="0/${PV}"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos"
 
-RDEPEND="sys-libs/readline:0="
+RDEPEND="sys-libs/readline:="
 DEPEND="${RDEPEND}"
 
 PATCHES=(

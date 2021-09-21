@@ -1,0 +1,35 @@
+From 6379d1ec8d4a1fce141280eead930a6cdd9282d1 Mon Sep 17 00:00:00 2001
+From: Peifeng Yu <7437103@gmail.com>
+Date: Mon, 6 Sep 2021 05:24:15 +0000
+Subject: [PATCH] Call UnInhibit with correct signature in powermanagement
+ dataengine
+
+---
+ dataengines/powermanagement/powermanagementjob.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/dataengines/powermanagement/powermanagementjob.cpp b/dataengines/powermanagement/powermanagementjob.cpp
+index 90051cf33..dc7883d10 100644
+--- a/dataengines/powermanagement/powermanagementjob.cpp
++++ b/dataengines/powermanagement/powermanagementjob.cpp
+@@ -104,7 +104,7 @@ void PowerManagementJob::start()
+                                                           QStringLiteral("/org/freedesktop/PowerManagement/Inhibit"),
+                                                           QStringLiteral("org.freedesktop.PowerManagement.Inhibit"),
+                                                           QStringLiteral("UnInhibit"));
+-        msg << parameters().value(QStringLiteral("cookie")).toInt();
++        msg << parameters().value(QStringLiteral("cookie")).toUInt();
+         QDBusReply<void> reply = QDBusConnection::sessionBus().call(msg);
+         setResult(reply.isValid());
+         return;
+@@ -122,7 +122,7 @@ void PowerManagementJob::start()
+                                                           QStringLiteral("/ScreenSaver"),
+                                                           QStringLiteral("org.freedesktop.ScreenSaver"),
+                                                           QStringLiteral("UnInhibit"));
+-        msg << parameters().value(QStringLiteral("cookie")).toInt();
++        msg << parameters().value(QStringLiteral("cookie")).toUInt();
+         QDBusReply<uint> reply = QDBusConnection::sessionBus().call(msg);
+         setResult(reply.isValid());
+         return;
+-- 
+GitLab
+

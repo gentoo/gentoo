@@ -100,7 +100,6 @@ libburn
 topal
 indi
 flite
-nut
 sctp
 bs2b
 tokyocabinet

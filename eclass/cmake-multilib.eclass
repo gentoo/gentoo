@@ -6,7 +6,8 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
+# @PROVIDES: cmake cmake-utils multilib-minimal
 # @BLURB: cmake wrapper for multilib builds
 # @DESCRIPTION:
 # The cmake-multilib.eclass provides a glue between cmake.eclass(5)
@@ -19,21 +20,23 @@
 # in multilib-minimal, yet they ought to call appropriate cmake
 # phase rather than 'default'.
 
+[[ ${EAPI} == 7 ]] && : ${CMAKE_ECLASS:=cmake-utils}
 # @ECLASS-VARIABLE: CMAKE_ECLASS
 # @PRE_INHERIT
 # @DESCRIPTION:
-# Default is "cmake-utils" for compatibility in EAPI-7. Specify "cmake" for
-# ebuilds that ported to cmake.eclass already. Future EAPI is "cmake" only.
-: ${CMAKE_ECLASS:=cmake-utils}
+# Only "cmake" is supported in EAPI-8 and later.
+# In EAPI-7, default is "cmake-utils" for compatibility. Specify "cmake" for
+# ebuilds that ported to cmake.eclass already.
+: ${CMAKE_ECLASS:=cmake}
 
 # @ECLASS-VARIABLE: _CMAKE_ECLASS_IMPL
 # @INTERNAL
 # @DESCRIPTION:
-# Default is "cmake" for future EAPI. Cleanup once EAPI-7 support is gone.
+# TODO: Cleanup once EAPI-7 support is gone.
 _CMAKE_ECLASS_IMPL=cmake
 
-case ${EAPI:-0} in
-	7)
+case ${EAPI} in
+	7|8)
 		case ${CMAKE_ECLASS} in
 			cmake-utils|cmake) ;;
 			*)
@@ -43,16 +46,17 @@ case ${EAPI:-0} in
 		esac
 		_CMAKE_ECLASS_IMPL=${CMAKE_ECLASS}
 		;;
-	*) die "EAPI=${EAPI} is not supported" ;;
+	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
 esac
 
 if [[ ${CMAKE_IN_SOURCE_BUILD} ]]; then
 	die "${ECLASS}: multilib support requires out-of-source builds."
 fi
 
-inherit ${_CMAKE_ECLASS_IMPL} multilib-minimal
+if [[ -z ${_CMAKE_MULTILIB_ECLASS} ]]; then
+_CMAKE_MULTILIB_ECLASS=1
 
-EXPORT_FUNCTIONS src_configure src_compile src_test src_install
+inherit ${_CMAKE_ECLASS_IMPL} multilib-minimal
 
 cmake-multilib_src_configure() {
 	local _cmake_args=( "${@}" )
@@ -93,3 +97,7 @@ cmake-multilib_src_install() {
 multilib_src_install() {
 	${_CMAKE_ECLASS_IMPL}_src_install "${_cmake_args[@]}"
 }
+
+fi
+
+EXPORT_FUNCTIONS src_configure src_compile src_test src_install

@@ -39,7 +39,7 @@ RDEPEND="${DEPEND}
 	app-crypt/libsecret[introspection]
 	dev-libs/totem-pl-parser
 	$(python_gen_cond_dep '
-		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/dbus-python
 		dev-python/gst-python[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]

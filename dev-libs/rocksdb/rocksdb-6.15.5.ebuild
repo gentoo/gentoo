@@ -25,6 +25,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.14.6-libatomic.patch
+)
+
 src_configure() {
 	mycmakeargs=(
 		-DFAIL_ON_WARNINGS=OFF

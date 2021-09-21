@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Thomas Matthijs <axxo@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
+# @PROVIDES: java-utils-2
 # @BLURB: Eclass for package with optional Java support
 # @DESCRIPTION:
 # Inherit this eclass instead of java-pkg-2 if you only need optional Java
@@ -16,8 +17,6 @@ case ${EAPI:-0} in
 	[567]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-EXPORT_FUNCTIONS pkg_setup src_prepare pkg_preinst
 
 if [[ -z ${_JAVA_PKG_OPT_2_ECLASS} ]] ; then
 _JAVA_PKG_OPT_2_ECLASS=1
@@ -66,3 +65,5 @@ java-pkg-opt-2_pkg_preinst() {
 }
 
 fi
+
+EXPORT_FUNCTIONS pkg_setup src_prepare pkg_preinst

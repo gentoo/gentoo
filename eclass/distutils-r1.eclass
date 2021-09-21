@@ -8,6 +8,7 @@
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on the work of: Krzysztof Pawlik <nelchael@gentoo.org>
 # @SUPPORTED_EAPIS: 6 7 8
+# @PROVIDES: python-r1 python-single-r1
 # @BLURB: A simple eclass to build Python packages using distutils.
 # @DESCRIPTION:
 # A simple eclass providing functions to build Python packages using
@@ -85,7 +86,7 @@ esac
 #
 # - no -- do not add the dependency (pure distutils package)
 # - bdepend -- add it to BDEPEND (the default)
-# - rdepend -- add it to BDEPEND+RDEPEND (when using entry_points)
+# - rdepend -- add it to BDEPEND+RDEPEND (e.g. when using pkg_resources)
 # - pyproject.toml -- use pyproject2setuptools to install a project
 #                     using pyproject.toml (flit, poetry...)
 # - manual -- do not add the dependency and suppress the checks
@@ -459,7 +460,7 @@ distutils_enable_tests() {
 esetup.py() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	[[ -n ${EPYTHON} ]] || die "EPYTHON unset, invalid call context"
+	_python_check_EPYTHON
 
 	[[ ${BUILD_DIR} ]] && _distutils-r1_create_setup_cfg
 
@@ -742,6 +743,8 @@ _distutils-r1_copy_egg_info() {
 distutils-r1_python_compile() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	_python_check_EPYTHON
+
 	_distutils-r1_copy_egg_info
 
 	# distutils is parallel-capable since py3.5
@@ -820,6 +823,8 @@ distutils-r1_python_test() {
 		die "${FUNCNAME} can be only used after calling distutils_enable_tests"
 	fi
 
+	_python_check_EPYTHON
+
 	if [[ ${_DISTUTILS_TEST_INSTALL} ]]; then
 		distutils_install_for_testing
 	fi
@@ -858,6 +863,8 @@ distutils-r1_python_test() {
 # This phase updates the setup.cfg file with install directories.
 distutils-r1_python_install() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	_python_check_EPYTHON
 
 	local root=${D%/}/_${EPYTHON}
 	[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D%/}

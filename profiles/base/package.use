@@ -1,5 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Niklāvs Koļesņikovs <89q1r14hd@relay.firefox.com> (2021-09-13)
+# WirePlumber obligatory links and embeds either Lua 5.3 or 5.4
+# interpreter with the later being the upstream default.
+media-video/wireplumber lua_single_target_lua5-4
 
 # Michał Górny <mgorny@gentoo.org> (2016-09-24)
 # Enable the BPF target by default

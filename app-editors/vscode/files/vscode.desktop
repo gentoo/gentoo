@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Visual Studio Code
+Name=VSCode
 Comment=Editing evolved
 GenericName=Code Editor
 Exec=/usr/bin/vscode --unity-launch %F
@@ -10,7 +10,7 @@ StartupWMClass=Code
 Categories=Utility;TextEditor;Development;IDE;
 MimeType=text/plain;inode/directory;application/x-code-workspace;
 Actions=new-empty-window;
-Keywords=vscode;
+Keywords=vscode;code;
 
 [Desktop Action new-empty-window]
 Name=New Empty Window

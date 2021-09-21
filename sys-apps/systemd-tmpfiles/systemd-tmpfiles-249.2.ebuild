@@ -24,7 +24,7 @@ SRC_URI="https://github.com/systemd/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_PN}-$
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="selinux test"
 RESTRICT="!test? ( test )"
 
@@ -33,6 +33,7 @@ RDEPEND="
 	>=sys-apps/util-linux-2.30:0=
 	sys-libs/libcap:0=
 	selinux? ( sys-libs/libselinux:0= )
+	virtual/libcrypt:=
 	!sys-apps/opentmpfiles
 	!sys-apps/systemd
 "
@@ -65,6 +66,12 @@ PATCHES=(
 
 python_check_deps() {
 	has_version -b "dev-python/jinja[${PYTHON_USEDEP}]"
+}
+
+pkg_pretend() {
+	if [[ -n ${EPREFIX} ]]; then
+		ewarn "systemd-tmpfiles uses un-prefixed paths at runtime.".
+	fi
 }
 
 pkg_setup() {
@@ -186,6 +193,7 @@ src_configure() {
 	systemd_disable_options=( ${systemd_disable_options[@]/%/=false} )
 
 	local emesonargs=(
+		-Drootprefix="${EPREFIX:-/}"
 		-Dacl=true
 		-Dtmpfiles=true
 		-Dstandalone-binaries=true # this and below option does the magic

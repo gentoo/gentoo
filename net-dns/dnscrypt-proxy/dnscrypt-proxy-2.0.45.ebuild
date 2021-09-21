@@ -74,7 +74,6 @@ src_install() {
 
 pkg_postinst() {
 	fcaps_pkg_postinst
-	go-module_pkg_postinst
 
 	if ! use filecaps; then
 		ewarn "'filecaps' USE flag is disabled"

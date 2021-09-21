@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION="read multiple hunks of data out of your DATA section"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 # r: strict, warnings -> perl

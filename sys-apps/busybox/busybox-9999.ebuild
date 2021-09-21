@@ -141,6 +141,14 @@ src_configure() {
 		busybox_config_option n FEATURE_VI_REGEX_SEARCH
 	fi
 
+	# Disable standalone shell mode when using make-symlinks, else Busybox calls its
+	# applets by default without looking up in PATH.
+	# This also enables users to disable a builtin by deleting the corresponding symlink.
+	if use make-symlinks; then
+		busybox_config_option n FEATURE_PREFER_APPLETS
+		busybox_config_option n FEATURE_SH_STANDALONE
+	fi
+
 	# If these are not set and we are using a uclibc/busybox setup
 	# all calls to system() will fail.
 	busybox_config_option y ASH
@@ -328,7 +336,7 @@ pkg_postinst() {
 		cd "${T}" || die
 		mkdir _install
 		tar xf busybox-links.tar -C _install || die
-		false | cp -vpPR _install/* "${ROOT}"/ || die "copying links for ${x} failed"
+		echo n | cp -ivpPR _install/* "${ROOT}"/ || die "copying links for ${x} failed"
 	fi
 
 	if use sep-usr ; then

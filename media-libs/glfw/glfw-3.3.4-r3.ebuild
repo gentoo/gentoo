@@ -12,7 +12,7 @@ SRC_URI="https://github.com/glfw/glfw/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc64 x86"
 IUSE="wayland-only"
 
 # note: libglfw uses dlopen() for most of these at runtime

@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Anna Vyalkova <cyber@gentoo@sysrq.in> (2021-09-04)
+# net-libs/canlock not keyworded
+>=net-nntp/tin-2.6.0 cancel-locks
+
 # Sam James <sam@gentoo.org> (2021-08-14)
 # Needs Raspberry Pi specific applications
 media-video/mjpg-streamer -input-raspicam
@@ -37,7 +41,7 @@ dev-lang/php -jit
 # No SELinux on ARM
 net-im/prosody selinux
 
-# Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-23)
+# Jakov Smolić <jsmolic@gentoo.org> (2021-01-23)
 # Depends on media-video/rav1e which needs Rust
 >=media-libs/libheif-1.10.0 rav1e
 
@@ -184,11 +188,6 @@ net-im/ejabberd hipe
 # (SM)BIOS/Thunderbolt outside of amd64/x86? - citation needed
 sys-apps/fwupd dell thunderbolt
 
-# Davide Pesavento <pesa@gentoo.org> (2018-12-27)
-# The corresponding Qt5 modules are not keyworded on arm, and we don't want to
-# keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/PyQt5 networkauth
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)
 # Requires www-client/firefox which isn't available on ARM yet
 # due to dev-lang/rust requirement
@@ -238,10 +237,6 @@ net-misc/gerbera lastfm
 # Michał Górny <mgorny@gentoo.org> (2017-08-10)
 # Requires USE=ipmi which is masked in this profile.
 sys-power/nut ups_drivers_nut-ipmipsu
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-10)
-# Requires USE=octave which is masked in this profile.
-<=dev-python/ipython-7.24.1 test
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=opencl that is masked in this profile.
@@ -320,10 +315,6 @@ sci-mathematics/flint ntl
 # Markus Meier <maekke@gentoo.org> (2016-02-26)
 # unmask scanner for net-print/hplip, bug #518456
 media-sound/moc timidity
-
-# James Le Cuirot <chewi@gentoo.org> (2016-01-30)
-# scrollview requires SWT, which is currently unsupported on ARM.
-app-text/tesseract scrollview
 
 # Brian Evans <grknight@gentoo.org> (2015-11-23)
 # unmask galera for dev-db/mariadb

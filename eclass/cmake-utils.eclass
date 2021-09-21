@@ -10,6 +10,7 @@
 # (undisclosed contributors)
 # Original author: Zephyrus (zephyrus@mirach.it)
 # @SUPPORTED_EAPIS: 5 6 7
+# @PROVIDES: ninja-utils
 # @BLURB: common ebuild functions for cmake-based packages
 # @DEPRECATED: cmake.eclass
 # @DESCRIPTION:

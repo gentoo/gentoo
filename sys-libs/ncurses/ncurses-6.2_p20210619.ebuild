@@ -87,6 +87,7 @@ src_configure() {
 
 		# We can't re-use the multilib BUILD_DIR because we run outside of it.
 		BUILD_DIR="${WORKDIR}" \
+		CC=${BUILD_CC} \
 		CHOST=${CBUILD} \
 		CFLAGS=${BUILD_CFLAGS} \
 		CXXFLAGS=${BUILD_CXXFLAGS} \

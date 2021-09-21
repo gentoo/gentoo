@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome2-utils
+inherit xdg
 
 DESCRIPTION="A massively improved variant of the well-known Gartoon theme"
 HOMEPAGE="https://gnome-look.org/content/show.php/?content=74841"
@@ -39,16 +39,4 @@ src_compile() {
 src_install() {
 	emake icondir="${D}"/usr/share/icons/GartoonRedux install
 	dodoc AUTHORS changelog README TODO
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }

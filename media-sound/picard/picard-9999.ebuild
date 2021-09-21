@@ -1,11 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_SINGLE_IMPL=1
-DISABLE_AUTOFORMATTING=true
+
 inherit distutils-r1 xdg
 
 if [[ ${PV} = *9999* ]]; then
@@ -29,16 +29,16 @@ BDEPEND="
 "
 RDEPEND="
 	$(python_gen_cond_dep '
+		dev-python/fasteners[${PYTHON_USEDEP}]
 		dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
+		media-libs/mutagen[${PYTHON_USEDEP}]
+		discid? ( dev-python/python-discid[${PYTHON_USEDEP}] )
 	')
-	dev-qt/qtgui:5
-	media-libs/mutagen
-	discid? ( dev-python/python-discid )
 	fingerprints? ( media-libs/chromaprint[tools] )
 "
 
-RESTRICT="test" # doesn't work with ebuilds
+distutils_enable_tests pytest
 
 python_compile() {
 	local build_args=(
@@ -59,14 +59,4 @@ python_install() {
 		install_args+=( --disable-locales )
 	fi
 	distutils-r1_python_install ${install_args[@]}
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
-
-	if [[ -n "${REPLACING_VERSIONS}" ]]; then
-		elog "If you are upgrading Picard and it does not start, try removing"
-		elog "Picard's settings:"
-		elog "        rm ~/.config/MusicBrainz/Picard.conf"
-	fi
 }

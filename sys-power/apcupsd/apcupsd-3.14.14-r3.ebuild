@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit linux-info flag-o-matic systemd udev tmpfiles
+inherit linux-info systemd udev tmpfiles
 
 DESCRIPTION="APC UPS daemon with integrated tcp/ip remote shutdown"
 HOMEPAGE="http://www.apcupsd.org/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/apcupsd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc x86"
 IUSE="snmp +usb +modbus cgi gnome kernel_linux"
 
 DEPEND=">=sys-apps/util-linux-2.23[tty-helpers(-)]

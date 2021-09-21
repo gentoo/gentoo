@@ -8,6 +8,7 @@
 # John Mylchreest <johnm@gentoo.org>,
 # Stefan Schweizer <genstef@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
+# @PROVIDES: linux-info
 # @BLURB: It provides the functionality required to install external modules against a kernel source tree.
 # @DESCRIPTION:
 # This eclass is used to interface with linux-info.eclass in such a way
@@ -20,12 +21,14 @@
 
 # @ECLASS-VARIABLE: MODULES_OPTIONAL_USE
 # @PRE_INHERIT
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string containing the USE flag to use for making this eclass optional
 # The recommended non-empty value is 'modules'
 
 # @ECLASS-VARIABLE: MODULES_OPTIONAL_USE_IUSE_DEFAULT
 # @PRE_INHERIT
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A boolean to control the IUSE default state for the MODULES_OPTIONAL_USE USE
 # flag. Default value is unset (false). True represented by 1 or 'on', other
@@ -35,21 +38,26 @@
 # @DESCRIPTION:
 # A string containing the directory of the target kernel sources. The default value is
 # "/usr/src/linux"
+: ${KERNEL_DIR:=/usr/src/linux}
 
 # @ECLASS-VARIABLE: ECONF_PARAMS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # It's a string containing the parameters to pass to econf.
 # If this is not set, then econf isn't run.
 
 # @ECLASS-VARIABLE: BUILD_PARAMS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # It's a string with the parameters to pass to emake.
 
 # @ECLASS-VARIABLE: BUILD_TARGETS
 # @DESCRIPTION:
 # It's a string with the build targets to pass to make. The default value is "clean module"
+: ${BUILD_TARGETS:=clean module}
 
 # @ECLASS-VARIABLE: MODULE_NAMES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # It's a string containing the modules to be built automatically using the default
 # src_compile/src_install. It will only make ${BUILD_TARGETS} once in any directory.
@@ -94,12 +102,14 @@
 # This can be explicitly enabled by setting any of the following variables.
 
 # @ECLASS-VARIABLE: MODULESD_<modulename>_ENABLED
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is used to disable the modprobe.d file generation otherwise the file will be
 # always generated (unless no MODULESD_<modulename>_* variable is provided). Set to "no" to disable
 # the generation of the file and the installation of the documentation.
 
 # @ECLASS-VARIABLE: MODULESD_<modulename>_EXAMPLES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is a bash array containing a list of examples which should
 # be used. If you want us to try and take a guess set this to "guess".
@@ -111,6 +121,7 @@
 # where array_component is "<modulename> options" (see modprobe.conf(5))
 
 # @ECLASS-VARIABLE: MODULESD_<modulename>_ALIASES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is a bash array containing a list of associated aliases.
 #
@@ -121,17 +132,20 @@
 # where array_component is "wildcard <modulename>" (see modprobe.conf(5))
 
 # @ECLASS-VARIABLE: MODULESD_<modulename>_ADDITIONS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is a bash array containing a list of additional things to
 # add to the bottom of the file. This can be absolutely anything.
 # Each entry is a new line.
 
 # @ECLASS-VARIABLE: MODULESD_<modulename>_DOCS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is a string list which contains the full path to any associated
 # documents for <modulename>. These files are installed in the live tree.
 
 # @ECLASS-VARIABLE: KV_OBJ
+# @INTERNAL
 # @DESCRIPTION:
 # It's a read-only variable. It contains the extension of the kernel modules.
 
@@ -139,8 +153,6 @@ case ${EAPI:-0} in
 	[567]) inherit eutils ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-EXPORT_FUNCTIONS pkg_setup pkg_preinst pkg_postinst src_install src_compile pkg_postrm
 
 if [[ -z ${_LINUX_MOD_ECLASS} ]] ; then
 _LINUX_MOD_ECLASS=1
@@ -661,6 +673,11 @@ linux-mod_src_compile() {
 
 	[[ -n ${KERNEL_DIR} ]] && addpredict "${KERNEL_DIR}/null.dwo"
 
+	# Set CROSS_COMPILE in the environment.
+	# This allows it to be overridden in local Makefiles.
+	# https://bugs.gentoo.org/550428
+	local -x CROSS_COMPILE=${CROSS_COMPILE-${CHOST}-}
+
 	BUILD_TARGETS=${BUILD_TARGETS:-clean module}
 	strip_modulenames;
 	cd "${S}"
@@ -693,12 +710,11 @@ linux-mod_src_compile() {
 			# inside the variables gets used as targets for Make, which then
 			# fails.
 			eval "emake HOSTCC=\"$(tc-getBUILD_CC)\" \
-						CROSS_COMPILE=${CHOST}- \
 						LDFLAGS=\"$(get_abi_LDFLAGS)\" \
 						${BUILD_FIXES} \
 						${BUILD_PARAMS} \
 						${BUILD_TARGETS} " \
-				|| die "Unable to emake HOSTCC="$(tc-getBUILD_CC)" CROSS_COMPILE=${CHOST}- LDFLAGS="$(get_abi_LDFLAGS)" ${BUILD_FIXES} ${BUILD_PARAMS} ${BUILD_TARGETS}"
+				|| die "Unable to emake HOSTCC="$(tc-getBUILD_CC)" LDFLAGS="$(get_abi_LDFLAGS)" ${BUILD_FIXES} ${BUILD_PARAMS} ${BUILD_TARGETS}"
 			cd "${OLDPWD}"
 			touch "${srcdir}"/.built
 		fi
@@ -783,3 +799,6 @@ linux-mod_pkg_postrm() {
 }
 
 fi
+
+EXPORT_FUNCTIONS pkg_setup src_compile src_install \
+	pkg_preinst pkg_postinst pkg_postrm

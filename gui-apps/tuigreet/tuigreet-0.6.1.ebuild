@@ -124,6 +124,6 @@ QA_FLAGS_IGNORED="usr/bin/tuigreet"
 
 LICENSE="Apache-2.0 Boost-1.0 GPL-3 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~ppc64 ~riscv"
 
 RDEPEND="gui-libs/greetd"

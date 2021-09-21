@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/$([[ -z ${PV/*_alpha*} ]] && echo 'alpha')/$
 
 LICENSE="GPL-2 LGPL-2.1 CDDL-Schily"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ppc ppc64 -riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="acl caps nls unicode selinux"
 
 BDEPEND="
@@ -88,6 +88,10 @@ src_prepare() {
 	cd "${S}"/RULES || die
 	local tcCC=$(tc-getCC)
 	local tcCXX=$(tc-getCXX)
+	# fix RISC-V build err, bug 811375
+	ln -s i586-linux-cc.rul riscv-linux-cc.rul || die
+	ln -s i586-linux-cc.rul riscv64-linux-cc.rul || die
+
 	sed -i -e "/cc-config.sh/s|\$(C_ARCH:%64=%) \$(CCOM_DEF)|${tcCC} ${tcCC}|" \
 		rules1.top || die "sed rules1.top"
 	sed -i -e "/^CC_COM_DEF=/s|gcc|${tcCC}|" \

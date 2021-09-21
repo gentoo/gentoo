@@ -1181,5 +1181,4 @@ src_install() {
 
 pkg_postinst() {
 	fcaps_pkg_postinst
-	go-module_pkg_postinst
 }

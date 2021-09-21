@@ -1,0 +1,22 @@
+From 0125873b1dfbe6e671e3c9874ec2653f1b7832fa Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Fri, 3 Sep 2021 18:03:38 +0200
+Subject: [PATCH] fix build with recent glibc
+
+---
+ src/nxt_thread.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/nxt_thread.h b/src/nxt_thread.h
+index d7800cc6..36e74cde 100644
+--- a/src/nxt_thread.h
++++ b/src/nxt_thread.h
+@@ -142,7 +142,7 @@ nxt_thread_yield()                                                            \
+ #endif
+ 
+ 
+-#if (PTHREAD_STACK_MIN)
++#if defined(PTHREAD_STACK_MIN)
+ #define NXT_THREAD_STACK_MIN  PTHREAD_STACK_MIN
+ 
+ #else

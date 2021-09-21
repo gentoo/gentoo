@@ -9,6 +9,7 @@
 # Marek Szuba <marecki@gentoo.org>
 # Based on python-r1.eclass by Michał Górny <mgorny@gentoo.org> et al.
 # @SUPPORTED_EAPIS: 7 8
+# @PROVIDES: lua-utils
 # @BLURB: A common eclass for Lua packages
 # @DESCRIPTION:
 # A common eclass providing helper functions to build and install
@@ -157,7 +158,7 @@ fi
 # Example value:
 # @CODE
 # lua_targets_lua5-1? ( dev-lang/lua:5.1 )
-# lua_targets_lua5-3? ( dev-lang/lua:5.2 )
+# lua_targets_lua5-3? ( dev-lang/lua:5.3 )
 # @CODE
 
 # @ECLASS-VARIABLE: LUA_REQUIRED_USE

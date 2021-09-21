@@ -53,7 +53,7 @@ LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0/${SUBSLOT}"
 
 if [[ "${PV##*.}" != "9999" ]] && [[ "${PV/rc//}" == "${PV}" ]] ; then
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 IUSE="berkdb debug doc gdbm ithreads minimal"
@@ -584,6 +584,11 @@ src_configure() {
 		myconf -DDEBUGGING=-g
 	else
 		myconf -DDEBUGGING=none
+	fi
+
+	# modifying 'optimize' prevents cross configure script from appending required flags
+	if tc-is-cross-compiler; then
+		append-cflags "-fwrapv -fno-strict-aliasing"
 	fi
 
 	# Autodiscover all old version directories, some of them will even be newer

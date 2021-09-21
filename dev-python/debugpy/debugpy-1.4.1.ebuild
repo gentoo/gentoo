@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit distutils-r1
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/microsoft/${PN}/archive/refs/tags/v${PV}.tar.gz -> $
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~sparc"
 
 # There is not enough time in the universe for this test suite
 RESTRICT="test"

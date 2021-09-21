@@ -10,7 +10,7 @@ StartupWMClass=VSCodium
 Categories=Utility;TextEditor;Development;IDE;
 MimeType=text/plain;inode/directory;application/x-code-workspace;
 Actions=new-empty-window;
-Keywords=vscode;
+Keywords=vscode;vscodium;code;codium;
 
 [Desktop Action new-empty-window]
 Name=New Empty Window

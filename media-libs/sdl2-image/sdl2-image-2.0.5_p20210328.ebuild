@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib multilib-minimal
+
+inherit multilib multilib-minimal toolchain-funcs
 
 MY_P="SDL2_image-${PV}"
 MY_COMMIT="f36684864e82538da2d2cf57fa3db077a3be42c7"
@@ -12,7 +13,7 @@ SRC_URI="https://github.com/libsdl-org/SDL_image/archive/${MY_COMMIT}.tar.gz -> 
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ~ppc64 ~riscv sparc x86"
 IUSE="gif jpeg png static-libs tiff webp"
 
 RDEPEND="

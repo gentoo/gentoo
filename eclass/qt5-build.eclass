@@ -37,6 +37,12 @@ readonly QT5_BUILD_TYPE
 # SRC_URI and EGIT_REPO_URI. Must be set before inheriting the eclass.
 : ${QT5_MODULE:=${PN}}
 
+# @ECLASS-VARIABLE: QT5_PV
+# @DESCRIPTION:
+# 3-component version for use in dependency declarations on other dev-qt/ pkgs.
+QT5_PV=$(ver_cut 1-3)
+readonly QT5_PV
+
 # @ECLASS-VARIABLE: _QT5_P
 # @INTERNAL
 # @DESCRIPTION:
@@ -109,7 +115,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 if [[ ${PN} != qttest ]]; then
-	DEPEND+=" test? ( ~dev-qt/qttest-$(ver_cut 1-3) )"
+	DEPEND+=" test? ( =dev-qt/qttest-${QT5_PV}* )"
 fi
 
 ######  Phase functions  ######
@@ -122,13 +128,15 @@ EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test pkg_
 qt5-build_src_prepare() {
 	qt5_prepare_env
 
-	if [[ -n ${KDE_ORG_COMMIT} ]]; then
+	if [[ ${QT5_BUILD_TYPE} == live ]] || [[ -n ${KDE_ORG_COMMIT} ]]; then
 		# Upstream bumped version in 5.15 branch after 5.15.2 release but their
 		# 5.15.3 release is closed and this will never be more than a Qt 5.15.2
 		# with patches on top.
-		einfo "Preparing KDE Qt5PatchCollection snapshot at ${KDE_ORG_COMMIT}"
-		sed -e "/^MODULE_VERSION/s/5\.15\.3/5\.15\.2/" -i .qmake.conf || die
-		mkdir -p .git || die # need to fake a git repository for configure
+		if [[ -n ${KDE_ORG_COMMIT} ]]; then
+			einfo "Preparing KDE Qt5PatchCollection snapshot at ${KDE_ORG_COMMIT}"
+			mkdir -p .git || die # need to fake a git repository for configure
+		fi
+		sed -e "/^MODULE_VERSION/s/5\.15\.[3456789]/${QT5_PV}/" -i .qmake.conf || die
 	fi
 
 	if [[ ${QT5_MODULE} == qtbase ]]; then
@@ -166,8 +174,10 @@ qt5-build_src_configure() {
 	if [[ ${QT5_MODULE} == qtbase ]]; then
 		qt5_base_configure
 	fi
-	if [[ ${QT5_MODULE} == qttools ]] && [[ -z ${QT5_TARGET_SUBDIRS[@]} ]]; then
-		qt5_tools_configure
+	if [[ ${QT5_MODULE} == qttools ]]; then
+		if [[ ${EAPI} != 7 || -z ${QT5_TARGET_SUBDIRS[@]} ]]; then
+			qt5_tools_configure
+		fi
 	fi
 
 	qt5_foreach_target_subdir qt5_qmake
@@ -643,7 +653,10 @@ qt5_base_configure() {
 # @FUNCTION: qt5_tools_configure
 # @INTERNAL
 # @DESCRIPTION:
-# Disables modules other than ${PN} belonging to qttools.
+# Most of qttools require files that are only generated when qmake is
+# run in the root directory. Related bugs: 676948, 716514.
+# Runs qt5_qmake in root directory to create qttools-config.pri and copy to
+# ${QT5_BUILD_DIR}, disabling modules other than ${PN} belonging to qttools.
 qt5_tools_configure() {
 	# configure arguments
 	local qmakeargs=(
@@ -659,13 +672,23 @@ qt5_tools_configure() {
 		-no-feature-winrtrunner
 	)
 
-	local i
+	local i module=${PN}
+	case ${PN} in
+		linguist-tools) module=linguist ;;
+		*) ;;
+	esac
 	for i in assistant designer linguist pixeltool qdbus qdoc qtdiag qtpaths qtplugininfo; do
-		[[ ${PN} == ${i} ]] || qmakeargs+=( -no-feature-${i} )
+		[[ ${module} != ${i} ]] && qmakeargs+=( -no-feature-${i} )
 	done
 
 	# allow the ebuild to override what we set here
 	myqmakeargs=( "${qmakeargs[@]}" "${myqmakeargs[@]}" )
+
+	if [[ ${EAPI} != 7 ]]; then
+		mkdir -p "${QT5_BUILD_DIR}" || die
+		qt5_qmake "${QT5_BUILD_DIR}"
+		cp qttools-config.pri "${QT5_BUILD_DIR}" || die
+	fi
 }
 
 # @FUNCTION: qt5_qmake_args

@@ -18,7 +18,7 @@ S="${WORKDIR}"/${PN}-release-${PV}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~ppc ~x86"
+KEYWORDS="amd64 ~mips ~ppc x86"
 IUSE="contrib debug themes truetype xinerama"
 
 RDEPEND="media-libs/libpng:0=

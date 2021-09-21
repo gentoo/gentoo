@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome2-utils
+inherit xdg
 
 DESCRIPTION="Colorized icons shared between all gnome-colors iconsets"
 HOMEPAGE="https://code.google.com/p/gnome-colors/"
@@ -43,16 +43,4 @@ src_install() {
 	doins -r "${WORKDIR}/${PN}"
 
 	einstalldocs
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }

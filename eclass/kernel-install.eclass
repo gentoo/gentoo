@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
 # @SUPPORTED_EAPIS: 7
+# @PROVIDES: dist-kernel-utils
 # @BLURB: Installation mechanics for Distribution Kernels
 # @DESCRIPTION:
 # This eclass provides the logic needed to test and install different
