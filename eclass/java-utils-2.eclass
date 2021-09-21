@@ -1565,8 +1565,7 @@ java-pkg_ensure-vm-version-ge() {
 # Parameters:
 # $@ - VM version to compare current VM to
 # @CODE
-# @RETURN: zero - current VM version is greater than checked version;
-# 	non-zero - current VM version is not greater than checked version
+# @RETURN: zero - current VM version is greater than checked version; non-zero - current VM version is not greater than checked version
 java-pkg_is-vm-version-ge() {
 	debug-print-function ${FUNCNAME} $*
 
