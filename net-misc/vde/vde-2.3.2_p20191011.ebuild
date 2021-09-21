@@ -19,7 +19,6 @@ elif [[ ${PV} = *_p* ]]; then
 else
 	MY_P="${PN}2-${PV}"
 	SRC_URI="mirror://sourceforge/vde/${MY_P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 

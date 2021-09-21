@@ -8,7 +8,6 @@ inherit flag-o-matic
 if [[ ${PV} == 9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/virtualsqaure/MY_PN"
-	KEYWORDS=""
 elif [[ ${PV} = *_p* ]]; then
 	inherit autotools
 	MY_PN="vde-2"
@@ -20,7 +19,6 @@ elif [[ ${PV} = *_p* ]]; then
 else
 	MY_P="${PN}2-${PV}"
 	SRC_URI="mirror://sourceforge/vde/${MY_P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
