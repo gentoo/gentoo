@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">rcssmin</remote-id>
+		<remote-id type="github">ndparker/rcssmin</remote-id>
 	</upstream>
 </pkgmetadata>
