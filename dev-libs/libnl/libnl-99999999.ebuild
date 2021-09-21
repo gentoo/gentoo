@@ -14,7 +14,8 @@ EGIT_REPO_URI="https://github.com/thom311/libnl"
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
 SLOT="3"
 KEYWORDS=""
-IUSE="+debug static-libs python +threads utils"
+IUSE="+debug static-libs python test +threads utils"
+RESTRICT="!test? ( test )"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
@@ -23,6 +24,7 @@ BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
 	python? ( dev-lang/swig )
+	test? ( dev-libs/check )
 "
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
