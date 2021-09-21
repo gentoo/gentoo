@@ -36,6 +36,7 @@ BDEPEND="sys-devel/gettext
 			${VIRTUALX_DEPEND}
 			dev-python/mock[\${PYTHON_USEDEP}]
 			dev-python/nose[\${PYTHON_USEDEP}]
+			dev-python/PyQt5[\${PYTHON_USEDEP},gui,widgets]
 			dev-python/pytest[\${PYTHON_USEDEP}]
 		)
 	")
