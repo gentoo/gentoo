@@ -3,7 +3,7 @@
 
 EAPI=8
 
-KDE_ORG_COMMIT=d4c41797b61a5a8da47c5821711aca72e756dcbf
+KDE_ORG_COMMIT=3c420cd180397e3f42c8a436a7f1b11465925bdd
 inherit qt5-build
 
 DESCRIPTION="Wayland platform plugin for Qt"
@@ -16,14 +16,14 @@ IUSE="vulkan X"
 
 DEPEND="
 	dev-libs/wayland
-	~dev-qt/qtcore-${PV}:5=
-	~dev-qt/qtdeclarative-${PV}:5=
-	~dev-qt/qtgui-${PV}:5=[egl,libinput,vulkan=,X?]
-	media-libs/mesa[egl]
+	=dev-qt/qtcore-${QT5_PV}*:5=
+	=dev-qt/qtdeclarative-${QT5_PV}*:5=
+	=dev-qt/qtgui-${QT5_PV}*:5=[egl,libinput,vulkan=,X?]
+	media-libs/libglvnd
 	>=x11-libs/libxkbcommon-0.2.0
 	vulkan? ( dev-util/vulkan-headers )
 	X? (
-		~dev-qt/qtgui-${PV}[-gles2-only]
+		=dev-qt/qtgui-${QT5_PV}*[-gles2-only]
 		x11-libs/libX11
 		x11-libs/libXcomposite
 	)
