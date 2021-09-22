@@ -5,36 +5,21 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{8,9,10} )
 PYTHON_REQ_USE="xml(+)"
-
-if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI=( "https://gitlab.freedesktop.org/telepathy/${PN}" )
-	inherit git-r3
-else
-	SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
-fi
 inherit python-any-r1 cmake virtualx
 
 DESCRIPTION="Qt bindings for the Telepathy D-Bus protocol"
 HOMEPAGE="https://telepathy.freedesktop.org/"
+SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 IUSE="debug farstream test"
 
 REQUIRED_USE="test? ( farstream )"
 
 RESTRICT="!test? ( test )"
 
-BDEPEND="${PYTHON_DEPS}
-	virtual/pkgconfig
-	test? (
-		dev-libs/glib:2
-		$(python_gen_any_dep '
-			dev-python/dbus-python[${PYTHON_USEDEP}]
-		')
-	)
-"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -50,6 +35,15 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-libs/dbus-glib
 		dev-qt/qttest:5
+	)
+"
+BDEPEND="${PYTHON_DEPS}
+	virtual/pkgconfig
+	test? (
+		dev-libs/glib:2
+		$(python_gen_any_dep '
+			dev-python/dbus-python[${PYTHON_USEDEP}]
+		')
 	)
 "
 
