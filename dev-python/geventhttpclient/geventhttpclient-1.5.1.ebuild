@@ -18,7 +18,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~pp
 RDEPEND="
 	app-arch/brotli[python,${PYTHON_USEDEP}]
 	dev-python/certifi[${PYTHON_USEDEP}]
-	dev-python/gevent[events,${PYTHON_USEDEP}]
+	dev-python/gevent[events(+),${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
 BDEPEND="
