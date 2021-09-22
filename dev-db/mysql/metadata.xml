@@ -21,6 +21,5 @@ dev-db/mariadb
   <flag name="server">Build the server program</flag>
   <flag name="systemtap">Build support for profiling and tracing using <pkg>dev-util/systemtap</pkg></flag>
   <flag name="test">Install upstream testsuites for end use.</flag>
-  <flag name="yassl">Enable SSL connections and crypto functions using the bundled yaSSL</flag>
 </use>
 </pkgmetadata>
