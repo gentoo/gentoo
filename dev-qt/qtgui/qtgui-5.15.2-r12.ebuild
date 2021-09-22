@@ -3,7 +3,7 @@
 
 EAPI=8
 
-KDE_ORG_COMMIT=c2ea67ecefe049f6e9bb8f910d7f9c60319d8619
+KDE_ORG_COMMIT=64a0068011e12f178fb7ff65fafe7cfaa4620719
 QT5_MODULE="qtbase"
 inherit qt5-build
 
@@ -27,13 +27,13 @@ REQUIRED_USE="
 
 RDEPEND="
 	dev-libs/glib:2
-	~dev-qt/qtcore-${PV}:5=
+	=dev-qt/qtcore-${QT5_PV}*:5=
 	dev-util/gtk-update-icon-cache
 	media-libs/fontconfig
 	>=media-libs/freetype-2.6.1:2
 	>=media-libs/harfbuzz-1.6.0:=
 	sys-libs/zlib:=
-	dbus? ( ~dev-qt/qtdbus-${PV} )
+	dbus? ( =dev-qt/qtdbus-${QT5_PV}* )
 	egl? ( media-libs/mesa[egl] )
 	eglfs? (
 		media-libs/mesa[gbm]
@@ -49,9 +49,9 @@ RDEPEND="
 	)
 	png? ( media-libs/libpng:0= )
 	tslib? ( >=x11-libs/tslib-1.21 )
-	tuio? ( ~dev-qt/qtnetwork-${PV} )
+	tuio? ( =dev-qt/qtnetwork-${QT5_PV}* )
 	udev? ( virtual/libudev:= )
-	vnc? ( ~dev-qt/qtnetwork-${PV} )
+	vnc? ( =dev-qt/qtnetwork-${QT5_PV}* )
 	vulkan? ( dev-util/vulkan-headers )
 	X? (
 		x11-libs/libICE
@@ -71,7 +71,7 @@ DEPEND="${RDEPEND}
 "
 PDEPEND="
 	ibus? ( app-i18n/ibus )
-	wayland? ( ~dev-qt/qtwayland-${PV} )
+	wayland? ( =dev-qt/qtwayland-${QT5_PV}* )
 "
 
 QT5_TARGET_SUBDIRS=(
@@ -155,15 +155,15 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		$(usex dbus -dbus-linked '')
+		$(usev dbus -dbus-linked)
 		$(qt_use egl)
 		$(qt_use eglfs)
-		$(usex eglfs '-gbm -kms' '')
+		$(usev eglfs '-gbm -kms')
 		$(qt_use evdev)
 		$(qt_use evdev mtdev)
 		-fontconfig
 		-system-freetype
-		$(usex gif '' -no-gif)
+		$(usev !gif -no-gif)
 		-gui
 		-system-harfbuzz
 		$(qt_use jpeg libjpeg system)
@@ -175,7 +175,7 @@ src_configure() {
 		$(qt_use udev libudev)
 		$(qt_use vulkan)
 		$(qt_use X xcb)
-		$(usex X '-xcb-xlib -DUSE_X11' '')
+		$(usev X '-xcb-xlib')
 	)
 	if use libinput || use X; then
 		myconf+=( -xkbcommon )
