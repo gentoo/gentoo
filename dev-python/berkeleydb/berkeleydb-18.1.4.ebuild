@@ -17,7 +17,7 @@ SRC_URI="https://dev.gentoo.org/~arthurzam/distfiles/dev-python/${PN}/${P}.tar.x
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 RDEPEND="
 	|| (
