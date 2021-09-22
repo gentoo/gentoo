@@ -385,7 +385,7 @@ _go-module_src_unpack_verify_gosum() {
 	# This will print 'downloading' messages, but it's accessing content from
 	# the $GOPROXY file:/// URL!
 	einfo "Tidying go.mod/go.sum"
-	go mod tidy >/dev/null
+	go mod tidy -modcacherw >/dev/null
 
 	# This used to call 'go get' to verify by fetching everything from the main
 	# go.mod. However 'go get' also turns out to recursively try to fetch
