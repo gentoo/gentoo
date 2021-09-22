@@ -55,7 +55,7 @@ src_configure() {
 		$(meson_use gtk-doc gtk_doc)
 		$(meson_use introspection)
 		-Dinstalled_tests=false
-		-Dlibportal=false # Not packaged
+		-Dlibportal=false # As of 40.3, all libportal usages are flatpak-specific
 	)
 	meson_src_configure
 }
