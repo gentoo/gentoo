@@ -182,7 +182,6 @@ src_configure() {
 	local myconf=(
 		--bindir="${EPREFIX}/bin"
 		--enable-shared
-		--enable-systemd
 		--enable-sysvinit
 		--localstatedir="${EPREFIX}/var"
 		--sbindir="${EPREFIX}/sbin"
@@ -196,6 +195,10 @@ src_configure() {
 		--with-systemdunitdir="$(systemd_get_systemunitdir)"
 		--with-systemdpresetdir="${EPREFIX}/lib/systemd/system-preset"
 		--with-vendor=gentoo
+		# Building zfs-mount-generator.c on musl breaks as strndupa
+		# isn't available. But systemd doesn't support musl anyway, so
+		# just disable building it.
+		$(use_enable !elibc_musl systemd)
 		$(use_enable debug)
 		$(use_enable nls)
 		$(use_enable pam)
