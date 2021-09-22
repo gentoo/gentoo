@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Thin-wrapper around the mock package for easier use with pytest"
@@ -19,14 +19,18 @@ BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	sed -e 's/runpytest_subprocess(/&"-p","no:xprocess",/' -i tests/test_pytest_mock.py || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
-	local deselect=()
 	if has_version dev-python/mock; then
-		deselect+=(
+		local EPYTEST_DESELECT=(
 			tests/test_pytest_mock.py::test_standalone_mock
 		)
 	fi
 
 	distutils_install_for_testing
-	epytest --assert=plain ${deselect[@]/#/--deselect }
+	epytest --assert=plain
 }
