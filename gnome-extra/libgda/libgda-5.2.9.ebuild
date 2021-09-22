@@ -84,6 +84,9 @@ src_prepare() {
 		-e '/SUBDIRS =/ s/trml2pdf//' \
 		-i libgda-report/RML/Makefile.{am,in} || die
 
+	# replace my_bool with _Bool
+	eapply "${FILESDIR}/${PN}-5.2-my_bool-error.patch"
+
 	# Prevent file collisions with libgda:4
 	eapply "${FILESDIR}/${PN}-4.99.1-gda-browser-doc-collision.patch"
 	eapply "${FILESDIR}/${PN}-4.99.1-control-center-icon-collision.patch"
