@@ -15,17 +15,18 @@ fi
 
 IUSE="gles2-only +jit localstorage vulkan +widgets"
 
-BDEPEND="${PYTHON_DEPS}"
 # qtgui[gles2-only=] is needed because of bug 504322
 DEPEND="
-	~dev-qt/qtcore-${PV}
-	~dev-qt/qtgui-${PV}:5=[gles2-only=,vulkan=]
-	~dev-qt/qtnetwork-${PV}
-	~dev-qt/qttest-${PV}
-	localstorage? ( ~dev-qt/qtsql-${PV} )
-	widgets? ( ~dev-qt/qtwidgets-${PV}[gles2-only=] )
+	=dev-qt/qtcore-${QT5_PV}*
+	=dev-qt/qtgui-${QT5_PV}*:5=[gles2-only=,vulkan=]
+	=dev-qt/qtnetwork-${QT5_PV}*
+	=dev-qt/qttest-${QT5_PV}*
+	media-libs/libglvnd
+	localstorage? ( =dev-qt/qtsql-${QT5_PV}* )
+	widgets? ( =dev-qt/qtwidgets-${QT5_PV}*[gles2-only=] )
 "
 RDEPEND="${DEPEND}"
+BDEPEND="${PYTHON_DEPS}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.14.2-QQuickItemView-fix-maxXY-extent.patch" # QTBUG-83890
