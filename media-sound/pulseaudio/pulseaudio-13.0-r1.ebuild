@@ -74,7 +74,7 @@ RDEPEND="
 	ssl? ( dev-libs/openssl:0= )
 	media-libs/speexdsp
 	gdbm? ( sys-libs/gdbm:= )
-	webrtc-aec? ( >=media-libs/webrtc-audio-processing-0.2 )
+	webrtc-aec? ( >=media-libs/webrtc-audio-processing-0.2:0 )
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd:0=[${MULTILIB_USEDEP}] )
 	dev-libs/libltdl:0
