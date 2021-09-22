@@ -1,0 +1,11 @@
+--- a/src/php_http_client_curl.c	2021-01-13 10:34:34.000000000 -0500
++++ b/src/php_http_client_curl.c	2021-09-22 10:38:58.854615743 -0400
+@@ -834,7 +834,7 @@
+ 	} else {
+ 		storage->cookiestore = NULL;
+ 	}
+-	if (	CURLE_OK != curl_easy_setopt(ch, CURLOPT_COOKIEFILE, storage->cookiestore)
++	if (	CURLE_OK != curl_easy_setopt(ch, CURLOPT_COOKIEFILE, storage->cookiestore ? storage->cookiestore : "")
+ 		||	CURLE_OK != curl_easy_setopt(ch, CURLOPT_COOKIEJAR, storage->cookiestore)
+ 	) {
+ 		return FAILURE;
