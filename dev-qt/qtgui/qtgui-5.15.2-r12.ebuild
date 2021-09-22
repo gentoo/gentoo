@@ -32,16 +32,14 @@ RDEPEND="
 	media-libs/fontconfig
 	>=media-libs/freetype-2.6.1:2
 	>=media-libs/harfbuzz-1.6.0:=
+	media-libs/libglvnd
 	sys-libs/zlib:=
 	dbus? ( =dev-qt/qtdbus-${QT5_PV}* )
-	egl? ( media-libs/mesa[egl] )
 	eglfs? (
 		media-libs/mesa[gbm]
 		x11-libs/libdrm
 	)
 	evdev? ( sys-libs/mtdev )
-	gles2-only? ( media-libs/mesa[gles2] )
-	!gles2-only? ( virtual/opengl )
 	jpeg? ( virtual/jpeg:0 )
 	libinput? (
 		dev-libs/libinput:=
