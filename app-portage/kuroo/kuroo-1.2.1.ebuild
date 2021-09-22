@@ -38,6 +38,8 @@ RDEPEND="${DEPEND}
 	kde-apps/kompare:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" ) # bug 811693
+
 pkg_postinst() {
 	if ! has_version app-admin/logrotate ; then
 		elog "Installing app-admin/logrotate is recommended to keep"
