@@ -26,7 +26,8 @@ RDEPEND="
 		media-libs/gst-plugins-base:1.0
 		media-plugins/gst-plugins-gtk:1.0
 	)
-	raw? ( >=media-libs/libraw-0.14:= )
+	raw? ( >=media-libs/libraw-0.14:=
+		<media-libs/libraw-0.21 )
 	http? (
 		>=net-libs/libsoup-2.42.0:2.4
 		>=dev-libs/json-glib-0.15.0
