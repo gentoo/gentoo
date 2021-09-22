@@ -57,7 +57,7 @@ RDEPEND="
 		media-libs/sbc
 		>=net-wireless/bluez-4.101:=
 	)
-	echo-cancel? ( media-libs/webrtc-audio-processing )
+	echo-cancel? ( media-libs/webrtc-audio-processing:0 )
 	extra? (
 		>=media-libs/libsndfile-1.0.20
 	)
