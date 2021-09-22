@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_SINGLE_IMPL=yes
 inherit distutils-r1
 
@@ -35,17 +35,23 @@ RDEPEND="
 		<dev-python/sqlparse-0.5.0[${PYTHON_USEDEP}]
 		ssh? ( dev-python/paramiko[${PYTHON_USEDEP}] )')
 "
+BDEPEND="
+	test? ( $(python_gen_cond_dep '
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/paramiko[${PYTHON_USEDEP}]
+	') )
+"
 distutils_enable_tests pytest
 
 PATCHES=( "${FILESDIR}/mycli-1.21.1-fix-test-install.patch" )
 
 python_test() {
-	epytest --capture=sys \
-		--doctest-modules \
-		--doctest-ignore-import-errors \
-		--ignore=setup.py \
-		--ignore=mycli/magic.py \
-		--ignore=mycli/packages/parseutils.py \
-		--ignore=test/features \
-		--ignore=mycli/packages/paramiko_stub/__init__.py
+	local EPYTEST_IGNORE=(
+		setup.py
+		mycli/magic.py
+		mycli/packages/parseutils.py
+		test/features
+		mycli/packages/paramiko_stub/__init__.py
+	)
+	epytest --capture=sys --doctest-modules --doctest-ignore-import-errors
 }
