@@ -123,7 +123,7 @@ COMMON_DEPEND="
 	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	udev? ( >=virtual/udev-143[hwdb(+)] )
-	webrtc-aec? ( >=media-libs/webrtc-audio-processing-0.2 )
+	webrtc-aec? ( >=media-libs/webrtc-audio-processing-0.2:0 )
 	X? (
 		>=x11-libs/libxcb-1.6[${MULTILIB_USEDEP}]
 		daemon? (
