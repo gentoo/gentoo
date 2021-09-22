@@ -50,6 +50,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-21.04.3-default-navigation-be-TabbedNavigation.patch" # bug 807933
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package X X11)
