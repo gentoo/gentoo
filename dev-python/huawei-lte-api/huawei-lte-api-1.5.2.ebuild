@@ -20,9 +20,6 @@ RDEPEND="dev-python/pycryptodome[${PYTHON_USEDEP}]
 	dev-python/xmltodict[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
-	# https://github.com/Salamek/huawei-lte-api/issues/86
-	sed "s:'pytest-runner'::" -i setup.py || die
-
 	# make cryptodome-friendly
 	find -name '*.py' -exec \
 		sed -i -e 's:Cryptodome:Crypto:g' {} + || die
