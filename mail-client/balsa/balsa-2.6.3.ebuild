@@ -27,7 +27,7 @@ DEPEND="
 		>=dev-db/sqlite-3.24:=
 		app-text/html2text
 	)
-	>=app-crypt/gpgme-1.8.0:=
+	>=app-crypt/gpgme-1.13.0:=
 	sqlite? ( >=dev-db/sqlite-3.24:= )
 	ldap? ( net-nds/openldap )
 	rubrica? ( dev-libs/libxml2:2 )
