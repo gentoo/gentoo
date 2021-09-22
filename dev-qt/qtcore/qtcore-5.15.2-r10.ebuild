@@ -3,7 +3,7 @@
 
 EAPI=8
 
-KDE_ORG_COMMIT=c2ea67ecefe049f6e9bb8f910d7f9c60319d8619
+KDE_ORG_COMMIT=64a0068011e12f178fb7ff65fafe7cfaa4620719
 QT5_MODULE="qtbase"
 inherit linux-info qt5-build
 
@@ -48,9 +48,6 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.14.1-cmake-macro-backward-compat.patch # bug 703306
 	"${FILESDIR}"/${PN}-5.15.1-timezone-{1,2}.patch # bug 737914
-	# Revert to 5.15.2 (upstream Qt release) behavior, QTBUG-94215
-	# See also: https://invent.kde.org/qt/qt/qtbase/-/merge_requests/46
-	"${FILESDIR}"/${P}-revert-3a273ac4.patch
 )
 
 pkg_pretend() {
