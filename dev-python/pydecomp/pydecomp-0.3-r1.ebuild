@@ -1,12 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1 python-r1
+inherit distutils-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_BRANCH="master"
@@ -23,15 +23,3 @@ HOMEPAGE="https://github.com/dol-sen/pyDeComp"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE=""
-
-python_install_all() {
-	distutils-r1_python_install_all
-}
-
-pkg_postinst() {
-	einfo
-	einfo "Please file any enhancement requests, or bugs"
-	einfo "at https://github.com/dol-sen/pyDeComp/issues"
-	einfo "I am also on IRC @ #gentoo-ci of the Libera.Chat network"
-}
