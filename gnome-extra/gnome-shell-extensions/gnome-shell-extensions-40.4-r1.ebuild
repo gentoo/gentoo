@@ -21,7 +21,7 @@ RDEPEND="${DEPEND}
 	dev-libs/gobject-introspection:=
 	dev-libs/atk[introspection]
 	gnome-base/gnome-menus:3[introspection]
-	=gnome-base/gnome-shell-$(ver_cut 1-2)*
+	=gnome-base/gnome-shell-$(ver_cut 1)*
 	media-libs/clutter:1.0[introspection]
 	net-libs/telepathy-glib[introspection]
 	x11-libs/gdk-pixbuf:2[introspection]
