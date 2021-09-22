@@ -26,8 +26,8 @@ RDEPEND="
 	>=media-libs/gst-plugins-base-${PV}:1.0[${MULTILIB_USEDEP}]
 	>=media-libs/gst-plugins-bad-${PV}:1.0[${MULTILIB_USEDEP}]
 	>=media-plugins/gst-plugins-sctp-${PV}:1.0[${MULTILIB_USEDEP}]
-	>=media-libs/webrtc-audio-processing-0.2[${MULTILIB_USEDEP}]
-	<media-libs/webrtc-audio-processing-0.4
+	>=media-libs/webrtc-audio-processing-0.2:0[${MULTILIB_USEDEP}]
+	<media-libs/webrtc-audio-processing-0.4:0
 	>=net-libs/libnice-0.1.14[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
