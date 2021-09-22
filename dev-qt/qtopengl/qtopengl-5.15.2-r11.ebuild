@@ -17,10 +17,9 @@ fi
 IUSE="gles2-only"
 
 DEPEND="
-	~dev-qt/qtcore-${PV}:5=
-	~dev-qt/qtgui-${PV}[gles2-only=]
-	~dev-qt/qtwidgets-${PV}[gles2-only=]
-	!gles2-only? ( virtual/opengl )
+	=dev-qt/qtcore-${QT5_PV}*:5=
+	=dev-qt/qtgui-${QT5_PV}*[gles2-only=]
+	=dev-qt/qtwidgets-${QT5_PV}*[gles2-only=]
 "
 RDEPEND="${DEPEND}"
 
