@@ -9,7 +9,7 @@ DOCS_DEPEND="dev-python/alabaster"
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit desktop python-single-r1 docs go-module virtualx xdg
+inherit desktop python-single-r1 docs go-module virtualx toolchain-funcs xdg
 
 EGO_SUM=(
 	"0xacab.org/leap/shapeshifter v0.0.0-20191029173606-85d3e8ac43e2"
@@ -91,7 +91,10 @@ RDEPEND="${DEPEND}
 "
 
 # ip command is in bin instead of sbin on Gentoo
-PATCHES=( "${FILESDIR}/${PN}-ip-location.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-ip-location.patch"
+	"${FILESDIR}/${PN}-respect-AR.patch"
+)
 
 S="${WORKDIR}/bitmask-vpn-${PV}"
 
@@ -108,6 +111,7 @@ src_prepare() {
 
 src_compile() {
 	# does not build with j>1
+	tc-export AR LD CC CXX
 	emake -j1 build
 	docs_compile
 }
