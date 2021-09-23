@@ -21,6 +21,10 @@
 # Non-stable deps.
 net-irc/irssi otr
 
+# Matt Turner <mattst88@gentoo.org> (2021-09-22)
+# Non-stable deps.
+app-editors/vim cscope sound
+
 # Michał Górny <mgorny@gentoo.org> (2021-09-19)
 # Non-stable deps.
 dev-python/matplotlib cairo gtk3
