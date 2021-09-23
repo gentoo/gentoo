@@ -139,6 +139,7 @@ COMMON_DEPEND="
 
 DEPEND="
 	${COMMON_DEPEND}
+	app-doc/xmltoman
 	dev-libs/libatomic_ops
 	dev-libs/libpcre:*
 	test? ( >=dev-libs/check-0.9.10 )
@@ -228,6 +229,7 @@ multilib_src_configure() {
 			emesonargs+=( -Dpulsedsp-location="${EPREFIX}"'/usr/\\$$LIB/pulseaudio' )
 		fi
 	else
+		emesonargs+=( -Dman=false )
 		if ! use elibc_glibc; then
 			# Non-glibc multilib is probably non-existent but just in case:
 			ewarn "padsp wrapper for OSS emulation will only work with native ABI applications!"
