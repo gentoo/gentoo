@@ -74,6 +74,8 @@ REQUIRED_USE="
 "
 
 BDEPEND="
+	dev-lang/perl
+	dev-perl/XML-Parser
 	sys-devel/gettext
 	sys-devel/m4
 	virtual/libiconv
@@ -140,8 +142,6 @@ COMMON_DEPEND="
 # pulseaudio ships a bundle xmltoman, which uses XML::Parser
 DEPEND="
 	${COMMON_DEPEND}
-	dev-lang/perl
-	dev-perl/XML-Parser
 	dev-libs/libatomic_ops
 	dev-libs/libpcre:*
 	test? ( >=dev-libs/check-0.9.10 )
@@ -224,7 +224,7 @@ multilib_src_configure() {
 		$(meson_native_use_feature sox soxr)
 		-Dspeex=enabled
 		$(meson_native_use_feature systemd)
-		$(meson_native_use_feature tcpd tcpwrap)
+		$(meson_native_use_feature tcpd tcpwrap) # TODO: This should technically be enabled for 32bit too, but at runtime it probably is never used without daemon?
 		$(meson_native_use_feature udev)
 		-Dvalgrind=auto
 		$(meson_feature X x11)
