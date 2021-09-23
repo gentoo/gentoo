@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit desktop multilib toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Small dynamic tiling window manager for X11"
 HOMEPAGE="https://github.com/conformal/spectrwm"
