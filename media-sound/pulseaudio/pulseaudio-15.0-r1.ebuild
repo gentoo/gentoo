@@ -179,46 +179,57 @@ src_prepare() {
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Dadrian-aec=false # Not packaged?
 		--localstatedir="${EPREFIX}"/var
+
+		$(meson_native_use_bool daemon)
+		$(meson_native_use_bool doc doxygen)
+		-Dgcov=false
+		# tests involve random modules, so just do them for the native # TODO: tests should run always
+		$(meson_native_use_bool test tests)
+		-Ddatabase=$(multilib_native_usex gdbm gdbm simple) # tdb is also an option but no one cares about it
+		-Dstream-restore-clear-old-devices=true
+		-Drunning-from-build-tree=false
+
+		# Paths
 		-Dmodlibexecdir="${EPREFIX}/usr/$(get_libdir)/${PN}/modules" # Was $(get_libdir)/${P}
 		-Dsystemduserunitdir=$(systemd_get_userunitdir)
 		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
 		-Dbashcompletiondir="$(get_bashcompdir)" # Alternatively DEPEND on app-shells/bash-completion for pkg-config to provide the value
+
+		# Optional features
 		$(meson_native_use_feature alsa)
+		$(meson_feature asyncns)
+		$(meson_native_use_feature zeroconf avahi)
 		$(meson_native_use_feature bluetooth bluez5)
 		-Dbluez5-gstreamer=disabled # no ldacenc/rtpldacpay gst elements packaged yet
-		$(meson_native_use_bool daemon)
-		$(meson_native_use_bool doc doxygen)
 		$(meson_native_use_bool native-headset bluez5-native-headset)
 		$(meson_native_use_bool ofono-headset bluez5-ofono-headset)
+		$(meson_feature dbus)
+		$(meson_native_use_feature elogind)
+		$(meson_native_use_feature equalizer fftw)
+		$(meson_feature glib) # WARNING: toggling this likely changes ABI
 		$(meson_native_use_feature glib gsettings) # Supposedly correct?
 		$(meson_native_use_feature gstreamer)
 		$(meson_native_use_feature gtk)
+		-Dhal-compat=true # Consider disabling on next revbump
+		$(meson_use ipv6)
 		$(meson_native_use_feature jack)
-		-Dsamplerate=disabled # Matches upstream
-		-Dstream-restore-clear-old-devices=true
 		$(meson_native_use_feature lirc)
+		$(meson_native_use_feature ssl openssl)
 		$(meson_native_use_feature orc)
 		$(meson_native_use_feature oss oss-output)
-		$(meson_native_use_feature ssl openssl)
-		# tests involve random modules, so just do them for the native # TODO: tests should run always
-		$(meson_native_use_bool test tests)
-		$(meson_native_use_feature udev)
-		$(meson_native_use_feature webrtc-aec)
-		$(meson_native_use_feature zeroconf avahi)
-		$(meson_native_use_feature equalizer fftw)
+		-Dsamplerate=disabled # Matches upstream
 		$(meson_native_use_feature sox soxr)
-		-Ddatabase=$(multilib_native_usex gdbm gdbm simple) # tdb is also an option but no one cares about it
-		$(meson_feature glib) # WARNING: toggling this likely changes ABI
-		$(meson_feature asyncns)
-		#$(meson_use cpu_flags_arm_neon neon-opt)
-		$(meson_native_use_feature tcpd tcpwrap)
-		$(meson_feature dbus)
-		$(meson_native_use_feature elogind)
-		$(meson_feature X x11)
+		-Dspeex=enabled
 		$(meson_native_use_feature systemd)
-		$(meson_use ipv6)
+		$(meson_native_use_feature tcpd tcpwrap)
+		$(meson_native_use_feature udev)
+		-Dvalgrind=auto
+		$(meson_feature X x11)
+
+		# Echo cancellation
+		-Dadrian-aec=false # Not packaged?
+		$(meson_native_use_feature webrtc-aec)
 	)
 
 	if multilib_is_native_abi; then
