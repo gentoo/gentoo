@@ -29,7 +29,7 @@ LICENSE="!gdbm? ( LGPL-2.1 ) gdbm? ( GPL-2 )"
 SLOT="0"
 
 # +alsa-plugin as discussed in bug #519530
-# TODO: Deal with bluez5-gstreamer
+# TODO: Deal with bluez5-gstreamer - requires ldacenc and rtpldacpay gstreamer elements
 # TODO: Find out why webrtc-aec is + prefixed - there's already the always available speexdsp-aec
 # NOTE: The current ebuild sets +X almost certainly just for the pulseaudio.desktop file
 IUSE="+alsa +alsa-plugin +asyncns bluetooth dbus +daemon doc elogind equalizer +gdbm
@@ -51,6 +51,7 @@ REQUIRED_USE="
 		!bluetooth
 		!equalizer
 		!gdbm
+		!gstreamer
 		!gtk
 		!jack
 		!lirc
@@ -185,6 +186,7 @@ multilib_src_configure() {
 		-Dbashcompletiondir="$(get_bashcompdir)" # Alternatively DEPEND on app-shells/bash-completion for pkg-config to provide the value
 		$(meson_native_use_feature alsa)
 		$(meson_native_use_feature bluetooth bluez5)
+		-Dbluez5-gstreamer=disabled # no ldacenc/rtpldacpay gst elements packaged yet
 		$(meson_native_use_bool daemon)
 		$(meson_native_use_bool doc doxygen)
 		$(meson_native_use_bool native-headset bluez5-native-headset)
