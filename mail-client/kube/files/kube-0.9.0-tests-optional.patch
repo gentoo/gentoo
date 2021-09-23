@@ -1,0 +1,50 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -71,7 +71,9 @@
+ add_subdirectory(applications)
+ add_subdirectory(views)
+ add_subdirectory(accounts)
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ if (${ENABLE_EXTENSIONS})
+     add_subdirectory(extensions)
+ endif()
+--- a/framework/CMakeLists.txt
++++ b/framework/CMakeLists.txt
+@@ -4,4 +4,6 @@
+ install(FILES qmldir DESTINATION ${FRAMEWORK_INSTALL_DIR})
+ 
+ add_subdirectory(src)
++if(BUILD_TESTING)
+ add_subdirectory(qml/tests)
++endif()
+--- a/framework/src/CMakeLists.txt
++++ b/framework/src/CMakeLists.txt
+@@ -97,10 +97,14 @@
+ 
+ set(BUILD_TESTING ON)
+ 
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ add_subdirectory(domain/mime)
++if(BUILD_TESTING)
+ add_subdirectory(domain/mime/tests)
+ add_subdirectory(domain/settings/tests)
++endif()
+ 
+ feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+ 
+--- a/components/CMakeLists.txt
++++ b/components/CMakeLists.txt
+@@ -8,7 +8,9 @@
+ endmacro(install_qml_component)
+ 
+ install_qml_component(kube)
++if(BUILD_TESTING)
+ add_subdirectory(kube/tests)
++endif()
+ install_qml_component(accounts)
+ 
+ 
