@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -18,7 +18,11 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 sparc x86"
 
-RDEPEND="<dev-python/pytest-6[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-pytest-6.patch"
+)
 
 distutils_enable_tests --install pytest
 distutils_enable_sphinx docs/source
