@@ -30,7 +30,7 @@ CLANG_DEPS="!cuda? ( <sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):= )
 	cuda? ( <sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_NVPTX] )"
 RDEPEND="
 	dev-libs/libltdl
-	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1))
+	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):*
 	virtual/opencl
 
 	${CLANG_DEPS}
