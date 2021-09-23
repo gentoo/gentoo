@@ -6,7 +6,7 @@
 EAPI=7
 
 CRATES="
-	cargo-c-0.9.3+cargo-0.56
+	cargo-c-0.9.4+cargo-0.56
 	adler-1.0.2
 	aho-corasick-0.7.18
 	ansi_term-0.11.0
@@ -16,7 +16,7 @@ CRATES="
 	autocfg-1.0.1
 	bitflags-1.3.2
 	bitmaps-2.1.0
-	bstr-0.2.16
+	bstr-0.2.17
 	bytesize-1.1.0
 	cargo-0.56.0
 	cargo-platform-0.1.2
@@ -34,7 +34,7 @@ CRATES="
 	crossbeam-utils-0.8.5
 	crypto-hash-0.3.4
 	curl-0.4.38
-	curl-sys-0.4.46+curl-7.79.0
+	curl-sys-0.4.48+curl-7.79.1
 	either-1.6.1
 	env_logger-0.9.0
 	filetime-0.2.15
@@ -67,7 +67,7 @@ CRATES="
 	lazycell-1.3.0
 	libc-0.2.102
 	libgit2-sys-0.12.23+1.2.0
-	libnghttp2-sys-0.1.6+1.43.0
+	libnghttp2-sys-0.1.7+1.45.0
 	libssh2-sys-0.2.21
 	libz-sys-1.1.3
 	log-0.4.14
@@ -81,7 +81,7 @@ CRATES="
 	openssl-0.10.36
 	openssl-probe-0.1.4
 	openssl-src-111.16.0+1.1.1l
-	openssl-sys-0.9.66
+	openssl-sys-0.9.67
 	percent-encoding-2.1.0
 	pkg-config-0.3.19
 	ppv-lite86-0.2.10
@@ -130,7 +130,7 @@ CRATES="
 	unicode-bidi-0.3.6
 	unicode-normalization-0.1.19
 	unicode-segmentation-1.8.0
-	unicode-width-0.1.8
+	unicode-width-0.1.9
 	unicode-xid-0.2.2
 	url-2.2.2
 	utf8parse-0.2.0
@@ -145,11 +145,12 @@ CRATES="
 	winapi-i686-pc-windows-gnu-0.4.0
 	winapi-util-0.1.5
 	winapi-x86_64-pc-windows-gnu-0.4.0
+
 "
 
 inherit cargo
 
-MY_P="${PN}-0.9.3+cargo-0.56"
+MY_P="${PN}-0.9.4+cargo-0.56"
 DESCRIPTION="Helper program to build and install c-like libraries"
 # Double check the homepage as the cargo_metadata crate
 # does not provide this value so instead repository is used
@@ -171,6 +172,8 @@ RDEPEND="dev-libs/libgit2:=
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}"
+
+BDEPEND=">=virtual/rust-1.55.0"
 
 src_unpack() {
 	cargo_src_unpack
