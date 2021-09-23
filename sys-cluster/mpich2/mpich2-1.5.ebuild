@@ -5,7 +5,7 @@ EAPI=5
 
 FORTRAN_NEEDED=fortran
 
-inherit epatch fortran-2
+inherit epatch fortran-2 flag-o-matic
 
 MY_PV=${PV/_/}
 DESCRIPTION="A high performance and portable MPI implementation"
@@ -72,17 +72,25 @@ src_configure() {
 		c="${c} --enable-threads=single"
 	fi
 
+
+	# GCC 10 compatibility workaround
+	# bug #725722
+	append-fflags $(test-flags-FC -fallow-argument-mismatch)
+
 	export MPICH2LIB_CFLAGS=${CFLAGS}
 	export MPICH2LIB_CPPFLAGS=${CPPFLAGS}
 	export MPICH2LIB_CXXFLAGS=${CXXFLAGS}
 	export MPICH2LIB_FFLAGS=${FFLAGS}
 	export MPICH2LIB_FCFLAGS=${FCFLAGS}
 	export MPICH2LIB_LDFLAGS=${LDFLAGS}
-	unset CFLAGS CPPFLAGS CXXFLAGS FFLAGS FCFLAGS LDFLAGS
+	# dropped w/ bug #725722 fix
+	#unset CFLAGS CPPFLAGS CXXFLAGS FFLAGS FCFLAGS LDFLAGS
 
 	c="${c} --sysconfdir=${EPREFIX}/etc/${PN}"
 	c="${c} --docdir=${EPREFIX}/usr/share/doc/${PF}"
-	econf ${c} \
+
+	# Forcing Bash as there's quite a few bashisms in the build system
+	CONFIG_SHELL="${BROOT}/bin/bash" econf \
 		--with-pm=hydra \
 		--disable-mpe \
 		--disable-fast \
