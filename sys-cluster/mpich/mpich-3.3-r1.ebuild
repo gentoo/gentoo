@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD="77 90"
 
-inherit fortran-2 multilib-minimal multilib autotools
+inherit fortran-2 multilib-minimal multilib flag-o-matic autotools
 
 MY_PV=${PV/_/}
 DESCRIPTION="A high performance and portable MPI implementation"
@@ -94,15 +94,22 @@ multilib_src_configure() {
 
 	c="${c} --sysconfdir=${EPREFIX}/etc/${PN}"
 
+	# GCC 10 compatibility workaround
+	# bug #725842
+	append-fflags $(test-flags-FC -fallow-argument-mismatch)
+
 	export MPICHLIB_CFLAGS="${CFLAGS}"
 	export MPICHLIB_CPPFLAGS="${CPPFLAGS}"
 	export MPICHLIB_CXXFLAGS="${CXXFLAGS}"
 	export MPICHLIB_FFLAGS="${FFLAGS}"
 	export MPICHLIB_FCFLAGS="${FCFLAGS}"
 	export MPICHLIB_LDFLAGS="${LDFLAGS}"
-	unset CFLAGS CPPFLAGS CXXFLAGS FFLAGS FCFLAGS LDFLAGS
 
-	ECONF_SOURCE=${S} econf \
+	# dropped w/ bug #725842 fix
+	#unset CFLAGS CPPFLAGS CXXFLAGS FFLAGS FCFLAGS LDFLAGS
+
+	# Forcing Bash as there's quite a few bashisms in the build system
+	CONFIG_SHELL="${BROOT}/bin/bash" ECONF_SOURCE=${S} econf \
 		--enable-shared \
 		--with-hwloc-prefix="${EPREFIX}/usr" \
 		--with-hwloc-libdir="$(get_libdir)" \
