@@ -72,7 +72,6 @@ src_configure() {
 		c="${c} --enable-threads=single"
 	fi
 
-
 	# GCC 10 compatibility workaround
 	# bug #725722
 	append-fflags $(test-flags-FC -fallow-argument-mismatch)
