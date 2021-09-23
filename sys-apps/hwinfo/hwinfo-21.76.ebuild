@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib rpm toolchain-funcs
+inherit rpm toolchain-funcs
 
 DESCRIPTION="Hardware detection tool used in SuSE Linux"
 HOMEPAGE="https://www.opensuse.org/"
