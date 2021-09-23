@@ -29,6 +29,7 @@ BDEPEND="
 		dev-python/pytest-ordering[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		>=dev-python/stdio-mgr-1.0.1[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/timeout-decorator[${PYTHON_USEDEP}]
 	)
 "
