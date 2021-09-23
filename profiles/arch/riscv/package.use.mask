@@ -1,6 +1,13 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-09-23)
+# mkdocs ecosystem only partly keyworded on riscv, has rather messy
+# Python-target requirements.
+dev-python/backrefs doc
+dev-python/pyspelling doc
+dev-python/wcmatch doc
+
 # Marek Szuba <marecki@gentoo.org> (2021-09-19)
 # media-gfx/nvidia-texture-tools reports arch as unknown, fails to build
 media-libs/devil nvtt
