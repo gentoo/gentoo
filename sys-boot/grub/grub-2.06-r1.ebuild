@@ -17,10 +17,10 @@ EAPI=7
 # corresponding variable in make.conf or the environment.
 
 if [[ ${PV} == 9999  ]]; then
-	GRUB_AUTORECONF=1
 	GRUB_BOOTSTRAP=1
 fi
 
+GRUB_AUTORECONF=1
 PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} )
 WANT_LIBTOOL=none
 
@@ -55,6 +55,7 @@ PATCHES=(
 	"${FILESDIR}"/gfxpayload.patch
 	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
 	"${FILESDIR}"/grub-2.06-test-words.patch
+	"${FILESDIR}"/grub-2.06-binutils-2.36.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.37
