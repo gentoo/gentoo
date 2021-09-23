@@ -403,6 +403,9 @@ src_configure() {
 	# use startup-cache for faster startup time
 	mozconfig_annotate '' --enable-startupcache
 
+	# Broken on some arches
+	mozconfig_annotate '' --disable-elf-hack
+
 	# Use an objdir to keep things organized.
 	echo "mk_add_options MOZ_OBJDIR=${BUILD_OBJ_DIR}" >> "${S}"/.mozconfig
 	echo "mk_add_options XARGS=/usr/bin/xargs" >> "${S}"/.mozconfig
