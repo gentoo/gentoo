@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2021-09-22)
+# Non-stable deps.
+net-irc/irssi otr
+
 # Michał Górny <mgorny@gentoo.org> (2021-09-19)
 # Non-stable deps.
 dev-python/matplotlib cairo gtk3
