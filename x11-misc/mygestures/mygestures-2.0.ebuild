@@ -24,10 +24,17 @@ DEPEND="
 	x11-base/xorg-proto"
 BDEPEND="virtual/pkgconfig"
 
-DOCS=( README.md )
-
 src_prepare() {
 	default
 
 	eautoreconf
+}
+
+src_install() {
+	dobin src/mygestures #814482
+
+	dodoc README.md
+
+	insinto /etc
+	doins mygestures.xml
 }
