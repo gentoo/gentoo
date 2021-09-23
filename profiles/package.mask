@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (2021-09-23)
+# Incompatible with c++17 abseil-cpp, no in-tree consumers yet
+media-libs/webrtc-audio-processing:1
+
 # Michał Górny <mgorny@gentoo.org> (2021-09-23)
 # Ancient version from 2016 that collides with dev-python/pyjwt.
 # Never bumped by the maintainer.  The only revdep turned out to be
