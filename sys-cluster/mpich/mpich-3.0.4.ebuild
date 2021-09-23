@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 FORTRAN_NEEDED=fortran
 
-inherit fortran-2
+inherit fortran-2 flag-o-matic
 
 MY_PV=${PV/_/}
 DESCRIPTION="A high performance and portable MPI implementation"
@@ -72,15 +72,21 @@ src_configure() {
 	c="${c} --sysconfdir=${EPREFIX}/etc/${PN}"
 	c="${c} --docdir=${EPREFIX}/usr/share/doc/${PF}"
 
+	# GCC 10 compatibility workaround
+	# bug #725842
+	append-fflags $(test-flags-FC -fallow-argument-mismatch)
+
 	export MPICHLIB_CFLAGS=${CFLAGS}
 	export MPICHLIB_CPPFLAGS=${CPPFLAGS}
 	export MPICHLIB_CXXFLAGS=${CXXFLAGS}
 	export MPICHLIB_FFLAGS=${FFLAGS}
 	export MPICHLIB_FCFLAGS=${FCFLAGS}
 	export MPICHLIB_LDFLAGS=${LDFLAGS}
-	unset CFLAGS CPPFLAGS CXXFLAGS FFLAGS FCFLAGS LDFLAGS
+	# dropped w/ bug #725842 fix
+	#unset CFLAGS CPPFLAGS CXXFLAGS FFLAGS FCFLAGS LDFLAGS
 
-	econf ${c} \
+	# Forcing Bash as there's quite a few bashisms in the build system
+	CONFIG_SHELL="${BROOT}/bin/bash" econf \
 		--with-pm=hydra \
 		--disable-mpe \
 		--disable-fast \
