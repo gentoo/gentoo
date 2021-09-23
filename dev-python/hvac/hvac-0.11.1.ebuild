@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="hashicorp vault client in python"
@@ -25,7 +25,6 @@ BDEPEND="
 		dev-python/jwcrypto[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
-		dev-python/python-jwt[${PYTHON_USEDEP}]
 		dev-python/requests-mock[${PYTHON_USEDEP}]
 		dev-python/semantic_version[${PYTHON_USEDEP}]
 		dev-python/werkzeug[${PYTHON_USEDEP}]

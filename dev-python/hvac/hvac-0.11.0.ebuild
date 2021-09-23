@@ -25,7 +25,6 @@ BDEPEND="
 		dev-python/jwcrypto[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
-		dev-python/python-jwt[${PYTHON_USEDEP}]
 		dev-python/requests-mock[${PYTHON_USEDEP}]
 		dev-python/semantic_version[${PYTHON_USEDEP}]
 		dev-python/werkzeug[${PYTHON_USEDEP}]
