@@ -75,7 +75,7 @@ export GOCACHE="${T}/go-build"
 # The following go flags should be used for all builds.
 # -v prints the names of packages as they are compiled
 # -x prints commands as they are executed
-export GOFLAGS="-v -x"
+export GOFLAGS="-v -x -modcacherw"
 
 # Do not complain about CFLAGS etc since go projects do not use them.
 QA_FLAGS_IGNORED='.*'
