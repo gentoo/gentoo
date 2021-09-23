@@ -5,7 +5,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit meson-multilib optfeature python-any-r1 udev
+inherit meson-multilib optfeature python-any-r1 systemd udev
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
@@ -273,9 +273,13 @@ pkg_postinst() {
 	optfeature_header "The following can be installed for optional runtime features:"
 	optfeature "restricted realtime capabilities via D-Bus" sys-auth/rtkit
 
-	# Once hsphfpd lands in tree, both it and ofono will need to be checked for presence here!
-	if use bluetooth; then
-		optfeature "better BT headset support (daemon startup required)" net-misc/ofono
-		#optfeature "an oFono alternative (not packaged)" foo-bar/hsphfpd
+	if has_version 'net-misc/ofono' ; then
+		ewarn "Native backend has become default. Please disable oFono via:"
+		if systemd_is_booted ; then
+			ewarn "systemctl disable --now ofono"
+		else
+			ewarn "rc-update delete ofono"
+		fi
+		ewarn
 	fi
 }
