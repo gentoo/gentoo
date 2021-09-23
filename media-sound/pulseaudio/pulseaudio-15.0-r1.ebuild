@@ -137,9 +137,11 @@ COMMON_DEPEND="
 	zeroconf? ( >=net-dns/avahi-0.6.12[dbus] )
 "
 
+# pulseaudio ships a bundle xmltoman, which uses XML::Parser
 DEPEND="
 	${COMMON_DEPEND}
-	app-doc/xmltoman
+	dev-lang/perl
+	dev-perl/XML-Parser
 	dev-libs/libatomic_ops
 	dev-libs/libpcre:*
 	test? ( >=dev-libs/check-0.9.10 )
