@@ -42,7 +42,7 @@ RDEPEND="${DEPEND}
 src_prepare() {
 	ecm_src_prepare
 	# this kind of cmake magic doesn't work for us at all.
-	sed -e "1 s:^.*$:\#\!/usr/bin/env python3.8:" \
+	sed -e "1 s:^.*$:\#\!/usr/bin/env ${EPYTHON}:" \
 		-i kcm/backends/ufw/helper/kcm_ufw_helper.py.cmake || die
 }
 
