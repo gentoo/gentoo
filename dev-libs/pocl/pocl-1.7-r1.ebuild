@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
 DOCS_AUTODOC=0
 DOCS_BUILDER="sphinx"
@@ -13,10 +13,7 @@ inherit cmake llvm python-any-r1 docs
 LLVM_MAX_SLOT=12
 
 DESCRIPTION="Portable Computing Language (an implementation of OpenCL)"
-HOMEPAGE="
-	http://portablecl.org
-	https://github.com/pocl/pocl
-"
+HOMEPAGE="http://portablecl.org https://github.com/pocl/pocl"
 SRC_URI="https://github.com/pocl/pocl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -26,35 +23,51 @@ IUSE="accel cl20 +conformance cuda debug examples float-conversion hardening +hw
 
 RESTRICT="!test? ( test ) mirror"
 
-#TODO: add dependencies for cuda
+# TODO: add dependencies for cuda
+# Note: No := on LLVM because it pulls in Clang
+# see llvm.eclass for why
+CLANG_DEPS="!cuda? ( <sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):= )
+	cuda? ( <sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_NVPTX] )"
 RDEPEND="
 	dev-libs/libltdl
-	sys-devel/llvm:${LLVM_MAX_SLOT}
+	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1))
 	virtual/opencl
 
-	!cuda? ( sys-devel/clang:${LLVM_MAX_SLOT} )
-	cuda? ( sys-devel/clang:${LLVM_MAX_SLOT}[llvm_targets_NVPTX] )
+	${CLANG_DEPS}
 	debug? ( dev-util/lttng-ust )
 	hwloc? ( sys-apps/hwloc[cuda?] )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
+BDEPEND="${CLANG_DEPS}
+	virtual/pkgconfig
 	doc? (
 		$(python_gen_any_dep '<dev-python/markupsafe-2.0[${PYTHON_USEDEP}]')
 	)"
 
-PATCHES=( "${FILESDIR}/vendor_opencl_libs_location.patch" )
+PATCHES=(
+	"${FILESDIR}/vendor_opencl_libs_location.patch"
+)
 
 python_check_deps() {
 	has_version -b "<dev-python/markupsafe-2.0[${PYTHON_USEDEP}]"
 }
 
+llvm_check_deps() {
+	local usedep=$(usex cuda "[llvm_targets_NVPTX]" '')
+
+	# Clang is used at both build time (executed) and runtime
+	has_version -r "sys-devel/llvm:${LLVM_SLOT}${usedep}" && \
+		has_version -r "sys-devel/clang:${LLVM_SLOT}${usedep}" && \
+		has_version -b "sys-devel/clang:${LLVM_SLOT}${usedep}"
+}
+
 pkg_setup() {
 	use doc && python-any-r1_pkg_setup
+
+	llvm_pkg_setup
 }
 
 src_configure() {
-	llvm_pkg_setup
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
 		-DENABLE_HSA=OFF
@@ -63,6 +76,7 @@ src_configure() {
 		-DKERNELLIB_HOST_CPU_VARIANTS=native
 		-DPOCL_ICD_ABSOLUTE_PATH=ON
 		-DSTATIC_LLVM=OFF
+		-DWITH_LLVM_CONFIG=$(get_llvm_prefix -d "${LLVM_MAX_SLOT}")/bin/llvm-config
 
 		-DENABLE_ACCEL_DEVICE=$(usex accel)
 		-DENABLE_CONFORMANCE=$(usex conformance)
@@ -73,8 +87,8 @@ src_configure() {
 		-DHARDENING_ENABLE=$(usex hardening)
 		-DPOCL_DEBUG_MESSAGES=$(usex debug)
 		-DUSE_POCL_MEMMANAGER=$(usex memmanager)
-		-DWITH_LLVM_CONFIG=$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin/llvm-config
 	)
+
 	cmake_src_configure
 }
 
@@ -91,13 +105,16 @@ src_test() {
 
 src_install() {
 	cmake_src_install
+
 	dodoc CREDITS README CHANGES
+
 	if use doc; then
 		dodoc -r _build/html
-		docompress -x "/usr/share/doc/${P}/html"
+		docompress -x /usr/share/doc/${P}/html
 	fi
+
 	if use examples; then
 		dodoc -r examples
-		docompress -x "/usr/share/doc/${P}/examples"
+		docompress -x /usr/share/doc/${P}/examples
 	fi
 }
