@@ -20,6 +20,7 @@ REQUIRED_USE="
 	fcitx4? ( dbus )
 	gles1? ( video )
 	gles2? ( video )
+	haptic? ( joystick )
 	ibus? ( dbus )
 	jack? ( sound )
 	nas? ( sound )
