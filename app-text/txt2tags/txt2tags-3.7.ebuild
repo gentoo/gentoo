@@ -10,7 +10,7 @@ DESCRIPTION="Generate marked up documents (HTML, etc.)from a plain text file wit
 HOMEPAGE="https://txt2tags.org"
 SRC_URI="https://codeload.github.com/txt2tags/txt2tags/tar.gz/${PV} -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
 
