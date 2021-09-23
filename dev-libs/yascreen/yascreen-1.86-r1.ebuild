@@ -29,3 +29,8 @@ src_prepare() {
 src_compile() {
 	emake CC="$(tc-getCC)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" NO_FLTO=1
 }
+
+src_install() {
+	default
+	find "${D}" -name '*.a' -delete || die
+}
