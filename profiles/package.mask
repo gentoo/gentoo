@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (2021-09-24)
+# Experimental split media-sound/pulseaudio packages, bug #536780.
+media-libs/libpulse
+media-sound/pulseaudio-daemon
+>=media-sound/pulseaudio-15.0-r100
+
 # Anthony G. Basile <blueness@gentoo.org> (2021-09-24)
 # Masked for removal in 30 days.  Dead upstream.
 dev-lang/bashforth
