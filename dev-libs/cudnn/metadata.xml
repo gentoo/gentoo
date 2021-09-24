@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sci@gentoo.org</email>
-    <name>Gentoo Science Project</name>
-  </maintainer>
-  <use>
-    <flag name="cuda10-2">On nVidia CUDA 10.2.</flag>
-    <flag name="cuda11-1">On nVidia CUDA 11.1.</flag>
-    <flag name="cuda11">On nVidia CUDA 11.x.</flag>
-    <flag name="cuda11-4">On nVidia CUDA 11.4</flag>
-  </use>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<use>
+		<flag name="cuda10-2">On Nvidia CUDA 10.2</flag>
+		<flag name="cuda11-4">On Nvidia CUDA 11.4</flag>
+	</use>
 </pkgmetadata>
