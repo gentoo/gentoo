@@ -3,16 +3,16 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_7,3_8} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake python-any-r1
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ros2/console_bridge_vendor"
-	SRC_URI=""
 else
 	SRC_URI="https://github.com/ros2/console_bridge_vendor/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64"
 fi
 
 DESCRIPTION="Wrapper around console_bridge"
@@ -20,11 +20,6 @@ HOMEPAGE="https://github.com/ros2/console_bridge_vendor"
 
 LICENSE="Apache-2.0 BSD"
 SLOT="0"
-if [ "${PV#9999}" != "${PV}" ] ; then
-	PROPERTIES="live"
-else
-	KEYWORDS="~amd64"
-fi
 IUSE="test"
 RESTRICT="!test? ( test )"
 
