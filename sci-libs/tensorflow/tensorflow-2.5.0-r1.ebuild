@@ -87,10 +87,8 @@ RDEPEND="
 	sys-libs/zlib
 	>=sys-apps/hwloc-2
 	cuda? (
-		|| (
-			( =dev-util/nvidia-cuda-toolkit-11.1*[profiler] =dev-libs/cudnn-8* )
-			( =dev-util/nvidia-cuda-toolkit-11.2*[profiler] =dev-libs/cudnn-8* )
-		)
+		=dev-util/nvidia-cuda-toolkit-11*[profiler]
+		=dev-libs/cudnn-8*
 	)
 	mpi? ( virtual/mpi )
 	python? (
