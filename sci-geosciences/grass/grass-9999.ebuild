@@ -216,7 +216,7 @@ src_install() {
 		sed -i "s|${ED}|/|g" "${scriptMakeDir}/${file}" || die
 	done
 
-	mv ${D}/usr/bin/grass ${D}/usr/bin/${MY_PM}
+	mv ${D}/usr/bin/grass ${D}/usr/bin/${MY_PM} || die
 
 	# get proper folder for grass path in script
 	local gisbase=/usr/$(get_libdir)/${MY_PM}
