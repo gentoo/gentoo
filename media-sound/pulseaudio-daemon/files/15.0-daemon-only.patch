@@ -1,9 +1,10 @@
-From 5bcbd2ba656ac38ba500dc110cc13dbaa0d77853 Mon Sep 17 00:00:00 2001
+From f4f28cc436a506d1dfbd514968b2976ab31cdf5f Mon Sep 17 00:00:00 2001
 From: Mart Raudsepp <mart@leio.tech>
 Date: Fri, 24 Sep 2021 15:19:05 +0300
 Subject: [PATCH] build-sys: meson: Allow building the daemon only
 
 ---
+ man/meson.build                   |  2 ++
  meson.build                       | 23 ++++++++++++++++++++---
  meson_options.txt                 |  3 +++
  po/meson.build                    |  3 ---
@@ -13,8 +14,28 @@ Subject: [PATCH] build-sys: meson: Allow building the daemon only
  src/modules/gsettings/meson.build |  3 +--
  src/tests/meson.build             |  9 +++++++--
  src/utils/meson.build             | 10 ++++++----
- 9 files changed, 52 insertions(+), 16 deletions(-)
+ 10 files changed, 54 insertions(+), 16 deletions(-)
 
+diff --git a/man/meson.build b/man/meson.build
+index 31c581a8f..c12ad5e6a 100644
+--- a/man/meson.build
++++ b/man/meson.build
+@@ -14,6 +14,7 @@ if get_option('daemon')
+   ]
+ endif
+ 
++if not get_option('daemon-only')
+ manpages += [
+   ['pacat', '1', ['paplay', 'parec', 'parecord', 'pamon']],
+   ['pactl', '1'],
+@@ -31,6 +32,7 @@ if x11_dep.found()
+     ['pax11publish', '1'],
+   ]
+ endif
++endif
+ 
+ # FIXME: Add esdcompat if HAVE_ESOUND
+ #manpages += ['esdcompat', '1'],
 diff --git a/meson.build b/meson.build
 index 63ed62342..420cc6fac 100644
 --- a/meson.build
