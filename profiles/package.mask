@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Anthony G. Basile <blueness@gentoo.org> (2021-09-24)
+# Masked for removal in 30 days.  Dead upstream.
+dev-lang/bashforth
+
 # Michał Górny <mgorny@gentoo.org> (2021-08-28)
 # EOL kernel with known vulnerabilities.  Please move to 5.14 or one
 # of the LTS branches.  Bug #814464.
