@@ -18,11 +18,12 @@ fi
 
 LICENSE="Apache-2.0 GPL-3+ MIT"
 SLOT="0"
-IUSE="cpu_flags_x86_sse4_1 donate hwloc +ssl"
+IUSE="cpu_flags_x86_sse4_1 donate hwloc opencl +ssl"
 
 DEPEND="
 	dev-libs/libuv:=
 	hwloc? ( sys-apps/hwloc:= )
+	opencl? ( virtual/opencl )
 	ssl? ( dev-libs/openssl:= )
 "
 RDEPEND="
@@ -30,7 +31,9 @@ RDEPEND="
 	!arm64? ( sys-apps/msr-tools )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-6.12.2-nonotls.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.12.2-nonotls.patch
+)
 
 src_prepare() {
 	if ! use donate ; then
@@ -45,7 +48,7 @@ src_configure() {
 		-DWITH_SSE4_1=$(usex cpu_flags_x86_sse4_1)
 		-DWITH_HWLOC=$(usex hwloc)
 		-DWITH_TLS=$(usex ssl)
-		-DWITH_OPENCL=OFF
+		-DWITH_OPENCL=$(usex opencl)
 		-DWITH_CUDA=OFF
 	)
 
