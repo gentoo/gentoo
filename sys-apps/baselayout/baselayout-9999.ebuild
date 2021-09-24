@@ -215,8 +215,7 @@ src_prepare() {
 	if use prefix; then
 		hprefixify -e "/EUID/s,0,${EUID}," -q '"' etc/profile
 		hprefixify etc/{env.d/50baselayout,shells} share.Linux/passwd
-		echo PATH=/usr/bin:/bin >> etc/env.d/99host
-		echo ROOTPATH=/usr/sbin:/sbin:/usr/bin:/bin >> etc/env.d/99host
+		echo PATH=/usr/sbin:/sbin:/usr/bin:/bin >> etc/env.d/99host
 	fi
 
 	# don't want symlinked directories in PATH on systems with usr-merge
