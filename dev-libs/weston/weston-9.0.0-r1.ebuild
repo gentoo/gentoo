@@ -61,6 +61,7 @@ RDEPEND="
 		>=virtual/udev-136
 	)
 	editor? ( x11-libs/pango )
+	examples? ( x11-libs/pango )
 	gles2? (
 		media-libs/mesa[gles2,wayland]
 	)
