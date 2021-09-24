@@ -47,7 +47,6 @@ dev-python/nose test
 dev-python/requests test
 dev-python/setuptools test
 dev-python/urllib3 test
-dev-python/virtualenv test
 
 # James Le Cuirot <chewi@gentoo.org> (2021-08-20)
 # The CLI requires many unkeyworded dependencies.
