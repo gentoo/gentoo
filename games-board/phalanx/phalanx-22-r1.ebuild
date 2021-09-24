@@ -17,24 +17,26 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 src_compile() {
-	# configure is not used in the project; confs are in Makefile,
-	# and here we override them:
-	local define="-DGNUFUN" myvar
-	for myvar in "PBOOK" "SBOOK" "LEARN" ; do
-		define="${define} -D${myvar}_DIR=\"\\\"${EPREFIX}/usr/share/${PN}\\\"\""
-	done
-	emake \
-		DEFINES="${define}" \
-		CC="$(tc-getCC)" \
-		CFLAGS="${CFLAGS}" \
+	local defines=(
+		-DGNUFUN
+		-D{PBOOK,SBOOK,LEARN}_DIR="'\"${EPREFIX}/usr/share/${PN}\"'"
+	)
+
+	local emakeargs=(
+		DEFINES="${defines[*]}"
+		CC="$(tc-getCC)"
+		CFLAGS="${CFLAGS}"
 		LDFLAGS="${LDFLAGS}"
+	)
+
+	emake "${emakeargs[@]}"
 }
 
 src_install() {
 	dobin phalanx
 
 	insinto /usr/share/${PN}
-	doins pbook.phalanx sbook.phalanx learn.phalanx
+	doins {pbook,sbook,learn}.phalanx
 
 	einstalldocs
 }
