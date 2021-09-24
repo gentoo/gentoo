@@ -53,17 +53,6 @@ REQUIRED_USE="
 	zeroconf? ( dbus )
 "
 
-BDEPEND="
-	dev-lang/perl
-	dev-perl/XML-Parser
-	sys-devel/gettext
-	virtual/libiconv
-	virtual/libintl
-	virtual/pkgconfig
-	orc? ( >=dev-lang/orc-0.4.15 )
-	system-wide? ( dev-util/unifdef )
-"
-
 # NOTE:
 # - libpcre needed in some cases, bug #472228
 # - media-libs/speexdsp is providing echo canceller implementation and used in resampler
@@ -145,6 +134,17 @@ PDEPEND="
 	alsa? ( alsa-plugin? ( >=media-plugins/alsa-plugins-1.0.27-r1[pulseaudio] ) )
 "
 
+BDEPEND="
+	dev-lang/perl
+	dev-perl/XML-Parser
+	sys-devel/gettext
+	virtual/libiconv
+	virtual/libintl
+	virtual/pkgconfig
+	orc? ( >=dev-lang/orc-0.4.15 )
+	system-wide? ( dev-util/unifdef )
+"
+
 DOCS=( NEWS README )
 
 S="${WORKDIR}/${MY_P}"
@@ -168,7 +168,7 @@ src_configure() {
 		-Ddaemon-only=true
 		-Ddoxygen=false
 		-Dgcov=false
-		-Dman=false
+		-Dman=true
 		# tests involve random modules, so just do them for the native # TODO: tests should run always
 		$(meson_use test tests)
 		-Ddatabase=$(usex gdbm gdbm simple) # tdb is also an option but no one cares about it
