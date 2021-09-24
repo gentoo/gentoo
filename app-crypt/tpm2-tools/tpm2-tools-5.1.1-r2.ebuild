@@ -12,7 +12,7 @@ SRC_URI="https://github.com/tpm2-software/${PN}/releases/download/${PV}/${P}.tar
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+fapi test"
 
 RDEPEND=">=app-crypt/tpm2-tss-3.0.1:=[fapi?]
