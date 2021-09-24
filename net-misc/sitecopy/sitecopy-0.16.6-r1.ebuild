@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,6 +38,7 @@ src_prepare() {
 		"${FILESDIR}/sitecopy-0.16.6-10-bts410703-preserve-storage-files-sigint.patch" \
 		"${FILESDIR}/sitecopy-0.16.6-20-bts549721-add-compatibility-for-neon-0.29.0.patch" \
 		"${FILESDIR}/sitecopy-0.16.6-30-bts320586-manpage-document-sftp.patch" \
+		"${FILESDIR}/sitecopy-0.16.6-32-neon-0.31.patch" \
 		"${DISTDIR}/sitecopy-0.16.6-04-manpages-addition-fixes.patch"
 
 	# Source package uses incorrect '/usr/doc' for the doc folder.  So use
