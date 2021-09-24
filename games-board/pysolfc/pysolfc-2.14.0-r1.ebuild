@@ -52,4 +52,7 @@ python_install_all() {
 
 	# html files are used at runtime, keep at default location
 	dosym -r /usr/share/{${MY_PN},doc/${PF}}/html
+
+	# russion translation is currently not displaying right
+	rm "${ED}"/usr/share/locale/ru/LC_MESSAGES/pysol.mo || die
 }
