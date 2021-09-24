@@ -26,3 +26,5 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=( "${FILESDIR}"/${PN}-0.0.2-py3.patch )
+
+distutils_enable_tests pytest
