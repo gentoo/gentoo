@@ -3,24 +3,14 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit flag-o-matic python-any-r1 toolchain-funcs
 
 PATCH="${PN}-8.30-patches-01"
 DESCRIPTION="Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)"
 HOMEPAGE="https://www.gnu.org/software/coreutils/"
-
-if [[ ${PV} == *_p* ]] ; then
-	# Note: could put this in devspace, but if it's gone, we don't want
-	# it in tree anyway. It's just for testing.
-	SRC_URI="https://pixelbeat.org/cu/coreutils-ss.tar.xz -> ${P}.tar.xz"
-	S="${WORKDIR}"/${PN}-8.32.251-7b0db
-else
-	SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
-fi
-
-SRC_URI+="
+SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 	!vanilla? (
 		mirror://gentoo/${PATCH}.tar.xz
 		https://dev.gentoo.org/~polynomial-c/dist/${PATCH}.tar.xz
