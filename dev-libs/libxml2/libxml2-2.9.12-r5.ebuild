@@ -7,7 +7,7 @@ EAPI=7
 
 PATCHSET_VERSION="2.9.12-r5-patchset"
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml"
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/danielveillard.asc
 inherit autotools flag-o-matic prefix python-r1 multilib-minimal verify-sig
