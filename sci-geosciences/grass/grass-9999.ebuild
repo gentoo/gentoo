@@ -230,8 +230,8 @@ GISBASE = os.path.normpath(\"${gisbase}\"):" \
 		"${ED}"${gisbase}/etc/fontcap || die
 
 	# set proper python interpreter
-	sed -e "s:os.environ\['GRASS_PYTHON'\] = \"python3\":\
-os.environ\['GRASS_PYTHON'\] = \"${EPYTHON}\":" \
+	sed -e "s:os.environ\[\"GRASS_PYTHON\"\] = \"python3\":\
+os.environ\[\"GRASS_PYTHON\"\] = \"${EPYTHON}\":" \
 		-i "${ED}"/usr/bin/${MY_PM} || die
 
 	# set proper GISDBASE directory path in the demolocation .grassrc80 file
