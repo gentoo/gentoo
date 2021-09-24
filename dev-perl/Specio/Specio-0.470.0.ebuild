@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Type constraints and coercions for Perl"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~riscv ~sparc"
+KEYWORDS="~amd64 ~arm ~m68k ~riscv ~sparc"
 IUSE="minimal"
 
 RDEPEND="
