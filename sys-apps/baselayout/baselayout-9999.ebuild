@@ -254,11 +254,6 @@ src_install() {
 	# need the makefile in pkg_preinst
 	insinto /usr/share/${PN}
 	doins Makefile
-
-	# This is needed for https://bugs.gentoo.org/732142
-	dodir /usr/lib
-	mv "${ED}"/etc/os-release "${ED}"/usr/lib || die
-	dosym ../usr/lib/os-release /etc/os-release
 }
 
 pkg_postinst() {
