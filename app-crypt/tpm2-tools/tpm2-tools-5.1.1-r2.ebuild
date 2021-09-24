@@ -15,9 +15,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+fapi test"
 
-RDEPEND=">=app-crypt/tpm2-tss-3.0.1:=[fapi?]
+RDEPEND=">=app-crypt/tpm2-tss-3.0.1[fapi?]
 	dev-libs/openssl:=
-	net-misc/curl:=
+	net-misc/curl
 	sys-libs/efivar:=
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
