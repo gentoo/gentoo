@@ -25,7 +25,7 @@ RDEPEND="fuse? (
 	)
 	gnutls? (
 		dev-libs/libtasn1:=
-		>=net-libs/gnutls-3.1.0[tools,pkcs11]
+		>=net-libs/gnutls-3.1.0:=[tools,pkcs11]
 	)
 	seccomp? ( sys-libs/libseccomp )
 	acct-group/tss
