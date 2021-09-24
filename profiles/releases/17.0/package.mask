@@ -6,4 +6,3 @@
 # masked in the 17.0 profiles.
 dev-java/ecj-gcj
 dev-java/gcj-jdk
-<dev-util/nvidia-cuda-sdk-9

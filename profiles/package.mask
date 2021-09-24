@@ -340,7 +340,6 @@ sys-libs/db:5.1
 # Mask gcc-7 branch (ended upstream support). Please switch
 # to a fresher gcc branch.
 <sys-devel/gcc-8
-<dev-util/nvidia-cuda-sdk-10
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2021-05-16)
 # Mask gcc-6 branch (ended upstream support). Please switch
