@@ -32,6 +32,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-65.1-remove-bashisms.patch"
 	"${FILESDIR}/${PN}-64.2-darwin.patch"
 	"${FILESDIR}/${PN}-68.1-nonunicode.patch"
+	# Should be in the next rleease, but check
+	# https://bugs.gentoo.org/788112
+	"${FILESDIR}/${PN}-69.1-fix-ub-units.patch"
 )
 
 src_prepare() {
