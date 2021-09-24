@@ -18,12 +18,14 @@ fi
 
 LICENSE="Apache-2.0 GPL-3+ MIT"
 SLOT="0"
-IUSE="cpu_flags_x86_sse4_1 donate hwloc +ssl"
+IUSE="cpu_flags_x86_sse4_1 donate hwloc +ssl cuda opencl"
 
 DEPEND="
 	dev-libs/libuv:=
 	hwloc? ( sys-apps/hwloc:= )
 	ssl? ( dev-libs/openssl:= )
+	cuda? ( dev-util/nvidia-cuda-toolkit )
+	opencl? ( virtual/opencl )
 "
 RDEPEND="
 	${DEPEND}
@@ -47,8 +49,8 @@ src_configure() {
 		-DWITH_SSE4_1=$(usex cpu_flags_x86_sse4_1)
 		-DWITH_HWLOC=$(usex hwloc)
 		-DWITH_TLS=$(usex ssl)
-		-DWITH_OPENCL=OFF
-		-DWITH_CUDA=OFF
+		-DWITH_OPENCL=$(usex opencl)
+		-DWITH_CUDA=$(usex cuda)
 	)
 
 	cmake_src_configure
