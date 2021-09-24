@@ -241,9 +241,6 @@ src_prepare() {
 		ldpaths+=":${EPREFIX}/usr/local/${libdir}"
 	done
 	echo "LDPATH='${ldpaths#:}'" >> etc/env.d/50baselayout
-
-	# rc-scripts version for testing of features that *should* be present
-	echo "Gentoo Base System release ${PV}" > etc/gentoo-release
 }
 
 src_install() {
