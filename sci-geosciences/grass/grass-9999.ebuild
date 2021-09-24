@@ -8,7 +8,7 @@ PYTHON_REQ_USE="sqlite"  # bug 572440
 WANT_AUTOCONF="2.5"
 WX_GTK_VER="3.0-gtk3"
 
-inherit autotools desktop flag-o-matic git-r3 python-single-r1 toolchain-funcs wxwidgets xdg
+inherit autotools desktop git-r3 python-single-r1 toolchain-funcs wxwidgets xdg
 
 MY_P="${PN}8.0"
 MY_PM="${MY_P/.}"
