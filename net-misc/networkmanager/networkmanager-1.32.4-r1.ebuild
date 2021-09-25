@@ -59,13 +59,13 @@ COMMON_DEPEND="
 		dev-libs/libgcrypt:0=[${MULTILIB_USEDEP}]
 		>=net-libs/gnutls-2.12:=[${MULTILIB_USEDEP}] ) )
 	ofono? ( net-misc/ofono )
-	ovs? ( dev-libs/jansson )
+	ovs? ( dev-libs/jansson:= )
 	ppp? ( >=net-dialup/ppp-2.4.5:=[ipv6] )
 	resolvconf? ( net-dns/openresolv )
 	selinux? ( sys-libs/libselinux )
 	systemd? ( >=sys-apps/systemd-209:0= )
 	teamd? (
-		dev-libs/jansson
+		dev-libs/jansson:=
 		>=net-misc/libteam-1.9
 	)
 "
