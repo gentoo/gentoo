@@ -1,22 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-MODULE_VERSION=0.30
-MODULE_AUTHOR=TSIBLEY
+DIST_VERSION=0.30
+DIST_AUTHOR=TSIBLEY
 inherit perl-module
 
 DESCRIPTION="Generate pronounceable passwords"
 
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
-
-DEPEND="test? ( virtual/perl-Test-Simple )"
-
-SRC_TEST="do"
 
 src_prepare() {
 	sed -i -e 's/use inc::Module::Install;/use lib q[.]; use inc::Module::Install;/' Makefile.PL ||
