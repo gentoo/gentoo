@@ -7,8 +7,10 @@ inherit gnome2
 MY_P=${P/terminatorx/terminatorX}
 
 DESCRIPTION="Realtime audio synthesizer allowing you to 'scratch' on sampled audio data"
-HOMEPAGE="http://www.terminatorx.org/"
-SRC_URI="http://www.terminatorx.org/dist/${MY_P}.tar.bz2"
+HOMEPAGE="https://www.terminatorx.org/"
+# this is the original location but there is an issue with their certificate so mirroring the file
+#SRC_URI="https://www.terminatorx.org/dist/${MY_P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
