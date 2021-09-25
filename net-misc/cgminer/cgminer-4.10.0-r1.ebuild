@@ -21,7 +21,7 @@ REQUIRED_USE="|| ( ${HARDWARE} )"
 
 RDEPEND="
 	net-misc/curl
-	>=dev-libs/jansson-2.6
+	>=dev-libs/jansson-2.6:=
 	virtual/libusb:1[udev]
 	ncurses? ( sys-libs/ncurses:0= )
 	udev? ( virtual/libudev )"
