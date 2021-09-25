@@ -21,7 +21,7 @@ SLOT="0"
 IUSE="json xml yaml"
 
 DEPEND="
-	json? ( dev-libs/jansson )
+	json? ( dev-libs/jansson:= )
 	xml? ( dev-libs/libxml2:2 )
 	yaml? ( dev-libs/libyaml )
 "

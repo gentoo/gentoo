@@ -17,7 +17,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x
 IUSE="json xml yaml"
 
 CDEPEND="
-	json? ( dev-libs/jansson )
+	json? ( dev-libs/jansson:= )
 	xml? ( dev-libs/libxml2:2 )
 	yaml? ( dev-libs/libyaml )"
 
