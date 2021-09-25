@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/DavidGriffith/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~riscv ~x86"
 IUSE="ncurses sdl sound unicode"
 REQUIRED_USE="sound? ( || ( ncurses sdl ) )"
 
