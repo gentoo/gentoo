@@ -26,7 +26,7 @@ RDEPEND="dev-libs/libcdada
 	net-libs/libpcap
 	geoip? ( dev-libs/geoip )
 	geoipv2? ( dev-libs/libmaxminddb )
-	jansson? ( dev-libs/jansson )
+	jansson? ( dev-libs/jansson:= )
 	kafka? ( dev-libs/librdkafka )
 	mysql? (
 		dev-db/mysql-connector-c:0=
