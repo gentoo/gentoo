@@ -3,9 +3,9 @@
 
 EAPI=7
 
-RELEASE_COMMIT="837be8efd5cab4aea8fc1138ab91e93539a4e010"
+RELEASE_COMMIT="c49c317f3bf19001c06f189d0706b6a3a2d6533c"
 
-inherit cmake xdg-utils
+inherit xdg cmake
 
 DESCRIPTION="Seafile desktop client"
 HOMEPAGE="https://www.seafile.com/ https://github.com/haiwen/seafile-client/"
@@ -18,17 +18,19 @@ IUSE="shibboleth test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-db/sqlite:3
-	dev-libs/jansson
-	dev-libs/libevent
+	dev-libs/glib:2
+	dev-libs/jansson:=
+	dev-libs/libevent:=
+	dev-libs/openssl:=
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
-	dev-libs/openssl:=
 	net-libs/libsearpc
 	~net-misc/seafile-${PV}
-	shibboleth? ( dev-qt/qtwebengine:5[widgets] )"
+	shibboleth? ( dev-qt/qtwebengine:5[widgets] )
+	sys-libs/zlib"
 DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )"
 BDEPEND="dev-qt/linguist-tools:5"
@@ -36,7 +38,6 @@ BDEPEND="dev-qt/linguist-tools:5"
 PATCHES=(
 	"${FILESDIR}/${PN}-select-qt5.patch"
 	"${FILESDIR}/${PN}-7.0.9-qt-5.15.patch"
-	"${FILESDIR}/${PN}-8.0.1-glib-2.68.0.patch"
 )
 
 S="${WORKDIR}/${PN}-${RELEASE_COMMIT}"
@@ -47,12 +48,4 @@ src_configure() {
 		-DBUILD_TESTING="$(usex test)"
 	)
 	cmake_src_configure
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
