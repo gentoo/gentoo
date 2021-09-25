@@ -6,7 +6,7 @@ GNOME_ORG_MODULE="NetworkManager"
 VALA_USE_DEPEND="vapigen"
 PYTHON_COMPAT=( python3_{7..10} )
 
-inherit bash-completion-r1 gnome2 linux-info multilib python-any-r1 systemd readme.gentoo-r1 vala virtualx udev multilib-minimal
+inherit gnome.org linux-info meson-multilib python-any-r1 systemd readme.gentoo-r1 vala virtualx udev
 
 DESCRIPTION="A set of co-operative tools that make networking simple and straightforward"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 
-IUSE="audit bluetooth connection-sharing dhclient dhcpcd elogind gnutls +introspection iptables iwd kernel_linux +nss nftables +modemmanager ncurses ofono ovs policykit +ppp resolvconf selinux systemd teamd test vala +wext +wifi"
+IUSE="audit bluetooth +concheck connection-sharing debug dhclient dhcpcd elogind gnutls +introspection iptables iwd kernel_linux psl lto +nss nftables +modemmanager ofono ovs policykit +ppp resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -23,50 +23,55 @@ REQUIRED_USE="
 	iwd? ( wifi )
 	vala? ( introspection )
 	wext? ( wifi )
-	|| ( nss gnutls )
+	^^ ( gnutls nss )
 	?? ( elogind systemd )
+	?? ( dhclient dhcpcd )
+	?? ( syslog systemd )
 "
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-# gobject-introspection-0.10.3 is needed due to gnome bug 642300
-# wpa_supplicant-0.7.3-r3 is needed due to bug 359271
 COMMON_DEPEND="
-	>=dev-libs/glib-2.40:2[${MULTILIB_USEDEP}]
-	policykit? ( >=sys-auth/polkit-0.106 )
-	net-libs/libndp[${MULTILIB_USEDEP}]
-	>=net-misc/curl-7.24
-	net-misc/iputils
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
-	sys-libs/readline:0=
+	elogind? ( >=sys-auth/elogind-219 )
 	>=virtual/libudev-175:=[${MULTILIB_USEDEP}]
+	sys-apps/dbus
+	net-libs/libndp
+	systemd? ( >=sys-apps/systemd-209:0= )
+	>=dev-libs/glib-2.40:2[${MULTILIB_USEDEP}]
+	introspection? ( >=dev-libs/gobject-introspection-0.10.3:= )
+	selinux? ( sys-libs/libselinux )
 	audit? ( sys-process/audit )
+	teamd? (
+		>=dev-libs/jansson-2.7:=
+		>=net-misc/libteam-1.9
+	)
+	policykit? ( >=sys-auth/polkit-0.106 )
+	nss? ( >=dev-libs/nss-3.11:=[${MULTILIB_USEDEP}] )
+	gnutls? (
+		>=net-libs/gnutls-2.12:=[${MULTILIB_USEDEP}]
+	)
+	ppp? ( >=net-dialup/ppp-2.4.5:=[ipv6] )
+	modemmanager? (
+		net-misc/mobile-broadband-provider-info
+		>=net-misc/modemmanager-0.7.991:0=
+	)
 	bluetooth? ( >=net-wireless/bluez-5 )
+	ofono? ( net-misc/ofono )
+	dhclient? ( >=net-misc/dhcp-4[client] )
+	dhcpcd? ( >=net-misc/dhcpcd-9.3.3 )
+	ovs? ( >=dev-libs/jansson-2.7:= )
+	resolvconf? ( net-dns/openresolv )
 	connection-sharing? (
 		net-dns/dnsmasq[dbus,dhcp]
 		iptables? ( net-firewall/iptables )
 		nftables? ( net-firewall/nftables )
 	)
-	dhclient? ( >=net-misc/dhcp-4[client] )
-	dhcpcd? ( >=net-misc/dhcpcd-9.3.3 )
-	elogind? ( >=sys-auth/elogind-219 )
-	introspection? ( >=dev-libs/gobject-introspection-0.10.3:= )
-	modemmanager? ( >=net-misc/modemmanager-0.7.991:0=
-		net-misc/mobile-broadband-provider-info )
-	ncurses? ( >=dev-libs/newt-0.52.15 )
-	nss? ( >=dev-libs/nss-3.11:=[${MULTILIB_USEDEP}] )
-	!nss? ( gnutls? (
-		dev-libs/libgcrypt:0=[${MULTILIB_USEDEP}]
-		>=net-libs/gnutls-2.12:=[${MULTILIB_USEDEP}] ) )
-	ofono? ( net-misc/ofono )
-	ovs? ( dev-libs/jansson )
-	ppp? ( >=net-dialup/ppp-2.4.5:=[ipv6] )
-	resolvconf? ( net-dns/openresolv )
-	selinux? ( sys-libs/libselinux )
-	systemd? ( >=sys-apps/systemd-209:0= )
-	teamd? (
-		dev-libs/jansson
-		>=net-misc/libteam-1.9
+	psl? ( net-libs/libpsl )
+	concheck? ( net-misc/curl )
+	tools? (
+		sys-libs/readline:0=
+		>=dev-libs/newt-0.52.15
 	)
 "
 RDEPEND="${COMMON_DEPEND}
@@ -82,11 +87,13 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-3.18
-	"
+	net-libs/libndp[${MULTILIB_USEDEP}]
+"
 BDEPEND="
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
-	dev-util/gtk-doc-am
+	dev-util/gtk-doc
+	app-text/docbook-xml-dtd:4.1.2
 	>=dev-util/intltool-0.40
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
@@ -97,6 +104,7 @@ BDEPEND="
 	)
 	vala? ( $(vala_depend) )
 	test? (
+		>=dev-libs/jansson-2.7
 		$(python_gen_any_dep '
 			dev-python/dbus-python[${PYTHON_USEDEP}]
 			dev-python/pygobject:3[${PYTHON_USEDEP}]')
@@ -135,7 +143,6 @@ pkg_pretend() {
 			ewarn "Please note that if CONFIG_SYSFS_DEPRECATED_V2 is set in your kernel .config, NetworkManager will not work correctly."
 			ewarn "See https://bugs.gentoo.org/333639 for more info."
 		fi
-
 	fi
 }
 
@@ -157,8 +164,8 @@ src_prepare() {
 	DOC_CONTENTS="To modify system network connections without needing to enter the
 		root password, add your user account to the 'plugdev' group."
 
+	default
 	use vala && vala_src_prepare
-	gnome2_src_prepare
 
 	sed -i \
 		-e 's#/usr/bin/sed#/bin/sed#' \
@@ -167,114 +174,135 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local myconf=(
-		--disable-more-warnings
-		--disable-static
-		--localstatedir=/var
-		--with-runstatedir=/run
-		--disable-lto
-		--disable-qt
-		--without-netconfig
-		--with-dbus-sys-dir=/etc/dbus-1/system.d
-		$(multilib_native_with nmcli)
-		--with-udev-dir="$(get_udevdir)"
-		--with-config-plugins-default=keyfile
-		--with-iptables=/sbin/iptables
-		--with-nft=/sbin/nft
-		--with-ebpf=yes
-		$(multilib_native_enable concheck)
-		--with-nm-cloud-setup=$(multilib_is_native_abi && echo yes || echo no)
-		--with-crypto=$(usex nss nss gnutls)
-		# elogind lacks multilib for now, and consolekit doesn't require linking against, so we use it as a fake option
-		# This SHOULD be removable once elogind has that. We abuse the fact that 'consolekit' does nothing at buildtime.
-		# (There is no off switch, and we do not support upower.)
-		# bug #747358
-		--with-session-tracking=$(multilib_native_usex systemd systemd $(multilib_native_usex elogind elogind consolekit))
-		--with-suspend-resume=$(multilib_native_usex systemd systemd $(multilib_native_usex elogind elogind consolekit))
-		$(multilib_native_use_with audit libaudit)
-		$(multilib_native_use_enable bluetooth bluez5-dun)
-		--without-dhcpcanon
-		$(use_with dhclient)
-		$(use_with dhcpcd)
-		--with-config-dhcp-default=internal
-		$(multilib_native_use_enable introspection)
-		$(multilib_native_use_enable ppp)
-		--without-libpsl
-		$(multilib_native_use_with modemmanager modem-manager-1)
-		$(multilib_native_use_with ncurses nmtui)
-		$(multilib_native_use_with ofono)
-		$(multilib_native_use_enable ovs)
-		$(multilib_native_use_enable policykit polkit)
-		$(multilib_native_use_with resolvconf)
-		$(multilib_native_use_with selinux)
-		$(multilib_native_use_with systemd systemd-journal)
-		$(multilib_native_use_enable teamd teamdctl)
-		$(multilib_native_use_enable test tests)
-		$(multilib_native_use_enable vala)
-		--without-valgrind
-		$(multilib_native_use_with wifi iwd)
-		$(multilib_native_use_with wext)
-		$(multilib_native_use_enable wifi)
+	local emesonargs=(
+		--localstatedir="${EPREFIX}/var"
+
+		-Dsystemdsystemunitdir=$(systemd_get_systemunitdir)
+		-Dsystem_ca_path=/etc/ssl/certs
+		-Dudev_dir=$(get_udevdir)
+		-Ddbus_conf_dir=/usr/share/dbus-1/system.d
+		-Dkernel_firmware_dir=/lib/firmware
+		-Diptables=/sbin/iptables
+		-Dnft=/sbin/nft
+		-Ddnsmasq=/usr/sbin/dnsmasq
+		#-Ddnssec_trigger=
+
+		-Ddist_version=${PVR}
+		$(meson_native_use_bool policykit polkit)
+		$(meson_native_use_bool policykit config_auth_polkit_default)
+		-Dmodify_system=true
+		-Dpolkit_agent_helper_1=/usr/lib/polkit-1/polkit-agent-helper-1
+		$(meson_native_use_bool selinux)
+		$(meson_native_use_bool systemd systemd_journal)
+		-Dhostname_persist=gentoo
+		-Dlibaudit=$(multilib_native_usex audit)
+
+		$(meson_native_use_bool wext)
+		$(meson_native_use_bool wifi)
+		$(meson_native_use_bool iwd)
+		$(meson_native_use_bool ppp)
+		-Dpppd=/usr/sbin/pppd
+		$(meson_native_use_bool modemmanager modem_manager)
+		$(meson_native_use_bool ofono)
+		$(meson_native_use_bool concheck)
+		$(meson_native_use_bool teamd teamdctl)
+		$(meson_native_use_bool ovs)
+		$(meson_native_use_bool tools nmcli)
+		$(meson_native_use_bool tools nmtui)
+		$(meson_native_use_bool tools nm_cloud_setup)
+		$(meson_native_use_bool bluetooth bluez5_dun)
+		-Debpf=true
+
+		-Dconfig_plugins_default=keyfile
+		-Difcfg_rh=false
+		-Difupdown=false
+
+		$(meson_native_use_feature resolvconf)
+		-Dnetconfig=disable
+		-Dconfig_dns_rc_manager_default=symlink
+
+		$(meson_feature dhclient)
+		-Ddhcpcanon=disable
+		$(meson_feature dhcpcd)
+
+		$(meson_native_use_bool introspection)
+		$(meson_native_use_bool vala vapi)
+		$(meson_native_true docs)
+		-Dtests=$(multilib_native_usex test)
+		$(meson_native_true firewalld_zone)
+		-Dmore_asserts=0
+		$(meson_use debug more_logging)
+		-Dvalgrind=no
+		-Dvalgrind_suppressions=
+		-Dld_gc=false
+		$(meson_native_use_bool psl libpsl)
+		-Dqt=false
+
+		$(meson_use lto b_lto)
 	)
+
+	if multilib_is_native_abi && use systemd; then
+		emesonargs+=( -Dsession_tracking_consolekit=false )
+		emesonargs+=( -Dsession_tracking=systemd )
+		emesonargs+=( -Dsuspend_resume=systemd )
+	elif multilib_is_native_abi && use elogind; then
+		emesonargs+=( -Dsession_tracking_consolekit=false )
+		emesonargs+=( -Dsession_tracking=elogind )
+		emesonargs+=( -Dsuspend_resume=elogind )
+	else
+		emesonargs+=( -Dsession_tracking_consolekit=false )
+		emesonargs+=( -Dsession_tracking=no )
+		emesonargs+=( -Dsuspend_resume=auto )
+	fi
+
+	if multilib_is_native_abi && use syslog; then
+		emesonargs+=( -Dconfig_logging_backend_default=syslog )
+	elif multilib_is_native_abi && use systemd; then
+		emesonargs+=( -Dconfig_logging_backend_default=journal )
+	else
+		emesonargs+=( -Dconfig_logging_backend_default=default )
+	fi
+
+	if multilib_is_native_abi && use dhclient; then
+		emesonargs+=( -Dconfig_dhcp_default=dhclient )
+	elif multilib_is_native_abi && use dhcpcd; then
+		emesonargs+=( -Dconfig_dhcp_default=dhcpcd )
+	else
+		emesonargs+=( -Dconfig_dhcp_default=internal )
+	fi
+
+	if use nss; then
+		emesonargs+=( -Dcrypto=nss )
+	else
+		emesonargs+=( -Dcrypto=gnutls )
+	fi
 
 	# Same hack as net-dialup/pptpd to get proper plugin dir for ppp, bug #519986
 	if use ppp; then
 		local PPPD_VER=`best_version net-dialup/ppp`
 		PPPD_VER=${PPPD_VER#*/*-} #reduce it to ${PV}-${PR}
 		PPPD_VER=${PPPD_VER%%[_-]*} # main version without beta/pre/patch/revision
-		myconf+=( --with-pppd-plugin-dir=/usr/$(get_libdir)/pppd/${PPPD_VER} )
+		emesonargs+=( -Dpppd_plugin_dir=/usr/$(get_libdir)/pppd/${PPPD_VER} )
 	fi
 
-	# unit files directory needs to be passed only when systemd is enabled,
-	# otherwise systemd support is not disabled completely, bug #524534
-	use systemd && myconf+=( --with-systemdsystemunitdir="$(systemd_get_systemunitdir)" )
-
-	if multilib_is_native_abi; then
-		# work-around man out-of-source brokenness, must be done before configure
-		ln -s "${S}/docs" docs || die
-		ln -s "${S}/man" man || die
-	fi
-
-	ECONF_SOURCE=${S} gnome2_src_configure "${myconf[@]}"
-}
-
-multilib_src_compile() {
-	if multilib_is_native_abi; then
-		emake
-	else
-		local targets=(
-			src/libnm-client-impl/libnm.la
-		)
-		emake "${targets[@]}"
-	fi
+	meson_src_configure
 }
 
 multilib_src_test() {
 	if use test && multilib_is_native_abi; then
 		python_setup
-		virtx emake check
+		virtx meson_src_test
 	fi
 }
 
 multilib_src_install() {
-	if multilib_is_native_abi; then
-		# Install completions at proper place, bug #465100
-		gnome2_src_install completiondir="$(get_bashcompdir)"
-		insinto /usr/lib/NetworkManager/conf.d #702476
-		doins "${S}"/examples/nm-conf.d/31-mac-addr-change.conf
-	else
-		local targets=(
-			install-libLTLIBRARIES
-			install-libnmincludeHEADERS
-			install-nodist_libnmincludeHEADERS
-			install-pkgconfigDATA
-		)
-		emake DESTDIR="${D}" "${targets[@]}"
+	meson_src_install
+	if ! multilib_is_native_abi; then
+		rm -rf "${ED}"/{etc,usr/{bin,lib/NetworkManager,share},var}
 	fi
 }
 
 multilib_src_install_all() {
-	einstalldocs
 	! use systemd && readme.gentoo_create_doc
 
 	newinitd "${FILESDIR}/init.d.NetworkManager-r2" NetworkManager
@@ -296,6 +324,9 @@ multilib_src_install_all() {
 	insinto /usr/share/polkit-1/rules.d/
 	doins "${FILESDIR}/01-org.freedesktop.NetworkManager.settings.modify.system.rules"
 
+	insinto /usr/lib/NetworkManager/conf.d #702476
+	doins "${S}"/examples/nm-conf.d/31-mac-addr-change.conf
+
 	if use iwd; then
 		# This goes to $nmlibdir/conf.d/ and $nmlibdir is '${prefix}'/lib/$PACKAGE, thus always lib, not get_libdir
 		cat <<-EOF > "${ED}"/usr/lib/NetworkManager/conf.d/iwd.conf
@@ -304,12 +335,14 @@ multilib_src_install_all() {
 		EOF
 	fi
 
+	mv "${ED}"/usr/share/doc/{NetworkManager/examples/,${PF}} || die
+	rmdir "${ED}"/usr/share/doc/NetworkManager || die
+
 	# Empty
 	rmdir "${ED}"/var{/lib{/NetworkManager,},} || die
 }
 
 pkg_postinst() {
-	gnome2_pkg_postinst
 	systemd_reenable NetworkManager.service
 	! use systemd && readme.gentoo_print_elog
 
