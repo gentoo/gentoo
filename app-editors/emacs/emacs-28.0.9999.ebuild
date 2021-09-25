@@ -53,7 +53,7 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	gpm? ( sys-libs/gpm )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
 	jit? ( sys-devel/gcc:=[jit(-)] )
-	json? ( dev-libs/jansson )
+	json? ( dev-libs/jansson:= )
 	kerberos? ( virtual/krb5 )
 	lcms? ( media-libs/lcms:2 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
