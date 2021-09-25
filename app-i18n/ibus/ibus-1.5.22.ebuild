@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -102,6 +102,14 @@ src_prepare() {
 
 src_configure() {
 	local unicodedir="${EPREFIX}"/usr/share/unicode
+	local ucddir
+
+	if has_verson '<app-i18n/unicode-data-14.0.0-r1'; then
+		ucddir="${unicodedir}-data"
+	else
+		ucddir=${unicodedir}
+	fi
+
 	local python_conf=()
 	if use python; then
 		python_setup
@@ -126,7 +134,7 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_enable test tests) \
 		$(use_enable unicode unicode-dict) \
-		$(use_with unicode ucd-dir "${EPREFIX}/usr/share/unicode-data") \
+		$(use_with unicode ucd-dir "${ucddir}") \
 		$(use_enable vala) \
 		$(use_enable wayland) \
 		"${python_conf[@]}"
