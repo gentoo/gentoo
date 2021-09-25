@@ -20,7 +20,7 @@ CDEPEND="
 	sys-libs/zlib:0=
 	dev-libs/libpcre:3
 	>=dev-libs/cyrus-sasl-2.1.13:2
-	dev-libs/jansson
+	dev-libs/jansson:=
 	dev-libs/icu:0=
 	sys-fs/e2fsprogs
 	afs? ( net-fs/openafs )
