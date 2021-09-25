@@ -16,7 +16,7 @@ if [[ ${PV} = *_rc* ]]; then
 	SRC_URI="mirror://samba/rc/${MY_P}.tar.gz"
 else
 	SRC_URI="mirror://samba/stable/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 fi
 S="${WORKDIR}/${MY_P}"
 
@@ -68,23 +68,19 @@ COMMON_DEPEND="
 	>=net-libs/gnutls-3.4.7[${MULTILIB_USEDEP}]
 	net-libs/libnsl:=[${MULTILIB_USEDEP}]
 	sys-libs/e2fsprogs-libs[${MULTILIB_USEDEP}]
-	>=sys-libs/ldb-2.3.0[ldap(+)?,${MULTILIB_USEDEP}]
-	<sys-libs/ldb-2.4.0[ldap(+)?,${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-2.2.1[ldap(+)?,${MULTILIB_USEDEP}]
+	<sys-libs/ldb-2.3.0[ldap(+)?,${MULTILIB_USEDEP}]
 	sys-libs/libcap[${MULTILIB_USEDEP}]
 	sys-libs/liburing:=[${MULTILIB_USEDEP}]
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
-	>=sys-libs/talloc-2.3.2[${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.3.1[${MULTILIB_USEDEP}]
 	>=sys-libs/tdb-1.4.3[${MULTILIB_USEDEP}]
 	>=sys-libs/tevent-0.10.2[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	virtual/libiconv
 	$(python_gen_cond_dep "
-		addc? (
-			dev-python/dnspython:=[\${PYTHON_USEDEP}]
-			dev-python/markdown[\${PYTHON_USEDEP}]
-		)
 		addns? (
 			dev-python/dnspython:=[\${PYTHON_USEDEP}]
 			net-dns/bind-tools[gssapi]
@@ -99,7 +95,7 @@ COMMON_DEPEND="
 	dmapi? ( sys-apps/dmapi )
 	fam? ( virtual/fam )
 	gpg? ( app-crypt/gpgme )
-	json? ( dev-libs/jansson )
+	json? ( dev-libs/jansson:= )
 	ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	pam? ( sys-libs/pam )
 	python? (
