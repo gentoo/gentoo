@@ -25,7 +25,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/openssl:=
 	dev-db/sqlite:3
 	dev-libs/glib:2
-	dev-libs/jansson
+	dev-libs/jansson:=
 	dev-libs/libevent:=
 	net-libs/libsearpc[${PYTHON_SINGLE_USEDEP}]
 	net-misc/curl
