@@ -15,7 +15,6 @@ SLOT="0/${PV%%.*}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 IUSE_VOICEMAIL_STORAGE=(
-	+voicemail_storage_file
 	voicemail_storage_odbc
 	voicemail_storage_imap
 )
@@ -23,7 +22,6 @@ IUSE="${IUSE_VOICEMAIL_STORAGE[*]} alsa blocks bluetooth calendar +caps cluster 
 IUSE_EXPAND="VOICEMAIL_STORAGE"
 REQUIRED_USE="gtalk? ( xmpp )
 	lua? ( ${LUA_REQUIRED_USE} )
-	^^ ( ${IUSE_VOICEMAIL_STORAGE[*]//+/} )
 	voicemail_storage_odbc? ( odbc )
 "
 
@@ -35,7 +33,7 @@ DEPEND="acct-user/asterisk
 	acct-group/asterisk
 	dev-db/sqlite:3
 	dev-libs/popt
-	>=dev-libs/jansson-2.11
+	>=dev-libs/jansson-2.11:=
 	dev-libs/libedit
 	dev-libs/libxml2:2
 	dev-libs/libxslt
@@ -251,9 +249,10 @@ src_configure() {
 	_use_select xmpp         res_xmpp
 
 	# Voicemail storage ...
+	_menuselect --enable app_voicemail menuselect.makeopts
 	for vmst in "${IUSE_VOICEMAIL_STORAGE[@]}"; do
 		if use "${vmst#+}"; then
-			_menuselect --enable "$(echo "${vmst##*_}" | tr '[:lower:]' '[:upper:]')_STORAGE" menuselect.makeopts
+			_menuselect --enable "app_voicemail_${vmst##*_}" menuselect.makeopts
 		fi
 	done
 
@@ -286,7 +285,7 @@ src_install() {
 	diropts -m 0750 -o root -g asterisk
 	dodir /etc/asterisk
 
-	emake "${_make_args[@]}" install install-configs
+	emake "${_make_args[@]}" install install-headers install-configs
 
 	fowners asterisk: /var/lib/asterisk/astdb
 
