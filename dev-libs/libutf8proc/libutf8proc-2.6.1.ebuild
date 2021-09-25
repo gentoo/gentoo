@@ -50,16 +50,7 @@ src_install() {
 }
 
 src_test() {
-	local unicodedir="${EPREFIX}"/usr/share/unicode
-	local ucddir
-
-	if has_verson '<app-i18n/unicode-data-14.0.0-r1'; then
-		ucddir="${unicodedir}-data"
-	else
-		ucddir=${unicodedir}
-	fi
-
-	cp "${ucddir}"/{DerivedCoreProperties,{Normalization,auxiliary/GraphemeBreak}Test}.txt data || die
+	cp "${EPREFIX}"/usr/share/unicode-data/{DerivedCoreProperties,{Normalization,auxiliary/GraphemeBreak}Test}.txt data || die
 
 	emake CC="$(tc-getCC)" check
 }
