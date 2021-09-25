@@ -2,10 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>chainsaw@gentoo.org</email>
-		<name>Tony Vroon</name>
+		<email>ajak@gentoo.org</email>
+		<name>John Helmert III</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">ccMSC/ckb</remote-id>
+		<remote-id type="github">ckb-next/ckb-next</remote-id>
 	</upstream>
 </pkgmetadata>
