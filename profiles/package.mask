@@ -104,16 +104,6 @@ sys-devel/automake:1.11
 # Migration to it is expected for GNOME 42, NOT to be unmasked with GNOME 41.
 net-libs/libsoup:3.0
 
-# Gnome Team <gnome@gentoo.org> (2021-09-13)
-# GNOME 41 mask, bug #812986
->=dev-util/gdbus-codegen-2.69
->=dev-util/glib-utils-2.69
->=dev-libs/glib-2.69
->=net-libs/glib-networking-2.69
->=dev-libs/gobject-introspection-common-1.69
->=dev-libs/gobject-introspection-1.69
->=dev-python/pygobject-3.41
-
 # Ionen Wolkens <ionen@gentoo.org> (2021-09-12)
 # No reverse dependencies, stuck on EAPI-5.
 # Replaced by dev-libs/spsdeclib.
