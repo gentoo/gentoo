@@ -24,7 +24,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0/dev"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="component-build cups cpu_flags_arm_neon debug +hangouts headless +js-type-check kerberos +official official-pgo pgo pic +proprietary-codecs pulseaudio screencast selinux +suid +system-ffmpeg +system-harfbuzz +system-icu vaapi wayland widevine"
+IUSE="component-build cups cpu_flags_arm_neon debug +hangouts headless +js-type-check kerberos lto +official official-pgo pgo pic +proprietary-codecs pulseaudio screencast selinux +suid +system-ffmpeg +system-harfbuzz +system-icu vaapi wayland widevine"
 REQUIRED_USE="
 	component-build? ( !suid )
 	screencast? ( wayland )
@@ -106,6 +106,12 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 "
+
+CLANG_LLD_DEPS="
+	>=sys-devel/clang-12
+	>=sys-devel/lld-12
+"
+
 # dev-vcs/git - https://bugs.gentoo.org/593476
 BDEPEND="
 	${PYTHON_DEPS}
@@ -127,13 +133,10 @@ BDEPEND="
 	pgo? (
 		>=dev-python/selenium-3.141.0
 		>=dev-util/web_page_replay_go-20210603
-		>=sys-devel/clang-12
-		>=sys-devel/lld-12
+		${CLANG_LLD_DEPS}
 	)
-	official-pgo? (
-		>=sys-devel/clang-12
-		>=sys-devel/lld-12
-	)
+	official-pgo? ( ${CLANG_LLD_DEPS} )
+	lto? ( ${CLANG_LLD_DEPS} )
 "
 
 # These are intended for ebuild maintainer use to force clang if GCC is broken.
@@ -195,6 +198,14 @@ python_check_deps() {
 	has_version -b "dev-python/setuptools[${PYTHON_USEDEP}]"
 }
 
+needs_clang() {
+	[[ ${CHROMIUM_FORCE_CLANG} == yes ]] || use pgo || use official-pgo || use lto
+}
+
+needs_lld() {
+	use pgo || use official-pgo || use lto
+}
+
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		local -x CPP="$(tc-getCXX) -E"
@@ -204,7 +215,7 @@ pre_build_checks() {
 		if use pgo && tc-is-cross-compiler; then
 			die "The pgo USE flag cannot be used when cross-compiling. You can try official-pgo instead."
 		fi
-		if [[ ${CHROMIUM_FORCE_CLANG} == yes ]] || use pgo || use official-pgo || tc-is-clang; then
+		if needs_clang || tc-is-clang; then
 			CPP="${CHOST}-clang++ -E"
 			if ! ver_test "$(clang-major-version)" -ge 12; then
 				die "At least clang 12 is required"
@@ -215,9 +226,9 @@ pre_build_checks() {
 	# Check build requirements, bug #541816 and bug #471810 .
 	CHECKREQS_MEMORY="4G"
 	CHECKREQS_DISK_BUILD="9G"
-	if use pgo || use official-pgo; then
+	if use pgo || use official-pgo || use lto; then
 		CHECKREQS_MEMORY="9G"
-		if use pgo; then
+		if use pgo || use lto; then
 			CHECKREQS_DISK_BUILD="16G"
 		fi
 	fi
@@ -562,7 +573,7 @@ chromium_configure() {
 	# Make sure the build system will use the right tools, bug #340795.
 	tc-export AR CC CXX NM
 
-	if ( [[ ${CHROMIUM_FORCE_CLANG} == yes ]] || use pgo || use official-pgo ) && ! tc-is-clang; then
+	if needs_clang && ! tc-is-clang; then
 		# Force clang since gcc is pretty broken at the moment.
 		CC=${CHOST}-clang
 		CXX=${CHOST}-clang++
@@ -578,7 +589,7 @@ chromium_configure() {
 		myconf_gn+=" is_clang=false"
 	fi
 
-	if ( use pgo || use official-pgo ) && ! tc-ld-is-lld; then
+	if needs_lld && ! tc-ld-is-lld; then
 		LD=ld.lld
 	fi
 
@@ -586,6 +597,10 @@ chromium_configure() {
 		myconf_gn+=" use_lld=true"
 	else
 		myconf_gn+=" use_lld=false"
+	fi
+
+	if use lto; then
+		AR=llvm-ar
 	fi
 
 	# Define a custom toolchain for GN
@@ -805,7 +820,8 @@ chromium_configure() {
 
 	# Enable official builds
 	myconf_gn+=" is_official_build=$(usex official true false)"
-	myconf_gn+=" use_thin_lto=false"
+	myconf_gn+=" use_thin_lto=$(usex lto true false)"
+	myconf_gn+=" thin_lto_enable_optimizations=$(usex lto true false)"
 	if use official; then
 		# Allow building against system libraries in official builds
 		sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \

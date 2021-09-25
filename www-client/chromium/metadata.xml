@@ -11,6 +11,7 @@
 		<flag name="debug">Enable DCHECK feature with severity configurable at runtime. Mostly intended for debugging and development, NOT RECOMMENDED for general use.</flag>
 		<flag name="headless">Build Ozone only with headless backend, NOT RECOMMENDED for general use.</flag>
 		<flag name="hangouts">Enable support for Google Hangouts features such as screen sharing</flag>
+		<flag name="lto">Build with Link Time Optimizations (via clang's ThinLTO)</flag>
 		<flag name="official">Enable Official build instead of Developer build.</flag>
 		<flag name="official-pgo">Build with Profile Guided Optimizations using official profiles (1-stage compilation)</flag>
 		<flag name="pgo">Build with Profile Guided Optimizations (2-stage compilation)</flag>
