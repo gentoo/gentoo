@@ -20,7 +20,7 @@ RDEPEND="
 	>=net-libs/libmnl-1.0.4:0=
 	>=net-libs/libnftnl-1.1.9:0=
 	gmp? ( dev-libs/gmp:0= )
-	json? ( dev-libs/jansson )
+	json? ( dev-libs/jansson:= )
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
 	xtables? ( >=net-firewall/iptables-1.6.1 )
