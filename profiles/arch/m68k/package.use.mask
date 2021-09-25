@@ -30,19 +30,24 @@ dev-python/cython doc
 dev-python/cffi doc
 dev-python/cssselect doc
 dev-python/execnet doc
+dev-python/flake8 doc
 dev-python/greenlet doc
 dev-python/jinja doc
 dev-python/lxml doc
 dev-python/py doc
 dev-python/pyasn1 doc
+dev-python/pycodestyle doc
 dev-python/pygments doc
+dev-python/pylint doc
 dev-python/pytest-cov doc
 dev-python/smartypants doc
+dev-python/wrapt doc
 
 # James Le Cuirot <chewi@gentoo.org> (2021-08-21)
 # Avoid lots of unkeyworded dependencies of Python tests.
 dev-python/argcomplete test
 dev-python/distlib test
+dev-python/isort test
 dev-python/nose test
 dev-python/requests test
 dev-python/setuptools test
