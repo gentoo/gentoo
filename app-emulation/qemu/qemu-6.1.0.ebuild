@@ -241,8 +241,8 @@ BDEPEND="
 	sys-apps/texinfo
 	virtual/pkgconfig
 	doc? (
-		dev-python/sphinx
-		dev-python/sphinx_rtd_theme
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	)
 	gtk? ( nls? ( sys-devel/gettext ) )
 	test? (
