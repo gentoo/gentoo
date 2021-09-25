@@ -201,16 +201,16 @@ _bzr_update() {
 # bzr branch or bzr pull, depending on whether there is an existing
 # working copy.
 bzr_fetch() {
-	local repo_dir branch_dir
-	local save_sandbox_write=${SANDBOX_WRITE} save_umask
+	local repo_dir branch_dir save_umask
 
 	[[ -n ${EBZR_REPO_URI} ]] || die "${ECLASS}: EBZR_REPO_URI is empty"
 
-	if [[ ! -d ${EBZR_STORE_DIR} ]] ; then
-		addwrite /
-		mkdir -p "${EBZR_STORE_DIR}" \
-			|| die "${ECLASS}: can't mkdir ${EBZR_STORE_DIR}"
-		SANDBOX_WRITE=${save_sandbox_write}
+	if [[ ! -d ${EBZR_STORE_DIR} ]]; then
+		(
+			addwrite /
+			mkdir -p "${EBZR_STORE_DIR}" \
+				|| die "${ECLASS}: can't mkdir ${EBZR_STORE_DIR}"
+		)
 	fi
 
 	pushd "${EBZR_STORE_DIR}" > /dev/null \
@@ -220,7 +220,7 @@ bzr_fetch() {
 	branch_dir=${repo_dir}${EBZR_BRANCH:+/${EBZR_BRANCH}}
 
 	if [[ -n ${EVCS_UMASK} ]]; then
-		save_umask=$(umask)
+		save_umask=$(umask) || die
 		umask "${EVCS_UMASK}" || die
 	fi
 	addwrite "${EBZR_STORE_DIR}"
@@ -248,8 +248,6 @@ bzr_fetch() {
 		_bzr_update "${EBZR_REPO_URI}" "${branch_dir}"
 	fi
 
-	# Restore sandbox environment and umask
-	SANDBOX_WRITE=${save_sandbox_write}
 	if [[ -n ${save_umask} ]]; then
 		umask "${save_umask}" || die
 	fi
