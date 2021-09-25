@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: bzr.eclass
@@ -9,7 +9,7 @@
 # Mark Lee <bzr-gentoo-overlay@lazymalevolence.com>
 # Ulrich Müller <ulm@gentoo.org>
 # Christian Faulhammer <fauli@gentoo.org>
-# @SUPPORTED_EAPIS: 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: generic fetching functions for the Bazaar VCS
 # @DESCRIPTION:
 # The bzr.eclass provides functions to fetch and unpack sources from
@@ -21,19 +21,14 @@
 
 EBZR="bzr.eclass"
 
-PROPERTIES+=" live"
-
-if [[ ${EBZR_REPO_URI%%:*} = sftp ]]; then
-	DEPEND=">=dev-vcs/bzr-2.6.0[sftp]"
-else
-	DEPEND=">=dev-vcs/bzr-2.6.0"
-fi
-
-case ${EAPI:-0} in
-	2|3|4|5|6) ;;
-	7) BDEPEND="${DEPEND}"; DEPEND="" ;;
+case ${EAPI} in
+	7|8) ;;
 	*) die "${EBZR}: EAPI ${EAPI:-0} is not supported" ;;
 esac
+
+PROPERTIES+=" live"
+
+BDEPEND="dev-vcs/breezy"
 
 EXPORT_FUNCTIONS src_unpack
 
@@ -50,32 +45,32 @@ EXPORT_FUNCTIONS src_unpack
 # @ECLASS-VARIABLE: EBZR_INIT_REPO_CMD
 # @DESCRIPTION:
 # The Bazaar command to initialise a shared repository.
-: ${EBZR_INIT_REPO_CMD:="bzr init-repository --no-trees"}
+: ${EBZR_INIT_REPO_CMD:="brz init-shared-repository --no-trees"}
 
 # @ECLASS-VARIABLE: EBZR_FETCH_CMD
 # @DESCRIPTION:
 # The Bazaar command to fetch the sources.
-: ${EBZR_FETCH_CMD:="bzr branch --no-tree"}
+: ${EBZR_FETCH_CMD:="brz branch --no-tree"}
 
 # @ECLASS-VARIABLE: EBZR_UPDATE_CMD
 # @DESCRIPTION:
 # The Bazaar command to update the sources.
-: ${EBZR_UPDATE_CMD:="bzr pull --overwrite-tags"}
+: ${EBZR_UPDATE_CMD:="brz pull --overwrite-tags"}
 
 # @ECLASS-VARIABLE: EBZR_EXPORT_CMD
 # @DESCRIPTION:
 # The Bazaar command to export a branch.
-: ${EBZR_EXPORT_CMD:="bzr export"}
+: ${EBZR_EXPORT_CMD:="brz export"}
 
 # @ECLASS-VARIABLE: EBZR_CHECKOUT_CMD
 # @DESCRIPTION:
 # The Bazaar command to checkout a branch.
-: ${EBZR_CHECKOUT_CMD:="bzr checkout --lightweight -q"}
+: ${EBZR_CHECKOUT_CMD:="brz checkout --lightweight -q"}
 
 # @ECLASS-VARIABLE: EBZR_REVNO_CMD
 # @DESCRIPTION:
 # The Bazaar command to list a revision number of the branch.
-: ${EBZR_REVNO_CMD:="bzr revno"}
+: ${EBZR_REVNO_CMD:="brz revno"}
 
 # @ECLASS-VARIABLE: EBZR_OPTIONS
 # @DEFAULT_UNSET
@@ -87,9 +82,6 @@ EXPORT_FUNCTIONS src_unpack
 # @REQUIRED
 # @DESCRIPTION:
 # The repository URI for the source package.
-#
-# Note: If the ebuild uses an sftp:// URI, then the eclass will depend
-# on dev-vcs/bzr[sftp].
 
 # @ECLASS-VARIABLE: EBZR_INITIAL_URI
 # @DEFAULT_UNSET
@@ -130,8 +122,7 @@ EXPORT_FUNCTIONS src_unpack
 # @ECLASS-VARIABLE: EBZR_REVISION
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Revision to fetch, defaults to the latest
-# (see http://bazaar-vcs.org/BzrRevisionSpec or bzr help revisionspec).
+# Revision to fetch, defaults to the latest (see brz help revisionspec).
 
 # @ECLASS-VARIABLE: EBZR_OFFLINE
 # @DESCRIPTION:
