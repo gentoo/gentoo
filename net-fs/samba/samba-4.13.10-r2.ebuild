@@ -95,7 +95,7 @@ COMMON_DEPEND="
 	dmapi? ( sys-apps/dmapi )
 	fam? ( virtual/fam )
 	gpg? ( app-crypt/gpgme )
-	json? ( dev-libs/jansson )
+	json? ( dev-libs/jansson:= )
 	ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	pam? ( sys-libs/pam )
 	python? (
