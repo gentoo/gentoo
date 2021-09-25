@@ -33,7 +33,7 @@ DEPEND="acct-user/asterisk
 	acct-group/asterisk
 	dev-db/sqlite:3
 	dev-libs/popt
-	>=dev-libs/jansson-2.11
+	>=dev-libs/jansson-2.11:=
 	dev-libs/libedit
 	dev-libs/libxml2:2
 	dev-libs/libxslt
