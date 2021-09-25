@@ -158,8 +158,8 @@ EXPORT_FUNCTIONS src_unpack
 _bzr_initial_fetch() {
 	local repo_uri=$1 branch_dir=$2
 
-	if [[ -n "${EBZR_OFFLINE}" ]]; then
-		ewarn "EBZR_OFFLINE cannot be used when there is no local branch yet."
+	if [[ -n ${EBZR_OFFLINE} ]]; then
+		die "EBZR_OFFLINE cannot be used when there is no local branch yet."
 	fi
 
 	# fetch branch
@@ -179,7 +179,7 @@ _bzr_initial_fetch() {
 _bzr_update() {
 	local repo_uri=$1 branch_dir=$2
 
-	if [[ -n "${EBZR_OFFLINE}" ]]; then
+	if [[ -n ${EBZR_OFFLINE} ]]; then
 		einfo "skipping bzr pull -->"
 		einfo "   repository: ${repo_uri}"
 	else
@@ -241,7 +241,6 @@ bzr_fetch() {
 			_bzr_initial_fetch "${EBZR_INITIAL_URI}" "${branch_dir}"
 			if [[ ${EBZR_REPO_URI} != "${EBZR_INITIAL_URI}" ]]; then
 				EBZR_UPDATE_CMD="${EBZR_UPDATE_CMD} --remember --overwrite" \
-					EBZR_OFFLINE="" \
 					bzr_update "${EBZR_REPO_URI}" "${branch_dir}"
 			fi
 		fi
