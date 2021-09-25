@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=BOBTFISH
 DIST_VERSION=1.000031
@@ -12,15 +12,13 @@ DESCRIPTION="Convert MultiMarkdown syntax to (X)HTML"
 SLOT="0"
 LICENSE="BSD"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Digest-MD5
 	virtual/perl-Getopt-Long
 	virtual/perl-Text-Balanced
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	test? (
 		virtual/perl-Test-Simple
 		dev-perl/Text-Diff
