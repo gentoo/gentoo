@@ -43,8 +43,17 @@ src_prepare() {
 }
 
 src_configure() {
+	local unicodedir="${EPREFIX}"/usr/share/unicode
+	local ucddir
+
+	if has_verson '<app-i18n/unicode-data-14.0.0-r1'; then
+		ucddir="${unicodedir}-data"
+	else
+		ucddir=${unicodedir}
+	fi
+
 	local emesonargs=(
-		-Ducd_path="${EPREFIX}/usr/share/unicode-data"
+		-Ducd_path="${ucddir}"
 		$(meson_use debug dbg)
 		$(meson_use gtk-doc docs)
 		$(meson_use introspection gir)
