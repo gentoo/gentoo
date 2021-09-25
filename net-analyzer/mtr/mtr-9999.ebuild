@@ -20,7 +20,7 @@ RDEPEND="
 		dev-libs/glib:2
 		x11-libs/gtk+:3
 	)
-	jansson? ( dev-libs/jansson )
+	jansson? ( dev-libs/jansson:= )
 	ncurses? ( sys-libs/ncurses:0= )
 "
 DEPEND="${RDEPEND}"
