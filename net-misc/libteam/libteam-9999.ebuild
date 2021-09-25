@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE="dbus debug examples static-libs +syslog zmq"
 
-DEPEND=">=dev-libs/jansson-2.4
+DEPEND=">=dev-libs/jansson-2.4:=
 	dev-libs/libdaemon
 	>=dev-libs/libnl-3.2.19[utils]
 	dbus? ( sys-apps/dbus )
