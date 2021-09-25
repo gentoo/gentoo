@@ -14,7 +14,7 @@ KEYWORDS="amd64"
 
 DEPEND="
 	app-arch/snappy
-	>=dev-libs/jansson-2.3
+	>=dev-libs/jansson-2.3:=
 	sys-libs/zlib"
 	RDEPEND="${DEPEND}"
 
