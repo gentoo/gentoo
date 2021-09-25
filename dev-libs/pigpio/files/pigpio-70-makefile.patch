@@ -92,7 +92,7 @@
  
  uninstall:
  	rm -f $(DESTDIR)$(includedir)/pigpio.h
-@@ -136,22 +131,13 @@
+@@ -136,22 +131,16 @@
  endif
  
  $(LIB1):	$(OBJ1)
@@ -101,6 +101,7 @@
 -	$(STRIPLIB) $(LIB1)
 -	$(SIZE)     $(LIB1)
 +	$(SHLIB) $(LDFLAGS) -Wl,-soname,$(LIB1).$(SOVERSION) -o $(LIB1).$(LIBVERSION) $(OBJ1)
++	ln -sf $(LIB1).$(LIBVERSION) $(LIB1)
  
  $(LIB2):	$(OBJ2)
 -	$(SHLIB) -pthread -Wl,-soname,$(LIB2).$(SOVERSION) -o $(LIB2).$(SOVERSION) $(OBJ2)
@@ -108,13 +109,15 @@
 -	$(STRIPLIB) $(LIB2)
 -	$(SIZE)     $(LIB2)
 +	$(SHLIB) $(LDFLAGS) -Wl,-soname,$(LIB2).$(SOVERSION) -o $(LIB2).$(LIBVERSION) $(OBJ2)
++	ln -sf $(LIB2).$(LIBVERSION) $(LIB2)
  
  $(LIB3):	$(OBJ3)
 -	$(SHLIB) -pthread -Wl,-soname,$(LIB3).$(SOVERSION) -o $(LIB3).$(SOVERSION) $(OBJ3)
 -	ln -fs $(LIB3).$(SOVERSION) $(LIB3)
 -	$(STRIPLIB) $(LIB3)
 -	$(SIZE)     $(LIB3)
-+	$(SHLIB) $(LDFLAGS) -Wl,-soname,$(LIB2).$(SOVERSION) -o $(LIB3).$(LIBVERSION) $(OBJ3)
++	$(SHLIB) $(LDFLAGS) -Wl,-soname,$(LIB3).$(SOVERSION) -o $(LIB3).$(LIBVERSION) $(OBJ3)
++	ln -sf $(LIB3).$(LIBVERSION) $(LIB3)
  
  # generated using gcc -MM *.c
  
