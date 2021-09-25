@@ -18,7 +18,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.26.0
-	>=dev-libs/jansson-2.2.1"
+	>=dev-libs/jansson-2.2.1:="
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
 		dev-python/simplejson[${PYTHON_USEDEP}]
