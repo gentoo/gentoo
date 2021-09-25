@@ -24,7 +24,8 @@ BDEPEND="
 	dev-util/glib-utils
 	sys-devel/gettext
 	virtual/pkgconfig
-	gtk-doc? ( dev-util/gtk-doc )
+	gtk-doc? ( dev-util/gtk-doc
+		app-text/docbook-xml-dtd:4.1.2 )
 "
 
 # The only existing test is broken
