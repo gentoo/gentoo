@@ -165,7 +165,7 @@ multilib_src_configure() {
 
 		# Odd build system, also see bug #582130
 		run_in_build_dir libxml2_configure \
-			"--with-python=${ESYSROOT}/${PYTHON}"
+			"--with-python=${EPYTHON}" \
 			"--with-python-install-dir=$(python_get_sitedir)"
 	}
 
