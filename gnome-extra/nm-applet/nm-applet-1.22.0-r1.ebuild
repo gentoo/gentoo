@@ -28,7 +28,7 @@ RDEPEND="
 	)
 	modemmanager? ( net-misc/modemmanager )
 	selinux? ( sys-libs/libselinux )
-	teamd? ( >=dev-libs/jansson-2.7 )
+	teamd? ( >=dev-libs/jansson-2.7:= )
 
 	virtual/freedesktop-icon-theme
 "
