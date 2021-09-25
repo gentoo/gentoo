@@ -108,6 +108,13 @@ python_prepare_all() {
 	sed -e "s:== 'levy_stable':in ('levy_stable', 'crystalball', 'ncf'):" \
 		-i scipy/stats/tests/test_continuous_basic.py || die
 
+	if has_version ">=sci-libs/lapack-3.10"; then
+		sed -e 's:test_sort(:_&:' \
+			-i scipy/linalg/tests/test_decomp.py || die
+		sed -e 's:test_solve_discrete_are:_&:' \
+			-i scipy/linalg/tests/test_solvers.py || die
+	fi
+
 	distutils-r1_python_prepare_all
 }
 
