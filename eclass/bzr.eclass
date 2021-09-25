@@ -19,11 +19,9 @@
 # Note: Just set EBZR_REPO_URI to the URI of the branch and src_unpack()
 # of this eclass will export the branch to ${WORKDIR}/${P}.
 
-EBZR="bzr.eclass"
-
 case ${EAPI} in
 	7|8) ;;
-	*) die "${EBZR}: EAPI ${EAPI:-0} is not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} is not supported" ;;
 esac
 
 PROPERTIES+=" live"
@@ -33,6 +31,7 @@ BDEPEND="dev-vcs/breezy"
 EXPORT_FUNCTIONS src_unpack
 
 # @ECLASS-VARIABLE: EBZR_STORE_DIR
+# @USER_VARIABLE
 # @DESCRIPTION:
 # The directory to store all fetched Bazaar live sources.
 : ${EBZR_STORE_DIR:=${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}/bzr-src}
@@ -125,6 +124,7 @@ EXPORT_FUNCTIONS src_unpack
 # Revision to fetch, defaults to the latest (see brz help revisionspec).
 
 # @ECLASS-VARIABLE: EBZR_OFFLINE
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Set this variable to a non-empty value to disable automatic updating
 # of a bzr source tree.  This is intended to be set outside the ebuild
@@ -132,6 +132,7 @@ EXPORT_FUNCTIONS src_unpack
 : ${EBZR_OFFLINE=${EVCS_OFFLINE}}
 
 # @ECLASS-VARIABLE: EVCS_UMASK
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this variable to a custom umask.  This is intended to be set by
@@ -148,12 +149,13 @@ EXPORT_FUNCTIONS src_unpack
 # If this variable is set to a non-empty value, EBZR_CHECKOUT_CMD will
 # be used instead of EBZR_EXPORT_CMD to copy the sources to WORKDIR.
 
-# @FUNCTION: bzr_initial_fetch
+# @FUNCTION: _bzr_initial_fetch
 # @USAGE: <repository URI> <branch directory>
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function, retrieves the source code from a repository for the
 # first time, using ${EBZR_FETCH_CMD}.
-bzr_initial_fetch() {
+_bzr_initial_fetch() {
 	local repo_uri=$1 branch_dir=$2
 
 	if [[ -n "${EBZR_OFFLINE}" ]]; then
@@ -165,15 +167,16 @@ bzr_initial_fetch() {
 	einfo "   repository: ${repo_uri} => ${branch_dir}"
 
 	${EBZR_FETCH_CMD} ${EBZR_OPTIONS} "${repo_uri}" "${branch_dir}" \
-		|| die "${EBZR}: can't branch from ${repo_uri}"
+		|| die "${ECLASS}: can't branch from ${repo_uri}"
 }
 
-# @FUNCTION: bzr_update
+# @FUNCTION: _bzr_update
 # @USAGE: <repository URI> <branch directory>
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function, updates the source code from a repository, using
 # ${EBZR_UPDATE_CMD}.
-bzr_update() {
+_bzr_update() {
 	local repo_uri=$1 branch_dir=$2
 
 	if [[ -n "${EBZR_OFFLINE}" ]]; then
@@ -185,10 +188,10 @@ bzr_update() {
 		einfo "   repository: ${repo_uri}"
 
 		pushd "${branch_dir}" > /dev/null \
-			|| die "${EBZR}: can't chdir to ${branch_dir}"
+			|| die "${ECLASS}: can't chdir to ${branch_dir}"
 		${EBZR_UPDATE_CMD} ${EBZR_OPTIONS} "${repo_uri}" \
-			|| die "${EBZR}: can't pull from ${repo_uri}"
-		popd > /dev/null || die "${EBZR}: popd failed"
+			|| die "${ECLASS}: can't pull from ${repo_uri}"
+		popd > /dev/null || die "${ECLASS}: popd failed"
 	fi
 }
 
@@ -201,17 +204,17 @@ bzr_fetch() {
 	local repo_dir branch_dir
 	local save_sandbox_write=${SANDBOX_WRITE} save_umask
 
-	[[ -n ${EBZR_REPO_URI} ]] || die "${EBZR}: EBZR_REPO_URI is empty"
+	[[ -n ${EBZR_REPO_URI} ]] || die "${ECLASS}: EBZR_REPO_URI is empty"
 
 	if [[ ! -d ${EBZR_STORE_DIR} ]] ; then
 		addwrite /
 		mkdir -p "${EBZR_STORE_DIR}" \
-			|| die "${EBZR}: can't mkdir ${EBZR_STORE_DIR}"
+			|| die "${ECLASS}: can't mkdir ${EBZR_STORE_DIR}"
 		SANDBOX_WRITE=${save_sandbox_write}
 	fi
 
 	pushd "${EBZR_STORE_DIR}" > /dev/null \
-		|| die "${EBZR}: can't chdir to ${EBZR_STORE_DIR}"
+		|| die "${ECLASS}: can't chdir to ${EBZR_STORE_DIR}"
 
 	repo_dir=${EBZR_STORE_DIR}/${EBZR_PROJECT}
 	branch_dir=${repo_dir}${EBZR_BRANCH:+/${EBZR_BRANCH}}
@@ -226,16 +229,16 @@ bzr_fetch() {
 		if [[ ${repo_dir} != "${branch_dir}" && ! -d ${repo_dir}/.bzr ]]; then
 			einfo "creating shared bzr repository: ${repo_dir}"
 			${EBZR_INIT_REPO_CMD} "${repo_dir}" \
-				|| die "${EBZR}: can't create shared repository"
+				|| die "${ECLASS}: can't create shared repository"
 		fi
 
 		if [[ -z ${EBZR_INITIAL_URI} ]]; then
-			bzr_initial_fetch "${EBZR_REPO_URI}" "${branch_dir}"
+			_bzr_initial_fetch "${EBZR_REPO_URI}" "${branch_dir}"
 		else
 			# Workaround for faster initial download. This clones the
 			# branch from a fast server (which may be out of date), and
 			# subsequently pulls from the slow original repository.
-			bzr_initial_fetch "${EBZR_INITIAL_URI}" "${branch_dir}"
+			_bzr_initial_fetch "${EBZR_INITIAL_URI}" "${branch_dir}"
 			if [[ ${EBZR_REPO_URI} != "${EBZR_INITIAL_URI}" ]]; then
 				EBZR_UPDATE_CMD="${EBZR_UPDATE_CMD} --remember --overwrite" \
 					EBZR_OFFLINE="" \
@@ -243,7 +246,7 @@ bzr_fetch() {
 			fi
 		fi
 	else
-		bzr_update "${EBZR_REPO_URI}" "${branch_dir}"
+		_bzr_update "${EBZR_REPO_URI}" "${branch_dir}"
 	fi
 
 	# Restore sandbox environment and umask
@@ -252,7 +255,7 @@ bzr_fetch() {
 		umask "${save_umask}" || die
 	fi
 
-	cd "${branch_dir}" || die "${EBZR}: can't chdir to ${branch_dir}"
+	cd "${branch_dir}" || die "${ECLASS}: can't chdir to ${branch_dir}"
 
 	# Save revision number in environment. #311101
 	export EBZR_REVNO=$(${EBZR_REVNO_CMD})
@@ -260,16 +263,16 @@ bzr_fetch() {
 	if [[ -n ${EBZR_WORKDIR_CHECKOUT} ]]; then
 		einfo "checking out ..."
 		${EBZR_CHECKOUT_CMD} ${EBZR_REVISION:+-r ${EBZR_REVISION}} \
-			. "${EBZR_UNPACK_DIR}" || die "${EBZR}: checkout failed"
+			. "${EBZR_UNPACK_DIR}" || die "${ECLASS}: checkout failed"
 	else
 		einfo "exporting ..."
 		${EBZR_EXPORT_CMD} ${EBZR_REVISION:+-r ${EBZR_REVISION}} \
-			"${EBZR_UNPACK_DIR}" . || die "${EBZR}: export failed"
+			"${EBZR_UNPACK_DIR}" . || die "${ECLASS}: export failed"
 	fi
 	einfo \
 		"revision ${EBZR_REVISION:-${EBZR_REVNO}} is now in ${EBZR_UNPACK_DIR}"
 
-	popd > /dev/null || die "${EBZR}: popd failed"
+	popd > /dev/null || die "${ECLASS}: popd failed"
 }
 
 # @FUNCTION: bzr_src_unpack
