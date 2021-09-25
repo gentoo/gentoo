@@ -67,20 +67,11 @@ src_prepare() {
 }
 
 src_compile() {
-	local unicodedir="${EPREFIX}"/usr/share/unicode
-	local ucddir
-
-	if has_verson '<app-i18n/unicode-data-14.0.0-r1'; then
-		ucddir="${unicodedir}-data"
-	else
-		ucddir=${unicodedir}
-	fi
-
 	if use fontforge; then
 		emake \
 			BUILDDIR=ttf \
-			BLOCKS=${ucddir}/Blocks.txt \
-			UNICODEDATA=${ucddir}/UnicodeData.txt \
+			BLOCKS=/usr/share/unicode-data/Blocks.txt \
+			UNICODEDATA=/usr/share/unicode-data/UnicodeData.txt \
 			FC-LANG=/usr/share/fc-lang \
 			full sans
 	fi
