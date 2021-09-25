@@ -224,7 +224,7 @@ src_install() {
 	meson_src_install
 
 	# Installed by media-libs/libpulse
-	rm "${ED}/$(get_bashcompdir)"/pulseaudio || die
+	rm "${D}/$(get_bashcompdir)"/pulseaudio || die
 
 	if use system-wide; then
 		newconfd "${FILESDIR}"/pulseaudio.conf.d pulseaudio
