@@ -369,8 +369,11 @@ distutils_enable_sphinx() {
 # of RDEPEND to test?-BDEPEND.  The test-runner argument must be one of:
 #
 # - nose: nosetests (dev-python/nose)
+#
 # - pytest: dev-python/pytest
+#
 # - setup.py: setup.py test (no deps included)
+#
 # - unittest: for built-in Python unittest module
 #
 # Additionally, if --install is passed as the first parameter,
@@ -618,6 +621,7 @@ _distutils-r1_handle_pyproject_toml() {
 }
 
 # @FUNCTION: _distutils-r1_check_all_phase_mismatch
+# @INTERNAL
 # @DESCRIPTION:
 # Verify whether *_all phase impls is not called from from non-*_all
 # subphase.
