@@ -13,8 +13,8 @@ HOMEPAGE="https://suricata.io/"
 SRC_URI="https://www.openinfosecfoundation.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0/5"
-KEYWORDS="~amd64 ~x86"
+SLOT="0/6"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="+af-packet bpf control-socket cuda debug +detection geoip hardened hyperscan lua lz4 nflog +nfqueue redis systemd test"
 
 RESTRICT="!test? ( test )"
@@ -26,7 +26,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RDEPEND="${PYTHON_DEPS}
 	acct-group/suricata
 	acct-user/suricata
-	dev-libs/jansson
+	dev-libs/jansson:=
 	dev-libs/libpcre
 	dev-libs/libyaml
 	net-libs/libnet:*
@@ -55,9 +55,9 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.0.1_configure-no-lz4-automagic.patch"
-	"${FILESDIR}/${PN}-5.0.1_default-config.patch"
 	"${FILESDIR}/${PN}-5.0.6_configure-no-sphinx-pdflatex-automagic.patch"
 	"${FILESDIR}/${PN}-5.0.7_configure-no-hyperscan-automagic.patch"
+	"${FILESDIR}/${PN}-6.0.0_default-config.patch"
 )
 
 pkg_pretend() {
@@ -195,7 +195,11 @@ pkg_postinst() {
 	fi
 
 	elog
-	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+	if [[ -n "${REPLACING_VERSIONS}" ]]; then
+		ewarn "Since version 6.0.0 Suricata no longer supports the unified2 output format commonly used"
+		ewarn "in legacy, Snort-compatible IDS solutions, e.g. ones based on net-analyzer/barnyard2."
+		ewarn "If you need unified2 support, please continue to use suricata-5."
+	else
 		elog "To download and install an initial set of rules, run:"
 		elog "    emerge --config =${CATEGORY}/${PF}"
 	fi
