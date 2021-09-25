@@ -38,7 +38,7 @@ DEPEND="
 		sqlite? ( dev-db/sqlite:3 )
 		director? (
 			virtual/mta
-			jansson? ( dev-libs/jansson )
+			jansson? ( dev-libs/jansson:= )
 		)
 	)
 	logwatch? ( sys-apps/logwatch )

@@ -37,7 +37,7 @@ DEPEND="
 		sqlite? ( dev-db/sqlite:3 )
 		director? (
 			virtual/mta
-			jansson? ( dev-libs/jansson )
+			jansson? ( dev-libs/jansson:= )
 		)
 	)
 	fastlz? ( dev-libs/bareos-fastlzlib )
