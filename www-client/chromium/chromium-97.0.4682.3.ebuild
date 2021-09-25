@@ -24,11 +24,12 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0/dev"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="component-build cups cpu_flags_arm_neon debug +hangouts headless +js-type-check kerberos +official pgo pic +proprietary-codecs pulseaudio screencast selinux +suid +system-ffmpeg +system-harfbuzz +system-icu vaapi wayland widevine"
+IUSE="component-build cups cpu_flags_arm_neon debug +hangouts headless +js-type-check kerberos +official official-pgo pgo pic +proprietary-codecs pulseaudio screencast selinux +suid +system-ffmpeg +system-harfbuzz +system-icu vaapi wayland widevine"
 REQUIRED_USE="
 	component-build? ( !suid )
 	screencast? ( wayland )
 	pgo ( !headless )
+	?? ( pgo official-pgo )
 "
 
 COMMON_X_DEPEND="
@@ -129,6 +130,10 @@ BDEPEND="
 		>=sys-devel/clang-12
 		>=sys-devel/lld-12
 	)
+	official-pgo? (
+		>=sys-devel/clang-12
+		>=sys-devel/lld-12
+	)
 "
 
 # These are intended for ebuild maintainer use to force clang if GCC is broken.
@@ -197,9 +202,9 @@ pre_build_checks() {
 			die "At least gcc 9.2 is required"
 		fi
 		if use pgo && tc-is-cross-compiler; then
-			die "The pgo USE flag cannot be used when cross-compiling"
+			die "The pgo USE flag cannot be used when cross-compiling. You can try official-pgo instead."
 		fi
-		if [[ ${CHROMIUM_FORCE_CLANG} == yes ]] || use pgo || tc-is-clang; then
+		if [[ ${CHROMIUM_FORCE_CLANG} == yes ]] || use pgo || use official-pgo || tc-is-clang; then
 			CPP="${CHOST}-clang++ -E"
 			if ! ver_test "$(clang-major-version)" -ge 12; then
 				die "At least clang 12 is required"
@@ -210,9 +215,11 @@ pre_build_checks() {
 	# Check build requirements, bug #541816 and bug #471810 .
 	CHECKREQS_MEMORY="4G"
 	CHECKREQS_DISK_BUILD="9G"
-	if use pgo; then
+	if use pgo || use official-pgo; then
 		CHECKREQS_MEMORY="9G"
-		CHECKREQS_DISK_BUILD="16G"
+		if use pgo; then
+			CHECKREQS_DISK_BUILD="16G"
+		fi
 	fi
 	if ( shopt -s extglob; is-flagq '-g?(gdb)?([1-9])' ); then
 		if use custom-cflags || use component-build; then
@@ -555,7 +562,7 @@ chromium_configure() {
 	# Make sure the build system will use the right tools, bug #340795.
 	tc-export AR CC CXX NM
 
-	if ( [[ ${CHROMIUM_FORCE_CLANG} == yes ]] || use pgo ) && ! tc-is-clang; then
+	if ( [[ ${CHROMIUM_FORCE_CLANG} == yes ]] || use pgo || use official-pgo ) && ! tc-is-clang; then
 		# Force clang since gcc is pretty broken at the moment.
 		CC=${CHOST}-clang
 		CXX=${CHOST}-clang++
@@ -571,7 +578,7 @@ chromium_configure() {
 		myconf_gn+=" is_clang=false"
 	fi
 
-	if use pgo && ! tc-ld-is-lld; then
+	if ( use pgo || use official-pgo ) && ! tc-ld-is-lld; then
 		LD=ld.lld
 	fi
 
@@ -812,8 +819,9 @@ chromium_configure() {
 		if [[ "$1" == "2" ]]; then
 			myconf_gn+=" pgo_data_path=\"${2}\""
 		fi
+	elif use official-pgo; then
+		myconf_gn+=" chrome_pgo_phase=2"
 	else
-		# Disable PGO, because profile data is only compatible with >=clang-11
 		myconf_gn+=" chrome_pgo_phase=0"
 	fi
 
