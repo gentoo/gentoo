@@ -25,7 +25,7 @@ REQUIRED_USE="
 DEPEND="
 	x11-libs/gtk+:3
 	net-misc/curl:0=
-	dev-libs/jansson
+	dev-libs/jansson:=
 	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
 	cdda? (
