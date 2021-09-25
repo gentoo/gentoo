@@ -43,7 +43,7 @@ BDEPEND="
 	python? ( dev-lang/swig )
 "
 DEPEND="
-	dev-libs/jansson
+	dev-libs/jansson:=
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5[wayland?]
