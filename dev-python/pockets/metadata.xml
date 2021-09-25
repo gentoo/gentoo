@@ -5,6 +5,7 @@
     <email>klausman@gentoo.org</email>
     <name>Tobias Klausmann</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">pockets</remote-id>
     <remote-id type="github">RobRuana/pockets</remote-id>
