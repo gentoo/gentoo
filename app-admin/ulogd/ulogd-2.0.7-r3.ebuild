@@ -18,7 +18,7 @@ DEPEND="
 	|| ( net-firewall/iptables net-firewall/nftables )
 	>=net-libs/libnfnetlink-1.0.1
 	dbi? ( dev-db/libdbi )
-	json? ( dev-libs/jansson )
+	json? ( dev-libs/jansson:= )
 	nfacct? (
 		>=net-libs/libmnl-1.0.4
 		>=net-libs/libnetfilter_acct-1.0.3
