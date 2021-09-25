@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit fortran-2 distutils-r1 flag-o-matic multiprocessing toolchain-funcs
+inherit fortran-2 distutils-r1 flag-o-matic toolchain-funcs
 
 # upstream is slacking forever with doc updates
 DOC_PV=1.6.2
