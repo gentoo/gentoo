@@ -249,7 +249,6 @@ src_install() {
 		DESTDIR="${ED}" \
 		install
 	dodoc ChangeLog
-	rm "${ED}"/etc/sysctl.d/README || die
 
 	# need the makefile in pkg_preinst
 	insinto /usr/share/${PN}
