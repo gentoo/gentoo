@@ -28,7 +28,7 @@ REQUIRED_USE="^^ ( fdk libav-aac )"
 RDEPEND="
 	app-arch/xz-utils
 	media-libs/speex
-	dev-libs/jansson
+	dev-libs/jansson:=
 	dev-libs/libxml2
 	media-libs/a52dec
 	media-libs/libass:=
