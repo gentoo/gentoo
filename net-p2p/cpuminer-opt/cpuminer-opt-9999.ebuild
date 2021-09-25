@@ -12,8 +12,8 @@ LICENSE="GPL-2"
 SLOT="0"
 REQUIRED_USE="cpu_flags_x86_sse2"
 DEPEND="
-	dev-libs/gmp:0
-	dev-libs/jansson
+	dev-libs/gmp:=
+	dev-libs/jansson:=
 	>=net-misc/curl-7.15[ssl]
 	dev-libs/openssl:0=
 "
