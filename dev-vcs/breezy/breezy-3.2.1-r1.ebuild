@@ -77,7 +77,6 @@ src_install() {
 
 	# Symlink original bzr's bin names to new names
 	dosym brz /usr/bin/bzr
-	dosym git-remote-brz /usr/bin/git-remote-bzr
 }
 
 pkg_postinst() {
