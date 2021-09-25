@@ -11,23 +11,27 @@ SRC_URI="https://github.com/nhorman/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 ~riscv x86"
-IUSE="jitterentropy nistbeacon pkcs11 rtlsdr selinux"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv x86"
+IUSE="jitterentropy nistbeacon pkcs11 selinux"
 
 DEPEND="
 	dev-libs/openssl:0=
 	jitterentropy? ( app-crypt/jitterentropy:= )
 	nistbeacon? (
-		dev-libs/jansson
+		dev-libs/jansson:=
 		dev-libs/libxml2:2=
 		net-misc/curl[ssl]
 	)
 	pkcs11? ( dev-libs/libp11:= )
-	rtlsdr? ( net-wireless/rtl-sdr )
 	elibc_musl? ( sys-libs/argp-standalone )"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-rngd )"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	# backport, remove on bump
+	"${FILESDIR}"/${P}-various-autotools-fixups.patch
+)
 
 src_prepare() {
 	default
@@ -39,7 +43,7 @@ src_configure() {
 		$(use_enable jitterentropy)
 		$(use_with nistbeacon)
 		$(use_with pkcs11)
-		$(use_with rtlsdr)
+		--without-rtlsdr # no librtlsdr in the tree
 	)
 
 	econf "${myeconfargs[@]}"
