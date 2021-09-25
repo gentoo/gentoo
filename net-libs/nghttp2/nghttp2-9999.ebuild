@@ -32,7 +32,7 @@ RDEPEND="
 		${SSL_DEPEND}
 		dev-libs/boost:=[${MULTILIB_USEDEP},threads(+)]
 	)
-	hpack-tools? ( >=dev-libs/jansson-2.5 )
+	hpack-tools? ( >=dev-libs/jansson-2.5:= )
 	jemalloc? ( dev-libs/jemalloc:=[${MULTILIB_USEDEP}] )
 	utils? (
 		${SSL_DEPEND}
