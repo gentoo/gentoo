@@ -164,10 +164,12 @@ src_configure() {
 }
 
 src_compile() {
-	emake so all
+	# Forcing j1 for both emake calls for now
+	# See bug #800125
+	emake -j1 so all
 
 	cd ijs || die
-	emake
+	emake -j1
 }
 
 src_install() {
