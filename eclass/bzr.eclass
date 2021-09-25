@@ -82,17 +82,6 @@ EXPORT_FUNCTIONS src_unpack
 # @DESCRIPTION:
 # The repository URI for the source package.
 
-# @ECLASS-VARIABLE: EBZR_INITIAL_URI
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# The URI used for initial branching of the source repository.  If this
-# variable is set, the initial branch will be cloned from the location
-# specified, followed by a pull from ${EBZR_REPO_URI}.  This is intended
-# for special cases, e.g. when download from the original repository is
-# slow, but a fast mirror exists but may be out of date.
-#
-# Normally, this variable needs not be set.
-
 # @ECLASS-VARIABLE: EBZR_PROJECT
 # @DESCRIPTION:
 # The project name of your ebuild.  Normally, the branch will be stored
@@ -231,19 +220,7 @@ bzr_fetch() {
 			${EBZR_INIT_REPO_CMD} "${repo_dir}" \
 				|| die "${ECLASS}: can't create shared repository"
 		fi
-
-		if [[ -z ${EBZR_INITIAL_URI} ]]; then
-			_bzr_initial_fetch "${EBZR_REPO_URI}" "${branch_dir}"
-		else
-			# Workaround for faster initial download. This clones the
-			# branch from a fast server (which may be out of date), and
-			# subsequently pulls from the slow original repository.
-			_bzr_initial_fetch "${EBZR_INITIAL_URI}" "${branch_dir}"
-			if [[ ${EBZR_REPO_URI} != "${EBZR_INITIAL_URI}" ]]; then
-				EBZR_UPDATE_CMD="${EBZR_UPDATE_CMD} --remember --overwrite" \
-					bzr_update "${EBZR_REPO_URI}" "${branch_dir}"
-			fi
-		fi
+		_bzr_initial_fetch "${EBZR_REPO_URI}" "${branch_dir}"
 	else
 		_bzr_update "${EBZR_REPO_URI}" "${branch_dir}"
 	fi
