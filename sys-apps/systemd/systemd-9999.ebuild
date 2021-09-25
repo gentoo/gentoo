@@ -384,7 +384,7 @@ multilib_src_install_all() {
 	keepdir /var/log/journal
 
 	# Symlink /etc/sysctl.conf for easy migration.
-	dosym ../sysctl.conf /etc/sysctl.d/99-sysctl.conf
+	dosym ../../../etc/sysctl.conf /usr/lib/sysctl.d/99-sysctl.conf
 
 	if use pam; then
 		newpamd "${FILESDIR}"/systemd-user.pam systemd-user
