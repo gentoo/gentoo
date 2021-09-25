@@ -10,12 +10,15 @@ inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1
 
 DESCRIPTION="SVG based generic vector-drawing program"
 HOMEPAGE="https://inkscape.org/"
-SRC_URI="https://media.inkscape.org/dl/resources/file/${P}.tar.xz"
+SRC_URI="
+	https://media.inkscape.org/dl/resources/file/${P}.tar.xz
+	https://dev.gentoo.org/~dilfridge/distfiles/inkscape-1.1-musl.txz
+"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg lcms
+IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg
 openmp postscript readline spell static-libs svg2 visio wpg"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -43,6 +46,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-gfx/potrace
 	media-libs/fontconfig
 	media-libs/freetype:2
+	media-libs/lcms:2
 	media-libs/libpng:0=
 	net-libs/libsoup:2.4
 	sci-libs/gsl:=
@@ -66,7 +70,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	jemalloc? ( dev-libs/jemalloc )
 	jpeg? ( virtual/jpeg:0 )
-	lcms? ( media-libs/lcms:2 )
 	readline? ( sys-libs/readline:= )
 	spell? ( app-text/gspell )
 	visio? (
@@ -98,10 +101,6 @@ RESTRICT="test"
 
 S="${WORKDIR}/${P}_2021-05-24_c4e8f9ed74"
 
-PATCHES=(
-	"${FILESDIR}/${P}-sentinels.patch" # 1.1 is the last affected version, it is already fixed in upstream
-)
-
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
@@ -109,6 +108,9 @@ pkg_pretend() {
 }
 
 src_prepare() {
+	# Backport from master
+	eapply "${WORKDIR}/inkscape-1.1-musl/"*.patch
+
 	cmake_src_prepare
 	sed -i "/install.*COPYING/d" CMakeScripts/ConfigCPack.cmake || die
 }
@@ -131,7 +133,7 @@ src_configure() {
 		-DWITH_GNU_READLINE=$(usex readline)
 		-DWITH_GSPELL=$(usex spell)
 		-DWITH_JEMALLOC=$(usex jemalloc)
-		-DENABLE_LCMS=$(usex lcms)
+		-DENABLE_LCMS=ON
 		-DWITH_OPENMP=$(usex openmp)
 		-DBUILD_SHARED_LIBS=$(usex !static-libs)
 		-DWITH_SVG2=$(usex svg2)

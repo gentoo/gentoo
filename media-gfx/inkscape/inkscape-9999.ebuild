@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://gitlab.com/inkscape/inkscape.git"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg lcms
+IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg
 openmp postscript readline spell static-libs svg2 test visio wpg"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -43,6 +43,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-gfx/potrace
 	media-libs/fontconfig
 	media-libs/freetype:2
+	media-libs/lcms:2
 	media-libs/libpng:0=
 	net-libs/libsoup:2.4
 	sci-libs/gsl:=
@@ -66,7 +67,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	jemalloc? ( dev-libs/jemalloc )
 	jpeg? ( virtual/jpeg:0 )
-	lcms? ( media-libs/lcms:2 )
 	readline? ( sys-libs/readline:= )
 	spell? ( app-text/gspell )
 	visio? (
@@ -128,7 +128,7 @@ src_configure() {
 		-DWITH_GNU_READLINE=$(usex readline)
 		-DWITH_GSPELL=$(usex spell)
 		-DWITH_JEMALLOC=$(usex jemalloc)
-		-DENABLE_LCMS=$(usex lcms)
+		-DENABLE_LCMS=ON
 		-DWITH_OPENMP=$(usex openmp)
 		-DBUILD_SHARED_LIBS=$(usex !static-libs)
 		-DWITH_SVG2=$(usex svg2)
