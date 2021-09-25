@@ -16,7 +16,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/jansson-2.0.0[${MULTILIB_USEDEP}]
+	>=dev-libs/jansson-2.0.0:=[${MULTILIB_USEDEP}]
 	dev-libs/libbase58[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
