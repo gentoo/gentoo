@@ -64,7 +64,7 @@ DEPEND="
 	ncurses? (
 		sys-libs/ncurses:=[unicode(+)?]
 	)
-	>=dev-libs/jansson-2
+	>=dev-libs/jansson-2:=
 	dev-libs/libbase58
 	net-libs/libblkmaker
 	udev? (
