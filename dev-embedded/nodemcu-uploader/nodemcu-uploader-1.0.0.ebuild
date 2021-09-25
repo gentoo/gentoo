@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{7..10} )
 inherit distutils-r1
 
 DESCRIPTION="Simple tool for uploading files to the filesystem of an ESP8266 running NodeMCU"
@@ -18,3 +17,10 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND=">=dev-python/pyserial-3.4[${PYTHON_USEDEP}]"
 
 distutils_enable_tests setup.py
+
+src_prepare() {
+	# https://bugs.gentoo.org/796422
+	sed -i -e 's:description-file:description_file:' setup.cfg || die
+
+	distutils-r1_src_prepare
+}
