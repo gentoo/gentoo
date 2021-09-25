@@ -34,7 +34,7 @@ BDEPEND="
 	python? ( dev-lang/swig )
 "
 DEPEND="
-	>=dev-libs/jansson-2.5
+	>=dev-libs/jansson-2.5:=
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
