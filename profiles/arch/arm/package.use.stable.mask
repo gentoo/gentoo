@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-09-25)
+# No stable dev-ruby/{thor,tty-editor} on this arch yet
+# and there are many dependencies to go through before there are
+app-text/htmltidy test
+
 # Sam James <sam@gentoo.org> (2021-03-04)
 # Dependencies not yet stable, drags in
 # large amount of fabric. bug #763954
