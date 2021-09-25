@@ -48,3 +48,13 @@ src_configure() {
 	)
 	cmake_src_configure
 }
+
+src_install() {
+	cmake_src_install
+
+	# unpack Histories.tar.bz2 to avoid QA issues
+	pushd "${ED}/usr/share/doc/${PF}" || die
+	tar xvf Histories.tar.bz2 || die
+	rm Histories.tar.bz2
+	popd
+}
