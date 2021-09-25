@@ -20,9 +20,9 @@ RDEPEND=">=dev-python/django-2.2[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
 		${RDEPEND}
-		dev-python/coreapi
-		dev-python/djangorestframework
-		dev-python/pytz
+		dev-python/coreapi[${PYTHON_USEDEP}]
+		dev-python/djangorestframework[${PYTHON_USEDEP}]
+		dev-python/pytz[${PYTHON_USEDEP}]
 	)"
 
 PATCHES=(
