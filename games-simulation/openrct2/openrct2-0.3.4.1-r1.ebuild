@@ -29,7 +29,7 @@ IUSE="dedicated +lightfx +opengl scripting test +truetype"
 
 COMMON_DEPEND="
 	dev-libs/icu:=
-	dev-libs/jansson
+	dev-libs/jansson:=
 	dev-libs/libzip:=
 	media-libs/libpng:0=
 	net-misc/curl[ssl]
