@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info
+inherit autotools linux-info tmpfiles
 
 DESCRIPTION="SPICE VD Linux Guest Agent"
 HOMEPAGE="https://www.spice-space.org/"
@@ -59,4 +59,8 @@ src_install() {
 
 	newinitd "${FILESDIR}/${PN}.initd-4" "${PN}"
 	newconfd "${FILESDIR}/${PN}.confd-2" "${PN}"
+}
+
+pkg_postinst() {
+	tmpfiles_process spice-vdagentd.conf
 }
