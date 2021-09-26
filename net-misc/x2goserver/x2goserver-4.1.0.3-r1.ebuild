@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit systemd toolchain-funcs xdg
+
+inherit systemd tmpfiles toolchain-funcs xdg
 
 DESCRIPTION="The X2Go server"
 HOMEPAGE="http://www.x2go.org"
@@ -78,7 +79,9 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process x2goserver.conf
 	xdg_pkg_postinst
+
 	if use sqlite ; then
 		if [[ -f "${EROOT}"/var/lib/x2go/x2go_sessions ]] ; then
 			elog "To use sqlite and update your existing database, run:"
@@ -89,6 +92,7 @@ pkg_postinst() {
 		fi
 
 	fi
+
 	if use postgres ; then
 		elog "To use a PostgreSQL database, more information is availabe here:"
 		elog "http://www.x2go.org/doku.php/wiki:advanced:multi-node:x2goserver-pgsql"
