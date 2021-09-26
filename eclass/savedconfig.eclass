@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: savedconfig.eclass
@@ -146,14 +146,10 @@ restore_config() {
 		treecopy . "${dest}" || die "Failed to restore ${found} to $1"
 		popd > /dev/null
 	else
-		# maybe the user is screwing around with perms they shouldnt #289168
-		if [[ ! -r ${base} ]] ; then
-			eerror "Unable to read ${base} -- please check its permissions."
-			die "Reading config files failed"
-		fi
 		ewarn "No saved config to restore - please remove USE=savedconfig or"
 		ewarn "provide a configuration file in ${PORTAGE_CONFIGROOT%/}/etc/portage/savedconfig/${CATEGORY}/${PN}"
-		ewarn "Your config file(s) will not be used this time"
+		ewarn "and ensure the build process has permission to access it."
+		ewarn "Your config file(s) will not be used this time."
 	fi
 }
 
