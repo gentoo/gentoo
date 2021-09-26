@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_VERSION=0.29
 DIST_AUTHOR=RWSTAUNER
@@ -13,8 +13,6 @@ HOMEPAGE="https://github.com/rwstauner/Text-VimColor"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="app-editors/vim[-minimal]
 	virtual/perl-Carp
@@ -25,7 +23,7 @@ RDEPEND="app-editors/vim[-minimal]
 	>=dev-perl/Path-Class-0.40.0
 	>=virtual/perl-Term-ANSIColor-1.30.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	>=dev-perl/File-ShareDir-Install-0.60.0
 	test? (
