@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils toolchain-funcs multilib systemd
+inherit eutils toolchain-funcs multilib systemd tmpfiles
 
 DESCRIPTION="openvz tool and a library to control ploop block devices"
 HOMEPAGE="https://wiki.openvz.org/Download/ploop"
@@ -57,4 +57,8 @@ src_compile() {
 src_install() {
 	default
 	ldconfig -n "${D}/usr/$(get_libdir)/" || die
+}
+
+pkg_postinst() {
+	tmpfiles_process ploop.conf
 }
