@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/materm/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~mips ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm64 ~mips ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 L10N_IUSE="l10n_el l10n_ja l10n_ko l10n_th l10n_zh-CN l10n_zh-TW"
 IUSE="debug png jpeg session truetype menubar utempter xpm ${L10N_IUSE}"
