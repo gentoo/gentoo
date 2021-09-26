@@ -17,7 +17,7 @@ IUSE="expat nls rsh ssl webdav xml zlib"
 RDEPEND="
 	rsh? ( net-misc/netkit-rsh )
 	>=net-libs/neon-0.24.6[zlib?,ssl?,expat?]
-	<=net-libs/neon-0.30.9999[zlib?,ssl?,expat?]
+	<=net-libs/neon-0.32.9999[zlib?,ssl?,expat?]
 	xml? ( >=net-libs/neon-0.24.6[-expat] )
 "
 DEPEND="${RDEPEND}"
