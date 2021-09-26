@@ -28,6 +28,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	RDEPEND="
 		>=dev-python/snakeoil-0.9.6[${PYTHON_USEDEP}]
+		<sys-apps/pkgcore-0.12.8[${PYTHON_USEDEP}]
 		>=sys-apps/pkgcore-0.12.7[${PYTHON_USEDEP}]"
 fi
 RDEPEND+="
