@@ -30,7 +30,7 @@ S="${WORKDIR}/${MY_P}"
 
 STAGING_P="wine-staging-${MY_PV}"
 STAGING_DIR="${WORKDIR}/${STAGING_P}"
-GWP_V="20200523"
+GWP_V="20210925"
 PATCHDIR="${WORKDIR}/gentoo-wine-patches"
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine-Staging patchset"
