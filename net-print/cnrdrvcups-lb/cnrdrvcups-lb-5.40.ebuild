@@ -21,6 +21,9 @@ IUSE=""
 DEPEND="dev-libs/atk
 	dev-libs/glib:2
 	dev-libs/libxml2:2
+	gnome-base/libglade:2.0
+	media-libs/jbigkit
+	media-libs/libjpeg-turbo
 	net-print/cups
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
