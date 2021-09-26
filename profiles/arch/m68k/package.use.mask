@@ -47,10 +47,12 @@ dev-python/wrapt doc
 # Avoid lots of unkeyworded dependencies of Python tests.
 dev-python/argcomplete test
 dev-python/distlib test
+dev-python/fonttools test
 dev-python/isort test
 dev-python/nose test
 dev-python/requests test
 dev-python/setuptools test
+dev-python/sphinx test
 dev-python/urllib3 test
 
 # James Le Cuirot <chewi@gentoo.org> (2021-08-20)
