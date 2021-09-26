@@ -5,6 +5,7 @@
 		<email>ros@gentoo.org</email>
 		<name>Gentoo ROS Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">vcstools/vcstools</remote-id>
 		<remote-id type="pypi">vcstools</remote-id>
