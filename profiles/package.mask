@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2021-09-26)
+# A library without revdeps, EAPI-5. #776901
+# Removal in ~30 days.
+media-libs/libyami
+
 # Brian Evans <grknight@gentoo.org> (2021-09-26)
 # Mask for 8.1 RC
 dev-lang/php:8.1
