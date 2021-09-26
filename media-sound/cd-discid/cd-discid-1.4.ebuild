@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/taem/${PN}/archive/upstream/1.4.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ppc64 x86"
+KEYWORDS="~alpha amd64 ppc ppc64 ~riscv x86"
 
 S=${WORKDIR}/${PN}-upstream-${PV}
 
