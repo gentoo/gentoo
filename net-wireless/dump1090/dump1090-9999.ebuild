@@ -93,3 +93,7 @@ src_install() {
 		doexe starch-benchmark
 	fi
 }
+
+pkg_postinst() {
+	tmpfiles_process ${PN}.conf
+}
