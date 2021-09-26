@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools prefix
+inherit autotools prefix tmpfiles
 
 DESCRIPTION="An authentication service for creating and validating credentials"
 HOMEPAGE="https://github.com/dun/munge"
@@ -70,4 +70,8 @@ src_install() {
 	if ! use static-libs; then
 		find "${D}" -name '*.la' -delete || die
 	fi
+}
+
+pkg_postinst() {
+	tmpfiles_process munge.conf
 }
