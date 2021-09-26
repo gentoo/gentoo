@@ -259,7 +259,6 @@ sys-devel/gcc ada
 # and the package is confirmed to work with it.
 <=dev-util/rosinstall-0.7.8 test
 <=dev-util/wstool-0.1.18 test
-<=dev-python/vcstools-0.1.42 test
 
 # Michał Górny <mgorny@gentoo.org> (2020-03-27)
 # Requires old version of dev-python/docutils.
