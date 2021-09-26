@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{8,9} )
 
-inherit python-single-r1 xdg-utils tmpfiles
+inherit python-single-r1 tmpfiles xdg-utils
 
 DESCRIPTION="Daemon for monitoring and adaptive tuning of system devices"
 HOMEPAGE="https://github.com/redhat-performance/tuned"
@@ -58,6 +58,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_icon_cache_update
 	tmpfiles_process ${PN}.conf
+	xdg_icon_cache_update
 }
