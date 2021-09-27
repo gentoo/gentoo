@@ -1,9 +1,10 @@
 # Copyright 2004-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# please keep this ebuild at EAPI 7 -- sys-apps/portage dep
 EAPI=7
-PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 inherit distutils-r1
 
 MY_P=${P/-/_}
