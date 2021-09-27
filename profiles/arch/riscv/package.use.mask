@@ -28,6 +28,7 @@ sys-cluster/ceph pmdk
 # dev-ruby/asciidoctor isn't keyworded here
 dev-libs/nanomsg doc
 dev-util/ccache doc
+net-misc/chrony html
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-09-15)
 # Marek Szuba <marecki@gentoo.org> (2021-09-07)
