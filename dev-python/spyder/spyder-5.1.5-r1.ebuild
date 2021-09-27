@@ -136,12 +136,14 @@ python_prepare_all() {
 		-e '/python-lsp-server/d' \
 		-e '/parso/d' \
 		-e '/jedi/d' \
+		-e '/pylint/d' \
 			{setup.py,requirements/conda.txt} || die
 	sed -i \
 		-e "/^PYLS_REQVER/c\PYLS_REQVER = '>=0.0.1'" \
 		-e "/^PYLSP_REQVER/c\PYLSP_REQVER = '>=0.0.1'" \
 		-e "/^PARSO_REQVER/c\PARSO_REQVER = '>=0.0.1'" \
 		-e "/^JEDI_REQVER/c\JEDI_REQVER = '>=0.0.1'" \
+		-e "/^PYLINT_REQVER/c\PYLINT_REQVER = '>=0.0.1'" \
 			spyder/dependencies.py || die
 
 	# do not check deps, fails because we removed pyqt5 dependency above
