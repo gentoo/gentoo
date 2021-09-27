@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd toolchain-funcs
+inherit systemd toolchain-funcs linux-info
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
@@ -33,6 +33,8 @@ RDEPEND="
 		acct-user/dhcpcd
 	)
 "
+
+CONFIG_CHECK="~PACKET"
 
 src_configure() {
 	local myeconfargs=(

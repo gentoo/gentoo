@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd toolchain-funcs
+inherit systemd toolchain-funcs linux-info
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
@@ -39,6 +39,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-unlink_socket.patch"
 	"${FILESDIR}/${P}-sparc_privsep.patch" #776178
 )
+
+CONFIG_CHECK="~PACKET"
 
 src_configure() {
 	local myeconfargs=(
