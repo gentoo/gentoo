@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">django-mailman3</remote-id>
+		<remote-id type="gitlab">mailman/django-mailman3</remote-id>
 	</upstream>
 </pkgmetadata>
