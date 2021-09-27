@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite"
 
-inherit distutils-r1
+inherit distutils-r1 optfeature
 
 HOMEPAGE="
 	https://pypi.org/project/requests-cache/
@@ -22,16 +22,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
+	dev-python/attrs[${PYTHON_USEDEP}]
+	dev-python/appdirs[${PYTHON_USEDEP}]
 	dev-python/cattrs[${PYTHON_USEDEP}]
-	dev-python/itsdangerous[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.0.0[${PYTHON_USEDEP}]
+	dev-python/urllib3[${PYTHON_USEDEP}]
 	>=dev-python/url-normalize-1.4[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
+		dev-python/itsdangerous[${PYTHON_USEDEP}]
 		dev-python/pytest-httpbin[${PYTHON_USEDEP}]
 		dev-python/requests-mock[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
 		dev-python/timeout-decorator[${PYTHON_USEDEP}]
+		dev-python/ujson[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest
@@ -51,4 +55,13 @@ python_test() {
 
 	local -x USE_PYTEST_HTTPBIN=true
 	epytest
+}
+
+pkg_postinst() {
+	optfeature "redis backend" "dev-python/redis-py"
+	optfeature "MongoDB backend" "dev-python/pymongo"
+
+	optfeature "JSON serialization" "dev-python/ujson"
+	optfeature "YAML serialization" "dev-python/pyyaml"
+	optfeature "signing serialized data" "dev-python/itsdangerous"
 }
