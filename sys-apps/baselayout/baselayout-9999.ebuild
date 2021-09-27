@@ -244,10 +244,15 @@ src_prepare() {
 }
 
 src_install() {
+	dodir /usr/lib
 	emake \
 		OS=$(usex kernel_FreeBSD BSD Linux) \
 		DESTDIR="${ED}" \
 		install
+	if use kernel_linux; then
+		insinto /lib
+		doins -r lib.Linux/*
+	fi
 	dodoc ChangeLog
 
 	# need the makefile in pkg_preinst
