@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">mailmanclient</remote-id>
+		<remote-id type="gitlab">mailman/mailmanclient</remote-id>
 	</upstream>
 </pkgmetadata>
