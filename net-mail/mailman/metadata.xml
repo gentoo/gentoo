@@ -4,6 +4,7 @@
 	<maintainer type="person">
 		<email>hanno@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">mailman</remote-id>
 		<remote-id type="gitlab">mailman/mailman</remote-id>
