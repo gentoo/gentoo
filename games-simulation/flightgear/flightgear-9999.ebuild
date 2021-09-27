@@ -26,6 +26,7 @@ COMMON_DEPEND="
 	dev-games/openscenegraph[jpeg,png]
 	~dev-games/simgear-${PV}[gdal=]
 	media-libs/openal
+	>=media-libs/plib-1.8.5
 	>=media-libs/speex-1.2.0:0
 	media-libs/speexdsp:0
 	media-sound/gsm
@@ -54,7 +55,6 @@ COMMON_DEPEND="
 # libXi and libXmu are build-only-deps according to FindGLUT.cmake
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/boost-1.44
-	>=media-libs/plib-1.8.5
 	qt5? ( >=dev-qt/linguist-tools-5.7.1:5 )
 	utils? (
 		x11-libs/libXi
