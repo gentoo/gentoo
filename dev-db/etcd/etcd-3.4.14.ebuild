@@ -263,7 +263,7 @@ src_prepare() {
 	default
 	sed -e "s|GIT_SHA=.*|GIT_SHA=${GIT_COMMIT}|"\
 		-i "${S}"/build || die
-	 sed -e 's:\(for p in \)shellcheck :\1 :' \
+	sed -e 's:\(for p in \)shellcheck :\1 :' \
 		-e 's:^			gofmt \\$:\\:' \
 		-e 's:^			govet \\$:\\:' \
 		-e 's:^			govet_shadow \\$:\\:' \
@@ -278,7 +278,7 @@ src_prepare() {
 }
 
 src_compile() {
-	 ./build || die
+	./build || die
 }
 
 src_test() {
