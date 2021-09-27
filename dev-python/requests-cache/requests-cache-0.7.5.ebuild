@@ -32,6 +32,7 @@ BDEPEND="
 		dev-python/requests-mock[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
 		dev-python/timeout-decorator[${PYTHON_USEDEP}]
+		dev-python/ujson[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest
