@@ -244,27 +244,20 @@ src_prepare() {
 }
 
 src_install() {
-	local OS="$(usex kernel_linux 'Linux' 'BSD')"
-	insinto /etc
-	doins -r etc/* etc.${OS}/*
-	printf '%s\n' "Gentoo Base System release ${PV}" > "${T}"/gentoo-release
-	doins "${T}"/gentoo-release
-	dosym ../usr/lib/os-release /etc/os-release
-
+	dodir /usr/lib
+	emake \
+		OS=$(usex kernel_FreeBSD BSD Linux) \
+		DESTDIR="${ED}" \
+		install
 	if use kernel_linux; then
 		insinto /lib
 		doins -r lib.Linux/*
 	fi
-	insinto /usr/lib
-	./make_os_release ${OS} ${PV} > "${T}"/os-release
-	doins "${T}"/os-release
-
-	insinto /usr/share/${PN}
-	doins -r share.${OS}/*
-	# need the makefile in pkg_preinst
-	doins Makefile
-
 	dodoc ChangeLog
+
+	# need the makefile in pkg_preinst
+	insinto /usr/share/${PN}
+	doins Makefile
 }
 
 pkg_postinst() {
