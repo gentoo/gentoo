@@ -63,6 +63,7 @@ RDEPEND="${DEPEND}
 	>=x11-libs/libxcb-1.9.1
 	>=x11-libs/libxshmfence-1.1
 	virtual/libcrypt:=
+	!!<dev-util/android-studio-2020.3.1.24
 "
 
 S=${WORKDIR}/${PN}
