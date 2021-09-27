@@ -11,7 +11,7 @@ SRC_URI="http://www.venaas.no/multicast/ssmping/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9-build.patch
