@@ -15,7 +15,7 @@ else
 		https://github.com/dolphin-emu/dolphin/archive/${EGIT_COMMIT}.tar.gz
 			-> ${P}.tar.gz"
 	S=${WORKDIR}/${PN}-${EGIT_COMMIT}
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 fi
 
 DESCRIPTION="Gamecube and Wii game emulator"
