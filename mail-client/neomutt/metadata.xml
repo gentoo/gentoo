@@ -27,6 +27,9 @@
 			traditional/inline PGP</flag>
 		<flag name="smime-classic">Build classic-smime backend to support
 			S/MIME</flag>
+		<flag name="lz4">Add lz4 support for header cache compression</flag>
+		<flag name="zlib">Add zlib support for header cache compression</flag>
+		<flag name="zstd">Add zstd support for header cache compression</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">neomutt/neomutt</remote-id>
