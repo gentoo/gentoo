@@ -18,7 +18,7 @@ IUSE="doc examples"
 RDEPEND=">=dev-libs/libuv-1.11.0:="
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-python/cython[${PYTHON_USEDEP}]
+	>=dev-python/cython-0.29.24[${PYTHON_USEDEP}]
 	doc? (
 		>=dev-python/alabaster-0.6.2[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
