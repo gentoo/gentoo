@@ -29,6 +29,7 @@ dev-python/distlib test
 dev-python/fonttools test
 dev-python/isort test
 dev-python/nose test
+dev-python/pytest-regressions test
 dev-python/requests test
 dev-python/setuptools test
 dev-python/sphinx test
