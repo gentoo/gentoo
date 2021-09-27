@@ -60,6 +60,7 @@ RDEPEND+="
 	x11-libs/libXdamage
 	x11-libs/libXext
 	x11-libs/libXfixes
+	x11-libs/libxkbcommon
 	x11-libs/libXrandr
 	x11-libs/libXtst
 	x11-libs/pango"
