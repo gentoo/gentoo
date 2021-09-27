@@ -11,7 +11,7 @@ SRC_URI="https://people.redhat.com/~dhowells/fscache/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2+"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="doc selinux"
 
 RDEPEND="selinux? ( sec-policy/selinux-cachefilesd )"
