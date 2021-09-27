@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=CHAMAS
 DIST_VERSION=0.21
@@ -12,6 +12,5 @@ DESCRIPTION="In memory size limited LRU cache"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc x86"
-IUSE=""
 
 PATCHES=("${FILESDIR}/${PN}-0.21-benchmark.patch")
