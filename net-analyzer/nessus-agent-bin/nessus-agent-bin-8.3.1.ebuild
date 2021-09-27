@@ -13,7 +13,7 @@ SRC_URI="${MY_P}.x86_64.rpm"
 
 LICENSE="GPL-2 Nessus-EULA"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="-* ~amd64"
 
 RESTRICT="mirror fetch strip"
 
