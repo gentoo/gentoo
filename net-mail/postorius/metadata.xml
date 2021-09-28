@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">postorius</remote-id>
+		<remote-id type="gitlab">mailman/postorius</remote-id>
 	</upstream>
 </pkgmetadata>
