@@ -30,7 +30,7 @@ BDEPEND="
 	sys-devel/autoconf
 	sys-devel/automake
 "
-WORKDIR_="${WORKDIR}/dogecoin-9999"
+WORKDIR_="${WORKDIR}/${P}"
 S=${WORKDIR_}
 
 src_configure() {
@@ -69,4 +69,9 @@ pkg_postinst() {
 	elog "${P} live development version has been installed."
 	elog "Dogecoin Core binaries have been placed in ${DOGEDIR}/bin."
 	elog "dogecoin.conf is in ${DOGEDIR}/dogecoind/dogecoin.conf.  It can be symlinked with where the .dogecoin resides, for example: 'ln -s ${DOGEDIR}/dogecoind/dogecoin.conf /root/.dogecoin/dogecoin.conf'."
+	if use src; then
+		#Modify tests_config.py file SRCDIR and BUILDDIR variables with correct values where Dogecoin Core is installed
+		sed -i "s#SRCDIR=\"${WORKDIR_}\"#SRCDIR=\"${DOGEDIR}/src/${P}\"#g" "${DOGEDIR}/src/${P}/qa/pull-tester/tests_config.py"
+		sed -i "s#BUILDDIR=\"${WORKDIR_}\"#BUILDDIR=\"${DOGEDIR}/bin\"#g" "${DOGEDIR}/src/${P}/qa/pull-tester/tests_config.py"
+	fi
 }

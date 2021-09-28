@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Dogecoin Core 1.14.5 development version of blockchain node and RPC server."
 HOMEPAGE="https://github.com/dogecoin"
-SRC_URI="https://github.com/${PN}/${PN}/archive/refs/heads/${PV}-dev.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/heads/${PV}-dev.tar.gz -> ${P}-dev.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 DB_VER="5.3"
@@ -30,7 +30,7 @@ BDEPEND="
 	sys-devel/autoconf
 	sys-devel/automake
 "
-WORKDIR_="${WORKDIR}/dogecoin-${PV}-dev"
+WORKDIR_="${WORKDIR}/${P}-dev"
 S=${WORKDIR_}
 
 src_configure() {
@@ -69,4 +69,9 @@ pkg_postinst() {
 	elog "${P} development version has been installed."
 	elog "Dogecoin Core binaries have been placed in ${DOGEDIR}/bin."
 	elog "dogecoin.conf is in ${DOGEDIR}/dogecoind/dogecoin.conf.  It can be symlinked with where the .dogecoin resides, for example: 'ln -s ${DOGEDIR}/dogecoind/dogecoin.conf /root/.dogecoin/dogecoin.conf'."
+	if use src; then
+		#Modify tests_config.py file SRCDIR and BUILDDIR variables with correct values where Dogecoin Core is installed
+		sed -i "s#SRCDIR=\"${WORKDIR_}\"#SRCDIR=\"${DOGEDIR}/src/${P}-dev\"#g" "${DOGEDIR}/src/${P}-dev/qa/pull-tester/tests_config.py"
+		sed -i "s#BUILDDIR=\"${WORKDIR_}\"#BUILDDIR=\"${DOGEDIR}/bin\"#g" "${DOGEDIR}/src/${P}-dev/qa/pull-tester/tests_config.py"
+	fi
 }
