@@ -36,6 +36,7 @@ DEPEND="
 "
 BDEPEND="
 	app-arch/xz-utils
+	dev-lang/perl
 	test? (
 		dev-lang/perl
 		dev-perl/Expect
