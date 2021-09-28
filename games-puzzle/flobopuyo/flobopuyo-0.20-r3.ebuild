@@ -40,7 +40,7 @@ src_prepare() {
 }
 
 src_compile() {
-	tc-export CC CXX PKG_CONFIG
+	tc-export CXX PKG_CONFIG
 
 	emake PREFIX="${EPREFIX}"/usr ENABLE_OPENGL=$(usex opengl true false)
 }
