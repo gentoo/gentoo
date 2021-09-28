@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_8 )
+PYTHON_COMPAT=( python3_{8..9} )
 inherit distutils-r1
 
 DESCRIPTION="A collection of libraries for building applications to work with OpenStack."
@@ -13,16 +13,13 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE=""
 
-CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
-	!~dev-python/pbr-2.1.0"
+CDEPEND=">dev-python/pbr-2.1.0[${PYTHON_USEDEP}]"
 RDEPEND="${CDEPEND}
 	>=dev-python/pyyaml-3.13[${PYTHON_USEDEP}]
 	>=dev-python/appdirs-1.3.0[${PYTHON_USEDEP}]
 	>=dev-python/requestsexceptions-1.2.0[${PYTHON_USEDEP}]
-	>=dev-python/jsonpatch-1.16[${PYTHON_USEDEP}]
-	!~dev-python/jsonpatch-1.20[${PYTHON_USEDEP}]
+	>dev-python/jsonpatch-1.20[${PYTHON_USEDEP}]
 	>=dev-python/os-service-types-1.7.0[${PYTHON_USEDEP}]
 	>=dev-python/keystoneauth-3.18.0[${PYTHON_USEDEP}]
 	>=dev-python/munch-2.1.0[${PYTHON_USEDEP}]
@@ -51,10 +48,7 @@ BDEPEND="${CDEPEND}
 
 distutils_enable_tests unittest
 
-python_test() {
-	distutils_install_for_testing
-	cd "${TEST_DIR}"/lib || die
-
+src_prepare() {
 	# Internet?
 	sed -e 's:test_create_dynamic_large_object:_&:' \
 		-i openstack/tests/unit/cloud/test_object.py || die
@@ -72,6 +66,12 @@ python_test() {
 		-i openstack/tests/unit/test_exceptions.py || die
 	sed -e 's:test_repr:_&:' \
 		-i openstack/tests/unit/test_resource.py || die
+
+	distutils-r1_src_prepare
+}
+
+python_test() {
+	distutils_install_for_testing
 
 	# functional tests require cloud instance access
 	eunittest -b openstack/tests/unit
