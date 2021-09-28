@@ -12,7 +12,8 @@ SRC_URI="https://download.sourceforge.net/linux-ima/${P}.tar.gz"
 RDEPEND="
 	dev-libs/openssl:0=
 	sys-apps/keyutils:="
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( app-editors/vim-core )"
 BDEPEND="
 	app-text/asciidoc
 	app-text/docbook-xsl-stylesheets
@@ -20,7 +21,9 @@ BDEPEND="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug"
+IUSE="debug test"
+
+RESTRICT="!test? ( test )"
 
 src_prepare() {
 	default
