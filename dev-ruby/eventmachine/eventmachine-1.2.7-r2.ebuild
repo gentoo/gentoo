@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby25 ruby26 ruby27"
+USE_RUBY="ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_DOCDIR="rdoc"
@@ -14,7 +14,7 @@ RUBY_FAKEGEM_GEMSPEC="eventmachine.gemspec"
 RUBY_FAKEGEM_EXTENSIONS=(ext/extconf.rb ext/fastfilereader/extconf.rb)
 RUBY_FAKEGEM_EXTRAINSTALL=(examples)
 
-inherit multilib ruby-fakegem
+inherit ruby-fakegem
 
 DESCRIPTION="EventMachine is a fast, simple event-processing library for Ruby programs"
 HOMEPAGE="https://github.com/eventmachine/eventmachine"
