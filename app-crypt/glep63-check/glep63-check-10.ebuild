@@ -21,6 +21,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="app-crypt/gnupg"
 DEPEND="
 	test? (
+		>=app-crypt/gnupg-2.2.29
 		sys-libs/libfaketime
 	)"
 
