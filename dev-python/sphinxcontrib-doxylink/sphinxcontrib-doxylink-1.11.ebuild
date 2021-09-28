@@ -25,6 +25,7 @@ BDEPEND="
 	test? (
 		app-doc/doxygen
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
+		dev-python/testfixtures[${PYTHON_USEDEP}]
 	)
 "
 
