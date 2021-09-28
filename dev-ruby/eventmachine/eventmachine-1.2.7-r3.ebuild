@@ -19,6 +19,8 @@ inherit ruby-fakegem
 DESCRIPTION="EventMachine is a fast, simple event-processing library for Ruby programs"
 HOMEPAGE="https://github.com/eventmachine/eventmachine"
 SRC_URI="https://github.com/eventmachine/eventmachine/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+# Collection of upstream patches to fix compatibility with newer OpenSSL
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-openssl-patches.tar.bz2"
 
 LICENSE="|| ( GPL-2 Ruby )"
 SLOT="0"
@@ -27,11 +29,17 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="${DEPEND}
-	dev-libs/openssl:0"
+	dev-libs/openssl:0="
 RDEPEND="${RDEPEND}
 	dev-libs/openssl:0="
 
 ruby_add_bdepend "test? ( dev-ruby/test-unit:2 )"
+
+PATCHES=(
+	# Collection of upstream patches (rebased by Fedora, thanks!) to
+	# fix (mostly test) compatibility with >= OpenSSL 1.1.1.
+	"${WORKDIR}"/all/patches/
+)
 
 all_ruby_prepare() {
 	# Remove package tasks to avoid dependency on rake-compiler.
@@ -50,20 +58,18 @@ all_ruby_prepare() {
 		-e '/test_invalid_address_bind_connect_src/,/^  end/ s:^:#:' \
 		-e '/test_invalid_address_bind_connect_dst/,/^  end/ s:^:#:' \
 		-i tests/test_basic.rb || die
-	# Avoid tests for insecure SSL versions that may not be available
-	sed -e '/test_any_to_v3/,/^    end/ s:^:#:' \
-		-e '/test_v3_/,/^    end/ s:^:#:' \
-		-e '/test_tlsv1_required_with_external_client/aomit "sslv3"' \
-		-e '/test_any_to_any/,/^    end/ s:^:#:' \
-		-e '/test_case_insensitivity/,/^    end/ s:^:#:' \
-		-e '/test_default_to_default/,/^    end/ s:^:#:' \
-		-i tests/test_ssl_protocols.rb || die
-	# Those also want network
 	sed -e '/test_ipv6_udp_local_server/,/^    end/ s:^:#:' \
 		-e '/test_ipv6_tcp_local_server/,/^    end/ s:^:#:' \
 		-i tests/test_ipv6.rb || die
-
-	rm tests/test_{sock_opt,ssl_verify,ssl_methods,ssl_dhparam,ssl_ecdh_curve,idle_connection}.rb || die
+	sed -e '/test_for_real/,/^    end/ s:^:#:' -i tests/test_pending_connect_timeout.rb || die
+	sed -e '/test_connect_timeout/,/^  end/ s:^:#:' -i tests/test_unbind_reason.rb || die
+	sed -e '/test_cookie/,/^  end/ s:^:#:' \
+		-e '/test_http_client/,/^  end/ s:^:#:' \
+		-e '/test_version_1_0/,/^  end/ s:^:#:' \
+		-i tests/test_httpclient.rb || die
+	sed -e '/test_get/,/^  end/ s:^:#:' \
+		-e '/test_https_get/,/^  end/ s:^:#:' \
+		-i tests/test_httpclient2.rb || die
 
 	# Avoid test that deliberately triggers a C++ exception which causes
 	# a SEGFAULT. This does not appear to happen upstream (on travis).
