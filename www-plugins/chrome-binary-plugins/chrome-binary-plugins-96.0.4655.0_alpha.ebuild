@@ -1,9 +1,9 @@
 # Copyright 2012-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit multilib unpacker
+inherit unpacker
 
 DESCRIPTION="Binary plugins from Google Chrome for use in Chromium"
 HOMEPAGE="https://www.google.com/chrome"
