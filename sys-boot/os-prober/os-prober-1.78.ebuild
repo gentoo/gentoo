@@ -5,7 +5,7 @@ EAPI=7
 inherit readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="Utility to detect other OSs on a set of drives"
-HOMEPAGE="https://packages.debian.org/source/sid/os-prober"
+HOMEPAGE="https://salsa.debian.org/installer-team/os-prober"
 SRC_URI="mirror://debian/pool/main/${PN::1}/${PN}/${PN}_${PV}.tar.xz"
 
 LICENSE="GPL-3"
