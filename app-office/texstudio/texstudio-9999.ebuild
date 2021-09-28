@@ -22,10 +22,10 @@ DEPEND="
 	dev-qt/designer:5
 	dev-qt/qtcore:5
 	dev-qt/qtconcurrent:5
+	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
-	dev-qt/qtscript:5
 	dev-qt/qtsingleapplication[qt5(+),X]
 	dev-qt/qtsvg:5
 	dev-qt/qttest:5
@@ -52,8 +52,8 @@ PATCHES=(
 src_prepare() {
 	xdg_src_prepare
 
-	rm -r src/quazip || die
 	# TODO: find hunspell quazip utilities/poppler-data qtsingleapplication -delete || die
+	rm -r src/quazip || die
 
 	if use video; then
 		sed "/^PHONON/s:$:true:g" -i ${PN}.pro || die
