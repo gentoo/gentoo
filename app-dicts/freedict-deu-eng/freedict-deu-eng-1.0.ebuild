@@ -6,4 +6,4 @@ EAPI=7
 inherit freedict
 
 DESCRIPTION="Freedict for language translation from German to English"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
