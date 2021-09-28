@@ -6,4 +6,4 @@ EAPI=7
 inherit freedict
 
 DESCRIPTION="Freedict for language translation from English to Italian"
-KEYWORDS="~alpha ~amd64 ~hppa ~mips ppc sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~mips ppc ~riscv sparc x86"
