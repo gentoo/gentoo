@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite"
@@ -27,6 +27,7 @@ RDEPEND="app-crypt/p11-kit
 	!fapi? ( app-crypt/tpm2-tss )
 	fapi? ( >=app-crypt/tpm2-tss-3.0.1[fapi] )
 	dev-db/sqlite:3
+	dev-libs/libyaml
 	dev-libs/openssl:=
 	dev-python/bcrypt[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
