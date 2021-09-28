@@ -4,6 +4,11 @@
 # Unmask the flag which corresponds to ARCH.
 -m68k
 
+# James Le Cuirot <chewi@gentoo.org> (2021-09-28)
+# Too many unkeyworded dependencies for now.
+efl
+subversion
+
 # James Le Cuirot <chewi@gentoo.org> (2021-09-27)
 # The Lua 5.3 tests fail on m68k so it's probably broken. 5.4 works.
 lua_targets_lua5-3
@@ -32,10 +37,6 @@ rust
 # James Le Cuirot <chewi@gentoo.org> (2021-08-20)
 # Qt is not keyworded or tested.
 qt5
-
-# James Le Cuirot <chewi@gentoo.org> (2021-08-20)
-# dev-libs/efl has many unkeyworded dependencies.
-efl
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-23)
 # valgrind has no m68k port.
