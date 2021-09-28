@@ -28,4 +28,9 @@ ruby_add_bdepend "
 all_ruby_prepare() {
 	# Remove simplecov
 	sed -i -e '/simplecov/,/^end/ s:^:#:' spec/spec_helper.rb || die
+	# Don't require git
+	sed -i \
+		-e 's/git ls-files/find/' \
+		-e 's/{test,spec,features}/spec/' \
+		${RUBY_FAKEGEM_GEMSPEC} || die
 }
