@@ -70,6 +70,6 @@ pkg_postinst() {
 	if use webengine; then
 		optfeature "ad blocking functionality" net-libs/nodejs[npm]
 		elog "Adblocker module requires additional npm modules to be installed:"
-		elog "npm i -g @cliqz/adblocker concat-stream tldts-experimental node-fetch"
+		elog "npm i -g @cliqz/adblocker tldts-experimental"
 	fi
 }
