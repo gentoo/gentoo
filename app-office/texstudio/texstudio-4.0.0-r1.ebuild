@@ -23,10 +23,10 @@ DEPEND="
 	dev-qt/designer:5
 	dev-qt/qtcore:5
 	dev-qt/qtconcurrent:5
+	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
-	dev-qt/qtscript:5
 	dev-qt/qtsingleapplication[qt5(+),X]
 	dev-qt/qtsvg:5
 	dev-qt/qttest:5
@@ -53,9 +53,7 @@ PATCHES=(
 src_prepare() {
 	xdg_src_prepare
 
-	if has_version "<dev-libs/quazip-1.0"; then
-		sed -e "/PKGCONFIG/s/quazip1-qt5/quazip/" -i ${PN}.pro || die
-	fi
+	# TODO: find hunspell quazip utilities/poppler-data qtsingleapplication -delete || die
 	rm -r src/quazip || die
 
 	if use video; then
