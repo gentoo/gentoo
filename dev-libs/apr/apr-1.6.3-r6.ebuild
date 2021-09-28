@@ -11,10 +11,12 @@ SRC_URI="mirror://apache/apr/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="1/${PV%.*}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc elibc_FreeBSD older-kernels-compatibility selinux static-libs +urandom"
 
-CDEPEND="elibc_glibc? ( >=sys-apps/util-linux-2.16 )
+# See bug #815265 for libcrypt dependency
+CDEPEND="virtual/libcrypt:=
+	elibc_glibc? ( >=sys-apps/util-linux-2.16 )
 	elibc_mintlib? ( >=sys-apps/util-linux-2.18 )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-base-policy )"
@@ -29,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.0-libtool.patch
 	"${FILESDIR}"/${PN}-1.5.0-cross-types.patch
 	"${FILESDIR}"/${PN}-1.5.0-sysroot.patch #385775
+	"${FILESDIR}"/${PN}-1.6.3-fix-overflow-check-in-overflow_strfsize.patch
 	"${FILESDIR}"/${PN}-1.6.3-skip-known-failing-tests.patch
 )
 
@@ -49,7 +52,7 @@ src_configure() {
 		--enable-posix-shm
 		--enable-threads
 		$(use_enable static-libs static)
-		--with-installbuilddir="${EPREFIX}"/usr/share/${PN}/build
+		--with-installbuilddir=/usr/share/${PN}/build
 	)
 
 	[[ ${CHOST} == *-mint* ]] && export ac_cv_func_poll=no
