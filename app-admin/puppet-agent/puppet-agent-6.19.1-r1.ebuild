@@ -72,7 +72,16 @@ src_install() {
 	dosym ../../opt/puppetlabs/bin/hiera /usr/bin/hiera
 	dosym ../../opt/puppetlabs/bin/puppet /usr/bin/puppet
 	dosym ../../opt/puppetlabs/puppet/bin/virt-what /usr/bin/virt-what
-	dosym ../../../../usr/lib64/xcrypt/libcrypt.so.1 /opt/puppetlabs/puppet/lib/libcrypt.so.1
+
+	# Handling of the path to the crypt library during the ongoing migration
+	# from glibc[crypt] to libxcrypt
+	# https://www.gentoo.org/support/news-items/2021-07-23-libxcrypt-migration.html
+	if has_version "sys-libs/glibc[crypt]"; then
+		local crypt_target='../../../../usr/lib64/xcrypt/libcrypt.so.1'
+	else
+		local crypt_target='../../../../usr/lib/libcrypt.so.1'
+	fi
+	dosym $crypt_target /opt/puppetlabs/puppet/lib/libcrypt.so.1
 }
 
 pkg_postinst() {
