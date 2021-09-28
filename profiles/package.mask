@@ -240,13 +240,6 @@ dev-util/trinity
 # Should be safe to unmask if you are using x11-wm/mutter instead.
 >=gui-libs/egl-wayland-1.1.8
 
-# David Seifert <soap@gentoo.org> (2021-08-29)
-# Broken for the past 5 years (#585942), no new upstream release in over
-# 5 years. Same issues as sci-biology/wgs-assembler, use a modern
-# assembler like sci-biology/abyss or canu.
-# Bug #585942, #731880, #808667, removal in 30 days.
-sci-biology/mira
-
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2021-08-30)
 # Homepage dead, uses gtk2, fails to build, https://bugs.gentoo.org/711344
 games-puzzle/gnudoku
