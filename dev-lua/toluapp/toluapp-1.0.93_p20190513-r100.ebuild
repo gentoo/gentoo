@@ -6,6 +6,8 @@ EAPI=7
 # Newer Lua versions are NOT supported, see Bug #508222
 LUA_COMPAT=( lua5-1 )
 
+CMAKE_REMOVE_MODULES_LIST="dist lua FindLua"
+
 inherit cmake lua-single
 
 MY_PN=${PN/pp/++}
@@ -30,7 +32,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.93_p20190513-fix-multilib.patch
 	"${FILESDIR}"/${PN}-1.0.93_p20190513-lua-version.patch
 )
-CMAKE_REMOVE_MODULES_LIST="dist lua FindLua"
 
 src_configure() {
 	local mycmakeargs=(
