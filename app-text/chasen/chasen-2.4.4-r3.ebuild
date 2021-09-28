@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge.jp/chasen-legacy/32224/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 x86 ~sparc-solaris"
+KEYWORDS="amd64 ppc ~ppc64 ~riscv x86 ~sparc-solaris"
 IUSE="perl static-libs"
 
 DEPEND=">=dev-libs/darts-0.32"
