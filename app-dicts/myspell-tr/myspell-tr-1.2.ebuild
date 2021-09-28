@@ -16,7 +16,7 @@ SRC_URI="https://extensions.libreoffice.org/assets/downloads/z/oo-turkish-dict-v
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86"
 
 src_prepare() {
 	default
