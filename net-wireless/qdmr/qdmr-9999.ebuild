@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake udev
+inherit cmake udev linux-info
 
 DESCRIPTION="GUI application for configuring and programming cheap DMR radios"
 HOMEPAGE="https://dm3mat.darc.de/qdmr/"
@@ -32,6 +32,14 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5"
 BDEPEND=""
+
+pkg_setup() {
+	CONFIG_CHECK="~USB_ACM"
+	WARNING_USB_ACM="Some radios require CONFIG_USB_ACM to work, you may need to enable this driver to talk to your radio"
+	CONFIG_CHECK="~USB_SERIAL"
+	WARNING_USB_SERIAL="Some radios require CONFIG_USB_SERIAL to work, you may need to enable this driver to talk to your radio"
+	check_extra_config
+}
 
 src_prepare() {
 	#no devil perms
