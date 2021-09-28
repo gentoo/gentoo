@@ -17,8 +17,6 @@ if [[ ! ${_MOZEXTENSION} ]]; then
 # paths specified in the eclass.
 : ${MOZEXTENSION_TARGET:=""}
 
-inherit eutils
-
 DEPEND="app-arch/unzip"
 
 mozversion_extension_location() {
