@@ -19,7 +19,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-libs/openssl:0="
+RDEPEND="dev-libs/openssl"
 
 ruby_add_bdepend "
 	test? (	>=dev-ruby/timecop-0.8 )
