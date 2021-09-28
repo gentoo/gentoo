@@ -11,6 +11,7 @@
 </maintainer>
 <use>
   <flag name="markdown">Enable support for Markdown</flag>
+  <flag name="minimagick">Enable image processing support via <pkg>dev-ruby/mini_magick</pkg></flag>
   <flag name="passenger">Enable support for <pkg>www-apache/passenger</pkg></flag>
 </use>
 </pkgmetadata>
