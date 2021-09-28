@@ -4,7 +4,6 @@ move net-libs/libkgapi kde-apps/libkgapi
 slotmove =dev-ruby/typhoeus-1.1.2 0 1
 move app-cdr/k3b kde-apps/k3b
 move net-misc/badvpn net-vpn/badvpn
-move net-firewall/ipsec-tools net-vpn/ipsec-tools
 move net-misc/libreswan net-vpn/libreswan
 move net-misc/logmein-hamachi net-vpn/logmein-hamachi
 move net-misc/openconnect net-vpn/openconnect
