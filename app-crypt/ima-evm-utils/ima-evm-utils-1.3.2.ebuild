@@ -9,6 +9,11 @@ DESCRIPTION="Supporting tools for IMA and EVM"
 HOMEPAGE="http://linux-ima.sourceforge.net"
 SRC_URI="https://download.sourceforge.net/linux-ima/${P}.tar.gz"
 
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE="debug test"
+
 RDEPEND="
 	dev-libs/openssl:0=
 	sys-apps/keyutils:="
@@ -18,10 +23,6 @@ BDEPEND="
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	test? ( app-editors/vim-core )"
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="debug test"
 
 RESTRICT="!test? ( test )"
 
