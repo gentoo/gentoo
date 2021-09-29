@@ -18,9 +18,10 @@ IUSE="examples gd"
 
 DEPEND="dev-libs/pslib gd? ( media-libs/gd:2= )"
 RDEPEND="${DEPEND}"
+PATCHES=( "${FILESDIR}/ps-1.4.4-fix-gd-detection.patch" )
 
 src_configure() {
-	PHP_EXT_ECONF_ARGS="$(use_enable gd)"
+	PHP_EXT_ECONF_ARGS=( $(use_enable gd) )
 	php-ext-source-r3_src_configure
 }
 
