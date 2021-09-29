@@ -19,7 +19,6 @@
     <flag name="browser">Enable browser source support via (precompiled) CEF.</flag>
     <flag name="decklink">Build the Decklink plugin.</flag>
     <flag name="fdk">Build with LibFDK AAC support.</flag>
-    <flag name="imagemagick">Use ImageMagick for image loading instead of FFmpeg.</flag>
     <flag name="nvenc">Build with NVENC encoding support for nVidia video cards.</flag>
     <flag name="pipewire">Build with PipeWire support.</flag>
     <flag name="python">Build with scripting support for Python 3.</flag>
