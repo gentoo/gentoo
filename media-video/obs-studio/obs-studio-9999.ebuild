@@ -1,15 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit xdg cmake lua-single python-single-r1
+inherit cmake lua-single python-single-r1 xdg
 
-OBS_BROWSER_COMMIT="f1a61c5a2579e5673765c31a47c2053d4b502d4b"
+OBS_BROWSER_COMMIT="2a338b7c76d5dd0a6b23f1d49affefd40213b0e9"
 CEF_DIR="cef_binary_4280_linux64"
 
 if [[ ${PV} == 9999 ]]; then
@@ -43,6 +43,7 @@ BDEPEND="
 	python? ( dev-lang/swig )
 "
 DEPEND="
+	dev-libs/glib:2
 	dev-libs/jansson:=
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
@@ -55,6 +56,7 @@ DEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
+	media-libs/libglvnd
 	media-libs/x264:=
 	media-video/ffmpeg:=[x264]
 	net-misc/curl
@@ -70,6 +72,7 @@ DEPEND="
 	alsa? ( media-libs/alsa-lib )
 	browser? (
 		app-accessibility/at-spi2-atk
+		app-accessibility/at-spi2-core:2
 		dev-libs/atk
 		dev-libs/expat
 		dev-libs/glib
@@ -77,7 +80,9 @@ DEPEND="
 		dev-libs/nss
 		media-libs/alsa-lib
 		media-libs/fontconfig
+		media-libs/mesa[gbm(+)]
 		net-print/cups
+		x11-libs/libdrm
 		x11-libs/libXScrnSaver
 		x11-libs/libXcursor
 		x11-libs/libXdamage
@@ -137,7 +142,7 @@ src_unpack() {
 src_configure() {
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		$(usex browser -DCEF_ROOT_DIR=../${CEF_DIR} '')
+		$(usev browser -DCEF_ROOT_DIR=../${CEF_DIR})
 		-DBUILD_BROWSER=$(usex browser)
 		-DBUILD_VST=no
 		-DENABLE_WAYLAND=$(usex wayland)
@@ -148,6 +153,7 @@ src_configure() {
 		-DDISABLE_LIBFDK=$(usex !fdk)
 		-DENABLE_PIPEWIRE=$(usex pipewire)
 		-DDISABLE_PULSEAUDIO=$(usex !pulseaudio)
+		$(cmake_use_find_package pulseaudio PulseAudio)
 		-DDISABLE_SPEEXDSP=$(usex !speex)
 		-DDISABLE_V4L2=$(usex !v4l)
 		-DDISABLE_VLC=$(usex !vlc)
@@ -195,16 +201,6 @@ pkg_postinst() {
 		elog "For the audio capture features to be available,"
 		elog "either the 'alsa' or the 'pulseaudio' USE-flag needs to"
 		elog "be enabled."
-		elog
-	fi
-
-	if ! has_version "sys-apps/dbus"; then
-		elog
-		elog "The 'sys-apps/dbus' package is not installed, but"
-		elog "could be used for disabling hibernating, screensaving,"
-		elog "and sleeping.  Where it is not installed,"
-		elog "'xdg-screensaver reset' is used instead"
-		elog "(if 'x11-misc/xdg-utils' is installed)."
 		elog
 	fi
 
