@@ -87,7 +87,7 @@ RDEPEND="${DEPEND}
 # temporary block new coreutils
 # https://github.com/openzfs/zfs/issues/11900
 RDEPEND+="
-	!>=sys-apps/coreutils-9
+	<sys-apps/coreutils-9
 "
 
 REQUIRED_USE="
