@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -26,7 +26,8 @@ SLOT="0"
 # Tests will require pre-configured endpoint
 RESTRICT="test"
 
-DEPEND=">=dev-php/swoole-4.3"
+# This will only compile with the same version of dev-php/swoole
+DEPEND="~dev-php/swoole-${PV}[php_targets_php7-1(-)?,php_targets_php7-2(-)?,php_targets_php7-3(-)?,php_targets_php7-4(-)?]"
 
 RDEPEND="${DEPEND}"
 
