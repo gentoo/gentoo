@@ -24,7 +24,7 @@ BDEPEND="verify-sig? ( app-crypt/openpgp-keys-miniupnp )"
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/miniupnp.asc
 
 PATCHES=(
-	"${FILESDIR}"/miniupnpc-2.0.20171102-shared-lib.patch
+	"${FILESDIR}"/miniupnpc-2.2.3-shared-lib.patch
 )
 
 # DOCS are installed by net-libs/miniupnpc.
