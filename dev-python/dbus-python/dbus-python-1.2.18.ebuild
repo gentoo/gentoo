@@ -55,6 +55,10 @@ src_configure() {
 	configuring() {
 		local myconf=(
 			--disable-documentation
+
+			# Work around broken AX_PYTHON_DEVEL macro.
+			# https://bugs.gentoo.org/815136
+			PYTHON_EXTRA_LIBS=' '
 		)
 		[[ ${EPYTHON} == ${SPHINX_IMPL} ]] &&
 			myconf+=( --enable-documentation )
