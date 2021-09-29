@@ -6,7 +6,7 @@ EAPI=7
 # Note: greenlet is built-in in pypy
 PYTHON_COMPAT=( python3_{7..10} )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r1
 
 DESCRIPTION="Lightweight in-process concurrent programming"
 HOMEPAGE="https://pypi.org/project/greenlet/"
