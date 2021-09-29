@@ -14,13 +14,15 @@ KEYWORDS="amd64"
 IUSE="puppetdb selinux"
 RESTRICT="strip"
 
+# virtual/libcrypt:= is in here despite being a pre-built package
+# to ensure that the has_version logic for the symlink doesn't become stale
 CDEPEND="!app-admin/puppet
 	!dev-ruby/hiera
 	!dev-ruby/facter
-	app-emulation/virt-what
+	!app-emulation/virt-what
 	acct-user/puppet
-	acct-group/puppet"
-
+	acct-group/puppet
+	virtual/libcrypt:="
 DEPEND="
 	${CDEPEND}
 	app-admin/augeas"
@@ -30,7 +32,7 @@ RDEPEND="${CDEPEND}
 	sys-libs/libselinux
 	sys-libs/glibc
 	sys-libs/readline:0/8
-	sys-libs/libxcrypt[compat]
+	sys-libs/libxcrypt
 	sys-libs/ncurses:0[tinfo]
 	selinux? (
 		sys-libs/libselinux[ruby]
@@ -53,8 +55,8 @@ src_install() {
 	insinto /etc/puppetlabs
 	doins -r etc/puppetlabs/*
 	# logdir for systemd
-	keepdir var/log/puppetlabs/puppet/
-	chmod 0750 var/log/puppetlabs/puppet/
+	dodir var/log/puppetlabs/puppet/
+	fperms 0750 var/log/puppetlabs/puppet/
 	# the rest
 	insinto /opt
 	dodir opt/puppetlabs/puppet/cache
@@ -67,9 +69,11 @@ src_install() {
 	newtmpfiles usr/lib/tmpfiles.d/puppet-agent.conf puppet-agent.conf
 	# symlinks
 	chmod 0755 -R "${D}/opt/puppetlabs/puppet/bin/"
+	chmod 0755 "${D}//opt/puppetlabs/puppet/lib/virt-what/virt-what-cpuid-helper"
 	dosym ../../opt/puppetlabs/bin/facter /usr/bin/facter
 	dosym ../../opt/puppetlabs/bin/hiera /usr/bin/hiera
 	dosym ../../opt/puppetlabs/bin/puppet /usr/bin/puppet
+	dosym ../../opt/puppetlabs/puppet/bin/virt-what /usr/bin/virt-what
 
 	# Handling of the path to the crypt library during the ongoing migration
 	# from glibc[crypt] to libxcrypt

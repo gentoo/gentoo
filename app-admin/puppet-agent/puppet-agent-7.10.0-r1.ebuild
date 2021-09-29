@@ -10,16 +10,19 @@ SRC_URI="http://apt.puppetlabs.com/pool/focal/puppet/${PN:0:1}/${PN}/${PN}_${PV}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="puppetdb selinux"
 RESTRICT="strip"
 
+# virtual/libcrypt:= is in here despite being a pre-built package
+# to ensure that the has_version logic for the symlink doesn't become stale
 CDEPEND="!app-admin/puppet
 	!dev-ruby/hiera
 	!dev-ruby/facter
 	app-emulation/virt-what
 	acct-user/puppet
-	acct-group/puppet"
+	acct-group/puppet
+	virtual/libcrypt:="
 
 DEPEND="
 	${CDEPEND}
