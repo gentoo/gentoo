@@ -88,6 +88,12 @@ RDEPEND="${DEPEND}
 	)
 "
 
+# temporary block new coreutils
+# https://github.com/openzfs/zfs/issues/11900
+RDEPEND+="
+	!>=sys-apps/coreutils-9
+"
+
 REQUIRED_USE="
 	!minimal? ( ${PYTHON_REQUIRED_USE} )
 	python? ( !minimal )
