@@ -9,6 +9,10 @@ DESCRIPTION="Supporting tools for IMA and EVM"
 HOMEPAGE="http://linux-ima.sourceforge.net"
 EGIT_REPO_URI="https://git.code.sf.net/p/linux-ima/ima-evm-utils"
 
+LICENSE="GPL-2"
+SLOT="0"
+IUSE="debug test"
+
 RDEPEND="
 	dev-libs/openssl:0=
 	sys-apps/keyutils:="
@@ -16,11 +20,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/asciidoc
 	app-text/docbook-xsl-stylesheets
-	dev-libs/libxslt"
+	dev-libs/libxslt
+	test? ( app-editors/vim-core )"
 
-LICENSE="GPL-2"
-SLOT="0"
-IUSE="debug"
+RESTRICT="!test? ( test )"
 
 src_prepare() {
 	default
