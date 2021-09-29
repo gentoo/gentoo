@@ -31,6 +31,12 @@ src_prepare() {
 	eautoreconf
 	cd ..
 	sed -i -e "s: -pg : :" tcltk/Makefile || die
+
+	# required for >=autoconf-2.70 (bug #775422)
+	local ac_aux_file
+	for ac_aux_file in install-sh config.guess config.sub ; do
+		ln -s scripts/${ac_aux_file} ${ac_aux_file} || die
+	done
 }
 
 src_configure() {
