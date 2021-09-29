@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=SREZIC
 DIST_VERSION=2.015
@@ -11,11 +11,10 @@ DESCRIPTION="lite JPEG loader for Tk::Photo"
 
 SLOT="0"
 KEYWORDS="amd64 ~ia64 ~ppc sparc x86"
-IUSE=""
 
 RDEPEND="virtual/jpeg:0
 	>=dev-perl/Tk-800.15.0"
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.580.0
 	dev-perl/Devel-CheckLib
 "
