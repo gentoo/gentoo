@@ -38,6 +38,7 @@ COMMON_DEPS="
 		dev-python/configobj[${PYTHON_USEDEP}]
 		dev-python/cryptography[${PYTHON_USEDEP}]
 		>=dev-python/feedparser-6[${PYTHON_USEDEP}]
+		>=dev-python/guessit-3.1.0[${PYTHON_USEDEP}]
 		dev-python/notify2[${PYTHON_USEDEP}]
 		dev-python/portend[${PYTHON_USEDEP}]
 		dev-python/puremagic[${PYTHON_USEDEP}]
