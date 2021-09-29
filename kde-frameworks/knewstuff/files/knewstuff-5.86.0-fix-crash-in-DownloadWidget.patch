@@ -1,0 +1,26 @@
+From d09ba1917cb7e035a9aac6c27c86fc4df5da3194 Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Mon, 27 Sep 2021 20:05:09 +0200
+Subject: [PATCH] Fix crash in DownloadWidget
+
+BUGS: 443025
+---
+ src/downloadwidget.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/downloadwidget.cpp b/src/downloadwidget.cpp
+index 40df2e8c..36cfde37 100644
+--- a/src/downloadwidget.cpp
++++ b/src/downloadwidget.cpp
+@@ -97,7 +97,7 @@ Entry::List DownloadWidget::installedEntries()
+ }
+ 
+ DownloadWidgetPrivate::DownloadWidgetPrivate(DownloadWidget *qq)
+-    : q(q)
++    : q(qq)
+     , engine(new KNSCore::Engine)
+     , model(new KNSCore::ItemsModel(engine))
+     , messageTimer(nullptr)
+-- 
+GitLab
+
