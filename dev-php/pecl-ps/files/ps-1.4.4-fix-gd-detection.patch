@@ -1,0 +1,11 @@
+--- a/config.m4
++++ b/config.m4
+@@ -38,7 +38,7 @@
+ PHP_ARG_ENABLE([gd],
+   [for GD support],
+   [AS_HELP_STRING([--enable-gd],
+-    [Include GD support])])
++    [Include GD support])], no, no)
+ 
+ if test "$PHP_GD" != "no"; then
+ 
