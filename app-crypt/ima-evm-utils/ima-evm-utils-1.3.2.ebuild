@@ -12,12 +12,12 @@ SRC_URI="https://download.sourceforge.net/linux-ima/${P}.tar.gz"
 RDEPEND="
 	dev-libs/openssl:0=
 	sys-apps/keyutils:="
-DEPEND="${RDEPEND}
-	test? ( app-editors/vim-core )"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/asciidoc
 	app-text/docbook-xsl-stylesheets
-	dev-libs/libxslt"
+	dev-libs/libxslt
+	test? ( app-editors/vim-core )"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
