@@ -1,0 +1,26 @@
+From e43878aa62e563fcefa7c1da5c44017816ac65b4 Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@gentoo.org>
+Date: Wed, 29 Sep 2021 20:15:56 +0200
+Subject: defaults/software.sh: dropbear needs libxcrypt
+
+Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
+---
+ defaults/software.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/defaults/software.sh b/defaults/software.sh
+index 54836ad..9f64ab0 100644
+--- a/defaults/software.sh
++++ b/defaults/software.sh
+@@ -67,7 +67,7 @@ GKPKG_DMRAID_BINPKG="${GKPKG_DMRAID_BINPKG:-%%CACHE%%/dmraid-${GKPKG_DMRAID_PV}-
+ 
+ GKPKG_DROPBEAR_PN="dropbear"
+ GKPKG_DROPBEAR_PV="${GKPKG_DROPBEAR_PV:-VERSION_DROPBEAR}"
+-GKPKG_DROPBEAR_DEPS="zlib"
++GKPKG_DROPBEAR_DEPS="zlib libxcrypt"
+ GKPKG_DROPBEAR_SRCTAR="${GKPKG_DROPBEAR_SRCTAR:-${DISTDIR}/dropbear-${GKPKG_DROPBEAR_PV}.tar.bz2}"
+ GKPKG_DROPBEAR_SRCDIR="${GKPKG_DROPBEAR_SRCDIR:-dropbear-${GKPKG_DROPBEAR_PV}}"
+ GKPKG_DROPBEAR_BINPKG="${GKPKG_DROPBEAR_BINPKG:-%%CACHE%%/dropbear-${GKPKG_DROPBEAR_PV}-%%ARCH%%.tar.xz}"
+-- 
+cgit v1.2.3-18-g5258
+
