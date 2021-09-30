@@ -27,7 +27,8 @@ DOCS=(AUTHORS NEWS README)
 PATCHES=( "${FILESDIR}"/${P}-fix-mutex-crash.patch
 	"${FILESDIR}"/${P}-unitialized-variable.patch
 	"${FILESDIR}"/${P}-wking-patches/
-	"${FILESDIR}"/${P}-g_printf.patch )
+	"${FILESDIR}"/${P}-g_printf.patch
+	"${FILESDIR}"/${P}-deprecated_lock_init.patch )
 
 src_prepare() {
 	default
