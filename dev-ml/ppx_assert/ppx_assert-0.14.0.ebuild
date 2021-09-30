@@ -27,3 +27,5 @@ DEPEND="
 			dev-ml/cinaps:=
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-4.12.patch )
