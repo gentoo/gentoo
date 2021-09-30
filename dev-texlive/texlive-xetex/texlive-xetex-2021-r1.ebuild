@@ -32,6 +32,11 @@ src_install() {
 pkg_postinst() {
 	texlive-module_pkg_postinst
 	font_pkg_postinst
+
+	# Force additional run of fc-cache to populate .uuid files
+	# in non-standard font dirs listed in 09-texlive.conf
+	# Bug: 812401
+	fc-cache -fs "${EROOT}"/usr/share/texmf-dist/fonts/opentype "${EROOT}"/usr/share/texmf-dist/fonts/truetype
 }
 
 pkg_postrm() {
