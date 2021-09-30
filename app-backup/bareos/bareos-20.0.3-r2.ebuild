@@ -59,7 +59,6 @@ DEPEND="
 		sys-libs/ncurses:=
 		sys-libs/zlib
 	)
-	vmware? ( dev-lang/python:2.7 )
 	"
 RDEPEND="${DEPEND}
 	!clientonly? (
@@ -198,10 +197,11 @@ src_install() {
 	rm -f "${D}"/etc/bareos/bareos-regress.conf
 	rm -f "${D}"/etc/logrotate.d/bareos-dir
 
-	# get rid of py2 stuff if USE=-vmware
+	# get rid of py2 stuff
+	rm -rf "$D"/usr/lib64/python2.7
+	rm -f "$D"/usr/lib64/bareos/plugin/python-fd.so
 	if ! use vmware; then
-		rm -f "$D"/usr/lib64/bareos/plugin/{BareosFdPluginVMware.py,bareos-fd-vmware.py,python-fd.so}
-		rm -rf "$D"/usr/lib64/python2.7
+		rm -f "$D"/usr/lib64/bareos/plugin/{BareosFdPluginVMware.py,bareos-fd-vmware.py}
 	fi
 
 	# rename statically linked apps
