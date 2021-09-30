@@ -26,15 +26,10 @@ DEPEND="
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/plasma-${KFMIN}:5
 	media-libs/libcanberra
-	media-sound/pulseaudio
+	media-libs/libpulse
 "
 RDEPEND="${DEPEND}
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 	>=kde-frameworks/kirigami-${KFMIN}:5
-	|| (
-		media-video/pipewire
-		media-sound/pulseaudio-daemon
-		media-sound/pulseaudio[daemon(+)]
-	)
 	x11-themes/sound-theme-freedesktop
 "
