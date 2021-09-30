@@ -11,7 +11,7 @@ DESCRIPTION="Location (places, maps, navigation) library for the Qt5 framework"
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	MAPBOXGL_COMMIT=d3101bbc22edd41c9036ea487d4a71eabd97823d
 	SRC_URI+=" https://invent.kde.org/qt/qt/${PN}-mapboxgl/-/archive/${MAPBOXGL_COMMIT}/${PN}-mapboxgl-${MAPBOXGL_COMMIT}.tar.gz -> ${PN}-mapboxgl-${PV}-${MAPBOXGL_COMMIT:0:8}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
+	KEYWORDS="amd64 arm ~arm64 ~riscv x86"
 fi
 
 IUSE=""
