@@ -46,7 +46,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/libgpg-error
 	dev-libs/libgudev:=
 	>=dev-libs/libjcat-0.1.0[gpg,pkcs7]
-	>=dev-libs/libxmlb-0.1.13:=
+	>=dev-libs/libxmlb-0.1.13:=[introspection?]
 	$(python_gen_cond_dep '
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pycairo[${PYTHON_USEDEP}]
