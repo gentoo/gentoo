@@ -29,7 +29,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="${PYTHON_DEPS}
+BDEPEND="$(python_gen_any_dep)
 	$(vala_depend)
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
@@ -38,6 +38,8 @@ BDEPEND="${PYTHON_DEPS}
 "
 
 S="${WORKDIR}/${PN}-VERSION_${PV}"
+
+python_check_deps() { return 0; }
 
 pkg_setup() {
 	python_setup
