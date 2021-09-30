@@ -37,16 +37,11 @@ DEPEND="
 	plasma? ( >=kde-frameworks/plasma-${KFMIN}:5 )
 	pulseaudio? (
 		media-libs/libcanberra
-		>=media-sound/pulseaudio-0.9.12
+		media-libs/libpulse
 	)
 "
 RDEPEND="${DEPEND}
 	kde-plasma/kde-cli-tools:5
-	pulseaudio? ( || (
-		media-video/pipewire
-		media-sound/pulseaudio-daemon
-		media-sound/pulseaudio[daemon(+)]
-	) )
 "
 
 src_configure() {
