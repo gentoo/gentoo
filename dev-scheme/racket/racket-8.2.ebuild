@@ -81,18 +81,24 @@ src_prepare() {
 }
 
 src_configure() {
-	# According to vapier, we should use the bundled libtool
+	# Libtool:
+	#   According to vapier, we should use the bundled libtool
 	#   such that we don't preclude cross-compile.
 	#   Thus don't use --enable-lt=/usr/bin/libtool
-	# --enable-bc builds Racket w/o chez backend
+	# Backend:
+	#   --enable-bc builds Racket w/o chez backend
+	# C Libraries:
+	#   --enable-libs & --disable-shared is the way to build
+	#   .a files that are needed to embed Racket into programs
+	#   https://docs.racket-lang.org/inside/cs-embedding.html
 	local myconf=(
-		--disable-libs
+		--disable-shared
 		--disable-strip
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 		--enable-float
 		--enable-foreign
 		--enable-libffi
-		--enable-shared
+		--enable-libs
 		$(usex chez "--enable-cs --enable-csonly" "--enable-bc --enable-bconly")
 		$(use_enable X gracket)
 		$(use_enable doc docs)
@@ -107,13 +113,17 @@ src_configure() {
 src_install() {
 	default
 
+	# Install Racket boot files
+	if use chez; then
+		pushd "${S}"/cs/c || die
+		emake DESTDIR="${ED}" unix-install-boot-files
+		popd || die
+	fi
+
 	# raco needs decompressed files for packages doc installation bug 662424
 	if use doc; then
 		docompress -x /usr/share/doc/${PF}
 	fi
-
-	# Remove unneeded "*.a" and "*.la" files
-	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 
 	# Create missing desktop files and icon
 	if use X && ! use minimal; then
