@@ -1,0 +1,46 @@
+From c869ac450ae286908cfed582b0c51fe327555833 Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@gentoo.org>
+Date: Thu, 30 Sep 2021 23:12:52 +0200
+Subject: gen_initramfs.sh: append_modprobed(): Adopt changes from
+ sys-apps/baselayout-2.8
+
+In >=sys-apps/baselayout-2.8, /etc/modprobe.d was moved to /lib/modprobe.d.
+
+This commit will try to copy /etc/modprobe.d and /lib/modprobe.d but will
+no longer fail if one directory is missing.
+
+Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
+---
+ gen_initramfs.sh | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/gen_initramfs.sh b/gen_initramfs.sh
+index 8f11127..56d6a03 100755
+--- a/gen_initramfs.sh
++++ b/gen_initramfs.sh
+@@ -1832,10 +1832,19 @@ append_modprobed() {
+ 	mkdir "${TDIR}" || gen_die "Failed to create '${TDIR}'!"
+ 	cd "${TDIR}" || gen_die "Failed to chdir to '${TDIR}'!"
+ 
+-	mkdir -p "${TDIR}"/etc || gen_die "Failed to create '${TDIR}/etc'!"
++	local modprobe_dir
++	for modprobe_dir in /etc/modprobe.d /lib/modprobe.d
++	do
++		if [[ ! -e "${modprobe_dir}" ]]; then
++			print_info 5 "'${modprobe_dir}' does not exist; Skipping ..."
++			continue
++		fi
++
++		mkdir -p "${TDIR}${modprobe_dir}" || gen_die "Failed to create '${TDIR}${modprobe_dir}'!"
+ 
+-	cp -rL "/etc/modprobe.d" "${TDIR}"/etc/ 2>/dev/null \
+-		|| gen_die "Failed to copy '/etc/modprobe.d'!"
++		cp -aL "${modprobe_dir}"/. "${TDIR}${modprobe_dir}" 2>/dev/null \
++			|| gen_die "Failed to copy '${modprobe_dir}'!"
++	done
+ 
+ 	cd "${TDIR}" || gen_die "Failed to chdir to '${TDIR}'!"
+ 	log_future_cpio_content
+-- 
+cgit v1.2.3-18-g5258
+
