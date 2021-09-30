@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_REQ_USE="xml"
 
 inherit python-any-r1 verify-sig
 
