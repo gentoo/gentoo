@@ -3,11 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{8..10} )
 USE_RUBY="ruby25 ruby26 ruby27"
 DISTUTILS_OPTIONAL=1
-DISTUTILS_USE_SETUPTOOLS=no
-
 LUA_COMPAT=( lua5-{1..3} )
 
 inherit autotools distutils-r1 lua-single ruby-single
