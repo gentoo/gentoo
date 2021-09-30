@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 
 RDEPEND="media-libs/libsdl[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
