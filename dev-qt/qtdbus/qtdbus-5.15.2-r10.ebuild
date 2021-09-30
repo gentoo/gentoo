@@ -16,7 +16,7 @@ fi
 IUSE=""
 
 DEPEND="
-	~dev-qt/qtcore-${PV}:5=
+	=dev-qt/qtcore-${QT5_PV}*:5=
 	>=sys-apps/dbus-1.4.20
 "
 RDEPEND="${DEPEND}"

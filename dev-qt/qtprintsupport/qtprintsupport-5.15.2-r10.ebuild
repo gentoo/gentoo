@@ -17,13 +17,13 @@ fi
 IUSE="cups gles2-only"
 
 RDEPEND="
-	~dev-qt/qtcore-${PV}:5=
-	~dev-qt/qtgui-${PV}[gles2-only=]
-	~dev-qt/qtwidgets-${PV}[gles2-only=]
+	=dev-qt/qtcore-${QT5_PV}*:5=
+	=dev-qt/qtgui-${QT5_PV}*[gles2-only=]
+	=dev-qt/qtwidgets-${QT5_PV}*[gles2-only=]
 	cups? ( >=net-print/cups-1.4 )
 "
 DEPEND="${RDEPEND}
-	test? ( ~dev-qt/qtnetwork-${PV} )
+	test? ( =dev-qt/qtnetwork-${QT5_PV}* )
 "
 
 QT5_TARGET_SUBDIRS=(

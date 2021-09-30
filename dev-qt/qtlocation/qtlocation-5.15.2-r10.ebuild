@@ -18,16 +18,16 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/icu:=
-	~dev-qt/qtcore-${PV}
-	~dev-qt/qtdeclarative-${PV}
-	~dev-qt/qtgui-${PV}
-	~dev-qt/qtnetwork-${PV}
-	~dev-qt/qtpositioning-${PV}[qml]
-	~dev-qt/qtsql-${PV}
+	=dev-qt/qtcore-${QT5_PV}*
+	=dev-qt/qtdeclarative-${QT5_PV}*
+	=dev-qt/qtgui-${QT5_PV}*
+	=dev-qt/qtnetwork-${QT5_PV}*
+	=dev-qt/qtpositioning-${QT5_PV}*[qml]
+	=dev-qt/qtsql-${QT5_PV}*
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
-	~dev-qt/qtconcurrent-${PV}
+	=dev-qt/qtconcurrent-${QT5_PV}*
 "
 
 QT5_TARGET_SUBDIRS=(
