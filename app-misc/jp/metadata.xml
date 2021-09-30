@@ -6,9 +6,9 @@
 		<name>Zac Medico</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://github.com/pipebus/jpp/issues</bugs-to>
-		<changelog>https://github.com/pipebus/jpp/commits/master</changelog>
-		<remote-id type="github">pipebus/jpp</remote-id>
+		<bugs-to>https://github.com/jmespath/jp/issues</bugs-to>
+		<changelog>https://github.com/jmespath/jp/commits/master</changelog>
+		<remote-id type="github">jmespath/jp</remote-id>
 	</upstream>
 	<use>
 		<flag name="jp">
