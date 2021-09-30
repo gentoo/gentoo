@@ -1,0 +1,30 @@
+From e6cab5d96f7b51a5cf4be3d93a7e2d4fee1cddae Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Thu, 23 Sep 2021 19:29:05 +0300
+Subject: [PATCH] Fix build with gpsd 3.23.1
+
+STATUS_NO_FIX was renamed to STATUS_UNK.
+
+https://gitlab.com/gpsd/gpsd/-/commit/d4a4d8d3606fd50f10bcd20096a8a0cdb8b2d427
+---
+ dataengines/geolocation/location_gps.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/dataengines/geolocation/location_gps.cpp b/dataengines/geolocation/location_gps.cpp
+index 858059ada..ec9ec14ae 100644
+--- a/dataengines/geolocation/location_gps.cpp
++++ b/dataengines/geolocation/location_gps.cpp
+@@ -52,7 +52,9 @@ void Gpsd::run()
+ #else
+             if (m_gpsdata->online) {
+ #endif
+-#if GPSD_API_MAJOR_VERSION >= 10
++#if defined(STATUS_UNK) // STATUS_NO_FIX was renamed to STATUS_UNK without bumping API version
++                if (m_gpsdata->fix.status != STATUS_UNK) {
++#elif GPSD_API_MAJOR_VERSION >= 10
+                 if (m_gpsdata->fix.status != STATUS_NO_FIX) {
+ #else
+                 if (m_gpsdata->status != STATUS_NO_FIX) {
+-- 
+GitLab
+

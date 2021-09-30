@@ -151,6 +151,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-krunner-cwd-at-home.patch" # TODO upstream: KDE-bug 432975, bug 767478
 	"${FILESDIR}/${P}-fix-powermanagement-inhibition.patch" # KDE-bug 433675
 	"${FILESDIR}/${P}-fix-hotplug-notifications.patch" # KDE-bug 438874, bug 814284
+	"${FILESDIR}/${P}-gpsd-3.23.1.patch"
 )
 
 src_prepare() {
