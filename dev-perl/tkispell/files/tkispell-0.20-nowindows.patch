@@ -1,0 +1,12 @@
+diff -ruN App-tkispell-0.20.orig/Makefile.PL App-tkispell-0.20/Makefile.PL
+--- App-tkispell-0.20.orig/Makefile.PL	2020-10-13 18:20:04.000000000 +0200
++++ App-tkispell-0.20/Makefile.PL	2021-09-30 22:15:54.013859210 +0200
+@@ -27,7 +27,7 @@
+ 
+ # The first match is for Solaris which.  The second is for 
+ # Linux which. The 3rd one for Windows.
+-if( ($ispell_bin =~ /no ispell/) || (length($ispell_bin) == 0 || $ispell_bin !~ m/(?:i|a)spell.exe$/) ) {
++if( ($ispell_bin =~ /no ispell/) || (length($ispell_bin) == 0) ) {
+     print "Could not find locate ispell or aspell.\n";
+     print "Make sure that the program is installed in a directory\n";
+     print "named in the PATH environment variable.\n";  
