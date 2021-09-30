@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit toolchain-funcs
 
 DESCRIPTION="Open source flash program for STM32 using the ST serial bootloader"
