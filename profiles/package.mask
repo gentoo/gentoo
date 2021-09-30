@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2021-09-30)
+# Deprecated upstream
+# bug #815466.
+dev-ml/ppx_metaquot
+
 # John Helmert III <ajak@gentoo.org> (2021-09-29)
 # VM image data corruption bug, causing I/O errors in VMs. Bug #815379
 =app-emulation/qemu-6.1.0
