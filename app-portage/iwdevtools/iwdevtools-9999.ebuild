@@ -41,12 +41,24 @@ pkg_postinst() {
 	optfeature "detecting potential ABI issues using abidiff" dev-util/libabigail
 
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
-		elog "To (optionally) integrate with portage, inspect the .bashrc files installed"
-		elog "at ${EROOT}/usr/share/${PN}. If not already using a bashrc, you can use"
-		elog "the example bashrc directly by creating a symlink:"
+		elog "Optional portage integration relies on using /etc/portage/bashrc."
+		elog "The example bashrc can be used as-is if not already using one:"
 		elog
 		elog "    ln -s ../../usr/share/${PN}/bashrc ${EROOT}/etc/portage/bashrc"
 		elog
-		elog "See ${EROOT}/usr/share/doc/${PF}/README.rst* for info on tools."
+		elog "Otherwise, inspect the tools' --help output and the example to integrate"
+		elog "(if not defining the same phase functions, the example can be sourced)."
+		elog
+		elog "Note that \`eqawarn\` is used for portage output by default. QA messages"
+		elog "aren't logged / shown post-emerge unless e.g. in /etc/portage/make.conf:"
+		elog
+		elog '    PORTAGE_ELOG_CLASSES="${PORTAGE_ELOG_CLASSES} qa"'
+		elog
+		elog "See ${EROOT}/usr/share/doc/${PF}/README.rst* for information on tools."
+	fi
+
+	if ver_test ${REPLACING_VERSIONS} -le 0.7.0; then
+		elog "qa-* bashrcs now use \`eqawarn\` for portage output. If no longer"
+		elog "seeing messages post-emerge, ensure 'qa' is in PORTAGE_ELOG_CLASSES."
 	fi
 }
