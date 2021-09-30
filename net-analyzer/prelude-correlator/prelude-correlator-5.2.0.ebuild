@@ -9,7 +9,7 @@ inherit distutils-r1 systemd tmpfiles
 
 DESCRIPTION="Real time correlator of events received by Prelude Manager"
 HOMEPAGE="https://www.prelude-siem.org"
-SRC_URI="https://www.prelude-siem.org/pkg/src/5.2.0/${P}.tar.gz"
+SRC_URI="https://www.prelude-siem.org/pkg/src/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
