@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 
 inherit distutils-r1
 
@@ -18,7 +18,7 @@ RDEPEND="
 	>=dev-python/python-dateutil-2.7.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	' python3_7)"
+	' pypy3)"
 
 BDEPEND="
 	test? (
