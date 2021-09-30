@@ -21,7 +21,7 @@ REQUIRED_USE="
 "
 
 DEPEND="
-	~dev-qt/qtcore-${PV}:5=
+	=dev-qt/qtcore-${QT5_PV}*:5=
 	freetds? ( dev-db/freetds )
 	mysql? ( dev-db/mysql-connector-c:= )
 	oci8? ( dev-db/oracle-instantclient:=[sdk] )

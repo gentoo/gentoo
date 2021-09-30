@@ -15,9 +15,9 @@ fi
 IUSE="qml +ssl"
 
 DEPEND="
-	~dev-qt/qtcore-${PV}
-	~dev-qt/qtnetwork-${PV}[ssl=]
-	qml? ( ~dev-qt/qtdeclarative-${PV} )
+	=dev-qt/qtcore-${QT5_PV}*
+	=dev-qt/qtnetwork-${QT5_PV}*[ssl=]
+	qml? ( =dev-qt/qtdeclarative-${QT5_PV}* )
 
 "
 RDEPEND="${DEPEND}"

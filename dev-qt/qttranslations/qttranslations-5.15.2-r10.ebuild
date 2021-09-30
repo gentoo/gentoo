@@ -14,5 +14,5 @@ fi
 
 IUSE=""
 
-DEPEND="=dev-qt/qtcore-${PV}*"
-BDEPEND="=dev-qt/linguist-tools-${PV}*"
+DEPEND="=dev-qt/qtcore-${QT5_PV}*"
+BDEPEND="=dev-qt/linguist-tools-${QT5_PV}*"

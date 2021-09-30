@@ -17,12 +17,12 @@ fi
 IUSE=""
 
 RDEPEND="
-	~dev-qt/qtcore-${PV}:5=
+	=dev-qt/qtcore-${QT5_PV}*:5=
 "
 DEPEND="${RDEPEND}
 	test? (
-		~dev-qt/qtgui-${PV}
-		~dev-qt/qtxml-${PV}
+		=dev-qt/qtgui-${QT5_PV}*
+		=dev-qt/qtxml-${QT5_PV}*
 	)
 "
 

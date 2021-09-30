@@ -16,10 +16,10 @@ fi
 IUSE=""
 
 RDEPEND="
-	~dev-qt/qtcore-${PV}:5=
+	=dev-qt/qtcore-${QT5_PV}*:5=
 "
 DEPEND="${RDEPEND}
-	test? ( ~dev-qt/qtnetwork-${PV} )
+	test? ( =dev-qt/qtnetwork-${QT5_PV}* )
 "
 
 QT5_TARGET_SUBDIRS=(
