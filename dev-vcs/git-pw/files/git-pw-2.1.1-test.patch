@@ -1,0 +1,28 @@
+From 08152c86d02c36c425047fa9220d6d5ac3fcda01 Mon Sep 17 00:00:00 2001
+From: Matt Smith <matt@offtopica.uk>
+Date: Sun, 26 Sep 2021 19:55:40 +0100
+Subject: [PATCH] tests: Unset PAGER env when testing fallback
+
+Prior to this commit, the test test_echo_via_pager_env_default will
+fail when $PAGER is set to /usr/bin/less (or anything other than
+"less").  Use unittest.mock to unset the environment variable during
+the test.
+---
+ tests/test_utils.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+index cf75a55..a0974f1 100644
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -75,6 +75,7 @@ def test_echo_via_pager_env_PAGER(mock_inner, mock_tabulate, mock_config):
+ @mock.patch.object(utils, 'git_config', return_value=None)
+ @mock.patch.object(utils, '_tabulate')
+ @mock.patch.object(utils, '_echo_via_pager')
++@mock.patch.dict(os.environ, {'PAGER': ''})
+ def test_echo_via_pager_env_default(mock_inner, mock_tabulate, mock_config):
+     utils.echo_via_pager('test', ('foo',), None)
+ 
+-- 
+2.33.0
+

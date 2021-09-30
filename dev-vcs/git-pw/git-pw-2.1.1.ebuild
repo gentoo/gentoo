@@ -21,6 +21,8 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
+PATCHES=( "${FILESDIR}/${P}-test.patch" )
+
 RDEPEND="
 	>=dev-python/arrow-0.10[${PYTHON_USEDEP}]
 	<dev-python/click-8.0[${PYTHON_USEDEP}]
