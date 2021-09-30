@@ -22,8 +22,13 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/findlib.patch"
-	"${FILESDIR}"/${P}-this-expression-has-type.patch
 )
+
+src_prepare() {
+	has_version "dev-lang/ocaml:0/4.11" && \
+		eapply "${FILESDIR}"/${P}-this-expression-has-type.patch
+	default
+}
 
 src_configure() {
 	./configure --use-findlib --verbose $(usex X "--tk-x11" "--tk-no-x11") || die "configure failed!"
