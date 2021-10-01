@@ -34,7 +34,7 @@ PATCH_DEV=dilfridge
 
 SRC_URI+=" https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
-SRC_URI+=" https://dev.gentoo.org/~slyfox/distfiles/glibc-2.30-sparc-reg-fix-clobber.patch"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/glibc-2.30-sparc-reg-fix-clobber.patch"
 
 IUSE="audit caps cet compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib nscd profile selinux +ssp +static-libs suid systemtap test vanilla"
 
