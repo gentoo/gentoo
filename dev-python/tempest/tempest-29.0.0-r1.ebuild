@@ -53,3 +53,8 @@ python_test() {
 	local -x OS_LOG_CAPTURE=1 OS_STDOUT_CAPTURE=1 OS_STDERR_CAPTURE=1 OS_TEST_TIMEOUT=160
 	eunittest -b
 }
+
+src_install() {
+	distutils-r1_src_install
+	mv "${ED}/usr/etc" "${ED}/etc" || die
+}
