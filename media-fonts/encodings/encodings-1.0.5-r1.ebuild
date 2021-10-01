@@ -13,3 +13,8 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 
 
 BDEPEND="x11-apps/mkfontscale
 	>=media-fonts/font-util-1.1.1-r1"
+
+XORG_CONFIGURE_OPTIONS=(
+	# https://bugs.gentoo.org/815520
+	--with-fontrootdir="${EPREFIX}"/usr/share/fonts
+)
