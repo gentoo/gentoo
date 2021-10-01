@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 # TODO: revert to rdepend once this is merged
 # https://github.com/openstack/cliff/pull/3
 DISTUTILS_USE_SETUPTOOLS=manual
@@ -28,8 +28,7 @@ RDEPEND="
 	>=dev-python/pyyaml-3.12.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	>=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
-	!~dev-python/pbr-2.1.0
+	>dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
