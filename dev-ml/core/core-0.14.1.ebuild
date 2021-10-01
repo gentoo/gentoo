@@ -11,14 +11,13 @@ SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+ocamlopt"
 
 # TODO: Wants quickcheck_deprecated?
 RESTRICT="test"
 
 RDEPEND="
-	<dev-lang/ocaml-4.12
 	dev-ml/base:=
 	dev-ml/core_kernel:=
 	dev-ml/jst-config:=
@@ -29,3 +28,7 @@ RDEPEND="
 	dev-ml/timezone:=
 "
 DEPEND="${RDEPEND}"
+
+src_compile() {
+	dune build @install --profile release || die
+}
