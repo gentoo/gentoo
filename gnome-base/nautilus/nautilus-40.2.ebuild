@@ -72,7 +72,7 @@ src_configure() {
 		-Dextensions=true # image file properties, sendto support; also required for -Dgstreamer=true
 		$(meson_use gstreamer) # gstreamer audio-video-properties extension
 		$(meson_use introspection)
-		-Dlibportal=false
+		-Dlibportal=false # As of 40.2, all libportal usages are flatpak-specific
 		-Dpackagekit=false
 		$(meson_use selinux)
 		-Dprofiling=false
