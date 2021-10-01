@@ -17,6 +17,7 @@ IUSE="+ocamlopt"
 RESTRICT="test"
 
 RDEPEND="
+	<dev-lang/ocaml-4.12
 	dev-ml/re:=
 	dev-ml/opam-file-format:=
 	~dev-ml/opam-repository-${PV}:=
