@@ -10,7 +10,7 @@ PATCH_VER="4"
 DESCRIPTION="Compatibility package for binaries linked against a pre gcc 3.4 libstdc++"
 HOMEPAGE="https://gcc.gnu.org/libstdc++/"
 SRC_URI="ftp://gcc.gnu.org/pub/gcc/releases/gcc-${PV}/gcc-${PV}.tar.bz2
-	https://dev.gentoo.org/~slyfox/distfiles/gcc-${PV}-patches-${PATCH_VER}.tar.bz2"
+	https://dev.gentoo.org/~sam/distfiles/gcc-${PV}-patches-${PATCH_VER}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="5"
