@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">reno</remote-id>
+		<remote-id type="github">openstack/reno</remote-id>
 	</upstream>
 </pkgmetadata>
