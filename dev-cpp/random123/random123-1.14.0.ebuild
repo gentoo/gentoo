@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="library of counter-based random number generators (CBRNGs)"
 HOMEPAGE="https://www.deshawresearch.com/resources_random123.html"
-SRC_URI="https://github.com/DEShawResearch/random123/archive/refs/tags/v${PV}.tar.gz"
+SRC_URI="https://github.com/DEShawResearch/random123/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
