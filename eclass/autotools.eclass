@@ -112,7 +112,7 @@ if [[ -n ${WANT_LIBTOOL} ]] ; then
 fi
 
 # @ECLASS-VARIABLE: AUTOTOOLS_DEPEND
-# @INTERNAL
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Contains the combination of requested automake/autoconf/libtool
 # versions in *DEPEND format.
