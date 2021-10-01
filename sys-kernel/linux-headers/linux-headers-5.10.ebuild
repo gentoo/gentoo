@@ -12,7 +12,7 @@ PATCH_PV=${PV} # to ease testing new versions against not existing patches
 PATCH_VER="1"
 SRC_URI="${KERNEL_URI}
 	${PATCH_VER:+mirror://gentoo/gentoo-headers-${PATCH_PV}-${PATCH_VER}.tar.xz}
-	${PATCH_VER:+https://dev.gentoo.org/~slyfox/distfiles/gentoo-headers-${PATCH_PV}-${PATCH_VER}.tar.xz}
+	${PATCH_VER:+https://dev.gentoo.org/~sam/distfiles/gentoo-headers-${PATCH_PV}-${PATCH_VER}.tar.xz}
 "
 
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
