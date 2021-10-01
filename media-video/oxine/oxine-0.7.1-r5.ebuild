@@ -23,7 +23,7 @@ COMMON_DEPEND="
 	joystick? ( media-libs/libjsw )
 	jpeg? (
 		media-gfx/imagemagick
-		media-libs/netpbm[jpeg,zlib]
+		media-libs/netpbm[jpeg,zlib(+)]
 		media-video/mjpegtools
 	)
 	lirc? ( app-misc/lirc )
@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	)
 	png? (
 		media-gfx/imagemagick
-		media-libs/netpbm[png,zlib]
+		media-libs/netpbm[png,zlib(+)]
 		media-video/mjpegtools
 	)
 	X? (
