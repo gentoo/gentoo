@@ -8,7 +8,7 @@ if [[ ${PV} == "99999999" ]] ; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/crossdev.git"
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz
-		https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.xz"
+		https://dev.gentoo.org/~sam/distfiles/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
