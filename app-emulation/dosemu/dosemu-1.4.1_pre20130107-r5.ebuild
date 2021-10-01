@@ -13,7 +13,7 @@ COMMIT="15cfb41ff20a052769d753c3262c57ecb050ad71"
 DESCRIPTION="DOS Emulator"
 HOMEPAGE="http://www.dosemu.org/"
 SRC_URI="mirror://sourceforge/dosemu/${P_FD}.tgz
-	https://dev.gentoo.org/~slyfox/distfiles/${P}.zip"
+	https://dev.gentoo.org/~sam/distfiles/${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
