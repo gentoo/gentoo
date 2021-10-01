@@ -17,5 +17,6 @@
 	<upstream>
 		<remote-id type="pypi">oslo.i18n</remote-id>
 		<remote-id type="launchpad">oslo</remote-id>
+		<remote-id type="github">openstack/oslo.i18n</remote-id>
 	</upstream>
 </pkgmetadata>
