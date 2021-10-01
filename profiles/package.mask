@@ -36,7 +36,7 @@
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-10-01)
 # KDE Plasma 5.22.90 (5.23 Beta) mask - Pre-release version
 # See also: https://kde.org/announcements/plasma/5/5.22.90/
-# KDE Plasma Review Day on 2021-10-01: https://tinyurl.com/kdereview
+# KDE Plasma Beta Review Day on 2021-10-01: https://tinyurl.com/kdereview
 ~kde-plasma/bluedevil-5.22.90
 ~kde-plasma/breeze-5.22.90
 ~kde-plasma/breeze-grub-5.22.90
