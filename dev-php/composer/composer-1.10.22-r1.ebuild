@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-php/json-schema-5.2.10
 	>=dev-php/jsonlint-1.7.1
 	>=dev-php/phar-utils-1.0.1
-	>=dev-php/semver-1.4.2
+	<dev-php/semver-3.0
 	>=dev-php/spdx-licenses-1.5.0
 	>=dev-php/symfony-console-2.8.48
 	>=dev-php/symfony-filesystem-2.8.48
