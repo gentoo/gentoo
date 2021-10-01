@@ -1,0 +1,22 @@
+From 7ad54cce49ce22b063e0cd56edb4b7f722dc5e8e Mon Sep 17 00:00:00 2001
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: Wed, 29 Sep 2021 14:20:53 +0200
+Subject: [PATCH] tests/rust: add libm to fix build with rust 1.55
+
+Fixes #9309
+---
+ test cases/rust/5 polyglot static/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/test cases/rust/5 polyglot static/meson.build b/test cases/rust/5 polyglot static/meson.build
+index de2e61bcbc3..a6e9550b6e2 100644
+--- a/test cases/rust/5 polyglot static/meson.build	
++++ b/test cases/rust/5 polyglot static/meson.build	
+@@ -2,6 +2,7 @@ project('static rust and c polyglot executable', 'c', 'rust')
+ 
+ deps = [
+   meson.get_compiler('c').find_library('dl', required: false),
++  meson.get_compiler('c').find_library('m', required: false),
+   dependency('threads'),
+ ]
+ 
