@@ -15,5 +15,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">oslo.context</remote-id>
+    <remote-id type="github">openstack/oslo.context</remote-id>
   </upstream>
 </pkgmetadata>
