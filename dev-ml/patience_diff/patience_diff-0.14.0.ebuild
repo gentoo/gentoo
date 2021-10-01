@@ -19,3 +19,7 @@ RDEPEND="
 	dev-ml/core_kernel:=
 	dev-ml/ppx_jane:=
 "
+
+src_compile() {
+	dune build @install --profile release || die
+}
