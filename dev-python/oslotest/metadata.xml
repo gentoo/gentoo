@@ -23,5 +23,6 @@
 	<upstream>
 		<remote-id type="pypi">oslotest</remote-id>
 		<remote-id type="launchpad">oslo</remote-id>
+		<remote-id type="github">openstack/oslotest</remote-id>
 	</upstream>
 </pkgmetadata>
