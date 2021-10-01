@@ -12,5 +12,6 @@
 	<upstream>
 		<remote-id type="launchpad">subunit</remote-id>
 		<remote-id type="pypi">python-subunit</remote-id>
+		<remote-id type="github">testing-cabal/subunit</remote-id>
 	</upstream>
 </pkgmetadata>
