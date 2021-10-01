@@ -8,6 +8,7 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		Theme and extension support for Sphinx documentation that is published to docs.openstack.org and developer.openstack.org.
 	</longdescription>
