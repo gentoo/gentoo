@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~riscv x86"
 IUSE=""
 
 # Only installs fonts
