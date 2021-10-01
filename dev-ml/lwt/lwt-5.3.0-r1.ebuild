@@ -32,4 +32,9 @@ BDEPEND="
 # backported from https://github.com/ocsigen/lwt/pull/807
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.3.0-ppxlib-0.18.0.patch
+	"${FILESDIR}"/${P}-ocaml-4.12.patch
 )
+
+src_compile() {
+	dune build @install --profile release || die
+}
