@@ -10,11 +10,11 @@ inherit flag-o-matic savedconfig toolchain-funcs
 DESCRIPTION="Utilities for rescue and embedded systems"
 HOMEPAGE="https://www.busybox.net/"
 if [[ ${PV} == "9999" ]] ; then
-	MY_P=${P}
+	MY_P="${P}"
 	EGIT_REPO_URI="https://git.busybox.net/busybox"
 	inherit git-r3
 else
-	MY_P=${PN}-${PV/_/-}
+	MY_P="${PN}-${PV/_/-}"
 	SRC_URI="https://www.busybox.net/downloads/${MY_P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
@@ -26,18 +26,18 @@ REQUIRED_USE="pam? ( !static )"
 RESTRICT="test"
 
 # TODO: Could make pkgconfig conditional on selinux? bug #782829
-COMMON_DEPEND="!static? ( selinux? ( sys-libs/libselinux ) )
+RDEPEND="
+	virtual/libcrypt:=
+	!static? ( selinux? ( sys-libs/libselinux ) )
 	pam? ( sys-libs/pam )
-	virtual/libcrypt:="
-DEPEND="${COMMON_DEPEND}
+"
+DEPEND="${RDEPEND}
 	static? (
 		virtual/libcrypt[static-libs]
 		selinux? ( sys-libs/libselinux[static-libs(+)] )
 	)
-	>=sys-kernel/linux-headers-2.6.39"
+	sys-kernel/linux-headers"
 BDEPEND="virtual/pkgconfig"
-RDEPEND="${COMMON_DEPEND}
-	mdev? ( !<sys-apps/openrc-0.13 )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -264,20 +264,20 @@ src_install() {
 
 	# add busybox daemon's, bug #444718
 	if busybox_config_enabled FEATURE_NTPD_SERVER; then
-		newconfd "${FILESDIR}/ntpd.confd" "busybox-ntpd"
-		newinitd "${FILESDIR}/ntpd.initd" "busybox-ntpd"
+		newconfd "${FILESDIR}"/ntpd.confd busybox-ntpd
+		newinitd "${FILESDIR}"/ntpd.initd busybox-ntpd
 	fi
 	if busybox_config_enabled SYSLOGD; then
-		newconfd "${FILESDIR}/syslogd.confd" "busybox-syslogd"
-		newinitd "${FILESDIR}/syslogd.initd" "busybox-syslogd"
+		newconfd "${FILESDIR}"/syslogd.confd "busybox-syslogd
+		newinitd "${FILESDIR}"/syslogd.initd "busybox-syslogd
 	fi
 	if busybox_config_enabled KLOGD; then
-		newconfd "${FILESDIR}/klogd.confd" "busybox-klogd"
-		newinitd "${FILESDIR}/klogd.initd" "busybox-klogd"
+		newconfd "${FILESDIR}"/klogd.confd busybox-klogd
+		newinitd "${FILESDIR}"/klogd.initd busybox-klogd
 	fi
 	if busybox_config_enabled WATCHDOG; then
-		newconfd "${FILESDIR}/watchdog.confd" "busybox-watchdog"
-		newinitd "${FILESDIR}/watchdog.initd" "busybox-watchdog"
+		newconfd "${FILESDIR}"/watchdog.confd busybox-watchdog
+		newinitd "${FILESDIR}"/watchdog.initd busybox-watchdog
 	fi
 	if busybox_config_enabled UDHCPC; then
 		local path=$(busybox_config_enabled UDHCPC_DEFAULT_SCRIPT)
@@ -291,10 +291,10 @@ src_install() {
 
 	# bundle up the symlink files for use later
 	emake DESTDIR="${ED}" install
-	rm _install/bin/busybox
+	rm _install/bin/busybox || die
 	# for compatibility, provide /usr/bin/env
-	mkdir -p _install/usr/bin
-	ln -s /bin/env _install/usr/bin/env
+	mkdir -p _install/usr/bin || die
+	ln -s /bin/env _install/usr/bin/env || die
 	tar cf busybox-links.tar -C _install . || : #;die
 	insinto /usr/share/${PN}
 	use make-symlinks && doins busybox-links.tar
