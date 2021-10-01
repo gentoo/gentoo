@@ -22,3 +22,7 @@ DEPEND="
 	>=dev-ml/re-1.8.0:=
 "
 RDEPEND="${DEPEND}"
+
+src_compile() {
+	dune build @install --profile release || die
+}
