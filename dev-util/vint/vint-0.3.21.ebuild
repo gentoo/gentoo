@@ -1,11 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Lint tool for Vim script language"
@@ -22,12 +20,8 @@ RDEPEND="
 	>=dev-python/pyyaml-3.11[${PYTHON_USEDEP}]
 "
 
-distutils_enable_tests pytest
+PATCHES=(
+	"${FILESDIR}/${P}-fix-py3.8.patch"
+)
 
-python_test() {
-	# Tests fail due to python 3.8 warnings in stderr that appear when
-	# compiled byte code is disabled
-	# https://github.com/Vimjas/vint/issues/355
-	[[ "${EPYTHON}" == python3.8 ]] && return
-	pytest -vv || die "Tests fail with ${EPYTHON}"
-}
+distutils_enable_tests pytest
