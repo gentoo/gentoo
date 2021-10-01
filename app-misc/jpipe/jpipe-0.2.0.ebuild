@@ -379,8 +379,8 @@ IUSE="jpp-symlink jp-symlink python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 RDEPEND="
-	jpp-symlink? ( !app-misc/jp[jpp] )
-	jp-symlink? ( !app-misc/jp[jp] )
+	jpp-symlink? ( !app-misc/jp[jpp(-)] )
+	jp-symlink? ( !app-misc/jp[jp(+)] )
 	python? (
 		${PYTHON_DEPS}
 		dev-python/jmespath[${PYTHON_USEDEP}]

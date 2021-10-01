@@ -17,8 +17,8 @@ SLOT="0"
 IUSE="jpp-symlink jp-symlink test"
 RESTRICT="!test? ( test )"
 RDEPEND="
-	jpp-symlink? ( !app-misc/jp[jpp] )
-	jp-symlink? ( !app-misc/jp[jp] )
+	jpp-symlink? ( !app-misc/jp[jpp(-)] )
+	jp-symlink? ( !app-misc/jp[jp(+)] )
 	dev-python/jmespath[${PYTHON_USEDEP}]
 "
 
