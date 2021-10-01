@@ -275,7 +275,7 @@ xorg-3_src_unpack() {
 		unpack ${A}
 	fi
 
-	[[ -n ${FONT_OPTIONS} ]] && einfo "Detected font directory: ${FONT_DIR}"
+	[[ -n ${FONT} ]] && einfo "Detected font directory: ${FONT_DIR}"
 }
 
 # @FUNCTION: xorg-3_reconf_source
@@ -317,13 +317,17 @@ xorg-3_src_prepare() {
 xorg-3_font_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	# Pass --with-fontrootdir to override pkgconf SYSROOT behavior.
+	# https://bugs.gentoo.org/815520
+	if grep -q -s "with-fontrootdir" "${ECONF_SOURCE:-.}"/configure; then
+		FONT_OPTIONS+=( --with-fontrootdir="${EPREFIX}"/usr/share/fonts )
+	fi
+
 	if has nls ${IUSE//+} && ! use nls; then
 		if ! grep -q -s "disable-all-encodings" ${ECONF_SOURCE:-.}/configure; then
 			die "--disable-all-encodings option not available in configure"
 		fi
-		FONT_OPTIONS+="
-			--disable-all-encodings
-			--enable-iso8859-1"
+		FONT_OPTIONS+=( --disable-all-encodings --enable-iso8859-1 )
 	fi
 }
 
@@ -365,6 +369,7 @@ xorg-3_src_configure() {
 	# @DEFAULT_UNSET
 	local xorgconfadd=("${XORG_CONFIGURE_OPTIONS[@]}")
 
+	local FONT_OPTIONS=()
 	[[ -n "${FONT}" ]] && xorg-3_font_configure
 
 	# Check if package supports disabling of dep tracking
@@ -388,7 +393,7 @@ xorg-3_src_configure() {
 		${dep_track}
 		${selective_werror}
 		${no_static}
-		${FONT_OPTIONS}
+		"${FONT_OPTIONS[@]}"
 		"${xorgconfadd[@]}"
 	)
 
