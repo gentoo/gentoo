@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="https://github.com/blueman-project/${PN}/releases/download/${PV/_/.}/${P/_/.}.tar.xz"
 	S=${WORKDIR}/${P/_/.}
-	KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
+	KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86"
 fi
 
 # icons are GPL-2
