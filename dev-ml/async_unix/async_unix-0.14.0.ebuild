@@ -21,3 +21,7 @@ RDEPEND="
 	dev-ml/ppx_jane:=
 "
 DEPEND="${RDEPEND}"
+
+src_compile() {
+	dune build @install --profile release || die
+}
