@@ -1,0 +1,70 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/d71a10b7fa9b5c560485b6bbde409c10d3fdd114.patch
+
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Thu, 30 Sep 2021 12:54:29 +0200
+Subject: [PATCH] libcamera: handle failure gracefully
+
+Don't try to access NULL pointers
+--- a/spa/plugins/libcamera/libcamera-client.c
++++ b/spa/plugins/libcamera/libcamera-client.c
+@@ -210,10 +210,10 @@ impl_init(const struct spa_handle_factory *factory,
+ 			SPA_DEVICE_CHANGE_MASK_PROPS;
+ 	this->info.flags = 0;
+ 
+-	if(this->dev.camera == NULL) {
++	if(this->dev.camera == NULL)
+ 		this->dev.camera = (LibCamera*)newLibCamera();
++	if(this->dev.camera != NULL)
+ 		libcamera_set_log(this->dev.camera, this->dev.log);
+-	}
+ 
+ 	return 0;
+ }
+--- a/spa/plugins/libcamera/libcamera-source.c
++++ b/spa/plugins/libcamera/libcamera-source.c
+@@ -994,10 +994,10 @@ impl_init(const struct spa_handle_factory *factory,
+ 	port->dev.log = this->log;
+ 	port->dev.fd = -1;
+ 
+-	if(port->dev.camera == NULL) {
++	if(port->dev.camera == NULL)
+ 		port->dev.camera = (LibCamera*)newLibCamera();
++	if(port->dev.camera != NULL)
+ 		libcamera_set_log(port->dev.camera, port->dev.log);
+-	}
+ 
+ 	if (info && (str = spa_dict_lookup(info, SPA_KEY_API_LIBCAMERA_PATH))) {
+ 		strncpy(this->props.device, str, 63);
+--- a/spa/plugins/libcamera/libcamera_wrapper.cpp
++++ b/spa/plugins/libcamera/libcamera_wrapper.cpp
+@@ -540,7 +540,8 @@ extern "C" {
+ 	}
+ 
+ 	void LibCamera::close() {
+-		this->cam_->release();
++		if (this->cam_)
++			this->cam_->release();
+ 	}
+ 
+ 	void LibCamera::connect()
+@@ -775,6 +776,9 @@ extern "C" {
+ 		std::unique_ptr<CameraManager> cm = std::make_unique<CameraManager>();
+ 		LibCamera* camera = new LibCamera();
+ 
++		pthread_mutexattr_init(&attr);
++		pthread_mutex_init(&camera->lock, &attr);
++
+ 		ret = cm->start();
+ 		if (ret) {
+ 			deleteLibCamera(camera);
+@@ -794,9 +798,6 @@ extern "C" {
+ 			return nullptr;
+ 		}
+ 
+-		pthread_mutexattr_init(&attr);
+-		pthread_mutex_init(&camera->lock, &attr);
+-
+ 		camera->ring_buffer_init();
+ 
+ 		return camera;
+GitLab

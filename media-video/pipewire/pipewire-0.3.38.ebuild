@@ -97,6 +97,10 @@ DOCS=( {README,INSTALL}.md NEWS )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
+	# Upstream
+	"${FILESDIR}"/${P}-fix-arm-build.patch
+	"${FILESDIR}"/${P}-libcamera-null-deref.patch # (we don't have it in ::gentoo but let's be nice)
+	"${FILESDIR}"/${P}-find-readline.patch # just in case
 )
 
 # limitsdfile related code taken from =sys-auth/realtime-base-0.1
