@@ -27,6 +27,6 @@ BDEPEND="
 src_prepare() {
 	default
 
-	sed -i -e "/^gpetdocdir =/s!doc/gpet!doc/${P}!" Makefile.am || die
+	sed -i -e "/^gpetdocdir =/s!doc/gpet!doc/${PF}!" Makefile.am || die
 	eautoreconf
 }
