@@ -1,0 +1,18 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/f8817b439433798bd7217dc4ae72197887b0fc96.patch
+
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Thu, 30 Sep 2021 11:12:27 +0200
+Subject: [PATCH] cpu: fix compilation on ARM
+
+--- a/spa/plugins/support/cpu-arm.c
++++ b/spa/plugins/support/cpu-arm.c
+@@ -80,7 +80,7 @@ arm_init(struct impl *impl)
+ 	int arch;
+ 
+ 	if (!(cpuinfo = get_cpuinfo())) {
+-		spa_log_warn(impl->log, NAME " %p: Can't read cpuinfo", impl);
++		spa_log_warn(impl->log, "%p: Can't read cpuinfo", impl);
+ 		return 1;
+ 	}
+ 
+GitLab
