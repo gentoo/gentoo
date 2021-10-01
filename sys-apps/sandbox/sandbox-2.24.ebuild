@@ -7,7 +7,7 @@ inherit flag-o-matic multilib-minimal multiprocessing
 
 DESCRIPTION="sandbox'd LD_PRELOAD hack"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Sandbox"
-SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~sam/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
