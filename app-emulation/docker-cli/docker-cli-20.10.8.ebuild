@@ -39,7 +39,7 @@ src_compile() {
 	export CGO_LDFLAGS="-L${ESYSROOT}/usr/$(get_libdir)"
 		emake \
 		LDFLAGS="$(usex hardened '-extldflags -fno-PIC' '')" \
-		VERSION="$(cat VERSION)" \
+		VERSION="${PV}" \
 		GITCOMMIT="${GIT_COMMIT}" \
 		dynbinary
 
