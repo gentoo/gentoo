@@ -35,6 +35,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/meson-mcompile-treat-load-average-as-a-float.patch"
+	"${FILESDIR}/meson-tests-rust-add-libm.patch"
 )
 
 python_prepare_all() {
