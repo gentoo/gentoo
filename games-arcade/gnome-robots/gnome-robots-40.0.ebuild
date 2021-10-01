@@ -23,6 +23,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	$(vala_depend)
+	gnome-base/librsvg:2[vala]
 	dev-libs/appstream-glib
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
