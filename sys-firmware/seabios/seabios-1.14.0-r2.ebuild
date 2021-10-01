@@ -24,7 +24,7 @@ else
 
 	SRC_URI="
 		!binary? ( https://www.seabios.org/downloads/${P}.tar.gz )
-		binary? ( https://dev.gentoo.org/~slyfox/distfiles/${P}-r2-bin.tar.xz )"
+		binary? ( https://dev.gentoo.org/~sam/distfiles/${P}-r2-bin.tar.xz )"
 fi
 
 DESCRIPTION="Open Source implementation of a 16-bit x86 BIOS"
