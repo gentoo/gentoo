@@ -16,6 +16,7 @@ KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 IUSE="+ocamlopt"
 
 RDEPEND="
+	<dev-lang/ocaml-4.12
 	dev-ml/cmdliner:=
 	dev-ml/cudf:=
 	dev-ml/dose3:=
