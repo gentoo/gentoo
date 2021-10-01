@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">debtcollector</remote-id>
+		<remote-id type="github">openstack/debtcollector</remote-id>
 	</upstream>
 </pkgmetadata>
