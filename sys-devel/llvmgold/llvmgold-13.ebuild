@@ -9,9 +9,7 @@ SRC_URI=""
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
-PROPERTIES="live"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux"
 
 RDEPEND="sys-devel/llvm:${PV}[gold]
 	!sys-devel/llvm:0"
