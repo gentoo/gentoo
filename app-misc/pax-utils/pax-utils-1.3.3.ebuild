@@ -13,7 +13,7 @@ inherit python-single-r1 toolchain-funcs
 DESCRIPTION="ELF utils that can check files for security relevant properties"
 HOMEPAGE="https://wiki.gentoo.org/index.php?title=Project:Hardened/PaX_Utilities"
 SRC_URI="mirror://gentoo/${P}.tar.xz
-	https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.xz
+	https://dev.gentoo.org/~sam/distfiles/${P}.tar.xz
 	https://dev.gentoo.org/~vapier/dist/${P}.tar.xz"
 
 LICENSE="GPL-2"
