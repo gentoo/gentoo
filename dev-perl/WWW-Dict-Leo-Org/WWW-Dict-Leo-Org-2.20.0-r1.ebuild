@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=TLINDEN
 DIST_VERSION=2.02
@@ -13,7 +13,6 @@ DESCRIPTION="Commandline interface to http://dict.leo.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
 
 RDEPEND="
 	virtual/perl-Carp
@@ -22,7 +21,7 @@ RDEPEND="
 	virtual/perl-MIME-Base64
 	dev-perl/XML-Simple
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
 
