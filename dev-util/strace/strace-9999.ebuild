@@ -18,7 +18,7 @@ HOMEPAGE="https://strace.io/"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="aio perl static unwind elfutils"
+IUSE="aio perl selinux static unwind elfutils"
 
 REQUIRED_USE="?? ( unwind elfutils )"
 
@@ -28,6 +28,7 @@ BDEPEND="
 LIB_DEPEND="
 	unwind? ( sys-libs/libunwind[static-libs(+)] )
 	elfutils? ( dev-libs/elfutils[static-libs(+)] )
+	selinux? ( sys-libs/libselinux[static-libs(+)] )
 "
 # strace only uses the header from libaio to decode structs
 DEPEND="
@@ -82,6 +83,7 @@ src_configure() {
 		$(use_enable static)
 		$(use_with unwind libunwind)
 		$(use_with elfutils libdw)
+		$(use_with selinux libselinux)
 	)
 	econf "${myeconfargs[@]}"
 }
