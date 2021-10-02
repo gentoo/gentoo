@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 DIST_AUTHOR=BOBERNST
 DIST_VERSION=2.0.0
 DIST_EXAMPLES=("samples/*")
@@ -10,7 +11,6 @@ inherit perl-module
 DESCRIPTION='fetching weather information from weather.com'
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	virtual/perl-Data-Dumper
@@ -24,9 +24,10 @@ RDEPEND="
 	dev-perl/URI
 	dev-perl/XML-Simple
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
+
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0.0-dotinc.patch"
 	"${FILESDIR}/${PN}-2.0.0-network.patch"
