@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,6 +33,11 @@ src_prepare() {
 	cp "${FILESDIR}"/gentoo-*.logo "${S}"/logos/ || die
 
 	sed -e 's#=$(PREFIX)#=$(DESTDIR)$(PREFIX)#' -i po/Makefile || die
+
+	# Manpage is already gzipped in tarball
+	gunzip linux_logo.1.gz || die
+	sed -e "s/.1.gz/.1/g" -i Makefile || die
+
 	default
 }
 
