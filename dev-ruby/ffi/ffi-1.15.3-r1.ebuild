@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby25 ruby26 ruby27"
+USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -19,23 +19,30 @@ inherit multilib ruby-fakegem toolchain-funcs
 DESCRIPTION="Ruby extension for programmatically loading dynamic libraries"
 HOMEPAGE="https://wiki.github.com/ffi/ffi"
 
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${PN}-git-${PV}.tgz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${PN}-git-${PV}.tgz"
 
 IUSE=""
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
-RDEPEND+=" dev-libs/libffi:0="
-DEPEND+=" dev-libs/libffi"
+RDEPEND+=" dev-libs/libffi:="
+DEPEND+=" dev-libs/libffi:="
 
 ruby_add_bdepend "dev-ruby/rake"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14.2-32bit-long-double.patch
+)
 
 all_ruby_prepare() {
 	sed -i -e '/tasks/ s:^:#:' \
 		-e '/Gem::Tasks/,/end/ s:^:#:' Rakefile || die
 
-	sed -i -e '/require/c\require "./lib/ffi/version"' ${RUBY_FAKEGEM_GEMSPEC} || die
+	sed -e '/require/c\require "./lib/ffi/version"' \
+		-e 's/git ls-files -z/find * -print0/' \
+		-e '/^  lfs/,/^  end/ s:^:#:' \
+		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Fix Makefile for tests
 	sed -i -e '/CCACHE :=/ s:^:#:' \

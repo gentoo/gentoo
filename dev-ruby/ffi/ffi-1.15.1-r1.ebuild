@@ -24,12 +24,16 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${PN}-git-${PV}
 IUSE=""
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
-RDEPEND+=" dev-libs/libffi:0="
-DEPEND+=" dev-libs/libffi"
+RDEPEND+=" dev-libs/libffi:="
+DEPEND+=" dev-libs/libffi:="
 
 ruby_add_bdepend "dev-ruby/rake"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14.2-32bit-long-double.patch
+)
 
 all_ruby_prepare() {
 	sed -i -e '/tasks/ s:^:#:' \
