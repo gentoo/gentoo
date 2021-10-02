@@ -164,10 +164,6 @@ x11-apps/igt-gpu-tools overlay
 # - padlock plugin is only supported on amd64 and x86
 net-vpn/strongswan strongswan_plugins_aesni strongswan_plugins_rdrand strongswan_plugins_padlock
 
-# James Le Cuirot <chewi@gentoo.org> (2018-11-02)
-# Vulkan is only available on amd64 at present.
-media-libs/libsdl2 vulkan
-
 # Michael Palimaka <kensington@gentoo.org> (2018-10-12)
 # Only available on amd64/x86
 net-analyzer/testssl bundled-openssl kerberos

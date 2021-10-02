@@ -192,10 +192,6 @@ app-admin/conserver -freeipmi
 # - rdrand plugin is supported on amd64
 net-vpn/strongswan -strongswan_plugins_aesni -strongswan_plugins_rdrand
 
-# James Le Cuirot <chewi@gentoo.org> (2018-11-02)
-# Vulkan is only available on amd64 at present.
-media-libs/libsdl2 -vulkan
-
 # Michael Palimaka <kensington@gentoo.org> (2018-10-12)
 # Unmask arch-specific USE flags available on amd64
 net-analyzer/testssl -bundled-openssl -kerberos
