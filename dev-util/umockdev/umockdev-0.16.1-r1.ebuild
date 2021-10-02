@@ -12,7 +12,7 @@ SRC_URI="https://github.com/martinpitt/umockdev/releases/download/${PV}/${P}.tar
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
