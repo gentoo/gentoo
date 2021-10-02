@@ -15,14 +15,16 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 x86"
 
-CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
-	!~dev-python/pbr-2.1.0[${PYTHON_USEDEP}]"
-RDEPEND="${CDEPEND}
+RDEPEND="
+	>dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/debtcollector-1.2.0[${PYTHON_USEDEP}]"
-BDEPEND="${CDEPEND}
+BDEPEND="
+	>dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-3.2.0[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests unittest
+distutils_enable_sphinx doc/source \
+	dev-python/openstackdocstheme
