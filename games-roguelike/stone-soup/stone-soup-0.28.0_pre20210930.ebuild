@@ -186,7 +186,7 @@ pkg_postinst() {
 
 	elog "crawl is a slotted install that supports having"
 	elog "multiple versions installed.  The binary has the"
-	elog "slot appened, e.g. 'crawl-"${SLOT}"'."
+	elog "slot appended, e.g. 'crawl-"${SLOT}"'."
 
 	if use tiles && use ncurses ; then
 		elog
