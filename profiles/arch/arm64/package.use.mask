@@ -27,10 +27,6 @@ dev-util/diffoscope pascal
 # and media-plugins/zam-plugins not keyworded here
 media-sound/easyeffects rnnoise webrtc zamaudio
 
-# Ionen Wolkens <ionen@gentoo.org> (2021-07-04)
-# Needed until media-libs/libsdl2[vulkan] is unmasked on this arch.
-games-fps/yamagi-quake2 vulkan
-
 # Stefan Strogin <steils@gentoo.org> (2021-06-27)
 # Requires dev-python/adblock which is not keyworded on arm64 yet
 www-client/qutebrowser adblock

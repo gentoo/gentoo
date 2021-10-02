@@ -29,10 +29,6 @@ media-sound/pulseeffects rnnoise webrtc zamaudio
 # bug #801649
 dev-util/diffoscope -haskell
 
-# Ionen Wolkens <ionen@gentoo.org> (2021-07-04)
-# Needed until media-libs/libsdl2[vulkan] is unmasked on this arch.
-games-fps/yamagi-quake2 vulkan
-
 # Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
 # Feature currently relies on amd64 prebuilt binaries.
 media-video/obs-studio browser
@@ -74,13 +70,6 @@ net-misc/asterisk -blocks
 # Nils Freydank <holgersson@posteo.de> (2021-01-18)
 # Depends on media-plugins/gst-plugins-cairo, which isn't keyworded on x86.
 app-misc/pdfpc gstreamer
-
-# Sam James <sam@gentoo.org> (2021-01-14)
-# Needs libsdl2[vulkan]
-# Vulkan may be supported on x86, as per
-# Qt unmasking below, but not able to test
-# libsdl2 + Vulkan on x86 at the moment.
-games-strategy/warzone2100 vulkan
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Sanitizers supported on this architecture.
