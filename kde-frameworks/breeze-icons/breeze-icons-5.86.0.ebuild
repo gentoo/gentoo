@@ -40,6 +40,13 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_install() {
+	cmake_src_install
+	# bug 770988
+	find "${ED}"/usr/share/icons/ -type d -empty -delete || die
+	find "${ED}"/usr/share/icons/ -xtype l -delete || die
+}
+
 pkg_postinst() {
 	xdg_icon_cache_update
 }
