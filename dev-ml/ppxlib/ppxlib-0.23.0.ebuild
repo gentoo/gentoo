@@ -38,10 +38,6 @@ DEPEND="${DEPEND}
 "
 BDEPEND=">=dev-ml/dune-2.8"
 
-src_install() {
-	dune_src_install
-
-	# Clashes with dev-libs/nss[utils], accidentally installed upstream
-	# https://github.com/ocaml-ppx/ppxlib/issues/224
-	rm "${ED}"/usr/bin/pp || die
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-ocaml-4.13.patch
+)
