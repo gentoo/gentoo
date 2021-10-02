@@ -6,17 +6,19 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-MY_PN="Flask-Migrate"
-MY_P="${MY_PN}-${PV}"
+MY_P="Flask-Migrate-${PV}"
 
 DESCRIPTION="SQLAlchemy database migrations for Flask applications using Alembic"
 HOMEPAGE="https://pypi.org/project/Flask-Migrate/"
-SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="
+	https://github.com/miguelgrinberg/Flask-Migrate/archive/v${PV}.tar.gz
+		-> ${MY_P}.gh.tar.gz
+"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-python/alembic-0.7[${PYTHON_USEDEP}]
