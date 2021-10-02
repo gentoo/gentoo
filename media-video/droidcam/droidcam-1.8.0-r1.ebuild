@@ -84,7 +84,8 @@ src_compile() {
 			fi
 		fi
 	fi
-	KERNEL_DIR="/usr/src/linux" linux-mod_src_compile
+	export KERNEL_DIR
+	linux-mod_src_compile
 }
 
 src_test() {
