@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Flask support for MongoDB and with WTF model forms"
@@ -31,35 +31,36 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	sed -i -e '/addopts/d' setup.cfg || die
 
-	# fails with mongomock installed
-	sed -e 's:test_connection__should_parse_mongo_mock_uri:_&:' \
-		-i tests/test_connection.py || die
-
 	distutils-r1_python_prepare_all
 }
 
 python_test() {
+	local EPYTEST_DESELECT=(
+		# fails with mongomock installed
+		tests/test_connection.py::test_connection__should_parse_mongo_mock_uri__as_uri_and_as_settings
+	)
 	local dbpath=${TMPDIR}/mongo.db
 	local logpath=${TMPDIR}/mongod.log
+	local DB_PORT=27017
 
 	mkdir -p "${dbpath}" || die
 	ebegin "Trying to start mongod on port ${DB_PORT}"
 
 	LC_ALL=C \
 	mongod --dbpath "${dbpath}" --nojournal \
-		--bind_ip 127.0.0.1 --port 27017 \
+		--bind_ip 127.0.0.1 --port ${DB_PORT} \
 		--unixSocketPrefix "${TMPDIR}" \
 		--logpath "${logpath}" --fork || die
 	sleep 2
 
 	# Now we need to check if the server actually started...
-	if [[ -S "${TMPDIR}"/mongodb-27017.sock ]]; then
+	if [[ -S "${TMPDIR}"/mongodb-${DB_PORT}.sock ]]; then
 		# yay!
 		eend 0
 	else
 		eend 1
-		eerror "Unable to start mongod for tests. See the server log:"
-		eerror "	${logpath}"
+		eerror "Unable to start mongod for tests. Here is the server log:"
+		cat "${logpath}"
 		die "Unable to start mongod for tests."
 	fi
 
