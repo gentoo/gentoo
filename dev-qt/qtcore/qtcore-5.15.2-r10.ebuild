@@ -8,7 +8,7 @@ QT5_MODULE="qtbase"
 inherit linux-info qt5-build
 
 DESCRIPTION="Cross-platform application development framework"
-SLOT=5/$(ver_cut 1-3)
+SLOT=5/${QT5_PV}
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="amd64 arm arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
