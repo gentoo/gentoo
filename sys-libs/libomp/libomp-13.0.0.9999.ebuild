@@ -13,7 +13,7 @@ HOMEPAGE="https://openmp.llvm.org"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS=""
-IUSE="cuda hwloc kernel_linux offload ompt test"
+IUSE="cuda debug hwloc kernel_linux offload ompt test"
 # CUDA works only with the x86_64 ABI
 REQUIRED_USE="offload? ( cuda? ( abi_x86_64 ) )"
 RESTRICT="!test? ( test )"
@@ -66,6 +66,9 @@ pkg_setup() {
 }
 
 multilib_src_configure() {
+	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
+	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
+
 	local libdir="$(get_libdir)"
 	local mycmakeargs=(
 		-DOPENMP_LIBDIR_SUFFIX="${libdir#lib}"
