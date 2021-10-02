@@ -7,6 +7,7 @@ KDE_ORG_COMMIT=efe6edcaf8eba601dff99ec6ad4457c8a4442f86
 inherit qt5-build
 
 DESCRIPTION="Wayland platform plugin for Qt"
+SLOT=5/${QT5_PV} # bug 815646
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="amd64 arm arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
