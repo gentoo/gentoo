@@ -3,7 +3,6 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE='xml'
 
@@ -38,6 +37,7 @@ S=${WORKDIR}/${MY_P}
 python_prepare_all() {
 	sed -e 's/"pytest-runner"//' \
 		-e "/find_packages/s/()/(exclude=['tests*'])/" \
+		-e "/DOC_DIR =/s/wapiti/${PF}/" \
 		-i setup.py || die
 	distutils-r1_python_prepare_all
 }
