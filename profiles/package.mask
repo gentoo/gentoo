@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2021-10-02)
+# A library without revdeps. Last upstream release in 2009, huge amount
+# of open bugs not fixed has led the project being forked already.
+# Bug #776895. Removal in ~30 days.
+dev-libs/rapidxml
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-10-01)
 # KDE Plasma 5.22.90 (5.23 Beta) mask - Pre-release version
 # See also: https://kde.org/announcements/plasma/5/5.22.90/
