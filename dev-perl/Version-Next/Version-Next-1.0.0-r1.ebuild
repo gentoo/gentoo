@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=DAGOLDEN
 DIST_VERSION=1.000
@@ -11,8 +11,6 @@ DESCRIPTION="Increment module version numbers simply and correctly"
 
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 LICENSE="Apache-2.0"
 
 RDEPEND="
@@ -20,7 +18,7 @@ RDEPEND="
 	dev-perl/Sub-Exporter
 	>=virtual/perl-version-0.810.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.170.0
 	test? (
 		virtual/perl-File-Spec
