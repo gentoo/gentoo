@@ -23,4 +23,4 @@
 server_vpn0="vpn.server.tld"
 password_vpn0="YOUR_PASSWORD"
 # Any OPENCONNECT options my go here (see openconnect --help)
-vpnopts_vpn0="-l --passwd-on-stdin --user=YOUR_USERNAME --script=/etc/openconnect/openconnect.sh"
+vpnopts_vpn0="-l --passwd-on-stdin --user=YOUR_USERNAME"
