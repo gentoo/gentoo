@@ -25,7 +25,8 @@ RDEPEND="curl? ( net-misc/curl )
 	png? ( media-libs/libpng:0 )
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
-BDEPEND="python? (
+BDEPEND="virtual/pkgconfig
+	python? (
 		${PYTHON_DEPS}
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	)"
