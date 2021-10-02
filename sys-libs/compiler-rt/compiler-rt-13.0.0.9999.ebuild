@@ -12,7 +12,7 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="$(ver_cut 1-3)"
 KEYWORDS=""
-IUSE="+clang test"
+IUSE="+clang debug test"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
 CLANG_SLOT=${SLOT%%.*}
@@ -60,6 +60,9 @@ test_compiler() {
 }
 
 src_configure() {
+	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
+	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
+
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/${P}_build
 
