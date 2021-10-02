@@ -257,10 +257,10 @@ cvs_fetch() {
 		# just remove the last path element in the string)
 
 		debug-print "${FUNCNAME}: checkout mode. creating cvs directory"
-		addwrite /foobar
-		addwrite /
-		mkdir -p "/${ECVS_TOP_DIR}"
-		export SANDBOX_WRITE="${SANDBOX_WRITE//:\/foobar:\/}"
+		(
+			addwrite /
+			mkdir -p "${ECVS_TOP_DIR}" || die "mkdir ${ECVS_TOP_DIR} failed"
+		)
 	fi
 
 	# In case ECVS_TOP_DIR is a symlink to a dir, get the real path,
