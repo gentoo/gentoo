@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_VERSION=0.09
 DIST_AUTHOR=AMBA
@@ -11,8 +11,6 @@ inherit perl-module
 DESCRIPTION="Perl interface to the libusb-1.0 API"
 
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/libusb:1
@@ -21,7 +19,7 @@ RDEPEND="
 	dev-perl/Moo
 	virtual/perl-XSLoader
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? ( virtual/perl-Test-Simple )
 "
