@@ -1,0 +1,68 @@
+commit 7c38c8cf28a4d0d667e23ddfaaf38a955d65bf3e
+Author: Aleix Pol <aleixpol@kde.org>
+Date:   Wed Sep 22 16:19:39 2021 +0200
+
+    Ensure categories.xml is only fetched once in parallel
+    
+    Otherwise we overload the server that is returning them fairly slowly
+    anyway (2 to 3 seconds?). It seems like it serves these sequentially as
+    well, which makes Discover startup stuttery.
+
+diff --git a/src/atticabasejob.cpp b/src/atticabasejob.cpp
+index 99acf4f..e65d556 100644
+--- a/src/atticabasejob.cpp
++++ b/src/atticabasejob.cpp
+@@ -26,6 +26,7 @@ public:
+     PlatformDependent *m_internals;
+     QNetworkReply *m_reply;
+     bool aborted{false};
++    bool started = false;
+ 
+     Private(PlatformDependent *internals)
+         : m_internals(internals)
+@@ -120,7 +121,10 @@ void BaseJob::dataFinished()
+ 
+ void BaseJob::start()
+ {
+-    QTimer::singleShot(0, this, &BaseJob::doWork);
++    if (!d->started) {
++        d->started = true;
++        QTimer::singleShot(0, this, &BaseJob::doWork);
++    }
+ }
+ 
+ void BaseJob::doWork()
+diff --git a/src/provider.cpp b/src/provider.cpp
+index 9e4da64..b994ce9 100644
+--- a/src/provider.cpp
++++ b/src/provider.cpp
+@@ -64,6 +64,7 @@
+ #include <QFile>
+ #include <QNetworkAccessManager>
+ #include <QNetworkReply>
++#include <QThreadStorage>
+ #include <QUrlQuery>
+ 
+ using namespace Attica;
+@@ -1134,8 +1135,18 @@ ListJob<Category> *Provider::requestCategories()
+         return nullptr;
+     }
+ 
+-    QUrl url = createUrl(QLatin1String("content/categories"));
+-    ListJob<Category> *job = new ListJob<Category>(d->m_internals, createRequest(url));
++    const QUrl url = createUrl(QLatin1String("content/categories"));
++
++    // Thread-local cache of categories requests. They are fairly slow and block startup
++    static QThreadStorage<QHash<QUrl, ListJob<Category> *>> reqs;
++    ListJob<Category> *job = reqs.localData().value(url);
++    if (!job) {
++        job = new ListJob<Category>(d->m_internals, createRequest(url));
++        QObject::connect(job, &BaseJob::finished, [url] {
++            reqs.localData().remove(url);
++        });
++        reqs.localData().insert(url, job);
++    }
+     return job;
+ }
+ 
+
