@@ -11,6 +11,7 @@ inherit dune
 DESCRIPTION="Core installer for opam packages"
 HOMEPAGE="https://opam.ocaml.org/ https://github.com/ocaml/opam"
 SRC_URI="https://github.com/ocaml/opam/releases/download/${PV}/opam-full-${PV}.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/dev-ml/opam/opam-2.1.0-dose3-6.patch.xz"
 S="${WORKDIR}/opam-full-${PV/_/-}"
 OPAM_INSTALLER="${S}/_build/install/default/bin/opam-installer"
 
@@ -19,7 +20,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+ocamlopt"
 
-PATCHES=( "${FILESDIR}"/opam-solver-2.1.0-dose3-6.patch )
+PATCHES=( "${WORKDIR}"/opam-2.1.0-dose3-6.patch )
 
 RDEPEND="
 	>=dev-lang/ocaml-4.02.3
