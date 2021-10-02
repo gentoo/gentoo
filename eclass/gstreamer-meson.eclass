@@ -13,8 +13,8 @@
 # zaheerm <zaheerm@gentoo.org>
 # Steven Newbury
 # @SUPPORTED_EAPIS: 7
-# @BLURB: Helps building core & split gstreamer plugins
 # @PROVIDES: meson multilib-minimal
+# @BLURB: Helps building core & split gstreamer plugins
 # @DESCRIPTION:
 # Eclass to make external gst-plugins emergable on a per-plugin basis
 # and to solve the problem with gst-plugins generating far too much
