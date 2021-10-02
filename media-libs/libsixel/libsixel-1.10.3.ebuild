@@ -30,7 +30,10 @@ BDEPEND="python? (
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	)"
 
-PATCHES=( "${FILESDIR}"/${PN}-meson.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-meson.patch
+	"${FILESDIR}"/${PN}-static-libs.patch
+)
 
 src_prepare() {
 	default
