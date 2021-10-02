@@ -25,6 +25,7 @@ app-text/htmltidy test
 # James Le Cuirot <chewi@gentoo.org> (2021-09-19)
 # Requires texlive and friends to be keyworded.
 app-doc/doxygen doc
+dev-libs/libcbor doc
 
 # James Le Cuirot <chewi@gentoo.org> (2021-08-21)
 # Avoid lots of unkeyworded dependencies of Python tests.
