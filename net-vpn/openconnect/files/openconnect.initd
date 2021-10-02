@@ -1,109 +1,28 @@
 #!/sbin/openrc-run
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-VPN="${RC_SVCNAME#*.}"
-VPNCONF=/etc/openconnect/${VPN}.conf
-VPNDIR="/etc/openconnect/${VPN}"
-VPNLOG="/var/log/openconnect/${VPN}"
-VPNLOGFILE="${VPNLOG}/openconnect.log"
-VPNERRFILE="${VPNLOG}/openconnect.err"
-
+vpn=${RC_SVCNAME#*.}
 command="/usr/sbin/openconnect"
-name="OpenConnect: ${VPN}"
-pidfile="/run/openconnect/${VPN}.pid"
+pidfile="/run/openconnect/${vpn}.pid"
+command_args="--syslog ${command_args}"
+command_args_background="--background --pid-file \"${pidfile}\""
 stopsig="SIGINT"
 
-depend() {
-	before netmount
-}
-
-checkconfig() {
-	if [ $VPN = "openconnect" ]; then
-		eerror "You cannot call openconnect directly. You must create a symbolic link to it with the vpn name:"
-		eerror
-		eerror "ln -s /etc/init.d/openconnect /etc/init.d/openconnect.vpn0"
-		eerror
-		eerror "And then call it instead:"
-		eerror
-		eerror "/etc/init.d/openconnect.vpn0 start"
-		return 1
-	fi
-	return 0
-}
-
-checktuntap() {
-	if [ "$RC_UNAME" = "Linux" -a ! -e /dev/net/tun ] ; then
-		if ! modprobe tun ; then
-			eerror "TUN/TAP support is not available in this kernel"
-			return 1
-		fi
-	fi
-}
-
-run_hook() {
-	if [ -x "$1" ]; then
-		"$@"
-	fi
-}
-
 start_pre() {
-	checkconfig || return
-	checktuntap || return
-	checkpath -d "${VPNLOG}" || return
-	checkpath -d /run/openconnect || return
-	run_hook "${VPNDIR}/preup.sh"
-}
-
-ssd_helper() {
-	if [ -n "${password}" ]; then
-		start-stop-daemon "$@" <<EOF
-${password}
-EOF
-	else
-		start-stop-daemon "$@"
-	fi
+	checkpath -d /run/openconnect
 }
 
 start() {
-	local server vpnopts password
-	eval server=\$server_${VPN}
-	eval vpnopts=\$vpnopts_${VPN}
-	eval password=\$password_${VPN}
-
-	local config=
-	if [ -e "${VPNCONF}" ]; then
-		config="--config=${VPNCONF}"
+	if [ -n "${password}" ]; then
+		command_args="${command_args} --passwd-on-stdin"
+		default_start <<EOF
+${password}
+EOF
+	elif [ -n "${password_file}" ]; then
+		command_args="${command_args} --passwd-on-stdin"
+		default_start <"${password_file}"
+	else
+		default_start
 	fi
-
-	# Allow quoted whitespace in vpnopts.
-	eval set -- ${vpnopts}
-
-	ebegin "Starting ${name}"
-	ssd_helper --start \
-		--exec "${command}" \
-		--pidfile "${pidfile}" \
-		-- \
-		--background \
-		${config} \
-		--interface="${VPN}" \
-		--pid-file="${pidfile}" \
-		"$@" \
-		"${server}" \
-		>> "${VPNLOGFILE}" \
-		2>> "${VPNERRFILE}"
-	eend $?
-}
-
-start_post() {
-	run_hook "${VPNDIR}/postup.sh"
-}
-
-stop_pre() {
-	checkconfig || return
-	run_hook "${VPNDIR}/predown.sh"
-}
-
-stop_post() {
-	run_hook "${VPNDIR}/postdown.sh"
 }
