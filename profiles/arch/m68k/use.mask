@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -m68k
 
+# James Le Cuirot <chewi@gentoo.org> (2021-10-02)
+# Keywording aside, m68k CPUs are probably too slow for PulseAudio.
+pulseaudio
+
 # James Le Cuirot <chewi@gentoo.org> (2021-09-28)
 # Too many unkeyworded dependencies for now.
 efl
