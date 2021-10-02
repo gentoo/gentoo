@@ -195,7 +195,9 @@ if [[ ${ECVS_AUTH} == "ext" ]] ; then
 	BDEPEND+=" net-misc/openssh"
 fi
 
-# called from cvs_src_unpack
+# @FUNCTION: cvs_fetch
+# @DESCRIPTION:
+# Fetch sources from a CVS repository.  Called from cvs_src_unpack.
 cvs_fetch() {
 	# Make these options local variables so that the global values are
 	# not affected by modifications in this function.
