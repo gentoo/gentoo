@@ -8,7 +8,7 @@ QT5_MODULE="qtbase"
 inherit qt5-build
 
 DESCRIPTION="SQL abstraction library for the Qt5 framework"
-SLOT=5/$(ver_cut 1-3) # bug 639140
+SLOT=5/${QT5_PV} # bug 639140
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="amd64 arm arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
