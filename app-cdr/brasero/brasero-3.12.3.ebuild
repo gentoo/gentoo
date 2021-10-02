@@ -3,7 +3,6 @@
 
 EAPI=7
 GNOME2_LA_PUNT="yes"
-GNOME2_EAUTORECONF="yes"
 
 inherit gnome2
 
@@ -12,8 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Brasero"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0/3.1" # subslot is 3.suffix of libbrasero-burn3
-IUSE="+css +introspection +libburn mp3 nautilus playlist test tracker"
-RESTRICT="!test? ( test )"
+IUSE="+css +introspection +libburn mp3 nautilus playlist tracker"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 DEPEND="
@@ -53,10 +51,11 @@ BDEPEND="
 	>=dev-util/gtk-doc-am-1.12
 	sys-devel/gettext
 	virtual/pkgconfig
-	test? ( app-text/docbook-xml-dtd:4.3 )
-	app-text/yelp-tools
-	gnome-base/gnome-common
 "
+# eautoreconf deps
+#	app-text/yelp-tools
+#	gnome-base/gnome-common
+
 PDEPEND="gnome-base/gvfs"
 
 src_configure() {
