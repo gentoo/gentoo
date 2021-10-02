@@ -129,8 +129,11 @@ src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
 
-	newinitd "${FILESDIR}"/openconnect.initd.8.10 openconnect
 	dodoc "${FILESDIR}"/README.OpenRC
+
+	newconfd "${FILESDIR}"/openconnect.conf.in openconnect
+	newinitd "${FILESDIR}"/openconnect.initd openconnect
+
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/openconnect.logrotate openconnect
 
