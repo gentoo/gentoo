@@ -48,6 +48,8 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="
 	dev-libs/appstream-glib
+	dev-libs/libxslt
+	app-text/docbook-xsl-stylesheets
 	dev-util/desktop-file-utils
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
