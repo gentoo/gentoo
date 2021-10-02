@@ -65,6 +65,9 @@ RDEPEND="${DEPEND}"
 # bug 588320
 RESTRICT="test"
 
+# Upstream pending: https://invent.kde.org/education/marble/-/merge_requests/57
+PATCHES=( "${FILESDIR}/${P}-gpsd-3.23.1.patch" )
+
 src_prepare() {
 	ecm_src_prepare
 
