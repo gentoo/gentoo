@@ -131,7 +131,7 @@ src_install() {
 
 	dodoc "${FILESDIR}"/README.OpenRC
 
-	newconfd "${FILESDIR}"/openconnect.conf.in openconnect
+	newconfd "${FILESDIR}"/openconnect.confd openconnect
 	newinitd "${FILESDIR}"/openconnect.initd openconnect
 
 	insinto /etc/logrotate.d
