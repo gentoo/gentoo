@@ -167,7 +167,7 @@ pkg_postinst() {
 
 	elog "Since version 0.25.1-r101, crawl is a slotted install"
 	elog "that supports having multiple versions installed.  The"
-	elog "binary has the slot appened, e.g. 'crawl-"${SLOT}"'."
+	elog "binary has the slot appended, e.g. 'crawl-"${SLOT}"'."
 	elog
 	elog "The local save directory also has the slot appended."
 	elog "If you have saved games from 0.25 but before 0.25.1-r101"
