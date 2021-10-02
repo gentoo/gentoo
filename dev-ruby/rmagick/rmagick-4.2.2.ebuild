@@ -29,7 +29,7 @@ KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="doc"
 
 RDEPEND+=" >=media-gfx/imagemagick-6.9.0:="
-DEPEND+=" test? ( >=media-gfx/imagemagick-7.1.0:=[jpeg,lqr,webp] )"
+DEPEND+=" test? ( >=media-gfx/imagemagick-7.1.0:=[jpeg,lqr,tiff,webp] )"
 
 all_ruby_prepare() {
 	# Avoid unused dependency on rake-compiler. This also avoids an
@@ -44,13 +44,29 @@ all_ruby_prepare() {
 	sed -i -e '/prefix/ s:ImageMagick:ImageMagick-6:' ext/RMagick/extconf.rb || die
 
 	# Reading PDFs is not allowed by the default Gentoo security policy for imagemagick
-	sed -i -e '/can read PDF file/askip "Not allowed by Gentoo security policy"' spec/rmagick/image/read_spec.rb || die
+	#sed -i -e '/can read PDF file/askip "Not allowed by Gentoo security policy"' spec/rmagick/image/read_spec.rb || die
 
 	# Update version number hardcoded in tests
 	sed -i -e 's/"7.0"/"7.1"/' spec/rmagick/image/channel_mean_spec.rb || die
 
 	# Create directory used for a test
 	mkdir tmp
+}
+
+each_ruby_test() {
+	# Borrowed from media-gfx/gscan2pdf
+	# Needed to avoid test failures on e.g. ppc, bug #815856
+	# (Unclear why it doesn't manifest on amd64 here at least)
+	local confdir="${HOME}/.config/ImageMagick"
+	mkdir -p "${confdir}" || die
+	cat > "${confdir}/policy.xml" <<-EOT || die
+		<policymap>
+			<policy domain="coder" rights="read|write" pattern="PDF" />
+			<policy domain="coder" rights="read" pattern="PS" />
+		</policymap>
+	EOT
+
+	RSPEC_VERSION="3" ruby-ng_rspec
 }
 
 all_ruby_install() {
