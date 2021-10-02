@@ -44,6 +44,7 @@ ruby_add_rdepend "
 	>=dev-ruby/net-ssh-6.1.0
 	dev-ruby/rest-client:2
 	>=dev-ruby/vagrant_cloud-3.0.5
+	>=dev-ruby/rexml-3.2.5
 "
 
 ruby_add_bdepend "
