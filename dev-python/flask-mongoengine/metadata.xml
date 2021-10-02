@@ -8,5 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">flask-mongoengine</remote-id>
+    <remote-id type="github">MongoEngine/flask-mongoengine</remote-id>
   </upstream>
 </pkgmetadata>
