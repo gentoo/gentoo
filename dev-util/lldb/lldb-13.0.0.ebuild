@@ -12,7 +12,7 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="+libedit lzma ncurses +python test"
+IUSE="debug +libedit lzma ncurses +python test"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RESTRICT="test"
 
@@ -51,6 +51,9 @@ pkg_setup() {
 }
 
 src_configure() {
+	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
+	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
+
 	local mycmakeargs=(
 		-DLLDB_ENABLE_CURSES=$(usex ncurses)
 		-DLLDB_ENABLE_LIBEDIT=$(usex libedit)
