@@ -20,8 +20,11 @@ PATCHES=(
 )
 
 src_configure() {
+	local libdir=${EPREFIX}/usr/$(get_libdir)
+
 	local mycmakeargs=(
-		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
+		-DLIB_INSTALL_DIR="${libdir}"
+		-Dlibmt32emu_PKGCONFIG_INSTALL_PREFIX="${libdir}"
 	)
 
 	cmake_src_configure
