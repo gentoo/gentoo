@@ -8,7 +8,8 @@ inherit elisp readme.gentoo-r1
 
 DESCRIPTION="An Emacs mode for notes and project planning"
 HOMEPAGE="https://www.orgmode.org/"
-SRC_URI="https://orgmode.org/org-${PV}.tar.gz"
+SRC_URI="https://orgmode.org/org-${PV}.tar.gz
+	https://web.archive.org/web/20210624085142/https://orgmode.org/org-${PV}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.3+ contrib? ( GPL-2+ MIT ) odt-schema? ( OASIS-Open )"
 SLOT="0"
