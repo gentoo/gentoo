@@ -41,3 +41,8 @@ src_install() {
 
 	newenvd "${FILESDIR}"/env.file 99${PN}
 }
+
+pkg_postinst() {
+	# bug #776790
+	elog "Please run . ${EROOT}/etc/profile before attempting to use this package!"
+}
