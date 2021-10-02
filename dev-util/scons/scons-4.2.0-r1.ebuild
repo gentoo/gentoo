@@ -73,6 +73,24 @@ src_prepare() {
 			test/option/option-v.py
 			test/Interactive/version.py
 		)
+
+		if ! use amd64 && ! use x86 ; then
+			# These tests are currently broken on arm and other non-amd64/x86 platforms
+			# Work seems to be ongoing in e.g. https://github.com/SCons/scons/pull/4022 to
+			# better plumb up the MSVC tests for alternative arches.
+			# Try again after 4.2.0.
+			# See also: https://pairlist4.pair.net/pipermail/scons-users/2020-November/008452.html
+			# bug #757534
+			remove_tests+=(
+				test/MSVS/vs-7.0-scc-files.py
+				test/MSVS/vs-7.0-scc-legacy-files.py
+				test/MSVS/vs-7.1-scc-files.py
+				test/MSVS/vs-7.1-scc-legacy-files.py
+				test/MSVS/vs-scc-files.py
+				test/MSVS/vs-scc-legacy-files.py
+			)
+		fi
+
 		rm -r "${remove_tests[@]}" || die
 	fi
 }
