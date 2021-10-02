@@ -15,7 +15,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 
-BDEPEND="sys-apps/gawk"
+BDEPEND="sys-apps/gawk
+	sys-apps/groff"
 
 src_unpack() {
 	git-r3_fetch
