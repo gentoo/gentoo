@@ -1,0 +1,16 @@
+From: whitley-delamora <62795654+whitley-delamora@users.noreply.github.com>
+Date: Sat, 28 Mar 2020 13:46:47 +0100
+Subject: [PATCH] REPLWrapTestCase.test_bash_env(): export variable PS1
+
+https://github.com/pexpect/pexpect/commit/51c0b09f92f140eda10b62d234710f65ad56dee2
+
+--- a/tests/test_replwrap.py
++++ b/tests/test_replwrap.py
+@@ -45,6 +45,7 @@ def test_bash_env(self):
+         """env, which displays PS1=..., should not mess up finding the prompt.
+         """
+         bash = replwrap.bash()
++        res = bash.run_command("export PS1")
+         res = bash.run_command("env")
+         self.assertIn('PS1', res)
+         res = bash.run_command("echo $HOME")

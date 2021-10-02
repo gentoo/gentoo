@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -16,21 +16,17 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="doc examples"
+IUSE="examples"
 
 RDEPEND=">=dev-python/ptyprocess-0.5[${PYTHON_USEDEP}]"
-DEPEND="
-	doc? ( dev-python/sphinx )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-sphinx-3.patch
+	"${FILESDIR}"/${P}-fix-PS1.patch
 )
 
 distutils_enable_tests pytest
-
-python_compile_all() {
-	use doc && emake -C doc html
-}
+distutils_enable_sphinx doc
 
 src_test() {
 	# workaround new readline defaults
@@ -39,16 +35,7 @@ src_test() {
 	distutils-r1_src_test
 }
 
-python_install() {
-	distutils-r1_python_install
-	if ! python_is_python3; then
-		# https://bugs.gentoo.org/703100
-		rm "${D}$(python_get_sitedir)/pexpect/_async.py" || die
-	fi
-}
-
 python_install_all() {
-	use doc && local HTML_DOCS=( doc/_build/html/. )
 	if use examples; then
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples
