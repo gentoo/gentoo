@@ -139,13 +139,3 @@ src_install() {
 
 	keepdir /var/log/openconnect
 }
-
-pkg_postinst() {
-	local v
-	for v in ${REPLACING_VERSIONS}; do
-		ver_test $v -ge 8.10-r1 && continue
-		ewarn "openconnect tunnel-specific configurations stored in ${EROOT}/etc/conf.d"
-		ewarn "should be migrated to ${EROOT}/etc/openconnect/<tunnel>.conf"
-		ewarn "For more information see ${EROOT}/usr/share/doc/${PF}/README.OpenRC"
-	done
-}
