@@ -1,0 +1,32 @@
+From 2732740676c236b832dead0b74511043db64787e Mon Sep 17 00:00:00 2001
+From: ivan tkachenko <me@ratijas.tk>
+Date: Wed, 29 Sep 2021 00:55:23 +0300
+Subject: [PATCH] Fix build with gpsd 3.23.1
+
+STATUS_NO_FIX was renamed to STATUS_UNK.
+
+https://gitlab.com/gpsd/gpsd/-/commit/d4a4d8d3606fd50f10bcd20096a8a0cdb8b2d427
+
+Co-Authored-By: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+---
+ .../positionprovider/gpsd/GpsdPositionProviderPlugin.cpp      | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/plugins/positionprovider/gpsd/GpsdPositionProviderPlugin.cpp b/src/plugins/positionprovider/gpsd/GpsdPositionProviderPlugin.cpp
+index 6aaf3a34c..30b955cd1 100644
+--- a/src/plugins/positionprovider/gpsd/GpsdPositionProviderPlugin.cpp
++++ b/src/plugins/positionprovider/gpsd/GpsdPositionProviderPlugin.cpp
+@@ -74,7 +74,9 @@ void GpsdPositionProviderPlugin::update( gps_data_t data )
+ {
+     PositionProviderStatus oldStatus = m_status;
+     GeoDataCoordinates oldPosition = m_position;
+-#if defined( GPSD_API_MAJOR_VERSION ) && ( GPSD_API_MAJOR_VERSION >= 10 )
++#if defined(STATUS_UNK) // STATUS_NO_FIX was renamed to STATUS_UNK without bumping API version
++    if ( data.fix.status == STATUS_UNK || std::isnan( data.fix.longitude ) || std::isnan( data.fix.latitude ) )
++#elif defined( GPSD_API_MAJOR_VERSION ) && ( GPSD_API_MAJOR_VERSION >= 10 )
+     if ( data.fix.status == STATUS_NO_FIX || std::isnan( data.fix.longitude ) || std::isnan( data.fix.latitude ) )
+ #else
+     if ( data.status == STATUS_NO_FIX || std::isnan( data.fix.longitude ) || std::isnan( data.fix.latitude ) )
+-- 
+GitLab
+
