@@ -268,8 +268,8 @@ src_install() {
 		newinitd "${FILESDIR}"/ntpd.initd busybox-ntpd
 	fi
 	if busybox_config_enabled SYSLOGD; then
-		newconfd "${FILESDIR}"/syslogd.confd "busybox-syslogd
-		newinitd "${FILESDIR}"/syslogd.initd "busybox-syslogd
+		newconfd "${FILESDIR}"/syslogd.confd busybox-syslogd
+		newinitd "${FILESDIR}"/syslogd.initd busybox-syslogd
 	fi
 	if busybox_config_enabled KLOGD; then
 		newconfd "${FILESDIR}"/klogd.confd busybox-klogd
