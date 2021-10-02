@@ -3,12 +3,13 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 inherit meson python-r1 vala
 
 DESCRIPTION="Accounts SSO (Single Sign-On) management library for GLib applications"
 HOMEPAGE="https://gitlab.com/accounts-sso/libaccounts-glib"
 SRC_URI="https://gitlab.com/accounts-sso/${PN}/-/archive/VERSION_${PV}/${PN}-VERSION_${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-VERSION_${PV}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -16,6 +17,8 @@ KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 IUSE="doc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+# fails
+RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-db/sqlite:3
@@ -32,11 +35,6 @@ BDEPEND="
 	dev-libs/check
 	doc? ( dev-util/gtk-doc )
 "
-
-# fails
-RESTRICT="test"
-
-S="${WORKDIR}/${PN}-VERSION_${PV}"
 
 PATCHES=( "${FILESDIR}/${P}-assert-failure.patch" )
 
