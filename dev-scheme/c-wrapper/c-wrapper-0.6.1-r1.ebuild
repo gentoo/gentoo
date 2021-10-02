@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -26,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-glibc-2.25.patch
 	"${FILESDIR}"/${PN}-info.patch
 	"${FILESDIR}"/${PN}-texinfo-6.7.patch
+	"${FILESDIR}"/${PN}-clang.patch
 )
 HTML_DOCS=( doc/${PN}-ref{e,j}.html )
 

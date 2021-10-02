@@ -1,0 +1,71 @@
+--- a/src/c-parser.c
++++ b/src/c-parser.c
+@@ -1667,14 +1667,25 @@
+ ScmObj Scm_ParseMacroCode(ScmObj in, ScmObj macro_list)
+ {
+     static ScmObj trigger_line = SCM_FALSE;
++    static ScmObj is_gcc = SCM_TRUE;
+     ScmObj line_str;
+     ScmObj rx;
++    int n = 0;
++    int i;
+ 
+     /* skip the first line '# 1 "<stdin>"' */
+     Scm_ReadLineUnsafe(SCM_PORT(in));
+ 
+     if (SCM_FALSEP(trigger_line)) {
+-        trigger_line = SCM_MAKE_STR_IMMUTABLE("# 1 \"<stdin>\"");
++        ScmObj gcc = Scm_GlobalVariableRef(SCM_FIND_MODULE(CPARSER_MODULE_NAME, TRUE), SCM_SYMBOL(SCM_INTERN("GCC")), 0);
++        if (SCM_INTP(Scm_StringScanRight(SCM_STRING(gcc), SCM_STRING(SCM_MAKE_STR_IMMUTABLE("gcc")), SCM_STRING_SCAN_INDEX))) {
++            trigger_line = SCM_MAKE_STR_IMMUTABLE("# 1 \"<stdin>\"");
++        } else if (SCM_INTP(Scm_StringScanRight(SCM_STRING(gcc), SCM_STRING(SCM_MAKE_STR_IMMUTABLE("clang")), SCM_STRING_SCAN_INDEX))) {
++            trigger_line = SCM_MAKE_STR_IMMUTABLE("# 1 \"<stdin>\" 2");
++            is_gcc = SCM_FALSE;
++        } else {
++            Scm_Error("unknown compiler");
++        }
+     }
+     
+     while (!SCM_EOFP(line_str = Scm_ReadLineUnsafe(SCM_PORT(in)))) {
+@@ -1683,22 +1694,33 @@
+         }
+     }
+ 
+-    rx = Scm_RegComp(SCM_STRING(SCM_MAKE_STR_IMMUTABLE("^#\\s+\\d+\\s+\"<stdin>\"")), 0);
++    rx = Scm_RegComp(SCM_STRING(SCM_MAKE_STR_IMMUTABLE("^#\\s+(\\d+)\\s+\"<stdin>\"")), 0);
+     line_str = Scm_ReadLineUnsafe(SCM_PORT(in));
+-    while (!SCM_EOFP(line_str)) {
+-        ScmObj body_str = line_str;
++    for (i = 1; !SCM_EOFP(line_str); i++) {
++        ScmObj body_str;
++        ScmObj rm;
++        if (i < n) {
++            body_str = SCM_MAKE_STR_IMMUTABLE("");
++            goto parse;
++        }
++        body_str = line_str;
+         while (!SCM_EOFP(line_str = Scm_ReadLineUnsafe(SCM_PORT(in)))
+                && SCM_STRING_LENGTH(line_str) >= 13
+ #ifdef SCM_REGEXP_MULTI_LINE
+-               && SCM_REGMATCHP(Scm_RegExec(SCM_REGEXP(rx), SCM_STRING(line_str), SCM_UNDEFINED, SCM_UNDEFINED))) {
++               && SCM_REGMATCHP(rm = Scm_RegExec(SCM_REGEXP(rx), SCM_STRING(line_str), SCM_UNDEFINED, SCM_UNDEFINED))) {
+ #else
+-               && SCM_REGMATCHP(Scm_RegExec(SCM_REGEXP(rx), SCM_STRING(line_str)))) {
++               && SCM_REGMATCHP(rm = Scm_RegExec(SCM_REGEXP(rx), SCM_STRING(line_str)))) {
+ #endif
+-            if (SCM_EOFP(line_str = Scm_ReadLineUnsafe(SCM_PORT(in)))) {
+-                Scm_Error("[bug] unexpected EOF while parsing macro body");
++            if (SCM_TRUEP(is_gcc)) {
++                if (SCM_EOFP(line_str = Scm_ReadLineUnsafe(SCM_PORT(in)))) {
++                    Scm_Error("[bug] unexpected EOF while parsing macro body");
++                }
++                body_str = Scm_StringAppend2(SCM_STRING(body_str), SCM_STRING(line_str));
++            } else {
++                n = SCM_INT_VALUE(Scm_StringToNumber(SCM_STRING(Scm_RegMatchSubstr(SCM_REGMATCH(rm), SCM_MAKE_INT(1))), 10, 0));
+             }
+-            body_str = Scm_StringAppend2(SCM_STRING(body_str), SCM_STRING(line_str));
+         }
++parse:
+         if (SCM_NULLP(macro_list)) {
+             Scm_Error("[bug] lost macro body");
+         } else {
