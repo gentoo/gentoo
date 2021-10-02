@@ -1,0 +1,58 @@
+From f687c5abd0c5e9bd5a6688b6d9d50f2536b7d33d Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Fri, 24 Sep 2021 14:31:05 +0200
+Subject: [PATCH] Include a user agent on KNS requests
+
+---
+ src/core/jobs/httpworker.cpp | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/src/core/jobs/httpworker.cpp b/src/core/jobs/httpworker.cpp
+index 4c218b08..b81edd2d 100644
+--- a/src/core/jobs/httpworker.cpp
++++ b/src/core/jobs/httpworker.cpp
+@@ -7,7 +7,9 @@
+ #include "httpworker.h"
+ 
+ #include "knewstuffcore_debug.h"
++#include "knewstuffcore_version.h"
+ 
++#include <QCoreApplication>
+ #include <QFile>
+ #include <QMutex>
+ #include <QMutexLocker>
+@@ -93,6 +95,15 @@ void HTTPWorker::setUrl(const QUrl &url)
+     d->source = url;
+ }
+ 
++static void addUserAgent(QNetworkRequest &request)
++{
++    QString agentHeader = QStringLiteral("KNewStuff/%1").arg(QLatin1String(KNEWSTUFFCORE_VERSION_STRING));
++    if (QCoreApplication::instance()) {
++        agentHeader += QStringLiteral("-%1/%2").arg(QCoreApplication::instance()->applicationName(), QCoreApplication::instance()->applicationVersion());
++    }
++    request.setHeader(QNetworkRequest::UserAgentHeader, agentHeader);
++}
++
+ void HTTPWorker::startRequest()
+ {
+     if (d->reply) {
+@@ -101,6 +112,7 @@ void HTTPWorker::startRequest()
+     }
+ 
+     QNetworkRequest request(d->source);
++    addUserAgent(request);
+     d->reply = s_httpWorkerNAM->get(request);
+     connect(d->reply, &QNetworkReply::readyRead, this, &HTTPWorker::handleReadyRead);
+     connect(d->reply, &QNetworkReply::finished, this, &HTTPWorker::handleFinished);
+@@ -144,6 +156,7 @@ void HTTPWorker::handleFinished()
+                                    << d->reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
+             d->reply->deleteLater();
+             QNetworkRequest request(d->redirectUrl);
++            addUserAgent(request);
+             d->reply = s_httpWorkerNAM->get(request);
+             connect(d->reply, &QNetworkReply::readyRead, this, &HTTPWorker::handleReadyRead);
+             connect(d->reply, &QNetworkReply::finished, this, &HTTPWorker::handleFinished);
+-- 
+GitLab
+
