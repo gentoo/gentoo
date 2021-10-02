@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=LDS
 DIST_VERSION=1.28
@@ -11,7 +11,6 @@ DESCRIPTION="Interface to Amazon EC2, VPC, ELB, Autoscaling, and Relational DB s
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	>=dev-perl/AnyEvent-7.40.0
@@ -26,6 +25,6 @@ RDEPEND="
 	>=dev-perl/URI-1.690.0
 	>=dev-perl/XML-Simple-2.180.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	dev-perl/Module-Build
 "
