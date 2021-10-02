@@ -32,6 +32,9 @@ BDEPEND=">=dev-python/pbr-3.1.1[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests unittest
+distutils_enable_sphinx doc/source \
+	dev-python/openstackdocstheme \
+	dev-python/oslo-config
 
 python_test() {
 	eunittest -b
