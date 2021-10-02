@@ -3,12 +3,13 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 inherit meson python-r1 vala
 
 DESCRIPTION="GLib binding for the D-Bus API provided by signond"
 HOMEPAGE="https://accounts-sso.gitlab.io/"
 SRC_URI="https://gitlab.com/accounts-sso/${PN}/-/archive/VERSION_${PV}/${PN}-VERSION_${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-VERSION_${PV}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -36,8 +37,6 @@ BDEPEND="$(python_gen_any_dep)
 	doc? ( dev-util/gtk-doc )
 	test? ( dev-libs/check )
 "
-
-S="${WORKDIR}/${PN}-VERSION_${PV}"
 
 python_check_deps() { return 0; }
 
