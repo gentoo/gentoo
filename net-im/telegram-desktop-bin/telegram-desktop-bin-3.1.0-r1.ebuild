@@ -16,16 +16,13 @@ LICENSE="GPL-3-with-openssl-exception"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 
-QA_PREBUILT="usr/lib/${PN}/Telegram"
+QA_PREBUILT="usr/bin/telegram-desktop"
 
 RDEPEND="
 	dev-libs/glib:2
 	>=media-libs/fontconfig-2.13
 	media-libs/freetype:2
-	sys-libs/zlib
 	virtual/opengl
-	x11-libs/libSM
-	x11-libs/libdrm
 	x11-libs/libX11
 	>=x11-libs/libxcb-1.10[xkb]
 "
@@ -33,9 +30,10 @@ RDEPEND="
 S="${WORKDIR}/Telegram"
 
 src_install() {
-	exeinto /usr/lib/${PN}
-	doexe "Telegram"
-	newbin "${FILESDIR}"/${PN} "telegram-desktop"
+	newbin Telegram telegram-desktop
+
+	insinto /etc/tdesktop
+	newins - externalupdater <<<"${EPREFIX}/usr/bin/telegram-desktop"
 
 	local icon_size
 	for icon_size in 16 32 48 64 128 256 512; do
