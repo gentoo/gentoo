@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="caps ipv6 junction kerberos ldap +libmount nfsdcld +nfsidmap +nfsv4 nfsv41 selinux tcpd +uuid"
+IUSE="caps ipv6 junction kerberos ldap +libmount nfsdcld +nfsidmap +nfsv4 nfsv41 sasl selinux tcpd +uuid"
 REQUIRED_USE="kerberos? ( nfsv4 )"
 RESTRICT="test" #315573
 
@@ -34,7 +34,13 @@ DEPEND="
 	>=net-nds/rpcbind-0.2.4
 	sys-fs/e2fsprogs
 	caps? ( sys-libs/libcap )
-	ldap? ( net-nds/openldap )
+	ldap? (
+		net-nds/openldap
+		sasl? (
+			app-crypt/mit-krb5
+			dev-libs/cyrus-sasl:2
+		)
+	)
 	libmount? ( sys-apps/util-linux )
 	nfsv4? (
 		dev-libs/libevent:=
@@ -88,6 +94,11 @@ src_prepare() {
 src_configure() {
 	export libsqlite3_cv_is_recent=yes # Our DEPEND forces this.
 	export ac_cv_header_keyutils_h=$(usex nfsidmap)
+
+	# SASL is consumed in a purely automagic way
+	export ac_cv_header_sasl_h=no
+	export ac_cv_header_sasl_sasl_h=$(usex sasl)
+
 	local myeconfargs=(
 		--disable-static
 		--with-statedir="${EPREFIX}"/var/lib/nfs
