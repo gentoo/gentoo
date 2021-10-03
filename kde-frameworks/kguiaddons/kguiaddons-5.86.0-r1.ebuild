@@ -9,15 +9,17 @@ inherit ecm kde.org
 
 DESCRIPTION="Framework providing assorted high-level user interface components"
 LICENSE="LGPL-2+"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="wayland"
 
+# slot op: includes qpa/qplatformnativeinterface.h
 RDEPEND="
-	>=dev-qt/qtgui-${QTMIN}:5[wayland?]
+	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtx11extras-${QTMIN}:5
 	x11-libs/libX11
 	wayland? (
 		dev-libs/wayland
+		>=dev-qt/qtgui-${QTMIN}:5=[wayland]
 		>=dev-qt/qtwayland-${QTMIN}:5
 	)
 "
