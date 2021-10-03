@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools systemd readme.gentoo-r1 toolchain-funcs
+inherit autotools systemd readme.gentoo-r1
 
 DESCRIPTION="Daemon to use hardware random number generators"
 HOMEPAGE="https://github.com/nhorman/rng-tools"
