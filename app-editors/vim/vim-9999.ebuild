@@ -24,7 +24,7 @@ HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
 
 SLOT="0"
 LICENSE="vim"
-IUSE="X acl cscope debug gpm lua minimal nls perl python racket ruby selinux sound tcl terminal vim-pager"
+IUSE="X acl cscope debug gpm lua minimal netbeans nls perl python racket ruby selinux sound tcl terminal vim-pager"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -202,6 +202,7 @@ src_configure() {
 			$(use_enable acl)
 			$(use_enable cscope)
 			$(use_enable gpm)
+			$(use_enable netbeans)
 			$(use_enable nls)
 			$(use_enable perl perlinterp)
 			$(use_enable python python3interp)
