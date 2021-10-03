@@ -14,11 +14,16 @@ SLOT="5"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 IUSE=""
 
+# dev-qt/qtgui: QtXkbCommonSupport is provided by either IUSE libinput or X
+# slot op: various private QtWaylandClient headers
 RDEPEND="
 	>=dev-libs/wayland-1.15
 	>=dev-qt/qtdeclarative-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5[X]
-	>=dev-qt/qtwayland-${QTMIN}:5
+	|| (
+		>=dev-qt/qtgui-${QTMIN}:5[libinput]
+		>=dev-qt/qtgui-${QTMIN}:5[X]
+	)
+	>=dev-qt/qtwayland-${QTMIN}:5=
 	x11-libs/libxkbcommon
 "
 DEPEND="${RDEPEND}
