@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=ZOFFIX
 DIST_VERSION=1.003
@@ -11,14 +11,12 @@ DESCRIPTION="Paste on www.pastebin.com without API keys"
 
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Moo-1.4.1
 	>=dev-perl/WWW-Mechanize-1.730.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	dev-perl/Module-Build
 	test? (
 		virtual/perl-Test-Simple
