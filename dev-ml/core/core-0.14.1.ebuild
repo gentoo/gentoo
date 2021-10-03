@@ -28,7 +28,3 @@ RDEPEND="
 	dev-ml/timezone:=
 "
 DEPEND="${RDEPEND}"
-
-src_compile() {
-	dune build @install --profile release || die
-}
