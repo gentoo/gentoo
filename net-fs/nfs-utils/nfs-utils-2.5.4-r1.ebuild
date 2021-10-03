@@ -28,7 +28,7 @@ RESTRICT="test" #315573
 # so don't depend on virtual/krb.
 # (04 Feb 2005 agriffis)
 DEPEND="
-	>=dev-db/sqlite-3.3
+	dev-db/sqlite:3
 	dev-libs/libxml2
 	net-libs/libtirpc:=
 	>=net-nds/rpcbind-0.2.4
