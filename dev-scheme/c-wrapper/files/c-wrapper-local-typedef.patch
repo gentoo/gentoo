@@ -1,0 +1,149 @@
+https://aur.archlinux.org/cgit/aur.git/plain/13_local_typedef.patch?h=gauche-c-wrapper
+
+Description: Basic support for typedefs inside functions
+Author: Fabian Brosda <fabi3141@gmx.de>
+Last-Update: 2020-07-10
+
+--- a/src/c-parser.c
++++ b/src/c-parser.c
+@@ -594,6 +594,26 @@
+     }
+ }
+ 
++static void emit_typedef(ScmObj type_decl_list)
++{
++    ScmObj p;
++
++    SCM_FOR_EACH(p, type_decl_list) {
++        ScmObj v = SCM_CAR(p);
++        ScmObj ctype = SCM_TYPE_DECL_CTYPE(v);
++        ScmObj new_ctype = SCM_TYPE_DECL_NAME(v);
++        ScmObj sym = CParser_ctype2class_symbol(new_ctype);
++
++        Scm_DefChunkDictSetTypename(new_ctype,
++                                    Scm_MakeDefChunk(SYM(S_typedef),
++                                                     new_ctype,
++                                                     SCM_LIST1(sym),
++                                                     SCM_LIST3(SYM(S_define), sym, ctype)));
++        Scm_InstallType(new_ctype);
++    }
++}
++
++
+ ScmObj Scm_MakeTypeDecl(ScmObj type_spec_list, ScmObj declarator)
+ {
+     ScmObj lst = SCM_NIL;
+@@ -612,6 +632,7 @@
+     
+     SCM_FOR_EACH(pair, type_spec_list) {
+         if (SCM_EQ(SCM_CAR(pair), SYM(U_typedef))) {
++            emit_typedef(Scm_Cons(Scm_MakeTypeDecl(SCM_CDR(pair), declarator), lst));
+             continue;
+         }
+         lst = Scm_Cons(SCM_CAR(pair), lst);
+@@ -1542,25 +1563,6 @@
+     SCM_RETURN(SCM_UNDEFINED);
+ }
+                                                              
+-static void emit_typedef(ScmObj type_decl_list)
+-{
+-    ScmObj p;
+-
+-    SCM_FOR_EACH(p, type_decl_list) {
+-        ScmObj v = SCM_CAR(p);
+-        ScmObj ctype = SCM_TYPE_DECL_CTYPE(v);
+-        ScmObj new_ctype = SCM_TYPE_DECL_NAME(v);
+-        ScmObj sym = CParser_ctype2class_symbol(new_ctype);
+-
+-        Scm_DefChunkDictSetTypename(new_ctype,
+-                                    Scm_MakeDefChunk(SYM(S_typedef),
+-                                                     new_ctype,
+-                                                     SCM_LIST1(sym),
+-                                                     SCM_LIST3(SYM(S_define), sym, ctype)));
+-        Scm_InstallType(new_ctype);
+-    }
+-}
+-
+ static void emit_define_extern(ScmObj declaration)
+ {
+     ScmObj ctype = SCM_TYPE_DECL_CTYPE(declaration);
+--- a/testsuite/local_typedef.c
++++ b/testsuite/local_typedef.c
+@@ -0,0 +1,6 @@
++#include "local_typedef.h"
++
++int local_typedef(void)
++{
++    return helper();
++}
+--- a/testsuite/local_typedef.h
++++ b/testsuite/local_typedef.h
+@@ -0,0 +1,8 @@
++extern int local_typedef(void);
++
++int helper(void)
++{
++    typedef int _my_type;
++    _my_type ret = 1;
++    return ret;
++}
+--- a/testsuite/local-typedef.scm
++++ b/testsuite/local-typedef.scm
+@@ -0,0 +1,19 @@
++;;;
++;;; Test local typedefs
++;;;
++
++(use gauche.test)
++
++(test-start "c-wrapper (local typedefs)")
++(use c-wrapper)
++
++(c-load-library "./local_typedef")
++(c-include "./local_typedef.h")
++
++(test "local_typedef"
++      1
++      (lambda ()
++        (local_typedef)))
++
++;; epilogue
++(test-end)
+--- a/testsuite/Makefile.in
++++ b/testsuite/Makefile.in
+@@ -57,6 +57,9 @@
+ fptr_array.$(DYLIBEXT): fptr_array.o
+ 	$(CC) $(LDFLAGS) $@ $<
+ 
++local_typedef.$(DYLIBEXT): local_typedef.o
++	$(CC) $(LDFLAGS) $@ $<
++
+ gcc_extension.$(DYLIBEXT): gcc_extension.o
+ 	$(CC) $(LDFLAGS) $@ $<
+ 
+@@ -65,7 +68,7 @@
+ 
+ check: $(CHECK_TARGET)
+ 
+-check-c: ffitest.$(DYLIBEXT) fptr_array.$(DYLIBEXT) gcc_extension.$(DYLIBEXT)
++check-c: ffitest.$(DYLIBEXT) fptr_array.$(DYLIBEXT) gcc_extension.$(DYLIBEXT) local_typedef.$(DYLIBEXT)
+ 	@rm -f test.log
+ 	$(GOSH) -I../src -I../lib attr-test.scm >> test.log
+ 	$(GOSH) -I../src -I../lib ffitest.scm >> test.log
+@@ -74,6 +77,7 @@
+ 	$(GOSH) -I../src -I../lib struct_in_union-test.scm >> test.log
+ 	$(GOSH) -I../src -I../lib stdio-test.scm >> test.log
+ 	$(GOSH) -I../src -I../lib math-test.scm >> test.log
++	$(GOSH) -I../src -I../lib local-typedef.scm >> test.log
+ 	$(GOSH) -I../src -I../lib inline-test.scm >> test.log
+ 	$(GOSH) -I../src -I../lib fptr_array-test.scm >> test.log
+ 	$(GOSH) -I../src -I../lib array_qualifier-test.scm >> test.log
+@@ -83,7 +87,7 @@
+ 	$(GOSH) -I../src -I../lib -I../objc objc-test.scm >> test.log
+ 
+ clean :
+-	rm -rf core ffitest.$(DYLIBEXT) objc-test.$(DYLIBEXT) fptr_array.$(DYLIBEXT) gcc_extension.$(DYLIBEXT) *.o $(GENERATED) *~ test.log so_locations
++	rm -rf core ffitest.$(DYLIBEXT) objc-test.$(DYLIBEXT) fptr_array.$(DYLIBEXT) gcc_extension.$(DYLIBEXT) local_typedef.$(DYLIBEXT) *.o $(GENERATED) *~ test.log so_locations
+ 
+ distclean : clean
+ 	rm -rf $(CONFIG_GENERATED)
