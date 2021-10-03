@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-10-03)
+# Old obsolete slots. Use a newer slot instead.
+# Masked for removal in 30 days.
+dev-ruby/hashie:0
+dev-ruby/hashie:3
+dev-ruby/thor:0
+
 # Joonas Niilola <juippis@gentoo.org> (2021-10-02)
 # A library without revdeps. Last upstream release in 2009, huge amount
 # of open bugs not fixed has led the project being forked already.
