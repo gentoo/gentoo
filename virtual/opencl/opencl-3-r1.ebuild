@@ -18,7 +18,7 @@ pkg_postinst() {
 	elog "Currently included in Gentoo are:"
 	elog
 	elog " * open:"
-	elog "    - dev-libs/intel-neo - integrated Intel GPUs from Broadwell onwards. 64-bit only;"
+	elog "    - dev-libs/intel-compute-runtime - integrated Intel GPUs from Broadwell onwards. 64-bit only;"
 	elog "    - dev-libs/rocm-opencl-runtime - AMD GPUs supported by the amdgpu kernel driver. 64-bit only;"
 	elog "    - media-libs/mesa[opencl] - some older AMD GPUs; see [1]. 32-bit support;"
 	elog
