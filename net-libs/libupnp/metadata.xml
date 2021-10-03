@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <slots>
-    <subslots>Reflect ABI of libupnp.so.</subslots>
-  </slots>
-  <upstream>
-    <remote-id type="sourceforge">pupnp</remote-id>
-    <remote-id type="github">pupnp/pupnp</remote-id>
-  </upstream>
-  <use>
-    <flag name="reuseaddr">Allow clean restarts by binding the socket with SO_REUSEADDR</flag>
-    <flag name="blocking-tcp">Do not use async socket calls</flag>
-    <flag name="samples">Install sample applications</flag>
-  </use>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<slots>
+		<subslots>Reflect ABI of libupnp.so</subslots>
+	</slots>
+	<upstream>
+		<remote-id type="sourceforge">pupnp</remote-id>
+		<remote-id type="github">pupnp/pupnp</remote-id>
+	</upstream>
+	<use>
+		<flag name="blocking-tcp">Do not use async socket calls</flag>
+		<flag name="reuseaddr">Allow clean restarts by binding the socket with SO_REUSEADDR</flag>
+		<flag name="samples">Install sample applications</flag>
+		<flag name="tools">Install additional tools</flag>
+	</use>
 </pkgmetadata>
