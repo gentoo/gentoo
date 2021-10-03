@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=MBARBON
 DIST_VERSION=0.09
@@ -11,14 +11,13 @@ DESCRIPTION="interface to wxWidgets' OpenGL canvas"
 
 SLOT="0"
 KEYWORDS="~amd64 x86"
-IUSE=""
 
 RDEPEND="
 	dev-perl/OpenGL
 	dev-perl/Alien-wxWidgets[opengl]
 	>=dev-perl/Wx-0.570.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-Exporter
 	virtual/perl-ExtUtils-MakeMaker
 "
