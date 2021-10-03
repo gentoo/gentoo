@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake
 
-MY_PN="compute-runtime"
+MY_PN="${PN/intel-/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Intel Graphics Compute Runtime for oneAPI Level Zero and OpenCL Driver"
@@ -15,14 +15,14 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="+l0 +vaapi"
 
 RDEPEND="
 	dev-libs/libnl:3
 	dev-libs/libxml2:2
-	>=dev-util/intel-graphics-compiler-1.0.8517-r1
-	>=dev-util/intel-graphics-system-controller-0.2.3
+	>=dev-util/intel-graphics-compiler-1.0.8365
+	dev-util/intel-graphics-system-controller
 	>=media-libs/gmmlib-21.2.1
 	>=virtual/opencl-3
 	l0? ( >=dev-libs/level-zero-1.4.1 )
