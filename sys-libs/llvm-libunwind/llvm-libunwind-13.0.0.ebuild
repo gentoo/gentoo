@@ -44,7 +44,7 @@ multilib_src_configure() {
 	# link to compiler-rt
 	# https://github.com/gentoo/gentoo/pull/21516
 	if tc-is-clang; then
-		local compiler-rt=$($(tc-getCC) ${CFLAGS} ${CPPFLAGS} \
+		local compiler_rt=$($(tc-getCC) ${CFLAGS} ${CPPFLAGS} \
 		   ${LD_FLAGS} -print-libgcc-file-name)
 		if [[ ${compiler_rt} == *libclang_rt* ]]; then
 			use_compiler_rt=ON
