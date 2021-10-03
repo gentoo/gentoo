@@ -17,7 +17,7 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 sparc x86"
 RDEPEND="x11-libs/libXcursor"
 
 src_install() {
-	insinto /usr/share/cursors/xorg-x11/
+	insinto /usr/share/cursors/xorg-x11/Silver
 	doins -r Silver/cursors/
 	dodoc README "${FILESDIR}"/README.gentoo
 }
