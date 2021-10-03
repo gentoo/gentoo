@@ -20,7 +20,3 @@ BDEPEND=""
 IUSE="+ocamlopt"
 
 S="${WORKDIR}/ounit-v${PV}"
-
-src_compile() {
-	dune build @install --profile release || die
-}
