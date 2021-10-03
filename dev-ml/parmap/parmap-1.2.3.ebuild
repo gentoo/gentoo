@@ -19,7 +19,3 @@ IUSE="+ocamlopt"
 BDEPEND="dev-ml/dune-configurator"
 RDEPEND=">=dev-lang/ocaml-4.03:=[ocamlopt?]"
 DEPEND="${RDEPEND}"
-
-src_compile() {
-	dune build @install --profile release || die
-}
