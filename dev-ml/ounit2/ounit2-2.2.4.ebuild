@@ -20,7 +20,3 @@ DEPEND="
 	dev-ml/stdlib-shims:=
 "
 RDEPEND="${DEPEND}"
-
-src_compile() {
-	dune build @install --profile release || die
-}
