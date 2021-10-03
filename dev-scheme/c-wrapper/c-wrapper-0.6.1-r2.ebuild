@@ -27,6 +27,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-info.patch
 	"${FILESDIR}"/${PN}-texinfo-6.7.patch
 	"${FILESDIR}"/${PN}-clang.patch
+	"${FILESDIR}"/${PN}-float128.patch
+	"${FILESDIR}"/${PN}-local-typedef.patch
+	"${FILESDIR}"/${PN}-extend-parser.patch
 )
 HTML_DOCS=( doc/${PN}-ref{e,j}.html )
 
