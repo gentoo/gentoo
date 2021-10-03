@@ -11,9 +11,6 @@
 		<remote-id type="github">jmespath/jp</remote-id>
 	</upstream>
 	<use>
-		<flag name="jp">
-			Install jp which is the official jp CLI for JMESPath
-		</flag>
 		<flag name="jpp">
 			Install jpp which is an extended superset of the jp CLI for JMESPath
 		</flag>
