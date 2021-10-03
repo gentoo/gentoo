@@ -13,31 +13,33 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="
-	alsa cpuhistory debug doc ethernet ffmpeg flac gif +gtk headless
-	ipv6 jpeg lame mpg123 ogg oss parport pci png portaudio pulseaudio
-	sdl zlib"
+	alsa cpuhistory debug doc ethernet ffmpeg flac gif +gtk headless jpeg
+	lame mpg123 ogg oss parport pci png portaudio pulseaudio sdl zlib"
 REQUIRED_USE="
 	|| ( gtk headless sdl )
 	gtk? ( zlib )"
 
 RDEPEND="
-	sys-libs/readline:0=
+	sys-libs/readline:=
 	virtual/libintl
 	alsa? ( media-libs/alsa-lib )
 	ethernet? (
-		>=net-libs/libnet-1.1.2.1:1.1
-		>=net-libs/libpcap-0.9.8
+		net-libs/libnet:1.1
+		net-libs/libpcap
 	)
 	ffmpeg? ( media-video/ffmpeg:= )
 	flac? ( media-libs/flac )
 	gif? ( media-libs/giflib:= )
 	gtk? (
+		dev-libs/atk
 		dev-libs/glib:2
 		media-libs/fontconfig:1.0
 		media-libs/glew:0=
 		virtual/opengl
 		x11-libs/cairo
-		x11-libs/gtk+:3
+		x11-libs/gdk-pixbuf:2
+		x11-libs/gtk+:3[X]
+		x11-libs/libX11
 		x11-libs/pango
 	)
 	jpeg? ( virtual/jpeg )
@@ -49,14 +51,14 @@ RDEPEND="
 	)
 	parport? ( sys-libs/libieee1284 )
 	pci? ( sys-apps/pciutils )
-	png? ( media-libs/libpng:0= )
+	png? ( media-libs/libpng:= )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
 	sdl? (
 		media-libs/libsdl2[video]
 		media-libs/sdl2-image
 	)
-	zlib? ( sys-libs/zlib )"
+	zlib? ( sys-libs/zlib:= )"
 DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto"
@@ -98,14 +100,6 @@ src_configure() {
 	multibuild_foreach_variant run_in_build_dir multibuild_src_configure
 }
 
-multibuild_enable() {
-	if [[ ${MULTIBUILD_VARIANT} == ${1} ]]; then
-		echo --enable-${2}
-	else
-		echo --disable-${2}
-	fi
-}
-
 multibuild_src_configure() {
 	# Append ".variant" to x* programs if building multiple variants.
 	local xform
@@ -113,20 +107,26 @@ multibuild_src_configure() {
 		xform="/^x/s/\$/.${MULTIBUILD_VARIANT}/"
 	fi
 
+	vice-multi_enable() {
+		if [[ ${MULTIBUILD_VARIANT} == ${1} ]]; then
+			echo --enable-${2}
+		else
+			echo --disable-${2}
+		fi
+	}
+
 	local econfargs=(
 		--program-transform-name="${xform}"
-		$(multibuild_enable gtk desktop-files)
-		$(multibuild_enable gtk native-gtk3ui)
-		$(multibuild_enable headless headlessui)
-		$(multibuild_enable sdl sdlui2)
-
+		$(vice-multi_enable gtk desktop-files)
+		$(vice-multi_enable gtk native-gtk3ui)
+		$(vice-multi_enable headless headlessui)
+		$(vice-multi_enable sdl sdlui2)
 		$(use_enable cpuhistory)
 		$(use_enable debug debug-gtk3ui)
 		$(use_enable debug)
 		$(use_enable doc pdf-docs)
 		$(use_enable ethernet)
 		$(use_enable ffmpeg external-ffmpeg)
-		$(use_enable ipv6)
 		$(use_enable lame)
 		$(use_enable parport libieee1284)
 		$(use_enable portaudio)
@@ -140,18 +140,16 @@ multibuild_src_configure() {
 		$(use_with png)
 		$(use_with pulseaudio pulse)
 		$(use_with zlib)
+		$(usex alsa --enable-midi $(use_enable oss midi))
+		$(usex pci '' ac_cv_header_pci_pci_h=no)
 		--disable-arch
 		--disable-sdlui
 		--disable-shared-ffmpeg
 		--disable-static-ffmpeg
+		--disable-static-lame
 		--enable-html-docs
-
-		# Some dependencies lack configure options so prevent them becoming
-		# automagic by using configure cache variables.
-		$(usex pci '' ac_cv_header_pci_pci_h=no)
-
-		# Ensure we use giflib, not ungif.
-		ac_cv_lib_ungif_EGifPutLine=no
+		--enable-ipv6
+		ac_cv_lib_ungif_EGifPutLine=no # ensure use giflib, not ungif
 	)
 
 	econf "${econfargs[@]}"
