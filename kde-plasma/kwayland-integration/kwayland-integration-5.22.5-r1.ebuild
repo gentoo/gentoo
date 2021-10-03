@@ -19,12 +19,18 @@ IUSE=""
 
 RESTRICT="test" # bug 668872
 
+# dev-qt/qtgui: QtXkbCommonSupport is provided by either IUSE libinput or X
+# slot ops:
+# dev-qt/qtwayland: Qt::WaylandClientPrivate (private/qwayland*_p.h) stuff
+# kde-frameworks/kidletime: KIdleTime/private/abstractsystempoller.h
+# kde-frameworks/kwindowsystem: Various private headers
 DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=kde-frameworks/kguiaddons-${KFMIN}:5
-	>=kde-frameworks/kidletime-${KFMIN}:5
+	>=kde-frameworks/kidletime-${KFMIN}:5=
 	>=kde-frameworks/kwayland-${KFMIN}:5
-	>=kde-frameworks/kwindowsystem-${KFMIN}:5
+	>=kde-frameworks/kwindowsystem-${KFMIN}:5=
+	x11-libs/libxkbcommon
 "
 RDEPEND="${DEPEND}"
