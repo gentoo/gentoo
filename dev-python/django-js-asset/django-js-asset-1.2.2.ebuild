@@ -3,20 +3,31 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="script tag with additional attributes for django.forms.Media"
 HOMEPAGE="https://github.com/matthiask/django-js-asset"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="
+	https://github.com/matthiask/django-js-asset/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT="test"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/django-1.17[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-python/coverage[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( ${RDEPEND} )"
 
-distutils_enable_tests setup.py
+PATCHES=(
+	"${FILESDIR}/${P}-fix-django3.patch"
+)
+
+python_test() {
+	cd tests || die
+	local -x DJANGO_SETTINGS_MODULE=testapp.settings
+	django-admin test -v 2 || die
+}
