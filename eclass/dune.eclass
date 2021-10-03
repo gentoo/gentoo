@@ -42,7 +42,7 @@ case ${EAPI:-0} in
 esac
 
 dune_src_compile() {
-	dune build @install || die
+	dune build @install --profile release || die
 }
 
 dune_src_test() {
