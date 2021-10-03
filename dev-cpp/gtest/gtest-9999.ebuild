@@ -14,13 +14,15 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/google/googletest"
 else
 	if [[ -z ${GOOGLETEST_COMMIT} ]]; then
-		URI_PV=v${MY_PV:-${PV}}
+		SRC_URI="https://github.com/google/googletest/archive/refs/tags/release-${PV}.tar.gz
+			-> ${P}.tar.gz"
+		S="${WORKDIR}"/googletest-release-${PV}
 	else
-		URI_PV=${MY_PV:=${GOOGLETEST_COMMIT}}
+		SRC_URI="https://github.com/google/googletest/archive/${GOOGLETEST_COMMIT}.tar.gz
+			-> ${P}.tar.gz"
+		S="${WORKDIR}"/googletest-${GOOGLETEST_COMMIT}
 	fi
-	SRC_URI="https://github.com/google/googletest/archive/${URI_PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-	S="${WORKDIR}"/googletest-${MY_PV}
 fi
 
 DESCRIPTION="Google C++ Testing Framework"
