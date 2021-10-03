@@ -10,6 +10,7 @@ MY_PN="pupnp"
 DESCRIPTION="An Portable Open Source UPnP Development Kit"
 HOMEPAGE="http://pupnp.sourceforge.net/"
 SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_PN}-release-${PV}"
 
 LICENSE="BSD"
 SLOT="0/17"
@@ -19,9 +20,7 @@ IUSE="blocking-tcp debug doc ipv6 +reuseaddr samples static-libs"
 # bug 733750
 RESTRICT="test"
 
-DOCS="ChangeLog"
-
-S="${WORKDIR}/${MY_PN}-release-${PV}"
+PATCHES=( "${FILESDIR}/${PN}-1.14.7-glibc-2.34.patch" )
 
 src_prepare() {
 	default
