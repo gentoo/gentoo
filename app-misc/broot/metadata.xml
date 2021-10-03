@@ -12,4 +12,7 @@
 	<upstream>
 		<remote-id type="github">Canop/broot</remote-id>
 	</upstream>
+	<use>
+		<flag name="X">X11 clipboard interaction</flag>
+	</use>
 </pkgmetadata>
