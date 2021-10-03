@@ -1,13 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-USE_RUBY="ruby25 ruby26 ruby27 ruby30"
+USE_RUBY="ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_RECIPE_TEST="none"
 
-RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
 RUBY_FAKEGEM_GEMSPEC="nokogumbo.gemspec"
@@ -28,7 +27,7 @@ IUSE=""
 
 # Contains a bundled and patched version of dev-libs/gumbo.
 
-ruby_add_rdepend ">=dev-ruby/nokogiri-1.8.4"
+ruby_add_rdepend "=dev-ruby/nokogiri-1.11*"
 
 all_ruby_prepare() {
 	# Define rakehome in scope
