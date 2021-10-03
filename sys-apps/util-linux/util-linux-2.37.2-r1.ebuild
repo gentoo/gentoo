@@ -71,7 +71,6 @@ RDEPEND+="
 		!>=sys-apps/shadow-4.7-r2[su]
 	)
 	!net-wireless/rfkill
-	!<app-shells/bash-completion-2.7-r1
 "
 
 # Required for man-page generation
