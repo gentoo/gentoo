@@ -13,7 +13,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
 PATCHES=(
-	"${FILESDIR}/${P}-64-bit-time.patch"
+	"${FILESDIR}/${PN}"-fix-tests.patch
+	"${FILESDIR}/${PN}"-large-files-fix.patch
 	)
 
 src_configure() {

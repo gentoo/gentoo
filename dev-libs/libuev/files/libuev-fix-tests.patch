@@ -1,0 +1,9 @@
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -14,5 +14,5 @@ check_PROGRAMS  = $(TESTS)
+ 
+ # Ignore warnings about unused result, in e.g. write()
+ CFLAGS          = -W -Wall -Wextra -Wno-unused-result -Wno-unused-parameter
+-CPPFLAGS        = -D_GNU_SOURCE
++CPPFLAGS        = -D_GNU_SOURCE -D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64
+ LDADD           = -L../src ../src/libuev.la
