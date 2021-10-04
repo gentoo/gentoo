@@ -3,16 +3,18 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
-distutils_enable_tests unittest
 
 MY_PV="${PV/_p/.post}"
 MY_P="${PN}-${MY_PV}"
+
 DESCRIPTION="A zero-boilerplate games programming framework based on Pygame"
 HOMEPAGE="https://pygame-zero.readthedocs.io/"
 SRC_URI="https://github.com/lordmauve/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -22,15 +24,16 @@ RDEPEND="
 	dev-python/pygame[${PYTHON_USEDEP}]
 "
 
-DEPEND="
-	${RDEPEND}
+BDEPEND="
 	test? (
 		media-libs/sdl2-image[png]
 		media-libs/sdl2-mixer[vorbis]
 	)
 "
+distutils_enable_tests unittest
 
-S="${WORKDIR}/${MY_P}"
-
-# Allow the tests to pass without real audio or video.
-export SDL_AUDIODRIVER=dummy SDL_VIDEODRIVER=dummy
+python_test() {
+	# Allow the tests to pass without real audio or video.
+	local -x SDL_AUDIODRIVER=dummy SDL_VIDEODRIVER=dummy
+	eunittest
+}
