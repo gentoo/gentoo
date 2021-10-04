@@ -73,12 +73,12 @@ src_install() {
 
 	if use doc; then
 		dodoc DOC/ug.pdf
-		dodoc DOC/html/*
+		dodoc -r DOC/html/.
 	fi
 
 	if use examples; then
 		docinto examples
-		dodoc EXAMPLE FORTRAN
+		dodoc -r EXAMPLE FORTRAN
 	fi
 
 	find "${ED}" -name "*.a" -delete || die
