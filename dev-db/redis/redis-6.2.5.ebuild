@@ -18,10 +18,10 @@ HOMEPAGE="https://redis.io"
 SRC_URI="https://download.redis.io/releases/${P}.tar.gz"
 
 LICENSE="BSD"
+SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="+jemalloc ssl systemd tcmalloc test"
 RESTRICT="!test? ( test )"
-SLOT="0"
 
 COMMON_DEPEND="
 	${LUA_DEPS}
