@@ -51,7 +51,7 @@ PATCHES=(
 	${FILESDIR}/${P}-llvm-12.patch
 )
 
-# Restricting tests as Make file handles them differently
+# Restricting tests as Makefile handles them differently
 RESTRICT="test"
 
 S="${WORKDIR}/OpenShadingLanguage-Release-${PV}-dev"
