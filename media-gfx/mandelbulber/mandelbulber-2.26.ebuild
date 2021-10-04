@@ -4,7 +4,7 @@
 EAPI=8
 
 MY_P="${PN}2-${PV}"
-inherit desktop qmake-utils xdg-utils
+inherit desktop qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Tool to render 3D fractals"
 HOMEPAGE="https://www.mandelbulber.com"
@@ -45,6 +45,14 @@ DEPEND="${RDEPEND}
 "
 
 S=${WORKDIR}/${MY_P}
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+}
 
 src_prepare() {
 	default
