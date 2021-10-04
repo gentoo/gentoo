@@ -3,6 +3,8 @@
 
 EAPI="7"
 
+inherit autotools
+
 MY_P="${P^g}"
 
 DESCRIPTION="OpenGL binding for Gauche"
@@ -20,9 +22,18 @@ RDEPEND=">=dev-scheme/gauche-0.9.4
 	x11-libs/libXmu
 	cg? ( media-gfx/nvidia-cg-toolkit )"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}"/${P}-simple.viewer.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-simple.viewer.patch
+	"${FILESDIR}"/${P}-cg.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf $(usex cg --enable-cg "")
