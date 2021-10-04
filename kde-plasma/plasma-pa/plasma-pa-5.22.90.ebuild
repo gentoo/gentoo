@@ -31,5 +31,10 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 	>=kde-frameworks/kirigami-${KFMIN}:5
+	|| (
+		media-video/pipewire
+		media-sound/pulseaudio-daemon
+		media-sound/pulseaudio[daemon(+)]
+	)
 	x11-themes/sound-theme-freedesktop
 "
