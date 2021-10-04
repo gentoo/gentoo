@@ -29,6 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-simple.viewer.patch
 	"${FILESDIR}"/${P}-cflags.patch
 	"${FILESDIR}"/${P}-cg.patch
+	"${FILESDIR}"/${P}-info.patch
 )
 
 src_prepare() {
