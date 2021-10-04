@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>jturner.usa+gentoo@gmail.com</email>
+    <name>John Turner</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">Alexander-Miller/treemacs</remote-id>
+    <doc>https://github.com/Alexander-Miller/treemacs/blob/master/README.org</doc>
+  </upstream>
+  <longdescription>
+    A file and project explorer similar to NeoTree or vim’s NerdTree,
+    but largely inspired by the Project Explorer in Eclipse.
+    It shows the file system outlines of your projects in a
+    simple tree layout allowing quick navigation and exploration,
+    while also possessing basic file management utilities.
+  </longdescription>
+  <use>
+    <flag name="evil">Enable support for evil-mode keybinds and navagation</flag>
+    <flag name="magit">Enable treemacs to be informed of git state changes applied from magit</flag>
+    <flag name="icons-dired">Enable treemacs icons in dired buffers</flag>
+  </use>
+</pkgmetadata>
