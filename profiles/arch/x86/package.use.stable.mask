@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Alex Xu (Hello71) <alex_y_xu@yahoo.ca> (2021-11-06)
+# Depends on media-libs/svt-av1, which is ~x86
+media-libs/libavif svt-av1
+
 # Joonas Niilola <juippis@gentoo.org> (2021-08-13)
 # dev-libs/efl is stabilized on x86.
 app-crypt/pinentry -efl

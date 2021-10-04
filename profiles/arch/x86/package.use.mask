@@ -58,10 +58,6 @@ x11-wm/mutter video_cards_nvidia
 # Unmask TPM on supported archs.
 sys-apps/systemd -tpm
 
-# Daniel Novomesky <dnovomesky@gmail.com> (2021-02-24)
-# Depends on media-libs/svt-av1, which is unavailable on x86
-media-libs/libavif svt-av1
-
 # Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
 # Unmask PCRE JIT support where dev-libs/libpcre2[jit] is available
 dev-lang/php -jit
