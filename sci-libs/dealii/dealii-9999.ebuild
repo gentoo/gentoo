@@ -3,12 +3,12 @@
 
 EAPI=7
 
-inherit cmake multilib
-
 # deal.II uses its own FindLAPACK.cmake file that calls into the system
 # FindLAPACK.cmake module and does additional internal setup. Do not remove
 # any of these modules:
 CMAKE_REMOVE_MODULES_LIST=""
+
+inherit cmake multilib
 
 DESCRIPTION="Solving partial differential equations with the finite element method"
 HOMEPAGE="https://www.dealii.org/"
