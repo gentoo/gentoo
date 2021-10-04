@@ -162,7 +162,7 @@ src_configure() {
 }
 
 src_compile() {
-	if tc-is-cross-compiler; then
+	if tc-is-cross-compiler ; then
 		# This header is the same across targets, so use the build compiler.
 		pushd server >/dev/null
 		emake gen_test_char
@@ -249,7 +249,7 @@ pkg_postinst() {
 				lbset=1 && break
 			fi
 		done
-		if [ ! ${lbset} ] ; then
+		if [[ ! ${lbset} ]] ; then
 			echo
 			ewarn "Info: Missing load balancing scheduler algorithm module"
 			ewarn "(They were split off from proxy_balancer in 2.3)"
