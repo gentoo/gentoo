@@ -25,6 +25,11 @@ KEYWORDS="~amd64"
 LICENSE="Apache-2.0 Boost-1.0 BSD-2 BSD GPL-2+ LGPL-2.1-with-linking-exception LGPL-3 OFL-1.1 MIT"
 SLOT="0"
 
+# Author has indicated that he is unhappy with redistributing custom builds
+# under the MultiMC name/logo
+# https://github.com/MultiMC/MultiMC5/issues/4087
+RESTRICT="bindist"
+
 COMMON_DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtwidgets:5
