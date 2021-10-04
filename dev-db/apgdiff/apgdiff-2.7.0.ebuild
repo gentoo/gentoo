@@ -13,7 +13,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A simple PostgreSQL diff tool that is useful for schema upgrades"
-HOMEPAGE="http://www.apgdiff.com/"
+HOMEPAGE="https://github.com/fordfrog/apgdiff https://www.apgdiff.com/"
 SRC_URI="https://github.com/fordfrog/${PN}/archive/refs/tags/release_${PV}.tar.gz -> ${P}-sources.tar.gz"
 LICENSE="MIT"
 SLOT="0"
