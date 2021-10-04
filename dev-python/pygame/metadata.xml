@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="pypi">pygame</remote-id>
+		<remote-id type="github">pygame/pygame</remote-id>
 	</upstream>
 </pkgmetadata>
