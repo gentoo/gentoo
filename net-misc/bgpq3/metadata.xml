@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>chainsaw@gentoo.org</email>
-		<name>Tony Vroon</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		bgpq3 allows to generate different config entries with prefix lists, useful for Cisco/Juniper routers and their software analogs, such as Quagga.
 		This program is a successor of bgpq from same author, main difference - it supports IPv6.
