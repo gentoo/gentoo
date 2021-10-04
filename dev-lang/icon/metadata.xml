@@ -9,7 +9,4 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>
-	<use>
-		<flag name="iplsrc">install the icon programming library source</flag>
-	</use>
 </pkgmetadata>
