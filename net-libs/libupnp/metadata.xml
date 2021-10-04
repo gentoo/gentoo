@@ -16,6 +16,5 @@
 		<flag name="blocking-tcp">Do not use async socket calls</flag>
 		<flag name="reuseaddr">Allow clean restarts by binding the socket with SO_REUSEADDR</flag>
 		<flag name="samples">Install sample applications</flag>
-		<flag name="tools">Install additional tools</flag>
 	</use>
 </pkgmetadata>
