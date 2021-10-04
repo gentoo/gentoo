@@ -7,6 +7,8 @@ inherit cmake llvm toolchain-funcs
 # check this on updates
 LLVM_MAX_SLOT=10
 
+CMAKE_REMOVE_MODULES_LIST=()
+
 DESCRIPTION="Advanced shading language for production GI renderers"
 HOMEPAGE="http://opensource.imageworks.com/?p=osl https://github.com/imageworks/OpenShadingLanguage"
 SRC_URI="https://github.com/imageworks/OpenShadingLanguage/archive/Release-${PV}.tar.gz -> ${P}.tar.gz"
@@ -51,9 +53,7 @@ BDEPEND="
 
 PATCHES=()
 
-CMAKE_REMOVE_MODULES_LIST=()
-
-# Restricting tests as Make file handles them differently
+# Restricting tests as Makefile handles them differently
 RESTRICT="test"
 
 S="${WORKDIR}/OpenShadingLanguage-Release-${PV}"

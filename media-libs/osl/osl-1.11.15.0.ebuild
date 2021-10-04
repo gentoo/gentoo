@@ -60,9 +60,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-cmake.patch
 )
 
-CMAKE_REMOVE_MODULES_LIST=()
-
-# Restricting tests as Make file handles them differently
+# Restricting tests as Makefile handles them differently
 RESTRICT="test"
 
 S="${WORKDIR}/OpenShadingLanguage-Release-${PV}"
