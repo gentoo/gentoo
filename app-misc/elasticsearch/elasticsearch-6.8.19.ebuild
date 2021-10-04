@@ -85,4 +85,6 @@ pkg_postinst() {
 	ewarn "prior to keystore generation or you may experience startup fails."
 	ewarn "chown root:${PN} /etc/${PN} && chmod 2750 /etc/${PN}"
 	ewarn "chown root:${PN} /etc/${PN}/${PN}.keystore && chmod 0660 /etc/${PN}/${PN}.keystore"
+
+	tmpfiles_process
 }
