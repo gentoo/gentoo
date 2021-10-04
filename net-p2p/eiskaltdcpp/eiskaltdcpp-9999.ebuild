@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-1 lua5-2 )
-
+CMAKE_REMOVE_MODULES_LIST="FindASPELL FindLua"
 PLOCALES="be bg cs da de el en es eu fr hu ie it pl pt_BR ru sk sr sr@latin sv_SE tr uk vi zh_CN"
 
 inherit cmake lua-single plocale xdg-utils toolchain-funcs
@@ -90,8 +90,6 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( AUTHORS ChangeLog.txt )
-
-CMAKE_REMOVE_MODULES_LIST="FindASPELL FindLua"
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
