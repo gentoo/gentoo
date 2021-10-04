@@ -1,36 +1,46 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools desktop
 
 DESCRIPTION="A free Worms clone"
-HOMEPAGE="http://gna.org/projects/warmux/"
-SRC_URI="http://download.gna.org/warmux/${P}.tar.bz2"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 S="${WORKDIR}"/${PN}-11.04
 
-LICENSE="GPL-2"
+LICENSE="
+	GPL-2+
+	|| ( Apache-2.0 GPL-3 )
+	UbuntuFontLicense-1.0
+	vlgothic
+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="debug nls unicode"
+IUSE="debug unicode"
 
 RDEPEND="
 	dev-libs/libxml2
+	media-libs/libpng:=
 	media-libs/libsdl[joystick,video,X]
 	media-libs/sdl-image[jpeg,png]
 	media-libs/sdl-mixer[vorbis]
 	media-libs/sdl-ttf
 	media-libs/sdl-net
-	media-libs/sdl-gfx
-	media-fonts/dejavu
+	media-libs/sdl-gfx:=
 	net-misc/curl
+	virtual/libintl
 	x11-libs/libX11
-	nls? ( virtual/libintl )
-	unicode? ( dev-libs/fribidi )"
+	unicode? ( dev-libs/fribidi )
+"
 DEPEND="${RDEPEND}
+	x11-base/xorg-proto
+"
+BDEPEND="
+	sys-devel/gettext
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
@@ -40,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-stat.patch
 	"${FILESDIR}"/${P}-fix-c++14.patch
 	"${FILESDIR}"/${P}-respect-AR.patch
+	"${FILESDIR}"/${P}-clang.patch
 )
 
 src_prepare() {
@@ -49,18 +60,14 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--with-localedir-name="${EPREFIX}"/usr/share/locale \
-		--with-datadir-name="${EPREFIX}"/usr/share/${PN} \
-		--with-font-path="${EPREFIX}"/usr/share/fonts/dejavu/DejaVuSans.ttf \
+		--enable-nls \
 		$(use_enable debug) \
-		$(use_enable nls) \
 		$(use_enable unicode fribidi)
 }
 
 src_install() {
 	default
 
-	rm -f "${ED%/}"/usr/share/${PN}/font/DejaVuSans.ttf || die
 	doicon data/icon/warmux.svg
 	make_desktop_entry warmux Warmux
 }
