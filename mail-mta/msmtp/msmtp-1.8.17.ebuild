@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit fcaps multilib
+inherit fcaps
 
 DESCRIPTION="An SMTP client and SMTP plugin for mail user agents such as Mutt"
 HOMEPAGE="https://marlam.de/msmtp/"
