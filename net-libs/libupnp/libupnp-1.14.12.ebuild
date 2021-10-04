@@ -15,8 +15,7 @@ S="${WORKDIR}/${MY_PN}-release-${PV}"
 LICENSE="BSD"
 SLOT="0/17"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux"
-IUSE="blocking-tcp debug doc +ipv6 +reuseaddr samples +ssl static-libs tools"
-REQUIRED_USE="samples? ( tools )"
+IUSE="blocking-tcp debug doc +ipv6 +reuseaddr samples +ssl static-libs"
 
 RDEPEND="ssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}"
@@ -38,7 +37,6 @@ src_configure() {
 		$(use_enable samples)
 		$(use_enable ssl open_ssl)
 		$(use_enable static-libs static)
-		$(use_enable tools)
 	)
 
 	econf ${myeconfargs[@]}
