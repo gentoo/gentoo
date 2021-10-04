@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_REQ_USE="tk?"
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 virtualx
 
@@ -39,7 +39,6 @@ BDEPEND="
 	test? (
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pygame[${PYTHON_USEDEP},opengl,X]
-		dev-python/pytest[${PYTHON_USEDEP}]
 		!prefix? (
 			media-libs/mesa[llvm]
 			x11-base/xorg-server[-minimal,xorg]
