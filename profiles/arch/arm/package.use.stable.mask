@@ -111,10 +111,6 @@ app-metrics/collectd collectd_plugins_java collectd_plugins_xencpu
 # Mask until >sys-cluster/ceph-0.94 goes stable
 net-analyzer/rrdtool rados
 
-# Michael Weber <xmw@gentoo.org> (2017-02-27)
-# Stable mask dev-ruby/haml test till rails is stabilized.
-dev-ruby/haml test
-
 # Brian Evans <grknight@gentoo.org> (2017-01-17)
 # Stable mask galera since dev-libs/asio is not stable on arm
 dev-db/mariadb galera

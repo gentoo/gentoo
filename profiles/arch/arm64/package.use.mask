@@ -300,7 +300,6 @@ www-client/vivaldi-snapshot widevine
 # Michał Górny <mgorny@gentoo.org> (2018-02-17)
 # Requires unkeyworded dependencies.
 dev-python/ipython notebook
-dev-ruby/haml test
 
 # Michał Górny <mgorny@gentoo.org> (2018-02-16)
 # USE=test-full requires USE=pkcs11 that is use.masked.

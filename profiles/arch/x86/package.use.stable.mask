@@ -60,10 +60,6 @@ net-analyzer/wireshark -doc
 # Requires not yet stabilised media-libs/qtav
 media-gfx/digikam mediaplayer
 
-# Thomas Deutschmann <whissi@gentoo.org> (2017-10-01)
-# Stable mask dev-ruby/haml test till rails is stabilized.
-dev-ruby/haml test
-
 # Adam Feldman <NP-Hardass@gentoo.org> (2017-09-27)
 # patchset variants are not stable
 virtual/wine staging
