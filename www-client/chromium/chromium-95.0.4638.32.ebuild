@@ -234,6 +234,9 @@ src_prepare() {
 		"${FILESDIR}/chromium-93-EnumTable-crash.patch"
 		"${FILESDIR}/chromium-93-InkDropHost-crash.patch"
 		"${FILESDIR}/chromium-95-maldoca-zlib.patch"
+		"${FILESDIR}/chromium-95-eigen-avx-1.patch"
+		"${FILESDIR}/chromium-95-eigen-avx-2.patch"
+		"${FILESDIR}/chromium-95-eigen-avx-3.patch"
 		"${FILESDIR}/chromium-use-oauth2-client-switches-as-default.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
 	)
