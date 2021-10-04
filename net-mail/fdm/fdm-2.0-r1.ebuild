@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="fetch, filter and deliver mail"
+DESCRIPTION="Fetch, filter and deliver mail"
 HOMEPAGE="https://github.com/nicm/fdm"
 SRC_URI="https://github.com/nicm/fdm/releases/download/${PV}/${P}.tar.gz"
 
@@ -43,10 +43,4 @@ src_install() {
 		docinto examples
 		dodoc examples/*
 	fi
-}
-
-pkg_preinst() {
-	# This user is hard-coded in fdm.h. If fdm is started as root,
-	# it will attempt to drop privileges (to this user).
-	enewuser _fdm
 }
