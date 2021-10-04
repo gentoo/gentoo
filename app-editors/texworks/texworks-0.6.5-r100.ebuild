@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..3} )
 PYTHON_COMPAT=( python3_{7,8,9} )
-
+CMAKE_REMOVE_MODULES_LIST="FindLua"
 inherit lua-single python-single-r1 cmake virtualx xdg-utils
 
 DESCRIPTION="A simple interface for working with TeX documents"
@@ -43,8 +43,6 @@ PATCHES=(
 S=${WORKDIR}/${PN}-release-${PV}
 
 RESTRICT="!test? ( test )"
-
-CMAKE_REMOVE_MODULES_LIST="FindLua"
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
