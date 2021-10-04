@@ -39,7 +39,7 @@ BDEPEND="dev-lang/perl
 	)"
 
 LLVM_COMPONENTS=( openmp llvm/include )
-LLVM_PATCHSET=${PV/_/-}
+LLVM_PATCHSET=${PV/_/-}-r1
 llvm.org_set_globals
 
 python_check_deps() {
