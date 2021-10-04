@@ -27,6 +27,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-simple.viewer.patch
+	"${FILESDIR}"/${P}-cflags.patch
 	"${FILESDIR}"/${P}-cg.patch
 )
 
