@@ -8,7 +8,7 @@ inherit autotools desktop
 DESCRIPTION="A free Worms clone"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
-S="${WORKDIR}"/${PN}-11.04
+S="${WORKDIR}/${PN}-11.04"
 
 LICENSE="
 	GPL-2+
@@ -24,11 +24,11 @@ RDEPEND="
 	dev-libs/libxml2
 	media-libs/libpng:=
 	media-libs/libsdl[joystick,video,X]
+	media-libs/sdl-gfx:=
 	media-libs/sdl-image[jpeg,png]
 	media-libs/sdl-mixer[vorbis]
-	media-libs/sdl-ttf
 	media-libs/sdl-net
-	media-libs/sdl-gfx:=
+	media-libs/sdl-ttf
 	net-misc/curl
 	virtual/libintl
 	x11-libs/libX11
@@ -55,6 +55,7 @@ PATCHES=(
 
 src_prepare() {
 	default
+
 	eautoreconf
 }
 
