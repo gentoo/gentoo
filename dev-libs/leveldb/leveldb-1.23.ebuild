@@ -11,7 +11,7 @@ SRC_URI="https://github.com/google/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.
 
 LICENSE="BSD"
 SLOT="0/1"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="+crc32c +snappy +tcmalloc test"
 
 RESTRICT="!test? ( test )"
