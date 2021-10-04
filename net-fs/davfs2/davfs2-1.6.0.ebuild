@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="Linux FUSE (or coda) driver that allows you to mount a WebDAV resource"
 HOMEPAGE="https://savannah.nongnu.org/projects/davfs2"
 SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
@@ -26,6 +28,10 @@ RDEPEND="${RDEPEND}
 	acct-user/davfs2
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.0-neon-0.32-support.patch
+)
+
 src_prepare() {
 	local f
 
@@ -35,6 +41,7 @@ src_prepare() {
 	done < <(find "${S}"/man -type f -name 'Makefile.in' -print0)
 
 	default
+	eautoreconf
 }
 
 src_configure() {
