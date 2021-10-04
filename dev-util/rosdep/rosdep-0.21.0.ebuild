@@ -26,17 +26,17 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
+
+# Tests need network
+RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="
 	dev-python/catkin_pkg[${PYTHON_USEDEP}]
 	dev-python/rospkg[${PYTHON_USEDEP}]
 	dev-python/rosdistro[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-python/nose[${PYTHON_USEDEP}]
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/flake8[${PYTHON_USEDEP}]
@@ -44,12 +44,11 @@ BDEPEND="
 "
 PATCHES=( "${FILESDIR}/tests.patch" )
 
-python_test() {
-	if has network-sandbox ${FEATURES}; then
-		einfo "Skipping tests due to network sandbox"
-	else
-		env -u ROS_DISTRO nosetests --with-xunit test || die
-	fi
+distutils_enable_tests nose
+
+src_test() {
+	unset ROS_DISTRO
+	distutils-r1_src_test
 }
 
 pkg_postrm() {
