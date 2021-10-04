@@ -12,7 +12,7 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="debug +libedit lzma ncurses +python test"
+IUSE="debug +libedit lzma ncurses +python test +xml"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RESTRICT="test"
 
@@ -26,7 +26,8 @@ RDEPEND="
 		')
 		${PYTHON_DEPS}
 	)
-	~sys-devel/clang-${PV}[xml]
+	xml? ( dev-libs/libxml2:= )
+	~sys-devel/clang-${PV}
 	~sys-devel/llvm-${PV}"
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -59,6 +60,7 @@ src_configure() {
 		-DLLDB_ENABLE_LIBEDIT=$(usex libedit)
 		-DLLDB_ENABLE_PYTHON=$(usex python)
 		-DLLDB_ENABLE_LZMA=$(usex lzma)
+		-DLLDB_ENABLE_LIBXML2=$(usex xml)
 		-DLLDB_USE_SYSTEM_SIX=1
 		-DLLVM_ENABLE_TERMINFO=$(usex ncurses)
 
