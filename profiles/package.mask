@@ -307,10 +307,6 @@ net-libs/gsnmp
 # Bug 644344; Removal on 2021-10-07.
 net-analyzer/scli
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-09-04)
-# EAPI-5, dead, unused, bug 808213; Removal on 2021-10-04.
-x11-libs/mx
-
 # David Seifert <soap@gentoo.org> (2021-09-04)
 # Last upstream release over 2.5 years ago, removed by Fedora,
 # unresponsive maintainer in Gentoo, broken with linux-headers-5.13,
