@@ -75,7 +75,6 @@ BDEPEND="
 		dev-python/matplotlib[tk,${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
-		<dev-python/pytest-6.0[${PYTHON_USEDEP}]
 		dev-python/pytest-lazy-fixture[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytest-ordering[${PYTHON_USEDEP}]
