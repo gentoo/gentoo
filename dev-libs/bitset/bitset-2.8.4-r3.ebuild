@@ -26,6 +26,11 @@ DOCS=( README.md )
 
 src_prepare() {
 	default
+
+	# Disable aggressive optimization, which does not respect CFLAGS
+	# with new autoconf, bug #815637
+	sed -i -e '/AX_CC_MAXOPT/d' configure.ac || die
+
 	eautoreconf
 }
 
