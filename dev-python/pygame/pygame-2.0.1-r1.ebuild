@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -51,6 +52,10 @@ src_prepare() {
 	if ! use midi; then
 		rm test/midi_test.py || die
 	fi
+	# Fixed in next release
+	sed -e 's/++Py_REFCNT/Py_INCREF/' \
+		-e 's/--Py_REFCNT/Py_DECREF/' \
+		-i src_c/_sdl2/*.c || die
 	distutils-r1_src_prepare
 }
 
