@@ -34,7 +34,7 @@ RDEPEND="${DEPEND}
 	dev-python/pillow[${PYTHON_USEDEP}]"
 BDEPEND="
 	dev-lang/swig
-	>=dev-python/cython-0.29.13[${PYTHON_USEDEP}]
+	>=dev-python/cython-0.29.18[${PYTHON_USEDEP}]
 	dev-python/pybind11[${PYTHON_USEDEP}]
 	dev-python/pythran[${PYTHON_USEDEP}]
 	virtual/pkgconfig
