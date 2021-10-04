@@ -12,9 +12,9 @@ if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/AOMediaCodec/SVT-AV1.git"
 else
-	SRC_URI="https://github.com/AOMediaCodec/SVT-AV1/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 -x86" # -x86: https://github.com/AOMediaCodec/SVT-AV1/issues/1231
-	S="${WORKDIR}/SVT-AV1-${PV}"
+	SRC_URI="https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v${PV}/SVT-AV1-v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc -x86" # -x86: https://github.com/AOMediaCodec/SVT-AV1/issues/1231
+	S="${WORKDIR}/SVT-AV1-v${PV}"
 fi
 
 # Also see "Alliance for Open Media Patent License 1.0"
