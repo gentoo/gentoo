@@ -3,33 +3,27 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+# Grab only the major version number.
+MAJOR_PV=${PV%%.*}
+
+PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_REQ_USE="xml"
+
+#BACKPORTS="03f44039848bd09444ff4baa8dc158bd61454079"
+MY_P=${P%_p*}
 
 inherit python-single-r1 readme.gentoo-r1
 
-# Grab only the major version number.
-MAJOR_PV=$(ver_cut 1)
-
-MY_COMMIT="5824c588db24b4e71a7d94e829e6419f71089297"
-
 DESCRIPTION="Official MythTV plugins"
 HOMEPAGE="https://www.mythtv.org https://github.com/MythTV/mythtv"
-if [[ $(ver_cut 3) == "p" ]] ; then
-	SRC_URI="https://github.com/MythTV/mythtv/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
-	# mythtv and mythplugins are separate builds in the same github MythTV/mythtv repository
-	S="${WORKDIR}/mythtv-${MY_COMMIT}/mythplugins"
-else
-	SRC_URI="https://github.com/MythTV/mythtv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	# mythtv and mythplugins are separate builds in the same github MythTV/mythtv repository
-	SRC_URI="https://github.com/MythTV/mythtv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/mythtv-${PV}/mythplugins"
-fi
+# mythtv and mythplugins are separate builds in the same github MythTV/mythtv repository
+SRC_URI="https://github.com/MythTV/mythtv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
-MYTHPLUGINS="mytharchive mythbrowser mythgame \
-mythmusic mythnetvision mythnews mythweather mythzmserver mythzoneminder"
+MYTHPLUGINS="mytharchive mythgame mythnetvision \
+mythweather mythzmserver mythzoneminder"
 IUSE="${MYTHPLUGINS} alsa cdda cdr exif fftw +hls ieee1394 libass +opengl raw +theora +vorbis +xml xvid"
 
 # Mythnetvision temporarily disabled by upstream - should be fixed soon.
@@ -37,8 +31,6 @@ REQUIRED_USE="
 	!mythnetvision
 	mytharchive? ( ${PYTHON_REQUIRED_USE} )
 	mythnetvision? ( ${PYTHON_REQUIRED_USE} )
-	mythmusic? ( vorbis )
-	mythnews? ( mythbrowser )
 "
 RDEPEND="
 	dev-libs/glib:2
@@ -81,25 +73,9 @@ RDEPEND="
 		media-video/transcode
 		app-cdr/cdrtools
 	)
-	mythbrowser? ( dev-qt/qtwebkit:5 )
 	mythgame? (
 		sys-libs/zlib[minizip]
 		dev-perl/XML-Twig
-	)
-	mythmusic? (
-		dev-qt/qtwebkit:5
-		media-libs/flac
-		media-libs/libogg
-		media-libs/libvorbis
-		media-libs/taglib
-		media-sound/lame
-		fftw? ( sci-libs/fftw:3.0= )
-		opengl? ( virtual/opengl )
-		cdda? (
-			media-sound/cdparanoia
-			dev-libs/libcdio:=
-			cdr? ( app-cdr/cdrtools )
-		)
 	)
 	mythnetvision? (
 		${PYTHON_DEPS}
@@ -126,12 +102,15 @@ RDEPEND="
 "
 DEPEND=${RDEPEND}
 
+# mythtv and mythplugins are separate builds in the same github MythTV/mythtv repository
+S="${WORKDIR}/mythtv-${PV}/mythplugins"
+
 DOC_CONTENTS="
 Mythgallery code moved to mythtv and is no longer a plugin in version 31.0.
 As of 3/23/2020, MythNetVision is disabled, work in progress.
 
 No plugins are installed by default. Enable plugins individually with USE flags:
-mytharchive mythbrowser mythgame mythmusic mythnetvision mythnews mythweather mythzmserver mythzoneminder
+mytharchive mythgame mythnetvision mythweather mythzmserver mythzoneminder
 "
 
 src_configure() {
@@ -145,11 +124,8 @@ src_configure() {
 		$(use_enable opengl) \
 		$(use_enable raw dcraw) \
 		$(use_enable mytharchive) \
-		$(use_enable mythbrowser) \
 		$(use_enable mythgame) \
-		$(use_enable mythmusic) \
 		$(use_enable mythnetvision) \
-		$(use_enable mythnews) \
 		$(use_enable mythweather) \
 		$(use_enable mythzmserver) \
 		$(use_enable mythzoneminder)
