@@ -40,7 +40,6 @@ src_configure() {
 	has_version dev-util/google-perftools[minimal] && tcmalloc_lib_name='tcmalloc_minimal'
 
 	local myeconfargs=(
-		--enable-portable-binary \
 		$(use_with jemalloc) \
 		$(use_with tcmalloc) \
 		$(use_with tcmalloc tcmalloc-lib "${tcmalloc_lib_name}")
