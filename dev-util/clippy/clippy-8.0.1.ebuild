@@ -17,6 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+# standalone clippy does not have any tests
+# restrict to prevent bug 811753
+RESTRICT="test"
+
 DEPEND="
 	${PYTHON_DEPS}
 	virtual/libelf:=
