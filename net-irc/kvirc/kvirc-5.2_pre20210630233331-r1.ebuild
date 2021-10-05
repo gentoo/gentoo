@@ -30,7 +30,7 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="audiofile +dbus dcc-video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora webkit"
+IUSE="audiofile +dbus dcc-video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora"
 REQUIRED_USE="audiofile? ( oss ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="dev-lang/perl:0
@@ -72,7 +72,7 @@ DEPEND="dev-qt/qtcore:5
 		media-libs/libtheora
 		media-libs/libvorbis
 	)
-	webkit? ( dev-qt/qtwebkit:5 )"
+"
 RDEPEND="${DEPEND}
 	gsm? ( media-sound/gsm )"
 
@@ -131,7 +131,7 @@ src_configure() {
 		-DWANT_PHONON=$(usex phonon ON OFF)
 		-DWANT_PYTHON=$(usex python ON OFF)
 		-DWANT_QTDBUS=$(usex dbus ON OFF)
-		-DWANT_QTWEBKIT=$(usex webkit ON OFF)
+		-DWANT_QTWEBKIT=OFF
 		-DWANT_SPELLCHECKER=$(usex spell ON OFF)
 
 		# COMPILE_SVG_SUPPORT not used in source code.
