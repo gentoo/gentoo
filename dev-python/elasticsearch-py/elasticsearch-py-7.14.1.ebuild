@@ -36,6 +36,7 @@ DEPEND="
 		${RDEPEND}
 		>=dev-python/requests-2.0.0[${PYTHON_USEDEP}]
 		<dev-python/requests-3.0.0[${PYTHON_USEDEP}]
+		dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
