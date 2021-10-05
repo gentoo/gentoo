@@ -24,7 +24,7 @@ DEPEND="
 # recommended version of runc is found in script/setup/runc-version
 RDEPEND="
 	${DEPEND}
-	~app-emulation/runc-1.0.0
+	~app-emulation/runc-1.0.2
 "
 
 BDEPEND="
