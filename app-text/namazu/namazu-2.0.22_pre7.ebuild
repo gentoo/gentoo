@@ -11,7 +11,7 @@ DESCRIPTION="Namazu is a full-text search engine"
 HOMEPAGE="http://www.namazu.org/"
 SRC_URI="http://www.namazu.org/test/${MY_P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
 IUSE="emacs l10n_ja nls static-libs tk"
