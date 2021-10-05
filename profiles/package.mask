@@ -334,12 +334,6 @@ games-puzzle/gnudoku
 # Preparing for final 5.0.0 release
 >=app-text/tesseract-5.0.0_beta
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-08-02)
-# No commits to upstream repository for >9 months, latest available tarball
-# still "alpha" with warning about known unpatched vulnerabilities. Bug #684580
-# Removal on 2021-10-04.
-dev-qt/qtwebkit:5
-
 # Joonas Niilola <juippis@gentoo.org> (2021-07-29)
 # Upstream provided migration instructions from 2. -> 3. update,
 # breaks if not all at least many revdeps. #805011 for tracker bug.
