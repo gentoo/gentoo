@@ -79,8 +79,7 @@ src_install() {
 	insinto /usr/share/${PN}2
 	doins -r usr/share/${PN}2/*
 
-	insinto /usr/share/applications
-	doins ${PN}2.desktop
+	domenu ${PN}2.desktop
 
 	newicon -s 256 qt/icons/${PN}.png ${PN}2.png
 }
