@@ -66,12 +66,10 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	einstalldocs
 
-	if use doc; then
-		docinto googletest
-		dodoc -r googletest/docs/.
-		docinto googlemock
-		dodoc -r googlemock/docs/.
-	fi
+	newdoc googletest/README.md README.googletest.md
+	newdoc googlemock/README.md README.googlemock.md
+
+	use doc && dodoc -r docs/.
 
 	if use examples; then
 		docinto examples
