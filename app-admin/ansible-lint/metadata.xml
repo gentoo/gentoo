@@ -5,6 +5,10 @@
 		<email>monsieurp@gentoo.org</email>
 		<name>Patrice Clement</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="pypi">ansible-lint</remote-id>
 		<remote-id type="github">ansible-community/ansible-lint</remote-id>
