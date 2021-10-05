@@ -47,7 +47,7 @@ RDEPEND="
 	>=kde-plasma/powerdevil-${PV}:${SLOT}
 	>=kde-plasma/systemsettings-${PV}:${SLOT}
 	sys-apps/dbus[elogind?,systemd?]
-	sys-auth/polkit[elogind?,systemd?]
+	sys-auth/polkit[systemd?]
 	sys-fs/udisks:2[elogind?,systemd?]
 	bluetooth? ( >=kde-plasma/bluedevil-${PV}:${SLOT} )
 	browser-integration? ( >=kde-plasma/plasma-browser-integration-${PV}:${SLOT} )
