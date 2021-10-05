@@ -26,10 +26,6 @@ dev-perl/Mail-Sender
 dev-perl/Gtk2-SourceView2
 dev-perl/Gtk2-Unique
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-20)
-# dev-qt/qtwebkit is in the process of being removed, tracker bug #684580
-dev-qt/qtwebkit
-
 # Mart Raudsepp <leio@gentoo.org> (2020-07-04)
 # Port to gtk+:3 using wxGTK:3.0-gtk3 SLOT
 x11-libs/wxGTK:3.0

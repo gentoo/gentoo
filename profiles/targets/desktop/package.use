@@ -22,10 +22,6 @@ net-fs/samba client
 # Required by app-office/libreoffice
 dev-libs/xmlsec nss
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-06-09)
-# Enable sensible defaults for desktop users
-dev-qt/qtwebkit:5 printsupport
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
 # Not required, but makes life easier with Qt; bug #457934
 app-arch/unzip natspec

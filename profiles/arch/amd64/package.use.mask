@@ -356,7 +356,6 @@ gnustep-base/gnustep-make -libobjc2
 # so the flag is masked in the base profile and unmasked here.
 dev-qt/qtdeclarative -jit
 dev-qt/qtscript -jit
-dev-qt/qtwebkit -jit
 
 # Robin H. Johnson <robbat2@gentoo.org> (2011-07-10), updated 2019-12-06
 # PPS should work on all arches, but only keyworded on some arches
