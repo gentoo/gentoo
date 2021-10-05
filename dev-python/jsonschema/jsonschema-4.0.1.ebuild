@@ -42,4 +42,4 @@ BDEPEND="
 	)
 "
 
-distutils_enable_tests --install unittest
+distutils_enable_tests unittest
