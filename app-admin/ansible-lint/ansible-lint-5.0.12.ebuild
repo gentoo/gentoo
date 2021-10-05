@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+
 inherit distutils-r1
 
 DESCRIPTION="Checks ansible playbooks for practices and behaviour that can be improved"
