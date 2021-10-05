@@ -72,9 +72,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs=(
-		-DCMAKEPACKAGE_INSTALL_DIR=$(get_libdir)/cmake/${PN}${SLOT}
-	)
 	use test && mycmakeargs+=(
 		# the OpenGL testsuite is extremely brittle, bug #712808
 		-DEIGEN_TEST_NO_OPENGL=ON
