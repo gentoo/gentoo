@@ -46,6 +46,7 @@ distutils_enable_tests unittest
 
 src_prepare() {
 	sed -e 's/test_osprofiler/_&/' -i novaclient/tests/unit/test_shell.py || die
+	sed -e 's/novaclient\.tests\.unit\.//' -i novaclient/tests/unit/test_api_versions.py || die
 	distutils-r1_src_prepare
 }
 
