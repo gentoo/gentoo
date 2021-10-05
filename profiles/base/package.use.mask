@@ -42,7 +42,6 @@ net-print/hplip-plugin orblite
 # Bugs: #684580, #750893
 app-office/kexi webkit
 dev-libs/kreport webkit
-media-plugins/mythplugins mythbrowser mythmusic
 net-irc/kvirc webkit
 
 # Sam James <sam@gentoo.org> (2021-07-24)
@@ -191,10 +190,6 @@ net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
 # Highly experimental, may cause breakages when updating. Use with
 # caution!
 dev-libs/efl efl-one
-
-# Michał Górny <mgorny@gentoo.org> (2020-09-09)
-# The respective dependencies are masked for removal.
-media-plugins/mythplugins mythnetvision
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # The respective dependencies are masked for removal.
