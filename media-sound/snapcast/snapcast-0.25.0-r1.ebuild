@@ -16,6 +16,7 @@ IUSE="+client +expat +flac +opus +server tremor +vorbis +zeroconf"
 REQUIRED_USE="|| ( server client )"
 
 RDEPEND="
+	dev-libs/boost:=
 	client? (
 		acct-user/snapclient
 		media-libs/alsa-lib
