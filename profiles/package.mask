@@ -335,11 +335,6 @@ games-puzzle/gnudoku
 >=app-text/tesseract-5.0.0_beta
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-08-02)
-# Depends on Qt5WebKit with more holes in it than swiss cheese. Bug #685750
-# Last release in 2016. Removal on 2021-10-04.
-mail-client/trojita
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-08-02)
 # Depends on Qt5WebKit with more holes in it than swiss cheese. Bug #740416
 # Removal on 2021-10-04.
 app-text/fb2edit
