@@ -1,0 +1,50 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -52,9 +52,10 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+ set(destination ${CMAKE_INSTALL_PREFIX})
+ configure_file("lmfit.pc.in" "lmfit.pc" @ONLY)
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/lmfit.pc"
+-    DESTINATION "${destination}/lib/pkgconfig/")
++	DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig/")
+ 
+ include(CTest)
++include(GNUInstallDirs)
+ 
+ add_subdirectory(lib)
+ add_subdirectory(demo)
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -19,13 +19,13 @@ link_libm(${lib})
+ 
+ install(
+     TARGETS ${lib}
+-    LIBRARY DESTINATION ${destination}/lib
+-    RUNTIME DESTINATION ${destination}/lib
+-    ARCHIVE DESTINATION ${destination}/lib
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/lib
++    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}/lib
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/lib
+     COMPONENT Libraries)
+ install(
+     FILES ${inc_files}
+-    DESTINATION ${destination}/include
++    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/include
+     COMPONENT Headers)
+ 
+ if(WIN32)
+--- a/man/CMakeLists.txt
++++ b/man/CMakeLists.txt
+@@ -15,11 +15,11 @@ function(one_page pname section)
+         )
+     install(
+         FILES ${CMAKE_CURRENT_BINARY_DIR}/${pname}.${section}
+-        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/man/man${section}"
++	DESTINATION "${CMAKE_INSTALL_MANDIR}/man${section}"
+         )
+     install(
+         FILES ${CMAKE_CURRENT_BINARY_DIR}/${pname}.html
+-        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/doc/lmfit/html"
++	DESTINATION "${CMAKE_INSTALL_DOCDIR}/html"
+         )
+ endfunction()
+ 
