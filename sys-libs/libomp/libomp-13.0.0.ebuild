@@ -13,9 +13,12 @@ HOMEPAGE="https://openmp.llvm.org"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x64-macos"
-IUSE="cuda debug hwloc kernel_linux offload ompt test"
+IUSE="cuda debug hwloc kernel_linux offload ompt test
+	llvm_targets_AMDGPU llvm_targets_NVPTX"
 # CUDA works only with the x86_64 ABI
-REQUIRED_USE="offload? ( cuda? ( abi_x86_64 ) )"
+REQUIRED_USE="
+	cuda? ( llvm_targets_NVPTX )
+	offload? ( cuda? ( abi_x86_64 ) )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -32,10 +35,14 @@ RDEPEND="
 # - sys-devel/clang provides the compiler to run tests
 DEPEND="${RDEPEND}"
 BDEPEND="dev-lang/perl
-	offload? ( virtual/pkgconfig )
+	offload? (
+		llvm_targets_AMDGPU? ( sys-devel/clang )
+		llvm_targets_NVPTX? ( sys-devel/clang )
+		virtual/pkgconfig
+	)
 	test? (
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
-		>=sys-devel/clang-6
+		sys-devel/clang
 	)"
 
 LLVM_COMPONENTS=( openmp llvm/include )
@@ -91,6 +98,11 @@ multilib_src_configure() {
 		# to ABI, so we can just ignore passing the wrong value
 		# on non-amd64 ABIs
 		-DCMAKE_DISABLE_FIND_PACKAGE_CUDA=$(usex !cuda)
+
+		-DLIBOMPTARGET_BUILD_AMDGCN_BCLIB=$(usex llvm_targets_AMDGPU)
+		-DLIBOMPTARGET_BUILD_NVPTX_BCLIB=$(usex llvm_targets_NVPTX)
+		# a cheap hack to force clang
+		-DLIBOMPTARGET_NVPTX_CUDA_COMPILER="$(type -P "${CHOST}-clang")"
 	)
 	use test && mycmakeargs+=(
 		# this project does not use standard LLVM cmake macros
