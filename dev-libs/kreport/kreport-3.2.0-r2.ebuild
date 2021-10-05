@@ -21,7 +21,7 @@ fi
 
 LICENSE="LGPL-2+"
 SLOT="5/4"
-IUSE="marble +scripting webkit"
+IUSE="marble +scripting"
 
 RDEPEND="
 	>=dev-libs/kproperty-${PV}:5=
@@ -35,7 +35,6 @@ RDEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	marble? ( kde-apps/marble:5= )
 	scripting? ( >=dev-qt/qtdeclarative-${QTMIN}:5 )
-	webkit? ( >=dev-qt/qtwebkit-5.212.0_pre20180120:5 )
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
@@ -51,7 +50,6 @@ pkg_setup() {
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package marble Marble)
-		$(cmake_use_find_package webkit Qt5WebKitWidgets)
 		-DKREPORT_SCRIPTING=$(usex scripting)
 	)
 	ecm_src_configure
