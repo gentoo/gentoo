@@ -11,15 +11,15 @@ CHROMIUM_LANGS="
 # These are intended for ebuild maintainer use to force RPM if DEB is not available.
 : ${OPERA_FORCE_RPM=no}
 
+inherit chromium-2 pax-utils xdg
+
 if [[ ${OPERA_FORCE_RPM} == yes ]]; then
-	OPERA_UNPACKER="rpm"
+	inherit rpm
 	OPERA_ARCHIVE_EXT="rpm"
 else
-	OPERA_UNPACKER="unpacker"
+	inherit unpacker
 	OPERA_ARCHIVE_EXT="deb"
 fi
-
-inherit chromium-2 multilib pax-utils ${OPERA_UNPACKER} xdg
 
 DESCRIPTION="A fast and secure web browser"
 HOMEPAGE="https://www.opera.com/"
