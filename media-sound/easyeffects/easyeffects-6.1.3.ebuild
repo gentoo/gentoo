@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome2-utils flag-o-matic meson toolchain-funcs
+inherit gnome2-utils flag-o-matic meson
 
 DESCRIPTION="Limiter, auto volume and many other plugins for PipeWire applications"
 HOMEPAGE="https://github.com/wwmm/easyeffects"
