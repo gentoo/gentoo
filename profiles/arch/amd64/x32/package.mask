@@ -81,7 +81,6 @@ kde-misc/kmarkdownwebview:5
 kde-misc/tellico:5
 kde-misc/zanshin:5
 mail-client/kube
-mail-client/trojita
 media-gfx/digikam:5
 media-gfx/luminance-hdr
 media-sound/frescobaldi
