@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>monsieurp@gentoo.org</email>
+		<name>Patrice Clement</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="pypi">ansible-lint</remote-id>
 		<remote-id type="github">ansible-community/ansible-lint</remote-id>
