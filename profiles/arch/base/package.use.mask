@@ -334,7 +334,6 @@ media-video/transcode nuv pic
 # mask the flag here and unmask it in the appropriate arch profiles.
 dev-qt/qtdeclarative jit
 dev-qt/qtscript jit
-dev-qt/qtwebkit jit
 
 # Samuli Suominen <ssuominen@gentoo.org> (2011-11-25)
 # Expose USE="suid" for USE="svga" only for x86 users,

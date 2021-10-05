@@ -54,4 +54,3 @@ dev-python/QtPy test
 # The QML (V4) and JSC JITs do not work on x32.
 dev-qt/qtdeclarative jit
 dev-qt/qtscript jit
-dev-qt/qtwebkit jit
