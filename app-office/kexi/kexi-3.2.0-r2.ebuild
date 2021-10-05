@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-IUSE="debug experimental marble mdb mysql postgres sqlite webkit"
+IUSE="debug experimental marble mdb mysql postgres sqlite"
 
 BDEPEND="sys-devel/gettext"
 DEPEND="
@@ -60,7 +60,6 @@ DEPEND="
 		dev-db/postgresql:*
 		dev-libs/libpqxx
 	)
-	webkit? ( >=dev-qt/qtwebkit-5.212.0_pre20180120:5 )
 "
 RDEPEND="${DEPEND}"
 
@@ -72,10 +71,8 @@ PATCHES=(
 )
 
 src_prepare() {
-	if ! use webkit; then
-		ecm_punt_bogus_dep Qt5 WebKit
-		ecm_punt_bogus_dep Qt5 WebKitWidgets
-	fi
+	ecm_punt_bogus_dep Qt5 WebKit
+	ecm_punt_bogus_dep Qt5 WebKitWidgets
 
 	ecm_src_prepare
 }
