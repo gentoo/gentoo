@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Jaco Kroon <jaco@uls.co.za> (2021-10-05)
+# Masked for removal in 30 days.
+# Last upstream release in 2012.
+# Looks to be broken (iax-config --libs references not installed libiax.so).
+# No consumers in ::gentoo
+net-libs/iax
+
 # Fabian Groffen <grobian@gentoo.org> (2021-10-03)
 # Masked for erratic behaviour
 # https://bugs.exim.org/show_bug.cgi?id=2813
