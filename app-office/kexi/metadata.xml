@@ -12,6 +12,5 @@
 		<flag name="experimental">Enable features deemed experimental by upstream</flag>
 		<flag name="marble">Enable displaying of maps using <pkg>kde-apps/marble</pkg></flag>
 		<flag name="mdb">Enable support for Microsoft Access database</flag>
-		<flag name="webkit">Enable web form designer widget using <pkg>dev-qt/qtwebkit</pkg></flag>
 	</use>
 </pkgmetadata>
