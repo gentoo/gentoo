@@ -40,6 +40,7 @@ BDEPEND="virtual/pkgconfig
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.1.1-no-efivar-automagic.patch"
+	"${FILESDIR}/${PN}-5.2-testparms-fix-condition-for-negative-test.patch"
 )
 
 src_prepare() {
