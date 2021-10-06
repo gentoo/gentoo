@@ -120,6 +120,7 @@ src_configure() {
 	econf \
 		--python=${EPYTHON} \
 		--extra-ldflags="${LDFLAGS}" \
+		--disable-mythbrowser \
 		$(use_enable cdda cdio) \
 		$(use_enable exif) \
 		$(use_enable exif new-exif) \
