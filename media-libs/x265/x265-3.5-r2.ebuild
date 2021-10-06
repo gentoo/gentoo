@@ -105,6 +105,7 @@ x265_variant_src_configure() {
 				-DEXPORT_C_API=OFF
 				-DENABLE_SHARED=OFF
 				-DENABLE_CLI=OFF
+				-DENABLE_HDR10_PLUS=ON
 			)
 			if [[ ${ABI} = x86 ]] ; then
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
