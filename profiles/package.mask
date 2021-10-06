@@ -347,6 +347,7 @@ games-puzzle/gnudoku
 
 # Lars Wendler <polynomial-c@gentoo.org> (2021-07-10)
 # Masked for testing
+# bug #802186
 >=mail-client/claws-mail-4.0.0
 
 # Michał Górny <mgorny@gentoo.org> (2021-07-06)
