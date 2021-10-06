@@ -364,6 +364,7 @@ games-puzzle/gnudoku
 # Sam James <sam@gentoo.org> (2021-06-12)
 # Masked until all reverse dependencies support
 # OCaml 4.13.
+# bug #816498
 >=dev-lang/ocaml-4.13
 >=dev-ml/camlp4-4.13
 
