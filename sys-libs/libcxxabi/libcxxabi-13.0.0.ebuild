@@ -31,6 +31,10 @@ BDEPEND="
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 	)"
 
+PATCHES=(
+    "${FILESDIR}"/${PN}-13.0.0-32-bit-build.patch
+)
+
 LLVM_COMPONENTS=( libcxx{abi,} llvm/cmake )
 llvm.org_set_globals
 
@@ -62,6 +66,10 @@ multilib_src_configure() {
 		fi
 	fi
 
+	# enable 32-bit build for abi_*_32
+	local want_32_bit=OFF
+	[[ ${ABI} == x86 ]] && local want_32_bit=ON
+
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		-DLIBCXXABI_LIBDIR_SUFFIX=${libdir#lib}
@@ -70,6 +78,7 @@ multilib_src_configure() {
 		-DLIBCXXABI_USE_LLVM_UNWINDER=$(usex libunwind)
 		-DLIBCXXABI_INCLUDE_TESTS=$(usex test)
 		-DLIBCXXABI_USE_COMPILER_RT=${want_compiler_rt}
+		-DLIBCXXABI_BUILD_32_BITS=${want_32_bit}
 
 		-DLIBCXXABI_LIBCXX_INCLUDES="${BUILD_DIR}"/libcxx/include/c++/v1
 		# upstream is omitting standard search path for this
