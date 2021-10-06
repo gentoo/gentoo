@@ -43,8 +43,8 @@ RDEPEND="
 	)
 	serial? ( >=dev-python/pyserial-3.0[${PYTHON_USEDEP}] )
 	http2? (
-		>=dev-python/hyper-h2-3.0.0[${PYTHON_USEDEP}]
-		<dev-python/hyper-h2-4.0.0[${PYTHON_USEDEP}]
+		>=dev-python/h2-3.0.0[${PYTHON_USEDEP}]
+		<dev-python/h2-4.0.0[${PYTHON_USEDEP}]
 		>=dev-python/priority-1.1.0[${PYTHON_USEDEP}]
 		<dev-python/priority-2.0[${PYTHON_USEDEP}]
 	)

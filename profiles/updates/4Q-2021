@@ -1,1 +1,2 @@
 move dev-libs/intel-neo dev-libs/intel-compute-runtime
+move dev-python/hyper-h2 dev-python/h2

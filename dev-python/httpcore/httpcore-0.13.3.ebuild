@@ -17,7 +17,7 @@ KEYWORDS="amd64 arm arm64 ppc ppc64 sparc x86"
 
 RDEPEND="
 	<dev-python/h11-0.13[${PYTHON_USEDEP}]
-	<dev-python/hyper-h2-5[${PYTHON_USEDEP}]
+	<dev-python/h2-5[${PYTHON_USEDEP}]
 	=dev-python/sniffio-1*[${PYTHON_USEDEP}]
 "
 BDEPEND="
