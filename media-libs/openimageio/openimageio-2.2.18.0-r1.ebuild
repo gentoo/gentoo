@@ -4,7 +4,7 @@
 EAPI=7
 
 FONT_PN=OpenImageIO
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake font python-single-r1
 
 DESCRIPTION="A library for reading and writing images"
@@ -49,7 +49,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	>=media-libs/libwebp-0.2.1:=
 	media-libs/opencolorio:=
-	>=media-libs/openexr-2.2.0-r2:=
+	>=media-libs/openexr-2.2.0-r2:0=
 	media-libs/tiff:0=
 	sys-libs/zlib:=
 	virtual/jpeg:0
