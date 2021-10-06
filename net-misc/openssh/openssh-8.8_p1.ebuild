@@ -174,7 +174,7 @@ src_prepare() {
 			"${S}"/version.h || die "Failed to sed-in SCTP patch version"
 		PATCHSET_VERSION_MACROS+=( 'SSH_SCTP' )
 
-		einfo "Disabling know failing test (cfgparse) caused by SCTP patch ..."
+		einfo "Disabling known failing test (cfgparse) caused by SCTP patch ..."
 		sed -i \
 			-e "/\t\tcfgparse \\\/d" \
 			"${S}"/regress/Makefile || die "Failed to disable known failing test (cfgparse) caused by SCTP patch"
