@@ -28,7 +28,7 @@ ruby_add_rdepend ">=dev-ruby/tilt-2.0.6:* =dev-ruby/tilt-2.0*:*
 
 ruby_add_bdepend "doc? ( dev-ruby/yard dev-ruby/redcarpet )"
 
-ruby_add_bdepend "test? ( dev-ruby/redcarpet dev-ruby/sass )"
+ruby_add_bdepend "test? ( dev-ruby/redcarpet )"
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/I s:^:#:' Rakefile || die
