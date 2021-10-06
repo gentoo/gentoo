@@ -94,6 +94,7 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-ip-location.patch"
 	"${FILESDIR}/${PN}-respect-AR.patch"
+	"${FILESDIR}/${PN}-parallel-make.patch"
 )
 
 S="${WORKDIR}/bitmask-vpn-${PV}"
@@ -112,13 +113,13 @@ src_prepare() {
 src_compile() {
 	# does not build with j>1
 	tc-export AR LD CC CXX
-	emake -j1 build
+	emake build
 	docs_compile
 }
 
 src_test() {
-	emake -j1 test
-	virtx emake -j1 test_ui
+	emake test
+	virtx emake test_ui
 }
 
 src_install() {

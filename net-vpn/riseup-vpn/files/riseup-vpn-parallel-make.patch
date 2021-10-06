@@ -1,0 +1,54 @@
+diff --git a/Makefile b/Makefile
+index b9ddda5..500adb7 100644
+--- a/Makefile
++++ b/Makefile
+@@ -108,7 +108,7 @@ PKGFILES = $(shell find pkg -type f -name '*.go')
+ endif
+ 
+ lib/%.a: $(PKGFILES)
+-	@XBUILD=no ./gui/build.sh --just-golib
++	@XBUILD=no MAKE=${MAKE} ./gui/build.sh --just-golib
+ 
+ relink_vendor:
+ 	@echo "============RELINK VENDOR============="
+@@ -136,14 +136,14 @@ endif
+ 
+ build_golib: lib/libgoshim.a
+ 
+-build_gui: relink_vendor
++build_gui: build_golib relink_vendor
+ 	@echo "==============BUILD GUI==============="
+ 	@echo "TARGET: ${TARGET}"
+ 	@echo "VENDOR_PATH: ${VENDOR_PATH}"
+-	@XBUILD=no QMAKE=${QMAKE} LRELEASE=${LRELEASE} TARGET=${TARGET} VENDOR_PATH=${VENDOR_PATH} gui/build.sh --skip-golib
++	@XBUILD=no MAKE=${MAKE} QMAKE=${QMAKE} LRELEASE=${LRELEASE} TARGET=${TARGET} VENDOR_PATH=${VENDOR_PATH} gui/build.sh --skip-golib
+ 	@echo "============BUILD GUI================="
+ 
+-build: build_golib build_helper build_gui
++build: build_helper build_gui
+ 
+ build_helper:
+ ifeq ($(PLATFORM), linux)
+diff --git a/gui/build.sh b/gui/build.sh
+index 9e519a6..8aa0356 100755
+--- a/gui/build.sh
++++ b/gui/build.sh
+@@ -17,6 +17,7 @@ PROJECT=bitmask.pro
+ TARGET_GOLIB=lib/libgoshim.a
+ SOURCE_GOLIB=gui/backend.go
+ 
++MAKE=${MAKE:=make}
+ QTBUILD=build/qt
+ RELEASE=$QTBUILD/release
+ DEBUGP=$QTBUILD/debug
+@@ -114,8 +115,8 @@ function buildDefault {
+     fi
+     buildQmake
+ 
+-    make -C $QTBUILD clean
+-    make -C $QTBUILD $MAKEFLAGS all
++    $MAKE -C $QTBUILD clean
++    $MAKE -C $QTBUILD $MAKEFLAGS all
+ 
+     renameOutput
+     echo "[+] Done."
