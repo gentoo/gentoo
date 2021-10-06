@@ -17,6 +17,7 @@
 		<flag name="relay">Enable relay plugin (experimental)</flag>
 		<flag name="scripts">Build infrastructure for scripting</flag>
 		<flag name="trigger">Enable trigger plugin</flag>
+		<flag name="typing">Enable typing plugin</flag>
 		<flag name="xfer">Enable xfer plugin support</flag>
 	</use>
 </pkgmetadata>
