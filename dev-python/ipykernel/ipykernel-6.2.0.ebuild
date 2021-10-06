@@ -28,7 +28,10 @@ RDEPEND="
 	>=dev-python/matplotlib-inline-0.1.0[${PYTHON_USEDEP}]
 	<dev-python/matplotlib-inline-0.2.0[${PYTHON_USEDEP}]
 "
+# RDEPEND seems specifically needed in BDEPEND, at least jupyter
+# bug #816486
 BDEPEND="
+	${RDEPEND}
 	test? (
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]

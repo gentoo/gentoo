@@ -22,7 +22,10 @@ RDEPEND="
 	dev-python/jupyter_core[${PYTHON_USEDEP}]
 	dev-python/traitlets[${PYTHON_USEDEP}]
 	www-servers/tornado[${PYTHON_USEDEP}]"
+# RDEPEND seems specifically needed in BDEPEND, at least jupyter
+# bug #816486
 BDEPEND="
+	${RDEPEND}
 	test? (
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
