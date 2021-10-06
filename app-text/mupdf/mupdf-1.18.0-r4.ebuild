@@ -3,6 +3,9 @@
 
 EAPI=7
 
+# Please check upstream git regularly for relevant security-related commits
+# to backport.
+
 inherit desktop flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="A lightweight PDF viewer and toolkit written in portable C"
