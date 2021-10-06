@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/1.7.0-Make.rules.patch"
+	"${FILESDIR}/1.8.1-respect-ar.patch"
 )
 
 src_prepare() {
