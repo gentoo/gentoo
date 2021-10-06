@@ -1,20 +1,23 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-MODULE_AUTHOR="PHRED"
-MODULE_VERSION=0.717
+DIST_AUTHOR=PHRED
+DIST_VERSION=0.717
 inherit perl-module
 
 DESCRIPTION="client and server implementation of XML-RPC protocol"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="dev-perl/SOAP-Lite"
-DEPEND="${RDEPEND}
+RDEPEND="
+	dev-perl/SOAP-Lite
+"
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker"
 
-SRC_TEST="do"
+# https://rt.cpan.org/Public/Bug/Display.html?id=127761
+# fails "at random"
+DIST_TEST=skip
