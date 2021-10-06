@@ -518,6 +518,7 @@ app-office/texmacs
 # Java 11 is not yet fully supported on Gentoo. Packages cannot depend
 # on it so these virtuals are not yet required. If you wish to use
 # Java 11 then install openjdk-(jdk|jre)-bin directly.
+# bug #697014
 virtual/jdk:11
 virtual/jre:11
 
