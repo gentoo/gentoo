@@ -3,14 +3,14 @@
 
 EAPI=7
 
-USE_RUBY="ruby25 ruby26"
+USE_RUBY="ruby26 ruby27"
 
 inherit desktop ruby-ng
 
 PLUGIN_HASH="30071c3008e4616e723cf4e734fc79254019af09"
 
 if [ "${PV}" = "9999" ]; then
-	EGIT_REPO_URI="git://toshia.dip.jp/mikutter.git
+	EGIT_REPO_URI="git://mikutter.hachune.net/mikutter.git
 		https://github.com/toshia/twitter_api_keys.git"
 	inherit git-r3
 	SRC_URI="https://raw.githubusercontent.com/toshia/twitter_api_keys/${PLUGIN_HASH}/twitter_api_keys.rb"
@@ -34,25 +34,28 @@ RDEPEND="
 	media-sound/alsa-utils"
 
 ruby_add_rdepend "=dev-ruby/addressable-2.8*
-	=dev-ruby/delayer-1.1*:1
-	=dev-ruby/delayer-deferred-2.1*
-	!<dev-ruby/delayer-deferred-2.1.3
-	=dev-ruby/diva-1.0*
-	!<dev-ruby/diva-1.0.2
+	>=dev-ruby/delayer-1.1.2
+	!>=dev-ruby/delayer-2.0
+	>=dev-ruby/delayer-deferred-2.2.0
+	!>=dev-ruby/delayer-deferred-3.0
+	>=dev-ruby/diva-1.0.2
+	!>=dev-ruby/diva-2.0
 	dev-ruby/httpclient
 	dev-ruby/json:2
-	=dev-ruby/memoist-0.16*
-	!<dev-ruby/memoist-0.16.2
+	>=dev-ruby/memoist-0.16.2
+	!>=dev-ruby/memoist-0.17
 	dev-ruby/moneta
 	dev-ruby/nokogiri
 	>=dev-ruby/oauth-0.5.4
-	=dev-ruby/pluggaloid-1.2*
+	>=dev-ruby/pluggaloid-1.5.0
+	!>=dev-ruby/pluggaloid-2.0
 	dev-ruby/rcairo
-	=dev-ruby/ruby-gettext-3.3*
-	!<dev-ruby/ruby-gettext-3.3.5
+	>=dev-ruby/ruby-gettext-3.3.5
+	!>=dev-ruby/ruby-gettext-3.4
 	=dev-ruby/ruby-gtk2-3.4*
-	=dev-ruby/typed-array-0.1*
-	!<dev-ruby/typed-array-0.1.2
+	>=dev-ruby/typed-array-0.1.2
+	!>=dev-ruby/typed-array-0.2
+	dev-ruby/twitter-text
 	virtual/ruby-ssl"
 
 all_ruby_unpack() {
@@ -65,12 +68,13 @@ all_ruby_unpack() {
 
 all_ruby_install() {
 	local rubyversion
+	local r
 
-	if use ruby_targets_ruby26; then
-		rubyversion=ruby26
-	elif use ruby_targets_ruby25; then
-		rubyversion=ruby25
-	fi
+	for r in $USE_RUBY; do
+		if use ruby_targets_${r}; then
+			rubyversion=${r}
+		fi
+	done
 
 	exeinto /usr/share/mikutter
 	doexe mikutter.rb

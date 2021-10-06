@@ -3,14 +3,14 @@
 
 EAPI=7
 
-USE_RUBY="ruby25 ruby26 ruby27"
+USE_RUBY="ruby26 ruby27"
 
 inherit desktop ruby-ng
 
 PLUGIN_HASH="30071c3008e4616e723cf4e734fc79254019af09"
 
 if [ "${PV}" = "9999" ]; then
-	EGIT_REPO_URI="git://toshia.dip.jp/mikutter.git
+	EGIT_REPO_URI="git://mikutter.hachune.net/mikutter.git
 		https://github.com/toshia/twitter_api_keys.git"
 	inherit git-r3
 	SRC_URI="https://raw.githubusercontent.com/toshia/twitter_api_keys/${PLUGIN_HASH}/twitter_api_keys.rb"
