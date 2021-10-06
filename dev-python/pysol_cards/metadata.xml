@@ -6,6 +6,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pysol-cards</remote-id>
+		<remote-id type="github">shlomif/pysol_cards</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>
