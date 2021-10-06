@@ -5,7 +5,7 @@ EAPI=7
 
 CONTAINERD_COMMIT=5b46e404f6b9f661a205e28d59c982d3634148f8
 EGO_PN="github.com/containerd/${PN}"
-inherit golang-vcs-snapshot toolchain-funcs
+inherit golang-vcs-snapshot
 
 DESCRIPTION="A daemon to control runC"
 HOMEPAGE="https://containerd.io/"
