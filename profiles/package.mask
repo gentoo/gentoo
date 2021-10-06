@@ -417,6 +417,7 @@ games-puzzle/gnudoku
 
 # Lars Wendler <polynomial-c@gentoo.org> (2021-04-08)
 # Masked for testing
+# bug #790248
 >=app-crypt/gnupg-2.3.0
 
 # Sam James <sam@gentoo.org> (2021-03-30)
