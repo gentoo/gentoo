@@ -31,7 +31,7 @@ BDEPEND="
 	test? (
 		dev-python/brotlicffi[${PYTHON_USEDEP}]
 		dev-python/cryptography[${PYTHON_USEDEP}]
-		dev-python/hyper-h2[${PYTHON_USEDEP}]
+		dev-python/h2[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
