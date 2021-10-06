@@ -19,7 +19,9 @@ RDEPEND="
 	>=gnome-base/gnome-shell-3.34
 "
 DEPEND=""
-BDEPEND=""
+BDEPEND="
+	app-misc/jq
+"
 
 src_install() {
 	meson_src_install
