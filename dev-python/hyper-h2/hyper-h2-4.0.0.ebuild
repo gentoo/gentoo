@@ -2,13 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..10} )
 
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
+MY_P=hyper-h2-${PV}
 DESCRIPTION="HTTP/2 State-Machine based protocol implementation"
 HOMEPAGE="https://python-hyper.org/h2/en/stable/ https://pypi.org/project/h2/"
-SRC_URI="https://github.com/python-hyper/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/python-hyper/${PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
@@ -31,7 +33,7 @@ distutils_enable_tests pytest
 PATCHES=(
 	# From https://github.com/python-hyper/h2/pull/1248
 	# Disables some failing healthchecks
-	"${FILESDIR}/${PN}-3.2.0-failed-healthcheck.patch"
+	"${FILESDIR}/hyper-h2-3.2.0-failed-healthcheck.patch"
 )
 
 python_test() {
