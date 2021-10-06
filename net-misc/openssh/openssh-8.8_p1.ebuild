@@ -185,7 +185,7 @@ src_prepare() {
 		mkdir "${hpn_patchdir}" || die
 		cp $(printf -- "${DISTDIR}/%s\n" "${HPN_PATCHES[@]}") "${hpn_patchdir}" || die
 		pushd "${hpn_patchdir}" &>/dev/null || die
-		eapply "${FILESDIR}"/${P}-hpn-${HPN_VER}-glue.patch
+		eapply "${FILESDIR}"/${PN}-8.7_p1-hpn-${HPN_VER}-glue.patch
 		use X509 && eapply "${FILESDIR}"/${PN}-8.7_p1-hpn-${HPN_VER}-X509-glue.patch
 		use sctp && eapply "${FILESDIR}"/${PN}-8.5_p1-hpn-${HPN_VER}-sctp-glue.patch
 		popd &>/dev/null || die
