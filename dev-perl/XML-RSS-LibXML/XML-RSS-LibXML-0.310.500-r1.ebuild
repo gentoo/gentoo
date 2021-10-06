@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=DMAKI
 DIST_VERSION=0.3105
@@ -10,8 +10,7 @@ inherit perl-module
 DESCRIPTION="XML::RSS with XML::LibXML"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="test minimal"
-RESTRICT="!test? ( test )"
+IUSE="minimal"
 
 RDEPEND="
 	dev-perl/Class-Accessor
@@ -21,7 +20,7 @@ RDEPEND="
 	dev-perl/UNIVERSAL-require
 	>=dev-perl/XML-LibXML-1.660.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.380.0
 	virtual/perl-CPAN-Meta
 	test? (
