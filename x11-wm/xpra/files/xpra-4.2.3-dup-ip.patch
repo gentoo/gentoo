@@ -1,0 +1,30 @@
+diff --git a/tests/unittests/unit/net/net_util_test.py b/tests/unittests/unit/net/net_util_test.py
+index 5c6e3096c..870801666 100755
+--- a/tests/unittests/unit/net/net_util_test.py
++++ b/tests/unittests/unit/net/net_util_test.py
+@@ -27,11 +27,8 @@ class TestVersionUtilModule(unittest.TestCase):
+         ifaces = get_interfaces()
+         if not ifaces:
+             return
++        ip_ifaces = defaultdict(list)
+         for iface in ifaces:
+-            ipmasks = do_get_bind_ifacemask(iface)
+-            for ip, _ in ipmasks:
+-                assert get_iface(ip)==iface, "expected interface %s for ip %s but got %s" % (
+-                    iface, ip, get_iface(ip))
+             if if_nametoindex:
+                 try:
+                     i = if_nametoindex(iface)
+@@ -41,6 +38,12 @@ class TestVersionUtilModule(unittest.TestCase):
+                     if if_indextoname:
+                         assert if_indextoname(i)==iface, "expected interface %s for index %i but got %s" % (
+                             iface, i, if_indextoname(i))
++            ipmasks = do_get_bind_ifacemask(iface)
++            for ip, _ in ipmasks:
++                ip_ifaces[ip].append(iface)
++        for ip, ifaces in ip_ifaces.items():
++            assert get_iface(ip) in ifaces, "expected interface for ip %s to be one of %s but got %s" % (
++                    ip, ifaces, get_iface(ip))
+         ia = get_interfaces_addresses()
+         assert ia
+         #for iface, address in ia.items():
