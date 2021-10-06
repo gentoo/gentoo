@@ -35,7 +35,7 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-DOCS=( AUTHORS.md NEWS.md TODO.md README.md README.aeidon.md )
+DOCS=( AUTHORS.md NEWS.md README.md README.aeidon.md )
 
 python_test() {
 	virtx pytest -vv
