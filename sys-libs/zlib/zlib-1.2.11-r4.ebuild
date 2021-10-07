@@ -150,7 +150,9 @@ multilib_src_install() {
 	fi
 
 	if use minizip; then
-		rm "${ED}"/usr/$(get_libdir)/libminizip.la || die
+		# This might not exist if slibtool is used.
+		# https://bugs.gentoo.org/816756
+		rm -f "${ED}"/usr/$(get_libdir)/libminizip.la || die
 	fi
 
 	if ! use static-libs ; then
