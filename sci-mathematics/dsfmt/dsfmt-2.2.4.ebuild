@@ -11,14 +11,21 @@ MYP=${MYPN}-${PV}
 DESCRIPTION="Double precision SIMD-oriented Fast Mersenne Twister library"
 HOMEPAGE="http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT"
 SRC_URI="https://github.com/MersenneTwister-Lab/dSFMT/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MYP}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-S="${WORKDIR}/${MYP}"
+PATCHES=(
+	"${FILESDIR}"/${P}-cc.patch
+)
 
 soname="lib${MYPN}.so"
+
+src_configure() {
+		tc-export CC
+}
 
 src_compile() {
 	emake CCFLAGS="${CFLAGS}"
