@@ -18,9 +18,8 @@ IUSE="+ocamlopt"
 DEPEND="dev-lang/ocaml:0/$(ver_cut 1-2)[ocamlopt?]"
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
-	dev-ml/ocamlbuild"
-
-QA_FLAGS_IGNORED='.*'
+	dev-ml/ocamlbuild
+	dev-ml/findlib:="
 
 S=${WORKDIR}/${P/_p/-}
 PATCHES=( "${FILESDIR}/reload.patch" )
@@ -43,4 +42,9 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" install install-META
 	dodoc CHANGES.md README.md
+
+        if has_version ">=dev-ml/findlib-1.9" ; then
+                # See bug #803275
+                rm "${ED}/usr/$(get_libdir)/ocaml/camlp4/META" || die
+        fi
 }
