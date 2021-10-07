@@ -25,12 +25,6 @@ dev-lang/rust parallel-compiler
 # see also: https://github.com/rspamd/rspamd/issues/3871
 ~mail-filter/rspamd-3.0 jemalloc
 
-# James Le Cuirot <chewi@gentoo.org> (2021-09-04)
-# Currently requires an unreleased version of FFmpeg. If you really want it,
-# unmask the flag and emerge ffmpeg-9999 with this environment variable set:
-# EGIT_OVERRIDE_COMMIT_FFMPEG=8649f5dca6688feb66f787dcf232d42ed20fdb28
->=www-client/vivaldi-snapshot-4.2.2406.4 proprietary-codecs
-
 # Matt Turner <mattst88@gentoo.org> (2021-08-28)
 # Mask experimental options.
 gui-libs/gtk ffmpeg vulkan
