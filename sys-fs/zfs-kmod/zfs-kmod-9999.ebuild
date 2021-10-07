@@ -156,8 +156,8 @@ src_install() {
 
 	myemakeargs+=(
 		DEPMOD=:
+		# INSTALL_MOD_PATH ?= $(DESTDIR) in module/Makefile
 		DESTDIR="${D}"
-		INSTALL_MOD_PATH="${EPREFIX:-/}" # lib/modules/<kver> added by KBUILD
 	)
 
 	emake "${myemakeargs[@]}" install
