@@ -138,6 +138,12 @@ QA_SONAME="
 	usr/lib/${PN}/${PV}/lib/rustlib/.*/lib/lib.*.so
 "
 
+# An rmeta file is custom binary format that contains the metadata for the crate.
+# rmeta files do not support linking, since they do not contain compiled object files.
+# so we can safely silence the warning for this QA check.
+QA_WX_LOAD="usr/lib/${PN}/${PV}/lib/rustlib/.*/lib/.*:lib.rmeta"
+QA_EXECSTACK="${QA_WX_LOAD}"
+
 # causes double bootstrap
 RESTRICT="test"
 
