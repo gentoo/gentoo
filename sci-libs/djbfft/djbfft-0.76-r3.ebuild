@@ -17,6 +17,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc3.patch
 	"${FILESDIR}"/${P}-shared.patch
 	"${FILESDIR}"/${P}-headers.patch
+	"${FILESDIR}"/${P}-tc-directly.patch
 )
 
 DOCS=( CHANGES README TODO VERSION )
@@ -35,6 +36,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	tc-export AR RANLIB
 	[[ ${ABI} == x86* ]] && append-cflags -malign-double
 
 	sed -i -e "s:\"lib\":\"$(get_libdir)\":" hier.c || die
