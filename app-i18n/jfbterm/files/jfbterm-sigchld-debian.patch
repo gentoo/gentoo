@@ -1,5 +1,5 @@
---- jfbterm-0.4.7.orig/main.c
-+++ jfbterm-0.4.7/main.c
+--- a/main.c
++++ b/main.c
 @@ -184,7 +184,7 @@
  	p->gExecShellArgv = NULL;
  	p->gConfFile = FILE_JFBTERM_CONF;
@@ -9,8 +9,8 @@
  	atexit(tapp_final_at_exit);
  }
  
---- jfbterm-0.4.7.orig/term.h
-+++ jfbterm-0.4.7/term.h
+--- a/term.h
++++ b/term.h
 @@ -44,7 +44,7 @@
  } TTerm;
  

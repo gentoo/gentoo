@@ -3,8 +3,8 @@ Patch by Shunichi Fuji <palgowr@gmail.com>.
 
 See bug #156306
 
---- jfbterm-0.4.7.orig/fbdpsp.c	2003-08-30 03:48:16.000000000 +0900
-+++ jfbterm-0.4.7/fbdpsp.c	2006-11-27 01:22:20.000000000 +0900
+--- a/fbdpsp.c
++++ b/fbdpsp.c
 @@ -827,8 +827,7 @@
  
  #ifdef JFB_VGA16FB

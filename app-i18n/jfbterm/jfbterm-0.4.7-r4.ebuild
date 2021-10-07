@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,10 +21,10 @@ RDEPEND="
 	media-fonts/intlfonts"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-sigchld-debian.patch
-	"${FILESDIR}"/${P}-no-kernel-headers.patch
-	"${FILESDIR}"/${P}-gentoo.patch
-	"${FILESDIR}"/${P}-wrong-inline-gcc5.patch
+	"${FILESDIR}"/${PN}-sigchld-debian.patch
+	"${FILESDIR}"/${PN}-no-kernel-headers.patch
+	"${FILESDIR}"/${PN}-gentoo.patch
+	"${FILESDIR}"/${PN}-wrong-inline-gcc5.patch
 )
 
 src_prepare() {

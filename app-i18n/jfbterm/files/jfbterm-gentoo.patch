@@ -1,6 +1,5 @@
-diff -Naur jfbterm-0.4.7.orig/fbcommon.c jfbterm-0.4.7/fbcommon.c
---- jfbterm-0.4.7.orig/fbcommon.c	2003-09-03 00:23:17.000000000 +0900
-+++ jfbterm-0.4.7/fbcommon.c	2007-08-18 10:55:30.000000000 +0900
+--- a/fbcommon.c
++++ b/fbcommon.c
 @@ -46,7 +46,6 @@
  #endif
  #include <linux/vt.h>
@@ -19,9 +18,8 @@ diff -Naur jfbterm-0.4.7.orig/fbcommon.c jfbterm-0.4.7/fbcommon.c
  		close(fd);
  		snprintf(fbdn, 15, "/dev/fb%d", c2m.framebuffer);
  	}
-diff -Naur jfbterm-0.4.7.orig/jfbterm.conf.sample jfbterm-0.4.7/jfbterm.conf.sample
---- jfbterm-0.4.7.orig/jfbterm.conf.sample	2003-09-16 00:16:35.000000000 +0900
-+++ jfbterm-0.4.7/jfbterm.conf.sample	2007-08-18 10:19:00.000000000 +0900
+--- a/jfbterm.conf.sample
++++ b/jfbterm.conf.sample
 @@ -19,29 +19,29 @@
  #	Absolute path or relative path to PWD
  #
@@ -71,9 +69,8 @@ diff -Naur jfbterm-0.4.7.orig/jfbterm.conf.sample jfbterm-0.4.7/jfbterm.conf.sam
  
  
  ###############################################################################
-diff -Naur jfbterm-0.4.7.orig/jfbterm.conf.sample.ja jfbterm-0.4.7/jfbterm.conf.sample.ja
---- jfbterm-0.4.7.orig/jfbterm.conf.sample.ja	2003-09-16 00:16:35.000000000 +0900
-+++ jfbterm-0.4.7/jfbterm.conf.sample.ja	2007-08-18 10:19:11.000000000 +0900
+--- a/jfbterm.conf.sample.ja
++++ b/jfbterm.conf.sample.ja
 @@ -25,29 +25,29 @@
  #	絶対パス or PWDからの相対パス
  #
@@ -123,9 +120,8 @@ diff -Naur jfbterm-0.4.7.orig/jfbterm.conf.sample.ja jfbterm-0.4.7/jfbterm.conf.
  
  ################################################################################
  #
-diff -Naur jfbterm-0.4.7.orig/util.h jfbterm-0.4.7/util.h
---- jfbterm-0.4.7.orig/util.h	2003-09-16 00:45:31.000000000 +0900
-+++ jfbterm-0.4.7/util.h	2007-08-18 08:48:49.000000000 +0900
+--- a/util.h
++++ b/util.h
 @@ -31,6 +31,7 @@
  
  #include <sys/types.h>
