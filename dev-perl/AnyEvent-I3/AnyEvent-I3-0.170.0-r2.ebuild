@@ -10,12 +10,11 @@ inherit perl-module
 DESCRIPTION="Communicate with the i3 window manager"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 
 RDEPEND="
 	dev-perl/AnyEvent
 	dev-perl/JSON-XS
-	x11-wm/i3
 "
 BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.360.0
