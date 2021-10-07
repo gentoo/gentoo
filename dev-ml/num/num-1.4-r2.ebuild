@@ -16,6 +16,7 @@ KEYWORDS="amd64 arm arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-
 IUSE="+ocamlopt"
 
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
+DEPEND="dev-ml/findlib:="
 
 src_compile() {
 	emake CFLAGS="${CFLAGS}" NATDYNLINK="$(usex ocamlopt true false)"
@@ -27,6 +28,10 @@ src_test() {
 }
 
 src_install() {
-	findlib_src_preinst
-	OCAMLPATH="${OCAMLFIND_DESTDIR}" emake install DESTDIR="${D}" NATDYNLINK="$(usex ocamlopt true false)"
+	findlib_src_install
+
+	if has_version ">=dev-ml/findlib-1.9" ; then
+		# See bug #803275
+		rm "${ED}/usr/$(get_libdir)/ocaml/num-top/META" || die
+	fi
 }
