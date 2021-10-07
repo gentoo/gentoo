@@ -332,6 +332,7 @@ media-gfx/xsane ocr
 # Alexis Ballier <aballier@gentoo.org> (2015-11-14)
 # MMAL is available on the Raspberry Pi (armv6 & armv7 so far)
 media-video/ffmpeg -mmal
+media-video/ffmpeg-chromium -mmal
 
 # Markus Meier <maekke@gentoo.org> (2015-10-10)
 # unkeyworded deps, bug #552330
