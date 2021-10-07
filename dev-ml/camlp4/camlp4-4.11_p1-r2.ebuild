@@ -45,8 +45,8 @@ src_install() {
 	emake DESTDIR="${D}" install install-META
 	dodoc CHANGES.md README.md
 
-        if has_version ">=dev-ml/findlib-1.9" ; then
+	if has_version ">=dev-ml/findlib-1.9" ; then
 		# See bug #803275
-                rm "${ED}/usr/$(get_libdir)/ocaml/camlp4/META" || die
-        fi
+		rm "${ED}/usr/$(get_libdir)/ocaml/camlp4/META" || die
+	fi
 }
