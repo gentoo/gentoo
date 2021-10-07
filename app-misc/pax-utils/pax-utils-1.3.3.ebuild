@@ -29,11 +29,7 @@ RDEPEND="caps? ( >=sys-libs/libcap-2.24 )
 		')
 	)
 "
-# >=linux-headers-5.8 to pick linux headers with faccessat2, bug #768624
-DEPEND="
-	${RDEPEND}
-	kernel_linux? ( !prefix-guest? ( >=sys-kernel/linux-headers-5.8 ) )
-"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	caps? ( virtual/pkgconfig )
 "
