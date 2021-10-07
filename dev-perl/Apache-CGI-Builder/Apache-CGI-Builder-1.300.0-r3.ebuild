@@ -1,23 +1,23 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=DOMIZIO
 DIST_VERSION=1.3
 inherit perl-module
 
 DESCRIPTION="CGI::Builder and Apache2/mod_perl2 integration"
-
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND=">=dev-perl/OOTools-2.21
-	>=dev-perl/CGI-Builder-1.2
+RDEPEND="
+	>=dev-perl/OOTools-2.210.0
+	>=dev-perl/CGI-Builder-1.200.0
 	www-apache/mod_perl
 "
-RDEPEND="${DEPEND}"
+BDEPEND="${RDEPEND}
+"
 
 PATCHES=( "${FILESDIR}/${P}-no-apache-1.patch" )
 
@@ -25,6 +25,7 @@ src_prepare() {
 	rm "${S}/lib/Apache/CGI/Builder.pm" || die "Can't remove Apache-1 support"
 	perl-module_src_prepare
 }
+
 src_test() {
 	local MODULES=(
 		"Apache2::CGI::Builder ${DIST_VERSION}"
