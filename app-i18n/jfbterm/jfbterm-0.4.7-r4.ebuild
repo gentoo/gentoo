@@ -24,6 +24,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-no-kernel-headers.patch
 	"${FILESDIR}"/${PN}-gentoo.patch
 	"${FILESDIR}"/${PN}-wrong-inline-gcc5.patch
+	"${FILESDIR}"/${PN}-automake-1.13.patch
 )
 
 src_prepare() {
