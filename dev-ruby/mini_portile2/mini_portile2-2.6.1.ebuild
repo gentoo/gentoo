@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/flavorjones/mini_portile"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~riscv"
 IUSE=""
 
 ruby_add_bdepend "test? (
