@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,10 @@ IUSE="mongo redis"
 RDEPEND="dev-libs/gmp:0
 	net-libs/libpcap
 	dev-libs/json-c:=
-	mongo? ( dev-db/mongodb )
+	mongo? (
+		dev-db/mongodb
+		dev-libs/mongo-c-driver
+	)
 	redis? ( dev-libs/hiredis )"
 DEPEND="${RDEPEND}
 	dev-util/gengetopt
