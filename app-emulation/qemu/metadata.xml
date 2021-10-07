@@ -40,7 +40,7 @@
 		When the blobs are different, random corruption/bugs/crashes/etc... may be observed.</flag>
 		<flag name="plugins">Enable qemu plugin API via shared library loading.</flag>
 		<flag name="pulseaudio">Enable pulseaudio output for sound emulation</flag>
-		<flag name="rbd">Enable rados block device backend support, see http://ceph.newdream.net/wiki/QEMU-RBD</flag>
+		<flag name="rbd">Enable rados block device backend support, see https://docs.ceph.com/en/mimic/rbd/qemu-rbd/</flag>
 		<flag name="sdl">Enable the SDL-based console</flag>
 		<flag name="sdl-image">SDL Image support for icons</flag>
 		<flag name="slirp">Enable TCP/IP in hypervisor via <pkg>net-libs/libslirp</pkg></flag>
@@ -55,10 +55,10 @@
 		<flag name="usb">Enable USB passthrough via <pkg>dev-libs/libusb</pkg></flag>
 		<flag name="usbredir">Use <pkg>sys-apps/usbredir</pkg> to redirect USB devices to another machine over TCP</flag>
 		<flag name="vde">Enable VDE-based networking</flag>
-		<flag name="vhost-net">Enable accelerated networking using vhost-net, see http://www.linux-kvm.org/page/VhostNet</flag>
+		<flag name="vhost-net">Enable accelerated networking using vhost-net, see https://www.linux-kvm.org/page/VhostNet</flag>
 		<flag name="vhost-user-fs">Enable shared file system access using the FUSE protocol carried over virtio.</flag>
 		<flag name="virgl">Enable experimental Virgil 3d (virtual software GPU)</flag>
-		<flag name="virtfs">Enable VirtFS via virtio-9p-pci / fsdev. See http://wiki.qemu.org/Documentation/9psetup</flag>
+		<flag name="virtfs">Enable VirtFS via virtio-9p-pci / fsdev. See https://wiki.qemu.org/Documentation/9psetup</flag>
 		<flag name="vte">Enable terminal support (<pkg>x11-libs/vte</pkg>) in the GTK+ interface</flag>
 		<flag name="xattr">Add support for getting and setting POSIX extended attributes, through
 		<pkg>sys-apps/attr</pkg>. Requisite for the virtfs backend.</flag>
