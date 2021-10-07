@@ -22,6 +22,9 @@ RDEPEND="${DEPEND}
 
 src_prepare() {
 	default
+	# Fix error: AM_INIT_AUTOMAKE expanded multiple times
+	sed -i -e '/^AM_INIT_AUTOMAKE$/d' configure.ac || die
+
 	# Fix the name of the icon
 	sed -i -e 's/Icon=spotify/Icon=spotify-client/g' spotify-tray.desktop.in || die
 	eautoreconf
