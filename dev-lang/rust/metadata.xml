@@ -13,7 +13,7 @@
 		<flag name="clippy">Install clippy, Rust code linter</flag>
 		<flag name="miri">Install miri, an interpreter for Rust's mid-level intermediate representation (requires USE=nightly)</flag>
 		<flag name="nightly">Enable nightly (UNSTABLE) features</flag>
-		<flag name="parallel-compiler">Build a multi-threaded rustc (experimental, unsupported)</flag>
+		<flag name="parallel-compiler">Build a multi-threaded rustc (experimental, not tested by upstream)</flag>
 		<flag name="rls">Install rls, Rust Language Server (used with IDEs supporting RLS protocol)</flag>
 		<flag name="rustfmt">Install rustfmt, Rust code formatter</flag>
 		<flag name="system-bootstrap">Bootstrap using installed rust compiler</flag>
