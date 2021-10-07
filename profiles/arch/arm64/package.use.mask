@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-07)
+# dev-libs/mongo-c-driver is not keyworded here
+net-analyzer/zmap mongo
+
 # Sam James <sam@gentoo.org> (2021-08-14)
 # Needs Raspberry Pi specific applications
 media-video/mjpg-streamer -input-raspicam
