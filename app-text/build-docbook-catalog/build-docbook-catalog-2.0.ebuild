@@ -32,5 +32,6 @@ src_configure() {
 
 pkg_postinst() {
 	# New version -> regen files
-	build-docbook-catalog
+	# See bug #816303 for rationale behind die
+	build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
 }
