@@ -30,7 +30,6 @@ PATCHES=(
 PERL_RM_FILES=( "t/pod.t" )
 
 src_prepare() {
-	MAKEOPTS+=" -j1" #333049
 	myconf=( X11ROOT=${EPREFIX}/usr XFT=1 -I${EPREFIX}/usr/include/ -l${EPREFIX}/usr/$(get_libdir) )
 	mydoc="ToDo VERSIONS"
 
