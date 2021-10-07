@@ -257,6 +257,7 @@ media-video/mpv raspberry-pi
 # MMAL is only available on the Raspberry Pi:
 # Mask it globally, unmask it on arm.
 media-video/ffmpeg mmal
+media-video/ffmpeg-chromium mmal
 
 # Brian Evans <grknight@gentoo.org (2015-09-14)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies
