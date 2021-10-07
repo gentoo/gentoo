@@ -52,14 +52,18 @@ pkg_preinst() {
 pkg_postinst() {
 	local backup=${T}/xml-docbook-${PV}.cat
 	local real=${EROOT}/etc/sgml/xml-docbook-${PV}.cat
+
 	if ! cmp -s "${backup}" "${real}"; then
 		cp "${backup}" "${real}" || die
 	fi
-	build-docbook-catalog
+
+	# See bug #816303 for rationale behind die
+	build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
 	sgml-catalog-r1_pkg_postinst
 }
 
 pkg_postrm() {
-	build-docbook-catalog
+	# See bug #816303 for rationale behind die
+	build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
 	sgml-catalog-r1_pkg_postrm
 }
