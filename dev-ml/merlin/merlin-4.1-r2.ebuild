@@ -43,7 +43,7 @@ src_prepare() {
 }
 
 src_compile() {
-	dune_src_compile
+	dune build @install
 
 	if use emacs ; then
 		# Build the emacs integration
