@@ -25,3 +25,8 @@ BDEPEND="
 "
 
 distutils_enable_tests --install pytest
+
+src_prepare() {
+	sed -e '/setuptools/d' -i setup.cfg || die
+	distutils-r1_src_prepare
+}
