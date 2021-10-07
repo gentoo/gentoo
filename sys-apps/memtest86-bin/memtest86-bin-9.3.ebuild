@@ -10,6 +10,7 @@ HOMEPAGE="http://www.memtest86.com/"
 SRC_URI="https://www.memtest86.com/downloads/memtest86-usb.zip -> ${P}.zip"
 
 LICENSE="PassMark-EULA"
+RESTRICT="mirror"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE=""
