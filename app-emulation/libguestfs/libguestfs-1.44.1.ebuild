@@ -6,7 +6,7 @@ EAPI=7
 LUA_COMPAT=( lua5-1 )
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit autotools bash-completion-r1 linux-info lua-single perl-functions python-single-r1 strip-linguas toolchain-funcs xdg-utils flag-o-matic
+inherit autotools linux-info lua-single perl-functions python-single-r1 strip-linguas toolchain-funcs xdg-utils flag-o-matic
 
 MY_PV_1="$(ver_cut 1-2)"
 MY_PV_2="$(ver_cut 2)"
