@@ -44,7 +44,7 @@ RDEPEND="
 	>=sys-apps/findutils-4.4
 	!build? (
 		>=sys-apps/sed-4.0.5
-		app-shells/bash:0[readline]
+		>=app-shells/bash-5.0:0[readline]
 		>=app-admin/eselect-1.2
 		rsync-verify? (
 			>=app-portage/gemato-14.5[${PYTHON_USEDEP}]
