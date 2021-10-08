@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-17)↲
@@ -42,9 +42,10 @@ sci-mathematics/geogebra-bin
 -x11-drivers/xf86-video-amdgpu
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-02-04)
-# AdoptOpenJDK's ppc64 build is little-endian only
+# Temurin ppc64 build is little-endian only
 # so we can use bins and build from source
 -dev-java/openjdk:11
+-dev-java/openjdk:17
 -dev-java/openjdk-bin
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-04-11)
