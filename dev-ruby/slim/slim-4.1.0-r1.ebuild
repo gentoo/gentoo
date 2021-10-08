@@ -36,6 +36,9 @@ all_ruby_prepare() {
 	# This sinatra code expects tests to be installed but we strip those.
 	sed -i -e "s/require 'sinatra'/require 'bogussinatra'/" Rakefile || die
 
+	# Add missing include, bug 816573
+	sed -i -e "1irequire 'ostruct'" test/core/test_code_evaluation.rb || die
+
 	# Avoid tests for things we don't have. The builder test does not pass with tilt 2.x
 	sed -i -e '/test_wip_render_with_asciidoc/,/^  end/ s:^:#:' \
 		-e '/test_render_with_wiki/,/^  end/ s:^:#:' \
