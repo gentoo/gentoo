@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
@@ -6,7 +6,8 @@
 net-im/telegram-desktop
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-02-01)
-# AdoptOpenJDK's ppc64 build is little-endian only so it's impossible
-# to build openjdk:11, but it's possible to build openjdk:8 with icedtea{,-bin}
+# Temurin ppc64 build is little-endian only so it's impossible
+# to build openjdk:11 and later, but it's possible to build openjdk:8 with icedtea{,-bin}
 dev-java/openjdk:11
+dev-java/openjdk:17
 dev-java/openjdk-bin
