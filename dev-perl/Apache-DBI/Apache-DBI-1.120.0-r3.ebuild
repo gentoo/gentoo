@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=PHRED
 DIST_VERSION=1.12
@@ -12,16 +12,17 @@ DESCRIPTION="Authentication and Authorization via Perl's DBI"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc ppc64 x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-perl/Digest-SHA1-2.10.0
-	>=virtual/perl-Digest-MD5-2.2
-	>=dev-perl/DBI-1.30"
+RDEPEND="
+	>=dev-perl/Digest-SHA1-2.10.0
+	>=virtual/perl-Digest-MD5-2.200.0
+	>=dev-perl/DBI-1.300.0
+"
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? ( virtual/perl-Test-Simple )
 "
+
 src_test() {
 	local MODULES=(
 		"Apache::DBI ${DIST_VERSION}"
