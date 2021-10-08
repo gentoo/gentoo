@@ -27,3 +27,4 @@ dev-java/icedtea-bin
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-22)
 # This is built for armv7a and will not work on earlier generations.
 dev-java/openjdk-bin:11
+dev-java/openjdk-bin:17
