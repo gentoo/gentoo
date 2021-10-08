@@ -26,7 +26,6 @@ RDEPEND="sys-boot/grub:2[mount]"
 QA_MULTILIB_PATHS="usr/lib/os-prober/.*"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.76-exherbo.patch
 	"${FILESDIR}"/${PN}-1.78-btrfsfix.patch
 )
 
