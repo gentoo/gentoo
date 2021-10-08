@@ -22,6 +22,7 @@ RESTRICT="!test? ( test )"
 
 # Failures - doc
 COMMON_DEPEND="
+	!<app-emulation/libguestfs-1.46.0-r1
 	app-arch/cpio
 	app-arch/lzma
 	app-arch/unzip[natspec]
