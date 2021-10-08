@@ -17,7 +17,7 @@ SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/${EGIT_COMMIT}.tar.gz 
 
 LICENSE="UoI-NCSA"
 SLOT="11"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test tools"
 
 # I have yet to see a non-release spirv-llvm-translator ebuild pass ANY tests.
