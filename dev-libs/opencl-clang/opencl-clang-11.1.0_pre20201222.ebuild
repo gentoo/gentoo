@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 LICENSE="UoI-NCSA"
 SLOT="11"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # Force a rebuild of this package once clang has been updated from 10.0.0 to 10.0.1
 # in order to work around Bug #743992. Hopefully a one-time thing.
