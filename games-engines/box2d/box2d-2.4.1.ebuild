@@ -25,3 +25,7 @@ src_configure() {
 	)
 	cmake_src_configure
 }
+
+src_test() {
+	"${BUILD_DIR}"/bin/unit_test || die
+}
