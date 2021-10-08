@@ -30,6 +30,7 @@ REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
 
 # FIXME: selinux support is automagic
 COMMON_DEPEND="
+	!app-emulation/guestfs-tools
 	sys-libs/ncurses:0=
 	sys-devel/gettext
 	>=app-misc/hivex-1.3.1
