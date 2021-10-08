@@ -1,0 +1,22 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0e8fbdee8b..3662aabdfe 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2309,6 +2309,7 @@ target_include_directories(grpc_test_util
+     ${_gRPC_ZLIB_INCLUDE_DIR}
+ )
+ target_link_libraries(grpc_test_util
++    PRIVATE
+   ${_gRPC_ALLTARGETS_LIBRARIES}
+   absl::failure_signal_handler
+   absl::stacktrace
+@@ -2322,7 +2323,8 @@ endif()
+ 
+ endif()
+ if(gRPC_BUILD_TESTS)
+-
++find_package(GTest REQUIRED)
++target_link_libraries(grpc_test_util PUBLIC GTest::gtest GTest::gmock)
+ add_library(grpc_test_util_unsecure
+   test/core/util/cmdline.cc
+   test/core/util/fuzzer_util.cc
