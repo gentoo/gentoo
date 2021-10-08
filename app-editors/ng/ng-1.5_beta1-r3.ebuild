@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 MY_P="${P/_beta/beta}"
 
@@ -33,6 +33,11 @@ src_prepare() {
 	eautoconf
 	cd - >/dev/null || die
 	cp sys/unix/configure . || die
+	# written in K&R C
+	append-flags \
+		-Wno-implicit-function-declaration \
+		-Wno-implicit-int \
+		-Wno-return-type
 }
 
 src_configure() {
