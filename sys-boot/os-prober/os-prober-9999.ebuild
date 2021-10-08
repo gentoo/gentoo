@@ -29,6 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.79-mdraid-detection.patch
 	"${FILESDIR}"/${PN}-1.79-btrfs-subvolume-detection.patch
 	"${FILESDIR}"/${PN}-1.79-use-fstab-name.patch
+	"${FILESDIR}"/${PN}-1.79-mounted-boot-partition-fix.patch
 )
 
 DOC_CONTENTS="
