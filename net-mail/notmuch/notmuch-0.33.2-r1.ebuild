@@ -19,7 +19,7 @@ LICENSE="GPL-3"
 # Sub-slot corresponds to major wersion of libnotmuch.so.X.Y. Bump of Y is
 # meant to be binary backward compatible.
 SLOT="0/5"
-KEYWORDS="~alpha amd64 arm arm64 ~ppc64 x86 ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
 REQUIRED_USE="
 	apidoc? ( doc )
 	nmbug? ( python )
@@ -44,12 +44,15 @@ BDEPEND="
 		dev-python/setuptools[${PYTHON_USEDEP}]
 		test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 	)
-	test? ( sys-process/parallel )
+	test? (
+		app-shells/bash
+		sys-process/parallel
+	)
 "
 
 COMMON_DEPEND="
 	dev-libs/glib
-	dev-libs/gmime:3.0[crypt]
+	dev-libs/gmime:3.0[crypt?]
 	>=dev-libs/xapian-1.4.0:=
 	sys-libs/talloc
 	sys-libs/zlib:=
@@ -64,7 +67,7 @@ DEPEND="${COMMON_DEPEND}
 	test? (
 		>=app-editors/emacs-${NEED_EMACS}:*[libxml2]
 		app-misc/dtach
-		sys-devel/gdb
+		sys-devel/gdb[python]
 		crypt? (
 			app-crypt/gnupg
 			dev-libs/openssl
@@ -92,7 +95,7 @@ RDEPEND="${COMMON_DEPEND}
 SITEFILE="50${PN}-gentoo.el"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.32.1-tests.patch"
+	"${FILESDIR}/notmuch-assume-modern-gmime.patch"
 )
 
 pkg_setup() {
@@ -197,6 +200,10 @@ python_test() {
 src_test() {
 	local test_failures=()
 	pax-mark -m notmuch
+
+	# we run pytest via eclass phasefunc, so delete upstream launcher
+	use python && { rm -v test/T391-python-cffi.sh || die ; }
+
 	LD_LIBRARY_PATH="${S}/lib" \
 		nonfatal emake test V=1 OPTIONS="--verbose --tee" || test_failures+=( "'emake tests'" )
 	pax-mark -ze notmuch
