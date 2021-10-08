@@ -385,12 +385,6 @@ games-puzzle/gnudoku
 # to a fresher gcc branch.
 <sys-devel/gcc-7
 
-# Sam James <sam@gentoo.org> (2021-05-07)
-# Masked for testing. Two major releases ahead of last packaged version.
-# Please report bugs but this is experimental for now.
-# bug #731266
->=net-mail/cyrus-imapd-3.4.0
-
 # Eray Aslan <eras@gentoo.org> (2021-04-29)
 # Mask experimental software
 =mail-mta/postfix-3.7*
