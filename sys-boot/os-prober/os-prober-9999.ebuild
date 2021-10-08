@@ -31,14 +31,13 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.79-use-fstab-name.patch
 	"${FILESDIR}"/${PN}-1.79-mounted-boot-partition-fix.patch
 	"${FILESDIR}"/${PN}-1.79-fix-busy-umount-message.patch
+	"${FILESDIR}"/${PN}-1.79-efi-chroot-blkid-fallback.patch
 )
 
 DOC_CONTENTS="
 	If you intend for os-prober to detect versions of Windows installed on
 	NTFS-formatted partitions, your system must be capable of reading the
 	NTFS filesystem. One way to do this is by installing sys-fs/ntfs3g.
-	Also, in a chroot environment, it is necessary to bind mount /run/udev
-	(see https://wiki.gentoo.org/wiki/GRUB2#os-prober_and_UEFI_in_chroot).
 
 	NOTE: Since sys-boot/grub-2.06-rc1, grub-mkconfig disables os-prober by default.
 	To enable it, add GRUB_DISABLE_OS_PROBER=false to /etc/default/grub.
