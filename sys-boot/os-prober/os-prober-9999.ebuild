@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.79-btrfs-subvolume-detection.patch
 	"${FILESDIR}"/${PN}-1.79-use-fstab-name.patch
 	"${FILESDIR}"/${PN}-1.79-mounted-boot-partition-fix.patch
+	"${FILESDIR}"/${PN}-1.79-fix-busy-umount-message.patch
 )
 
 DOC_CONTENTS="
