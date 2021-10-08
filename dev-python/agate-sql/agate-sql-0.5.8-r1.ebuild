@@ -13,18 +13,12 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+xml"
 
-# Other packages have BDEPEND="test? ( dev-python/agate-sql[xml] )"
-AGATE_VERSION_DEP=">=dev-python/agate-1.5.0"
-TEST_AGAINST_RDEPEND="xml? ( ${AGATE_VERSION_DEP}[xml,${PYTHON_USEDEP}] )"
 RDEPEND="
-	${AGATE_VERSION_DEP}[${PYTHON_USEDEP}]
+	>=dev-python/agate-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-1.0.8[${PYTHON_USEDEP}]
-
-	${TEST_AGAINST_RDEPEND}
 "
-BDEPEND="test? ( ${AGATE_VERSION_DEP}[xml,${PYTHON_USEDEP}] )"
+BDEPEND="test? ( dev-python/lxml[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
 
