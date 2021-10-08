@@ -18,7 +18,7 @@ else
 	SRC_URI="https://humdi.net/vnstat/${P}.tar.gz"
 	SRC_URI+=" verify-sig? ( https://humdi.net/vnstat/${P}.tar.gz.asc )"
 
-	KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ~ppc64 sparc x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86"
 
 	BDEPEND="verify-sig? ( app-crypt/openpgp-keys-teemutoivola )"
 fi
