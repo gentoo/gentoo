@@ -15,7 +15,16 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
+DEPEND="test? ( dev-cpp/doctest )"
 BDEPEND="doc? ( app-doc/doxygen )"
+
+src_prepare() {
+	cmake_src_prepare
+
+	# unbundle doctest
+	rm unit-test/doctest.h || die
+	ln -s "${ESYSROOT}"/usr/include/doctest/doctest.h unit-test/ || die
+}
 
 src_configure() {
 	local mycmakeargs=(
