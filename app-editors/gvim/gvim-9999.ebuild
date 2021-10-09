@@ -17,7 +17,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
 		https://dev.gentoo.org/~zlogene/distfiles/app-editors/vim/vim-8.2.0360-gentoo-patches.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 fi
 
 DESCRIPTION="GUI version of the Vim text editor"
@@ -25,7 +25,7 @@ HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
 
 SLOT="0"
 LICENSE="vim"
-IUSE="acl aqua cscope debug gtk gtk2 lua motif neXt netbeans nls perl python racket ruby selinux session sound tcl"
+IUSE="acl aqua crypt cscope debug gtk gtk2 lua motif neXt netbeans nls perl python racket ruby selinux session sound tcl"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -59,6 +59,7 @@ RDEPEND="
 			)
 		)
 	)
+	crypt? ( dev-libs/libsodium:= )
 	cscope? ( dev-util/cscope )
 	lua? (
 		${LUA_DEPS}
@@ -198,6 +199,7 @@ src_configure() {
 		--with-gnome=no
 		$(use_enable sound canberra)
 		$(use_enable acl)
+		$(use_enable crypt libsodium)
 		$(use_enable cscope)
 		$(use_enable netbeans)
 		$(use_enable nls)
