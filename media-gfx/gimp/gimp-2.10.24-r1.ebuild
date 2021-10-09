@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	>=media-libs/freetype-2.1.7
 	>=media-libs/gegl-0.4.30:0.4[cairo]
 	>=media-libs/gexiv2-0.10.6
-	>=media-libs/harfbuzz-0.9.19
+	>=media-libs/harfbuzz-0.9.19:=
 	>=media-libs/lcms-2.8:2
 	>=media-libs/libmypaint-1.6.1:=
 	>=media-libs/libpng-1.6.25:0=
