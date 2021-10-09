@@ -249,12 +249,6 @@ dev-python/py-gfm
 # Removal on 2021-10-11.  Bug #812521.
 dev-python/txgithub
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-09-09)
-# Relies on setuptools' deprecated use_2to3 option.
-# Last release in 2019, no revdeps.
-# Removal on 2021-10-09. Bug #812236
-dev-python/sparql-wrapper
-
 # Anna Vyalkova <cyber+gentoo@sysrq.in> (2021-09-07)
 # Mask backwards-incompatible version to avoid autodeletion of previous one.
 # Data migration is not supported upstream and can't be done automatically.
