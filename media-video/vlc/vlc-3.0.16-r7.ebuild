@@ -80,7 +80,7 @@ RDEPEND="
 	bidi? (
 		dev-libs/fribidi
 		media-libs/freetype:2[harfbuzz]
-		media-libs/harfbuzz
+		media-libs/harfbuzz:=
 		virtual/ttf-fonts
 	)
 	bluray? ( >=media-libs/libbluray-1.3.0:= )
