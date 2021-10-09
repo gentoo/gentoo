@@ -281,10 +281,11 @@ dev-python/txgithub
 =dev-libs/gost-engine-3.0*
 
 # Ionen Wolkens <ionen@gentoo.org> (2021-09-03)
-# Currently may not function with kde-plasma/kwin (black screen),
-# so keeping masked for testing due to being a primary consumer.
-# Should be safe to unmask if you are using x11-wm/mutter instead.
->=gui-libs/egl-wayland-1.1.8
+# Known to break kde-plasma/kwin (black screen), and several
+# other applications on wayland with current drivers.
+# https://github.com/NVIDIA/egl-wayland/issues/40
+# https://github.com/NVIDIA/egl-wayland/issues/41
+~gui-libs/egl-wayland-1.1.8
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2021-08-30)
 # Homepage dead, uses gtk2, fails to build, https://bugs.gentoo.org/711344
