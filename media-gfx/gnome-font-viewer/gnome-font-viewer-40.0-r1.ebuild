@@ -15,7 +15,7 @@ DEPEND="
 	>=dev-libs/glib-2.56.0:2
 	>=x11-libs/gtk+-3.24.1:3
 	>=gui-libs/libhandy-1.0.0:1=
-	>=media-libs/harfbuzz-0.9.9
+	>=media-libs/harfbuzz-0.9.9:=
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
 	gnome-base/gnome-desktop:3=
