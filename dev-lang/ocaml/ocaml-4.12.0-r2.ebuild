@@ -20,6 +20,10 @@ BDEPEND="${RDEPEND}
 PDEPEND="emacs? ( app-emacs/ocaml-mode )
 	xemacs? ( app-xemacs/ocaml )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.12.0-glibc-2.34.patch
+)
+
 src_prepare() {
 	default
 
