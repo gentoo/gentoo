@@ -37,6 +37,7 @@
 # GNOME 41 mask, bug #812986
 >=gnome-extra/evolution-data-server-3.41
 >=mail-client/evolution-3.41
+>=gnome-extra/evolution-ews-3.41
 
 # Fabian Groffen <grobian@gentoo.org> (2021-10-03)
 # Masked for erratic behaviour
