@@ -33,7 +33,6 @@ BDEPEND="
 		dev-python/grpcio[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
-		dev-python/oauth2client[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		dev-python/pytest-localserver[${PYTHON_USEDEP}]
 		dev-python/pyu2f[${PYTHON_USEDEP}]
@@ -43,6 +42,12 @@ BDEPEND="
 	)"
 
 distutils_enable_tests pytest
+
+EPYTEST_IGNORE=(
+	# these are compatibility tests with oauth2client
+	# disable them to unblock removal of that package
+	tests/test__oauth2client.py
+)
 
 python_install_all() {
 	distutils-r1_python_install_all
