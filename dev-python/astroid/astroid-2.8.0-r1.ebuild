@@ -24,7 +24,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~m68k ~ppc ~ppc64 ~riscv ~sparc ~x86"
 RDEPEND="
 	>=dev-python/lazy-object-proxy-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/typing-extensions-3.10[${PYTHON_USEDEP}]
-	>=dev-python/wrapt-1.11.2[${PYTHON_USEDEP}]"
+	<dev-python/wrapt-1.13[${PYTHON_USEDEP}]"
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
