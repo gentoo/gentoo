@@ -43,6 +43,8 @@ BDEPEND="$(python_gen_any_dep 'dev-libs/marisa[python,${PYTHON_USEDEP}]')
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+PATCHES=( "${FILESDIR}"/${PN}-marisa-glib.patch )
+
 python_check_deps() {
 	has_version -b "dev-libs/marisa[python,${PYTHON_USEDEP}]"
 }
