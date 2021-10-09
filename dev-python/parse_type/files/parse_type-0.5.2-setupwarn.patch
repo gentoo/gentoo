@@ -1,0 +1,19 @@
+2to3: https://github.com/jenisys/parse_type/issues/17
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -12,5 +12,5 @@
+ 
+ [upload_docs]
+-upload-dir = build/docs/html
++upload_dir = build/docs/html
+ 
+ [bdist_wheel]
+--- a/setup.py
++++ b/setup.py
+@@ -40,6 +40,4 @@
+ )
+ 
+-if python_version >= 3.0:
+-    extra["use_2to3"] = True
+ 
+ # -- NICE-TO-HAVE:
