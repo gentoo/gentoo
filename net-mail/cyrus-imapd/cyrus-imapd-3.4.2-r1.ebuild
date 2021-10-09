@@ -114,7 +114,6 @@ src_configure() {
 	# - revisit --with-sphinx-build=no? (it's docs this time, not the search engine)
 	# - post-emerge message re lmdb removal?
 	econf \
-		--enable-unit-tests \
 		--enable-murder \
 		--enable-idled \
 		--enable-autocreate \
@@ -149,6 +148,7 @@ src_configure() {
 		$(use_enable static-libs static) \
 		$(use_with tcpd libwrap) \
 		$(use_enable xapian) \
+		$(use_enable test unit-tests) \
 		${myconf}
 }
 
