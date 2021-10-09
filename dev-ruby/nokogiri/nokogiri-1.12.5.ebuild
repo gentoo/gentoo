@@ -18,7 +18,7 @@ HOMEPAGE="https://www.nokogiri.org/"
 LICENSE="MIT"
 SRC_URI="https://github.com/sparklemotion/nokogiri/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
-KEYWORDS="~amd64 ~arm ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
 SLOT="0"
 IUSE=""
 
