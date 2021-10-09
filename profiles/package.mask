@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-10-10)
+# Needs upstream build system fixes (currently in progress).
+# Python toggles don't work correctly right now.
+# Masking this development release for now.
+=media-libs/gexiv2-0.13.0
+
 # Patrice Clement <monsieurp@gentoo.org> (2021-10-09)
 # Obsolete and unmaintained. Please switch to app-text/htmltidy.
 # Bug #564884. Masked for removal in 30 days.
