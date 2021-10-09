@@ -22,9 +22,10 @@ RDEPEND="
 	>=gnome-base/libgtop-2.11.92:=
 	>=x11-libs/libwnck-3.14.1:3
 	>=x11-libs/libnotify-0.7
+	>=sys-power/upower-0.99.8:=
 	>=x11-themes/adwaita-icon-theme-3.14.0
 	>=dev-libs/libxml2-2.5.0:2
-	>=dev-libs/libgweather-3.28.0:2=
+	>=dev-libs/libgweather-40.0:2=
 	>=gnome-extra/gucharmap-2.33.0:2.90
 	>=sys-auth/polkit-0.97
 	x11-libs/libX11
@@ -33,15 +34,13 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 "
-# app-text/docbook-sgml-utils for jw binary
 BDEPEND="
-	app-text/docbook-sgml-utils
 	app-text/docbook-xml-dtd:4.1.2
 	dev-libs/libxslt
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	dev-util/itstool
-	sys-devel/gettext
+	>=sys-devel/gettext-0.19.6
 	virtual/pkgconfig
 " # yelp-tools and autoconf-archive for eautoreconf
 
