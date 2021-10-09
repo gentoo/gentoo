@@ -24,7 +24,7 @@ CDEPEND="sys-libs/zlib
 	media-libs/freetype
 	dev-libs/fribidi
 	media-libs/fontconfig
-	media-libs/harfbuzz
+	media-libs/harfbuzz:=
 	dev-libs/libunibreak
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER} )
 	!wxwidgets? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 )"

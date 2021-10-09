@@ -15,17 +15,19 @@ HOMEPAGE="https://github.com/buggins/coolreader/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="wxwidgets"
 
 CDEPEND="sys-libs/zlib
+	app-arch/zstd
 	media-libs/libpng:0
 	virtual/jpeg:0
 	media-libs/freetype
 	dev-libs/fribidi
 	media-libs/fontconfig
-	media-libs/harfbuzz
+	media-libs/harfbuzz:=
 	dev-libs/libunibreak
+	dev-libs/libutf8proc
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER} )
 	!wxwidgets? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 )"
 BDEPEND="${CDEPEND}
@@ -33,9 +35,11 @@ BDEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	wxwidgets? ( || ( media-fonts/liberation-fonts media-fonts/corefonts ) )"
 
+PATCHES=( "${FILESDIR}"/${PN}-wxwidgets.patch )
+
 src_prepare() {
 	cmake_src_prepare
-	xdg_src_prepare
+	xdg_environment_reset
 
 	# locales
 	plocale_find_changes "${S}"/cr3qt/src/i18n 'cr3_' '.ts'
@@ -49,9 +53,9 @@ src_configure() {
 	CMAKE_BUILD_TYPE="Release"
 	if use wxwidgets; then
 		setup-wxwidgets
-		local mycmakeargs=(-D GUI=WX)
+		local mycmakeargs=(-DGUI=WX)
 	else
-		local mycmakeargs=(-D GUI=QT5)
+		local mycmakeargs=(-DGUI=QT5)
 	fi
 	cmake_src_configure
 }
