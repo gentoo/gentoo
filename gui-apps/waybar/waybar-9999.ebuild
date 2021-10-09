@@ -18,7 +18,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="mpd network popups pulseaudio sndio tray +udev wifi"
+IUSE="mpd network +popups pulseaudio sndio tray +udev wifi"
 
 BDEPEND="
 	>=app-text/scdoc-1.9.2
