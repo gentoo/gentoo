@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit autotools python-any-r1 vala
 
@@ -10,7 +10,7 @@ if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 
 	EGIT_REPO_URI="https://github.com/ueno/libkkc"
-elif [[ "${PV}" == *_pre* ]]; then
+elif [[ "${PV}" == *_p* ]]; then
 	inherit vcs-snapshot
 
 	EGIT_COMMIT=""
@@ -20,7 +20,7 @@ DESCRIPTION="Japanese Kana Kanji conversion input method library"
 HOMEPAGE="https://github.com/ueno/libkkc"
 if [[ "${PV}" == "9999" ]]; then
 	SRC_URI=""
-elif [[ "${PV}" == *_pre* ]]; then
+elif [[ "${PV}" == *_p* ]]; then
 	SRC_URI="https://github.com/ueno/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 else
 	SRC_URI="https://github.com/ueno/${PN}/releases/download/v${PV}/${P}.tar.gz"
