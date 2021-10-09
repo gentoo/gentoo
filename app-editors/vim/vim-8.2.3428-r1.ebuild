@@ -24,7 +24,7 @@ HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
 
 SLOT="0"
 LICENSE="vim"
-IUSE="X acl cscope debug gpm lua minimal nls perl python racket ruby selinux sound tcl terminal vim-pager"
+IUSE="X acl crypt cscope debug gpm lua minimal nls perl python racket ruby selinux sound tcl terminal vim-pager"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -36,6 +36,7 @@ RDEPEND="
 	>=sys-libs/ncurses-5.2-r2:0=
 	nls? ( virtual/libintl )
 	acl? ( kernel_linux? ( sys-apps/acl ) )
+	crypt? ( dev-libs/libsodium:= )
 	cscope? ( dev-util/cscope )
 	gpm? ( >=sys-libs/gpm-1.19.3 )
 	lua? ( ${LUA_DEPS}
@@ -200,6 +201,7 @@ src_configure() {
 			--with-features=huge
 			$(use_enable sound canberra)
 			$(use_enable acl)
+			$(use_enable crypt libsodium)
 			$(use_enable cscope)
 			$(use_enable gpm)
 			$(use_enable nls)
