@@ -15,6 +15,8 @@ KEYWORDS="amd64 x86"
 LICENSE="MIT"
 SLOT="0"
 
+BDEPEND="<dev-python/setuptools-58[${PYTHON_USEDEP}]"
+
 python_test() {
 	"${EPYTHON}" -m jsmin.test -v || die "Tests failed with ${EPYTHON}"
 }
