@@ -31,7 +31,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE="nls static-libs"
 
-RDEPEND="dev-libs/glib:2
+RDEPEND="app-i18n/linkkc-data
+	dev-libs/glib:2
 	dev-libs/json-glib
 	dev-libs/libgee:0.8
 	dev-libs/marisa
