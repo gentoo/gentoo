@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=LDS
 DIST_VERSION=1.30
@@ -19,16 +19,19 @@ RDEPEND="
 	store? ( virtual/perl-DB_File )
 	xml? ( dev-perl/XML-Parser )
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
+
 PATCHES=(
 	"${FILESDIR}/${PN}-${DIST_VERSION}-no-xml-parser-check.patch"
 )
+
 PERL_RM_FILES=(
 	# Incomplete, instructs not to use, deps not in Gentoo
 	"Boulder/Labbase.pm"
 )
+
 src_prepare() {
 	use xml || PERL_RM_FILES+=(
 		"Boulder/XML.pm"
