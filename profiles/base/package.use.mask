@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-10-09)
+# ld.gold is essentially abandoned; using it as default may have
+# unintended consequences. Disabling this feature in future ebuilds.
+>sys-devel/binutils-2.37_p1 default-gold
+>sys-devel/binutils-hppa64-2.37_p1 default-gold
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-10-07)
 # parallel-compiler feature is not tested by upstream
 # and is not recommended for general usage and may silently
