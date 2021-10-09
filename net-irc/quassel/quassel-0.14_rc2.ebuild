@@ -24,7 +24,7 @@ HOMEPAGE="https://quassel-irc.org/"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="bundled-icons crypt +dbus debug kde ldap monolithic oxygen postgres +server snorenotify syslog test urlpreview X"
+IUSE="bundled-icons crypt +dbus debug kde ldap monolithic oxygen postgres +server snorenotify spell syslog test urlpreview X"
 # Can't seem to find itself (libraries)
 RESTRICT="!test? ( test ) test"
 
@@ -55,9 +55,9 @@ GUI_DEPEND="dev-qt/qtgui:5
 		kde-frameworks/ktextwidgets:5
 		kde-frameworks/kwidgetsaddons:5
 		kde-frameworks/kxmlgui:5
-		kde-frameworks/sonnet:5
 	)
 	snorenotify? ( >=x11-libs/snorenotify-0.7.0 )
+	spell? ( kde-frameworks/sonnet:5 )
 	urlpreview? ( dev-qt/qtwebengine:5[widgets] )"
 DEPEND=">=dev-libs/boost-1.54:=
 	dev-qt/qtcore:5
@@ -79,10 +79,11 @@ DOCS=( AUTHORS ChangeLog README.md )
 
 REQUIRED_USE="|| ( X server monolithic )
 	crypt? ( || ( server monolithic ) )
-	kde? ( || ( X monolithic ) dbus )
+	kde? ( dbus spell )
 	ldap? ( || ( server monolithic ) )
 	postgres? ( || ( server monolithic ) )
 	snorenotify? ( || ( X monolithic ) )
+	spell? ( || ( X monolithic ) )
 	syslog? ( || ( server monolithic ) )"
 
 src_configure() {
@@ -101,6 +102,7 @@ src_configure() {
 		-DWITH_OXYGEN_ICONS=$(usex oxygen)
 		-DWANT_CORE=$(usex server)
 		$(cmake_use_find_package snorenotify LibsnoreQt5)
+		$(cmake_use_find_package spell KF5Sonnet)
 		-DWITH_WEBENGINE=$(usex urlpreview)
 		-DWANT_QTCLIENT=$(usex X)
 	)
