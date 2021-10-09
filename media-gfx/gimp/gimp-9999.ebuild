@@ -42,7 +42,7 @@ COMMON_DEPEND="
 	>=media-libs/freetype-2.10.2
 	>=media-libs/gegl-0.4.30:0.4[cairo,introspection,lcms,vala?]
 	>=media-libs/gexiv2-0.10.10
-	>=media-libs/harfbuzz-2.6.5
+	>=media-libs/harfbuzz-2.6.5:=
 	>=media-libs/lcms-2.9:2
 	>=media-libs/libmypaint-1.6.1:=
 	>=media-libs/libpng-1.6.37:0=
