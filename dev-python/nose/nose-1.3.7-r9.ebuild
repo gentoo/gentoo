@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
@@ -21,6 +21,7 @@ IUSE="examples test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
+	<dev-python/setuptools-58[${PYTHON_USEDEP}]
 	test? (
 		$(python_gen_cond_dep '
 			!hppa? ( dev-python/coverage[${PYTHON_USEDEP}] )
