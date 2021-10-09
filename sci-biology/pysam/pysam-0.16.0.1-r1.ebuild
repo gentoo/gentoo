@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,10 +18,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="=sci-libs/htslib-1.10*:="
-DEPEND="${RDEPEND}
-	dev-python/cython[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
 BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
+	<dev-python/setuptools-58[${PYTHON_USEDEP}]
 	test? (
 		=sci-biology/bcftools-1.10*
 		=sci-biology/samtools-1.10*
