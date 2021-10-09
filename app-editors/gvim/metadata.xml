@@ -6,6 +6,7 @@
     <name>Gentoo Vim Project</name>
   </maintainer>
   <use>
+    <flag name="crypt">Use <pkg>dev-libs/libsodium</pkg> for crypto support</flag>
     <flag name="cscope">Enable cscope interface</flag>
     <flag name="gtk2">Enable GTK+2 interface</flag>
     <flag name="netbeans">Include netbeans external editor integration support</flag>
