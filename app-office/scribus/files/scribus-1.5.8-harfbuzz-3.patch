@@ -1,0 +1,29 @@
+https://github.com/scribusproject/scribus/commit/68ec41169eaceea4a6e1d6f359762a191c7e61d5.patch
+https://bugs.scribus.net/view.php?id=16635
+https://bugs.gentoo.org/813711
+
+From 68ec41169eaceea4a6e1d6f359762a191c7e61d5 Mon Sep 17 00:00:00 2001
+From: Jean Ghali <jghali@libertysurf.fr>
+Date: Sun, 19 Sep 2021 11:59:50 +0000
+Subject: [PATCH] #16635: Replace hb_subset, removed in harfbuzz 3.0, by
+ hb_subset_or_fail
+
+git-svn-id: svn://scribus.net/trunk/Scribus@24707 11d20701-8431-0410-a711-e3c959e3b870
+--- a/scribus/fonts/sfnt.cpp
++++ b/scribus/fonts/sfnt.cpp
+@@ -1271,9 +1271,15 @@ namespace sfnt {
+ #endif
+ #endif
+ 
++#if HB_VERSION_ATLEAST(2, 9, 0)
++		QScopedPointer<hb_face_t, HbFaceDeleter> hbSubsetFace(hb_subset_or_fail(hbFullFace.get(), hbSubsetInput.get()));
++		if (hbSubsetFace.isNull())
++			return QByteArray();
++#else
+ 		QScopedPointer<hb_face_t, HbFaceDeleter> hbSubsetFace(hb_subset(hbFullFace.get(), hbSubsetInput.get()));
+ 		if (hbSubsetFace.isNull())
+ 			return QByteArray();
++#endif
+ 
+ 		QScopedPointer<hb_blob_t, HbBlobDeleter> hbSubsetBlob(hb_face_reference_blob(hbSubsetFace.get()));
+ 		if (hbSubsetBlob.isNull())
