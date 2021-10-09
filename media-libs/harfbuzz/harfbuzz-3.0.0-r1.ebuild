@@ -19,7 +19,9 @@ else
 fi
 
 LICENSE="Old-MIT ISC icu"
-SLOT="0/0.9.18" # 0.9.18 introduced the harfbuzz-icu split; bug #472416
+# 0.9.18 introduced the harfbuzz-icu split; bug #472416
+# 3.0.0 dropped some unstable APIs; bug #813705
+SLOT="0/3.0.0"
 
 IUSE="+cairo debug doc experimental +glib +graphite icu +introspection test +truetype"
 RESTRICT="!test? ( test )"
