@@ -65,7 +65,26 @@ src_prepare() {
 }
 
 src_compile() {
-	kBuild/env.sh --full emake -f bootstrap.gmk AUTORECONF=true AR="$(tc-getAR)" \
+	if [[ -z ${YACC} ]] ; then
+		# If the user hasn't picked one, let's prefer byacc > yacc > old bison for now.
+		# See bug #734354 - bison doesn't work here.
+		# We can remove this once Bison works again!
+		if has_version "dev-util/byacc" ; then
+			export YACC=byacc
+		elif has_version "dev-util/yacc" ; then
+			export YACC=yacc
+		elif has_version "<sys-devel/bison-3.7" ; then
+			export YACC=bison
+		else
+			die "This case shouldn't be possible; no suitable YACC impl installed."
+		fi
+
+		einfo "Chosen YACC=${YACC} for build..."
+	else
+		einfo "Chosen user-provided YACC=${YACC} for build..."
+	fi
+
+	kBuild/env.sh --full emake -f bootstrap.gmk AUTORECONF=true AR="$(tc-getAR)" YACC="${YACC}" \
 		|| die "bootstrap failed"
 }
 
