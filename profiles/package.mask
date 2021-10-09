@@ -280,12 +280,6 @@ dev-python/fudge
 # https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#migratt
 >=net-news/rssguard-4.0.0
 
-# Louis Sautier <sbraz@gentoo.org> (2021-09-09)
-# No reverse dependencies, no upstream activity for more than 3 years.
-# dev-python/oauthlib is maintained and provides the same functionality.
-# Removal on 2021-10-09.
-dev-python/oauth2
-
 # Thomas Deutschmann <whissi@gentoo.org> (2021-09-07)
 # Masked while being tested and reverse deps aren't fully compatible
 # bug #797325.
