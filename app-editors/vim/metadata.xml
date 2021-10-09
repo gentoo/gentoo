@@ -6,6 +6,7 @@
     <name>Gentoo Vim Project</name>
   </maintainer>
   <use>
+    <flag name="crypt">Use <pkg>dev-libs/libsodium</pkg> for crypto support</flag>
     <flag name="cscope">Enable cscope interface</flag>
     <flag name="ipv6">Enable IPv6 support in channel</flag>
     <flag name="racket">Enable support for Scheme using <pkg>dev-scheme/racket</pkg></flag>
