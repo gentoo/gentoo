@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2021-10-09)
+# Vulkan beta driver branch aimed at Vulkan developers for testing
+# new features. Beside vulkan, it is typically behind the main branch
+# and may be buggier or less secure. Only unmask if really wanted.
+x11-drivers/nvidia-drivers:0/vulkan
+
 # Gnome Team <gnome@gentoo.org> (2021-10-09)
 # GNOME 41 mask, bug #812986
 >=gnome-extra/evolution-data-server-3.41
