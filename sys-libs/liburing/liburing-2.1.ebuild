@@ -21,6 +21,11 @@ IUSE="static-libs"
 # fsync test hangs forever
 RESTRICT="test"
 
+PATCHES=(
+	# Upstream, bug #816798
+	"${FILESDIR}"/${P}-arm-syscall.patch
+)
+
 src_prepare() {
 	default
 	multilib_copy_sources
