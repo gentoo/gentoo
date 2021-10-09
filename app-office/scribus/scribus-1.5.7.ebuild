@@ -76,6 +76,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.6-docdir.patch
 	"${FILESDIR}"/${PN}-1.5.5-findhyphen-1.patch
 	"${FILESDIR}"/${PN}-1.5.6-findhyphen.patch
+	# upstream
+	"${FILESDIR}"/${PN}-1.5.8-harfbuzz-3.patch
 )
 
 CMAKE_BUILD_TYPE="Release"
