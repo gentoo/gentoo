@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=LDS
 DIST_VERSION=1.17
@@ -12,14 +12,14 @@ DESCRIPTION="Interface to Distributed Annotation System"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND=">=virtual/perl-IO-Compress-1.0
+RDEPEND=">=virtual/perl-IO-Compress-1.0
 	sci-biology/bioperl
 	>=dev-perl/HTML-Parser-3
 	>=dev-perl/libwww-perl-5
 	>=virtual/perl-MIME-Base64-2.12"
-RDEPEND="${DEPEND}"
+BDEPEND="${RDEPEND}
+"
 
 optdep_notice() {
 	local i
@@ -38,6 +38,7 @@ optdep_notice() {
 		elog "pre-installed"
 	fi
 }
+
 src_test() {
 	local MODULES=(
 		"Bio::Das ${DIST_VERSION}"
