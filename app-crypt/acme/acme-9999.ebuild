@@ -27,7 +27,7 @@ SLOT="0"
 RDEPEND="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-2.1.4[${PYTHON_USEDEP}]
-	>=dev-python/josepy-1.1.0[${PYTHON_USEDEP}]
+	>=dev-python/josepy-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-17.3.0[${PYTHON_USEDEP}]
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
