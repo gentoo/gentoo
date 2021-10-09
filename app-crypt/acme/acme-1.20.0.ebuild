@@ -14,7 +14,7 @@ if [[ ${PV} == 9999* ]]; then
 	S=${WORKDIR}/${P}/${PN}
 else
 	SRC_URI="https://github.com/certbot/certbot/archive/v${PV}.tar.gz -> certbot-${PV}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 	S=${WORKDIR}/certbot-${PV}/acme
 fi
 
@@ -27,7 +27,7 @@ SLOT="0"
 RDEPEND="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-2.1.4[${PYTHON_USEDEP}]
-	>=dev-python/josepy-1.1.0[${PYTHON_USEDEP}]
+	>=dev-python/josepy-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-17.3.0[${PYTHON_USEDEP}]
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
