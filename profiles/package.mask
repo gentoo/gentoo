@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-10)
+# Old project, has problems with symlinks in repo. Fails for new
+# GitHub projects.
+# Removal on 2021-11-09.  Bug #817380.
+dev-vcs/github-pages-publish
+
 # Joonas Niilola <juippis@gentoo.org> (2021-10-10)
 # Development stopped by upstream. Switch to its actively developed
 # fork, x11-misc/picom. Bug #817338. Removal in ~30 days.
