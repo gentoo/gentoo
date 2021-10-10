@@ -18,7 +18,7 @@ DESCRIPTION="Allows easy conversion from punycode ACE to unicode UTF-8 strings a
 HOMEPAGE="https://github.com/mmriis/simpleidn"
 SRC_URI="https://github.com/mmriis/simpleidn/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~x86"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
