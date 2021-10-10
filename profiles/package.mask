@@ -34,6 +34,14 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2021-10-10)
+# Archived upstream repo, and deprecated by Microsoft. Doesn't work
+# with the latest Visual Studio. Has issues with python 3.9 and
+# python 3.10.
+# Extra bugs: #798192 #723741 #727212 #730330
+# Removal on 2021-11-09.  Bug #817389.
+dev-python/ptvsd
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-10)
 # Inactive upstream with reported bugs. Has issues with python 3.9
 # and python 3.10.
 # Removal on 2021-11-09.  Bug #817386.
