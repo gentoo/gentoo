@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=RCAPUTO
 DIST_VERSION=1.222
@@ -12,8 +12,6 @@ DESCRIPTION="high-level interface to cddb/freedb protocol"
 
 SLOT="0"
 KEYWORDS="amd64 ~ia64 ppc sparc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=virtual/perl-Carp-1.260.0
@@ -21,7 +19,7 @@ RDEPEND="
 	>=virtual/perl-IO-1.310.0
 	>=virtual/perl-MIME-Base64-3.130.0
 "
-DEPEND="
+BDEPEND="
 	>=virtual/perl-ExtUtils-MakeMaker-6.300.0
 	test? (
 		${RDEPEND}
@@ -29,6 +27,7 @@ DEPEND="
 		>=virtual/perl-Test-Simple-0.980.0
 	)
 "
+
 optdep_installed() {
 	local chr=" "
 	has_version "${1}" && chr="I"
