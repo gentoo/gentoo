@@ -20,8 +20,8 @@ RDEPEND="dev-libs/glib:2
 	x11-libs/libxkbcommon
 	introspection? ( dev-libs/gobject-introspection )
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	$(vala_depend)
+DEPEND="${RDEPEND}"
+BDEPEND="$(vala_depend)
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
