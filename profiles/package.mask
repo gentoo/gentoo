@@ -111,6 +111,7 @@ x11-drivers/nvidia-drivers:0/vulkan
 >=x11-wm/mutter-41.0
 >=dev-libs/gjs-1.69
 >=gnome-base/gsettings-desktop-schemas-41.0
+>=gnome-base/gnome-shell-41.0
 
 # Fabian Groffen <grobian@gentoo.org> (2021-10-03)
 # Masked for erratic behaviour
