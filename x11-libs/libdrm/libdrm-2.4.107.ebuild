@@ -4,12 +4,13 @@
 EAPI=7
 
 EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/drm.git"
+PYTHON_COMPAT=( python3_{8..10} )
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-inherit ${GIT_ECLASS} meson-multilib
+inherit ${GIT_ECLASS} python-any-r1 meson-multilib
 
 DESCRIPTION="X.Org libdrm library"
 HOMEPAGE="https://dri.freedesktop.org/ https://gitlab.freedesktop.org/mesa/drm"
@@ -34,6 +35,13 @@ RDEPEND="
 	video_cards_intel? ( >=x11-libs/libpciaccess-0.13.1-r1:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	valgrind? ( dev-util/valgrind )"
+BDEPEND="${PYTHON_DEPS}
+	$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')"
+
+
+python_check_deps() {
+	has_version -b "dev-python/docutils[${PYTHON_USEDEP}]"
+}
 
 multilib_src_configure() {
 	local emesonargs=(
