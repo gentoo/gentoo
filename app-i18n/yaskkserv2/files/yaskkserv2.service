@@ -1,0 +1,12 @@
+[Unit]
+Description=Yet Another SKK server
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=nobody
+EnvironmentFile=/etc/conf.d/yaskkserv2
+ExecStart=/usr/sbin/yaskkserv2 --no-daemonize ${YASKKSERV2_OPTS}
+
+[Install]
+WantedBy=multi-user.target
