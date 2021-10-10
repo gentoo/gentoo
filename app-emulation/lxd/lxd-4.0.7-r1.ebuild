@@ -151,6 +151,8 @@ src_install() {
 	systemd_newunit "${FILESDIR}"/lxd-containers-4.0.0.service lxd-containers.service
 	systemd_newunit "${FILESDIR}"/lxd-4.0.0.socket lxd.socket
 
+	keepdir /var/log/lxd
+
 	dodoc AUTHORS doc/*
 	use nls && domo po/*.mo
 }
