@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 PYTHON_COMPAT=(python3_{7,8,9})
 
 inherit python-any-r1 readme.gentoo-r1
@@ -21,13 +21,15 @@ fi
 
 LICENSE="CC-BY-SA-4.0"
 SLOT="0"
-IUSE="+offline"
+IUSE="+offline test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="dev-libs/libxml2
 	dev-libs/libxslt
 	gnome-base/librsvg
 	media-fonts/open-sans
-	${PYTHON_DEPS}"
+	${PYTHON_DEPS}
+	test? ( >=app-text/htmltidy-5.8.0 )"
 
 PATCHES=( "${FILESDIR}"/${PN}-eclasses.patch )
 
