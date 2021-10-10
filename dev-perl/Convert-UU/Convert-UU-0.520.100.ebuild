@@ -9,4 +9,4 @@ inherit perl-module
 
 DESCRIPTION="Perl replacement for uuencode"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
