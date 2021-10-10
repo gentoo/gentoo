@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=DOMIZIO
 DIST_VERSION=1.36
@@ -12,15 +12,16 @@ DESCRIPTION="Framework to build simple or complex web-apps"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND=">=dev-perl/OOTools-2.21
-	>=dev-perl/IO-Util-1.5
+RDEPEND=">=dev-perl/OOTools-2.210.0
+	>=dev-perl/IO-Util-1.500.0
 	dev-perl/CGI
 "
-RDEPEND="${DEPEND}"
+BDEPEND="${RDEPEND}
+"
 
 PATCHES=( "${FILESDIR}/${P}-test-cgipm.patch" )
+
 src_test() {
 	local MODULES=(
 		# https://rt.cpan.org/Ticket/Display.html?id=123292
