@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal
+inherit multilib-minimal toolchain-funcs
 
 DESCRIPTION="C library for encoding, decoding and manipulating JSON data"
 HOMEPAGE="https://www.digip.org/jansson/"
@@ -17,6 +17,8 @@ IUSE="doc static-libs"
 BDEPEND="doc? ( dev-python/sphinx )"
 
 multilib_src_configure() {
+	tc-ld-force-bfd
+
 	ECONF_SOURCE="${S}" econf $(use_enable static-libs static)
 }
 
