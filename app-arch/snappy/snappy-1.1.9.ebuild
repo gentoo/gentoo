@@ -23,6 +23,7 @@ DOCS=( format_description.txt framing_format.txt NEWS README.md )
 PATCHES=(
 	"${FILESDIR}/${P}_gcc_inline.patch"
 	"${FILESDIR}/${P}_external_gtest.patch"
+	"${FILESDIR}/${PN}-1.1.9-clang-werror.patch"
 )
 
 multilib_src_configure() {
