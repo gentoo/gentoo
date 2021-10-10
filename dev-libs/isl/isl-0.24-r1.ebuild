@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib-minimal preserve-libs toolchain-funcs
+inherit autotools multilib-minimal preserve-libs toolchain-funcs
 
 DESCRIPTION="A library for manipulating integer points bounded by linear constraints"
 HOMEPAGE="http://isl.gforge.inria.fr/"
@@ -11,7 +11,7 @@ SRC_URI="http://isl.gforge.inria.fr/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/23"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="static-libs"
 
 RDEPEND=">=dev-libs/gmp-5.1.3-r1[${MULTILIB_USEDEP}]"
@@ -23,9 +23,16 @@ BDEPEND="
 DOCS=( ChangeLog AUTHORS doc/manual.pdf )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.19-gdb-autoload-dir.patch
+	"${FILESDIR}"/${PN}-0.24-gdb-autoload-dir.patch
 	"${FILESDIR}"/${PN}-0.24-nobash.patch
+	"${FILESDIR}"/${PN}-0.24-respect-flags.patch
 )
+
+src_prepare() {
+	default
+
+	eautoreconf
+}
 
 multilib_src_configure() {
 	local econf_opts=(
