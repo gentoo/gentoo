@@ -14,7 +14,7 @@ SRC_URI="https://www.musicpd.org/download/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc"
 
 RDEPEND="
 	dev-libs/boost
