@@ -32,8 +32,8 @@ BDEPEND="
 "
 #	test? ( dev-util/valgrind )
 RDEPEND="
-	input_devices_wacom? ( >=dev-libs/libwacom-0.20 )
-	>=dev-libs/libevdev-1.3
+	input_devices_wacom? ( >=dev-libs/libwacom-0.27 )
+	>=dev-libs/libevdev-1.9.902
 	>=sys-libs/mtdev-1.1
 	virtual/libudev:=
 	virtual/udev
