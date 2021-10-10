@@ -11,7 +11,7 @@ SRC_URI="https://download.sourceforge.net/extremetuxracer/etr-${PV}.tar.xz -> ${
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND="
