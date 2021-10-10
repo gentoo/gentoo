@@ -9,7 +9,7 @@ SRC_URI="http://opensource.yubico.com/yubico-c/releases/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 
 src_configure() {
 	econf --disable-static
