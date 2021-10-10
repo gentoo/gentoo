@@ -19,7 +19,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="ZPL"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 
 RDEPEND="dev-python/zope-i18nmessageid[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]
