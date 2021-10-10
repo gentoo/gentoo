@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2021-10-10)
+# Upstream lost to history. Web archive finds a very broken repo.
+# Has issues with python 3.9 and python 3.10.
+# Extra Bugs: Bug #696674, Bug #814572
+# Removal on 2021-11-09.  Bug #817383.
+dev-db/sadisplay
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-10)
 # Old project, has problems with symlinks in repo. Fails for new
 # GitHub projects.
 # Removal on 2021-11-09.  Bug #817380.
