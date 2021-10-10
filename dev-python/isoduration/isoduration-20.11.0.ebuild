@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND=">=dev-python/arrow-0.15.0[${PYTHON_USEDEP}]"
 BDEPEND="
