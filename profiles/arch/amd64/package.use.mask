@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2021-10-10)
+# Does work on amd64 and x86
+x11-misc/read-edid -vbe-mode
+
 # Lars Wendler <polynomial-c@gentoo.org> (2021-08-27)
 # media-libs/webrtc-audio-processing only has amd64 and x86 keywords
 media-video/pipewire -echo-cancel
