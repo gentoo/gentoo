@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~sparc ~x86"
 
 BDEPEND="
 	test? ( dev-python/fixtures[${PYTHON_USEDEP}] )"
