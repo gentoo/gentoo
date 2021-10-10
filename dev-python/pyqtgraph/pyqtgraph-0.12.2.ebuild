@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 multiprocessing
 
 TEST_DATA_TAG=test-data-8
@@ -21,6 +21,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="examples opengl svg"
+REQUIRED_USE="test? ( opengl svg )"
 
 RDEPEND="
 	>=dev-python/numpy-1.17[${PYTHON_USEDEP}]
@@ -30,11 +31,15 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/h5py[${PYTHON_USEDEP}]
-		dev-python/PyQt5[svg,testlib,${PYTHON_USEDEP}]
+		dev-python/PyQt5[testlib,${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/pytest-xvfb[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-py3.10.patch"
+)
 
 distutils_enable_sphinx doc/source
 distutils_enable_tests pytest
@@ -42,45 +47,45 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
-	if use test; then
-		mkdir "${HOME}"/.pyqtgraph || die
-		mv "${WORKDIR}/test-data-${TEST_DATA_TAG}" \
-			"${HOME}"/.pyqtgraph/test-data || die
-		cd "${HOME}"/.pyqtgraph/test-data || die
-		# we need to fake a git repo
-		git config --global user.email "you@example.com"
-		git config --global user.name "Your Name"
-		git init -q || die
-		git commit -q --allow-empty -m "dummy commit" || die
-		git tag "${TEST_DATA_TAG}" || die
-		cd - >/dev/null || die
-	fi
 	if ! use opengl; then
 		rm -r pyqtgraph/opengl || die
 	fi
 }
 
 python_test() {
-	local deselect=(
+	local EPYTEST_DESELECT=(
 		# apparently fragile
-		--deselect tests/test_reload.py::test_reload
+		tests/test_reload.py::test_reload
 
 		# TODO
-		--deselect tests/graphicsItems/test_ROI.py::test_PolyLineROI
+		tests/graphicsItems/test_ROI.py::test_PolyLineROI
 
 		# pyside2 is normally skipped if not installed but these two
 		# fail if it is installed
 		# TODO: this could be due to USE flags, revisit when pyside2
 		# gains py3.9
-		--deselect
 		'examples/test_examples.py::testExamples[ DateAxisItem_QtDesigner.py - PySide2 ]'
-		--deselect
 		'examples/test_examples.py::testExamples[ designerExample.py - PySide2 ]'
 	)
 
 	distutils_install_for_testing
-	epytest "${deselect[@]}" \
-		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
+	epytest -n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
+}
+
+src_test() {
+	mkdir "${HOME}"/.pyqtgraph || die
+	mv "${WORKDIR}/test-data-${TEST_DATA_TAG}" \
+		"${HOME}"/.pyqtgraph/test-data || die
+	cd "${HOME}"/.pyqtgraph/test-data || die
+	# we need to fake a git repo
+	git config --global user.email "you@example.com" || die
+	git config --global user.name "Your Name" || die
+	git init -q || die
+	git commit -q --allow-empty -m "dummy commit" || die
+	git tag "${TEST_DATA_TAG}" || die
+	cd - >/dev/null || die
+
+	distutils-r1_src_test
 }
 
 python_install_all() {
