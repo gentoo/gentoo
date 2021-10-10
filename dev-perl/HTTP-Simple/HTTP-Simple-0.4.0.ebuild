@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Simple procedural interface to HTTP::Tiny"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc"
 
 RDEPEND="
 	virtual/perl-Carp
