@@ -35,6 +35,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
 	dev-python/cython[${PYTHON_USEDEP}]
 	sci-libs/geos
 	<sci-libs/proj-8
@@ -46,7 +47,6 @@ DEPEND+="test? (
 		dev-python/filelock[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
 		dev-python/flufl-lock[$PYTHON_USEDEP]
 	)"
 
