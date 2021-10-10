@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/pipewire/${PN}/-/archive/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc ~riscv"
+	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv"
 fi
 
 DESCRIPTION="Replacement for pipewire-media-session"
