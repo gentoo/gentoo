@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit strip-linguas xdg
 
@@ -21,28 +21,27 @@ fi
 LICENSE="GPL-2+ HPND"
 SLOT="0"
 
-IUSE="gtk2 +vte"
+IUSE="+vte"
 
 BDEPEND="virtual/pkgconfig"
-RDEPEND=">=dev-libs/glib-2.32:2
-	gtk2? (
-		>=x11-libs/gtk+-2.24:2
-		vte? ( x11-libs/vte:0 )
-	)
-	!gtk2? (
-		>=x11-libs/gtk+-3.0:3
-		vte? ( x11-libs/vte:2.91 )
-	)"
-DEPEND="${RDEPEND}
+RDEPEND="
+	>=dev-libs/glib-2.32:2
+	>=x11-libs/gtk+-3.0:3
+	vte? ( x11-libs/vte:2.91 )
+"
+DEPEND="
+	${RDEPEND}
 	dev-util/intltool
-	sys-devel/gettext"
+	sys-devel/gettext
+"
 
 pkg_setup() {
 	strip-linguas ${LANGS}
 }
 
 src_prepare() {
-	xdg_src_prepare #588570
+	xdg_environment_reset #588570
+	default
 
 	# Syntax highlighting for Portage
 	sed -i -e "s:*.sh;:*.sh;*.ebuild;*.eclass;:" \
@@ -58,7 +57,6 @@ src_configure() {
 		--disable-html-docs
 		--disable-pdf-docs
 		--disable-static
-		$(use_enable gtk2)
 		$(use_enable vte)
 	)
 	econf "${myeconfargs[@]}"
@@ -66,7 +64,7 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die
+	find "${ED}" -type f \( -name '*.a' -o -name '*.la' \) -delete || die
 }
 
 pkg_preinst() {
