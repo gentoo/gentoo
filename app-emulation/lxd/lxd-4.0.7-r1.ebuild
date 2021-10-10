@@ -146,6 +146,8 @@ src_install() {
 	newconfd "${FILESDIR}"/lxd-4.0.0.confd lxd
 	newinitd "${FILESDIR}"/lxd-4.0.0.initd lxd
 
+        keepdir /var/log/lxd
+
 	systemd_dounit "${T}"/lxd.service
 
 	systemd_newunit "${FILESDIR}"/lxd-containers-4.0.0.service lxd-containers.service
