@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools multilib-minimal preserve-libs toolchain-funcs
+inherit autotools multilib multilib-minimal preserve-libs toolchain-funcs
 
 DESCRIPTION="A library for manipulating integer points bounded by linear constraints"
 HOMEPAGE="http://isl.gforge.inria.fr/"
