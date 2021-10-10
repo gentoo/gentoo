@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 RDEPEND="
 	>=dev-python/asgiref-3.4.0[${PYTHON_USEDEP}]
