@@ -13,7 +13,6 @@ darcs
 python_targets_pypy3
 python_single_target_pypy3
 
-# Hans de Graaff <graaff@gentoo.org> (2020-12-26)
+# Hans de Graaff <graaff@gentoo.org> (2021-10-10)
 # Currently in testing and not ready to go stable yet.
-ruby_targets_ruby27
 ruby_targets_ruby30
