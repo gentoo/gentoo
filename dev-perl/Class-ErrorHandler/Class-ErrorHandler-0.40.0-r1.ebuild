@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=TOKUHIROM
 DIST_VERSION=0.04
@@ -11,7 +11,3 @@ DESCRIPTION="Automated accessor generation"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
-IUSE=""
-
-RDEPEND=""
-DEPEND="virtual/perl-ExtUtils-MakeMaker"
