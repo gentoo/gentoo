@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>johu@gentoo.org</email>
-		<name>Johannes Huber</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<bugs-to>https://github.com/graysky2/profile-cleaner/issues</bugs-to>
 		<remote-id type="github">graysky2/profile-cleaner</remote-id>

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>johu@gentoo.org</email>
-		<name>Johannes Huber</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="drm">Enable VSync with DRM_IOCTL_WAIT_VBLANK</flag>
 		<flag name="opengl">Enable VSync with SGI_swap_control OpenGL extension</flag>
