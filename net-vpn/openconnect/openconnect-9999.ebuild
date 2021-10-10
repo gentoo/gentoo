@@ -47,7 +47,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	sys-apps/iproute2
-	net-vpn/vpnc-scripts
+	>=net-vpn/vpnc-scripts-20210402-r1
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -105,7 +105,7 @@ src_configure() {
 		$(use_with gssapi)
 		$(use_with smartcard libpcsclite)
 		$(use_with stoken)
-		--with-vpnc-script="${EPREFIX}/etc/vpnc-scripts/vpnc-script"
+		--with-vpnc-script="${EPREFIX}/etc/vpnc/vpnc-script"
 		--without-java
 	)
 
