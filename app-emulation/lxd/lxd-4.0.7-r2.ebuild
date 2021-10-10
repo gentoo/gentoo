@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="apparmor ipv6 nls verify-sig"
 
-DEPEND="app-arch/xz-utils
+DEPEND="acct-group/lxd
+	app-arch/xz-utils
 	>=app-emulation/lxc-3.0.0[apparmor?,seccomp(+)]
 	dev-libs/dqlite
 	dev-libs/lzo
@@ -23,7 +24,6 @@ DEPEND="app-arch/xz-utils
 	>=dev-util/xdelta-3.0[lzma(+)]
 	net-dns/dnsmasq[dhcp,ipv6?]"
 RDEPEND="${DEPEND}
-	acct-group/lxd
 	net-firewall/ebtables
 	net-firewall/iptables[ipv6?]
 	sys-apps/iproute2[ipv6?]
@@ -151,7 +151,9 @@ src_install() {
 	systemd_newunit "${FILESDIR}"/lxd-containers-4.0.0.service lxd-containers.service
 	systemd_newunit "${FILESDIR}"/lxd-4.0.0.socket lxd.socket
 
+	# Temporary fix for #817287
 	keepdir /var/log/lxd
+	fowners root:lxd /var/log/lxd
 
 	dodoc AUTHORS doc/*
 	use nls && domo po/*.mo
