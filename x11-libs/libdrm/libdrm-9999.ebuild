@@ -38,7 +38,6 @@ DEPEND="${RDEPEND}
 BDEPEND="${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')"
 
-
 python_check_deps() {
 	has_version -b "dev-python/docutils[${PYTHON_USEDEP}]"
 }
