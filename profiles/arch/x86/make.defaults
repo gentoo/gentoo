@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # All extra USE/etc should be specified in sub-profiles.
@@ -47,3 +47,7 @@ ABI_X86="32"
 # Enable USE=libtirpc by default, to ease dependency resolution during
 # the stabilization of glibc-2.26. Bug 657148
 USE="libtirpc"
+
+# Hans de Graaff <graaff@gentoo.org> (2021-10-10)
+# Temporary override base default to support the ruby27 stable bug 801289
+RUBY_TARGETS="ruby26"

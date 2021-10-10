@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # All extra USE/etc should be specified in sub-profiles.
@@ -39,3 +39,7 @@ VIDEO_CARDS="fbdev mga nv r128 radeon"
 
 # Enable abi_ppc_64 for packages that don't have it forced.
 ABI_PPC="64"
+
+# Hans de Graaff <graaff@gentoo.org> (2021-10-10)
+# Temporary override base default to support the ruby27 stable bug 801289
+RUBY_TARGETS="ruby26"

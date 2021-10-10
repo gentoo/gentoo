@@ -1,6 +1,10 @@
 # Copyright 2014-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Hans de Graaff <graaff@gentoo.org> (2021-10-10)
+# Temporary entry to support the ruby27 stable bug 801289
+ruby_targets_ruby27
+
 # Michał Górny <mgorny@gentoo.org> (2021-05-04)
 # Python 3.10 is not yet stable (and will not be until it's out of beta,
 # around September.
