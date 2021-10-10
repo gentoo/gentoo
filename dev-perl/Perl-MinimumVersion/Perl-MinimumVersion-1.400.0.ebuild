@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Find a minimum required version of perl for Perl code"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	virtual/perl-Carp
