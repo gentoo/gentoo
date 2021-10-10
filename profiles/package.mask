@@ -109,6 +109,7 @@ x11-drivers/nvidia-drivers:0/vulkan
 >=gnome-extra/gnome-calendar-41.0
 >=gnome-extra/gnome-contacts-41.0
 >=x11-wm/mutter-41.0
+>=dev-libs/gjs-1.69
 
 # Fabian Groffen <grobian@gentoo.org> (2021-10-03)
 # Masked for erratic behaviour
