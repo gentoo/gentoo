@@ -16,7 +16,7 @@ SRC_URI="https://github.com/facelessuser/${PN}/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 
 # mkdocs-material depends on this package creating a circular dep
 PDEPEND=">=dev-python/mkdocs-material-5.0.0[${PYTHON_USEDEP}]"
