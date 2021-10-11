@@ -12,7 +12,7 @@ SRC_URI="https://gforge.inria.fr/frs/download.php/file/36602/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0/${PV}"
 KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
-IUSE="+ocamlopt test"
+IUSE="+ocamlopt llvm-libunwind test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -20,7 +20,8 @@ RDEPEND="
 	dev-ml/extlib:=
 	dev-ml/findlib:=
 	dev-libs/glib:2
-	sys-libs/libunwind:=
+	llvm-libunwind? ( sys-libs/llvm-libunwind:= )
+	!llvm-libunwind? ( sys-libs/libunwind:= )
 	sys-libs/ncurses:=
 "
 DEPEND="${RDEPEND}
@@ -41,10 +42,10 @@ src_prepare() {
 		-e 's|make|$(MAKE)|g' \
 		Makefile || die
 	sed -i \
-		-e 's|-lncurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0 libunwind)|g' \
+		-e 's|-lncurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0) -lunwind|g' \
 		c-lib/Makefile || die
 	sed -i \
-		-e 's|-lcurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0 libunwind)|g' \
+		-e 's|-lcurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0) -lunwind|g' \
 		c-lib/Makefile.variants || die
 
 	tc-export CC PKG_CONFIG
