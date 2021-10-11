@@ -11,7 +11,7 @@ SRC_URI="http://www.bughost.org/firmware/${MY_P}.tgz"
 
 LICENSE="ipw2200-fw"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE=""
 
 S=${WORKDIR}/${MY_P}
