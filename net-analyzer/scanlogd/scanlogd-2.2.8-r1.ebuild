@@ -11,7 +11,7 @@ HOMEPAGE="https://www.openwall.com/scanlogd/"
 
 LICENSE="scanlogd GPL-2" # GPL-2 for initscript
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ppc ~x86"
 IUSE="+nids pcap"
 REQUIRED_USE="?? ( nids pcap )"
 
