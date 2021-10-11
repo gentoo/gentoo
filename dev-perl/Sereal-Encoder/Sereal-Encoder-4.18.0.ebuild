@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Fast, compact, powerful binary serialization"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ~ia64 ppc ppc64 ~sparc x86"
 
 # Note: bundled zstd fails compile
 RDEPEND="
