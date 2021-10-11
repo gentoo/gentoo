@@ -9,4 +9,4 @@ inherit perl-module
 
 DESCRIPTION="Isolated String helpers from B"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~m68k ~ppc ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~m68k ~ppc ~riscv ~s390 ~sparc ~x86"
