@@ -67,7 +67,3 @@ IUSE_IMPLICIT="abi_x86_64"
 # Enable USE=libtirpc by default, to ease dependency resolution during
 # the stabilization of glibc-2.26. Bug 657148
 USE="libtirpc"
-
-# Hans de Graaff <graaff@gentoo.org> (2021-10-10)
-# Temporary override base default to support the ruby27 stable bug 801289
-RUBY_TARGETS="ruby26"
