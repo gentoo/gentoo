@@ -22,6 +22,7 @@ src_prepare() {
 	use system-libs && PATCHES+=(
 		"${FILESDIR}"/${P}-system-libs.patch
 	)
+	sed -i -e 's:description-file:description_file:' setup.cfg || die
 	default
 }
 
