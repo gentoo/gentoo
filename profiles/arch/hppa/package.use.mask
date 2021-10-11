@@ -369,3 +369,7 @@ media-video/mplayer cpudetection
 # Mart Raudsepp <leio@gentoo.org> (2008-04-02)
 # media-plugins/gst-plugins-{dvb,fluendo-mpegdemux,bad} not keyworded
 media-plugins/gst-plugins-meta dvb
+
+# Andrew Udvare <audvare@gmail.com> (2021-10-13)
+# missing keyword for dev-libs/hidapi
+media-libs/libsdl2 hidapi
