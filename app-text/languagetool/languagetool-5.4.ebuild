@@ -59,7 +59,7 @@ src_install() {
 	java-pkg_dolauncher ${PN}-server --main org.${PN}.server.HTTPServer  --config /etc/languagetool.cfg
 	newicon -s scalable "${FILESDIR}"/logo.svg ${PN}.svg
 	domenu "${FILESDIR}"/${PN}.desktop
-	newinitd "${FILESDIR}/languagetool.initd"
+	newinitd "${FILESDIR}/languagetool.initd" languagetool
 
 	dodoc CHANGES.md README.md
 
