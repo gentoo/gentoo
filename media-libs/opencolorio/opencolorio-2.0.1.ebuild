@@ -12,7 +12,7 @@ HOMEPAGE="https://opencolorio.org https://github.com/AcademySoftwareFoundation/O
 SRC_URI="https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/OpenColorIO-${PV}"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 LICENSE="BSD"
 SLOT="0"
 IUSE="cpu_flags_x86_sse2 doc opengl python static-libs test"
