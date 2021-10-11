@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Exec subs in the original package from Safe"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND=""
 BDEPEND="${RDEPEND}
