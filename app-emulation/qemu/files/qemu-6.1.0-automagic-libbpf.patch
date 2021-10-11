@@ -1,0 +1,21 @@
+commit 080832e4f4801a28bd1170c49e61f6a0f5f05d03
+Author: Paolo Bonzini <pbonzini@redhat.com>
+Date:   Tue Sep 7 12:45:12 2021 +0200
+
+    ebpf: only include in system emulators
+    
+    eBPF files are being included in user emulators, which is useless and
+    also breaks compilation because ebpf/trace-events is only processed
+    if a system emulator is included in the build.
+    
+    Resolves: https://gitlab.com/qemu-project/qemu/-/issues/566
+    Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+    Signed-off-by: Jason Wang <jasowang@redhat.com>
+
+diff --git a/ebpf/meson.build b/ebpf/meson.build
+index 9cd0635370..2dd0fd8948 100644
+--- a/ebpf/meson.build
++++ b/ebpf/meson.build
+@@ -1 +1 @@
+-common_ss.add(when: libbpf, if_true: files('ebpf_rss.c'), if_false: files('ebpf_rss-stub.c'))
++softmmu_ss.add(when: libbpf, if_true: files('ebpf_rss.c'), if_false: files('ebpf_rss-stub.c'))

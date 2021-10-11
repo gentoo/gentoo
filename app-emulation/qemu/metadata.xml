@@ -17,6 +17,7 @@
 		<flag name="accessibility">Adds support for braille displays using brltty</flag>
 		<flag name="aio">Enables support for Linux's Async IO</flag>
 		<flag name="alsa">Enable alsa output for sound emulation</flag>
+		<flag name="bpf">Enable eBPF support for RSS implementation.</flag>
 		<flag name="capstone">Enable disassembly support with <pkg>dev-libs/capstone</pkg></flag>
 		<flag name="curl">Support ISOs / -cdrom directives via HTTP or HTTPS.</flag>
 		<flag name="fdt">Enables firmware device tree support</flag>
