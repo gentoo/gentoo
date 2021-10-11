@@ -101,6 +101,8 @@ pkg_setup() {
 	Cannot be directly selected in the kernel's menuconfig, so enable
 	options such as CONFIG_DRM_FBDEV_EMULATION instead."
 
+	use amd64 && kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
+
 	MODULE_NAMES="
 		nvidia(video:kernel)
 		nvidia-drm(video:kernel)

@@ -98,6 +98,8 @@ pkg_setup() {
 	options such as CONFIG_DRM_FBDEV_EMULATION instead.
 	390.xx branch: also used by a GLX workaround needed for OpenGL."
 
+	use amd64 || use x86 && kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
+
 	BUILD_PARAMS='NV_VERBOSE=1 IGNORE_CC_MISMATCH=yes SYSSRC="${KV_DIR}" SYSOUT="${KV_OUT_DIR}"'
 	use x86 && BUILD_PARAMS+=' ARCH=i386' # needed for recognition
 	BUILD_TARGETS="modules" # defaults' clean sometimes deletes modules
