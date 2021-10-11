@@ -24,7 +24,7 @@ IUSE="x11-backend X"
 DEPEND="
 	>=dev-libs/libinput-1.14.0:0=
 	>=dev-libs/wayland-1.19.0
-	>=dev-libs/wayland-protocols-1.22
+	>=dev-libs/wayland-protocols-1.23
 	media-libs/mesa[egl,gles2,gbm]
 	sys-auth/seatd:=
 	virtual/libudev
@@ -43,7 +43,7 @@ RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
-	>=dev-libs/wayland-protocols-1.17
+	>=dev-libs/wayland-protocols-1.23
 	>=dev-util/meson-0.58.1
 	virtual/pkgconfig
 "
@@ -56,7 +56,6 @@ src_configure() {
 		"-Dwerror=false"
 		"-Drenderers=gles2"
 		-Dxwayland=$(usex X enabled disabled)
-		-Dx11-backend=$(usex x11-backend enabled disabled)
 	)
 
 	meson_src_configure
