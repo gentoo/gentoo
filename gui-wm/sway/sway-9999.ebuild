@@ -44,8 +44,8 @@ if [[ ${PV} == 9999 ]]; then
 	DEPEND+="~gui-libs/wlroots-9999:=[X=]"
 else
 	DEPEND+="
-		>=gui-libs/wlroots-0.14:=[X=]
-		<gui-libs/wlroots-0.15:=[X=]
+		>=gui-libs/wlroots-0.15:=[X=]
+		<gui-libs/wlroots-0.16:=[X=]
 	"
 fi
 RDEPEND="
@@ -54,7 +54,7 @@ RDEPEND="
 "
 BDEPEND="
 	>=dev-libs/wayland-protocols-1.14
-	>=dev-util/meson-0.53.0
+	>=dev-util/meson-0.59.0
 	virtual/pkgconfig
 "
 if [[ ${PV} == 9999 ]]; then
@@ -63,34 +63,20 @@ else
 	BDEPEND+="man? ( >=app-text/scdoc-1.9.3 )"
 fi
 
-src_prepare() {
-	default
-
-	use swaybar || sed -e "s/subdir('swaybar')//g" -e "/sway-bar.[0-9].scd/d" \
-		-e "/completions\/[a-z]\+\/_\?swaybar/d" -i meson.build || die
-	use swaymsg || sed -e "s/subdir('swaymsg')//g" -e "/swaymsg.[0-9].scd/d" \
-		-e "/completions\/[a-z]\+\/_\?swaymsg/d" -i meson.build || die
-	use swaynag || sed -e "s/subdir('swaynag')//g" -e "/swaynag.[0-9].scd/d" \
-		-e "/completions\/[a-z]\+\/_\?swaynag/d" -i meson.build || die
-}
-
 src_configure() {
 	local emesonargs=(
-		-Dman-pages=$(usex man enabled disabled)
-		-Dtray=$(usex tray enabled disabled)
-		-Dxwayland=$(usex X enabled disabled)
+		$(meson_feature man man-pages)
+		$(meson_feature tray)
+		$(meson_feature X xwayland)
+		$(meson_feature swaybar gdk-pixbuf)
+		$(meson_use swaynag)
+		$(meson_use swaybar)
 		$(meson_use wallpapers default-wallpaper)
 		-Dfish-completions=true
 		-Dzsh-completions=true
 		-Dbash-completions=true
 		-Dwerror=false
 	)
-
-	if use swaybar; then
-		emesonargs+=( -Dgdk-pixbuf=enabled )
-	else
-		emesonargs+=( -Dgdk-pixbuf=disabled )
-	fi
 
 	meson_src_configure
 }
