@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alex Fan <alexfanqi@yahoo.com> (2021-10-11)
+# sci-libs/sundials fails several tests #817680
+sci-mathematics/octave sundials
+
 # Alex Fan <alexfanqi@yahoo.com> (2021-09-27)
 # depends on mysql
 kde-apps/akonadi mysql
