@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="read a POD document as a series of trivial events"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	virtual/perl-Carp
