@@ -3,14 +3,13 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-DISTUTILS_USE_SETUPTOOLS=bdepend
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="LHA archive support for Python"
 HOMEPAGE="https://fengestad.no/python-lhafile/"
 SRC_URI="https://github.com/FrodeSolheim/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
