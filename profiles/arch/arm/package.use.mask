@@ -498,3 +498,7 @@ dev-qt/qtscript -jit
 
 # missing keywords
 media-plugins/gst-plugins-meta aac dts dv lame libvisual modplug vcd wavpack
+
+# Andrew Udvare <audvare@gmail.com) (2021-10-13)
+# missing stable for dev-libs/hidapi
+media-libs/libsdl2 hidapi

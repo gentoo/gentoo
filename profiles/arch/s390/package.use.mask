@@ -80,3 +80,7 @@ dev-libs/boost mpi
 >=dev-db/mysql-5.5 tcmalloc
 >=dev-db/mariadb-5.5 tcmalloc
 >=dev-db/percona-server-5.5 tcmalloc
+
+# Andrew Udvare <audvare@gmail.com> (2021-10-13)
+# missing keyword for dev-libs/hidapi
+media-libs/libsdl2 hidapi

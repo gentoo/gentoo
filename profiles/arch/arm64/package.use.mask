@@ -424,3 +424,7 @@ sci-libs/linux-gpib firmware
 # Mask flags of calligra and dependencies due to lack of keywords
 app-office/calligra spacenav
 media-gfx/pstoedit emf
+
+# Andrew Udvare <audvare@gmail.com> (2021-10-13)
+# missing stable for dev-libs/hidapi
+media-libs/libsdl2 hidapi
