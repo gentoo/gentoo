@@ -210,6 +210,8 @@ BDEPEND="test? (
 	app-i18n/yaskkserv
 )"
 
+QA_FLAGS_IGNORED=".*"
+
 src_prepare() {
 	default
 
