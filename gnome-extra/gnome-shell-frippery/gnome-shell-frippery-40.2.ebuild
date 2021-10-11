@@ -16,8 +16,10 @@ RDEPEND="
 	app-eselect/eselect-gnome-shell-extensions
 	>=dev-libs/gjs-1.29
 	dev-libs/gobject-introspection:=
+	gui-libs/gtk:4[introspection]
 	gnome-base/gnome-menus:3[introspection]
-	>=gnome-base/gnome-shell-3.38
+	=x11-wm/mutter-$(ver_cut 1)*[introspection]
+	=gnome-base/gnome-shell-$(ver_cut 1)*
 	media-libs/clutter:1.0[introspection]
 	x11-libs/pango[introspection]
 "
