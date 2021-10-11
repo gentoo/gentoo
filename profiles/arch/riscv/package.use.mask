@@ -26,6 +26,7 @@ sys-cluster/ceph pmdk
 # Sam James <sam@gentoo.org> (2021-09-12)
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # dev-ruby/asciidoctor isn't keyworded here
+app-admin/keepassxc doc
 dev-libs/nanomsg doc
 dev-util/ccache doc
 net-misc/chrony html
