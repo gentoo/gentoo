@@ -12,7 +12,7 @@ HOMEPAGE="http://sdl.perl.org/ http://search.cpan.org/dist/SDL/ https://github.c
 
 LICENSE="GPL-2 OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="amd64 ~hppa ~x86"
 
 RDEPEND="
 	>=dev-perl/Alien-SDL-1.446
