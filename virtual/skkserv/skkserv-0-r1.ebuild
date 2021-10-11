@@ -14,4 +14,5 @@ RDEPEND="|| (
 		app-i18n/mecab-skkserv
 		app-i18n/multiskkserv
 		app-i18n/yaskkserv
+		app-i18n/yaskkserv2
 	)"
