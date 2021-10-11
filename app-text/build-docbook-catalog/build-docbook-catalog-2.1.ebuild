@@ -34,6 +34,6 @@ pkg_postinst() {
 	# New version -> regen files
 	# See bug #816303 for rationale behind die
 	# create directory if needed
-	mkdir -p /run/lock
+	mkdir -p "${EROOT}"/run/lock
 	build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
 }
