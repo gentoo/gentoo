@@ -9,7 +9,7 @@ DESCRIPTION="Repackage the OCaml compiler libs so they do not expose everything 
 HOMEPAGE="https://github.com/janestreet/ocaml-compiler-libs"
 SRC_URI="https://github.com/janestreet/ocaml-compiler-libs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Apache-2.0"
+LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 IUSE="+ocamlopt"
