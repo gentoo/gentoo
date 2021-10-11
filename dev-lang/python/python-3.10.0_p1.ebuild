@@ -15,7 +15,7 @@ PATCHSET="python-gentoo-patches-${MY_PV}"
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="https://www.python.org/"
 SRC_URI="https://www.python.org/ftp/python/${PV%%_*}/${MY_P}.tar.xz
-	https://dev.gentoo.org/~sam/distfiles/dev-lang/python/${PATCHSET}.tar.xz
+	https://dev.gentoo.org/~floppym/python/${PATCHSET}.tar.xz
 	verify-sig? (
 		https://www.python.org/ftp/python/${PV%%_*}/${MY_P}.tar.xz.asc
 	)"
