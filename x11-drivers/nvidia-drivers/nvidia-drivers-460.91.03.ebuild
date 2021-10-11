@@ -95,6 +95,8 @@ pkg_setup() {
 	Cannot be directly selected in the kernel's menuconfig, so enable
 	options such as CONFIG_DRM_FBDEV_EMULATION instead."
 
+	use amd64 && kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
+
 	BUILD_PARAMS='NV_VERBOSE=1 IGNORE_CC_MISMATCH=yes SYSSRC="${KV_DIR}" SYSOUT="${KV_OUT_DIR}"'
 	BUILD_TARGETS="modules" # defaults' clean sometimes deletes modules
 	MODULE_NAMES="
