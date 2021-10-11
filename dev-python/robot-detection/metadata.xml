@@ -4,6 +4,7 @@
 	<maintainer type="person">
 		<email>hanno@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">robot-detection</remote-id>
 		<remote-id type="github">rory/robot-detection</remote-id>
