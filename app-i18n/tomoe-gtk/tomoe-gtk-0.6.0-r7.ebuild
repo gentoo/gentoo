@@ -1,7 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
+
+inherit autotools
 
 DESCRIPTION="Tomoe GTK+ interface widget library"
 HOMEPAGE="http://tomoe.osdn.jp/"
@@ -19,6 +21,15 @@ BDEPEND="dev-util/glib-utils
 	dev-util/gtk-doc-am
 	sys-devel/gettext
 	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${PN}-math.patch )
+
+AT_M4DIR="macros"
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
