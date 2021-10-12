@@ -16,6 +16,7 @@
   </longdescription>
   <use>
     <flag name="hypre">Build with <pkg>sci-libs/hypre</pkg> conditioners</flag>
+    <flag name="int64">Use index size of 64 rather than 32 bits</flag>
     <flag name="sparse">Enable support for <pkg>sci-libs/klu</pkg> sparse solver</flag>
     <flag name="superlumt">Build with <pkg>sci-libs/superlu_mt</pkg></flag>
   </use>
