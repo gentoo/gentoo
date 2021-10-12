@@ -21,9 +21,6 @@ HOMEPAGE="https://www.qutebrowser.org/"
 LICENSE="GPL-3+"
 SLOT="0"
 IUSE="+adblock widevine"
-# Tests depend (misc/requirements/requirements-tests.txt) on plugins
-# we don't have packages for.
-RESTRICT="test"
 
 RDEPEND="
 	dev-qt/qtcore:5[icu]
@@ -42,7 +39,22 @@ RDEPEND="
 		adblock? ( dev-python/adblock[${PYTHON_USEDEP}] )
 	')
 	widevine? ( www-plugins/chrome-binary-plugins )"
-BDEPEND="app-text/asciidoc"
+BDEPEND="
+	app-text/asciidoc
+	$(python_gen_cond_dep '
+		test? (
+			dev-python/beautifulsoup4[${PYTHON_USEDEP}]
+			dev-python/cheroot[${PYTHON_USEDEP}]
+			dev-python/flask[${PYTHON_USEDEP}]
+			dev-python/hypothesis[${PYTHON_USEDEP}]
+			dev-python/pytest-bdd[${PYTHON_USEDEP}]
+			dev-python/pytest-mock[${PYTHON_USEDEP}]
+			dev-python/pytest-qt[${PYTHON_USEDEP}]
+			dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
+			dev-python/pytest-xvfb[${PYTHON_USEDEP}]
+			dev-python/tldextract[${PYTHON_USEDEP}]
+		)
+	')"
 
 distutils_enable_tests pytest
 
@@ -57,6 +69,34 @@ python_prepare_all() {
 	sed -i '/setup.py/d' misc/Makefile || die
 
 	[[ ${PV} != 9999 ]] || ${EPYTHON} scripts/asciidoc2html.py || die
+
+	# these plugins/tests are unnecessary here and have extra dependencies
+	sed -e '/pytest-benchmark/d;s/--benchmark[^ ]*//' \
+		-e '/pytest-instafail/d;s/--instafail//' \
+		-i pytest.ini || die
+	[[ ${PV} == 9999 ]] || rm tests/unit/scripts/test_problemmatchers.py || die
+	[[ ${PV} != 9999 ]] || rm tests/unit/scripts/test_run_vulture.py || die
+}
+
+python_test() {
+	local EPYTEST_DESELECT=(
+		# end2end and other IPC tests are broken with "Name error" if
+		# socket path is over 104 characters (=124 in /var/tmp/portage)
+		# https://github.com/qutebrowser/qutebrowser/issues/888 (not just OSX)
+		tests/end2end
+		tests/unit/misc/test_ipc.py
+		# tests that don't know about our newer qtwebengine
+		tests/unit/browser/webengine/test_webenginedownloads.py::TestDataUrlWorkaround
+		tests/unit/utils/test_version.py::TestChromiumVersion
+		# needs qtwebkit and isn't skipped by default
+		tests/unit/config/test_websettings.py::test_config_init
+		# may misbehave depending on installed old python versions
+		tests/unit/misc/test_checkpyver.py::test_old_python
+	)
+	use widevine && EPYTEST_DESELECT+=( tests/unit/config/test_qtargs.py )
+
+	# skip benchmarks (incl. _tree), and warning tests broken by -Wdefault
+	epytest -k 'not _bench and not _matches_tree and not _warning'
 }
 
 python_install_all() {
