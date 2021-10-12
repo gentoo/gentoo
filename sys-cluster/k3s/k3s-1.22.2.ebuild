@@ -8,7 +8,7 @@ DESCRIPTION="Lightweight Kubernetes"
 HOMEPAGE="https://k3s.io"
 K3S_RUNC_VERSION=v1.0.1
 K3S_ROOT_VERSION=0.9.1
-K3S_TRAEFIK_VERSION=9.18.2
+K3S_TRAEFIK_VERSION=10.3.0
 K3S_CNIPLUGINS_VERSION=0.9.1
 CONFIG_CHECK="~BRIDGE_NETFILTER ~CFS_BANDWIDTH ~CGROUP_DEVICE ~CGROUP_PERF ~CGROUP_PIDS ~IP_VS ~MEMCG ~NETFILTER_XT_MATCH_COMMENT ~OVERLAY_FS ~VLAN_8021Q ~VXLAN"
 
@@ -1652,7 +1652,9 @@ src_prepare() {
 	# Disable download for files fetched via SRC_URI.
 	sed -e 's:^[[:space:]]*curl:#\0:' \
 		-e 's:^[[:space:]]*git:#\0:' \
-		-e 's:^rm -rf ${RUNC_DIR}:#\0:' \
+		-e 's:^rm -rf \${CHARTS_DIR}:#\0:' \
+		-e 's:^rm -rf \${RUNC_DIR}:#\0:' \
+		-e 's:yq e :yq -r :' \
 		-e "s:^setup_tmp\$:TMP_DIR=${S}/build/static/charts:" \
 		-i scripts/download || die
 	sed -e '/scripts\/build-upload/d' -i scripts/package-cli || die
@@ -1669,7 +1671,7 @@ src_prepare() {
 
 src_compile() {
 	mkdir -p build/data || die
-	./scripts/download || die
+	"${BASH}" -ex ./scripts/download || die
 	./scripts/build || die
 	./scripts/package-cli || die
 }
