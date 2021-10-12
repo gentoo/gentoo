@@ -20,7 +20,7 @@ HOMEPAGE="https://www.qutebrowser.org/"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="+adblock"
+IUSE="+adblock widevine"
 # Tests depend (misc/requirements/requirements-tests.txt) on plugins
 # we don't have packages for.
 RESTRICT="test"
@@ -40,13 +40,19 @@ RDEPEND="
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 		dev-python/zipp[${PYTHON_USEDEP}]
 		adblock? ( dev-python/adblock[${PYTHON_USEDEP}] )
-	')"
+	')
+	widevine? ( www-plugins/chrome-binary-plugins )"
 BDEPEND="app-text/asciidoc"
 
 distutils_enable_tests pytest
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
+
+	if use widevine; then
+		sed "/yield from _qtwebengine_settings_args/a\    yield '--widevine-path=${EPREFIX}/usr/$(get_libdir)/chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so'" \
+			-i ${PN}/config/qtargs.py || die
+	fi
 
 	sed -i '/setup.py/d' misc/Makefile || die
 

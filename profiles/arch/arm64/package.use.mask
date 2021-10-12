@@ -299,6 +299,7 @@ net-fs/samba dmapi
 sci-libs/gdal armadillo netcdf
 sys-fs/btrfs-progs reiserfs
 www-client/chromium widevine
+www-client/qutebrowser widevine
 www-client/vivaldi widevine
 www-client/vivaldi-snapshot widevine
 
