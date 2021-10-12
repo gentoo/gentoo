@@ -24,8 +24,6 @@
 	<use>
 		<flag name="adblock">Enable Brave's ABP-style adblocker library
 			for improved adblocking</flag>
-		<flag name="scripts">Installs userscripts from the misc/userscripts
-			directory to /usr/share/qutebrowser/userscripts.</flag>
 		<flag name="widevine">Unsupported closed-source DRM capability
 			(required by Netflix VOD)</flag>
 	</use>

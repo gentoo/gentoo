@@ -3,92 +3,120 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
-DISTUTILS_USE_SETUPTOOLS="rdepend"
+DISTUTILS_SINGLE_IMPL=1
+PYTHON_COMPAT=( python3_{8..10} )
+inherit distutils-r1 optfeature xdg
 
-inherit desktop distutils-r1 git-r3 optfeature xdg
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/qutebrowser/qutebrowser.git"
+else
+	SRC_URI="https://github.com/qutebrowser/qutebrowser/releases/download/v${PV}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~x86"
+fi
 
 DESCRIPTION="Keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine"
-HOMEPAGE="https://www.qutebrowser.org/ https://github.com/qutebrowser/qutebrowser"
-EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
+HOMEPAGE="https://www.qutebrowser.org/"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="scripts test"
+IUSE="+adblock widevine"
 
-BDEPEND="
-	app-text/asciidoc"
 RDEPEND="
-	dev-python/attrs[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/cssutils[${PYTHON_USEDEP}]
+	dev-qt/qtcore:5[icu]
+	dev-qt/qtgui:5[png]
 	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' python3_8)
-	dev-python/jinja[${PYTHON_USEDEP}]
-	dev-python/markupsafe[${PYTHON_USEDEP}]
-	dev-python/pygments[${PYTHON_USEDEP}]
-	dev-python/pypeg2[${PYTHON_USEDEP}]
-	dev-python/PyQt5[${PYTHON_USEDEP},dbus,declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
-	dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
-	>=dev-python/pyyaml-5.4.1[${PYTHON_USEDEP},libyaml(+)]
-	dev-python/typing-extensions[${PYTHON_USEDEP}]
-	dev-python/zipp[${PYTHON_USEDEP}]
-"
+	$(python_gen_cond_dep '
+		>=dev-python/colorama-0.4.4[${PYTHON_USEDEP}]
+		>=dev-python/jinja-3.0.2[${PYTHON_USEDEP}]
+		>=dev-python/markupsafe-2.0.1[${PYTHON_USEDEP}]
+		dev-python/pygments[${PYTHON_USEDEP}]
+		dev-python/PyQt5[${PYTHON_USEDEP},dbus,declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
+		dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
+		>=dev-python/pyyaml-5.4.1[${PYTHON_USEDEP},libyaml(+)]
+		>=dev-python/typing-extensions-3.10.0.2[${PYTHON_USEDEP}]
+		>=dev-python/zipp-3.6.0[${PYTHON_USEDEP}]
+		adblock? ( dev-python/adblock[${PYTHON_USEDEP}] )
+	')
+	widevine? ( www-plugins/chrome-binary-plugins )"
+BDEPEND="
+	app-text/asciidoc
+	$(python_gen_cond_dep '
+		test? (
+			dev-python/beautifulsoup4[${PYTHON_USEDEP}]
+			dev-python/cheroot[${PYTHON_USEDEP}]
+			dev-python/flask[${PYTHON_USEDEP}]
+			dev-python/hypothesis[${PYTHON_USEDEP}]
+			dev-python/pytest-bdd[${PYTHON_USEDEP}]
+			dev-python/pytest-mock[${PYTHON_USEDEP}]
+			dev-python/pytest-qt[${PYTHON_USEDEP}]
+			dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
+			dev-python/pytest-xvfb[${PYTHON_USEDEP}]
+			dev-python/tldextract[${PYTHON_USEDEP}]
+		)
+	')"
 
-distutils_enable_tests setup.py
+distutils_enable_tests pytest
 
-# Tests restricted as the deplist (misc/requirements/requirements-tests.txt)
-# isn't complete and X11 is required in order to start up qutebrowser.
-RESTRICT="test"
+python_prepare_all() {
+	distutils-r1_python_prepare_all
 
-python_compile() {
-	${EPYTHON} scripts/asciidoc2html.py || die
-	distutils-r1_python_compile
+	if use widevine; then
+		sed "/yield from _qtwebengine_settings_args/a\    yield '--widevine-path=${EPREFIX}/usr/$(get_libdir)/chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so'" \
+			-i ${PN}/config/qtargs.py || die
+	fi
+
+	sed -i '/setup.py/d' misc/Makefile || die
+
+	[[ ${PV} != 9999 ]] || ${EPYTHON} scripts/asciidoc2html.py || die
+
+	# these plugins/tests are unnecessary here and have extra dependencies
+	sed -e '/pytest-benchmark/d;s/--benchmark[^ ]*//' \
+		-e '/pytest-instafail/d;s/--instafail//' \
+		-i pytest.ini || die
+	[[ ${PV} == 9999 ]] || rm tests/unit/scripts/test_problemmatchers.py || die
+	[[ ${PV} != 9999 ]] || rm tests/unit/scripts/test_run_vulture.py || die
 }
 
-python_compile_all() {
-	a2x -f manpage doc/${PN}.1.asciidoc || die "Failed generating man page"
+python_test() {
+	local EPYTEST_DESELECT=(
+		# end2end and other IPC tests are broken with "Name error" if
+		# socket path is over 104 characters (=124 in /var/tmp/portage)
+		# https://github.com/qutebrowser/qutebrowser/issues/888 (not just OSX)
+		tests/end2end
+		tests/unit/misc/test_ipc.py
+		# tests that don't know about our newer qtwebengine
+		tests/unit/browser/webengine/test_webenginedownloads.py::TestDataUrlWorkaround
+		tests/unit/utils/test_version.py::TestChromiumVersion
+		# needs qtwebkit and isn't skipped by default
+		tests/unit/config/test_websettings.py::test_config_init
+		# may misbehave depending on installed old python versions
+		tests/unit/misc/test_checkpyver.py::test_old_python
+	)
+	use widevine && EPYTEST_DESELECT+=( tests/unit/config/test_qtargs.py )
+
+	# skip benchmarks (incl. _tree), and warning tests broken by -Wdefault
+	epytest -k 'not _bench and not _matches_tree and not _warning'
 }
 
 python_install_all() {
-	doman doc/${PN}.1
-	domenu misc/org.${PN}.${PN}.desktop
-	doicon -s scalable icons/${PN}.svg
+	emake -f misc/Makefile DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
 
-	if use scripts; then
-		insinto /usr/share/qutebrowser/userscripts/
-		doins misc/userscripts/README.md
-		exeinto /usr/share/qutebrowser/userscripts/
-		doexe misc/userscripts/add-nextcloud-bookmarks \
-		      misc/userscripts/add-nextcloud-cookbook \
-		      misc/userscripts/cast \
-		      misc/userscripts/dmenu_qutebrowser \
-		      misc/userscripts/format_json \
-		      misc/userscripts/getbib \
-		      misc/userscripts/kodi \
-		      misc/userscripts/open_download \
-		      misc/userscripts/openfeeds \
-		      misc/userscripts/password_fill \
-		      misc/userscripts/qr \
-		      misc/userscripts/qute-bitwarden \
-		      misc/userscripts/qutedmenu \
-		      misc/userscripts/qute-keepass \
-		      misc/userscripts/qute-keepassxc \
-		      misc/userscripts/qute-lastpass \
-		      misc/userscripts/qute-pass \
-		      misc/userscripts/readability \
-		      misc/userscripts/readability-js \
-		      misc/userscripts/ripbang \
-		      misc/userscripts/rss \
-		      misc/userscripts/taskadd \
-		      misc/userscripts/tor_identity \
-		      misc/userscripts/view_in_mpv
-	fi
+	rm "${ED}"/usr/share/${PN}/scripts/{mkvenv,utils}.py || die
+	fperms -x /usr/share/${PN}/{scripts/cycle-inputs.js,userscripts/README.md}
+	python_fix_shebang "${ED}"/usr/share/${PN}
 
-	distutils-r1_python_install_all
+	einstalldocs
 }
 
 pkg_postinst() {
 	xdg_pkg_postinst
 
 	optfeature "PDF display support" www-plugins/pdfjs
+
+	if [[ ! ${REPLACING_VERSIONS} ]]; then
+		elog "Note that optional scripts in ${EROOT}/usr/share/${PN}/{user,}scripts"
+		elog "have additional dependencies not covered by this ebuild, for example"
+		elog "view_in_mpv needs media-video/mpv setup to use yt-dlp or youtube-dl."
+	fi
 }
