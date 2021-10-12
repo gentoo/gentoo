@@ -291,13 +291,6 @@ games-emulation/caps
 # Removal on 2021-10-12. bug #776904
 media-libs/sdl-terminal
 
-# Ionen Wolkens <ionen@gentoo.org> (2021-09-12)
-# Stuck on x86 / amd64-multilib, no upstream, code relies on
-# several implicit constructs and undefined behavior, ebuild
-# semi-broken and runtime seems broken even if built.
-# Removal on 2021-10-12. bug #701414, bug #739188.
-games-emulation/nestra
-
 # Anna Vyalkova <cyber+gentoo@sysrq.in> (2021-09-07)
 # Mask backwards-incompatible version to avoid autodeletion of previous one.
 # Data migration is not supported upstream and can't be done automatically.
