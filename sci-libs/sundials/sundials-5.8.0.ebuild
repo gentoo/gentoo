@@ -17,7 +17,7 @@ SRC_URI="https://github.com/LLNL/${PN}/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples fortran hypre lapack mpi openmp sparse +static-libs superlumt threads"
+IUSE="doc examples fortran hypre +int64 lapack mpi openmp sparse +static-libs superlumt threads"
 REQUIRED_USE="
 	fortran? ( static-libs )
 	hypre? ( mpi )
@@ -31,7 +31,7 @@ RDEPEND="
 		virtual/mpi[fortran?]
 	)
 	sparse? ( sci-libs/klu )
-	superlumt? ( sci-libs/superlu_mt:= )
+	superlumt? ( sci-libs/superlu_mt:=[int64=] )
 "
 DEPEND="${RDEPEND}"
 
@@ -69,6 +69,7 @@ src_configure() {
 		-DENABLE_SUPERLUMT=$(usex superlumt)
 		-DEXAMPLES_INSTALL=ON
 		-DEXAMPLES_INSTALL_PATH="/usr/share/doc/${PF}/examples"
+		-DSUNDIALS_INDEX_SIZE="$(usex int64 64 32)"
 		-DSUPERLUMT_INCLUDE_DIR="${EPREFIX}/usr/include/superlu_mt"
 		-DSUPERLUMT_LIBRARY="-lsuperlu_mt"
 		-DUSE_GENERIC_MATH=ON
