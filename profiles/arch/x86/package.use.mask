@@ -307,6 +307,7 @@ dev-db/mariadb -jdbc
 # Mike Gilbert <floppym@gentoo.org> (2016-03-03)
 # chrome-binary-plugins dropped x86 support
 www-client/chromium widevine
+www-client/qutebrowser widevine
 www-client/vivaldi widevine
 www-client/vivaldi-snapshot widevine
 
