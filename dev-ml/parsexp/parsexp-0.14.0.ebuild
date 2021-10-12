@@ -9,7 +9,7 @@ DESCRIPTION="S-expression parsing library"
 HOMEPAGE="https://github.com/janestreet/parsexp"
 SRC_URI="https://github.com/janestreet/parsexp/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Apache-2.0"
+LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 IUSE="+ocamlopt"
