@@ -43,10 +43,6 @@ media-video/obs-studio browser
 x11-base/xwayland video_cards_nvidia
 x11-wm/mutter video_cards_nvidia
 
-# Stefan Strogin <steils@gentoo.org> (2021-06-27)
-# Requires dev-python/adblock which is not keyworded on x86 yet
-www-client/qutebrowser adblock
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-04-25)
 # Depends on either unkeyworded dev-java/openjdk:11
 # or unavailable >=dev-java/icedtea-4, bug #785640
