@@ -1465,16 +1465,17 @@ src_unpack() {
 	cp "${DISTDIR}/k3s-cni-plugins-${K3S_CNIPLUGINS_VERSION}.tar.gz" cache/ || die
 	mv "${WORKDIR}/bin/"* "${S}/bin/" || die
 	mv "${WORKDIR}/etc" "${S}/etc" || die
-
-	local RUNC_DIR=build/src/github.com/opencontainers/runc
-	mkdir -p "${RUNC_DIR}" || die
-	tar -x --strip-components=1 -f "${DISTDIR}/k3s-runc-${K3S_RUNC_VERSION}.tar.gz" -C "${RUNC_DIR}" || die
-	sed -e 's|mod=vendor|mod=readonly|g' -i "${RUNC_DIR}/Makefile" || die
 }
 
 src_prepare() {
 	local filename pattern replacement
 	default
+
+	local RUNC_DIR=build/src/github.com/opencontainers/runc
+	mkdir -p "${RUNC_DIR}" || die
+	tar -x --strip-components=1 -f "${DISTDIR}/k3s-runc-${K3S_RUNC_VERSION}.tar.gz" -C "${RUNC_DIR}" || die
+	sed -e 's|mod=vendor|mod=readonly|g' -i "${RUNC_DIR}/Makefile" || die
+
 	# Disable download for files fetched via SRC_URI.
 	sed -e 's:^curl:#\0:' \
 		-e 's:^git:#\0:' \
