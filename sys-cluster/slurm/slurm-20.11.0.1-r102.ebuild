@@ -30,6 +30,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug hdf5 html ipmi json lua multiple-slurmd +munge mysql netloc numa ofed pam perl slurmdbd static-libs ucx torque X"
 
+# See bug #813924 for hdf5lib < dep, needs proper fix
 COMMON_DEPEND="
 	!sys-cluster/torque
 	!net-analyzer/slurm
@@ -45,7 +46,7 @@ COMMON_DEPEND="
 	ipmi? ( sys-libs/freeipmi )
 	json? ( dev-libs/json-c:= )
 	amd64? ( netloc? ( >=sys-apps/hwloc-2.1.0[netloc] ) )
-	hdf5? ( sci-libs/hdf5:= )
+	hdf5? ( <sci-libs/hdf5-1.12:= )
 	numa? ( sys-process/numactl )
 	ofed? ( sys-fabric/ofed )
 	ucx? ( sys-cluster/ucx )
