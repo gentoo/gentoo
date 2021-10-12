@@ -17,6 +17,7 @@
 		<email>steils@gentoo.org</email>
 		<name>Stefan Strogin</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">qutebrowser/qutebrowser</remote-id>
 	</upstream>
