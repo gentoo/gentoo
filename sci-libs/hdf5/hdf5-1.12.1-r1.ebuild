@@ -67,6 +67,10 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
+		# Workaround needed to allow build with USE=fortran when an older
+		# version is installed. See bug #808633 and
+		# https://github.com/HDFGroup/hdf5/issues/1027 upstream.
+		-DCMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE=ON
 		-DBUILD_STATIC_LIBS=OFF
 		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
 		-DHDF5_BUILD_EXAMPLES=OFF
