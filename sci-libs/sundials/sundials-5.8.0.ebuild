@@ -11,7 +11,7 @@ FORTRAN_STANDARD="77 90 2003"
 inherit cmake flag-o-matic fortran-2 toolchain-funcs
 
 DESCRIPTION="Suite of nonlinear solvers"
-HOMEPAGE="https://computation.llnl.gov/projects/sundials"
+HOMEPAGE="https://computing.llnl.gov/projects/sundials"
 SRC_URI="https://github.com/LLNL/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
