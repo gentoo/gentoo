@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 sys-libs/uclibc-ng
@@ -35,7 +35,6 @@ games-arcade/barbarian-bin
 games-arcade/dynamitejack
 games-arcade/jardinains
 games-arcade/thinktanks-demo
-games-emulation/nestra
 games-emulation/zinc
 games-emulation/zsnes
 games-fps/etqw-demo

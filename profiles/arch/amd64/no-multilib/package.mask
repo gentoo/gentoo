@@ -61,7 +61,6 @@ games-arcade/jardinains
 games-arcade/thinktanks-demo
 games-emulation/caps
 games-emulation/gens
-games-emulation/nestra
 <games-emulation/pcsx2-9999
 games-emulation/vgba
 games-emulation/zinc
