@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="test"
 
 RDEPEND="
-	>=dev-cpp/nlohmann_json-3.7:=
+	<dev-cpp/nlohmann_json-3.10.3:=
 	>=dev-db/sqlite-3.14:=
 	>=dev-libs/libfmt-6.2:=
 	dev-libs/protobuf:=
