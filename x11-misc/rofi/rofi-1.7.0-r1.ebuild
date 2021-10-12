@@ -31,6 +31,7 @@ RDEPEND="
 	x11-libs/xcb-util
 	x11-libs/xcb-util-wm
 	x11-libs/xcb-util-xrm
+	x11-misc/xkeyboard-config
 "
 DEPEND="
 	${RDEPEND}
