@@ -76,6 +76,8 @@ src_prepare() {
 	# remove GIT dependency
 	sed -e "/find_package(Git/d" -i cmake/Dependencies.cmake || die
 
+	eapply "${FILESDIR}/${PN}-4.3.0-remove-failing-tests.patch"
+
 	# use python interpreter specifyied by python-any-r1
 	sed -e "/COMMAND ..\/common\/rocsparse_gentest.py/s,COMMAND ,COMMAND ${EPYTHON} ," -i clients/tests/CMakeLists.txt || die
 

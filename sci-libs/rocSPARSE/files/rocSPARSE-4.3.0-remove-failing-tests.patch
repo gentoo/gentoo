@@ -1,0 +1,45 @@
+test_csricsv.yaml and test_csrilusv.yaml test suite contains no actual tests parameters,
+which causes gtest classify it as UninstantiatedParameterized. Remove those two tests.
+
+See https://github.com/ROCmSoftwarePlatform/rocSPARSE/issues/227
+--- orig/clients/tests/CMakeLists.txt	2021-10-12 19:12:57.975041885 +0800
++++ rocSPARSE-rocm-4.3.0/clients/tests/CMakeLists.txt	2021-10-12 19:13:18.694959700 +0800
+@@ -103,8 +103,6 @@ set(ROCSPARSE_TEST_SOURCES
+   test_csrsort.cpp
+   test_cscsort.cpp
+   test_coosort.cpp
+-  test_csricsv.cpp
+-  test_csrilusv.cpp
+   test_nnz.cpp
+   test_dense2csr.cpp
+   test_dense2coo.cpp
+@@ -195,8 +193,6 @@ set(ROCSPARSE_CLIENTS_TESTINGS
+ ../testings/testing_csrsort.cpp
+ ../testings/testing_cscsort.cpp
+ ../testings/testing_coosort.cpp
+-../testings/testing_csricsv.cpp
+-../testings/testing_csrilusv.cpp
+ ../testings/testing_nnz.cpp
+ ../testings/testing_dense2csr.cpp
+ ../testings/testing_dense2coo.cpp
+@@ -265,7 +261,7 @@ set_target_properties(rocsparse-test PRO
+ set(ROCSPARSE_TEST_DATA "${PROJECT_BINARY_DIR}/staging/rocsparse_test.data")
+ add_custom_command(OUTPUT "${ROCSPARSE_TEST_DATA}"
+                    COMMAND ../common/rocsparse_gentest.py -I ../include rocsparse_test.yaml -o "${ROCSPARSE_TEST_DATA}"
+-                   DEPENDS ../common/rocsparse_gentest.py rocsparse_test.yaml ../include/rocsparse_common.yaml known_bugs.yaml test_axpby.yaml test_axpyi.yaml test_doti.yaml test_dotci.yaml test_gather.yaml test_scatter.yaml test_gthr.yaml test_gthrz.yaml test_rot.yaml test_roti.yaml test_sctr.yaml test_bsrmv.yaml test_bsrsv.yaml test_coomv.yaml test_csrmv.yaml test_csrmv_managed.yaml test_csrsv.yaml test_ellmv.yaml test_hybmv.yaml test_gebsrmv.yaml test_bsrmm.yaml test_csrmm.yaml test_csrsm.yaml test_gemmi.yaml test_csrgeam.yaml test_csrgemm.yaml test_bsric0.yaml test_bsrilu0.yaml test_csric0.yaml test_csrilu0.yaml test_csr2coo.yaml test_csr2csc.yaml test_gebsr2gebsc.yaml test_csr2ell.yaml test_csr2hyb.yaml test_bsr2csr.yaml test_csr2bsr.yaml test_csr2gebsr.yaml test_coo2csr.yaml test_ell2csr.yaml test_hyb2csr.yaml test_identity.yaml test_csrsort.yaml test_cscsort.yaml test_coosort.yaml test_csricsv.yaml test_csrilusv.yaml test_nnz.yaml test_dense2csr.yaml test_dense2coo.yaml test_prune_dense2csr.yaml test_prune_dense2csr_by_percentage.yaml test_dense2csc.yaml test_csr2dense.yaml test_csc2dense.yaml test_coo2dense.yaml test_sparse_to_dense_coo.yaml test_sparse_to_dense_csr.yaml test_sparse_to_dense_csc.yaml test_dense_to_sparse_coo.yaml test_dense_to_sparse_csr.yaml test_dense_to_sparse_csc.yaml test_csr2csr_compress.yaml test_prune_csr2csr.yaml test_prune_csr2csr_by_percentage.yaml test_gebsr2gebsr.yaml test_spvec_descr.yaml test_spmat_descr.yaml test_dnvec_descr.yaml test_dnmat_descr.yaml test_spmv_coo.yaml test_spmv_coo_aos.yaml test_spmv_csr.yaml test_spmv_ell.yaml test_spmm_csr.yaml test_spmm_coo.yaml test_spvv.yaml test_spgemm_csr.yaml test_gebsrmm.yaml test_gemvi.yaml test_sddmm.yaml test_gtsv.yaml test_gtsv_no_pivot.yaml test_gtsv_no_pivot_strided_batch.yaml
++                   DEPENDS ../common/rocsparse_gentest.py rocsparse_test.yaml ../include/rocsparse_common.yaml known_bugs.yaml test_axpby.yaml test_axpyi.yaml test_doti.yaml test_dotci.yaml test_gather.yaml test_scatter.yaml test_gthr.yaml test_gthrz.yaml test_rot.yaml test_roti.yaml test_sctr.yaml test_bsrmv.yaml test_bsrsv.yaml test_coomv.yaml test_csrmv.yaml test_csrmv_managed.yaml test_csrsv.yaml test_ellmv.yaml test_hybmv.yaml test_gebsrmv.yaml test_bsrmm.yaml test_csrmm.yaml test_csrsm.yaml test_gemmi.yaml test_csrgeam.yaml test_csrgemm.yaml test_bsric0.yaml test_bsrilu0.yaml test_csric0.yaml test_csrilu0.yaml test_csr2coo.yaml test_csr2csc.yaml test_gebsr2gebsc.yaml test_csr2ell.yaml test_csr2hyb.yaml test_bsr2csr.yaml test_csr2bsr.yaml test_csr2gebsr.yaml test_coo2csr.yaml test_ell2csr.yaml test_hyb2csr.yaml test_identity.yaml test_csrsort.yaml test_cscsort.yaml test_coosort.yaml test_nnz.yaml test_dense2csr.yaml test_dense2coo.yaml test_prune_dense2csr.yaml test_prune_dense2csr_by_percentage.yaml test_dense2csc.yaml test_csr2dense.yaml test_csc2dense.yaml test_coo2dense.yaml test_sparse_to_dense_coo.yaml test_sparse_to_dense_csr.yaml test_sparse_to_dense_csc.yaml test_dense_to_sparse_coo.yaml test_dense_to_sparse_csr.yaml test_dense_to_sparse_csc.yaml test_csr2csr_compress.yaml test_prune_csr2csr.yaml test_prune_csr2csr_by_percentage.yaml test_gebsr2gebsr.yaml test_spvec_descr.yaml test_spmat_descr.yaml test_dnvec_descr.yaml test_dnmat_descr.yaml test_spmv_coo.yaml test_spmv_coo_aos.yaml test_spmv_csr.yaml test_spmv_ell.yaml test_spmm_csr.yaml test_spmm_coo.yaml test_spvv.yaml test_spgemm_csr.yaml test_gebsrmm.yaml test_gemvi.yaml test_sddmm.yaml test_gtsv.yaml test_gtsv_no_pivot.yaml test_gtsv_no_pivot_strided_batch.yaml
+                    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
+ add_custom_target(rocsparse-test-data
+                   DEPENDS "${ROCSPARSE_TEST_DATA}" )
+diff --color -uprN orig/clients/tests/rocsparse_test.yaml rocSPARSE-rocm-4.3.0/clients/tests/rocsparse_test.yaml
+--- orig/clients/tests/rocsparse_test.yaml	2021-10-12 19:12:57.975041885 +0800
++++ rocSPARSE-rocm-4.3.0/clients/tests/rocsparse_test.yaml	2021-10-12 19:13:32.046906724 +0800
+@@ -84,8 +84,6 @@ include: test_identity.yaml
+ include: test_csrsort.yaml
+ include: test_cscsort.yaml
+ include: test_coosort.yaml
+-include: test_csricsv.yaml
+-include: test_csrilusv.yaml
+ include: test_spvec_descr.yaml
+ include: test_spmat_descr.yaml
+ include: test_dnvec_descr.yaml
