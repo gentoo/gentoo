@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 optfeature xdg
 
 if [[ ${PV} == 9999 ]]; then
