@@ -9,8 +9,8 @@ MYPN=SuperLU_MT
 SOVERSION=$(get_major_version)
 
 DESCRIPTION="Multithreaded sparse LU factorization library"
-HOMEPAGE="http://crd.lbl.gov/~xiaoye/SuperLU/"
-SRC_URI="http://crd.lbl.gov/~xiaoye/SuperLU/${PN}_${PV}.tar.gz"
+HOMEPAGE="https://portal.nersc.gov/project/sparse/superlu/"
+SRC_URI="https://portal.nersc.gov/project/sparse/superlu/${PN}_${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${SOVERSION}"
