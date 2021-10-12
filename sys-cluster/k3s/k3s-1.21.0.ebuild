@@ -1974,6 +1974,7 @@ KEYWORDS="~amd64"
 IUSE="+kubectl-symlink rootless"
 REQUIRED_USE="|| ( amd64 )"
 DEPEND="
+	app-misc/yq
 	net-firewall/conntrack-tools
 	rootless? ( app-emulation/slirp4netns )
 "
