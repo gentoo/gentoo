@@ -26,7 +26,7 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-DOCS=( "README" "README.Android" "TODO" "syscalls.txt" )
+DOCS=( "README.md" "README.Android" "TODO" "syscalls.txt" )
 
 src_compile() {
 	export MAN_COMPRESS=0
