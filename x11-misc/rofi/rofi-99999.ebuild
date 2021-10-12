@@ -1,7 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit autotools git-r3 toolchain-funcs
 
 DESCRIPTION="A window switcher, run dialog and dmenu replacement"
@@ -11,13 +12,15 @@ EGIT_REPO_URI="https://github.com/davatorium/rofi"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="test windowmode"
+IUSE="+drun test +windowmode"
 RESTRICT="!test? ( test )"
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	dev-libs/glib:2
 	gnome-base/librsvg:2
 	media-libs/freetype
+	virtual/jpeg
 	x11-libs/cairo[X,xcb(+)]
 	x11-libs/libXft
 	x11-libs/libXinerama
@@ -32,25 +35,22 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
 	x11-base/xorg-proto
 	test? ( >=dev-libs/check-0.11 )
 "
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.15.12-Werror.patch
-	"${FILESDIR}"/${PN}-1.5.0-gtk-settings-test.patch
-)
 
 src_prepare() {
 	default
-
 	eautoreconf
 }
 
 src_configure() {
 	tc-export CC
 
-	econf \
-		$(use_enable test check) \
+	local myeconfargs=(
+		$(use_enable drun)
+		$(use_enable test check)
 		$(use_enable windowmode)
+	)
+	econf "${myeconfargs[@]}"
 }
