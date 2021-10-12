@@ -9,7 +9,7 @@ DESCRIPTION="color-coded graph of load averages over time"
 HOMEPAGE="https://www.daveltd.com/src/util/ttyload https://github.com/lindes/ttyload"
 SRC_URI="https://www.daveltd.com/src/util/${PN}/${P}.tar.bz2"
 
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 LICENSE="ISC"
 SLOT="0"
 
