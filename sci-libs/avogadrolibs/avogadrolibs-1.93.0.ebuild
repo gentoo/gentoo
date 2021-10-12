@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -62,6 +62,11 @@ src_unpack() {
 }
 
 src_configure() {
+	# Seems to be what upstream are using too. Apply the old hdf5lib workaround.
+	# https://github.com/OpenChemistry/avogadrolibs/commit/32e3dd8ce9f48f74e3960dc9afcc614496d87c7f
+	# bug #810505
+	append-cppflags -DH5_USE_110_API
+
 	# -DBUILD_STATIC_PLUGINS=$(usex static-plugins)
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
