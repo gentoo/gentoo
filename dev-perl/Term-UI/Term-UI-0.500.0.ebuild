@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="User interfaces via Term::ReadLine made easy"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	virtual/perl-Locale-Maketext-Simple
