@@ -50,7 +50,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.0.0-tinfo.patch"
-	"${FILESDIR}/${PN}-4.0.0.0-boost-1.76.patch"
 )
 
 S="${WORKDIR}/${P}/host"
