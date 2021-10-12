@@ -59,7 +59,6 @@ games-arcade/dynamitejack
 games-arcade/gish-demo
 games-arcade/jardinains
 games-arcade/thinktanks-demo
-games-emulation/caps
 games-emulation/gens
 <games-emulation/pcsx2-9999
 games-emulation/vgba
