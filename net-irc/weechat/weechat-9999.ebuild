@@ -23,7 +23,7 @@ LICENSE="GPL-3"
 SLOT="0/${PV}"
 
 NETWORKS="+irc"
-PLUGINS="+alias +buflist +charset +exec +fifo +fset +logger +relay +scripts +spell +trigger +xfer"
+PLUGINS="+alias +buflist +charset +exec +fifo +fset +logger +relay +scripts +spell +trigger +typing +xfer"
 # dev-lang/v8 was dropped from Gentoo so we can't enable javascript support
 SCRIPT_LANGS="guile lua +perl php +python ruby tcl"
 LANGS=" cs de es fr it ja pl ru"
@@ -66,7 +66,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.0-cmake_lua_version.patch
+	"${FILESDIR}"/${PN}-3.3-cmake_lua_version.patch
 )
 
 DOCS="AUTHORS.adoc ChangeLog.adoc Contributing.adoc ReleaseNotes.adoc README.adoc"
@@ -144,6 +144,7 @@ src_configure() {
 		-DENABLE_TCL=$(usex tcl)
 		-DENABLE_TESTS=$(usex test)
 		-DENABLE_TRIGGER=$(usex trigger)
+		-DENABLE_TYPING=$(usex typing)
 		-DENABLE_XFER=$(usex xfer)
 	)
 	cmake_src_configure
