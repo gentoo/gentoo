@@ -8,7 +8,7 @@ FORTRAN_STANDARD=77
 inherit cmake fortran-2
 
 DESCRIPTION="Sparse LU factorization library"
-HOMEPAGE="https://crd-legacy.lbl.gov/~xiaoye/SuperLU/"
+HOMEPAGE="https://portal.nersc.gov/project/sparse/superlu/"
 SRC_URI="https://github.com/xiaoyeli/superlu/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
