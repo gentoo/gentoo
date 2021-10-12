@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=HAARG
 DIST_VERSION=0.32
@@ -12,7 +12,6 @@ DESCRIPTION="Load configuration from different file formats, transparently"
 SLOT="0"
 KEYWORDS="amd64 arm ppc x86"
 IUSE="test +conf +ini +json +xml +yaml"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Module-Pluggable-3.600.0
@@ -47,7 +46,7 @@ RDEPEND="
 		)
 	)
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		virtual/perl-Test-Simple
