@@ -43,7 +43,7 @@ if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
 [[ ${EAPI} == 6 ]] && inherit eapi7-ver
-inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
+inherit flag-o-matic multiprocessing ninja-utils python-utils-r1 toolchain-funcs
 
 EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 
@@ -247,6 +247,107 @@ _meson_create_native_file() {
 	echo "${fn}"
 }
 
+# @FUNCTION: _meson_all-flag-vars
+# @INTERNAL
+# @DESCRIPTION:
+# Return all the flag variables that our high level funcs operate on.
+# This function is similar to all-flag-vars() in flag-o-matic eclass.
+_meson_all-flag-vars() {
+	echo BUILD_{C,CPP,CXX,FC,LD}FLAGS
+}
+
+# @FUNCTION: _meson_filter-var
+# @INTERNAL
+# @DESCRIPTION:
+# Remove occurrences of strings from variable given in $1
+# Strings removed are matched as globs, so for example
+# '-O*' would remove -O1, -O2 etc.
+# This function is an exact copy of _filter-var() in flag-o-matic eclass.
+_meson_filter-var() {
+	local f x var=$1 new=()
+	shift
+
+	for f in ${!var} ; do
+		for x in "$@" ; do
+			# Note this should work with globs like -O*
+			[[ ${f} == ${x} ]] && continue 2
+		done
+		new+=( "${f}" )
+	done
+	eval "${var}=\"${new[*]}\""
+}
+
+# @FUNCTION: _meson_filter-flags
+# @USAGE: <flags>
+# @INTERNAL
+# @DESCRIPTION:
+# Remove particular <flags> from local BUILD_{C,CPP,CXX,FC,LD}FLAGS.
+# Accepts shell globs.
+# This function is similar to filter-flags() in flag-o-matic eclass.
+# This function is called from meson_src_configure.
+_meson_filter-flags() {
+	local v
+	for v in $(_meson_all-flag-vars) ; do
+		_meson_filter-var ${v} "$@"
+	done
+	return 0
+}
+
+# @FUNCTION: __meson_is_flagq
+# @USAGE: <variable> <flag>
+# @INTERNAL
+# @DESCRIPTION:
+# Returns shell true if <flag> is in a given <variable>, else returns shell false.
+# This function is an exact copy of _is_flagq() in flag-o-matic eclass.
+__meson_is-flagq() {
+	local x var="$1[*]"
+	for x in ${!var} ; do
+		[[ ${x} == $2 ]] && return 0
+	done
+	return 1
+}
+
+# @FUNCTION: _meson_is-flagq
+# @USAGE: <flag>
+# @INTERNAL
+# @DESCRIPTION:
+# Returns shell true if <flag> is in BUILD_{C,CPP,CXX,FC,LD}FLAGS., else returns shell false.
+# Accepts shell globs. This function is similar to is-flagq() in flag-o-matic eclass.
+_meson_is-flagq() {
+	[[ -n $2 ]] && die "Usage: _meson_is-flagq <flag>"
+
+	local var
+	for var in $(_meson_all-flag-vars) ; do
+		__meson_is-flagq ${var} "$1" && return 0
+	done
+	return 1
+}
+
+# @FUNCTION: _meson_get_optimization_level
+# @RETURN: compiler optimization level
+# @INTERNAL
+# @DESCRIPTION:
+# Get optimization level from configuration and echo it.
+# If nothing is found, default optimization level used by meson is 0.
+# This function is called from meson_src_configure.
+_meson_get_optimization_level() {
+	local l=0
+
+	if _meson_is-flagq -Og; then
+		l=g
+	elif _meson_is-flagq -O1; then
+		l=1
+	elif _meson_is-flagq -O2; then
+		l=2
+	elif _meson_is-flagq -O3; then
+		l=3
+	elif _meson_is-flagq -Os; then
+		l=s
+	fi
+
+	echo "${l}"
+}
+
 # @FUNCTION: meson_use
 # @USAGE: <USE flag> [option name]
 # @DESCRIPTION:
@@ -308,9 +409,12 @@ meson_src_configure() {
 		: ${BUILD_PKG_CONFIG_PATH:=${PKG_CONFIG_PATH}}
 	fi
 
+	local -r level=$(_meson_get_optimization_level)
+	_meson_filter-flags '-O*'
+
 	local mesonargs=(
 		meson setup
-		--buildtype plain
+		-Doptimization=${level}
 		--libdir "$(get_libdir)"
 		--localstatedir "${EPREFIX}/var/lib"
 		--prefix "${EPREFIX}/usr"
@@ -322,6 +426,7 @@ meson_src_configure() {
 	)
 
 	if tc-is-cross-compiler; then
+		filter-flags '-O*'
 		mesonargs+=( --cross-file "$(_meson_create_cross_file)" )
 	fi
 
