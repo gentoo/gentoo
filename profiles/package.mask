@@ -37,7 +37,7 @@
 # Masked for removal in 30 days.
 # Last upstream release in 2012.
 # Looks to be broken (iax-config --libs references not installed libiax.so).
-# No consumers in ::gentoo
+# No consumers in ::gentoo. Bug #817989
 net-libs/iax
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2021-10-10)
