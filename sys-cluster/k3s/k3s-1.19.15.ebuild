@@ -1479,7 +1479,8 @@ src_prepare() {
 	# Disable download for files fetched via SRC_URI.
 	sed -e 's:^curl:#\0:' \
 		-e 's:^git:#\0:' \
-		-e 's:^rm -rf ${RUNC_DIR}:#\0:' \
+		-e 's:^rm -rf \${CHARTS_DIR}:#\0:' \
+		-e 's:^rm -rf \${RUNC_DIR}:#\0:' \
 		-i scripts/download || die
 	sed -e '/scripts\/build-upload/d' -i scripts/package-cli || die
 	pattern='git clone -b $VERSION_CNIPLUGINS https://github.com/rancher/plugins.git $WORKDIR'
@@ -1495,7 +1496,7 @@ src_prepare() {
 
 src_compile() {
 	mkdir -p build/data || die
-	./scripts/download || die
+	"${BASH}" -ex ./scripts/download || die
 	./scripts/build || die
 	./scripts/package-cli || die
 }
