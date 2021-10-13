@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Huettel <dilfridge@gentoo.org> (2021-10-14)
+# Unused and outdated packages; the version in core Perl is
+# newer. Removal in 30 days.
+perl-core/Locale-Maketext-Simple
+perl-core/Math-BigInt
+perl-core/Math-Complex
+perl-core/Memoize
+perl-core/MIME-Base64
+
 # Jaco Kroon <jaco@uls.co.za> (2021-10-05)
 # Masked for removal in 30 days.
 # Last upstream release in 2012.
