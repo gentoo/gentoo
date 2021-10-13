@@ -9,7 +9,7 @@ DESCRIPTION="Japanese Kana Kanji conversion engine for IBus"
 HOMEPAGE="https://github.com/ueno/ibus-kkc"
 SRC_URI="https://github.com/ueno/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="nls"
