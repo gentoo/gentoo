@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -14,13 +14,13 @@ LICENSE="BSD"
 
 KEYWORDS="~amd64"
 SLOT="0"
-IUSE=""
 
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	~sci-libs/fcl-0.5.0
 	sci-libs/octomap
 "
+BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
 
 PATCHES=( "${FILESDIR}"/${P}-fix-compiling-on-lld.patch )
 
