@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Jaco Kroon <jaco@uls.co.za> (2021-10-05)
+# Masked for removal in 30 days.
+# Last upstream release in 2012.
+# Looks to be broken (iax-config --libs references not installed libiax.so).
+# No consumers in ::gentoo
+net-libs/iax
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2021-10-10)
 # Archived upstream, and no longer maintained. Has issues with
 # python 3.9 and python 3.10.
