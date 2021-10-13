@@ -14,10 +14,10 @@ SRC_URI="https://github.com/nemuTUI/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.g
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="dbus network-map +ovf spice +vnc-client remote-api"
+IUSE="dbus network-map +ovf +savevm spice +vnc-client"
 
 RDEPEND="
-	>=app-emulation/qemu-6.0.0-r3[vnc,virtfs,spice?]
+	app-emulation/qemu[vnc,virtfs,spice?]
 	dev-db/sqlite:3=
 	sys-libs/ncurses:=[unicode(+)]
 	virtual/libusb:1
@@ -28,7 +28,6 @@ RDEPEND="
 		dev-libs/libxml2:2
 		app-arch/libarchive:=
 	)
-	remote-api? ( dev-libs/openssl )
 	spice? ( app-emulation/virt-viewer )
 	vnc-client? ( net-misc/tigervnc )
 "
@@ -52,22 +51,20 @@ pkg_pretend() {
 }
 
 src_configure() {
+	# -DNM_USE_UTF: Enable unicode unconditionally. We already
+	#                depended on ncurses[unicode].
 	# -DNM_WITH_QEMU: Do not embbed qemu.
 	local mycmakeargs=(
+		-DNM_SAVEVM_SNAPSHOTS=$(usex savevm)
+		-DNM_USE_UTF=on
 		-DNM_WITH_DBUS=$(usex dbus)
 		-DNM_WITH_NETWORK_MAP=$(usex network-map)
-		-DNM_WITH_REMOTE=$(usex remote-api)
 		-DNM_WITH_OVF_SUPPORT=$(usex ovf)
 		-DNM_WITH_QEMU=off
 		-DNM_WITH_SPICE=$(usex spice)
 		-DNM_WITH_VNC_CLIENT=$(usex vnc-client)
 	)
 	cmake_src_configure
-}
-
-src_install() {
-	cmake_src_install
-	docompress -x /usr/share/man/man1/nemu.1.gz
 }
 
 pkg_postinst() {
