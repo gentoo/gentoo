@@ -5,6 +5,7 @@
 		<email>x11@gentoo.org</email>
 		<name>X11</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">libevdev</remote-id>
 	</upstream>
