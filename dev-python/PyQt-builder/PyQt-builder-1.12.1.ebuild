@@ -23,7 +23,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
-	>=dev-python/sip-5.5[${PYTHON_USEDEP}]
+	>=dev-python/sip-6.3[${PYTHON_USEDEP}]
 "
 
 distutils_enable_sphinx doc --no-autodoc
