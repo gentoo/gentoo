@@ -5,6 +5,10 @@
 		<email>steils@gentoo.org</email>
 		<name>Stefan Strogin</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>rust@gentoo.org</email>
 		<name>Rust Project</name>
