@@ -1,42 +1,37 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD="77 90"
 
-inherit fortran-2 multilib-minimal multilib flag-o-matic autotools
+inherit fortran-2 multilib-minimal flag-o-matic
 
 MY_PV=${PV/_/}
 DESCRIPTION="A high performance and portable MPI implementation"
-HOMEPAGE="http://www.mpich.org/"
-SRC_URI="http://www.mpich.org/static/downloads/${PV}/${P}.tar.gz"
+HOMEPAGE="https://www.mpich.org/"
+SRC_URI="https://www.mpich.org/static/downloads/${PV}/${P}.tar.gz"
+S="${WORKDIR}"/${PN}-${MY_PV}
 
-SLOT="0"
 LICENSE="mpich2"
+SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+cxx doc fortran mpi-threads +romio threads"
 REQUIRED_USE="mpi-threads? ( threads )"
 
-COMMON_DEPEND="
-	>=dev-libs/libaio-0.3.109-r5[${MULTILIB_USEDEP}]
+COMMON_DEPEND=">=dev-libs/libaio-0.3.109-r5[${MULTILIB_USEDEP}]
 	>=sys-apps/hwloc-2.0.2[${MULTILIB_USEDEP}]
 	sys-libs/libunwind[${MULTILIB_USEDEP}]
-	romio? ( net-fs/nfs-utils )
-"
+	romio? ( net-fs/nfs-utils )"
 
 DEPEND="${COMMON_DEPEND}
 	dev-lang/perl
-	sys-devel/libtool
-"
-
+	sys-devel/libtool"
 RDEPEND="${COMMON_DEPEND}
 	!sys-cluster/mpich2
 	!sys-cluster/openmpi
 	!sys-cluster/nullmpi"
-
-S="${WORKDIR}"/${PN}-${MY_PV}
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/mpicxx.h
@@ -105,10 +100,13 @@ multilib_src_configure() {
 	export MPICHLIB_FCFLAGS="${FCFLAGS}"
 	export MPICHLIB_LDFLAGS="${LDFLAGS}"
 
-	# dropped w/ bug #725842 fix
+	# Dropped w/ bug #725842 fix
 	#unset CFLAGS CPPFLAGS CXXFLAGS FFLAGS FCFLAGS LDFLAGS
 
 	# Forcing Bash as there's quite a few bashisms in the build system
+	#
+	# Note that --with-device=ch3 is preserving the old 3.3.x default
+	# - keeping it for compatibility for now.
 	CONFIG_SHELL="${BROOT}/bin/bash" ECONF_SOURCE=${S} econf \
 		--enable-shared \
 		--with-hwloc-prefix="${EPREFIX}/usr" \
@@ -119,7 +117,7 @@ multilib_src_configure() {
 		--with-fiprovider-libdir="$(get_libdir)" \
 		${c} \
 		--with-pm=hydra \
-		 --with-device=ch3 \
+		--with-device=ch3 \
 		--disable-fast \
 		--enable-versioning \
 		$(use_enable romio) \
@@ -138,18 +136,18 @@ multilib_src_install() {
 	if  use fortran; then
 		if multilib_is_native_abi; then
 			mkdir "${T}"/fortran || die
-			mv "${ED}"usr/include/mpif* "${T}"/fortran || die
-			mv "${ED}"usr/include/*.mod "${T}"/fortran || die
+			mv "${ED}"/usr/include/mpif* "${T}"/fortran || die
+			mv "${ED}"/usr/include/*.mod "${T}"/fortran || die
 		else
-			rm "${ED}"usr/include/mpif* "${ED}"usr/include/*.mod || die
+			rm "${ED}"/usr/include/mpif* "${ED}"/usr/include/*.mod || die
 		fi
 	fi
 }
 
 multilib_src_install_all() {
-	# fortran header cannot be wrapped (bug #540508), workaround part 2
+	# Fortran header cannot be wrapped (bug #540508), workaround part 2
 	if use fortran; then
-		mv "${T}"/fortran/* "${ED}"usr/include || die
+		mv "${T}"/fortran/* "${ED}"/usr/include || die
 	fi
 
 	einstalldocs
@@ -159,6 +157,6 @@ multilib_src_install_all() {
 	fi
 
 	if ! use doc; then
-		rm -rf "${ED}"usr/share/doc/${PF}/www* || die
+		rm -rf "${ED}"/usr/share/doc/${PF}/www* || die
 	fi
 }
