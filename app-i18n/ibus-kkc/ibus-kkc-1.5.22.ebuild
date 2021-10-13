@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit vala
 
@@ -14,14 +14,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
-CDEPEND="app-i18n/ibus
+DEPEND="app-i18n/ibus
 	app-i18n/libkkc
 	x11-libs/gtk+:3
 	nls? ( virtual/libintl )"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	app-i18n/skk-jisyo"
-DEPEND="${CDEPEND}
-	$(vala_depend)
+BDEPEND="$(vala_depend)
 	dev-util/intltool
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
