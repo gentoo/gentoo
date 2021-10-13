@@ -29,6 +29,6 @@ S="${WORKDIR}/${P/_/-}"
 PATCHES=( )
 
 src_install() {
-	default
-	rm -rf "${ED}/usr/share/doc/packages/s3cmd/"
+	distutils-r1_src_install
+	rm -rf "${ED}/usr/share/doc/packages"
 }
