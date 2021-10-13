@@ -1674,7 +1674,9 @@ src_prepare() {
 	# Disable download for files fetched via SRC_URI.
 	sed -e 's:^[[:space:]]*curl:#\0:' \
 		-e 's:^[[:space:]]*git:#\0:' \
-		-e 's:^rm -rf ${RUNC_DIR}:#\0:' \
+		-e 's:^rm -rf \${CHARTS_DIR}:#\0:' \
+		-e 's:^rm -rf \${RUNC_DIR}:#\0:' \
+		-e 's:yq e :yq -r :' \
 		-e "s:^setup_tmp\$:TMP_DIR=${S}/build/static/charts:" \
 		-i scripts/download || die
 	sed -e '/scripts\/build-upload/d' -i scripts/package-cli || die
@@ -1691,7 +1693,7 @@ src_prepare() {
 
 src_compile() {
 	mkdir -p build/data || die
-	./scripts/download || die
+	"${BASH}" -ex ./scripts/download || die
 	./scripts/build || die
 	./scripts/package-cli || die
 }
