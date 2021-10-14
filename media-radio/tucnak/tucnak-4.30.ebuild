@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools flag-o-matic multilib
+inherit autotools flag-o-matic
 
 DESCRIPTION="Amateur Radio VHF Contest Logbook"
 HOMEPAGE="http://tucnak.nagano.cz"
