@@ -53,7 +53,7 @@ RDEPEND="
 		x11-libs/libXext[${MULTILIB_USEDEP}]
 	)
 	wayland? (
-		>=gui-libs/egl-wayland-1.1.8
+		>=gui-libs/egl-wayland-1.1.7-r1
 		media-libs/libglvnd
 		>=media-libs/mesa-21.2[gbm(+)]
 		x11-libs/libdrm
