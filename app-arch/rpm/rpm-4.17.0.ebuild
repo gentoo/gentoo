@@ -25,7 +25,7 @@ IUSE="acl caps +berkdb doc dbus nls openmp python selinux +sqlite test +zstd"
 REQUIRED_USE="${LUA_REQUIRED_USE}
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
-CDEPEND="!app-arch/rpm5
+DEPEND="!app-arch/rpm5
 	app-arch/libarchive:=
 	>=app-arch/bzip2-1.0.1
 	app-arch/xz-utils
@@ -46,13 +46,13 @@ CDEPEND="!app-arch/rpm5
 	caps? ( >=sys-libs/libcap-2.0 )
 	zstd? ( app-arch/zstd:= )
 "
-DEPEND="${CDEPEND}
+BDEPEND="
 	nls? ( sys-devel/gettext )
 	doc? ( app-doc/doxygen )
 	virtual/pkgconfig
 	test? ( sys-apps/fakechroot )
 "
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-rpm )
 "
 
