@@ -17,22 +17,22 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+adblock test"
 
 BDEPEND="app-text/asciidoc"
-RDEPEND=">=dev-python/colorama-0.4.4[${PYTHON_USEDEP}]
+RDEPEND="dev-python/colorama[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' python3_{7,8})
-	>=dev-python/jinja-3.0.1[${PYTHON_USEDEP}]
-	>=dev-python/markupsafe-2.0.1[${PYTHON_USEDEP}]
+	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/markupsafe[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/PyQt5[${PYTHON_USEDEP},dbus,declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
 	dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
-	>=dev-python/pyyaml-5.4.1[${PYTHON_USEDEP},libyaml]
+	>=dev-python/pyyaml-5.4.1[${PYTHON_USEDEP},libyaml(+)]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 	dev-python/zipp[${PYTHON_USEDEP}]
 	adblock? ( dev-python/adblock[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests setup.py
 
-# Tests depend (misc/requirements/requirements-tests.txt) on plugins
-# we don't have packages for.
+# Tests restricted as the deplist (misc/requirements/requirements-tests.txt)
+# isn't complete and X11 is required in order to start up qutebrowser.
 RESTRICT="test"
 
 python_compile_all() {
