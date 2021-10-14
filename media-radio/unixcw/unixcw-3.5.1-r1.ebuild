@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic multilib
+inherit autotools flag-o-matic
 
 DESCRIPTION="A package of programs that fit together to form a morse code tutor program"
 HOMEPAGE="http://unixcw.sourceforge.net"
