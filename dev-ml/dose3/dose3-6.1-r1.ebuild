@@ -7,13 +7,12 @@ inherit dune
 
 DESCRIPTION="Library to perform analysis on package repositories"
 HOMEPAGE="http://www.mancoosi.org/software/ https://gforge.inria.fr/projects/dose"
-SRC_URI="http://deb.debian.org/debian/pool/main/d/dose3/${PN}_$(ver_cut 1-3).orig.tar.gz"
-SRC_URI+=" http://deb.debian.org/debian/pool/main/d/dose3/${PN}_${PV/_p/-}.debian.tar.xz"
+SRC_URI="https://gitlab.com/irill/${PN}/-/archive/${PV}/${P}.tar.gz"
 S="${WORKDIR}/${PN}-$(ver_cut 1-3)"
 
 LICENSE="LGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 ~x86"
 IUSE="+ocamlopt test"
 
 BDEPEND="
@@ -35,19 +34,10 @@ RDEPEND="
 	app-arch/rpm
 "
 DEPEND="${RDEPEND}
-	test? ( dev-python/pyyaml[libyaml] )
+	test? ( dev-python/pyyaml[libyaml(+)] )
 "
 
 # missing test data
 RESTRICT="test"
 
 QA_FLAGS_IGNORED='.*'
-
-src_prepare() {
-	default
-
-	elog "Applying Debian patchset..."
-	for file in "${WORKDIR}"/debian/patches/*.patch ; do
-		eapply "${file}"
-	done
-}
