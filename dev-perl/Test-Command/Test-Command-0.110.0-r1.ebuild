@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Test routines for external commands"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~mips ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	>=virtual/perl-Test-Simple-0.620.0
