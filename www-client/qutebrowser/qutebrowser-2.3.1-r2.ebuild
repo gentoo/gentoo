@@ -58,6 +58,10 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${P}-pyyaml60.patch
+)
+
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
