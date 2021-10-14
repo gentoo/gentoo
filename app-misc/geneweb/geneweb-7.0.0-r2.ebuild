@@ -32,6 +32,7 @@ src_prepare() {
 	default
 
 	sed -i -e "s/oUnit/ounit2/" test/dune.in || die
+	sed -i -e "500,$ s| compare | Stdlib.compare |" lib/util/mutil.ml || die
 }
 
 src_configure() {
