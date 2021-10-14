@@ -19,12 +19,13 @@ RESTRICT="!test? ( test )"
 DEPEND=">=dev-lang/ocaml-4.08.0:=
 	virtual/latex-base
 	dev-texlive/texlive-latexextra"
+RDEPEND="${DEPEND}"
 BDEPEND="test? ( dev-tex/hevea )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.41-strip.patch"
 	"${FILESDIR}/${PN}-1.41-ocaml-4.08.0.patch"
-	)
+)
 
 QA_FLAGS_IGNORED=/usr/bin/ocamlweb
 
