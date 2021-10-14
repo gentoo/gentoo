@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit desktop multilib savedconfig toolchain-funcs
 
-DESCRIPTION="simple terminal implementation for X"
+inherit desktop savedconfig toolchain-funcs
+
+DESCRIPTION="Simple terminal implementation for X"
 HOMEPAGE="https://st.suckless.org/"
 SRC_URI="https://dl.suckless.org/st/${P}.tar.gz"
 
@@ -21,9 +22,9 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
 	x11-base/xorg-proto
 "
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-locale-musl-segfault.patch
