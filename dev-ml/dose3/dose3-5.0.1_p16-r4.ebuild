@@ -39,7 +39,7 @@ RDEPEND="
 	rpm4? ( app-arch/rpm )
 "
 DEPEND="${RDEPEND}
-	test? ( dev-python/pyyaml[libyaml] )
+	test? ( dev-python/pyyaml[libyaml(+)] )
 "
 
 # missing test data
