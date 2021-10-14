@@ -29,8 +29,8 @@ BDEPEND="$(vala_depend)
 
 src_prepare() {
 	vala_src_prepare
-	eautoreconf
 	default
+	eautoreconf
 }
 
 src_configure() {
