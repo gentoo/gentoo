@@ -12,7 +12,7 @@ SRC_URI="https://github.com/streambinder/vpnc/archive/fa0689c.tar.gz -> ${MY_P}.
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~ppc ~ppc64 ~riscv sparc x86"
 IUSE="resolvconf +gnutls selinux"
 RESTRICT="!gnutls? ( bindist )"
 
