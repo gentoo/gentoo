@@ -51,9 +51,9 @@ python_check_deps() {
 }
 
 src_prepare() {
+	vala_src_prepare
 	default
 	eautoreconf
-	vala_src_prepare
 }
 
 src_configure() {
