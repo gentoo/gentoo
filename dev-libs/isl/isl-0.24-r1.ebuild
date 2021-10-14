@@ -6,8 +6,8 @@ EAPI=7
 inherit autotools multilib multilib-minimal preserve-libs toolchain-funcs
 
 DESCRIPTION="A library for manipulating integer points bounded by linear constraints"
-HOMEPAGE="http://isl.gforge.inria.fr/"
-SRC_URI="http://isl.gforge.inria.fr/${P}.tar.xz"
+HOMEPAGE="http://isl.gforge.inria.fr/ https://libisl.sourceforge.io/"
+SRC_URI="http://isl.gforge.inria.fr/${P}.tar.xz https://libisl.sourceforge.io/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/23"
