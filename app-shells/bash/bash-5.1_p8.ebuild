@@ -159,7 +159,7 @@ src_configure() {
 	fi
 
 	if use plugins ; then
-		append-ldflags -Wl,-rpath,/usr/$(get_libdir)/bash
+		append-ldflags -Wl,-rpath,"${EPREFIX}"/usr/$(get_libdir)/bash
 	else
 		# Disable the plugins logic by hand since bash doesn't
 		# provide a way of doing it.
