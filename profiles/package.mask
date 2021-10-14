@@ -256,11 +256,12 @@ net-libs/libsoup:3.0
 =dev-libs/gost-engine-3.0*
 
 # Ionen Wolkens <ionen@gentoo.org> (2021-09-03)
-# Known to break kde-plasma/kwin (black screen), and several
-# other applications on wayland with current drivers.
+# Known to break plasma, and several other applications on EGLStream
+# wayland. egl-wayland-1.1.7-r1 is still usable with newer drivers
+# and does not prevent using wlroots-based compositors with GBM.
 # https://github.com/NVIDIA/egl-wayland/issues/40
 # https://github.com/NVIDIA/egl-wayland/issues/41
-~gui-libs/egl-wayland-1.1.8
+>=gui-libs/egl-wayland-1.1.8
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2021-08-30)
 # Homepage dead, uses gtk2, fails to build, https://bugs.gentoo.org/711344
