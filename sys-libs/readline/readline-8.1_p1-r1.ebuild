@@ -70,7 +70,7 @@ src_prepare() {
 	[[ ${PLEVEL} -gt 0 ]] && eapply -p0 $(patches -s)
 	default
 
-	if use prefix && [[ ! -e "${BROOT}"/usr/bin/pkg-config ]] ; then
+	if use prefix && [[ ! -x "${BROOT}"/usr/bin/pkg-config ]] ; then
 		# If we're bootstrapping, make a guess. We don't have pkg-config
 		# around yet. bug #818103.
 		# Incorrectly populating this leads to underlinked libreadline.
