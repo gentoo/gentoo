@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools
 
 DESCRIPTION="network packet generator and capture tool"
@@ -19,6 +20,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0-noopt.patch
+	"${FILESDIR}"/${PN}-1.7-configure.patch
 )
 
 src_prepare() {
