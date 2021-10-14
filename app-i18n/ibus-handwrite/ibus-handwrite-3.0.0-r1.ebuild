@@ -23,7 +23,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
-PATCHES=( "${FILESDIR}"/${PN}-headers.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-blink.patch
+	"${FILESDIR}"/${PN}-headers.patch
+)
 
 src_configure() {
 	econf \
