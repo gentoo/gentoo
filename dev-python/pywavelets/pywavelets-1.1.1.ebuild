@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -34,7 +34,7 @@ distutils_enable_sphinx doc/source \
 	dev-python/numpydoc
 
 python_test() {
-	pytest -vv --pyargs ${BUILD_DIR}"/lib" || die "Tests fail with ${EPYTHON}"
+	epytest --pyargs ${BUILD_DIR}"/lib"
 }
 
 python_install_all() {
