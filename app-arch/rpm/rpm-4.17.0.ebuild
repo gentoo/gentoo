@@ -27,14 +27,14 @@ REQUIRED_USE="${LUA_REQUIRED_USE}
 
 CDEPEND="!app-arch/rpm5
 	app-arch/libarchive:=
-	app-arch/xz-utils
 	>=app-arch/bzip2-1.0.1
+	app-arch/xz-utils
 	>=app-crypt/gnupg-1.2
 	>=dev-lang/perl-5.8.8
 	dev-libs/elfutils
 	dev-libs/libgcrypt:=
-	sys-apps/file
 	>=dev-libs/popt-1.7
+	sys-apps/file
 	>=sys-libs/zlib-1.2.3-r1
 	virtual/libintl
 	${LUA_DEPS}
