@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~x86"
+KEYWORDS="amd64 ~hppa ~riscv ~x86"
 
 DEPEND="sys-libs/ncurses:0="
 RDEPEND="${DEPEND}"
