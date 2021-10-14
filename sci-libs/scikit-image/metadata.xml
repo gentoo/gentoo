@@ -13,5 +13,6 @@
   </longdescription>
   <upstream>
     <remote-id type="pypi">scikit-image</remote-id>
+    <remote-id type="github">scikit-image/scikit-image</remote-id>
   </upstream>
 </pkgmetadata>
