@@ -8,6 +8,7 @@ inherit dune
 DESCRIPTION="A source-based package manager for OCaml"
 HOMEPAGE="http://opam.ocaml.org/"
 SRC_URI="https://github.com/ocaml/opam/archive/${PV/_/-}.tar.gz -> opam-${PV}.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/dev-ml/opam/opam-2.1.0-dose3-6.patch.xz"
 S="${WORKDIR}/opam-${PV/_/-}"
 
 LICENSE="LGPL-2.1-with-linking-exception"
@@ -25,8 +26,7 @@ RDEPEND="
 	dev-ml/re:="
 DEPEND="${RDEPEND}"
 
-# Cherry-picked from https://deb.debian.org/debian/pool/main/o/opam/opam_2.0.8-1.debian.tar.xz
-PATCHES=( "${FILESDIR}/debian-Port-to-Dose3-6.0.1.patch" )
+PATCHES=( "${WORKDIR}"/opam-2.1.0-dose3-6.patch )
 
 src_prepare() {
 	default
