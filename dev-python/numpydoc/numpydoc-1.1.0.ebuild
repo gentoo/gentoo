@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -30,14 +30,14 @@ distutils_enable_tests pytest
 src_prepare() {
 	sed -i -e 's:--cov-report= --cov=numpydoc::' setup.cfg || die
 
-	# these require Internet (intersphinx)
-	sed -e 's:test_MyClass:_&:' \
-		-e 's:test_my_function:_&:' \
-		-i numpydoc/tests/test_full.py || die
-
 	distutils-r1_src_prepare
 }
 
 python_test() {
-	pytest -vv --pyargs numpydoc || die "Tests failed with ${EPYTHON}"
+	local EPYTEST_DESELECT=(
+		# these require Internet (intersphinx)
+		numpydoc/tests/test_full.py::test_MyClass
+		numpydoc/tests/test_full.py::test_my_function
+	)
+	epytest --pyargs numpydoc
 }
