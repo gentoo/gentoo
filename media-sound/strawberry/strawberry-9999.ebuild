@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake flag-o-matic plocale virtualx xdg
 
@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
 	media-libs/alsa-lib
-	media-libs/chromaprint:=
+	>=media-libs/chromaprint-1.4:=
 	>=media-libs/libmygpo-qt-1.0.9[qt5(+)]
 	>=media-libs/taglib-1.11.1_p20181028
 	sys-libs/zlib
@@ -106,6 +106,7 @@ src_configure() {
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
 		-DENABLE_UDISKS2="$(usex udisks)"
 		-DENABLE_VLC="$(usex vlc)"
+		# Disable until we have qt6 in the tree
 		-DWITH_QT6=OFF
 	)
 
