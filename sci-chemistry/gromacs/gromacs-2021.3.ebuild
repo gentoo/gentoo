@@ -167,12 +167,12 @@ src_configure() {
 		#go from slowest to fastest acceleration
 		acce="None"
 		if (use amd64 || use x86); then
-		use cpu_flags_x86_sse2 && acce="SSE2"
-		use cpu_flags_x86_sse4_1 && acce="SSE4.1"
-		use cpu_flags_x86_fma4 && acce="AVX_128_FMA"
-		use cpu_flags_x86_avx && acce="AVX_256"
-		use cpu_flags_x86_avx2 && acce="AVX2_256"
-		use cpu_flags_x86_avx512f && acce="AVX_512"
+			use cpu_flags_x86_sse2 && acce="SSE2"
+			use cpu_flags_x86_sse4_1 && acce="SSE4.1"
+			use cpu_flags_x86_fma4 && acce="AVX_128_FMA"
+			use cpu_flags_x86_avx && acce="AVX_256"
+			use cpu_flags_x86_avx2 && acce="AVX2_256"
+			use cpu_flags_x86_avx512f && acce="AVX_512"
 		elif (use arm); then
 			use cpu_flags_arm_neon && acce="ARM_NEON"
 		elif (use arm64); then
