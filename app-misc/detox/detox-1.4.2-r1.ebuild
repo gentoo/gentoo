@@ -10,29 +10,35 @@ MY_P="${PN}-${PV/_/-}"
 DESCRIPTION="Safely remove spaces and strange characters from filenames"
 HOMEPAGE="http://detox.sourceforge.net/ https://github.com/dharple/detox"
 SRC_URI="https://github.com/dharple/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~hppa ~mips ppc x86 ~amd64-linux ~x86-linux"
+IUSE=""
 
-RDEPEND="!dev-python/detox"
+S="${WORKDIR}"/${MY_P}
+
+RDEPEND="
+	!dev-python/detox"
+
 DEPEND="${RDEPEND}"
-BDEPEND="sys-devel/bison
-	sys-devel/flex"
+BDEPEND="
+	sys-devel/flex
+	sys-devel/bison
+"
 
 src_prepare() {
 	default
-
 	sed \
 		-e '/detoxrc.sample/d' \
 		-i Makefile.am || die
-
 	eautoreconf
 }
 
 src_install() {
 	default
 
-	dodoc etc/${PN}rc.sample
+	# bug #811945
+	insinto /etc
+	newins etc/detoxrc.sample detoxrc
 }
