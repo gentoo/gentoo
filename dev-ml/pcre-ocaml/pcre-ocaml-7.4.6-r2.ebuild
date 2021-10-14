@@ -16,11 +16,9 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm ~arm64 ppc x86"
 
 BDEPEND="dev-ml/dune-configurator"
-RDEPEND=">=dev-libs/libpcre-4.5"
-DEPEND="
-	${RDEPEND}
-	dev-ml/stdio
-"
+RDEPEND=">=dev-libs/libpcre-4.5
+	dev-ml/stdio:="
+DEPEND="${RDEPEND}"
 
 src_install() {
 	dune_src_install pcre
