@@ -21,5 +21,6 @@ RDEPEND="
 	dev-ml/patience_diff:0/$(ver_cut 1-2)
 	dev-ml/ppx_jane:=
 	dev-ml/pcre-ocaml:=
-	>=dev-ml/re-1.8.0
+	>=dev-ml/re-1.8.0:=
 "
+DEPEND="${RDEPEND}"
