@@ -3,8 +3,7 @@
 
 EAPI=8
 
-LUA_COMPAT=( lua5-{1,3,4} luajit )
-inherit cmake lua-single readme.gentoo-r1 xdg
+inherit cmake readme.gentoo-r1 xdg
 
 DESCRIPTION="Open source reimplementation of TES III: Morrowind"
 HOMEPAGE="https://openmw.org/ https://gitlab.com/OpenMW/openmw"
@@ -21,13 +20,12 @@ fi
 LICENSE="GPL-3 MIT BitstreamVera ZLIB"
 SLOT="0"
 IUSE="doc devtools +osg-fork test +qt5"
-REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 # FIXME: Unbundle dev-games/openscenegraph-qt in extern/osgQt directory,
 # used when BUILD_OPENCS flag is enabled. See bug #676266.
 
-RDEPEND="${LUA_DEPS}
+RDEPEND="
 	app-arch/lz4:=
 	dev-games/mygui
 	dev-games/recastnavigation:=
@@ -50,9 +48,7 @@ RDEPEND="${LUA_DEPS}
 	)
 "
 
-DEPEND="${RDEPEND}
-	dev-cpp/sol2
-"
+DEPEND="${RDEPEND}"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -74,7 +70,6 @@ src_prepare() {
 
 	# Use the system tinyxml headers
 	rm -v extern/oics/tiny{str,xml}* || die
-	rm -rv extern/sol3.2.2 || die
 }
 
 src_configure() {
@@ -96,20 +91,6 @@ src_configure() {
 		-DUSE_SYSTEM_TINYXML=ON
 		-DOPENMW_USE_SYSTEM_RECASTNAVIGATION=ON
 	)
-
-	if [[ ${ELUA} == luajit ]]; then
-		mycmakeargs+=(
-			-DUSE_LUAJIT=ON
-		)
-	else
-		mycmakeargs+=(
-			-DUSE_LUAJIT=OFF
-			-DLua_FIND_VERSION_MAJOR=$(ver_cut 1 $(lua_get_version))
-			-DLua_FIND_VERSION_MINOR=$(ver_cut 2 $(lua_get_version))
-			-DLua_FIND_VERSION_COUNT=2
-			-DLua_FIND_VERSION_EXACT=ON
-		)
-	fi
 
 	cmake_src_configure
 }
