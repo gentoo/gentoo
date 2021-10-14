@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="A selection of tools from Debian"
 HOMEPAGE="https://packages.qa.debian.org/d/debianutils.html"
@@ -29,6 +29,7 @@ src_prepare() {
 	sed -i -e '/SUBDIRS/s|po4a||' Makefile.am || die
 
 	default
+	eautoreconf
 }
 
 src_configure() {
