@@ -70,9 +70,24 @@ src_prepare() {
 	[[ ${PLEVEL} -gt 0 ]] && eapply -p0 $(patches -s)
 	default
 
-	# Force ncurses linking. #71420
-	# Use pkg-config to get the right values. #457558
-	local ncurses_libs=$($(tc-getPKG_CONFIG) ncurses$(usex unicode w '') --libs)
+	if use prefix && [[ ! -e "${BROOT}"/usr/bin/pkg-config ]] ; then
+		# If we're bootstrapping, make a guess. We don't have pkg-config
+		# around yet. bug #818103.
+		# Incorrectly populating this leads to underlinked libreadline.
+		local ncurses_libs
+		local ncurses_libs_suffix=$(usex unicode w '')
+
+		ncurses_libs="-lncurses${ncurses_libs_suffix}"
+
+		if has_version "sys-libs/ncurses[tinfo(+)]" ; then
+			ncurses_libs+=" -ltinfo${ncurses_libs_suffix}"
+		fi
+	else
+		# Force ncurses linking. #71420
+		# Use pkg-config to get the right values. #457558
+		local ncurses_libs=$($(tc-getPKG_CONFIG) ncurses$(usex unicode w '') --libs)
+	fi
+
 	sed -i \
 		-e "/^SHLIB_LIBS=/s:=.*:='${ncurses_libs}':" \
 		support/shobj-conf || die
