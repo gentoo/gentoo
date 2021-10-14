@@ -74,10 +74,14 @@ RDEPEND="
 "
 # media-libs/rubberband RDEPENDs on sci-libs/fftw:3.0
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	dev-qt/qttest:5
 	dev-qt/qtxmlpatterns:5
-	${PYTHON_DEPS}
+"
+# See bug #806085 for scons upper bound, newer versions drop scons dependency
+# altogether.
+BDEPEND="${PYTHON_DEPS}
+	<dev-util/scons-4.2.0
+	virtual/pkgconfig
 "
 
 PATCHES=(
