@@ -213,6 +213,10 @@ BDEPEND="test? (
 
 QA_FLAGS_IGNORED=".*"
 
+pkg_setup() {
+	export OPENSSL_NO_VENDOR=true
+}
+
 src_prepare() {
 	default
 
