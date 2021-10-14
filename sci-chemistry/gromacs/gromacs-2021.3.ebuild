@@ -161,10 +161,11 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs_pre=( ) extra fft_opts=( )
+	local acce="AUTO"
 
 	if use custom-cflags; then
 		#go from slowest to fastest acceleration
-		local acce="None"
+		acce="None"
 		if (use amd64 || use x86); then
 		use cpu_flags_x86_sse2 && acce="SSE2"
 		use cpu_flags_x86_sse4_1 && acce="SSE4.1"
