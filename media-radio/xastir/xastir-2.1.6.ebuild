@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,8 +40,11 @@ src_prepare() {
 	# fix script location (bug #407185)
 	eapply  "${FILESDIR}"/${PN}-2.1.2-scripts.diff
 
-	# do not filter duplicate flags (see bug 411095)
+	# do not filter duplicate flags (see bug #411095)
 	eapply -p0 "${FILESDIR}"/${PN}-2.0.0-dont-filter-flags.diff
+
+	# fix eautoreconf with >=sys-devel/automake-1.16.5 (see bug #816615)
+	eapply "${FILESDIR}"/${PN}-2.1.6-automake-1.16.5.patch
 
 	eautoreconf
 }
