@@ -30,6 +30,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${P}-32bit-fix.patch"
+	"${FILESDIR}/${P}-further-32bit-fix.patch"
 )
 
 src_prepare() {
