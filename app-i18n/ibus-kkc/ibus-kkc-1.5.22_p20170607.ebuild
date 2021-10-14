@@ -29,9 +29,9 @@ BDEPEND="$(vala_depend)
 	nls? ( sys-devel/gettext )"
 
 src_prepare() {
+	default
 	vala_src_prepare
 	eautoreconf
-	default
 }
 
 src_configure() {
