@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=ANDK
 DIST_VERSION=2.12
@@ -11,8 +11,6 @@ DESCRIPTION="Write a CHECKSUMS file for a directory as on CPAN"
 
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-perl/Compress-Bzip2
@@ -26,20 +24,17 @@ RDEPEND="
 	virtual/perl-IO-Compress
 	virtual/perl-Safe
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		virtual/perl-File-Path
 		virtual/perl-Test-Simple
 		virtual/perl-Time-HiRes
-	)"
+	)
+"
 
-src_test() {
-	local bad_files=(
-		"t/00signature.t" # Online test, invalid if dist tweaked
+PERL_RM_FILES=(
+		t/00signature.t   # Online test, invalid if dist tweaked
 		t/52podcover.t    # Author Test
 		t/pod.t           # Author Test
 	)
-	perl_rm_files "${bad_files[@]}"
-	perl-module_src_test
-}
