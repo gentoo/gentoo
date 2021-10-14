@@ -26,6 +26,7 @@ BDEPEND="virtual/pkgconfig
 PATCHES=(
 	"${FILESDIR}"/${PN}-blink.patch
 	"${FILESDIR}"/${PN}-headers.patch
+	"${FILESDIR}"/${PN}-nested-function.patch
 )
 
 src_configure() {
