@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 SITEFILE="50${PN}-gentoo.el"
 
 src_unpack() {
-	if has_version "~dev-ml/ocaml-4.12" ; then
+	if has_version "~dev-lang/ocaml-4.12" ; then
 		unpack ${P}-412.tar.gz
 	else
 		unpack ${P}-411.tar.gz
