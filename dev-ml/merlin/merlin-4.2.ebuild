@@ -8,7 +8,8 @@ inherit elisp-common dune
 
 DESCRIPTION="Context sensitive completion for OCaml in Vim and Emacs"
 HOMEPAGE="https://github.com/ocaml/merlin"
-SRC_URI="https://github.com/ocaml/merlin/archive/v${PV}-411.tar.gz -> ${P}-411.tar.gz"
+SRC_URI="https://github.com/ocaml/merlin/archive/v${PV}-411.tar.gz -> ${P}-411.tar.gz
+	https://dev.gentoo.org/~tupone/distfiles/${P}-ocaml-4.12.patch.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
@@ -39,7 +40,7 @@ S="${WORKDIR}"/${P}-411
 
 src_prepare() {
 	has_version "dev-lang/ocaml:0/4.12" && \
-		eapply "${FILESDIR}"/${P}-ocaml-4.12.patch
+		eapply "${WORKDIR}"/${P}-ocaml-4.12.patch
 	default
 
 	# Handle installation via the eclass
