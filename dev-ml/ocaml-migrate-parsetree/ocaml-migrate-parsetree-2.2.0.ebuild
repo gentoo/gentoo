@@ -16,3 +16,4 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test ) strip"
 
 DEPEND="test? ( dev-ml/cinaps )"
+BDEPEND=">=dev-ml/dune-2.3"
