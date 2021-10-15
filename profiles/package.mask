@@ -34,9 +34,10 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2021-10-15)
-# Drop broken package with no reverse dependencies
-# Removal on 2021-11-15. bug #817965
+# Drop broken packages with no reverse dependencies
+# Removal on 2021-11-15. bug #817965, bug #771756, bug #767196
 dev-ml/async_ssl
+dev-ml/ppx_tools_versioned
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2021-10-14)
 # Unused and outdated packages; the version in core Perl is
