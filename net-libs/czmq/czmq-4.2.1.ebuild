@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 DESCRIPTION="High-level C Binding for ZeroMQ"
 HOMEPAGE="http://czmq.zeromq.org"
@@ -20,9 +20,12 @@ RDEPEND=">=net-libs/zeromq-4:=[drafts?]
 	http-client? ( net-misc/curl )
 	http-server? ( net-libs/libmicrohttpd:= )
 	lz4? ( app-arch/lz4:= )
-	nss? ( dev-libs/nss:= )
+	nss? (
+		dev-libs/nspr
+		dev-libs/nss
+	)
 	systemd? ( sys-apps/systemd )
-	uuid? ( sys-apps/util-linux:0= )"
+	uuid? ( sys-apps/util-linux:0 )"
 
 DEPEND="${RDEPEND}"
 
