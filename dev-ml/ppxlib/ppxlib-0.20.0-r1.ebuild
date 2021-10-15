@@ -16,7 +16,7 @@ SRC_URI="https://github.com/ocaml-ppx/ppxlib/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
@@ -30,17 +30,5 @@ RDEPEND="
 	>=dev-ml/ppx_derivers-1.2.1:=
 	>=dev-ml/stdio-0.11.0:=
 "
-DEPEND="${DEPEND}
-	test? (
-		dev-ml/cinaps:=
-		dev-ml/re:=
-	)
-"
-
-src_install() {
-	dune_src_install
-
-	# Clashes with dev-libs/nss[utils], accidentally installed upstream
-	# https://github.com/ocaml-ppx/ppxlib/issues/224
-	rm "${ED}"/usr/bin/pp || die
-}
+DEPEND="${RDEPEND}
+	test? ( dev-ml/cinaps:= )"

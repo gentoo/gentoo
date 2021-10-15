@@ -27,7 +27,7 @@ RDEPEND="
 	dev-ml/stdlib-shims:=
 	>=dev-ml/ppx_derivers-1.2.1:=
 "
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	test? (
 		dev-ml/findlib:=
 		>=dev-ml/base-0.11.0:=

@@ -22,12 +22,12 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-ml/ocaml-compiler-libs-0.11.0:=
-	>=dev-ml/ocaml-migrate-parsetree-2.2.0:=
+	>=dev-ml/ocaml-migrate-parsetree-2.1.0:=
 	dev-ml/sexplib0:=
 	dev-ml/stdlib-shims:=
 	>=dev-ml/ppx_derivers-1.2.1:=
 "
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	test? (
 		dev-ml/findlib:=
 		>=dev-ml/base-0.11.0:=
@@ -38,6 +38,10 @@ DEPEND="${DEPEND}
 "
 BDEPEND=">=dev-ml/dune-2.8"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-fix-ocaml-4.13.patch
-)
+src_install() {
+	dune_src_install
+
+	# Clashes with dev-libs/nss[utils], accidentally installed upstream
+	# https://github.com/ocaml-ppx/ppxlib/issues/224
+	rm "${ED}"/usr/bin/pp || die
+}
