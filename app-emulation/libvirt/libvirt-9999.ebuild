@@ -288,7 +288,9 @@ src_test() {
 	export VIR_TEST_DEBUG=1
 	# Don't run the syntax check tests, they're fragile and not relevant
 	# to us downstream anyway.
-	meson_src_test --no-suite syntax-check
+	# We also crank up the timeout (as Fedora does) just to preempt failures
+	# on slower arches.
+	meson_src_test --no-suite syntax-check --timeout-multiplier 10
 }
 
 src_install() {
