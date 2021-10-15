@@ -66,5 +66,6 @@ src_install() {
 }
 
 pkg_postinst() {
+	optfeature "sound support" media-sound/pulseaudio media-video/pipewire
 	optfeature "system tray support" dev-libs/libappindicator
 }
