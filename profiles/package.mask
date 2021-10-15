@@ -123,20 +123,6 @@ app-text/tidy-html5
 # and may be buggier or less secure. Only unmask if really wanted.
 x11-drivers/nvidia-drivers:0/vulkan
 
-# Gnome Team <gnome@gentoo.org> (2021-10-09)
-# GNOME 41 mask, bug #812986
->=gnome-extra/evolution-data-server-3.41
->=mail-client/evolution-3.41
->=gnome-extra/evolution-ews-3.41
->=gnome-extra/gnome-calendar-41.0
->=gnome-extra/gnome-contacts-41.0
->=x11-wm/mutter-41.0
->=dev-libs/gjs-1.69
->=gnome-base/gsettings-desktop-schemas-41.0
->=gnome-base/gnome-shell-41.0
->=gnome-extra/gnome-shell-extensions-41.0
->=gnome-base/gdm-41.0
-
 # Fabian Groffen <grobian@gentoo.org> (2021-10-03)
 # Masked for erratic behaviour
 # https://bugs.exim.org/show_bug.cgi?id=2813
