@@ -12,7 +12,7 @@ SRC_URI="https://www.dettus.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~mips x86"
+KEYWORDS="amd64 ~arm ~mips ~riscv x86"
 IUSE=""
 
 DEPEND="sys-libs/ncurses:="
