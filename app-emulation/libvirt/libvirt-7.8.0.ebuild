@@ -217,6 +217,11 @@ src_prepare() {
 	default
 	python_fix_shebang .
 
+	# Skip fragile tests which relies on pristine environment
+	# (Breaks because of sandbox environment variables)
+	# bug #802876
+	sed -i -e "/commandtest/d" tests/meson.build || die
+
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r19" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
