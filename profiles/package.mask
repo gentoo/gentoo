@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-10-15)
+# Drop broken package with no reverse dependencies
+# Removal on 2021-11-15. bug #817965
+dev-ml/async_ssl
+
 # Andreas K. Huettel <dilfridge@gentoo.org> (2021-10-14)
 # Unused and outdated packages; the version in core Perl is
 # newer. Removal in 30 days.
