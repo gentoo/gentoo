@@ -53,7 +53,7 @@ src_install() {
 	use ocamlopt && nativelibs="$(echo _build/src/uutf.cm{x,xa,xs} _build/src/uutf.a)"
 	ocamlfind install uutf _build/pkg/META _build/src/uutf.mli _build/src/uutf.cm{a,i} ${nativelibs} || die
 
-	use utftrip && newbin utftrip.$(usex ocamlopt native byte) utftrip
+	use utftrip && newbin _build/test/utftrip.$(usex ocamlopt native byte) utftrip
 	dodoc CHANGES.md README.md
 
 	if use doc ; then
