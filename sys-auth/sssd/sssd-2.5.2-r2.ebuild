@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit autotools linux-info multilib-minimal python-single-r1 pam systemd toolchain-funcs
+inherit autotools linux-info multilib-minimal python-single-r1 pam systemd toolchain-funcs optfeature
 
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
 HOMEPAGE="https://github.com/SSSD/sssd"
@@ -299,4 +299,5 @@ pkg_postinst() {
 	elog "You must set up sssd.conf (default installed into /etc/sssd)"
 	elog "and (optionally) configuration in /etc/pam.d in order to use SSSD"
 	elog "features. Please see howto in	https://sssd.io/docs/design_pages/smartcard_authentication_require.html"
+	optfeature "Kerberos keytab renew (see krb5_renew_interval)" app-crypt/adcli
 }
