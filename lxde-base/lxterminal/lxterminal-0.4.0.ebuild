@@ -31,6 +31,9 @@ BDEPEND="
 
 src_prepare() {
 	xdg_src_prepare
+
+	rm aclocal.m4
+
 	eautoreconf
 }
 
