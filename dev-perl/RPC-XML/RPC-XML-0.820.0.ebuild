@@ -29,9 +29,13 @@ BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-7.560.0
 	test? (
 		virtual/perl-IO-Socket-IP
+		dev-perl/Net-Server
 		>=virtual/perl-Test-Simple-1.302.183
 	)
 "
+
+# tests seem to be a bit flaky
+DIST_TEST=do
 
 src_compile() {
 	perl-module_src_compile
