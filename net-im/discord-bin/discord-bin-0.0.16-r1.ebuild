@@ -6,7 +6,7 @@ EAPI=8
 MY_PN=${PN/-bin/}
 MY_BIN="D${MY_PN/d/}"
 
-inherit desktop linux-info pax-utils unpacker xdg
+inherit desktop linux-info optfeature pax-utils unpacker xdg
 
 DESCRIPTION="All-in-one voice and text chat for gamers"
 HOMEPAGE="https://discordapp.com"
@@ -18,7 +18,6 @@ KEYWORDS="~amd64"
 RESTRICT="mirror bindist"
 
 RDEPEND="
-	dev-libs/libappindicator:=
 	dev-libs/nspr
 	dev-libs/nss
 	gnome-base/gconf
@@ -64,4 +63,8 @@ src_install() {
 	dosym ../../opt/${MY_PN}/${MY_BIN} usr/bin/${MY_PN}
 
 	pax-mark -m "${ED}"/opt/${MY_PN}/${MY_PN}
+}
+
+pkg_postinst() {
+	optfeature "system tray support" dev-libs/libappindicator
 }
