@@ -11,8 +11,23 @@ abi_uri() {
 		*-macos)    os=mac      ;;
 		*-solaris)  os=solaris  ;;
 	esac
+
+	libc_uri() {
+		local base_uri="https://github.com/adoptium/temurin${SLOT}-binaries/releases/download/jdk-${MY_PV}"
+		if [[ ${2} == amd64 ]]; then
+			echo "elibc_glibc? (
+					${base_uri}/OpenJDK${SLOT}-jdk_${1}_${os}_hotspot_${MY_PV//+/_}.tar.gz
+				)
+				elibc_musl? (
+					${base_uri}/OpenJDK${SLOT}-jdk_${1}_alpine-${os}_hotspot_${MY_PV//+/_}.tar.gz
+				)"
+		else
+			echo "${base_uri}/OpenJDK${SLOT}-jdk_${1}_${os}_hotspot_${MY_PV//+/_}.tar.gz"
+		fi
+	}
+
 	echo "${2-$1}? (
-			https://github.com/adoptium/temurin${SLOT}-binaries/releases/download/jdk-${MY_PV}/OpenJDK${SLOT}-jdk_${1}_${os}_hotspot_${MY_PV//+/_}.tar.gz
+			$(libc_uri "$@")
 		)"
 }
 
@@ -39,7 +54,7 @@ RDEPEND="
 		media-libs/fontconfig:1.0
 		media-libs/freetype:2
 		media-libs/harfbuzz
-		>=sys-libs/glibc-2.2.5:*
+		elibc_glibc? ( >=sys-libs/glibc-2.2.5:* )
 		sys-libs/zlib
 		alsa? ( media-libs/alsa-lib )
 		cups? ( net-print/cups )
