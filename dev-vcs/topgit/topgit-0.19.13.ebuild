@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit bash-completion-r1
 
@@ -13,7 +13,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-BDEPEND="sys-apps/sed
+BDEPEND="dev-lang/perl
+	sys-apps/sed
 	virtual/awk"
 RDEPEND=">=dev-vcs/git-2.10.0"
 IUSE="test"
