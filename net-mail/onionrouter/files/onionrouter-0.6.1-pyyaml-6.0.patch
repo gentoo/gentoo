@@ -1,0 +1,24 @@
+https://github.com/ehloonion/onionrouter/pull/26
+
+From 45853184a610fd83c77adaebb240f164214bd450 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Thu, 14 Oct 2021 22:45:25 -0400
+Subject: [PATCH] Allow pyyaml 6.0
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index ad634ac..3b7d94c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -11,7 +11,7 @@
+ 
+ requirements = [
+     "dnspython>=2.0.0,<3.0.0",
+-    "PyYAML>=4.2b1,<6.0.0",
++    "PyYAML>=4.2b1",
+ ]
+ 
+ test_requirements = [
