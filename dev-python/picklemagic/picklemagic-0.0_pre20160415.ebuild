@@ -1,23 +1,23 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit python-r1
 
-SRC_URI="https://dev.gentoo.org/~bircoph/distfiles/${P}.tar.xz"
-KEYWORDS="~amd64 ~x86"
 DESCRIPTION="A library for analysing python pickles safely"
 HOMEPAGE="https://github.com/CensoredUsername/picklemagic"
+SRC_URI="https://dev.gentoo.org/~bircoph/distfiles/${P}.tar.xz"
+
 LICENSE="WTFPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="doc? ( dev-python/sphinx )"
-DEPEND="${PYTHON_DEPS}"
-RDEPEND="${DEPEND}"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RDEPEND="${PYTHON_DEPS}"
 
 src_compile() {
 	use doc && emake -C doc html
