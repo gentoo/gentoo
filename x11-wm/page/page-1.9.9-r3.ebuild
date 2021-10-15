@@ -42,7 +42,7 @@ src_install() {
 	ebegin "Changing references from 'page' to 'pagewm'"
 	mv "${D}"usr/bin/page "${D}"usr/bin/pagewm || die "Could not rename binary!"
 	sed -i -e "s:/usr/bin/page:/usr/bin/pagewm:" "${D}"usr/share/applications/page.desktop || die "Could not change .desktop file!"
-	eend
+	eend $?
 }
 
 pkg_postinst() {
