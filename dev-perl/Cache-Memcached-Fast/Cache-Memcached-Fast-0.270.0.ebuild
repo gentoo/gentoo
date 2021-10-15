@@ -38,6 +38,9 @@ PERL_RM_FILES=(
 	"t/pod.t"
 )
 
+# Tests a bit flaky
+DIST_TEST=do
+
 src_compile() {
 	mymake=(
 		"OPTIMIZE=${CFLAGS}"
