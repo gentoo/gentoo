@@ -3,23 +3,25 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1
 
-MY_P=${PN,,}-${PV}
+MY_P="${PN,,}-${PV}"
+
 DESCRIPTION="Python library for communicating with AMQP peers using Twisted"
 HOMEPAGE="https://github.com/txamqp/txamqp"
 # pypi tarball misses doc files
 # https://github.com/txamqp/txamqp/pull/10
 SRC_URI="https://github.com/txamqp/txamqp/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
-KEYWORDS="~amd64 ~x86 ~x64-solaris"
 SLOT="0"
+KEYWORDS="~amd64 ~x86 ~x64-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/twisted[${PYTHON_USEDEP}]
@@ -31,22 +33,36 @@ BDEPEND="
 		net-misc/rabbitmq-server
 	)"
 
-# Tests connect to the system rabbitmq server
-# TODO: figure out how to start an isolated instance
-RESTRICT="test"
-
 python_test() {
 	cd src || die
 	# tests look for those files relatively to modules
 	cp -r specs "${BUILD_DIR}"/lib || die
 
-	TXAMQP_BROKER=RABBITMQ trial txamqp
+	TXAMQP_BROKER=RABBITMQ "${EPYTHON}" -m twisted.trial txamqp
 	local ret=${?}
 
 	# avoid installing spec files
 	rm -r "${BUILD_DIR}"/lib/specs || die
 
 	[[ ${ret} == 0 ]] || die "Tests failed with ${EPYTHON}"
+}
+
+src_test() {
+	einfo "Starting rabbitmq"
+	local -x RABBITMQ_LOG_BASE="${T}/rabbitmq/log"
+	local -x RABBITMQ_MNESIA_BASE="${T}/rabbitmq/mnesia"
+	local -x RABBITMQ_LOGS="${T}/rabbitmq.log"
+	local -x RABBITMQ_PID_FILE="${T}/rabbitmq.pid"
+	local -x RABBITMQ_ENABLED_PLUGINS_FILE="${T}/rabbitmq/enabled_plugins"
+	/usr/libexec/rabbitmq/rabbitmq-server -p 5672:5672 &
+
+	einfo "Waiting for rabbitmq to fully load"
+	sleep 10 # Maybe need to increase timeout
+
+	distutils-r1_src_test
+
+	einfo "Stopping rabbitmq"
+	kill "$(<"${RABBITMQ_PID_FILE}")" || die
 }
 
 python_install_all() {
