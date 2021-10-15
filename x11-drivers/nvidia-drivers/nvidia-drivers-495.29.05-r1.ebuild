@@ -474,7 +474,9 @@ pkg_postinst() {
 		elog
 		elog "While this version of ${PN} adds GBM support (allowing a wider"
 		elog "range of wayland compositors, such as sway), be warned it is very"
-		elog "experimental."
+		elog "experimental. While not essential, some features also need"
+		elog ">=egl-wayland-1.1.8 which is known to cause EGLStream regressions."
+		elog
 		elog "If lacking a cursor with wlroots, try WLR_NO_HARDWARE_CURSORS=1"
 		elog "Also of interest: __GLX_VENDOR_LIBRARY_NAME=nvidia, GBM_BACKEND=nvidia-drm"
 	fi
