@@ -286,7 +286,9 @@ src_configure() {
 
 src_test() {
 	export VIR_TEST_DEBUG=1
-	meson_src_test
+	# Don't run the syntax check tests, they're fragile and not relevant
+	# to us downstream anyway.
+	meson_src_test --no-suite syntax-check
 }
 
 src_install() {
