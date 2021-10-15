@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/pipewire/${PN}/-/archive/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~riscv"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Replacement for pipewire-media-session"
@@ -21,9 +21,12 @@ HOMEPAGE="https://gitlab.freedesktop.org/pipewire/wireplumber"
 
 LICENSE="MIT"
 SLOT="0/0.4"
-IUSE="systemd test"
+IUSE="elogind systemd test"
 
-REQUIRED_USE="${LUA_REQUIRED_USE}"
+REQUIRED_USE="
+	${LUA_REQUIRED_USE}
+	?? ( elogind systemd )
+"
 
 RESTRICT="!test? ( test )"
 
@@ -39,6 +42,7 @@ DEPEND="
 	>=dev-libs/glib-2.62
 	>=media-video/pipewire-0.3.37
 	virtual/libc
+	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd )
 "
 
@@ -55,6 +59,7 @@ src_configure() {
 		-Dintrospection=disabled # Only used for Sphinx doc generation
 		-Dsystem-lua=true # We always unbundle everything we can
 		-Dsystem-lua-version=$(ver_cut 1-2 $(lua_get_version))
+		$(meson_feature elogind)
 		$(meson_feature systemd)
 		-Dsystemd-system-service=false # Matches upstream
 		$(meson_use systemd systemd-user-service)
