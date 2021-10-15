@@ -17,57 +17,26 @@ SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
 IUSE="+X aqua +asimage c++11 c++14 +c++17 cuda cudnn +davix debug emacs
 	+examples fits fftw fortran +gdml graphviz +gsl http libcxx +minuit
 	mpi mysql odbc +opengl oracle postgres prefix pythia6 pythia8 +python
-	qt5 R +roofit +root7 shadow sqlite +ssl +tbb test +tmva +unuran vc
-	vmc +xml xrootd"
-RESTRICT="!test? ( test )"
+	qt5 R +roofit +root7 shadow sqlite +ssl +tbb test +tmva +unuran uring
+	vc vmc +xml xrootd"
 
 SLOT="$(ver_cut 1-2)/$(ver_cut 3)"
-LICENSE="BSD LGPL-2+ freedist MSttfEULA OFL UoI-NCSA"
+LICENSE="BSD LGPL-2+ UoI-NCSA"
 KEYWORDS="~amd64 ~x86"
-
-REQUIRED_USE="
-	^^ ( c++11 c++14 c++17 )
-	cuda? ( tmva )
-	cudnn? ( cuda )
-	!X? ( !asimage !opengl !qt5 )
-	davix? ( ssl xml )
-	python? ( ${PYTHON_REQUIRED_USE} )
-	qt5? ( root7 )
-	root7? ( || ( c++14 c++17 ) )
-	tmva? ( gsl )
-"
 
 CDEPEND="
 	app-arch/lz4
 	app-arch/zstd
 	app-arch/xz-utils
-	fortran? ( dev-lang/cfortran )
+	dev-cpp/nlohmann_json
 	dev-libs/libpcre:3
 	dev-libs/xxhash
-	media-fonts/dejavu
 	media-libs/freetype:2
 	media-libs/libpng:0=
 	virtual/libcrypt:=
 	sys-libs/ncurses:=
 	sys-libs/zlib
-	X? (
-		x11-libs/libX11:0
-		x11-libs/libXext:0
-		x11-libs/libXft:0
-		x11-libs/libXpm:0
-		opengl? (
-			media-libs/ftgl:0=
-			media-libs/glew:0=
-			virtual/opengl
-			virtual/glu
-			x11-libs/gl2ps:0=
-		)
-		qt5? (
-			dev-qt/qtcore:5
-			dev-qt/qtgui:5
-			dev-qt/qtwebengine:5[widgets]
-		)
-	)
+
 	asimage? ( media-libs/libafterimage[gif,jpeg,png,tiff] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-9.0 )
 	cudnn? ( dev-libs/cudnn )
@@ -75,11 +44,11 @@ CDEPEND="
 	emacs? ( >=app-editors/emacs-23.1:* )
 	fftw? ( sci-libs/fftw:3.0= )
 	fits? ( sci-libs/cfitsio:0= )
+	fortran? ( dev-lang/cfortran )
 	graphviz? ( media-gfx/graphviz )
 	gsl? ( sci-libs/gsl:= )
 	http? ( dev-libs/fcgi:0= )
 	libcxx? ( sys-libs/libcxx )
-	unuran? ( sci-mathematics/unuran:0= )
 	minuit? ( !sci-libs/minuit )
 	mpi? ( virtual/mpi )
 	mysql? ( dev-db/mysql-connector-c )
@@ -98,25 +67,61 @@ CDEPEND="
 	shadow? ( sys-apps/shadow )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( dev-libs/openssl:0= )
-	tbb? ( >=dev-cpp/tbb-2018 )
+	tbb? ( dev-cpp/tbb )
 	tmva? (
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_USEDEP}]
 		')
 	)
+	unuran? ( sci-mathematics/unuran:0= )
+	uring? ( sys-libs/liburing )
 	vc? ( dev-libs/vc:= )
+	X? (
+		x11-libs/libX11:0
+		x11-libs/libXext:0
+		x11-libs/libXft:0
+		x11-libs/libXpm:0
+		opengl? (
+			media-libs/ftgl:0=
+			media-libs/glew:0=
+			virtual/opengl
+			virtual/glu
+			x11-libs/gl2ps:0=
+		)
+		qt5? (
+			dev-qt/qtcore:5
+			dev-qt/qtgui:5
+			dev-qt/qtwebengine:5[widgets]
+		)
+	)
 	xml? ( dev-libs/libxml2:2= )
 	xrootd? ( net-libs/xrootd:0= )
 "
+RDEPEND="
+	${CDEPEND}
+	media-fonts/dejavu
+	media-fonts/stix-fonts
+	virtual/ttf-fonts
+"
+DEPEND="
+	${CDEPEND}
+	virtual/pkgconfig
+"
 
-DEPEND="${CDEPEND}
-	virtual/pkgconfig"
-
-RDEPEND="${CDEPEND}"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-6.12.06_cling-runtime-sysroot.patch
-)
+PATCHES=( "${FILESDIR}/${PN}-6.12.06_cling-runtime-sysroot.patch" )
+RESTRICT="!test? ( test )"
+REQUIRED_USE="
+	^^ ( c++11 c++14 c++17 )
+	cuda? ( tmva )
+	cudnn? ( cuda )
+	!X? ( !asimage !opengl !qt5 )
+	davix? ( ssl xml )
+	python? ( ${PYTHON_REQUIRED_USE} )
+	qt5? ( root7 )
+	root7? ( || ( c++14 c++17 ) )
+	tmva? ( gsl )
+	uring? ( root7 )
+"
 
 pkg_setup() {
 	use fortran && fortran-2_pkg_setup
@@ -137,6 +142,9 @@ src_prepare() {
 
 	# CSS should use local images
 	sed -i -e 's,http://.*/,,' etc/html/ROOT.css || die "html sed failed"
+
+	# remove fonts
+	rm -r fonts/* || die
 
 	eapply_user
 }
@@ -161,6 +169,8 @@ src_configure() {
 		-DCMAKE_INSTALL_LIBDIR="lib"
 		-DDEFAULT_SYSROOT="${EPREFIX}"
 		-DCLING_BUILD_PLUGINS=OFF
+		-Dasserts=OFF
+		-Ddev=OFF
 		-Dexceptions=ON
 		-Dfail-on-missing=ON
 		-Dgnuinstall=OFF
@@ -168,6 +178,8 @@ src_configure() {
 		-Dsoversion=ON
 		-Dbuiltin_llvm=ON
 		-Dbuiltin_clang=ON
+		-Dbuiltin_cling=ON
+		-Dbuiltin_openui5=ON
 		-Dbuiltin_afterimage=OFF
 		-Dbuiltin_cfitsio=OFF
 		-Dbuiltin_davix=OFF
@@ -179,6 +191,7 @@ src_configure() {
 		-Dbuiltin_gsl=OFF
 		-Dbuiltin_lz4=OFF
 		-Dbuiltin_lzma=OFF
+		-Dbuiltin_nlohmannjson=OFF
 		-Dbuiltin_openssl=OFF
 		-Dbuiltin_pcre=OFF
 		-Dbuiltin_tbb=OFF
@@ -203,6 +216,7 @@ src_configure() {
 		-Ddataframe=ON
 		-Ddavix=$(usex davix)
 		-Ddcache=OFF
+		-Ddistcc=OFF
 		-Dfcgi=$(usex http)
 		-Dfftw3=$(usex fftw)
 		-Dfitsio=$(usex fits)
@@ -245,6 +259,7 @@ src_configure() {
 		-Dsqlite=$(usex sqlite)
 		-Dssl=$(usex ssl)
 		-Dtcmalloc=OFF
+		-Dtest_distrdf_pyspark=OFF
 		-Dtesting=$(usex test)
 		-Dtmva=$(usex tmva)
 		-Dtmva-cpu=$(usex tmva)
@@ -252,6 +267,7 @@ src_configure() {
 		-Dtmva-pymva=$(usex tmva)
 		-Dtmva-rmva=$(usex R)
 		-Dunuran=$(usex unuran)
+		-During=$(usex uring)
 		-Dvc=$(usex vc)
 		-Dvdt=OFF
 		-Dveccore=OFF
@@ -296,7 +312,7 @@ src_install() {
 		elisp-install ${PN}-$(ver_cut 1-2) "${BUILD_DIR}"/root-help.el
 	fi
 
-	pushd "${D}/${ROOTSYS}" > /dev/null
+	pushd "${D}/${ROOTSYS}" || die
 
 	rm -r emacs bin/*.{csh,sh,fish} || die
 
@@ -305,7 +321,7 @@ src_install() {
 	fi
 
 	# create versioned symlinks for binaries
-	cd bin;
+	cd bin || die
 	for exe in *; do
 		dosym "${exe}" "/usr/lib/${PN}/$(ver_cut 1-2)/bin/${exe}-$(ver_cut 1-2)"
 	done

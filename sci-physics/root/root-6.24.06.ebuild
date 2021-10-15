@@ -22,7 +22,7 @@ IUSE="+X aqua +asimage c++11 c++14 +c++17 cuda cudnn +davix debug emacs
 RESTRICT="!test? ( test )"
 
 SLOT="$(ver_cut 1-2)/$(ver_cut 3)"
-LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
+LICENSE="BSD LGPL-2+ freedist MSttfEULA OFL UoI-NCSA"
 KEYWORDS="~amd64 ~x86"
 
 REQUIRED_USE="

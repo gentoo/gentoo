@@ -34,7 +34,7 @@ else
 	SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
 fi
 
-LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
+LICENSE="BSD LGPL-2+ UoI-NCSA"
 
 REQUIRED_USE="
 	^^ ( c++11 c++14 c++17 )
@@ -57,7 +57,6 @@ CDEPEND="
 	dev-cpp/nlohmann_json
 	dev-libs/libpcre:3
 	dev-libs/xxhash
-	media-fonts/dejavu
 	media-libs/freetype:2
 	media-libs/libpng:0=
 	virtual/libcrypt:=
@@ -126,11 +125,14 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 
-RDEPEND="${CDEPEND}"
+RDEPEND="
+	${CDEPEND}
+	media-fonts/dejavu
+	media-fonts/stix-fonts
+	virtual/ttf-fonts
+"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-6.12.06_cling-runtime-sysroot.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-6.12.06_cling-runtime-sysroot.patch )
 
 pkg_setup() {
 	use fortran && fortran-2_pkg_setup
@@ -151,6 +153,9 @@ src_prepare() {
 
 	# CSS should use local images
 	sed -i -e 's,http://.*/,,' etc/html/ROOT.css || die "html sed failed"
+
+	# remove fonts
+	rm -r fonts/*
 
 	eapply_user
 }
