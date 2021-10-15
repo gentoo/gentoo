@@ -86,7 +86,7 @@ src_configure() {
 	#unset CFLAGS CPPFLAGS CXXFLAGS FFLAGS FCFLAGS LDFLAGS
 
 	# Forcing Bash as there's quite a few bashisms in the build system
-	CONFIG_SHELL="${BROOT}/bin/bash" econf \
+	CONFIG_SHELL="${BROOT}/bin/bash" econf ${c} \
 		--with-pm=hydra \
 		--disable-mpe \
 		--disable-fast \
