@@ -15,14 +15,12 @@ KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+RDEPEND="
 	dev-ml/findlib:=
 	dev-ml/re:=
 "
-RDEPEND="${DEPEND}"
-BDEPEND=""
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	test? (
 		dev-ml/ppx_jane
-		)
+	)
 "
