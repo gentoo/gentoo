@@ -13,9 +13,8 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 
-DEPEND="dev-lang/ocaml:="
-RDEPEND="${DEPEND}"
-DEPEND="${DEPEND}
+RDEPEND="dev-lang/ocaml:="
+DEPEND="${RDEPEND}
 	dev-ml/cppo"
 
 src_install() {
