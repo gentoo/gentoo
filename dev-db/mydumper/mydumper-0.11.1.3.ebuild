@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
-RDEPEND="app-arch/zstd:=
+RDEPEND="app-arch/zstd
 	dev-db/mysql-connector-c:=
 	dev-libs/glib:2
 	dev-libs/libpcre
