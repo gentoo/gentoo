@@ -25,5 +25,6 @@ BDEPEND="${RDEPEND}
 		>=dev-perl/Test-Exception-0.310.0
 		>=dev-perl/Capture-Tiny-0.130.0
 		>=virtual/perl-Test-Simple-0.800.0
+		dev-perl/Test-Warnings
 	)
 "
