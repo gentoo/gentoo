@@ -19,7 +19,10 @@ RDEPEND="
 "
 BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.380.0
-	test? ( >=virtual/perl-Test-Simple-0.880.0 )
+	test? (
+		>=virtual/perl-Test-Simple-0.880.0
+		dev-perl/Test-Warnings
+	)
 "
 
 PERL_RM_FILES=( "t/pod_coverage.t" "t/pod.t" )
