@@ -86,5 +86,5 @@ pkg_postinst() {
 	ewarn "chown root:${PN} /etc/${PN} && chmod 2750 /etc/${PN}"
 	ewarn "chown root:${PN} /etc/${PN}/${PN}.keystore && chmod 0660 /etc/${PN}/${PN}.keystore"
 
-	tmpfiles_process
+	tmpfiles_process /usr/lib/tmpfiles.d/elasticsearch.conf
 }
