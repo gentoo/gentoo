@@ -85,6 +85,9 @@ src_configure() {
 	# dropped w/ bug #725842 fix
 	#unset CFLAGS CPPFLAGS CXXFLAGS FFLAGS FCFLAGS LDFLAGS
 
+	# Possible workaround for bug #818280
+	append-flags -fcommon
+
 	# Forcing Bash as there's quite a few bashisms in the build system
 	CONFIG_SHELL="${BROOT}/bin/bash" econf ${c} \
 		--with-pm=hydra \
