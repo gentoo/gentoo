@@ -8,7 +8,8 @@ inherit distutils-r1
 
 DESCRIPTION="Python client for rqlite"
 HOMEPAGE="https://github.com/rqlite/pyrqlite"
-SRC_URI="https://github.com/rqlite/pyrqlite/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rqlite/pyrqlite/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/rqlite/pyrqlite/pull/36.patch -> ${P}-python3.10-test_support.patch"
 
 LICENSE="MIT"
 SLOT="0"
@@ -16,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 BDEPEND="test? ( dev-db/rqlite )"
+PATCHES=("${DISTDIR}/${P}-python3.10-test_support.patch")
 
 distutils_enable_tests pytest
 
