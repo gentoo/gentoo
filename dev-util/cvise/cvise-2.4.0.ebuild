@@ -31,6 +31,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
+		dev-python/chardet[${PYTHON_USEDEP}]
 		dev-python/pebble[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 	')
