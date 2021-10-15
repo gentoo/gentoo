@@ -135,6 +135,7 @@ x11-drivers/nvidia-drivers:0/vulkan
 >=gnome-base/gsettings-desktop-schemas-41.0
 >=gnome-base/gnome-shell-41.0
 >=gnome-extra/gnome-shell-extensions-41.0
+>=gnome-base/gdm-41.0
 
 # Fabian Groffen <grobian@gentoo.org> (2021-10-03)
 # Masked for erratic behaviour
