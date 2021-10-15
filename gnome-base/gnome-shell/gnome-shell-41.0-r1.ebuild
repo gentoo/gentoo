@@ -8,6 +8,7 @@ inherit gnome.org gnome2-utils meson python-single-r1 virtualx xdg
 
 DESCRIPTION="Provides core UI functions for the GNOME desktop"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeShell"
+SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${PF}-patchset.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
@@ -135,6 +136,7 @@ BDEPEND="
 # app-text/asciidoc
 
 PATCHES=(
+	"${WORKDIR}"/patches/
 	# Fix automagic gnome-bluetooth dep, bug #398145
 	"${FILESDIR}"/40.0-optional-bluetooth.patch
 	# Change favorites defaults, bug #479918
