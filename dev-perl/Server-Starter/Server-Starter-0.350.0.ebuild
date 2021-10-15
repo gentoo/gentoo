@@ -23,3 +23,5 @@ BDEPEND="${RDEPEND}
 		>=dev-perl/Test-TCP-2.80.0
 	)
 "
+
+DIST_TEST=do
