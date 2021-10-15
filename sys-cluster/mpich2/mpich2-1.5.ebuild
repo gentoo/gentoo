@@ -89,7 +89,7 @@ src_configure() {
 	c="${c} --docdir=${EPREFIX}/usr/share/doc/${PF}"
 
 	# Forcing Bash as there's quite a few bashisms in the build system
-	CONFIG_SHELL="${BROOT}/bin/bash" econf \
+	CONFIG_SHELL="${BROOT}/bin/bash" econf ${c} \
 		--with-pm=hydra \
 		--disable-mpe \
 		--disable-fast \
