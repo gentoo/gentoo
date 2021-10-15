@@ -476,6 +476,7 @@ pkg_postinst() {
 		elog "range of wayland compositors, such as sway), be warned it is very"
 		elog "experimental."
 		elog "If lacking a cursor with wlroots, try WLR_NO_HARDWARE_CURSORS=1"
+		elog "Also of interest: __GLX_VENDOR_LIBRARY_NAME=nvidia, GBM_BACKEND=nvidia-drm"
 	fi
 
 	# Try to show this message only to users that may really need it
