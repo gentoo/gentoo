@@ -57,7 +57,10 @@ src_test() {
 	/usr/libexec/rabbitmq/rabbitmq-server -p 5672:5672 &
 
 	einfo "Waiting for rabbitmq to fully load"
-	sleep 10 # Maybe need to increase timeout
+	while ! { echo >/dev/tcp/localhost/5672 ; } &> /dev/null; do
+		sleep 1
+	done
+	einfo "rabbitmq is ready"
 
 	distutils-r1_src_test
 
