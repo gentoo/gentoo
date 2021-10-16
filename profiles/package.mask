@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-10-16)
+# Outdated virtual; the respective module was removed
+# from core Perl with Perl 5.32. Use dev-perl/Pod-Parser
+# instead. Removal in 30days.
+virtual/perl-Pod-Parser
+
 # David Seifert <soap@gentoo.org> (2021-10-16)
 # EAPI 5, open bugs, practically maintainer-needed,
 # abandoned upstream, no other distro carries this.
