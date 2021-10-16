@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2021-10-16)
+# EAPI 5, open bugs, practically maintainer-needed,
+# abandoned upstream, no other distro carries this.
+# Bug #632237, bug #656818, removal in 30 days.
+x11-themes/gtk-engines-flat
+
+# David Seifert <soap@gentoo.org> (2021-10-16)
 # EAPI 5, fails to compile with OpenSSL 1.1, bug #719974.
 # Removal in 30 days.
 mail-filter/spamdyke
