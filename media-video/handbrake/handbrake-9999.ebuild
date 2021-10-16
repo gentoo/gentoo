@@ -68,8 +68,7 @@ RDEPEND="
 		x11-libs/pango
 	)
 	fdk? ( media-libs/fdk-aac )
-	x265? ( >=media-libs/x265-3.2:0=[10bit,12bit,numa?] )
-	"
+	x265? ( >=media-libs/x265-3.2:0=[10bit,12bit,numa?] )"
 
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
