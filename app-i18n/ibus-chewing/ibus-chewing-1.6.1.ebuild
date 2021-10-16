@@ -1,10 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake-utils gnome2-utils virtualx
+inherit cmake gnome2-utils virtualx
 
 DESCRIPTION="Chinese Chewing engine for IBus"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
@@ -23,8 +23,8 @@ RDEPEND="app-i18n/ibus
 	x11-libs/libX11
 	gconf? ( gnome-base/gconf )
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	dev-util/cmake-fedora
+DEPEND="${RDEPEND}"
+BDEPEND="dev-util/cmake-fedora
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
@@ -37,15 +37,15 @@ src_configure() {
 		-DPRJ_DOC_DIR="${EPREFIX}"/usr/share/doc/${PF}
 	)
 	use nls || mycmakeargs+=( -DMANAGE_GETTEXT_SUPPORT=0 )
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
-	"${EPREFIX%/}/"${GLIB_COMPILE_SCHEMAS} --allow-any-name "${BUILD_DIR}"/bin || die
+	"${BROOT}"${GLIB_COMPILE_SCHEMAS} --allow-any-name "${BUILD_DIR}"/bin || die
 
 	export GSETTINGS_BACKEND="memory"
 	export GSETTINGS_SCHEMA_DIR="${BUILD_DIR}/bin"
-	virtx cmake-utils_src_test
+	virtx cmake_src_test
 }
 
 pkg_preinst() {
