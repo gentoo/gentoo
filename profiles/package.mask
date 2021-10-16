@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-10-16)
+# EAPI 5, fails to compile, QA issues, .NET team is
+# abandoned, bug #643452, bug #688404.
+# Removal in 30 days.
+dev-dotnet/dbus-sharp
+dev-dotnet/dbus-sharp-glib
+
 # Sam James <sam@gentoo.org> (2021-10-16)
 # Fails to compile with modern OCaml
 # bug #704464, bug #780090
