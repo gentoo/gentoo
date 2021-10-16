@@ -1,0 +1,26 @@
+--- a/configure.in
++++ b/configure.in
+@@ -9,7 +9,7 @@
+ AC_CANONICAL_HOST
+ AC_CANONICAL_TARGET
+ 
+-AM_CONFIG_HEADER([config.h])
++AC_CONFIG_HEADERS([config.h])
+ 
+ AM_INIT_AUTOMAKE(libvorbisidec,1.2.1)
+ 
+@@ -62,12 +62,12 @@
+         case $host in 
+         arm-*-*)
+                 DEBUG="-g -Wall -D__NO_MATH_INLINES -fsigned-char -D_ARM_ASSEM_"
+-                CFLAGS="-O2 -D_ARM_ASSEM_ -fsigned-char"
++                CFLAGS=" -D_ARM_ASSEM_ -fsigned-char"
+                 PROFILE="-W -pg -g -O2 -D_ARM_ASSEM_ -fsigned-char -fno-inline-functions";;
+ 
+         *)
+                 DEBUG="-g -Wall -D__NO_MATH_INLINES -fsigned-char"
+-                CFLAGS="-O2 -Wall -fsigned-char"
++                CFLAGS=" -Wall -fsigned-char"
+                 PROFILE="-Wall -pg -g -O2 -fsigned-char -fno-inline-functions";;
+         esac
+ fi
