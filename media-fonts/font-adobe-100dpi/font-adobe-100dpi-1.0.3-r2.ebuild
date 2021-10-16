@@ -6,5 +6,5 @@ inherit xorg-3
 
 DESCRIPTION="X.Org Adobe bitmap fonts"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="nls"
