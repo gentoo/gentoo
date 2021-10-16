@@ -295,7 +295,7 @@ sci-mathematics/octave hdf5 qhull
 
 # Jeroen Roovers <jer@gentoo.org> (2012-07-08)
 # media-libs/devil has not been fully tested on HPPA
-media-gfx/graphviz devil
+media-gfx/graphviz devil lefty
 
 # Jeroen Roovers <jer@gentoo.org> (2012-07-03)
 # Mask USE=connman for net-libs/gupnp (bug #424225)
