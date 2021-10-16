@@ -1,11 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="optional"
-KFMIN=5.80.0
+KFMIN=5.84.0
 QTMIN=5.15.2
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="activities +man mtp nfs openexr phonon samba +sftp taglib X"
 
 # requires running Plasma environment
-RESTRICT+=" test"
+RESTRICT="test"
 
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
@@ -71,14 +71,8 @@ RDEPEND="${DEPEND}
 BDEPEND="man? ( dev-util/gperf )"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-libmtp-0.1.19.patch
-	"${FILESDIR}"/${P}-kio_filenamesearch-crash.patch # bug 817008
+	"${FILESDIR}"/${PN}-21.04.3-kio_filenamesearch-crash.patch # bug 817008
 )
-
-src_prepare() {
-	ecm_src_prepare
-	cmake_comment_add_subdirectory network
-}
 
 src_configure() {
 	local mycmakeargs=(
@@ -86,7 +80,7 @@ src_configure() {
 		$(cmake_use_find_package activities KF5ActivitiesStats)
 		$(cmake_use_find_package activities Qt5Sql)
 		$(cmake_use_find_package man Gperf)
-		$(cmake_use_find_package mtp Mtp)
+		$(cmake_use_find_package mtp Libmtp)
 		$(cmake_use_find_package nfs TIRPC)
 		$(cmake_use_find_package openexr OpenEXR)
 		$(cmake_use_find_package phonon Phonon4Qt5)
