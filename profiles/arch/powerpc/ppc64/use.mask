@@ -4,8 +4,10 @@
 ### THIS FILE IS ONLY FOR PACKAGES MASKED ON BOTH 64-BIT AND 32-BIT USERLAND!!!
 
 # Sam James <sam@gentoo.org> (2021-10-16)
-# media-libs/openexr doesn't work on BE.
+# media-libs/openexr doesn't work on BE (bug #818424)
+# ...and openscenegraph needs openexr.
 openexr
+osg
 
 # Michał Górny <mgorny@gentoo.org> (2014-06-27)
 # Unmask multilib flag for the ABI.
