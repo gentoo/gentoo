@@ -1,0 +1,27 @@
+From cd99490efb82b66c75e92fab3ff97c480bfc9cf9 Mon Sep 17 00:00:00 2001
+From: Luca Barbato <lu_zero@gentoo.org>
+Date: Sat, 16 Oct 2021 10:56:22 +0200
+Subject: [PATCH] Use all the link line from ncurses pkg-config
+
+Otherwise it would fail at link time if ncurses has a stand alone tinfo library.
+---
+ cmake/FindCURSES.cmake | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/cmake/FindCURSES.cmake b/cmake/FindCURSES.cmake
+index 35d4a570f6..528211c45c 100644
+--- a/cmake/FindCURSES.cmake
++++ b/cmake/FindCURSES.cmake
+@@ -58,11 +58,7 @@ if(NCURSES_NOT_FOUND EQUAL -1)
+     set(HAVE_LIBNCURSES 1)
+     set(CURSES_INCLUDE "<ncurses.h>")
+ 
+-    find_library(CURSES_LIBRARY
+-      NAMES ncurses
+-      PATHS ${PC_NCurses_LIBRARY_DIRS}
+-    )
+-
++    set(CURSES_LIBRARY ${PC_NCurses_LINK_LIBRARIES})
+     set(CURSES_VERSION ${PC_NCurses_VERSION})
+ 
+     include(FindPackageHandleStandardArgs)
