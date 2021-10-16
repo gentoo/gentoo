@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2021-10-16)
+# Avoid unkeyworded dependencies
+x11-libs/gtk+ cloudprint
+
 # Sam James <sam@gentoo.org> (2021-09-14)
 # fdk-aac, libfreeaptx not keyworded here
 # nor is jack2
