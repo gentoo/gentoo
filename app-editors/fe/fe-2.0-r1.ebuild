@@ -44,7 +44,6 @@ src_compile() {
 src_install() {
 	emake \
 		prefix="${D}"/usr \
-		datadir="${D}"/usr/share \
 		datarootdir="${D}"/usr/share \
 		MANDIR="${D}"/usr/share/man \
 		install
