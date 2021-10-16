@@ -15,7 +15,7 @@ SRC_URI="https://sourceforge.net/projects/${PN}/files/Lazarus%20Zip%20_%20GZip/L
 
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 SLOT="0" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="minimal"
 
 DEPEND=">=dev-lang/fpc-${FPCVER}[source]
