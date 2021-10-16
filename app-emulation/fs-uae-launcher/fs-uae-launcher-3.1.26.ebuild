@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="lha"
-RETRICT="test" # The test files are just boilerplate.
+RESTRICT="test" # The test files are just boilerplate.
 
 RDEPEND="
 	app-emulation/fs-uae
