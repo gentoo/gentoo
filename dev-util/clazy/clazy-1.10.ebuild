@@ -36,3 +36,9 @@ src_configure() {
 	export LLVM_ROOT="/usr/lib/llvm/$(ver_cut 1 ${clang_version##sys-devel/clang-})"
 	cmake_src_configure
 }
+
+src_test() {
+	# Run tests against built copy, not installed
+	# bug #811723
+	PATH="${BUILD_DIR}/bin:${PATH}" LD_LIBRARY_PATH="${BUILD_DIR}/lib" cmake_src_test
+}
