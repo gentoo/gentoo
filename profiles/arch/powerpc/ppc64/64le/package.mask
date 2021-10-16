@@ -1,6 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-10-16)
+# Fails with "No byte-swap function available on big-endian platform." on be
+# but fine on le.
+# bug #711940
+-dev-db/mysql-connector-c++
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-17)↲
 # chromium works on ppc64le
 -www-client/chromium
