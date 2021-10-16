@@ -24,6 +24,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-autoconf.patch
 	"${FILESDIR}"/${P}-cflags.patch
 	"${FILESDIR}"/${P}-desktop-QA.patch
+	"${FILESDIR}"/${P}-format-security.patch
 )
 
 src_prepare() {
