@@ -9,7 +9,7 @@ inherit bash-completion-r1 distutils-r1 readme.gentoo-r1
 DESCRIPTION="A youtube-dl fork with additional features and fixes"
 HOMEPAGE="https://github.com/yt-dlp/yt-dlp"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-KEYWORDS="amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 LICENSE="public-domain"
 SLOT="0"
 
