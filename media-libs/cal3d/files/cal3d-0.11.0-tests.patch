@@ -1,5 +1,5 @@
---- tests/Makefile.am.old	2014-10-27 12:14:44.534607920 +0100
-+++ tests/Makefile.am	2014-10-27 12:16:00.825891248 +0100
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
 @@ -14,7 +14,7 @@
  EXTRA_DIST = \
  	$(wildcard cal3d_converter/base.??f)
