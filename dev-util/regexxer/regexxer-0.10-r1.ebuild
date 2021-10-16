@@ -1,10 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-GCONF_DEBUG=no
+EAPI=7
 
-inherit autotools epatch flag-o-matic gnome2
+inherit autotools gnome2
 
 DESCRIPTION="An interactive tool for performing search and replace operations"
 HOMEPAGE="http://regexxer.sourceforge.net/"
@@ -14,19 +13,22 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 
-RDEPEND=">=dev-cpp/glibmm-2.28:2
+RDEPEND="
+	dev-cpp/glibmm:2
 	dev-cpp/gtkmm:3.0
 	dev-cpp/gtksourceviewmm:3.0"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/intltool
 	virtual/pkgconfig
 	sys-devel/gettext"
 
-src_prepare() {
-	append-cxxflags -std=c++11
+PATCHES=(
+	"${FILESDIR}"/${P}-glib-2.32.patch
+	"${FILESDIR}"/${P}-sandbox.patch
+)
 
-	epatch "${FILESDIR}"/${P}-glib-2.32.patch
-	epatch "${FILESDIR}"/${P}-sandbox.patch
+src_prepare() {
+	default
 	eautoreconf
-	gnome2_src_prepare
 }
