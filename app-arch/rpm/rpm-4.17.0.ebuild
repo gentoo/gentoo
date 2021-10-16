@@ -121,9 +121,10 @@ src_install() {
 
 	dodoc CREDITS README*
 	if use doc; then
+		local docname
 		for docname in librpm; do
 			docinto "html/${docname}"
-			dodoc -r "doc/${docname}/html/."
+			dodoc -r "docs/${docname}/html/."
 		done
 	fi
 
