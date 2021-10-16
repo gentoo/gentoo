@@ -1,0 +1,17 @@
+musl doesn't have an internal __sighandler_t type,
+and only makes sighandler_t visible if _GNU_SOURCE
+is defined.
+https://bugs.gentoo.org/714026
+
+--- a/src/sunlink.c
++++ b/src/sunlink.c
+@@ -102,9 +102,6 @@
+ static volatile int SIGINT_received = 0;
+ #if defined(__unix__)
+ #include <signal.h>
+-#if defined(__linux__) && !defined(__USE_GNU)
+-typedef __sighandler_t sighandler_t;
+-#endif
+ #if defined(__FreeBSD__) || defined(__OpenBSD__)
+ typedef sig_t sighandler_t;
+ #endif
