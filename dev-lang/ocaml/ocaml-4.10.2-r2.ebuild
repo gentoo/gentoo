@@ -26,6 +26,11 @@ src_prepare() {
 
 	cp "${FILESDIR}"/ocaml.conf "${T}" || die
 
+	# Broken until 4.12
+	# bug #818445
+	filter-flags -flto
+	append-flags -fno-strict-aliasing
+
 	# OCaml generates textrels on 32-bit arches
 	# We can't do anything about it, but disabling it means that tests
 	# for OCaml-based packages won't fail on unexpected output
