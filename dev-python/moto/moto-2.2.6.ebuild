@@ -65,6 +65,14 @@ python_test() {
 		# incompatible versions?
 		tests/test_core/test_decorator_calls.py
 		tests/test_s3/test_s3_classdecorator.py
+		# Needs network (or docker?) but not marked as such, bug #807031
+		# TODO: report upstream
+		tests/test_batch/test_batch_jobs.py::test_terminate_job
+		tests/test_batch/test_batch_jobs.py::test_cancel_running_job
+		tests/test_batch/test_batch_jobs.py::test_dependencies
+		tests/test_batch/test_batch_jobs.py::test_container_overrides
+		tests/test_sqs/test_integration.py::test_invoke_function_from_sqs_exception
+		tests/test_sqs/test_sqs_integration.py::test_invoke_function_from_sqs_exception
 	)
 
 	# pytest-django causes freezegun try to mangle stuff inside django
