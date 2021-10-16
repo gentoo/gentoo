@@ -65,6 +65,10 @@ PDEPEND="
 src_prepare() {
 	eapply "${FILESDIR}"/2.7/{003,010}*.patch
 
+	if use elibc_musl ; then
+		eapply "${FILESDIR}"/2.7/{900,901}-musl-*.patch
+	fi
+
 	# Reset time on patched gem_prelude.rb to avoid the need for a base
 	# ruby during bootstrapping, bug 787137
 	touch -t 202001010000 gem_prelude.rb || die
