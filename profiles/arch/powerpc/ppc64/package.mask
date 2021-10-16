@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2021-10-16)
+# Broken on big endian.
+# bug #818424
+media-libs/openexr
+
+# Sam James <sam@gentoo.org> (2021-10-16)
 # Fails with "No byte-swap function available on big-endian platform."
 # bug #711940
 dev-db/mysql-connector-c++
