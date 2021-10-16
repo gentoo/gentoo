@@ -1,37 +1,45 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools epatch flag-o-matic
+EAPI=8
+
+inherit autotools flag-o-matic
 
 MY_P=${PN}${PV//./_}
 
 DESCRIPTION="sff to bmp converter"
 HOMEPAGE="http://sfftools.sourceforge.net/"
 SRC_URI="mirror://sourceforge/sfftools/${MY_P}_src.zip"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="HPND MIT"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ppc x86"
-IUSE=""
 
-RDEPEND=">=dev-libs/boost-1.49
+RDEPEND="
+	dev-libs/boost:=
 	media-libs/tiff:0
 	virtual/jpeg:0"
-DEPEND="${RDEPEND}
-	app-arch/unzip"
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip"
 
-S=${WORKDIR}/${MY_P}
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.1.1-gcc44-and-boost-1_37.patch
+	"${FILESDIR}"/${PN}-3.1.2-boost_fs3.patch
+	"${FILESDIR}"/${PN}-3.1.2-Wformat.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-3.1.1-gcc44-and-boost-1_37.patch \
-		"${FILESDIR}"/${PN}-3.1.2-boost_fs3.patch
-	append-cppflags -DBOOST_FILESYSTEM_VERSION=3
+	default
 	eautoreconf
 }
 
+src_configure() {
+	append-cppflags -DBOOST_FILESYSTEM_VERSION=3
+	default
+}
+
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 	dodoc doc/{changes,credits,readme}
 }
