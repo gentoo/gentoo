@@ -5,6 +5,7 @@
 # Broken on big endian, but should be fine on le.
 # bug #818424
 -media-libs/openexr
+-media-libs/ctl
 
 # Sam James <sam@gentoo.org> (2021-10-16)
 # Fails with "No byte-swap function available on big-endian platform." on be
