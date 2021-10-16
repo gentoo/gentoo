@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-10-16)
+# Fails to compile with modern OCaml
+# bug #704464, bug #780090
+# Removal on 2021-11-16.
+app-text/htmlc
+
 # Sam James <sam@gentoo.org> (2021-10-15)
 # Drop broken packages with no reverse dependencies
 # Removal on 2021-11-15. bug #817965, bug #771756, bug #767196
