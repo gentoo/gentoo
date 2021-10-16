@@ -8,6 +8,7 @@
 -media-libs/ctl
 -dev-games/openscenegraph
 -media-gfx/openvdb
+-media-libs/openimageio
 
 # Sam James <sam@gentoo.org> (2021-10-16)
 # Fails with "No byte-swap function available on big-endian platform." on be
