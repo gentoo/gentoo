@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -ppc
 
+# Sam James <sam@gentoo.org> (2021-10-16)
+# media-libs/openexr doesn't work on BE.
+openexr
+
 # Sam James <sam@gentoo.org> (2021-10-11)
 # sys-libs/llvm-libunwind isn't keyworded here
 llvm-libunwind
