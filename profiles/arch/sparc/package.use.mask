@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-10-16)
+# Requires dev-db/mariadb which, at last check, was broken on sparc.
+# bug #814719
+dev-python/mysqlclient test
+
 # Sam James <sam@gentoo.org> (2021-09-14)
 # jack2 not keyworded here
 # bug #807616
