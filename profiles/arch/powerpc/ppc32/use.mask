@@ -5,8 +5,10 @@
 -ppc
 
 # Sam James <sam@gentoo.org> (2021-10-16)
-# media-libs/openexr doesn't work on BE.
+# media-libs/openexr doesn't work on BE (bug #818424)
+# ...and openscenegraph needs openexr.
 openexr
+osg
 
 # Sam James <sam@gentoo.org> (2021-10-11)
 # sys-libs/llvm-libunwind isn't keyworded here
