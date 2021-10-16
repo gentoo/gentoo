@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-10-16)
+# openjfx for openjdk17 is not yet available
+dev-java/openjdk:17 javafx
+
 # Sam James <sam@gentoo.org> (2021-10-16)
 # Fails to compile, bug #787134
 =sys-fs/dd-rescue-1.99.11 cpu_flags_x86_avx2
