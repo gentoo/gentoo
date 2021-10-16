@@ -20,6 +20,15 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.3.8-install-symlinks.patch"
 )
 
+src_prepare() {
+	default
+	if [[ ${CHOST} == *darwin* && ${CHOST##*darwin} -le 17 ]] ; then
+		# Fix older Darwin inline definition problem
+		sed -i -e '/define _GL_EXTERN_INLINE_STDHEADER_BUG/s/_BUG/_DISABLE/' \
+			lib/config.hin || die
+	fi
+}
+
 src_configure() {
 	use static && append-flags -static
 	# avoid text relocation in gzip
