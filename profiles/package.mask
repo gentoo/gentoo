@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2021-10-16)
+# EAPI 5, fails to compile with OpenSSL 1.1, bug #674242.
+# Removal in 30 days.
+dev-java/netty-tcnative
+
+# David Seifert <soap@gentoo.org> (2021-10-16)
 # EAPI 5, fails to compile, QA issues, .NET team is
 # abandoned, bug #643452, bug #688404.
 # Removal in 30 days.
