@@ -32,6 +32,10 @@ BDEPEND="${RDEPEND}
 	test? ( x11-libs/gdk-pixbuf[jpeg] )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.249.930-skip-pixbuf-test.patch
+)
+
 src_test() {
 	virtx perl-module_src_test
 }
