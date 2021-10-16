@@ -69,7 +69,7 @@ src_configure() {
 
 	# Broken until 4.12
 	# bug #818445
-	filter-flags -flto
+	filter-flags '-flto*'
 	append-flags -fno-strict-aliasing
 
 	# -ggdb3 & co makes it behave weirdly, breaks sexplib

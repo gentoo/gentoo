@@ -21,7 +21,7 @@ BDEPEND="${RDEPEND}
 PDEPEND="emacs? ( app-emacs/ocaml-mode )
 	xemacs? ( app-xemacs/ocaml )"
 
-PATCHES=("${FILESDIR}"/${PN}-4.09.0-gcc-10.patch)
+PATCHES=( "${FILESDIR}"/${PN}-4.09.0-gcc-10.patch )
 
 src_prepare() {
 	default
@@ -30,7 +30,7 @@ src_prepare() {
 
 	# Broken until 4.12
 	# bug #818445
-	filter-flags -flto
+	filter-flags '-flto*'
 	append-flags -fno-strict-aliasing
 
 	# OCaml generates textrels on 32-bit arches

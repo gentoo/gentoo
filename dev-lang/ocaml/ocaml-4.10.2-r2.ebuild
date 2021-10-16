@@ -28,7 +28,7 @@ src_prepare() {
 
 	# Broken until 4.12
 	# bug #818445
-	filter-flags -flto
+	filter-flags '-flto*'
 	append-flags -fno-strict-aliasing
 
 	# OCaml generates textrels on 32-bit arches
