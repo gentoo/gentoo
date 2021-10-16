@@ -125,6 +125,7 @@ multilib_src_configure() {
 		--enable-cpuinfo \
 		--disable-alsa-shared \
 		--disable-esd-shared \
+		--disable-sndio \
 		--disable-pulseaudio-shared \
 		--disable-arts-shared \
 		--disable-nas-shared \
