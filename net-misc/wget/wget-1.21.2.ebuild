@@ -68,18 +68,20 @@ src_prepare() {
 			-e 's/^  LIBICONV=$/:/' \
 			configure || die
 	fi
+
+	if [[ ${CHOST} == *-darwin* && ${CHOST##*-darwin} -le 17 ]] ; then
+		# Fix older Darwin inline definition problem
+		# fixed upstream
+		# https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=commit;h=29d79d473f52b0ec58f50c95ef782c66fc0ead21
+		sed -i -e '/define _GL_EXTERN_INLINE_STDHEADER_BUG/s/_BUG/_DISABLE/' \
+			src/config.h.in || die
+	fi
 }
 
 src_configure() {
 	# fix compilation on Solaris, we need filio.h for FIONBIO as used in
 	# the included gnutls -- force ioctl.h to include this header
 	[[ ${CHOST} == *-solaris* ]] && append-cppflags -DBSD_COMP=1
-
-	if [[ ${CHOST} == *-darwin* ]] ; then
-		# https://lists.gnu.org/archive/html/bug-findutils/2021-01/msg00050.html
-		# https://lists.gnu.org/archive/html/bug-findutils/2021-01/msg00051.html
-		append-cppflags '-D__nonnull\(X\)='
-	fi
 
 	if use static ; then
 		append-ldflags -static
