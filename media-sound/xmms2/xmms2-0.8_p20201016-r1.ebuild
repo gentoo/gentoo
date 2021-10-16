@@ -131,7 +131,7 @@ DEPEND="
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
-	perl? (	virtual/perl-Pod-Parser )
+	perl? (	dev-perl/Pod-Parser )
 	python? ( $(python_gen_cond_dep 'dev-python/cython[${PYTHON_USEDEP}]') )
 	test? ( valgrind? ( dev-util/valgrind ) )"
 
