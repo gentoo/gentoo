@@ -34,6 +34,14 @@
 #--- END OF EXAMPLES ---
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-10-16)
+# Binary-only package, cannot be distributed, download
+# is an unversioned URL which changes content. In brief,
+# a pain. Unmaintained from now on. If you pick it up,
+# you'll have to watch it closely. Removal in 30 days
+# otherwise. Bug 794700.
+net-im/webex
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-10-16)
 # Outdated virtual; the respective module was removed
 # from core Perl with Perl 5.32. Use dev-perl/Pod-Parser
 # instead. Removal in 30days.
