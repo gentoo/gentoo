@@ -5,6 +5,7 @@
 		<email>slashbeast@gentoo.org</email>
 		<name>Piotr Karbowski</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">yt-dlp/yt-dlp</remote-id>
 	</upstream>
