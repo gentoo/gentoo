@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2021-10-16)
+# Fails to compile, bug #787134
+sys-fs/dd-rescue cpu_flags_x86_avx2
+
 # Marek Szuba <marecki@gentoo.org> (2021-10-10)
 # Legacy interface that depends on dev-libs/libx86 and specific kernel
 # headers, both of which are only available on certain arches.
