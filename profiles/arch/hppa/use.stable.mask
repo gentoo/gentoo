@@ -5,6 +5,11 @@
 # Please use the same syntax as in use.mask
 
 # Sam James <sam@gentoo.org> (2021-10-16)
+# Avoid large number of dependencies which often
+# have to be stabilised.
+doc
+
+# Sam James <sam@gentoo.org> (2021-10-16)
 # Avoid stabling chunks of GNOME and such as much as possible.
 # bug #807637
 colord
