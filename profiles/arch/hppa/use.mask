@@ -7,6 +7,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2021-10-16)
+# media-libs/openexr is not keyworded.
+openexr
+
 # James Le Cuirot <chewi@gentoo.org> (2021-08-10)
 # media-video/pipewire is not keyworded. Bug #807616.
 bluetooth
