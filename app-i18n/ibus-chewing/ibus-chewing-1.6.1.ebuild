@@ -10,7 +10,7 @@ DESCRIPTION="Chinese Chewing engine for IBus"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
 SRC_URI="https://github.com/definite/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gconf nls"
