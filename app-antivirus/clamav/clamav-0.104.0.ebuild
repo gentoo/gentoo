@@ -12,7 +12,7 @@ SRC_URI="https://www.clamav.net/downloads/production/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="doc clamonacc clamapp libclamav-only milter rar selinux systemd test uclibc"
 
 REQUIRED_USE="libclamav-only? ( !clamonacc !clamapp !milter )
