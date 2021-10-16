@@ -60,6 +60,12 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
+	# psa isn't ready yet, even in 3.0.0.
+	# bug #718390
+	local myctestargs=(
+		-E "(psa_crypto|psa_its-suite)"
+	)
+
 	LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${BUILD_DIR}/library" \
 		cmake_src_test
 }
