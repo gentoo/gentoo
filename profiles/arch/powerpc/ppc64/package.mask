@@ -11,6 +11,7 @@ media-libs/openexr
 media-libs/ctl
 media-gfx/openvdb
 media-libs/embree
+media-libs/opencolorio
 media-libs/openimageio
 media-libs/osl
 
