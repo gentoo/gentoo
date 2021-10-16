@@ -66,6 +66,11 @@ src_configure() {
 	# Bug #285993
 	filter-mfpmath sse
 
+	# Broken until 4.12
+	# bug #818445
+	filter-flags -flto
+	append-flags -fno-strict-aliasing
+
 	# -ggdb3 & co makes it behave weirdly, breaks sexplib
 	replace-flags -ggdb* -ggdb
 
