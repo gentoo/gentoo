@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2021-10-16)
+# EAPI 5, fails to compile with OpenSSL 1.1, bug #719974.
+# Removal in 30 days.
+mail-filter/spamdyke
+
+# David Seifert <soap@gentoo.org> (2021-10-16)
 # EAPI 5, fails to compile with OpenSSL 1.1, bug #674242.
 # Removal in 30 days.
 dev-java/netty-tcnative
