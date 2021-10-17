@@ -1,11 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8,9} )
 
-inherit check-reqs cmake desktop eapi8-dosym optfeature python-single-r1 xdg
+inherit check-reqs cmake optfeature python-single-r1 xdg
 
 DESCRIPTION="QT based Computer Aided Design application"
 HOMEPAGE="https://www.freecadweb.org/ https://github.com/FreeCAD/FreeCAD"
@@ -81,7 +81,7 @@ RDEPEND="
 	)
 	fem? ( sci-libs/vtk:=[boost,python,qt5,rendering,${PYTHON_SINGLE_USEDEP}] )
 	openscad? ( media-gfx/openscad )
-	pcl? ( ~sci-libs/pcl-${PV}:=[opengl,openni2(+),qt5(+),vtk(+)] )
+	pcl? ( sci-libs/pcl:=[opengl,openni2(+),qt5(+),vtk(+)] )
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[python,threads(+),${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
@@ -120,6 +120,7 @@ REQUIRED_USE="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.19_pre20201231-0003-Gentoo-specific-don-t-check-vcs.patch
 	"${FILESDIR}"/${PN}-0.19.1-0001-Gentoo-specific-Remove-ccache-usage.patch
+	"${FILESDIR}"/${P}-Add-memory-header-for-std-shared_ptr.patch
 )
 
 DOCS=( CODE_OF_CONDUCT.md ChangeLog.txt README.md )
@@ -168,7 +169,7 @@ src_configure() {
 		-DBUILD_COMPLETE=OFF					# deprecated
 		-DBUILD_DRAFT=ON
 		-DBUILD_DRAWING=ON
-		-DBUILD_ENABLE_CXX_STD:STRING="C++14"	# needed for >=boost-1.75.0
+		-DBUILD_ENABLE_CXX_STD:STRING="C++17"	# needed for current git master
 		-DBUILD_FEM=$(usex fem)
 		-DBUILD_FEM_NETGEN=OFF
 		-DBUILD_FLAT_MESH=ON
@@ -224,14 +225,14 @@ src_configure() {
 		-DFREECAD_USE_QT_FILEDIALOG=ON
 		-DFREECAD_USE_QTWEBMODULE:STRING="Qt WebEngine"
 
-		# Use the version of shiboken2 that matches the selected python version
-		-DPYTHON_CONFIG_SUFFIX="-${EPYTHON}"
-
 		# install python modules to site-packages' dir. True only for the main package,
 		# sub-packages will still be installed inside /usr/lib64/freecad
 		-DINSTALL_TO_SITEPACKAGES=ON
 
+		# Use the version of shiboken2 that matches the selected python version
+		-DPYTHON_CONFIG_SUFFIX="-${EPYTHON}"
 		-DPython3_EXECUTABLE=${PYTHON}
+
 		-DOCCT_CMAKE_FALLBACK=ON				# don't use occt-config which isn't included in opencascade for Gentoo
 	)
 
@@ -289,11 +290,13 @@ src_test() {
 src_install() {
 	cmake_src_install
 
+	dobin src/Tools/freecad-thumbnailer
+
 	if ! use headless; then
-		dosym8 -r /usr/$(get_libdir)/${PN}/bin/FreeCAD /usr/bin/freecad
+		dosym -r /usr/$(get_libdir)/${PN}/bin/FreeCAD /usr/bin/freecad
 		mv "${ED}"/usr/$(get_libdir)/freecad/share/* "${ED}"/usr/share || die "failed to move shared ressources"
 	fi
-	dosym8 -r /usr/$(get_libdir)/${PN}/bin/FreeCADCmd /usr/bin/freecadcmd
+	dosym -r /usr/$(get_libdir)/${PN}/bin/FreeCADCmd /usr/bin/freecadcmd
 
 	python_optimize "${ED}"/usr/share/${PN}/data/Mod/Start/StartPage "${ED}"/usr/$(get_libdir)/${PN}{/Ext,/Mod}/
 	# compile main package in python site-packages as well
@@ -326,14 +329,11 @@ pkg_postinst() {
 	einfo "support. Some of them are available in Gentoo. Take a look at"
 	einfo "https://wiki.freecadweb.org/Installing#External_software_supported_by_FreeCAD"
 	optfeature_header "Computational utilities"
-	optfeature "numerical computations with Python" dev-python/numpy
 	optfeature "BLAS library" sci-libs/openblas
 	optfeature "statistical computation with Python" dev-python/pandas
-	optfeature "usage of Point Clouds" sci-libs/pcl
 	optfeature "scientific computation with Python" dev-python/scipy
 	optfeature "symbolic math with Python" dev-python/sympy
 	optfeature_header "Imaging, Plotting and Rendering utilities"
-	optfeature "function plotting with Python" dev-python/matplotlib
 	optfeature "dependency graphs" media-gfx/graphviz
 	optfeature "PBR Rendering" media-gfx/povray
 	optfeature_header "Import / Export"
