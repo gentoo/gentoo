@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=DFARRELL
 DIST_VERSION=4.88
@@ -11,10 +11,9 @@ DESCRIPTION="Validates user input (usually from an HTML form) based on input pro
 
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-RDEPEND="dev-perl/Image-Size
+RDEPEND="
+	dev-perl/Image-Size
 	>=dev-perl/Date-Calc-5.0
 	>=dev-perl/File-MMagic-1.170.0
 	>=dev-perl/MIME-Types-1.5.0
@@ -22,11 +21,13 @@ RDEPEND="dev-perl/Image-Size
 	dev-perl/Email-Valid
 	virtual/perl-Scalar-List-Utils
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? ( virtual/perl-Test-Simple )
 "
+
 PATCHES=( "${FILESDIR}/${P}-skip-readme-pod.patch" )
+
 src_test() {
 	local i;
 	elog "Install the following dependencies for comprehensive tests:"
