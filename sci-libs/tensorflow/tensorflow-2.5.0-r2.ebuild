@@ -82,7 +82,7 @@ RDEPEND="
 	media-libs/giflib
 	media-libs/libjpeg-turbo
 	media-libs/libpng:0
-	>=net-libs/grpc-1.28:=
+	<net-libs/grpc-1.39:=
 	net-misc/curl
 	sys-libs/zlib
 	>=sys-apps/hwloc-2
