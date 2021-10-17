@@ -12,7 +12,7 @@ HOMEPAGE="https://qwt.sourceforge.io/ https://github.com/SciDAVis/qwt5-qt5"
 SRC_URI="https://github.com/SciDAVis/qwt5-qt5/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="qwt"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 SLOT="5"
 IUSE="designer examples"
 
