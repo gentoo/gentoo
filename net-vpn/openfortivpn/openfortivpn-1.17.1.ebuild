@@ -12,10 +12,12 @@ SRC_URI="https://github.com/adrienverge/openfortivpn/archive/v${PV}.tar.gz -> ${
 LICENSE="GPL-3-with-openssl-exception openssl"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="systemd"
 
 DEPEND="
 	net-dialup/ppp
 	dev-libs/openssl:0=
+	systemd? ( sys-apps/systemd )
 "
 RDEPEND="${DEPEND}"
 
@@ -24,6 +26,11 @@ CONFIG_CHECK="~PPP ~PPP_ASYNC"
 PATCHES=(
 	"${FILESDIR}/systemd_substitute_bin_and_sysconfig_dirs.patch"
 )
+
+src_configure() {
+	econf \
+		$(use_with systemd systemdsystemunitdir)
+}
 
 src_prepare() {
 	default
