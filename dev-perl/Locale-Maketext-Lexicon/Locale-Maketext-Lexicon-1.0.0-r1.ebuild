@@ -24,3 +24,6 @@ BDEPEND="${RDEPEND}
 "
 
 PERL_RM_FILES=( t/91-pod_test.t t/release-pod-syntax.t t/release-eol.t )
+
+# parallel testing is broken
+DIST_TEST=do
