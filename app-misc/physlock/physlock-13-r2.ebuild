@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,6 +21,10 @@ DEPEND="${RDEPEND}
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-13-Set-PAM_TTY.patch"
+)
 
 pkg_setup() {
 	export MY_CONF="HAVE_SYSTEMD=$(usex systemd 1 0) HAVE_ELOGIND=$(usex elogind 1 0)"
