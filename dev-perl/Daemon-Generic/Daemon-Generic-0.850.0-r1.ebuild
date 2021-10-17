@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=MUIR
 DIST_SECTION=modules
@@ -12,8 +12,6 @@ DESCRIPTION="Framework to provide start/stop/reload for a daemon"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/File-Flock-2013.60.0
@@ -22,7 +20,7 @@ RDEPEND="
 	virtual/perl-Getopt-Long
 	virtual/perl-Text-Tabs+Wrap
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/AnyEvent
