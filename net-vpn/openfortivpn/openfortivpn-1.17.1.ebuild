@@ -21,6 +21,10 @@ RDEPEND="${DEPEND}"
 
 CONFIG_CHECK="~PPP ~PPP_ASYNC"
 
+PATCHES=(
+	"${FILESDIR}/systemd_substitute_bin_and_sysconfig_dirs.patch"
+)
+
 src_prepare() {
 	default
 
