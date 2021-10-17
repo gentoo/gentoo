@@ -13,7 +13,7 @@ SRC_URI="https://www.clamav.net/downloads/production/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
-IUSE="doc clamonacc clamapp libclamav-only milter rar selinux systemd test uclibc"
+IUSE="doc clamonacc +clamapp libclamav-only milter rar selinux systemd test uclibc"
 
 REQUIRED_USE="libclamav-only? ( !clamonacc !clamapp !milter )
 			  clamonacc? ( clamapp )
@@ -113,54 +113,56 @@ src_install() {
 							"freshclamd.service"
 		fi
 
-		# Modify /etc/{clamd,freshclam}.conf to be usable out of the box
-		sed -e "s:^\(Example\):\# \1:" \
-			-e "s/^#\(PidFile .*\)/\1/" \
-			-e "s/^#\(LocalSocket .*\)/\1/" \
-			-e "s/^#\(User .*\)/\1/" \
-			-e "s:^\#\(LogFile\) .*:\1 ${EPREFIX}/var/log/clamav/clamd.log:" \
-			-e "s:^\#\(LogTime\).*:\1 yes:" \
-			-e "s/^#\(DatabaseDirectory .*\)/\1/" \
-			"${ED}"/etc/clamav/clamd.conf.sample > \
-			"${ED}"/etc/clamav/clamd.conf || die
-
-		sed -e "s:^\(Example\):\# \1:" \
-			-e "s/^#\(PidFile .*\)/\1/" \
-			-e "s/^#\(DatabaseOwner .*\)/\1/" \
-			-e "s:^\#\(UpdateLogFile\) .*:\1 ${EPREFIX}/var/log/clamav/freshclam.log:" \
-			-e "s:^\#\(NotifyClamd\).*:\1 ${EPREFIX}/etc/clamd.conf:" \
-			-e "s:^\#\(ScriptedUpdates\).*:\1 yes:" \
-			-e "s/^#\(DatabaseDirectory .*\)/\1/" \
-			"${ED}"/etc/clamav/freshclam.conf.sample > \
-			"${ED}"/etc/clamav/freshclam.conf || die
-
-		if use milter ; then
-			# Note: only keep the "unix" ClamdSocket and MilterSocket!
+		if use clamapp; then
+			# Modify /etc/{clamd,freshclam}.conf to be usable out of the box
 			sed -e "s:^\(Example\):\# \1:" \
 				-e "s/^#\(PidFile .*\)/\1/" \
-				-e "s/^#\(ClamdSocket unix:.*\)/\1/" \
+				-e "s/^#\(LocalSocket .*\)/\1/" \
 				-e "s/^#\(User .*\)/\1/" \
-				-e "s/^#\(MilterSocket unix:.*\)/\1/" \
-				-e "s:^\#\(LogFile\) .*:\1 ${EPREFIX}/var/log/clamav/clamav-milter.log:" \
-				"${ED}"/etc/clamav/clamav-milter.conf.sample > \
-				"${ED}"/etc/clamav/clamav-milter.conf || die
+				-e "s:^\#\(LogFile\) .*:\1 ${EPREFIX}/var/log/clamav/clamd.log:" \
+				-e "s:^\#\(LogTime\).*:\1 yes:" \
+				-e "s/^#\(DatabaseDirectory .*\)/\1/" \
+				"${ED}"/etc/clamav/clamd.conf.sample > \
+				"${ED}"/etc/clamav/clamd.conf || die
 
-			systemd_newunit "${FILESDIR}/clamav-milter.service-0.104.0" clamav-milter.service
-		fi
+			sed -e "s:^\(Example\):\# \1:" \
+				-e "s/^#\(PidFile .*\)/\1/" \
+				-e "s/^#\(DatabaseOwner .*\)/\1/" \
+				-e "s:^\#\(UpdateLogFile\) .*:\1 ${EPREFIX}/var/log/clamav/freshclam.log:" \
+				-e "s:^\#\(NotifyClamd\).*:\1 ${EPREFIX}/etc/clamd.conf:" \
+				-e "s:^\#\(ScriptedUpdates\).*:\1 yes:" \
+				-e "s/^#\(DatabaseDirectory .*\)/\1/" \
+				"${ED}"/etc/clamav/freshclam.conf.sample > \
+				"${ED}"/etc/clamav/freshclam.conf || die
 
-		local i
-		for i in clamd freshclam clamav-milter
-		do
-			if [[ -f "${ED}"/etc/"${i}".conf.sample ]]; then
-				mv "${ED}"/etc/"${i}".conf{.sample,} || die
+			if use milter ; then
+				# Note: only keep the "unix" ClamdSocket and MilterSocket!
+				sed -e "s:^\(Example\):\# \1:" \
+					-e "s/^#\(PidFile .*\)/\1/" \
+					-e "s/^#\(ClamdSocket unix:.*\)/\1/" \
+					-e "s/^#\(User .*\)/\1/" \
+					-e "s/^#\(MilterSocket unix:.*\)/\1/" \
+					-e "s:^\#\(LogFile\) .*:\1 ${EPREFIX}/var/log/clamav/clamav-milter.log:" \
+					"${ED}"/etc/clamav/clamav-milter.conf.sample > \
+					"${ED}"/etc/clamav/clamav-milter.conf || die
+
+				systemd_newunit "${FILESDIR}/clamav-milter.service-0.104.0" clamav-milter.service
 			fi
-		done
 
-		# These both need to be writable by the clamav user.
-		# TODO: use syslog by default; that's what it's for.
-		diropts -o clamav -g clamav
-		keepdir /var/lib/clamav
-		keepdir /var/log/clamav
+			local i
+			for i in clamd freshclam clamav-milter
+			do
+				if [[ -f "${ED}"/etc/"${i}".conf.sample ]]; then
+					mv "${ED}"/etc/"${i}".conf{.sample,} || die
+				fi
+			done
+
+			# These both need to be writable by the clamav user.
+			# TODO: use syslog by default; that's what it's for.
+			diropts -o clamav -g clamav
+			keepdir /var/lib/clamav
+			keepdir /var/log/clamav
+		fi
 	fi
 
 	if use doc ; then
