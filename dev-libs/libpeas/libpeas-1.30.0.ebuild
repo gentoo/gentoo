@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit gnome.org lua-single meson python-single-r1 vala virtualx xdg
 
