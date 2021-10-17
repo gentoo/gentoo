@@ -29,7 +29,7 @@ index 602b06e..0baea81 100644
  		}
 -#if GPSD_API_MAJOR_VERSION >= 9
 -		gpsdata->valid = (libgps_gpsdata.fix.status != STATUS_NO_FIX);
-+#if GPSD_API_MAJOR_VERSION >= 12
++#if GPSD_API_MAJOR_VERSION >= 12 && defined(STATUS_UNK)
 +		gpsdata->valid = (libgps_gpsdata.fix.status != STATUS_UNK || libgps_gpsdata.fix.mode >= MODE_2D);
 +#elif GPSD_API_MAJOR_VERSION >= 10
 +		gpsdata->valid = (libgps_gpsdata.fix.status != STATUS_NO_FIX || libgps_gpsdata.fix.mode >= MODE_2D);
