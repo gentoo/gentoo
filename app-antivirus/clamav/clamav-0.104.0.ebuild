@@ -42,12 +42,8 @@ CDEPEND="acct-group/clamav
 	test? ( dev-python/pytest )"
 # TODO: there is no way to use this with the new build system instead of the bundled one
 #	dev-libs/tomsfastmath
-
-BDEPEND=">=dev-util/cmake-3.14
-	virtual/pkgconfig"
-
+BDEPEND="virtual/pkgconfig"
 DEPEND="${CDEPEND}
-	clamapp? ( dev-libs/json-c:* )
 	test? ( dev-libs/check )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-clamav )"
