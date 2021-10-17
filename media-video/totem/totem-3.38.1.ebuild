@@ -98,6 +98,7 @@ src_configure() {
 }
 
 src_install() {
+	local -x GST_PLUGIN_SYSTEM_PATH_1_0= # bug 812170
 	meson_src_install
 	if use python ; then
 		python_optimize "${ED}"/usr/$(get_libdir)/totem/plugins/
