@@ -30,5 +30,5 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${P}-gpsd-api9.patch"
 	"${FILESDIR}/${P}-gcc10.patch"
-	"${FILESDIR}/${P}-fix-some-receivers.patch"
+	#"${FILESDIR}/${P}-fix-some-receivers.patch"
 )
