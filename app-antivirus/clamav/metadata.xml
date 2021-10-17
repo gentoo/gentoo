@@ -12,7 +12,9 @@
   </maintainer>
 
   <use>
-    <flag name="clamapp">Build applications (clamscan, clamd, clamdscan, clamonacc(also has it's own USE flag), sigtool, clambc, clamav-milter(also requires milter USE flag), clamdtop, clamsubmit, clamconf).</flag>
+    <flag name="clamapp">
+	Build applications (clamscan, clamd, clamdscan, clamonacc (also has its own USE flag), sigtool, clambc, clamav-milter (also requires milter USE flag), clamdtop, clamsubmit, clamconf).
+    </flag>
     <flag name="clamonacc">Build the clamonacc on-access scanner</flag>
     <flag name="clamdtop">A Top like tool which shows what clamd is currently scanning amongst other things</flag>
     <flag name="clamsubmit">A tool to submit false positives / negatives</flag>
