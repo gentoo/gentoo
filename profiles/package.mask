@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-10-17)
+# Obsolete package, replaced by dev-ruby/minitar.
+# No reverse dependencies left. Masked for removal in 30 days.
+dev-ruby/archive-tar-minitar
+
 # Sam James <sam@gentoo.org> (2021-10-17)
 # Fails to build with glibc 2.34 and no reverse dependencies.
 # bug #806508
