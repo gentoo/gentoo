@@ -32,11 +32,11 @@ CDEPEND="acct-group/clamav
 	dev-libs/libpcre2
 	>=sys-libs/zlib-1.2.2:=
 	app-arch/bzip2
-	clamapp? ( sys-libs/ncurses:0 net-misc/curl )
+	clamapp? ( sys-libs/ncurses:= net-misc/curl )
 	elibc_musl? ( sys-libs/fts-standalone )
 	virtual/libiconv
 	!libclamav-only? ( net-misc/curl )
-	dev-libs/openssl:0=
+	dev-libs/openssl:=
 	milter? ( || ( mail-filter/libmilter mail-mta/sendmail ) )
 	dev-libs/libxml2
 	rar? ( app-arch/unrar )
