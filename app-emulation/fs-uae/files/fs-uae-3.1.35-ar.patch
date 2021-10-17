@@ -1,0 +1,25 @@
+From 4e6295094978817ba02e16ac5404ac9c9e287c82 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 17 Oct 2021 09:54:24 +0100
+Subject: [PATCH] Have configure respect the AR variable instead of setting it
+ to "ar"
+
+---
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index bb2c69de..6e41d68e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -66,6 +66,7 @@ AC_PROG_INSTALL
+ AC_PROG_LN_S
+ AC_PROG_MAKE_SET
+ AC_PROG_RANLIB
++AM_PROG_AR
+ AM_PROG_CC_C_O
+ # AC_PATH_TOOL(OBJCOPY, objcopy)
+ AC_PATH_PROG([MSGFMT], [msgfmt], [not found])
+-- 
+2.32.0
+
