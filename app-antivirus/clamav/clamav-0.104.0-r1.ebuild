@@ -28,10 +28,11 @@ CDEPEND="acct-group/clamav
 	acct-user/clamav
 	dev-libs/libltdl
 	dev-libs/libmspack
+	dev-libs/json-c:=
 	dev-libs/libpcre2
 	>=sys-libs/zlib-1.2.2:=
 	app-arch/bzip2
-	clamapp? ( sys-libs/ncurses:0 net-misc/curl dev-libs/json-c:= )
+	clamapp? ( sys-libs/ncurses:0 net-misc/curl )
 	elibc_musl? ( sys-libs/fts-standalone )
 	virtual/libiconv
 	!libclamav-only? ( net-misc/curl )
