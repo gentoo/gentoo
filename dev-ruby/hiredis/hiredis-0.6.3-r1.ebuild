@@ -25,7 +25,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND+=" =dev-libs/hiredis-0.14*:="
-DEPEND+=" dev-libs/hiredis test? ( dev-ruby/test-unit:2 )"
+DEPEND+=" dev-libs/hiredis:= test? ( dev-ruby/test-unit:2 )"
 DEPEND+=" virtual/pkgconfig"
 
 RUBY_S="${MY_P}"
