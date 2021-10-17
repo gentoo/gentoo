@@ -43,6 +43,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-glibc.patch"
 	"${FILESDIR}/${PN}-5.1.6-musl.patch"
 	"${FILESDIR}/${PN}-5.1.6-pid.patch"
+	"${FILESDIR}/${PN}-5.1.7-glibc-2.34.patch"
 )
 
 pkg_setup() {
@@ -90,7 +91,8 @@ src_configure() {
 		--enable-ignore-busy
 		RANLIB="$(type -P $(tc-getRANLIB))" # bug #483716
 	)
-	econf "${myeconfargs[@]}"
+
+	CONFIG_SHELL="${BROOT}/bin/bash" econf "${myeconfargs[@]}"
 }
 
 src_compile() {
