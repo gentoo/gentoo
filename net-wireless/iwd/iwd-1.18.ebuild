@@ -22,8 +22,8 @@ HOMEPAGE="https://git.kernel.org/pub/scm/network/wireless/iwd.git/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+client +crda +monitor ofono wired cpu_flags_x86_aes cpu_flags_x86_ssse3
-standalone systemd"
+IUSE="+client cpu_flags_x86_aes cpu_flags_x86_ssse3 +crda elibc_musl +monitor ofono
+standalone systemd wired"
 
 DEPEND="
 	sys-apps/dbus
@@ -131,6 +131,7 @@ src_unpack() {
 
 src_prepare() {
 	default
+	use elibc_musl && eapply "${FILESDIR}"/iwd-1.18-musl-backport.patch
 	if [[ ${PV} == *9999* ]] ; then
 		eautoreconf
 	fi
