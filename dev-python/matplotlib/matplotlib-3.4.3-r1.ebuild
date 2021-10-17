@@ -43,6 +43,7 @@ RDEPEND="
 	media-libs/freetype:2
 	media-libs/libpng:0
 	>=media-libs/qhull-2013:=
+	virtual/imagemagick-tools[jpeg,tiff]
 	cairo? (
 		dev-python/cairocffi[${PYTHON_USEDEP}]
 	)
