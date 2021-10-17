@@ -50,7 +50,7 @@ src_test() {
 
 	export GSETTINGS_BACKEND="memory"
 	export GSETTINGS_SCHEMA_DIR="${BUILD_DIR}/bin"
-	virtx cmake_src_test
+	virtx cmake_src_test -j1
 }
 
 pkg_preinst() {
