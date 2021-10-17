@@ -402,6 +402,7 @@ EOF
 # @DESCRIPTION:
 # Configure extensions defined in RUBY_FAKEGEM_EXTENSIONS, if any.
 each_fakegem_configure() {
+	tc-export PKG_CONFIG
 	for extension in "${RUBY_FAKEGEM_EXTENSIONS[@]}" ; do
 		${RUBY} --disable=did_you_mean -C ${extension%/*} ${extension##*/} || die
 	done
