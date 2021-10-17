@@ -77,6 +77,7 @@ src_configure() {
 		-DOCIO_BUILD_DOCS=$(usex doc)
 		-DOCIO_BUILD_APPS=$(usex opengl)
 		-DOCIO_BUILD_PYTHON=$(usex python)
+		-DOCIO_PYTHON_VERSION="${EPYTHON}"
 		-DOCIO_BUILD_JAVA=OFF
 		-DOCIO_USE_SSE=$(usex cpu_flags_x86_sse2)
 		-DOCIO_BUILD_TESTS=$(usex test)
