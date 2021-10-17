@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.2.8_p10-fix-build-wo-ssl-or-libressl.patch
 	"${FILESDIR}"/${PN}-4.2.8_p14-add_cap_ipc_lock.patch #711530
 	"${FILESDIR}"/${PN}-4.2.8_p15-gcc10.patch #759409
+	"${FILESDIR}"/${PN}-4.2.8_p15-glibc-2.34.patch
 )
 
 src_prepare() {
