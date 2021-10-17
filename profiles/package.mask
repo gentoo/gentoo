@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-10-17)
+# Fails to build with glibc 2.34 and no reverse dependencies.
+# bug #806508
+# Removal on 2021-11-17.
+dev-cpp/rttr
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-10-16)
 # Binary-only package, cannot be distributed, download
 # is an unversioned URL which changes content. In brief,
