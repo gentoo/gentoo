@@ -23,7 +23,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86"
 
 DEPEND="
 	>=dev-libs/glib-2.56.0:2
-	>=x11-libs/gtk+-3.19.4:3[introspection]
+	>=x11-libs/gtk+-3.22.0:3[introspection]
 	>=media-libs/gstreamer-1.6.0:1.0
 	>=media-libs/gst-plugins-base-1.6.0:1.0[pango]
 	>=media-libs/gst-plugins-good-1.6.0:1.0
