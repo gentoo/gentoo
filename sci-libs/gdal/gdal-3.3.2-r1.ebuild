@@ -15,7 +15,7 @@ SRC_URI="https://download.osgeo.org/${PN}/${PV}/${P}.tar.gz"
 SLOT="0/3.3"
 LICENSE="BSD Info-ZIP MIT"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="armadillo +aux-xml curl cpu_flags_x86_avx cpu_flags_x86_sse cpu_flags_x86_ssse3 debug doc fits geos gif gml hdf5 java jpeg jpeg2k lzma mdb mysql netcdf odbc ogdi opencl oracle pdf perl png postgres python spatialite sqlite threads webp xls zstd"
+IUSE="armadillo +aux-xml curl cpu_flags_x86_avx cpu_flags_x86_sse cpu_flags_x86_ssse3 debug doc fits geos gif gml hdf5 heif java jpeg jpeg2k lzma mdb mysql netcdf odbc ogdi opencl oracle pdf perl png postgres python spatialite sqlite threads webp xls zstd"
 
 REQUIRED_USE="
 	mdb? ( java )
@@ -53,6 +53,7 @@ DEPEND="
 	geos? ( >=sci-libs/geos-3.8.0 )
 	gif? ( media-libs/giflib:= )
 	gml? ( >=dev-libs/xerces-c-3.1 )
+	heif? ( media-libs/libheif:= )
 	hdf5? ( >=sci-libs/hdf5-1.6.4:=[szip] )
 	jpeg? ( virtual/jpeg:0= )
 	jpeg2k? ( media-libs/openjpeg:2= )
@@ -190,6 +191,7 @@ src_configure() {
 		$(use_with geos)
 		$(use_with gif)
 		$(use_with gml xerces)
+		$(use_with heif)
 		$(use_with hdf5)
 		$(use_with jpeg pcidsk) # pcidsk is internal, because there is no such library released developer by gdal
 		$(use_with jpeg)
