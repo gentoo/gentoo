@@ -208,7 +208,7 @@ getfilevar() {
 		# Pass dot-config=0 to avoid the config check in kernels prior to 5.4.
 		[[ ${EAPI:-0} == [0123] ]] && nonfatal() { "$@"; }
 		echo -e "e:\\n\\t@echo \$(${1})\\ninclude ${basefname}" | \
-			nonfatal emake -C "${basedname}" M="${T}" dot-config=0 need-config= ${BUILD_FIXES} -s -f - 2>/dev/null
+			nonfatal emake -C "${basedname}" --no-print-directory M="${T}" dot-config=0 need-config= ${BUILD_FIXES} -s -f - 2>/dev/null
 
 		ARCH=${myARCH}
 	fi
