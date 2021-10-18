@@ -24,7 +24,14 @@ BDEPEND="
 
 distutils_enable_tests unittest
 
+python_prepare_all() {
+	# See debian/rules.
+	sed -e "s/__CHANGELOG_VERSION__/${PV}/" lib/debian/_version.py.in > lib/debian/_version.py || die
+	distutils-r1_python_prepare_all
+}
+
 python_compile_all() {
+	# See debian/rules.
 	${EPYTHON} lib/debian/doc-debtags > README.debtags || die
 }
 
