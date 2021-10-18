@@ -27,7 +27,7 @@ RDEPEND="
 	dev-libs/nspr
 	dev-libs/nss
 	media-libs/alsa-lib
-	media-libs/mesa
+	media-libs/mesa[gbm(+)]
 	net-print/cups
 	sys-apps/dbus
 	x11-libs/cairo
@@ -83,6 +83,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	optfeature "sound support" media-sound/pulseaudio media-video/pipewire
+	optfeature "sound support" \
+		media-sound/pulseaudio media-sound/apulse[sdk] media-video/pipewire
 	optfeature "system tray support" dev-libs/libappindicator
 }
