@@ -5,7 +5,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit meson-multilib optfeature python-any-r1 systemd udev
+inherit meson-multilib optfeature prefix python-any-r1 systemd udev
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
@@ -113,12 +113,6 @@ python_check_deps() {
 src_prepare() {
 	default
 
-	if ! use systemd; then
-		# This can be applied non-conditionally but would make for a
-		# significantly worse user experience on systemd then.
-		eapply "${FILESDIR}"/${PN}-0.3.36-non-systemd-integration.patch
-	fi
-
 	einfo "Generating ${limitsdfile}"
 	cat > ${limitsdfile} <<- EOF || die
 		# Start of ${limitsdfile} from ${P}
@@ -206,8 +200,9 @@ multilib_src_install_all() {
 		insinto /etc/xdg/autostart
 		newins "${FILESDIR}"/pipewire.desktop pipewire.desktop
 
-		exeinto /usr/libexec
-		newexe "${FILESDIR}"/pipewire-launcher.sh pipewire-launcher
+		exeinto /usr/bin
+		newexe "${FILESDIR}"/gentoo-pipewire-launcher.in gentoo-pipewire-launcher
+		eprefixify "${ED}"/usr/bin/gentoo-pipewire-launcher
 	fi
 }
 
@@ -247,20 +242,31 @@ pkg_postinst() {
 		elog "  systemctl --user enable --now wireplumber.service"
 		elog
 	else
-		elog "This ebuild auto-enables PulseAudio replacement. Because of that, users"
-		elog "are recommended to edit: ${EROOT}/etc/pulse/client.conf and disable"
-		elog "autospawning of the original daemon by setting:"
-		elog
-		elog "  autospawn = no"
-		elog
-		elog "Please note that the semicolon (;) must _NOT_ be at the beginning of the line!"
-		elog
-		elog "Alternatively, if replacing PulseAudio daemon is not desired, edit"
-		elog "${EROOT}/etc/pipewire/pipewire.conf by commenting out the relevant"
-		elog "command near the end of the file:"
-		elog
-		elog "#\"/usr/bin/pipewire\" = { args = \"-c pipewire-pulse.conf\" }"
-		elog
+		ewarn "PipeWire daemon startup has been moved to a launcher script!"
+		ewarn "Make sure that ${EROOT}/etc/pipewire/pipewire.conf either does not exist or no"
+		ewarn "longer is set to start a session manager or PulseAudio compatibility daemon (all"
+		ewarn "lines similar to `{ path = \"/usr/bin/pipewire*` should be commented out)"
+		ewarn
+		ewarn "Those manually starting /usr/bin/pipewire via .xinitrc or similar _must_ from"
+		ewarn "now on start ${EROOT}/usr/bin/gentoo-pipewire-launcher instead! It is highly"
+		ewarn "advised that a D-Bus user session is set up before starting the script."
+		ewarn
+		if has_version 'media-sound/pulseaudio[daemon]' || has_version 'media-sound/pulseaudio-daemon'; then
+			elog "This ebuild auto-enables PulseAudio replacement. Because of that, users"
+			elog "are recommended to edit: ${EROOT}/etc/pulse/client.conf and disable"
+			elog "autospawning of the original daemon by setting:"
+			elog
+			elog "  autospawn = no"
+			elog
+			elog "Please note that the semicolon (;) must _NOT_ be at the beginning of the line!"
+			elog
+			elog "Alternatively, if replacing PulseAudio daemon is not desired, edit"
+			elog "${EROOT}/usr/bin/gentoo-pipewire-launcher  by commenting out the relevant"
+			elog "command:"
+			elog
+			elog "#${EROOT}/usr/bin/pipewire -c pipewire-pulse.conf &"
+			elog
+		fi
 		elog "NOTE:"
 		elog "Starting with PipeWire-0.3.30, this package is no longer installing its config"
 		elog "into ${EROOT}/etc/pipewire by default. In case you need to change"
