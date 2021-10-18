@@ -1,18 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit toolchain-funcs
 
-EGIT_COMMIT="9c34a8663b85e479e0c083801e89a2b2835228ed"
 DESCRIPTION="An OCI container runtime monitor"
 HOMEPAGE="https://github.com/containers/conmon"
-SRC_URI="https://github.com/containers/conmon/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/containers/conmon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="systemd"
 RESTRICT="test"
 
@@ -20,8 +19,6 @@ RDEPEND="dev-libs/glib:=
 	systemd? ( sys-apps/systemd:= )"
 DEPEND="${RDEPEND}
 	dev-go/go-md2man"
-
-S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 src_prepare() {
 	default
@@ -37,7 +34,7 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC
-	emake GIT_COMMIT="${EGIT_COMMIT}" \
+	emake GIT_COMMIT="v${PV}" \
 		all
 }
 
