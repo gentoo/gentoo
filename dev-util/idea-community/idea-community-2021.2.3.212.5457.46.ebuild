@@ -12,8 +12,8 @@ MY_PN="idea"
 # Using the most recent Jetbrains Runtime binaries available at the time of writing
 # ( jre 11.0.10 build 1304.4  )
 JRE11_BASE="11_0_11"
-JRE11_VER="1504.12"
-IDEA_VER="2.28899775.2679204.1629809316-850001349.1629809316"
+JRE11_VER="1504.5"
+IDEA_VER="2.157861308.704681908.1634561297-1608238442.1631355834"
 
 # distinguish settings for official stable releases and EAP-version releases
 if [[ "$(ver_cut 7)"x = "prex" ]]
@@ -44,8 +44,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	dev-java/jansi-native
 	dev-libs/libdbusmenu
-	media-libs/harfbuzz
-	=dev-util/lldb-10*"
+	media-libs/harfbuzz"
 
 BDEPEND="dev-util/patchelf"
 RESTRICT="splitdebug"
@@ -74,6 +73,8 @@ src_prepare() {
 
 	PLUGIN_DIR="${S}/${JRE_DIR}/lib/"
 
+	# rm LLDBFrontEnd after licensing questions with Gentoo License Team
+	rm -vf "${S}"/plugins/Kotlin/bin/linux/LLDBFrontend
 	rm -vf ${PLUGIN_DIR}/libavplugin*
 	rm -vf "${S}"/plugins/maven/lib/maven3/lib/jansi-native/*/libjansi*
 	rm -vrf "${S}"/lib/pty4j-native/linux/ppc64le
@@ -89,7 +90,6 @@ src_prepare() {
 		done
 	fi
 
-	patchelf --replace-needed liblldb.so liblldb.so.10 "${S}"/plugins/Kotlin/bin/linux/LLDBFrontend || die "Unable to patch LLDBFrontend for lldb"
 	if use arm64; then
 		patchelf --replace-needed libc.so libc.so.6 "${S}"/lib/pty4j-native/linux/aarch64/libpty.so || die "Unable to patch libpty for libc"
 	else
