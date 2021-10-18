@@ -61,10 +61,13 @@ python_prepare_all() {
 }
 
 python_test() {
-	local ignore=(
+	local EPYTEST_IGNORE=(
 		# incompatible versions?
 		tests/test_core/test_decorator_calls.py
 		tests/test_s3/test_s3_classdecorator.py
+	)
+
+	local EPYTEST_DESELECT=(
 		# Needs network (or docker?) but not marked as such, bug #807031
 		# TODO: report upstream
 		tests/test_batch/test_batch_jobs.py::test_terminate_job
@@ -77,5 +80,5 @@ python_test() {
 
 	# pytest-django causes freezegun try to mangle stuff inside django
 	# which fails when django is not really used
-	epytest -p no:django -m 'not network' ${ignore[@]/#/--ignore }
+	epytest -p no:django -m 'not network'
 }

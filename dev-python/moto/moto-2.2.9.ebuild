@@ -69,6 +69,7 @@ python_test() {
 		tests/test_swf/responses/test_timeouts.py::test_activity_task_heartbeat_timeout_boto3
 		tests/test_swf/responses/test_timeouts.py::test_decision_task_start_to_close_timeout_boto3
 		tests/test_swf/responses/test_timeouts.py::test_workflow_execution_start_to_close_timeout_boto3
+
 		# Needs network (or docker?) but not marked as such, bug #807031
 		# TODO: report upstream
 		tests/test_batch/test_batch_jobs.py::test_terminate_job
