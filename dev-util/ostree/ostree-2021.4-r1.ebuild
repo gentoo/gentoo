@@ -76,7 +76,7 @@ src_configure() {
 		--enable-shared
 		$(use_with archive libarchive)
 		$(use_with curl)
-		$(use_with dracut)
+		$(use_with dracut dracut yesbutnoconf) #816867
 		$(use_enable doc gtk-doc)
 		$(usex introspection --enable-introspection={,} yes no)
 		$(use_with gpg gpgme)
