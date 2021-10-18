@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.0-libmpeg2.patch
 	"${FILESDIR}"/${PN}-3.0.0-Xatom.h.patch
 	"${FILESDIR}"/${PN}-3.1.35-ar.patch
+	"${FILESDIR}"/${PN}-3.1.35-deepbind.patch
 )
 
 src_prepare() {
