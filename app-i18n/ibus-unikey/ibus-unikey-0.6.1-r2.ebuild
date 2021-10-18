@@ -3,6 +3,8 @@
 
 EAPI="7"
 
+inherit autotools
+
 DESCRIPTION="Vietnamese UniKey engine for IBus"
 HOMEPAGE="https://github.com/vn-input/ibus-unikey"
 SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.tar.gz
@@ -22,7 +24,15 @@ BDEPEND="virtual/pkgconfig
 	dev-util/intltool
 	nls? ( sys-devel/gettext )"
 
-PATCHES=( "${DISTDIR}"/${P}-gcc6.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-slibtool.patch
+	"${DISTDIR}"/${P}-gcc6.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
