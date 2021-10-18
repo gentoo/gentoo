@@ -19,15 +19,19 @@ HOMEPAGE="https://code.videolan.org/videolan/dav1d"
 
 LICENSE="BSD-2"
 SLOT="0/5"
-IUSE="+8bit +10bit +asm"
+IUSE="+8bit +10bit +asm test xxhash"
+RESTRICT="!test? ( test )"
 
-ASM_DEPEND=">=dev-lang/nasm-2.14.02"
+ASM_DEPEND=">=dev-lang/nasm-2.15.05"
 BDEPEND="asm? (
 		abi_x86_32? ( ${ASM_DEPEND} )
 		abi_x86_64? ( ${ASM_DEPEND} )
-	)"
+	)
+	xxhash? ( dev-libs/xxhash )
+	"
 
 DOCS=( README.md doc/PATENTS THANKS.md )
+PATCHES=( "${FILESDIR}"/build-avoid-meson-s-symbols_have_underscore_prefix.patch )
 
 multilib_src_configure() {
 	local -a bits=()
@@ -44,6 +48,8 @@ multilib_src_configure() {
 	local emesonargs=(
 		-D bitdepths=$(IFS=,; echo "${bits[*]}")
 		-D enable_asm=${enable_asm}
+		-D enable_tests=$(usex test true false)
+		-D xxhash_muxer=$(usex xxhash enabled disabled)
 	)
 	meson_src_configure
 }
