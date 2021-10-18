@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 DESCRIPTION="Vietnamese UniKey engine for IBus"
 HOMEPAGE="https://github.com/mrlequoctuan/ibus-unikey"
@@ -21,8 +21,8 @@ RDEPEND="app-i18n/ibus
 		!gtk2? ( x11-libs/gtk+:3 )
 	)
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
 	dev-util/intltool
 	nls? ( sys-devel/gettext )"
 
