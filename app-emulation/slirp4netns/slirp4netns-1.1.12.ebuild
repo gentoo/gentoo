@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="User-mode networking for unprivileged network namespaces"
 HOMEPAGE="https://github.com/rootless-containers/slirp4netns"
 SRC_URI="https://github.com/rootless-containers/slirp4netns/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 LICENSE="GPL-2"
 SLOT="0"
 
@@ -22,7 +22,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-RESTRICT="test"
+RESTRICT+=" test"
 
 src_prepare() {
 	# Respect AR variable for bug 722162.
