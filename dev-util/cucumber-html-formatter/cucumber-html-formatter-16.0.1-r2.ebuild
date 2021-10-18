@@ -8,6 +8,8 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 RUBY_FAKEGEM_EXTRAINSTALL="assets"
 
+RUBY_FAKEGEM_BINWRAP=""
+
 inherit ruby-fakegem
 
 DESCRIPTION="HTML formatter for Cucumber"
@@ -19,11 +21,10 @@ SLOT="$(ver_cut 1)"
 IUSE="test"
 
 ruby_add_rdepend "
-	>=dev-util/cucumber-messages-17.1.0.1:17
+	>=dev-util/cucumber-messages-17.0.1:17
 	!<dev-util/cucumber-html-formatter-13.0.0-r2
-	!<dev-util/cucumber-html-formatter-16.0.1-r2
 "
 
 all_ruby_prepare() {
-	sed -i -e '1igem "cucumber-messages", "~>17.1"' spec/html_formatter_spec.rb || die
+	sed -i -e '1igem "cucumber-messages", "~>17.0"' spec/html_formatter_spec.rb || die
 }
