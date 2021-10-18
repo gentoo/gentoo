@@ -23,5 +23,6 @@ with additional programs and scripts. Some of it's features are:
 </longdescription>
   <upstream>
     <remote-id type="sourceforge">fvwm-crystal</remote-id>
+    <remote-id type="github">fvwm-crystal/fvwm-crystal</remote-id>
   </upstream>
 </pkgmetadata>
