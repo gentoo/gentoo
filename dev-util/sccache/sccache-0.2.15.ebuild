@@ -421,6 +421,8 @@ RDEPEND="${DEPEND}
 
 QA_FLAGS_IGNORED="usr/bin/sccache*"
 
+PATCHES=( "${FILESDIR}/reqwest-azure.patch" )
+
 src_unpack() {
 	if [[ "${PV}" == *9999* ]]; then
 		git-r3_src_unpack
