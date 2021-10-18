@@ -15,7 +15,10 @@ SLOT="0"
 
 IUSE="archive curl doc dracut gnutls +gpg grub http2 httpd introspection libmount selinux sodium ssl +soup systemd zeroconf"
 RESTRICT="test"
-REQUIRED_USE="httpd? ( || ( curl soup ) )"
+REQUIRED_USE="
+	dracut? ( systemd )
+	httpd? ( || ( curl soup ) )
+"
 
 COMMON_DEPEND="
 	archive? ( app-arch/libarchive:= )
