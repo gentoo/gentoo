@@ -4,7 +4,7 @@
 EAPI="7"
 
 DESCRIPTION="Vietnamese UniKey engine for IBus"
-HOMEPAGE="https://github.com/mrlequoctuan/ibus-unikey"
+HOMEPAGE="https://github.com/vn-input/ibus-unikey"
 SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.tar.gz
 	https://dev.gentoo.org/~dlan/distfiles/${P}-gcc6.patch"
 

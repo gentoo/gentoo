@@ -13,6 +13,6 @@
 		<flag name="gtk2">Enable support for <pkg>x11-libs/gtk+</pkg>:2</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">mrlequoctuan/ibus-unikey</remote-id>
+		<remote-id type="github">vn-input/ibus-unikey</remote-id>
 	</upstream>
 </pkgmetadata>
