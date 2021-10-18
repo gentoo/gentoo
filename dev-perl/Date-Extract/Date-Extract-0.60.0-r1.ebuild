@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=ALEXMV
 DIST_VERSION=0.06
@@ -11,8 +11,6 @@ DESCRIPTION="Extract probable dates from strings"
 
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Carp
@@ -21,7 +19,7 @@ RDEPEND="
 	virtual/perl-Scalar-List-Utils
 	virtual/perl-parent
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.360.0
 	test? (
 		dev-perl/Test-MockTime
