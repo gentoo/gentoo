@@ -28,6 +28,7 @@ src_prepare() {
 	# Use ${CHOST}-cpp, not 'cpp': bug #718138
 	# Ideally we should use @CPP@ but rpcgen makes it hard to use '${CHOST}-gcc -E'
 	sed -i -s "s/CPP = \"cpp\";/CPP = \"${CHOST}-cpp\";/" rpcgen/rpc_main.c || die
+	sed -i -e 's|\$(top_builddir)/rpcgen/||' "${S}/rpcsvc/Makefile.in"
 }
 
 src_install() {
