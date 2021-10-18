@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ben Kohler <bkohler@gentoo.org> (2021-10-18)
+# missing keywords on net-misc/pyhoca-cli and its deps
+net-misc/remmina x2go
+
 # Ionen Wolkens <ionen@gentoo.org> (2021-10-15)
 # dev-python/pytest-bdd is not keyworded here yet
 www-client/qutebrowser test
