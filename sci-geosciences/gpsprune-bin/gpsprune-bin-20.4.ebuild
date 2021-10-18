@@ -20,11 +20,6 @@ gpsprune_desktop="${WORKDIR}/gpsprune.desktop"
 
 S="${WORKDIR}"
 
-#src_unpack()
-#{
-#	default
-#}
-
 src_prepare()
 {
 	default
