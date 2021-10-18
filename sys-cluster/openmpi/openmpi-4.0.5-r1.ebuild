@@ -30,7 +30,7 @@ HOMEPAGE="https://www.open-mpi.org"
 SRC_URI="https://www.open-mpi.org/software/ompi/v$(ver_cut 1-2)/downloads/${MY_P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux"
+KEYWORDS="~alpha amd64 arm ~ia64 ~ppc ~ppc64 ~riscv sparc x86 ~amd64-linux"
 IUSE="cma cuda cxx fortran heterogeneous ipv6 java libompitrace peruse romio
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
 
