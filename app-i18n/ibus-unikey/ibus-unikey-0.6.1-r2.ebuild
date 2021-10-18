@@ -8,7 +8,7 @@ HOMEPAGE="https://github.com/vn-input/ibus-unikey"
 SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.tar.gz
 	https://dev.gentoo.org/~dlan/distfiles/${P}-gcc6.patch"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+gtk gtk2 nls"
