@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Network simulation tool"
 HOMEPAGE="https://www.csse.uwa.edu.au/cnet3/"
-SRC_URI="https://dev.gentoo.org/~jer/${P}.tgz"
+SRC_URI="https://dev.gentoo.org/~jsmolic/distfiles/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
