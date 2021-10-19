@@ -3,7 +3,6 @@
 
 EAPI=7
 
-CMAKE_ECLASS=cmake
 inherit cmake flag-o-matic systemd tmpfiles
 
 DESCRIPTION="Clam Anti-Virus Scanner"
@@ -13,7 +12,7 @@ SRC_URI="https://www.clamav.net/downloads/production/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
-IUSE="doc clamonacc +clamapp libclamav-only milter rar selinux systemd test uclibc"
+IUSE="doc clamonacc +clamapp libclamav-only milter rar selinux systemd test"
 
 REQUIRED_USE="libclamav-only? ( !clamonacc !clamapp !milter )
 	clamonacc? ( clamapp )
@@ -58,7 +57,7 @@ PATCHES=(
 src_configure() {
 	use elibc_musl && append-ldflags -lfts
 	use ppc64 && append-flags -mminimal-toc
-	use uclibc && export ac_cv_type_error_t=yes
+	use elibc_uclibc && export ac_cv_type_error_t=yes
 
 	local mycmakeargs=(
 		-DDATABASE_DIRECTORY="${EPREFIX}"/var/lib/clamav
@@ -98,7 +97,7 @@ src_install() {
 	rm -rf "${ED}"/var/lib/clamav || die
 
 	if ! use libclamav-only ; then
-		if use systemd; then
+		if use systemd ; then
 			# The tmpfiles entry is behind USE=systemd because the
 			# upstream OpenRC service files should (and do) ensure that
 			# the directories they need exist and have the correct
@@ -113,7 +112,7 @@ src_install() {
 							"freshclamd.service"
 		fi
 
-		if use clamapp; then
+		if use clamapp ; then
 			# Modify /etc/{clamd,freshclam}.conf to be usable out of the box
 			sed -e "s:^\(Example\):\# \1:" \
 				-e "s/^#\(PidFile .*\)/\1/" \
@@ -152,7 +151,7 @@ src_install() {
 			local i
 			for i in clamd freshclam clamav-milter
 			do
-				if [[ -f "${ED}"/etc/"${i}".conf.sample ]]; then
+				if [[ -f "${ED}"/etc/"${i}".conf.sample ]] ; then
 					mv "${ED}"/etc/"${i}".conf{.sample,} || die
 				fi
 			done
