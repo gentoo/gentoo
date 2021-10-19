@@ -3,7 +3,7 @@
 
 # TODO: Add python support.
 
-EAPI=7
+EAPI=8
 
 inherit multilib-minimal
 
@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit autotools git-r3
 else
 	SRC_URI="https://github.com/nghttp2/nghttp2/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="HTTP/2 C Library"
@@ -71,6 +71,6 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	if ! use static-libs ; then
-		find "${ED}"/usr -name '*.la' -delete || die
+		find "${ED}"/usr -type f -name '*.la' -delete || die
 	fi
 }
