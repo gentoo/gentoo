@@ -15,7 +15,7 @@ SRC_URI="cdinstall? ( http://www.dxx-rebirth.com/download/dxx/misc/descent-game-
 	!cdinstall? ( ${MY_EXE} )"
 LICENSE="descent-data"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc"
 RESTRICT="bindist !cdinstall? ( fetch )"
 
