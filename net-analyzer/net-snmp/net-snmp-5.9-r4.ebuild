@@ -14,8 +14,8 @@ inherit autotools distutils-r1 perl-module systemd
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="http://www.net-snmp.org/"
 SRC_URI="
-	https://dev.gentoo.org/~jer/${PN}-5.7.3-patches-3.tar.xz
-	https://dev.gentoo.org/~jer/${P}.tar.xz
+	https://dev.gentoo.org/~jsmolic/distfiles/${PN}-5.7.3-patches-3.tar.xz
+	https://dev.gentoo.org/~jsmolic/distfiles/${P}.tar.xz
 "
 
 # GPL-2 for the init scripts
