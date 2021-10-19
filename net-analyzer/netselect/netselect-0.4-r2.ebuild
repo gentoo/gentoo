@@ -9,7 +9,7 @@ DESCRIPTION="Ultrafast implementation of ping"
 HOMEPAGE="http://apenwarr.ca/netselect/"
 SRC_URI="
 	https://github.com/apenwarr/${PN}/archive/${P}.tar.gz
-	ipv6? ( https://dev.gentoo.org/~jer/${P}-ipv6.patch.xz )
+	ipv6? ( https://dev.gentoo.org/~jsmolic/distfiles/${P}-ipv6.patch.xz )
 "
 S="${WORKDIR}/${PN}-${P}"
 
