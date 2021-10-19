@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Displays and kill active TCP connections seen by the selected interface"
 HOMEPAGE="http://www.signedness.org/tools/"
-SRC_URI="https://dev.gentoo.org/~jer/${P}.tgz"
+SRC_URI="https://dev.gentoo.org/~jsmolic/distfiles/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
