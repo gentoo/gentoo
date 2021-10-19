@@ -167,10 +167,11 @@ src_install() {
 	if use doc ; then
 		local HTML_DOCS=( docs/html/. )
 		einstalldocs
+	fi
 
-		if ! use libclamav-only ; then
-			doman docs/man/*.[1-8]
-		fi
+	# Don't install man pages for utilities we didn't install
+	if use libclamav-only ; then
+		rm -r "${ED}"/usr/share/man || die
 	fi
 
 	find "${ED}" -name '*.la' -delete || die
