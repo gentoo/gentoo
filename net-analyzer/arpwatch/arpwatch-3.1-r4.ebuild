@@ -13,7 +13,7 @@ SLOT="0"
 ETHERCODES_DATE=20200628
 SRC_URI="
 	https://ee.lbl.gov/downloads/${PN}/${P}.tar.gz
-	https://dev.gentoo.org/~jer/ethercodes.dat-${ETHERCODES_DATE}.xz
+	https://dev.gentoo.org/~jsmolic/distfiles/ethercodes.dat-${ETHERCODES_DATE}.xz
 "
 
 KEYWORDS="amd64 ~hppa ppc ~riscv sparc x86"
