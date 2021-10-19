@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Turns your root window into an aquarium"
 HOMEPAGE="https://jim.rees.org/computers/xfishtank.html"
-SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~jsmolic/distfiles/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
