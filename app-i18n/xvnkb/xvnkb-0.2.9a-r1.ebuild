@@ -20,7 +20,10 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="xft? ( virtual/pkgconfig )"
 
-PATCHES=( "${FILESDIR}"/${P}-ldflags.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-cc.patch
+	"${FILESDIR}"/${P}-ldflags.patch
+)
 
 src_prepare() {
 	default
