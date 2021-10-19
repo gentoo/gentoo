@@ -5,10 +5,6 @@
 # missing keywords on net-misc/pyhoca-cli and its deps
 net-misc/remmina x2go
 
-# Ionen Wolkens <ionen@gentoo.org> (2021-10-15)
-# dev-python/pytest-bdd is not keyworded here yet
-www-client/qutebrowser test
-
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-07)
 # dev-libs/mongo-c-driver is not keyworded here
 net-analyzer/zmap mongo
@@ -38,10 +34,6 @@ dev-util/diffoscope pascal
 # media-libs/rnnoise, media-plugins/gst-plugins-webrtc
 # and media-plugins/zam-plugins not keyworded here
 media-sound/easyeffects rnnoise webrtc zamaudio
-
-# Stefan Strogin <steils@gentoo.org> (2021-06-27)
-# Requires dev-python/adblock which is not keyworded on arm64 yet
-www-client/qutebrowser adblock
 
 # Sam James <sam@gentoo.org> (2021-04-14)
 # Supports 64-bit NEON
