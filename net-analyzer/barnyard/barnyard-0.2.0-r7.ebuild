@@ -9,7 +9,7 @@ DESCRIPTION="Fast output system for Snort"
 HOMEPAGE="https://sourceforge.net/projects/barnyard"
 SRC_URI="
 	mirror://sourceforge/barnyard/barnyard-${PV/_/-}.tar.gz
-	https://dev.gentoo.org/~jer/${P}-patches.tar.xz
+	https://dev.gentoo.org/~jsmolic/distfiles/${P}-patches.tar.xz
 "
 
 SLOT="0"
