@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A utility to poison ARP caches"
 HOMEPAGE="http://arpoison.sourceforge.net/ http://www.arpoison.net/"
-SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~jsmolic/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
