@@ -11,7 +11,7 @@ SRC_URI="https://github.com/vifm/vifm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ~arm64 ppc x86"
 IUSE="developer +extended-keys gtk +magic +vim +vim-syntax X"
 
 DEPEND="
