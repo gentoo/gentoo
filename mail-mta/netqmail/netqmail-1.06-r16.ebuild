@@ -81,7 +81,6 @@ RDEPEND="${DEPEND}
 	!mail-mta/ssmtp[mta]
 "
 PDEPEND="
-	virtual/checkpassword
 	virtual/daemontools
 "
 
