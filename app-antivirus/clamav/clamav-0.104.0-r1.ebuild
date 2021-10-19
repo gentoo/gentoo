@@ -43,7 +43,8 @@ CDEPEND="acct-group/clamav
 	test? ( dev-python/pytest )"
 # TODO: there is no way to use this with the new build system instead of the bundled one
 #	dev-libs/tomsfastmath
-BDEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig
+	doc? ( app-doc/doxygen )"
 DEPEND="${CDEPEND}
 	test? ( dev-libs/check )"
 RDEPEND="${CDEPEND}
@@ -72,6 +73,7 @@ src_configure() {
 		-DOPTIMIZE=ON
 		-DENABLE_EXTERNAL_MSPACK=ON
 		-DENABLE_MAN_PAGES=ON
+		-DENABLE_DOXYGEN=$(usex doc)
 		-DENABLE_UNRAR=$(usex rar ON OFF)
 		-DENABLE_TESTS=$(usex test ON OFF)
 		-DENABLE_STATIC_LIB=OFF
