@@ -5,7 +5,7 @@
 		<email>jakov.petrina@sartura.hr</email>
 		<name>Jakov Petrina</name>
 	</maintainer>
-	<maintainer type="project" proxied="proxy">
+	<maintainer type="person" proxied="proxy">
 		<email>jsmolic@gentoo.org</email>
 		<name>Jakov Smolić</name>
 	</maintainer>
