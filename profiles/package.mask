@@ -254,12 +254,6 @@ media-libs/webrtc-audio-processing:1
 # Removal on 2021-10-23.  Bug #814449.
 dev-python/python-jwt
 
-# Louis Sautier <sbraz@gentoo.org> (2021-09-19)
-# Last release in 2019, no reverse dependencies.
-# dev-python/isort provides similar functionality.
-# Removal on 2021-10-19, bug #813918.
-dev-python/flake8-import-order
-
 # Alfredo Tupone <tupone@gentoo.org> (2021-09-19)
 # Mask gnat-gpl-2018 and gnat-gpl-2019. Please switch
 # to a fresher gnat-gpl branch.
