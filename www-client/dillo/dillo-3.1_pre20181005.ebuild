@@ -7,7 +7,7 @@ inherit autotools desktop toolchain-funcs
 DESCRIPTION="Lean FLTK based web browser"
 HOMEPAGE="https://www.dillo.org/"
 SRC_URI="
-	https://dev.gentoo.org/~jer/${P}.tar.xz
+	https://dev.gentoo.org/~jsmolic/distfiles/${P}.tar.xz
 	mirror://gentoo/${PN}.png
 "
 
