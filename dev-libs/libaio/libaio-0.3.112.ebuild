@@ -22,6 +22,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.112-cppflags.patch
 	"${FILESDIR}"/${PN}-0.3.111-optional-werror.patch
+	"${FILESDIR}"/${PN}-0.3.112-respect-LDFLAGS.patch
 )
 
 src_prepare() {
