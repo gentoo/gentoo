@@ -8,7 +8,7 @@ inherit fcaps git-r3 toolchain-funcs
 DESCRIPTION="Ultrafast implementation of ping"
 HOMEPAGE="http://apenwarr.ca/netselect/"
 EGIT_REPO_URI="https://github.com/apenwarr/${PN}"
-SRC_URI="ipv6? ( https://dev.gentoo.org/~jer/${PN}-0.4-ipv6.patch.xz )"
+SRC_URI="ipv6? ( https://dev.gentoo.org/~jsmolic/distfiles/${PN}-0.4-ipv6.patch.xz )"
 S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="BSD"
