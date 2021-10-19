@@ -16,8 +16,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~
 IUSE="doc clamonacc +clamapp libclamav-only milter rar selinux systemd test uclibc"
 
 REQUIRED_USE="libclamav-only? ( !clamonacc !clamapp !milter )
-			  clamonacc? ( clamapp )
-			  milter? ( clamapp )"
+	clamonacc? ( clamapp )
+	milter? ( clamapp )
+	test? ( !libclamav-only )"
 
 RESTRICT="!test? ( test )"
 
@@ -178,11 +179,6 @@ src_install() {
 }
 
 src_test() {
-	if use libclamav-only ; then
-		ewarn "Test target not available when USE=libclamav-only is set, skipping tests ..."
-		return 0
-	fi
-
 	emake quick-check
 }
 
