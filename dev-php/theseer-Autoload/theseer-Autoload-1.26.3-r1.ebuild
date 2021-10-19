@@ -1,21 +1,21 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN="Autoload"
 
 DESCRIPTION="PHP Autoload Builder"
 HOMEPAGE="https://github.com/theseer/Autoload"
-SRC_URI="https://github.com/theseer/${MY_PN}/archive/1.26.0.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/theseer/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-CDEPEND="dev-lang/php:*[cli]
+CDEPEND="dev-lang/php:*[cli,fileinfo(-),tokenizer(-)]
 	>=dev-php/theseer-DirectoryScanner-1.3
 	<dev-php/theseer-DirectoryScanner-2
 	>=dev-php/zetacomponents-Base-1.8
