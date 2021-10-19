@@ -140,6 +140,9 @@ src_configure() {
 	# Work around -fno-common ( GCC10 default ), bug #713180
 	append-flags -fcommon
 
+	# Strip some flags users may set, but should not. #818502
+	filter-flags -fexceptions
+
 	# Enabling full docs appears to break doc building. If not
 	# explicitly disabled, the flag will get auto-enabled if pandoc and
 	# graphviz are detected. pandoc has loads of dependencies anyway.
