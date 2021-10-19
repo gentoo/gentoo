@@ -8,8 +8,8 @@ DEB_PL="1"
 DESCRIPTION="Traceroute with AS lookup, TOS support, MTU discovery and other features"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="
-	https://dev.gentoo.org/~jer/${PN}_${PV/_p*}.orig.tar.gz
-	https://dev.gentoo.org/~jer/${PN}_${PV/_p*}-${PV/*_p}.diff.gz
+	https://dev.gentoo.org/~jsmolic/distfiles/${PN}_${PV/_p*}.orig.tar.gz
+	https://dev.gentoo.org/~jsmolic/distfiles/${PN}_${PV/_p*}-${PV/*_p}.diff.gz
 "
 
 LICENSE="BSD"
