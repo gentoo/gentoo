@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Small program to test performances of remote servers"
 HOMEPAGE="http://echoping.sourceforge.net/"
-SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~jsmolic/distfiles/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
