@@ -12,4 +12,7 @@
 	<use>
 		<flag name="doc">Build and install the HTML documentation and regenerate the man pages</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">i3/i3</remote-id>
+	</upstream>
 </pkgmetadata>
