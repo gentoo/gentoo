@@ -11,7 +11,7 @@ HOMEPAGE="http://commons.apache.org/bsf/"
 SRC_URI="mirror://apache/jakarta/bsf/source/${PN}-src-${PV}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="2.3"
-KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 # If you add new ones, add them to ant-apache-bsf too for use dependencies
 IUSE="javascript python tcl"
