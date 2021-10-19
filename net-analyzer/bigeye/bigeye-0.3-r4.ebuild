@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 DESCRIPTION="network utility dump and simple honeypot utility"
 HOMEPAGE="http://violating.us/projects/bigeye/"
 SRC_URI="
-	http://violating.us/projects/bigeye/download/${P}.tgz
+	https://dev.gentoo.org/~jsmolic/distfiles/${P}.tgz
 	https://dev.gentoo.org/~jsmolic/distfiles/${P}-gcc34.patch.xz
 "
 
