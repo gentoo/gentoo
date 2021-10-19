@@ -154,6 +154,9 @@ src_configure() {
 
 	# Work around -fno-common ( GCC10 default ), bug #706638
 	append-flags -fcommon
+	
+	# Strip some flags users may set, but should not. #818502
+	filter-flags -fexceptions
 
 	tc-export_build_env CC CXX PKG_CONFIG STRIP
 
