@@ -22,7 +22,7 @@ fi
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 S="${WORKDIR}"
 
 # If all USE flags are unset, this ebuild installs zero files.  Require
