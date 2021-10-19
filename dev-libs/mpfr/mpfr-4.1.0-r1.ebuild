@@ -5,7 +5,7 @@ EAPI=7
 
 inherit multilib-minimal
 
-DESCRIPTION="library for multiple-precision floating-point computations with exact rounding"
+DESCRIPTION="Library for multiple-precision floating-point computations with exact rounding"
 HOMEPAGE="https://www.mpfr.org/"
 SRC_URI="https://www.mpfr.org/mpfr-${PV}/${P}.tar.xz"
 
@@ -14,7 +14,7 @@ SLOT="0/6" # libmpfr.so version
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="static-libs"
 
-RDEPEND=">=dev-libs/gmp-5.0.0[${MULTILIB_USEDEP},static-libs?]"
+RDEPEND=">=dev-libs/gmp-5.0.0:=[${MULTILIB_USEDEP},static-libs?]"
 DEPEND="${RDEPEND}"
 
 HTML_DOCS=( doc/FAQ.html )
