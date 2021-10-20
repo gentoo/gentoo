@@ -8,6 +8,7 @@ inherit desktop xdg
 DESCRIPTION="A complete solution for viewing and editing PDF files"
 HOMEPAGE="https://code-industry.net/free-pdf-editor/"
 SRC_URI="https://code-industry.net/public/${P}-qt5.x86_64.tar.gz"
+S="${WORKDIR}/${PN}-${PV%%.*}"
 
 LICENSE="master-pdf-editor"
 SLOT="0"
@@ -24,9 +25,7 @@ RDEPEND="
 	>=media-gfx/sane-backends-1.0
 "
 
-QA_PREBUILT="/opt/${PN}/masterpdfeditor5"
-
-S="${WORKDIR}/${PN}-${PV%%.*}"
+QA_PREBUILT="opt/${PN}/masterpdfeditor5"
 
 src_install() {
 	insinto /opt/${PN}
