@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Alessandro Barbieri <lssndrbarbieri@gmail.com> (2021-10-20)
+# dev-util/nvidia-cuda-toolkit has no stable keywords
+sys-apps/hwloc nvml
+
 # Joonas Niilola <juippis@gentoo.org> (2021-08-13)
 # dev-libs/efl is stabilized on amd64.
 app-crypt/pinentry -efl
