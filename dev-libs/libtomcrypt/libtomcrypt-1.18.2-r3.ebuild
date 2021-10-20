@@ -82,10 +82,14 @@ mymake() {
 		LIBPATH="${ESYSROOT}/usr/$(get_libdir)" \
 		INCPATH="${ESYSROOT}/usr/include" \
 		IGNORE_SPEED=1 \
+		PREFIX="${EPREFIX}/usr" \
 		"${@}"
 }
 
 src_compile() {
+	# Replace hard-coded libdir=${exec_prefix}/lib.
+	sed -i -e "/libdir=/s:/lib:/$(get_libdir):" libtomcrypt.pc.in || die
+
 	mymake -f makefile.shared library
 }
 
