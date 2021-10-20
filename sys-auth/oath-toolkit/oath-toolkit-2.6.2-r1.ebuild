@@ -11,7 +11,7 @@ LICENSE="GPL-3 LGPL-2.1"
 
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86"
-IUSE="pam pskc test"
+IUSE="pam pskc static-libs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -53,11 +53,13 @@ src_configure() {
 		$(use_enable test xmltest ) \
 		$(use_enable pam) \
 		$(use_with pam pam-dir $(getpam_mod_dir)) \
-		$(use_enable pskc)
+		$(use_enable pskc) \
+		$(use_enable static-libs static)
 }
 
 src_install() {
 	default
+	find "${ED}" -name '*.la' -type f -delete || die
 	if use pam; then
 		newdoc pam_oath/README README.pam
 	fi
