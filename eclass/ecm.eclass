@@ -508,7 +508,8 @@ ecm_src_test() {
 			export $(dbus-launch)
 		fi
 
-		cmake_src_test
+		# KDE_DEBUG stops crash handlers from launching and hanging the test phase
+		KDE_DEBUG=1 cmake_src_test
 	}
 
 	# When run as normal user during ebuild development with the ebuild command,
