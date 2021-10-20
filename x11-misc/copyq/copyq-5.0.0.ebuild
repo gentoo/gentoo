@@ -8,6 +8,7 @@ inherit cmake xdg-utils
 DESCRIPTION="Clipboard manager with advanced features"
 HOMEPAGE="https://github.com/hluk/CopyQ"
 SRC_URI="https://github.com/hluk/CopyQ/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/CopyQ-${PV}"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -35,8 +36,6 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	dev-qt/linguist-tools:5
 "
-
-S="${WORKDIR}/CopyQ-${PV}"
 
 src_configure() {
 	local mycmakeargs=(
