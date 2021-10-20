@@ -19,7 +19,6 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
-
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -27,7 +26,6 @@ RDEPEND="
 	${PYTHON_DEPS}
 	sys-libs/pam:0=[${MULTILIB_USEDEP}]
 "
-
 DEPEND="
 	${RDEPEND}
 	test? ( dev-util/cmocka[${MULTILIB_USEDEP}] )
@@ -35,26 +33,50 @@ DEPEND="
 
 multilib_src_configure() {
 	configure_for_python() {
-		local libpam="${EPREFIX}"
-		multilib_is_native_abi || libpam+="/usr"
-		libpam+="/$(get_libdir)/libpam.so.0"
+		local libpam="${EPREFIX}/$(get_libdir)/libpam.so.0"
 
 		local mycmakeargs=(
 			-DPAM_LIBRARY="${libpam}"
-			-DUNIT_TESTING=$(usex test)
-			-DPYTHON2_LIBRARY="/dev/null" # Disabled
-			-DPYTHON3_INCLUDE_DIR="$(python_get_includedir)"
-			-DPYTHON3_SITELIB="$(python_get_sitedir)"
+			-DUNIT_TESTING=OFF
 		)
+
 		cmake_src_configure
 	}
-	python_foreach_impl configure_for_python
+
+	if multilib_is_native_abi ; then
+		# Build the Pythons for each version (but only for the native ABI)
+		# bug #737468
+		python_foreach_impl configure_for_python
+	fi
+
+	# Do the regular build now
+	local libpam="${EPREFIX}"
+	multilib_is_native_abi || libpam+="/usr"
+	libpam+="/$(get_libdir)/libpam.so.0"
+
+	local mycmakeargs=(
+		-DPAM_LIBRARY="${libpam}"
+		-DUNIT_TESTING=$(usex test)
+		-DCMAKE_DISABLE_FIND_PACKAGE_Python{Libs,Interp,SiteLibs}=ON
+	)
+
+	cmake_src_configure
 }
 
 multilib_src_compile() {
-	python_foreach_impl cmake_src_compile
+	if multilib_is_native_abi ; then
+		python_foreach_impl cmake_src_compile
+	fi
+
+	# Compile the "proper" version without Python last
+	cmake_src_compile
 }
 
 multilib_src_install() {
-	python_foreach_impl cmake_src_install
+	if multilib_is_native_abi ; then
+		python_foreach_impl cmake_src_install
+	fi
+
+	# Install the "proper" version without Python last
+	cmake_src_install
 }
