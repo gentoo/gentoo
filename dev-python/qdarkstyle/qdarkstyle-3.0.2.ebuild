@@ -3,8 +3,7 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 optfeature
 
@@ -20,6 +19,8 @@ KEYWORDS="amd64 x86"
 
 # TODO: Figure out how to get this to work
 # Please pass a palette class in order to create its qrc file
+# This appears to be fundamentally broken: test calls create_qss() without
+# argument and that function does sys.exit(1) if the argument is None.
 RESTRICT="test"
 
 RDEPEND=">=dev-python/QtPy-1.7[gui,${PYTHON_USEDEP}]"
