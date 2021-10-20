@@ -12,7 +12,7 @@ S=${WORKDIR}/${PN}-${PV/_}
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ppc ~ppc64 x86"
 IUSE="+ppds"
 
 DEPEND="net-print/cups"
