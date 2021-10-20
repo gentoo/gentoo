@@ -119,12 +119,7 @@ src_install() {
 	# 4.9 regression: https://github.com/shadow-maint/shadow/issues/389
 	emake DESTDIR="${D}" -C man install
 
-	# Remove libshadow and libmisc; see bug 37725 and the following
-	# comment from shadow's README.linux:
-	#   Currently, libshadow.a is for internal use only, so if you see
-	#   -lshadow in a Makefile of some other package, it is safe to
-	#   remove it.
-	rm -f "${ED}"/{,usr/}$(get_libdir)/lib{misc,shadow}.{a,la}
+	find "${ED}" -name '*.la' -type f -delete || die
 
 	insinto /etc
 	if ! use pam ; then
