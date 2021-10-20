@@ -71,11 +71,11 @@ src_compile() {
 		# If the user hasn't picked one, let's prefer byacc > yacc > old bison for now.
 		# See bug #734354 - bison doesn't work here.
 		# We can remove this once Bison works again!
-		if has_version "dev-util/byacc" ; then
+		if has_version -b "dev-util/byacc" ; then
 			export YACC=byacc
-		elif has_version "dev-util/yacc" ; then
+		elif has_version -b "dev-util/yacc" ; then
 			export YACC=yacc
-		elif has_version "<sys-devel/bison-3.7" ; then
+		elif has_version -b "<sys-devel/bison-3.7" ; then
 			export YACC=bison
 		else
 			die "This case shouldn't be possible; no suitable YACC impl installed."
