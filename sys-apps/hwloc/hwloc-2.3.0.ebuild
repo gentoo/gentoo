@@ -24,7 +24,6 @@ RDEPEND=">=sys-libs/ncurses-5.9-r3:0[${MULTILIB_USEDEP}]
 	cairo?	( >=x11-libs/cairo-1.12.14-r4[X?,svg?,${MULTILIB_USEDEP}] )
 	cuda?	( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1:= )
 	gl?	( x11-drivers/nvidia-drivers[static-libs,tools] )
-	netloc?	( !sys-apps/netloc )
 	nvml?	(
 		>=dev-util/nvidia-cuda-toolkit-6.5.19-r1:=
 		x11-drivers/nvidia-drivers[${MULTILIB_USEDEP}]
