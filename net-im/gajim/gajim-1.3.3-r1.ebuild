@@ -36,7 +36,7 @@ RDEPEND="${COMMON_DEPEND}
 		dev-python/pycurl[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
-		>=dev-python/python-nbxmpp-2.0.2[${PYTHON_USEDEP}]
+		>=dev-python/python-nbxmpp-2.0.4[${PYTHON_USEDEP}]
 		x11-libs/libXScrnSaver
 		app-crypt/libsecret[crypt,introspection]
 		dev-python/keyring[${PYTHON_USEDEP}]
