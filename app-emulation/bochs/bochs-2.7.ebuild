@@ -11,7 +11,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 
-IUSE="3dnow avx debugger doc gdb ncurses readline svga sdl +smp vnc X +x86-64"
+IUSE="3dnow avx debugger doc gdb ncurses readline sdl +smp vnc X +x86-64"
 REQUIRED_USE="
 	avx? ( x86-64 )
 	gdb? ( !debugger !smp )
@@ -19,26 +19,27 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	X? ( x11-libs/libICE
+	ncurses? ( sys-libs/ncurses:= )
+	readline? ( sys-libs/readline:= )
+	sdl? ( media-libs/libsdl )
+	X? (
+		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libX11
-		x11-libs/libXpm )
-	sdl? ( media-libs/libsdl )
-	svga? ( media-libs/svgalib )
-	readline? ( sys-libs/readline:= )
-	ncurses? ( sys-libs/ncurses:= )
+		x11-libs/libXpm
+	)
 "
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
 BDEPEND="
-	doc? ( app-text/docbook-sgml-utils )
-	sys-apps/sed
 	>=app-text/opensp-1.5
+	doc? ( app-text/docbook-sgml-utils )
 "
 
 src_prepare() {
 	default
+
 	sed -i "s:^docdir.*:docdir = ${EPREFIX}/usr/share/doc/${PF}:" \
 		Makefile.in || die
 }
@@ -50,7 +51,6 @@ src_configure() {
 		--enable-cdrom \
 		--enable-clgd54xx \
 		--enable-cpu-level=6 \
-		--enable-disasm \
 		--enable-e1000 \
 		--enable-gameport \
 		--enable-iodebug \
@@ -77,9 +77,7 @@ src_configure() {
 		$(use_enable x86-64) \
 		$(use_with ncurses term) \
 		$(use_with sdl) \
-		$(use_with svga) \
 		$(use_with vnc rfb) \
 		$(use_with X x) \
-		$(use_with X x11) \
-		${myconf}
+		$(use_with X x11)
 }
