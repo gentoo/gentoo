@@ -7,16 +7,12 @@ WANT_AUTOMAKE="none"
 
 inherit autotools cron flag-o-matic pam systemd user-info
 
-MY_PV="${PV/_beta/}"
-MY_P="${PN}-${MY_PV}"
-
 DESCRIPTION="A command scheduler with extended capabilities over cron and anacron"
 HOMEPAGE="http://fcron.free.fr/"
-SRC_URI="http://fcron.free.fr/archives/${MY_P}.src.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="http://fcron.free.fr/archives/${P}.src.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="audit debug pam selinux l10n_fr +mta +system-crontab readline"
 
 DEPEND="
@@ -210,7 +206,7 @@ pkg_postinst() {
 	else
 		local v
 		for v in ${REPLACING_VERSIONS}; do
-			if ver_test "3.2.1" -le ${v}; then
+			if ver_test "3.2.1" -gt ${v}; then
 				# This is an upgrade
 
 				elog "fcron's default systab was updated since your last installation."
