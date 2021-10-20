@@ -342,22 +342,14 @@ EGO_SUM=(
 	"honnef.co/go/tools v0.0.1-2019.2.3/go.mod"
 	"rsc.io/binaryregexp v0.2.0/go.mod"
 	"rsc.io/pdf v0.1.1/go.mod"
-	)
+)
 go-module_set_globals
 SRC_URI="https://github.com/go-delve/delve/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		${EGO_SUM_SRC_URI}"
 
-KEYWORDS="~amd64"
-
 LICENSE="MIT BSD BSD-2 Apache-2.0"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
-
-src_unpack() {
-	unpack "${P}.tar.gz"
-	go-module_setup_proxy
-}
+KEYWORDS="~amd64"
 
 src_compile() {
 	go build -mod vendor -ldflags="-X main.Build=${PV}" -o "${S}/dlv" ./cmd/dlv || die
