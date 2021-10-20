@@ -88,6 +88,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-proj8.patch
+	"${FILESDIR}"/${PN}-oracle21.patch
 )
 
 want_apache2 apache

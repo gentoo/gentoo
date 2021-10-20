@@ -86,6 +86,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+    "${FILESDIR}"/${PN}-oracle21.patch
+)
+
 want_apache2 apache
 
 pkg_setup() {
