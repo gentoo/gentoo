@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 CMAKE_ECLASS=cmake
 inherit cmake-multilib
@@ -19,6 +19,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/codec2-1.0.1-static-rx_filter_coh.patch"
+	"${FILESDIR}/${P}-fix-freedv-callback.patch" # Bug 816453
 )
 
 multilib_src_configure() {
