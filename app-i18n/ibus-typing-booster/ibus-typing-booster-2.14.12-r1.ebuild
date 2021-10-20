@@ -13,7 +13,7 @@ SRC_URI="https://github.com/mike-fabian/${PN}/releases/download/${PV}/${P}.tar.g
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 RESTRICT="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -31,6 +31,12 @@ RDEPEND="${DEPEND}
 	>=dev-db/m17n-db-1.7"
 BDEPEND="sys-devel/gettext
 	virtual/pkgconfig"
+
+src_prepare() {
+	default
+
+	sed -i "s|/usr\(/bin/sh\)|\1|" {engine,setup}/*.in
+}
 
 pkg_preinst() {
 	xdg_pkg_preinst
