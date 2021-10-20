@@ -9,7 +9,7 @@ SRC_URI="https://hpjansson.org/chafa/releases/${P}.tar.xz"
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+tools"
 
 RDEPEND="
