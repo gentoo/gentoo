@@ -12,7 +12,7 @@ SRC_URI+=" https://github.com/clinew/gentoo-distfiles/raw/master/inspircd-${PV}-
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="debug gnutls ldap maxminddb mbedtls mysql pcre postgres re2 regex-posix regex-stdlib sqlite ssl sslrehashsignal tre"
 
 RDEPEND="
