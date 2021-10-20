@@ -23,7 +23,9 @@ DEPEND="
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	server? ( acct-group/seat )
+"
 BDEPEND=">=app-text/scdoc-1.9.7"
 
 src_configure() {
