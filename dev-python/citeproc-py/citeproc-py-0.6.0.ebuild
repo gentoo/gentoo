@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 BDEPEND=">=app-text/rnc2rng-2.6.3[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/lxml[${PYTHON_USEDEP}]"
