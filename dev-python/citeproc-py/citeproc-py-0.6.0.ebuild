@@ -21,19 +21,20 @@ SRC_URI="
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
 
 BDEPEND=">=app-text/rnc2rng-2.6.3[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/lxml[${PYTHON_USEDEP}]"
-DEPEND="test? ( ${RDEPEND} )"
 
 PATCHES=( "${FILESDIR}/stop_test_from_accessing_git-${PV}.patch" )
 
 distutils_enable_tests nose
 
 src_prepare() {
-	default_src_prepare
-	mv "${WORKDIR}/test-suite-${TEST_SUITE_COMMIT}" "${S}/tests/test-suite" || die
+	default
+
+	if use test ; then
+		mv "${WORKDIR}/test-suite-${TEST_SUITE_COMMIT}" "${S}/tests/test-suite" || die
+	fi
 }
 
 python_test() {
