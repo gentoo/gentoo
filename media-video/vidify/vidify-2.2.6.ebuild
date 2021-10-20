@@ -3,9 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
-
-DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit xdg distutils-r1 optfeature virtualx
 
@@ -68,7 +66,7 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	elog "If video playback is not working please check 'vidify --debug' for missing-codec-errors"
-	elof "and recompile media-video/vlc or media-video/mpv with the missing codecs"
+	elog "and recompile media-video/vlc or media-video/mpv with the missing codecs"
 
 	optfeature "using an MPRIS(D-Bus) audio player (e.g spotify)" dev-python/pydbus
 	optfeature "using the Spotify Web API as audio player" dev-python/tekore
