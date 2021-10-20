@@ -17,7 +17,8 @@ RDEPEND="
 	dev-perl/Moo
 	dev-perl/MooX-Types-MooseLike
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=dev-perl/Module-Build-0.420.0
 	test? (
 		virtual/perl-Test-Simple
