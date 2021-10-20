@@ -62,7 +62,8 @@ python_check_deps() {
 	if use test; then
 		has_version -d "sys-libs/pam_wrapper[${PYTHON_USEDEP}]"
 	fi
-	has_version -d "dev-python/dbusmock[${PYTHON_USEDEP}]" &&
+
+	has_version -d "dev-python/python-dbusmock[${PYTHON_USEDEP}]" &&
 	has_version -d "dev-python/dbus-python[${PYTHON_USEDEP}]" &&
 	has_version -d "dev-python/pycairo[${PYTHON_USEDEP}]"
 }
