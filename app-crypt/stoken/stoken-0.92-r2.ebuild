@@ -12,19 +12,30 @@ SRC_URI="https://github.com/cernekee/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86"
-IUSE="gtk static"
+IUSE="gtk static-libs"
 
-#	|| ( dev-libs/nettle dev-libs/libtomcrypt )    libtomcrypt is not packaged
+# TODO: add a USE flag to enable optional use of tomcrypt instead of nettle.
 RDEPEND="
 	dev-libs/nettle
 	gtk? ( >=x11-libs/gtk+-3.12:3 )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	default
 	eautoreconf
-	eapply_user
 }
 
 src_configure() {
-	econf $(use_with gtk) --enable-static=$(usex static)
+	local myconf=(
+		$(use_with gtk)
+		$(use_enable static-libs static)
+		--with-nettle
+		--without-tomcrypt
+	)
+	econf "${myconf[@]}"
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -type f -delete || die
 }
