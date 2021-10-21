@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake elisp-common git-r3 xdg
 
@@ -71,12 +71,7 @@ DOCS=(
 	doc/testing.txt
 )
 
-src_prepare() {
-	if has_version ">=media-libs/lib3mf-2"; then
-		eapply "${FILESDIR}/${P}-0001-fix-to-find-lib3mf-2.patch"
-	fi
-	cmake_src_prepare
-}
+PATCHES=( "${FILESDIR}"/${P}-fix-pkg-config-name-and-include-directory-search.patch )
 
 src_configure() {
 	local mycmakeargs=(
