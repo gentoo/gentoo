@@ -16,6 +16,7 @@ IUSE="examples gtk-doc +introspection"
 
 RDEPEND="
 	dev-libs/glib:2
+	dev-libs/libgudev
 	dev-libs/libgusb
 	dev-libs/nss
 	virtual/libusb:1=
