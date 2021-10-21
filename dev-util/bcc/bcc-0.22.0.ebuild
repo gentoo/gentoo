@@ -26,7 +26,7 @@ RDEPEND="
 		~dev-libs/libbpf-9999
 	)
 	dev-libs/libbpf:=[static-libs(-)]
-	>=sys-kernel/linux-headers-4.14
+	>=sys-kernel/linux-headers-5.13
 	>=dev-libs/elfutils-0.166:=
 	<=sys-devel/clang-13:=
 	<=sys-devel/llvm-13:=[llvm_targets_BPF(+)]
