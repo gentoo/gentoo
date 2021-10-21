@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
+# No maintainer, EAPI 5, no other distro is packaging this.
+# Removal on 2021-11-20. Bug #819123
+sci-geosciences/harmonics-dwf-free-noncomm
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
 # Stuck on EAPI 5, no other distro is packaging this. Bug #575684
 # Removal on 2021-11-20.
 sci-electronics/quartus-prime-lite
