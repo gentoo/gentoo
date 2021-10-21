@@ -43,7 +43,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9.2-respect-cflags-more.patch
+	"${FILESDIR}"/${PN}-9999999-respect-cflags-more.patch
 )
 
 src_prepare() {
@@ -117,5 +117,5 @@ src_compile() {
 src_install() {
 	dobin hydra pw-inspector
 	use gtk && dobin hydra-gtk/src/xhydra
-	dodoc CHANGES README.md
+	dodoc CHANGES README
 }
