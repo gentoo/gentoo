@@ -16,5 +16,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">prov</remote-id>
+		<remote-id type="github">trungdong/prov</remote-id>
 	</upstream>
 </pkgmetadata>
