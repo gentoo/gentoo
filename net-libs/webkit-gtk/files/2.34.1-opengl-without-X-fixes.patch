@@ -1,0 +1,31 @@
+https://bugs.webkit.org/show_bug.cgi?id=208907
+
+From c67efa2bbe2094b40b4e104bb26497c2aff5ce68 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sat, 9 May 2020 23:11:52 +0300
+Subject: [PATCH] Clean up OpenGLShims.h conditionals in a few places to fix
+ some build configurations
+
+---
+ Source/WebKit/UIProcess/API/glib/WebKitProtocolHandler.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletions(-)
+
+diff --git a/Source/WebKit/UIProcess/API/glib/WebKitProtocolHandler.cpp b/Source/WebKit/UIProcess/API/glib/WebKitProtocolHandler.cpp
+index 3515be452b2..82cce70f14b 100644
+--- a/Source/WebKit/UIProcess/API/glib/WebKitProtocolHandler.cpp
++++ b/Source/WebKit/UIProcess/API/glib/WebKitProtocolHandler.cpp
+@@ -64,7 +64,10 @@
+ 
+ #if USE(GLX)
+ #include <GL/glx.h>
+-#include <WebCore/OpenGLShims.h>
++#endif
++
++#if !USE(OPENGL_ES) && !USE(LIBEPOXY) && !USE(ANGLE)
++#include "WebCore/OpenGLShims.h"
+ #endif
+ 
+ #if USE(GSTREAMER)
+-- 
+2.20.1
+

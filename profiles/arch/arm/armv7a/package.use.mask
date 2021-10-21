@@ -11,6 +11,7 @@
 dev-libs/efl -avif
 kde-frameworks/kimageformats -avif
 media-libs/gd -avif
+net-libs/webkit-gtk -avif
 
 # Sam James <sam@gentoo.org> (2020-10-05)
 # Guile only supports JIT on some arches
