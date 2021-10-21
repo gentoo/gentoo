@@ -16,7 +16,7 @@ LICENSE="LSI"
 SLOT="0"
 # This package can never enter stable, it can't be mirrored and upstream
 # can remove the distfiles from their mirror anytime.
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="app-arch/unzip
