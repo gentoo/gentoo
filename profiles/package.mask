@@ -376,10 +376,6 @@ net-libs/libsoup:3.0
 # https://github.com/NVIDIA/egl-wayland/issues/41
 >=gui-libs/egl-wayland-1.1.8
 
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2021-08-30)
-# Homepage dead, uses gtk2, fails to build, https://bugs.gentoo.org/711344
-games-puzzle/gnudoku
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-09-25)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
