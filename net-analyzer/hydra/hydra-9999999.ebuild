@@ -117,5 +117,5 @@ src_compile() {
 src_install() {
 	dobin hydra pw-inspector
 	use gtk && dobin hydra-gtk/src/xhydra
-	dodoc CHANGES README.md
+	dodoc CHANGES README
 }
