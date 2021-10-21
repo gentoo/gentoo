@@ -92,7 +92,7 @@ src_install() {
 		if [[ -d ${d}/extras ]]; then
 			doins -r "${d}"/extras
 		fi
-		eend
+		eend $?
 	done
 	dobin "${T}"/cuda-config
 
@@ -101,11 +101,11 @@ src_install() {
 	ebegin "Installing nvvm"
 	doins -r builds/cuda_nvcc/nvvm
 	fperms +x ${cudadir}/nvvm/bin/cicc
-	eend
+	eend $?
 
 	ebegin "Installing nvml"
 	doins -r builds/cuda_nvml_dev/nvml
-	eend
+	eend $?
 
 	if use sanitizer; then
 		ebegin "Installing sanitizer"
@@ -113,7 +113,7 @@ src_install() {
 		doins -r builds/cuda_sanitizer_api/compute-sanitizer
 		# special handling for the executable
 		fperms +x ${cudadir}/compute-sanitizer/compute-sanitizer
-		eend
+		eend $?
 	fi
 
 	use profiler && ldpathextradirs+=":${ecudadir}/extras/CUPTI/lib64"
@@ -123,7 +123,7 @@ src_install() {
 		doins -r builds/cuda_nvvp/libnvvp
 		# special handling for the executable
 		fperms +x ${cudadir}/libnvvp/nvvp
-		eend
+		eend $?
 		pathextradirs+=":${ecudadir}/libnvvp"
 	fi
 
@@ -145,7 +145,7 @@ src_install() {
 		)
 
 		dobin builds/integration/nsight-compute/{ncu,ncu-ui,nv-nsight-cu,nv-nsight-cu-cli}
-		eend
+		eend $?
 
 		local nsys_dir=$(grep -o 'nsight-systems-[0-9][0-9\.]*' -m1 manifests/cuda_x86_64.xml)
 		ebegin "Installing ${nsys_dir}"
@@ -170,7 +170,7 @@ src_install() {
 		)
 
 		dobin builds/integration/nsight-systems/{nsight-sys,nsys,nsys-exporter,nsys-ui}
-		eend
+		eend $?
 
 		# nsight scripts and binaries need to have their executable bit set, #691284
 		for f in "${exes[@]}"; do
