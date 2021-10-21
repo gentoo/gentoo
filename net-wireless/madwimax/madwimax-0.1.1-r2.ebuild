@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
+
 inherit autotools linux-info udev
 
 DESCRIPTION="Reverse-engineered driver for WiMAX devices based on Samsung CMC-730 chip"
@@ -14,7 +15,8 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc"
 
 RDEPEND="virtual/libusb:1"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		app-text/asciidoc
@@ -24,6 +26,7 @@ DEPEND="${RDEPEND}
 CONFIG_CHECK="~TUN"
 
 src_prepare() {
+	default
 	sed -i -e "s:\(for name in docbook2\)x-man:\1man\.pl:" configure.ac || die
 	eautoreconf
 }
