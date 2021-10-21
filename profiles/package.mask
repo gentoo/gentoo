@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
+# Stuck on EAPI 5, no other distro is packaging this. Bug #575684
+# Removal on 2021-11-20.
+sci-electronics/quartus-prime-lite
+
 # David Seifert <soap@gentoo.org> (2021-10-17)
 # Broken since pretty much forever, last release 17 years ago, already
 # removed by Fedora. Bug #386275, #731042, #762346, removal in 30 days.
