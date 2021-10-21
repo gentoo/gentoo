@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit toolchain-funcs epatch
+inherit toolchain-funcs
 
 DESCRIPTION="Apple's top from Mac OS X Lion 10.7"
 HOMEPAGE="http://www.opensource.apple.com/"
@@ -21,9 +21,11 @@ S=${WORKDIR}/top-${PV}
 src_prepare() {
 	# libutil.h header is missing at least on Leopard (10.5), the dylib just
 	# exists
-	[[ ! -e ${ROOT}/usr/include/libutil.h ]] && \
+	[[ ! -e ${ESYSROOT}/usr/include/libutil.h ]] && \
 		cp "${DISTDIR}"/libutil-11-top-${PV}.h "${S}"/libutil.h || die
-	epatch "${FILESDIR}"/${P}-darwin9.patch
+	eapply -p0 "${FILESDIR}"/${P}-darwin9.patch
+
+	eapply_user
 }
 
 src_compile() {
