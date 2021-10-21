@@ -35,6 +35,11 @@
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
 # No maintainer, EAPI 5, no other distro is packaging this.
+# Removal on 2021-11-20. Bug #819126
+sci-geosciences/swmm
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
+# No maintainer, EAPI 5, no other distro is packaging this.
 # Removal on 2021-11-20. Bug #819123
 sci-geosciences/harmonics-dwf-free-noncomm
 
