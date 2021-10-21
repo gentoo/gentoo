@@ -33,10 +33,10 @@ RDEPEND="
 		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/PyQt5[${PYTHON_USEDEP},dbus,declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
 		dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
-		>=dev-python/pyyaml-5.4.1[${PYTHON_USEDEP},libyaml(+)]
+		>=dev-python/pyyaml-6.0[${PYTHON_USEDEP}]
 		>=dev-python/typing-extensions-3.10.0.2[${PYTHON_USEDEP}]
 		>=dev-python/zipp-3.6.0[${PYTHON_USEDEP}]
-		adblock? ( dev-python/adblock[${PYTHON_USEDEP}] )
+		adblock? ( >=dev-python/adblock-0.5.0[${PYTHON_USEDEP}] )
 	')
 	widevine? ( www-plugins/chrome-binary-plugins )"
 BDEPEND="
