@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
+# Legacy package, no revdeps, EAPI 5.
+# Removal on 2021-11-20. Bug #819345
+net-fs/openafs-legacy
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
 # No maintainer, dead upstream, EAPI 5.
 # No other distro is packaging this. Bug #819339
 # Removal on 2021-11-20.
