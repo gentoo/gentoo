@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
+# No maintainer, EAPI 5, no other distro is packaging this.
+# Removal on 2021-11-20. Bug #819165
+x11-misc/3dfb
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
 # Unmaintained, stuck on EAPI 5, full of hacks and patches.
 # No other distro is packaging this. Bug #819141
 # Removal on 2021-11-20.
