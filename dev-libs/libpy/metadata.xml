@@ -8,4 +8,7 @@
 	<use>
 		<flag name="sparsehash">Include libpy wrappers for <pkg>dev-cpp/sparsehash</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">quantopian/libpy</remote-id>
+	</upstream>
 </pkgmetadata>
