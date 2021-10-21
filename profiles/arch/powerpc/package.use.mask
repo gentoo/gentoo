@@ -37,6 +37,7 @@ sys-apps/fwupd amt dell uefi
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
 # Dependency not keyworded on this arch.
 dev-libs/efl avif
+net-libs/webkit-gtk avif
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
 # criu is masked on big-endian ppc*

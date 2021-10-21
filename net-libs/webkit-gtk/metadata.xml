@@ -6,6 +6,7 @@
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
 <use>
+	<flag name="avif">Enable support for AVIF images via <pkg>media-libs/libavif</pkg></flag>
 	<flag name="egl">Enable EGL support</flag>
 	<flag name="examples">Install the MiniBrowser example application</flag>
 	<flag name="gamepad">Enable gamepad input support via <pkg>dev-libs/libmanette</pkg></flag>
