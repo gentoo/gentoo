@@ -1,0 +1,19 @@
+Respect flags and use pkg-config.
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,2 @@
+-CC = gcc
+-MAKE = make
+-LDFLAGS = -lncurses
++LIBS := $(shell $(PKG_CONFIG) --libs ncurses) $(LIBS)
+ OBJFILES = main.o draw.o erwin.o network.o scores.o
+@@ -6,3 +4,3 @@
+ LOCALEPATH = /usr/local/share/locale
+-CFLAGS = -Wall -O2 -DPREFIX="\"$(PREFIX)\"" 
++CFLAGS := $(CFLAGS) -Wall -DPREFIX="\"$(PREFIX)\"" -DLOCALEPATH="\"$(LOCALEPATH)\"" $(shell $(PKG_CONFIG) --cflags ncurses) $(CPPFLAGS)
+ VERSION = `grep " VERSION" version.h | sed s/\"//g | sed s/\#define\ VERSION\ //`
+@@ -27,3 +25,3 @@
+ tornado: $(OBJFILES)
+-	$(CC) $(LDFLAGS) $(OBJFILES) -o tornado
++	$(CC) $(LDFLAGS) $(OBJFILES) -o tornado $(LIBS)
+ 

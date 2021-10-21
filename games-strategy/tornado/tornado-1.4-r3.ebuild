@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit plocale toolchain-funcs
 
 DESCRIPTION="Clone of a C64 game - destroy the opponent's house"
 HOMEPAGE="https://github.com/kouya/tornado"
@@ -12,34 +12,53 @@ SRC_URI="https://github.com/kouya/tornado/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="nls"
 
 RDEPEND="
 	acct-group/gamestat
 	sys-libs/ncurses:=
-	nls? ( virtual/libintl )"
+	virtual/libintl"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+	sys-devel/gettext"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-r2-gentoo.patch
+	"${FILESDIR}"/${P}-make.patch
 )
 
-src_configure() {
-	if ! use nls; then
-		sed -i \
-			-e '/^all:/s|locales||g' \
-			-e '/^install:/s|install-locale-data||g' \
-			Makefile || die
-	fi
+src_prepare() {
+	default
 
+	sed -i "/SCOREFILE_NAME/s|/|${EPREFIX}/|" scores.h || die
+}
+
+src_compile() {
 	tc-export CC PKG_CONFIG
+
+	emake PREFIX="${EPREFIX}/usr" LOCALEPATH="${EPREFIX}/usr/share/locale"
 }
 
 src_install() {
-	default
+	dobin tornado
+	doman doc/man/tornado.6
+
+	einstalldocs
+
+	tornado_man() {
+		doman -i18n=${1} doc/man/${1}/${PN}.6
+	}
+	local PLOCALES="de fr it nl no ru"
+	plocale_for_each_locale tornado_man
+
+	tornado_loc() {
+		insinto /usr/share/locale/${1}/LC_MESSAGES
+		newins po/${1}.mo ${PN}.mo
+	}
+	PLOCALES+=" es pt"
+	plocale_for_each_locale tornado_loc
+
+	insinto /var/games
+	doins ${PN}.scores
 
 	fowners :gamestat /usr/bin/${PN} /var/games/${PN}.scores
 	fperms g+s /usr/bin/${PN}
