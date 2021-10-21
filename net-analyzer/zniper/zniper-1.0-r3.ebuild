@@ -1,12 +1,14 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
+
 inherit toolchain-funcs
 
 DESCRIPTION="Displays and kill active TCP connections seen by the selected interface"
 HOMEPAGE="http://www.signedness.org/tools/"
 SRC_URI="https://dev.gentoo.org/~jsmolic/distfiles/${P}.tgz"
+S="${WORKDIR}/zniper"
 
 LICENSE="BSD"
 SLOT="0"
@@ -16,14 +18,11 @@ RDEPEND="
 	net-libs/libpcap
 	sys-libs/ncurses:=
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
-
-S=${WORKDIR}/"zniper"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
+	default
 	sed -i \
 		-e 's| -o | $(LDFLAGS)&|g' \
 		-e 's|@make|@$(MAKE)|g' \
