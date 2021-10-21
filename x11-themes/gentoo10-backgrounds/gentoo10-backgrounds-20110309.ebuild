@@ -1,30 +1,23 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 DESCRIPTION="Gentoo - 10 Years Compiling Background Artwork"
 HOMEPAGE="https://www.gentoo.org/inside-gentoo/artwork/"
-
 SRC_URI="https://dev.gentoo.org/~flameeyes/${P}.tar.xz"
-
-LICENSE="CC-BY-SA-3.0"
-KEYWORDS="amd64 ~mips x86"
-IUSE=""
-
-RDEPEND=""
-DEPEND="app-arch/xz-utils"
-
 S="${WORKDIR}/${PN}"
 
+LICENSE="CC-BY-SA-3.0"
 SLOT="0"
+KEYWORDS="amd64 ~mips x86"
+
+BDEPEND="app-arch/xz-utils"
 
 src_prepare() {
+	default
 	sed -i -e "s:/usr/:${EPREFIX}/usr/:" *.xml || die
 }
-
-src_compile() { :; }
-src_test() { :; }
 
 src_install() {
 
