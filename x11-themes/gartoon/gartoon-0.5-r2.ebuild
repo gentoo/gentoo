@@ -1,11 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 DESCRIPTION="Gartoon SVG icon theme"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~ppc sparc ~x86"
@@ -13,13 +14,12 @@ SLOT="0"
 
 RESTRICT="binchecks strip"
 
-S=${WORKDIR}/${PN}
-
 pkg_setup() {
 	mydest="/usr/share/icons/${PN}"
 }
 
 src_prepare() {
+	default
 	sed -i \
 		-e "s:\(^pixmap_path\) \(\".*\"$\):\1 \"${mydest}/scalable/stock\":" \
 		scalable/stock/iconrc || die
