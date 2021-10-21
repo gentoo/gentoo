@@ -19,7 +19,10 @@ IUSE="doc"
 RDEPEND="
 	>=dev-vcs/mercurial-4.7[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx )"
+	doc? (
+		dev-python/sphinx
+		media-gfx/imagemagick[svg]
+		)"
 
 python_prepare_all() {
 	rm hgext3rd/__init__.py || die
