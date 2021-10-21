@@ -24,7 +24,7 @@ fi
 LICENSE="AGPL-3 CPL-1.0"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="cups dbus gtk +jpeg2k l10n_de static-libs unicode X"
+IUSE="cups dbus gtk l10n_de static-libs unicode X"
 
 LANGS="ja ko zh-CN zh-TW"
 for X in ${LANGS} ; do
@@ -38,13 +38,13 @@ DEPEND="
 	>=media-libs/jbig2dec-0.19:=
 	>=media-libs/lcms-2.6:2
 	>=media-libs/libpng-1.6.2:0=
+	>=media-libs/openjpeg-2.1.0:2=
 	>=media-libs/tiff-4.0.1:0=
 	>=sys-libs/zlib-1.2.7
 	virtual/jpeg:0
 	cups? ( >=net-print/cups-1.3.8 )
 	dbus? ( sys-apps/dbus )
 	gtk? ( || ( x11-libs/gtk+:3 x11-libs/gtk+:2 ) )
-	jpeg2k? ( >=media-libs/openjpeg-2.1.0:2= )
 	unicode? ( net-dns/libidn:0= )
 	X? ( x11-libs/libXt x11-libs/libXext )
 "
@@ -137,7 +137,7 @@ src_configure() {
 		--enable-dynamic \
 		--enable-freetype \
 		--enable-fontconfig \
-		$(use_enable jpeg2k openjpeg) \
+		--enable-openjpeg \
 		--disable-compile-inits \
 		--with-drivers=ALL \
 		--with-fontpath="$FONTPATH" \
