@@ -97,10 +97,8 @@ RDEPEND="
 	zeromq? (
 		>=net-libs/czmq-4:=[drafts]
 	)"
-DEPEND="${RDEPEND}
-	test? (
-		>=dev-libs/liblogging-1.0.1[stdlog]
-	)"
+
+DEPEND="${RDEPEND}"
 
 if [[ ${PV} == "9999" ]]; then
 	BDEPEND+=" doc? ( >=dev-python/sphinx-1.1.3-r7 )"
@@ -108,6 +106,8 @@ if [[ ${PV} == "9999" ]]; then
 	BDEPEND+=" >=sys-devel/bison-2.4.3"
 	BDEPEND+=" >=dev-python/docutils-0.12"
 fi
+
+PATCHES=( "${FILESDIR}"/${P}-skip-omfwd_fast_imuxsock-test.patch )
 
 CONFIG_CHECK="~INOTIFY_USER"
 WARNING_INOTIFY_USER="CONFIG_INOTIFY_USER isn't set. Imfile module on this system will only support polling mode!"
