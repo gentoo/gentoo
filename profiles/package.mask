@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
+# Dead upstream, EAPI 5, broken build system, no revdeps.
+# Removal on 2021-11-20. Bug #819366
+net-analyzer/quidscor
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
 # No maintainer, no revdeps, dead upstream, EAPI 5.
 # No other distro is packaging this.
 # Removal on 2021-11-20. Bug #819363
