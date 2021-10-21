@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
+# No maintainer, no revdeps, dead upstream, EAPI 5.
+# No other distro is packaging this.
+# Removal on 2021-11-20. Bug #819354
+net-dialup/fbgetty
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
 # Legacy package, no revdeps, EAPI 5.
 # Removal on 2021-11-20. Bug #819345
 net-fs/openafs-legacy
