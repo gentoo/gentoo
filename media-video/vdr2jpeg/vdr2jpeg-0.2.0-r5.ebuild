@@ -15,7 +15,7 @@ SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="media-video/ffmpeg:0"
 DEPEND="${RDEPEND}"
