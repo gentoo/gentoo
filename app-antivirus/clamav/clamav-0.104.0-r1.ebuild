@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic systemd tmpfiles
+PYTHON_COMPAT=( python3_{8..10} )
+inherit cmake flag-o-matic python-any-r1 systemd tmpfiles
 
 DESCRIPTION="Clam Anti-Virus Scanner"
 HOMEPAGE="https://www.clamav.net/"
@@ -44,7 +45,11 @@ CDEPEND="acct-group/clamav
 # TODO: there is no way to use this with the new build system instead of the bundled one
 #	dev-libs/tomsfastmath
 BDEPEND="virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen )
+	test? (
+		${PYTHON_DEPS}
+		$(python_gen_any_dep 'dev-python/pytest[${PYTHON_USEDEP}]')
+	)"
 DEPEND="${CDEPEND}
 	test? ( dev-libs/check )"
 RDEPEND="${CDEPEND}
@@ -53,6 +58,14 @@ RDEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-0.104.0-ncurses_detection.patch"
 )
+
+python_check_deps() {
+	has_version -b "dev-python/pytest[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_configure() {
 	use elibc_musl && append-ldflags -lfts
@@ -76,6 +89,10 @@ src_configure() {
 		-DENABLE_DOXYGEN=$(usex doc)
 		-DENABLE_UNRAR=$(usex rar ON OFF)
 		-DENABLE_TESTS=$(usex test ON OFF)
+		# Used to enable some more tests but doesn't behave well in
+		# sandbox necessarily(?) + needs certain debug symbols present
+		# in e.g. glibc.
+		-DCMAKE_DISABLE_FIND_PACKAGE_Valgrind=ON
 		-DENABLE_STATIC_LIB=OFF
 		-DENABLE_SHARED_LIB=ON
 		-DENABLE_SYSTEMD=$(usex systemd ON OFF)
@@ -175,10 +192,6 @@ src_install() {
 	fi
 
 	find "${ED}" -name '*.la' -delete || die
-}
-
-src_test() {
-	emake quick-check
 }
 
 pkg_postinst() {
