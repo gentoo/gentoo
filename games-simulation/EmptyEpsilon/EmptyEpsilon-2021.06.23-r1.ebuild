@@ -44,6 +44,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
+	eapply "${FILESDIR}/${PN}-Install-EmptyEpsilon.desktop.patch"
 	eapply "${FILESDIR}/${PN}-Make-CMake-call-find_package-glm.patch"
 	eapply --directory="${WORKDIR}/SeriousProton-EE-${PV}" \
 		   "${FILESDIR}/SeriousProton-Unbundle-json11.patch"
