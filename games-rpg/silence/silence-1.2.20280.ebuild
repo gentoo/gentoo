@@ -18,7 +18,6 @@ RESTRICT="bindist fetch splitdebug strip"
 BDEPEND="app-arch/unzip"
 
 RDEPEND="
-	media-libs/libsdl2[opengl,video]
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXcursor
