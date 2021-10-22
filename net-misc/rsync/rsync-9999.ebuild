@@ -73,11 +73,6 @@ src_configure() {
 		$(use_enable zstd)
 	)
 
-	if tc-is-cross-compiler; then
-		# configure check is broken when cross-compiling.
-		myeconfargs+=( --disable-simd )
-	fi
-
 	econf "${myeconfargs[@]}"
 }
 
