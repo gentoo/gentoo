@@ -11,7 +11,7 @@ SRC_URI="https://fs-uae.net/stable/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="fmv glew"
+IUSE="fmv glew +jit"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -71,8 +71,6 @@ src_configure() {
 		--enable-drivesound \
 		--enable-fdi2raw \
 		--enable-gfxboard \
-		--enable-jit \
-		--enable-jit-fpu \
 		--disable-lua \
 		--enable-netplay \
 		--enable-ncr \
@@ -97,6 +95,8 @@ src_configure() {
 		--without-cef \
 		--with-glad \
 		--without-qt \
+		$(use_enable jit) \
+		$(use_enable jit jit-fpu) \
 		$(use_with fmv libmpeg2) \
 		$(use_with glew)
 }
