@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="ncurses(+),threads(+)"
-inherit distutils-r1 multilib
+inherit distutils-r1
 
 DESCRIPTION="The ncurses client for canto-daemon"
 HOMEPAGE="https://codezen.org/canto-ng/"
