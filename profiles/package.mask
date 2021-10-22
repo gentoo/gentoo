@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-22)
+# EAPI=5, no revdeps, dead upstream. As documentation only package,
+# upstream isn't even closely updated to latest API by cheetah.
+# Removal on 2021-11-21.  Bug #819504.
+dev-python/cheetah-docs
+
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-22)
 # No maintainer, EAPI 5, no revdeps, dead upstream.
 # Removal on 2021-11-21. Bug #819498
