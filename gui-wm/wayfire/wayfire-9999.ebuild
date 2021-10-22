@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson
+inherit meson toolchain-funcs
 
 DESCRIPTION="compiz like 3D wayland compositor"
 HOMEPAGE="https://github.com/WayfireWM/wayfire"
@@ -18,7 +18,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+gles +system-wfconfig +system-wlroots X"
+IUSE="debug +gles +system-wfconfig +system-wlroots X"
 
 DEPEND="
 	dev-libs/libevdev
@@ -65,7 +65,13 @@ src_configure() {
 		$(meson_feature system-wlroots use_system_wlroots)
 		$(meson_feature X xwayland)
 		$(meson_use gles enable_gles32)
+		$(usex debug --buildtype=debug "")
+		$(usex debug -Db_sanitize=address,undefined "")
 	)
+
+	# Clang will fail to link without this
+	tc-is-clang && emesonargs+=( $(usex debug -Db_lundef=false "") )
+
 	meson_src_configure
 }
 
