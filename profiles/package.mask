@@ -35,6 +35,11 @@
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-22)
 # No maintainer, EAPI 5, no revdeps.
+# Removal on 2021-11-21. Bug #819492
+media-gfx/esci-interpreter-gt-s80
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-22)
+# No maintainer, EAPI 5, no revdeps.
 # Removal on 2021-11-21. Bug #819489
 media-gfx/iscan-plugin-perfection-v370
 
