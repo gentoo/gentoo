@@ -73,6 +73,11 @@ src_configure() {
 		$(use_enable zstd)
 	)
 
+	if [ ! ${ARCH} == "amd64" ]; then
+		# the optimization works properly only for x86_64 arch
+		myeconfargs+=( --disable-asm )
+	fi
+
 	if tc-is-cross-compiler; then
 		# configure check is broken when cross-compiling.
 		myeconfargs+=( --disable-simd )
