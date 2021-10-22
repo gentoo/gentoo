@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2021-10-22)
+# The JIT feature only works on amd64 and x86.
+app-emulation/fs-uae -jit
+
 # Marek Szuba <marecki@gentoo.org> (2021-10-10)
 # Does work on amd64 and x86
 x11-misc/read-edid -vbe-mode
