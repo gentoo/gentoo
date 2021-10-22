@@ -40,6 +40,96 @@
 dev-python/cheetah-docs
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-22)
+# The following packages are still using EAPI 5 and
+# have no reverse dependencies. If you need or are
+# using any package from the list please update it
+# to newer EAPI and unmask it.
+# Removal on 2021-11-21. Bug #819507
+dev-java/absolutelayout
+dev-java/backport-util-concurrent
+dev-java/beansbinding
+dev-java/blowfishj
+dev-java/btf
+dev-java/commons-chain
+dev-java/commons-dbcp
+dev-java/commons-dbutils
+dev-java/commons-discovery
+dev-java/commons-email
+dev-java/commons-graph
+dev-java/commons-launcher
+dev-java/commons-primitives
+dev-java/constantine
+dev-java/disruptor
+dev-java/dynalang
+dev-java/ecs
+dev-java/fastutil
+dev-java/forehead
+dev-java/freehep-graphicsio-emf
+dev-java/freehep-graphicsio-svg
+dev-java/geoip-java
+dev-java/glassfish-deployment-api
+dev-java/gnu-crypto
+dev-java/gnu-hylafax
+dev-java/hessian
+dev-java/hoteqn
+dev-java/htmlparser
+dev-java/htmlparser-org
+dev-java/istack-commons-runtime
+dev-java/istack-commons-soimp
+dev-java/jade
+dev-java/jamvm
+dev-java/jarjar
+dev-java/javacsv
+dev-java/jazzy
+dev-java/jetty-alpn-api
+dev-java/jetty-npn-api
+dev-java/jexcelapi
+dev-java/jfreechart
+dev-java/jlex
+dev-java/jlfgr
+dev-java/jmi-interface
+dev-java/jrexx
+dev-java/jsr181
+dev-java/jssc
+dev-java/jtreemap
+dev-java/jts-core
+dev-java/juel
+dev-java/jump
+dev-java/jupidator
+dev-java/jutils
+dev-java/jvyaml
+dev-java/metadata-extractor
+dev-java/nachocalendar
+dev-java/netty-tcnative
+dev-java/offo-hyphenation
+dev-java/opencsv
+dev-java/pat
+dev-java/piccolo2d
+dev-java/reflectasm
+dev-java/reflectasm
+dev-java/rngom
+dev-java/rundoc
+dev-java/sablecc
+dev-java/sablecc-anttask
+dev-java/shared-objects
+dev-java/simplyhtml
+dev-java/sjsxp
+dev-java/snip
+dev-java/spice-jndikit
+dev-java/super-csv
+dev-java/tablelayout
+dev-java/telnetd
+dev-java/texhyphj
+dev-java/tomcat-jstl-compat
+dev-java/tomcat-jstl-el
+dev-java/toolbar
+dev-java/trident
+dev-java/txw2-runtime
+dev-java/vecmath
+dev-java/xml-writer
+dev-java/xsom
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-22)
 # No maintainer, EAPI 5, no revdeps, dead upstream.
 # Removal on 2021-11-21. Bug #819498
 dev-vcs/git-deploy
