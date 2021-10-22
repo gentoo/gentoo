@@ -49,6 +49,8 @@ RDEPEND="
 DEPEND="
 	$(vala_depend)
 	${RDEPEND}
+	media-libs/gst-plugins-base
+	media-libs/gstreamer
 	sys-devel/gettext
 "
 
