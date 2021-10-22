@@ -134,9 +134,16 @@ src_configure() {
 src_install() {
 	default
 
-	mkdir -p "${ED}"/$(get_bashcompdir) || die
-	mv "${ED}"/etc/bash_completion.d/* "${ED}"/$(get_bashcompdir)/ || die
-	rmdir  "${ED}"/etc/bash_completion.d/ || die
+	# The main bash-completion file will collide with lxd, need to relocate and update symlinks.
+	mkdir -p "${ED}"/$(get_bashcompdir) || die "Failed to create bashcompdir."
+	mv "${ED}"/etc/bash_completion.d/lxc "${ED}"/$(get_bashcompdir)/lxc-start || die "Failed to relocate lxc bash-completion file."
+	rm -r "${ED}"/etc/bash_completion.d || die "Failed to remove wrong bash_completion.d content."
+
+	if use tools; then
+		bashcomp_alias lxc-start lxc-{attach,cgroup,copy,console,create,destroy,device,execute,freeze,info,monitor,snapshot,stop,unfreeze,wait}
+	else
+		bashcomp_alias lxc-start lxc-usernsexec
+	fi
 
 	keepdir /etc/lxc /var/lib/lxc/rootfs /var/log/lxc
 	rmdir "${D}"/var/cache/lxc "${D}"/var/cache || die "rmdir failed"
