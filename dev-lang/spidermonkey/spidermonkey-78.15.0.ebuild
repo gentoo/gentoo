@@ -10,6 +10,7 @@ SPIDERMONKEY_PATCHSET="spidermonkey-78-patches-04.tar.xz"
 LLVM_MAX_SLOT=13
 
 PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_REQ_USE="ssl"
 
 WANT_AUTOCONF="2.1"
 
