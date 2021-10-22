@@ -112,7 +112,9 @@ MODULE_DEFINES="
 	proxy_ftp:PROXY
 	proxy_html:PROXY
 	proxy_http:PROXY
+	proxy_http2:PROXY
 	proxy_fcgi:PROXY
+	proxy_uwsgi:PROXY
 	proxy_scgi:PROXY
 	proxy_wstunnel:PROXY
 	socache_shmcb:SSL
