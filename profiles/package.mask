@@ -376,12 +376,6 @@ net-libs/libsoup:3.0
 # https://github.com/NVIDIA/egl-wayland/issues/41
 >=gui-libs/egl-wayland-1.1.8
 
-# Stephan Hartmann <sultan@gentoo.org> (2021-09-25)
-# Dev channel releases are only for people who
-# are developers or want more experimental features
-# and accept a more unstable release.
->=www-client/chromium-96
-
 # Bernard Cafarelli <voyageur@gentoo.org> (2021-08-26)
 # Preparing for final 5.0.0 release
 >=app-text/tesseract-5.0.0_beta
