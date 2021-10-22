@@ -18,8 +18,7 @@ SRC_URI="https://libguestfs.org/download/${MY_PV_1}-${SD}/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0/${MY_PV_1}"
-# Unkeyworded for testing guestfs-tools split, #816693
-#KEYWORDS="~amd64"
+KEYWORDS="~amd64"
 IUSE="doc erlang +fuse gtk inspect-icons introspection libvirt lua +ocaml +perl python ruby selinux static-libs systemtap test"
 RESTRICT="!test? ( test )"
 
