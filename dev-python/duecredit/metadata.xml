@@ -9,6 +9,7 @@
 		<email>alexxy@gentoo.org</email>
 		<name>Alexey Shvetsov</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">duecredit/duecredit</remote-id>
 		<remote-id type="pypi">duecredit</remote-id>
