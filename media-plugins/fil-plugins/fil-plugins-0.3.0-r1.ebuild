@@ -1,28 +1,27 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit epatch multilib toolchain-funcs
+EAPI=8
 
-MY_P=${P/fil/FIL}
+inherit toolchain-funcs
+
+MY_P="${P/fil/FIL}"
 
 DESCRIPTION="FIL-plugins ladspa plugin package. Filters by Fons Adriaensen"
 HOMEPAGE="http://kokkinizita.linuxaudio.org/linuxaudio/"
 SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/${MY_P}.tar.bz2"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-IUSE=""
 
 DEPEND="media-libs/ladspa-sdk"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${MY_P}
-
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-makefile.patch"
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-makefile.patch
+)
 
 src_compile() {
 	emake CXX="$(tc-getCXX)"
