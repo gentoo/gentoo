@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-doc.patch
 	"${FILESDIR}"/${P}-freetype_pkgconfig.patch #764902
 	"${FILESDIR}"/${P}-glibc2.34.patch
+	"${FILESDIR}"/${P}-32bit-opengl.patch
 )
 
 DOCS=( CODING_STYLE CREDITS PATCHES README )
