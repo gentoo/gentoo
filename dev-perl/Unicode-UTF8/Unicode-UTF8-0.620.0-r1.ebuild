@@ -27,6 +27,7 @@ BDEPEND="${RDEPEND}
 		dev-perl/Taint-Runtime
 		dev-perl/Variable-Magic
 		dev-perl/Test-LeakTrace
+		dev-perl/Test-Fatal
 	)
 "
 
