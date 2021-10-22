@@ -14,7 +14,7 @@ S="${WORKDIR}"/${MY_P}
 LICENSE="ZLIB"
 SLOT="2.3"
 # Not big endian safe! #82779
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc ipv6 mikmod opengl sound sqlite cpu_flags_x86_sse2 static-libs vorbis X"
 REQUIRED_USE="opengl? ( X )"
 
