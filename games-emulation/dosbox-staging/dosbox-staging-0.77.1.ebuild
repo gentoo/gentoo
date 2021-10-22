@@ -13,6 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="+alsa debug dynrec +fluidsynth mt-32 network opengl test"
 
+RESTRICT="!test? ( test )"
+
 RDEPEND="alsa? ( media-libs/alsa-lib )
 	debug? ( sys-libs/ncurses:0= )
 	fluidsynth? (
