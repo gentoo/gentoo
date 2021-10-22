@@ -3,10 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
-
-DISTUTILS_USE_SETUPTOOLS=rdepend
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Publications (and donations) tracer"
@@ -21,18 +18,11 @@ RDEPEND="
 	>=dev-python/citeproc-py-0.4[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/importlib_metadata[${PYTHON_USEDEP}]
-	' python3_7)
 "
 
 distutils_enable_tests pytest
 
-python_test() {
-	local deselect=(
-		# internet?
-		'duecredit/tests/test_api.py::test_noincorrect_import_if_no_lxml_numpy[kwargs1-env2]'
-	)
-
-	epytest ${deselect[@]/#/--deselect }
-}
+EPYTEST_DESELECT=(
+	# internet?
+	'duecredit/tests/test_api.py::test_noincorrect_import_if_no_lxml_numpy[kwargs1-env2]'
+)
