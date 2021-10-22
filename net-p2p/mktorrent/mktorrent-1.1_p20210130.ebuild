@@ -16,7 +16,7 @@ else
 	S="${WORKDIR}/${PN}-${COMMIT_ID}"
 fi
 
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="threads +ssl debug"
