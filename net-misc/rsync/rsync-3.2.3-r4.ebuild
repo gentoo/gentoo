@@ -10,7 +10,7 @@ fi
 
 WANT_LIBTOOL=none
 
-inherit autotools prefix systemd toolchain-funcs
+inherit autotools prefix systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"
 HOMEPAGE="https://rsync.samba.org/"
