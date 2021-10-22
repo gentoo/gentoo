@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 VALA_MIN_API_VERSION="0.34"
-inherit cmake vala xdg
+inherit cmake vala xdg readme.gentoo-r1
 
 DESCRIPTION="Modern Jabber/XMPP Client using GTK+/Vala"
 HOMEPAGE="https://dino.im"
@@ -78,4 +78,14 @@ src_configure() {
 
 src_test() {
 	"${BUILD_DIR}"/xmpp-vala-test || die
+}
+
+src_install() {
+	cmake_src_install
+	readme.gentoo_create_doc
+}
+
+src_postinst() {
+	xdg_pkg_postinst
+	readme.gentoo_print_elog
 }
