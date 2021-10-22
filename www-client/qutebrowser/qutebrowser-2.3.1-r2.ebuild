@@ -96,6 +96,8 @@ python_test() {
 		tests/unit/config/test_websettings.py::test_config_init
 		# may misbehave depending on installed old python versions
 		tests/unit/misc/test_checkpyver.py::test_old_python
+		# bug 819393
+		tests/unit/commands/test_userscripts.py::test_custom_env[_POSIXUserscriptRunner]
 	)
 	use widevine && EPYTEST_DESELECT+=( tests/unit/config/test_qtargs.py )
 
