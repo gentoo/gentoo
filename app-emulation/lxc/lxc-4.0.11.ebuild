@@ -80,6 +80,8 @@ VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/linuxcontainers.asc
 
 src_prepare() {
 	default
+
+	export bashcompdir="/etc/bash_completion.d"
 	eautoreconf
 }
 
@@ -140,7 +142,7 @@ src_install() {
 	rm -r "${ED}"/etc/bash_completion.d || die "Failed to remove wrong bash_completion.d content."
 
 	if use tools; then
-		bashcomp_alias lxc-start lxc-{attach,cgroup,copy,console,create,destroy,device,execute,freeze,info,monitor,snapshot,stop,unfreeze,wait}
+		bashcomp_alias lxc-start lxc-{attach,cgroup,copy,console,create,destroy,device,execute,freeze,info,monitor,snapshot,stop,unfreeze,usernsexec,wait}
 	else
 		bashcomp_alias lxc-start lxc-usernsexec
 	fi
