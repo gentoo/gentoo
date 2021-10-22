@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,9 +11,8 @@ SRC_URI="http://www.etc.gen.nz/projects/mythtv/tarballs/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND="
+RDEPEND="
 	dev-perl/libwww-perl
 	dev-perl/XML-LibXML
 	dev-perl/Date-Manip
@@ -21,15 +20,6 @@ DEPEND="
 	dev-perl/Sys-SigAction
 	dev-perl/Config-Auto
 	media-tv/mythtv[perl]"
-RDEPEND="${DEPEND}"
-
-src_configure() {
-	:
-}
-
-src_compile() {
-	:
-}
 
 src_install() {
 	dobin bin/mythtv-status
