@@ -124,12 +124,8 @@ src_prepare() {
 	eapply \
 		"${FILESDIR}/${PN}-2.9.0-no_updates_dialog.patch" \
 		"${FILESDIR}/${PN}-disable_plugins.patch" \
-		"${FILESDIR}/${P}-zeroconf.patch"
-
-	if ! has_version ">=dev-python/sip-5"; then
-		einfo "Applying SIP v4 patch because SIP v5 was not detected"
-		eapply "${WORKDIR}/${PN}-5.16.0-SIP-v4.patch"
-	fi
+		"${FILESDIR}/${P}-zeroconf.patch" \
+		"${WORKDIR}/${PN}-5.16.0-SIP-v4.patch"
 
 	eapply_user
 
