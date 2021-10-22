@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/168012
 
---- AcidRip/acidrip.pm
-+++ AcidRip/acidrip.pm
+--- a/AcidRip/acidrip.pm
++++ b/AcidRip/acidrip.pm
 @@ -680,7 +680,7 @@
      message( "Running " . get_command("cropdetect") );
      open( CROP, get_command("cropdetect") . " 2>&1 |" );
