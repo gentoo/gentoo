@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-22)
+# No maintainer, EAPI 5, no revdeps, dead upstream.
+# Removal on 2021-11-21. Bug #819495
+dev-vcs/cvsspam
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-22)
 # No maintainer, EAPI 5, no revdeps.
 # Removal on 2021-11-21. Bug #819492
 media-gfx/esci-interpreter-gt-s80
