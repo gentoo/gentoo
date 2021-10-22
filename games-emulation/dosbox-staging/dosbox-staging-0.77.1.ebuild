@@ -11,7 +11,7 @@ SRC_URI="https://github.com/dosbox-staging/dosbox-staging/archive/v${PV}.tar.gz 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="+alsa debug dynrec +fluidsynth mt-32 network opengl"
+IUSE="+alsa debug dynrec +fluidsynth mt-32 network opengl test"
 
 RDEPEND="alsa? ( media-libs/alsa-lib )
 	debug? ( sys-libs/ncurses:0= )
@@ -28,7 +28,7 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 	sys-libs/zlib
 	!games-emulation/dosbox"
 DEPEND="${RDEPEND}"
-BDEPEND=""
+BDEPEND="test? ( dev-cpp/gtest )"
 
 DOCS=( AUTHORS README THANKS )
 
@@ -41,6 +41,10 @@ src_prepare() {
 
 	# Disable license and docs install (handled by ebuild)
 	sed -e "/licenses_dir\|doc_dir/d" -i meson.build || die
+
+	# Test failing on some platforms, bug #817908
+	# https://github.com/dosbox-staging/dosbox-staging/issues/1230
+	sed -i 's/.*soft_limit.*//' tests/meson.build || die
 }
 
 src_configure() {
@@ -52,6 +56,7 @@ src_configure() {
 		$(meson_use mt-32 use_mt32emu)
 		$(meson_use network use_sdl2_net)
 		$(meson_use opengl use_opengl)
+		$(meson_feature test unit_tests)
 	)
 	meson_src_configure
 }
