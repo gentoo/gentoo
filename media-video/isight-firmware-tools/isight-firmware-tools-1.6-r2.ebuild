@@ -1,10 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit epatch versionator udev
+EAPI=8
 
-MY_MAJORV="$(get_version_component_range 1).6"
+inherit udev
+
+MY_MAJORV="$(ver_cut 1).6"
 
 DESCRIPTION="Extract, load or export firmware for the iSight webcams"
 HOMEPAGE="https://launchpad.net/isight-firmware-tools"
@@ -13,20 +14,26 @@ SRC_URI="https://launchpad.net/${PN}/main/${MY_MAJORV}/+download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
-RDEPEND=">=dev-libs/glib-2.14:2
+RDEPEND="
+	>=dev-libs/glib-2.14:2
 	dev-libs/libgcrypt:0
 	virtual/libusb:0
-	virtual/udev"
-DEPEND="${RDEPEND}
+	virtual/udev
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=dev-util/intltool-0.40
 	sys-apps/texinfo
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.5.90-build-O0.patch
+)
 
 src_prepare() {
-	# Fix build with -O0, bug #221325
-	epatch "${FILESDIR}"/${PN}-1.5.90-build-O0.patch
+	default
 
 	sed -i \
 		-e "s:@udevdir@:$(get_udevdir):" \
@@ -45,10 +52,10 @@ src_install() {
 		rulesdir="$(get_udevdir)"/rules.d \
 		install
 
-	mv -vf "${D}/$(get_udevdir)"/rules.d/{isight.rules,70-isight.rules}
+	mv -vf "${ED}/$(get_udevdir)"/rules.d/{isight.rules,70-isight.rules} || die
 
-	dodoc AUTHORS ChangeLog HOWTO NEWS README
-	rm -f "${D}"/usr/share/doc/${PF}/HOWTO
+	einstalldocs
+	rm "${ED}"/usr/share/doc/${PF}/HOWTO || die
 }
 
 pkg_postinst() {
