@@ -10,7 +10,7 @@ HOMEPAGE="https://fs-uae.net/"
 SRC_URI="https://fs-uae.net/stable/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE="fmv glew +jit"
 
 RDEPEND="
