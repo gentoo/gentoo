@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 # Keep synced with tests/citeproc-test.py
 TEST_SUITE_COMMIT="c3db429ab7c6b9b9ccaaa6d3c6bb9e503f0d7b11"
