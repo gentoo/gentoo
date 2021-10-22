@@ -9,6 +9,10 @@ media-video/pipewire echo-cancel
 # Needs Raspberry Pi specific applications
 media-video/mjpg-streamer input-raspicam
 
+# James Le Cuirot <chewi@gentoo.org> (2021-08-07)
+# The ORBlite scanner plugin only works on amd64 and x86.
+net-print/hplip-plugin orblite
+
 # Sam James <sam@gentoo.org> (2021-07-12)
 # Haskell is only available on amd64/x86 right now in Gentoo
 # bug #801649
@@ -117,6 +121,10 @@ dev-qt/qtwayland vulkan
 
 # dev-python/pandas is only keyworded for amd64 & x86
 sys-block/fio python gnuplot
+
+# James Le Cuirot <chewi@gentoo.org> (2019-12-10)
+# The JIT feature only works on amd64 and x86.
+app-emulation/aranym jit
 
 # Craig Andrews <candrews@gentoo.org> (2019-10-08)
 # net-libs/quiche is not available on all arches
