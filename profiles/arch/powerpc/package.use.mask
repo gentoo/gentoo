@@ -1,10 +1,6 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Akinori Hattori <hattya@gentoo.org> (2021-10-24)
-# Requires unkeyworded dependencies
-app-i18n/uim kde
-
 # David Seifert <soap@gentoo.org> (2021-09-04)
 # dev-lang/go not keyworded here
 sys-libs/libcap tools
