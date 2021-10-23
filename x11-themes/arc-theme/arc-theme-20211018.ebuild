@@ -9,7 +9,7 @@ EAPI=7
 
 inherit meson toolchain-funcs
 
-DESCRIPTION="A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell"
+DESCRIPTION="A flat theme with transparent elements for GTK 2/3/4 and GNOME Shell"
 HOMEPAGE="https://github.com/jnsh/arc-theme"
 SRC_URI="https://github.com/jnsh/${PN}/releases/download/${PV}/arc-theme-${PV}.tar.xz
 	pre-rendered? ( https://dev.gentoo.org/~chewi/distfiles/${P}-pngs.tar.xz )"
