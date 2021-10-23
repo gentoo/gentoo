@@ -43,13 +43,13 @@ DEPEND="
 	virtual/libudev:=
 	app-arch/bzip2:=
 	app-arch/lz4:=
-	<app-arch/snappy-1.1.9:=
+	app-arch/snappy:=
 	app-arch/zstd:=
 	app-shells/bash:0
 	app-misc/jq:=
 	dev-libs/crypto++:=
 	dev-cpp/gflags:=
-	dev-libs/leveldb:=[snappy,tcmalloc(-)?]
+	<dev-libs/leveldb-1.23:=[snappy,tcmalloc(-)?]
 	dev-libs/libaio:=
 	dev-libs/libfmt:=
 	dev-libs/libnl:3=
