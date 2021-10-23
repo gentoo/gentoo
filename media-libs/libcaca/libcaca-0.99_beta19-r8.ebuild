@@ -40,7 +40,7 @@ DEPEND="
 		>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}]
 	)
 "
-RDEPEND="java? ( >=virtual/jre-1.5 )"
+RDEPEND="java? ( >=virtual/jre-1.8:* )"
 BDEPEND="
 	virtual/pkgconfig
 	doc? (
@@ -50,7 +50,7 @@ BDEPEND="
 		>=dev-texlive/texlive-latexextra-2012
 		dev-texlive/texlive-latexrecommended
 	)
-	java? ( >=virtual/jdk-1.5 )
+	java? ( >=virtual/jdk-1.8:* )
 	test? ( dev-util/cppunit )
 "
 
