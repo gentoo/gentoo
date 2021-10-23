@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-23)
+# EAPI 5 java package, no revdeps.
+# Removal on 2021-11-22. Bug #819756.
+app-office/borg
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-23)
 # No maintainer, no revdeps, EAPI 5, dead upstream.
 # Removal on 2021-11-22. Bug #819717.
 app-forensics/yasat
