@@ -1,5 +1,5 @@
---- src/csrc/Makefile.bak	2010-02-27 00:51:38.000000000 +1300
-+++ src/csrc/Makefile	2010-02-27 00:56:06.000000000 +1300
+--- a/src/csrc/Makefile.bak	2010-02-27 00:51:38.000000000 +1300
++++ b/src/csrc/Makefile	2010-02-27 00:56:06.000000000 +1300
 @@ -21,7 +21,8 @@
  	$(CC) $(CFLAGS) -DGF_BITS=8 -o fec fec8.o test.c
  
