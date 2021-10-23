@@ -12,7 +12,7 @@ DESCRIPTION="A tool to build C libraries"
 # https://rt.cpan.org/Ticket/Display.html?id=133195
 LICENSE="|| ( Artistic GPL-1 )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
