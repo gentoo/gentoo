@@ -140,7 +140,6 @@ dev-java/netty-tcnative
 dev-java/offo-hyphenation
 dev-java/opencsv
 dev-java/pat
-dev-java/piccolo2d
 dev-java/reflectasm
 dev-java/rngom
 dev-java/rundoc
@@ -158,7 +157,6 @@ dev-java/texhyphj
 dev-java/tomcat-jstl-compat
 dev-java/tomcat-jstl-el
 dev-java/toolbar
-dev-java/trident
 dev-java/txw2-runtime
 dev-java/vecmath
 dev-java/xml-writer
