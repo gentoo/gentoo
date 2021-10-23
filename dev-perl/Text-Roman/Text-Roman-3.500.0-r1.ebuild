@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Allows conversion between Roman and Arabic algarisms"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
