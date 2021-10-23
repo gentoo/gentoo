@@ -4,7 +4,7 @@
 	<!-- maintainer-needed -->
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">PapirusDevelopmentTeam/papirus-icon-theme</remote-id>
 		<bugs-to>https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/issues</bugs-to>
+		<remote-id type="github">PapirusDevelopmentTeam/papirus-icon-theme</remote-id>
 	</upstream>
 </pkgmetadata>
