@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-23)
+# EAPI 5 java package, no revdeps.
+# Removal on 2021-11-22. Bug #819684.
+dev-db/henplus
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-23)
 # Dead upstream, stuck on EAPI 5, multiple open bugs, not updated in years.
 # Removal on 2021-11-22. Bug #819624.
 dev-lang/nwcc
