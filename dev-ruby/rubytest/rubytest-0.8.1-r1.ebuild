@@ -21,6 +21,11 @@ IUSE=""
 ruby_add_bdepend "test? ( dev-ruby/ae dev-ruby/qed )"
 ruby_add_rdepend "dev-ruby/ansi"
 
+all_ruby_prepare() {
+	# Help qed correctly find the root of the project
+	touch .ruby || die
+}
+
 each_ruby_test() {
 	${RUBY} -S qed || die 'tests failed'
 }
