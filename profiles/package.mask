@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-23)
+# No maintainer, dead upstream, EAPI 5, no revdeps.
+# Removal on 2021-11-22. Bug #819693.
+app-admin/swatchdog
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-23)
 # EAPI 5 java package, no revdeps.
 # Removal on 2021-11-22. Bug #819684.
 dev-db/henplus
