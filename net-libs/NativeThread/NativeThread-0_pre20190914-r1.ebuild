@@ -13,11 +13,22 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=">=net-p2p/freenet-0.7
-	virtual/jdk:1.8"
-RDEPEND="virtual/jre:1.8"
+CDEPEND="
+	dev-java/jna:4
+"
+DEPEND="net-p2p/freenet
+	>=virtual/jdk-1.8:*"
+RDEPEND=">=virtual/jre-1.8:*"
 
 S="${WORKDIR}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-javah.patch"
+)
+
+src_prepare() {
+	default
+}
 
 src_compile() {
 	append-flags -fPIC
