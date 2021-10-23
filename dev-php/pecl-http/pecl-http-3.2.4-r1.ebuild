@@ -15,7 +15,7 @@ inherit php-ext-pecl-r3
 
 USE_PHP="php7-3 php7-4"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DESCRIPTION="Extended HTTP Support for PHP"
 LICENSE="BSD-2 MIT"
