@@ -17,7 +17,6 @@ IUSE="examples"
 
 RDEPEND="
 	>=dev-python/dnspython-1.15.0[${PYTHON_USEDEP}]
-	<dev-python/dnspython-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
 	virtual/python-greenlet[${PYTHON_USEDEP}]
 "
