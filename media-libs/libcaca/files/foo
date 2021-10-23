@@ -1,0 +1,77 @@
+diff --git a/src/common-image.c b/src/common-image.c
+index 7059bf4..d40eba1 100644
+--- a/src/common-image.c
++++ b/src/common-image.c
+@@ -22,6 +22,7 @@
+ #endif
+ 
+ #include "caca.h"
++#include "caca_internals.h"
+ 
+ #include "common-image.h"
+ 
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 5f0b22f..2f48f27 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -11,7 +11,7 @@ noinst_PROGRAMS = cacadraw
+ 
+ cacademo_SOURCES = cacademo.c texture.h
+ cacademo_LDADD = ../caca/libcaca.la ../caca/libcaca.la
+-cacademo_LDFLAGS = @MATH_LIBS@
++cacademo_LIBS = @MATH_LIBS@
+ 
+ cacafire_SOURCES = aafire.c
+ cacafire_LDADD = ../caca/libcaca.la ../caca/libcaca.la
+@@ -19,7 +19,7 @@ cacafire_LDADD = ../caca/libcaca.la ../caca/libcaca.la
+ cacaview_SOURCES = cacaview.c common-image.c common-image.h
+ cacaview_LDADD = ../caca/libcaca.la ../caca/libcaca.la
+ cacaview_CFLAGS = $(IMLIB2_CFLAGS)
+-cacaview_LDFLAGS = $(IMLIB2_LIBS)
++cacaview_LIBS = $(IMLIB2_LIBS)
+ 
+ cacadraw_SOURCES = cacadraw.c
+ cacadraw_LDADD = ../caca/libcaca.la ../caca/libcaca.la
+@@ -37,7 +37,7 @@ cacaclock_LDADD = ../caca/libcaca.la
+ img2txt_SOURCES = img2txt.c common-image.c common-image.h
+ img2txt_LDADD = ../caca/libcaca.la
+ img2txt_CFLAGS = $(IMLIB2_CFLAGS)
+-img2txt_LDFLAGS = $(IMLIB2_LIBS)
++img2txt_LIBS = $(IMLIB2_LIBS)
+ 
+ if USE_NETWORK
+ fcntl_programs = cacaserver
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 2f48f27..725ad36 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -10,16 +10,14 @@ bin_PROGRAMS = cacademo cacafire cacaplay cacaview img2txt cacaclock $(fcntl_pro
+ noinst_PROGRAMS = cacadraw
+ 
+ cacademo_SOURCES = cacademo.c texture.h
+-cacademo_LDADD = ../caca/libcaca.la ../caca/libcaca.la
+-cacademo_LIBS = @MATH_LIBS@
++cacademo_LDADD = ../caca/libcaca.la @MATH_LIBS@
+ 
+ cacafire_SOURCES = aafire.c
+ cacafire_LDADD = ../caca/libcaca.la ../caca/libcaca.la
+ 
+ cacaview_SOURCES = cacaview.c common-image.c common-image.h
+-cacaview_LDADD = ../caca/libcaca.la ../caca/libcaca.la
++cacaview_LDADD = ../caca/libcaca.la $(IMLIB2_LIBS)
+ cacaview_CFLAGS = $(IMLIB2_CFLAGS)
+-cacaview_LIBS = $(IMLIB2_LIBS)
+ 
+ cacadraw_SOURCES = cacadraw.c
+ cacadraw_LDADD = ../caca/libcaca.la ../caca/libcaca.la
+@@ -35,9 +33,8 @@ cacaclock_LDADD = ../caca/libcaca.la
+ 
+ 
+ img2txt_SOURCES = img2txt.c common-image.c common-image.h
+-img2txt_LDADD = ../caca/libcaca.la
++img2txt_LDADD = ../caca/libcaca.la $(IMLIB2_LIBS)
+ img2txt_CFLAGS = $(IMLIB2_CFLAGS)
+-img2txt_LIBS = $(IMLIB2_LIBS)
+ 
+ if USE_NETWORK
+ fcntl_programs = cacaserver
