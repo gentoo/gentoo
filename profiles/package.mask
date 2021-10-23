@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-23)
+# Dead upstream, stuck on EAPI 5, multiple open bugs, not updated in years.
+# Removal on 2021-11-22. Bug #819624.
+dev-lang/nwcc
+
 # Stephan Hartmann <sultan@gentoo.org> (2021-10-23)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
