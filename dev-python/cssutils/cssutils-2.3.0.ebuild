@@ -21,6 +21,9 @@ BDEPEND="
 		dev-python/cssselect[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/importlib_resources[${PYTHON_USEDEP}]
+		' python3_8 pypy3)
 	)"
 
 PATCHES=(
