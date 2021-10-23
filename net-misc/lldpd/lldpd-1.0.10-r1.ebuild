@@ -6,7 +6,7 @@ EAPI=7
 inherit systemd bash-completion-r1 autotools tmpfiles
 
 DESCRIPTION="Implementation of IEEE 802.1ab (LLDP)"
-HOMEPAGE="https://vincentbernat.github.com/lldpd/"
+HOMEPAGE="https://lldpd.github.io/"
 SRC_URI="http://media.luffy.cx/files/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
