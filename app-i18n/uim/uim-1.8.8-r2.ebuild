@@ -80,6 +80,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-tinfo.patch
 	"${FILESDIR}"/${PN}-xkb.patch
 	"${FILESDIR}"/${PN}-zh-TW.patch
+	"${FILESDIR}"/${P}-c++11.patch
 	"${FILESDIR}"/${P}-desktop.patch
 	"${FILESDIR}"/${P}-fno-common.patch
 )
