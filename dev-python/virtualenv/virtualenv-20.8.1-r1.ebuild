@@ -17,7 +17,7 @@ HOMEPAGE="
 SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 SLOT="0"
 
 RDEPEND="
@@ -52,21 +52,29 @@ BDEPEND="
 #	dev-python/towncrier
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${P}-pypy38.patch
+)
+
 src_configure() {
 	export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 }
 
 python_test() {
-	local deselect=(
+	local EPYTEST_DESELECT=(
 		tests/unit/activation/test_xonsh.py
 		tests/unit/seed/embed/test_bootstrap_link_via_app_data.py::test_seed_link_via_app_data
 		tests/unit/create/test_creator.py::test_cross_major
 	)
-	[[ ${EPYTHON} == pypy3 ]] && deselect+=(
+	[[ ${EPYTHON} == pypy3 ]] && EPYTEST_DESELECT+=(
 		'tests/unit/create/test_creator.py::test_create_no_seed[root-pypy3-posix-copies-isolated]'
 		'tests/unit/create/test_creator.py::test_create_no_seed[root-pypy3-posix-copies-global]'
 		'tests/unit/create/test_creator.py::test_create_no_seed[venv-pypy3-posix-copies-isolated]'
 		'tests/unit/create/test_creator.py::test_create_no_seed[venv-pypy3-posix-copies-global]'
+		'tests/unit/create/test_creator.py::test_create_no_seed[root-venv-copies-isolated]'
+		'tests/unit/create/test_creator.py::test_create_no_seed[root-venv-copies-global]'
+		'tests/unit/create/test_creator.py::test_create_no_seed[venv-venv-copies-isolated]'
+		'tests/unit/create/test_creator.py::test_create_no_seed[venv-venv-copies-global]'
 		'tests/unit/create/test_creator.py::test_zip_importer_can_import_setuptools'
 		'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[PyPy-3.7.9-64-bin-]'
 		'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[PyPy-3.7.9--bin-]'
@@ -87,7 +95,7 @@ python_test() {
 	)
 
 	distutils_install_for_testing
-	epytest ${deselect[@]/#/--deselect }
+	epytest
 }
 
 pkg_postinst() {
