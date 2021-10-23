@@ -20,3 +20,6 @@ RDEPEND="
 "
 BDEPEND="${RDEPEND}
 "
+
+# tests are flaky, 807247
+DIST_TEST=do
