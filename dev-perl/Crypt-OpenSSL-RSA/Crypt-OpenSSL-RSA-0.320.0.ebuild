@@ -28,6 +28,10 @@ BDEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-openssl-3.0.0.patch"
+)
+
 PERL_RM_FILES=(
 	t/z_kwalitee.t
 	t/z_perl_minimum_version.t
