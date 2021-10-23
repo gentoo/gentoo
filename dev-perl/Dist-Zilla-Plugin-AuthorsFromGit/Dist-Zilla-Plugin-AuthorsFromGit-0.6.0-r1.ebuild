@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=AKHUETTEL
 DIST_VERSION=0.006
@@ -11,7 +11,6 @@ DESCRIPTION="Add per-file per-year copyright information"
 
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	dev-perl/DateTime
@@ -23,6 +22,6 @@ RDEPEND="
 	dev-perl/Pod-Weaver
 	dev-perl/namespace-autoclean
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
