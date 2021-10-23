@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=KENTNL
 DIST_VERSION=2.002004
@@ -10,8 +10,6 @@ inherit perl-module
 DESCRIPTION="Generating and Populating 'provides' in your META.yml"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Carp
@@ -21,7 +19,7 @@ RDEPEND="
 	dev-perl/MooseX-Types
 	dev-perl/namespace-autoclean
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-7.0.0
 	test? (
 		>=virtual/perl-CPAN-Meta-2.120.900
