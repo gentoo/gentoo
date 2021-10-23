@@ -290,6 +290,26 @@ pkg_postinst() {
 		[[ -e "${EROOT}/etc/runlevels/default/zfs-zed" ]] || \
 			einfo "You should add zfs-zed to the default runlevel."
 	fi
+
+	local ptfs="$(stat "${PORTAGE_TMPFS}" -f --printf=%T 2>/dev/null)"
+	if [[ ${ptfs:-unknown} == zfs ]]; then
+		echo
+		ewarn "${PORTAGE_TMPFS} is a zfs filesystem"
+		ewarn "it's not recommended to build packages on zfs"
+		ewarn "It could lead to increased zfs pool fragmentation"
+		ewarn "and is known to trigger some edge cases"
+		ewarn "https://github.com/openzfs/zfs/issues/11900"
+		echo
+
+		if has_version "sys-apps/portage[native-extensions]"; then
+			# eerror here is not to die, just to be red
+			eerror "You have 'native-extensions' USEflag enabled for portage"
+			eerror "and ${PORTAGE_TMPFS} is a zfs filesystem"
+			eerror "This configuration is known to cause data loss"
+			eerror "Please move ${PORTAGE_TMPFS} to non-zfs filesystem"
+			eerror "or disable 'native-extensions' for portage"
+		fi
+	fi
 }
 
 pkg_postrm() {
