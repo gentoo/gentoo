@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-23)
+# No maintainer, no revdeps, EAPI 5, dead upstream.
+# Removal on 2021-11-22. Bug #819717.
+app-forensics/yasat
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-23)
 # No maintainer, EAPI 5, no revdeps. No other distro is packaging this.
 # Removal on 2021-11-22. Bug #819699.
 app-admin/reportmagic
