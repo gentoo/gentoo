@@ -88,11 +88,6 @@ BDEPEND="
 	) )
 "
 
-PATCHES=(
-	"${FILESDIR}/freerdp-2-openssl-3.0.patch"
-	"${FILESDIR}/freerdp-2.4.0-TestUnicodeConversion-big-endian.patch"
-)
-
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test ON OFF)
