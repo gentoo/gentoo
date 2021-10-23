@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ RESTRICT="bindist mirror"
 
 BDEPEND="app-arch/unzip"
 
-PACKAGES_ZIP=(
+PACKAGES_ZIP_2020=(
 	# wget -O - https://www.nltk.org/nltk_data/ | xml sel -t -m '//package[@unzip=0]' -v @subdir -o "/" -v @id -n - | sort
 	corpora/comtrans
 	corpora/conll2007
@@ -36,7 +36,7 @@ PACKAGES_ZIP=(
 	stemmers/snowball_data
 )
 
-PACKAGES_UNPACK=(
+PACKAGES_UNPACK_2020=(
 	# wget -O - https://www.nltk.org/nltk_data/ | xml sel -t -m '//package[@unzip=1]' -v @subdir -o "/" -v @id -n - | sort
 	corpora/abc
 	corpora/alpino
@@ -85,7 +85,6 @@ PACKAGES_UNPACK=(
 	corpora/shakespeare
 	corpora/sinica_treebank
 	corpora/state_union
-	corpora/stopwords
 	corpora/subjectivity
 	corpora/swadesh
 	corpora/switchboard
@@ -116,7 +115,12 @@ PACKAGES_UNPACK=(
 	tokenizers/punkt
 )
 
-PACKAGES_UNPACK_EXTRA=(
+PACKAGES_UNPACK_2021=(
+	corpora/stopwords
+	corpora/wordnet31
+)
+
+PACKAGES_UNPACK_EXTRA_2020=(
 	chunkers/maxent_ne_chunker
 	corpora/biocreative_ppi
 	corpora/brown_tei
@@ -137,35 +141,57 @@ PACKAGES_UNPACK_EXTRA=(
 )
 
 add_data() {
-	local x
+	local x version=${1}
+	shift
+
 	for x; do
 		SRC_URI+="
 			https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/${x}.zip
-				-> nltk-${x#*/}-${PV}.zip"
+				-> nltk-${x#*/}-${version}.zip"
 	done
 }
 
-add_data "${PACKAGES_ZIP[@]}" "${PACKAGES_UNPACK[@]}"
+add_data 20200312 "${PACKAGES_ZIP_2020[@]}" "${PACKAGES_UNPACK_2020[@]}"
+add_data 20211023 "${PACKAGES_UNPACK_2021[@]}"
 SRC_URI+="
 	extra? ("
-add_data "${PACKAGES_UNPACK_EXTRA[@]}"
+add_data 20200312 "${PACKAGES_UNPACK_EXTRA_2020[@]}"
 SRC_URI+="
 	)"
 
 CHECKREQS_DISK_USR=3G
 CHECKREQS_DISK_BUILD=${CHECKREQS_DISK_USR}
 
-src_unpack() {
-	local x
-	local to_unpack=( "${PACKAGES_UNPACK[@]}" )
-	use extra && to_unpack+=( "${PACKAGES_UNPACK_EXTRA[@]}" )
-	for x in "${to_unpack[@]}"; do
+unpack_data() {
+	local x version=${1}
+	shift
+
+	for x; do
 		local cat=${x%/*}
 		local pkg=${x#*/}
 
 		mkdir -p "${S}/${cat}" || die
 		cd "${S}/${cat}" || die
-		unpack "nltk-${pkg}-${PV}.zip"
+		unpack "nltk-${pkg}-${version}.zip"
+	done
+}
+
+src_unpack() {
+	unpack_data 20200312 "${PACKAGES_UNPACK_2020[@]}"
+	unpack_data 20211023 "${PACKAGES_UNPACK_2021[@]}"
+	use extra && unpack_data 20200312 "${PACKAGES_UNPACK_EXTRA_2020[@]}"
+}
+
+install_zips() {
+	local x version=${1}
+	shift
+
+	for x; do
+		local cat=${x%/*}
+		local pkg=${x#*/}
+
+		insinto "/usr/share/nltk_data/${cat}"
+		newins "${DISTDIR}/nltk-${pkg}-${version}.zip" "${pkg}.zip"
 	done
 }
 
@@ -173,12 +199,5 @@ src_install() {
 	dodir /usr/share/nltk_data
 	mv * "${ED}/usr/share/nltk_data/" || die
 
-	local x
-	for x in "${PACKAGES_ZIP[@]}"; do
-		local cat=${x%/*}
-		local pkg=${x#*/}
-
-		insinto "/usr/share/nltk_data/${cat}"
-		newins "${DISTDIR}/nltk-${pkg}-${PV}.zip" "${pkg}.zip"
-	done
+	install_zips 20200312 "${PACKAGES_ZIP_2020[@]}"
 }
