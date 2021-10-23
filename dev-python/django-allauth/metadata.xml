@@ -10,5 +10,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">django-allauth</remote-id>
+		<remote-id type="github">pennersr/django-allauth</remote-id>
 	</upstream>
 </pkgmetadata>
