@@ -12,7 +12,7 @@ SRC_URI="https://github.com/cinemast/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0/1"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc +http-client +http-server redis-client redis-server +stubgen test"
+IUSE="+http-client +http-server redis-client redis-server +stubgen test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -24,7 +24,6 @@ RDEPEND="
 	stubgen? ( dev-libs/argtable:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	doc? ( app-doc/doxygen )
 	test? ( dev-cpp/catch:0 )"
 
 src_configure() {
@@ -50,20 +49,8 @@ src_configure() {
 	cmake_src_configure
 }
 
-src_compile() {
-	cmake_src_compile
-
-	use doc && emake -C "${BUILD_DIR}" doc
-}
-
 src_test() {
 	# Tests fail randomly when run in parallel
 	local MAKEOPTS=-j1
 	cmake_src_test
-}
-
-src_install() {
-	cmake_src_install
-
-	use doc && dodoc -r "${BUILD_DIR}"/doc/html
 }
