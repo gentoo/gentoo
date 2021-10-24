@@ -45,6 +45,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/numpy-1.21.0-no-hardcode-blasv2.patch
+	"${FILESDIR}"/${P}-unaligned-array.patch
 )
 
 distutils_enable_tests pytest
