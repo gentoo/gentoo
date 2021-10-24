@@ -87,7 +87,10 @@ RDEPEND="
 	sys-libs/zlib
 	>=sys-apps/hwloc-2
 	cuda? (
-		=dev-util/nvidia-cuda-toolkit-11*[profiler]
+		|| (
+			=dev-util/nvidia-cuda-toolkit-10*[profiler]
+			=dev-util/nvidia-cuda-toolkit-11.4*[profiler]
+		)
 		=dev-libs/cudnn-8*
 	)
 	mpi? ( virtual/mpi )
@@ -143,9 +146,6 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}/0008-patch-ruy-for-gcc-11.patch"
-)
 DOCS=( AUTHORS CONTRIBUTING.md ISSUE_TEMPLATE.md README.md RELEASE.md )
 CHECKREQS_MEMORY="5G"
 CHECKREQS_DISK_BUILD="10G"
