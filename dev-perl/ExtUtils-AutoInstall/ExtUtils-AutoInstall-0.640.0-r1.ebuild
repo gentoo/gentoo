@@ -26,7 +26,6 @@ src_compile() {
 	echo "n" | perl-module_src_compile
 }
 
-
 src_test() {
 	local MODULES=(
 		"ExtUtils::AutoInstall ${DIST_VERSION}"
