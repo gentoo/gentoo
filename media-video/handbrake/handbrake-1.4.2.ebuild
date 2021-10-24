@@ -44,6 +44,7 @@ RDEPEND="
 	nvenc? ( media-libs/nv-codec-headers )
 	media-libs/opus
 	media-libs/x264:=
+	media-libs/zimg
 	media-sound/lame
 	sys-libs/zlib
 	>=media-video/ffmpeg-4.2.1:0=[postproc,fdk?]
@@ -85,6 +86,9 @@ PATCHES=(
 
 	# Remove faac dependency; TODO: figure out if we need to do this at all.
 	"${FILESDIR}/${PN}-9999-remove-faac-dependency.patch"
+
+	# Detect system tools - bug 738110
+	"${FILESDIR}/${PN}-9999-system-tools.patch"
 
 	# Use whichever python is set by portage
 	"${FILESDIR}/${PN}-1.3.0-dont-search-for-python.patch"
