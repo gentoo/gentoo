@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Zac Medico <zmedico@gentoo.org> (2021-10-23)
+# Mask go-etcd which fails to compile, and etcd-fs revdep.
+# Removal on 2021-11-22. Bug #771042.
+dev-db/go-etcd
+sys-fs/etcd-fs
+
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-23)
 # EAPI 5 java package, no revdeps.
 # Removal on 2021-11-22. Bug #819756.
