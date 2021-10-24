@@ -12,7 +12,7 @@ SRC_URI="https://github.com/claytonotey/${PN}/archive/refs/tags/${PV}.tar.gz -> 
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~mips ~ppc ~ppc64 ~riscv x86"
 IUSE="cpu_flags_x86_sse static-libs"
 
 PATCHES=( "${FILESDIR}/${PN}-2.0.2-cflags.patch" )
