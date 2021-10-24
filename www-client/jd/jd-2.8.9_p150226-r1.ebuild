@@ -11,7 +11,7 @@ DESCRIPTION="gtk2 based 2ch browser written in C++"
 HOMEPAGE="https://jd4linux.osdn.jp/"
 SRC_URI="mirror://sourceforge.jp/${PN}4linux/62877/${MY_P}.tgz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="alsa gnutls migemo oniguruma"
