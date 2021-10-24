@@ -35,6 +35,11 @@
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-24)
 # No maintainer, EAPI 5, dead upstream.
+# Removal on 2021-11-23. Bug #819294.
+net-misc/gcap
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-24)
+# No maintainer, EAPI 5, dead upstream.
 # Removal on 2021-11-23. Bug #819264.
 net-print/lm1100
 
