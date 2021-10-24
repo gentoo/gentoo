@@ -37,11 +37,12 @@ RDEPEND="app-arch/bzip2
 	virtual/libintl"
 
 DEPEND="${RDEPEND}
-	sys-devel/gettext
 	doc? ( app-doc/doxygen[dot] )
 	test? ( dev-libs/libgcrypt:0
 		dev-qt/qttest:5
 		sys-devel/gdb:0 )"
+
+BDEPEND="sys-devel/gettext"
 
 PATCHES=(
 	"${FILESDIR}/${PV}-examples-install-dir.patch"
