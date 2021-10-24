@@ -128,7 +128,7 @@ src_configure() {
 		$(use_enable nvenc)
 		$(use_enable x265)
 	)
-	
+
 	./configure "${myconfargs[@]}" || die "Configure failed."
 }
 
