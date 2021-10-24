@@ -104,3 +104,13 @@ src_install() {
 	newdoc utils/dvb/README README.dvb
 	newdoc utils/v4l2-compliance/fixme.txt fixme.txt.v4l2-compliance
 }
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	if [[ -n ${REPLACING_VERSIONS} ]] && ver_test 1.20.0 -ge ${REPLACING_VERSIONS%% *}; then
+		ewarn "WARNING! ir-keytable has changed significantly from version 1.20.0 so"
+		ewarn "you may need to take action to avoid breakage. See"
+		ewarn "https://bugs.gentoo.org/767175 for more details."
+	fi
+}
