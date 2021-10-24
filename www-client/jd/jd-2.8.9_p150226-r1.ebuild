@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
 inherit autotools desktop flag-o-matic
 
@@ -27,8 +27,8 @@ RDEPEND="dev-cpp/gtkmm:2.4
 	!gnutls? ( dev-libs/openssl:0= )
 	migemo? ( app-text/cmigemo )
 	oniguruma? ( dev-libs/oniguruma )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=( "${FILESDIR}"/${PN}-gcc-5.patch )
