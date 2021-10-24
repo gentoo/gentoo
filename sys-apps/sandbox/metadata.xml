@@ -5,4 +5,7 @@
   <email>sandbox@gentoo.org</email>
   <name>Sandbox Maintainers</name>
 </maintainer>
+<use>
+  <flag name="nnp">Enable NO_NEW_PRIVS which blocks set*id programs from gaining privileges (e.g. sudo)</flag>
+</use>
 </pkgmetadata>
