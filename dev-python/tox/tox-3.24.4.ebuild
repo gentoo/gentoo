@@ -53,6 +53,9 @@ python_test() {
 
 		# expects python2 to exist
 		tests/unit/interpreters/test_interpreters.py::test_tox_get_python_executable
+
+		# fragile and relies on checking stdout
+		tests/unit/util/test_spinner.py::test_spinner_progress
 	)
 
 	[[ ${EPYTHON} != pypy3 ]] && EPYTEST_DESELECT+=(
