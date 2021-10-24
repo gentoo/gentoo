@@ -77,6 +77,7 @@ RDEPEND="${CDEPEND}
 		l10n_zh-TW? ( media-fonts/intlfonts )
 	)"
 BDEPEND="dev-util/intltool
+	gnome-base/librsvg
 	sys-devel/gettext
 	virtual/pkgconfig
 	kde? ( dev-util/cmake )"
