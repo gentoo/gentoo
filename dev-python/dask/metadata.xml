@@ -17,5 +17,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">dask</remote-id>
+    <remote-id type="github">dask/dask</remote-id>
   </upstream>
 </pkgmetadata>
