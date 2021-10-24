@@ -1,5 +1,0 @@
-libgslcblas.so /usr/@LIBDIR@/libcblas.so
-libgslcblas.so.0 /usr/@LIBDIR@/libcblas.so.0
-libgslcblas.a /usr/@LIBDIR@/libcblas.a
-../blas/gsl/cblas.pc /usr/@LIBDIR@/pkgconfig/cblas.pc
-gsl/gsl_cblas.h /usr/include/cblas.h
