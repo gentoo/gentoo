@@ -17,11 +17,15 @@ BDEPEND="dev-lang/perl"
 DEPEND="net-libs/libssh:="
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-fix-man-dir.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-fix-man-dir.patch"
+	"${FILESDIR}/${P}-respect-cxxflags.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
+		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
 	)
 
 	cmake_src_configure
