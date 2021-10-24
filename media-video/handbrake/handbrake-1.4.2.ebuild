@@ -134,12 +134,6 @@ src_configure() {
 
 src_compile() {
 	emake -C build
-
-	# TODO: Documentation building is currently broken, try to fix it.
-	#
-	# if use doc ; then
-	# 	emake -C build doc
-	# fi
 }
 
 src_install() {
