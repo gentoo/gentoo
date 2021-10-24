@@ -31,6 +31,7 @@ src_prepare() {
 
 src_configure() {
 	# Needed for x86 support, bug #819762
+	# May be able to drop when/if ported to meson, but re-test w/ x86 chroot
 	append-lfs-flags
 
 	# Without the localstatedir the filesystem isn't mounted correctly
