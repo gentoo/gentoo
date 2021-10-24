@@ -125,6 +125,9 @@ xdg_mimeinfo_database_update() {
 		return
 	fi
 
+	# https://bugs.gentoo.org/819783
+	local -x PKGSYSTEM_ENABLE_FSYNC=0
+
 	ebegin "Updating shared mime info database"
 	update-mime-database "${EROOT%/}${MIMEINFO_DATABASE_DIR}"
 	eend $?
