@@ -106,8 +106,6 @@ src_prepare() {
 	default
 
 	cd "${S}/gtk" || die
-	# Don't run autogen.sh.
-	sed -i '/autogen.sh/d' module.rules || die "Removing autogen.sh call failed"
 	eautoreconf
 }
 
