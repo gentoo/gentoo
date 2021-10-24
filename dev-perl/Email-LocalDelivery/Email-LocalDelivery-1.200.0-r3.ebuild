@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=RJBS
 DIST_VERSION=1.200
@@ -11,8 +11,6 @@ DESCRIPTION="Local delivery of RFC2822 message format and headers"
 
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Carp
@@ -21,7 +19,7 @@ RDEPEND="
 	virtual/perl-File-Path
 	>=dev-perl/File-Path-Expand-1.10.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.300.0
 	test? (
 		dev-perl/Capture-Tiny
