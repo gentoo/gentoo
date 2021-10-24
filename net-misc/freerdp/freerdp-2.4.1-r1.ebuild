@@ -88,6 +88,10 @@ BDEPEND="
 	) )
 "
 
+PATCHES=(
+	"${FILESDIR}/freerdp-2.4.1-rdpei-free.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test ON OFF)
