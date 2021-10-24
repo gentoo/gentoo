@@ -113,20 +113,23 @@ src_configure() {
 	# Libav was replaced in 1.2 with ffmpeg by default
 	# but I've elected to not make people change their use flags for AAC
 	# as its the same code anyway
-	./configure \
-		--force \
-		--verbose \
-		--prefix="${EPREFIX}/usr" \
-		--disable-gtk-update-checks \
-		--disable-flatpak \
-		--disable-gtk4 \
-		$(use_enable libav-aac ffmpeg-aac) \
-		$(use_enable fdk fdk-aac) \
-		$(usex !gtk --disable-gtk) \
-		$(usex !gstreamer --disable-gst) \
-		$(use_enable numa) \
-		$(use_enable nvenc) \
-		$(use_enable x265) || die "Configure failed."
+	local myconfargs=(
+		--force
+		--verbose
+		--prefix="${EPREFIX}/usr"
+		--disable-gtk-update-checks
+		--disable-flatpak
+		--disable-gtk4
+		$(use_enable libav-aac ffmpeg-aac)
+		$(use_enable fdk fdk-aac)
+		$(usex !gtk --disable-gtk)
+		$(usex !gstreamer --disable-gst)
+		$(use_enable numa)
+		$(use_enable nvenc)
+		$(use_enable x265)
+	)
+	
+	./configure "${myconfargs[@]}" || die "Configure failed."
 }
 
 src_compile() {
