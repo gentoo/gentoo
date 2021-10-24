@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="OpenSFX data files for OpenTTD"
 HOMEPAGE="https://wiki.openttd.org/en/Basesets/OpenSFX https://github.com/OpenTTD/OpenSFX"
