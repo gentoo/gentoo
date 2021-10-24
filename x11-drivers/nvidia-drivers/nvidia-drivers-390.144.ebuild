@@ -90,6 +90,7 @@ pkg_setup() {
 		~DRM_KMS_HELPER
 		~SYSVIPC
 		~!AMD_MEM_ENCRYPT_ACTIVE_BY_DEFAULT
+		~!DRM_SIMPLEDRM
 		~!LOCKDEP
 		!DEBUG_MUTEXES"
 	local ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
