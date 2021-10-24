@@ -28,26 +28,26 @@ REQUIRED_USE="^^ ( fdk libav-aac )"
 
 RDEPEND="
 	app-arch/xz-utils
-	media-libs/speex
 	dev-libs/jansson:=
 	dev-libs/libxml2
 	media-libs/a52dec
+	>=media-libs/dav1d-0.5.1
 	media-libs/libass:=
 	>=media-libs/libbluray-1.0
-	>=media-libs/dav1d-0.5.1
 	media-libs/libdvdnav
 	media-libs/libdvdread:=
 	media-libs/libsamplerate
 	media-libs/libtheora
 	media-libs/libvorbis
 	>=media-libs/libvpx-1.8
-	nvenc? ( media-libs/nv-codec-headers )
 	media-libs/opus
+	media-libs/speex
 	media-libs/x264:=
 	media-libs/zimg
 	media-sound/lame
-	sys-libs/zlib
 	>=media-video/ffmpeg-4.2.1:0=[postproc,fdk?]
+	sys-libs/zlib
+	fdk? ( media-libs/fdk-aac )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -69,7 +69,7 @@ RDEPEND="
 		x11-libs/libnotify
 		x11-libs/pango
 	)
-	fdk? ( media-libs/fdk-aac )
+	nvenc? ( media-libs/nv-codec-headers )
 	x265? ( >=media-libs/x265-3.2:0=[10bit,12bit,numa?] )
 "
 DEPEND="
@@ -144,7 +144,6 @@ src_compile() {
 
 src_install() {
 	emake -C build DESTDIR="${D}" install
-
 	dodoc README.markdown AUTHORS.markdown NEWS.markdown THANKS.markdown
 }
 
