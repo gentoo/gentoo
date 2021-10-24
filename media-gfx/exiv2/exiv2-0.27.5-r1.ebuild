@@ -20,7 +20,8 @@ DESCRIPTION="EXIF, IPTC and XMP metadata C++ library and command line utility"
 HOMEPAGE="https://www.exiv2.org/"
 
 LICENSE="GPL-2"
-SLOT="0/27"
+# In 0.27.5, ABI seemed to be broken for bmff functions
+SLOT="0/27.5"
 IUSE="+bmff doc examples nls +png test webready +xmp"
 RESTRICT="!test? ( test )"
 
