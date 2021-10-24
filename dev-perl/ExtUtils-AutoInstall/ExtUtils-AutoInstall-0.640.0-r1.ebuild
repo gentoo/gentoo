@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=INGY
 DIST_VERSION=0.64
@@ -11,21 +11,21 @@ DESCRIPTION="Automatic installation of dependencies via CPAN from within Makefil
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
-IUSE=""
 
-# TESTS BAD. Wants to write to cpan's config on the live system
-#SRC_TEST="do"
-
-RDEPEND="dev-perl/Sort-Versions"
-DEPEND="${RDEPEND}"
+RDEPEND="
+	dev-perl/Sort-Versions
+"
+BDEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-no-dot-inc.patch"
 	"${FILESDIR}/${P}-cpantest.patch"
 )
+
 src_compile() {
 	echo "n" | perl-module_src_compile
 }
+
 
 src_test() {
 	local MODULES=(
