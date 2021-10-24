@@ -81,7 +81,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9999-remove-dvdnav-dup.patch"
 
 	# Remove faac dependency; TODO: figure out if we need to do this at all.
-	"${FILESDIR}/${PN}-9999-remove-faac-dependency.patch"
+	"${FILESDIR}/${P}-remove-faac-dependency.patch"
 
 	# Use whichever python is set by portage
 	"${FILESDIR}/${PN}-1.3.0-dont-search-for-python.patch"

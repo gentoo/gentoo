@@ -1,10 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-inherit autotools gnome2-utils python-any-r1 xdg-utils
+PYTHON_COMPAT=( python3_{8,9} )
+
+inherit autotools python-any-r1 xdg
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/HandBrake/HandBrake.git"
@@ -68,12 +69,14 @@ RDEPEND="
 		x11-libs/pango
 	)
 	fdk? ( media-libs/fdk-aac )
-	x265? ( >=media-libs/x265-3.2:0=[10bit,12bit,numa?] )"
-
-DEPEND="${RDEPEND}
+	x265? ( >=media-libs/x265-3.2:0=[10bit,12bit,numa?] )
+"
+DEPEND="
 	${PYTHON_DEPS}
+	${RDEPEND}
 	dev-lang/nasm
-	dev-util/intltool"
+	dev-util/intltool
+"
 
 PATCHES=(
 	# Remove libdvdnav duplication and call it on the original instead.
@@ -81,16 +84,13 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9999-remove-dvdnav-dup.patch"
 
 	# Remove faac dependency; TODO: figure out if we need to do this at all.
-	"${FILESDIR}/${P}-remove-faac-dependency.patch"
+	"${FILESDIR}/${PN}-9999-remove-faac-dependency.patch"
 
 	# Use whichever python is set by portage
 	"${FILESDIR}/${PN}-1.3.0-dont-search-for-python.patch"
 
 	# Fix x265 linkage... again again #730034
 	"${FILESDIR}/${PN}-1.3.3-x265-link.patch"
-
-	# Fix missing audio stream when using MPEG-4 avformat with ffmpeg-4.4 #791220
-	"${FILESDIR}/${PN}-1.3.3-libhb-fix-audio-encoders-when-linking-to-FFmpeg-4.4.patch"
 )
 
 src_prepare() {
@@ -101,7 +101,7 @@ src_prepare() {
 
 	default
 
-	cd "${S}/gtk"
+	cd "${S}/gtk" || die
 	# Don't run autogen.sh.
 	sed -i '/autogen.sh/d' module.rules || die "Removing autogen.sh call failed"
 	eautoreconf
@@ -155,11 +155,5 @@ pkg_postinst() {
 		einfo "For the GTK+ version of HandBrake, you can run \`ghb\`."
 	fi
 
-	xdg_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
