@@ -19,6 +19,7 @@ IUSE="alsa gnutls migemo oniguruma"
 RDEPEND="dev-cpp/gtkmm:2.4
 	dev-libs/glib:2
 	sys-libs/zlib
+	virtual/libcrypt:=
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-misc/xdg-utils
