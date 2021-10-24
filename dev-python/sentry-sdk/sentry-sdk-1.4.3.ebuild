@@ -53,7 +53,7 @@ python_test() {
 
 	local EPYTEST_DESELECT=(
 		# hangs
-		'tests/test_transport.py::test_transport_works[eventlet'
+		'tests/test_transport.py::test_transport_works'
 		# TODO
 		'tests/test_basics.py::test_auto_enabling_integrations_catches_import_error'
 		tests/test_client.py::test_databag_depth_stripping
