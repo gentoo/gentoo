@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit gnustep-2 vcs-clean
 
@@ -19,6 +19,7 @@ S=${WORKDIR}
 RESTRICT="binchecks strip"
 
 src_prepare() {
+	default
 	ecvs_clean
 }
 
