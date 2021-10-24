@@ -24,7 +24,9 @@ PATCHES=(
 DOCS=( README.md )
 
 src_prepare() {
-	sed -e '/-Werror/d' -i CMakeLists.txt || die
+	sed -e '/-Werror/d' \
+		-e '/-march=armv8/d' \
+		-i CMakeLists.txt || die
 	cmake_src_prepare
 }
 
