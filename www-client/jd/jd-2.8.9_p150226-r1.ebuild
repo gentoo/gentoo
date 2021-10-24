@@ -8,7 +8,7 @@ inherit autotools desktop flag-o-matic
 MY_P="${P/_p/-}"
 
 DESCRIPTION="gtk2 based 2ch browser written in C++"
-HOMEPAGE="http://jd4linux.sourceforge.jp/"
+HOMEPAGE="https://jd4linux.osdn.jp/"
 SRC_URI="mirror://sourceforge.jp/${PN}4linux/62877/${MY_P}.tgz"
 
 LICENSE="GPL-2"
