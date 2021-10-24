@@ -28,6 +28,7 @@ RDEPEND="
 	>=dev-perl/DBIx-Simple-1.350.0
 	virtual/perl-Data-Dumper
 	dev-perl/Email-MIME
+	>=dev-perl/Email-Sender-1.300.32
 	dev-perl/Email-Simple
 	virtual/perl-Encode
 	dev-perl/File-ShareDir
