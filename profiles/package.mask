@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-24)
+# No maintainer, EAPI 5, dead upstream.
+# Removal on 2021-11-23. Bug #819153.
+x11-plugins/pidgin-latex
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-24)
 # No maintainer, EAPI 5, no other distro is packaging this.
 # Removal on 2021-11-23. Bug #819150.
 x11-plugins/hexchat-javascript
