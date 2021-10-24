@@ -243,7 +243,7 @@ CRATES_TEST="
 	scopeguard-1.1.0
 	smallvec-1.7.0"
 PYTHON_COMPAT=( python3_{8..10} )
-inherit cargo python-any-r1
+inherit cargo flag-o-matic python-any-r1
 
 DESCRIPTION="Build and publish crates with pyo3, rust-cpython and cffi bindings"
 HOMEPAGE="https://github.com/pyo3/maturin"
@@ -276,6 +276,12 @@ python_check_deps() {
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
+}
+
+src_configure() {
+	filter-flags '-flto*' # undefined references with ring crate
+
+	cargo_src_configure
 }
 
 src_test() {
