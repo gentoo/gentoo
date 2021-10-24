@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 
@@ -69,8 +69,7 @@ src_configure() {
 }
 
 src_compile() {
-	# most machines don't have enough ram for parallel builds
-	python_foreach_impl run_in_build_dir emake -j2
+	python_foreach_impl run_in_build_dir emake
 }
 
 src_install() {
