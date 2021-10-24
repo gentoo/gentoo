@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit golang-base
 
@@ -79,6 +79,7 @@ src_prepare() {
 		-e 's|t.Errorf("expected %q to be %q", config.Prefixes\[0\], expected)|t.Errorf("expected %v to be %v", config.Prefixes[0], expected)|' \
 		-e 's|t.Errorf("expected %q to be %q", value.Data, data)|t.Errorf("expected %v to be %v", value.Data, data)|' \
 		-i cli_test.go runner_test.go || die
+	default
 }
 
 src_compile() {
