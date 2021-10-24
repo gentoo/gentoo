@@ -60,7 +60,7 @@ RDEPEND="${COMMON_DEPEND}
 		>=dev-python/ldap3-2.5.1[${PYTHON_USEDEP}]
 		>=dev-python/passlib-1.7.2[${PYTHON_USEDEP}]
 		>=dev-python/psutil-5.7.0[${PYTHON_USEDEP}]
-		>=dev-python/psycopg-2.8[${PYTHON_USEDEP}]
+		<dev-python/psycopg-2.9[${PYTHON_USEDEP}]
 		>=dev-python/python-dateutil-2.8.0[${PYTHON_USEDEP}]
 		>=dev-python/pytz-2020.1[${PYTHON_USEDEP}]
 		>=dev-python/simplejson-3.16.0[${PYTHON_USEDEP}]
