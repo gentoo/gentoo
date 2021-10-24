@@ -726,7 +726,7 @@ linux-mod_src_compile() {
 
 # @FUNCTION: linux-mod_src_install
 # @DESCRIPTION:
-# It install the modules specified in MODULES_NAME. The modules should be inside the ${objdir}
+# It install the modules specified in MODULE_NAMES. The modules should be inside the ${objdir}
 # directory and they are installed inside /lib/modules/${KV_FULL}/${libdir}.
 #
 # The modprobe.d configuration file is automatically generated if the
