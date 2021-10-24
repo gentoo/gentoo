@@ -6,6 +6,6 @@
 		<flag name="glib">Use functions provided by <pkg>dev-libs/glib</pkg>, not built-in</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">brianb/mdbtools</remote-id>
+		<remote-id type="github">mdbtools/mdbtools</remote-id>
 	</upstream>
 </pkgmetadata>
