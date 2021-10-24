@@ -261,7 +261,7 @@ pkg_postinst() {
 			elog "Please note that the semicolon (;) must _NOT_ be at the beginning of the line!"
 			elog
 			elog "Alternatively, if replacing PulseAudio daemon is not desired, edit"
-			elog "${EROOT}/usr/bin/gentoo-pipewire-launcher  by commenting out the relevant"
+			elog "${EROOT}/usr/bin/gentoo-pipewire-launcher by commenting out the relevant"
 			elog "command:"
 			elog
 			elog "#${EROOT}/usr/bin/pipewire -c pipewire-pulse.conf &"
