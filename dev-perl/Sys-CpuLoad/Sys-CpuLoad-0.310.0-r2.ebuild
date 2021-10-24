@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	virtual/perl-Exporter
 	dev-perl/File-Which
+	dev-perl/IPC-Run3
 	virtual/perl-IO
 	virtual/perl-XSLoader
 	virtual/perl-parent
