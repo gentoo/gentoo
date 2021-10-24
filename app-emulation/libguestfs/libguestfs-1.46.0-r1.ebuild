@@ -116,9 +116,10 @@ BDEPEND="lua? ( ${LUA_DEPS} )"
 
 DOCS=( AUTHORS BUGS ChangeLog HACKING README TODO )
 
-#PATCHES=(
-#	"${FILESDIR}"/${MY_PV_1}/
-#)
+PATCHES=(
+	#"${FILESDIR}"/${MY_PV_1}/
+	"${FILESDIR}"/1.44/
+)
 
 pkg_setup() {
 	CONFIG_CHECK="~KVM ~VIRTIO"
