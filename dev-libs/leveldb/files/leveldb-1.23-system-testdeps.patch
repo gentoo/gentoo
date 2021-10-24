@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -296,20 +296,12 @@
+@@ -296,20 +296,11 @@
    set(build_gmock ON)
  
    # This project is tested using GoogleTest.
@@ -19,7 +19,6 @@
 -    set_property(TARGET gmock
 -        APPEND PROPERTY COMPILE_OPTIONS -Wno-missing-field-initializers)
 -  endif(LEVELDB_HAVE_NO_MISSING_FIELD_INITIALIZERS)
-+  find_package(benchmark REQUIRED)
  
    function(leveldb_test test_file)
      get_filename_component(test_target_name "${test_file}" NAME_WE)

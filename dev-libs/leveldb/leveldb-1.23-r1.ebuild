@@ -20,13 +20,11 @@ DEPEND="crc32c? ( dev-libs/crc32c )
 	snappy? ( app-arch/snappy )
 	tcmalloc? ( dev-util/google-perftools )"
 RDEPEND="${DEPEND}"
-BDEPEND="test? (
-	dev-cpp/benchmark
-	dev-cpp/gtest
-)"
+BDEPEND="test? ( dev-cpp/gtest )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.23-system-testdeps.patch
+	"${FILESDIR}"/${PN}-1.23-remove-benchmark-dep.patch
 )
 
 src_configure() {
