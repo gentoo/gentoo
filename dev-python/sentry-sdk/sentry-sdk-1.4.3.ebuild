@@ -42,13 +42,16 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
-	local deselect=(
+	local EPYTEST_IGNORE=(
 		# tests require Internet access
 		tests/integrations/httpx/test_httpx.py
 		tests/integrations/requests/test_requests.py
 		tests/integrations/stdlib/test_httplib.py
 		# wtf is it supposed to do?!
 		tests/integrations/gcp/test_gcp.py
+	)
+
+	local EPYTEST_DESELECT=(
 		# hangs
 		'tests/test_transport.py::test_transport_works[eventlet'
 		# TODO
@@ -68,5 +71,5 @@ python_test() {
 	# Needs to detect sentry-sdk in the installed modules
 	distutils_install_for_testing
 
-	epytest ${deselect[@]/#/--deselect }
+	epytest
 }
