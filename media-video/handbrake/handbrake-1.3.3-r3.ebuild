@@ -17,7 +17,7 @@ else
 fi
 
 DESCRIPTION="Open-source, GPL-licensed, multiplatform, multithreaded video transcoder"
-HOMEPAGE="http://handbrake.fr/"
+HOMEPAGE="https://handbrake.fr/"
 
 LICENSE="GPL-2"
 SLOT="0"
