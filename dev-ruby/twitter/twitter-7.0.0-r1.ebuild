@@ -12,7 +12,7 @@ RUBY_FAKEGEM_GEMSPEC="twitter.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Ruby wrapper around the Twitter API"
-HOMEPAGE="https://sferik.github.com/twitter/"
+HOMEPAGE="https://github.com/sferik/twitter/"
 SRC_URI="https://github.com/sferik/twitter/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
