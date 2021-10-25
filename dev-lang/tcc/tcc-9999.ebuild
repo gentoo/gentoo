@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 MY_COMMIT="16456168430c9e185dd94b8215aa77d02bbb8a2c"
 DESCRIPTION="A very small C compiler for ix86/amd64"
-HOMEPAGE="https://bellard.org/tcc/"
+HOMEPAGE="https://bellard.org/tcc/ https://repo.or.cz/tinycc.git/"
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://repo.or.cz/r/tinycc.git"
