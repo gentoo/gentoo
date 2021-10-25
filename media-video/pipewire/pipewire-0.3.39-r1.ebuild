@@ -198,7 +198,7 @@ multilib_src_install_all() {
 
 	if ! use systemd; then
 		insinto /etc/xdg/autostart
-		newins "${FILESDIR}"/pipewire.desktop pipewire.desktop
+		newins "${FILESDIR}"/pipewire.desktop-r1 pipewire.desktop
 
 		exeinto /usr/bin
 		newexe "${FILESDIR}"/gentoo-pipewire-launcher.in gentoo-pipewire-launcher
