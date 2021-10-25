@@ -68,7 +68,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake AR="$(tc-getAR)"
+	emake AR="$(tc-getAR)" LDFLAGS="${LDFLAGS}"
 }
 
 src_test() {
