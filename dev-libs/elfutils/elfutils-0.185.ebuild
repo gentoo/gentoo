@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.185-static-inline.patch
 	"${FILESDIR}"/${PN}-0.185-pull-advance_pc-in-file-scope.patch
 	"${FILESDIR}"/${PN}-0.185-configure.ac-rework-gnu99-ext-check-to-allow-clang.patch
+	"${FILESDIR}"/${PN}-0.185-glibc-2.34-test-failure.patch
 )
 
 src_prepare() {
