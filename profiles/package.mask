@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-10-25)
+# Fails to build with glibc-2.30(!) and was abandoned upstream
+# a few years ago. No reverse dependencies in tree.
+# bug #728556. Removal on 2021-11-25.
+dev-perl/MongoDB
+
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-24)
 # No maintainer, EAPI 5, dead upstream.
 # Removal on 2021-11-23. Bug #819300.
