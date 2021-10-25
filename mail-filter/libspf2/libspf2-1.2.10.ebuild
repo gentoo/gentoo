@@ -13,8 +13,6 @@ LICENSE="|| ( LGPL-2.1 BSD-2 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 
-RDEPEND="!dev-perl/Mail-SPF-Query"
-
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc5.patch #570486
 )
