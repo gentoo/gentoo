@@ -18,7 +18,7 @@ RDEPEND="dev-lang/ocaml:=
 	dev-ml/astring:=
 	dev-ml/fpath:=
 	dev-ml/fmt:=
-	dev-ml/logs:="
+	dev-ml/logs:=[fmt]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ml/findlib
 	dev-ml/ocamlbuild
