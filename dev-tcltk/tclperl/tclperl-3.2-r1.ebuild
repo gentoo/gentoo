@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit flag-o-matic multilib toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Perl package for Tcl"
 HOMEPAGE="http://jfontain.free.fr/tclperl.htm"
@@ -19,6 +19,9 @@ DEPEND="
 	>=dev-lang/perl-5.6.0
 	sys-libs/binutils-libs"
 RDEPEND="${DEPEND}"
+
+DOCS=( CHANGES README)
+HTML_DOCS=( tclperl.htm )
 
 src_compile() {
 	append-flags -fPIC
@@ -36,7 +39,5 @@ src_install() {
 	exeinto /usr/$(get_libdir)/${P}
 	doexe tclperl.so.${PV}
 	doexe pkgIndex.tcl
-
-	dodoc CHANGES README
-	dohtml tclperl.htm
+	einstalldocs
 }
