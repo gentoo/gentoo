@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2021-10-25)
+# Fails to build with glibc-2.34 and binutils-2.34+. Not many other
+# distros packaging this and no upstream commits since 2011. No reverse
+# dependencies.
+# bug #707848, bug #806476. Removal on 2021-11-25.
+dev-util/mutrace
+
+# Sam James <sam@gentoo.org> (2021-10-25)
 # Fails to build with glibc-2.34 and appears to be obsolete. No
 # reverse dependencies.
 # bug #806079. Removal on 2021-11-25.
