@@ -51,11 +51,17 @@ src_prepare() {
 }
 
 src_configure() {
+	local libc
+
 	use test && unset CFLAGS LDFLAGS # Tests run with CC=tcc etc, they will fail hard otherwise
 					# better fixes welcome, it feels wrong to hack the env like this
 
+	use elibc_musl && libc=musl
+	use elibc_uclibc && libc=uClibc
+
 	# not autotools, so call configure directly
 	./configure --cc="$(tc-getCC)" \
+		${libc:+--config-${libc}} \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
