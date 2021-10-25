@@ -455,7 +455,7 @@ multilib_src_configure() {
 	if use arm || use ppc ; then
 		# bug #782811
 		# bug #790590
-		extra_libs+="-latomic "
+		extra_libs+="$(test-flags-CCLD -latomic) "
 	fi
 
 	set -- "${S}/configure" \
