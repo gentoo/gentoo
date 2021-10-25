@@ -5,13 +5,11 @@ EAPI=7
 
 DESCRIPTION="SigScheme is an R5RS Scheme interpreter for embedded use"
 HOMEPAGE="https://github.com/uim/sigscheme"
-SRC_URI="https://github.com/uim/${PN}/releases/download/${P}/${P}.tar.bz2"
+SRC_URI="https://github.com/uim/${PN}/releases/download/${PV}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
-PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_configure() {
 	econf --disable-static
