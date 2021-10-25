@@ -32,6 +32,7 @@ RDEPEND="
 	dev-libs/libxml2
 	media-libs/a52dec
 	>=media-libs/dav1d-0.5.1
+	media-libs/libjpeg-turbo:=
 	media-libs/libass:=
 	>=media-libs/libbluray-1.0
 	media-libs/libdvdnav
