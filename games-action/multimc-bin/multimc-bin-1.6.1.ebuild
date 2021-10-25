@@ -6,11 +6,11 @@ EAPI=8
 inherit unpacker xdg
 
 DESCRIPTION="An advanced Qt5-based open-source launcher for Minecraft"
-HOMEPAGE="https://multimc.org https://github.com/MultiMC/MultiMC5"
+HOMEPAGE="https://multimc.org https://github.com/MultiMC/Launcher"
 SRC_URI="https://files.multimc.org/downloads/multimc_$(ver_rs 2 -).deb"
 # We need -bin because of secret API keys:
-# https://github.com/MultiMC/MultiMC5/issues/4087
-# https://github.com/MultiMC/MultiMC5/issues/4113
+# https://github.com/MultiMC/Launcher/issues/4087
+# https://github.com/MultiMC/Launcher/issues/4113
 # https://bugs.gentoo.org/814404
 S="${WORKDIR}"
 
