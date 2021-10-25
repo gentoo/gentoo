@@ -5,21 +5,19 @@ EAPI=7
 
 inherit desktop java-pkg-2 xdg cmake
 
-MY_PN="MultiMC5"
-MY_P="${MY_PN}-${PV}"
-
 QUAZIP_VER="multimc-3"
 LIBNBTPLUSPLUS_VER="multimc-0.6.1"
 
 DESCRIPTION="An advanced Qt5-based open-source launcher for Minecraft"
 HOMEPAGE="https://multimc.org
-	https://github.com/MultiMC/MultiMC5"
+	https://github.com/MultiMC/Launcher"
 BASE_URI="https://github.com/MultiMC"
 SRC_URI="
-	${BASE_URI}/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	${BASE_URI}/Launcher/archive/${PV}.tar.gz -> ${P}.tar.gz
 	${BASE_URI}/libnbtplusplus/archive/${LIBNBTPLUSPLUS_VER}.tar.gz -> libnbtplusplus-${LIBNBTPLUSPLUS_VER}.tar.gz
 	${BASE_URI}/quazip/archive/${QUAZIP_VER}.tar.gz -> quazip-${QUAZIP_VER}.tar.gz
 "
+S="${WORKDIR}/MultiMC5-${PV}"
 
 KEYWORDS="~amd64"
 LICENSE="Apache-2.0 Boost-1.0 BSD-2 BSD GPL-2+ LGPL-2.1-with-linking-exception LGPL-3 OFL-1.1 MIT"
@@ -27,7 +25,7 @@ SLOT="0"
 
 # Author has indicated that he is unhappy with redistributing custom builds
 # under the MultiMC name/logo
-# https://github.com/MultiMC/MultiMC5/issues/4087
+# https://github.com/MultiMC/Launcher/issues/4087
 RESTRICT="bindist"
 
 COMMON_DEPEND="
@@ -48,8 +46,6 @@ RDEPEND="${COMMON_DEPEND}
 	virtual/opengl
 	x11-libs/libXrandr
 "
-
-S="${WORKDIR}/${MY_P}"
 
 src_unpack() {
 	default
@@ -74,4 +70,15 @@ src_install() {
 	cmake_src_install
 	domenu launcher/package/linux/multimc.desktop
 	doicon -s scalable launcher/resources/multimc/scalable/multimc.svg
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	elog ""
+	elog "In order to use Microsoft accounts instead of Mojang accounts"
+	elog "either use the official binary packaged in games-action/multimc-bin,"
+	elog "or patch your own secret API key into the MSAClientID variable in"
+	elog "notsecrets/Secrets.cpp."
+	elog "See Also: https://bugs.gentoo.org/814404"
+	elog ""
 }
