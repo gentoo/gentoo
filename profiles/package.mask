@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2021-10-25)
+# Fails to build with glibc-2.33 and no activity upstream; seems like
+# a new fork should be packaged.
+# bug #775962. Removal on 2021-11-25.
+sys-apps/mtree
+
+# Sam James <sam@gentoo.org> (2021-10-25)
 # Fails to build with glibc-2.30(!) and was abandoned upstream
 # a few years ago. No reverse dependencies in tree.
 # bug #728556. Removal on 2021-11-25.
