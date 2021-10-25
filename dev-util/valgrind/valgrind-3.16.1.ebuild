@@ -5,7 +5,7 @@ EAPI=7
 inherit autotools flag-o-matic toolchain-funcs multilib pax-utils
 
 DESCRIPTION="An open-source memory debugger for GNU/Linux"
-HOMEPAGE="http://www.valgrind.org"
+HOMEPAGE="https://www.valgrind.org"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="mpi"
