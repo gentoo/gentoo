@@ -17,13 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2021-10-25)
-# Various unstable dependencies:
-# gnome-base/nautilus
-# app-misc/tracker
-# bug #758815
-app-cdr/brasero nautilus tracker
-
 # Sam James <sam@gentoo.org> (2021-02-06)
 # Drags in too much unstable GNOME for now
 # bug #727572
