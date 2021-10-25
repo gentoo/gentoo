@@ -28,11 +28,9 @@
 		<flag name="gles1">include OpenGL ES 1.0 support</flag>
 		<flag name="gles2">include OpenGL ES 2.0 support</flag>
 		<flag name="haptic">Enable the haptic (force feedback) subsystem</flag>
-		<flag name="hidapi">Enable HID support via <pkg>dev-libs/hidapi</pkg></flag>
 		<flag name="ibus">Enable support for <pkg>app-i18n/ibus</pkg></flag>
 		<flag name="joystick">Control joystick support (disable at your own risk)</flag>
 		<flag name="kms">Build the KMSDRM video driver</flag>
-		<flag name="libusb">Enable raw HID access via <pkg>virtual/libusb</pkg></flag>
 		<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
 		<flag name="pipewire">Enable support for the <pkg>media-video/pipewire</pkg> audio backend</flag>
 		<flag name="sound">Control audio support (disable at your own risk)</flag>

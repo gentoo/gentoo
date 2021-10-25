@@ -493,7 +493,3 @@ net-dialup/ppp atm
 
 # Needs nut and qstat respectively, neither is keyworded on alpha.
 net-analyzer/nagios-plugins nagios-game
-
-# Andrew Udvare <audvare@gmail.com> (2021-10-13)
-# missing keyword for dev-libs/hidapi
-media-libs/libsdl2 hidapi

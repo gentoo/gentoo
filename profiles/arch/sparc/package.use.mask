@@ -558,7 +558,3 @@ app-admin/rsyslog zeromq
 # Marius Brehler <marfbre@linux.sungazer.de> (2015-08-13)
 # missing keyword
 >=sci-misc/boinc-7.4.42-r1 X
-
-# Andrew Udvare <audvare@gmail.com> (2021-10-13)
-# missing keyword for dev-libs/hidapi
-media-libs/libsdl2 hidapi
