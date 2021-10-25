@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_configure() {
-	econf --enable-hygienic-macro --disable-static
+	econf --disable-static
 }
 
 src_install() {
