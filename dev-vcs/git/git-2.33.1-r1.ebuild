@@ -292,6 +292,7 @@ git_emake() {
 		perllibdir="$(use perl && perl_get_raw_vendorlib)" \
 		sysconfdir="${EPREFIX}"/etc \
 		GIT_TEST_OPTS="--no-color" \
+		INSTALL_SYMLINKS=1 \
 		OPTAR="$(tc-getAR)" \
 		OPTCC="$(tc-getCC)" \
 		OPTCFLAGS="${CFLAGS}" \
