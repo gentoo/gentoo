@@ -14,7 +14,7 @@ LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 
-IUSE="alsa aqua cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags dbus doc fcitx4 gles1 gles2 haptic hidapi ibus jack +joystick kms libsamplerate libusb nas opengl oss pipewire pulseaudio sndio +sound static-libs +threads udev +video video_cards_vc4 vulkan wayland X xinerama xscreensaver"
+IUSE="alsa aqua cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags dbus doc fcitx4 gles1 gles2 haptic ibus jack +joystick kms libsamplerate nas opengl oss pipewire pulseaudio sndio +sound static-libs +threads udev +video video_cards_vc4 vulkan wayland X xinerama xscreensaver"
 REQUIRED_USE="
 	alsa? ( sound )
 	fcitx4? ( dbus )
@@ -23,7 +23,6 @@ REQUIRED_USE="
 	haptic? ( joystick )
 	ibus? ( dbus )
 	jack? ( sound )
-	libusb? ( hidapi )
 	nas? ( sound )
 	opengl? ( video )
 	pulseaudio? ( sound )
@@ -39,7 +38,6 @@ CDEPEND="
 	fcitx4? ( app-i18n/fcitx:4 )
 	gles1? ( media-libs/mesa[${MULTILIB_USEDEP},gles1] )
 	gles2? ( >=media-libs/mesa-9.1.6[${MULTILIB_USEDEP},gles2] )
-	hidapi? ( dev-libs/hidapi[${MULTILIB_USEDEP}] )
 	ibus? ( app-i18n/ibus )
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
 	kms? (
@@ -47,7 +45,6 @@ CDEPEND="
 		>=media-libs/mesa-9.0.0[${MULTILIB_USEDEP},gbm]
 	)
 	libsamplerate? ( media-libs/libsamplerate[${MULTILIB_USEDEP}] )
-	libusb? ( virtual/libusb:1[${MULTILIB_USEDEP}] )
 	nas? (
 		>=media-libs/nas-1.9.4[${MULTILIB_USEDEP}]
 		>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}]
@@ -153,8 +150,6 @@ multilib_src_configure() {
 		$(use_enable alsa)
 		--disable-alsa-shared
 		$(use_enable jack)
-		$(use_enable hidapi)
-		$(use_enable libusb hidapi-libusb)
 		--disable-jack-shared
 		--disable-esd
 		$(use_enable pipewire)
