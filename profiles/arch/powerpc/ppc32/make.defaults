@@ -17,10 +17,6 @@ FCFLAGS="${CFLAGS}"
 # Defaults for video drivers
 VIDEO_CARDS="fbdev glint mga nv r128 radeon"
 
-# Diego Pettenò <flameeyes@gentoo.org> (2006-12-06)
-# Defaults for PowerPC sound driver
-ALSA_CARDS="aoa aoa-fabric-layout aoa-onyx aoa-soundbus aoa-soundbus-i2s aoa-tas aoa-toonie powermac usb-audio via82xx"
-
 # Michał Górny <mgorny@gentoo.org> (2014-06-27)
 # Multilib-related setup for compatibility with future multilib.
 ABI="ppc"
