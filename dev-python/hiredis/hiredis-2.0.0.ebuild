@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86"
 IUSE="system-libs"
 
-DEPEND="system-libs? ( dev-libs/hiredis:0/1.0.0 )"
+DEPEND="system-libs? ( >=dev-libs/hiredis-1.0.0:= )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
