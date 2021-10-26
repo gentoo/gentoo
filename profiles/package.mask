@@ -507,7 +507,6 @@ virtual/httpd-php:8.1
 # No reverse dependencies.
 # Removal on 2021-10-25.
 dev-python/theano
-dev-python/theano-pymc
 
 # Mart Raudsepp <leio@gentoo.org> (2021-09-24)
 # Experimental split media-sound/pulseaudio packages, bug #536780.
