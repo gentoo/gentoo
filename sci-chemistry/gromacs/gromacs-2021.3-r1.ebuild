@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
@@ -24,7 +24,7 @@ else
 		http://ftp.gromacs.org/gromacs/${PN}-${PV/_/-}.tar.gz
 		doc? ( https://ftp.gromacs.org/manual/manual-${PV/_/-}.pdf )
 		test? ( http://ftp.gromacs.org/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
-	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="amd64 arm ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 ACCE_IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_fma4 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_avx512f cpu_flags_arm_neon"
@@ -48,10 +48,10 @@ CDEPEND="
 	blas? ( virtual/blas )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.14[profiler] )
 	opencl? ( virtual/opencl )
-	fftw? ( sci-libs/fftw:3.0 )
+	fftw? ( sci-libs/fftw:3.0= )
 	hwloc? ( sys-apps/hwloc:= )
 	lapack? ( virtual/lapack )
-	lmfit? ( sci-libs/lmfit )
+	lmfit? ( sci-libs/lmfit:= )
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi )
 	${PYTHON_DEPS}
@@ -87,11 +87,6 @@ RESTRICT="!test? ( test )"
 if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
 fi
-
-PATCHES=(
-	"${FILESDIR}/${PN}-2020-pytest.patch"
-	"${FILESDIR}/${PN}-2021-nblib.patch"
-)
 
 pkg_pretend() {
 	[[ $(gcc-version) == "4.1" ]] && die "gcc 4.1 is not supported by gromacs"
@@ -166,17 +161,18 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs_pre=( ) extra fft_opts=( )
+	local acce="AUTO"
 
 	if use custom-cflags; then
 		#go from slowest to fastest acceleration
-		local acce="None"
+		acce="None"
 		if (use amd64 || use x86); then
-		use cpu_flags_x86_sse2 && acce="SSE2"
-		use cpu_flags_x86_sse4_1 && acce="SSE4.1"
-		use cpu_flags_x86_fma4 && acce="AVX_128_FMA"
-		use cpu_flags_x86_avx && acce="AVX_256"
-		use cpu_flags_x86_avx2 && acce="AVX2_256"
-		use cpu_flags_x86_avx512f && acce="AVX_512"
+			use cpu_flags_x86_sse2 && acce="SSE2"
+			use cpu_flags_x86_sse4_1 && acce="SSE4.1"
+			use cpu_flags_x86_fma4 && acce="AVX_128_FMA"
+			use cpu_flags_x86_avx && acce="AVX_256"
+			use cpu_flags_x86_avx2 && acce="AVX2_256"
+			use cpu_flags_x86_avx512f && acce="AVX_512"
 		elif (use arm); then
 			use cpu_flags_arm_neon && acce="ARM_NEON"
 		elif (use arm64); then
