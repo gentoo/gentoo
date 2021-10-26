@@ -17,7 +17,7 @@ IUSE="hugepages +json systemd +uuid"
 
 RDEPEND="json? ( dev-libs/json-c:= )
 	hugepages? ( sys-libs/libhugetlbfs )
-	systemd? ( sys-apps/systemd )
+	systemd? ( sys-apps/systemd:= )
 	uuid? ( sys-apps/util-linux:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
