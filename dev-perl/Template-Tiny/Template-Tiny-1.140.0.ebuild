@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Template Toolkit reimplemented in as little code as possible"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
