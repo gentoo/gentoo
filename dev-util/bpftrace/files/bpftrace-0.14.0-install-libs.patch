@@ -115,7 +115,7 @@ index 76bb217e..4ad0f626 100644
 +
 +install(TARGETS bpftracearch LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 diff --git a/src/ast/CMakeLists.txt b/src/ast/CMakeLists.txt
-index 014295cd..b038aa18 100644
+index 014295cd..c35f6ac6 100644
 --- a/src/ast/CMakeLists.txt
 +++ b/src/ast/CMakeLists.txt
 @@ -1,6 +1,6 @@
@@ -126,13 +126,14 @@ index 014295cd..b038aa18 100644
    async_event_types.cpp
    attachpoint_parser.cpp
    int_parser.cpp
-@@ -20,11 +20,12 @@ add_library(ast
+@@ -20,11 +20,13 @@ add_library(ast
  target_include_directories(ast_defs PUBLIC ${CMAKE_SOURCE_DIR}/src)
  target_include_directories(ast_defs PUBLIC ${CMAKE_SOURCE_DIR}/src/ast)
  target_include_directories(ast_defs PUBLIC ${CMAKE_BINARY_DIR})
 -target_link_libraries(ast ast_defs arch bpforc parser)
 +target_link_libraries(bpftraceast ast_defs bpftracearch bpforc bpftraceparser)
 +install(TARGETS ast_defs LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
++install(TARGETS bpftraceast LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
  
 -add_dependencies(ast_defs parser)
 +add_dependencies(ast_defs bpftraceparser)
@@ -142,7 +143,7 @@ index 014295cd..b038aa18 100644
  
  if (STATIC_LINKING)
    set(clang_libs
-@@ -55,11 +56,11 @@ if (STATIC_LINKING)
+@@ -55,11 +57,11 @@ if (STATIC_LINKING)
  
  
    if(EMBED_USE_LLVM)
@@ -157,7 +158,7 @@ index 014295cd..b038aa18 100644
    endif()
  
    if(STATIC_LIBC)
-@@ -69,13 +70,13 @@ if (STATIC_LINKING)
+@@ -69,13 +71,13 @@ if (STATIC_LINKING)
  else()
    find_library(found_LLVM LLVM HINTS ${LLVM_LIBRARY_DIRS})
    if(found_LLVM)
