@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_7 python3_8 python3_9 )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml"
 
 inherit distutils-r1
@@ -11,6 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Command line client for Amazon S3"
 HOMEPAGE="https://s3tools.org/s3cmd"
 SRC_URI="mirror://sourceforge/s3tools/${P/_/-}.tar.gz"
+S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,11 +25,7 @@ RDEPEND="
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	"
 
-S="${WORKDIR}/${P/_/-}"
-
-PATCHES=( )
-
 src_install() {
 	distutils-r1_src_install
-	rm -rf "${ED}/usr/share/doc/packages"
+	rm -r "${ED}/usr/share/doc/packages" || die
 }
