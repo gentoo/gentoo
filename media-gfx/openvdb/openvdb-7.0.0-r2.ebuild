@@ -32,7 +32,7 @@ RDEPEND="
 	media-libs/glfw
 	media-libs/glu
 	media-libs/ilmbase:=
-	media-libs/openexr:=
+	media-libs/openexr:0=
 	sys-libs/zlib:=
 	x11-libs/libXcursor
 	x11-libs/libXi
