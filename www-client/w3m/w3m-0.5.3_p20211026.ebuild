@@ -5,7 +5,7 @@ EAPI=8
 
 inherit autotools prefix toolchain-funcs
 
-MY_COMMIT="c87a5476de69c1b2e2170275ed11e2093fcc63f1"
+MY_COMMIT="2b59b9eb0af758d6c7f4886933fb494699d28dc6"
 
 DESCRIPTION="Text based WWW browser, supports tables and frames"
 HOMEPAGE="https://github.com/tats/w3m"
