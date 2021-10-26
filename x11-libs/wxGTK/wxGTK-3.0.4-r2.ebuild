@@ -11,7 +11,7 @@ SRC_URI="https://github.com/wxWidgets/wxWidgets/releases/download/v${PV}/wxWidge
 	https://dev.gentoo.org/~leio/distfiles/wxGTK-3.0.4_p20190713.tar.xz
 	doc? ( https://github.com/wxWidgets/wxWidgets/releases/download/v${PV}/wxWidgets-${PV}-docs-html.tar.bz2 )"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+X doc debug gstreamer libnotify opengl sdl tiff"
 
 SLOT="3.0"
