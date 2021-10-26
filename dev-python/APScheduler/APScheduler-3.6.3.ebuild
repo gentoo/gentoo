@@ -61,5 +61,8 @@ python_prepare_all() {
 		sed -Ee "s:$(echo "${test_failures[@]}"| sed 's: :|:g'):_\\0:" -i "${REPLY}" || die
 	done < <(grep -rElZ "$(echo "${test_failures[@]}"| sed 's: :|:g')" "${S}")
 
+	# suppress setuptools warning #797751
+	sed -e 's|^upload-dir|upload_dir|' -i setup.cfg || die
+
 	distutils-r1_python_prepare_all
 }
