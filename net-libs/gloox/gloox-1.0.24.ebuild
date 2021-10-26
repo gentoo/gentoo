@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.0.24-musl.patch"
 	"${FILESDIR}/${PN}-1.0.24-Makefile.patch"
 	"${FILESDIR}/${PN}-1.0.24-slibtool.patch"
+	"${FILESDIR}/${PN}-1.0.24-pthread-link.patch"
 )
 
 src_prepare() {
