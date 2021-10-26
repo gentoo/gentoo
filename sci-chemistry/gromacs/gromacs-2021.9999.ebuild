@@ -51,7 +51,7 @@ CDEPEND="
 	fftw? ( sci-libs/fftw:3.0 )
 	hwloc? ( sys-apps/hwloc:= )
 	lapack? ( virtual/lapack )
-	lmfit? ( sci-libs/lmfit )
+	lmfit? ( sci-libs/lmfit:= )
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi )
 	${PYTHON_DEPS}
