@@ -13,7 +13,7 @@ SRC_URI="http://tt.sakura.ne.jp/~amura/archives/${PN}/${MY_P}.tar.gz"
 
 LICENSE="Emacs"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ppc ~riscv x86"
 
 RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}"
