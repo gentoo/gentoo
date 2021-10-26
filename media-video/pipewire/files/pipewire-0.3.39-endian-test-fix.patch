@@ -1,0 +1,31 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/5dfc3494dc4635918e74b9f3d717a39a74b28554.patch
+
+From 5dfc3494dc4635918e74b9f3d717a39a74b28554 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Mon, 25 Oct 2021 16:15:17 +0200
+Subject: [PATCH] map: use uintptr_t for the next pointer
+
+This aligns the low bits of the next field with the low bits of the
+pointer on big endian cpus.
+
+Fixes #1747
+---
+ src/pipewire/map.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pipewire/map.h b/src/pipewire/map.h
+index f47dfa6b3..1867fa4d3 100644
+--- a/src/pipewire/map.h
++++ b/src/pipewire/map.h
+@@ -74,7 +74,7 @@ extern "C" {
+  * first item to get re-used on the next insert.
+  */
+ union pw_map_item {
+-	uint32_t next;	/* next free index */
++	uintptr_t next;	/* next free index */
+ 	void *data;	/* data of this item, must be an even address */
+ };
+ 
+-- 
+GitLab
+
