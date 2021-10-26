@@ -120,6 +120,7 @@ DEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.5.0-fno-common.patch"
+	"${FILESDIR}/${PN}-5.5.0-cpus-undefined.patch"
 )
 
 src_configure() {
