@@ -13,7 +13,7 @@ DESCRIPTION="Perl bindings for wxGTK"
 HOMEPAGE="http://wxperl.sourceforge.net/ https://metacpan.org/release/Wx"
 
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
