@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 RELEASE_COMMIT="303080b54859d0fc55ce693902c95f9620876c1b"
 
@@ -12,6 +12,7 @@ inherit autotools python-single-r1 vala
 DESCRIPTION="File syncing and sharing software with file encryption and group sharing"
 HOMEPAGE="https://www.seafile.com/ https://github.com/haiwen/seafile/"
 SRC_URI="https://github.com/haiwen/${PN}/archive/${RELEASE_COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${RELEASE_COMMIT}"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
@@ -33,8 +34,6 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}
 	$(vala_depend)"
-
-S="${WORKDIR}/${PN}-${RELEASE_COMMIT}"
 
 src_prepare() {
 	default
