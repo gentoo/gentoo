@@ -16,10 +16,13 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 # Making X optional fails when disabled: https://bugs.gentoo.org/636832
-IUSE="alsa debug mad pulseaudio vorbis sox"
+IUSE="alsa debug jack mad pulseaudio vorbis sox"
+
+REQUIRED_USE="|| ( alsa jack pulseaudio )"
 
 RDEPEND="
 	alsa? ( media-libs/alsa-lib )
+	jack? ( virtual/jack )
 	mad? ( media-sound/madplay )
 	pulseaudio? ( media-sound/pulseaudio )
 	vorbis? ( media-libs/libvorbis )
@@ -54,6 +57,7 @@ src_configure() {
 		--enable-x11 \
 		$(use_enable alsa) \
 		$(use_enable debug) \
+		$(use_enable jack) \
 		$(use_enable mad) \
 		$(use_enable pulseaudio pulse) \
 		$(use_enable vorbis) \
