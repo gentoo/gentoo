@@ -40,3 +40,10 @@ EPYTEST_DESELECT=(
 	tests/test_jobstores.py::test_repr_redisjobstore
 	tests/test_jobstores.py::test_repr_zookeeperjobstore
 )
+
+python_prepare_all() {
+	# suppress setuptools warning #797751
+	sed -e 's|^upload-dir|upload_dir|' -i setup.cfg || die
+
+	distutils-r1_python_prepare_all
+}
