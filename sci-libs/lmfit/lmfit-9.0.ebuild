@@ -12,7 +12,7 @@ SRC_URI="https://jugit.fz-juelich.de/mlz/lmfit/-/archive/v${PV}/${MY_P}.tar.gz -
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2"
-SLOT="0"
+SLOT="0/9"
 KEYWORDS="~amd64 ~arm ~x86"
 
 PATCHES=(
