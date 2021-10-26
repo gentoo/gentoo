@@ -42,4 +42,9 @@ BDEPEND="
 	)
 "
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# requires pip, does not make much sense for the users
+	jsonschema/tests/test_cli.py::TestCLIIntegration::test_license
+)
