@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Extremely light weight SQLite-specific schema migration"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-perl/Params-Util-0.370.0
