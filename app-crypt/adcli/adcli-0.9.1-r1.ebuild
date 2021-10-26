@@ -25,6 +25,10 @@ BDEPEND="
 		dev-libs/libxslt
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-glibc-2.34-resolv.patch
+)
+
 src_prepare() {
 	default
 	eautoreconf
