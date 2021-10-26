@@ -12,4 +12,4 @@ DESCRIPTION="Efficiently parse exuberant ctags files"
 # contains readtags.c from ctags
 LICENSE="${LICENSE} public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
