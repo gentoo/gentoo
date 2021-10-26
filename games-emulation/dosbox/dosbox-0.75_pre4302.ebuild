@@ -54,7 +54,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	use glide && eapply "${DISTDIR}"/dosbox_glide-${GLIDE_PATCH}.diff
+	use glide && eapply "${DISTDIR}"/dosbox_glide-${GLIDE_PATCH}.diff "${FILESDIR}"/${PN}-0.75-glide-libdl.patch
 	default
 	eautoreconf
 }
