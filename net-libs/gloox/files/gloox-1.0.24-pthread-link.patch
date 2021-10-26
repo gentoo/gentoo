@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/772992
+
+From: Sam James <sam@gentoo.org>
+Date: Tue, 26 Oct 2021 06:44:07 +0100
+Subject: [PATCH] Link against pthread for libgloox
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -47,7 +47,7 @@ libgloox_la_SOURCES = jid.cpp parser.cpp connectiontcpclient.cpp clientbase.cpp
+                         iodata.cpp
+ 
+ libgloox_la_LDFLAGS = -version-info 18:0:0 -Wl,--no-undefined -Wl,--no-allow-shlib-undefined
+-libgloox_la_LIBADD =
++libgloox_la_LIBADD = @PTHREAD_LIBS@
+ libgloox_la_CFLAGS = $(CPPFLAGS)
+ 
+ libglooxincludedir = $(includedir)/gloox
+
