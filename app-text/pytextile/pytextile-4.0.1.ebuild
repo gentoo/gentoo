@@ -14,7 +14,7 @@ SRC_URI="https://github.com/textile/python-textile/archive/${PV}.tar.gz -> ${P}.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	dev-python/html5lib[${PYTHON_USEDEP}]
