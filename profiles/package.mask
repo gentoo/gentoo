@@ -49,12 +49,6 @@
 dev-util/mutrace
 
 # Sam James <sam@gentoo.org> (2021-10-25)
-# Fails to build with glibc-2.34 and appears to be obsolete. No
-# reverse dependencies.
-# bug #806079. Removal on 2021-11-25.
-sys-libs/libhugetlbfs
-
-# Sam James <sam@gentoo.org> (2021-10-25)
 # Fails to build with glibc-2.33 and no activity upstream; seems like
 # a new fork should be packaged.
 # bug #775962. Removal on 2021-11-25.
