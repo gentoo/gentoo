@@ -41,10 +41,9 @@ my_src_configure() {
 		--disable-deb \
 		--disable-fedabipkgdiff \
 		--disable-rpm \
+		--disable-rpm415 \
 		--disable-static \
-		--disable-zip-archive \
 		--enable-bash-completion \
-		--enable-cxx11 \
 		--enable-python3 \
 		$(use_enable doc apidoc) \
 		$(use_enable doc manual)
