@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Parse error messages from the perl interpreter"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 RDEPEND="
 	virtual/perl-Carp
