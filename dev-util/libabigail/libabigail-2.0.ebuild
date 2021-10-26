@@ -11,7 +11,7 @@ DESCRIPTION="Suite of tools for checking ABI differences between ELF objects"
 HOMEPAGE="https://sourceware.org/libabigail/"
 SRC_URI="https://mirrors.kernel.org/sourceware/libabigail/${P}.tar.gz"
 
-LICENSE="LGPL-3+"
+LICENSE="Apache-2.0-with-LLVM-exceptions"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
 IUSE="doc test"
