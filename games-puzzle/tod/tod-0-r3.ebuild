@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Tetanus On Drugs simulates playing Tetris under the influence of drugs"
 HOMEPAGE="http://www.pineight.com/tod/"
@@ -22,11 +22,26 @@ S="${WORKDIR}"
 
 src_prepare() {
 	default
+
 	eapply "${FILESDIR}"/${P}-makefile.patch
 	eapply "${FILESDIR}"/${P}-allegro.patch
+
 	sed -i \
-		-e "s:idltd\.dat:/usr/share/${PN}/idltd.dat:" \
+		-e '/CC = gcc/d' \
+		-e 's/gcc/$(CC)/' \
+		-e 's/$(CC) $(CFLAGS)/& $(CPPFLAGS)/' \
+		-e 's/$(LDFLAGS)/$(CFLAGS) $(CPPFLAGS) &/' \
+		makefile || die
+
+	sed -i \
+		-e "s:idltd\.dat:${EPREFIX}/usr/share/${PN}/idltd.dat:" \
 		rec.c || die
+}
+
+src_compile() {
+	tc-export CC
+
+	emake
 }
 
 src_install() {
