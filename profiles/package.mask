@@ -527,13 +527,6 @@ media-sound/pulseaudio-daemon
 # Incompatible with c++17 abseil-cpp, no in-tree consumers yet
 media-libs/webrtc-audio-processing:1
 
-# Michał Górny <mgorny@gentoo.org> (2021-09-23)
-# Ancient version from 2016 that collides with dev-python/pyjwt.
-# Never bumped by the maintainer.  The only revdep turned out to be
-# false positive.
-# Removal on 2021-10-23.  Bug #814449.
-dev-python/python-jwt
-
 # Alfredo Tupone <tupone@gentoo.org> (2021-09-19)
 # Mask gnat-gpl-2018 and gnat-gpl-2019. Please switch
 # to a fresher gnat-gpl branch.
