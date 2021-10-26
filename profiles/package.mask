@@ -492,11 +492,6 @@ dev-ml/ppx_metaquot
 # VM image data corruption bug, causing I/O errors in VMs. Bug #815379
 =app-emulation/qemu-6.1.0
 
-# Joonas Niilola <juippis@gentoo.org> (2021-09-26)
-# A library without revdeps, EAPI-5. #776901
-# Removal in ~30 days.
-media-libs/libyami
-
 # Brian Evans <grknight@gentoo.org> (2021-09-26)
 # Mask for 8.1 RC
 dev-lang/php:8.1
