@@ -105,7 +105,7 @@ SRC_URI="
 
 LICENSE="MIT Apache-2.0 BSD MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 BDEPEND="dev-vcs/git"
 
