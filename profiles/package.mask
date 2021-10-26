@@ -502,12 +502,6 @@ media-libs/libyami
 dev-lang/php:8.1
 virtual/httpd-php:8.1
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-09-25)
-# Upstream renamed the Theano project and continued as dev-python/aesara.
-# No reverse dependencies.
-# Removal on 2021-10-25.
-dev-python/theano
-
 # Mart Raudsepp <leio@gentoo.org> (2021-09-24)
 # Experimental split media-sound/pulseaudio packages, bug #536780.
 media-libs/libpulse
