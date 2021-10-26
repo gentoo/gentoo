@@ -9,13 +9,13 @@ DESCRIPTION="tools for communicating with HackRF SDR platform"
 HOMEPAGE="http://greatscottgadgets.com/hackrf/"
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/mossmann/hackrf.git"
+	EGIT_REPO_URI="https://github.com/greatscottgadgets/hackrf.git"
 	inherit git-r3
 	EGIT_CHECKOUT_DIR="${WORKDIR}/hackrf"
 	S="${WORKDIR}/hackrf/host/hackrf-tools"
 else
 	S="${WORKDIR}/hackrf-${PV}/host/hackrf-tools"
-	SRC_URI="https://github.com/mossmann/hackrf/releases/download/v${PV}/hackrf-${PV}.tar.xz"
+	SRC_URI="https://github.com/greatscottgadgets/hackrf/releases/download/v${PV}/hackrf-${PV}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~ppc ~x86"
 fi
 
