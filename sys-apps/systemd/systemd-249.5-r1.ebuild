@@ -227,6 +227,8 @@ src_prepare() {
 	# Add local patches here
 	PATCHES+=(
 		"${FILESDIR}/249-libudev-static.patch"
+		"${FILESDIR}/249.5-coredumpctl.patch"
+		"${FILESDIR}/249.5-revert-unit-start-rate-limiting.patch"
 	)
 
 	if ! use vanilla; then
