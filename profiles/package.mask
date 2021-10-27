@@ -667,14 +667,6 @@ net-libs/libsoup:3.0
 # bug #772998
 ~net-misc/openntpd-6.8_p1
 
-# Sam James <sam@gentoo.org> (2021-03-01)
-# Mask new proj 8.x as it removes deprecated
-# API. Likely to break several consumers
-# which haven't yet ported.
-# bug #729098
->=sci-libs/proj-8.0.0
->=sci-geosciences/qmapshack-1.16
-
 # Lars Wendler <polynomial-c@gentoo.org> (2021-02-15)
 # Mask development versions now that they were bumped...
 =net-misc/kea-1.9*
