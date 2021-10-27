@@ -25,7 +25,7 @@ RDEPEND="X? (
 	ncurses? ( sys-libs/ncurses:=[unicode(+)] )
 	sdl? (
 		media-libs/libsdl2[video,X]
-		media-libs/sdl2-image
+		media-libs/sdl2-image[png]
 		media-libs/sdl2-ttf
 		sound? (
 			media-libs/libsdl2[sound]
