@@ -63,7 +63,7 @@ src_test() {
 
 	testing() {
 		local -x XDG_CACHE_HOME="${T}/${EPYTHON}"
-		meson_src_test || die "test failed for ${EPYTHON}"
+		meson_src_test --timeout-multiplier 3 || die "test failed for ${EPYTHON}"
 	}
 	virtx python_foreach_impl testing
 }
