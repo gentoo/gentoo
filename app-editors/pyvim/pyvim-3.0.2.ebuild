@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 
 RDEPEND="
 	app-eselect/eselect-vi
