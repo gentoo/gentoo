@@ -1,0 +1,35 @@
+From af48f6fec9a7b6374d4153c5db894d4a1f349645 Mon Sep 17 00:00:00 2001
+Message-Id: <af48f6fec9a7b6374d4153c5db894d4a1f349645.1635327406.git.mkletzan@redhat.com>
+From: Jonas Jelten <jj@sft.mx>
+Date: Sat, 2 Feb 2019 20:53:37 +0100
+Subject: [PATCH] db_gdbm: fix gdbm_errno overlay from gdbm_close
+
+`gdbm_close` also sets gdbm_errno since version 1.17.
+This leads to a problem in `libsasl` as the `gdbm_close` incovation overlays
+the `gdbm_errno` value which is then later used for the error handling.
+
+Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
+---
+ sasldb/db_gdbm.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/sasldb/db_gdbm.c b/sasldb/db_gdbm.c
+index ee56a6bf8516..c908808e04a1 100644
+--- a/sasldb/db_gdbm.c
++++ b/sasldb/db_gdbm.c
+@@ -107,9 +107,11 @@ int _sasldb_getdata(const sasl_utils_t *utils,
+   gkey.dptr = key;
+   gkey.dsize = key_len;
+   gvalue = gdbm_fetch(db, gkey);
++  int fetch_errno = gdbm_errno;
++
+   gdbm_close(db);
+   if (! gvalue.dptr) {
+-      if (gdbm_errno == GDBM_ITEM_NOT_FOUND) {
++      if (fetch_errno == GDBM_ITEM_NOT_FOUND) {
+           utils->seterror(conn, SASL_NOLOG,
+ 			  "user: %s@%s property: %s not found in %s",
+ 			  authid, realm, propName, path);
+-- 
+2.33.1
+
