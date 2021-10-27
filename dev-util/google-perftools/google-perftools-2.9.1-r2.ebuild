@@ -4,7 +4,7 @@
 EAPI=7
 
 MY_P="gperftools-${PV}"
-inherit toolchain-funcs flag-o-matic autotools vcs-snapshot multilib-minimal
+inherit flag-o-matic autotools vcs-snapshot multilib-minimal
 
 DESCRIPTION="Fast, multi-threaded malloc() and nifty performance analysis tools"
 HOMEPAGE="https://github.com/gperftools/gperftools"
@@ -64,12 +64,17 @@ multilib_src_configure() {
 	use optimisememory && append-cppflags -DTCMALLOC_SMALL_BUT_SLOW
 	append-flags -fno-strict-aliasing -fno-omit-frame-pointer
 
-	local myconfargs=(
+	local myeconfargs=(
 		--enable-shared
 		$(use_enable static-libs static)
 		$(use_enable debug debugalloc)
-		$(if [[ ${ABI} == x32 ]]; then printf "--enable-minimal\n" else use_enable minimal; fi)
 	)
+
+	if [[ ${ABI} == x32 ]]; then
+		myeconfargs+=( --enable-minimal )
+	else
+		myeconfargs+=( $(use_enable minimal) )
+	fi
 
 	if use arm64 || use s390; then
 		# Use the same arches for disabling TLS (thread local storage)
@@ -78,7 +83,7 @@ multilib_src_configure() {
 		myeconfargs+=( --disable-general-dynamic-tls )
 	fi
 
-	econf "${myconfargs[@]}"
+	econf "${myeconfargs[@]}"
 }
 
 src_test() {
