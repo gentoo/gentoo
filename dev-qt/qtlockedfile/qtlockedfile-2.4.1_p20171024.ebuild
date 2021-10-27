@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}/${PN}"
 
 LICENSE="|| ( LGPL-2.1 GPL-3 )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
 IUSE="doc"
 
 DEPEND="dev-qt/qtcore:5"
