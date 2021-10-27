@@ -1,39 +1,23 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+inherit git-r3
 
-inherit python-any-r1 xdg git-r3
-
-DESCRIPTION="Terminfo for kitty, an OpenGL-based terminal emulator"
-HOMEPAGE="https://github.com/kovidgoyal/kitty"
+DESCRIPTION="Terminfo for kitty, a GPU-based terminal emulator"
+HOMEPAGE="https://sw.kovidgoyal.net/kitty/"
 EGIT_REPO_URI="https://github.com/kovidgoyal/kitty.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="debug"
+RESTRICT="test" # intended to be ran on the full kitty package
 
-DEPEND="${PYTHON_DEPS}"
+BDEPEND="sys-libs/ncurses"
 
-PATCHES=(
-	"${FILESDIR}"/kitty-terminfo-setup-0.20.1.patch
-)
-
-# kitty-terminfo is a split package from kitty that only installs the terminfo
-# file. As tests are designed to be run with the whole package compiled they
-# would fail in this case.
-RESTRICT="test"
-
-src_compile() {
-	"${EPYTHON}" setup.py \
-		--verbose $(usex debug --debug "") \
-		--libdir-name $(get_libdir) \
-		linux-terminfo || die "Failed to compile kitty."
-}
+src_compile() { :; }
 
 src_install() {
-	insinto /usr
-	doins -r linux-package/*
+	dodir /usr/share/terminfo
+	tic -xo "${ED}"/usr/share/terminfo terminfo/kitty.terminfo || die
 }
