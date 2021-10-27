@@ -79,7 +79,7 @@ COMMON_DEPEND="
 			dev-python/numpy[${PYTHON_USEDEP}]
 			dev-python/owslib[${PYTHON_USEDEP}]
 			dev-python/pygments[${PYTHON_USEDEP}]
-			dev-python/PyQt5[designer,network,positioning,sql,svg,${PYTHON_USEDEP}]
+			dev-python/PyQt5[designer,network,positioning,printsupport,sql,svg,widgets,${PYTHON_USEDEP}]
 			dev-python/python-dateutil[${PYTHON_USEDEP}]
 			dev-python/pytz[${PYTHON_USEDEP}]
 			dev-python/pyyaml[${PYTHON_USEDEP}]
