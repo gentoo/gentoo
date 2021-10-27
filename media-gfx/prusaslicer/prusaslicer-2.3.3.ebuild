@@ -60,6 +60,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.0-miniz-zip-header.patch"
 )
 
+src_prepare() {
+	sed -i -e 's/PrusaSlicer-${SLIC3R_VERSION}+UNKNOWN/PrusaSlicer-${SLIC3R_VERSION}+Gentoo/g' version.inc || die
+	cmake_src_prepare
+}
+
 src_configure() {
 	use gui && setup-wxwidgets
 
