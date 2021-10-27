@@ -9,7 +9,7 @@ SRC_URI="ftp://ftp.invisible-island.net/vile/current/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~ia64 ppc ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="perl"
 
 RDEPEND=">=sys-libs/ncurses-5.2:0=
