@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,7 @@ DEPEND="app-arch/bzip2
 	dev-qt/qtsvg:5
 	media-libs/libpng:*
 	sci-libs/libnova
-	sci-libs/proj
+	<sci-libs/proj-8:=
 	sys-libs/zlib
 	x11-libs/qwt:6[qt5(+)]"
 
