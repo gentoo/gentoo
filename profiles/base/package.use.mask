@@ -213,10 +213,6 @@ dev-libs/efl efl-one
 # The respective dependencies are masked for removal.
 app-metrics/collectd collectd_plugins_onewire
 
-# Michał Górny <mgorny@gentoo.org> (2020-08-22)
-# These flags depend on packages masked for removal due to py2.
-sci-geosciences/qgis grass
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
 # Only supported on 64bit systems, see storage/columnstore/CMakeLists.txt
 dev-db/mariadb columnstore
