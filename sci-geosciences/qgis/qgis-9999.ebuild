@@ -43,7 +43,6 @@ COMMON_DEPEND="
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtpositioning:5
 	dev-qt/qtprintsupport:5
-	dev-qt/qtserialport:5
 	dev-qt/qtsvg:5
 	dev-qt/qtsql:5
 	dev-qt/qtwidgets:5
