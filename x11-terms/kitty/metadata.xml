@@ -11,12 +11,10 @@
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
-		<name>Gentoo Proxy Maintainers Project</name>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">kovidgoyal/kitty</remote-id>
-		<bugs-to>https://github.com/kovidgoyal/kitty/issues</bugs-to>
-		<doc>https://sw.kovidgoyal.net/kitty</doc>
 		<changelog>https://sw.kovidgoyal.net/kitty/changelog</changelog>
 	</upstream>
 </pkgmetadata>
