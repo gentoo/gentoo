@@ -9,8 +9,8 @@ MY_PN=${PN/-/_}
 MY_P=${MY_PN}_${PV}
 
 DESCRIPTION="The Linux Audio Developer's Simple Plugin API"
-HOMEPAGE="http://www.ladspa.org/"
-SRC_URI="http://www.ladspa.org/download/${MY_P}.tgz"
+HOMEPAGE="https://www.ladspa.org/"
+SRC_URI="https://www.ladspa.org/download/${MY_P}.tgz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
