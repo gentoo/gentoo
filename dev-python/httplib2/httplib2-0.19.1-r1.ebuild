@@ -17,7 +17,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~am
 
 RDEPEND="
 	app-misc/ca-certificates
-	dev-python/pyparsing[${PYTHON_USEDEP}]"
+	<dev-python/pyparsing-3[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
