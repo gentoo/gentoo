@@ -70,10 +70,18 @@ index 47a050e2..1bbcf882 100644
  if (LIBBPF_BTF_DUMP_FOUND)
    target_include_directories(runtime PUBLIC ${LIBBPF_INCLUDE_DIRS})
 diff --git a/src/aot/CMakeLists.txt b/src/aot/CMakeLists.txt
-index 291d53f2..308691ee 100644
+index 291d53f2..22944ddc 100644
 --- a/src/aot/CMakeLists.txt
 +++ b/src/aot/CMakeLists.txt
-@@ -10,7 +10,7 @@ if(NOT LIBBCC_BPF_CONTAINS_RUNTIME)
+@@ -2,6 +2,7 @@ add_library(aot aot.cpp)
+ target_include_directories(aot PUBLIC ${CMAKE_SOURCE_DIR}/src)
+ target_include_directories(aot PUBLIC ${CMAKE_BINARY_DIR})
+ target_compile_definitions(aot PRIVATE ${BPFTRACE_FLAGS})
++install(TARGETS aot LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ # Only build aotrt if supported bcc is used
+ # (https://github.com/iovisor/bcc/commit/719191867a25ce07dc96f7faf9b8ccedadc7ec44)
+@@ -10,7 +11,7 @@ if(NOT LIBBCC_BPF_CONTAINS_RUNTIME)
  endif()
  
  add_executable(bpftrace-aotrt aot_main.cpp)
@@ -82,11 +90,6 @@ index 291d53f2..308691ee 100644
  install(TARGETS bpftrace-aotrt DESTINATION ${CMAKE_INSTALL_BINDIR})
  
  # Linking
-@@ -27,3 +27,4 @@ if(BUILD_ASAN)
-   target_compile_options(bpftrace-aotrt PUBLIC "-fsanitize=address")
-   target_link_options(bpftrace-aotrt PUBLIC "-fsanitize=address")
- endif()
-+install(TARGETS aot LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 diff --git a/src/arch/CMakeLists.txt b/src/arch/CMakeLists.txt
 index 76bb217e..4ad0f626 100644
 --- a/src/arch/CMakeLists.txt
