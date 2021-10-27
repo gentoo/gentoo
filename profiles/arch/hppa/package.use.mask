@@ -106,10 +106,6 @@ dev-ruby/activesupport test
 dev-python/pyopengl test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
-# dev-python/pip not keyworded yet, bug #700918
-dev-python/virtualenv test
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
 # dev-libs/criterion not yet keyworded
 >=app-admin/syslog-ng-3.25 test
 
