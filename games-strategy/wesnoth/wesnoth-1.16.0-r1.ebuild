@@ -21,7 +21,7 @@ IUSE="dbus dedicated doc nls server"
 RDEPEND="
 	acct-group/wesnoth
 	acct-user/wesnoth
-	>=dev-libs/boost-1.50:=[nls,threads(+),icu]
+	dev-libs/boost:=[bzip2,context,icu,nls,threads(+)]
 	>=media-libs/libsdl2-2.0.4:0[joystick,video,X]
 	!dedicated? (
 		dev-libs/glib:2
@@ -46,8 +46,6 @@ BDEPEND="
 src_prepare() {
 	cmake_src_prepare
 
-	sed 's@ coroutine@@' -i CMakeLists.txt || die
-	sed '/Boost::coroutine/d' -i src/CMakeLists.txt || die
 	if ! use doc ; then
 		sed -i \
 			-e '/manual/d' \
@@ -100,7 +98,7 @@ src_install() {
 	local DOCS=( README.md changelog.md )
 	cmake_src_install
 	if use dedicated || use server; then
-		rmdir "${ED}/run/wesnothd" || die
+		rmdir "${ED}"/run{/wesnothd,} || die
 		newinitd "${FILESDIR}"/wesnothd.rc-r1 wesnothd
 	fi
 }
