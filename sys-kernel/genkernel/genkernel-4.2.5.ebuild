@@ -125,11 +125,6 @@ if [[ ${PV} == 9999* ]]; then
 	DEPEND="${DEPEND} app-text/asciidoc"
 fi
 
-PATCHES=(
-	"${FILESDIR}"/${P}-fix-dropbear-depend.patch
-	"${FILESDIR}"/${P}-modprobe-d-fix.patch
-)
-
 src_unpack() {
 	if [[ ${PV} == 9999* ]]; then
 		git-r3_src_unpack
