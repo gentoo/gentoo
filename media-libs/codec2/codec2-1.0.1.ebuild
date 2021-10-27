@@ -17,6 +17,10 @@ IUSE="examples test"
 # Not yet passing, but infrastructure added to run
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}/codec2-1.0.1-static-rx_filter_coh.patch"
+)
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DUNITTEST=$(usex test)
