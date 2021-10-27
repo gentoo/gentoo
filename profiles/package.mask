@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (2021-10-27)
+# Not maintained and not needed with recent pulseaudio and pipewire.
+# Removal in a month.
+media-sound/pulseaudio-modules-bt
+
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-26)
 # Fails to build with glibc-2.34, uses EAPI 5.
 # Removal on 2021-11-25. Bug #806577.
