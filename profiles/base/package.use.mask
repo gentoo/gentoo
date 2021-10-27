@@ -223,11 +223,6 @@ dev-db/mariadb columnstore
 # distutils_enable_sphinx to build docs.
 <=dev-python/lockfile-0.12.2-r2 doc
 
-# Michał Górny <mgorny@gentoo.org> (2020-07-27)
-# Requires Python 2 support in xapian-bindings which in turn require
-# Python 2 in dev-python/sphinx.
-<www-apps/roundup-3 xapian
-
 # Brian Dolbec <dolsen@gentoo.org> (2020-07-20)
 # Required dependencies are not yet in the Gentoo ebuild tree
 # Please file a bug if this feature is needed
