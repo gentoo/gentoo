@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer type="project">
-        <email>3dprint@gentoo.org</email>
-        <name>Gentoo 3D Printer Project</name>
-    </maintainer>
+    <!-- maintainer-needed -->
     <longdescription>
         Pooch manages your Python library's sample data files: it automatically downloads and stores them in a local directory,
         with support for versioning and corruption checks.
