@@ -21,5 +21,6 @@
 	</use>
 	<upstream>
 		<remote-id type="pypi">passlib</remote-id>
+		<remote-id type="heptapod">python-libs/passlib</remote-id>
 	</upstream>
 </pkgmetadata>
