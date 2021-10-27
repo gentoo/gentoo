@@ -1,5 +1,5 @@
---- Makefile.in.orig	Fri Sep 20 10:34:40 2002
-+++ Makefile.in	Fri Sep 20 10:34:56 2002
+--- a/Makefile.in	Fri Sep 20 10:34:40 2002
++++ b/Makefile.in	Fri Sep 20 10:34:56 2002
 @@ -19,7 +19,7 @@
  AR		=  @AR@
  RANLIB		=  @RANLIB@
