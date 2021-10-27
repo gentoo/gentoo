@@ -18,6 +18,7 @@ IUSE="agent amt archive bluetooth dell elogind flashrom gnutls gtk-doc gusb intr
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( elogind minimal systemd )
 	dell? ( uefi )
+	logitech? ( gusb )
 	minimal? ( !introspection )
 	spi? ( lzma )
 	synaptics? ( gnutls )
