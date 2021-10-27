@@ -93,7 +93,7 @@ RDEPEND="
 	rendering? (
 		media-libs/freeglut
 		media-libs/glew:=
-		sci-libs/proj:=
+		<sci-libs/proj-8:=
 		virtual/opengl
 		x11-libs/gl2ps
 	)
