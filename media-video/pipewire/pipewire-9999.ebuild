@@ -245,7 +245,7 @@ pkg_postinst() {
 		ewarn "PipeWire daemon startup has been moved to a launcher script!"
 		ewarn "Make sure that ${EROOT}/etc/pipewire/pipewire.conf either does not exist or no"
 		ewarn "longer is set to start a session manager or PulseAudio compatibility daemon (all"
-		ewarn "lines similar to `{ path = \"/usr/bin/pipewire*` should be commented out)"
+		ewarn "lines similar to '{ path = /usr/bin/pipewire*' should be commented out)"
 		ewarn
 		ewarn "Those manually starting /usr/bin/pipewire via .xinitrc or similar _must_ from"
 		ewarn "now on start ${EROOT}/usr/bin/gentoo-pipewire-launcher instead! It is highly"
