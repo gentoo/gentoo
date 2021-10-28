@@ -73,7 +73,6 @@ src_configure() {
 		--enable-missing-doc-warnings \
 		--disable-module-dirauth \
 		--enable-pic \
-		--disable-rust \
 		--disable-restart-debugging \
 		--disable-zstd-advanced-apis  \
 		$(use_enable man asciidoc) \
