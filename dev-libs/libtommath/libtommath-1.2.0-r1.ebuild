@@ -50,6 +50,7 @@ _emake() {
 		RANLIB="$(tc-getRANLIB)" \
 		IGNORE_SPEED=1 \
 		DESTDIR="${ED}" \
+		PREFIX="${EPREFIX}/usr" \
 		LIBPATH="/usr/$(get_libdir)" \
 		INCPATH="/usr/include" \
 		"$@"
