@@ -9,8 +9,11 @@ inherit autotools
 DESCRIPTION="The GNU SASL client, server, and library"
 HOMEPAGE="https://www.gnu.org/software/gsasl/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
+
 LICENSE="GPL-3"
 SLOT="0"
+# Before giving keywords, please check https://www.gnu.org/software/gsasl/ to see
+# if it's a stable release or not!
 KEYWORDS="amd64 ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc gcrypt idn kerberos nls ntlm static-libs +threads"
 
