@@ -8,8 +8,8 @@ inherit flag-o-matic toolchain-funcs
 MY_P="${P/_p/.update}"
 
 DESCRIPTION="R6RS-compliant Scheme implementation for real-time applications"
-HOMEPAGE="https://code.google.com/p/ypsilon/"
-SRC_URI="https://ypsilon.googlecode.com/files/${MY_P}.tar.gz"
+HOMEPAGE="http://www.littlewingpinball.com/doc/en/ypsilon"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

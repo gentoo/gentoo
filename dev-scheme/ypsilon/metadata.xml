@@ -5,9 +5,11 @@
 		<email>scheme@gentoo.org</email>
 		<name>Gentoo Scheme Project</name>
 	</maintainer>
-	<longdescription lang="en">Ypsilon is the implementation of Scheme Programming Language, which conforms
-		to the latest standard R6RS.</longdescription>
+	<longdescription lang="en">
+		Ypsilon is the implementation of Scheme Programming Language, which conforms
+		to the latest standard R6RS.
+	</longdescription>
 	<upstream>
-		<remote-id type="google-code">ypsilon</remote-id>
+		<remote-id type="github">fujita-y/ypsilon</remote-id>
 	</upstream>
 </pkgmetadata>
