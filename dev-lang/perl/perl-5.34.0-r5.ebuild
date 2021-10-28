@@ -393,6 +393,12 @@ src_prepare() {
 			"Fix GDBM_File to compile with version 1.20 and earlier"\
 			"https://bugs.gentoo.org/802945"
 
+	if use prefix ; then
+		add_patch "${FILESDIR}/${P}"-fallback-getcwd-pwd.patch "0102-5.34.0-fallback-get-cwd-pwd.patch"\
+			"Fix installation during Prefix bootstrap (finding 'pwd' from coreutils)"\
+			"https://bugs.gentoo.org/818172"
+	fi
+
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# do NOT mess with nsl, on Solaris this is always necessary,
 		# when -lsocket is used e.g. to get h_errno
