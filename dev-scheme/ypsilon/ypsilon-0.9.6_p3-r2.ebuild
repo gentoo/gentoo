@@ -30,7 +30,7 @@ src_prepare() {
 
 	use threads && append-flags -pthread
 	# fix build with >=sys-devel/gcc-11, bug #787866
-	append-cppflags -DNO_TLS
+	sed -i "/^CPPFLAGS/s/=/= -DNO_TLS/" Makefile
 }
 
 src_compile() {
@@ -38,7 +38,6 @@ src_compile() {
 		PREFIX="${EPREFIX}/usr" \
 		AS="$(tc-getAS)" \
 		CXX="$(tc-getCXX)" \
-		CPPFLAGS="${CPPFLAGS}" \
 		CXXFLAGS="${CXXFLAGS}" \
 		LDFLAGS="${LDFLAGS}"
 }
