@@ -46,9 +46,7 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	# Default sandbox build will run with --jobs set to # cpus.
-	# -j1 to prevent test faiures caused by file descriptor
-	# injection GNU make does.
-	emake -j1 check TESTSUITEFLAGS="--jobs=$(makeopts_jobs)"
+	emake check TESTSUITEFLAGS="--jobs=$(makeopts_jobs)"
 }
 
 multilib_src_install_all() {
