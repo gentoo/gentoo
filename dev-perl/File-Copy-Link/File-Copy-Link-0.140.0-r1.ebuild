@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=RMBARKER
 DIST_VERSION=0.140
@@ -11,13 +11,11 @@ DESCRIPTION="Perl extension for replacing a link by a copy of the linked file"
 
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-File-Spec
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.380.0
 	test? (
 		virtual/perl-File-Temp
