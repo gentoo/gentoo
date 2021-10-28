@@ -6,31 +6,34 @@ EAPI=7
 inherit flag-o-matic toolchain-funcs
 
 MY_P="${P/_p/.update}"
+
 DESCRIPTION="R6RS-compliant Scheme implementation for real-time applications"
 HOMEPAGE="https://code.google.com/p/ypsilon/"
 SRC_URI="https://ypsilon.googlecode.com/files/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples threads"
 
-DEPEND="app-arch/cpio"
-RDEPEND="${DEPEND}"
+RDEPEND="app-arch/cpio"
+DEPEND="${RDEPEND}"
+S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-asneeded.patch
 	"${FILESDIR}"/${P}-clang-cflags.patch
 )
 
-src_compile() {
-	use threads && append-flags "-pthread"
+src_prepare() {
+	default
 
-	# Fix build failure with GCC 11
-	# bug #787866
+	use threads && append-flags -pthread
+	# fix build with >=sys-devel/gcc-11, bug #787866
 	append-cppflags -DNO_TLS
+}
 
+src_compile() {
 	emake \
 		PREFIX="${EPREFIX}/usr" \
 		AS="$(tc-getAS)" \
@@ -41,7 +44,10 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" install
+	emake \
+		PREFIX="${EPREFIX}/usr" \
+		DESTDIR="${D}" \
+		install
 
 	if use examples; then
 		docinto examples
