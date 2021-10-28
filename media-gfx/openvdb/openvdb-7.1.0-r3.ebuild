@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit cmake flag-o-matic python-single-r1
+inherit cmake python-single-r1
 
 DESCRIPTION="Library for the efficient manipulation of volumetric data"
 HOMEPAGE="https://www.openvdb.org"
@@ -91,9 +91,9 @@ src_configure() {
 		-DOPENVDB_ABI_VERSION_NUMBER="${version}"
 		-DOPENVDB_BUILD_DOCS=$(usex doc)
 		-DOPENVDB_BUILD_UNITTESTS=$(usex test)
-		-DOPENVDB_BUILD_VDB_LOD=$(usex !utils)
-		-DOPENVDB_BUILD_VDB_RENDER=$(usex !utils)
-		-DOPENVDB_BUILD_VDB_VIEW=$(usex !utils)
+		-DOPENVDB_BUILD_VDB_LOD=$(usex utils)
+		-DOPENVDB_BUILD_VDB_RENDER=$(usex utils)
+		-DOPENVDB_BUILD_VDB_VIEW=$(usex utils)
 		-DOPENVDB_CORE_SHARED=ON
 		-DOPENVDB_CORE_STATIC=$(usex static-libs)
 		-DOPENVDB_ENABLE_RPATH=OFF
@@ -109,6 +109,8 @@ src_configure() {
 			-DUSE_NUMPY=$(usex numpy)
 			-DPYOPENVDB_INSTALL_DIRECTORY="$(python_get_sitedir)"
 			-DPython_EXECUTABLE="${PYTHON}"
+			-DPython_INCLUDE_DIR="$(python_get_includedir)"
+			-DPython_LIBRARY="$(python_get_library_path)"
 		)
 	fi
 
