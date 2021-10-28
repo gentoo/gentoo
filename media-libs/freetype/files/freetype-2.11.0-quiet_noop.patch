@@ -1,0 +1,41 @@
+From 6e9d8d314ff6ab23177b9162c0b96616460bb84e Mon Sep 17 00:00:00 2001
+From: Alexei Podtelezhnikov <apodtele@gmail.com>
+Date: Fri, 20 Aug 2021 16:01:32 -0400
+Subject: [PATCH] [base] Restore quiet no-op rendering of bitmap glyphs.
+
+Fixes #1076.
+
+* src/base/ftobjs.c (FT_Render_Glyph_Internal): Discard an error when
+rendering a bitmap glyph.
+---
+ src/base/ftobjs.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/base/ftobjs.c b/src/base/ftobjs.c
+index 342ac4a27..7b40c6421 100644
+--- a/src/base/ftobjs.c
++++ b/src/base/ftobjs.c
+@@ -4703,7 +4703,7 @@
+         else
+           renderer = FT_Lookup_Renderer( library, slot->format, &node );
+ 
+-        error = FT_ERR( Unimplemented_Feature );
++        error = FT_ERR( Cannot_Render_Glyph );
+         while ( renderer )
+         {
+           error = renderer->render( renderer, slot, render_mode, NULL );
+@@ -4719,6 +4719,11 @@
+           /* format.                                               */
+           renderer = FT_Lookup_Renderer( library, slot->format, &node );
+         }
++
++        /* it is not an error if we cannot render a bitmat glyph */
++        if ( FT_ERR_EQ( error, Cannot_Render_Glyph ) &&
++             slot->format == FT_GLYPH_FORMAT_BITMAP  )
++          error = FT_Err_Ok;
+       }
+     }
+ 
+-- 
+GitLab
+
