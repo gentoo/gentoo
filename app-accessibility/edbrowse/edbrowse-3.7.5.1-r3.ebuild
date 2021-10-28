@@ -15,9 +15,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE="odbc"
 
 RDEPEND="
-	>=app-text/htmltidy-5.0.0
+	>=app-text/htmltidy-5.0.0:=
 	dev-lang/duktape:=
-	dev-libs/libpcre
+	dev-libs/libpcre:=
 	net-misc/curl
 	sys-libs/readline:=
 	odbc? ( dev-db/unixODBC )"
