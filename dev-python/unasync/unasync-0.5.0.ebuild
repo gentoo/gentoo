@@ -16,9 +16,12 @@ KEYWORDS="~amd64 ~x86"
 
 src_prepare() {
 	# Stop test from breaking itself
-	sed -i 's/\(env\["PYTHONPATH"\] = os.path.realpath(os.path.join(TEST_DIR, ".."))\)/#\1/' "${S}/tests/test_unasync.py" || die
+	sed -i '/env\["PYTHONPATH"\]/d' "${S}/tests/test_unasync.py" || die
 	default_src_prepare
 }
 
-distutils_enable_sphinx docs/source dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs/source \
+	dev-python/sphinxcontrib-trio \
+	dev-python/sphinx_rtd_theme
+
 distutils_enable_tests --install pytest
