@@ -57,6 +57,9 @@ _emake() {
 }
 
 src_compile() {
+	# Replace hard-coded libdir=${exec_prefix}/lib.
+	sed -i -e "/libdir=/s:/lib:/$(get_libdir):" libtommath.pc.in || die
+
 	_emake -f makefile.shared
 }
 
