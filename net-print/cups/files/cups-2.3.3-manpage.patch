@@ -1,0 +1,23 @@
+From: Didier Raboud <odyx@debian.org>
+Date: Fri, 12 Feb 2021 13:47:22 +0100
+Subject: Let cups.1 point to client.conf.5, not client.conf.7
+
+Bug: https://github.com/OpenPrinting/cups/pull/92
+Closes: #982303
+---
+ man/cups.1 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/man/cups.1 b/man/cups.1
+index 706620d..751ad9a 100644
+--- a/man/cups.1
++++ b/man/cups.1
+@@ -125,7 +125,7 @@ Printers that do not support IPP can be supported using applications such as
+ .BR ippeveprinter (1).
+ .SH SEE ALSO
+ .BR cancel (1),
+-.BR client.conf (7),
++.BR client.conf (5),
+ .BR cupsctl (8),
+ .BR cupsd (8),
+ .BR lp (1),
