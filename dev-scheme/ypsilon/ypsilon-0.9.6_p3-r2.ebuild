@@ -14,7 +14,7 @@ SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples threads"
+IUSE="examples"
 
 RDEPEND="app-arch/cpio"
 DEPEND="${RDEPEND}"
@@ -28,7 +28,7 @@ PATCHES=(
 src_prepare() {
 	default
 
-	use threads && append-flags -pthread
+	append-flags -pthread
 	# fix build with >=sys-devel/gcc-11, bug #787866
 	sed -i "/^CPPFLAGS/s/=/= -DNO_TLS/" Makefile
 }
