@@ -31,6 +31,7 @@ python_install_all() {
 }
 
 pkg_postinst() {
+	optfeature "Argon2 support" dev-python/argon2-cffi
 	optfeature "bcrypt support" dev-python/bcrypt
 	optfeature "scrypt support" dev-python/scrypt
 	optfeature "Time-based One-Time Password (TOTP) support" dev-python/cryptography
