@@ -27,7 +27,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	virtual/mpi[fortran?]
 	sys-process/numactl
-	sys-apps/hwloc[numa,xml]
+	sys-apps/hwloc:=[numa,xml]
 	"
 RDEPEND="${DEPEND}"
 
