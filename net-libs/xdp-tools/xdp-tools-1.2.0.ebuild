@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="The libxdp library and various tools for use with XDP"
 HOMEPAGE="https://github.com/xdp-project/xdp-tools"
-SRC_URI="https://github.com/xdp-project/${PN}/releases/download/v${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/xdp-project/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1 BSD-2"
 SLOT="0"
@@ -26,16 +26,11 @@ QA_PREBUILT="usr/lib/bpf/*.o"
 
 MAKEOPTS+=" V=1"
 
-src_prepare() {
-	# A form of this kludge is upstream but hasn't yet been released:
-	sed -i 's/install -m 0755 \$(SHARED_LIBS)/cp -fpR \$(SHARED_LIBS)/' lib/libxdp/Makefile || die
-	default
-}
-
 src_configure() {
 	export PRODUCTION=1
 	export DYNAMIC_LIBXDP=1
 	export FORCE_EMACS=$(usex doc 1 0)
+	export FORCE_SYSTEM_LIBBPF=1
 	default
 	{
 		echo "PREFIX := ${EPREFIX}/usr"
@@ -46,6 +41,7 @@ src_configure() {
 
 src_install() {
 	default
+	rm -rf "${D}/${EPREFIX}/usr/share/xdp-tools"
 	use static-libs || rm -f "${D}/${EPREFIX}/usr/$(get_libdir)/libxdp.a"
 	use tools || rm -f "${D}/${EPREFIX}/usr/"{sbin,bin}/*
 	dostrip -x /usr/lib/bpf
