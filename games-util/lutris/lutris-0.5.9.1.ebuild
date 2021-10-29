@@ -58,6 +58,8 @@ distutils_enable_tests pytest
 
 DOCS=( AUTHORS README.rst docs/installers.rst docs/steam.rst )
 
+PATCHES=( "${FILESDIR}/${P}-avoid-gtk-4.0-already-loaded-testerror.patch" )
+
 python_test() {
 	virtx epytest
 }
