@@ -28,7 +28,7 @@ DEPEND="
 	x11-libs/libXmu
 	freeimage? ( media-libs/freeimage )
 	gl2ps? ( x11-libs/gl2ps )
-	tbb? ( dev-cpp/tbb )
+	tbb? ( dev-cpp/tbb:= )
 	vtk? ( =sci-libs/vtk-8*[boost,imaging,qt5,python,rendering,views] )"
 RDEPEND="${DEPEND}"
 
