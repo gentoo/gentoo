@@ -30,6 +30,7 @@ src_configure() {
 	export PRODUCTION=1
 	export DYNAMIC_LIBXDP=1
 	export FORCE_EMACS=$(usex doc 1 0)
+	use doc || export EMACS=false
 	export FORCE_SYSTEM_LIBBPF=1
 	default
 	{
