@@ -24,7 +24,7 @@ RDEPEND="
 	dev-libs/tinyxml
 	>=dev-libs/tinyxml2-6:=
 	dev-libs/libtar
-	dev-cpp/tbb
+	dev-cpp/tbb:=
 	>=dev-games/ogre-1.7.4:=[freeimage]
 	<dev-games/ogre-1.10
 	>=media-libs/freeimage-3.15.4[png]
