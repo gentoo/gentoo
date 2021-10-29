@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=ESAYM
 DIST_VERSION=1.95
@@ -12,10 +12,11 @@ DESCRIPTION="Connect to a local Clam Anti-Virus clamd service and send commands"
 
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
-IUSE=""
 
-RDEPEND="app-antivirus/clamav"
-DEPEND="
+RDEPEND="
+	app-antivirus/clamav
+"
+BDEPEND="
 	${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
