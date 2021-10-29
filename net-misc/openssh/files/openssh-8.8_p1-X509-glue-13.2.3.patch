@@ -1,7 +1,27 @@
 diff -ur '--exclude=.*.un~' a/openssh-8.8p1+x509-13.2.3.diff b/openssh-8.8p1+x509-13.2.3.diff
---- a/openssh-8.8p1+x509-13.2.3.diff	2021-10-25 10:23:20.264186260 -0700
-+++ b/openssh-8.8p1+x509-13.2.3.diff	2021-10-25 10:24:35.924443287 -0700
-@@ -51859,12 +51859,11 @@
+--- a/openssh-8.8p1+x509-13.2.3.diff	2021-10-29 14:59:17.070546984 -0700
++++ b/openssh-8.8p1+x509-13.2.3.diff	2021-10-29 14:59:55.086664489 -0700
+@@ -954,15 +954,16 @@
+  	char b[512];
+ -	size_t len = ssh_digest_bytes(SSH_DIGEST_SHA512);
+ -	u_char *hash = xmalloc(len);
++-	double delay;
+ +	int digest_alg;
+ +	size_t len;
+ +	u_char *hash;
+- 	double delay;
+- 
+++	double delay = 0;
+++
+ +	digest_alg = ssh_digest_maxbytes();
+ +	len = ssh_digest_bytes(digest_alg);
+ +	hash = xmalloc(len);
+-+
++
+  	(void)snprintf(b, sizeof b, "%llu%s",
+  	    (unsigned long long)options.timing_secret, user);
+ -	if (ssh_digest_memory(SSH_DIGEST_SHA512, b, strlen(b), hash, len) != 0)
+@@ -51859,12 +51860,11 @@
   
   install-files:
   	$(MKDIR_P) $(DESTDIR)$(bindir)
@@ -15,7 +35,7 @@ diff -ur '--exclude=.*.un~' a/openssh-8.8p1+x509-13.2.3.diff b/openssh-8.8p1+x50
   	$(MKDIR_P) -m 0755 $(DESTDIR)$(PRIVSEP_PATH)
   	$(INSTALL) -m 0755 $(STRIP_OPT) ssh$(EXEEXT) $(DESTDIR)$(bindir)/ssh$(EXEEXT)
   	$(INSTALL) -m 0755 $(STRIP_OPT) scp$(EXEEXT) $(DESTDIR)$(bindir)/scp$(EXEEXT)
-@@ -71985,7 +71984,7 @@
+@@ -71985,7 +71985,7 @@
  +if test "$sshd_type" = "pkix" ; then
  +  unset_arg=''
  +else
@@ -24,7 +44,7 @@ diff -ur '--exclude=.*.un~' a/openssh-8.8p1+x509-13.2.3.diff b/openssh-8.8p1+x50
  +fi
  +
   cat > $OBJ/sshd_config.i << _EOF
-@@ -132360,16 +132359,6 @@
+@@ -132360,16 +132360,6 @@
  +int	 asnmprintf(char **, size_t, int *, const char *, ...)
   	    __attribute__((format(printf, 4, 5)));
   void	 msetlocale(void);
