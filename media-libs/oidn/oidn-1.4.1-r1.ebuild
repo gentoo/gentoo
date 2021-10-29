@@ -25,11 +25,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-cpp/tbb
+	dev-cpp/tbb:=
 	dev-lang/ispc"
-BDEPEND="
-	${RDEPEND}
-	dev-util/cmake"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-util/cmake"
 
 CMAKE_BUILD_TYPE=Release
 
