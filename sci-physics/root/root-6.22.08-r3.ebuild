@@ -98,7 +98,7 @@ CDEPEND="
 	shadow? ( sys-apps/shadow )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( dev-libs/openssl:0= )
-	tbb? ( >=dev-cpp/tbb-2018 )
+	tbb? ( >=dev-cpp/tbb-2018:= )
 	tmva? (
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_USEDEP}]

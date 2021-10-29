@@ -100,13 +100,13 @@ CDEPEND="
 	shadow? ( sys-apps/shadow )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( dev-libs/openssl:0= )
-	tbb? ( dev-cpp/tbb )
+	tbb? ( dev-cpp/tbb:= )
 	tmva? (
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_USEDEP}]
 		')
 	)
-	uring? ( sys-libs/liburing )
+	uring? ( sys-libs/liburing:= )
 	vc? ( dev-libs/vc:= )
 	xml? ( dev-libs/libxml2:2= )
 	xrootd? ( net-libs/xrootd:0= )
