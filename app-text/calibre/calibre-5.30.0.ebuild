@@ -149,13 +149,12 @@ src_prepare() {
 	# Disable unnecessary privilege dropping for bug #287067.
 	sed -e "s:if os.geteuid() == 0:if False and os.geteuid() == 0:" \
 		-i setup/install.py || die "sed failed to patch install.py"
-
-	sed -e "/^                self.check_call(\\[QMAKE\\] + qmc + \\[proname\\])$/a\
-\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ self.check_call(['sed', \
+	sed -e "/^            os.chdir(os.path.join(src_dir, 'build'))$/a\
+\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ self.check_call(['sed', \
 '-e', 's|^CFLAGS .*|\\\\\\\\0 ${CFLAGS}|', \
 '-e', 's|^CXXFLAGS .*|\\\\\\\\0 ${CXXFLAGS}|', \
 '-e', 's|^LFLAGS .*|\\\\\\\\0 ${LDFLAGS}|', \
-'-i', 'Makefile'])" \
+'-i', os.path.join(os.path.basename(src_dir), 'Makefile')])" \
 		-e "s|open(self.j(bdir, '.qmake.conf'), 'wb').close()|open(self.j(bdir, '.qmake.conf'), 'wb').write(b'QMAKE_LFLAGS += ${LDFLAGS}')|" \
 		-i setup/build.py || die "sed failed to patch build.py"
 }
