@@ -85,7 +85,7 @@ RDEPEND="
 	<net-libs/grpc-1.39:=
 	net-misc/curl
 	sys-libs/zlib
-	>=sys-apps/hwloc-2
+	>=sys-apps/hwloc-2:=
 	cuda? (
 		|| (
 			=dev-util/nvidia-cuda-toolkit-10*[profiler]
