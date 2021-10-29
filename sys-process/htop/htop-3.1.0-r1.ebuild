@@ -19,7 +19,7 @@ IUSE="caps debug delayacct hwloc kernel_FreeBSD kernel_linux lm-sensors openvz u
 BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	sys-libs/ncurses:=[unicode(+)?]
-	hwloc? ( sys-apps/hwloc )
+	hwloc? ( sys-apps/hwloc:= )
 	kernel_linux? (
 		caps? ( sys-libs/libcap )
 		delayacct? ( dev-libs/libnl:3 )
