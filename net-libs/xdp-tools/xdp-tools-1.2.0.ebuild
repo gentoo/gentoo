@@ -11,9 +11,9 @@ LICENSE="GPL-2 LGPL-2.1 BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="+doc +tools static-libs"
+IUSE="+doc +tools"
 
-DEPEND="dev-libs/libbpf
+DEPEND="dev-libs/libbpf:=
 	sys-libs/zlib
 	net-libs/libpcap
 	virtual/libelf"
@@ -41,8 +41,8 @@ src_configure() {
 
 src_install() {
 	default
-	rm -rf "${D}/${EPREFIX}/usr/share/xdp-tools"
-	use static-libs || rm -f "${D}/${EPREFIX}/usr/$(get_libdir)/libxdp.a"
-	use tools || rm -f "${D}/${EPREFIX}/usr/"{sbin,bin}/*
+	rm -r "${ED}/usr/share/xdp-tools" || die
+	rm "${ED}/usr/$(get_libdir)/libxdp.a" || die
+	use tools || { rm "${ED}/usr/sbin"/* || die; }
 	dostrip -x /usr/lib/bpf
 }
