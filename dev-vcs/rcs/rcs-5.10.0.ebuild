@@ -20,6 +20,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
+	"${FILESDIR}"/${P}-test-t808.patch
+	"${FILESDIR}"/${P}-test-t632.patch
 	"${FILESDIR}"/${P}-glibc-2.34.patch
 )
 
