@@ -24,7 +24,7 @@ RDEPEND="
 	>=media-libs/glfw-3.2.1
 	virtual/opengl
 	ispc? ( dev-lang/ispc )
-	tbb? ( dev-cpp/tbb )
+	tbb? ( dev-cpp/tbb:= )
 	tutorial? (
 		>=media-libs/libpng-1.6.34:0=
 		>=media-libs/openimageio-1.8.7:0=
