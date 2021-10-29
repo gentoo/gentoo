@@ -90,11 +90,10 @@ dev-util/ragel doc
 #         geoip2: dev-libs/libmaxminddb
 #          kafka: dev-libs/librdkafka
 #        mongodb: dev-libs/mongo-c-driver
-#          redis: dev-db/redis
 #           smtp: net-libs/libesmtp
 #           snmp: net-analyzer/net-snmp
 #   spoof-source: net-libs/libnet
-app-admin/syslog-ng amqp dbi geoip2 kafka mongodb redis smtp snmp spoof-source
+app-admin/syslog-ng amqp dbi geoip2 kafka mongodb smtp snmp spoof-source
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-30)
 # dev-libs/libfido2 is not stable on hppa

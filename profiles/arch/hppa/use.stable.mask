@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Matt Turner <mattst88@gentoo.org> (2021-10-28)
+# dev-libs/hiredis is not stable on hppa
+redis
+
 # Sam James <sam@gentoo.org> (2021-10-16)
 # Avoid large number of dependencies which often
 # have to be stabilised.
