@@ -7,8 +7,8 @@ inherit flag-o-matic libtool multilib-minimal toolchain-funcs
 
 MY_PV=${PV/_p*}
 MY_PV=${MY_PV/_/-}
-MANUAL_PV=$MY_PV
-MANUAL_PV=6.2.0 # 6.2.1 manual is not ready yet
+MANUAL_PV=${MY_PV}
+MANUAL_PV=6.2.1
 MY_P=${PN}-${MY_PV}
 PLEVEL=${PV/*p}
 DESCRIPTION="Library for arbitrary-precision arithmetic on different type of numbers"
@@ -40,10 +40,10 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# note: we cannot run autotools here as gcc depends on this package
+	# We cannot run autotools here as gcc depends on this package
 	elibtoolize
 
-	# https://bugs.gentoo.org/536894
+	# bug #536894
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		eapply "${FILESDIR}"/${PN}-6.1.2-gcc-apple-4.0.1.patch
 	fi
@@ -55,6 +55,7 @@ src_prepare() {
 	#!/usr/bin/env sh
 	exec env ABI="${GMPABI}" "$0.wrapped" "$@"
 	EOF
+
 	# Patches to original configure might have lost the +x bit.
 	chmod a+rx configure{,.wrapped} || die
 }
@@ -74,14 +75,15 @@ multilib_src_configure() {
 	esac
 	export GMPABI
 
-	#367719
+	# bug #367719
 	if [[ ${CHOST} == *-mint* ]]; then
 		filter-flags -O?
 	fi
 
+	tc-export CC
+
 	# --with-pic forces static libraries to be built as PIC
 	# and without TEXTRELs. musl does not support TEXTRELs: bug #707332
-	tc-export CC
 	ECONF_SOURCE="${S}" econf \
 		CC_FOR_BUILD="$(tc-getBUILD_CC)" \
 		--localstatedir="${EPREFIX}"/var/state/gmp \
@@ -95,11 +97,14 @@ multilib_src_configure() {
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 
-	# should be a standalone lib
+	# Should be a standalone lib
 	rm -f "${ED}"/usr/$(get_libdir)/libgmp.la
-	# this requires libgmp
+
+	# This requires libgmp
 	local la="${ED}/usr/$(get_libdir)/libgmpxx.la"
-	use static-libs || rm -f "${la}"
+	if ! use static-libs ; then
+		rm -f "${la}"
+	fi
 }
 
 multilib_src_install_all() {
