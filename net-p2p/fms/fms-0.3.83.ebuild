@@ -35,7 +35,10 @@ BDEPEND="
 	virtual/libiconv
 "
 
-PATCHES=( "${FILESDIR}/${PN}-use-system-libs4.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-use-system-libs4.patch"
+	"${FILESDIR}/${P}-fix-for-mbedtls-3.patch"
+)
 
 DOCS=( "readme.txt" )
 
@@ -43,6 +46,7 @@ src_prepare() {
 	# Convert encoding due applied patch
 	edos2unix src/http/pages/showfilepage.cpp
 	edos2unix CMakeLists.txt
+	edos2unix include/freenet/fcpv2.h
 
 	# Remove bundled libs
 	rm -fr libs || die
