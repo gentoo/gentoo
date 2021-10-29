@@ -46,6 +46,7 @@ DEPEND="
 	>=dev-python/packaging-16.6[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
+		dev-python/bcrypt[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]
 		dev-python/passlib[${PYTHON_USEDEP}]
