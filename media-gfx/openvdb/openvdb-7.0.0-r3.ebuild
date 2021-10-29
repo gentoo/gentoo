@@ -13,18 +13,18 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.g
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="cpu_flags_x86_avx cpu_flags_x86_sse4_2 doc numpy python static-libs test utils abi6-compat abi7-compat +abi8-compat"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
+IUSE="cpu_flags_x86_avx cpu_flags_x86_sse4_2 doc numpy python static-libs test utils abi5-compat abi6-compat +abi7-compat"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	numpy? ( python )
-	^^ ( abi6-compat abi7-compat abi8-compat )
+	^^ ( abi5-compat abi6-compat abi7-compat )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
 RDEPEND="
-	dev-cpp/tbb
+	dev-cpp/tbb:=
 	dev-libs/boost:=
 	dev-libs/c-blosc:=
 	dev-libs/jemalloc:=
@@ -60,12 +60,13 @@ BDEPEND="
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 	)
-	test? ( dev-util/cppunit dev-cpp/gtest )
+	test? ( dev-util/cppunit )
 "
 
 PATCHES=(
 	"${FILESDIR}/${PN}-7.1.0-0001-Fix-multilib-header-source.patch"
-	"${FILESDIR}/${P}-glfw-libdir.patch"
+	"${FILESDIR}/${PN}-7.1.0-0002-Fix-doc-install-dir.patch"
+	"${FILESDIR}/${PN}-8.0.1-glfw-libdir.patch"
 )
 
 pkg_setup() {
@@ -76,12 +77,12 @@ src_configure() {
 	local myprefix="${EPREFIX}/usr/"
 
 	local version
-	if use abi6-compat; then
+	if use abi5-compat; then
+		version=5
+	elif use abi6-compat; then
 		version=6
 	elif use abi7-compat; then
 		version=7
-	elif use abi8-compat; then
-		version=8
 	else
 		die "Openvdb abi version is not compatible"
 	fi
