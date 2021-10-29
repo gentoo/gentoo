@@ -10,18 +10,20 @@ SRC_URI="https://github.com/pbiering/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="geoip test"
+IUSE="cgi geoip test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	cgi? (
+		dev-perl/URI
+		dev-perl/Digest-SHA1
+	)
 	dev-libs/openssl:=
 	geoip? ( >=dev-libs/geoip-1.4.7 )
 "
 DEPEND="${RDEPEND}
 	test? ( dev-perl/Digest-SHA1 )
 "
-
-#dev-perl/URI is needed for web interface, that is not installed now
 
 src_configure() {
 	# These options are broken.  You can't disable them.  That's
@@ -44,6 +46,7 @@ src_configure() {
 		--disable-dbip2 \
 		--disable-external \
 		--disable-ip2location \
+		$(use_enable cgi mod_ipv6calc ) \
 		${myconf}
 }
 
