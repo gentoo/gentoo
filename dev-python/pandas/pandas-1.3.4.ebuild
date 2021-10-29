@@ -106,6 +106,11 @@ RDEPEND="${COMMON_DEPEND}
 	full-support? ( ${OPTIONAL_DEPEND} )
 "
 
+PATCHES=(
+	# Upstream patch to fix 32-bit ARM test detection
+	"${FILESDIR}"/${P}-arm-tests.patch
+)
+
 python_prepare_all() {
 	# Prevent un-needed download during build
 	sed -e "/^              'sphinx.ext.intersphinx',/d" \
