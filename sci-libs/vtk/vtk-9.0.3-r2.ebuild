@@ -97,7 +97,7 @@ RDEPEND="
 		virtual/opengl
 		x11-libs/gl2ps
 	)
-	tbb? ( dev-cpp/tbb )
+	tbb? ( dev-cpp/tbb:= )
 	tk? ( dev-lang/tk:= )
 	video_cards_nvidia? ( x11-drivers/nvidia-drivers[tools,static-libs] )
 	views? (
