@@ -45,11 +45,11 @@ REQUIRED_USE="
 # accessible. Just fix the version for the time being.
 CAS_VERSION=7.5.2
 
-RDEPEND="dev-libs/boost
+RDEPEND="dev-libs/boost:=
 	app-arch/bzip2
 	sys-libs/zlib
 	dev-cpp/cpp-taskflow
-	dev-cpp/tbb
+	dev-cpp/tbb:=
 	adolc? ( sci-libs/adolc )
 	arpack? ( sci-libs/arpack[mpi=] )
 	assimp? ( media-libs/assimp )
