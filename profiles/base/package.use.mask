@@ -6,10 +6,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Joonas Niilola <juippis@gentoo.org> (2021-10-28)
-# New feature since 4.0.11, buggy with possible data loss. Bug #820545
-app-emulation/lxc io-uring
-
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-26)
 # Depends on masked sys-fabric/dapl
 sys-fabric/ofed dapl
