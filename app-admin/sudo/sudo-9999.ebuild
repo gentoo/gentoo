@@ -159,6 +159,11 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+src_test() {
+	# See bug #667600 for TZ workaround
+	TZ=UTC default
+}
+
 src_install() {
 	default
 
