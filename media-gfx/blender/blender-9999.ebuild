@@ -98,7 +98,7 @@ RDEPEND="${PYTHON_DEPS}
 	pulseaudio? ( media-sound/pulseaudio )
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
-	tbb? ( dev-cpp/tbb )
+	tbb? ( dev-cpp/tbb:= )
 	tiff? ( media-libs/tiff )
 	valgrind? ( dev-util/valgrind )
 "

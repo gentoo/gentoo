@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_8 )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit check-reqs cmake flag-o-matic pax-utils python-single-r1 toolchain-funcs xdg-utils
 
@@ -92,7 +92,7 @@ RDEPEND="${PYTHON_DEPS}
 	osl? ( <media-libs/osl-1.11.0 )
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
-	tbb? ( dev-cpp/tbb )
+	tbb? ( dev-cpp/tbb:= )
 	tiff? ( media-libs/tiff )
 	valgrind? ( dev-util/valgrind )
 "
@@ -251,8 +251,11 @@ src_configure() {
 		-DWITH_TBB=$(usex tbb)
 		-DWITH_USD=OFF
 	)
-	append-flags $(usex debug '-DDEBUG' '-DNDEBUG')
-
+	if ! use debug ; then
+		append-flags  -DNDEBUG
+	else
+		append-flags  -DDEBUG
+	fi
 	cmake_src_configure
 }
 
