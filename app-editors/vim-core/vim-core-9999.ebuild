@@ -2,6 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+# Please bump with app-editors/vim and app-editors/gvim
+
 VIM_VERSION="8.2"
 inherit estack vim-doc flag-o-matic bash-completion-r1 prefix desktop xdg-utils
 
@@ -14,23 +17,22 @@ else
 		https://dev.gentoo.org/~zlogene/distfiles/app-editors/vim/vim-8.2.0360-gentoo-patches.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
+S="${WORKDIR}"/vim-${PV}
 
 DESCRIPTION="vim and gvim shared files"
 HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
 
-SLOT="0"
 LICENSE="vim"
+SLOT="0"
 IUSE="nls acl minimal"
 
-DEPEND="sys-devel/autoconf"
-# avoid icon file collision bug #673880
+BDEPEND="sys-devel/autoconf"
+# Avoid icon file collision, bug #673880
 RDEPEND="!!<app-editors/gvim-8.1.0648"
 PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 
-S=${WORKDIR}/vim-${PV}
-
 pkg_setup() {
-	# people with broken alphabets run into trouble. bug 82186.
+	# people with broken alphabets run into trouble. bug #82186.
 	unset LANG LC_ALL
 	export LC_COLLATE="C"
 
@@ -50,7 +52,7 @@ src_prepare() {
 		-e '1s|.*|#!'"${EPREFIX}"'/usr/bin/awk -f|' \
 		"${S}"/runtime/tools/mve.awk || die "sed failed"
 
-	# See #77841. We remove this file after the tarball extraction.
+	# See bug #77841. We remove this file after the tarball extraction.
 	rm -v "${S}"/runtime/tools/vimspell.sh || die "rm failed"
 
 	# Read vimrc and gvimrc from /etc/vim
