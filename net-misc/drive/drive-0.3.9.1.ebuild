@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -51,6 +51,7 @@ SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 
 src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME
 	GOPATH="${S}" \
 		go install -v -work -x ${EGO_BUILD_FLAGS} \
 		"${EGO_PN}"/{cmd/drive,drive-server} || die
