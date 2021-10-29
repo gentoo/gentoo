@@ -46,7 +46,7 @@ RDEPEND="
 	ois? ( dev-games/ois )
 	threads? (
 		poco? ( dev-libs/poco )
-		tbb? ( dev-cpp/tbb )
+		tbb? ( dev-cpp/tbb:= )
 	)
 	tools? ( dev-libs/tinyxml[stl] )
 	zip? ( sys-libs/zlib dev-libs/zziplib )"
