@@ -21,8 +21,8 @@ IUSE="+cxx doc fortran mpi-threads +romio threads"
 REQUIRED_USE="mpi-threads? ( threads )"
 
 COMMON_DEPEND=">=dev-libs/libaio-0.3.109-r5[${MULTILIB_USEDEP}]
-	>=sys-apps/hwloc-2.0.2[${MULTILIB_USEDEP}]
-	sys-libs/libunwind[${MULTILIB_USEDEP}]
+	>=sys-apps/hwloc-2.0.2:=[${MULTILIB_USEDEP}]
+	sys-libs/libunwind:=[${MULTILIB_USEDEP}]
 	romio? ( net-fs/nfs-utils )"
 
 DEPEND="${COMMON_DEPEND}
