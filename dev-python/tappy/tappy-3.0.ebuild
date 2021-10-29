@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit distutils-r1
+inherit distutils-r1 optfeature
 
 MY_PN=tap.py
 DESCRIPTION="Test Anything Protocol (TAP) tools"
@@ -15,13 +15,7 @@ S=${WORKDIR}/${MY_PN}-${PV}
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="yaml"
 
-RDEPEND="
-	yaml? (
-		dev-python/more-itertools[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-	)"
 BDEPEND="
 	dev-python/Babel[${PYTHON_USEDEP}]
 	test? (
@@ -30,3 +24,8 @@ BDEPEND="
 	)"
 
 distutils_enable_tests unittest
+
+pkg_postinst() {
+	optfeature "YAML blocks associated with test results" \
+		"dev-python/more-itertools dev-python/pyyaml"
+}
