@@ -11,8 +11,8 @@ SRC_URI="https://github.com/bulletphysics/bullet3/archive/${PV}.tar.gz -> ${P}.t
 
 LICENSE="ZLIB"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc double-precision examples extras openmp tbb test +threads"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+IUSE="doc double-precision examples openmp tbb test threads"
 
 REQUIRED_USE="
 	openmp? ( threads )
@@ -22,7 +22,7 @@ REQUIRED_USE="
 RDEPEND="
 	virtual/opengl
 	media-libs/freeglut
-	tbb? ( dev-cpp/tbb )
+	tbb? ( dev-cpp/tbb:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-doc/doxygen[dot] )"
@@ -59,8 +59,7 @@ src_configure() {
 		-DUSE_GRAPHICAL_BENCHMARK=OFF
 		-DINSTALL_LIBS=ON
 		-DBUILD_BULLET3=ON
-		-DBUILD_BULLET_ROBOTICS_GUI_EXTRA=OFF	# This module depends on example libraries
-		-DBUILD_EXTRAS=$(usex extras)
+		-DBUILD_EXTRAS=OFF
 		-DUSE_DOUBLE_PRECISION=$(usex double-precision)
 		-DBUILD_UNIT_TESTS=$(usex test)
 		-DBULLET2_MULTITHREADING=$(usex threads)

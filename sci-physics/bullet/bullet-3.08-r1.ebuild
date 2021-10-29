@@ -22,7 +22,7 @@ REQUIRED_USE="
 RDEPEND="
 	virtual/opengl
 	media-libs/freeglut
-	tbb? ( dev-cpp/tbb )
+	tbb? ( dev-cpp/tbb:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-doc/doxygen[dot] )"
