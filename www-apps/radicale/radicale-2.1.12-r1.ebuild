@@ -26,7 +26,10 @@ RDEPEND="
 	>=dev-python/vobject-0.9.6[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.7.3[${PYTHON_USEDEP}]
 	sys-apps/util-linux
-	bcrypt? ( dev-python/passlib[bcrypt,${PYTHON_USEDEP}] )"
+	bcrypt? (
+		dev-python/bcrypt[${PYTHON_USEDEP}]
+		dev-python/passlib[${PYTHON_USEDEP}]
+	)"
 
 S="${WORKDIR}/${MY_P}"
 
