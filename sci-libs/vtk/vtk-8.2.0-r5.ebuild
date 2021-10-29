@@ -105,7 +105,7 @@ RDEPEND="
 		')
 	)
 	R? ( dev-lang/R )
-	tbb? ( dev-cpp/tbb )
+	tbb? ( dev-cpp/tbb:= )
 	tcl? ( dev-lang/tcl:0= )
 	tk? ( dev-lang/tk:0= )
 	video_cards_nvidia? ( x11-drivers/nvidia-drivers[tools,static-libs] )
