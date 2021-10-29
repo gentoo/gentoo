@@ -35,13 +35,13 @@ RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-cpp/asio-1.12.0
 	dev-libs/boost:=
-	sys-apps/hwloc
+	sys-apps/hwloc:=
 	sys-libs/zlib
-	jemalloc? ( dev-libs/jemalloc )
+	jemalloc? ( dev-libs/jemalloc:= )
 	mpi? ( virtual/mpi )
 	papi? ( dev-libs/papi )
-	perftools? ( dev-util/google-perftools )
-	tbb? ( dev-cpp/tbb )
+	perftools? ( dev-util/google-perftools:= )
+	tbb? ( dev-cpp/tbb:= )
 "
 DEPEND="${RDEPEND}"
 
