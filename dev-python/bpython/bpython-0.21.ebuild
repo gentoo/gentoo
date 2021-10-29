@@ -3,9 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Syntax highlighting and autocompletion for the Python interpreter"
@@ -34,7 +32,10 @@ BDEPEND="
 
 DOCS=( AUTHORS.rst CHANGELOG.rst )
 
-PATCHES=( "${FILESDIR}"/${PN}-sphinx-4.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-sphinx-4.patch
+	"${FILESDIR}"/${P}-fix-py3.10.patch
+)
 
 distutils_enable_sphinx doc/sphinx/source --no-autodoc
 distutils_enable_tests unittest
