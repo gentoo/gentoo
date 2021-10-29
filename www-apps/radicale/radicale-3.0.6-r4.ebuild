@@ -21,8 +21,9 @@ MY_P="Radicale-${PV}"
 RDEPEND="
 	acct-user/radicale
 	acct-group/radicale
+	dev-python/bcrypt[${PYTHON_USEDEP}]
 	dev-python/defusedxml
-	dev-python/passlib[bcrypt,${PYTHON_USEDEP}]
+	dev-python/passlib[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/vobject[${PYTHON_USEDEP}]
 	sys-apps/util-linux
