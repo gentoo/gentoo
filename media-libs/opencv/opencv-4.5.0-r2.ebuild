@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 CMAKE_ECLASS=cmake
 inherit java-pkg-opt-2 java-ant-2 cmake-multilib python-r1 toolchain-funcs
 
@@ -21,7 +21,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}" # subslot = libopencv* soname version
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86"
 IUSE="contrib contribcvv contribdnn contribfreetype contribhdf contribovis contribsfm contribxfeatures2d cuda debug dnnsamples download +eigen examples +features2d ffmpeg gdal gflags glog gphoto2 gstreamer gtk3 ieee1394 jpeg jpeg2k lapack lto opencl openexr opengl openmp opencvapps png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine"
 
 # The following lines are shamelessly stolen from ffmpeg-9999.ebuild with modifications
@@ -58,12 +58,8 @@ IUSE="${IUSE} ${CPU_FEATURES_MAP[@]%:*}"
 # OpenGL needs gtk or Qt installed to activate, otherwise build system
 # will silently disable it Wwithout the user knowing, which defeats the
 # purpose of the opengl use flag.
-# cuda needs contrib, bug #701712
 REQUIRED_USE="
-	cpu_flags_x86_avx2? ( cpu_flags_x86_f16c )
-	cpu_flags_x86_f16c? ( cpu_flags_x86_avx )
-	cuda? ( contrib
-		tesseract? ( opencl ) )
+	cuda? ( tesseract? ( opencl ) )
 	dnnsamples? ( examples )
 	gflags? ( contrib )
 	glog? ( contrib )
@@ -113,7 +109,7 @@ RDEPEND="
 		media-libs/libdc1394:=[${MULTILIB_USEDEP}]
 		sys-libs/libraw1394[${MULTILIB_USEDEP}]
 	)
-	java? ( >=virtual/jre-1.8:* )
+	java? ( >=virtual/jre-1.6:* )
 	jpeg? ( virtual/jpeg:0[${MULTILIB_USEDEP}] )
 	jpeg2k? ( media-libs/openjpeg:2=[${MULTILIB_USEDEP}] )
 	lapack? (
@@ -139,7 +135,7 @@ RDEPEND="
 		opengl? ( dev-qt/qtopengl:5= )
 	)
 	tesseract? ( app-text/tesseract[opencl=,${MULTILIB_USEDEP}] )
-	threads? ( dev-cpp/tbb[${MULTILIB_USEDEP}] )
+	threads? ( dev-cpp/tbb:=[${MULTILIB_USEDEP}] )
 	tiff? ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
 	v4l? ( >=media-libs/libv4l-0.8.3[${MULTILIB_USEDEP}] )
 	vaapi? ( x11-libs/libva[${MULTILIB_USEDEP}] )
@@ -154,7 +150,7 @@ DEPEND="${RDEPEND}
 			<dev-cpp/eigen-3.3.8:3
 		)
 	)
-	java? ( >=virtual/jdk-1.8:* )"
+	java? ( >=virtual/jdk-1.6 )"
 BDEPEND="virtual/pkgconfig"
 
 MULTILIB_WRAPPED_HEADERS=(
