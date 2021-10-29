@@ -59,6 +59,8 @@ IUSE="${IUSE} ${CPU_FEATURES_MAP[@]%:*}"
 # will silently disable it Wwithout the user knowing, which defeats the
 # purpose of the opengl use flag.
 REQUIRED_USE="
+	cpu_flags_x86_avx2? ( cpu_flags_x86_f16c )
+	cpu_flags_x86_f16c? ( cpu_flags_x86_avx )
 	cuda? ( tesseract? ( opencl ) )
 	dnnsamples? ( examples )
 	gflags? ( contrib )
@@ -135,7 +137,7 @@ RDEPEND="
 		opengl? ( dev-qt/qtopengl:5= )
 	)
 	tesseract? ( app-text/tesseract[opencl=,${MULTILIB_USEDEP}] )
-	threads? ( dev-cpp/tbb[${MULTILIB_USEDEP}] )
+	threads? ( dev-cpp/tbb:=[${MULTILIB_USEDEP}] )
 	tiff? ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
 	v4l? ( >=media-libs/libv4l-0.8.3[${MULTILIB_USEDEP}] )
 	vaapi? ( x11-libs/libva[${MULTILIB_USEDEP}] )
