@@ -46,6 +46,8 @@ src_configure() {
 		--disable-dbip2 \
 		--disable-external \
 		--disable-ip2location \
+		--enable-openssl-evp-md5 \
+		--enable-openssl-md5 \
 		$(use_enable cgi mod_ipv6calc ) \
 		${myconf}
 }
