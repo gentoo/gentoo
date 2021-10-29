@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=CHORNY
 DIST_VERSION=0.36
@@ -11,10 +11,12 @@ DESCRIPTION="Copy file, file Copy file[s] | dir[s], dir"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
-IUSE=""
 
-RDEPEND="virtual/perl-File-Spec"
-DEPEND="${RDEPEND}"
+RDEPEND="
+	virtual/perl-File-Spec
+"
+BDEPEND="${RDEPEND}
+"
 
 src_test() {
 	perl_rm_files t/pod.t
