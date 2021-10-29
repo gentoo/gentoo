@@ -1,26 +1,26 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=5
 
-inherit autotools flag-o-matic linux-info
+inherit epatch linux-info
 
 DESCRIPTION="Resource manager and queuing system based on OpenPBS"
 HOMEPAGE="http://www.adaptivecomputing.com/products/open-source/torque"
-SRC_URI="https://github.com/adaptivecomputing/torque/archive/6a0b37f85c7d644e9217cbab1542792d646f59a6.tar.gz -> ${P}-gh-20170829.tar.gz
-	https://dev.gentoo.org/~juippis/distfiles/tmp/torque-6.0.4-gcc7.patch"
+# TODO:  hopefully moving to github tags soon
+# http://www.supercluster.org/pipermail/torquedev/2013-May/004519.html
+SRC_URI="http://www.adaptivecomputing.com/index.php?wpfb_dl=1690 -> ${P}.tar.gz"
 
 LICENSE="torque-2.5"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="autorun cgroups cpusets +crypt doc kernel_linux munge nvidia quickcommit server +syslog tk"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
+IUSE="cpusets +crypt doc drmaa kernel_linux munge nvidia server +syslog tk"
 
 DEPEND_COMMON="
 	sys-libs/zlib
 	sys-libs/readline:0=
-	dev-libs/libxml2
-	>=dev-libs/boost-1.41
-	cpusets? ( sys-apps/hwloc )
+	dev-libs/openssl:0=
+	cpusets? ( sys-apps/hwloc:= )
 	munge? ( sys-auth/munge )
 	nvidia? ( >=x11-drivers/nvidia-drivers-275 )
 	tk? (
@@ -30,7 +30,7 @@ DEPEND_COMMON="
 	syslog? ( virtual/logger )
 	!!games-util/qstat"
 
-# libncurses.so is only needed for configure check on readline
+# libncurses.so is only needed for the configure check on readline to pass
 DEPEND="${DEPEND_COMMON}
 	sys-libs/ncurses:*
 	!!sys-cluster/slurm"
@@ -45,15 +45,6 @@ RDEPEND="${DEPEND_COMMON}
 # by the configure.ac and Makefile.am are missing.
 # http://www.supercluster.org/pipermail/torquedev/2014-October/004773.html
 
-S="${WORKDIR}"/${PN}-6a0b37f85c7d644e9217cbab1542792d646f59a6
-
-PATCHES=(
-	"${DISTDIR}"/${P}-gcc7.patch
-	"${FILESDIR}"/${PN}-6.0.3-fix-emptystring-comparison.patch
-	"${FILESDIR}"/${P}-no-openssl.patch
-	"${FILESDIR}"/${P}-error_buf_overflow_prevent.patch
-)
-
 pkg_setup() {
 	PBS_SERVER_HOME="${PBS_SERVER_HOME:-/var/spool/${PN}}"
 
@@ -67,11 +58,11 @@ pkg_setup() {
 		fi
 	fi
 
-	if use cpusets || use cgroups; then
+	if use cpusets; then
 		if ! use kernel_linux; then
 			einfo
-			elog "    Torque currently only has support for cpusets and cgroups in linux."
-			elog "Assuming you didn't really want this USE flag and ignoring its state."
+			elog "    Torque currently only has support for cpusets in linux."
+			elog "Assuming you didn't really want this USE flag, and ignoring its state."
 			einfo
 		else
 			linux-info_pkg_setup
@@ -86,36 +77,40 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	# Unused and causes breakage when switching from glibc to tirpc.
+	# https://github.com/adaptivecomputing/torque/pull/148
+	sed -i '/rpc\/rpc\.h/d' src/lib/Libnet/net_client.c || die
+
 	# We install to a valid location, no need to muck with ld.so.conf
 	# --without-loadlibfile is supposed to do this for us...
 	sed -i '/mk_default_ld_lib_file || return 1/d' buildutils/pbs_mkdirs.in || die
-	eautoreconf
+
+	epatch "${FILESDIR}"/${PN}-4.1.5.1-tcl8.6.patch
+
+	# 491270
+	epatch "${FILESDIR}"/CVE-2013-4495.4.1.patch
 }
 
 src_configure() {
-	append-cflags "-fpermissive"
+	local myconf="--with-rcp=mom_rcp"
+
+	use crypt && myconf="--with-rcp=scp"
 
 	econf \
 		$(use_enable tk gui) \
-		$(use_enable tk tcl-qstat) \
 		$(use_enable syslog) \
 		$(use_enable server) \
-		--disable-drmaa \
+		$(use_enable drmaa) \
 		$(use_enable munge munge-auth) \
 		$(use_enable nvidia nvidia-gpus) \
-		$(usex crypt "--with-rcp=scp" "--with-rcp=mom_rcp") \
 		$(usex kernel_linux $(use_enable cpusets cpuset) --disable-cpuset) \
-		$(usex kernel_linux $(use_enable cgroups) --disable-cgroups) \
-		$(use_enable autorun) \
-		$(use_enable quickcommit) \
 		--with-server-home=${PBS_SERVER_HOME} \
 		--with-environ=/etc/pbs_environment \
 		--with-default-server=${PBS_SERVER_NAME} \
 		--disable-gcc-warnings \
-		--disable-silent-rules \
 		--with-tcp-retry-limit=2 \
-		--without-loadlibfile
+		--without-loadlibfile \
+		${myconf}
 }
 
 src_install() {
@@ -172,9 +167,66 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
-		elog "If this is the first time torque has been installed, then you are not"
-		elog "ready to start the server.  Please refer to the documentation located at:"
-		elog "http://docs.adaptivecomputing.com/torque/${PV//./-}/adminGuide/torquehelp.htm#topics/torque/1-installConfig/initializeConfigOnServer.htm"
+	elog "    If this is the first time torque has been installed, then you are not"
+	elog "ready to start the server.  Please refer to the documentation located at:"
+	elog "http://www.clusterresources.com/wiki/doku.php?id=torque:torque_wiki"
+	echo ""
+	elog "    For a basic setup, you may use emerge --config ${PN}"
+	echo ""
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		elog "Important 4.0+ updates"
+		elog "  - The on-wire protocol version has been changed."
+		elog "    Versions of Torque before 4.0.0 are no longer able to communicate."
+		elog "  - pbs_iff has been replaced by trqauthd, you will now need to add"
+		elog "    trqauthd to your default runlevel."
 	fi
+}
+
+# root will be setup as the primary operator/manager, the local machine
+# will be added as a node and we'll create a simple queue, batch.
+pkg_config() {
+	local h="$(echo "${ROOT}/${PBS_SERVER_HOME}" | sed 's:///*:/:g')"
+	local rc=0
+
+	ebegin "Configuring Torque"
+	einfo "Using ${h} as the pbs homedir"
+	einfo "Using ${PBS_SERVER_NAME} as the pbs_server"
+
+	# Check for previous configuration and bail if found.
+	if [ -e "${h}/server_priv/acl_svr/operators" ] \
+		|| [ -e "${h}/server_priv/nodes" ] \
+		|| [ -e "${h}/mom_priv/config" ]; then
+		ewarn "Previous Torque configuration detected.  Press Enter to"
+		ewarn "continue or Control-C to abort now"
+		read
+	fi
+
+	# pbs_mom configuration.
+	echo "\$pbsserver ${PBS_SERVER_NAME}" > "${h}/mom_priv/config" || die
+	echo "\$logevent 255" >> "${h}/mom_priv/config" || die
+
+	if use server; then
+		local qmgr="${EROOT}/usr/bin/qmgr -c"
+		# pbs_server bails on repeated backslashes.
+		if ! "${EROOT}"/usr/sbin/pbs_server -f -d "${h}" -t create; then
+			eerror "Failed to start pbs_server"
+			rc=1
+		else
+			${qmgr} "set server operators = root@$(hostname -f)" ${PBS_SERVER_NAME} \
+				&& ${qmgr} "create queue batch" ${PBS_SERVER_NAME} \
+				&& ${qmgr} "set queue batch queue_type = Execution" ${PBS_SERVER_NAME} \
+				&& ${qmgr} "set queue batch started = True" ${PBS_SERVER_NAME} \
+				&& ${qmgr} "set queue batch enabled = True" ${PBS_SERVER_NAME} \
+				&& ${qmgr} "set server default_queue = batch" ${PBS_SERVER_NAME} \
+				&& ${qmgr} "set server resources_default.nodes = 1" ${PBS_SERVER_NAME} \
+				&& ${qmgr} "set server scheduling = True" ${PBS_SERVER_NAME} \
+				|| die
+
+			"${EROOT}"/usr/bin/qterm -t quick ${PBS_SERVER_NAME} || rc=1
+
+			# Add the local machine as a node.
+			echo "$(hostname -f) np=1" > "${h}/server_priv/nodes" || die
+		fi
+	fi
+	eend ${rc}
 }
