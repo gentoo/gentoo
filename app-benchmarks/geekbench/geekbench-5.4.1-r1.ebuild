@@ -1,19 +1,18 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows"
 HOMEPAGE="https://www.geekbench.com/"
 SRC_URI="https://cdn.geekbench.com/Geekbench-${PV}-Linux.tar.gz"
+S="${WORKDIR}/Geekbench-${PV}-Linux"
 
 KEYWORDS="-* amd64"
 LICENSE="geekbench"
 SLOT="5"
 
 RESTRICT="bindist mirror"
-
-S="${WORKDIR}/Geekbench-${PV}-Linux"
 
 QA_PREBUILT="
 	opt/geekbench5/geekbench5
