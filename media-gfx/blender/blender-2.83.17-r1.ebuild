@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_9 )
+PYTHON_COMPAT=( python3_8 )
 
 inherit check-reqs cmake flag-o-matic pax-utils python-single-r1 toolchain-funcs xdg-utils
 
@@ -15,18 +15,18 @@ if [[ ${PV} = *9999* ]] ; then
 	EGIT_REPO_URI="https://git.blender.org/blender.git"
 else
 	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
-	TEST_TARBALL_VERSION=2.93.0
+	TEST_TARBALL_VERSION=2.83.1
 	SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.bz2 )"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 SLOT="${PV%.*}"
 LICENSE="|| ( GPL-3 BL )"
 IUSE="+bullet +dds +fluid +openexr +system-python +system-numpy +tbb \
-	alembic collada +color-management cuda +cycles \
-	debug doc +embree +ffmpeg +fftw +gmp headless jack jemalloc jpeg2k \
-	man ndof nls openal opencl +oidn +openimageio +openmp +opensubdiv \
-	+openvdb +osl +pdf +potrace +pugixml pulseaudio sdl +sndfile standalone test +tiff valgrind"
+	alembic collada +color-management cuda cycles \
+	debug doc ffmpeg fftw headless jack jemalloc jpeg2k \
+	man ndof nls openal opencl openimageio openmp opensubdiv \
+	openvdb osl sdl sndfile standalone test tiff valgrind"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -38,7 +38,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	openvdb? ( tbb )
 	osl? ( cycles )
 	standalone? ( cycles )
-	test? ( color-management )"
+	test? ( color-management osl )"
 
 # Library versions for official builds can be found in the blender source directory in:
 # build_files/build_environment/install_deps.sh
@@ -60,12 +60,10 @@ RDEPEND="${PYTHON_DEPS}
 	virtual/opengl
 	alembic? ( >=media-gfx/alembic-1.7.12[boost(+),hdf(+)] )
 	collada? ( >=media-libs/opencollada-1.6.68 )
-	color-management? ( >=media-libs/opencolorio-2.0.0 )
+	color-management? ( <media-libs/opencolorio-2.0.0 )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
-	embree? ( >=media-libs/embree-3.10.0[raymask] )
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k,vpx,vorbis,opus,xvid] )
 	fftw? ( sci-libs/fftw:3.0= )
-	gmp? ( dev-libs/gmp )
 	!headless? (
 		x11-libs/libX11
 		x11-libs/libXi
@@ -81,7 +79,6 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
 	opencl? ( virtual/opencl )
-	oidn? ( >=media-libs/oidn-1.3.0 )
 	openimageio? ( >=media-libs/openimageio-2.2.13.1:= )
 	openexr? (
 		media-libs/ilmbase:=
@@ -89,18 +86,13 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	opensubdiv? ( >=media-libs/opensubdiv-3.4.0[cuda=,opencl=] )
 	openvdb? (
-		>=media-gfx/openvdb-7.1.0
+		>=media-gfx/openvdb-7.0.0
 		dev-libs/c-blosc:=
 	)
-	osl? ( >=media-libs/osl-1.11.10.0 )
-	pdf? ( media-libs/libharu )
-	potrace? ( media-gfx/potrace )
-	pugixml? ( dev-libs/pugixml )
-	pulseaudio? ( media-sound/pulseaudio )
+	osl? ( <media-libs/osl-1.11.0 )
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
-	tbb? ( dev-cpp/tbb )
-	test? ( dev-vcs/subversion )
+	tbb? ( dev-cpp/tbb:= )
 	tiff? ( media-libs/tiff )
 	valgrind? ( dev-util/valgrind )
 "
@@ -123,6 +115,13 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
+PATCHES=(
+	"${FILESDIR}/blender-2.83.6-libmv_eigen_alignment.patch"
+	"${FILESDIR}/blender-2.83.6-constraints_test.patch"
+	"${FILESDIR}/blender-2.83.6-fix_opevdb_abi.patch"
+	"${FILESDIR}/blender-2.83.13-ffmpeg-4_4.patch"
+)
+
 blender_check_requirements() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
@@ -134,13 +133,8 @@ blender_check_requirements() {
 blender_get_version() {
 	# Get blender version from blender itself.
 	BV=$(grep "BLENDER_VERSION " source/blender/blenkernel/BKE_blender_version.h | cut -d " " -f 3; assert)
-	if ((${BV:0:1} < 3)) ; then
-		# Add period (290 -> 2.90).
-		BV=${BV:0:1}.${BV:1}
-	else
-		# Add period and strip last number (300 -> 3.0)
-		BV=${BV:0:1}.${BV:1:1}
-	fi
+	# Add period.
+	BV=${BV:0:1}.${BV:1}
 }
 
 pkg_pretend() {
@@ -198,6 +192,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# Without this the floating point math will differ when for example
+	# "-march=native" is set. This will make automated tests fail and we will
+	# not match the behaviour of some operators/modifiers with the official
+	# builds.
+	append-flags -ffp-contract=off
 	append-lfs-flags
 
 	local mycmakeargs=(
@@ -212,18 +211,15 @@ src_configure() {
 		-DWITH_CODEC_FFMPEG=$(usex ffmpeg)
 		-DWITH_CODEC_SNDFILE=$(usex sndfile)
 		-DWITH_CXX_GUARDEDALLOC=$(usex debug)
-		-DWITH_CYCLES=$(usex cycles)
 		-DWITH_CYCLES_DEVICE_CUDA=$(usex cuda TRUE FALSE)
+		-DWITH_CYCLES=$(usex cycles)
 		-DWITH_CYCLES_DEVICE_OPENCL=$(usex opencl)
-		-DWITH_CYCLES_EMBREE=$(usex embree)
-		-DWITH_CYCLES_OSL=$(usex osl)
 		-DWITH_CYCLES_STANDALONE=$(usex standalone)
 		-DWITH_CYCLES_STANDALONE_GUI=$(usex standalone)
+		-DWITH_CYCLES_OSL=$(usex osl)
 		-DWITH_DOC_MANPAGE=$(usex man)
 		-DWITH_FFTW3=$(usex fftw)
-		-DWITH_GMP=$(usex gmp)
 		-DWITH_GTESTS=$(usex test)
-		-DWITH_HARU=$(usex pdf)
 		-DWITH_HEADLESS=$(usex headless)
 		-DWITH_INSTALL_PORTABLE=OFF
 		-DWITH_IMAGE_DDS=$(usex dds)
@@ -237,19 +233,14 @@ src_configure() {
 		-DWITH_MEM_VALGRIND=$(usex valgrind)
 		-DWITH_MOD_FLUID=$(usex fluid)
 		-DWITH_MOD_OCEANSIM=$(usex fftw)
-		-DWITH_NANOVDB=OFF
 		-DWITH_OPENAL=$(usex openal)
 		-DWITH_OPENCOLLADA=$(usex collada)
 		-DWITH_OPENCOLORIO=$(usex color-management)
-		-DWITH_OPENIMAGEDENOISE=$(usex oidn)
 		-DWITH_OPENIMAGEIO=$(usex openimageio)
 		-DWITH_OPENMP=$(usex openmp)
 		-DWITH_OPENSUBDIV=$(usex opensubdiv)
 		-DWITH_OPENVDB=$(usex openvdb)
 		-DWITH_OPENVDB_BLOSC=$(usex openvdb)
-		-DWITH_POTRACE=$(usex potrace)
-		-DWITH_PUGIXML=$(usex pugixml)
-		-DWITH_PULSEAUDIO=$(usex pulseaudio)
 		-DWITH_PYTHON_INSTALL=$(usex system-python OFF ON)
 		-DWITH_PYTHON_INSTALL_NUMPY=$(usex system-numpy OFF ON)
 		-DWITH_SDL=$(usex sdl)
@@ -259,13 +250,9 @@ src_configure() {
 		-DWITH_SYSTEM_LZO=ON
 		-DWITH_TBB=$(usex tbb)
 		-DWITH_USD=OFF
-		-DWITH_XR_OPENXR=OFF
 	)
-	if ! use debug ; then
-		append-flags  -DNDEBUG
-	else
-		append-flags  -DDEBUG
-	fi
+	append-flags $(usex debug '-DDEBUG' '-DNDEBUG')
+
 	cmake_src_configure
 }
 
@@ -303,6 +290,8 @@ src_test() {
 	export BLENDER_SYSTEM_SCRIPTS=${ED}/usr/share/blender/${BV}/scripts
 	export BLENDER_SYSTEM_DATAFILES=${ED}/usr/share/blender/${BV}/datafiles
 
+	# NOTE: The 'modifiers' test will fail if opensubdiv was compiled with -march=native
+	# This this is fixed in blender version 2.92 and up."
 	cmake_src_test
 
 	# Clean up the image directory for src_install
@@ -363,14 +352,12 @@ pkg_postinst() {
 	ewarn "  https://developer.blender.org/"
 	ewarn
 
-	if ! use python_single_target_python3_9; then
-		elog "You are building Blender with a newer python version than"
-		elog "supported by this version upstream."
-		elog "If you experience breakages with e.g. plugins, please switch to"
-		elog "python_single_target_python3_9 instead."
-		elog "Bug: https://bugs.gentoo.org/737388"
-		elog
-	fi
+	elog "You are building Blender with a newer python version than"
+	elog "supported by this version upstream."
+	elog "If you experience breakages with e.g. plugins, please download"
+	elog "the official Blender LTS binary release instead."
+	elog "Bug: https://bugs.gentoo.org/737388"
+	elog
 
 	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
