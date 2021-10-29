@@ -30,7 +30,7 @@ GPSD_PROTOCOLS=(
 	superstar2 tnt tripmate tsip ublox
 )
 IUSE_GPSD_PROTOCOLS=${GPSD_PROTOCOLS[@]/#/+gpsd_protocols_}
-IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug ipv6 latency-timing ncurses ntp python qt5 +shm +sockets static systemd test udev usb X"
+IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug ipv6 latency-timing ncurses ntp +python qt5 +shm +sockets static systemd test udev usb X"
 REQUIRED_USE="X? ( python )
 	gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm )
 	gpsd_protocols_isync? ( gpsd_protocols_ublox )
