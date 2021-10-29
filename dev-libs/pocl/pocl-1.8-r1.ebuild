@@ -7,10 +7,9 @@ DOCS_AUTODOC=0
 DOCS_BUILDER="sphinx"
 DOCS_DIR="doc/sphinx/source"
 PYTHON_COMPAT=( python3_{8..10} pypy3 )
+LLVM_MAX_SLOT=13
 
 inherit cmake llvm python-any-r1 docs
-
-LLVM_MAX_SLOT=12
 
 DESCRIPTION="Portable Computing Language (an implementation of OpenCL)"
 HOMEPAGE="http://portablecl.org https://github.com/pocl/pocl"
@@ -19,9 +18,10 @@ SRC_URI="https://github.com/pocl/pocl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="accel cl20 +conformance cuda debug examples float-conversion hardening +hwloc memmanager test" #hsa tce
-
-RESTRICT="!test? ( test ) mirror"
+# TODO: hsa tce
+IUSE="accel cl20 +conformance cuda debug examples float-conversion hardening +hwloc memmanager test"
+# Tests not yet passing, fragile in Portage environment(?)
+RESTRICT="!test? ( test ) test"
 
 # TODO: add dependencies for cuda
 # Note: No := on LLVM because it pulls in Clang
@@ -34,8 +34,8 @@ RDEPEND="
 	virtual/opencl
 
 	${CLANG_DEPS}
-	debug? ( dev-util/lttng-ust )
-	hwloc? ( sys-apps/hwloc[cuda?] )
+	debug? ( dev-util/lttng-ust:= )
+	hwloc? ( sys-apps/hwloc:=[cuda?] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="${CLANG_DEPS}
@@ -87,6 +87,7 @@ src_configure() {
 		-DHARDENING_ENABLE=$(usex hardening)
 		-DPOCL_DEBUG_MESSAGES=$(usex debug)
 		-DUSE_POCL_MEMMANAGER=$(usex memmanager)
+		-DENABLE_TESTS=$(usex test)
 	)
 
 	cmake_src_configure
@@ -99,7 +100,12 @@ src_compile() {
 
 src_test() {
 	export POCL_BUILDING=1
+	export POCL_DEVICES=basic
 	export CTEST_OUTPUT_ON_FAILURE=1
+	export TEST_VERBOSE=1
+
+	# Referenced https://github.com/pocl/pocl/blob/master/.drone.yml
+	# But couldn't seem to get tests working yet
 	cmake_src_test
 }
 
