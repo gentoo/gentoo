@@ -3,19 +3,21 @@
 
 EAPI=7
 
-inherit cmake toolchain-funcs
+inherit cmake-utils toolchain-funcs
 
-DESCRIPTION="C++ Performance Portability Programming EcoSystem"
+DESCRIPTION="Kokkos C++ Performance Portability Programming EcoSystem"
 HOMEPAGE="https://github.com/kokkos"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 -x86"
+KEYWORDS="amd64 -x86"
 IUSE="+openmp test"
 RESTRICT="!test? ( test )"
 
-DEPEND="sys-apps/hwloc"
+DEPEND="
+	sys-apps/hwloc:=
+	"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
@@ -39,5 +41,5 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=ON
 	)
 
-	cmake_src_configure
+	cmake-utils_src_configure
 }
