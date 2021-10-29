@@ -1,9 +1,6 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# TODO:
-# check the src files referenced in 51opencascade, i.e. resources and the like
-
 EAPI=7
 
 inherit cmake flag-o-matic
@@ -29,10 +26,8 @@ RESTRICT="test"
 
 RDEPEND="
 	app-eselect/eselect-opencascade
-	dev-cpp/eigen
-	dev-lang/tcl:0=
-	dev-lang/tk:0=
-	dev-libs/rapidjson
+	dev-lang/tcl:=
+	dev-lang/tk:=
 	dev-tcltk/itcl
 	dev-tcltk/itk
 	dev-tcltk/tix
@@ -49,37 +44,38 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
 	)
-	ffmpeg? ( media-video/ffmpeg )
+	ffmpeg? ( media-video/ffmpeg:= )
 	freeimage? ( media-libs/freeimage )
-	json? ( dev-libs/rapidjson )
-	tbb? ( dev-cpp/tbb )
-	vtk? ( >=sci-libs/vtk-8.1.0[rendering] )
+	tbb? ( dev-cpp/tbb:= )
+	vtk? ( sci-libs/vtk:=[rendering] )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	dev-cpp/eigen
+	dev-libs/rapidjson
+"
 BDEPEND="
+	app-eselect/eselect-opencascade
 	doc? ( app-doc/doxygen )
 	examples? ( dev-qt/linguist-tools:5 )
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-0001-allow-default-search-path-for-Qt5.patch
-	"${FILESDIR}"/${P}-0002-remove-unnecessary-Qt5-check.patch
-	"${FILESDIR}"/${P}-0003-add-Gentoo-configuration-type.patch
-	"${FILESDIR}"/${P}-0004-fix-installation-of-cmake-config-files.patch
-	"${FILESDIR}"/${P}-0005-fix-write-permissions-on-scripts.patch
-	"${FILESDIR}"/${P}-0006-fix-creation-of-custom.sh-script.patch
-	"${FILESDIR}"/${P}-fix-AllValues-name-collision-with-vtk-9.0.patch
+	"${FILESDIR}"/${PN}-7.5.1-0001-allow-default-search-path-for-Qt5.patch
+	"${FILESDIR}"/${PN}-7.5.1-0002-remove-unnecessary-Qt5-check.patch
+	"${FILESDIR}"/${PN}-7.5.1-0003-add-Gentoo-configuration-type.patch
+	"${FILESDIR}"/${PN}-7.5.1-0004-fix-installation-of-cmake-config-files.patch
+	"${FILESDIR}"/${PN}-7.5.1-0005-fix-write-permissions-on-scripts.patch
+	"${FILESDIR}"/${PN}-7.5.1-0006-fix-creation-of-custom.sh-script.patch
+	"${FILESDIR}"/${PN}-7.5.1-fix-AllValues-name-collision-with-vtk-9.0.patch
 )
 
 src_prepare() {
 	cmake_src_prepare
 
-	if use debug; then
-		append-cppflags -DDEBUG
-		append-flags -g
-	fi
+	use debug && append-cppflags -DDEBUG
 
-	sed -e 's/\/lib\$/\/'$(get_libdir)'\$/' \
+	sed -e 's|/lib\$|/'$(get_libdir)'\$|' \
 		-i adm/templates/OpenCASCADEConfig.cmake.in || die
 
 	# There is an OCCT_UPDATE_TARGET_FILE cmake macro that fails due to some
@@ -87,7 +83,7 @@ src_prepare() {
 	# get rid of the mechanism altogether - its purpose is to allow a
 	# side-by-side installation of release and debug libraries.
 	sed -e 's|\\${OCCT_INSTALL_BIN_LETTER}||' \
-		-i "adm/cmake/occt_toolkit.cmake" || die
+		-i adm/cmake/occt_toolkit.cmake || die
 }
 
 src_configure() {
@@ -95,7 +91,6 @@ src_configure() {
 		-DBUILD_DOC_Overview=$(usex doc)
 		-DBUILD_Inspector=$(usex examples)
 		-DBUILD_WITH_DEBUG=$(usex debug)
-		-DCMAKE_INSTALL_PREFIX="/usr"
 		-DINSTALL_DIR_BIN="$(get_libdir)/${P}/bin"
 		-DINSTALL_DIR_CMAKE="$(get_libdir)/cmake/${P}"
 		-DINSTALL_DIR_DOC="share/doc/${PF}"
@@ -135,28 +130,27 @@ src_configure() {
 
 	cmake_src_configure
 
-	prepare_env_file() {
-		# prepare /etc/env.d file
-		sed -e 's|VAR_CASROOT|'${ESYSROOT}'/usr|g' < "${FILESDIR}/${PN}-${PV_MAJ}.env.in" >> "${T}/${PV_MAJ}" || die
-		sed -e 's|lib/|'$(get_libdir)'/|g' -i "${T}/${PV_MAJ}" || die
-		sed -e 's|VAR_PV|'${PV}'|g' -i "${T}/${PV_MAJ}" || die
+	# prepare /etc/env.d file
+	sed -e "s|lib/|$(get_libdir)/|" \
+		-e "s|VAR_PV|${PV}|" \
+		-e "s|VAR_CASROOT|${ESYSROOT}/usr|" \
+		< "${FILESDIR}"/${PN}-${PV_MAJ}.env.in > "${T}"/${PV_MAJ} || die
 
-		# use TBB for memory allocation optimizations?
-		use tbb && (sed -e 's|^#MMGT_OPT=0$|MMGT_OPT=2|' -i "${T}/${PV_MAJ}" || die)
+	# use TBB for memory allocation optimizations
+	if use tbb; then
+		sed -e 's|^#MMGT_OPT=0$|MMGT_OPT=2|' -i "${T}"/${PV_MAJ} || die
+	fi
 
-		if use optimize ; then
-			# use internal optimized memory manager?
-			sed -e 's|^#MMGT_OPT=0$|MMGT_OPT=1|' -i "${T}/${PV_MAJ}" || die
-			# don't clear memory ?
-			sed -e 's|^#MMGT_CLEAR=1$|MMGT_CLEAR=0|' -i "${T}/${PV_MAJ}" || die
-		fi
-	}
-
-	prepare_env_file
+	# use internal optimized memory manager and don't clear memory with this
+	# memory manager.
+	if use optimize ; then
+		sed -e 's|^#MMGT_OPT=0$|MMGT_OPT=1|' \
+			-e 's|^#MMGT_CLEAR=1$|MMGT_CLEAR=0|' \
+			-i "${T}"/${PV_MAJ} || die
+	fi
 }
 
 src_install() {
-	use doc && docompress -x /usr/share/doc/${PF}/overview/html
 	cmake_src_install
 
 	# respect slotting
@@ -167,6 +161,8 @@ src_install() {
 	if use !examples; then
 		rm -r "${ED}/usr/share/${P}/samples" || die
 	fi
+
+	docompress -x /usr/share/doc/${PF}/overview/html
 }
 
 pkg_postinst() {

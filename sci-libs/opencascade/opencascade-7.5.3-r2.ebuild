@@ -46,7 +46,7 @@ RDEPEND="
 	)
 	ffmpeg? ( media-video/ffmpeg:= )
 	freeimage? ( media-libs/freeimage )
-	tbb? ( dev-cpp/tbb )
+	tbb? ( dev-cpp/tbb:= )
 	vtk? ( sci-libs/vtk:=[rendering] )
 "
 DEPEND="
