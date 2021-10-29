@@ -23,8 +23,7 @@ DEPEND="
 	dev-ml/react:=
 	dev-ml/dune-configurator:=
 	dev-libs/libev"
-RDEPEND="${DEPEND}
-	!<www-servers/ocsigen-1.1"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	>=dev-ml/cppo-1.6.6
 	dev-ml/findlib"
