@@ -30,26 +30,29 @@ src_configure() {
 	# okay because we want then force enabled.
 	# --disable-db-as-registry
 	# --disable-db-cc-registry
+	local myeconfargs=(
+		--disable-bundled-getopt
+		--disable-bundled-md5
+		--enable-shared
+		--enable-dynamic-load
+		--enable-db-ieee
+		--enable-db-ipv4
+		--enable-db-ipv6
+		--disable-dbip
+		--disable-dbip2
+		--disable-external
+		--disable-ip2location
+		--enable-openssl-evp-md5
+		--enable-openssl-md5
+		$(use_enable geoip)
+		$(use_enable cgi mod_ipv6calc )
+	)
+
 	if use geoip; then
-		myconf=$(use_enable geoip)
-		myconf+=" --with-geoip-db=${EPREFIX}/usr/share/GeoIP"
+		myeconfargs+=( "--with-geoip-db=${EPREFIX}/usr/share/GeoIP" )
 	fi
-	econf \
-		--disable-bundled-getopt \
-		--disable-bundled-md5 \
-		--enable-shared \
-		--enable-dynamic-load \
-		--enable-db-ieee \
-		--enable-db-ipv4 \
-		--enable-db-ipv6 \
-		--disable-dbip \
-		--disable-dbip2 \
-		--disable-external \
-		--disable-ip2location \
-		--enable-openssl-evp-md5 \
-		--enable-openssl-md5 \
-		$(use_enable cgi mod_ipv6calc ) \
-		${myconf}
+
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
