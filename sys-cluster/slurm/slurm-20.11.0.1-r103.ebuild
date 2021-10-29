@@ -45,13 +45,13 @@ COMMON_DEPEND="
 	lua? ( ${LUA_DEPS} )
 	ipmi? ( sys-libs/freeipmi )
 	json? ( dev-libs/json-c:= )
-	amd64? ( netloc? ( >=sys-apps/hwloc-2.1.0[netloc] ) )
+	amd64? ( netloc? ( >=sys-apps/hwloc-2.1.0:=[netloc] ) )
 	hdf5? ( <sci-libs/hdf5-1.12:= )
 	numa? ( sys-process/numactl )
 	ofed? ( sys-fabric/ofed )
 	ucx? ( sys-cluster/ucx )
 	X? ( net-libs/libssh2 )
-	>=sys-apps/hwloc-1.1.1-r1
+	>=sys-apps/hwloc-1.1.1-r1:=
 	sys-libs/ncurses:0=
 	app-arch/lz4:0=
 	dev-libs/glib:2=
