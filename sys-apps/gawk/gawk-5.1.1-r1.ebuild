@@ -39,6 +39,7 @@ src_prepare() {
 	sed -i '/^pty1:$/s|$|\n_pty1:|' test/Makefile.in || die
 
 	# Fix typo in configure
+	# https://lists.gnu.org/archive/html/bug-gawk/2021-10/msg00022.html
 	sed -i -e 's/AR_FLAGS = /AR_FLAGS=/' configure || die
 
 	# Fix standards conflict on Solaris
