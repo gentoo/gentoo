@@ -19,9 +19,16 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 s
 BDEPEND="
 	test? (
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
-		<dev-python/lxml-4.6.3-r1[${PYTHON_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	# Needed for now until something is figured out either at lxml
+	# upstream or libxml2?
+	# See https://github.com/facelessuser/soupsieve/issues/220
+	"${FILESDIR}"/${PN}-2.2.1-lxml-libxml2-tests.patch
+)
 
 distutils_enable_tests pytest
