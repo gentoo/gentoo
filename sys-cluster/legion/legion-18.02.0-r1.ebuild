@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	gasnet? ( >=sys-cluster/gasnet-1.26.4-r1 )
-	hwloc? ( <sys-apps/hwloc-2:= )
+	hwloc? ( sys-apps/hwloc:= )
 	"
 RDEPEND="${DEPEND}"
 

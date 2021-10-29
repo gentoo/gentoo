@@ -18,17 +18,20 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="gasnet +hwloc"
+IUSE="gasnet +hwloc test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	gasnet? ( >=sys-cluster/gasnet-1.26.4-r1 )
-	hwloc? ( sys-apps/hwloc )
+	hwloc? ( sys-apps/hwloc:= )
 	"
+RDEPEND="${DEPEND}"
 
 src_configure() {
 	mycmakeargs=(
 		-DLegion_USE_HWLOC=$(usex hwloc)
 		-DLegion_USE_GASNet=$(usex gasnet)
+		-DLegion_ENABLE_TESTING=$(usex test)
 		-DBUILD_SHARED_LIBS=ON
 		-DLegion_BUILD_EXAMPLES=ON
 		-DLegion_BUILD_TESTS=ON

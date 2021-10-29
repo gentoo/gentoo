@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,19 +7,24 @@ inherit cmake-utils
 
 DESCRIPTION="A data-centric parallel programming system"
 HOMEPAGE="https://legion.stanford.edu/"
-SRC_URI="https://github.com/StanfordLegion/${PN}/archive/${P}.tar.gz"
+if [[ ${PV} = 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="git://StanfordLegion/${PN}.git https://github.com/StanfordLegion/${PN}.git"
+else
+	SRC_URI="https://github.com/StanfordLegion/${PN}/archive/${P}.tar.gz"
+	KEYWORDS="~amd64"
+	S="${WORKDIR}/${PN}-${P}"
+fi
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
 IUSE="gasnet +hwloc"
 
 DEPEND="
 	gasnet? ( >=sys-cluster/gasnet-1.26.4-r1 )
-	hwloc? ( sys-apps/hwloc )
+	hwloc? ( sys-apps/hwloc:= )
 	"
-
-S="${WORKDIR}/${PN}-${P}"
+RDEPEND="${DEPEND}"
 
 src_configure() {
 	mycmakeargs=(
