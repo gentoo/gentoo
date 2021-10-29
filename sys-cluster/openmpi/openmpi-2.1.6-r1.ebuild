@@ -31,7 +31,7 @@ SRC_URI="https://www.open-mpi.org/software/ompi/v$(ver_cut 1-2)/downloads/${MY_P
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
-IUSE="cma cuda cxx fortran heterogeneous ipv6 java numa romio
+IUSE="cma cuda cxx fortran heterogeneous ipv6 java mpi-threads numa romio threads
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
 
 REQUIRED_USE="openmpi_rm_slurm? ( !openmpi_rm_pbs )
@@ -48,9 +48,9 @@ CDEPEND="
 	!sys-cluster/mpich2
 	!sys-cluster/nullmpi
 	!sys-cluster/pmix
-	>=dev-libs/libevent-2.0.22[${MULTILIB_USEDEP},threads]
+	>=dev-libs/libevent-2.0.22:=[${MULTILIB_USEDEP},threads]
 	dev-libs/libltdl:0[${MULTILIB_USEDEP}]
-	<sys-apps/hwloc-2[${MULTILIB_USEDEP},numa?]
+	<sys-apps/hwloc-2:=[${MULTILIB_USEDEP},numa?]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1:= )
 	openmpi_fabrics_ofed? ( sys-fabric/ofed:* )
@@ -87,8 +87,10 @@ src_prepare() {
 
 	# Necessary for scalibility, see
 	# http://www.open-mpi.org/community/lists/users/2008/09/6514.php
-	echo 'oob_tcp_listen_mode = listen_thread' \
-		>> opal/etc/openmpi-mca-params.conf || die
+	if use threads; then
+		echo 'oob_tcp_listen_mode = listen_thread' \
+			>> opal/etc/openmpi-mca-params.conf || die
+	fi
 }
 
 multilib_src_configure() {
@@ -115,6 +117,7 @@ multilib_src_configure() {
 		$(use_enable ipv6) \
 		$(multilib_native_use_enable java) \
 		$(multilib_native_use_enable java mpi-java) \
+		$(multilib_native_use_enable mpi-threads mpi-thread-multiple) \
 		$(multilib_native_use_with openmpi_fabrics_ofed verbs "${EPREFIX}"/usr) \
 		$(multilib_native_use_with openmpi_fabrics_knem knem "${EPREFIX}"/usr) \
 		$(multilib_native_use_with openmpi_fabrics_psm psm "${EPREFIX}"/usr) \
