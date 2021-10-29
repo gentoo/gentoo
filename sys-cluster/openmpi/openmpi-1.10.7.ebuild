@@ -58,9 +58,9 @@ CDEPEND="
 	!sys-cluster/mpich2
 	!sys-cluster/nullmpi
 	!sys-cluster/pmix
-	>=dev-libs/libevent-2.0.21[${MULTILIB_USEDEP}]
+	>=dev-libs/libevent-2.0.21:=[${MULTILIB_USEDEP}]
 	dev-libs/libltdl:0[${MULTILIB_USEDEP}]
-	<sys-apps/hwloc-2[${MULTILIB_USEDEP},numa?]
+	<sys-apps/hwloc-2:=[${MULTILIB_USEDEP},numa?]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1 )
 	openmpi_fabrics_ofed? ( sys-fabric/ofed:* )

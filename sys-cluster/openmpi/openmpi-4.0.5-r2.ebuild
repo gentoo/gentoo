@@ -30,8 +30,8 @@ HOMEPAGE="https://www.open-mpi.org"
 SRC_URI="https://www.open-mpi.org/software/ompi/v$(ver_cut 1-2)/downloads/${MY_P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~ia64 ~ppc ~ppc64 ~riscv sparc x86 ~amd64-linux"
-IUSE="cma cuda cxx fortran heterogeneous ipv6 java libompitrace peruse romio
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
+IUSE="cma cuda cxx fortran heterogeneous ipv6 java romio
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
 
 REQUIRED_USE="openmpi_rm_slurm? ( !openmpi_rm_pbs )
@@ -48,7 +48,7 @@ CDEPEND="
 	!sys-cluster/nullmpi
 	>=dev-libs/libevent-2.0.22:=[${MULTILIB_USEDEP},threads]
 	dev-libs/libltdl:0[${MULTILIB_USEDEP}]
-	>=sys-apps/hwloc-2.0.2[${MULTILIB_USEDEP}]
+	>=sys-apps/hwloc-2.0.2:=[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1:= )
 	openmpi_fabrics_ofed? ( || ( sys-cluster/rdma-core sys-fabric/ofed:* ) )
@@ -59,15 +59,14 @@ CDEPEND="
 	openmpi_ofed_features_rdmacm? ( || ( sys-cluster/rdma-core sys-fabric/librdmacm:* ) )"
 
 RDEPEND="${CDEPEND}
-	java? ( >=virtual/jre-1.8:* )"
+	java? ( >=virtual/jre-1.6 )"
 
 DEPEND="${CDEPEND}
-	java? ( >=virtual/jdk-1.8:* )"
+	java? ( >=virtual/jdk-1.6 )"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/mpi.h
 	/usr/include/openmpi/ompi/mpi/java/mpiJava.h
-	/usr/include/openmpi/mpiext/mpiext_cuda_c.h
 )
 
 pkg_setup() {
@@ -98,42 +97,32 @@ multilib_src_configure() {
 		export ac_cv_path_JAVAC="$(java-pkg_get-javac) $(java-pkg_javac-args)"
 	fi
 
-	local myconf=(
-		--enable-mpi-fortran=$(usex fortran all no)
-		--enable-orterun-prefix-by-default
-		--enable-pretty-print-stacktrace
-
-		--sysconfdir="${EPREFIX}/etc/${PN}"
-
-		--with-hwloc="${EPREFIX}/usr"
-		--with-hwloc-libdir="${EPREFIX}/usr/$(get_libdir)"
-		--with-libltdl="${EPREFIX}/usr"
-		--with-libevent="${EPREFIX}/usr"
-		--with-libevent-libdir="${EPREFIX}/usr/$(get_libdir)"
-
-		$(use_enable cxx mpi-cxx)
-		$(use_enable heterogeneous)
-		$(use_enable ipv6)
-		$(use_enable libompitrace)
-		$(use_enable peruse)
-		$(use_enable romio io-romio)
-
-		$(use_with cma)
-
-		$(multilib_native_use_enable java mpi-java)
-		$(multilib_native_use_enable openmpi_ofed_features_control-hdr-padding openib-control-hdr-padding)
-		$(multilib_native_use_enable openmpi_ofed_features_rdmacm openib-rdmacm)
-		$(multilib_native_use_enable openmpi_ofed_features_udcm openib-udcm)
-		$(multilib_native_use_enable openmpi_ofed_features_dynamic-sl openib-dynamic-sl)
-
-		$(multilib_native_use_with cuda cuda "${EPREFIX}"/opt/cuda)
-		$(multilib_native_use_with openmpi_fabrics_ofed verbs "${EPREFIX}"/usr)
-		$(multilib_native_use_with openmpi_fabrics_knem knem "${EPREFIX}"/usr)
-		$(multilib_native_use_with openmpi_fabrics_psm psm "${EPREFIX}"/usr)
-		$(multilib_native_use_with openmpi_rm_pbs tm)
+	ECONF_SOURCE=${S} econf \
+		--sysconfdir="${EPREFIX}/etc/${PN}" \
+		--enable-pretty-print-stacktrace \
+		--enable-orterun-prefix-by-default \
+		--with-hwloc="${EPREFIX}/usr" \
+		--with-hwloc-libdir="${EPREFIX}/usr/$(get_libdir)" \
+		--with-libltdl="${EPREFIX}/usr" \
+		--with-libevent="${EPREFIX}/usr" \
+		--with-libevent-libdir="${EPREFIX}/usr/$(get_libdir)" \
+		--enable-mpi-fortran=$(usex fortran all no) \
+		$(use_enable cxx mpi-cxx) \
+		$(use_with cma) \
+		$(multilib_native_use_with cuda cuda "${EPREFIX}"/opt/cuda) \
+		$(use_enable romio io-romio) \
+		$(use_enable heterogeneous) \
+		$(use_enable ipv6) \
+		$(multilib_native_use_enable java mpi-java) \
+		$(multilib_native_use_with openmpi_fabrics_ofed verbs "${EPREFIX}"/usr) \
+		$(multilib_native_use_with openmpi_fabrics_knem knem "${EPREFIX}"/usr) \
+		$(multilib_native_use_with openmpi_fabrics_psm psm "${EPREFIX}"/usr) \
+		$(multilib_native_use_enable openmpi_ofed_features_control-hdr-padding openib-control-hdr-padding) \
+		$(multilib_native_use_enable openmpi_ofed_features_rdmacm openib-rdmacm) \
+		$(multilib_native_use_enable openmpi_ofed_features_udcm openib-udcm) \
+		$(multilib_native_use_enable openmpi_ofed_features_dynamic-sl openib-dynamic-sl) \
+		$(multilib_native_use_with openmpi_rm_pbs tm) \
 		$(multilib_native_use_with openmpi_rm_slurm slurm)
-	)
-	ECONF_SOURCE=${S} econf "${myconf[@]}"
 }
 
 multilib_src_test() {
