@@ -185,6 +185,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-14.2.22-build-without-mgr.patch"
 	"${FILESDIR}/ceph-14.2.11-systemd-unit-fix.patch"
 	"${FILESDIR}/ceph-15.2.9-dont-compile-isal_compress-if-don-t-have-SSE4_1.patch"
+	"${FILESDIR}/ceph-14.2.22-snappy-uint32.patch"
 )
 
 check-reqs_export_vars() {
