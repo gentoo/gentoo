@@ -4,7 +4,7 @@
 EAPI="7"
 PYTHON_COMPAT=( python3_{8,9} )
 
-inherit gnome2-utils python-single-r1 xdg
+inherit autotools gnome2-utils python-single-r1 xdg
 
 DESCRIPTION="Japanese Anthy engine for IBus"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
@@ -29,6 +29,7 @@ BDEPEND="sys-devel/gettext
 
 src_prepare() {
 	default
+	eautoreconf
 	gnome2_environment_reset
 }
 
