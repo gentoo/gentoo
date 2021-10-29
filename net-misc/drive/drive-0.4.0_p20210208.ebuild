@@ -476,7 +476,7 @@ EGO_SUM=(
 )
 go-module_set_globals
 
-SRC_URI="${HOMEPAGE}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/odeke-em/drive/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
 KEYWORDS="~amd64"
