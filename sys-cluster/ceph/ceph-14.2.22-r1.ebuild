@@ -44,7 +44,7 @@ DEPEND="
 	app-shells/bash:0
 	app-misc/jq:=
 	dev-libs/crypto++:=
-	dev-libs/leveldb:=[snappy,tcmalloc(-)?]
+	<dev-libs/leveldb-1.21:=[snappy,tcmalloc(-)?]
 	dev-libs/libaio:=
 	dev-libs/libnl:3=
 	dev-libs/libxml2:=
