@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit flag-o-matic
+inherit epatch flag-o-matic
 
 DESCRIPTION="Revision Control System"
 HOMEPAGE="https://www.gnu.org/software/rcs/"
@@ -20,6 +20,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-test-t810.patch
+
 	sed -i -e '/gets is a security hole/d' \
 		lib/stdio.in.h || die
 }
