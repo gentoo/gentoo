@@ -32,6 +32,11 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}"
+BDEPEND="python? (
+		$(python_gen_cond_dep '
+			dev-python/setuptools[${PYTHON_USEDEP}]
+		')
+	)"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-boost-1.77.patch
