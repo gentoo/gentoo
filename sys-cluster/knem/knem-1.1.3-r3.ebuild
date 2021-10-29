@@ -20,10 +20,10 @@ SLOT="0"
 IUSE="debug modules"
 
 DEPEND="
-		sys-apps/hwloc
+		sys-apps/hwloc:=
 		virtual/linux-sources"
 RDEPEND="
-		sys-apps/hwloc
+		sys-apps/hwloc:=
 		sys-apps/kmod[tools]"
 
 MODULE_NAMES="knem(misc:${S}/driver/linux)"
