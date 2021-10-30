@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit linux-info epatch toolchain-funcs
+inherit linux-info toolchain-funcs
 
 DESCRIPTION="IP over DNS tunnel"
 HOMEPAGE="http://code.kryo.se/iodine/"
@@ -21,9 +21,13 @@ RDEPEND="sys-libs/zlib"
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-TestMessage.patch
+	"${FILESDIR}"/${P}-new-systemd.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-TestMessage.patch
-	epatch "${FILESDIR}"/${P}-new-systemd.patch
+	default
 
 	sed -e '/^\s@echo \(CC\|LD\)/d' \
 		-e 's:^\(\s\)@:\1:' \
@@ -32,18 +36,12 @@ src_prepare() {
 	tc-export CC
 }
 
-src_compile() {
-	#shipped ./Makefiles doesn't pass -j<n> to submake
-	emake -C src TARGETOS=Linux all
-}
-
 src_install() {
-	#don't re-run submake
+	# Don't re-run submake
 	sed -e '/^install:/s: all: :' \
 		-i Makefile || die
-	emake prefix="${EPREFIX}"usr DESTDIR="${D}" install
-
-	dodoc CHANGELOG README TODO
+	emake prefix="${EPREFIX}"/usr DESTDIR="${D}" install
+	einstalldocs
 
 	newinitd "${FILESDIR}"/iodined-1.init iodined
 	newconfd "${FILESDIR}"/iodined.conf iodined
