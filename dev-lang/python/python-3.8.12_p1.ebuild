@@ -56,6 +56,7 @@ DEPEND="${RDEPEND}
 	bluetooth? ( net-wireless/bluez )
 	test? ( app-arch/xz-utils[extra-filters(+)] )"
 BDEPEND="
+	virtual/awk
 	virtual/pkgconfig
 	sys-devel/autoconf-archive
 	verify-sig? ( app-crypt/openpgp-keys-python )
