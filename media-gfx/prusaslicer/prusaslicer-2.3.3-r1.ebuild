@@ -22,7 +22,7 @@ IUSE="gui test"
 REQUIRED_USE="test? ( gui )"
 RESTRICT="!test? ( test )"
 
-# Please check if works with newer TBB on next release
+# Please check if works with newer TBB on next release, bug #820785
 RDEPEND="
 	dev-cpp/eigen:3
 	<dev-cpp/tbb-2021.4.0:=
