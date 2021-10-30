@@ -22,9 +22,9 @@ REQUIRED_USE="
 	^^ ( abi6-compat abi7-compat )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
-
+# Check if newer releases work with newer TBB, bug #820788
 RDEPEND="
-	dev-cpp/tbb:=
+	<dev-cpp/tbb-2021.4.0:=
 	dev-libs/boost:=
 	dev-libs/c-blosc:=
 	dev-libs/jemalloc:=
