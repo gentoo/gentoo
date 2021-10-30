@@ -1,0 +1,8 @@
+# This file is part of WirePlumber Gentoo package
+
+# Files with lower numbers can override these presets
+#(i.e. the first file parsed wins for all matching units)
+
+enable pipewire.socket
+enable pipewire-pulse.socket
+enable wireplumber.service

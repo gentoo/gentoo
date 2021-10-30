@@ -40,7 +40,7 @@ BDEPEND="
 DEPEND="
 	${LUA_DEPS}
 	>=dev-libs/glib-2.62
-	>=media-video/pipewire-0.3.37
+	>=media-video/pipewire-0.3.39
 	virtual/libc
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd )
@@ -71,16 +71,23 @@ src_configure() {
 	meson_src_configure
 }
 
+src_install() {
+	meson_src_install
+
+	insinto /usr/lib/systemd/user-preset
+	doins "${FILESDIR}"/60-wireplumber.preset
+}
+
 pkg_postinst() {
 	if systemd_is_booted ; then
-		elog "To replace media-session with WirePlumber immediately:"
-		elog "systemctl --user disable --now pipewire-media-session.service"
-		elog "systemctl --user enable --now wireplumber.service"
+		systemctl --global preset pipewire{,-pulse}.socket wireplumber.service
+
+		elog "PipeWire with WirePlumber has been set up to be started by default on"
+		elog "user login. If you do not like that you can undo this by masking"
+		elog "wireplumber.service and pipewire{,-pulse}.socket as appropriate."
 	else
-		elog "OpenRC users need to copy ${EROOT}/usr/share/pipewire/pipewire.conf"
-		elog "to ${EROOT}/etc/pipewire/pipewire.conf and in it replace"
-		elog "${EROOT}/usr/bin/pipewire-media-session with ${EROOT}/usr/bin/wireplumber"
-		elog "The switch to WirePlumber will happen the next time pipewire is started."
+		elog "Switch to WirePlumber will happen the next time gentoo-pipewire-launcher"
+		elog "is started (a replacement for directly calling pipewire binary)."
 	fi
 	elog
 }
