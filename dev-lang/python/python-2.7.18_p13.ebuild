@@ -62,6 +62,7 @@ RDEPEND="app-arch/bzip2:=
 DEPEND="${RDEPEND}
 	bluetooth? ( net-wireless/bluez )"
 BDEPEND="
+	virtual/awk
 	virtual/pkgconfig
 	verify-sig? ( app-crypt/openpgp-keys-python )
 	!sys-devel/gcc[libffi(-)]"
