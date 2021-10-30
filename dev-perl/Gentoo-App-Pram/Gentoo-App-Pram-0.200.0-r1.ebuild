@@ -5,15 +5,12 @@ EAPI=8
 
 DIST_AUTHOR=MONSIEURP
 DIST_VERSION=0.200000
-
 inherit perl-module
 
 DESCRIPTION="Tool to merge PRs from the Gentoo Github repository"
 HOMEPAGE="https://github.com/monsieurp/Gentoo-App-Pram"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
+KEYWORDS="amd64 ~arm x86"
 
 RDEPEND="
 	dev-vcs/git
@@ -25,14 +22,11 @@ RDEPEND="
 	virtual/perl-HTTP-Tiny
 	virtual/perl-Getopt-Long
 	virtual/perl-Term-ANSIColor
-	!app-portage/pram"
-
-DEPEND="
-	${RDEPEND}
+	!app-portage/pram
+"
+BDEPEND="${RDEPEND}
+	dev-perl/Module-Build-Tiny
 	test? (
 		virtual/perl-Test-Simple
-	)"
-
-BDEPEND="
-	${RDEPEND}
-	dev-perl/Module-Build-Tiny"
+	)
+"
