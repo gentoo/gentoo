@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-30)
+# 9999-only ebuild, hasn't been updated in years,
+# uses EAPI 5, no revdeps.
+# Removal on 2021-11-29. Bug #819258.
+net-wireless/btcrack
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-30)
 # EAPI 5, no revdeps, replaced by sci-libs/eccodes
 # Removal on 2021-11-29. Bug #819111.
 sci-libs/libbufr
