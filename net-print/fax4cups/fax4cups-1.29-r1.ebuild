@@ -1,16 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 DESCRIPTION="Fax backend for CUPS"
 HOMEPAGE="http://vigna.dsi.unimi.it/fax4CUPS/"
 SRC_URI="http://vigna.dsi.unimi.it/fax4CUPS/fax4CUPS-${PV}.tar.gz"
-LICENSE="GPL-2"
+S="${WORKDIR}/fax4CUPS-${PV}"
 
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-
 IUSE="+hylafax mgetty-fax efax"
 REQUIRED_USE="|| ( hylafax mgetty-fax efax )"
 
@@ -23,27 +23,26 @@ RDEPEND="${DEPEND}
 	)
 	app-admin/sudo
 "
-
-S=${WORKDIR}/fax4CUPS-${PV}
+BDEPEND="net-print/cups"
 
 src_install() {
 	doman fax4CUPS.1
 
-	exeinto $(cups-config --serverbin)/backend
+	exeinto $(cups-config --serverbin || die)/backend
 	insinto /usr/share/cups/model
 
+	local i
 	for i in hylafax efax mgetty-fax; do
-		if use $i
-		then
+		if use ${i}; then
 			# Backend
-			doexe $i
+			doexe ${i}
 			# PPD
-			doins $i.ppd
+			doins ${i}.ppd
 		fi
 	done
 }
 
 pkg_postinst() {
-	elog "Please execute '/etc/init.d/cups restart'"
+	elog "Please execute '${EROOT}/etc/init.d/cups restart'"
 	elog "to get the *.ppd files working properly"
 }
