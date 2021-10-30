@@ -11,6 +11,7 @@ DESCRIPTION="Callback/Activity Library for Performance tracing AMD GPU's"
 HOMEPAGE="https://github.com/ROCm-Developer-Tools/roctracer.git"
 SRC_URI="https://github.com/ROCm-Developer-Tools/roctracer/archive/rocm-${PV}.tar.gz -> rocm-tracer-${PV}.tar.gz
 		https://github.com/ROCm-Developer-Tools/rocprofiler/archive/rocm-${PV}.tar.gz -> rocprofiler-${PV}.tar.gz"
+S="${WORKDIR}/roctracer-rocm-${PV}"
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
@@ -26,12 +27,15 @@ BDEPEND="
 	')
 "
 
+PATCHES=(
+	# https://github.com/ROCm-Developer-Tools/roctracer/pull/63
+	"${FILESDIR}"/${PN}-4.3.0-glibc-2.34.patch
+)
+
 python_check_deps() {
 	has_version "dev-python/CppHeaderParser[${PYTHON_USEDEP}]" &&
 	has_version "dev-python/ply[${PYTHON_USEDEP}]"
 }
-
-S="${WORKDIR}/roctracer-rocm-${PV}"
 
 src_prepare() {
 	mv "${WORKDIR}"/rocprofiler-rocm-${PV} "${WORKDIR}"/rocprofiler || die
@@ -54,7 +58,6 @@ src_prepare() {
 
 	hprefixify script/*.py
 
-	eapply_user
 	cmake_src_prepare
 }
 
