@@ -33,3 +33,6 @@ src_prepare() {
 
 	distutils-r1_src_prepare
 }
+
+# Be more tolerant with time-sensitive tests for slow systems.
+export WEBSOCKETS_TESTS_TIMEOUT_FACTOR=100
