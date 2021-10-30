@@ -13,6 +13,7 @@ RDEPEND="
 		www-apache/mod_fcgid
 		www-servers/lighttpd
 		www-servers/bozohttpd
+		www-servers/h2o
 		www-servers/nginx
 	)
 "
