@@ -27,7 +27,7 @@ RESTRICT="
 "
 
 RADEON_CARDS="r100 r200 r300 r600 radeon radeonsi"
-VIDEO_CARDS="${RADEON_CARDS} freedreno i915 i965 intel iris lima nouveau panfrost v3d vc4 virgl vivante vmware"
+VIDEO_CARDS="${RADEON_CARDS} crocus freedreno i915 i965 intel iris lima nouveau panfrost v3d vc4 virgl vivante vmware"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
@@ -45,6 +45,7 @@ REQUIRED_USE="
 	vulkan? ( video_cards_radeonsi? ( llvm ) )
 	vulkan-overlay? ( vulkan )
 	wayland? ( egl gbm )
+	video_cards_crocus? ( gallium )
 	video_cards_freedreno?  ( gallium )
 	video_cards_intel?  ( classic )
 	video_cards_i915?   ( || ( classic gallium ) )
@@ -467,6 +468,7 @@ multilib_src_configure() {
 			fi
 		fi
 
+		gallium_enable video_cards_crocus crocus
 		gallium_enable video_cards_iris iris
 
 		gallium_enable video_cards_r300 r300
@@ -515,6 +517,7 @@ multilib_src_configure() {
 		$(meson_use osmesa)
 		$(meson_use selinux)
 		$(meson_feature zstd)
+		$(meson_use video_cards_crocus prefer-crocus)
 		$(meson_use cpu_flags_x86_sse2 sse2)
 		-Dvalgrind=$(usex valgrind auto disabled)
 		-Ddri-drivers=$(driver_list "${DRI_DRIVERS[*]}")
