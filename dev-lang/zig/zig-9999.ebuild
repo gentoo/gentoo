@@ -31,12 +31,12 @@ ALL_LLVM_TARGETS=(
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS="${ALL_LLVM_TARGETS[@]}"
 
-LLVM_MAX_SLOT=12
+LLVM_MAX_SLOT=13
 
 RDEPEND="
 	sys-devel/clang:${LLVM_MAX_SLOT}
 	>=sys-devel/lld-12.0.0
-	<sys-devel/lld-13.0.0
+	<sys-devel/lld-14.0.0
 	sys-devel/llvm:${LLVM_MAX_SLOT}
 	!experimental? ( sys-devel/llvm:${LLVM_MAX_SLOT}[${LLVM_TARGET_USEDEPS// /,}] )
 "
