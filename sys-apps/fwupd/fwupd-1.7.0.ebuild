@@ -91,6 +91,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.7-logind_plugin.patch
 	"${FILESDIR}"/${P}-elanfp-requires-gusb.patch
+	"${FILESDIR}"/${P}-fix-test-configure.patch # bug 791760
 )
 
 pkg_setup() {
