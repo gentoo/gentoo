@@ -47,3 +47,12 @@ python_install_all() {
 		exec yt-dlp --compat-options youtube-dl "\${@}"
 	EOF
 }
+
+pkg_postinst() {
+	if [[ ! ${REPLACING_VERSIONS} ]] ||
+		ver_test ${REPLACING_VERSIONS} -lt 2021.10.22-r2; then
+		elog 'A wrapper using "yt-dlp --compat-options youtube-dl" was installed'
+		elog 'as "youtube-dl". This is strictly for compatibility and it is'
+		elog 'recommended to use "yt-dlp" directly, it may be removed in the future.'
+	fi
+}
