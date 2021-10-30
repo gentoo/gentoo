@@ -14,6 +14,5 @@ RDEPEND="
 		www-servers/lighttpd
 		www-servers/bozohttpd
 		www-servers/nginx
-		www-servers/cherokee
 	)
 "
