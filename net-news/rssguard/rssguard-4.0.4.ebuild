@@ -9,7 +9,7 @@ DESCRIPTION="Simple (yet powerful) feed reader"
 HOMEPAGE="https://github.com/martinrotter/rssguard"
 SRC_URI="https://github.com/martinrotter/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="|| ( LGPL-3 GPL-2+ ) AGPL-3+ BSD GPL-3+ MIT MPL-2.0"
+LICENSE="|| ( LGPL-3 GPL-2+ ) AGPL-3+ BSD GPL-3+ MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="debug webengine"
@@ -30,15 +30,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 DOCS=( README.md resources/docs/Documentation.md )
-
-pkg_pretend() {
-	if [[ -n ${REPLACING_VERSIONS} ]] && ver_test ${REPLACING_VERSIONS} -lt 4.0; then
-		ewarn "RSS Guard 4.x is NOT backwards compatible with 3.x line."
-		ewarn "You have to either export your feeds in OPML format or"
-		ewarn "manually update your database.db file to 4.x.x format:"
-		ewarn "https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#migrating-user-data-from-392-to-4xx"
-	fi
-}
 
 src_prepare() {
 	default
