@@ -556,13 +556,6 @@ sys-devel/automake:1.11
 # Migration to it is expected for GNOME 42, NOT to be unmasked with GNOME 41.
 net-libs/libsoup:3.0
 
-# Anna Vyalkova <cyber+gentoo@sysrq.in> (2021-09-07)
-# Mask backwards-incompatible version to avoid autodeletion of previous one.
-# Data migration is not supported upstream and can't be done automatically.
-# https://github.com/martinrotter/rssguard/releases/tag/4.0.0
-# https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#migratt
->=net-news/rssguard-4.0.0
-
 # Thomas Deutschmann <whissi@gentoo.org> (2021-09-07)
 # Masked while being tested and reverse deps aren't fully compatible
 # bug #797325.
