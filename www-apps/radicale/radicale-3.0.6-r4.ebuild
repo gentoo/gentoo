@@ -47,6 +47,13 @@ src_prepare() {
 	distutils-r1_src_prepare
 }
 
+distutils_enable_tests pytest
+
+python_test() {
+	distutils_install_for_testing
+	epytest radicale/tests/
+}
+
 python_install_all() {
 	rm README* || die
 	# init file
@@ -68,8 +75,6 @@ python_install_all() {
 
 	distutils-r1_python_install_all
 }
-
-distutils_enable_tests pytest
 
 pkg_postinst() {
 	local _erdir="${EROOT}${RDIR}"
