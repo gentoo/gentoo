@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-10-30)
+# Obsolete slot. Use a newer slot of the same package.
+# Masked for removal in 30 days.
+dev-ruby/rmagick:0
+dev-ruby/rbnacl:4
+
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-30)
 # 9999-only ebuild, hasn't been updated in years,
 # uses EAPI 5, no revdeps.
