@@ -20,7 +20,7 @@ if [[ ${PV} == *_p* ]] ; then
 	# - patch file names are like: patch01, patch02, ..., patch10, patch12, ..
 	# => name the ebuild _pN where N is the number of patches on the 'bugs' page.
 	my_patch_index=1
-	while [[ ${my_patch_index} -lt ${MY_PATCH} ]] ; do
+	while [[ ${my_patch_index} -le ${MY_PATCH} ]] ; do
 		SRC_URI+=" "
 		SRC_URI+=$(printf "https://www.mpfr.org/${MY_P}/patch%02d -> ${MY_P}-patch%02d.patch " ${my_patch_index} ${my_patch_index})
 		my_patch_index=$((my_patch_index+1))
@@ -33,7 +33,7 @@ LICENSE="LGPL-2.1"
 # This is a critical package; if SONAME changes, bump subslot but also add
 # preserve-libs.eclass usage to pkg_*inst! See e.g. the readline ebuild.
 SLOT="0/6" # libmpfr.so version
-#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="static-libs"
 
 RDEPEND=">=dev-libs/gmp-5.0.0:=[${MULTILIB_USEDEP},static-libs?]"
