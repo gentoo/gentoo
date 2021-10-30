@@ -28,6 +28,10 @@ src_prepare() {
 	# optional tests broken by modern tornado versions
 	sed -e 's:import tornado:&_broken:' \
 		-i urwid/tests/test_event_loops.py || die
+
+	# Fix doc generation
+	sed -e 's/!defindex/layout/' -i docs/tools/templates/indexcontent.html || die
+
 	distutils-r1_src_prepare
 }
 
