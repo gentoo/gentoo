@@ -16,7 +16,6 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-lang/erlang-21:0=[ssl]
-	<dev-lang/erlang-24
 "
 # 'mix' tool collides with sci-biology/phylip, bug #537514
 RDEPEND="${DEPEND}
@@ -31,6 +30,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.10.3-no-Q.patch
 	"${FILESDIR}"/${PN}-1.10.3-epmd-daemon.patch
 	"${FILESDIR}"/${PN}-1.11.2-mksh.patch
+	"${FILESDIR}"/${P}-fix-elixir-test.patch
+	"${FILESDIR}"/${P}-update-warnings-for-OTP-master-10807.patch
+	"${FILESDIR}"/${P}-fix-logger-translator-with-otp-24-11222.patch
 )
 
 src_install() {
