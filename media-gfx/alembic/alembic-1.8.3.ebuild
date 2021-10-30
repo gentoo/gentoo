@@ -35,7 +35,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.8.0-0001-set-correct-libdir.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.8.0-0001-set-correct-libdir.patch
+	"${FILESDIR}"/${P}-0001-find-py-ilmbase-in-config-mode.patch
+)
 
 DOCS=( ACKNOWLEDGEMENTS.txt FEEDBACK.txt NEWS.txt README.txt )
 
