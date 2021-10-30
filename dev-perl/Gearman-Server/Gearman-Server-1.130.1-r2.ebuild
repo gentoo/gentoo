@@ -1,25 +1,23 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=PALIK
-DIST_VERSION=v1.130.1
+DIST_VERSION=v${PV}
 inherit perl-module
 
 DESCRIPTION="Gearman distributed job system - worker/client connector"
 
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Danga-Socket-1.520.0
 	>=dev-perl/Gearman-1.07
 	!!sys-cluster/gearmand
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/Test-Script
