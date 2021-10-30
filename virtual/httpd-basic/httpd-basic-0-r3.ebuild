@@ -15,7 +15,6 @@ RDEPEND="
 		www-servers/boa
 		www-servers/bozohttpd
 		www-servers/fnord
-		www-servers/hiawatha
 		www-servers/monkeyd
 		www-servers/nginx
 		www-servers/thttpd
