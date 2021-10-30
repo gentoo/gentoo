@@ -42,5 +42,8 @@ python_install_all() {
 
 	rm -r "${ED}"/usr/share/doc/yt_dlp || die
 
-	dosym yt-dlp /usr/bin/youtube-dl # compatibility symlink
+	newbin - youtube-dl <<-EOF
+		#!/usr/bin/env sh
+		exec yt-dlp --compat-options youtube-dl "\${@}"
+	EOF
 }
