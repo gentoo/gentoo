@@ -8,7 +8,7 @@ EAPI=7
 # any of these modules:
 CMAKE_REMOVE_MODULES_LIST=""
 
-inherit cmake multilib
+inherit cmake flag-o-matic multilib
 
 DESCRIPTION="Solving partial differential equations with the finite element method"
 HOMEPAGE="https://www.dealii.org/"
@@ -138,10 +138,13 @@ src_configure() {
 	# variables if a "higher" variant is set
 	if use cpu_flags_x86_avx512f; then
 		mycmakeargs+=( -DDEAL_II_HAVE_AVX512=yes )
+		append-cxxflags "-mavx512f"
 	elif use cpu_flags_x86_avx; then
 		mycmakeargs+=( -DDEAL_II_HAVE_AVX=yes )
+		append-cxxflags "-mavx2"
 	elif use cpu_flags_x86_avx; then
 		mycmakeargs+=( -DDEAL_II_HAVE_SSE2=yes )
+		append-cxxflags "-msse2"
 	fi
 
 	cmake_src_configure
