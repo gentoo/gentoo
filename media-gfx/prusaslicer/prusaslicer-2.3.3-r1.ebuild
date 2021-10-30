@@ -22,9 +22,10 @@ IUSE="gui test"
 REQUIRED_USE="test? ( gui )"
 RESTRICT="!test? ( test )"
 
+# Please check if works with newer TBB on next release
 RDEPEND="
 	dev-cpp/eigen:3
-	dev-cpp/tbb:=
+	<dev-cpp/tbb-2021.4.0:=
 	>=dev-libs/boost-1.73.0:=[nls,threads(+)]
 	dev-libs/cereal
 	dev-libs/expat
