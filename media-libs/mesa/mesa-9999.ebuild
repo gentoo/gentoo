@@ -255,11 +255,12 @@ llvm_check_deps() {
 
 pkg_pretend() {
 	if use vulkan; then
-		if ! use video_cards_i965 &&
+		if ! use video_cards_freedreno &&
+		   ! use video_cards_i965 &&
 		   ! use video_cards_iris &&
 		   ! use video_cards_radeonsi &&
 		   ! use video_cards_v3d; then
-			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain i965, iris, radeonsi, or v3d"
+			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain freedreno, i965, iris, radeonsi, or v3d"
 		fi
 	fi
 
@@ -489,6 +490,7 @@ multilib_src_configure() {
 	fi
 
 	if use vulkan; then
+		vulkan_enable video_cards_freedreno freedreno
 		vulkan_enable video_cards_i965 intel
 		vulkan_enable video_cards_iris intel
 		vulkan_enable video_cards_radeonsi amd
