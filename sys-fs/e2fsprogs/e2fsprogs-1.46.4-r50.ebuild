@@ -80,8 +80,6 @@ multilib_src_configure() {
 		$(tc-has-tls || echo --disable-tls)
 		$(multilib_native_use_enable fuse fuse2fs)
 		$(use_enable nls)
-		--disable-libblkid
-		--disable-libuuid
 		$(multilib_native_use_enable tools e2initrd-helper)
 		--disable-fsck
 		--disable-uuidd
@@ -92,14 +90,15 @@ multilib_src_configure() {
 	# we use blkid/uuid from util-linux now
 	if use kernel_linux ; then
 		export ac_cv_lib_{uuid_uuid_generate,blkid_blkid_get_cache}=yes
+		myeconfargs+=( --disable-lib{blkid,uuid} )
 	fi
 
 	ac_cv_path_LDCONFIG=: \
-	ECONF_SOURCE="${S}" \
-	CC="$(tc-getCC)" \
-	BUILD_CC="$(tc-getBUILD_CC)" \
-	BUILD_LD="$(tc-getBUILD_LD)" \
-	econf "${myeconfargs[@]}"
+		ECONF_SOURCE="${S}" \
+		CC="$(tc-getCC)" \
+		BUILD_CC="$(tc-getBUILD_CC)" \
+		BUILD_LD="$(tc-getBUILD_LD)" \
+		econf "${myeconfargs[@]}"
 
 	if [[ ${CHOST} != *-uclibc ]] && grep -qs 'USE_INCLUDED_LIBINTL.*yes' config.{log,status} ; then
 		eerror "INTL sanity check failed, aborting build."
