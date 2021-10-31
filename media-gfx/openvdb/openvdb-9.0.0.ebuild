@@ -12,7 +12,7 @@ HOMEPAGE="https://www.openvdb.org"
 SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0"
-SLOT="0"
+SLOT="0/9"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="cpu_flags_x86_avx cpu_flags_x86_sse4_2 blosc doc numpy python static-libs test utils zlib abi6-compat abi7-compat +abi8-compat"
 RESTRICT="!test? ( test )"
@@ -65,6 +65,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-7.1.0-0001-Fix-multilib-header-source.patch"
 	"${FILESDIR}/${PN}-8.1.0-glfw-libdir.patch"
+	"${FILESDIR}/${PN}-9.0.0-numpy.patch"
 )
 
 pkg_setup() {
@@ -91,9 +92,9 @@ src_configure() {
 		-DOPENVDB_ABI_VERSION_NUMBER="${version}"
 		-DOPENVDB_BUILD_DOCS=$(usex doc)
 		-DOPENVDB_BUILD_UNITTESTS=$(usex test)
-		-DOPENVDB_BUILD_VDB_LOD=$(usex !utils)
-		-DOPENVDB_BUILD_VDB_RENDER=$(usex !utils)
-		-DOPENVDB_BUILD_VDB_VIEW=$(usex !utils)
+		-DOPENVDB_BUILD_VDB_LOD=$(usex utils)
+		-DOPENVDB_BUILD_VDB_RENDER=$(usex utils)
+		-DOPENVDB_BUILD_VDB_VIEW=$(usex utils)
 		-DOPENVDB_CORE_SHARED=ON
 		-DOPENVDB_CORE_STATIC=$(usex static-libs)
 		-DOPENVDB_ENABLE_RPATH=OFF
@@ -109,8 +110,10 @@ src_configure() {
 		mycmakeargs+=(
 			-DOPENVDB_BUILD_PYTHON_MODULE=ON
 			-DUSE_NUMPY=$(usex numpy)
+			-DOPENVDB_BUILD_PYTHON_UNITTESTS=$(usex test)
 			-DPYOPENVDB_INSTALL_DIRECTORY="$(python_get_sitedir)"
 			-DPython_EXECUTABLE="${PYTHON}"
+			-DPython_INCLUDE_DIR="$(python_get_includedir)"
 		)
 	fi
 
