@@ -71,6 +71,12 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
+src_prepare() {
+	sed -i -e 's:#include <Imath/half.h>:#include <Imath-3/half.h>:' openvdb/openvdb/Types.h || die
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	local myprefix="${EPREFIX}/usr/"
 
