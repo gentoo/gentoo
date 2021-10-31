@@ -511,12 +511,6 @@ x11-drivers/nvidia-drivers:0/vulkan
 dev-ruby/hashie:0
 dev-ruby/thor:0
 
-# Joonas Niilola <juippis@gentoo.org> (2021-10-02)
-# A library without revdeps. Last upstream release in 2009, huge amount
-# of open bugs not fixed has led the project being forked already.
-# Bug #776895. Removal in ~30 days.
-dev-libs/rapidxml
-
 # Alfredo Tupone <tupone@gentoo.org> (2021-09-30)
 # Deprecated upstream
 # bug #815466. Removal on 2021-10-30.
