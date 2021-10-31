@@ -1,0 +1,51 @@
+https://sources.debian.org/patches/libinklevel/0.9.3-3/0001-configure.ac-fix-ftbfs-with-autoconf2.70.patch/
+https://bugs.gentoo.org/750173
+
+From: Boyuan Yang <byang@debian.org>
+Date: Sat, 16 Jan 2021 11:03:56 -0500
+Subject: configure.ac: fix ftbfs with autoconf2.70
+
+Applied-Upstream: email, yes
+--- a/configure.ac
++++ b/configure.ac
+@@ -12,7 +12,7 @@ ABI_VERSION=5:0:0
+ 
+ dnl no more configuration after this line
+ 
+-AC_CONFIG_SRCDIR(libinklevel.c)
++AC_CONFIG_SRCDIR([libinklevel.c])
+ 
+ ## Determine hostname & OS
+ ## AC_CANONICAL_HOST
+@@ -77,9 +77,9 @@ AC_CHECK_HEADERS([ifaddrs.h])
+ 
+ ## Check for mandatory header files
+ 
+-AC_CHECK_HEADERS([arpa/inet.h fcntl.h netdb.h netinet/in.h \ 
++AC_CHECK_HEADERS([arpa/inet.h fcntl.h netdb.h netinet/in.h \
+                  sys/ioctl.h sys/socket.h sys/time.h sys/timeb.h wchar.h ]
+-                 ,,AC_MSG_ERROR( required header file missing ))
++                 ,,AC_MSG_ERROR([required header file missing]))
+ 
+ ## determine libraries that need to get linked
+ 
+@@ -96,7 +96,7 @@ AC_CHECK_FUNCS([getifaddrs])
+ AC_CHECK_FUNCS([alarm ftime gethostbyaddr gethostbyname gettimeofday inet_ntoa \
+                memset select socket strchr strdup strerror strncasecmp strstr \
+                gethostname]
+-               ,,AC_MSG_ERROR( required library function missing ))
++               ,,AC_MSG_ERROR([required library function missing]))
+ AC_FUNC_MALLOC
+ AC_FUNC_REALLOC
+ AC_HEADER_RESOLV
+@@ -117,8 +117,8 @@ case $host in
+ 	      PKG_CHECK_MODULES([LIBUSB1], [libusb-1.0]);;
+ 
+   *-freebsd*) AC_DEFINE_UNQUOTED(HOST_OS,FREEBSD,[Host OS])
+-              AC_CHECK_LIB([usb], libusb_init,, AC_MSG_ERROR(Library not found),);;
+-  *-*-*) AC_MSG_ERROR( Host OS not (yet) supported) ;;
++              AC_CHECK_LIB([usb], libusb_init,, AC_MSG_ERROR([Library not found]),);;
++  *-*-*) AC_MSG_ERROR([Host OS not (yet) supported]) ;;
+ esac
+ 
+ ## Variables to be exported
