@@ -3,8 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
-
+PYTHON_COMPAT=( python3_{8,9} )
 inherit python-single-r1
 
 DESCRIPTION="General purpose formula parser & interpreter"
@@ -17,7 +16,8 @@ if [[ ${PV} == *9999 ]]; then
 else
 	MDDS_SLOT="1/2.0"
 	SRC_URI="https://kohei.us/files/ixion/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	# Unkeyworded while libreoffice has no release making use of this slot
+	# KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="MIT"
