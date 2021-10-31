@@ -106,6 +106,9 @@ src_configure() {
 	# configureMPIEXEC and  configureMPITypes access /dev/nvidiactl
 	addpredict /dev/nvidiactl
 
+	# bug 810841
+	addpredict /dev/kfd
+
 	local mylang
 	local myopt
 
