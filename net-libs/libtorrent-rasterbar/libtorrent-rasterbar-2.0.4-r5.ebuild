@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.4-boost-1.76.patch
 	"${FILESDIR}"/${P}-boost-1.77.patch
 	"${FILESDIR}"/${P}-python-symbols.patch
+	"${FILESDIR}"/${PN}-2.0.4-asio-ssl-error.patch
 )
 
 pkg_setup() {
