@@ -1,0 +1,51 @@
+# https://bugs.gentoo.org/713586
+
+[PATCH] Build orcus-env-dump unconditionally
+
+The rule for `orcus-env-dump.o` is guarded by `if WITH_TOOLS` however,
+the rule for the executable `orcus-env-dump` is not. This leads to
+linking errors when running the test suite without tools.
+
+Move the rule for `orcus-env-dump.o` out of the if WITH_TOOLS block to
+always build it.
+---
+ src/Makefile.am | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -25,6 +25,16 @@ orcus_test_xml_LDADD = \
+ 
+ orcus_test_xml_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS) -DSRCDIR=\""$(top_srcdir)"\"
+ 
++#----------------------------------------------------------------------------
++
++# orcus-env-dump
++
++orcus_env_dump_SOURCES = orcus_env_dump.cpp
++orcus_env_dump_LDADD = \
++	parser/liborcus-parser-@ORCUS_API_VERSION@.la \
++	liborcus/liborcus-@ORCUS_API_VERSION@.la
++orcus_env_dump_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS)
++
+ 
+ TESTS = \
+ 	orcus-test-xml \
+@@ -136,16 +146,6 @@ orcus_detect_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS
+ 
+ #----------------------------------------------------------------------------
+ 
+-# orcus-env-dump
+-
+-orcus_env_dump_SOURCES = orcus_env_dump.cpp
+-orcus_env_dump_LDADD = \
+-	parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+-	liborcus/liborcus-@ORCUS_API_VERSION@.la
+-orcus_env_dump_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS)
+-
+-#----------------------------------------------------------------------------
+-
+ if BUILD_SPREADSHEET_MODEL
+ 
+ orcus_json_LDADD += \

@@ -4,7 +4,8 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit python-single-r1
+
+inherit autotools python-single-r1
 
 DESCRIPTION="Standalone file import filter library for spreadsheet documents"
 HOMEPAGE="https://gitlab.com/orcus/orcus/blob/master/README.md"
@@ -12,7 +13,7 @@ HOMEPAGE="https://gitlab.com/orcus/orcus/blob/master/README.md"
 if [[ ${PV} == *9999* ]]; then
 	MDDS_SLOT="1/9999"
 	EGIT_REPO_URI="https://gitlab.com/orcus/orcus.git"
-	inherit git-r3 autotools
+	inherit git-r3
 else
 	MDDS_SLOT="1/1.5"
 	SRC_URI="https://kohei.us/files/orcus/src/${P}.tar.xz"
@@ -21,9 +22,10 @@ fi
 
 LICENSE="MIT"
 SLOT="0/0.16" # based on SONAME of liborcus.so
-IUSE="python +spreadsheet-model tools"
+IUSE="python +spreadsheet-model test tools"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/boost:=[zlib(+)]
@@ -42,8 +44,11 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# bug 713586
+	use test && eapply "${FILESDIR}/${PN}-0.17.0-test-fix.patch"
+
 	default
-	[[ ${PV} == *9999 ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {
