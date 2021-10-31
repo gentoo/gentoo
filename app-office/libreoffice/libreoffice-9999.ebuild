@@ -44,6 +44,8 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
+	# not packaged in Gentoo, https://github.com/efficient/libcuckoo/
+	"${ADDONS_URI}/libcuckoo-93217f8d391718380c508a722ab9acd5e9081233.tar.gz"
 	# broken against latest upstream release, too many patches on top:
 	# https://github.com/tdf/libcmis/pull/43
 	"${ADDONS_URI}/libcmis-0.5.2.tar.xz"
@@ -111,6 +113,22 @@ BDEPEND="
 	sys-devel/flex
 	sys-devel/gettext
 	virtual/pkgconfig
+	clang? (
+		|| (
+			(	sys-devel/clang:13
+				sys-devel/llvm:13
+				=sys-devel/lld-13*	)
+			(	sys-devel/clang:12
+				sys-devel/llvm:12
+				=sys-devel/lld-12*	)
+			(	sys-devel/clang:11
+				sys-devel/llvm:11
+				=sys-devel/lld-11*	)
+			(	sys-devel/clang:10
+				sys-devel/llvm:10
+				=sys-devel/lld-10*	)
+		)
+	)
 	odk? ( >=app-doc/doxygen-1.8.4 )
 "
 COMMON_DEPEND="${PYTHON_DEPS}
@@ -156,7 +174,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-gfx/fontforge
 	media-gfx/graphite2
 	media-libs/fontconfig
-	media-libs/freetype:2
+	>=media-libs/freetype-2.11.0-r1:2
 	>=media-libs/harfbuzz-0.9.42:=[graphite,icu]
 	media-libs/lcms:2
 	>=media-libs/libcdr-0.1.0
@@ -171,7 +189,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	net-misc/curl
 	sci-mathematics/lpsolve
 	sys-libs/zlib
-	virtual/glu
 	virtual/jpeg:0
 	virtual/opengl
 	x11-libs/cairo[X]
@@ -184,19 +201,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	bluetooth? (
 		dev-libs/glib:2
 		net-wireless/bluez
-	)
-	clang? (
-		|| (
-			(	sys-devel/clang:12
-				sys-devel/llvm:12
-				=sys-devel/lld-12*	)
-			(	sys-devel/clang:11
-				sys-devel/llvm:11
-				=sys-devel/lld-11*	)
-			(	sys-devel/clang:10
-				sys-devel/llvm:10
-				=sys-devel/lld-10*	)
-		)
 	)
 	coinmp? ( sci-libs/coinor-mp )
 	cups? ( net-print/cups )
@@ -475,7 +479,6 @@ src_configure() {
 		--enable-cairo-canvas
 		--enable-largefile
 		--enable-mergelibs
-		--enable-neon
 		--enable-python=system
 		--enable-randr
 		--enable-release-build
@@ -499,14 +502,15 @@ src_configure() {
 		--with-system-ucpp
 		--with-tls=nss
 		--with-vendor="Gentoo Foundation"
+		--with-webdav
 		--with-x
 		--without-fonts
 		--without-myspell-dicts
 		--with-help="html"
 		--without-helppack-integration
 		--with-system-gpgmepp
+		--without-system-cuckoo
 		--without-system-jfreereport
-		--without-system_apache_commons
 		--without-system-libcmis
 		--without-system-sane
 		$(use_enable base report-builder)
