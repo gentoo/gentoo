@@ -1,0 +1,23 @@
+From a3df4d7b8a765f1d0303410cdc686d4bf8adabdc Mon Sep 17 00:00:00 2001
+From: Tim Lapawa <git@lapawa.de>
+Date: Mon, 5 Mar 2018 11:24:36 +0100
+Subject: [PATCH] The tiniest patch you can get to acquire perl 5.26
+ compatibility. It just replaces a malformed UTF8 character.
+
+---
+ lib/Padre/Wx/Main.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/Padre/Wx/Main.pm b/lib/Padre/Wx/Main.pm
+index f75cc17ea..b9005d40f 100644
+--- a/lib/Padre/Wx/Main.pm
++++ b/lib/Padre/Wx/Main.pm
+@@ -5561,7 +5561,7 @@ sub on_prev_pane {
+ 
+     $main->on_join_lines;
+ 
+-Join current line with next one (à la B<vi> with C<Ctrl+J>). No return value.
++Join current line with next one (a la B<vi> with C<Ctrl+J>). No return value.
+ 
+ =cut
+ 
