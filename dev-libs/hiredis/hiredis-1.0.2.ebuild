@@ -13,7 +13,7 @@ LICENSE="BSD"
 # 1.0.1 erroneously bumped SONAME but keep 1.0.1 here instead of the last
 # real ABI break (1.0.0) to avoid forcing another set of rebuilds for folks.
 SLOT="0/1.0.1"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~x64-solaris"
 IUSE="examples ssl static-libs test"
 RESTRICT="!test? ( test )"
 
