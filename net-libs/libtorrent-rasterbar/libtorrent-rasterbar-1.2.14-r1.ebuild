@@ -70,6 +70,8 @@ src_configure() {
 		$(use_enable static-libs static)
 		$(use_enable test tests)
 		--with-boost="${ESYSROOT}/usr"
+		# Needed because of bug #767835
+		--with-boost-libdir="${ESYSROOT}/usr/$(get_libdir)"
 		--with-libiconv
 		--enable-logging
 	)
