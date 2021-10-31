@@ -22,6 +22,7 @@ RDEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qthelp
 		dev-qt/qtprintsupport:5
+		dev-qt/linguist-tools:5
 	)
 "
 DEPEND="${RDEPEND}
