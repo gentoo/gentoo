@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=MATTN
 DIST_VERSION=0.21
@@ -11,7 +11,6 @@ inherit perl-module
 DESCRIPTION="Perl implementation of GNTP Protocol (Client Part)"
 SLOT="0"
 KEYWORDS="~amd64 x86"
-IUSE="examples"
 
 RDEPEND="
 	examples? ( virtual/perl-Encode )
@@ -21,8 +20,9 @@ RDEPEND="
 	>=virtual/perl-Digest-SHA-5.450.0
 	virtual/perl-IO
 "
-DEPEND="${RDEPEND}
-	>=dev-perl/Module-Build-Tiny-0.35.0"
+BDEPEND="${RDEPEND}
+	>=dev-perl/Module-Build-Tiny-0.35.0
+"
 
 src_test() {
 	my_test_control=${DIST_TEST_OVERRIDE:-${DIST_TEST:-do parallel}}
