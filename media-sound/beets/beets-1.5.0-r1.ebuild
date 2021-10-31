@@ -67,6 +67,9 @@ BDEPEND="
 			dev-python/rarfile[${PYTHON_USEDEP}]
 			dev-python/responses[${PYTHON_USEDEP}]
 			dev-python/wheel[${PYTHON_USEDEP}]
+			dev-python/reflink[${PYTHON_USEDEP}]
+			dev-python/confuse[${PYTHON_USEDEP}]
+			dev-python/mediafile[${PYTHON_USEDEP}]
 			media-libs/chromaprint[tools]
 			media-libs/flac
 			media-libs/gst-plugins-bad:1.0
@@ -76,9 +79,6 @@ BDEPEND="
 			media-plugins/gst-plugins-libav:1.0
 			media-video/ffmpeg:0[encode]
 			app-shells/bash-completion
-			dev-python/reflink
-			dev-python/confuse
-			dev-python/mediafile
 		)
 	')"
 
