@@ -39,13 +39,6 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-# @ECLASS-VARIABLE: _SAVEDCONFIG_CONFIGURATION_FILE
-# @DEFAULT_UNSET
-# @INTERNAL
-# @DESCRIPTION:
-# Path of configuration file, relative to /etc/portage/savedconfig,
-# restored by restore_config() and saved by save_config().
-
 # @FUNCTION: save_config
 # @USAGE: <config files to save>
 # @DESCRIPTION:
@@ -59,12 +52,7 @@ save_config() {
 	fi
 	[[ $# -eq 0 ]] && die "Usage: save_config <files>"
 
-	local configfile
-	if [[ -n ${_SAVEDCONFIG_CONFIGURATION_FILE} ]] ; then
-		configfile="/etc/portage/savedconfig/${_SAVEDCONFIG_CONFIGURATION_FILE}"
-	else
-		configfile="/etc/portage/savedconfig/${CATEGORY}/${PF}"
-	fi
+	local configfile="/etc/portage/savedconfig/${CATEGORY}/${PF}"
 
 	if [[ $# -eq 1 && -f $1 ]] ; then
 		# Just one file, so have the ${configfile} be that config file
@@ -125,7 +113,6 @@ restore_config() {
 		if [[ -r "${configfile}" ]] ; then
 			einfo "Found \"${configfile}\""
 			found=${configfile}
-			_SAVEDCONFIG_CONFIGURATION_FILE=${configfile#${base}/}
 			break
 		fi
 
