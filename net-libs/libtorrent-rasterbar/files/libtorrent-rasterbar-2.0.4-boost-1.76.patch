@@ -1,5 +1,6 @@
 https://github.com/paullouisageneau/boost-asio-gnutls/commit/895105972e5a9318d572b147c1872f64d23e2a8e
 https://bugs.gentoo.org/820836
+https://github.com/arvidn/libtorrent/pull/6546
 
 From 895105972e5a9318d572b147c1872f64d23e2a8e Mon Sep 17 00:00:00 2001
 From: Shantanu Singh <shsi@microsoft.com>
