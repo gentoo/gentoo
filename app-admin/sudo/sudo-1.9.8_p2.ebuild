@@ -161,6 +161,7 @@ src_configure() {
 
 src_test() {
 	# See bug #667600 for TZ workaround
+	# Note: drop this after 1.9.8_p2! Should be fixed upstream.
 	TZ=UTC default
 }
 
