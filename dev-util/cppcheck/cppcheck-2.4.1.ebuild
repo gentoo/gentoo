@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	virtual/pkgconfig
+	qt5? ( dev-qt/linguist-tools:5 )
 	z3? ( sci-mathematics/z3 )
 "
 
