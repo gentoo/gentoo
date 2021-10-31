@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=DALEEVANS
 DIST_VERSION=0.07
@@ -11,19 +11,18 @@ DESCRIPTION="Converts HTML to text with tables intact"
 
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}/README-INC.patch" )
 RDEPEND="
 	dev-perl/HTML-Formatter
 	dev-perl/HTML-FormatText-WithLinks
 	dev-perl/HTML-Tree
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? ( virtual/perl-Test-Simple )
 "
+
+PATCHES=( "${FILESDIR}/README-INC.patch" )
 
 src_test() {
 	perl_rm_files t/author-*.t t/pod.t t/boilerplate.t
