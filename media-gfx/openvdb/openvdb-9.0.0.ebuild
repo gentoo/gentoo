@@ -85,6 +85,8 @@ src_configure() {
 		die "OpenVDB ABI version is not compatible"
 	fi
 
+	# TODO: add NanoVDB?
+	# https://academysoftwarefoundation.github.io/openvdb/NanoVDB_HowToBuild.html
 	local mycmakeargs=(
 		-DCHOST="${CHOST}"
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}/"
