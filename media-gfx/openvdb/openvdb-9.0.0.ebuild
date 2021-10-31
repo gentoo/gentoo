@@ -72,6 +72,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# Make sure we find our renamed Imath headers
+	# bug #820929
 	sed -i -e 's:#include <Imath/half.h>:#include <Imath-3/half.h>:' openvdb/openvdb/Types.h || die
 
 	cmake_src_prepare
