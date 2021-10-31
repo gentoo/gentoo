@@ -1,0 +1,17 @@
+
+uClibc-ng is mostly abandoned upstream, and since an RFC by its maintainer in Gentoo
+in Jan 2021, no one has volunteered to step up maintenance or expressed interest in
+the uClibc-ng profiles. With this announcement we last-rite the "uclibc"
+profiles, which will be removed on 2022-01-01. For parties interested in
+an alternative libc, consider moving to musl, which is supported.
+
+Gentoo continues to wholeheartedly support musl and is focusing its
+efforts in that area.
+
+Resources:
+- https://wiki.gentoo.org/wiki/Project:Hardened_musl
+- https://gitweb.gentoo.org/proj/musl.git/ (overlay for patches)
+- #gentoo-hardened (IRC channel on irc.libera.chat) for support and discussion
+
+Please see the news item for more information:
+https://www.gentoo.org/support/news-items/2021-08-18-uclibc-ng-retirement.html
