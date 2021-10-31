@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=NIGELM
 DIST_VERSION=2.16
@@ -11,8 +11,6 @@ DESCRIPTION="Base class for HTML Formatters"
 
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Carp
@@ -23,7 +21,7 @@ RDEPEND="
 	virtual/perl-IO
 	virtual/perl-parent
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/File-Slurper
@@ -32,6 +30,7 @@ DEPEND="${RDEPEND}
 		dev-perl/Test-Warnings
 	)
 "
+
 src_test() {
 	perl_rm_files t/author-* t/release-*
 	perl-module_src_test
