@@ -195,16 +195,6 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {
-	local libguestfs_depstring="<app-emulation/libguestfs-1.46.0-r1"
-
-	# Did we have a version of libguestfs before the split into guestfs-tools?
-	# (libguestfs used to install the tools too)
-	if has_version "${libguestfs_depstring}[ocaml]" || has_version "${libguestfs_depstring}[perl]" ; then
-		HAD_LIBGUESTFS_WITH_TOOLS=1
-	fi
-}
-
 pkg_postinst() {
 	einfo "Please ensure you are in the 'kvm' group for decent performance!"
 
@@ -212,7 +202,5 @@ pkg_postinst() {
 		einfo "virt-p2v NOT installed"
 	fi
 
-	if [[ ${HAD_LIBGUESTFS_WITH_TOOLS} -eq 1 ]] ; then
-		ewarn "libguestfs' tools are now packaged as app-emulation/guestfs-tools from 1.46.0 onwards!"
-	fi
+	einfo "Note that common tools like virt-resize are now part of app-emulation/guestfs-tools"
 }
