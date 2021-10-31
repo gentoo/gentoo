@@ -1547,5 +1547,6 @@ pkg_postinst() {
 		elog "/usr/include/crypt.h. We need to preserve this file for the moment to keep"
 		elog "the upgrade working, but it also needs to be overwritten when"
 		elog "sys-libs/libxcrypt is installed. See bug 802210 for more details."
+		elog "If you have FEATURES=collision-protect, please use FEATURES=unmerge-orphans instead!"
 	fi
 }
