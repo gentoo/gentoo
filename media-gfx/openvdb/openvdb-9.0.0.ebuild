@@ -94,7 +94,6 @@ src_configure() {
 	# TODO: add NanoVDB?
 	# https://academysoftwarefoundation.github.io/openvdb/NanoVDB_HowToBuild.html
 	local mycmakeargs=(
-		-DCHOST="${CHOST}"
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}/"
 		-DOPENVDB_ABI_VERSION_NUMBER="${version}"
 		-DOPENVDB_BUILD_DOCS=$(usex doc)
