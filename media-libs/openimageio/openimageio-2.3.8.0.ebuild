@@ -5,11 +5,18 @@ EAPI=7
 
 FONT_PN=OpenImageIO
 PYTHON_COMPAT=( python3_{8..10} )
+
+TEST_OIIO_IMAGE_COMMIT="b85d7a3a10a3256b50325ad310c33e7f7cf2c6cb"
+TEST_OEXR_IMAGE_COMMIT="f17e353fbfcde3406fe02675f4d92aeae422a560"
 inherit cmake font python-single-r1
 
 DESCRIPTION="A library for reading and writing images"
 HOMEPAGE="https://sites.google.com/site/openimageio/ https://github.com/OpenImageIO"
 SRC_URI="https://github.com/OpenImageIO/oiio/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI+=" test? (
+		https://github.com/OpenImageIO/oiio-images/archive/${TEST_OIIO_IMAGE_COMMIT}.tar.gz -> ${PN}-oiio-test-image-${TEST_OIIO_IMAGE_COMMIT}.tar.gz
+		https://github.com/AcademySoftwareFoundation/openexr-images/archive/${TEST_OEXR_IMAGE_COMMIT}.tar.gz -> ${PN}-oexr-test-image-${TEST_OEXR_IMAGE_COMMIT}.tar.gz
+	)"
 S="${WORKDIR}/oiio-${PV}"
 
 LICENSE="BSD"
@@ -22,12 +29,11 @@ X86_CPU_FEATURES=(
 )
 CPU_FEATURES=( ${X86_CPU_FEATURES[@]/#/cpu_flags_x86_} )
 
-IUSE="dicom doc ffmpeg field3d gif jpeg2k opencv opengl openvdb ptex python qt5 raw +truetype ${CPU_FEATURES[@]%:*}"
+IUSE="dicom doc ffmpeg field3d gif jpeg2k opencv opengl openvdb ptex python qt5 raw test +truetype ${CPU_FEATURES[@]%:*}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-# test data in separate repo
-# second repo has no structure whatsoever
-RESTRICT="test"
+# Not quite working yet
+RESTRICT="!test? ( test ) test"
 
 BDEPEND="
 	doc? (
@@ -97,12 +103,14 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i \
-		-e 's/find_package(OpenEXR CONFIG)/find_package(OpenEXR-3 CONFIG)/' \
-		src/cmake/modules/FindOpenEXR.cmake || die
-
 	cmake_src_prepare
 	cmake_comment_add_subdirectory src/fonts
+
+	if use test ; then
+		mkdir -p "${BUILD_DIR}"/testsuite || die
+		mv "${WORKDIR}"/oiio-images-${TEST_OIIO_IMAGE_COMMIT} "${BUILD_DIR}"/testsuite/oiio-images || die
+		mv "${WORKDIR}"/openexr-images-${TEST_OEXR_IMAGE_COMMIT} "${BUILD_DIR}"/testsuite/openexr-images || die
+	fi
 }
 
 src_configure() {
@@ -118,7 +126,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DVERBOSE=ON
-		-DOIIO_BUILD_TESTS=OFF
+		-DOIIO_BUILD_TESTS=$(usex test)
 		-DINSTALL_FONTS=OFF
 		-DBUILD_DOCS=$(usex doc)
 		-DINSTALL_DOCS=$(usex doc)
