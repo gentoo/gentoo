@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-10-31)
+# dev-python/pyilmbase isn't keyworded on arm64
+media-gfx/alembic python
+
 # Ben Kohler <bkohler@gentoo.org> (2021-10-18)
 # missing keywords on net-misc/pyhoca-cli and its deps
 net-misc/remmina x2go

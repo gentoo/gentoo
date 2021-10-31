@@ -3,15 +3,15 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit cmake python-single-r1
 
 DESCRIPTION="Open framework for storing and sharing scene data"
 HOMEPAGE="https://www.alembic.io/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-LICENSE="BSD"
 
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="examples hdf5 python test"
@@ -20,13 +20,8 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	|| (
-		>=dev-libs/imath-3.0.1[python?,${PYTHON_SINGLE_USEDEP}]
-		(
-			>=media-libs/ilmbase-2.5.5
-			python? ( >=dev-python/pyilmbase-2.5.5[${PYTHON_SINGLE_USEDEP}] )
-		)
-	)
+	>=media-libs/ilmbase-2.5.5:=
+	python? ( >=dev-python/pyilmbase-2.5.5[${PYTHON_SINGLE_USEDEP}] )
 	hdf5? (
 		>=sci-libs/hdf5-1.10.2:=[zlib(+)]
 		>=sys-libs/zlib-1.2.11-r1
@@ -50,6 +45,10 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		# Force falling back to ilmbase for now
+		# bug #818232
+		-DCMAKE_DISABLE_FIND_PACKAGE_Imath=ON
+
 		-DALEMBIC_BUILD_LIBS=ON
 		-DALEMBIC_SHARED_LIBS=ON
 		# currently does nothing but require doxygen
