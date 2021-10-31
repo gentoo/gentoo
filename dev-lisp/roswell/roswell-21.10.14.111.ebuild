@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -15,7 +15,9 @@ LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
 
 # File collision with librouteros (#691754)
-RDEPEND="!net-libs/librouteros"
+RDEPEND="!net-libs/librouteros
+	net-misc/curl"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
