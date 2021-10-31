@@ -8,7 +8,8 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://kohei.us/files/${PN}/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+	# Unkeyworded while libreoffice has no release making use of this slot
+	# KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
 inherit autotools toolchain-funcs
 
@@ -16,7 +17,7 @@ DESCRIPTION="Collection of multi-dimensional data structure and indexing algorit
 HOMEPAGE="https://gitlab.com/mdds/mdds"
 
 LICENSE="MIT"
-SLOT="1/${PV%.*}" # Check API version on version bumps!
+SLOT="1/2.0" # Check API version on version bumps!
 IUSE="doc openmp valgrind test"
 RESTRICT="!test? ( test )"
 
