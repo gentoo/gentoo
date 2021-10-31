@@ -100,8 +100,8 @@ src_configure() {
 		-DOPENVDB_CORE_SHARED=ON
 		-DOPENVDB_CORE_STATIC=$(usex static-libs)
 		-DOPENVDB_ENABLE_RPATH=OFF
-		-DOPENVDB_USE_BLOSC=$(usex blosc)
-		-DOPENVDB_USE_ZLIB=$(usex zlib)
+		-DUSE_BLOSC=$(usex blosc)
+		-DUSE_ZLIB=$(usex zlib)
 		-DUSE_CCACHE=OFF
 		-DUSE_COLORED_OUTPUT=ON
 		# Off for now until 9.0.0 for OpenEXR 3 support
