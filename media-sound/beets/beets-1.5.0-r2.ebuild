@@ -39,6 +39,9 @@ RDEPEND="
 		dev-python/requests[${PYTHON_USEDEP}]
 		>=dev-python/six-1.9[${PYTHON_USEDEP}]
 		dev-python/unidecode[${PYTHON_USEDEP}]
+		dev-python/reflink[${PYTHON_USEDEP}]
+		dev-python/confuse[${PYTHON_USEDEP}]
+		dev-python/mediafile[${PYTHON_USEDEP}]
 	')"
 DEPEND="
 	${RDEPEND}
@@ -67,9 +70,6 @@ BDEPEND="
 			dev-python/rarfile[${PYTHON_USEDEP}]
 			dev-python/responses[${PYTHON_USEDEP}]
 			dev-python/wheel[${PYTHON_USEDEP}]
-			dev-python/reflink[${PYTHON_USEDEP}]
-			dev-python/confuse[${PYTHON_USEDEP}]
-			dev-python/mediafile[${PYTHON_USEDEP}]
 			media-libs/chromaprint[tools]
 			media-libs/flac
 			media-libs/gst-plugins-bad:1.0
