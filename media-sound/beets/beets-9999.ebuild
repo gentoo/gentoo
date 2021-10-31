@@ -44,7 +44,9 @@ DEPEND="
 	${RDEPEND}
 "
 BDEPEND="
-	dev-python/sphinx
+	doc? (
+		dev-python/sphinx
+	)
 	$(python_gen_cond_dep '
 		test? (
 			dev-db/sqlite[icu]
@@ -65,6 +67,9 @@ BDEPEND="
 			dev-python/rarfile[${PYTHON_USEDEP}]
 			dev-python/responses[${PYTHON_USEDEP}]
 			dev-python/wheel[${PYTHON_USEDEP}]
+			dev-python/reflink[${PYTHON_USEDEP}]
+			dev-python/confuse[${PYTHON_USEDEP}]
+			dev-python/mediafile[${PYTHON_USEDEP}]
 			media-libs/chromaprint[tools]
 			media-libs/flac
 			media-libs/gst-plugins-bad:1.0
@@ -74,9 +79,6 @@ BDEPEND="
 			media-plugins/gst-plugins-libav:1.0
 			media-video/ffmpeg:0[encode]
 			app-shells/bash-completion
-			dev-python/reflink
-			dev-python/confuse
-			dev-python/mediafile
 		)
 	')"
 
@@ -89,14 +91,13 @@ python_prepare_all() {
 }
 
 python_compile_all() {
-	emake -C docs man
 	use doc && esetup.py build_sphinx -b html --build-dir=docs/build
 }
 
 python_install_all() {
 	distutils-r1_python_install_all
 
-	doman docs/_build/man/*
+	doman man/*
 	use doc && local HTML_DOCS=( docs/build/html/. )
 	einstalldocs
 
