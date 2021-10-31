@@ -129,6 +129,16 @@ multilib_src_compile() {
 	fi
 }
 
+multilib_src_test() {
+	if multilib_is_native_abi ; then
+		emake V=1 check
+	else
+		# For non-native, there's no binaries to test. Just libraries.
+		emake -C lib/et V=1 check
+		emake -C lib/ss V=1 check
+	fi
+}
+
 multilib_src_install() {
 	if ! multilib_is_native_abi || ! use tools ; then
 		emake -C lib/et V=1 DESTDIR="${D}" install
