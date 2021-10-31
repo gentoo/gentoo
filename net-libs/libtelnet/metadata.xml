@@ -5,6 +5,10 @@
     <email>nativemad@gentoo.org</email>
     <name>Andreas Schuerch</name>
   </maintainer>
+  <maintainer type="person">
+    <email>jsmolic@gentoo.org</email>
+    <name>Jakov Smolić</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">seanmiddleditch/libtelnet</remote-id>
   </upstream>
