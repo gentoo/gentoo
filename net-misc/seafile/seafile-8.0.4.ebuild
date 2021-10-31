@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 RELEASE_COMMIT="d01b8de6d378c69525e6ed57b84bd22579b96444"
 
@@ -29,6 +29,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/libevent:=
 	net-libs/libsearpc[${PYTHON_SINGLE_USEDEP}]
 	net-misc/curl
+	sys-apps/util-linux
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}
