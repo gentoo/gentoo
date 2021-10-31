@@ -18,10 +18,8 @@ IUSE="+dht debug gnutls python ssl test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="!test? ( test ) test" # not yet fixed
-# Depend on older Boost for now for bug #815145
-# Possible runtime crashes
 DEPEND="
-	<dev-libs/boost-1.77:=[threads(+)]
+	dev-libs/boost:=[threads(+)]
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
