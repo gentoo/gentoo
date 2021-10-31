@@ -10,9 +10,9 @@ HOMEPAGE="https://github.com/redis/hiredis"
 SRC_URI="https://github.com/redis/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-# 1.0.1 erroneously bumped SONAME but keep 1.0.1 here instead of the last
-# real ABI break (1.0.0) to avoid forcing another set of rebuilds for folks.
-SLOT="0/1.0.1"
+# 1.0.1 erroneously bumped SONAME but we're stuck with it now. Force another
+# rebuild so everybody is on the right one though (1.0.0).
+SLOT="0/1.0.2"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~x64-solaris"
 IUSE="examples ssl static-libs test"
 RESTRICT="!test? ( test )"
