@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>jturner.usa+gentoo@gmail.com</email>
+    <name>John Turner</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">Alexander-Miller/pfuture</remote-id>
+    <doc>https://github.com/Alexander-Miller/pfuture/blob/master/README.org</doc>
+  </upstream>
+  <longdescription>
+    A set of simple functions wrapping Emacs’ existing process
+    creation capabilities. It allows to conveniently deal with
+    external processes in an asynchronous manner without having
+    to worry about stdout buffers and filter and sentinel-functions.
+  </longdescription>
+</pkgmetadata>

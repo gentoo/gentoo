@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>jturner.usa+gentoo@gmail.com</email>
+    <name>John Turner</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">Alexander-Miller/cfrs</remote-id>
+    <doc>https://github.com/Alexander-Miller/cfrs/blob/master/README.org</doc>
+  </upstream>
+  <longdescription>
+    A simple alternative to read-string that allows reading input via
+    a small child-frame spawned at the position of the cursor.
+    Its goal is to make the string input interface closer to those
+    used in modern GUI programs and to help the user with having
+    to switch focus from whatever they are doing currently to look
+    at the minibuffer.
+  </longdescription>
+</pkgmetadata>
