@@ -71,6 +71,7 @@ DEPEND="
 	)"
 BDEPEND="
 	app-misc/pax-utils
+	sys-devel/m4
 	virtual/pkgconfig"
 
 QA_PREBUILT="lib/firmware/* opt/bin/* usr/lib*"
