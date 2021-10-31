@@ -25,7 +25,6 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-cpp/tbb-2021.4.0:=
 	dev-libs/boost:=
-	dev-libs/c-blosc:=
 	dev-libs/jemalloc:=
 	dev-libs/log4cplus:=
 	dev-libs/imath:=
@@ -37,7 +36,7 @@ RDEPEND="
 	x11-libs/libXi
 	x11-libs/libXinerama
 	x11-libs/libXrandr
-	blosc? ( dev-libs/c-blosc )
+	blosc? ( dev-libs/c-blosc:= )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '

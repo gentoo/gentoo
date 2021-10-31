@@ -14,7 +14,7 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.g
 LICENSE="MPL-2.0"
 SLOT="0/8"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="cpu_flags_x86_avx cpu_flags_x86_sse4_2 blosc doc numpy python static-libs test utils zlib abi6-compat abi7-compat +abi8-compat"
+IUSE="cpu_flags_x86_avx cpu_flags_x86_sse4_2 +blosc doc numpy python static-libs test utils zlib abi6-compat abi7-compat +abi8-compat"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -26,7 +26,6 @@ REQUIRED_USE="
 RDEPEND="
 	<dev-cpp/tbb-2021.4.0:=
 	dev-libs/boost:=
-	dev-libs/c-blosc:=
 	dev-libs/jemalloc:=
 	dev-libs/log4cplus:=
 	media-libs/glfw
@@ -38,7 +37,7 @@ RDEPEND="
 	x11-libs/libXi
 	x11-libs/libXinerama
 	x11-libs/libXrandr
-	blosc? ( dev-libs/c-blosc )
+	blosc? ( dev-libs/c-blosc:= )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
