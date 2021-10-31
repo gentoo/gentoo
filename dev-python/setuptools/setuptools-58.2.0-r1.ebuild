@@ -49,6 +49,11 @@ DISTUTILS_IN_SOURCE_BUILD=1
 
 DOCS=( {CHANGES,README}.rst )
 
+PATCHES=(
+	# https://github.com/pypa/distutils/pull/58
+	"${FILESDIR}/${P}-fix-pypy3.8-install.patch"
+)
+
 src_prepare() {
 	# apply distutils patches to the bundled distutils
 	pushd setuptools/_distutils >/dev/null || die
