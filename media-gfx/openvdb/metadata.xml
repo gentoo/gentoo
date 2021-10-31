@@ -15,6 +15,9 @@
 		Chance of Meatballs2' and 'How to Train Your Dragon 2'. 
 	</longdescription>
 	<use>
+		<flag name="blosc">
+			Allow using blosc compression via <pkg>dev-libs/c-blosc</pkg>
+		</flag>
 		<flag restrict="&gt;=media-gfx/openvdb-7.0.0" name="numpy">
 			Build pyopenvdb with support for <pkg>dev-python/numpy</pkg>
 		</flag>
