@@ -20,6 +20,7 @@
 		<flag name="fido2">Enable FIDO2 support</flag>
 		<flag name="gcrypt">Enable sealing of journal files using gcrypt</flag>
 		<flag name="homed">Enable portable home directories</flag>
+		<flag name="hostnamed-fallback">Enable setting hostname with networkd/hostnamed without polkit (requires running <pkg>sys-apps/dbus-broker</pkg>)</flag>
 		<flag name="http">Enable embedded HTTP server in journald</flag>
 		<flag name="hwdb">Enable support for the hardware database</flag>
 		<flag name="importd">Enable import daemon</flag>
