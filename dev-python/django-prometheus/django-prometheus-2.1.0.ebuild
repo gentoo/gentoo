@@ -16,6 +16,8 @@ KEYWORDS="~amd64"
 
 RDEPEND=">=dev-python/prometheus_client-0.7[${PYTHON_USEDEP}]"
 
+distutils_enable_tests pytest
+
 python_prepare_all() {
 	sed -i "/pytest-runner/d" setup.py || die
 	distutils-r1_python_prepare_all
