@@ -1,13 +1,13 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit linux-info toolchain-funcs
 
 DESCRIPTION="A program for announcing VLANs using GVRP"
-HOMEPAGE="http://sokrates.mimuw.edu.pl/~sebek/gvrpcd/"
-SRC_URI="http://sokrates.mimuw.edu.pl/~sebek/${PN}/${P}.tar.gz"
+HOMEPAGE="http://zagrodzki.net/~sebek/gvrpcd/"
+SRC_URI="http://zagrodzki.net/~sebek/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,8 +27,8 @@ src_compile() {
 }
 
 src_install() {
-	dosbin gvrpcd
+	dosbin ${PN}
 	dodoc README
-	newinitd "${FILESDIR}"/init.gvrpcd gvrpcd
-	newconfd "${FILESDIR}"/conf.gvrpcd gvrpcd
+	newinitd "${FILESDIR}/init.gvrpcd" ${PN}
+	newconfd "${FILESDIR}/conf.gvrpcd" ${PN}
 }
