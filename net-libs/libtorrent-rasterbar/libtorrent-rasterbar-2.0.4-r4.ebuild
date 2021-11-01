@@ -45,11 +45,16 @@ PATCHES=(
 	"${FILESDIR}"/${P}-boost-1.77.patch
 	"${FILESDIR}"/${P}-python-symbols.patch
 	"${FILESDIR}"/${PN}-2.0.4-asio-ssl-error.patch
-	"${WORKDIR}"/${P}-ssl-tests-certs.patch
 )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
+}
+
+src_prepare() {
+	use test && eapply "${WORKDIR}"/${P}-ssl-tests-certs.patch
+
+	cmake_src_prepare
 }
 
 src_configure() {
