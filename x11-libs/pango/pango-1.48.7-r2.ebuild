@@ -21,7 +21,7 @@ RDEPEND="
 	>=media-libs/harfbuzz-2.0:=[glib(+),introspection?,truetype(+),${MULTILIB_USEDEP}]
 	>=media-libs/fontconfig-2.12.92:1.0=[${MULTILIB_USEDEP}]
 	>=x11-libs/cairo-1.12.10:=[X?,${MULTILIB_USEDEP}]
-	>=media-libs/freetype-2.5.0.1:2=[harfbuzz,png,${MULTILIB_USEDEP}]
+	>=media-libs/freetype-2.5.0.1:2=[${MULTILIB_USEDEP}]
 	introspection? ( >=dev-libs/gobject-introspection-0.9.5:= )
 	X? (
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
@@ -72,4 +72,13 @@ multilib_src_install_all() {
 	insinto /usr/share/gtk-doc/html
 	# This will install PangoXft API docs regardless of USE=-X, but this is intentional
 	doins -r "${S}"/docs/Pango*
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	if has_version 'media-libs/freetype[-harfbuzz]' ; then
+		ewarn "media-libs/freetype is installed without harfbuzz support. This may"
+		ewarn "lead to minor font rendering problems, see bug 712374."
+	fi
 }
