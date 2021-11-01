@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">django-cacheops</remote-id>
+		<remote-id type="github">Suor/django-cacheops</remote-id>
 	</upstream>
 </pkgmetadata>
