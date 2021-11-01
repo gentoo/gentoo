@@ -5,5 +5,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">django-mptt</remote-id>
+		<remote-id type="github">django-mptt/django-mptt</remote-id>
 	</upstream>
 </pkgmetadata>
