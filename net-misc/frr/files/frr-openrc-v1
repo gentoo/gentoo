@@ -92,6 +92,7 @@ _load_daemon_list() {
         for instance in $(echo $cdaemon_instances | tr ',' ' '); do
           watchfrr_daemons="$watchfrr_daemons $daemon-$instance"
         done
+	continue
       fi
 
       # Single instance daemon handling.
