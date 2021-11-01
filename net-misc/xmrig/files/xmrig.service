@@ -11,6 +11,7 @@ ExecStart=/usr/bin/xmrig --config=/etc/xmrig/config.json
 StandardOutput=journal
 StandardError=journal
 DynamicUser=true
+Nice=19
 CPUSchedulingPolicy=idle
 PrivateTmp=true
 ProtectHome=true
