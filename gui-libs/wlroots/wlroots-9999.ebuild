@@ -59,10 +59,9 @@ src_configure() {
 		"-Dxcb-errors=disabled"
 		"-Dexamples=false"
 		"-Dwerror=false"
-		-Drenderes=$(usex vulkan 'gles2,vulkan' gles2)
+		-Drenderers=$(usex vulkan 'gles2,vulkan' gles2)
 		-Dxwayland=$(usex X enabled disabled)
 	)
-#		"-Drenderers=gles2"
 
 	meson_src_configure
 }
