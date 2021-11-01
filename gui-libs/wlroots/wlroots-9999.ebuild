@@ -19,7 +19,7 @@ else
 fi
 
 LICENSE="MIT"
-IUSE="x11-backend X"
+IUSE="vulkan x11-backend X"
 
 DEPEND="
 	>=dev-libs/libinput-1.14.0:0=
@@ -28,6 +28,11 @@ DEPEND="
 	media-libs/mesa[egl(+),gles2,gbm(+)]
 	sys-auth/seatd:=
 	virtual/libudev
+	vulkan? (
+		dev-util/glslang:0=
+		dev-util/vulkan-headers:0=
+		media-libs/vulkan-loader:0=
+	)
 	x11-libs/libdrm
 	x11-libs/libxkbcommon
 	x11-libs/pixman
@@ -54,9 +59,10 @@ src_configure() {
 		"-Dxcb-errors=disabled"
 		"-Dexamples=false"
 		"-Dwerror=false"
-		"-Drenderers=gles2"
+		-Drenderes=$(usex vulkan 'gles2,vulkan' gles2)
 		-Dxwayland=$(usex X enabled disabled)
 	)
+#		"-Drenderers=gles2"
 
 	meson_src_configure
 }
