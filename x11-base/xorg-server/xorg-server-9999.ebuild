@@ -5,8 +5,9 @@ EAPI=7
 
 XORG_DOC=doc
 XORG_TARBALL_SUFFIX="xz"
-inherit xorg-3 multilib flag-o-matic toolchain-funcs
+inherit xorg-3 meson
 EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"
+XORG_EAUTORECONF="no"
 
 DESCRIPTION="X.Org X servers"
 SLOT="0/${PV}"
@@ -14,7 +15,7 @@ if [[ ${PV} != 9999* ]]; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
-IUSE_SERVERS="kdrive xephyr xnest xorg xvfb"
+IUSE_SERVERS="xephyr xnest xorg xvfb"
 IUSE="${IUSE_SERVERS} debug +elogind ipv6 minimal selinux suid systemd test +udev unwind xcsecurity"
 RESTRICT="!test? ( test )"
 
@@ -36,10 +37,8 @@ CDEPEND="
 	>=x11-libs/pixman-0.27.2
 	>=x11-misc/xbitmaps-1.0.1
 	>=x11-misc/xkeyboard-config-2.4.1-r3
-	kdrive? (
-		>=x11-libs/libXext-1.0.5
-		x11-libs/libXv
-	)
+	>=x11-libs/libXext-1.0.5
+	x11-libs/libXv
 	xephyr? (
 		x11-libs/libxcb[xkb]
 		x11-libs/xcb-util
@@ -86,8 +85,7 @@ REQUIRED_USE="!minimal? (
 		|| ( ${IUSE_SERVERS} )
 	)
 	elogind? ( udev )
-	?? ( elogind systemd )
-	xephyr? ( kdrive )"
+	?? ( elogind systemd )"
 
 UPSTREAMED_PATCHES=(
 )
@@ -105,83 +103,67 @@ src_configure() {
 	# sysconfdir is used for the xorg.conf location; same applies
 	# NOTE: fop is used for doc generating; and I have no idea if Gentoo
 	#	package it somewhere
-	local XORG_CONFIGURE_OPTIONS=(
-		$(use_enable ipv6)
-		$(use_enable debug)
-		$(use_enable kdrive)
-		$(use_enable test unit-tests)
-		$(use_enable unwind libunwind)
-		$(use_enable !minimal record)
-		$(use_enable !minimal xfree86-utils)
-		$(use_enable !minimal dri)
-		$(use_enable !minimal dri2)
-		$(use_enable !minimal dri3)
-		$(use_enable !minimal glamor)
-		$(use_enable !minimal glx)
-		$(use_enable xcsecurity)
-		$(use_enable xephyr)
-		$(use_enable xnest)
-		$(use_enable xorg)
-		$(use_enable xvfb)
-		$(use_enable udev config-udev)
-		$(use_with doc doxygen)
-		$(use_with doc xmlto)
-		$(use_with systemd systemd-daemon)
-		--disable-xwayland
-		--enable-libdrm
-		--sysconfdir="${EPREFIX}"/etc/X11
-		--localstatedir="${EPREFIX}"/var
-		--with-fontrootdir="${EPREFIX}"/usr/share/fonts
-		--with-xkb-output="${EPREFIX}"/var/lib/xkb
-		--disable-config-hal
-		--disable-linux-acpi
-		--without-dtrace
-		--without-fop
-		--with-sha1=libcrypto
-		CPP="$(tc-getPROG CPP cpp)"
+
+	local emesonargs=(
+		--localstatedir "${EPREFIX}/var"
+		--sysconfdir "${EPREFIX}/etc/X11"
+		$(meson_use ipv6)
+		$(meson_use debug)
+		$(meson_use unwind libunwind)
+		$(meson_use !minimal dri)
+		$(meson_use !minimal dri2)
+		$(meson_use !minimal dri3)
+		$(meson_use !minimal glx)
+		$(meson_use !minimal glamor)
+		$(meson_use xcsecurity)
+		$(meson_use xephyr)
+		$(meson_use xnest)
+		$(meson_use xorg)
+		$(meson_use xvfb)
+		$(meson_use udev)
+		$(meson_use udev udev_kms)
+		$(meson_use doc docs)
+		-Ddrm=true
+		-Dxwayland=false
+		-Dxkb_output_dir="${EPREFIX}/var/lib/xkb"
+		-Dhal=false
+		-Dlinux_acpi=false
+		-Ddtrace=false
+		-Dsha1=libcrypto
+		-Ddefault_font_path="${EPREFIX}"/usr/share/fonts
 	)
 
 	if use systemd || use elogind; then
-		XORG_CONFIGURE_OPTIONS+=(
-			--enable-systemd-logind
-			--disable-install-setuid
-			$(use_enable suid suid-wrapper)
+		emesonargs+=(
+			-Dsystemd_logind=true
+			$(meson_use suid suid_wrapper)
 		)
 	else
-		XORG_CONFIGURE_OPTIONS+=(
-			--disable-systemd-logind
-			--disable-suid-wrapper
-			$(use_enable suid install-setuid)
+		emesonargs+=(
+			-Dsystemd_logind=false
+			$(meson_use suid suid_wrapper)
 		)
 	fi
 
-	xorg-3_src_configure
+	meson_src_configure
 }
 
-server_based_install() {
+src_install() {
+	meson_src_install
+
+	#The new meson build system do not leave X symlink
+	ln -s Xorg "${ED}"/usr/bin/X
+
 	if ! use xorg; then
 		rm -f "${ED}"/usr/share/man/man1/Xserver.1x \
 			"${ED}"/usr/$(get_libdir)/xserver/SecurityPolicy \
 			"${ED}"/usr/$(get_libdir)/pkgconfig/xorg-server.pc \
 			"${ED}"/usr/share/man/man1/Xserver.1x || die
 	fi
-}
-
-src_install() {
-	xorg-3_src_install
-
-	server_based_install
-
-	if ! use minimal && use xorg; then
-		# Install xorg.conf.example into docs
-		dodoc "${S}"/hw/xfree86/xorg.conf.example
-	fi
 
 	# install the @x11-module-rebuild set for Portage
 	insinto /usr/share/portage/config/sets
 	newins "${FILESDIR}"/xorg-sets.conf xorg.conf
-
-	find "${ED}"/var -type d -empty -delete || die
 }
 
 pkg_postrm() {
