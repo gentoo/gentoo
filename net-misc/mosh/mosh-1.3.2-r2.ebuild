@@ -37,6 +37,7 @@ DEPEND="${RDEPEND}
 # [0] - avoid sandbox-violation calling git describe in Makefile.
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.5-git-version.patch
+	"${FILESDIR}"/${P}-bind-misinterpret.patch
 )
 
 src_prepare() {
