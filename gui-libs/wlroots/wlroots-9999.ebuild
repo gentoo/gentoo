@@ -61,7 +61,7 @@ src_configure() {
 		"-Dwerror=false"
 		-Drenderers=$(usex vulkan 'gles2,vulkan' gles2)
 		-Dxwayland=$(usex X enabled disabled)
-		-Dbackends=drm,libinput$(usex X ',x11' '')
+		-Dbackends=drm,libinput$(usex x11-backend ',x11' '')
 	)
 
 	meson_src_configure
