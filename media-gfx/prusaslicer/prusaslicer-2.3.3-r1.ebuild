@@ -67,6 +67,8 @@ src_prepare() {
 }
 
 src_configure() {
+	CMAKE_BUILD_TYPE="Release"
+
 	use gui && setup-wxwidgets
 
 	local mycmakeargs=(
@@ -76,6 +78,7 @@ src_configure() {
 		-DSLIC3R_GUI=$(usex gui)
 		-DSLIC3R_PCH=OFF
 		-DSLIC3R_WX_STABLE=ON
+		-Wno-dev
 	)
 
 	cmake_src_configure
