@@ -29,7 +29,7 @@ RDEPEND="
 	media-libs/ilmbase:=
 	opengl? (
 		media-libs/lcms:2
-		>=media-libs/openimageio-2.2.13.0
+		>=media-libs/openimageio-2.2.13.0:=
 		media-libs/glew:=
 		media-libs/freeglut
 		virtual/opengl
