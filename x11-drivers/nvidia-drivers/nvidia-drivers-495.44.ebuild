@@ -467,7 +467,7 @@ pkg_postinst() {
 	fi
 
 	if use wayland && [[ ${REPLACING_VERSIONS} ]] &&
-		ver_test ${REPLACING_VERSIONS} -lt 495.53.02; then
+		ver_test ${REPLACING_VERSIONS} -lt 495.29.05; then
 		elog
 		elog "While this version of ${PN} adds GBM support (allowing a wider"
 		elog "range of wayland compositors, such as sway), be warned it is very"
