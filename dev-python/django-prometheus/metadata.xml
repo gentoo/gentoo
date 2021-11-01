@@ -5,5 +5,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">django-prometheus</remote-id>
+		<remote-id type="github">korfuri/django-prometheus</remote-id>
 	</upstream>
 </pkgmetadata>
