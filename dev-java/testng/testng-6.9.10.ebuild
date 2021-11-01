@@ -4,6 +4,7 @@
 EAPI="5"
 
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="org.testng:testng:6.9.10"
 
 inherit java-pkg-2 java-pkg-simple
 
