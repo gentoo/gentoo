@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit python-r1
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/klausman/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -21,12 +21,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
 	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/nose2[${PYTHON_USEDEP}]
 	)"
 RDEPEND="${PYTHON_DEPS}"
 
 src_test() {
-	python_foreach_impl nosetests --verbosity=2
+	python_foreach_impl nose2 --verbosity=2
 }
 
 my_install() {
