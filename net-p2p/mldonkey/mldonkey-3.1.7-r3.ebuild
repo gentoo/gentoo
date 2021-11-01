@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit autotools desktop flag-o-matic toolchain-funcs
+inherit autotools desktop flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface"
 HOMEPAGE="http://mldonkey.sourceforge.net/ https://github.com/ygrek/mldonkey"
@@ -17,7 +17,7 @@ IUSE="bittorrent doc fasttrack gd gnutella gtk guionly magic +ocamlopt upnp"
 
 REQUIRED_USE="guionly? ( gtk )"
 
-COMMON_DEPEND="dev-lang/perl
+RDEPEND="dev-lang/perl
 	dev-ml/camlp4:=
 	gd? ( media-libs/gd[truetype] )
 	gtk? (
@@ -35,12 +35,10 @@ COMMON_DEPEND="dev-lang/perl
 	)
 	!guionly? ( acct-user/p2p )
 "
-RDEPEND="${COMMON_DEPEND}
-	|| ( net-analyzer/netcat net-analyzer/openbsd-netcat )"
 # Can't yet use newer OCaml
 # -unsafe-string usage:
 # https://github.com/ygrek/mldonkey/issues/46
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	<dev-lang/ocaml-4.10:=[ocamlopt?]
 	bittorrent? (
 		|| (
@@ -141,8 +139,8 @@ src_install() {
 		done
 		use bittorrent && newbin "make_torrent${myext}" make_torrent
 
+		systemd_dounit "${FILESDIR}/${PN}.service"
 		newconfd "${FILESDIR}/mldonkey.confd" mldonkey
-		fperms 600 /etc/conf.d/mldonkey
 		newinitd "${FILESDIR}/mldonkey.initd" mldonkey
 	fi
 
@@ -171,16 +169,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! use guionly; then
-		echo
-		einfo "If you want to start MLDonkey as a system service, use"
-		einfo "the /etc/init.d/mldonkey script. To control bandwidth, use"
-		einfo "the 'slow' and 'fast' arguments. Be sure to have a look at"
-		einfo "/etc/conf.d/mldonkey also."
-		echo
-	else
-		echo
-		einfo "Simply run mlgui to start the chosen MLDonkey gui."
-		einfo "It puts its config files into ~/.mldonkey"
+	if [ -f /etc/conf.d/mldonkey ] && grep -qE "^(BASEDIR|SUBDIR|LOW_DOWN|LOW_UP|HIGH_DOWN|HIGH_UP|SERVER|PORT|TELNET_PORT|USERNAME|PASSWORD|MLDONKEY_TIMEOUT)=" /etc/conf.d/mldonkey; then
+		ewarn "The following settings are deprecated and will be ignored,"
+		ewarn "please remove them from /etc/conf.d/mldonkey:"
+		ewarn "LOW_DOWN LOW_UP HIGH_DOWN HIGH_UP SERVER PORT TELNET_PORT USERNAME PASSWORD MLDONKEY_TIMEOUT"
 	fi
 }
