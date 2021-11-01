@@ -9,7 +9,7 @@
 USER="p2p"
 
 # mldonkey's working dir (must be existing)
-MLDONKEY_DIR="/home/p2p/mldonkey"
+MLDONKEY_DIR="/var/lib/mldonkey"
 
 # logfile (/dev/null for nowhere)
 LOG="/var/log/mldonkey.log"
@@ -18,25 +18,5 @@ LOG="/var/log/mldonkey.log"
 #     set log_to_syslog true
 USE_LOGGER=false
 
-# bandwidth control, values in kb/s
-LOW_DOWN="6"
-LOW_UP="2"
-HIGH_DOWN="30"
-HIGH_UP="10"
-
 # nice level, 0<x<19, more nice -> less cpuspeed consumed
 NICE="19"
-
-# mldonkey server ip, usually localhost
-SERVER="localhost"
-
-# port for webinterface, usually 4080
-PORT="4080"
-
-# port for telnet interface, usually 4000
-TELNET_PORT="4000"
-
-# to enable password restricted access,
-# uncomment and set BOTH following vars:
-#USERNAME="admin"
-#PASSWORD=""
