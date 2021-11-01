@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-01)
+# Unused library and virtual, removal on 2021-12-01
+dev-java/jamon
+java-virtuals/interceptor-api
+
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-31)
 # Multiple open bugs, unbuildable due to sandbox issues,
 # uses EAPI 5, no revdeps, no other distro packages this.
