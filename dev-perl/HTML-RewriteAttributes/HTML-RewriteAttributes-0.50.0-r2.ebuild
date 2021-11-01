@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=TSIBLEY
 DIST_VERSION=0.05
@@ -11,12 +11,14 @@ DESCRIPTION="Perl module for concise attribute rewriting"
 
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE=""
 
-RDEPEND="dev-perl/URI
+RDEPEND="
+	dev-perl/URI
 	dev-perl/HTML-Tagset
-	dev-perl/HTML-Parser"
-DEPEND="${RDEPEND}"
+	dev-perl/HTML-Parser
+"
+BDEPEND="${RDEPEND}
+"
 
 src_prepare() {
 	sed -i -e 's/use inc::Module::Install;/use lib q[.];\nuse inc::Module::Install;/' Makefile.PL ||
