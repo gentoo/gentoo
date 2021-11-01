@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/hparra/ruby-serialport/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
 
 all_ruby_prepare() {
