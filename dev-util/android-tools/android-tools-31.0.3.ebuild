@@ -12,9 +12,9 @@ HOMEPAGE="https://github.com/nmeum/android-tools/ https://developer.android.com/
 
 MY_PV="${PV//_/}"
 SRC_URI="https://github.com/nmeum/android-tools/releases/download/${MY_PV}/${PN}-${MY_PV}.tar.xz
-	https://dev.gentoo.org/~zmedico/dist/android-tools-31.0.3-no-gtest.patch -> ${P}-no-gtest.patch
-	https://dev.gentoo.org/~zmedico/dist/android-tools-31.0.3-install-e2fsdroid-ext2simg.patch -> ${P}-install-e2fsdroid-ext2simg.patch
-	https://dev.gentoo.org/~zmedico/dist/android-tools-31.0.3-disable-werror-boringssl.patch -> ${P}-disable-werror-boringssl.patch
+	https://dev.gentoo.org/~zmedico/dist/${P}-no-gtest.patch
+	https://dev.gentoo.org/~zmedico/dist/${P}-install-e2fsdroid-ext2simg.patch
+	https://dev.gentoo.org/~zmedico/dist/${P}-disable-werror-boringssl.patch
 "
 S="${WORKDIR}/${PN}-${MY_PV}"
 
