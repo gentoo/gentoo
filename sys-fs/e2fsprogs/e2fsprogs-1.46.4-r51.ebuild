@@ -19,7 +19,6 @@ IUSE="cron fuse lto nls static-libs +threads +tools elibc_FreeBSD"
 RDEPEND="!sys-libs/com_err
 	!sys-libs/ss
 	!sys-libs/${PN}-libs
-	>=sys-apps/util-linux-2.16
 	cron? ( sys-fs/lvm2[-device-mapper-only(-)] )
 	fuse? ( sys-fs/fuse:0 )
 	nls? ( virtual/libintl )
