@@ -1,30 +1,47 @@
 --- a/configure.ac
 +++ b/configure.ac
-@@ -199,7 +199,16 @@
+@@ -183,7 +183,7 @@
+ 
+ AC_TRY_COMPILE([#include <sys/types.h> 
+ #include <sys/acl.h>], [acl_t a], [AC_DEFINE([HAVE_SYS_ACL_H],[1], [define if you have sys/acl.h and it has a working acl_t type])])
+-AC_CHECK_HEADERS(ext2fs/ext2_fs.h sys/statfs.h sys/xattr.h sys/param.h sys/extattr.h libutil.h)
++AC_CHECK_HEADERS(ext2fs/ext2_fs.h sys/statfs.h sys/vfs.h sys/xattr.h sys/param.h sys/extattr.h libutil.h)
+ AC_CHECK_FUNCS(lgetxattr)
+ AC_CHECK_FUNCS(lsetxattr)
+ AC_CHECK_FUNCS(getxattr)
+@@ -199,7 +199,22 @@
  
  AC_CHECK_MEMBERS([struct statfs.f_fstypename],,,[#include <sys/types.h>
  #include <sys/param.h>
 -#include <sys/mount.h>])
 +#include <sys/mount.h>
-+#include <sys/vfs.h>])
++#ifdef HAVE_SYS_VFS_H
++#include <sys/vfs.h>
++#endif])
 +AC_CHECK_MEMBERS([struct statfs.f_iosize],,,[#include <sys/types.h>
 +#include <sys/param.h>
 +#include <sys/mount.h>
-+#include <sys/vfs.h>])
++#ifdef HAVE_SYS_VFS_H
++#include <sys/vfs.h>
++#endif])
 +AC_CHECK_MEMBERS([struct statfs.f_bsize],,,[#include <sys/types.h>
 +#include <sys/param.h>
 +#include <sys/mount.h>
-+#include <sys/vfs.h>])
++#ifdef HAVE_SYS_VFS_H
++#include <sys/vfs.h>
++#endif])
  AC_CHECK_MEMBERS([struct statvfs.f_fstypename],,,[#include <sys/statvfs.h>])
  AC_CHECK_MEMBERS([struct stat.st_flags])
  
 --- a/lib/util.c
 +++ b/lib/util.c
-@@ -40,6 +40,7 @@
+@@ -40,6 +40,9 @@
  #include <sys/types.h>
  #include <sys/mount.h>
  #include <sys/param.h>
-+#include <sys/vfs.h>
++#ifdef HAVE_SYS_VFS_H
++# include <sys/vfs.h>
++#endif
  #include <arpa/inet.h>
  #include <string.h>
  #include <unistd.h>
@@ -61,6 +78,12 @@
  		}
 --- a/include/config.h.in
 +++ b/include/config.h.in
+@@ -1,4 +1,5 @@
+ #undef HAVE_SYS_STATFS_H
++#undef HAVE_SYS_VFS_H
+ #undef HAVE_SYS_XATTR_H
+ #undef HAVE_SYS_EXTATTR_H
+ #undef HAVE_SYS_PARAM_H
 @@ -15,6 +15,8 @@
  #undef HAVE_STRUCT_STAT_ST_FLAGS
  #undef HAVE_STRUCT_STATVFS_F_FSTYPENAME
