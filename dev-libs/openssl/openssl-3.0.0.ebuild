@@ -22,7 +22,7 @@ fi
 LICENSE="Apache-2.0"
 SLOT="0/3" # .so version of libssl/libcrypto
 
-IUSE="+asm cpu_flags_x86_sse2 elibc_musl ktls rfc3779 sctp static-libs test tls-compression vanilla"
+IUSE="+asm cpu_flags_x86_sse2 elibc_musl fips ktls rfc3779 sctp static-libs test tls-compression vanilla"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -171,6 +171,7 @@ multilib_src_configure() {
 		enable-idea
 		enable-mdc2
 		enable-rc5
+		$(use fips && echo "enable-fips")
 		$(use_ssl asm)
 		$(use_ssl ktls)
 		$(use_ssl rfc3779)
