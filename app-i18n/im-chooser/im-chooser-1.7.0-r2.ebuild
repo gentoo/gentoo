@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-inherit autotools
+inherit autotools xdg
 
 DESCRIPTION="Desktop Input Method configuration tool"
 HOMEPAGE="https://pagure.io/im-chooser"
