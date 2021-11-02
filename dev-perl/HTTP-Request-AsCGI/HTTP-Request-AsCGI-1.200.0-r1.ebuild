@@ -1,16 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=FLORA
 DIST_VERSION=1.2
+DIST_EXAMPLES=("examples/*")
 inherit perl-module
 
 DESCRIPTION="Set up a CGI environment from an HTTP::Request"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
-IUSE="examples"
 
 RDEPEND="
 	virtual/perl-Carp
@@ -19,18 +19,11 @@ RDEPEND="
 	virtual/perl-IO
 	dev-perl/URI
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
+
 src_test() {
 	perl_rm_files "t/release-pod-syntax.t" "t/release-pod-coverage.t"
 	perl-module_src_test
-}
-src_install() {
-	perl-module_src_install
-	if use examples; then
-		docompress -x /usr/share/doc/${PF}/examples
-		docinto examples
-		dodoc -r examples
-	fi
 }
