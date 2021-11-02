@@ -31,6 +31,7 @@ src_prepare() {
 		-e "/^GNOME_/d" \
 		-e "/^CFLAGS/s/\$WARN_CFLAGS/-Wall -Wmissing-prototypes/" \
 		configure.ac
+	sed -i "s/Applications;//" src/app/${PN}.desktop.in.in
 
 	default
 	eautoreconf
