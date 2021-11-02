@@ -1,4 +1,3 @@
-
 --- a/src/calibre/test_build.py
 +++ b/src/calibre/test_build.py
 @@ -306,7 +306,6 @@ class BuildTest(unittest.TestCase):
