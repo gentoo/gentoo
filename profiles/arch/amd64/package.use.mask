@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-01)
+# requires sys-apps/dbus-broker, which keyworded here.
+sys-apps/systemd -hostnamed-fallback
+
 # James Le Cuirot <chewi@gentoo.org> (2021-10-22)
 # The JIT feature only works on amd64 and x86.
 app-emulation/fs-uae -jit
