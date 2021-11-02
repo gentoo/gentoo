@@ -10,9 +10,6 @@
 		Method you want to use or disable it entirely on the desktop.
 	</longdescription>
 	<use>
-		<flag name="gtk2">
-			Build with <pkg>x11-libs/gtk+</pkg>:2 instead of <pkg>x11-libs/gtk+</pkg>:3
-		</flag>
 		<flag name="xfce">Enable support for XFCE panel</flag>
 	</use>
 </pkgmetadata>
