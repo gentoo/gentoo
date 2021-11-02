@@ -115,13 +115,23 @@ BDEPEND="$(python_gen_cond_dep '
 	virtual/pkgconfig"
 
 PATCHES=(
-	# no_updates: do not annoy user with "new version is availible all the time
+	# Don't prompt the user for updates - they've installed via
+	# an ebuild.
 	"${FILESDIR}/${PN}-2.9.0-no_updates_dialog.patch"
 
 	# Skip calling a binary (JxrDecApp) from libjxr which is used for tests
 	# We don't (yet?) package libjxr and it seems to be dead upstream
 	# (last commit in 2017)
 	"${FILESDIR}/${PN}-5.31.0-jxr-test.patch"
+
+	# TODO:
+	# test_qt tries to load a bunch of images using Qt and it currently fails
+	# due to some presumably missing dependencies. This is important and
+	# we need to look into it, but at time of writing, none of the tests
+	# are even bring run, so I'd like to return to this later.
+	# We don't want to skip test_qt entirely, so just skip this particular
+	# assert for now.
+	"${FILESDIR}/${PN}-5.31.0-qt-image-test.patch"
 )
 
 pkg_pretend() {
@@ -134,6 +144,18 @@ pkg_pretend() {
 
 src_prepare() {
 	default
+
+	# Warning:
+	#
+	# While it might be rather tempting to add yet another sed here,
+	# please don't. There have been several bugs in Gentoo's packaging
+	# of calibre from seds-which-become-stale. Please consider
+	# creating a patch instead, but in any case, run the test suite
+	# and ensure it passes.
+	#
+	# If in doubt about a problem, checking Fedora or Arch Linux's packaging
+	# is recommended, as Arch Linux's PKGBUILD is maintained by a Calibre
+	# contributor. Or just ask them.
 
 	# Fix outdated version constant.
 	#sed -e "s#\\(^numeric_version =\\).*#\\1 (${PV//./, })#" \
@@ -163,17 +185,6 @@ src_prepare() {
 '-i', os.path.join(os.path.basename(src_dir), 'Makefile')])" \
 		-e "s|open(self.j(bdir, '.qmake.conf'), 'wb').close()|open(self.j(bdir, '.qmake.conf'), 'wb').write(b'QMAKE_LFLAGS += ${LDFLAGS}')|" \
 		-i setup/build.py || die "sed failed to patch build.py"
-
-	# TODO:
-	# test_qt tries to load a bunch of images using Qt and it currently fails
-	# due to some presumably missing dependencies. This is important and
-	# we need to look into it, but at time of writing, none of the tests
-	# are even bring run, so I'd like to return to this later.
-	# We don't want to skip test_qt entirely, so just skip this particular
-	# assert for now.
-	sed -i -e \
-		"/Qt doesn't seem to be able to load some of its image plugins. Available plugins:/d" \
-		src/calibre/test_build.py || die
 }
 
 src_compile() {
@@ -189,9 +200,8 @@ src_test() {
 	# - test_chardet (unpackaged Python dependency: cchardet)
 	# - test_unrar (unpackaged Python dependency: unrardll)
 	#
-	# Note that we currently have a hack for test_qt in src_prepare!
-	# CALIBRE_DEVELOP_FROM="${S}/src"
-	# PYTHONPATH=${S}/calibre/utils:${S}/src/calibre:${S}/src${PYTHONPATH:+:}${PYTHONPATH} \
+	# Note that we currently have a hack to skip one part of test_qt!
+	# See PATCHES for more.
 	CALIBRE_PY3_PORT=1 ${PYTHON} setup.py test \
 			--exclude-test-name 7z \
 			--exclude-test-name test_chardet \
