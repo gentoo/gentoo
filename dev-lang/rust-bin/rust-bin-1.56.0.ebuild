@@ -33,6 +33,11 @@ QA_PREBUILT="
 	opt/${P}/lib/rustlib/.*/lib/.*
 "
 
+# An rmeta file is custom binary format that contains the metadata for the crate.
+# rmeta files do not support linking, since they do not contain compiled object files.
+# so we can safely silence the warning for this QA check.
+QA_EXECSTACK="opt/${P}/lib/rustlib/*/lib*.rlib:lib.rmeta"
+
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/rust.asc
 
 pkg_pretend() {
