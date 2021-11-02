@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="pypi">swagger-spec-validator</remote-id>
+		<remote-id type="github">Yelp/swagger_spec_validator</remote-id>
 	</upstream>
 </pkgmetadata>
