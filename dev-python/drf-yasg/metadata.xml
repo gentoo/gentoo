@@ -9,5 +9,6 @@
 	</use>
 	<upstream>
 		<remote-id type="pypi">drf-yasg</remote-id>
+		<remote-id type="github">axnsan12/drf-yasg</remote-id>
 	</upstream>
 </pkgmetadata>
