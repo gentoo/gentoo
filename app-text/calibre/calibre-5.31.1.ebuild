@@ -117,8 +117,6 @@ BDEPEND="$(python_gen_cond_dep '
 PATCHES=(
 	# no_updates: do not annoy user with "new version is availible all the time
 	"${FILESDIR}/${PN}-2.9.0-no_updates_dialog.patch"
-	# disable_plugins: walking sec-hole, wait for upstream to use GHNS interface
-	"${FILESDIR}/${PN}-disable_plugins.patch"
 
 	# Skip calling a binary (JxrDecApp) from libjxr which is used for tests
 	# We don't (yet?) package libjxr and it seems to be dead upstream
