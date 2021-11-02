@@ -20,12 +20,15 @@ REQUIRED_USE="
 	doc? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
+# Not compatible with oiio 2.3
+# https://github.com/AcademySoftwareFoundation/OpenColorIO/issues/1509
+# bug #821073
 RDEPEND="
 	<dev-cpp/yaml-cpp-0.7.0:=
 	dev-libs/tinyxml
 	opengl? (
 		media-libs/lcms:2
-		media-libs/openimageio:=
+		<media-libs/openimageio-2.3:=
 		media-libs/glew:=
 		media-libs/freeglut
 		virtual/opengl
