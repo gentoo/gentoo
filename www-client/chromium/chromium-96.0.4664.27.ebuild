@@ -9,22 +9,26 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
 	sv sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit check-reqs chromium-2 desktop flag-o-matic ninja-utils pax-utils python-any-r1 readme.gentoo-r1 toolchain-funcs xdg-utils
+VIRTUALX_REQUIRED="pgo"
+
+inherit check-reqs chromium-2 desktop flag-o-matic ninja-utils pax-utils python-any-r1 readme.gentoo-r1 toolchain-funcs virtualx xdg-utils
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
 PATCHSET="4"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
-	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz"
+	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz
+	pgo? ( http://blackhole.sk/~kabel/src/chromium-profiler-0.2.tar )"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="component-build cups cpu_flags_arm_neon debug +hangouts headless +js-type-check kerberos +official pic +proprietary-codecs pulseaudio screencast selinux +suid +system-ffmpeg +system-harfbuzz +system-icu vaapi wayland widevine"
+IUSE="component-build cups cpu_flags_arm_neon debug +hangouts headless +js-type-check kerberos +official pgo pic +proprietary-codecs pulseaudio screencast selinux +suid +system-ffmpeg +system-harfbuzz +system-icu vaapi wayland widevine"
 REQUIRED_USE="
 	component-build? ( !suid )
 	screencast? ( wayland )
+	pgo ( !headless )
 "
 
 COMMON_X_DEPEND="
@@ -119,6 +123,12 @@ BDEPEND="
 	sys-devel/flex
 	virtual/pkgconfig
 	js-type-check? ( virtual/jre )
+	pgo? (
+		>=dev-python/selenium-3.141.0
+		>=dev-util/web_page_replay_go-20210603
+		>=sys-devel/clang-12
+		>=sys-devel/lld-12
+	)
 "
 
 # These are intended for ebuild maintainer use to force clang if GCC is broken.
@@ -187,7 +197,10 @@ pre_build_checks() {
 		if tc-is-gcc && ! ver_test "$(gcc-version)" -ge 9.2; then
 			die "At least gcc 9.2 is required"
 		fi
-		if [[ ${CHROMIUM_FORCE_CLANG} == yes ]] || tc-is-clang; then
+		if use pgo && tc-is-cross-compiler; then
+			die "The pgo USE flag cannot be used when cross-compiling"
+		fi
+		if [[ ${CHROMIUM_FORCE_CLANG} == yes ]] || use pgo || tc-is-clang; then
 			CPP="${CHOST}-clang++ -E"
 			if ! ver_test "$(clang-major-version)" -ge 12; then
 				die "At least clang 12 is required"
@@ -198,6 +211,10 @@ pre_build_checks() {
 	# Check build requirements, bug #541816 and bug #471810 .
 	CHECKREQS_MEMORY="4G"
 	CHECKREQS_DISK_BUILD="9G"
+	if use pgo; then
+		CHECKREQS_MEMORY="9G"
+		CHECKREQS_DISK_BUILD="16G"
+	fi
 	if ( shopt -s extglob; is-flagq '-g?(gdb)?([1-9])' ); then
 		if use custom-cflags || use component-build; then
 			CHECKREQS_DISK_BUILD="25G"
@@ -233,6 +250,7 @@ src_prepare() {
 		"${WORKDIR}/patches"
 		"${FILESDIR}/chromium-93-InkDropHost-crash.patch"
 		"${FILESDIR}/chromium-96-EnumTable-crash.patch"
+		"${FILESDIR}/chromium-96-sql-make-VirtualCursor-stan.patch"
 		"${FILESDIR}/chromium-use-oauth2-client-switches-as-default.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
 	)
@@ -528,7 +546,7 @@ src_prepare() {
 	ln -s "${EPREFIX}"/bin/true buildtools/third_party/eu-strip/bin/eu-strip || die
 }
 
-src_configure() {
+chromium_configure() {
 	# Calling this here supports resumption via FEATURES=keepwork
 	python_setup
 
@@ -537,7 +555,7 @@ src_configure() {
 	# Make sure the build system will use the right tools, bug #340795.
 	tc-export AR CC CXX NM
 
-	if [[ ${CHROMIUM_FORCE_CLANG} == yes ]] && ! tc-is-clang; then
+	if ( [[ ${CHROMIUM_FORCE_CLANG} == yes ]] || use pgo ) && ! tc-is-clang; then
 		# Force clang since gcc is pretty broken at the moment.
 		CC=${CHOST}-clang
 		CXX=${CHOST}-clang++
@@ -551,6 +569,16 @@ src_configure() {
 			die "Compiling with sys-libs/libcxx requires clang."
 		fi
 		myconf_gn+=" is_clang=false"
+	fi
+
+	if use pgo && ! tc-ld-is-lld; then
+		LD=ld.lld
+	fi
+
+	if tc-ld-is-lld; then
+		myconf_gn+=" use_lld=true"
+	else
+		myconf_gn+=" use_lld=false"
 	fi
 
 	# Define a custom toolchain for GN
@@ -638,9 +666,6 @@ src_configure() {
 	# Do not use bundled clang.
 	# Trying to use gold results in linker crash.
 	myconf_gn+=" use_gold=false use_sysroot=false use_custom_libcxx=false"
-
-	# Disable forced lld, bug 641556
-	myconf_gn+=" use_lld=false"
 
 	# Disable pseudolocales, only used for testing
 	myconf_gn+=" enable_pseudolocales=false"
@@ -781,6 +806,14 @@ src_configure() {
 			tools/generate_shim_headers/generate_shim_headers.py || die
 		# Disable CFI: unsupported for GCC, requires clang+lto+lld
 		myconf_gn+=" is_cfi=false"
+	fi
+
+	if use pgo; then
+		myconf_gn+=" chrome_pgo_phase=${1}"
+		if [[ "$1" == "2" ]]; then
+			myconf_gn+=" pgo_data_path=\"${2}\""
+		fi
+	else
 		# Disable PGO, because profile data is only compatible with >=clang-11
 		myconf_gn+=" chrome_pgo_phase=0"
 	fi
@@ -791,7 +824,11 @@ src_configure() {
 	"$@" || die
 }
 
-src_compile() {
+src_configure() {
+	chromium_configure $(usex pgo 1 0)
+}
+
+chromium_compile() {
 	# Final link uses lots of file descriptors.
 	ulimit -n 2048
 
@@ -821,6 +858,60 @@ src_compile() {
 	use suid && eninja -C out/Release chrome_sandbox
 
 	pax-mark m out/Release/chrome
+}
+
+# This function is called from virtx, and must always return so that Xvfb
+# session isn't left running. If we return 1, virtx will call die().
+chromium_profile() {
+	einfo "Profiling for PGO"
+
+	pushd "${WORKDIR}/chromium-profiler-"* >/dev/null || return 1
+
+	# Remove old profdata in case profiling was interrupted.
+	rm -rf "${1}" || return 1
+
+	if ! "${EPYTHON}" ./chromium_profiler.py \
+	     --chrome-executable "${S}/out/Release/chrome" \
+	     --chromedriver-executable "${S}/out/Release/chromedriver.unstripped" \
+	     --add-arg no-sandbox --add-arg disable-dev-shm-usage \
+	     --profile-output "${1}"; then
+		eerror "Profiling failed"
+		return 1
+	fi
+
+	popd >/dev/null || return 1
+}
+
+src_compile() {
+	if use pgo; then
+		local profdata
+
+		profdata="${WORKDIR}/chromium.profdata"
+
+		if [[ ! -e "${WORKDIR}/.pgo-profiled" ]]; then
+			chromium_compile
+			virtx chromium_profile "$profdata"
+
+			touch "${WORKDIR}/.pgo-profiled"
+		fi
+
+		if [[ ! -e "${WORKDIR}/.pgo-phase-2-configured" ]]; then
+			# Remove phase 1 output
+			rm -rf out/Release
+
+			chromium_configure 2 "$profdata"
+
+			touch "${WORKDIR}/.pgo-phase-2-configured"
+		fi
+
+		if [[ ! -e "${WORKDIR}/.pgo-phase-2-compiled" ]]; then
+			chromium_compile
+
+			touch "${WORKDIR}/.pgo-phase-2-compiled"
+		fi
+	else
+		chromium_compile
+	fi
 
 	mv out/Release/chromedriver{.unstripped,} || die
 
