@@ -7,4 +7,5 @@
   <upstream>
     <remote-id type="github">rich0/cfg-update</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>
