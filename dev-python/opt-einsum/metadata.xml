@@ -10,5 +10,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">opt-einsum</remote-id>
+		<remote-id type="github">dgasmith/opt_einsum</remote-id>
 	</upstream>
 </pkgmetadata>
