@@ -221,6 +221,7 @@ RDEPEND="
 	X? ( x11-libs/libxcb:= )
 "
 DEPEND="${RDEPEND}"
+BDEPEND=">=virtual/rust-1.56"
 
 QA_FLAGS_IGNORED="usr/bin/broot"
 
