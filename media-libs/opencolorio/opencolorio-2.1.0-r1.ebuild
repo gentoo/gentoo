@@ -20,6 +20,12 @@ REQUIRED_USE="
 	doc? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
+
+# Not compatible with oiio 2.3
+# https://github.com/AcademySoftwareFoundation/OpenColorIO/issues/1509
+# bug #821073
+# 2.1.1 should be?
+#
 # See bug #802363 for yaml-cpp < dep
 RDEPEND="
 	dev-cpp/pystring
@@ -29,7 +35,7 @@ RDEPEND="
 	media-libs/ilmbase:=
 	opengl? (
 		media-libs/lcms:2
-		>=media-libs/openimageio-2.2.13.0:=
+		<media-libs/openimageio-2.3:=
 		media-libs/glew:=
 		media-libs/freeglut
 		virtual/opengl
