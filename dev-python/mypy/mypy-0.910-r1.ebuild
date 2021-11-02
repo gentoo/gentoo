@@ -15,6 +15,8 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 # stubgen collides with this package: https://bugs.gentoo.org/585594
+# Note: replace toml with tomli on next version bump
+# https://github.com/python/mypy/pull/10824
 RDEPEND="
 	!dev-util/stubgen
 	>=dev-python/psutil-4[${PYTHON_USEDEP}]
@@ -23,6 +25,7 @@ RDEPEND="
 	>=dev-python/typing-extensions-3.7.4[${PYTHON_USEDEP}]
 	>=dev-python/mypy_extensions-0.4.3[${PYTHON_USEDEP}]
 	<dev-python/mypy_extensions-0.5.0[${PYTHON_USEDEP}]
+	dev-python/toml[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
