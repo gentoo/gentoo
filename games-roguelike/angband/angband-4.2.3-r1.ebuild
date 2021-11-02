@@ -8,7 +8,7 @@ inherit autotools desktop xdg-utils
 DESCRIPTION="A roguelike dungeon exploration game based on the books of J.R.R. Tolkien"
 HOMEPAGE="https://rephial.org/"
 SRC_URI="https://github.com/angband/angband/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~chewi/distfiles/${P}-man.tar.gz"
+	https://dev.gentoo.org/~steils/distfiles/${P}-man-r1.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
