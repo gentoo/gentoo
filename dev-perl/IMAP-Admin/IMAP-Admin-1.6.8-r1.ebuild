@@ -1,17 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=EESTABROO
 DIST_EXAMPLES=("examples/*" "test.pl")
+DIST_WIKI=tests
 inherit perl-module
 
 DESCRIPTION="Perl module for basic IMAP server administration"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 src_test() {
 	local MODULES=(
@@ -31,6 +31,4 @@ src_test() {
 		done
 		die "Failing due to module compilation errors";
 	fi
-	ewarn "Comprehensive testing requires manual steps. For details, see:"
-	ewarn "https://wiki.gentoo.org/wiki/Project:Perl/maint-notes/${CATEGORY}/${PN}"
 }
