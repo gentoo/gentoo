@@ -1,5 +1,5 @@
---- /perl/Makefile.PL
-+++ /perl/Makefile.PL
+--- a/perl/Makefile.PL
++++ b/perl/Makefile.PL
 @@ -4,7 +4,7 @@
      'CC'                => 'c++',
      'LD'                => 'c++',

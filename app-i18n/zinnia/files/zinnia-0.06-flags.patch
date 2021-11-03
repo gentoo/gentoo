@@ -1,5 +1,5 @@
---- /configure.in
-+++ /configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -59,15 +59,6 @@
  AC_SUBST([pkgconfigdir])
  AC_MSG_NOTICE([pkgconfig directory is ${pkgconfigdir}])
