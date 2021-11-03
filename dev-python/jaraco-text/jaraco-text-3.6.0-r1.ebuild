@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	dev-python/jaraco-functools[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' python3_8 pypy3)
 	dev-python/six[${PYTHON_USEDEP}]
 "
 BDEPEND="
