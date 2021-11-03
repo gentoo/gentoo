@@ -14,5 +14,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">tkcon</remote-id>
+		<remote-id type="github">wjoye/tkcon</remote-id>
 	</upstream>
 </pkgmetadata>
