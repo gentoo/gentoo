@@ -5,7 +5,7 @@ EAPI=7
 EGO_PN=github.com/docker/docker
 MY_PV=${PV/_/-}
 GIT_COMMIT=e2f740de44
-inherit bash-completion-r1 linux-info systemd udev golang-vcs-snapshot
+inherit linux-info systemd udev golang-vcs-snapshot
 
 DESCRIPTION="The core functions you need to create Docker images and run Docker containers"
 HOMEPAGE="https://www.docker.com/"
