@@ -1,4 +1,4 @@
-# Copyright 2010-2020 Gentoo Authors
+# Copyright 2010-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -15,9 +15,9 @@ KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE="perl static-libs"
 
 PATCHES=(
-	"${FILESDIR}/${P}-flags.patch"
-	"${FILESDIR}/${P}-perl_build.patch"
-	"${FILESDIR}/${P}-c++-2011.patch"
+	"${FILESDIR}"/${P}-c++11.patch
+	"${FILESDIR}"/${P}-flags.patch
+	"${FILESDIR}"/${P}-perl.patch
 )
 
 DOCS=(AUTHORS)

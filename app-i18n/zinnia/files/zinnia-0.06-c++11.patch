@@ -1,5 +1,5 @@
---- /trainer.cpp
-+++ /trainer.cpp
+--- a/trainer.cpp
++++ b/trainer.cpp
 @@ -103,7 +103,7 @@
      if (!fn) {
        return false;
