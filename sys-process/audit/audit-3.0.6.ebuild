@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
-inherit autotools multilib multilib-minimal toolchain-funcs python-r1 linux-info systemd usr-ldscript
+inherit autotools multilib-minimal toolchain-funcs python-r1 linux-info systemd usr-ldscript
 
 DESCRIPTION="Userspace utilities for storing and processing auditing records"
 HOMEPAGE="https://people.redhat.com/sgrubb/audit/"
@@ -54,6 +54,7 @@ multilib_src_configure() {
 		--without-python
 		--without-python3
 	)
+
 	ECONF_SOURCE=${S} econf "${myeconfargs[@]}"
 
 	if multilib_is_native_abi && use python; then
@@ -148,7 +149,7 @@ pkg_postinst() {
 lockdown_perms() {
 	# Upstream wants these to have restrictive perms.
 	# Should not || die as not all paths may exist.
-	local basedir="$1"
+	local basedir="${1}"
 	chmod 0750 "${basedir}"/sbin/au{ditctl,ditd,report,search,trace} 2>/dev/null
 	chmod 0750 "${basedir}"/var/log/audit 2>/dev/null
 	chmod 0640 "${basedir}"/etc/audit/{auditd.conf,audit*.rules*} 2>/dev/null
