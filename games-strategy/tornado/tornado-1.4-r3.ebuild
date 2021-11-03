@@ -50,12 +50,10 @@ src_install() {
 	local PLOCALES="de fr it nl no ru"
 	plocale_for_each_locale tornado_man
 
-	tornado_loc() {
-		insinto /usr/share/locale/${1}/LC_MESSAGES
-		newins po/${1}.mo ${PN}.mo
-	}
 	PLOCALES+=" es pt"
-	plocale_for_each_locale tornado_loc
+	local mo=($(plocale_get_locales))
+	mo=("${mo[@]/%/.mo}")
+	(( ${#mo[@]} )) && domo "${mo[@]/#/po/}"
 
 	insinto /var/games
 	doins ${PN}.scores
