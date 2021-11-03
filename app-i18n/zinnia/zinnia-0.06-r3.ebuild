@@ -1,7 +1,7 @@
 # Copyright 2010-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
 inherit autotools flag-o-matic perl-module toolchain-funcs
 
@@ -20,20 +20,14 @@ PATCHES=(
 	"${FILESDIR}"/${P}-perl.patch
 )
 
-DOCS=(AUTHORS)
+HTML_DOCS=( doc/{index{,-ja}.html,${PN}.css} )
 
 src_prepare() {
 	default
-	mv configure.in configure.ac || die
-	sed -e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" -i configure.ac || die
-	eautoreconf
+	sed -i "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" configure.in || die
 
-	if use perl; then
-			pushd perl > /dev/null
-			PATCHES=()
-			perl-module_src_prepare
-			popd > /dev/null
-	fi
+	mv configure.{in,ac} || die
+	eautoreconf
 }
 
 src_configure() {
@@ -44,8 +38,7 @@ src_compile() {
 	default
 
 	if use perl; then
-			pushd perl > /dev/null
-
+			cd perl >/dev/null || die
 			# We need to run this here as otherwise it won't pick up the
 			# just-built -lzinnia and cause the extension to have
 			# undefined symbols.
@@ -60,7 +53,7 @@ src_compile() {
 				OPTIMIZE="${CPPFLAGS} ${CXXFLAGS}" \
 				LDDLFLAGS="-shared" \
 				OTHERLDFLAGS="${LDFLAGS}"
-			popd > /dev/null
+			cd - >/dev/null || die
 	fi
 }
 
@@ -70,16 +63,12 @@ src_test() {
 
 src_install() {
 	default
+	einstalldocs
 	find "${D}" -name "*.la" -delete || die
 
 	if use perl; then
-			pushd perl > /dev/null
+			cd perl >/dev/null || die
 			perl-module_src_install
-			popd > /dev/null
+			cd - >/dev/null || die
 	fi
-
-	(
-		docinto html
-		dodoc doc/*.css doc/*.html
-	)
 }
