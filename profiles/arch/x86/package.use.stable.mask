@@ -35,11 +35,6 @@ sys-block/open-iscsi infiniband
 # REQUIRED_USE="base? ( firebird )", dev-db/firebird is not stable
 app-office/libreoffice base
 
-# Thomas Deutschmann <whissi@gentoo.org> (2020-10-02)
-# media-video/pipewire not yet stabilized and without
-# sys-apps/xdg-desktop-portal-gtk not useable at all
-www-client/firefox screencast
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-08-05)
 # sys-cluster/slurm has no stable keywords
 app-metrics/collectd collectd_plugins_slurm
