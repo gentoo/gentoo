@@ -13,7 +13,8 @@
 		<flag name="agent">Enable update notification agent</flag>
 		<flag name="archive">Use <pkg>app-arch/libarchive</pkg> for archives support</flag>
 		<flag name="amt">Build and install Intel AMT plugin</flag>
-		<flag name="dell">Enable Dell-specific support.</flag>
+		<flag name="dell">Enable Dell-specific support</flag>
+		<flag name="fastboot">Build and install fastboot plugin</flag>
 		<flag name="flashrom">Enable flashrom plugin via <pkg>sys-apps/flashrom</pkg></flag>
 		<flag name="gusb">Enable <pkg>dev-libs/libgusb</pkg> support</flag>
 		<flag name="logitech">Build and install Logitech bulk controller plugin</flag>
