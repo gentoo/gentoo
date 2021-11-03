@@ -23,11 +23,8 @@ RDEPEND="
 	>=dev-python/uritemplate-3.0.0[${PYTHON_USEDEP}]
 	<dev-python/uritemplate-5[${PYTHON_USEDEP}]
 	"
-# grpcio support is broken if grpcio-status is not installed,
-# and we do not package the latter
 BDEPEND="
 	test? (
-		!!dev-python/grpcio
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/oauth2client[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
