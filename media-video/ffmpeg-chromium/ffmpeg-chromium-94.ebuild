@@ -180,6 +180,13 @@ src_configure() {
 		esac
 	fi
 
+	local extra_libs
+	if use arm || use ppc ; then
+		# bug #782811
+		# bug #790590
+		extra_libs+="$(test-flags-CCLD -latomic) "
+	fi
+
 	set -- "${S}/configure" \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
@@ -191,6 +198,7 @@ src_configure() {
 		--ranlib="$(tc-getRANLIB)" \
 		--pkg-config="$(tc-getPKG_CONFIG)" \
 		--optflags="${CFLAGS}" \
+		--extra-libs="${extra_libs}" \
 		--disable-all \
 		--disable-autodetect \
 		--disable-error-resilience \
