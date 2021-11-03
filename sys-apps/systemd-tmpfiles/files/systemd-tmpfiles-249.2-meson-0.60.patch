@@ -1,0 +1,26 @@
+https://github.com/systemd/systemd/commit/c29537f39e4f413a6cbfe9669fa121bdd6d8b36f
+https://bugs.gentoo.org/821547
+
+From: Dan Streetman <ddstreet@canonical.com>
+Date: Fri, 3 Sep 2021 12:43:33 -0400
+Subject: [PATCH] meson.build: change operator combining bools from + to and
+
+upstream meson stopped allowing combining boolean with the plus
+operator, and now requires using the logical and operator
+
+reference:
+https://github.com/mesonbuild/meson/commit/43302d3296baff6aeaf8e03f5d701b0402e37a6c
+
+Fixes: #20632
+--- a/meson.build
++++ b/meson.build
+@@ -35,7 +35,7 @@ conf.set10('BUILD_MODE_DEVELOPER', get_option('mode') == 'developer',
+ 
+ want_ossfuzz = get_option('oss-fuzz')
+ want_libfuzzer = get_option('llvm-fuzz')
+-if want_ossfuzz + want_libfuzzer > 1
++if want_ossfuzz and want_libfuzzer
+         error('only one of oss-fuzz or llvm-fuzz can be specified')
+ endif
+ 
+

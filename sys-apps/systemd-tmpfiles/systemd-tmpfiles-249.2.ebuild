@@ -62,6 +62,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 PATCHES=(
 	# backport from 250 to silence musl warnings
 	"${FILESDIR}/249-sys-include-posix.patch"
+	"${FILESDIR}/${P}-meson-0.60.patch"
 )
 
 python_check_deps() {
