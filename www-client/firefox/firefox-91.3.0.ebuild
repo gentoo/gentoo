@@ -141,6 +141,7 @@ CDEPEND="
 	x11-libs/libXext
 	x11-libs/libXfixes
 	x11-libs/libXrender
+	x11-libs/libXt
 	dbus? (
 		sys-apps/dbus
 		dev-libs/dbus-glib
