@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
 IUSE="autoshutdown bidi debug mpris"
 
 BDEPEND="dev-qt/linguist-tools:5"
