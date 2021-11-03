@@ -1,16 +1,20 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # ninja doesn't like "-lcblas" so using make.
 CMAKE_MAKEFILE_GENERATOR="emake"
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 inherit cmake python-any-r1
 
 DESCRIPTION="Fast Library for Number Theory"
 HOMEPAGE="http://www.flintlib.org/"
-SRC_URI="http://www.flintlib.org/${P}.tar.gz"
+
+# flintlib.org tarballs have been broken in the past, Bill Hart suggests
+# we get them from Github (which he has control over).
+SRC_URI="https://github.com/wbhart/flint2/archive/refs/tags/v${PV}.tar.gz
+	-> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 
@@ -35,6 +39,8 @@ DEPEND="dev-libs/gmp:=
 	ntl? ( dev-libs/ntl:= )
 	virtual/cblas"
 RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/flint2-${PV}"
 
 src_configure() {
 	local mycmakeargs=(
