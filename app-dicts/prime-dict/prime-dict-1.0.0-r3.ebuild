@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 
 inherit ruby-ng
@@ -28,5 +28,5 @@ each_ruby_install() {
 }
 
 all_ruby_install() {
-	dodoc AUTHORS ChangeLog NEWS README
+	einstalldocs
 }
