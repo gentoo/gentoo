@@ -138,6 +138,7 @@ CDEPEND="
 	x11-libs/libXdamage
 	x11-libs/libXext
 	x11-libs/libXfixes
+	x11-libs/libXrandr
 	x11-libs/libXrender
 	dbus? (
 		sys-apps/dbus
