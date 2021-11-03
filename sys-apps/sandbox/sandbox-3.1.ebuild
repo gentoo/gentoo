@@ -18,6 +18,10 @@ DEPEND="app-arch/xz-utils
 	>=app-misc/pax-utils-0.1.19" #265376
 RDEPEND=""
 
+PATCHES=(
+	"${FILESDIR}"/${P}-label-decl.patch #821433
+)
+
 has sandbox_death_notice ${EBUILD_DEATH_HOOKS} || EBUILD_DEATH_HOOKS+=" sandbox_death_notice"
 
 sandbox_death_notice() {
