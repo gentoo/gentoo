@@ -8,7 +8,7 @@ inherit ruby-ng
 
 DESCRIPTION="Dictionary files for PRIME input method"
 HOMEPAGE="http://taiyaki.org/prime/"
-SRC_URI="http://prime.sourceforge.jp/src/${P}.tar.gz"
+SRC_URI="https://${PN}.osdn.jp/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
