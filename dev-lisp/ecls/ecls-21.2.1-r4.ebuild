@@ -36,6 +36,7 @@ DOCS=( README.md CHANGELOG )
 PATCHES=(
 	"${FILESDIR}/${PN}-16.1.3-headers-gentoo.patch"
 	"${FILESDIR}/${PN}-16.1.3-build.patch"
+	"${FILESDIR}/${PN}-21.2.1-donotcompressinfo.patch"
 )
 
 src_prepare() {
@@ -66,7 +67,7 @@ src_compile() {
 		[[ -n ${ETAGS} ]] || die "No etags implementation found"
 		pushd build > /dev/null || die
 		emake ETAGS=${ETAGS} TAGS
-		popd > /dev/null
+		popd > /dev/null || die
 	else
 		touch build/TAGS
 	fi
@@ -78,12 +79,12 @@ src_install() {
 	default
 
 	readme.gentoo_create_doc
-	pushd build/doc
+	pushd build/doc > /dev/null || die
 	newman ecl.man ecl.1
 	newman ecl-config.man ecl-config.1
-	popd
+	popd > /dev/null || die
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	readme.gentoo_print_elog
 }
