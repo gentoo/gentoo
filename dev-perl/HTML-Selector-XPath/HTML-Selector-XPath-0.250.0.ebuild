@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="CSS Selector to XPath compiler"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	virtual/perl-Carp
