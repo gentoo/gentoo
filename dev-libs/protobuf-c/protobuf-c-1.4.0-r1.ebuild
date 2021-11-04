@@ -24,6 +24,10 @@ DEPEND=">=dev-libs/protobuf-3:0=[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.0-include-path.patch
+)
+
 src_prepare() {
 	default
 
