@@ -1,0 +1,55 @@
+From 79688adff9d494e6ff412210c813d19744dbb8cd Mon Sep 17 00:00:00 2001
+From: Daniel Cordero <pydecomp@0xdc.io>
+Date: Mon, 3 May 2021 12:07:46 +0000
+Subject: [PATCH 1/2] pixz_i: copy definition from pixz
+
+---
+ DeComp/definitions.py | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/DeComp/definitions.py b/DeComp/definitions.py
+index 16114b2..14fa226 100644
+--- a/DeComp/definitions.py
++++ b/DeComp/definitions.py
+@@ -200,6 +200,14 @@ class functions do.
+                 ],
+                 "PIXZ", ["tar.xz", "tpxz", "xz"], {"tar", "pixz"},
+             ],
++    "pixz_i": [
++                "_common", "tar",
++                [
++                    "other_options", "%(comp_prog)s", "pixz", "-cpf",
++                    "%(filename)s", "-C", "%(basedir)s", "%(source)s"
++                ],
++                "PIXZ", ["tar.xz", "tpxz", "xz"], {"tar", "pixz"},
++            ],
+     "pixz_x": [
+                 "_common", "tar",
+                 [
+
+From f98d90a522b6d0e5331f7254bb95b057fafe44da Mon Sep 17 00:00:00 2001
+From: Daniel Cordero <pydecomp@0xdc.io>
+Date: Mon, 3 May 2021 12:12:51 +0000
+Subject: [PATCH 2/2] pixz: don't add trailing index to tarballs
+
+If pixz detects the input file is a tarball, it adds a trailing file index to help in seeking the file.
+However, this trailing index is causes decompression errors with xz -d and systemd-importd.
+
+For compatibility with these tools, force pixz to never add this tarball index.
+---
+ DeComp/definitions.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/DeComp/definitions.py b/DeComp/definitions.py
+index 14fa226..0025c07 100644
+--- a/DeComp/definitions.py
++++ b/DeComp/definitions.py
+@@ -195,7 +195,7 @@ class functions do.
+     "pixz": [
+                 "_common", "tar",
+                 [
+-                    "other_options", "%(comp_prog)s", "pixz", "-cpf",
++                    "other_options", "%(comp_prog)s", "'pixz -t'", "-cpf",
+                     "%(filename)s", "-C", "%(basedir)s", "%(source)s"
+                 ],
+                 "PIXZ", ["tar.xz", "tpxz", "xz"], {"tar", "pixz"},
