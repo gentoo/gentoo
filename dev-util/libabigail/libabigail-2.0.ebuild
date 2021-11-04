@@ -13,7 +13,7 @@ SRC_URI="https://mirrors.kernel.org/sourceware/libabigail/${P}.tar.gz"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
