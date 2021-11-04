@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${P::1}/${PN}/${P}.tar.gz"
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~hppa ~riscv ~x86"
 
 RDEPEND="
 	dev-python/keyring[${PYTHON_USEDEP}]
