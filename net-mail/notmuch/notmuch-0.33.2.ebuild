@@ -142,6 +142,14 @@ src_configure() {
 		$(use_with emacs)
 	)
 
+	# FIXME:
+	# Checking for GMime session key extraction support... * ACCESS DENIED: open_wr: /dev/bus/usb/001/011
+	# notmuch configure compiles a program _check_session_keys.c, inline in ./configure script
+	# gmime/gpg/scdaemon tries to open usb devices in GMime test
+	# we pretend to allow it, without actually allowing it to read or write.
+	# https://bugs.gentoo.org/821328
+	addpredict /dev/bus/usb
+
 	econf "${myconf[@]}"
 }
 
