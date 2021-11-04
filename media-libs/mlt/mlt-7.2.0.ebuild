@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8,9,10} )
-inherit python-single-r1 cmake toolchain-funcs
+inherit python-single-r1 cmake
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
 HOMEPAGE="https://www.mltframework.org/"
