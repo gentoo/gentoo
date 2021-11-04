@@ -28,8 +28,8 @@ DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	>=sys-apps/sed-4.0.5 sys-devel/patch
 	doc? ( app-text/xmlto ~app-text/docbook-xml-dtd-4.4 )
 	apidoc? (
-		dev-python/sphinx
-		dev-python/sphinx-epytext
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx-epytext[${PYTHON_USEDEP}]
 	)"
 # Require sandbox-2.2 for bug #288863.
 # For whirlpool hash, require python[ssl] (bug #425046).
