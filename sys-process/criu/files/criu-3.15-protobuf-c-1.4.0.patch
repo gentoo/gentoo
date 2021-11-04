@@ -1,5 +1,7 @@
 https://bugs.gentoo.org/809092
+https://bugs.gentoo.org/814056
 https://github.com/checkpoint-restore/criu/commit/1c25914a5dd1eb385937dffdd85901c3f5e39b8c
+https://github.com/checkpoint-restore/criu/commit/6a15dbdefa5c23a75eb3d1137681404588a16efa
 
 From 1c25914a5dd1eb385937dffdd85901c3f5e39b8c Mon Sep 17 00:00:00 2001
 From: Zeyad Yasser <zeyady98@gmail.com>
