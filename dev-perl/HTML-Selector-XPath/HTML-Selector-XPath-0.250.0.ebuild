@@ -19,5 +19,6 @@ BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		virtual/perl-Encode
+		dev-perl/Test-Base
 	)
 "
