@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/ProgVal/Supybot-plugins"
 SRC_URI="https://github.com/ProgVal/Supybot-plugins/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD GPL-2 GPL-3 MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 SLOT=0
 
 RDEPEND="net-irc/limnoria"
