@@ -37,7 +37,7 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 MOZ_PV_DISTFILES="${MOZ_PV}${MOZ_PV_SUFFIX}"
 MOZ_P_DISTFILES="${MOZ_PN}-${MOZ_PV_DISTFILES}"
 
-inherit autotools check-reqs desktop flag-o-matic gnome2-utils linux-info \
+inherit autotools check-reqs desktop flag-o-matic gnome2-utils \
 	llvm multiprocessing pax-utils python-any-r1 toolchain-funcs \
 	virtualx xdg
 
@@ -55,7 +55,7 @@ SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}
 	${PATCH_URIS[@]}"
 
 DESCRIPTION="Thunderbird Mail Client"
-HOMEPAGE="https://www.mozilla.org/thunderbird"
+HOMEPAGE="https://www.thunderbird.net/"
 
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
@@ -196,12 +196,6 @@ DEPEND="${CDEPEND}
 	x86? ( virtual/opengl )"
 
 S="${WORKDIR}/${PN}-${PV%_*}"
-
-# Allow MOZ_GMP_PLUGIN_LIST to be set in an eclass or
-# overridden in the enviromnent (advanced hackers only)
-if [[ -z "${MOZ_GMP_PLUGIN_LIST+set}" ]] ; then
-	MOZ_GMP_PLUGIN_LIST=( gmp-gmpopenh264 gmp-widevinecdm )
-fi
 
 llvm_check_deps() {
 	if ! has_version -b "sys-devel/clang:${LLVM_SLOT}" ; then
@@ -485,10 +479,6 @@ pkg_setup() {
 		# Ensure we use C locale when building, bug #746215
 		export LC_ALL=C
 	fi
-
-	CONFIG_CHECK="~SECCOMP"
-	WARNING_SECCOMP="CONFIG_SECCOMP not set! This system will be unable to play DRM-protected content."
-	linux-info_pkg_setup
 }
 
 src_unpack() {
