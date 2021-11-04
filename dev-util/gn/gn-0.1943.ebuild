@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~sultan/distfiles/dev-util/gn/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="vim-syntax"
 
 BDEPEND="
