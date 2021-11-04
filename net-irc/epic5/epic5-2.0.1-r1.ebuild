@@ -12,7 +12,7 @@ HOMEPAGE="http://epicsol.org/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc ~riscv x86"
 
 # Fails to build without ipv6
 IUSE="archive perl tcl ruby socks5 valgrind" #ipv6
