@@ -82,7 +82,7 @@ multilib_src_configure() {
 		-Dchafa="disabled"
 
 		$(meson_feature glib)
-		$(meson_feature graphite)
+		$(meson_feature graphite graphite2)
 		$(meson_feature icu)
 		$(meson_feature introspection gobject)
 		$(meson_feature test tests)
