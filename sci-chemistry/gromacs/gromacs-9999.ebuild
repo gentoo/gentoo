@@ -24,7 +24,7 @@ else
 		http://ftp.gromacs.org/gromacs/${PN}-${PV/_/-}.tar.gz
 		doc? ( https://ftp.gromacs.org/manual/manual-${PV/_/-}.pdf -> manual-${PV}.pdf )
 		test? ( http://ftp.gromacs.org/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
-	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 ACCE_IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_fma4 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_avx512f cpu_flags_arm_neon"
@@ -37,7 +37,7 @@ HOMEPAGE="http://www.gromacs.org/"
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
-IUSE="blas cuda +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack +lmfit mkl mpi +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
+IUSE="blas cuda +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack mkl mpi +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
 
 CDEPEND="
 	blas? ( virtual/blas )
@@ -46,9 +46,10 @@ CDEPEND="
 	fftw? ( sci-libs/fftw:3.0= )
 	hwloc? ( sys-apps/hwloc:= )
 	lapack? ( virtual/lapack )
-	lmfit? ( sci-libs/lmfit:= )
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi )
+	sci-libs/lmfit:=
+	dev-cpp/muParser:=
 	${PYTHON_DEPS}
 	!sci-chemistry/gmxapi
 	"
@@ -65,7 +66,8 @@ BDEPEND="${CDEPEND}
 		dev-texlive/texlive-latexextra
 		media-gfx/imagemagick
 	)"
-RDEPEND="${CDEPEND}"
+RDEPEND="${CDEPEND}
+	<sci-chemistry/dssp-4"
 
 REQUIRED_USE="
 	|| ( single-precision double-precision )
@@ -198,15 +200,11 @@ src_configure() {
 		fft_opts=( -DGMX_FFT_LIBRARY=fftpack )
 	fi
 
-	if use lmfit; then
-		local lmfit_opts=( -DGMX_USE_LMFIT=EXTERNAL )
-	else
-		local lmfit_opts=( -DGMX_USE_LMFIT=INTERNAL )
-	fi
-
 	mycmakeargs_pre+=(
 		"${fft_opts[@]}"
 		"${lmfit_opts[@]}"
+		-DGMX_USE_LMFIT=EXTERNAL
+		-DGMX_USE_MUPARSER=EXTERNAL
 		-DGMX_EXTERNAL_BLAS=$(usex blas)
 		-DGMX_EXTERNAL_LAPACK=$(usex lapack)
 		-DGMX_OPENMP=$(usex openmp)
@@ -217,6 +215,7 @@ src_configure() {
 		-DGMX_DEFAULT_SUFFIX=off
 		-DGMX_SIMD="$acce"
 		-DGMX_VMD_PLUGIN_PATH="${EPREFIX}/usr/$(get_libdir)/vmd/plugins/*/molfile/"
+		-DGMX_DSSP_PROGRAM_PATH="${EPREFIX}/usr/bin/dssp"
 		-DBUILD_TESTING=$(usex test)
 		-DGMX_BUILD_UNITTESTS=$(usex test)
 		-DPYTHON_EXECUTABLE="${EPREFIX}/usr/bin/${EPYTHON}"
