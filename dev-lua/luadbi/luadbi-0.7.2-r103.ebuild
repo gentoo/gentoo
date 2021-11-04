@@ -45,9 +45,13 @@ src_prepare() {
 
 	# Respect users CFLAGS
 	sed -e 's/-g //' -e 's/-O2 //g' -i Makefile || die
+
+	lua_copy_sources
 }
 
 lua_src_compile() {
+	pushd "${BUILD_DIR}" || die
+
 	tc-export AR CC
 
 	local myemakeargs=(
@@ -57,6 +61,8 @@ lua_src_compile() {
 	use mysql && emake ${myemakeargs} MYSQL_INC="-I$(mariadb_config --libs)" mysql
 	use postgres && emake ${myemakeargs} PSQL_INC="-I$(pg_config --libdir)" psql
 	use sqlite emake ${myemakeargs} SQLITE3_INC="-I/usr/include" sqlite
+
+	die
 }
 
 src_compile() {
@@ -64,7 +70,9 @@ src_compile() {
 }
 
 lua_src_test() {
+	pushd "${BUILD_DIR}" || die
 	cd "${S}"/tests && ${ELUA} run_tests.lua || die
+	die
 }
 
 src_test() {
@@ -72,6 +80,8 @@ src_test() {
 }
 
 lua_src_install() {
+	pushd "${BUILD_DIR}" || die
+
 	local myemakeargs=(
 		DESTDIR="${ED}"
 		LUA_CDIR="$(lua_get_cmod_dir)"
@@ -82,6 +92,8 @@ lua_src_install() {
 	use mysql && emake ${myemakeargs[@]} install_mysql
 	use postgres && emake ${myemakeargs[@]} install_psql
 	use sqlite && emake ${myemakeargs[@]} install_sqlite3
+
+	die
 }
 
 src_install() {
