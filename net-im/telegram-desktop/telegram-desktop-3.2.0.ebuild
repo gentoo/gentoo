@@ -99,6 +99,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DTDESKTOP_LAUNCHER_BASENAME="${PN}"
 		-DCMAKE_DISABLE_FIND_PACKAGE_tl-expected=ON  # header only lib, some git version. prevents warnings.
+		-DDESKTOP_APP_QT6=OFF
 
 		-DDESKTOP_APP_DISABLE_X11_INTEGRATION=$(usex X no yes)
 		-DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=$(usex wayland no yes)
