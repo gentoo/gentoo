@@ -69,6 +69,11 @@ DOCS=(
 S="${WORKDIR}/bitcoin-${BITCOINCORE_COMMITHASH}"
 
 pkg_pretend() {
+	ewarn "WARNING: This version of ${PN} is obsolete and will not be secure soon."
+	ewarn "You must decide whether you consent to the Taproot protocol change."
+	ewarn "If so, unmask and upgrade to >=${PN}-0.21.1 ASAP."
+	ewarn "To learn more, see https://bitcointaproot.cc"
+	elog
 	if use knots; then
 		elog "You are building ${PN} from Bitcoin Knots."
 		elog "For more information, see:"
