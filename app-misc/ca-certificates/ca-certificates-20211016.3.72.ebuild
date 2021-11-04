@@ -62,6 +62,8 @@ CDEPEND="app-misc/c_rehash
 BDEPEND="${CDEPEND}"
 if ! ${PRECOMPILED} ; then
 	BDEPEND+=" ${PYTHON_DEPS}"
+	# See bug #821706
+	BDEPEND+=" $(python_gen_any_dep 'dev-python/cryptography[${PYTHON_USEDEP}]')"
 fi
 
 DEPEND=""
@@ -74,11 +76,19 @@ RDEPEND="${CDEPEND}
 
 S=${WORKDIR}
 
+python_check_deps() {
+	has_version -b "dev-python/cryptography[${PYTHON_USEDEP}]"
+}
+
 pkg_setup() {
 	# For the conversion to having it in CONFIG_PROTECT_MASK,
 	# we need to tell users about it once manually first.
 	[[ -f "${EPREFIX}"/etc/env.d/98ca-certificates ]] \
 		|| ewarn "You should run update-ca-certificates manually after etc-update"
+
+	if ! ${PRECOMPILED} ; then
+		python-any-r1_pkg_setup
+	fi
 }
 
 src_unpack() {
@@ -127,8 +137,8 @@ src_prepare() {
 src_compile() {
 	cd "image/${EPREFIX}" || die
 	if ! ${PRECOMPILED} ; then
-		python_setup
 		local d="${S}/${PN}-${DEB_VER}/mozilla" c="usr/share/${PN}"
+
 		# Grab the database from the nss sources.
 		cp "${S}"/nss-${NSS_VER}/nss/lib/ckfw/builtins/{certdata.txt,nssckbi.h} "${d}" || die
 		emake -C "${d}"
