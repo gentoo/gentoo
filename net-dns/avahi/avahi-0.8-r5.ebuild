@@ -63,7 +63,7 @@ BDEPEND="
 	dev-util/glib-utils
 	doc? ( app-doc/doxygen )
 	app-doc/xmltoman
-	dev-util/intltool
+	sys-devel/gettext
 	virtual/pkgconfig
 "
 
