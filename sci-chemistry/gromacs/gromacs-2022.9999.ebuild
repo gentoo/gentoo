@@ -47,7 +47,7 @@ CDEPEND="
 	hwloc? ( sys-apps/hwloc:= )
 	lapack? ( virtual/lapack )
 	mkl? ( sci-libs/mkl )
-	mpi? ( virtual/mpi )
+	mpi? ( virtual/mpi[cxx] )
 	sci-libs/lmfit:=
 	>=dev-cpp/muParser-2.3:=
 	${PYTHON_DEPS}
