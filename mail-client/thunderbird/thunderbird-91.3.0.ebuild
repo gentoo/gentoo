@@ -644,6 +644,7 @@ src_configure() {
 		--disable-install-strip \
 		--disable-strip \
 		--disable-updater \
+		--enable-js-shell \
 		--enable-official-branding \
 		--enable-release \
 		--enable-system-ffi \
