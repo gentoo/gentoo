@@ -7,7 +7,7 @@ https://bugs.gentoo.org/818775
  
  protobuf-c/protobuf-c.pb.cc protobuf-c/protobuf-c.pb.h: @PROTOC@ $(top_srcdir)/protobuf-c/protobuf-c.proto
 -	$(AM_V_GEN)@PROTOC@ -I$(top_srcdir) --cpp_out=$(top_builddir) $(top_srcdir)/protobuf-c/protobuf-c.proto
-+	$(AM_V_GEN)@PROTOC@ -I@includedir@ -I$(top_srcdir) --cpp_out=$(top_builddir) $(top_srcdir)/protobuf-c/protobuf-c.proto
++	$(AM_V_GEN)@PROTOC@ -I$(top_srcdir) -I@includedir@ --cpp_out=$(top_builddir) $(top_srcdir)/protobuf-c/protobuf-c.proto
  
  BUILT_SOURCES += \
  		 protobuf-c/protobuf-c.pb.cc \
@@ -16,19 +16,19 @@ https://bugs.gentoo.org/818775
  
  t/test.pb-c.c t/test.pb-c.h: $(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) $(top_srcdir)/t/test.proto
 -	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/test.proto
-+	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I@includedir@ -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/test.proto
++	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) -I@includedir@ --c_out=$(top_builddir) $(top_srcdir)/t/test.proto
  
  t/test-optimized.pb-c.c t/test-optimized.pb-c.h: $(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) $(top_srcdir)/t/test-optimized.proto
 -	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/test-optimized.proto
-+	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I@includedir@ -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/test-optimized.proto
++	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) -I@includedir@ --c_out=$(top_builddir) $(top_srcdir)/t/test-optimized.proto
  
  t/test-full.pb-c.c t/test-full.pb-c.h: $(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) $(top_srcdir)/t/test-full.proto
 -	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/test-full.proto
-+	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I@includedir@ -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/test-full.proto
++	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) -I@includedir@ --c_out=$(top_builddir) $(top_srcdir)/t/test-full.proto
  
  t/test-full.pb.cc t/test-full.pb.h: @PROTOC@ $(top_srcdir)/t/test-full.proto
 -	$(AM_V_GEN)@PROTOC@ -I$(top_srcdir) --cpp_out=$(top_builddir) $(top_srcdir)/t/test-full.proto
-+	$(AM_V_GEN)@PROTOC@ -I@includedir@ -I$(top_srcdir) --cpp_out=$(top_builddir) $(top_srcdir)/t/test-full.proto
++	$(AM_V_GEN)@PROTOC@ -I$(top_srcdir) -I@includedir@ --cpp_out=$(top_builddir) $(top_srcdir)/t/test-full.proto
  
  t/generated-code2/test-full-cxx-output.inc: t/generated-code2/cxx-generate-packed-data$(EXEEXT)
  	$(AM_V_GEN)$(top_builddir)/t/generated-code2/cxx-generate-packed-data$(EXEEXT) > $(top_builddir)/t/generated-code2/test-full-cxx-output.inc
@@ -37,7 +37,7 @@ https://bugs.gentoo.org/818775
  
  t/test-proto3.pb-c.c t/test-proto3.pb-c.h: $(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) $(top_srcdir)/t/test-proto3.proto
 -	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/test-proto3.proto
-+	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I@includedir@ -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/test-proto3.proto
++	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) -I@includedir@ --c_out=$(top_builddir) $(top_srcdir)/t/test-proto3.proto
  
  BUILT_SOURCES += \
  	t/test-proto3.pb-c.c t/test-proto3.pb-c.h
@@ -46,7 +46,7 @@ https://bugs.gentoo.org/818775
  	protobuf-c/libprotobuf-c.la
  t/issue204/issue204.pb-c.c t/issue204/issue204.pb-c.h: $(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) $(top_srcdir)/t/issue204/issue204.proto
 -	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue204/issue204.proto
-+	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I@includedir@ -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue204/issue204.proto
++	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) -I@includedir@ --c_out=$(top_builddir) $(top_srcdir)/t/issue204/issue204.proto
  BUILT_SOURCES += \
  	t/issue204/issue204.pb-c.c t/issue204/issue204.pb-c.h
  EXTRA_DIST += \
@@ -55,7 +55,7 @@ https://bugs.gentoo.org/818775
  	protobuf-c/libprotobuf-c.la
  t/issue220/issue220.pb-c.c t/issue220/issue220.pb-c.h: $(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) $(top_srcdir)/t/issue220/issue220.proto
 -	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue220/issue220.proto
-+	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I@includedir@ -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue220/issue220.proto
++	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) -I@includedir@ --c_out=$(top_builddir) $(top_srcdir)/t/issue220/issue220.proto
  BUILT_SOURCES += \
  	t/issue220/issue220.pb-c.c t/issue220/issue220.pb-c.h
  EXTRA_DIST += \
@@ -64,7 +64,7 @@ https://bugs.gentoo.org/818775
  	protobuf-c/libprotobuf-c.la
  t/issue251/issue251.pb-c.c t/issue251/issue251.pb-c.h: $(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) $(top_srcdir)/t/issue251/issue251.proto
 -	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue251/issue251.proto
-+	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I@includedir@ -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue251/issue251.proto
++	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) -I@includedir@ --c_out=$(top_builddir) $(top_srcdir)/t/issue251/issue251.proto
  BUILT_SOURCES += \
  	t/issue251/issue251.pb-c.c t/issue251/issue251.pb-c.h
  EXTRA_DIST += \
@@ -73,7 +73,7 @@ https://bugs.gentoo.org/818775
  	protobuf-c/libprotobuf-c.la
  t/issue330/issue330.pb-c.c t/issue330/issue330.pb-c.h: $(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) $(top_srcdir)/t/issue330/issue330.proto
 -	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue330/issue330.proto
-+	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I@includedir@ -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue330/issue330.proto
++	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) -I@includedir@ --c_out=$(top_builddir) $(top_srcdir)/t/issue330/issue330.proto
  BUILT_SOURCES += \
  	t/issue330/issue330.pb-c.c t/issue330/issue330.pb-c.h
  
@@ -81,7 +81,7 @@ https://bugs.gentoo.org/818775
  	t/issue389/issue389.pb-c.c # Tack onto issue330 since there is no need for a separate binary here
  t/issue389/issue389.pb-c.c t/issue389/issue389.pb-c.h: $(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) $(top_srcdir)/t/issue389/issue389.proto
 -	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue389/issue389.proto
-+	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I@includedir@ -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue389/issue389.proto
++	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) -I@includedir@ --c_out=$(top_builddir) $(top_srcdir)/t/issue389/issue389.proto
  BUILT_SOURCES += \
  	t/issue389/issue389.pb-c.c t/issue389/issue389.pb-c.h
  EXTRA_DIST += \
@@ -90,7 +90,7 @@ https://bugs.gentoo.org/818775
  	protobuf-c/libprotobuf-c.la
  t/issue440/issue440.pb-c.c t/issue440/issue440.pb-c.h: $(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) $(top_srcdir)/t/issue440/issue440.proto
 -	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue440/issue440.proto
-+	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I@includedir@ -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue440/issue440.proto
++	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) -I@includedir@ --c_out=$(top_builddir) $(top_srcdir)/t/issue440/issue440.proto
  BUILT_SOURCES += \
  	t/issue440/issue440.pb-c.c t/issue440/issue440.pb-c.h
  EXTRA_DIST += \
@@ -99,7 +99,7 @@ https://bugs.gentoo.org/818775
  	protobuf-c/libprotobuf-c.la
  t/issue375/issue375.pb-c.c t/issue375/issue375.pb-c.h: $(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) $(top_srcdir)/t/issue375/issue375.proto
 -	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue375/issue375.proto
-+	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I@includedir@ -I$(top_srcdir) --c_out=$(top_builddir) $(top_srcdir)/t/issue375/issue375.proto
++	$(AM_V_GEN)@PROTOC@ --plugin=protoc-gen-c=$(top_builddir)/protoc-c/protoc-gen-c$(EXEEXT) -I$(top_srcdir) -I@includedir@ --c_out=$(top_builddir) $(top_srcdir)/t/issue375/issue375.proto
  BUILT_SOURCES += \
  	t/issue375/issue375.pb-c.c t/issue375/issue375.pb-c.h
  EXTRA_DIST += \
