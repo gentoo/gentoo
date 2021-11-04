@@ -19,10 +19,10 @@ IUSE="python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+BDEPEND="
 	python? (
 		${PYTHON_DEPS}
-		dev-lang/swig
+		dev-lang/swig[pcre]
 	)
 "
 RDEPEND="python? ( ${PYTHON_DEPS} )"
