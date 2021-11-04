@@ -36,6 +36,7 @@ DOCS=( README.md CHANGELOG )
 PATCHES=(
 	"${FILESDIR}/${PN}-16.1.3-headers-gentoo.patch"
 	"${FILESDIR}/${PN}-16.1.3-build.patch"
+	"${FILESDIR}/${PN}-21.2.1-donotcompressinfo.patch"
 )
 
 src_prepare() {
