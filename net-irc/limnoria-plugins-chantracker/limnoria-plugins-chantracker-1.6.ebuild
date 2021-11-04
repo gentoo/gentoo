@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/ncoevoet/ChanTracker"
 SRC_URI="https://github.com/ncoevoet/ChanTracker/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 SLOT=0
 
 RDEPEND="net-irc/limnoria"
