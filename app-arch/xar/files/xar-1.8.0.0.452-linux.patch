@@ -35,6 +35,15 @@
  
 --- a/lib/util.c
 +++ b/lib/util.c
+@@ -35,6 +35,8 @@
+  * Christopher Ryan <ryanc@apple.com>
+ */
+ 
++#include "config.h"
++
+ #include <stdio.h>
+ #include <stdint.h>
+ #include <sys/types.h>
 @@ -40,6 +40,9 @@
  #include <sys/types.h>
  #include <sys/mount.h>
