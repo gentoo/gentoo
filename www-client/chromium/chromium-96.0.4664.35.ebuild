@@ -134,7 +134,6 @@ if [[ ${CHROMIUM_FORCE_LIBCXX} == yes ]]; then
 	DEPEND+=" >=sys-libs/libcxx-12"
 else
 	COMMON_DEPEND="
-		app-arch/snappy:=
 		dev-libs/libxslt:=
 		>=dev-libs/re2-0.2019.08.01:=
 		>=media-libs/openh264-1.6.0:=
@@ -232,6 +231,7 @@ src_prepare() {
 	local PATCHES=(
 		"${WORKDIR}/patches"
 		"${FILESDIR}/chromium-93-InkDropHost-crash.patch"
+		"${FILESDIR}/chromium-95-xfce-maximize.patch"
 		"${FILESDIR}/chromium-96-EnumTable-crash.patch"
 		"${FILESDIR}/chromium-use-oauth2-client-switches-as-default.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
@@ -430,6 +430,7 @@ src_prepare() {
 		third_party/skia/third_party/skcms
 		third_party/skia/third_party/vulkan
 		third_party/smhasher
+		third_party/snappy
 		third_party/sqlite
 		third_party/swiftshader
 		third_party/swiftshader/third_party/astc-encoder
@@ -499,7 +500,6 @@ src_prepare() {
 		keeplibs+=( third_party/libxslt )
 		keeplibs+=( third_party/openh264 )
 		keeplibs+=( third_party/re2 )
-		keeplibs+=( third_party/snappy )
 		if use system-icu; then
 			keeplibs+=( third_party/icu )
 		fi
@@ -610,7 +610,6 @@ src_configure() {
 		gn_system_libraries+=( libxslt )
 		gn_system_libraries+=( openh264 )
 		gn_system_libraries+=( re2 )
-		gn_system_libraries+=( snappy )
 	fi
 	build/linux/unbundle/replace_gn_files.py --system-libraries "${gn_system_libraries[@]}" || die
 
