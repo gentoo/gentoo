@@ -109,7 +109,7 @@ BDEPEND="
 	')
 	>=app-arch/gzip-1.7
 	dev-lang/perl
-	>=dev-util/gn-0.1807
+	<dev-util/gn-0.1943
 	dev-vcs/git
 	>=dev-util/gperf-3.0.3
 	>=dev-util/ninja-1.7.2
