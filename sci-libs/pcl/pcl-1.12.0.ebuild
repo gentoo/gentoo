@@ -61,6 +61,10 @@ REQUIRED_USE="
 	tutorials? ( doc )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.12.0-cmake-targets.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		"-DLIB_INSTALL_DIR=$(get_libdir)"
