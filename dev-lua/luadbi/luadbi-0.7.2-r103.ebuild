@@ -62,7 +62,7 @@ lua_src_compile() {
 	use postgres && emake ${myemakeargs} PSQL_INC="-I$(pg_config --libdir)" psql
 	use sqlite emake ${myemakeargs} SQLITE3_INC="-I/usr/include" sqlite
 
-	die
+	popd
 }
 
 src_compile() {
@@ -72,7 +72,7 @@ src_compile() {
 lua_src_test() {
 	pushd "${BUILD_DIR}" || die
 	cd "${S}"/tests && ${ELUA} run_tests.lua || die
-	die
+	popd
 }
 
 src_test() {
@@ -93,7 +93,7 @@ lua_src_install() {
 	use postgres && emake ${myemakeargs[@]} install_psql
 	use sqlite && emake ${myemakeargs[@]} install_sqlite3
 
-	die
+	popd
 }
 
 src_install() {
