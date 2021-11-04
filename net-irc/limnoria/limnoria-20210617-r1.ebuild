@@ -19,7 +19,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="https://github.com/ProgVal/${MY_PN}/archive/master-${MY_PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${MY_PN}-master-${MY_PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Python based extensible IRC infobot and channel bot"
