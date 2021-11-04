@@ -1,6 +1,28 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2021-11-04)
+# Enable all LLVM targets unconditionally.  Unfortunately, disabling
+# targets tend to break reverse dependencies (e.g. Rust) and we are yet
+# to find a clean way of resolving that.  Compared to the damage
+# potential, the increase of build time is a minor problem.  Users who
+# really insist of building a smaller system can un-force the flags
+# at their own responsibility.
+>=sys-devel/clang-13.0.1 llvm_targets_AArch64 llvm_targets_AMDGPU
+>=sys-devel/clang-13.0.1 llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+>=sys-devel/clang-13.0.1 llvm_targets_Hexagon llvm_targets_Lanai
+>=sys-devel/clang-13.0.1 llvm_targets_MSP430 llvm_targets_Mips
+>=sys-devel/clang-13.0.1 llvm_targets_NVPTX llvm_targets_PowerPC
+>=sys-devel/clang-13.0.1 llvm_targets_RISCV llvm_targets_Sparc
+>=sys-devel/clang-13.0.1 llvm_targets_SystemZ llvm_targets_WebAssembly
+>=sys-devel/llvm-13.0.1 llvm_targets_AArch64 llvm_targets_AMDGPU
+>=sys-devel/llvm-13.0.1 llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+>=sys-devel/llvm-13.0.1 llvm_targets_Hexagon llvm_targets_Lanai
+>=sys-devel/llvm-13.0.1 llvm_targets_MSP430 llvm_targets_Mips
+>=sys-devel/llvm-13.0.1 llvm_targets_NVPTX llvm_targets_PowerPC
+>=sys-devel/llvm-13.0.1 llvm_targets_RISCV llvm_targets_Sparc
+>=sys-devel/llvm-13.0.1 llvm_targets_SystemZ llvm_targets_WebAssembly
+
 # Sam James <sam@gentoo.org> (2021-03-08)
 # Broken without USE=unicode
 # Needs to link with libiconv, bug #774507
