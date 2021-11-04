@@ -13,6 +13,7 @@ MY_P="PyGreSQL-${PV}"
 DESCRIPTION="A Python interface for the PostgreSQL database"
 HOMEPAGE="https://pygresql.org/"
 SRC_URI="mirror://pypi/P/PyGreSQL/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="POSTGRESQL"
 SLOT="0"
@@ -21,8 +22,29 @@ KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ~sparc x86"
 DEPEND="${POSTGRES_DEP}"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${MY_P}"
-PATCHES=( "${FILESDIR}"/${PN}-5.2-CFLAGS.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.2-CFLAGS.patch
+)
+
+distutils_enable_tests unittest
+
+src_test() {
+	local db="${T}/pgsql"
+	initdb --username=portage -D "${db}" || die
+	pg_ctl -w -D "${db}" start \
+		-o "-h '127.0.0.1' -p 5432 -k '${T}'" || die
+	psql -h "${T}" -U portage -d postgres \
+		-c "ALTER ROLE portage WITH PASSWORD 'postgres';" || die
+	createdb -h "${T}" -U portage unittest || die
+
+	cat > tests/LOCAL_PyGreSQL.py <<-EOF || die
+		dbhost = '${T}'
+	EOF
+
+	distutils-r1_src_test
+
+	pg_ctl -w -D "${db}" stop || die
+}
 
 python_install_all() {
 	local DOCS=( docs/*.rst docs/community/* docs/contents/tutorial.rst )
