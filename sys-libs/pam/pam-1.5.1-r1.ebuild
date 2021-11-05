@@ -9,7 +9,7 @@ MY_P="Linux-${PN^^}-${PV}"
 # Can reconsider w/ EAPI 8 and IDEPEND, bug #810979
 TMPFILES_OPTIONAL=1
 
-inherit autotools db-use fcaps toolchain-funcs usr-ldscript multilib-minimal
+inherit autotools db-use fcaps toolchain-funcs multilib-minimal
 
 DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
 HOMEPAGE="https://github.com/linux-pam/linux-pam"
@@ -92,8 +92,6 @@ multilib_src_compile() {
 multilib_src_install() {
 	emake DESTDIR="${D}" install \
 		sepermitlockdir="/run/sepermit"
-
-	gen_usr_ldscript -a pam pam_misc pamc
 }
 
 multilib_src_install_all() {
