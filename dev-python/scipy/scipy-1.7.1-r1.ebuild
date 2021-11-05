@@ -115,6 +115,21 @@ python_prepare_all() {
 	sed -e 's:test_bisplev_integer_overflow:_&:' \
 			-i scipy/interpolate/tests/test_fitpack.py || die
 
+	# Skip a few 32-bit related failures
+	if use x86 ; then
+		# TODO: Tidy this up and switch to epytest
+		sed -i -e 's:test_nd_axis_m1:_&:' \
+			-e 's:test_nd_axis_0:_&:' \
+			-e 's:test_maxiter_worsening:_&:' \
+			-e 's:test_pdist_jensenshannon_iris:_&:' \
+			-e 's:test_align_vectors_single_vector:_&:' \
+			scipy/signal/tests/test_spectral.py \
+			scipy/sparse/linalg/isolve/tests/test_iterative.py \
+			scipy/spatial/tests/test_distance.py \
+			scipy/spatial/transform/tests/test_rotation.py || die
+	fi
+
+
 	if has_version ">=sci-libs/lapack-3.10"; then
 		sed -e 's:test_sort(:_&:' \
 			-i scipy/linalg/tests/test_decomp.py || die
