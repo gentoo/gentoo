@@ -4,10 +4,10 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..2} luajit )
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE='threads(+)'
 
-WAF_PV=2.0.9
+WAF_PV=2.0.22
 
 inherit bash-completion-r1 flag-o-matic lua-single optfeature pax-utils python-r1 toolchain-funcs waf-utils xdg-utils
 
@@ -93,7 +93,7 @@ COMMON_DEPEND="
 	vaapi? ( x11-libs/libva:=[drm?,X?,wayland?] )
 	vdpau? ( x11-libs/libvdpau )
 	vulkan? (
-		>=media-libs/libplacebo-2.72.2:=[vulkan]
+		>=media-libs/libplacebo-3.104.0:=[vulkan]
 		media-libs/shaderc
 	)
 	wayland? (
