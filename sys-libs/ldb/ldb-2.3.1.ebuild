@@ -37,7 +37,9 @@ RDEPEND="
 		sys-libs/tevent[python,${PYTHON_SINGLE_USEDEP}]
 	)
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	virtual/libcrypt
+"
 BDEPEND="${PYTHON_DEPS}
 	dev-libs/libxslt
 	virtual/pkgconfig
