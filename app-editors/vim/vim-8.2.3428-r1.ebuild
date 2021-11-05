@@ -282,7 +282,9 @@ src_test() {
 	# Looks in wrong location? (bug #742710)
 	# - Test_job_tty_in_out
 	# Fragile and depends on TERM(?)
-	export TEST_SKIP_PAT='\(Test_expand_star_star\|Test_exrc\|Test_job_tty_in_out\)'
+	# - Test_spelldump_bang
+	# Hangs.
+	export TEST_SKIP_PAT='\(Test_expand_star_star\|Test_exrc\|Test_job_tty_in_out\|Test_spelldump_bang\)'
 
 	emake -j1 -C src/testdir nongui
 }
