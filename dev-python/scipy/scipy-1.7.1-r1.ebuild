@@ -129,7 +129,6 @@ python_prepare_all() {
 			scipy/spatial/transform/tests/test_rotation.py || die
 	fi
 
-
 	if has_version ">=sci-libs/lapack-3.10"; then
 		sed -e 's:test_sort(:_&:' \
 			-i scipy/linalg/tests/test_decomp.py || die
