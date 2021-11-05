@@ -36,6 +36,10 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.10.0-tests-werror.patch
+)
+
 src_prepare() {
 	sed -i -e '/pytest-runner/d' setup.py || die
 	distutils-r1_src_prepare
