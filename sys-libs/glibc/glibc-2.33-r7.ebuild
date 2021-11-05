@@ -23,7 +23,7 @@ PATCH_DEV=dilfridge
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 	SRC_URI+=" https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 fi
@@ -1506,7 +1506,6 @@ pkg_preinst() {
 	if ! use crypt && has_version "${CATEGORY}/${PN}[crypt]"; then
 		PRESERVED_OLD_LIBCRYPT=1
 		preserve_old_lib /$(get_libdir)/libcrypt$(get_libname 1)
-		cp "${EROOT}"/usr/include/crypt.h "${T}"/crypt.h || die
 	else
 		PRESERVED_OLD_LIBCRYPT=0
 	fi
@@ -1542,10 +1541,11 @@ pkg_postinst() {
 
 	if [[ ${PRESERVED_OLD_LIBCRYPT} -eq 1 ]] ; then
 		preserve_old_lib_notify /$(get_libdir)/libcrypt$(get_libname 1)
-		cp "${T}"/crypt.h "${EROOT}"/usr/include/crypt.h || eerror "Error restoring crypt.h, please file a bug"
+
 		elog "Please ignore a possible later error message about a file collision involving"
-		elog "/usr/include/crypt.h. We need to preserve this file for the moment to keep"
+		elog "${EROOT}/$(get_libdir)/libcrypt$(get_libname 1). We need to preserve this file for the moment to keep"
 		elog "the upgrade working, but it also needs to be overwritten when"
 		elog "sys-libs/libxcrypt is installed. See bug 802210 for more details."
+		elog "If you have FEATURES=collision-protect, please use FEATURES=unmerge-orphans instead!"
 	fi
 }

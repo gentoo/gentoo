@@ -1,10 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-{1,3,4} luajit )
-inherit cmake lua-single xdg-utils readme.gentoo-r1
+inherit cmake lua-single readme.gentoo-r1 xdg
 
 DESCRIPTION="Open source reimplementation of TES III: Morrowind"
 HOMEPAGE="https://openmw.org/ https://gitlab.com/OpenMW/openmw"
@@ -28,11 +28,11 @@ RESTRICT="!test? ( test )"
 # used when BUILD_OPENCS flag is enabled. See bug #676266.
 
 RDEPEND="${LUA_DEPS}
-	app-arch/lz4
+	app-arch/lz4:=
 	dev-games/mygui
-	dev-games/recastnavigation
+	dev-games/recastnavigation:=
 	dev-libs/boost:=[threads(+),zlib]
-	dev-libs/tinyxml:=[stl]
+	dev-libs/tinyxml[stl]
 	media-libs/libsdl2[joystick,opengl,video]
 	media-libs/openal
 	media-video/ffmpeg:=
@@ -57,7 +57,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	virtual/pkgconfig
 	doc? (
-		app-doc/doxygen[doc]
+		app-doc/doxygen[dot]
 		dev-python/sphinx
 	)
 	test? (
@@ -78,7 +78,7 @@ src_prepare() {
 }
 
 src_configure() {
-	use devtools && ! use qt5 && \
+	use devtools && ! use qt5 &&
 		elog "'qt5' USE flag is disabled, 'openmw-cs' will not be installed"
 
 	local mycmakeargs=(
@@ -95,8 +95,6 @@ src_configure() {
 		-DMORROWIND_DATA_FILES="${EPREFIX}/usr/share/morrowind-data"
 		-DUSE_SYSTEM_TINYXML=ON
 		-DOPENMW_USE_SYSTEM_RECASTNAVIGATION=ON
-		-DDESIRED_QT_VERSION=5
-		-DBULLET_USE_DOUBLES=ON
 	)
 
 	if [[ ${ELUA} == luajit ]]; then
@@ -121,9 +119,9 @@ src_compile() {
 
 	if use doc ; then
 		cmake_src_compile doc
-		find "${CMAKE_BUILD_DIR}"/docs/Doxygen/html \
+		find "${BUILD_DIR}"/docs/Doxygen/html \
 			-name '*.md5' -type f -delete || die
-		HTML_DOCS=( "${CMAKE_BUILD_DIR}"/docs/Doxygen/html/. )
+		HTML_DOCS=( "${BUILD_DIR}"/docs/Doxygen/html/. )
 	fi
 }
 
@@ -142,7 +140,7 @@ src_install() {
 	directly).\n"
 
 	if ! use qt5; then
-		local DOC_CONTENTS+="\n\n
+		DOC_CONTENTS+="\n\n
 		USE flag 'qt5' is disabled, 'openmw-launcher' and
 		'openmw-wizard' are not available. You are on your own for
 		making the Morrowind data files available and pointing
@@ -158,10 +156,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_icon_cache_update
+	xdg_pkg_postinst
 	readme.gentoo_print_elog
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

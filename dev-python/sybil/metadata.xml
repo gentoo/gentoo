@@ -8,6 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">sybil</remote-id>
-    <remote-id type="github">cjw296/sybil</remote-id>
+    <remote-id type="github">simplistix/sybil</remote-id>
   </upstream>
 </pkgmetadata>

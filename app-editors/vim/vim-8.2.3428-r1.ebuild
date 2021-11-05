@@ -16,7 +16,7 @@ if [[ ${PV} == 9999* ]] ; then
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~zlogene/distfiles/app-editors/vim/vim-8.2.0360-gentoo-patches.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Vim, an improved vi-style text editor"
@@ -269,6 +269,20 @@ src_test() {
 
 	# Don't let vim talk to X
 	unset DISPLAY
+
+	# See https://github.com/vim/vim/blob/f08b0eb8691ff09f98bc4beef986ece1c521655f/src/testdir/runtest.vim#L5
+	# for more information on test variables we can use.
+	# Note that certain variables need vim-compatible regex (not PCRE), see e.g.
+	# http://www.softpanorama.org/Editors/Vimorama/vim_regular_expressions.shtml.
+	#
+	# Skipped tests:
+	# - Test_expand_star_star
+	# Hangs because of a recursive symlink in /usr/include/nodejs (bug #616680)
+	# - Test_exrc
+	# Looks in wrong location? (bug #742710)
+	# - Test_job_tty_in_out
+	# Fragile and depends on TERM(?)
+	export TEST_SKIP_PAT='\(Test_expand_star_star\|Test_exrc\|Test_job_tty_in_out\)'
 
 	emake -j1 -C src/testdir nongui
 }

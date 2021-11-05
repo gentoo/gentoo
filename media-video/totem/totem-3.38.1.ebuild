@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit gnome.org gnome2-utils meson virtualx xdg python-single-r1
@@ -23,7 +23,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86"
 
 DEPEND="
 	>=dev-libs/glib-2.56.0:2
-	>=x11-libs/gtk+-3.19.4:3[introspection]
+	>=x11-libs/gtk+-3.22.0:3[introspection]
 	>=media-libs/gstreamer-1.6.0:1.0
 	>=media-libs/gst-plugins-base-1.6.0:1.0[pango]
 	>=media-libs/gst-plugins-good-1.6.0:1.0
@@ -98,6 +98,7 @@ src_configure() {
 }
 
 src_install() {
+	local -x GST_PLUGIN_SYSTEM_PATH_1_0= # bug 812170
 	meson_src_install
 	if use python ; then
 		python_optimize "${ED}"/usr/$(get_libdir)/totem/plugins/

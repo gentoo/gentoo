@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit python-single-r1
 
 DESCRIPTION="Standalone file import filter library for spreadsheet documents"
@@ -60,4 +60,5 @@ src_configure() {
 src_install() {
 	default
 	find "${D}" -name '*.la' -type f -delete || die
+	use python && python_optimize
 }

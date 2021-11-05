@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Create barcode images with GD"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
 
 RDEPEND="dev-perl/GD"
 BDEPEND="${RDEPEND}"

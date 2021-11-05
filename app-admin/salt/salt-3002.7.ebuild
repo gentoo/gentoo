@@ -12,7 +12,7 @@ HOMEPAGE="https://www.saltstack.com/resources/community/
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/${PN}stack/${PN}.git"
+	EGIT_REPO_URI="https://github.com/${PN}stack/${PN}.git"
 	EGIT_BRANCH="develop"
 	SRC_URI=""
 else

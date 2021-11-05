@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic toolchain-funcs
 
@@ -30,6 +30,15 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${PN}"
 PATCHES=( "${FILESDIR}/${P}-include-tk-dir-and-permissive.patch" )
+
+src_prepare() {
+	sed -i \
+		-e '/\..$(DSEP)pkgIndex.tcl/d' \
+		tcl3d*/Makefile \
+		|| die
+
+	default
+}
 
 src_configure() {
 	local _TCL_V=( $(echo 'puts [info tclversion]' | tclsh | tr '.' ' ') )
@@ -74,4 +83,6 @@ src_compile() {
 
 src_install() {
 	emake INSTDIR="${D}/usr" DESTDIR="${D}" INSTLIB="${D}/usr/$(get_libdir)" install
+	insinto /usr/$(get_libdir)/${PN}${PV}
+	doins pkgIndex.tcl
 }

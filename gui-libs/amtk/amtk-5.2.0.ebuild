@@ -10,11 +10,11 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Amtk"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="+introspection"
 
 RDEPEND="
-	>=dev-libs/glib-2.52:2
+	>=dev-libs/glib-2.56:2
 	>=x11-libs/gtk+-3.22:3
 	introspection? ( >=dev-libs/gobject-introspection-1.42:= )
 "

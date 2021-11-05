@@ -21,6 +21,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-TST-use-explicit-ClassWithNew-instead-of-typing.Gene.patch"
+)
+
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 	sed -i \

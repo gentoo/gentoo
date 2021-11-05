@@ -69,6 +69,9 @@ DEPEND="
 		virtual/perl-Test-Simple
 	)
 "
+BDEPEND="${DEPEND}
+	dev-perl/Module-Build
+"
 
 PERL_S="${S}/xs"
 

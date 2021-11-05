@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite,threads(+)"
 DISTUTILS_SINGLE_IMPL="1"
 
@@ -54,26 +54,17 @@ RDEPEND="
 	x11-libs/libnotify[introspection]
 "
 
-distutils_enable_tests nose
+distutils_enable_tests pytest
 
-src_prepare() {
-	default
-
-	# Avoid test failure:
-	# "ERROR: Failure: OSError (data_path can't be found at : /usr/share/lutris)"
-	sed -i -e "s:sys.path\[0\]:\"${S}/share\":" lutris/util/datapath.py || die
-
-	distutils-r1_src_prepare
-}
+DOCS=( AUTHORS README.rst docs/installers.rst docs/steam.rst )
 
 python_test() {
-	virtx nosetests -v
+	virtx epytest
 }
 
 python_install_all() {
-	local DOCS=( AUTHORS README.rst docs/installers.rst )
 	distutils-r1_python_install_all
-	python_fix_shebang "${ED}"/usr/share/lutris/bin/lutris-wrapper #740048
+	python_fix_shebang "${ED}/usr/share/lutris/bin/lutris-wrapper" #740048
 }
 
 pkg_postinst() {

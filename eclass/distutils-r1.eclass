@@ -610,6 +610,8 @@ _distutils-r1_disable_ez_setup() {
 # @DESCRIPTION:
 # Generate setup.py for pyproject.toml if requested.
 _distutils-r1_handle_pyproject_toml() {
+	[[ ${DISTUTILS_USE_SETUPTOOLS} == manual ]] && return
+
 	if [[ ! -f setup.py && -f pyproject.toml ]]; then
 		if [[ ${DISTUTILS_USE_SETUPTOOLS} != pyproject.toml ]]; then
 			eerror "No setup.py found but pyproject.toml is present.  In order to enable"

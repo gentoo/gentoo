@@ -5,13 +5,13 @@ EAPI=8
 
 DIST_AUTHOR=SALVA
 DIST_VERSION=0.80
-DIST_EXAMPLES=("sample/*")
+DIST_EXAMPLES=("examples/*")
 inherit perl-module
 
 DESCRIPTION="Net::OpenSSH, Perl wrapper for OpenSSH secure shell client"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~sparc x86"
 IUSE="minimal"
 
 RDEPEND="

@@ -11,7 +11,7 @@ DESCRIPTION="Programming language supporting functional, imperative & object-ori
 
 LICENSE="QPL-1.0 LGPL-2"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="emacs flambda latex +ocamlopt spacetime xemacs"
 
 RDEPEND="sys-libs/binutils-libs:=
@@ -20,6 +20,10 @@ BDEPEND="${RDEPEND}
 	virtual/pkgconfig"
 PDEPEND="emacs? ( app-emacs/ocaml-mode )
 	xemacs? ( app-xemacs/ocaml )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.11.2-glibc-2.34.patch
+)
 
 src_prepare() {
 	default

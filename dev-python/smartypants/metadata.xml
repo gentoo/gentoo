@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>nerdboy@gentoo.org</email>
-		<name>Steve Arnold</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<stabilize-allarches/>
 	<longdescription lang="en">
 	smartypants does transformations of plain old ASCII straight quotes,

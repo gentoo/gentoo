@@ -11,7 +11,7 @@
 
 
 # Default starting set of USE flags for all default/linux profiles.
-USE="crypt ipv6 ncurses nls pam readline ssl tcpd zlib"
+USE="crypt ipv6 ncurses nls pam readline ssl zlib"
 
 # make sure toolchain has sane defaults <toolchain@gentoo.org>
 USE="${USE} fortran openmp"

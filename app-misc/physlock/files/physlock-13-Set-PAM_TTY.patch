@@ -1,0 +1,88 @@
+From 26630cebf4dd70d38d56b018680916c75ed0eb61 Mon Sep 17 00:00:00 2001
+From: Oskari Pirhonen <xxc3ncoredxx@gmail.com>
+Date: Sun, 7 Mar 2021 14:19:18 -0600
+Subject: [PATCH] Set PAM_TTY
+
+Fixes issue with pam_securetty.so being unable to authenticate due to
+unknown TTY.
+
+Bug: https://bugs.gentoo.org/774729
+
+Signed-off-by: Oskari Pirhonen <xxc3ncoredxx@gmail.com>
+---
+ main.c     | 7 +++++++
+ physlock.h | 1 +
+ vt.c       | 6 ++++++
+ 3 files changed, 14 insertions(+)
+
+diff --git a/main.c b/main.c
+index 9287802..8bf064c 100644
+--- a/main.c
++++ b/main.c
+@@ -27,6 +27,7 @@
+ #include <pwd.h>
+ #include <signal.h>
+ #include <security/pam_misc.h>
++#include <security/pam_modules.h>
+ 
+ static int oldvt;
+ static vt_t vt;
+@@ -175,6 +176,12 @@ int main(int argc, char **argv) {
+ 	}
+ 	vt_secure(&vt);
+ 
++	/* Attempt to set PAM_TTY to the current VT, fixes #110 */
++	u->pam_status = pam_set_item(u->pamh, PAM_TTY, vt.vt_name);
++	if (u->pam_status != PAM_SUCCESS) {
++		error(EXIT_FAILURE, 0, "Unable to set PAM_TTY: %s", pam_strerror(u->pamh, u->pam_status));
++	}
++
+ 	dup2(vt.fd, 0);
+ 	dup2(vt.fd, 1);
+ 	dup2(vt.fd, 2);
+diff --git a/physlock.h b/physlock.h
+index d08c829..9964f36 100644
+--- a/physlock.h
++++ b/physlock.h
+@@ -85,6 +85,7 @@ typedef struct vt_s {
+ 	int nr;
+ 	FILE *ios;
+ 	int fd;
++	char *vt_name;
+ 	struct termios term;
+ 	struct termios term_orig;
+ } vt_t;
+diff --git a/vt.c b/vt.c
+index 648b6a0..7431c8f 100644
+--- a/vt.c
++++ b/vt.c
+@@ -79,6 +79,7 @@ void vt_acquire(vt_t *vt) {
+ 	vt->nr = -1;
+ 	vt->ios = NULL;
+ 	vt->fd = -1;
++	vt->vt_name = NULL;
+ 
+ 	while ((ret = ioctl(fd, VT_OPENQRY, &vt->nr)) == -1 && errno == EINTR);
+ 	if (ret == -1)
+@@ -89,6 +90,7 @@ void vt_acquire(vt_t *vt) {
+ 	if (vt->ios == NULL)
+ 		error(EXIT_FAILURE, errno, "%s", filename);
+ 	vt->fd = fileno(vt->ios);
++	vt->vt_name = estrdup(filename);
+ 
+ 	while ((ret = ioctl(fd, VT_ACTIVATE, vt->nr)) == -1 && errno == EINTR);
+ 	if (ret == -1)
+@@ -139,6 +141,10 @@ CLEANUP int vt_release(vt_t *vt, int nr) {
+ 		}
+ 		vt->nr = -1;
+ 	}
++
++	if (vt->vt_name != NULL) {
++		free(vt->vt_name);
++	}
+ 	return 0;
+ }
+ 
+-- 
+2.26.2
+

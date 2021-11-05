@@ -10,14 +10,15 @@ inherit perl-module
 DESCRIPTION="Perl extension to model fractions"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 RDEPEND="
 	virtual/perl-Carp
 	dev-perl/Moo
 	dev-perl/MooX-Types-MooseLike
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=dev-perl/Module-Build-0.420.0
 	test? (
 		virtual/perl-Test-Simple

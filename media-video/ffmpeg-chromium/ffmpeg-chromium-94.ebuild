@@ -16,7 +16,7 @@ LICENSE="
 	gpl? ( GPL-2 )
 "
 
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="amd64 ~arm ~arm64"
 
 # Options to use as use_enable in the foo[:bar] form.
 # This will feed configure with $(use_enable foo bar)
@@ -180,6 +180,13 @@ src_configure() {
 		esac
 	fi
 
+	local extra_libs
+	if use arm || use ppc ; then
+		# bug #782811
+		# bug #790590
+		extra_libs+="$(test-flags-CCLD -latomic) "
+	fi
+
 	set -- "${S}/configure" \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
@@ -191,6 +198,7 @@ src_configure() {
 		--ranlib="$(tc-getRANLIB)" \
 		--pkg-config="$(tc-getPKG_CONFIG)" \
 		--optflags="${CFLAGS}" \
+		--extra-libs="${extra_libs}" \
 		--disable-all \
 		--disable-autodetect \
 		--disable-error-resilience \

@@ -1,0 +1,254 @@
+diff --git a/.pylintrc b/.pylintrc
+index 4249ac5..326751f 100644
+--- a/.pylintrc
++++ b/.pylintrc
+@@ -16,7 +16,8 @@ disable =
+     too-few-public-methods,
+     too-many-arguments,
+     too-many-instance-attributes,
+-    import-error
++    import-error,
++    consider-using-f-string,
+ 
+ [REPORTS]
+ 
+diff --git a/pylsp/__main__.py b/pylsp/__main__.py
+index a480823..4698d5c 100644
+--- a/pylsp/__main__.py
++++ b/pylsp/__main__.py
+@@ -92,7 +92,7 @@ def _configure_logger(verbose=0, log_config=None, log_file=None):
+     root_logger = logging.root
+ 
+     if log_config:
+-        with open(log_config, 'r') as f:
++        with open(log_config, 'r', encoding='utf-8') as f:
+             logging.config.dictConfig(json.load(f))
+     else:
+         formatter = logging.Formatter(LOG_FORMAT)
+diff --git a/pylsp/_utils.py b/pylsp/_utils.py
+index 92376f6..9ac30cf 100644
+--- a/pylsp/_utils.py
++++ b/pylsp/_utils.py
+@@ -144,8 +144,8 @@ def format_docstring(contents):
+     Until we can find a fast enough way of discovering and parsing each format,
+     we can do a little better by at least preserving indentation.
+     """
+-    contents = contents.replace('\t', u'\u00A0' * 4)
+-    contents = contents.replace('  ', u'\u00A0' * 2)
++    contents = contents.replace('\t', '\u00A0' * 4)
++    contents = contents.replace('  ', '\u00A0' * 2)
+     return contents
+ 
+ 
+diff --git a/pylsp/plugins/flake8_lint.py b/pylsp/plugins/flake8_lint.py
+index 7ac8c62..aefd09e 100644
+--- a/pylsp/plugins/flake8_lint.py
++++ b/pylsp/plugins/flake8_lint.py
+@@ -79,7 +79,7 @@ def run_flake8(flake8_executable, args, document):
+     try:
+         cmd = [flake8_executable]
+         cmd.extend(args)
+-        p = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE)  # pylint: disable=consider-using-with
++        p = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE)
+     except IOError:
+         log.debug("Can't execute %s. Trying with 'python -m flake8'", flake8_executable)
+         cmd = ['python', '-m', 'flake8']
+diff --git a/pylsp/plugins/pylint_lint.py b/pylsp/plugins/pylint_lint.py
+index bdb65fe..69bad1c 100644
+--- a/pylsp/plugins/pylint_lint.py
++++ b/pylsp/plugins/pylint_lint.py
+@@ -236,7 +236,7 @@ def _run_pylint_stdio(pylint_executable, document, flags):
+         cmd = [pylint_executable]
+         cmd.extend(flags)
+         cmd.extend(['--from-stdin', document.path])
+-        p = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE)  # pylint: disable=consider-using-with
++        p = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE)
+     except IOError:
+         log.debug("Can't execute %s. Trying with 'python -m pylint'", pylint_executable)
+         cmd = ['python', '-m', 'pylint']
+diff --git a/pylsp/workspace.py b/pylsp/workspace.py
+index ec031b6..bf312f6 100644
+--- a/pylsp/workspace.py
++++ b/pylsp/workspace.py
+@@ -76,7 +76,7 @@ def root_uri(self):
+         return self._root_uri
+ 
+     def is_local(self):
+-        return (self._root_uri_scheme == '' or self._root_uri_scheme == 'file') and os.path.exists(self._root_path)
++        return (self._root_uri_scheme in ['', 'file']) and os.path.exists(self._root_path)
+ 
+     def get_document(self, doc_uri):
+         """Return a managed document if-present, else create one pointing at disk.
+diff --git a/setup.py b/setup.py
+index 3f79774..14ade20 100755
+--- a/setup.py
++++ b/setup.py
+@@ -52,7 +52,7 @@ def get_version(module='pylsp'):
+             'pycodestyle>=2.7.0',
+             'pydocstyle>=2.0.0',
+             'pyflakes>=2.3.0,<2.4.0',
+-            'pylint>=2.5.0,<2.10.0',
++            'pylint>=2.5.0',
+             'rope>=0.10.5',
+             'yapf',
+         ],
+@@ -62,10 +62,10 @@ def get_version(module='pylsp'):
+         'pycodestyle': ['pycodestyle>=2.7.0'],
+         'pydocstyle': ['pydocstyle>=2.0.0'],
+         'pyflakes': ['pyflakes>=2.3.0,<2.4.0'],
+-        'pylint': ['pylint>=2.5.0,<2.10.0'],
++        'pylint': ['pylint>=2.5.0'],
+         'rope': ['rope>0.10.5'],
+         'yapf': ['yapf'],
+-        'test': ['pylint>=2.5.0,<2.10.0', 'pytest', 'pytest-cov', 'coverage',
++        'test': ['pylint>=2.5.0', 'pytest', 'pytest-cov', 'coverage',
+                  'numpy', 'pandas', 'matplotlib', 'pyqt5', 'flaky'],
+     },
+     entry_points={
+diff --git a/test/fixtures.py b/test/fixtures.py
+index 3ced0d5..e57bda6 100644
+--- a/test/fixtures.py
++++ b/test/fixtures.py
+@@ -101,7 +101,7 @@ def temp_workspace_factory(workspace):  # pylint: disable=redefined-outer-name
+     def fn(files):
+         def create_file(name, content):
+             fn = os.path.join(workspace.root_path, name)
+-            with open(fn, 'w') as f:
++            with open(fn, 'w', encoding='utf-8') as f:
+                 f.write(content)
+             workspace.put_document(uris.from_fs_path(fn), content)
+ 
+diff --git a/test/plugins/test_flake8_lint.py b/test/plugins/test_flake8_lint.py
+index 046127c..e82a226 100644
+--- a/test/plugins/test_flake8_lint.py
++++ b/test/plugins/test_flake8_lint.py
+@@ -93,7 +93,7 @@ def get_flake8_cfg_settings(workspace, config_str):
+     This function creates a ``setup.cfg``; you'll have to delete it yourself.
+     """
+ 
+-    with open(os.path.join(workspace.root_path, "setup.cfg"), "w+") as f:
++    with open(os.path.join(workspace.root_path, "setup.cfg"), "w+", encoding='utf-8') as f:
+         f.write(config_str)
+ 
+     workspace.update_config({"pylsp": {"configurationSources": ["flake8"]}})
+diff --git a/test/plugins/test_pycodestyle_lint.py b/test/plugins/test_pycodestyle_lint.py
+index c0d1d7e..e238147 100644
+--- a/test/plugins/test_pycodestyle_lint.py
++++ b/test/plugins/test_pycodestyle_lint.py
+@@ -91,7 +91,7 @@ def test_pycodestyle_config(workspace):
+ 
+     for conf_file, (content, working) in list(content.items()):
+         # Now we'll add config file to ignore it
+-        with open(os.path.join(workspace.root_path, conf_file), 'w+') as f:
++        with open(os.path.join(workspace.root_path, conf_file), 'w+', encoding='utf-8') as f:
+             f.write(content)
+         workspace._config.settings.cache_clear()
+ 
+diff --git a/test/plugins/test_pyflakes_lint.py b/test/plugins/test_pyflakes_lint.py
+index 494cb63..d52ac63 100644
+--- a/test/plugins/test_pyflakes_lint.py
++++ b/test/plugins/test_pyflakes_lint.py
+@@ -21,7 +21,7 @@ def hello():
+ DOC_UNDEFINED_NAME_ERR = "a = b"
+ 
+ 
+-DOC_ENCODING = u"""# encoding=utf-8
++DOC_ENCODING = """# encoding=utf-8
+ import sys
+ """
+ 
+diff --git a/test/plugins/test_pylint_lint.py b/test/plugins/test_pylint_lint.py
+index cf7a7e4..5b5b99c 100644
+--- a/test/plugins/test_pylint_lint.py
++++ b/test/plugins/test_pylint_lint.py
+@@ -37,7 +37,7 @@ def temp_document(doc_text, workspace):
+ 
+ 
+ def write_temp_doc(document, contents):
+-    with open(document.path, 'w') as temp_file:
++    with open(document.path, 'w', encoding='utf-8') as temp_file:
+         temp_file.write(contents)
+ 
+ 
+diff --git a/test/test_document.py b/test/test_document.py
+index b543a40..3dcabb6 100644
+--- a/test/test_document.py
++++ b/test/test_document.py
+@@ -16,7 +16,7 @@ def test_document_lines(doc):
+ 
+ 
+ def test_document_source_unicode(workspace):
+-    document_mem = Document(DOC_URI, workspace, u'my source')
++    document_mem = Document(DOC_URI, workspace, 'my source')
+     document_disk = Document(DOC_URI, workspace)
+     assert isinstance(document_mem.source, type(document_disk.source))
+ 
+@@ -44,27 +44,27 @@ def test_word_at_position(doc):
+ 
+ 
+ def test_document_empty_edit(workspace):
+-    doc = Document('file:///uri', workspace, u'')
++    doc = Document('file:///uri', workspace, '')
+     doc.apply_change({
+         'range': {
+             'start': {'line': 0, 'character': 0},
+             'end': {'line': 0, 'character': 0}
+         },
+-        'text': u'f'
++        'text': 'f'
+     })
+-    assert doc.source == u'f'
++    assert doc.source == 'f'
+ 
+ 
+ def test_document_line_edit(workspace):
+-    doc = Document('file:///uri', workspace, u'itshelloworld')
++    doc = Document('file:///uri', workspace, 'itshelloworld')
+     doc.apply_change({
+-        'text': u'goodbye',
++        'text': 'goodbye',
+         'range': {
+             'start': {'line': 0, 'character': 3},
+             'end': {'line': 0, 'character': 8}
+         }
+     })
+-    assert doc.source == u'itsgoodbyeworld'
++    assert doc.source == 'itsgoodbyeworld'
+ 
+ 
+ def test_document_multiline_edit(workspace):
+@@ -73,8 +73,8 @@ def test_document_multiline_edit(workspace):
+         "    print a\n",
+         "    print b\n"
+     ]
+-    doc = Document('file:///uri', workspace, u''.join(old))
+-    doc.apply_change({'text': u'print a, b', 'range': {
++    doc = Document('file:///uri', workspace, ''.join(old))
++    doc.apply_change({'text': 'print a, b', 'range': {
+         'start': {'line': 1, 'character': 4},
+         'end': {'line': 2, 'character': 11}
+     }})
+@@ -89,8 +89,8 @@ def test_document_end_of_file_edit(workspace):
+         "print 'a'\n",
+         "print 'b'\n"
+     ]
+-    doc = Document('file:///uri', workspace, u''.join(old))
+-    doc.apply_change({'text': u'o', 'range': {
++    doc = Document('file:///uri', workspace, ''.join(old))
++    doc.apply_change({'text': 'o', 'range': {
+         'start': {'line': 2, 'character': 0},
+         'end': {'line': 2, 'character': 0}
+     }})
+diff --git a/test/test_workspace.py b/test/test_workspace.py
+index a008e7e..44d754b 100644
+--- a/test/test_workspace.py
++++ b/test/test_workspace.py
+@@ -51,7 +51,7 @@ def test_non_root_project(pylsp, metafiles):
+     os.mkdir(project_root)
+ 
+     for metafile in metafiles:
+-        with open(os.path.join(project_root, metafile), 'w+') as f:
++        with open(os.path.join(project_root, metafile), 'w+', encoding='utf-8') as f:
+             f.write('# ' + metafile)
+ 
+     test_uri = uris.from_fs_path(os.path.join(project_root, 'hello/test.py'))

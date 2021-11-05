@@ -30,7 +30,7 @@ CDEPEND="
 	media-libs/glew:=
 	>=media-libs/libpano13-2.9.19_beta1:0=
 	media-libs/libpng:0=
-	media-libs/openexr:=
+	media-libs/openexr:0=
 	media-libs/tiff:0
 	>=media-libs/vigra-1.11.0[openexr]
 	sci-libs/fftw:3.0=

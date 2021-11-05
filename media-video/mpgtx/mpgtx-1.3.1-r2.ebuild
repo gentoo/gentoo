@@ -1,27 +1,25 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit epatch toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Command line MPEG audio/video/system file toolbox"
 SRC_URI="mirror://sourceforge/mpgtx/${P}.tar.gz"
 HOMEPAGE="http://mpgtx.sourceforge.net/"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
-IUSE=""
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-configure.patch \
-		"${FILESDIR}"/${P}-dont-ignore-cxx-flags.patch
-	tc-export CXX
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-configure.patch
+	"${FILESDIR}"/${P}-dont-ignore-cxx-flags.patch
+)
 
 src_configure() {
+	tc-export CXX
 	./configure --parachute || die
 }
 
@@ -37,11 +35,11 @@ src_install() {
 
 	doman man/mpgtx.1 man/tagmp3.1
 
-	dosym /usr/share/man/man1/mpgtx.1 /usr/share/man/man1/mpgcat.1
-	dosym /usr/share/man/man1/mpgtx.1 /usr/share/man/man1/mpgjoin.1
-	dosym /usr/share/man/man1/mpgtx.1 /usr/share/man/man1/mpginfo.1
-	dosym /usr/share/man/man1/mpgtx.1 /usr/share/man/man1/mpgsplit.1
-	dosym /usr/share/man/man1/mpgtx.1 /usr/share/man/man1/mpgdemux.1
+	dosym mpgtx.1 /usr/share/man/man1/mpgcat.1
+	dosym mpgtx.1 /usr/share/man/man1/mpgjoin.1
+	dosym mpgtx.1 /usr/share/man/man1/mpginfo.1
+	dosym mpgtx.1 /usr/share/man/man1/mpgsplit.1
+	dosym mpgtx.1 /usr/share/man/man1/mpgdemux.1
 
-	dodoc AUTHORS ChangeLog README TODO
+	einstalldocs
 }

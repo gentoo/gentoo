@@ -16,9 +16,6 @@
 	<flag name="gles2">
 		Use OpenGL ES 2.0
 	</flag>
-	<flag name="inspector">
-		Build the OCCT inspector tool for low-level data inspection
-	</flag>
 	<flag name="json">
 		Enable JSON support through <pkg>dev-libs/rapidjson</pkg>
 	</flag>

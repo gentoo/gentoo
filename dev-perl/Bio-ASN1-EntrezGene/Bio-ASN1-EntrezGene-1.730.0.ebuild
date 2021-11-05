@@ -26,6 +26,7 @@ BDEPEND="${RDEPEND}
 		virtual/perl-File-Spec
 		virtual/perl-IO
 		virtual/perl-Test-Simple
+		dev-perl/Test-Exception
 	)
 "
 

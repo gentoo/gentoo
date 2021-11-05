@@ -15,18 +15,18 @@ SLOT="0"
 KEYWORDS=""
 IUSE="+aom dav1d examples extras gdk-pixbuf rav1e svt-av1"
 
+REQUIRED_USE="|| ( aom dav1d )"
+
 DEPEND="media-libs/libpng[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/jpeg[${MULTILIB_USEDEP}]
-	aom? ( >=media-libs/libaom-2.0.0[${MULTILIB_USEDEP}] )
+	aom? ( >=media-libs/libaom-3.1.2:=[${MULTILIB_USEDEP}] )
 	dav1d? ( media-libs/dav1d[${MULTILIB_USEDEP}] )
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}] )
 	rav1e? ( media-video/rav1e[capi] )
 	svt-av1? ( >=media-libs/svt-av1-0.8.6 )"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-REQUIRED_USE="|| ( aom dav1d )"
 
 multilib_src_configure() {
 	local mycmakeargs=(
@@ -40,6 +40,8 @@ multilib_src_configure() {
 		-DAVIF_LOCAL_JPEG=OFF
 
 		-DAVIF_BUILD_GDK_PIXBUF=$(usex gdk-pixbuf ON OFF)
+
+		-DAVIF_ENABLE_WERROR=OFF
 	)
 
 	if multilib_is_native_abi; then

@@ -21,6 +21,10 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.2-autoconf-2.70.patch
+)
+
 src_prepare() {
 	sed -i -e "/^dist_doc_DATA/d" Makefile.am \
 		|| die "Failed to disable installation of docs"

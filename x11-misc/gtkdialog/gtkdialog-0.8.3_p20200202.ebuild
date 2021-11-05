@@ -6,7 +6,7 @@ inherit autotools xdg-utils
 
 DESCRIPTION="A small utility for fast and easy GUI building"
 HOMEPAGE="https://github.com/oshazard/gtkdialog"
-SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jsmolic/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

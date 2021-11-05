@@ -10,13 +10,14 @@ DESCRIPTION="Free Pascal Compiler"
 SRC_URI="mirror://sourceforge/freepascal/fpcbuild-${PV}.tar.gz
 	mirror://sourceforge/freepascal/fpc-${PV}.source.tar.gz
 	amd64? ( mirror://sourceforge/freepascal/${P}.x86_64-linux.tar )
+	arm64? ( mirror://sourceforge/freepascal/${P}.aarch64-linux.tar )
 	x86? ( mirror://sourceforge/freepascal/${P}.i386-linux.tar )
 	doc? ( mirror://sourceforge/freepascal/Documentation/${PV}/doc-html.tar.gz -> ${P}-doc-html.tar.gz )"
 S="${WORKDIR}/fpcbuild-${PV}/fpcsrc"
 
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* amd64 ~arm64 x86"
 IUSE="doc source"
 RESTRICT="strip" #269221
 
@@ -41,6 +42,10 @@ src_unpack() {
 	case ${ARCH} in
 		amd64)
 			FPC_ARCH="x86_64"
+			PV_BIN="${PV}"
+			;;
+		arm64)
+			FPC_ARCH="aarch64"
 			PV_BIN="${PV}"
 			;;
 		x86)
@@ -74,6 +79,10 @@ set_pp() {
 		amd64)
 			FPC_ARCH="x64"
 			FPC_PARCH="x86_64"
+			;;
+		arm64)
+			FPC_ARCH="a64"
+			FPC_PARCH="aarch64"
 			;;
 		x86)
 			FPC_ARCH="386"
@@ -163,7 +172,7 @@ src_install() {
 	rm -r "${ED}"/usr/lib/fpc/lexyacc || die
 
 	case ${ARCH} in
-		amd64)
+		amd64|arm64)
 			mkdir -p "${ED}"/usr/$(get_libdir) || die
 			mv "${ED}"/usr/lib/*.so "${ED}/usr/$(get_libdir)/" || die
 			;;

@@ -5,6 +5,7 @@
 		<email>djc@gentoo.org</email>
 		<name>Dirkjan Ochtman</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">djc/rnc2rng</remote-id>
 		<remote-id type="pypi">rnc2rng</remote-id>

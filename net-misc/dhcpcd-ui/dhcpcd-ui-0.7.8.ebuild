@@ -6,7 +6,7 @@ EAPI=7
 inherit qmake-utils systemd xdg
 
 DESCRIPTION="Desktop notification and configuration for dhcpcd"
-HOMEPAGE="https://roy.marples.name/projects/dhcpcd-ui/"
+HOMEPAGE="https://github.com/NetworkConfiguration/dhcpcd-ui https://roy.marples.name/projects/dhcpcd-ui/"
 SRC_URI="https://roy.marples.name/downloads/${PN%-ui}/${P}.tar.xz"
 
 LICENSE="BSD-2"

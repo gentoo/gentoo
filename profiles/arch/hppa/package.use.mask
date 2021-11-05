@@ -4,6 +4,16 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-24)
+# dev-ruby/furo isn't keyworded here
+dev-python/argon2-cffi doc
+
+# Sam James <sam@gentoo.org> (2021-10-24)
+# Avoid Pipewire for now because of new wireplumber dependency which lacks
+# keywords. Doubt anybody is using PW here anyway right now.
+# bug #807616
+media-libs/libsdl2 pipewire
+
 # Sam James <sam@gentoo.org> (2021-10-16)
 # Avoid unkeyworded dependencies
 x11-libs/gtk+ cloudprint
@@ -94,10 +104,6 @@ dev-ruby/activesupport test
 # James Le Cuirot <chewi@gentoo.org> (2020-04-23)
 # Requires media-libs/mesa[llvm], which is masked.
 dev-python/pyopengl test
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
-# dev-python/pip not keyworded yet, bug #700918
-dev-python/virtualenv test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
 # dev-libs/criterion not yet keyworded

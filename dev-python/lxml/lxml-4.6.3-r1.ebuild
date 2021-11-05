@@ -41,6 +41,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.6.0-tests-pypy.patch
+	"${FILESDIR}"/${P}-tests-libxml2.patch
 )
 
 python_check_deps() {

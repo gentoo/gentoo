@@ -28,11 +28,10 @@ SLOT="0"
 IUSE="doc"
 
 DEPEND="
-	dev-libs/expat
 	dev-qt/qtcore:5
 	sci-libs/shapelib:=
 	sys-libs/zlib
-	virtual/libusb:0
+	virtual/libusb:1
 "
 BDEPEND="
 	virtual/pkgconfig

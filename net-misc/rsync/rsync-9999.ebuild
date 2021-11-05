@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit prefix systemd toolchain-funcs
+inherit prefix systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"
 HOMEPAGE="https://rsync.samba.org/"
@@ -72,11 +72,6 @@ src_configure() {
 		$(use_enable xxhash)
 		$(use_enable zstd)
 	)
-
-	if tc-is-cross-compiler; then
-		# configure check is broken when cross-compiling.
-		myeconfargs+=( --disable-simd )
-	fi
 
 	econf "${myeconfargs[@]}"
 }

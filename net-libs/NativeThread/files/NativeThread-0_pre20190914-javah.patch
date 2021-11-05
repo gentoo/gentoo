@@ -1,0 +1,14 @@
+diff --git a/Makefile b/Makefile
+index 0a879d2..b0b45d1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -9,7 +9,8 @@ libNativeThread.so: NativeThread.c NativeThread.h
+ 	$(CC) $(CFLAGS) -o libNativeThread.so $(LDFLAGS) NativeThread.c $(LIBS)
+ 
+ NativeThread.h:
+-	javah -o NativeThread.h -classpath /usr/share/freenet/lib/freenet.jar freenet.support.io.NativeThread
++	javac -h . -classpath /usr/share/freenet/lib/freenet.jar:/usr/share/jna-4/lib/jna.jar:/usr/share/jna-4/lib/jna-platform.jar NativeThread.java
++	mv freenet_support_io_NativeThread_LinuxNativeThread.h NativeThread.h
+ 
+ clean:
+ 	rm -f NativeThread.h libNativeThread*.so

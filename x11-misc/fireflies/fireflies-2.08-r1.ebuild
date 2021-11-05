@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools multilib
+EAPI=8
+
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Fireflies screensaver: Wicked cool eye candy"
 HOMEPAGE="https://github.com/mpcomplete/fireflies"
@@ -11,29 +12,28 @@ SRC_URI="https://github.com/mpcomplete/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="GPL-2 icu"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
-RDEPEND="media-libs/libsdl[X,opengl,video]
+RDEPEND="
+	media-libs/libsdl[X,opengl,video]
 	virtual/glu
 	virtual/opengl
 	x11-libs/libX11"
-DEPEND="${RDEPEND}
-	sys-devel/autoconf-archive"  # for AX_CXX_BOOL macro
-
-DOCS=( ChangeLog README.md TODO )
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/autoconf-archive"  # for AX_CXX_BOOL macro
 
 src_prepare() {
+	default
 	eautoreconf
 }
 
 src_configure() {
+	tc-export AR
 	econf \
-		--with-confdir=/usr/share/xscreensaver/config \
-		--with-bindir="/usr/$(get_libdir)/misc/xscreensaver"
+		--with-confdir="${EPREFIX}"/usr/share/xscreensaver/config \
+		--with-bindir="${EPREFIX}"/usr/$(get_libdir)/misc/xscreensaver
 }
 
 src_install() {
-	newbin {,${PN}-}add-xscreensaver
-
 	default
+	newbin {,${PN}-}add-xscreensaver
 }

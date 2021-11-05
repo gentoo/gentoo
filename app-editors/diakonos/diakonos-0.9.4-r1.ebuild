@@ -13,7 +13,7 @@ SRC_URI="http://diakonos.pist0s.ca/archives/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="doc test"
 
 ruby_add_rdepend "dev-ruby/curses"

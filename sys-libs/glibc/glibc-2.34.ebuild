@@ -20,7 +20,7 @@ SLOT="2.2"
 EMULTILIB_PKG="true"
 
 # Gentoo patchset (ignored for live ebuilds)
-PATCH_VER=3
+PATCH_VER=4
 PATCH_DEV=dilfridge
 
 if [[ ${PV} == 9999* ]]; then
@@ -36,7 +36,7 @@ RELEASE_VER=${PV}
 
 GCC_BOOTSTRAP_VER=20201208
 
-LOCALE_GEN_VER=2.10
+LOCALE_GEN_VER=2.22
 
 GLIBC_SYSTEMD_VER=20210729
 
@@ -1519,7 +1519,6 @@ pkg_preinst() {
 	if ! use crypt && has_version "${CATEGORY}/${PN}[crypt]"; then
 		PRESERVED_OLD_LIBCRYPT=1
 		preserve_old_lib /$(get_libdir)/libcrypt$(get_libname 1)
-		cp "${EROOT}"/usr/include/crypt.h "${T}"/crypt.h || die
 	else
 		PRESERVED_OLD_LIBCRYPT=0
 	fi
@@ -1555,9 +1554,9 @@ pkg_postinst() {
 
 	if [[ ${PRESERVED_OLD_LIBCRYPT} -eq 1 ]] ; then
 		preserve_old_lib_notify /$(get_libdir)/libcrypt$(get_libname 1)
-		cp "${T}"/crypt.h "${EROOT}"/usr/include/crypt.h || eerror "Error restoring crypt.h, please file a bug"
+
 		elog "Please ignore a possible later error message about a file collision involving"
-		elog "/usr/include/crypt.h. We need to preserve this file for the moment to keep"
+		elog "${EROOT}/$(get_libdir)/libcrypt$(get_libname 1). We need to preserve this file for the moment to keep"
 		elog "the upgrade working, but it also needs to be overwritten when"
 		elog "sys-libs/libxcrypt is installed. See bug 802210 for more details."
 	fi

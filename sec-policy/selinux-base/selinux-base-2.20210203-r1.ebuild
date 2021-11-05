@@ -3,6 +3,10 @@
 
 EAPI="7"
 
+PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_REQ_USE="xml"
+inherit python-any-r1
+
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="${SELINUX_GIT_REPO:-https://anongit.gentoo.org/git/proj/hardened-refpolicy.git}"
 	EGIT_BRANCH="${SELINUX_GIT_BRANCH:-master}"
@@ -26,6 +30,7 @@ SLOT="0"
 RDEPEND=">=sys-apps/policycoreutils-2.8"
 DEPEND="${RDEPEND}"
 BDEPEND="
+	${PYTHON_DEPS}
 	>=sys-apps/checkpolicy-2.8
 	sys-devel/m4"
 

@@ -31,8 +31,12 @@ RDEPEND="expat? ( dev-libs/expat:0=[${MULTILIB_USEDEP}] )
 		pkcs11? ( dev-libs/pakchois:0=[${MULTILIB_USEDEP}] )
 	)
 	zlib? ( sys-libs/zlib:0=[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	app-text/docbook-xml-dtd:4.5
+	app-text/xmlto
+	virtual/pkgconfig
+"
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/neon-config

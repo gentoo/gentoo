@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="BSD LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="doc sparse"
 
 DEPEND="
@@ -105,6 +105,11 @@ python_prepare_all() {
 	# TODO
 	sed -e "s:== 'levy_stable':in ('levy_stable', 'crystalball', 'ncf'):" \
 		-i scipy/stats/tests/test_continuous_basic.py || die
+
+	# Skip known-failing test. Broken on all versions in Gentoo for years.
+	# bug #743295
+	sed -e 's:test_bisplev_integer_overflow:_&:' \
+			-i scipy/interpolate/tests/test_fitpack.py || die
 
 	if has_version ">=sci-libs/lapack-3.10"; then
 		sed -e 's:test_sort(:_&:' \

@@ -16,11 +16,12 @@ S="${WORKDIR}/${PN}-${P}"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="examples imaging ipython latex mathml opengl pdf png pyglet symengine test texmacs theano"
+IUSE="aesara examples imaging ipython latex mathml opengl pdf png pyglet symengine test texmacs"
 
 RDEPEND="
 	dev-python/mpmath[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
+	aesara? ( dev-python/aesara[${PYTHON_USEDEP}] )
 	imaging? ( dev-python/pillow[${PYTHON_USEDEP}] )
 	ipython? ( dev-python/ipython[${PYTHON_USEDEP}] )
 	latex? (
@@ -34,7 +35,6 @@ RDEPEND="
 	pyglet? ( dev-python/pyglet[${PYTHON_USEDEP}] )
 	symengine? ( dev-python/symengine[${PYTHON_USEDEP}] )
 	texmacs? ( app-office/texmacs )
-	theano? ( dev-python/aesara[${PYTHON_USEDEP}] )
 "
 
 distutils_enable_tests pytest

@@ -59,7 +59,7 @@ LICENSE="
 	samba? ( GPL-3 )
 "
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 # Options to use as use_enable in the foo[:bar] form.
@@ -245,7 +245,10 @@ RDEPEND="
 	speex? ( >=media-libs/speex-1.2_rc1-r1[${MULTILIB_USEDEP}] )
 	srt? ( >=net-libs/srt-1.3.0:=[${MULTILIB_USEDEP}] )
 	ssh? ( >=net-libs/libssh-0.5.5[${MULTILIB_USEDEP}] )
-	svg? ( gnome-base/librsvg:2=[${MULTILIB_USEDEP}] )
+	svg? (
+		gnome-base/librsvg:2=[${MULTILIB_USEDEP}]
+		x11-libs/cairo[${MULTILIB_USEDEP}]
+	)
 	truetype? ( >=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}] )
 	vaapi? ( >=x11-libs/libva-1.2.1-r1:0=[${MULTILIB_USEDEP}] )
 	video_cards_nvidia? ( >=media-libs/nv-codec-headers-9.1.23.1[${MULTILIB_USEDEP}] )
@@ -261,7 +264,7 @@ RDEPEND="
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXv-1.0.10[${MULTILIB_USEDEP}]
-		>=x11-libs/libxcb-1.4[${MULTILIB_USEDEP}]
+		>=x11-libs/libxcb-1.4:=[${MULTILIB_USEDEP}]
 	)
 	zeromq? ( >=net-libs/zeromq-4.1.6 )
 	zimg? ( >=media-libs/zimg-2.7.4:=[${MULTILIB_USEDEP}] )
@@ -450,6 +453,13 @@ multilib_src_configure() {
 		$(multilib_native_enable manpages)
 	)
 
+	local extra_libs
+	if use arm || use ppc ; then
+		# bug #782811
+		# bug #790590
+		extra_libs+="$(test-flags-CCLD -latomic) "
+	fi
+
 	set -- "${S}/configure" \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
@@ -464,6 +474,7 @@ multilib_src_configure() {
 		--ranlib="$(tc-getRANLIB)" \
 		--pkg-config="$(tc-getPKG_CONFIG)" \
 		--optflags="${CFLAGS}" \
+		--extra-libs="${extra_libs}" \
 		$(use_enable static-libs static) \
 		"${myconf[@]}" \
 		${EXTRA_FFMPEG_CONF}

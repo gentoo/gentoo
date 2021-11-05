@@ -6,7 +6,6 @@ EAPI=7
 DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="sqlite"
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 bash-completion-r1 optfeature
 
@@ -17,7 +16,7 @@ else
 	MY_PV=${PV/_beta/-beta.}
 	MY_P=${PN}-${MY_PV}
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -40,6 +39,9 @@ RDEPEND="
 		dev-python/requests[${PYTHON_USEDEP}]
 		>=dev-python/six-1.9[${PYTHON_USEDEP}]
 		dev-python/unidecode[${PYTHON_USEDEP}]
+		dev-python/reflink[${PYTHON_USEDEP}]
+		dev-python/confuse[${PYTHON_USEDEP}]
+		dev-python/mediafile[${PYTHON_USEDEP}]
 	')"
 DEPEND="
 	${RDEPEND}
@@ -76,14 +78,9 @@ BDEPEND="
 			media-sound/mp3gain
 			media-plugins/gst-plugins-libav:1.0
 			media-video/ffmpeg:0[encode]
+			app-shells/bash-completion
 		)
 	')"
-
-PATCHES=(
-	"${FILESDIR}/${PV}-0001-compatibility-with-breaking-changes-to-the-ast-modul.patch"
-	"${FILESDIR}/${PV}-0002-Disable-test_completion.patch"
-	"${FILESDIR}/${PV}-0003-Try-to-work-around-a-Werkzeug-change.patch"
-)
 
 DOCS=( README.rst docs/changelog.rst )
 
@@ -91,15 +88,6 @@ distutils_enable_tests pytest
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
-
-	# Tests that need network
-	rm test/test_art.py || die "Failed to remove test_art.py"
-	rm test/test_discogs.py || die "Failed to remove test_discogs.py"
-	rm test/test_embyupdate.py || die "Failed to remove test_embyupdate.py"
-	rm test/test_lastgenre.py || die "Failed to remove test_lastgenre.py"
-	rm test/test_spotify.py || die "Failed to remove test_spotify.py"
-	# Not working and dropped in master
-	rm test/test_mediafile.py || die "Failed to remove test_mediafile.py"
 }
 
 python_compile_all() {

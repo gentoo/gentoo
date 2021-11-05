@@ -15,7 +15,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-BDEPEND="test? ( dev-db/rqlite )"
+# Pin test rqlite version due to https://github.com/rqlite/pyrqlite/issues/37.
+BDEPEND="test? ( <dev-db/rqlite-6.2 )"
 
 PATCHES=("${DISTDIR}/${P}-python3.10-test_support.patch")
 

@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<upstream>
-		<remote-id type="github">MultiMC/MultiMC5</remote-id>
-		<bugs-to>https://github.com/MultiMC/MultiMC5/issues</bugs-to>
+		<remote-id type="github">MultiMC/Launcher</remote-id>
+		<bugs-to>https://github.com/MultiMC/Launcher/issues</bugs-to>
 	</upstream>
 	<maintainer type="person">
 		<email>andrewammerlaan@gentoo.org</email>

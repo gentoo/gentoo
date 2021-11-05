@@ -5,7 +5,4 @@
     <email>bkohler@gentoo.org</email>
     <name>Ben Kohler</name>
   </maintainer>
-  <use>
-    <flag name="glib">Enable <pkg>dev-libs/glib</pkg> support</flag>
-  </use>
 </pkgmetadata>

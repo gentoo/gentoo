@@ -40,6 +40,8 @@ DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-tests-for-2021.patch
 	"${FILESDIR}"/${PN}-0.11.2-adjust-apache-logs-paths.patch
+	"${FILESDIR}"/${P}-fix-2to3-usage.patch
+	"${FILESDIR}"/${P}-fix-systemd-test.patch
 )
 
 python_prepare_all() {

@@ -12,6 +12,8 @@ SRC_URI="mirror://gnu/${PN/lib}/${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
+# Before giving keywords, please check https://www.gnu.org/software/gsasl/ to see
+# if it's a stable release or not!
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="idn gcrypt kerberos nls ntlm static-libs"
 

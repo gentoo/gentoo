@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml"
 VALA_MIN_API_VERSION="0.28"
 
@@ -12,7 +12,7 @@ DESCRIPTION="Collection of extra plugins for the gedit Text Editor"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gedit/ShippedPlugins"
 
 LICENSE="GPL-2+"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 SLOT="0"
 
 IUSE="charmap git +python terminal vala"

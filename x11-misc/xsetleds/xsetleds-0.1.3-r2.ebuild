@@ -8,7 +8,7 @@ DESCRIPTION="small tool to report and change the keyboard LED states of an X dis
 HOMEPAGE="https://github.com/bmeurer/xsetleds"
 SRC_URI="
 	ftp://ftp.unix-ag.org/user/bmeurer/xsetleds/src/${P}.tar.gz
-	https://dev.gentoo.org/~jer/${P}.tar.gz
+	https://dev.gentoo.org/~jsmolic/distfiles/${P}.tar.gz
 "
 
 LICENSE="GPL-2"

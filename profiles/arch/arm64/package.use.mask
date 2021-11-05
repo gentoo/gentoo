@@ -1,9 +1,13 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Ionen Wolkens <ionen@gentoo.org> (2021-10-15)
-# dev-python/pytest-bdd is not keyworded here yet
-www-client/qutebrowser test
+# Sam James <sam@gentoo.org> (2021-10-31)
+# dev-python/pyilmbase isn't keyworded on arm64
+media-gfx/alembic python
+
+# Ben Kohler <bkohler@gentoo.org> (2021-10-18)
+# missing keywords on net-misc/pyhoca-cli and its deps
+net-misc/remmina x2go
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-07)
 # dev-libs/mongo-c-driver is not keyworded here
@@ -34,10 +38,6 @@ dev-util/diffoscope pascal
 # media-libs/rnnoise, media-plugins/gst-plugins-webrtc
 # and media-plugins/zam-plugins not keyworded here
 media-sound/easyeffects rnnoise webrtc zamaudio
-
-# Stefan Strogin <steils@gentoo.org> (2021-06-27)
-# Requires dev-python/adblock which is not keyworded on arm64 yet
-www-client/qutebrowser adblock
 
 # Sam James <sam@gentoo.org> (2021-04-14)
 # Supports 64-bit NEON
@@ -309,7 +309,6 @@ www-client/vivaldi-snapshot widevine
 
 # Michał Górny <mgorny@gentoo.org> (2018-02-17)
 # Requires unkeyworded dependencies.
-dev-python/ipython notebook
 dev-ruby/haml test
 
 # Michał Górny <mgorny@gentoo.org> (2018-02-16)

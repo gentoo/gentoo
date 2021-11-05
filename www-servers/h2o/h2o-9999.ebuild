@@ -1,35 +1,30 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
+EAPI="8"
 CMAKE_MAKEFILE_GENERATOR="emake"
 SSL_DEPS_SKIP=1
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby26 ruby27"
 
 inherit cmake git-r3 ruby-single ssl-cert systemd toolchain-funcs
 
-EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
-
 DESCRIPTION="H2O - the optimized HTTP/1, HTTP/2 server"
 HOMEPAGE="https://h2o.examp1e.net/"
+EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="libh2o +mruby"
 
-RDEPEND="
-	acct-group/h2o
+RDEPEND="acct-group/h2o
 	acct-user/h2o
 	dev-lang/perl
+	!sci-libs/libh2o
 	sys-libs/zlib
 	libh2o? ( dev-libs/libuv )
-	dev-libs/openssl:0=
-"
-DEPEND="
-	${RDEPEND}
-	libh2o? ( virtual/pkgconfig )
+	dev-libs/openssl:0="
+DEPEND="${RDEPEND}
 	mruby? (
 		${RUBY_DEPS}
 		|| (
@@ -37,10 +32,9 @@ DEPEND="
 			dev-libs/oniguruma
 		)
 		sys-devel/bison
-		virtual/pkgconfig
 	)
 "
-RDEPEND+="!sci-libs/libh2o"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.3-mruby.patch )
 

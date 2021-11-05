@@ -12,10 +12,10 @@ HOMEPAGE="https://github.com/nmeum/android-tools/ https://developer.android.com/
 
 MY_PV="${PV//_/}"
 SRC_URI="https://github.com/nmeum/android-tools/releases/download/${MY_PV}/${PN}-${MY_PV}.tar.xz
-	https://github.com/mid-kid/android-tools/commit/32d76cdbeb8a4fc2bb5fe22f496a9b82b68305a3.patch -> ${PN}-no-gtest.patch
-	https://github.com/mid-kid/android-tools/commit/9806fe4b730e15027ace235c62e166ae6148df56.patch -> ${PN}-fix-gcc11.patch
-	https://github.com/mid-kid/android-tools/commit/557182ba3f912327e747c3c3638d6ee7c529fb96.patch -> ${PN}-dont-install-license.patch
-	https://github.com/mid-kid/android-tools/commit/5971ec8ebab527fa17c91eaebe012d2a89a838db.patch -> ${PN}-install-e2fsdroid-ext2simg.patch
+	https://dev.gentoo.org/~zmedico/dist/android-tools-31.0.0_p1-no-gtest.patch -> ${PN}-no-gtest.patch
+	https://dev.gentoo.org/~zmedico/dist/android-tools-31.0.0_p1-fix-gcc11.patch -> ${PN}-fix-gcc11.patch
+	https://dev.gentoo.org/~zmedico/dist/android-tools-31.0.0_p1-dont-install-license.patch -> ${PN}-dont-install-license.patch
+	https://dev.gentoo.org/~zmedico/dist/android-tools-31.0.0_p1-install-e2fsdroid-ext2simg.patch -> ${PN}-install-e2fsdroid-ext2simg.patch
 "
 S="${WORKDIR}/${PN}-${MY_PV}"
 

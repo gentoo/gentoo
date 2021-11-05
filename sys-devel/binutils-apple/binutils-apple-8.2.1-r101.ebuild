@@ -27,6 +27,10 @@ BDEPEND=""
 
 S="${WORKDIR}/darwin-xtools-gentoo-${PVR}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.2.1-macos-12.patch
+)
+
 src_configure() {
 	CTARGET=${CTARGET:-${CHOST}}
 	if [[ ${CTARGET} == ${CHOST} ]] ; then

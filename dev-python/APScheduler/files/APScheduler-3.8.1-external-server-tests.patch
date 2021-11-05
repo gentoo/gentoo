@@ -1,0 +1,37 @@
+From bd39f1a1ec08dd28dda87419a8f25e14bafe2d2a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 25 Oct 2021 07:36:06 +0200
+Subject: [PATCH] Disable test fixture requiring external servers
+
+---
+ tests/test_jobstores.py | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/tests/test_jobstores.py b/tests/test_jobstores.py
+index 132161b..db760bd 100644
+--- a/tests/test_jobstores.py
++++ b/tests/test_jobstores.py
+@@ -86,16 +86,14 @@ def zookeeperjobstore():
+     store.shutdown()
+ 
+ 
+-@pytest.fixture(params=['memjobstore', 'sqlalchemyjobstore', 'mongodbjobstore', 'redisjobstore',
+-                        'rethinkdbjobstore', 'zookeeperjobstore'],
+-                ids=['memory', 'sqlalchemy', 'mongodb', 'redis', 'rethinkdb', 'zookeeper'])
++@pytest.fixture(params=['memjobstore', 'sqlalchemyjobstore'],
++                ids=['memory', 'sqlalchemy'])
+ def jobstore(request):
+     return request.getfixturevalue(request.param)
+ 
+ 
+-@pytest.fixture(params=['sqlalchemyjobstore', 'mongodbjobstore', 'redisjobstore',
+-                        'rethinkdbjobstore', 'zookeeperjobstore'],
+-                ids=['sqlalchemy', 'mongodb', 'redis', 'rethinkdb', 'zookeeper'])
++@pytest.fixture(params=['sqlalchemyjobstore'],
++                ids=['sqlalchemy'])
+ def persistent_jobstore(request):
+     return request.getfixturevalue(request.param)
+ 
+-- 
+2.33.1
+

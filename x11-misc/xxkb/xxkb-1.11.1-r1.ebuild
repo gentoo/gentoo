@@ -9,7 +9,7 @@ DESCRIPTION="eXtended XKB - assign different keymaps to different windows"
 HOMEPAGE="https://sourceforge.net/projects/xxkb/"
 SRC_URI="
 	mirror://sourceforge/${PN}/${P}-src.tar.gz
-	svg? ( https://dev.gentoo.org/~jer/${PN}-flags.tar.bz2 )
+	svg? ( https://dev.gentoo.org/~jsmolic/distfiles/${PN}-flags.tar.bz2 )
 "
 
 LICENSE="Artistic-2"

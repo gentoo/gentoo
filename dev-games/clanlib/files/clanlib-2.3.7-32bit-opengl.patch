@@ -1,0 +1,19 @@
+Patch taken from Fedora, removes redefinitions that conflicts on x86.
+--- a/Sources/API/GL/opengl_defines.h
++++ b/Sources/API/GL/opengl_defines.h
+@@ -69,6 +69,4 @@
+ typedef void GLvoid;
+ typedef char GLchar;
+-typedef ptrdiff_t GLintptr;
+-typedef ptrdiff_t GLsizeiptr;
+ typedef struct __CLsync *CLsync;
+ 
+--- a/Sources/API/GL1/opengl1_defines.h
++++ b/Sources/API/GL1/opengl1_defines.h
+@@ -65,6 +65,4 @@
+ typedef void GLvoid;
+ typedef char GLchar;
+-typedef ptrdiff_t GLintptr;
+-typedef ptrdiff_t GLsizeiptr;
+ 
+ #else

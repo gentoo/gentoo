@@ -19,6 +19,7 @@
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">s3tools</remote-id>
+    <remote-id type="github">s3tools/s3cmd</remote-id>
   </upstream>
   <stabilize-allarches/>
 </pkgmetadata>

@@ -14,7 +14,7 @@ SRC_URI="https://github.com/aquynh/${PN}/archive/${PV/_rc/-rc}.tar.gz -> ${P}.ta
 
 LICENSE="BSD"
 SLOT="0/4" # libcapstone.so.4
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 # A few disassembly outputs need an update
 RESTRICT="test"

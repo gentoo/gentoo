@@ -59,6 +59,7 @@ DEPEND="${RDEPEND}
 # autoconf-archive needed to eautoreconf
 BDEPEND="
 	sys-devel/autoconf-archive
+	virtual/awk
 	virtual/pkgconfig
 	verify-sig? ( app-crypt/openpgp-keys-python )
 	!sys-devel/gcc[libffi(-)]"

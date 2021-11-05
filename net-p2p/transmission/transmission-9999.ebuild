@@ -21,7 +21,7 @@ HOMEPAGE="https://transmissionbt.com/"
 # MIT is in several libtransmission/ headers
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT="0"
-IUSE="appindicator gtk lightweight nls mbedtls qt5 static-libs systemd test"
+IUSE="appindicator cli gtk lightweight nls mbedtls qt5 static-libs systemd test web"
 RESTRICT="!test? ( test )"
 
 ACCT_DEPEND="
@@ -84,11 +84,13 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
 
+		-DENABLE_CLI=$(usex cli ON OFF)
 		-DENABLE_GTK=$(usex gtk ON OFF)
 		-DENABLE_LIGHTWEIGHT=$(usex lightweight ON OFF)
 		-DENABLE_NLS=$(usex nls ON OFF)
 		-DENABLE_QT=$(usex qt5 ON OFF)
 		-DENABLE_TESTS=$(usex test ON OFF)
+		-DENABLE_WEB=$(usex web ON OFF)
 
 		# https://bugs.gentoo.org/807993
 		-DINSTALL_LIB=$(usex static-libs ON OFF)

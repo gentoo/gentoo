@@ -4,12 +4,13 @@
 EAPI="7"
 
 # Patch version
-FIREFOX_PATCHSET="firefox-78esr-patches-18.tar.xz"
+FIREFOX_PATCHSET="firefox-78esr-patches-19.tar.xz"
 SPIDERMONKEY_PATCHSET="spidermonkey-78-patches-04.tar.xz"
 
-LLVM_MAX_SLOT=12
+LLVM_MAX_SLOT=13
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_REQ_USE="ssl"
 
 WANT_AUTOCONF="2.1"
 
@@ -72,6 +73,13 @@ BDEPEND="${PYTHON_DEPS}
 	>=virtual/rust-1.41.0
 	virtual/pkgconfig
 	|| (
+		(
+			sys-devel/llvm:13
+			clang? (
+				sys-devel/clang:13
+				lto? ( =sys-devel/lld-13* )
+			)
+		)
 		(
 			sys-devel/llvm:12
 			clang? (

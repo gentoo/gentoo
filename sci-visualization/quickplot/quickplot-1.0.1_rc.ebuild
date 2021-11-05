@@ -24,7 +24,7 @@ RDEPEND="
 	x11-libs/gtk+:3"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	media-gfx/imagemagick[png]
+	virtual/imagemagick-tools[png]
 	virtual/pkgconfig
 	www-client/lynx
 	dev-vcs/git"

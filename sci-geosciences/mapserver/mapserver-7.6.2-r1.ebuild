@@ -7,6 +7,7 @@ EAPI=7
 PHP_EXT_OPTIONAL_USE="php"
 PHP_EXT_NAME="php_mapscriptng"
 PHP_EXT_SKIP_PHPIZE="yes"
+PHP_EXT_SKIP_PATCHES="yes"
 
 USE_PHP="php7-3 php7-4"
 PYTHON_COMPAT=( python3_{7,8,9} )
@@ -87,6 +88,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-proj8.patch
+	"${FILESDIR}"/${PN}-oracle21.patch
 )
 
 want_apache2 apache

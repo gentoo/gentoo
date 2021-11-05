@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-10-17)
+# Go doesn't support pie on ppc64, bug #818529
+net-dns/dnscrypt-proxy pie
+
 # Sam James <sam@gentoo.org> (2021-09-23)
 # Needs media-libs/libldac which builds on ppc64le, but not be
 media-video/pipewire -bluetooth

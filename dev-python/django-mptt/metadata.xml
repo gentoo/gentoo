@@ -2,7 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">django-mptt</remote-id>
+		<remote-id type="github">django-mptt/django-mptt</remote-id>
 	</upstream>
 </pkgmetadata>

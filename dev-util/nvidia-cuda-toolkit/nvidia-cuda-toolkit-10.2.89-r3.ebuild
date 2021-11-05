@@ -95,7 +95,7 @@ src_install() {
 	for i in "${remove[@]}"; do
 		ebegin "Cleaning ${i}..."
 		rm -r "${i}" || die
-		eend
+		eend $?
 	done
 
 	dodir ${cudadir}

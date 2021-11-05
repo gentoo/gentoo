@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 
 RDEPEND="
 	>=dev-python/aws-xray-sdk-python-0.93[${PYTHON_USEDEP}]
@@ -61,13 +61,24 @@ python_prepare_all() {
 }
 
 python_test() {
-	local ignore=(
+	local EPYTEST_IGNORE=(
 		# incompatible versions?
 		tests/test_core/test_decorator_calls.py
 		tests/test_s3/test_s3_classdecorator.py
 	)
 
+	local EPYTEST_DESELECT=(
+		# Needs network (or docker?) but not marked as such, bug #807031
+		# TODO: report upstream
+		tests/test_batch/test_batch_jobs.py::test_terminate_job
+		tests/test_batch/test_batch_jobs.py::test_cancel_running_job
+		tests/test_batch/test_batch_jobs.py::test_dependencies
+		tests/test_batch/test_batch_jobs.py::test_container_overrides
+		tests/test_sqs/test_integration.py::test_invoke_function_from_sqs_exception
+		tests/test_sqs/test_sqs_integration.py::test_invoke_function_from_sqs_exception
+	)
+
 	# pytest-django causes freezegun try to mangle stuff inside django
 	# which fails when django is not really used
-	epytest -p no:django -m 'not network' ${ignore[@]/#/--ignore }
+	epytest -p no:django -m 'not network'
 }

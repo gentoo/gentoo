@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,8 +7,8 @@ inherit flag-o-matic toolchain-funcs
 DESCRIPTION="network utility dump and simple honeypot utility"
 HOMEPAGE="http://violating.us/projects/bigeye/"
 SRC_URI="
-	http://violating.us/projects/bigeye/download/${P}.tgz
-	https://dev.gentoo.org/~jer/${P}-gcc34.patch.xz
+	https://dev.gentoo.org/~jsmolic/distfiles/${P}.tgz
+	https://dev.gentoo.org/~jsmolic/distfiles/${P}-gcc34.patch.xz
 "
 
 LICENSE="GPL-2"

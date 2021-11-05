@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>matt@offtopica.uk</email>
+		<name>Matthew Smith</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sarnex@gentoo.org</email>
+		<name>Nick Sarnie</name>
+	</maintainer>
+</pkgmetadata>

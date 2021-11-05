@@ -12,7 +12,7 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/pekdon/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz
-	themes? ( https://dev.gentoo.org/~jer/${PN}-themes.tar.bz2 )
+	themes? ( https://dev.gentoo.org/~jsmolic/distfiles/${PN}-themes.tar.bz2 )
 "
 
 LICENSE="GPL-2"

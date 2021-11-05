@@ -18,6 +18,7 @@ IUSE="agent amt archive bluetooth dell elogind flashrom gnutls gtk-doc gusb intr
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( elogind minimal systemd )
 	dell? ( uefi )
+	logitech? ( gusb )
 	minimal? ( !introspection )
 	spi? ( lzma )
 	synaptics? ( gnutls )
@@ -90,6 +91,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.7-logind_plugin.patch
 	"${FILESDIR}"/${P}-elanfp-requires-gusb.patch
+	"${FILESDIR}"/${P}-fix-test-configure.patch # bug 791760
 )
 
 pkg_setup() {

@@ -80,7 +80,8 @@ RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 # fbopenssl  $(use_with spnego)
 
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
+BDEPEND="dev-lang/perl
+	virtual/pkgconfig
 	test? (
 		sys-apps/diffutils
 		dev-lang/perl

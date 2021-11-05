@@ -81,13 +81,13 @@ arm		default/linux/arm/17.0/armv5te/desktop/gnome	dev
 arm		default/linux/arm/17.0/armv5te/desktop/plasma	dev
 arm		default/linux/arm/17.0/armv5te/developer	dev
 arm		default/linux/arm/17.0/armv5te/systemd		dev
-arm		default/linux/arm/17.0/armv6j			dev
+arm		default/linux/arm/17.0/armv6j			stable
 arm		default/linux/arm/17.0/armv6j/desktop		dev
 arm		default/linux/arm/17.0/armv6j/desktop/gnome	dev
 arm		default/linux/arm/17.0/armv6j/desktop/plasma	dev
 arm		default/linux/arm/17.0/armv6j/developer		dev
 arm		default/linux/arm/17.0/armv6j/systemd		dev
-arm		default/linux/arm/17.0/armv7a			dev
+arm		default/linux/arm/17.0/armv7a			stable
 arm		default/linux/arm/17.0/armv7a/desktop		dev
 arm		default/linux/arm/17.0/armv7a/desktop/gnome	dev
 arm		default/linux/arm/17.0/armv7a/desktop/plasma	dev
@@ -323,8 +323,12 @@ x64-macos		prefix/darwin/macos/10.15/x64			exp
 x64-macos		prefix/darwin/macos/10.15/x64/gcc		exp
 x64-macos		prefix/darwin/macos/11.0/x64			exp
 x64-macos		prefix/darwin/macos/11.0/x64/gcc		exp
+x64-macos		prefix/darwin/macos/12.0/x64			exp
+x64-macos		prefix/darwin/macos/12.0/x64/gcc		exp
 arm64-macos		prefix/darwin/macos/11.0/arm64			exp
 arm64-macos		prefix/darwin/macos/11.0/arm64/gcc		exp
+arm64-macos		prefix/darwin/macos/12.0/arm64			exp
+arm64-macos		prefix/darwin/macos/12.0/arm64/gcc		exp
 
 # Solaris Profiles
 sparc-solaris		prefix/sunos/solaris/5.11/sparc			exp

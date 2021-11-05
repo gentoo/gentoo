@@ -35,7 +35,7 @@ for card in ${VIDEO_CARDS}; do
 done
 
 IUSE="${IUSE_VIDEO_CARDS}
-	+classic d3d9 debug +dri3 +egl +gallium +gbm gles1 +gles2 +llvm
+	+classic cpu_flags_x86_sse2 d3d9 debug +dri3 +egl +gallium +gbm gles1 +gles2 +llvm
 	lm-sensors opencl osmesa selinux test unwind vaapi valgrind vdpau vulkan
 	vulkan-overlay wayland +X xa xvmc zink +zstd"
 
@@ -522,6 +522,7 @@ multilib_src_configure() {
 		$(meson_use osmesa)
 		$(meson_use selinux)
 		$(meson_feature zstd)
+		$(meson_use cpu_flags_x86_sse2 sse2)
 		-Dvalgrind=$(usex valgrind auto false)
 		-Ddri-drivers=$(driver_list "${DRI_DRIVERS[*]}")
 		-Dgallium-drivers=$(driver_list "${GALLIUM_DRIVERS[*]}")

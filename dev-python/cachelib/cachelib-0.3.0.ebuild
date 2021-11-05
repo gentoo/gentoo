@@ -13,11 +13,10 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 BDEPEND="
 	test? (
-		dev-db/redis
 		dev-python/pylibmc[${PYTHON_USEDEP}]
 		dev-python/pytest-xprocess[${PYTHON_USEDEP}]
 		dev-python/redis-py[${PYTHON_USEDEP}]
@@ -26,3 +25,8 @@ BDEPEND="
 	)"
 
 distutils_enable_tests pytest
+
+EPYTEST_IGNORE=(
+	# bug #818523
+	tests/test_redis_cache.py
+)

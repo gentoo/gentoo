@@ -79,9 +79,13 @@ BDEPEND="
 	')
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.39-fix-finding-pyparsing.patch
+)
+
 python_check_deps() {
-	has_version "dev-python/six[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/pyparsing[${PYTHON_USEDEP}]"
+	has_version -b "dev-python/six[${PYTHON_USEDEP}]" &&
+	has_version -b "dev-python/pyparsing[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {

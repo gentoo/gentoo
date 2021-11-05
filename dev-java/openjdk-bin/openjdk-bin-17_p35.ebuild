@@ -6,14 +6,24 @@ EAPI=6
 inherit java-vm-2 toolchain-funcs
 
 abi_uri() {
+	local baseuri="https://github.com/adoptium/temurin${SLOT}-binaries/releases/download/jdk-${MY_PV}/"
+	local musl=
 	local os=linux
+
 	case ${2} in
 		*-macos)    os=mac      ;;
 		*-solaris)  os=solaris  ;;
 	esac
+
+	if [[ ${3} == musl ]]; then
+		os=alpine-linux
+		musl=true
+	fi
+
 	echo "${2-$1}? (
-			https://github.com/adoptium/temurin${SLOT}-binaries/releases/download/jdk-${MY_PV}/OpenJDK${SLOT}-jdk_${1}_${os}_hotspot_${MY_PV//+/_}.tar.gz
-		)"
+		${musl:+ elibc_musl? ( }
+			${baseuri}/OpenJDK${SLOT}-jdk_${1}_${os}_hotspot_${MY_PV//+/_}.tar.gz
+		${musl:+ ) } )"
 }
 
 MY_PV=${PV/_p/+}
@@ -24,6 +34,7 @@ SRC_URI="
 	$(abi_uri aarch64 arm64)
 	$(abi_uri ppc64le ppc64)
 	$(abi_uri x64 amd64)
+	$(abi_uri x64 amd64 musl)
 	$(abi_uri x64 x64-macos)
 "
 
@@ -39,7 +50,7 @@ RDEPEND="
 		media-libs/fontconfig:1.0
 		media-libs/freetype:2
 		media-libs/harfbuzz
-		>=sys-libs/glibc-2.2.5:*
+		elibc_glibc? ( >=sys-libs/glibc-2.2.5:* )
 		sys-libs/zlib
 		alsa? ( media-libs/alsa-lib )
 		cups? ( net-print/cups )

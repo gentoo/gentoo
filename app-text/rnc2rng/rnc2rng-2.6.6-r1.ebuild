@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="RELAX NG Compact to regular syntax conversion library"
@@ -15,12 +14,11 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-
-DEPEND="dev-python/rply[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
-
 RESTRICT="!test? ( test )"
 
+RDEPEND="dev-python/rply[${PYTHON_USEDEP}]"
+BDEPEND="test? ( ${RDEPEND} )"
+
 python_test() {
-	"${PYTHON}" test.py
+	"${EPYTHON}" test.py -v || die "Tests failed with ${EPYTHON}"
 }

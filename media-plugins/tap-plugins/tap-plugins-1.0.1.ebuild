@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/tomszilagyi/${PN}.git"
+	EGIT_REPO_URI="https://github.com/tomszilagyi/${PN}.git"
 	EGIT_PROJECT="${PN}.git"
 else
 	KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"

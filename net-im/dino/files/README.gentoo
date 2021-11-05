@@ -1,0 +1,23 @@
+To enable video calls, install the following packages.
+
+Transport level security:
+- gst-plugins-srtp
+- gst-plugins-dtls
+
+Peer to peer connection reliability:
+- gst-plugins-libnice
+
+Video output into a window:
+- gst-plugins-gtk
+
+At least one codec is needed in common with the other end of the call, as they
+are negotiated when the call begins.
+
+Video codecs:
+- gst-plugins-x264
+- gst-plugins-vpx
+
+Audio codecs:
+- gst-plugins-good
+- gst-plugins-speex
+- gst-plugins-opus

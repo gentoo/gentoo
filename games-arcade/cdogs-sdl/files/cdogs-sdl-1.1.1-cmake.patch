@@ -1,0 +1,14 @@
+Remove -Werror and install data to CDOGS_DATA_DIR rather
+than directly under CMAKE_INSTALL_PREFIX.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -128,3 +128,3 @@
+ 	if(NOT BEOS AND NOT HAIKU)
+-		add_definitions(-Winline -Werror)
++		add_definitions(-Winline)
+ 		set(EXTRA_LIBRARIES "m")
+@@ -195,3 +195,3 @@
+ 	set(LIB_EXTENSION ".so")
+-	set(DATA_INSTALL_DIR ".")
++	set(DATA_INSTALL_DIR ${CDOGS_DATA_DIR})
+ endif()

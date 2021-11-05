@@ -19,7 +19,7 @@ SRC_URI="cdinstall? ( ${MY_PATCH} )
 	!cdinstall? ( ${MY_EXE} )"
 LICENSE="descent-data"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc videos"
 RESTRICT="bindist !cdinstall? ( fetch )"
 

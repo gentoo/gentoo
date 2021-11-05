@@ -14,7 +14,7 @@ S="${WORKDIR}/oiio-Release-${PV}"
 
 LICENSE="BSD"
 SLOT="0/2.2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 
 X86_CPU_FEATURES=(
 	aes:aes sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4.1 sse4_2:sse4.2
@@ -95,6 +95,15 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# Note: on bumps, please try again with OpenEXR 3 + ilmmath!
+	# Sabotage finding OpenEXR 3 for now to force usage of OpenEXR 2
+	# (because it mix and matches which version it uses; sed this to
+	# make sure it'll use OpenEXR 3 if it can, but it won't.)
+	# bug #821193
+	sed -i \
+		-e 's/find_package(OpenEXR CONFIG)/find_package(OpenEXR-3 CONFIG)/' \
+		src/cmake/modules/FindOpenEXR.cmake || die
+
 	cmake_src_prepare
 	cmake_comment_add_subdirectory src/fonts
 }

@@ -1,0 +1,124 @@
+From ac7cce039825ff779795b5c2ae0ecf00ba43a401 Mon Sep 17 00:00:00 2001
+From: "Robin H. Johnson" <robbat2@gentoo.org>
+Date: Sun, 9 May 2021 11:00:22 +0200
+Subject: [PATCH] Use pkgconfig to detect static libs
+
+---
+ configure.ac | 20 ++++++++++++++++++--
+ make.tmpl.in |  5 ++++-
+ 2 files changed, 22 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6cdf1a7e65..90452ebf7c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1168,6 +1168,7 @@ if test "$BLKID_WIPING" != no; then
+ 	PKG_CHECK_MODULES(BLKID, blkid >= 2.24,
+ 			  [ BLKID_WIPING=yes
+ 			    BLKID_PC="blkid"
++			    BLKID_STATIC_LIBS=`$PKG_CONFIG --static --libs $BLKID_PC`
+ 			    DEFAULT_USE_BLKID_WIPING=1
+ 			    AC_DEFINE([BLKID_WIPING_SUPPORT], 1, [Define to 1 to use libblkid detection of signatures when wiping.])
+ 			  ], [if test "$BLKID_WIPING" = maybe; then
+@@ -1213,6 +1214,7 @@ AC_MSG_RESULT($UDEV_SYNC)
+ if test "$UDEV_SYNC" = yes; then
+ 	pkg_config_init
+ 	PKG_CHECK_MODULES(UDEV, libudev >= 143, [UDEV_PC="libudev"])
++	UDEV_STATIC_LIBS=`$PKG_CONFIG --static --libs libudev`
+ 	AC_DEFINE([UDEV_SYNC_SUPPORT], 1, [Define to 1 to enable synchronisation with udev processing.])
+ 
+ 	AC_CHECK_LIB(udev, udev_device_get_is_initialized, AC_DEFINE([HAVE_LIBUDEV_UDEV_DEVICE_GET_IS_INITIALIZED], 1,
+@@ -1432,19 +1434,30 @@ dnl -- Check for selinux
+ if test "$SELINUX" = yes; then
+ 	AC_CHECK_LIB([sepol], [sepol_check_context], [
+ 		AC_DEFINE([HAVE_SEPOL], 1, [Define to 1 if sepol_check_context is available.])
+-		SELINUX_LIBS="-lsepol"])
++		SEPOL_LIBS="-lsepol"])
++
++	dnl -- init pkgconfig if required
++	AS_IF([test x$PKGCONFIG_INIT != x1], [pkg_config_init])
++	PKG_CHECK_MODULES(SELINUX, libselinux, [
++		SELINUX_PC="libselinux"
++		SELINUX_STATIC_LIBS=`$PKG_CONFIG --static --libs libselinux`
++		SELINUX_LIBS="$SELINUX_LIBS $SEPOL_LIBS"
++		AC_DEFINE([HAVE_SELINUX], 1, [Define to 1 to include support for selinux.])
++	], [
++		dnl -- old non-pkgconfig method, is buggy with static builds
+ 
+ 	AC_CHECK_LIB([selinux], [is_selinux_enabled], [
+ 		AC_CHECK_HEADERS([selinux/selinux.h],, hard_bailout)
+ 		AC_CHECK_HEADERS([selinux/label.h])
+ 		AC_DEFINE([HAVE_SELINUX], 1, [Define to 1 to include support for selinux.])
+-		SELINUX_LIBS="-lselinux $SELINUX_LIBS"
++		SELINUX_LIBS="-lselinux $SEPOL_LIBS"
+ 		SELINUX_PC="libselinux"
+ 		HAVE_SELINUX=yes ], [
+ 		AC_MSG_WARN(Disabling selinux)
+ 		SELINUX_LIBS=
+ 		SELINUX_PC=
+ 		HAVE_SELINUX=no ])
++	])
+ fi
+ 
+ ################################################################################
+@@ -1834,6 +1847,7 @@ AC_ARG_VAR([UDEV_LIBS], [linker flags for udev])
+ ################################################################################
+ AC_SUBST(AWK)
+ AC_SUBST(BLKID_PC)
++AC_SUBST(BLKID_STATIC_LIBS)
+ AC_SUBST(BUILD_CMIRRORD)
+ AC_SUBST(BUILD_DMEVENTD)
+ AC_SUBST(BUILD_LVMDBUSD)
+@@ -1934,6 +1948,7 @@ AC_SUBST(SALCK_LIBS)
+ AC_SUBST(SBINDIR)
+ AC_SUBST(SELINUX_LIBS)
+ AC_SUBST(SELINUX_PC)
++AC_SUBST(SELINUX_STATIC_LIBS)
+ AC_SUBST(SYSCONFDIR)
+ AC_SUBST(SNAPSHOTS)
+ AC_SUBST(STATICDIR)
+@@ -1950,6 +1965,7 @@ AC_SUBST(CACHE_REPAIR_CMD)
+ AC_SUBST(CACHE_RESTORE_CMD)
+ AC_SUBST(UDEV_PC)
+ AC_SUBST(UDEV_RULES)
++AC_SUBST(UDEV_STATIC_LIBS)
+ AC_SUBST(UDEV_SYNC)
+ AC_SUBST(UDEV_SYSTEMD_BACKGROUND_JOBS)
+ AC_SUBST(UDEV_RULE_EXEC_DETECTION)
+diff --git a/make.tmpl.in b/make.tmpl.in
+index cccda10d6f..bf6c3e5596 100644
+--- a/make.tmpl.in
++++ b/make.tmpl.in
+@@ -64,7 +64,7 @@ PYCOMPILE = $(top_srcdir)/autoconf/py-compile
+ LIBS += @LIBS@ $(SELINUX_LIBS) $(UDEV_LIBS) $(RT_LIBS) $(M_LIBS)
+ LVMLIBS = $(DMEVENT_LIBS) $(READLINE_LIBS) $(EDITLINE_LIBS) $(SYSTEMD_LIBS) $(BLKID_LIBS) $(AIO_LIBS) $(LIBS)
+ # Extra libraries always linked with static binaries
+-STATIC_LIBS = $(PTHREAD_LIBS)
++STATIC_LIBS = $(PTHREAD_LIBS) $(SELINUX_STATIC_LIBS) $(UDEV_STATIC_LIBS) $(BLKID_STATIC_LIBS)
+ DEFS += @DEFS@
+ # FIXME set this only where it's needed, not globally?
+ CFLAGS ?= @COPTIMISE_FLAG@ @CFLAGS@
+@@ -82,6 +82,7 @@ AIO_CFLAGS = @AIO_CFLAGS@
+ AIO_LIBS = @AIO_LIBS@
+ BLKID_CFLAGS = @BLKID_CFLAGS@
+ BLKID_LIBS = @BLKID_LIBS@
++BLKID_STATIC_LIBS = @BLKID_STATIC_LIBS@
+ CPG_CFLAGS = @CPG_CFLAGS@
+ CPG_LIBS = @CPG_LIBS@
+ EDITLINE_CFLAGS = @EDITLINE_CFLAGS@
+@@ -90,10 +91,12 @@ PTHREAD_LIBS = @PTHREAD_LIBS@
+ READLINE_CFLAGS = @READLINE_CFLAGS@
+ READLINE_LIBS = @READLINE_LIBS@
+ SELINUX_LIBS = @SELINUX_LIBS@
++SELINUX_STATIC_LIBS = @SELINUX_STATIC_LIBS@
+ SYSTEMD_CFLAGS = @SYSTEMD_CFLAGS@
+ SYSTEMD_LIBS = @SYSTEMD_LIBS@
+ UDEV_CFLAGS = @UDEV_CFLAGS@
+ UDEV_LIBS = @UDEV_LIBS@
++UDEV_STATIC_LIBS = @UDEV_STATIC_LIBS@
+ VALGRIND_CFLAGS = @VALGRIND_CFLAGS@
+ VALGRIND_LIBS = @VALGRIND_LIBS@
+ 
+-- 
+2.33.1
+

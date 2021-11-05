@@ -11,7 +11,7 @@ inherit wxwidgets perl-module virtualx
 DESCRIPTION="access IO of external processes via events"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND="

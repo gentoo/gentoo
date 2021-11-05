@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 inherit autotools
 
@@ -13,7 +13,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
-RDEPEND=">=x11-libs/libdockapp-0.7:=
+RDEPEND="
+	>=x11-libs/libdockapp-0.7:=
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXt
@@ -23,7 +24,5 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
-	sed -e "/^X11LIBS/s/-I$x_includes //" -i configure.ac || die "sed failed"
-
 	eautoreconf
 }

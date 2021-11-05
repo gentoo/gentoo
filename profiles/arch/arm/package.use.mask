@@ -1,6 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-10-31)
+# dev-python/pyilmbase isn't keyworded on arm
+media-gfx/alembic python
+
+# Sam James <sam@gentoo.org> (2021-10-26)
+# Avoid dragging in obscure parts of dev-qt/* unless/until
+# somebody needs them. bug #816981.
+dev-python/QtPy pyside2
+
 # Tomáš Mózes <hydrapolic@gmail.com> (2021-09-25)
 # Unkeyworded dependencies.
 app-admin/syslog-ng mongodb
@@ -78,6 +87,7 @@ media-libs/libsdl2 fcitx4
 dev-libs/efl avif
 kde-frameworks/kimageformats avif
 media-libs/gd avif
+net-libs/webkit-gtk avif
 
 # Adam Feldman <NP-Hardass@gentoo.org> (2020-09-05)
 # dev-util/dogtail is not keyworded for arm
@@ -211,7 +221,7 @@ net-libs/gnutls test-full
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-03-02)
 # Requires unkeyworded deps
->=dev-python/ipython-5.4.1 notebook qt5 smp
+>=dev-python/ipython-5.4.1 qt5
 
 # Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # Moved from use.mask since they are flags local to one package.

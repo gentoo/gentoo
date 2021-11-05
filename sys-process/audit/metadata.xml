@@ -10,4 +10,7 @@
 	<use>
 		<flag name="gssapi">Enable GSSAPI support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">linux-audit/audit-userspace</remote-id>
+	</upstream>
 </pkgmetadata>

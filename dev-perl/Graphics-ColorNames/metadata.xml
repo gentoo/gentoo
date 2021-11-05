@@ -5,9 +5,6 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
-  <use>
-    <flag name="recommended">Install recommended support modules</flag>
-  </use>
   <upstream>
     <remote-id type="cpan">Graphics-ColorNames</remote-id>
     <remote-id type="cpan-module">Graphics::ColorNames</remote-id>

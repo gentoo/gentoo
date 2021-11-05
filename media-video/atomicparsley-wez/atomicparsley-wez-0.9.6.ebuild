@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 inherit autotools flag-o-matic
 
@@ -14,20 +14,20 @@ SRC_URI="https://bitbucket.org/wez/${MY_PN}/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE=""
 
 RDEPEND="sys-libs/zlib
 	!media-video/atomicparsley"
 DEPEND="${RDEPEND}"
 
-DOCS="Changes.txt CREDITS"
+DOCS=(Changes.txt CREDITS)
 
 src_unpack() {
-	unpack ${A}
-	mv *-${MY_PN}-* "${S}"
+	unpack ${A} || die
+	mv *-${MY_PN}-* "${S}" || die
 }
 
 src_prepare() {
+	default
 	eautoreconf
 }
 

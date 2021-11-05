@@ -92,11 +92,9 @@ _test-features_execute-test() {
 	local error_msg test_title=$1 test_stdin=$2 exp_stdout=$3 exp_stderr=$4 exp_exitcode=$5
 	ebegin "$test_title"
 	error_msg=$(
-		stderr_file=$(mktemp) || exit
-		cleanup() { rm -f "$stderr_file"; }
-		trap cleanup EXIT
-
-		test_stdout=$("$starlark_binary" -i --json <<< "$test_stdin" 2>"$stderr_file")
+		# Redirect stderr to stdin because print goes to stderr since this commit:
+		# https://github.com/facebookexperimental/starlark-rust/commit/cdd68fa752aa8b6cae602297de1e43658b0a63fd
+		test_stdout=$("$starlark_binary" -i --json <<< "$test_stdin" 2>&1)
 		test_exitcode=$?
 
 		if (( test_exitcode != exp_exitcode )); then
@@ -104,9 +102,6 @@ _test-features_execute-test() {
 			exit 1
 		elif [[ "$test_stdout" != "$exp_stdout" ]]; then
 			echo "unexpected stdout \"$test_stdout\", expected stdout \"$exp_stdout\" for test_stdin: $test_stdin"
-			exit 1
-		elif [[ $(< "$stderr_file") != "$exp_stderr" ]]; then
-			echo "unexpected stderr \"$(< "$stderr_file")\", expected stderr \"$exp_stderr\" for test_stdin: $test_stdin"
 			exit 1
 		fi
 		exit 0

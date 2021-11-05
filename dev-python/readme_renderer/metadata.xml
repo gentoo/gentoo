@@ -7,7 +7,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
-    <remote-id type="pypi">readme_renderer</remote-id>
+    <remote-id type="pypi">readme-renderer</remote-id>
     <remote-id type="github">pypa/readme_renderer</remote-id>
   </upstream>
 </pkgmetadata>

@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 SRC_URI="https://gitweb.gentoo.org/proj/portage.git/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc ~x86"
 SLOT="0"
 IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux test xattr"
 RESTRICT="!test? ( test )"
@@ -28,8 +28,8 @@ DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	>=sys-apps/sed-4.0.5 sys-devel/patch
 	doc? ( app-text/xmlto ~app-text/docbook-xml-dtd-4.4 )
 	apidoc? (
-		dev-python/sphinx
-		dev-python/sphinx-epytext
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx-epytext[${PYTHON_USEDEP}]
 	)"
 # Require sandbox-2.2 for bug #288863.
 # For whirlpool hash, require python[ssl] (bug #425046).

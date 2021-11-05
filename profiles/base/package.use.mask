@@ -6,6 +6,19 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Jakov Smolić <jsmolic@gentoo.org> (2021-10-26)
+# Depends on masked sys-fabric/dapl
+sys-fabric/ofed dapl
+
+# Conrad Kostecki <conikost@gentoo.org> (2021-10-23)
+# Build tools is currently broken, so masking until upstream fixes
+# See https://voidpoint.io/terminx/eduke32/-/issues/206
+games-fps/eduke32 tools
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-10-16)
+# openjfx for openjdk17 is not yet available
+dev-java/openjdk:17 javafx
+
 # Sam James <sam@gentoo.org> (2021-10-16)
 # Fails to compile, bug #787134
 =sys-fs/dd-rescue-1.99.11 cpu_flags_x86_avx2
@@ -48,10 +61,6 @@ gui-libs/gtk ffmpeg vulkan
 # Even on a clean install, 8 phdf5 tests fail (Bug #808612)
 # Mask for further study.
 >=sci-libs/hdf5-1.12.1 mpi
-
-# James Le Cuirot <chewi@gentoo.org> (2021-08-07)
-# The ORBlite scanner plugin only works on amd64 and x86.
-net-print/hplip-plugin orblite
 
 # Sam James <sam@gentoo.org> (2021-07-24)
 # USE=exec-static-trampoline can break consumers due to
@@ -204,10 +213,6 @@ dev-libs/efl efl-one
 # The respective dependencies are masked for removal.
 app-metrics/collectd collectd_plugins_onewire
 
-# Michał Górny <mgorny@gentoo.org> (2020-08-22)
-# These flags depend on packages masked for removal due to py2.
-sci-geosciences/qgis grass
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
 # Only supported on 64bit systems, see storage/columnstore/CMakeLists.txt
 dev-db/mariadb columnstore
@@ -217,11 +222,6 @@ dev-db/mariadb columnstore
 # They are generally fixable by adding py3 support and using
 # distutils_enable_sphinx to build docs.
 <=dev-python/lockfile-0.12.2-r2 doc
-
-# Michał Górny <mgorny@gentoo.org> (2020-07-27)
-# Requires Python 2 support in xapian-bindings which in turn require
-# Python 2 in dev-python/sphinx.
-<www-apps/roundup-3 xapian
 
 # Brian Dolbec <dolsen@gentoo.org> (2020-07-20)
 # Required dependencies are not yet in the Gentoo ebuild tree
@@ -295,10 +295,6 @@ dev-libs/ossp-uuid php
 dev-games/openscenegraph fox
 dev-libs/hidapi fox
 sci-mathematics/gsl-shell fox
-
-# James Le Cuirot <chewi@gentoo.org> (2019-12-10)
-# The JIT feature only works on amd64 and x86.
-app-emulation/aranym jit
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-04)
 # Packages requiring dev-python/ipython to build the docs and still

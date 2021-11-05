@@ -10,8 +10,8 @@ HOMEPAGE="https://fs-uae.net/"
 SRC_URI="https://fs-uae.net/stable/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="fmv glew"
+KEYWORDS="~amd64 ~ppc64"
+IUSE="fmv glew +jit"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -40,6 +40,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.0-libmpeg2.patch
 	"${FILESDIR}"/${PN}-3.0.0-Xatom.h.patch
+	"${FILESDIR}"/${PN}-3.1.35-ar.patch
+	"${FILESDIR}"/${PN}-3.1.35-deepbind.patch
 )
 
 src_prepare() {
@@ -69,8 +71,6 @@ src_configure() {
 		--enable-drivesound \
 		--enable-fdi2raw \
 		--enable-gfxboard \
-		--enable-jit \
-		--enable-jit-fpu \
 		--disable-lua \
 		--enable-netplay \
 		--enable-ncr \
@@ -95,6 +95,8 @@ src_configure() {
 		--without-cef \
 		--with-glad \
 		--without-qt \
+		$(use_enable jit) \
+		$(use_enable jit jit-fpu) \
 		$(use_with fmv libmpeg2) \
 		$(use_with glew)
 }

@@ -43,13 +43,13 @@ REQUIRED_USE="
 # FIXME: The opencascade-7.5.1 ebuild uses a new file system layout where
 # the names of the correct include and library directories are not easily
 # accessible. Just fix the version for the time being.
-CAS_VERSION=7.5.2
+CAS_VERSION=7.5.3
 
-RDEPEND="dev-libs/boost
+RDEPEND="dev-libs/boost:=
 	app-arch/bzip2
 	sys-libs/zlib
 	dev-cpp/cpp-taskflow
-	dev-cpp/tbb
+	dev-cpp/tbb:=
 	adolc? ( sci-libs/adolc )
 	arpack? ( sci-libs/arpack[mpi=] )
 	assimp? ( media-libs/assimp )
@@ -63,7 +63,7 @@ RDEPEND="dev-libs/boost
 		>=sci-libs/metis-5
 		mpi? ( >=sci-libs/parmetis-4 )
 	)
-	mpi? ( virtual/mpi )
+	mpi? ( virtual/mpi[cxx] )
 	muparser? ( dev-cpp/muParser )
 	opencascade? ( ~sci-libs/opencascade-${CAS_VERSION}:= )
 	p4est? ( sci-libs/p4est[mpi] )

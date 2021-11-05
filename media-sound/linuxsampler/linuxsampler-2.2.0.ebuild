@@ -62,7 +62,8 @@ src_configure() {
 }
 
 src_compile() {
-	emake
+	# bug #666738
+	emake -j1
 	use doc && emake docs
 }
 

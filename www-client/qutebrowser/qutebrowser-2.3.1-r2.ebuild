@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/qutebrowser/qutebrowser.git"
 else
 	SRC_URI="https://github.com/qutebrowser/qutebrowser/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~x86"
 fi
 
 DESCRIPTION="Keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine"
@@ -96,6 +96,8 @@ python_test() {
 		tests/unit/config/test_websettings.py::test_config_init
 		# may misbehave depending on installed old python versions
 		tests/unit/misc/test_checkpyver.py::test_old_python
+		# bug 819393
+		tests/unit/commands/test_userscripts.py::test_custom_env[_POSIXUserscriptRunner]
 	)
 	use widevine && EPYTEST_DESELECT+=( tests/unit/config/test_qtargs.py )
 
