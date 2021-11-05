@@ -1,9 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit epatch
+EAPI=8
 
 DESCRIPTION="Script to do \"scrubbing\" on software RAID systems"
 HOMEPAGE="https://github.com/fukawi2/raid-check"
@@ -17,10 +15,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch
 	"${FILESDIR}"/${P}-path.patch
 )
-
-src_prepare() {
-	epatch "${PATCHES[@]}"
-}
 
 src_compile() { :; }
 
