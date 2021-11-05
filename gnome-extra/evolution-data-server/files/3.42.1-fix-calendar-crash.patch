@@ -1,0 +1,64 @@
+From 7cbcdd3974abf7135617b1e9a230b4a9f5d829c6 Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Thu, 4 Nov 2021 17:00:20 +0100
+Subject: [PATCH 2/2] I#365 - Calendar: Crash on local calandar file change
+
+Closes https://gitlab.gnome.org/GNOME/evolution-data-server/-/issues/365
+---
+ src/calendar/backends/file/e-cal-backend-file.c | 1 +
+ src/calendar/backends/http/e-cal-backend-http.c | 7 ++++++-
+ src/calendar/libecal/e-cal-component.c          | 2 ++
+ 3 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/src/calendar/backends/file/e-cal-backend-file.c b/src/calendar/backends/file/e-cal-backend-file.c
+index f40bf807c..79ae53632 100644
+--- a/src/calendar/backends/file/e-cal-backend-file.c
++++ b/src/calendar/backends/file/e-cal-backend-file.c
+@@ -904,6 +904,7 @@ scan_vcalendar (ECalBackendFile *cbfile)
+ 			if (e_cal_component_set_icalcomponent (comp, icomp)) {
+ 				/* Thus it's not freed while being used in the 'comp' */
+ 				g_object_ref (icomp);
++				i_cal_object_set_owner (I_CAL_OBJECT (icomp), G_OBJECT (priv->vcalendar));
+ 
+ 				check_dup_uid (cbfile, comp);
+ 
+diff --git a/src/calendar/backends/http/e-cal-backend-http.c b/src/calendar/backends/http/e-cal-backend-http.c
+index a7e930ca0..bfe9b4554 100644
+--- a/src/calendar/backends/http/e-cal-backend-http.c
++++ b/src/calendar/backends/http/e-cal-backend-http.c
+@@ -477,13 +477,18 @@ ecb_http_get_changes_sync (ECalMetaBackend *meta_backend,
+ 	} else {
+ 		iter = i_cal_component_begin_component (maincomp, I_CAL_VCALENDAR_COMPONENT);
+ 		subcomp = i_cal_comp_iter_deref (iter);
++		if (subcomp)
++			i_cal_object_set_owner (I_CAL_OBJECT (subcomp), G_OBJECT (maincomp));
+ 	}
+ 
+ 	while (subcomp && success) {
+ 		ICalComponent *next_subcomp = NULL;
+ 
+-		if (iter)
++		if (iter) {
+ 			next_subcomp = i_cal_comp_iter_next (iter);
++			if (next_subcomp)
++				i_cal_object_set_owner (I_CAL_OBJECT (next_subcomp), G_OBJECT (maincomp));
++		}
+ 
+ 		if (i_cal_component_isa (subcomp) == I_CAL_VCALENDAR_COMPONENT) {
+ 			success = e_cal_meta_backend_gather_timezones_sync (meta_backend, subcomp, TRUE, cancellable, error);
+diff --git a/src/calendar/libecal/e-cal-component.c b/src/calendar/libecal/e-cal-component.c
+index a3dddcc8f..c7629813a 100644
+--- a/src/calendar/libecal/e-cal-component.c
++++ b/src/calendar/libecal/e-cal-component.c
+@@ -95,6 +95,8 @@ foreach_subcomponent (ICalComponent *icalcomp,
+ 	while (subcomp) {
+ 		ICalComponent *next_subcomp;
+ 
++		i_cal_object_set_owner (I_CAL_OBJECT (subcomp), G_OBJECT (icalcomp));
++
+ 		next_subcomp = i_cal_comp_iter_next (iter);
+ 
+ 		if (!func (icalcomp, subcomp, user_data)) {
+-- 
+2.32.0
+
