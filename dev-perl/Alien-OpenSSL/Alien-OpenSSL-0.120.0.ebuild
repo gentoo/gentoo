@@ -14,7 +14,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	>=dev-perl/Alien-Build-0.38.0
-	dev-libs/openssl
+	dev-libs/openssl:0=
 "
 DEPEND="
 	dev-libs/openssl
