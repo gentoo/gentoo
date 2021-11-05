@@ -1,33 +1,36 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit epatch flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Collection of tools for ACPI and power management"
 HOMEPAGE="https://github.com/anyc/pmtools/"
 SRC_URI="https://github.com/anyc/pmtools/tarball/${PV} -> ${P}.tar.gz"
-LICENSE="GPL-2"
+S="${WORKDIR}/pmtools"
 
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="doc"
-DEPEND=""
-RDEPEND="${DEPEND}
+
+RDEPEND="
 		dev-lang/perl
 		>=sys-power/iasl-20090521"
 
-S="${WORKDIR}/pmtools"
+PATCHES=(
+	"${FILESDIR}"/${PN}-20100123-acpixtract-pmtools.patch
+	"${FILESDIR}"/${PN}-20100123-madt.patch
+	"${FILESDIR}"/${PN}-20071116-64bit.patch
+	"${FILESDIR}"/${PN}-20101124-cflags-ldflags.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-20100123-acpixtract-pmtools.patch
-	epatch "${FILESDIR}"/${PN}-20100123-madt.patch
-	epatch "${FILESDIR}"/${PN}-20071116-64bit.patch
-	epatch "${FILESDIR}"/${PN}-20101124-cflags-ldflags.patch
+	default
 
 	# update version info
-	sed -i -e "s|20060324|20110323|" acpixtract/acpixtract.c
+	sed -i -e "s|20060324|20110323|" acpixtract/acpixtract.c || die
 
 	strip-unsupported-flags
 }
