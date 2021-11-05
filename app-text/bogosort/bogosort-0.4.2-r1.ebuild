@@ -37,6 +37,7 @@ src_configure() {
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die
+	default
+
 	dodoc README NEWS ChangeLog AUTHORS
 }
