@@ -9,7 +9,7 @@ DESCRIPTION="A robust, optimal, and maintainable programming language"
 HOMEPAGE="https://ziglang.org/"
 LICENSE="MIT"
 SLOT="0"
-IUSE="+experimental test"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
 if [[ ${PV} == 9999 ]]; then
@@ -37,8 +37,7 @@ RDEPEND="
 	sys-devel/clang:${LLVM_MAX_SLOT}
 	>=sys-devel/lld-12.0.0
 	<sys-devel/lld-13.0.0
-	sys-devel/llvm:${LLVM_MAX_SLOT}
-	!experimental? ( sys-devel/llvm:${LLVM_MAX_SLOT}[${LLVM_TARGET_USEDEPS// /,}] )
+	sys-devel/llvm:${LLVM_MAX_SLOT}[${LLVM_TARGET_USEDEPS// /,}]
 "
 DEPEND="${RDEPEND}"
 
