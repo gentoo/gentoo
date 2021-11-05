@@ -7,7 +7,7 @@ EAPI=7
 # Can reconsider w/ EAPI 8 and IDEPEND, bug #810979
 TMPFILES_OPTIONAL=1
 
-inherit autotools db-use fcaps toolchain-funcs usr-ldscript multilib-minimal
+inherit autotools db-use fcaps toolchain-funcs multilib-minimal
 
 GIT_COMMIT="fe1307512fb8892b5ceb3d884c793af8dbd4c16a"
 DOC_SNAPSHOT="20210610"
@@ -87,8 +87,6 @@ multilib_src_compile() {
 multilib_src_install() {
 	emake DESTDIR="${D}" install \
 		sepermitlockdir="/run/sepermit"
-
-	gen_usr_ldscript -a pam pam_misc pamc
 }
 
 multilib_src_install_all() {
