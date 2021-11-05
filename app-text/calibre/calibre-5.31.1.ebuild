@@ -191,6 +191,10 @@ src_compile() {
 	# TODO: get qmake called by setup.py to respect CC and CXX too
 	tc-export CC CXX
 
+	# bug 821871
+	local MY_LIBDIR="${ESYSROOT}/usr/$(get_libdir)"
+	export FT_LIB_DIR="${MY_LIBDIR}" HUNSPELL_LIB_DIR="${MY_LIBDIR}" PODOFO_LIB_DIR="${MY_LIBDIR}"
+
 	PATH="${T}/bin:${PATH}" ${EPYTHON} setup.py build || die
 }
 
