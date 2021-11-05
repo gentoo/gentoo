@@ -47,6 +47,10 @@ DISTUTILS_IN_SOURCE_BUILD=1
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${P}-pythran-tests-32-bit.patch
+)
+
 src_unpack() {
 	default
 	if use doc; then
