@@ -88,7 +88,7 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	dodoc README.md CHANGELOG
-	dodoc "${FILESDIR}"/README.Gentoo
+	dodoc "${FILESDIR}"/README.gentoo
 	pushd build/doc
 	newman ecl.man ecl.1
 	newman ecl-config.man ecl-config.1
