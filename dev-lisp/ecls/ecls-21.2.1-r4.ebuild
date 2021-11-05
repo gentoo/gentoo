@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-16.1.3-headers-gentoo.patch"
 	"${FILESDIR}/${PN}-16.1.3-build.patch"
 	"${FILESDIR}/${PN}-21.2.1-donotcompressinfo.patch"
+	"${FILESDIR}/${PN}-21.2.1-ldflags.patch"
 )
 
 src_prepare() {
