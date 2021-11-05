@@ -336,7 +336,7 @@ pkg_postinst() {
 		elog "X11 or Mac OS Aqua. Consider enabling the 'opengl' USE flag."
 	fi
 
-	optfeature "URL support" net-misc/youtube-dl
+	optfeature "URL support" net-misc/yt-dlp
 
 	xdg_icon_cache_update
 	xdg_desktop_database_update
