@@ -1,40 +1,47 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit epatch multilib toolchain-funcs
+EAPI=8
 
-MY_PV=${PV%_p*}
-MY_P=${PN}_${MY_PV}
-PATCHV=${PV#*_p}
+inherit toolchain-funcs
+
+MY_PV="${PV%_p*}"
+MY_P="${PN}_${MY_PV}"
+PATCHV="${PV#*_p}"
 
 DESCRIPTION="Advanced Power Management Daemon"
 HOMEPAGE="https://packages.qa.debian.org/a/apmd.html"
 SRC_URI="mirror://debian/pool/main/a/apmd/${MY_P}.orig.tar.gz
 	mirror://debian/pool/main/a/apmd/${MY_P}-${PATCHV}.diff.gz"
+S="${WORKDIR}/${PN}-${MY_PV}.orig"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ppc ppc64 x86"
 IUSE="nls X"
 
-RDEPEND=">=sys-apps/debianutils-1.16
+RDEPEND="
+	>=sys-apps/debianutils-1.16
 	>=sys-power/powermgmt-base-1.31
-	X? ( x11-libs/libX11
+	X? (
+		x11-libs/libX11
 		x11-libs/libXaw
 		x11-libs/libXmu
 		x11-libs/libSM
 		x11-libs/libICE
 		x11-libs/libXt
-		x11-libs/libXext )"
+		x11-libs/libXext
+	)"
 DEPEND="${RDEPEND}
-	sys-devel/libtool
 	virtual/os-headers"
+BDEPEND="sys-devel/libtool"
 
-S=${WORKDIR}/${PN}-${MY_PV}.orig
+PATCHES=(
+	"${WORKDIR}"/${MY_P}-${PATCHV}.diff
+)
 
 src_prepare() {
-	epatch "${WORKDIR}"/${MY_P}-${PATCHV}.diff
+	default
 
 	if ! use X; then
 		sed -i \
@@ -44,7 +51,7 @@ src_prepare() {
 	fi
 
 	# use system headers and skip on_ac_power
-	rm -f on_ac_power*
+	rm on_ac_power* || die
 
 	sed -i \
 		-e '/on_ac_power/d' \
@@ -54,7 +61,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
@@ -74,5 +81,9 @@ src_install() {
 	newconfd "${FILESDIR}"/apmd.confd apmd
 	newinitd "${FILESDIR}"/apmd.rc6 apmd
 
-	use nls || rm -rf "${D}"/usr/share/man/fr
+	if ! use nls; then
+		rm -r "${ED}"/usr/share/man/fr || die
+	fi
+
+	find "${ED}" -name '*.a' -delete || die
 }
