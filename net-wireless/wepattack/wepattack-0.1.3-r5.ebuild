@@ -1,14 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit epatch toolchain-funcs
+inherit toolchain-funcs
 
 MY_P="WepAttack-${PV}"
 DESCRIPTION="WLAN tool for breaking 802.11 WEP keys"
 HOMEPAGE="http://wepattack.sourceforge.net/"
 SRC_URI="mirror://sourceforge/wepattack/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -22,14 +23,21 @@ DEPEND="
 "
 
 RDEPEND="${DEPEND}
-john? ( || ( app-crypt/johntheripper app-crypt/johntheripper-jumbo ) )"
+	john? ( || (
+		app-crypt/johntheripper
+		app-crypt/johntheripper-jumbo
+		)
+	)"
 
-S="${WORKDIR}/${MY_P}"
+PATCHES=(
+	"${FILESDIR}"/${P}-filter-mac-address.patch
+	"${FILESDIR}"/${P}-missed-string.h-warnings-fix.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-filter-mac-address.patch
-	epatch "${FILESDIR}"/${P}-missed-string.h-warnings-fix.patch
-	chmod +x src/wlan
+	default
+
+	chmod +x src/wlan || die
 	sed -i \
 		-e "/^CFLAGS=/s:=:=${CFLAGS} :" \
 		-e 's:-fno-for-scope::g' \
