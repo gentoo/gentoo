@@ -16,6 +16,7 @@
 		file ownership, access right.
 	</longdescription>
 	<use>
+		<flag name="mount-ntfs">Install mount.ntfs symlink</flag>
 		<flag name="ntfsdecrypt">Build and install the ntfsdecrypt application.</flag>
 		<flag name="ntfsprogs">Include internal version of ntfsprogs.</flag>
 	</use>

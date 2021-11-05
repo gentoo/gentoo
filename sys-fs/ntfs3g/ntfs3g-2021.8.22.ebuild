@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 # The subslot matches the SONAME major #.
 SLOT="0/89"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
-IUSE="acl debug ntfsdecrypt +ntfsprogs static-libs suid xattr"
+IUSE="acl debug +mount-ntfs ntfsdecrypt +ntfsprogs static-libs suid xattr"
 
 RDEPEND="
 	sys-apps/util-linux:0=
@@ -75,7 +75,7 @@ src_configure() {
 src_install() {
 	default
 	use suid && fperms u+s /usr/bin/ntfs-3g
-	dosym mount.ntfs-3g /sbin/mount.ntfs
+	use mount-ntfs && dosym mount.ntfs-3g /sbin/mount.ntfs
 	find "${ED}" -name '*.la' -type f -delete || die
 	# https://bugs.gentoo.org/760780
 	keepdir "/usr/$(get_libdir)/ntfs-3g"
