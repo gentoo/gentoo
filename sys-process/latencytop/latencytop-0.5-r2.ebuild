@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit epatch linux-info
+inherit linux-info
 
 DESCRIPTION="tool for identifying where in the system latency is happening"
 HOMEPAGE="http://git.infradead.org/latencytop.git"
@@ -19,10 +19,11 @@ KEYWORDS="amd64 ~arm x86"
 IUSE="gtk"
 
 RDEPEND="dev-libs/glib:2
+	sys-libs/ncurses:0=
 	gtk? ( x11-libs/gtk+:2 )
-	sys-libs/ncurses:0="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 # Upstream is dead, so there are no bugs to track for any
 # of these patches.
@@ -41,7 +42,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
 
 	# Without a configure script, we toggle bools manually
 	# This also needs to be done after patches are applied
