@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arsen@aarsen.me</email>
+		<name>Arsen Arsenović</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The sd-bus library, extracted from systemd.
+
+		Some projects rely on the sd-bus library for DBus support.
+		However not all systems have systemd or elogind installed. This
+		library provides just sd-bus (and the busctl utility).
+	</longdescription>
+</pkgmetadata>
