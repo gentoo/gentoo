@@ -20,7 +20,6 @@ IUSE="acl debug +mount-ntfs ntfsdecrypt +ntfsprogs static-libs suid xattr"
 
 RDEPEND="
 	sys-apps/util-linux:0=
-	sys-fs/fuse:0
 	ntfsdecrypt? (
 		>=dev-libs/libgcrypt-1.2.2:0
 		>=net-libs/gnutls-1.4.4
@@ -66,7 +65,7 @@ src_configure() {
 		# don't links to hwinfo one causing issues like bug #602360
 		--without-hd
 
-		--with-fuse=external
+		--with-fuse=internal
 	)
 
 	econf "${myconf[@]}"
