@@ -18,6 +18,7 @@
   algorithms, ODE solvers, and others.
 </longdescription>
   <use>
+    <flag name="pythran">Use <pkg>dev-python/pythran</pkg> to accelerate runtime</flag>
     <flag name="sparse">Adds support for sparse solving with <pkg>sci-libs/umfpack</pkg></flag>
   </use>
   <upstream>
