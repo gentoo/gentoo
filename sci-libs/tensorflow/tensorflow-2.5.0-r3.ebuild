@@ -73,7 +73,7 @@ RDEPEND="
 	dev-db/sqlite
 	dev-libs/double-conversion
 	dev-libs/icu:=
-	>=dev-libs/jsoncpp-1.9.2
+	>=dev-libs/jsoncpp-1.9.2:=
 	dev-libs/libpcre
 	dev-libs/nsync
 	dev-libs/openssl:0=
