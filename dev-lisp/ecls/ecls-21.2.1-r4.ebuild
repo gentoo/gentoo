@@ -5,31 +5,27 @@ EAPI=7
 
 inherit readme.gentoo-r1
 
-# test phase only works if ecls already installed #516876
-RESTRICT="test"
-
 MY_P=ecl-${PV}
-
 DESCRIPTION="ECL is an embeddable Common Lisp implementation"
 HOMEPAGE="https://common-lisp.net/project/ecl/"
 SRC_URI="https://common-lisp.net/project/ecl/static/files/release/${MY_P}.tgz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2 LGPL-2.1+"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux"
 IUSE="cxx debug emacs gengc precisegc cpu_flags_x86_sse +threads +unicode X"
+# test phase only works if ecls already installed #516876
+RESTRICT="test"
 
-CDEPEND="dev-libs/gmp:0=
+RDEPEND="dev-libs/gmp:0=
 		dev-libs/libffi:=
 		dev-libs/libatomic_ops
 		>=dev-libs/boehm-gc-7.1[threads?]
 		>=dev-lisp/asdf-2.33-r3:="
-DEPEND="${CDEPEND}
+DEPEND="${RDEPEND}
 		app-text/texi2html
 		emacs? ( >=app-editors/emacs-23.1:* >=app-eselect/eselect-emacs-1.12 )"
-RDEPEND="${CDEPEND}"
-
-S="${WORKDIR}"/${MY_P}
 
 DOCS=( README.md CHANGELOG )
 
