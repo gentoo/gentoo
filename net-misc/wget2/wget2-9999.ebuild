@@ -3,12 +3,10 @@
 
 EAPI=7
 
-inherit autotools
-
 DESCRIPTION="GNU Wget2 is a file and recursive website downloader"
 HOMEPAGE="https://gitlab.com/gnuwget/wget2"
 if [[ "${PV}" == *9999 ]] ; then
-	inherit git-r3
+	inherit autotools git-r3
 	EGIT_REPO_URI="https://gitlab.com/gnuwget/wget2.git"
 else
 	SRC_URI="mirror://gnu/wget/${P}.tar.gz"
@@ -51,12 +49,6 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
-PATCHES=(
-	# Upstream attempts to be "smart" by calling ldconfig in
-	# install-exec-hook
-	"${FILESDIR}"/${PN}-1.99.2-remove_ldconfig_call.patch
-)
-
 src_unpack() {
 	if [[ "${PV}" == *9999 ]] ; then
 		git-r3_src_unpack
@@ -71,6 +63,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
 	if [[ "${PV}" == *9999 ]] ; then
 		local bootstrap_opts=(
 			--gnulib-srcdir=../gnulib
@@ -82,9 +75,8 @@ src_prepare() {
 		AUTORECONF="/bin/true" \
 		LIBTOOLIZE="/bin/true" \
 		sh ./bootstrap "${bootstrap_opts[@]}" || die
+		eautoreconf
 	fi
-	default
-	eautoreconf
 }
 
 src_configure() {
@@ -106,6 +98,9 @@ src_configure() {
 		$(use_with pcre libpcre2)
 		$(use_with psl libpsl)
 		$(use_with zlib)
+
+		# Avoid calling ldconfig
+		LDCONFIG=:
 	)
 	econf "${myeconfargs[@]}"
 }

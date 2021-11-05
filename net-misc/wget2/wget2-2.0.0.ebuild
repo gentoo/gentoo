@@ -48,17 +48,6 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
-PATCHES=(
-	# Upstream attempts to be "smart" by calling ldconfig in
-	# install-exec-hook
-	"${FILESDIR}"/${PN}-1.99.2-remove_ldconfig_call.patch
-)
-
-src_prepare() {
-	default
-	eautoreconf
-}
-
 src_configure() {
 	local myeconfargs=(
 		--disable-static
@@ -79,6 +68,9 @@ src_configure() {
 		$(use_with pcre libpcre2)
 		$(use_with psl libpsl)
 		$(use_with zlib)
+
+		# Avoid calling ldconfig
+		LDCONFIG=:
 	)
 	econf "${myeconfargs[@]}"
 }
