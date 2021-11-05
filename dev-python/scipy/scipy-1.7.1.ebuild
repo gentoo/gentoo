@@ -22,7 +22,7 @@ SRC_URI="
 LICENSE="BSD LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
-IUSE="doc sparse"
+IUSE="doc pythran sparse"
 
 DEPEND="
 	>=dev-python/numpy-1.16.5[lapack,${PYTHON_USEDEP}]
@@ -36,9 +36,9 @@ BDEPEND="
 	dev-lang/swig
 	>=dev-python/cython-0.29.18[${PYTHON_USEDEP}]
 	dev-python/pybind11[${PYTHON_USEDEP}]
-	dev-python/pythran[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	doc? ( app-arch/unzip )
+	pythran? ( dev-python/pythran[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 	)"
@@ -122,6 +122,8 @@ python_prepare_all() {
 }
 
 python_configure_all() {
+	export SCIPY_USE_PYTHRAN=$(usex pythran 1 0)
+
 	# bug 721860
 	test-flag-FC -fallow-argument-mismatch &&
 		append-fflags -fallow-argument-mismatch
