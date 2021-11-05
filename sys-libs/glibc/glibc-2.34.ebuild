@@ -1516,9 +1516,9 @@ pkg_preinst() {
 	# Keep around libcrypt so that Perl doesn't break when merging libxcrypt
 	# (libxcrypt is the new provider for now of libcrypt.so.{1,2}).
 	# bug #802207
-	if ! use crypt && has_version "${CATEGORY}/${PN}[crypt]"; then
+	if ! use crypt && has_version "${CATEGORY}/${PN}[crypt]" && ! has preserve-libs ${FEATURES}; then
 		PRESERVED_OLD_LIBCRYPT=1
-		preserve_old_lib /$(get_libdir)/libcrypt$(get_libname 1)
+		cp -p "${EROOT}/$(get_libdir)/libcrypt$(get_libname 1)" "${T}/libcrypt$(get_libname 1)" || die
 	else
 		PRESERVED_OLD_LIBCRYPT=0
 	fi
@@ -1553,6 +1553,7 @@ pkg_postinst() {
 	fi
 
 	if [[ ${PRESERVED_OLD_LIBCRYPT} -eq 1 ]] ; then
+		cp -p "${T}/libcrypt$(get_libname 1)" "${EROOT}/$(get_libdir)/libcrypt$(get_libname 1)" || die
 		preserve_old_lib_notify /$(get_libdir)/libcrypt$(get_libname 1)
 
 		elog "Please ignore a possible later error message about a file collision involving"
