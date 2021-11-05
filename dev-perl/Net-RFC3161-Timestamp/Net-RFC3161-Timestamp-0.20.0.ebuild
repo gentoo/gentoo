@@ -4,7 +4,7 @@
 EAPI=8
 
 DIST_AUTHOR=AKHUETTEL
-DIST_VERSION=0.011
+DIST_VERSION=0.020
 inherit perl-module
 
 DESCRIPTION="Utility functions to request RFC3161 timestamps"
@@ -16,8 +16,8 @@ RDEPEND="
 	dev-perl/Alien-OpenSSL
 	virtual/perl-Carp
 	virtual/perl-Exporter
+	virtual/perl-Getopt-Long
 	dev-perl/HTTP-Message
-	dev-perl/LWP-Protocol-https
 	dev-perl/libwww-perl
 "
 BDEPEND="${RDEPEND}
