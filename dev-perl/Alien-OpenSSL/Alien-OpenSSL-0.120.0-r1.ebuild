@@ -17,10 +17,10 @@ RDEPEND="
 	dev-libs/openssl:0=
 "
 DEPEND="
-	dev-libs/openssl
+	dev-libs/openssl:0=
 "
 BDEPEND="${RDEPEND}
-	>=dev-perl/Alien-Build-0.320.0
+	>=dev-perl/Alien-Build-1.190.0
 	>=virtual/perl-ExtUtils-MakeMaker-6.520.0
 	test? (
 		dev-perl/Test2-Suite
