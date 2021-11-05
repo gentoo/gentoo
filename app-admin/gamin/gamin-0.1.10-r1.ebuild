@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal
+inherit multilib-build
 
 DESCRIPTION="Meta package providing the File Alteration Monitor API & Server"
 HOMEPAGE="https://www.gnome.org/~veillard/gamin/"
