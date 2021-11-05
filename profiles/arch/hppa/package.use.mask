@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2021-11-05)
+# Avoid unkeyworded sci dependencies for bug #804115
+sci-libs/pastix starpu
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2021-10-24)
 # dev-ruby/furo isn't keyworded here
 dev-python/argon2-cffi doc
