@@ -1,29 +1,31 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit epatch multilib toolchain-funcs
+inherit toolchain-funcs
 
 MY_P="${P/_p/-}"
 DESCRIPTION="TOMOYO Linux tools"
 HOMEPAGE="http://tomoyo.sourceforge.jp/"
 SRC_URI="mirror://sourceforge.jp/tomoyo/53357/${MY_P}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-COMMON_DEPEND="sys-libs/ncurses:="
-DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig"
-RDEPEND="${COMMON_DEPEND}
+DEPEND="sys-libs/ncurses:="
+RDEPEND="${DEPEND}
 	!sys-apps/ccs-tools"
+BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/${PN}"
+PATCHES=(
+	"${FILESDIR}"/${P}-warnings.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-warnings.patch
+	default
 
 	# Fix libdir
 	sed -i \
@@ -35,8 +37,6 @@ src_prepare() {
 		-e 's|-lncurses|$(shell ${PKG_CONFIG} --libs ncurses)|g' \
 		usr_sbin/Makefile || die
 
-	echo "CONFIG_PROTECT=\"/usr/$(get_libdir)/tomoyo/conf\"" > "${T}/50${PN}"
-
 	tc-export CC PKG_CONFIG
 }
 
@@ -45,10 +45,12 @@ src_install() {
 
 	emake INSTALLDIR="${D}" install
 
-	doenvd "${T}/50${PN}"
+	newenvd - 50${PN} <<- _EOF_
+		CONFIG_PROTECT=/usr/$(get_libdir)/tomoyo/conf
+	_EOF_
 
 	# Fix out-of-place readme and license
-	rm "${D}"/usr/$(get_libdir)/tomoyo/{COPYING.tomoyo,README.tomoyo} || die
+	rm "${ED}"/usr/$(get_libdir)/tomoyo/{COPYING.tomoyo,README.tomoyo} || die
 	dodoc README.tomoyo
 }
 
