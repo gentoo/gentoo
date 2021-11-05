@@ -22,7 +22,7 @@ SRC_URI="
 LICENSE="BSD LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
-IUSE="doc pythran sparse"
+IUSE="doc +pythran sparse"
 
 DEPEND="
 	>=dev-python/numpy-1.16.5[lapack,${PYTHON_USEDEP}]
