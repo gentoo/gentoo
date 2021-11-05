@@ -58,6 +58,7 @@ RDEPEND="
 	# JSON::WebToken
 	# JSON::WebToken::Crypt::RSA
 DEPEND="${RDEPEND}"
+BDEPEND="sys-apps/lsb-release"
 	#test? (
 	#	virtual/perl-Test
 	#	dev-perl/Test-Deep
