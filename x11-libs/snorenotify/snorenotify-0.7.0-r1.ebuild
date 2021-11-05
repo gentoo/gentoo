@@ -12,7 +12,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 x86"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 IUSE="sound test"
 RESTRICT="!test? ( test )"
 
