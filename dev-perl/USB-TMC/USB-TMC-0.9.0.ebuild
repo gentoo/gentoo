@@ -7,7 +7,7 @@ DIST_VERSION=0.009
 DIST_AUTHOR=AMBA
 inherit perl-module
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 DESCRIPTION="Perl interface to the USB Test & Measurement (USBTMC) backend"
 SLOT="0"
 
