@@ -12,7 +12,7 @@ SRC_URI="https://github.com/pre-commit/${PN}/archive/refs/tags/v${PV}.tar.gz -> 
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 
 RDEPEND="dev-python/editdistance-s[${PYTHON_USEDEP}]"
 
