@@ -33,7 +33,8 @@ RESTRICT="!test? ( test ) !clang? ( test )"
 CLANG_SLOT=${SLOT%%.*}
 # llvm-6 for new lit options
 DEPEND="
-	>=sys-devel/llvm-6"
+	>=sys-devel/llvm-6
+	virtual/libcrypt"
 BDEPEND="
 	>=dev-util/cmake-3.16
 	clang? ( sys-devel/clang )
