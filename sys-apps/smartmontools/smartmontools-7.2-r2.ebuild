@@ -48,6 +48,11 @@ REQUIRED_USE="(
 	static? ( !systemd )
 )"
 
+PATCHES=(
+	# Backport from commit 56363dff436c12eaa296bbba39dfd65ec3f1f1f2
+	"${FILESDIR}/${P}-update-smart-drivedb-quiet.patch"
+)
+
 src_prepare() {
 	default
 	eautoreconf
