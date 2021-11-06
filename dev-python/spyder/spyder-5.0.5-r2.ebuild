@@ -148,11 +148,19 @@ python_prepare_all() {
 	sed -i \
 		-e '/pyqt5/d' \
 		-e '/pyqtwebengine/d' \
-		-e '/python-language-server/d' \
 		-e '/python-lsp-server/d' \
 		-e '/parso/d' \
 		-e '/jedi/d' \
-			{setup.py,requirements/conda.txt} || die
+		-e '/pylint/d' \
+			requirements/conda.txt || die
+	sed -i \
+		-e "/'pyqt5[ 0-9<=>.,]*',/d" \
+		-e "/'pyqtwebengine[ 0-9<=>.,]*',/d" \
+		-e "/'python-lsp-server\[all\][ 0-9<=>.,]*',/d" \
+		-e "/'parso[ 0-9<=>.,]*',/d" \
+		-e "/'jedi[ 0-9<=>.,]*',/d" \
+		-e "/'pylint[ 0-9<=>.,]*',/d" \
+			setup.py || die
 	sed -i \
 		-e "/^PYLS_REQVER/c\PYLS_REQVER = '>=0.0.1'" \
 		-e "/^PYLSP_REQVER/c\PYLSP_REQVER = '>=0.0.1'" \

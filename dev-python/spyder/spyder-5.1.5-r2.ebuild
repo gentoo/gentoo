@@ -3,15 +3,13 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-# The warning that this is wrong is a false positive
-# Spyder has setuptools in install_requires
+PYTHON_COMPAT=( python3_{8..9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit optfeature xdg distutils-r1
 
 # Commit of documentation to fetch
-DOCS_PV="78b25754c69a20643258821146e398ad5535c920"
+DOCS_PV="a3a579ce6e7e42c9d9bbd88ac4e76650b7093e5c"
 
 DESCRIPTION="The Scientific Python Development Environment"
 HOMEPAGE="
@@ -19,8 +17,10 @@ HOMEPAGE="
 	https://github.com/spyder-ide/spyder/
 	https://pypi.org/project/spyder/
 "
-SRC_URI="https://github.com/spyder-ide/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/spyder-ide/${PN}-docs/archive/${DOCS_PV}.tar.gz -> ${PN}-docs-${DOCS_PV}.tar.gz"
+SRC_URI="
+	https://github.com/spyder-ide/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/spyder-ide/${PN}-docs/archive/${DOCS_PV}.tar.gz -> ${PN}-docs-${DOCS_PV}.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
@@ -36,10 +36,9 @@ RESTRICT="test"
 RDEPEND="
 	>=dev-python/atomicwrites-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/chardet-2.0.0[${PYTHON_USEDEP}]
-	>=dev-python/cloudpickle-0.5.0[${PYTHON_USEDEP}]
+	>=dev-util/cookiecutter-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/diff-match-patch-20181111[${PYTHON_USEDEP}]
 	>=dev-python/intervaltree-3.0.2[${PYTHON_USEDEP}]
-	>=dev-python/ipython-7.6.0[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-3.2.0[${PYTHON_USEDEP}]
 	>=dev-python/keyring-17.0.0[${PYTHON_USEDEP}]
 	>=dev-python/nbconvert-4.0[${PYTHON_USEDEP}]
@@ -48,48 +47,47 @@ RDEPEND="
 	>=dev-python/pickleshare-0.4[${PYTHON_USEDEP}]
 	>=dev-python/psutil-5.3[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
-	>=dev-python/pylint-1.0[${PYTHON_USEDEP}]
 	>=dev-python/python-lsp-black-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pyls-spyder-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/pyxdg-0.26[${PYTHON_USEDEP}]
-	>=dev-python/pyzmq-17.0.0[${PYTHON_USEDEP}]
-	>=dev-python/qdarkstyle-2.8[${PYTHON_USEDEP}]
-	<dev-python/qdarkstyle-3.0[${PYTHON_USEDEP}]
-	>=dev-python/qtawesome-0.5.7[${PYTHON_USEDEP}]
-	>=dev-python/qtconsole-5.0.3[${PYTHON_USEDEP}]
+	>=dev-python/pyzmq-17[${PYTHON_USEDEP}]
+	~dev-python/qdarkstyle-3.0.2[${PYTHON_USEDEP}]
+	>=dev-python/qstylizer-0.1.10[${PYTHON_USEDEP}]
+	>=dev-python/qtawesome-1.0.2[${PYTHON_USEDEP}]
+	>=dev-python/qtconsole-5.1.0[${PYTHON_USEDEP}]
 	>=dev-python/QtPy-1.5.0[${PYTHON_USEDEP},pyqt5(+),svg,webengine]
+	>=sci-libs/rtree-0.9.7[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-0.6.6[${PYTHON_USEDEP}]
-	>=dev-python/spyder-kernels-1.10.2[${PYTHON_USEDEP}]
-	<dev-python/spyder-kernels-1.11.0[${PYTHON_USEDEP}]
+	>=dev-python/spyder-kernels-2.1.1[${PYTHON_USEDEP}]
+	<dev-python/spyder-kernels-2.2.0[${PYTHON_USEDEP}]
 	>=dev-python/textdistance-4.2.0[${PYTHON_USEDEP}]
 	>=dev-python/three-merge-0.1.1[${PYTHON_USEDEP}]
 	>=dev-python/watchdog-0.10.3[${PYTHON_USEDEP}]
-	<dev-python/watchdog-2.0.0[${PYTHON_USEDEP}]
 "
 
-BDEPEND="test? (
-	dev-python/cython[${PYTHON_USEDEP}]
-	dev-python/flaky[${PYTHON_USEDEP}]
-	dev-python/matplotlib[tk,${PYTHON_USEDEP}]
-	dev-python/mock[${PYTHON_USEDEP}]
-	dev-python/pandas[${PYTHON_USEDEP}]
-	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/pytest-lazy-fixture[${PYTHON_USEDEP}]
-	dev-python/pytest-mock[${PYTHON_USEDEP}]
-	dev-python/pytest-ordering[${PYTHON_USEDEP}]
-	dev-python/pytest-qt[${PYTHON_USEDEP}]
-	dev-python/pytest-xvfb[${PYTHON_USEDEP}]
-	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/scipy[${PYTHON_USEDEP}]
-	dev-python/sympy[${PYTHON_USEDEP}]
-)"
+BDEPEND="
+	test? (
+		dev-python/cython[${PYTHON_USEDEP}]
+		dev-python/flaky[${PYTHON_USEDEP}]
+		dev-python/matplotlib[tk,${PYTHON_USEDEP}]
+		dev-python/pandas[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pytest-lazy-fixture[${PYTHON_USEDEP}]
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
+		dev-python/pytest-ordering[${PYTHON_USEDEP}]
+		<dev-python/pytest-qt-4[${PYTHON_USEDEP}]
+		dev-python/pytest-xvfb[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/scipy[${PYTHON_USEDEP}]
+		dev-python/sympy[${PYTHON_USEDEP}]
+	)"
 
 # Based on the courtesy of Arfrever
 # This patch removes a call to update-desktop-database during build
 # This fails because access is denied to this command during build
 PATCHES=(
-	"${FILESDIR}/${PN}-4.2.1-build.patch"
-	"${FILESDIR}/${PN}-4.1.5-doc-theme-renamed.patch"
+	"${FILESDIR}/${PN}-5.0.0-build.patch"
+	"${FILESDIR}/${PN}-5.0.1-doc-theme-renamed.patch"
 )
 
 DOCS=(
@@ -104,29 +102,22 @@ DOCS=(
 )
 
 distutils_enable_tests pytest
-distutils_enable_sphinx docs/doc dev-python/sphinx-panels dev-python/pydata-sphinx-theme dev-python/sphinx-multiversion
+distutils_enable_sphinx docs/doc \
+	dev-python/sphinx-panels \
+	dev-python/pydata-sphinx-theme \
+	dev-python/sphinx-multiversion
 
 python_prepare_all() {
 	# move docs into workdir
 	mv ../spyder-docs-${DOCS_PV}* docs || die
 
-	# these deps are packaged separately: dev-python/spyder-kernels, dev-python/python-language-server
-	rm external-deps/* -r || die
+	# these dependencies are packaged separately:
+	#    dev-python/spyder-kernels,
+	#    dev-python/python-lsp-server,
+	#    dev-python/qdarkstyle
+	rm -r external-deps/* || die
 	# runs against things packaged in external-deps dir
 	rm conftest.py || die
-
-	# Use the spyder fork of pyls (python-lsp-server instead of python-language-server)
-	# The original hasn't been update in over 6 months, and spyder upstream is slow
-	# in making the switch. Because we are running into issues with outdated deps
-	# and a whole dependency mess as a result, we can no longer wait for upstream.
-	find . -name "*.py" -exec sed -i \
-		-e 's/pyls/pylsp/g' \
-		-e 's/pylsp-spyder/pyls-spyder/g' \
-		-e 's/pylsp_spyder/pyls_spyder/g' \
-		-e 's/pylsp-black/python-lsp-black/g' \
-		-e 's/pyls-spyder>=0.3.2,<0.4.0/pyls-spyder>=0.4.0/g' \
-		-e 's/>=0.3.2;<0.4.0/>=0.4.0/g' \
-		{} + || die
 
 	# Do not depend on pyqt5<5.13, this dependency is carried by QtPy[pyqt5]
 	# Do not depend on pyqtwebengine<5.13, this dependency is carried by QtPy[webengine]
@@ -141,16 +132,25 @@ python_prepare_all() {
 	sed -i \
 		-e '/pyqt5/d' \
 		-e '/pyqtwebengine/d' \
-		-e '/python-language-server/d' \
 		-e '/python-lsp-server/d' \
 		-e '/parso/d' \
 		-e '/jedi/d' \
-			{setup.py,requirements/conda.txt} || die
+		-e '/pylint/d' \
+			requirements/conda.txt || die
+	sed -i \
+		-e "/'pyqt5[ 0-9<=>.,]*',/d" \
+		-e "/'pyqtwebengine[ 0-9<=>.,]*',/d" \
+		-e "/'python-lsp-server\[all\][ 0-9<=>.,]*',/d" \
+		-e "/'parso[ 0-9<=>.,]*',/d" \
+		-e "/'jedi[ 0-9<=>.,]*',/d" \
+		-e "/'pylint[ 0-9<=>.,]*',/d" \
+			setup.py || die
 	sed -i \
 		-e "/^PYLS_REQVER/c\PYLS_REQVER = '>=0.0.1'" \
 		-e "/^PYLSP_REQVER/c\PYLSP_REQVER = '>=0.0.1'" \
 		-e "/^PARSO_REQVER/c\PARSO_REQVER = '>=0.0.1'" \
 		-e "/^JEDI_REQVER/c\JEDI_REQVER = '>=0.0.1'" \
+		-e "/^PYLINT_REQVER/c\PYLINT_REQVER = '>=0.0.1'" \
 			spyder/dependencies.py || die
 
 	# do not check deps, fails because we removed pyqt5 dependency above
@@ -163,67 +163,14 @@ python_prepare_all() {
 	# skip online test
 	rm spyder/widgets/github/tests/test_github_backend.py || die
 
-	# KeyError: 'conda: base', need conda??
-	sed -i -e 's:test_status_bar_conda_interpreter_status:_&:' \
-		spyder/widgets/tests/test_status.py || die
-
-	# assert 2 == 1
-	sed -i -e 's:test_pylint_max_history_conf:_&:' \
-		spyder/plugins/pylint/tests/test_pylint.py || die
-
-	# https://bugs.gentoo.org/747211
-	sed -i -e 's:test_loaded_and_closed_signals:_&:' \
-		spyder/plugins/projects/tests/test_plugin.py || die
-
-	# AssertionError: assert '' == 'This is some test text!'
-	sed -i -e 's:test_tab_copies_find_to_replace:_&:' \
-		spyder/plugins/editor/widgets/tests/test_editor.py || die
-
-	# hangs till forever
-	sed -i -e 's:test_help_opens_when_show_tutorial_full:_&:' \
-		spyder/app/tests/test_mainwindow.py || die
-
-	# Assertion error, can't connect/remember inside ebuild environment
-	rm spyder/plugins/ipythonconsole/widgets/tests/test_kernelconnect.py || die
-
-	# AssertionError: waitUntil timed out in 20000 miliseconds
-	sed -i -e 's:test_pdb_multiline:_&:' \
-		spyder/plugins/ipythonconsole/tests/test_ipythonconsole.py || die
-
-	# AssertionError: assert 'if True:\n    0\n    ' == 'if True:\n    0'
-	sed -i -e 's:test_undo_return:_&:' \
-		spyder/plugins/editor/widgets/tests/test_codeeditor.py || die
-
-	# assert False is True
-	sed -i -e 's:test_range_indicator_visible_on_hover_only:_&:' \
-		spyder/plugins/editor/panels/tests/test_scrollflag.py || die
-
-	# AssertionError: waitUntil timed out in 10000 miliseconds
-	sed -i -e 's:test_get_hints:_&:' \
-		spyder/plugins/editor/widgets/tests/test_hints_and_calltips.py || die
-
-	# Fatal Python error: Aborted
-	sed -i -e 's:test_module_completion:_&:' \
-		spyder/utils/introspection/tests/test_modulecompletion.py || die
-
-	# assert 0 > 0
-	sed -i -e 's:test_maininterpreter_page:_&:' \
-		spyder/preferences/tests/test_config_dialog.py || die
-
-	# This hangs forever
-	sed -i -e 's:test_load_kernel_file:_&:' \
-		-e 's:test_load_kernel_file_from_location:_&:' \
-		-e 's:test_load_kernel_file_from_id:_&:' \
-		spyder/plugins/ipythonconsole/tests/test_ipythonconsole.py || die
-
 	distutils-r1_python_prepare_all
 }
 
 # Calling pytest directly makes the tests freeze after completing even if successful
-# Exit code is nonzero even upon success, so can't add || die here
-# test results should be checked for success manually
+# Exit code is nonzero even upon success, so can't add || die here test results
+# should be checked for success manually
 python_test() {
-	${EPYTHON} runtests.py
+	"${EPYTHON}" runtests.py
 }
 
 pkg_postinst() {
