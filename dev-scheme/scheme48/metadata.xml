@@ -6,9 +6,9 @@
 		<name>Gentoo Scheme Project</name>
 	</maintainer>
 	<longdescription lang="en">
-        Scheme 48 is an implementation of Scheme written by Richard Kelsey and
-        Jonathan Rees. It is based on a byte-code interpreter and is designed
-        to be used as a testbed for experiments in implementation techniques
-        and as an expository tool.
+		Scheme 48 is an implementation of Scheme written by Richard Kelsey and
+		Jonathan Rees. It is based on a byte-code interpreter and is designed
+		to be used as a testbed for experiments in implementation techniques
+		and as an expository tool.
 	</longdescription>
 </pkgmetadata>
