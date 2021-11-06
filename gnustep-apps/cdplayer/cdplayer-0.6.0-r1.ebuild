@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 inherit gnustep-2
 
 DESCRIPTION="Small CD Audio Player for GNUstep"
@@ -20,9 +20,11 @@ DEPEND="dev-libs/libcdio
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
+
 	sed -e "s#cdda.h#paranoia/cdda.h#" \
 		-e "s#paranoia.h#paranoia/paranoia.h#" \
-		-i AudioCD/AudioCD.h || die "AudioCD.h sed failed"
+		-i AudioCD/AudioCD.h || die
 }
 
 src_compile() {
