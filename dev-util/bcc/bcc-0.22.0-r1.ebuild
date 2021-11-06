@@ -10,7 +10,6 @@ inherit cmake linux-info llvm lua-single python-r1
 
 DESCRIPTION="Tools for BPF-based Linux IO analysis, networking, monitoring, and more"
 HOMEPAGE="https://iovisor.github.io/bcc/"
-
 SRC_URI="https://github.com/iovisor/bcc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -19,19 +18,17 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+lua test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	lua? ( ${LUA_REQUIRED_USE} )"
+# tests need root access
+RESTRICT="test"
 
 RDEPEND="
-	|| (
-		~dev-libs/libbpf-0.5.0
-		~dev-libs/libbpf-9999
-	)
-	dev-libs/libbpf:=[static-libs(-)]
-	>=sys-kernel/linux-headers-5.13
 	>=dev-libs/elfutils-0.166:=
-	<=sys-devel/clang-13:=
-	<=sys-devel/llvm-13:=[llvm_targets_BPF(+)]
-	lua? ( ${LUA_DEPS} )
+	>=dev-libs/libbpf-0.5.0:=[static-libs(-)]
+	>=sys-kernel/linux-headers-5.13
+	<=sys-devel/clang-14:=
+	<=sys-devel/llvm-14:=[llvm_targets_BPF(+)]
 	${PYTHON_DEPS}
+	lua? ( ${LUA_DEPS} )
 "
 DEPEND="${RDEPEND}
 	test? (
@@ -44,7 +41,6 @@ DEPEND="${RDEPEND}
 	)
 "
 BDEPEND="
-	dev-util/cmake
 	virtual/pkgconfig
 "
 
@@ -52,9 +48,6 @@ PATCHES=(
 	"${FILESDIR}/bcc-0.9.0-no-luajit-automagic-dep.patch"
 	"${FILESDIR}/bcc-0.14.0-cmakelists.patch"
 )
-
-# tests need root access
-RESTRICT="test"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~BPF ~BPF_SYSCALL ~NET_CLS_BPF ~NET_ACT_BPF
@@ -65,7 +58,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	LLVM_MAX_SLOT=12 llvm_pkg_setup
+	LLVM_MAX_SLOT=13 llvm_pkg_setup
 	python_setup
 }
 
