@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="sourceforge">linux-ima</remote-id>
 	</upstream>
+	<use>
+		<flag name="tpm">Enable TPM support</flag>
+	</use>	
 </pkgmetadata>
