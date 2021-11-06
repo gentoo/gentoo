@@ -30,6 +30,7 @@ DOCS=( AUTHORS COMPATABILITY ChangeLog NEWS \
 
 src_prepare() {
 	default
+
 	# automake is unhappy if this is missing
 	>> config.rpath || die
 	# This is too old.  Remove it so automake puts in a newer copy.
@@ -43,13 +44,14 @@ src_prepare() {
 src_configure() {
 	tc-export CC
 	append-flags -Wstrict-prototypes
+
 	econf $(use_enable nls)
 }
 
 src_test() {
-	#Don't use check target.
-	#See bug #120748 before changing this function.
-	make vcheck || die "tests failed"
+	# Don't use check target.
+	# See bug #120748 before changing this function.
+	emake vcheck
 }
 
 src_install() {
