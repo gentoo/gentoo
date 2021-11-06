@@ -5,6 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{7..10} )
+LLVM_MAX_SLOT=13
 
 inherit cmake linux-info llvm lua-single python-r1
 
@@ -25,8 +26,8 @@ RDEPEND="
 	>=dev-libs/elfutils-0.166:=
 	>=dev-libs/libbpf-0.5.0:=[static-libs(-)]
 	>=sys-kernel/linux-headers-5.13
-	<=sys-devel/clang-14:=
-	<=sys-devel/llvm-14:=[llvm_targets_BPF(+)]
+	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
+	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_BPF(+)]
 	${PYTHON_DEPS}
 	lua? ( ${LUA_DEPS} )
 "
@@ -58,7 +59,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	LLVM_MAX_SLOT=13 llvm_pkg_setup
+	llvm_pkg_setup
 	python_setup
 }
 
@@ -71,8 +72,8 @@ src_prepare() {
 
 	# bug 811288
 	local script scriptname
-	for script in $(find tools/old -type f -name "*.py"); do
-		scriptname=$(basename ${script})
+	for script in $(find tools/old -type f -name "*.py" || die); do
+		scriptname=$(basename ${script} || die)
 		mv ${script} tools/old/old-${scriptname} || die
 	done
 
