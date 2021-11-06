@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-06)
+# Unmaintaned, uses EAPI 5, no revdeps.
+# Removal on 2021-12-06. Bug #819186.
+sys-fs/ctmg
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-05)
 # 'btrfs filesystem usage' reports incorecct values
 # https://github.com/kdave/btrfs-progs/issues/422
