@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake optfeature virtualx
 
 DESCRIPTION="Qt Implementation of XDG Standards"
-HOMEPAGE="https://lxqt.github.io/"
+HOMEPAGE="https://lxqt-project.org/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
