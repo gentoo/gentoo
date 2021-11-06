@@ -17,7 +17,7 @@ BDEPEND="app-arch/unzip"
 
 S=${WORKDIR}
 
-# pep does not come with autconf so here's a patch to configure
+# pep does not come with autoconf so here's a patch to configure
 # Makefile with the correct path
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
@@ -35,7 +35,7 @@ src_prepare() {
 
 src_compile() {
 	# make man page too
-	make Doc/pep.1 || die "make man page failed"
+	emake Doc/pep.1
 	emake CC="$(tc-getCC)"
 }
 
