@@ -19,7 +19,7 @@ RDEPEND=">=dev-db/sqlite-3.4:3
 	net-libs/neon[ssl]
 	iconv? ( virtual/libiconv )
 	samba? ( >=net-fs/samba-3.5 )
-	sftp? ( >=net-libs/libssh-0.5 )
+	sftp? ( >=net-libs/libssh-0.5[sftp] )
 	!net-misc/ocsync"
 DEPEND="${RDEPEND}
 	app-text/asciidoc
