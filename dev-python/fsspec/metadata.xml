@@ -7,6 +7,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">fsspec</remote-id>
-		<remote-id type="github">intake/filesystem_spec</remote-id>
+		<remote-id type="github">fsspec/filesystem_spec</remote-id>
 	</upstream>
 </pkgmetadata>
