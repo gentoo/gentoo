@@ -1,0 +1,32 @@
+From a6297858575780b9ed3d14cc42983348924d6048 Mon Sep 17 00:00:00 2001
+From: Michal Srb <michal@redhat.com>
+Date: Tue, 5 Oct 2021 15:53:48 +0200
+Subject: [PATCH] abrt-dbus: do not try to free session data twice
+
+We free session data in on_g_signal() function, which is also
+invoked when client disappears. Therefore, we don't need to register the
+same free function in g_bus_watch_name_on_connection().
+
+glib2 2.69.2 changed (fixed?) how/when g_bus_watch_name_on_connection()
+calls the provided free function and it uncovered this problem in abrt-dbus.
+
+See rhbz#1997315 for more details.
+
+Signed-off-by: Michal Srb <michal@redhat.com>
+---
+ src/dbus/abrt_problems2_service.c | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/dbus/abrt_problems2_service.c b/src/dbus/abrt_problems2_service.c
+index 8d543f443..004c7aeb2 100644
+--- a/src/dbus/abrt_problems2_service.c
++++ b/src/dbus/abrt_problems2_service.c
+@@ -571,7 +571,7 @@ static AbrtP2Object *session_object_register(AbrtP2Service *service,
+     obj->owner_watcher_id = g_bus_watch_name_on_connection(connection, caller,
+                                                            G_BUS_NAME_WATCHER_FLAGS_NONE,
+                                                            NULL, abrt_p2_service_on_session_owner_vanished,
+-                                                           obj, (GDestroyNotify)abrt_p2_object_destroy);
++                                                           obj, NULL);
+ 
+     return obj;
+ }
