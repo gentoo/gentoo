@@ -64,7 +64,7 @@ DEPEND="
 	xine? ( >=media-libs/xine-lib-1.1.2_pre20060328-r7 )
 	xml? ( >=dev-libs/libxml2-2.5 )
 "
-#	java? ( >=virtual/jre-1.5 )
+#	java? ( >=virtual/jre-1.8:* )
 #	perl? ( dev-lang/perl )
 #	php? ( dev-lang/php )
 #	ruby? ( ${RUBY_DEPS} )
