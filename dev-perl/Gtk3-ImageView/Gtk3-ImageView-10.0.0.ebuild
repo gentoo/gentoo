@@ -23,6 +23,7 @@ BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/Carp-Always
+		dev-perl/Test-Deep
 		dev-perl/Test-Differences
 		dev-perl/Test-MockObject
 		dev-perl/Try-Tiny
