@@ -10,6 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">b5invis/iosevka</remote-id>
+		<remote-id type="github">be5invis/iosevka</remote-id>
 	</upstream>
 </pkgmetadata>
