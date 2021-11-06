@@ -1,15 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools
-
 DESCRIPTION="OpenSource 2D MMORPG client for Evol Online and The Mana World"
 HOMEPAGE="https://manaplus.org"
 if [[ ${PV} == 9999 ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/ManaPlus/ManaPlus.git"
+	inherit autotools git-r3
+	EGIT_REPO_URI="https://gitlab.com/manaplus/manaplus.git"
 else
 	SRC_URI="http://download.evolonline.org/manaplus/download/${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
@@ -53,23 +51,21 @@ RDEPEND="
 		media-libs/sdl-net
 		media-libs/sdl-ttf
 	)"
-DEPEND="${RDEPEND}"
-BDEPEND="
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
-PATCHES=(
-	"${FILESDIR}/${P}-metainfo.patch"
-)
-
 src_prepare() {
 	default
-	eautoreconf
+
+	if [[ ${PV} == 9999 ]] ; then
+		eautoreconf
+	fi
 }
 
 src_configure() {
 	local myeconfargs=(
-		--localedir="${EPREFIX}"/usr/share/locale
+		--localedir="${EPREFIX}/usr/share/locale"
 		--without-internalsdlgfx
 		$(use_with mumble)
 		$(use_enable nls)
@@ -78,28 +74,26 @@ src_configure() {
 		$(use_with sdl2)
 		$(use_enable test unittests)
 	)
-	CONFIG_SHELL="/bin/bash" econf "${myeconfargs[@]}"
+
+	CONFIG_SHELL="${BROOT}/bin/bash" econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
 
-	local destpath="/usr/share/${PN}"
-	dosym ../../../fonts/dejavu/DejaVuSans-Bold.ttf "${destpath}"/data/fonts/dejavusans-bold.ttf
-	dosym ../../../fonts/dejavu/DejaVuSans.ttf "${destpath}"/data/fonts/dejavusans.ttf
-	dosym ../../../fonts/dejavu/DejaVuSansMono-Bold.ttf "${destpath}"/data/fonts/dejavusansmono-bold.ttf
-	dosym ../../../fonts/dejavu/DejaVuSansMono.ttf "${destpath}"/data/fonts/dejavusansmono.ttf
-	dosym ../../../fonts/dejavu/DejaVuSerifCondensed-Bold.ttf "${destpath}"/data/fonts/dejavuserifcondensed-bold.ttf
-	dosym ../../../fonts/dejavu/DejaVuSerifCondensed.ttf "${destpath}"/data/fonts/dejavuserifcondensed.ttf
-	dosym ../../../fonts/liberation-fonts/LiberationMono-Bold.ttf "${destpath}"/data/fonts/liberationsansmono-bold.ttf
-	dosym ../../../fonts/liberation-fonts/LiberationMono-Regular.ttf "${destpath}"/data/fonts/liberationsansmono.ttf
-	dosym ../../../fonts/liberation-fonts/LiberationSans-Bold.ttf "${destpath}"/data/fonts/liberationsans-bold.ttf
-	dosym ../../../fonts/liberation-fonts/LiberationSans-Regular.ttf "${destpath}"/data/fonts/liberationsans.ttf
-	dosym ../../../fonts/mplus-outline-fonts/mplus-1p-bold.ttf "${destpath}"/data/fonts/mplus-1p-bold.ttf
-	dosym ../../../fonts/mplus-outline-fonts/mplus-1p-regular.ttf "${destpath}"/data/fonts/mplus-1p-regular.ttf
-	dosym ../../../fonts/wqy-microhei/wqy-microhei.ttc "${destpath}"/data/fonts/wqy-microhei.ttf
-}
-
-src_test() {
-	make check
+	local srcpath="../../../fonts"
+	local destpath="/usr/share/${PN}/data/fonts"
+	dosym ${srcpath}/dejavu/DejaVuSans-Bold.ttf "${destpath}"/dejavusans-bold.ttf
+	dosym ${srcpath}/dejavu/DejaVuSans.ttf "${destpath}"/dejavusans.ttf
+	dosym ${srcpath}/dejavu/DejaVuSansMono-Bold.ttf "${destpath}"/dejavusansmono-bold.ttf
+	dosym ${srcpath}/dejavu/DejaVuSansMono.ttf "${destpath}"/dejavusansmono.ttf
+	dosym ${srcpath}/dejavu/DejaVuSerifCondensed-Bold.ttf "${destpath}"/dejavuserifcondensed-bold.ttf
+	dosym ${srcpath}/dejavu/DejaVuSerifCondensed.ttf "${destpath}"/dejavuserifcondensed.ttf
+	dosym ${srcpath}/liberation-fonts/LiberationMono-Bold.ttf "${destpath}"/liberationsansmono-bold.ttf
+	dosym ${srcpath}/liberation-fonts/LiberationMono-Regular.ttf "${destpath}"/liberationsansmono.ttf
+	dosym ${srcpath}/liberation-fonts/LiberationSans-Bold.ttf "${destpath}"/liberationsans-bold.ttf
+	dosym ${srcpath}/liberation-fonts/LiberationSans-Regular.ttf "${destpath}"/liberationsans.ttf
+	dosym ${srcpath}/mplus-outline-fonts/mplus-1p-bold.ttf "${destpath}"/mplus-1p-bold.ttf
+	dosym ${srcpath}/mplus-outline-fonts/mplus-1p-regular.ttf "${destpath}"/mplus-1p-regular.ttf
+	dosym ${srcpath}/wqy-microhei/wqy-microhei.ttc "${destpath}"/wqy-microhei.ttf
 }
