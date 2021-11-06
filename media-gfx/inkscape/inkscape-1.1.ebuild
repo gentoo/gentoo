@@ -110,6 +110,7 @@ pkg_pretend() {
 src_prepare() {
 	# Backport from master
 	eapply "${WORKDIR}/inkscape-1.1-musl/"*.patch
+	eapply "${FILESDIR}"/${P}-poppler-21.11.0.patch
 
 	cmake_src_prepare
 	sed -i "/install.*COPYING/d" CMakeScripts/ConfigCPack.cmake || die
