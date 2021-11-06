@@ -21,6 +21,7 @@ SITEFILE=50scheme48-gentoo.el
 
 src_prepare() {
 	epatch "${FILESDIR}"/CVE-2014-4150.patch
+	sed -i "/# Cygwin/,/fi/d" Makefile.in
 }
 
 src_configure() {
