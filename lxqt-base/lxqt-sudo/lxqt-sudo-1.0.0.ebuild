@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="LXQt GUI frontend for sudo"
-HOMEPAGE="https://lxqt.github.io/"
+HOMEPAGE="https://lxqt-project.org/"
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3

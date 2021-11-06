@@ -8,7 +8,7 @@ MY_PV="$(ver_cut 1-2)"
 inherit cmake optfeature xdg-utils
 
 DESCRIPTION="Qt GUI Tabbed Filemanager"
-HOMEPAGE="https://lxqt.github.io/"
+HOMEPAGE="https://lxqt-project.org/"
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3

@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="LXQt OpenSSH user password prompt tool"
-HOMEPAGE="https://lxqt.github.io/"
+HOMEPAGE="https://lxqt-project.org/"
 
 MY_PV="$(ver_cut 1-2)"
 

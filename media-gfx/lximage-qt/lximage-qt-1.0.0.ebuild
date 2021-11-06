@@ -8,7 +8,7 @@ MY_PV="$(ver_cut 1-2)"
 inherit cmake xdg-utils
 
 DESCRIPTION="Qt Image Viewer"
-HOMEPAGE="https://lxqt.github.io/"
+HOMEPAGE="https://lxqt-project.org/"
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3

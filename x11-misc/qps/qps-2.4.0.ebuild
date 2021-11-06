@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake xdg-utils
 
 DESCRIPTION="Qt GUI Process Manager"
-HOMEPAGE="https://lxqt.github.io/"
+HOMEPAGE="https://lxqt-project.org/"
 SRC_URI="https://github.com/lxqt/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2 GPL-2+ LGPL-2.1+ QPL-1.0"
