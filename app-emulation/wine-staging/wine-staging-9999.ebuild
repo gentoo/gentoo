@@ -48,15 +48,13 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="${MY_PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +faudio +fontconfig +gcrypt +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap mingw +mono mp3 netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl staging test themes +threads +truetype udev +udisks +unwind usb v4l vaapi vkd3d vulkan +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gssapi gstreamer kerberos kernel_FreeBSD ldap mingw +mono mp3 netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl staging test +threads +truetype udev +udisks +unwind usb v4l vkd3d vulkan +X +xcomposite xinerama"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
 	osmesa? ( opengl )
 	pipelight? ( staging )
 	test? ( abi_x86_32 )
-	themes? ( staging )
-	vaapi? ( staging )
 	vkd3d? ( vulkan )" # osmesa-opengl #286560 # X-truetype #551124
 
 # FIXME: the test suite is unsuitable for us; many tests require net access
@@ -75,21 +73,18 @@ COMMON_DEPEND="
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 	capi? ( net-libs/libcapi[${MULTILIB_USEDEP}] )
 	cups? ( net-print/cups:=[${MULTILIB_USEDEP}] )
-	faudio? ( app-emulation/faudio:=[${MULTILIB_USEDEP}] )
 	fontconfig? ( media-libs/fontconfig:=[${MULTILIB_USEDEP}] )
-	gcrypt? ( dev-libs/libgcrypt:=[${MULTILIB_USEDEP}] )
-	gphoto2? ( media-libs/libgphoto2:=[${MULTILIB_USEDEP}] )
-	gsm? ( media-sound/gsm:=[${MULTILIB_USEDEP}] )
+	gphoto2? (
+		media-libs/libgphoto2:=[${MULTILIB_USEDEP}]
+		virtual/jpeg:0=[${MULTILIB_USEDEP}]
+	)
 	gssapi? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	gstreamer? (
 		media-libs/gstreamer:1.0[${MULTILIB_USEDEP}]
 		media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}]
 	)
-	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
 	kerberos? ( virtual/krb5:0=[${MULTILIB_USEDEP}] )
-	lcms? ( media-libs/lcms:2=[${MULTILIB_USEDEP}] )
 	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
-	mp3? ( >=media-sound/mpg123-1.5.0[${MULTILIB_USEDEP}] )
 	netapi? ( net-fs/samba[netapi(+),${MULTILIB_USEDEP}] )
 	nls? ( sys-devel/gettext[${MULTILIB_USEDEP}] )
 	odbc? ( dev-db/unixODBC:=[${MULTILIB_USEDEP}] )
@@ -100,32 +95,21 @@ COMMON_DEPEND="
 	)
 	osmesa? ( >=media-libs/mesa-13[osmesa,${MULTILIB_USEDEP}] )
 	pcap? ( net-libs/libpcap[${MULTILIB_USEDEP}] )
-	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
 	scanner? ( media-gfx/sane-backends:=[${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2:=[haptic,joystick,${MULTILIB_USEDEP}] )
 	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
 	staging? ( sys-apps/attr[${MULTILIB_USEDEP}] )
-	themes? (
-		dev-libs/glib:2[${MULTILIB_USEDEP}]
-		x11-libs/cairo[${MULTILIB_USEDEP}]
-		x11-libs/gtk+:3[${MULTILIB_USEDEP}]
-	)
 	truetype? ( >=media-libs/freetype-2.0.0[${MULTILIB_USEDEP}] )
 	udev? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
 	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )
 	usb? ( virtual/libusb:1[${MULTILIB_USEDEP}]  )
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
-	vaapi? ( x11-libs/libva[X,${MULTILIB_USEDEP}] )
 	vkd3d? ( >=app-emulation/vkd3d-1.2[${MULTILIB_USEDEP}] )
 	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
 	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
-	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
-	xml? (
-		dev-libs/libxml2[${MULTILIB_USEDEP}]
-		dev-libs/libxslt[${MULTILIB_USEDEP}]
-	)"
+	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )"
 
 RDEPEND="${COMMON_DEPEND}
 	app-emulation/wine-desktop-common
@@ -472,26 +456,20 @@ multilib_src_configure() {
 		--sysconfdir="${EPREFIX}/etc/wine"
 		$(use_with alsa)
 		$(use_with capi)
-		$(use_with lcms cms)
 		$(use_with cups)
 		$(use_with udisks dbus)
-		$(use_with faudio)
 		$(use_with fontconfig)
 		$(use_with ssl gnutls)
 		$(use_enable gecko mshtml)
-		$(use_with gcrypt)
 		$(use_with gphoto2 gphoto)
-		$(use_with gsm)
 		$(use_with gssapi)
 		$(use_with gstreamer)
 		--without-hal
-		$(use_with jpeg)
 		$(use_with kerberos krb5)
 		$(use_with ldap)
 		# TODO: Will bug 685172 still need special handling?
 		$(use_with mingw)
 		$(use_enable mono mscoree)
-		$(use_with mp3 mpg123)
 		$(use_with netapi)
 		$(use_with nls gettext)
 		$(use_with openal)
@@ -500,7 +478,6 @@ multilib_src_configure() {
 		$(use_with osmesa)
 		$(use_with oss)
 		$(use_with pcap)
-		$(use_with png)
 		$(use_with pulseaudio pulse)
 		$(use_with threads pthread)
 		$(use_with scanner sane)
@@ -517,14 +494,10 @@ multilib_src_configure() {
 		$(use_with X xfixes)
 		$(use_with xcomposite)
 		$(use_with xinerama)
-		$(use_with xml)
-		$(use_with xml xslt)
 	)
 
 	use staging && myconf+=(
 		--with-xattr
-		$(use_with themes gtk3)
-		$(use_with vaapi va)
 	)
 
 	local PKG_CONFIG
