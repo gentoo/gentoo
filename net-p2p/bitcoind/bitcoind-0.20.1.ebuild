@@ -84,6 +84,8 @@ src_prepare() {
 		eapply "${knots_patchdir}/${KNOTS_P}.ts.patch"
 	fi
 
+	eapply "${FILESDIR}/${P}-boost-1.77-compat.patch"
+
 	default
 
 	echo '#!/bin/true' >share/genbuild.sh || die
