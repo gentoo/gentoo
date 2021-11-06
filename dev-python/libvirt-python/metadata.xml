@@ -10,6 +10,7 @@
 		<name>Gentoo Virtualization Project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="gitlab">libvirt/libvirt-python</remote-id>
 		<remote-id type="github">libvirt/libvirt-python</remote-id>
 		<remote-id type="pypi">libvirt-python</remote-id>
 	</upstream>
