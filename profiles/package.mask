@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-11-06)
+# Dead upstream, multiple open bugs, no maintainer,
+# uses EAPI 5, no revdeps.
+# Removal on 2021-12-06. Bug #819750.
+app-pda/gnupod
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-06)
 # Unmaintaned, uses EAPI 5, no revdeps.
 # Removal on 2021-12-06. Bug #819186.
 sys-fs/ctmg
