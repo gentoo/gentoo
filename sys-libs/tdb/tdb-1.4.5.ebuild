@@ -21,7 +21,8 @@ RESTRICT="test"
 RDEPEND="
 	!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	virtual/libcrypt"
 BDEPEND="${PYTHON_DEPS}
 	app-text/docbook-xml-dtd:4.2"
 
