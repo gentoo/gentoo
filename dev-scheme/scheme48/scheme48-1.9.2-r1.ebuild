@@ -6,8 +6,8 @@ EAPI=5
 inherit elisp-common epatch flag-o-matic
 
 DESCRIPTION="Scheme48 is an implementation of the Scheme Programming Language"
-HOMEPAGE="http://www.s48.org/"
-SRC_URI="http://www.s48.org/${PV}/${P}.tgz"
+HOMEPAGE="https://www.s48.org/"
+SRC_URI="https://www.s48.org/${PV}/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
