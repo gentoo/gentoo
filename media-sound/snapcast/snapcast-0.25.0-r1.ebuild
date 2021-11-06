@@ -39,7 +39,10 @@ DEPEND="
 	>=dev-cpp/popl-1.2.0
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-0.20.0-gcc-11.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.20.0-gcc-11.patch
+	"${FILESDIR}"/${P}-cxx17.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
