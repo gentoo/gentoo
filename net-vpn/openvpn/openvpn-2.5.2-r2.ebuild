@@ -72,6 +72,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
 	eautoreconf
 }
 
@@ -83,6 +84,7 @@ src_configure() {
 			$(use_enable pkcs11)
 		)
 	fi
+
 	myeconfargs+=(
 		$(use_enable inotify async-push)
 		--with-crypto-library=$(usex mbedtls mbedtls openssl)
@@ -94,6 +96,7 @@ src_configure() {
 		$(use_enable down-root plugin-down-root)
 		$(use_enable systemd)
 	)
+
 	SYSTEMD_UNIT_DIR=$(systemd_get_systemunitdir) \
 		TMPFILES_DIR="/usr/lib/tmpfiles.d" \
 		IPROUTE=$(usex iproute2 '/bin/ip' '') \
@@ -103,9 +106,12 @@ src_configure() {
 src_test() {
 	local -x RUN_SUDO=false
 
-	make check || die "top-level tests failed"
+	elog "Running top-level tests"
+	emake check
+
 	pushd tests/unit_tests &>/dev/null || die
-	make check || die "unit tests failed"
+	elog "Running unit tests"
+	emake check
 	popd &>/dev/null || die
 }
 
@@ -142,12 +148,12 @@ src_install() {
 pkg_postinst() {
 	tmpfiles_process openvpn.conf
 
-	if use x64-macos; then
+	if use x64-macos ; then
 		elog "You might want to install tuntaposx for TAP interface support:"
 		elog "http://tuntaposx.sourceforge.net"
 	fi
 
-	if systemd_is_booted ||  has_version sys-apps/systemd; then
+	if systemd_is_booted || has_version sys-apps/systemd ; then
 		elog "In order to use OpenVPN with systemd please use the correct systemd service file."
 		elog  ""
 		elog "server:"

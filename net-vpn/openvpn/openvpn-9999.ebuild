@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://build.openvpn.net/downloads/releases/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2"
@@ -72,6 +72,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
 	eautoreconf
 }
 
@@ -83,6 +84,7 @@ src_configure() {
 			$(use_enable pkcs11)
 		)
 	fi
+
 	myeconfargs+=(
 		$(use_enable inotify async-push)
 		--with-crypto-library=$(usex mbedtls mbedtls openssl)
@@ -94,6 +96,7 @@ src_configure() {
 		$(use_enable down-root plugin-down-root)
 		$(use_enable systemd)
 	)
+
 	SYSTEMD_UNIT_DIR=$(systemd_get_systemunitdir) \
 		TMPFILES_DIR="/usr/lib/tmpfiles.d" \
 		IPROUTE=$(usex iproute2 '/bin/ip' '') \
@@ -103,9 +106,12 @@ src_configure() {
 src_test() {
 	local -x RUN_SUDO=false
 
-	make check || die "top-level tests failed"
+	elog "Running top-level tests"
+	emake check
+
 	pushd tests/unit_tests &>/dev/null || die
-	make check || die "unit tests failed"
+	elog "Running unit tests"
+	emake check
 	popd &>/dev/null || die
 }
 
@@ -129,7 +135,8 @@ src_install() {
 
 	# install examples, controlled by the respective useflag
 	if use examples ; then
-		# dodoc does not supportly support directory traversal, #15193
+		# (is the below comment relevant anymore?)
+		## dodoc does not supportly support directory traversal, #15193
 		docinto examples
 		dodoc -r sample contrib
 	fi
