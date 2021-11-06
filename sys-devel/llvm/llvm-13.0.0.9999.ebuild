@@ -19,7 +19,7 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA BSD public-domain rc"
 SLOT="$(ver_cut 1)"
 KEYWORDS=""
-IUSE="debug doc exegesis gold libedit +libffi ncurses test xar xml z3
+IUSE="debug doc exegesis +gold libedit +libffi ncurses test xar xml z3
 	kernel_Darwin"
 RESTRICT="!test? ( test )"
 
