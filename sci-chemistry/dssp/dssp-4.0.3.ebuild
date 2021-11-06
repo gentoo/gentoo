@@ -22,7 +22,7 @@ DEPEND=""
 RDEPEND="${BDEPEND}"
 
 pkg_postinst() {
-	if has_version sci-chemistry/gromacs; then
+	if has_version "<=sci-chemistry/gromacs-2022"; then
 		ewarn "DSSP > 3.0.x is not compatible with gmx do_dssp:"
 		ewarn "https://gitlab.com/gromacs/gromacs/-/issues/4129"
 		ewarn
