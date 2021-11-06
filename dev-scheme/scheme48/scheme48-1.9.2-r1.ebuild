@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit elisp-common epatch flag-o-matic
+inherit elisp-common epatch flag-o-matic toolchain-funcs
 
 DESCRIPTION="Scheme48 is an implementation of the Scheme Programming Language"
 HOMEPAGE="https://www.s48.org/"
@@ -21,7 +21,11 @@ SITEFILE=50scheme48-gentoo.el
 
 src_prepare() {
 	epatch "${FILESDIR}"/CVE-2014-4150.patch
-	sed -i "/# Cygwin/,/fi/d" Makefile.in
+	sed -i \
+		-e "/# Cygwin/,/fi/d" \
+		-e "s/\tar /\t$(tc-getAR) /" \
+		-e "s/\tranlib/\t$(tc-getRANLIB) /" \
+		Makefile.in
 }
 
 src_configure() {
