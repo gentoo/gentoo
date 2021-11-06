@@ -7,6 +7,9 @@ inherit multilib-minimal
 
 # Upstream distribute patches before a new release is made
 # See https://www.mpfr.org/mpfr-current/#bugs for the latest version (and patches)
+
+# Check whether any patches touch e.g. manuals!
+# https://archives.gentoo.org/gentoo-releng-autobuilds/message/c2dd39fc4ebc849db6bb0f551739e2ed
 MY_PV=$(ver_cut 1-3)
 MY_PATCH=$(ver_cut 5-)
 MY_P=${PN}-${MY_PV}
@@ -44,6 +47,10 @@ PATCHES=()
 if [[ ${PV} == *_p* ]] ; then
 	# Apply the upstream patches released out of band
 	PATCHES+=( "${DISTDIR}"/ )
+
+	# One-off partial revert of 4.1.0_p13's patch10
+	# Won't be needed on next release.
+	PATCHES+=( "${FILESDIR}"/${P}-revert-doc-changes-patch10.patch )
 fi
 
 HTML_DOCS=( doc/FAQ.html )
@@ -57,7 +64,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	rm "${ED}"/usr/share/doc/"${P}"/COPYING*
+	rm "${ED}"/usr/share/doc/${PF}/COPYING* || die
 
 	if ! use static-libs ; then
 		find "${ED}"/usr -name '*.la' -delete || die
