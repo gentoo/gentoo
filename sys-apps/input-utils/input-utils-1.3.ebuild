@@ -17,7 +17,7 @@ KEYWORDS="amd64 ~arm ~arm64 ppc ~riscv x86"
 S="${WORKDIR}/${MY_P}"
 
 src_install() {
-	make install bindir="${D}"/usr/bin mandir="${D}"/usr/share/man STRIP="" || die "make install failed"
+	emake install bindir="${D}"/usr/bin mandir="${D}"/usr/share/man STRIP=""
 	dodoc lircd.conf
 	dodoc README
 }
