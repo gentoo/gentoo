@@ -1,8 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit epatch gnustep-2
+EAPI=7
+inherit gnustep-2
 
 MY_P=${P/g/G}
 DESCRIPTION="a simple code editor for GNUstep"
@@ -21,15 +21,13 @@ RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-bundle_makefile.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-bundle_makefile.patch )
 
 src_compile() {
 	gnustep-base_src_compile
 	if use projectcenter;
 	then
-		cd Bundle/Gemas || die "compile cd failed"
+		cd Bundle/Gemas || die
 		egnustep_make
 	fi
 }
@@ -38,7 +36,7 @@ src_install() {
 	gnustep-base_src_install
 	if use projectcenter;
 	then
-		cd Bundle/Gemas || die "install cd failed"
+		cd Bundle/Gemas || die
 		egnustep_install
 	fi
 }
