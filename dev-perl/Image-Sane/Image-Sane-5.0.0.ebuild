@@ -28,6 +28,7 @@ BDEPEND="${RDEPEND}
 	test? (
 		dev-perl/Test-Requires
 		dev-perl/Try-Tiny
+		virtual/imagemagick-tools
 	)
 "
 
