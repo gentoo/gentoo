@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs llvm linux-info cmake
+inherit llvm linux-info cmake
 
 DESCRIPTION="High-level tracing language for eBPF"
 HOMEPAGE="https://github.com/iovisor/bpftrace"
@@ -67,6 +67,7 @@ pkg_setup() {
 src_configure() {
 	local -a mycmakeargs=(
 		-DSTATIC_LINKING:BOOL=OFF
+		-DBUILD_SHARED_LIBS:=OFF
 		-DBUILD_TESTING:BOOL=OFF
 		-DBUILD_FUZZ:BOOL=$(usex fuzzing)
 		-DENABLE_MAN:BOOL=OFF
@@ -77,5 +78,6 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
+	dostrip -x /usr/bin/bpftrace
 	doman man/man8/*.?
 }
