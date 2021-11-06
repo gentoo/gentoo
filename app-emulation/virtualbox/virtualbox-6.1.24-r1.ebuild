@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ SRC_URI="https://download.virtualbox.org/virtualbox/${DIR_PV:-${MY_PV}}/${MY_P}.
 LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="alsa debug doc dtrace headless java lvm +opus pam pax-kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
 CDEPEND="
@@ -55,6 +55,7 @@ CDEPEND="
 		)
 	)
 	dev-libs/openssl:0=
+	virtual/libcrypt:=
 	lvm? ( sys-fs/lvm2 )
 	opus? ( media-libs/opus )
 	udev? ( >=virtual/udev-171 )
@@ -210,8 +211,6 @@ src_prepare() {
 	if use pax-kernel ; then
 		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
 	fi
-
-	eapply "${FILESDIR}/${P}-configure-include-qt5-path.patch" #805365
 
 	eapply "${WORKDIR}/patches"
 

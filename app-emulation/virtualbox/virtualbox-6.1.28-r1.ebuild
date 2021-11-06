@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit desktop flag-o-matic java-pkg-opt-2 linux-info pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
 
 MY_PN="VirtualBox"
@@ -20,10 +20,10 @@ SRC_URI="https://download.virtualbox.org/virtualbox/${DIR_PV:-${MY_PV}}/${MY_P}.
 LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="alsa debug doc dtrace headless java lvm +opus pam pax-kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
-CDEPEND="
+COMMON_DEPEND="
 	${PYTHON_DEPS}
 	!app-emulation/virtualbox-bin
 	acct-group/vboxusers
@@ -55,13 +55,14 @@ CDEPEND="
 		)
 	)
 	dev-libs/openssl:0=
+	virtual/libcrypt:=
 	lvm? ( sys-fs/lvm2 )
 	opus? ( media-libs/opus )
 	udev? ( >=virtual/udev-171 )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )
 "
 DEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	!headless? (
 		x11-libs/libXinerama
@@ -93,7 +94,7 @@ BDEPEND="
 	java? ( >=virtual/jdk-1.8 )
 "
 RDEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 	java? ( >=virtual/jre-1.6 )
 "
 
@@ -210,6 +211,8 @@ src_prepare() {
 	if use pax-kernel ; then
 		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
 	fi
+
+	eapply "${FILESDIR}/${PN}-6.1.26-configure-include-qt5-path.patch" #805365
 
 	eapply "${WORKDIR}/patches"
 
