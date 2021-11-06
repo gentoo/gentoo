@@ -82,14 +82,14 @@ src_prepare() {
 	# Test need download data from https://sparse.tamu.edu (or other mirror site), check MD5, unpack and convert them into csr format
 	# This process is handled default by ${S}/cmake/ClientMatrices.cmake, but should be the responsibility of portage.
 	if use test; then
-		mkdir -p "${BUILD_DIR}"/matrices
+		mkdir -p "${BUILD_DIR}"/clients/matrices
 		# compile and use the mtx2csr converter. Do not use any optimization flags, because it causes error!
 		ebegin "$(tc-getCXX) deps/convert.cpp -o deps/convert"
 		$(tc-getCXX) deps/convert.cpp -o deps/convert
 		eend $?
 		find "${WORKDIR}" -maxdepth 2 -regextype egrep -regex ".*/(.*)/\1\.mtx" -print0 |
 			while IFS= read -r -d '' mtxfile; do
-				destination=${BUILD_DIR}/matrices/$(basename -s '.mtx' ${mtxfile}).csr
+				destination=${BUILD_DIR}/clients/matrices/$(basename -s '.mtx' ${mtxfile}).csr
 				ebegin "Converting ${mtxfile} to ${destination}"
 				deps/convert ${mtxfile} ${destination}
 				eend $?
