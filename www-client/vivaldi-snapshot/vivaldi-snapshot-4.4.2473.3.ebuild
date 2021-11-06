@@ -110,31 +110,27 @@ IUSE="proprietary-codecs widevine"
 RESTRICT="bindist mirror"
 
 RDEPEND="
+	app-accessibility/at-spi2-atk:2
+	app-accessibility/at-spi2-core:2
+	dev-libs/atk
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
 	media-libs/alsa-lib
-	media-libs/fontconfig
-	media-libs/freetype
-	media-libs/speex
+	media-libs/mesa[gbm]
 	net-print/cups
 	sys-apps/dbus
-	sys-libs/libcap
 	x11-libs/cairo
-	x11-libs/gdk-pixbuf
-	x11-libs/gtk+:3
+	x11-libs/libdrm
 	x11-libs/libX11
-	x11-libs/libXScrnSaver
+	x11-libs/libxcb
 	x11-libs/libXcomposite
-	x11-libs/libXcursor
 	x11-libs/libXdamage
 	x11-libs/libXext
 	x11-libs/libXfixes
-	x11-libs/libXi
+	x11-libs/libxkbcommon
 	x11-libs/libXrandr
-	x11-libs/libXrender
-	x11-libs/libXtst
 	x11-libs/pango[X]
 	proprietary-codecs? ( media-video/ffmpeg-chromium:${CHROMIUM_VERSION} )
 	widevine? ( www-plugins/chrome-binary-plugins )
