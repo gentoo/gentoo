@@ -7,6 +7,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">hukkin/tomli-w</remote-id>
-		<remote-id type="pypi">tomli_w</remote-id>
+		<remote-id type="pypi">tomli-w</remote-id>
 	</upstream>
 </pkgmetadata>
