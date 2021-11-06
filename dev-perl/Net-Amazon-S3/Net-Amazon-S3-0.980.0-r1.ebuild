@@ -33,8 +33,10 @@ RDEPEND="
 	>=dev-perl/MooseX-Types-DateTime-MoreCoercions-0.70.0
 	dev-perl/Path-Class
 	dev-perl/Regexp-Common
+	dev-perl/Safe-Isa
 	dev-perl/Term-Encoding
 	dev-perl/Term-ProgressBar-Simple
+	virtual/perl-Time-Piece
 	dev-perl/URI
 	dev-perl/VM-EC2-Security-CredentialCache
 	dev-perl/XML-LibXML
