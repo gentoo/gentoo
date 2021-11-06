@@ -8,7 +8,6 @@ inherit dune
 DESCRIPTION="opam state libraries"
 HOMEPAGE="https://opam.ocaml.org/ https://github.com/ocaml/opam"
 SRC_URI="https://github.com/ocaml/opam/archive/${PV/_/-}.tar.gz -> opam-${PV}.tar.gz"
-SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/dev-ml/opam/opam-2.1.0-dose3-6.patch.xz"
 S="${WORKDIR}/opam-${PV/_/-}"
 
 LICENSE="LGPL-2.1"
@@ -24,7 +23,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${WORKDIR}"/opam-2.1.0-dose3-6.patch )
+# Cherry-picked from https://deb.debian.org/debian/pool/main/o/opam/opam_2.0.8-1.debian.tar.xz
+PATCHES=( "${FILESDIR}/debian-Port-to-Dose3-6.0.1.patch" )
 
 src_prepare() {
 	default
