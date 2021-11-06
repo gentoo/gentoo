@@ -13,7 +13,7 @@ KEYWORDS=""
 IUSE=""
 PROPERTIES="live"
 
-RDEPEND="sys-devel/llvm:${PV}[gold]
+RDEPEND="sys-devel/llvm:${PV}[binutils-plugin]
 	!sys-devel/llvm:0"
 
 S=${WORKDIR}

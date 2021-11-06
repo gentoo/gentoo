@@ -11,7 +11,11 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc64 ~riscv ~x86 ~amd64-linux"
 
-RDEPEND="sys-devel/llvm:${PV}[gold]
+RDEPEND="
+	|| (
+		sys-devel/llvm:${PV}[binutils-plugin(-)]
+		sys-devel/llvm:${PV}[gold(-)]
+	)
 	!sys-devel/llvm:0"
 
 S=${WORKDIR}
