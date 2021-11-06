@@ -38,6 +38,11 @@ src_install() {
 		mandir="${ED}/usr/share/man" \
 		install
 
+	# installs gz compressed manpage, https://bugs.gentoo.org/729140
+	rm "${ED}/usr/share/man/man1/lsb_release.1.gz" || die
+	gunzip lsb_release.1.gz
+	doman lsb_release.1
+
 	dodir /etc
 	cat > "${ED}/etc/lsb-release" <<- EOF || die
 		DISTRIB_ID="Gentoo"
