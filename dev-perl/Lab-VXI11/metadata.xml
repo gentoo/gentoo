@@ -13,9 +13,4 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
-  <use>
-    <flag name="libtirpc">
-      Build against <pkg>net-libs/libtirpc</pkg> for RPC support
-    </flag>
-  </use>
 </pkgmetadata>
