@@ -16,6 +16,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~pp
 IUSE="doc openmp test"
 RESTRICT="!test? ( test )"
 
+PATCHES=( "${FILESDIR}/muParser-2.3-export-cmake.patch" )
+
 src_configure() {
 	mycmakeargs=(
 		-DENABLE_OPENMP=$(usex openmp)
