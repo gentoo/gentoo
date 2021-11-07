@@ -32,14 +32,6 @@ sys-auth/libnss-nis
 app-emulation/ski
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
-# In ::gentoo dev-libs/elfutils needs an upstream port to
-# musl: #602126, #701478
-# - https://sourceware.org/PR21002
-# - https://sourceware.org/PR21008
-# - https://sourceware.org/PR21010
-dev-libs/elfutils
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
 # Linux debugger needs a port to musl.
 app-emulation/dosemu
 
