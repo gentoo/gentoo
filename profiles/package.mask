@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-07)
+# Libraries with no other consumers. Removal in 30 days.
+net-p2p/vuze
+net-p2p/vuze-coreplugins
+
 # Jakov Smolić <jsmolic@gentoo.org> (2021-11-07)
 # Fails to build with glibc-2.34, dead upstream.
 # Only revdep (media-video/clive) is outdated
