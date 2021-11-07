@@ -14,7 +14,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND="
+BDEPEND="
 	>=dev-perl/Module-Build-0.380.0
 	test? ( dev-perl/Test-NoWarnings )
 "
