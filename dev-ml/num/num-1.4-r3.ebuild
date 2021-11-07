@@ -16,7 +16,8 @@ KEYWORDS="amd64 arm arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-
 IUSE="+ocamlopt"
 
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
-DEPEND="dev-ml/findlib:="
+BDEPEND="${RDEPEND}"
+DEPEND="dev-ml/findlib:=[ocamlopt?]"
 
 src_compile() {
 	emake CFLAGS="${CFLAGS}" NATDYNLINK="$(usex ocamlopt true false)"
