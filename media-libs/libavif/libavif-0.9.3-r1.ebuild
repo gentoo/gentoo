@@ -11,7 +11,8 @@ HOMEPAGE="https://github.com/AOMediaCodec/libavif"
 SRC_URI="https://github.com/AOMediaCodec/libavif/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
-SLOT="0"
+# See bug #822336 re subslot
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="+aom dav1d examples extras gdk-pixbuf rav1e svt-av1"
 

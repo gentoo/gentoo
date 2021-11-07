@@ -11,7 +11,8 @@ HOMEPAGE="https://github.com/AOMediaCodec/libavif"
 EGIT_REPO_URI="https://github.com/AOMediaCodec/libavif.git"
 
 LICENSE="BSD-2"
-SLOT="0"
+# See bug #822336 re subslot
+SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="+aom dav1d examples extras gdk-pixbuf rav1e svt-av1"
 
