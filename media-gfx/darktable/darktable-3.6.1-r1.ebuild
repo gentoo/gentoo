@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-3 )
 
@@ -18,15 +18,15 @@ if [[ ${PV} == *9999 ]]; then
 
 	LANGS=" af ca cs da de el es fi fr gl he hu it ja nb nl pl pt-BR pt-PT ro ru sk sl sq sv th uk zh-CN zh-TW"
 else
-	DOC_PV="3.4.0"
+	DOC_PV="3.6"
 	MY_PV="${PV/_/}"
 	MY_P="${P/_/.}"
 
 	SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${MY_PV}/${MY_P}.tar.xz
-		doc? ( https://github.com/darktable-org/${PN}/releases/download/release-${DOC_PV}/${PN}-usermanual.pdf -> ${PN}-usermanual-${DOC_PV}.pdf )"
+		doc? ( https://docs.darktable.org/usermanual/${DOC_PV}/${PN}_user_manual.pdf -> ${PN}-usermanual-${DOC_PV}.pdf )"
 
-	KEYWORDS="amd64 arm64 -x86"
-	LANGS=" af cs de es fi fr he hu it pl pt-BR ru sk sl"
+	KEYWORDS="~amd64 ~arm64 -x86"
+	LANGS=" af de eo es fr he hu it nl pt-BR ru sl uk"
 fi
 
 IUSE="avif colord cups cpu_flags_x86_sse3 doc flickr geolocation gmic gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
@@ -58,7 +58,7 @@ DEPEND="dev-db/sqlite:3
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.22:3
 	x11-libs/pango
-	avif? ( >=media-libs/libavif-0.8.2 )
+	avif? ( >=media-libs/libavif-0.8.2:= )
 	colord? ( x11-libs/colord-gtk:0= )
 	cups? ( net-print/cups )
 	flickr? ( media-libs/flickcurl )

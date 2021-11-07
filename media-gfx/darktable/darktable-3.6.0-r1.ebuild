@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 LUA_COMPAT=( lua5-3 )
 
@@ -25,7 +25,7 @@ else
 	SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${MY_PV}/${MY_P}.tar.xz
 		doc? ( https://docs.darktable.org/usermanual/${DOC_PV}/${PN}_user_manual.pdf -> ${PN}-usermanual-${DOC_PV}.pdf )"
 
-	KEYWORDS="~amd64 ~arm64 -x86"
+	KEYWORDS="amd64 arm64 -x86"
 	LANGS=" af de eo es fr he hu it nl pt-BR ru sl uk"
 fi
 
@@ -58,7 +58,7 @@ DEPEND="dev-db/sqlite:3
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.22:3
 	x11-libs/pango
-	avif? ( >=media-libs/libavif-0.8.2 )
+	avif? ( >=media-libs/libavif-0.8.2:= )
 	colord? ( x11-libs/colord-gtk:0= )
 	cups? ( net-print/cups )
 	flickr? ( media-libs/flickcurl )
