@@ -36,7 +36,10 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}"	econf \
+	# bug #622662
+	tc-ld-disable-gold
+
+	ECONF_SOURCE="${S}" econf \
 		--disable-static \
 		--without-debug \
 		--disable-gtk \
