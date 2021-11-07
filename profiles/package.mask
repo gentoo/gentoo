@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-07)
+# depends on deprecated jdk / jre, bug #787449
+# stuck with EAPI 5, latest release in 2005
+# Removal in 30 days.
+net-analyzer/neti
+
 # Jakov Smolić <jsmolic@gentoo.org> (2021-11-07)
 # Fails to build with glibc-2.34, dead upstream.
 # Only revdep (media-video/clive) is outdated
