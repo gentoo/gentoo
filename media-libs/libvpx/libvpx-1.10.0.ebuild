@@ -67,7 +67,7 @@ multilib_src_configure() {
 		--enable-vp8
 		--enable-vp9
 		--enable-shared
-		--extra-cflags="${CFLAGS}"
+		--disable-optimizations
 		$(use_enable postproc)
 		$(use_enable static-libs static)
 		$(use_enable test unit-tests)
