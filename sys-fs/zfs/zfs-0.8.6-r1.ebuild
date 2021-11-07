@@ -46,7 +46,7 @@ BDEPEND="virtual/awk
 "
 
 RDEPEND="${DEPEND}
-	!kernel-builtin? ( ~sys-fs/zfs-kmod-${PV}:=[dist-kernel?] )
+	!kernel-builtin? ( ~sys-fs/zfs-kmod-${PV}:= )
 	!prefix? ( virtual/udev )
 	sys-fs/udev-init-scripts
 	virtual/awk
@@ -66,6 +66,10 @@ RDEPEND="${DEPEND}
 		sys-process/procps
 	)
 "
+
+# PDEPEND in this form is needed to trick portage suggest
+# enabling dist-kernel if only 1 package have it set, without suggesting to disable
+PDEPEND="dist-kernel? ( ~sys-fs/zfs-kmod-${PV}[dist-kernel] )"
 
 REQUIRED_USE="
 	!minimal? ( ${PYTHON_REQUIRED_USE} )
