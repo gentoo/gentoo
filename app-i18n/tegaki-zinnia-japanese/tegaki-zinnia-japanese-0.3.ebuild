@@ -7,7 +7,7 @@ DESCRIPTION="Handwriting model data of Japanese"
 HOMEPAGE="https://tegaki.github.io/"
 SRC_URI="https://github.com/tegaki/tegaki/releases/download/v${PV}/${P}.zip"
 
-LICENSE="LGPL-2"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE=""
