@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs llvm linux-info cmake
+inherit llvm linux-info cmake
 
 DESCRIPTION="High-level tracing language for eBPF"
 HOMEPAGE="https://github.com/iovisor/bpftrace"
