@@ -25,7 +25,7 @@ S="${WORKDIR}"
 
 LICENSE="NVIDIA-r2 GPL-2 MIT ZLIB"
 SLOT="0/${PV%%.*}"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE="+X +driver static-libs +tools wayland"
 
 COMMON_DEPEND="
