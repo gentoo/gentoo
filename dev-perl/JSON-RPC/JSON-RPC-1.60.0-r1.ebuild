@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=DMAKI
 DIST_VERSION=1.06
@@ -11,13 +11,8 @@ DESCRIPTION="JSON RPC 2.0 Server Implementation"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
-IUSE="test minimal"
-RESTRICT="!test? ( test )"
+IUSE="minimal"
 
-# Plack::Request,Plack::Test -> Plack
-# CPAN::Meta::Prereqs -> perl-CPAN-Meta
-# HTTP::Request,HTTP::Response -> HTTP-Message
-# LWP::UserAgent -> libwww-perl
 RDEPEND="
 	!minimal? ( dev-perl/JSON-XS )
 	dev-perl/CGI
@@ -30,7 +25,7 @@ RDEPEND="
 	dev-perl/Try-Tiny
 	virtual/perl-parent
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.380.0
 	virtual/perl-CPAN-Meta
 	test? (
