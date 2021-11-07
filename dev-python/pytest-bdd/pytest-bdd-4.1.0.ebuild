@@ -26,7 +26,9 @@ distutils_enable_tests --install pytest
 
 DOCS=( AUTHORS.rst CHANGES.rst README.rst )
 
-EPYTEST_DESELECT=(
-	# result varies depending on current output terminal width
-	tests/feature/test_gherkin_terminal_reporter.py::test_verbose_mode_should_preserve_displaying_regular_tests_as_usual
-)
+src_test() {
+	# terminal_reporter test needs exact wrapping
+	local -x COLUMNS=80
+
+	distutils-r1_src_test
+}
