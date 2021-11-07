@@ -75,7 +75,12 @@ src_configure() {
 
 src_install() {
 	default
-	use mount-ntfs && dosym mount.ntfs-3g /sbin/mount.ntfs
+	if use suid; then
+		fperms u+s /usr/bin/ntfs-3g
+	fi
+	if use mount-ntfs; then
+		dosym mount.ntfs-3g /sbin/mount.ntfs
+	fi
 	find "${ED}" -name '*.la' -type f -delete || die
 	# https://bugs.gentoo.org/760780
 	keepdir "/usr/$(get_libdir)/ntfs-3g"
