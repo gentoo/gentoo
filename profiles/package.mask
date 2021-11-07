@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-13)
+# depends on deprecated jdk / jre, bug #787449
+# stuck with EAPI 5, latest release in 2005
+# Removal in 30 days.
+net-analyzer/neti
+
 # John Helmert III <ajak@gentoo.org> (2021-11-13)
 # Unmaintained in Gentoo, open security bug, many unfixed otther
 # bugs. Removal on 2021-12-13, bug #764719.
