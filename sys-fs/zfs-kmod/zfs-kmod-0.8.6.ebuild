@@ -16,6 +16,10 @@ else
 	KEYWORDS="amd64 arm64 ppc64"
 	S="${WORKDIR}/zfs-${PV}"
 	ZFS_KERNEL_COMPAT="5.9"
+
+	# increments minor eg 5.14 -> 5.15, and still supports override.
+	ZFS_KERNEL_DEP="${ZFS_KERNEL_COMPAT_OVERRIDE:-${ZFS_KERNEL_COMPAT}}"
+	ZFS_KERNEL_DEP="${ZFS_KERNEL_DEP%%.*}.$(( ${ZFS_KERNEL_DEP##*.} + 1))"
 fi
 
 LICENSE="CDDL debug? ( GPL-2+ )"
@@ -31,6 +35,7 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	dev-lang/perl
 	virtual/awk
+	dist-kernel? ( <virtual/dist-kernel-${ZFS_KERNEL_DEP}:= )
 "
 
 # PDEPEND in this form is needed to trick portage suggest
