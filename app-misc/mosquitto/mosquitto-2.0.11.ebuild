@@ -41,6 +41,7 @@ _emake() {
 	local LIBDIR=$(get_libdir)
 	emake \
 		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
 		CLIENT_LDFLAGS="${LDFLAGS}" \
 		LIB_SUFFIX="${LIBDIR:3}" \
 		WITH_BRIDGE="$(usex bridge)" \
