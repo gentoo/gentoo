@@ -551,12 +551,6 @@ x11-drivers/nvidia-drivers:0/vulkan
 # https://bugs.exim.org/show_bug.cgi?id=2813
 =mail-mta/exim-4.95
 
-# Hans de Graaff <graaff@gentoo.org> (2021-10-03)
-# Old obsolete slots. Use a newer slot instead.
-# Masked for removal in 30 days.
-dev-ruby/hashie:0
-dev-ruby/thor:0
-
 # John Helmert III <ajak@gentoo.org> (2021-09-29)
 # VM image data corruption bug, causing I/O errors in VMs. Bug #815379
 =app-emulation/qemu-6.1.0-r1
