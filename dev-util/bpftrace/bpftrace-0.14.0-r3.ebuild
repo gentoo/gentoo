@@ -7,19 +7,13 @@ inherit toolchain-funcs llvm linux-info cmake
 
 DESCRIPTION="High-level tracing language for eBPF"
 HOMEPAGE="https://github.com/iovisor/bpftrace"
-
-if [[ ${PV} =~ 9{4,} ]]; then
-	EGIT_REPO_URI="https://github.com/iovisor/${PN}"
-	inherit git-r3
-else
-	MY_PV="${PV//_/}"
-	SRC_URI="https://github.com/iovisor/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-	BDEPEND="app-arch/xz-utils "
-fi
+MY_PV="${PV//_/}"
+SRC_URI="https://github.com/iovisor/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${MY_PV:-${PV}}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="fuzzing test"
 # lots of fixing needed
 RESTRICT="test"
@@ -38,12 +32,12 @@ DEPEND="
 	dev-libs/cereal:=
 	test? ( dev-cpp/gtest )
 "
-BDEPEND+="
+BDEPEND="
+	app-arch/xz-utils
 	sys-devel/flex
 	sys-devel/bison
 "
 
-S="${WORKDIR}/${PN}-${MY_PV:-${PV}}"
 QA_DT_NEEDED="/usr/lib.*/libbpftraceresources.so"
 
 PATCHES=(
@@ -68,10 +62,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	LLVM_MAX_SLOT=13 llvm_pkg_setup
-}
-
-src_prepare() {
-	cmake_src_prepare
 }
 
 src_configure() {
