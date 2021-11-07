@@ -1,8 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit epatch flag-o-matic
+EAPI=8
+
+inherit flag-o-matic
 
 DESCRIPTION="Provides a subset of the well-known JDBC 2.0(tm) and runs on top of ODBC"
 SRC_URI="mirror://sourceforge/libodbcxx/${P}.tar.bz2"
@@ -11,8 +12,6 @@ HOMEPAGE="http://libodbcxx.sourceforge.net/"
 LICENSE="LGPL-2.1"
 SLOT=0
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~x86"
-
-IUSE="static-libs"
 
 DEPEND="dev-db/unixODBC
 		sys-libs/ncurses"
@@ -24,27 +23,26 @@ SB_MT="${S}-build-mt"
 #SB_QT="${S}-build_qt"
 #SB_QT_MT="${S}-build_qt-mt"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.2.3-doxygen.patch
+	"${FILESDIR}"/${PN}-0.2.3-gcc41.patch
+	"${FILESDIR}"/${PN}-0.2.3-gcc44.patch
+)
+
 src_prepare() {
-	#epatch "${FILESDIR}"/${PN}-0.2.3-std-streamsize.patch
-	epatch "${FILESDIR}"/${PN}-0.2.3-doxygen.patch
-	epatch "${FILESDIR}"/${PN}-0.2.3-gcc41.patch
-	#epatch "${FILESDIR}"/${PN}-0.2.3-gcc43.patch
-	#epatch "${FILESDIR}"/${PN}-0.2.3-typecast.patch
-	epatch "${FILESDIR}"/${PN}-0.2.3-gcc44.patch
+	default
 
 	# Fix configure to use ncurses instead of termcap (bug #103105)
-	sed -i -e 's~termcap~ncurses~g' configure
+	sed -i -e 's~termcap~ncurses~g' configure || die
 
 	# Fix undeclared ODBCXX_STRING_PERCENT symbol, bug #532356
 	sed -i -e 's/ODBCXX_STRING_PERCENT/"%"/' src/dtconv.h || die
-
-	epatch_user
 }
 
 src_configure() {
 	local commonconf buildlist
-	commonconf="--with-odbc=/usr --without-tests"
-	commonconf="${commonconf} $(use_enable static-libs static) --enable-shared"
+	commonconf="--with-odbc=${EPREFIX}/usr --without-tests"
+	commonconf="${commonconf} --enable-shared"
 	# " --enable-threads"
 
 	export ECONF_SOURCE="${S}"
@@ -53,14 +51,15 @@ src_configure() {
 	buildlist="${SB} ${SB_MT}"
 	#use qt3 && buildlist="${buildlist} $SB_QT $SB_QT_MT"
 
+	local sd
 	for sd in ${buildlist}; do
 		einfo "Doing configure pass for $sd"
-		mkdir -p "${sd}"
-		cd "${sd}"
+		mkdir -p "${sd}" || die
+		cd "${sd}" || die
 		commonconf2=''
 		LIBS=''
-		[ "${sd}" == "${SB_MT}" -o "${sd}" == "${SB_QT_MT}" ] && commonconf2="${commonconf2} --enable-threads"
-		[ "${sd}" == "${SB_QT}" -o "${sd}" == "${SB_QT_MT}" ] && commonconf2="${commonconf2} --with-qt"
+		[[ "${sd}" == "${SB_MT}" || "${sd}" == "${SB_QT_MT}" ]] && commonconf2="${commonconf2} --enable-threads"
+		[[ "${sd}" == "${SB_QT}" || "${sd}" == "${SB_QT_MT}" ]] && commonconf2="${commonconf2} --with-qt"
 		# isql++ tool fails to compile:
 		#libodbc++-0.2.5/isql++/isql++.cpp: In constructor 'Isql::Isql(odbc::Connection*)':
 		#libodbc++-0.2.5/isql++/isql++.cpp:275: error: invalid cast to function type 'char** ()()'
@@ -79,29 +78,28 @@ src_configure() {
 }
 
 src_compile() {
-	local buildlist failures
+	local buildlist failures sd
 	buildlist="${SB} ${SB_MT}"
 	#use qt3 && buildlist="${buildlist} $SB_QT $SB_QT_MT"
 	for sd in ${buildlist}; do
-		einfo "Doing compile pass for $sd"
-		cd "${sd}"
-		emake LIBS='' || failures="${failures} ${sd//${S}-}"
+		einfo "Doing compile pass for ${sd}"
+		emake -C "${sd}" LIBS='' || failures="${failures} ${sd//${S}-}"
 	done
-	[ -n "${failures}" ] && die "Failures: ${failures}"
+	[[ -n ${failures} ]] && die "Failures: ${failures}"
 }
 
 src_install() {
-	dodoc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
+	einstalldocs
 
+	local sd buildlist
 	buildlist="${SB} ${SB_MT}"
 	#use qt3 && buildlist="${buildlist} $SB_QT $SB_QT_MT"
 	for sd in ${buildlist}; do
-		einfo "Doing install pass for $sd"
-		cd ${sd}
-		emake DESTDIR="${D}" install
+		einfo "Doing install pass for ${sd}"
+		emake -C "${sd}" DESTDIR="${D}" install
 	done
 	if [[ "${P}" != "${PF}" ]]; then
-		mv "${D}"/usr/share/doc/${P}/* "${D}"/usr/share/doc/${PF}/
-		rmdir "${D}"/usr/share/doc/${P}
+		mv "${ED}"/usr/share/doc/${P}/* "${ED}"/usr/share/doc/${PF}/ || die
+		rmdir "${ED}"/usr/share/doc/${P} || die
 	fi
 }
