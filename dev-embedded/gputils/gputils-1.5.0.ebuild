@@ -14,16 +14,17 @@ SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 
 PATCHES=(
-	"${FILESDIR}/flags.patch"
+	"${FILESDIR}"/${P}-respect-flags.patch
 )
 
 src_prepare() {
 	default
 
+	# Only needed for the flags patch, if a new release ever comes...
 	eautoreconf
 }
 
-src_compile() {
+src_configure() {
 	# bug #369291, bug #818802
 	tc-ld-disable-gold
 
