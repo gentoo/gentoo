@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit qmake-utils xdg
+inherit qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="E-Book Reader. Supports many e-book formats"
 HOMEPAGE="https://www.fbreader.org/"
@@ -71,6 +71,9 @@ src_prepare() {
 	else
 		echo "TARGET_STATUS = release" >> makefiles/target.mk || die
 	fi
+
+	# bug #437262
+	tc-ld-disable-gold
 }
 
 src_compile() {
