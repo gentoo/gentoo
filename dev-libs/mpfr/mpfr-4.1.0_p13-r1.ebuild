@@ -47,13 +47,18 @@ PATCHES=()
 if [[ ${PV} == *_p* ]] ; then
 	# Apply the upstream patches released out of band
 	PATCHES+=( "${DISTDIR}"/ )
-
-	# One-off partial revert of 4.1.0_p13's patch10
-	# Won't be needed on next release.
-	PATCHES+=( "${FILESDIR}"/${P}-revert-doc-changes-patch10.patch )
 fi
 
 HTML_DOCS=( doc/FAQ.html )
+
+src_prepare() {
+	default
+
+	# 4.1.0_p13's patch10 patches a .texi file *and* the corresponding
+	# info file. We need to make sure the info file is newer, so the
+	# build doesn't try to run makeinfo. Won't be needed on next release.
+	touch "${S}/doc/mpfr.info" || die
+}
 
 multilib_src_configure() {
 	# bug 476336#19
