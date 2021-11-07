@@ -122,7 +122,7 @@ src_configure() {
 	filter-flags -flto
 
 	# Workaround for bug #822210
-	tc-ld-is-gold && tc-ld-force-bfd
+	tc-ld-disable-gold
 
 	local myeconfargs=()
 
