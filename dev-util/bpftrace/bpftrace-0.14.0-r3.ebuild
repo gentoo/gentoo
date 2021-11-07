@@ -43,6 +43,7 @@ QA_DT_NEEDED="/usr/lib.*/libbpftraceresources.so"
 PATCHES=(
 	"${FILESDIR}/bpftrace-0.14.0-install-libs.patch"
 	"${FILESDIR}/bpftrace-0.14.0-dont-compress-man.patch"
+	"${FILESDIR}/bpftrace-0.14.0-fuzzing.patch"
 	"${FILESDIR}/bpftrace-0.11.4-old-kernels.patch"
 	"${FILESDIR}/bpftrace-0.12.0-fuzzing-build.patch"
 )
