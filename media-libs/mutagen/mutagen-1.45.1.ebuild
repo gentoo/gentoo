@@ -19,6 +19,7 @@ BDEPEND="
 		dev-python/eyeD3[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pyflakes[${PYTHON_USEDEP}]
+		media-libs/flac[ogg]
 	)
 "
 
