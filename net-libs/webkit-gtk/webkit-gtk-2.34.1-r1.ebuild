@@ -81,7 +81,7 @@ RDEPEND="
 	libnotify? ( x11-libs/libnotify )
 	dev-libs/hyphen
 	jpeg2k? ( >=media-libs/openjpeg-2.2.0:2= )
-	avif? ( >=media-libs/libavif-0.9.0 )
+	avif? ( >=media-libs/libavif-0.9.0:= )
 	lcms? ( media-libs/lcms:2 )
 
 	egl? ( media-libs/mesa[egl(+)] )
