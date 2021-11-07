@@ -19,7 +19,6 @@ src_configure() {
 	tc-ld-is-gold && tc-ld-force-bfd
 	#tc-ld-disable-gold #369291
 
-
 	# Their configure script tries to do funky things with default
 	# compiler selection.  Force our own defaults instead.
 	tc-export CC
