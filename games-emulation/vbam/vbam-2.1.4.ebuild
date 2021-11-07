@@ -57,6 +57,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-cmake_fix.patch
 	"${FILESDIR}"/${P}-libsdl2-2.0.14.patch #762208
+	"${FILESDIR}"/${P}-arm-asm.patch
 )
 
 src_configure() {
