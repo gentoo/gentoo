@@ -5,11 +5,11 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{7..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 
 inherit distutils-r1
 
-MY_P=certifi-shim-${PV}
+MY_P=certifi-shim-10001
 DESCRIPTION="Thin replacement for certifi using system certificate store"
 HOMEPAGE="
 	https://github.com/mgorny/certifi-shim/
