@@ -3,6 +3,8 @@
 
 EAPI=7
 
+LLVM_MAX_SLOT=13
+
 inherit llvm linux-info cmake
 
 DESCRIPTION="High-level tracing language for eBPF"
@@ -22,10 +24,10 @@ RDEPEND="
 	dev-libs/libbpf:=
 	>=dev-util/bcc-0.13.0:=
 	dev-util/systemtap
-	<=sys-devel/clang-14:=
-	<=sys-devel/llvm-14:=[llvm_targets_BPF(+)]
+	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
+	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_BPF(+)]
 	sys-libs/binutils-libs:=
-	virtual/libelf
+	virtual/libelf:=
 "
 DEPEND="
 	${COMMON_DEPEND}
@@ -62,12 +64,13 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	LLVM_MAX_SLOT=13 llvm_pkg_setup
+	llvm_pkg_setup
 }
 
 src_configure() {
 	local -a mycmakeargs=(
 		-DSTATIC_LINKING:BOOL=OFF
+		# bug 809362, 754648
 		-DBUILD_SHARED_LIBS:=OFF
 		-DBUILD_TESTING:BOOL=OFF
 		-DBUILD_FUZZ:BOOL=$(usex fuzzing)
@@ -79,6 +82,7 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
+	# bug 809362
 	dostrip -x /usr/bin/bpftrace
 	doman man/man8/*.?
 }
