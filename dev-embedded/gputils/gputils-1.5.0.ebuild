@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,11 @@ KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 src_configure() {
-	tc-ld-disable-gold #369291
+	# bug #818802
+	tc-ld-is-gold && tc-ld-force-bfd
+	#tc-ld-disable-gold #369291
+
+
 	# Their configure script tries to do funky things with default
 	# compiler selection.  Force our own defaults instead.
 	tc-export CC
