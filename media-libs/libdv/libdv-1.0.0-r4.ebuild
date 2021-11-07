@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic multilib-minimal
+inherit autotools flag-o-matic multilib-minimal toolchain-funcs
 
 DESCRIPTION="Software codec for dv-format video (camcorders etc)"
 HOMEPAGE="http://libdv.sourceforge.net/"
