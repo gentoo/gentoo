@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 2006-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 # The subslot matches the SONAME major #.
 SLOT="0/89"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="acl debug +mount-ntfs ntfsdecrypt +ntfsprogs static-libs suid xattr"
+IUSE="acl debug +fuse +mount-ntfs ntfsdecrypt +ntfsprogs static-libs suid xattr"
 
 RDEPEND="
 	sys-apps/util-linux:0=
@@ -52,6 +52,7 @@ src_configure() {
 		--disable-ldconfig
 		--enable-extras
 		$(use_enable debug)
+		$(use_enable fuse ntfs-3g)
 		$(use_enable acl posix-acls)
 		$(use_enable xattr xattr-mappings)
 		$(use_enable ntfsdecrypt crypto)
@@ -75,13 +76,15 @@ src_configure() {
 
 src_install() {
 	default
-	if use suid; then
-		fperms u+s /usr/bin/ntfs-3g
-	fi
-	if use mount-ntfs; then
-		dosym mount.ntfs-3g /sbin/mount.ntfs
+	if use fuse; then
+		# Plugins directory
+		keepdir "/usr/$(get_libdir)/ntfs-3g"
+		if use suid; then
+			fperms u+s /usr/bin/ntfs-3g
+		fi
+		if use mount-ntfs; then
+			dosym mount.ntfs-3g /sbin/mount.ntfs
+		fi
 	fi
 	find "${ED}" -name '*.la' -type f -delete || die
-	# https://bugs.gentoo.org/760780
-	keepdir "/usr/$(get_libdir)/ntfs-3g"
 }
