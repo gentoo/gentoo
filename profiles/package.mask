@@ -676,6 +676,7 @@ net-libs/libsoup:3.0
 # bug #816498
 >=dev-lang/ocaml-4.13
 >=dev-ml/camlp4-4.13
+>=dev-ml/labltk-8.06.11
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2021-06-04)
 # Alpha versions of fetchmail 7
