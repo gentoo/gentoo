@@ -27,12 +27,12 @@ SLOT="0"
 
 IUSE="extra"
 
-DEPEND="extra? (
+RDEPEND="elibc_musl? ( sys-libs/argp-standalone )"
+DEPEND="${RDEPEND}
+	extra? (
 		sys-block/parted
 		virtual/udev
 	)"
-
-RDEPEND=""
 
 DOCS=( changelog README.rst )
 
@@ -43,6 +43,9 @@ src_prepare() {
 		-e 's:-ggdb::' \
 		-e 's:^PREFIX =:PREFIX ?=:' \
 		Makefile || die
+
+	# bug #715518
+	use elibc_musl && append-ldflags -largp
 
 	tc-export CC
 }
