@@ -1,5 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors.
+# Copyright 1999-2021 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2021-11-07)
+# Disable some sanitizers for LLVM, see bug #753935
+# Needs libexecinfo on musl, not yet packaged
+sys-libs/compiler-rt-sanitizers gwp-asan libfuzzer
+
+# Sam James <sam@gentoo.org> (2021-11-07)
+# Broken as "error: unknown type name '_Unwind_Word'"
+sys-libs/compiler-rt-sanitizers hwasan
 
 # Andreas K. Hüttel <dilfridge@gentoo.org>
 # Restore mask here that is gone elsewhere
