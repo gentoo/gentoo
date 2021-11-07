@@ -30,5 +30,9 @@ src_test() {
 	# terminal_reporter test needs exact wrapping
 	local -x COLUMNS=80
 
+	# hooks output parsing may be affected by other pytest-*, e.g. tornasync
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	local -x PYTEST_PLUGINS=pytest_bdd.plugin
+
 	distutils-r1_src_test
 }
