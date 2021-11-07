@@ -1,7 +1,7 @@
 # Copyright 2013-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="8"
 
 DESCRIPTION="Handwriting model data of Japanese"
 HOMEPAGE="https://tegaki.github.io/"
@@ -12,12 +12,17 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE=""
 
-DEPEND="app-arch/unzip"
 RDEPEND=""
+BDEPEND="app-arch/unzip"
 
 src_prepare() {
-	sed -i -e "/^installpath=/s:local/::" Makefile || die
-	sed -i -e "/^installpath=/s:installpath=:installpath=${ED}:" Makefile || die
+	default
+
+	sed -i \
+		-e "/^installpath=/s|local/||" \
+		-e "/^installpath=/s|=|=${EPREFIX}|" \
+		-e "s/\(\$(inst\)/\$(DESTDIR)\1/" \
+		Makefile
 }
 
 src_compile() {
