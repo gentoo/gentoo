@@ -12,7 +12,7 @@ S="${WORKDIR}/lib${P}"
 
 LICENSE="gd IJG HPND BSD"
 SLOT="2/3"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="avif cpu_flags_x86_sse fontconfig +jpeg heif +png static-libs test tiff truetype webp xpm zlib"
 RESTRICT="!test? ( test )"
 
@@ -24,10 +24,10 @@ REQUIRED_USE="
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND="
-	avif? ( media-libs/libavif[${MULTILIB_USEDEP}] )
+	avif? ( media-libs/libavif:=[${MULTILIB_USEDEP}] )
 	fontconfig? ( >=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}] )
 	jpeg? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
-	heif? ( media-libs/libheif[${MULTILIB_USEDEP}] )
+	heif? ( media-libs/libheif:=[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}] )
 	tiff? ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
 	truetype? ( >=media-libs/freetype-2.5.0.1[${MULTILIB_USEDEP}] )
@@ -82,6 +82,11 @@ multilib_src_configure() {
 		$(use_with zlib)
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+}
+
+multilib_src_test() {
+	# See https://github.com/libgd/libgd/issues/763 (although it still passed without it here?)
+	TMPDIR="${T}" default
 }
 
 multilib_src_install_all() {
