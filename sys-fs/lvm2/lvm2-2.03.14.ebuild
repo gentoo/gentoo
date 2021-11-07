@@ -120,6 +120,10 @@ src_prepare() {
 
 src_configure() {
 	filter-flags -flto
+
+	# Workaround for bug #822210
+	tc-ld-is-gold && tc-ld-force-bfd
+
 	local myeconfargs=()
 
 	# Most of this package does weird stuff.
