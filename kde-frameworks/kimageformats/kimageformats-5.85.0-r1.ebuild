@@ -11,18 +11,18 @@ inherit ecm kde.org
 
 DESCRIPTION="Framework providing additional format plugins for Qt's image I/O system"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="avif eps heif openexr"
 
 DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
 	=kde-frameworks/karchive-${PVCUT}*:5
-	avif? ( >=media-libs/libavif-0.8.2 )
+	avif? ( >=media-libs/libavif-0.8.2:= )
 	eps? ( >=dev-qt/qtprintsupport-${QTMIN}:5 )
 	heif? ( >=media-libs/libheif-1.10.0:= )
 	openexr? (
-		media-libs/ilmbase:=
-		media-libs/openexr:=
+		media-libs/ilmbase:0=
+		<media-libs/openexr-3.0.0:0=
 	)
 "
 RDEPEND="${DEPEND}"
