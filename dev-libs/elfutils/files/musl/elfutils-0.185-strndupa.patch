@@ -1,3 +1,5 @@
+Should be fixed in next release (0.186?).
+
 https://sourceware.org/git/?p=elfutils.git;a=commit;h=e7e4c92650892cf67210be5ea89ffba967427cbf
 https://git.alpinelinux.org/aports/plain/main/elfutils/musl-strndupa.patch
 --- a/src/unstrip.c
