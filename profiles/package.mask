@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-07)
+# Dead upstream, uses EAPI 5, no revdeps.
+# Replaced by dev-db/mytop.
+# Removal on 2021-12-07. Bug #819675.
+dev-db/mtop
+
 # Jakov Smolić <jsmolic@gentoo.org> (2021-11-06)
 # Dead upstream, multiple open bugs, no maintainer,
 # uses EAPI 5, no revdeps.
