@@ -16,6 +16,7 @@ IUSE="+ocamlopt"
 
 DEPEND="
 	dev-ml/result:=
+	dev-ml/mmap:=
 	dev-ml/ocplib-endian:=
 	dev-ml/ppxlib:=
 	dev-ml/react:=
