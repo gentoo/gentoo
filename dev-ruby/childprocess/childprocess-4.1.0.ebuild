@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/jarib/childprocess"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="amd64 arm arm64 ~hppa ~ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/ffi-1.0.11"
