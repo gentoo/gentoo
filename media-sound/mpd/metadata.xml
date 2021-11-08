@@ -22,6 +22,7 @@
     <flag name="libsoxr">Enable the libsoxr resampler</flag>
     <flag name="mpg123">Enable support for mp3 decoding over media-sound/mpg123</flag>
     <flag name="network">Enables network streaming support</flag>
+    <flag name="npupnp">Enables upnp support using libnpupnp</flag>
     <flag name="nfs">Enable support for the Network File System</flag>
     <flag name="pipe">Support writing audio to a pipe</flag>
     <flag name="qobuz">Build plugin to access qobuz</flag>
