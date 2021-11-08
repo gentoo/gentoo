@@ -25,6 +25,7 @@
     <flag name="npupnp">Enables upnp support using libnpupnp</flag>
     <flag name="nfs">Enable support for the Network File System</flag>
     <flag name="pipe">Support writing audio to a pipe</flag>
+    <flag name="pipewire">Support pipewire output plugin</flag>
     <flag name="qobuz">Build plugin to access qobuz</flag>
     <flag name="recorder">Enables output plugin for recording radio streams</flag>
     <flag name="sid">Build with SID (Commodore 64 Audio) support</flag>

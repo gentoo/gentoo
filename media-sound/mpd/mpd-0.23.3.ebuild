@@ -15,12 +15,12 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+alsa ao +audiofile bzip2 cdio chromaprint +cue +curl doc +dbus
 	+eventfd expat faad +ffmpeg +fifo flac fluidsynth gme +icu +id3tag +inotify
 	+ipv6 jack lame libmpdclient libsamplerate libsoxr +mad mikmod mms
-	modplug mpg123 musepack +network nfs npupnp openal opus oss pipe pulseaudio qobuz
+	modplug mpg123 musepack +network nfs npupnp openal opus oss pipe pipewire pulseaudio qobuz
 	recorder samba selinux sid signalfd sndfile sndio soundcloud sqlite systemd
 	test tidal twolame udisks vorbis wavpack webdav wildmidi upnp
 	zeroconf zip zlib"
 
-OUTPUT_PLUGINS="alsa ao fifo jack network openal oss pipe pulseaudio sndio recorder"
+OUTPUT_PLUGINS="alsa ao fifo jack network openal oss pipe pipewire pulseaudio sndio recorder"
 DECODER_PLUGINS="audiofile faad ffmpeg flac fluidsynth mad mikmod
 	modplug mpg123 musepack flac sid vorbis wavpack wildmidi"
 ENCODER_PLUGINS="audiofile flac lame twolame vorbis"
@@ -81,6 +81,7 @@ RDEPEND="
 	nfs? ( net-fs/libnfs )
 	openal? ( media-libs/openal )
 	opus? ( media-libs/opus )
+	pipewire? ( media-video/pipewire )
 	pulseaudio? ( media-sound/pulseaudio )
 	qobuz? ( dev-libs/libgcrypt:0 )
 	samba? ( net-fs/samba )
@@ -195,6 +196,7 @@ src_configure() {
 		-Dopenal=$(usex openal enabled disabled)
 		-Doss=$(usex oss enabled disabled)
 		-Dpipe=$(usex pipe true false)
+		-Dpipewire=$(usex pipewire enabled disabled)
 		-Dpulse=$(usex pulseaudio enabled disabled)
 		-Drecorder=$(usex recorder true false)
 		-Dsndio=$(usex sndio enabled disabled)
