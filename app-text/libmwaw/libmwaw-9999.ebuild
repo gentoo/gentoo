@@ -31,7 +31,9 @@ BDEPEND="
 
 src_prepare() {
 	default
-	[[ ${PV} == *9999* ]] && eautoreconf
+
+	# Refresh stale libtool, bug #814512
+	eautoreconf
 }
 
 src_configure() {
