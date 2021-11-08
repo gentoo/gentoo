@@ -105,3 +105,25 @@ index 3fd7e5d5..e469981b 100644
  	AC_LANG(C)
  	if test x"$CXX_OK" = x"yes"; then
  	    # AC_MSG_RESULT() is called below.
+From 7d830ff52ff7b01f528f39aa27b1ab36ea8c1356 Mon Sep 17 00:00:00 2001
+From: Andrew Aladjev <aladjev.andrew@gmail.com>
+Date: Sun, 7 Nov 2021 22:45:49 +0300
+Subject: [PATCH] improved cross compilation detection (#252)
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index fbdd17d8..9e7338cf 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -264,7 +264,7 @@ if test x"$enable_simd" != x"no"; then
+     # For x86-64 SIMD, g++ >=5 or clang++ >=7 is required
+     if test x"$host_cpu" = x"x86_64" || test x"$host_cpu" = x"amd64"; then
+ 	AC_LANG(C++)
+-	if test x"$host_cpu" = x"$build_cpu"; then
++	if test x"$host" = x"$build"; then
+ 	    AC_RUN_IFELSE([AC_LANG_PROGRAM([SIMD_X86_64_TEST],[[if (test_ssse3(42) != 42 || test_sse2(42) != 42 || test_avx2(42) != 42) exit(1);]])],
+ 		[CXX_OK=yes],[CXX_OK=no])
+ 	else
