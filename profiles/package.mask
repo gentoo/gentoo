@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-11-08)
+# Blocked on LLVM 11.  Upstream does not handle adding support for new
+# LLVM or Python versions timely.  No reverse dependencies.
+# Removal on 2021-12-08.  Bug #822435.
+dev-python/llvmlite
+
 # Jakov Smolić <jsmolic@gentoo.org> (2021-11-07)
 # No maintainer, not compatible with llvm-11 or higher.
 # Removal on 2021-12-07. Bug #812566.
