@@ -88,6 +88,12 @@ RDEPEND="${DEPEND}
 # enabling dist-kernel if only 1 package have it set, without suggesting to disable
 PDEPEND="dist-kernel? ( ~sys-fs/zfs-kmod-${PV}[dist-kernel] )"
 
+# temporary block new coreutils
+# https://github.com/openzfs/zfs/issues/11900
+RDEPEND+="
+	<sys-apps/coreutils-9
+"
+
 REQUIRED_USE="
 	!minimal? ( ${PYTHON_REQUIRED_USE} )
 	python? ( !minimal )
