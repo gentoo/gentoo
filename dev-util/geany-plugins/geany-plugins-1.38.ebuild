@@ -62,6 +62,7 @@ src_configure() {
 		--enable-codenav
 		--enable-commander
 		--enable-defineformat
+		--enable-geanydoc
 		--enable-geanyextrasel
 		--enable-geanyinsertnum
 		--enable-geanymacro
@@ -102,7 +103,6 @@ src_configure() {
 		--disable-devhelp
 		--disable-webhelper
 		# GTK 2 only
-		--disable-geanydoc
 		--disable-geanypy
 		--disable-multiterm
 	)
