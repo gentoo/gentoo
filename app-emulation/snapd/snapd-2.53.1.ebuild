@@ -70,7 +70,7 @@ src_prepare() {
 		"${MY_S}/cmd/snap-confine/snap-confine.apparmor.in" || die
 
 	if ! use forced-devmode; then
-		sed -e 's#return \(!apparmorFull || cgroupv2\)#//\1\n\tif !apparmorFull || cgroupv2 {\n\t\tpanic("USE=forced-devmode is disabled")\n\t}\n\treturn false#' \
+		sed -e 's#return !apparmorFull#if !apparmorFull {\n\t\tpanic("USE=forced-devmode is disabled")\n\t}\n\treturn false#' \
 			-i "${MY_S}/sandbox/forcedevmode.go" || die
 		grep -q 'panic("USE=forced-devmode is disabled")' "${MY_S}/sandbox/forcedevmode.go" || die "failed to disable forced-devmode"
 	fi
