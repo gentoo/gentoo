@@ -102,6 +102,9 @@ multilib_src_configure() {
 		-DLIBOMPTARGET_BUILD_NVPTX_BCLIB=$(usex llvm_targets_NVPTX)
 		# a cheap hack to force clang
 		-DLIBOMPTARGET_NVPTX_CUDA_COMPILER="$(type -P "${CHOST}-clang")"
+		# upstream defaults to looking for it in clang dir
+		# this fails when ccache is being used
+		-DLIBOMPTARGET_NVPTX_BC_LINKER="$(type -P llvm-link)"
 	)
 	use test && mycmakeargs+=(
 		# this project does not use standard LLVM cmake macros
