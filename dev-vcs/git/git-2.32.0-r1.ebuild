@@ -295,7 +295,6 @@ git_emake() {
 		htmldir="${EPREFIX}"/usr/share/doc/${PF}/html \
 		perllibdir="$(use perl && perl_get_raw_vendorlib)" \
 		sysconfdir="${EPREFIX}"/etc \
-		DESTDIR="${D}" \
 		GIT_TEST_OPTS="--no-color" \
 		OPTAR="$(tc-getAR)" \
 		OPTCC="$(tc-getCC)" \
@@ -368,7 +367,7 @@ src_compile() {
 }
 
 src_install() {
-	git_emake install || die "make install failed"
+	git_emake DESTDIR="${D}" install || die "make install failed"
 
 	if [[ ${CHOST} == *-darwin* && ! tc-is-gcc ]]; then
 		dobin contrib/credential/osxkeychain/git-credential-osxkeychain
@@ -418,10 +417,10 @@ src_install() {
 
 	# git-subtree
 	pushd contrib/subtree &>/dev/null || die
-	git_emake install || die "Failed to emake install for git-subtree"
+	git_emake DESTDIR="${D}" install || die "Failed to emake install for git-subtree"
 	if use doc ; then
 		# Do not move git subtree install-man outside USE=doc!
-		git_emake install-man install-html || die "Failed to emake install-html install-man for git-subtree"
+		git_emake DESTDIR="${D}" install-man install-html || die "Failed to emake install-html install-man for git-subtree"
 	fi
 	newdoc README README.git-subtree
 	dodoc git-subtree.txt
@@ -429,7 +428,7 @@ src_install() {
 
 	if use mediawiki ; then
 		pushd contrib/mw-to-git &>/dev/null || die
-		git_emake install
+		git_emake DESTDIR="${D}" install
 		popd &>/dev/null || die
 	fi
 
