@@ -104,7 +104,6 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/2.0.4-scrub-timers.patch"
-	"${FILESDIR}/2.1.1-fix-lseek-mmap.patch"
 )
 
 pkg_pretend() {
