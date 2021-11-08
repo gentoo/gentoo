@@ -62,8 +62,6 @@ RESTRICT="debug? ( strip ) test"
 
 DOCS=( AUTHORS COPYRIGHT META README.md )
 
-PATCHES=( "${FILESDIR}/2.1.1-fix-lseek-mmap.patch" )
-
 pkg_pretend() {
 	use rootfs || return 0
 
