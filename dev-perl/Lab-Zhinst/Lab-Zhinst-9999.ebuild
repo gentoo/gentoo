@@ -3,15 +3,16 @@
 
 EAPI=8
 
+inherit perl-module
+
 if [[ "${PV}" != "9999" ]]; then
-	DIST_VERSION=2.04
+	# DIST_VERSION=2.04
 	DIST_AUTHOR=AMBA
-	inherit perl-module
 	KEYWORDS="~amd64"
 else
 	EGIT_REPO_URI="https://github.com/lab-measurement/Lab-Zhinst.git"
 	EGIT_BRANCH="master"
-	inherit perl-module git-r3
+	inherit git-r3
 fi
 
 DESCRIPTION="Perl bindings to the LabOne API of Zurich Instruments"
