@@ -27,7 +27,7 @@ RUBY_S="mysql2-${COMMIT}"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="mysql mariadb"
 REQUIRED_USE="^^ ( mariadb mysql )"
 
