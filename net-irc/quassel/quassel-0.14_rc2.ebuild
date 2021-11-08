@@ -7,8 +7,8 @@ inherit cmake xdg-utils pax-utils systemd
 
 if [[ ${PV} != *9999* ]]; then
 	MY_P=${PN}-${PV/_/-}
-	if [[ ${PV} ==  *_rc* ]] ; then
-		SRC_URI="https://github.com/quassel/quassel/archive/refs/tags/${PV/_/-}.tar.gz"
+	if [[ ${PV} == *_rc* ]] ; then
+		SRC_URI="https://github.com/quassel/quassel/archive/refs/tags/${PV/_/-}.tar.gz -> ${P}.tar.gz"
 	else
 		SRC_URI="https://quassel-irc.org/pub/${MY_P}.tar.bz2"
 		KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~sparc-solaris"
