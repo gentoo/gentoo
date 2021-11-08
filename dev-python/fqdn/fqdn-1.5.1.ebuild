@@ -13,7 +13,7 @@ SRC_URI="https://github.com/ypcrts/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
