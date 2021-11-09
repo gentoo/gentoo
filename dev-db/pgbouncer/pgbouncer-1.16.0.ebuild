@@ -55,7 +55,7 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	dodoc AUTHORS
-	use doc && dodoc doc/*.rst
+	use doc && dodoc doc/*.md
 
 	newconfd "${FILESDIR}/${PN}.confd-r1" "${PN}"
 	newinitd "${FILESDIR}/${PN}.initd-r2" "${PN}"
