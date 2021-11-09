@@ -17,10 +17,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 
-RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	' python3_7 pypy3)"
 BDEPEND="
 	test? ( dev-python/pytest-asyncio[${PYTHON_USEDEP}] )"
 
