@@ -10,6 +10,16 @@
 		<name>Python</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<use>
+		<flag name="clipboard">Enable copying to clipboard
+		using <pkg>dev-python/pyperclip</pkg></flag>
+		<flag name="jedi">Enable autocompletion
+		using <pkg>dev-python/jedi</pkg></flag>
+		<flag name="urwid">Ebable
+		<pkg>dev-python/urwid</pkg>-based interface</flag>
+		<flag name="watch">Enable watching paths
+		using <pkg>dev-python/watchdog</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="pypi">bpython</remote-id>
 		<remote-id type="github">bpython/bpython</remote-id>
