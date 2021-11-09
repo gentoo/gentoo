@@ -215,7 +215,7 @@ if [ ${PV} == "9999" ] ; then
 else
 	SRC_URI="https://github.com/alacritty/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
-	KEYWORDS="amd64 ~arm64 ppc64 ~x86"
+	KEYWORDS="amd64 ~arm64 ppc64 x86"
 fi
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 BSD BSD-2 CC0-1.0 FTL ISC MIT MPL-2.0 Unlicense WTFPL-2 ZLIB"
