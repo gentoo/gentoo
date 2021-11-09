@@ -42,6 +42,7 @@ RDEPEND="${DEPEND_COMMON}
 # note: thin- 0.3.0 is required to avoid --disable-thin_check_needs_check
 DEPEND="${DEPEND_COMMON}
 	static? (
+		readline? ( sys-libs/readline[static-libs] )
 		selinux? ( sys-libs/libselinux[static-libs] )
 		>=sys-apps/util-linux-2.16[static-libs]
 	)"
