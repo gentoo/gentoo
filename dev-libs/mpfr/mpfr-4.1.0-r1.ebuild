@@ -6,7 +6,7 @@ EAPI=7
 inherit multilib-minimal
 
 DESCRIPTION="Library for multiple-precision floating-point computations with exact rounding"
-HOMEPAGE="https://www.mpfr.org/"
+HOMEPAGE="https://www.mpfr.org/ https://gitlab.inria.fr/mpfr"
 SRC_URI="https://www.mpfr.org/mpfr-${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"

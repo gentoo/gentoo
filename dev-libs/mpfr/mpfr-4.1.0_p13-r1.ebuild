@@ -15,7 +15,7 @@ MY_PATCH=$(ver_cut 5-)
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="Library for multiple-precision floating-point computations with exact rounding"
-HOMEPAGE="https://www.mpfr.org/"
+HOMEPAGE="https://www.mpfr.org/ https://gitlab.inria.fr/mpfr"
 SRC_URI="https://www.mpfr.org/${MY_P}/${MY_P}.tar.xz"
 if [[ ${PV} == *_p* ]] ; then
 	# If this is a patch release, we have to download each of the patches:
