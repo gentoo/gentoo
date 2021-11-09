@@ -19,12 +19,6 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="doc"
 
-# importlib_metadata is only necessary for <python:3.8 according to setup.py
-RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/importlib_metadata[${PYTHON_USEDEP}]
-	' python3_{6,7} pypy3)
-"
 BDEPEND="
 	test? (
 		dev-python/pygments[${PYTHON_USEDEP}]
