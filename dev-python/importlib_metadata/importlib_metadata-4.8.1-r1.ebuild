@@ -17,7 +17,6 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
 RDEPEND="
-	$(python_gen_cond_dep 'dev-python/typing-extensions[${PYTHON_USEDEP}]' pypy3)
 	dev-python/zipp[${PYTHON_USEDEP}]
 "
 BDEPEND="
