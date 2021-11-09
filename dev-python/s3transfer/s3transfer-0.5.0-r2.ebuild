@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-python/botocore[${PYTHON_USEDEP}]
@@ -24,6 +24,15 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# do not rely on bundled deps in botocore (sic!)
+	find -name '*.py' -exec sed -i \
+		-e 's:from botocore[.]vendored import:import:' \
+		-e 's:from botocore[.]vendored[.]:from :' \
+		{} + || die
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	epytest tests/{unit,functional}
