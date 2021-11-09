@@ -12,7 +12,7 @@ S="${WORKDIR}/FeatherPad-${PV}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="+X"
 
 RDEPEND="app-text/hunspell:=
