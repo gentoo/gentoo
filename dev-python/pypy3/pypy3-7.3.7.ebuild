@@ -20,7 +20,7 @@ LICENSE="MIT"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
 # also check pypy/interpreter/pycode.py -> pypy_incremental_magic
 SLOT="0/pypy38-pp73"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 gdbm +jit ncurses sqlite test tk"
 # pypy3.8 is in alpha state and many tests are failing
 RESTRICT="test"
