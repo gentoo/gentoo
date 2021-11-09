@@ -26,9 +26,6 @@ RDEPEND="
 	>=dev-python/frozenlist-1.1.1[${PYTHON_USEDEP}]
 	>=dev-python/multidict-4.5.0[${PYTHON_USEDEP}]
 	>=dev-python/yarl-1.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/pypy3-7.3.6
-	' pypy3)
 "
 BDEPEND="
 	test? (
