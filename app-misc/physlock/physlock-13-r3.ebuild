@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-13-Set-PAM_TTY.patch"
+	"${FILESDIR}/${PN}-13-Improved-commandline-help.patch"
 )
 
 pkg_setup() {
