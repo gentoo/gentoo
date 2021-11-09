@@ -17,9 +17,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc 
 RDEPEND="
 	>=dev-python/multidict-4.0[${PYTHON_USEDEP}]
 	>=dev-python/idna-2.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/typing-extensions-3.7.4[${PYTHON_USEDEP}]
-	' pypy3)
 "
 
 distutils_enable_tests pytest
