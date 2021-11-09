@@ -16,7 +16,4 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 s
 
 RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	dev-python/sphinx[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/importlib_metadata[${PYTHON_USEDEP}]
-	' pypy3)"
+	dev-python/sphinx[${PYTHON_USEDEP}]"
