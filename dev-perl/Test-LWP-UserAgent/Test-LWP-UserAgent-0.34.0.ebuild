@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A LWP::UserAgent suitable for simulating and testing network calls"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	virtual/perl-Carp
