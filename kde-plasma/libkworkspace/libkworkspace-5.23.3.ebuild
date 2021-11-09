@@ -37,6 +37,11 @@ DEPEND="${RDEPEND}
 
 S="${S}/${PN}"
 
+PATCHES=(
+	# Pending: https://invent.kde.org/plasma/plasma-workspace/-/merge_requests/1164
+	"${FILESDIR}"/${P}-synchronous-dbus-calls.patch # bug 818124
+)
+
 src_prepare() {
 	# delete colliding libkworkspace translations, let ecm_src_prepare do its magic
 	if [[ ${KDE_BUILD_TYPE} = release ]]; then
