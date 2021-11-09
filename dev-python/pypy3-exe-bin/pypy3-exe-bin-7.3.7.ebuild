@@ -21,7 +21,7 @@ S="${WORKDIR}"
 
 LICENSE="MIT"
 SLOT="${PV%_p*}"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0/1
 	|| (
