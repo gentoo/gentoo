@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit bash-completion-r1 distutils-r1
+inherit bash-completion-r1 distutils-r1 optfeature
 
 DESCRIPTION="youtube-dl fork with additional features and fixes"
 HOMEPAGE="https://github.com/yt-dlp/yt-dlp"
@@ -15,11 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~riscv ~x86"
 
 RDEPEND="
-	dev-python/keyring[${PYTHON_USEDEP}]
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
-	dev-python/websockets[${PYTHON_USEDEP}]
-	media-libs/mutagen[${PYTHON_USEDEP}]
-	media-video/ffmpeg
 	!net-misc/youtube-dl"
 
 distutils_enable_tests pytest
@@ -49,6 +45,10 @@ python_install_all() {
 }
 
 pkg_postinst() {
+	optfeature "various features (merging tracks, streamed content)" media-video/ffmpeg
+	has_version media-video/atomicparsley || # allow fallback but don't advertise
+		optfeature "embedding metadata thumbnails in MP4/M4A files" media-libs/mutagen
+
 	if [[ ! ${REPLACING_VERSIONS} ]] ||
 		ver_test ${REPLACING_VERSIONS} -lt 2021.10.22-r2; then
 		elog 'A wrapper using "yt-dlp --compat-options youtube-dl" was installed'
