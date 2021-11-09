@@ -1,7 +1,9 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+inherit toolchain-funcs
 
 DESCRIPTION="dmenu clone for wayland"
 HOMEPAGE="https://github.com/Cloudef/bemenu"
@@ -41,6 +43,8 @@ RDEPEND="${DEPEND}"
 BDEPEND="doc? ( app-doc/doxygen )"
 
 src_compile() {
+	tc-export CC
+
 	emake clients $(usex ncurses curses "") $(usex X x11 "") $(usex wayland wayland "") PREFIX=/usr libdir=/$(get_libdir)
 	use doc && emake doxygen PREFIX=/usr libdir=/$(get_libdir)
 }
