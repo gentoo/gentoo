@@ -17,7 +17,6 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 RDEPEND="
-	$(python_gen_cond_dep 'dev-python/importlib_metadata[${PYTHON_USEDEP}]' pypy3 python3_7)
 	media-libs/libmediainfo
 "
 BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]"
