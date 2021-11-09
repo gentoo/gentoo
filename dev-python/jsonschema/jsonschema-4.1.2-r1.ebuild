@@ -13,17 +13,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]
 	>=dev-python/pyrsistent-0.18.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/importlib_metadata[${PYTHON_USEDEP}]
-	' pypy3)
-	$(python_gen_cond_dep '
-		>=dev-python/importlib_resources-1.4.0[${PYTHON_USEDEP}]
-	' pypy3 python3_8)
 "
 
 # formatter deps
