@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2"
 SLOT="0/9"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 arm x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cmake.patch
