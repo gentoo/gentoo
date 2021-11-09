@@ -20,7 +20,6 @@ RDEPEND="
 	<dev-python/pyflakes-2.5.0[${PYTHON_USEDEP}]
 	>=dev-python/pycodestyle-2.8.0[${PYTHON_USEDEP}]
 	<dev-python/pycodestyle-2.9.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/importlib_metadata[${PYTHON_USEDEP}]' pypy3)
 "
 PDEPEND="
 	>=dev-python/mccabe-0.6.0[${PYTHON_USEDEP}]
