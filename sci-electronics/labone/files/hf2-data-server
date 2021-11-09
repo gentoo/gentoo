@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile="/run/hf2-data-server.pid"
+command="/opt/bin/ziServer"
+command_args=""
+
+depend() {
+    need network
+}
