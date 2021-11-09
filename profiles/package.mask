@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-09)
+# Uses EAPI 5, upstream gone, no revdeps,
+# no other distro is packaging this.
+# Removal on 2021-12-09. Bug #819303.
+net-misc/ssh-chain
+
 # Michał Górny <mgorny@gentoo.org> (2021-11-08)
 # Blocked on LLVM 11.  Upstream does not handle adding support for new
 # LLVM or Python versions timely.  No reverse dependencies.
