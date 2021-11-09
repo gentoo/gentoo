@@ -1,5 +1,8 @@
 https://www.sourceware.org/bugzilla/show_bug.cgi?id=25832
 https://cgit.openembedded.org/openembedded-core/plain/meta/recipes-devtools/elfutils/files/0006-Fix-build-on-aarch64-musl.patch
+https://bugs.gentoo.org/693772
+
+Other variants/links:
 https://git.alpinelinux.org/aports/tree/main/elfutils/fix-aarch64_fregs.patch
 https://github.com/gentoo/musl/blob/6450482b9b4463b57ac249c63b7ed796e9874c40/dev-libs/elfutils/files/0.178/fix-aarch64_fregs.patch
 
