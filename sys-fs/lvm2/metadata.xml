@@ -15,7 +15,7 @@
 		<description>Upstream Maintainer (please CC on bugs)</description>
 	</maintainer>
 	<use>
-		<flag name="lvm2create_initrd">Install lvm2create_initrd script and pull in <pkg>sys-apps/makedev</pkg> for the /sbin/MAKEDEV command</flag>
+		<flag name="lvm2create-initrd">Install lvm2create_initrd script and pull in <pkg>sys-apps/makedev</pkg> for the /sbin/MAKEDEV command</flag>
 		<flag name="thin">Support for thin volumes</flag>
 		<flag name="device-mapper-only">Build only device-mapper and not the rest of LVM2 (UNSUPPORTED)</flag>
 		<flag name="sanlock">Enable lvmlockd with support for sanlock</flag>
