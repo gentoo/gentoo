@@ -32,9 +32,6 @@ DEPEND_COMMON="
 # This version of LVM is incompatible with cryptsetup <1.1.2.
 RDEPEND="${DEPEND_COMMON}
 	>=sys-apps/baselayout-2.2
-	!<sys-apps/openrc-0.11
-	!<sys-fs/cryptsetup-1.1.2
-	!!sys-fs/lvm-user
 	>=sys-apps/util-linux-2.16
 	lvm2create-initrd? ( sys-apps/makedev )
 	!device-mapper-only? ( virtual/tmpfiles )
