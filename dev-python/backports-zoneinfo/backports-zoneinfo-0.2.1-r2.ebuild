@@ -18,18 +18,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
-RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/importlib_resources[${PYTHON_USEDEP}]
-	' python3_6 pypy3)"
 BDEPEND="
 	test? (
-		$(python_gen_cond_dep '
-			dev-python/dataclasses[${PYTHON_USEDEP}]
-		' python3_6)
-		$(python_gen_cond_dep '
-			dev-python/importlib_metadata[${PYTHON_USEDEP}]
-		' python3_{6,7})
 		>=dev-python/hypothesis-5.7.0[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)"
