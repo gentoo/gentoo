@@ -271,10 +271,6 @@ media-libs/mesa opencl
 # app-text/pandoc not keyworded yet
 app-emulation/xen-tools doc
 
-# Mart Raudsepp <leio@gentoo.org> (2018-05-06)
-# New enough dev-ruby/webmock not keyworded yet
->=dev-ruby/thor-0.20.0 test
-
 # Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Unkeyworded dependencies.
 app-admin/syslog-ng mongodb
