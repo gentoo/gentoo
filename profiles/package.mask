@@ -621,11 +621,6 @@ media-sound/pulseaudio-daemon
 # Incompatible with c++17 abseil-cpp, no in-tree consumers yet
 media-libs/webrtc-audio-processing:1
 
-# Alfredo Tupone <tupone@gentoo.org> (2021-09-19)
-# Mask gnat-gpl-2018 and gnat-gpl-2019. Please switch
-# to a fresher gnat-gpl branch.
-<dev-lang/gnat-gpl-2019
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-09-18)
 # sys-devel/automake version 1.11 is EOL and is only useful for testing
 # old de-ANSI-fication/ansi2knr/AM_C_PROTOTYPES code. Please uninstall.
