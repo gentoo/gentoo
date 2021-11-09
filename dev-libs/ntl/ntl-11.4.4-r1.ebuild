@@ -64,7 +64,10 @@ src_install() {
 	if ! use static-libs; then
 		# bug #775884
 		find "${ED}" -name '*.la' -delete || die
-		rm "${ED}/usr/$(get_libdir)"/libntl.a || die
+
+		# Use rm -f because the static archive may not be created when
+		# using (for example) slibtool-shared.
+		rm -f "${ED}/usr/$(get_libdir)"/libntl.a || die
 	fi
 
 	rm -r "${ED}"/usr/share/doc/NTL || die
