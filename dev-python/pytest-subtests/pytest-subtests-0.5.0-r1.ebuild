@@ -20,9 +20,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 s
 
 RDEPEND="
 	>=dev-python/pytest-5.3.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/typing-extensions
-	' python3_7 pypy3)
 "
 # pytest-xdist is used to test compatibility
 BDEPEND="
