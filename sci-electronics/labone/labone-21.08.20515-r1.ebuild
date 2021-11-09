@@ -67,6 +67,8 @@ src_install() {
 
 		make_desktop_entry /opt/bin/startziWebServer "ZI LabOne" zi-labone "Science;Physics;Engineering"
 
+		keepdir /var/log/labone
+		fowners nobody /var/log/labone
 	else
 
 		insinto "${installation_directory}/API/C/lib"

@@ -4,8 +4,10 @@
 
 pidfile="/run/labone-data-server.pid"
 command="/opt/bin/ziDataServer"
-command_args=""
+command_args="-l /var/log/labone"
+supervisor=supervise-daemon
+command_user=nobody
 
 depend() {
-    need network
+    need net
 }

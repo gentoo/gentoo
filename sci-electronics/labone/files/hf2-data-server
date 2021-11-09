@@ -7,5 +7,5 @@ command="/opt/bin/ziServer"
 command_args=""
 
 depend() {
-    need network
+    need net
 }
