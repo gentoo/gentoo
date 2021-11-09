@@ -123,12 +123,6 @@ media-libs/opencv contribcvv contribhdf contribsfm glog gstreamer
 # Respective x11-drivers/ not tested and stable yet
 x11-base/xorg-drivers input_devices_elographics input_devices_joystick input_devices_void video_cards_dummy video_cards_fbdev video_cards_nouveau
 
-# Mart Raudsepp <leio@gentoo.org> (2018-07-24)
-# Temporary mask due to test failures in sys-libs/libcxxabi
-# and sys-libs/compiler-rt-sanitizers
-sys-devel/clang-runtime libcxx sanitize
-sys-devel/clang default-libcxx
-
 # Mart Raudsepp <leio@gentoo.org> (2018-05-29)
 # sys-devel/clang, dev-libs/xapian, app-text/texlive not stable yet
 # USE=doc requires USE=latex
