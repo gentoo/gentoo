@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-09)
+# java package without consumers, bug_#787338. Removal in 30 days.
+dev-db/db-je
+
 # Michał Górny <mgorny@gentoo.org> (2021-11-08)
 # Blocked on LLVM 11.  Upstream does not handle adding support for new
 # LLVM or Python versions timely.  No reverse dependencies.
