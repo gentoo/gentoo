@@ -10,7 +10,6 @@ if [[ "${PV}" == "9999" ]]; then
 
 	EGIT_REPO_URI="https://github.com/protocolbuffers/protobuf"
 	EGIT_SUBMODULES=()
-	SRC_URI=""
 else
 	SRC_URI="https://github.com/protocolbuffers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
