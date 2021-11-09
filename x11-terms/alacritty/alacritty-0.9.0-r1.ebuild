@@ -202,7 +202,7 @@ yaml-rust-0.4.5
 
 MY_PV="${PV//_rc/-rc}"
 # https://bugs.gentoo.org/725962
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit bash-completion-r1 cargo desktop python-any-r1
 
