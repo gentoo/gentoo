@@ -124,9 +124,9 @@ media-libs/opencv contribcvv contribhdf contribsfm glog gstreamer
 x11-base/xorg-drivers input_devices_elographics input_devices_joystick input_devices_void video_cards_dummy video_cards_fbdev video_cards_nouveau
 
 # Mart Raudsepp <leio@gentoo.org> (2018-05-29)
-# sys-devel/clang, dev-libs/xapian, app-text/texlive not stable yet
+# dev-libs/xapian, app-text/texlive not stable yet
 # USE=doc requires USE=latex
-app-doc/doxygen clang doxysearch doc
+app-doc/doxygen doxysearch doc
 
 # Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Non-stable dependencies.
