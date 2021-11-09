@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION='Web Scraping Toolkit using HTML and CSS Selectors or XPath expressions'
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	dev-perl/HTML-Parser
