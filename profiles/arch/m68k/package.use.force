@@ -1,0 +1,6 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# James Le Cuirot <chewi@gentoo.org> (2021-11-09)
+# dev-perl/Type-Tie fails a test so avoid dependencies.
+dev-perl/Type-Tiny minimal
