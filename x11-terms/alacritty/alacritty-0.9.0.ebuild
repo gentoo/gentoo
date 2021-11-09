@@ -224,12 +224,16 @@ IUSE="wayland +X"
 
 REQUIRED_USE="|| ( wayland X )"
 
-DEPEND="${PYTHON_DEPS}"
-
 COMMON_DEPEND="
 	media-libs/fontconfig:=
 	media-libs/freetype:2
+	x11-libs/libxkbcommon
 	X? ( x11-libs/libxcb:=[xkb] )
+"
+
+DEPEND="
+	${COMMON_DEPEND}
+	${PYTHON_DEPS}
 "
 
 RDEPEND="${COMMON_DEPEND}
