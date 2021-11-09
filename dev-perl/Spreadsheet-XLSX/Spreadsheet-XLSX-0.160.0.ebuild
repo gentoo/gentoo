@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for reading MS Excel 2007 files"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	>=dev-perl/Archive-Zip-1.180.0
