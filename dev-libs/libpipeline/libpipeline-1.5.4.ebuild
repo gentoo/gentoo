@@ -10,7 +10,7 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="static-libs test"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-libs/check )"
