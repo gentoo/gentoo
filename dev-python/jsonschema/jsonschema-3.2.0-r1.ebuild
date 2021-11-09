@@ -20,9 +20,6 @@ BDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/pyrsistent[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/importlib_metadata[${PYTHON_USEDEP}]
-		' pypy3)
 	test? ( dev-python/twisted[${PYTHON_USEDEP}] )
 "
 
