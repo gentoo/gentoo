@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=AUDREYT
 DIST_VERSION=0.11
@@ -12,7 +12,6 @@ DESCRIPTION="Maketext from already interpolated strings"
 SLOT="0"
 LICENSE="CC0-1.0"
 KEYWORDS="amd64 ~hppa ppc x86"
-IUSE=""
 
 src_prepare() {
 	sed -i -e 's/use inc::Module::Package/use lib q[.];\nuse inc::Module::Package/' Makefile.PL ||
