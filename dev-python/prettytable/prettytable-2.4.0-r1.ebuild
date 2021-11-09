@@ -18,9 +18,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~sparc ~x86"
 
 RDEPEND="
 	dev-python/wcwidth[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/importlib_metadata[${PYTHON_USEDEP}]
-	' pypy3)
 "
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
