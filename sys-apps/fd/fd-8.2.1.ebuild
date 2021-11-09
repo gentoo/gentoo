@@ -75,7 +75,7 @@ SRC_URI="https://github.com/sharkdp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0 BSD-2 ISC MIT Unlicense"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64 ~x86"
+KEYWORDS="amd64 arm64 ppc64 ~x86"
 IUSE=""
 
 DEPEND="!elibc_musl? ( >=dev-libs/jemalloc-5.1.0:= )"
