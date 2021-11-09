@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit toolchain-funcs
-
 DESCRIPTION="BibTeX bibliography prettyprinter and syntax checker"
 HOMEPAGE="http://www.math.utah.edu/pub/bibclean/"
 SRC_URI="ftp://ftp.math.utah.edu/pub/bibclean/${P}.tar.xz"
@@ -13,7 +11,6 @@ SRC_URI="ftp://ftp.math.utah.edu/pub/bibclean/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
 
 src_compile() {
 	emake LDFLAGS="${LDFLAGS}"
