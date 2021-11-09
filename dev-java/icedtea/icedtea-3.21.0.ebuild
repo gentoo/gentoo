@@ -10,7 +10,7 @@
 EAPI=6
 SLOT="8"
 
-inherit check-reqs eapi7-ver flag-o-matic java-pkg-2 java-vm-2 multiprocessing pax-utils prefix toolchain-funcs xdg-utils
+inherit check-reqs eapi7-ver flag-o-matic java-pkg-2 java-vm-2 multiprocessing pax-utils toolchain-funcs xdg-utils
 
 ICEDTEA_VER=$(ver_cut 1-3)
 ICEDTEA_BRANCH=$(ver_cut 1-2)
