@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm ~arm64 ppc ~ppc64 ~riscv x86"
 
 IUSE="debug elogind nls pam systemd"
 
