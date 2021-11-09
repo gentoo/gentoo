@@ -19,9 +19,6 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/filelock[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/importlib_metadata-1.1[${PYTHON_USEDEP}]
-	' pypy3)
 	dev-python/packaging[${PYTHON_USEDEP}]
 	>=dev-python/pluggy-0.12[${PYTHON_USEDEP}]
 	dev-python/pip[${PYTHON_USEDEP}]
