@@ -26,10 +26,7 @@ RDEPEND="
 	>=dev-python/filelock-3[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-2[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-41[${PYTHON_USEDEP}]
-	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/importlib_metadata-0.12[${PYTHON_USEDEP}]
-	' pypy3)"
+	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]"
 # coverage is used somehow magically in virtualenv, maybe it actually
 # tests something useful
 BDEPEND="

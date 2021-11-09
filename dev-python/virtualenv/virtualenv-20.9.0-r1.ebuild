@@ -17,7 +17,7 @@ HOMEPAGE="
 SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 SLOT="0"
 
 RDEPEND="
@@ -26,10 +26,7 @@ RDEPEND="
 	>=dev-python/filelock-3[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-2[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-41[${PYTHON_USEDEP}]
-	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/importlib_metadata-0.12[${PYTHON_USEDEP}]
-	' pypy3)"
+	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]"
 # coverage is used somehow magically in virtualenv, maybe it actually
 # tests something useful
 BDEPEND="
@@ -51,10 +48,6 @@ BDEPEND="
 #	dev-python/sphinx_rtd_theme \
 #	dev-python/towncrier
 distutils_enable_tests pytest
-
-PATCHES=(
-	"${FILESDIR}"/virtualenv-20.8.1-pypy38.patch
-)
 
 src_configure() {
 	export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
