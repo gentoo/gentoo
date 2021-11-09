@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="add XPath support to HTML::TreeBuilder"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	dev-perl/HTML-Tree
