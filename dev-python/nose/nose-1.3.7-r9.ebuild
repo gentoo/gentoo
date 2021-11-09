@@ -25,10 +25,10 @@ BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
 			!hppa? ( dev-python/coverage[${PYTHON_USEDEP}] )
-		' python3_{7..9} pypy3)
+		' python3_{8..10} pypy3)
 		$(python_gen_cond_dep '
 			dev-python/twisted[${PYTHON_USEDEP}]
-		' python3_{7..9})
+		' python3_{8..10})
 	)"
 
 PATCHES=(
