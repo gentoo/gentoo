@@ -14,11 +14,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/importlib_metadata[${PYTHON_USEDEP}]
-	' pypy3)
-"
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? ( dev-python/freezegun[${PYTHON_USEDEP}] )
