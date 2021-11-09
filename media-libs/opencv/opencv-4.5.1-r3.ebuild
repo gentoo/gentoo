@@ -59,6 +59,8 @@ IUSE="${IUSE} ${CPU_FEATURES_MAP[@]%:*}"
 # will silently disable it Wwithout the user knowing, which defeats the
 # purpose of the opengl use flag.
 REQUIRED_USE="
+	cpu_flags_x86_avx2? ( cpu_flags_x86_f16c )
+	cpu_flags_x86_f16c? ( cpu_flags_x86_avx )
 	cuda? ( tesseract? ( opencl ) )
 	dnnsamples? ( examples )
 	gflags? ( contrib )
@@ -83,7 +85,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	app-arch/bzip2[${MULTILIB_USEDEP}]
-	dev-libs/protobuf:=[${MULTILIB_USEDEP}]
+	<dev-libs/protobuf-3.19:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	cuda? ( dev-util/nvidia-cuda-toolkit:0= )
 	contribhdf? ( sci-libs/hdf5:= )
