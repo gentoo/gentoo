@@ -17,10 +17,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 s
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	$(python_gen_cond_dep '
-		<dev-python/importlib_metadata-5[${PYTHON_USEDEP}]
-	' python3_7 pypy3)"
 # pip is called as an external tool
 BDEPEND="
 	test? (
