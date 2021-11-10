@@ -11,7 +11,7 @@ DESCRIPTION="Fast CGI module"
 
 LICENSE="FastCGI"
 SLOT="0"
-KEYWORDS="~amd64 ~m68k ~x86"
+KEYWORDS="~amd64 ~m68k ~sparc ~x86"
 
 RDEPEND="
 	virtual/perl-XSLoader
