@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-11-10)
+# Uses EAPI 5, dead upstream, no other distro is
+# packaging this.
+# Removal on 2021-12-10. Bug #819333.
+net-im/kouchat
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-10)
 # Uses EAPI 5, outdated and current version has
 # security vulnerabilities.
 # Removal on 2021-12-10. Bug #819327. Bug #739594.
