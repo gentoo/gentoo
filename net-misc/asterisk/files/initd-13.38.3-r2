@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 extra_started_commands="forcestop reload"
@@ -30,7 +30,7 @@ setup_svc_variables()
 	local t
 
 	ast_instancename=asterisk
-	ast_rundir=/var/run/${RC_SVCNAME}
+	ast_rundir=/run/${RC_SVCNAME}
 	ast_logdir=/var/log/${RC_SVCNAME}
 	ast_spooldir=/var/spool/${RC_SVCNAME}
 	ast_confdir=/etc/${RC_SVCNAME/.//}
@@ -291,7 +291,7 @@ wrapperstop() {
 	# Accomodate system upgrades (so a previous version of the wrapper script that still uses a pid file may be running).
 	if [ -r "${ast_rundir}/wrapper_loop.pid" ]; then
 		ebegin "Killing ${ast_instancename} wrapper script"
-		kill "$(cat /var/run/asterisk/wrapper_loop.pid)"
+		kill "$(cat /run/asterisk/wrapper_loop.pid)"
 		eend $?
 	fi
 
@@ -313,7 +313,7 @@ forcestop() {
 	wrapperstop
 
 	ebegin "Stopping ${ast_instancename} PBX"
-	start-stop-daemon --stop --pidfile /var/run/asterisk/asterisk.pid
+	start-stop-daemon --stop --pidfile /run/asterisk/asterisk.pid
 	eend $?
 }
 
