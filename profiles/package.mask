@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-06)
+# Libraries with no other consumers. Removal in 30 days.
+dev-java/mina-core
+dev-java/jnr-unixsocket
+dev-java/jnr-enxio
+
 # Jakov Smolić <jsmolic@gentoo.org> (2021-11-09)
 # Uses EAPI 5, no maintainer in Gentoo, no other
 # distro is packaging this.
