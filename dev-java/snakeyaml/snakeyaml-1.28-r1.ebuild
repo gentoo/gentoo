@@ -21,7 +21,7 @@ SRC_URI="https://bitbucket.org/asomov/${PN}/get/${P}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ppc64 x86"
 
 # Compile dependencies
 # POM: pom.xml
