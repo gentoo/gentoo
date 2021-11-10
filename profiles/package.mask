@@ -567,11 +567,6 @@ dev-vcs/github-pages-publish
 # fork, x11-misc/picom. Bug #817338. Removal in ~30 days.
 x11-misc/compton
 
-# Joonas Niilola <juippis@gentoo.org> (2021-10-10)
-# LiveOnlyPackage with no maintainer. Upstream has multiple releases.
-# Bug #817320. Removal in ~30 days.
-dev-vcs/gti
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
