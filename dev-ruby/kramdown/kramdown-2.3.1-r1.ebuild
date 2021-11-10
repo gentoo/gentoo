@@ -23,7 +23,7 @@ LATEX_DEPS="latex? ( dev-texlive/texlive-latex dev-texlive/texlive-latexextra )"
 RDEPEND+=" ${LATEX_DEPS}"
 DEPEND+=" test? (
 	${LATEX_DEPS}
-	|| ( app-text/tidy-html5 >=app-text/htmltidy-5.0.0 )
+	>=app-text/htmltidy-5.0.0
 )"
 
 ruby_add_rdepend "
