@@ -18,7 +18,7 @@ SRC_URI="https://github.com/eclipse-ee4j/${PN}/archive/refs/tags/${PV}.tar.gz ->
 
 LICENSE="EPL-1.0"
 SLOT="2"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 
 # Common dependencies
 # POM: pom.xml
