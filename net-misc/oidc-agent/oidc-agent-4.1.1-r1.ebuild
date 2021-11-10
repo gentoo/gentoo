@@ -34,11 +34,6 @@ src_prepare() {
 	sed -i -e 's|^\(\s\+\)@|\1|' Makefile || die "Failed to increase verbosity in Makefile"
 }
 
-#src_compile() {
-	# As of 4.0.2 parallel building still doesn't work
-#	emake -j1
-#}
-
 src_install() {
 	emake \
 		PREFIX="${ED}" \
