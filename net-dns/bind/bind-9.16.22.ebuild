@@ -122,14 +122,14 @@ bind_configure() {
 		--with-libtool
 		--enable-full-report
 		--without-readline
-		--with-openssl="${EPREFIX}"/usr
+		--with-openssl="${ESYSROOT}"/usr
 		--without-cmocka
 		$(use_enable caps linux-caps)
 		$(use_enable dnsrps)
 		$(use_enable dnstap)
 		$(use_enable fixed-rrset)
 		# $(use_enable static-libs static)
-		$(use_with berkdb dlz-bdb)
+		$(use_with berkdb dlz-bdb "${ESYSROOT}"/usr)
 		$(use_with dlz dlopen)
 		$(use_with dlz dlz-filesystem)
 		$(use_with dlz dlz-stub)
