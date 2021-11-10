@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~sparc ~x86"
 
 RDEPEND="
 	>=dev-python/frozenlist-1.1.0[${PYTHON_USEDEP}]"
