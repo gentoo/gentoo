@@ -41,7 +41,7 @@ DEPEND="
 	midi? ( media-libs/libsmf )
 	mp4? ( media-libs/libmp4v2:0 )
 	mpeg? ( media-libs/libmpeg2 )
-	tidy? ( || ( app-text/tidy-html5 >=app-text/htmltidy-5.0.0 ) )
+	tidy? ( >=app-text/htmltidy-5.0.0 )
 	tiff? ( media-libs/tiff:0 )
 	vorbis? (
 		media-libs/libogg
