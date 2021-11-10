@@ -109,6 +109,7 @@ QA_DT_NEEDED="/usr/lib.*/libasteriskssl[.]so[.][0-9]\+"
 _make_args=(
 	"NOISY_BUILD=yes"
 	"ASTDBDIR=\$(ASTDATADIR)/astdb"
+	"ASTVARRUNDIR=/run/asterisk"
 	"OPTIMIZE="
 	"DEBUG="
 	"DESTDIR=${D}"
@@ -292,11 +293,11 @@ src_install() {
 	diropts -m 0750 -o asterisk -g asterisk
 	keepdir /var/log/asterisk/{cdr-csv,cdr-custom}
 
-	newinitd "${FILESDIR}"/initd-13.32.0-r1 asterisk
+	newinitd "${FILESDIR}"/initd-13.38.3-r2 asterisk
 	newconfd "${FILESDIR}"/confd-13.32.0 asterisk
 
 	systemd_dounit "${FILESDIR}"/asterisk.service
-	newtmpfiles "${FILESDIR}"/asterisk.tmpfiles2.conf asterisk.conf
+	newtmpfiles "${FILESDIR}"/asterisk.tmpfiles-13.38.3-r2.conf asterisk.conf
 	systemd_install_serviced "${FILESDIR}"/asterisk.service.conf
 
 	# Reset diropts else dodoc uses it for doc installations.
