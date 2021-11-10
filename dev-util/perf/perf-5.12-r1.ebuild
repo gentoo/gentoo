@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..10} )
 inherit bash-completion-r1 estack llvm toolchain-funcs prefix python-r1 linux-info
 
 DESCRIPTION="Userland tools for Linux Performance Counters"
@@ -32,8 +32,8 @@ SRC_URI+=" https://www.kernel.org/pub/linux/kernel/v${LINUX_V}/${LINUX_SOURCES}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
-IUSE="audit babeltrace clang crypt debug +demangle +doc gtk java libpfm lzma numa perl python slang systemtap unwind zlib"
-# TODO babeltrace
+IUSE="audit babeltrace clang crypt debug +doc gtk java libpfm lzma numa perl python slang systemtap unwind zlib zstd"
+
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
@@ -52,12 +52,11 @@ BDEPEND="
 
 RDEPEND="audit? ( sys-process/audit )
 	babeltrace? ( dev-util/babeltrace )
-	crypt? ( dev-libs/openssl:0= )
+	crypt? ( virtual/libcrypt:= )
 	clang? (
 		<sys-devel/clang-10:*
 		<sys-devel/llvm-10:*
 	)
-	demangle? ( sys-libs/binutils-libs:= )
 	gtk? ( x11-libs/gtk+:2 )
 	java? ( virtual/jre:* )
 	libpfm? ( dev-libs/libpfm )
@@ -69,10 +68,12 @@ RDEPEND="audit? ( sys-process/audit )
 	systemtap? ( dev-util/systemtap )
 	unwind? ( sys-libs/libunwind )
 	zlib? ( sys-libs/zlib )
-	dev-libs/elfutils"
+	zstd? ( app-arch/zstd )
+	dev-libs/elfutils
+	sys-libs/binutils-libs:="
 
 DEPEND="${RDEPEND}
-	>=sys-kernel/linux-headers-4.19
+	>=sys-kernel/linux-headers-5.10
 	java? ( virtual/jdk )
 "
 
@@ -80,6 +81,11 @@ S_K="${WORKDIR}/linux-${LINUX_VER}"
 S="${S_K}/tools/perf"
 
 CONFIG_CHECK="~PERF_EVENTS ~KALLSYMS"
+
+QA_FLAGS_IGNORED=(
+	usr/bin/perf-read-vdso32 # not linked with anything except for libc
+	usr/libexec/perf-core/dlfilters/dlfilter-test-api-v0.so # not installed
+)
 
 pkg_pretend() {
 	if ! use doc ; then
@@ -178,6 +184,7 @@ perf_make() {
 		prefix="${EPREFIX}/usr" bindir_relative="bin" \
 		tipdir="share/doc/${PF}" \
 		EXTRA_CFLAGS="${CFLAGS}" \
+		EXTRA_LDFLAGS="${LDFLAGS}" \
 		ARCH="${arch}" \
 		JDIR="${java_dir}" \
 		LIBCLANGLLVM=$(usex clang 1 "") \
@@ -185,7 +192,7 @@ perf_make() {
 		NO_AUXTRACE="" \
 		NO_BACKTRACE="" \
 		NO_CORESIGHT=1 \
-		NO_DEMANGLE=$(puse demangle) \
+		NO_DEMANGLE= \
 		GTK2=$(usex gtk 1 "") \
 		feature-gtk2-infobar=$(usex gtk 1 "") \
 		NO_JVMTI=$(puse java) \
@@ -200,10 +207,11 @@ perf_make() {
 		NO_LIBPERL=$(puse perl) \
 		NO_LIBPYTHON=$(puse python) \
 		NO_LIBUNWIND=$(puse unwind) \
+		NO_LIBZSTD=$(puse zstd) \
 		NO_SDT=$(puse systemtap) \
 		NO_SLANG=$(puse slang) \
 		NO_LZMA=$(puse lzma) \
-		NO_ZLIB= \
+		NO_ZLIB=$(puse zlib) \
 		WERROR=0 \
 		LIBDIR="/usr/libexec/perf-core" \
 		libdir="${EPREFIX}/usr/$(get_libdir)" \
@@ -219,7 +227,7 @@ src_compile() {
 		popd
 	fi
 	perf_make -f Makefile.perf
-	use doc && perf_make -C Documentation
+	use doc && perf_make -C Documentation man html
 }
 
 src_test() {
