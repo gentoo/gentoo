@@ -43,7 +43,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 arm64 ppc64 ~x86"
+KEYWORDS="amd64 arm64 ppc64 x86"
 IUSE="alsa debug cups doc examples headless-awt javafx +jbootstrap +pch selinux source"
 
 COMMON_DEPEND="
