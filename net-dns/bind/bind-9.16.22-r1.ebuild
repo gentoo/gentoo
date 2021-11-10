@@ -124,6 +124,8 @@ bind_configure() {
 		--without-readline
 		--with-openssl="${ESYSROOT}"/usr
 		--without-cmocka
+		# Removed in 9.17, drags in libunwind dependency too
+		--disable-backtrace
 		$(use_enable caps linux-caps)
 		$(use_enable dnsrps)
 		$(use_enable dnstap)
