@@ -70,8 +70,8 @@ src_configure() {
 		--without-lmdb
 		--without-maxminddb
 		--disable-geoip
-		--with-openssl="${EPREFIX}"/usr
-		$(use_with idn libidn2)
+		--with-openssl="${ESYSROOT}"/usr
+		$(use_with idn libidn2 "${ESYSROOT}"/usr)
 		$(use_with xml libxml2)
 		$(use_with gssapi)
 		$(use_with readline)
