@@ -543,12 +543,6 @@ dev-python/onkyo-eiscp
 # Removal on 2021-11-09.  Bug #817389.
 dev-python/ptvsd
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-10)
-# Inactive upstream with reported bugs. Has issues with python 3.9
-# and python 3.10.
-# Removal on 2021-11-09.  Bug #817386.
-dev-python/pipfile
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
