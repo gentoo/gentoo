@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-11-10)
+# Uses EAPI 5, no maintainer, only revdep sobby is
+# also broken and unmaintained.
+# Removal on 2021-12-10. Bug #819318.
+net-libs/obby
+net-misc/sobby
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-10)
 # Current version is outdated, uses EAPI 5, has multiple
 # bug reported. No revdeps.
 # Removal on 2021-12-10. Bug #819306.
