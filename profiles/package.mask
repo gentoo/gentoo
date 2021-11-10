@@ -556,12 +556,6 @@ dev-python/pipfile
 # Removal on 2021-11-09.  Bug #817383.
 dev-db/sadisplay
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-10)
-# Old project, has problems with symlinks in repo. Fails for new
-# GitHub projects.
-# Removal on 2021-11-09.  Bug #817380.
-dev-vcs/github-pages-publish
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
