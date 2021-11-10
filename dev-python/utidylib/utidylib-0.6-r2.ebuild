@@ -28,7 +28,7 @@ DEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 "
 RDEPEND="
-	|| ( app-text/tidy-html5 >=app-text/htmltidy-5.0.0 )
+	>=app-text/htmltidy-5.0.0
 "
 
 RESTRICT="!test? ( test )"
