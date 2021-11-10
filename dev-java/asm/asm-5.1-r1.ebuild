@@ -14,7 +14,7 @@ SRC_URI="https://gitlab.ow2.org/asm/asm/-/archive/${MY_P}/asm-${MY_P}.tar.gz htt
 
 LICENSE="BSD"
 SLOT="4"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~x64-macos"
 
 CDEPEND=""
 DEPEND=">=virtual/jdk-1.8:*"
