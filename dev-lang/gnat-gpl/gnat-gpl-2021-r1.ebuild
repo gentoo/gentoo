@@ -41,7 +41,7 @@ DESCRIPTION="GNAT Ada Compiler - GPL version"
 HOMEPAGE="http://libre.adacore.com/"
 
 LICENSE+=" GPL-2 GPL-3"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+ada +bootstrap"
 RESTRICT="test"
 
