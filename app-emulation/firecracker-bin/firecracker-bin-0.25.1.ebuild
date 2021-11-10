@@ -24,8 +24,9 @@ RESTRICT="test strip"
 RDEPEND="!app-emulation/firecracker
 	acct-group/kvm"
 
-QA_PREBUILT="/usr/bin/firecracker
-	/usr/bin/jailer"
+QA_PREBUILT="usr/bin/firecracker
+	usr/bin/jailer
+	usr/bin/seccompiler-bin"
 
 S="${WORKDIR}"
 
@@ -37,7 +38,7 @@ pkg_pretend() {
 			eerror "Unable to check your kernel for KVM support"
 		else
 			CONFIG_CHECK="~KVM ~TUN ~BRIDGE"
-			CONFIG_CHECK="~KVM ~TUN ~BRIDGE"
+			ERROR_KVM="You must enable KVM in your kernel to continue"
 			ERROR_KVM_AMD="If you have an AMD CPU, you must enable KVM_AMD in"
 			ERROR_KVM_AMD+=" your kernel configuration."
 			ERROR_KVM_INTEL="If you have an Intel CPU, you must enable"
