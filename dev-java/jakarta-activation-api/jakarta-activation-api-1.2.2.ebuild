@@ -17,7 +17,7 @@ SRC_URI="https://github.com/eclipse-ee4j/jaf/archive/refs/tags/${PV}.tar.gz -> $
 
 LICENSE="EPL-1.0"
 SLOT="1"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
