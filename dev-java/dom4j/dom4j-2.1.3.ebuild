@@ -19,7 +19,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/version-${PV}.tar.gz -
 
 LICENSE="dom4j"
 SLOT="1"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE="jaxen"
 
 CDEPEND="
