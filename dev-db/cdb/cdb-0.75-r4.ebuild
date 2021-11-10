@@ -25,8 +25,10 @@ PATCHES=(
 src_prepare() {
 	default
 
-	sed -i -e 's/head -1/head -n 1/g' Makefile \
-		|| die "sed Makefile failed"
+	sed -i \
+		-e "s/head -1/head -n 1/g" \
+		-e "s/ar /$(tc-getAR) /" \
+		Makefile
 }
 
 src_configure() {
