@@ -114,7 +114,7 @@ COMMON_DEPEND="
 	spell? ( >=app-text/aspell-0.50 )
 	sqlite? ( >=dev-db/sqlite-3.7.6.3 )
 	ssl? ( >=dev-libs/openssl-1.0.1:0= )
-	tidy? ( || ( app-text/tidy-html5 app-text/htmltidy ) )
+	tidy? ( app-text/htmltidy )
 	tokyocabinet? ( dev-db/tokyocabinet )
 	truetype? ( =media-libs/freetype-2* )
 	unicode? ( dev-libs/oniguruma:= )
