@@ -568,11 +568,6 @@ dev-vcs/github-pages-publish
 # Masking this development release for now.
 =media-libs/gexiv2-0.13.0
 
-# Patrice Clement <monsieurp@gentoo.org> (2021-10-09)
-# Obsolete and unmaintained. Please switch to app-text/htmltidy.
-# Bug #564884. Masked for removal in 30 days.
-app-text/tidy-html5
-
 # Ionen Wolkens <ionen@gentoo.org> (2021-10-09)
 # Vulkan beta driver branch aimed at Vulkan developers for testing
 # new features. Beside vulkan, it is typically behind the main branch
