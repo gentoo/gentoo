@@ -23,6 +23,7 @@ IUSE="debug +gles +system-wfconfig +system-wlroots X"
 DEPEND="
 	dev-libs/libevdev
 	dev-libs/libinput
+	dev-libs/wayland
 	gui-libs/gtk-layer-shell
 	media-libs/glm
 	media-libs/mesa:=[gles2,wayland,X?]
