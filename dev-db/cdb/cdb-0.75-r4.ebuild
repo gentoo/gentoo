@@ -28,6 +28,7 @@ src_prepare() {
 	sed -i \
 		-e "s/head -1/head -n 1/g" \
 		-e "s/ar /$(tc-getAR) /" \
+		-e "s/ranlib /$(tc-getRANLIB) /" \
 		Makefile
 }
 
