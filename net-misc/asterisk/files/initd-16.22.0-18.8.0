@@ -1,0 +1,363 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="forcestop reload"
+
+depend() {
+	need net
+	use nscd dns dahdi mysql postgresql slapd capi
+}
+
+is_running() {
+	[ -r "${ast_rundir}/asterisk.pid" ] || return 1
+	PID="$(cat "${ast_rundir}/asterisk.pid")"
+	[ -d "/proc/${PID}" ] || return 1
+	EXE="$(readlink -f /proc/${PID}/exe)"
+	EXE="${EXE% (deleted)}" # in case asterisk got upgraded and we're still looking at an old one.
+	[ "${EXE}" = /usr/sbin/asterisk ] || return 1 # pid got re-used for another process.
+
+	# PID reported in pidfile is active, and is still an asterisk instance.
+	return 0
+}
+
+# Sets up a few variables for us for use
+# ast_instancename: eg, asterisk when RC_SVCNAME=asterisk, or asterisk(foo) when asterisk.foo.
+# ast_rundir: directory to be used as run folder (pid and ctl files).
+setup_svc_variables()
+{
+	local t
+
+	ast_instancename=asterisk
+	ast_rundir=/run/${RC_SVCNAME}
+	ast_logdir=/var/log/${RC_SVCNAME}
+	ast_confdir=/etc/${RC_SVCNAME/.//}
+	ast_cachedir=/var/cache/asterisk
+	ast_stop_timeout=120
+	ast_stop_method="gracefully"
+
+	if [ "${RC_SVCNAME}" != "asterisk" ]; then
+		t="${RC_SVCNAME#asterisk.}"
+		if [ "${RC_SVCNAME}" = "${t}" ]; then
+			eerror "Invalid SVCNAME of ${RC_SVCNAME}, must be of the format asterisk.name."
+			return 1
+		fi
+		ast_instancename+="(${t})"
+	fi
+
+	[ -n "${ASTERISK_RUNDIR}" ] && ast_rundir="${ASTERISK_RUNDIR}"
+	[ -n "${ASTERISK_LOGDIR}" ] && ast_logdir="${ASTERISK_LOGDIR}"
+	[ -n "${ASTERISK_CONFDIR}" ] && ast_confdir="${ASTERISK_CONFDIR}"
+	[ -n "${ASTERISK_CACHEDIR}" ] && ast_confdir="${ASTERISK_CACHEDIR}"
+	[ -n "${ASTERISK_STOP_TIMEOUT}" ] && ast_stop_timeout="${ASTERISK_STOP_TIMEOUT}"
+	case "${ASTERISK_STOP_METHOD}" in
+		gracefully|when\ convenient|now)
+			ast_stop_method="${ASTERISK_STOP_METHOD}"
+		;;
+	esac
+	ast_group=
+	if [ -n "${ASTERISK_USER}" ]; then
+		ast_user="${ASTERISK_USER%%:*}"
+		if [ "${ast_user}" != "${ASTERISK_USER}" ]; then
+			ast_group="${ASTERISK_USER#*:}"
+			ast_group="${ast_group%%:*}"
+		fi
+	fi
+
+	[ -z "${ast_user}" ] && ast_user=asterisk
+
+	ast_pgroup="$(getent group $(getent passwd "${ast_user}" | awk -F: '{ print $4 }') | sed -re 's/:.*//')"
+
+	return 0
+}
+
+asterisk_run_loop() {
+	local result=0 signal=0
+
+	echo "Initializing ${ast_instancename} wrapper"
+	OPTS="$*"
+
+	trap "rm -f '${ast_rundir}/wrapper_loop.running'" EXIT
+	touch "${ast_rundir}/wrapper_loop.running"
+
+	while [ -r "${ast_rundir}/wrapper_loop.running" ]; do
+		if [ -n "${TTY}" ]; then
+			/usr/bin/stty -F "${TTY}" sane
+			${NICE} /usr/sbin/asterisk -C "${ast_confdir}/asterisk.conf" ${OPTS} >"${TTY}" 2>&1 <"${TTY}"
+			result=$?
+		else
+			${NICE} /usr/sbin/asterisk -C "${ast_confdir}/asterisk.conf" ${OPTS} >/dev/null 2>&1
+			result=$?
+		fi
+
+		if [ "$result" -eq 0 ]; then
+			echo "Asterisk terminated normally"
+			break
+		else
+			if [ "$result" -gt 128 ]; then
+				signal="$(expr "$result" - 128)"
+				MSG="Asterisk terminated with Signal: $signal"
+
+				CORE_TARGET="core-"
+				yesno "${ASTERISK_CORE_USEHOSTNAME}" && CORE_TARGET+="$(hostname)-"
+				CORE_TARGET+="$(date "+%Y%m%d-%H%M%S")"
+
+				local CORE_DUMPED=0
+				if [ -f "${ASTERISK_CORE_DIR}/core" ]; then
+					mv "${ASTERISK_CORE_DIR}/core" \
+					   "${ASTERISK_CORE_DIR}/${CORE_TARGET}"
+					CORE_DUMPED=1
+
+				elif [ -f "${ASTERISK_CORE_DIR}/core.${PID}" ]; then
+					mv "${ASTERISK_CORE_DIR}/core.${PID}" \
+					   "${ASTERISK_CORE_DIR}/${CORE_TARGET}"
+					CORE_DUMPED=1
+
+				fi
+
+				[ $CORE_DUMPED -eq 1 ] && \
+					MSG="${MSG}\n\rCore dumped: ${ASTERISK_CORE_DIR}/${CORE_TARGET}"
+			else
+				MSG="Asterisk terminated with return code: $result"
+			fi
+
+			# kill left-over tasks
+			for X in ${ASTERISK_CLEANUP_ON_CRASH}; do
+				kill -9 "$(pidof "${X}")";
+			done
+		fi
+
+		[ -n "${TTY}" ] \
+			&& echo "${MSG}" >"${TTY}" \
+			|| echo "${MSG}"
+
+
+		if [ -n "${ASTERISK_NOTIFY_EMAIL}" ] && \
+		   [ -x /usr/sbin/sendmail ]; then
+			echo -e -n "Subject: Asterisk crashed\r\n${MSG}\r\n" |\
+				 /usr/sbin/sendmail "${ASTERISK_NOTIFY_EMAIL}"
+		fi
+		sleep "${ASTERISK_RESTART_DELAY}"
+		echo "Restarting Asterisk..."
+	done
+
+	echo "Terminating wrapper loop."
+	return 0
+}
+
+start() {
+	local OPTS PID
+	local tmp x
+
+	local OPTS ARGS
+
+	setup_svc_variables || return $?
+
+	ebegin "Starting ${ast_instancename} PBX"
+
+	eindent
+
+	# filter (redundant) arguments
+	OPTS="$(echo "${ASTERISK_OPTS}" | sed -re "s:-[cfF]::g")"
+
+	# default options
+	OPTS="${OPTS} -f"  # don't fork / detach breaks wrapper script...
+
+	# ensure that ASTERISK_RESTART_DELAY is integer.
+	ASTERISK_RESTART_DELAY="$(echo "${ASTERISK_RESTART_DELAY}" | sed -re 's/^([0-9]*).*/\1/')"
+	[ -z "${ASTERISK_RESTART_DELAY}" ] && ASTERISK_RESTART_DELAY=5
+
+	if [ -n "${ASTERISK_CORE_SIZE}" ] &&
+	   [ "${ASTERISK_CORE_SIZE}" != "0" ]; then
+		ulimit -c ${ASTERISK_CORE_SIZE}
+
+		if [ -n "${ASTERISK_CORE_DIR}" ] && \
+		   [ ! -d "${ASTERISK_CORE_DIR}" ]
+		then
+			checkpath -d -m 0755 -o ${ast_user}:${ast_group} "${ASTERISK_CORE_DIR}"
+		fi
+		ASTERISK_CORE_DIR="${ASTERISK_CORE_DIR:-/tmp}"
+
+		cd "${ASTERISK_CORE_DIR}"
+		einfo "Core dump size            : ${ASTERISK_CORE_SIZE}"
+		einfo "Core dump location        : ${ASTERISK_CORE_DIR}"
+
+		OPTS="${OPTS} -g"
+	fi
+
+	if [ -n "${ASTERISK_MAX_FD}" ]; then
+		ulimit -n ${ASTERISK_MAX_FD}
+		einfo "Max open filedescriptors  : ${ASTERISK_MAX_FD}"
+	fi
+
+	if [ -n "${ASTERISK_NICE}" ]; then
+		if [ ${ASTERISK_NICE} -ge -20 ] && \
+		   [ ${ASTERISK_NICE} -le  19 ]; then
+			einfo "Nice level                : ${ASTERISK_NICE}"
+			NICE="nice -n ${ASTERISK_NICE} --"
+		else
+			eerror "Nice value must be between -20 and 19"
+			return 1
+		fi
+	else
+		NICE=""
+	fi
+
+	if [ -n "${ASTERISK_NOTIFY_EMAIL}" ]; then
+		if [ -x /usr/sbin/sendmail ]; then
+			einfo "Email notifications go to : ${ASTERISK_NOTIFY_EMAIL}"
+		else
+			ewarn "Notifications disabled, /usr/sbin/sendmail doesn't exist or is not executable!"
+			unset ASTERISK_NOTIFY_EMAIL
+		fi
+	fi
+
+	if [ -n "${ASTERISK_TTY}" ]; then
+		for x in "${ASTERISK_TTY}" \
+			 "/dev/tty${ASTERISK_TTY}" \
+			 "/dev/vc/${ASTERISK_TTY}"
+		do
+			if [ -c "${x}" ]; then
+				TTY="${x}"
+			fi
+		done
+		[ -n "${TTY}" ] && \
+			einfo "Messages are sent to      : ${TTY}"
+	fi
+
+	if yesno "${ASTERISK_CONSOLE}" && [ -n "${TTY}" ]; then
+		einfo "Starting Asterisk console : Yes"
+		OPTS="${OPTS} -c"
+	fi
+
+	if ! getent passwd "${ast_user}" &>/dev/null; then
+		eerror "Requested to run asterisk as ${ast_user}, which doesn't exist."
+		return 1
+	fi
+	OPTS="${OPTS} -U ${ast_user}"
+
+	if [ -n "${ast_group}" ] && ! getent group "${ast_group}" &>/dev/null; then
+		eerror "Requested to run ${ast_instancename} with group ${ast_group}, which doesn't exist."
+		return 1
+	fi
+	[ -n "${ast_group}" ] && OPTS="${OPTS} -G ${ast_group}"
+
+	if [ "${ast_user}" = root ]; then
+		ewarn "Starting asterisk as root is not recommended (SERIOUS SECURITY CONSIDERATIONS)."
+	elif [ "${ast_group}" = root ]; then
+		ewarn "Starting asterisk with group root is not recommended (SERIOUS SECURITY CONSIDERATIONS)."
+	fi
+
+	checkpath -d -m 0755 -o "${ast_user}:${ast_group}" "${ast_logdir}" "${ast_rundir}"
+	checkpath -d -m 0750 -o "${ast_user}:${ast_group}" "${ast_cachedir}"
+
+	einfo "Starting asterisk as      : ${ast_user}:${ast_group:-${ast_pgroup} (+supplementaries)}"
+	asterisk_run_loop ${OPTS} 2>&1 | logger -t "wrapper:${ast_instancename}" &>/dev/null &
+	result=$?
+
+	if [ $result -eq 0 ]; then
+		# 2 seconds should be enough for asterisk to start
+		sleep 2
+		is_running
+		result=$?
+
+		[ $result -eq 0 ] || wrapperstop
+	fi
+
+	eoutdent
+	eend $result
+
+	if [ $result -eq 0 ] && yesno "${ASTERISK_WAITBOOTED}"; then
+		if [ ! -r "${ast_rundir}/asterisk.ctl" ]; then
+			# asterisk can crash during startup ...
+			ebegin "Waiting for ctl file to appear"
+			while is_running && [ ! -r "${ast_rundir}/asterisk.ctl" ]; do
+				sleep 1
+			done
+			is_running
+			result=$?
+			eend $result
+		fi
+		if [ $result -eq 0 ]; then
+			ebegin "Waiting for ${ast_instancename} to fully boot"
+			/usr/sbin/asterisk -C "${ast_confdir}/asterisk.conf" -r -x "core waitfullybooted" &>/dev/null
+			eend $?
+		fi
+	fi
+
+	return $result
+}
+
+wrapperstop() {
+	# Accomodate system upgrades (so a previous version of the wrapper script that still uses a pid file may be running).
+	if [ -r "${ast_rundir}/wrapper_loop.pid" ]; then
+		ebegin "Killing ${ast_instancename} wrapper script"
+		kill "$(cat /run/asterisk/wrapper_loop.pid)"
+		eend $?
+	fi
+
+	# The new one (due to "hardened" requirements) uses a simpler
+	# flag to indicate running or shutting down.
+	if [ -r "${ast_rundir}/wrapper_loop.running" ]; then
+		ebegin "Signalling ${ast_instancename} wrapper script to terminate"
+		rm "${ast_rundir}/wrapper_loop.running"
+		eend $?
+	fi
+
+	return 0
+}
+
+forcestop() {
+	setup_svc_variables || return $?
+
+	# Just to be sure - when we want to forcestop we should make it all tear down.
+	wrapperstop
+
+	ebegin "Stopping ${ast_instancename} PBX"
+	start-stop-daemon --stop --pidfile /run/asterisk/asterisk.pid
+	eend $?
+}
+
+stop() {
+	setup_svc_variables || return $?
+
+	wrapperstop
+
+	if ! is_running; then
+		eerror "${ast_instancename} is not running!"
+		return 0
+	fi
+
+	ebegin "Stopping ${ast_instancename} PBX ${ast_stop_method}"
+	/usr/sbin/asterisk -C "${ast_confdir}/asterisk.conf" -r -x "core stop ${ast_stop_method}" &>/dev/null
+	# Now we have to wait until asterisk has _really_ stopped.
+	sleep 1
+	if is_running; then
+		einfon "Waiting for ${ast_instancename} to shutdown ."
+		local cnt=0
+		while is_running; do
+			cnt="$(expr $cnt + 2)"
+			if [ ${ast_stop_timeout} -gt 0 -a $cnt -gt ${ast_stop_timeout} ] ; then
+				echo
+				eend 1 "Failed waiting for ${ast_instancename} to stop."
+				return 1
+			fi
+			sleep 2
+			echo -n "."
+		done
+		echo
+	fi
+	eend 0
+}
+
+reload() {
+	setup_svc_variables || return $?
+
+	if is_running; then
+		ebegin "Forcing ${ast_instancename} to reload configuration"
+		/usr/sbin/asterisk -C "${ast_confdir}/asterisk.conf" -r -x "module reload" &>/dev/null
+		eend $?
+	else
+		eerror "${ast_instancename} is not running!"
+	fi
+}
