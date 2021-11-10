@@ -71,6 +71,13 @@ src_unpack() {
 	cp "${DISTDIR}"/iconv.c misc/iconv.c || die
 }
 
+src_prepare() {
+	default
+
+	# Expand gethostid instead of being just a stub
+	eapply "${FILESDIR}/${PN}-1.2.2-gethostid.patch"
+}
+
 src_configure() {
 	tc-getCC ${CTARGET}
 	just_headers && export CC=true
