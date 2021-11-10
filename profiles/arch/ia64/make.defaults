@@ -26,4 +26,6 @@ CHOST_ia64="${CHOST}"
 
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
-VIDEO_CARDS="fbdev glint mga nv r128 radeon"
+#VIDEO_CARDS="fbdev glint mga nv r128 radeon"
+INPUT_DEVICES="void"
+VIDEO_CARDS="dummy"
