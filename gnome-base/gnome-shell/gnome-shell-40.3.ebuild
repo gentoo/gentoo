@@ -4,14 +4,14 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{8,9} )
 
-inherit gnome.org gnome2-utils meson python-single-r1 virtualx xdg
+inherit fcaps gnome.org gnome2-utils meson python-single-r1 virtualx xdg
 
 DESCRIPTION="Provides core UI functions for the GNOME desktop"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeShell"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-IUSE="+bluetooth +browser-extension elogind gtk-doc +ibus +networkmanager systemd telepathy"
+IUSE="+bluetooth +browser-extension caps elogind gtk-doc +ibus +networkmanager systemd telepathy"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	?? ( elogind systemd )"
 
@@ -34,6 +34,7 @@ DEPEND="
 	>=app-i18n/ibus-1.5.2
 	>=gnome-base/gnome-desktop-3.35.90:3=[introspection]
 	bluetooth? ( >=net-wireless/gnome-bluetooth-3.9[introspection] )
+	caps? ( sys-libs/libcap-ng )
 	>=media-libs/gstreamer-0.11.92:1.0
 	media-libs/gst-plugins-base:1.0
 	>=media-video/pipewire-0.3.0:0/0.3
@@ -183,6 +184,8 @@ pkg_postinst() {
 		ewarn "You will need to enable kms support in x11-drivers/nvidia-drivers,"
 		ewarn "otherwise Gnome will fail to start"
 	fi
+
+	use caps && fcaps cap_sys_nice usr/bin/gnome-shell
 }
 
 pkg_postrm() {
