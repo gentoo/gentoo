@@ -18,6 +18,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-errno.patch
+	"${FILESDIR}"/${PN}-inline.patch
 	"${FILESDIR}"/${PN}-stdint.patch
 )
 
