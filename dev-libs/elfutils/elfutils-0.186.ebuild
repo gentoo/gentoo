@@ -45,12 +45,20 @@ src_prepare() {
 	default
 
 	if use elibc_musl; then
-		eapply "${FILESDIR}"/musl/
+		mkdir -p "${T}"/musl || die
+		cp -rv "${FILESDIR}"/musl/*.patch "${T}"/musl || die
+
+		# Delete patches upstreamed in 0.186
+		rm "${T}/musl/${PN}-0.185-error-h.patch" || die
+		rm "${T}/musl/${PN}-0.185-strndupa.patch" || die
+
+		eapply "${T}"/musl/
 	fi
 
 	if ! use static-libs; then
 		sed -i -e '/^lib_LIBRARIES/s:=.*:=:' -e '/^%.os/s:%.o$::' lib{asm,dw,elf}/Makefile.in || die
 	fi
+
 	# https://sourceware.org/PR23914
 	sed -i 's:-Werror::' */Makefile.in || die
 }
