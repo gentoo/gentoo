@@ -6,8 +6,8 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Fast, reliable, simple package for creating and reading constant databases"
-HOMEPAGE="http://cr.yp.to/cdb.html"
-SRC_URI="http://cr.yp.to/cdb/${P}.tar.gz"
+HOMEPAGE="https://cr.yp.to/cdb.html"
+SRC_URI="https://cr.yp.to/${PN}/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
