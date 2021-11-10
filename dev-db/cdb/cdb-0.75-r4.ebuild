@@ -17,8 +17,8 @@ DEPEND="!dev-db/tinycdb"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-errno.diff
-	"${FILESDIR}"/${P}-stdint.diff
+	"${FILESDIR}"/${PN}-errno.patch
+	"${FILESDIR}"/${PN}-stdint.patch
 )
 
 src_prepare() {
