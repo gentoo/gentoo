@@ -9,10 +9,6 @@
 		<email>alexxy@gentoo.org</email>
 		<name>Alexey Shvetsov</name>
 	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<maintainer type="person" proxied="yes">
 		<email>mathy@vanvoorden.be</email>
 		<name>Mathy Vanvoorden</name>
@@ -20,6 +16,10 @@
 	<maintainer type="person" proxied="yes">
 		<email>perlovka@gmail.com</email>
 		<name>Michael Perlov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<slots>
 		<subslots>soname major version number</subslots>
