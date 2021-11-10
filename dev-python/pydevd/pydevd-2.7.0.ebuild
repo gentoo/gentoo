@@ -74,7 +74,7 @@ src_compile() {
 	pushd pydevd_attach_to_process/linux_and_mac || die
 	# recompile removed file (extracted from compile_linux.sh)
 	$(tc-getBUILD_CXX) ${CXXFLAGS} ${CPPFLAGS} -o "attach_linux_${ARCH}.so" \
-		-ldl ${LDFLAGS} -nostartfiles attach.cpp || die
+		${LDFLAGS} -ldl -nostartfiles attach.cpp || die
 	mv "attach_linux_${ARCH}.so" ../ || die
 	popd || die
 	python_foreach_impl distutils-r1_python_compile
