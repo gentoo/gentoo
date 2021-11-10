@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~sparc ~x86"
 SLOT="$(ver_cut 1)"
 IUSE=""
 
-# Skip tests for now since they require a lot of 
+# Skip tests for now since they require a lot of
 # dependencies and this package blocks a security bug.
 RESTRICT="test"
 
