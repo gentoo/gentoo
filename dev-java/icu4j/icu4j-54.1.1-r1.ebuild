@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 # testdata.jar, icudata.jar and icutzdata.jar do not contain *.class files
 # but *.res files. These *.res data files are needed to build the final jar.
@@ -19,11 +19,14 @@ SLOT="52"
 KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE=""
 
-# Beware of jdk version dependant code #361593
-DEPEND=">=virtual/jdk-1.6"
-RDEPEND=">=virtual/jre-1.6"
+# the build system does not support java > 1.8
+# also the package does not compile with newer jdks because of missing classes
+DEPEND="virtual/jdk:1.8"
+RDEPEND=">=virtual/jre-1.8:*"
 
 S="${WORKDIR}"
+
+HTML_DOCS="readme.html"
 
 JAVA_PKG_BSFIX_NAME+=" common-targets.xml"
 
@@ -39,7 +42,7 @@ src_install() {
 	java-pkg_dojar ${PN}-charset.jar
 	java-pkg_dojar ${PN}-localespi.jar
 
-	dohtml readme.html
+	einstalldocs
 
 	use doc && java-pkg_dojavadoc doc
 	use examples && java-pkg_doexamples demos samples
