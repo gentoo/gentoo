@@ -1,0 +1,35 @@
+From: Sam James <sam@gentoo.org>
+Date: Wed, 10 Nov 2021 04:53:33 +0000
+Subject: [PATCH] Don't hardcode paths to utilities
+
+The path to e.g. links at build time is not necessarily
+the same as the path at runtime.
+
+TODO: Could chop out the checks from configure but
+this package is fragile enough. Leaving it for now.
+--- a/xmlto.in
++++ b/xmlto.in
+@@ -272,13 +272,13 @@ then
+   USE_BACKEND=DEFAULT
+ fi
+ 
+-LINKS_PATH=@LINKS@
+-W3M_PATH=@W3M@
+-LYNX_PATH=@LYNX@
+-GCP_PATH=@GCP@
+-SED_PATH=@SED@
+-GREP_PATH=@GREP@
+-ZIP_PATH=@ZIP@
++LINKS_PATH=$(command -v links)
++W3M_PATH=$(command -v w3m)
++LYNX_PATH=$(command -v lynx)
++GCP_PATH=$(command -v cp)
++SED_PATH=$(command -v sed)
++GREP_PATH=$(command -v grep)
++ZIP_PATH=$(command -v zip)
+ 
+ # Process any options
+ ARGS=$(${GETOPT} \
+-- 
+2.33.1
+
