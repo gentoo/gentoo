@@ -227,7 +227,7 @@ src_compile() {
 		popd
 	fi
 	perf_make -f Makefile.perf
-	use doc && perf_make -C Documentation man html
+	use doc && perf_make -C Documentation man
 }
 
 src_test() {
@@ -262,7 +262,6 @@ src_install() {
 	docompress -x /usr/share/doc/${PF}/tips.txt
 
 	if use doc ; then
-		HTML_DOCS="Documentation/*.html" einstalldocs
 		doman Documentation/*.1
 	fi
 }
