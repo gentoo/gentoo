@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A pure-java port of asmjit"
 HOMEPAGE="https://github.com/jnr/jnr-x86asm"
-SRC_URI="https://github.com/jnr/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.zip"
+SRC_URI="https://github.com/jnr/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1.0"
