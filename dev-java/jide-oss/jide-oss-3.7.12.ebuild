@@ -41,6 +41,9 @@ JAVA_TEST_EXCLUDES=(
 	"com.jidesoft.swing.CornerScrollerVisualTest" # No runnable methods
 	"com.jidesoft.swing.TestResizableWindow" # No runnable methods
 	"com.jidesoft.utils.TestCacheArray" # No runnable methods
+	# junit.framework.AssertionFailedError: expected:<0> but was:<100>
+	# probably the test is wrong as a cache entry is created for each font size
+	# and each iteration creates a new font size
 	"com.jidesoft.utils.TestFontUtils"
 )
 
