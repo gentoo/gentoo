@@ -112,6 +112,10 @@ src_configure() {
 		$(use_with gmp libgmp)
 	)
 
+	if use gmp ; then
+		myconf+=( --with-libgmp-prefix="${ESYSROOT}"/usr )
+	fi
+
 	if tc-is-cross-compiler && [[ ${CHOST} == *linux* ]] ; then
 		# bug #311569
 		export fu_cv_sys_stat_statfs2_bsize=yes
