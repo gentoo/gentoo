@@ -13,7 +13,7 @@ HOMEPAGE="http://www.mojohaus.org/animal-sniffer/animal-sniffer-annotations/"
 SRC_URI="https://github.com/mojohaus/${MY_PN}/archive/${MY_PN}-parent-${PV}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.7"
 RDEPEND=">=virtual/jre-1.7"
