@@ -23,7 +23,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
-S="${WORKDIR}/${PN}-${PN}-${PV}"
+S="${WORKDIR}/${PN}-${P}"
 
 src_prepare() {
 	default
@@ -31,10 +31,6 @@ src_prepare() {
 	if ! use fox; then
 		sed -i -e 's:PKG_CHECK_MODULES(\[fox\], .*):AC_SUBST(fox_CFLAGS,[ ])AC_SUBST(fox_LIBS,[ ]):' configure.ac || die
 	fi
-
-	# Fix bashisms in the configure.ac file.
-	sed -i -e 's:\([A-Z_]\+\)+="\(.*\)":\1="${\1}\2":g' \
-		-e 's:\([A-Z_]\+\)+=`\(.*\)`:\1="${\1}\2":g' configure.ac || die
 
 	# Portage handles license texts itself, no need to install them
 	sed -i -e 's/LICENSE.*/ # blank/' Makefile.am || die
@@ -56,15 +52,11 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	default
-	local HTML_DOCS
+	emake install DESTDIR="${D}"
+	find "${D}" -name '*.la' -delete || die
+
 	if use doc && multilib_is_native_abi; then
-		HTML_DOCS=( html/. )
+		local HTML_DOCS=( html/. )
 	fi
 	einstalldocs
-}
-
-multilib_src_install_all() {
-	# no static archives
-	find "${ED}" -name '*.la' -delete || die
 }
