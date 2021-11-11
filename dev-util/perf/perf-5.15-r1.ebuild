@@ -162,11 +162,6 @@ src_prepare() {
 
 	# The code likes to compile local assembly files which lack ELF markings.
 	find -name '*.S' -exec sed -i '$a.section .note.GNU-stack,"",%progbits' {} +
-
-	# Fix shebang to use python from prefix
-	if [[ -n "${EPREFIX}" ]]; then
-		hprefixify ${S_K}/scripts/bpf_helpers_doc.py
-	fi
 }
 
 puse() { usex $1 "" no; }
