@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (2021-11-11)
+# Needs testing to ensure valac-0.54 works for existing packages
+>=dev-libs/vala-common-0.53
+dev-lang/vala:0.54
+
 # Jakov Smolić <jsmolic@gentoo.org> (2021-11-10)
 # Uses EAPI 5, dead upstream, no other distro is
 # packaging this.
