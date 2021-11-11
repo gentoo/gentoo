@@ -384,6 +384,7 @@ gstreamer_multilib_src_compile() {
 
 		for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
 			plugin=$(_gstreamer_get_target_filename $(gstreamer_get_plugin_dir ${plugin_dir}))
+			plugin=`echo "${plugin}" | sed -e 's/"${BUILD_DIR}"//'`
 			plugin_path="${plugin%%:*}"
 			eninja "${plugin_path/"${BUILD_DIR}/"}"
 		done
