@@ -56,7 +56,7 @@ SRC_URI="
 
 LICENSE="MIT BSD-with-disclosure"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 src_prepare() {
 	default
