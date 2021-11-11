@@ -11,7 +11,7 @@ SRC_URI="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/${
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 src_compile() { :; }
 
