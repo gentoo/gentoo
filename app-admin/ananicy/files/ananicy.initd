@@ -1,4 +1,4 @@
-#!/usr/bin/openrc-run
+#!/sbin/openrc-run
 
 pidfile="/run/ananicy.pid"
 command="/usr/bin/ananicy"
