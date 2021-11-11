@@ -40,7 +40,7 @@ BDEPEND="
 DEPEND="
 	${LUA_DEPS}
 	>=dev-libs/glib-2.62
-	>=media-video/pipewire-0.3.37
+	>=media-video/pipewire-0.3.39
 	virtual/libc
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd )
@@ -73,14 +73,17 @@ src_configure() {
 
 pkg_postinst() {
 	if systemd_is_booted ; then
-		elog "To replace media-session with WirePlumber immediately:"
-		elog "systemctl --user disable --now pipewire-media-session.service"
-		elog "systemctl --user enable --now wireplumber.service"
+		ewarn "pipewire-media-session.service is no longer installed. You must switch"
+		ewarn "to wireplumber.service user unit before your next logout/reboot:"
+		ewarn "systemctl --user disable --now pipewire-media-session.service"
+		ewarn "systemctl --user enable --now wireplumber.service"
 	else
-		elog "OpenRC users need to copy ${EROOT}/usr/share/pipewire/pipewire.conf"
-		elog "to ${EROOT}/etc/pipewire/pipewire.conf and in it replace"
-		elog "${EROOT}/usr/bin/pipewire-media-session with ${EROOT}/usr/bin/wireplumber"
-		elog "The switch to WirePlumber will happen the next time pipewire is started."
+		ewarn "Switch to WirePlumber will happen the next time gentoo-pipewire-launcher"
+		ewarn "is started (a replacement for directly calling pipewire binary)."
+		ewarn
+		ewarn "Please ensure that ${EROOT}/etc/pipewire/pipewire.conf either does not exist"
+		ewarn "or, if it does exist, that any reference to"
+		ewarn "${EROOT}/usr/bin/pipewire-media-session is commented out (begins with a #)."
 	fi
-	elog
+	ewarn
 }
