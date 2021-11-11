@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
-COMMIT="a4a1710cf5a71bde82951f2ef96a6837124b74af"
+COMMIT="94fd6746619ee8728f2b8740ebf2d1582b03cb15"
 
 DESCRIPTION="Unittest extension with automatic test suite discovery and easy test authoring"
 HOMEPAGE="
