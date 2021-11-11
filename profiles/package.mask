@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# John Helmert III <ajak@gentoo.org> (2021-11-11)
+# Unmaintained and vulnerable.
+# Removal on 2021-12-11. Bugs #735978, #794907
+app-emulation/firecracker
+
 # Mart Raudsepp <leio@gentoo.org> (2021-11-11)
 # Needs testing to ensure valac-0.54 works for existing packages
 >=dev-libs/vala-common-0.53
