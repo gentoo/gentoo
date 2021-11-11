@@ -15,7 +15,7 @@ SRC_URI="https://gforge.inria.fr/frs/download.php/file/${PID}/${P}.tar.gz"
 
 LICENSE="CeCILL-C"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="cuda examples +fortran int64 metis mpi +python +scotch starpu test"
 
 RESTRICT="!test? ( test )"
