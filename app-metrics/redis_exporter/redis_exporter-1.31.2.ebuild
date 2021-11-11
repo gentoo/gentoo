@@ -3,7 +3,7 @@
 
 EAPI=7
 inherit go-module systemd
-EGIT_COMMIT=39d8a4f5e178e4e75ae481fbd9028ff044843c2d
+EGIT_COMMIT=65c95b32a690079c49f7fbe8303e9440f03a004a
 
 DESCRIPTION="Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x"
 HOMEPAGE="https://github.com/oliver006/redis_exporter"
