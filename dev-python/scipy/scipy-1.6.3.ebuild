@@ -108,6 +108,10 @@ python_prepare_all() {
 	sed -e "s:== 'levy_stable':in ('levy_stable', 'crystalball', 'ncf'):" \
 		-i scipy/stats/tests/test_continuous_basic.py || die
 
+	# Skip broken test causing segfault, bug #743295
+	sed -e 's:test_bisplev_integer_overflow:_&:' \
+		-i scipy/interpolate/tests/test_fitpack.py || die
+
 	if has_version ">=sci-libs/lapack-3.10"; then
 		sed -e 's:test_sort(:_&:' \
 			-i scipy/linalg/tests/test_decomp.py || die
