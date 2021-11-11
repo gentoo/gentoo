@@ -3,7 +3,10 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+# We avoid Python 3.10 here _for now_ (it does work!) to avoid circular dependencies
+# on upgrades as people migrate to libxcrypt.
+# https://wiki.gentoo.org/wiki/User:Sam/Portage_help/Circular_dependencies#Python_and_libcrypt
+PYTHON_COMPAT=( python3_{7,8,9} )
 TMPFILES_OPTIONAL=1
 
 inherit python-any-r1 prefix preserve-libs toolchain-funcs flag-o-matic gnuconfig \
