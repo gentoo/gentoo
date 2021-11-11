@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-11-11)
+# Last release was for XFCE 4.10, back in 2013.  Does not support modern
+# Vala versions.  No revdeps.
+# Removal on 2021-12-11.  Bug #823128.
+xfce-extra/xfce4-vala
+
 # John Helmert III <ajak@gentoo.org> (2021-11-11)
 # Unmaintained and vulnerable.
 # Removal on 2021-12-11. Bugs #735978, #794907
