@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-VALA_USE_DEPEND="vapigen"
+VALA_MIN_API_VERSION="0.54" # requires gio-2.0.vapi generated from glib-2.70+
 
 inherit gnome.org meson-multilib vala xdg
 
@@ -19,10 +19,9 @@ REQUIRED_USE="vala? ( introspection )"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 DEPEND="
-	>=dev-libs/glib-2.69.0:2[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.69.1:2[${MULTILIB_USEDEP}]
 	net-libs/nghttp2:=[${MULTILIB_USEDEP}]
 	>=dev-db/sqlite-3.8.2:3[${MULTILIB_USEDEP}]
-	>=dev-libs/libxml2-2.9.1-r4:2[${MULTILIB_USEDEP}]
 	brotli? ( >=app-arch/brotli-1.0.6-r1:=[${MULTILIB_USEDEP}] )
 	>=net-libs/libpsl-0.20[${MULTILIB_USEDEP}]
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4[${MULTILIB_USEDEP}] )
@@ -42,7 +41,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
-	test? ( net-libs/gnutls[pkcs11] )
+	test? ( >=net-libs/gnutls-3.6.0[pkcs11] )
 "
 #	test? (	www-servers/apache[ssl,apache2_modules_auth_digest,apache2_modules_alias,apache2_modules_auth_basic,
 #		apache2_modules_authn_file,apache2_modules_authz_host,apache2_modules_authz_user,apache2_modules_dir,
@@ -52,6 +51,7 @@ BDEPEND="
 #		net-libs/glib-networking[ssl])"
 
 PATCHES=(
+	"${FILESDIR}"/${PV}-fix-leak.patch
 	# Disable apache tests until they are usable on Gentoo, bug #326957
 	"${FILESDIR}"/disable-apache-tests.patch
 )
