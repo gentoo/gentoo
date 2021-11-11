@@ -22,5 +22,8 @@ pkill -u "${USER}" -x pipewire\|wireplumber 1>/dev/null 2>&1
 # non-PW apps over HW control (most notably, /usr/bin/pulseaudio daemon).
 @GENTOO_PORTAGE_EPREFIX@/usr/bin/pipewire -c pipewire-pulse.conf &
 
+# Hack for bug #822498
+sleep 1
+
 # Finally a session manager is required for PipeWire to do anything.
 exec @GENTOO_PORTAGE_EPREFIX@/usr/bin/wireplumber
