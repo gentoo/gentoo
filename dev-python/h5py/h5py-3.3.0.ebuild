@@ -28,7 +28,6 @@ BDEPEND="
 	dev-python/pkgconfig[${PYTHON_USEDEP}]
 	test? (
 		dev-python/QtPy[testlib,${PYTHON_USEDEP}]
-		dev-python/cached-property[${PYTHON_USEDEP}]
 	)"
 #	mpi? ( virtual/mpi )
 #	mpi? ( dev-python/mpi4py[${PYTHON_USEDEP}] )
