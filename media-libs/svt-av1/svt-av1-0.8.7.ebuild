@@ -23,17 +23,6 @@ SLOT="0"
 
 BDEPEND="amd64? ( dev-lang/yasm )"
 
-src_prepare() {
-	if ! use amd64 ; then
-		# This _should_ be possible on amd64 too, but breaks with -O3
-		# without AVX.
-		# bug #785556
-		eapply "${FILESDIR}"/${PN}-0.8.6-no-force-avx.patch
-	fi
-
-	cmake_src_prepare
-}
-
 src_configure() {
 	append-ldflags -Wl,-z,noexecstack
 
