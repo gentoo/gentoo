@@ -1,0 +1,100 @@
+From 25701f0b69ee46914179070b7e8906ea3e521480 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 11 Nov 2021 08:55:41 +0100
+Subject: [PATCH] Use stdlib functools.cached_property if available
+
+Python 3.8+ provides a functools.cached_property in the stdlib that is
+thread-safe, i.e. equivalent to threaded_cached_property.  Use it
+instead of adding third-party dependencies whenever available.
+---
+ setup.py                            | 2 +-
+ src/zeep/wsdl/attachments.py        | 6 +++++-
+ src/zeep/xsd/elements/indicators.py | 6 +++++-
+ src/zeep/xsd/types/any.py           | 6 +++++-
+ src/zeep/xsd/types/complex.py       | 6 +++++-
+ 5 files changed, 21 insertions(+), 5 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index cb51ac4..8ef81b6 100755
+--- a/setup.py
++++ b/setup.py
+@@ -4,7 +4,7 @@ from setuptools import setup
+ 
+ install_requires = [
+     "attrs>=17.2.0",
+-    "cached-property>=1.3.0",
++    "cached-property>=1.3.0; python_version<'3.8'",
+     "isodate>=0.5.4",
+     "lxml>=4.6.0",
+     "platformdirs>=1.4.0",
+diff --git a/src/zeep/wsdl/attachments.py b/src/zeep/wsdl/attachments.py
+index 037e439..075bee5 100644
+--- a/src/zeep/wsdl/attachments.py
++++ b/src/zeep/wsdl/attachments.py
+@@ -6,7 +6,11 @@ See https://www.w3.org/TR/SOAP-attachments
+ 
+ import base64
+ 
+-from cached_property import cached_property
++try:
++    from functools import cached_property
++except ImportError:
++    from cached_property import cached_property
++
+ from requests.structures import CaseInsensitiveDict
+ 
+ 
+diff --git a/src/zeep/xsd/elements/indicators.py b/src/zeep/xsd/elements/indicators.py
+index 40325da..e9ef2c4 100644
+--- a/src/zeep/xsd/elements/indicators.py
++++ b/src/zeep/xsd/elements/indicators.py
+@@ -16,7 +16,11 @@ import operator
+ import typing
+ from collections import OrderedDict, defaultdict, deque
+ 
+-from cached_property import threaded_cached_property
++try:
++    from functools import cached_property as threaded_cached_property
++except ImportError:
++    from cached_property import threaded_cached_property
++
+ from lxml import etree
+ 
+ from zeep.exceptions import UnexpectedElementError, ValidationError
+diff --git a/src/zeep/xsd/types/any.py b/src/zeep/xsd/types/any.py
+index b4525e4..17f244e 100644
+--- a/src/zeep/xsd/types/any.py
++++ b/src/zeep/xsd/types/any.py
+@@ -1,7 +1,11 @@
+ import logging
+ import typing
+ 
+-from cached_property import threaded_cached_property
++try:
++    from functools import cached_property as threaded_cached_property
++except ImportError:
++    from cached_property import threaded_cached_property
++
+ from lxml import etree
+ 
+ from zeep.utils import qname_attr
+diff --git a/src/zeep/xsd/types/complex.py b/src/zeep/xsd/types/complex.py
+index 8141bc1..b2ed9bf 100644
+--- a/src/zeep/xsd/types/complex.py
++++ b/src/zeep/xsd/types/complex.py
+@@ -4,7 +4,11 @@ import typing
+ from collections import OrderedDict, deque
+ from itertools import chain
+ 
+-from cached_property import threaded_cached_property
++try:
++    from functools import cached_property as threaded_cached_property
++except ImportError:
++    from cached_property import threaded_cached_property
++
+ from lxml import etree
+ 
+ from zeep.exceptions import UnexpectedElementError, XMLParseError
+-- 
+2.33.1
+
