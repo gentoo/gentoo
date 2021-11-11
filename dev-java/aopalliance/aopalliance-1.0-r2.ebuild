@@ -18,7 +18,7 @@ HOMEPAGE="http://aopalliance.sourceforge.net/"
 LICENSE="public-domain"
 SLOT="1"
 
-KEYWORDS="amd64 ~arm64 ppc64 x86 ~amd64-linux"
+KEYWORDS="amd64 arm64 ppc64 x86 ~amd64-linux"
 
 IUSE=""
 
