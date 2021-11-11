@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=AUTRIJUS
 DIST_VERSION=0.05
@@ -11,13 +11,12 @@ DESCRIPTION="Library for enabling X-WSSE authentication in LWP"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND="
 	virtual/perl-MIME-Base64
 	dev-perl/Digest-SHA1
 "
-DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}"
 
 src_prepare() {
 	sed -i -e 's/use inc::Module::Install/use lib q[.]; use inc::Module::Install/' Makefile.PL ||
