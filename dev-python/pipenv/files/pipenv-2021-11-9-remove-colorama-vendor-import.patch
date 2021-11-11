@@ -1,0 +1,67 @@
+From 6e994dbc81c326b507c6f3119dfab56113dc17c3 Mon Sep 17 00:00:00 2001
+From: Oz N Tiram <oz.tiram@gmail.com>
+Date: Thu, 11 Nov 2021 13:05:41 +0100
+Subject: [PATCH 2/2] Remove vendored colorama
+
+---
+ pipenv/patched/crayons.py                                   | 2 +-
+ pipenv/vendor/yaspin/core.py                                | 2 +-
+ tasks/vendoring/patches/patched/crayons.patch               | 2 +-
+ tasks/vendoring/patches/vendor/yaspin-signal-handling.patch | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/pipenv/patched/crayons.py b/pipenv/patched/crayons.py
+index d7644a21..19b0d695 100644
+--- a/pipenv/patched/crayons.py
++++ b/pipenv/patched/crayons.py
+@@ -13,7 +13,7 @@ import re
+ import sys
+ 
+ from pipenv.vendor import shellingham
+-from pipenv.vendor import colorama
++import colorama
+ 
+ PY3 = sys.version_info[0] >= 3
+ 
+diff --git a/pipenv/vendor/yaspin/core.py b/pipenv/vendor/yaspin/core.py
+index d8a0716c..c9be016c 100644
+--- a/pipenv/vendor/yaspin/core.py
++++ b/pipenv/vendor/yaspin/core.py
+@@ -19,7 +19,7 @@ import time
+ from typing import List, Set, Union
+ 
+ from termcolor import colored
+-from pipenv.vendor import colorama
++import colorama
+ from pipenv.vendor.vistir import cursor
+ 
+ from .base_spinner import Spinner, default_spinner
+diff --git a/tasks/vendoring/patches/patched/crayons.patch b/tasks/vendoring/patches/patched/crayons.patch
+index 2760ca81..d021bfb1 100644
+--- a/tasks/vendoring/patches/patched/crayons.patch
++++ b/tasks/vendoring/patches/patched/crayons.patch
+@@ -10,7 +10,7 @@ index 455d3e90..de735daf 100644
+ -
+ -import colorama
+ +from pipenv.vendor import shellingham
+-+from pipenv.vendor import colorama
+++import colorama
+  
+ +PY3 = sys.version_info[0] >= 3
+ +
+diff --git a/tasks/vendoring/patches/vendor/yaspin-signal-handling.patch b/tasks/vendoring/patches/vendor/yaspin-signal-handling.patch
+index 705650c3..95feb1c0 100644
+--- a/tasks/vendoring/patches/vendor/yaspin-signal-handling.patch
++++ b/tasks/vendoring/patches/vendor/yaspin-signal-handling.patch
+@@ -6,7 +6,7 @@ index 76dc2439..d8a0716c 100644
+  from typing import List, Set, Union
+  
+  from termcolor import colored
+-+from pipenv.vendor import colorama
+++import colorama
+ +from pipenv.vendor.vistir import cursor
+  
+  from .base_spinner import Spinner, default_spinner
+-- 
+2.32.0
+
