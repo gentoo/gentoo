@@ -18,7 +18,6 @@ IUSE="async"
 
 RDEPEND="
 	>=dev-python/attrs-17.2.0[${PYTHON_USEDEP}]
-	>=dev-python/cached-property-1.3.0[${PYTHON_USEDEP}]
 	>=dev-python/isodate-0.5.4[${PYTHON_USEDEP}]
 	>=dev-python/lxml-4.6.0[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-1.4.0[${PYTHON_USEDEP}]
@@ -27,6 +26,8 @@ RDEPEND="
 	>=dev-python/requests-toolbelt-0.7.1[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	async? ( >=dev-python/aiohttp-1.0[${PYTHON_USEDEP}] )
+"
+BDEPEND="
 	test? (
 		dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/aioresponses[${PYTHON_USEDEP}]
@@ -41,3 +42,7 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-cached-prop.patch
+)
