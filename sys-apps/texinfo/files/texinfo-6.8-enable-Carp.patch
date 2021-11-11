@@ -1,0 +1,20 @@
+This fixes
+
+makeinfo: warning: error loading ./doc/t2h.pm: Undefined subroutine &Texinfo::Config::carp called at /usr/share/texinfo/Texinfo/Convert/HTML.pm line 7308.
+Compilation failed in require at /usr/bin/makeinfo line 342.
+
+when building media-video/ffmpeg-4.4 docs.
+
+diff -Nuar a/tp/texi2any.pl b/tp/texi2any.pl
+--- a/tp/texi2any.pl	2021-06-30 16:25:37.000000000 +0200
++++ b/tp/texi2any.pl	2021-11-11 04:17:32.000000000 +0100
+@@ -34,7 +34,7 @@
+ #use Cwd;
+ use Getopt::Long qw(GetOptions);
+ # for carp
+-#use Carp;
++use Carp;
+ 
+ Getopt::Long::Configure("gnu_getopt");
+ 
+
