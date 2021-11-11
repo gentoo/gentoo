@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit distutils-r1 flag-o-matic
+inherit distutils-r1
 
 DESCRIPTION="Simple Python interface to HDF5 files"
 HOMEPAGE="https://www.h5py.org"
