@@ -5,6 +5,14 @@
     <email>cluster@gentoo.org</email>
     <name>Gentoo Cluster Project</name>
   </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>jaco@uls.co.za</email>
+    <name>Jaco Kroon</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
   <longdescription lang="en">
   ClusterSSH is a tool for making the same change on multiple servers 
   at the same time. The 'cssh' command opens an administration console 
