@@ -52,12 +52,6 @@ net-irc/cgiirc
 net-libs/obby
 net-misc/sobby
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-11-10)
-# Current version is outdated, uses EAPI 5, has multiple
-# bug reported. No revdeps.
-# Removal on 2021-12-10. Bug #819306.
-net-misc/clusterssh
-
 # Jakov Smolić <jsmolic@gentoo.org> (2021-11-09)
 # Uses EAPI 5, no maintainer in Gentoo, no other
 # distro is packaging this.
