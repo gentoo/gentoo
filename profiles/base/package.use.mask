@@ -117,7 +117,7 @@ net-misc/openssh debug
 # Michał Górny <mgorny@gentoo.org> (2021-03-06)
 # LLVM 9 has been removed.
 <dev-lang/julia-1.6.0 system-llvm
-dev-util/perf clang
+<dev-util/perf-5.15 clang
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
 # PCRE JIT support via dev-libs/libpcre2[jit] is only available for certain architectures
