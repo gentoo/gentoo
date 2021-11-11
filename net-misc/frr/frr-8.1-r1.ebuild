@@ -15,7 +15,7 @@ S="${WORKDIR}/frr-${P}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="doc fpm grpc ipv6 kernel_linux nhrp ospfapi pam rpki snmp systemd test"
+IUSE="doc fpm grpc ipv6 kernel_linux nhrp ospfapi pam rpki snmp test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -74,7 +74,6 @@ src_configure() {
 		--localstatedir="${EPREFIX}"/run/frr
 		--with-moduledir="${EPREFIX}"/usr/lib/frr/modules
 		--with-clippy="${BROOT}"/usr/bin/clippy
-		--enable-exampledir="${EPREFIX}"/usr/share/doc/${PF}/samples
 		--enable-user=frr
 		--enable-group=frr
 		--enable-vty-group=frr
@@ -90,7 +89,6 @@ src_configure() {
 		$(usex ospfapi '--enable-ospfclient' '' '' '')
 		$(use_enable rpki)
 		$(use_enable snmp)
-		$(use_enable systemd)
 	)
 
 	econf "${myconf[@]}"
