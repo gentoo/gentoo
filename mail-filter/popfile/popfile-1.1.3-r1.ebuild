@@ -1,12 +1,14 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
+
 inherit edos2unix
 
 DESCRIPTION="Anti-spam bayesian filter"
 HOMEPAGE="http://getpopfile.org"
 SRC_URI="http://getpopfile.org/downloads/${P}.zip"
+S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -29,21 +31,19 @@ RDEPEND="virtual/perl-Digest-MD5
 		dev-perl/IO-Socket-SSL
 		dev-perl/Net-SSLeay )
 	xmlrpc? ( dev-perl/PlRPC )"
-
-DEPEND="app-arch/unzip"
-
-S="${WORKDIR}"
+BDEPEND="app-arch/unzip"
 
 src_prepare() {
+	default
 	local f
-	for f in `find ./ -type f`; do
+	for f in $(find ./ -type f || die); do
 		edos2unix "${f}"
 	done
 }
 
 src_install() {
 	dodoc *.change*
-	rm -rf *.change* license
+	rm -r *.change* license || die
 
 	insinto /usr/share/${PN}
 	doins -r *
