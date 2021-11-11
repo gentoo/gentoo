@@ -1,3 +1,5 @@
+https://githubmemory.com/repo/elastic/apm-server/issues/6238
+https://github.com/elastic/beats/pull/28117
 diff --git a/libbeat/common/seccomp/policy_linux_386.go b/libbeat/common/seccomp/policy_linux_386.go
 index 796b071a1046..40b49113b733 100644
 --- a/libbeat/common/seccomp/policy_linux_386.go
