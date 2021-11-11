@@ -59,8 +59,8 @@ RDEPEND+="
 	!<net-fs/netatalk-2.0.3-r4"
 
 pkg_pretend() {
-	if has_version sys-fs/zfs; then
-		einfo "Checking for compatible ZFS version"
+	if has_version "<sys-fs/zfs-9999" ; then
+		einfo "Checking for running ZFS module version"
 
 		local kmodv minver
 		kmodv="$(grep kmod <(zfs -V 2>/dev/null))"
@@ -73,6 +73,9 @@ pkg_pretend() {
 			Attempted installation of ${P} on unsupported version of zfs-kmod!
 			Please reboot to a newer version of zfs-kmod first:
 			zfs-kmod >=2.0.7 or zfs-kmod >=2.1.1-r3
+			Using ${P} with running version of zfs-kmod of can
+			lead to data loss while using cp command on some configurations.
+			See https://github.com/openzfs/zfs/issues/11900 for details.
 		EOF
 		)
 
