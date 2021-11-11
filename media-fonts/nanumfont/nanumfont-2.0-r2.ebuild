@@ -6,8 +6,8 @@ EAPI=7
 inherit font
 
 DESCRIPTION="Korean monospace font distributed by Naver"
-HOMEPAGE="https://developers.naver.com/projects/nanumfont"
-SRC_URI="http://dev.naver.com/frs/download.php/441/NanumGothicCoding-${PV}.zip"
+HOMEPAGE="https://github.com/naver/nanumfont"
+SRC_URI="https://github.com/naver/${PN}/releases/download/VER${PV}/NanumGothicCoding-${PV}.zip"
 S="${WORKDIR}"
 
 LICENSE="OFL-1.1"
