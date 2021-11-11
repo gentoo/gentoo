@@ -20,7 +20,6 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/cached-property-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/distro-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/docker-py-4.4.4[${PYTHON_USEDEP}]
 	>=dev-python/dockerpty-0.4.1[${PYTHON_USEDEP}]
