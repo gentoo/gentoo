@@ -1,0 +1,31 @@
+From d7e640cf95f72deeca501d34afed59a0bc9d7940 Mon Sep 17 00:00:00 2001
+From: Brian Behlendorf <behlendorf1@llnl.gov>
+Date: Wed, 10 Nov 2021 16:14:32 -0800
+Subject: [PATCH] Restore dirty dnode detection logic
+
+In addition to flushing memory mapped regions when checking holes,
+commit de198f2d95 modified the dirty dnode detection logic to check
+the dn->dn_dirty_records instead of the dn->dn_dirty_link.  Relying
+on the dirty record has not be reliable, switch back to the previous
+method.
+
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Issue #11900
+Closes #12745
+---
+ module/zfs/dnode.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/module/zfs/dnode.c b/module/zfs/dnode.c
+index 572d88ec2bf..7044c1fc634 100644
+--- a/module/zfs/dnode.c
++++ b/module/zfs/dnode.c
+@@ -1657,7 +1657,7 @@ dnode_is_dirty(dnode_t *dn)
+ 	mutex_enter(&dn->dn_mtx);
+ 
+ 	for (int i = 0; i < TXG_SIZE; i++) {
+-		if (list_head(&dn->dn_dirty_records[i]) != NULL) {
++		if (multilist_link_active(&dn->dn_dirty_link[i])) {
+ 			mutex_exit(&dn->dn_mtx);
+ 			return (B_TRUE);
+ 		}
