@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_9 )
 
 inherit distutils-r1
 
-DESCRIPTION="Pythonic DBus library"
-HOMEPAGE="https://github.com/LEW21/pydbus"
+DESCRIPTION="Bluetooth GATT SDK for Python"
+HOMEPAGE="https://github.com/getsenic/gatt-python"
 SRC_URI="https://github.com/getsenic/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
