@@ -1,0 +1,76 @@
+diff --git a/gixy/core/regexp.py b/gixy/core/regexp.py
+index 7a96187..f360604 100644
+--- a/gixy/core/regexp.py
++++ b/gixy/core/regexp.py
+@@ -3,7 +3,11 @@ import logging
+ import re
+ import random
+ import itertools
+-from cached_property import cached_property
++
++try:
++    from functools import cached_property
++except ImportError:
++    from cached_property import cached_property
+ 
+ import gixy.core.sre_parse.sre_parse as sre_parse
+ 
+diff --git a/gixy/directives/block.py b/gixy/directives/block.py
+index 5e5b1ed..cc9bcb0 100644
+--- a/gixy/directives/block.py
++++ b/gixy/directives/block.py
+@@ -1,4 +1,7 @@
+-from cached_property import cached_property
++try:
++    from functools import cached_property
++except ImportError:
++    from cached_property import cached_property
+ 
+ from gixy.directives.directive import Directive
+ from gixy.core.variable import Variable
+diff --git a/gixy/parser/raw_parser.py b/gixy/parser/raw_parser.py
+index 6a30b7f..0f43308 100644
+--- a/gixy/parser/raw_parser.py
++++ b/gixy/parser/raw_parser.py
+@@ -1,7 +1,11 @@
+ import logging
+ import codecs
+ import six
+-from cached_property import cached_property
++
++try:
++    from functools import cached_property
++except ImportError:
++    from cached_property import cached_property
+ 
+ from pyparsing import (
+     Literal, Suppress, White, Word, alphanums, Forward, Group, Optional, Combine,
+diff --git a/requirements.txt b/requirements.txt
+index dbf6d5f..47a1b54 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,6 +1,6 @@
+ pyparsing>=1.5.5
+-cached-property>=1.2.0
++cached-property>=1.2.0;python_version<"3.8"
+ argparse>=1.4.0
+ six>=1.1.0
+ Jinja2>=2.8
+-ConfigArgParse>=0.11.0
+\ No newline at end of file
++ConfigArgParse>=0.11.0
+diff --git a/setup.py b/setup.py
+index e4314a6..e57842b 100644
+--- a/setup.py
++++ b/setup.py
+@@ -18,8 +18,8 @@ setup(
+     url='https://github.com/yandex/gixy',
+     install_requires=[
+         'pyparsing>=1.5.5',
+-        'cached-property>=1.2.0',
+-        'argparse>=1.4.0',
++        'cached-property>=1.2.0;python_version<"3.8"',
++        'argparse>=1.4.0;python_version<"3.2"',
+         'six>=1.1.0',
+         'Jinja2>=2.8',
+         'ConfigArgParse>=0.11.0'
