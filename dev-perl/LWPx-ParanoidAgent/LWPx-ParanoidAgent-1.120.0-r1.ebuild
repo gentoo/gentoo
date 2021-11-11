@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_SECTION=lwp
 DIST_AUTHOR=SAXJAZMAN
@@ -12,15 +12,16 @@ DESCRIPTION="Subclass of LWP::UserAgent that protects you from harm"
 
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE=""
 
-DEPEND="dev-perl/libwww-perl
+RDEPEND="
+	dev-perl/libwww-perl
 	dev-perl/Net-DNS
 	virtual/perl-Time-HiRes
 "
-RDEPEND="${DEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
+
 src_test() {
 	local my_test_control
 	my_test_control=${DIST_TEST_OVERRIDE:-${DIST_TEST:-do parallel}}
