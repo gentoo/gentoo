@@ -1,0 +1,86 @@
+From c3af8c1f8b0da050a7c4c8fb5083ff44885fa959 Mon Sep 17 00:00:00 2001
+From: Brian Chen <brianc118@fb.com>
+Date: Mon, 23 Aug 2021 11:45:01 -0700
+Subject: [PATCH] Fix procfs when reading cgroup membership (#8106)
+
+Summary:
+When reading cgroup membership, we currently assume that the cgroup v2
+line will be first in /proc/[pid]/cgroup. This is not necessarily the
+case. Instead let's take the first line that starts with "0::".
+
+Tested on ubuntu where
+
+```
+$ cat /proc/1/cgroup
+12:blkio:/init.scope
+11:pids:/init.scope
+8:memory:/init.scope
+7:freezer:/
+4:devices:/init.scope
+2:cpu,cpuacct:/init.scope
+1:name=systemd:/init.scope
+0::/init.scope
+```
+
+This should fix https://github.com/facebookincubator/below/issues/8105.
+
+Pull Request resolved: https://github.com/facebookincubator/below/pull/8106
+
+Test Plan: Existing procfs tests should pass
+
+Reviewed By: lnyng
+
+Differential Revision: D30476031
+
+Pulled By: brianc118
+
+fbshipit-source-id: e0352fb039bebf44a0d5584120ea0a0a82c0cd01
+---
+ below/procfs/src/lib.rs | 33 ++++++++++++++++++---------------
+ 1 file changed, 18 insertions(+), 15 deletions(-)
+
+--- a/below/procfs/src/lib.rs
++++ b/below/procfs/src/lib.rs
+@@ -556,24 +556,27 @@ impl ProcReader {
+         let path = path.as_ref().join("cgroup");
+         let file = File::open(&path).map_err(|e| Error::IoError(path.clone(), e))?;
+         let buf_reader = BufReader::new(file);
+-        let pid_line = buf_reader.lines().next().map_or_else(
+-            || Err(Error::InvalidFileFormat(path.clone())),
+-            |line| line.map_err(|e| Error::IoError(path.clone(), e)),
+-        )?;
+-
+-        // cgroup V2
+-        if pid_line.len() > 3 && pid_line.starts_with("0::") {
+-            return Ok(pid_line[3..].to_string());
+-        }
+ 
+-        // legacy cgroup will have multiple lines with the first line of [0-9]+:pids:PATH
+-        if let Some(pid_idx) = pid_line.find(":pids:") {
+-            if pid_idx + 6 < pid_line.len() {
+-                return Ok(pid_line[pid_idx + 6..].to_string());
++        let mut cgroup_path = None;
++        for line in buf_reader.lines() {
++            let line = line.map_err(|e| Error::IoError(path.clone(), e))?;
++            // Lines contain three colon separated fields:
++            //   hierarchy-ID:controller-list:cgroup-path
++            // A line starting with "0::" would be an entry for cgroup v2.
++            // Otherwise, the line containing "pids" controller is what we want
++            // for cgroup v1.
++            let parts: Vec<_> = line.split(':').collect();
++            if parts.len() == 3 {
++                if parts[0] == "0" && parts[1] == "" {
++                    cgroup_path = Some(parts[2].to_owned());
++                    // cgroup v2 takes precedence
++                    break;
++                } else if parts[1].split(',').any(|c| c == "pids") {
++                    cgroup_path = Some(parts[2].to_owned());
++                }
+             }
+         }
+-
+-        Err(Error::InvalidFileFormat(path))
++        cgroup_path.ok_or_else(|| Error::InvalidFileFormat(path))
+     }
+ 
+     pub fn read_pid_cgroup(&self, pid: u32) -> Result<String> {

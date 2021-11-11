@@ -207,7 +207,10 @@ DEPEND="
 "
 
 QA_FLAGS_IGNORED="usr/bin/below"
-
+PATCHES=(
+	"${FILESDIR}"/${P}-cgroup-parse-fixes-01.patch
+	"${FILESDIR}"/${P}-cgroup-parse-fixes-02.patch
+)
 src_install() {
 	cargo_src_install --path below
 
