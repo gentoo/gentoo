@@ -54,8 +54,8 @@ RDEPEND="audit? ( sys-process/audit )
 	babeltrace? ( dev-util/babeltrace )
 	crypt? ( virtual/libcrypt:= )
 	clang? (
-		<sys-devel/clang-10:*
-		<sys-devel/llvm-10:*
+		sys-devel/clang:=
+		sys-devel/llvm:=
 	)
 	gtk? ( x11-libs/gtk+:2 )
 	java? ( virtual/jre:* )
@@ -96,7 +96,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	use clang && LLVM_MAX_SLOT=9 llvm_pkg_setup
+	use clang && llvm_pkg_setup
 	# We enable python unconditionally as libbpf always generates
 	# API headers using python script
 	python_setup
@@ -138,6 +138,12 @@ src_prepare() {
 	if [[ -n ${LINUX_PATCH} ]] ; then
 		pushd "${S_K}" >/dev/null || die
 		eapply "${WORKDIR}"/${P}.patch
+		popd || die
+	fi
+
+	if use clang; then
+		pushd "${S_K}" >/dev/null || die
+		eapply "${FILESDIR}"/${P}-clang.patch
 		popd || die
 	fi
 
@@ -222,9 +228,7 @@ perf_make() {
 src_compile() {
 	# test-clang.bin not build with g++
 	if use clang; then
-		pushd "${S_K}/tools/build/feature/" || die
-		make V=1 CXX=${CHOST}-clang++ test-clang.bin || die
-		popd
+		make -C "${S_K}/tools/build/feature" V=1 CXX=${CHOST}-clang++ test-clang.bin || die
 	fi
 	perf_make -f Makefile.perf
 	use doc && perf_make -C Documentation man
