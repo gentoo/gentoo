@@ -207,4 +207,10 @@ pkg_postinst() {
 		ewarn
 		ewarn "Refer to /etc/zfs/compatibility.d/grub2 for list of features."
 	fi
+
+	echo
+	ewarn "This versions of ${PN} includes a very important fix for upstream bug"
+	ewarn "https://github.com/openzfs/zfs/issues/11900"
+	ewarn "Please reboot into kernel with ${P} as soon as possible"
+	echo
 }
