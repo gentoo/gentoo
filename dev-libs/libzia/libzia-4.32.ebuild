@@ -11,7 +11,7 @@ SRC_URI="http://tucnak.nagano.cz/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="ftdi"
 
 RDEPEND="dev-libs/glib:2
