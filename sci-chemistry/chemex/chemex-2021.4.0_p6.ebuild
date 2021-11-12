@@ -18,7 +18,7 @@ KEYWORDS="~amd64"
 IUSE="test"
 
 #RESTRICT="!test? ( test )"
-# FIXME: Restrict until we figure out how to run tests properly, bug #815079
+# FIXME: Restrict until tests are readded https://github.com/gbouvignies/ChemEx/issues/51
 RESTRICT="test"
 
 RDEPEND="
