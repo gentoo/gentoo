@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=CAPOEIRAB
 DIST_VERSION=0.903
@@ -11,8 +11,7 @@ DESCRIPTION="Module for sending mails with attachments through an SMTP server"
 
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-IUSE="test minimal"
-RESTRICT="!test? ( test )"
+IUSE="minimal"
 
 RDEPEND="
 	!minimal? (
@@ -30,13 +29,14 @@ RDEPEND="
 	virtual/perl-Socket
 	virtual/perl-Time-Local
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		virtual/perl-File-Spec
 		>=virtual/perl-Test-Simple-0.880.0
 	)
 "
+
 pkg_postinst() {
 	ewarn "dev-perl/Mail-Sender is deprecated by upstream."
 	ewarn
