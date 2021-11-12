@@ -58,7 +58,6 @@ src_prepare() {
 
 src_configure() {
 	gnome2_src_configure \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		$(use_enable doc documentation) \
 		$(use_enable test unittests)
 }
