@@ -1,3 +1,6 @@
+https://bugs.gentoo.org/814944
+https://github.com/akheron/jansson/commit/0677666f65b988b2dd44d02966a08fea490d5883
+
 From 0677666f65b988b2dd44d02966a08fea490d5883 Mon Sep 17 00:00:00 2001
 From: Petri Lehtinen <petri@digip.org>
 Date: Thu, 9 Sep 2021 21:53:11 +0300
