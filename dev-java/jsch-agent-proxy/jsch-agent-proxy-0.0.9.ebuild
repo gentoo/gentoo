@@ -18,7 +18,7 @@ SRC_URI="https://github.com/ymnk/jsch-agent-proxy/archive/${MY_COMMIT}.tar.gz ->
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 
 # Common dependencies
 # POM: ${PN}-12c3d64fc2b0a4fd37659369edfdee26e48954e2/${PN}-jsch/pom.xml
