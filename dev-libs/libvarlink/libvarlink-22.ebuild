@@ -12,14 +12,6 @@ SRC_URI="https://github.com/varlink/libvarlink/archive/${PV}.tar.gz -> ${P}.tar.
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
 RESTRICT+=" test"
 
 BDEPEND="virtual/pkgconfig"
-
-src_configure() {
-	local emesonargs=(
-		-Dtests="$(usex test true false)"
-	)
-	meson_src_configure
-}
