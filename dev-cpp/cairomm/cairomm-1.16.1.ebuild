@@ -36,7 +36,7 @@ BDEPEND="
 
 multilib_src_configure() {
 	local emesonargs=(
-		$(meson_native_use_bool doc documentation)
+		$(meson_native_use_bool doc build-documentation)
 		-Dbuild-examples=false
 		$(meson_use test build-tests)
 		-Dboost-shared=true
