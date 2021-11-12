@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
@@ -12,6 +13,8 @@ else
 		mirror://sourceforge/sdcc/${PN}-src-${PV}.tar.bz2
 		doc? ( mirror://sourceforge/sdcc/${PN}-doc-${PV}.tar.bz2 )
 	"
+	S="${WORKDIR}/sdcc"
+
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -29,10 +32,11 @@ SDCC_PORTS="
 	avr
 	mcs51
 	z80 z180
-	r2k r3ka
+	r2k r2ka r3ka
 	gbz80
 	tlcs90
 	ez80-z80
+	z80n
 	ds390 ds400
 	pic14 pic16
 	hc08
@@ -60,7 +64,8 @@ RDEPEND="
 	dev-libs/boost:=
 	sys-libs/ncurses:=
 	sys-libs/readline:0=
-	>=dev-embedded/gputils-0.13.7
+	pic14? ( >=dev-embedded/gputils-0.13.7 )
+	pic16? ( >=dev-embedded/gputils-0.13.7 )
 	boehm-gc? ( dev-libs/boehm-gc:= )
 	!dev-embedded/sdcc-svn
 "
@@ -113,10 +118,12 @@ src_configure() {
 		$(use_enable z80 z80-port) \
 		$(use_enable z180 z180-port) \
 		$(use_enable r2k r2k-port) \
+		$(use_enable r2ka r2ka-port) \
 		$(use_enable r3ka r3ka-port) \
 		$(use_enable gbz80 gbz80-port) \
 		$(use_enable tlcs90 tlcs90-port) \
 		$(use_enable ez80-z80 ez80_z80-port) \
+		$(use_enable z80n z80n-port) \
 		$(use_enable ds390 ds390-port) \
 		$(use_enable ds400 ds400-port) \
 		$(use_enable pic14 pic14-port) \
@@ -146,5 +153,5 @@ src_install() {
 	# a bunch of archives (*.a) are built & installed by gputils
 	# for PIC processors, but they do not work with standard `ar`
 	# & `scanelf` utils and they're not for the host.
-	dostrip /usr/bin
+	dostrip -x /usr/bin
 }
