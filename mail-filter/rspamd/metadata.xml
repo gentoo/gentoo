@@ -18,5 +18,6 @@
   </upstream>
   <use>
     <flag name="pcre2">Use dev-libs/libpcre2</flag>
+    <flag name="jit">Enable PCRE JIT support</flag>
   </use>
 </pkgmetadata>
