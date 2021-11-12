@@ -24,7 +24,6 @@ RESTRICT="!test? ( test )"
 
 # A part of tests use ffi luajit extension
 REQUIRED_USE="${LUA_REQUIRED_USE}
-	jit? ( lua_single_target_luajit )
 	test? ( lua_single_target_luajit )"
 
 RDEPEND="${LUA_DEPS}
