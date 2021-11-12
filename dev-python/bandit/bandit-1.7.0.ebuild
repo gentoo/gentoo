@@ -37,9 +37,9 @@ RDEPEND="
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.20.0[${PYTHON_USEDEP}]"
 
-python_prepare() {
+src_prepare() {
 	sed -i 's/yaml.load/yaml.safe_load/g' tests/unit/formatters/test_yaml.py || die
-	distutils-r1_python_prepare_all
+	distutils-r1_src_prepare
 }
 
 python_test() {
