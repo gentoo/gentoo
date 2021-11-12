@@ -3,19 +3,26 @@
 
 EAPI=8
 
-DIST_AUTHOR="DUNCS"
-DIST_NAME="App-ClusterSSH"
-#DIST_VERSION="$(ver_cut 1-2)"
-
-#die "|$(ver_cut 1-2)_$(ver_cut 3)|"
-inherit perl-module
-
 DESCRIPTION="Concurrent Multi-Server Terminal Access"
 HOMEPAGE="https://github.com/duncs/clusterssh"
+if [[ ${PV} == *9999* ]] ; then
+	EGIT_REPO_URI="https://github.com/duncs/clusterssh"
+	inherit git-r3
+else
+	DIST_AUTHOR="DUNCS"
+	DIST_NAME="App-ClusterSSH"
+	# Use dev-perl/Gentoo-PerlMod-Version to update this on bumps!
+	# DIST_VERSION=$(gentoo-perlmod-version.pl ${UPSTREAM_VERSION})
+	#DIST_VERSION="$(ver_cut 1-2)"
+	#die "|$(ver_cut 1-2)_$(ver_cut 3)|"
+
+	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+fi
+
+inherit perl-module
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
