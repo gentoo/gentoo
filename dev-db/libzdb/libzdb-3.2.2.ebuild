@@ -11,7 +11,7 @@ SRC_URI="https://www.tildeslash.com/${PN}/dist/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug doc mysql postgres +sqlite ssl static-libs"
 REQUIRED_USE=" || ( postgres mysql sqlite )"
 
