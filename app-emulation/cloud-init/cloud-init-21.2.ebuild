@@ -35,8 +35,8 @@ CDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 "
 DEPEND="
-	test? (
 		${CDEPEND}
+	test? (
 		>=dev-python/httpretty-0.7.1[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
