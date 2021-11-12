@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 IUSE="doc"
 # NOTE: Documentation currently empty (version 0.4.1_p20210122)
 
