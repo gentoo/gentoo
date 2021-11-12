@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=JMEHNLE
 DIST_SECTION=mail-spf
@@ -13,8 +13,6 @@ DESCRIPTION="An object-oriented implementation of Sender Policy Framework"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-perl/Error
@@ -25,7 +23,7 @@ RDEPEND="
 	virtual/perl-version
 	!!dev-perl/Mail-SPF-Query
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.280.500
 	>=dev-perl/Net-DNS-Resolver-Programmable-0.3.0
 	test? ( virtual/perl-Test-Simple )
