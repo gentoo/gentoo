@@ -3,13 +3,13 @@
 
 EAPI=8
 
-DESCRIPTION="Dogecoin Core live version of blockchain node and RPC server."
+DESCRIPTION="Dogecoin Core 1.21 development version of blockchain node and RPC server."
 HOMEPAGE="https://github.com/dogecoin"
-EGIT_REPO_URI="https://github.com/dogecoin/dogecoin.git"
-inherit git-r3
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/heads/${PV}-dev.tar.gz -> ${P}-dev.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 DB_VER="5.3"
+KEYWORDS="~amd64 ~x86"
 IUSE="gui +src test +wallet zmq"
 RESTRICT="!test? ( test )"
 DOGEDIR="/opt/${PN}"
@@ -30,7 +30,7 @@ BDEPEND="
 	sys-devel/autoconf
 	sys-devel/automake
 "
-WORKDIR_="${WORKDIR}/${P}"
+WORKDIR_="${WORKDIR}/${P}-dev"
 S=${WORKDIR_}
 
 src_configure() {
@@ -41,7 +41,8 @@ src_configure() {
 		--with-incompatible-bdb
 		--bindir="${DOGEDIR}/bin"
 		--datadir="${DOGEDIR}/dogecoind"
-		CPPFLAGS="-I/usr/include/db${DB_VER}" CFLAGS="-I/usr/include/db${DB_VER}"
+		CPPFLAGS="-I/usr/include/db${DB_VER}"
+		CFLAGS="-I/usr/include/db${DB_VER}"
 		--with-gui=$(usex gui qt5 no)
 		$(use_enable test tests)
 		$(use_with gui qt-incdir /usr/include/qt5)
@@ -67,12 +68,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "${P} live version has been installed."
+	elog "${P} development version has been installed."
 	elog "Dogecoin Core binaries have been placed in ${DOGEDIR}/bin."
 	elog "dogecoin.conf is in ${DOGEDIR}/dogecoind/dogecoin.conf.  It can be symlinked with where the .dogecoin resides, for example: 'ln -s ${DOGEDIR}/dogecoind/dogecoin.conf /root/.dogecoin/dogecoin.conf'."
 	if use src; then
 		#Modify tests_config.py file SRCDIR and BUILDDIR variables with correct values where Dogecoin Core is installed
-		sed -i "s#SRCDIR=\"${WORKDIR_}\"#SRCDIR=\"${DOGEDIR}/src/${P}\"#g" "${DOGEDIR}/src/${P}/qa/pull-tester/tests_config.py"
-		sed -i "s#BUILDDIR=\"${WORKDIR_}\"#BUILDDIR=\"${DOGEDIR}/bin\"#g" "${DOGEDIR}/src/${P}/qa/pull-tester/tests_config.py"
+		sed -i "s#SRCDIR=\"${WORKDIR_}\"#SRCDIR=\"${DOGEDIR}/src/${P}-dev\"#g" "${DOGEDIR}/src/${P}-dev/qa/pull-tester/tests_config.py"
+		sed -i "s#BUILDDIR=\"${WORKDIR_}\"#BUILDDIR=\"${DOGEDIR}/bin\"#g" "${DOGEDIR}/src/${P}-dev/qa/pull-tester/tests_config.py"
 	fi
 }

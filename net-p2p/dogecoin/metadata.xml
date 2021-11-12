@@ -18,7 +18,7 @@
 		<flag name="gui">Build Dogecoin Core with dogecoin-qt GUI support</flag>
 		<flag name="src">Include Dogecoin Core source files with this build</flag>
 		<flag name="test">Compile with tests</flag>
-		<flag name="wallet">Build Dogecoin Core with required wallet support</flag>
+		<flag name="wallet">Build Dogecoin Core with wallet support</flag>
 		<flag name="zmq">Enables ZeroMQ notifications</flag>
 	</use>
 	<longdescription lang="en">
