@@ -3,7 +3,7 @@
      weekly
      missingok
      rotate 52
-     size=+1024k
+     size +1024k
      delaycompress
      notifempty
      create 644 firebird
