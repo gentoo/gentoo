@@ -297,7 +297,7 @@ multilib_src_install() {
 
 		dotmpfiles "${FILESDIR}"/samba.conf
 		if ! use addc ; then
-			rm "${ED}/$(systemd_get_systemunitdir)/samba.service" \
+			rm "${D}/$(systemd_get_systemunitdir)/samba.service" \
 				|| die
 		fi
 
