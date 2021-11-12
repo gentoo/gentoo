@@ -29,7 +29,8 @@ pkg_pretend() {
 
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-0.8_pre1-timestamp-${PN}.patch \
-		"${FILESDIR}"/${PN}-129-debugflags.patch
+		"${FILESDIR}"/${PN}-129-debugflags.patch \
+		"${FILESDIR}"/${PN}-179-fix-logrotate.patch
 	eapply_user
 	tc-export CC
 }
