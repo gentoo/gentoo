@@ -17,7 +17,7 @@ IUSE="+alsa ao +audiofile bzip2 cdio chromaprint +cue +curl doc +dbus
 	+ipv6 jack lame libmpdclient libsamplerate libsoxr +mad mikmod mms
 	modplug mpg123 musepack +network nfs openal opus oss pipe pulseaudio qobuz
 	recorder samba selinux sid signalfd sndfile sndio soundcloud sqlite systemd
-	test tidal twolame udisks vorbis wavpack webdav wildmidi upnp
+	test twolame udisks vorbis wavpack webdav wildmidi upnp
 	zeroconf zip zlib"
 
 OUTPUT_PLUGINS="alsa ao fifo jack network openal oss pipe pulseaudio sndio recorder"
@@ -92,8 +92,6 @@ RDEPEND="
 	soundcloud? ( >=dev-libs/yajl-2:= )
 	sqlite? ( dev-db/sqlite:3 )
 	systemd? ( sys-apps/systemd )
-	tidal? ( dev-libs/yajl
-		net-misc/curl )
 	twolame? ( media-sound/twolame )
 	udisks? ( sys-fs/udisks:2 )
 	upnp? ( net-libs/libupnp:0 )
@@ -243,7 +241,6 @@ src_configure() {
 	emesonargs+=(
 		-Dqobuz=$(usex qobuz enabled disabled)
 		-Dsoundcloud=$(usex soundcloud enabled disabled)
-		-Dtidal=$(usex tidal enabled disabled)
 	)
 
 	emesonargs+=(
