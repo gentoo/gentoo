@@ -77,7 +77,7 @@ RDEPEND="
 	dev-libs/libpcre
 	dev-libs/nsync
 	dev-libs/openssl:0=
-	>=dev-libs/protobuf-3.13.0:=
+	<dev-libs/protobuf-3.19.1:=
 	>=dev-libs/re2-0.2019.06.01:=
 	media-libs/giflib
 	media-libs/libjpeg-turbo
