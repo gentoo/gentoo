@@ -27,6 +27,7 @@ IUSE="
 RESTRICT="test"
 
 RDEPEND="
+	!dev-cpp/kokkos
 	sys-libs/binutils-libs
 	virtual/blas
 	virtual/lapack
