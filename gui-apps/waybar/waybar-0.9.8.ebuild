@@ -27,7 +27,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="
+	dev-cpp/cairomm
+	dev-cpp/glibmm:2
 	dev-cpp/gtkmm:3.0
+	dev-libs/glib:2
 	dev-libs/jsoncpp:=
 	dev-libs/libinput:=
 	dev-libs/libsigc++:2
