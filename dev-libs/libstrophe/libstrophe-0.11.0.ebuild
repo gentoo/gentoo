@@ -8,11 +8,13 @@ SRC_URI="https://github.com/strophe/${PN}/releases/download/${PV}/${P}.tar.gz"
 LICENSE="|| ( MIT GPL-3 )"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="doc expat"
+IUSE="doc expat gnutls"
 
 RDEPEND="
 	expat? ( dev-libs/expat )
 	!expat? ( dev-libs/libxml2:2 )
+	gnutls? ( net-libs/gnutls:0= )
+	!gnutls? ( dev-libs/openssl:0= )
 	dev-libs/openssl:0=
 "
 DEPEND="${RDEPEND}
@@ -26,6 +28,7 @@ src_configure() {
 	local myeconf=(
 		--enable-tls
 		$(use_with !expat libxml2)
+		$(use_with gnutls)
 	)
 	econf "${myeconf[@]}"
 }
