@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-12)
+# Libraries with no other consumers. Removal in 30 days.
+dev-java/trident
+dev-java/okio
+dev-java/moshi
+
 # John Helmert III <ajak@gentoo.org> (2021-11-12)
 # Unfixed code execution bug, unmaintained in Gentoo.
 # Removal on 2021-11-11, bugs #672352, #794511.
