@@ -93,6 +93,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.38.1-build-Make-colord-and-wacom-optional-and-controllabl.patch
 	"${FILESDIR}"/${PN}-3.38.1-build-Allow-NM-optional-on-Linux.patch
 	"${FILESDIR}"/${PN}-3.38.1-Allow-udev-optional-on-Linux.patch
+	"${FILESDIR}"/gnome-settings-daemon-40.0.1-build-fix-str-bool-comparison.patch
 )
 
 python_check_deps() {
