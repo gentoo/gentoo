@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=MAROS
 DIST_VERSION=2.13
@@ -11,11 +11,7 @@ DESCRIPTION="Easily create plaintext/html e-mail messages with attachments and i
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-# HTML::Tree -> HTML-TreeBuilder
-# MIME::Tools -> MIME-tools
 RDEPEND="
 	dev-perl/Class-Load
 	dev-perl/Email-Address
@@ -31,7 +27,7 @@ RDEPEND="
 	dev-perl/Text-Table
 	dev-perl/namespace-autoclean
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.590.0
 	test? (
 		dev-perl/Test-Most
