@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,8 +6,8 @@ EAPI="6"
 inherit autotools toolchain-funcs
 
 DESCRIPTION="escm - Embedded Scheme Processor"
-HOMEPAGE="http://practical-scheme.net/vault/escm.html"
-SRC_URI="http://practical-scheme.net/vault/${P}.tar.gz"
+HOMEPAGE="https://practical-scheme.net/vault/escm.html"
+SRC_URI="https://practical-scheme.net/vault/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
