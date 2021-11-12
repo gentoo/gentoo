@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	>=dev-python/pluggy-0.12[${PYTHON_USEDEP}]
 	>=dev-python/py-1.8.2[${PYTHON_USEDEP}]
-	dev-python/tomli[${PYTHON_USEDEP}]
+	dev-python/toml[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	>=dev-python/setuptools_scm-3.4[${PYTHON_USEDEP}]
