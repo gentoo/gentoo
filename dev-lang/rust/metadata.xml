@@ -16,6 +16,7 @@
 		<flag name="parallel-compiler">Build a multi-threaded rustc (experimental, not tested by upstream)</flag>
 		<flag name="rls">Install rls, Rust Language Server (used with IDEs supporting RLS protocol)</flag>
 		<flag name="rustfmt">Install rustfmt, Rust code formatter</flag>
+		<flag name="rust-src">Install rust-src, needed by developer tools and for build-std (cross)</flag>
 		<flag name="system-bootstrap">Bootstrap using installed rust compiler</flag>
 		<flag name="system-llvm">Use the system LLVM install</flag>
 		<flag name="wasm">Build support for the wasm32-unknown-unknown target</flag>
