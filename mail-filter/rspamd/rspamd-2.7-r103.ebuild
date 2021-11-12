@@ -21,8 +21,7 @@ LICENSE="Apache-2.0 Boost-1.0 BSD BSD-1 BSD-2 CC0-1.0 LGPL-3 MIT public-domain u
 SLOT="0"
 IUSE="blas cpu_flags_x86_ssse3 jemalloc +jit pcre2"
 
-REQUIRED_USE="${LUA_REQUIRED_USE}
-	jit? ( lua_single_target_luajit )"
+REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="${LUA_DEPS}
 	$(lua_gen_cond_dep '
