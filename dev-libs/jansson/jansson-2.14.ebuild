@@ -16,6 +16,8 @@ IUSE="doc static-libs"
 
 BDEPEND="doc? ( dev-python/sphinx )"
 
+PATCHES=( "${FILESDIR}/${P}-test-symbols.patch" )
+
 multilib_src_configure() {
 	tc-ld-force-bfd
 
