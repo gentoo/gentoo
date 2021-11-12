@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>hollowman@hollowman.ml</email>
+    <name>Songlin Jiang</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">ibus-theme-tools</remote-id>
+    <remote-id type="github">openSUSE/IBus-Theme-Tools</remote-id>
+    <doc lang="en">https://github.com/openSUSE/IBus-Theme-Tools/blob/main/README.md</doc>
+    <doc lang="cn">https://github.com/openSUSE/IBus-Theme-Tools/blob/main/README_CN.md</doc>
+    <bugs-to>https://github.com/openSUSE/IBus-Theme-Tools/issues</bugs-to>
+  </upstream>
+  <stabilize-allarches/>
+</pkgmetadata>
