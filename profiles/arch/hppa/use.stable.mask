@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Rolf Eike Beer <eike@sf-mail.de> (2021-11-12)
+# dev-libs/nspr and dev-libs/nss are not stable on hppa
+nss
+
 # Matt Turner <mattst88@gentoo.org> (2021-10-28)
 # dev-libs/hiredis is not stable on hppa
 redis
