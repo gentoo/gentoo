@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# John Helmert III <ajak@gentoo.org> (2021-11-12)
+# Unfixed code execution bug, unmaintained in Gentoo.
+# Removal on 2021-11-11, bugs #672352, #794511.
+www-apps/websvn
+
 # Michał Górny <mgorny@gentoo.org> (2021-11-11)
 # Last release was for XFCE 4.10, back in 2013.  Does not support modern
 # Vala versions.  No revdeps.
