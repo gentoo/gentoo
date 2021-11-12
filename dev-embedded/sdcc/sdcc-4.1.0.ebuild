@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
@@ -12,6 +13,8 @@ else
 		mirror://sourceforge/sdcc/${PN}-src-${PV}.tar.bz2
 		doc? ( mirror://sourceforge/sdcc/${PN}-doc-${PV}.tar.bz2 )
 	"
+	S="${WORKDIR}/sdcc"
+
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -74,7 +77,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.8.0-override-override.patch
 )
 
-S="${WORKDIR}/sdcc"
 
 src_prepare() {
 	# Fix conflicting variable names between Gentoo and sdcc
@@ -152,5 +154,5 @@ src_install() {
 	# a bunch of archives (*.a) are built & installed by gputils
 	# for PIC processors, but they do not work with standard `ar`
 	# & `scanelf` utils and they're not for the host.
-	dostrip /usr/bin
+	dostrip -x /usr/bin
 }
