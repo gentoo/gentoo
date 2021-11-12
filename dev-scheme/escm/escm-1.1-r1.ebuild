@@ -20,6 +20,7 @@ RDEPEND="|| (
 	)"
 S="${WORKDIR}/${PN}"
 
+PATCHES=( "${FILESDIR}"/${PN}-headers.patch )
 HTML_DOCS=( ${PN}.html )
 
 src_prepare() {
