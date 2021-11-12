@@ -21,8 +21,7 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
 
 RDEPEND="
-	dev-libs/gmp:0=[cxx(+)]
-	dev-libs/libsigsegv
+	dev-libs/gmp:=[cxx(+)]
 	dev-libs/libtecla
 	sci-libs/buddy"
 DEPEND="${RDEPEND}"
@@ -45,6 +44,8 @@ src_configure() {
 	local myconf=(
 		--datadir="${EPREFIX}/usr/share/${PN}"
 		--without-yices2
+		# Breaks glibc-2.34 support
+		--without-libsigsegv
 	)
 	econf "${myconf[@]}"
 }
