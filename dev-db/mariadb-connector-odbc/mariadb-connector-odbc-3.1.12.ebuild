@@ -9,7 +9,7 @@ inherit cmake-multilib flag-o-matic
 
 DESCRIPTION="MariaDB Connector/ODBC"
 HOMEPAGE="https://downloads.mariadb.org/connector-odbc/"
-SRC_URI="https://downloads.mariadb.org/interstitial/connector-odbc-${PV}/${P}-src.tar.gz"
+SRC_URI="mirror://mariadb/connector-odbc-${PV}/${P}-src.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/3.1"
