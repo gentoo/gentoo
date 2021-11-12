@@ -23,7 +23,8 @@ LICENSE="
 SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 IUSE="X +chez +doc +futures +jit minimal +places +readline +threads"
-REQUIRED_USE="futures? ( jit )"
+# See bug #809785 re chez/threads
+REQUIRED_USE="futures? ( jit ) chez? ( threads )"
 
 DEPEND="
 	!dev-tex/slatex
