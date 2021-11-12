@@ -6,15 +6,19 @@ EAPI=7
 inherit bash-completion-r1 prefix rust-toolchain toolchain-funcs verify-sig multilib-minimal
 
 MY_P="rust-${PV}"
+# curl -L static.rust-lang.org/dist/channel-rust-${PV}.toml 2>/dev/null | grep "xz_url.*rust-src"
+MY_SRC_URI="${RUST_TOOLCHAIN_BASEURL}/2021-11-01/rust-src-${PV}.tar.xz"
 
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="https://www.rust-lang.org/"
-SRC_URI="$(rust_all_arch_uris ${MY_P})"
+SRC_URI="$(rust_all_arch_uris ${MY_P})
+	rust-src? ( ${MY_SRC_URI} )
+"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="stable"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ppc64 ~riscv ~x86"
-IUSE="clippy cpu_flags_x86_sse2 doc prefix rls rustfmt"
+IUSE="clippy cpu_flags_x86_sse2 doc prefix rls rust-src rustfmt"
 
 DEPEND=""
 RDEPEND=">=app-eselect/eselect-rust-20190311"
@@ -38,7 +42,7 @@ QA_PREBUILT="
 # so we can safely silence the warning for this QA check.
 QA_EXECSTACK="opt/${P}/lib/rustlib/*/lib*.rlib:lib.rmeta"
 
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/rust.asc
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/rust.asc"
 
 pkg_pretend() {
 	if [[ "$(tc-is-softfloat)" != "no" ]] && [[ ${CHOST} == armv7* ]]; then
@@ -47,7 +51,18 @@ pkg_pretend() {
 }
 
 src_unpack() {
-	verify-sig_src_unpack
+	# sadly rust-src tarball does not have corresponding .asc file
+	# so do partial verification
+	if use verify-sig; then
+		for f in ${A}; do
+			if [[ -f ${DISTDIR}/${f}.asc ]]; then
+				verify-sig_verify_detached "${DISTDIR}/${f}" "${DISTDIR}/${f}.asc"
+			fi
+		done
+	fi
+
+	default_src_unpack
+
 	mv "${WORKDIR}/${MY_P}-$(rust_abi)" "${S}" || die
 }
 
@@ -74,6 +89,13 @@ multilib_src_install() {
 	use clippy && components="${components},clippy-preview"
 	use rls && components="${components},rls-preview,${analysis}"
 	use rustfmt && components="${components},rustfmt-preview"
+	# Rust component 'rust-src' is extracted from separate archive
+	if use rust-src; then
+		einfo "Combining rust and rust-src installers"
+		mv -v "${WORKDIR}/rust-src-${PV}/rust-src" "${S}" || die
+		echo rust-src >> ./components || die
+		components="${components},rust-src"
+	fi
 	./install.sh \
 		--components="${components}" \
 		--disable-verify \
