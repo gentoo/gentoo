@@ -23,6 +23,7 @@ IUSE="mpd network +popups pulseaudio sndio tray +udev wifi"
 
 BDEPEND="
 	>=app-text/scdoc-1.9.2
+	dev-util/gdbus-codegen
 	virtual/pkgconfig
 "
 DEPEND="
