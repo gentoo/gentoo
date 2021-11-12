@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit meson python-any-r1
 
 if [[ ${PV} == 9999 ]]; then
@@ -23,7 +23,7 @@ IUSE="examples gtk-doc test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	>=x11-libs/gtk+-3.22.0:3[introspection,wayland]
+	>=x11-libs/gtk+-3.24.26:3[introspection,wayland]
 	>=dev-libs/wayland-1.10.0
 	>=dev-libs/wayland-protocols-1.16
 "
@@ -35,6 +35,7 @@ BDEPEND="
 "
 
 src_configure() {
+	# Note: next release makes introspection optional
 	local emesonargs=(
 		$(meson_use examples)
 		$(meson_use gtk-doc docs)
