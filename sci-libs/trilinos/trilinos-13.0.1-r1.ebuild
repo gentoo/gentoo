@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR=emake
-inherit cmake-utils toolchain-funcs multilib
+inherit cmake toolchain-funcs multilib
 
 DESCRIPTION="Scientific library collection for large scale problems"
 HOMEPAGE="http://trilinos.sandia.gov/"
@@ -183,15 +183,14 @@ src_configure() {
 	#
 	export CC=mpicc CXX=mpicxx && tc-export CC CXX
 
-	#
-	# cmake-utils eclass patches the base directory CMakeLists.txt
-	# which does not work for complex Trilinos CMake modules
-	#
-	CMAKE_BUILD_TYPE=RELEASE cmake-utils_src_configure
+	# Trilinos needs a custom build type:
+	local CMAKE_BUILD_TYPE=Release
+
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# Clean up the mess:
 	mv "${ED}"/bin "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
