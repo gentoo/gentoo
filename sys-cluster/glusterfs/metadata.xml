@@ -23,8 +23,6 @@
 	<use>
 		<flag name="fuse">Add FUSE mount helper</flag>
 		<flag name="georeplication">Enable support for georeplication (requires <pkg>dev-lang/python</pkg>)</flag>
-		<flag name="infiniband">Add support for Infiniband ibverbs transport.
-			Libraries can be found in science overlay</flag>
 		<flag name="ipv6">Use IPv6 by default, requires libtirpc</flag>
 		<flag name="libtirpc">Build against <pkg>net-libs/libtirpc</pkg> for RPC support</flag>
 		<flag name="rsyslog">Install configuration snippet for <pkg>app-admin/rsyslog</pkg></flag>
