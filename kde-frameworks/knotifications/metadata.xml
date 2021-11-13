@@ -10,6 +10,7 @@
 	</upstream>
 	<use>
 		<flag name="phonon">Play notification sounds via <pkg>media-libs/phonon</pkg> instead of <pkg>media-libs/libcanberra</pkg></flag>
+		<flag name="qml">Enable QML support via dev-qt/qtdeclarative</flag>
 		<flag name="speech">Enable text-to-speech notification support</flag>
 	</use>
 	<slots>
