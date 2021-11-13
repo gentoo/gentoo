@@ -28,7 +28,8 @@ BDEPEND="
 	app-arch/unzip"
 
 PATCHES=(
-	 "${WORKDIR}"/debian/patches
+	"${WORKDIR}"/debian/patches
+	"${FILESDIR}"/${P}-windowed.patch
 )
 
 src_prepare() {
