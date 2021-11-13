@@ -190,13 +190,6 @@ perl-core/Term-ANSIColor
 >=dev-util/meson-0.60.0
 
 # Sam James <sam@gentoo.org> (2021-11-03)
-# Masked for testing. Minor changes which expose
-# some rare build failures. bug #821397.
-# (Only masked to avoid too many build failures
-# due to other changes hitting tree at the same time.)
-=sys-kernel/linux-headers-5.15
-
-# Sam James <sam@gentoo.org> (2021-11-03)
 # Known issues with YAMA (kernel.yama.ptrace_scope=1) which is on by default
 # in at least the sys-kernel/gento-kernel kernel config.
 # Work is in progress to fix these but latest sandbox versions still seem
