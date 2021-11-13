@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-13)
+# java package without consumers,
+# bug_808948 (CVE-2021-37714).  Removal in 30 days.
+dev-java/jsoup
+
 # Jakov Smolić <jsmolic@gentoo.org> (2021-11-13)
 # Broken, no maintainer, outdated, multiple bugs reported, EAPI 5,
 # only revdep sys-fs/tmsu fails to build with go 1.16.
