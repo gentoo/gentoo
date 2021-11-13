@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-243.7-nodocs.patch"
 	"${FILESDIR}/${PN}-241.4-broken-test.patch" # bug 699116
 	"${FILESDIR}/${P}-revert-polkit-automagic.patch"
+	"${FILESDIR}/${P}-clang-undefined-symbol.patch"
 )
 
 pkg_setup() {
