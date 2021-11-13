@@ -543,20 +543,6 @@ dev-ruby/archive-tar-minitar
 # Removal on 2021-11-17.
 dev-cpp/rttr
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-10-16)
-# Binary-only package, cannot be distributed, download
-# is an unversioned URL which changes content. In brief,
-# a pain. Unmaintained from now on. If you pick it up,
-# you'll have to watch it closely. Removal in 30 days
-# otherwise. Bug 794700.
-net-im/webex
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-10-16)
-# Outdated virtual; the respective module was removed
-# from core Perl with Perl 5.32. Use dev-perl/Pod-Parser
-# instead. Removal in 30days.
-virtual/perl-Pod-Parser
-
 # David Seifert <soap@gentoo.org> (2021-10-16)
 # EAPI 5, open bugs, practically maintainer-needed,
 # abandoned upstream, no other distro carries this.
@@ -591,15 +577,6 @@ app-text/htmlc
 # Removal on 2021-11-15. bug #817965, bug #771756, bug #767196
 dev-ml/async_ssl
 dev-ml/ppx_tools_versioned
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (2021-10-14)
-# Unused and outdated packages; the version in core Perl is
-# newer. Removal in 30 days.
-perl-core/Locale-Maketext-Simple
-perl-core/Math-BigInt
-perl-core/Math-Complex
-perl-core/Memoize
-perl-core/MIME-Base64
 
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
