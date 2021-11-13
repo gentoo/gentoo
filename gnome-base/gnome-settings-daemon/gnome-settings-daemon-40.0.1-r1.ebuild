@@ -58,7 +58,6 @@ DEPEND="
 	media-libs/fontconfig
 	systemd? (
 		>=sys-apps/systemd-243
-		sys-apps/dbus[user-session]
 	)
 "
 # logind needed for power and session management, bug #464944
