@@ -52,6 +52,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		app-accessibility/speech-dispatcher[python,${PYTHON_USEDEP}]
 		>=dev-python/apsw-3.25.2_p1[${PYTHON_USEDEP}]
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
+		dev-python/cchardet[${PYTHON_USEDEP}]
 		>=dev-python/chardet-3.0.3[${PYTHON_USEDEP}]
 		>=dev-python/cssselect-0.7.1[${PYTHON_USEDEP}]
 		>=dev-python/css-parser-1.0.4[${PYTHON_USEDEP}]
