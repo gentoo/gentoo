@@ -20,4 +20,7 @@
 		In addition, it includes a module to manipulate Unicode streams, since
 		this is required by the XML standard.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">adacore/xmlada</remote-id>
+	</upstream>
 </pkgmetadata>
