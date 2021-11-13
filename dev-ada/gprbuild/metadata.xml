@@ -14,4 +14,7 @@
 		projects of all sizes organized into subsystems and libraries and is
 		particularly well-suited for compiled languages.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">adacore/gprbuild</remote-id>
+	</upstream>
 </pkgmetadata>
