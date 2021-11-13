@@ -9,7 +9,7 @@ SRC_URI=""
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc64 ~riscv ~x86 ~amd64-linux"
+KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86 ~amd64-linux"
 
 RDEPEND="
 	|| (
