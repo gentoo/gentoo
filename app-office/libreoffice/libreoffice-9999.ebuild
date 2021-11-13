@@ -162,7 +162,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/icu:=
 	dev-libs/libassuan
 	dev-libs/libgpg-error
-	dev-libs/liborcus:0/0.16
+	dev-libs/liborcus:0/0.17
 	dev-libs/librevenge
 	dev-libs/libxml2
 	dev-libs/libxslt
@@ -251,7 +251,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-perl/Archive-Zip
 	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3.1
-	dev-util/mdds:1/1.5
+	dev-util/mdds:1/2.0
 	media-libs/glm
 	sys-devel/ucpp
 	x11-base/xorg-proto
