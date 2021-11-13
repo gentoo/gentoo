@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-11-13)
+# No longer maintained upstream. Stuck on an old version 4.x of d3
+# while d3 upstream is now on 7.x. Probably best to use directly via
+# npm or yarn.
+# Masked for removal on 2021-12-13.
+dev-ruby/d3_rails
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-13)
 # java package without consumers, bug #787338. Removal in 30 days.
 dev-db/db-je
