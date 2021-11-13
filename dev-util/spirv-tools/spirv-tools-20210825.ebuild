@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	EGIT_COMMIT="1fbed83c8aab8517d821fcb4164c08567951938f"
 	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 ~riscv x86"
 	S="${WORKDIR}"/${MY_PN}-${EGIT_COMMIT}
 fi
 
