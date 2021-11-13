@@ -220,10 +220,6 @@ sys-libs/glibc systemtap
 app-forensics/sleuthkit java
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Requires USE=systemd that is masked in this profile.
-net-wireless/bluez user-session
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
 
