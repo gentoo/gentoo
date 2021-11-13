@@ -202,14 +202,12 @@ src_compile() {
 src_test() {
 	# Skipped tests:
 	# - 7z (unpackaged Python dependency: py7zr)
-	# - test_chardet (unpackaged Python dependency: cchardet)
 	# - test_unrar (unpackaged Python dependency: unrardll)
 	#
 	# Note that we currently have a hack to skip one part of test_qt!
 	# See PATCHES for more.
 	CALIBRE_PY3_PORT=1 ${PYTHON} setup.py test \
 			--exclude-test-name 7z \
-			--exclude-test-name test_chardet \
 			--exclude-test-name test_searching \
 			--exclude-test-name test_unrar || die
 }
