@@ -26,10 +26,6 @@ src_prepare() {
 	default
 	# fix memory issue/glibc corruption
 	sed -i -e "s|len + 13|len + 14|" main.c || die "Could not fix main.c"
-	# Darwin doesn't do static binaries
-	if [[ ${CHOST} == *-darwin* ]]; then
-		sed -i -e 's/-static//' Makefile || die
-	fi
 }
 
 src_compile() {

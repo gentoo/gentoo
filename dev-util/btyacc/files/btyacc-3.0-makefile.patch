@@ -10,7 +10,7 @@ Respect CC, append to CFLAGS (but not -g), append to LDFLAGS, use system LD -jer
 +CFLAGS	      += -Wall -Wstrict-prototypes -Wmissing-prototypes
  
 -LDFLAGS	      = -static
-+LDFLAGS	      += -static
++LDFLAGS	      +=
  
  LIBS	      =
  
