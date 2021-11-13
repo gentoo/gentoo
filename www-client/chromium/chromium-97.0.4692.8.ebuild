@@ -13,7 +13,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic ninja-utils pax-utils python-
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="3"
+PATCHSET="4"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz"
@@ -231,9 +231,9 @@ src_prepare() {
 	local PATCHES=(
 		"${WORKDIR}/patches"
 		"${FILESDIR}/chromium-93-InkDropHost-crash.patch"
-		"${FILESDIR}/chromium-95-xfce-maximize.patch"
 		"${FILESDIR}/chromium-96-EnumTable-crash.patch"
-		"${FILESDIR}/chromium-96-freetype-unbundle.patch"
+		"${FILESDIR}/chromium-96-xfce-maximize.patch"
+		"${FILESDIR}/chromium-glibc-2.34.patch"
 		"${FILESDIR}/chromium-use-oauth2-client-switches-as-default.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
 	)
