@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-13)
+# Outdated, multiple bugs reported, uses EAPI 5, no revdeps.
+# Please use sci-geosciences/josm-bin instead.
+# Removal on 2021-12-13. Bug #819129.
+sci-geosciences/josm
+
 # Hans de Graaff <graaff@gentoo.org> (2021-11-13)
 # No longer maintained upstream. Stuck on an old version 4.x of d3
 # while d3 upstream is now on 7.x. Probably best to use directly via
