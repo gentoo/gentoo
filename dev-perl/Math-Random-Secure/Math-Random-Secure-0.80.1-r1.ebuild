@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=FREW
 DIST_VERSION=0.080001
@@ -12,15 +12,14 @@ DESCRIPTION="Cryptographically-secure, cross-platform replacement for rand()"
 LICENSE="Artistic-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Moo-2.0.0
 	>=dev-perl/Crypt-Random-Source-0.70
 	>=dev-perl/Math-Random-ISAAC-1.1.0
-	dev-perl/Math-Random-ISAAC-XS"
-DEPEND="${RDEPEND}
+	dev-perl/Math-Random-ISAAC-XS
+"
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/List-MoreUtils
@@ -29,6 +28,7 @@ DEPEND="${RDEPEND}
 		dev-perl/Test-Warn
 	)
 "
+
 src_test() {
 	perl_rm_files t/author-*.t t/release-*.t
 	perl-module_src_test
