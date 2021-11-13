@@ -13,7 +13,7 @@ SRC_URI="https://www.kernel.org/pub/linux/bluetooth/${P}.tar.xz"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/3"
 KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv x86"
-IUSE="btpclient cups doc debug deprecated extra-tools experimental +mesh midi +obex +readline selinux systemd test test-programs +udev user-session"
+IUSE="btpclient cups doc debug deprecated extra-tools experimental +mesh midi +obex +readline selinux systemd test test-programs +udev"
 
 # Since this release all remaining extra-tools need readline support, but this could
 # change in the future, hence, this REQUIRED_USE constraint could be dropped
@@ -48,11 +48,8 @@ DEPEND="
 	midi? ( media-libs/alsa-lib )
 	obex? ( dev-libs/libical:= )
 	readline? ( sys-libs/readline:0= )
-	systemd? (
-		>=sys-apps/dbus-1.6:=[user-session=]
-		sys-apps/systemd
-	)
-	!systemd? ( >=sys-apps/dbus-1.6:= )
+	systemd? ( sys-apps/systemd )
+	>=sys-apps/dbus-1.6
 	udev? ( >=virtual/udev-172 )
 "
 RDEPEND="${DEPEND}
@@ -107,7 +104,7 @@ src_prepare() {
 	default
 
 	# http://www.spinics.net/lists/linux-bluetooth/msg38490.html
-	if ! use user-session || ! use systemd; then
+	if ! use systemd; then
 		eapply "${FILESDIR}"/0001-Allow-using-obexd-without-systemd-in-the-user-session-r2.patch
 	fi
 
@@ -248,8 +245,8 @@ multilib_src_install_all() {
 	# https://bugs.archlinux.org/task/45816
 	# https://bugzilla.redhat.com/show_bug.cgi?id=1318441
 	# https://bugzilla.redhat.com/show_bug.cgi?id=1389347
-	if use user-session && use systemd; then
-		ln -s "${ED}"/usr/lib/systemd/user/obex.service "${ED}"/usr/lib/systemd/user/dbus-org.bluez.obex.service
+	if use systemd; then
+		dosym obex.service /usr/lib/systemd/user/dbus-org.bluez.obex.service
 	fi
 
 	find "${D}" -name '*.la' -type f -delete || die
