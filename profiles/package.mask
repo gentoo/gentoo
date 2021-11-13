@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-11-13)
+# Broken, no maintainer, outdated, multiple bugs reported, EAPI 5,
+# only revdep sys-fs/tmsu fails to build with go 1.16.
+# Removal on 2021-12-13. Bug #819612. Bug #771054.
+dev-libs/go-fuse
+sys-fs/tmsu
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-13)
 # Outdated, multiple bugs reported, uses EAPI 5, no revdeps.
 # Please use sci-geosciences/josm-bin instead.
 # Removal on 2021-12-13. Bug #819129.
