@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-21)
@@ -18,7 +18,6 @@ gnome-base/gnome-extra-apps share
 net-firewall/fwknop firewalld
 www-servers/uwsgi uwsgi_plugins_systemd_logger
 >=x11-wm/mutter-3.22 wayland
-net-wireless/bluez user-session
 
 # Brian Dolbec <dolsen@gentoo.org> (2014-09-17)
 # mask pypy for several utilities due to incompatibility with libselinux
