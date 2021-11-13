@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# John Helmert III <ajak@gentoo.org> (2021-11-13)
+# Unmaintained in Gentoo, open security bug, many unfixed otther
+# bugs. Removal on 2021-12-13, bug #764719.
+mail-client/cone
+
 # John Helmert III <ajak@gentoo.org> (2021-11-12)
 # Unfixed code execution bug, unmaintained in Gentoo.
 # Removal on 2021-11-11, bugs #672352, #794511.
