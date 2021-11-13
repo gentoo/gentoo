@@ -40,7 +40,7 @@ mail-client/cone
 
 # John Helmert III <ajak@gentoo.org> (2021-11-12)
 # Unfixed code execution bug, unmaintained in Gentoo.
-# Removal on 2021-11-11, bugs #672352, #794511.
+# Removal on 2021-12-11, bugs #672352, #794511.
 www-apps/websvn
 
 # Michał Górny <mgorny@gentoo.org> (2021-11-11)
