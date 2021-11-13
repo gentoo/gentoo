@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,7 @@ DEPEND="
 		sys-apps/systemd
 		sys-auth/elogind
 	)
-	sys-apps/dbus[user-session]
+	sys-apps/dbus
 	icons? (
 		x11-libs/gtk+:3
 		x11-libs/gdk-pixbuf
