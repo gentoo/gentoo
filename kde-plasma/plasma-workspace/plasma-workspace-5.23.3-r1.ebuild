@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="forceoptional"
-KFMIN=5.82.0
+KFMIN=5.86.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=5.15.2
 VIRTUALX_REQUIRED="test"
@@ -15,13 +15,14 @@ DESCRIPTION="KDE Plasma workspace"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="appstream +calculator +calendar +fontconfig geolocation gps screencast
-+semantic-desktop systemd telemetry"
++semantic-desktop telemetry"
 
 REQUIRED_USE="gps? ( geolocation )"
 RESTRICT="test"
 
+# slot op: various private QtWaylandClient headers
 COMMON_DEPEND="
 	>=dev-libs/wayland-1.15
 	>=dev-qt/qtdbus-${QTMIN}:5
@@ -30,7 +31,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtnetwork-${QTMIN}:5
 	>=dev-qt/qtsql-${QTMIN}:5
 	>=dev-qt/qtsvg-${QTMIN}:5
-	>=dev-qt/qtwayland-${QTMIN}:5
+	>=dev-qt/qtwayland-${QTMIN}:5=
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtx11extras-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
@@ -139,8 +140,8 @@ RDEPEND="${COMMON_DEPEND}
 	x11-apps/xprop
 	x11-apps/xrdb
 	x11-apps/xsetroot
-	systemd? ( sys-apps/dbus[user-session] )
-	!systemd? ( sys-apps/dbus )
+	sys-apps/dbus
+	!<kde-plasma/breeze-5.22.90:5
 	!<kde-plasma/plasma-desktop-5.21.90:5
 "
 BDEPEND="virtual/pkgconfig"
@@ -148,10 +149,7 @@ PDEPEND=">=kde-plasma/kde-cli-tools-${PVCUT}:5"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.21.5-split-libkworkspace.patch" # downstream
-	"${FILESDIR}/${P}-krunner-cwd-at-home.patch" # TODO upstream: KDE-bug 432975, bug 767478
-	"${FILESDIR}/${P}-fix-powermanagement-inhibition.patch" # KDE-bug 433675
-	"${FILESDIR}/${P}-fix-hotplug-notifications.patch" # KDE-bug 438874, bug 814284
-	"${FILESDIR}/${P}-gpsd-3.23.1.patch"
+	"${FILESDIR}/${PN}-5.22.5-krunner-cwd-at-home.patch" # TODO upstream: KDE-bug 432975, bug 767478
 )
 
 src_prepare() {
