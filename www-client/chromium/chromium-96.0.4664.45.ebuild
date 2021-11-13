@@ -19,7 +19,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/beta"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="component-build cups cpu_flags_arm_neon debug +hangouts headless +js-type-check kerberos +official pic +proprietary-codecs pulseaudio screencast selinux +suid +system-ffmpeg +system-harfbuzz +system-icu vaapi wayland widevine"
 REQUIRED_USE="
@@ -231,9 +231,10 @@ src_prepare() {
 	local PATCHES=(
 		"${WORKDIR}/patches"
 		"${FILESDIR}/chromium-93-InkDropHost-crash.patch"
-		"${FILESDIR}/chromium-95-xfce-maximize.patch"
 		"${FILESDIR}/chromium-96-EnumTable-crash.patch"
 		"${FILESDIR}/chromium-96-freetype-unbundle.patch"
+		"${FILESDIR}/chromium-96-xfce-maximize.patch"
+		"${FILESDIR}/chromium-glibc-2.34.patch"
 		"${FILESDIR}/chromium-use-oauth2-client-switches-as-default.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
 	)

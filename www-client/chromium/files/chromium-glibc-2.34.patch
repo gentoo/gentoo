@@ -1,0 +1,28 @@
+From 600d63c2c59a9892dbc5423d7d8bb1565a9f91e7 Mon Sep 17 00:00:00 2001
+From: Michel Salim <michel@fb.com>
+Date: Thu, 04 Nov 2021 14:22:40 -0700
+Subject: [PATCH] Handle long SIGSTKSZ in glibc > 2.33
+
+`SIGSTKSZ` is no longer constant in glibc > 2.33 but a function
+returning a long. Cast before taking `max`.
+
+See https://sourceware.org/git/?p=glibc.git;a=blob;f=NEWS;h=85e84fe53699fe9e392edffa993612ce08b2954a;hb=HEAD
+
+Signed-off-by: Michel Salim <michel@fb.com>
+Change-Id: I197f8ff3053eede80d6aed096be4f0113dd43241
+(relocated to chromium repo, removed static)
+---
+
+diff --git a/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc b/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc
+index ca353c4..5cdabcf 100644
+--- a/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc
++++ b/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc
+@@ -138,7 +138,7 @@
+   // SIGSTKSZ may be too small to prevent the signal handlers from overrunning
+   // the alternative stack. Ensure that the size of the alternative stack is
+   // large enough.
+-  static const unsigned kSigStackSize = std::max(16384, SIGSTKSZ);
++  const unsigned kSigStackSize = std::max(16384U, (unsigned)SIGSTKSZ);
+ 
+   // Only set an alternative stack if there isn't already one, or if the current
+   // one is too small.
