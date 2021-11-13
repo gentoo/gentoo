@@ -7,7 +7,6 @@
 	<use>
 		<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking.</flag>
 		<flag name="systemd">Build with <pkg>sys-apps/systemd</pkg> at_console support</flag>
-		<flag name="user-session">Enable user-session semantics for session bus under systemd</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:freedesktop:dbus</remote-id>

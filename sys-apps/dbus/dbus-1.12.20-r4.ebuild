@@ -14,7 +14,7 @@ SRC_URI="https://dbus.freedesktop.org/releases/dbus/${P}.tar.gz"
 LICENSE="|| ( AFL-2.1 GPL-2 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="debug doc elogind kernel_linux selinux static-libs systemd test user-session X"
+IUSE="debug doc elogind kernel_linux selinux static-libs systemd test X"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="?? ( elogind systemd )"
@@ -127,7 +127,7 @@ multilib_src_configure() {
 		$(use_enable kernel_FreeBSD kqueue)
 		$(use_enable elogind)
 		$(use_enable systemd)
-		$(use_enable user-session)
+		$(use_enable systemd user-session)
 		--disable-embedded-tests
 		--disable-modular-tests
 		$(use_enable debug stats)
