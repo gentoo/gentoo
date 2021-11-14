@@ -196,6 +196,17 @@ src_test() {
 	JAVA_TEST_SRC_DIR="pdfbox/src/test/java"
 	JAVA_TEST_RESOURCE_DIRS="pdfbox/src/test/resources"
 
+	# There was 1 failure
+	# 1) testIsEmbeddingPermittedMultipleVersions(org.apache.pdfbox.pdmodel.font.TestFontEmbedding)
+	# java.lang.ExceptionInInitializerError
+	# Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @4dc690f9
+	# FAILURES!!!
+	# Tests run: 586,  Failures: 1
+	local vm_version="$(java-config -g PROVIDES_VERSION)"
+	if [[ "${vm_version}" == "17" ]] ; then
+		JAVA_TEST_EXCLUDES+=( "org.apache.pdfbox.pdmodel.font.TestFontEmbedding" )
+	fi
+
 	# tests failed with S="${WORKDIR}/${P}"
 	find pdfbox/src/test/ -type f -exec sed -i 's:src/test/resources:pdfbox/src/test/resources:' {} + || die
 
