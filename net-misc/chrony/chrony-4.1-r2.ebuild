@@ -76,6 +76,7 @@ fi
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-pool-vendor-gentoo.patch
 	"${FILESDIR}"/${PN}-4.1-systemd-gentoo.patch
+	"${FILESDIR}"/${P}-seccomp-glibc-2-3-4.patch
 )
 
 src_prepare() {
