@@ -12,7 +12,7 @@ SRC_URI="https://github.com/containers/fuse-overlayfs/archive/${EGIT_COMMIT}.tar
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 
 RDEPEND=">=sys-fs/fuse-3:="
 DEPEND="${RDEPEND}"
