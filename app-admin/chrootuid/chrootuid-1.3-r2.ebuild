@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="8"
 
 inherit toolchain-funcs
 
@@ -18,12 +18,14 @@ IUSE=""
 
 S="${WORKDIR}/${MY_P}"
 
+DOCS=( README ${PN}_license )
+
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${LDFLAGS}"
 }
 
 src_install() {
-	dodoc README chrootuid_license
-	dobin chrootuid
-	doman chrootuid.1
+	dobin ${PN}
+	doman ${PN}.1
+	einstalldocs
 }
