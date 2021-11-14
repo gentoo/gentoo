@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-13)
+# ppc64 has pipewire keyworded
+www-client/firefox -screencast
+
 # Sam James <sam@gentoo.org> (2021-09-23)
 # Needs media-libs/libldac which builds on ppc64le, but not be
 media-video/pipewire -bluetooth
