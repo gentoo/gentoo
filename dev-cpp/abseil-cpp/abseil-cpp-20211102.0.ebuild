@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..10} )
 
-inherit cmake flag-o-matic python-any-r1 toolchain-funcs
+inherit cmake python-any-r1
 
 # yes, it needs SOURCE, not just installed one
 # and no, 1.11.0 is not enough
