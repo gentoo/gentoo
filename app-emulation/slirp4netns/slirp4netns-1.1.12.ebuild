@@ -9,7 +9,7 @@ DESCRIPTION="User-mode networking for unprivileged network namespaces"
 HOMEPAGE="https://github.com/rootless-containers/slirp4netns"
 SRC_URI="https://github.com/rootless-containers/slirp4netns/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 LICENSE="GPL-2"
 SLOT="0"
 
