@@ -13,7 +13,7 @@ SRC_URI="https://github.com/executablebooks/sphinx-tabs/archive/v${PV}.tar.gz ->
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~m68k ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~m68k ~ppc ppc64 ~riscv ~s390 ~x86"
 
 RDEPEND="
 	dev-python/docutils[${PYTHON_USEDEP}]
