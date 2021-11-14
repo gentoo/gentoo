@@ -15,10 +15,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	!app-arch/lz4
 "
-
-src_configure() {
-	econf --disable-static
-}
+BDEPEND="app-arch/unzip"
 
 src_install() {
 	default
