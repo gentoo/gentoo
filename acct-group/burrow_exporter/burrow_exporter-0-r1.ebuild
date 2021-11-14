@@ -7,4 +7,4 @@ inherit acct-group
 
 DESCRIPTION="A group for app-metrics/burrow_exporter"
 
-ACCT_GROUP_ID="96"
+ACCT_GROUP_ID="502"
