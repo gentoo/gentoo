@@ -75,6 +75,8 @@ python_test() {
 		tests/test_batch/test_batch_jobs.py::test_cancel_running_job
 		tests/test_batch/test_batch_jobs.py::test_dependencies
 		tests/test_batch/test_batch_jobs.py::test_container_overrides
+		tests/test_cloudformation/test_cloudformation_custom_resources.py::test_create_custom_lambda_resource__verify_cfnresponse_failed
+		tests/test_cloudformation/test_cloudformation_stack_integration.py::test_lambda_function
 		tests/test_sqs/test_integration.py::test_invoke_function_from_sqs_exception
 		tests/test_sqs/test_sqs_integration.py::test_invoke_function_from_sqs_exception
 	)
