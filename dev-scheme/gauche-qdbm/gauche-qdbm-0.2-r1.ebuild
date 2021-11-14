@@ -8,7 +8,7 @@ inherit autotools
 MY_P="${P^g}"
 
 DESCRIPTION="QDBM binding for Gauche"
-HOMEPAGE="http://sourceforge.jp/projects/gauche/"
+HOMEPAGE="https://osdn.jp/projects/gauche/"
 SRC_URI="mirror://sourceforge.jp/${PN%-*}/6988/${MY_P}.tar.gz"
 
 LICENSE="BSD"
