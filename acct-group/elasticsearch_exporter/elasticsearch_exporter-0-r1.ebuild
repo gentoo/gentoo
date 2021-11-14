@@ -7,4 +7,4 @@ inherit acct-group
 
 DESCRIPTION="A group for app-metrics/elasticsearch_exporter"
 
-ACCT_GROUP_ID="98"
+ACCT_GROUP_ID="501"
