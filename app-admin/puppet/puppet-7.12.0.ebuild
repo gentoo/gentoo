@@ -103,11 +103,6 @@ all_ruby_install() {
 	fowners -R :puppet /etc/puppetlabs
 	fowners -R :puppet /var/lib/puppet
 
-	if use ldap ; then
-		insinto /etc/openldap/schema
-		doins ext/ldap/puppet.schema
-	fi
-
 	# ext and examples files
 	for f in $(find ext examples -type f) ; do
 		docinto "$(dirname ${f})"
