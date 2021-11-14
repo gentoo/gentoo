@@ -1,0 +1,35 @@
+https://github.com/shadow-maint/shadow/commit/117bc66c6f95fa85ca75ecfdb8fbd3615deca0b6
+
+From 117bc66c6f95fa85ca75ecfdb8fbd3615deca0b6 Mon Sep 17 00:00:00 2001
+From: Michael Vetter <jubalh@iodoru.org>
+Date: Mon, 20 Sep 2021 11:04:50 +0200
+Subject: [PATCH] Only free sgent if it was initialized
+
+`sgent` is only initialized in `get_group()` if `is_shadowgrp` is true.
+So we should also only attempt to free it if this is actually the case.
+
+Can otherwise lead to:
+```
+free() double free detected in tcache 2 (gpasswd)
+```
+--- a/src/gpasswd.c
++++ b/src/gpasswd.c
+@@ -1207,11 +1207,13 @@ int main (int argc, char **argv)
+ 	sssd_flush_cache (SSSD_DB_GROUP);
+ 
+ #ifdef SHADOWGRP
+-	if (sgent.sg_adm) {
+-		xfree(sgent.sg_adm);
+-	}
+-	if (sgent.sg_mem) {
+-		xfree(sgent.sg_mem);
++	if (is_shadowgrp) {
++		if (sgent.sg_adm) {
++			xfree(sgent.sg_adm);
++		}
++		if (sgent.sg_mem) {
++			xfree(sgent.sg_mem);
++		}
+ 	}
+ #endif
+ 	if (grent.gr_mem) {
