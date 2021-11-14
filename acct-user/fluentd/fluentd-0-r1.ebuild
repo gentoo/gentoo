@@ -6,7 +6,7 @@ inherit acct-user
 
 DESCRIPTION="A user for app-admin/fluentd"
 
-ACCT_USER_ID=93
+ACCT_USER_ID=504
 ACCT_USER_GROUPS=( fluentd )
 
 acct-user_add_deps
