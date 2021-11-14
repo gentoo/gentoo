@@ -23,7 +23,7 @@ SLOT="0"
 
 BDEPEND="amd64? ( dev-lang/yasm )"
 
-multilib_src_configure() {
+src_configure() {
 	append-ldflags -Wl,-z,noexecstack
 
 	local mycmakeargs=(
@@ -36,5 +36,5 @@ multilib_src_configure() {
 
 	[[ ${ABI} != amd64 ]] && mycmakeargs+=( -DCOMPILE_C_ONLY=ON )
 
-	cmake_src_configure
+	cmake-multilib_src_configure
 }
