@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake flag-o-matic plocale virtualx xdg
 
-PLOCALES="cs de es fr hu id it ko nb pl ru sv"
+PLOCALES="ca cs de es fi fr hu id it ja ko nb nl pl pt_BR ru sv uk zh_CN"
 
 DESCRIPTION="Modern music player and library organizer based on Clementine and Qt"
 HOMEPAGE="https://www.strawbs.org/"
