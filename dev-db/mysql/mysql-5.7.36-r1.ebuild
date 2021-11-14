@@ -49,6 +49,7 @@ COMMON_DEPEND="
 	)
 	server? (
 		>=app-arch/lz4-0_p131:=
+		virtual/libcrypt:=
 		cjk? ( app-text/mecab:= )
 		experimental? (
 			dev-libs/libevent:=[ssl]
