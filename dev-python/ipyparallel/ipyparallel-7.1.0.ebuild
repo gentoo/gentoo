@@ -42,6 +42,10 @@ BDEPEND="${RDEPEND}
 # distutils_enable_sphinx docs/source
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.1.0-test-timeouts.patch
+)
+
 python_test() {
 	local deselect=(
 		# we don't run a mongo instance for tests
