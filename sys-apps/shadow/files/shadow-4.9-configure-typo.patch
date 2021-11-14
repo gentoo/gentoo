@@ -1,0 +1,19 @@
+https://github.com/shadow-maint/shadow/commit/049f9a7f6b320c728a6274299041e360381d7cd5
+
+From 049f9a7f6b320c728a6274299041e360381d7cd5 Mon Sep 17 00:00:00 2001
+From: Andy Zaugg <andy.zaugg@gmail.com>
+Date: Tue, 21 Sep 2021 21:51:10 -0700
+Subject: [PATCH] Fix parentheses in configure.ac
+
+Resolving issue https://github.com/shadow-maint/shadow/issues/419
+--- a/configure.ac
++++ b/configure.ac
+@@ -345,7 +345,7 @@ if test "$with_sssd" = "yes"; then
+ 	              [AC_MSG_ERROR([posix_spawn is needed for sssd support])])
+ fi
+ 
+-AS_IF([test "$with_su" != "no"], AC_DEFINE(WITH_SU, 1, [Build with su])])
++AS_IF([test "$with_su" != "no"], AC_DEFINE(WITH_SU, 1, [Build with su]))
+ AM_CONDITIONAL([WITH_SU], [test "x$with_su" != "xno"])
+ 
+ dnl Check for some functions in libc first, only if not found check for
