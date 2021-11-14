@@ -562,7 +562,6 @@ dev-java/netty-tcnative
 # abandoned, bug #643452, bug #688404.
 # Removal in 30 days.
 dev-dotnet/dbus-sharp
-dev-dotnet/dbus-sharp-glib
 
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
