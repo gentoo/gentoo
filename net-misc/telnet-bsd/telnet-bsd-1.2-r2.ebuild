@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit autotools epatch toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Telnet and telnetd ported from OpenBSD with IPv6 support"
 HOMEPAGE="ftp://ftp.suse.com/pub/people/kukuk/ipv6/"
@@ -14,16 +14,23 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="nls xinetd"
 
-RDEPEND="sys-libs/ncurses:="
-DEPEND="${RDEPEND}
+RDEPEND="
+	sys-libs/ncurses:=
 	!net-misc/netkit-telnetd
-	xinetd? ( sys-apps/xinetd )
-	virtual/pkgconfig"
+"
+RDEPEND="${DEPEND}
+	xinetd? ( sys-apps/xinetd   )
+	!net-misc/netkit-telnetd
+"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-fbsd.patch
+	"${FILESDIR}"/${PN}-1.2-format-security.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-fbsd.patch
-	epatch "${FILESDIR}"/${PN}-1.2-format-security.patch
-	eaclocal
+	default
 	eautoreconf
 }
 
@@ -34,16 +41,17 @@ src_configure() {
 	fi
 
 	econf
+}
+
+src_compile() {
 	emake LIBS="$("$(tc-getPKG_CONFIG)" --libs ncurses)"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
 	if use xinetd ; then
 		insinto /etc/xinetd.d
 		newins "${FILESDIR}"/telnetd.xinetd telnetd
 	fi
-
-	dodoc README THANKS NEWS AUTHORS ChangeLog INSTALL
 }
