@@ -1,0 +1,18 @@
+--- a/fault.c
++++ b/fault.c
+@@ -43,6 +43,15 @@
+ #include	<errno.h>
+ #include	<string.h>
+ 
++#if __GLIBC__ >= 2
++# undef SIGSTKSZ
++# if defined __ia64__
++#  define SIGSTKSZ 262144
++# else
++#  define SIGSTKSZ 65536
++# endif
++#endif
++
+ static	void (*psig0_func)() = SIG_ERR;	/* previous signal handler for signal 0 */
+ static	char sigsegv_stack[SIGSTKSZ];
+ 
