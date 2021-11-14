@@ -9,7 +9,7 @@ SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ppc ~ppc64 ~riscv x86"
 IUSE="libnotify"
 
 RDEPEND=">=dev-libs/glib-2.16:2=
