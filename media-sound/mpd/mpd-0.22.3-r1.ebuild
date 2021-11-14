@@ -22,7 +22,7 @@ IUSE="+alsa ao +audiofile bzip2 cdio chromaprint +cue +curl doc +dbus
 
 OUTPUT_PLUGINS="alsa ao fifo jack network openal oss pipe pulseaudio sndio recorder"
 DECODER_PLUGINS="audiofile faad ffmpeg flac fluidsynth mad mikmod
-	modplug mpg123 musepack flac sid vorbis wavpack wildmidi"
+	modplug mpg123 musepack opus flac sid vorbis wavpack wildmidi"
 ENCODER_PLUGINS="audiofile flac lame twolame vorbis"
 
 REQUIRED_USE="
