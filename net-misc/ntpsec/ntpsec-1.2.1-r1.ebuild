@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
 	"${FILESDIR}/${PN}-1.2.0-move-newfstatat.patch"
 	"${FILESDIR}/${PN}-1.2.0-seccomp.patch"
+	"${FILESDIR}/${PN}-1.2.1-seccomp-glibc-2-3-4.patch"
 )
 
 WAF_BINARY="${S}/waf"

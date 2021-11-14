@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/823692
+
+From 170d60b7e269154fb108bb4b010ee5ee0110bf2d Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 14 Nov 2021 08:44:28 +0000
+Subject: [PATCH] ntpd/ntp_sandbox.c: allow clone3 in seccomp filter for
+ glibc-2.34
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/ntpd/ntp_sandbox.c
++++ b/ntpd/ntp_sandbox.c
+@@ -403,6 +403,7 @@ int scmp_sc[] = {
+  * rather than generate a trap.
+  */
+ 	SCMP_SYS(clone),	/* threads */
++	SCMP_SYS(clone3),
+ 	SCMP_SYS(kill),		/* generate signal */
+ 	SCMP_SYS(madvise),
+ 	SCMP_SYS(mprotect),
