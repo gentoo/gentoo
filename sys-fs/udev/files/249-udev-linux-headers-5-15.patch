@@ -1,0 +1,22 @@
+https://github.com/systemd/systemd-stable/pull/132/commits/92bbfcdc733d39ec4097d8678bc92a7aaaf78ae1.patch
+https://bugs.gentoo.org/821550
+
+From: Chris Packham <chris.packham@alliedtelesis.co.nz>
+Date: Fri, 10 Sep 2021 09:51:36 +1200
+Subject: [PATCH 1/2] basic/linux: Sync if_arp.h with Linux 5.14
+
+ARPHRD_MCTP was added in 5.14. Sync if_arp.h to pick up the definition
+
+Fixes #20694
+
+(cherry picked from commit 7c5b9952c4f6e2b72f90edbe439982528b7cf223)
+--- a/src/basic/linux/if_arp.h
++++ b/src/basic/linux/if_arp.h
+@@ -54,6 +54,7 @@
+ #define ARPHRD_X25	271		/* CCITT X.25			*/
+ #define ARPHRD_HWX25	272		/* Boards with X.25 in firmware	*/
+ #define ARPHRD_CAN	280		/* Controller Area Network      */
++#define ARPHRD_MCTP	290
+ #define ARPHRD_PPP	512
+ #define ARPHRD_CISCO	513		/* Cisco HDLC	 		*/
+ #define ARPHRD_HDLC	ARPHRD_CISCO
