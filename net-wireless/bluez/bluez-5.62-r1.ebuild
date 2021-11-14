@@ -49,7 +49,7 @@ DEPEND="
 	obex? ( dev-libs/libical:= )
 	readline? ( sys-libs/readline:0= )
 	systemd? ( sys-apps/systemd )
-	>=sys-apps/dbus-1.6
+	>=sys-apps/dbus-1.6:=
 	udev? ( >=virtual/udev-172 )
 "
 RDEPEND="${DEPEND}
