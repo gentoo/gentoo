@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic plocale virtualx xdg
+inherit cmake flag-o-matic plocale xdg
 
 PLOCALES="ca cs de es fi fr hu id it ja ko nb nl pl pt_BR ru sv uk zh_CN"
 
