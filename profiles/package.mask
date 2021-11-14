@@ -557,12 +557,6 @@ mail-filter/spamdyke
 # Removal in 30 days.
 dev-java/netty-tcnative
 
-# David Seifert <soap@gentoo.org> (2021-10-16)
-# EAPI 5, fails to compile, QA issues, .NET team is
-# abandoned, bug #643452, bug #688404.
-# Removal in 30 days.
-dev-dotnet/dbus-sharp
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
