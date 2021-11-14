@@ -7,4 +7,4 @@ inherit acct-group
 
 DESCRIPTION="A group for app-emulation/reg"
 
-ACCT_GROUP_ID="94"
+ACCT_GROUP_ID="503"
