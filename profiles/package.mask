@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-14)
+# java packages without consumers, Removal in 30 days.
+dev-java/milton-mail-api
+dev-java/milton-api
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-13)
 # java package without consumers,
 # bug_808948 (CVE-2021-37714).  Removal in 30 days.
