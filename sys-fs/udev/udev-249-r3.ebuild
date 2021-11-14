@@ -116,6 +116,7 @@ src_prepare() {
 		# backport from 250 to silence musl warnings
 		"${FILESDIR}/249-sys-include-posix.patch"
 		"${FILESDIR}/249-libudev-static.patch"
+		"${FILESDIR}/249-udev-linux-headers-5-15.patch"
 	)
 	use elibc_musl && PATCHES+=( "${WORKDIR}"/musl-patches )
 
