@@ -1,0 +1,76 @@
+From c980dd7a976635426f129417836251740e19b54b Mon Sep 17 00:00:00 2001
+From: Matthew White <mehw.is.me@inventati.org>
+Date: Sun, 14 Nov 2021 00:42:27 +0000
+Subject: [PATCH] doc/t2h.pm: fix missing CSS with texinfo 6.8 and above
+
+Since texinfo commit 6a5ceab6a48a4f052baad9f3474d741428409fd7, the
+formatting functions, in particular begin_file, program_string and
+end_file, are prefixed with format_, i.e. format_begin_file, etc.
+
+This patch fixes building the documentation when texinfo 6.8, or
+above, is used:
+
+Unknown formatting type begin_file
+ at /usr/bin/makeinfo line 415.
+Unknown formatting type program_string
+ at /usr/bin/makeinfo line 415.
+Unknown formatting type end_file
+ at /usr/bin/makeinfo line 415.
+---
+ doc/t2h.pm | 22 +++++++++++++++++++---
+ 1 file changed, 19 insertions(+), 3 deletions(-)
+
+diff --git a/doc/t2h.pm b/doc/t2h.pm
+index e83d564a6545..87412699aaf6 100644
+--- a/doc/t2h.pm
++++ b/doc/t2h.pm
+@@ -126,6 +126,10 @@ foreach my $command (keys(%Texinfo::Common::sectioning_commands), 'node') {
+     texinfo_register_command_formatting($command, \&ffmpeg_heading_command);
+ }
+ 
++# determine if texinfo is at least version 6.8
++my $program_version_num = version->declare(get_conf('PACKAGE_VERSION'))->numify;
++my $program_version_6_8 = $program_version_num >= 6.008000;
++
+ # print the TOC where @contents is used
+ set_from_init_file('INLINE_CONTENTS', 1);
+ 
+@@ -184,7 +188,11 @@ EOT
+ 
+     return $head1 . $head_title . $head2 . $head_title . $head3;
+ }
+-texinfo_register_formatting_function('begin_file', \&ffmpeg_begin_file);
++if ($program_version_6_8) {
++    texinfo_register_formatting_function('format_begin_file', \&ffmpeg_begin_file);
++} else {
++    texinfo_register_formatting_function('begin_file', \&ffmpeg_begin_file);
++}
+ 
+ sub ffmpeg_program_string($)
+ {
+@@ -201,7 +209,11 @@ sub ffmpeg_program_string($)
+       $self->gdt('This document was generated automatically.'));
+   }
+ }
+-texinfo_register_formatting_function('program_string', \&ffmpeg_program_string);
++if ($program_version_6_8) {
++    texinfo_register_formatting_function('format_program_string', \&ffmpeg_program_string);
++} else {
++    texinfo_register_formatting_function('program_string', \&ffmpeg_program_string);
++}
+ 
+ # Customized file ending
+ sub ffmpeg_end_file($)
+@@ -220,7 +232,11 @@ EOT
+ EOT
+     return $program_text . $footer;
+ }
+-texinfo_register_formatting_function('end_file', \&ffmpeg_end_file);
++if ($program_version_6_8) {
++    texinfo_register_formatting_function('format_end_file', \&ffmpeg_end_file);
++} else {
++    texinfo_register_formatting_function('end_file', \&ffmpeg_end_file);
++}
+ 
+ # Dummy title command
+ # Ignore title. Title is handled through ffmpeg_begin_file().

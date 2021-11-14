@@ -1,0 +1,39 @@
+From bfbd5954e50e407693932b3900ca77c3daee26d7 Mon Sep 17 00:00:00 2001
+From: Matthew White <mehw.is.me@inventati.org>
+Date: Sun, 14 Nov 2021 01:10:58 +0000
+Subject: [PATCH] doc/t2h.pm: fix missing TOC with texinfo 6.8 and above
+
+Since texinfo 6.8, there's no longer an INLINE_CONTENTS variable.
+
+makeinfo: warning: set_from_init_file: unknown variable INLINE_CONTENTS
+
+texinfo commit 62a6adfb33b006e187483779974bbd45f0f782b1 replaced
+INLINE_CONTENTS with OUTPUT_CONTENTS_LOCATION.
+
+texinfo commit 41f8ed4eb42bf6daa7df7007afd946875597452d replaced
+OUTPUT_CONTENTS_LOCATION with CONTENTS_OUTPUT_LOCATION.
+
+With texinfo 6.8 and above, the same as INLINE_CONTENTS=1 could be
+achieved by CONTENTS_OUTPUT_LOCATION=inline.
+https://www.gnu.org/software/texinfo/manual/texinfo/html_node/HTML-Customization-Variables.html
+---
+ doc/t2h.pm | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/doc/t2h.pm b/doc/t2h.pm
+index 87412699aaf6..d07d974286c4 100644
+--- a/doc/t2h.pm
++++ b/doc/t2h.pm
+@@ -131,7 +131,11 @@ my $program_version_num = version->declare(get_conf('PACKAGE_VERSION'))->numify;
+ my $program_version_6_8 = $program_version_num >= 6.008000;
+ 
+ # print the TOC where @contents is used
+-set_from_init_file('INLINE_CONTENTS', 1);
++if ($program_version_6_8) {
++    set_from_init_file('CONTENTS_OUTPUT_LOCATION', 'inline');
++} else {
++    set_from_init_file('INLINE_CONTENTS', 1);
++}
+ 
+ # make chapters <h2>
+ set_from_init_file('CHAPTER_HEADER_LEVEL', 2);
