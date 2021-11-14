@@ -1539,6 +1539,12 @@ pkg_postinst() {
 		use compile-locales || run_locale_gen "${EROOT}/"
 	fi
 
+	if systemd_is_booted && [[ -z ${ROOT} ]] ; then
+		# We need to restart systemd when upgrading from < 2.34
+		# bug #823756
+		systemctl daemon-reexec
+	fi
+
 	# Check for sanity of /etc/nsswitch.conf, take 2
 	if [[ -e ${EROOT}/etc/nsswitch.conf ]] && ! has_version sys-auth/libnss-nis ; then
 		local entry
