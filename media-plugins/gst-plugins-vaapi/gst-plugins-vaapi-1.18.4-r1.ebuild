@@ -75,7 +75,7 @@ RESTRICT="test"
 multilib_src_configure() {
 	local emesonargs=(
 		-Dwith_encoders=yes
-		-Ddrm=$(usex drm yes no)
+		-Dwith_drm=$(usex drm yes no)
 		-Dwith_x11=$(usex X yes no)
 		-Dwith_wayland=$(usex wayland yes no)
 	)
