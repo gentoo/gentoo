@@ -6,7 +6,7 @@ inherit acct-user
 
 DESCRIPTION="A user for app-emulation/reg"
 
-ACCT_USER_ID=94
+ACCT_USER_ID=503
 ACCT_USER_GROUPS=( reg )
 ACCT_USER_HOME=/var/lib/reg
 
