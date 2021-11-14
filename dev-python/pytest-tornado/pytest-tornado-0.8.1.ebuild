@@ -14,7 +14,7 @@ SRC_URI="https://github.com/eugeniy/pytest-tornado/archive/refs/tags/v${PV}.tar.
 
 SLOT="0"
 LICENSE="Apache-2.0"
-KEYWORDS="amd64 ~ia64 ~riscv sparc x86"
+KEYWORDS="amd64 ~hppa ~ia64 ~riscv sparc x86"
 
 RDEPEND="
 	>=dev-python/pytest-3.6[${PYTHON_USEDEP}]
