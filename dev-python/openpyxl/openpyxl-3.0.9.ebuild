@@ -14,7 +14,7 @@ SRC_URI="https://foss.heptapod.net/openpyxl/openpyxl/-/archive/${PV}/${P}.tar.bz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ~ppc64 ~riscv ~s390 x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 x86"
 
 RDEPEND="
 	dev-python/et_xmlfile[${PYTHON_USEDEP}]
