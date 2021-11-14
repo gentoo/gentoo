@@ -38,6 +38,12 @@ BDEPEND="
 	)
 "
 
+EPYTEST_DESELECT=(
+	# Times out on slower arches (ia64 in this case)
+	# https://github.com/python-trio/trio/issues/1753
+	trio/tests/test_unix_pipes.py::test_close_at_bad_time_for_send_all
+)
+
 distutils_enable_tests --install pytest
 distutils_enable_sphinx docs/source \
 					dev-python/immutables \
