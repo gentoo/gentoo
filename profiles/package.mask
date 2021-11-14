@@ -574,7 +574,6 @@ app-text/htmlc
 # Drop broken packages with no reverse dependencies
 # Removal on 2021-11-15. bug #817965, bug #771756, bug #767196
 dev-ml/async_ssl
-dev-ml/ppx_tools_versioned
 
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
