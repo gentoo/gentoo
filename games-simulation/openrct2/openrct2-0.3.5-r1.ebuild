@@ -9,7 +9,7 @@ MY_PN="OpenRCT2"
 MY_PN_OBJ="objects"
 MY_PN_RPL="replays"
 MY_PN_TS="title-sequences"
-MY_PV_OBJ="1.2.2"
+MY_PV_OBJ="1.0.21"
 MY_PV_RPL="0.0.57"
 MY_PV_TS="0.1.2c"
 
