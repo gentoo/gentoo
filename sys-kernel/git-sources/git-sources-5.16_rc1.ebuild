@@ -1,13 +1,13 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 UNIPATCH_STRICTORDER="yes"
 K_NOUSENAME="yes"
 K_NOSETEXTRAVERSION="yes"
 K_NOUSEPR="yes"
 K_SECURITY_UNSUPPORTED="1"
-K_BASE_VER="5.14"
+K_BASE_VER="5.15"
 K_EXP_GENPATCHES_NOUSE="1"
 K_FROM_GIT="yes"
 ETYPE="sources"
@@ -33,7 +33,7 @@ report the problem so it can be fixed in time for the next kernel release."
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	>=sys-devel/patch-2.7.5"
+	>=sys-devel/patch-2.7.6-r4"
 
 pkg_postinst() {
 	postinst_sources
