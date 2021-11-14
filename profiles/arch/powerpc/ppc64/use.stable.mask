@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Sam James <sam@gentoo.org> (2021-11-14)
+# media-libs/openexr is not marked stable on ppc64
+# (it's broken on BE and it's more convenient to keep it at ~arch here for now)
+openexr
+
 # Michał Górny <mgorny@gentoo.org> (2021-05-04)
 # Python 3.10 is not yet stable (and will not be until it's out of beta,
 # around September.
