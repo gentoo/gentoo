@@ -23,11 +23,14 @@
     <flag name="mpg123">Enable support for mp3 decoding over media-sound/mpg123</flag>
     <flag name="network">Enables network streaming support</flag>
     <flag name="nfs">Enable support for the Network File System</flag>
+    <flag name="openmpt">OpenMPT decoder plugin</flag>
     <flag name="pipe">Support writing audio to a pipe</flag>
+    <flag name="pipewire">PipeWire support</flag>
     <flag name="qobuz">Build plugin to access qobuz</flag>
     <flag name="recorder">Enables output plugin for recording radio streams</flag>
     <flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
     <flag name="signalfd">Use the signalfd function in MPD's event loop</flag>
+    <flag name="snapcast">Snapcast audio plugin</flag>
     <flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
     <flag name="soundcloud">Build plugin to access soundcloud</flag>
     <flag name="tidal">Build plugin to access tidal</flag>
