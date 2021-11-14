@@ -235,12 +235,6 @@ sci-libs/libbufr
 # Removal on 2021-11-25. Bug #806577.
 sys-fabric/dapl
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-26)
-# Fails to build with glibc-2.34, broken test suite,
-# dead upstream, no revdeps.
-# Removal on 2021-11-25. Bug #806344.
-app-shells/heirloom-sh
-
 # Hans de Graaff <graaff@gentoo.org> (2021-10-26)
 # New rubygems versions check extension installation and will
 # fail to find gems when extensions are not installed correctly.
