@@ -570,11 +570,6 @@ dev-dotnet/dbus-sharp-glib
 # Removal on 2021-11-16.
 app-text/htmlc
 
-# Sam James <sam@gentoo.org> (2021-10-15)
-# Drop broken packages with no reverse dependencies
-# Removal on 2021-11-15. bug #817965, bug #771756, bug #767196
-dev-ml/async_ssl
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
