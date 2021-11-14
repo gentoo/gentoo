@@ -7,4 +7,4 @@ inherit acct-group
 
 DESCRIPTION="A group for app-admin/fluentd"
 
-ACCT_GROUP_ID="93"
+ACCT_GROUP_ID="504"
