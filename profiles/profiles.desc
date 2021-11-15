@@ -175,8 +175,6 @@ ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/developer		dev
 #ppc		 default/linux/ppc/17.0/developer			exp
 #ppc		 default/linux/ppc/17.0/musl				exp
 #ppc		 default/linux/ppc/17.0/musl/hardened			exp
-#ppc		 default/linux/ppc/17.0/uclibc				exp
-#ppc		 default/linux/ppc/17.0/uclibc/hardened			exp
 ppc64		default/linux/ppc64/17.0				stable
 ppc64		default/linux/ppc64/17.0/desktop			stable
 ppc64		default/linux/ppc64/17.0/desktop/gnome			stable
