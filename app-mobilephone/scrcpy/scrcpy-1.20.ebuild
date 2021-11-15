@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson
+inherit meson xdg
 
 DESCRIPTION="Display and control your Android device"
 HOMEPAGE="https://github.com/Genymobile/scrcpy"
@@ -29,7 +29,9 @@ src_configure() {
 }
 
 pkg_postinst() {
-	elog "if scrcpy return error like"
+	xdg_pkg_postrm
+
+	elog "If scrcpy returns an error like"
 	elog ""
 	elog "[server] ERROR: Exception on thread Thread[main,5,main]"
 	elog "java.lang.IllegalArgumentException"
