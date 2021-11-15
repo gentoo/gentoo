@@ -14,7 +14,7 @@ HOMEPAGE="
 SRC_URI="https://github.com/bskinn/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 sparc x86"
 SLOT="0"
 
 RDEPEND="
