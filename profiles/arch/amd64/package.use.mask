@@ -108,7 +108,7 @@ sys-block/fio -io-uring -zbc
 
 # Marek Szuba <marecki@gentoo.org> (2020-06-17)
 # Unmask globally-masked flashrom drivers and tools which do work on amd64
-sys-apps/flashrom -atahpt -atapromise -internal -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv -tools
+sys-apps/flashrom -atahpt -atapromise -atavia -drkaiser -gfxnvidia -internal -it8212 -nic3com -nicintel -nicintel-eeprom -nicintel-spi -nicnatsemi -nicrealtek -ogp-spi -rayer-spi -satamv -satasii -tools
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on amd64
