@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic
+inherit autotools
 
 DESCRIPTION="Sed-like editor for binary files"
 HOMEPAGE="https://sourceforge.net/projects/bbe-/"
