@@ -17,6 +17,7 @@ KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="test"
 
 RDEPEND="
+	dev-python/ipython_genutils[${PYTHON_USEDEP}]
 	dev-python/ipython[${PYTHON_USEDEP}]
 	<dev-python/jupyter_client-6.2[${PYTHON_USEDEP}]
 	dev-python/jupyter_core[${PYTHON_USEDEP}]
