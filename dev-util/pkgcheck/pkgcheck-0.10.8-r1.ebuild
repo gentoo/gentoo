@@ -47,6 +47,14 @@ BDEPEND="
 
 distutils_enable_tests setup.py
 
+src_prepare() {
+	# extend allowed system uid/gid range per Council 2021-11-14
+	sed -i -e 's:500:750:g' \
+		src/pkgcheck/checks/acct.py \
+		tests/checks/test_acct.py || die
+	distutils-r1_src_prepare
+}
+
 src_test() {
 	local -x PYTHONDONTWRITEBYTECODE=
 	distutils-r1_src_test
