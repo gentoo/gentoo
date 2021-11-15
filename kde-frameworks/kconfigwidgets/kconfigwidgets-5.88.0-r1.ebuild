@@ -33,6 +33,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-hamburger-menu-no-window-on-wayland.patch
+	"${FILESDIR}"/${P}-KCommandBar-alignment.patch
 )
 
 src_configure() {
