@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.1-no-Werror.patch
 	"${FILESDIR}"/${PN}-2.1.1-tests-optional.patch
 	"${FILESDIR}"/${PN}-2.1.1-ykcs11-threads.patch
+	"${FILESDIR}"/${PN}-2.2.1-openssl3.patch
 )
 
 S="${WORKDIR}/${PN}-${P}"
