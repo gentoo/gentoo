@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-15)
+# Library without consumers,
+# bug_#771693 (multiple CVEs); Removal in 30 days.
+dev-java/jackson
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-14)
 # java packages without consumers, Removal in 30 days.
 dev-java/milton-mail-api
