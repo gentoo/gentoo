@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-11-15)
+# Only available on PPC*.
+sys-apps/util-linux rtas
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-01)
 # requires sys-apps/dbus-broker, which is not widely keyworded yet.
 sys-apps/systemd hostnamed-fallback
