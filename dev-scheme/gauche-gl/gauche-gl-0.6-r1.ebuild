@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 inherit autotools
 
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="cg examples"
 
-RDEPEND=">=dev-scheme/gauche-0.9.4
+RDEPEND="dev-scheme/gauche:=
 	media-libs/freeglut
 	virtual/opengl
 	x11-libs/libXmu
