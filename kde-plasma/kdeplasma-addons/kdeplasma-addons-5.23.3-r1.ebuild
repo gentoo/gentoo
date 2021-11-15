@@ -56,6 +56,7 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-mediaframe-fix-path-URLs.patch
+	"${FILESDIR}"/${P}-weather-fix-cursor.patch
 )
 
 src_configure() {
