@@ -1,0 +1,71 @@
+From d8c5490c99bae9f979f6483dc7b0381121a4f997 Mon Sep 17 00:00:00 2001
+From: Kai Uwe Broulik <kde@privat.broulik.de>
+Date: Mon, 8 Nov 2021 20:02:33 +0100
+Subject: [PATCH] Always dismiss critical battery notification
+
+The timer isn't running when user chose "Do nothing" on critical battery
+
+BUG: 445171
+FIXED-IN: 5.23.4
+
+
+(cherry picked from commit 5668ded34f928ffce43ebe1defb775e70bbbb3b7)
+---
+ daemon/powerdevilcore.cpp | 22 +++++++++++++---------
+ 1 file changed, 13 insertions(+), 9 deletions(-)
+
+diff --git a/daemon/powerdevilcore.cpp b/daemon/powerdevilcore.cpp
+index 040dd6b6..c5ba3e54 100644
+--- a/daemon/powerdevilcore.cpp
++++ b/daemon/powerdevilcore.cpp
+@@ -259,7 +259,7 @@ void Core::reparseConfiguration()
+     Q_EMIT configurationReloaded();
+ 
+     // Check if critical threshold might have changed and cancel the timer if necessary.
+-    if (m_criticalBatteryTimer->isActive() && currentChargePercent() > PowerDevilSettings::batteryCriticalLevel()) {
++    if (currentChargePercent() > PowerDevilSettings::batteryCriticalLevel()) {
+         m_criticalBatteryTimer->stop();
+         if (m_criticalBatteryNotification) {
+             m_criticalBatteryNotification->close();
+@@ -494,14 +494,17 @@ void Core::onDeviceAdded(const QString &udi)
+         m_lowBatteryNotification->close();
+     }
+ 
+-    if (m_criticalBatteryTimer->isActive() && currentChargePercent() > PowerDevilSettings::batteryCriticalLevel()) {
+-        m_criticalBatteryTimer->stop();
++    if (currentChargePercent() > PowerDevilSettings::batteryCriticalLevel()) {
+         if (m_criticalBatteryNotification) {
+             m_criticalBatteryNotification->close();
+         }
+-        emitRichNotification(QStringLiteral("pluggedin"),
+-                             i18n("Extra Battery Added"),
+-                             i18n("The computer will no longer go to sleep."));
++
++        if (m_criticalBatteryTimer->isActive()) {
++            m_criticalBatteryTimer->stop();
++            emitRichNotification(QStringLiteral("pluggedin"),
++                                 i18n("Extra Battery Added"),
++                                 i18n("The computer will no longer go to sleep."));
++        }
+     }
+ }
+ 
+@@ -692,11 +695,12 @@ void Core::onAcAdapterStateChanged(PowerDevil::BackendInterface::AcAdapterState
+             m_lowBatteryNotification->close();
+         }
+ 
++        if (m_criticalBatteryNotification) {
++            m_criticalBatteryNotification->close();
++        }
++
+         if (m_criticalBatteryTimer->isActive()) {
+             m_criticalBatteryTimer->stop();
+-            if (m_criticalBatteryNotification) {
+-                m_criticalBatteryNotification->close();
+-            }
+             emitRichNotification(QStringLiteral("pluggedin"),
+                              i18n("AC Adapter Plugged In"),
+                              i18n("The computer will no longer go to sleep."));
+-- 
+GitLab
+
