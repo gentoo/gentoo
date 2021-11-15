@@ -31,7 +31,8 @@ RDEPEND="
 	>=dev-python/protobuf-python-3.13.0[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	>=sci-libs/keras-applications-1.0.8[${PYTHON_USEDEP}]
-	>=sci-libs/keras-preprocessing-1.1.2[${PYTHON_USEDEP}]"
+	>=sci-libs/keras-preprocessing-1.1.2[${PYTHON_USEDEP}]
+	>=sci-libs/tensorflow-2.7[python,${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 BDEPEND="
@@ -39,7 +40,6 @@ BDEPEND="
 	>=dev-libs/protobuf-3.13.0
 	dev-java/java-config
 	>=dev-util/bazel-3.7.2"
-PDEPEND="sci-libs/tensorflow[python,${PYTHON_USEDEP}]"
 
 # Bazel tests not pytest, also want GPU access
 RESTRICT="test"
