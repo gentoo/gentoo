@@ -1,0 +1,54 @@
+Upstream: no, I probably should, although this patch isn't nice, but
+          neither is their cmake code
+
+From a0c72f32b3c318f66975400af81b9b44d8a8d9c7 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Wed, 27 Mar 2019 21:07:22 +0100
+Subject: [PATCH] Fix build with BUILD_STATIC_LIB=ON
+
+---
+ CMakeLists.txt | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 38ce1f50..dd9399be 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -441,7 +441,9 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
+   list (APPEND GEOCODER_DEPS ${COMMON_DEPS})
+   # Note that the subset of base/ on which the geocoder relies is implemented
+   # on top of Boost header-only libraries (e.g. scoped_ptr.hpp).
+-  target_link_libraries (geocoding ${LIBRARY_DEPS})
++  if (${BUILD_STATIC_LIB} STREQUAL "ON")
++    target_link_libraries (geocoding ${LIBRARY_DEPS})
++  endif()
+   target_link_libraries (geocoding-shared ${LIBRARY_DEPS})
+ endif ()
+ 
+@@ -599,7 +601,9 @@ if (BUILD_SHARED_LIB)
+ endif ()
+ 
+ if (${BUILD_GEOCODER} STREQUAL "ON")
+-  install (TARGETS geocoding LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
++  if (${BUILD_STATIC_LIB} STREQUAL "ON")
++    install (TARGETS geocoding LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
++  endif()
+   install (TARGETS geocoding-shared LIBRARY DESTINATION ${LIBDIR} ARCHIVE
+            DESTINATION ${LIBDIR})
+ endif ()
+@@ -611,7 +615,11 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
+     geocoding_test_program
+     "test/phonenumbers/geocoding/geocoding_test_program.cc"
+   )
+-  target_link_libraries (geocoding_test_program geocoding phonenumber)
++  if (${BUILD_STATIC_LIB} STREQUAL "ON")
++    target_link_libraries (geocoding_test_program geocoding phonenumber)
++  else ()
++    target_link_libraries (geocoding_test_program geocoding-shared phonenumber-shared)
++  endif ()
+ endif ()
+ 
+ # Build an RPM
+-- 
+2.21.0
+
