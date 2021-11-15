@@ -1,0 +1,87 @@
+From 82c40f18709484fd462643aa113a8ccf961b646a Mon Sep 17 00:00:00 2001
+From: Felix Ernst <fe.a.ernst@gmail.com>
+Date: Tue, 26 Oct 2021 17:28:09 +0200
+Subject: [PATCH] Fix hamburger menu opening as a window on Wayland
+
+Before this commit, if an app window is unfocused and the first
+click on the window is the hamburger menu button, the menu would
+appear displaced as a separate window on Wayland.
+
+This commit fixes this by setting a sane transientParent for the
+menu. This is slightly difficult because there can be any number
+of hamburger buttons in any number of different windows so we need
+to figure out spontaneously which button was pressed to open the
+menu.
+
+BUG: 442375
+---
+ src/khamburgermenuhelpers.cpp | 26 ++++++++++++++++++++++++--
+ src/khamburgermenuhelpers_p.h |  2 +-
+ 2 files changed, 25 insertions(+), 3 deletions(-)
+
+diff --git a/src/khamburgermenuhelpers.cpp b/src/khamburgermenuhelpers.cpp
+index 88242aa5..d1ae2835 100644
+--- a/src/khamburgermenuhelpers.cpp
++++ b/src/khamburgermenuhelpers.cpp
+@@ -10,7 +10,10 @@
+ #include "khamburgermenu.h"
+ 
+ #include <QEvent>
++#include <QMenu>
++#include <QToolButton>
+ #include <QWidget>
++#include <QWindow>
+ 
+ ListenerContainer::ListenerContainer(KHamburgerMenuPrivate *hamburgerMenuPrivate)
+     : QObject{hamburgerMenuPrivate},
+@@ -28,13 +31,32 @@ bool AddOrRemoveActionListener::eventFilter(QObject * /*watched*/, QEvent *event
+     return false;
+ }
+ 
+-bool ButtonPressListener::eventFilter(QObject * /*watched*/, QEvent *event)
++bool ButtonPressListener::eventFilter(QObject *watched, QEvent *event)
+ {
+     if (event->type() == QEvent::KeyPress || event->type() == QEvent::MouseButtonPress) {
+         auto hamburgerMenuPrivate = static_cast<KHamburgerMenuPrivate *>(parent());
+         auto q = static_cast<KHamburgerMenu *>(hamburgerMenuPrivate->q_ptr);
+         Q_EMIT q->aboutToShowMenu();
+-        hamburgerMenuPrivate->resetMenu();
++        hamburgerMenuPrivate->resetMenu(); // This menu never has a parent which can be
++        // problematic because it can lead to situations in which the QMenu itself is
++        // treated like its own window.
++        // To avoid this we set a sane transientParent() now even if it already has one
++        // because the menu might be opened from another window this time.
++        const auto watchedButton = qobject_cast<QToolButton *>(watched);
++        if (!watchedButton) {
++            return false;
++        }
++        auto menu = watchedButton->menu();
++        if (!menu) {
++            return false;
++        }
++        menu->winId(); // trigger being a native widget already, to ensure windowHandle created
++        // generic code if not known if the available parent widget is a native widget or not
++        auto parentWindowHandle = watchedButton->windowHandle();
++        if (!parentWindowHandle) {
++            parentWindowHandle = watchedButton->nativeParentWidget()->windowHandle();
++        }
++        menu->windowHandle()->setTransientParent(parentWindowHandle);
+     }
+     return false;
+ }
+diff --git a/src/khamburgermenuhelpers_p.h b/src/khamburgermenuhelpers_p.h
+index f0d98790..4993ee61 100644
+--- a/src/khamburgermenuhelpers_p.h
++++ b/src/khamburgermenuhelpers_p.h
+@@ -80,7 +80,7 @@ class ButtonPressListener : public QObject
+ protected:
+     inline ButtonPressListener(QObject *parent) : QObject{parent} {   };
+ 
+-    bool eventFilter(QObject * /*watched*/, QEvent *event) override;
++    bool eventFilter(QObject *watched, QEvent *event) override;
+ 
+     friend class ListenerContainer;
+ };
+-- 
+GitLab
+
