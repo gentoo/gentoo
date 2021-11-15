@@ -121,7 +121,7 @@ src_install() {
 		# and print $(ARCH)$(SUBARCH).
 		local arch=$(awk '{ k[$1] = $3 } END { printf("%s%s", k["ARCH"], k["SUBARCH"]); }' config.mak)
 
-		if [[ ! -e "${D}"/lib/ld-musl-${arch}.so.1 ]] ; then
+		if [[ ! -e "${ED}"/lib/ld-musl-${arch}.so.1 ]] ; then
 			# During cross (using crossdev), when emerging sys-libs/musl,
 			# if /usr/lib/libc.so.1 doesn't exist on the system, installation
 			# would fail.
@@ -134,7 +134,7 @@ src_install() {
 			dosym8 -r /usr/lib/libc.so.1 /lib/ld-musl-${arch}.so.1
 
 			# If it's still a dead symlnk, OK, we really do need to abort.
-			[[ -e "${D}"/lib/ld-musl-${arch}.so.1 ]] || die
+			[[ -e "${ED}"/lib/ld-musl-${arch}.so.1 ]] || die
 		fi
 
 		cp "${FILESDIR}"/ldconfig.in "${T}" || die
