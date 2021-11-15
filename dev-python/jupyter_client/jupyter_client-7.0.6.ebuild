@@ -32,9 +32,13 @@ BDEPEND="
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	)"
 
-distutils_enable_tests pytest
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.0.6-test-timeout.patch
+)
 
 EPYTEST_DESELECT=(
 	jupyter_client/tests/test_kernelmanager.py::TestKernelManagerShutDownGracefully::test_signal_kernel_subprocesses
 	jupyter_client/tests/test_kernelmanager.py::TestKernelManagerShutDownGracefully::test_async_signal_kernel_subprocesses
 )
+
+distutils_enable_tests pytest
