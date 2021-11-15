@@ -1,0 +1,31 @@
+From 5e16b5ab644748fbf38c2b7fa7113d8dc99bcc28 Mon Sep 17 00:00:00 2001
+From: Patrick Northon <northon_patrick3@yahoo.ca>
+Date: Sun, 7 Nov 2021 20:36:45 -0500
+Subject: [PATCH] [mediaframe] Make files added from paths into URLs.
+
+This make it consistent with individual files added and fix a problem where the url isn't converted to a path properly in some conditions when the url doesn't contain the schema (file://).
+
+BUG: 445071
+
+
+(cherry picked from commit 181cc49c4d44a4ac926051ebf9a53d0a8fc6b253)
+---
+ applets/mediaframe/plugin/mediaframe.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/applets/mediaframe/plugin/mediaframe.cpp b/applets/mediaframe/plugin/mediaframe.cpp
+index 45e37eeae..8729d7b83 100644
+--- a/applets/mediaframe/plugin/mediaframe.cpp
++++ b/applets/mediaframe/plugin/mediaframe.cpp
+@@ -125,7 +125,7 @@ void MediaFrame::add(const QString &path, AddOption option)
+             while (dirIterator.hasNext()) {
+                 dirIterator.next();
+ 
+-                filePath = dirIterator.filePath();
++                filePath = "file://" + dirIterator.filePath();
+                 paths.append(filePath);
+                 m_allFiles.append(filePath);
+                 // qDebug() << "Appended" << filePath;
+-- 
+GitLab
+
