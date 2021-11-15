@@ -8,7 +8,7 @@ inherit autotools
 MY_P="${P^g}"
 
 DESCRIPTION="OpenGL binding for Gauche"
-HOMEPAGE="http://practical-scheme.net/gauche/"
+HOMEPAGE="https://practical-scheme.net/gauche/"
 SRC_URI="mirror://sourceforge/${PN%-*}/${MY_P}.tgz"
 
 LICENSE="BSD"
