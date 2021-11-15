@@ -1,0 +1,56 @@
+From 67ec2a1873e3d750529043b243043cfd2e2f9ec6 Mon Sep 17 00:00:00 2001
+From: Nate Graham <nate@kde.org>
+Date: Wed, 10 Nov 2021 20:44:53 -0700
+Subject: [PATCH] PageRowGlobalToolBarUI: don't animate opacity
+
+Doing so causes flickering in System Settings and KInfoCenter because of
+how the titles are rendered. It also doesn't make conceptual sense since
+the style of toolbar generally doesn't change so the user would never
+actually see the animated opacity change in the first place.
+
+BUG: 417636
+FIXED-IN: 5.89
+---
+ .../globaltoolbar/PageRowGlobalToolBarUI.qml        | 13 +++----------
+ 1 file changed, 3 insertions(+), 10 deletions(-)
+
+diff --git a/src/controls/private/globaltoolbar/PageRowGlobalToolBarUI.qml b/src/controls/private/globaltoolbar/PageRowGlobalToolBarUI.qml
+index 640ab51e..c536fed7 100644
+--- a/src/controls/private/globaltoolbar/PageRowGlobalToolBarUI.qml
++++ b/src/controls/private/globaltoolbar/PageRowGlobalToolBarUI.qml
+@@ -106,8 +106,8 @@ Kirigami.AbstractApplicationHeader {
+             Layout.preferredHeight: -1
+             property Kirigami.PageRow pageRow: root
+ 
+-            opacity: layerIsMainRow && active
+-            enabled: opacity > 0
++            visible: layerIsMainRow && active
++            enabled: visible
+ 
+             asynchronous: true
+ 
+@@ -115,13 +115,6 @@ Kirigami.AbstractApplicationHeader {
+ 
+             //TODO: different implementation?
+             source: globalToolBar.actualStyle == Kirigami.ApplicationHeaderStyle.TabBar ? Qt.resolvedUrl("TabBarControl.qml") : Qt.resolvedUrl("BreadcrumbControl.qml")
+-
+-            Behavior on opacity {
+-                OpacityAnimator {
+-                    duration: Kirigami.Units.longDuration
+-                    easing.type: Easing.InOutQuad
+-                }
+-            }
+         }
+ 
+         Item {
+@@ -137,6 +130,6 @@ Kirigami.AbstractApplicationHeader {
+             Layout.preferredWidth: height
+         }
+     }
+-    background.opacity: breadcrumbLoader.opacity
++    background.visible: breadcrumbLoader.visible
+ }
+ 
+-- 
+GitLab
+
