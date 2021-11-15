@@ -631,6 +631,22 @@ net-libs/libsoup:3.0
 # breaks if not all at least many revdeps. #805011 for tracker bug.
 >=net-libs/mbedtls-3.0.0
 
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2021-11-14)
+# Bitcoin has activated the Taproot protocol change, which is not enforced by
+# versions of Bitcoin Core/Knots prior to 0.21.1. This means these old
+# versions are no longer providing full node security, and are effectively
+# light wallets. However, protocol changes require user consent to be
+# effective, and inconsistent enforcement can lead to loss of funds on either
+# or both sides of the disagreement. As such, it is unethical for anyone to
+# make the decision but you, so you must opt-in to them explicitly (or opt to
+# reject Taproot - not supported by any current ebuild). If you do not know
+# what you are doing, learn more before receiving or sending further bitcoins.
+# (You must make a decision either way - simply not upgrading is insecure.)
+# To learn more, see https://bitcointaproot.cc
+<net-p2p/bitcoind-0.21.1
+<net-p2p/bitcoin-qt-0.21.1
+<net-libs/libbitcoinconsensus-0.21.1
+
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2021-11-04)
 # This release adds enforcement of the Taproot protocol change to the Bitcoin
 # rules, beginning in November. Protocol changes require user consent to be
