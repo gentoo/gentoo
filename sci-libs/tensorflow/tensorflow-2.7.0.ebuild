@@ -116,7 +116,6 @@ RDEPEND="
 		>=dev-python/grpcio-1.28[${PYTHON_USEDEP}]
 		>=dev-python/wrapt-1.11.1[${PYTHON_USEDEP}]
 		>=net-libs/google-cloud-cpp-0.10.0
-		>=sci-libs/keras-2.7.0[${PYTHON_USEDEP}]
 		>=sci-visualization/tensorboard-2.7.0[${PYTHON_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
@@ -125,6 +124,7 @@ DEPEND="${RDEPEND}
 		dev-python/setuptools
 	)"
 PDEPEND="python? (
+		>=sci-libs/keras-2.7.0[${PYTHON_USEDEP}]
 		>=sci-libs/tensorflow-estimator-2.7.0[${PYTHON_USEDEP}]
 	)"
 BDEPEND="
