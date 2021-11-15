@@ -27,4 +27,8 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install docdir="${EPREFIX}"/usr/share/doc/${PF}
 	find "${D}" -name '*.la' -delete || die
+	# librtas_src/syscall_rmo.c: static const char *lockfile_path = "/var/lock/LCK..librtas";
+	# this way we prevent sandbox violations in lscpu linked to rtas
+	dodir /etc/sandbox.d
+	echo 'SANDBOX_PREDICT="/run/lock/LCK..librtas"' > "${ED}"/etc/sandbox.d/50librtas || die
 }
