@@ -11,7 +11,10 @@ inherit distutils-r1 linux-info tmpfiles prefix
 
 DESCRIPTION="The package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
-SRC_URI="https://gitweb.gentoo.org/proj/portage.git/snapshot/${P}.tar.bz2"
+SRC_URI="
+	https://gitweb.gentoo.org/proj/portage.git/snapshot/${P}.tar.bz2
+	https://gitweb.gentoo.org/proj/portage.git/patch/?id=c309328c4e1f6254251d31149ee47b4266d4d70f
+		-> ${P}-setuptools-install-depr.patch"
 
 LICENSE="GPL-2"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
@@ -80,6 +83,10 @@ pkg_pretend() {
 }
 
 python_prepare_all() {
+	local PATCHES=(
+		"${DISTDIR}"/${P}-setuptools-install-depr.patch
+	)
+
 	distutils-r1_python_prepare_all
 
 	sed -e "s:^VERSION = \"HEAD\"$:VERSION = \"${PV}\":" -i lib/portage/__init__.py || die
