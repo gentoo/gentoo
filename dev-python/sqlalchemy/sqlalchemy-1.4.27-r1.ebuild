@@ -3,8 +3,7 @@
 
 EAPI=8
 
-# Dropped pypy3, python3.10 for now b/c of eventlet dependency
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 PYTHON_REQ_USE="sqlite?"
 
 inherit distutils-r1 optfeature
@@ -19,11 +18,11 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="examples +sqlite test"
 
-# eventlet for bug #823794
-RDEPEND="dev-python/eventlet[${PYTHON_USEDEP}]"
+# greenlet for bug #823794
+RDEPEND="virtual/python-greenlet[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
 		$(python_gen_impl_dep sqlite)
