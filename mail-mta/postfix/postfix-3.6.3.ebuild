@@ -15,7 +15,7 @@ SRC_URI="${MY_URI}/${MY_SRC}.tar.gz"
 
 LICENSE="|| ( IBM EPL-2.0 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86"
 IUSE="+berkdb cdb dovecot-sasl +eai ldap ldap-bind lmdb memcached mbox mysql nis pam postgres sasl selinux sqlite ssl"
 
 DEPEND="
