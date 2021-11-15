@@ -19,6 +19,8 @@ RDEPEND="!app-text/multitail"
 
 PATCHES=(
 	"${FILESDIR}"/qlogtools-3.1-errno.patch
+	"${FILESDIR}"/qlogtools-3.1-fix-implicit-decl.patch
+	"${FILESDIR}"/qlogtools-3.1-fix-glibc-2-33.patch
 )
 
 src_configure() {
