@@ -1,0 +1,66 @@
+From b3b0e96e0f62148ee80075fb9d35fe15f4e32612 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 15 Nov 2021 19:13:37 +0100
+Subject: [PATCH] Add BUILD_TESTING option
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ cpp/CMakeLists.txt | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 44db6834..a97da698 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -90,6 +90,7 @@ option ("USE_STD_MAP" "Force the use of std::map" "OFF")
+ option ("BUILD_STATIC_LIB" "Build static libraries" "ON")
+ option ("USE_STDMUTEX" "Use C++ 2011 std::mutex for multi-threading" "OFF")
+ option ("USE_POSIX_THREAD" "Use Posix api for multi-threading" "OFF")
++option ("BUILD_TESTING" "Build unit tests (gtest sources are needed)" "ON")
+ 
+ if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
+   add_definitions ("-DI18N_PHONENUMBERS_USE_ALTERNATE_FORMATS")
+@@ -121,7 +122,9 @@ if (${USE_BOOST} STREQUAL "OFF" AND ${USE_STDMUTEX} STREQUAL "OFF")
+   find_package (Threads)
+ endif()
+ 
+-find_or_build_gtest ()
++if (BUILD_TESTING)
++  find_or_build_gtest ()
++endif()
+ 
+ if (${USE_RE2} STREQUAL "ON")
+   find_required_library (RE2 re2/re2.h re2 "Google RE2")
+@@ -492,11 +495,13 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
+ endif ()
+ 
+ # Build a specific library for testing purposes.
++if (BUILD_TESTING)
+ add_library (phonenumber_testing STATIC ${TESTING_LIBRARY_SOURCES})
+ if (${BUILD_GEOCODER} STREQUAL "ON")
+   add_dependencies (phonenumber_testing generate_geocoding_data)
+ endif ()
+ target_link_libraries (phonenumber_testing ${LIBRARY_DEPS})
++endif()
+ 
+ if (${BUILD_GEOCODER} STREQUAL "ON")
+   # Test geocoding data cpp files generation.
+@@ -551,6 +556,7 @@ if (${USE_ICU_REGEXP} STREQUAL "ON")
+ endif ()
+ 
+ # Build the testing binary.
++if (BUILD_TESTING)
+ include_directories ("test")
+ add_executable (libphonenumber_test ${TEST_SOURCES})
+ set (TEST_LIBS phonenumber_testing ${GTEST_LIB})
+@@ -575,6 +581,7 @@ else ()
+     DEPENDS libphonenumber_test
+   )
+ endif ()
++endif ()
+ 
+ # Install rules.
+ install (FILES
+-- 
+2.33.1
+
