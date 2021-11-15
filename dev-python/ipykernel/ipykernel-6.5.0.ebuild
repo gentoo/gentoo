@@ -37,7 +37,6 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	test? (
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/nose_warnings_filters[${PYTHON_USEDEP}]
