@@ -1,0 +1,121 @@
+From 92ac1038cff333d70a71331b2a5fa0b9d91bc39d Mon Sep 17 00:00:00 2001
+From: Eugene Popov <popov895@ukr.net>
+Date: Fri, 19 Nov 2021 11:13:03 +0000
+Subject: [PATCH] Fix IconLabel
+
+---
+ .../plasmacomponents3/private/IconLabel.qml   | 97 +++++++++++--------
+ 1 file changed, 55 insertions(+), 42 deletions(-)
+
+diff --git a/src/declarativeimports/plasmacomponents3/private/IconLabel.qml b/src/declarativeimports/plasmacomponents3/private/IconLabel.qml
+index 467c2f54b..74a8ff3a5 100644
+--- a/src/declarativeimports/plasmacomponents3/private/IconLabel.qml
++++ b/src/declarativeimports/plasmacomponents3/private/IconLabel.qml
+@@ -24,49 +24,62 @@ T.Control {
+     PlasmaCore.ColorScope.inherit: true
+     implicitWidth: implicitContentWidth + leftPadding + rightPadding
+     implicitHeight: implicitContentHeight + topPadding + bottomPadding
+-    contentItem: GridLayout {
+-        rowSpacing: root.spacing
+-        columnSpacing: root.spacing
+-        flow: root.display === T.AbstractButton.TextUnderIcon ? GridLayout.TopToBottom : GridLayout.LeftToRight
+-        PlasmaCore.IconItem {
+-            id: iconItem
+-            visible: valid && width > 0 && height > 0 && root.display !== T.AbstractButton.TextOnly
+-            colorGroup: root.PlasmaCore.ColorScope.colorGroup
+-            implicitWidth: PlasmaCore.Units.iconSizes.sizeForLabels
+-            implicitHeight: PlasmaCore.Units.iconSizes.sizeForLabels
+-            Layout.fillWidth: true
+-            Layout.fillHeight: true
+-            Layout.maximumWidth: implicitWidth > 0 ? implicitWidth : Number.POSITIVE_INFINITY
+-            Layout.maximumHeight: implicitHeight > 0 ? implicitHeight : Number.POSITIVE_INFINITY
+-            Layout.alignment: if (root.textBesideIcon) {
+-                Qt.AlignRight | Qt.AlignVCenter
+-            } else if (root.textUnderIcon) {
+-                Qt.AlignHCenter | Qt.AlignBottom
+-            } else {
+-                Qt.AlignCenter
++    contentItem: Item {
++        implicitWidth: gridLayout.implicitWidth
++        implicitHeight: gridLayout.implicitHeight
++        GridLayout {
++            id: gridLayout
++            rowSpacing: root.spacing
++            columnSpacing: root.spacing
++            flow: root.display === T.AbstractButton.TextUnderIcon ? GridLayout.TopToBottom : GridLayout.LeftToRight
++            x: {
++                if (root.alignment & Qt.AlignLeft) {
++                    return 0;
++                }
++                if (root.alignment & Qt.AlignRight) {
++                    return parent.width - width;
++                }
++                return Math.round((parent.width - width) / 2);
+             }
+-        }
+-        T.Label {
+-            id: label
+-            visible: text.length > 0 && root.display !== T.AbstractButton.IconOnly
+-            palette: root.palette
+-            font: root.font
+-            horizontalAlignment: root.alignment & Qt.AlignHorizontal_Mask || Text.AlignHCenter
+-            verticalAlignment: root.alignment & Qt.AlignVertical_Mask || Text.AlignVCenter
+-            // Work around Qt bug where NativeRendering breaks for non-integer scale factors
+-            // https://bugreports.qt.io/browse/QTBUG-70481
+-            renderType: Screen.devicePixelRatio % 1 !== 0 ? Text.QtRendering : Text.NativeRendering
+-            color: PlasmaCore.ColorScope.textColor
+-            linkColor: PlasmaCore.Theme.linkColor
+-            elide: Text.ElideRight
+-            Layout.fillWidth: root.alignment & Qt.AlignHorizontal_Mask
+-            Layout.fillHeight: root.alignment & Qt.AlignVertical_Mask
+-            Layout.alignment: if (root.textBesideIcon) {
+-                Qt.AlignLeft | Qt.AlignVCenter
+-            } else if (root.textUnderIcon) {
+-                Qt.AlignHCenter | Qt.AlignTop
+-            } else {
+-                Qt.AlignCenter
++            y: {
++                if (root.alignment & Qt.AlignTop) {
++                    return 0;
++                }
++                if (root.alignment & Qt.AlignBottom) {
++                    return parent.height - height;
++                }
++                return Math.round((parent.height - height) / 2);
++            }
++            width: Math.min(parent.width, implicitWidth)
++            height: Math.min(parent.height, implicitHeight)
++            PlasmaCore.IconItem {
++                id: iconItem
++                visible: valid && width > 0 && height > 0 && root.display !== T.AbstractButton.TextOnly
++                colorGroup: root.PlasmaCore.ColorScope.colorGroup
++                implicitWidth: PlasmaCore.Units.iconSizes.sizeForLabels
++                implicitHeight: PlasmaCore.Units.iconSizes.sizeForLabels
++                Layout.alignment: Qt.AlignCenter
++                Layout.maximumWidth: implicitWidth > 0 ? implicitWidth : Number.POSITIVE_INFINITY
++                Layout.maximumHeight: implicitHeight > 0 ? implicitHeight : Number.POSITIVE_INFINITY
++            }
++            T.Label {
++                id: label
++                visible: text.length > 0 && root.display !== T.AbstractButton.IconOnly
++                palette: root.palette
++                font: root.font
++                // Work around Qt bug where NativeRendering breaks for non-integer scale factors
++                // https://bugreports.qt.io/browse/QTBUG-70481
++                renderType: Screen.devicePixelRatio % 1 !== 0 ? Text.QtRendering : Text.NativeRendering
++                color: PlasmaCore.ColorScope.textColor
++                linkColor: PlasmaCore.Theme.linkColor
++                elide: Text.ElideRight
++                Layout.alignment: Qt.AlignCenter
++                Layout.fillWidth: {
++                    if (!iconItem.visible || parent.flow === GridLayout.TopToBottom) {
++                        return implicitWidth > parent.width;
++                    }
++                    return iconItem.implicitWidth + parent.columnSpacing + implicitWidth > parent.width;
++                }
+             }
+         }
+     }
+-- 
+GitLab
+
