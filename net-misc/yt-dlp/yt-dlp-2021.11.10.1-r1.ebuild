@@ -24,6 +24,13 @@ python_test() {
 	epytest -m 'not download'
 }
 
+python_install() {
+	distutils-r1_python_install
+
+	local sitedir=$(python_get_sitedir)
+	dosym yt_dlp "${sitedir#${EPREFIX}}"/youtube_dl
+}
+
 python_install_all() {
 	dodoc README.md Changelog.md supportedsites.md
 	doman yt-dlp.1
