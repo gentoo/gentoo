@@ -1,0 +1,35 @@
+From ea18868f6b49577b1349438d6e058199705a25b0 Mon Sep 17 00:00:00 2001
+From: Bharadwaj Raju <bharadwaj.raju777@protonmail.com>
+Date: Fri, 12 Nov 2021 15:55:50 +0000
+Subject: [PATCH] applets/weather: Make cursor a pointing hand when hovering
+ over source link
+
+Currently it's a normal pointer, which doesn't indicate that it's a clickable link.
+
+
+(cherry picked from commit 508fde69075026db28e7078a7e105acf1cc9c102)
+---
+ applets/weather/package/contents/ui/FullRepresentation.qml | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/applets/weather/package/contents/ui/FullRepresentation.qml b/applets/weather/package/contents/ui/FullRepresentation.qml
+index dc1583032..4a6d4bdff 100644
+--- a/applets/weather/package/contents/ui/FullRepresentation.qml
++++ b/applets/weather/package/contents/ui/FullRepresentation.qml
+@@ -40,6 +40,13 @@ ColumnLayout {
+ 
+         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+ 
++        MouseArea {
++            anchors.fill: parent
++            hoverEnabled: true
++            acceptedButtons: Qt.NoButton
++            cursorShape: !!parent.creditUrl ? Qt.PointingHandCursor : Qt.ArrowCursor
++        }
++
+         wrapMode: Text.WordWrap
+         horizontalAlignment: Text.AlignRight
+         font {
+-- 
+GitLab
+
