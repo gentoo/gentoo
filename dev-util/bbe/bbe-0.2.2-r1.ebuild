@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,17 +14,13 @@ SLOT="0"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
+PATCHES=(
+	"${FILESDIR}"/bbe-0.2.2-inline.patch
+)
+
 src_prepare() {
 	default
 
 	sed -i -e '/^htmldir/d' doc/Makefile.am || die
-	eaclocal
 	eautoreconf
-}
-
-src_configure() {
-	# Avoid linking problems, bug #750545.
-	replace-flags -Os -O2
-
-	default
 }
