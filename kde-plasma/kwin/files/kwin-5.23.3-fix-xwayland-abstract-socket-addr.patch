@@ -1,0 +1,49 @@
+From 5a9a3e96898bd29ccbf31d9ff92dfb80274ce265 Mon Sep 17 00:00:00 2001
+From: Weng Xuetian <wengxt@gmail.com>
+Date: Thu, 11 Nov 2021 12:25:13 -0800
+Subject: [PATCH] Fix XWayland abstract socket address.
+
+NUL-termination byte is not needed for abstract socket. This leads to
+XWayland listening to a wrong address.
+
+Confirmed with lsof.
+
+BUG: 442362
+
+
+(cherry picked from commit 83a036e9d40475d5c07177bf2e8bba9bc0fd4aa5)
+---
+ src/xwl/lib/xwaylandsocket.cpp | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/src/xwl/lib/xwaylandsocket.cpp b/src/xwl/lib/xwaylandsocket.cpp
+index 786ab5cbbf..7cf9310584 100644
+--- a/src/xwl/lib/xwaylandsocket.cpp
++++ b/src/xwl/lib/xwaylandsocket.cpp
+@@ -42,19 +42,18 @@ UnixSocketAddress::UnixSocketAddress(const QString &socketPath, Type type)
+     const QByteArray encodedSocketPath = QFile::encodeName(socketPath);
+ 
+     int byteCount = offsetof(sockaddr_un, sun_path) + encodedSocketPath.size() + 1;
+-    if (type == Type::Abstract) {
+-        byteCount++; // For the first '\0'.
+-    }
+     m_buffer.resize(byteCount);
+ 
+     sockaddr_un *address = reinterpret_cast<sockaddr_un *>(m_buffer.data());
+     address->sun_family = AF_UNIX;
+ 
+     if (type == Type::Unix) {
+-        qstrcpy(address->sun_path, encodedSocketPath);
++        memcpy(address->sun_path, encodedSocketPath.data(), encodedSocketPath.size());
++        address->sun_path[encodedSocketPath.size()] = '\0';
+     } else {
++        // Abstract domain socket does not need the NUL-termination byte.
+         *address->sun_path = '\0';
+-        qstrcpy(address->sun_path + 1, encodedSocketPath);
++        memcpy(address->sun_path + 1, encodedSocketPath.data(), encodedSocketPath.size());
+     }
+ }
+ 
+-- 
+GitLab
+
