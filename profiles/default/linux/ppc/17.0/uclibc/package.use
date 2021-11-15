@@ -1,7 +1,0 @@
-# Copyright 2020 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-
-# Anthony G. Basile <blueness@gentoo.org> (2019-06-14)
-# This is needed for default stage3
-sys-libs/gdbm berkdb
