@@ -1,11 +1,11 @@
 # Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{7..10} )
 
-inherit xdg cmake python-any-r1
+inherit xdg cmake python-any-r1 optfeature
 
 DESCRIPTION="Official desktop client for Telegram"
 HOMEPAGE="https://desktop.telegram.org"
@@ -16,12 +16,11 @@ SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${
 LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE="+dbus enchant +hunspell screencast +spell wayland webkit +X"
+IUSE="+dbus enchant +hunspell screencast +spell wayland +X"
 REQUIRED_USE="
 	spell? (
 		^^ ( enchant hunspell )
 	)
-	webkit? ( dbus )
 "
 
 RDEPEND="
@@ -55,7 +54,6 @@ RDEPEND="
 	enchant? ( app-text/enchant:= )
 	hunspell? ( >=app-text/hunspell-1.7:= )
 	wayland? ( kde-frameworks/kwayland:= )
-	webkit? ( net-libs/webkit-gtk:= )
 	X? ( x11-libs/libxcb:= )
 "
 DEPEND="${RDEPEND}
@@ -91,6 +89,11 @@ src_prepare() {
 	sed -i 's/DESKTOP_APP_USE_PACKAGED/NO_ONE_WILL_EVER_SET_THIS/' \
 		cmake/external/rlottie/CMakeLists.txt || die
 
+	# fix linking with missing libdl (introduced in 3.2.0->3.2.4 upgrade,
+	#  not sure if thanks to removing the -pie flag in the cmakelists...)
+	sed -i 's/${JEMALLOC_LINK_LIBRARIES}/& dl/' \
+		cmake/external/jemalloc/CMakeLists.txt || die
+
 	cmake_src_prepare
 }
 
@@ -104,7 +107,6 @@ src_configure() {
 		-DDESKTOP_APP_DISABLE_X11_INTEGRATION=$(usex X no yes)
 		-DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=$(usex wayland no yes)
 		-DDESKTOP_APP_DISABLE_DBUS_INTEGRATION=$(usex dbus no yes)
-		-DDESKTOP_APP_DISABLE_WEBKITGTK=$(usex webkit no yes)
 		-DDESKTOP_APP_DISABLE_SPELLCHECK=$(usex spell no yes)  # enables hunspell (recommended)
 		-DDESKTOP_APP_USE_ENCHANT=$(usex enchant)  # enables enchant and disables hunspell
 	)
@@ -144,4 +146,5 @@ pkg_postinst() {
 		ewarn "Versions of dev-qt/qtcore lower than 5.15.2-r10 might cause telegram"
 		ewarn "to crash when pasting big images from the clipboard."
 	fi
+	optfeature "shop payment support" net-libs/webkit-gtk
 }
