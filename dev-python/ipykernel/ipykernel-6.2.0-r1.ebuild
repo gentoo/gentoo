@@ -16,6 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv sparc x86"
 
 RDEPEND="
+	dev-python/ipython_genutils[${PYTHON_USEDEP}]
 	>=dev-python/debugpy-1.0.0[${PYTHON_USEDEP}]
 	<dev-python/debugpy-2.0[${PYTHON_USEDEP}]
 	>=dev-python/ipython-7.23.1[${PYTHON_USEDEP}]
