@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>scheme@gentoo.org</email>
+		<name>Gentoo Scheme Project</name>
+	</maintainer>
+	<longdescription>
+		Scsh has two main components: a process notation for running programs
+		and setting up pipelines and redirections, and a complete syscall
+		library for low-level access to the operating system, i.e. to POSIX,
+		the least common denominator of more or less all Unices, plus widely
+		supported extensions such as symbolic links and BSD sockets.
+
+		Moreover, scsh provides an awk facility for pattern-directed
+		computation over streams of records, a rich facility for matching
+		regular-expression patterns in strings, event-based interrupt
+		handling, user-level threads, a futuristic module system, and an
+		interactive environment.
+
+		Scsh comes with extensive documentation describing these and other
+		features.
+	</longdescription>
+</pkgmetadata>
