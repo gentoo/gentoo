@@ -84,7 +84,6 @@ BDEPEND="dev-lang/perl
 	virtual/pkgconfig
 	test? (
 		sys-apps/diffutils
-		dev-lang/perl
 	)"
 
 DOCS=( CHANGES README docs/{FEATURES.md,INTERNALS.md,FAQ,BUGS.md,CONTRIBUTE.md} )
