@@ -168,10 +168,11 @@ ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/developer		dev
 
 # PPC/PPC64 flat Profiles
 # @MAINTAINER: gyakovlev@gentoo.org, ppc64@gentoo.org, musl@gentoo.org
-#ppc		 default/linux/ppc/17.0					exp
+ppc		 default/linux/ppc/17.0					exp
 #ppc		 default/linux/ppc/17.0/desktop				exp
 #ppc		 default/linux/ppc/17.0/desktop/gnome			exp
 #ppc		 default/linux/ppc/17.0/desktop/gnome/systemd		exp
+ppc		 default/linux/ppc/17.0/systemd				exp
 #ppc		 default/linux/ppc/17.0/developer			exp
 #ppc		 default/linux/ppc/17.0/musl				exp
 #ppc		 default/linux/ppc/17.0/musl/hardened			exp
