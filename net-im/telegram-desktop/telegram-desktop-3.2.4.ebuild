@@ -147,5 +147,5 @@ pkg_postinst() {
 		ewarn "to crash when pasting big images from the clipboard."
 	fi
 	optfeature_header
-	optfeature "shop payment support" net-libs/webkit-gtk
+	optfeature "shop payment support (requires USE=dbus enabled)" net-libs/webkit-gtk
 }
