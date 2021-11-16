@@ -68,6 +68,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/linuxcontainers.asc
 
 PATCHES=(
 	"${FILESDIR}/${PN}-syscall_wrappers-don-t-conflict-with-glibc-provided.patch"
+	"${FILESDIR}"/lxd-4.0.7-no-werror.patch
 )
 
 src_prepare() {

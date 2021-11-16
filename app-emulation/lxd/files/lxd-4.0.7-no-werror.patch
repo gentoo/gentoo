@@ -1,0 +1,108 @@
+diff -Naur lxd-4.0.7/lxd/cgo.go lxd-4.0.7-no-werror/lxd/cgo.go
+--- lxd-4.0.7/lxd/cgo.go	2021-07-16 23:33:23.000000000 +0300
++++ lxd-4.0.7-no-werror/lxd/cgo.go	2021-11-16 15:16:23.575299112 +0200
+@@ -3,7 +3,7 @@
+ 
+ package main
+ 
+-// #cgo CFLAGS: -std=gnu11 -Wvla -Werror -fvisibility=hidden -Winit-self
++// #cgo CFLAGS: -std=gnu11 -Wvla -fvisibility=hidden -Winit-self
+ // #cgo CFLAGS: -Wformat=2 -Wshadow -Wendif-labels -fasynchronous-unwind-tables
+ // #cgo CFLAGS: -pipe --param=ssp-buffer-size=4 -g -Wunused
+ // #cgo CFLAGS: -Werror=implicit-function-declaration
+diff -Naur lxd-4.0.7/lxd/seccomp/cgo.go lxd-4.0.7-no-werror/lxd/seccomp/cgo.go
+--- lxd-4.0.7/lxd/seccomp/cgo.go	2021-07-16 23:33:23.000000000 +0300
++++ lxd-4.0.7-no-werror/lxd/seccomp/cgo.go	2021-11-16 15:16:34.928629720 +0200
+@@ -3,7 +3,7 @@
+ 
+ package seccomp
+ 
+-// #cgo CFLAGS: -std=gnu11 -Wvla -Werror -fvisibility=hidden -Winit-self
++// #cgo CFLAGS: -std=gnu11 -Wvla -fvisibility=hidden -Winit-self
+ // #cgo CFLAGS: -Wformat=2 -Wshadow -Wendif-labels -fasynchronous-unwind-tables
+ // #cgo CFLAGS: -pipe --param=ssp-buffer-size=4 -g -Wunused
+ // #cgo CFLAGS: -Werror=implicit-function-declaration
+diff -Naur lxd-4.0.7/lxd/storage/cgo.go lxd-4.0.7-no-werror/lxd/storage/cgo.go
+--- lxd-4.0.7/lxd/storage/cgo.go	2021-07-16 23:33:23.000000000 +0300
++++ lxd-4.0.7-no-werror/lxd/storage/cgo.go	2021-11-16 15:16:44.585294068 +0200
+@@ -3,7 +3,7 @@
+ 
+ package storage
+ 
+-// #cgo CFLAGS: -std=gnu11 -Wvla -Werror -fvisibility=hidden -Winit-self
++// #cgo CFLAGS: -std=gnu11 -Wvla -fvisibility=hidden -Winit-self
+ // #cgo CFLAGS: -Wformat=2 -Wshadow -Wendif-labels -fasynchronous-unwind-tables
+ // #cgo CFLAGS: -pipe --param=ssp-buffer-size=4 -g -Wunused
+ // #cgo CFLAGS: -Werror=implicit-function-declaration
+diff -Naur lxd-4.0.7/lxd/storage/quota/cgo.go lxd-4.0.7-no-werror/lxd/storage/quota/cgo.go
+--- lxd-4.0.7/lxd/storage/quota/cgo.go	2021-07-16 23:33:23.000000000 +0300
++++ lxd-4.0.7-no-werror/lxd/storage/quota/cgo.go	2021-11-16 15:16:54.231958418 +0200
+@@ -3,7 +3,7 @@
+ 
+ package quota
+ 
+-// #cgo CFLAGS: -std=gnu11 -Wvla -Werror -fvisibility=hidden -Winit-self
++// #cgo CFLAGS: -std=gnu11 -Wvla -fvisibility=hidden -Winit-self
+ // #cgo CFLAGS: -Wformat=2 -Wshadow -Wendif-labels -fasynchronous-unwind-tables
+ // #cgo CFLAGS: -pipe --param=ssp-buffer-size=4 -g -Wunused
+ // #cgo CFLAGS: -Werror=implicit-function-declaration
+diff -Naur lxd-4.0.7/lxd-p2c/cgo.go lxd-4.0.7-no-werror/lxd-p2c/cgo.go
+--- lxd-4.0.7/lxd-p2c/cgo.go	2021-07-16 23:33:23.000000000 +0300
++++ lxd-4.0.7-no-werror/lxd-p2c/cgo.go	2021-11-16 15:17:06.185288881 +0200
+@@ -2,7 +2,7 @@
+ 
+ package main
+ 
+-// #cgo CFLAGS: -std=gnu11 -Wvla -Werror -fvisibility=hidden -Winit-self
++// #cgo CFLAGS: -std=gnu11 -Wvla -fvisibility=hidden -Winit-self
+ // #cgo CFLAGS: -Wformat=2 -Wshadow -Wendif-labels -fasynchronous-unwind-tables
+ // #cgo CFLAGS: -pipe --param=ssp-buffer-size=4 -g -Wunused
+ // #cgo CFLAGS: -Werror=implicit-function-declaration
+diff -Naur lxd-4.0.7/shared/cgo.go lxd-4.0.7-no-werror/shared/cgo.go
+--- lxd-4.0.7/shared/cgo.go	2021-07-16 23:33:23.000000000 +0300
++++ lxd-4.0.7-no-werror/shared/cgo.go	2021-11-16 15:17:15.238620041 +0200
+@@ -3,7 +3,7 @@
+ 
+ package shared
+ 
+-// #cgo CFLAGS: -std=gnu11 -Wvla -Werror -fvisibility=hidden -Winit-self
++// #cgo CFLAGS: -std=gnu11 -Wvla -fvisibility=hidden -Winit-self
+ // #cgo CFLAGS: -Wformat=2 -Wshadow -Wendif-labels -fasynchronous-unwind-tables
+ // #cgo CFLAGS: -pipe --param=ssp-buffer-size=4 -g -Wunused
+ // #cgo CFLAGS: -Werror=implicit-function-declaration
+diff -Naur lxd-4.0.7/shared/idmap/cgo.go lxd-4.0.7-no-werror/shared/idmap/cgo.go
+--- lxd-4.0.7/shared/idmap/cgo.go	2021-07-16 23:33:23.000000000 +0300
++++ lxd-4.0.7-no-werror/shared/idmap/cgo.go	2021-11-16 15:17:25.768617513 +0200
+@@ -3,7 +3,7 @@
+ 
+ package idmap
+ 
+-// #cgo CFLAGS: -std=gnu11 -Wvla -Werror -fvisibility=hidden -Winit-self
++// #cgo CFLAGS: -std=gnu11 -Wvla -fvisibility=hidden -Winit-self
+ // #cgo CFLAGS: -Wformat=2 -Wshadow -Wendif-labels -fasynchronous-unwind-tables
+ // #cgo CFLAGS: -pipe --param=ssp-buffer-size=4 -g -Wunused
+ // #cgo CFLAGS: -Werror=implicit-function-declaration
+diff -Naur lxd-4.0.7/shared/netutils/cgo.go lxd-4.0.7-no-werror/shared/netutils/cgo.go
+--- lxd-4.0.7/shared/netutils/cgo.go	2021-07-16 23:33:23.000000000 +0300
++++ lxd-4.0.7-no-werror/shared/netutils/cgo.go	2021-11-16 15:17:34.598615393 +0200
+@@ -3,7 +3,7 @@
+ 
+ package netutils
+ 
+-// #cgo CFLAGS: -std=gnu11 -Wvla -Werror -fvisibility=hidden -Winit-self
++// #cgo CFLAGS: -std=gnu11 -Wvla -fvisibility=hidden -Winit-self
+ // #cgo CFLAGS: -Wformat=2 -Wshadow -Wendif-labels -fasynchronous-unwind-tables
+ // #cgo CFLAGS: -pipe --param=ssp-buffer-size=4 -g -Wunused
+ // #cgo CFLAGS: -Werror=implicit-function-declaration
+diff -Naur lxd-4.0.7/shared/termios/cgo.go lxd-4.0.7-no-werror/shared/termios/cgo.go
+--- lxd-4.0.7/shared/termios/cgo.go	2021-07-16 23:33:23.000000000 +0300
++++ lxd-4.0.7-no-werror/shared/termios/cgo.go	2021-11-16 15:17:43.568613239 +0200
+@@ -3,7 +3,7 @@
+ 
+ package termios
+ 
+-// #cgo CFLAGS: -std=gnu11 -Wvla -Werror -fvisibility=hidden -Winit-self
++// #cgo CFLAGS: -std=gnu11 -Wvla -fvisibility=hidden -Winit-self
+ // #cgo CFLAGS: -Wformat=2 -Wshadow -Wendif-labels -fasynchronous-unwind-tables
+ // #cgo CFLAGS: -pipe --param=ssp-buffer-size=4 -g -Wunused
+ // #cgo CFLAGS: -Werror=implicit-function-declaration
