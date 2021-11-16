@@ -12,7 +12,7 @@ MY_PV="${PV//_pre*}"
 MY_P="${PN}-${MY_PV}"
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/mysql/${PN}-8.0.27-patches-01.tar.xz"
+PATCH_SET="https://dev.gentoo.org/~whissi/dist/mysql/${PN}-8.0.27-patches-02.tar.xz"
 
 SRC_URI="https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-${MY_PV}.tar.gz
 	https://cdn.mysql.com/archives/mysql-8.0/mysql-boost-${MY_PV}.tar.gz
