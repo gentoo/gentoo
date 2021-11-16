@@ -101,13 +101,13 @@ BDEPEND="test? ( dev-util/cmocka )"
 
 DOCS=( README Documentation/ )
 
-# TODO: cmocka automagic
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999_meson-fixes.patch
 )
 
 src_configure() {
 	local emesonargs=(
+		$(meson_use test build_tests)
 		$(meson_use atahpt config_atahpt)
 		$(meson_use atapromise config_atapromise)
 		$(meson_use atavia config_atavia)
