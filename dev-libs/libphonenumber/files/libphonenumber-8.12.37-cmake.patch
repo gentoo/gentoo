@@ -7,13 +7,13 @@ Date: Wed, 27 Mar 2019 21:07:22 +0100
 Subject: [PATCH] Fix build with BUILD_STATIC_LIB=ON
 
 ---
- CMakeLists.txt | 14 +++++++++++---
+ cpp/CMakeLists.txt | 14 +++++++++++---
  1 file changed, 11 insertions(+), 3 deletions(-)
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
+diff --git a/cpp/CMakeLists.txt b/cpp/CMakeLists.txt
 index 38ce1f50..dd9399be 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
+--- a/cpp/CMakeLists.txt
++++ b/cpp/CMakeLists.txt
 @@ -441,7 +441,9 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
    list (APPEND GEOCODER_DEPS ${COMMON_DEPS})
    # Note that the subset of base/ on which the geocoder relies is implemented
