@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,7 +8,7 @@ inherit autotools
 MY_P="${P^g}"
 
 DESCRIPTION="Kakasi binding for Gauche"
-HOMEPAGE="http://sourceforge.jp/projects/gauche/"
+HOMEPAGE="https://osdn.jp/projects/gauche/"
 SRC_URI="mirror://sourceforge/${PN%-*}/${MY_P}.tgz"
 
 LICENSE="GPL-2"
