@@ -326,6 +326,14 @@ setup_target_flags() {
 				export CFLAGS_x86="${CFLAGS_x86} -march=${t}"
 				einfo "Auto adding -march=${t} to CFLAGS_x86 #185404 (ABI=${ABI})"
 			fi
+
+			# Workaround for https://bugs.gentoo.org/823780. This really should
+			# be removed when the upstream bug https://gcc.gnu.org/bugzilla/show_bug.cgi?id=103275
+			# is fixed in our tree, either via 11.3 or an 11.2p2 patch set.
+			if [[ ${ABI} == x86 ]] && tc-is-gcc && (($(gcc-major-version) == 11)) && (($(gcc-minor-version) < 3)); then
+				export CFLAGS_x86="${CFLAGS_x86} -mno-avx512f"
+				einfo "Auto adding -mno-avx512f to CFLAGS_x86 #823780 (ABI=${ABI})"
+			fi
 		;;
 		mips)
 			# The mips abi cannot support the GNU style hashes. #233233
