@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/pkgcore/pkgcheck.git"
 	inherit git-r3
 else
-	KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ppc ~ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
+	KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ~ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 fi
 
