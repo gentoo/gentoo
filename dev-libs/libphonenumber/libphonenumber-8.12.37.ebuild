@@ -9,14 +9,14 @@ inherit cmake
 DESCRIPTION="Library for parsing, formatting, and validating international phone numbers"
 HOMEPAGE="https://github.com/google/libphonenumber"
 SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${P}/cpp"
+CMAKE_USE_DIR="${WORKDIR}"/${P}/cpp
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 
-RESTRICT="!test? ( test )"
+RESTRICT="test !test? ( test )"
 
 DEPEND="
 	dev-libs/icu:=
@@ -41,7 +41,7 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_STATIC_LIB=OFF
-		-DBUILD_TESTING=OFF
+		-DBUILD_TESTING=$(usex test)
 		-DREGENERATE_METADATA=OFF # avoid JRE dependency
 	)
 	cmake_src_configure
