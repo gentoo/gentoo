@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Recursive copying of files and directories within Perl 5 toolchain"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	virtual/perl-File-Spec
