@@ -196,11 +196,6 @@ dev-java/jnr-enxio
 # Removal on 2021-12-06. Bug #819750.
 app-pda/gnupod
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-05)
-# 'btrfs filesystem usage' reports incorecct values
-# https://github.com/kdave/btrfs-progs/issues/422
-=sys-fs/btrfs-progs-5.15*
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (2021-11-04)
 # Unused and outdated packages; the version in core Perl is
 # newer. Removal in 30 days.
