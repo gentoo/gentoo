@@ -30,6 +30,10 @@ BDEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.0.6-test-timeout.patch
+)
+
 distutils_enable_tests pytest
 
 python_test() {
