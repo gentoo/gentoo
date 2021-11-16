@@ -50,6 +50,7 @@ S="${WORKDIR}/systemd-${PV}"
 
 PATCHES=(
 	"${FILESDIR}/249-libshared-static.patch"
+	"${FILESDIR}/249-linux-headers-5-15.patch"
 )
 
 src_configure() {
