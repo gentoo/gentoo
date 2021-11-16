@@ -224,23 +224,26 @@ pkg_postinst() {
 	fi
 
 	if use systemd; then
-		elog "To use PipeWire for audio, the user units must be manually enabled"
+		elog "When switching from PulseAudio, you may need to disable PulseAudio:"
+		elog
+		elog "  systemctl --user disable pulseaudio.service pulseaudio.socket"
+		elog
+		elog "To use PipeWire, the user units must be manually enabled"
 		elog "by running this command as each user you use for desktop activities:"
 		elog
-		elog "  systemctl --user enable --now pipewire.socket pipewire-pulse.socket"
-		elog
-		elog "When switching from PulseAudio, do not forget to disable PulseAudio likewise:"
-		elog
-		elog "  systemctl --user disable --now pulseaudio.service pulseaudio.socket"
+		elog "  systemctl --user enable pipewire.socket pipewire-pulse.socket"
 		elog
 		elog "A reboot is recommended to avoid interferences from still running"
 		elog "PulseAudio daemon."
 		elog
-		elog "Both, new users and those upgrading, need to enable WirePlumber"
+		elog "Both new users and those upgrading need to enable WirePlumber"
 		elog "for relevant users:"
 		elog
-		elog "  systemctl --user enable --now wireplumber.service"
+		elog "  systemctl --user disable pipewire-media-session.service"
+		elog "  systemctl --user --force enable wireplumber.service"
 		elog
+		elog "Root user may replace --user with --global to change system default"
+		elog "configuration for all of the above commands."
 	else
 		ewarn "PipeWire daemon startup has been moved to a launcher script!"
 		ewarn "Make sure that ${EROOT}/etc/pipewire/pipewire.conf either does not exist or no"
@@ -273,6 +276,7 @@ pkg_postinst() {
 		elog "its config, please start by copying default config from ${EROOT}/usr/share/pipewire"
 		elog "and just override the sections you want to change."
 	fi
+	elog
 
 	elog "For latest tips and tricks, troubleshooting information and documentation"
 	elog "in general, please refer to https://wiki.gentoo.org/wiki/PipeWire"
@@ -284,7 +288,7 @@ pkg_postinst() {
 	if has_version 'net-misc/ofono' ; then
 		ewarn "Native backend has become default. Please disable oFono via:"
 		if systemd_is_booted ; then
-			ewarn "systemctl disable --now ofono"
+			ewarn "systemctl disable ofono"
 		else
 			ewarn "rc-update delete ofono"
 		fi
