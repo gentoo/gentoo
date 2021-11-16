@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -9,7 +9,7 @@ MY_P="${PN^g}2-${PV}"
 PV_COMMIT="0220722c44ef85f2e1b9b14745702c1b923258e8"
 
 DESCRIPTION="GTK2 binding for Gauche"
-HOMEPAGE="http://practical-scheme.net/gauche/"
+HOMEPAGE="https://practical-scheme.net/gauche/"
 SRC_URI="https://github.com/shirok/${PN^g}2/archive/${PV_COMMIT}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="BSD"
