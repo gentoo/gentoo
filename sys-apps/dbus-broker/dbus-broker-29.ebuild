@@ -9,7 +9,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/bus1/dbus-broker.git"
 else
-	KEYWORDS="amd64 ~arm64 ~ppc64"
+	KEYWORDS="amd64 ~arm64 ppc64"
 	SRC_URI="https://github.com/bus1/dbus-broker/archive/v${PV}/${P}.tar.gz"
 	declare -Ag SUBPROJECTS=(
 		[c-dvar]=c8ea9712a94186512c22c32f32c421d6a2db6feb
