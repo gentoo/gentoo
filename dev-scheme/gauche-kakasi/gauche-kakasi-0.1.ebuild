@@ -11,7 +11,7 @@ DESCRIPTION="Kakasi binding for Gauche"
 HOMEPAGE="https://osdn.jp/projects/gauche/"
 SRC_URI="mirror://sourceforge/${PN%-*}/${MY_P}.tgz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ia64 x86"
 IUSE=""
