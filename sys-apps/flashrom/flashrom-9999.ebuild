@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson
 
@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MY_P="${PN}-v${PV}"
 	SRC_URI="https://download.flashrom.org/releases/${MY_P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -33,7 +33,6 @@ IUSE_PROGRAMMERS="
 	+digilent-spi
 	+drkaiser
 	+dummy
-	+ene-lpc
 	+ft2232-spi
 	+gfxnvidia
 	+internal
@@ -42,7 +41,6 @@ IUSE_PROGRAMMERS="
 	+linux-mtd
 	+linux-spi
 	lspcon-i2c-spi
-	+mec1308
 	mstarddc-spi
 	+nic3com
 	+nicintel
@@ -62,7 +60,9 @@ IUSE_PROGRAMMERS="
 	+stlinkv3-spi
 	+usbblaster-spi
 "
-IUSE="${IUSE_PROGRAMMERS} +internal-dmi tools +wiki"
+IUSE="${IUSE_PROGRAMMERS} +internal-dmi test tools +wiki"
+
+RESTRICT="!test? ( test )"
 
 LIB_DEPEND="
 	atahpt? ( sys-apps/pciutils[static-libs(+)] )
@@ -97,9 +97,11 @@ RDEPEND="${LIB_DEPEND//\[static-libs(+)]}"
 DEPEND="${RDEPEND}
 	sys-apps/diffutils"
 RDEPEND+=" !internal-dmi? ( sys-apps/dmidecode )"
+BDEPEND="test? ( dev-util/cmocka )"
 
 DOCS=( README Documentation/ )
 
+# TODO: cmocka automagic
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999_meson-fixes.patch
 )
@@ -116,7 +118,6 @@ src_configure() {
 		$(meson_use digilent-spi config_digilent_spi)
 		$(meson_use drkaiser config_drkaiser)
 		$(meson_use dummy config_dummy)
-		$(meson_use ene-lpc config_ene_lpc)
 		$(meson_use ft2232-spi config_ft2232_spi)
 		$(meson_use gfxnvidia config_gfxnvidia)
 		$(meson_use internal config_internal)
@@ -126,7 +127,6 @@ src_configure() {
 		$(meson_use linux-mtd config_linux_mtd)
 		$(meson_use linux-spi config_linux_spi)
 		$(meson_use lspcon-i2c-spi config_lspcon_i2c_spi)
-		$(meson_use mec1308 config_mec1308)
 		$(meson_use mstarddc-spi config_mstarddc_spi)
 		$(meson_use nic3com config_nic3com)
 		$(meson_use nicintel-eeprom config_nicintel_eeprom)
