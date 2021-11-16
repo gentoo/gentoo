@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit autotools
 
@@ -16,8 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ia64 x86"
 IUSE=""
 
-RDEPEND="dev-scheme/gauche
-	>=app-i18n/kakasi-2.3.4"
+RDEPEND=">=app-i18n/kakasi-2.3.4
+	dev-scheme/gauche:="
 DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_P}"
 
@@ -26,6 +26,6 @@ PATCHES=( "${FILESDIR}"/${PN}-gauche-package.patch )
 src_prepare() {
 	default
 
-	mv configure.{in,ac}
+	mv configure.{in,ac} || die
 	eautoreconf
 }
