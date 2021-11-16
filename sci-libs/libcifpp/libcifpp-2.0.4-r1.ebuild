@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit cmake
 
 DESCRIPTION="Code to work with mmCIF and PDB files"
@@ -14,15 +15,11 @@ SRC_URI="
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
-
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="
-	>=dev-libs/boost-1.70.0:0=[threads(+)]
-"
-DEPEND=""
-RDEPEND=""
+DEPEND=">=dev-libs/boost-1.70:=[threads(+)]"
+RDEPEND="${DEPEND}"
 
 src_configure() {
 	cp "${WORKDIR}"/components-${PV}.cif data/components.cif || die
