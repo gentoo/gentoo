@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-16)
+# Uses EAPI 5, multiple bugs reported, fails to compile,
+# no revdeps, upstream doesn't do regular releases,
+# no other distro is packaging this
+# Removal on 2021-12-16. Bug #770610. Bug #813873. Bug #810682.
+net-libs/onion
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-15)
 # Library without consumers,
 # bug #771693 (multiple CVEs); Removal in 30 days.
