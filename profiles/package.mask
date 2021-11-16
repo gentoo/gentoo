@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-11-16)
+# Outdated java package, uses EAPI 5, no revdeps,
+# no other distro is packaging this.
+# Removal on 2021-12-16. Bug #819420.
+media-video/google2srt
+
 # Uses EAPI 5, multiple bugs reported, fails to compile,
 # no revdeps, upstream doesn't do regular releases,
 # no other distro is packaging this
