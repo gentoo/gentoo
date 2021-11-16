@@ -79,6 +79,12 @@ fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+# https://github.com/kdave/btrfs-progs/issues/422
+PATCHES=(
+	"${FILESDIR}/${PV}-filesystem-usage-data.patch"
+	"${FILESDIR}/${PV}-filesystem-usage-chunks.patch"
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
