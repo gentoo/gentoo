@@ -32,3 +32,8 @@ DEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 "
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	ecm_src_prepare
+	ecm_punt_bogus_dep KF5 GrantleeTheme
+}
