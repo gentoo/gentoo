@@ -18,9 +18,6 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE=""
 
-BDEPEND="
-	dev-libs/libxslt
-"
 COMMON_DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -58,6 +55,14 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!<kde-apps/libkdepim-20.07.80:5
 "
+BDEPEND="
+	dev-libs/libxslt
+"
+
+src_prepare() {
+	ecm_src_prepare
+	ecm_punt_bogus_dep KF5 GrantleeTheme
+}
 
 src_test() {
 	# bugs 641730, 661330
