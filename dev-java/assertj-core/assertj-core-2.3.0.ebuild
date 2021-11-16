@@ -12,7 +12,7 @@ DESCRIPTION="Java library that provides a fluent interface for writing assertion
 HOMEPAGE="http://joel-costigliola.github.io/assertj/"
 SRC_URI="https://github.com/joel-costigliola/${PN}/archive/${P}.tar.gz"
 LICENSE="Apache-2.0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ppc64 x86"
 SLOT="2"
 
 CDEPEND="dev-java/cglib:3
