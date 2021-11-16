@@ -146,5 +146,6 @@ pkg_postinst() {
 		ewarn "Versions of dev-qt/qtcore lower than 5.15.2-r10 might cause telegram"
 		ewarn "to crash when pasting big images from the clipboard."
 	fi
+	optfeature_header
 	optfeature "shop payment support" net-libs/webkit-gtk
 }
