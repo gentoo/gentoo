@@ -17,10 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-01)
-# requires sys-apps/dbus-broker, which is unstable here.
-sys-apps/systemd hostnamed-fallback
-
 # Joonas Niilola <juippis@gentoo.org> (2021-08-13)
 # dev-libs/efl is stabilized on amd64.
 app-crypt/pinentry -efl
