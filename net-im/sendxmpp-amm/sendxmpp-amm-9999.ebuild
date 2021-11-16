@@ -28,8 +28,3 @@ RDEPEND="
 	dev-lang/ammonite-repl-bin
 	!net-im/sendxmpp
 "
-
-src_install() {
-	default
-	dobin sendxmpp
-}
