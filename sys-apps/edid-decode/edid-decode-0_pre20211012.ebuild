@@ -13,7 +13,7 @@ HOMEPAGE="https://git.linuxtv.org/edid-decode.git/"
 SRC_URI="https://dev.gentoo.org/~conikost/files/${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="MIT"
 SLOT="0"
 IUSE="examples"
