@@ -13,7 +13,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Java library and utilities for working with PDF documents"
-HOMEPAGE="https://www.apache.org/pdfbox-parent/pdfbox/"
+HOMEPAGE="https://pdfbox.apache.org/"
 SRC_URI="mirror://apache/${PN}/${PV}/${P}-src.zip
 	test? (
 		https://issues.apache.org/jira/secure/attachment/12481683/1.pdf -> PDFBOX-1031-1.pdf
