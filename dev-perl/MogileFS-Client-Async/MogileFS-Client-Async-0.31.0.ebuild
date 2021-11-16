@@ -4,7 +4,7 @@
 EAPI=8
 
 DIST_AUTHOR=DLAMBLEY
-DIST_VERSION=${PV%.0}
+DIST_VERSION=0.031
 inherit perl-module
 
 DESCRIPTION="MogileFS Client using AnyEvent non-blocking IO"
