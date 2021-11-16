@@ -59,6 +59,11 @@ BDEPEND="
 	test? ( >=kde-apps/akonadi-${PVCUT}:5[tools] )
 "
 
+src_prepare() {
+	ecm_src_prepare
+	ecm_punt_bogus_dep KF5 GrantleeTheme
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DKDEPIM_RUN_AKONADI_TEST=OFF
