@@ -12,7 +12,7 @@ SRC_URI="https://github.com/nose-devs/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~sparc x86"
 
 RDEPEND="
 	>=dev-python/coverage-4.4.1[${PYTHON_USEDEP}]
