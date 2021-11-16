@@ -757,10 +757,6 @@ media-plugins/kodi-game-libretro-dosbox
 >=dev-java/eclipse-ecj-4.10
 >=www-servers/tomcat-9
 
-# Stefan Strogin <steils@gentoo.org> (2020-02-12)
-# Mask for testing revdeps.
->=dev-games/mygui-3.4.0
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
 # Breaks archives containing relative paths
 # when being called with --no-absolute-filenames
