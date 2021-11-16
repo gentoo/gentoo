@@ -21,7 +21,7 @@ fi
 
 LICENSE="BSD GPL-2+ GPL-3+ LGPL-2+"
 SLOT="4"
-KEYWORDS="amd64 ~arm64 ~hppa ppc ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~hppa ppc ppc64 ~riscv x86"
 IUSE=""
 
 BDEPEND=">=app-i18n/fcitx-4.2.9:4
