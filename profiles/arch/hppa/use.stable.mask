@@ -23,10 +23,6 @@ doc
 colord
 introspection
 
-# Hans de Graaff <graaff@gentoo.org> (2021-10-10)
-# Temporary entry to support the ruby27 stable bug 801289
-ruby_targets_ruby27
-
 # Matt Turner <mattst88@gentoo.org> (2021-09-22)
 # media-libs/libsamplerate is not stable on hppa
 libsamplerate
