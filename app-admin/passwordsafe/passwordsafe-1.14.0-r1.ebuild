@@ -1,11 +1,11 @@
 # Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 WX_GTK_VER="3.0-gtk3"
 
-inherit cmake desktop flag-o-matic optfeature wxwidgets
+inherit cmake desktop flag-o-matic optfeature wxwidgets xdg
 
 MY_PV="${PV/_beta/BETA}"
 DESCRIPTION="Password manager with wxGTK based frontend"
@@ -79,10 +79,12 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins -r xml
 
-	doicon install/graphics/pwsafe.png
+	doicon -s 48 install/graphics/pwsafe.png
 	newmenu install/desktop/pwsafe.desktop ${PN}.desktop
 }
 
 pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 	optfeature "on-screen keyboard for password entry" x11-misc/xvkbd
 }
