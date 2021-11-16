@@ -15,7 +15,7 @@ HOMEPAGE="http://fcron.free.fr/"
 SRC_URI="http://fcron.free.fr/archives/${MY_P}.src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~riscv"
+KEYWORDS=""
 IUSE="audit debug pam selinux l10n_fr +mta +system-crontab readline"
 
 DEPEND="virtual/libcrypt:=
