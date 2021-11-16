@@ -13,7 +13,7 @@ SRC_URI="https://github.com/cmbi/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 x86 ~amd64-linux ~x86-linux"
 # It's just cppcheck (at least in 3.0.11)
 RESTRICT="test"
 
