@@ -21,7 +21,6 @@ doc
 # Avoid stabling chunks of GNOME and such as much as possible.
 # bug #807637
 colord
-introspection
 
 # Hans de Graaff <graaff@gentoo.org> (2021-10-10)
 # Temporary entry to support the ruby27 stable bug 801289
