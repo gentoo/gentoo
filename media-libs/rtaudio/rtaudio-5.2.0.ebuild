@@ -22,6 +22,9 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 	)
 	pulseaudio? ( media-sound/pulseaudio )"
 DEPEND="${RDEPEND}"
+BDEPEND="
+	doc? ( app-doc/doxygen )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.0-cflags.patch
