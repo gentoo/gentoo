@@ -13,13 +13,13 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="gmp iconv lzma openmp python readline +shared static-libs static-pic syslog"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )
 	${ADA_DEPS}
-	dev-ada/gnatcoll-core[${ADA_USEDEP},shared?,static-libs?,static-pic?]
+	dev-ada/gnatcoll-core:=[${ADA_USEDEP},shared?,static-libs?,static-pic?]
 	gmp? ( dev-libs/gmp:* )
 	lzma? ( app-arch/xz-utils )
 	openmp? ( dev-lang/gnat-gpl:=[openmp] )
