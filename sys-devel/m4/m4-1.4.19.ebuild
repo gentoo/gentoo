@@ -30,6 +30,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="app-arch/xz-utils
 	nls? ( sys-devel/gettext )"
 
+PATCHES=( "${FILESDIR}/ppc-musl.patch" )
+
 src_configure() {
 	local -a myeconfargs=(
 		--enable-changeword
