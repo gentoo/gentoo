@@ -20,8 +20,10 @@
 # Sam James <sam@gentoo.org> (2021-11-17)
 # x11-libs/libXvMC is not marked stable on HPPA
 # media-libs/mesa is not marked stable on HPPA
+# x11-libs/gtk+:3 is not marked stable on HPPA
 media-libs/libepoxy egl
 media-libs/mesa xvmc
+dev-python/matplotlib gtk3
 
 # Rolf Eike Beer <eike@sf-mail.de> (2021-11-10)
 # The following packages have no stable keywords on hppa:
