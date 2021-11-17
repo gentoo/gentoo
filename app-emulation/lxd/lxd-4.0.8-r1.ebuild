@@ -73,7 +73,8 @@ VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/linuxcontainers.asc
 # make: *** [Makefile:156: check] Error 1
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}"/lxd-4.0.8-btrfs-progs-5.14-safety-check-fix.patch )
+PATCHES=( "${FILESDIR}"/lxd-4.0.8-btrfs-progs-5.14-safety-check-fix.patch
+	"${FILESDIR}"/lxd-4.0.7-no-werror.patch )
 
 src_prepare() {
 	default
