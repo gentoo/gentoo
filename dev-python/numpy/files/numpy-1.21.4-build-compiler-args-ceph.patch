@@ -1,0 +1,49 @@
+https://github.com/numpy/numpy/commit/689d905f501b7abbddf0fdef241fa586a83e5cd6
+https://github.com/numpy/numpy/pull/20116
+https://bugs.gentoo.org/802150
+
+From 7dcf62379f41407d8f9583d1c2016e3d8ec48384 Mon Sep 17 00:00:00 2001
+From: Hector Martin <marcan@marcan.st>
+Date: Thu, 14 Oct 2021 14:58:52 +0900
+Subject: [PATCH] MAINT: Fix issue with C compiler args containing spaces
+
+Instead of doing a dumb string split, use shlex to make sure args
+containing spaces are handled properly.
+---
+ numpy/distutils/unixccompiler.py | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/numpy/distutils/unixccompiler.py b/numpy/distutils/unixccompiler.py
+index 733a9fc5094..4884960fdf2 100644
+--- a/numpy/distutils/unixccompiler.py
++++ b/numpy/distutils/unixccompiler.py
+@@ -5,6 +5,7 @@
+ import os
+ import sys
+ import subprocess
++import shlex
+ 
+ from distutils.errors import CompileError, DistutilsExecError, LibError
+ from distutils.unixccompiler import UnixCCompiler
+@@ -30,15 +31,15 @@ def UnixCCompiler__compile(self, obj, src, ext, cc_args, extra_postargs, pp_opts
+     if 'OPT' in os.environ:
+         # XXX who uses this?
+         from sysconfig import get_config_vars
+-        opt = " ".join(os.environ['OPT'].split())
+-        gcv_opt = " ".join(get_config_vars('OPT')[0].split())
+-        ccomp_s = " ".join(self.compiler_so)
++        opt = shlex.join(shlex.split(os.environ['OPT']))
++        gcv_opt = shlex.join(shlex.split(get_config_vars('OPT')[0]))
++        ccomp_s = shlex.join(self.compiler_so)
+         if opt not in ccomp_s:
+             ccomp_s = ccomp_s.replace(gcv_opt, opt)
+-            self.compiler_so = ccomp_s.split()
+-        llink_s = " ".join(self.linker_so)
++            self.compiler_so = shlex.split(ccomp_s)
++        llink_s = shlex.join(self.linker_so)
+         if opt not in llink_s:
+-            self.linker_so = llink_s.split() + opt.split()
++            self.linker_so = self.linker_so + shlex.split(opt)
+ 
+     display = '%s: %s' % (os.path.basename(self.compiler_so[0]), src)
+ 
