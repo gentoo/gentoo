@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="db2ada">Build gnatcoll_db2ada</flag>
+		<flag name="gnatinspect">Build gnatinspect</flag>
+		<flag name="shared">Build shared library</flag>
+		<flag name="sql">Build sql library</flag>
+		<flag name="static-pic">Build shared library</flag>
+		<flag name="xref">Build xref library</flag>
+	</use>
+	<longdescription lang="en">
+		The reusable library known as the GNAT Component Collection (GNATColl)
+		is based on one main principle: general-purpose packages that are part
+		of the GNAT technology should also be available to GNAT user
+		application code. The compiler front end, the GNAT Programming Studio
+		(GPS) Interactive Development Environment, and the GNAT Tracker
+		web-based interface all served as sources for the components.
+
+		The GNATColl components complement the predefined Ada and GNAT
+		libraries and deal with a range of common programming issues including
+		string and text processing, memory management, and file handling.
+		Several of the components are especially useful in enterprise
+		applications.
+	</longdescription>
+</pkgmetadata>
