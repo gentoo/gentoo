@@ -540,11 +540,6 @@ sci-electronics/quartus-prime-lite
 # removed by Fedora. Bug #386275, #731042, #762346, removal in 30 days.
 media-sound/cdcd
 
-# Hans de Graaff <graaff@gentoo.org> (2021-10-17)
-# Obsolete package, replaced by dev-ruby/minitar.
-# No reverse dependencies left. Masked for removal in 30 days.
-dev-ruby/archive-tar-minitar
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
