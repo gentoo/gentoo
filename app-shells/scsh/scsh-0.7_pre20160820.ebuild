@@ -5,11 +5,11 @@ EAPI=8
 
 # compatible scheme48 version
 SCHEME48V="1.9.2"
-
-inherit autotools
-
+MY_PV=$(ver_cut 1-2)
 SCSH_HASH="114432435e4eadd54334df6b37fcae505079b49f"
 RX_HASH="d3231ad13de2b44e3ee173b1c9d09ff165e8b6d5"
+
+inherit autotools
 
 DESCRIPTION="Unix shell embedded in Scheme (image)"
 HOMEPAGE="https://www.scsh.net/"
@@ -19,7 +19,6 @@ SRC_URI="
 "
 S="${WORKDIR}/scsh-${SCSH_HASH}"
 
-RESTRICT="test"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -30,6 +29,8 @@ DEPEND="
 	~app-shells/scsh-lib-${PV}
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/0.7-test-packages.patch" )
 
 src_unpack() {
 	unpack ${P}.tar.gz
@@ -51,13 +52,13 @@ src_configure() {
 }
 
 src_compile() {
-	emake SCHEME48VM=${SCHEME48VM} scsh.image
+	emake SCHEME48VM=${SCHEME48VM}
 }
 
 src_install() {
 	emake DESTDIR="${T}/install" SCHEME48VM=${SCHEME48VM} enough dirs install-scsh
 	emake DESTDIR="${T}/install" SCHEME48VM=${SCHEME48VM} install-scsh-image
 
-	insinto /usr/$(get_libdir)/scsh-0.7/
-	doins "${T}/install/usr/$(get_libdir)/scsh-0.7/scsh.image"
+	insinto /usr/$(get_libdir)/scsh-${MY_PV}/
+	doins "${T}"/install/usr/$(get_libdir)/scsh-${MY_PV}/scsh.image
 }
