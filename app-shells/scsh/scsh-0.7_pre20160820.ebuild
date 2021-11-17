@@ -31,9 +31,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-# built using dark magic
-QA_FLAGS_IGNORED="usr/bin/scsh"
-
 src_unpack() {
 	unpack ${P}.tar.gz
 
