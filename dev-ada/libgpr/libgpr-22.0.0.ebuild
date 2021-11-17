@@ -14,11 +14,11 @@ HOMEPAGE="http://libre.adacore.com/"
 SRC_URI="https://github.com/AdaCore/${MYPN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${MYP}.tar.gz"
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+shared static-libs static-pic"
 
-RDEPEND="dev-ada/xmlada[shared?,static-libs?,static-pic?,${ADA_USEDEP}]
+RDEPEND="dev-ada/xmlada:=[shared?,static-libs?,static-pic?,${ADA_USEDEP}]
 	!net-libs/grpc"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
