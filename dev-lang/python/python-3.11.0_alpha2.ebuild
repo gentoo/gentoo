@@ -25,7 +25,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="PSF-2"
 SLOT="${PYVER}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="bluetooth build examples gdbm hardened +ncurses pgo +readline +sqlite +ssl test tk wininst +xml"
+IUSE="bluetooth build examples gdbm hardened lto +ncurses pgo +readline +sqlite +ssl test tk wininst +xml"
 RESTRICT="!test? ( test )"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
@@ -185,6 +185,7 @@ src_configure() {
 		--with-system-expat
 		--with-system-ffi
 
+		$(use_with lto)
 		$(use_enable pgo optimizations)
 	)
 
