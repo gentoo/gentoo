@@ -27,6 +27,16 @@ pkg_setup() {
 	append-flags -fomit-frame-pointer
 }
 
+src_prepare() {
+	default
+
+	# do not define "__pure__", this the gcc builtin (bug #806505)
+	sed 's#__pure__;#__attribute__((__pure__));#' -i fmt.h scan.h byte.h stralloc.h str.h critbit.h || die
+	sed 's#__pure__$#__attrib__pure__#' -i  fmt.h scan.h byte.h stralloc.h str.h critbit.h || die
+	# remove unneeded definition of __deprecated__
+	sed '/^#define __deprecated__$/d' -i scan/scan_iso8601.c scan/scan_httpdate.c || die
+}
+
 src_compile() {
 	emake \
 		CC=$(tc-getCC) \
