@@ -21,7 +21,6 @@ doc
 # Avoid stabling chunks of GNOME and such as much as possible.
 # bug #807637
 colord
-introspection
 
 # Matt Turner <mattst88@gentoo.org> (2021-09-22)
 # media-libs/libsamplerate is not stable on hppa
