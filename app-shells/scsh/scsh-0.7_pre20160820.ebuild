@@ -12,7 +12,7 @@ SCSH_HASH="114432435e4eadd54334df6b37fcae505079b49f"
 RX_HASH="d3231ad13de2b44e3ee173b1c9d09ff165e8b6d5"
 
 DESCRIPTION="Unix shell embedded in Scheme (image)"
-HOMEPAGE="http://www.scsh.net/"
+HOMEPAGE="https://www.scsh.net/"
 SRC_URI="
 	https://github.com/scheme/scsh/archive/${SCSH_HASH}.tar.gz -> scsh-${PV}.tar.gz
 	https://github.com/scheme/rx/archive/${RX_HASH}.tar.gz -> scsh-${PV}_rx.tar.gz

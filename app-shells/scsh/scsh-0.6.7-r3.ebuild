@@ -8,7 +8,7 @@ inherit multilib
 MY_PV="${PV%*.*}"
 
 DESCRIPTION="Unix shell embedded in Scheme"
-HOMEPAGE="http://www.scsh.net/"
+HOMEPAGE="https://www.scsh.net/"
 SRC_URI="ftp://ftp.scsh.net/pub/scsh/${MY_PV}/${P}.tar.gz"
 
 LICENSE="BSD"
