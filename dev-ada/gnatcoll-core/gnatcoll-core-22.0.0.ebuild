@@ -11,15 +11,16 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+shared static-libs static-pic"
 
 RDEPEND="
 	|| (
-		>=dev-ada/libgpr-2021[${ADA_USEDEP},shared?,static-libs?,static-pic?]
-		~dev-ada/libgpr-22.0.0[${ADA_USEDEP},shared?,static-libs?,static-pic?]
+		>=dev-ada/libgpr-2021
+		~dev-ada/libgpr-22.0.0
 	)
+	dev-ada/libgpr:=[${ADA_USEDEP},shared?,static-libs?,static-pic?]
 "
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
