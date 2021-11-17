@@ -97,6 +97,7 @@ arm		default/linux/arm/17.0/armv7a/systemd		dev
 # ARM64 Profiles
 # @MAINTAINER: arm64@gentoo.org
 arm64		default/linux/arm64/17.0			stable
+arm64		default/linux/arm64/17.0/hardened		exp
 arm64		default/linux/arm64/17.0/desktop		stable
 arm64		default/linux/arm64/17.0/desktop/gnome		stable
 arm64		default/linux/arm64/17.0/desktop/gnome/systemd	stable
