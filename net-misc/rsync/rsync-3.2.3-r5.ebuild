@@ -36,8 +36,10 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	local PATCHES=(
-		"${FILESDIR}/rsync-3.2.3-glibc-lchmod.patch"
-		"${FILESDIR}/rsync-3.2.3-cross.patch"
+		"${FILESDIR}/${P}-glibc-lchmod.patch"
+		"${FILESDIR}/${P}-cross.patch"
+		# Fix for (CVE-2020-14387) - net-misc/rsync: improper TLS validation in rsync-ssl script
+		"${FILESDIR}/${P}-verify-certificate.patch"
 	)
 	default
 	eautoconf -o configure.sh
