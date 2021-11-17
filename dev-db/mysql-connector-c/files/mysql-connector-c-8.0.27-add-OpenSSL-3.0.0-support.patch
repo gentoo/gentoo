@@ -1,4 +1,4 @@
-From 9936c93ee95a4d62a238aa4515be07ef14267932 Mon Sep 17 00:00:00 2001
+From d5bedd07c111676695270cdf35d23f9026a78113 Mon Sep 17 00:00:00 2001
 From: Thomas Deutschmann <whissi@gentoo.org>
 Date: Tue, 22 Jun 2021 23:56:54 +0200
 Subject: [PATCH 6/6] Add OpenSSL 3.0.0 support
@@ -12,8 +12,8 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  sql-common/client.cc                          |  2 +
  sql/mysqld.cc                                 |  2 +
  sql/sys_vars.cc                               | 18 +++++-
- vio/viosslfactories.cc                        |  2 +
- 8 files changed, 74 insertions(+), 19 deletions(-)
+ vio/viosslfactories.cc                        |  6 ++
+ 8 files changed, 78 insertions(+), 19 deletions(-)
 
 diff --git a/cmake/ssl.cmake b/cmake/ssl.cmake
 index 293281cf1..4732d8bf4 100644
@@ -272,7 +272,7 @@ index 4592e4bbb..320f458fd 100644
  static Sys_var_bool Sys_auto_generate_certs(
      "auto_generate_certs",
 diff --git a/vio/viosslfactories.cc b/vio/viosslfactories.cc
-index 618be1511..b090f6713 100644
+index 618be1511..672fc74ca 100644
 --- a/vio/viosslfactories.cc
 +++ b/vio/viosslfactories.cc
 @@ -472,6 +472,7 @@ void ssl_start() {
@@ -291,6 +291,23 @@ index 618be1511..b090f6713 100644
  
  /**
    Toggle FIPS mode, to see whether it is available with the current SSL library.
+@@ -532,12 +534,16 @@ uint get_fips_mode() { return FIPS_mode(); }
+   @retval non-zero: FIPS is supported.
+ */
+ int test_ssl_fips_mode(char *err_string) {
++#if defined(OPENSSL_FIPS)
+   int ret = FIPS_mode_set(FIPS_mode() == 0 ? 1 : 0);
+   unsigned long err = (ret == 0) ? ERR_get_error() : 0;
+ 
+   if (err != 0) {
+     ERR_error_string_n(err, err_string, OPENSSL_ERROR_LENGTH - 1);
+   }
++#else
++  int ret = 0;
++#endif
+   return ret;
+ }
+ 
 -- 
-2.33.1
+2.34.0
 
