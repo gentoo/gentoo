@@ -7,7 +7,7 @@ inherit linux-info xorg-3
 
 DESCRIPTION="X.org input driver based on libinput"
 
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND=">=dev-libs/libinput-1.11.0:0="
 DEPEND="${RDEPEND}
