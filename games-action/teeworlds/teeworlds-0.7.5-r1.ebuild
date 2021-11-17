@@ -16,7 +16,7 @@ S="${WORKDIR}/${P}-src"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="debug dedicated"
 
 RDEPEND="
