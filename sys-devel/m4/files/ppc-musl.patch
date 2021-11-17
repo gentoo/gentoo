@@ -1,3 +1,7 @@
+Needed to fix build on ppc + musl. Doesn't seem to yet be in upstream gnulib.
+
+https://www.openwall.com/lists/musl/2017/11/05/2
+https://github.com/void-linux/void-packages/blob/master/srcpkgs/grep/patches/ppc-musl.patch
 --- a/lib/sigsegv.c
 +++ b/lib/sigsegv.c
 @@ -221,8 +221,10 @@ int libsigsegv_version = LIBSIGSEGV_VERSION;
