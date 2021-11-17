@@ -46,7 +46,12 @@ multilib_src_test() {
 	emake check
 
 	# noinst_PROGRAMS from tests/Makefile.am
-	tests/stress || die
+	if [[ -e /dev/bus/usb ]]; then
+		tests/stress || die
+	else
+		# https://bugs.gentoo.org/824266
+		ewarn "/dev/bus/usb does not exist, skipping stress test"
+	fi
 }
 
 multilib_src_install() {
