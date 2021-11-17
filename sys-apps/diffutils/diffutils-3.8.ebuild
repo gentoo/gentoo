@@ -17,6 +17,8 @@ IUSE="nls static"
 
 BDEPEND="nls? ( sys-devel/gettext )"
 
+PATCHES=( "${FILESDIR}/ppc-musl.patch" )
+
 src_configure() {
 	use static && append-ldflags -static
 
