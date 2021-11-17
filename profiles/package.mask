@@ -535,11 +535,6 @@ sci-geosciences/harmonics-dwf-free-noncomm
 # Removal on 2021-11-20.
 sci-electronics/quartus-prime-lite
 
-# David Seifert <soap@gentoo.org> (2021-10-17)
-# Broken since pretty much forever, last release 17 years ago, already
-# removed by Fedora. Bug #386275, #731042, #762346, removal in 30 days.
-media-sound/cdcd
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
