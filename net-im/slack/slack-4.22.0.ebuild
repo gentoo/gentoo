@@ -9,7 +9,7 @@ inherit desktop multilib-build optfeature pax-utils unpacker xdg
 
 DESCRIPTION="Team collaboration tool"
 HOMEPAGE="https://www.slack.com"
-SRC_URI="https://downloads.slack-edge.com/linux_releases/${PN}-desktop-${PV}-amd64.deb"
+SRC_URI="https://downloads.slack-edge.com/releases/linux/${PV}/prod/x64/${PN}-desktop-${PV}-amd64.deb"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
