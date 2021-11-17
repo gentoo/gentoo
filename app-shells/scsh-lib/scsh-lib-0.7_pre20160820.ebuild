@@ -30,8 +30,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-# built using dark magic
-QA_FLAGS_IGNORED="usr/bin/scsh"
+PATCHES=( "${FILESDIR}/Makefile.in-LDFLAGS.patch" )
 
 src_unpack() {
 	unpack scsh-${PV}.tar.gz
