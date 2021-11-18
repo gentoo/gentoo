@@ -282,7 +282,7 @@
    DYNMOD_LD_FLAGS =
    DYNMOD_LD_ADD =
    LIB_LD_FLAGS    = $(XSTATIC)    \
-@@ -295,8 +295,7 @@
+@@ -295,12 +295,11 @@
                          memrchr.c    \
                          parser.c     \
                          pttrace.c    \
@@ -292,6 +292,11 @@
  
    libhercu_la_LDFLAGS = $(LIB_LD_FLAGS)
  
+-  libhercu_la_LIBADD  = $(LDADD) libhercs.la
++  libhercu_la_LIBADD  = $(LDADD) libhercs.la $(LIB_LD_ADD)
+ 
+ #
+ # Core Hercules (shared) library
 @@ -372,8 +371,7 @@
                               memrchr.c        \
                               $(dynamic_SRC)   \
