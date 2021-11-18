@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=ETHER
 DIST_VERSION=0.0014
@@ -11,8 +11,6 @@ DESCRIPTION="Make your classes pluggable"
 
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Carp
@@ -23,11 +21,12 @@ RDEPEND="
 	dev-perl/Try-Tiny
 	dev-perl/namespace-autoclean
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-Tiny-0.39.0
 	test? (
 		virtual/perl-ExtUtils-MakeMaker
 		virtual/perl-File-Spec
 		dev-perl/Test-Fatal
 		>=virtual/perl-Test-Simple-0.880.0
-	)"
+	)
+"
