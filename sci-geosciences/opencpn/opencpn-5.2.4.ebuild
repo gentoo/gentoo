@@ -32,7 +32,9 @@ RDEPEND="
 	x11-libs/gtk+:3
 	x11-libs/wxGTK:${WX_GTK_VER}[X]"
 DEPEND="${RDEPEND}"
-BDEPEND="sys-devel/gettext"
+BDEPEND="
+	sys-devel/gettext
+	sys-apps/lsb-release"
 
 PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
 
