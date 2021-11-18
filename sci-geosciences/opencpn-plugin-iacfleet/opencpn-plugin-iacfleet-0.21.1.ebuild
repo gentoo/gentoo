@@ -3,7 +3,7 @@
 
 EAPI=7
 
-WX_GTK_VER="3.0"
+WX_GTK_VER="3.0-gtk3"
 inherit cmake wxwidgets
 
 MY_PN="iacfleet_pi"
@@ -25,7 +25,7 @@ SLOT="0"
 
 RDEPEND="
 	x11-libs/wxGTK:${WX_GTK_VER}
-	>=sci-geosciences/opencpn-4.2.0"
+	sci-geosciences/opencpn:="
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/gettext"
 
