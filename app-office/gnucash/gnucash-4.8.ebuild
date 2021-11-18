@@ -57,7 +57,12 @@ RDEPEND="
 		dev-db/libdbi
 		dev-db/libdbi-drivers[postgres]
 	)
-	python? ( ${PYTHON_DEPS} )
+	python? (
+		${PYTHON_DEPS}
+		$(python_gen_cond_dep '
+			dev-python/pygobject[${PYTHON_USEDEP}]
+		')
+	)
 	quotes? (
 		>=dev-perl/Finance-Quote-1.11
 		dev-perl/Date-Manip
