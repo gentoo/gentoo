@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux"
 IUSE="gmxmopac7"
 
 DEPEND="dev-libs/libf2c"
