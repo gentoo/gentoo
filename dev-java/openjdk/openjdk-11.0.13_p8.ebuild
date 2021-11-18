@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools check-reqs flag-o-matic java-pkg-2 java-vm-2 multiprocessing pax-utils toolchain-funcs
+inherit check-reqs flag-o-matic java-pkg-2 java-vm-2 multiprocessing pax-utils toolchain-funcs
 
 # we need -ga tag to fetch tarball and unpack it, but exact number everywhere else to
 # set build version properly
