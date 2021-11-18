@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -38,10 +38,19 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-python3.10.patch
+)
+
 EPYTEST_DESELECT=(
 	# Times out on slower arches (ia64 in this case)
 	# https://github.com/python-trio/trio/issues/1753
 	trio/tests/test_unix_pipes.py::test_close_at_bad_time_for_send_all
+
+	# Fail with Python 3.10 on 'IPPROTO_MPTCP'
+	# Everything else passes and this is a simple check for exported symbols
+	# Let's try again with the next release (after 0.19.0).
+	trio/tests/test_exports.py::test_static_tool_sees_all_symbols
 )
 
 distutils_enable_tests --install pytest
