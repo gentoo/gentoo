@@ -29,6 +29,10 @@ DEPEND="${RDEPEND}
 "
 # TODO add a useflag for enable-video or header-bar???
 
+PATCHES=(
+	"${FILESDIR}/frogr-1.5-warning-level.patch"
+)
+
 src_configure() {
 	local emesonargs=(
 		# bug #714132
