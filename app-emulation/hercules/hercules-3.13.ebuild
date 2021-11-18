@@ -33,6 +33,11 @@ src_prepare() {
 	# delete bundled libltdl, #252716
 	rm ltdl.{c,h} || die
 	eautoreconf
+
+	# The local modules need local libs, so when doing a parallel install
+	# of the modules and libs breaks during relinking.  Force the libs to
+	# install first, and then the modules that use those libs.  #488126
+	echo "install-modexecLTLIBRARIES: install-libLTLIBRARIES" >> Makefile.in || die
 }
 
 src_configure() {
