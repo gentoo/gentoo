@@ -164,6 +164,11 @@ src_configure() {
 	if use pgo; then
 		local jobs=$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")
 		export PROFILE_TASK="-m test -j${jobs} --pgo-extended -x test_gdb"
+
+		if has_version "app-arch/rpm" ; then
+			# Avoid sandbox failure (attempts to write to /var/lib/rpm)
+			PROFILE_TASK+=" -x test_distutils"
+		fi
 	fi
 
 	local myeconfargs=(
