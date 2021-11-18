@@ -79,6 +79,7 @@ PATCHES=(
 	"${FILESDIR}"/11/wno-error-11.0.11.patch
 	"${FILESDIR}"/11/don-t-force-msse-11.0.11.patch
 	"${FILESDIR}"/11/disable-architecture-verification.patch
+	"${FILESDIR}"/11/gstreamer-CVE-2021-3522.patch
 )
 
 S="${WORKDIR}/rt-${MY_PV}"
