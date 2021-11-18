@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=ETHER
 DIST_VERSION=0.50
@@ -12,8 +12,6 @@ DESCRIPTION="Organise your Moose types in libraries"
 
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Carp
@@ -28,7 +26,7 @@ RDEPEND="
 	dev-perl/Sub-Name
 	>=dev-perl/namespace-autoclean-0.160.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-Tiny-0.34.0
 	test? (
 		virtual/perl-File-Spec
