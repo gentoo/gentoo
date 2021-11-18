@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
-DESCRIPTION="Fast NumPy array functions written in Cython"
+DESCRIPTION="Fast NumPy array functions written in C"
 HOMEPAGE="https://pypi.org/project/Bottleneck/"
 SRC_URI="https://github.com/kwgoodman/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
