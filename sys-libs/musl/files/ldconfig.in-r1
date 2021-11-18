@@ -17,38 +17,38 @@ get_options() {
 			VERBOSE=1
 			;;
 		r)
-			ROOT=$OPTARG
-			LDSO_CONF=$ROOT$LDSO_CONF
-			LDSO_CONF_DIR=$(dirname $LDSO_CONF)
+			ROOT=${OPTARG}
+			LDSO_CONF=${ROOT}${LDSO_CONF}
+			LDSO_CONF_DIR=$(dirname ${LDSO_CONF})
 			;;
 		f)
-			LDSO_CONF=$OPTARG
+			LDSO_CONF=${OPTARG}
 			;;
 		X)
 			UPDATE_LINKS=0
 			;;
 		\?)
-			echo "Invalid option: -$opt" >&2
+			echo "Invalid option: -${opt}" >&2
 			exit 1
 			;;
 		n|N|C|p)
-			echo "Unimplemented option: -$opt" >&2
+			echo "Unimplemented option: -${opt}" >&2
 			exit 1
 			;;
 		esac
 	done
 
-	if [[ $UPDATE_LINKS == 1 ]]; then
+	if [[ ${UPDATE_LINKS} == 1 ]]; then
 		echo "Updating links is not implemented."
 	fi
 }
 
 
 repeated() {
-	local l=$1
+	local l=${1}
 	local drs="${@:2}"
-	for m in $drs; do
-		[[ $m == $l ]] && return 0
+	for m in ${drs}; do
+		[[ ${m} == ${l} ]] && return 0
 	done
 	return 1
 }
@@ -56,24 +56,24 @@ repeated() {
 expand() {
 	# We are assuming the ld.so.conf's 'include' is not recursive
 	local f line l
-	local glob="$LDSO_CONF_DIR/$1"
+	local glob="${LDSO_CONF_DIR}/${1}"
 	local drs="${@:2} "
 
-	for f in $glob; do
-		[[ ! -f $f ]] && continue
+	for f in ${glob}; do
+		[[ ! -f ${f} ]] && continue
 		while read line; do
 			line=${line%%#*}
 			line=${line//:/ }
 			line=${line//,/ }
-			for l in $line; do
-				#We must add this whether or not the directory exists
-				repeated $l $drs && continue
-				drs+=" $l "
+			for l in ${line}; do
+				# We must add this whether or not the directory exists
+				repeated ${l} ${drs} && continue
+				drs+=" ${l} "
 			done
-		done < $f
+		done < ${f}
 	done
 
-	echo $drs
+	echo ${drs}
 }
 
 read_ldso_conf() {
@@ -88,60 +88,60 @@ read_ldso_conf() {
 		line=${line//,/ }  # Change comma delimiter to space
 
 		next=0
-		for l in $line; do
-			if [[ $next == 1 ]]; then
+		for l in ${line}; do
+			if [[ ${next} == 1 ]]; then
 				next=0
-				drs=$(expand $l $drs)
-			elif [[ $l == "include" ]]; then
+				drs=$(expand ${l} ${drs})
+			elif [[ ${l} == "include" ]]; then
 				next=1
 			else
 				# glibc's ldconfig silently skips non directories
-				if [[ -d $l ]]; then
-					repeated $l $drs && continue
-					drs+=" $l "
+				if [[ -d ${l} ]]; then
+					repeated ${l} ${drs} && continue
+					drs+=" ${l} "
 				fi
 			fi
 		done
-	done < $1
+	done < ${1}
 
-	echo $drs
+	echo ${drs}
 }
 
 sanitize() {
 	local drs=$@
 
-	repeated "/lib" $drs || drs="/lib $drs"
-	repeated "/usr/lib" $drs || drs="/usr/lib $drs"
+	repeated "/lib" ${drs} || drs="/lib ${drs}"
+	repeated "/usr/lib" ${drs} || drs="/usr/lib ${drs}"
 
-	echo $drs
+	echo ${drs}
 }
 
 get_options "$@"
 
-if [[ ! -e $LDSO_CONF ]]; then
-        echo "$LDSO_CONF not found" >&2
+if [[ ! -e ${LDSO_CONF} ]]; then
+        echo "${LDSO_CONF} not found" >&2
         exit 1
 fi
 
-LDSO_CONF_DIR=$(dirname $LDSO_CONF)
+LDSO_CONF_DIR=$(dirname ${LDSO_CONF})
 
-drs=$(read_ldso_conf "$LDSO_CONF")
-drs=$(sanitize $drs)
+drs=$(read_ldso_conf "${LDSO_CONF}")
+drs=$(sanitize ${drs})
 
 ARCH=@@ARCH@@
-LDSO_PATH="$ROOT/lib/ld-musl-${ARCH}.so.1"
-if [[ ! -e $LDSO_PATH ]]; then
-	echo "$LDSO_PATH not found" >&2
+LDSO_PATH="${ROOT}/lib/ld-musl-${ARCH}.so.1"
+if [[ ! -e ${LDSO_PATH} ]]; then
+	echo "${LDSO_PATH} not found" >&2
 	exit 1
 fi
 
-LDSO_ARCH=$(basename $LDSO_PATH)
+LDSO_ARCH=$(basename ${LDSO_PATH})
 LDSO_NAME=${LDSO_ARCH%.so.1}
-ETC_LDSO_PATH="$ROOT/etc/${LDSO_NAME}.path"
+ETC_LDSO_PATH="${ROOT}/etc/${LDSO_NAME}.path"
 
 X=$(mktemp -p /tmp ${LDSO_NAME}.XXXXXX)
-for d in $drs; do
-	echo $d >> $X
+for d in ${drs}; do
+	echo ${d} >> ${X}
 done
-chmod 644 $X
-mv $X $ETC_LDSO_PATH
+chmod 644 ${X}
+mv ${X} ${ETC_LDSO_PATH}
