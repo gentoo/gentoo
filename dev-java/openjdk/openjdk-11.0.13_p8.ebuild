@@ -178,6 +178,11 @@ src_configure() {
 	)
 
 	if use javafx; then
+		# this is not useful for users, just for upstream developers
+		# build system compares mesa version in md file
+		# https://bugs.gentoo.org/822612
+		export LEGAL_EXCLUDES=mesa3d.md
+
 		local zip="${EPREFIX%/}/usr/$(get_libdir)/openjfx-${SLOT}/javafx-exports.zip"
 		if [[ -r ${zip} ]]; then
 			myconf+=( --with-import-modules="${zip}" )
