@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A Perl module to use HTML Templates"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~mips ppc ~ppc64 x86"
 
 RDEPEND="
 	virtual/perl-Carp
