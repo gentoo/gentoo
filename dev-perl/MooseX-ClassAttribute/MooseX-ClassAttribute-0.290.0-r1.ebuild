@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=DROLSKY
 DIST_VERSION=0.29
@@ -12,8 +12,6 @@ DESCRIPTION="Declare class attributes Moose-style"
 LICENSE="Artistic-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Moose-2.0.0
@@ -21,7 +19,7 @@ RDEPEND="
 	>=dev-perl/namespace-autoclean-0.110.0
 	>=dev-perl/namespace-clean-0.200.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/Test-Fatal
