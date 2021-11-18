@@ -9,7 +9,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="http://www.musl-libc.org/releases/${P}.tar.gz"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
+	KEYWORDS="-* amd64 arm arm64 ~mips ppc ppc64 x86"
 fi
 GETENT_COMMIT="93a08815f8598db442d8b766b463d0150ed8e2ab"
 GETENT_FILE="musl-getent-${GETENT_COMMIT}.c"
@@ -69,6 +69,13 @@ src_unpack() {
 	cp "${DISTDIR}"/getconf.c misc/getconf.c || die
 	cp "${DISTDIR}/${GETENT_FILE}" misc/getent.c || die
 	cp "${DISTDIR}"/iconv.c misc/iconv.c || die
+}
+
+src_prepare() {
+	default
+
+	# Expand gethostid instead of being just a stub
+	eapply "${FILESDIR}/${PN}-1.2.2-gethostid.patch"
 }
 
 src_configure() {
@@ -137,7 +144,7 @@ src_install() {
 			[[ -e "${ED}"/lib/ld-musl-${arch}.so.1 ]] || die
 		fi
 
-		cp "${FILESDIR}"/ldconfig.in "${T}"/ldconfig.in || die
+		cp "${FILESDIR}"/ldconfig.in-r1 "${T}"/ldconfig.in || die
 		sed -e "s|@@ARCH@@|${arch}|" "${T}"/ldconfig.in > "${T}"/ldconfig || die
 		into /
 		dosbin "${T}"/ldconfig
