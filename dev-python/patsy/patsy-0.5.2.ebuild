@@ -17,7 +17,7 @@ KEYWORDS="amd64 arm arm64 ~ia64 ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/scipy[${PYTHON_USEDEP}]
+	!hppa? ( dev-python/scipy[${PYTHON_USEDEP}] )
 "
 
 distutils_enable_tests pytest
