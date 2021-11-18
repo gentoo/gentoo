@@ -1,16 +1,9 @@
 #!/bin/bash -e
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ROOT="/"
-
 LDSO_CONF="/etc/ld.so.conf"
-if [[ ! -e $LDSO_CONF ]]; then
-	echo "$LDSO_CONF not found" >&2
-	exit 1
-fi
-
-LDSO_CONF_DIR=$(dirname $LDSO_CONF)
 
 VERBOSE=0
 
@@ -124,6 +117,14 @@ sanitize() {
 }
 
 get_options "$@"
+
+if [[ ! -e $LDSO_CONF ]]; then
+        echo "$LDSO_CONF not found" >&2
+        exit 1
+fi
+
+LDSO_CONF_DIR=$(dirname $LDSO_CONF)
+
 drs=$(read_ldso_conf "$LDSO_CONF")
 drs=$(sanitize $drs)
 
