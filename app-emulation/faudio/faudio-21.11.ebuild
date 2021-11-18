@@ -28,7 +28,7 @@ HOMEPAGE="https://fna-xna.github.io/"
 LICENSE="ZLIB"
 SLOT="0"
 
-IUSE="abi_x86_32 abi_x86_64 debug dumpvoices gstreamer xnasong test utils"
+IUSE="abi_x86_32 abi_x86_64 debug dumpvoices gstreamer xnasong log test utils"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )"
 
@@ -53,6 +53,7 @@ multilib_src_configure() {
 		"-DDUMP_VOICES=$(usex dumpvoices ON OFF)"
 		"-DGSTREAMER=$(usex gstreamer ON OFF)"
 		"-DXNASONG=$(usex xnasong ON OFF)"
+		"-DLOG_ASSERTIONS=$(usex log ON OFF)"
 	)
 	cmake_src_configure
 }
