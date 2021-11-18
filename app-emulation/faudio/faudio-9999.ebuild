@@ -28,7 +28,7 @@ HOMEPAGE="https://fna-xna.github.io/"
 LICENSE="ZLIB"
 SLOT="0"
 
-IUSE="+abi_x86_32 +abi_x86_64 debug dumpvoices gstreamer xnasong test utils"
+IUSE="abi_x86_32 abi_x86_64 debug dumpvoices gstreamer xnasong test utils"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )"
 
