@@ -57,6 +57,15 @@ python_test() {
 		ipyparallel/tests/test_view.py::TestView::test_unicode_apply_result
 		ipyparallel/tests/test_view.py::TestView::test_unicode_execute
 		ipyparallel/tests/test_view.py::TestView::test_sync_imports_quiet
+		# Gets upset that a timeout _doesn't_ occur, presumably because
+		# we're cranking up too many test timeouts. Oh well.
+		# bug #823458#c3
+		ipyparallel/tests/test_asyncresult.py::AsyncResultTest::test_wait_for_send
+		# We could patch the timeout for these too but they're going to be inherently
+		# fragile anyway based on what they do.
+		ipyparallel/tests/test_client.py::TestClient::test_activate
+		ipyparallel/tests/test_client.py::TestClient::test_lazy_all_targets
+		ipyparallel/tests/test_client.py::TestClient::test_wait_for_engines
 	)
 	[[ ${EPYTHON} == python3.10 ]] && deselect+=(
 		# failing due to irrelevant warnings
