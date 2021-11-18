@@ -59,7 +59,7 @@ RDEPEND="
 	media-libs/lilv
 	media-libs/sratom
 	dev-libs/sord
-	media-libs/suil
+	media-libs/suil[gtk]
 	media-libs/lv2"
 #	!bundled-libs? ( media-sound/fluidsynth ) at least libltc is missing to be able to unbundle...
 
