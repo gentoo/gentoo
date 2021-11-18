@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 hppa ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 hppa ~ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="doc examples matplotlib notebook nbconvert qt5 +smp test"
 RESTRICT="!test? ( test )"
 
