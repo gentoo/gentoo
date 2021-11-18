@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for emulating troublesome interfaces"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
 	virtual/perl-Carp
