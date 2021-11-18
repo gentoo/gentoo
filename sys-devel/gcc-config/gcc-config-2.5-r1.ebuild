@@ -49,4 +49,12 @@ pkg_postinst() {
 	if [[ ! ${ROOT} && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
 		eselect compiler-shadow update all
 	fi
+
+	if ! has_version "sys-devel/gcc[gcj(-)]" && [[ -x "${EROOT}"/usr/bin/gcj ]] ; then
+		# Warn about obsolete /usr/bin/gcj for bug #804178
+		ewarn "Obsolete GCJ wrapper found: ${EROOT}/usr/bin/gcj!"
+		ewarn "Please delete this file unless you know it is needed (e.g. custom gcj install)."
+		ewarn "If you have no idea what this means, please delete the file:"
+		ewarn " rm ${EROOT}/usr/bin/gcj"
+	fi
 }
