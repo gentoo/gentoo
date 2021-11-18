@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Hack around people calling UNIVERSAL::can() as a function"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 ~arm arm64 ppc ~ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	virtual/perl-Scalar-List-Utils
