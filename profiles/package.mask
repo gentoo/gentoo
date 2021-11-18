@@ -42,7 +42,7 @@
 ~sys-kernel/gentoo-kernel-5.14.19
 ~sys-kernel/gentoo-kernel-bin-5.14.19
 ~sys-kernel/vanilla-kernel-5.14.19
-~virtua/dist-kernel-5.4.19
+~virtual/dist-kernel-5.14.19
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-11-16)
 # Outdated java package, uses EAPI 5, no revdeps,
