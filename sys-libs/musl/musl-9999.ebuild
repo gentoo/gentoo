@@ -137,7 +137,7 @@ src_install() {
 			[[ -e "${ED}"/lib/ld-musl-${arch}.so.1 ]] || die
 		fi
 
-		cp "${FILESDIR}"/ldconfig.in "${T}"/ldconfig.in || die
+		cp "${FILESDIR}"/ldconfig.in-r1 "${T}"/ldconfig.in || die
 		sed -e "s|@@ARCH@@|${arch}|" "${T}"/ldconfig.in > "${T}"/ldconfig || die
 		into /
 		dosbin "${T}"/ldconfig
