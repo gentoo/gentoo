@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="7"
 
 inherit autotools flag-o-matic
 
@@ -15,10 +15,10 @@ KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~x64-macos"
 IUSE="bzip2 custom-cflags +suid"
 
 RDEPEND="
-	dev-libs/libltdl
+	dev-libs/libltdl:=
 	net-libs/libnsl:0=
-	sys-libs/zlib
-	bzip2? ( app-arch/bzip2 )"
+	sys-libs/zlib:=
+	bzip2? ( app-arch/bzip2:= )"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
@@ -61,6 +61,6 @@ src_install() {
 	insinto /usr/share/hercules
 	doins hercules.cnf
 
-	# no static archives
-	find "${D}" -name '*.la' -delete || die
+	# No static archives.  Have to leave .la files for modules. #720342
+	rm "${ED}/usr/$(get_libdir)/"*.la || die
 }
