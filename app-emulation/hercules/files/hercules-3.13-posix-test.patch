@@ -1,0 +1,29 @@
+https://github.com/rbowler/spinhawk/pull/106
+
+From 9a9f7182069b8fe0483383c177882218244bad16 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 18 Nov 2021 02:32:02 -0500
+Subject: [PATCH] avoid bashism in test call
+
+POSIX test only supports =, not ==.
+---
+ autoconf/hercules.m4 | 2 +-
+ configure.ac         | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index f12d47058562..8dd420af8d13 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -562,7 +562,7 @@ AC_CHECK_DECLS( SIOCADDRT,            [hc_cv_have_siocaddrt=yes],           [hc_
+ AC_CHECK_DECLS( SIOCDELRT,            [hc_cv_have_siocdelrt=yes],           [hc_cv_have_siocdelrt=no],           [#include <linux/sockios.h>] )
+ AC_CHECK_DECLS( SIOCDIFADDR,          [hc_cv_have_siocdifaddr=yes],         [hc_cv_have_siocdifaddr=no],         [#include <linux/sockios.h>] )
+ 
+-if test "$hc_cv_have_sys_mtio_h" == "yes"; then
++if test "$hc_cv_have_sys_mtio_h" = "yes"; then
+     AC_CHECK_DECLS( MTEWARN,          [hc_cv_have_mtewarn=yes],             [hc_cv_have_mtewarn=no],             [#include <sys/mtio.h>] )
+ else
+     hc_cv_have_mtewarn=no
+-- 
+2.33.0
+

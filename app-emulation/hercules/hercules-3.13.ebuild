@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.13-htmldir.patch
+	"${FILESDIR}"/${PN}-3.13-posix-test.patch
 	"${FILESDIR}"/${PN}-3.13-unbundle-libltdl.patch
 	"${FILESDIR}"/${PN}-3.13-user-install.patch
 )
