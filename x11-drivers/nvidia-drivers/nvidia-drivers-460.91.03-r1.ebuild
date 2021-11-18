@@ -69,6 +69,7 @@ BDEPEND="
 	app-misc/pax-utils
 	sys-devel/m4
 	virtual/pkgconfig"
+PDEPEND="X? ( <x11-base/xorg-server-1.21 )"
 
 QA_PREBUILT="opt/* usr/lib*"
 
