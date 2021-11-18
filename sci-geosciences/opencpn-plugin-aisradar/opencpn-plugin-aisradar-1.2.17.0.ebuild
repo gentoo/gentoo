@@ -10,7 +10,6 @@ MY_PN="AISradar_pi"
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/rgleason/${MY_PN}.git"
-	https://github.com/rgleason/AISradar_pi
 else
 	SRC_URI="https://github.com/rgleason/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
