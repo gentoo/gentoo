@@ -13,7 +13,7 @@ inherit ecm kde.org xdg-utils
 DESCRIPTION="Framework providing transparent file and data management"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="acl +handbook kerberos +kwallet X"
 
 # tests hang
