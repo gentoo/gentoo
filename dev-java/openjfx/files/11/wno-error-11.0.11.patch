@@ -1,0 +1,43 @@
+From 9df57c50dcf4b0ac729595600932f844e1f8d4a3 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Wed, 17 Nov 2021 19:52:13 -0800
+Subject: [PATCH] no -Werror
+
+---
+ buildSrc/linux.gradle | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/buildSrc/linux.gradle b/buildSrc/linux.gradle
+index 00a3bca..2295566 100644
+--- a/buildSrc/linux.gradle
++++ b/buildSrc/linux.gradle
+@@ -231,7 +231,7 @@ FileTree ft_gtk = fileTree("${project(":graphics").projectDir}/src/main/native-g
+ LINUX.glass.glass = [:]
+ LINUX.glass.glass.nativeSource = ft_gtk_launcher.getFiles()
+ LINUX.glass.glass.compiler = compiler
+-LINUX.glass.glass.ccFlags = [cppFlags, "-Werror"].flatten()
++LINUX.glass.glass.ccFlags = [cppFlags].flatten()
+ LINUX.glass.glass.linker = linker
+ LINUX.glass.glass.linkFlags = IS_STATIC_BUILD? linkFlags : [linkFlags, "-lX11", "-ldl"].flatten()
+ LINUX.glass.glass.lib = "glass"
+@@ -241,7 +241,7 @@ LINUX.glass.glassgtk2.nativeSource =  ft_gtk.getFiles()
+ LINUX.glass.glassgtk2.compiler = compiler
+ LINUX.glass.glassgtk2.ccFlags = IS_STATIC_BUILD ?
+         ["-fno-threadsafe-statics", cppFlags, gtk2CCFlags].flatten() :
+-        [cppFlags, gtk2CCFlags, "-Werror"].flatten()
++        [cppFlags, gtk2CCFlags].flatten()
+ LINUX.glass.glassgtk2.linker = linker
+ LINUX.glass.glassgtk2.linkFlags = IS_STATIC_BUILD ? linkFlags : [linkFlags, gtk2LinkFlags].flatten()
+ LINUX.glass.glassgtk2.lib = "glassgtk2"
+@@ -251,7 +251,7 @@ LINUX.glass.glassgtk3.nativeSource =  ft_gtk.getFiles()
+ LINUX.glass.glassgtk3.compiler = compiler
+ LINUX.glass.glassgtk3.ccFlags = IS_STATIC_BUILD ?
+         ["-fno-threadsafe-statics", cppFlags, gtk3CCFlags].flatten() :
+-        [cppFlags, gtk3CCFlags, "-Werror"].flatten()
++        [cppFlags, gtk3CCFlags].flatten()
+ LINUX.glass.glassgtk3.linker = linker
+ LINUX.glass.glassgtk3.linkFlags = IS_STATIC_BUILD ? linkFlags : [linkFlags, gtk3LinkFlags].flatten()
+ LINUX.glass.glassgtk3.lib = "glassgtk3"
+-- 
+2.34.0
+
