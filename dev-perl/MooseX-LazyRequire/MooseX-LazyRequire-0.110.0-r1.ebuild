@@ -1,7 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 DIST_AUTHOR=ETHER
 DIST_VERSION=0.11
 inherit perl-module
@@ -9,19 +10,15 @@ inherit perl-module
 DESCRIPTION="Required attributes which fail only when trying to use them"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="test minimal"
-RESTRICT="!test? ( test )"
-# r: Moose::Exporter -> Moose
-# r: Moose::Role -> Moose
+IUSE="minimal"
+
 RDEPEND="
 	virtual/perl-Carp
 	>=dev-perl/Moose-0.940.0
 	>=dev-perl/aliased-0.300.0
 	dev-perl/namespace-autoclean
 "
-# t: Test::More -> Test-Simple
-# t: strict,warnings -> perl
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-Tiny-0.37.0
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
