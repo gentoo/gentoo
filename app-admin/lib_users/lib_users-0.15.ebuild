@@ -13,7 +13,7 @@ SRC_URI="https://github.com/klausman/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~sparc ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
