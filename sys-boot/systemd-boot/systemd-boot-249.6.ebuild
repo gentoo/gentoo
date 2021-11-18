@@ -8,7 +8,13 @@ inherit meson python-any-r1 toolchain-funcs
 
 DESCRIPTION="UEFI boot manager from systemd (formerly gummiboot)"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd/systemd-boot/"
-SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${PV}.tar.gz"
+if [[ ${PV} == *.* ]]; then
+	SRC_URI="https://github.com/systemd/systemd-stable/archive/v${PV}.tar.gz -> systemd-stable-${PV}.tar.gz"
+	S="${WORKDIR}/systemd-stable-${PV}"
+else
+	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${PV}.tar.gz"
+	S="${WORKDIR}/systemd-${PV}"
+fi
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
@@ -46,11 +52,8 @@ RDEPEND="${COMMON_DEPEND}
 QA_FLAGS_IGNORED="usr/lib/systemd/boot/efi/.*"
 QA_EXECSTACK="usr/lib/systemd/boot/efi/*"
 
-S="${WORKDIR}/systemd-${PV}"
-
 PATCHES=(
 	"${FILESDIR}/249-libshared-static.patch"
-	"${FILESDIR}/249-linux-headers-5-15.patch"
 )
 
 src_configure() {
