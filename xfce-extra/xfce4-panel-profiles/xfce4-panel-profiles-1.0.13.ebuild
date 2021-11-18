@@ -12,7 +12,7 @@ SRC_URI="https://archive.xfce.org/src/apps/xfce4-panel-profiles/$(ver_cut 1-2)/$
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
