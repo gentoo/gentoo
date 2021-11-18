@@ -36,7 +36,6 @@ src_configure() {
 		-DENABLE_SYNC=$(usex sync)
 		-DTASK_DOCDIR=share/doc/${PF}
 		-DTASK_RCDIR=share/${PN}/rc
-		-DBUILD_SHARED_LIBS=off  # bug 764224
 	)
 
 	cmake_src_configure
