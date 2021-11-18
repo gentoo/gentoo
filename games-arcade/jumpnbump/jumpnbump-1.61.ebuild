@@ -34,6 +34,10 @@ RDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-ranlib.patch
+)
+
 src_compile() {
 	tc-export AR CC RANLIB
 
