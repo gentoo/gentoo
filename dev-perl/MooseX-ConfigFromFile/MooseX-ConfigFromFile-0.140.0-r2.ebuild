@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=ETHER
 DIST_VERSION=0.14
@@ -11,10 +11,7 @@ DESCRIPTION="An abstract Moose role for setting attributes from a configfile"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-# MooseX::Types::Moose -> MooseX-Types
 RDEPEND="
 	virtual/perl-Carp
 	dev-perl/Moose
@@ -22,7 +19,7 @@ RDEPEND="
 	>=dev-perl/MooseX-Types-Path-Tiny-0.5.0
 	dev-perl/namespace-autoclean
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-Tiny-0.7.0
 	test? (
 		virtual/perl-ExtUtils-MakeMaker
@@ -37,5 +34,3 @@ DEPEND="${RDEPEND}
 		virtual/perl-if
 	)
 "
-
-# mytargets="install"
