@@ -18,7 +18,7 @@ else
 	SRC_URI="https://www.wireshark.org/download/src/all-versions/${P/_/}.tar.xz"
 	S="${WORKDIR}/${P/_/}"
 
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc64 ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc64 x86"
 fi
 
 LICENSE="GPL-2"
