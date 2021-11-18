@@ -1,0 +1,25 @@
+https://github.com/python-trio/trio/commit/0a0b75c914e63366f23790d72caa10bdfcc186f6
+https://github.com/python-trio/trio/pull/2061
+
+From a9c54747b90129776f6d2d384e0f64efaac324ee Mon Sep 17 00:00:00 2001
+From: "Nathaniel J. Smith" <njs@pobox.com>
+Date: Tue, 13 Jul 2021 17:34:26 -0700
+Subject: [PATCH] Export IP_RECVTOS, newly added in python 3.10
+
+---
+ trio/socket.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/trio/socket.py b/trio/socket.py
+index 5402f5bc7..afbcefa1d 100644
+--- a/trio/socket.py
++++ b/trio/socket.py
+@@ -117,7 +117,7 @@
+         J1939_PGN_MAX, J1939_PGN_PDU1_MAX, J1939_PGN_REQUEST,
+         SCM_J1939_DEST_ADDR, SCM_J1939_DEST_NAME, SCM_J1939_ERRQUEUE,
+         SCM_J1939_PRIO, SO_J1939_ERRQUEUE, SO_J1939_FILTER, SO_J1939_PROMISC,
+-        SO_J1939_SEND_PRIO, UDPLITE_RECV_CSCOV, UDPLITE_SEND_CSCOV
++        SO_J1939_SEND_PRIO, UDPLITE_RECV_CSCOV, UDPLITE_SEND_CSCOV, IP_RECVTOS
+     )
+     # fmt: on
+ except ImportError:
