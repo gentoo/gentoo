@@ -12,7 +12,6 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=sci-geosciences/opencpn-${PV}
-	>=sci-geosciences/opencpn-plugin-br24radar-1.31
 	>=sci-geosciences/opencpn-plugin-dr-1.1
 	>=sci-geosciences/opencpn-plugin-findit-1.1007
 	>=sci-geosciences/opencpn-plugin-gxradar-1.1
