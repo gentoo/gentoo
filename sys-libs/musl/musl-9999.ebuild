@@ -131,7 +131,7 @@ src_install() {
 			# During cross, there's no guarantee that the host is using musl
 			# so that file may not exist. Use a relative symlink within ${D}
 			# instead.
-			dosym8 -r /usr/lib/libc.so.1 /lib/ld-musl-${arch}.so.1
+			dosym8 -r /usr/lib/libc.so /lib/ld-musl-${arch}.so.1
 
 			# If it's still a dead symlnk, OK, we really do need to abort.
 			[[ -e "${ED}"/lib/ld-musl-${arch}.so.1 ]] || die
