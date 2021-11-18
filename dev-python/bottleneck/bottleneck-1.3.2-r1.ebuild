@@ -10,14 +10,11 @@ DESCRIPTION="Fast NumPy array functions written in Cython"
 HOMEPAGE="https://pypi.org/project/Bottleneck/"
 SRC_URI="https://github.com/kwgoodman/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-SLOT="0"
 LICENSE="BSD"
+SLOT="0"
 KEYWORDS="amd64 arm arm64 ~ia64 ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 
-RDEPEND="
-	>=dev-python/numpy-1.9.1[${PYTHON_USEDEP}]
-	dev-python/scipy[${PYTHON_USEDEP}]
-"
+RDEPEND=">=dev-python/numpy-1.9.1[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 distutils_enable_tests pytest
