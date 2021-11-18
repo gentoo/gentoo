@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
 MY_P="${P^g}"
 
@@ -15,6 +15,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="app-text/mecab
-	>=dev-scheme/gauche-0.9.5"
+	dev-scheme/gauche:="
 DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_P}"
