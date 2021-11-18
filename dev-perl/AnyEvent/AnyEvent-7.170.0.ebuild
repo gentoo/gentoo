@@ -10,7 +10,7 @@ inherit perl-module optfeature virtualx
 DESCRIPTION="Provides a uniform interface to various event loops"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ppc ppc64 ~riscv sparc x86 ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~riscv sparc x86 ~x86-solaris"
 
 BDEPEND="
 	>=virtual/perl-ExtUtils-MakeMaker-6.520.0
