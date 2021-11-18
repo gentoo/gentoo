@@ -21,10 +21,6 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="cdda debug +gstreamer ipod mtp pulseaudio +udisks vlc"
 
-REQUIRED_USE="
-	udisks? ( dbus )
-"
-
 BDEPEND="
 	dev-qt/linguist-tools:5
 	sys-devel/gettext
@@ -44,7 +40,6 @@ COMMON_DEPEND="
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
 	media-libs/alsa-lib
-	>=media-libs/chromaprint-1.4:=
 	>=media-libs/libmygpo-qt-1.0.9[qt5(+)]
 	>=media-libs/taglib-1.11.1_p20181028
 	sys-libs/zlib
@@ -52,6 +47,7 @@ COMMON_DEPEND="
 	x11-libs/libX11
 	cdda? ( dev-libs/libcdio:= )
 	gstreamer? (
+		>=media-libs/chromaprint-1.4:=
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
 	)
@@ -82,6 +78,7 @@ DEPEND="${COMMON_DEPEND}
 DOCS=( Changelog README.md )
 
 REQUIRED_USE="
+	cdda? ( gstreamer )
 	|| ( gstreamer vlc )
 "
 
@@ -104,6 +101,8 @@ src_configure() {
 		-DENABLE_LIBGPOD="$(usex ipod)"
 		-DENABLE_LIBMTP="$(usex mtp)"
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
+		-DENABLE_MUSICBRAINZ="$(usex gstreamer)"
+		-DENABLE_SONGFINGERPRINTING="$(usex gstreamer)"
 		-DENABLE_UDISKS2="$(usex udisks)"
 		-DENABLE_VLC="$(usex vlc)"
 		# Disable until we have qt6 in the tree
