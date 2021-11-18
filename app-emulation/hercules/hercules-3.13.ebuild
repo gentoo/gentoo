@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.13-htmldir.patch
 	"${FILESDIR}"/${PN}-3.13-unbundle-libltdl.patch
+	"${FILESDIR}"/${PN}-3.13-user-install.patch
 )
 
 src_prepare() {
@@ -48,6 +49,8 @@ src_configure() {
 src_install() {
 	default
 	dodoc RELEASE.NOTES
+
+	use suid && fperms 4711 /usr/bin/hercifc
 
 	insinto /usr/share/hercules
 	doins hercules.cnf
