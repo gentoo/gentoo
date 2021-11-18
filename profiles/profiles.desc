@@ -63,36 +63,36 @@ arm		default/linux/arm/17.0/desktop/gnome		dev
 arm		default/linux/arm/17.0/desktop/gnome/systemd	dev
 arm		default/linux/arm/17.0/desktop/plasma		dev
 arm		default/linux/arm/17.0/desktop/plasma/systemd	dev
-arm		default/linux/arm/17.0/developer		dev
+arm		default/linux/arm/17.0/developer		exp
 arm		default/linux/arm/17.0/armv4			dev
 arm		default/linux/arm/17.0/armv4/desktop		dev
 arm		default/linux/arm/17.0/armv4/desktop/gnome	dev
 arm		default/linux/arm/17.0/armv4/desktop/plasma	dev
-arm		default/linux/arm/17.0/armv4/developer		dev
+arm		default/linux/arm/17.0/armv4/developer		exp
 arm		default/linux/arm/17.0/armv4t			dev
 arm		default/linux/arm/17.0/armv4t/desktop		dev
 arm		default/linux/arm/17.0/armv4t/desktop/gnome	dev
 arm		default/linux/arm/17.0/armv4t/desktop/plasma	dev
-arm		default/linux/arm/17.0/armv4t/developer		dev
+arm		default/linux/arm/17.0/armv4t/developer		exp
 arm		default/linux/arm/17.0/armv4t/systemd		dev
 arm		default/linux/arm/17.0/armv5te			dev
 arm		default/linux/arm/17.0/armv5te/desktop		dev
 arm		default/linux/arm/17.0/armv5te/desktop/gnome	dev
 arm		default/linux/arm/17.0/armv5te/desktop/plasma	dev
-arm		default/linux/arm/17.0/armv5te/developer	dev
+arm		default/linux/arm/17.0/armv5te/developer	exp
 arm		default/linux/arm/17.0/armv5te/systemd		dev
 arm		default/linux/arm/17.0/armv6j			stable
 arm		default/linux/arm/17.0/armv6j/desktop		dev
 arm		default/linux/arm/17.0/armv6j/desktop/gnome	dev
 arm		default/linux/arm/17.0/armv6j/desktop/plasma	dev
-arm		default/linux/arm/17.0/armv6j/developer		dev
+arm		default/linux/arm/17.0/armv6j/developer		exp
 arm		default/linux/arm/17.0/armv6j/systemd		dev
 arm		default/linux/arm/17.0/armv7a			stable
 arm		default/linux/arm/17.0/armv7a/hardened		exp
 arm		default/linux/arm/17.0/armv7a/desktop		dev
 arm		default/linux/arm/17.0/armv7a/desktop/gnome	dev
 arm		default/linux/arm/17.0/armv7a/desktop/plasma	dev
-arm		default/linux/arm/17.0/armv7a/developer		dev
+arm		default/linux/arm/17.0/armv7a/developer		exp
 arm		default/linux/arm/17.0/armv7a/systemd		dev
 
 # ARM64 Profiles
@@ -105,7 +105,7 @@ arm64		default/linux/arm64/17.0/desktop/gnome/systemd	stable
 arm64		default/linux/arm64/17.0/desktop/plasma		stable
 arm64		default/linux/arm64/17.0/desktop/plasma/systemd stable
 arm64		default/linux/arm64/17.0/desktop/systemd	stable
-arm64		default/linux/arm64/17.0/developer		stable
+arm64		default/linux/arm64/17.0/developer		exp
 arm64		default/linux/arm64/17.0/systemd		stable
 
 # ARM64 Profiles (big-endian)
