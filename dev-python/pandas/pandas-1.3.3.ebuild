@@ -18,7 +18,7 @@ S="${WORKDIR}/${P/_/}"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 x86"
 IUSE="doc full-support minimal test X"
 RESTRICT="!test? ( test )"
 
