@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="interact with TELNET port or other TCP ports in Perl"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND=">=virtual/perl-libnet-1.70.300"
 BDEPEND="${RDEPEND}
