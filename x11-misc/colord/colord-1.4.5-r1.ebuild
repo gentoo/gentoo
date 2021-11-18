@@ -84,7 +84,6 @@ src_prepare() {
 multilib_src_configure() {
 	local emesonargs=(
 		$(meson_native_true daemon)
-		-Dexamples=false
 		-Dbash_completion=false
 		$(meson_use udev udev_rules)
 		$(meson_native_use_bool systemd)
