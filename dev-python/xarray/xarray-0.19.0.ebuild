@@ -27,7 +27,7 @@ BDEPEND="
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/toolz[${PYTHON_USEDEP}]
-		>=dev-python/scipy-1.4[${PYTHON_USEDEP}]
+		!hppa? ( >=dev-python/scipy-1.4[${PYTHON_USEDEP}] )
 	)"
 
 PATCHES=(
