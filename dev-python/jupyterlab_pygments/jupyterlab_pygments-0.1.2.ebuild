@@ -12,6 +12,6 @@ SRC_URI="https://github.com/jupyterlab/jupyterlab_pygments/archive/${PV}.tar.gz 
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="dev-python/pygments[${PYTHON_USEDEP}]"
