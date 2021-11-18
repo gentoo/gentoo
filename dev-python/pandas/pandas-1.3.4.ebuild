@@ -47,7 +47,7 @@ OPTIONAL_DEPEND="
 	>=dev-python/sqlalchemy-1.3.0[${PYTHON_USEDEP}]
 	>=dev-python/xlrd-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/xlwt-1.3.0[${PYTHON_USEDEP}]
-	>=dev-python/scipy-1.1[${PYTHON_USEDEP}]
+	!hppa? ( >=dev-python/scipy-1.1[${PYTHON_USEDEP}] )
 	X? (
 		|| (
 			dev-python/PyQt5[${PYTHON_USEDEP}]
