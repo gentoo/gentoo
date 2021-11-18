@@ -29,6 +29,8 @@ IUSE+=" +mergecap +minizip +netlink opus +plugins plugin-ifdemo +pcap +qt5 +rand
 IUSE+=" +randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl"
 IUSE+=" sdjournal test +text2pcap tfshark +tshark +udpdump zlib +zstd"
 
+RESTRICT="!test? ( test )"
+
 # bug #753062 for speexdsp
 CDEPEND="
 	acct-group/pcap
