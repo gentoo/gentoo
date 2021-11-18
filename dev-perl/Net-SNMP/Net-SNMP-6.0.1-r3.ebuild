@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A SNMP Perl Module"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~sparc-solaris ~x86-solaris"
 IUSE="examples minimal"
 
 RDEPEND="
