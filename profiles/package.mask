@@ -39,6 +39,9 @@
 # Bug #824558.
 =sys-kernel/gentoo-sources-5.14.19
 =sys-kernel/vanilla-sources-5.14.19
+~sys-kernel/gentoo-kernel-5.14.19
+~sys-kernel/gentoo-kernel-bin-5.14.19
+~sys-kernel/vanilla-kernel-5.14.19
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-11-16)
 # Outdated java package, uses EAPI 5, no revdeps,
