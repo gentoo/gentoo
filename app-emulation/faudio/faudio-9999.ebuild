@@ -23,7 +23,7 @@ else
 	S="${WORKDIR}/${FAUDIO_P}"
 fi
 
-DESCRIPTION="FAudio - Accuracy-focused XAudio reimplementation for open platforms"
+DESCRIPTION="Accuracy-focused XAudio reimplementation for open platforms"
 HOMEPAGE="https://fna-xna.github.io/"
 LICENSE="ZLIB"
 SLOT="0"
