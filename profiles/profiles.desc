@@ -162,10 +162,10 @@ ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop			stable
 ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome		stable
 ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome/systemd	stable
 ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/developer		exp
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland				dev
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop			dev
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop/gnome		dev
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop/gnome/systemd	dev
+ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland				exp
+ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop			exp
+ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop/gnome		exp
+ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop/gnome/systemd	exp
 ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/developer		exp
 
 # PPC/PPC64 flat Profiles
