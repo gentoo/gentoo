@@ -9,6 +9,7 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
+		<flag name="activities">Enable <pkg>kde-frameworks/kactivities</pkg> integration</flag>
 		<flag name="chm">Enable support for Microsoft Compiled HTML Help files</flag>
 		<flag name="epub">Enable E-Book support via <pkg>app-text/ebook-tools</pkg></flag>
 		<flag name="image-backend">Enable image viewing support</flag>
