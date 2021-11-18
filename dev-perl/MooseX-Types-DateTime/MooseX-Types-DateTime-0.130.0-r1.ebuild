@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=ETHER
 DIST_VERSION=0.13
@@ -11,8 +11,6 @@ DESCRIPTION="DateTime related constraints and coercions for Moose"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/DateTime-0.430.200
@@ -23,7 +21,7 @@ RDEPEND="
 	>=dev-perl/namespace-clean-0.190.0
 	virtual/perl-if
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-Tiny-0.34.0
 	test? (
 		virtual/perl-ExtUtils-MakeMaker
@@ -31,4 +29,5 @@ DEPEND="${RDEPEND}
 		virtual/perl-Locale-Maketext
 		dev-perl/Test-Fatal
 		>=virtual/perl-Test-Simple-1.1.10
-	)"
+	)
+"
