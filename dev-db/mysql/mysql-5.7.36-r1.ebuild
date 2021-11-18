@@ -452,19 +452,12 @@ src_test() {
 	}
 
 	local TESTDIR="${BUILD_DIR}/mysql-test"
-	local retstatus_unit
 	local retstatus_tests
 
 	if ! use server ; then
 		einfo "Skipping server tests due to minimal build."
 		return 0
 	fi
-
-	einfo ">>> Test phase [test]: ${CATEGORY}/${PF}"
-
-	# Run CTest (test-units)
-	cmake_src_test
-	retstatus_unit=$?
 
 	# Ensure that parallel runs don't die
 	export MTR_BUILD_THREAD="$((${RANDOM} % 100))"
@@ -693,10 +686,9 @@ src_test() {
 	pkill -9 -f "${S}/sql" 2>/dev/null
 
 	local failures=""
-	[[ $retstatus_unit -eq 0 ]] || failures="${failures} test-unit"
-	[[ $retstatus_tests -eq 0 ]] || failures="${failures} tests"
+	[[ ${retstatus_tests} -eq 0 ]] || failures="${failures} tests"
 
-	[[ -z "$failures" ]] || die "Test failures: $failures"
+	[[ -z "${failures}" ]] || die "Test failures: ${failures}"
 	einfo "Tests successfully completed"
 }
 
