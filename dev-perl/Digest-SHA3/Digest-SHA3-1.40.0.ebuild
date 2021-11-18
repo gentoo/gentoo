@@ -9,4 +9,4 @@ inherit perl-module
 
 DESCRIPTION="Perl extension for SHA-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~mips ppc64 sparc"
+KEYWORDS="~alpha amd64 arm64 ~hppa ~ia64 ~mips ppc64 sparc"
