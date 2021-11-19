@@ -13,7 +13,7 @@ SRC_URI="https://github.com/skk-dev/${PN}/archive/${P}_Neppu.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="ruby"
 RESTRICT="test"
 
