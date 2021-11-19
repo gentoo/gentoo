@@ -26,3 +26,7 @@ all_ruby_prepare() {
 	sed -i -e '/\(focus\|rg\)/ s:^:#:' \
 		-e 's:fivemat/::' test/minitest_helper.rb || die
 }
+
+each_ruby_test() {
+	${RUBY} -Ilib:test:. -e 'require "minitest/autorun"; Dir["test/test_*.rb"].each{|f| require f}' || die
+}
