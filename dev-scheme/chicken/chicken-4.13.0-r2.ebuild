@@ -55,6 +55,7 @@ src_install() {
 		DESTDIR="${D}" \
 		install
 	einstalldocs
+	find "${ED}" -name '*.a' -delete || die
 
 	# let portage track this file (created later)
 	touch "${ED}"/usr/$(get_libdir)/${PN}/8/modules.db || die
