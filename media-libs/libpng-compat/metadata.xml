@@ -5,6 +5,10 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>codec@gentoo.org</email>
+		<name>Codec project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:libpng:libpng</remote-id>
 		<remote-id type="sourceforge">libpng</remote-id>
