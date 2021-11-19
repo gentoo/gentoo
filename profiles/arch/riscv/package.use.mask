@@ -182,7 +182,6 @@ sys-cluster/slurm ofed
 # This doesn't work for (any) riscv yet.
 dev-libs/libpcre2 jit
 dev-libs/libpcre jit
-<dev-vcs/git-2.31.0 pcre-jit
 www-servers/nginx pcre-jit
 
 # app-shells/fish not keyworded due to failing tests (Bug #807742).
