@@ -411,7 +411,7 @@ EOF
 each_fakegem_configure() {
 	tc-export PKG_CONFIG
 	for extension in "${RUBY_FAKEGEM_EXTENSIONS[@]}" ; do
-		CC=$(tc-getCC) ${RUBY} --disable=did_you_mean -C ${extension%/*} ${extension##*/} ${RUBY_FAKEGM_EXTENSION_OPTIONS} || die
+		CC=$(tc-getCC) ${RUBY} --disable=did_you_mean -C ${extension%/*} ${extension##*/} --with-cflags="${CFLAGS}" --with-ldflags="${LDFLAGS}" ${RUBY_FAKEGM_EXTENSION_OPTIONS} || die
 	done
 }
 
@@ -448,7 +448,7 @@ all_fakegem_compile() {
 # Compile extensions defined in RUBY_FAKEGEM_EXTENSIONS, if any.
 each_fakegem_compile() {
 	for extension in "${RUBY_FAKEGEM_EXTENSIONS[@]}" ; do
-		emake V=1 -C ${extension%/*} CFLAGS="${CFLAGS} -fPIC" archflag="${LDFLAGS}"
+		emake V=1 -C ${extension%/*}
 		mkdir -p "${RUBY_FAKEGEM_EXTENSION_LIBDIR%/}"
 		cp "${extension%/*}"/*$(get_modname) "${RUBY_FAKEGEM_EXTENSION_LIBDIR%/}/" || die "Copy of extension into ${RUBY_FAKEGEM_EXTENSION_LIBDIR} failed"
 	done
