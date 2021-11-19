@@ -118,7 +118,7 @@ RDEPEND="
 	dev-libs/nspr
 	dev-libs/nss
 	media-libs/alsa-lib
-	media-libs/mesa[gbm]
+	media-libs/mesa[gbm(+)]
 	net-print/cups
 	sys-apps/dbus
 	x11-libs/cairo
