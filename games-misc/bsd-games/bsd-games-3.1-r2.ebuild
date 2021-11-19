@@ -79,11 +79,6 @@ src_compile() {
 	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
-src_test() {
-	addwrite /dev/full
-	emake -j1 check
-}
-
 src_install() {
 	dodir /var/games
 	emake DESTDIR="${D}" install
