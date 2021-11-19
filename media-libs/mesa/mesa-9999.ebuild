@@ -27,7 +27,7 @@ RESTRICT="
 "
 
 RADEON_CARDS="r300 r600 radeon radeonsi"
-VIDEO_CARDS="${RADEON_CARDS} crocus freedreno i915 intel iris lima nouveau panfrost v3d vc4 virgl vivante vmware"
+VIDEO_CARDS="${RADEON_CARDS} freedreno intel lima nouveau panfrost v3d vc4 virgl vivante vmware"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
@@ -38,7 +38,7 @@ IUSE="${IUSE_VIDEO_CARDS}
 	vulkan-overlay wayland +X xa xvmc zink +zstd"
 
 REQUIRED_USE="
-	d3d9?   ( || ( video_cards_iris video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
+	d3d9?   ( || ( video_cards_intel video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
 	vulkan? ( video_cards_radeonsi? ( llvm ) )
 	vulkan-overlay? ( vulkan )
 	video_cards_radeon? ( x86? ( llvm ) amd64? ( llvm ) )
@@ -81,9 +81,7 @@ RDEPEND="
 	wayland? (
 		>=dev-libs/wayland-1.18.0:=[${MULTILIB_USEDEP}]
 	)
-	${LIBDRM_DEPSTRING}[video_cards_freedreno?,video_cards_nouveau?,video_cards_vc4?,video_cards_vivante?,video_cards_vmware?,${MULTILIB_USEDEP}]
-	video_cards_intel? ( ${LIBDRM_DEPSTRING}[video_cards_intel] )
-	video_cards_i915? ( ${LIBDRM_DEPSTRING}[video_cards_intel] )
+	${LIBDRM_DEPSTRING}[video_cards_freedreno?,video_cards_intel?,video_cards_nouveau?,video_cards_vc4?,video_cards_vivante?,video_cards_vmware?,${MULTILIB_USEDEP}]
 	vulkan-overlay? ( dev-util/glslang:0=[${MULTILIB_USEDEP}] )
 	X? (
 		>=x11-libs/libX11-1.6.2:=[${MULTILIB_USEDEP}]
@@ -228,10 +226,10 @@ llvm_check_deps() {
 pkg_pretend() {
 	if use vulkan; then
 		if ! use video_cards_freedreno &&
-		   ! use video_cards_iris &&
+		   ! use video_cards_intel &&
 		   ! use video_cards_radeonsi &&
 		   ! use video_cards_v3d; then
-			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain freedreno, iris, radeonsi, or v3d"
+			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain freedreno, intel, radeonsi, or v3d"
 		fi
 	fi
 
@@ -294,7 +292,7 @@ pkg_setup() {
 		ewarn "detected! This can cause problems. For details, see bug 459306."
 	fi
 
-	if use video_cards_iris ||
+	if use video_cards_intel ||
 	   use video_cards_radeonsi; then
 		if kernel_is -ge 5 11 3; then
 			CONFIG_CHECK="~KCMP"
@@ -322,7 +320,7 @@ multilib_src_configure() {
 	use wayland && platforms+=",wayland"
 	emesonargs+=(-Dplatforms=${platforms#,})
 
-	if use video_cards_iris ||
+	if use video_cards_intel ||
 	   use video_cards_r300 ||
 	   use video_cards_r600 ||
 	   use video_cards_radeonsi ||
@@ -376,10 +374,8 @@ multilib_src_configure() {
 	fi
 
 	gallium_enable -- swrast
-	gallium_enable video_cards_crocus crocus
 	gallium_enable video_cards_freedreno freedreno
-	gallium_enable video_cards_i915 i915
-	gallium_enable video_cards_iris iris
+	gallium_enable video_cards_intel crocus i915 iris
 	gallium_enable video_cards_lima lima
 	gallium_enable video_cards_nouveau nouveau
 	gallium_enable video_cards_panfrost panfrost
@@ -405,7 +401,7 @@ multilib_src_configure() {
 
 	if use vulkan; then
 		vulkan_enable video_cards_freedreno freedreno
-		vulkan_enable video_cards_iris intel
+		vulkan_enable video_cards_intel intel
 		vulkan_enable video_cards_radeonsi amd
 		vulkan_enable video_cards_v3d broadcom
 	fi
