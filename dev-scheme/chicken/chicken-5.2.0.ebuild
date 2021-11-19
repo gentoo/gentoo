@@ -3,6 +3,8 @@
 
 EAPI="8"
 
+inherit toolchain-funcs
+
 DESCRIPTION="Scheme interpreter and native Scheme to C compiler"
 HOMEPAGE="https://www.call-cc.org/"
 SRC_URI="https://code.call-cc.org/releases/${PV}/${P}.tar.gz"
@@ -37,7 +39,9 @@ src_compile() {
 	emake -j1 \
 		PLATFORM="linux" \
 		PREFIX="${EPREFIX}/usr" \
+		C_COMPILER="$(tc-getCC)" \
 		C_COMPILER_OPTIMIZATION_OPTIONS="${CFLAGS}" \
+		CXX_COMPILER="$(tc-getCXX)" \
 		HOSTSYSTEM="${CBUILD}" \
 		LINKER_OPTIONS="${LDFLAGS}"
 }
@@ -50,6 +54,8 @@ src_install() {
 	emake -j1 \
 		PLATFORM="linux" \
 		PREFIX="${EPREFIX}/usr" \
+		C_COMPILER="$(tc-getCC)" \
+		CXX_COMPILER="$(tc-getCXX)" \
 		HOSTSYSTEM="${CBUILD}" \
 		LINKER_OPTIONS="${LDFLAGS}" \
 		DESTDIR="${D}" \
