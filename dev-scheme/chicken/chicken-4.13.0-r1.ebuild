@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,8 +7,8 @@ inherit versionator
 
 MY_PV=$(get_version_component_range 1-3)
 DESCRIPTION="Scheme interpreter and native Scheme to C compiler"
-HOMEPAGE="http://www.call-cc.org/"
-SRC_URI="http://code.call-cc.org/releases/${MY_PV}/${P}.tar.gz"
+HOMEPAGE="https://www.call-cc.org/"
+SRC_URI="https://code.call-cc.org/releases/${MY_PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

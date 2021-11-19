@@ -4,8 +4,8 @@
 EAPI=7
 
 DESCRIPTION="Scheme interpreter and native Scheme to C compiler"
-HOMEPAGE="http://www.call-cc.org/"
-SRC_URI="http://code.call-cc.org/releases/${PV}/${P}.tar.gz"
+HOMEPAGE="https://www.call-cc.org/"
+SRC_URI="https://code.call-cc.org/releases/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
