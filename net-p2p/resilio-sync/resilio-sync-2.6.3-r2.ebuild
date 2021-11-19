@@ -29,8 +29,8 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	|| (
-		sys-libs/glibc[crypt(+)]
 		sys-libs/libxcrypt[compat]
+		sys-libs/glibc[crypt(+)]
 	)"
 
 DOC_CONTENTS="You may need to review /etc/resilio-sync/config.json\\n
