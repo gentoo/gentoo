@@ -118,7 +118,7 @@ python_test() {
 		numpy/typing/tests/test_typing.py::test_reveal[arrayterator.py]
 	)
 
-	if use arm && [[ $(uname -m) == "armv8l" ]] ; then
+	if use arm && [[ $(uname -m || echo "unknown") == "armv8l" ]] ; then
 		# Degenerate case. arm32 chroot on arm64.
 		# bug #774108
 		deselect+=(
