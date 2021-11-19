@@ -122,7 +122,7 @@ src_compile() {
 }
 
 src_install() {
-	LC_ALL=C emake -j1 \
+	LC_ALL=C emake \
 		DESTDIR="${D}" \
 		STRIP=: \
 		nmapdatadir="${EPREFIX}"/usr/share/nmap \
