@@ -495,12 +495,6 @@ net-misc/bwwhois
 # Removal on 2021-11-20. Bug #819366
 net-analyzer/quidscor
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
-# No maintainer, no revdeps, dead upstream, EAPI 5.
-# No other distro is packaging this.
-# Removal on 2021-11-20. Bug #819363
-net-dialup/cistronradius
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
