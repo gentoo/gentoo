@@ -17,7 +17,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="sys-apps/pcsc-lite
-	<dev-libs/openssl-2.99.99:0=[-bindist(-)]"
+	dev-libs/openssl:=[-bindist(-)]"
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
 BDEPEND="dev-util/gengetopt
