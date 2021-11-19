@@ -16,7 +16,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 arm arm64 ppc ~ppc64 sparc x86"
 
 RDEPEND="
 	>=dev-python/idna-2.8[${PYTHON_USEDEP}]
