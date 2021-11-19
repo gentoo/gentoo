@@ -26,7 +26,7 @@ src_prepare() {
 		-e "/LICENSE /d" \
 		Makefile.* {defaults,rules}.make || die
 	sed -i \
-		-e "s|\$(PREFIX)/lib|\$(PREFIX)/$(get_libdir)|" \
+		-e "s|/lib|/$(get_libdir)|" \
 		-e "s|\$(DATADIR)/doc|\$(SHAREDIR)/doc/${PF}|" \
 		defaults.make || die
 
