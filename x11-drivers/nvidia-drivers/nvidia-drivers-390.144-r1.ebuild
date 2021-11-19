@@ -97,9 +97,11 @@ pkg_setup() {
 		!DEBUG_MUTEXES"
 	local ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
 	of drivers (no custom config), and optional nvidia-drm.modeset=1.
-	Cannot be directly selected in the kernel's menuconfig, so enable
-	options such as CONFIG_DRM_FBDEV_EMULATION instead.
-	390.xx branch: also used by a GLX workaround needed for OpenGL."
+	With 390.xx drivers, also used by a GLX workaround needed for OpenGL.
+	Cannot be directly selected in the kernel's menuconfig, and may need
+	selection of a DRM device even if unused, e.g. CONFIG_DRM_AMDGPU=m or
+	DRM_I915=y, DRM_NOUVEAU=m also acceptable if a module and not built-in.
+	Note: DRM_SIMPLEDRM may cause issues and is better disabled for now."
 
 	use amd64 || use x86 && kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
 
@@ -143,7 +145,7 @@ src_prepare() {
 	fi
 
 	# prevent detection of incomplete kernel DRM support (bug #603818)
-	sed 's/defined(CONFIG_DRM)/defined(CONFIG_DRM_KMS_HELPER)/' \
+	sed 's/defined(CONFIG_DRM/defined(CONFIG_DRM_KMS_HELPER/g' \
 		-i kernel/conftest.sh || die
 
 	sed -e '/Exec=\|Icon=/s/_.*/nvidia-settings/' \
