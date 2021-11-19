@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 inherit perl-module
 
@@ -12,10 +12,10 @@ SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 LICENSE="|| ( BSD LGPL-2.1 GPL-2 )"
 SLOT="0"
 KEYWORDS="amd64 ~ia64 x86"
-IUSE=""
 
-DEPEND="~app-text/mecab-${PV}"
-RDEPEND="${DEPEND}"
+RDEPEND="~app-text/mecab-${PV}"
+BDEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS README test.pl )
 HTML_DOCS=( bindings.html )
