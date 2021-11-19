@@ -530,11 +530,6 @@ sys-auth/ykneo-ccid-tools
 # Removal on 2021-11-20.
 x11-apps/xwarppointer
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
-# No maintainer, EAPI 5, no other distro is packaging this.
-# Removal on 2021-11-20. Bug #819165
-x11-misc/3dfb
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
