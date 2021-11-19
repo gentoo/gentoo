@@ -40,3 +40,9 @@ src_configure() {
 	)
 	ecm_src_configure
 }
+
+src_test() {
+	# requires LANG fr_CH. bug 823816
+	local myctestargs=( -E "(kcountrytest|kcountrysubdivisiontest)" )
+	ecm_src_test
+}
