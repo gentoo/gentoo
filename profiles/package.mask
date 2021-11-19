@@ -518,12 +518,6 @@ net-fs/openafs-legacy
 # Removal on 2021-11-20.
 net-ftp/profxp
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
-# No maintainer, dead upstream, EAPI 5.
-# No other distro is packaging this. Bug #819231
-# Removal on 2021-11-20.
-sys-auth/ykneo-ccid-tools
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
