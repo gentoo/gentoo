@@ -13,7 +13,7 @@ SRC_URI="https://gitlab.inria.fr/zimmerma/ecm/uploads/9cd422ec80268f8a885e499e17
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86 ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86 ~ppc-macos ~x64-macos"
 IUSE="+custom-tune openmp static-libs cpu_flags_x86_sse2"
 
 DEPEND="dev-libs/gmp:="
