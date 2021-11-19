@@ -4,7 +4,7 @@
 # @ECLASS: php-ext-pecl-r3.eclass
 # @MAINTAINER:
 # Gentoo PHP team <php-bugs@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @PROVIDES: php-ext-source-r3
 # @BLURB: A uniform way to install PECL extensions
 # @DESCRIPTION:
@@ -13,7 +13,7 @@
 # see https://pecl.php.net/
 
 case ${EAPI:-0} in
-	[67]) ;;
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
