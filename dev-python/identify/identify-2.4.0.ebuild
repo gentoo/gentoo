@@ -12,7 +12,7 @@ SRC_URI="https://github.com/pre-commit/${PN}/archive/refs/tags/v${PV}.tar.gz -> 
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 
 RDEPEND="
 	dev-python/ukkonen[${PYTHON_USEDEP}]"
