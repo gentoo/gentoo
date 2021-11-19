@@ -23,7 +23,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" AR="$(tc-getAR)"
+	emake CC="$(tc-getCC)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)"
 }
 
 src_install() {
