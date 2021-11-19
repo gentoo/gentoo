@@ -11,7 +11,7 @@ SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0/0.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
