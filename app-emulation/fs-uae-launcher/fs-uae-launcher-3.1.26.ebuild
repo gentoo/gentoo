@@ -14,7 +14,7 @@ HOMEPAGE="https://fs-uae.net/"
 SRC_URI="https://github.com/FrodeSolheim/fs-uae-launcher/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE="lha"
 RESTRICT="test" # The test files are just boilerplate.
 
