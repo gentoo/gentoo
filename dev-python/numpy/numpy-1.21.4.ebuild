@@ -117,6 +117,14 @@ python_test() {
 		numpy/typing/tests/test_typing.py::test_reveal[arrayterator.py]
 	)
 
+	if use arm && [[ $(uname -m) == "armv8l" ]] ; then
+		# Degenerate case. arm32 chroot on arm64.
+		# bug #774108
+		deselect+=(
+			numpy/core/tests/test_cpu_features.py::Test_ARM_Features::test_features
+		)
+	fi
+
 	distutils_install_for_testing --single-version-externally-managed \
 		--record "${TMPDIR}/record.txt" ${NUMPY_FCONFIG}
 
