@@ -33,6 +33,20 @@ BDEPEND="$(python_gen_cond_dep '
 	)
 ')"
 
+# All these tests attempt to connect to galaxy.ansible.com
+EPYTEST_DESELECT=(
+	test/test_runtime.py::test_install_collection
+	test/test_runtime.py::test_install_collection_dest
+	test/test_runtime.py::test_prepare_environment_with_collections
+	test/test_runtime.py::test_prerun_reqs_v1
+	test/test_runtime.py::test_prerun_reqs_v2
+	test/test_runtime.py::test_require_collection_no_cache_dir
+	test/test_runtime.py::test_require_collection_wrong_version
+	test/test_runtime.py::test_require_collection
+	test/test_runtime.py::test_upgrade_collection
+	test/test_runtime_example.py::test_runtime
+)
+
 # Requires currently unpackaged Sphinx extension myst_parser
 #distutils_enable_sphinx docs 'dev-python/sphinx_ansible_theme'
 
