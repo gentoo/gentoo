@@ -44,8 +44,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
+	test? ( >=dev-libs/libzip-1.2.0:= )
 "
-BDEPEND="sys-devel/gettext"
+BDEPEND="
+	sys-devel/gettext
+"
 
 src_configure() {
 	local mycmakeargs=(
