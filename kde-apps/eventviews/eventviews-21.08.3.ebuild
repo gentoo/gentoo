@@ -7,6 +7,8 @@ ECM_TEST="true"
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.84.0
 QTMIN=5.15.2
+# monthitemordertest requires a display
+VIRTUALX_REQUIRED=test
 inherit ecm kde.org
 
 DESCRIPTION="Calendar viewer for KDE PIM"
