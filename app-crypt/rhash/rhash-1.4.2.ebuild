@@ -70,6 +70,8 @@ multilib_src_configure() {
 
 # We would add compile-gmo to the build targets but install-gmo always
 # recompiles unconditionally. :(
+# (note from sam: this might be fixed in >1.4.2?
+#  https://github.com/rhash/RHash/commit/9e4eeb1268149b24b7fbe0fc0fe91e3a266e6261)
 
 multilib_src_install() {
 	# -j1 needed due to race condition.
