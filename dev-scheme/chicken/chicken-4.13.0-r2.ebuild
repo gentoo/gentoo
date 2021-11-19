@@ -9,7 +9,7 @@ SRC_URI="https://code.call-cc.org/releases/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ppc ppc64 x86"
 IUSE="doc"
 
 RDEPEND=""
@@ -57,7 +57,7 @@ src_install() {
 	einstalldocs
 
 	# let portage track this file (created later)
-	touch "${ED}"/usr/$(get_libdir)/${PN}/11/modules.db || die
+	touch "${ED}"/usr/$(get_libdir)/${PN}/8/modules.db || die
 }
 
 pkg_postinst() {
