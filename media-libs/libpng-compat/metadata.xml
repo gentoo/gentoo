@@ -5,9 +5,6 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
-	<use>
-		<flag name="apng">support unofficial APNG (Animated PNG) spec</flag>
-	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:libpng:libpng</remote-id>
 		<remote-id type="sourceforge">libpng</remote-id>
