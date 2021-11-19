@@ -383,12 +383,13 @@ gstreamer_multilib_src_compile() {
 	if [[ "${PN}" == "${GST_ORG_MODULE}" ]]; then
 		eninja
 	else
-		local plugin_dir plugin
+		local plugin_dir plugin build_dir
 
 		for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
 			plugin=$(_gstreamer_get_target_filename $(gstreamer_get_plugin_dir ${plugin_dir}))
+			build_dir=$(readlink -f ${BUILD_DIR})
 			plugin_path="${plugin%%:*}"
-			eninja "${plugin_path/"${BUILD_DIR}/"}"
+			eninja "${plugin_path/"${build_dir}/"/}"
 		done
 	fi
 }
