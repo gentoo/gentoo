@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Client library for fastcgi protocol"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~ppc64 ~s390 ~sparc ~x86"
 
 RDEPEND="
 	virtual/perl-IO
