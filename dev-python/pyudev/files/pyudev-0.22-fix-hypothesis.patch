@@ -1,0 +1,142 @@
+commit c27845613527091201160a578eacd36a538dea81
+Author: mulhern <amulhern@redhat.com>
+Date:   Thu May 3 09:12:26 2018 -0400
+
+    Eliminate Hypothesis warnings
+    
+    * Reduce the max_examples value so that tests don't trigger Hypothesis's
+    deadline check.
+    * Turn generators into lists, so that Hypothesis can consistently repeat the
+    tests (presumably for shrinking).
+    
+    Signed-off-by: mulhern <amulhern@redhat.com>
+
+diff --git a/tests/_constants.py b/tests/_constants.py
+index fb85f30..7003a5c 100644
+--- a/tests/_constants.py
++++ b/tests/_constants.py
+@@ -53,7 +53,7 @@ def _check_device(device):
+         return False
+ 
+ 
+-_DEVICE_DATA = udev.DeviceDatabase.db()
++_DEVICE_DATA = [d for d in udev.DeviceDatabase.db()]
+ _DEVICES = [Devices.from_path(_CONTEXT, d.device_path) for d in _DEVICE_DATA]
+ 
+ 
+@@ -69,7 +69,7 @@ def device_strategy(require_existing=True, filter_func=lambda x: True):
+     :type filter_func: Device -> bool
+     """
+     strategy = strategies.sampled_from(
+-        x for x in _CONTEXT.list_devices() if filter_func(x))
++        [x for x in _CONTEXT.list_devices() if filter_func(x)])
+ 
+     if require_existing:
+         strategy = strategy.filter(_check_device)
+@@ -89,7 +89,7 @@ def device_strategy(require_existing=True, filter_func=lambda x: True):
+ _SYSNAME_STRATEGY = device_strategy().map(lambda x: x.sys_name)
+ 
+ _PROPERTY_STRATEGY = device_strategy().flatmap(
+-    lambda d: strategies.sampled_from(d.properties.items()))
++    lambda d: strategies.sampled_from([p for p in d.properties.items()]))
+ 
+ _MATCH_PROPERTY_STRATEGY = \
+    _PROPERTY_STRATEGY.filter(lambda p: p[0][-4:] != "_ENC")
+@@ -104,7 +104,7 @@ def device_strategy(require_existing=True, filter_func=lambda x: True):
+ # an attribute key and value pair
+ _ATTRIBUTE_STRATEGY = \
+    _ATTRIBUTES_STRATEGY.flatmap(
+-      lambda attrs: strategies.sampled_from(attrs.available_attributes).map(
++      lambda attrs: strategies.sampled_from([a for a in attrs.available_attributes]).map(
+          lambda key: (key, attrs.get(key))
+       )
+    )
+@@ -119,11 +119,11 @@ def device_strategy(require_existing=True, filter_func=lambda x: True):
+        )
+ 
+ # the tags object for a given device
+-_TAGS_STRATEGY = device_strategy().map(lambda d: d.tags)
++_TAGS_STRATEGY = device_strategy().map(lambda d: [t for t in d.tags])
+ 
+ # an arbitrary tag belonging to a given device
+ _TAG_STRATEGY = \
+-        _TAGS_STRATEGY.filter(lambda t: sum(1 for _ in t) != 0).flatmap(
++        _TAGS_STRATEGY.filter(lambda t: t != []).flatmap(
+            strategies.sampled_from
+         )
+ 
+diff --git a/tests/_device_tests/_device_tests.py b/tests/_device_tests/_device_tests.py
+index 0350a10..3e8710a 100644
+--- a/tests/_device_tests/_device_tests.py
++++ b/tests/_device_tests/_device_tests.py
+@@ -352,7 +352,7 @@ def test_key_subset(self, a_context, device_datum):
+            frozenset(device.properties.keys())
+ 
+     @given(_CONTEXT_STRATEGY, strategies.sampled_from(_DEVICE_DATA))
+-    @settings(max_examples=100)
++    @settings(max_examples=1)
+     def test_getitem(self, a_context, device_datum):
+         device = Devices.from_path(a_context, device_datum.device_path)
+         for prop in device_datum.properties:
+diff --git a/tests/test_discover.py b/tests/test_discover.py
+index e623435..3cf9e8c 100644
+--- a/tests/test_discover.py
++++ b/tests/test_discover.py
+@@ -46,7 +46,7 @@
+ from hypothesis import strategies
+ 
+ _CONTEXT = pyudev.Context()
+-_DEVICES = _CONTEXT.list_devices()
++_DEVICES = [d for d in _CONTEXT.list_devices()]
+ 
+ NUM_TESTS = 5
+ 
+diff --git a/tests/test_enumerate.py b/tests/test_enumerate.py
+index c9c6a67..a9662bd 100644
+--- a/tests/test_enumerate.py
++++ b/tests/test_enumerate.py
+@@ -90,7 +90,7 @@ class TestEnumerator(object):
+ 
+     @failed_health_check_wrapper
+     @given(_CONTEXT_STRATEGY, _SUBSYSTEM_STRATEGY)
+-    @settings(max_examples=50)
++    @settings(max_examples=10)
+     def test_match_subsystem(self, context, subsystem):
+         """
+         Subsystem match matches devices w/ correct subsystem.
+@@ -102,7 +102,7 @@ def test_match_subsystem(self, context, subsystem):
+ 
+     @failed_health_check_wrapper
+     @given(_CONTEXT_STRATEGY, _SUBSYSTEM_STRATEGY)
+-    @settings(max_examples=5)
++    @settings(max_examples=1)
+     def test_match_subsystem_nomatch(self, context, subsystem):
+         """
+         Subsystem no match gets no subsystem with subsystem.
+@@ -126,7 +126,7 @@ def test_match_subsystem_nomatch_unfulfillable(self, context, subsystem):
+ 
+     @failed_health_check_wrapper
+     @given(_CONTEXT_STRATEGY, _SUBSYSTEM_STRATEGY)
+-    @settings(max_examples=5)
++    @settings(max_examples=1)
+     def test_match_subsystem_nomatch_complete(self, context, subsystem):
+         """
+         Test that w/ respect to the universe of devices returned by
+@@ -155,7 +155,7 @@ def test_match_sys_name(self, context, sysname):
+ 
+     @failed_health_check_wrapper
+     @given(_CONTEXT_STRATEGY, _MATCH_PROPERTY_STRATEGY)
+-    @settings(max_examples=50)
++    @settings(max_examples=25)
+     def test_match_property_string(self, context, pair):
+         """
+         Match property only gets devices with that property.
+@@ -243,7 +243,7 @@ class TestEnumeratorMatchCombinations(object):
+                min_size=2,
+                max_size=3,
+                unique_by=lambda p: p[0]))
+-    @settings(max_examples=20)
++    @settings(max_examples=2)
+     def test_combined_property_matches(self, context, ppairs):
+         """
+         Test for behaviour as observed in #1
