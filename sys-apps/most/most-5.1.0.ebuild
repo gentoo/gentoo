@@ -18,6 +18,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.0.0a-donot-hardcode-path.patch
+	"${FILESDIR}"/${P}-fix-parallel-build.patch
 )
 
 src_prepare() {
