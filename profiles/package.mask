@@ -490,11 +490,6 @@ media-gfx/iscan-plugin-perfection-v370
 # Masked for removal on 2021-11-22
 net-misc/bwwhois
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
-# Dead upstream, EAPI 5, broken build system, no revdeps.
-# Removal on 2021-11-20. Bug #819366
-net-analyzer/quidscor
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
