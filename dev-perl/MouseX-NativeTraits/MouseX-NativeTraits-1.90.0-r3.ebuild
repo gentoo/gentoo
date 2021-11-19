@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=GFUJI
 DIST_VERSION=1.09
@@ -11,13 +11,11 @@ inherit perl-module
 DESCRIPTION="Extend your attribute interfaces for Mouse"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Mouse-0.820.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-perl/Any-Moose-0.130.0
 	>=virtual/perl-ExtUtils-MakeMaker-6.590.0
 	test? (
