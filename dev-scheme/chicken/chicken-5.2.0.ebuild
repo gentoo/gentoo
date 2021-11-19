@@ -55,6 +55,7 @@ src_install() {
 		PLATFORM="linux" \
 		PREFIX="${EPREFIX}/usr" \
 		C_COMPILER="$(tc-getCC)" \
+		C_COMPILER_OPTIMIZATION_OPTIONS="${CFLAGS}" \
 		CXX_COMPILER="$(tc-getCXX)" \
 		HOSTSYSTEM="${CBUILD}" \
 		LINKER_OPTIONS="${LDFLAGS}" \
