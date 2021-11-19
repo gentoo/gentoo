@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gstreamer-meson.eclass
@@ -383,12 +383,20 @@ gstreamer_multilib_src_compile() {
 	if [[ "${PN}" == "${GST_ORG_MODULE}" ]]; then
 		eninja
 	else
-		local plugin_dir plugin
+		local plugin_dir plugin build_dir
 
 		for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
 			plugin=$(_gstreamer_get_target_filename $(gstreamer_get_plugin_dir ${plugin_dir}))
+			# Read full link of build directory. Outputs symlink's true link.
+			# We want to get the full file path so it can be removed later.
+			# Working around ninja issues w/ symlinks (e.g. PORTAGE_TMPDIR as a symlink)
+
+			# https://github.com/ninja-build/ninja/issues/1251
+			# https://github.com/ninja-build/ninja/issues/1330
+			build_dir=$(readlink -f ${BUILD_DIR})
+
 			plugin_path="${plugin%%:*}"
-			eninja "${plugin_path/"${BUILD_DIR}/"}"
+			eninja "${plugin_path/"${build_dir}/"/}"
 		done
 	fi
 }
