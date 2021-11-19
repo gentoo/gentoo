@@ -17,6 +17,8 @@ IUSE="doc"
 RDEPEND=""
 DEPEND=""
 
+PATCHES=( "${FILESDIR}"/${PN}-ldflags.patch )
+
 src_prepare() {
 	default
 
