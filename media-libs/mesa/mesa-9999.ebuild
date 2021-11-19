@@ -38,7 +38,7 @@ IUSE="${IUSE_VIDEO_CARDS}
 	vulkan-overlay wayland +X xa xvmc zink +zstd"
 
 REQUIRED_USE="
-	d3d9?   ( || ( video_cards_iris video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
+	d3d9?   ( gallium || ( video_cards_iris video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
 	osmesa? ( gallium )
 	vulkan? ( video_cards_radeonsi? ( llvm ) )
 	vulkan-overlay? ( vulkan )
