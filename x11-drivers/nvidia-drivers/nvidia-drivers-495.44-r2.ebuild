@@ -4,7 +4,7 @@
 EAPI=7
 
 MODULES_OPTIONAL_USE="driver"
-inherit desktop linux-mod multilib-build \
+inherit desktop eapi8-dosym linux-mod multilib-build \
 	readme.gentoo-r1 systemd toolchain-funcs unpacker
 
 NV_KERNEL_MAX="5.15"
@@ -23,10 +23,11 @@ SRC_URI="
 # nvidia-installer is unused but here for GPL-2's "distribute sources"
 S="${WORKDIR}"
 
-LICENSE="NVIDIA-r2 GPL-2 MIT ZLIB"
+LICENSE="NVIDIA-r2 BSD GPL-2 MIT ZLIB"
 SLOT="0/${PV%%.*}"
-KEYWORDS="-* amd64"
+KEYWORDS="-* ~amd64"
 IUSE="+X +driver static-libs +tools wayland"
+RESTRICT="bindist"
 
 COMMON_DEPEND="
 	acct-group/video
@@ -55,6 +56,8 @@ RDEPEND="
 	wayland? (
 		>=gui-libs/egl-wayland-1.1.7-r1
 		media-libs/libglvnd
+		>=media-libs/mesa-21.2[gbm(+)]
+		x11-libs/libdrm
 	)"
 DEPEND="
 	${COMMON_DEPEND}
@@ -94,8 +97,10 @@ pkg_setup() {
 		!DEBUG_MUTEXES"
 	local ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
 	of drivers (no custom config), and for wayland / nvidia-drm.modeset=1.
-	Cannot be directly selected in the kernel's menuconfig, so enable
-	options such as CONFIG_DRM_FBDEV_EMULATION instead."
+	Cannot be directly selected in the kernel's menuconfig, and may need
+	selection of a DRM device even if unused, e.g. CONFIG_DRM_AMDGPU=m or
+	DRM_I915=y, DRM_NOUVEAU=m also acceptable if a module and not built-in.
+	Note: DRM_SIMPLEDRM may cause issues and is better disabled for now."
 
 	use amd64 && kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
 
@@ -149,7 +154,7 @@ src_prepare() {
 	default
 
 	# prevent detection of incomplete kernel DRM support (bug #603818)
-	sed 's/defined(CONFIG_DRM)/defined(CONFIG_DRM_KMS_HELPER)/' \
+	sed 's/defined(CONFIG_DRM/defined(CONFIG_DRM_KMS_HELPER/g' \
 		-i kernel/conftest.sh || die
 
 	sed -e '/Exec=\|Icon=/s/_.*/nvidia-settings/' \
@@ -169,6 +174,16 @@ src_prepare() {
 	use !wayland || sed -i '/^#.*modeset=1$/s/^#//' "${T}"/nvidia.conf || die
 
 	gzip -d nvidia-{cuda-mps-control,smi}.1.gz || die
+
+	# temporary workaround for dbus powerd spam in 495 series
+	# (jz -> jmp after nvidia.powerd.server, need RESTRICT=bindist)
+	# https://forums.developer.nvidia.com/t/bug-nvidia-v495-29-05-driver-spamming-dbus-enabled-applications-with-invalid-messages/192892/14
+	if use amd64; then
+		sed 's/\x0f\x84\[\x01\x00\x00\x4c\x8d/\xe9\x5c\x01\x00\x00\x00\x4c\x8d/' \
+			-i libnvidia-glcore.so.495.44 || die
+		sed 's/\x0f\x84\x65\x01\x00\x00\x83\xec\x08\x89/\xe9\x66\x01\x00\x00\x00\x83\xec\x08\x89/' \
+			-i 32/libnvidia-glcore.so.495.44 || die
+	fi
 }
 
 src_compile() {
@@ -227,12 +242,11 @@ src_install() {
 			nvidia-opticalflow
 			nvidia-ptxjitcompiler
 			nvidia-tls
-			$(usex X "
+			$(usex X '
 				GLX_nvidia
 				nvidia-fbc
 				vdpau_nvidia
-				$(usex amd64 nvidia-ifr '')
-			" '')
+			' '')
 			$(usex amd64 nvidia-compiler '')
 		)
 
@@ -242,12 +256,14 @@ src_install() {
 		else
 			libs+=(
 				libnvidia-nvvm.so.4.0.0
-				nvidia-cbl
 				nvidia-cfg
+				nvidia-ngx
 				nvidia-rtcore
 				nvoptix
-				$(usex amd64 nvidia-ngx '')
-				$(usex wayland nvidia-vulkan-producer '')
+				$(usex wayland '
+					libnvidia-egl-gbm.so.1.1.0
+					nvidia-vulkan-producer
+				' '')
 			)
 		fi
 
@@ -273,7 +289,7 @@ src_install() {
 		doins "${T}"/nvidia.conf
 
 		insinto /lib/firmware/nvidia/${PV}
-		use amd64 && doins firmware/gsp.bin
+		doins firmware/gsp.bin
 
 		# used for gpu verification with binpkgs (not kept)
 		insinto /usr/share/nvidia
@@ -295,6 +311,13 @@ src_install() {
 		doins nvidia_icd.json
 		insinto /usr/share/vulkan/implicit_layer.d
 		doins nvidia_layers.json
+	fi
+
+	if use wayland; then
+		insinto /usr/share/egl/egl_external_platform.d
+		doins 15_nvidia_gbm.json
+
+		dosym8 -r /usr/$(get_libdir)/{libnvidia-allocator.so.1,gbm/nvidia-drm_gbm.so}
 	fi
 
 	insinto /usr/share/glvnd/egl_vendor.d
@@ -347,6 +370,8 @@ src_install() {
 
 	doexe nvidia-debugdump
 	dobin nvidia-bug-report.sh
+
+	doexe nvidia-ngx-updater
 
 	doexe nvidia-smi
 	doman nvidia-smi.1
@@ -452,6 +477,18 @@ pkg_postinst() {
 		elog
 		elog "If you experience issues, please comment out the option from nvidia.conf."
 		elog "Of note, may possibly cause issues with SLI and Reverse PRIME."
+	fi
+
+	if use wayland && [[ ${REPLACING_VERSIONS} ]] &&
+		ver_test ${REPLACING_VERSIONS} -lt 495.29.05; then
+		elog
+		elog "While this version of ${PN} adds GBM support (allowing a wider"
+		elog "range of wayland compositors, such as sway), be warned it is very"
+		elog "experimental. While not essential, some features also need"
+		elog ">=egl-wayland-1.1.8 which is known to cause EGLStream regressions."
+		elog
+		elog "If lacking a cursor with wlroots, try WLR_NO_HARDWARE_CURSORS=1"
+		elog "Also of interest: __GLX_VENDOR_LIBRARY_NAME=nvidia, GBM_BACKEND=nvidia-drm"
 	fi
 
 	# Try to show this message only to users that may really need it
