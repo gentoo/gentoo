@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2021-11-19)
+# Doesn't work with latest versions of adb, source not easily ported
+# to python 3.9 and 3.10. No upstream activity for 7 years.
+# Removal on 2021-12-19.  Bug #825038.
+app-mobilephone/adb-sync
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-18)
 # Library without consumers, Removal in 30 days.
 dev-java/piccolo2d
