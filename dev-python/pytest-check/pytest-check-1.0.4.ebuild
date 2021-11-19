@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 sparc x86"
 
 RDEPEND=">=dev-python/pytest-6[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/flit_core[${PYTHON_USEDEP}]"
