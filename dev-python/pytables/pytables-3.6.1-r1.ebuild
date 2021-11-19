@@ -37,6 +37,7 @@ RDEPEND="${DEPEND}
 	dev-python/six[${PYTHON_USEDEP}]"
 BDEPEND="
 	>=dev-python/cython-0.21[${PYTHON_USEDEP}]
+	virtual/pkgconfig
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		${RDEPEND}
@@ -51,7 +52,10 @@ PATCHES=(
 )
 
 python_prepare_all() {
-	export HDF5_DIR="${EPREFIX}"/usr
+	export {BLOSC,BZIP2,LZO,HDF5}_DIR="${ESYSROOT}"/usr
+	export PYTABLES_NO_EMBEDDED_LIBS=1
+	export USE_PKGCONFIG=TRUE
+
 	rm tables/*.c || die
 	sed -e "s:/usr:${EPREFIX}/usr:g" \
 		-i setup.py || die
