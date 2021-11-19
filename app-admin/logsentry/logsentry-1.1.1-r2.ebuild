@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,16 +9,13 @@ DESCRIPTION="Automatically monitor system logs and mail security violations"
 # Seems that the project has been discontinued by CISCO?
 HOMEPAGE="https://sourceforge.net/projects/sentrytools/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
+S="${WORKDIR}"/logcheck-${PV}
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ~mips ppc ~s390 sparc x86"
-IUSE=""
 
-DEPEND=">=sys-apps/sed-4"
 RDEPEND="virtual/mailx"
-
-S="${WORKDIR}"/logcheck-${PV}
 
 src_compile() {
 	einfo "compile and install mixed in the package makefile"
@@ -26,7 +23,9 @@ src_compile() {
 
 src_install() {
 	dodir /usr/bin /var/tmp/logcheck /etc/logcheck
+
 	cp systems/linux/logcheck.sh{,.orig} || die
+
 	sed -i \
 		-e 's:/usr/local/bin:/usr/bin:' \
 		-e 's:/usr/local/etc:/etc/logcheck:' \
@@ -39,7 +38,8 @@ src_install() {
 		-e "s:/etc/logcheck/tmp:/var/tmp/logcheck:" \
 		-e "s:\$(CC):& \$(LDFLAGS):" \
 		Makefile || die "sed Makefile failed"
-	make CC="$(tc-getCC)" CFLAGS="${CFLAGS}" linux || die
+
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" linux
 
 	dodoc README* CHANGES CREDITS
 	dodoc systems/linux/README.*
