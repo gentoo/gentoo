@@ -33,7 +33,8 @@ src_configure() {
 }
 
 src_test() {
-	#bug 650214
-	local myctestargs=( -E "(plasma-plasmoidpackagetest)" )
+	# plasma-plasmoidpackagetest bug 650214
+	# testpackage-appstream requires network access
+	local myctestargs=( -E "(plasma-plasmoidpackagetest|testpackage-appstream)" )
 	ecm_src_test
 }
