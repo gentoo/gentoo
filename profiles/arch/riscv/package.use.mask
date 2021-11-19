@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alex Fan <alex.fan.q@gmail.com> (2021-11-19)
+# opengl -> dev-python/pygame is not keyworded yet
+dev-python/sympy opengl
+
 # Sam James <sam@gentoo.org> (2021-10-26)
 # sys-libs/libhugetlbfs is not keyworded on ~riscv right now
 sys-apps/nvme-cli hugepages
