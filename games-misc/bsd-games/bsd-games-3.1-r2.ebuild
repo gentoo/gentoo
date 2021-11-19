@@ -86,7 +86,7 @@ src_test() {
 
 src_install() {
 	dodir /var/games
-	emake -j1 DESTDIR="${D}" install
+	emake DESTDIR="${D}" install
 
 	_build_game() {
 		has ${1} ${GAMES_TO_BUILD}
