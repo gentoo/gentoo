@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_8 )
+PYTHON_COMPAT=( python3_{6..10} )
 
 inherit cmake python-single-r1 udev systemd
 
@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/linux-rdma/rdma-core"
 else
 	SRC_URI="https://github.com/linux-rdma/rdma-core/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 LICENSE="|| ( GPL-2 ( CC0-1.0 MIT BSD BSD-with-attribution ) )"
@@ -33,7 +33,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/cython[${PYTHON_USEDEP}]
+			dev-python/cython[${PYTHON_MULTI_USEDEP}]
 		')
 	)"
 
@@ -56,8 +56,6 @@ RDEPEND="${COMMON_DEPEND}
 
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/optional_pandoc.patch )
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 
@@ -65,24 +63,18 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_SYSCONFDIR=/etc
+		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}"/etc
 		-DCMAKE_INSTALL_RUNDIR=/run
 		-DCMAKE_INSTALL_SHAREDSTATEDIR=/var/lib
-		-DCMAKE_INSTALL_UDEV_RULESDIR="$(get_udevdir)"/rules.d
+		-DCMAKE_INSTALL_UDEV_RULESDIR="${EPREFIX}""$(get_udevdir)"/rules.d
 		-DCMAKE_INSTALL_SYSTEMD_SERVICEDIR="$(systemd_get_systemunitdir)"
-		-DCMAKE_DISABLE_FIND_PACKAGE_pandoc=yes
-		$(ver_test -ge 25 && echo -DCMAKE_DISABLE_FIND_PACKAGE_rst2man=yes)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Systemd="$(usex systemd no yes)"
 		-DENABLE_VALGRIND="$(usex valgrind)"
 		-DENABLE_RESOLVE_NEIGH="$(usex neigh)"
 		-DENABLE_STATIC="$(usex static-libs)"
+		-DNO_PYVERBS="$(usex python OFF ON)"
+		-DNO_MAN_PAGES=1
 	)
-
-	if use python; then
-		mycmakeargs+=( -DNO_PYVERBS=OFF -DPYTHON_EXECUTABLE="${PYTHON}" )
-	else
-		mycmakeargs+=( -DNO_PYVERBS=ON )
-	fi
 
 	cmake_src_configure
 }
@@ -90,8 +82,8 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	udev_dorules "${D}"/etc/udev/rules.d/70-persistent-ipoib.rules
-	rm -r "${D}"/etc/{udev,init.d} || die
+	udev_dorules "${ED}"/etc/udev/rules.d/70-persistent-ipoib.rules
+	rm -r "${ED}"/etc/{udev,init.d} || die
 
 	if use neigh; then
 		newinitd "${FILESDIR}"/ibacm.init ibacm
