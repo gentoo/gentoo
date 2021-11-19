@@ -149,10 +149,10 @@ mips		default/linux/mips/17.0/mipsel/multilib/n64	exp
 
 # PPC32 Profiles
 # @MAINTAINER: ppc@gentoo.org
-ppc		default/linux/powerpc/ppc32/17.0			stable
-ppc		default/linux/powerpc/ppc32/17.0/desktop		stable
-ppc		default/linux/powerpc/ppc32/17.0/desktop/gnome		stable
-ppc		default/linux/powerpc/ppc32/17.0/desktop/gnome/systemd	stable
+ppc		default/linux/powerpc/ppc32/17.0			exp
+ppc		default/linux/powerpc/ppc32/17.0/desktop		exp
+ppc		default/linux/powerpc/ppc32/17.0/desktop/gnome		exp
+ppc		default/linux/powerpc/ppc32/17.0/desktop/gnome/systemd	exp
 ppc		default/linux/powerpc/ppc32/17.0/developer		exp
 
 # PPC64 Profiles
