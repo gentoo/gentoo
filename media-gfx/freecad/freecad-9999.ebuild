@@ -11,10 +11,12 @@ DESCRIPTION="QT based Computer Aided Design application"
 HOMEPAGE="https://www.freecadweb.org/ https://github.com/FreeCAD/FreeCAD"
 
 MY_PN=FreeCAD
+MY_PATCH="${P}-Gentoo-specific-fix-install-locations-of-Ext-and-Mod"
 
 if [[ ${PV} = *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${MY_PN}/${MY_PN}.git"
+	SRC_URI="https://raw.githubusercontent.com/waebbl/waebbl-gentoo/master/patches/${MY_PATCH}.patch.xz"
 	S="${WORKDIR}/freecad-${PV}"
 else
 	MY_PV=$(ver_cut 1-2)
@@ -47,7 +49,6 @@ unset module
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-cpp/eigen-3.3.1:3
 	dev-libs/OpenNI2[opengl(+)]
 	dev-libs/libspnav[X]
 	dev-libs/xerces-c[icu]
@@ -79,7 +80,7 @@ RDEPEND="
 		dev-libs/openssl:=
 		net-misc/curl
 	)
-	fem? ( sci-libs/vtk:=[boost,python,qt5,rendering,${PYTHON_SINGLE_USEDEP}] )
+	fem? ( sci-libs/vtk:=[boost(+),python,qt5,rendering,${PYTHON_SINGLE_USEDEP}] )
 	openscad? ( media-gfx/openscad )
 	pcl? ( sci-libs/pcl:=[opengl,openni2(+),qt5(+),vtk(+)] )
 	$(python_gen_cond_dep '
@@ -94,8 +95,14 @@ RDEPEND="
 		fem? ( dev-python/ply[${PYTHON_USEDEP}] )
 	')
 "
-DEPEND="${RDEPEND}"
-BDEPEND="dev-lang/swig"
+DEPEND="
+	${RDEPEND}
+	>=dev-cpp/eigen-3.3.1:3
+"
+BDEPEND="
+	app-text/dos2unix
+	dev-lang/swig
+"
 
 # To get required dependencies:
 # 'grep REQUIRES_MODS cMake/FreeCAD_Helpers/CheckInterModuleDependencies.cmake'
@@ -132,31 +139,27 @@ pkg_setup() {
 	[[ -z ${CASROOT} ]] && die "\${CASROOT} not set, plesae run eselect opencascade"
 }
 
+src_unpack() {
+	git-r3_src_unpack
+	unpack ${MY_PATCH}.patch.xz
+}
+
 src_prepare() {
 	# the upstream provided file doesn't find the coin doc tag file,
 	# but cmake ships a working one, so we use this.
 	rm "${S}/cMake/FindCoin3D.cmake" || die
 
-	# Fix OpenCASCADE lookup
-	local OCC_P=$(best_version sci-libs/opencascade[vtk])
-	OCC_P=${OCC_P#sci-libs/}
-	local OCC_PV=${OCC_P#opencascade-}
-	OCC_PV=$(ver_cut 1-2 ${OCC_PV})
-	# check for CASROOT needed to ensure occ-7.5 is eselected and profile resourced
-	if [[ ${OCC_PV} = 7.5 && ${CASROOT} = "/usr" ]]; then
-		sed -e 's|/usr/include/opencascade|'${CASROOT}'/include/'${OCC_P}'|' \
-			-e 's|/usr/lib|'${CASROOT}'/'$(get_libdir)'/'${OCC_P}' NO_DEFAULT_PATH|' \
-			-i cMake/FindOpenCasCade.cmake || die
-	else
-		sed -e 's|/usr/include/opencascade|${CASROOT}/include/opencascade|' \
-			-e 's|/usr/lib|${CASROOT}/'$(get_libdir)' NO_DEFAULT_PATH|' \
-			-i cMake/FindOpenCasCade.cmake || die
-	fi
-
 	# Fix desktop file
 	sed -e 's/Exec=FreeCAD/Exec=freecad/' -i src/XDGData/org.freecadweb.FreeCAD.desktop || die
 
 	cmake_src_prepare
+
+	# Fix line endings on a few files for patching
+	for f in src/Mod/{Cloud,Inspection,Start/StartPage}/CMakeLists.txt; do
+		dos2unix -q ${f}
+	done
+
+	eapply "${WORKDIR}"/${P}-Gentoo-specific-fix-install-locations-of-Ext-and-Mod.patch
 }
 
 src_configure() {
@@ -207,10 +210,10 @@ src_configure() {
 		-DBUILD_WEB=ON							# needed by start workspace
 		-DBUILD_WITH_CONDA=OFF
 
-		-DCMAKE_INSTALL_DATADIR=/usr/share/${PN}/data
-		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
-		-DCMAKE_INSTALL_INCLUDEDIR=/usr/include/${PN}
-		-DCMAKE_INSTALL_PREFIX=/usr/$(get_libdir)/${PN}
+		-DCMAKE_INSTALL_DATADIR=share/${PN}/data
+		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
+		-DCMAKE_INSTALL_INCLUDEDIR=include/${PN}
+		-DCMAKE_INSTALL_LIBDIR=$(get_libdir)/${PN}
 
 		-DFREECAD_BUILD_DEBIAN=OFF
 
@@ -235,22 +238,14 @@ src_configure() {
 		-DOCCT_CMAKE_FALLBACK=ON				# don't use occt-config which isn't included in opencascade for Gentoo
 	)
 
-	if has_version ">=sci-libs/opencascade-7.5"; then
-		# bug https://bugs.gentoo.org/788274
-		local OCC_P=$(best_version sci-libs/opencascade[vtk])
-		OCC_P=${OCC_P#sci-libs/}
-		OCC_P=${OCC_P%-r*}
-		mycmakeargs+=(
-			-DOCC_INCLUDE_DIR="${CASROOT}"/include/${OCC_P}
-			-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/${OCC_P}
-		)
-	else
-		# <occ-7.5 uses different layout
-		mycmakeargs+=(
-			-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
-			-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)
-		)
-	fi
+	# bug https://bugs.gentoo.org/788274
+	local OCC_P=$(best_version sci-libs/opencascade[vtk])
+	OCC_P=${OCC_P#sci-libs/}
+	OCC_P=${OCC_P%-r*}
+	mycmakeargs+=(
+		-DOCC_INCLUDE_DIR="${CASROOT}"/include/${OCC_P}
+		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/${OCC_P}
+	)
 
 	if use debug; then
 		# BUILD_SANDBOX currently broken, see
@@ -290,12 +285,6 @@ src_install() {
 	cmake_src_install
 
 	dobin src/Tools/freecad-thumbnailer
-
-	if ! use headless; then
-		dosym -r /usr/$(get_libdir)/${PN}/bin/FreeCAD /usr/bin/freecad
-		mv "${ED}"/usr/$(get_libdir)/freecad/share/* "${ED}"/usr/share || die "failed to move shared ressources"
-	fi
-	dosym -r /usr/$(get_libdir)/${PN}/bin/FreeCADCmd /usr/bin/freecadcmd
 
 	python_optimize "${ED}"/usr/share/${PN}/data/Mod/Start/StartPage "${ED}"/usr/$(get_libdir)/${PN}{/Ext,/Mod}/
 	# compile main package in python site-packages as well
