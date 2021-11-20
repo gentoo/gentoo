@@ -48,10 +48,6 @@ BDEPEND="
 
 S="${WORKDIR}/${P/_/-}"
 
-PATCHES=(
-	"${FILESDIR}"/cryptsetup-2.4.1-external-tokens.patch
-)
-
 pkg_setup() {
 	local CONFIG_CHECK="~DM_CRYPT ~CRYPTO ~CRYPTO_CBC ~CRYPTO_SHA256"
 	local WARNING_DM_CRYPT="CONFIG_DM_CRYPT:\tis not set (required for cryptsetup)\n"
