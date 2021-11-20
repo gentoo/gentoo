@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit autotools desktop xdg
+PYTHON_COMPAT=( python3_{8..10} )
+
+inherit autotools desktop python-any-r1 xdg
 
 DESCRIPTION="An email client (and news reader) based on GTK+"
 HOMEPAGE="https://www.claws-mail.org/"
@@ -13,13 +15,13 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.claws-mail.org/readonly/claws.git"
 else
 	SRC_URI="https://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 SLOT="0"
 LICENSE="GPL-3"
 
-IUSE="+appindicator archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls gtk2 +imap ipv6 ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
+IUSE="+appindicator archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls gtk2 +imap ipv6 ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
 REQUIRED_USE="
 	appindicator? ( notification )
 	libcanberra? ( notification )
@@ -52,7 +54,10 @@ COMMONDEPEND="
 	gdata? ( >=dev-libs/libgdata-0.17.2 )
 	dillo? ( www-client/dillo )
 	gnutls? ( >=net-libs/gnutls-3.0 )
-	!gtk2? ( x11-libs/gtk+:3 )
+	!gtk2? (
+		x11-libs/gtk+:3
+		webkit? ( net-libs/webkit-gtk:4 )
+	)
 	gtk2? ( >=x11-libs/gtk+-2.24:2 )
 	imap? ( >=net-libs/libetpan-0.57 )
 	ldap? ( >=net-nds/openldap-2.0.7 )
@@ -67,7 +72,10 @@ COMMONDEPEND="
 	notification? (
 		dev-libs/glib:2
 		appindicator? ( dev-libs/libindicate:3[gtk] )
-		libcanberra? (  media-libs/libcanberra[gtk] )
+		libcanberra? (
+			!gtk2? ( media-libs/libcanberra[gtk3] )
+			gtk2? ( media-libs/libcanberra[gtk] )
+		)
 		libnotify? ( x11-libs/libnotify )
 	)
 	pdf? ( app-text/poppler[cairo] )
@@ -88,6 +96,7 @@ DEPEND="${COMMONDEPEND}
 	xface? ( >=media-libs/compface-1.4 )
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	app-arch/xz-utils
 	virtual/pkgconfig
 "
@@ -125,7 +134,6 @@ src_configure() {
 
 	local myeconfargs=(
 		--disable-bsfilter-plugin
-		--disable-fancy-plugin
 		--disable-generic-umpc
 		--disable-jpilot #735118
 		--enable-acpi_notifier-plugin
@@ -180,6 +188,12 @@ src_configure() {
 		myeconfargs+=( --disable-libetpan )
 	fi
 
+	if use gtk2 ; then
+		--disable-fancy-plugin
+	else
+		myeconfargs+=( $(use_enable webkit fancy-plugin) )
+	fi
+
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
@@ -214,9 +228,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	ewarn "When upgrading from version 3.9.0 or below some changes have happened:"
-	ewarn "- There are no individual plugins in mail-client/claws-mail-* anymore, but they are integrated mostly controlled through USE flags"
-	ewarn "- Plugins with no special dependencies are just built and can be loaded through the interface"
-	ewarn "- The gtkhtml2 and trayicon plugins have been dropped entirely"
+	if ! use gtk2 ; then
+		ewarn "When upgrading from version 3.x please re-load any plugin you use"
+	fi
 	xdg_pkg_postinst
 }
