@@ -20,7 +20,8 @@ IUSE="pam static-libs tools"
 PDEPEND="pam? ( sys-libs/pam[${MULTILIB_USEDEP}] )"
 DEPEND="${PDEPEND}
 	sys-kernel/linux-headers"
-BDEPEND="tools? ( dev-lang/go )"
+BDEPEND="sys-apps/diffutils
+	tools? ( dev-lang/go )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.38-no_perl.patch
