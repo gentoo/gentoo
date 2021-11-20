@@ -15,7 +15,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+colord input_devices_wacom +networkmanager +modemmanager gnome-online-accounts systemd test"
 REQUIRED_USE="modemmanager? ( networkmanager )"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 RESTRICT="test"
 
 COMMON_DEPEND="
