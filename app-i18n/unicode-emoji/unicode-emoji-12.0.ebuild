@@ -4,7 +4,7 @@
 EAPI="8"
 
 DESCRIPTION="UTS #51 Unicode Emoji"
-HOMEPAGE="https://unicode.org/emoji/"
+HOMEPAGE="https://unicode.org/emoji/techindex.html"
 BASE_URI="https://unicode.org/Public/${PN#*-}/${PV}"
 SRC_URI="${BASE_URI}/${PN#*-}-data.txt -> ${PN}-data-${PV}.txt
 	${BASE_URI}/${PN#*-}-sequences.txt -> ${PN}-sequences-${PV}.txt
