@@ -18,6 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 RESTRICT="mirror bindist"
 
+# libXScrnSaver is used through dlopen (bug #825370)
 RDEPEND="
 	app-accessibility/at-spi2-atk:2
 	app-accessibility/at-spi2-core:2
@@ -34,6 +35,7 @@ RDEPEND="
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/libX11
+	x11-libs/libXScrnSaver
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
 	x11-libs/libXext
