@@ -76,7 +76,7 @@ RDEPEND="${DEPEND}
 	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-find-opencl-header.patch
+	"${FILESDIR}"/${PN}-3.0.0_find-opencl-header.patch
 	"${FILESDIR}"/${PN}-3.0.2_cmake-march-autodetection.patch
 	"${FILESDIR}"/${PN}-3.4.0_jsonschema-automagic.patch
 	"${FILESDIR}"/${PN}-3.4.1_libxcf-cmake.patch
