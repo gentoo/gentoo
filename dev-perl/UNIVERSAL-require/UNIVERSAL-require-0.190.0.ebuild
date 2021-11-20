@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="UNIVERSAL::require - require() modules from a variable"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="
 	virtual/perl-Carp
