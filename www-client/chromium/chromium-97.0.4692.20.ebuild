@@ -232,7 +232,6 @@ src_prepare() {
 		"${WORKDIR}/patches"
 		"${FILESDIR}/chromium-93-InkDropHost-crash.patch"
 		"${FILESDIR}/chromium-96-EnumTable-crash.patch"
-		"${FILESDIR}/chromium-96-xfce-maximize.patch"
 		"${FILESDIR}/chromium-glibc-2.34.patch"
 		"${FILESDIR}/chromium-use-oauth2-client-switches-as-default.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
