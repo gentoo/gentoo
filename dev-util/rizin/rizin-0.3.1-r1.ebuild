@@ -18,7 +18,7 @@ SRC_URI="https://github.com/rizinorg/rizin/releases/download/v${PV}/rizin-src-v$
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 LICENSE="Apache-2.0 BSD LGPL-3 MIT"
-SLOT="0"
+SLOT="0/${PV}"
 IUSE="test"
 
 # Need to audit licenses of the binaries used for testing
