@@ -291,7 +291,8 @@ S=$(
 gentoo_urls() {
 	local devspace="HTTP~vapier/dist/URI HTTP~rhill/dist/URI
 	HTTP~zorry/patches/gcc/URI HTTP~blueness/dist/URI
-	HTTP~tamiko/distfiles/URI HTTP~sam/distfiles/URI HTTP~slyfox/distfiles/URI"
+	HTTP~tamiko/distfiles/URI HTTP~sam/distfiles/URI
+	HTTP~sam/distfiles/sys-devel/gcc/URI HTTP~slyfox/distfiles/URI"
 	devspace=${devspace//HTTP/https:\/\/dev.gentoo.org\/}
 	echo mirror://gentoo/$1 ${devspace//URI/$1}
 }
@@ -354,6 +355,7 @@ gentoo_urls() {
 get_gcc_src_uri() {
 	export PATCH_GCC_VER=${PATCH_GCC_VER:-${GCC_RELEASE_VER}}
 	export UCLIBC_GCC_VER=${UCLIBC_GCC_VER:-${PATCH_GCC_VER}}
+	export MUSL_GCC_VER=${MUSL_GCC_VER:-${PATCH_GCC_VER}}
 	export PIE_GCC_VER=${PIE_GCC_VER:-${GCC_RELEASE_VER}}
 	export HTB_GCC_VER=${HTB_GCC_VER:-${GCC_RELEASE_VER}}
 	export SPECS_GCC_VER=${SPECS_GCC_VER:-${GCC_RELEASE_VER}}
@@ -379,6 +381,8 @@ get_gcc_src_uri() {
 		GCC_SRC_URI+=" $(gentoo_urls gcc-${UCLIBC_GCC_VER}-uclibc-patches-${UCLIBC_VER}.tar.bz2)"
 	[[ -n ${PATCH_VER} ]] && \
 		GCC_SRC_URI+=" $(gentoo_urls gcc-${PATCH_GCC_VER}-patches-${PATCH_VER}.tar.bz2)"
+	[[ -n ${MUSL_VER} ]] && \
+		GCC_SRC_URI+=" $(gentoo_urls gcc-${MUSL_GCC_VER}-musl-patches-${MUSL_VER}.tar.bz2)"
 
 	[[ -n ${PIE_VER} ]] && \
 		PIE_CORE=${PIE_CORE:-gcc-${PIE_GCC_VER}-piepatches-v${PIE_VER}.tar.bz2} && \
@@ -547,8 +551,20 @@ do_gcc_gentoo_patches() {
 			tc_apply_patches "Applying Gentoo patches ..." "${WORKDIR}"/patch/*.patch
 			BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION} p${PATCH_VER}"
 		fi
+
 		if [[ -n ${UCLIBC_VER} ]] ; then
 			tc_apply_patches "Applying uClibc patches ..." "${WORKDIR}"/uclibc/*.patch
+		fi
+
+		if [[ -n ${MUSL_VER} ]] && [[ ${CTARGET} == *musl* ]] ; then
+			if [[ ${CATEGORY} == cross-* ]] ; then
+				# We don't want to apply some patches when cross-compiling.
+				if [[ -d "${WORKDIR}"/musl/nocross ]] ; then
+					rm -fv "${WORKDIR}"/musl/nocross/*.patch || die
+				fi
+			fi
+
+			tc_apply_patches "Applying musl patches ..." "${WORKDIR}"/musl/{,nocross/}*.patch
 		fi
 	fi
 }

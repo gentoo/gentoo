@@ -4,6 +4,7 @@
 EAPI="7"
 
 PATCH_VER="3"
+MUSL_VER="1"
 
 inherit toolchain
 
@@ -18,4 +19,6 @@ src_prepare() {
 	fi
 
 	toolchain_src_prepare
+
+	eapply_user
 }
