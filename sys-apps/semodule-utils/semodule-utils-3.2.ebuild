@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]] ; then
 	S="${WORKDIR}/${P}/${PN}"
 else
 	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${PV}/${P}.tar.gz"
-	KEYWORDS="amd64 arm ~arm64 ~mips x86"
+	KEYWORDS="amd64 arm arm64 ~mips x86"
 fi
 
 DESCRIPTION="SELinux policy module utilities"
