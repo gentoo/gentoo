@@ -372,12 +372,6 @@ dev-db/henplus
 # Removal on 2021-11-22. Bug #819624.
 dev-lang/nwcc
 
-# Stephan Hartmann <sultan@gentoo.org> (2021-10-23)
-# Dev channel releases are only for people who
-# are developers or want more experimental features
-# and accept a more unstable release.
->=www-client/chromium-97
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2021-10-22)
 # EAPI=5, no revdeps, dead upstream. As documentation only package,
 # upstream isn't even closely updated to latest API by cheetah.
