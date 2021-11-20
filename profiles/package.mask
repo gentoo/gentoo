@@ -234,11 +234,6 @@ perl-core/Sys-Syslog
 perl-core/Term-ANSIColor
 
 # Sam James <sam@gentoo.org> (2021-11-03)
-# Newer Meson versions make unknown arguments fatal.
-# Masked for testing. bug #821544
->=dev-util/meson-0.60.0
-
-# Sam James <sam@gentoo.org> (2021-11-03)
 # Known issues with YAMA (kernel.yama.ptrace_scope=1) which is on by default
 # in at least the sys-kernel/gento-kernel kernel config.
 # Work is in progress to fix these but latest sandbox versions still seem
