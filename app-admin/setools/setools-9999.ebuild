@@ -36,6 +36,7 @@ DEPEND="${RDEPEND}"
 BDEPEND=">=dev-python/cython-0.27
 	dev-python/setuptools
 	test? (
+		>=dev-python/networkx-2.0[${PYTHON_USEDEP}]
 		sys-apps/checkpolicy
 	)"
 
