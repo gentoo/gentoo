@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="work with a range of dates"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="
 	>=dev-perl/Date-Simple-0.30.0
