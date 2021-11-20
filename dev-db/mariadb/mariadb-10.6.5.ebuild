@@ -10,7 +10,7 @@ inherit eutils systemd flag-o-matic prefix toolchain-funcs \
 	multiprocessing java-pkg-opt-2 cmake
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/${PN}/${PN}-10.6.5-patches-01.tar.xz"
+PATCH_SET="https://dev.gentoo.org/~whissi/dist/${PN}/${PN}-10.6.5-patches-02.tar.xz"
 
 SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
 	${PATCH_SET}"
