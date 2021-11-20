@@ -30,7 +30,7 @@ DEPEND="
 	>=dev-libs/c-blosc-1.11.1:0=
 	dev-libs/lzo:2=
 	>=dev-python/numpy-1.8.1[${PYTHON_USEDEP}]
-	<sci-libs/hdf5-5.12:=
+	<sci-libs/hdf5-1.12:=
 "
 RDEPEND="${DEPEND}
 	>=dev-python/numexpr-2.5.2[${PYTHON_USEDEP}]
