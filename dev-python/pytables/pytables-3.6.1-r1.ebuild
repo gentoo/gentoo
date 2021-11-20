@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 MY_PN=tables
 MY_P=${MY_PN}-${PV}
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r1
 
 DESCRIPTION="Hierarchical datasets for Python"
 HOMEPAGE="https://www.pytables.org/"
