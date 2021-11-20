@@ -77,7 +77,9 @@ src_compile() {
 src_test() {
 	# build native test library
 	emake BUILD_DIR=build -f libtest/GNUmakefile
-	java-pkg-simple_src_test
+
+	# https://github.com/jnr/jffi/issues/60
+	LC_ALL=C java-pkg-simple_src_test
 }
 
 src_install() {
