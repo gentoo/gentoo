@@ -21,7 +21,7 @@ fi
 SLOT="0"
 LICENSE="GPL-3"
 
-IUSE="+appindicator archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls +imap ipv6 ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
+IUSE="+appindicator archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls +imap ipv6 ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
 REQUIRED_USE="
 	appindicator? ( notification )
 	libcanberra? ( notification )
@@ -83,6 +83,7 @@ COMMONDEPEND="
 	startup-notification? ( x11-libs/startup-notification )
 	svg? ( >=gnome-base/librsvg-2.40.5 )
 	valgrind? ( dev-util/valgrind )
+	webkit? ( net-libs/webkit-gtk:4 )
 "
 
 DEPEND="${COMMONDEPEND}
@@ -121,7 +122,6 @@ src_configure() {
 
 	local myeconfargs=(
 		--disable-bsfilter-plugin
-		--disable-fancy-plugin
 		--disable-generic-umpc
 		--disable-jpilot #735118
 		--enable-acpi_notifier-plugin
@@ -166,6 +166,7 @@ src_configure() {
 		$(use_enable startup-notification)
 		$(use_enable svg)
 		$(use_enable valgrind valgrind)
+		$(use_enable webkit fancy-plugin)
 		$(use_enable xface compface)
 	)
 
