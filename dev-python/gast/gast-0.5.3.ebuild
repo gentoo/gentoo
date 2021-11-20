@@ -12,6 +12,6 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD PSF-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~sparc ~x86"
 
 distutils_enable_tests unittest
