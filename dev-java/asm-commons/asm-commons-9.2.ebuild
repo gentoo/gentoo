@@ -3,7 +3,7 @@
 
 EAPI=7
 JAVA_PKG_IUSE="doc source"
-MAVEN_ID="org.ow2.asm:asm-commons:9.1"
+MAVEN_ID="org.ow2.asm:asm-commons:9.2"
 
 inherit java-pkg-2 java-pkg-simple
 
