@@ -4,7 +4,7 @@
 EAPI="8"
 
 DESCRIPTION="Unicode Common Locale Data Repository"
-HOMEPAGE="http://cldr.unicode.org/"
+HOMEPAGE="https://cldr.unicode.org/"
 SRC_URI="https://unicode.org/Public/${PN#*-}/${PV%.0}/${PN#*-}-common-${PV}.zip -> ${PN}-common-${PV}.zip"
 
 LICENSE="unicode"
