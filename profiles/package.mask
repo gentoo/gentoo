@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-11-20)
+# Obsolete package. Last upstream release in 2014, upstream itself is
+# gone. No reverse dependencies in Gentoo.
+# Masked for removal in 30 days.
+dev-ruby/rack-ssl
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2021-11-19)
 # Doesn't work with latest versions of adb, source not easily ported
 # to python 3.9 and 3.10. No upstream activity for 7 years.
