@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 DESCRIPTION="UTS #51 Unicode Emoji"
 HOMEPAGE="https://unicode.org/emoji/"
@@ -17,9 +17,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-DEPEND=""
 RDEPEND=""
-
 S="${WORKDIR}"
 
 src_unpack() {
@@ -27,11 +25,9 @@ src_unpack() {
 }
 
 src_install() {
-	insinto /usr/share/unicode/emoji
-	local source_file target_file
-	for source_file in ${A}; do
-		target_file="${source_file#${PN%-*}-}"
-		target_file="${target_file%-${PV}.txt}.txt"
-		newins "${DISTDIR}/${source_file}" "${target_file}"
+	local a
+	insinto /usr/share/${PN/-//}
+	for a in ${A}; do
+		newins "${DISTDIR}"/${a} $(echo ${a} | sed "s/${PN%-*}-\(.*\)-${PV}/\1/")
 	done
 }
