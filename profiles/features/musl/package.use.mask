@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-11-20)
+# Pulls in po4a which doesn't seem to work on musl (wants /usr/bin/locale)
+sys-apps/man-db nls
+
 # Sam James <sam@gentoo.org> (2021-11-07)
 # gdb-10[nls] doesn't build on musl
 # "ax.cc:(.text+0x2e0): undefined reference to `libintl_gettext'"
