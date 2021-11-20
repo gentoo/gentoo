@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/aantron/luv"
 
 SLOT="0/${PV}"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="dev-ml/ocaml-ctypes"
