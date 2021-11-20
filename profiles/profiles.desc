@@ -74,35 +74,36 @@ arm		default/linux/arm/17.0/armv4t/desktop		dev
 arm		default/linux/arm/17.0/armv4t/desktop/gnome	dev
 arm		default/linux/arm/17.0/armv4t/desktop/plasma	dev
 arm		default/linux/arm/17.0/armv4t/developer		exp
-arm		default/linux/arm/17.0/armv4t/selinux		exp
 arm		default/linux/arm/17.0/armv4t/systemd		dev
 arm		default/linux/arm/17.0/armv5te			dev
 arm		default/linux/arm/17.0/armv5te/desktop		dev
 arm		default/linux/arm/17.0/armv5te/desktop/gnome	dev
 arm		default/linux/arm/17.0/armv5te/desktop/plasma	dev
 arm		default/linux/arm/17.0/armv5te/developer	exp
-arm		default/linux/arm/17.0/armv5te/selinux		exp
 arm		default/linux/arm/17.0/armv5te/systemd		dev
 arm		default/linux/arm/17.0/armv6j			stable
+arm		default/linux/arm/17.0/armv6j/hardened		exp
+arm		default/linux/arm/17.0/armv7a/hardened/selinux	exp
 arm		default/linux/arm/17.0/armv6j/desktop		dev
 arm		default/linux/arm/17.0/armv6j/desktop/gnome	dev
 arm		default/linux/arm/17.0/armv6j/desktop/plasma	dev
 arm		default/linux/arm/17.0/armv6j/developer		exp
-arm		default/linux/arm/17.0/armv6j/selinux		dev
+arm		default/linux/arm/17.0/armv6j/selinux		exp
 arm		default/linux/arm/17.0/armv6j/systemd		dev
 arm		default/linux/arm/17.0/armv7a			stable
 arm		default/linux/arm/17.0/armv7a/hardened		exp
+arm		default/linux/arm/17.0/armv7a/hardened/selinux	dev
 arm		default/linux/arm/17.0/armv7a/desktop		dev
 arm		default/linux/arm/17.0/armv7a/desktop/gnome	dev
 arm		default/linux/arm/17.0/armv7a/desktop/plasma	dev
 arm		default/linux/arm/17.0/armv7a/developer		exp
-arm		default/linux/arm/17.0/armv7a/selinux		dev
 arm		default/linux/arm/17.0/armv7a/systemd		dev
 
 # ARM64 Profiles
 # @MAINTAINER: arm64@gentoo.org
 arm64		default/linux/arm64/17.0			stable
 arm64		default/linux/arm64/17.0/hardened		exp
+arm64		default/linux/arm64/17.0/hardened/selinux	dev
 arm64		default/linux/arm64/17.0/desktop		stable
 arm64		default/linux/arm64/17.0/desktop/gnome		stable
 arm64		default/linux/arm64/17.0/desktop/gnome/systemd	stable
@@ -110,7 +111,6 @@ arm64		default/linux/arm64/17.0/desktop/plasma		stable
 arm64		default/linux/arm64/17.0/desktop/plasma/systemd stable
 arm64		default/linux/arm64/17.0/desktop/systemd	stable
 arm64		default/linux/arm64/17.0/developer		exp
-arm64		default/linux/arm64/17.0/selinux		dev
 arm64		default/linux/arm64/17.0/systemd		stable
 
 # ARM64 Profiles (big-endian)
