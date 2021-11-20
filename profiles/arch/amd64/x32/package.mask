@@ -99,6 +99,7 @@ sci-mathematics/rstudio
 www-client/falkon
 www-client/otter
 www-client/qutebrowser
+media-video/jellyfin-media-player
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-09-20)
 # Binary-only with no x32 support
