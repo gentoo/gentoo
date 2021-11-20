@@ -25,7 +25,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	>=dev-util/rizin-0.3.0
+	>=dev-util/rizin-0.3.0:=
 	graphviz? ( media-gfx/graphviz )"
 DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5"
