@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>sultan@gentoo.org</email>
+		<name>Stephan Hartmann</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
 	<longdescription lang="en">
 		The KornShell language was designed and developed by David G. Korn at
 		AT&amp;T Bell Laboratories. It is an interactive command language that
@@ -22,6 +29,6 @@
 		companies and universities. 
 	</longdescription>
 	<upstream>
-		<remote-id type="github">att/ast</remote-id>
+		<remote-id type="github">ksh93/ksh</remote-id>
 	</upstream>
 </pkgmetadata>
