@@ -1,0 +1,98 @@
+diff --git a/tests/_device_tests/_attributes_tests.py b/tests/_device_tests/_attributes_tests.py
+index 23fa6da..7baf043 100644
+--- a/tests/_device_tests/_attributes_tests.py
++++ b/tests/_device_tests/_attributes_tests.py
+@@ -50,7 +50,7 @@ class TestAttributes(object):
+     """
+ 
+     @given(_CONTEXT_STRATEGY, strategies.sampled_from(_DEVICE_DATA))
+-    @settings(max_examples=5)
++    @settings(max_examples=5, deadline=30000)
+     def test_getitem(self, a_context, device_datum):
+         """
+         Test that attribute value exists and is instance of bytes.
+@@ -60,7 +60,7 @@ def test_getitem(self, a_context, device_datum):
+            for key in device_datum.attributes.keys())
+ 
+     @given(strategies.sampled_from(_DEVICES))
+-    @settings(max_examples=5)
++    @settings(max_examples=5, deadline=30000)
+     def test_getitem_nonexisting(self, a_device):
+         """
+         Test behavior when corresponding value is non-existant.
+@@ -87,7 +87,7 @@ def test_non_iterable(self, a_device):
+             a_device.attributes['key']
+ 
+     @given(_CONTEXT_STRATEGY, strategies.sampled_from(_DEVICE_DATA))
+-    @settings(max_examples=5)
++    @settings(max_examples=5, deadline=30000)
+     def test_asstring(self, a_context, device_datum):
+         """
+         Test that attribute exists for actual device and is unicode.
+@@ -97,7 +97,7 @@ def test_asstring(self, a_context, device_datum):
+            for key in device_datum.attributes.keys())
+ 
+     @given(_CONTEXT_STRATEGY, strategies.sampled_from(_DEVICE_DATA))
+-    @settings(max_examples=10)
++    @settings(max_examples=10, deadline=30000)
+     def test_asint(self, a_context, device_datum):
+         """
+         Test that integer result is an int or ValueError raised.
+@@ -111,7 +111,7 @@ def test_asint(self, a_context, device_datum):
+                     device.attributes.asint(key)
+ 
+     @given(_CONTEXT_STRATEGY, strategies.sampled_from(_DEVICE_DATA))
+-    @settings(max_examples=5)
++    @settings(max_examples=5, deadline=30000)
+     def test_asbool(self, a_context, device_datum):
+         """
+         Test that bool result is a bool or ValueError raised.
+diff --git a/tests/_device_tests/_device_tests.py b/tests/_device_tests/_device_tests.py
+index b9a84c6..2ce6751 100644
+--- a/tests/_device_tests/_device_tests.py
++++ b/tests/_device_tests/_device_tests.py
+@@ -352,7 +352,7 @@ def test_key_subset(self, a_context, device_datum):
+            frozenset(device.properties.keys())
+ 
+     @given(_CONTEXT_STRATEGY, strategies.sampled_from(_DEVICE_DATA))
+-    @settings(max_examples=1)
++    @settings(max_examples=1, deadline=30000)
+     def test_getitem(self, a_context, device_datum):
+         device = Devices.from_path(a_context, device_datum.device_path)
+         for prop in device_datum.properties:
+@@ -372,7 +372,7 @@ def test_getitem(self, a_context, device_datum):
+     @pytest.mark.skipif(
+         len(_device_data) == 0, reason='no device with a DEVNAME property')
+     @given(_CONTEXT_STRATEGY, strategies.sampled_from(_device_data))
+-    @settings(max_examples=5)
++    @settings(max_examples=5, deadline=30000)
+     def test_getitem_devname(self, a_context, device_datum):
+         device = Devices.from_path(a_context, device_datum.device_path)
+         data_devname = os.path.join(a_context.device_path,
+@@ -382,7 +382,7 @@ def test_getitem_devname(self, a_context, device_datum):
+         assert device_devname == data_devname
+ 
+     @given(strategies.sampled_from(_DEVICES))
+-    @settings(max_examples=5)
++    @settings(max_examples=5, deadline=30000)
+     def test_getitem_nonexisting(self, a_device):
+         with pytest.raises(KeyError) as excinfo:
+             # pylint: disable=pointless-statement
+@@ -390,7 +390,7 @@ def test_getitem_nonexisting(self, a_device):
+         assert str(excinfo.value) == repr('a non-existing property')
+ 
+     @given(_CONTEXT_STRATEGY, strategies.sampled_from(_DEVICE_DATA))
+-    @settings(max_examples=5)
++    @settings(max_examples=5, deadline=30000)
+     def test_asint(self, a_context, device_datum):
+         device = Devices.from_path(a_context, device_datum.device_path)
+         for prop, value in device_datum.properties.items():
+@@ -403,7 +403,7 @@ def test_asint(self, a_context, device_datum):
+                 assert device.properties.asint(prop) == value
+ 
+     @given(_CONTEXT_STRATEGY, strategies.sampled_from(_DEVICE_DATA))
+-    @settings(max_examples=5)
++    @settings(max_examples=5, deadline=30000)
+     def test_asbool(self, a_context, device_datum):
+         """
+         Test that values of 1 and 0 get properly interpreted as bool
