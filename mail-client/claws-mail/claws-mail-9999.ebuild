@@ -189,7 +189,7 @@ src_configure() {
 	fi
 
 	if use gtk2 ; then
-		--disable-fancy-plugin
+		myeconfargs+=( --disable-fancy-plugin )
 	else
 		myeconfargs+=( $(use_enable webkit fancy-plugin) )
 	fi
