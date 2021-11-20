@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/805995
+https://github.com/PyTables/PyTables/issues/735
+https://sources.debian.org/src/pytables/3.6.1-5/debian/patches/0005-Skip-index-backcompat-tests-on-bingendian.patch/
+
+From: Antonio Valentino <antonio.valentino@tiscali.it>
+Date: Sat, 3 Aug 2019 16:22:13 +0000
+Subject: Skip index backcompat tests on bingendian
+
+Forwarded: not-needed
+--- a/tables/tests/test_index_backcompat.py
++++ b/tables/tests/test_index_backcompat.py
+@@ -6,8 +6,10 @@ from tables.tests.common import verbose
+ from tables.tests.common import unittest, test_filename
+ from tables.tests.common import PyTablesTestCase as TestCase
+ 
++import sys
+ 
+ # Check indexes from PyTables version 2.0
++@unittest.skipIf(sys.byteorder != 'little', 'broken on big-endian')
+ class IndexesTestCase(common.TestFileMixin, TestCase):
+ 
+     def setUp(self):
+@@ -145,11 +147,13 @@ class IndexesTestCase(common.TestFileMixin, TestCase):
+ 
+ 
+ # Check indexes from PyTables version 2.0
++@unittest.skipIf(sys.byteorder != 'little', 'broken on big-endian')
+ class Indexes2_0TestCase(IndexesTestCase):
+     h5fname = test_filename("indexes_2_0.h5")
+ 
+ 
+ # Check indexes from PyTables version 2.1
++@unittest.skipIf(sys.byteorder != 'little', 'broken on big-endian')
+ class Indexes2_1TestCase(IndexesTestCase):
+     h5fname = test_filename("indexes_2_1.h5")
+ 
