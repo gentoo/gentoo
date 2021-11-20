@@ -134,7 +134,13 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
+	# We need to set CC and friends again here to avoid recompilation for cross
+	# bug #799851
 	emake \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
+		LD="$(tc-getLD)" \
+		AR="$(tc-getAR)" \
 		DESTDIR="${ED}" \
 		PREFIX="/usr" \
 		MANDIR="/usr/share/man" \
