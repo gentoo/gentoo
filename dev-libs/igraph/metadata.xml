@@ -7,10 +7,6 @@
 		like minimum spanning trees and network flow, and also implements algorithms for
 		some recent network analysis methods, like community structure search.
 	</longdescription>
-	<maintainer type="person" proxied="yes">
-		<email>gentoo@aisha.cc</email>
-		<name>Aisha Tammy</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>sci-biology@gentoo.org</email>
 		<name>Gentoo Biology Project</name>
