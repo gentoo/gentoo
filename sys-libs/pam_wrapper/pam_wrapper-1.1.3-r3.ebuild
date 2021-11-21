@@ -33,10 +33,7 @@ DEPEND="
 
 multilib_src_configure() {
 	configure_for_python() {
-		local libpam="${EPREFIX}/$(get_libdir)/libpam.so.0"
-
 		local mycmakeargs=(
-			-DPAM_LIBRARY="${libpam}"
 			-DUNIT_TESTING=OFF
 		)
 
@@ -50,12 +47,7 @@ multilib_src_configure() {
 	fi
 
 	# Do the regular build now
-	local libpam="${EPREFIX}"
-	multilib_is_native_abi || libpam+="/usr"
-	libpam+="/$(get_libdir)/libpam.so.0"
-
 	local mycmakeargs=(
-		-DPAM_LIBRARY="${libpam}"
 		-DUNIT_TESTING=$(usex test)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Python{Libs,Interp,SiteLibs}=ON
 	)
