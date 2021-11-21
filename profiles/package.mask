@@ -385,7 +385,6 @@ dev-java/beansbinding
 dev-java/blowfishj
 dev-java/btf
 dev-java/commons-chain
-dev-java/commons-dbcp
 
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
