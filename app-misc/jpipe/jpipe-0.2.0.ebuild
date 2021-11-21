@@ -380,7 +380,10 @@ IUSE="jpp-symlink jp-symlink python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 BDEPEND="
-	!python? ( >=dev-lang/go-1.12 )
+	!python? (
+		app-arch/unzip
+		>=dev-lang/go-1.12
+	)
 "
 RDEPEND="
 	jpp-symlink? ( !app-misc/jp[jpp(-)] )
