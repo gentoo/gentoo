@@ -35,7 +35,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	boot2qt? ( remotelinux )
 	clang? ( test? ( qbs ) )
-	mcu? ( cmake )
+	mcu? ( baremetal cmake )
 	python? ( lsp )
 	qmldesigner? ( qmljs )
 	qnx? ( remotelinux )
