@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+GO_OPTIONAL=1
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_SETUPTOOLS=bdepend
 PYTHON_COMPAT=( python3_{7,8,9,10} )
@@ -378,6 +379,9 @@ RESTRICT+=" test"
 IUSE="jpp-symlink jp-symlink python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
+BDEPEND="
+	!python? ( >=dev-lang/go-1.12 )
+"
 RDEPEND="
 	jpp-symlink? ( !app-misc/jp[jpp(-)] )
 	jp-symlink? ( !app-misc/jp[jp(+)] )
