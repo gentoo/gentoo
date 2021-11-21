@@ -42,7 +42,7 @@ RDEPEND="${DEPEND}
 	acct-group/pdns"
 
 BDEPEND="virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen[dot] )"
 
 S="${WORKDIR}"/${P/_/-}
 
