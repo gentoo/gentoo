@@ -381,7 +381,6 @@ dev-python/cheetah-docs
 # Removal on 2021-11-21. Bug #819507
 dev-java/absolutelayout
 dev-java/backport-util-concurrent
-dev-java/beansbinding
 
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
