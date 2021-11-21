@@ -442,7 +442,6 @@ dev-java/rngom
 dev-java/rundoc
 dev-java/sablecc
 dev-java/sablecc-anttask
-dev-java/shared-objects
 
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
