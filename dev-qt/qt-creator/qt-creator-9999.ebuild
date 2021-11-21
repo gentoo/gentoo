@@ -64,7 +64,7 @@ CDEPEND="
 	>=dev-qt/qtwidgets-${QT_PV}
 	>=dev-qt/qtx11extras-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
-	kde-frameworks/syntax-highlighting:5
+	>=kde-frameworks/syntax-highlighting-5.87:5
 	clang? (
 		>=dev-cpp/yaml-cpp-0.6.2:=
 		|| (
