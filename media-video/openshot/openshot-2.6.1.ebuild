@@ -28,7 +28,7 @@ RDEPEND="$(python_gen_cond_dep '
 		dev-python/pyzmq[${PYTHON_MULTI_USEDEP}]
 		dev-python/requests[${PYTHON_MULTI_USEDEP}]
 	')
-	>=media-libs/libopenshot-0.2.6:0=[python,${PYTHON_SINGLE_USEDEP}]"
+	>=media-libs/libopenshot-0.2.7:0=[python,${PYTHON_SINGLE_USEDEP}]"
 DEPEND=""
 BDEPEND="$(python_gen_cond_dep '
 		doc? ( dev-python/sphinx[${PYTHON_MULTI_USEDEP}] )
