@@ -400,7 +400,6 @@ dev-java/fastutil
 dev-java/forehead
 dev-java/freehep-graphicsio-emf
 dev-java/freehep-graphicsio-svg
-dev-java/geoip-java
 
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
