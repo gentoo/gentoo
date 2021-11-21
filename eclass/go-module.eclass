@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: go-module.eclass
@@ -55,13 +55,17 @@ if [[ -z ${_GO_MODULE} ]]; then
 
 _GO_MODULE=1
 
-BDEPEND=">=dev-lang/go-1.12"
+if [[ ! ${GO_OPTIONAL} ]]; then
+	BDEPEND=">=dev-lang/go-1.12"
 
-# Workaround for pkgcheck false positive: https://github.com/pkgcore/pkgcheck/issues/214
-# MissingUnpackerDep: version ...: missing BDEPEND="app-arch/unzip"
-# Added here rather than to each affected package, so it can be cleaned up just
-# once when pkgcheck is improved.
-BDEPEND+=" app-arch/unzip"
+	# Workaround for pkgcheck false positive: https://github.com/pkgcore/pkgcheck/issues/214
+	# MissingUnpackerDep: version ...: missing BDEPEND="app-arch/unzip"
+	# Added here rather than to each affected package, so it can be cleaned up just
+	# once when pkgcheck is improved.
+	BDEPEND+=" app-arch/unzip"
+
+	EXPORT_FUNCTIONS src_unpack
+fi
 
 # Force go to build in module mode.
 # In this mode the GOPATH environment variable is ignored.
@@ -82,8 +86,6 @@ QA_FLAGS_IGNORED='.*'
 
 # Go packages should not be stripped with strip(1).
 RESTRICT+=" strip"
-
-EXPORT_FUNCTIONS src_unpack
 
 # @ECLASS-VARIABLE: EGO_SUM
 # @DESCRIPTION:
@@ -146,6 +148,17 @@ EXPORT_FUNCTIONS src_unpack
 # Associative array to avoid O(N*M) performance when populating the GOPROXY
 # directory structure.
 declare -A -g _GOMODULE_GOSUM_REVERSE_MAP
+
+# @ECLASS-VARIABLE: GO_OPTIONAL
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# If set to a non-null value before inherit, then the Go part of the
+# ebuild will be considered optional. No dependencies will be added and
+# no phase functions will be exported.
+#
+# If you enable GO_OPTIONAL, you have to set BDEPEND on >=dev-lang/go-1.12
+# for your package and call go-module_src_unpack manually.
 
 # @FUNCTION: go-module_set_globals
 # @DESCRIPTION:
