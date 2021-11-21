@@ -11,7 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="android">Build plugin for Android devices</flag>
-		<flag name="autotest">Enable integration with popular unit testing frameworks (QtTest, Google Test, Boost.Test)</flag>
+		<flag name="autotest">Enable integration with popular unit testing frameworks (QtTest, GoogleTest, Boost.Test, Catch2)</flag>
 		<flag name="autotools">Build plugin for autotools-based projects</flag>
 		<flag name="baremetal">Build plugin for bare metal devices</flag>
 		<flag name="bazaar">Add support for GNU Bazaar version control system (requires manual installation of Bazaar client)</flag>
@@ -25,6 +25,7 @@
 		<flag name="designer">Enable designer for QtWidgets-based UIs</flag>
 		<flag name="glsl">Build the GLSL editor plugin</flag>
 		<flag name="help">Enable the integrated documentation viewer</flag>
+		<flag name="incredibuild">Enable integration with Incredibuild (requires manual installation of Incredibuild)</flag>
 		<flag name="lsp">Add support for the Language Server Protocol (LSP)</flag>
 		<flag name="mcu">Build plugin for MCU devices</flag>
 		<flag name="mercurial">Add support for <pkg>dev-vcs/mercurial</pkg> version control system</flag>
