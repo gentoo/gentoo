@@ -456,7 +456,6 @@ dev-java/tomcat-jstl-el
 dev-java/toolbar
 dev-java/txw2-runtime
 dev-java/vecmath
-dev-java/xml-writer
 
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
