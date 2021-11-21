@@ -404,7 +404,6 @@ dev-java/geoip-java
 dev-java/glassfish-deployment-api
 dev-java/gnu-crypto
 dev-java/gnu-hylafax
-dev-java/hessian
 
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
