@@ -416,7 +416,6 @@ dev-java/jarjar
 dev-java/javacsv
 dev-java/jazzy
 dev-java/jetty-alpn-api
-dev-java/jetty-npn-api
 
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
