@@ -26,8 +26,8 @@ LICENSE="GPL-3"
 SLOT="0"
 QTC_PLUGINS=(android +autotest autotools:autotoolsprojectmanager baremetal bazaar beautifier boot2qt
 	'+clang:clangcodemodel|clangformat|clangtools' clearcase cmake:cmakeprojectmanager cppcheck
-	ctfvisualizer cvs +designer git glsl:glsleditor +help lsp:languageclient mcu:mcusupport mercurial
-	modeling:modeleditor nim perforce perfprofiler python qbs:qbsprojectmanager +qmldesigner
+	ctfvisualizer cvs +designer git glsl:glsleditor +help incredibuild lsp:languageclient mcu:mcusupport
+	mercurial modeling:modeleditor nim perforce perfprofiler python qbs:qbsprojectmanager +qmldesigner
 	+qmljs:qmljseditor qmlprofiler qnx remotelinux scxml:scxmleditor serialterminal silversearcher
 	subversion valgrind webassembly)
 IUSE="doc systemd test webengine ${QTC_PLUGINS[@]%:*}"
