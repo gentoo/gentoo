@@ -388,7 +388,6 @@ dev-java/commons-chain
 dev-java/commons-dbcp
 dev-java/commons-dbutils
 dev-java/commons-discovery
-dev-java/commons-email
 
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
