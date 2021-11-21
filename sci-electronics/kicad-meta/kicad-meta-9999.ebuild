@@ -13,14 +13,14 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc minimal"
 
 RDEPEND="
-	>=sci-electronics/kicad-${PV}
-	>=sci-electronics/kicad-symbols-${PV}
-	>=sci-electronics/kicad-footprints-${PV}
+	>=sci-electronics/kicad-9999
+	>=sci-electronics/kicad-symbols-9999
+	>=sci-electronics/kicad-footprints-9999
 	doc? (
-		>=app-doc/kicad-doc-${PV}
+		>=app-doc/kicad-doc-9999
 	)
 	!minimal? (
-		>=sci-electronics/kicad-packages3d-${PV}
-		>=sci-electronics/kicad-templates-${PV}
+		>=sci-electronics/kicad-packages3d-9999
+		>=sci-electronics/kicad-templates-9999
 	)
 "
