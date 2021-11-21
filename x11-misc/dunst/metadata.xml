@@ -5,9 +5,6 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
-	<use>
-		<flag name="dunstify">Experimental replacement for notify-send.</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">dunst-project/dunst</remote-id>
 	</upstream>
