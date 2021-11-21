@@ -20,7 +20,6 @@ RESTRICT="test"
 BDEPEND="
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/xmlto
-	dev-util/itstool
 	sys-devel/gettext
 	virtual/pkgconfig
 "
@@ -31,6 +30,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( HACKING.md NEWS README.md )
+
+PATCHES=(
+	"${FILESDIR}/shared-mime-info-2.1-itstool.patch"
+)
 
 src_install() {
 	meson_src_install
