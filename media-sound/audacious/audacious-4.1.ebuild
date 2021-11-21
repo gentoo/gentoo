@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_P="${P/_/-}"
 
@@ -22,13 +22,10 @@ BDEPEND="
 	nls? ( dev-util/intltool )
 "
 DEPEND="
-	>=dev-libs/dbus-glib-0.60
-	>=dev-libs/glib-2.28
+	dev-libs/glib:2
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
-	>=x11-libs/cairo-1.2.6
-	>=x11-libs/pango-1.8.0
 	virtual/freedesktop-icon-theme
 "
 RDEPEND="${DEPEND}"
