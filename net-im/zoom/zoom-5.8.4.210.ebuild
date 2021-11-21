@@ -124,6 +124,14 @@ src_install() {
 			use wayland || rm -r libQt5Wayland*.so* QtWayland wayland* \
 				platforms/libqwayland*.so || die
 		)
+	else
+		local qtzoom="5.12" qtver=$(best_version dev-qt/qtcore:5)
+		if [[ ${qtver} != dev-qt/qtcore-${qtzoom}.* ]]; then
+			ewarn "You have disabled the bundled-qt USE flag."
+			ewarn "You may experience problems when running Zoom with"
+			ewarn "a version of the system-wide Qt libs other than ${qtzoom}."
+			ewarn "See https://bugs.gentoo.org/798681 for details."
+		fi
 	fi
 
 	make_wrapper zoom /opt/zoom{/zoom,} $(usev bundled-qt /opt/zoom)
