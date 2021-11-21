@@ -13,6 +13,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 -riscv sparc x86"
 
+PATCHES=( "${FILESDIR}"/${PN}-0.9.8-Treat-unknown-clock_ids-like-CLOCK_REALTIME.patch )
+
 src_prepare() {
 	default
 
