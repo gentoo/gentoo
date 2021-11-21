@@ -119,6 +119,6 @@ pkg_postinst() {
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog "Note that optional scripts in ${EROOT}/usr/share/${PN}/{user,}scripts"
 		elog "have additional dependencies not covered by this ebuild, for example"
-		elog "view_in_mpv needs media-video/mpv setup to use yt-dlp or youtube-dl."
+		elog "view_in_mpv needs media-video/mpv[lua] and net-misc/yt-dlp."
 	fi
 }
