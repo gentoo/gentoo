@@ -396,7 +396,6 @@ dev-java/constantine
 dev-java/disruptor
 dev-java/dynalang
 dev-java/ecs
-dev-java/fastutil
 
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
