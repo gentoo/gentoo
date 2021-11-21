@@ -408,7 +408,6 @@ dev-java/hessian
 dev-java/hoteqn
 dev-java/htmlparser
 dev-java/htmlparser-org
-dev-java/istack-commons-runtime
 
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
