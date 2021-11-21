@@ -367,12 +367,6 @@ dev-db/henplus
 # Removal on 2021-11-22. Bug #819624.
 dev-lang/nwcc
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-22)
-# EAPI=5, no revdeps, dead upstream. As documentation only package,
-# upstream isn't even closely updated to latest API by cheetah.
-# Removal on 2021-11-21.  Bug #819504.
-dev-python/cheetah-docs
-
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
 # Suggested replacement - net-misc/whois
