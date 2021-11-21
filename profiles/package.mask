@@ -391,7 +391,6 @@ dev-java/commons-discovery
 dev-java/commons-email
 dev-java/commons-graph
 dev-java/commons-launcher
-dev-java/commons-primitives
 
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
