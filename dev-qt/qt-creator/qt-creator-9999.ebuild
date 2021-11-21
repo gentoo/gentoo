@@ -43,7 +43,7 @@ REQUIRED_USE="
 "
 
 # minimum Qt version required
-QT_PV="5.14:5"
+QT_PV="5.15:5"
 
 BDEPEND="
 	>=dev-qt/linguist-tools-${QT_PV}
@@ -130,8 +130,7 @@ src_prepare() {
 				src/plugins/plugins.pro || die "failed to disable ${plugin%:*} plugin"
 		fi
 	done
-	sed -i -re '/\<(clangpchmanager|clangrefactoring|ios|updateinfo|winrt)\>/d' src/plugins/plugins.pro || die
-	sed -i -re '/clang(pchmanager|refactoring)backend/d' src/tools/tools.pro || die
+	sed -i -re '/\<(ios|updateinfo|winrt)\>/d' src/plugins/plugins.pro || die
 
 	# avoid building unused support libraries and tools
 	if ! use clang; then
