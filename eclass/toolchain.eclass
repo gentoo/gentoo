@@ -561,10 +561,16 @@ do_gcc_gentoo_patches() {
 				# We don't want to apply some patches when cross-compiling.
 				if [[ -d "${WORKDIR}"/musl/nocross ]] ; then
 					rm -fv "${WORKDIR}"/musl/nocross/*.patch || die
+				else
+					# Just make an empty directory to make the glob below easier.
+					mkdir -p "${WORKDIR}"/musl/nocross || die
 				fi
 			fi
 
+			local shopt_save=$(shopt -p nullglob)
+			shopt -s nullglob
 			tc_apply_patches "Applying musl patches ..." "${WORKDIR}"/musl/{,nocross/}*.patch
+			${shopt_save}
 		fi
 	fi
 }
