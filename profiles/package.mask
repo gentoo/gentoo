@@ -426,7 +426,6 @@ dev-java/jrexx
 dev-java/jsr181
 dev-java/jssc
 dev-java/jtreemap
-dev-java/jts-core
 
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
