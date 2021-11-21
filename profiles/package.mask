@@ -428,7 +428,6 @@ dev-java/jssc
 dev-java/jtreemap
 dev-java/jts-core
 dev-java/juel
-dev-java/jump
 
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
