@@ -413,7 +413,6 @@ dev-java/istack-commons-soimp
 dev-java/jade
 dev-java/jamvm
 dev-java/jarjar
-dev-java/javacsv
 
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
