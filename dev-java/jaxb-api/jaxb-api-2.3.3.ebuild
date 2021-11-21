@@ -18,7 +18,7 @@ SRC_URI="https://github.com/eclipse-ee4j/${PN}/archive/refs/tags/${PV}.tar.gz ->
 
 LICENSE="EPL-1.0"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 # Common dependencies
 # POM: pom.xml
@@ -43,6 +43,15 @@ JAVA_RESOURCE_DIRS="src/main/resources"
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 JAVA_TEST_SRC_DIR="../${PN}-test/src/test/java"
 JAVA_TEST_RESOURCE_DIRS="../${PN}-test/src/test/resources"
+
+src_test() {
+	# Suppress tests for vm_version 1.8 (too many test failures)
+	# see https://bugs.gentoo.org/796995
+	local vm_version="$(java-config -g PROVIDES_VERSION)"
+	if [[ "${vm_version}" != "1.8" ]] ; then
+		java-pkg-simple_src_test
+	fi
+}
 
 src_install() {
 	default

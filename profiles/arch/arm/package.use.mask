@@ -14,10 +14,6 @@ dev-python/QtPy pyside2
 # Unkeyworded dependencies.
 app-admin/syslog-ng mongodb
 
-# Anna Vyalkova <cyber@gentoo@sysrq.in> (2021-09-04)
-# net-libs/canlock not keyworded
->=net-nntp/tin-2.6.0 cancel-locks
-
 # Sam James <sam@gentoo.org> (2021-08-14)
 # Needs Raspberry Pi specific applications
 media-video/mjpg-streamer -input-raspicam

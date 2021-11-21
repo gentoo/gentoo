@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jnr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="1.0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 COMMON_DEP="
 	dev-java/jnr-ffi:2"

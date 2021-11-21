@@ -62,7 +62,7 @@ src_prepare() {
 
 	local ncurses_lib_flags=$(pkg-config --libs ncurses)
 	sed -i "/project(SWI-Prolog)/a set(CMAKE_REQUIRED_LIBRARIES \${CMAKE_REQUIRED_LIBRARIES} ${ncurses_lib_flags})" CMakeLists.txt || die
-	sed -i "/project(SWI-Prolog)/a set(CMAKE_EXE_LINKER_FLAGS \"${ncurses_lib_flags} \${CMAKE_EXE_LINKER_FLAGS}\")" CMakeLists.txt || die
+	sed -i "s:\${CURSES_LIBRARIES}:${ncurses_lib_flags}:" src/CMakeLists.txt || die
 
 	cmake_src_prepare
 }

@@ -1,0 +1,105 @@
+https://bugs.gentoo.org/820071
+https://git.kernel.org/pub/scm/libs/libcap/libcap.git/patch/?id=c234bf90839f19e0332b586335411cb626a25a18
+https://git.kernel.org/pub/scm/libs/libcap/libcap.git/patch/?id=e9414f540a82b5348a12cfaddff229241564e1f3
+
+From: "Andrew G. Morgan" <morgan@kernel.org>
+Date: Sat, 13 Nov 2021 20:38:18 -0800
+Subject: Work around a __i386__ compilation issue for runnable .so files.
+
+This was reported by Sam James and debugged with respect to:
+
+  https://bugs.gentoo.org/show_bug.cgi?id=820071
+
+Modern versions of glibc employ SSE instructions that require the
+stack to be aligned to 16 bytes in order to execute movaps and
+friends to stack stored memory. The ABI for x86_64 requires this
+alignment so we'd not seen this issue before being cc:d into the
+bug.
+
+Signed-off-by: Andrew G. Morgan <morgan@kernel.org>
+--- a/libcap/execable.h
++++ b/libcap/execable.h
+@@ -74,20 +74,26 @@ static void __execable_parse_args(int *argc_p, char ***argv_p)
+  * Note, to avoid any runtime confusion, SO_MAIN is a void static
+  * function.
+  */
++#if defined(__i386__)
++#define __SO_FORCE_ARG_ALIGNMENT  __attribute__((force_align_arg_pointer))
++#else
++#define __SO_FORCE_ARG_ALIGNMENT
++#endif /* def __i386 */
+ 
+-#define SO_MAIN						        \
+-static void __execable_main(int, char**);                       \
+-extern void __so_start(void);		                	\
+-void __so_start(void)                                           \
+-{                                                               \
+-    int argc;                                                   \
+-    char **argv;                                                \
+-    __execable_parse_args(&argc, &argv);                        \
++#define SO_MAIN							\
++static void __execable_main(int, char**);			\
++extern void __so_start(void);					\
++__SO_FORCE_ARG_ALIGNMENT					\
++void __so_start(void)						\
++{								\
++    int argc;							\
++    char **argv;						\
++    __execable_parse_args(&argc, &argv);			\
+     __execable_main(argc, argv);				\
+-    if (argc != 0) {                                            \
+-	free(argv[0]);                                          \
+-	free(argv);                                             \
+-    }                                                           \
+-    exit(0);                                                    \
+-}                                                               \
++    if (argc != 0) {						\
++	free(argv[0]);						\
++	free(argv);						\
++    }								\
++    exit(0);							\
++}								\
+ static void __execable_main
+
+From: "Andrew G. Morgan" <morgan@kernel.org>
+Date: Sun, 14 Nov 2021 20:38:30 -0800
+Subject: Work around musl not hard-coding the ABI for Linux x86_64.
+
+There seems to be a subtle difference between glibc and musl over
+whether or not a runnable *.so needs to start out with its stack
+aligned to 16 bytes or not. Since Linux ABIs for x86 (both 32 and
+64 bit varieties) require 16 byte alignment, just force it on both
+these architectures.
+
+This addresses:
+
+  https://bugzilla.kernel.org/show_bug.cgi?id=215009
+
+Signed-off-by: Andrew G. Morgan <morgan@kernel.org>
+--- a/libcap/execable.h
++++ b/libcap/execable.h
+@@ -71,15 +71,19 @@ static void __execable_parse_args(int *argc_p, char ***argv_p)
+ }
+ 
+ /*
+- * Note, to avoid any runtime confusion, SO_MAIN is a void static
+- * function.
++ * Linux x86 ABI requires the stack be 16 byte aligned. Keep things
++ * simple and just force it.
+  */
+-#if defined(__i386__)
++#if defined(__i386__) || defined(__x86_64__)
+ #define __SO_FORCE_ARG_ALIGNMENT  __attribute__((force_align_arg_pointer))
+ #else
+ #define __SO_FORCE_ARG_ALIGNMENT
+-#endif /* def __i386 */
++#endif /* def some x86 */
+ 
++/*
++ * Note, to avoid any runtime confusion, SO_MAIN is a void static
++ * function.
++ */
+ #define SO_MAIN							\
+ static void __execable_main(int, char**);			\
+ extern void __so_start(void);					\
+cgit 1.2.3-1.el7

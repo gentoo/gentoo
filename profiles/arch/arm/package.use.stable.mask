@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-11-20)
+# dev-python/networkx is not yet marked stable on arm*
+app-admin/setools infoflow
+
 # Sam James <sam@gentoo.org> (2021-10-25)
 # Various dependencies not yet stable on arm
 # bug #816981
@@ -99,10 +103,6 @@ media-sound/mpd fluidsynth
 # frei0r-plugins is not stable yet, mask it on stable versions
 media-video/ffmpeg frei0r
 
-# Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
-# RPI support on arm
-dev-libs/libcec -raspberry-pi
-
 # Michael Weber <xmw@gentoo.org> (2017-04-01)
 # no stable jdk
 media-libs/libbluray java
@@ -131,6 +131,10 @@ dev-util/geany-plugins gtkspell
 # Markus Meier <maekke@gentoo.org> (2016-09-27)
 # Missing stable
 dev-db/mariadb jdbc
+
+# Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
+# RPI support on arm
+dev-libs/libcec -raspberry-pi
 
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (2016-04-13)
 # Requires special hardware to test and stabilize properly.

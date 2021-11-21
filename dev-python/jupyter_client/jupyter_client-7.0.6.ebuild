@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	dev-python/entrypoints[${PYTHON_USEDEP}]
@@ -32,9 +32,13 @@ BDEPEND="
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	)"
 
-distutils_enable_tests pytest
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.0.6-test-timeout.patch
+)
 
 EPYTEST_DESELECT=(
 	jupyter_client/tests/test_kernelmanager.py::TestKernelManagerShutDownGracefully::test_signal_kernel_subprocesses
 	jupyter_client/tests/test_kernelmanager.py::TestKernelManagerShutDownGracefully::test_async_signal_kernel_subprocesses
 )
+
+distutils_enable_tests pytest

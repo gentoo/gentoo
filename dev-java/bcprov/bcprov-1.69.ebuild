@@ -7,7 +7,7 @@ JAVA_PKG_IUSE="doc source test"
 MAVEN_ID="org.bouncycastle:bcprov-jdk15on:1.69"
 JAVA_TESTING_FRAMEWORKS="junit-4"
 
-inherit java-pkg-2 java-pkg-simple
+inherit java-pkg-2 java-pkg-simple check-reqs
 
 DESCRIPTION="Java cryptography APIs"
 HOMEPAGE="https://www.bouncycastle.org/java.html"
@@ -55,10 +55,31 @@ JAVA_TEST_RUN_ONLY=(
 	"org.bouncycastle.util.encoders.test.AllTests"	# OK (15 tests)
 )
 
+check_env() {
+	if use test; then
+		# this is needed only for tests
+		CHECKREQS_MEMORY="1200M"
+		check-reqs_pkg_pretend
+	fi
+}
+
+pkg_pretend() {
+	check_env
+}
+
+pkg_setup() {
+	check_env
+}
+
 src_prepare() {
 	default
 	cd ../ || die
 	java-pkg_clean
+}
+
+src_test() {
+	JAVA_TEST_EXTRA_ARGS+=" -Xmx${CHECKREQS_MEMORY}"
+	java-pkg-simple_src_test
 }
 
 src_install() {

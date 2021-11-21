@@ -1,0 +1,51 @@
+From 245e71ae8de3f4b5f3478739be819981bb12dfab Mon Sep 17 00:00:00 2001
+From: Alexander Dunaev <adunaev@igalia.com>
+Date: Sat, 13 Nov 2021 06:35:35 +0000
+Subject: [PATCH] [linux/xfce] Introduced a hack for Xfwm.
+
+This proposes an alternative to [1].  Either this patch or that one
+should be landed, but not both.  See the linked crbug for the details.
+
+Setting the frame extents via the _GTK_FRAME_EXTENTS property turned out
+to be problematic at Xfwm.  While the issue is agreed to be a bug in the
+window manager, for now we disable setting the frame extents on that WM.
+
+This patch introduces a logic that disables setting the window property
+on Xfwm.
+
+[1] https://chromium-review.googlesource.com/c/chromium/src/+/3275653
+
+Bug: 1260821
+Change-Id: I4b734ac0dc2b97d7ed6b1842564a33ec6e4b4035
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/3275272
+Reviewed-by: Thomas Anderson <thomasanderson@chromium.org>
+Commit-Queue: Alexander Dunaev <adunaev@igalia.com>
+Cr-Commit-Position: refs/heads/main@{#941444}
+---
+
+diff --git a/ui/platform_window/x11/x11_window.cc b/ui/platform_window/x11/x11_window.cc
+index 2b20835..4fa2992 100644
+--- a/ui/platform_window/x11/x11_window.cc
++++ b/ui/platform_window/x11/x11_window.cc
+@@ -1016,6 +1016,21 @@
+ }
+ 
+ bool X11Window::CanSetDecorationInsets() const {
++  // Xfwm handles _GTK_FRAME_EXTENTS a bit unexpected way.  That is a known bug
++  // that will be eventually fixed, but for now we have to disable the function
++  // for Xfce.  The block below should be removed when Xfwm is updated with the
++  // fix and is known to work properly.
++  // See https://crbug.com/1260821.
++  {
++    static WindowManagerName wm_name = WM_OTHER;
++    static bool checked_for_wm = false;
++    if (!checked_for_wm) {
++      wm_name = GuessWindowManager();
++      checked_for_wm = true;
++    }
++    if (wm_name == WM_XFWM4)
++      return false;
++  }
+   return ui::WmSupportsHint(x11::GetAtom("_GTK_FRAME_EXTENTS"));
+ }
+ 

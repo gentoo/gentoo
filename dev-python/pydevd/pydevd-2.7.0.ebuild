@@ -16,7 +16,7 @@ S="${WORKDIR}/PyDev.Debugger-${MY_P}"
 
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv sparc ~x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 # After removing and recompiling the prebuilt lib the tests fail?
 # For some reason the test suite is executing a slightly different gdb command
@@ -74,7 +74,7 @@ src_compile() {
 	pushd pydevd_attach_to_process/linux_and_mac || die
 	# recompile removed file (extracted from compile_linux.sh)
 	$(tc-getBUILD_CXX) ${CXXFLAGS} ${CPPFLAGS} -o "attach_linux_${ARCH}.so" \
-		-ldl ${LDFLAGS} -nostartfiles attach.cpp || die
+		${LDFLAGS} -nostartfiles attach.cpp -ldl || die
 	mv "attach_linux_${ARCH}.so" ../ || die
 	popd || die
 	python_foreach_impl distutils-r1_python_compile

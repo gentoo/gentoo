@@ -1,0 +1,10 @@
+Fullscreen can misdisplay depending on available modes and, while there
+is a command line option to enable it (-f), there is none to disable.
+
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=432693
+--- a/locals.py
++++ b/locals.py
+@@ -18,2 +18,2 @@
+     name = "Funny Boater"
+-    fullscreen = True
++    fullscreen = False

@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/715702
+
+From: Sam James <sam@gentoo.org>
+Date: Mon, 15 Nov 2021 05:48:50 +0000
+Subject: [PATCH 2/2] Fix build with glibc-2.33
+--- a/instcheck.c
++++ b/instcheck.c
+@@ -2,6 +2,7 @@
+ #include <fcntl.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+@@ -15,14 +15,14 @@ int man;
+ static void diesys(const char* msg)
+ {
+   fprintf(stderr, "installer error: %s:\n  %s\n", msg,
+-	  sys_errlist[errno]);
++	  strerror(errno));
+   exit(1);
+ }
+ 
+ static void diefsys(const char* msg, const char* filename)
+ {
+   fprintf(stderr, "installer error: %s '%s':\n  %s\n", msg, filename,
+-	  sys_errlist[errno]);
++	  strerror(errno));
+   exit(1);
+ }

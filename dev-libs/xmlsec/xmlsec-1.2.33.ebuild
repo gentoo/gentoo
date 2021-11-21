@@ -51,10 +51,12 @@ src_configure() {
 }
 
 src_test() {
-	SHELL=${BASH} emake TMPFOLDER="${T}" check
+	# See https://github.com/lsh123/xmlsec/issues/280 for TZ=UTC
+	TZ=UTC SHELL=${BASH} emake TMPFOLDER="${T}" check
 }
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
+
+	find "${ED}" -name '*.la' -delete || die
 }

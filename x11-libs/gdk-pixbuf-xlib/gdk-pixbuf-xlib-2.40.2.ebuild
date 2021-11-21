@@ -28,7 +28,7 @@ BDEPEND="
 
 multilib_src_configure() {
 	local emesonargs=(
-		$(meson_native_use_bool gtk-doc)
+		$(meson_native_use_bool gtk-doc gtk_doc)
 	)
 	meson_src_configure
 }

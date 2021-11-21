@@ -4,7 +4,7 @@
 EAPI=7
 VALA_USE_DEPEND="vapigen"
 
-inherit bash-completion-r1 meson-multilib systemd udev vala
+inherit bash-completion-r1 meson-multilib vala
 
 DESCRIPTION="System service to accurately color manage input and output devices"
 HOMEPAGE="https://www.freedesktop.org/software/colord/"
@@ -84,7 +84,6 @@ src_prepare() {
 multilib_src_configure() {
 	local emesonargs=(
 		$(meson_native_true daemon)
-		-Dexamples=false
 		-Dbash_completion=false
 		$(meson_use udev udev_rules)
 		$(meson_native_use_bool systemd)

@@ -4,8 +4,7 @@
 EAPI=7
 
 MY_PN=Vulkan-ValidationLayers
-CMAKE_ECLASS="cmake-utils"
-CMAKE_MAKEFILE_GENERATOR="emake"
+CMAKE_ECLASS="cmake"
 PYTHON_COMPAT=( python3_{8,9} )
 inherit cmake-multilib python-any-r1
 
@@ -40,12 +39,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
-src_prepare() {
-	cmake-utils_src_prepare
-}
-
 multilib_src_configure() {
 	local mycmakeargs=(
+                -DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG"
+		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG"
 		-DCMAKE_SKIP_RPATH=ON
 		-DBUILD_LAYER_SUPPORT_FILES=ON
 		-DBUILD_WSI_WAYLAND_SUPPORT=$(usex wayland)
@@ -56,5 +53,5 @@ multilib_src_configure() {
 		-DCMAKE_INSTALL_INCLUDEDIR="${EPREFIX}/usr/include/vulkan/"
 		-DSPIRV_HEADERS_INSTALL_DIR="${ESYSROOT}/usr/include/spirv"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

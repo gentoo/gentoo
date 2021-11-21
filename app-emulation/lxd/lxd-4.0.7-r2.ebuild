@@ -12,7 +12,7 @@ SRC_URI="https://linuxcontainers.org/downloads/lxd/${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="apparmor ipv6 nls verify-sig"
 
 DEPEND="acct-group/lxd
@@ -68,6 +68,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/linuxcontainers.asc
 
 PATCHES=(
 	"${FILESDIR}/${PN}-syscall_wrappers-don-t-conflict-with-glibc-provided.patch"
+	"${FILESDIR}"/lxd-4.0.7-no-werror.patch
 )
 
 src_prepare() {

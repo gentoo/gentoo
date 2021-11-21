@@ -11,7 +11,7 @@ SRC_URI="https://github.com/freedesktop/libfprint/archive/refs/tags/v${PV}.tar.g
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="examples gtk-doc +introspection"
 
 RDEPEND="
@@ -35,7 +35,10 @@ BDEPEND="
 	introspection? ( dev-libs/gobject-introspection )
 "
 
-PATCHES=( ${FILESDIR}/${PN}-0.8.2-fix-implicit-declaration.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8.2-fix-implicit-declaration.patch
+	"${FILESDIR}"/${PN}-1.94.1-test-timeout.patch
+)
 
 src_configure() {
 	local emesonargs=(

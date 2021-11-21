@@ -83,12 +83,7 @@ COMMON_DEPEND="
 	fpm? ( acl? ( sys-apps/acl ) apparmor? ( sys-libs/libapparmor ) )
 	apache2? ( www-servers/apache[apache2_modules_unixd(+),threads=] )
 	argon2? ( app-crypt/argon2:= )
-	berkdb? ( || (	sys-libs/db:5.3
-					sys-libs/db:5.1
-					sys-libs/db:4.8
-					sys-libs/db:4.7
-					sys-libs/db:4.6
-					sys-libs/db:4.5 ) )
+	berkdb? ( || (	sys-libs/db:5.3 sys-libs/db:4.8 ) )
 	bzip2? ( app-arch/bzip2:0= )
 	cdb? ( || ( dev-db/cdb dev-db/tinycdb ) )
 	coverage? ( dev-util/lcov )
@@ -120,7 +115,7 @@ COMMON_DEPEND="
 	spell? ( >=app-text/aspell-0.50 )
 	sqlite? ( >=dev-db/sqlite-3.7.6.3 )
 	ssl? ( >=dev-libs/openssl-1.0.2:0= )
-	tidy? ( || ( app-text/tidy-html5 app-text/htmltidy ) )
+	tidy? ( app-text/htmltidy )
 	tokyocabinet? ( dev-db/tokyocabinet )
 	truetype? ( =media-libs/freetype-2* )
 	unicode? ( dev-libs/oniguruma:= )

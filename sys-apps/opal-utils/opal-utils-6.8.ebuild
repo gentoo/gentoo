@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit linux-info python-single-r1 systemd toolchain-funcs
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/open-power/skiboot/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="Apache-2.0 GPL-2+"
 SLOT="0"
-KEYWORDS="~ppc64"
+KEYWORDS="ppc64"
 IUSE="doc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

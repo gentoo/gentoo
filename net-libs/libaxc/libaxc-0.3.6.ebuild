@@ -23,9 +23,9 @@ RDEPEND="
 	"
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
 	test? ( dev-util/cmocka )
 	"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}"/${MY_P}
 RESTRICT="!test? ( test )"
@@ -48,24 +48,26 @@ src_compile() {
 	emake "${make_args[@]}"
 }
 
+src_test() {
+	# TODO: Test failures seem to be ignored in the upstream Makefile?
+	# e.g. https://github.com/gkdr/axc/blob/master/Makefile#L154
+	emake CC="$(tc-getCC)" test
+}
+
 src_install() {
 	emake DESTDIR="${D}" PREFIX=/usr install
 
 	# Respect libdir other than /usr/lib, e.g. /usr/lib64
 	local libdir="$(get_libdir)"
 	if [[ ${libdir} != lib ]]; then
-		mv "${D}"/usr/{lib,${libdir}} || die
+		mv "${ED}"/usr/{lib,${libdir}} || die
 		sed "s|^libdir=.*|libdir=\${prefix}/${libdir}|" \
-				-i "${D}/usr/${libdir}/pkgconfig/libaxc.pc" || die
+				-i "${ED}/usr/${libdir}/pkgconfig/libaxc.pc" || die
 	fi
 
 	einstalldocs
 
 	if ! use static-libs ; then
-		rm "${D}/usr/${libdir}/libaxc.a" || die
+		rm "${ED}/usr/${libdir}/libaxc.a" || die
 	fi
-}
-
-src_test() {
-	emake -j1 test
 }

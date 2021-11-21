@@ -30,11 +30,12 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils fido2 +gcrypt gnuefi homed http +hwdb idn importd +kmod +lz4 lzma nat pam pcre pkcs11 policykit pwquality qrcode repart +resolvconf +seccomp selinux split-usr +sysv-utils test tpm vanilla xkb +zstd"
+IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils fido2 +gcrypt gnuefi homed hostnamed-fallback http +hwdb idn importd +kmod +lz4 lzma nat pam pcre pkcs11 policykit pwquality qrcode repart +resolvconf +seccomp selinux split-usr +sysv-utils test tpm vanilla xkb +zstd"
 
 REQUIRED_USE="
 	homed? ( cryptsetup pam )
 	importd? ( curl gcrypt lzma )
+	policykit? ( !hostnamed-fallback )
 	pwquality? ( homed )
 "
 RESTRICT="!test? ( test )"
@@ -117,6 +118,10 @@ RDEPEND="${COMMON_DEPEND}
 	>=acct-user/systemd-resolve-0-r1
 	>=acct-user/systemd-timesync-0-r1
 	>=sys-apps/baselayout-2.2
+	hostnamed-fallback? (
+		acct-group/systemd-hostname
+		sys-apps/dbus-broker
+	)
 	selinux? ( sec-policy/selinux-base-policy[systemd] )
 	sysv-utils? (
 		!sys-apps/openrc[sysv-utils(-)]
@@ -177,7 +182,7 @@ pkg_pretend() {
 		fi
 
 		local CONFIG_CHECK="~AUTOFS4_FS ~BLK_DEV_BSG ~CGROUPS
-			~KCMP ~DEVTMPFS ~EPOLL ~FANOTIFY ~FHANDLE
+			~DEVTMPFS ~EPOLL ~FANOTIFY ~FHANDLE
 			~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~PROC_FS ~SIGNALFD ~SYSFS
 			~TIMERFD ~TMPFS_XATTR ~UNIX ~USER_NS
 			~CRYPTO_HMAC ~CRYPTO_SHA256 ~CRYPTO_USER_API_HASH
@@ -189,6 +194,12 @@ pkg_pretend() {
 		kernel_is -lt 3 7 && CONFIG_CHECK+=" ~HOTPLUG"
 		kernel_is -lt 4 7 && CONFIG_CHECK+=" ~DEVPTS_MULTIPLE_INSTANCES"
 		kernel_is -ge 4 10 && CONFIG_CHECK+=" ~CGROUP_BPF"
+
+		if kernel_is -lt 5 10 20; then
+			CONFIG_CHECK+=" ~CHECKPOINT_RESTORE"
+		else
+			CONFIG_CHECK+=" ~KCMP"
+		fi
 
 		if linux_config_exists; then
 			local uevent_helper_path=$(linux_chkconfig_string UEVENT_HELPER_PATH)
@@ -398,6 +409,16 @@ multilib_src_install_all() {
 		# Avoid breaking boot/reboot
 		dosym ../../../lib/systemd/systemd /usr/lib/systemd/systemd
 		dosym ../../../lib/systemd/systemd-shutdown /usr/lib/systemd/systemd-shutdown
+	fi
+
+	# workaround for https://github.com/systemd/systemd/issues/13501
+	if use hostnamed-fallback; then
+		# this file requires dbus-broker
+		insinto /usr/share/dbus-1/system.d/
+		doins "${FILESDIR}/org.freedesktop.hostname1_no_polkit.conf"
+
+		insinto "${rootprefix}/lib/systemd/system/systemd-hostnamed.service.d/"
+		doins "${FILESDIR}/00-hostnamed-network-user.conf"
 	fi
 
 	gen_usr_ldscript -a systemd udev

@@ -9,4 +9,7 @@
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">naver/nanumfont</remote-id>
+	</upstream>
 </pkgmetadata>

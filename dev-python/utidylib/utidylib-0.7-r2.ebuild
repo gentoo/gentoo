@@ -14,9 +14,9 @@ SRC_URI="https://github.com/nijel/utidylib/archive/v${PV}.tar.gz -> ${P}.gh.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ppc ~ppc64 ~riscv x86"
 
-RDEPEND="|| ( app-text/tidy-html5 >=app-text/htmltidy-5.0.0 )"
+RDEPEND=">=app-text/htmltidy-5.0.0"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs

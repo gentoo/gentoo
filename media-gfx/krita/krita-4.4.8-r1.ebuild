@@ -92,6 +92,7 @@ PATCHES=(
 	"${WORKDIR}"/${PN}-4.2.9-patchset/${PN}-4.2.9-ecm-findopenexr.patch
 	"${FILESDIR}"/${PN}-4.4.2-quazip1.patch
 	"${FILESDIR}"/${PN}-4.4.7-pykrita-crash-on-exit.patch # KDE-Bug #417465, git master
+	"${FILESDIR}"/${P}-prefer-newer-sip-to-build.patch # bug 822843
 )
 
 pkg_setup() {

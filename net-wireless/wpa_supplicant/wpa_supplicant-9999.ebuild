@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop qmake-utils readme.gentoo-r1 systemd toolchain-funcs
+inherit desktop linux-info qmake-utils readme.gentoo-r1 systemd toolchain-funcs
 
 DESCRIPTION="IEEE 802.1X/WPA supplicant for secure wireless transfers"
 HOMEPAGE="https://w1.fi/wpa_supplicant/"
@@ -13,12 +13,12 @@ if [ "${PV}" = "9999" ]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://w1.fi/hostap.git"
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	SRC_URI="https://w1.fi/releases/${P}.tar.gz"
 fi
 
 SLOT="0"
-IUSE="ap bindist broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
+IUSE="ap bindist +crda broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
 
 # CONFIG_PRIVSEP=y does not have sufficient support for the new driver
 # interface functions used for MACsec, so this combination cannot be used
@@ -34,7 +34,6 @@ DEPEND="
 	dbus? ( sys-apps/dbus )
 	kernel_linux? (
 		dev-libs/libnl:3
-		net-wireless/crda
 		eap-sim? ( sys-apps/pcsc-lite )
 	)
 	!kernel_linux? ( net-libs/libpcap )
@@ -51,6 +50,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-networkmanager )
+	kernel_linux? (
+		net-wireless/wireless-regdb
+		crda? ( net-wireless/crda )
+	)
 "
 BDEPEND="virtual/pkgconfig"
 
@@ -82,6 +85,28 @@ Kconfig_style_config() {
 			#ensure item commented out
 			sed -i "/^$CONFIG_PARAM/s/$CONFIG_PARAM/# $CONFIG_PARAM/" .config || echo "Kconfig_style_config error commenting $CONFIG_PARAM"
 		fi
+}
+
+pkg_pretend() {
+	CONFIG_CHECK=""
+
+	if use crda ; then
+		CONFIG_CHECK="${CONFIG_CHECK} ~CFG80211_CRDA_SUPPORT"
+		WARNING_CFG80211_CRDA_SUPPORT="REGULATORY DOMAIN PROBLEM: please enable CFG80211_CRDA_SUPPORT for proper regulatory domain support"
+	fi
+
+	check_extra_config
+
+	if ! use crda ; then
+		if linux_config_exists && linux_chkconfig_builtin CFG80211 &&
+			[[ $(linux_chkconfig_string EXTRA_FIRMWARE) != *regulatory.db* ]]
+		then
+			ewarn "REGULATORY DOMAIN PROBLEM:"
+			ewarn "With CONFIG_CFG80211=y (built-in), the driver won't be able to load regulatory.db from"
+			ewarn " /lib/firmware, resulting in broken regulatory domain support.  Please set CONFIG_CFG80211=m"
+			ewarn " or add regulatory.db and regulatory.db.p7s to CONFIG_EXTRA_FIRMWARE."
+		fi
+	fi
 }
 
 src_prepare() {

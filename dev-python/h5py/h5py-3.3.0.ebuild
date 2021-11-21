@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit distutils-r1 flag-o-matic
+inherit distutils-r1
 
 DESCRIPTION="Simple Python interface to HDF5 files"
 HOMEPAGE="https://www.h5py.org"
@@ -28,7 +28,6 @@ BDEPEND="
 	dev-python/pkgconfig[${PYTHON_USEDEP}]
 	test? (
 		dev-python/QtPy[testlib,${PYTHON_USEDEP}]
-		dev-python/cached-property[${PYTHON_USEDEP}]
 	)"
 #	mpi? ( virtual/mpi )
 #	mpi? ( dev-python/mpi4py[${PYTHON_USEDEP}] )

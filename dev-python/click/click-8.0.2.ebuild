@@ -15,11 +15,6 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 IUSE="examples"
 
-RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/importlib_metadata[${PYTHON_USEDEP}]
-	' pypy3)"
-
 distutils_enable_sphinx docs \
 	'>=dev-python/docutils-0.14' \
 	dev-python/pallets-sphinx-themes \

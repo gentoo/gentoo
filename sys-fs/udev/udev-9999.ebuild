@@ -23,10 +23,11 @@ else
 
 	# musl patches taken from:
 	# http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/systemd/systemd
+	MUSL_PATCHSET="${PV}"
 	SRC_URI+="
 	elibc_musl? (
-		https://dev.gentoo.org/~gyakovlev/distfiles/systemd-musl-patches-${PV}.1-r1.tar.xz
-		https://dev.gentoo.org/~soap/distfiles/systemd-musl-patches-${PV}.1-r1.tar.xz
+		https://dev.gentoo.org/~gyakovlev/distfiles/systemd-musl-patches-${MUSL_PATCHSE}.tar.xz
+		https://dev.gentoo.org/~soap/distfiles/systemd-musl-patches-${MUSL_PATCHSET}.tar.xz
 	)"
 
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"

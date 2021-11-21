@@ -31,5 +31,7 @@ DEPEND="${RDEPEND}
 "
 
 src_test() {
-	LC_TIME="C" ecm_src_test #bug 665626
+	# LC_TIME bug 665626
+	# TZ bug https://bugs.kde.org/show_bug.cgi?id=445734
+	LC_TIME="C" TZ=UTC ecm_src_test
 }

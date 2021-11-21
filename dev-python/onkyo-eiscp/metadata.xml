@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<remote-id type="github">miracle2k/onkyo-eiscp</remote-id>
-		<remote-id type="pypi">onkyo-eiscp</remote-id>
-	</upstream>
-</pkgmetadata>

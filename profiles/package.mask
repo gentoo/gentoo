@@ -33,16 +33,195 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-11-20)
+# Obsolete package. Last upstream release in 2014, upstream itself is
+# gone. No reverse dependencies in Gentoo.
+# Masked for removal in 30 days.
+dev-ruby/rack-ssl
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2021-11-19)
+# Doesn't work with latest versions of adb, source not easily ported
+# to python 3.9 and 3.10. No upstream activity for 7 years.
+# Removal on 2021-12-19.  Bug #825038.
+app-mobilephone/adb-sync
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-18)
+# Library without consumers, Removal in 30 days.
+dev-java/piccolo2d
+
+# Mike Pagano <mpagano@gentoo.org> (2021-11-18)
+# Bug introduced in this version that can
+# cause system freeze with data loss.
+# Bug #824558.
+=sys-kernel/gentoo-sources-5.14.19
+=sys-kernel/vanilla-sources-5.14.19
+~sys-kernel/gentoo-kernel-5.14.19
+~sys-kernel/gentoo-kernel-bin-5.14.19
+~sys-kernel/vanilla-kernel-5.14.19
+~virtual/dist-kernel-5.14.19
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-16)
+# Outdated java package, uses EAPI 5, no revdeps,
+# no other distro is packaging this.
+# Removal on 2021-12-16. Bug #819420.
+media-video/google2srt
+
+# Uses EAPI 5, multiple bugs reported, fails to compile,
+# no revdeps, upstream doesn't do regular releases,
+# no other distro is packaging this
+# Removal on 2021-12-16. Bug #770610. Bug #813873. Bug #810682.
+net-libs/onion
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-15)
+# Library without consumers,
+# bug #771693 (multiple CVEs); Removal in 30 days.
+dev-java/jackson
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-14)
+# java packages without consumers, Removal in 30 days.
+dev-java/milton-mail-api
+dev-java/milton-api
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-13)
+# java package without consumers,
+# bug_808948 (CVE-2021-37714).  Removal in 30 days.
+dev-java/jsoup
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-13)
+# Broken, no maintainer, outdated, multiple bugs reported, EAPI 5,
+# only revdep sys-fs/tmsu fails to build with go 1.16.
+# Removal on 2021-12-13. Bug #819612. Bug #771054.
+dev-libs/go-fuse
+sys-fs/tmsu
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-13)
+# Outdated, multiple bugs reported, uses EAPI 5, no revdeps.
+# Please use sci-geosciences/josm-bin instead.
+# Removal on 2021-12-13. Bug #819129.
+sci-geosciences/josm
+
+# Hans de Graaff <graaff@gentoo.org> (2021-11-13)
+# No longer maintained upstream. Stuck on an old version 4.x of d3
+# while d3 upstream is now on 7.x. Probably best to use directly via
+# npm or yarn.
+# Masked for removal on 2021-12-13.
+dev-ruby/d3_rails
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-13)
+# java package without consumers, bug #787338. Removal in 30 days.
+dev-db/db-je
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-13)
+# depends on deprecated jdk / jre, bug #787449
+# stuck with EAPI 5, latest release in 2005
+# Removal in 30 days.
+net-analyzer/neti
+
+# John Helmert III <ajak@gentoo.org> (2021-11-13)
+# Unmaintained in Gentoo, open security bug, many unfixed otther
+# bugs. Removal on 2021-12-13, bug #764719.
+mail-client/cone
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-12)
+# Libraries with no other consumers. Removal in 30 days.
+dev-java/trident
+dev-java/okio
+dev-java/moshi
+
+# John Helmert III <ajak@gentoo.org> (2021-11-12)
+# Unfixed code execution bug, unmaintained in Gentoo.
+# Removal on 2021-12-11, bugs #672352, #794511.
+www-apps/websvn
+
+# Michał Górny <mgorny@gentoo.org> (2021-11-11)
+# Last release was for XFCE 4.10, back in 2013.  Does not support modern
+# Vala versions.  No revdeps.
+# Removal on 2021-12-11.  Bug #823128.
+xfce-extra/xfce4-vala
+
+# John Helmert III <ajak@gentoo.org> (2021-11-11)
+# Unmaintained and vulnerable.
+# Removal on 2021-12-11. Bugs #735978, #794907
+app-emulation/firecracker
+
+# Mart Raudsepp <leio@gentoo.org> (2021-11-11)
+# Needs testing to ensure valac-0.54 works for existing packages
+>=dev-libs/vala-common-0.53
+dev-lang/vala:0.54
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-10)
+# Uses EAPI 5, dead upstream, no other distro is
+# packaging this.
+# Removal on 2021-12-10. Bug #819333.
+net-im/kouchat
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-10)
+# Uses EAPI 5, outdated and current version has
+# security vulnerabilities.
+# Removal on 2021-12-10. Bug #819327. Bug #739594.
+net-irc/cgiirc
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-10)
+# Uses EAPI 5, no maintainer, only revdep sobby is
+# also broken and unmaintained.
+# Removal on 2021-12-10. Bug #819318.
+net-libs/obby
+net-misc/sobby
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-09)
+# Uses EAPI 5, no maintainer in Gentoo, no other
+# distro is packaging this.
+# Removal on 2021-12-09. Bug #819312. Bug #819321.
+net-libs/balde
+net-libs/balde-markdown
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-09)
+# Uses EAPI 5, upstream gone, no revdeps,
+# no other distro is packaging this.
+# Removal on 2021-12-09. Bug #819303.
+net-misc/ssh-chain
+
+# Michał Górny <mgorny@gentoo.org> (2021-11-08)
+# Blocked on LLVM 11.  Upstream does not handle adding support for new
+# LLVM or Python versions timely.  No reverse dependencies.
+# Removal on 2021-12-08.  Bug #822435.
+dev-python/llvmlite
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-07)
+# No maintainer, not compatible with llvm-11 or higher.
+# Removal on 2021-12-07. Bug #812566.
+dev-libs/vc-intrinsics
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-07)
+# Fails to build with glibc-2.34, dead upstream.
+# Only revdep (media-video/clive) is outdated
+# and uses EAPI 5.
+# Removal on 2021-12-07. Bug #807172.
+media-libs/quvi
+media-video/clive
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-07)
+# Unresolved security vulnerability, still uses EAPI 5.
+# Removal on 2021-12-07. Bug #811168.
+app-misc/rundeck-bin
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-11-07)
+# Dead upstream, uses EAPI 5, no revdeps.
+# Replaced by dev-db/mytop.
+# Removal on 2021-12-07. Bug #819675.
+dev-db/mtop
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-06)
+# Libraries with no other consumers. Removal in 30 days.
+dev-java/mina-core
+dev-java/jnr-unixsocket
+dev-java/jnr-enxio
+
 # Jakov Smolić <jsmolic@gentoo.org> (2021-11-06)
 # Dead upstream, multiple open bugs, no maintainer,
 # uses EAPI 5, no revdeps.
 # Removal on 2021-12-06. Bug #819750.
 app-pda/gnupod
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-05)
-# 'btrfs filesystem usage' reports incorecct values
-# https://github.com/kdave/btrfs-progs/issues/422
-=sys-fs/btrfs-progs-5.15*
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2021-11-04)
 # Unused and outdated packages; the version in core Perl is
@@ -53,18 +232,6 @@ perl-core/podlators
 perl-core/Pod-Simple
 perl-core/Sys-Syslog
 perl-core/Term-ANSIColor
-
-# Sam James <sam@gentoo.org> (2021-11-03)
-# Newer Meson versions make unknown arguments fatal.
-# Masked for testing. bug #821544
->=dev-util/meson-0.60.0
-
-# Sam James <sam@gentoo.org> (2021-11-03)
-# Masked for testing. Minor changes which expose
-# some rare build failures. bug #821397.
-# (Only masked to avoid too many build failures
-# due to other changes hitting tree at the same time.)
-=sys-kernel/linux-headers-5.15
 
 # Sam James <sam@gentoo.org> (2021-11-03)
 # Known issues with YAMA (kernel.yama.ptrace_scope=1) which is on by default
@@ -106,12 +273,6 @@ sci-libs/libbufr
 # Fails to build with glibc-2.34, uses EAPI 5.
 # Removal on 2021-11-25. Bug #806577.
 sys-fabric/dapl
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-26)
-# Fails to build with glibc-2.34, broken test suite,
-# dead upstream, no revdeps.
-# Removal on 2021-11-25. Bug #806344.
-app-shells/heirloom-sh
 
 # Hans de Graaff <graaff@gentoo.org> (2021-10-26)
 # New rubygems versions check extension installation and will
@@ -206,339 +367,17 @@ dev-db/henplus
 # Removal on 2021-11-22. Bug #819624.
 dev-lang/nwcc
 
-# Stephan Hartmann <sultan@gentoo.org> (2021-10-23)
-# Dev channel releases are only for people who
-# are developers or want more experimental features
-# and accept a more unstable release.
->=www-client/chromium-97
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-22)
-# EAPI=5, no revdeps, dead upstream. As documentation only package,
-# upstream isn't even closely updated to latest API by cheetah.
-# Removal on 2021-11-21.  Bug #819504.
-dev-python/cheetah-docs
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-22)
-# The following packages are still using EAPI 5 and
-# have no reverse dependencies. If you need or are
-# using any package from the list please update it
-# to newer EAPI and unmask it.
-# Removal on 2021-11-21. Bug #819507
-dev-java/absolutelayout
-dev-java/backport-util-concurrent
-dev-java/beansbinding
-dev-java/blowfishj
-dev-java/btf
-dev-java/commons-chain
-dev-java/commons-dbcp
-dev-java/commons-dbutils
-dev-java/commons-discovery
-dev-java/commons-email
-dev-java/commons-graph
-dev-java/commons-launcher
-dev-java/commons-primitives
-dev-java/constantine
-dev-java/disruptor
-dev-java/dynalang
-dev-java/ecs
-dev-java/fastutil
-dev-java/forehead
-dev-java/freehep-graphicsio-emf
-dev-java/freehep-graphicsio-svg
-dev-java/geoip-java
-dev-java/glassfish-deployment-api
-dev-java/gnu-crypto
-dev-java/gnu-hylafax
-dev-java/hessian
-dev-java/hoteqn
-dev-java/htmlparser
-dev-java/htmlparser-org
-dev-java/istack-commons-runtime
-dev-java/istack-commons-soimp
-dev-java/jade
-dev-java/jamvm
-dev-java/jarjar
-dev-java/javacsv
-dev-java/jazzy
-dev-java/jetty-alpn-api
-dev-java/jetty-npn-api
-dev-java/jexcelapi
-dev-java/jfreechart
-dev-java/jlex
-dev-java/jlfgr
-dev-java/jmi-interface
-dev-java/jrexx
-dev-java/jsr181
-dev-java/jssc
-dev-java/jtreemap
-dev-java/jts-core
-dev-java/juel
-dev-java/jump
-dev-java/jupidator
-dev-java/jutils
-dev-java/jvyaml
-dev-java/metadata-extractor
-dev-java/nachocalendar
-dev-java/netty-tcnative
-dev-java/offo-hyphenation
-dev-java/opencsv
-dev-java/pat
-dev-java/reflectasm
-dev-java/rngom
-dev-java/rundoc
-dev-java/sablecc
-dev-java/sablecc-anttask
-dev-java/shared-objects
-dev-java/simplyhtml
-dev-java/sjsxp
-dev-java/snip
-dev-java/spice-jndikit
-dev-java/super-csv
-dev-java/tablelayout
-dev-java/telnetd
-dev-java/texhyphj
-dev-java/tomcat-jstl-compat
-dev-java/tomcat-jstl-el
-dev-java/toolbar
-dev-java/txw2-runtime
-dev-java/vecmath
-dev-java/xml-writer
-dev-java/xsom
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-22)
-# No maintainer, EAPI 5, no revdeps, dead upstream.
-# Removal on 2021-11-21. Bug #819498
-dev-vcs/git-deploy
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-22)
-# No maintainer, EAPI 5, no revdeps, dead upstream.
-# Removal on 2021-11-21. Bug #819495
-dev-vcs/cvsspam
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-22)
-# No maintainer, EAPI 5, no revdeps.
-# Removal on 2021-11-21. Bug #819492
-media-gfx/esci-interpreter-gt-s80
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-22)
-# No maintainer, EAPI 5, no revdeps.
-# Removal on 2021-11-21. Bug #819489
-media-gfx/iscan-plugin-perfection-v370
-
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
 # Suggested replacement - net-misc/whois
 # Masked for removal on 2021-11-22
 net-misc/bwwhois
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
-# Dead upstream, EAPI 5, broken build system, no revdeps.
-# Removal on 2021-11-20. Bug #819366
-net-analyzer/quidscor
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
-# No maintainer, no revdeps, dead upstream, EAPI 5.
-# No other distro is packaging this.
-# Removal on 2021-11-20. Bug #819363
-net-dialup/cistronradius
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
-# No maintainer, no revdeps, dead upstream, EAPI 5.
-# No other distro is packaging this.
-# Removal on 2021-11-20. Bug #819354
-net-dialup/fbgetty
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
-# Legacy package, no revdeps, EAPI 5.
-# Removal on 2021-11-20. Bug #819345
-net-fs/openafs-legacy
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
-# No maintainer, dead upstream, EAPI 5.
-# No other distro is packaging this. Bug #819339
-# Removal on 2021-11-20.
-net-ftp/profxp
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
-# No maintainer, dead upstream, EAPI 5.
-# No other distro is packaging this. Bug #819231
-# Removal on 2021-11-20.
-sys-auth/ykneo-ccid-tools
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
-# No maintainer, dead upstream, EAPI 5.
-# No other distro is packaging this. Bug #819171
-# Removal on 2021-11-20.
-x11-apps/xwarppointer
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
-# No maintainer, EAPI 5, no other distro is packaging this.
-# Removal on 2021-11-20. Bug #819165
-x11-misc/3dfb
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
-# Unmaintained, stuck on EAPI 5, full of hacks and patches.
-# No other distro is packaging this. Bug #819141
-# Removal on 2021-11-20.
-x11-themes/redhat-artwork
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
-# No maintainer, EAPI 5, no other distro is packaging this.
-# Removal on 2021-11-20. Bug #819126
-sci-geosciences/swmm
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
-# No maintainer, EAPI 5, no other distro is packaging this.
-# Removal on 2021-11-20. Bug #819123
-sci-geosciences/harmonics-dwf-free-noncomm
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-21)
-# Stuck on EAPI 5, no other distro is packaging this. Bug #575684
-# Removal on 2021-11-20.
-sci-electronics/quartus-prime-lite
-
-# David Seifert <soap@gentoo.org> (2021-10-17)
-# Broken since pretty much forever, last release 17 years ago, already
-# removed by Fedora. Bug #386275, #731042, #762346, removal in 30 days.
-media-sound/cdcd
-
-# Hans de Graaff <graaff@gentoo.org> (2021-10-17)
-# Obsolete package, replaced by dev-ruby/minitar.
-# No reverse dependencies left. Masked for removal in 30 days.
-dev-ruby/archive-tar-minitar
-
-# Sam James <sam@gentoo.org> (2021-10-17)
-# Fails to build with glibc 2.34 and no reverse dependencies.
-# bug #806508
-# Removal on 2021-11-17.
-dev-cpp/rttr
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-10-16)
-# Binary-only package, cannot be distributed, download
-# is an unversioned URL which changes content. In brief,
-# a pain. Unmaintained from now on. If you pick it up,
-# you'll have to watch it closely. Removal in 30 days
-# otherwise. Bug 794700.
-net-im/webex
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-10-16)
-# Outdated virtual; the respective module was removed
-# from core Perl with Perl 5.32. Use dev-perl/Pod-Parser
-# instead. Removal in 30days.
-virtual/perl-Pod-Parser
-
-# David Seifert <soap@gentoo.org> (2021-10-16)
-# EAPI 5, open bugs, practically maintainer-needed,
-# abandoned upstream, no other distro carries this.
-# Bug #632237, bug #656818, removal in 30 days.
-x11-themes/gtk-engines-flat
-
-# David Seifert <soap@gentoo.org> (2021-10-16)
-# EAPI 5, fails to compile with OpenSSL 1.1, bug #719974.
-# Removal in 30 days.
-mail-filter/spamdyke
-
-# David Seifert <soap@gentoo.org> (2021-10-16)
-# EAPI 5, fails to compile with OpenSSL 1.1, bug #674242.
-# Removal in 30 days.
-dev-java/netty-tcnative
-
-# David Seifert <soap@gentoo.org> (2021-10-16)
-# EAPI 5, fails to compile, QA issues, .NET team is
-# abandoned, bug #643452, bug #688404.
-# Removal in 30 days.
-dev-dotnet/dbus-sharp
-dev-dotnet/dbus-sharp-glib
-
-# Sam James <sam@gentoo.org> (2021-10-16)
-# Fails to compile with modern OCaml
-# bug #704464, bug #780090
-# Removal on 2021-11-16.
-app-text/htmlc
-
-# Sam James <sam@gentoo.org> (2021-10-15)
-# Drop broken packages with no reverse dependencies
-# Removal on 2021-11-15. bug #817965, bug #771756, bug #767196
-dev-ml/async_ssl
-dev-ml/ppx_tools_versioned
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (2021-10-14)
-# Unused and outdated packages; the version in core Perl is
-# newer. Removal in 30 days.
-perl-core/Locale-Maketext-Simple
-perl-core/Math-BigInt
-perl-core/Math-Complex
-perl-core/Memoize
-perl-core/MIME-Base64
-
-# Jaco Kroon <jaco@uls.co.za> (2021-10-05)
-# Masked for removal in 30 days.
-# Last upstream release in 2012.
-# Looks to be broken (iax-config --libs references not installed libiax.so).
-# No consumers in ::gentoo. Bug #817989
-net-libs/iax
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-10)
-# Archived upstream, and no longer maintained. Has issues with
-# python 3.9 and python 3.10.
-# Extra bugs: #798348 #798351 #812908
-# Removal on 2021-11-09.  Bug #817401.
-dev-python/python-ceilometerclient
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-10)
-# Inactive upstream with reported bugs. Has issues with python 3.9
-# and python 3.10.
-# Extra bugs: #798252 #812734
-# Removal on 2021-11-09.  Bug #817392.
-dev-python/onkyo-eiscp
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-10)
-# Archived upstream repo, and deprecated by Microsoft. Doesn't work
-# with the latest Visual Studio. Has issues with python 3.9 and
-# python 3.10.
-# Extra bugs: #798192 #723741 #727212 #730330
-# Removal on 2021-11-09.  Bug #817389.
-dev-python/ptvsd
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-10)
-# Inactive upstream with reported bugs. Has issues with python 3.9
-# and python 3.10.
-# Removal on 2021-11-09.  Bug #817386.
-dev-python/pipfile
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-10)
-# Upstream lost to history. Web archive finds a very broken repo.
-# Has issues with python 3.9 and python 3.10.
-# Extra Bugs: Bug #696674, Bug #814572
-# Removal on 2021-11-09.  Bug #817383.
-dev-db/sadisplay
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-10)
-# Old project, has problems with symlinks in repo. Fails for new
-# GitHub projects.
-# Removal on 2021-11-09.  Bug #817380.
-dev-vcs/github-pages-publish
-
-# Joonas Niilola <juippis@gentoo.org> (2021-10-10)
-# Development stopped by upstream. Switch to its actively developed
-# fork, x11-misc/picom. Bug #817338. Removal in ~30 days.
-x11-misc/compton
-
-# Joonas Niilola <juippis@gentoo.org> (2021-10-10)
-# LiveOnlyPackage with no maintainer. Upstream has multiple releases.
-# Bug #817320. Removal in ~30 days.
-dev-vcs/gti
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
 # Masking this development release for now.
 =media-libs/gexiv2-0.13.0
-
-# Patrice Clement <monsieurp@gentoo.org> (2021-10-09)
-# Obsolete and unmaintained. Please switch to app-text/htmltidy.
-# Bug #564884. Masked for removal in 30 days.
-app-text/tidy-html5
 
 # Ionen Wolkens <ionen@gentoo.org> (2021-10-09)
 # Vulkan beta driver branch aimed at Vulkan developers for testing
@@ -550,17 +389,6 @@ x11-drivers/nvidia-drivers:0/vulkan
 # Masked for erratic behaviour
 # https://bugs.exim.org/show_bug.cgi?id=2813
 =mail-mta/exim-4.95
-
-# Hans de Graaff <graaff@gentoo.org> (2021-10-03)
-# Old obsolete slots. Use a newer slot instead.
-# Masked for removal in 30 days.
-dev-ruby/hashie:0
-dev-ruby/thor:0
-
-# Alfredo Tupone <tupone@gentoo.org> (2021-09-30)
-# Deprecated upstream
-# bug #815466. Removal on 2021-10-30.
-dev-ml/ppx_metaquot
 
 # John Helmert III <ajak@gentoo.org> (2021-09-29)
 # VM image data corruption bug, causing I/O errors in VMs. Bug #815379
@@ -588,11 +416,6 @@ media-sound/pulseaudio-daemon
 # Mart Raudsepp <leio@gentoo.org> (2021-09-23)
 # Incompatible with c++17 abseil-cpp, no in-tree consumers yet
 media-libs/webrtc-audio-processing:1
-
-# Alfredo Tupone <tupone@gentoo.org> (2021-09-19)
-# Mask gnat-gpl-2018 and gnat-gpl-2019. Please switch
-# to a fresher gnat-gpl branch.
-<dev-lang/gnat-gpl-2019
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-09-18)
 # sys-devel/automake version 1.11 is EOL and is only useful for testing
@@ -681,6 +504,7 @@ net-libs/libsoup:3.0
 # bug #816498
 >=dev-lang/ocaml-4.13
 >=dev-ml/camlp4-4.13
+>=dev-ml/labltk-8.06.11
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2021-06-04)
 # Alpha versions of fetchmail 7
@@ -761,10 +585,6 @@ media-plugins/kodi-game-libretro-dosbox
 >=dev-java/ant-eclipse-ecj-4.10
 >=dev-java/eclipse-ecj-4.10
 >=www-servers/tomcat-9
-
-# Stefan Strogin <steils@gentoo.org> (2020-02-12)
-# Mask for testing revdeps.
->=dev-games/mygui-3.4.0
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
 # Breaks archives containing relative paths

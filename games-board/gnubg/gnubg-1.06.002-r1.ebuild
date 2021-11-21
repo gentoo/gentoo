@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-inherit desktop python-single-r1 xdg
+PYTHON_COMPAT=( python3_{8..10} )
+inherit autotools desktop python-single-r1 xdg
 
 DESCRIPTION="GNU BackGammon"
 HOMEPAGE="https://www.gnu.org/software/gnubg/"
@@ -33,6 +33,7 @@ RDEPEND="
 	virtual/libintl"
 DEPEND="${RDEPEND}"
 BDEPEND="
+	sys-devel/autoconf-archive
 	sys-devel/gettext
 	virtual/pkgconfig"
 
@@ -45,7 +46,7 @@ src_prepare() {
 
 	# use ${T} instead of /tmp for constructing credits (bug #298275)
 	sed -i -e 's:/tmp:${T}:' credits.sh || die
-	sed -i -e 's/fonts //' Makefile.in || die # handle font install ourself to fix bug #335774
+	sed -i -e 's/fonts //' Makefile.am || die # handle font install ourself to fix bug #335774
 	sed -i \
 		-e '/^localedir / s#=.*$#= @localedir@#' \
 		-e '/^gnulocaledir / s#=.*$#= @localedir@#' \
@@ -53,10 +54,15 @@ src_prepare() {
 	sed -i \
 		-e '/^gnubgiconsdir / s#=.*#= /usr/share#' \
 		-e '/^gnubgpixmapsdir / s#=.*#= /usr/share/pixmaps#' \
-		pixmaps/Makefile.in || die
+		pixmaps/Makefile.am || die
 	sed -i \
 		-e '1i#include <config.h>' \
 		copying.c || die #551896
+
+	# use system's copy so py3.10 distutils warning doesn't trigger a fatal error
+	rm m4/ax_python_devel.m4 || die
+
+	eautoreconf
 }
 
 src_configure() {

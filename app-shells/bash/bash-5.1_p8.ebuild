@@ -6,7 +6,7 @@ EAPI=7
 inherit flag-o-matic toolchain-funcs prefix
 
 # Official patchlevel
-# See ftp://ftp.cwru.edu/pub/bash/bash-5.0-patches/
+# See ftp://ftp.cwru.edu/pub/bash/bash-5.1-patches/
 PLEVEL="${PV##*_p}"
 MY_PV="${PV/_p*}"
 MY_PV="${MY_PV/_/-}"

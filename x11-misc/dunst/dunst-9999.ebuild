@@ -1,40 +1,38 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit systemd toolchain-funcs
+EAPI=8
 
-DESCRIPTION="Customizable and lightweight notification-daemon"
+inherit git-r3 systemd toolchain-funcs
+
+EGIT_REPO_URI="https://github.com/dunst-project/dunst"
+
+DESCRIPTION="Lightweight replacement for common notification daemons"
 HOMEPAGE="https://dunst-project.org/ https://github.com/dunst-project/dunst"
-
-if [[ ${PV} == *9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/dunst-project/dunst"
-else
-	SRC_URI="https://github.com/dunst-project/dunst/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
-fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="test wayland"
-RESTRICT="!test? ( test )"
+KEYWORDS=""
+IUSE="wayland"
 
 DEPEND="
 	dev-libs/glib:2
 	sys-apps/dbus
 	x11-libs/cairo[X,glib]
-	x11-libs/gdk-pixbuf
+	x11-libs/gdk-pixbuf:2
 	x11-libs/libX11
-	x11-libs/libXScrnSaver
 	x11-libs/libXext
+	x11-libs/libXScrnSaver
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libnotify
 	x11-libs/pango[X]
+	x11-misc/xdg-utils
 	wayland? ( dev-libs/wayland )
 "
+
 RDEPEND="${DEPEND}"
+
 BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
@@ -44,26 +42,37 @@ BDEPEND="
 src_prepare() {
 	default
 
-	sed -i \
-		-e "/^DEFAULT_CFLAGS/s/-g //" \
-		-e "/^DEFAULT_CFLAGS/s/-Os //" \
-		config.mk \
-		|| die "sed failed"
+	# Respect users CFLAGS
+	sed -e 's/-Os//' -i config.mk || die
+
+	# Use correct path for system unit
+	sed -e "s|##PREFIX##|${EPREFIX}/usr|" -i dunst.systemd.service.in || die
 }
 
 src_configure() {
 	tc-export CC PKG_CONFIG
+
 	default
 }
 
 src_compile() {
-	emake WAYLAND=$(usex wayland 1 0) SYSTEMD=0
-	sed -e "s|##PREFIX##|${EPREFIX}/usr|" \
-		dunst.systemd.service.in > dunst.service || die
+	local myemakeargs=(
+		SYSTEMD="0"
+		WAYLAND="$(usex wayland 1 0)"
+	)
+
+	emake "${myemakeargs[@]}"
 }
 
 src_install() {
-	emake WAYLAND=$(usex wayland 1 0) SYSTEMD=0 \
-		DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
-	systemd_douserunit dunst.service
+	local myemakeargs=(
+		PREFIX="${ED}/usr"
+		SYSCONFDIR="${ED}/etc"
+		SYSTEMD="0"
+		WAYLAND="$(usex wayland 1 0)"
+	)
+
+	emake "${myemakeargs[@]}" install
+
+	systemd_newuserunit dunst.systemd.service.in dunst.service
 }

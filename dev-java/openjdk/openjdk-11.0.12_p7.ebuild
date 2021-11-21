@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools check-reqs flag-o-matic java-pkg-2 java-vm-2 multiprocessing pax-utils toolchain-funcs
+inherit check-reqs flag-o-matic java-pkg-2 java-vm-2 multiprocessing pax-utils toolchain-funcs
 
 # we need -ga tag to fetch tarball and unpack it, but exact number everywhere else to
 # set build version properly
@@ -15,7 +15,7 @@ HOMEPAGE="https://openjdk.java.net"
 SRC_URI="https://hg.${PN}.java.net/jdk-updates/jdk${SLOT}u/archive/jdk-${MY_PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm arm64 ~ppc64"
+KEYWORDS="amd64 ~arm arm64 ppc64"
 
 IUSE="alsa cups debug doc examples gentoo-vm headless-awt javafx +jbootstrap +pch selinux source systemtap"
 

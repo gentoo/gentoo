@@ -36,7 +36,7 @@ pkg_pretend() {
 		if ! linux_config_exists; then
 			eerror "Unable to check your kernel for KVM support"
 		else
-			CONFIG_CHECK="~KVM ~TUN ~BRIDGE ~VHOST_VSOCK"
+			CONFIG_CHECK="~KVM ~TUN ~BRIDGE"
 			ERROR_KVM="You must enable KVM in your kernel to continue"
 			ERROR_KVM_AMD="If you have an AMD CPU, you must enable KVM_AMD in"
 			ERROR_KVM_AMD+=" your kernel configuration."
@@ -47,9 +47,6 @@ pkg_pretend() {
 			ERROR_TUN+=" virtual network devices."
 			ERROR_BRIDGE="You will also need support for 802.1d"
 			ERROR_BRIDGE+=" Ethernet Bridging for some network configurations."
-			ERROR_VHOST_VSOCK="To use AF_VSOCK sockets for communication"
-			ERROR_VHOST_VSOCK+=" between host and guest, you will need to enable"
-			ERROR_VHOST_VSOCK+=" the vhost virtio-vsock driver in your kernel."
 
 			if use amd64 || use amd64-linux; then
 				if grep -q AuthenticAMD /proc/cpuinfo; then

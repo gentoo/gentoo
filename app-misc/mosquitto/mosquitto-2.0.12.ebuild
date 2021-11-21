@@ -12,7 +12,7 @@ SRC_URI="https://mosquitto.org/files/source/${P}.tar.gz"
 
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~x86"
+KEYWORDS="amd64 arm ~arm64 x86"
 IUSE="bridge examples +persistence +srv ssl tcpd test websockets"
 RESTRICT="!test? ( test )"
 
@@ -37,6 +37,7 @@ _emake() {
 	local LIBDIR=$(get_libdir)
 	emake \
 		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
 		CLIENT_LDFLAGS="${LDFLAGS}" \
 		LIB_SUFFIX="${LIBDIR:3}" \
 		WITH_BRIDGE="$(usex bridge)" \

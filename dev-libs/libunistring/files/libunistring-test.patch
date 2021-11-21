@@ -1,0 +1,15 @@
+https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=commitdiff;h=cca32830b57e91f837c01d15b8732f23ff97fc36
+
+Author: Bruno Haible <bruno@clisp.org>
+
+--- a/tests/glthread/thread.h
++++ b/tests/glthread/thread.h
+@@ -133,8 +133,6 @@ extern int glthread_in_use (void);
+    call to foo(...) in the same function.  To avoid this, we test the
+    address of a function in libpthread that we don't use.  */
+ 
+-#  pragma weak pthread_create
+-
+ #  ifndef pthread_sigmask /* Do not declare rpl_pthread_sigmask weak.  */
+ #   pragma weak pthread_sigmask
+ #  endif

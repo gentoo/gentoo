@@ -16,7 +16,7 @@ SRC_URI="http://downloads.puppetlabs.com/puppet/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86"
 IUSE="augeas diff doc emacs ldap rrdtool selinux shadow sqlite vim-syntax"
 RESTRICT="test"
 
@@ -102,11 +102,6 @@ all_ruby_install() {
 	fperms 0750 /etc/puppetlabs/puppet/ssl
 	fowners -R :puppet /etc/puppetlabs
 	fowners -R :puppet /var/lib/puppet
-
-	if use ldap ; then
-		insinto /etc/openldap/schema
-		doins ext/ldap/puppet.schema
-	fi
 
 	# ext and examples files
 	for f in $(find ext examples -type f) ; do

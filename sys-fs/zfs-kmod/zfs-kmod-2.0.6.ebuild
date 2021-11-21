@@ -21,6 +21,10 @@ else
 	S="${WORKDIR}/zfs-${PV%_rc?}"
 	ZFS_KERNEL_COMPAT="5.14"
 
+	#  increments minor eg 5.14 -> 5.15, and still supports override.
+	ZFS_KERNEL_DEP="${ZFS_KERNEL_COMPAT_OVERRIDE:-${ZFS_KERNEL_COMPAT}}"
+	ZFS_KERNEL_DEP="${ZFS_KERNEL_DEP%%.*}.$(( ${ZFS_KERNEL_DEP##*.} + 1))"
+
 	if [[ ${PV} != *_rc* ]]; then
 		KEYWORDS="amd64 arm64 ppc64"
 	fi
@@ -39,8 +43,15 @@ BDEPEND="
 	virtual/awk
 "
 
+# we want dist-kernel block in BDEPEND because of portage resolver.
+# since linux-mod.eclass already sets version-unbounded dep, portage
+# will pull new versions. So we set it in BDEPEND which takes priority.
+# and we don't need in in git ebuild.
 if [[ ${PV} != "9999" ]] ; then
-	BDEPEND+=" verify-sig? ( app-crypt/openpgp-keys-openzfs )"
+	BDEPEND+="
+		verify-sig? ( app-crypt/openpgp-keys-openzfs )
+		dist-kernel? ( <virtual/dist-kernel-${ZFS_KERNEL_DEP}:= )
+	"
 fi
 
 # PDEPEND in this form is needed to trick portage suggest

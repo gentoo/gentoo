@@ -15,7 +15,7 @@ MY_PATCH=$(ver_cut 5-)
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="Library for multiple-precision floating-point computations with exact rounding"
-HOMEPAGE="https://www.mpfr.org/"
+HOMEPAGE="https://www.mpfr.org/ https://gitlab.inria.fr/mpfr"
 SRC_URI="https://www.mpfr.org/${MY_P}/${MY_P}.tar.xz"
 if [[ ${PV} == *_p* ]] ; then
 	# If this is a patch release, we have to download each of the patches:
@@ -47,13 +47,18 @@ PATCHES=()
 if [[ ${PV} == *_p* ]] ; then
 	# Apply the upstream patches released out of band
 	PATCHES+=( "${DISTDIR}"/ )
-
-	# One-off partial revert of 4.1.0_p13's patch10
-	# Won't be needed on next release.
-	PATCHES+=( "${FILESDIR}"/${P}-revert-doc-changes-patch10.patch )
 fi
 
 HTML_DOCS=( doc/FAQ.html )
+
+src_prepare() {
+	default
+
+	# 4.1.0_p13's patch10 patches a .texi file *and* the corresponding
+	# info file. We need to make sure the info file is newer, so the
+	# build doesn't try to run makeinfo. Won't be needed on next release.
+	touch "${S}/doc/mpfr.info" || die
+}
 
 multilib_src_configure() {
 	# bug 476336#19

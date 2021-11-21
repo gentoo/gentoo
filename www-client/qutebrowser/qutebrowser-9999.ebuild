@@ -33,7 +33,7 @@ RDEPEND="
 		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/PyQt5[${PYTHON_USEDEP},dbus,declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
 		dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
-		>=dev-python/pyyaml-6.0[${PYTHON_USEDEP}]
+		>=dev-python/pyyaml-5.4.1[${PYTHON_USEDEP},libyaml(+)]
 		>=dev-python/typing-extensions-3.10.0.2[${PYTHON_USEDEP}]
 		>=dev-python/zipp-3.6.0[${PYTHON_USEDEP}]
 		adblock? ( >=dev-python/adblock-0.5.0[${PYTHON_USEDEP}] )
@@ -119,6 +119,6 @@ pkg_postinst() {
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog "Note that optional scripts in ${EROOT}/usr/share/${PN}/{user,}scripts"
 		elog "have additional dependencies not covered by this ebuild, for example"
-		elog "view_in_mpv needs media-video/mpv setup to use yt-dlp or youtube-dl."
+		elog "view_in_mpv needs media-video/mpv[lua] and net-misc/yt-dlp."
 	fi
 }

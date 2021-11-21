@@ -1,0 +1,37 @@
+From 2f3950c8304fec2aed9bf11b52d073683b137330 Mon Sep 17 00:00:00 2001
+From: Nikolay Borisov <nborisov@suse.com>
+Date: Mon, 15 Nov 2021 11:15:42 +0200
+Subject: [PATCH] btrfs-progs: fi usage: don't reset ratio to 1 if we don't
+ have RAID56 profile
+
+Commit 80714610f36e ("btrfs-progs: use raid table for ncopies")
+slightly broke how raid ratio are being calculated since the resulting
+code would always reset ratio to be 1 in case we didn't have RAID56
+profile. The correct behavior is to simply set it to 0 if we have RAID56
+as the calculation is different in this case and leave it intact
+otherwise.
+
+This bug manifests by doing all size-related calculation for 'btrfs
+filesystem usage' command as if all block groups are of type SINGLE. Fix
+this by only resetting ratio 0 in case of RAID56.
+
+Issue: #422
+Signed-off-by: Nikolay Borisov <nborisov@suse.com>
+Signed-off-by: David Sterba <dsterba@suse.com>
+---
+ cmds/filesystem-usage.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/cmds/filesystem-usage.c b/cmds/filesystem-usage.c
+index e22efe3a4..bac0f0fd5 100644
+--- a/cmds/filesystem-usage.c
++++ b/cmds/filesystem-usage.c
+@@ -508,8 +508,6 @@ static int print_filesystem_usage_overall(int fd, struct chunk_info *chunkinfo,
+ 		 */
+ 		if (flags & BTRFS_BLOCK_GROUP_RAID56_MASK)
+ 			ratio = 0;
+-		else
+-			ratio = 1;
+ 
+ 		if (ratio > max_data_ratio)
+ 			max_data_ratio = ratio;

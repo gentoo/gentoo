@@ -33,9 +33,10 @@ QTC_PLUGINS=(android +autotest autotools:autotoolsprojectmanager baremetal bazaa
 IUSE="doc systemd test webengine ${QTC_PLUGINS[@]%:*}"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
+	android? ( lsp )
 	boot2qt? ( remotelinux )
 	clang? ( test? ( qbs ) )
-	mcu? ( cmake )
+	mcu? ( baremetal cmake )
 	python? ( lsp )
 	qmldesigner? ( qmljs )
 	qnx? ( remotelinux )

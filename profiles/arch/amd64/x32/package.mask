@@ -5,6 +5,7 @@
 # Jupyterlab and friends require net-libs/nodejs
 dev-python/jupyterlab
 dev-python/jupyterlab-lsp
+sci-misc/jupyterlab-desktop
 
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-13)
 # Is reverse-dependency of dev-qt/qtwebengine

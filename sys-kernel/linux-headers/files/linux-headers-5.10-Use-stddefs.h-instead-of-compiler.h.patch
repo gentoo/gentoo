@@ -1,0 +1,27 @@
+Needed for musl.
+
+From 9eb3c31415686ae1296d7d450f886eeba5861ec1 Mon Sep 17 00:00:00 2001
+From: Jory Pratt <anarchy@gentoo.org>
+Date: Thu, 3 Jun 2021 18:41:28 -0500
+Subject: [PATCH] Use stddefs.h instead of compiler.h
+
+---
+ include/uapi/linux/swab.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/uapi/linux/swab.h b/include/uapi/linux/swab.h
+index 7272f85..3736f2f 100644
+--- a/include/uapi/linux/swab.h
++++ b/include/uapi/linux/swab.h
+@@ -3,7 +3,7 @@
+ #define _UAPI_LINUX_SWAB_H
+ 
+ #include <linux/types.h>
+-#include <linux/compiler.h>
++#include <linux/stddef.h>
+ #include <asm/bitsperlong.h>
+ #include <asm/swab.h>
+ 
+-- 
+2.31.1
+

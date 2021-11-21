@@ -12,6 +12,7 @@
 		<flag name="aspell">Enable the app-text/aspell spell-checking backend</flag>
 		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
 		<flag name="hunspell">Enable the app-text/hunspell spell-checking backend</flag>
+		<flag name="qml">Enable QML/QtQuick support via dev-qt/qtdeclarative</flag>
 	</use>
 	<slots>
 		<subslots>

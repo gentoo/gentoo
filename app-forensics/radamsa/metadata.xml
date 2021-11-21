@@ -6,6 +6,6 @@
 		<name>Marek Szuba</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">aoh/radamsa</remote-id>
+		<remote-id type="gitlab">akihe/radamsa</remote-id>
 	</upstream>
 </pkgmetadata>

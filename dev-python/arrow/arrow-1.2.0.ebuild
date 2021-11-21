@@ -15,10 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
-	>=dev-python/python-dateutil-2.7.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	' pypy3)"
+	>=dev-python/python-dateutil-2.7.0[${PYTHON_USEDEP}]"
 
 BDEPEND="
 	test? (

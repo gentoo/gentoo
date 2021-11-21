@@ -7,7 +7,7 @@ DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{8,9,10} )
 SCONS_MIN_VERSION="2.3.0"
 
-inherit udev distutils-r1 scons-utils toolchain-funcs
+inherit udev distutils-r1 scons-utils systemd toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/gpsd/gpsd.git"
@@ -146,7 +146,7 @@ src_configure() {
 		gpsd_group=dialout
 		nostrip=True
 		systemd=$(usex systemd)
-		unitdir="\$prefix/$(get_libdir)"
+		unitdir="$(systemd_get_systemunitdir)"
 		shared=$(usex !static True False)
 		bluez=$(usex bluetooth)
 		libgpsmm=$(usex cxx)

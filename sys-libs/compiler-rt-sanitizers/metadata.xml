@@ -11,7 +11,6 @@
 		<flag name="memprof">Build memory profiler runtime.</flag>
 		<flag name="orc">Build ORC runtime.</flag>
 		<flag name="profile">Build profiling runtime.</flag>
-		<flag name="sanitize">Build sanitizer runtimes.</flag>
 		<flag name="xray">Build XRay runtime.</flag>
 
 		<flag name="asan">Build Address Sanitizer runtime.</flag>

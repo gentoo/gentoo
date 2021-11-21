@@ -1,0 +1,56 @@
+commit acb7aad27ec8a184808aa7905887e3b2c5d54e9c
+Author: Rafael Sadowski <rafael@sizeofvoid.org>
+Date:   Mon Aug 16 06:34:02 2021 +0200
+
+    Fix build with Boost 1.77.0
+    
+    BOOST_FILESYSTEM_C_STR changed to accept the path as an argument
+
+diff --git a/src/fs.cpp b/src/fs.cpp
+index 4f20ca4d28f..89c7ad27dc4 100644
+--- a/src/fs.cpp
++++ b/src/fs.cpp
+@@ -242,7 +242,11 @@ void ofstream::close()
+ }
+ #else // __GLIBCXX__
+ 
++#if BOOST_VERSION >= 107700
++static_assert(sizeof(*BOOST_FILESYSTEM_C_STR(fs::path())) == sizeof(wchar_t),
++#else
+ static_assert(sizeof(*fs::path().BOOST_FILESYSTEM_C_STR) == sizeof(wchar_t),
++#endif // BOOST_VERSION >= 107700
+     "Warning: This build is using boost::filesystem ofstream and ifstream "
+     "implementations which will fail to open paths containing multibyte "
+     "characters. You should delete this static_assert to ignore this warning, "
+diff --git a/src/wallet/test/db_tests.cpp b/src/wallet/test/db_tests.cpp
+index 17f5264b459..16cb7e0baf0 100644
+--- a/src/wallet/test/db_tests.cpp
++++ b/src/wallet/test/db_tests.cpp
+@@ -25,7 +25,11 @@ BOOST_AUTO_TEST_CASE(getwalletenv_file)
+     std::string test_name = "test_name.dat";
+     const fs::path datadir = gArgs.GetDataDirNet();
+     fs::path file_path = datadir / test_name;
++#if BOOST_VERSION >= 107700
++    std::ofstream f(BOOST_FILESYSTEM_C_STR(file_path));
++#else
+     std::ofstream f(file_path.BOOST_FILESYSTEM_C_STR);
++#endif // BOOST_VERSION >= 107700
+     f.close();
+ 
+     std::string filename;
+diff --git a/src/wallet/test/init_test_fixture.cpp b/src/wallet/test/init_test_fixture.cpp
+index dd9354848d7..53c972c46d3 100644
+--- a/src/wallet/test/init_test_fixture.cpp
++++ b/src/wallet/test/init_test_fixture.cpp
+@@ -32,7 +32,11 @@ InitWalletDirTestingSetup::InitWalletDirTestingSetup(const std::string& chainNam
+     fs::create_directories(m_walletdir_path_cases["default"]);
+     fs::create_directories(m_walletdir_path_cases["custom"]);
+     fs::create_directories(m_walletdir_path_cases["relative"]);
++#if BOOST_VERSION >= 107700
++    std::ofstream f(BOOST_FILESYSTEM_C_STR(m_walletdir_path_cases["file"]));
++#else
+     std::ofstream f(m_walletdir_path_cases["file"].BOOST_FILESYSTEM_C_STR);
++#endif // BOOST_VERSION >= 107700
+     f.close();
+ }
+ 

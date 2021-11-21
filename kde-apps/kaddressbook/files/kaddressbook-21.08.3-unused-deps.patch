@@ -1,0 +1,61 @@
+From eb9dad153f199c925ac60c0a33eca6ff0c1f9f44 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sandro=20Knau=C3=9F?= <sknauss@kde.org>
+Date: Fri, 8 Oct 2021 17:56:50 +0000
+Subject: [PATCH] Remove unneeded dependencies
+
+---
+ CMakeLists.txt     | 8 --------
+ src/CMakeLists.txt | 4 ----
+ 3 files changed, 13 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c5e3e336..aef0ccd9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -53,7 +53,6 @@ find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Widgets Test DBus PrintS
+ set(LIBKDEPIM_LIB_VERSION "5.18.3")
+ set(LIBGRANTLEETHEME_LIB_VERSION "5.18.3")
+ set(PIMCOMMON_LIB_VERSION "5.18.3")
+-set(LIBKLEO_LIB_VERSION "5.18.3")
+ set(AKONADI_SEARCH_VERSION "5.18.3")
+ set(AKONADI_CONTACT_VERSION "5.18.3")
+ 
+@@ -62,7 +61,6 @@ find_package(KF5DBusAddons ${KF5_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KF5CoreAddons ${KF5_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KF5KCMUtils ${KF5_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KF5Crash ${KF5_MIN_VERSION} REQUIRED)
+-find_package(KF5Libkleo ${LIBKLEO_LIB_VERSION} CONFIG REQUIRED)
+ 
+ find_package(KF5DocTools ${KF5_MIN_VERSION})
+ set_package_properties(KF5DocTools PROPERTIES DESCRIPTION
+@@ -79,12 +77,6 @@ find_package(KF5AkonadiSearch ${AKONADI_SEARCH_VERSION} CONFIG REQUIRED)
+ find_package(KF5AkonadiContact ${AKONADI_CONTACT_VERSION} CONFIG REQUIRED)
+ find_package(KF5GrantleeTheme ${LIBGRANTLEETHEME_LIB_VERSION} CONFIG REQUIRED)
+ 
+-set(GPGMEPP_LIB_VERSION "1.11.1")
+-find_package(Gpgmepp ${GPGMEPP_LIB_VERSION} CONFIG REQUIRED)
+-
+-set(QGPGME_LIB_VERSION "1.11.1")
+-find_package(QGpgme ${QGPGME_LIB_VERSION} CONFIG REQUIRED)
+-
+ include_directories(${kaddressbook_SOURCE_DIR} ${kaddressbook_BINARY_DIR})
+ 
+ find_package(KF5Prison ${KF5_MIN_VERSION} CONFIG REQUIRED)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 3e756aab..ac2f5774 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -98,10 +98,6 @@ if (TARGET KUserFeedbackWidgets)
+     target_link_libraries(kaddressbookprivate PRIVATE  KUserFeedbackWidgets)
+ endif()
+ 
+-if(QGpgme_FOUND)
+-    target_link_libraries(kaddressbookprivate PRIVATE QGpgme)
+-endif()
+-
+ target_include_directories(kaddressbookprivate PUBLIC "$<BUILD_INTERFACE:${kaddressbook_SOURCE_DIR};${kaddressbook_BINARY_DIR}>")
+ 
+ set_target_properties(kaddressbookprivate PROPERTIES VERSION ${KDEPIM_LIB_VERSION} SOVERSION ${KDEPIM_LIB_SOVERSION})
+-- 
+GitLab
+

@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 sparc"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	dev-python/entrypoints[${PYTHON_USEDEP}]
@@ -42,6 +42,10 @@ BDEPEND="${RDEPEND}
 # distutils_enable_sphinx docs/source
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.1.0-test-timeouts.patch
+)
+
 python_test() {
 	local deselect=(
 		# we don't run a mongo instance for tests
@@ -53,6 +57,15 @@ python_test() {
 		ipyparallel/tests/test_view.py::TestView::test_unicode_apply_result
 		ipyparallel/tests/test_view.py::TestView::test_unicode_execute
 		ipyparallel/tests/test_view.py::TestView::test_sync_imports_quiet
+		# Gets upset that a timeout _doesn't_ occur, presumably because
+		# we're cranking up too many test timeouts. Oh well.
+		# bug #823458#c3
+		ipyparallel/tests/test_asyncresult.py::AsyncResultTest::test_wait_for_send
+		# We could patch the timeout for these too but they're going to be inherently
+		# fragile anyway based on what they do.
+		ipyparallel/tests/test_client.py::TestClient::test_activate
+		ipyparallel/tests/test_client.py::TestClient::test_lazy_all_targets
+		ipyparallel/tests/test_client.py::TestClient::test_wait_for_engines
 	)
 	[[ ${EPYTHON} == python3.10 ]] && deselect+=(
 		# failing due to irrelevant warnings

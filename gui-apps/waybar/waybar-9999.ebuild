@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson
 
@@ -22,20 +22,25 @@ IUSE="mpd network +popups pulseaudio sndio tray +udev wifi"
 
 BDEPEND="
 	>=app-text/scdoc-1.9.2
+	dev-util/gdbus-codegen
 	virtual/pkgconfig
 "
 DEPEND="
+	dev-cpp/cairomm:0
+	dev-cpp/glibmm:2
 	dev-cpp/gtkmm:3.0
+	dev-libs/glib:2
 	dev-libs/jsoncpp:=
 	dev-libs/libinput:=
 	dev-libs/libsigc++:2
 	>=dev-libs/libfmt-5.3.0:=
-	>=dev-libs/spdlog-1.8.0:=
+	>=dev-libs/spdlog-1.8.5:=
 	dev-libs/date:=
 	dev-libs/wayland
 	dev-libs/wayland-protocols
 	gui-libs/wlroots:=
 	x11-libs/gtk+:3[wayland]
+	x11-libs/libxkbcommon
 	mpd? ( media-libs/libmpdclient )
 	network? ( dev-libs/libnl:3 )
 	popups? ( gui-libs/gtk-layer-shell )

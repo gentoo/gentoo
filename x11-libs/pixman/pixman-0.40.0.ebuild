@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-inherit ${GIT_ECLASS} meson-multilib multiprocessing toolchain-funcs
+inherit ${GIT_ECLASS} flag-o-matic meson-multilib multiprocessing toolchain-funcs
 
 DESCRIPTION="Low-level pixel manipulation routines"
 HOMEPAGE="http://www.pixman.org/ https://gitlab.freedesktop.org/pixman/pixman/"
@@ -27,6 +27,11 @@ IUSE="cpu_flags_ppc_altivec cpu_flags_arm_iwmmxt cpu_flags_arm_iwmmxt2 cpu_flags
 multilib_src_configure() {
 	local openmp=disabled
 	tc-has-openmp && openmp=enabled
+
+	if use arm && tc-is-clang ; then
+		# See bug #768138 and https://gitlab.freedesktop.org/pixman/pixman/-/issues/46
+		append-cflags $(test-flags-CC -fno-integrated-as)
+	fi
 
 	local emesonargs=(
 		$(meson_feature cpu_flags_arm_iwmmxt iwmmxt)

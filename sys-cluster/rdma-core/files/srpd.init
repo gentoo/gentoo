@@ -7,7 +7,7 @@ pidfile="/run/${SVCNAME}.pid"
 start_stop_daemon_args="-b -m"
 
 rdma_config="/etc/infiniband/openib.conf"
-[ -f ${rdma_config} ] && source ${rdma_config}
+[ -f ${rdma_config} ] && . ${rdma_config}
 
 [ ${SRP_DEFAULT_TL_RETRY_COUNT} ] && command_args="-l ${SRP_DEFAULT_TL_RETRY_COUNT}"
 

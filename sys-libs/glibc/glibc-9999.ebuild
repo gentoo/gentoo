@@ -6,7 +6,10 @@ EAPI=7
 # Bumping notes: https://wiki.gentoo.org/wiki/Project:Toolchain/sys-libs/glibc
 # Please read & adapt the page as necessary if obsolete.
 
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+# We avoid Python 3.10 here _for now_ (it does work!) to avoid circular dependencies
+# on upgrades as people migrate to libxcrypt.
+# https://wiki.gentoo.org/wiki/User:Sam/Portage_help/Circular_dependencies#Python_and_libcrypt
+PYTHON_COMPAT=( python3_{7,8,9} )
 TMPFILES_OPTIONAL=1
 
 inherit python-any-r1 prefix preserve-libs toolchain-funcs flag-o-matic gnuconfig \
@@ -1194,13 +1197,13 @@ run_locale_gen() {
 		root="$2"
 	fi
 
-	local locale_list="${root}/etc/locale.gen"
+	local locale_list="${root%/}/etc/locale.gen"
 
 	pushd "${ED}"/$(get_libdir) >/dev/null
 
 	if [[ -z $(locale-gen --list --config "${locale_list}") ]] ; then
 		[[ -z ${inplace} ]] && ewarn "Generating all locales; edit /etc/locale.gen to save time/space"
-		locale_list="${root}/usr/share/i18n/SUPPORTED"
+		locale_list="${root%/}/usr/share/i18n/SUPPORTED"
 	fi
 
 	set -- locale-gen ${inplace} --jobs $(makeopts_jobs) --config "${locale_list}" \
@@ -1535,6 +1538,12 @@ pkg_postinst() {
 
 	if ! is_crosscompile && [[ -z ${ROOT} ]] ; then
 		use compile-locales || run_locale_gen "${EROOT}/"
+	fi
+
+	if systemd_is_booted && [[ -z ${ROOT} ]] ; then
+		# We need to restart systemd when upgrading from < 2.34
+		# bug #823756
+		systemctl daemon-reexec
 	fi
 
 	# Check for sanity of /etc/nsswitch.conf, take 2

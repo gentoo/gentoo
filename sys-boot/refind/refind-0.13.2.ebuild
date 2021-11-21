@@ -19,6 +19,10 @@ DEPEND="sys-boot/gnu-efi"
 
 DOCS=( README.txt )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gnuefi-3.0.14.patch
+)
+
 pkg_pretend() {
 	if use custom-cflags; then
 		ewarn

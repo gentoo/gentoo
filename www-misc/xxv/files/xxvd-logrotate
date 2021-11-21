@@ -1,4 +1,4 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 /var/log/xxv/xxvd.log {
@@ -7,7 +7,7 @@
 	dateext
 	maxage 365
 	rotate 99
-	size=+4096k
+	size +4096k
 	notifempty
 	missingok
 	copytruncate
@@ -19,7 +19,7 @@
 	dateext
 	maxage 365
 	rotate 99
-	size=+4096k
+	size +4096k
 	notifempty
 	missingok
 	copytruncate

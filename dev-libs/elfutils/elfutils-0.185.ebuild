@@ -8,6 +8,7 @@ inherit flag-o-matic multilib-minimal
 DESCRIPTION="Libraries/utilities to handle ELF objects (drop in replacement for libelf)"
 HOMEPAGE="http://elfutils.org/"
 SRC_URI="https://sourceware.org/elfutils/ftp/${PV}/${P}.tar.bz2"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-0.185-patches.tar.gz"
 
 LICENSE="|| ( GPL-2+ LGPL-3+ ) utils? ( GPL-3+ )"
 SLOT="0"
@@ -18,6 +19,12 @@ RDEPEND=">=sys-libs/zlib-1.2.8-r1[static-libs?,${MULTILIB_USEDEP}]
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[static-libs?,${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1[static-libs?,${MULTILIB_USEDEP}] )
 	zstd? ( app-arch/zstd:=[static-libs?,${MULTILIB_USEDEP}] )
+	elibc_musl? (
+		dev-libs/libbsd
+		sys-libs/argp-standalone
+		sys-libs/fts-standalone
+		sys-libs/obstack-standalone
+	)
 	!dev-libs/libelf
 "
 DEPEND="${RDEPEND}
@@ -30,17 +37,15 @@ BDEPEND="nls? ( sys-devel/gettext )
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.175-disable-biarch-test-PR24158.patch
-	"${FILESDIR}"/${PN}-0.177-disable-large.patch
-	"${FILESDIR}"/${PN}-0.180-PaX-support.patch
-	"${FILESDIR}"/${PN}-0.185-static-inline.patch
-	"${FILESDIR}"/${PN}-0.185-pull-advance_pc-in-file-scope.patch
-	"${FILESDIR}"/${PN}-0.185-configure.ac-rework-gnu99-ext-check-to-allow-clang.patch
-	"${FILESDIR}"/${PN}-0.185-glibc-2.34-test-failure.patch
+	"${WORKDIR}"/${PN}-0.185-patches/
 )
 
 src_prepare() {
 	default
+
+	if use elibc_musl; then
+		eapply "${WORKDIR}"/${PN}-0.185-patches/musl/
+	fi
 
 	if ! use static-libs; then
 		sed -i -e '/^lib_LIBRARIES/s:=.*:=:' -e '/^%.os/s:%.o$::' lib{asm,dw,elf}/Makefile.in || die

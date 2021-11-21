@@ -16,6 +16,8 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE=""
 
+RESTRICT="test"
+
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -42,4 +44,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-RESTRICT="test"
+src_prepare() {
+	ecm_src_prepare
+	ecm_punt_bogus_dep KF5 GrantleeTheme
+}

@@ -16,6 +16,7 @@ IUSE="doc static-libs"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-nodocs.patch
+	"${FILESDIR}"/${PN}-test.patch
 )
 
 src_prepare() {

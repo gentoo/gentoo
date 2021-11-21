@@ -87,7 +87,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	app-arch/bzip2[${MULTILIB_USEDEP}]
-	dev-libs/protobuf:=[${MULTILIB_USEDEP}]
+	<dev-libs/protobuf-3.19:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	cuda? ( dev-util/nvidia-cuda-toolkit:0= )
 	contribhdf? ( sci-libs/hdf5:= )

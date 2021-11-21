@@ -4,6 +4,14 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2021-11-19)
+# Avoid dragging in doc/sphinx deps where we can help it
+dev-python/anyio doc
+
+# Sam James <sam@gentoo.org> (2021-11-17)
+# Avoid unnecessary dependencies
+dev-python/matplotlib gtk3
+
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Avoid keywording unnecessary depenencies for now, bug #804115
 dev-python/scipy pythran
@@ -218,10 +226,6 @@ sys-libs/glibc systemtap
 # Göktürk Yüksek <gokturk@gentoo.org> (2017-08-15)
 # Requires java
 app-forensics/sleuthkit java
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Requires USE=systemd that is masked in this profile.
-net-wireless/bluez user-session
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=seccomp that is masked in this profile.

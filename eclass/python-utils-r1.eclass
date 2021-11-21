@@ -421,7 +421,7 @@ _python_export() {
 					pypy)
 						PYTHON_PKG_DEP='>=dev-python/pypy-7.3.0:0=';;
 					pypy3)
-						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.0:0=';;
+						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.7:0=';;
 					*)
 						die "Invalid implementation: ${impl}"
 				esac

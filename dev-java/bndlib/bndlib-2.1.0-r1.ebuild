@@ -13,7 +13,7 @@ SRC_URI="https://github.com/bndtools/bnd/archive/${PV}.REL.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 
 CDEPEND="dev-java/libg:0
 	dev-java/osgi-compendium:0

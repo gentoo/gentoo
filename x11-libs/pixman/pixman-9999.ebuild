@@ -9,14 +9,14 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-inherit ${GIT_ECLASS} meson-multilib multiprocessing toolchain-funcs
+inherit ${GIT_ECLASS} flag-o-matic meson-multilib multiprocessing toolchain-funcs
 
 DESCRIPTION="Low-level pixel manipulation routines"
 HOMEPAGE="http://www.pixman.org/ https://gitlab.freedesktop.org/pixman/pixman/"
 if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 	SRC_URI="https://www.x.org/releases/individual/lib/${P}.tar.xz"
 fi
 
@@ -27,6 +27,11 @@ IUSE="cpu_flags_ppc_altivec cpu_flags_arm_iwmmxt cpu_flags_arm_iwmmxt2 cpu_flags
 multilib_src_configure() {
 	local openmp=disabled
 	tc-has-openmp && openmp=enabled
+
+	if use arm && tc-is-clang ; then
+		# See bug #768138 and https://gitlab.freedesktop.org/pixman/pixman/-/issues/46
+		append-cflags $(test-flags-CC -fno-integrated-as)
+	fi
 
 	local emesonargs=(
 		$(meson_feature cpu_flags_arm_iwmmxt iwmmxt)

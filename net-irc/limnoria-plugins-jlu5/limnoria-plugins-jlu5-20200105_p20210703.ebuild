@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/jlu5/SupyPlugins"
 SRC_URI="https://github.com/jlu5/SupyPlugins/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 SLOT=0
 
 RDEPEND="

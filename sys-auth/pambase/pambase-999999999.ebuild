@@ -21,13 +21,14 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="caps debug elogind gnome-keyring homed minimal mktemp +nullok pam_krb5 pam_ssh +passwdqc pwhistory pwquality securetty selinux +sha512 systemd"
+IUSE="caps debug elogind gnome-keyring homed minimal mktemp +nullok pam_krb5 pam_ssh +passwdqc pwhistory pwquality securetty selinux +sha512 systemd yescrypt"
 
 RESTRICT="binchecks"
 
 REQUIRED_USE="
 	?? ( elogind systemd )
 	?? ( passwdqc pwquality )
+	?? ( sha512 yescrypt )
 	pwhistory? ( || ( passwdqc pwquality ) )
 	homed? ( !pam_krb5 )
 	pam_krb5? ( !homed )
@@ -52,6 +53,7 @@ RDEPEND="
 	sha512? ( >=sys-libs/pam-${MIN_PAM_REQ} )
 	homed? ( sys-apps/systemd[homed] )
 	systemd? ( sys-apps/systemd[pam] )
+	yescrypt? ( sys-libs/libxcrypt[system] )
 "
 
 BDEPEND="$(python_gen_any_dep '

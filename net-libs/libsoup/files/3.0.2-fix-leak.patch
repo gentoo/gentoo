@@ -1,0 +1,24 @@
+From c7e251644c618ce5193881b2a16374ababc2ccf8 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Thu, 11 Nov 2021 16:47:34 +0200
+Subject: [PATCH] connection: Fix memory leak in new_tls_connection
+
+---
+ libsoup/soup-connection.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libsoup/soup-connection.c b/libsoup/soup-connection.c
+index f2e35f47..38a91e46 100644
+--- a/libsoup/soup-connection.c
++++ b/libsoup/soup-connection.c
+@@ -585,6 +585,7 @@ new_tls_connection (SoupConnection    *conn,
+                                          "advertised-protocols", advertised_protocols->pdata,
+                                          NULL);
+ 
++        g_object_unref (tls_interaction);
+         g_ptr_array_unref (advertised_protocols);
+ 
+         if (!tls_connection)
+-- 
+2.32.0
+

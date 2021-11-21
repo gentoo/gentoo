@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic multilib-minimal
+inherit autotools flag-o-matic multilib-minimal toolchain-funcs
 
 DESCRIPTION="Software codec for dv-format video (camcorders etc)"
 HOMEPAGE="http://libdv.sourceforge.net/"
@@ -36,7 +36,10 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}"	econf \
+	# bug #622662
+	tc-ld-disable-gold
+
+	ECONF_SOURCE="${S}" econf \
 		--disable-static \
 		--without-debug \
 		--disable-gtk \

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools multilib-minimal
+inherit autotools multilib-minimal optfeature
 
 DESCRIPTION="Video Acceleration (VA) API for Linux"
 HOMEPAGE="https://01.org/linuxmedia/vaapi"
@@ -23,12 +23,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1)"
-IUSE="+drm opengl utils vdpau wayland X"
-
-VIDEO_CARDS="nvidia intel i965 nouveau"
-for x in ${VIDEO_CARDS}; do
-	IUSE+=" video_cards_${x}"
-done
+IUSE="+drm opengl utils wayland X"
 
 RDEPEND="
 	>=x11-libs/libdrm-2.4.60[${MULTILIB_USEDEP}]
@@ -47,13 +42,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 "
-PDEPEND="video_cards_nvidia? ( >=x11-libs/libva-vdpau-driver-0.7.4-r1[${MULTILIB_USEDEP}] )
-	video_cards_nouveau? ( >=x11-libs/libva-vdpau-driver-0.7.4-r3[${MULTILIB_USEDEP}] )
-	vdpau? ( >=x11-libs/libva-vdpau-driver-0.7.4-r1[${MULTILIB_USEDEP}] )
-	video_cards_intel? ( >=x11-libs/libva-intel-driver-2.0.0[${MULTILIB_USEDEP}] )
-	video_cards_i965? ( >=x11-libs/libva-intel-driver-2.0.0[${MULTILIB_USEDEP}] )
-	utils? ( media-video/libva-utils )
-"
+PDEPEND="utils? ( media-video/libva-utils )"
 
 REQUIRED_USE="|| ( drm wayland X )
 	opengl? ( X )"
@@ -88,4 +77,11 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	default
 	find "${ED}" -type f -name "*.la" -delete || die
+}
+
+pkg_postinst() {
+	optfeature_header
+	optfeature "NVIDIA GPU support" x11-libs/libva-vdpau-driver
+	optfeature "Older Intel GPU support" x11-libs/libva-intel-driver
+	optfeature "Newer Intel GPU support" x11-libs/libva-intel-media-driver
 }

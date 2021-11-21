@@ -137,13 +137,6 @@ pkg_postinst() {
 		elog "# rc-update add consolefont boot"
 	fi
 
-	# Added for 0.35.
-	if [[ ! -h "${EROOT}"/lib ]]; then
-		if [[ -d "${EROOT}/$(get_libdir)"/rc ]]; then
-			cp -RPp "${EROOT}/$(get_libdir)/rc" "${EROOT}"/lib
-		fi
-	fi
-
 	if ! use newnet && ! use netifrc; then
 		ewarn "You have emerged OpenRc without network support. This"
 		ewarn "means you need to SET UP a network manager such as"

@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="BSD LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc sparse"
 
 DEPEND="
@@ -107,6 +107,10 @@ python_prepare_all() {
 	# TODO
 	sed -e "s:== 'levy_stable':in ('levy_stable', 'crystalball', 'ncf'):" \
 		-i scipy/stats/tests/test_continuous_basic.py || die
+
+	# Skip broken test causing segfault, bug #743295
+	sed -e 's:test_bisplev_integer_overflow:_&:' \
+		-i scipy/interpolate/tests/test_fitpack.py || die
 
 	if has_version ">=sci-libs/lapack-3.10"; then
 		sed -e 's:test_sort(:_&:' \

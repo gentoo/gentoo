@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~riscv ~sparc ~x86"
 
 RDEPEND="
 	app-arch/brotli[python,${PYTHON_USEDEP}]
@@ -26,9 +26,6 @@ RDEPEND="
 	>=dev-python/frozenlist-1.1.1[${PYTHON_USEDEP}]
 	>=dev-python/multidict-4.5.0[${PYTHON_USEDEP}]
 	>=dev-python/yarl-1.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/pypy3-7.3.6
-	' pypy3)
 "
 BDEPEND="
 	test? (
@@ -62,6 +59,9 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}"/${P}-examples.patch
 	)
+
+	# increate a little the timeout
+	sed -e '/abs_tol=/s/0.001/0.01/' -i tests/test_helpers.py || die
 
 	# xfail_strict fails on py3.10
 	sed -i -e '/--cov/d' -e '/xfail_strict/d' setup.cfg || die

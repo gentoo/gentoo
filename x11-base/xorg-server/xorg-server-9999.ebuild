@@ -110,7 +110,7 @@ src_configure() {
 		$(meson_use ipv6)
 		$(meson_use debug)
 		$(meson_use unwind libunwind)
-		$(meson_use !minimal dri)
+		$(meson_use !minimal dri1)
 		$(meson_use !minimal dri2)
 		$(meson_use !minimal dri3)
 		$(meson_use !minimal glx)

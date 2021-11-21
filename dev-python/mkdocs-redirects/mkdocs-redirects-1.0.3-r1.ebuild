@@ -23,7 +23,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/mkdocs-1.0.4[${PYTHON_USEDEP}]

@@ -60,6 +60,10 @@ multilib_src_configure() {
 		$(meson_use test tests)
 		# hard-code path from dev-util/vulkan-headers
 		-Dvulkan-registry=/usr/share/vulkan/registry/vk.xml
+		-Ddemos=false
+		# ^ useless, and also semi-broken
+		# (well, actually, looks like it requires some new just-for-demos deps and even with versions restrictions (say, >=glfw-3.3))
+		# feel free to patch if you need demos for some strange reason.
 	)
 	meson_src_configure
 }

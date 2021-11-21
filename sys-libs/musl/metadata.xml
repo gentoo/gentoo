@@ -12,4 +12,8 @@
 		<email>toolchain@gentoo.org</email>
 		<name>Gentoo Toolchain Project</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>musl@gentoo.org</email>
+		<name>Musl project</name>
+	</maintainer>
 </pkgmetadata>

@@ -12,7 +12,7 @@ S="${WORKDIR}"/${P/_*/}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="ncurses ipv6 ssl"
 
 RESTRICT="test"

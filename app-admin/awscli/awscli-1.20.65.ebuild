@@ -14,11 +14,12 @@ S="${WORKDIR}/aws-cli-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 # botocore is x.(y+1).z
 BOTOCORE_PV="$(ver_cut 1).$(( $(ver_cut 2) + 1)).$(ver_cut 3-)"
 RDEPEND="
+	<dev-python/botocore-1.23[${PYTHON_USEDEP}]
 	>=dev-python/botocore-${BOTOCORE_PV}[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]

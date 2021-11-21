@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="agent amt archive bluetooth dell elogind fastboot flashrom gnutls gtk-doc gusb introspection logitech lzma +man minimal modemmanager nvme policykit spi synaptics systemd test thunderbolt tpm uefi"
+IUSE="amt archive bluetooth dell elogind fastboot flashrom gnutls gtk-doc gusb introspection logitech lzma +man minimal modemmanager nvme policykit spi synaptics systemd test thunderbolt tpm uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( elogind minimal systemd )
 	dell? ( uefi )
@@ -141,7 +141,6 @@ src_configure() {
 		-Ddocs="$(usex gtk-doc gtkdoc none)"
 		-Defi_binary="false"
 		-Dsupported_build="true"
-		$(meson_use agent)
 		$(meson_use archive libarchive)
 		$(meson_use bluetooth bluez)
 		$(meson_use elogind)

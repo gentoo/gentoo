@@ -4,8 +4,7 @@
 EAPI=7
 
 MY_PN=Vulkan-Tools
-CMAKE_ECLASS="cmake-utils"
-CMAKE_MAKEFILE_GENERATOR="emake"
+CMAKE_ECLASS="cmake"
 PYTHON_COMPAT=( python3_{8,9} )
 inherit cmake-multilib python-any-r1
 
@@ -58,12 +57,10 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
-src_prepare() {
-	cmake-utils_src_prepare
-}
-
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG"
+		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG"
 		-DCMAKE_SKIP_RPATH=ON
 		-DBUILD_VULKANINFO=ON
 		-DBUILD_CUBE=$(usex cube)
@@ -78,9 +75,9 @@ multilib_src_configure() {
 		-DCUBE_WSI_SELECTION=$(usex X XCB WAYLAND)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 }

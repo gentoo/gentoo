@@ -18,7 +18,7 @@ S="${WORKDIR}/${P/_/}"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~x86"
 IUSE="doc full-support minimal test X"
 RESTRICT="!test? ( test )"
 
@@ -42,12 +42,14 @@ OPTIONAL_DEPEND="
 		dev-python/xlsxwriter[${PYTHON_USEDEP}]
 	)
 	>=dev-python/pytables-3.2.1[${PYTHON_USEDEP}]
-	dev-python/statsmodels[${PYTHON_USEDEP}]
 	>=dev-python/xarray-0.12.3[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-1.3.0[${PYTHON_USEDEP}]
 	>=dev-python/xlrd-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/xlwt-1.3.0[${PYTHON_USEDEP}]
-	>=dev-python/scipy-1.1[${PYTHON_USEDEP}]
+	!hppa? (
+		dev-python/statsmodels[${PYTHON_USEDEP}]
+		>=dev-python/scipy-1.1[${PYTHON_USEDEP}]
+	)
 	X? (
 		|| (
 			dev-python/PyQt5[${PYTHON_USEDEP}]

@@ -1,0 +1,594 @@
+From 664d487a5dbd758216ac613934a4080fcc1de347 Mon Sep 17 00:00:00 2001
+From: Brian Behlendorf <behlendorf1@llnl.gov>
+Date: Sun, 7 Nov 2021 13:27:44 -0800
+Subject: [PATCH] Fix lseek(SEEK_DATA/SEEK_HOLE) mmap consistency
+
+When using lseek(2) to report data/holes memory mapped regions of
+the file were ignored.  This could result in incorrect results.
+To handle this zfs_holey_common() was updated to asynchronously
+writeback any dirty mmap(2) regions prior to reporting holes.
+
+Additionally, while not strictly required, the dn_struct_rwlock is
+now held over the dirty check to prevent the dnode structure from
+changing.  This ensures that a clean dnode can't be dirtied before
+the data/hole is located.  The range lock is now also taken to
+ensure the call cannot race with zfs_write().
+
+Furthermore, the code was refactored to provide a dnode_is_dirty()
+helper function which checks the dnode for any dirty records to
+determine its dirtiness.
+
+Reviewed-by: Matthew Ahrens <mahrens@delphix.com>
+Reviewed-by: Tony Hutter <hutter2@llnl.gov>
+Reviewed-by: Rich Ercolani <rincebrain@gmail.com>
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Issue #11900
+Closes #12724
+---
+ configure.ac                                  |   1 +
+ include/os/freebsd/spl/sys/vnode.h            |  18 +++
+ include/os/freebsd/zfs/sys/zfs_znode_impl.h   |   3 +-
+ include/os/linux/zfs/sys/zfs_znode_impl.h     |   1 +
+ include/sys/dnode.h                           |   1 +
+ man/man4/zfs.4                                |   2 +-
+ module/zfs/dmu.c                              |  53 ++++---
+ module/zfs/dnode.c                            |  20 +++
+ module/zfs/zfs_vnops.c                        |   9 +-
+ tests/runfiles/common.run                     |   2 +-
+ tests/zfs-tests/cmd/Makefile.am               |   1 +
+ tests/zfs-tests/cmd/mmap_seek/.gitignore      |   1 +
+ tests/zfs-tests/cmd/mmap_seek/Makefile.am     |   6 +
+ tests/zfs-tests/cmd/mmap_seek/mmap_seek.c     | 147 ++++++++++++++++++
+ tests/zfs-tests/include/commands.cfg          |   1 +
+ tests/zfs-tests/include/tunables.cfg          |   1 +
+ .../tests/functional/mmap/Makefile.am         |   3 +-
+ .../functional/mmap/mmap_seek_001_pos.ksh     |  67 ++++++++
+ 18 files changed, 305 insertions(+), 32 deletions(-)
+ create mode 100644 tests/zfs-tests/cmd/mmap_seek/.gitignore
+ create mode 100644 tests/zfs-tests/cmd/mmap_seek/Makefile.am
+ create mode 100644 tests/zfs-tests/cmd/mmap_seek/mmap_seek.c
+ create mode 100755 tests/zfs-tests/tests/functional/mmap/mmap_seek_001_pos.ksh
+
+diff --git a/configure.ac b/configure.ac
+index 6f34b210d2b..ebc7b276a64 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -221,6 +221,7 @@ AC_CONFIG_FILES([
+ 	tests/zfs-tests/cmd/mktree/Makefile
+ 	tests/zfs-tests/cmd/mmap_exec/Makefile
+ 	tests/zfs-tests/cmd/mmap_libaio/Makefile
++	tests/zfs-tests/cmd/mmap_seek/Makefile
+ 	tests/zfs-tests/cmd/mmapwrite/Makefile
+ 	tests/zfs-tests/cmd/nvlist_to_lua/Makefile
+ 	tests/zfs-tests/cmd/randfree_file/Makefile
+diff --git a/include/os/freebsd/spl/sys/vnode.h b/include/os/freebsd/spl/sys/vnode.h
+index 3670712a045..3bc8a18eeb7 100644
+--- a/include/os/freebsd/spl/sys/vnode.h
++++ b/include/os/freebsd/spl/sys/vnode.h
+@@ -59,6 +59,8 @@ enum symfollow { NO_FOLLOW = NOFOLLOW };
+ #include <sys/file.h>
+ #include <sys/filedesc.h>
+ #include <sys/syscallsubr.h>
++#include <sys/vm.h>
++#include <vm/vm_object.h>
+ 
+ typedef	struct vop_vector	vnodeops_t;
+ #define	VOP_FID		VOP_VPTOFH
+@@ -83,6 +85,22 @@ vn_is_readonly(vnode_t *vp)
+ #define	vn_has_cached_data(vp)	\
+ 	((vp)->v_object != NULL && \
+ 	(vp)->v_object->resident_page_count > 0)
++
++static __inline void
++vn_flush_cached_data(vnode_t *vp, boolean_t sync)
++{
++#if __FreeBSD_version > 1300054
++	if (vm_object_mightbedirty(vp->v_object)) {
++#else
++	if (vp->v_object->flags & OBJ_MIGHTBEDIRTY) {
++#endif
++		int flags = sync ? OBJPC_SYNC : 0;
++		zfs_vmobject_wlock(vp->v_object);
++		vm_object_page_clean(vp->v_object, 0, 0, flags);
++		zfs_vmobject_wunlock(vp->v_object);
++	}
++}
++
+ #define	vn_exists(vp)		do { } while (0)
+ #define	vn_invalid(vp)		do { } while (0)
+ #define	vn_renamepath(tdvp, svp, tnm, lentnm)	do { } while (0)
+diff --git a/include/os/freebsd/zfs/sys/zfs_znode_impl.h b/include/os/freebsd/zfs/sys/zfs_znode_impl.h
+index e90008c70a8..edb28d041a0 100644
+--- a/include/os/freebsd/zfs/sys/zfs_znode_impl.h
++++ b/include/os/freebsd/zfs/sys/zfs_znode_impl.h
+@@ -118,7 +118,8 @@ extern minor_t zfsdev_minor_alloc(void);
+ #define	Z_ISLNK(type) ((type) == VLNK)
+ #define	Z_ISDIR(type) ((type) == VDIR)
+ 
+-#define	zn_has_cached_data(zp)	vn_has_cached_data(ZTOV(zp))
++#define	zn_has_cached_data(zp)		vn_has_cached_data(ZTOV(zp))
++#define	zn_flush_cached_data(zp, sync)	vn_flush_cached_data(ZTOV(zp), sync)
+ #define	zn_rlimit_fsize(zp, uio) \
+     vn_rlimit_fsize(ZTOV(zp), GET_UIO_STRUCT(uio), zfs_uio_td(uio))
+ 
+diff --git a/include/os/linux/zfs/sys/zfs_znode_impl.h b/include/os/linux/zfs/sys/zfs_znode_impl.h
+index 0a6273442b7..de46fc8f2bd 100644
+--- a/include/os/linux/zfs/sys/zfs_znode_impl.h
++++ b/include/os/linux/zfs/sys/zfs_znode_impl.h
+@@ -71,6 +71,7 @@ extern "C" {
+ #define	Z_ISDIR(type)	S_ISDIR(type)
+ 
+ #define	zn_has_cached_data(zp)		((zp)->z_is_mapped)
++#define	zn_flush_cached_data(zp, sync)	write_inode_now(ZTOI(zp), sync)
+ #define	zn_rlimit_fsize(zp, uio)	(0)
+ 
+ /*
+diff --git a/include/sys/dnode.h b/include/sys/dnode.h
+index 2cdc5b8798a..af8775b9ee0 100644
+--- a/include/sys/dnode.h
++++ b/include/sys/dnode.h
+@@ -425,6 +425,7 @@ boolean_t dnode_add_ref(dnode_t *dn, void *ref);
+ void dnode_rele(dnode_t *dn, void *ref);
+ void dnode_rele_and_unlock(dnode_t *dn, void *tag, boolean_t evicting);
+ int dnode_try_claim(objset_t *os, uint64_t object, int slots);
++boolean_t dnode_is_dirty(dnode_t *dn);
+ void dnode_setdirty(dnode_t *dn, dmu_tx_t *tx);
+ void dnode_set_dirtyctx(dnode_t *dn, dmu_tx_t *tx, void *tag);
+ void dnode_sync(dnode_t *dn, dmu_tx_t *tx);
+diff --git a/man/man4/zfs.4 b/man/man4/zfs.4
+index 2aed6895754..20b24d898d8 100644
+--- a/man/man4/zfs.4
++++ b/man/man4/zfs.4
+@@ -1574,7 +1574,7 @@ Allow no-operation writes.
+ The occurrence of nopwrites will further depend on other pool properties
+ .Pq i.a. the checksumming and compression algorithms .
+ .
+-.It Sy zfs_dmu_offset_next_sync Ns = Ns Sy 0 Ns | ns 1 Pq int
++.It Sy zfs_dmu_offset_next_sync Ns = Ns Sy 0 Ns | Ns 1 Pq int
+ Enable forcing TXG sync to find holes.
+ When enabled forces ZFS to act like prior versions when
+ .Sy SEEK_HOLE No or Sy SEEK_DATA
+diff --git a/module/zfs/dmu.c b/module/zfs/dmu.c
+index 1c47430953b..8302d506146 100644
+--- a/module/zfs/dmu.c
++++ b/module/zfs/dmu.c
+@@ -2095,42 +2095,41 @@ int
+ dmu_offset_next(objset_t *os, uint64_t object, boolean_t hole, uint64_t *off)
+ {
+ 	dnode_t *dn;
+-	int i, err;
+-	boolean_t clean = B_TRUE;
++	int err;
+ 
++restart:
+ 	err = dnode_hold(os, object, FTAG, &dn);
+ 	if (err)
+ 		return (err);
+ 
+-	/*
+-	 * Check if dnode is dirty
+-	 */
+-	for (i = 0; i < TXG_SIZE; i++) {
+-		if (multilist_link_active(&dn->dn_dirty_link[i])) {
+-			clean = B_FALSE;
+-			break;
+-		}
+-	}
++	rw_enter(&dn->dn_struct_rwlock, RW_READER);
+ 
+-	/*
+-	 * If compatibility option is on, sync any current changes before
+-	 * we go trundling through the block pointers.
+-	 */
+-	if (!clean && zfs_dmu_offset_next_sync) {
+-		clean = B_TRUE;
+-		dnode_rele(dn, FTAG);
+-		txg_wait_synced(dmu_objset_pool(os), 0);
+-		err = dnode_hold(os, object, FTAG, &dn);
+-		if (err)
+-			return (err);
+-	}
++	if (dnode_is_dirty(dn)) {
++		/*
++		 * If the zfs_dmu_offset_next_sync module option is enabled
++		 * then strict hole reporting has been requested.  Dirty
++		 * dnodes must be synced to disk to accurately report all
++		 * holes.  When disabled (the default) dirty dnodes are
++		 * reported to not have any holes which is always safe.
++		 *
++		 * When called by zfs_holey_common() the zp->z_rangelock
++		 * is held to prevent zfs_write() and mmap writeback from
++		 * re-dirtying the dnode after txg_wait_synced().
++		 */
++		if (zfs_dmu_offset_next_sync) {
++			rw_exit(&dn->dn_struct_rwlock);
++			dnode_rele(dn, FTAG);
++			txg_wait_synced(dmu_objset_pool(os), 0);
++			goto restart;
++		}
+ 
+-	if (clean)
+-		err = dnode_next_offset(dn,
+-		    (hole ? DNODE_FIND_HOLE : 0), off, 1, 1, 0);
+-	else
+ 		err = SET_ERROR(EBUSY);
++	} else {
++		err = dnode_next_offset(dn, DNODE_FIND_HAVELOCK |
++		    (hole ? DNODE_FIND_HOLE : 0), off, 1, 1, 0);
++	}
+ 
++	rw_exit(&dn->dn_struct_rwlock);
+ 	dnode_rele(dn, FTAG);
+ 
+ 	return (err);
+diff --git a/module/zfs/dnode.c b/module/zfs/dnode.c
+index 7f741542ce0..572d88ec2bf 100644
+--- a/module/zfs/dnode.c
++++ b/module/zfs/dnode.c
+@@ -1648,6 +1648,26 @@ dnode_try_claim(objset_t *os, uint64_t object, int slots)
+ 	    slots, NULL, NULL));
+ }
+ 
++/*
++ * Checks if the dnode contains any uncommitted dirty records.
++ */
++boolean_t
++dnode_is_dirty(dnode_t *dn)
++{
++	mutex_enter(&dn->dn_mtx);
++
++	for (int i = 0; i < TXG_SIZE; i++) {
++		if (list_head(&dn->dn_dirty_records[i]) != NULL) {
++			mutex_exit(&dn->dn_mtx);
++			return (B_TRUE);
++		}
++	}
++
++	mutex_exit(&dn->dn_mtx);
++
++	return (B_FALSE);
++}
++
+ void
+ dnode_setdirty(dnode_t *dn, dmu_tx_t *tx)
+ {
+diff --git a/module/zfs/zfs_vnops.c b/module/zfs/zfs_vnops.c
+index 8229bc9a93e..170e392abe9 100644
+--- a/module/zfs/zfs_vnops.c
++++ b/module/zfs/zfs_vnops.c
+@@ -85,6 +85,7 @@ zfs_fsync(znode_t *zp, int syncflag, cred_t *cr)
+ static int
+ zfs_holey_common(znode_t *zp, ulong_t cmd, loff_t *off)
+ {
++	zfs_locked_range_t *lr;
+ 	uint64_t noff = (uint64_t)*off; /* new offset */
+ 	uint64_t file_sz;
+ 	int error;
+@@ -100,12 +101,18 @@ zfs_holey_common(znode_t *zp, ulong_t cmd, loff_t *off)
+ 	else
+ 		hole = B_FALSE;
+ 
++	/* Flush any mmap()'d data to disk */
++	if (zn_has_cached_data(zp))
++		zn_flush_cached_data(zp, B_FALSE);
++
++	lr = zfs_rangelock_enter(&zp->z_rangelock, 0, file_sz, RL_READER);
+ 	error = dmu_offset_next(ZTOZSB(zp)->z_os, zp->z_id, hole, &noff);
++	zfs_rangelock_exit(lr);
+ 
+ 	if (error == ESRCH)
+ 		return (SET_ERROR(ENXIO));
+ 
+-	/* file was dirty, so fall back to using generic logic */
++	/* File was dirty, so fall back to using generic logic */
+ 	if (error == EBUSY) {
+ 		if (hole)
+ 			*off = file_sz;
+diff --git a/tests/runfiles/common.run b/tests/runfiles/common.run
+index a62cd6ad39f..97ee7b8ae24 100644
+--- a/tests/runfiles/common.run
++++ b/tests/runfiles/common.run
+@@ -669,7 +669,7 @@ tests = ['migration_001_pos', 'migration_002_pos', 'migration_003_pos',
+ tags = ['functional', 'migration']
+ 
+ [tests/functional/mmap]
+-tests = ['mmap_write_001_pos', 'mmap_read_001_pos']
++tests = ['mmap_write_001_pos', 'mmap_read_001_pos', 'mmap_seek_001_pos']
+ tags = ['functional', 'mmap']
+ 
+ [tests/functional/mount]
+diff --git a/tests/zfs-tests/cmd/Makefile.am b/tests/zfs-tests/cmd/Makefile.am
+index 2b965ca7000..d1c29fcd1c6 100644
+--- a/tests/zfs-tests/cmd/Makefile.am
++++ b/tests/zfs-tests/cmd/Makefile.am
+@@ -19,6 +19,7 @@ SUBDIRS = \
+ 	mktree \
+ 	mmap_exec \
+ 	mmap_libaio \
++	mmap_seek \
+ 	mmapwrite \
+ 	nvlist_to_lua \
+ 	randwritecomp \
+diff --git a/tests/zfs-tests/cmd/mmap_seek/.gitignore b/tests/zfs-tests/cmd/mmap_seek/.gitignore
+new file mode 100644
+index 00000000000..6b05a791750
+--- /dev/null
++++ b/tests/zfs-tests/cmd/mmap_seek/.gitignore
+@@ -0,0 +1 @@
++/mmap_seek
+diff --git a/tests/zfs-tests/cmd/mmap_seek/Makefile.am b/tests/zfs-tests/cmd/mmap_seek/Makefile.am
+new file mode 100644
+index 00000000000..b938931125f
+--- /dev/null
++++ b/tests/zfs-tests/cmd/mmap_seek/Makefile.am
+@@ -0,0 +1,6 @@
++include $(top_srcdir)/config/Rules.am
++
++pkgexecdir = $(datadir)/@PACKAGE@/zfs-tests/bin
++
++pkgexec_PROGRAMS = mmap_seek
++mmap_seek_SOURCES = mmap_seek.c
+diff --git a/tests/zfs-tests/cmd/mmap_seek/mmap_seek.c b/tests/zfs-tests/cmd/mmap_seek/mmap_seek.c
+new file mode 100644
+index 00000000000..f476e1dba9a
+--- /dev/null
++++ b/tests/zfs-tests/cmd/mmap_seek/mmap_seek.c
+@@ -0,0 +1,147 @@
++/*
++ * CDDL HEADER START
++ *
++ * The contents of this file are subject to the terms of the
++ * Common Development and Distribution License (the "License").
++ * You may not use this file except in compliance with the License.
++ *
++ * You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
++ * or http://www.opensolaris.org/os/licensing.
++ * See the License for the specific language governing permissions
++ * and limitations under the License.
++ *
++ * When distributing Covered Code, include this CDDL HEADER in each
++ * file and include the License file at usr/src/OPENSOLARIS.LICENSE.
++ * If applicable, add the following below this CDDL HEADER, with the
++ * fields enclosed by brackets "[]" replaced with your own identifying
++ * information: Portions Copyright [yyyy] [name of copyright owner]
++ *
++ * CDDL HEADER END
++ */
++
++/*
++ * Copyright (c) 2021 by Lawrence Livermore National Security, LLC.
++ */
++
++#include <unistd.h>
++#include <fcntl.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <sys/mman.h>
++#include <errno.h>
++
++static void
++seek_data(int fd, off_t offset, off_t expected)
++{
++	off_t data_offset = lseek(fd, offset, SEEK_DATA);
++	if (data_offset != expected) {
++		fprintf(stderr, "lseek(fd, %d, SEEK_DATA) = %d (expected %d)\n",
++		    (int)offset, (int)data_offset, (int)expected);
++		exit(2);
++	}
++}
++
++static void
++seek_hole(int fd, off_t offset, off_t expected)
++{
++	off_t hole_offset = lseek(fd, offset, SEEK_HOLE);
++	if (hole_offset != expected) {
++		fprintf(stderr, "lseek(fd, %d, SEEK_HOLE) = %d (expected %d)\n",
++		    (int)offset, (int)hole_offset, (int)expected);
++		exit(2);
++	}
++}
++
++int
++main(int argc, char **argv)
++{
++	char *execname = argv[0];
++	char *file_path = argv[1];
++	char *buf = NULL;
++	int err;
++
++	if (argc != 4) {
++		(void) printf("usage: %s <file name> <file size> "
++		    "<block size>\n", argv[0]);
++		exit(1);
++	}
++
++	int fd = open(file_path, O_RDWR | O_CREAT, 0666);
++	if (fd == -1) {
++		(void) fprintf(stderr, "%s: %s: ", execname, file_path);
++		perror("open");
++		exit(2);
++	}
++
++	off_t file_size = atoi(argv[2]);
++	off_t block_size = atoi(argv[3]);
++
++	if (block_size * 2 > file_size) {
++		(void) fprintf(stderr, "file size must be at least "
++		    "double the block size\n");
++		exit(2);
++	}
++
++	err = ftruncate(fd, file_size);
++	if (err == -1) {
++		perror("ftruncate");
++		exit(2);
++	}
++
++	if ((buf = mmap(NULL, file_size, PROT_READ | PROT_WRITE,
++	    MAP_SHARED, fd, 0)) == MAP_FAILED) {
++		perror("mmap");
++		exit(2);
++	}
++
++	/* Verify the file is sparse and reports no data. */
++	seek_data(fd, 0, -1);
++
++	/* Verify the file is reported as a hole. */
++	seek_hole(fd, 0, 0);
++
++	/* Verify search beyond end of file is an error. */
++	seek_data(fd, 2 * file_size, -1);
++	seek_hole(fd, 2 * file_size, -1);
++
++	/* Dirty the first byte. */
++	memset(buf, 'a', 1);
++	seek_data(fd, 0, 0);
++	seek_data(fd, block_size, -1);
++	seek_hole(fd, 0, block_size);
++	seek_hole(fd, block_size, block_size);
++
++	/* Dirty the first half of the file. */
++	memset(buf, 'b', file_size / 2);
++	seek_data(fd, 0, 0);
++	seek_data(fd, block_size, block_size);
++	seek_hole(fd, 0, P2ROUNDUP(file_size / 2, block_size));
++	seek_hole(fd, block_size, P2ROUNDUP(file_size / 2, block_size));
++
++	/* Dirty the whole file. */
++	memset(buf, 'c', file_size);
++	seek_data(fd, 0, 0);
++	seek_data(fd, file_size * 3 / 4,
++	    P2ROUNDUP(file_size * 3 / 4, block_size));
++	seek_hole(fd, 0, file_size);
++	seek_hole(fd, file_size / 2, file_size);
++
++	/* Punch a hole (required compression be enabled). */
++	memset(buf + block_size, 0, block_size);
++	seek_data(fd, 0, 0);
++	seek_data(fd, block_size, 2 * block_size);
++	seek_hole(fd, 0, block_size);
++	seek_hole(fd, block_size, block_size);
++	seek_hole(fd, 2 * block_size, file_size);
++
++	err = munmap(buf, file_size);
++	if (err == -1) {
++		perror("munmap");
++		exit(2);
++	}
++
++	close(fd);
++
++	return (0);
++}
+diff --git a/tests/zfs-tests/include/commands.cfg b/tests/zfs-tests/include/commands.cfg
+index 1ec73f25bae..4497a6248b4 100644
+--- a/tests/zfs-tests/include/commands.cfg
++++ b/tests/zfs-tests/include/commands.cfg
+@@ -209,6 +209,7 @@ export ZFSTEST_FILES='badsend
+     mktree
+     mmap_exec
+     mmap_libaio
++    mmap_seek
+     mmapwrite
+     nvlist_to_lua
+     randfree_file
+diff --git a/tests/zfs-tests/include/tunables.cfg b/tests/zfs-tests/include/tunables.cfg
+index 56d430a3987..fff43e46916 100644
+--- a/tests/zfs-tests/include/tunables.cfg
++++ b/tests/zfs-tests/include/tunables.cfg
+@@ -33,6 +33,7 @@ DEADMAN_FAILMODE		deadman.failmode		zfs_deadman_failmode
+ DEADMAN_SYNCTIME_MS		deadman.synctime_ms		zfs_deadman_synctime_ms
+ DEADMAN_ZIOTIME_MS		deadman.ziotime_ms		zfs_deadman_ziotime_ms
+ DISABLE_IVSET_GUID_CHECK	disable_ivset_guid_check	zfs_disable_ivset_guid_check
++DMU_OFFSET_NEXT_SYNC		dmu_offset_next_sync		zfs_dmu_offset_next_sync
+ INITIALIZE_CHUNK_SIZE		initialize_chunk_size		zfs_initialize_chunk_size
+ INITIALIZE_VALUE		initialize_value		zfs_initialize_value
+ KEEP_LOG_SPACEMAPS_AT_EXPORT	keep_log_spacemaps_at_export	zfs_keep_log_spacemaps_at_export
+diff --git a/tests/zfs-tests/tests/functional/mmap/Makefile.am b/tests/zfs-tests/tests/functional/mmap/Makefile.am
+index 2adc398b8c0..b26791ee7ce 100644
+--- a/tests/zfs-tests/tests/functional/mmap/Makefile.am
++++ b/tests/zfs-tests/tests/functional/mmap/Makefile.am
+@@ -4,7 +4,8 @@ dist_pkgdata_SCRIPTS = \
+ 	cleanup.ksh \
+ 	mmap_read_001_pos.ksh \
+ 	mmap_write_001_pos.ksh \
+-	mmap_libaio_001_pos.ksh
++	mmap_libaio_001_pos.ksh \
++	mmap_seek_001_pos.ksh
+ 
+ dist_pkgdata_DATA = \
+ 	mmap.cfg
+diff --git a/tests/zfs-tests/tests/functional/mmap/mmap_seek_001_pos.ksh b/tests/zfs-tests/tests/functional/mmap/mmap_seek_001_pos.ksh
+new file mode 100755
+index 00000000000..6188549ad8d
+--- /dev/null
++++ b/tests/zfs-tests/tests/functional/mmap/mmap_seek_001_pos.ksh
+@@ -0,0 +1,67 @@
++#!/bin/ksh -p
++#
++# CDDL HEADER START
++#
++# The contents of this file are subject to the terms of the
++# Common Development and Distribution License (the "License").
++# You may not use this file except in compliance with the License.
++#
++# You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
++# or http://www.opensolaris.org/os/licensing.
++# See the License for the specific language governing permissions
++# and limitations under the License.
++#
++# When distributing Covered Code, include this CDDL HEADER in each
++# file and include the License file at usr/src/OPENSOLARIS.LICENSE.
++# If applicable, add the following below this CDDL HEADER, with the
++# fields enclosed by brackets "[]" replaced with your own identifying
++# information: Portions Copyright [yyyy] [name of copyright owner]
++#
++# CDDL HEADER END
++#
++
++#
++# Copyright (c) 2021 by Lawrence Livermore National Security, LLC.
++#
++
++. $STF_SUITE/include/libtest.shlib
++. $STF_SUITE/tests/functional/mmap/mmap.cfg
++
++#
++# DESCRIPTION:
++# lseek() data/holes for an mmap()'d file.
++#
++# STRATEGY:
++# 1. Enable compression and hole reporting for dirty files.
++# 2. Call mmap_seek binary test case for various record sizes.
++#
++
++verify_runnable "global"
++
++function cleanup
++{
++	log_must zfs set compression=off $TESTPOOL/$TESTFS
++	log_must zfs set recordsize=128k $TESTPOOL/$TESTFS
++	log_must rm -f $TESTDIR/test-mmap-file
++	log_must set_tunable64 DMU_OFFSET_NEXT_SYNC $dmu_offset_next_sync
++}
++
++log_assert "lseek() data/holes for an mmap()'d file."
++
++log_onexit cleanup
++
++# Enable hole reporting for dirty files.
++typeset dmu_offset_next_sync=$(get_tunable DMU_OFFSET_NEXT_SYNC)
++log_must set_tunable64 DMU_OFFSET_NEXT_SYNC 1
++
++# Compression must be enabled to convert zero'd blocks to holes.
++# This behavior is checked by the mmap_seek test.
++log_must zfs set compression=on $TESTPOOL/$TESTFS
++
++for bs in 4096 8192 16384 32768 65536 131072; do
++	log_must zfs set recordsize=$bs $TESTPOOL/$TESTFS
++	log_must mmap_seek $TESTDIR/test-mmap-file $((1024*1024)) $bs
++	log_must rm $TESTDIR/test-mmap-file
++done
++
++log_pass "lseek() data/holes for an mmap()'d file succeeded."

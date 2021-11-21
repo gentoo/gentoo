@@ -1,5 +1,24 @@
-# Copyright 1999-2020 Gentoo Authors.
+# Copyright 1999-2021 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2021-11-20)
+# Pulls in po4a which doesn't seem to work on musl (wants /usr/bin/locale)
+sys-apps/man-db nls
+
+# Sam James <sam@gentoo.org> (2021-11-07)
+# gdb-10[nls] doesn't build on musl
+# "ax.cc:(.text+0x2e0): undefined reference to `libintl_gettext'"
+# bug #809686
+<sys-devel/gdb-11 nls
+
+# Sam James <sam@gentoo.org> (2021-11-07)
+# Disable some sanitizers for LLVM, see bug #753935
+# Needs libexecinfo on musl, not yet packaged
+sys-libs/compiler-rt-sanitizers gwp-asan libfuzzer
+
+# Sam James <sam@gentoo.org> (2021-11-07)
+# Broken as "error: unknown type name '_Unwind_Word'"
+sys-libs/compiler-rt-sanitizers hwasan
 
 # Andreas K. Hüttel <dilfridge@gentoo.org>
 # Restore mask here that is gone elsewhere

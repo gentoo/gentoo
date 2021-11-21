@@ -21,7 +21,7 @@ SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RUBY_S="rails-${PV}/${PN}"
@@ -36,7 +36,7 @@ RDEPEND+=">=app-eselect/eselect-rails-0.24"
 ruby_add_rdepend "
 	~dev-ruby/activesupport-${PV}
 	~dev-ruby/actionpack-${PV}
-	|| ( dev-ruby/thor:1 >=dev-ruby/thor-0.18.1:0 )
+	dev-ruby/thor:1
 	>=dev-ruby/rake-0.8.7
 	dev-ruby/method_source
 "

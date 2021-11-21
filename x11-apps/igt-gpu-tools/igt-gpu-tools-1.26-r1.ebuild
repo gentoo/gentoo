@@ -77,6 +77,9 @@ BDEPEND="${PYTHON_DEPS}"
 
 src_prepare() {
 	sed -e "s/find_program('rst2man-3'/find_program('rst2man.py', 'rst2man-3'/" -i man/meson.build
+	local PATCHES=(
+		"${FILESDIR}"/igt-gpu-tools-1.26-lib-meson-build-Fix-underscorify-call.patch
+	)
 	default_src_prepare
 }
 

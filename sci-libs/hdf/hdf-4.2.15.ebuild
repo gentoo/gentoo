@@ -13,7 +13,7 @@ SRC_URI="https://support.hdfgroup.org/ftp/HDF/releases/${PN^^}${PV}/src/${P}.tar
 
 SLOT="0"
 LICENSE="NCSA-HDF"
-KEYWORDS="amd64 ~ia64 ~ppc -riscv -sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ia64 ~ppc -riscv -sparc x86 ~amd64-linux ~x86-linux"
 IUSE="examples fortran szip static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( szip )"

@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-16)
+# requires sys-apps/dbus-broker, which keyworded here.
+sys-apps/systemd -hostnamed-fallback
+
 # Sam James <sam@gentoo.org> (2021-10-31)
 # dev-python/pyilmbase isn't keyworded on arm64
 media-gfx/alembic python
@@ -270,10 +274,6 @@ media-libs/mesa opencl
 # Mart Raudsepp <leio@gentoo.org> (2018-05-30)
 # app-text/pandoc not keyworded yet
 app-emulation/xen-tools doc
-
-# Mart Raudsepp <leio@gentoo.org> (2018-05-06)
-# New enough dev-ruby/webmock not keyworded yet
->=dev-ruby/thor-0.20.0 test
 
 # Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Unkeyworded dependencies.

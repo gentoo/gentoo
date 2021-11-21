@@ -36,8 +36,8 @@ RDEPEND="
 	>=x11-libs/libXext-1.3.2[abi_x86_32(-)]
 	>=x11-libs/libXi-1.7.2[abi_x86_32(-)]
 	|| (
-		sys-libs/glibc[crypt(+)]
 		sys-libs/libxcrypt[compat]
+		sys-libs/glibc[crypt(+)]
 	)
 "
 

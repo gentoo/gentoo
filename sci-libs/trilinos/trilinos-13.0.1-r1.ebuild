@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR=emake
-inherit cmake-utils toolchain-funcs multilib
+inherit cmake toolchain-funcs multilib
 
 DESCRIPTION="Scientific library collection for large scale problems"
 HOMEPAGE="http://trilinos.sandia.gov/"
@@ -18,7 +18,7 @@ LICENSE="BSD LGPL-2.1"
 SLOT="0"
 
 IUSE="
-	adolc arprec boost clp cuda eigen glpk gtest hdf5 hwloc hypre
+	adolc arprec clp cuda eigen glpk gtest hdf5 hwloc hypre
 	matio metis mkl mumps netcdf petsc qd scalapack scotch sparse
 	superlu taucs tbb test threads tvmet yaml zlib X
 "
@@ -27,13 +27,14 @@ IUSE="
 RESTRICT="test"
 
 RDEPEND="
+	!dev-cpp/kokkos
+	dev-libs/boost:=
 	sys-libs/binutils-libs
 	virtual/blas
 	virtual/lapack
 	virtual/mpi
 	adolc? ( sci-libs/adolc )
 	arprec? ( sci-libs/arprec )
-	boost? ( dev-libs/boost:= )
 	clp? ( sci-libs/coinor-clp )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-3.2 )
 	eigen? ( dev-cpp/eigen:3 )
@@ -108,8 +109,8 @@ src_configure() {
 		-DTPL_ENABLE_AMD="$(usex sparse)"
 		-DTPL_ENABLE_ARPREC="$(usex arprec)"
 		-DTPL_ENABLE_BLACS="$(usex scalapack)"
-		-DTPL_ENABLE_BoostLib="$(usex boost)"
-		-DTPL_ENABLE_Boost="$(usex boost)"
+		-DTPL_ENABLE_BoostLib=ON
+		-DTPL_ENABLE_Boost=ON
 		-DTPL_ENABLE_Clp="$(usex clp)"
 		-DTPL_ENABLE_CSparse="$(usex sparse)"
 		-DTPL_ENABLE_CUDA="$(usex cuda)"
@@ -182,15 +183,14 @@ src_configure() {
 	#
 	export CC=mpicc CXX=mpicxx && tc-export CC CXX
 
-	#
-	# cmake-utils eclass patches the base directory CMakeLists.txt
-	# which does not work for complex Trilinos CMake modules
-	#
-	CMAKE_BUILD_TYPE=RELEASE cmake-utils_src_configure
+	# Trilinos needs a custom build type:
+	local CMAKE_BUILD_TYPE=Release
+
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# Clean up the mess:
 	mv "${ED}"/bin "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"

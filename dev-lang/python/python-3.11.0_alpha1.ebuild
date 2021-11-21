@@ -193,6 +193,9 @@ src_compile() {
 	# Ensure sed works as expected
 	# https://bugs.gentoo.org/594768
 	local -x LC_ALL=C
+	# Prevent using distutils bundled by setuptools.
+	# https://bugs.gentoo.org/823728
+	export SETUPTOOLS_USE_DISTUTILS=stdlib
 
 	emake CPPFLAGS= CFLAGS= LDFLAGS=
 
@@ -221,8 +224,7 @@ src_test() {
 	# bug 660358
 	local -x COLUMNS=80
 	local -x PYTHONDONTWRITEBYTECODE=
-	# workaround https://bugs.gentoo.org/775416
-	addwrite /usr/lib/python3.10/site-packages
+	addpredict /usr/lib/python3.11/site-packages
 
 	local jobs=$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")
 

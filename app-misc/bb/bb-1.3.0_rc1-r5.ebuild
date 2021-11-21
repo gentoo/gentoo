@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools
 
 MY_P="${PN}-$(ver_cut 1-2)$(ver_cut 4-5)"
 
-DESCRIPTION="Demonstration program for visual effects of aalib"
+DESCRIPTION="Lightweight ASCII art demo using media-libs/aalib"
 HOMEPAGE="http://aa-project.sourceforge.net/"
 SRC_URI="mirror://sourceforge/aa-project/${MY_P}.tar.gz"
 
@@ -42,13 +42,13 @@ src_prepare() {
 	# unbundle lzo, #515286
 	rm -v README.LZO minilzo.{c,h} mylzo.h || die
 	sed -e 's/minilzo.c//' \
-	    -e 's/minilzo.h//' \
-	    -e 's/README.LZO//' \
+		-e 's/minilzo.h//' \
+		-e 's/README.LZO//' \
 		-i Makefile.am || die
 	echo 'bb_LDADD = -llzo2' >> Makefile.am || die
 	# update code
 	sed -e 's,#include "minilzo.h",#include <lzo/lzo1x.h>,' \
-	    -e 's,int size = image,lzo_uint size = image,' \
+		-e 's,int size = image,lzo_uint size = image,' \
 		-i image.c || die
 
 	# rename binary and manpage bb -> bb-aalib
@@ -57,9 +57,9 @@ src_prepare() {
 	sed -e 's/bb/bb-aalib/' \
 		-i bb-aalib.1
 	sed -e 's/bin_PROGRAMS = bb/bin_PROGRAMS = bb-aalib/' \
-	    -e 's/man_MANS = bb.1/man_MANS = bb-aalib.1/'     \
-	    -e 's/bb_SOURCES/bb_aalib_SOURCES/'               \
-	    -e 's/bb_LDADD/bb_aalib_LDADD/'                   \
+		-e 's/man_MANS = bb.1/man_MANS = bb-aalib.1/'     \
+		-e 's/bb_SOURCES/bb_aalib_SOURCES/'               \
+		-e 's/bb_LDADD/bb_aalib_LDADD/'                   \
 		-i Makefile.am || die
 
 	mv -v configure.{in,ac} || die

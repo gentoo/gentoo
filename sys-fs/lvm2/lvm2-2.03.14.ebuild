@@ -13,8 +13,8 @@ SRC_URI="ftp://sourceware.org/pub/lvm2/${PN/lvm/LVM}.${PV}.tgz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="readline static static-libs systemd lvm2create_initrd sanlock selinux +udev +thin device-mapper-only"
-REQUIRED_USE="device-mapper-only? ( !lvm2create_initrd !sanlock !thin )
+IUSE="readline static static-libs systemd lvm2create-initrd sanlock selinux +udev +thin device-mapper-only"
+REQUIRED_USE="device-mapper-only? ( !lvm2create-initrd !sanlock !thin )
 	static? ( !systemd !udev )
 	static-libs? ( !udev )
 	systemd? ( udev )"
@@ -32,16 +32,14 @@ DEPEND_COMMON="
 # This version of LVM is incompatible with cryptsetup <1.1.2.
 RDEPEND="${DEPEND_COMMON}
 	>=sys-apps/baselayout-2.2
-	!<sys-apps/openrc-0.11
-	!<sys-fs/cryptsetup-1.1.2
-	!!sys-fs/lvm-user
 	>=sys-apps/util-linux-2.16
-	lvm2create_initrd? ( sys-apps/makedev )
+	lvm2create-initrd? ( sys-apps/makedev )
 	!device-mapper-only? ( virtual/tmpfiles )
 	thin? ( >=sys-block/thin-provisioning-tools-0.3.0 )"
 # note: thin- 0.3.0 is required to avoid --disable-thin_check_needs_check
 DEPEND="${DEPEND_COMMON}
 	static? (
+		readline? ( sys-libs/readline[static-libs] )
 		selinux? ( sys-libs/libselinux[static-libs] )
 		>=sys-apps/util-linux-2.16[static-libs]
 	)"
@@ -120,6 +118,10 @@ src_prepare() {
 
 src_configure() {
 	filter-flags -flto
+
+	# Workaround for bug #822210
+	tc-ld-disable-gold
+
 	local myeconfargs=()
 
 	# Most of this package does weird stuff.
@@ -242,7 +244,7 @@ src_install() {
 		rm -f "${ED}"/usr/$(get_libdir)/{libdevmapper-event,liblvm2cmd,liblvm2app,libdevmapper}.a
 	fi
 
-	if use lvm2create_initrd; then
+	if use lvm2create-initrd; then
 		dosbin scripts/lvm2create_initrd/lvm2create_initrd
 		doman scripts/lvm2create_initrd/lvm2create_initrd.8
 		newdoc scripts/lvm2create_initrd/README README.lvm2create_initrd

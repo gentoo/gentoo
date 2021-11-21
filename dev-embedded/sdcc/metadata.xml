@@ -32,10 +32,12 @@ microprocessors.
 		<flag name="z80">Add support for Zilog Z80</flag>
 		<flag name="z180">Add support for Zilog Z180</flag>
 		<flag name="r2k">Add support for Rabbit 2000</flag>
+		<flag name="r2ka">Add support for Rabbit 2000A</flag>
 		<flag name="r3ka">Add support for Rabbit 3000A</flag>
 		<flag name="gbz80">Add support for Gameboy gbz80</flag>
 		<flag name="tlcs90">Add support for TLCS-90</flag>
 		<flag name="ez80-z80">Add support for EZ80-Z80</flag>
+		<flag name="z80n">Add support for Zilog Z80N</flag>
 		<flag name="ds390">Add support for Dallas DS390</flag>
 		<flag name="ds400">Add support for Dallas DS400</flag>
 		<flag name="pic14">Add support for Microchip 14 bits PICs</flag>

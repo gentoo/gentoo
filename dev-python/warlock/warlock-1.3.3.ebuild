@@ -12,7 +12,7 @@ SRC_URI="https://github.com/bcwaldon/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.g
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]

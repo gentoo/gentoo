@@ -3,9 +3,11 @@
 
 EAPI=8
 
+inherit autotools
+
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/libmwaw/libmwaw"
-	inherit autotools git-r3
+	inherit git-r3
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
@@ -31,7 +33,9 @@ BDEPEND="
 
 src_prepare() {
 	default
-	[[ ${PV} == *9999* ]] && eautoreconf
+
+	# Refresh stale libtool, bug #814512
+	eautoreconf
 }
 
 src_configure() {

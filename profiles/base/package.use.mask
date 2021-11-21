@@ -52,6 +52,7 @@ dev-lang/rust parallel-compiler
 # It is caused by -Wl,--as-needed linker flag,
 # see also: https://github.com/rspamd/rspamd/issues/3871
 ~mail-filter/rspamd-3.0 jemalloc
+~mail-filter/rspamd-3.1 jemalloc
 
 # Matt Turner <mattst88@gentoo.org> (2021-08-28)
 # Mask experimental options.
@@ -116,7 +117,7 @@ net-misc/openssh debug
 # Michał Górny <mgorny@gentoo.org> (2021-03-06)
 # LLVM 9 has been removed.
 <dev-lang/julia-1.6.0 system-llvm
-dev-util/perf clang
+<dev-util/perf-5.15 clang
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
 # PCRE JIT support via dev-libs/libpcre2[jit] is only available for certain architectures
