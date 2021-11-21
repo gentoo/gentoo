@@ -450,7 +450,6 @@ dev-java/spice-jndikit
 dev-java/super-csv
 dev-java/tablelayout
 dev-java/telnetd
-dev-java/texhyphj
 
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
