@@ -424,7 +424,6 @@ dev-java/jlfgr
 dev-java/jmi-interface
 dev-java/jrexx
 dev-java/jsr181
-dev-java/jssc
 
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
