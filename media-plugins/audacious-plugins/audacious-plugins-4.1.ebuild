@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_P="${P/_/-}"
 
@@ -45,14 +45,15 @@ BDEPEND="
 "
 DEPEND="
 	app-arch/unzip
-	dev-libs/dbus-glib
-	dev-libs/glib
+	dev-libs/glib:2
 	dev-libs/libxml2:2
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtwidgets:5
 	~media-sound/audacious-${PV}
+	sys-libs/zlib
+	x11-libs/gdk-pixbuf:2
 	aac? ( >=media-libs/faad2-2.7 )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
 	ampache? ( =media-libs/ampache_browser-1* )
