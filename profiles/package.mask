@@ -459,11 +459,6 @@ dev-java/vecmath
 dev-java/xml-writer
 dev-java/xsom
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-22)
-# No maintainer, EAPI 5, no revdeps, dead upstream.
-# Removal on 2021-11-21. Bug #819498
-dev-vcs/git-deploy
-
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
 # Suggested replacement - net-misc/whois
