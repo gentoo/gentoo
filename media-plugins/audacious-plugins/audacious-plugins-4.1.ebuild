@@ -9,7 +9,7 @@ DESCRIPTION="Lightweight and versatile audio player"
 HOMEPAGE="https://audacious-media-player.org/"
 SRC_URI="https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="
