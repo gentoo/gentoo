@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-LLVM_MAX_SLOT=12
+LLVM_MAX_SLOT=13
 PLOCALES="cs da de fr hr ja pl ru sl uk zh-CN zh-TW"
 
 inherit llvm qmake-utils virtualx xdg
@@ -68,6 +68,7 @@ CDEPEND="
 	clang? (
 		>=dev-cpp/yaml-cpp-0.6.2:=
 		|| (
+			sys-devel/clang:13
 			sys-devel/clang:12
 			sys-devel/clang:11
 		)
