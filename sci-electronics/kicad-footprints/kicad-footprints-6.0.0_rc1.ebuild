@@ -28,4 +28,3 @@ DEPEND=""
 RDEPEND=">=sci-electronics/kicad-5.1.0"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
-
