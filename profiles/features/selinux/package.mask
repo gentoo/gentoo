@@ -1,10 +1,6 @@
 # Copyright 2011-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Ionen Wolkens <ionen@gentoo.org> (2021-07-09)
-# Mask in favor of opentmpfiles until usable on selinux profiles (bug #801217)
-sys-apps/systemd-tmpfiles
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-04-06)
 # depends on sys-apps/systemd
 kde-plasma/plasma-firewall
