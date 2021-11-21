@@ -15,6 +15,7 @@ if [ "${PV}" = "9999" ]; then
 else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	SRC_URI="https://w1.fi/releases/${P}.tar.gz"
+	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-2.9-r3-patches.tar.bz2"
 fi
 
 SLOT="0"
@@ -151,6 +152,14 @@ src_prepare() {
 
 	# bug (640492)
 	sed -i 's#-Werror ##' wpa_supplicant/Makefile || die
+
+	## Security patches
+	# CVE-2019-16275 (bug #696030)
+	eapply "${FILESDIR}/wpa_supplicant-2.9-AP-Silently-ignore-management-frame-from-unexpected.patch"
+	# 2020-2, 2021-1 security advisories (bug #768759)
+	eapply "${WORKDIR}"/wpa_supplicant-2.9-r3-patches/security-{2020-2,2021-1}/*.patch
+	# CVE-2021-30004 (bug #780138)
+	eapply "${WORKDIR}"/wpa_supplicant-2.9-r3-patches/misc/CVE-2021-30004.patch
 }
 
 src_configure() {
