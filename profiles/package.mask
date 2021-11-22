@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-11-22)
+# Unmaintained upstream, never made it to a KF5-based release and Gentoo
+# was the only distro ever packaging such a snapshot. Use kimpanel from
+# kde-plasma/plasma-desktop instead.
+# Removal on 2021-12-22. Bug #824822
+kde-misc/kimtoy
+
 # Stephan Hartmann <sultan@gentoo.org> (2021-11-22)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
