@@ -1,0 +1,75 @@
+From afff43effadd78ab682ecf4c6c9919bdcbbedbcd Mon Sep 17 00:00:00 2001
+From: Alexander Lohnau <alexander.lohnau@gmx.de>
+Date: Fri, 12 Nov 2021 11:10:15 +0100
+Subject: [PATCH] baloosearchruner: Emit DBus error when baloo is disabled
+
+Otherwise we exit and KRunner runner into a long timeout.
+
+By making this a dedicated DBus error KRunner can also know, that this
+runner can not be started. Consequently making new attempts to query
+this runner can be prevented.
+
+Because the runner is DBus-Activated, we can not exit the process, otherwise other
+processes (like the search in the app launcher) will have the same issue with the timeout.
+BUG: 445342
+
+
+(cherry picked from commit fa5ac3fe3421a0077d9d80f52b89536daa732afa)
+---
+ runners/baloo/baloosearchrunner.cpp | 14 ++++++++++----
+ runners/baloo/baloosearchrunner.h   |  2 +-
+ 2 files changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/runners/baloo/baloosearchrunner.cpp b/runners/baloo/baloosearchrunner.cpp
+index 08f24b362..768709cee 100644
+--- a/runners/baloo/baloosearchrunner.cpp
++++ b/runners/baloo/baloosearchrunner.cpp
+@@ -31,10 +31,6 @@ static const QString s_openParentDirId = QStringLiteral("openParentDir");
+ 
+ int main(int argc, char **argv)
+ {
+-    Baloo::IndexerConfig config;
+-    if (!config.fileIndexingEnabled()) {
+-        return -1;
+-    }
+     QCoreApplication::setAttribute(Qt::AA_DisableSessionManager);
+     QApplication::setQuitOnLastWindowClosed(false);
+     QApplication app(argc, argv); // KRun needs widgets for error message boxes
+@@ -60,11 +56,21 @@ SearchRunner::~SearchRunner()
+ 
+ RemoteActions SearchRunner::Actions()
+ {
++    Baloo::IndexerConfig config;
++    if (!config.fileIndexingEnabled()) {
++        sendErrorReply(QDBusError::ErrorType::NotSupported);
++    }
+     return RemoteActions({RemoteAction{s_openParentDirId, i18n("Open Containing Folder"), QStringLiteral("document-open-folder")}});
+ }
+ 
+ RemoteMatches SearchRunner::Match(const QString &searchTerm)
+ {
++    Baloo::IndexerConfig config;
++    if (!config.fileIndexingEnabled()) {
++        sendErrorReply(QDBusError::ErrorType::NotSupported);
++        return {};
++    }
++
+     // Do not try to show results for queries starting with =
+     // this should trigger the calculator, but the AdvancedQueryParser::parse method
+     // in baloo interpreted it as an operator, BUG 345134
+diff --git a/runners/baloo/baloosearchrunner.h b/runners/baloo/baloosearchrunner.h
+index 5006c9ae3..4836769c9 100644
+--- a/runners/baloo/baloosearchrunner.h
++++ b/runners/baloo/baloosearchrunner.h
+@@ -14,7 +14,7 @@
+ #include "dbusutils_p.h"
+ #include <KRunner/QueryMatch>
+ 
+-class SearchRunner : public QObject
++class SearchRunner : public QObject, protected QDBusContext
+ {
+     Q_OBJECT
+ 
+-- 
+GitLab
+
