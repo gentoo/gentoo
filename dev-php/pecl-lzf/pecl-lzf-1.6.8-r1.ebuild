@@ -7,7 +7,7 @@ PHP_EXT_NAME="lzf"
 PHP_EXT_PECL_PKG="LZF"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
-USE_PHP="php7-3 php7-4 php8-0"
+USE_PHP="php7-3 php7-4 php8-0 php8-1"
 
 inherit php-ext-pecl-r3
 
