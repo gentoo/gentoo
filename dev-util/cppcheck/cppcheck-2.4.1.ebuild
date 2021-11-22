@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_7,3_8,3_9} )
-inherit distutils-r1 toolchain-funcs cmake
+
+PYTHON_COMPAT=( python3_{8..10} )
+inherit distutils-r1 cmake
 
 DESCRIPTION="Static analyzer of C/C++ code"
 HOMEPAGE="https://github.com/danmar/cppcheck"
@@ -30,6 +31,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	z3? ( sci-mathematics/z3 )
 "
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.1-limits.patch
 )
@@ -39,12 +41,11 @@ src_prepare() {
 }
 
 src_configure() {
-
 	local mycmakeargs=(
 		-DHAVE_RULES="$(usex pcre)"
 		-DBUILD_GUI="$(usex qt5)"
 		-DUSE_Z3="$(usex z3)"
-		-DFILESDIR="${EROOT}/usr/share/${PN}/"
+		-DFILESDIR="${EPREFIX}/usr/share/${PN}/"
 		-DENABLE_OSS_FUZZ=OFF
 	)
 	cmake_src_configure
@@ -63,7 +64,7 @@ src_compile() {
 src_install() {
 	# it's not autotools-based, so "${ED}" here, not "${D}", bug 531760
 	emake install DESTDIR="${ED}" \
-		FILESDIR="${EROOT}/usr/share/${PN}/"
+		FILESDIR="${EPREFIX}/usr/share/${PN}/"
 
 	insinto "/usr/share/${PN}/cfg"
 	doins cfg/*.cfg
@@ -75,7 +76,7 @@ src_install() {
 		pushd htmlreport || die
 		distutils-r1_src_install
 		popd || die
-		find "${D}" -name "*.egg-info" -delete
+		find "${D}" -name "*.egg-info" -delete || die
 	else
 		rm "${ED}/usr/bin/cppcheck-htmlreport" || die
 	fi
