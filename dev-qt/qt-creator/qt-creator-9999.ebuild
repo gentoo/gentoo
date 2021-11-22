@@ -132,7 +132,7 @@ src_prepare() {
 
 	# avoid building unused support libraries and tools
 	if ! use clang; then
-		sed -i -e '/clangsupport\|sqlite\|yaml-cpp/d' src/libs/libs.pro || die
+		sed -i -e '/yaml-cpp/d' src/libs/libs.pro || die
 		sed -i -e '/clangbackend/d' src/tools/tools.pro || die
 	fi
 	if ! use glsl; then
