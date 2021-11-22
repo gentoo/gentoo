@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	# x11-misc-util/macros only required on live ebuilds
 	LIVE_DEPEND=">=x11-misc/util-macros-1.18"
 else
-    MY_PV="${PV/_rc/-rc}"
+	MY_PV="${PV/_rc/-rc}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://gitlab.com/kicad/libraries/${PN}/-/archive/${MY_PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
