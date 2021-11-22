@@ -20,9 +20,11 @@
 		<flag name="clang">Build clang-based plugins (code model, formatting, static analysis)</flag>
 		<flag name="clearcase">Add support for IBM ClearCase version control system (requires manual installation of ClearCase client)</flag>
 		<flag name="cmake">Build plugin for CMake-based projects</flag>
+		<flag name="conan">Build plugin to integrate with the Conan package manager</flag>
 		<flag name="cppcheck">Enable integration with <pkg>dev-util/cppcheck</pkg></flag>
 		<flag name="ctfvisualizer">Build the Chrome Trace Format visualizer plugin</flag>
 		<flag name="designer">Enable designer for QtWidgets-based UIs</flag>
+		<flag name="docker">Build plugin for Docker support</flag>
 		<flag name="glsl">Build the GLSL editor plugin</flag>
 		<flag name="help">Enable the integrated documentation viewer</flag>
 		<flag name="incredibuild">Enable integration with Incredibuild (requires manual installation of Incredibuild)</flag>
@@ -40,7 +42,7 @@
 		<flag name="qmljs">Build the QML/JavaScript editor plugin</flag>
 		<flag name="qmlprofiler">Build the QML profiler plugin</flag>
 		<flag name="qnx">Build plugin for QNX devices</flag>
-		<flag name="remotelinux">Add support for deployment and execution on a remote Linux host</flag>
+		<flag name="remotelinux">Build plugin for deployment and execution on a remote Linux host</flag>
 		<flag name="scxml">Build the graphical SCXML editor plugin</flag>
 		<flag name="serialterminal">Build the serial terminal plugin</flag>
 		<flag name="silversearcher">Enable integration with <pkg>sys-apps/the_silver_searcher</pkg></flag>
