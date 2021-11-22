@@ -1,9 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2012-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-MODULE_AUTHOR="INFINOID"
+EAPI=8
+DIST_AUTHOR="INFINOID"
 
 inherit perl-module
 
@@ -15,15 +14,18 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-lang/perl
+RDEPEND="
 	dev-perl/YAML-Syck
 	dev-perl/IO-All
-	dev-vcs/subversion"
-DEPEND="${RDEPEND}
+	dev-vcs/subversion
+"
+BDEPEND="
 	dev-perl/Module-Build
-	test? ( dev-perl/Test-Exception
+	test? (
+		${RDEPEND}
+		dev-perl/Test-Exception
 		dev-perl/Test-Output
 		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage )"
-
-SRC_TEST="do"
+		dev-perl/Test-Pod-Coverage
+	)
+"
