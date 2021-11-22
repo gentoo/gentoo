@@ -36,7 +36,7 @@ BDEPEND="app-text/docbook-xml-dtd:4.1.2
 		virtual/latex-base
 	)"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.60-man.patch )
+PATCHES=( "${FILESDIR}"/${PN}-man.patch )
 
 DIST_TEST="do"
 
