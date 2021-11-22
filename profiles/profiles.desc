@@ -114,7 +114,7 @@ arm64		default/linux/arm64/17.0/desktop/plasma/systemd stable
 arm64		default/linux/arm64/17.0/desktop/systemd	stable
 arm64		default/linux/arm64/17.0/developer		exp
 arm64		default/linux/arm64/17.0/systemd		stable
-arm64		default/linux/amd64/17.1/systemd/selinux	exp
+arm64		default/linux/arm64/17.0/systemd/selinux	exp
 
 # ARM64 Profiles (big-endian)
 # @MAINTAINER: steev@gentoo.org, slyfox@gentoo.org
