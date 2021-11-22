@@ -14,9 +14,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~x86"
 
-DEPEND="
-	dev-python/msgpack[${PYTHON_USEDEP}]
-	virtual/python-greenlet[${PYTHON_USEDEP}]
+RDEPEND="dev-python/msgpack[${PYTHON_USEDEP}]
+	virtual/python-greenlet[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}
 	test? ( app-editors/neovim )"
 
 distutils_enable_tests pytest
