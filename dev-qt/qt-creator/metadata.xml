@@ -29,6 +29,7 @@
 		<flag name="lsp">Add support for the Language Server Protocol (LSP)</flag>
 		<flag name="mcu">Build plugin for MCU devices</flag>
 		<flag name="mercurial">Add support for <pkg>dev-vcs/mercurial</pkg> version control system</flag>
+		<flag name="meson">Build plugin for Meson-based projects</flag>
 		<flag name="modeling">Build the graphical model editor plugin</flag>
 		<flag name="nim">Build plugin for Nim language support</flag>
 		<flag name="perforce">Add support for Perforce version control system (requires manual installation of Perforce client)</flag>
