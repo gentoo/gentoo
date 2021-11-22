@@ -1,0 +1,41 @@
+From 931a5441746daf10d9476409f347263719ef6c63 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Mon, 1 Nov 2021 22:17:53 +0800
+Subject: [PATCH] systemtray: Check if a service is already added before
+ processing QDBusReply
+
+Due to async nature of QDBusPendingReply, services could be already
+registered by QDBusServiceWatcher when the pending reply takes a long
+time to finish, so it's possible that QDBusServiceWatcher::serviceRegistered
+signal is emitted before the pending reply emits QDBusPendingCallWatcher::finished,
+which will make the same service added twice and crash plasmashell.
+
+We need to check if a service is already added in m_sniServices before
+processing registered items in QDBusReply.
+
+BUG: 443961
+
+
+(cherry picked from commit c0b8f6871e75bbc268165844ad5780f13a5f88ac)
+---
+ applets/systemtray/statusnotifieritemhost.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/applets/systemtray/statusnotifieritemhost.cpp b/applets/systemtray/statusnotifieritemhost.cpp
+index c17eedd6c..4108b2b82 100644
+--- a/applets/systemtray/statusnotifieritemhost.cpp
++++ b/applets/systemtray/statusnotifieritemhost.cpp
+@@ -101,7 +101,9 @@ void StatusNotifierItemHost::registerWatcher(const QString &service)
+                 QDBusReply<QDBusVariant> reply = *watcher;
+                 QStringList registeredItems = reply.value().variant().toStringList();
+                 foreach (const QString &service, registeredItems) {
+-                    addSNIService(service);
++                    if (!m_sniServices.contains(service)) { // due to async nature of this call, service may be already there
++                        addSNIService(service);
++                    }
+                 }
+             });
+ 
+-- 
+GitLab
+

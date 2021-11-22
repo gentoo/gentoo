@@ -1,0 +1,54 @@
+From a9fba8b5416dd3b130045ccac40e5412714563ea Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Sat, 20 Nov 2021 21:04:06 +0800
+Subject: [PATCH] systemtray: Connect to StatusNotifierWatcher before
+ initializing QDBusPendingReply
+
+This fixes a race condition.
+
+
+(cherry picked from commit 644588739e617cfde8ee097dff4a72cc08c421aa)
+---
+ applets/systemtray/statusnotifieritemhost.cpp | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
+
+diff --git a/applets/systemtray/statusnotifieritemhost.cpp b/applets/systemtray/statusnotifieritemhost.cpp
+index 4108b2b82..117c29f17 100644
+--- a/applets/systemtray/statusnotifieritemhost.cpp
++++ b/applets/systemtray/statusnotifieritemhost.cpp
+@@ -93,6 +93,15 @@ void StatusNotifierItemHost::registerWatcher(const QString &service)
+                                                                   m_statusNotifierWatcher->path(),
+                                                                   m_statusNotifierWatcher->connection());
+ 
++            connect(m_statusNotifierWatcher,
++                    &OrgKdeStatusNotifierWatcherInterface::StatusNotifierItemRegistered,
++                    this,
++                    &StatusNotifierItemHost::serviceRegistered);
++            connect(m_statusNotifierWatcher,
++                    &OrgKdeStatusNotifierWatcherInterface::StatusNotifierItemUnregistered,
++                    this,
++                    &StatusNotifierItemHost::serviceUnregistered);
++
+             QDBusPendingReply<QDBusVariant> pendingItems = propetriesIface.Get(m_statusNotifierWatcher->interface(), "RegisteredStatusNotifierItems");
+ 
+             QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pendingItems, this);
+@@ -106,16 +115,6 @@ void StatusNotifierItemHost::registerWatcher(const QString &service)
+                     }
+                 }
+             });
+-
+-            connect(m_statusNotifierWatcher,
+-                    &OrgKdeStatusNotifierWatcherInterface::StatusNotifierItemRegistered,
+-                    this,
+-                    &StatusNotifierItemHost::serviceRegistered);
+-            connect(m_statusNotifierWatcher,
+-                    &OrgKdeStatusNotifierWatcherInterface::StatusNotifierItemUnregistered,
+-                    this,
+-                    &StatusNotifierItemHost::serviceUnregistered);
+-
+         } else {
+             delete m_statusNotifierWatcher;
+             m_statusNotifierWatcher = nullptr;
+-- 
+GitLab
+

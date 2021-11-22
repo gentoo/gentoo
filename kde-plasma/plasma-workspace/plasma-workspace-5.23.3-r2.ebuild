@@ -151,6 +151,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.21.5-split-libkworkspace.patch" # downstream
 	"${FILESDIR}/${PN}-5.22.5-krunner-cwd-at-home.patch" # TODO upstream: KDE-bug 432975, bug 767478
 	"${FILESDIR}/${P}-baloosearchrunner-emit-DBus-error-when-disabled.patch" # KDE-bug 445342
+	"${FILESDIR}/${P}-systemtray-check-if-service-already-added.patch" # KDE-bug 443961
+	"${FILESDIR}/${P}-systemtray-fix-race-condition.patch"
 )
 
 src_prepare() {
