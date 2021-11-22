@@ -1,0 +1,132 @@
+From 1ba7b5ec63b61fa00b7eac59a1beca12323fefb3 Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Wed, 17 Nov 2021 18:36:00 +0200
+Subject: [PATCH] wayland: Enable window rules for all xdg-toplevel
+
+If a window wants to be initially shown in fullscreen mode, it will
+issue an xdg_toplevel.set_fullscreen request before the first surface
+commit.
+
+If a window wants to be shown in fullscreen mode and there hasn't been
+any first surface commit, kwin will cache the request and apply
+fullscreen mode when checking window rules in the initialize() function.
+
+On the other hand, window rules are disabled for plasma surfaces. The
+motivation behind that was to forbid user from messing with plasma's
+surfaces (this change was suggested during redesign of xdg-shell
+implementation).
+
+As it turns out, there are cases where plasma may ask to show a window
+in fullscreen mode, which also has a plasma surface installed, e.g.
+fullscreen application dashboard.
+
+In order to fix the dashboard, this change allows window rules to be
+applied to xdg-toplevel windows that also have plasma surfaces installed.
+
+As is, xdg-toplevel surfaces and plasma surfaces are very different in
+nature. Adding more quirks to handle plasma surfaces in
+XdgToplevelClient is not worth the effort and there are better
+alternatives, e.g. layer-shell.
+
+
+(cherry picked from commit 039b1d031e3e30c238c8d67ade376c6d52297d81)
+---
+ src/xdgshellclient.cpp | 65 +++++++++++++++++++++---------------------
+ 1 file changed, 32 insertions(+), 33 deletions(-)
+
+diff --git a/src/xdgshellclient.cpp b/src/xdgshellclient.cpp
+index 9e8216a3a0..b4427b8cf7 100644
+--- a/src/xdgshellclient.cpp
++++ b/src/xdgshellclient.cpp
+@@ -647,7 +647,7 @@ void XdgToplevelClient::updateDecoration(bool check_workspace_pos, bool force)
+ 
+ bool XdgToplevelClient::supportsWindowRules() const
+ {
+-    return !m_plasmaShellSurface;
++    return true;
+ }
+ 
+ StrutRect XdgToplevelClient::strutRect(StrutArea area) const
+@@ -946,7 +946,7 @@ void XdgToplevelClient::handleWindowClassChanged()
+ {
+     const QByteArray applicationId = m_shellSurface->windowClass().toUtf8();
+     setResourceClass(resourceName(), applicationId);
+-    if (shellSurface()->isConfigured() && supportsWindowRules()) {
++    if (shellSurface()->isConfigured()) {
+         evaluateWindowRules();
+     }
+     setDesktopFileName(applicationId);
+@@ -1196,40 +1196,39 @@ void XdgToplevelClient::initialize()
+     // is sent if the client has called the set_mode() request with csd mode.
+     updateDecoration(false, true);
+ 
+-    if (supportsWindowRules()) {
+-        setupWindowRules(false);
+-
+-        moveResize(rules()->checkGeometry(frameGeometry(), true));
+-        maximize(rules()->checkMaximize(initialMaximizeMode(), true));
+-        setFullScreen(rules()->checkFullScreen(initialFullScreenMode(), true), false);
+-        setOnActivities(rules()->checkActivity(activities(), true));
+-        setDesktops(rules()->checkDesktops(desktops(), true));
+-        setDesktopFileName(rules()->checkDesktopFile(desktopFileName(), true).toUtf8());
+-        if (rules()->checkMinimize(isMinimized(), true)) {
+-            minimize(true); // No animation.
+-        }
+-        setSkipTaskbar(rules()->checkSkipTaskbar(skipTaskbar(), true));
+-        setSkipPager(rules()->checkSkipPager(skipPager(), true));
+-        setSkipSwitcher(rules()->checkSkipSwitcher(skipSwitcher(), true));
+-        setKeepAbove(rules()->checkKeepAbove(keepAbove(), true));
+-        setKeepBelow(rules()->checkKeepBelow(keepBelow(), true));
+-        setShortcut(rules()->checkShortcut(shortcut().toString(), true));
+-        setNoBorder(rules()->checkNoBorder(noBorder(), true));
++    setupWindowRules(false);
++
++    moveResize(rules()->checkGeometry(frameGeometry(), true));
++    maximize(rules()->checkMaximize(initialMaximizeMode(), true));
++    setFullScreen(rules()->checkFullScreen(initialFullScreenMode(), true), false);
++    setOnActivities(rules()->checkActivity(activities(), true));
++    setDesktops(rules()->checkDesktops(desktops(), true));
++    setDesktopFileName(rules()->checkDesktopFile(desktopFileName(), true).toUtf8());
++    if (rules()->checkMinimize(isMinimized(), true)) {
++        minimize(true); // No animation.
++    }
++    setSkipTaskbar(rules()->checkSkipTaskbar(skipTaskbar(), true));
++    setSkipPager(rules()->checkSkipPager(skipPager(), true));
++    setSkipSwitcher(rules()->checkSkipSwitcher(skipSwitcher(), true));
++    setKeepAbove(rules()->checkKeepAbove(keepAbove(), true));
++    setKeepBelow(rules()->checkKeepBelow(keepBelow(), true));
++    setShortcut(rules()->checkShortcut(shortcut().toString(), true));
++    setNoBorder(rules()->checkNoBorder(noBorder(), true));
++
++    // Don't place the client if its position is set by a rule.
++    if (rules()->checkPosition(invalidPoint, true) != invalidPoint) {
++        needsPlacement = false;
++    }
+ 
+-        // Don't place the client if its position is set by a rule.
+-        if (rules()->checkPosition(invalidPoint, true) != invalidPoint) {
+-            needsPlacement = false;
+-        }
++    // Don't place the client if the maximize state is set by a rule.
++    if (requestedMaximizeMode() != MaximizeRestore) {
++        needsPlacement = false;
++    }
+ 
+-        // Don't place the client if the maximize state is set by a rule.
+-        if (requestedMaximizeMode() != MaximizeRestore) {
+-            needsPlacement = false;
+-        }
++    discardTemporaryRules();
++    RuleBook::self()->discardUsed(this, false); // Remove Apply Now rules.
++    updateWindowRules(Rules::All);
+ 
+-        discardTemporaryRules();
+-        RuleBook::self()->discardUsed(this, false); // Remove Apply Now rules.
+-        updateWindowRules(Rules::All);
+-    }
+     if (isRequestedFullScreen()) {
+         needsPlacement = false;
+     }
+-- 
+GitLab
+

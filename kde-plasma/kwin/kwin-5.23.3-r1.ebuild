@@ -102,6 +102,8 @@ PDEPEND=">=kde-plasma/kde-cli-tools-${PVCUT}:5"
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-xwayland-abstract-socket-addr.patch" # KDE-bug 442362, bug 813888
+	"${FILESDIR}/${P}-revert-2560288e.patch" # KDE-bug 445444
+	"${FILESDIR}/${P}-enable-window-rules-for-all-xdg-toplevel.patch"
 )
 
 src_prepare() {
