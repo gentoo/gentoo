@@ -15,7 +15,7 @@ LICENSE="|| ( GPL-2 LGPL-3+ )"
 SLOT="0/${PV%%.*}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
-IUSE="debug emacs +fuse +georeplication ipv6 +libtirpc rsyslog static-libs +syslog tcmalloc test +xml"
+IUSE="debug emacs +fuse +georeplication ipv6 +libtirpc rsyslog static-libs tcmalloc test +xml"
 
 REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} xml )
 	ipv6? ( libtirpc )"
@@ -96,7 +96,6 @@ src_configure() {
 		$(use_enable fuse fuse-client) \
 		$(use_enable georeplication) \
 		$(use_enable static-libs static) \
-		$(use_enable syslog) \
 		$(use_enable test cmocka) \
 		$(use_enable xml xml-output) \
 		$(usex ipv6 --with-ipv6-default "") \
