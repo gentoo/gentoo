@@ -335,7 +335,6 @@ x11-plugins/hexchat-javascript
 # Mask go-etcd which fails to compile, and etcd-fs revdep.
 # Removal on 2021-11-22. Bug #771042.
 dev-db/go-etcd
-sys-fs/etcd-fs
 
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
