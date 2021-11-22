@@ -3,10 +3,7 @@
 
 EAPI="7"
 
-USE_PHP="php7-2 php7-3 php7-4 php8-0"
-
-MY_PV="${PV/_rc/RC}"
-PHP_EXT_PECL_FILENAME="dbase-${MY_PV}.tgz"
+USE_PHP="php7-3 php7-4 php8-0 php8-1"
 
 inherit php-ext-pecl-r3
 
@@ -19,6 +16,3 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${PHP_EXT_PECL_FILENAME%.tgz}"
-PHP_EXT_S="${S}"
