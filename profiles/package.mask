@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (2021-11-22)
+# Cool package, but no longer developed upstream, and my immediate use
+# for it has expired. No reverse dependencies, deprecated EAPI;
+# removal in 30 days.  Bug #826386.
+app-text/XML-Schema-learner
+
 # Hans de Graaff <graaff@gentoo.org> (2021-11-20)
 # Obsolete package. Last upstream release in 2014, upstream itself is
 # gone. No reverse dependencies in Gentoo.
