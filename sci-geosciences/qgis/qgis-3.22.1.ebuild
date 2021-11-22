@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 PYTHON_REQ_USE="sqlite"
 
 if [[ ${PV} = *9999* ]]; then
@@ -14,7 +14,7 @@ else
 		examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )"
 	KEYWORDS="~amd64 ~x86"
 fi
-inherit cmake desktop python-single-r1 qmake-utils xdg
+inherit cmake python-single-r1 xdg
 
 DESCRIPTION="User friendly Geographic Information System"
 HOMEPAGE="https://www.qgis.org/"
