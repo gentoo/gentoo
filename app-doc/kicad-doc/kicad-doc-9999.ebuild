@@ -17,7 +17,8 @@ else
 	MY_PV="${PV/_rc/-rc}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://gitlab.com/kicad/services/${PN}/-/archive/${MY_PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${PN}-${MY_PV}"
+	KEYWORDS="~amd64 ~x86"	
 fi
 
 LICENSE="|| ( GPL-3+ CC-BY-3.0 ) GPL-2"
@@ -46,8 +47,6 @@ BDEPEND="
 	l10n_pl? ( dev-texlive/texlive-langpolish )
 	l10n_ru? ( dev-texlive/texlive-langcyrillic )
 	l10n_zh? ( dev-texlive/texlive-langchinese )"
-
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_configure() {
 	local mycmakeargs=(

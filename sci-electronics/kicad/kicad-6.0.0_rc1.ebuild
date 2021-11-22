@@ -21,12 +21,13 @@ else
 	MY_PV="${PV/_rc/-rc}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://gitlab.com/kicad/code/${PN}/-/archive/${MY_PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${MY_PV}"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-2+ GPL-3+ Boost-1.0"
 SLOT="0"
-IUSE="doc examples +ngspice openmp +python occ"
+IUSE="doc examples +ngspice openmp +python occ +pcm"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -72,8 +73,6 @@ pkg_setup() {
 	check-reqs_pkg_setup
 }
 
-S="${WORKDIR}/${PN}-${MY_PV}"
-
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
@@ -95,7 +94,7 @@ src_configure() {
 		-DKICAD_SCRIPTING_PYTHON3="$(usex python)"
 		-DKICAD_SCRIPTING_ACTION_MENU="$(usex python)"
 		-DKICAD_SPICE="$(usex ngspice)"
-		-DKICAD_PCM="ON"
+		-DKICAD_PCM="$(usex pcm)"
 
 		-DKICAD_USE_OCC="$(usex occ)"
 		-DKICAD_INSTALL_DEMOS="$(usex examples)"

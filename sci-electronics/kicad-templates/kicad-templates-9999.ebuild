@@ -15,11 +15,10 @@ else
     MY_P="${PN}-${MY_PV}"
     SRC_URI="https://gitlab.com/kicad/libraries/${PN}/-/archive/${MY_PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
+	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
 LICENSE="CC-BY-SA-4.0"
 SLOT="0"
 
-RDEPEND=">=sci-electronics/kicad-5.1.0"
-
-S="${WORKDIR}/${PN}-${MY_PV}"
+RDEPEND=">=sci-electronics/kicad-5.99"

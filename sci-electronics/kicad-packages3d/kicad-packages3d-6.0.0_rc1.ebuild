@@ -24,8 +24,6 @@ LICENSE="CC-BY-SA-4.0"
 SLOT="0"
 
 DEPEND=""
-RDEPEND=">=sci-electronics/kicad-5.1.0[occ=]"
-
-S="${WORKDIR}/${PN/3d/3D}-${MY_PV}-1080b6e565e56bae9be46db2278a1542092d7a2d"
+RDEPEND=">=sci-electronics/kicad-5.99[occ=]"
 
 CHECKREQS_DISK_BUILD="11G"
