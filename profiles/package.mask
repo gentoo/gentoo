@@ -342,11 +342,6 @@ sys-fs/etcd-fs
 # Removal on 2021-11-22. Bug #819756.
 app-office/borg
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-23)
-# No maintainer, no revdeps, EAPI 5, dead upstream.
-# Removal on 2021-11-22. Bug #819717.
-app-forensics/yasat
-
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
 # Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
 # Suggested replacement - net-misc/whois
