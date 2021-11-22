@@ -8,6 +8,7 @@ sys-libs/pam
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
 # Mask the libxcrypt-based virtual
 ~virtual/libcrypt-2
+-virtual/libcrypt:0/1
 
 # Ionen Wolkens <ionen@gentoo.org> (2021-07-09)
 # Mask in favor of opentmpfiles until usable with uclibc-ng (bug #801106)

@@ -1,6 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-11-22)
+# Mask the older libcrypt virtual (which accepted glibc[crypt]) to ease
+# dependency resolution. In a fair number of cases, this has helped
+# upgrades go through cleanly.
+# (This mask is undone in musl profiles where the transition is not yet being
+# made.)
+# bug #699422.
+virtual/libcrypt:0/1
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-06)
 # No longer maintained upstream; please see the 2021-07-15-opentmpfiles-deprecation
 # news item.

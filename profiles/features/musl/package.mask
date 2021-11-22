@@ -21,6 +21,7 @@ net-misc/netkit-rsh
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
 # Mask the libxcrypt-based virtual
 ~virtual/libcrypt-2
+-virtual/libcrypt:0/1
 
 # David Seifert <soap@gentoo.org> (2021-02-08)
 # nvidia-drivers only works against glibc.
