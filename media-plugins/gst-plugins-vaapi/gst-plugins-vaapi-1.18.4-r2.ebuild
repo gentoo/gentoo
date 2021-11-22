@@ -72,6 +72,10 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 # FIXME: "Failed to create vaapipostproc element"
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}/1.18.4-Avoid-calling-python3-script-to-enable-git-hook.patch"
+)
+
 multilib_src_configure() {
 	local emesonargs=(
 		-Dwith_encoders=yes
