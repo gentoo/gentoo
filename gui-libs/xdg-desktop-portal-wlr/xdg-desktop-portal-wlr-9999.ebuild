@@ -22,20 +22,21 @@ IUSE="elogind systemd"
 REQUIRED_USE="?? ( elogind systemd )"
 
 DEPEND="
-	>=media-video/pipewire-0.3.2:=
+	>=media-video/pipewire-0.3.34:=
+	dev-libs/inih
 	dev-libs/wayland
-	>=dev-libs/wayland-protocols-1.14:=
-	elogind? ( >=sys-auth/elogind-237 )
-	systemd? ( >=sys-apps/systemd-237 )
+	|| (
+		systemd? ( >=sys-apps/systemd-237 )
+		elogind? ( >=sys-auth/elogind-237 )
+		sys-libs/basu
+	)
 "
 RDEPEND="
 	${DEPEND}
 	sys-apps/xdg-desktop-portal
 "
 BDEPEND="
-	>=media-video/pipewire-0.3.2:=
-	>=dev-libs/wayland-protocols-1.14
-	dev-libs/inih:0
+	dev-libs/wayland-protocols
 	virtual/pkgconfig
 "
 
@@ -43,5 +44,12 @@ src_configure() {
 	local emesonargs=(
 		"-Dwerror=false"
 	)
+	if use systemd; then
+		emesonargs+=(-Dsd-bus-provider=libsystemd)
+	elif use elogind; then
+		emesonargs+=(-Dsd-bus-provider=libelogind)
+	else
+		emesonargs+=(-Dsd-bus-provider=basu)
+	fi
 	meson_src_configure
 }

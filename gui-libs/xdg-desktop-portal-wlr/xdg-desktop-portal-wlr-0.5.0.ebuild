@@ -45,9 +45,9 @@ src_configure() {
 		"-Dwerror=false"
 	)
 	if use systemd; then
-		emesonargs+=(-Dsd-bus-provider=systemd)
+		emesonargs+=(-Dsd-bus-provider=libsystemd)
 	elif use elogind; then
-		emesonargs+=(-Dsd-bus-provider=elogind)
+		emesonargs+=(-Dsd-bus-provider=libelogind)
 	else
 		emesonargs+=(-Dsd-bus-provider=basu)
 	fi
