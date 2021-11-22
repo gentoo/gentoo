@@ -91,6 +91,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-fusermount \
+		--disable-lto \
 		$(use_enable debug) \
 		$(use_enable fuse fuse-client) \
 		$(use_enable georeplication) \
