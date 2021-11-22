@@ -12,3 +12,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 BDEPEND="app-crypt/jetring"
+
+src_compile() {
+	# Bug #826686
+	addpredict "/run/user/$(id -u)/gnupg/"
+	default
+}
