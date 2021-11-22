@@ -7,7 +7,7 @@ inherit perl-module
 
 DESCRIPTION="Japanese Morphological Analysis System, ChaSen"
 HOMEPAGE="https://chasen-legacy.osdn.jp/"
-SRC_URI="mirror://sourceforge.jp/${PN}-legacy/32224/${P}.tar.gz"
+SRC_URI="mirror://sourceforge.jp/${PN}-legacy/56305/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -17,8 +17,6 @@ IUSE="perl static-libs"
 RDEPEND="virtual/libiconv"
 DEPEND=">=dev-libs/darts-0.32"
 PDEPEND=">=app-dicts/ipadic-2.7.0"
-
-PATCHES=( "${FILESDIR}"/${P}-cve-2011-4000.patch )
 
 src_configure() {
 	econf $(use_enable static-libs static)
