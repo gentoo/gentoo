@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 PLOCALES="af ar ca cs da de eo es et eu fr hr hu id it ja kn ko nb nl pl pt pt_BR ru sl sr_Cyrl sv uk vi zh_CN zh_HK"
 
 inherit perl-module plocale
@@ -19,16 +19,15 @@ RESTRICT="!test? ( test )"
 RDEPEND="app-text/opensp
 	dev-libs/libxslt
 	dev-perl/Locale-gettext
+	dev-perl/Pod-Parser
 	dev-perl/SGMLSpm
 	dev-perl/TermReadKey
 	dev-perl/Text-WrapI18N
 	dev-perl/Unicode-LineBreak
 	dev-perl/YAML-Tiny
-	sys-devel/gettext
-	dev-perl/Pod-Parser"
+	sys-devel/gettext"
 DEPEND="${RDEPEND}"
-BDEPEND="
-	app-text/docbook-xml-dtd:4.1.2
+BDEPEND="app-text/docbook-xml-dtd:4.1.2
 	app-text/docbook-xsl-stylesheets
 	dev-perl/Module-Build
 	test? (
