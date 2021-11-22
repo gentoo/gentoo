@@ -21,7 +21,7 @@ RDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
-	epytest -m 'not download'
+	epytest -m 'not download' -p no:markdown
 }
 
 python_install() {
