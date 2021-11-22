@@ -6,11 +6,12 @@ EAPI=7
 inherit edos2unix flag-o-matic multilib multilib-minimal autotools pam java-pkg-opt-2 db-use systemd toolchain-funcs tmpfiles
 
 SASLAUTHD_CONF_VER="2.1.26"
-
+MY_PATCH_VER="${PN}-2.1.27-r6-patches"
 DESCRIPTION="The Cyrus SASL (Simple Authentication and Security Layer)"
 HOMEPAGE="https://www.cyrusimap.org/sasl/"
 #SRC_URI="ftp://ftp.cyrusimap.org/cyrus-sasl/${P}.tar.gz"
 SRC_URI="https://github.com/cyrusimap/${PN}/releases/download/${P}/${P}.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_PATCH_VER}.tar.bz2"
 
 LICENSE="BSD-with-attribution"
 SLOT="2"
@@ -47,18 +48,7 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.1.27-avoid_pic_overwrite.patch"
-	"${FILESDIR}/${PN}-2.1.27-autotools_fixes.patch"
-	"${FILESDIR}/${PN}-2.1.27-as_needed.patch"
-	"${FILESDIR}/${PN}-2.1.25-auxprop.patch"
-	"${FILESDIR}/${PN}-2.1.27-gss_c_nt_hostbased_service.patch"
-	"${FILESDIR}/${PN}-2.1.26-missing-size_t.patch"
-	"${FILESDIR}/${PN}-2.1.27-doc_build_fix.patch"
-	"${FILESDIR}/${PN}-2.1.27-memmem.patch"
-	"${FILESDIR}/${PN}-2.1.27-CVE-2019-19906.patch"
-	"${FILESDIR}/${PN}-2.1.27-slibtool.patch"
-	"${FILESDIR}/${PN}-2.1.27-db_gdbm-fix-gdbm_errno-overlay-from-gdbm_close.patch"
-	"${FILESDIR}/${PN}-2.1.27-autoconf-2.71.patch"
+	"${WORKDIR}"/${MY_PATCH_VER}/
 )
 
 pkg_setup() {
