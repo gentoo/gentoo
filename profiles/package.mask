@@ -34,6 +34,14 @@
 #--- END OF EXAMPLES ---
 
 # Marek Szuba <marecki@gentoo.org> (2021-11-22)
+# Upstream switched from static documentation to the Wiki format
+# around 10 years ago, and the ebuild we've got in the tree was
+# massively outdated even then (our version: 812, last static
+# upstream version: 2001). No maintainer in Gentoo, EAPI 5.
+# Removal in 30 days. Bug #826454
+app-doc/selfhtml
+
+# Marek Szuba <marecki@gentoo.org> (2021-11-22)
 # Last release in 2008 at the latest, no maintainer in Gentoo for years,
 # EAPI 5, upstream is gone, the only distros which still package it are
 # Gentoo, Funtoo and LiGurOS.
