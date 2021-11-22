@@ -14,7 +14,7 @@ HOMEPAGE="https://fs-uae.net/"
 SRC_URI="https://fs-uae.net/files/FS-UAE-Launcher/Stable/${PV}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE="lha"
 RESTRICT="test" # The test files are just boilerplate.
 
