@@ -9,7 +9,7 @@ DESCRIPTION="Electronic Schematic and PCB design tools manuals"
 HOMEPAGE="https://docs.kicad.org/"
 
 if [[ ${PV} == 9999 ]]; then
-    EGIT_REPO_URI="https://gitlab.com/kicad/services/kicad-doc.git"
+	EGIT_REPO_URI="https://gitlab.com/kicad/services/kicad-doc.git"
 	inherit git-r3
 	# x11-misc-util/macros only required on live ebuilds
 	LIVE_DEPEND=">=x11-misc/util-macros-1.18"
@@ -18,7 +18,7 @@ else
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://gitlab.com/kicad/services/${PN}/-/archive/${MY_PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${MY_PV}"
-	KEYWORDS="~amd64 ~x86 ~arm64"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="|| ( GPL-3+ CC-BY-3.0 ) GPL-2"
