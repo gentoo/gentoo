@@ -12,6 +12,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">redis</remote-id>
-    <remote-id type="github">andymccurdy/redis-py</remote-id>
+    <remote-id type="github">redis/redis-py</remote-id>
   </upstream>
 </pkgmetadata>
