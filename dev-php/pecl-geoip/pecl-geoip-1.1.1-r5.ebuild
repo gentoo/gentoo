@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PHP_EXT_NAME="geoip"
 DOCS="README ChangeLog"
-USE_PHP="php7-2 php7-3 php7-4 php8-0"
+USE_PHP="php7-3 php7-4 php8-0 php8-1"
 
 inherit php-ext-pecl-r3
 
@@ -22,4 +22,5 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/fix-failing-tests-1.1.1.patch"
 	"${FILESDIR}/php8-support-1.1.1.patch"
+	"${FILESDIR}/fix-failing-tests-php8-1-1.1.1.patch"
 )
