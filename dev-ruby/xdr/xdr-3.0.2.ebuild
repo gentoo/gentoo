@@ -26,7 +26,7 @@ ruby_add_rdepend ">=dev-ruby/activemodel-5.2.0:*
 	>=dev-ruby/activesupport-5.2.0:*"
 
 all_ruby_prepare() {
-	sed -i -e '/bundler/,/pry/ s:^:#:' spec/spec_helper.rb || die
+	sed -i -e '/bundler/,/pry/ s:^:#:' -e '/simplecov/,/^end/ s:^:#:' spec/spec_helper.rb || die
 
 	sed -i -e 's:_relative ": "./:' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
