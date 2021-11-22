@@ -6,8 +6,8 @@ EAPI="5"
 inherit epatch perl-module
 
 DESCRIPTION="Japanese Morphological Analysis System, ChaSen"
-HOMEPAGE="http://chasen-legacy.sourceforge.jp/"
-SRC_URI="mirror://sourceforge.jp/chasen-legacy/32224/${P}.tar.gz"
+HOMEPAGE="https://chasen-legacy.osdn.jp/"
+SRC_URI="mirror://sourceforge.jp/${PN}-legacy/32224/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
