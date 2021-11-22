@@ -110,7 +110,6 @@ DYNAMIC_PRPLS="irc,jabber,simple"
 #   x11-plugins/pidgin-encryption
 #   x11-plugins/pidgin-extprefs
 #   x11-plugins/pidgin-hotkeys
-#   x11-plugins/pidgin-latex
 #   x11-plugins/pidgintex
 #   x11-plugins/pidgin-libnotify
 #	x11-plugins/pidgin-mbpurple
