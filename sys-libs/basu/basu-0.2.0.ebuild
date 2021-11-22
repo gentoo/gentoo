@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit meson
+PYTHON_COMPAT=( python3_{8..10} )
+inherit meson python-any-r1
 
 DESCRIPTION="The sd-bus library, extracted from systemd"
 HOMEPAGE="https://sr.ht/~emersion/basu/"
@@ -22,7 +23,9 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 # Needed to generate hash tables
-BDEPEND="dev-util/gperf"
+BDEPEND="${PYTHON_DEPS}
+	dev-util/gperf
+"
 
 PATCHES=(
 	"${FILESDIR}"/0001-"${PN}"-0.2.0-meson-add-libcap-option.patch
