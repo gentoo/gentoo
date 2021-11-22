@@ -1,0 +1,26 @@
+From a417420d30ed258143259de4706795e0515ad795 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Mon, 22 Nov 2021 12:31:57 -0500
+Subject: [PATCH] Avoid calling python3 script to enable git hook
+
+This has not been submitted upstream: the gstreamer-vaapi repo appears
+to be merging into the gstreamer "mono" repo, where this issue does not
+exist.
+---
+ meson.build | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 60e26e0f..05aefff7 100644
+--- a/meson.build
++++ b/meson.build
+@@ -207,6 +207,3 @@ if gst_version_nano == 0
+ endif
+ 
+ configure_file(output: 'config.h', configuration: cdata)
+-
+-python3 = import('python').find_installation()
+-run_command(python3, '-c', 'import shutil; shutil.copy("hooks/pre-commit.hook", ".git/hooks/pre-commit")')
+-- 
+2.34.0
+
