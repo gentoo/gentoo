@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2021-11-22)
+# Last release in 2008 at the latest, no maintainer in Gentoo for years,
+# EAPI 5, upstream is gone, the only distros which still package it are
+# Gentoo, Funtoo and LiGurOS.
+# Removal in 30 days. Bug #826682
+app-admin/psmon
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-11-22)
 # Unmaintained upstream, never made it to a KF5-based release and Gentoo
 # was the only distro ever packaging such a snapshot. Use kimpanel from
