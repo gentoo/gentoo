@@ -15,6 +15,7 @@
 		<flag name="occ">Enable viewing 3D rendering of designs via opencascade</flag>
 		<flag name="oce">Enable viewing 3D rendering of designs via OCE</flag>
 		<flag name="python">Enable python scripting support</flag>
+		<flag name="pcm">Enable plugin content manager</flag>
 	</use>
 	<longdescription>
 		Kicad is an open source (GPL) software for the creation of electronic
