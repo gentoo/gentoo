@@ -69,10 +69,6 @@ dev-python/PyQt5 gui multimedia network printsupport widgets
 # and the X flag is enabled by default in the desktop profile
 x11-libs/libxcb xkb
 
-# Samuli Suominen <ssuominen@gentoo.org> (2011-09-27)
-# Required by mozilla browsers wrt #372419
-media-libs/libpng apng
-
 # Samuli Suominen <ssuominen@gentoo.org> (2010-12-19)
 # gudev, required by freedesktop.org udev helpers like udisks and upower
 # introspection, exception, enabled from here instead of ebuild to skip extra deps for a system package
