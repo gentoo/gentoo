@@ -1,0 +1,52 @@
+From 6834ee83d09b7c56fbe3d137b660db25484573f3 Mon Sep 17 00:00:00 2001
+From: Yaroslav Sidlovsky <zawertun@gmail.com>
+Date: Thu, 18 Nov 2021 14:15:36 +0300
+Subject: [PATCH] Fixed toolbar buttons style, removing unneeded outline
+
+BUG: 443626
+
+
+(cherry picked from commit 23ba2a8dc728cd7105e5994ed1d4dc143f7d69a1)
+---
+ src/gtk3/widgets/_button.scss | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/gtk3/widgets/_button.scss b/src/gtk3/widgets/_button.scss
+index 4bd0ce7..e7250ee 100644
+--- a/src/gtk3/widgets/_button.scss
++++ b/src/gtk3/widgets/_button.scss
+@@ -176,6 +176,7 @@ $_dot_color: gtk("@theme_button_decoration_focus");
+ 
+   @include button(normal);
+   &.flat {
++    @include button(undecorated);
+     // to avoid adiacent buttons borders clashing when transitioning, the transition on the normal state is set
+     // to none, while it's added back in the hover state, so the button decoration will fade in on hover, but
+     // it won't fade out when the pointer leave the button allocation area. To make the transition more evident
+@@ -228,12 +229,15 @@ $_dot_color: gtk("@theme_button_decoration_focus");
+   }
+   &.flat:backdrop {
+     -gtk-icon-effect: none;
++    @include button(undecorated);
+     color: gtk("@theme_button_foreground_backdrop");
+   }
+   &.flat:disabled {
++    @include button(undecorated);
+     color: gtk("@theme_button_foreground_insensitive");
+   }
+   &.flat:backdrop:disabled {
++    @include button(undecorated);
+     color: gtk("@theme_button_foreground_backdrop_insensitive");
+   }
+   &:disabled {
+@@ -357,6 +361,7 @@ button {
+       &.flat:backdrop,
+       &.flat:disabled,
+       &.flat:backdrop:disabled {
++        @include button(undecorated);
+         color: gtkalpha($button_color, 0.8);
+       }
+       &:disabled {
+-- 
+GitLab
+
