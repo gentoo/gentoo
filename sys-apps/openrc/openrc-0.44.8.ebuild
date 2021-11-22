@@ -55,6 +55,11 @@ RDEPEND="${COMMON_DEPEND}
 
 PDEPEND="netifrc? ( net-misc/netifrc )"
 
+PATCHES=(
+	# Backported from master
+	"${FILESDIR}"/${P}-selinux-no-pam.patch
+)
+
 src_configure() {
 	local emesonargs=(
 	$(meson_feature audit)
