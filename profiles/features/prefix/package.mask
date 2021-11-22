@@ -1,12 +1,6 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2021-11-20)
-# Latest revision may somehow not respect prefix search paths
-# Need further investigation
-# bug #824482
->=sys-devel/binutils-2.37_p1-r1
-
 # Benda Xu <heroxbd@gentoo.org> (2019-08-20)
 # systemd is set to invade pid 1, which is not possible for Prefix.
 # The following are its reverse dependencies.
