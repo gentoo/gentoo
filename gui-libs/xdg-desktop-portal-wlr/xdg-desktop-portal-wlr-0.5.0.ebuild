@@ -37,7 +37,6 @@ RDEPEND="
 "
 BDEPEND="
 	dev-libs/wayland-protocols
-	dev-util/meson
 	virtual/pkgconfig
 "
 
