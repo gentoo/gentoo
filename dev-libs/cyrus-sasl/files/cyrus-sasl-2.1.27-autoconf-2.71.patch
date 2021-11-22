@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/825342
+
+commit 5664c3f535289ce9efb513a2897991b5c436bb44
+Author: Pavel Raiskup <praiskup@redhat.com>
+Date:   Thu Apr 1 17:26:28 2021 +0200
+
+    configure.ac: properly quote macro arguments
+    
+    Autoconf 2.70+ is more picky about the quotation (even though with
+    previous versions the arguments should have been quoted, too).  When we
+    don't quote macros inside the AC_CACHE_VAL macro - some of the Autoconf
+    initialization is wrongly ordered in ./configure script and we keep
+    seeing bugs like:
+    
+        ./configure: line 2165: ac_fn_c_try_run: command not found
+    
+    Original report: https://bugzilla.redhat.com/1943013
+    
+    Signed-off-by: Pavel Raiskup <praiskup@redhat.com>
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -213,7 +213,8 @@ if test $sasl_cv_uscore = yes; then
+ 	AC_MSG_CHECKING(whether dlsym adds the underscore for us)
+ 	cmu_save_LIBS="$LIBS"
+ 	LIBS="$LIBS $SASL_DL_LIB"
+-	AC_CACHE_VAL(sasl_cv_dlsym_adds_uscore,AC_TRY_RUN( [
++	AC_CACHE_VAL([sasl_cv_dlsym_adds_uscore],
++	             [AC_TRY_RUN([
+ #include <dlfcn.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -221,9 +222,9 @@ void foo() { int i=0;}
+ int main() { void *self, *ptr1, *ptr2; self=dlopen(NULL,RTLD_LAZY);
+     if(self) { ptr1=dlsym(self,"foo"); ptr2=dlsym(self,"_foo");
+     if(ptr1 && !ptr2) exit(0); } exit(1); } 
+-], [sasl_cv_dlsym_adds_uscore=yes], sasl_cv_dlsym_adds_uscore=no
+-	AC_DEFINE(DLSYM_NEEDS_UNDERSCORE, [], [Do we need a leading _ for dlsym?]),
+-	AC_MSG_WARN(cross-compiler, we'll do our best)))
++], [sasl_cv_dlsym_adds_uscore=yes], [sasl_cv_dlsym_adds_uscore=no
++	AC_DEFINE(DLSYM_NEEDS_UNDERSCORE, [], [Do we need a leading _ for dlsym?])],
++	[AC_MSG_WARN(cross-compiler, we'll do our best)])])
+ 	LIBS="$cmu_save_LIBS"
+       AC_MSG_RESULT($sasl_cv_dlsym_adds_uscore)
+ 

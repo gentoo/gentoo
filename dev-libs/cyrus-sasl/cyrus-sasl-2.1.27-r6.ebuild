@@ -58,6 +58,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.1.27-CVE-2019-19906.patch"
 	"${FILESDIR}/${PN}-2.1.27-slibtool.patch"
 	"${FILESDIR}/${PN}-2.1.27-db_gdbm-fix-gdbm_errno-overlay-from-gdbm_close.patch"
+	"${FILESDIR}/${PN}-2.1.27-autoconf-2.71.patch"
 )
 
 pkg_setup() {
