@@ -86,6 +86,8 @@ src_prepare() {
 
 	# replace my_bool with _Bool
 	eapply "${FILESDIR}/${PN}-5.2-my_bool-error.patch"
+	# ... and stop using bool elsewhere too
+	eapply "${FILESDIR}/${PN}-5.2.9-redefine-bool-error.patch"
 
 	# Prevent file collisions with libgda:4
 	eapply "${FILESDIR}/${PN}-4.99.1-gda-browser-doc-collision.patch"
