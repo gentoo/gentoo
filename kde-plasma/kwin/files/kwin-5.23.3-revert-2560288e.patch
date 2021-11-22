@@ -1,0 +1,35 @@
+From 325208347c40d7311aea83572b5150ba3750cba9 Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Tue, 16 Nov 2021 22:37:26 +0200
+Subject: [PATCH] Revert "wayland: Check workspace position when preferred deco
+ mode changes"
+
+This reverts commit 2560288e4b66acfdbb8a8f4daafd2d600aeb525a.
+
+It broke alacricitty. The fix is not obvious, so revert the commit for
+the time being.
+
+BUG: 445444
+
+
+(cherry picked from commit 068d60e36a112c6b901010331ef3a995019c97cb)
+---
+ src/xdgshellclient.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/xdgshellclient.cpp b/src/xdgshellclient.cpp
+index af1bd57ac7..9e8216a3a0 100644
+--- a/src/xdgshellclient.cpp
++++ b/src/xdgshellclient.cpp
+@@ -1317,7 +1317,7 @@ void XdgToplevelClient::installXdgDecoration(XdgToplevelDecorationV1Interface *d
+     connect(m_xdgDecoration, &XdgToplevelDecorationV1Interface::preferredModeChanged, this, [this] {
+         if (m_isInitialized) {
+             // force is true as we must send a new configure response.
+-            updateDecoration(/* check_workspace_pos */ true, /* force */ true);
++            updateDecoration(/* check_workspace_pos */ false, /* force */ true);
+         }
+     });
+ }
+-- 
+GitLab
+
