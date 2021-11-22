@@ -1,0 +1,55 @@
+diff --git a/phpc.h b/phpc.h
+index 4b55747..70fb317 100644
+--- a/phpc/phpc.h
++++ b/phpc/phpc.h
+@@ -51,6 +51,12 @@
+ 	memcpy(&PHPC_OBJ_GET_HANDLER_VAR_NAME(_name), \
+ 		zend_get_std_object_handlers(), sizeof(zend_object_handlers))
+ 
++/* for arginfo */
++#ifndef ZEND_BEGIN_ARG_WITH_TENTATIVE_RETURN_TYPE_INFO_EX
++#define ZEND_BEGIN_ARG_WITH_TENTATIVE_RETURN_TYPE_INFO_EX(name, return_reference, required_num_args, type, allow_null) \
++        ZEND_BEGIN_ARG_INFO_EX(name, 0, return_reference, required_num_args)
++#endif
++
+ /* ZEND_ACC_CTOR and ZEND_ACC_DTOR is removed in 7.4 */
+ #ifndef ZEND_ACC_CTOR
+ #define ZEND_ACC_CTOR 0
+diff --git a/gnupg_keylistiterator.c b/gnupg_keylistiterator.c
+index 215aaa0..9b285ee 100644
+--- a/gnupg_keylistiterator.c
++++ b/gnupg_keylistiterator.c
+@@ -90,14 +90,28 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_gnupg_void_iterator_method, 0, 0, 0)
+ ZEND_END_ARG_INFO()
+ /* }}} */
+ 
++ZEND_BEGIN_ARG_WITH_TENTATIVE_RETURN_TYPE_INFO_EX(arginfo_gnupg_current, 0, 0, IS_MIXED, 0)
++ZEND_END_ARG_INFO()
++
++#define arginfo_gnupg_key arginfo_gnupg_current
++
++ZEND_BEGIN_ARG_WITH_TENTATIVE_RETURN_TYPE_INFO_EX(arginfo_gnupg_valid, 0, 0, _IS_BOOL, 0)
++ZEND_END_ARG_INFO()
++
++ZEND_BEGIN_ARG_WITH_TENTATIVE_RETURN_TYPE_INFO_EX(arginfo_gnupg_next, 0, 0, IS_VOID, 0)
++ZEND_END_ARG_INFO()
++
++#define arginfo_gnupg_rewind  arginfo_gnupg_next
++
++
+ /* {{{ method list gnupg_keylistiterator */
+ static zend_function_entry gnupg_keylistiterator_methods[] = {
+ 	PHP_ME(gnupg_keylistiterator, __construct, arginfo_gnupg_void_iterator_method, ZEND_ACC_PUBLIC)
+-	PHP_ME(gnupg_keylistiterator, current, arginfo_gnupg_void_iterator_method, ZEND_ACC_PUBLIC)
+-	PHP_ME(gnupg_keylistiterator, key, arginfo_gnupg_void_iterator_method, ZEND_ACC_PUBLIC)
+-	PHP_ME(gnupg_keylistiterator, next, arginfo_gnupg_void_iterator_method, ZEND_ACC_PUBLIC)
+-	PHP_ME(gnupg_keylistiterator, rewind, arginfo_gnupg_void_iterator_method, ZEND_ACC_PUBLIC)
+-	PHP_ME(gnupg_keylistiterator, valid, arginfo_gnupg_void_iterator_method, ZEND_ACC_PUBLIC)
++	PHP_ME(gnupg_keylistiterator, current, arginfo_gnupg_current, ZEND_ACC_PUBLIC)
++	PHP_ME(gnupg_keylistiterator, key, arginfo_gnupg_key, ZEND_ACC_PUBLIC)
++	PHP_ME(gnupg_keylistiterator, next, arginfo_gnupg_next, ZEND_ACC_PUBLIC)
++	PHP_ME(gnupg_keylistiterator, rewind, arginfo_gnupg_rewind, ZEND_ACC_PUBLIC)
++	PHP_ME(gnupg_keylistiterator, valid, arginfo_gnupg_valid, ZEND_ACC_PUBLIC)
+ 	PHPC_FE_END
+ };
+ /* }}} */

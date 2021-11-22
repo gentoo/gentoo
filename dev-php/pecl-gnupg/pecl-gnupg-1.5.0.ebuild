@@ -10,7 +10,7 @@ PHP_EXT_ZENDEXT="no"
 PHP_EXT_PECL_FILENAME="${MY_P}.tgz"
 PHP_EXT_S="${WORKDIR}/${MY_P}"
 
-USE_PHP="php7-3 php7-4 php8-0"
+USE_PHP="php7-3 php7-4 php8-0 php8-1"
 
 inherit php-ext-pecl-r3
 
@@ -24,3 +24,5 @@ IUSE=""
 
 DEPEND="app-crypt/gpgme app-crypt/gnupg"
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/php-8.1-support-1.5.0.patch" )
