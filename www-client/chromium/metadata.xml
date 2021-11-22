@@ -19,6 +19,7 @@
 		<flag name="system-ffmpeg">Use system ffmpeg instead of the bundled one</flag>
 		<flag name="system-harfbuzz">Use system harfbuzz instead of the bundled one.</flag>
 		<flag name="system-icu">Use system icu instead of the bundled one</flag>
+		<flag name="system-png">Use system libpng instead of the bundled one.</flag>
 		<flag name="widevine">Unsupported closed-source DRM capability (required by Netflix VOD)</flag>
 	</use>
 </pkgmetadata>
