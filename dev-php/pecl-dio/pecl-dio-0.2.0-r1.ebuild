@@ -7,10 +7,7 @@ PHP_EXT_NAME="dio"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 
-USE_PHP="php7-3 php7-4 php8-0"
-
-MY_PV=${PV/_rc/RC}
-PHP_EXT_S="${WORKDIR}/${PN/pecl-/}-${MY_PV}"
+USE_PHP="php7-3 php7-4 php8-0 php8-1"
 
 inherit php-ext-pecl-r3
 
@@ -20,5 +17,3 @@ DESCRIPTION="Direct I/O functions for PHP"
 LICENSE="PHP-3.01"
 SLOT="0"
 IUSE=""
-
-S="${PHP_EXT_S}"
