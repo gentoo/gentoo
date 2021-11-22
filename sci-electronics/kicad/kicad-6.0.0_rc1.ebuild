@@ -22,7 +22,7 @@ else
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://gitlab.com/kicad/code/${PN}/-/archive/${MY_PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${MY_PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~x86 ~arm64"
 fi
 
 LICENSE="GPL-2+ GPL-3+ Boost-1.0"
