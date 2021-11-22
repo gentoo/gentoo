@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Stephan Hartmann <sultan@gentoo.org> (2021-11-22)
+# Dev channel releases are only for people who
+# are developers or want more experimental features
+# and accept a more unstable release.
+>=www-client/chromium-98
+
 # Michael Orlitzky <mjo@gentoo.org> (2021-11-22)
 # Cool package, but no longer developed upstream, and my immediate use
 # for it has expired. No reverse dependencies, deprecated EAPI;
