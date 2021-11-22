@@ -337,12 +337,6 @@ x11-plugins/hexchat-javascript
 dev-db/go-etcd
 sys-fs/etcd-fs
 
-# Sergey Popov <pinkbyte@gentoo.org> (2021-10-22)
-# Upstream support discontinued, see https://bw.org/2019/03/19/bw-whois/
-# Suggested replacement - net-misc/whois
-# Masked for removal on 2021-11-22
-net-misc/bwwhois
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
