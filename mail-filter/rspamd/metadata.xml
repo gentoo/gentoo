@@ -17,7 +17,7 @@
     <remote-id type="github">vstakhov/rspamd</remote-id>
   </upstream>
   <use>
-    <flag name="pcre2">Use dev-libs/libpcre2</flag>
+    <flag name="pcre2">Use <pkg>dev-libs/libpcre2</pkg></flag>
     <flag name="jit">Enable PCRE JIT support</flag>
   </use>
 </pkgmetadata>
