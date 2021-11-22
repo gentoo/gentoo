@@ -1,0 +1,89 @@
+https://github.com/OpenRC/openrc/commit/bd5cdaafadf997c0ab3c4ad362dbdfd7dc6fd987.patch
+https://github.com/OpenRC/openrc/commit/f3f0fde861b438c80f99afdd49fe175e9d0a68ca
+
+From: Sam James <sam@gentoo.org>
+Date: Sat, 20 Nov 2021 12:05:56 +0000
+Subject: [PATCH] meson: fix pam_misc_dep definition
+
+X-Gentoo-Bug: 824954
+X-Gentoo-Bug-URL: https://bugs.gentoo.org/824954
+Fixes: https://github.com/OpenRC/openrc/issues/470
+Fixes: https://github.com/OpenRC/openrc/pull/477
+--- a/meson.build
++++ b/meson.build
+@@ -94,6 +94,7 @@ rc_sbindir = rc_libexecdir / 'sbin'
+ sbindir = rootprefix / get_option('sbindir')
+ 
+ selinux_dep = dependency('libselinux', required : get_option('selinux'))
++pam_misc_dep = []
+ if selinux_dep.found()
+   cc_selinux_flags = '-DHAVE_SELINUX'
+   if pam_dep.found() and get_option('pam')
+@@ -107,7 +108,6 @@ if selinux_dep.found()
+   endif
+ else
+   cc_selinux_flags = []
+-  pam_misc_dep = []
+ endif
+ 
+ termcap = get_option('termcap')
+
+From: Sam James <sam@gentoo.org>
+Date: Sat, 20 Nov 2021 12:06:37 +0000
+Subject: [PATCH] meson: link against libcrypt for SELinux if no PAM
+
+We use libcrypt's crypt() if we're _not_ using PAM
+in the SELinux code (rc-selinux, specifically).
+
+X-Gentoo-Bug: 824954
+X-Gentoo-Bug-URL: https://bugs.gentoo.org/824954
+Fixes: https://github.com/openrc/openrc/pull/477
+--- a/meson.build
++++ b/meson.build
+@@ -93,6 +93,8 @@ rc_bindir = rc_libexecdir / 'bin'
+ rc_sbindir = rc_libexecdir / 'sbin'
+ sbindir = rootprefix / get_option('sbindir')
+ 
++crypt_dep = dependency('libcrypt', required : not get_option('pam'))
++
+ selinux_dep = dependency('libselinux', required : get_option('selinux'))
+ pam_misc_dep = []
+ if selinux_dep.found()
+--- a/src/rc/meson.build
++++ b/src/rc/meson.build
+@@ -50,7 +50,7 @@ executable('openrc-run',
+   rc_selinux_c, version_h],
+   c_args : [cc_audit_flags, cc_branding_flags, cc_pam_flags, cc_selinux_flags],
+   link_with: [libeinfo, librc],
+-  dependencies: [audit_dep, dl_dep, pam_dep, pam_misc_dep, selinux_dep, util_dep],
++  dependencies: [audit_dep, dl_dep, pam_dep, pam_misc_dep, selinux_dep, util_dep, crypt_dep],
+   include_directories: [incdir, einfo_incdir, rc_incdir],
+   install: true,
+   install_dir: sbindir)
+@@ -85,7 +85,7 @@ executable('runscript',
+     rc_selinux_c, version_h],
+   c_args : [cc_audit_flags, cc_branding_flags, cc_pam_flags, cc_selinux_flags],
+   link_with: [libeinfo, librc],
+-  dependencies: [audit_dep, dl_dep, pam_dep, pam_misc_dep, util_dep, selinux_dep],
++  dependencies: [audit_dep, dl_dep, pam_dep, pam_misc_dep, util_dep, selinux_dep, crypt_dep],
+   include_directories: [incdir, einfo_incdir, rc_incdir],
+   install: true,
+   install_dir: sbindir)
+@@ -95,7 +95,7 @@ executable('start-stop-daemon',
+ 	rc_selinux_c, usage_c, version_h],
+   c_args : [cc_audit_flags, cc_branding_flags, cc_pam_flags, cc_selinux_flags],
+   link_with: [libeinfo, librc],
+-  dependencies: [audit_dep, dl_dep, pam_dep, pam_misc_dep, util_dep, selinux_dep],
++  dependencies: [audit_dep, dl_dep, pam_dep, pam_misc_dep, util_dep, selinux_dep, crypt_dep],
+   include_directories: [incdir, einfo_incdir, rc_incdir],
+   install: true,
+   install_dir: sbindir)
+@@ -169,7 +169,7 @@ executable('checkpath',
+   c_args : [cc_audit_flags, cc_branding_flags, cc_pam_flags, cc_selinux_flags],
+   include_directories: [incdir, einfo_incdir, rc_incdir],
+   link_with: [libeinfo, librc],
+-  dependencies: [audit_dep, pam_dep, pam_misc_dep, selinux_dep],
++  dependencies: [audit_dep, pam_dep, pam_misc_dep, selinux_dep, crypt_dep],
+   install: true,
+   install_dir: rc_bindir)
+ 
