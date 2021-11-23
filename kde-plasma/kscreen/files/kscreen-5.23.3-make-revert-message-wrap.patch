@@ -1,0 +1,31 @@
+From 29343eb7586509dc37ecf5adcb3b6086803fa0ed Mon Sep 17 00:00:00 2001
+From: Nate Graham <nate@kde.org>
+Date: Fri, 12 Nov 2021 15:22:46 -0700
+Subject: [PATCH] kcm: make revert message wrap
+
+This was the intention, but the wrap mode enum was being called from the
+wrong namespace, so it didn't work.
+
+BUG: 445341
+FIXED-IN: 5.23.4
+(cherry picked from commit fc02fb29ba9ffac749762e1577edd4308150fb03)
+---
+ kcm/package/contents/ui/main.qml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kcm/package/contents/ui/main.qml b/kcm/package/contents/ui/main.qml
+index 431999b..43b3ba4 100644
+--- a/kcm/package/contents/ui/main.qml
++++ b/kcm/package/contents/ui/main.qml
+@@ -110,7 +110,7 @@ KCM.SimpleKCM {
+                 text: i18np("Will revert to previous configuration in %1 second.",
+                             "Will revert to previous configuration in %1 seconds.",
+                             revertCountdown);
+-                wrapMode: Qt.WordWrap
++                wrapMode: Text.WordWrap
+             }
+             footer: RowLayout {
+                 Controls.Button {
+-- 
+GitLab
+
