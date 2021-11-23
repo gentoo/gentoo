@@ -23,5 +23,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">vmware/open-vm-tools</remote-id>
+		<remote-id type="cpe">cpe:/a:vmware:tools</remote-id>
 	</upstream>
 </pkgmetadata>
