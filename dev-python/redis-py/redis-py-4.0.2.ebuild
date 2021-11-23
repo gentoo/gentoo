@@ -23,6 +23,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-db/redis
+		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	)
 "
 
