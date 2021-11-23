@@ -47,6 +47,10 @@ src_prepare() {
 	# cliquer installs that header as <cliquer/cliquer.h>.
 	sed -e 's~<cliquer\.h>~<cliquer/cliquer\.h>~' -i nautycliquer.h || die
 
+	# The debian autotools patch has only a placeholder in LT_INIT for
+	# the version that we must provide.
+	sed -e "s/@INJECTVER@/${PV}/" -i configure.ac || die
+
 	eautoreconf
 }
 
