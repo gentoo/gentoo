@@ -25,7 +25,7 @@ HOMEPAGE="https://github.com/intel/media-driver"
 
 LICENSE="MIT BSD redistributable? ( no-source-code )"
 SLOT="0"
-IUSE="+custom-cflags +redistributable set-as-default test X"
+IUSE="+custom-cflags +redistributable test X"
 
 RESTRICT="!test? ( test )"
 
@@ -53,13 +53,4 @@ src_configure() {
 	)
 
 	cmake_src_configure
-}
-
-src_install() {
-	cmake_src_install
-
-	if use set-as-default ; then
-		echo 'LIBVA_DRIVER_NAME="iHD"' > "${T}/55libva-intel-media-driver" || die
-		doenvd "${T}/55libva-intel-media-driver"
-	fi
 }
