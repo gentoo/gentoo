@@ -15,7 +15,7 @@ doc dts dv dvb +dvd +dvdnav +enca +encode faac faad fbcon
 ftp ggi gsm +iconv ipv6 jack joystick jpeg kernel_linux ladspa
 +libass libcaca libmpeg2 lirc live lzo mad md5sum cpu_flags_x86_mmx cpu_flags_x86_mmxext mng mp3 nas
 +network openal opengl +osdmenu oss png pnm pulseaudio pvr
-radio rar rtc rtmp samba selinux +shm sdl speex cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_ssse3
+radio rar rtc rtmp samba selinux +shm sdl sndio speex cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_ssse3
 tga theora tremor +truetype toolame twolame +unicode v4l vcd vdpau vidix
 vorbis +X x264 xinerama +xscreensaver +xv xvid yuv4mpeg zoran"
 
@@ -115,6 +115,7 @@ RDEPEND+="
 	rtmp? ( media-video/rtmpdump )
 	samba? ( net-fs/samba )
 	sdl? ( media-libs/libsdl )
+	sndio? ( media-sound/sndio )
 	speex? ( media-libs/speex )
 	theora? ( media-libs/libtheora[encode?] )
 	tremor? ( media-libs/tremor )
@@ -429,7 +430,7 @@ src_configure() {
 	# Audio Output #
 	################
 	myconf+=" --disable-esd"
-	uses="alsa jack ladspa nas openal"
+	uses="alsa jack ladspa nas openal sndio"
 	for i in ${uses}; do
 		use ${i} || myconf+=" --disable-${i}"
 	done

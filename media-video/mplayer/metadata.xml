@@ -28,6 +28,7 @@
     <flag name="rtc">Enables usage of the linux real time clock. The alternative is software emulation of rtc</flag>
     <flag name="rtmp">Enables RTMPDump Streaming Media support</flag>
     <flag name="shm">Enable support for shm</flag>
+    <flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
     <flag name="tga">Enables Targa video output</flag>
     <flag name="toolame">Enable toolame MPEG-2 encoding</flag>
     <flag name="tremor">Enable internal support for Vorbis</flag>
