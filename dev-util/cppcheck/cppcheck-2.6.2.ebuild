@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_USE_SETUPTOOLS=no
-inherit distutils-r1 cmake toolchain-funcs
+inherit distutils-r1 cmake
 
 DESCRIPTION="Static analyzer of C/C++ code"
 HOMEPAGE="https://github.com/danmar/cppcheck"
