@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools desktop xdg-utils
+inherit autotools desktop toolchain-funcs xdg-utils
 
 DESCRIPTION="A fast and lightweight web browser running in both graphics and text mode"
 HOMEPAGE="http://links.twibright.com/"
@@ -123,7 +123,7 @@ src_configure() {
 		myconf+=' --enable-graphics'
 	fi
 
-	use freetype && append-cppflags -I${ESYSROOT}/usr/include/freetype2
+	tc-export PKG_CONFIG
 
 	econf \
 		--without-directfb \
