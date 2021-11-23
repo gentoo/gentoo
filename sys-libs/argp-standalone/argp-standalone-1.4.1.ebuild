@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ericonr/argp-standalone/archive/refs/tags/${PV}.tar.
 
 LICENSE="public-domain GPL-2 GPL-3 XC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~x86"
+#KEYWORDS="~amd64 ~arm ~arm64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~x86"
 IUSE="static-libs"
 
 DEPEND="!sys-libs/glibc"
