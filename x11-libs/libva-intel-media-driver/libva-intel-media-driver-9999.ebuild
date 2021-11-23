@@ -25,7 +25,7 @@ HOMEPAGE="https://github.com/intel/media-driver"
 
 LICENSE="MIT BSD redistributable? ( no-source-code )"
 SLOT="0"
-IUSE="+custom-cflags +redistributable test X"
+IUSE="+redistributable test X"
 
 RESTRICT="!test? ( test )"
 
@@ -36,7 +36,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20.2.0_x11_optional.patch
-	"${FILESDIR}"/${PN}-21.2.2_custom_cflags.patch
+	"${FILESDIR}"/${PN}-21.4.2-Remove-unwanted-CFLAGS.patch
 	"${FILESDIR}"/${PN}-20.4.5_testing_in_src_test.patch
 )
 
@@ -49,7 +49,6 @@ src_configure() {
 		-DUSE_X11=$(usex X)
 		-DENABLE_NONFREE_KERNELS=$(usex redistributable)
 		-DLATEST_CPP_NEEDED=ON # Seems to be the best option for now
-		-DOVERRIDE_COMPILER_FLAGS=$(usex !custom-cflags)
 	)
 
 	cmake_src_configure
