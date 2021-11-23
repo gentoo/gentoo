@@ -67,16 +67,8 @@ JAVA_TEST_EXCLUDES=(
 	"com.ibm.icu.dev.test.calendar.TestCase" # java.lang.IllegalArgumentException: Test class can only have one constructor
 	"com.ibm.icu.dev.test.bidi.TestData" # Invalid test class 1. Test class should have exactly one public constructor
 	# following kills 98 tests and and avoids 9 test failures
+	# coverage tests fail because test handlers for the parametrized tests are not defined so the tests are broken and cannot succeed
 	"com.ibm.icu.dev.test.serializable.CoverageTest"
-	"com.ibm.icu.impl.icuadapter.NumberFormatJDK"
-	"com.ibm.icu.impl.icuadapter.TimeZoneJDK"
-	"com.ibm.icu.impl.jdkadapter.CalendarICU"
-	"com.ibm.icu.impl.jdkadapter.DateFormatSymbolsICU"
-	"com.ibm.icu.impl.jdkadapter.DecimalFormatICU"
-	"com.ibm.icu.impl.jdkadapter.DecimalFormatSymbolsICU"
-	"com.ibm.icu.impl.jdkadapter.NumberFormatICU"
-	"com.ibm.icu.impl.jdkadapter.SimpleDateFormatICU"
-	"com.ibm.icu.impl.jdkadapter.TimeZoneICU"
 )
 
 src_prepare() {
