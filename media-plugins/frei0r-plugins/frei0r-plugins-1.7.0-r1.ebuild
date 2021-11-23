@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~arm arm64 ~hppa ppc ~ppc64 ~riscv x86"
 IUSE="doc +facedetect +scale0tilt"
 
 RDEPEND="x11-libs/cairo[${MULTILIB_USEDEP}]
-	facedetect? ( >=media-libs/opencv-2.3.0:=[${MULTILIB_USEDEP}] )
+	facedetect? ( >=media-libs/opencv-2.3.0:=[contribdnn,features2d,${MULTILIB_USEDEP}] )
 	scale0tilt? ( >=media-libs/gavl-1.2.0[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 BDEPEND="
