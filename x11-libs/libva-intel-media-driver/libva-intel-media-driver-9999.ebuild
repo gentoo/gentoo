@@ -50,6 +50,6 @@ src_configure() {
 		-DENABLE_NONFREE_KERNELS=$(usex redistributable)
 		-DLATEST_CPP_NEEDED=ON # Seems to be the best option for now
 	)
-
+	local CMAKE_BUILD_TYPE="Release"
 	cmake_src_configure
 }
