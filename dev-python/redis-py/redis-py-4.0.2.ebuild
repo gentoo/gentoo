@@ -41,8 +41,8 @@ python_test() {
 	# Spawn Redis itself for testing purposes
 	# NOTE: On sam@'s machine, spawning Redis can hang in the sandbox.
 	# I'm not restricting tests yet because this doesn't happen for anyone else AFAICT.
-	elog "Spawning Redis"
-	elog "NOTE: Port ${redis_port} must be free"
+	einfo "Spawning Redis"
+	einfo "NOTE: Port ${redis_port} must be free"
 	"${EPREFIX}"/usr/sbin/redis-server - <<< "${redis_test_config}" || die
 
 	# Run the tests
