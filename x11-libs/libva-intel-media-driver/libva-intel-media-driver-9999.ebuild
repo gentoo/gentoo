@@ -23,9 +23,9 @@ fi
 DESCRIPTION="Intel Media Driver for VAAPI (iHD)"
 HOMEPAGE="https://github.com/intel/media-driver"
 
-LICENSE="MIT BSD"
+LICENSE="MIT BSD redistributable? ( no-source-code )"
 SLOT="0"
-IUSE="+custom-cflags set-as-default test X"
+IUSE="+custom-cflags +redistributable set-as-default test X"
 
 RESTRICT="!test? ( test )"
 
@@ -47,6 +47,7 @@ src_configure() {
 		-DBUILD_TYPE=Release
 		-DPLATFORM=linux
 		-DUSE_X11=$(usex X)
+		-DENABLE_NONFREE_KERNELS=$(usex redistributable)
 		-DLATEST_CPP_NEEDED=ON # Seems to be the best option for now
 		-DOVERRIDE_COMPILER_FLAGS=$(usex !custom-cflags)
 	)
