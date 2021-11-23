@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Library for parsing mathematical expressions"
-HOMEPAGE="http://muparser.beltoforion.de/"
+HOMEPAGE="https://beltoforion.de/en/muparser/"
 SRC_URI="https://github.com/beltoforion/muparser/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/muparser-${PV}
 
