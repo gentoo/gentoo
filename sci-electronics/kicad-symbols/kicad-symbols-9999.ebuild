@@ -11,8 +11,6 @@ HOMEPAGE="https://gitlab.com/kicad/libraries/kicad-symbols"
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/kicad/libraries/kicad-symbols.git"
 	inherit git-r3
-	# x11-misc-util/macros only required on live ebuilds
-	LIVE_DEPEND=">=x11-misc/util-macros-1.18"
 else
 	MY_PV="${PV/_rc/-rc}"
 	MY_P="${PN}-${MY_PV}"
@@ -25,5 +23,9 @@ LICENSE="CC-BY-SA-4.0"
 SLOT="0"
 IUSE=""
 
-DEPEND=""
 RDEPEND=">=sci-electronics/kicad-5.99"
+
+if [[ ${PV} == 9999 ]] ; then
+	# x11-misc-util/macros only required on live ebuilds
+	BDEPEND+=" >=x11-misc/util-macros-1.18"
+fi
