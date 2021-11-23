@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -6,7 +6,7 @@ PHP_EXT_NAME="oauth"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 
-USE_PHP="php7-2 php7-3 php7-4 php8-0"
+USE_PHP="php7-3 php7-4 php8-0 php8-1"
 
 inherit php-ext-pecl-r3
 
@@ -20,7 +20,6 @@ IUSE="+curl examples"
 DEPEND="
 	dev-libs/libpcre:3=
 	curl? ( net-misc/curl:0= )
-	php_targets_php7-2? ( dev-lang/php:7.2[hash(-)] )
 	php_targets_php7-3? ( dev-lang/php:7.3[hash(-)] )
 "
 RDEPEND="${DEPEND}"
