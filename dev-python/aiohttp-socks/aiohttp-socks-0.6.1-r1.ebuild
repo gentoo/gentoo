@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	>=dev-python/aiohttp-2.3.2[${PYTHON_USEDEP}]
 	>=dev-python/attrs-19.2.0[${PYTHON_USEDEP}]
+	<dev-python/python-socks-2[${PYTHON_USEDEP}]
 	>=dev-python/python-socks-1.2.4[${PYTHON_USEDEP}]
 "
 BDEPEND="
