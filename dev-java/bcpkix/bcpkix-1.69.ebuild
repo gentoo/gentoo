@@ -62,10 +62,35 @@ JAVA_TEST_RUN_ONLY=(
 	"org.bouncycastle.tsp.test.AllTests"
 )
 
+# https://bugs.gentoo.org/823347
+check_env() {
+	if use test; then
+		# this is needed only for tests
+		CHECKREQS_MEMORY="1200M"
+		check-reqs_pkg_pretend
+	fi
+}
+
+# https://bugs.gentoo.org/823347
+pkg_pretend() {
+	check_env
+}
+
+# https://bugs.gentoo.org/823347
+pkg_setup() {
+	check_env
+}
+
 src_prepare() {
 	default
 	cd ../ || die
 	java-pkg_clean
+}
+
+# https://bugs.gentoo.org/823347
+src_test() {
+	JAVA_TEST_EXTRA_ARGS+=" -Xmx${CHECKREQS_MEMORY}"
+	java-pkg-simple_src_test
 }
 
 src_install() {
