@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergey Popov <pinkbyte@gentoo.org> (2021-11-22)
+# Upstream is pretty much dead
+# Has at least one security issue - bug #825358
+# Replaced by net-misc/frr
+# Removal in 30 days
+net-misc/quagga
+
 # Marek Szuba <marecki@gentoo.org> (2021-11-22)
 # Upstream switched from static documentation to the Wiki format
 # around 10 years ago, and the ebuild we've got in the tree was
