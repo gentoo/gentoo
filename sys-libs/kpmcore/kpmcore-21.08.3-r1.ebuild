@@ -35,4 +35,5 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${P}-dont-destroy-zfs-pool.patch"
+	"${FILESDIR}/${P}-fix-seek-error-when-shred-partition.patch"
 )
