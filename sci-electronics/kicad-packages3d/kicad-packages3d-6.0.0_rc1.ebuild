@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ else
 	MY_PV="${PV/_rc/-rc}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://gitlab.com/kicad/libraries/${PN}/-/archive/${MY_PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~arm64"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	S="${WORKDIR}/${PN/3d/3D}-${MY_PV}-1080b6e565e56bae9be46db2278a1542092d7a2d"
 fi
 
@@ -25,8 +25,12 @@ IUSE="+occ"
 LICENSE="CC-BY-SA-4.0"
 SLOT="0"
 
-DEPEND=""
 RDEPEND=">=sci-electronics/kicad-5.1.0[occ=]"
+
+if [[ ${PV} == 9999 ]] ; then
+	# x11-misc-util/macros only required on live ebuilds
+	BDEPEND=">=x11-misc/util-macros-1.18"
+fi
 
 # TODO fix this (ezzieyguywuf)
 S="${WORKDIR}/${PN/3d/3D}-${MY_PV}-1080b6e565e56bae9be46db2278a1542092d7a2d"
