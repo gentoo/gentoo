@@ -1,0 +1,88 @@
+From bdfa84467787138b8a180938006b864a39d0dec0 Mon Sep 17 00:00:00 2001
+From: Rob Norris <rw_norris@hotmail.com>
+Date: Thu, 3 Jun 2021 21:30:02 +0100
+Subject: [PATCH] Github #128: Maintain datasource_gc.c such that it at least
+ compiles
+
+---
+ src/datasource_gc.c | 28 +++++++++++++++-------------
+ 1 file changed, 15 insertions(+), 13 deletions(-)
+
+diff --git a/src/datasource_gc.c b/src/datasource_gc.c
+index 37fa425a..22292b2c 100644
+--- a/src/datasource_gc.c
++++ b/src/datasource_gc.c
+@@ -128,9 +128,9 @@ static void datasource_gc_draw_circle ( datasource_gc_widgets_t *widgets )
+   gdouble lat, lon;
+   if ( widgets->circle_onscreen ) {
+     vik_viewport_draw_arc ( widgets->vvp, widgets->circle_gc, FALSE,
+-		widgets->circle_x - widgets->circle_width/2,
+-		widgets->circle_y - widgets->circle_width/2,
+-		widgets->circle_width, widgets->circle_width, 0, 360*64 );
++                            widgets->circle_x - widgets->circle_width/2,
++                            widgets->circle_y - widgets->circle_width/2,
++                            widgets->circle_width, widgets->circle_width, 0, 360*64, NULL );
+   }
+   /* calculate widgets circle_x and circle_y */
+   /* split up lat,lon into lat and lon */
+@@ -157,13 +157,13 @@ static void datasource_gc_draw_circle ( datasource_gc_widgets_t *widgets )
+       pixels_per_meter = ((gdouble)vik_viewport_get_width(widgets->vvp)) / vik_coord_diff(&c1, &c2);
+ 
+       /* this is approximate */
+-      widgets->circle_width = gtk_spin_button_get_value_as_float ( GTK_SPIN_BUTTON(widgets->miles_radius_spin) )
++      widgets->circle_width = gtk_spin_button_get_value ( GTK_SPIN_BUTTON(widgets->miles_radius_spin) )
+ 		* METERSPERMILE * pixels_per_meter * 2;
+ 
+       vik_viewport_draw_arc ( widgets->vvp, widgets->circle_gc, FALSE,
+-		widgets->circle_x - widgets->circle_width/2,
+-		widgets->circle_y - widgets->circle_width/2,
+-		widgets->circle_width, widgets->circle_width, 0, 360*64 );
++                              widgets->circle_x - widgets->circle_width/2,
++                              widgets->circle_y - widgets->circle_width/2,
++                              widgets->circle_width, widgets->circle_width, 0, 360*64, NULL );
+ 
+       widgets->circle_onscreen = TRUE;
+     } else
+@@ -172,7 +172,7 @@ static void datasource_gc_draw_circle ( datasource_gc_widgets_t *widgets )
+ 
+   /* see if onscreen */
+   /* okay */
+-  vik_viewport_sync ( widgets->vvp );
++  vik_viewport_sync ( widgets->vvp, NULL );
+ }
+ 
+ static void datasource_gc_add_setup_widgets ( GtkWidget *dialog, VikViewport *vvp, gpointer user_data )
+@@ -197,7 +197,9 @@ static void datasource_gc_add_setup_widgets ( GtkWidget *dialog, VikViewport *vv
+ 
+   widgets->vvp = vvp;
+   widgets->circle_gc = vik_viewport_new_gc ( vvp, "#000000", 3 );
++#if !GTK_CHECK_VERSION (3,0,0)
+   gdk_gc_set_function ( widgets->circle_gc, GDK_INVERT );
++#endif
+   widgets->circle_onscreen = TRUE;
+   datasource_gc_draw_circle ( widgets );
+ 
+@@ -240,7 +242,7 @@ static void datasource_gc_get_process_options ( datasource_gc_widgets_t *widgets
+   po->shell_command = g_strdup_printf( "rm -f ~/.geo/caches/*.html ; %s -H ~/.geo/caches -P -n%d -r%.1fM -u %s -p %s %s %s ; %s -z ~/.geo/caches/*.html ",
+ 			  GC_PROGRAM1,
+ 			  gtk_spin_button_get_value_as_int ( GTK_SPIN_BUTTON(widgets->num_spin) ),
+-			  gtk_spin_button_get_value_as_float ( GTK_SPIN_BUTTON(widgets->miles_radius_spin) ),
++			  gtk_spin_button_get_value ( GTK_SPIN_BUTTON(widgets->miles_radius_spin) ),
+ 			  safe_user,
+ 			  safe_pass,
+ 			  slat, slon,
+@@ -256,10 +258,10 @@ static void datasource_gc_cleanup ( datasource_gc_widgets_t *widgets )
+ {
+   if ( widgets->circle_onscreen ) {
+     vik_viewport_draw_arc ( widgets->vvp, widgets->circle_gc, FALSE,
+-		widgets->circle_x - widgets->circle_width/2,
+-		widgets->circle_y - widgets->circle_width/2,
+-		widgets->circle_width, widgets->circle_width, 0, 360*64 );
+-    vik_viewport_sync( widgets->vvp );
++                            widgets->circle_x - widgets->circle_width/2,
++                            widgets->circle_y - widgets->circle_width/2,
++                            widgets->circle_width, widgets->circle_width, 0, 360*64, NULL );
++    vik_viewport_sync( widgets->vvp, NULL );
+   }
+   g_free ( widgets );
+ }
