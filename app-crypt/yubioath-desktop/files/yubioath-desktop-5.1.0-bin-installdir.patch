@@ -1,0 +1,22 @@
+From 9ae1ef710d5b070e128597a0fad3bd4ffa94b0aa Mon Sep 17 00:00:00 2001
+From: Dennis Fokin <Dennis.Fokin@yubico.com>
+Date: Thu, 7 Oct 2021 10:18:33 +0200
+Subject: [PATCH] Set correct install path
+
+---
+ yubioath-desktop.pro | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/yubioath-desktop.pro b/yubioath-desktop.pro
+index 551416ae..c0ef9bb1 100644
+--- a/yubioath-desktop.pro
++++ b/yubioath-desktop.pro
+@@ -75,6 +75,8 @@ lupdate_only {
+   qml/slot/*.qml
+ }
+ 
++# Set correct install path
++target.path = $$PREFIX/bin
+ 
+ DISTFILES += \
+     py/* \

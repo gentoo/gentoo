@@ -34,12 +34,10 @@ RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '>=app-crypt/yubikey-manager-4.0.0[${PYTHON_USEDEP}]')
 	dev-python/pyotherside[${PYTHON_SINGLE_USEDEP}]"
 
+PATCHES=( "${FILESDIR}"/${P}-bin-installdir.patch )
+
 src_prepare() {
 	default
-	sed -i \
-		-e "s:python build_qrc.py:${PYTHON} build_qrc.py:" \
-		yubioath-desktop.pro || die
-
 	python_fix_shebang "${S}"
 }
 
