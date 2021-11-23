@@ -498,12 +498,6 @@ pkg_postinst() {
 		rm "${EROOT}/var/lib/systemd/timesync"
 	fi
 
-	if [[ -z ${ROOT} && -d /run/systemd/system ]]; then
-		ebegin "Reexecuting system manager"
-		systemctl daemon-reexec
-		eend $?
-	fi
-
 	if [[ ${FAIL} ]]; then
 		eerror "One of the postinst commands failed. Please check the postinst output"
 		eerror "for errors. You may need to clean up your system and/or try installing"
