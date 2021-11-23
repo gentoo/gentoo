@@ -1,0 +1,58 @@
+From 354d3d4f7a0c56926bd5124d2ec5bb363a9f9bc8 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Tue, 23 Nov 2021 17:34:24 -0500
+Subject: [PATCH 1/1] includes: don't access array elements with curly braces.
+
+The array{idx} syntax was deprecated in php-7.4 and has been removed
+in php-8.0. It's trivial to use square brackets, like array[idx],
+instead; so we do it.
+---
+ includes/command.inc   | 6 +++---
+ includes/sitealias.inc | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/includes/command.inc b/includes/command.inc
+index af039ad..ed0e817 100644
+--- a/includes/command.inc
++++ b/includes/command.inc
+@@ -749,16 +749,16 @@ function drush_parse_args() {
+       $command_args[] = $opt;
+     }
+     // Is the arg an option (starting with '-')?
+-    if (!empty($opt) && $opt{0} == "-" && strlen($opt) != 1) {
++    if (!empty($opt) && $opt[0] == "-" && strlen($opt) != 1) {
+       // Do we have multiple options behind one '-'?
+-      if (strlen($opt) > 2 && $opt{1} != "-") {
++      if (strlen($opt) > 2 && $opt[1] != "-") {
+         // Each char becomes a key of its own.
+         for ($j = 1; $j < strlen($opt); $j++) {
+           $options[substr($opt, $j, 1)] = true;
+         }
+       }
+       // Do we have a longopt (starting with '--')?
+-      elseif ($opt{1} == "-") {
++      elseif ($opt[1] == "-") {
+         if ($pos = strpos($opt, '=')) {
+           $options[substr($opt, 2, $pos - 2)] = substr($opt, $pos + 1);
+         }
+diff --git a/includes/sitealias.inc b/includes/sitealias.inc
+index b9f0bb9..13a38c1 100644
+--- a/includes/sitealias.inc
++++ b/includes/sitealias.inc
+@@ -133,10 +133,10 @@ function drush_sitealias_resolve_sitespecs($site_specifications, $alias_path_con
+ function drush_sitealias_valid_alias_format($alias) {
+   return ( (strpos($alias, ',') !== false) ||
+     ((strpos($alias, '@') === FALSE ? 0 : 1) + (strpos($alias, '/') === FALSE ? 0 : 1) + (strpos($alias, '#') === FALSE ? 0 : 1) >= 2) ||
+-    ($alias{0} == '#') ||
+-    ($alias{0} == '@')
++    ($alias[0] == '#') ||
++    ($alias[0] == '@')
+   );
+-  return $alias{0} == '@';
++  return $alias[0] == '@';
+ }
+ 
+ /**
+-- 
+2.32.0
+
