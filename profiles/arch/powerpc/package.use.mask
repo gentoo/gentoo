@@ -149,6 +149,7 @@ app-emulation/qemu capstone
 # Amy Liffey <amynka@gentoo.org (2018-01-21)
 # dev-libs/cereal not keyworded for ppc
 media-libs/opencv contribdnn
+media-plugins/frei0r-plugins facedetect
 
 # Robin H. Johnson <robbat2@gentoo.org> (2017-11-10)
 # Masked for dependencies:
