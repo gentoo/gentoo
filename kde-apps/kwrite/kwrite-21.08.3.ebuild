@@ -17,7 +17,7 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="activities"
 
-DEPEND="
+RDEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=kde-frameworks/kconfig-${KFMIN}:5
@@ -34,7 +34,9 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	>=kde-frameworks/ktextwidgets-${KFMIN}:5
+"
 
 src_prepare() {
 	ecm_src_prepare
