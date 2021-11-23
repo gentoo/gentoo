@@ -1,0 +1,118 @@
+From a4137ac8f7b18824568fbee0f3e2dce7551841b7 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Wed, 13 Oct 2021 13:52:15 +0200
+Subject: [PATCH] when deleting an entry, also delete the widgets
+
+previously what would happen is that KCMHotkeys::currentChanged would
+run, find the new index (-1,-1) now invalid and show the global settings
+instead. this however left the simple_action's underlying widgets still
+sitting around referring to the previous index AND holding a dangling
+trigger point that would eventually crash when the simple_action would
+be poked by anything
+
+instead force unset the internal state of the simple_action when showing
+the global settings.
+
+FIXED-IN: 5.23.5
+BUG: 443656
+
+
+(cherry picked from commit 97f9339fd96d97e012347f8f7fca987bbe4fca0d)
+---
+ kcm_hotkeys/kcm_hotkeys.cpp                  |  3 +++
+ kcm_hotkeys/simple_action_data_widget.cpp    | 18 +++++++++++-------
+ kcm_hotkeys/simple_action_data_widget.h      |  3 +++
+ kcm_hotkeys/triggers/trigger_widget_base.cpp |  8 ++++++++
+ 4 files changed, 25 insertions(+), 7 deletions(-)
+
+diff --git a/kcm_hotkeys/kcm_hotkeys.cpp b/kcm_hotkeys/kcm_hotkeys.cpp
+index d3ed315..4dc4664 100644
+--- a/kcm_hotkeys/kcm_hotkeys.cpp
++++ b/kcm_hotkeys/kcm_hotkeys.cpp
+@@ -120,6 +120,9 @@ void KCMHotkeys::currentChanged(const QModelIndex &pCurrent, const QModelIndex &
+     }
+ 
+     if (!current.isValid()) {
++        if (previous.isValid()) { // throw away old widget and stuff lest we have dangling pointers https://bugs.kde.org/show_bug.cgi?id=443656
++            d->simple_action->unsetActionData();
++        }
+         return showGlobalSettings();
+     }
+ 
+diff --git a/kcm_hotkeys/simple_action_data_widget.cpp b/kcm_hotkeys/simple_action_data_widget.cpp
+index e20ccaa..eb8c4c1 100644
+--- a/kcm_hotkeys/simple_action_data_widget.cpp
++++ b/kcm_hotkeys/simple_action_data_widget.cpp
+@@ -60,14 +60,22 @@ void SimpleActionDataWidget::doCopyToObject()
+     }
+ }
+ 
+-void SimpleActionDataWidget::setActionData(KHotKeys::SimpleActionData *pData)
++void SimpleActionDataWidget::unsetActionData()
+ {
+-    _data = pData;
++    _data = nullptr;
+ 
+-    // Now go and work on the trigger
+     delete currentTrigger;
+     currentTrigger = nullptr;
+ 
++    delete currentAction;
++    currentAction = nullptr;
++}
++
++void SimpleActionDataWidget::setActionData(KHotKeys::SimpleActionData *pData)
++{
++    unsetActionData();
++    _data = pData;
++
+     if (KHotKeys::Trigger *trg = data()->trigger()) {
+         switch (trg->type()) {
+         case KHotKeys::Trigger::ShortcutTriggerType:
+@@ -95,10 +103,6 @@ void SimpleActionDataWidget::setActionData(KHotKeys::SimpleActionData *pData)
+         extend(currentTrigger, i18n("Trigger"));
+     }
+ 
+-    // Now go and work on the action
+-    delete currentAction;
+-    currentAction = nullptr;
+-
+     if (KHotKeys::Action *act = data()->action()) {
+         switch (act->type()) {
+         case KHotKeys::Action::MenuEntryActionType:
+diff --git a/kcm_hotkeys/simple_action_data_widget.h b/kcm_hotkeys/simple_action_data_widget.h
+index bc203b1..7c347c5 100644
+--- a/kcm_hotkeys/simple_action_data_widget.h
++++ b/kcm_hotkeys/simple_action_data_widget.h
+@@ -32,6 +32,9 @@ public:
+      */
+     void setActionData(KHotKeys::SimpleActionData *action);
+ 
++    /// Throws away the held widgets and state.
++    void unsetActionData();
++
+     KHotKeys::SimpleActionData *data()
+     {
+         return static_cast<KHotKeys::SimpleActionData *>(_data);
+diff --git a/kcm_hotkeys/triggers/trigger_widget_base.cpp b/kcm_hotkeys/triggers/trigger_widget_base.cpp
+index 67f4f3e..3bfa39b 100644
+--- a/kcm_hotkeys/triggers/trigger_widget_base.cpp
++++ b/kcm_hotkeys/triggers/trigger_widget_base.cpp
+@@ -10,6 +10,14 @@ TriggerWidgetBase::TriggerWidgetBase(KHotKeys::Trigger *trigger, QWidget *parent
+     : HotkeysWidgetIFace(parent)
+     , _trigger(trigger)
+ {
++    // Safety net to catch use-after-free. The triggers are not held or managed by us nor our parent.
++    // Makes them easier to spot, unlike https://bugs.kde.org/show_bug.cgi?id=443656
++    auto qObject = dynamic_cast<QObject *>(trigger);
++    if (qObject) {
++        connect(qObject, &QObject::destroyed, this, [this] {
++            _trigger = nullptr;
++        });
++    }
+ }
+ 
+ TriggerWidgetBase::~TriggerWidgetBase()
+-- 
+GitLab
+
