@@ -38,6 +38,9 @@ BDEPEND="
 	dev-libs/libxslt
 	virtual/pkgconfig
 	qt5? ( dev-qt/linguist-tools:5 )
+	test? (
+		htmlreport? ( dev-python/unittest-or-fail[${PYTHON_USEDEP}] )
+	)
 "
 
 src_prepare() {
@@ -66,6 +69,21 @@ src_compile() {
 		distutils-r1_src_compile
 		popd || die
 	fi
+}
+
+src_test() {
+	cmake_src_test
+
+	# TODO: Needs some hackery to find the right binary
+	#if use htmlreport ; then
+	#	distutils-r1_src_test
+	#fi
+}
+
+python_test() {
+	pushd htmlreport || die
+	eunittest
+	popd || die
 }
 
 src_install() {
