@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-11-23)
+# Obsolete slot, last release in 2017, uses EAPI 5.
+# Use one of the newer slots.
+# Masked for removal in 30 days.
+dev-ruby/ttfunk:1.5
+
 # Marek Szuba <marecki@gentoo.org> (2021-11-23)
 # Last release in 2009, dead upstream. Rendered obsolete by native PDF
 # importers provided by LibreOffice/OpenOffice, which actually read PDFs
