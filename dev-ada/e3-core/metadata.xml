@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		This present project (e3) is a Python framework to ease the
+		development of portable automated build systems (compilation,
+		dependencies management, binary code packaging, and automated
+		testing).
+		The e3 framework is split across multiple Python packages named
+		e3-name and sharing the same namespace: e3.
+		e3-core contains several packages that help writing portable code
+		running on both Windows and UNIX systems. It also contains Anod, a
+		build and test driver based on Anod specification files that handle
+		dependencies management, create binary packages, and execute test
+		suites. The driver inputs are Python files ending with .anod called
+		Anod specification files describing:
+		dependencies (either for building, installing, or testing a product)
+		required Git or Subversion repositories
+		list of action to execute for each of the Anod actions or primitives
+		(build, install, test, …)
+	</longdescription>
+	<upstream>
+		<remote-id type="github">adacore/gprbuild</remote-id>
+	</upstream>
+</pkgmetadata>
