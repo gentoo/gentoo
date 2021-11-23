@@ -13,26 +13,30 @@ USE_PHP="php7-3 php7-4 php8-0 php8-1"
 
 inherit php-ext-pecl-r3
 
-USE_PHP="php7-3 php7-4"
+USE_PHP="php8-0 php8-1"
 
 KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 
 DESCRIPTION="PHP extension for using memcached"
 LICENSE="PHP-3"
-SLOT="7"
+SLOT="8"
 IUSE="+session"
 
-DEPEND="php_targets_php7-3? ( sys-libs/zlib ) php_targets_php7-4? ( sys-libs/zlib )"
+DEPEND="
+	php_targets_php8-0? ( sys-libs/zlib )
+	php_targets_php8-1? ( sys-libs/zlib )
+"
 RDEPEND="${DEPEND}
-	php_targets_php8-0? ( dev-php/pecl-memcache:8[php_targets_php8-0(-)?] )
-	php_targets_php8-1? ( dev-php/pecl-memcache:8[php_targets_php8-1(-)?] )
+	php_targets_php7-3? ( dev-php/pecl-memcache:7[php_targets_php7-3(-)?] )
+	php_targets_php7-4? ( dev-php/pecl-memcache:7[php_targets_php7-4(-)?] )
 "
 
 # The test suite requires memcached to be running.
 RESTRICT='test'
+PATCHES=( "${FILESDIR}/8.0-patches-20211123.patch" )
 
 src_prepare() {
-	if use php_targets_php7-3 || use php_targets_php7-4 ; then
+	if use php_targets_php8-0 || use php_targets_php8-1 ; then
 		php-ext-source-r3_src_prepare
 	else
 		default
@@ -40,14 +44,14 @@ src_prepare() {
 }
 
 src_configure() {
-	if use php_targets_php7-3 || use php_targets_php7-4 ; then
+	if use php_targets_php8-0 || use php_targets_php8-1 ; then
 		local PHP_EXT_ECONF_ARGS=( --enable-memcache --with-zlib-dir="${EPREFIX}/usr" $(use_enable session memcache-session) )
 		php-ext-source-r3_src_configure
 	fi
 }
 
 src_install() {
-	if use php_targets_php7-3 || use php_targets_php7-4 ; then
+	if use php_targets_php8-0 || use php_targets_php8-1 ; then
 		php-ext-pecl-r3_src_install
 
 		php-ext-source-r3_addtoinifiles "memcache.allow_failover" "true"
