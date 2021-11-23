@@ -30,6 +30,11 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
+	local EPYTEST_DESELECT=(
+		# flaky test
+		tests/test_pubsub.py::TestPubSubDeadlock::test_pubsub_deadlock
+	)
+
 	local redis_pid="${T}"/redis.pid
 	local redis_port=6379
 	local redis_test_config="
