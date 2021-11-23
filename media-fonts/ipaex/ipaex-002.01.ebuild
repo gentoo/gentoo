@@ -8,8 +8,8 @@ inherit font
 MY_P="IPAexfont${PV/.}"
 
 DESCRIPTION="Japanese IPA extended TrueType fonts"
-HOMEPAGE="https://ipafonts.osdn.jp/"
-SRC_URI="https://osdn.mirror.liquidtelecom.com/ipafonts/57330/${MY_P}.zip"
+HOMEPAGE="https://moji.or.jp/ipafont/"
+SRC_URI="https://moji.or.jp/wp-content/ipafont/IPAexfont/${MY_P}.zip"
 
 LICENSE="IPAfont"
 SLOT="0"
