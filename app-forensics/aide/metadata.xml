@@ -11,5 +11,6 @@
 	<upstream>
 		<remote-id type="github">aide/aide</remote-id>
 		<remote-id type="sourceforge">aide</remote-id>
+		<remote-id type="cpe">cpe:/a:freebsd:advanced_intrusion_detection_environment</remote-id>
 	</upstream>
 </pkgmetadata>
