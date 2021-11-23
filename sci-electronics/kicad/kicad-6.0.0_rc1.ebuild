@@ -15,8 +15,6 @@ HOMEPAGE="https://www.kicad.org"
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/kicad/code/kicad.git"
 	inherit git-r3
-	# x11-misc-util/macros only required on live ebuilds
-	LIVE_DEPEND=">=x11-misc/util-macros-1.18"
 else
 	MY_PV="${PV/_rc/-rc}"
 	MY_P="${PN}-${MY_PV}"
@@ -62,8 +60,13 @@ RDEPEND="${COMMON_DEPEND}
 	sci-electronics/electronics-menu
 "
 BDEPEND="doc? ( app-doc/doxygen )"
-CHECKREQS_DISK_BUILD="800M"
 
+if [[ ${PV} == 9999 ]] ; then
+	# x11-misc-util/macros only required on live ebuilds
+	BDEPEND+=" >=x11-misc/util-macros-1.18"
+fi
+
+CHECKREQS_DISK_BUILD="800M"
 CAS_VERSION=7.5.3
 
 pkg_setup() {
