@@ -17,7 +17,7 @@
 		<flag name="bazaar">Add support for GNU Bazaar version control system (requires manual installation of Bazaar client)</flag>
 		<flag name="beautifier">Build the beautifier plugin (supports astyle, clang-format, and uncrustify)</flag>
 		<flag name="boot2qt">Build plugin for Boot2Qt devices</flag>
-		<flag name="clang">Build clang-based plugins (code model, formatting, static analysis)</flag>
+		<flag name="clang">Build clang-based plugins for C/C++ development (code model, formatting, static analysis)</flag>
 		<flag name="clearcase">Add support for IBM ClearCase version control system (requires manual installation of ClearCase client)</flag>
 		<flag name="cmake">Build plugin for CMake-based projects</flag>
 		<flag name="conan">Build plugin to integrate with the Conan package manager</flag>
@@ -27,7 +27,7 @@
 		<flag name="docker">Build plugin for Docker support</flag>
 		<flag name="glsl">Build the GLSL editor plugin</flag>
 		<flag name="help">Enable the integrated documentation viewer</flag>
-		<flag name="incredibuild">Enable integration with Incredibuild (requires manual installation of Incredibuild)</flag>
+		<flag name="incredibuild">Enable integration with Incredibuild</flag>
 		<flag name="lsp">Add support for the Language Server Protocol (LSP)</flag>
 		<flag name="mcu">Build plugin for MCU devices</flag>
 		<flag name="mercurial">Add support for <pkg>dev-vcs/mercurial</pkg> version control system</flag>
@@ -38,6 +38,7 @@
 		<flag name="perfprofiler">Build the Linux Perf-based profiler plugin</flag>
 		<flag name="python">Build plugin for Python language support</flag>
 		<flag name="qbs">Build plugin for QBS-based projects</flag>
+		<flag name="qml">Build plugins for QML-based development (designer, editor, project manager)</flag>
 		<flag name="qmldesigner">Enable designer for QML/QtQuick-based UIs</flag>
 		<flag name="qmljs">Build the QML/JavaScript editor plugin</flag>
 		<flag name="qmlprofiler">Build the QML profiler plugin</flag>
