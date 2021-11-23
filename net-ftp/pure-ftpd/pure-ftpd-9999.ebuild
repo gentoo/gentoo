@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic
 
@@ -61,11 +61,11 @@ src_configure() {
 		-i "${S}/src/ftpd.h" || die "sed failed"
 
 	# Those features are only configurable like this, see bug #179375.
-	use anondel && append-cppflags -DANON_CAN_DELETE
-	use anonperm && append-cppflags -DANON_CAN_CHANGE_PERMS
-	use anonren && append-cppflags -DANON_CAN_RENAME
-	use anonres && append-cppflags -DANON_CAN_RESUME
-	use resolveids && append-cppflags -DALWAYS_RESOLVE_IDS
+	use anondel 	&& append-cppflags -DANON_CAN_DELETE
+	use anonperm 	&& append-cppflags -DANON_CAN_CHANGE_PERMS
+	use anonren 	&& append-cppflags -DANON_CAN_RENAME
+	use anonres 	&& append-cppflags -DANON_CAN_RESUME
+	use resolveids 	&& append-cppflags -DALWAYS_RESOLVE_IDS
 
 	# Do not auto-use SSP -- let the user select this.
 	export ax_cv_check_cflags___fstack_protector_all=no
