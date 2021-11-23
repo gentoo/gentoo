@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Simply adds a declarative test method syntax to test/unit"
 HOMEPAGE="https://github.com/svenfuchs/test_declarative"
-SRC_URI="https://github.com/svenfuchs/test_declarative/tarball/v${PV} -> ${P}.tgz"
+SRC_URI="https://github.com/svenfuchs/test_declarative/archive/v${PV} -> ${P}.tgz"
 RUBY_S="svenfuchs-test_declarative-*"
 
 LICENSE="MIT"
