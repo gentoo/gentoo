@@ -11,7 +11,7 @@ SRC_URI="http://downloads.hercules-390.eu/${P}.tar.gz"
 
 LICENSE="QPL-1.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 ~ppc ~sparc ~x86 ~x64-macos"
 IUSE="bzip2 custom-cflags +suid"
 
 RDEPEND="
