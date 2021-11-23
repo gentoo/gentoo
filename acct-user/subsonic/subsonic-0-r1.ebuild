@@ -9,6 +9,6 @@ DESCRIPTION="A user for media-sound/subsonic-bin"
 
 ACCT_USER_GROUPS=( "subsonic" )
 ACCT_USER_HOME="/var/lib/subsonic"
-ACCT_USER_ID="126"
+ACCT_USER_ID="136"
 
 acct-user_add_deps
