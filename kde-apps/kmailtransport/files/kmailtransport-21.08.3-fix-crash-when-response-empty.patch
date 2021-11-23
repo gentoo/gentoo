@@ -1,0 +1,25 @@
+From fb2ce5f1115ede2c782cc0e1095584eb07cf032b Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Mon, 1 Nov 2021 09:15:31 +0100
+Subject: [PATCH] Fix crash when response is empty
+
+---
+ src/kmailtransport/servertest.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/kmailtransport/servertest.cpp b/src/kmailtransport/servertest.cpp
+index 6e8d711..35079e1 100644
+--- a/src/kmailtransport/servertest.cpp
++++ b/src/kmailtransport/servertest.cpp
+@@ -236,7 +236,7 @@ bool ServerTestPrivate::handlePopConversation(MailTransport::Socket *socket, int
+     // Initial Greeting
+     if (stage == 0) {
+         // Regexp taken from POP3 ioslave
+-        const QString responseWithoutCRLF = response.chopped(2);
++        const QString responseWithoutCRLF = response.isEmpty() ? response : response.chopped(2);
+         const QRegularExpression re(QStringLiteral("<[A-Za-z0-9\\.\\-_]+@[A-Za-z0-9\\.\\-_]+>$"), QRegularExpression::CaseInsensitiveOption);
+         if (responseWithoutCRLF.indexOf(re) != -1) {
+             authenticationResults[type] << Transport::EnumAuthenticationType::APOP;
+-- 
+GitLab
+
