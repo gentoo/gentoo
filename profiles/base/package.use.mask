@@ -8,7 +8,7 @@
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-23)
 # pdfannotextractor gets masked as it does not support
-# updated dev-java/pdfbox-2.0.24, Bug_#803488
+# updated dev-java/pdfbox-2.0.24, Bug #803488
 app-text/texlive pdfannotextractor
 
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-26)
