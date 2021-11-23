@@ -11,8 +11,6 @@ HOMEPAGE="https://gitlab.com/kicad/libraries/kicad-packages3D"
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/kicad/libraries/kicad-packages3D.git"
 	inherit git-r3
-	# x11-misc-util/macros only required on live ebuilds
-	LIVE_DEPEND=">=x11-misc/util-macros-1.18"
 else
 	MY_PV="${PV/_rc/-rc}"
 	MY_P="${PN}-${MY_PV}"
@@ -31,8 +29,5 @@ if [[ ${PV} == 9999 ]] ; then
 	# x11-misc-util/macros only required on live ebuilds
 	BDEPEND=">=x11-misc/util-macros-1.18"
 fi
-
-# TODO fix this (ezzieyguywuf)
-S="${WORKDIR}/${PN/3d/3D}-${MY_PV}-1080b6e565e56bae9be46db2278a1542092d7a2d"
 
 CHECKREQS_DISK_BUILD="11G"
