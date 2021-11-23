@@ -1,0 +1,149 @@
+From 294fe8ddc2f10d0a783bf9b80769c31ecc5922b1 Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Fri, 5 Nov 2021 23:23:59 +0100
+Subject: [PATCH] KAcceleratorManager: Take into account actions with Alt+X
+ shortcuts
+
+We need to mark those X labels as used, otherwise the accelerator
+manager may decide to use X for an accelerator and when pressing Alt+X
+we will have a conflict
+
+BUGS: 444990
+---
+ autotests/kacceleratormanagertest.cpp | 21 +++++++++++++++++++
+ src/kacceleratormanager.cpp           | 30 ++++++++++++++++++++-------
+ src/kacceleratormanager_p.h           |  4 ++--
+ 3 files changed, 46 insertions(+), 9 deletions(-)
+
+diff --git a/autotests/kacceleratormanagertest.cpp b/autotests/kacceleratormanagertest.cpp
+index 3fc07928..2bdc4f74 100644
+--- a/autotests/kacceleratormanagertest.cpp
++++ b/autotests/kacceleratormanagertest.cpp
+@@ -8,6 +8,7 @@
+ #include <kacceleratormanager.h>
+ 
+ #include <QMenu>
++#include <QPushButton>
+ #include <QTest>
+ 
+ #define QSL QStringLiteral
+@@ -75,6 +76,26 @@ private Q_SLOTS:
+         QCOMPARE(texts, expectedTexts);
+     }
+ 
++    void testExistingActionsShortcutsAreTakenIntoAccount()
++    {
++        std::unique_ptr<QWidget> w(new QWidget());
++
++        QPushButton *pb = new QPushButton(QSL("Open"), w.get());
++
++        KAcceleratorManager::manage(w.get());
++        QCOMPARE(pb->text(), QSL("&Open"));
++
++        delete pb;
++        pb = new QPushButton(QSL("Open"), w.get());
++
++        QAction *a = new QAction();
++        a->setShortcut(QSL("Alt+O"));
++        w->addAction(a);
++
++        KAcceleratorManager::manage(w.get());
++        QCOMPARE(pb->text(), QSL("O&pen"));
++    }
++
+     void testActionIconTexts_data()
+     {
+         QTest::addColumn<QStringList>("initialTexts");
+diff --git a/src/kacceleratormanager.cpp b/src/kacceleratormanager.cpp
+index 66d596d3..2f7b1879 100644
+--- a/src/kacceleratormanager.cpp
++++ b/src/kacceleratormanager.cpp
+@@ -94,9 +94,8 @@ void KAcceleratorManagerPrivate::manage(QWidget *widget)
+ 
+     Item *root = new Item;
+ 
+-    manageWidget(widget, root);
+-
+     QString used;
++    manageWidget(widget, root, used);
+     calculateAccelerators(root, used);
+     delete root;
+ }
+@@ -175,7 +174,7 @@ void KAcceleratorManagerPrivate::calculateAccelerators(Item *item, QString &used
+     }
+ }
+ 
+-void KAcceleratorManagerPrivate::traverseChildren(QWidget *widget, Item *item)
++void KAcceleratorManagerPrivate::traverseChildren(QWidget *widget, Item *item, QString &used)
+ {
+     const QList<QWidget *> childList = widget->findChildren<QWidget *>();
+     for (QWidget *w : childList) {
+@@ -192,12 +191,29 @@ void KAcceleratorManagerPrivate::traverseChildren(QWidget *widget, Item *item)
+             continue;
+         }
+ 
+-        manageWidget(w, item);
++        manageWidget(w, item, used);
+     }
+ }
+ 
+-void KAcceleratorManagerPrivate::manageWidget(QWidget *w, Item *item)
++void KAcceleratorManagerPrivate::manageWidget(QWidget *w, Item *item, QString &used)
+ {
++    // If the widget has any action whose shortcuts contain keystrokes in the
++    // form of Alt+X we need to mark X as used, otherwise we may assign it as accelerator
++    // and there will be a conflict when trying to use it
++    const QList<QAction *> widgetActions = w->actions();
++    for (QAction *action : widgetActions) {
++        const QList<QKeySequence> actionShortcuts = action->shortcuts();
++        for (const QKeySequence &sequence : actionShortcuts) {
++            const QString sequenceAsText = sequence.toString(QKeySequence::PortableText);
++            const QStringList splitSequence = sequenceAsText.split(QStringLiteral(", "));
++            for (const QString &shortcut : splitSequence) {
++                if (shortcut.length() == 5 && shortcut.startsWith(QStringLiteral("Alt+"))) {
++                    used.append(shortcut.right(1));
++                }
++            }
++        }
++    }
++
+     // first treat the special cases
+ 
+     QTabBar *tabBar = qobject_cast<QTabBar *>(w);
+@@ -247,7 +263,7 @@ void KAcceleratorManagerPrivate::manageWidget(QWidget *w, Item *item)
+     }
+ 
+     if (w->inherits("KUrlRequester")) {
+-        traverseChildren(w, item);
++        traverseChildren(w, item, used);
+         return;
+     }
+ 
+@@ -316,7 +332,7 @@ void KAcceleratorManagerPrivate::manageWidget(QWidget *w, Item *item)
+             item->addChild(i);
+         }
+     }
+-    traverseChildren(w, item);
++    traverseChildren(w, item, used);
+ }
+ 
+ void KAcceleratorManagerPrivate::manageTabBar(QTabBar *bar, Item *item)
+diff --git a/src/kacceleratormanager_p.h b/src/kacceleratormanager_p.h
+index a92d04ab..04926476 100644
+--- a/src/kacceleratormanager_p.h
++++ b/src/kacceleratormanager_p.h
+@@ -227,9 +227,9 @@ public:
+     typedef QList<Item *> ItemList;
+ 
+ private:
+-    static void traverseChildren(QWidget *widget, Item *item);
++    static void traverseChildren(QWidget *widget, Item *item, QString &used);
+ 
+-    static void manageWidget(QWidget *widget, Item *item);
++    static void manageWidget(QWidget *widget, Item *item, QString &used);
+     static void manageMenuBar(QMenuBar *mbar, Item *item);
+     static void manageTabBar(QTabBar *bar, Item *item);
+     static void manageDockWidget(QDockWidget *dock, Item *item);
+-- 
+GitLab
+
