@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-23)
+# pdfannotextractor gets masked as it does not support
+# updated dev-java/pdfbox-2.0.24, Bug_#803488
+app-text/texlive pdfannotextractor
+
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-26)
 # Depends on masked sys-fabric/dapl
 sys-fabric/ofed dapl

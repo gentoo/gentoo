@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-23)
+# Does not support updated dev-java/pdfbox-2.0.24, Bug_#803488
+# Blocks (CVE-2018-11797, CVE-2021-{27807,27906,31811,31812})
+dev-tex/pdfannotextractor
+
 # Marek Szuba <marecki@gentoo.org> (2021-11-23)
 # No releases or repo activity upstream since 2013, both versions currently
 # in the tree fail to build (for different reasons), unmaintained in Gentoo,
