@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2021-11-23)
+# No releases or repo activity upstream since 2013, both versions currently
+# in the tree fail to build (for different reasons), unmaintained in Gentoo,
+# stable ebuild uses EAPI 5.
+# Removal in 30 days. Bug #756925
+app-text/dbacl
+
 # Sergey Popov <pinkbyte@gentoo.org> (2021-11-22)
 # Upstream is pretty much dead
 # Has at least one security issue - bug #825358
