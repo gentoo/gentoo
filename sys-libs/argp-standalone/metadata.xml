@@ -5,4 +5,7 @@
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
-	</pkgmetadata>
+	<maintainer type="project">
+		<email>musl@gentoo.org</email>
+	</maintainer>
+</pkgmetadata>
