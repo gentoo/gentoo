@@ -26,7 +26,7 @@ LICENSE="GPL-3"
 SLOT="0"
 QTC_PLUGINS=(android +autotest autotools:autotoolsprojectmanager baremetal bazaar beautifier boot2qt
 	'+clang:clangcodemodel|clangformat|clangtools' clearcase cmake:cmakeprojectmanager conan cppcheck
-	ctfvisualizer cvs +designer docker git glsl:glsleditor +help incredibuild lsp:languageclient
+	ctfvisualizer cvs +designer docker git glsl:glsleditor +help incredibuild +lsp:languageclient
 	mcu:mcusupport mercurial meson:mesonprojectmanager modeling:modeleditor nim perforce perfprofiler
 	python qbs:qbsprojectmanager '+qml:qmldesigner|qmljseditor|qmlpreview|qmlprojectmanager|studiowelcome'
 	qmlprofiler qnx remotelinux scxml:scxmleditor serialterminal silversearcher subversion valgrind
@@ -36,7 +36,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	android? ( lsp )
 	boot2qt? ( remotelinux )
-	clang? ( test? ( qbs ) )
+	clang? ( lsp test? ( qbs ) )
 	mcu? ( baremetal cmake )
 	python? ( lsp )
 	qnx? ( remotelinux )
