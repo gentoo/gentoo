@@ -3,14 +3,13 @@
 
 EAPI=7
 
-FONT_SUFFIX="ttf"
-MY_P="IPAfont${PV/.}"
 inherit font
+
+MY_P="IPAfont${PV/.}"
 
 DESCRIPTION="TrueType fonts developed by Japanese Information-technology Promotion Agency"
 HOMEPAGE="http://ipafont.ipa.go.jp/"
 SRC_URI="http://dl.ipafont.ipa.go.jp/IPAfont/${MY_P}.zip"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="IPAfont"
 SLOT="0"
@@ -19,7 +18,9 @@ IUSE=""
 RESTRICT="binchecks strip"
 
 BDEPEND="app-arch/unzip"
+S="${WORKDIR}/${MY_P}"
+
+DOCS=( Readme_${MY_P}.txt )
 
 FONT_CONF=( "${FILESDIR}"/66-${PN}.conf )
-
-DOCS=( "Readme_${MY_P}.txt" )
+FONT_SUFFIX="ttf"
