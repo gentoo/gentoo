@@ -19,6 +19,7 @@ RDEPEND="
 	dev-python/coloredlogs[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	>=dev-python/spyder-5.1.1[${PYTHON_USEDEP}]
+	<dev-python/spyder-5.2.0[${PYTHON_USEDEP}]
 	>=dev-python/terminado-0.10.0[${PYTHON_USEDEP}]
 	www-servers/tornado[${PYTHON_USEDEP}]
 "
