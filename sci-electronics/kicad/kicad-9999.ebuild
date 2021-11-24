@@ -109,10 +109,12 @@ src_configure() {
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 	)
+
+	local OCC_P=$(best_version sci-libs/opencascade)
+	OCC_P=${OCC_P#sci-libs/}
+	OCC_P=${OCC_P%-r*}
+
 	use occ && mycmakeargs+=(
-		local OCC_P=$(best_version sci-libs/opencascade)
-		OCC_P=${OCC_P#sci-libs/}
-		OCC_P=${OCC_P%-r*}
 		-DOCC_INCLUDE_DIR="${CASROOT}"/include/${OCC_P}
 		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/${OCC_P}
 
