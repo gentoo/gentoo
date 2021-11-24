@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson-multilib
+inherit meson-multilib flag-o-matic
 
 DESCRIPTION="An audio time-stretching and pitch-shifting library and utility program"
 HOMEPAGE="https://www.breakfastquay.com/rubberband/"
@@ -33,6 +33,11 @@ PATCHES=(
 )
 
 multilib_src_configure() {
+	if use ppc ; then
+		# bug #827203
+		append-libs -latomic
+	fi
+
 	local emesonargs=(
 		--buildtype=release
 		-Dfft=fftw
