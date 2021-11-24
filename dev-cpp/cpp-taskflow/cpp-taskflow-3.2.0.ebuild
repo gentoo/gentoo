@@ -10,7 +10,6 @@ HOMEPAGE="https://cpp-taskflow.github.io"
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/cpp-taskflow/${PN}.git"
 	inherit git-r3
-	KEYWORDS=""
 	S="${WORKDIR}/cpp-taskflow-${PV}"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -22,6 +21,8 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
+
+DEPEND="test? ( dev-cpp/doctest )"
 
 HTML_DOCS=( docs/. )
 
