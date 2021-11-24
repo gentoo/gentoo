@@ -47,6 +47,7 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
+# pyparsing version pinned for https://bugs.gentoo.org/825230
 BDEPEND="
 	>=sys-devel/automake-1.13.4
 	>=sys-devel/gettext-0.18.2
@@ -58,7 +59,7 @@ BDEPEND="
 		>=dev-util/gtk-doc-1.20
 		dev-libs/libxslt
 	)
-	$(python_gen_any_dep 'dev-python/pyparsing[${PYTHON_USEDEP}]')
+	$(python_gen_any_dep '<dev-python/pyparsing-3[${PYTHON_USEDEP}]')
 "
 
 PDEPEND="
