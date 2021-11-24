@@ -16,7 +16,7 @@ COMMIT_ID="bd5be2afb088beba3f0d863cef4eac7db56ca804"
 SRC_URI="https://github.com/mattheworiordan/${PN}/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 RUBY_S="${PN}-${COMMIT_ID}"
