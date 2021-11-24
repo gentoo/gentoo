@@ -28,6 +28,8 @@ DEPEND="${RDEPEND}
 		dev-python/tqdm
 		dev-python/tomlkit
 		dev-python/pyyaml
+		dev-python/python-dateutil
+		dev-python/mock
 	)"
 BDEPEND=""
 REQUIRED_USE="x86? ( !test )"
