@@ -1,9 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit epatch
+EAPI=8
 
 DESCRIPTION="Make replacement"
 HOMEPAGE="http://projects.camlcity.org/projects/omake.html"
@@ -21,10 +19,9 @@ DEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt?]
 	readline? ( >=sys-libs/readline-4.3:0= )"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}/${PN}-0.10.2-cflags.patch"
-}
+PATCHES=(
+	"${FILESDIR}/${PN}-0.10.2-cflags.patch"
+)
 
 src_configure() {
 	./configure \
@@ -43,7 +40,7 @@ src_install() {
 	emake INSTALL_ROOT="${D}" install
 	dodoc ChangeLog CONTRIBUTORS.org README.md
 	if use doc; then
-		dodoc doc/ps/omake-doc.{pdf,ps} doc/txt/omake-doc.txt
-		dohtml -r doc/html/*
+		dodoc doc/ps/omake-doc.pdf doc/txt/omake-doc.txt
+		dodoc -r doc/html
 	fi
 }
