@@ -20,10 +20,6 @@ dev-ml/llvm-ocaml llvm_targets_AMDGPU llvm_targets_NVPTX
 sys-devel/clang llvm_targets_AMDGPU llvm_targets_NVPTX
 sys-devel/llvm llvm_targets_AMDGPU llvm_targets_NVPTX
 
-# Michał Górny <mgorny@gentoo.org> (2014-06-28)
-# Packages that should be multilib by default.
-x11-drivers/nvidia-drivers abi_x86_32
-
 # Doug Goldstein <cardoe@gentoo.org> (2012-10-29)
 # Enable the native arch as the default qemu target
 app-emulation/qemu qemu_softmmu_targets_x86_64
