@@ -13,11 +13,15 @@ LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.97-makefile-tc-vars.patch
-)
-
 S="${WORKDIR}"/${MY_P}
+
+src_prepare() {
+	default
+
+	# Upstream makefile has got DOS line endings so using patches there is fragile,
+	# see Bug #827018.
+	sed -i -e 's#^\(CC \?\)=#\1?=#' Makefile || die
+}
 
 src_install() {
 	dobin lpc21isp
