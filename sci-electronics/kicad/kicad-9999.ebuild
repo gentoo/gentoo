@@ -128,6 +128,14 @@ src_compile() {
 	fi
 }
 
+src_test() {
+	# Test cannot find library in Portage's sandbox. Let's create a link so test can run.
+	ln -s "${BUILD_DIR}/eeschema/_eeschema.kiface" "${BUILD_DIR}/qa/eeschema/_eeschema.kiface" || die
+
+	# LD_LIBRARY_PATH is there to help it pick up the just-built libraries
+	LD_LIBRARY_PATH="${BUILD_DIR}/3d-viewer/3d_cache/sg:${LD_LIBRARY_PATH}" cmake_src_test
+}
+
 src_install() {
 	cmake_src_install
 	use python && python_optimize
@@ -136,13 +144,6 @@ src_install() {
 		cd Documentation || die
 		dodoc -r *.txt kicad_doxygen_logo.png notes_about_pcbnew_new_file_format.odt doxygen/. development/doxygen/.
 	fi
-}
-
-src_test() {
-	# Test cannot find library in Portage's sandbox. Let's create a link so test can run.
-	ln -s "${S}_build/eeschema/_eeschema.kiface" "${S}_build/qa/eeschema/_eeschema.kiface" || die
-
-	default
 }
 
 pkg_postinst() {
