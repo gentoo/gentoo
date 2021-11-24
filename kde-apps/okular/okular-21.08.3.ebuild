@@ -17,7 +17,7 @@ HOMEPAGE="https://okular.kde.org https://apps.kde.org/okular/"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="chm djvu epub +image-backend kwallet markdown mobi +pdf +plucker +postscript qml share speech +tiff"
+IUSE="chm crypt djvu epub +image-backend markdown mobi +pdf +plucker +postscript qml share speech +tiff"
 
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
@@ -48,13 +48,13 @@ DEPEND="
 		dev-libs/libzip:=
 		>=kde-frameworks/khtml-${KFMIN}:5
 	)
+	crypt? ( >=kde-frameworks/kwallet-${KFMIN}:5 )
 	djvu? ( app-text/djvu )
 	epub? ( app-text/ebook-tools )
 	image-backend? (
 		>=dev-qt/qtgui-${QTMIN}:5[gif,jpeg,png]
 		>=kde-apps/libkexiv2-${PVCUT}:5
 	)
-	kwallet? ( >=kde-frameworks/kwallet-${KFMIN}:5 )
 	markdown? ( app-text/discount )
 	mobi? ( >=kde-apps/kdegraphics-mobipocket-${PVCUT}:5 )
 	pdf? ( app-text/poppler[nss,qt5] )
@@ -84,10 +84,10 @@ src_configure() {
 		$(cmake_use_find_package chm CHM)
 		$(cmake_use_find_package chm KF5KHtml)
 		$(cmake_use_find_package chm LibZip)
+		-DWITH_KWALLET=$(usex crypt)
 		$(cmake_use_find_package djvu DjVuLibre)
 		$(cmake_use_find_package epub EPub)
 		$(cmake_use_find_package image-backend KF5KExiv2)
-		-DWITH_KWALLET=$(usex kwallet)
 		$(cmake_use_find_package markdown Discount)
 		$(cmake_use_find_package mobi QMobipocket)
 		$(cmake_use_find_package pdf Poppler)
