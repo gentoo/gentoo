@@ -213,6 +213,24 @@ src_install() {
 	# FAQ is not required as is installed from help/faq.txt
 	dodoc AUTHORS ChangeLog NEWS README* doc/randpkt.txt doc/README*
 
+	# If trying to remove this, try build e.g. libvirt first!
+	# At last check, Fedora is still doing this too.
+	local dir dirs=(
+		epan
+		epan/crypt
+		epan/dfilter
+		epan/dissectors
+		epan/ftypes
+		epan/wmem
+		wiretap
+		wsutil
+	)
+
+	for dir in "${dirs[@]}" ; do
+		insinto /usr/include/wireshark/${dir}
+		doins ${dir}/*.h
+	done
+
 	if use qt5; then
 		local s
 		for s in 16 32 48 64 128 256 512 1024; do
