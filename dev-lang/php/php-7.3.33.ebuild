@@ -152,6 +152,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/php-freetype-2.9.1.patch"
+	"${FILESDIR}/php-icu-70.patch"
 )
 
 PHP_MV="$(ver_cut 1)"
