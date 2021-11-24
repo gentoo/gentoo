@@ -734,7 +734,7 @@ ruby-ng_cucumber() {
 			;;
 	esac
 
-	${RUBY} -S cucumber ${cucumber_params} "$@" || die "cucumber failed"
+	CUCUMBER_PUBLISH_QUIET=true ${RUBY} -S cucumber ${cucumber_params} "$@" || die "cucumber failed"
 }
 
 # @FUNCTION: ruby-ng_testrb-2
