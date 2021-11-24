@@ -6,6 +6,7 @@ EAPI=8
 DESCRIPTION="Lexmark universal printer driver PPDs"
 HOMEPAGE="https://www.lexmark.com/en_us/support/universal-print-driver.html"
 SRC_URI="https://downloads.lexmark.com/downloads/drivers/Lexmark-UPD-PPD-Files.tar.Z -> ${P}.tar.Z"
+RESTRICT="mirror"
 
 LICENSE="Lexmark-EU2-0111"
 SLOT="0"
