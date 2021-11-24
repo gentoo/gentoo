@@ -22,6 +22,7 @@ RDEPEND="
 		dev-python/chardet[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
+	x11-libs/gtk+:3
 "
 BDEPEND="
 	sys-devel/gettext
