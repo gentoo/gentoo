@@ -18,7 +18,8 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/colorama
 	dev-python/stevedore
-	dev-python/distro"
+	dev-python/distro
+	!app-editors/e3"
 DEPEND="${RDEPEND}
 	test? (
 		dev-python/requests-toolbelt
@@ -26,6 +27,7 @@ DEPEND="${RDEPEND}
 		dev-vcs/subversion
 		dev-python/tqdm
 		dev-python/tomlkit
+		dev-python/pyyaml
 	)"
 BDEPEND=""
 REQUIRED_USE="x86? ( !test )"
