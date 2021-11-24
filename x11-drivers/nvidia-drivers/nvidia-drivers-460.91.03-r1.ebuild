@@ -360,6 +360,8 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 }
 
 pkg_preinst() {
+	has_version "${CATEGORY}/${PN}[abi_x86_32]" && NV_HAD_ABI32=1
+
 	use driver || return
 	linux-mod_pkg_preinst
 
@@ -407,6 +409,13 @@ pkg_postinst() {
 		fi
 		ewarn "...then downgrade to a legacy branch if possible. For details, see:"
 		ewarn "https://www.nvidia.com/object/IO_32667.html"
+	fi
+
+	if use !abi_x86_32 && [[ ${NV_HAD_ABI32} ]]; then
+		elog
+		elog "USE=abi_x86_32 is disabled, 32bit applications will not be able to"
+		elog "use nvidia-drivers for acceleration without it (e.g. commonly used"
+		elog "with app-emulation/wine-*). Re-enable if needed."
 	fi
 
 	# Try to show this message only to users that may really need it

@@ -359,7 +359,8 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 }
 
 pkg_preinst() {
-	has_version "x11-drivers/nvidia-drivers[wayland]" && NV_HAD_WAYLAND=1
+	has_version "${CATEGORY}/${PN}[abi_x86_32]" && NV_HAD_ABI32=1
+	has_version "${CATEGORY}/${PN}[wayland]" && NV_HAD_WAYLAND=1
 
 	use driver || return
 	linux-mod_pkg_preinst
@@ -389,7 +390,15 @@ pkg_postinst() {
 		elog "Other functions, like OpenGL, will continue to work."
 	fi
 
+	if use !abi_x86_32 && [[ ${NV_HAD_ABI32} ]]; then
+		elog
+		elog "USE=abi_x86_32 is disabled, 32bit applications will not be able to"
+		elog "use nvidia-drivers for acceleration without it (e.g. commonly used"
+		elog "with app-emulation/wine-*). Re-enable if needed."
+	fi
+
 	if [[ ${NV_HAD_WAYLAND} ]]; then
+		elog
 		elog "Support for EGLStream (egl-wayland) is no longer offered with legacy"
 		elog "nvidia-drivers. It is recommended to use nouveau drivers for wayland."
 	fi
