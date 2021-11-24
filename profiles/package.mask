@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2021-11-23)
+# No new releases since July 2013, no commits to upstream Git repository
+# since May 2019, long list of known issues (including Bug #681520),
+# unmaintained in Gentoo, EAPI 5. Consider using dev-util/uglifyjs instead.
+# Removal in 30 days. Bug #826470
+dev-util/yuicompressor
+
 # Lars Wendler <polynomial-c@gentoo.org> (2021-11-24)
 # No real development since Q1 2020. Last release from 2016.
 # Users should switch over to media-sound/strawberry which is an actively
