@@ -66,6 +66,7 @@ src_prepare() {
 	addpredict /proc
 
 	eapply "${FILESDIR}/${PN}-3.2.0-include-limits-for-gcc-11.patch"
+	eapply "${FILESDIR}/${PN}-3.7.2-musl-temp-failure-retry.patch"
 }
 
 src_compile() {
