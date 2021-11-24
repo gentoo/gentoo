@@ -66,7 +66,7 @@ JAVA_TEST_RUN_ONLY=(
 check_env() {
 	if use test; then
 		# this is needed only for tests
-		CHECKREQS_MEMORY="1200M"
+		CHECKREQS_MEMORY="2048M"
 		check-reqs_pkg_pretend
 	fi
 }
