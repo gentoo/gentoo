@@ -9,6 +9,7 @@
 		<email>fonts@gentoo.org</email>
 		<name>Fonts</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="launchpad">takao-fonts</remote-id>
 	</upstream>
