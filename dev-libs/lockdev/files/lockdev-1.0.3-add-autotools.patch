@@ -30,7 +30,7 @@ Updated by Jonathan Callen <abcd@gentoo.org> 2009-09-11
 +	done
 --- a/configure.ac
 +++ b/configure.ac
-@@ -0,0 +1,22 @@
+@@ -0,0 +1,25 @@
 +AC_INIT([lockdev], [1.0.3], [BUG-REPORT-ADDRESS])
 +AC_CONFIG_AUX_DIR([scripts])
 +AM_INIT_AUTOMAKE
@@ -51,5 +51,8 @@ Updated by Jonathan Callen <abcd@gentoo.org> 2009-09-11
 +# Checks for programs.
 +AC_PROG_LN_S
 +
++AC_HEADER_MAJOR
++
++AC_CONFIG_HEADERS([config.h])
 +AC_CONFIG_FILES([Makefile])
 +AC_OUTPUT

@@ -30,6 +30,7 @@ PATCHES=(
 	"${WORKDIR}/${DEB_P}.diff"
 	"${FILESDIR}/${MY_P}-add-autotools.patch"
 	"${FILESDIR}/${MY_P}-fix-perl.patch"
+	"${FILESDIR}/${MY_P}-major-minor.patch"
 )
 
 PERL_S=./LockDev
