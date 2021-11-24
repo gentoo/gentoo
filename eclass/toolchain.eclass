@@ -90,11 +90,11 @@ GCC_CONFIG_VER=${GCC_RELEASE_VER}
 
 # Pre-release support. Versioning schema:
 # 1.0.0_pre9999: live ebuild
-# 1.2.3_alphaYYYYMMDD: weekly snapshots
+# 1.2.3_pYYYYMMDD: weekly snapshots
 # 1.2.3_rcYYYYMMDD: release candidates
-if [[ ${GCC_PV} == *_alpha* ]] ; then
+if [[ ${GCC_PV} == *_p* ]] ; then
 	# weekly snapshots
-	SNAPSHOT=${GCCMAJOR}-${GCC_PV##*_alpha}
+	SNAPSHOT=${GCCMAJOR}-${GCC_PV##*_p}
 elif [[ ${GCC_PV} == *_rc* ]] ; then
 	# release candidates
 	SNAPSHOT=${GCC_PV%_rc*}-RC-${GCC_PV##*_rc}
