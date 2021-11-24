@@ -46,6 +46,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/numpy-1.21.0-no-hardcode-blasv2.patch
 	"${FILESDIR}"/numpy-1.21.4-build-compiler-args-ceph.patch
+	"${FILESDIR}"/numpy-1.21.4-copy-python-3.9.patch
 )
 
 distutils_enable_tests pytest
