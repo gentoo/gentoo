@@ -1,0 +1,24 @@
+--- a/src/lockdev.c
++++ b/src/lockdev.c
+@@ -123,13 +123,17 @@
+ #include <sys/param.h>
+ #include <sys/stat.h>
+ #include <sys/file.h>
+-#if defined (__GNU_LIBRARY__)
++
++#include "config.h"
++#if defined (MAJOR_IN_MKDEV)
++# include <sys/mkdev.h>
++#elif defined (MAJOR_IN_SYSMACROS)
+ # include <sys/sysmacros.h>
+-# define MAJOR(dev) gnu_dev_major (dev)
+-# define MINOR(dev) gnu_dev_minor (dev)
+ #else
+-#  error "put here a define for MAJOR and MINOR"
++# error "include here the header file defining major() and minor()"
+ #endif
++#define MAJOR(dev) major (dev)
++#define MINOR(dev) minor (dev)
+ 
+ #include "lockdev.h"
+ 
