@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 DESCRIPTION="a tool designed for analyzing the complexity of C program functions"
 HOMEPAGE="https://www.gnu.org/software/complexity/"
@@ -12,9 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
 
 RDEPEND=">=sys-devel/autogen-5.11.7"
-DEPEND="
-	${RDEPEND}
-	sys-devel/libtool
-"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/libtool"
 
 DOCS=( AUTHORS ChangeLog NEWS )
