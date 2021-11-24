@@ -8,6 +8,8 @@ inherit flag-o-matic gstreamer-meson
 
 DESCRIPTION="Less plugins for GStreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
+# glib/misuse of volatile fix, can be dropped in 1.18.5
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-glib-volatile.patch.bz2"
 
 LICENSE="LGPL-2"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~sparc x86"
@@ -42,6 +44,10 @@ DEPEND="${RDEPEND}
 
 # FIXME: gstharness.c:889:gst_harness_new_with_padnames: assertion failed: (element != NULL)
 RESTRICT="test"
+
+PATCHES=(
+	"${WORKDIR}"/${P}-glib-volatile.patch
+)
 
 src_prepare() {
 	default
