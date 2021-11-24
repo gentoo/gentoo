@@ -12,7 +12,7 @@ IUSE=""
 
 # >=opencv-4.1.2-r3 to help testing removal of older being fine
 RDEPEND="
-	>=media-libs/opencv-4.1.2-r3:=[contrib,${MULTILIB_USEDEP}]
+	>=media-libs/opencv-4.1.2-r3:=[contrib,contribdnn,${MULTILIB_USEDEP}]
 	<media-libs/opencv-4.6.0
 "
 DEPEND="${RDEPEND}"
