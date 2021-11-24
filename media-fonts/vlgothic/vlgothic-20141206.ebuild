@@ -16,9 +16,11 @@ SRC_URI="mirror://sourceforge.jp/${PN}/62375/${MY_PN}-${PV}.tar.bz2"
 LICENSE="vlgothic mplus-fonts BSD-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm64 ~ia64 ppc ppc64 sparc x86"
+IUSE=""
+RESTRICT="binchecks strip"
 
 S="${WORKDIR}/${MY_PN}"
 
 DOCS="Changelog README*"
-FONT_S="${S}"
+
 FONT_SUFFIX="ttf"
