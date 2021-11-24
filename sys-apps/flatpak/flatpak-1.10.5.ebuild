@@ -59,7 +59,7 @@ BDEPEND="
 		>=dev-util/gtk-doc-1.20
 		dev-libs/libxslt
 	)
-	$(python_gen_any_dep '<dev-python/pyparsing-3[${PYTHON_USEDEP}]')
+	$(python_gen_any_dep '<dev-python/pyparsing-3.0.2[${PYTHON_USEDEP}]')
 "
 
 PDEPEND="
