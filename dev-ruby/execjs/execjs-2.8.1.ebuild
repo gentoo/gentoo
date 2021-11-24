@@ -17,7 +17,7 @@ SRC_URI="https://github.com/rails/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 arm ~arm64 ppc ppc64 ~riscv ~x86 ~amd64-linux ~x64-macos"
+KEYWORDS="~amd64 arm arm64 ppc ppc64 ~riscv ~x86 ~amd64-linux ~x64-macos"
 
 IUSE="test"
 
