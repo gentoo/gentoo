@@ -214,7 +214,6 @@ src_install() {
 	# FAQ is not required as is installed from help/faq.txt
 	dodoc AUTHORS ChangeLog NEWS README* doc/randpkt.txt doc/README*
 
-
 	# install headers
 	insinto /usr/include/wireshark
 	doins ws_diag_control.h ws_symbol_export.h \
