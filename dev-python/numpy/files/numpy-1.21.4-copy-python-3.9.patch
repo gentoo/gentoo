@@ -1,0 +1,52 @@
+https://github.com/numpy/numpy/commit/50823973e857363f7d8052768276c2e86f004d61
+https://github.com/numpy/numpy/pull/20357
+
+From: Bas van Beek <b.f.van.beek@vu.nl>
+Date: Wed, 10 Nov 2021 15:36:00 +0100
+Subject: [PATCH] MAINT: Do not forward `__(deep)copy__` calls of
+ `_GenericAlias` to the wrapped type
+
+Adapt to the python 3.9.8 changes made in bpo-45167.
+--- a/numpy/typing/_generic_alias.py
++++ b/numpy/typing/_generic_alias.py
+@@ -178,6 +178,8 @@ def __eq__(self, value: object) -> bool:
+         "__mro_entries__",
+         "__reduce__",
+         "__reduce_ex__",
++        "__copy__",
++        "__deepcopy__",
+     })
+ 
+     def __getattribute__(self, name: str) -> Any:
+--- a/numpy/typing/tests/test_generic_alias.py
++++ b/numpy/typing/tests/test_generic_alias.py
+@@ -1,6 +1,7 @@
+ from __future__ import annotations
+ 
+ import sys
++import copy
+ import types
+ import pickle
+ import weakref
+@@ -74,6 +75,21 @@ def test_pass(self, name: str, func: FuncType) -> None:
+             value_ref = func(NDArray_ref)
+             assert value == value_ref
+ 
++    @pytest.mark.parametrize("name,func", [
++        ("__copy__", lambda n: n == copy.copy(n)),
++        ("__deepcopy__", lambda n: n == copy.deepcopy(n)),
++    ])
++    def test_copy(self, name: str, func: FuncType) -> None:
++        value = func(NDArray)
++
++        # xref bpo-45167
++        GE_398 = (
++            sys.version_info[:2] == (3, 9) and sys.version_info >= (3, 9, 8)
++        )
++        if GE_398 or sys.version_info >= (3, 10, 1):
++            value_ref = func(NDArray_ref)
++            assert value == value_ref
++
+     def test_weakref(self) -> None:
+         """Test ``__weakref__``."""
+         value = weakref.ref(NDArray)()
