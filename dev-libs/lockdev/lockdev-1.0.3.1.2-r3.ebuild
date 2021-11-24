@@ -26,6 +26,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="perl"
 
 PATCHES=(
+	"${WORKDIR}/${DEB_P}.diff"
 	"${FILESDIR}/${MY_P}-add-autotools.patch"
 	"${FILESDIR}/${MY_P}-fix-perl.patch"
 )
@@ -37,12 +38,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cd "${WORKDIR}" || die
-	# Note: we do *not* want to be in ${S} for this, as that breaks the patch
-	epatch "${WORKDIR}/${DEB_P}.diff"
-
-	cd "${S}" || die
-	epatch "${PATCHES[@]}"
+	epatch -p1 "${PATCHES[@]}"
 	epatch_user
 
 	eautoreconf
