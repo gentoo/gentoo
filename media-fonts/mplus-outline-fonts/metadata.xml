@@ -9,6 +9,7 @@
 		<email>fonts@gentoo.org</email>
 		<name>Fonts</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<use>
 		<flag name="ipafont">Generates new fonts merged with <pkg>media-fonts/ja-ipafonts</pkg></flag>
 	</use>
