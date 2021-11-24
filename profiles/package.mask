@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (2021-11-24)
+# No real development since Q1 2020. Last release from 2016.
+# Users should switch over to media-sound/strawberry which is an actively
+# developed fork.
+# Masked for removal in 30 days.
+media-sound/clementine
+
 # Hans de Graaff <graaff@gentoo.org> (2021-11-23)
 # Obsolete slot, last release in 2017, uses EAPI 5.
 # Use one of the newer slots.
