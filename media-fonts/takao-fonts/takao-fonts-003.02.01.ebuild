@@ -15,12 +15,9 @@ LICENSE="IPAfont"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~riscv x86"
 IUSE=""
-# Only installs fonts
-RESTRICT="strip binchecks"
+RESTRICT="binchecks strip"
 
 S="${WORKDIR}/${MY_P}"
-FONT_SUFFIX="ttf"
-FONT_S="${S}"
-FONT_CONF=( "${FILESDIR}/66-${PN}.conf" )
 
-DOCS="ChangeLog README*"
+FONT_CONF=( "${FILESDIR}/66-${PN}.conf" )
+FONT_SUFFIX="ttf"
