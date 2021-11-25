@@ -18,6 +18,9 @@ LICENSE="freedist"		#446158
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
+# Bug #827318
+BDEPEND="app-arch/xz-utils[extra-filters]"
+
 S="${WORKDIR}/lib/firmware/isdn"
 
 src_install() {
