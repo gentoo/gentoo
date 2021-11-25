@@ -1,0 +1,23 @@
+From 85ae83667a49be71810338a708c5b6e0534d98b3 Mon Sep 17 00:00:00 2001
+From: Harald Judt <harald.judt@univie.ac.at>
+Date: Wed, 24 Nov 2021 08:31:49 +0100
+Subject: [PATCH] Add missing header include X11/Xutil.h
+
+---
+ src/framebuffer.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/framebuffer.hpp b/src/framebuffer.hpp
+index 8795573..95c67d6 100644
+--- a/src/framebuffer.hpp
++++ b/src/framebuffer.hpp
+@@ -25,6 +25,7 @@
+ #include <GL/gl.h>
+ #include <vector>
+ #include <glm/glm.hpp>
++#include <X11/Xutil.h>
+ 
+ #include "shader.hpp"
+ 
+-- 
+2.34.0
