@@ -21,9 +21,7 @@ COMMON_DEPEND="
 	x11-libs/libxkbcommon
 	app-text/iso-codes
 	systemd? ( sys-apps/systemd:= )
-	udev? (
-		sys-apps/hwids
-		virtual/libudev:= )
+	udev? ( virtual/libudev:= )
 	seccomp? ( sys-libs/libseccomp )
 
 	x11-libs/cairo:=
