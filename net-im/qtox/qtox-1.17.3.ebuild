@@ -80,3 +80,8 @@ src_configure() {
 
 	cmake_src_configure
 }
+
+src_test() {
+	# The excluded tests require network access.
+	cmake_src_test -E "test_(bsu|core)"
+}
