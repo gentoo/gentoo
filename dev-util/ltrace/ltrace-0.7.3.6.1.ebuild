@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 LTRACE_V=$(ver_cut 1-3)
-DB_V=$(ver_cut 4-5)
+DB_V=$(ver_cut 4-)
 
 DESCRIPTION="trace library calls made at runtime"
 HOMEPAGE="https://gitlab.com/cespedes/ltrace"
