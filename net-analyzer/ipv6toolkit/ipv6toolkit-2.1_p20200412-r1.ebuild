@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,27 +19,22 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	sys-apps/hwids
+	sys-apps/hwdata
 "
-
-HWIDS_OUI_PATH=/usr/share/misc/oui.txt
 
 src_prepare() {
 	default
-	sed -i "s#/usr/share/ipv6toolkit/oui.txt#${HWIDS_OUI_PATH}#" \
-		manuals/ipv6toolkit.conf.5
 }
+
 src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" PREFIX=/usr
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" PREFIX="${EPREFIX}/usr"
+	sed -i -e "s:ipv6toolkit/oui.txt:hwdata/oui.txt:" data/ipv6toolkit.conf manuals/ipv6toolkit.conf.5 || die
 }
 
 src_install() {
 	dodir /etc
-	emake install DESTDIR="${ED}" PREFIX=/usr
+	emake install DESTDIR="${D}" PREFIX="${EPREFIX}/usr"
 	#remove the included oui file
-	rm -f "${D}"/usr/share/ipv6toolkit/oui.txt
-	#fix the conf file to use the one from sys-apps/hwids
-	sed -i "s#/usr/share/ipv6toolkit/oui.txt#${HWIDS_OUI_PATH}#" \
-		"${ED}"/etc/ipv6toolkit.conf
+	rm "${ED}"/usr/share/ipv6toolkit/oui.txt || die
 	dodoc CHANGES.TXT README.TXT
 }
