@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 DESCRIPTION="Meta ebuild for the Lohit family of Indic fonts"
 HOMEPAGE="https://pagure.io/lohit"
