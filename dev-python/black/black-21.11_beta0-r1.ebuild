@@ -25,6 +25,9 @@ RDEPEND="
 	dev-python/regex[${PYTHON_USEDEP}]
 	<dev-python/pathspec-1[${PYTHON_USEDEP}]
 	<dev-python/tomli-2[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/typing-extensions[${PYTHON_USEDEP}]
+	' python3_{8,9})
 "
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
