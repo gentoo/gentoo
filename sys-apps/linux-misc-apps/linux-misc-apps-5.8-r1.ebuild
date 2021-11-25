@@ -43,7 +43,7 @@ SRC_URI="${SRC_URI} https://www.kernel.org/pub/linux/kernel/v3.x/${LINUX_SOURCES
 
 # pmtools also provides turbostat
 # usbip available in seperate package now
-RDEPEND="sys-apps/hwids
+RDEPEND="sys-apps/hwdata
 		>=dev-libs/glib-2.6
 		>=sys-kernel/linux-headers-${LINUX_V}
 		usbip? (
@@ -144,7 +144,7 @@ src_configure() {
 		econf \
 			$(use_enable static-libs static) \
 			$(use tcpd || echo --without-tcp-wrappers) \
-			--with-usbids-dir=/usr/share/misc
+			--with-usbids-dir=/usr/share/hwdata
 		popd
 	fi
 }
