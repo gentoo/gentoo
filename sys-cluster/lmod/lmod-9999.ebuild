@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..3} )
-inherit autotools lua-single
+inherit autotools lua-single prefix
 
 DESCRIPTION="Environment Module System based on Lua"
 HOMEPAGE="https://lmod.readthedocs.io/en/latest https://github.com/TACC/Lmod"
@@ -61,6 +61,7 @@ src_prepare() {
 	default
 	rm -r pkgs/{luafilesystem,term} || die
 	rm -r rt/{ck_mtree_syntax,colorize,end2end,help,ifur,settarg} || die
+	hprefixify -w '/#\!\/bin\/tcsh/' rt/csh_swap/csh_swap.tdesc || die
 	eautoreconf
 }
 
