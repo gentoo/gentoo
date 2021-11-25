@@ -5,7 +5,7 @@ EAPI=8
 
 CSV="csv${PV}"
 
-inherit multilib
+inherit toolchain-funcs
 
 DESCRIPTION="A programming language based on R6RS"
 HOMEPAGE="https://cisco.github.io/ChezScheme/ https://github.com/cisco/ChezScheme"
