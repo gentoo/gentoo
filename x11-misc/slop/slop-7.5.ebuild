@@ -35,6 +35,10 @@ DEPEND="${RDEPEND}
 	media-libs/glm
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-missing-header.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DSLOP_OPENGL=$(usex opengl)
