@@ -36,6 +36,12 @@
 # Marek Szuba <marecki@gentoo.org> (2021-11-25)
 # Upstream is gone. Unmaintained in Gentoo, last updated
 # back in the CVS era, EAPI 5, open bugs.
+# Removal in 30 days. Bug #826790
+net-analyzer/nagios-check_pidfile
+
+# Marek Szuba <marecki@gentoo.org> (2021-11-25)
+# Upstream is gone. Unmaintained in Gentoo, last updated
+# back in the CVS era, EAPI 5, open bugs.
 # Removal in 30 days. Bug #826786
 net-analyzer/nagios-check_fail2ban
 
