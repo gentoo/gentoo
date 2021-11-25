@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ IUSE="tcpd"
 
 RDEPEND="
 	>=dev-libs/glib-2.6
-	sys-apps/hwids
+	sys-apps/hwdata
 	>=sys-kernel/linux-headers-3.17
 	virtual/libudev
 	tcpd? ( sys-apps/tcp-wrappers )"
@@ -45,7 +45,7 @@ src_configure() {
 	econf \
 		--disable-static \
 		$(use tcpd || echo --without-tcp-wrappers) \
-		--with-usbids-dir="${EPREFIX}"/usr/share/misc
+		--with-usbids-dir="${EPREFIX}"/usr/share/hwdata
 }
 
 src_install() {
