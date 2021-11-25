@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2021-11-25)
+# Old slot that no longer has reverse dependencies. Last release in
+# 2013. Use minitest 5.x instead.
+# Masked for removal in 30 days.
+dev-ruby/minitest:0
+
+# Hans de Graaff <graaff@gentoo.org> (2021-11-25)
 # Last upstream release in 2012 and upstream itself is no longer
 # available. Unlikely to still work correctly. No reverse dependencies.
 # Masked for removal in 30 days.
