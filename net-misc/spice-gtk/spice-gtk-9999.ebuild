@@ -43,7 +43,7 @@ RDEPEND="
 	sasl? ( dev-libs/cyrus-sasl )
 	smartcard? ( app-emulation/qemu[smartcard] )
 	usbredir? (
-		sys-apps/hwids
+		sys-apps/hwdata
 		>=sys-apps/usbredir-0.4.2
 		virtual/libusb:1
 		policykit? (
@@ -110,7 +110,7 @@ src_configure() {
 
 	if use usbredir; then
 		emesonargs+=( -D "usb-acl-helper-dir=/usr/libexec" )
-		emesonargs+=( -D "usb-ids-path=/usr/share/misc/usb.ids" )
+		emesonargs+=( -D "usb-ids-path=${EPREFIX}/usr/share/hwdata/usb.ids" )
 	fi
 
 	meson_src_configure
