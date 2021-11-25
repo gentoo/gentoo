@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="
 	dev-db/sqlite:3
-	sys-apps/hwids
+	sys-apps/hwdata
 	sys-apps/sg3_utils:0=
 	sys-libs/librtas
 	sys-libs/libvpd
