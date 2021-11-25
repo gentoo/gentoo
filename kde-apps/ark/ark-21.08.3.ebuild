@@ -48,7 +48,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	sys-devel/gettext
-	test? ( app-arch/rar )
+	test? ( amd64? ( app-arch/rar ) x86? ( app-arch/rar ) )
 "
 
 src_configure() {
