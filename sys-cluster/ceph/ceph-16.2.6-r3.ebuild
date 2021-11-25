@@ -2,14 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 PYTHON_COMPAT=( python3_{7..9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+DISTUTILS_OPTIONAL=1
+LUA_COMPAT=( lua5-3 )
+
 CMAKE_MAKEFILE_GENERATOR=emake
 
-DISTUTILS_OPTIONAL=1
-
 inherit check-reqs bash-completion-r1 cmake distutils-r1 flag-o-matic \
-		python-r1 udev readme.gentoo-r1 toolchain-funcs systemd tmpfiles
+		lua-single python-r1 udev readme.gentoo-r1 toolchain-funcs \
+		systemd tmpfiles
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -26,30 +28,33 @@ HOMEPAGE="https://ceph.com/"
 LICENSE="Apache-2.0 LGPL-2.1 CC-BY-SA-3.0 GPL-2 GPL-2+ LGPL-2+ LGPL-2.1 LGPL-3 GPL-3 BSD Boost-1.0 MIT public-domain"
 SLOT="0"
 
-CPU_FLAGS_X86=(sse{,2,3,4_1,4_2} ssse3)
+CPU_FLAGS_X86=(avx2 avx512f pclmul sse{,2,3,4_1,4_2} ssse3)
 
-IUSE="babeltrace +cephfs custom-cflags diskprediction dpdk fuse grafana jemalloc
-	kafka kerberos ldap lttng +mgr numa pmdk rabbitmq +radosgw rbd-rwl +ssl spdk
-	system-boost systemd +tcmalloc test uring xfs zfs"
+IUSE="babeltrace +cephfs custom-cflags diskprediction dpdk fuse grafana
+	jemalloc jaeger kafka kerberos ldap lttng +mgr numa pmdk rabbitmq
+	+radosgw rbd-rwl rbd-ssd rgw-lua +ssl spdk +sqlite +system-boost systemd
+	+tcmalloc test uring xfs zbd zfs"
 IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 
 DEPEND="
+	${LUA_DEPS}
 	acct-group/ceph
 	acct-user/ceph
 	virtual/libudev:=
 	app-arch/bzip2:=
 	app-arch/lz4:=
-	>=app-arch/snappy-1.1.9:=
+	<app-arch/snappy-1.1.9:=
 	app-arch/zstd:=
 	app-shells/bash:0
 	app-misc/jq:=
 	dev-libs/crypto++:=
 	dev-cpp/gflags:=
-	dev-libs/leveldb:=[snappy,tcmalloc(-)?]
+	<dev-libs/leveldb-1.23:=[snappy,tcmalloc(-)?]
 	dev-libs/libaio:=
 	dev-libs/libfmt:=
 	dev-libs/libnl:3=
 	dev-libs/libxml2:=
+	dev-libs/libevent:=
 	<dev-libs/rocksdb-6.15:=
 	dev-libs/xmlsec:=[openssl]
 	dev-cpp/yaml-cpp:=
@@ -75,6 +80,7 @@ DEPEND="
 	fuse? ( sys-fs/fuse:0= )
 	jemalloc? ( dev-libs/jemalloc:= )
 	!jemalloc? ( >=dev-util/google-perftools-2.6.1:= )
+	jaeger? ( dev-cpp/nlohmann_json:= )
 	kafka? ( dev-libs/librdkafka:= )
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap:= )
@@ -82,24 +88,28 @@ DEPEND="
 	pmdk? ( dev-libs/pmdk:= )
 	rabbitmq? ( net-libs/rabbitmq-c:= )
 	radosgw? (
+		dev-libs/icu:=
 		dev-libs/expat:=
 		dev-libs/openssl:=
 		net-misc/curl:=[curl_ssl_openssl]
 	)
 	rbd-rwl? ( dev-libs/pmdk:= )
 	ssl? ( dev-libs/openssl:= )
+	sqlite? ( dev-db/sqlite:= )
 	system-boost? ( >=dev-libs/boost-1.72:=[threads(+),context,python,${PYTHON_USEDEP}] )
 	uring? ( sys-libs/liburing:= )
 	xfs? ( sys-fs/xfsprogs:= )
+	zbd? ( sys-block/libzbd:= )
 	zfs? ( sys-fs/zfs:= )
 	${PYTHON_DEPS}
 "
 BDEPEND="
-	amd64? ( dev-lang/yasm )
+	amd64? ( dev-lang/nasm )
 	x86? ( dev-lang/yasm )
 	app-arch/cpio
 	>=dev-util/cmake-3.5.0
-	<=dev-python/cython-0.29.24[${PYTHON_USEDEP}]
+	dev-python/cython[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sphinx
 	dev-util/cunit
 	dev-util/gperf
@@ -113,6 +123,10 @@ BDEPEND="
 	sys-devel/bc
 	sys-devel/patch
 	virtual/pkgconfig
+	jaeger? (
+		sys-devel/bison
+		sys-devel/flex
+	)
 	test? (
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
@@ -121,7 +135,8 @@ BDEPEND="
 		sys-fs/btrfs-progs
 	)
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	app-admin/sudo
 	net-misc/socat
 	sys-apps/gptfdisk
@@ -140,6 +155,7 @@ RDEPEND="${DEPEND}
 	dev-python/pecan[${PYTHON_USEDEP}]
 	dev-python/prettytable[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	mgr? (
@@ -147,8 +163,10 @@ RDEPEND="${DEPEND}
 		dev-python/more-itertools[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pyjwt[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/routes[${PYTHON_USEDEP}]
+		diskprediction? (
+			>=dev-python/scipy-1.4.0[${PYTHON_USEDEP}]
+		)
 		sci-libs/scikit-learn[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	)
@@ -157,8 +175,10 @@ RDEPEND="${DEPEND}
 # bug #724438
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
+	${LUA_REQUIRED_USE}
 	?? ( jemalloc tcmalloc )
-	diskprediction? ( mgr !python_targets_python3_8 )
+	jaeger? ( !system-boost )
+	diskprediction? ( mgr )
 	kafka? ( radosgw )
 	mgr? ( cephfs )
 	rabbitmq? ( radosgw )
@@ -181,22 +201,27 @@ PATCHES=(
 	"${FILESDIR}/ceph-12.2.0-use-provided-cpu-flag-values.patch"
 	"${FILESDIR}/ceph-14.2.0-cflags.patch"
 	"${FILESDIR}/ceph-12.2.4-boost-build-none-options.patch"
-	"${FILESDIR}/ceph-13.2.0-cflags.patch"
-	"${FILESDIR}/ceph-15.2.15-no-virtualenvs.patch"
+	"${FILESDIR}/ceph-16.2.2-cflags.patch"
+	"${FILESDIR}/ceph-16.2.2-no-virtualenvs.patch"
 	"${FILESDIR}/ceph-13.2.2-dont-install-sysvinit-script.patch"
 	"${FILESDIR}/ceph-14.2.0-dpdk-cflags.patch"
 	"${FILESDIR}/ceph-14.2.0-cython-0.29.patch"
-	"${FILESDIR}/ceph-15.2.0-rocksdb-cmake.patch"
-	"${FILESDIR}/ceph-15.2.2-systemd-unit.patch"
+	"${FILESDIR}/ceph-16.2.0-rocksdb-cmake.patch"
 	"${FILESDIR}/ceph-15.2.3-spdk-compile.patch"
-	"${FILESDIR}/ceph-15.2.4-system-uring.patch"
-	"${FILESDIR}/ceph-15.2.9-dont-compile-isal_compress-if-don-t-have-SSE4_1.patch"
-	"${FILESDIR}/ceph-15.2.15-snappy-1.1.9.patch"
+	"${FILESDIR}/ceph-16.2.0-spdk-tinfo.patch"
+	"${FILESDIR}/ceph-16.2.0-jaeger-system-boost.patch"
+	"${FILESDIR}/ceph-16.2.0-liburing.patch"
+	"${FILESDIR}/ceph-16.2.2-system-zstd.patch"
 )
 
 check-reqs_export_vars() {
-	CHECKREQS_DISK_BUILD="5400M"
-	CHECKREQS_DISK_USR="510M"
+	CHECKREQS_DISK_BUILD="6G"
+
+	if use system-boost; then
+		CHECKREQS_DISK_USR="350M"
+	else
+		CHECKREQS_DISK_USR="510M"
+	fi
 
 	export CHECKREQS_DISK_BUILD CHECKREQS_DISK_USR
 }
@@ -208,6 +233,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	python_setup
+	lua_setup
 	check-reqs_export_vars
 	check-reqs_pkg_setup
 }
@@ -223,6 +249,13 @@ src_prepare() {
 			-e 's|[Bb]oost_boost|boost_system|g' -i || die
 	fi
 
+	if ! use systemd; then
+		find "${S}"/src/ceph-volume/ceph_volume -name '*.py' -print0 \
+			| xargs --null sed \
+			-e '/^from ceph_volume.systemd import systemctl/ d' \
+			-i || die
+	fi
+
 	sed -r -e "s:DESTINATION .+\\):DESTINATION $(get_bashcompdir)\\):" \
 		-i src/bash_completion/CMakeLists.txt || die
 
@@ -231,6 +264,11 @@ src_prepare() {
 	if ! use diskprediction; then
 		rm -rf src/pybind/mgr/diskprediction_local || die
 	fi
+
+	# force lua version to use selected version
+	local lua_version
+	lua_version=$(ver_cut 1-2 $(lua_get_version))
+	sed -i "s:find_package(Lua [0-9][.][0-9] REQUIRED):find_package(Lua ${lua_version} EXACT REQUIRED):" src/CMakeLists.txt
 
 	# remove tests that need root access
 	rm src/test/cli/ceph-authtool/cap*.t || die
@@ -257,12 +295,17 @@ ceph_src_configure() {
 		-DWITH_RADOSGW=$(usex radosgw)
 		-DWITH_RADOSGW_AMQP_ENDPOINT=$(usex rabbitmq)
 		-DWITH_RADOSGW_KAFKA_ENDPOINT=$(usex kafka)
+		-DWITH_RADOSGW_LUA_PACKAGES=$(usex rgw-lua "$(usex radosgw)" "NO")
 		-DWITH_RBD_RWL=$(usex rbd-rwl)
+		-DWITH_RBD_SSD_CACHE=$(usex rbd-ssd)
 		-DWITH_SSL=$(usex ssl)
 		-DWITH_SYSTEMD=$(usex systemd)
 		-DWITH_TESTS=$(usex test)
 		-DWITH_LIBURING=$(usex uring)
+		-DWITH_SYSTEM_LIBURING=$(usex uring)
+		-DWITH_LIBCEPHSQLITE=$(usex sqlite)
 		-DWITH_XFS=$(usex xfs)
+		-DWITH_ZBD=$(usex zbd)
 		-DWITH_ZFS=$(usex zfs)
 		-DENABLE_SHARED="ON"
 		-DALLOCATOR=$(usex tcmalloc 'tcmalloc' "$(usex jemalloc 'jemalloc' 'libc')")
@@ -279,9 +322,19 @@ ceph_src_configure() {
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
 		-Wno-dev
 	)
+
+	# this breaks when re-configuring for python impl
+	[[ ${EBUILD_PHASE} == configure ]] && mycmakeargs+=(-DWITH_JAEGER=$(usex jaeger))
+
 	if use amd64 || use x86; then
 		for flag in ${CPU_FLAGS_X86[@]}; do
-			mycmakeargs+=("$(usex cpu_flags_x86_${flag} "-DHAVE_INTEL_${flag^^}=1")")
+			case "${flag}" in
+				avx*)
+					local var=${flag%f}
+					mycmakeargs+=("$(usex cpu_flags_x86_${flag} "-DHAVE_NASM_X64_${var^^}=1")")
+				;;
+				*) mycmakeargs+=("$(usex cpu_flags_x86_${flag} "-DHAVE_INTEL_${flag^^}=1")");;
+			esac
 		done
 	fi
 
@@ -358,6 +411,9 @@ src_install() {
 	newinitd "${FILESDIR}/rbdmap.initd-r1" rbdmap
 	newinitd "${FILESDIR}/${PN}.initd-r12" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd-r5" ${PN}
+
+	insinto /etc/sudoers.d
+	doins sudoers.d/*
 
 	insinto /etc/sysctl.d
 	newins "${FILESDIR}"/sysctld 90-${PN}.conf
