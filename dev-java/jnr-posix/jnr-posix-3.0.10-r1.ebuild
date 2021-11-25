@@ -20,7 +20,7 @@ SRC_URI="https://github.com/jnr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( CPL-1.0 GPL-2 LGPL-2.1 )"
 SLOT="3.0"
-KEYWORDS="~amd64 ~arm64 x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~amd64 arm64 x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
 CDEPEND="dev-java/jnr-constants:0
 	dev-java/jnr-ffi:2"
