@@ -22,7 +22,7 @@ IUSE="+net +pci systemd +udev +usb"
 REQUIRED_USE="systemd? ( udev )"
 
 RDEPEND="
-	systemd? ( sys-apps/systemd[hwdb] )
+	systemd? ( sys-apps/systemd[hwdb(+)] )
 	udev? ( virtual/udev )
 "
 
