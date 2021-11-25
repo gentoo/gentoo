@@ -18,7 +18,7 @@ SRC_URI="https://github.com/unicode-org/icu/archive/refs/tags/release-${PV/./-}.
 
 LICENSE="icu"
 SLOT="70"
-KEYWORDS="~amd64 arm64 ppc64 ~x86"
+KEYWORDS="amd64 arm64 ppc64 ~x86"
 
 DEPEND=">=virtual/jdk-1.8:*
 	test? ( dev-java/junitparams:0 )"
