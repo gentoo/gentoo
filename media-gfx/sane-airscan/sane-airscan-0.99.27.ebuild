@@ -24,10 +24,7 @@ RDEPEND="${DEPEND}
 	media-gfx/sane-backends
 "
 
-src_prepare() {
-	default
-	sed -i 's/ar cru/$(AR) cru/' Makefile || die "Unable to patch makefile"
-}
+PATCHES=( "${FILESDIR}/${PN}-0.99.27-makefile-fixes.patch" )
 
 src_compile() {
 	emake \
