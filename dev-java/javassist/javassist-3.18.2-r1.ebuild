@@ -20,7 +20,7 @@ S="${WORKDIR}/${PN}-rel_${PV//./_}_ga_build"
 
 LICENSE="MPL-1.1"
 SLOT="3"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND=">=virtual/jre-1.8:*"
 DEPEND=">=virtual/jdk-1.8:*"
