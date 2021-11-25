@@ -34,8 +34,8 @@ DEPEND="net-libs/libpcap
 	airgraph-ng? ( ${PYTHON_DEPS} )
 	experimental? ( sys-libs/zlib )
 	sqlite? ( >=dev-db/sqlite-3.4 )"
-RDEPEND="${DEPEND}"
-PDEPEND="kernel_linux? (
+RDEPEND="${DEPEND}
+	kernel_linux? (
 		net-wireless/iw
 		net-wireless/wireless-tools
 		sys-apps/ethtool
