@@ -1,12 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 DESCRIPTION="Displays the current status of MythTV at the command prompt"
 HOMEPAGE="http://www.etc.gen.nz/projects/mythtv/mythtv-status.html"
-SRC_URI="http://www.etc.gen.nz/projects/mythtv/tarballs/${P}.tar.gz"
-#SRC_URI="mirror://ubuntu/pool/universe/m/mythtv-status/mythtv-status_0.10.2.orig.tar.gz"
+#SRC_URI="http://www.etc.gen.nz/projects/mythtv/tarballs/${P}.tar.gz"
+SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}.orig.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -22,7 +22,7 @@ RDEPEND="
 	media-tv/mythtv[perl]"
 
 src_install() {
-	dobin bin/mythtv-status
-	doman "${FILESDIR}/mythtv-status.1"
+	dobin bin/${PN}
+	newman "${FILESDIR}"/${P}.man ${PN}.1
 	dodoc README FAQ ChangeLog THANKS
 }
