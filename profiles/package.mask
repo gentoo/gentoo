@@ -366,14 +366,6 @@ sci-libs/libbufr
 # Removal on 2021-11-25. Bug #806577.
 sys-fabric/dapl
 
-# Hans de Graaff <graaff@gentoo.org> (2021-10-26)
-# New rubygems versions check extension installation and will
-# fail to find gems when extensions are not installed correctly.
-# Not all packages in the tree have been updated for this yet.
-# Also Gentoo defaults need to be updated for this to work correctly.
-# Masked pending fixes in dev-ruby packages.
->=dev-ruby/rubygems-3.2.22
-
 # Sam James <sam@gentoo.org> (2021-10-25)
 # Fails to build with glibc-2.34 and binutils-2.34+. Not many other
 # distros packaging this and no upstream commits since 2011. No reverse
