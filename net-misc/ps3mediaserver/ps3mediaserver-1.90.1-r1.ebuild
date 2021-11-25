@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=8
 
 inherit desktop xdg
 
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="multiuser +transcode tsmuxer"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 RDEPEND=">=virtual/jre-1.6.0
 	media-libs/libmediainfo
 	media-libs/libzen
@@ -25,6 +25,8 @@ S=${WORKDIR}/pms-${PV}
 PMS_HOME=/opt/${PN}
 
 src_prepare() {
+	default
+
 	if use multiuser; then
 		cat > ${PN} <<-EOF
 		#!/bin/sh
