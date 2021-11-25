@@ -36,7 +36,8 @@
 # Marek Szuba <marecki@gentoo.org> (2021-11-25)
 # Ancient, very few distributions still package it. Both upstream
 # and the Debian package we use in SRC_URI are now gone. EAPI 5,
-# unmaintained in Gentoo.
+# unmaintained in Gentoo. Consider using net-misc/frr, which supports
+# both RIP and many other routing protocols, instead.
 # Removal in 30 days. Bug #827322
 net-misc/netkit-routed
 
