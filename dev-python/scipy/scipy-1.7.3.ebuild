@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit fortran-2 distutils-r1 flag-o-matic toolchain-funcs
+inherit fortran-2 distutils-r1 flag-o-matic multiprocessing toolchain-funcs
 
 # upstream is slacking forever with doc updates
 DOC_PV=1.7.1
@@ -41,6 +41,7 @@ BDEPEND="
 	pythran? ( dev-python/pythran[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)"
 
 DISTUTILS_IN_SOURCE_BUILD=1
@@ -149,6 +150,7 @@ python_configure_all() {
 
 python_compile() {
 	# FIXME: parallel python building fails, bug #614464
+	export ORIGINAL_MAKEOPTS="${MAKEOPTS}"
 	export MAKEOPTS=-j1
 
 	${EPYTHON} tools/cythonize.py || die
@@ -160,10 +162,17 @@ python_test() {
 	# fails with bdist_egg. should it be fixed in distutils-r1 eclass?
 	distutils_install_for_testing ${SCIPY_FCONFIG}
 	cd "${TEST_DIR}/lib" || die "no ${TEST_DIR} available"
-	PYTHONPATH=. "${EPYTHON}" -c "
-import scipy, sys
-r = scipy.test('fast', verbose=2)
-sys.exit(0 if r else 1)" || die "Tests fail with ${EPYTHON}"
+
+	# Let's try using pytest again with xdist to speed things up.
+	# Note that using pytest is required to avoid dying b/c of a
+	# deprecation warning with distutils in Python 3.01.
+	epytest -n "$(makeopts_jobs "${ORIGINAL_MAKEOPTS}" "$(get_nproc)")"
+
+	# Old test runner
+#	PYTHONPATH=. "${EPYTHON}" -c "
+#import scipy, sys
+#r = scipy.test('fast', verbose=2)
+#sys.exit(0 if r else 1)" || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
