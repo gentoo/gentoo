@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
-ADA_COMPAT=( gnat_2019 gnat_202{0..1} )
+ADA_COMPAT=( gnat_202{0..1} )
 inherit ada multiprocessing python-single-r1
 
 DESCRIPTION="GNAT Component Collection"
