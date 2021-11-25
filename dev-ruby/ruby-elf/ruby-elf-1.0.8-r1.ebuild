@@ -16,7 +16,7 @@ inherit ruby-fakegem
 SRC_URI="${GITHUB_URI}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 DESCRIPTION="Ruby library to access ELF files information"
-HOMEPAGE="http://www.flameeyes.eu/projects/ruby-elf"
+HOMEPAGE="https://www.flameeyes.eu/projects/ruby-elf"
 
 LICENSE="GPL-2+"
 SLOT="0"
