@@ -1,13 +1,13 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=8
 
-inherit toolchain-funcs multilib
+inherit toolchain-funcs
 
 DESCRIPTION="Software modem that uses an IAX channel instead of a traditional phone line"
 HOMEPAGE="https://sourceforge.net/projects/iaxmodem/"
-SRC_URI="mirror://sourceforge/iaxmodem/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,6 +18,8 @@ RDEPEND="media-libs/tiff:=
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	default
+
 	# fix header file position
 	sed -i -e 's:iax/iax-client\.h:iax-client.h:g' iaxmodem.c || die
 
@@ -74,7 +76,7 @@ src_install() {
 	dosbin iaxmodem
 
 	# remove libiax and spandsp headers, we don't need them
-	rm -rf "${D}usr/include" "${D}usr/bin/iax-config" || die
+	rm -rf "${D}/usr/include" "${D}/usr/bin/iax-config" || die
 
 	# install init-script + conf
 	newinitd "${FILESDIR}/iaxmodem.initd" iaxmodem
