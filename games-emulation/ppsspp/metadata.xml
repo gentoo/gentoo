@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
 <pkgmetadata>
-    <maintainer type="person" proxied="yes">
-        <email>xgqt@riseup.net</email>
-        <name>Maciej Barć</name>
-    </maintainer>
-    <maintainer type="project" proxied="proxy">
-        <email>proxy-maint@gentoo.org</email>
-        <name>Proxy Maintainers</name>
-    </maintainer>
-    <use>
-        <flag name="discord">Enable interfacing with a locally running Discord desktop client</flag>
-        <flag name="system-ffmpeg">Use the system-wide media-video/ffmpeg instead of bundled</flag>
-    </use>
-    <upstream>
-        <bugs-to>https://github.com/hrydgard/ppsspp/issues</bugs-to>
-        <remote-id type="github">hrydgard/ppsspp</remote-id>
-    </upstream>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <use>
+    <flag name="discord">
+      Enable interfacing with a locally running Discord desktop client
+    </flag>
+    <flag name="system-ffmpeg">
+      Use the system-wide media-video/ffmpeg instead of bundled
+    </flag>
+  </use>
+  <upstream>
+    <bugs-to>https://github.com/hrydgard/ppsspp/issues</bugs-to>
+    <remote-id type="github">hrydgard/ppsspp</remote-id>
+  </upstream>
 </pkgmetadata>
