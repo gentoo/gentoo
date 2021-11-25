@@ -5,6 +5,7 @@
 		<email>perfinion@gentoo.org</email>
 		<name>Jason Zaman</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">google-pasta</remote-id>
 		<remote-id type="github">google/pasta</remote-id>
