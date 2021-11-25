@@ -37,7 +37,7 @@ python_prepare_all() {
 	sed -r -e "s:use_scm_version=True:version='${PV}', name='${PN//-/.}':" -i setup.py || die
 	sed -r -e '/(setuptools|setup_requires)/ d' -i setup.cfg || die
 
-	sed -i 's:[tool.setuptools_scm]:[tool.disabled]:' pyproject.toml || die
+	sed -i 's:tool.setuptools_scm:tool.disabled:' pyproject.toml || die
 	printf '__version__ = "%s"\n' "${PV}" > saltfactories/version.py || die
 	distutils-r1_python_prepare_all
 }
