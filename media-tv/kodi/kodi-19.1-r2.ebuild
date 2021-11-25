@@ -332,6 +332,12 @@ src_compile() {
 }
 
 src_test() {
+	local myctestargs=(
+		# Known failing, unreliable test
+		# bug #743938
+		-E "(TestCPUInfo.GetCPUFrequency)"
+	)
+
 	# see https://github.com/xbmc/xbmc/issues/17860#issuecomment-630120213
 	KODI_HOME="${BUILD_DIR}" cmake_build check
 }
