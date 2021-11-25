@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-11-25)
+# Last upstream release in 2012 and upstream itself is no longer
+# available. Unlikely to still work correctly. No reverse dependencies.
+# Masked for removal in 30 days.
+dev-ruby/aws-s3
+
 # Marek Szuba <marecki@gentoo.org> (2021-11-23)
 # No new releases since July 2013, no commits to upstream Git repository
 # since May 2019, long list of known issues (including Bug #681520),
