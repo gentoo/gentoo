@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Marek Szuba <marecki@gentoo.org> (2021-11-25)
+# Ancient, very few distributions still package it. Both upstream
+# and the Debian package we use in SRC_URI are now gone. EAPI 5,
+# unmaintained in Gentoo.
+# Removal in 30 days. Bug #827322
+net-misc/netkit-routed
+
+# Marek Szuba <marecki@gentoo.org> (2021-11-25)
 # Upstream is gone. Unmaintained in Gentoo, last updated
 # back in the CVS era, EAPI 5, open bugs.
 # Removal in 30 days. Bug #826790
