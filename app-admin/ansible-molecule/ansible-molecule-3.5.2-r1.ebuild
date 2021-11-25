@@ -31,7 +31,7 @@ RDEPEND="$(python_gen_cond_dep '
 	dev-python/packaging[${PYTHON_USEDEP}]
 	<dev-python/paramiko-3[${PYTHON_USEDEP}]
 	<dev-python/pluggy-2.0[${PYTHON_USEDEP}]
-	<dev-python/pyyaml-6[${PYTHON_USEDEP}]
+	>=dev-python/pyyaml-5.1[${PYTHON_USEDEP}]
 	>=dev-python/rich-9.5.1[${PYTHON_USEDEP}]
 	>=dev-python/subprocess-tee-0.3.5[${PYTHON_USEDEP}]
 	>=dev-util/cookiecutter-1.7.3[${PYTHON_USEDEP}]
