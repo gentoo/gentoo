@@ -584,6 +584,8 @@ src_prepare() {
 	use lto && rm -v "${WORKDIR}"/firefox-patches/*-LTO-Only-enable-LTO-*.patch
 	eapply "${WORKDIR}/firefox-patches"
 
+	use x86 && eapply "${FILESDIR}"/firefox-91esr-math_private_h-x86-fix.patch
+
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
 
