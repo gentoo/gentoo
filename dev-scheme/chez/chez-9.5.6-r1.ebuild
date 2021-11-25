@@ -19,16 +19,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="X examples ncurses threads"
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	X? ( x11-libs/libX11 )
-	ncurses? ( sys-libs/ncurses )
+	ncurses? ( sys-libs/ncurses:= )
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/tinfo.patch" )
-
 src_prepare() {
 	tc-export AR CC CXX LD RANLIB
+
+	if use ncurses ; then
+		local nclibs="\"$($(tc-getPKG_CONFIG) --libs ncurses)\""
+		sed -i "s|ncursesLib=-lncurses|ncursesLib=${nclibs}|g" configure || die
+	fi
 
 	default
 }
