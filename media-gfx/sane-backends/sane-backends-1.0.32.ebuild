@@ -337,6 +337,7 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
+	optfeature "Network scanner backend" media-gfx/sane-airscan
 	optfeature "Epson-specific backend" media-gfx/iscan
 	optfeature "HP-specific backend" net-print/hplip
 
