@@ -48,6 +48,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	sys-devel/gettext
+	test? ( app-arch/rar )
 "
 
 src_configure() {
@@ -56,6 +57,15 @@ src_configure() {
 	)
 
 	ecm_src_configure
+}
+
+src_test() {
+	local myctestargs=(
+		# bug 822177: may segfault or hang indefinitely
+		-E "(kerfuffle-addtoarchivetest)"
+	)
+
+	ecm_src_test
 }
 
 pkg_postinst() {
