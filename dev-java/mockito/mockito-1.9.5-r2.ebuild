@@ -14,7 +14,7 @@ SRC_URI="https://${PN}.googlecode.com/files/${P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64 x86"
 
 CDEPEND="
 	dev-java/ant-core:0
