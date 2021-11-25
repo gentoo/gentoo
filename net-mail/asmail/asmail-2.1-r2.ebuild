@@ -1,17 +1,17 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=8
 
-inherit epatch toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A small mail monitor similar to xbiff"
-HOMEPAGE="http://www.tigr.net"
-SRC_URI="http://www.tigr.net/afterstep/download/${PN}/${P}.tar.gz"
+HOMEPAGE="https://tigr.net/afterstep/applets/"
+SRC_URI="https://tigr.net/afterstep/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="jpeg"
 
 RDEPEND="
@@ -25,8 +25,12 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.1-ldflags.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-ldflags.patch
+	default
 	sed -i -e "/LIB/s/-lssl/-lssl -lcrypto/g" \
 		configure
 }
