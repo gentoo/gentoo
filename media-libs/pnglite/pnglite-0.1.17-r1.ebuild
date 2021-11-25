@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Small and simple library for loading and writing PNG images"
 HOMEPAGE="https://sourceforge.net/projects/pnglite/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/${PV}/${P}.zip"
+SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.zip"
 
 LICENSE="ZLIB"
 SLOT="0"
