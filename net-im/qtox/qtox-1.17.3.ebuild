@@ -12,7 +12,7 @@ SRC_URI="https://github.com/qTox/qTox/releases/download/v${PV}/v${PV}.tar.gz -> 
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="notification spellcheck test X"
 
 RESTRICT="!test? ( test )"
