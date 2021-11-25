@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="Scientific library and interface for array oriented data access"
 HOMEPAGE="https://www.unidata.ucar.edu/software/netcdf/"
@@ -48,6 +48,11 @@ src_prepare() {
 
 src_configure() {
 	use mpi && export CC=mpicc
+
+	# Temporary workaround for test breakage
+	# https://github.com/Unidata/netcdf-c/issues/1983
+	# bug #827042
+	append-flags -fno-strict-aliasing
 
 	local mycmakeargs=(
 		-DENABLE_DAP_REMOTE_TESTS=OFF
