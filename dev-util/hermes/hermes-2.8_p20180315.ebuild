@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..3} )
-inherit lua-single
+inherit lua-single prefix
 
 DESCRIPTION="Lua based testing manager"
 HOMEPAGE="https://github.com/TACC/Hermes"
@@ -34,6 +34,11 @@ RDEPEND="${LUA_DEPS}
 DEPEND="test? ( ${RDEPEND} )"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.8-lua-shebang.patch )
+
+src_prepare() {
+	default
+	hprefixify -w '/#\!\/bin\/bash/' tm/Tst.lua || die
+}
 
 src_compile() {
 	sed -e "s|@LUA@|${LUA}|g" \
