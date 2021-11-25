@@ -15,8 +15,10 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/aircrack-ng/aircrack-ng.git"
 else
-	MY_PV=${PV/_/-}
-	SRC_URI="https://download.aircrack-ng.org/${P}.tar.gz"
+	#SRC_URI="https://download.aircrack-ng.org/${P}.tar.gz"
+	COMMIT="5a02ac4818b30d2e87b3e18e497a5f9e5319394f"
+	SRC_URI="https://github.com/aircrack-ng/aircrack-ng/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${COMMIT}"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 fi
 
@@ -49,6 +51,9 @@ REQUIRED_USE="
 	airgraph-ng? ( ${PYTHON_REQUIRED_USE} )"
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/aircrack-ng-1.6-hwdata.patch"
+	)
 	default
 	eautoreconf
 }
