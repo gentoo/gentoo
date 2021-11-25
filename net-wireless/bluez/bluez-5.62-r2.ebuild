@@ -37,7 +37,6 @@ BDEPEND="
 "
 DEPEND="
 	>=dev-libs/glib-2.28:2[${MULTILIB_USEDEP}]
-	>=sys-apps/hwids-20121202.2
 	btpclient? ( >=dev-libs/ell-0.39 )
 	cups? ( net-print/cups:= )
 	mesh? (
