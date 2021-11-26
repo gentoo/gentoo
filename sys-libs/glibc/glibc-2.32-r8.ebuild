@@ -91,18 +91,11 @@ fi
 # Lastly, let's avoid some openssh nastiness, bug 708224, as
 # convenience to our users.
 
-# gzip, grep, awk are needed by locale-gen, bug 740750
-
 BDEPEND="
 	${PYTHON_DEPS}
 	>=app-misc/pax-utils-0.1.10
 	sys-devel/bison
 	doc? ( sys-apps/texinfo )
-	!compile-locales? (
-		app-arch/gzip
-		sys-apps/grep
-		virtual/awk
-	)
 "
 COMMON_DEPEND="
 	gd? ( media-libs/gd:2= )
@@ -116,17 +109,9 @@ COMMON_DEPEND="
 	!<net-misc/openssh-8.1_p1-r2
 "
 DEPEND="${COMMON_DEPEND}
-	compile-locales? (
-		app-arch/gzip
-		sys-apps/grep
-		virtual/awk
-	)
 	test? ( >=net-dns/libidn2-2.3.0 )
 "
 RDEPEND="${COMMON_DEPEND}
-	app-arch/gzip
-	sys-apps/grep
-	virtual/awk
 	sys-apps/gentoo-functions
 "
 
