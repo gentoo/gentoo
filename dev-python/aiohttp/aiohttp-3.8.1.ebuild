@@ -37,7 +37,9 @@ BDEPEND="
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/re-assert[${PYTHON_USEDEP}]
-		dev-python/trustme[${PYTHON_USEDEP}]
+		!hppa? ( !ia64? (
+			dev-python/trustme[${PYTHON_USEDEP}]
+		) )
 	)
 "
 
