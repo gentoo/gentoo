@@ -33,6 +33,10 @@ DEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/meson-0.60.2-check-module-linking.patch"
+)
+
 python_prepare_all() {
 	local disable_unittests=(
 		# ASAN and sandbox both want control over LD_PRELOAD
