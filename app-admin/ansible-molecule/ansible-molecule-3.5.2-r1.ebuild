@@ -54,6 +54,10 @@ BDEPEND="$(python_gen_cond_dep '
 	)
 ')"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.5.2_pyyaml6.patch
+)
+
 S="${WORKDIR}"/${MY_P}
 
 distutils_enable_sphinx docs '>=dev-python/sphinx-notfound-page-0.7.1' '<dev-python/sphinx_ansible_theme-0.9.0'
