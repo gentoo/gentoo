@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 # Works without sandbox. But under sandbox sshd claims to break the protocol.
-RESTRICT=test
+RESTRICT="strip test"
 
 # older libgit seems to be incompatible with guile-git bindings
 # https://github.com/trofi/nix-guix-gentoo/issues/7
@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}"
 
 # guile generates ELF files without use of C or machine code
 # It's a portage's false positive. bug #677600
-QA_FLAGS_IGNORED='.*[.]go'
+QA_PREBUILT='*[.]go'
 
 src_prepare() {
 	default
