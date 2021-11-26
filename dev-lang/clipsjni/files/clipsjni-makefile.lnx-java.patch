@@ -1,3 +1,6 @@
+New Java versions need "-Xlint:deprecation" option to compile CLIPSJNI.
+General fixes to enable make with multiple jobs.
+
 index 4100e83..c6d2f62 100644
 --- a/makefile.lnx
 +++ b/makefile.lnx
