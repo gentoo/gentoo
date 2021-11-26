@@ -1,0 +1,61 @@
+index 4100e83..c6d2f62 100644
+--- a/makefile.lnx
++++ b/makefile.lnx
+@@ -129,10 +129,10 @@ all: clipsjni animal auto sudoku wine router ide
+ 
+ clipsjni :
+ 	mkdir -p $(JNI_BIN)
+-	javac -d $(JNI_BIN) $(JNI_FILES)
++	javac -Xlint:deprecation -d $(JNI_BIN) $(JNI_FILES)
+ 	jar -cfe CLIPSJNI.jar $(JNI_CLASS) $(JNI_BIN)/$(JNI_CP)/Environment.class -C $(JNI_BIN) net
+ 
+-animal :
++animal : clipsjni
+ 	mkdir -p $(ANIMAL_RSRC_DST)
+ 	javac -d $(ANIMAL_BIN) -cp CLIPSJNI.jar $(ANIMAL_SRC)/AnimalDemo.java
+ 	cp $(ANIMAL_RSRC_SRC)/*.properties $(ANIMAL_RSRC_DST)
+@@ -140,7 +140,7 @@ animal :
+ 	jar -cfe AnimalDemo.jar $(ANIMAL_CLASS) $(ANIMAL_BIN)/$(ANIMAL_CP)/AnimalDemo.class -C $(ANIMAL_BIN) net 
+ 	jar -uf AnimalDemo.jar -C $(JNI_BIN) net
+ 
+-auto :
++auto : clipsjni
+ 	mkdir -p $(AUTO_RSRC_DST)
+ 	javac -d $(AUTO_BIN) -cp CLIPSJNI.jar $(AUTO_SRC)/AutoDemo.java
+ 	cp $(AUTO_RSRC_SRC)/*.properties $(AUTO_RSRC_DST)
+@@ -148,7 +148,7 @@ auto :
+ 	jar -cfe AutoDemo.jar $(AUTO_CLASS) $(AUTO_BIN)/$(AUTO_CP)/AutoDemo.class -C $(AUTO_BIN) net 
+ 	jar -uf AutoDemo.jar -C $(JNI_BIN) net
+ 
+-sudoku :
++sudoku : clipsjni
+ 	mkdir -p $(SUDOKU_RSRC_DST)
+ 	javac -d $(SUDOKU_BIN) -cp CLIPSJNI.jar $(SUDOKU_SRC)/SudokuDemo.java
+ 	cp $(SUDOKU_RSRC_SRC)/*.properties $(SUDOKU_RSRC_DST)
+@@ -156,7 +156,7 @@ sudoku :
+ 	jar -cfe SudokuDemo.jar $(SUDOKU_CLASS) $(SUDOKU_BIN)/$(SUDOKU_CP)/SudokuDemo.class -C $(SUDOKU_BIN) net 
+ 	jar -uf SudokuDemo.jar -C $(JNI_BIN) net
+ 
+-wine :
++wine : clipsjni
+ 	mkdir -p $(WINE_RSRC_DST)
+ 	javac -d $(WINE_BIN) -cp CLIPSJNI.jar $(WINE_SRC)/WineDemo.java
+ 	cp $(WINE_RSRC_SRC)/*.properties $(WINE_RSRC_DST)
+@@ -164,7 +164,7 @@ wine :
+ 	jar -cfe WineDemo.jar $(WINE_CLASS) $(WINE_BIN)/$(WINE_CP)/WineDemo.class -C $(WINE_BIN) net 
+ 	jar -uf WineDemo.jar -C $(JNI_BIN) net
+ 
+-router :
++router : clipsjni
+ 	mkdir -p $(ROUTER_RSRC_DST)
+ 	javac -d $(ROUTER_BIN) -cp CLIPSJNI.jar $(ROUTER_SRC)/RouterDemo.java
+ 	cp $(ROUTER_RSRC_SRC)/*.properties $(ROUTER_RSRC_DST)
+@@ -172,7 +172,7 @@ router :
+ 	jar -cfe RouterDemo.jar $(ROUTER_CLASS) $(ROUTER_BIN)/$(ROUTER_CP)/RouterDemo.class -C $(ROUTER_BIN) net 
+ 	jar -uf RouterDemo.jar -C $(JNI_BIN) net
+ 
+-ide :
++ide : clipsjni
+ 	mkdir -p $(IDE_RSRC_DST)
+ 	javac -d $(IDE_BIN) -cp CLIPSJNI.jar $(IDE_FILES)
+ 	cp $(IDE_RSRC_SRC)/*.png $(IDE_RSRC_DST)

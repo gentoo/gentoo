@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription lang="en">
+    This package is a Java implementation of CLIPS with
+    a native shared library and a IDE.
+    CLIPS is a forward-chaining rule-based programming language written in C
+    that also provides procedural and object-oriented programming facilities.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://sourceforge.net/p/clipsrules/bugs/milestone/CLIPSJNI/</bugs-to>
+    <remote-id type="sourceforge">clipsrules</remote-id>
+  </upstream>
+</pkgmetadata>
