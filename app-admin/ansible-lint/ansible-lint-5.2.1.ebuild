@@ -15,7 +15,9 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
 
-# Many tests require still-unpackaged yamlllint
+# 14 tests fail due to usersandbox denying the executable 'ansible'
+# access to $HOME/.ansible. More importantly, some tests (6 as of 5.2.1)
+# fail even when run manually with tox.
 RESTRICT="test"
 
 RDEPEND="
@@ -34,6 +36,7 @@ BDEPEND="
 	test? (
 		>=dev-python/flaky-3.7.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-xdist-2.1.0[${PYTHON_USEDEP}]
+		>=dev-util/yamllint-1.25.0[${PYTHON_USEDEP}]
 	)"
 
-distutils_enable_tests pytest
+distutils_enable_tests --install pytest
