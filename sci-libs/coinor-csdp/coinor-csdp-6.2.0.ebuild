@@ -1,33 +1,43 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit versionator toolchain-funcs flag-o-matic  multilib
+inherit flag-o-matic multilib toolchain-funcs
 
-MYPN=Csdp
+MY_PN="Csdp"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="COIN-OR C Library for Semi-Definite Programming"
 HOMEPAGE="https://projects.coin-or.org/Csdp/"
-SRC_URI="http://www.coin-or.org/download/source/${MYPN}/${MYPN}-${PV}.tgz"
+SRC_URI="https://www.coin-or.org/download/source/${MY_PN}/${MY_P}.tgz -> ${P}.tar.gz"
 
-LICENSE="CPL-1.0"
+LICENSE="EPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples openmp static-libs"
+IUSE="doc examples openmp"
 
-RDEPEND="
-	virtual/blas
+RDEPEND="virtual/blas
 	virtual/lapack"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/${MYPN}-${PV}"
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.2.0_toolchain-vars.patch
+)
+
+S="${WORKDIR}"/${MY_P}
+
+_get_version_component_count() {
+	local cnt=( $(ver_rs 1- ' ') )
+	echo ${#cnt[@]} || die
+}
 
 static_to_shared() {
-	local libstatic=${1}; shift
+	local libstatic=${1}
+	shift
 	local libname=$(basename ${libstatic%.a})
-	local soname=${libname}$(get_libname $(get_version_component_range 1-2))
+	local soname=${libname}$(get_libname $(ver_cut 1-2))
 	local libdir=$(dirname ${libstatic})
 
 	einfo "Making ${soname} from ${libstatic}"
@@ -41,43 +51,48 @@ static_to_shared() {
 			-shared -Wl,-soname=${soname} \
 			-Wl,--whole-archive ${libstatic} -Wl,--no-whole-archive \
 			"$@" -o ${libdir}/${soname} || die "${soname} failed"
-		[[ $(get_version_component_count) -gt 1 ]] && \
-			ln -s ${soname} ${libdir}/${libname}$(get_libname $(get_major_version))
-		ln -s ${soname} ${libdir}/${libname}$(get_libname)
+
+		if [[ $(_get_version_component_count) -ge 1 ]] ; then
+			ln -s ${soname} ${libdir}/${libname}$(get_libname $(ver_cut 1)) || die
+		fi
+
+		ln -s ${soname} ${libdir}/${libname}$(get_libname) || die
 	fi
 }
 
 pkg_setup() {
-	if use openmp && [[ $(tc-getCC) == *gcc* ]] && ! tc-has-openmp; then
-		eerror "Your selected gcc compiler does not support OpenMP"
-		die "OpenMP non capable gcc"
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		 use openmp && tc-check-openmp
 	fi
 }
 
 src_prepare() {
-	find . -name Makefile -exec sed -i -e 's:make:$(MAKE):g' '{}' + || die
+	default
+
 	append-cflags -DNOSHORTS -DUSEGETTIME -I../include
+
 	if use openmp; then
-		[[ $(tc-getCC) == *gcc* ]] && append-cflags -fopenmp \
-			&& append-ldflags -fopenmp
-		[[ $(tc-getCC) == *icc* ]] && append-cflags -openmp
-			append-cflags -DUSEOPENMP
+		append-cflags -DUSEOPENMP
+
+		if [[ $(tc-getCC) == *icc* ]]; then
+			append-cflags -openmp
+		else
+			append-cflags -fopenmp
+			append-ldflags -fopenmp
+		fi
 	fi
+
 	use amd64 && append-cflags -DBIT64
+
 	[[ $($(tc-getPKG_CONFIG) --libs blas) =~ atlas ]] && append-cflags -DUSEATLAS
-	sed -i \
-		-e "s:-O3:${CFLAGS} ${LDFLAGS}:" \
-		-e "s:ar :$(tc-getAR) :" \
-		*/Makefile || die
 
 	tc-export CC
 }
 
 src_compile() {
 	emake CFLAGS="${CFLAGS} -fPIC" -C lib
-	local libs="$($(tc-getPKG_CONFIG) --libs blas lapack)"
+	local libs="$($(tc-getPKG_CONFIG) --libs blas lapack)" || die
 	static_to_shared lib/libsdp.a ${libs}
-	use static-libs && emake -C lib clean && emake -C lib
 	emake -C solver LIBS="${libs} -L../lib -lsdp -lm"
 	emake -C theta LIBS="${libs} -L../lib -lsdp -lm"
 }
@@ -89,13 +104,12 @@ src_test() {
 src_install() {
 	dobin solver/csdp theta/{theta,graphtoprob,complement,rand_graph}
 	dolib.so lib/libsdp$(get_libname)*
-	use static-libs && dolib.a lib/libsdp.a
 	insinto /usr/include/${PN}
 	doins include/*
 	dodoc AUTHORS README
 	use doc && dodoc doc/csdpuser.pdf
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins example/*
+		docinto examples
+		dodoc example/*
 	fi
 }
