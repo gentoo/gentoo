@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools desktop flag-o-matic systemd prefix
+inherit desktop systemd prefix
 
 COLOUR_PATCH_NAME="${PN}-9.26_24-bit-color_aur-20210516+eautoreconf.patch"
 
@@ -31,7 +31,6 @@ RDEPEND=">=sys-libs/ncurses-5.7-r6:=
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="virtual/pkgconfig"
-# WARNING: will bdepend on >=sys-devel/autoconf-2.71 (masked as of 2021-07-07) if eautoreconf has to be called
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.06-case-insensitive-fs.patch

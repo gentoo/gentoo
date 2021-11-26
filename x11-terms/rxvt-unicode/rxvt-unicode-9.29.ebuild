@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools desktop flag-o-matic systemd prefix
+inherit autotools desktop systemd prefix
 
 COLOUR_PATCH_NAME="${PN}-9.29_24-bit-color_aur-9.26-20210712.patch"
 
