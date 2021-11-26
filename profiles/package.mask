@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2021-11-26)
+# Mask new rubygems version for testing. This version uses a new
+# gentoo-defaults profile, bug #789957
+>=dev-ruby/rubygems-3.2.31
+
+# Hans de Graaff <graaff@gentoo.org> (2021-11-26)
 # Old slot, obsolete since 2016. No reverse dependencies. Use the
 # newer slot instead.
 # Masked for removal in 30 days.
