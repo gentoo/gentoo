@@ -57,6 +57,7 @@ BDEPEND="
 python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}/${PN}-21.3-no-coverage.patch"
+		"${FILESDIR}/${P}-cryptography-tests.patch"
 	)
 	if ! use vanilla; then
 		PATCHES+=( "${FILESDIR}/pip-20.0.2-disable-system-install.patch" )
@@ -96,6 +97,15 @@ python_test() {
 		# uses vendored packaging that uses deprecated distutils
 		tests/functional/test_warning.py::test_pip_works_with_warnings_as_errors
 	)
+
+	if ! has_version "dev-python/cryptography[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			tests/functional/test_install.py::test_install_sends_client_cert
+			tests/functional/test_install_config.py::test_do_not_prompt_for_authentication
+			tests/functional/test_install_config.py::test_prompt_for_authentication
+			tests/functional/test_install_config.py::test_prompt_for_keyring_if_needed
+		)
+	fi
 
 	distutils_install_for_testing
 	pushd "${WORKDIR}/virtualenv-${VENV_PV}" >/dev/null || die
