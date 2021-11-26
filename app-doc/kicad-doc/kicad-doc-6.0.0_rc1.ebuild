@@ -30,6 +30,8 @@ IUSE+=${LANG_USE}
 REQUIRED_USE="|| ( html pdf ) ^^ ( ${LANG_USE} )"
 unset LANG_USE
 
+# TODO: need asciidoctor-pdf for pdf
+# bug #697450
 BDEPEND="
 	>=app-text/asciidoc-8.6.9
 	>=app-text/dblatex-0.3.10
