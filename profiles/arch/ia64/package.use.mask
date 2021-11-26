@@ -1,6 +1,14 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2021-11-26)
+# These package flags require dev-python/cryptography which -- due
+# to the dependency on Rust -- is no longer portable to ia64.
+dev-python/passlib totp
+dev-python/twisted conch crypt
+dev-python/urllib3 test
+net-fs/samba addc addns ads
+
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Avoid keywording unnecessary depenencies for now, bug #804115
 dev-python/scipy pythran
