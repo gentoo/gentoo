@@ -158,6 +158,10 @@ python_test() {
 		# TODO: some data path problems?
 		pandas/tests/io/test_fsspec.py::test_read_csv
 		pandas/tests/io/test_fsspec.py::test_markdown_options
+
+		# Broken by Python changes
+		# https://github.com/pandas-dev/pandas/issues/44420
+		pandas/tests/io/parser/test_quoting.py::test_bad_quote_char
 	)
 
 	local -x LC_ALL=C.UTF-8
