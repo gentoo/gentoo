@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}
 		dev-python/pyyaml
 		dev-python/python-dateutil
 		dev-python/mock
+		dev-python/psutil
 	)"
 BDEPEND=""
 REQUIRED_USE="x86? ( !test )"
