@@ -12,11 +12,11 @@ SRC_URI="https://github.com/wb2osz/direwolf/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa gps hamlib test udev"
+IUSE="gps hamlib test udev"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	alsa? ( media-libs/alsa-lib )
+	media-libs/alsa-lib
 	gps? ( sci-geosciences/gpsd )
 	hamlib? ( media-libs/hamlib:= )
 	udev? ( virtual/libudev:= )
@@ -29,7 +29,6 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_DISABLE_FIND_PACKAGE_ALSA=$(usex !alsa)
 		-DCMAKE_DISABLE_FIND_PACKAGE_GPSD=$(usex !gps)
 		-DCMAKE_DISABLE_FIND_PACKAGE_hamlib=$(usex !hamlib)
 		-DCMAKE_DISABLE_FIND_PACKAGE_udev=$(usex !udev)
