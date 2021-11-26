@@ -21,7 +21,7 @@ src_compile() {
 	# byte-compile some racket modules
 	local mod
 	for mod in ac brackets ; do
-		raco make --vv ./${mod}.scm
+		raco make --vv ./${mod}.scm || die "raco failed to compile ${mod}"
 	done
 }
 
