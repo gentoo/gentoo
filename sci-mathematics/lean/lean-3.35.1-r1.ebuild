@@ -3,19 +3,18 @@
 
 EAPI=8
 
+MAJOR=$(ver_cut 1)
 CMAKE_IN_SOURCE_BUILD="ON"
 
-inherit cmake optfeature
+inherit cmake optfeature readme.gentoo-r1
 
 DESCRIPTION="The Lean Theorem Prover"
 HOMEPAGE="https://leanprover-community.github.io/"
 
 if [[ "${PV}" == *9999* ]]; then
-	MAJOR=3  # sync this periodically for the live version
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/leanprover-community/lean.git"
 else
-	MAJOR=$(ver_cut 1)
 	SRC_URI="https://github.com/leanprover-community/lean/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
@@ -58,11 +57,19 @@ src_test() {
 	cmake_src_test
 }
 
+src_install() {
+	cmake_src_install
+
+	local DISABLE_AUTOFORMATTING="yes"
+	local DOC_CONTENTS="You probably want to use lean with mathlib, you can either:
+	- Do not install mathlib globally and use local versions
+	- Use leanproject from sci-mathematics/mathlib-tools
+		$ leanproject global-install
+	- Use leanpkg and compile mathlib (which will take some time)
+		$ leanpkg install https://github.com/leanprover-community/mathlib"
+	readme.gentoo_create_doc
+}
+
 pkg_postinst() {
-	elog "You probably want to use lean with mathlib, you can either:"
-	elog " - Do not install mathlib globally and use local versions"
-	elog " - Use leanproject from sci-mathematics/mathlib-tools"
-	elog "   $ leanproject global-install"
-	elog " - Use leanpkg and compile mathlib (which will take some time)"
-	elog "   $ leanpkg install https://github.com/leanprover-community/mathlib"
+	readme.gentoo_print_elog
 }
