@@ -62,8 +62,6 @@ CDEPEND="app-misc/c_rehash
 BDEPEND="${CDEPEND}"
 if ! ${PRECOMPILED} ; then
 	BDEPEND+=" ${PYTHON_DEPS}"
-	# See bug #821706
-	BDEPEND+=" $(python_gen_any_dep 'dev-python/cryptography[${PYTHON_USEDEP}]')"
 fi
 
 DEPEND=""
@@ -75,10 +73,6 @@ RDEPEND="${CDEPEND}
 	${DEPEND}"
 
 S=${WORKDIR}
-
-python_check_deps() {
-	has_version -b "dev-python/cryptography[${PYTHON_USEDEP}]"
-}
 
 pkg_setup() {
 	# For the conversion to having it in CONFIG_PROTECT_MASK,
@@ -126,6 +120,11 @@ src_prepare() {
 
 	default
 	eapply -p2 "${FILESDIR}"/${PN}-20150426-root.patch
+
+	pushd "${S}/${PN}-${DEB_VER}" >/dev/null || die
+	eapply "${FILESDIR}"/${P}-no-cryptography.patch
+	popd >/dev/null || die
+
 	local relp=$(echo "${EPREFIX}" | sed -e 's:[^/]\+:..:g')
 	sed -i \
 		-e '/="$ROOT/s:ROOT:ROOT'"${EPREFIX}"':' \
