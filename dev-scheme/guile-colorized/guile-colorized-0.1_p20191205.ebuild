@@ -21,7 +21,7 @@ LICENSE="GPL-3"
 SLOT="0"
 
 RDEPEND=">=dev-scheme/guile-2.0.9:="
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
