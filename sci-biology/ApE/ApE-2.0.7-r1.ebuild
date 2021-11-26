@@ -1,13 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils
+inherit desktop
 
 DESCRIPTION="A Plasmid Editor"
-HOMEPAGE="http://www.biology.utah.edu/jorgensen/wayned/ape/"
-SRC_URI="http://www.biology.utah.edu/jorgensen/wayned/ape/Download/Linux/ApE_linux_current.zip -> ${P}.zip"
+HOMEPAGE="https://jorgensen.biology.utah.edu/wayned/ape/"
+SRC_URI="https://jorgensen.biology.utah.edu/wayned/ape/Download/Linux/ApE_linux_current.zip -> ${P}.zip"
 
 LICENSE="ApE"
 SLOT="0"
