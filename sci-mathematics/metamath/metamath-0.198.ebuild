@@ -20,7 +20,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-PATCHES=( "${FILESDIR}/dont_force_optimize.patch" )
+PATCHES=( "${FILESDIR}/${PN}-configure.ac-dont_force_optimize.patch" )
 
 src_prepare() {
 	default
