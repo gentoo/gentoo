@@ -15,7 +15,7 @@ else
 	# without pre-built 'configure' as they are always available upstream.
 	# SRC_URI="https://github.com/intel/libva-utils/releases/download/${PV}/${P}.tar.bz2"
 	SRC_URI="https://github.com/intel/libva-utils/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="MIT"
