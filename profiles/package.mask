@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-11-26)
+# Old slot, obsolete since 2016. No reverse dependencies. Use the
+# newer slot instead.
+# Masked for removal in 30 days.
+dev-ruby/typhoeus:0
+
 # Marek Szuba <marecki@gentoo.org> (2021-11-25)
 # Ancient, very few distributions still package it. Both upstream
 # and the Debian package we use in SRC_URI are now gone. EAPI 5,
