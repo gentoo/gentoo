@@ -127,6 +127,15 @@ python_test() {
 		)
 	fi
 
+	if use x86 ; then
+		deselect+=(
+			# https://github.com/numpy/numpy/issues/18388
+			numpy/core/tests/test_umath.py::TestRemainder::test_float_remainder_overflow
+			# https://github.com/numpy/numpy/issues/18387
+			numpy/random/tests/test_generator_mt19937.py::TestRandomDist::test_pareto
+		)
+	fi
+
 	distutils_install_for_testing --single-version-externally-managed \
 		--record "${TMPDIR}/record.txt" ${NUMPY_FCONFIG}
 
