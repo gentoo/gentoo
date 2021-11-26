@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit webapp
+inherit readme.gentoo-r1 webapp
 
 DESCRIPTION="The multipurpose rss reader, live stream, mashup, aggregation web application"
 HOMEPAGE="https://selfoss.aditu.de/"
@@ -24,6 +24,9 @@ RDEPEND="
 	)
 "
 
+DOC_CONTENTS="Default selfoss config is installed as defaults.ini;
+Copy that config to config.ini and customize as you wish."
+
 pkg_setup() {
 	webapp_pkg_setup
 }
@@ -39,9 +42,10 @@ src_install() {
 	webapp_configfile "${MY_HTDOCSDIR}"/.htaccess
 
 	webapp_src_install
+
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	elog "Default selfoss config is installed as defaults.ini;"
-	elog "Copy that config to config.ini and customize as you wish."
+	readme.gentoo_print_elog
 }
