@@ -41,3 +41,14 @@ src_configure() {
 
 	cmake_src_configure
 }
+
+src_test() {
+	local myctestargs=(
+		# Contains "death tests" which are known/expected(?) to fail
+		# https://github.com/kokkos/kokkos/issues/3033
+		# bug #791514
+		-E "(KokkosCore_UnitTest_OpenMP|KokkosCore_UnitTest_Serial)"
+	)
+
+	cmake_src_test
+}
