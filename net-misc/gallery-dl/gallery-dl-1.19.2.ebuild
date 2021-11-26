@@ -28,10 +28,8 @@ RDEPEND=">=dev-python/requests-2.11.0[${PYTHON_USEDEP}]"
 
 distutils_enable_tests setup.py
 
-src_compile() {
-	emake data/completion/{,_}gallery-dl man
-
-	distutils-r1_src_compile
+python_compile_all() {
+	emake PYTHON=${EPYTHON} data/completion/{,_}gallery-dl man
 }
 
 pkg_postinst() {
