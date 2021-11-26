@@ -11,7 +11,7 @@ SRC_URI="https://download.java.net/javaee5/fcs_branch/promoted/source/glassfish-
 
 LICENSE="CDDL"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="amd64 ppc64 x86"
 
 BDEPEND="app-arch/unzip"
 DEPEND=">=virtual/jdk-1.8:*"
