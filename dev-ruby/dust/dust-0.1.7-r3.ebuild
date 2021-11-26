@@ -12,7 +12,7 @@ DESCRIPTION="Descriptive block syntax definition for Test::Unit"
 HOMEPAGE="http://dust.rubyforge.org/"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE=""
 
