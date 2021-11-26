@@ -30,6 +30,8 @@ INSTALLDIR="${D}"
 src_prepare() {
 	eapply "${FILESDIR}/${PV}-makefile.patch"
 	eapply "${FILESDIR}/direwolf-gpsd-API-9.patch"
+	eapply "${FILESDIR}/direwolf-1.5-respect-LDFLAGS.patch"
+	eapply "${FILESDIR}/direwolf-1.5-respect-AR.patch"
 
 	eapply_user
 
@@ -47,6 +49,8 @@ src_prepare() {
 }
 
 src_compile() {
+	tc-export AR CC
+
 	emake PKG_CONFIG="$(tc-getPKG_CONFIG)"
 }
 
