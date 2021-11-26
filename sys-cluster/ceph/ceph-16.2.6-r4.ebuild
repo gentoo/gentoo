@@ -11,7 +11,7 @@ CMAKE_MAKEFILE_GENERATOR=emake
 
 inherit check-reqs bash-completion-r1 cmake distutils-r1 flag-o-matic \
 		lua-single python-r1 udev readme.gentoo-r1 toolchain-funcs \
-		systemd tmpfiles
+		systemd tmpfiles multiprocessing
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -43,7 +43,8 @@ DEPEND="
 	virtual/libudev:=
 	app-arch/bzip2:=
 	app-arch/lz4:=
-	<app-arch/snappy-1.1.9:=
+	app-arch/snappy
+	|| ( >=app-arch/snappy-1.1.9-r1 <app-arch/snappy-1.1.9 )
 	app-arch/zstd:=
 	app-shells/bash:0
 	app-misc/jq:=
