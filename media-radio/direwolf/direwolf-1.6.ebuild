@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake systemd udev toolchain-funcs
+inherit cmake systemd udev
 
 DESCRIPTION="Decoded Information from Radio Emissions for Windows Or Linux Fans"
 HOMEPAGE="https://github.com/wb2osz/direwolf/blob/master/README.md"
