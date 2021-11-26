@@ -692,7 +692,7 @@ env_setup_xmakeopts() {
 	elif type -p ${CHOST}-ar >/dev/null; then
 		xmakeopts="${xmakeopts} CROSS_COMPILE=${CHOST}-"
 	fi
-	xmakeopts="${xmakeopts} HOSTCC=$(tc-getBUILD_CC)"
+	xmakeopts="${xmakeopts} HOSTCC=$(tc-getBUILD_CC) CC=$(tc-getCC) LD=$(tc-getLD) AR=$(tc-getAR) NM=$(tc-getNM) NM=$(tc-getNM) OBOBJCOPY=$(tc-getOBJCOPY) READELF=$(tc-getREADELF) STRIP=$(tc-getSTRIP)"
 	export xmakeopts
 }
 
