@@ -22,10 +22,9 @@ RDEPEND="
 	dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/pyzmq[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
+	>=app-admin/salt-3001.0[${PYTHON_USEDEP}]
 "
-BDEPEND="${RDEPEND}
-	test? ( >=app-admin/salt-3001.0[${PYTHON_USEDEP}] )
-"
+BDEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/pytest-salt-factories-0.121.1-tests.patch"
