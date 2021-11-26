@@ -1,0 +1,50 @@
+From bfb62c085b0841818a5aaa0d2096c0d26f409553 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 26 Nov 2021 04:57:44 +0000
+Subject: [PATCH] Use standard doc directory (a la GNUInstallDirs)
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ CMakeLists.txt | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 139cb4d..e5da77c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -233,16 +233,12 @@ if (WIN32 OR CYGWIN)
+   set(INSTALL_MAN_DIR "man")
+   set(INSTALL_DATA_DIR "data")
+ else()
+-  set(INSTALL_BIN_DIR "bin")
+-  set(INSTALL_DOC_DIR "share/doc/${CMAKE_PROJECT_NAME}")
++  set(INSTALL_BIN_DIR "${CMAKE_INSTALL_BINDIR}")
++  set(INSTALL_DOC_DIR "${CMAKE_INSTALL_DOCDIR}")
+   set(INSTALL_CONF_DIR "${INSTALL_DOC_DIR}/conf")
+   set(INSTALL_SCRIPTS_DIR "${INSTALL_DOC_DIR}/scripts")
+-  if(FREEBSD)
+-    set(INSTALL_MAN_DIR "man/man1")
+-  else()
+-    set(INSTALL_MAN_DIR "share/man/man1")
+-  endif()
+-  set(INSTALL_DATA_DIR "share/${PROJECT_NAME}")
++  set(INSTALL_MAN_DIR "${CMAKE_INSTALL_MANDIR}/man1")
++  set(INSTALL_DATA_DIR "${CMAKE_INSTALL_DATAROOTDIR}/${PACKAGE_NAME}")
+ endif(WIN32 OR CYGWIN)
+ 
+ # requirements
+-- 
+2.34.1
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e5da77c..ae7ea25 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -225,6 +225,7 @@ elseif (C_GCC)
+ endif()
+ 
+ # set installation directories
++include(GNUInstallDirs)
+ if (WIN32 OR CYGWIN)
+   set(INSTALL_BIN_DIR ".")
+   set(INSTALL_DOC_DIR "doc")
