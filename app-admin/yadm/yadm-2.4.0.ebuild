@@ -46,7 +46,7 @@ src_compile() {
 src_test() {
 	# test_encryption: needs write access to /tmp
 	# test_alt, test_compat_jinja, test_unit_template_j2: needs envtpl
-	# test_syntax: needs yamllint (not packaged)
+	# test_syntax: needs =dev-util/yamllint-1.17.0 (not packaged)
 	# test_compat_alt: known broken, tests deprecated features
 	# test_compat_jinja: needs envtpl
 	rm -v test/test_encryption.py || die
