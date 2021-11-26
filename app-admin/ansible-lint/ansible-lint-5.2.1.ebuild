@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..9} )
 
-inherit distutils-r1
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Checks ansible playbooks for practices and behaviour that can be improved"
 HOMEPAGE="https://github.com/ansible-community/ansible-lint"
@@ -40,3 +40,8 @@ BDEPEND="
 	)"
 
 distutils_enable_tests --install pytest
+
+pkg_postinst() {
+	optfeature_header "Consider installing the following optional packages:"
+	optfeature "letting ${PN} run YAML checks" dev-util/yamllint
+}
