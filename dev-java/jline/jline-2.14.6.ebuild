@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}2-${P}"
 
 LICENSE="BSD"
 SLOT="2"
-KEYWORDS="amd64 arm64 x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE="test"
 # Needs yet-unpackaged powermock for tests
 RESTRICT="!test? ( test ) test"
