@@ -52,6 +52,7 @@ BDEPEND="$(python_gen_cond_dep '
 		>=dev-python/pytest-plus-0.2[${PYTHON_USEDEP}]
 		>=dev-python/pytest-testinfra-6.1.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-xdist-2.1.0[${PYTHON_USEDEP}]
+		dev-util/yamllint
 	)
 ')"
 
@@ -77,8 +78,6 @@ src_prepare() {
 	#  - tests involving creation of a new scenario fail on ansible-lint errors, even though
 	#    a config file is deployed which should skip expected issues.
 	rm -f src/molecule/test/functional/test_command.py
-	# Uses unpackaged yamllint
-	rm -f src/molecule/test/unit/cookiecutter/test_molecule.py
 }
 
 python_test() {
