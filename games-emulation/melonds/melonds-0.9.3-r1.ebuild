@@ -9,7 +9,7 @@ EAPI=8
 MY_PN="melonDS"
 MY_P="${MY_PN}-${PV}"
 
-inherit cmake flag-o-matic toolchain-funcs xdg
+inherit cmake flag-o-matic readme.gentoo-r1 toolchain-funcs xdg
 
 DESCRIPTION="Nintendo DS emulator, sorta"
 HOMEPAGE="
@@ -46,6 +46,15 @@ RDEPEND="${DEPEND}"
 # used for JIT recompiler
 QA_EXECSTACK="usr/bin/melonDS"
 
+DISABLE_AUTOFORMATTING="yes"
+DOC_CONTENTS="You need the following files in order to run melonDS:
+- bios7.bin
+- bios9.bin
+- firmware.bin
+- romlist.bin
+Place them in ~/.config/melonDS
+Those files can be found somewhere on the Internet ;-)"
+
 src_prepare() {
 	cmake_src_prepare
 }
@@ -68,16 +77,12 @@ src_install() {
 	dolib.so "${BUILD_DIR}/src/teakra/src/libteakra.so"
 
 	cmake_src_install
+
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	elog "You need the following files in order to run melonDS:"
-	elog "- bios7.bin"
-	elog "- bios9.bin"
-	elog "- firmware.bin"
-	elog "- romlist.bin"
-	elog "Place them in ~/.config/melonDS"
-	elog "Those files can be found somewhere on the Internet ;-)"
+	readme.gentoo_print_elog
 }
