@@ -7,8 +7,6 @@ CARGO_OPTIONAL=yes
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit cargo distutils-r1 multiprocessing
-
 CRATES="
 	Inflector-0.11.4
 	aliasable-0.1.3
@@ -58,6 +56,8 @@ CRATES="
 	winapi-i686-pc-windows-gnu-0.4.0
 	winapi-x86_64-pc-windows-gnu-0.4.0
 "
+
+inherit cargo distutils-r1 multiprocessing
 
 VEC_P=cryptography_vectors-$(ver_cut 1-3)
 DESCRIPTION="Library providing cryptographic recipes and primitives"
