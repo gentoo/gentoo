@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2021-11-26)
+# EAPI 6. Removal in 30 days. Bug @827158
+=dev-lang/gnat-gpl-2019-r2
+
 # Marek Szuba <marecki@gentoo.org> (2021-11-25)
 # Upstream discontinued Linux support over 10 years ago so we are now
 # one major version and countless known bugs behind. No source archives
