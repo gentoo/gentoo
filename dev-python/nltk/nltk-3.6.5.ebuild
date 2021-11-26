@@ -39,14 +39,15 @@ PDEPEND="dev-python/nltk-data"
 distutils_enable_tests pytest
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}"/${P}-test.patch
+	)
+
 	# requires unpackaged pycrfsuite
 	sed -i -e '/>>>/s@$@ # doctest: +SKIP@' nltk/tag/crf.py || die
 	# replace fetching from network with duplicate file URL
 	sed -e 's@https://raw.githubusercontent.com/nltk/nltk/develop/nltk/test/toy.cfg@nltk:grammars/sample_grammars/toy.cfg@' \
 		-i nltk/test/data.doctest || die
-	# requires X and hangs in Xvfb
-	sed -e 's:test_plot:_&:' \
-		-i nltk/test/unit/test_cfd_mutation.py || die
 
 	distutils-r1_src_prepare
 }
