@@ -1,5 +1,5 @@
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -51,6 +51,11 @@
  # Checks for libraries.
  #
