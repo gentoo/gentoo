@@ -1,0 +1,13 @@
+'lib' is for 32-bit libraries only, thank you very much
+
+--- a/scripts/defs.mak.in
++++ b/scripts/defs.mak.in
+@@ -36,7 +36,7 @@
+ # Install targets may be different if dist_prefix is set by configure
+ INSTALL_BINDIR         = @DIST_DIR@/bin
+ INSTALL_MANDIR         = @DIST_DIR@/share/man
+-INSTALL_LIBDIR         = @DIST_DIR@/lib
++INSTALL_LIBDIR         = ${libdir}
+ INSTALL_SYSDIR         = ${INSTALL_LIBDIR}/magic/sys
+ INSTALL_SCMDIR         = ${INSTALL_LIBDIR}/magic/scm
+ INSTALL_TCLDIR         = ${INSTALL_LIBDIR}/magic/tcl
