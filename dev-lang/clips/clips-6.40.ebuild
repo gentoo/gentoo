@@ -16,7 +16,7 @@ LICENSE="public-domain"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
-PATCHES=( "${FILESDIR}/makefile.patch" )
+PATCHES=( "${FILESDIR}/${PN}-makefile-remove_hardcoded.patch" )
 
 src_prepare() {
 	tc-export AR CC
