@@ -16,7 +16,7 @@ HOMEPAGE="http://www.netpromi.com/kirbybase_ruby.html"
 
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/test-unit:2 )"
