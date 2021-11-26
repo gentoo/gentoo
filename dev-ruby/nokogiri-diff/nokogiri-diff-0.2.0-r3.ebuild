@@ -14,7 +14,7 @@ DESCRIPTION="Calculate the differences between two XML/HTML documents"
 HOMEPAGE="https://github.com/postmodern/nokogiri-diff"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86 ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="0"
 IUSE=""
 
