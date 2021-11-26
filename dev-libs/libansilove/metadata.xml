@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <upstream>
+    <changelog>
+      https://github.com/ansilove/libansilove/blob/master/ChangeLog
+    </changelog>
+    <bugs-to>https://github.com/ansilove/libansilove/issues</bugs-to>
+    <remote-id type="github">ansilove/libansilove</remote-id>
+  </upstream>
+</pkgmetadata>
