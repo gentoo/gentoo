@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription lang="en">
+    This package contains leanproject, a supporting tool for Lean mathlib.
+    More info:
+    - https://leanprover-community.github.io/toolchain.html#handling-dependencies
+    - https://leanprover-community.github.io/leanproject.html
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/leanprover-community/mathlib-tools/issues</bugs-to>
+    <remote-id type="github">leanprover-community/mathlib-tools</remote-id>
+  </upstream>
+</pkgmetadata>
