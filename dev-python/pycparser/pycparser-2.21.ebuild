@@ -20,6 +20,8 @@ RDEPEND="dev-python/ply:=[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
+distutils_enable_tests unittest
+
 python_prepare_all() {
 	# remove the original files to guarantee their regen
 	rm pycparser/{c_ast,lextab,yacctab}.py || die
