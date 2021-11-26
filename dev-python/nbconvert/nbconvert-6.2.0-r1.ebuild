@@ -26,7 +26,7 @@ RDEPEND="
 	dev-python/nbformat[${PYTHON_USEDEP}]
 	>=dev-python/pandocfilters-1.4.1[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
-	>=dev-python/traitlets-5.0[${PYTHON_USEDEP}]
+	>=dev-python/traitlets-5.1.1[${PYTHON_USEDEP}]
 	dev-python/testpath[${PYTHON_USEDEP}]
 	www-servers/tornado[${PYTHON_USEDEP}]
 "
