@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2021-11-26)
+# Needs unpackaged asciidoctor-pdf for now
+# bug #827290
+>=app-doc/kicad-doc-6.0.0_rc1 pdf
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-23)
 # pdfannotextractor gets masked as it does not support
 # updated dev-java/pdfbox-2.0.24, Bug #803488
