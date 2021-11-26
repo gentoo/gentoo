@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~x86"
 BDEPEND="app-arch/unzip"
 RDEPEND="
 	>=dev-lang/php-5.4.0[curl,gd]
+	<dev-lang/php-8
 	virtual/httpd-php
 	|| (
 		dev-db/mysql
