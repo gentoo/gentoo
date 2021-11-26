@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Arc is designed for exploratory programming: the kind where you
+    decide what to write by writing it. A good medium for exploratory
+    programming is one that makes programs brief and malleable,
+    so that's what we've aimed for. This is a medium for sketching
+    software.
+    Arc is unfinished. It's missing things you'd need to solve some
+    types of problems. But it works well for basic web apps.
+  </longdescription>
+</pkgmetadata>
