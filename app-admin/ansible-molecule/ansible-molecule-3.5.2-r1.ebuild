@@ -41,6 +41,7 @@ BDEPEND="$(python_gen_cond_dep '
 	>=dev-python/setuptools_scm-3.5.0[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm_git_archive-1.1[${PYTHON_USEDEP}]
 	doc? (
+		dev-python/ansible-pygments[${PYTHON_USEDEP}]
 		>=dev-python/simplejson-3.17.2[${PYTHON_USEDEP}]
 	)
 	test? (
