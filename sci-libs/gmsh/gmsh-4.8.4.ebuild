@@ -15,7 +15,7 @@ LICENSE="GPL-3 free-noncomm"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 ## cgns is not compiling ATM, maybe fix cgns lib first
-IUSE="blas cgns examples jpeg med metis mpi netgen opencascade petsc png python X zlib"
+IUSE="blas cgns examples jpeg med metis mpi netgen opencascade petsc png python shared X zlib"
 
 REQUIRED_USE="med? ( mpi )"
 
@@ -56,6 +56,7 @@ src_configure() {
 
 	mycmakeargs+=(
 		-DENABLE_BLAS_LAPACK="$(usex blas)"
+		-DENABLE_BUILD_DYNAMIC="$(usex shared)"
 		-DENABLE_CGNS="$(usex cgns)"
 		-DENABLE_FLTK="$(usex X)"
 		-DENABLE_GRAPHICS="$(usex X)"

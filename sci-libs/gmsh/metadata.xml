@@ -16,5 +16,6 @@
 		<flag name="netgen"> Enable 3D Frontal triangulation using netgen lib</flag>
 		<flag name="petsc"> Enable sci-mathematics/petsc support</flag>
 		<flag name="opencascade"> Enable OpenCASCADE support</flag>
+		<flag name="shared">Install shared library and headers</flag>
 	</use>
 </pkgmetadata>
