@@ -40,7 +40,7 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" \
-		PREFIX="/usr" \
+		PREFIX="${EPREFIX}/usr" \
 		install
 	dodir /usr/libexec/podman
 	ln "${ED}/usr/"{bin,libexec/podman}/conmon || die
