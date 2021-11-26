@@ -73,15 +73,12 @@ SLOT="0"
 # See bug #769482, bug #827350
 #KEYWORDS="~amd64 ~ppc64"
 
-RDEPEND="
-	>=dev-libs/openssl-1.0.2o-r6:0=
+RDEPEND=">=dev-libs/openssl-1.0.2o-r6:0="
+DEPEND="${RDEPEND}
 	$(python_gen_cond_dep '
 		>=dev-python/cffi-1.8:=[${PYTHON_USEDEP}]
-	' 'python*')
-"
-BDEPEND="
-	${DEPEND}
-	dev-python/setuptools_rust[${PYTHON_USEDEP}]
+	' 'python*')"
+BDEPEND="dev-python/setuptools_rust[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/hypothesis-1.11.4[${PYTHON_USEDEP}]
 		dev-python/iso8601[${PYTHON_USEDEP}]
@@ -90,8 +87,7 @@ BDEPEND="
 		dev-python/pytest-subtests[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
-	)
-"
+	)"
 
 # Files built without CFLAGS/LDFLAGS, acceptable for rust
 QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/cryptography/hazmat/bindings/_rust.abi3.so"
