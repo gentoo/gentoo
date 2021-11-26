@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription lang="en">
+    This package is a pure C implementation of CLIPS.
+    CLIPS is a forward-chaining rule-based programming language written in C
+    that also provides procedural and object-oriented programming facilities.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://sourceforge.net/p/clipsrules/bugs/milestone/CLIPS/</bugs-to>
+    <remote-id type="sourceforge">clipsrules</remote-id>
+  </upstream>
+</pkgmetadata>
