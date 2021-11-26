@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="app-text/docbook-xml-dtd:4.1.2
 	app-text/docbook-xsl-stylesheets
 	dev-perl/Module-Build
+	sys-devel/gettext
 	test? (
 		app-text/docbook-sgml-dtd:4.1
 		dev-perl/Test-Pod
