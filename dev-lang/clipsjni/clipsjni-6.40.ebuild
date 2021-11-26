@@ -23,8 +23,8 @@ RDEPEND=">=virtual/jre-1.8:*"
 DEPEND=">=virtual/jdk-1.8:*"
 
 PATCHES=(
-	"${FILESDIR}/library-src_makefile.lnx.patch"
-	"${FILESDIR}/makefile.lnx.patch"
+	"${FILESDIR}/${PN}-library-src_makefile.lnx-remove_hardcoded.patch"
+	"${FILESDIR}/${PN}-makefile.lnx-java.patch"
 )
 
 src_prepare() {
