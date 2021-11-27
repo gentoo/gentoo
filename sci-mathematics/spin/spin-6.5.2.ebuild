@@ -26,7 +26,7 @@ RDEPEND="sys-devel/gcc
 BDEPEND="virtual/yacc"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.5.1-makefile.patch
+	"${FILESDIR}"/${PN}-6.5.2-makefile.patch
 )
 
 S="${WORKDIR}"/${MY_P}/Src
