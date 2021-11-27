@@ -90,6 +90,12 @@ python_test() {
 		tests/functional/test_install.py::test_editable_install__local_dir_setup_requires_with_pyproject
 	)
 
+	local EPYTEST_IGNORE=(
+		# require tomli-w that needs to be keyworded (added in -r1)
+		tests/functional/test_pep517.py
+		tests/functional/test_pep660.py
+	)
+
 	[[ ${EPYTHON} == python3.10 ]] && deselect+=(
 		tests/lib/test_lib.py::test_correct_pip_version
 		# uses vendored packaging that uses deprecated distutils
