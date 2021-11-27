@@ -1,0 +1,40 @@
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -4,7 +4,6 @@
+ #    Creation date: 11-Apr-2000 10:30 (eg)
+ # Last file update: 23-Oct-2010 11:52 (eg)
+ 
+-mandir	      = $(prefix)/share/man
+ man_MANS      = stklos.1 stklos-config.1 stklos-compile.1 stklos-genlex.1 \
+ 	        stklos-pkg.1
+ EXTRA_DIST    = $(man_MANS)
+@@ -16,15 +16,13 @@
+ schemedir   = $(prefix)/share/@PACKAGE@/@VERSION@
+ scheme_DATA = DOCDB
+ 
+-doclocation = $(prefix)/share/doc/@PACKAGE@-@VERSION@
+-
+-docpdfdir   = $(doclocation)/pdf
++docpdfdir   = $(pdfdir)
+ docpdf_DATA = pdf/stklos-ref.pdf
+ 
+-dochtmldir  = $(doclocation)/html
++dochtmldir  = $(htmldir)
+ dochtml_DATA= $(wildcard html/stklos-ref*.html) $(wildcard html/*.css)
+ 
+-docimgdir   = $(doclocation)/html/images
++docimgdir   = $(htmldir)/images
+ docimg_DATA = $(wildcard html/images/*)
+ 
+ 
+--- a/pkgman/Makefile.am
++++ b/pkgman/Makefile.am
+@@ -4,7 +4,7 @@
+ # Last file update:  4-Dec-2011 16:48 (eg)
+ 
+ 
+-makefiledir=  $(prefix)/etc/stklos
++makefiledir=  $(prefix)/share/@PACKAGE@/@VERSION@/etc
+ makefile_DATA= etc/Makefile-scmpkg.tmpl
+ 
+ bin_SCRIPTS = stklos-pkg

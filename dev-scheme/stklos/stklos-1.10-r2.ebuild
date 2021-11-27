@@ -3,6 +3,8 @@
 
 EAPI="8"
 
+inherit autotools
+
 DESCRIPTION="fast and light Scheme implementation"
 HOMEPAGE="https://www.stklos.net/"
 SRC_URI="https://www.${PN}.net/download/${P}.tar.gz"
@@ -18,12 +20,14 @@ RDEPEND="dev-libs/boehm-gc[threads?]
 	dev-libs/libpcre"
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 DOCS=( AUTHORS ChangeLog NEWS PACKAGES-USED PORTING-NOTES README SUPPORTED-SRFIS )
 
 src_prepare() {
 	rm -rf {ffi,gc,gmp,pcre}
 
 	default
+	eautoreconf
 }
 
 src_configure() {
