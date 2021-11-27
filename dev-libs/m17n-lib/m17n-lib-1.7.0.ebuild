@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
 inherit autotools
 
@@ -30,8 +30,8 @@ RDEPEND="~dev-db/m17n-db-${PV}
 	anthy? ( app-i18n/anthy )
 	libxml2? ( dev-libs/libxml2 )
 	spell? ( app-text/aspell )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-configure.patch
