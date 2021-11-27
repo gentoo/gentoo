@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.tar.xz"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 x86"
+KEYWORDS="amd64 arm ~arm64 ~riscv x86"
 IUSE=""
 
 FONT_SUFFIX="otf"
