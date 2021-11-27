@@ -13,4 +13,8 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.0-rundir.patch
+)
+
 DOCS=( Changes README )
