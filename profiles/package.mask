@@ -36,32 +36,32 @@
 # Marek Szuba <marecki@gentoo.org> (2021-11-27)
 # XXV has been outdated and unmaintained in Gentoo for years.
 # EAPI 5, numerous QA violations.
-# Removal in 30 days. Bug #TBA (Bugzilla is down)
+# Removal in 30 days. Bug #827669
 www-misc/xxv
 x11-themes/xxv-skins
 
 # Marek Szuba <marecki@gentoo.org> (2021-11-27)
 # No activity in upstream GitHub repository since July 2013,
 # no official release tarballs, unmaintained in Gentoo, EAPI 5.
-# Removal in 30 days. Bug #TBA (Bugzilla is down)
+# Removal in 30 days. Bug #827666
 www-apache/mod_vhost_ldap
 
 # Marek Szuba <marecki@gentoo.org> (2021-11-27)
 # Upstream Web site (including release tarballs) is gone, no activity
 # in their GitHub repository since June 2012. Unmaintained in Gentoo
 # for years, EAPI 5.
-# Removal in 30 days. Bug #TBA (Bugzilla is down)
+# Removal in 30 days. Bug #827663
 www-apache/mod_ldap_userdir
 
 # Marek Szuba <marecki@gentoo.org> (2021-11-27)
 # Upstream is long gone, unmaintained in Gentoo for years, EAPI 5.
-# Removal in 30 days. Bug #TBA (Bugzilla is down)
+# Removal in 30 days. Bug #827657
 www-apache/mod_extract_forwarded
 
 # Marek Szuba <marecki@gentoo.org> (2021-11-27)
 # No upstream activity since October 2005, release tarballs
 # not available any more. Unmaintained in Gentoo, EAPI 5.
-# Removal in 30 days. Bug #TBA (Bugzilla is down)
+# Removal in 30 days. Bug #827654
 www-apache/mod_evasive
 
 # Mike Gilbert <floppym@gentoo.org> (2021-11-27)
