@@ -1,0 +1,22 @@
+diff --git a/configure.ac b/configure.ac
+index 0bd2234..42cca58 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -136,7 +136,7 @@ AC_MSG_RESULT([$enable_ptrace])
+ 
+ AC_ARG_ENABLE(setjmp,
+ 	AS_HELP_STRING([--enable-setjmp],[building libunwind-setjmp library]),,
+-        [AS_IF([test x$target_arch == x$host_arch], [enable_setjmp=yes], [enable_setjmp=no])]
++        [AS_IF([test x$target_arch = x$host_arch], [enable_setjmp=yes], [enable_setjmp=no])]
+ )
+ 
+ AC_ARG_ENABLE(documentation,
+@@ -261,7 +261,7 @@ case "${target_arch}" in
+   (aarch64) enable_debug_frame=yes;;
+   (*)   enable_debug_frame=no;;
+ esac])
+-if test x$remote_only == xyes; then
++if test x$remote_only = xyes; then
+   enable_debug_frame=no
+ fi
+ if test x$enable_debug_frame = xyes; then
