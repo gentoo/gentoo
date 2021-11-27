@@ -1,0 +1,56 @@
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -21,7 +21,6 @@
+ #    Creation date: 11-Apr-2000 10:30 (eg)
+ # Last file update:  1-Jun-2021 19:13 (eg)
+ 
+-mandir	      = $(prefix)/share/man
+ man_MANS      = stklos.1 stklos-config.1 stklos-compile.1 stklos-genlex.1 \
+ 	        stklos-pkg.1 stklos-script.1
+ EXTRA_DIST    = $(man_MANS)
+@@ -33,12 +32,10 @@
+ schemedir   = $(prefix)/share/@PACKAGE@/@VERSION@
+ scheme_DATA = DOCDB
+ 
+-doclocation = $(prefix)/share/doc/@PACKAGE@-@VERSION@
+-
+-docpdfdir   = $(doclocation)/pdf
++docpdfdir   = $(pdfdir)
+ docpdf_DATA = pdf/stklos-ref.pdf
+ 
+-dochtmldir  = $(doclocation)/html
++dochtmldir  = $(htmldir)
+ dochtml_DATA= html/index.html		\
+ 	      html/stklos-ref.html	\
+ 	      html/stklos-ref-1.html	\
+@@ -59,7 +56,7 @@
+ 	      html/stklos-ref-16.html	\
+ 	      html/doc-style.css
+ 
+-docimgdir   = $(doclocation)/html/images
++docimgdir   = $(htmldir)/images
+ docimg_DATA = html/images/hierarchy.jpg
+ 
+ 
+--- a/lib/Lalr.d/Makefile.am
++++ b/lib/Lalr.d/Makefile.am
+@@ -34,7 +34,7 @@
+ all: lalr.ostk calc
+ 
+ install-sources: install
+-	mkdir -p $(schemedir)
++	mkdir -p $(DESTDIR)/$(schemedir)
+ 	cp lalr.stk $(DESTDIR)/$(schemedir)
+ 
+ uninstall-hook:
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -123,8 +123,6 @@
+ 
+ 
+ install-exec-hook:
+-	@echo "STRIP command: $$STRIP"
+-	if test "X$$STRIP" != "Xno" ;then $(STRIP) $(DESTDIR)/$(bindir)/stklos; fi;
+ 	mv $(DESTDIR)/$(bindir)/stklos $(DESTDIR)/$(bindir)/stklos-@VERSION@
+ 	ln -s stklos-@VERSION@ $(DESTDIR)/$(bindir)/stklos
+ 
