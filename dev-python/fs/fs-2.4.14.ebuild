@@ -31,10 +31,10 @@ RDEPEND="
 	dev-python/pytz[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10[${PYTHON_USEDEP}]
 "
+# NB: we skip tests requiring pyftpdlib
 BDEPEND="
 	test? (
 		dev-python/parameterized[${PYTHON_USEDEP}]
-		dev-python/pyftpdlib[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 	)
 "
