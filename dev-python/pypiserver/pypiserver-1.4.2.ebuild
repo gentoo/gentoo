@@ -24,8 +24,10 @@ BDEPEND="
 		${RDEPEND}
 		dev-python/passlib[${PYTHON_USEDEP}]
 		>=dev-python/pytest-2.3[${PYTHON_USEDEP}]
-		dev-python/twine[${PYTHON_USEDEP}]
 		dev-python/webtest[${PYTHON_USEDEP}]
+		!alpha? ( !hppa? ( !ia64? (
+			dev-python/twine[${PYTHON_USEDEP}]
+		) ) )
 	)"
 
 DOCS=( README.rst )
