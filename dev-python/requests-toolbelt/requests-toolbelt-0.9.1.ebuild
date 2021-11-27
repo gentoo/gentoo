@@ -29,11 +29,6 @@ PATCHES=(
 	"${FILESDIR}/requests-toolbelt-0.8.0-test-tracebacks.patch"
 	"${FILESDIR}/requests-toolbelt-0.9.1-tests.patch"
 
-	# disable python2.7 test failures with newer requests versions
-	# bug: https://bugs.gentoo.org/635824
-	# https://github.com/requests/toolbelt/issues/213
-	"${FILESDIR}/requests-toolbelt-0.9.1-tests-py2.patch"
-
 	# disable tests that require internet access
 	"${FILESDIR}/requests-toolbelt-0.9.1-tests-internet.patch"
 
