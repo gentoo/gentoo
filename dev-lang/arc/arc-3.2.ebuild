@@ -14,7 +14,10 @@ LICENSE="Artistic-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-scheme/racket:="
+RDEPEND="
+	!app-arch/arc
+	dev-scheme/racket:=
+"
 DEPEND="${RDEPEND}"
 
 src_compile() {
