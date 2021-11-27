@@ -180,6 +180,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 		IUSE+=" systemtap" TC_FEATURES+=(systemtap)
 	tc_version_is_at_least 9.0 && IUSE+=" d"
 	tc_version_is_at_least 9.1 && IUSE+=" lto"
+	tc_version_is_at_least 10 && IUSE+=" cet"
 	tc_version_is_at_least 10 && IUSE+=" zstd" TC_FEATURES+=(zstd)
 	tc_version_is_at_least 11 && IUSE+=" valgrind" TC_FEATURES+=(valgrind)
 	tc_version_is_at_least 11 && IUSE+=" custom-cflags"
@@ -1171,6 +1172,10 @@ toolchain_src_configure() {
 
 	if in_iuse ada ; then
 		confgcc+=( --disable-libada )
+	fi
+
+	if in_iuse cet ; then
+		confgcc+=( $(use_enable cet) )
 	fi
 
 	if in_iuse cilk ; then
