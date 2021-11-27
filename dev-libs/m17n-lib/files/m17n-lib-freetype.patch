@@ -1,5 +1,5 @@
---- /src/font.c
-+++ /src/font.c
+--- a/src/font.c
++++ b/src/font.c
 @@ -1763,10 +1763,10 @@
  
    if (format == Mx || format == Mnil)
@@ -27,8 +27,8 @@
    else
      MERROR (MERROR_FONT, NULL);
    return name;
---- /src/font.h
-+++ /src/font.h
+--- a/src/font.h
++++ b/src/font.h
 @@ -307,10 +307,14 @@
  
  extern void mfont__ft_fini ();
