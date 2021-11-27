@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Idris is a programming language designed to encourage Type-Driven
+    Development.
+    In type-driven development, types are tools for constructing programs.
+    We treat the type as the plan for a program, and use the compiler
+    and type checker as our assistant, guiding us to a complete program that
+    satisfies the type. The more expressive the type is that we give up front,
+    the more confidence we can have that the resulting program will be correct.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/idris-lang/Idris2/issues</bugs-to>
+    <remote-id type="github">idris-lang/Idris2></remote-id>
+  </upstream>
+  <use>
+    <flag name="chez">build using <pkg>dev-scheme/chez</pkg></flag>
+    <flag name="racket">build using <pkg>dev-scheme/racket</pkg></flag>
+    <flag name="test-full">pull in depedndencies to run all tests</flag>
+  </use>
+</pkgmetadata>
