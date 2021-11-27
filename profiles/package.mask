@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Marek Szuba <marecki@gentoo.org> (2021-11-27)
+# XXV has been outdated and unmaintained in Gentoo for years.
+# EAPI 5, numerous QA violations.
+# Removal in 30 days. Bug #TBA (Bugzilla is down)
+www-misc/xxv
+x11-themes/xxv-skins
+
+# Marek Szuba <marecki@gentoo.org> (2021-11-27)
 # No activity in upstream GitHub repository since July 2013,
 # no official release tarballs, unmaintained in Gentoo, EAPI 5.
 # Removal in 30 days. Bug #TBA (Bugzilla is down)
