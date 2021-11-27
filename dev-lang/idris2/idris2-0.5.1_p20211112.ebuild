@@ -101,8 +101,5 @@ src_install() {
 	einstalldocs
 
 	# Install documentation
-	if use doc; then
-		insinto /usr/share/doc/${PF}/
-		doins -r ./docs/build/html
-	fi
+	use doc && dodoc -r ./docs/build/html
 }
