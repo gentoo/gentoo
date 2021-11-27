@@ -57,7 +57,7 @@ DEPEND="
 	>=kde-frameworks/kservice-${KFMIN}:5
 	>=kde-frameworks/ktextwidgets-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
-	>=kde-frameworks/kwindowsystem-${KFMIN}:5
+	>=kde-frameworks/kwindowsystem-${KFMIN}:5[X?]
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=media-libs/phonon-4.11.0
 	X? (
@@ -70,10 +70,11 @@ RDEPEND="${DEPEND}
 	>=kde-apps/kdepim-runtime-${PVCUT}:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-without_x11.patch" )
+
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package X Qt5X11Extras)
-		$(cmake_use_find_package X X11)
+		-DWITHOUT_X11=$(usex !X)
 	)
 
 	ecm_src_configure
