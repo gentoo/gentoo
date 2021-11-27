@@ -35,6 +35,15 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
+	local EPYTEST_DESELECT=()
+	if ! has_version "dev-python/cryptography[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			"tests/test_serving.py::test_server[https]"
+			tests/test_serving.py::test_ssl_dev_cert
+			tests/test_serving.py::test_ssl_object
+		)
+	fi
+
 	distutils_install_for_testing --via-venv
 
 	# the default portage tempdir is too long for AF_UNIX sockets
