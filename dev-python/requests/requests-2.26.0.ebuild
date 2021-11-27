@@ -39,10 +39,11 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/${P}-test.patch
+	"${FILESDIR}"/${P}-trustme-dep.patch
 )
 
 python_test() {
-	local deselect=(
+	local EPYTEST_DESELECT=(
 		# Internet
 		requests/__init__.py::requests
 		requests/api.py::requests.api.request
@@ -55,5 +56,5 @@ python_test() {
 		tests/test_requests.py::TestRequests::test_pyopenssl_redirect
 	)
 
-	epytest ${deselect[@]/#/--deselect }
+	epytest
 }
