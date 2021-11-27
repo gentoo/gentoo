@@ -1,0 +1,37 @@
+From 6a1b5cbc124e0c3362ddefae5939db5c216a74db Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 27 Nov 2021 10:33:35 +0100
+Subject: [PATCH] Skip the test requiring trustme when it is not available
+
+Modify the nosan_server fixture to cause test_https_warnings to be
+skipped when trustme is not installed on the system, rather than causing
+the whole test suite to fail unconditionally.  This makes it possible
+to run all the remaining tests on systems where trustme cannot be
+installed due to its dependencies.
+---
+ tests/conftest.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 099462cf..5d38f254 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -13,7 +13,6 @@ import threading
+ 
+ import pytest
+ from requests.compat import urljoin
+-import trustme
+ 
+ 
+ def prepare_url(value):
+@@ -38,6 +37,7 @@ def httpbin_secure(httpbin_secure):
+ 
+ @pytest.fixture
+ def nosan_server(tmp_path_factory):
++    trustme = pytest.importorskip('trustme')
+     tmpdir = tmp_path_factory.mktemp("certs")
+     ca = trustme.CA()
+     # only commonName, no subjectAltName
+-- 
+2.34.1
+
