@@ -12,7 +12,7 @@ S="${WORKDIR}/BDF/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 RESTRICT="strip binchecks"
 
 BDEPEND="app-arch/unzip"
