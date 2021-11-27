@@ -19,6 +19,7 @@ RDEPEND="<dev-python/requests-3.0.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? (
 		dev-python/betamax[${PYTHON_USEDEP}]
+		dev-python/cryptography[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 	)"
@@ -41,6 +42,15 @@ python_test() {
 		tests/test_multipart_encoder.py::TestFileFromURLWrapper::test_read_file
 		tests/test_multipart_encoder.py::TestMultipartEncoder::test_reads_file_from_url_wrapper
 	)
+
+	local EPYTEST_IGNORE=()
+	if ! has_version "dev-python/cryptography[${PYTHON_USEDEP}]" ||
+		! has_version "dev-python/pyopenssl[${PYTHON_USEDEP}]"
+	then
+		EPYTEST_IGNORE+=(
+			tests/test_x509_adapter.py
+		)
+	fi
 
 	epytest
 }
