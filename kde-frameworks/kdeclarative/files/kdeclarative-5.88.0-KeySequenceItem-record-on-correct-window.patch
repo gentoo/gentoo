@@ -1,0 +1,36 @@
+From 2caa62d11f322ca5c9829b6bc91839e8afd42686 Mon Sep 17 00:00:00 2001
+From: David Redondo <kde@david-redondo.de>
+Date: Mon, 22 Nov 2021 14:22:14 +0100
+Subject: [PATCH] KeySequenceItem: Make sure we record on the correct window
+
+Unfortunately renderWindowFor is just a simple function call and
+so the binding is not updated when it would change. Now we make sure
+to update the window before each recording.
+BUG:445277
+---
+ src/qmlcontrols/kquickcontrols/KeySequenceItem.qml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/qmlcontrols/kquickcontrols/KeySequenceItem.qml b/src/qmlcontrols/kquickcontrols/KeySequenceItem.qml
+index 7b404bd..a41bf18 100644
+--- a/src/qmlcontrols/kquickcontrols/KeySequenceItem.qml
++++ b/src/qmlcontrols/kquickcontrols/KeySequenceItem.qml
+@@ -42,7 +42,6 @@ RowLayout {
+ 
+     KQuickControlsPrivate.KeySequenceHelper {
+         id: _helper
+-        window: renderWindow(parent.Window.window)
+         onGotKeySequence: {
+             if (isKeySequenceAvailable(keySequence)) {
+                 root.keySequence = keySequence
+@@ -95,6 +94,7 @@ RowLayout {
+ 
+         onCheckedChanged: {
+             if (checked) {
++                _helper.window = _helper.renderWindow(parent.Window.window)
+                 mainButton.forceActiveFocus()
+                 _helper.startRecording()
+             }
+-- 
+GitLab
+
