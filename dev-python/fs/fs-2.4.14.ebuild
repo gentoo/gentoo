@@ -33,6 +33,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
+		dev-python/parameterized[${PYTHON_USEDEP}]
 		dev-python/pyftpdlib[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 	)
