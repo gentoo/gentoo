@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Ben Kohler <bkohler@gentoo.org> (2021-11-27)
+# net-misc/pyhoca-cli and several of its deps will need stable first
+net-misc/remmina x2go
+
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-14)
 # net-libs/grpc is not yet stabilized,
 # so mask optional use flag on net-misc/frr
