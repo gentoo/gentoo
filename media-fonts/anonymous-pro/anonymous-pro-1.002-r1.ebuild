@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}.001"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 x86 ~x64-macos"
+KEYWORDS="amd64 arm ~arm64 ~riscv x86 ~x64-macos"
 IUSE=""
 
 RESTRICT="binchecks strip"
