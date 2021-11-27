@@ -1,0 +1,62 @@
+From b8dda4b3129f42323e1f6ccb37c16cb62a740d39 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 27 Nov 2021 14:07:32 +0100
+Subject: [PATCH] Add CMake option to build WITHOUT_X11
+
+We want to be able to build without X11 support even if some of the used
+libraries may not work w/o X11 themselves yet or need to be built with
+X11 support for other reverse dependencies.
+
+-DCMAKE_DISABLE_FIND_PACKAGE_X11 will break if any dependencies list X11
+as required in their cmake config, also X11_FOUND could be set by
+cascading cmake dependencies.
+
+Introducing this option means there is no behavior change by default,
+cmake will just skip finding X11 or adding unwanted features if the
+option is enabled.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ thumbnail/CMakeLists.txt | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/thumbnail/CMakeLists.txt b/thumbnail/CMakeLists.txt
+index f6f38992d..ee322a1bf 100644
+--- a/thumbnail/CMakeLists.txt
++++ b/thumbnail/CMakeLists.txt
+@@ -21,13 +21,16 @@ set_package_properties(libappimage PROPERTIES
+     PURPOSE "Provides support for AppImage thumbnails"
+ )
+ 
+-find_package(X11)
+-set_package_properties(X11 PROPERTIES
+-    DESCRIPTION "X11 libraries"
+-    URL "https://www.x.org"
+-    TYPE OPTIONAL
+-    PURPOSE "Provides support for XCursor thumbnails"
+-)
++option(WITHOUT_X11 "Build without support for XCursor thumbnails (disables finding X11)" OFF)
++if (NOT WITHOUT_X11)
++    find_package(X11)
++    set_package_properties(X11 PROPERTIES
++        DESCRIPTION "X11 libraries"
++        URL "https://www.x.org"
++        TYPE OPTIONAL
++        PURPOSE "Provides support for XCursor thumbnails"
++    )
++endif()
+ 
+ find_package(Taglib 1.11)
+ set_package_properties(Taglib PROPERTIES
+@@ -210,7 +213,7 @@ endif()
+ 
+ ########### next target ###############
+ 
+-if(X11_Xcursor_FOUND)
++if(X11_Xcursor_FOUND AND NOT WITHOUT_X11)
+ 
+     add_library(cursorthumbnail MODULE cursorcreator.cpp cursorcreatorplugin.cpp)
+ 
+-- 
+GitLab
+
