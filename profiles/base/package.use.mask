@@ -415,6 +415,7 @@ sys-devel/binutils-hppa64 cet
 sys-devel/gdb cet
 sys-libs/binutils-libs cet
 sys-libs/glibc cet
+sys-devel/gcc cet
 
 # Michał Górny <mgorny@gentoo.org> (2018-06-13)
 # Requires app-arch/snappy[static-libs] that is no longer available.
