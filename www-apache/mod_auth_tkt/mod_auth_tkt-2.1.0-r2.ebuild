@@ -39,6 +39,10 @@ src_configure() {
 	./configure --apachever=2.2 --apxs=${APXS}
 }
 
+src_compile() {
+	emake
+}
+
 src_install() {
 	apache-module_src_install
 	pod2man --section=5 --release=${PV} doc/${PN}.{pod,5}
