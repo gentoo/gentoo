@@ -63,6 +63,8 @@ RDEPEND="${COMMON_DEPEND}
 	kde-plasma/kde-cli-tools:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-with_x11.patch" )
+
 src_prepare() {
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lmalloc
 
@@ -74,7 +76,7 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_Hunspell=ON # requires fixing bug 634122
 		$(cmake_use_find_package activities KF5Activities)
 		$(cmake_use_find_package speech Qt5TextToSpeech)
-		$(cmake_use_find_package X X11)
+		-DWITH_X11=$(usex X)
 	)
 	ecm_src_configure
 }
