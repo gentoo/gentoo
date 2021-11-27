@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -17,10 +17,6 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~x64-cygwin"
-IUSE=""
-
-DEPEND=""
-RDEPEND="${DEPEND}"
 
 mymake() {
 	emake \
