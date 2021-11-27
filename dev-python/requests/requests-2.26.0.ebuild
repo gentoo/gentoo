@@ -30,8 +30,10 @@ BDEPEND="
 	test? (
 		dev-python/pytest-httpbin[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		dev-python/trustme[${PYTHON_USEDEP}]
 		>=dev-python/PySocks-1.5.6[${PYTHON_USEDEP}]
+		!alpha? ( !hppa? ( !ia64? (
+			dev-python/trustme[${PYTHON_USEDEP}]
+		) ) )
 	)
 "
 
