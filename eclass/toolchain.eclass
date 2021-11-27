@@ -626,6 +626,11 @@ make_gcc_hard() {
 			# -z now
 			# see *_all_extra-options.patch gcc patches.
 			gcc_hard_flags+=" -DEXTRA_OPTIONS"
+
+			if _tc_use_if_iuse cet && [[ ${CTARGET} == *x86_64*-linux* ]] ; then
+				gcc_hard_flags+=" -DEXTRA_OPTIONS_CF"
+			fi
+
 			# rebrand to make bug reports easier
 			BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/Gentoo/Gentoo Hardened}
 		fi
