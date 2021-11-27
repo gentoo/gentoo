@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2021-11-27)
+# No upstream activity since October 2005, release tarballs
+# not available any more. Unmaintained in Gentoo, EAPI 5.
+# Removal in 30 days. Bug #TBA (Bugzilla is down)
+www-apache/mod_evasive
+
 # Mike Gilbert <floppym@gentoo.org> (2021-11-27)
 # eudev will be removed on 2022-01-01.
 # Please see the news item published on 2021-08-24 for more information.
