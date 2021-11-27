@@ -1,5 +1,4 @@
-diff --git a/configure.ac b/configure.ac
-index 0bd2234..42cca58 100644
+https://github.com/libunwind/libunwind/pull/315
 --- a/configure.ac
 +++ b/configure.ac
 @@ -136,7 +136,7 @@ AC_MSG_RESULT([$enable_ptrace])
