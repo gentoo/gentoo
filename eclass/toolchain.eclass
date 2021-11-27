@@ -290,12 +290,16 @@ S=$(
 )
 
 gentoo_urls() {
-	local devspace="HTTP~vapier/dist/URI HTTP~rhill/dist/URI
-	HTTP~zorry/patches/gcc/URI HTTP~blueness/dist/URI
-	HTTP~tamiko/distfiles/URI HTTP~sam/distfiles/URI
-	HTTP~sam/distfiles/sys-devel/gcc/URI HTTP~slyfox/distfiles/URI"
+	local devspace="
+		HTTP~soap/distfiles/URI
+		HTTP~sam/distfiles/URI
+		HTTP~sam/distfiles/sys-devel/gcc/URI
+		HTTP~tamiko/distfiles/URI
+		HTTP~zorry/patches/gcc/URI
+		HTTP~vapier/dist/URI
+		HTTP~blueness/dist/URI"
 	devspace=${devspace//HTTP/https:\/\/dev.gentoo.org\/}
-	echo mirror://gentoo/$1 ${devspace//URI/$1}
+	echo ${devspace//URI/$1} mirror://gentoo/$1
 }
 
 # This function handles the basics of setting the SRC_URI for a gcc ebuild.
