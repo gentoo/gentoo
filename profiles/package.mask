@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2021-11-27)
+# eudev will be removed on 2022-01-01.
+# Please see the news item published on 2021-08-24 for more information.
+sys-fs/eudev
+
 # Alfredo Tupone <tupone@gentoo.org> (2021-11-26)
 # EAPI 6. Removal in 30 days. Bug @827158
 =dev-lang/gnat-gpl-2019-r2
