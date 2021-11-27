@@ -18,6 +18,7 @@
   in LaTeX format.
 </longdescription>
   <use>
+    <flag name="extras">Build and install add-ons bundled with gretl</flag>
     <flag name="R">Enable support for <pkg>dev-lang/R</pkg></flag>
   </use>
   <upstream>
