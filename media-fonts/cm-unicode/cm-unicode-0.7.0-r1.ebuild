@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-ttf.tar.xz"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE=""
 
 DOCS=( Changes FAQ FontLog.txt README )
