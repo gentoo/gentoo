@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Marek Szuba <marecki@gentoo.org> (2021-11-27)
+# Upstream is long gone, unmaintained in Gentoo for years, EAPI 5.
+# Removal in 30 days. Bug #TBA (Bugzilla is down)
+www-apache/mod_extract_forwarded
+
+# Marek Szuba <marecki@gentoo.org> (2021-11-27)
 # No upstream activity since October 2005, release tarballs
 # not available any more. Unmaintained in Gentoo, EAPI 5.
 # Removal in 30 days. Bug #TBA (Bugzilla is down)
