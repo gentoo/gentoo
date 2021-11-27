@@ -32,16 +32,23 @@ DOCS=( README.rst )
 
 distutils_enable_tests pytest
 
-src_prepare() {
-	sed -i -e "/tox/d" setup.py || die
+python_test() {
+	local EPYTEST_DESELECT=(
+		# Internet
+		tests/test_server.py::test_hash_algos
+		tests/test_server.py::test_pipInstall_openOk
+		tests/test_server.py::test_pipInstall_authedOk
+	)
 
-	# https://github.com/pypiserver/pypiserver/issues/312
-	sed -e 's:test_root_count:_&:' \
-		-i tests/test_app.py || die
-	sed -e 's:test_hash_algos:_&:' \
-		-e 's:test_pipInstall_openOk:_&:' \
-		-e 's:test_pipInstall_authedOk:_&:' \
-		-i tests/test_server.py || die
+	if ! has_version "dev-python/twine[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			tests/test_server.py::test_twine_register_authed_ok
+			tests/test_server.py::test_twine_register_open
+			tests/test_server.py::test_twine_upload_authed
+			tests/test_server.py::test_twine_upload_open
+			tests/test_server.py::test_twine_upload_partial_authed
+		)
+	fi
 
-	distutils-r1_src_prepare
+	epytest
 }
