@@ -4,6 +4,7 @@
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-02-09)
 # Requires net-libs/nodejs, plus mask all reverse-dependencies.
 app-i18n/fcitx-libpinyin dictionary-manager
+dev-lang/idris2 test-full
 dev-python/cloudscraper test
 games-util/lgogdownloader gui
 kde-apps/kde-apps-meta:5 pim
