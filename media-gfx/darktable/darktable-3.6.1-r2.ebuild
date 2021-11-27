@@ -93,9 +93,7 @@ pkg_pretend() {
 				die "Please switch to a gcc version built with USE=graphite"
 		fi
 
-		if use openmp ; then
-			tc-has-openmp || die "Please switch to an openmp compatible compiler"
-		fi
+		use openmp && tc-check-openmp
 	fi
 }
 
