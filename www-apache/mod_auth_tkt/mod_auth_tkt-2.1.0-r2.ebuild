@@ -13,7 +13,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="dev-lang/perl"
+BDEPEND="dev-lang/perl"
 
 APACHE2_MOD_CONF="10_${PN}"
 APACHE2_MOD_DEFINE="AUTH_TKT"
@@ -36,7 +36,7 @@ pkg_setup() {
 }
 
 src_configure() {
-	./configure --apachever=2.2 --apxs=${APXS}
+	./configure --apachever=2.2 --apxs=${APXS} || die
 }
 
 src_compile() {
@@ -45,7 +45,8 @@ src_compile() {
 
 src_install() {
 	apache-module_src_install
-	pod2man --section=5 --release=${PV} doc/${PN}.{pod,5}
+
+	pod2man --section=5 --release=${PV} doc/${PN}.{pod,5} || die
 	doman doc/${PN}.5
 }
 
