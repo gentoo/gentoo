@@ -29,10 +29,18 @@ PATCHES=(
 	"${FILESDIR}/requests-toolbelt-0.8.0-test-tracebacks.patch"
 	"${FILESDIR}/requests-toolbelt-0.9.1-tests.patch"
 
-	# disable tests that require internet access
-	"${FILESDIR}/requests-toolbelt-0.9.1-tests-internet.patch"
-
 	"${FILESDIR}/requests-toolbelt-0.9.1-py310.patch"
 )
 
 distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_DESELECT=(
+		# Internet
+		tests/test_multipart_encoder.py::TestFileFromURLWrapper::test_no_content_length_header
+		tests/test_multipart_encoder.py::TestFileFromURLWrapper::test_read_file
+		tests/test_multipart_encoder.py::TestMultipartEncoder::test_reads_file_from_url_wrapper
+	)
+
+	epytest
+}
