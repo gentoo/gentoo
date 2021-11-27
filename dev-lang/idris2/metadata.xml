@@ -17,7 +17,7 @@
   </longdescription>
   <upstream>
     <bugs-to>https://github.com/idris-lang/Idris2/issues</bugs-to>
-    <remote-id type="github">idris-lang/Idris2></remote-id>
+    <remote-id type="github">idris-lang/Idris2</remote-id>
   </upstream>
   <use>
     <flag name="chez">build using <pkg>dev-scheme/chez</pkg></flag>
