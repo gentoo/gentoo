@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit distutils-r1 toolchain-funcs
 
 DESCRIPTION="ease the development of portable automated build systems"
@@ -16,23 +16,23 @@ SLOT="0"
 KEYWORDS="~amd64"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/colorama
-	dev-python/stevedore
-	dev-python/distro
+RDEPEND="dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/stevedore[${PYTHON_USEDEP}]
+	dev-python/distro[${PYTHON_USEDEP}]
 	!app-editors/e3"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	test? (
-		dev-python/requests-toolbelt
-		dev-python/httpretty
+		dev-python/requests-toolbelt[${PYTHON_USEDEP}]
+		dev-python/httpretty[${PYTHON_USEDEP}]
 		dev-vcs/subversion
-		dev-python/tqdm
-		dev-python/tomlkit
-		dev-python/pyyaml
-		dev-python/python-dateutil
-		dev-python/mock
-		dev-python/psutil
+		dev-python/tqdm[${PYTHON_USEDEP}]
+		dev-python/tomlkit[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
 	)"
-BDEPEND=""
 REQUIRED_USE="x86? ( !test )"
 
 PATCHES=(
