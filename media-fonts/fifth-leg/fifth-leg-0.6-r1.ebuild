@@ -13,7 +13,7 @@ S="${WORKDIR}"
 
 LICENSE="OFL"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE=""
 
 FONT_SUFFIX="otf sfd"
