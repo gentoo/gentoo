@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="fast and light Scheme implementation"
-HOMEPAGE="http://www.stklos.net"
-SRC_URI="http://www.stklos.net/download/${P}.tar.gz"
+HOMEPAGE="https://www.stklos.net/"
+SRC_URI="https://www.${PN}.net/download/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
