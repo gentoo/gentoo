@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Marek Szuba <marecki@gentoo.org> (2021-11-27)
+# No activity in upstream GitHub repository since July 2013,
+# no official release tarballs, unmaintained in Gentoo, EAPI 5.
+# Removal in 30 days. Bug #TBA (Bugzilla is down)
+www-apache/mod_vhost_ldap
+
+# Marek Szuba <marecki@gentoo.org> (2021-11-27)
 # Upstream Web site (including release tarballs) is gone, no activity
 # in their GitHub repository since June 2012. Unmaintained in Gentoo
 # for years, EAPI 5.
