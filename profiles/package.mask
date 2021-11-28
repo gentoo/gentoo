@@ -459,12 +459,6 @@ sys-apps/frandom
 dev-ruby/rmagick:0
 dev-ruby/rbnacl:4
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-30)
-# 9999-only ebuild, hasn't been updated in years,
-# uses EAPI 5, no revdeps.
-# Removal on 2021-11-29. Bug #819258.
-net-wireless/btcrack
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
