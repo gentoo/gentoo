@@ -31,6 +31,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES="
+	"${FILESDIR}/${P}-meson602.patch"
+"
+
 src_configure() {
 	append-cppflags -DG_DISABLE_CAST_CHECKS
 
