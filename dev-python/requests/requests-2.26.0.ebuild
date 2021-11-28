@@ -44,17 +44,23 @@ PATCHES=(
 
 python_test() {
 	local EPYTEST_DESELECT=(
-		# Internet
+		# Internet (doctests)
 		requests/__init__.py::requests
 		requests/api.py::requests.api.request
 		requests/models.py::requests.models.PreparedRequest
 		requests/sessions.py::requests.sessions.Session
-		tests/test_requests.py::TestRequests::test_https_warnings
+		# require IPv4 interface in 10.* range
 		tests/test_requests.py::TestTimeout::test_connect_timeout
 		tests/test_requests.py::TestTimeout::test_total_timeout_connect
 		# TODO: openssl?
 		tests/test_requests.py::TestRequests::test_pyopenssl_redirect
 	)
+
+	if ! has_version "dev-python/trustme[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			tests/test_requests.py::TestRequests::test_https_warnings
+		)
+	fi
 
 	epytest
 }
