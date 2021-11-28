@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -31,4 +31,4 @@ BDEPEND="
 PATCHES=( "${FILESDIR}/no-pytest-runner.patch" )
 
 distutils_enable_tests pytest
-distutils_enable_sphinx docs/source dev-python/sphinxcontrib-trio
+distutils_enable_sphinx docs/source dev-python/sphinxcontrib-trio dev-python/sphinx_rtd_theme
