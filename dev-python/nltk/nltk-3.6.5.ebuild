@@ -33,6 +33,7 @@ BDEPEND="
 		dev-python/twython[${PYTHON_USEDEP}]
 		sci-libs/scikit-learn[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]
 	)"
 PDEPEND="dev-python/nltk-data"
 
