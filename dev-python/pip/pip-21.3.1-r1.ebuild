@@ -32,7 +32,7 @@ SRC_URI="
 "
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc64 ~sparc ~x86"
 SLOT="0"
 IUSE="test vanilla"
 RESTRICT="!test? ( test )"
