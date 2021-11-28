@@ -6,7 +6,7 @@
 # java@gentoo.org
 # @AUTHOR:
 # Thomas Matthijs <axxo@gentoo.org>, Karl Trygve Kalleberg <karltk@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: Base eclass for Java packages
 # @DESCRIPTION:
 # This eclass provides functionality which is used by java-pkg-2.eclass,
@@ -18,7 +18,7 @@
 # Ant-based packages.
 
 case ${EAPI:-0} in
-	[567]) ;;
+	[5678]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
