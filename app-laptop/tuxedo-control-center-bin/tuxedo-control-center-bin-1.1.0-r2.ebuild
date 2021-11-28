@@ -26,15 +26,15 @@ S="${WORKDIR}"
 
 src_prepare() {
 	default
-	rm -rf usr/lib
-	mkdir files
+	rm -rf usr/lib || die "could not remove usr/lib"
+	mkdir files || die "could not create files dir"
 }
 
 src_install() {
 	insinto /
 	doins -r usr opt
 	find . -type f -perm -a=x | while read f; do
-		chmod 0755 "${D}/${f}"
+		fperms 0755 "${f/./}"
 	done
 
 	dosym ../../opt/tuxedo-control-center/tuxedo-control-center /usr/bin/tuxedo-control-center
@@ -48,7 +48,7 @@ src_install() {
 	systemd_dounit opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/dist-data/tccd.service
 	systemd_dounit opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/dist-data/tccd-sleep.service
 
-	doinitd "${FILESDIR}/tccd.initd"
+	newinitd "${FILESDIR}/tccd.initd" tccd
 }
 
 pkg_config() {
@@ -69,8 +69,8 @@ pkg_postinst() {
 	elog
 	elog "You need to enable tccd and tccd-sleep service before running tuxedo-control-center"
 	elog
-	elog "For your convenience you may just call:"
-	elog "  emerge --config =${P}"
+	elog "For your convenience, if you use systemd, you may just call:"
+	elog "  emerge --config =app-laptop/${PF}"
 	elog
 }
 
