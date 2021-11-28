@@ -45,6 +45,8 @@ BDEPEND="
 	doc? ( app-doc/doxygen )
 	test? (
 		app-text/trang
+		dev-libs/softhsm:*
+		dev-util/cunit
 	)
 "
 
@@ -53,13 +55,6 @@ REQUIRED_USE="
 	^^ ( softhsm opensc external-hsm )
 "
 
-#PATCHES=(
-#	"${FILESDIR}/${PN}-fix-localstatedir-2.0.x.patch"
-#	"${FILESDIR}/${PN}-fix-run-dir-2.0.x.patch"
-#	"${FILESDIR}/${PN}-drop-privileges-2.0.x.patch"
-#	"${FILESDIR}/${PN}-use-system-trang.patch"
-#	"${FILESDIR}/${PN}-openssl1.1.patch"
-#)
 PATCHES=(
 	"${FILESDIR}/${PN}-fix-run-dir-2.1.x.patch"
 	"${FILESDIR}/${PN}-use-system-trang.patch"
@@ -73,11 +68,7 @@ check_pkcs11_setup() {
 
 	if use softhsm; then
 		PKCS11_LIB=softhsm
-		if has_version ">=dev-libs/softhsm-1.3.1"; then
-			PKCS11_PATH=/usr/$(get_libdir)/softhsm/libsofthsm.so
-		else
-			PKCS11_PATH=/usr/$(get_libdir)/libsofthsm.so
-		fi
+		PKCS11_PATH=/usr/$(get_libdir)/softhsm/libsofthsm2.so
 		elog "Building with SoftHSM PKCS#11 library support."
 	fi
 	if use opensc; then
