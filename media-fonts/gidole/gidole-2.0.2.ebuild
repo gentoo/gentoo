@@ -12,7 +12,7 @@ S="${WORKDIR}/GidoleFont"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 arm x86"
+KEYWORDS="amd64 arm ~riscv x86"
 IUSE=""
 
 BDEPEND="app-arch/unzip"
