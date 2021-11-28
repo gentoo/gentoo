@@ -14,7 +14,7 @@ SRC_URI="http://dist.schmorp.de/rxvt-unicode/Attic/${P}.tar.bz2
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
 IUSE="24-bit-color 256-color blink fading-colors +font-styles gdk-pixbuf iso14755 +mousewheel
 	+perl startup-notification unicode3 xft"
 
