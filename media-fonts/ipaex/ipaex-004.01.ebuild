@@ -13,7 +13,7 @@ SRC_URI="https://moji.or.jp/wp-content/ipafont/IPAexfont/${MY_P}.zip"
 
 LICENSE="IPAfont"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 RESTRICT="binchecks strip"
 
