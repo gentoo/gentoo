@@ -15,6 +15,13 @@ RDEPEND=">=x11-themes/gtk-engines-murrine-0.98.0"
 
 S="${WORKDIR}"/${PN}
 
+src_prepare() {
+	default
+
+	# Depends on unpackaged theme Bluebird
+	rm -r usr/share/themes/shearwater || die
+}
+
 src_install() {
 	insinto /usr/share/icons
 	doins -r usr/share/icons/*
