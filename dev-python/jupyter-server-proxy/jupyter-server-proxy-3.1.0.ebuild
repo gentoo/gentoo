@@ -17,6 +17,7 @@ RDEPEND="
 	>=dev-python/jupyter_server-1.0[${PYTHON_USEDEP}]
 	>=dev-python/simpervisor-0.4[${PYTHON_USEDEP}]
 "
+BDEPEND="dev-python/jupyter_packaging[${PYTHON_USEDEP}]"
 
 LICENSE="BSD"
 SLOT="0"
