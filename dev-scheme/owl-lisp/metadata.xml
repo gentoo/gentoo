@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Owl Lisp is a simple programming language. The main motivation for
+    writing it was to get a portable system for writing standalone
+    programs in a subjectively pleasant dialect of LISP, which in this
+    case means a minimal core language and runtime, purely functional
+    operation and support for asynchronous evaluation.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://gitlab.com/owl-lisp/owl/-/issues</bugs-to>
+    <remote-id type="gitlab">owl-lisp/owl</remote-id>
+  </upstream>
+</pkgmetadata>
