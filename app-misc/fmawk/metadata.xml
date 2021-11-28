@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription lang="en">
+    FMAWK is a experimental file manager written almost entirely
+    in the awk programming language. Thought written in awk it is comparable
+    with features to ranger or nnn.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/huijunchen9260/fm.awk/issues</bugs-to>
+    <remote-id type="github">huijunchen9260/fm.awk</remote-id>
+  </upstream>
+</pkgmetadata>
