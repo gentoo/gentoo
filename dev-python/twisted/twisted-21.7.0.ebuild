@@ -65,15 +65,17 @@ BDEPEND="
 		>=dev-python/appdirs-1.4.0[${PYTHON_USEDEP}]
 		dev-python/bcrypt[${PYTHON_USEDEP}]
 		>=dev-python/constantly-15.1.0[${PYTHON_USEDEP}]
-		>=dev-python/cryptography-0.9.1[${PYTHON_USEDEP}]
 		dev-python/cython-test-exception-raiser[${PYTHON_USEDEP}]
 		dev-python/gmpy[${PYTHON_USEDEP}]
 		dev-python/idna[${PYTHON_USEDEP}]
 		dev-python/pyasn1[${PYTHON_USEDEP}]
-		>=dev-python/pyopenssl-0.13[${PYTHON_USEDEP}]
 		dev-python/pyserial[${PYTHON_USEDEP}]
-		dev-python/service_identity[${PYTHON_USEDEP}]
 		net-misc/openssh
+		!alpha? ( !hppa? ( !ia64? (
+			>=dev-python/cryptography-0.9.1[${PYTHON_USEDEP}]
+			>=dev-python/pyopenssl-0.13[${PYTHON_USEDEP}]
+			dev-python/service_identity[${PYTHON_USEDEP}]
+		) ) )
 	)
 "
 
