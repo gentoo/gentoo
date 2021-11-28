@@ -1,0 +1,25 @@
+From 9fd3e7ac5870f84c73ac777d9a14480227ad7f00 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Sun, 28 Nov 2021 14:14:42 +0100
+Subject: [PATCH] Fix `-Wformat` on 32-bit platforms
+
+---
+ libcap/cap_test.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libcap/cap_test.c b/libcap/cap_test.c
+index b7fb2c5..39df261 100644
+--- a/libcap/cap_test.c
++++ b/libcap/cap_test.c
+@@ -124,7 +124,7 @@ static int test_short_bits(void)
+     }
+     if (strlen(tmp) > __CAP_NAME_SIZE) {
+ 	printf("cap_to_text buffer size reservation needs fixing (%ld > %d)\n",
+-	       strlen(tmp), __CAP_NAME_SIZE);
++	       (long int)strlen(tmp), __CAP_NAME_SIZE);
+ 	result = -1;
+     }
+     free(tmp);
+-- 
+2.34.1
+
