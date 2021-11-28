@@ -48,7 +48,7 @@ src_install() {
 	systemd_dounit opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/dist-data/tccd.service
 	systemd_dounit opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/dist-data/tccd-sleep.service
 
-	doinitd "${FILES}/tccd.initd"
+	doinitd "${FILESDIR}/tccd.initd"
 }
 
 pkg_config() {
