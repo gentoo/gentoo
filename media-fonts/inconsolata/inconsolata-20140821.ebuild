@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.tar.xz"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc x86 ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm64 ~ppc ~riscv x86 ~ppc-macos ~x64-macos"
 IUSE=""
 
 # Only installs fonts
