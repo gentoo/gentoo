@@ -17,8 +17,6 @@ IUSE="doc"
 RDEPEND=""
 DEPEND=""
 
-PATCHES=( "${FILESDIR}"/${PN}-ldflags.patch )
-
 src_prepare() {
 	default
 
@@ -33,6 +31,9 @@ src_prepare() {
 		-e "s|/lib|/$(get_libdir)|" \
 		-e "s|\$(DATADIR)/doc|\$(SHAREDIR)/doc/${PF}|" \
 		defaults.make || die
+	sed -i \
+		-e "/\$(CHICKEN_DO_PROGRAM)\$(EXE):/,/^$/s/\(\$<\)/\$(LINKER_OPTIONS) \1/" \
+		rules.make || die
 
 	use doc || sed -i "/\$(SEP)manual/d" rules.make || die
 }
