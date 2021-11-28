@@ -25,7 +25,7 @@ Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
  
  # The linker magic needed to build a dynamic library as independently
  # executable
-@@ -82,17 +84,27 @@
+@@ -82,8 +84,18 @@
  	./_makenames > cap_names.h
  
  $(GPERF_OUTPUT): cap_names.list.h
@@ -44,19 +44,14 @@ Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 +		--lookup-function-name="__cap_lookup_name" \
 +		-c -t -m20 $(INDENT) > $@
  
--# Intention is that libcap keeps up with torvalds' tree, as reflected
--# by this maintained version of the kernel header. libcap dynamically
--# trims the meaning of "all" capabilities down to that of the running
--# kernel as of 2.30.
+ # Intention is that libcap keeps up with torvalds' tree, as reflected
+ # by this maintained version of the kernel header. libcap dynamically
+@@ -92,7 +104,7 @@
  UAPI_HEADER := $(topdir)/libcap/include/uapi/linux/capability.h
  cap_names.list.h: Makefile $(UAPI_HEADER)
  	@echo "=> making $@ from $(UAPI_HEADER)"
 -	perl -e 'while ($$l=<>) { if ($$l =~ /^\#define[ \t](CAP[_A-Z]+)[ \t]+([0-9]+)\s+$$/) { $$tok=$$1; $$val=$$2; $$tok =~ tr/A-Z/a-z/; print "{\"$$tok\",$$val},\n"; } }' $(UAPI_HEADER) | fgrep -v 0x > $@
 +	$(AWK) '($$0 ~ /^#define[[:space:]]+CAP[_A-Z]+[[:space:]]+[0-9]+[[:space:]]*$$/) { printf "{\"%s\",%s},\n", tolower($$2), $$3 }' $(UAPI_HEADER) > $@
-+
-+cap_names.list.h: $(KERNEL_HEADERS)/linux/capability.h Makefile
-+	@echo "=> making $@ from $<"
-+	$(AWK) '($$0 ~ /^#define[[:space:]]+CAP[_A-Z]+[[:space:]]+[0-9]+[[:space:]]*$$/) { printf "{\"%s\",%s},\n", tolower($$2), $$3 }' $< > $@
  
  $(STACAPLIBNAME): $(CAPOBJS)
  	$(AR) rcs $@ $^
