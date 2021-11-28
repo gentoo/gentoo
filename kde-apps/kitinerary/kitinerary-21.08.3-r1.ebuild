@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/kontact/"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 arm64"
 IUSE="+barcode pdf"
 
 REQUIRED_USE="test? ( pdf )"
