@@ -26,10 +26,12 @@ RDEPEND="dev-python/simplejson[${PYTHON_USEDEP}]"
 DEPEND="
 	test? (
 		dev-python/click[${PYTHON_USEDEP}]
-		dev-python/cryptography[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/pytest-xprocess[${PYTHON_USEDEP}]
+		!alpha? ( !hppa? ( !ia64? (
+			dev-python/cryptography[${PYTHON_USEDEP}]
+		) ) )
 	)"
 
 distutils_enable_tests pytest
