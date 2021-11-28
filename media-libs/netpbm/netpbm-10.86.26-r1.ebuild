@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}"/netpbm-10.86.21-test.patch #450530
 	"${FILESDIR}"/netpbm-10.86.21-misc-deps.patch
 	"${FILESDIR}"/netpbm-10.86.22-fix-ps-test.patch #670362
+	"${FILESDIR}"/netpbm-10.86.24-fix-test-ppc64.patch #827338
 )
 
 netpbm_libtype() {
