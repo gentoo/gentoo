@@ -19,8 +19,10 @@ IUSE="doc"
 BDEPEND="
 	test? (
 		dev-python/bcrypt[${PYTHON_USEDEP}]
-		dev-python/cryptography[${PYTHON_USEDEP}]
 		dev-python/scrypt[${PYTHON_USEDEP}]
+		!alpha? ( !hppa? ( !ia64? (
+			dev-python/cryptography[${PYTHON_USEDEP}]
+		) ) )
 	)"
 
 distutils_enable_tests nose
