@@ -10,6 +10,7 @@ inherit flag-o-matic xdg-utils desktop
 
 DESCRIPTION="highly customizable open source text editor and application development system"
 HOMEPAGE="http://www.xemacs.org/"
+SRC_URI="http://www.malfunction.de/afterstep/files/NeXT_XEmacs.tar.gz"
 
 inherit mercurial
 EHG_REPO_URI="https://foss.heptapod.net/xemacs/xemacs"
@@ -35,7 +36,7 @@ RDEPEND="
 	dnd? ( x11-libs/dnd )
 	motif? ( >=x11-libs/motif-2.3:0[xft=] )
 	athena? ( x11-libs/libXaw )
-	Xaw3d? ( x11-libs/libXaw3d )
+	Xaw3d? ( x11-libs/libXaw3d[unicode] )
 	xft? ( media-libs/freetype:2 x11-libs/libXft x11-libs/libXrender >=media-libs/fontconfig-2.5.0 )
 	neXt? ( x11-libs/neXtaw )
 	xface? ( media-libs/compface )
@@ -59,7 +60,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	# use neXt && cp "${WORKDIR}"/NeXT.XEmacs/xemacs-icons/* "${S}"/etc/toolbar/
+	use neXt && cp "${WORKDIR}"/NeXT.XEmacs/xemacs-icons/* "${S}"/etc/toolbar/
 	find "${S}"/lisp -name '*.elc' -exec rm {} \; || die
 	# eapply "${FILESDIR}/${P}-ncurses-tinfo.patch"
 	# eapply "${FILESDIR}/${P}-gcc5.patch"
