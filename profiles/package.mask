@@ -465,11 +465,6 @@ dev-ruby/rbnacl:4
 # Removal on 2021-11-29. Bug #819258.
 net-wireless/btcrack
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-30)
-# EAPI 5, no revdeps, replaced by sci-libs/eccodes
-# Removal on 2021-11-29. Bug #819111.
-sci-libs/libbufr
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
