@@ -12,7 +12,7 @@ SRC_URI="https://pcaro.es/d/otf-${P}.tar.gz"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE=""
 
 S="${WORKDIR}"
