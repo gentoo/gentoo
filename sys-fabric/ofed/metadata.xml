@@ -6,7 +6,6 @@
 		<name>Gentoo Cluster Project</name>
 	</maintainer>
 	<use>
-		<flag name="dapl">Add support for DAPL abstraction layer</flag>
 		<flag name="diags">Add dignostic tools for infiniband</flag>
 		<flag name="ibacm">Add support for userspace pre-connection services</flag>
 		<flag name="opensm">Add OpenSM - Subnet manager for infiniband</flag>
