@@ -8,4 +8,7 @@
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
+	<use>
+		<flag name="X">Enable support for X11 Keyboard Layout Detection</flag>
+	</use>
 </pkgmetadata>
