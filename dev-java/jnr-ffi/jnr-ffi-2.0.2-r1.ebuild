@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jnr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 LGPL-3 )"
 SLOT="2"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~ppc64"
 
 COMMON_DEP="
 	~dev-java/jffi-1.2.9:1.2
