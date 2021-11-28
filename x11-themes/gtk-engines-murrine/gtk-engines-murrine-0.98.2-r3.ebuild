@@ -27,6 +27,10 @@ BDEPEND=">=dev-util/intltool-0.37.1
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/0.98.2-implicit-functions.patch
+)
+
 DOCS=( AUTHORS ChangeLog NEWS TODO )
 
 src_prepare() {
