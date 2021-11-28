@@ -56,6 +56,7 @@ BDEPEND="
 python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}/${PN}-21.3-no-coverage.patch"
+		"${FILESDIR}/${P}-cryptography-tests.patch"
 	)
 	if ! use vanilla; then
 		PATCHES+=( "${FILESDIR}/pip-20.0.2-disable-system-install.patch" )
@@ -76,7 +77,7 @@ python_test() {
 		return 0
 	fi
 
-	local deselect=(
+	local EPYTEST_DESELECT=(
 		tests/functional/test_install.py::test_double_install_fail
 		tests/functional/test_list.py::test_multiple_exclude_and_normalization
 		'tests/unit/test_commands.py::test_index_group_handle_pip_version_check[False-False-True-download]'
@@ -96,11 +97,20 @@ python_test() {
 		tests/functional/test_pep660.py
 	)
 
-	[[ ${EPYTHON} == python3.10 ]] && deselect+=(
+	[[ ${EPYTHON} == python3.10 ]] && EPYTEST_DESELECT+=(
 		tests/lib/test_lib.py::test_correct_pip_version
 		# uses vendored packaging that uses deprecated distutils
 		tests/functional/test_warning.py::test_pip_works_with_warnings_as_errors
 	)
+
+	if ! has_version "dev-python/cryptography[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			tests/functional/test_install.py::test_install_sends_client_cert
+			tests/functional/test_install_config.py::test_do_not_prompt_for_authentication
+			tests/functional/test_install_config.py::test_prompt_for_authentication
+			tests/functional/test_install_config.py::test_prompt_for_keyring_if_needed
+		)
+	fi
 
 	distutils_install_for_testing
 	pushd "${WORKDIR}/virtualenv-${VENV_PV}" >/dev/null || die
@@ -110,7 +120,7 @@ python_test() {
 	local -x GENTOO_PIP_TESTING=1 \
 		PATH="${TEST_DIR}/scripts:${PATH}" \
 		PYTHONPATH="${TEST_DIR}/lib:${BUILD_DIR}/lib"
-	epytest ${deselect[@]/#/--deselect } -m "not network"
+	epytest -m "not network"
 }
 
 python_install_all() {
