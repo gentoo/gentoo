@@ -482,12 +482,6 @@ sys-fabric/dapl
 # bug #707848, bug #806476. Removal on 2021-11-25.
 dev-util/mutrace
 
-# Sam James <sam@gentoo.org> (2021-10-25)
-# Fails to build with glibc-2.33 and no activity upstream; seems like
-# a new fork should be packaged.
-# bug #775962. Removal on 2021-11-25.
-sys-apps/mtree
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
