@@ -6,7 +6,7 @@ EAPI=7
 DOCS_BUILDER="doxygen"
 DOCS_DEPEND="media-gfx/graphviz"
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit python-single-r1 docs qmake-utils xdg
 
@@ -25,6 +25,8 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 # compile with CONFIG+="test"
 RESTRICT="test"
 
+# We need to depend on a version of PyQt5 that depends on <sip-5:0. If PyQt5 is
+# built with sip:5 then we will get Syntax Error when running sip-4 for scidavis.
 RDEPEND="
 	dev-cpp/muParser
 	dev-qt/qtcore:5
@@ -43,9 +45,9 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/PyQt5[${PYTHON_USEDEP}]
+			<dev-python/PyQt5-5.15.5[${PYTHON_USEDEP}]
 			dev-python/PyQt5-sip[${PYTHON_USEDEP}]
-			<dev-python/sip-5[${PYTHON_USEDEP}]
+			<dev-python/sip-5:0[${PYTHON_USEDEP}]
 		')
 	)
 "
