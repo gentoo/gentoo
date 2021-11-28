@@ -48,16 +48,6 @@ RDEPEND="
 		>=dev-python/priority-1.1.0[${PYTHON_USEDEP}]
 		<dev-python/priority-2.0[${PYTHON_USEDEP}]
 	)
-	!dev-python/twisted-core
-	!dev-python/twisted-conch
-	!dev-python/twisted-lore
-	!dev-python/twisted-mail
-	!dev-python/twisted-names
-	!dev-python/twisted-news
-	!dev-python/twisted-pair
-	!dev-python/twisted-runner
-	!dev-python/twisted-words
-	!dev-python/twisted-web
 "
 BDEPEND="
 	>=dev-python/incremental-21.3.0[${PYTHON_USEDEP}]
