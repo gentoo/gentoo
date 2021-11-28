@@ -7,9 +7,9 @@
     <name>Maciej Barć</name>
   </maintainer>
   <longdescription lang="en">
-    FMAWK is a experimental file manager written almost entirely
-    in the awk programming language. Thought written in awk it is comparable
-    with features to ranger or nnn.
+    FMAWK is a experimental file manager written almost entirely in the awk
+    programming language. Though written in awk, in terms of features it is
+    comparable to other terminal file managers such as fff, nnn or ranger.
   </longdescription>
   <upstream>
     <bugs-to>https://github.com/huijunchen9260/fm.awk/issues</bugs-to>
