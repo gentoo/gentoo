@@ -33,6 +33,33 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-28)
+# Libraries without consumers. Removal in 30 days.
+dev-java/commons-pool
+dev-java/dict4j
+dev-java/felix-gogo-command
+dev-java/jama
+dev-java/janino
+dev-java/jchardet
+dev-java/jcommon
+dev-java/jdynamite
+dev-java/jfreesvg
+dev-java/jgrapht
+dev-java/jmdns
+dev-java/jsr225
+dev-java/jsr311-api
+dev-java/jsr322
+dev-java/jung
+dev-java/mojarra
+dev-java/neuroph
+dev-java/ognl
+dev-java/piccolo
+dev-java/portletapi
+dev-java/vldocking
+dev-java/ws-commons-util
+dev-java/xml-security
+dev-java/xmpcore
+
 # Marek Szuba <marecki@gentoo.org> (2021-11-27)
 # XXV has been outdated and unmaintained in Gentoo for years.
 # EAPI 5, numerous QA violations.
