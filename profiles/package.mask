@@ -475,13 +475,6 @@ sci-libs/libbufr
 # Removal on 2021-11-25. Bug #806577.
 sys-fabric/dapl
 
-# Sam James <sam@gentoo.org> (2021-10-25)
-# Fails to build with glibc-2.34 and binutils-2.34+. Not many other
-# distros packaging this and no upstream commits since 2011. No reverse
-# dependencies.
-# bug #707848, bug #806476. Removal on 2021-11-25.
-dev-util/mutrace
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
