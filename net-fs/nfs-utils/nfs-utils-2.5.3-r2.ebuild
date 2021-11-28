@@ -27,7 +27,7 @@ RESTRICT="test" #315573
 # files, and nfs-utils doesn't build against heimdal either,
 # so don't depend on virtual/krb.
 # (04 Feb 2005 agriffis)
-DEPEND="
+COMMON_DEPEND="
 	>=dev-db/sqlite-3.3
 	dev-libs/libxml2
 	net-libs/libtirpc:=
@@ -49,7 +49,10 @@ DEPEND="
 	)
 	tcpd? ( sys-apps/tcp-wrappers )
 	uuid? ( sys-apps/util-linux )"
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	elibc_musl? ( sys-libs/queue-standalone )
+"
+RDEPEND="${COMMON_DEPEND}
 	!net-libs/libnfsidmap
 	!net-nds/portmap
 	!<sys-apps/openrc-0.13.9
