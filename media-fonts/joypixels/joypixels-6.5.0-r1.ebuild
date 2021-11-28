@@ -15,7 +15,7 @@ S="${WORKDIR}"
 #https://cdn.joypixels.com/distributions/gentoo-linux/license/free-license.txt
 LICENSE="JoyPixels"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 RESTRICT="bindist mirror"
 
 FONT_CONF=( "${FILESDIR}"/99-joypixels.conf )
