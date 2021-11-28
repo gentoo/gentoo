@@ -16,10 +16,6 @@
 # updated dev-java/pdfbox-2.0.24, Bug #803488
 app-text/texlive pdfannotextractor
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-26)
-# Depends on masked sys-fabric/dapl
-sys-fabric/ofed dapl
-
 # Conrad Kostecki <conikost@gentoo.org> (2021-10-23)
 # Build tools is currently broken, so masking until upstream fixes
 # See https://voidpoint.io/terminx/eduke32/-/issues/206
