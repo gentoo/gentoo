@@ -53,12 +53,16 @@ REQUIRED_USE="
 	^^ ( softhsm opensc external-hsm )
 "
 
+#PATCHES=(
+#	"${FILESDIR}/${PN}-fix-localstatedir-2.0.x.patch"
+#	"${FILESDIR}/${PN}-fix-run-dir-2.0.x.patch"
+#	"${FILESDIR}/${PN}-drop-privileges-2.0.x.patch"
+#	"${FILESDIR}/${PN}-use-system-trang.patch"
+#	"${FILESDIR}/${PN}-openssl1.1.patch"
+#)
 PATCHES=(
-	"${FILESDIR}/${PN}-fix-localstatedir-2.0.x.patch"
-	"${FILESDIR}/${PN}-fix-run-dir-2.0.x.patch"
-	"${FILESDIR}/${PN}-drop-privileges-2.0.x.patch"
+	"${FILESDIR}/${PN}-fix-run-dir-2.1.x.patch"
 	"${FILESDIR}/${PN}-use-system-trang.patch"
-	"${FILESDIR}/${PN}-openssl1.1.patch"
 )
 
 DOCS=( MIGRATION NEWS )
@@ -119,8 +123,7 @@ pkg_pretend() {
 		eerror ""
 		eerror "   emerge \"<net-dns/opendnssec-2\""
 		eerror ""
-		eerror "See https://github.com/opendnssec/opendnssec/blob/2.0/master/MIGRATION"
-		eerror "for details."
+		eerror "See /usr/share/doc/opendnssec-2.1.10/MIGRATION* for details."
 		eerror ""
 		die "Please upgrade to version >=1.4.10 first for proper db migraion"
 	fi
@@ -140,8 +143,10 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		--enable-installation-user=opendnssec \
+		--enable-installation-group=opendnssec \
+		--localstatedir="${EPREFIX}/var/lib" \
 		--without-cunit \
-		--localstatedir="${EPREFIX}/var" \
 		--disable-static \
 		--with-enforcer-database=$(use mysql && echo "mysql")$(use sqlite && echo "sqlite3") \
 		--with-pkcs11-${PKCS11_LIB}=${PKCS11_PATH} \
@@ -230,7 +235,7 @@ pkg_postinst() {
 				ewarn ""
 				ewarn "You are upgrading from version 1.4."
 				ewarn ""
-				ewarn "A migration is needed from 1.4 to 2.0."
+				ewarn "A migration is needed from 1.4 to 2.x."
 				ewarn "For details see /usr/share/doc/${P}/MIGRATION*"
 				ewarn ""
 				ewarn "For your convenience the mentioned migration scripts and README"
