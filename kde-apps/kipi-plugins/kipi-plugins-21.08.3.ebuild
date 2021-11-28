@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/kipi_plugins/ https://userbase.kde.org/KIPI"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 IUSE="mediawiki +remotestorage"
 
 RDEPEND="
