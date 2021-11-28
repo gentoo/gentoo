@@ -7,7 +7,7 @@ inherit rpm xdg
 
 DESCRIPTION="JupyterLab desktop application, based on Electron"
 HOMEPAGE="https://jupyter.org/"
-SRC_URI="https://github.com/jupyterlab/${PN}/releases/download/v$(ver_rs 3 -)/JupyterLab-Setup-Fedora.rpm -> ${P}.rpm"
+SRC_URI="https://github.com/jupyterlab/${PN%%-bin}/releases/download/v$(ver_rs 3 -)/JupyterLab-Setup-Fedora.rpm -> ${P}.rpm"
 
 KEYWORDS="-* ~amd64"
 LICENSE="BSD MIT"
