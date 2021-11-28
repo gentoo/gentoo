@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 DOCS_BUILDER="doxygen"
 # File is hardcoded to be run from ../ so we use this instead of DOCS_DIR
 DOCS_CONFIG_NAME="doc/Doxyfile"
