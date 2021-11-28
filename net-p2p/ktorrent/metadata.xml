@@ -13,7 +13,6 @@
 		<flag name="downloadorder">Specify the download order of a multi-file torrent</flag>
 		<flag name="infowidget">Displays general information about a torrent in several tabs</flag>
 		<flag name="ipfilter">Filter IP addresses through a blocklist</flag>
-		<flag name="kross">Enable kross scripting support</flag>
 		<flag name="logviewer">Displays the logging output</flag>
 		<flag name="magnetgenerator">Generates magnet URI's</flag>
 		<flag name="mediaplayer">Phonon-based media player</flag>
