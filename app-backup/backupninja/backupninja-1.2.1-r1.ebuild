@@ -9,7 +9,7 @@ SRC_URI="https://0xacab.org/liberate/backupninja/-/archive/backupninja_upstream/
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="dev-util/dialog"
 DEPEND=""
