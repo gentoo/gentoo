@@ -3,10 +3,10 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 inherit distutils-r1 toolchain-funcs
 
-DESCRIPTION="ease the development of portable automated build systems"
+DESCRIPTION="Ease the development of portable automated build systems"
 HOMEPAGE="https://www.adacore.com/"
 SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
@@ -19,21 +19,20 @@ RESTRICT="!test? ( test )"
 RDEPEND="dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/stevedore[${PYTHON_USEDEP}]
 	dev-python/distro[${PYTHON_USEDEP}]
+	dev-python/tqdm[${PYTHON_USEDEP}]
+	dev-python/psutil[${PYTHON_USEDEP}]
+	dev-python/requests-toolbelt[${PYTHON_USEDEP}]
+	dev-python/python-dateutil[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/tomlkit[${PYTHON_USEDEP}]
 	!app-editors/e3"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	test? (
-		dev-python/requests-toolbelt[${PYTHON_USEDEP}]
 		dev-python/httpretty[${PYTHON_USEDEP}]
 		dev-vcs/subversion
-		dev-python/tqdm[${PYTHON_USEDEP}]
-		dev-python/tomlkit[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/psutil[${PYTHON_USEDEP}]
 	)"
-REQUIRED_USE="x86? ( !test )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-distro.patch
@@ -41,10 +40,6 @@ PATCHES=(
 )
 
 distutils_enable_tests --install pytest
-
-src_prepare() {
-	distutils-r1_src_prepare
-}
 
 src_compile() {
 	local PLATFORM=x86_64-linux
