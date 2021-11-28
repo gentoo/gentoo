@@ -5,7 +5,7 @@ EAPI=7
 inherit autotools git-r3 libtool xdg-utils
 
 DESCRIPTION="A sophisticated ftp/sftp/http/https/torrent client and file transfer program"
-HOMEPAGE="https://lftp.tech/"
+HOMEPAGE="http://lftp.yar.ru/"
 EGIT_REPO_URI="https://github.com/lavv17/lftp"
 
 LICENSE="GPL-3"
