@@ -16,7 +16,7 @@ SRC_URI="http://files.sagemath.org/spkg/upstream/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="static-libs"
 
 src_configure() {
