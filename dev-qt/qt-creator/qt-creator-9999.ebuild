@@ -36,7 +36,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	android? ( lsp )
 	boot2qt? ( remotelinux )
-	clang? ( lsp test? ( qbs ) )
+	clang? ( lsp )
 	mcu? ( baremetal cmake )
 	python? ( lsp )
 	qnx? ( remotelinux )
@@ -152,7 +152,7 @@ src_prepare() {
 	if ! use qml; then
 		sed -i -e '/advanceddockingsystem\|qmleditorwidgets/d' src/libs/libs.pro || die
 		sed -i -e '/qml2puppet/d' src/tools/tools.pro || die
-		sed -i -e '/qmldesigner/d' tests/auto/qml/qml.pro || die
+		sed -i -e '/qmldesigner\|qmlprojectmanager/d' tests/auto/qml/qml.pro || die
 	fi
 	if ! use valgrind; then
 		sed -i -e '/valgrindfake/d' src/tools/tools.pro || die
@@ -166,9 +166,12 @@ src_prepare() {
 
 	# disable broken or unreliable tests
 	sed -i -e 's/\(manual\|tools\|unit\)//g' tests/tests.pro || die
-	sed -i -e '/\(dumpers\|namedemangler\)\.pro/d' tests/auto/debugger/debugger.pro || die
+	sed -i -e '/dumpers\.pro/d' tests/auto/debugger/debugger.pro || die
 	sed -i -e '/CONFIG -=/s/$/ testcase/' tests/auto/extensionsystem/pluginmanager/correctplugins1/plugin?/plugin?.pro || die
-	sed -i -e 's/\<check\>//' tests/auto/qml/codemodel/codemodel.pro || die
+	sed -i -e '/reformatter/d' tests/auto/qml/qml.pro || die
+	sed -i -e 's/\<\(imports\|\)check\>//' tests/auto/qml/codemodel/codemodel.pro || die
+	sed -i -e '/timelineitemsrenderpass/d' tests/auto/tracing/tracing.pro || die
+	sed -i -e '/qtcprocess/d' tests/auto/utils/utils.pro || die
 
 	# do not install test binaries
 	sed -i -e '/CONFIG +=/s/$/ no_testcase_installs/' tests/auto/{qttest.pri,json/json.pro} || die
