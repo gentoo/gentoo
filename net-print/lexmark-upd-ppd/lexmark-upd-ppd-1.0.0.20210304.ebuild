@@ -23,6 +23,8 @@ BDEPEND=""
 
 S="${WORKDIR}"/ppd_files
 
+QA_FLAGS_IGNORED="usr/libexec/cups/filter/LexCommandFileFilterG2"
+
 src_prepare() {
 	default
 	sed -i 's:/usr/lib/cups/filter/:/usr/libexec/cups/filter/:g' GlobalPPD_1.4/Lexmark_UPD_Series.ppd || die "Unable to patch hard coded PPD paths"
