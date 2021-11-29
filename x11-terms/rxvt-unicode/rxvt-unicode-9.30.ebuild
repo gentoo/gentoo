@@ -31,7 +31,9 @@ RDEPEND=">=sys-libs/ncurses-5.7-r6:=
 	xft? ( x11-libs/libXft )"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
-BDEPEND="virtual/pkgconfig"
+# autoconf dependency hopefully temporary, see Bug #827852
+BDEPEND="virtual/pkgconfig
+	>=sys-devel/autoconf-2.71"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.06-case-insensitive-fs.patch
