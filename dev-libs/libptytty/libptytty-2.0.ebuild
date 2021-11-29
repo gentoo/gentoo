@@ -11,7 +11,7 @@ SRC_URI="http://dist.schmorp.de/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0-rundir.patch
