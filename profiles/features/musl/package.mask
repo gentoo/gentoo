@@ -1,11 +1,6 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Marek Szuba <marecki@gentoo.org> (2021-11-29)
-# Uses the header file sys/queue.h, which musl does not include by design
-#  - see their FAQ. Bug #715648.
-app-forensics/honggfuzz
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-11-21)
 # No musl patches in ebuild
 <sys-devel/gcc-9
