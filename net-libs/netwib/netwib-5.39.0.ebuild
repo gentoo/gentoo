@@ -1,10 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: netwib, netwox and netwag go together, bump all or bump none
 
-EAPI=5
-inherit toolchain-funcs multilib
+EAPI=8
+
+inherit toolchain-funcs
 
 DESCRIPTION="Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols"
 HOMEPAGE="
@@ -13,6 +14,7 @@ HOMEPAGE="
 "
 SRC_URI="mirror://sourceforge/ntwib/${P}-src.tgz
 	doc? ( mirror://sourceforge/ntwib/${P}-doc_html.tgz )"
+S="${WORKDIR}/${P}-src/src"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -25,9 +27,9 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${P}-src/src
-
 src_prepare() {
+	default
+
 	sed -i \
 		-e 's:/man$:/share/man:g' \
 		-e "s:/lib:/$(get_libdir):" \
@@ -47,12 +49,12 @@ src_install() {
 	default
 	dodoc ../README.TXT
 	if use doc; then
-		mkdir "${D}"/usr/share/doc/${PF}/html
+		mkdir "${ED}"/usr/share/doc/${PF}/html || die
 		mv "${WORKDIR}"/${P}-doc_html/{index.html,${PN}} \
-			"${D}"/usr/share/doc/${PF}/html
+			"${ED}"/usr/share/doc/${PF}/html || die
 	fi
 
-	cd "${S}"/..
+	cd "${S}"/.. || die
 	dodoc \
 		doc/{changelog.txt,credits.txt,integration.txt} \
 		doc/{problemreport.txt,problemusageunix.txt,todo.txt}
