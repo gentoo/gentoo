@@ -10,7 +10,7 @@ GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 7 ))
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
 CONFIG_VER=5.10.12
 CONFIG_HASH=836165dd2dff34e4f2c47ca8f9c803002c1e6530
-GENTOO_CONFIG_VER=5.10.42
+GENTOO_CONFIG_VER=5.15.5
 
 DESCRIPTION="Linux kernel built with Gentoo patches"
 HOMEPAGE="https://www.kernel.org/"
@@ -59,6 +59,8 @@ src_prepare() {
 	)
 	default
 
+	local biendian=false
+
 	# prepare the default config
 	case ${ARCH} in
 		amd64)
@@ -69,9 +71,11 @@ src_prepare() {
 			;;
 		arm64)
 			cp "${DISTDIR}/kernel-aarch64-fedora.config.${CONFIG_VER}" .config || die
+			biendian=true
 			;;
 		ppc64)
 			cp "${DISTDIR}/kernel-ppc64le-fedora.config.${CONFIG_VER}" .config || die
+			biendian=true
 			;;
 		x86)
 			cp "${DISTDIR}/kernel-i686-fedora.config.${CONFIG_VER}" .config || die
@@ -102,5 +106,11 @@ src_prepare() {
 			merge_configs+=( "${dist_conf_path}/hardened-${ARCH}.config" )
 		fi
 	fi
+
+	# this covers ppc64 and aarch64_be only for now
+	if [[ ${biendian} == true && $(tc-endian) == big ]]; then
+		merge_configs+=( "${dist_conf_path}/big-endian.config" )
+	fi
+
 	kernel-build_merge_configs "${merge_configs[@]}"
 }
