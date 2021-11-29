@@ -14,6 +14,11 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
+BDEPEND="
+	test? (
+		dev-python/pip[${PYTHON_USEDEP}]
+	)"
+
 distutils_enable_tests pytest
 
 python_test() {
