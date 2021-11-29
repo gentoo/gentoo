@@ -41,7 +41,7 @@ DEPEND="${RDEPEND}
 
 multilib_src_configure() {
 	local mycmakeargs=(
-                -DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG"
+		-DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG"
 		-DCMAKE_SKIP_RPATH=ON
 		-DBUILD_LAYER_SUPPORT_FILES=ON
