@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit autotools epatch
+inherit autotools
 
 DESCRIPTION="IP Cisco Accounting Daemon"
 HOMEPAGE="https://sourceforge.net/projects/ipcad/ http://lionet.info/ipcad/"
@@ -19,11 +19,14 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.7-linux-2.6.27.patch
+	"${FILESDIR}"/${PN}-3.7-linux-2.6.35.patch
+	"${FILESDIR}"/${P}-signal_h.patch
+)
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-3.7-linux-2.6.27.patch \
-		"${FILESDIR}"/${PN}-3.7-linux-2.6.35.patch \
-		"${FILESDIR}"/${P}-signal_h.patch
+	default
 
 	sed -i \
 		-e "s|^chroot = /adm/tmp;|chroot = /var/ipcad;|" \
