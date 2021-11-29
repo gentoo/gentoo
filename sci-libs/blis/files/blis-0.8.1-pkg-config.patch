@@ -1,0 +1,9 @@
+diff -Nur a/blis.pc.in b/blis.pc.in
+--- a/blis.pc.in	2021-11-29 13:23:43.692800836 +0800
++++ b/blis.pc.in	2021-11-29 13:25:52.150795803 +0800
+@@ -7,5 +7,4 @@
+ Description: BLAS-like Library Instantiation Software Framework
+ Version: @PACKAGE_VERSION@
+ Libs: -L${libdir} -lblis
+-Libs.private: @LDFLAGS@
+ Cflags: -I${includedir}/blis
