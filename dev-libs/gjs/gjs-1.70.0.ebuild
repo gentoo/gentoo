@@ -31,6 +31,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/gjs-1.70.0-meson-0.60.2.patch"
+)
+
 src_configure() {
 	append-cppflags -DG_DISABLE_CAST_CHECKS
 
