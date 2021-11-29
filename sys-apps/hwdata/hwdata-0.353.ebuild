@@ -18,6 +18,7 @@ src_configure() {
 		./configure
 		--prefix="${EPREFIX}/usr"
 		--libdir="${EPREFIX}/lib"
+		--datadir="${EPREFIX}/usr/share"
 	)
 	echo "${conf[@]}" >&2
 	"${conf[@]}" || die
