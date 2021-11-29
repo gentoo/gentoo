@@ -40,14 +40,14 @@ BDEPEND="virtual/pkgconfig
 REQUIRED_USE="graph? ( doc )"
 
 PATCHES=(
-	"${FILESDIR}/lldpd-1.0.10-glibc-2.33.patch"
+	# Can drop this on next release; upstream.
+	"${FILESDIR}/${P}-glibc-2.33.patch"
 )
 
 src_prepare() {
 	default
 
 	eautoreconf
-	elibtoolize
 }
 
 src_configure() {
