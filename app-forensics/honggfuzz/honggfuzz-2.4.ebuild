@@ -12,7 +12,7 @@ SRC_URI="https://github.com/google/honggfuzz/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="clang"
+IUSE="clang elibc_musl"
 
 RDEPEND="
 	>=sys-libs/binutils-libs-2.29:=
@@ -21,7 +21,8 @@ RDEPEND="
 	clang? ( sys-libs/blocksruntime )
 "
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	elibc_musl? ( sys-libs/queue-standalone )"
 
 DOCS=(
 	CHANGELOG
@@ -32,6 +33,7 @@ DOCS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0-no-werror.patch
+	"${FILESDIR}"/${PN}-2.4-headers-musl.patch
 )
 
 pkg_pretend() {
