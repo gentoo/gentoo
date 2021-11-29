@@ -22,12 +22,6 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-src_prepare() {
-	default
-
-	sed -i 's|make bin/vm|$(MAKE) bin/vm|g' ./Makefile || die
-}
-
 src_compile(){
 	emake CC=$(tc-getCC) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" owl
 }
