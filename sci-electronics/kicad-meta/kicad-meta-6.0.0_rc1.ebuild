@@ -10,7 +10,7 @@ SRC_URI=""
 LICENSE="metapackage"
 SLOT="0"
 
-if [[ ${PV} != *_rc ]] ; then
+if [[ ${PV} != *_rc* ]] ; then
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
