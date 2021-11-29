@@ -1,0 +1,45 @@
+From 29864795b194481dd0446326cda89b9802f4fe51 Mon Sep 17 00:00:00 2001
+From: David Carlier <devnexen@gmail.com>
+Date: Sat, 8 May 2021 11:23:32 +0100
+Subject: [PATCH] musl build fix proposal
+
+--- a/linux/arch.c
++++ b/linux/arch.c
+@@ -34,7 +34,9 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#if defined(__GLIBC__)
+ #include <sys/cdefs.h>
++#endif
+ #include <sys/personality.h>
+ #include <sys/prctl.h>
+ #include <sys/syscall.h>
+--- a/linux/perf.c
++++ b/linux/perf.c
+@@ -30,12 +30,12 @@
+ #include <linux/hw_breakpoint.h>
+ #include <linux/perf_event.h>
+ #include <linux/sysctl.h>
++#include <poll.h>
+ #include <signal.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <sys/ioctl.h>
+ #include <sys/mman.h>
+-#include <sys/poll.h>
+ #include <sys/ptrace.h>
+ #include <sys/syscall.h>
+ #include <unistd.h>
+--- a/linux/trace.c
++++ b/linux/trace.c
+@@ -34,7 +34,9 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#if defined(__GLIBC__)
+ #include <sys/cdefs.h>
++#endif
+ #include <sys/personality.h>
+ #include <sys/ptrace.h>
+ #include <sys/resource.h>
