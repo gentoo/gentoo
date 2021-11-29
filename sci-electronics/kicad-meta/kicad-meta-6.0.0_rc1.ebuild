@@ -9,7 +9,11 @@ SRC_URI=""
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+
+if [[ ${PV} != *_rc ]] ; then
+	KEYWORDS="~amd64 ~arm64 ~x86"
+fi
+
 IUSE="doc minimal"
 
 RDEPEND="
