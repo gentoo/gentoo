@@ -34,6 +34,13 @@ PATCHES=(
 
 distutils_enable_tests nose
 
+src_prepare() {
+	# increase timeout - #791748
+	sed -e '/eventlet.sleep/s/0.1/5.0/' -i tests/isolated/patcher_fork_after_monkey_patch.py || die
+
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	unset PYTHONPATH
 	export TMPDIR="${T}"
