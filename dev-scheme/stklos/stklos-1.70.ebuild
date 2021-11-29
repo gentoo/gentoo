@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="fast and light Scheme implementation"
 HOMEPAGE="https://www.stklos.net/"
@@ -28,6 +28,7 @@ src_prepare() {
 
 	default
 	eautoreconf
+	export LD="$(tc-getCC)"
 }
 
 src_configure() {

@@ -54,3 +54,13 @@
  	mv $(DESTDIR)/$(bindir)/stklos $(DESTDIR)/$(bindir)/stklos-@VERSION@
  	ln -s stklos-@VERSION@ $(DESTDIR)/$(bindir)/stklos
  
+--- a/utils/shlib-options
++++ b/utils/shlib-options
+@@ -173,6 +173,6 @@
+ 
+ echo "os=\"$os\"; version=\"$version\"; machine=\"$machine\"; OS=\"$OS\"; \
+ OS_FLAVOUR=\"$OS_FLAVOUR\";SH_COMP_FLAGS=\"$SH_COMP_FLAGS\"; \
+-SH_LOAD_FLAGS=\"$SH_LOAD_FLAGS\"; \
++SH_LOAD_FLAGS=\"$LDFLAGS $SH_LOAD_FLAGS\"; \
+ SH_LOADER=\"$SH_LOADER\"; SH_SUFFIX=\"$SH_SUFFIX\"; \
+ SH_LIB_SUFFIX=\"$SH_LIB_SUFFIX\"; SH_MAIN_LOAD_FLAGS=\"$SH_MAIN_LOAD_FLAGS\""
