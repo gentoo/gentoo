@@ -68,6 +68,8 @@ src_prepare() {
 
 	rm -vrf contrib/{doctest,fmt,lua-bit,snowball,zstd} || die
 
+	> cmake/Toolset.cmake || die #827550
+
 	sed -i -e 's/User=_rspamd/User=rspamd/g' \
 		rspamd.service \
 		|| die
