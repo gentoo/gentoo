@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,6 +29,8 @@ RDEPEND="
 	app-eselect/eselect-lapack
 	sys-libs/libomp[${MULTILIB_USEDEP}]
 "
+# bug #801460
+BDEPEND="app-arch/xz-utils[extra-filters]"
 
 QA_PREBUILT="*"
 QA_TEXTRELS="*"
