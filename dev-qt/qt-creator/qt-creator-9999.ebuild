@@ -24,13 +24,11 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-QTC_PLUGINS=(android +autotest autotools:autotoolsprojectmanager baremetal bazaar beautifier boot2qt
-	'+clang:clangcodemodel|clangformat|clangtools' clearcase cmake:cmakeprojectmanager conan cppcheck
-	ctfvisualizer cvs +designer docker git glsl:glsleditor +help incredibuild +lsp:languageclient
-	mcu:mcusupport mercurial meson:mesonprojectmanager modeling:modeleditor nim perforce perfprofiler
-	python qbs:qbsprojectmanager '+qml:qmldesigner|qmljseditor|qmlpreview|qmlprojectmanager|studiowelcome'
-	qmlprofiler qnx remotelinux scxml:scxmleditor serialterminal silversearcher subversion valgrind
-	webassembly)
+QTC_PLUGINS=(android +autotest autotools:autotoolsprojectmanager baremetal bazaar beautifier boot2qt '+clang:clangcodemodel|clangformat|clangtools'
+	clearcase cmake:cmakeprojectmanager conan cppcheck ctfvisualizer cvs +designer docker git glsl:glsleditor +help incredibuild
+	+lsp:languageclient mcu:mcusupport mercurial meson:mesonprojectmanager modeling:modeleditor nim perforce perfprofiler python
+	qbs:qbsprojectmanager qmake:qmakeprojectmanager '+qml:qmldesigner|qmljseditor|qmlpreview|qmlprojectmanager|studiowelcome'
+	qmlprofiler qnx remotelinux scxml:scxmleditor serialterminal silversearcher subversion valgrind webassembly)
 IUSE="doc systemd test webengine ${QTC_PLUGINS[@]%:*}"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -39,6 +37,7 @@ REQUIRED_USE="
 	clang? ( lsp )
 	mcu? ( baremetal cmake )
 	python? ( lsp )
+	qml? ( qmake )
 	qnx? ( remotelinux )
 "
 
@@ -148,6 +147,9 @@ src_prepare() {
 		if ! use ctfvisualizer && ! use qmlprofiler; then
 			sed -i -e '/tracing/d' src/libs/libs.pro tests/auto/auto.pro || die
 		fi
+	fi
+	if ! use qmake; then
+		sed -i -e '/buildoutputparser/d' src/tools/tools.pro || die
 	fi
 	if ! use qml; then
 		sed -i -e '/advanceddockingsystem\|qmleditorwidgets/d' src/libs/libs.pro || die

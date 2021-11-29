@@ -37,7 +37,8 @@
 		<flag name="perforce">Add support for Perforce version control system (requires manual installation of Perforce client)</flag>
 		<flag name="perfprofiler">Build the Linux Perf-based profiler plugin</flag>
 		<flag name="python">Build plugin for Python language support</flag>
-		<flag name="qbs">Build plugin for QBS-based projects</flag>
+		<flag name="qbs">Build plugin for Qbs-based projects</flag>
+		<flag name="qmake">Build plugin for qmake-based projects</flag>
 		<flag name="qml">Build plugins for QML-based development (designer, editor, project manager)</flag>
 		<flag name="qmldesigner">Enable designer for QML/QtQuick-based UIs</flag>
 		<flag name="qmljs">Build the QML/JavaScript editor plugin</flag>
