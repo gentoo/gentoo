@@ -1,8 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-GCONF_DEBUG=no
+EAPI=7
 
 inherit gnome2
 
@@ -15,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="aac dbus debug dts gtk libnotify matroska mp3 mp4 nls ogm spell srt static-libs theora vorbis x264 xvid"
 
-COMMON_DEPEND="
+DEPEND="
 	>=dev-libs/glib-2.16:2
 	>=app-i18n/enca-1.9
 	dev-libs/libxml2
@@ -45,10 +44,10 @@ COMMON_DEPEND="
 	theora? ( media-libs/libtheora )
 	vorbis? ( media-sound/vorbis-tools )
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	gnome-base/gvfs
 "
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
 	dev-util/gtk-doc-am
 	nls? ( sys-devel/gettext
 		dev-util/intltool )
