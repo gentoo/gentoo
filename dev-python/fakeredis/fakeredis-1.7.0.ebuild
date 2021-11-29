@@ -28,6 +28,7 @@ BDEPEND="
 		dev-db/redis
 		dev-python/aioredis[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
+		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)
 "
