@@ -12,7 +12,7 @@ SRC_URI="https://www.libsdl.org/projects/SDL_mixer/release/${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv sparc ~x86"
 IUSE="flac fluidsynth mad midi mikmod mod modplug mp3 opus playtools static-libs timidity tremor vorbis +wav"
 REQUIRED_USE="
 	midi? ( || ( timidity fluidsynth ) )
