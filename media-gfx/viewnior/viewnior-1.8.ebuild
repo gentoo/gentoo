@@ -17,11 +17,13 @@ IUSE=""
 RDEPEND="
 	dev-libs/glib:2
 	media-gfx/exiv2:0=
+	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/glib-utils
+	sys-devel/gettext
 	virtual/pkgconfig
 "
 
