@@ -20,9 +20,10 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( tofu )"
 
 # Existence of executables is checked during configuration.
+# Note: On each bump, update dep bounds on each version from configure.ac!
 DEPEND=">=dev-libs/libassuan-2.5.0
 	>=dev-libs/libgcrypt-1.9.1:=
-	>=dev-libs/libgpg-error-1.29
+	>=dev-libs/libgpg-error-1.41
 	>=dev-libs/libksba-1.3.4
 	>=dev-libs/npth-1.2
 	>=net-misc/curl-7.10
