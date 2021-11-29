@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Akku.scm is a language package manager for Scheme.
+    It grabs hold of code and vigorously shakes it until it behaves properly.
+    - No complicated setup to point out where libraries are; Akku finds them!
+    - Separately declare dependencies and locked versions for your project.
+    - Convert R7RS libraries for use with Chez Scheme and other R6RS Scheme implementations.
+    - Numerous R6RS packages, as well as R7RS libraries mirrored from Snow.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://gitlab.com/akkuscm/akku/-/issues</bugs-to>
+    <remote-id type="gitlab">akkuscm/akku</remote-id>
+  </upstream>
+</pkgmetadata>
