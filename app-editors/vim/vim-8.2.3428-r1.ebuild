@@ -316,6 +316,12 @@ src_install() {
 		fperms a+x ${vimfiles}/macros/manpager.sh
 	fi
 
+	# Fix an issue of missing defaults.vim when USE=minimal.
+	if use minimal ; then
+		insinto ${vimfiles}
+		doins runtime/defaults.vim
+	fi
+
 	domenu runtime/vim.desktop
 
 	newbashcomp "${FILESDIR}"/${PN}-completion ${PN}
