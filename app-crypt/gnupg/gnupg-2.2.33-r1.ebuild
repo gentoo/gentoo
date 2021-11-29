@@ -17,10 +17,11 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 IUSE="bzip2 doc ldap nls readline selinux +smartcard ssl tofu tools usb user-socket wks-server"
 
 # Existence of executables is checked during configuration.
+# Note: On each bump, update dep bounds on each version from configure.ac!
 DEPEND=">=dev-libs/libassuan-2.5.0
 	>=dev-libs/libgcrypt-1.8.0:=
 	>=dev-libs/libgpg-error-1.29
-	>=dev-libs/libksba-1.3.4
+	>=dev-libs/libksba-1.3.5
 	>=dev-libs/npth-1.2
 	>=net-misc/curl-7.10
 	bzip2? ( app-arch/bzip2 )
