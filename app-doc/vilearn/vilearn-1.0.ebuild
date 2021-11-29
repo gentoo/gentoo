@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="8"
 
 DESCRIPTION="An interactive vi tutorial comprised of 5 tutorials for the vi-impaired"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -14,15 +14,19 @@ IUSE=""
 
 RDEPEND="app-editors/vim"
 
+DOCS=( README outline )
+
 src_prepare() {
+	default
+
 	sed -i "s:/usr/local:${EPREFIX}/usr:" Makefile
 }
 
 src_install() {
-	dobin vilearn
-	doman vilearn.1
-	dodoc README outline
+	dobin ${PN}
+	doman ${PN}.1
+	einstalldocs
 
-	insinto /usr/lib/vilearn
+	insinto /usr/lib/${PN}
 	doins [0-9]*
 }
