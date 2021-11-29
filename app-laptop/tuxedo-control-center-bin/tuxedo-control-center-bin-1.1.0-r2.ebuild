@@ -14,13 +14,13 @@ SRC_URI="https://rpm.tuxedocomputers.com/opensuse/15.2/x86_64/${MY_PN}_${PV}.rpm
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE=""
 
 RESTRICT="strip splitdebug"
 
 DEPEND="sys-power/tuxedo-cc-wmi"
 RDEPEND="${DEPEND}"
-BDEPEND=""
+# See bug #827729
+BDEPEND="app-arch/xz-utils[extra-filters]"
 
 S="${WORKDIR}"
 
