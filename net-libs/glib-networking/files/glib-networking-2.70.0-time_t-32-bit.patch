@@ -1,0 +1,52 @@
+Workaround/fix test failure on 32-bit arches. Should be in release
+after 2.70.0.
+
+https://gitlab.gnome.org/GNOME/glib-networking/-/commit/4f8ca86a0e460794188c3355f0c7cc11fdbe4229.patch
+
+From: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date: Tue, 21 Sep 2021 17:07:44 +0000
+Subject: [PATCH] tests: Accept GNUTLS' workaround for limited size of time_t
+
+--- a/tls/tests/certificate.c
++++ b/tls/tests/certificate.c
+@@ -672,6 +672,12 @@ test_certificate_not_valid_before (void)
+   g_object_unref (cert);
+ }
+ 
++/* On 32-bit, GNUTLS caps expiry times at 2037-12-31 23:23:23 to avoid
++ * overflowing time_t. Hopefully by 2037, either 32-bit will finally have
++ * died out, or GNUTLS will rethink its approach to
++ * https://gitlab.com/gnutls/gnutls/-/issues/370 */
++#define GNUTLS_32_BIT_NOT_VALID_AFTER_MAX 2145914603
++
+ static void
+ test_certificate_not_valid_after (void)
+ {
+@@ -686,7 +692,16 @@ test_certificate_not_valid_after (void)
+   actual = g_tls_certificate_get_not_valid_after (cert);
+   g_assert_nonnull (actual);
+   actual_str = g_date_time_format_iso8601 (actual);
++
++#if SIZEOF_TIME_T <= 4
++  if (g_date_time_to_unix (actual) == GNUTLS_32_BIT_NOT_VALID_AFTER_MAX)
++    g_test_incomplete ("not-valid-after date not representable on 32-bit");
++  else
++    g_assert_cmpstr (actual_str, ==, EXPECTED_NOT_VALID_AFTER);
++#else
+   g_assert_cmpstr (actual_str, ==, EXPECTED_NOT_VALID_AFTER);
++#endif
++
+   g_free (actual_str);
+   g_date_time_unref (actual);
+   g_object_unref (cert);
+--- a/tls/tests/meson.build
++++ b/tls/tests/meson.build
+@@ -69,6 +69,7 @@ foreach backend: backends
+     test_cflags = cflags + [
+       '-DBACKEND="@0@"'.format(backend),
+       '-DBACKEND_IS_' + backend.to_upper(),
++      '-DSIZEOF_TIME_T=@0@'.format(cc.sizeof('time_t', prefix: '#include <time.h>')),
+     ]
+ 
+     if backend == 'openssl'
+GitLab

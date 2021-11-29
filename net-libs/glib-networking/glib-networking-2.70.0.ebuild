@@ -30,6 +30,10 @@ BDEPEND="
 	test? ( sys-apps/dbus )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-time_t-32-bit.patch
+)
+
 src_prepare() {
 	xdg_src_prepare
 
