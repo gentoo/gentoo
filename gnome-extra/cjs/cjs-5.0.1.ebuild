@@ -39,6 +39,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/cjs-5.0.1-meson-0.60.2.patch"
+)
+
 src_prepare() {
 	default
 	python_fix_shebang build
