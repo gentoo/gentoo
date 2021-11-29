@@ -17,6 +17,7 @@ SLOT="1/11" # subslot = soname major version
 KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="common-lisp static-libs +cxx python qt5"
 
+# Note: On each bump, update dep bounds on each version from configure.ac!
 RDEPEND=">=app-crypt/gnupg-2
 	>=dev-libs/libassuan-2.5.3:=
 	>=dev-libs/libgpg-error-1.36:=
