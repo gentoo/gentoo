@@ -20,6 +20,10 @@ RESTRICT="test"
 
 DOCS=( AUTHORS COPYING TODO )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.15_autoconf-musl.patch
+)
+
 S="${WORKDIR}"/${PN}-${EGIT_COMMIT}
 
 src_prepare() {

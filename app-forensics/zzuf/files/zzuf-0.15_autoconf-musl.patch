@@ -1,0 +1,24 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -6,6 +6,8 @@
+ 
+ AC_PREREQ(2.50)
+ 
++AC_USE_SYSTEM_EXTENSIONS
++
+ AM_PROG_CC_C_O
+ AC_PROG_CPP
+ AC_PROG_LIBTOOL
+@@ -172,6 +174,12 @@
+ AC_TRY_COMPILE(
+  [#define _LARGEFILE64_SOURCE
+   #define _LARGEFILE_SOURCE
++  #include <stdio.h>],
++ [fpos64_t x; long long int y = x.__lldata;],
++ [ac_v_fpos64_t="(x).__lldata"])
++AC_TRY_COMPILE(
++ [#define _LARGEFILE64_SOURCE
++  #define _LARGEFILE_SOURCE
+   #include <stdio.h>],
+  [fpos64_t x; long long int y = (long long int)x;],
+  [ac_v_fpos64_t="(x)"])
