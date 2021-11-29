@@ -16,7 +16,7 @@ else
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://gitlab.com/kicad/libraries/${PN}/-/archive/${MY_PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
 
-	if [[ ${PV} != *_rc ]] ; then
+	if [[ ${PV} != *_rc* ]] ; then
 		KEYWORDS="~amd64 ~arm64 ~x86"
 	fi
 
