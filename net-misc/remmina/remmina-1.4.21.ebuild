@@ -13,7 +13,7 @@ SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="crypt cups examples gnome-keyring gvnc kwallet nls spice ssh rdp telemetry vnc webkit x2go zeroconf"
 
 DEPEND="
