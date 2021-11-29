@@ -17,7 +17,7 @@ else
 	SRC_URI="https://gitlab.com/kicad/libraries/${PN}/-/archive/${MY_PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN/3d/3D}-${MY_PV}" # check for directory hash
 
-	if [[ ${PV} != *_rc ]] ; then
+	if [[ ${PV} != *_rc* ]] ; then
 		KEYWORDS="~amd64 ~arm64 ~x86"
 	fi
 fi
