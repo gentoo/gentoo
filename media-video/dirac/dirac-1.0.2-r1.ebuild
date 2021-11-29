@@ -1,8 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils multilib-minimal
+EAPI=8
+
+inherit autotools multilib-minimal
 
 DESCRIPTION="Open Source video codec"
 HOMEPAGE="http://dirac.sourceforge.net/"
@@ -13,18 +14,21 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
 IUSE="debug doc cpu_flags_x86_mmx static-libs"
 
-RDEPEND=""
-DEPEND="
+BDEPEND="
 	doc? (
 		app-doc/doxygen
 		virtual/latex-base
 		media-gfx/graphviz
 		>=app-text/texlive-core-2014
 	)"
-DOCS=( AUTHORS ChangeLog NEWS README TODO )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.5.2-doc.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.5.2-doc.patch
+	default
+
 	AT_M4DIR="m4" eautoreconf
 	export VARTEXFONTS="${T}/fonts"
 }
