@@ -671,11 +671,6 @@ x11-drivers/nvidia-drivers:0/vulkan
 # VM image data corruption bug, causing I/O errors in VMs. Bug #815379
 =app-emulation/qemu-6.1.0-r1
 
-# Brian Evans <grknight@gentoo.org> (2021-09-26)
-# Mask for 8.1 RC
-dev-lang/php:8.1
-virtual/httpd-php:8.1
-
 # Mart Raudsepp <leio@gentoo.org> (2021-09-24)
 # Experimental split media-sound/pulseaudio packages, bug #536780.
 media-libs/libpulse

@@ -4,10 +4,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Brian Evans <grknight@gentoo.org> (2021-09-26)
-# Mask 8.1 as it is RC
-php_targets_php8-1
-
 # Hans de Graaff <graaff@gentoo.org> (2021-07-09)
 # Mask Ruby 2.5 as EOL
 ruby_targets_ruby25
