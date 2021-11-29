@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# pkgcheck reports that multilib-build is not used but in fact it is used
+# from files/icedtea-bin.env.sh so DO NOT REMOVE THAT CLASS even if pkgcheck
+# says it's unused
 inherit java-vm-2 multilib-build toolchain-funcs
 
 abi_uri() {
