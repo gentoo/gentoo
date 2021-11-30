@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Alex Fan <alex.fan.q@gmail.com> (2021-11-19)
+# depends on dev-lang/ocaml
+app-accessibility/brltty ocaml ocamlopt
+
+# Alex Fan <alex.fan.q@gmail.com> (2021-11-19)
 # opengl -> dev-python/pygame is not keyworded yet
 dev-python/sympy opengl
 
