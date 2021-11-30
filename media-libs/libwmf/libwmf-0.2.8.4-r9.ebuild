@@ -89,6 +89,7 @@ src_install() {
 	MAKEOPTS=-j1
 
 	default
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_preinst() {
