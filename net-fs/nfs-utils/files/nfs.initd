@@ -51,7 +51,7 @@ mount_nfsd() {
 		fi
 		# Restart idmapd if needed #220747
 		if grep -qs nfsd /proc/modules ; then
-			killall -q -HUP rpc.idmapd
+			killall -q --signal=HUP rpc.idmapd
 		fi
 	fi
 
