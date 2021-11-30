@@ -20,7 +20,7 @@ QA_FLAGS_IGNORED='.*'
 COMMON="sys-libs/libseccomp"
 BDEPEND="virtual/pkgconfig"
 DEPEND="${COMMON}
-	>=dev-lang/go-1.13.0
+	>=dev-lang/go-1.16.0
 	app-crypt/gpgme
 	dev-libs/openssl
 	sys-apps/util-linux
