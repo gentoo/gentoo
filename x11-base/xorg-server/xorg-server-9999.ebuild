@@ -5,9 +5,9 @@ EAPI=7
 
 XORG_DOC=doc
 XORG_TARBALL_SUFFIX="xz"
+XORG_EAUTORECONF="no"
 inherit xorg-3 meson
 EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"
-XORG_EAUTORECONF="no"
 
 DESCRIPTION="X.Org X servers"
 SLOT="0/${PV}"
