@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd
+inherit systemd optfeature
 
 DESCRIPTION="Clipboard management using dmenu"
 HOMEPAGE="https://github.com/cdown/clipmenu"
@@ -16,7 +16,6 @@ IUSE=""
 
 RDEPEND="
 	x11-misc/clipnotify
-	x11-misc/dmenu
 	x11-misc/xsel
 "
 
@@ -31,4 +30,9 @@ src_install() {
 	done
 
 	systemd_douserunit "init/clipmenud.service"
+}
+
+pkg_postinst() {
+	optfeature_header "Install optional menu frontends:"
+	optfeature "menu support" x11-misc/dmenu x11-misc/rofi app-shells/fzf
 }
