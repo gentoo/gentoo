@@ -27,16 +27,20 @@ KEYWORDS="amd64 ~arm arm64 ~ia64 ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~amd6
 
 RDEPEND="
 	dev-vcs/git
-	>=dev-python/gitdb-4.0.1[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	' python3_7)"
+	>=dev-python/gitdb-4.0.1[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
 		>=dev-python/ddt-1.1.1[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# upstream reverted the changes needing py3.10's typing module
+	# but did not update the dep
+	sed -i -e '/typing-extensions/d' requirements.txt || die
+	distutils-r1_src_prepare
+}
 
 src_test() {
 	git config --global user.email "travis@ci.com" || die
@@ -58,7 +62,7 @@ src_test() {
 }
 
 python_test() {
-	local deselect=(
+	local EPYTEST_DESELECT=(
 		# performance tests are unreliable by design
 		test/performance
 		# unimpoortant and problematic
@@ -70,5 +74,5 @@ python_test() {
 		test/test_submodule.py::TestSubmodule::test_root_module
 	)
 
-	epytest ${deselect[@]/#/--deselect }
+	epytest
 }
