@@ -13,6 +13,7 @@ LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+dmenu rofi fzf"
+REQUIRED_USE="?? ( dmenu rofi fzf )"
 
 RDEPEND="
 	x11-misc/clipnotify
@@ -21,15 +22,14 @@ RDEPEND="
 	rofi? ( x11-misc/rofi )
 	fzf? ( app-shells/fzf )
 "
-REQUIRED_USE="?? ( dmenu rofi fzf )"
 
 src_prepare() {
 	default
 
 	if use rofi ; then
-		sed -i 's|CM_LAUNCHER=dmenu|CM_LAUNCHER=rofi' clipmenu || die "sed failed"
+		sed -i 's|CM_LAUNCHER=dmenu|CM_LAUNCHER=rofi|' clipmenu || die "sed failed"
 	elif use fzf ; then
-		sed -i 's|CM_LAUNCHER=dmenu|CM_LAUNCHER=fzf' clipmenu || die "sed failed"
+		sed -i 's|CM_LAUNCHER=dmenu|CM_LAUNCHER=fzf|' clipmenu || die "sed failed"
 	fi
 }
 
