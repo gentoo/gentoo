@@ -72,6 +72,7 @@ multilib_src_configure() {
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 			-DLLVM_LIT_ARGS="$(get_lit_flags);--param=cxx_under_test=${clang_path}"
 			-DLIBUNWIND_LIBCXX_PATH="${WORKDIR}/libcxx"
+			-DLIBUNWIND_TARGET_TRIPLE="${CHOST}"
 		)
 	fi
 
