@@ -9,7 +9,7 @@ DESCRIPTION="Standalone X server running under Wayland"
 HOMEPAGE="https://wayland.freedesktop.org/xserver.html"
 SRC_URI="https://xorg.freedesktop.org/archive/individual/xserver/${P}.tar.xz"
 
-IUSE="rpc unwind ipv6 xcsecurity selinux video_cards_nvidia"
+IUSE="rpc unwind xcsecurity selinux video_cards_nvidia"
 
 LICENSE="MIT"
 SLOT="0"
@@ -57,24 +57,24 @@ PATCHES=(
 src_configure() {
 	local emesonargs=(
 		$(meson_use rpc secure-rpc)
-		$(meson_use unwind libunwind)
-		$(meson_use ipv6)
-		$(meson_use xcsecurity)
 		$(meson_use selinux xselinux)
+		$(meson_use unwind libunwind)
+		$(meson_use xcsecurity)
 		$(meson_use video_cards_nvidia xwayland_eglstream)
-		-Dsha1=libcrypto
 		-Ddpms=true
 		-Ddri3=true
+		-Ddtrace=false
 		-Dglamor=true
 		-Dglx=true
+		-Dipv6=true
 		-Dscreensaver=true
+		-Dsha1=libcrypto
 		-Dxace=true
 		-Dxdmcp=true
 		-Dxinerama=true
-		-Dxv=true
 		-Dxvfb=true
+		-Dxv=true
 		-Dxwayland-path="${EPREFIX}"/usr/bin
-		-Ddtrace=false
 	)
 
 	meson_src_configure
