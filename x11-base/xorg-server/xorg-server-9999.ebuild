@@ -16,7 +16,7 @@ if [[ ${PV} != 9999* ]]; then
 fi
 
 IUSE_SERVERS="xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug +elogind ipv6 minimal selinux suid systemd test +udev unwind xcsecurity"
+IUSE="${IUSE_SERVERS} debug +elogind minimal selinux suid systemd test +udev unwind xcsecurity"
 RESTRICT="!test? ( test )"
 
 CDEPEND="
@@ -110,7 +110,6 @@ src_configure() {
 		--buildtype $(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
 		$(meson_use doc docs)
-		$(meson_use ipv6)
 		$(meson_use !minimal dri1)
 		$(meson_use !minimal dri2)
 		$(meson_use !minimal dri3)
@@ -127,6 +126,7 @@ src_configure() {
 		-Ddefault_font_path="${EPREFIX}"/usr/share/fonts
 		-Ddrm=true
 		-Ddtrace=false
+		-Dipv6=true
 		-Dhal=false
 		-Dlinux_acpi=false
 		-Dsha1=libcrypto
