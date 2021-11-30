@@ -47,7 +47,7 @@ BDEPEND="
 	)
 	${PYTHON_DEPS}"
 
-LLVM_COMPONENTS=( compiler-rt )
+LLVM_COMPONENTS=( compiler-rt cmake )
 LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
 LLVM_PATCHSET=9999-1
 llvm.org_set_globals
