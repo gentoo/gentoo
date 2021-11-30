@@ -9,7 +9,7 @@ ECM_TEST="true"
 KFMIN=5.88.0
 QTMIN=5.15.2
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org optfeature
+inherit ecm kde.org
 
 DESCRIPTION="Non-linear video editing suite by KDE"
 HOMEPAGE="https://kdenlive.org/en/"
@@ -74,11 +74,4 @@ src_configure() {
 		$(cmake_use_find_package v4l LibV4L2)
 	)
 	ecm_src_configure
-}
-
-pkg_postinst() {
-	ecm_pkg_postinst
-
-	# Gentoo bug 603168
-	optfeature "Crop, Transform/Rotate and Shear effect" "media-libs/mlt[fftw]"
 }
