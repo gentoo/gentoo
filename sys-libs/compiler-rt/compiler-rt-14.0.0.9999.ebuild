@@ -28,7 +28,7 @@ BDEPEND="
 	)
 	${PYTHON_DEPS}"
 
-LLVM_COMPONENTS=( compiler-rt )
+LLVM_COMPONENTS=( compiler-rt cmake )
 LLVM_PATCHSET=9999-1
 llvm.org_set_globals
 
