@@ -22,7 +22,7 @@ DEPEND="
 	acct-group/postfix
 	acct-group/postdrop
 	acct-user/postfix
-	>=dev-libs/libpcre-3.4
+	|| ( dev-libs/libpcre2:0 dev-libs/libpcre )
 	dev-lang/perl
 	berkdb? ( >=sys-libs/db-3.2:* )
 	cdb? ( || ( >=dev-db/tinycdb-0.76 >=dev-db/cdb-0.75-r4 ) )
@@ -72,8 +72,16 @@ src_configure() {
 	done
 
 	# Make sure LDFLAGS get passed down to the executables.
-	local mycc="-DHAS_PCRE" mylibs="${LDFLAGS} -ldl"
-	AUXLIBS_PCRE="$(pcre-config --libs)"
+	local mycc="" mylibs="${LDFLAGS} -ldl"
+
+	# libpcre is EOL. prefer libpcre2
+	if has_version dev-libs/libpcre2; then
+		mycc="-DHAS_PCRE=2"
+		AUXLIBS_PCRE="$(pcre2-config --libs8)"
+	else
+		mycc="-DHAS_PCRE=1"
+		AUXLIBS_PCRE="$(pcre-config --libs)"
+	fi
 
 	use pam && mylibs="${mylibs} -lpam"
 
