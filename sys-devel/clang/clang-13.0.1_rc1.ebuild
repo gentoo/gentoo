@@ -173,6 +173,7 @@ get_distribution_components() {
 			clang-offload-bundler
 			clang-offload-wrapper
 			clang-refactor
+			clang-repl
 			clang-rename
 			clang-scan-deps
 			diagtool
