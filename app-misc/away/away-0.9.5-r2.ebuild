@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit pam toolchain-funcs flag-o-matic
 
@@ -17,11 +17,12 @@ RDEPEND=">=sys-libs/pam-0.75"
 DEPEND="${RDEPEND}"
 
 DOCS=( BUGS AUTHORS NEWS README TODO data/awayrc )
+
 src_prepare() {
 	default
 	sed -i -e '/-o \$(BINARY)/d' \
 		-e 's:LIBS:LDLIBS:' \
-		"${S}"/Makefile || die "Makefile fix failed"
+		Makefile || die "Makefile fix failed"
 
 }
 
