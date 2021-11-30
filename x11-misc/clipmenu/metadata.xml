@@ -10,6 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="launcher">Add launcher support for clipmenu</flag>
+		<flag name="dmenu">Use dmenu as default launcher</flag>
+		<flag name="rofi">Use rofi as default launcher</flag>
+		<flag name="fzf">Use fzf as default launcher</flag>
 	</use>
 </pkgmetadata>

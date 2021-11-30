@@ -12,13 +12,26 @@ SRC_URI="https://github.com/cdown/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+launcher"
+IUSE="+dmenu rofi fzf"
 
 RDEPEND="
 	x11-misc/clipnotify
 	x11-misc/xsel
-	launcher? ( || ( x11-misc/dmenu x11-misc/rofi app-shells/fzf ) )
+	dmenu? ( x11-misc/dmenu )
+	rofi? ( x11-misc/rofi )
+	fzf? ( app-shells/fzf )
 "
+REQUIRED_USE="?? ( dmenu rofi fzf )"
+
+src_prepare() {
+	default
+
+	if use rofi ; then
+		sed -i 's|CM_LAUNCHER=dmenu|CM_LAUNCHER=rofi' clipmenu || die "sed failed"
+	elif use fzf ; then
+		sed -i 's|CM_LAUNCHER=dmenu|CM_LAUNCHER=fzf' clipmenu || die "sed failed"
+	fi
+}
 
 src_compile() {
 	:
@@ -36,7 +49,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! use launcher ; then
+	if ! use dmenu && ! use rofi && ! use fzf ; then
 		ewarn "Clipmenu has been installed without a launcher."
 		ewarn "You will need to set \$CM_LAUNCHER to a dmenu-compatible app for clipmenu to work."
 		ewarn "Please refer to the documents for more info."
