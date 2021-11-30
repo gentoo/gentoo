@@ -17,8 +17,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
 IUSE="+bpf +caps criu +seccomp systemd static-libs"
 
 DEPEND="
+	dev-libs/yajl:=
 	sys-kernel/linux-headers
-	>=dev-libs/yajl-2.0.0
 	caps? ( sys-libs/libcap )
 	criu? ( >=sys-process/criu-3.15 )
 	seccomp? ( sys-libs/libseccomp )
