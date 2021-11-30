@@ -93,7 +93,7 @@ gnome-base/gdm accessibility
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # dependencies not keyworded/tested
-kde-plasma/plasma-meta accessibility grub plymouth pulseaudio
+kde-plasma/plasma-meta grub plymouth
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-17)
 # sys-libs/libfaketime does not work properly on this arch
