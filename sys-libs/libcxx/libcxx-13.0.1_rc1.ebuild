@@ -144,6 +144,7 @@ multilib_src_configure() {
 			-DLLVM_LIT_ARGS="$(get_lit_flags);--param=cxx_under_test=${clang_path}"
 			-DLIBCXX_LINK_TESTS_WITH_SHARED_LIBCXXABI=ON
 			-DPython3_EXECUTABLE="${PYTHON}"
+			-DLIBCXX_TARGET_TRIPLE="${CHOST}"
 		)
 	fi
 	cmake_src_configure
