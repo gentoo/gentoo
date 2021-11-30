@@ -165,6 +165,7 @@ dev-libs/qrosscore
 ~kde-apps/k3b-21.11.90
 ~kde-apps/kamoso-21.11.90
 ~kde-apps/kdemultimedia-meta-21.11.90
+~kde-apps/kdenlive-21.11.90
 ~kde-apps/kmix-21.11.90
 ~kde-apps/kwave-21.11.90
 ~kde-apps/libkcddb-21.11.90
