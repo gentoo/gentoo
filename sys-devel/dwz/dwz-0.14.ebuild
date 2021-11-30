@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -20,8 +20,9 @@ RESTRICT="!test? ( test )"
 RDEPEND="dev-libs/elfutils"
 DEPEND="${RDEPEND}"
 BDEPEND="test? (
-	dev-util/dejagnu
 	dev-libs/elfutils[utils]
+	dev-util/dejagnu
+	sys-devel/gdb
 )"
 
 src_prepare() {
