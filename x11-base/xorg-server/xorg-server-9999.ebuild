@@ -109,29 +109,29 @@ src_configure() {
 		--sysconfdir "${EPREFIX}/etc/X11"
 		--buildtype $(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
+		$(meson_use doc docs)
 		$(meson_use ipv6)
-		$(meson_use unwind libunwind)
 		$(meson_use !minimal dri1)
 		$(meson_use !minimal dri2)
 		$(meson_use !minimal dri3)
-		$(meson_use !minimal glx)
 		$(meson_use !minimal glamor)
+		$(meson_use !minimal glx)
+		$(meson_use udev)
+		$(meson_use udev udev_kms)
+		$(meson_use unwind libunwind)
 		$(meson_use xcsecurity)
 		$(meson_use xephyr)
 		$(meson_use xnest)
 		$(meson_use xorg)
 		$(meson_use xvfb)
-		$(meson_use udev)
-		$(meson_use udev udev_kms)
-		$(meson_use doc docs)
+		-Ddefault_font_path="${EPREFIX}"/usr/share/fonts
 		-Ddrm=true
-		-Dxwayland=false
-		-Dxkb_output_dir="${EPREFIX}/var/lib/xkb"
+		-Ddtrace=false
 		-Dhal=false
 		-Dlinux_acpi=false
-		-Ddtrace=false
 		-Dsha1=libcrypto
-		-Ddefault_font_path="${EPREFIX}"/usr/share/fonts
+		-Dxkb_output_dir="${EPREFIX}/var/lib/xkb"
+		-Dxwayland=false
 	)
 
 	if use systemd || use elogind; then
