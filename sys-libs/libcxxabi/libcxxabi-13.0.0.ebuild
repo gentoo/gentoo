@@ -84,6 +84,7 @@ multilib_src_configure() {
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 			-DLLVM_LIT_ARGS="$(get_lit_flags);--param=cxx_under_test=${clang_path}"
 			-DPython3_EXECUTABLE="${PYTHON}"
+			-DLIBCXXABI_TARGET_TRIPLE="${CHOST}"
 		)
 	fi
 	cmake_src_configure
