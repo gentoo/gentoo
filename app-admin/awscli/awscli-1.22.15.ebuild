@@ -35,6 +35,8 @@ src_prepare() {
 		-e 's:from botocore[.]vendored import:import:' \
 		-e 's:from botocore[.]vendored[.]:from :' \
 		{} + || die
+	# strip overzealous upper bounds on requirements
+	sed -i -e 's:,<[0-9.]*::' -e 's:==:>=:' setup.py || die
 	distutils-r1_src_prepare
 }
 
