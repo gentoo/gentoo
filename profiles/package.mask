@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-11-30)
+# No revdeps, bug #774498; masked for removal on 2021-12-30.
+dev-libs/qrosscore
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-11-29)
 # KDE Gear 21.11.90 (21.12 RC) mask
 # Pre-release version.
