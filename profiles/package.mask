@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-11-30)
+# Blocks cleanup of sci-libs/fcl-0.5.0, unmaintained in Gentoo.
+# Upstream master claims to target sci-libs/fcl-0.6.1, but that
+# requires someone adopting the package.
+# Bug #770589; masked for removal on 2021-12-30.
+dev-python/python-fcl
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-11-30)
 # No revdeps, bug #774498; masked for removal on 2021-12-30.
 dev-libs/qrosscore
 
