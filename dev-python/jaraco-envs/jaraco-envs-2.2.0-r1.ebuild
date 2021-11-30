@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
@@ -25,3 +25,9 @@ BDEPEND="
 
 # there are no actual tests, just flake8 etc
 RESTRICT="test"
+
+src_prepare() {
+	# optional runtime dep, not used by anything in ::gentoo
+	sed -i -e '/tox/d' setup.cfg || die
+	distutils-r1_src_prepare
+}
