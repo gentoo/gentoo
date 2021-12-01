@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,6 +11,10 @@ ACCT_USER_SHELL="/bin/bash"
 ACCT_USER_HOME="/root"
 ACCT_USER_HOME_PERMS=0700
 ACCT_USER_GROUPS=( root )
+
+# Avoid reverting changes by the sysadmin.
+# https://bugs.gentoo.org/827813
+ACCT_USER_NO_MODIFY=1
 
 acct-user_add_deps
 
