@@ -24,6 +24,7 @@ BDEPEND="sys-apps/help2man"
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${PYTHON_DEPS}
 	sys-apps/flashrom
+	sys-apps/pciutils
 	|| (
 		>=media-libs/raspberrypi-userland-0_pre20201022
 		>=media-libs/raspberrypi-userland-bin-1.20201022
