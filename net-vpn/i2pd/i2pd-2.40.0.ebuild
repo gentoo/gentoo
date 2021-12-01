@@ -23,9 +23,9 @@ RDEPEND="
 	upnp? ( net-libs/miniupnpc:= )"
 DEPEND="${RDEPEND}"
 
-CMAKE_USE_DIR="${S}/build"
+CMAKE_USE_DIR="${WORKDIR}/${P}/build"
 
-DOCS=( "${S}/README.md" "${S}/contrib/i2pd.conf" "${S}/contrib/tunnels.conf" )
+DOCS=( ../README.md ../contrib/i2pd.conf ../contrib/tunnels.conf )
 
 pkg_pretend() {
 	if use i2p-hardening && ! tc-is-gcc; then
