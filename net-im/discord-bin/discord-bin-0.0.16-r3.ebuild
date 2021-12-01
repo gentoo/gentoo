@@ -20,7 +20,7 @@ RESTRICT="mirror bindist"
 
 # libXScrnSaver is used through dlopen (bug #825370)
 # Need to drop -clone3(-) from glibc once Electron is updated
-# bug #819045
+# bug #819045, bug #827386
 RDEPEND="
 	app-accessibility/at-spi2-atk:2
 	app-accessibility/at-spi2-core:2
