@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-12-01)
+# OSL 12 is a development release (for now).
+# Doesn't work with LLVM 13 yet; mask to help
+# Blender compatibility (no mixed LLVM versions).
+=media-libs/osl-1.12*
+
 # William Hubbs <williamh@gentoo.org> (2021-11-30)
 # Dead upstream, no releases since 2015
 # Bug #770619; masked for removal on 2021-12-30.
