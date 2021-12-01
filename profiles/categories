@@ -7,6 +7,7 @@ app-arch
 app-backup
 app-benchmarks
 app-cdr
+app-containers
 app-crypt
 app-dicts
 app-doc
