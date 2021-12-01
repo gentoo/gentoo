@@ -653,7 +653,6 @@ perl-core/Term-ANSIColor
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-01)
 # Unused library and virtual, removal on 2021-12-01
 dev-java/jamon
-java-virtuals/interceptor-api
 
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
