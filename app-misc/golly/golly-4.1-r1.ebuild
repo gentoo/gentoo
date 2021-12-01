@@ -36,7 +36,6 @@ pkg_setup() {
 src_compile() {
 	local mymakeopts=(
 		ENABLE_SOUND=yes
-		ENABLE_PERL=yes
 		GOLLYDIR="${EPREFIX}/usr/share/${PN}"
 		PYTHON=${EPYTHON}
 		WX_CONFIG=${WX_CONFIG}
