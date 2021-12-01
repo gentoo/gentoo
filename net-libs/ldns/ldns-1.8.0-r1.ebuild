@@ -3,7 +3,7 @@
 
 EAPI=8
 PYTHON_COMPAT=( python3_{7,8,9,10} )
-inherit python-single-r1 flag-o-matic multilib-minimal
+inherit python-single-r1 autotools multilib-minimal
 
 DESCRIPTION="a library with the aim to simplify DNS programming in C"
 HOMEPAGE="http://www.nlnetlabs.nl/projects/ldns/"
@@ -81,7 +81,10 @@ src_prepare() {
 	# remove $(srcdir) from path for multilib build
 	sed -i 's,$(srcdir)/packaging/libldns.pc,packaging/libldns.pc,' "${S}"/Makefile.in || die 'could not patch Makefile.in'
 
-	filter-ldflags *
+	# backport https://github.com/NLnetLabs/ldns/commit/bc9d017f6fd8b6b5d2ff6e4489a2931d0aab8184
+	sed -i 's/AC_SUBST(VERSION_INFO.*/AC_SUBST(VERSION_INFO, [5:0:2])/' "${S}"/configure.ac || die 'could not patch configure.ac'
+
+	eautoreconf
 }
 
 multilib_src_compile() {
