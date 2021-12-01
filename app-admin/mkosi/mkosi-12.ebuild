@@ -15,9 +15,9 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
 RDEPEND="
+	dev-vcs/git
 	sys-apps/portage
 	sys-apps/systemd
-	dev-vcs/git
 "
 
 distutils_enable_tests pytest
