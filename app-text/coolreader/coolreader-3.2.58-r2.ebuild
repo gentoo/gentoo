@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/buggins/coolreader/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="wxwidgets"
 
 CDEPEND="sys-libs/zlib
@@ -25,7 +25,7 @@ CDEPEND="sys-libs/zlib
 	dev-libs/fribidi
 	media-libs/fontconfig
 	media-libs/harfbuzz:=
-	dev-libs/libunibreak
+	dev-libs/libunibreak:=
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER} )
 	!wxwidgets? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 )"
 BDEPEND="${CDEPEND}
