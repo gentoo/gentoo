@@ -23,7 +23,7 @@ else
 
 	# musl patches taken from:
 	# http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/systemd/systemd
-	MUSL_PATCHSET="249.5"
+	MUSL_PATCHSET="249.5-r1"
 	SRC_URI+="
 	elibc_musl? (
 		https://dev.gentoo.org/~gyakovlev/distfiles/systemd-musl-patches-${MUSL_PATCHSET}.tar.xz
