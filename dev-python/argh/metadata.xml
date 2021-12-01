@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">argh</remote-id>
+		<remote-id type="github">neithere/argh</remote-id>
 	</upstream>
 </pkgmetadata>
