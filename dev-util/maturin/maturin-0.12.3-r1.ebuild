@@ -336,7 +336,8 @@ python_test() {
 	local -x PIP_CONFIG_FILE=${T}/pip.conf
 	local -x VIRTUALENV_SYSTEM_SITE_PACKAGES=1
 
-	cargo_src_test -- --skip locked_doesnt_build_without_cargo_lock
+	cargo_src_test -- --skip locked_doesnt_build_without_cargo_lock \
+		--test-threads 1 #825242
 }
 
 python_install_all() {
