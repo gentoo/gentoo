@@ -8,7 +8,7 @@ HOMEPAGE="http://vimgadgets.sourceforge.net/libunibreak/"
 SRC_URI="https://github.com/adah1972/${PN}/releases/download/${PN}_$(ver_rs 1- '_')/${P}.tar.gz"
 
 LICENSE="ZLIB"
-SLOT="0"
+SLOT="0/5"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="doc +man static-libs"
 
