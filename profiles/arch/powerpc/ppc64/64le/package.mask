@@ -44,6 +44,7 @@ sci-mathematics/geogebra-bin
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-08-27)
 # little-endian power8 ppc64 configs are provided
 -sys-kernel/gentoo-kernel
+-sys-kernel/gentoo-kernel-bin
 -sys-kernel/vanilla-kernel
 -virtual/dist-kernel
 
