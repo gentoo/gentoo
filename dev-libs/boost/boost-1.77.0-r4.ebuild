@@ -57,6 +57,7 @@ PATCHES=(
 	"${WORKDIR}"/${PN}-1.77-math-deprecated-include.patch
 	"${WORKDIR}"/${PN}-1.77-geometry.patch
 	"${FILESDIR}"/${P}-python-3.10.patch
+	"${FILESDIR}"/${P}-fix-process-include.patch
 )
 
 python_bindings_needed() {
