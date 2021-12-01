@@ -1,10 +1,6 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Ionen Wolkens <ionen@gentoo.org> (2021-12-01)
-# app-text/mdbook is not keyworded here yet
-dev-util/maturin doc
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-16)
 # requires sys-apps/dbus-broker, which keyworded here.
 sys-apps/systemd -hostnamed-fallback
