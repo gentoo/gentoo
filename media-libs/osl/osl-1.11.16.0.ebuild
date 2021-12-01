@@ -91,7 +91,8 @@ src_configure() {
 		-DUSE_CCACHE=OFF
 		-DLLVM_STATIC=OFF
 		-DLLVM_ROOT="$(get_llvm_prefix ${LLVM_MAX_SLOT})"
-		-DOSL_BUILD_TESTS=$(usex test)
+		# Breaks build for now: bug #827949
+		#-DOSL_BUILD_TESTS=$(usex test)
 		-DOSL_SHADER_INSTALL_DIR="${EPREFIX}/usr/include/${PN^^}/shaders"
 		-DOSL_PTX_INSTALL_DIR="${EPREFIX}/usr/include/${PN^^}/ptx"
 		-DSTOP_ON_WARNING=OFF
