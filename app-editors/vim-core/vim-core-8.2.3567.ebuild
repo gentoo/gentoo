@@ -193,6 +193,9 @@ src_install() {
 		rm -rv "${ED}${vimfiles}"/{macros,print,tools,tutor} || die "rm failed"
 		rm -v "${ED}"/usr/bin/vimtutor || die "rm failed"
 
+		# Delete defaults.vim to avoid conflicts with one from vim[minimal]
+		rm -v "${ED}${vimfiles}"/defaults.vim || die "rm failed"
+
 		local keep_colors="default"
 		ignore=$(rm -fr "${ED}${vimfiles}"/colors/!(${keep_colors}).vim )
 
@@ -200,6 +203,9 @@ src_install() {
 		# tinkering with the next line might make bad things happen ...
 		keep_syntax="${keep_syntax}|syntax|nosyntax|synload"
 		ignore=$(rm -fr "${ED}${vimfiles}"/syntax/!(${keep_syntax}).vim )
+
+		# Delete skip_defaults_vim config not supported by vim[minimal]
+		sed -i '/skip_defaults_vim/d' "${ED}"/etc/vim/vimrc || die "sed failed"
 
 		eshopts_pop
 	fi
