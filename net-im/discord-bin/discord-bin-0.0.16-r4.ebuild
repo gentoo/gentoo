@@ -19,7 +19,7 @@ KEYWORDS="~amd64"
 RESTRICT="mirror bindist"
 
 # libXScrnSaver is used through dlopen (bug #825370)
-# Need to drop -clone3(-) from glibc once Electron is updated
+# Need to drop -clone3(+) from glibc once Electron is updated
 # bug #819045, bug #827386
 RDEPEND="
 	app-accessibility/at-spi2-atk:2
@@ -33,7 +33,7 @@ RDEPEND="
 	media-libs/mesa[gbm(+)]
 	net-print/cups
 	sys-apps/dbus
-	sys-libs/glibc[-clone3(-)]
+	|| ( <sys-libs/glibc-2.34 >=sys-libs/glibc-2.34[-clone3(+)] )
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
