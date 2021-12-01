@@ -791,11 +791,15 @@ src_prepare() {
 		einfo "Done."
 	fi
 
-	if ! use clone3 ; then
+	# Apply patch to allow conditional disabling of clone3
+	eapply "${FILESDIR}"/${PN}-2.34-make-clone3-syscall-optional.patch
+
+	if use clone3 ; then
+		append-cppflags -DGENTOO_USE_CLONE3
+	else
+		# See e.g. bug #827386, bug #819045.
 		elog "Disabling the clone3 syscall for compatibility with older Electron apps."
 		elog "Please re-enable this flag before filing bugs!"
-		# See e.g. bug #827386, bug #819045.
-		eapply "${FILESDIR}"/${P}-disable-clone3-syscall.patch
 	fi
 
 	default
