@@ -81,6 +81,9 @@ src_prepare() {
 	# remove $(srcdir) from path for multilib build
 	sed -i 's,$(srcdir)/packaging/libldns.pc,packaging/libldns.pc,' "${S}"/Makefile.in || die 'could not patch Makefile.in'
 
+	# remove Libs.private, see bug #695672
+	sed -i '/^Libs.private:/d' "${S}"/packaging/libldns.pc.in || die 'could not patch libldns.pc.in'
+
 	# backport https://github.com/NLnetLabs/ldns/commit/bc9d017f6fd8b6b5d2ff6e4489a2931d0aab8184
 	sed -i 's/AC_SUBST(VERSION_INFO.*/AC_SUBST(VERSION_INFO, [5:0:2])/' "${S}"/configure.ac || die 'could not patch configure.ac'
 
