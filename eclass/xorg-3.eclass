@@ -25,7 +25,7 @@
 GIT_ECLASS=""
 if [[ ${PV} == *9999* ]]; then
 	GIT_ECLASS="git-r3"
-	XORG_EAUTORECONF="yes"
+	: ${XORG_EAUTORECONF:="yes"}
 fi
 
 # If we're a font package, but not the font.alias one
