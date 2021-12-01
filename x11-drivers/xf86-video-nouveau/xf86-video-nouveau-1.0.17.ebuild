@@ -22,3 +22,7 @@ RDEPEND=">=x11-libs/libdrm-2.4.60[video_cards_nouveau]
 	>=x11-libs/libpciaccess-0.10
 	virtual/libudev:="
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-xorg-server-API-rename.patch
+)
