@@ -20,7 +20,7 @@ RDEPEND="
 	dev-db/sqlite
 	dev-libs/expat
 	dev-libs/fribidi
-	dev-libs/libunibreak
+	dev-libs/libunibreak:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
