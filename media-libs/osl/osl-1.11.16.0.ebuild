@@ -18,7 +18,7 @@ SRC_URI="https://github.com/imageworks/OpenShadingLanguage/archive/Release-${PV}
 
 LICENSE="BSD"
 SLOT="0/11"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 X86_CPU_FEATURES=(
