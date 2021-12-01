@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 
 inherit distutils-r1
 
@@ -20,5 +20,9 @@ BDEPEND="
 		dev-python/iocapture[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 	)"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-py3.9-msgs.patch"
+)
 
 distutils_enable_tests pytest
