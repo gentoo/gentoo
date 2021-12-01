@@ -5,6 +5,7 @@
 # Mask the older libcrypt virtual (which accepted glibc[crypt]) to ease
 # dependency resolution. In a fair number of cases, this has helped
 # upgrades go through cleanly.
+# Read the news item if you need help!
 # (This mask is undone in musl profiles where the transition is not yet being
 # made.)
 # bug #699422.
