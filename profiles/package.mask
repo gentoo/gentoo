@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2021-12-01)
+# Removal on 2021-01-01.
+# Disbanded by upstream who sugessted to 
+# use nmap instead many years ago. (bug #680546)
+net-analyzer/amap
+
 # Sam James <sam@gentoo.org> (2021-12-01)
 # OSL 12 is a development release (for now).
 # Doesn't work with LLVM 13 yet; mask to help
