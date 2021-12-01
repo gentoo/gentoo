@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit fcaps go-module tmpfiles systemd
 MY_PV="${PV/_rc/-rc}"
 
 DESCRIPTION="A painless self-hosted Git service"
-HOMEPAGE="https://gitea.io"
+HOMEPAGE="https://gitea.io https://github.com/go-gitea/gitea"
 
 if [[ ${PV} != 9999* ]] ; then
 	SRC_URI="https://github.com/go-gitea/gitea/releases/download/v${MY_PV}/gitea-src-${MY_PV}.tar.gz -> ${P}.tar.gz"
@@ -22,13 +23,12 @@ LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
 IUSE="+acct pam sqlite"
 
-COMMON_DEPEND="
+DEPEND="
 	acct? (
 		acct-group/git
 		acct-user/git[gitea] )
 	pam? ( sys-libs/pam )"
-DEPEND="${COMMON_DEPEND}"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	dev-vcs/git"
 
 DOCS=(
