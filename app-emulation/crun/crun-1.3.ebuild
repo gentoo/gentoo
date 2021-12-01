@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit autotools python-any-r1
 
@@ -25,7 +25,10 @@ DEPEND="
 	systemd? ( sys-apps/systemd:= )
 "
 RDEPEND="${DEPEND}"
-BDEPEND="${PYTHON_DEPS}"
+BDEPEND="
+	${PYTHON_DEPS}
+	virtual/pkgconfig
+"
 
 # the crun test suite is comprehensive to the extent that tests will fail
 # within a sandbox environment, due to the nature of the privileges
