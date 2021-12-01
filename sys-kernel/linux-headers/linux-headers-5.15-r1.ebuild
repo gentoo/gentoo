@@ -30,6 +30,11 @@ src_unpack() {
 }
 
 src_prepare() {
+	if use elibc_musl ; then
+		# TODO: May need forward porting to newer versions
+		eapply "${FILESDIR}"/${PN}-5.10-Use-stddefs.h-instead-of-compiler.h.patch
+	fi
+
 	# avoid kernel-2_src_prepare
 	default
 }
