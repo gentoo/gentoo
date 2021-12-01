@@ -655,18 +655,6 @@ perl-core/Term-ANSIColor
 dev-java/jamon
 java-virtuals/interceptor-api
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-31)
-# Multiple open bugs, unbuildable due to sandbox issues,
-# uses EAPI 5, no revdeps, no other distro packages this.
-# Removal on 2021-11-30. Bug #819252.
-sys-apps/frandom
-
-# Hans de Graaff <graaff@gentoo.org> (2021-10-30)
-# Obsolete slot. Use a newer slot of the same package.
-# Masked for removal in 30 days.
-dev-ruby/rmagick:0
-dev-ruby/rbnacl:4
-
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).
 # Python toggles don't work correctly right now.
