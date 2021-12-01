@@ -19,7 +19,7 @@ S="${WORKDIR}"
 QA_PREBUILT="*"
 RESTRICT="mirror bindist strip" #299368
 
-# Need to drop -clone3(-) from glibc once Electron is updated
+# Need to drop -clone3(+) from glibc once Electron is updated
 # bug #823790
 RDEPEND="
 	app-crypt/libsecret[${MULTILIB_USEDEP}]
@@ -34,7 +34,7 @@ RDEPEND="
 	media-libs/libv4l[${MULTILIB_USEDEP}]
 	net-print/cups[${MULTILIB_USEDEP}]
 	sys-apps/dbus[${MULTILIB_USEDEP}]
-	sys-libs/glibc[-clone3(-)]
+	|| ( <sys-libs/glibc-2.34 >=sys-libs/glibc-2.34[-clone3(+)] )
 	sys-devel/gcc[cxx]
 	virtual/ttf-fonts
 	x11-libs/cairo[${MULTILIB_USEDEP}]
