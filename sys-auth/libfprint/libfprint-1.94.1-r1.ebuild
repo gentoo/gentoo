@@ -11,7 +11,7 @@ SRC_URI="https://github.com/freedesktop/libfprint/archive/refs/tags/v${PV}.tar.g
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="examples gtk-doc +introspection"
 
 RDEPEND="
