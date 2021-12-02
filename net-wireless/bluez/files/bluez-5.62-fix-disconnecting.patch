@@ -1,0 +1,54 @@
+From ebf2d7935690c00c7fd12768177e2023fc63c9fe Mon Sep 17 00:00:00 2001
+From: Javier de San Pedro <dev.git@javispedro.com>
+Date: Sat, 27 Nov 2021 23:21:36 +0100
+Subject: gatt-client: Fix disconnecting due to GattCharacteristic1.MTU
+
+After the MTU dbus property patches in 5.62 we are seeing bluetoothd
+terminate frequently with "Disconnected from D-Bus. Exiting." msgs.
+Apparently this is because bluetoothd sent an invalid reply to a D-Bus
+Property Get (for GattCharacteristic1's MTU).
+Multiple issues in bluez Github.com project reported similar behavior;
+at least #235 (see Fixes:), #219, and likely #238.
+
+When the Characteristic1 object is still cached/alive, but the
+underlying att connection is not (e.g. someone just called Disconnect),
+the property getter (characteristic_get_mtu) right now returns false.
+However, gdbus seems to ignore the return value and sends the empty reply
+message anyway (rather than a dbus error?), and this seems to cause
+the dbus connection to be terminated (due to the ill-formed reply?).
+bluetoothd then aborts.
+
+This patch makes the property value BT_ATT_DEFAULT_LE_MTU if the
+underlying att object does not exist, rather than returning an invalid
+message. This is consistent with the existing PropertyChanged signal
+behavior (we will emit a PropertyChange only if a larger MTU is
+exchanged), and fixes the issue on my machines.
+An alternative could be to change gdbus behavior, but I'm not sure if we
+are allowed to return an error here anyway without causing problems in
+other dbus libraries/wrappers.
+
+Fixes: aaa0c4996ae9 ("gatt: Add implementation of GattCharacteristic1.MTU")
+Fixes: https://github.com/bluez/bluez/issues/235
+---
+ src/gatt-client.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/src/gatt-client.c b/src/gatt-client.c
+index de18bea97..6ee984db9 100644
+--- a/src/gatt-client.c
++++ b/src/gatt-client.c
+@@ -883,10 +883,7 @@ static gboolean characteristic_get_mtu(const GDBusPropertyTable *property,
+ 	uint16_t mtu;
+ 
+ 	att = bt_gatt_client_get_att(gatt);
+-	if (!att)
+-		return FALSE;
+-
+-	mtu = bt_att_get_mtu(att);
++	mtu = att ? bt_att_get_mtu(att) : BT_ATT_DEFAULT_LE_MTU;
+ 
+ 	dbus_message_iter_append_basic(iter, DBUS_TYPE_UINT16, &mtu);
+ 
+-- 
+cgit 1.2.3-1.el7
+
