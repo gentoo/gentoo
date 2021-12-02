@@ -20,7 +20,7 @@ IUSE="+agent curl frontend gnutls ipv6 java ldap libxml2 mbedtls mysql odbc open
 REQUIRED_USE="|| ( agent frontend proxy server )
 	ssl? ( ^^ ( gnutls mbedtls openssl ) )
 	proxy? ( ^^ ( mysql oracle postgres sqlite ) )
-	server? ( ^^ ( mysql oracle postgres ) )
+	server? ( ^^ ( mysql oracle postgres ) !sqlite )
 	static? ( !oracle !snmp )"
 
 COMMON_DEPEND="
