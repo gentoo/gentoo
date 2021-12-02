@@ -22,7 +22,7 @@ DEPEND="
 	virtual/lapack
 	>=sci-libs/cholmod-2[lapack,partition?]
 	partition? ( >=sci-libs/metis-5.1.0 )
-	tbb? ( dev-cpp/tbb:= )"
+	tbb? ( <dev-cpp/tbb-2021:= )"
 RDEPEND="${DEPEND}"
 
 src_configure() {
