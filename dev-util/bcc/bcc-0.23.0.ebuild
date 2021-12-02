@@ -92,6 +92,7 @@ src_configure() {
 		-DREVISION=${PV%%_*}
 		-DENABLE_LLVM_SHARED=ON
 		-DCMAKE_USE_LIBBPF_PACKAGE=ON
+		-DLIBBPF_INCLUDE_DIRS="$(pkg-config --cflags-only-I libbpf | sed 's:-I::g')"
 		-DKERNEL_INCLUDE_DIRS="${KERNEL_DIR}"
 		-DPYTHON_CMD="${bcc_python_impls%;}"
 		-Wno-dev
