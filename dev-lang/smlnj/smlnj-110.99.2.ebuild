@@ -75,12 +75,12 @@ src_unpack() {
 	unpack ${P}-config.tgz
 	rm config/*.bat || die
 	echo SRCARCHIVEURL=\"file:/${S}\" > "${S}"/config/srcarchiveurl
+
+	mkdir base || die  # without this unpacking runtime will fail
+	./config/unpack "${S}" runtime || die
 }
 
 src_prepare() {
-	mkdir base || die  # without this unpacking runtime will fail
-	./config/unpack "${S}" runtime || die
-
 	default
 
 	# respect CC et al. (bug 243886)
@@ -89,6 +89,8 @@ src_prepare() {
 		-e "/^CPP/s:gcc:$(tc-getCC):" \
 		-e "/^CFLAGS/{s:-O[0123s]:: ; s:=:= ${CFLAGS}:}" \
 		-i base/runtime/objs/mk.* || die
+
+	sed -i "s|nm |$(tc-getNM) |g" config/chk-global-names.sh || die
 }
 
 src_compile() {
