@@ -25,7 +25,7 @@ RESTRICT="test"
 RDEPEND="
 	>=dev-libs/elfutils-0.166:=
 	>=dev-libs/libbpf-0.5.0:=[static-libs(-)]
-	>=sys-kernel/linux-headers-5.13
+	sys-kernel/linux-headers
 	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
 	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_BPF(+)]
 	${PYTHON_DEPS}
