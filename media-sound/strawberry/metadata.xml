@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="vlc">Enable <pkg>media-video/vlc</pkg> backend</flag>
+		<flag name="moodbar">Enable moodbar support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">jonaski/strawberry</remote-id>
