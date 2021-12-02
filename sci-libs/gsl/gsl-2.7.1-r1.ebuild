@@ -11,7 +11,8 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
 	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-2.7-cblas.patch.bz2"
 
 LICENSE="GPL-3"
-SLOT="0/25"
+# Usually 0/${PV} but check
+SLOT="0/27"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE="cblas-external +deprecated static-libs"
 
