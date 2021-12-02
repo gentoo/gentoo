@@ -6,14 +6,14 @@ inherit eutils desktop
 
 SLOT="0"
 PV_STRING="$(ver_cut 2-6)"
-MY_PV="$(ver_cut 1-3)"
+MY_PV="$(ver_cut 1-2)"
 
 MY_PN="idea"
 # Using the most recent Jetbrains Runtime binaries available at the time of writing
 # ( jre 11.0.10 build 1304.4  )
 JRE11_BASE="11_0_11"
 JRE11_VER="1504.5"
-IDEA_VER="2.157861308.704681908.1634561297-1608238442.1631355834"
+IDEA_VER="2.239720128.29310938.1638227338-350593612.1638138682"
 
 # distinguish settings for official stable releases and EAP-version releases
 if [[ "$(ver_cut 7)"x = "prex" ]]
@@ -38,8 +38,8 @@ LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 CC-BY-2.5 CDDL-1.1
 
 DEPEND="
 	|| (
-		>=dev-java/openjdk-11.0.11_p9-r1:11
-		>=dev-java/openjdk-bin-11.0.11_p9-r1:11
+		>=dev-java/openjdk-11.0.13_p8:11
+		>=dev-java/openjdk-bin-11.0.13_p8-r1:11
 	)"
 RDEPEND="${DEPEND}
 	dev-java/jansi-native
@@ -48,7 +48,7 @@ RDEPEND="${DEPEND}
 
 BDEPEND="dev-util/patchelf"
 RESTRICT="splitdebug"
-S="${WORKDIR}/${MY_PN}-IC-$(ver_cut 4-6)"
+S="${WORKDIR}/${MY_PN}-IC-$(ver_cut 3-6)"
 
 QA_PREBUILT="opt/${PN}-${MY_PV}/*"
 
