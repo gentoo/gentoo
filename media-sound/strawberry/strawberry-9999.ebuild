@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cdda debug +gstreamer ipod mtp pulseaudio +udisks vlc"
+IUSE="cdda debug +gstreamer ipod moodbar mtp pulseaudio +udisks vlc"
 
 BDEPEND="
 	dev-qt/linguist-tools:5
@@ -52,6 +52,7 @@ COMMON_DEPEND="
 		media-libs/gst-plugins-base:1.0
 	)
 	ipod? ( >=media-libs/libgpod-0.8.0 )
+	moodbar? ( sci-libs/fftw:3.0 )
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	pulseaudio? ( media-sound/pulseaudio )
 	vlc? ( media-video/vlc )
@@ -101,6 +102,7 @@ src_configure() {
 		-DENABLE_LIBGPOD="$(usex ipod)"
 		-DENABLE_LIBMTP="$(usex mtp)"
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
+		-DENABLE_MOODBAR="$(usex moodbar)"
 		-DENABLE_MUSICBRAINZ="$(usex gstreamer)"
 		-DENABLE_SONGFINGERPRINTING="$(usex gstreamer)"
 		-DENABLE_UDISKS2="$(usex udisks)"
