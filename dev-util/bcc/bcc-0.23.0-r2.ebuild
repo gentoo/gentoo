@@ -48,6 +48,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/bcc-0.9.0-no-luajit-automagic-dep.patch"
 	"${FILESDIR}/bcc-0.14.0-cmakelists.patch"
+	"${FILESDIR}/bcc-0.23.0-man-compress.patch"
 )
 
 pkg_pretend() {
@@ -118,4 +119,10 @@ src_install() {
 		name=${tool##*/}
 		dosym8 -r "${tool#${ED}}" /usr/sbin/${name}
 	done
+
+	docompress /usr/share/${PN}/man
+
+	newenvd - "70${P}" <<-_EOF_
+		MANPATH="${EPREFIX}/usr/share/${PN}/man"
+	_EOF_
 }
