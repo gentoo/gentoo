@@ -37,7 +37,7 @@ QA_PREBUILT="opt/${PN}/*"
 pkg_setup() {
 	if use amd64; then
 		if use kerberos; then
-			BUNDLED_OPENSSL="openssl.Linux.x86_64.krb5"
+			BUNDLED_OPENSSL="openssl.Linux.x86_64.krb"
 		else
 			BUNDLED_OPENSSL="openssl.Linux.x86_64"
 		fi
