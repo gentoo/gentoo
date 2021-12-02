@@ -14,7 +14,7 @@ SRC_URI="https://github.com/naev/naev/releases/download/v${PV}/${P}-source.tar.g
 LICENSE="GPL-3 public-domain CC-BY-3.0 CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc +mixer nls +openal"
+IUSE="doc +mixer +openal"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="
@@ -26,9 +26,9 @@ RDEPEND="
 	media-libs/freetype:2
 	sci-libs/suitesparse
 	virtual/glu
+	virtual/libintl
 	virtual/opengl
 	mixer? ( media-libs/sdl2-mixer )
-	nls? ( virtual/libintl )
 	openal? (
 		media-libs/libvorbis
 		media-libs/openal
@@ -36,11 +36,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
+	sys-devel/gettext
 	doc? (
 		app-doc/doxygen
 		dev-lua/ldoc
-	)
-	nls? ( sys-devel/gettext )"
+	)"
 
 pkg_setup() {
 	lua-single_pkg_setup
@@ -62,7 +62,6 @@ src_configure() {
 		$(meson_feature doc docs_c)
 		$(meson_feature doc docs_lua)
 		$(meson_feature lua_single_target_luajit luajit)
-		$(meson_feature nls)
 		$(meson_feature openal)
 		$(meson_feature mixer sdl_mixer)
 	)
