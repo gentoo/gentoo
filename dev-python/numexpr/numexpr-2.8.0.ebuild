@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 toolchain-funcs
 
 DESCRIPTION="Fast numerical array expression evaluator for Python and NumPy"
 HOMEPAGE="https://github.com/pydata/numexpr"
@@ -22,18 +22,43 @@ DEPEND="
 	mkl? ( sci-libs/mkl )
 "
 RDEPEND=${DEPEND}
+BDEPEND="
+	mkl? ( virtual/pkgconfig )
+"
 
 python_prepare_all() {
 	# TODO: mkl can be used but it fails for me
 	# only works with mkl in tree. newer mkl will use pkgconfig
 	if use mkl; then
-		use amd64 && local ext="_lp64"
+		local suffix=
+		use amd64 && local suffix="-lp64"
+
+		local flags=(
+			$($(tc-getPKG_CONFIG) --cflags --libs "mkl-dynamic${suffix}-iomp")
+		)
+		local f libdirs=() incdirs=() libs=()
+		for f in "${flags[@]}"; do
+			case ${f} in
+				-I*)
+					incdirs+=( "${f#-I}" )
+					;;
+				-L*)
+					libdirs+=( "${f#-L}" )
+					;;
+				-l*)
+					libs+=( "${f#-l}" )
+					;;
+				*)
+					die "Unexpected flag in pkg-config output: ${f}"
+					;;
+			esac
+		done
+
 		cat > site.cfg <<- _EOF_ || die
 			[mkl]
-			library_dirs = ${MKLROOT}/lib/em64t
-			include_dirs = ${MKLROOT}/include
-			mkl_libs = mkl_solver${ext}, mkl_intel${ext}, \
-			mkl_intel_thread, mkl_core, iomp5
+			library_dirs = $(IFS=:; echo "${libdirs[*]}")
+			include_dirs = $(IFS=:; echo "${incdirs[*]}")
+			libraries = $(IFS=:; echo "${libs[*]}")
 		_EOF_
 	fi
 
