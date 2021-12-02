@@ -20,7 +20,7 @@ RDEPEND=""
 
 src_prepare() {
 
-	epatch "${FILESDIR}"/${P}-makefile.patch
+	epatch "${FILESDIR}"/${PN}-makefile.patch
 
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		append-flags -DOSX
