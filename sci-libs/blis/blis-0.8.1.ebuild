@@ -18,16 +18,14 @@ REQUIRED_USE="
 	?? ( openmp pthread serial )
 	?? ( eselect-ldso 64bit-index )"
 
-RDEPEND="
+DEPEND="
 	eselect-ldso? (
 		!app-eselect/eselect-cblas
 		>=app-eselect/eselect-blas-0.2
 	)"
 
+RDEPEND="${DEPEND}"
 BDEPEND="${PYTHON_DEPS}"
-DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
-"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.0-rpath.patch
