@@ -66,14 +66,14 @@ CDEPEND="
 		sys-auth/elogind[pam]
 		sys-auth/pambase[elogind]
 	)
-	doc? (
-		x11-base/xorg-sgml-doctools
-	)
 	!!x11-drivers/nvidia-drivers[-libglvnd(+)]
 "
 DEPEND="${CDEPEND}
 	>=x11-base/xorg-proto-2021.4.99.2
 	>=x11-libs/xtrans-1.3.5
+	doc? (
+		x11-base/xorg-sgml-doctools
+	)
 "
 RDEPEND="${CDEPEND}
 	!systemd? ( gui-libs/display-manager-init )
