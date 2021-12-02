@@ -278,7 +278,7 @@ BDEPEND="
 	)
 	odk? ( >=app-doc/doxygen-1.8.4 )
 "
-if [[ ${MY_PV} != *9999* ]] && [[ ${PV} != *_* ]]; then
+if [[ ${MY_PV} != *9999* ]]; then
 	PDEPEND="=app-office/libreoffice-l10n-$(ver_cut 1-2)*"
 else
 	# Translations are not reliable on live ebuilds
