@@ -47,7 +47,7 @@ SRC_URI+=" https://gitweb.gentoo.org/proj/locale-gen.git/snapshot/locale-gen-${L
 SRC_URI+=" multilib-bootstrap? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 SRC_URI+=" systemd? ( https://gitweb.gentoo.org/proj/toolchain/glibc-systemd.git/snapshot/glibc-systemd-${GLIBC_SYSTEMD_VER}.tar.gz )"
 
-IUSE="audit caps cet compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib multilib-bootstrap nscd profile selinux +ssp +static-libs static-pie suid systemd systemtap test vanilla"
+IUSE="audit caps cet +clone3 compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib multilib-bootstrap nscd profile selinux +ssp +static-libs static-pie suid systemd systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -723,20 +723,6 @@ sanity_prechecks() {
 	fi
 }
 
-upgrade_warning() {
-	if [[ ${MERGE_TYPE} != buildonly && -n ${REPLACING_VERSIONS} && -z ${ROOT} ]]; then
-		local oldv newv=$(ver_cut 1-2 ${PV})
-		for oldv in ${REPLACING_VERSIONS}; do
-			if ver_test ${oldv} -lt ${newv}; then
-				ewarn "After upgrading glibc, please restart all running processes."
-				ewarn "Be sure to include init (telinit u) or systemd (systemctl daemon-reexec)."
-				ewarn "Alternatively, reboot your system."
-				break
-			fi
-		done
-	fi
-}
-
 #
 # the phases
 #
@@ -747,7 +733,6 @@ pkg_pretend() {
 	# All the checks...
 	einfo "Checking general environment sanity."
 	sanity_prechecks
-	upgrade_warning
 }
 
 pkg_setup() {
@@ -797,6 +782,14 @@ src_prepare() {
 		einfo "Applying Gentoo Glibc Patchset ${patchsetname}"
 		eapply "${WORKDIR}"/patches
 		einfo "Done."
+	fi
+
+	if use clone3 ; then
+		append-cppflags -DGENTOO_USE_CLONE3
+	else
+		# See e.g. bug #827386, bug #819045.
+		elog "Disabling the clone3 syscall for compatibility with older Electron apps."
+		elog "Please re-enable this flag before filing bugs!"
 	fi
 
 	default
@@ -1555,7 +1548,11 @@ pkg_postinst() {
 		use compile-locales || run_locale_gen "${EROOT}/"
 	fi
 
-	upgrade_warning
+	if systemd_is_booted && [[ -z ${ROOT} ]] ; then
+		# We need to restart systemd when upgrading from < 2.34
+		# bug #823756
+		systemctl daemon-reexec
+	fi
 
 	# Check for sanity of /etc/nsswitch.conf, take 2
 	if [[ -e ${EROOT}/etc/nsswitch.conf ]] && ! has_version sys-auth/libnss-nis ; then
