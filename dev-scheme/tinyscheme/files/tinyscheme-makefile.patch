@@ -1,6 +1,5 @@
-diff -ru a/makefile b/makefile
---- a/makefile	2013-04-14 20:08:33.000000000 +0000
-+++ b/makefile	2013-12-11 11:59:58.688782748 +0000
+--- a/makefile
++++ b/makefile
 @@ -18,8 +18,7 @@
  #AR= echo
  
