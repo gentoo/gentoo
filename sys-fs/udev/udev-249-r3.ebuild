@@ -295,5 +295,6 @@ pkg_postinst() {
 		ewarn
 		ewarn "If you wish to disable this, please see the above documentation, or set"
 		ewarn "net.ifnames=0 on the kernel command line."
+		ewarn "See also: https://wiki.gentoo.org/wiki/Udev#Optional:_Disable_or_override_predictable_network_interface_naming"
 	fi
 }
