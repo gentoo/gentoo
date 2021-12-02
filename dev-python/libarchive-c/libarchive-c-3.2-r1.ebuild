@@ -15,7 +15,7 @@ LICENSE="CC0-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
-RDEPEND="app-arch/libarchive:="
+RDEPEND="app-arch/libarchive"
 BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
