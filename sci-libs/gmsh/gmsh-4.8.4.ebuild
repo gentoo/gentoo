@@ -40,6 +40,10 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${P}-source
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc11.patch
+)
+
 pkg_setup() {
 	fortran-2_pkg_setup
 }
