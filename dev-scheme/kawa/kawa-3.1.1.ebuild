@@ -32,6 +32,8 @@ RDEPEND="
 	>=virtual/jre-1.8
 "
 
+PATCHES=( "${FILESDIR}"/${PN}-${PV}-configure.ac-single_AM_INIT_AUTOMAKE.patch )
+
 src_prepare() {
 	default
 
