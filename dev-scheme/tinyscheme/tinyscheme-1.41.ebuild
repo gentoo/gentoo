@@ -6,8 +6,8 @@ EAPI="5"
 inherit epatch flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="Lightweight scheme interpreter"
-HOMEPAGE="http://tinyscheme.sourceforge.net"
-SRC_URI="mirror://sourceforge/tinyscheme/${P}.tar.gz"
+HOMEPAGE="https://tinyscheme.sourceforge.net/"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
