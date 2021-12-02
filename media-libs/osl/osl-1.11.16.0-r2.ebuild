@@ -63,6 +63,10 @@ RESTRICT="test"
 
 S="${WORKDIR}/OpenShadingLanguage-Release-${PV}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.11.16.0-no-imath.patch
+)
+
 llvm_check_deps() {
 	has_version -r "sys-devel/clang:${LLVM_SLOT}"
 }
@@ -85,9 +89,6 @@ src_configure() {
 	local gcc=$(tc-getCC)
 
 	local mycmakeargs=(
-		# Force use of OpenEXR/ilmbase
-		-DCMAKE_DISABLE_FIND_PACKAGE_Imath=ON
-
 		# LLVM 10+ needs C++14
 		-DCMAKE_CXX_STANDARD=14
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
