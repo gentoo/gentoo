@@ -8,8 +8,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://kohei.us/files/${PN}/src/${P}.tar.xz"
-	# Unkeyworded while libreoffice has no release making use of this slot
-	# KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
 inherit autotools toolchain-funcs
 
