@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,11 +22,17 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS README TODO )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.4-musl-limits.patch
+)
+
 src_prepare() {
 	default
+
 	if ! use alsa; then
 		sed -i -e 's:alsa >= 1.0:dIsAbLe&:' configure || die
 	fi
+
 	if ! use pulseaudio; then
 		sed -i -e 's:libpulse-simple >= 1.0:dIsAbLe&:' configure || die
 	fi
@@ -34,5 +40,6 @@ src_prepare() {
 
 src_configure() {
 	export ac_cv_header_linux_soundcard_h=$(usex oss)
+
 	econf
 }
