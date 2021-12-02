@@ -1,5 +1,5 @@
 Plex Media Server is now installed. Please check the configuration file.
-It can be found in /etc/plex/plexmediaserver to verify the default settings.
+It can be found in /etc/default/plexmediaserver to verify the default settings.
 Adjust thread counts and memory usage limits for best performance.
 
 To start the Plex Server, run 'rc-config start plex-media-server'
