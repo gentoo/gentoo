@@ -17,10 +17,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="mkl"
 
-RDEPEND="
+DEPEND="
 	>=dev-python/numpy-1.6[${PYTHON_USEDEP}]
 	mkl? ( sci-libs/mkl )
 "
+RDEPEND=${DEPEND}
 
 python_prepare_all() {
 	# TODO: mkl can be used but it fails for me
