@@ -23,7 +23,7 @@ RDEPEND="acct-group/lxc
 	sys-libs/libcap
 	virtual/awk
 	caps? ( sys-libs/libcap )
-	io-uring? ( sys-libs/liburing:= )
+	io-uring? ( >=sys-libs/liburing-2:= )
 	pam? ( sys-libs/pam )
 	seccomp? ( sys-libs/libseccomp )
 	selinux? ( sys-libs/libselinux )
