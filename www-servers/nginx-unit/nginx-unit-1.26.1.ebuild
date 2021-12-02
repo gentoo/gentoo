@@ -34,8 +34,6 @@ DEPEND="perl? ( dev-lang/perl:= )
 	virtual/libcrypt:0="
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-glibc-2.34.patch )
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
