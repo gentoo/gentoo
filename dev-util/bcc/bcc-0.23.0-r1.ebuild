@@ -7,7 +7,7 @@ LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{7..10} )
 LLVM_MAX_SLOT=13
 
-inherit cmake linux-info llvm lua-single python-r1
+inherit cmake eapi8-dosym linux-info llvm lua-single python-r1
 
 DESCRIPTION="Tools for BPF-based Linux IO analysis, networking, monitoring, and more"
 HOMEPAGE="https://iovisor.github.io/bcc/"
@@ -111,4 +111,11 @@ src_install() {
 	python_foreach_impl python_optimize
 
 	newenvd "${FILESDIR}"/60bcc.env 60bcc.env
+
+	local tool name
+	for tool in "${ED}"/usr/share/bcc/tools/*; do
+		[[ ! -x ${tool} && ! -L ${tool} || -d ${tool} ]] && continue
+		name=${tool##*/}
+		dosym8 -r "${tool#${ED}}" /usr/sbin/${name}
+	done
 }
