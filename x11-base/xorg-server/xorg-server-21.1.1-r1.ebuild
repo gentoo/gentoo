@@ -92,6 +92,7 @@ REQUIRED_USE="!minimal? (
 	?? ( elogind systemd )"
 
 UPSTREAMED_PATCHES=(
+	"${FILESDIR}"/${P}-DPI-revert.patch
 )
 
 PATCHES=(
