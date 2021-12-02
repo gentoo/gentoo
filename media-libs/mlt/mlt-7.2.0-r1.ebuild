@@ -21,8 +21,11 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="test"
 
 # rtaudio will use OSS on non linux OSes
+# Qt already needs FFTW/PLUS so let's just always have it on to ensure
+# MLT is useful: bug #603168.
 DEPEND="
 	>=media-libs/libebur128-1.2.2:=
+	sci-libs/fftw:3.0=
 	ffmpeg? ( media-video/ffmpeg:0=[vdpau?,-flite] )
 	frei0r? ( media-plugins/frei0r-plugins )
 	gtk? (
@@ -48,7 +51,6 @@ DEPEND="
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
 		media-libs/libexif
-		sci-libs/fftw:3.0=
 		x11-libs/libX11
 	)
 	rtaudio? (
@@ -108,9 +110,7 @@ src_configure() {
 		-DMOD_SDL1=OFF
 		-DMOD_SDL2=$(usex sdl)
 		-DMOD_AVFORMAT=$(usex ffmpeg)
-		# TODO: does anything need plus?
-		# plus or qt
-		#$(use_enable fftw plus)
+		-DMOD_PLUS=ON
 		-DMOD_FREI0R=$(usex frei0r)
 		-DMOD_GDK=$(usex gtk)
 		-DMOD_JACKRACK=$(usex jack)
@@ -126,7 +126,6 @@ src_configure() {
 		-DMOD_SOX=OFF
 	)
 
-	# TODO: We currently have USE=fftw but both Qt and plus require it, removing flag for now.
 	# TODO: rework upstream CMake to allow controlling MMX/SSE/SSE2
 	# TODO: add swig language bindings?
 	# see also https://www.mltframework.org/twiki/bin/view/MLT/ExtremeMakeover
