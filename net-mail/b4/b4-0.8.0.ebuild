@@ -1,7 +1,7 @@
 # Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{7,8,9} )
@@ -17,4 +17,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-python/requests[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/dnspython[${PYTHON_USEDEP}]
+	dev-python/dkimpy[${PYTHON_USEDEP}]
+	dev-python/patatt[${PYTHON_USEDEP}]
+"
