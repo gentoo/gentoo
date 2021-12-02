@@ -42,6 +42,17 @@ python_check_deps() {
 	has_version -b "dev-python/passlib[${PYTHON_USEDEP}]"
 }
 
+pkg_pretend() {
+	if [[ ${BUILD_TYPE} != "binary" ]] && tc-is-gcc && [[ $(gcc-major-version) -lt 10 ]] ; then
+		die "libxcrypt is known to fail to build or be broken at runtime with < GCC 10 (bug #823179)!"
+	fi
+
+	if has "distcc" ${FEATURES} ; then
+		ewarn "Please verify all distcc nodes are using the same versions of GCC (>= 10) and Binutils!"
+		ewarn "Older/mismatched versions of GCC may lead to a misbehaving library: bug #823179."
+	fi
+}
+
 pkg_setup() {
 	MULTIBUILD_VARIANTS=(
 		$(usex compat 'xcrypt_compat' '')
