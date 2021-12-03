@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-03)
+# 'python' depends on dev-java/jython which has numerous vulnerabilities
+# Bug #825486
+dev-java/bsf python
+dev-java/batik python
+
 # Wolfgang E. Sanyer <ezzieyguywuf@gmail.com> (2021-12-01)
 # Requires pandoc, which is unstable due to various haskell dependencies
 # (including ghc)
