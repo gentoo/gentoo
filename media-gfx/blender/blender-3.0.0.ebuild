@@ -29,7 +29,7 @@ IUSE="+bullet +dds +fluid +openexr +system-python +system-numpy +tbb \
 	debug doc +embree +ffmpeg +fftw +gmp headless jack jemalloc jpeg2k \
 	man ndof nls openal +oidn +openimageio +openmp +opensubdiv \
 	+openvdb +osl +pdf +potrace +pugixml pulseaudio sdl +sndfile standalone test +tiff valgrind"
-RESTRICT="!test? ( test )"
+RESTRICT="!test? ( test ) test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	alembic? ( openexr )
