@@ -49,7 +49,7 @@ SRC_URI+="
 
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
-SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,sqlite} )
+SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx} system-sqlite )
 IUSE="+chatzilla cpu_flags_arm_neon +crypt dbus debug +gmp-autoupdate +ipc jack
 lto pulseaudio +roaming selinux startup-notification test wifi"
 IUSE+=" ${SYSTEM_IUSE[@]}"
