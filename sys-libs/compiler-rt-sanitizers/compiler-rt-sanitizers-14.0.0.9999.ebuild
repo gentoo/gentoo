@@ -3,8 +3,10 @@
 
 EAPI=7
 
+MULTILIB_COMPAT=( abi_x86_{32,64} )
 PYTHON_COMPAT=( python3_{8..10} )
-inherit check-reqs cmake flag-o-matic llvm llvm.org python-any-r1
+inherit check-reqs cmake flag-o-matic llvm llvm.org multilib-build \
+	python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
@@ -34,7 +36,7 @@ CLANG_SLOT=${SLOT%%.*}
 # llvm-6 for new lit options
 DEPEND="
 	>=sys-devel/llvm-6
-	virtual/libcrypt"
+	virtual/libcrypt[${MULTILIB_USEDEP}]"
 BDEPEND="
 	>=dev-util/cmake-3.16
 	clang? ( sys-devel/clang )
@@ -137,6 +139,14 @@ src_configure() {
 
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
+
+	if use amd64; then
+		mycmakeargs+=(
+			-DCAN_TARGET_i386=$(usex abi_x86_32)
+			-DCAN_TARGET_x86_64=$(usex abi_x86_64)
+		)
+	fi
+
 	if use test; then
 		mycmakeargs+=(
 			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
