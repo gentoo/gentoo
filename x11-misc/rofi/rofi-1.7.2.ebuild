@@ -15,7 +15,11 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+drun test +windowmode"
 RESTRICT="!test? ( test )"
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	sys-devel/bison
+	sys-devel/flex
+	virtual/pkgconfig
+"
 RDEPEND="
 	dev-libs/glib:2
 	gnome-base/librsvg:2
