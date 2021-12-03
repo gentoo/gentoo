@@ -22,6 +22,7 @@ DEPEND="
 	acct-user/at
 	virtual/mta
 	pam? ( sys-libs/pam )
+	selinux? ( sys-libs/libselinux )
 "
 RDEPEND="${DEPEND}
 	virtual/mta
