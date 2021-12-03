@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="offensive"
 
-DEPEND="app-text/recode:="
+DEPEND="app-text/recode:=
+	!games-misc/fortune-mod-tao"
 RDEPEND="${DEPEND}"
 BDEPEND="app-text/App-XML-DocBook-Builder"
 
