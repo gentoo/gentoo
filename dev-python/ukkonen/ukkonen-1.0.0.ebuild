@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
