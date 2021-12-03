@@ -5,22 +5,22 @@ EAPI=7
 
 inherit systemd
 
-DESCRIPTION="Clipboard management using dmenu"
+DESCRIPTION="Clipboard management"
 HOMEPAGE="https://github.com/cdown/clipmenu"
 SRC_URI="https://github.com/cdown/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+dmenu rofi fzf"
-REQUIRED_USE="?? ( dmenu rofi fzf )"
+IUSE="+dmenu fzf rofi"
+REQUIRED_USE="?? ( dmenu fzf rofi )"
 
 RDEPEND="
 	x11-misc/clipnotify
 	x11-misc/xsel
 	dmenu? ( x11-misc/dmenu )
-	rofi? ( x11-misc/rofi )
 	fzf? ( app-shells/fzf )
+	rofi? ( x11-misc/rofi )
 "
 
 src_prepare() {
@@ -49,7 +49,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! use dmenu && ! use rofi && ! use fzf ; then
+	if ! use dmenu && ! use fzf && ! use rofi ; then
 		ewarn "Clipmenu has been installed without a launcher."
 		ewarn "You will need to set \$CM_LAUNCHER to a dmenu-compatible app for clipmenu to work."
 		ewarn "Please refer to the documents for more info."
