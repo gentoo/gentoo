@@ -1,0 +1,12 @@
+diff --git a/src_test/dune b/src_test/dune_
+index f7a8440..d5337c5 100644
+--- a/src_test/dune
++++ b/src_test/dune_
+@@ -1,6 +1,6 @@
+ (executable
+  (name test_ppx_yojson)
+- (libraries oUnit result)
++ (libraries ounit2 result)
+  (preprocess (pps ppx_deriving.show ppx_deriving_yojson))
+  (flags (:standard -w -9-39-27-34-37)))
+ 
