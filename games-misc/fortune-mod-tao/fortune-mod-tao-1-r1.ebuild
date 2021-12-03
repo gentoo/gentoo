@@ -13,7 +13,8 @@ LICENSE="GPL-1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 
-RDEPEND="games-misc/fortune-mod"
+RDEPEND="games-misc/fortune-mod
+	!>=games-misc/fortune-mod-3.6.1"
 
 src_install() {
 	insinto /usr/share/fortune
