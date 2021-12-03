@@ -17,8 +17,9 @@ KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+# See https://github.com/pydot/pydot/issues/277 for pyparsing dep
 RDEPEND="
-	>=dev-python/pyparsing-2.1.4[${PYTHON_USEDEP}]
+	<dev-python/pyparsing-3[${PYTHON_USEDEP}]
 	media-gfx/graphviz"
 BDEPEND="
 	test? (
