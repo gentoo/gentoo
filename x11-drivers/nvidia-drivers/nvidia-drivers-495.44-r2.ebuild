@@ -514,4 +514,9 @@ pkg_postinst() {
 		elog 'USE="suid -elogind -systemd" if wish to keep using this feature.'
 		elog "Bug: https://bugs.gentoo.org/784248"
 	fi
+
+	ewarn
+	ewarn "This revision of ${PN} is applying a binary patch to prevent heavy"
+	ewarn "dbus spamming while using OpenGL. If you experience issues, please try to"
+	ewarn "mask =${CATEGORY}/${PN}-${PVR} to use NVIDIA's intended version."
 }
