@@ -31,7 +31,7 @@ REQUIRED_USE="
 "
 
 DEPEND="
-	>=dev-libs/openssl-1.0.2k:0=[bindist(-)=]
+	>=dev-libs/openssl-1.0.2k:=
 	dbus? ( sys-apps/dbus )
 	kernel_linux? (
 		dev-libs/libnl:3
@@ -151,14 +151,6 @@ src_prepare() {
 
 	# bug (640492)
 	sed -i 's#-Werror ##' wpa_supplicant/Makefile || die
-
-	## Security patches
-	# CVE-2019-16275 (bug #696030)
-	eapply "${FILESDIR}/wpa_supplicant-2.9-AP-Silently-ignore-management-frame-from-unexpected.patch"
-	# 2020-2, 2021-1 security advisories (bug #768759)
-	eapply "${WORKDIR}"/wpa_supplicant-2.9-r3-patches/security-{2020-2,2021-1}/*.patch
-	# CVE-2021-30004 (bug #780138)
-	eapply "${WORKDIR}"/wpa_supplicant-2.9-r3-patches/misc/CVE-2021-30004.patch
 }
 
 src_configure() {
