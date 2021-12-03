@@ -1,7 +1,5 @@
-diff --git a/src_test/dune b/src_test/dune_
-index f7a8440..d5337c5 100644
 --- a/src_test/dune
-+++ b/src_test/dune_
++++ b/src_test/dune
 @@ -1,6 +1,6 @@
  (executable
   (name test_ppx_yojson)
