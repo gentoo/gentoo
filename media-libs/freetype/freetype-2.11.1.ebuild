@@ -176,6 +176,7 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--disable-freetype-config
 		--enable-shared
+		--with-zlib
 		$(use_with brotli)
 		$(use_with bzip2)
 		$(use_with harfbuzz)
