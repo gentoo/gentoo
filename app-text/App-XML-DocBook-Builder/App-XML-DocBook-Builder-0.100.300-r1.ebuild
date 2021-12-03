@@ -17,6 +17,7 @@ KEYWORDS="~amd64"
 RDEPEND="dev-perl/Class-XSAccessor
 	virtual/perl-Getopt-Long
 	virtual/perl-File-Path
+	dev-perl/Path-Tiny
 	dev-perl/Test-Trap"
 BDEPEND="dev-perl/Module-Build
 	test? (
