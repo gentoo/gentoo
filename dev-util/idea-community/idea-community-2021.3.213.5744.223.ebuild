@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils desktop
+inherit desktop wrapper
 
 SLOT="0"
 PV_STRING="$(ver_cut 2-6)"
