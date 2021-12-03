@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8,9} )
-inherit python-any-r1 toolchain-funcs
+PYTHON_COMPAT=( python3_{9,10} )
+inherit linux-info python-any-r1 toolchain-funcs
 
 MY_PV="$(ver_cut 1-2)"
 MY_P=linux-${MY_PV}
