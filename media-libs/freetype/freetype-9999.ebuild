@@ -43,10 +43,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.10.3-sizeof-types.patch # 459966
-)
-
 _egit_repo_handler() {
 	if [[ "${PV}" == 9999 ]] ; then
 		local phase="${1}"
@@ -179,7 +175,6 @@ multilib_src_configure() {
 
 	local myeconfargs=(
 		--disable-freetype-config
-		--enable-biarch-config
 		--enable-shared
 		$(use_with brotli)
 		$(use_with bzip2)
