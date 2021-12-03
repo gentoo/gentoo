@@ -110,6 +110,7 @@ src_install() {
 	doins "${WORKDIR}"/inittab
 
 	newinitd "${FILESDIR}"/bootlogd.initd bootlogd
+	newconfd "${FILESDIR}"/bootlogd.confd bootlogd
 	into /
 	dosbin "${FILESDIR}"/halt.sh
 
