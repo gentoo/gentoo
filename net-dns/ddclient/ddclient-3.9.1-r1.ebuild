@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~sparc x86"
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="examples iproute2"
+IUSE="examples iproute2 selinux"
 
 RDEPEND="
 	acct-group/ddclient
@@ -25,6 +25,7 @@ RDEPEND="
 	virtual/perl-Digest-SHA
 	virtual/perl-JSON-PP
 	iproute2? ( sys-apps/iproute2 )
+	selinux? ( sec-policy/selinux-ddclient )
 "
 
 src_prepare() {
