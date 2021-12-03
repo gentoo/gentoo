@@ -3,8 +3,10 @@
 
 EAPI=7
 
+MULTILIB_COMPAT=( abi_x86_{32,64} )
 PYTHON_COMPAT=( python3_{8..10} )
-inherit cmake flag-o-matic llvm llvm.org python-any-r1 toolchain-funcs
+inherit cmake flag-o-matic llvm llvm.org multilib-build python-any-r1 \
+	toolchain-funcs
 
 DESCRIPTION="Compiler runtime library for clang (built-in part)"
 HOMEPAGE="https://llvm.org/"
@@ -93,6 +95,13 @@ src_configure() {
 
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
+
+	if use amd64; then
+		mycmakeargs+=(
+			-DCAN_TARGET_i386=$(usex abi_x86_32)
+			-DCAN_TARGET_x86_64=$(usex abi_x86_64)
+		)
+	fi
 
 	if use prefix && [[ "${CHOST}" == *-darwin* ]] ; then
 		mycmakeargs+=(
