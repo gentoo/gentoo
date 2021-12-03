@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-03)
+# Numerous vulnerabilities. Bug #825486
+# All consumers are package.use.mask'ed
+# dev-java/batik[python] 
+# dev-java/bsf[python]
+dev-java/jython
+
 # Jonas Stein <jstein@gentoo.org> (2021-12-01)
 # Removal on 2022-01-01.
 # Disbanded by upstream who sugessted to 
