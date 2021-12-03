@@ -1,0 +1,69 @@
+diff --git a/raet/lane/paging.py b/raet/lane/paging.py
+index 5a2f480..e33d95c 100644
+--- a/raet/lane/paging.py
++++ b/raet/lane/paging.py
+@@ -6,7 +6,7 @@ paging module provides classes for RAET UXD messaging management
+ '''
+ 
+ # Import python libs
+-from collections import Mapping
++from collections.abc import Mapping
+ try:
+     import simplejson as json
+ except ImportError:
+diff --git a/raet/lane/stacking.py b/raet/lane/stacking.py
+index 3969cd9..be88111 100644
+--- a/raet/lane/stacking.py
++++ b/raet/lane/stacking.py
+@@ -11,7 +11,8 @@ import sys
+ import os
+ import errno
+ 
+-from collections import deque,  Mapping
++from collections import deque
++from collections.abc import Mapping
+ try:
+     import simplejson as json
+ except ImportError:
+diff --git a/raet/road/packeting.py b/raet/road/packeting.py
+index 0675912..078d76d 100644
+--- a/raet/road/packeting.py
++++ b/raet/road/packeting.py
+@@ -6,7 +6,8 @@ packeting module provides classes for Raet packets
+ '''
+ 
+ # Import python libs
+-from collections import Mapping, deque
++from collections import deque
++from collections.abc import Mapping
+ try:
+     import simplejson as json
+ except ImportError:
+diff --git a/raet/road/stacking.py b/raet/road/stacking.py
+index 924ae52..4d8670b 100644
+--- a/raet/road/stacking.py
++++ b/raet/road/stacking.py
+@@ -10,7 +10,8 @@ import socket
+ import os
+ import errno
+ 
+-from collections import deque,  Mapping
++from collections import deque
++from collections.abc import Mapping
+ try:
+     import simplejson as json
+ except ImportError:
+diff --git a/raet/stacking.py b/raet/stacking.py
+index 0a1743a..9244b66 100644
+--- a/raet/stacking.py
++++ b/raet/stacking.py
+@@ -13,7 +13,8 @@ import sys
+ if sys.version_info > (3,):
+     long = int
+ 
+-from collections import deque,  Mapping
++from collections import deque
++from collections.abc import Mapping
+ try:
+     import simplejson as json
+ except ImportError:
