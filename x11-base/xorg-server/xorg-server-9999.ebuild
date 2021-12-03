@@ -149,7 +149,7 @@ src_configure() {
 	else
 		emesonargs+=(
 			-Dsystemd_logind=false
-			$(meson_use suid suid_wrapper)
+			-Dsuid_wrapper=false
 		)
 	fi
 
@@ -161,6 +161,13 @@ src_install() {
 
 	#The new meson build system do not leave X symlink
 	ln -s Xorg "${ED}"/usr/bin/X
+
+	# The meson build system does not support install-setuid
+	if ! use systemd || ! use elogind; then
+		if use suid; then
+			chmod u+s "${ED}"/usr/bin/Xorg
+		fi
+	fi
 
 	if ! use xorg; then
 		rm -f "${ED}"/usr/share/man/man1/Xserver.1x \
