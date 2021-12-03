@@ -80,12 +80,14 @@ src_compile() {
 }
 
 src_install() {
+	# See bug #715392 re LDCONFIG
 	emake \
 		DESTDIR="${D}" \
 		DOCDIR_OLSRD="${D}/usr/share/doc/${PF}" \
 		LIBDIR="${D}/usr/$(get_libdir)/${PN}" \
 		OS=linux \
 		STRIP=true \
+		LDCONFIG=true \
 		install_all
 
 	if use gtk; then
