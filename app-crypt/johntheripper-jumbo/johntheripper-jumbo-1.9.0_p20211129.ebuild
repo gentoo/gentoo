@@ -22,7 +22,7 @@ else
 	SRC_URI="https://github.com/openwall/john/archive/${HASH_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/john-${HASH_COMMIT}"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~alpha ~amd64 ~hppa ~mips ~sparc ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
 LICENSE="GPL-2"
@@ -48,6 +48,10 @@ RDEPEND="${DEPEND}
 	dev-perl/Digest-SHA3
 	dev-perl/Digest-GOST
 	!app-crypt/johntheripper"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-bashism.patch
+)
 
 pkg_setup() {
 	if use openmp && [[ ${MERGE_TYPE} != binary ]]; then
