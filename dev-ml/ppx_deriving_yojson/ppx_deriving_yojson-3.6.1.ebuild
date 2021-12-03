@@ -15,8 +15,6 @@ KEYWORDS="~amd64"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}"/${PN}-${PV}-src_test_dune-ounit2.patch )
-
 RDEPEND="
 	<dev-ml/yojson-2.0.0:=
 	>=dev-ml/ppxlib-0.20.0:=
@@ -25,3 +23,5 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-ml/ounit2 )"
+
+PATCHES=( "${FILESDIR}"/${PN}-${PV}-src_test_dune-ounit2.patch )
