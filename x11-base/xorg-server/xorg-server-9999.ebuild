@@ -56,6 +56,7 @@ CDEPEND="
 	udev? ( virtual/libudev:= )
 	unwind? ( sys-libs/libunwind )
 	>=x11-apps/xinit-1.3.3-r1
+	selinux? ( sys-libs/libselinux )
 	systemd? (
 		sys-apps/dbus
 		sys-apps/systemd
@@ -70,6 +71,9 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	>=x11-base/xorg-proto-2021.4.99.2
 	>=x11-libs/xtrans-1.3.5
+	doc? (
+		x11-base/xorg-sgml-doctools
+	)
 "
 RDEPEND="${CDEPEND}
 	!systemd? ( gui-libs/display-manager-init )

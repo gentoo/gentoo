@@ -176,6 +176,14 @@ src_compile() {
 	fi
 }
 
+src_test () {
+	# https://bugs.gentoo.org/827212
+	local vm_version="$(java-config -g PROVIDES_VERSION)"
+	if [[ "${vm_version}" != "1.8" ]] ; then
+		java-pkg-simple_src_test
+	fi
+}
+
 src_install() {
 	default
 	java-pkg_dojar "icu4j.jar"

@@ -32,6 +32,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-clang.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }

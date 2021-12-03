@@ -23,14 +23,14 @@ else
 
 	# musl patches taken from:
 	# http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/systemd/systemd
-	MUSL_PATCHSET="249.5"
+	MUSL_PATCHSET="249.5-r1"
 	SRC_URI+="
 	elibc_musl? (
 		https://dev.gentoo.org/~gyakovlev/distfiles/systemd-musl-patches-${MUSL_PATCHSET}.tar.xz
 		https://dev.gentoo.org/~soap/distfiles/systemd-musl-patches-${MUSL_PATCHSET}.tar.xz
 	)"
 
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
@@ -292,5 +292,12 @@ pkg_postinst() {
 		ewarn
 		ewarn "If you wish to disable this, please see the above documentation, or set"
 		ewarn "net.ifnames=0 on the kernel command line."
+		ewarn "See also: https://wiki.gentoo.org/wiki/Udev#Optional:_Disable_or_override_predictable_network_interface_naming"
+		if [[ -e ${EROOT}/etc/udev/rules.d/80-net-name-slot.rules ]]; then
+			ewarn
+			ewarn "Detected '${EROOT}/etc/udev/rules.d/80-net-name-slot.rules'"
+			ewarn "Renaming to '${EROOT}/etc/udev/rules.d/80-net-setup-link.rules'"
+			mv "${EROOT}"/etc/udev/rules.d/80-net-{name-slot,setup-link}.rules
+		fi
 	fi
 }

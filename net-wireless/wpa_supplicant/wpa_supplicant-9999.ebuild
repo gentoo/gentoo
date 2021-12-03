@@ -15,10 +15,11 @@ if [ "${PV}" = "9999" ]; then
 else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	SRC_URI="https://w1.fi/releases/${P}.tar.gz"
+	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-2.9-r3-patches.tar.bz2"
 fi
 
 SLOT="0"
-IUSE="ap bindist +crda broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
+IUSE="ap +crda broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
 
 # CONFIG_PRIVSEP=y does not have sufficient support for the new driver
 # interface functions used for MACsec, so this combination cannot be used
@@ -30,7 +31,7 @@ REQUIRED_USE="
 "
 
 DEPEND="
-	>=dev-libs/openssl-1.0.2k:0=[bindist(-)=]
+	>=dev-libs/openssl-1.0.2k:=
 	dbus? ( sys-apps/dbus )
 	kernel_linux? (
 		dev-libs/libnl:3
@@ -255,24 +256,23 @@ src_configure() {
 
 	Kconfig_style_config TLS openssl
 	Kconfig_style_config FST
-	if ! use bindist ; then
-		Kconfig_style_config EAP_PWD
-		if use fils; then
-			Kconfig_style_config FILS
-			Kconfig_style_config FILS_SK_PFS
-		fi
-		if use mesh; then
-			Kconfig_style_config MESH
-		else
-			Kconfig_style_config MESH n
-		fi
-		#WPA3
-		Kconfig_style_config OWE
-		Kconfig_style_config SAE
-		Kconfig_style_config DPP
-		Kconfig_style_config SUITEB192
-		Kconfig_style_config SUITEB
+
+	Kconfig_style_config EAP_PWD
+	if use fils; then
+		Kconfig_style_config FILS
+		Kconfig_style_config FILS_SK_PFS
 	fi
+	if use mesh; then
+		Kconfig_style_config MESH
+	else
+		Kconfig_style_config MESH n
+	fi
+	# WPA3
+	Kconfig_style_config OWE
+	Kconfig_style_config SAE
+	Kconfig_style_config DPP
+	Kconfig_style_config SUITEB192
+	Kconfig_style_config SUITEB
 
 	if use smartcard ; then
 		Kconfig_style_config SMARTCARD
@@ -467,11 +467,6 @@ pkg_postinst() {
 		echo
 		ewarn "WARNING: your old configuration file ${EROOT}/etc/wpa_supplicant.conf"
 		ewarn "needs to be moved to ${EROOT}/etc/wpa_supplicant/wpa_supplicant.conf"
-	fi
-
-	if use bindist; then
-		ewarn "Using bindist use flag presently breaks WPA3 (specifically SAE, OWE, DPP, and FILS)."
-		ewarn "This is incredibly undesirable"
 	fi
 
 	# Mea culpa, feel free to remove that after some time --mgorny.

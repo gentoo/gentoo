@@ -263,7 +263,7 @@ KEYWORDS="amd64 x86"
 IUSE="+agent +agent2 curl frontend gnutls ipv6 java ldap libxml2 mysql odbc openipmi +openssl oracle +postgres proxy server snmp sqlite ssh ssl static"
 REQUIRED_USE="|| ( agent agent2 frontend proxy server )
 	proxy? ( ^^ ( mysql oracle postgres sqlite ) )
-	server? ( ^^ ( mysql oracle postgres ) )
+	server? ( ^^ ( mysql oracle postgres ) !sqlite )
 	ssl? ( ^^ ( gnutls openssl ) )
 	static? ( !oracle !snmp )"
 

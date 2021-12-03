@@ -21,7 +21,10 @@ BDEPEND="dev-lang/perl"
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
-PATCHES=( "${FILESDIR}"/${PN}-build-fixes.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-build-fixes.patch
+	"${FILESDIR}"/${PN}-0.49.4_p20190718-fix-configure-clang.patch
+)
 
 src_prepare() {
 	default
@@ -30,7 +33,7 @@ src_prepare() {
 	mv configure.{in,ac} || die
 
 	# missing include for memset
-	sed -i '1s;^;#include <string.h>\n;' pts_defl.c
+	sed -i '1s;^;#include <string.h>\n;' pts_defl.c || die
 
 	# eautoreconf is still needed or you get bad warnings
 	eautoreconf

@@ -33,6 +33,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2021-12-01)
+# Removal on 2022-01-01.
+# Disbanded by upstream who sugessted to 
+# use nmap instead many years ago. (bug #680546)
+net-analyzer/amap
+
+# Sam James <sam@gentoo.org> (2021-12-01)
+# OSL 12 is a development release (for now).
+# Doesn't work with LLVM 13 yet; mask to help
+# Blender compatibility (no mixed LLVM versions).
+=media-libs/osl-1.12*
+
 # William Hubbs <williamh@gentoo.org> (2021-11-30)
 # Dead upstream, no releases since 2015
 # Bug #770619; masked for removal on 2021-12-30.
@@ -649,23 +661,6 @@ perl-core/Term-ANSIColor
 # to cause hangs in some situations. Mask for now to avoid duplicate reports.
 # bug #821532, bug #821523 (and bug #821403 but shouldn't be in 3.1+).
 >=sys-apps/sandbox-3.0
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-01)
-# Unused library and virtual, removal on 2021-12-01
-dev-java/jamon
-java-virtuals/interceptor-api
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-31)
-# Multiple open bugs, unbuildable due to sandbox issues,
-# uses EAPI 5, no revdeps, no other distro packages this.
-# Removal on 2021-11-30. Bug #819252.
-sys-apps/frandom
-
-# Hans de Graaff <graaff@gentoo.org> (2021-10-30)
-# Obsolete slot. Use a newer slot of the same package.
-# Masked for removal in 30 days.
-dev-ruby/rmagick:0
-dev-ruby/rbnacl:4
 
 # Sam James <sam@gentoo.org> (2021-10-10)
 # Needs upstream build system fixes (currently in progress).

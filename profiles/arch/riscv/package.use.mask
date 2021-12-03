@@ -2,20 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Alex Fan <alex.fan.q@gmail.com> (2021-11-19)
+# depends on dev-lang/ocaml
+app-accessibility/brltty ocaml ocamlopt
+
+# Alex Fan <alex.fan.q@gmail.com> (2021-11-19)
 # opengl -> dev-python/pygame is not keyworded yet
 dev-python/sympy opengl
 
 # Sam James <sam@gentoo.org> (2021-10-26)
 # sys-libs/libhugetlbfs is not keyworded on ~riscv right now
 sys-apps/nvme-cli hugepages
-
-# Alex Fan <alexfanqi@yahoo.com> (2021-10-11)
-# sci-libs/sundials fails several tests #817680
-sci-mathematics/octave sundials
-
-# Alex Fan <alexfanqi@yahoo.com> (2021-09-27)
-# depends on mysql
-kde-apps/akonadi mysql
 
 # Marek Szuba <marecki@gentoo.org> (2021-09-23)
 # mkdocs ecosystem only partly keyworded on riscv, has rather messy
@@ -93,7 +89,7 @@ gnome-base/gdm accessibility
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # dependencies not keyworded/tested
-kde-plasma/plasma-meta accessibility grub plymouth pulseaudio
+kde-plasma/plasma-meta grub plymouth
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-17)
 # sys-libs/libfaketime does not work properly on this arch

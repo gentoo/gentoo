@@ -5,7 +5,7 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<use>
-		<flag name="gtk">Install Python-based GTK menu</flag>
-	</use>
+	<upstream>
+		<remote-id type="gitlab">LibreGames/jumpnbump</remote-id>
+	</upstream>
 </pkgmetadata>
