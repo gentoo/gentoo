@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-BDEPEND=">=app-eselect/eselect-iptables-20200508"
+BDEPEND=">=app-eselect/eselect-iptables-20211203"
 RDEPEND="${BDEPEND}"
 
 src_compile() {
@@ -37,7 +37,7 @@ src_install() {
 
 pkg_postinst() {
 	if ! eselect arptables show &>/dev/null; then
-		elog "Current arptables implementation is unset, setting to ebtables-legacy"
+		elog "Current arptables implementation is unset, setting to arptables-legacy"
 		eselect arptables set arptables-legacy
 	fi
 
