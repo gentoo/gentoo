@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 command="/usr/bin/dnscrypt-proxy"
@@ -7,7 +7,7 @@ command_args="${DNSCRYPT_PROXY_OPTS:--config /etc/dnscrypt-proxy/dnscrypt-proxy.
 command_user="${DNSCRYPT_PROXY_USER:-dnscrypt-proxy}:${DNSCRYPT_PROXY_GROUP:-dnscrypt-proxy}"
 pidfile="/run/${RC_SVCNAME}.pid"
 retry="SIGTERM/5/SIGTERM/5/SIGKILL/5"
-start_stop_daemon_args="--background --make-pidfile"
+command_background="yes"
 
 depend() {
 	use logger net
