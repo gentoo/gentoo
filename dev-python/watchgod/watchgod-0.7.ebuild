@@ -27,3 +27,15 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# flaky test on slow systems, https://github.com/samuelcolvin/watchgod/issues/84
+	tests/test_watch.py::test_awatch_log
+)
+
+src_prepare() {
+	# increase timeout
+	sed -e '/sleep/s/0.01/1.0/' -i tests/test_watch.py || die
+
+	distutils-r1_src_prepare
+}
