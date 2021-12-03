@@ -17,7 +17,7 @@ IUSE="X +gmp portable"
 RDEPEND="
 	dev-libs/libffi:=
 	X? ( x11-libs/motif:0 )
-	gmp? ( >=dev-libs/gmp-5 )
+	gmp? ( >=dev-libs/gmp-5:= )
 "
 DEPEND="${RDEPEND}"
 
@@ -32,7 +32,6 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		--disable-static
 		--enable-shared
 		--with-pic=pic-only
 		$(use_enable !portable native-codegeneration)
