@@ -266,29 +266,6 @@ src_configure() {
 	cmake_src_configure
 }
 
-src_compile() {
-	cmake_src_compile
-
-	if use doc; then
-		# Workaround for binary drivers.
-		addpredict /dev/ati
-		addpredict /dev/dri
-		addpredict /dev/nvidiactl
-
-		einfo "Generating Blender C/C++ API docs ..."
-		cd "${CMAKE_USE_DIR}"/doc/doxygen || die
-		doxygen -u Doxyfile || die
-		doxygen || die "doxygen failed to build API docs."
-
-		cd "${CMAKE_USE_DIR}" || die
-		einfo "Generating (BPY) Blender Python API docs ..."
-		"${BUILD_DIR}"/bin/blender --background --python doc/python_api/sphinx_doc_gen.py -noaudio || die "sphinx failed."
-
-		cd "${CMAKE_USE_DIR}"/doc/python_api || die
-		sphinx-build sphinx-in BPY_API || die "sphinx failed."
-	fi
-}
-
 src_test() {
 	# A lot of tests needs to have access to the installed data files.
 	# So install them into the image directory now.
@@ -316,19 +293,41 @@ src_install() {
 		dobin "${BUILD_DIR}"/bin/cycles
 	fi
 
-	if use doc; then
-		docinto "html/API/python"
-		dodoc -r "${CMAKE_USE_DIR}"/doc/python_api/BPY_API/.
-
-		docinto "html/API/blender"
-		dodoc -r "${CMAKE_USE_DIR}"/doc/doxygen/html/.
-	fi
-
 	cmake_src_install
 
 	if use man; then
 		# Slot the man page
 		mv "${ED}/usr/share/man/man1/blender.1" "${ED}/usr/share/man/man1/blender-${BV}.1" || die
+	fi
+
+	if use doc; then
+		# Define custom blender data/script file paths. Otherwise Blender will not be able to find them during doc building.
+		# (Because the data is in the image directory and it will default to look in /usr/share)
+		export BLENDER_SYSTEM_SCRIPTS=${ED}/usr/share/blender/${BV}/scripts
+		export BLENDER_SYSTEM_DATAFILES=${ED}/usr/share/blender/${BV}/datafiles
+
+		# Workaround for binary drivers.
+		addpredict /dev/ati
+		addpredict /dev/dri
+		addpredict /dev/nvidiactl
+
+		einfo "Generating Blender C/C++ API docs ..."
+		cd "${CMAKE_USE_DIR}"/doc/doxygen || die
+		doxygen -u Doxyfile || die
+		doxygen || die "doxygen failed to build API docs."
+
+		cd "${CMAKE_USE_DIR}" || die
+		einfo "Generating (BPY) Blender Python API docs ..."
+		"${BUILD_DIR}"/bin/blender --background --python doc/python_api/sphinx_doc_gen.py -noaudio || die "sphinx failed."
+
+		cd "${CMAKE_USE_DIR}"/doc/python_api || die
+		sphinx-build sphinx-in BPY_API || die "sphinx failed."
+
+		docinto "html/API/python"
+		dodoc -r "${CMAKE_USE_DIR}"/doc/python_api/BPY_API/.
+
+		docinto "html/API/blender"
+		dodoc -r "${CMAKE_USE_DIR}"/doc/doxygen/html/.
 	fi
 
 	# Fix doc installdir
