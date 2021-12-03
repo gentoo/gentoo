@@ -118,7 +118,7 @@ RDEPEND="
 	jpeg2k? ( media-libs/openjpeg:2=[${MULTILIB_USEDEP}] )
 	lapack? (
 		virtual/cblas
-		virtual/lapack
+		>=virtual/lapack-3.10
 	)
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	openexr? ( <media-libs/openexr-3.0.0:0=[${MULTILIB_USEDEP}] )
@@ -283,6 +283,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.1.2-opencl-license.patch
 	"${FILESDIR}"/${PN}-4.4.0-disable-native-cpuflag-detect.patch
 	"${FILESDIR}"/${PN}-4.5.0-link-with-cblas-for-lapack.patch
+	"${FILESDIR}"/${PN}-4.5.2-lapack-3.10.patch
 )
 
 pkg_pretend() {
