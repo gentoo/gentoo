@@ -7,14 +7,14 @@ inherit meson xdg
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/eXeC64/imv.git"
+	EGIT_REPO_URI="https://git.sr.ht/~exec64/imv/"
 else
 	SRC_URI="https://github.com/eXeC64/imv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Minimal image viewer designed for tiling window manager users"
-HOMEPAGE="https://github.com/eXeC64/imv/"
+HOMEPAGE="https://sr.ht/~exec64/imv/"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
