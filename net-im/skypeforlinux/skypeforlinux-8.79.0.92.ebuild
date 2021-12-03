@@ -10,17 +10,15 @@ inherit chromium-2 desktop pax-utils rpm multilib-build xdg
 DESCRIPTION="Instant messaging client, with support for audio and video"
 HOMEPAGE="https://www.skype.com/"
 SRC_URI="https://repo.skype.com/rpm/stable/${PN}_${PV}-1.x86_64.rpm"
+S="${WORKDIR}"
 
 LICENSE="Skype-TOS MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 Boost-1.0 ISC CC-BY-SA-3.0 CC0-1.0 openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 
-S="${WORKDIR}"
 QA_PREBUILT="*"
 RESTRICT="mirror bindist strip" #299368
 
-# Need to drop -clone3(+) from glibc once Electron is updated
-# bug #823790
 RDEPEND="
 	app-crypt/libsecret[${MULTILIB_USEDEP}]
 	dev-libs/atk[${MULTILIB_USEDEP}]
@@ -34,7 +32,6 @@ RDEPEND="
 	media-libs/libv4l[${MULTILIB_USEDEP}]
 	net-print/cups[${MULTILIB_USEDEP}]
 	sys-apps/dbus[${MULTILIB_USEDEP}]
-	|| ( <sys-libs/glibc-2.34 >=sys-libs/glibc-2.34[-clone3(+)] )
 	sys-devel/gcc[cxx]
 	virtual/ttf-fonts
 	x11-libs/cairo[${MULTILIB_USEDEP}]
