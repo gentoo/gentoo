@@ -837,6 +837,11 @@ src_compile() {
 		s|\(^Exec=\)/usr/bin/|\1|g;' \
 		chrome/installer/linux/common/desktop.template > \
 		out/Release/chromium-browser-chromium.desktop || die
+
+	# Build vk_swiftshader_icd.json; bug #827861
+	sed -e 's|${ICD_LIBRARY_PATH}|./libvk_swiftshader.so|g' \
+		third_party/swiftshader/src/Vulkan/vk_swiftshader_icd.json.tmpl > \
+		out/Release/vk_swiftshader_icd.json || die
 }
 
 src_install() {
@@ -894,6 +899,9 @@ src_install() {
 	doins -r out/Release/locales
 	doins -r out/Release/resources
 	doins -r out/Release/MEIPreload
+
+	# Install vk_swiftshader_icd.json; bug #827861
+	doins out/Release/vk_swiftshader_icd.json
 
 	if [[ -d out/Release/swiftshader ]]; then
 		insinto "${CHROMIUM_HOME}/swiftshader"
