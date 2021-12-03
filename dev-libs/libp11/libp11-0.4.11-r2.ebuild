@@ -13,8 +13,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc 
 IUSE="doc static-libs"
 
 RDEPEND="dev-libs/openssl:="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
 src_configure() {
