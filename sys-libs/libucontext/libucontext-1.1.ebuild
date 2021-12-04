@@ -35,6 +35,8 @@ src_compile() {
 		arch="aarch64"
 	elif use ppc64 ; then
 		arch="ppc64"
+	else
+		arch="$(uname -m)"
 	fi
 
 	emake ARCH="${arch}" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" all $(usev man 'docs')
