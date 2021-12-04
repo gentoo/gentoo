@@ -1,0 +1,16 @@
+# mask LLVM 13, since it breaks tcl, which breaks sqlite and so on
+
+>sys-devel/llvm-12.0.1
+>sys-devel/llvm-common-12.0.1
+
+>sys-libs/compiler-rt-12.0.1
+>sys-libs/compiler-rt-sanitizers-12.0.1
+
+>sys-devel/clang-12.0.1
+>sys-devel/clang-common-12.0.1
+>sys-devel/clang-runtime-12.0.1
+
+>sys-devel/lld-12.0.1
+>sys-libs/libcxx-12.0.1
+>sys-libs/libcxxabi-12.0.1
+>sys-libs/llvm-libunwind-12.0.1
