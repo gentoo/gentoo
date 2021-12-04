@@ -29,7 +29,7 @@ DEPEND="${COMMON_DEPEND}
 	doc? ( app-doc/doxygen )
 "
 RDEPEND="${COMMON_DEPEND}
-	!net-dns/ldns-utils
+	!<net-dns/ldns-utils-1.8.0-r2
 "
 
 RESTRICT="test" # 1.6.9 has no test directory
