@@ -3,7 +3,6 @@
 
 EAPI=8
 
-
 CRATES="
 	adler-0.2.3
 	aho-corasick-0.7.15
@@ -170,7 +169,7 @@ RDEPEND="
 	!app-text/delta
 "
 
-QA_FLAGS_IGNORED="/usr/bin/delta"
+QA_FLAGS_IGNORED="usr/bin/delta"
 
 src_configure() {
 	# Some crates will auto-build and statically link C libraries(!)
