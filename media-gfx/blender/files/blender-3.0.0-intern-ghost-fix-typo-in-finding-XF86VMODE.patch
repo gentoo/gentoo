@@ -1,0 +1,31 @@
+https://developer.blender.org/D13464
+
+From 781c56f054b4c7717739752336427a811f7633eb Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 4 Dec 2021 00:38:59 +0000
+Subject: [PATCH] intern/ghost: fix typo in finding XF86VMODE
+
+---
+ intern/ghost/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/intern/ghost/CMakeLists.txt b/intern/ghost/CMakeLists.txt
+index 4164231..663598e 100644
+--- a/intern/ghost/CMakeLists.txt
++++ b/intern/ghost/CMakeLists.txt
+@@ -245,10 +245,10 @@ elseif(WITH_GHOST_X11 OR WITH_GHOST_WAYLAND)
+     if(WITH_X11_XF86VMODE)
+       add_definitions(-DWITH_X11_XF86VMODE)
+       list(APPEND INC_SYS
+-        ${X11_xf86vmode_INCLUDE_PATH}
++        ${X11_Xxf86vmode_INCLUDE_PATH}
+       )
+       list(APPEND LIB
+-        ${X11_Xf86vmode_LIB}
++        ${X11_Xxf86vmode_LIB}
+       )
+     endif()
+ 
+-- 
+2.34.1
+
