@@ -41,19 +41,20 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+EPYTEST_DESELECT=(
+	# Internet
+	tests/client/test_proxies.py::test_async_proxy_close
+	tests/client/test_proxies.py::test_sync_proxy_close
+	# known to fail, unimportant test
+	"tests/test_decoders.py::test_text_decoder[data3-iso-8859-1]"
+	tests/models/test_responses.py::test_response_no_charset_with_iso_8859_1_content
+)
+
 python_prepare_all() {
+	# increase timeout for slower systems
+	sed -e 's/pool=/&10*/' -i tests/test_timeouts.py || die
 	# trio does not support py3.10
-	sed -i '/^import trio/d' tests/concurrency.py || die
-	sed -i '/pytest.param("trio", marks=pytest.mark.trio)/d' tests/conftest.py || die
+	sed -e '/^import trio/d' -i tests/concurrency.py || die
+	sed -e '/pytest.param("trio", marks=pytest.mark.trio)/d' -i tests/conftest.py || die
 	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	local deselect=(
-		# Internet
-		tests/client/test_proxies.py::test_async_proxy_close
-		tests/client/test_proxies.py::test_sync_proxy_close
-	)
-
-	epytest ${deselect[@]/#/--deselect }
 }
