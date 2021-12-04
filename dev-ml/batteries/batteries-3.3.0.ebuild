@@ -18,7 +18,7 @@ RESTRICT="test"
 DEPEND=""
 RDEPEND="${DEPEND}
 	dev-ml/num:="
-BDEPEND=""
+BDEPEND="dev-ml/ocamlbuild"
 
 S="${WORKDIR}"/batteries-included-${PV}
 
