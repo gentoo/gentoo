@@ -11,7 +11,7 @@ SRC_URI="https://github.com/shlomif/fortune-mod/releases/download/${P}/${P}.tar.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="offensive"
 
 DEPEND="app-text/recode:=
