@@ -23,6 +23,7 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
+		-DUSE_DEFLATE=OFF
 		-DUSE_DOCTEST=OFF
 		-DUSE_GPM=ON
 		-DUSE_MULTIMEDIA=ffmpeg
