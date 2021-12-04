@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # Please check upstream git regularly for relevant security-related commits
 # to backport.
@@ -39,7 +39,8 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="x11-base/xorg-proto
+	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.15-CFLAGS.patch
@@ -53,7 +54,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	xdg_src_prepare
+	default
 
 	use hppa && append-cflags -ffunction-sections
 
