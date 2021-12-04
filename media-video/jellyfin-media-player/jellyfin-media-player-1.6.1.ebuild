@@ -19,25 +19,25 @@ KEYWORDS="~amd64"
 IUSE="+dbus"
 
 DEPEND="
-	dev-qt/qtxml:5
+	dev-libs/libcec
+	dev-qt/qtcore:5
+	dev-qt/qtdeclarative:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtquickcontrols:5
+	dev-qt/qtwebchannel:5
 	dev-qt/qtwebengine:5
 	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
-	dbus? ( dev-qt/qtdbus:5 )
-	dev-qt/qtwebchannel:5
-	dev-qt/qtdeclarative:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtgui:5
-	dev-qt/qtcore:5
-	dev-qt/qtquickcontrols:5
 	dev-qt/qtwidgets:5
-	x11-libs/libX11
-	x11-libs/libXrandr
+	dev-qt/qtx11extras:5
+	dev-qt/qtxml:5
 	media-libs/libsdl2
-	dev-libs/libcec
+	media-video/mpv[libmpv]
 	sys-libs/zlib
 	virtual/opengl
-	media-video/mpv[libmpv]
+	x11-libs/libX11
+	x11-libs/libXrandr
+	dbus? ( dev-qt/qtdbus:5 )
 "
 
 BDEPEND="
