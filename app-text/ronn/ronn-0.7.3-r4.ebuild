@@ -18,6 +18,8 @@ KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x6
 
 IUSE=""
 
+RDEPEND+=" !app-text/ronn-ng"
+
 DEPS="
 	>=dev-ruby/hpricot-0.8.2
 	>=dev-ruby/mustache-0.7.0
