@@ -53,18 +53,6 @@ install(TARGETS ${FILE%.c})
 EOF
 	done
 
-	for FILE in ../debian/extra/exifautotran; do
-		cat >> CMakeLists.txt <<EOF || die
-install(FILES \${CMAKE_CURRENT_SOURCE_DIR}/${FILE} DESTINATION \${CMAKE_INSTALL_BINDIR})
-EOF
-	done
-
-	for FILE in ../debian/extra/*.[0-9]*; do
-		cat >> CMakeLists.txt <<EOF || die
-install(FILES \${CMAKE_CURRENT_SOURCE_DIR}/${FILE} DESTINATION \${CMAKE_INSTALL_MANDIR}/man${FILE##*.})
-EOF
-	done
-
 	cmake_src_prepare
 	java-pkg-opt-2_src_prepare
 }
@@ -116,6 +104,8 @@ multilib_src_install_all() {
 	einstalldocs
 
 	newdoc "${WORKDIR}"/debian/changelog changelog.debian
+	dobin "${WORKDIR}"/debian/extra/exifautotran
+	doman "${WORKDIR}"/debian/extra/*.[0-9]*
 
 	docinto html
 	dodoc -r "${S}"/doc/html/.
