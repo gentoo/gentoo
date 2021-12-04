@@ -17,8 +17,7 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="dev-libs/libunistring:=
 	media-video/ffmpeg:=
 	sys-libs/gpm
-	sys-libs/ncurses:=
-	sys-libs/zlib"
+	sys-libs/ncurses:="
 RDEPEND="${DEPEND}"
 
 src_configure() {
