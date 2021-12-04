@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -23,7 +23,7 @@ RESTRICT="test"
 src_compile() {
 	tc-export AR CC
 
-	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" all $(usev man 'docs')
 }
 
 src_test() {
@@ -31,9 +31,5 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}" LIBDIR="/usr/$(get_libdir)" install
-
-	if use man ; then
-		emake DESTDIR="${ED}" LIBDIR="/usr/$(get_libdir)" install_docs
-	fi
+	emake DESTDIR="${ED}" LIBDIR="/usr/$(get_libdir)" install $(usev man 'install_docs')
 }
