@@ -98,13 +98,13 @@ src_install() {
 "To start using ${PN}, add the following to your shell:
 
 ~/.bashrc
-eval \"$(mcfly init bash)\"
+eval \"\$(mcfly init bash)\"
 
 ~/.config/fish/config.fish
 mcfly init fish | source
 
 ~/.zsh
-eval \"$(mcfly init zsh)\""
+eval \"\$(mcfly init zsh)\""
 	readme.gentoo_create_doc
 
 	einstalldocs
