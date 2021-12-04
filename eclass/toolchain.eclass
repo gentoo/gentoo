@@ -146,44 +146,58 @@ tc_has_feature() {
 }
 
 if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
-	IUSE+=" debug +cxx +nptl" TC_FEATURES+=(nptl)
-	[[ -n ${PIE_VER} ]] && IUSE+=" nopie"
-	[[ -n ${SPECS_VER} ]] && IUSE+=" nossp"
-	IUSE+=" +fortran" TC_FEATURES+=(fortran)
-	IUSE+=" doc hardened multilib objc"
-	tc_version_is_between 3 7 && IUSE+=" awt gcj" TC_FEATURES+=(gcj)
-	IUSE+=" pgo"
-	IUSE+=" objc-gc" TC_FEATURES+=(objc-gc)
-	IUSE+=" libssp objc++"
-	IUSE+=" +openmp"
-	tc_version_is_at_least 4.3 && IUSE+=" fixed-point"
-	tc_version_is_at_least 4.7 && IUSE+=" go"
-	# sanitizer support appeared in gcc-4.8, but <gcc-5 does not
-	# support modern glibc.
-	tc_version_is_at_least 5 && IUSE+=" +sanitize"  TC_FEATURES+=(sanitize)
-	# Note:
-	#   <gcc-4.8 supported graphite, it required forked ppl
-	#     versions which we dropped.  Since graphite was also experimental in
-	#     the older versions, we don't want to bother supporting it.  #448024
-	#   <gcc-5 supported graphite, it required cloog
-	#   <gcc-6.5 supported graphite, it required old incompatible isl
-	tc_version_is_at_least 6.5 &&
-		IUSE+=" graphite" TC_FEATURES+=(graphite)
-	tc_version_is_between 4.9 8 && IUSE+=" cilk"
-	tc_version_is_at_least 4.9 && IUSE+=" ada"
-	tc_version_is_at_least 4.9 && IUSE+=" vtv"
-	tc_version_is_at_least 5.0 && IUSE+=" jit"
-	tc_version_is_between 5.0 9 && IUSE+=" mpx"
-	tc_version_is_at_least 6.0 && IUSE+=" +pie +ssp +pch"
-	# systemtap is a gentoo-specific switch: bug #654748
-	tc_version_is_at_least 8.0 &&
-		IUSE+=" systemtap" TC_FEATURES+=(systemtap)
-	tc_version_is_at_least 9.0 && IUSE+=" d"
-	tc_version_is_at_least 9.1 && IUSE+=" lto"
-	tc_version_is_at_least 10 && IUSE+=" cet"
-	tc_version_is_at_least 10 && IUSE+=" zstd" TC_FEATURES+=(zstd)
-	tc_version_is_at_least 11 && IUSE+=" valgrind" TC_FEATURES+=(valgrind)
-	tc_version_is_at_least 11 && IUSE+=" custom-cflags"
+
+	# TODO: Which flags are relevant to libgcc and libstdc++?
+	case "${PN}" in
+	libgcc)
+		IUSE+=" multilib"
+		tc_version_is_at_least 6.0 && IUSE+=" +pie +ssp"
+		;;
+	libstdc++)
+		IUSE+=" multilib doc"
+		tc_version_is_at_least 4.9 && IUSE+=" vtv"
+		tc_version_is_at_least 6.0 && IUSE+=" +pie +ssp +pch"
+		;;
+	*)
+		IUSE+=" debug +cxx +nptl" TC_FEATURES+=(nptl)
+		[[ -n ${PIE_VER} ]] && IUSE+=" nopie"
+		[[ -n ${SPECS_VER} ]] && IUSE+=" nossp"
+		IUSE+=" +fortran" TC_FEATURES+=(fortran)
+		IUSE+=" doc hardened multilib objc"
+		tc_version_is_between 3 7 && IUSE+=" awt gcj" TC_FEATURES+=(gcj)
+		IUSE+=" pgo"
+		IUSE+=" objc-gc" TC_FEATURES+=(objc-gc)
+		IUSE+=" libssp objc++"
+		IUSE+=" +openmp"
+		tc_version_is_at_least 4.3 && IUSE+=" fixed-point"
+		tc_version_is_at_least 4.7 && IUSE+=" go"
+		# sanitizer support appeared in gcc-4.8, but <gcc-5 does not
+		# support modern glibc.
+		tc_version_is_at_least 5 && IUSE+=" +sanitize"  TC_FEATURES+=(sanitize)
+		# Note:
+		#   <gcc-4.8 supported graphite, it required forked ppl
+		#     versions which we dropped.  Since graphite was also experimental in
+		#     the older versions, we don't want to bother supporting it.  #448024
+		#   <gcc-5 supported graphite, it required cloog
+		#   <gcc-6.5 supported graphite, it required old incompatible isl
+		tc_version_is_at_least 6.5 &&
+			IUSE+=" graphite" TC_FEATURES+=(graphite)
+		tc_version_is_between 4.9 8 && IUSE+=" cilk"
+		tc_version_is_at_least 4.9 && IUSE+=" ada"
+		tc_version_is_at_least 4.9 && IUSE+=" vtv"
+		tc_version_is_at_least 5.0 && IUSE+=" jit"
+		tc_version_is_between 5.0 9 && IUSE+=" mpx"
+		tc_version_is_at_least 6.0 && IUSE+=" +pie +ssp +pch"
+		# systemtap is a gentoo-specific switch: bug #654748
+		tc_version_is_at_least 8.0 &&
+			IUSE+=" systemtap" TC_FEATURES+=(systemtap)
+		tc_version_is_at_least 9.0 && IUSE+=" d"
+		tc_version_is_at_least 9.1 && IUSE+=" lto"
+		tc_version_is_at_least 10 && IUSE+=" cet"
+		tc_version_is_at_least 10 && IUSE+=" zstd" TC_FEATURES+=(zstd)
+		tc_version_is_at_least 11 && IUSE+=" valgrind" TC_FEATURES+=(valgrind)
+		tc_version_is_at_least 11 && IUSE+=" custom-cflags"
+	esac
 fi
 
 if tc_version_is_at_least 10; then
@@ -196,84 +210,97 @@ fi
 
 #---->> DEPEND <<----
 
-RDEPEND="sys-libs/zlib
-	virtual/libiconv
-	nls? ( virtual/libintl )
-"
-
-GMP_MPFR_DEPS=">=dev-libs/gmp-4.3.2:0= >=dev-libs/mpfr-2.4.2:0="
-if tc_version_is_at_least 4.3 ; then
-	RDEPEND+=" ${GMP_MPFR_DEPS}"
-elif tc_has_feature fortran ; then
-	RDEPEND+=" fortran? ( ${GMP_MPFR_DEPS} )"
-fi
-
-tc_version_is_at_least 4.5 && RDEPEND+=" >=dev-libs/mpc-0.8.1:0="
-
-if tc_has_feature objc-gc ; then
-	if tc_version_is_at_least 7 ; then
-		RDEPEND+=" objc-gc? ( >=dev-libs/boehm-gc-7.4.2 )"
+case "${PN}" in
+lib*)
+	# TODO: We need a working compiler or cross compiler. This should be
+	# built after sys-devel/gcc or cross-*/gcc. How to express this here?
+	gcc_pkg=sys-devel
+	if tc-is-cross-compiler; then
+		gcc_pkg="cross-${CHOST}"
 	fi
-fi
-
-if tc_has_feature graphite ; then
-	RDEPEND+=" graphite? ( >=dev-libs/isl-0.14:0= )"
-fi
-
-BDEPEND="
-	>=sys-devel/bison-1.875
-	>=sys-devel/flex-2.5.4
-	nls? ( sys-devel/gettext )
-	test? (
-		>=dev-util/dejagnu-1.4.4
-		>=sys-devel/autogen-5.5.4
-	)"
-DEPEND="${RDEPEND}"
-
-if tc_has_feature gcj ; then
-	DEPEND+="
-		gcj? (
-			awt? (
-				x11-base/xorg-proto
-				x11-libs/libXt
-				x11-libs/libX11
-				x11-libs/libXtst
-				=x11-libs/gtk+-2*
-				x11-libs/pango
-				virtual/pkgconfig
-			)
-			>=media-libs/libart_lgpl-2.1
-			app-arch/zip
-			app-arch/unzip
-		)
+	BDEPEND="${gcc_pkg}/gcc:${SLOT}"
+	;;
+*)
+	RDEPEND="sys-libs/zlib
+		virtual/libiconv
+		nls? ( virtual/libintl )
 	"
-fi
 
-if tc_has_feature sanitize ; then
-	# libsanitizer relies on 'crypt.h' to be present
-	# on target. glibc user to provide it unconditionally.
-	# Nowadays it's a standalone library: #802648
-	DEPEND+=" sanitize? ( virtual/libcrypt )"
-fi
+	GMP_MPFR_DEPS=">=dev-libs/gmp-4.3.2:0= >=dev-libs/mpfr-2.4.2:0="
+	if tc_version_is_at_least 4.3 ; then
+		RDEPEND+=" ${GMP_MPFR_DEPS}"
+	elif tc_has_feature fortran ; then
+		RDEPEND+=" fortran? ( ${GMP_MPFR_DEPS} )"
+	fi
 
-if tc_has_feature systemtap ; then
-	# gcc needs sys/sdt.h headers on target
-	DEPEND+=" systemtap? ( dev-util/systemtap )"
-fi
+	tc_version_is_at_least 4.5 && RDEPEND+=" >=dev-libs/mpc-0.8.1:0="
 
-if tc_has_feature zstd ; then
-	DEPEND+=" zstd? ( app-arch/zstd )"
-fi
+	if tc_has_feature objc-gc ; then
+		if tc_version_is_at_least 7 ; then
+			RDEPEND+=" objc-gc? ( >=dev-libs/boehm-gc-7.4.2 )"
+		fi
+	fi
 
-if tc_has_feature valgrind; then
-	BDEPEND+=" valgrind? ( dev-util/valgrind )"
-fi
+	if tc_has_feature graphite ; then
+		RDEPEND+=" graphite? ( >=dev-libs/isl-0.14:0= )"
+	fi
+
+	BDEPEND="
+		>=sys-devel/bison-1.875
+		>=sys-devel/flex-2.5.4
+		nls? ( sys-devel/gettext )
+		test? (
+			>=dev-util/dejagnu-1.4.4
+			>=sys-devel/autogen-5.5.4
+		)"
+	DEPEND="${RDEPEND}"
+
+	if tc_has_feature gcj ; then
+		DEPEND+="
+			gcj? (
+				awt? (
+					x11-base/xorg-proto
+					x11-libs/libXt
+					x11-libs/libX11
+					x11-libs/libXtst
+					=x11-libs/gtk+-2*
+					x11-libs/pango
+					virtual/pkgconfig
+				)
+				>=media-libs/libart_lgpl-2.1
+				app-arch/zip
+				app-arch/unzip
+			)
+		"
+	fi
+
+	if tc_has_feature sanitize ; then
+		# libsanitizer relies on 'crypt.h' to be present
+		# on target. glibc user to provide it unconditionally.
+		# Nowadays it's a standalone library: #802648
+		DEPEND+=" sanitize? ( virtual/libcrypt )"
+	fi
+
+	if tc_has_feature systemtap ; then
+		# gcc needs sys/sdt.h headers on target
+		DEPEND+=" systemtap? ( dev-util/systemtap )"
+	fi
+
+	if tc_has_feature zstd ; then
+		DEPEND+=" zstd? ( app-arch/zstd )"
+	fi
+
+	if tc_has_feature valgrind; then
+		BDEPEND+=" valgrind? ( dev-util/valgrind )"
+	fi
+
+	# TODO: how to juggle slotted versions of libgcc and libstdc++
+	PDEPEND=">=sys-devel/gcc-config-2.3"
+esac
 
 case ${EAPI} in
 	5|6) DEPEND+=" ${BDEPEND}" ;;
 esac
-
-PDEPEND=">=sys-devel/gcc-config-2.3"
 
 #---->> S + SRC_URI essentials <<----
 
@@ -299,7 +326,7 @@ gentoo_urls() {
 		HTTP~vapier/dist/URI
 		HTTP~blueness/dist/URI"
 	devspace=${devspace//HTTP/https:\/\/dev.gentoo.org\/}
-	echo ${devspace//URI/$1} mirror://gentoo/$1
+	echo ${devspace//URI/$1} mirror://gentoo/$1 
 }
 
 # This function handles the basics of setting the SRC_URI for a gcc ebuild.
@@ -474,6 +501,12 @@ toolchain_src_prepare() {
 	do_gcc_PIE_patches
 	do_gcc_CYGWINPORTS_patches
 
+	case "${PN}" in
+	libstdc++)
+		tc_apply_patches "Fix <fenv> header path" "${FILESDIR}/libstdc++-Unconfuse-fenv-search.patch"
+		;;
+	esac
+
 	if tc_is_live ; then
 		BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, commit ${EGIT_VERSION}"
 	fi
@@ -537,8 +570,27 @@ toolchain_src_prepare() {
 	done
 	sed -i 's|A-Za-z0-9|[:alnum:]|g' "${S}"/gcc/*.awk #215828
 
-	# Prevent new texinfo from breaking old versions (see #198182, #464008)
-	tc_apply_patches "Remove texinfo (bug #198182, bug #464008)" "${FILESDIR}"/gcc-configure-texinfo.patch
+	case "${PN}" in
+	libstdc++)
+		sed -i '
+			/^configure-target-libstdc++-v3: maybe-all-gcc$/d
+			/^configure-target-libstdc++-v3: maybe-all-target-libgcc$/d
+			/^configure-target-libstdc++-v3: maybe-all-target-newlib maybe-all-target-libgloss$/d
+			/^install-target-libstdc++-v3: maybe-install-target-libgcc$/d
+		' Makefile.in
+		;;
+	libgcc)
+		sed -Ei 's/^(libgcc\.mvars:).*/\1/' gcc/Makefile.in
+		sed -Ei '
+			s/^(configure-target-libgcc): maybe-all-gcc$/^\1: configure-gcc/
+		' Makefile.in
+		;;
+	*)
+		# Prevent new texinfo from breaking old versions (see #198182, #464008)
+		tc_apply_patches "Remove texinfo (bug #198182, bug #464008)" "${FILESDIR}"/gcc-configure-texinfo.patch
+
+		tc_apply_patches "Fix cross compilation" "${FILESDIR}"/gcc-${PV}-cross-compile-include.patch
+	esac
 
 	# >=gcc-4
 	if [[ -x contrib/gcc_update ]] ; then
@@ -630,11 +682,6 @@ make_gcc_hard() {
 			# -z now
 			# see *_all_extra-options.patch gcc patches.
 			gcc_hard_flags+=" -DEXTRA_OPTIONS"
-
-			if _tc_use_if_iuse cet && [[ ${CTARGET} == *x86_64*-linux* ]] ; then
-				gcc_hard_flags+=" -DEXTRA_OPTIONS_CF"
-			fi
-
 			# rebrand to make bug reports easier
 			BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/Gentoo/Gentoo Hardened}
 		fi
@@ -807,25 +854,37 @@ toolchain_src_configure() {
 	### language options
 
 	local GCC_LANG="c"
-	is_cxx && GCC_LANG+=",c++"
-	is_d   && GCC_LANG+=",d"
-	is_gcj && GCC_LANG+=",java"
-	is_go  && GCC_LANG+=",go"
-	is_jit && GCC_LANG+=",jit"
-	if is_objc || is_objcxx ; then
-		GCC_LANG+=",objc"
-		use objc-gc && confgcc+=( --enable-objc-gc )
-		is_objcxx && GCC_LANG+=",obj-c++"
-	fi
+	case "${PN}" in
+	libgcc)
+		# Just C is fine
+		confgcc+=( --disable-bootstrap )
+		;;
+	libstdc++)
+		confgcc+=( --disable-bootstrap )
+		GCC_LANG=",c++"
+		;;
+	*)
+		is_cxx && GCC_LANG+=",c++"
+		is_d   && GCC_LANG+=",d"
+		is_gcj && GCC_LANG+=",java"
+		is_go  && GCC_LANG+=",go"
+		is_jit && GCC_LANG+=",jit"
+		if is_objc || is_objcxx ; then
+			GCC_LANG+=",objc"
+			use objc-gc && confgcc+=( --enable-objc-gc )
+			is_objcxx && GCC_LANG+=",obj-c++"
+		fi
 
-	# fortran support just got sillier! the lang value can be f77 for
-	# fortran77, f95 for fortran95, or just plain old fortran for the
-	# currently supported standard depending on gcc version.
-	is_fortran && GCC_LANG+=",fortran"
-	is_f77 && GCC_LANG+=",f77"
-	is_f95 && GCC_LANG+=",f95"
+		# fortran support just got sillier! the lang value can be f77 for
+		# fortran77, f95 for fortran95, or just plain old fortran for the
+		# currently supported standard depending on gcc version.
+		is_fortran && GCC_LANG+=",fortran"
+		is_f77 && GCC_LANG+=",f77"
+		is_f95 && GCC_LANG+=",f95"
 
-	is_ada && GCC_LANG+=",ada"
+		is_ada && GCC_LANG+=",ada"
+	esac
+
 
 	confgcc+=( --enable-languages=${GCC_LANG} )
 
@@ -1568,18 +1627,61 @@ gcc_do_make() {
 	#	gcc_do_make all-target-libstdc++-v3
 
 	[[ -n ${1} ]] && GCC_MAKE_TARGET=${1}
+	shift
+	local extra_args=("$@")
 
 	# default target
-	if is_crosscompile || tc-is-cross-compiler ; then
-		# 3 stage bootstrapping doesnt quite work when you cant run the
-		# resulting binaries natively ^^;
-		GCC_MAKE_TARGET=${GCC_MAKE_TARGET-all}
-	else
-		if _tc_use_if_iuse pgo; then
-			GCC_MAKE_TARGET=${GCC_MAKE_TARGET-profiledbootstrap}
+	case "${PN}" in
+	libstdc++)
+		GCC_MAKE_TARGET=${GCC_MAKE_TARGET-all-target-libstdc++-v3}
+		;;
+	libgcc)
+		# We need to build some libraries, configure gcc, and build some headers
+		# because we intentionally broke the chain of prerequisites in toolchain_src_prepare
+		pushd "${WORKDIR}"/build
+
+		emake all-build-libiberty all-libdecnumber configure-gcc
+
+		cd gcc
+
+		# Making headers needs to build and run some CLI tools on the build host
+		emake CC_FOR_BUILD=$(tc-getBUILD_CC) CXX_FOR_BUILD=$(tc-getBUILD_CXX) \
+			config.h \
+			libgcc.mvars \
+			tconfig.h \
+			tm.h \
+			options.h \
+			insn-constants.h \
+			insn-modes.h \
+			gcov-iov.h \
+		|| die "Couldn't build gcc headers"
+
+		mkdir include
+
+		popd >/dev/null
+
+		GCC_MAKE_TARGET=${GCC_MAKE_TARGET-all-target-libgcc}
+		;;
+	*)
+		if is_crosscompile || tc-is-cross-compiler ; then
+			# 3 stage bootstrapping doesnt quite work when you cant run the
+			# resulting binaries natively ^^;
+			GCC_MAKE_TARGET=${GCC_MAKE_TARGET-all}
 		else
-			GCC_MAKE_TARGET=${GCC_MAKE_TARGET-bootstrap-lean}
+			if _tc_use_if_iuse pgo; then
+				GCC_MAKE_TARGET=${GCC_MAKE_TARGET-profiledbootstrap}
+			else
+				GCC_MAKE_TARGET=${GCC_MAKE_TARGET-bootstrap-lean}
+			fi
 		fi
+	esac
+
+	if ! is_building_compiler ; then
+		extra_args=(
+			RAW_CXX_FOR_TARGET="$(tc-getCC)"
+			CC_FOR_TARGET="$(tc-getCC)"
+			"${extra_args[@]}"
+		)
 	fi
 
 	# Older versions of GCC could not do profiledbootstrap in parallel due to
@@ -1616,6 +1718,7 @@ gcc_do_make() {
 		LIBPATH="${LIBPATH}" \
 		BOOT_CFLAGS="${BOOT_CFLAGS}" \
 		${GCC_MAKE_TARGET} \
+		"${extra_args[@]}" \
 		|| die "emake failed with ${GCC_MAKE_TARGET}"
 
 	if is_ada; then
@@ -1629,7 +1732,7 @@ gcc_do_make() {
 		emake -C gcc gnattools
 	fi
 
-	if ! is_crosscompile && _tc_use_if_iuse cxx && _tc_use_if_iuse doc ; then
+	if ! is_crosscompile && ( _tc_use_if_iuse cxx || [[ ${PN} == libstdc++ ]] ) && _tc_use_if_iuse doc ; then
 		if type -p doxygen > /dev/null ; then
 			if tc_version_is_at_least 4.3 ; then
 				cd "${CTARGET}"/libstdc++-v3/doc
@@ -1692,8 +1795,24 @@ toolchain_src_install() {
 			&& rm -f "${x}"
 	done < <(find gcc/include*/ -name '*.h')
 
-	# Do the 'make install' from the build directory
-	S="${WORKDIR}"/build emake -j1 DESTDIR="${D}" install || die
+	local install_target=
+	local -a extra_args
+
+	case "${PN}" in
+	libgcc)
+		install_target=target-libgcc
+		extra_args=(
+			CC_FOR_TARGET="$(tc-getCC)"
+		)
+		;;
+	libstdc++)
+		install_target=target-libstdc++-v3
+		;;
+	esac
+
+	# Do the 'make install' from the build directory if install_target is unset
+	# Otherwise 'make install-$install_target' like 'make install-target-libstdc++-v3'
+	S="${WORKDIR}"/build emake -j1 DESTDIR="${D}" install"${install_target:+-${install_target}}" "${extra_args[@]}" || die
 
 	# Punt some tools which are really only useful while building gcc
 	find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \;
@@ -1704,7 +1823,7 @@ toolchain_src_install() {
 	gcc_movelibs
 
 	# Basic sanity check
-	if ! is_crosscompile ; then
+	if ! is_crosscompile && is_building_compiler ; then
 		local EXEEXT
 		eval $(grep ^EXEEXT= "${WORKDIR}"/build/gcc/config.log)
 		[[ -r ${D}${BINPATH}/gcc${EXEEXT} ]] || die "gcc not found in ${ED}"
@@ -1712,55 +1831,58 @@ toolchain_src_install() {
 
 	dodir /etc/env.d/gcc
 	create_gcc_env_entry
-	create_revdep_rebuild_entry
 
-	# Setup the gcc_env_entry for hardened gcc 4 with minispecs
-	want_minispecs && copy_minispecs_gcc_specs
+	if is_building_compiler; then
+		create_revdep_rebuild_entry
 
-	# Make sure we dont have stuff lying around that
-	# can nuke multiple versions of gcc
-	gcc_slot_java
+		# Setup the gcc_env_entry for hardened gcc 4 with minispecs
+		want_minispecs && copy_minispecs_gcc_specs
 
-	dodir /usr/bin
-	cd "${D}"${BINPATH}
-	# Ugh: we really need to auto-detect this list.
-	#      It's constantly out of date.
-	for x in cpp gcc g++ c++ gcov g77 gcj gcjh gfortran gccgo gnat* ; do
-		# For some reason, g77 gets made instead of ${CTARGET}-g77...
-		# this should take care of that
-		if [[ -f ${x} ]] ; then
-			# In case they're hardlinks, clear out the target first
-			# otherwise the mv below will complain.
-			rm -f ${CTARGET}-${x}
-			mv ${x} ${CTARGET}-${x}
-		fi
+		# Make sure we dont have stuff lying around that
+		# can nuke multiple versions of gcc
+		gcc_slot_java
 
-		if [[ -f ${CTARGET}-${x} ]] ; then
-			if ! is_crosscompile ; then
-				ln -sf ${CTARGET}-${x} ${x}
-				dosym ${BINPATH}/${CTARGET}-${x} \
-					/usr/bin/${x}-${GCC_CONFIG_VER}
+		dodir /usr/bin
+		cd "${D}"${BINPATH}
+		# Ugh: we really need to auto-detect this list.
+		#      It's constantly out of date.
+		for x in cpp gcc g++ c++ gcov g77 gcj gcjh gfortran gccgo gnat* ; do
+			# For some reason, g77 gets made instead of ${CTARGET}-g77...
+			# this should take care of that
+			if [[ -f ${x} ]] ; then
+				# In case they're hardlinks, clear out the target first
+				# otherwise the mv below will complain.
+				rm -f ${CTARGET}-${x}
+				mv ${x} ${CTARGET}-${x}
 			fi
-			# Create versioned symlinks
-			dosym ${BINPATH}/${CTARGET}-${x} \
-				/usr/bin/${CTARGET}-${x}-${GCC_CONFIG_VER}
-		fi
 
-		if [[ -f ${CTARGET}-${x}-${GCC_CONFIG_VER} ]] ; then
-			rm -f ${CTARGET}-${x}-${GCC_CONFIG_VER}
-			ln -sf ${CTARGET}-${x} ${CTARGET}-${x}-${GCC_CONFIG_VER}
-		fi
-	done
+			if [[ -f ${CTARGET}-${x} ]] ; then
+				if ! is_crosscompile ; then
+					ln -sf ${CTARGET}-${x} ${x}
+					dosym ${BINPATH}/${CTARGET}-${x} \
+						/usr/bin/${x}-${GCC_CONFIG_VER}
+				fi
+				# Create versioned symlinks
+				dosym ${BINPATH}/${CTARGET}-${x} \
+					/usr/bin/${CTARGET}-${x}-${GCC_CONFIG_VER}
+			fi
 
-	# When gcc builds a crosscompiler it does not install unprefixed tools.
-	# When cross-building gcc does install native tools.
-	if ! is_crosscompile; then
-		# Rename the main go binaries as we don't want to clobber dev-lang/go
-		# when gcc-config runs. #567806
-		if tc_version_is_at_least 5 && is_go ; then
-			for x in go gofmt; do
-				mv ${x} ${x}-${GCCMAJOR} || die
-			done
+			if [[ -f ${CTARGET}-${x}-${GCC_CONFIG_VER} ]] ; then
+				rm -f ${CTARGET}-${x}-${GCC_CONFIG_VER}
+				ln -sf ${CTARGET}-${x} ${CTARGET}-${x}-${GCC_CONFIG_VER}
+			fi
+		done
+
+		# When gcc builds a crosscompiler it does not install unprefixed tools.
+		# When cross-building gcc does install native tools.
+		if ! is_crosscompile; then
+			# Rename the main go binaries as we don't want to clobber dev-lang/go
+			# when gcc-config runs. #567806
+			if tc_version_is_at_least 5 && is_go ; then
+				for x in go gofmt; do
+					mv ${x} ${x}-${GCCMAJOR} || die
+				done
+			fi
 		fi
 	fi
 
@@ -1970,6 +2092,10 @@ fix_libtool_libdir_paths() {
 create_gcc_env_entry() {
 	dodir /etc/env.d/gcc
 	local gcc_envd_base="/etc/env.d/gcc/${CTARGET}-${GCC_CONFIG_VER}"
+
+	if ! is_building_compiler; then
+		gcc_envd_base+="-${PN}"
+	fi
 
 	local gcc_specs_file
 	local gcc_envd_file="${ED}${gcc_envd_base}"
@@ -2225,10 +2351,14 @@ is_ada() {
 	_tc_use_if_iuse ada
 }
 
-is_cxx() {
-	gcc-lang-supported 'c++' || return 1
-	_tc_use_if_iuse cxx
-}
+if [[ ${PN} == libstdc++ ]] ; then
+	is_cxx() { return 1; }
+else
+	is_cxx() {
+		gcc-lang-supported 'c++' || return 1
+		_tc_use_if_iuse cxx
+	}
+fi
 
 is_d() {
 	gcc-lang-supported d || return 1
@@ -2283,6 +2413,10 @@ is_objcxx() {
 	_tc_use_if_iuse cxx && _tc_use_if_iuse objc++
 }
 
+is_building_compiler() {
+	[[ ${PN} != lib* ]]
+}
+
 # Grab a variable from the build system (taken from linux-info.eclass)
 get_make_var() {
 	local var=$1 makefile=${2:-${WORKDIR}/build/Makefile}
@@ -2290,7 +2424,12 @@ get_make_var() {
 		r=${makefile%/*} emake --no-print-directory -s -f - 2>/dev/null
 }
 
-XGCC() { get_make_var GCC_FOR_TARGET ; }
+if is_building_compiler; then
+	XGCC() { get_make_var GCC_FOR_TARGET ; }
+else
+	# Reuse the toolchain we already have; we're not building a compiler
+	XGCC() { tc-getCC ; }
+fi
 
 # The gentoo piessp patches allow for 3 configurations:
 # 1) PIE+SSP by default

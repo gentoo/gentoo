@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>toolchain@gentoo.org</email>
+    <name>Gentoo Toolchain Project</name>
+  </maintainer>
+  <use>
+    <flag name="ssp">Build packages with stack smashing protector on by default</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:gnu:gcc</remote-id>
+    <remote-id type="sourceforge">dgcc</remote-id>
+  </upstream>
+</pkgmetadata>
