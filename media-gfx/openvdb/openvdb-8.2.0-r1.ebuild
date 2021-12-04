@@ -31,8 +31,6 @@ RDEPEND="
 	dev-libs/log4cplus:=
 	media-libs/glfw
 	media-libs/glu
-	media-libs/ilmbase:=
-	media-libs/openexr:0=
 	sys-libs/zlib:=
 	x11-libs/libXcursor
 	x11-libs/libXi
@@ -45,6 +43,10 @@ RDEPEND="
 			dev-libs/boost:=[numpy?,python?,${PYTHON_USEDEP}]
 			numpy? ( dev-python/numpy[${PYTHON_USEDEP}] )
 		')
+	)
+	utils? (
+		media-libs/ilmbase:=
+		media-libs/openexr:0=
 	)
 	zlib? ( sys-libs/zlib )
 "
@@ -69,7 +71,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-7.1.0-0001-Fix-multilib-header-source.patch"
 	"${FILESDIR}/${PN}-8.0.1-add-consistency-for-NumPy-find_package-call.patch"
 	"${FILESDIR}/${PN}-8.1.0-glfw-libdir.patch"
-	#"${FILESDIR}/${PN}-9.0.0-unconditionally-search-Python-interpreter.patch"
+	"${FILESDIR}/${PN}-8.2.0-fix-finding-ilmbase-if-imath-and-ilmbase-are-installed.patch"
+	"${FILESDIR}/${PN}-8.2.0-unconditionally-search-Python-interpreter.patch"
 )
 
 pkg_setup() {
@@ -93,11 +96,9 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}/"
 		-DOPENVDB_ABI_VERSION_NUMBER="${version}"
+		-DOPENVDB_BUILD_BINARIES=$(usex utils)
 		-DOPENVDB_BUILD_DOCS=$(usex doc)
 		-DOPENVDB_BUILD_UNITTESTS=$(usex test)
-		-DOPENVDB_BUILD_VDB_LOD=$(usex utils)
-		-DOPENVDB_BUILD_VDB_RENDER=$(usex utils)
-		-DOPENVDB_BUILD_VDB_VIEW=$(usex utils)
 		-DOPENVDB_CORE_SHARED=ON
 		-DOPENVDB_CORE_STATIC=$(usex static-libs)
 		-DOPENVDB_ENABLE_RPATH=OFF
@@ -113,10 +114,19 @@ src_configure() {
 	if use python; then
 		mycmakeargs+=(
 			-DOPENVDB_BUILD_PYTHON_MODULE=ON
-			-DUSE_NUMPY=$(usex numpy)
 			-DOPENVDB_BUILD_PYTHON_UNITTESTS=$(usex test)
+			-DPYOPENVDB_INSTALL_DIRECTORY="$(python_get_sitedir)"
 			-DPython_EXECUTABLE="${PYTHON}"
 			-DPython_INCLUDE_DIR="$(python_get_includedir)"
+			-DUSE_NUMPY=$(usex numpy)
+		)
+	fi
+
+	if use utils; then
+		mycmakeargs+=(
+			-DOPENVDB_BUILD_VDB_LOD=ON
+			-DOPENVDB_BUILD_VDB_RENDER=ON
+			-DOPENVDB_BUILD_VDB_VIEW=ON
 		)
 	fi
 
