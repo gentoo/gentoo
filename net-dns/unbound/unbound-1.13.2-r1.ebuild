@@ -38,18 +38,23 @@ CDEPEND="acct-group/unbound
 	)
 	http2? ( net-libs/nghttp2:=[${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
-	redis? ( dev-libs/hiredis:= )"
+	redis? ( dev-libs/hiredis:= )
+	systemd? ( sys-apps/systemd )
+"
 
-BDEPEND="virtual/pkgconfig"
-
-DEPEND="${CDEPEND}
+BDEPEND="virtual/pkgconfig
 	python? ( dev-lang/swig )
 	test? (
-		net-dns/ldns-utils[examples]
+		|| (
+			net-libs/ldns[examples(-)]
+			net-dns/ldns-utils[examples(-)]
+		)
 		dev-util/splint
 		app-text/wdiff
 	)
-	systemd? ( sys-apps/systemd )"
+"
+
+DEPEND="${CDEPEND}"
 
 RDEPEND="${CDEPEND}
 	net-dns/dnssec-root
