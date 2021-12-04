@@ -3,10 +3,8 @@
 
 EAPI=7
 
-MULTILIB_COMPAT=( abi_x86_{32,64} )
 PYTHON_COMPAT=( python3_{8..10} )
-inherit check-reqs cmake flag-o-matic llvm llvm.org multilib-build \
-	python-any-r1
+inherit check-reqs cmake flag-o-matic llvm llvm.org python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
@@ -14,7 +12,7 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="$(ver_cut 1-3)"
 KEYWORDS=""
-IUSE="+clang debug test elibc_glibc"
+IUSE="+abi_x86_32 abi_x86_64 +clang debug test elibc_glibc"
 # base targets
 IUSE+=" +libfuzzer +memprof +orc +profile +xray"
 # sanitizer targets, keep in sync with config-ix.cmake
@@ -36,7 +34,7 @@ CLANG_SLOT=${SLOT%%.*}
 # llvm-6 for new lit options
 DEPEND="
 	>=sys-devel/llvm-6
-	virtual/libcrypt[${MULTILIB_USEDEP}]"
+	virtual/libcrypt[abi_x86_32(-)?,abi_x86_64(-)?]"
 BDEPEND="
 	>=dev-util/cmake-3.16
 	clang? ( sys-devel/clang )
