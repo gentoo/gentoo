@@ -1,7 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
+inherit autotools
 
 MY_P=${P/-utils}
 
@@ -30,7 +32,16 @@ RESTRICT="test"
 
 S=${WORKDIR}/${MY_P}
 
+src_prepare() {
+	# backport https://github.com/NLnetLabs/ldns/commit/bc9d017f6fd8b6b5d2ff6e4489a2931d0aab8184
+	sed -i 's/AC_SUBST(VERSION_INFO.*/AC_SUBST(VERSION_INFO, [5:0:2])/' "${S}"/configure.ac || die 'could not patch configure.ac'
+
+	default
+}
+
 src_configure() {
+	eautoreconf
+
 	# >=openssl-1.1.0 required for dane-ta
 	if has_version "<dev-libs/openssl-1.1.0" ; then
 		local dane_ta_usage="--disable-dane-ta-usage"
@@ -50,6 +61,7 @@ src_configure() {
 		$(use_enable gost) \
 		$(use_enable ssl sha2) \
 		$dane_ta_usage
+
 }
 
 src_compile() {
