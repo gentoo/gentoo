@@ -12,7 +12,15 @@ HOMEPAGE="https://github.com/jellyfin/jellyfin-media-player"
 SRC_URI="
 	https://github.com/jellyfin/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 "
-LICENSE="GPL-2"
+# GPL-2.0 for JMP itself
+# licenses for code in external/:
+#   MIT for qhttp
+#   BSD for qslog
+LICENSE="
+	GPL-2
+	BSD
+	MIT
+"
 SLOT="0"
 
 KEYWORDS="~amd64"
