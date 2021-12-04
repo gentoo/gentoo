@@ -5,7 +5,7 @@ EAPI=7
 
 GNOME2_LA_PUNT="yes"
 
-inherit gnome2 optfeature toolchain-funcs
+inherit gnome2 optfeature
 
 DESCRIPTION="A graphical, full featured, twin-panel file manager"
 HOMEPAGE="https://gcmd.github.io/"
