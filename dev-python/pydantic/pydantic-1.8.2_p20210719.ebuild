@@ -38,6 +38,11 @@ PATCHES=(
 
 distutils_enable_tests --install pytest
 
+EPYTEST_DESELECT=(
+	# flaky test, known upstream
+	tests/test_hypothesis_plugin.py::test_can_construct_models_with_all_fields
+)
+
 src_prepare() {
 	# seriously?
 	sed -i -e '/CFLAGS/d' setup.py || die
