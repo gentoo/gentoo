@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 IUSE="+ocamlopt"
 
 DEPEND="
-	x11-libs/cairo:=
+	x11-libs/cairo:=[svg]
 	dev-ml/dune-configurator:=
 "
 RDEPEND="${DEPEND}
@@ -34,6 +34,4 @@ RESTRICT=test
 # Fix compiler warnings, from: https://github.com/Chris00/ocaml-cairo/pull/22
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.1-ignore-gtk-and-pango.patch
-	"${FILESDIR}"/${PN}-0.6.1-handle-safe-string.patch
-	"${FILESDIR}"/${PN}-0.6.1-Fix-multiple-definitions-of-variables.patch
 )
