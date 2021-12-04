@@ -4,7 +4,7 @@
 EAPI=7
 WX_GTK_VER="3.0-gtk3"
 
-inherit elisp-common java-pkg-opt-2 systemd toolchain-funcs wxwidgets
+inherit elisp-common flag-o-matic java-pkg-opt-2 systemd toolchain-funcs wxwidgets
 
 # NOTE: If you need symlinks for binaries please tell maintainers or
 # open up a bug to let it be created.
