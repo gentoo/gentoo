@@ -18,10 +18,13 @@ KEYWORDS="-* ~amd64 ~amd64-linux"
 IUSE="debugger nsight profiler vis-profiler sanitizer"
 RESTRICT="bindist mirror"
 
-BDEPEND=""
+# since CUDA 11, the bundled toolkit driver (== ${DRIVER_PV}) and the
+# actual required minimum driver version are different. Lowering the
+# bound helps Kepler sm_35 and sm_37 users.
+# https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#cuda-major-component-versions
 RDEPEND="
 	<sys-devel/gcc-12_pre[cxx]
-	>=x11-drivers/nvidia-drivers-${DRIVER_PV}
+	>=x11-drivers/nvidia-drivers-450.80.02
 	debugger? (
 		dev-libs/openssl
 		sys-libs/libtermcap-compat
