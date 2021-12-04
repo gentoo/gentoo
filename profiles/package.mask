@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2021-12-04)
+# Links against libldns.so.2, but does not install it (bug 828109).
+# net-libs/ldns installs libldns.so.3.
+# Package will be merged into net-libs/ldns moving forward.
+>=net-dns/ldns-utils-1.8.0
+
 # Jonas Stein <jstein@gentoo.org> (2021-12-01)
 # Removal on 2022-01-01.
 # Disbanded by upstream who sugessted to 
