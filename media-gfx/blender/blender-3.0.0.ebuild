@@ -123,6 +123,10 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-intern-ghost-fix-typo-in-finding-XF86VMODE.patch
+)
+
 blender_check_requirements() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
