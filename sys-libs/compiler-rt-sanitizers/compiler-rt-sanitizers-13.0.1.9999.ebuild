@@ -45,7 +45,9 @@ BDEPEND="
 		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT}
 		sys-libs/compiler-rt:${SLOT}
 	)
-	${PYTHON_DEPS}"
+	!test? (
+		${PYTHON_DEPS}
+	)"
 
 LLVM_COMPONENTS=( compiler-rt )
 LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
