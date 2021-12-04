@@ -263,7 +263,17 @@ src_configure() {
 		-DWITH_USD=OFF
 		-DWITH_XR_OPENXR=OFF
 	)
+
 	append-flags $(usex debug '-DDEBUG' '-DNDEBUG')
+
+	if tc-is-gcc ; then
+		# These options only exist when GCC is detected.
+		# We disable these to respect the user's choice of linker.
+		mycmakeargs+=(
+			-DWITH_LINKER_GOLD=OFF
+			-DWITH_LINKER_LLD=OFF
+		)
+	fi
 
 	cmake_src_configure
 }
