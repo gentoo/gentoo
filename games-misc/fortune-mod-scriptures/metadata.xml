@@ -9,6 +9,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="sourceforge">mormon</remote-id>
 	</upstream>
