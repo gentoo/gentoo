@@ -33,9 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Conrad Kostecki <conikost@gentoo.org> (2021-12-04)
+# Masking newer versions for both packages,
+# as they cannot be compiled due upstream change.
+# See bug #827651 for more information.
+>=dev-libs/intel-compute-runtime-21.47.21710
+>=dev-util/intel-graphics-compiler-1.0.9389
+
 # Jonas Stein <jstein@gentoo.org> (2021-12-01)
 # Removal on 2022-01-01.
-# Disbanded by upstream who sugessted to 
+# Disbanded by upstream who sugessted to
 # use nmap instead many years ago. (bug #680546)
 net-analyzer/amap
 
