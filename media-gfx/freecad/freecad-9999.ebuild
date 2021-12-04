@@ -234,17 +234,6 @@ src_configure() {
 		# Use the version of shiboken2 that matches the selected python version
 		-DPYTHON_CONFIG_SUFFIX="-${EPYTHON}"
 		-DPython3_EXECUTABLE=${PYTHON}
-
-		-DOCCT_CMAKE_FALLBACK=ON				# don't use occt-config which isn't included in opencascade for Gentoo
-	)
-
-	# bug https://bugs.gentoo.org/788274
-	local OCC_P=$(best_version sci-libs/opencascade[vtk])
-	OCC_P=${OCC_P#sci-libs/}
-	OCC_P=${OCC_P%-r*}
-	mycmakeargs+=(
-		-DOCC_INCLUDE_DIR="${CASROOT}"/include/${OCC_P}
-		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/${OCC_P}
 	)
 
 	if use debug; then
