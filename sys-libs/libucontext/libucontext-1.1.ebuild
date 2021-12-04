@@ -23,7 +23,21 @@ RESTRICT="test"
 src_compile() {
 	tc-export AR CC
 
-	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" all $(usev man 'docs')
+	local arch
+
+	# Override arch detection
+	# https://github.com/kaniini/libucontext/blob/master/Makefile#L3
+	if use x86 ; then
+		arch="x86"
+	elif use arm ; then
+		arch="arm"
+	elif use arm64 ; then
+		arch="aarch64"
+	elif use ppc64 ; then
+		arch="ppc64"
+	fi
+
+	emake ARCH="${arch}" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" all $(usev man 'docs')
 }
 
 src_test() {
