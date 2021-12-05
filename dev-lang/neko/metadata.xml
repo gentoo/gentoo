@@ -9,7 +9,7 @@
   <use>
     <flag name="apache">Build Apache modules</flag>
   </use>
-  <longdescription lang="en">
+  <longdescription>
     Neko is a high-level dynamically typed programming language. It can be
     used as an embedded scripting language. It has been designed to provide
     a common runtime for several different languages. Learning and using
