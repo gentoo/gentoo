@@ -43,14 +43,14 @@ BDEPEND="x11-base/xorg-proto
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.15-CFLAGS.patch
-	"${FILESDIR}"/${PN}-1.19.0-Makefile.patch
-	"${FILESDIR}"/${PN}-1.10a-add-desktop-pc-xpm-files.patch
-	"${FILESDIR}"/${PN}-1.19.0-darwin.patch
+	"${FILESDIR}/${PN}"-1.15-CFLAGS.patch
+	"${FILESDIR}/${P}"-Makefile.patch
+	"${FILESDIR}/${PN}"-1.10a-add-desktop-pc-xpm-files.patch
+	"${FILESDIR}/${P}"-darwin.patch
 	# See bugs #662352
-	"${FILESDIR}"/${PN}-1.15-openssl-x11.patch
+	"${FILESDIR}/${PN}"-1.15-openssl-x11.patch
 	# General cross fixes from Debian (refreshed)
-	"${FILESDIR}"/${PN}-1.19.0-cross-fixes.patch
+	"${FILESDIR}/${P}"-cross-fixes.patch
 )
 
 src_prepare() {
