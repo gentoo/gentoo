@@ -5,7 +5,7 @@ EAPI=7
 
 LLVM_MAX_SLOT=13
 
-inherit llvm linux-info cmake
+inherit llvm linux-info cmake toolchain-funcs
 
 DESCRIPTION="High-level tracing language for eBPF"
 HOMEPAGE="https://github.com/iovisor/bpftrace"
@@ -78,7 +78,7 @@ src_configure() {
 		-DBUILD_TESTING:BOOL=OFF
 		-DBUILD_FUZZ:BOOL=$(usex fuzzing)
 		-DENABLE_MAN:BOOL=OFF
-		-DLIBBPF_INCLUDE_DIRS="$(pkg-config --cflags-only-I libbpf | sed 's:-I::g')"
+		-DLIBBPF_INCLUDE_DIRS="$($(tc-getPKG_CONFIG) --cflags-only-I libbpf | sed 's:-I::g')"
 	)
 
 	cmake_src_configure
