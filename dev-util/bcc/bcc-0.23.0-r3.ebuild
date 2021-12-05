@@ -7,7 +7,7 @@ LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{7..10} )
 LLVM_MAX_SLOT=13
 
-inherit cmake eapi8-dosym linux-info llvm lua-single python-r1
+inherit cmake eapi8-dosym linux-info llvm lua-single python-r1 toolchain-funcs
 
 DESCRIPTION="Tools for BPF-based Linux IO analysis, networking, monitoring, and more"
 HOMEPAGE="https://iovisor.github.io/bcc/"
@@ -93,7 +93,7 @@ src_configure() {
 		-DREVISION=${PV%%_*}
 		-DENABLE_LLVM_SHARED=ON
 		-DCMAKE_USE_LIBBPF_PACKAGE=ON
-		-DLIBBPF_INCLUDE_DIRS="$(pkg-config --cflags-only-I libbpf | sed 's:-I::g')"
+		-DLIBBPF_INCLUDE_DIRS="$($(tc-getPKG_CONFIG) --cflags-only-I libbpf | sed 's:-I::g')"
 		-DKERNEL_INCLUDE_DIRS="${KERNEL_DIR}"
 		-DPYTHON_CMD="${bcc_python_impls%;}"
 		-Wno-dev
