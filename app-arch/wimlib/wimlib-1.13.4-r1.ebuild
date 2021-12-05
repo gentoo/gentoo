@@ -9,7 +9,7 @@ DESCRIPTION="The open source Windows Imaging (WIM) library"
 HOMEPAGE="https://wimlib.net"
 SRC_URI="https://wimlib.net/downloads/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 LICENSE="|| ( GPL-3+ LGPL-3+ ) CC0-1.0"
 SLOT="0"
 IUSE="cpu_flags_x86_ssse3 fuse iso ntfs ssl test threads yasm"
