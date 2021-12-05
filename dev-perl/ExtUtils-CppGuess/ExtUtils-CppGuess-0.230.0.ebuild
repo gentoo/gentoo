@@ -10,7 +10,7 @@ inherit perl-module toolchain-funcs
 DESCRIPTION="Guess C++ compiler and flags"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 RDEPEND="
 	dev-perl/Capture-Tiny
