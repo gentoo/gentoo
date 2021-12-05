@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="simple .ini-file format"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="minimal"
 
 RDEPEND="
