@@ -401,6 +401,7 @@ setup_flags() {
 		filter-flags '-O?'
 		append-flags -O2
 	fi
+
 	strip-unsupported-flags
 	filter-flags -m32 -m64 '-mabi=*'
 
@@ -515,14 +516,103 @@ setup_env() {
 		einfo "Skip CC ABI injection. We can't use (cross-)compiler yet."
 		return 0
 	fi
-	local VAR=CFLAGS_${ABI}
+
+	# Glibc does not work with gold (for various reasons) #269274.
+	tc-ld-disable-gold
+
+	if use doc ; then
+		export MAKEINFO=makeinfo
+	else
+		export MAKEINFO=/dev/null
+	fi
+
+	# Reset CC to the value at start of emerge
+	export CC=${__ORIG_CC:-${CC}}
+
+	if tc-is-clang && ! use custom-cflags && ! is_crosscompile ; then
+
+		# If we are running in an otherwise clang/llvm environment, we need to
+		# recover the proper gcc and binutils settings here, at least until glibc
+		# is finally building with clang. So let's override everything that is
+		# set in the clang profiles.
+		# Want to shoot yourself into the foot? Set USE=custom-cflags, that's always
+		# a good start into that direction.
+		# Also, if you're crosscompiling, let's assume you know what you are doing.
+		# Hopefully.
+
+		local current_binutils_path=$(binutils-config -B)
+		local current_gcc_path=$(gcc-config -B)
+		einfo "Overriding clang configuration, since it won't work here"
+
+		export __ORIG_CC=${CC}
+
+		export CC="${current_gcc_path}/gcc"
+		export CXX="${current_gcc_path}/g++"
+		export LD="${current_binutils_path}/ld.bfd"
+		export AR="${current_binutils_path}/ar"
+		export AS="${current_binutils_path}/as"
+		export NM="${current_binutils_path}/nm"
+		export STRIP="${current_binutils_path}/strip"
+		export RANLIB="${current_binutils_path}/ranlib"
+		export OBJCOPY="${current_binutils_path}/objcopy"
+		export STRINGS="${current_binutils_path}/strings"
+		export OBJDUMP="${current_binutils_path}/objdump"
+		export READELF="${current_binutils_path}/readelf"
+		export ADDR2LINE="${current_binutils_path}/addr2line"
+
+		# do we need to also do flags munging here? yes! at least...
+		filter-flags '-fuse-ld=*'
+		filter-flags '-D_FORTIFY_SOURCE=*'
+
+	else
+
+		# this is the "normal" case
+
+		export __ORIG_CC=${CC}
+
+		export CC="$(tc-getCC ${CTARGET})"
+		export CXX="$(tc-getCXX ${CTARGET})"
+
+		# Always use tuple-prefixed toolchain. For non-native ABI glibc's configure
+		# can't detect them automatically due to ${CHOST} mismatch and fallbacks
+		# to unprefixed tools. Similar to multilib.eclass:multilib_toolchain_setup().
+		export NM="$(tc-getNM ${CTARGET})"
+		export READELF="$(tc-getREADELF ${CTARGET})"
+
+	fi
+
 	# We need to export CFLAGS with abi information in them because glibc's
 	# configure script checks CFLAGS for some targets (like mips).  Keep
 	# around the original clean value to avoid appending multiple ABIs on
-	# top of each other.
-	: ${__GLIBC_CC:=$(tc-getCC ${CTARGET})}
-	export __GLIBC_CC CC="${__GLIBC_CC} ${!VAR}"
-	einfo " $(printf '%15s' 'Manual CC:')   ${CC}"
+	# top of each other. (Why does the comment talk about CFLAGS if the code
+	# acts on CC?)
+	export __GLIBC_CC=${CC}
+	export __GLIBC_CXX=${CXX}
+
+	export __abi_CFLAGS="$(get_abi_CFLAGS)"
+
+	# CFLAGS can contain ABI-specific flags like -mfpu=neon, see bug #657760
+	# To build .S (assembly) files with the same ABI-specific flags
+	# upstream currently recommends adding CFLAGS to CC/CXX:
+	#    https://sourceware.org/PR23273
+	# Note: Passing CFLAGS via CPPFLAGS overrides glibc's arch-specific CFLAGS
+	# and breaks multiarch support. See 659030#c3 for an example.
+	# The glibc configure script doesn't properly use LDFLAGS all the time.
+	export CC="${__GLIBC_CC} ${__abi_CFLAGS} ${LDFLAGS}"
+
+	# Some of the tests are written in C++, so we need to force our multlib abis in, bug 623548
+	export CXX="${__GLIBC_CXX} ${__abi_CFLAGS}"
+
+	if is_crosscompile; then
+		# Assume worst-case bootstrap: glibc is buil first time
+		# when ${CTARGET}-g++ is not available yet. We avoid
+		# building auxiliary programs that require C++: bug #683074
+		# It should not affect final result.
+		export libc_cv_cxx_link_ok=no
+		# The line above has the same effect. We set CXX explicitly
+		# to make build logs less confusing.
+		export CXX=
+	fi
 }
 
 foreach_abi() {
@@ -812,86 +902,13 @@ src_prepare() {
 }
 
 glibc_do_configure() {
-	# Glibc does not work with gold (for various reasons) #269274.
-	tc-ld-disable-gold
-
-	# CXX isnt handled by the multilib system, so if we dont unset here
-	# we accumulate crap across abis
-	unset CXX
-
-	# If we are running in an otherwise clang/llvm environment, we need to
-	# recover the proper gcc and binutils settings here, at least until glibc
-	# is finally building with clang. So let's override everything that is
-	# set in the clang profiles.
-	# Want to shoot yourself into the foot? Set USE=custom-cflags, that's always
-	# a good start into that direction.
-	if tc-is-clang && ! use custom-cflags ; then
-		local current_binutils_path=$(binutils-config -B)
-		local current_gcc_path=$(gcc-config -B)
-		einfo "Overriding clang configuration, since it won't work here"
-
-		export CC="${current_gcc_path}/gcc"
-		export LD="${current_binutils_path}/ld.bfd"
-		export AR="${current_binutils_path}/ar"
-		export AS="${current_binutils_path}/as"
-		export NM="${current_binutils_path}/nm"
-		export STRIP="${current_binutils_path}/strip"
-		export RANLIB="${current_binutils_path}/ranlib"
-		export OBJCOPY="${current_binutils_path}/objcopy"
-		export STRINGS="${current_binutils_path}/strings"
-		export OBJDUMP="${current_binutils_path}/objdump"
-		export READELF="${current_binutils_path}/readelf"
-		export ADDR2LINE="${current_binutils_path}/addr2line"
-
-		# do we need to also do flags munging here?
-	fi
-
-	if use doc ; then
-		export MAKEINFO=makeinfo
-	else
-		export MAKEINFO=/dev/null
-	fi
 
 	local v
-	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC CXX LD {AS,C,CPP,CXX,LD}FLAGS MAKEINFO NM READELF; do
+	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC CXX LD {AS,C,CPP,CXX,LD}FLAGS MAKEINFO NM AR AS STRIP RANLIB OBJCOPY STRINGS OBJDUMP READELF; do
 		einfo " $(printf '%15s' ${v}:)   ${!v}"
 	done
 
-	# CFLAGS can contain ABI-specific flags like -mfpu=neon, see bug #657760
-	# To build .S (assembly) files with the same ABI-specific flags
-	# upstream currently recommends adding CFLAGS to CC/CXX:
-	#    https://sourceware.org/PR23273
-	# Note: Passing CFLAGS via CPPFLAGS overrides glibc's arch-specific CFLAGS
-	# and breaks multiarch support. See 659030#c3 for an example.
-	# The glibc configure script doesn't properly use LDFLAGS all the time.
-	export CC="$(tc-getCC ${CTARGET}) ${CFLAGS} ${LDFLAGS}"
-	einfo " $(printf '%15s' 'Manual CC:')   ${CC}"
-
-	# Some of the tests are written in C++, so we need to force our multlib abis in, bug 623548
-	export CXX="$(tc-getCXX ${CTARGET}) $(get_abi_CFLAGS) ${CFLAGS}"
-
-	if is_crosscompile; then
-		# Assume worst-case bootstrap: glibc is buil first time
-		# when ${CTARGET}-g++ is not available yet. We avoid
-		# building auxiliary programs that require C++: bug #683074
-		# It should not affect final result.
-		export libc_cv_cxx_link_ok=no
-		# The line above has the same effect. We set CXX explicitly
-		# to make build logs less confusing.
-		export CXX=
-	fi
-	einfo " $(printf '%15s' 'Manual CXX:')   ${CXX}"
-
-	# Always use tuple-prefixed toolchain. For non-native ABI glibc's configure
-	# can't detect them automatically due to ${CHOST} mismatch and fallbacks
-	# to unprefixed tools. Similar to multilib.eclass:multilib_toolchain_setup().
-	export NM="$(tc-getNM ${CTARGET})"
-	export READELF="$(tc-getREADELF ${CTARGET})"
-	einfo " $(printf '%15s' 'Manual NM:')   ${NM}"
-	einfo " $(printf '%15s' 'Manual READELF:')   ${READELF}"
-
 	echo
-
 	local myconf=()
 
 	case ${CTARGET} in
