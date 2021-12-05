@@ -9,7 +9,7 @@ inherit perl-module
 DESCRIPTION="Convenience assertions for common situations"
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ia64 ~ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="
 	virtual/perl-Carp
