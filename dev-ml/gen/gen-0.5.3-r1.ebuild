@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/c-cube/gen/"
 SRC_URI="https://github.com/c-cube/gen/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 RESTRICT="test"  # qcheck & qtest not yet packaged
