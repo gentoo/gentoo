@@ -38,6 +38,11 @@ RDEPEND="
 	sys-libs/zlib:=
 "
 DEPEND="${RDEPEND}"
+BDEPEND="
+	dev-ml/camlp5
+	dev-ml/dune
+	dev-ml/findlib
+"
 
 QA_FLAGS_IGNORED="usr/bin/haxelib"
 QA_PRESTRIPPED="usr/bin/haxelib"
