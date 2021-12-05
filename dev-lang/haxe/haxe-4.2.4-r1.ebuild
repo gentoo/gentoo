@@ -20,12 +20,15 @@ LICENSE="GPL-2+ MIT"
 SLOT="0/${PV}"
 IUSE="+ocamlopt"
 
+# NOTICE:
+# Theoretically luv <= 0.5.8 is pinned but it is because of mingw issues
 RDEPEND="
 	>=dev-lang/ocaml-4:=[ocamlopt?]
 	dev-ml/extlib:=
+	dev-ml/luv:=
+	dev-ml/ocaml-sha:=
 	dev-ml/ptmap:=
 	dev-ml/sedlex:=
-	dev-ml/ocaml-sha:=
 	dev-ml/xml-light:=
 
 	dev-lang/neko:=
