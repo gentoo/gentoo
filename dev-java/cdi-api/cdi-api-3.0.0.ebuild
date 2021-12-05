@@ -26,7 +26,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 # Command line suite
 # Total tests run: 57, Failures: 7, Skips: 0
 # ===============================================
-RESTRICT="test"
+#	RESTRICT="test"
 
 # Common dependencies
 # POM: cdi-${PV}/api/pom.xml
