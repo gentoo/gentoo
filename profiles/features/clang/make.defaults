@@ -1,4 +1,9 @@
-# use Clang as a primary compiler
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# this is for now highly experimental -dilfridge
+
+# use clang as the primary compiler
 CC="clang"
 CXX="clang++"
 
@@ -12,7 +17,7 @@ LDFLAGS="${LDFLAGS} -fuse-ld=lld -rtlib=compiler-rt -unwindlib=libunwind -Wl,--a
 SOME_HARDENING_CFLAGS="-fPIC -fstack-protector-strong -D_FORTIFY_SOURCE=2"
 SOME_HARDENING_LDFLAGS="-Wl,-z,relro,-z,now -pie"
 
-# enable some hardening by default
+# enable hardening by default, cf. gcc[pie,ssp]
 CFLAGS="${CFLAGS} ${SOME_HARDENING_FLAGS}"
 CXXFLAGS="${CXXFLAGS} ${SOME_HARDENING_FLAGS}"
 LDFLAGS="${LDFLAGS} ${SOME_HARDENING_LDFLAGS}"
@@ -33,7 +38,7 @@ ADDR2LINE="llvm-addr2line"
 # bootstrap USE for stage1
 
 # curl needed by cmake
-BOOTSTRAP_USE="$BOOTSTRAP_USE ssl curl_ssl_openssl"
+BOOTSTRAP_USE="${BOOTSTRAP_USE} ssl curl_ssl_openssl"
 
 # Clang needs this
 BOOTSTRAP_USE="${BOOTSTRAP_USE} python_single_target_python3_9"
@@ -48,7 +53,6 @@ BOOTSTRAP_USE="${BOOTSTRAP_USE} compiler-rt clang libunwind"
 BOOTSTRAP_USE="${BOOTSTRAP_USE} default-compiler-rt default-lld default-libcxx llvm-libunwind"
 
 # sys-devel/clang-runtime
-# sanitizers are disabled for now
 BOOTSTRAP_USE="${BOOTSTRAP_USE} libcxx -sanitize"
 
 # sys-libs/libcxxabi
