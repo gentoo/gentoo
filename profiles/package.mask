@@ -784,11 +784,6 @@ net-libs/libsoup:3.0
 # is resolved.  Bug #791259.
 >=media-libs/libopenaptx-0.2.1
 
-# Conrad Kostecki <conikost@gentoo.org> (2021-06-20)
-# New Minecraft server release needs at least Java 16,
-# which is currently not available in Gentoo.
->=games-server/minecraft-server-1.17
-
 # Sam James <sam@gentoo.org> (2021-06-12)
 # Masked until all reverse dependencies support
 # OCaml 4.13.
