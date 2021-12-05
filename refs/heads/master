@@ -1,19 +1,17 @@
 certificate version 0.1
-pusher 14D74A1F43A6AC3C 1638726950 +0100
-pushee git.gentoo.org:repo/gentoo.git
-nonce 1638726950-2dd9579628ef8a615a1c25541621604f080d29db
+pusher Arthur Zamarin <arthurzam@gentoo.org> 1638728509 +0200
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1638728508-c93820c987ceff2a3bfbe4681b394445d95ff61e
 
-aa77a52ff41ddb545d11a6d799b1de2e8c79478d 0d41ce99e95a7364cd3821748f6c5a992bf526a2 refs/heads/master
+0d41ce99e95a7364cd3821748f6c5a992bf526a2 dfcdf1df0d71f2fec9a2d671dc3073b34afe4c18 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQGTBAABCgB9FiEE4PFI8SeUY7+5RtMeAxyf5lvtcUoFAmGs/SZfFIAAAAAALgAo
-aXNzdWVyLWZwckBub3RhdGlvbnMub3BlbnBncC5maWZ0aGhvcnNlbWFuLm5ldEUw
-RjE0OEYxMjc5NDYzQkZCOTQ2RDMxRTAzMUM5RkU2NUJFRDcxNEEACgkQAxyf5lvt
-cUp2nwgAr62/vJ6GO9noY/xVOIAdkpPi30rWbdITqFmRgPzD4nMaHrdjlwM+tbo8
-uqgW8NaOhUSzf/w1WkLQ4KDmMWs8qSdYdbEJel1Dg77LSawKMIAkMRNigoksstnb
-YQOP2pHyGuYD70Us6Wwi72NsN74KhHySLcqkyu2JRhADipW0DxQ7EcItbM3UOxaD
-tCAfBL8S8CL3kW8OPudIyqHN6Ft0azPxAPIkHdmlWCxITXyHkWOy68iuuluwDOVe
-PK4NAyLo+sjPrmeHyZF4PigcMjrNeL5qjZK/M2eyra9YtLmOfvm6AVAsVe6f0fbk
-kI7MiXhY/Wm0wrQck+TkH6bMyJJglA==
-=wN4k
+iQFJBAABCgAzFiEE/axFlFuH2ptjtO5EAqCvUD0SBQQFAmGtAz0VHGFydGh1cnph
+bUBnZW50b28ub3JnAAoJEAKgr1A9EgUE0ZYH/jqy6UiFni248IWwYIMr3y1dwc6U
+ooiAJa6B2IZsd5wFPc1/9FATKtyuEnuy9RCowhsz76REHV42iu7MP9xpLhD2QSVh
+Vfhyj1RjHV9qR5RFdwHQYYf+VsC1x590c9WlbxTOdd8dAk6LaECsm2MJHsaYAiN5
+e6+Q6rlcikvJ+/YD7F0eiwrJr1xtt3dC+j+mpyu5VZfpGWYsUVm1uUHVQHTP0Aa0
+eDNSbGVetA9zpbP5pBobnwHcaDpSZCB0GiIUbQFRDW1AuqHfYkqiCJbX6XBcFCAU
+cbjftPA/nKb+qNfYmdyu1PtgRrwFlLxJs0oNDVt9Y6CvLs1qqw6WilPhX4k=
+=NkUm
 -----END PGP SIGNATURE-----
