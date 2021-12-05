@@ -819,7 +819,32 @@ glibc_do_configure() {
 	# we accumulate crap across abis
 	unset CXX
 
-	einfo "Configuring glibc for nptl"
+	# If we are running in an otherwise clang/llvm environment, we need to
+	# recover the proper gcc and binutils settings here, at least until glibc
+	# is finally building with clang. So let's override everything that is
+	# set in the clang profiles.
+	# Want to shoot yourself into the foot? Set USE=custom-cflags, that's always
+	# a good start into that direction.
+	if tc-is-clang && ! use custom-cflags ; then
+		local current_binutils_path=$(binutils-config -B)
+		local current_gcc_path=$(gcc-config -B)
+		einfo "Overriding clang configuration, since it won't work here"
+
+		export CC="${current_gcc_path}/gcc"
+		export LD="${current_binutils_path}/ld.bfd"
+		export AR="${current_binutils_path}/ar"
+		export AS="${current_binutils_path}/as"
+		export NM="${current_binutils_path}/nm"
+		export STRIP="${current_binutils_path}/strip"
+		export RANLIB="${current_binutils_path}/ranlib"
+		export OBJCOPY="${current_binutils_path}/objcopy"
+		export STRINGS="${current_binutils_path}/strings"
+		export OBJDUMP="${current_binutils_path}/objdump"
+		export READELF="${current_binutils_path}/readelf"
+		export ADDR2LINE="${current_binutils_path}/addr2line"
+
+		# do we need to also do flags munging here?
+	fi
 
 	if use doc ; then
 		export MAKEINFO=makeinfo
