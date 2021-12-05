@@ -141,6 +141,20 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 #	)
 # @CODE
 
+# @ECLASS-VARIABLE: JAVA_TEST_RUNNER_EXTRA_ARGS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Array of extra arguments that should be passed to the test runner when running tests.
+# It is useful when you need to pass an extra argument to the test runner.
+#
+# It is used only when running tests.
+#
+# @CODE
+#	JAVA_TEST_RUNNER_EXTRA_ARGS=(
+#		-verbose 3
+#	)
+# @CODE
+
 # @ECLASS-VARIABLE: JAVA_PKG_DEBUG
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -1812,8 +1826,9 @@ ejunit_() {
 	if [[ "${junit}" == "junit-4" ]] ; then
 		runner=org.junit.runner.JUnitCore
 	fi
-	debug-print "Calling: java -cp \"${cp}\" -Djava.io.tmpdir=\"${T}\" -Djava.awt.headless=true ${JAVA_TEST_EXTRA_ARGS[@]} ${runner} ${@}"
-	java -cp "${cp}" -Djava.io.tmpdir="${T}/" -Djava.awt.headless=true ${JAVA_TEST_EXTRA_ARGS[@]} ${runner} "${@}" || die "Running junit failed"
+	debug-print "Calling: java -cp \"${cp}\" -Djava.io.tmpdir=\"${T}\" -Djava.awt.headless=true ${JAVA_TEST_EXTRA_ARGS[@]} ${runner} ${JAVA_TEST_RUNNER_EXTRA_ARGS[@]} ${@}"
+	java -cp "${cp}" -Djava.io.tmpdir="${T}/" -Djava.awt.headless=true\
+		${JAVA_TEST_EXTRA_ARGS[@]} ${runner} "${JAVA_TEST_RUNNER_EXTRA_ARGS[@]}" "${@}" || die "Running junit failed"
 }
 
 # @FUNCTION: ejunit
@@ -1879,6 +1894,7 @@ etestng() {
 	local runner=org.testng.TestNG
 	local cp=$(java-pkg_getjars --with-dependencies testng)
 	local tests
+	local args
 
 	if [[ ${1} = -cp || ${1} = -classpath ]]; then
 		cp="${cp}:${2}"
@@ -1891,12 +1907,22 @@ etestng() {
 		tests+="${test},"
 	done
 
-	debug-print "java -cp \"${cp}\" -Djava.io.tmpdir=\"${T}\""\
-		"-Djava.awt.headless=true ${JAVA_TEST_EXTRA_ARGS[@]} ${runner}"\
-		"-usedefaultlisteners false -testclass ${tests}"
-	java -cp "${cp}" -Djava.io.tmpdir=\"${T}\" -Djava.awt.headless=true ${JAVA_TEST_EXTRA_ARGS[@]}\
-		${runner} -usedefaultlisteners false -testclass ${tests}\
-		|| die "Running TestNG failed."
+	args=(
+		"-cp"
+		"${cp}"
+		"-Djava.io.tmpdir=\"${T}\""
+		"-Djava.awt.headless=true"
+		${JAVA_TEST_EXTRA_ARGS[@]}
+		${runner}
+		"${JAVA_TEST_RUNNER_EXTRA_ARGS[@]}"
+	)
+
+	[[ ! "${JAVA_TEST_RUNNER_EXTRA_ARGS[@]}" =~ "-usedefaultlisteners" ]] && args+=( -usedefaultlisteners false )
+
+	args+=( -testclass ${tests} )
+
+	debug-print "java ${args[@]}"
+	java ${args[@]} || die "Running TestNG failed."
 }
 
 # @FUNCTION: java-utils-2_src_prepare
