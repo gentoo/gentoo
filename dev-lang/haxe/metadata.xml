@@ -12,7 +12,7 @@
     library and ways to access each platform's native capabilities.
   </longdescription>
   <upstream>
-    <bugs-to>https://github.com/HaxeFoundation/haxe</bugs-to>
+    <bugs-to>https://github.com/HaxeFoundation/haxe/issues/</bugs-to>
     <remote-id type="github">HaxeFoundation/haxe-debian</remote-id>
     <remote-id type="github">HaxeFoundation/haxe</remote-id>
   </upstream>
