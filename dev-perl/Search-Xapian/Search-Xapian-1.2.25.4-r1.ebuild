@@ -1,17 +1,16 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=OLLY
-inherit perl-module toolchain-funcs versionator
+inherit perl-module toolchain-funcs
 
-VERSION=$(get_version_component_range 1-3)
+MY_VERSION=$(ver_cut 1-3)
 
-SRC_URI+=" http://oligarchy.co.uk/xapian/${VERSION}/${P}.tar.gz"
+SRC_URI+=" http://oligarchy.co.uk/xapian/${MY_VERSION}/${P}.tar.gz"
 DESCRIPTION="Perl XS frontend to the Xapian C++ search library"
 
-LICENSE="|| ( Artistic GPL-1 GPL-2 GPL-3 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="examples test"
