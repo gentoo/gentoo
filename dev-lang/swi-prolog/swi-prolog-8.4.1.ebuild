@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake desktop xdg-utils flag-o-matic
+inherit cmake desktop xdg-utils flag-o-matic toolchain-funcs
 
 PATCHSET_VER="0"
 
@@ -49,6 +49,8 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 	java? ( test? ( =dev-java/junit-3.8* ) )"
 
+BDEPEND="virtual/pkgconfig"
+
 S="${WORKDIR}/swipl-${PV}"
 
 src_prepare() {
@@ -60,7 +62,7 @@ src_prepare() {
 		-e "s|\(SWIPL_INSTALL_CMAKE_CONFIG_DIR\) lib/|\1   $(get_libdir)/|" \
 		-i CMakeLists.txt || die
 
-	local ncurses_lib_flags=$(pkg-config --libs ncurses)
+	local ncurses_lib_flags=$($(tc-getPKG_CONFIG) --libs ncurses)
 	sed -i "/project(SWI-Prolog)/a set(CMAKE_REQUIRED_LIBRARIES \${CMAKE_REQUIRED_LIBRARIES} ${ncurses_lib_flags})" CMakeLists.txt || die
 	sed -i "s:\${CURSES_LIBRARIES}:${ncurses_lib_flags}:" src/CMakeLists.txt || die
 
