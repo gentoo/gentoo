@@ -20,11 +20,17 @@ IUSE=""
 
 RDEPEND+="!app-text/ronn"
 
-ruby_add_rdepend "
+DEPS="
 	>=dev-ruby/kramdown-2.1:2
-	=dev-ruby/mustache-1*
 	>=dev-ruby/nokogiri-1.9.0:0
 "
+
+ruby_add_rdepend "
+	=dev-ruby/mustache-1*
+	${DEPS}
+"
+
+ruby_add_bdepend "${DEPS}"
 
 all_ruby_prepare() {
 	sed -i -e '/mustache/ s/0.7/1.0/' ${RUBY_FAKEGEM_GEMSPEC} || die
