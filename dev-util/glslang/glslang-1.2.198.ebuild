@@ -23,7 +23,6 @@ HOMEPAGE="https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/ https:/
 LICENSE="BSD"
 SLOT="0"
 
-RDEPEND="!<media-libs/shaderc-2020.1"
 BDEPEND="${PYTHON_DEPS}"
 
 # Bug 698850
