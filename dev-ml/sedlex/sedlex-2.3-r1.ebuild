@@ -17,7 +17,7 @@ for file in ${FILES[@]} ; do
 done
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
