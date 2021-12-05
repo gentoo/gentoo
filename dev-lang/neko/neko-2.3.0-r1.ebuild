@@ -27,10 +27,13 @@ DEPEND="
 	dev-libs/boehm-gc:=
 	dev-libs/libpcre:=
 	sys-libs/zlib:=
-	apache? ( www-servers/apache:2 )
-	mysql? ( dev-db/mysql:* )
-	sqlite? ( dev-db/sqlite )
-	ssl? ( dev-libs/openssl )
+	apache? ( www-servers/apache:2= )
+	mysql? ( dev-db/mysql:= )
+	sqlite? ( dev-db/sqlite:3= )
+	ssl? (
+		dev-libs/openssl:=
+		net-libs/mbedtls:=
+	)
 "
 RDEPEND="${DEPEND}"
 
