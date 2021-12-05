@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Weave your Pod together from configuration and Dist::Zilla"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	>=dev-perl/Dist-Zilla-5.0.0
