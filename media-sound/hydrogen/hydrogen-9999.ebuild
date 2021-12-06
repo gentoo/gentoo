@@ -40,6 +40,7 @@ CDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	archive? ( app-arch/libarchive )
 	!archive? ( >=dev-libs/libtar-1.2.11-r3 )
+	doc? ( dev-texlive/texlive-fontutils )
 	jack? ( virtual/jack )
 	ladspa? ( media-libs/liblrdf )
 	lash? ( media-sound/lash )
