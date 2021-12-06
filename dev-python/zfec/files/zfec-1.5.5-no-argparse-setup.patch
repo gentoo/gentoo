@@ -1,0 +1,13 @@
+--- a/setup.py	2021-07-20 20:45:57.275783406 -0000
++++ b/setup.py	2021-07-20 20:46:05.302520019 -0000
+@@ -59,9 +59,7 @@ setup(
+     description="An efficient, portable erasure coding tool",
+     long_description=open('README.rst', 'r').read(),
+     url="https://github.com/tahoe-lafs/zfec",
+-    install_requires=[
+-        "argparse >= 0.8",
+-    ],
++    install_requires=[],
+     extras_require={
+         "bench": ["pyutil >= 3.0.0"],
+         "test": ["twisted", "setuptools_trial", "pyutil >= 3.0.0"],
