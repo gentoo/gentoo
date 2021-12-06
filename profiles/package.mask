@@ -651,11 +651,6 @@ dev-java/jnr-enxio
 # Removal on 2021-12-06. Bug #819750.
 app-pda/gnupod
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (2021-11-04)
-# Unused and outdated packages; the version in core Perl is
-# newer. Removal in 30 days.
-perl-core/Module-Metadata
-
 # Sam James <sam@gentoo.org> (2021-11-03)
 # Known issues with YAMA (kernel.yama.ptrace_scope=1) which is on by default
 # in at least the sys-kernel/gento-kernel kernel config.
