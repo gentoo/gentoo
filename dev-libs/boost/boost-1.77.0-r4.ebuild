@@ -91,7 +91,7 @@ create_user-config.jam() {
 	fi
 
 	cat > "${user_config_jam}" <<- __EOF__ || die
-		using ${compiler} : ${compiler_version} : ${compiler_executable} : <cflags>"${CFLAGS}" <cxxflags>"${CXXFLAGS}" <linkflags>"${LDFLAGS}" ;
+		using ${compiler} : ${compiler_version} : ${compiler_executable} : <cflags>"${CFLAGS}" <cxxflags>"${CXXFLAGS}" <linkflags>"${LDFLAGS}" <archiver>"$(tc-getAR)" <ranlib>"$(tc-getRANLIB)" ;
 		${mpi_configuration}
 	__EOF__
 
