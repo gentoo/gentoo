@@ -655,7 +655,6 @@ app-pda/gnupod
 # Unused and outdated packages; the version in core Perl is
 # newer. Removal in 30 days.
 perl-core/Module-Metadata
-perl-core/parent
 
 # Sam James <sam@gentoo.org> (2021-11-03)
 # Known issues with YAMA (kernel.yama.ptrace_scope=1) which is on by default
