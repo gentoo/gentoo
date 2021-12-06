@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-12-06)
+# Ancient release, EAPI 5, downloads random data,
+# latest version uses Gradle.
+# Bug #572142, #580176, #776298, removal in 30 days.
+sci-biology/picard
+
 # Conrad Kostecki <conikost@gentoo.org> (2021-12-04)
 # Masking newer versions for both packages,
 # as they cannot be compiled due upstream change.
