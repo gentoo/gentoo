@@ -5,4 +5,5 @@
 		<email>arthurzam@gentoo.org</email>
 		<name>Arthur Zamarin</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
