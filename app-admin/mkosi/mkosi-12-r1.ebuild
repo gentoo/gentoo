@@ -18,7 +18,8 @@ RDEPEND="
 	dev-vcs/git
 	sys-apps/portage
 	sys-apps/systemd
-"
+	app-emulation/qemu
+	sys-firmware/edk2-ovmf"
 
 distutils_enable_tests pytest
 
