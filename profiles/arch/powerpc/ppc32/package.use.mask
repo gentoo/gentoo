@@ -1,6 +1,24 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-12-08)
+# Masks involving webkit-gtk; webkit-gtk was dekeyworded on ppc for a while.
+# We haven't (yet?) restored keywords for all the bits we had to drop, so
+# keep masks here (for now?).
+# Needs unkeyworded gnome-extra/sushi
+gnome-base/nautilus previewer
+# needs mail-client/evolution, depends on net-libs/webkit-gtk
+app-office/planner eds
+# needs gnome-extra/sushi, depends on net-libs/webkit-gtk
+gnome-base/nautilus previewer
+# needs libgdata[gnome-online-accounts], depends on net-libs/webkit-gtk
+gnome-base/gvfs google
+gnome-base/gnome-control-center flickr
+# needs mail-client/evolution, depends on net-libs/webkit-gtk
+net-mail/lbdb evo
+# needs dev-util/devhelp, depends on net-libs/webkit-gtk
+dev-util/anjuta devhelp
+
 # Daniel Pielmeier <billie@gentoo.org> (2021-11-07)
 # gnome-base/librsvg has no stable keywords here, bug #807130
 app-admin/conky lua-rsvg
@@ -68,29 +86,6 @@ dev-ml/cudf test
 # ppc32 has no virtual/rust support yet, needed by newer
 # gnome-base/librsvg, et al
 >=media-gfx/eog-3.33.1 svg
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
-# net-libs/webkit-gtk has no ppc keywords
-app-editors/emacs xwidgets
-gnome-extra/evolution-data-server oauth
-app-office/gnucash gui doc
-dev-util/geany-plugins markdown
->=media-gfx/gthumb-3.10.0 http
-# needs mail-client/evolution, depends on net-libs/webkit-gtk
-app-office/planner eds
-# needs gnome-extra/sushi, depends on net-libs/webkit-gtk
-gnome-base/nautilus previewer
-# needs libgdata[gnome-online-accounts], depends on net-libs/webkit-gtk
-gnome-base/gvfs google
-gnome-base/gnome-control-center flickr
-# needs x11-libs/wxGTK[webkit]
-sci-misc/boinc X
-# needs mail-client/evolution, depends on net-libs/webkit-gtk
-net-mail/lbdb evo
-# needs dev-util/devhelp, depends on net-libs/webkit-gtk
-dev-util/anjuta devhelp
-# app-text/libgepub depends on webkit-gtk
-xfce-extra/tumbler epub
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on ppc
