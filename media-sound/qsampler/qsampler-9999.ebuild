@@ -36,7 +36,7 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="dev-qt/linguist-tools:5"
 
-DOCS=( AUTHORS ChangeLog README TODO TRANSLATORS )
+DOCS=( ChangeLog README TRANSLATORS )
 
 src_prepare() {
 	cmake_src_prepare
