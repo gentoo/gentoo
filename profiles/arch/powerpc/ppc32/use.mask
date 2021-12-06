@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -ppc
 
+# Sam James <sam@gentoo.org> (2021-12-07)
+# net-libs/gnome-online-accounts is not marked keyworded on ppc
+gnome-online-accounts
+
 # Sam James <sam@gentoo.org> (2021-10-16)
 # media-libs/openexr doesn't work on BE (bug #818424)
 # ...and openscenegraph needs openexr.
@@ -17,12 +21,6 @@ llvm-libunwind
 # Matt Turner <mattst88@gentoo.org> (07-25-2021)
 # gnome-shell requires rustified librsvg.
 gnome-shell
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
-# net-libs/webkit-gtk has no ppc keywords
-webkit
-# net-libs/gnome-online-accounts depends on net-libs/webkit-gtk
-gnome-online-accounts
 
 # James Le Cuirot <chewi@gentoo.org> (2015-01-12)
 # Java is no longer supported on ppc.
