@@ -800,8 +800,8 @@ RDEPEND="acct-group/syncthing
 	acct-user/syncthing
 	tools? ( acct-group/stdiscosrv
 		acct-group/strelaysrv
-		acct-user/stdiscosrv
-		acct-user/strelaysrv )
+		<acct-user/stdiscosrv-1
+		<acct-user/strelaysrv-1 )
 	selinux? ( sec-policy/selinux-syncthing )"
 
 DOCS=( README.md AUTHORS CONTRIBUTING.md )
