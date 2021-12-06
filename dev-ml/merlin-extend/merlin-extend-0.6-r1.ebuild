@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit findlib
+inherit dune
 
 DESCRIPTION="SDK to extend Merlin"
 HOMEPAGE="https://github.com/let-def/merlin-extend"
@@ -12,12 +12,8 @@ SRC_URI="https://github.com/let-def/merlin-extend/archive/v${PV}.tar.gz -> ${P}.
 LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
+IUSE="ocamlopt"
 
 RDEPEND="dev-lang/ocaml:="
 DEPEND="${RDEPEND}
 	dev-ml/cppo"
-
-src_install() {
-	findlib_src_preinst
-	default
-}
