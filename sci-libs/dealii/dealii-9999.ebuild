@@ -46,6 +46,7 @@ REQUIRED_USE="
 CAS_VERSION=7.5.3
 
 RDEPEND="dev-libs/boost:=
+	!~dev-libs/boost-1.77.0
 	app-arch/bzip2
 	sys-libs/zlib
 	dev-cpp/cpp-taskflow
