@@ -43,6 +43,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.1.7-glibc.patch"
 	"${FILESDIR}/${PN}-5.1.6-musl.patch"
 	"${FILESDIR}/${PN}-5.1.6-pid.patch"
+	"${FILESDIR}/${PN}-5.1.6-pid.patch"
+	"${FILESDIR}/${P}-dmalloc.patch"
 )
 
 pkg_setup() {
