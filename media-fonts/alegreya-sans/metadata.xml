@@ -5,6 +5,7 @@
 		<email>fonts@gentoo.org</email>
 		<name>Fonts</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">huertatipografica/Alegreya-Sans</remote-id>
 	</upstream>
