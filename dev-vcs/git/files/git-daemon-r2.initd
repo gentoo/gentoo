@@ -2,7 +2,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-pidfile="/var/run/git-daemon.pid"
+pidfile="/run/git-daemon.pid"
 command="/usr/bin/git"
 command_args="daemon ${GITDAEMON_OPTS}"
 command_user="${GIT_USER:-nobody}:${GIT_GROUP:-nobody}"
