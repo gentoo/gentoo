@@ -643,7 +643,6 @@ dev-db/mtop
 # Libraries with no other consumers. Removal in 30 days.
 dev-java/mina-core
 dev-java/jnr-unixsocket
-dev-java/jnr-enxio
 
 # Sam James <sam@gentoo.org> (2021-11-03)
 # Known issues with YAMA (kernel.yama.ptrace_scope=1) which is on by default
