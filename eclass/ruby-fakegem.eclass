@@ -561,7 +561,10 @@ ruby_fakegem_extensions_installed() {
 # The directory where rubygems expects extensions for this package
 # version.
 ruby_fakegem_extensionsdir() {
-	echo "$(ruby_fakegem_gemsdir)/extensions/$(ruby_rbconfig_value 'arch')/$(ruby_rbconfig_value 'ruby_version')/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}"
+	# Using formula from ruby src/lib/rubygems/basic_specification.
+	extensions_dir=$(${RUBY} --disable=did_you_mean -e "puts File.join('extensions', Gem::Platform.local.to_s, Gem.extension_api_version)")
+
+	echo "$(ruby_fakegem_gemsdir)/${extensions_dir}/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}"
 }
 
 # @FUNCTION: each_fakegem_install
