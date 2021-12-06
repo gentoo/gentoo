@@ -513,7 +513,7 @@ src_install() {
 	fi
 
 	if ! use prefix ; then
-		newinitd "${FILESDIR}"/git-daemon-r1.initd git-daemon
+		newinitd "${FILESDIR}"/git-daemon-r2.initd git-daemon
 		newconfd "${FILESDIR}"/git-daemon.confd git-daemon
 		systemd_newunit "${FILESDIR}/git-daemon_at-r1.service" \
 			"git-daemon@.service"
