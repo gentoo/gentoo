@@ -41,6 +41,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.29_armv8a-dsp.patch
+)
+
 src_compile() {
 	use doc && MODULES+="doc"
 	use jack && MODULES+=" jack"
