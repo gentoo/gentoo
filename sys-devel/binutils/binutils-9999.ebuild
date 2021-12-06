@@ -178,6 +178,8 @@ src_configure() {
 	# Keep things sane
 	strip-flags
 
+	use elibc_musl && append-ldflags -Wl,-z,stack-size=2097152
+
 	local x
 	echo
 	for x in CATEGORY CBUILD CHOST CTARGET CFLAGS LDFLAGS ; do
