@@ -24,7 +24,9 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 
 	# adjust requires for pycryptodome and optional dependencies (bug #828466)
-	sed -ri "/'pycryptodomex'/s/x//;s/'(mutagen|websockets)',?//g" setup.py || die
+	sed -ri setup.py \
+		-e "s/'(pycryptodome)x'/'\1'/" \
+		-e "s/'(mutagen|websockets)',?//g" || die
 }
 
 python_test() {
