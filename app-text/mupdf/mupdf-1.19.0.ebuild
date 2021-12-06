@@ -67,7 +67,7 @@ src_prepare() {
 		-e "1iAR = $(tc-getAR)" \
 		-e "1iverbose = yes" \
 		-e "1ibuild = debug" \
-		-i Makerules || die
+		-i Makerules || die "Failed adding build variables to Makerules in src_prepare()"
 }
 
 _emake() {
@@ -122,14 +122,14 @@ src_install() {
 		domenu platform/debian/${PN}.desktop
 		doicon platform/debian/${PN}.xpm
 	else
-		rm docs/man/${PN}.1 || die
+		rm docs/man/${PN}.1 || die "Failed to remove man page in src_install()"
 	fi
 
 	sed -i \
 		-e "1iprefix = ${ED}/usr" \
 		-e "1ilibdir = ${ED}/usr/$(get_libdir)" \
 		-e "1idocdir = ${ED}/usr/share/doc/${PF}" \
-		-i Makerules || die
+		-i Makerules || die "Failed adding liprefix, lilibdir and lidocdir to Makerules in src_install()"
 
 	_emake install
 
@@ -144,7 +144,7 @@ src_install() {
 	fi
 
 	# Respect libdir (bug #734898)
-	sed -i -e "s:/lib:/$(get_libdir):" platform/debian/${PN}.pc || die
+	sed -i -e "s:/lib:/$(get_libdir):" platform/debian/${PN}.pc || die "Failed to sed pkgconfig file to respect libdir in src_install()"
 
 	insinto /usr/$(get_libdir)/pkgconfig
 	doins platform/debian/${PN}.pc
