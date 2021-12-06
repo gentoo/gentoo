@@ -23,8 +23,8 @@ HOMEPAGE="https://www.ntpsec.org/"
 
 NTPSEC_REFCLOCK=(
 	oncore trimble truetime gpsd jjy generic spectracom
-	shm pps hpgps zyfer arbiter nmea neoclock modem
-	local)
+	shm pps hpgps zyfer arbiter nmea modem local
+	)
 
 IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 
