@@ -71,6 +71,7 @@ src_configure() {
 
 multilib_src_configure() {
 	local options=(
+		OBJC="$(tc-getBUILD_CC)"
 		$(use_enable static-libs static)
 		$(use_with zlib)
 	)
