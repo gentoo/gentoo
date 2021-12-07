@@ -19,7 +19,7 @@ else
 	COMMIT="5a02ac4818b30d2e87b3e18e497a5f9e5319394f"
 	SRC_URI="https://github.com/aircrack-ng/aircrack-ng/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm ~arm64 ~ppc x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2"
