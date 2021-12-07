@@ -51,15 +51,15 @@ PATCHES="${FILESDIR}/${PN}-makefile-fixes.patch"
 
 src_prepare() {
 	if ! use gtk; then
-		sed -i -e '/cflags gtk+/d' Makefile || die
 		default
+		sed -i -e '/cflags gtk+/d' Makefile || die
 	else
+		xdg_src_prepare
 		# remove path and extension from Icon and Exec entry
 		sed -i -e 's/Icon=\/opt\/droidcam-icon.png/Icon=droidcam/g' \
 			-e 's/\/usr\/local\/bin\/droidcam/droidcam/g' \
 			droidcam.desktop || die
 		sed -i -e 's%/opt/droidcam-icon.png%/usr/share/icons/hicolor/96x96/apps/droidcam.png%g' src/droidcam.c || die
-		xdg_src_prepare
 	fi
 }
 
