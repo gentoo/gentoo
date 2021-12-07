@@ -26,3 +26,12 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-ml/cppo
 	dev-ml/findlib"
+
+src_install() {
+	local i
+	for i in lwt lwt_luv lwt_ppx lwt_react ; do
+		dune_src_install ${i}
+	done
+
+	einstalldocs
+}
