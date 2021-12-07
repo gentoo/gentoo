@@ -35,7 +35,9 @@ PATCHES=(
 multilib_src_configure() {
 	if use ppc ; then
 		# bug #827203
-		append-libs -latomic
+		# meson doesn't respect/use LIBS but mangles LDFLAGS with libs
+		# correctly. Use this until we get a Meson test for libatomic.
+		append-ldflags -latomic
 	fi
 
 	local emesonargs=(
