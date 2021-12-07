@@ -1,0 +1,12 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 502f097..05ab47b 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -156,6 +156,7 @@ if( QWT_WIDGETS )
+ endif()
+ 
+ add_library( qwt5-qt5 ${SRCS} ${HEADERS} )
++set_target_properties( qwt5-qt5 PROPERTIES PUBLIC_HEADER "${HEADERS}" )
+ 
+ target_link_libraries( qwt5-qt5 Qt5::Core Qt5::Gui Qt5::Widgets Qt5::PrintSupport )
+ 
