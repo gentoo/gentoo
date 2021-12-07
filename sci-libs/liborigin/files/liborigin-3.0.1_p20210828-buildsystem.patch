@@ -35,3 +35,16 @@ index a8e5914..8eb13c2 100644
    # documentation
    install(FILES COPYING FORMAT README
      DESTINATION ${CMAKE_INSTALL_DOCDIR}
+diff --git a/liborigin.pc.in b/liborigin.pc.in
+index b6f7c90..55f82fa 100644
+--- a/liborigin.pc.in
++++ b/liborigin.pc.in
+@@ -5,7 +5,7 @@ includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+ 
+ Name: liborigin
+ Description: Library for reading OriginLab files
+-Version: @LIBORIGIN_VERSION_MAJOR@.@LIBORIGIN_VERSION_MINOR@.@LIBORIGIN_VERSION_BUGFIX@
++Version: @liborigin_VERSION_MAJOR@.@liborigin_VERSION_MINOR@.@liborigin_VERSION_PATCH@
+ 
+ Requires:
+ Libs: -L${libdir} -lorigin
