@@ -634,11 +634,6 @@ dev-libs/vc-intrinsics
 media-libs/quvi
 media-video/clive
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-11-07)
-# Unresolved security vulnerability, still uses EAPI 5.
-# Removal on 2021-12-07. Bug #811168.
-app-misc/rundeck-bin
-
 # Sam James <sam@gentoo.org> (2021-11-03)
 # Known issues with YAMA (kernel.yama.ptrace_scope=1) which is on by default
 # in at least the sys-kernel/gento-kernel kernel config.
