@@ -621,11 +621,6 @@ net-misc/ssh-chain
 # Removal on 2021-12-08.  Bug #822435.
 dev-python/llvmlite
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-11-07)
-# No maintainer, not compatible with llvm-11 or higher.
-# Removal on 2021-12-07. Bug #812566.
-dev-libs/vc-intrinsics
-
 # Sam James <sam@gentoo.org> (2021-11-03)
 # Known issues with YAMA (kernel.yama.ptrace_scope=1) which is on by default
 # in at least the sys-kernel/gento-kernel kernel config.
