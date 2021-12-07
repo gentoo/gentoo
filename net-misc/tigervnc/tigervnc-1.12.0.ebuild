@@ -2,21 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-CMAKE_IN_SOURCE_BUILD=1
 
-inherit autotools cmake flag-o-matic git-r3 systemd xdg
+CMAKE_IN_SOURCE_BUILD=1
+inherit autotools cmake flag-o-matic java-pkg-opt-2 systemd xdg
 
 XSERVER_VERSION="21.1.1"
 
 DESCRIPTION="Remote desktop viewer display system"
 HOMEPAGE="http://www.tigervnc.org"
-SRC_URI="server? ( ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-${XSERVER_VERSION}.tar.xz )"
-EGIT_REPO_URI="https://github.com/TigerVNC/tigervnc/"
+SRC_URI="https://github.com/TigerVNC/tigervnc/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	server? ( ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-${XSERVER_VERSION}.tar.xz )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="dri3 +drm gnutls nls +opengl server xinerama +xorgmodule"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+IUSE="dri3 +drm gnutls java nls +opengl server xinerama +xorgmodule"
 
 CDEPEND="
 	virtual/jpeg:0
@@ -26,7 +26,6 @@ CDEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrender
-	x11-libs/libxcvt
 	x11-libs/pixman
 	gnutls? ( net-libs/gnutls:= )
 	nls? ( virtual/libiconv )
@@ -50,10 +49,12 @@ CDEPEND="
 RDEPEND="${CDEPEND}
 	!net-misc/tightvnc
 	!net-misc/vnc
-	!net-misc/xf4vnc"
+	!net-misc/xf4vnc
+	java? ( virtual/jre:1.8 )"
 
 DEPEND="${CDEPEND}
 	nls? ( sys-devel/gettext )
+	java? ( virtual/jdk:1.8 )
 	x11-base/xorg-proto
 	media-libs/fontconfig
 	x11-libs/libICE
@@ -73,10 +74,10 @@ DEPEND="${CDEPEND}
 		opengl? ( >=media-libs/mesa-10.3.4-r1 )
 	)"
 
-src_unpack() {
-	git-r3_src_unpack
-	unpack xorg-server-${XSERVER_VERSION}.tar.xz
-}
+PATCHES=(
+	# Restore Java viewer
+	"${FILESDIR}"/${PN}-1.11.0-install-java-viewer.patch
+)
 
 src_prepare() {
 	if use server; then
@@ -87,12 +88,11 @@ src_prepare() {
 
 	if use server; then
 		cd unix/xserver || die
-		eapply ../xserver${XSERVER_VERSION}.patch
+		eapply "${FILESDIR}"/xserver120.patch
+		eapply "${FILESDIR}"/xserver120-drmfourcc-header.patch
+		sed -i -e 's/"gl >= .*"/"gl"/' configure.ac || die
 		eautoreconf
-		sed -i 's:\(present.h\):../present/\1:' os/utils.c || die
-		sed -i '/strcmp.*-fakescreenfps/,/^        \}/d' os/utils.c || die
 	fi
-	cd "${WORKDIR}" && sed -i 's:\(drm_fourcc.h\):libdrm/\1:' $(grep drm_fourcc.h -rl .) || die
 }
 
 src_configure() {
@@ -103,7 +103,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_GNUTLS=$(usex gnutls)
 		-DENABLE_NLS=$(usex nls)
-		-DBUILD_JAVA=no
+		-DBUILD_JAVA=$(usex java)
 	)
 
 	cmake_src_configure
