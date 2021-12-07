@@ -13,7 +13,8 @@ LICENSE="BSD-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
-RESTRICT="test"  # qcheck & qtest not yet packaged
+RESTRICT="test"  # tests fail  > unused-open
 
 DEPEND="dev-ml/dune-configurator:="
 RDEPEND="${DEPEND}"
+# BDEPEND="test? ( dev-ml/qtest )"
