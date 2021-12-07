@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Daniel Pielmeier <billie@gentoo.org> (2021-11-07)
+# gnome-base/librsvg has no stable keywords here, bug #807130
+app-admin/conky lua-rsvg
+
 # Akinori Hattori <hattya@gentoo.org> (2021-10-24)
 # Requires unkeyworded dependencies
 app-i18n/uim kde
