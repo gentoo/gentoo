@@ -32,6 +32,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-install-headers.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_EXAMPLES=$(usex examples)
