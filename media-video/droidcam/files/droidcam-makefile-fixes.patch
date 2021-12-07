@@ -1,8 +1,8 @@
 diff --git a/Makefile b/Makefile
-index 7be3c15..099a707 100644
+index 7be3c15..8af0953 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -6,7 +6,7 @@
+@@ -6,25 +6,23 @@
  # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  # Use at your own risk. See README file for more details.
  
@@ -11,7 +11,9 @@ index 7be3c15..099a707 100644
  JPEG_INCLUDE ?= $(JPEG_DIR)/include
  JPEG_LIB ?= $(JPEG_DIR)/lib`getconf LONG_BIT`
  
-@@ -16,15 +16,15 @@ GTK   = `pkg-config --libs --cflags gtk+-3.0` `pkg-config --libs x11`
+-CC   = gcc
+-CFLAGS = -Wall -O2
+ GTK   = `pkg-config --libs --cflags gtk+-3.0` `pkg-config --libs x11`
  GTK  += `pkg-config --cflags --libs appindicator3-0.1`
  LIBAV = `pkg-config --libs --cflags libswscale libavutil`
  LIBS  =  -lspeex -lasound -lpthread -lm
@@ -31,7 +33,7 @@ index 7be3c15..099a707 100644
  package: clean all
  	zip "droidcam_$(RELEASE).zip" \
  		LICENSE README* icon2.png  \
-@@ -40,11 +40,11 @@ gresource: .gresource.xml icon2.png
+@@ -40,11 +38,11 @@ gresource: .gresource.xml icon2.png
  
  droidcam-cli: LDLIBS += $(JPEG) $(LIBAV) $(LIBS)
  droidcam-cli: src/droidcam-cli.c $(SRC)
@@ -45,3 +47,16 @@ index 7be3c15..099a707 100644
  
  clean:
  	rm -f droidcam
+diff --git a/v4l2loopback/Makefile b/v4l2loopback/Makefile
+index 28c4502..02356e9 100644
+--- a/v4l2loopback/Makefile
++++ b/v4l2loopback/Makefile
+@@ -11,7 +11,7 @@ install:
+ 	$(MAKE) -C $(KERNEL_DIR) M=$(PWD) modules_install
+ 
+ test:
+-	gcc test.c -o test
++	$(CC) test.c -o test
+ 
+ clean:
+ 	$(MAKE) -C $(KERNEL_DIR) M=$(PWD) clean
