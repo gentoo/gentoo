@@ -30,12 +30,14 @@ IUSE+=" +mergecap +minizip +netlink opus +plugins plugin-ifdemo +pcap +qt5 +rand
 IUSE+=" +randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl"
 IUSE+=" sdjournal test +text2pcap tfshark +tshark +udpdump zlib +zstd"
 
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
+	plugin-ifdemo? ( plugins )"
+
 RESTRICT="!test? ( test )"
 
 # bug #753062 for speexdsp
-CDEPEND="
-	acct-group/pcap
-	>=dev-libs/glib-2.32:2
+RDEPEND="acct-group/pcap
+	>=dev-libs/glib-2.38:2
 	>=net-dns/c-ares-1.5:=
 	dev-libs/libgcrypt:=
 	media-libs/speexdsp
@@ -70,18 +72,12 @@ CDEPEND="
 	sshdump? ( >=net-libs/libssh-0.6 )
 	ssl? ( net-libs/gnutls:= )
 	zlib? ( sys-libs/zlib )
-	zstd? ( app-arch/zstd:= )
-"
-# We need perl for `pod2html`. The rest of the perl stuff is to block older
-# and broken installs. #455122
-DEPEND="
-	${CDEPEND}
-	${PYTHON_DEPS}
-"
-BDEPEND="
+	zstd? ( app-arch/zstd:= )"
+DEPEND="${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}
 	dev-lang/perl
-	sys-devel/bison
 	sys-devel/flex
+	sys-devel/gettext
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
@@ -93,17 +89,10 @@ BDEPEND="
 	test? (
 		dev-python/pytest
 		dev-python/pytest-xdist
-	)
-"
-RDEPEND="
-	${CDEPEND}
+	)"
+RDEPEND="${RDEPEND}
 	qt5? ( virtual/freedesktop-icon-theme )
-	selinux? ( sec-policy/selinux-wireshark )
-"
-REQUIRED_USE="
-	lua? ( ${LUA_REQUIRED_USE} )
-	plugin-ifdemo? ( plugins )
-"
+	selinux? ( sec-policy/selinux-wireshark )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
@@ -119,7 +108,7 @@ src_configure() {
 
 	# Workaround bug #213705. If krb5-config --libs has -lcrypto then pass
 	# --with-ssl to ./configure. (Mimics code from acinclude.m4).
-	if use kerberos; then
+	if use kerberos ; then
 		case $(krb5-config --libs) in
 			*-lcrypto*)
 				ewarn "Kerberos was built with ssl support: linkage with openssl is enabled."
@@ -130,7 +119,7 @@ src_configure() {
 		esac
 	fi
 
-	if use qt5; then
+	if use qt5 ; then
 		export QT_MIN_VERSION=5.3.0
 		append-cxxflags -fPIC -DPIC
 	fi
@@ -237,19 +226,21 @@ src_install() {
 		doins ${dir}/*.h
 	done
 
-	if use qt5; then
+	if use qt5 ; then
 		local s
-		for s in 16 32 48 64 128 256 512 1024; do
+
+		for s in 16 32 48 64 128 256 512 1024 ; do
 			insinto /usr/share/icons/hicolor/${s}x${s}/apps
 			newins image/wsicon${s}.png wireshark.png
 		done
+
 		for s in 16 24 32 48 64 128 256 ; do
 			insinto /usr/share/icons/hicolor/${s}x${s}/mimetypes
 			newins image/WiresharkDoc-${s}.png application-vnd.tcpdump.pcap.png
 		done
 	fi
 
-	if [[ -d "${ED}"/usr/share/appdata ]]; then
+	if [[ -d "${ED}"/usr/share/appdata ]] ; then
 		rm -r "${ED}"/usr/share/appdata || die
 	fi
 }
@@ -262,7 +253,7 @@ pkg_postinst() {
 	# Add group for users allowed to sniff.
 	chgrp pcap "${EROOT}"/usr/bin/dumpcap
 
-	if use dumpcap && use pcap; then
+	if use dumpcap && use pcap ; then
 		fcaps -o 0 -g pcap -m 4710 -M 0710 \
 			cap_dac_read_search,cap_net_raw,cap_net_admin \
 			"${EROOT}"/usr/bin/dumpcap
