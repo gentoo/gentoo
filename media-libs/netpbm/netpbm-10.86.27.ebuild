@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib toolchain-funcs
+inherit flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="A set of utilities for converting to/from the netpbm (and related) formats"
 HOMEPAGE="http://netpbm.sourceforge.net/"
@@ -70,6 +70,13 @@ netpbm_config() {
 		[[ ${2} != "!" ]] && echo -l${2:-$1}
 	else
 		echo NONE
+	fi
+}
+
+# for bug #828127
+netpbm_cflags_for_build() {
+	if is-flagq -fPIC; then
+		echo -fPIC
 	fi
 }
 
@@ -147,6 +154,7 @@ src_configure() {
 
 	STRIPFLAG =
 	CFLAGS_SHLIB = -fPIC
+	CFLAGS_FOR_BUILD += $(netpbm_cflags_for_build)
 
 	LDRELOC = \$(LD) -r
 	LDSHLIB = $(netpbm_ldshlib)
