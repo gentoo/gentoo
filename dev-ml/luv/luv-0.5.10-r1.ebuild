@@ -6,14 +6,19 @@ EAPI=7
 inherit dune
 
 DESCRIPTION="Binding to libuv: cross-platform asynchronous I/O"
-SRC_URI="https://github.com/aantron/${PN}/releases/download/${PV}/${P}.tar.gz"
 HOMEPAGE="https://github.com/aantron/luv"
+SRC_URI="https://github.com/aantron/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 SLOT="0/${PV}"
 LICENSE="MIT"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="+ocamlopt"
+IUSE="+ocamlopt test"
+RESTRICT="!test? ( test )"
 
-RDEPEND="dev-ml/ocaml-ctypes"
+RDEPEND="
+	dev-libs/libuv:=
+	dev-ml/ocaml-ctypes:=
+	dev-ml/result:=
+"
 DEPEND="${RDEPEND}"
-BDEPEND=""
+BDEPEND="test? ( dev-ml/alcotest )"
