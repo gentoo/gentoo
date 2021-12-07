@@ -3,7 +3,6 @@
 
 EAPI=8
 
-
 CRATES="
 	adler-0.2.3
 	aho-corasick-0.7.15
