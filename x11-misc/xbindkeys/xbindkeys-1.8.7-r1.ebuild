@@ -12,9 +12,13 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="guile tk"
 
+PATCHES=(
+	"${FILESDIR}/xbindkeys-1.8.7-guile3.patch"
+)
+
 RDEPEND="
 	x11-libs/libX11
-	guile? ( >=dev-scheme/guile-1.8.4[deprecated] )
+	guile? ( >=dev-scheme/guile-1.8.4:=[deprecated] )
 	tk? ( dev-lang/tk )
 "
 DEPEND="
