@@ -36,7 +36,8 @@ PATCHES=(
 src_prepare() {
 	# debian's patches add python3 support and sanitize other aspects
 	# use_ogg_music: excluded given .xm files are fine
-	local debian=($(<"${WORKDIR}"/debian/patches/series))
+	local debian
+	debian=($(<"${WORKDIR}"/debian/patches/series)) || die
 	debian=(${debian[@]/60_use_ogg_music.patch/})
 	PATCHES+=("${debian[@]/#/${WORKDIR}/debian/patches/}")
 
