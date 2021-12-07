@@ -1,0 +1,105 @@
+Respect libdir rather than always using 'lib'.
+--- a/configure.in
++++ b/configure.in
+@@ -127,13 +127,13 @@ AC_ARG_WITH(db,
+     if test -f ${dir}/include/db_185.h; then
+        AC_DEFINE(HAVE_DB_185_H)
+        DBINC="-I${dir}/include"
+-       DBLIB="-L${dir}/lib -ldb"
++       DBLIB="-L${dir}/${libdir#${prefix}} -ldb"
+        have_db=yes
+        break
+     elif test -f ${dir}/include/db.h; then
+        AC_DEFINE(HAVE_DB_H)
+        DBINC="-I${dir}/include"
+-       DBLIB="-L${dir}/lib -ldb"
++       DBLIB="-L${dir}/${libdir#${prefix}} -ldb"
+        have_db=yes
+        break
+     fi
+@@ -178,11 +178,11 @@ AC_ARG_WITH(libpcap,
+ 	PCAPLIB="-L$withval -lpcap"
+      elif test -f $withval/include/pcap.h -a \
+ 	       -f $withval/include/net/bpf.h -a \
+-	       -f $withval/lib/libpcap.a; then
++	       -f $withval/${libdir#${prefix}}/libpcap.a; then
+ 	owd=`pwd`
+ 	if cd $withval; then withval=`pwd`; cd $owd; fi
+ 	PCAPINC="-I$withval/include"
+-	PCAPLIB="-L$withval/lib -lpcap"
++	PCAPLIB="-L$withval/${libdir#${prefix}} -lpcap"
+      else
+         AC_ERROR(pcap.h, net/bpf.h, or libpcap.a not found in $withval)
+      fi
+@@ -190,7 +190,7 @@ AC_ARG_WITH(libpcap,
+   esac ],
+ [ if test -f ${prefix}/include/pcap.h; then
+      PCAPINC="-I${prefix}/include"
+-     PCAPLIB="-L${prefix}/lib -lpcap"
++     PCAPLIB="-L${prefix}/${libdir#${prefix}} -lpcap"
+   elif test -f /usr/include/pcap/pcap.h; then
+      PCAPINC="-I/usr/include/pcap"
+      PCAPLIB="-lpcap"
+@@ -226,7 +226,7 @@ AC_ARG_WITH(libnet,
+ 	   CFLAGS="$CFLAGS `libnet-config --defines`"
+ 	fi
+ 	LNETINC="-I$withval/include"
+-	LNETLIB="-L$withval/lib -lnet"
++	LNETLIB="-L$withval/${libdir#${prefix}} -lnet"
+      else
+         AC_ERROR(libnet.h or libnet.a not found in $withval)
+      fi
+@@ -235,7 +235,7 @@ AC_ARG_WITH(libnet,
+ [ if test -f ${prefix}/include/libnet.h; then
+      CFLAGS="$CFLAGS `${prefix}/bin/libnet-config --defines`"
+      LNETINC="-I${prefix}/include"
+-     LNETLIB="-L${prefix}/lib -lnet"
++     LNETLIB="-L${prefix}/${libdir#${prefix}} -lnet"
+   elif test -f /usr/include/libnet.h; then
+      CFLAGS="$CFLAGS `libnet-config --defines`"
+      LNETLIB="-lnet"
+@@ -267,7 +267,7 @@ AC_ARG_WITH(libnids,
+ 	owd=`pwd`
+ 	if cd $withval; then withval=`pwd`; cd $owd; fi
+ 	NIDSINC="-I$withval/include"
+-	NIDSLIB="-L$withval/lib -lnids"
++	NIDSLIB="-L$withval/${libdir#${prefix}} -lnids"
+      else
+         AC_ERROR(nids.h or libnids.a not found in $withval)
+      fi
+@@ -275,7 +275,7 @@ AC_ARG_WITH(libnids,
+   esac ],
+ [ if test -f ${prefix}/include/nids.h; then
+      NIDSINC="-I${prefix}/include"
+-     NIDSLIB="-L${prefix}/lib -lnids"
++     NIDSLIB="-L${prefix}/${libdir#${prefix}} -lnids"
+   elif test -f /usr/include/nids.h; then
+      NIDSLIB="-lnids"
+   else
+@@ -309,11 +309,11 @@ AC_ARG_WITH(openssl,
+ 	SSLINC="-I$withval/include"
+ 	SSLLIB="-L$withval -lssl -lcrypto"
+      elif test -f $withval/include/openssl/ssl.h -a \
+-	       -f $withval/lib/libssl.a; then
++	       -f $withval/${libdir#${prefix}}/libssl.a; then
+ 	owd=`pwd`
+ 	if cd $withval; then withval=`pwd`; cd $owd; fi
+ 	SSLINC="-I$withval/include"
+-	SSLLIB="-L$withval/lib -lssl -lcrypto"
++	SSLLIB="-L$withval/${libdir#${prefix}} -lssl -lcrypto"
+      else
+         AC_ERROR(ssl.h or libssl.a not found in $withval)
+      fi
+@@ -322,10 +322,10 @@ AC_ARG_WITH(openssl,
+   esac ],
+ [ if test -f ${prefix}/include/openssl/ssl.h; then
+      SSLINC="-I${prefix}/include"
+-     SSLLIB="-L${prefix}/lib -lssl -lcrypto"
++     SSLLIB="-L${prefix}/${libdir#${prefix}} -lssl -lcrypto"
+   elif test -f ${prefix}/ssl/include/openssl/ssl.h; then
+      SSLINC="-I${prefix}/ssl/include"
+-     SSLLIB="-L${prefix}/ssl/lib -lssl -lcrypto"
++     SSLLIB="-L${prefix}/ssl/${libdir#${prefix}} -lssl -lcrypto"
+   elif test -f /usr/include/openssl/ssl.h; then
+      SSLLIB="-lssl -lcrypto"
+   else
