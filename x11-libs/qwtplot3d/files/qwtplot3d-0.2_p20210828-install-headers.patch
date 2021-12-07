@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 12657be..5306d02 100644
+index 12657be..c14ca89 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1,4 +1,5 @@
@@ -8,8 +8,13 @@ index 12657be..5306d02 100644
  
  project( QwtPlot3D
    VERSION 0.3.0
-@@ -106,6 +107,7 @@ set( HEADERS
+@@ -104,8 +105,12 @@ set( HEADERS
+   "include/qwt3d_io_gl2ps.h"
+   )
  configure_file( "include/qwt3d_version.h.in" "qwt3d_version.h" @ONLY )
++list( APPEND HEADERS
++    "${CMAKE_BINARY_DIR}/qwt3d_version.h"
++    )
  
  add_library( qwtplot3d ${SRCS} ${HEADERS} )
 +set_target_properties( qwtplot3d PROPERTIES PUBLIC_HEADER "${HEADERS}" )
