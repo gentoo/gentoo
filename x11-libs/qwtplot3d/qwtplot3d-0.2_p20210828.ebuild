@@ -34,6 +34,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}-doxygen.patch"
 	"${FILESDIR}/${PN}-gcc44.patch"
+	"${FILESDIR}/${P}-install-headers.patch"
 )
 
 src_compile() {
