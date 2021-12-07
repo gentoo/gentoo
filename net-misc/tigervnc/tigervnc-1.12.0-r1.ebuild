@@ -11,7 +11,10 @@ XSERVER_VERSION="21.1.1"
 DESCRIPTION="Remote desktop viewer display system"
 HOMEPAGE="http://www.tigervnc.org"
 SRC_URI="https://github.com/TigerVNC/tigervnc/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	server? ( ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-${XSERVER_VERSION}.tar.xz )"
+	server? (
+		ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-${XSERVER_VERSION}.tar.xz
+		https://github.com/TigerVNC/tigervnc/commit/0c5a2b2e7759c2829c07186cfce4d24aa9b5274e.patch -> ${P}-xserver-21.patch
+	)"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -82,16 +85,18 @@ PATCHES=(
 src_prepare() {
 	if use server; then
 		cp -r "${WORKDIR}"/xorg-server-${XSERVER_VERSION}/. unix/xserver || die
+		eapply "${FILESDIR}"/${P}-xorg-1.21.patch
+		eapply "${DISTDIR}"/${P}-xserver-21.patch
 	fi
 
 	cmake_src_prepare
 
 	if use server; then
 		cd unix/xserver || die
-		eapply "${FILESDIR}"/xserver120.patch
-		eapply "${FILESDIR}"/xserver120-drmfourcc-header.patch
-		sed -i -e 's/"gl >= .*"/"gl"/' configure.ac || die
+		eapply ../xserver${XSERVER_VERSION}.patch
 		eautoreconf
+		sed -i 's:\(present.h\):../present/\1:' os/utils.c || die
+		sed -i '/strcmp.*-fakescreenfps/,/^        \}/d' os/utils.c || die
 	fi
 }
 
@@ -116,7 +121,6 @@ src_configure() {
 			--disable-config-hal \
 			--disable-config-udev \
 			--disable-devel-docs \
-			--disable-dmx \
 			--disable-dri \
 			$(use_enable dri3) \
 			--disable-glamor \
@@ -133,7 +137,6 @@ src_configure() {
 			--disable-xorg \
 			--disable-xvfb \
 			--disable-xwin \
-			--disable-xwayland \
 			--enable-dri2 \
 			--with-pic \
 			--without-dtrace \
