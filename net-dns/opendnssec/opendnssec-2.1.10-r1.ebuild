@@ -25,7 +25,7 @@ RDEPEND="
 	dev-lang/perl
 	dev-libs/libxml2
 	dev-libs/libxslt
-	net-libs/ldns
+	net-libs/ldns[ed25519,ed448]
 	mysql? (
 		dev-db/mysql-connector-c:0=
 		dev-perl/DBD-mysql
@@ -133,10 +133,10 @@ src_prepare() {
 }
 
 src_configure() {
+#		--localstatedir="${EPREFIX}/var/lib" \
 	econf \
 		--enable-installation-user=opendnssec \
 		--enable-installation-group=opendnssec \
-		--localstatedir="${EPREFIX}/var/lib" \
 		--without-cunit \
 		--disable-static \
 		--with-enforcer-database=$(use mysql && echo "mysql")$(use sqlite && echo "sqlite3") \
