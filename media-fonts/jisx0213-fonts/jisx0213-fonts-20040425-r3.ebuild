@@ -36,9 +36,9 @@ FONTDIR="/usr/share/fonts/${FONT_PN}"
 src_compile() {
 	einfo "Making bold and italic faces..."
 	for bdf in *.bdf; do
-		mkbold       -r -L ${bdf} >${bdf%.bdf}b.bdf
-		mkitalic           ${bdf} >${bdf%.bdf}i.bdf
-		mkbolditalic -r -L ${bdf} >${bdf%.bdf}bi.bdf
+		mkbold       -r -L ${bdf} >${bdf%.bdf}b.bdf || die
+		mkitalic           ${bdf} >${bdf%.bdf}i.bdf || die
+		mkbolditalic -r -L ${bdf} >${bdf%.bdf}bi.bdf || die
 	done
 	font-ebdftopcf_src_compile
 }
