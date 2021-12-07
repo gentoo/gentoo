@@ -76,7 +76,7 @@ SRC_URI="$(cargo_crate_uris)"
 
 LICENSE="Apache-2.0 BSD-2 CC0-1.0 GPL-3+ LGPL-3 MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 
 DEPEND="
 	dev-libs/hidapi
