@@ -10,7 +10,7 @@ HOMEPAGE="https://developers.hp.com/hp-linux-imaging-and-printing/plugins"
 SRC_URI="https://developers.hp.com/sites/default/files/hplip-${PV}-plugin.run"
 LICENSE="hplip-plugin"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="orblite"
 
 RDEPEND="
