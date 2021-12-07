@@ -15,4 +15,4 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
-RESTRICT="test"  # qcheck not yet packaged
+RESTRICT="test"  # some tests fails
