@@ -1,0 +1,37 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a8e5914..8eb13c2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -41,7 +41,6 @@ set (devel-headers
+ 	OriginObj.h
+ 	OriginFile.h
+ 	OriginParser.h
+-	tree.hh
+ 	)
+ 
+ # allow for installation of individual targets
+@@ -74,11 +73,13 @@ if( "${CMAKE_SOURCE_DIR}" STREQUAL "${PROJECT_SOURCE_DIR}" )
+ 	SOVERSION ${PROJECT_VERSION_MAJOR}
+     )
+   # Generate a pkg-config file matching this config
+-  configure_file( "liborigin.pc.in" "$liborigin.pc" @ONLY )
++  configure_file( "liborigin.pc.in" "liborigin.pc" @ONLY )
+ 
++  if(ENABLE_TOOLS)
+   # command line util
+   add_executable(opj2dat opj2dat.cpp)
+   target_link_libraries (opj2dat origin_static)
++  endif ()
+   
+   include(GNUInstallDirs)
+   # install libraries
+@@ -92,7 +93,9 @@ if( "${CMAKE_SOURCE_DIR}" STREQUAL "${PROJECT_SOURCE_DIR}" )
+   # install pkg-config file
+   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/liborigin.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+   #
++  if(ENABLE_TOOLS)
+   install(TARGETS opj2dat DESTINATION ${CMAKE_INSTALL_BINDIR} OPTIONAL)
++  endif ()
+   # documentation
+   install(FILES COPYING FORMAT README
+     DESTINATION ${CMAKE_INSTALL_DOCDIR}
