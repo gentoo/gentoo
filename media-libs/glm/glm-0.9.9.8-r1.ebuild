@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="OpenGL Mathematics"
 HOMEPAGE="http://glm.g-truc.net/"
@@ -24,6 +24,10 @@ PATCHES=(
 src_configure() {
 	# Header-only library
 	if use test; then
+		# See https://github.com/g-truc/glm/pull/1087
+		# https://bugs.gentoo.org/818235
+		append-cxxflags -fno-ipa-modref
+
 		local mycmakeargs=(
 			-DGLM_TEST_ENABLE=ON
 			-DGLM_TEST_ENABLE_SIMD_SSE2="$(usex cpu_flags_x86_sse2 ON OFF)"
