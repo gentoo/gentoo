@@ -24,3 +24,10 @@ RDEPEND="
 	dev-ml/utop:=
 "
 DEPEND="${RDEPEND}"
+
+src_install() {
+	dune_src_install reason
+	dune_src_install rtop
+
+	dodoc *.md
+}
