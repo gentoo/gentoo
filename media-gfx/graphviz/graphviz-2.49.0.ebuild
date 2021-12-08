@@ -188,7 +188,6 @@ src_configure() {
 	local myconf=(
 		--disable-static
 		--enable-ltdl
-		--enable-gdk-pixbuf
 		$(use_with cairo pangocairo)
 		$(use_with devil)
 		$(use_with gtk)
@@ -209,7 +208,6 @@ src_configure() {
 		--with-sfdp
 		--without-ming
 		# new/experimental features, to be tested, disable for now
-		--with-cgraph
 		--without-glitz
 		--without-ipsepcola
 		--without-smyrna
@@ -218,7 +216,6 @@ src_configure() {
 		$(use_enable guile)
 		$(use_enable java)
 		$(use_enable perl)
-		$(use_enable python python2)
 		$(use_enable python python3)
 		$(use_enable ruby)
 		$(use_enable tcl)
