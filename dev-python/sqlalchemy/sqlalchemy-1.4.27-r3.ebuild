@@ -19,10 +19,10 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="examples +sqlite test"
+IUSE="asyncio examples +sqlite test"
 
 # greenlet for bug #823794
-RDEPEND="virtual/python-greenlet[${PYTHON_USEDEP}]"
+RDEPEND="asyncio? ( virtual/python-greenlet[${PYTHON_USEDEP}] )"
 BDEPEND="
 	test? (
 		$(python_gen_impl_dep sqlite)
@@ -35,6 +35,14 @@ EPYTEST_IGNORE=(
 	# hardcode call counts specific to Python versions
 	test/aaa_profiling
 )
+
+src_prepare() {
+	if ! use asyncio ; then
+		eapply "${FILESDIR}"/${PN}-1.4.27-drop-greenlet.patch
+	fi
+
+	distutils-r1_src_prepare
+}
 
 python_install_all() {
 	if use examples; then
