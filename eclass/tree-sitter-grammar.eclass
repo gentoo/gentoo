@@ -40,15 +40,13 @@ EXPORT_FUNCTIONS src_compile src_install
 # @INTERNAL
 # @DESCRIPTION:
 # This internal function determines the ABI version of a grammar library based
-# on the package version.
+# on a constant in the source file.
 _get_tsg_abi_ver() {
-	if ver_test -gt 0.21; then
-		die "Grammar too new; unknown ABI version"
-	elif ver_test -ge 0.19.0; then
-		echo 13
-	else
-		die "Grammar too old; unknown ABI version"
-	fi
+	# This sed script finds ABI definition string in parser source file,
+	# substitutes all the string until the ABI number, and prints remains
+	# (the ABI number itself)
+	sed -n 's/#define LANGUAGE_VERSION //p' "${S}"/parser.c ||
+		die "Unable to extract ABI version for this grammar"
 }
 
 # @FUNCTION: tree-sitter-grammar_src_compile
@@ -89,8 +87,10 @@ tree-sitter-grammar_src_compile() {
 tree-sitter-grammar_src_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	dolib.so "${WORKDIR}"/lib${PN}$(get_libname $(_get_tsg_abi_ver))
-	dosym lib${PN}$(get_libname $(_get_tsg_abi_ver)) \
+	local soname=lib${PN}$(get_libname $(_get_tsg_abi_ver))
+
+	dolib.so "${WORKDIR}/${soname}"
+	dosym "${soname}" \
 		  /usr/$(get_libdir)/lib${PN}$(get_libname)
 }
 fi
