@@ -10,7 +10,7 @@ HOMEPAGE="https://reasonml.github.io"
 SRC_URI="https://registry.npmjs.org/@esy-ocaml/${PN}/-/${P}.tgz"
 S="${WORKDIR}/package"
 
-LICENSE="BSD"
+LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="+ocamlopt"
