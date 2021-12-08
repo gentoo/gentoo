@@ -26,14 +26,11 @@ DEPEND="
 
 DOCS=( AUTHORS BUGS ChangeLog README TODO xbindkeysrc )
 
-PATCHES=(
-	"${FILESDIR}/xbindkeys-1.8.7-guile3.patch"
-)
-
 src_prepare() {
 	default
 
-	# For guile patch, touches m4/
+	# Regenerate to pick up newer versions of Guile macros
+	# bug #828532
 	eautoreconf
 }
 
