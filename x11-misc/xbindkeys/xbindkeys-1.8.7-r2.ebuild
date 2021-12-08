@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="Tool for launching commands on keystrokes"
 SRC_URI="https://www.nongnu.org/${PN}/${P}.tar.gz"
 HOMEPAGE="https://www.nongnu.org/xbindkeys/xbindkeys.html"
@@ -11,10 +13,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="guile tk"
-
-PATCHES=(
-	"${FILESDIR}/xbindkeys-1.8.7-guile3.patch"
-)
 
 RDEPEND="
 	x11-libs/libX11
@@ -25,9 +23,19 @@ DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
 "
-DOCS="
-	AUTHORS BUGS ChangeLog README TODO xbindkeysrc
-"
+
+DOCS=( AUTHORS BUGS ChangeLog README TODO xbindkeysrc )
+
+PATCHES=(
+	"${FILESDIR}/xbindkeys-1.8.7-guile3.patch"
+)
+
+src_prepare() {
+	default
+
+	# For guile patch, touches m4/
+	eautoreconf
+}
 
 src_configure() {
 	econf \
