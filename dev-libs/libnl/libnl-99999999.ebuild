@@ -14,7 +14,7 @@ EGIT_REPO_URI="https://github.com/thom311/libnl"
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
 SLOT="3"
 KEYWORDS=""
-IUSE="+debug static-libs python test +threads utils"
+IUSE="+debug python test utils"
 RESTRICT="!test? ( test )"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
@@ -68,11 +68,9 @@ src_prepare() {
 
 multilib_src_configure() {
 	econf \
+		--disable-static \
 		$(multilib_native_use_enable utils cli) \
-		$(use_enable debug) \
-		$(use_enable static-libs static) \
-		$(use_enable threads) \
-		--disable-doc
+		$(use_enable debug)
 }
 
 multilib_src_compile() {
