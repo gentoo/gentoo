@@ -1,0 +1,87 @@
+From 25f3a6937a80f2748790265b9b688d64126e43d0 Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Tue, 30 Nov 2021 17:33:18 +0100
+Subject: [PATCH] Fix KRun::runApplication when xdg activation is involved
+
+Has waitForStarted account for xdg activation token request.
+
+BUG: 446272
+---
+ src/gui/kprocessrunner.cpp | 13 ++++++++++---
+ src/gui/kprocessrunner_p.h |  1 +
+ 2 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/src/gui/kprocessrunner.cpp b/src/gui/kprocessrunner.cpp
+index 130dade75..82c959afe 100644
+--- a/src/gui/kprocessrunner.cpp
++++ b/src/gui/kprocessrunner.cpp
+@@ -32,6 +32,7 @@
+ #include <QProcess>
+ #include <QStandardPaths>
+ #include <QString>
++#include <QTimer>
+ #include <QUuid>
+ 
+ #ifdef Q_OS_WIN
+@@ -259,7 +260,6 @@ void KProcessRunner::init(const KService::Ptr &service,
+     Q_UNUSED(iconName);
+ #endif
+ 
+-    bool waitingForXdgToken = false;
+     if (KWindowSystem::isPlatformWayland()) {
+         if (!asn.isEmpty()) {
+             m_process->setEnv(QStringLiteral("XDG_ACTIVATION_TOKEN"), QString::fromUtf8(asn));
+@@ -274,7 +274,7 @@ void KProcessRunner::init(const KService::Ptr &service,
+                 }
+                 if (window) {
+                     const int launchedSerial = KWindowSystem::lastInputSerial(window);
+-                    waitingForXdgToken = true;
++                    m_waitingForXdgToken = true;
+                     connect(this, &KProcessRunner::xdgActivationTokenArrived, m_process.get(), [this] {
+                         startProcess();
+                     });
+@@ -285,6 +285,7 @@ void KProcessRunner::init(const KService::Ptr &service,
+                                 if (tokenSerial == launchedSerial) {
+                                     m_process->setEnv(QStringLiteral("XDG_ACTIVATION_TOKEN"), token);
+                                     Q_EMIT xdgActivationTokenArrived();
++                                    m_waitingForXdgToken = false;
+                                 }
+                             });
+                     KWindowSystem::requestXdgActivationToken(window, launchedSerial, QFileInfo(m_serviceEntryPath).completeBaseName());
+@@ -316,7 +317,7 @@ void KProcessRunner::init(const KService::Ptr &service,
+         m_description = userVisibleName;
+     }
+ 
+-    if (!waitingForXdgToken) {
++    if (!m_waitingForXdgToken) {
+         startProcess();
+     }
+ }
+@@ -331,6 +332,12 @@ void ForkingProcessRunner::startProcess()
+ 
+ bool ForkingProcessRunner::waitForStarted(int timeout)
+ {
++    if (m_process->state() == QProcess::NotRunning && m_waitingForXdgToken) {
++        QEventLoop loop;
++        QObject::connect(m_process.get(), &QProcess::stateChanged, &loop, &QEventLoop::quit);
++        QTimer::singleShot(timeout, &loop, &QEventLoop::quit);
++        loop.exec();
++    }
+     return m_process->waitForStarted(timeout);
+ }
+ 
+diff --git a/src/gui/kprocessrunner_p.h b/src/gui/kprocessrunner_p.h
+index 1f94df7a2..df6f08f64 100644
+--- a/src/gui/kprocessrunner_p.h
++++ b/src/gui/kprocessrunner_p.h
+@@ -140,6 +140,7 @@ protected:
+     qint64 m_pid = 0;
+     KService::Ptr m_service;
+     QString m_serviceEntryPath;
++    bool m_waitingForXdgToken = false;
+ 
+ private:
+     void emitDelayedError(const QString &errorMsg);
+-- 
+GitLab
+
