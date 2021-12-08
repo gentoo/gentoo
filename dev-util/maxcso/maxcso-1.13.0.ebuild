@@ -26,6 +26,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=("${FILESDIR}/${P}-ldflags.patch")
+
 src_compile() {
 	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)"
 }
