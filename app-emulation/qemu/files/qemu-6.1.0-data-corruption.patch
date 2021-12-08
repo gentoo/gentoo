@@ -1,0 +1,114 @@
+commit cc071629539dc1f303175a7e2d4ab854c0a8b20f
+Author: Paolo Bonzini <pbonzini@redhat.com>
+Date:   Thu Sep 23 09:04:36 2021 -0400
+
+    block: introduce max_hw_iov for use in scsi-generic
+    
+    Linux limits the size of iovecs to 1024 (UIO_MAXIOV in the kernel
+    sources, IOV_MAX in POSIX).  Because of this, on some host adapters
+    requests with many iovecs are rejected with -EINVAL by the
+    io_submit() or readv()/writev() system calls.
+    
+    In fact, the same limit applies to SG_IO as well.  To fix both the
+    EINVAL and the possible performance issues from using fewer iovecs
+    than allowed by Linux (some HBAs have max_segments as low as 128),
+    introduce a separate entry in BlockLimits to hold the max_segments
+    value from sysfs.  This new limit is used only for SG_IO and clamped
+    to bs->bl.max_iov anyway, just like max_hw_transfer is clamped to
+    bs->bl.max_transfer.
+    
+    Reported-by: Halil Pasic <pasic@linux.ibm.com>
+    Cc: Hanna Reitz <hreitz@redhat.com>
+    Cc: Kevin Wolf <kwolf@redhat.com>
+    Cc: qemu-block@nongnu.org
+    Cc: qemu-stable@nongnu.org
+    Fixes: 18473467d5 ("file-posix: try BLKSECTGET on block devices too, do not round to power of 2", 2021-06-25)
+    Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+    Message-Id: <20210923130436.1187591-1-pbonzini@redhat.com>
+    Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+
+diff --git a/block/block-backend.c b/block/block-backend.c
+index 6140d133e2..ba2b5ebb10 100644
+--- a/block/block-backend.c
++++ b/block/block-backend.c
+@@ -1986,6 +1986,12 @@ uint32_t blk_get_max_transfer(BlockBackend *blk)
+     return ROUND_DOWN(max, blk_get_request_alignment(blk));
+ }
+ 
++int blk_get_max_hw_iov(BlockBackend *blk)
++{
++    return MIN_NON_ZERO(blk->root->bs->bl.max_hw_iov,
++                        blk->root->bs->bl.max_iov);
++}
++
+ int blk_get_max_iov(BlockBackend *blk)
+ {
+     return blk->root->bs->bl.max_iov;
+diff --git a/block/file-posix.c b/block/file-posix.c
+index c62e42743d..53be0bdc1b 100644
+--- a/block/file-posix.c
++++ b/block/file-posix.c
+@@ -1273,7 +1273,7 @@ static void raw_refresh_limits(BlockDriverState *bs, Error **errp)
+ 
+         ret = hdev_get_max_segments(s->fd, &st);
+         if (ret > 0) {
+-            bs->bl.max_iov = ret;
++            bs->bl.max_hw_iov = ret;
+         }
+     }
+ }
+diff --git a/block/io.c b/block/io.c
+index 18d345a87a..bb0a254def 100644
+--- a/block/io.c
++++ b/block/io.c
+@@ -136,6 +136,7 @@ static void bdrv_merge_limits(BlockLimits *dst, const BlockLimits *src)
+     dst->min_mem_alignment = MAX(dst->min_mem_alignment,
+                                  src->min_mem_alignment);
+     dst->max_iov = MIN_NON_ZERO(dst->max_iov, src->max_iov);
++    dst->max_hw_iov = MIN_NON_ZERO(dst->max_hw_iov, src->max_hw_iov);
+ }
+ 
+ typedef struct BdrvRefreshLimitsState {
+diff --git a/hw/scsi/scsi-generic.c b/hw/scsi/scsi-generic.c
+index 665baf900e..0306ccc7b1 100644
+--- a/hw/scsi/scsi-generic.c
++++ b/hw/scsi/scsi-generic.c
+@@ -180,7 +180,7 @@ static int scsi_handle_inquiry_reply(SCSIGenericReq *r, SCSIDevice *s, int len)
+         page = r->req.cmd.buf[2];
+         if (page == 0xb0) {
+             uint64_t max_transfer = blk_get_max_hw_transfer(s->conf.blk);
+-            uint32_t max_iov = blk_get_max_iov(s->conf.blk);
++            uint32_t max_iov = blk_get_max_hw_iov(s->conf.blk);
+ 
+             assert(max_transfer);
+             max_transfer = MIN_NON_ZERO(max_transfer, max_iov * qemu_real_host_page_size)
+diff --git a/include/block/block_int.h b/include/block/block_int.h
+index ffe86068d4..f4c75e8ba9 100644
+--- a/include/block/block_int.h
++++ b/include/block/block_int.h
+@@ -718,6 +718,13 @@ typedef struct BlockLimits {
+      */
+     uint64_t max_hw_transfer;
+ 
++    /* Maximal number of scatter/gather elements allowed by the hardware.
++     * Applies whenever transfers to the device bypass the kernel I/O
++     * scheduler, for example with SG_IO.  If larger than max_iov
++     * or if zero, blk_get_max_hw_iov will fall back to max_iov.
++     */
++    int max_hw_iov;
++
+     /* memory alignment, in bytes so that no bounce buffer is needed */
+     size_t min_mem_alignment;
+ 
+diff --git a/include/sysemu/block-backend.h b/include/sysemu/block-backend.h
+index 29d4fdbf63..82bae55161 100644
+--- a/include/sysemu/block-backend.h
++++ b/include/sysemu/block-backend.h
+@@ -211,6 +211,7 @@ uint32_t blk_get_request_alignment(BlockBackend *blk);
+ uint32_t blk_get_max_transfer(BlockBackend *blk);
+ uint64_t blk_get_max_hw_transfer(BlockBackend *blk);
+ int blk_get_max_iov(BlockBackend *blk);
++int blk_get_max_hw_iov(BlockBackend *blk);
+ void blk_set_guest_block_size(BlockBackend *blk, int align);
+ void *blk_try_blockalign(BlockBackend *blk, size_t size);
+ void *blk_blockalign(BlockBackend *blk, size_t size);
