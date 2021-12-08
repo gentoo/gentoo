@@ -20,7 +20,11 @@
 # signatures to SRC_URI and set VERIFY_SIG_OPENPGP_KEY_PATH.  The eclass
 # provides verify-sig USE flag to toggle the verification.
 #
+# If you need to use signify, you may want to copy distfiles into WORKDIR to
+# work around "Too many levels of symbolic links" error.
+# @EXAMPLE:
 # Example use:
+#
 # @CODE
 # inherit verify-sig
 #
@@ -43,11 +47,30 @@ if [[ ! ${_VERIFY_SIG_ECLASS} ]]; then
 
 IUSE="verify-sig"
 
-BDEPEND="
-	verify-sig? (
-		app-crypt/gnupg
-		>=app-portage/gemato-16
-	)"
+# @ECLASS-VARIABLE: VERIFY_SIG_METHOD
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Signature verification method to use.  The allowed value are:
+#
+# - openpgp -- verify PGP signatures using app-crypt/gnupg (the default)
+# - signify -- verify signatures with Ed25519 public key using app-crypt/signify
+: ${VERIFY_SIG_METHOD:=openpgp}
+
+case ${VERIFY_SIG_METHOD} in
+	openpgp)
+		BDEPEND="
+			verify-sig? (
+				app-crypt/gnupg
+				>=app-portage/gemato-16
+			)"
+		;;
+	signify)
+		BDEPEND="verify-sig? ( app-crypt/signify )"
+		;;
+	*)
+		die "${ECLASS}: unknown method '${VERIFY_SIG_METHOD}'"
+		;;
+esac
 
 # @ECLASS-VARIABLE: VERIFY_SIG_OPENPGP_KEY_PATH
 # @DEFAULT_UNSET
@@ -55,6 +78,9 @@ BDEPEND="
 # Path to key bundle used to perform the verification.  This is required
 # when using default src_unpack.  Alternatively, the key path can be
 # passed directly to the verification functions.
+#
+# NB: this variable is also used for non-OpenPGP signatures.  The name
+# contains "OPENPGP" for historical reasons.
 
 # @ECLASS-VARIABLE: VERIFY_SIG_OPENPGP_KEYSERVER
 # @DEFAULT_UNSET
@@ -62,6 +88,8 @@ BDEPEND="
 # Keyserver used to refresh keys.  If not specified, the keyserver
 # preference from the key will be respected.  If no preference
 # is specified by the key, the GnuPG default will be used.
+#
+# Supported for OpenPGP only.
 
 # @ECLASS-VARIABLE: VERIFY_SIG_OPENPGP_KEY_REFRESH
 # @USER_VARIABLE
@@ -69,6 +97,8 @@ BDEPEND="
 # Attempt to refresh keys via WKD/keyserver.  Set it to "yes"
 # in make.conf to enable.  Note that this requires working Internet
 # connection.
+#
+# Supported for OpenPGP only.
 : ${VERIFY_SIG_OPENPGP_KEY_REFRESH:=no}
 
 # @FUNCTION: verify-sig_verify_detached
@@ -88,9 +118,14 @@ verify-sig_verify_detached() {
 
 	local extra_args=()
 	[[ ${VERIFY_SIG_OPENPGP_KEY_REFRESH} == yes ]] || extra_args+=( -R )
-	[[ -n ${VERIFY_SIG_OPENPGP_KEYSERVER+1} ]] && extra_args+=(
-		--keyserver "${VERIFY_SIG_OPENPGP_KEYSERVER}"
-	)
+	if [[ -n ${VERIFY_SIG_OPENPGP_KEYSERVER+1} ]]; then
+		[[ ${VERIFY_SIG_METHOD} == openpgp ]] ||
+			die "${FUNCNAME}: VERIFY_SIG_OPENPGP_KEYSERVER is not supported"
+
+		extra_args+=(
+			--keyserver "${VERIFY_SIG_OPENPGP_KEYSERVER}"
+		)
+	fi
 
 	# GPG upstream knows better than to follow the spec, so we can't
 	# override this directory.  However, there is a clean fallback
@@ -100,9 +135,17 @@ verify-sig_verify_detached() {
 	local filename=${file##*/}
 	[[ ${file} == - ]] && filename='(stdin)'
 	einfo "Verifying ${filename} ..."
-	gemato gpg-wrap -K "${key}" "${extra_args[@]}" -- \
-		gpg --verify "${sig}" "${file}" ||
-		die "PGP signature verification failed"
+	case ${VERIFY_SIG_METHOD} in
+		openpgp)
+			gemato gpg-wrap -K "${key}" "${extra_args[@]}" -- \
+				gpg --verify "${sig}" "${file}" ||
+				die "PGP signature verification failed"
+			;;
+		signify)
+			signify -V -p "${key}" -m "${file}" -x "${sig}" ||
+				die "Signify signature verification failed"
+			;;
+	esac
 }
 
 # @FUNCTION: verify-sig_verify_message
@@ -124,9 +167,14 @@ verify-sig_verify_message() {
 
 	local extra_args=()
 	[[ ${VERIFY_SIG_OPENPGP_KEY_REFRESH} == yes ]] || extra_args+=( -R )
-	[[ -n ${VERIFY_SIG_OPENPGP_KEYSERVER+1} ]] && extra_args+=(
-		--keyserver "${VERIFY_SIG_OPENPGP_KEYSERVER}"
-	)
+	if [[ -n ${VERIFY_SIG_OPENPGP_KEYSERVER+1} ]]; then
+		[[ ${VERIFY_SIG_METHOD} == openpgp ]] ||
+			die "${FUNCNAME}: VERIFY_SIG_OPENPGP_KEYSERVER is not supported"
+
+		extra_args+=(
+			--keyserver "${VERIFY_SIG_OPENPGP_KEYSERVER}"
+		)
+	fi
 
 	# GPG upstream knows better than to follow the spec, so we can't
 	# override this directory.  However, there is a clean fallback
@@ -136,30 +184,32 @@ verify-sig_verify_message() {
 	local filename=${file##*/}
 	[[ ${file} == - ]] && filename='(stdin)'
 	einfo "Verifying ${filename} ..."
-	gemato gpg-wrap -K "${key}" "${extra_args[@]}" -- \
-		gpg --verify --output="${output_file}" "${file}" ||
-		die "PGP signature verification failed"
+	case ${VERIFY_SIG_METHOD} in
+		openpgp)
+			gemato gpg-wrap -K "${key}" "${extra_args[@]}" -- \
+				gpg --verify --output="${output_file}" "${file}" ||
+				die "PGP signature verification failed"
+			;;
+		signify)
+			signify -V -e -p "${key}" -m "${output_file}" -x "${file}" ||
+				die "Signify signature verification failed"
+			;;
+	esac
 }
 
-# @FUNCTION: verify-sig_verify_signed_checksums
+# @FUNCTION: _gpg_verify_signed_checksums
+# @INTERNAL
 # @USAGE: <checksum-file> <algo> <files> [<key-file>]
 # @DESCRIPTION:
-# Verify the checksums for all files listed in the space-separated list
-# <files> (akin to ${A}) using a PGP-signed <checksum-file>.  <algo>
-# specified the checksum algorithm (e.g. sha256).  <key-file> can either
-# be passed directly, or it defaults to VERIFY_SIG_OPENPGP_KEY_PATH.
-#
-# The function dies if PGP verification fails, the checksum file
-# contains unsigned data, one of the files do not match checksums
-# or are missing from the checksum file.
-verify-sig_verify_signed_checksums() {
+# GnuPG-specific function to verify a signed checksums list.
+_gpg_verify_signed_checksums() {
 	local checksum_file=${1}
 	local algo=${2}
 	local files=()
 	read -r -d '' -a files <<<"${3}"
 	local key=${4:-${VERIFY_SIG_OPENPGP_KEY_PATH}}
-
 	local chksum_prog chksum_len
+
 	case ${algo} in
 		sha256)
 			chksum_prog=sha256sum
@@ -169,9 +219,6 @@ verify-sig_verify_signed_checksums() {
 			die "${FUNCNAME}: unknown checksum algo ${algo}"
 			;;
 	esac
-
-	[[ -n ${key} ]] ||
-		die "${FUNCNAME}: no key passed and VERIFY_SIG_OPENPGP_KEY_PATH unset"
 
 	local checksum filename junk ret=0 count=0
 	while read -r checksum filename junk; do
@@ -192,6 +239,40 @@ verify-sig_verify_signed_checksums() {
 		die "${FUNCNAME}: at least one file did not verify successfully"
 	[[ ${count} -eq ${#files[@]} ]] ||
 		die "${FUNCNAME}: checksums for some of the specified files were missing"
+}
+
+# @FUNCTION: verify-sig_verify_signed_checksums
+# @USAGE: <checksum-file> <algo> <files> [<key-file>]
+# @DESCRIPTION:
+# Verify the checksums for all files listed in the space-separated list
+# <files> (akin to ${A}) using a signed <checksum-file>.  <algo> specifies
+# the checksum algorithm (e.g. sha256).  <key-file> can either be passed
+# directly, or it defaults to VERIFY_SIG_OPENPGP_KEY_PATH.
+#
+# The function dies if signature verification fails, the checksum file
+# contains unsigned data, one of the files do not match checksums or
+# are missing from the checksum file.
+verify-sig_verify_signed_checksums() {
+	local checksum_file=${1}
+	local algo=${2}
+	local files=()
+	read -r -d '' -a files <<<"${3}"
+	local key=${4:-${VERIFY_SIG_OPENPGP_KEY_PATH}}
+
+	[[ -n ${key} ]] ||
+		die "${FUNCNAME}: no key passed and VERIFY_SIG_OPENPGP_KEY_PATH unset"
+
+	case ${VERIFY_SIG_METHOD} in
+		openpgp)
+			_gpg_verify_signed_checksums \
+				"${checksum_file}" "${algo}" "${files[@]}" "${key}"
+			;;
+		signify)
+			signify -C -p "${key}" \
+				-x "${checksum_file}" "${files[@]}" ||
+				die "Signify signature verification failed"
+			;;
+	esac
 }
 
 # @FUNCTION: verify-sig_src_unpack
