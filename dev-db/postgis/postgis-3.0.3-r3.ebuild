@@ -5,7 +5,7 @@ EAPI=7
 
 POSTGRES_COMPAT=( 9.6 {10..13} )
 POSTGRES_USEDEP="server"
-inherit autotools postgres-multi toolchain-funcs
+inherit autotools postgres-multi
 
 MY_P="${PN}-$(ver_rs 3 '')"
 
@@ -25,9 +25,9 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="address-standardizer doc gtk static-libs topology"
+IUSE="address-standardizer doc gtk static-libs test topology"
 
-REQUIRED_USE="${POSTGRES_REQ_USE}"
+REQUIRED_USE="test? ( doc ) ${POSTGRES_REQ_USE}"
 
 # Needs a running psql instance, doesn't work out of the box
 RESTRICT="test"
@@ -36,8 +36,8 @@ RDEPEND="${POSTGRES_DEP}
 	dev-libs/json-c:=
 	dev-libs/libxml2:2
 	dev-libs/protobuf-c:=
-	>=sci-libs/geos-3.9.0
-	>=sci-libs/proj-4.9.0:=
+	>=sci-libs/geos-3.6.0
+	<sci-libs/proj-8:=
 	>=sci-libs/gdal-1.10.0:=
 	address-standardizer? ( dev-libs/libpcre )
 	gtk? ( x11-libs/gtk+:2 )
@@ -50,11 +50,12 @@ DEPEND="${RDEPEND}
 		dev-libs/libxslt
 		virtual/imagemagick-tools[png]
 	)
+	test? ( dev-util/cunit )
 "
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.0-arflags.patch"
-	"${FILESDIR}/${PN}-3.0.3-avoid-calling-ar-directly.patch"
+	"${FILESDIR}/${P}-avoid-calling-ar-directly.patch"
 	"${FILESDIR}/${PN}-3.0.3-detect-only-stdc.patch"
 	"${FILESDIR}/${PN}-3.0.3-try-other-cpp-names.patch"
 )
@@ -74,6 +75,8 @@ src_prepare() {
 
 	# bug #775968
 	touch build-aux/ar-lib || die
+	# bug #775968
+	config_rpath_update build-aux/config.rpath
 
 	local AT_M4DIR="macros"
 	eautoreconf
@@ -82,8 +85,6 @@ src_prepare() {
 }
 
 src_configure() {
-	export CPP=$(tc-getCPP)
-
 	local myeconfargs=(
 		$(use_with address-standardizer)
 		$(use_with gtk gui)

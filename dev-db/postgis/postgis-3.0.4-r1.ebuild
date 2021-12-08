@@ -15,7 +15,7 @@ if [[ ${PV} = *9999* ]] ; then
 else
 	PGIS="$(ver_cut 1-2)"
 	SRC_URI="https://download.osgeo.org/postgis/source/${MY_P}.tar.gz"
-	KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="Geographic Objects for PostgreSQL"
@@ -37,7 +37,7 @@ RDEPEND="${POSTGRES_DEP}
 	dev-libs/libxml2:2
 	dev-libs/protobuf-c:=
 	>=sci-libs/geos-3.6.0
-	>=sci-libs/proj-4.9.0:=
+	<sci-libs/proj-8:=
 	>=sci-libs/gdal-1.10.0:=
 	address-standardizer? ( dev-libs/libpcre )
 	gtk? ( x11-libs/gtk+:2 )
@@ -55,7 +55,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.0-arflags.patch"
-	"${FILESDIR}/${P}-avoid-calling-ar-directly.patch"
+	"${FILESDIR}/${PN}-3.0.3-avoid-calling-ar-directly.patch"
 	"${FILESDIR}/${PN}-3.0.3-detect-only-stdc.patch"
 	"${FILESDIR}/${PN}-3.0.3-try-other-cpp-names.patch"
 )
