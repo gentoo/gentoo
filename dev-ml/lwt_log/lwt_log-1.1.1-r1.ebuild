@@ -15,4 +15,4 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="dev-ml/lwt:="
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
