@@ -12,7 +12,7 @@ S="${WORKDIR}"
 
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 IUSE=""
 
 BDEPEND="|| ( app-arch/unrar app-arch/rar )"
