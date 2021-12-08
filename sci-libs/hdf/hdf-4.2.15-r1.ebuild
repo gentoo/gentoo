@@ -10,7 +10,8 @@ inherit fortran-2 toolchain-funcs autotools flag-o-matic
 DESCRIPTION="General purpose library and format for storing scientific data"
 HOMEPAGE="https://www.hdfgroup.org/hdf4.html"
 SRC_URI="https://support.hdfgroup.org/ftp/HDF/releases/${PN^^}${PV}/src/${P}.tar.bz2"
-SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-4.2.15-arch-patches.tar.bz2"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-4.2.15-arch-patches-1.tar.bz2"
+SRC_URI+=" https://dev.gentoo.org/~dlan/distfiles/${CATEGORY}/${PN}/${PN}-4.2.15-arch-patches-1.tar.bz2"
 
 LICENSE="NCSA-HDF"
 SLOT="0"
