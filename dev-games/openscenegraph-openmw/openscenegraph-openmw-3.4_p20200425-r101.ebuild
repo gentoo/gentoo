@@ -14,7 +14,7 @@ SRC_URI="https://github.com/OpenMW/osg/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.g
 
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/132" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="curl debug doc examples egl ffmpeg fltk fox gdal gif glut gstreamer jpeg
 	lua openexr openinventor osgapps pdf png qt5 sdl sdl2 svg tiff
 	truetype vnc wxwidgets xine xrandr zlib"
