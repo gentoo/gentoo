@@ -32,7 +32,7 @@ PATCHES=(
 
 	# May need to extend these for more arches in future.
 	# bug #664856
-	"${FILESDIR}"/${PN}-4.2.15-arch-patches/
+	"${WORKDIR}"/${PN}-4.2.15-arch-patches/
 )
 
 src_prepare() {
