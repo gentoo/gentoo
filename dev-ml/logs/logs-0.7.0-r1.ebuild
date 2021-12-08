@@ -22,11 +22,12 @@ RDEPEND="
 	cli? ( dev-ml/cmdliner:=[ocamlopt] )
 	lwt? ( dev-ml/lwt:= )
 "
-DEPEND="${RDEPEND}
-	dev-ml/opam
-	dev-ml/topkg
-	dev-ml/ocamlbuild
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-ml/findlib
+	dev-ml/ocamlbuild
+	dev-ml/opam-installer
+	dev-ml/topkg
 	test? ( dev-ml/mtime )
 "
 
@@ -62,5 +63,6 @@ src_install() {
 		--libdir="${D}/$(ocamlc -where)" \
 		--docdir="${ED}/usr/share/doc/${PF}" \
 		${PN}.install || die
-	dodoc CHANGES.md README.md
+
+	einstalldocs
 }
