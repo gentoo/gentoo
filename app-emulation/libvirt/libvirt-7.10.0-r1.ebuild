@@ -134,6 +134,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-6.7.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-6.7.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-7.9.0-fix_cgroupv2.patch
 )
 
 pkg_setup() {
