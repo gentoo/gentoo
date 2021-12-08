@@ -9,6 +9,13 @@
 		<email>sarnex@gentoo.org</email>
 		<name>Nick Sarnie</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>mva@gentoo.org</email>
+		<name>Vadim Misbakh-Soloviov</name>
+	</maintainer>
+	<use>
+		<flag name="ts-cli">Build Tree-sitter CLI tool (for developing, testing, and using Tree-sitter parsers)</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">tree-sitter/tree-sitter</remote-id>
 	</upstream>
