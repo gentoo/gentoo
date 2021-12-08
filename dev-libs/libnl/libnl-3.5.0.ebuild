@@ -68,10 +68,9 @@ src_prepare() {
 
 multilib_src_configure() {
 	econf \
+		--disable-static \
 		$(multilib_native_use_enable utils cli) \
-		$(use_enable debug) \
-		$(use_enable static-libs static) \
-		$(use_enable threads)
+		$(use_enable debug)
 }
 
 multilib_src_compile() {
