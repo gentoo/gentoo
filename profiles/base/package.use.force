@@ -14,14 +14,16 @@
 >=sys-devel/clang-13.0.1_rc llvm_targets_MSP430 llvm_targets_Mips
 >=sys-devel/clang-13.0.1_rc llvm_targets_NVPTX llvm_targets_PowerPC
 >=sys-devel/clang-13.0.1_rc llvm_targets_RISCV llvm_targets_Sparc
->=sys-devel/clang-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
+>=sys-devel/clang-13.0.1_rc llvm_targets_SystemZ llvm_targets_XCore
+>=sys-devel/clang-13.0.1_rc llvm_targets_WebAssembly
 >=sys-devel/llvm-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
 >=sys-devel/llvm-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
 >=sys-devel/llvm-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
 >=sys-devel/llvm-13.0.1_rc llvm_targets_MSP430 llvm_targets_Mips
 >=sys-devel/llvm-13.0.1_rc llvm_targets_NVPTX llvm_targets_PowerPC
 >=sys-devel/llvm-13.0.1_rc llvm_targets_RISCV llvm_targets_Sparc
->=sys-devel/llvm-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
+>=sys-devel/llvm-13.0.1_rc llvm_targets_SystemZ llvm_targets_XCore
+>=sys-devel/llvm-13.0.1_rc llvm_targets_WebAssembly
 
 # Sam James <sam@gentoo.org> (2021-03-08)
 # Broken without USE=unicode
