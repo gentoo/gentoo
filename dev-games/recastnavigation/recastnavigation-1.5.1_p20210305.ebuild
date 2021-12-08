@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 LICENSE="ZLIB"
 SLOT="0/1.5.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
