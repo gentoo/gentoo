@@ -12,10 +12,12 @@ SRC_URI="https://github.com/kandu/mew/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="+ocamlopt"
+IUSE="+ocamlopt test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-ml/result:=
 	dev-ml/trie:=
 "
 DEPEND="${RDEPEND}"
+BDEPEND="test? ( dev-ml/ppx_expect )"
