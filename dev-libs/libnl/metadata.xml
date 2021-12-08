@@ -6,7 +6,6 @@
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
 	<use>
-		<flag name="doc">Install development documentation</flag>
 		<flag name="python">Install experimental <pkg>dev-lang/python</pkg> bindings</flag>
 		<flag name="utils">Install command line interface utils</flag>
 	</use>
