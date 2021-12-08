@@ -79,6 +79,7 @@ RDEPEND="${COMMON_DEPEND}
 	acct-group/kvm
 	acct-group/lp
 	acct-group/render
+	acct-group/sgx
 	acct-group/tape
 	acct-group/video
 	!sys-apps/gentoo-systemd-integration
