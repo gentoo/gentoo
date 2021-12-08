@@ -6,6 +6,10 @@ EAPI=8
 DOCS_BUILDER="doxygen"
 DOCS_DIR="doc"
 DOCS_CONFIG_NAME="Doxyfile"
+DOCS_DEPEND="
+	media-gfx/graphviz
+	virtual/latex-base
+"
 
 inherit docs cmake
 
