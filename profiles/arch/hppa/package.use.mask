@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Vadim Misbakh-Soloviov <mva@gentoo.org> (2021-12-09)
+# ts-cli requires rust to be built, and rust is unavailable here ATM.
+dev-libs/tree-sitter ts-cli
+
 # Sam James <sam@gentoo.org> (2021-11-19)
 # Avoid dragging in doc/sphinx deps where we can help it
 dev-python/anyio doc
