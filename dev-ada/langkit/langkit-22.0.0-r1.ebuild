@@ -30,7 +30,6 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gnarl.patch
-	"${FILESDIR}"/${P}-test.patch
 )
 
 src_prepare() {
