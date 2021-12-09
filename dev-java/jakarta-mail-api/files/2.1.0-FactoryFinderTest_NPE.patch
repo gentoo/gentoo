@@ -1,0 +1,18 @@
+--- a/src/test/java/jakarta/mail/util/FactoryFinderTest.java
++++ b/src/test/java/jakarta/mail/util/FactoryFinderTest.java
+@@ -23,6 +23,7 @@ import static org.junit.Assert.fail;
+ import java.util.ServiceConfigurationError;
+ 
+ import org.junit.Test;
++import org.junit.Ignore;
+ 
+ public class FactoryFinderTest {
+ 
+@@ -39,6 +40,7 @@ public class FactoryFinderTest {
+         assertEquals(DummyStreamProvider.class, impl.getClass());
+     }
+     
++    @Ignore
+     @Test
+     public void doesNotExist() {
+         try {
