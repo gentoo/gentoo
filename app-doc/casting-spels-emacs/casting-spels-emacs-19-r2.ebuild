@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://casting-spels-emacs.googlecode.com/files/${PN}-v${PV}.zip"
 
 LICENSE="GPL-2+ FDL-1.2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 
 RDEPEND=">=app-editors/emacs-23.1:*"
 DEPEND="app-arch/unzip"
