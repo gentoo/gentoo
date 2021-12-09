@@ -51,7 +51,6 @@ BDEPEND="
 #		net-libs/glib-networking[ssl])"
 
 PATCHES=(
-	"${FILESDIR}"/${PV}-fix-leak.patch
 	# Disable apache tests until they are usable on Gentoo, bug #326957
 	"${FILESDIR}"/disable-apache-tests.patch
 )
