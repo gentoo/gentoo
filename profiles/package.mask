@@ -421,7 +421,6 @@ net-misc/sobby
 # distro is packaging this.
 # Removal on 2021-12-09. Bug #819312. Bug #819321.
 net-libs/balde
-net-libs/balde-markdown
 
 # Sam James <sam@gentoo.org> (2021-11-03)
 # Known issues with YAMA (kernel.yama.ptrace_scope=1) which is on by default
