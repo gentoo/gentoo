@@ -423,12 +423,6 @@ net-misc/sobby
 net-libs/balde
 net-libs/balde-markdown
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-11-09)
-# Uses EAPI 5, upstream gone, no revdeps,
-# no other distro is packaging this.
-# Removal on 2021-12-09. Bug #819303.
-net-misc/ssh-chain
-
 # Sam James <sam@gentoo.org> (2021-11-03)
 # Known issues with YAMA (kernel.yama.ptrace_scope=1) which is on by default
 # in at least the sys-kernel/gento-kernel kernel config.
