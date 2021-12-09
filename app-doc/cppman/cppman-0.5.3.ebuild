@@ -15,7 +15,7 @@ SRC_URI="https://github.com/aitjcize/cppman/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm ~riscv ~x86 ~x64-macos"
 
 RDEPEND="
 	sys-apps/groff
