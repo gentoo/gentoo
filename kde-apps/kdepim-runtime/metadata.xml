@@ -8,4 +8,7 @@
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
+	<use>
+		<flag name="speech">Enable text-to-speech support</flag>
+	</use>
 </pkgmetadata>
