@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-string.patch
