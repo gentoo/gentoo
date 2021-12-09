@@ -730,6 +730,20 @@ sanity_prechecks() {
 	fi
 }
 
+upgrade_warning() {
+	if [[ ${MERGE_TYPE} != buildonly && -n ${REPLACING_VERSIONS} && -z ${ROOT} ]]; then
+		local oldv newv=$(ver_cut 1-2 ${PV})
+		for oldv in ${REPLACING_VERSIONS}; do
+			if ver_test ${oldv} -lt ${newv}; then
+				ewarn "After upgrading glibc, please restart all running processes."
+				ewarn "Be sure to include init (telinit u) or systemd (systemctl daemon-reexec)."
+				ewarn "Alternatively, reboot your system."
+				break
+			fi
+		done
+	fi
+}
+
 #
 # the phases
 #
@@ -740,6 +754,7 @@ pkg_pretend() {
 	# All the checks...
 	einfo "Checking general environment sanity."
 	sanity_prechecks
+	upgrade_warning
 }
 
 pkg_setup() {
@@ -1558,11 +1573,7 @@ pkg_postinst() {
 		use compile-locales || run_locale_gen "${EROOT}/"
 	fi
 
-	if systemd_is_booted && [[ -z ${ROOT} ]] ; then
-		# We need to restart systemd when upgrading from < 2.34
-		# bug #823756
-		systemctl daemon-reexec
-	fi
+	upgrade_warning
 
 	# Check for sanity of /etc/nsswitch.conf, take 2
 	if [[ -e ${EROOT}/etc/nsswitch.conf ]] && ! has_version sys-auth/libnss-nis ; then
