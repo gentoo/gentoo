@@ -416,12 +416,6 @@ net-irc/cgiirc
 net-libs/obby
 net-misc/sobby
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-11-09)
-# Uses EAPI 5, no maintainer in Gentoo, no other
-# distro is packaging this.
-# Removal on 2021-12-09. Bug #819312. Bug #819321.
-net-libs/balde
-
 # Sam James <sam@gentoo.org> (2021-11-03)
 # Known issues with YAMA (kernel.yama.ptrace_scope=1) which is on by default
 # in at least the sys-kernel/gento-kernel kernel config.
