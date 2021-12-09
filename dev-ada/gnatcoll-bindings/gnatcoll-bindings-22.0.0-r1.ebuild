@@ -47,7 +47,6 @@ src_compile() {
 			-XGPR_BUILD=$2 -XGNATCOLL_CORE_BUILD=$2 \
 			-XLIBRARY_TYPE=$2 -P $1/gnatcoll_$1.gpr -XBUILD="PROD" \
 			-XGNATCOLL_VERSION=${PV} \
-			-XGNATCOLL_ICONV_OPT= \
 			-XGNATCOLL_ICONV_OPT= -XGNATCOLL_PYTHON_CFLAGS="-I$(python_get_includedir)" \
 			-XGNATCOLL_PYTHON_LIBS=$(python_get_library_path) \
 			-cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} || die "gprbuild failed"
@@ -72,7 +71,7 @@ src_install() {
 	build () {
 		gprinstall -p -f -XBUILD=PROD --prefix="${D}"/usr -XLIBRARY_TYPE=$2 \
 			-XGPR_BUILD=$2 -XGNATCOLL_CORE_BUILD=$2 \
-			-XGNATCOLL_VERSION=${PV} \
+			-XGNATCOLL_VERSION=${PV} --build-var=LIBRARY_TYPE \
 			-XGNATCOLL_ICONV_OPT= -P $1/gnatcoll_$1.gpr --build-name=$2
 	}
 	for kind in shared static-libs static-pic ; do
@@ -89,12 +88,6 @@ src_install() {
 			fi
 		fi
 	done
-	if use iconv; then
-		sed -i \
-			-e "s:GNATCOLL_ICONV_BUILD:LIBRARY_TYPE:" \
-			"${D}"/usr/share/gpr/gnatcoll_iconv.gpr \
-			|| die
-	fi
 	rm -r "${D}"/usr/share/gpr/manifests || die
 	einstalldocs
 }
