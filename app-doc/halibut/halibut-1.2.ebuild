@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,7 +11,7 @@ SRC_URI="https://www.chiark.greenend.org.uk/~sgtatham/${PN}/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ppc ~riscv x86"
 
 PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
