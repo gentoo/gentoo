@@ -21,14 +21,14 @@ GNOME2_EAUTORECONF=${GNOME2_EAUTORECONF:-""}
 [[ ${EAPI} == [56] ]] && inherit eutils ltprune
 inherit libtool gnome.org gnome2-utils xdg
 
-case ${EAPI:-0} in
+case ${EAPI} in
 	5)
 		EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install pkg_preinst pkg_postinst pkg_postrm
 		;;
 	6|7)
 		EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install pkg_preinst pkg_postinst pkg_postrm
 		;;
-	*) die "EAPI=${EAPI} is not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # @ECLASS-VARIABLE: ELTCONF
