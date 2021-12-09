@@ -288,7 +288,6 @@ multilib_src_configure() {
 		$(meson_use gcrypt)
 		$(meson_native_use_bool gnuefi gnu-efi)
 		-Defi-includedir="${ESYSROOT}/usr/include/efi"
-		-Defi-ld="$(tc-getLD)"
 		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
 		$(meson_native_use_bool homed)
 		$(meson_native_use_bool http microhttpd)
