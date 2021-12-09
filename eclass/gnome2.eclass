@@ -4,7 +4,7 @@
 # @ECLASS: gnome2.eclass
 # @MAINTAINER:
 # gnome@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @PROVIDES: gnome2-utils
 # @BLURB: Provides phases for Gnome/Gtk+ based packages.
 # @DESCRIPTION:
@@ -25,7 +25,7 @@ case ${EAPI} in
 	5)
 		EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install pkg_preinst pkg_postinst pkg_postrm
 		;;
-	6|7)
+	6|7|8)
 		EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install pkg_preinst pkg_postinst pkg_postrm
 		;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
