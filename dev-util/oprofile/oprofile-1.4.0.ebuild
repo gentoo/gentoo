@@ -47,6 +47,7 @@ pkg_setup() {
 
 src_prepare() {
 	eapply "${FILESDIR}/musl.patch"
+	eapply "${FILESDIR}/gcc12.patch"
 	# bug 723092
 	sed -i 's/==/=/g' configure.ac || die
 
