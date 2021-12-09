@@ -315,7 +315,7 @@ src_install() {
 		pax-mark m "${ED}/usr/bin/${abiver}"
 	fi
 
-	use sqlite || rm -r "${libdir}/"{sqlite3,test/test_sqlite*} || die
+	use sqlite || rm -r "${libdir}/"sqlite3 || die
 	use tk || rm -r "${ED}/usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*} || die
 
 	dodoc Misc/{ACKS,HISTORY,NEWS}
