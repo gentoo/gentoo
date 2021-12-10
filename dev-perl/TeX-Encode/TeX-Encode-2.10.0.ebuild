@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Encode/decode Perl utf-8 strings into TeX"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	virtual/perl-Carp
