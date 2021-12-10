@@ -54,7 +54,6 @@ COMMON_DEPEND="
 	)
 	X? (
 		>=app-accessibility/at-spi2-atk-2.15.1[${MULTILIB_USEDEP}]
-		media-libs/mesa[X(+),${MULTILIB_USEDEP}]
 		x11-libs/libX11[${MULTILIB_USEDEP}]
 		x11-libs/libXcomposite[${MULTILIB_USEDEP}]
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
