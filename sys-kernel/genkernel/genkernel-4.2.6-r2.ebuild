@@ -126,7 +126,10 @@ if [[ ${PV} == 9999* ]]; then
 	DEPEND="${DEPEND} app-text/asciidoc"
 fi
 
-PATCHES=( "${FILESDIR}"/${P}-fix-btrfs-progs-deps.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-btrfs-progs-deps.patch
+	"${FILESDIR}"/${P}-fuse-glibc-2.34.patch
+)
 
 src_unpack() {
 	if [[ ${PV} == 9999* ]]; then
