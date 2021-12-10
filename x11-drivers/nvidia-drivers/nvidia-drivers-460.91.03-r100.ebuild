@@ -4,7 +4,8 @@
 EAPI=7
 
 MODULES_OPTIONAL_USE="driver"
-inherit desktop linux-mod readme.gentoo-r1 systemd toolchain-funcs unpacker
+inherit desktop flag-o-matic linux-mod multilib readme.gentoo-r1 \
+	systemd toolchain-funcs unpacker
 
 NV_KERNEL_MAX="5.13"
 NV_URI="https://download.nvidia.com/XFree86/"
@@ -73,6 +74,7 @@ QA_PREBUILT="opt/bin/* usr/lib*"
 
 PATCHES=(
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
+	"${FILESDIR}"/nvidia-settings-390.144-raw-ldflags.patch
 )
 
 pkg_setup() {
@@ -177,8 +179,10 @@ src_compile() {
 	use X && emake "${NV_ARGS[@]}" -C nvidia-xconfig
 
 	if use tools; then
-		# avoid filling up logs, only use here and set first to allow override
+		# cflags: avoid noisy logs, only use here and set first to let override
+		# ldflags: abi currently needed if LD=ld.lld
 		CFLAGS="-Wno-deprecated-declarations ${CFLAGS}" \
+			RAW_LDFLAGS="$(get_abi_LDFLAGS) $(raw-ldflags)" \
 			emake "${NV_ARGS[@]}" -C nvidia-settings
 	elif use static-libs; then
 		emake "${NV_ARGS[@]}" -C nvidia-settings/src out/libXNVCtrl.a
