@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit meson bash-completion-r1 linux-info python-any-r1 readme.gentoo-r1 tmpfiles verify-sig
+inherit meson bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 tmpfiles verify-sig
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -15,12 +15,12 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="https://libvirt.org/sources/${P}.tar.xz
 		verify-sig? ( https://libvirt.org/sources/${P}.tar.xz.asc )"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 	SLOT="0/${PV}"
 fi
 
 DESCRIPTION="C toolkit to manipulate virtual machines"
-HOMEPAGE="https://www.libvirt.org/ https://gitlab.com/libvirt/libvirt/"
+HOMEPAGE="https://www.libvirt.org/"
 LICENSE="LGPL-2.1"
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/libvirt.org.asc
 IUSE="
@@ -113,7 +113,7 @@ RDEPEND="
 		net-misc/radvd
 		sys-apps/iproute2[-minimal]
 	)
-	wireshark-plugins? ( net-analyzer/wireshark:= )
+	wireshark-plugins? ( <net-analyzer/wireshark-3.6.0:= )
 	xen? (
 		>=app-emulation/xen-4.6.0
 		app-emulation/xen-tools:=
@@ -134,6 +134,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.7.0-doc-path.patch
 	"${FILESDIR}"/${PN}-6.7.0-fix-paths-for-apparmor.patch
 	"${FILESDIR}"/${PN}-7.3.0-vircgroup-Fix-virCgroupKillRecursive-wrt-nested-cont.patch
+	"${FILESDIR}"/${PN}-7.0.0-fix_virtproxyd_unit_file.patch
 )
 
 pkg_setup() {
@@ -201,6 +202,13 @@ pkg_setup() {
 		~NET_SCH_HTB
 		~NET_SCH_INGRESS
 		~NET_SCH_SFQ"
+
+	# Handle specific kernel versions for different features
+	kernel_is lt 3 6 && CONFIG_CHECK+=" ~CGROUP_MEM_RES_CTLR"
+	if kernel_is ge 3 6; then
+		CONFIG_CHECK+=" ~MEMCG ~MEMCG_SWAP "
+		kernel_is lt 4 5 && CONFIG_CHECK+=" ~MEMCG_KMEM "
+	fi
 
 	ERROR_USER_NS="Optional depending on LXC configuration."
 
@@ -286,18 +294,14 @@ src_test() {
 src_install() {
 	meson_src_install
 
-	# Depending on configuration option, libvirt will create some bogus
-	# directoreis. They are either not used, or libvirtd is able to create
-	# them on demand, so let's remove them.
-	#
-	# Note, we are using -f here so that rm does not fail or warn if the
-	# directory is nonexistent.
-	rm -rf "${D}"/etc/sysconfig
-	rm -rf "${D}"/var
-	rm -rf "${D}"/run
+	# Remove bogus, empty directories. They are either not used, or
+	# libvirtd is able to create them on demand
+	rm -rf "${D}"/etc/sysconfig || die
+	rm -rf "${D}"/var || die
+	rm -rf "${D}"/run || die
 
 	# Fix up doc paths for revisions
-	if [[ ${PV} != ${PVR} ]]; then
+	if [ ${PV} != ${PVR} ]; then
 		mv "${ED}"/usr/share/doc/${PN}-${PV}/* "${ED}"/usr/share/doc/${PF} || die
 		rmdir "${ED}"/usr/share/doc/${PN}-${PV} || die
 	fi
@@ -323,6 +327,13 @@ src_install() {
 	readme.gentoo_create_doc
 }
 
+pkg_preinst() {
+	# we only ever want to generate this once
+	if [[ -e "${ROOT}"/etc/libvirt/qemu/networks/default.xml ]]; then
+		rm -rf "${ED}"/etc/libvirt/qemu/networks/default.xml || die
+	fi
+}
+
 pkg_postinst() {
 	if [[ -e "${ROOT}"/etc/libvirt/qemu/networks/default.xml ]]; then
 		touch "${ROOT}"/etc/libvirt/qemu/networks/default.xml || die
@@ -330,6 +341,8 @@ pkg_postinst() {
 
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
+
 	tmpfiles_process libvirtd.conf
+
 	readme.gentoo_print_elog
 }
