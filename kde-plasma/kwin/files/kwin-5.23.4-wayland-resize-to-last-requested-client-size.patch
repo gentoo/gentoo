@@ -1,0 +1,100 @@
+From 6a84b9454c869a16c2fa5fd49a8fac4a9497f30f Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Tue, 7 Dec 2021 09:32:33 +0200
+Subject: [PATCH] wayland: Resize the client to last requested client size if
+ decoration is destroyed
+
+If the decoration is destroyed before the window is mapped, kwin can
+respond with a configure event that has 0x0 size. New tests check that
+problematic case.
+
+BUG: 444962
+(cherry picked from commit 9cc80d7468c92a2800daf98319e626e022ff1045)
+---
+ autotests/integration/xdgshellclient_test.cpp | 48 +++++++++++++++++++
+ src/abstract_client.cpp                       |  3 +-
+ 2 files changed, 50 insertions(+), 1 deletion(-)
+
+diff --git a/autotests/integration/xdgshellclient_test.cpp b/autotests/integration/xdgshellclient_test.cpp
+index c00e4ebb2d..eabed754dd 100644
+--- a/autotests/integration/xdgshellclient_test.cpp
++++ b/autotests/integration/xdgshellclient_test.cpp
+@@ -104,6 +104,8 @@ private Q_SLOTS:
+     void testPointerInputTransform();
+     void testReentrantSetFrameGeometry();
+     void testDoubleMaximize();
++    void testMaximizeAndChangeDecorationModeAfterInitialCommit();
++    void testFullScreenAndChangeDecorationModeAfterInitialCommit();
+ };
+ 
+ void TestXdgShellClient::testXdgWindowReactive()
+@@ -1839,5 +1841,51 @@ void TestXdgShellClient::testMaximizeFull()
+     QVERIFY(Test::waitForWindowDestroyed(client));
+ }
+ 
++void TestXdgShellClient::testMaximizeAndChangeDecorationModeAfterInitialCommit()
++{
++    // Ideally, the app would initialize the xdg-toplevel surface before the initial commit, but
++    // many don't do it. They initialize the surface after the first commit.
++    // This test verifies that the client will receive a configure event with correct size
++    // if an xdg-toplevel surface is set maximized and decoration mode changes after initial commit.
++
++    QScopedPointer<KWayland::Client::Surface> surface(Test::createSurface());
++    QScopedPointer<Test::XdgToplevel> shellSurface(Test::createXdgToplevelSurface(surface.data())); // will wait for the first configure event
++    QScopedPointer<Test::XdgToplevelDecorationV1> decoration(Test::createXdgToplevelDecorationV1(shellSurface.data()));
++    QSignalSpy toplevelConfigureRequestedSpy(shellSurface.data(), &Test::XdgToplevel::configureRequested);
++    QSignalSpy surfaceConfigureRequestedSpy(shellSurface->xdgSurface(), &Test::XdgSurface::configureRequested);
++
++    // Request maximized mode and set decoration mode, i.e. perform late initialization.
++    shellSurface->set_maximized();
++    decoration->set_mode(Test::XdgToplevelDecorationV1::mode_client_side);
++
++    // The compositor will respond with a new configure event, which should contain maximized state.
++    QVERIFY(surfaceConfigureRequestedSpy.wait());
++    QCOMPARE(toplevelConfigureRequestedSpy.last().at(0).value<QSize>(), QSize(1280, 1024));
++    QCOMPARE(toplevelConfigureRequestedSpy.last().at(1).value<Test::XdgToplevel::States>(), Test::XdgToplevel::State::Maximized);
++}
++
++void TestXdgShellClient::testFullScreenAndChangeDecorationModeAfterInitialCommit()
++{
++    // Ideally, the app would initialize the xdg-toplevel surface before the initial commit, but
++    // many don't do it. They initialize the surface after the first commit.
++    // This test verifies that the client will receive a configure event with correct size
++    // if an xdg-toplevel surface is set fullscreen and decoration mode changes after initial commit.
++
++    QScopedPointer<KWayland::Client::Surface> surface(Test::createSurface());
++    QScopedPointer<Test::XdgToplevel> shellSurface(Test::createXdgToplevelSurface(surface.data())); // will wait for the first configure event
++    QScopedPointer<Test::XdgToplevelDecorationV1> decoration(Test::createXdgToplevelDecorationV1(shellSurface.data()));
++    QSignalSpy toplevelConfigureRequestedSpy(shellSurface.data(), &Test::XdgToplevel::configureRequested);
++    QSignalSpy surfaceConfigureRequestedSpy(shellSurface->xdgSurface(), &Test::XdgSurface::configureRequested);
++
++    // Request fullscreen mode and set decoration mode, i.e. perform late initialization.
++    shellSurface->set_fullscreen(nullptr);
++    decoration->set_mode(Test::XdgToplevelDecorationV1::mode_client_side);
++
++    // The compositor will respond with a new configure event, which should contain fullscreen state.
++    QVERIFY(surfaceConfigureRequestedSpy.wait());
++    QCOMPARE(toplevelConfigureRequestedSpy.last().at(0).value<QSize>(), QSize(1280, 1024));
++    QCOMPARE(toplevelConfigureRequestedSpy.last().at(1).value<Test::XdgToplevel::States>(), Test::XdgToplevel::State::Fullscreen);
++}
++
+ WAYLANDTEST_MAIN(TestXdgShellClient)
+ #include "xdgshellclient_test.moc"
+diff --git a/src/abstract_client.cpp b/src/abstract_client.cpp
+index 79c079109a..95576de0b1 100644
+--- a/src/abstract_client.cpp
++++ b/src/abstract_client.cpp
+@@ -2361,8 +2361,9 @@ void AbstractClient::createDecoration(const QRect &oldGeometry)
+ 
+ void AbstractClient::destroyDecoration()
+ {
++    const QSize clientSize = frameSizeToClientSize(moveResizeGeometry().size());
+     setDecoration(nullptr);
+-    resize(clientSizeToFrameSize(clientSize()));
++    resize(clientSize);
+ }
+ 
+ void AbstractClient::setDecoration(KDecoration2::Decoration *decoration)
+-- 
+GitLab
+

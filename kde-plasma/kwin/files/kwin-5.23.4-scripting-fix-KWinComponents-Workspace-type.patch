@@ -1,0 +1,34 @@
+From fd8d01d9892f12c48a82c6e2ab675396bf6ec113 Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Sun, 5 Dec 2021 18:24:35 +0200
+Subject: [PATCH] scripting: Fix type of KWinComponents.Workspace
+
+Currently, the workspace.clients property doesn't work in declarative
+scripts because wrong workspace wrapper is used.
+
+
+(cherry picked from commit 29a85e830cdca5ae483b411e942e7a5bf85f6140)
+---
+ src/scripting/scripting.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/scripting/scripting.cpp b/src/scripting/scripting.cpp
+index b901db7455..929c94afab 100644
+--- a/src/scripting/scripting.cpp
++++ b/src/scripting/scripting.cpp
+@@ -650,10 +650,10 @@ void KWin::Scripting::init()
+     qmlRegisterType<ScriptingModels::V3::ClientModel>("org.kde.kwin", 3, 0, "ClientModel");
+     qmlRegisterType<ScriptingModels::V3::ClientFilterModel>("org.kde.kwin", 3, 0, "ClientFilterModel");
+ 
+-    qmlRegisterSingletonType<QtScriptWorkspaceWrapper>("org.kde.kwin", 3, 0, "Workspace", [](QQmlEngine *qmlEngine, QJSEngine *jsEngine) {
++    qmlRegisterSingletonType<DeclarativeScriptWorkspaceWrapper>("org.kde.kwin", 3, 0, "Workspace", [](QQmlEngine *qmlEngine, QJSEngine *jsEngine) {
+         Q_UNUSED(qmlEngine)
+         Q_UNUSED(jsEngine)
+-        return new QtScriptWorkspaceWrapper();
++        return new DeclarativeScriptWorkspaceWrapper();
+     });
+ 
+     qmlRegisterType<KWin::AbstractClient>();
+-- 
+GitLab
+
