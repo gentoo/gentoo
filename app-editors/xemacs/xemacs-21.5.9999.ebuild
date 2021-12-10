@@ -10,7 +10,7 @@ inherit flag-o-matic xdg-utils desktop
 
 DESCRIPTION="highly customizable open source text editor and application development system"
 HOMEPAGE="http://www.xemacs.org/"
-SRC_URI="http://www.malfunction.de/afterstep/files/NeXT_XEmacs.tar.gz"
+SRC_URI="neXt? ( http://www.malfunction.de/afterstep/files/NeXT_XEmacs.tar.gz )"
 
 inherit mercurial
 EHG_REPO_URI="https://foss.heptapod.net/xemacs/xemacs"
