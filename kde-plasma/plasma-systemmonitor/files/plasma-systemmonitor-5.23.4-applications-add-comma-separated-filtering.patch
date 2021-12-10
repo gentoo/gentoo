@@ -1,0 +1,36 @@
+From b18f98fee76104d5be6b871dea330be32863ad27 Mon Sep 17 00:00:00 2001
+From: David Redondo <kde@david-redondo.de>
+Date: Tue, 23 Nov 2021 10:52:11 +0100
+Subject: [PATCH] Add comma separated filtering to ApplicationsTableView
+
+Instead of using ProcessSortFilterModel we can implement in
+the callback of the KSortFilterProxyModel.
+
+
+(cherry picked from commit 364bada0ad5befd560758bad11190b1fd7043b34)
+---
+ .../contents/ui/ApplicationsTableView.qml                 | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/faces/applicationstable/contents/ui/ApplicationsTableView.qml b/src/faces/applicationstable/contents/ui/ApplicationsTableView.qml
+index 3f3ed4f..1f2dd36 100644
+--- a/src/faces/applicationstable/contents/ui/ApplicationsTableView.qml
++++ b/src/faces/applicationstable/contents/ui/ApplicationsTableView.qml
+@@ -96,6 +96,14 @@ Table.BaseTableView {
+             }
+             return true
+         }
++        filterRowCallback: function(row, parent) {
++            if (filterString.length == 0) {
++                return true
++            }
++            const name = sourceModel.data(sourceModel.index(row, filterKeyColumn, parent), filterRole).toLowerCase()
++            const parts = filterString.toLowerCase().split(",").map(s => s.trim()).filter(s => s.length > 0)
++            return parts.some(part => name.includes(part))
++        }
+ 
+         sortRole: "Value"
+     }
+-- 
+GitLab
+
