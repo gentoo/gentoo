@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit cmake
+LLVM_MAX_SLOT=12
+inherit cmake llvm
 
 DESCRIPTION="Compiler plugin which allows clang to understand Qt semantics"
 HOMEPAGE="https://apps.kde.org/clazy"
@@ -14,11 +15,12 @@ SLOT="0"
 KEYWORDS="~amd64 arm64 ~x86"
 IUSE=""
 
-RDEPEND="
-	>=sys-devel/clang-8.0:=
-	>=sys-devel/llvm-8.0:=
-"
+RDEPEND=">=sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):="
 DEPEND="${RDEPEND}"
+
+llvm_check_deps() {
+	has_version "sys-devel/clang:${LLVM_SLOT}" && has_version "sys-devel/llvm:${LLVM_SLOT}"
+}
 
 src_prepare() {
 	cmake_src_prepare
