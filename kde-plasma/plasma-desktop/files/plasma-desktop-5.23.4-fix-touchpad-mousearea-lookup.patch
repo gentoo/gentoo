@@ -1,0 +1,35 @@
+From aadab772fb81ff3d97c8b5342a8a018f51b2ef60 Mon Sep 17 00:00:00 2001
+From: Nate Graham <nate@kde.org>
+Date: Fri, 3 Dec 2021 09:36:47 -0700
+Subject: [PATCH] kcms/touchpad/applet: Fix mousearea lookup
+
+(cherry picked from commit f4060c48b264a5054c2ffa795c208910d42bfd42)
+---
+ kcms/touchpad/applet/qml/contents/ui/touchpad.qml | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/kcms/touchpad/applet/qml/contents/ui/touchpad.qml b/kcms/touchpad/applet/qml/contents/ui/touchpad.qml
+index 106859c3a..aa1034e59 100644
+--- a/kcms/touchpad/applet/qml/contents/ui/touchpad.qml
++++ b/kcms/touchpad/applet/qml/contents/ui/touchpad.qml
+@@ -61,7 +61,7 @@ Item {
+         implicitHeight: PlasmaCore.Units.iconSizes.small
+ 
+         source: plasmoid.icon
+-        active: parent.containsMouse
++        active: mousearea.containsMouse
+ 
+         PlasmaCore.ToolTipArea {
+             mainText: plasmoid.title
+@@ -69,6 +69,8 @@ Item {
+         }
+ 
+         MouseArea {
++            id: mousearea
++
+             anchors.fill: parent
+             onClicked: {
+                 plasmoid.expanded = !plasmoid.expanded;
+-- 
+GitLab
+
