@@ -21,7 +21,7 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	~dev-util/wayland-scanner-${PV}[$MULTILIB_USEDEP]
+	~dev-util/wayland-scanner-${PV}
 	virtual/pkgconfig
 	doc? (
 		>=app-doc/doxygen-1.6[dot]
