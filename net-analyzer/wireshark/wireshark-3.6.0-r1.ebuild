@@ -127,6 +127,7 @@ src_configure() {
 	python_setup
 
 	mycmakeargs+=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_{Asciidoctor,DOXYGEN}=$(usex !doc)
 		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
 		$(usex qt5 LRELEASE=$(qt5_get_bindir)/lrelease '')
 		$(usex qt5 MOC=$(qt5_get_bindir)/moc '')

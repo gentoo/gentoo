@@ -18,8 +18,7 @@ else
 	SRC_URI="https://www.wireshark.org/download/src/all-versions/${P/_/}.tar.xz"
 	S="${WORKDIR}/${P/_/}"
 
-	# Seems to break libvirt?
-	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -127,6 +126,7 @@ src_configure() {
 	python_setup
 
 	mycmakeargs+=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_{Asciidoctor,DOXYGEN}=$(usex !doc)
 		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
 		$(usex qt5 LRELEASE=$(qt5_get_bindir)/lrelease '')
 		$(usex qt5 MOC=$(qt5_get_bindir)/moc '')
