@@ -73,6 +73,7 @@ IUSE+=" +gmp-autoupdate"
 IUSE+=" screencast"
 
 REQUIRED_USE="debug? ( !system-av1 )
+	pgo? ( lto )
 	wayland? ( dbus )
 	wifi? ( dbus )"
 
