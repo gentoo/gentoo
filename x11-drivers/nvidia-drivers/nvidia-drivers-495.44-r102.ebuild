@@ -80,6 +80,8 @@ QA_PREBUILT="lib/firmware/* opt/bin/* usr/lib*"
 
 PATCHES=(
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
+	"${FILESDIR}"/nvidia-settings-390.144-desktop.patch
+	"${FILESDIR}"/nvidia-settings-390.144-no-gtk2.patch
 	"${FILESDIR}"/nvidia-settings-390.144-raw-ldflags.patch
 )
 
@@ -155,14 +157,6 @@ src_prepare() {
 	# prevent detection of incomplete kernel DRM support (bug #603818)
 	sed 's/defined(CONFIG_DRM/defined(CONFIG_DRM_KMS_HELPER/g' \
 		-i kernel/conftest.sh || die
-
-	sed -e '/Exec=\|Icon=/s/_.*/nvidia-settings/' \
-		-e '/Categories=/s/_.*/System;HardwareSettings;/' \
-		-i nvidia-settings/doc/nvidia-settings.desktop || die
-
-	# remove gtk2 support (bug #592730)
-	sed '/^GTK2LIB = /d;/INSTALL.*GTK2LIB/,+1d' \
-		-i nvidia-settings/src/Makefile || die
 
 	sed 's/__USER__/nvpd/' \
 		nvidia-persistenced/init/systemd/nvidia-persistenced.service.template \
