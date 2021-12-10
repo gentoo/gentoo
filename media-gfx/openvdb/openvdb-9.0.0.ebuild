@@ -121,7 +121,6 @@ src_configure() {
 			-DUSE_NUMPY=$(usex numpy)
 			-DOPENVDB_BUILD_PYTHON_UNITTESTS=$(usex test)
 			-DPYOPENVDB_INSTALL_DIRECTORY="$(python_get_sitedir)"
-			-DPython_EXECUTABLE="${PYTHON}"
 			-DPython_INCLUDE_DIR="$(python_get_includedir)"
 		)
 	fi
