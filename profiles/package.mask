@@ -414,7 +414,6 @@ net-irc/cgiirc
 # also broken and unmaintained.
 # Removal on 2021-12-10. Bug #819318.
 net-libs/obby
-net-misc/sobby
 
 # Sam James <sam@gentoo.org> (2021-11-03)
 # Known issues with YAMA (kernel.yama.ptrace_scope=1) which is on by default
