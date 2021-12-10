@@ -37,5 +37,8 @@ python_prepare_all() {
 	rm guessit/test/test_benchmark.py || die
 	sed -i -e "s|'pytest-benchmark',||g" setup.py || die
 
+	# Disable unconditional dependency on dev-python/pytest-runner.
+	sed -i -e "s|'pytest-runner'||g" setup.py || die
+
 	distutils-r1_python_prepare_all
 }
