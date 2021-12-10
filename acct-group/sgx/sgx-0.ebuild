@@ -5,4 +5,6 @@ EAPI=7
 
 inherit acct-group
 
+DESCRIPTION="System group: used for SGX enclaves"
+
 ACCT_GROUP_ID=405
