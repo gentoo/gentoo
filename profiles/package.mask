@@ -409,12 +409,6 @@ net-im/kouchat
 # Removal on 2021-12-10. Bug #819327. Bug #739594.
 net-irc/cgiirc
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-11-10)
-# Uses EAPI 5, no maintainer, only revdep sobby is
-# also broken and unmaintained.
-# Removal on 2021-12-10. Bug #819318.
-net-libs/obby
-
 # Sam James <sam@gentoo.org> (2021-11-03)
 # Known issues with YAMA (kernel.yama.ptrace_scope=1) which is on by default
 # in at least the sys-kernel/gento-kernel kernel config.
