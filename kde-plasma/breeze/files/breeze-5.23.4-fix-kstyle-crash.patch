@@ -1,0 +1,35 @@
+From 2aa08ed366917b7b207842844b78e5dadd5a06ed Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Sun, 5 Dec 2021 16:50:10 +0000
+Subject: [PATCH] [kstyle] Fix logic error in
+ drawIndicatorButtonDropDownPrimitive
+
+The current code checks for !complexOption, but then continues to
+de-reference it in the second clause of the statement leading to an
+inveitable crash.
+
+I assume it's meant to be an `or` for the latter part of the statement
+to make sense.
+
+
+(cherry picked from commit b09dbd9282f848e779e74840a5a3ef13c71fa82e)
+---
+ kstyle/breezestyle.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kstyle/breezestyle.cpp b/kstyle/breezestyle.cpp
+index ee06f41c..1337d26e 100644
+--- a/kstyle/breezestyle.cpp
++++ b/kstyle/breezestyle.cpp
+@@ -4024,7 +4024,7 @@ namespace Breeze
+ 
+         // cast option and check
+         const auto complexOption( qstyleoption_cast<const QStyleOptionComplex*>( option ) );
+-        if( !complexOption && !(complexOption->subControls & SC_ToolButtonMenu) ) return true;
++        if( !complexOption || !(complexOption->subControls & SC_ToolButtonMenu) ) return true;
+ 
+         // button state
+         bool enabled = option->state & QStyle::State_Enabled;
+-- 
+GitLab
+
