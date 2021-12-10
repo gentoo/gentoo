@@ -61,7 +61,7 @@ src_configure() {
 	fi
 	if use servlets; then
 		myconf+=(
-			"--with-servlet=$(java-pkg_getjar servletapi-2.4 servlet-api.jar)"
+			"--with-servlet=$(java-pkg_getjar servlet-api-3.0 servlet-api.jar)"
 		)
 	fi
 
