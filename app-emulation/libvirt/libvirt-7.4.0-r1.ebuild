@@ -10,6 +10,7 @@ inherit meson bash-completion-r1 linux-info python-any-r1 readme.gentoo-r1 tmpfi
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/libvirt/libvirt.git"
+	EGIT_BRANCH="master"
 	SRC_URI=""
 	SLOT="0"
 else
@@ -24,8 +25,8 @@ HOMEPAGE="https://www.libvirt.org/ https://gitlab.com/libvirt/libvirt/"
 LICENSE="LGPL-2.1"
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/libvirt.org.asc
 IUSE="
-	apparmor audit +caps dtrace firewalld fuse glusterfs iscsi
-	iscsi-direct +libvirtd lvm libssh lxc nfs nls numa openvz
+	apparmor audit bash-completion +caps dtrace firewalld fuse glusterfs
+	iscsi iscsi-direct +libvirtd lvm libssh lxc nfs nls numa openvz
 	parted pcap policykit +qemu rbd sasl selinux +udev
 	virtualbox +virt-network wireshark-plugins xen zfs
 "
@@ -47,6 +48,7 @@ BDEPEND="
 	dev-perl/XML-XPath
 	dev-python/docutils
 	virtual/pkgconfig
+	bash-completion? ( >=app-shells/bash-completion-2.0 )
 	verify-sig? ( app-crypt/openpgp-keys-libvirt )"
 
 # gettext.sh command is used by the libvirt command wrappers, and it's
@@ -100,7 +102,7 @@ RDEPEND="
 		>=sys-auth/polkit-0.9
 	)
 	qemu? (
-		>=app-emulation/qemu-1.5.0
+		>=app-emulation/qemu-2.11
 		dev-libs/yajl
 	)
 	rbd? ( sys-cluster/ceph )
@@ -113,7 +115,7 @@ RDEPEND="
 		net-misc/radvd
 		sys-apps/iproute2[-minimal]
 	)
-	wireshark-plugins? ( net-analyzer/wireshark:= )
+	wireshark-plugins? ( <net-analyzer/wireshark-3.6.0:= )
 	xen? (
 		>=app-emulation/xen-4.6.0
 		app-emulation/xen-tools:=
@@ -132,7 +134,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-6.7.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-6.7.0-fix-paths-for-apparmor.patch
-	"${FILESDIR}"/${PN}-7.3.0-vircgroup-Fix-virCgroupKillRecursive-wrt-nested-cont.patch
 )
 
 pkg_setup() {
@@ -295,9 +296,6 @@ src_install() {
 	rm -rf "${D}"/etc/sysconfig
 	rm -rf "${D}"/var
 	rm -rf "${D}"/run
-
-	newbashcomp "${S}/tools/bash-completion/vsh" virsh
-	bashcomp_alias virsh virt-admin
 
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!

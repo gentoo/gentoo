@@ -16,7 +16,7 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="https://libvirt.org/sources/${P}.tar.xz
 		verify-sig? ( https://libvirt.org/sources/${P}.tar.xz.asc )"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 arm64 ~ppc64 x86"
 	SLOT="0/${PV}"
 fi
 
@@ -115,9 +115,9 @@ RDEPEND="
 		net-misc/radvd
 		sys-apps/iproute2[-minimal]
 	)
-	wireshark-plugins? ( net-analyzer/wireshark:= )
+	wireshark-plugins? ( <net-analyzer/wireshark-3.6.0:= )
 	xen? (
-		>=app-emulation/xen-4.6.0
+		>=app-emulation/xen-4.9.0
 		app-emulation/xen-tools:=
 	)
 	udev? (
@@ -217,6 +217,11 @@ src_prepare() {
 	default
 	python_fix_shebang .
 
+	# Skip fragile tests which relies on pristine environment
+	# (Breaks because of sandbox environment variables)
+	# bug #802876
+	sed -i -e "/commandtest/d" tests/meson.build || die
+
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r19" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
@@ -226,7 +231,7 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		$(meson_feature apparmor)
-		$(meson_use apparmor apparmor_profiles)
+		$(meson_feature apparmor apparmor_profiles)
 		$(meson_feature audit)
 		$(meson_feature caps capng)
 		$(meson_feature dtrace)
@@ -281,7 +286,11 @@ src_configure() {
 
 src_test() {
 	export VIR_TEST_DEBUG=1
-	meson_src_test
+	# Don't run the syntax check tests, they're fragile and not relevant
+	# to us downstream anyway.
+	# We also crank up the timeout (as Fedora does) just to preempt failures
+	# on slower arches.
+	meson_src_test --no-suite syntax-check --timeout-multiplier 10
 }
 
 src_install() {

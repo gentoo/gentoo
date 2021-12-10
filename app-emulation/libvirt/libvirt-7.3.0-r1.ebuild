@@ -114,7 +114,7 @@ RDEPEND="
 		net-misc/radvd
 		sys-apps/iproute2[-minimal]
 	)
-	wireshark-plugins? ( net-analyzer/wireshark:= )
+	wireshark-plugins? ( <net-analyzer/wireshark-3.6.0:= )
 	xen? (
 		>=app-emulation/xen-4.6.0
 		app-emulation/xen-tools:=

@@ -10,13 +10,12 @@ inherit meson bash-completion-r1 linux-info python-any-r1 readme.gentoo-r1 tmpfi
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/libvirt/libvirt.git"
-	EGIT_BRANCH="master"
 	SRC_URI=""
 	SLOT="0"
 else
 	SRC_URI="https://libvirt.org/sources/${P}.tar.xz
 		verify-sig? ( https://libvirt.org/sources/${P}.tar.xz.asc )"
-	KEYWORDS="amd64 arm64 ~ppc64 x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 	SLOT="0/${PV}"
 fi
 
@@ -25,8 +24,8 @@ HOMEPAGE="https://www.libvirt.org/ https://gitlab.com/libvirt/libvirt/"
 LICENSE="LGPL-2.1"
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/libvirt.org.asc
 IUSE="
-	apparmor audit bash-completion +caps dtrace firewalld fuse glusterfs
-	iscsi iscsi-direct +libvirtd lvm libssh lxc nfs nls numa openvz
+	apparmor audit +caps dtrace firewalld fuse glusterfs iscsi
+	iscsi-direct +libvirtd lvm libssh lxc nfs nls numa openvz
 	parted pcap policykit +qemu rbd sasl selinux +udev
 	virtualbox +virt-network wireshark-plugins xen zfs
 "
@@ -48,7 +47,6 @@ BDEPEND="
 	dev-perl/XML-XPath
 	dev-python/docutils
 	virtual/pkgconfig
-	bash-completion? ( >=app-shells/bash-completion-2.0 )
 	verify-sig? ( app-crypt/openpgp-keys-libvirt )"
 
 # gettext.sh command is used by the libvirt command wrappers, and it's
@@ -102,7 +100,7 @@ RDEPEND="
 		>=sys-auth/polkit-0.9
 	)
 	qemu? (
-		>=app-emulation/qemu-2.11
+		>=app-emulation/qemu-1.5.0
 		dev-libs/yajl
 	)
 	rbd? ( sys-cluster/ceph )
@@ -115,9 +113,9 @@ RDEPEND="
 		net-misc/radvd
 		sys-apps/iproute2[-minimal]
 	)
-	wireshark-plugins? ( net-analyzer/wireshark:= )
+	wireshark-plugins? ( <net-analyzer/wireshark-3.6.0:= )
 	xen? (
-		>=app-emulation/xen-4.9.0
+		>=app-emulation/xen-4.6.0
 		app-emulation/xen-tools:=
 	)
 	udev? (
@@ -134,6 +132,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-6.7.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-6.7.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-7.3.0-vircgroup-Fix-virCgroupKillRecursive-wrt-nested-cont.patch
 )
 
 pkg_setup() {
@@ -217,11 +216,6 @@ src_prepare() {
 	default
 	python_fix_shebang .
 
-	# Skip fragile tests which relies on pristine environment
-	# (Breaks because of sandbox environment variables)
-	# bug #802876
-	sed -i -e "/commandtest/d" tests/meson.build || die
-
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r19" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
@@ -231,7 +225,7 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		$(meson_feature apparmor)
-		$(meson_feature apparmor apparmor_profiles)
+		$(meson_use apparmor apparmor_profiles)
 		$(meson_feature audit)
 		$(meson_feature caps capng)
 		$(meson_feature dtrace)
@@ -286,11 +280,7 @@ src_configure() {
 
 src_test() {
 	export VIR_TEST_DEBUG=1
-	# Don't run the syntax check tests, they're fragile and not relevant
-	# to us downstream anyway.
-	# We also crank up the timeout (as Fedora does) just to preempt failures
-	# on slower arches.
-	meson_src_test --no-suite syntax-check --timeout-multiplier 10
+	meson_src_test
 }
 
 src_install() {
@@ -305,6 +295,9 @@ src_install() {
 	rm -rf "${D}"/etc/sysconfig
 	rm -rf "${D}"/var
 	rm -rf "${D}"/run
+
+	newbashcomp "${S}/tools/bash-completion/vsh" virsh
+	bashcomp_alias virsh virt-admin
 
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
