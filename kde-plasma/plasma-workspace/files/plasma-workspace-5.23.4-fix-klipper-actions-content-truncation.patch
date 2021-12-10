@@ -1,0 +1,33 @@
+From beb34e3d9781c7728260d486a835c52be21a6d83 Mon Sep 17 00:00:00 2001
+From: ValdikSS ValdikSS <iam@valdikss.org.ru>
+Date: Sun, 5 Dec 2021 15:46:00 +0300
+Subject: [PATCH] Fix Klipper Actions content truncation
+
+Commit f9669af2 introduced a regression with Klipper Actions: it used
+truncated text as a source for the action, which resulted in truncated
+output.
+
+BUG: 444365
+
+
+(cherry picked from commit 49365857623f7e986013bee7d3160594d2272fe2)
+---
+ klipper/urlgrabber.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/klipper/urlgrabber.cpp b/klipper/urlgrabber.cpp
+index fb7c0d0a2..185a6a5d6 100644
+--- a/klipper/urlgrabber.cpp
++++ b/klipper/urlgrabber.cpp
+@@ -245,7 +245,7 @@ void URLGrabber::execute(const ClipAction *action, int cmdIdx) const
+     ClipCommand command = action->command(cmdIdx);
+ 
+     if (command.isEnabled) {
+-        QString text(m_myClipItem->text());
++        QString text(m_myClipItem->mimeData()->text());
+         if (m_stripWhiteSpace) {
+             text = text.trimmed();
+         }
+-- 
+GitLab
+

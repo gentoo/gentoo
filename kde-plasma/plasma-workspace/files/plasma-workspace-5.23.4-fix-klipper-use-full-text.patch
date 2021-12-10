@@ -1,0 +1,34 @@
+From c8b8c8dd389ae381831fdd23f354617f48f3edd4 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Sun, 5 Dec 2021 08:26:45 +0000
+Subject: [PATCH] [klipper] Use full text for DBus return values
+
+In a recent commit HistoryItem::text() became the visual representation
+of the mimedata; often a truncated string.
+
+mimeData()->text() always returns the full value.
+
+BUG: 446441
+
+
+(cherry picked from commit 2db375f6a71cb730e1e099f9ff17ef7092850d9d)
+---
+ klipper/klipper.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/klipper/klipper.cpp b/klipper/klipper.cpp
+index b090a2409..3b12d1f95 100644
+--- a/klipper/klipper.cpp
++++ b/klipper/klipper.cpp
+@@ -838,7 +838,7 @@ QString Klipper::getClipboardHistoryItem(int i)
+     if (item) {
+         do {
+             if (i-- == 0) {
+-                return item->text();
++                return item->mimeData()->text();
+             }
+             item = history()->find(item->next_uuid());
+         } while (item != history()->first());
+-- 
+GitLab
+

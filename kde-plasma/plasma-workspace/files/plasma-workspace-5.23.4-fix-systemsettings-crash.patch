@@ -1,0 +1,31 @@
+From a8b613505e326dd047707e0a0e4d6f5ecc4a9baa Mon Sep 17 00:00:00 2001
+From: Alexander Lohnau <alexander.lohnau@gmx.de>
+Date: Wed, 8 Dec 2021 18:25:36 +0100
+Subject: [PATCH] lookandfeel: Add missing check if list of files is empty
+
+BUG: 439797
+
+
+(cherry picked from commit d168d2a50366c528dab65415cd4f6e82afdfb645)
+---
+ kcms/lookandfeel/kcm.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/kcms/lookandfeel/kcm.cpp b/kcms/lookandfeel/kcm.cpp
+index 75ce19197..349761aad 100644
+--- a/kcms/lookandfeel/kcm.cpp
++++ b/kcms/lookandfeel/kcm.cpp
+@@ -123,7 +123,9 @@ void KCMLookandFeel::knsEntryChanged(KNSCore::EntryWrapper *wrapper)
+     if (entry.status() == KNS3::Entry::Deleted && !entry.uninstalledFiles().isEmpty()) {
+         removeItemFromModel();
+     } else if (entry.status() == KNS3::Entry::Installed && !entry.installedFiles().isEmpty()) {
+-        removeItemFromModel(); // In case we updated it we don't want to have it in twice
++        if (!entry.uninstalledFiles().isEmpty()) {
++            removeItemFromModel(); // In case we updated it we don't want to have it in twice
++        }
+         KPackage::Package pkg = KPackage::PackageLoader::self()->loadPackage(QStringLiteral("Plasma/LookAndFeel"));
+         pkg.setPath(entry.installedFiles().constFirst());
+         addKPackageToModel(pkg);
+-- 
+GitLab
+
