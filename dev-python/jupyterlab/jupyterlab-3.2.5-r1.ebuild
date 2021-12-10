@@ -34,3 +34,8 @@ RDEPEND="
 distutils_enable_tests pytest
 # TODO: package myst_parser
 #distutils_enable_sphinx docs/source dev-python/sphinx_rtd_theme
+
+python_install_all() {
+	distutils-r1_python_install_all
+	mv "${ED}/usr/etc" "${ED}/etc" || die
+}
