@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit cmake
+LLVM_MAX_SLOT=12
+inherit cmake llvm
 
 DESCRIPTION="Compiler plugin which allows clang to understand Qt semantics"
 HOMEPAGE="https://apps.kde.org/clazy"
@@ -14,11 +15,17 @@ SLOT="0"
 KEYWORDS="~amd64 arm64 ~x86"
 IUSE=""
 
-RDEPEND="
-	>=sys-devel/clang-8.0:=
-	>=sys-devel/llvm-8.0:=
-"
+RDEPEND="<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):="
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc-build.patch
+	"${FILESDIR}"/${P}-use-c++17.patch
+)
+
+llvm_check_deps() {
+	has_version "sys-devel/clang:${LLVM_SLOT}" && has_version "sys-devel/llvm:${LLVM_SLOT}"
+}
 
 src_prepare() {
 	cmake_src_prepare
@@ -28,12 +35,8 @@ src_prepare() {
 }
 
 src_configure() {
-	# this package requires both llvm and clang of the same version.
-	# clang pulls in the equivalent llvm version, but not vice versa.
-	# so, we must find llvm based on the installed clang version.
-	# bug #681568
-	local clang_version=$(best_version "sys-devel/clang")
-	export LLVM_ROOT="/usr/lib/llvm/$(ver_cut 1 ${clang_version##sys-devel/clang-})"
+	export LLVM_ROOT="$(get_llvm_prefix -d ${LLVM_MAX_SLOT})"
+
 	cmake_src_configure
 }
 
