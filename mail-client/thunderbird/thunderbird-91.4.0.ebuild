@@ -68,6 +68,7 @@ IUSE+=" +system-av1 +system-harfbuzz +system-icu +system-jpeg +system-libevent +
 IUSE+=" wayland wifi"
 
 REQUIRED_USE="debug? ( !system-av1 )
+	pgo? ( lto )
 	wifi? ( dbus )"
 
 BDEPEND="${PYTHON_DEPS}
