@@ -11,7 +11,7 @@ inherit flag-o-matic xdg-utils desktop
 DESCRIPTION="highly customizable open source text editor and application development system"
 HOMEPAGE="http://www.xemacs.org/"
 SRC_URI="http://ftp.xemacs.org/xemacs-21.5/${P}.tar.gz
-	http://www.malfunction.de/afterstep/files/NeXT_XEmacs.tar.gz"
+	neXt? ( http://www.malfunction.de/afterstep/files/NeXT_XEmacs.tar.gz )"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -35,7 +35,7 @@ RDEPEND="
 	dnd? ( x11-libs/dnd )
 	motif? ( >=x11-libs/motif-2.3:0[xft=] )
 	athena? ( x11-libs/libXaw )
-	Xaw3d? ( x11-libs/libXaw3d )
+	Xaw3d? ( x11-libs/libXaw3d[unicode] )
 	xft? ( media-libs/freetype:2 x11-libs/libXft x11-libs/libXrender >=media-libs/fontconfig-2.5.0 )
 	neXt? ( x11-libs/neXtaw )
 	xface? ( media-libs/compface )
@@ -54,8 +54,6 @@ PDEPEND="app-xemacs/xemacs-base
 
 src_unpack() {
 	default_src_unpack
-
-	use neXt && unpack NeXT_XEmacs.tar.gz
 }
 
 src_prepare() {
