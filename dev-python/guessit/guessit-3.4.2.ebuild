@@ -24,6 +24,11 @@ RDEPEND="
 		dev-python/importlib_resources[${PYTHON_USEDEP}]
 	' python3_8 pypy3)
 "
+BDEPEND="
+	test? (
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
@@ -31,9 +36,6 @@ python_prepare_all() {
 	# Disable benchmarks as they require unavailable pytest-benchmark.
 	rm guessit/test/test_benchmark.py || die
 	sed -i -e "s|'pytest-benchmark',||g" setup.py || die
-
-	# Disable unconditional dependency on dev-python/pytest-runner.
-	sed -i -e "s|'pytest-runner'||g" setup.py || die
 
 	distutils-r1_python_prepare_all
 }
