@@ -22,12 +22,14 @@ S="${WORKDIR}"
 LICENSE="NVIDIA-r2 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
 SLOT="0/${PV%%.*}"
 KEYWORDS="-* ~amd64"
-IUSE="+X abi_x86_32 abi_x86_64 +driver static-libs +tools"
+IUSE="+X abi_x86_32 abi_x86_64 +driver persistenced static-libs +tools"
 
 COMMON_DEPEND="
 	acct-group/video
-	acct-user/nvpd
-	net-libs/libtirpc:=
+	persistenced? (
+		acct-user/nvpd
+		net-libs/libtirpc:=
+	)
 	tools? (
 		dev-libs/atk
 		dev-libs/glib:2
@@ -171,7 +173,7 @@ src_compile() {
 	use driver && linux-mod_src_compile
 
 	emake "${NV_ARGS[@]}" -C nvidia-modprobe
-	emake "${NV_ARGS[@]}" -C nvidia-persistenced
+	use persistenced && emake "${NV_ARGS[@]}" -C nvidia-persistenced
 	use X && emake "${NV_ARGS[@]}" -C nvidia-xconfig
 
 	if use tools; then
@@ -253,18 +255,17 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 		doins supported-gpus/supported-gpus.json
 	fi
 
-	# nvidia-modprobe
 	emake "${NV_ARGS[@]}" -C nvidia-modprobe install
 	fowners :video /usr/bin/nvidia-modprobe #505092
 	fperms 4710 /usr/bin/nvidia-modprobe
 
-	# nvidia-persistenced
-	emake "${NV_ARGS[@]}" -C nvidia-persistenced install
-	newconfd "${FILESDIR}"/nvidia-persistenced.confd nvidia-persistenced
-	newinitd "${FILESDIR}"/nvidia-persistenced.initd nvidia-persistenced
-	systemd_dounit "${T}"/nvidia-persistenced.service
+	if use persistenced; then
+		emake "${NV_ARGS[@]}" -C nvidia-persistenced install
+		newconfd "${FILESDIR}"/nvidia-persistenced.confd nvidia-persistenced
+		newinitd "${FILESDIR}"/nvidia-persistenced.initd nvidia-persistenced
+		systemd_dounit "${T}"/nvidia-persistenced.service
+	fi
 
-	# nvidia-settings
 	if use tools; then
 		emake "${NV_ARGS[@]}" -C nvidia-settings install
 
@@ -282,7 +283,6 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 		doins nvidia-settings/src/libXNVCtrl/NVCtrl{Lib,}.h
 	fi
 
-	# nvidia-xconfig
 	use X && emake "${NV_ARGS[@]}" -C nvidia-xconfig install
 
 	# mimic nvidia-installer by reading .manifest to install files
