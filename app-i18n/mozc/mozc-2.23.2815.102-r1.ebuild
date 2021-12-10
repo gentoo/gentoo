@@ -1,4 +1,4 @@
-# Copyright 2010-2020 Gentoo Authors
+# Copyright 2010-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -41,13 +41,13 @@ REQUIRED_USE="|| ( emacs fcitx4 ibus ) gui? ( ^^ ( handwriting-tegaki handwritin
 RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
-	>=dev-libs/protobuf-3.0.0
+	<dev-libs/protobuf-3.19
 	dev-util/gyp
 	dev-util/ninja
 	virtual/pkgconfig
 	emacs? ( app-editors/emacs:* )
 	fcitx4? ( sys-devel/gettext )"
-RDEPEND=">=dev-libs/protobuf-3.0.0:=
+RDEPEND="<dev-libs/protobuf-3.19:=
 	emacs? ( app-editors/emacs:* )
 	fcitx4? (
 		app-i18n/fcitx:4
