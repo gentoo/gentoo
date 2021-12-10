@@ -39,3 +39,15 @@
 +  %{fdump-scos:-fpreserve-decisions-generic}\
    %{fprofile-arcs|fprofile-generate*|coverage:\
 -    %{!fprofile-update=singel:\
+--- a/gcc-9-2020-20200429-19AA7-src/gcc/ada/init.c	2021-12-10 22:12:34.061054044 +0100
++++ b/gcc-9-2020-20200429-19AA7-src/gcc/ada/init.c	2021-12-10 22:13:36.033109326 +0100
+@@ -581,9 +581,6 @@
+ #define HAVE_GNAT_ALTERNATE_STACK 1
+ /* This must be in keeping with System.OS_Interface.Alternate_Stack_Size.
+    It must be larger than MINSIGSTKSZ and hopefully near 2 * SIGSTKSZ.  */
+-# if 16 * 1024 < MINSIGSTKSZ
+-#  error "__gnat_alternate_stack too small"
+-# endif
+ char __gnat_alternate_stack[16 * 1024];
+ #endif
+ 
