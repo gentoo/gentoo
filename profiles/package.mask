@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-12-10)
+# As of MultiMC version 0.6.14 source built versions of MultiMC are no longer
+# usable for anything but development. The sources have been de-branded and
+# secret API keys and other required files are not included with the sources.
+# Please use the official upstream binary packaged in games-action/multimc-bin
+# instead.
+# Removal in 30 days
+games-action/multimc
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-10)
 # Package without consumers. Bug #828740.  Removal in 30 days.
 www-apache/mod_caucho
