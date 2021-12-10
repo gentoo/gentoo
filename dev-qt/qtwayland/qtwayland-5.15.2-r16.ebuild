@@ -33,6 +33,10 @@ BDEPEND="
 	dev-util/wayland-scanner
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-crash-when-iterating-through-outputs.patch # KDE-bug 438839
+)
+
 src_configure() {
 	local myqmakeargs=(
 		--
