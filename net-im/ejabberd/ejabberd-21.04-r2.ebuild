@@ -43,7 +43,6 @@ DEPEND=">=dev-lang/erlang-19.3[odbc?,ssl]
 	>=dev-erlang/idna-6.0.0-r1
 	>=dev-erlang/p1_acme-1.0.12
 	>=dev-erlang/base64url-1.0.1
-	>=net-im/jabber-base-0.01
 	ldap? ( =net-nds/openldap-2* )
 	mysql? ( >=dev-erlang/p1_mysql-1.0.18 )
 	odbc? ( dev-db/unixODBC )
