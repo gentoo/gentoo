@@ -46,8 +46,8 @@ src_configure() {
 		$(use_with pulseaudio pulse)
 	)
 	if use dsp; then
-		append-cppflags '-I/usr/include/tg_owt'
-		append-cppflags '-I/usr/include/tg_owt/third_party/abseil-cpp'
+		append-cppflags "-I${ESYSROOT}/usr/include/tg_owt"
+		append-cppflags "-I${ESYSROOT}/usr/include/tg_owt/third_party/abseil-cpp"
 		append-libs '-ltg_owt'
 	else
 		append-cppflags '-DTGVOIP_NO_DSP'
