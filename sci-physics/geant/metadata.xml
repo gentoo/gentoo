@@ -26,6 +26,8 @@
     <flag name="geant3">Add compatibility for geant321 to geant4</flag>
     <flag name="inventor">Add support for Open Inventor SGI toolkit via Coin3D</flag>
     <flag name="raytracerx">Enable raytracing for physics events</flag>
+    <flag name="tbb">Enable support for <pkg>dev-cpp/tbb</pkg></flag>
     <flag name="vrml">Enable output of geant4 in vrml formats</flag>
+    <flag name="vtk">Use sci-libs/vtk for visualization (experimental)</flag>
   </use>
 </pkgmetadata>
