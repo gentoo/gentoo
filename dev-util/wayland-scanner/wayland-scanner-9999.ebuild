@@ -32,6 +32,7 @@ multilib_src_configure() {
 		-Ddtd_validation=false
 		-Dlibraries=false
 		-Dscanner=true
+		-Dtests=false
 	)
 	meson_src_configure
 }
