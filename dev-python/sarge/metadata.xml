@@ -6,6 +6,7 @@
 		<name>Alexey Shvetsov</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">vsajip/sarge</remote-id>
 		<remote-id type="pypi">sarge</remote-id>
 	</upstream>
 </pkgmetadata>
