@@ -21,7 +21,6 @@ SLOT="0"
 
 RDEPEND="
 	dev-libs/libbsd
-	>=media-libs/giblib-1.2.3
 	x11-libs/libXext
 	x11-libs/libX11
 	x11-libs/libXcomposite
