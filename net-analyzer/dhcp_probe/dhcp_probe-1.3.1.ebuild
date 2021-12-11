@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Discover DHCP and BootP servers on a directly-attached Ethernet network"
 HOMEPAGE="https://www.net.princeton.edu/software/dhcp_probe/"
