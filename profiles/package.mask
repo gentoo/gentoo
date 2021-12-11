@@ -334,9 +334,9 @@ media-video/google2srt
 net-libs/onion
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-15)
-# Library without consumers,
-# bug #771693 (multiple CVEs); Removal in 30 days.
-dev-java/jackson
+# bug #771693 (multiple CVEs).
+# Library still needed for bumping dev-java/log4j
+=dev-java/jackson-2.9.10
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-14)
 # java packages without consumers, Removal in 30 days.
