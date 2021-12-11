@@ -11,7 +11,7 @@
     project for a set of tools for the OCaml and JavaScript ecosystems.
   </longdescription>
   <upstream>
-    <bugs-to>https://github.com/facebook/reason/issues/</bugs-to>
-    <remote-id type="github">facebook/reason</remote-id>
+    <bugs-to>https://github.com/reasonml/reason/issues/</bugs-to>
+    <remote-id type="github">reasonml/reason</remote-id>
   </upstream>
 </pkgmetadata>
