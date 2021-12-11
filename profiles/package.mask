@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-11)
+# Package without consumers. Bug #732792.  Removal in 30 days.
+app-arch/fastjar
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-12-10)
 # As of MultiMC version 0.6.14 source built versions of MultiMC are no longer
 # usable for anything but development. The sources have been de-branded and
