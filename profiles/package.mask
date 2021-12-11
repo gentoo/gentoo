@@ -389,11 +389,6 @@ dev-java/trident
 dev-java/okio
 dev-java/moshi
 
-# John Helmert III <ajak@gentoo.org> (2021-11-12)
-# Unfixed code execution bug, unmaintained in Gentoo.
-# Removal on 2021-12-11, bugs #672352, #794511.
-www-apps/websvn
-
 # Mart Raudsepp <leio@gentoo.org> (2021-11-11)
 # Needs testing to ensure valac-0.54 works for existing packages
 >=dev-libs/vala-common-0.53
