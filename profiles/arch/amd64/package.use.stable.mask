@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
+# needs stabilizing
+media-video/ffmpeg amf
+
 # Sam James <sam@gentoo.org> (2022-02-01)
 # sys-cluster/ucx is not marked stable on amd64
 sys-cluster/slurm ucx
