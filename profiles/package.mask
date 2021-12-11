@@ -383,10 +383,6 @@ net-analyzer/neti
 # bugs. Removal on 2021-12-13, bug #764719.
 mail-client/cone
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-12)
-# Libraries with no other consumers. Removal in 30 days.
-dev-java/trident
-
 # Mart Raudsepp <leio@gentoo.org> (2021-11-11)
 # Needs testing to ensure valac-0.54 works for existing packages
 >=dev-libs/vala-common-0.53
