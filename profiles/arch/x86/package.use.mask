@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2021-02-17)
+# Mask AMF keyword on non-amd64 arches
+# It is unusable, for now, in other arches
+media-video/ffmpeg amf
+
 # Sam James <sam@gentoo.org> (2022-01-20)
 # Only supports cpu_flags_x86_aes in 64-bit mode
 net-fs/samba cpu_flags_x86_aes

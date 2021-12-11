@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-01-11)
+# Mask AMF keyword on non-amd64 arches
+# It is unusable, for now, in other arches
+media-video/ffmpeg amf
+
 # James Le Cuirot <chewi@gentoo.org> (2022-01-09)
 # Most usage of KMS requires GBM, which is provided by Mesa, which currently
 # doesn't work on m68k.
