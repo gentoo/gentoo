@@ -22,6 +22,7 @@
 	</use>
 	<upstream>
 		<remote-id type="pypi">matplotlib</remote-id>
+		<remote-id type="github">matplotlib/matplotlib</remote-id>
 		<remote-id type="sourceforge">matplotlib</remote-id>
 	</upstream>
 </pkgmetadata>
