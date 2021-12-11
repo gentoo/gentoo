@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit distutils-r1
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Natural sorting for Python"
 HOMEPAGE="https://pypi.org/project/natsort/"
@@ -21,3 +21,7 @@ BDEPEND="
 	)"
 
 distutils_enable_tests pytest
+
+pkg_postinst() {
+	optfeature "sorting results that match most file browsers" "dev-python/pyicu"
+}
