@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="Discover DHCP and BootP servers on a directly-attached Ethernet network"
 HOMEPAGE="https://www.net.princeton.edu/software/dhcp_probe/"
@@ -26,19 +26,24 @@ DOCS=(
 	extras/dhcp_probe.cf.sample
 )
 
-#PATCHES=(
-#	"${FILESDIR}"/${PV}/01_dhcp_probe.5.patch
-#	"${FILESDIR}"/${PV}/02_dhcp_probe.8.patch
-#	"${FILESDIR}"/${PV}/03_implicit_point_conv_bootp.c.patch
-#	"${FILESDIR}"/${PV}/04_linux_32_or_64bits.patch
-#	"${FILESDIR}"/${PV}/05-cleanup.patch
-#	"${FILESDIR}"/${PV}/06-return.patch
-#	"${FILESDIR}"/${PV}/07-comment.patch
-#	"${FILESDIR}"/${PV}/08-man8.patch
-#)
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.1-respect-AR.patch
+	"${FILESDIR}"/${PN}-1.3.1-fix-configure-CPP.patch
+)
+
+src_prepare() {
+	default
+
+	# for AR patch
+	eautoreconf
+}
 
 src_configure() {
-	use amd64 && append-flags -D__ARCH__=64
+	# configure uses CPP
+	tc-export CPP
+
+	use amd64 && append-cppflags -D__ARCH__=64
+
 	STRIP=true econf
 }
 
@@ -47,6 +52,6 @@ src_install() {
 
 	dodoc "${FILESDIR}"/${PN}_mail
 
-	newinitd "${FILESDIR}/${PN}.initd" ${PN}
-	newconfd "${FILESDIR}/${PN}.confd" ${PN}
+	newinitd "${FILESDIR}"/${PN}.initd ${PN}
+	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 }
