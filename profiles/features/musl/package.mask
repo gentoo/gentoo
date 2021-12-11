@@ -49,10 +49,6 @@ app-emulation/ski
 # Linux debugger needs a port to musl.
 app-emulation/dosemu
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-03-20)
-# No source builds for musl
-app-emulation/firecracker
-
 # Old undated blocks of masks
 #
 
