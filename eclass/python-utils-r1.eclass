@@ -1297,6 +1297,16 @@ epytest() {
 
 	_python_check_EPYTHON
 
+	local color
+	case ${NOCOLOR} in
+		true|yes)
+			color=no
+			;;
+		*)
+			color=yes
+			;;
+	esac
+
 	local args=(
 		# verbose progress reporting and tracebacks
 		-vv
@@ -1308,6 +1318,8 @@ epytest() {
 		# override filterwarnings=error, we do not really want -Werror
 		# for end users, as it tends to fail on new warnings from deps
 		-Wdefault
+		# override color output
+		"--color=${color}"
 	)
 	local x
 	for x in "${EPYTEST_DESELECT[@]}"; do
