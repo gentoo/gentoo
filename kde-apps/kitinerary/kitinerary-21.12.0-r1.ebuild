@@ -22,6 +22,7 @@ IUSE="+barcode pdf"
 REQUIRED_USE="test? ( pdf )"
 
 DEPEND="
+	dev-libs/libphonenumber
 	dev-libs/libxml2:2
 	dev-libs/openssl:=
 	>=dev-qt/qtdeclarative-${QTMIN}:5
@@ -35,7 +36,6 @@ DEPEND="
 	sys-libs/zlib
 	barcode? ( >=media-libs/zxing-cpp-1.1.0 )
 	pdf? ( app-text/poppler:=[qt5] )
-	!x86? ( dev-libs/libphonenumber )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="x11-misc/shared-mime-info"
@@ -44,7 +44,6 @@ src_configure() {
 	local mycmakeargs=(
 		# sci-geosciences/osmctools; TODO: useful at all?
 		-DCMAKE_DISABLE_FIND_PACKAGE_OsmTools=ON
-		-DCMAKE_DISABLE_FIND_PACKAGE_PhoneNumber=$(usex !x86) # temporary, bug 823854
 		$(cmake_use_find_package barcode ZXing)
 		$(cmake_use_find_package pdf Poppler)
 	)
