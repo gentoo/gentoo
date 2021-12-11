@@ -23,6 +23,7 @@ SLOT="0"
 IUSE="launcher udev"
 
 RDEPEND="
+	x11-apps/xrandr
 	launcher? ( x11-libs/libxcb )
 	udev? ( virtual/udev )
 "
