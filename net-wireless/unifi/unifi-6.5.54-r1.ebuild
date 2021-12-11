@@ -3,11 +3,14 @@
 
 EAPI=8
 
+# Set this var for any releases except stable
+RC_SUFFIX="-3b5d40203c"
+
 inherit systemd
 
 DESCRIPTION="A Management Controller for Ubiquiti Networks UniFi APs"
 HOMEPAGE="https://www.ubnt.com"
-SRC_URI="https://dl.ui.com/unifi/${PV}/UniFi.unix.zip -> ${P}.zip"
+SRC_URI="https://dl.ui.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
 S="${WORKDIR}/UniFi"
 
 KEYWORDS="-* amd64 ~arm64"
