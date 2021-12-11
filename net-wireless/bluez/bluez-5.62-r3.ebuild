@@ -18,6 +18,7 @@ IUSE="btpclient cups doc debug deprecated extra-tools experimental +mesh midi +o
 # Since this release all remaining extra-tools need readline support, but this could
 # change in the future, hence, this REQUIRED_USE constraint could be dropped
 # again in the future.
+# btpclient needs mesh, bug #790587
 REQUIRED_USE="
 	extra-tools? ( deprecated readline )
 	test? ( ${PYTHON_REQUIRED_USE} )
