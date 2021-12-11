@@ -4,6 +4,7 @@
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
 # Binary package linked to glibc
 media-libs/amdgpu-pro-vulkan
+media-video/amdgpu-pro-amf
 
 # Ionen Wolkens <ionen@gentoo.org> (2022-02-17)
 # Binary package linked to glibc
