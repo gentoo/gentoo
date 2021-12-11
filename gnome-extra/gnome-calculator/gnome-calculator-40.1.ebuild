@@ -39,6 +39,7 @@ BDEPEND="
 	$(vala_depend)
 	net-libs/libsoup:2.4[vala]
 	x11-libs/gtksourceview:4[vala]
+	gui-libs/libhandy:1[vala]
 "
 
 src_prepare() {
