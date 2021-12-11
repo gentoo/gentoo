@@ -10,10 +10,9 @@ MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
 if [[ ${PV} = *9999 ]] ; then
 	if [[ ${PV%.9999} != ${PV} ]] ; then
-		EGIT_REPO_URI="https://git.videolan.org/git/vlc/vlc-${PV%.9999}.git"
-	else
-		EGIT_REPO_URI="https://git.videolan.org/git/vlc.git"
+		EGIT_BRANCH="3.0.x"
 	fi
+	EGIT_REPO_URI="https://code.videolan.org/videolan/vlc.git"
 	inherit git-r3
 else
 	if [[ ${MY_P} = ${P} ]] ; then
