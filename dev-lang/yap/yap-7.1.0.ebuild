@@ -3,15 +3,17 @@
 
 EAPI=7
 
+PV_COMMIT=77bb2ba5eadfb95b67abccd22b298cfb75dd3328
+
 PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit cmake flag-o-matic python-single-r1
 
-PATCHSET_VER="0"
+PATCHSET_VER="1"
 
 DESCRIPTION="YAP is a high-performance Prolog compiler"
 HOMEPAGE="http://www.dcc.fc.up.pt/~vsc/Yap/"
-SRC_URI="https://dev.gentoo.org/~keri/distfiles/yap/${P}.tar.gz
+SRC_URI="https://github.com/vscosta/yap/archive/${PV_COMMIT}.tar.gz -> ${PN}-${PV_COMMIT}.tar.gz
 	https://dev.gentoo.org/~keri/distfiles/yap/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
 
 LICENSE="Artistic LGPL-2"
@@ -45,16 +47,15 @@ DEPEND="${RDEPEND}
 	java? ( dev-lang/swig )
 	python? ( >=dev-lang/swig-4.0.0 )"
 
+src_unpack() {
+	default
+	mv "${WORKDIR}"/yap-${PV_COMMIT} "${WORKDIR}"/${P} || die
+}
+
 src_prepare() {
 	if [[ -d "${WORKDIR}"/${PV} ]] ; then
 		eapply "${WORKDIR}"/${PV}
 	fi
-
-	sed -i \
-		-e "s|\(set ( libdir \"\${exec_prefix}\)/lib\")|\1/$(get_libdir)\")|" \
-		-e "s|\(set ( dlls \"\${exec_prefix}\)/lib/Yap\")|\1/$(get_libdir)/Yap\")|" \
-		-e "s|\(set ( docdir \"\${exec_prefix}/share/doc\)/Yap\")|\1/${PF}\")|" \
-		CMakeLists.txt || die
 
 	cmake_src_prepare
 }
