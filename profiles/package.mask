@@ -386,7 +386,6 @@ mail-client/cone
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-12)
 # Libraries with no other consumers. Removal in 30 days.
 dev-java/trident
-dev-java/okio
 
 # Mart Raudsepp <leio@gentoo.org> (2021-11-11)
 # Needs testing to ensure valac-0.54 works for existing packages
