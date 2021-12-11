@@ -12,7 +12,7 @@ MAVEN_ID="org.eclipse.angus:angus-activation:1.0.0"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Provides the implementation of the Jakarta Activation Specification"
-HOMEPAGE="https://github.com/eclipse-ee4j/angus-activation/angus-activation"
+HOMEPAGE="https://github.com/eclipse-ee4j/angus-activation"
 SRC_URI="https://github.com/eclipse-ee4j/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="EPL-1.0"
