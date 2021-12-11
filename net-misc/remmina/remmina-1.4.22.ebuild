@@ -13,8 +13,8 @@ SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
-IUSE="crypt cups examples gnome-keyring gvnc kwallet nls spice ssh rdp telemetry vnc webkit zeroconf"
+KEYWORDS="~amd64 ~arm64 ~x86"
+IUSE="crypt cups examples gnome-keyring gvnc kwallet nls spice ssh rdp telemetry vnc webkit x2go zeroconf"
 
 DEPEND="
 	dev-libs/glib:2
@@ -29,17 +29,18 @@ DEPEND="
 	x11-libs/libX11
 	x11-libs/libxkbfile
 	crypt? ( dev-libs/libgcrypt:0= )
-	rdp? ( >=net-misc/freerdp-2.0.0_rc4_p1129[X]
-		<net-misc/freerdp-3[X]
-		cups? ( net-print/cups:= ) )
 	gnome-keyring? ( app-crypt/libsecret )
 	gvnc? ( net-libs/gtk-vnc )
 	kwallet? ( kde-frameworks/kwallet )
+	rdp? ( >=net-misc/freerdp-2.0.0_rc4_p1129[X]
+		<net-misc/freerdp-3[X]
+		cups? ( net-print/cups:= ) )
 	spice? ( net-misc/spice-gtk[gtk3] )
 	ssh? ( net-libs/libssh:0=[sftp]
 		x11-libs/vte:2.91 )
 	vnc? ( net-libs/libvncserver[jpeg] )
 	webkit? ( net-libs/webkit-gtk:4 )
+	x2go? ( net-misc/pyhoca-cli )
 	zeroconf? ( >=net-dns/avahi-0.8-r2[dbus,gtk] )
 "
 BDEPEND="
@@ -64,24 +65,25 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DWITH_GCRYPT=$(usex crypt)
+		-DWITH_AVAHI=$(usex zeroconf)
+		-DWITH_CUPS=$(usex cups)
 		-DWITH_EXAMPLES=$(usex examples)
-		-DWITH_LIBSECRET=$(usex gnome-keyring)
-		-DWITH_KF5WALLET=$(usex kwallet)
-		-DWITH_GETTEXT=$(usex nls)
-		-DWITH_TRANSLATIONS=$(usex nls)
 		-DWITH_FREERDP=$(usex rdp)
 		-DWITH_FREERDP3=OFF
-		-DWITH_CUPS=$(usex cups)
-		-DWITH_SPICE=$(usex spice)
-		-DWITH_LIBSSH=$(usex ssh)
-		-DWITH_VTE=$(usex ssh)
-		-DWITH_LIBVNCSERVER=$(usex vnc)
-		-DWITH_WWW=$(usex webkit)
-		-DWITH_AVAHI=$(usex zeroconf)
-		-DWITH_NEWS=$(usex telemetry)
+		-DWITH_GCRYPT=$(usex crypt)
+		-DWITH_GETTEXT=$(usex nls)
 		-DWITH_ICON_CACHE=OFF
+		-DWITH_KF5WALLET=$(usex kwallet)
+		-DWITH_LIBSECRET=$(usex gnome-keyring)
+		-DWITH_LIBSSH=$(usex ssh)
+		-DWITH_LIBVNCSERVER=$(usex vnc)
+		-DWITH_NEWS=$(usex telemetry)
+		-DWITH_SPICE=$(usex spice)
+		-DWITH_TRANSLATIONS=$(usex nls)
 		-DWITH_UPDATE_DESKTOP_DB=OFF
+		-DWITH_VTE=$(usex ssh)
+		-DWITH_WWW=$(usex webkit)
+		-DWITH_X2GO=$(usex x2go)
 		# when this feature is stable, add python eclass usage to optionally enable
 		-DWITH_PYTHON=OFF
 	)
