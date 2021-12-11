@@ -290,6 +290,7 @@ BDEPEND="
 	cuda? ( >=sys-devel/clang-7[llvm_targets_NVPTX] )
 	doc? ( sys-apps/texinfo )
 	test? ( net-misc/wget sys-devel/bc )
+	amf? ( media-libs/amf-headers )
 "
 
 # Code requiring FFmpeg to be built under gpl license
