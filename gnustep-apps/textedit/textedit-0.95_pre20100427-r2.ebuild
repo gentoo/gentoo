@@ -10,7 +10,7 @@ DESCRIPTION="A text editor with font, color, and style capabilities for GNUstep"
 HOMEPAGE="http://www.nongnu.org/backbone/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
