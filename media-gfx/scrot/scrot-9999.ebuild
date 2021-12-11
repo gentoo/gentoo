@@ -1,19 +1,28 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit autotools bash-completion-r1 git-r3
+EAPI=8
+
+inherit bash-completion-r1
 
 DESCRIPTION="Screen capture utility using imlib2 library"
 HOMEPAGE="https://github.com/resurrecting-open-source-projects/scrot"
-EGIT_REPO_URI="https://github.com/resurrecting-open-source-projects/${PN}"
+if [[ ${PV} == *9999* ]] ; then
+	EGIT_REPO_URI="https://github.com/resurrecting-open-source-projects/${PN}"
+	inherit autotools git-r3
+else
+	SRC_URI="https://github.com/resurrecting-open-source-projects/${PN}/releases/download/${PV}/${P}.tar.gz"
+
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+fi
 
 LICENSE="feh LGPL-2+"
 SLOT="0"
-KEYWORDS=""
 
 RDEPEND="
+	dev-libs/libbsd
 	>=media-libs/giblib-1.2.3
+	x11-libs/libXext
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXfixes
@@ -28,21 +37,23 @@ DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
 "
+BDEPEND="
+	sys-devel/autoconf-archive
+	virtual/pkgconfig
+"
+
 DOCS=(
-	AUTHORS ChangeLog CONTRIBUTING.md README.md TODO
+	AUTHORS ChangeLog README.md
 )
 
 src_prepare() {
-	sed -i -e 's#-g -O3##g' src/Makefile.am || die
-	cat "${FILESDIR}"/ax_prefix_config_h.m4 >> acinclude.m4 || die
-
 	default
 
-	eautoreconf
+	[[ ${PV} == *9999* ]] && eautoreconf
 }
 
 src_install() {
 	default
 
-	newbashcomp "${FILESDIR}"/${PN}-1.2.bash-completion ${PN}
+	newbashcomp "${FILESDIR}"/${PN}-1.7.bash-completion ${PN}
 }
