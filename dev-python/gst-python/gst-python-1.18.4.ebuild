@@ -26,6 +26,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-avoid-treating-float-as-int.patch"
+)
+
 src_prepare() {
 	default
 
