@@ -105,7 +105,6 @@ dev-java/jcommon
 dev-java/jdynamite
 dev-java/jfreesvg
 dev-java/jgrapht
-dev-java/jmdns
 dev-java/jsr225
 dev-java/jsr311-api
 dev-java/jsr322
