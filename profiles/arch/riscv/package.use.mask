@@ -1,6 +1,11 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alex Fan <alex.fan.q@gmail.com> (2021-12-12)
+# dev-python/uvloop fails test #806412
+# but with it installed, anyio passes all tests
+dev-python/anyio test
+
 # Alex Fan <alex.fan.q@gmail.com> (2021-11-19)
 # depends on dev-lang/ocaml
 app-accessibility/brltty ocaml ocamlopt
