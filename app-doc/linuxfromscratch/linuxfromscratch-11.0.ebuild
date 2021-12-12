@@ -8,7 +8,7 @@ BOOTSCRIPT_PV="20210608"
 
 DESCRIPTION="LFS documents building a Linux system entirely from source"
 HOMEPAGE="http://www.linuxfromscratch.org/lfs"
-SRC_URI="${MY_SRC}/LFS-BOOK-${PV}.tar.bz2
+SRC_URI="${MY_SRC}/LFS-BOOK-${PV}.tar.xz
 	${MY_SRC}/lfs-bootscripts-${BOOTSCRIPT_PV}.tar.xz
 	${MY_SRC}-systemd/LFS-BOOK-${PV}.tar.bz2 -> LFS-BOOK-${PV}-systemd.tar.bz2
 	htmlsingle? (
@@ -28,7 +28,7 @@ IUSE="htmlsingle pdf"
 
 src_unpack() {
 	unpack lfs-bootscripts-${BOOTSCRIPT_PV}.tar.xz
-	unpack LFS-BOOK-${PV}.tar.bz2
+	unpack LFS-BOOK-${PV}.tar.xz
 
 	(
 		mkdir -p "${S}"/systemd || die
