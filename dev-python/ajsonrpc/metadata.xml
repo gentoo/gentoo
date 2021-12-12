@@ -6,6 +6,6 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">encode/starlette</remote-id>
+		<remote-id type="github">pavlov99/ajsonrpc</remote-id>
 	</upstream>
 </pkgmetadata>
