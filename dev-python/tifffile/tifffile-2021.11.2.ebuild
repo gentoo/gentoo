@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-python/numpy-1.15.1[${PYTHON_USEDEP}]
