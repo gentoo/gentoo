@@ -19,6 +19,10 @@ RDEPEND=">=net-libs/libyang-2.0.112:="
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-doc/doxygen[dot] )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-musl.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_TESTS=$(usex test)
