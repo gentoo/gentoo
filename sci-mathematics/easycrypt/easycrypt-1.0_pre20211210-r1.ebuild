@@ -24,7 +24,7 @@ KEYWORDS="~amd64"
 IUSE="+ocamlopt"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.08.0:=[ocamlopt]
+	>=dev-lang/ocaml-4.08.0:=[ocamlopt?]
 	>=sci-mathematics/why3-1.4:=
 	dev-ml/batteries:=
 	dev-ml/camlzip:=
