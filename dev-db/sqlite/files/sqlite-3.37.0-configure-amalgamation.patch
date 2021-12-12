@@ -1,0 +1,40 @@
+https://sqlite.org/forum/info/3de38a45421e83a17e8ce220bbe2c2d6aff2ecf2e8b0f5173b2116705a53e061
+https://git.pld-linux.org/?p=packages/sqlite3.git;a=blob_plain;f=sqlite3-amalgamation_configure.patch;hb=HEAD
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -116,6 +116,13 @@
+ USE_AMALGAMATION=1
+ 
+ #########
++# By default, amalgamation sqlite3.c will have #line directives.
++# This is a build option not shown by ./configure --help
++# To control it, use configure option: amalgamation_line_macros=?
++# where ? is no to suppress #line directives or yes to create them.
++AMALGAMATION_LINE_MACROS=--linemacros=0
++
++#########
+ # See whether we can run specific tclsh versions known to work well;
+ # if not, then we fall back to plain tclsh.
+ # TODO: try other versions before falling back?
+@@ -574,6 +581,20 @@
+ fi
+ AC_SUBST(USE_AMALGAMATION)
+ 
++########
++# See whether --disable
++if test "${amalgamation_line_macros+set}" = set; then :
++  enableval=$amalgamation_line_macros;
++fi
++
++if test "${amalgamation_line_macros}" = "yes" ; then
++  AMALGAMATION_LINE_MACROS=--linemacros=1
++fi
++if test "${amalgamation_line_macros}" = "no" ; then
++  AMALGAMATION_LINE_MACROS=--linemacros=0
++fi
++AC_SUBST(AMALGAMATION_LINE_MACROS)
++
+ #########
+ # Look for zlib.  Only needed by extensions and by the sqlite3.exe shell
+ AC_CHECK_HEADERS(zlib.h)
