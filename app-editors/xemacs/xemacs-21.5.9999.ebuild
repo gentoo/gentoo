@@ -17,7 +17,7 @@ EHG_REPO_URI="https://foss.heptapod.net/xemacs/xemacs"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="alsa debug eolconv gif gpm pop postgres ldap xface nas dnd X jpeg tiff png mule motif freewnn xft xim athena neXt Xaw3d gdbm berkdb"
+IUSE="alsa debug gif gpm pop postgres ldap xface nas dnd X jpeg tiff png mule motif freewnn xft xim athena neXt Xaw3d gdbm berkdb"
 
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
 
@@ -112,7 +112,7 @@ src_configure() {
 			myconf="${myconf} --with-athena=xaw"
 		fi
 
-		use dnd && myconf="${myconf} --with-dragndrop --with-offix"
+		use dnd && myconf="${myconf} --with-dragndrop"
 
 		myconf="${myconf} $(use_with tiff )"
 		myconf="${myconf} $(use_with png )"
@@ -173,7 +173,6 @@ src_configure() {
 		$(use_with gpm ) \
 		$(use_with postgres postgresql ) \
 		$(use_with ldap ) \
-		$(use_with eolconv file-coding ) \
 		$(use_with pop ) \
 		--prefix=/usr \
 		--without-canna \
@@ -182,7 +181,6 @@ src_configure() {
 		--with-mail-locking=flock \
 		--with-site-lisp=yes \
 		--with-site-modules=yes \
-		--with-system-malloc \
 		--enable-option-checking=no \
 		--with-last-packages=/usr/lib/xemacs
 }
