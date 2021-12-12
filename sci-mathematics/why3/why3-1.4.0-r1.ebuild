@@ -16,27 +16,30 @@ IUSE="coq doc emacs gtk +ocamlopt re sexp +zarith zip"
 
 RDEPEND="
 	!sci-mathematics/why3-for-spark
-	>=dev-lang/ocaml-4.05.0[ocamlopt?]
-	>=dev-ml/menhir-20151112
-	dev-ml/num
+	>=dev-lang/ocaml-4.05.0:=[ocamlopt?]
+	>=dev-ml/menhir-20151112:=
+	dev-ml/num:=
 	coq? ( >=sci-mathematics/coq-8.6 )
+	emacs? ( app-editors/emacs:* )
+	gtk? ( dev-ml/lablgtk:=[sourceview,ocamlopt?] )
+	re? ( dev-ml/re:= dev-ml/seq:= )
+	sexp? (
+		dev-ml/ppx_deriving:=[ocamlopt?]
+		dev-ml/ppx_sexp_conv:=[ocamlopt?]
+		dev-ml/sexplib:=[ocamlopt?]
+	)
+	zarith? ( dev-ml/zarith:= )
+	zip? ( dev-ml/camlzip:= )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	doc? (
 		dev-python/sphinx
 		dev-python/sphinxcontrib-bibtex
+		media-gfx/graphviz
 		|| ( dev-texlive/texlive-latex dev-tex/latexmk dev-tex/rubber )
 	)
-	emacs? ( app-editors/emacs:* )
-	gtk? ( dev-ml/lablgtk:*[sourceview,ocamlopt?] )
-	re? ( dev-ml/re dev-ml/seq )
-	sexp? (
-		dev-ml/ppx_deriving[ocamlopt?]
-		dev-ml/ppx_sexp_conv[ocamlopt?]
-		dev-ml/sexplib[ocamlopt?]
-	)
-	zarith? ( dev-ml/zarith )
-	zip? ( dev-ml/camlzip )
 "
-DEPEND="${RDEPEND}"
 
 DOCS=( CHANGES.md README.md )
 
