@@ -180,7 +180,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	local migrate_to_etc_ejabberd=false
+	local migrate_to_ejabberd_user=false
 
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		echo
@@ -190,7 +190,7 @@ pkg_postinst() {
 	else
 		for v in ${REPLACING_VERSIONS}; do
 			if ver_test "${v}" -lt 21.04-r1; then
-				migrate_to_etc_ejabberd=true
+				migrate_to_ejabberd_user=true
 				break
 			fi
 		done
@@ -202,17 +202,30 @@ pkg_postinst() {
 	# under the, shared via net-im/jabber-base, 'jabber' use, but under
 	# its own user. This increase isolation and hence robustness and
 	# security.
-	if $migrate_to_etc_ejabberd; then
-		cp -r "${EROOT}"/etc/jabber/. "${EROOT}"/etc/ejabberd || die
-		if [[ -f "${EROOT}"/etc/ejabberd/.keep_net-im_jabber-base-0 ]]; then
-			rm "${EROOT}"/etc/ejabberd/.keep_net-im_jabber-base-0 || die
-		fi
-		if ! use prefix; then
-			chown --recursive ejabberd:ejabberd "${EROOT}"/etc/ejabberd || die
-		fi
-		elog "Newer versions of the ejabberd Gentoo package use /etc/ejabberd"
-		elog "(just as upstream) and *not* /etc/ejabber."
-		elog "The files from /etc/jabber where copied to /etc/ejabberd."
-		elog "Please check your configuration and delete the file in /etc/jabber."
+	if $migrate_to_ejabberd_user; then
+		local -A dirs_to_migrate=(
+			[/etc/jabber]=/etc/ejabberd
+			[/var/spool/jabber]=/var/lib/ejabberd
+		)
+
+		for src_dir in "${!dirs_to_migrate[@]}"; do
+			local eroot_src_dir="${EROOT}${src_dir}"
+			local eroot_dst_dir="${EROOT}${dirs_to_migrate[${src_dir}]}"
+
+			cp -r "${eroot_src_dir}"/. "${eroot_dst_dir}" || die "Could not copy ${eroot_src_dir} to ${eroot_dst_dir}"
+
+			if [[ -f "${eroot_dst_dir}"/.keep_net-im_jabber-base-0 ]]; then
+				rm "${eroot_dst_dir}"/.keep_net-im_jabber-base-0 || die
+			fi
+			if ! use prefix; then
+				chown --recursive ejabberd:ejabberd "${eroot_dst_dir}" || die
+			fi
+		done
+
+		ewarn "Newer versions of the ejabberd Gentoo package use /etc/ejabberd"
+		ewarn "(just as upstream) and *not* /etc/ejabber."
+		ewarn "The files from /etc/jabber where copied to /etc/ejabberd."
+		ewarn "Also ejabberd's spool directory became /var/lib/ejabberd (was /var/spool/jabber)."
+		ewarn "Please check your configuration."
 	fi
 }
