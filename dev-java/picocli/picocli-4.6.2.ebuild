@@ -17,7 +17,7 @@ HOMEPAGE="http://picocli.info"
 SRC_URI="https://github.com/remkop/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}-sources.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ppc64 x86"
 
 # package org.junit.contrib.java.lang.system does not exist
 # the project is here: https://github.com/stefanbirkner/system-rules
