@@ -21,11 +21,13 @@ SRC_URI="
 	https://github.com/${MY_PN}/${MY_PN_TS}/releases/download/v${MY_PV_TS}/${MY_PN_TS}.zip -> ${PN}-${MY_PN_TS}-${MY_PV_TS}.zip
 	test? ( https://github.com/${MY_PN}/${MY_PN_RPL}/releases/download/v${MY_PV_RPL}/${MY_PN_RPL}.zip -> ${PN}-${MY_PN_RPL}-${MY_PV_RPL}.zip )
 "
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="dedicated +lightfx +opengl scripting test +truetype"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	dev-libs/icu:=
@@ -66,13 +68,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-RESTRICT="!test? ( test )"
-
-S="${WORKDIR}/${MY_PN}-${PV}"
-
 PATCHES=(
 	"${FILESDIR}/${PN}-0.2.4-include-additional-paths.patch"
 	"${FILESDIR}/${PN}-0.2.6-gtest-1.10.patch"
+	"${FILESDIR}/${PN}-0.3.5.1-ccache.patch"
 )
 
 src_unpack() {
