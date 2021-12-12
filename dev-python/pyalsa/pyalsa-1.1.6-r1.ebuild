@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 flag-o-matic
 
@@ -20,6 +20,9 @@ RDEPEND="media-libs/alsa-lib"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
-PATCHES=( "${FILESDIR}/${PN}-1.1.6-no-build-symlinks.patch" )
+PATCHES=( 
+	"${FILESDIR}/${PN}-1.1.6-no-build-symlinks.patch"
+	"${FILESDIR}/${PN}-1.1.6-fix-py310.patch"
+)
 
 # Testsuite appears to require installed state
