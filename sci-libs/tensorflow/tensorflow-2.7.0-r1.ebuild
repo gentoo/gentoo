@@ -25,7 +25,6 @@ done
 
 # distfiles that bazel uses for the workspace, will be copied to basel-distdir
 bazel_external_uris="
-	https://github.com/abseil/abseil-cpp/archive/997aaf3a28308eba1b9156aa35ab7bca9688e9f6.tar.gz -> abseil-cpp-997aaf3a28308eba1b9156aa35ab7bca9688e9f6.tar.gz
 	https://github.com/bazelbuild/platforms/releases/download/0.0.2/platforms-0.0.2.tar.gz -> bazelbuild-platforms-0.0.2.tar.gz
 	https://github.com/bazelbuild/bazel-skylib/releases/download/1.0.3/bazel-skylib-1.0.3.tar.gz
 	https://github.com/bazelbuild/bazel-toolchains/archive/dfc67056200b674accd08d8f9a21e328098c07e2.tar.gz -> bazel-toolchains-dfc67056200b674accd08d8f9a21e328098c07e2.tar.gz
@@ -72,7 +71,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
 
 RDEPEND="
 	app-arch/snappy
-	dev-cpp/abseil-cpp
+	dev-cpp/abseil-cpp:=
 	dev-db/lmdb
 	dev-db/sqlite
 	dev-libs/double-conversion
@@ -188,6 +187,7 @@ src_prepare() {
 
 	append-flags $(get-cpu-flags)
 	append-cxxflags -std=c++17
+	export BUILD_CXXFLAGS+=" -std=c++17"
 	filter-flags '-fvtable-verify=@(std|preinit)'
 	bazel_setup_bazelrc
 
@@ -270,6 +270,7 @@ src_configure() {
 			boringssl
 			com_github_googlecloudplatform_google_cloud_cpp
 			com_github_grpc_grpc
+			com_google_absl
 			com_google_protobuf
 			curl
 			cython
