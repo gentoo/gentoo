@@ -388,10 +388,6 @@ src_unpack() {
 	fi
 }
 
-src_prepare() {
-	default
-}
-
 src_configure() {
 	econf \
 		"$(use_enable agent)" \
