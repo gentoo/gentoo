@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.6.10-multilib.patch
 	"${FILESDIR}"/${PN}-8.4.15-aqua.patch
 	"${FILESDIR}"/${PN}-8.6.9-conf.patch # Bug 125971
+	"${FILESDIR}"/${PN}-8.6.12-test.patch
 )
 
 src_prepare() {
