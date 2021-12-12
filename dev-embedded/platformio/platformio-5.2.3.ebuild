@@ -17,9 +17,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-# Needs some more work to get running
-RESTRICT="test"
-
 RDEPEND="
 	$(python_gen_cond_dep '
 		=dev-python/aiofiles-0.7.0*[${PYTHON_USEDEP}]
@@ -44,5 +41,25 @@ RDEPEND="
 		dev-python/zeroconf[${PYTHON_USEDEP}]
 	')"
 BDEPEND="test? ( $(python_gen_cond_dep 'dev-python/jsondiff[${PYTHON_USEDEP}]') )"
+
+# This list could be refined a bit to have individual tests which need network
+# (within EPYTEST_DESELECT) but so many need it that it doesn't seem worth it right now.
+EPYTEST_IGNORE=(
+	# Requires network access
+	tests/test_builder.py
+	tests/package/test_manager.py
+	tests/package/test_manifest.py
+	tests/commands/test_platform.py
+	tests/commands/test_test.py
+	tests/commands/test_ci.py
+	tests/commands/test_init.py
+	tests/commands/test_lib.py
+	tests/commands/test_lib_complex.py
+	tests/commands/test_boards.py
+	tests/commands/test_check.py
+	tests/test_ino2cpp.py
+	tests/test_maintenance.py
+	tests/test_misc.py
+)
 
 distutils_enable_tests pytest
