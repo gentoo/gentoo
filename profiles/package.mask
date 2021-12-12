@@ -33,6 +33,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-12-13)
+# Outdated, all versions in core Perl are newer. Removal in 30 days.
+perl-core/IO-Zlib
+perl-core/Module-CoreList
+perl-core/Test
+perl-core/Text-Balanced
+perl-core/Text-ParseWords
+perl-core/Thread-Semaphore
+perl-core/Time-HiRes
+perl-core/version
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-12-10)
 # As of MultiMC version 0.6.14 source built versions of MultiMC are no longer
 # usable for anything but development. The sources have been de-branded and
