@@ -66,7 +66,7 @@ BDEPEND="
 	sys-apps/findutils
 	>=sys-devel/binutils-2.16.1
 	virtual/pkgconfig
-	>=virtual/rust-1.34.0
+	<virtual/rust-1.56.0
 	amd64? ( ${ASM_DEPEND} )
 	lto? ( sys-devel/binutils[gold] )
 	x86? ( ${ASM_DEPEND} )
