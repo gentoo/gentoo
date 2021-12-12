@@ -47,7 +47,7 @@ BDEPEND="
 	perl? ( dev-lang/swig )"
 DEPEND="
 	!net-fs/openafs-kernel
-	virtual/libcrypt
+	virtual/libcrypt:=
 	virtual/libintl
 	amd64? ( tsm? ( app-backup/tsm ) )
 	doc? (
