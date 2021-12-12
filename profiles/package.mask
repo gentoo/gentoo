@@ -44,6 +44,11 @@ perl-core/Thread-Semaphore
 perl-core/Time-HiRes
 perl-core/version
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-12)
+# log4j-2.15.0 depends on masked >=virtual/{jdk,jre}-11
+>=dev-java/log4j-api-java9-2.15.0
+>=dev-java/log4j-api-2.15.0
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-12-10)
 # As of MultiMC version 0.6.14 source built versions of MultiMC are no longer
 # usable for anything but development. The sources have been de-branded and
