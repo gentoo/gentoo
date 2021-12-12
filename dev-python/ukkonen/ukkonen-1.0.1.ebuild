@@ -22,6 +22,10 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/cffi[${PYTHON_USEDEP}]
 	' 'python*')"
-BDEPEND=${RDEPEND}
+BDEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-musl-include.patch
+)
 
 distutils_enable_tests pytest
