@@ -24,7 +24,7 @@ IUSE="c++11 c++14 +c++17 doc"
 
 REQUIRED_USE="^^ ( c++11 c++14 c++17 )"
 
-RDEPEND=">=sci-physics/root-6.18:=[c++11?,c++14?,c++17?,-vmc]"
+RDEPEND="sci-physics/root:=[c++11?,c++14?,c++17?,-vmc]"
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-doc/doxygen[dot] )"
 
