@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_8,3_9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit meson python-r1 xdg-utils
 
@@ -25,6 +25,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-avoid-treating-float-as-int.patch"
+)
 
 src_prepare() {
 	default
