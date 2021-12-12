@@ -77,6 +77,13 @@ src_configure() {
 	ecm_src_configure
 }
 
+src_test() {
+	local myctestargs=(
+		-E "smbmountmodeltest"
+	)
+	ecm_src_test
+}
+
 src_install() {
 	ecm_src_install
 
