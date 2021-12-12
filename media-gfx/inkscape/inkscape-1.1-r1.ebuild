@@ -36,6 +36,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-cpp/gtkmm:3.0
 	>=dev-cpp/pangomm-2.40:1.4
 	>=dev-libs/boehm-gc-7.1:=
+	>=dev-libs/boost-1.65:=
 	dev-libs/double-conversion:=
 	>=dev-libs/glib-2.41
 	>=dev-libs/libsigc++-2.8:2
@@ -93,9 +94,7 @@ RDEPEND="${COMMON_DEPEND}
 	dia? ( app-office/dia )
 	postscript? ( app-text/ghostscript-gpl )
 "
-DEPEND="${COMMON_DEPEND}
-	>=dev-libs/boost-1.65
-"
+DEPEND="${COMMON_DEPEND}"
 
 RESTRICT="test"
 
