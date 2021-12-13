@@ -369,7 +369,6 @@ dev-java/jsoup
 # only revdep sys-fs/tmsu fails to build with go 1.16.
 # Removal on 2021-12-13. Bug #819612. Bug #771054.
 dev-libs/go-fuse
-sys-fs/tmsu
 
 # Mart Raudsepp <leio@gentoo.org> (2021-11-11)
 # Needs testing to ensure valac-0.54 works for existing packages
