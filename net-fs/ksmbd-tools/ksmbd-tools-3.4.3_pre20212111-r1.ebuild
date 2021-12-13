@@ -52,6 +52,8 @@ src_install() {
 	insinto /etc/ksmbd
 	doins smb.conf.example
 
-	# TODO: openrc service
+	newinitd "${FILESDIR}/initd" ksmbd 
+	newconfd "${FILESDIR}/confd" ksmbd
+
 	systemd_dounit ksmbd.service
 }
