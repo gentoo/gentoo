@@ -38,6 +38,10 @@ BDEPEND="python? (
 		')
 	)"
 
+PATCHES=(
+	"${FILESDIR}/${P}-boost-1.78.patch"
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
