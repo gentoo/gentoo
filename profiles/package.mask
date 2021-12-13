@@ -359,11 +359,6 @@ net-libs/onion
 dev-java/milton-mail-api
 dev-java/milton-api
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-13)
-# java package without consumers,
-# bug_808948 (CVE-2021-37714).  Removal in 30 days.
-dev-java/jsoup
-
 # Mart Raudsepp <leio@gentoo.org> (2021-11-11)
 # Needs testing to ensure valac-0.54 works for existing packages
 >=dev-libs/vala-common-0.53
