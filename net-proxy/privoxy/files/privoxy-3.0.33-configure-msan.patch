@@ -1,0 +1,13 @@
+diff --git a/configure.in b/configure.in
+index 84f6a0db7..e7e68be0c 100644
+--- a/configure.in
++++ b/configure.in
+@@ -168,7 +168,7 @@ if test "x$with_asan" = "xyes"; then
+     LDFLAGS="$LDFLAGS -fsanitize=address"
+ fi
+ 
+-AC_ARG_WITH(asan, [  --with-msan       Enable MemorySanitizer. Requires compiler support.])
++AC_ARG_WITH(msan, [  --with-msan       Enable MemorySanitizer. Requires compiler support.])
+ if test "x$with_msan" = "xyes"; then
+     CFLAGS="$CFLAGS -fsanitize=memory"
+     LDFLAGS="$LDFLAGS -fsanitize=memory"
