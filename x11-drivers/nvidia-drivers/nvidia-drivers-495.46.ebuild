@@ -432,19 +432,6 @@ pkg_postinst() {
 		elog "Of note, may possibly cause issues with SLI and Reverse PRIME."
 	fi
 
-	if use wayland && [[ ${REPLACING_VERSIONS} ]] &&
-		ver_test ${REPLACING_VERSIONS} -lt 495.29.05; then
-		elog
-		elog "While this version of ${PN} adds GBM support (allowing a"
-		elog "wider range of wayland compositors, such as sway), be warned it is"
-		elog "very experimental and many applications are known to have issues."
-		elog
-		elog "While not essential, some features also need >=egl-wayland-1.1.8"
-		elog "which is known to cause regressions with EGLStream (GBM alternative)."
-		elog
-		elog "If lacking a cursor with wlroots, try WLR_NO_HARDWARE_CURSORS=1"
-	fi
-
 	# Try to show this message only to users that may really need it
 	# given the workaround is discouraged and usage isn't widespread.
 	if use X && [[ ${REPLACING_VERSIONS} ]] &&
