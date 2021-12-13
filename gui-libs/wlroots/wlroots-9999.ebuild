@@ -24,7 +24,7 @@ IUSE="vulkan x11-backend X"
 DEPEND="
 	>=dev-libs/libinput-1.14.0:0=
 	>=dev-libs/wayland-1.19.0
-	>=dev-libs/wayland-protocols-1.23
+	>=dev-libs/wayland-protocols-1.24
 	media-libs/mesa[egl(+),gles2,gbm(+)]
 	sys-auth/seatd:=
 	virtual/libudev
@@ -48,8 +48,8 @@ RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
-	>=dev-libs/wayland-protocols-1.23
-	>=dev-util/meson-0.58.1
+	>=dev-libs/wayland-protocols-1.24
+	>=dev-util/meson-0.60.0
 	virtual/pkgconfig
 "
 
