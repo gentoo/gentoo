@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-12-13)
+# Unmaintained in Gentoo.  Requires media-libs/libpng[apng].
+# Removal on 2022-01-12.  Bug #824830.
+media-gfx/apngasm
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-12-13)
 # Outdated, all versions in core Perl are newer. Removal in 30 days.
 perl-core/IO-Zlib
