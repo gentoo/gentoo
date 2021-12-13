@@ -9,7 +9,6 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
-		<flag name="comic">Enable comic applet (requires deprecated <pkg>kde-frameworks/kross</pkg>)</flag>
 		<flag name="share">Enable applet for quickly sharing data to a variety of sources</flag>
 		<flag name="webengine">Enable dictionary and web browser applets using <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>
