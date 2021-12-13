@@ -48,7 +48,7 @@ SRC_URI+="
 
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
-SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,sqlite} )
+SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,png,sqlite} )
 IUSE="+chatzilla cpu_flags_arm_neon +crypt dbus debug +gmp-autoupdate +ipc jack
 lto pulseaudio +roaming selinux startup-notification test wifi"
 IUSE+=" ${SYSTEM_IUSE[@]}"
@@ -80,7 +80,6 @@ COMMON_DEPEND="
 	>=dev-libs/nss-3.47.1
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.10
-	>=media-libs/libpng-1.6.31:0=[apng]
 	>=media-libs/mesa-10.2:=
 	>=sys-libs/zlib-1.2.3
 	>=x11-libs/cairo-1.10[X]
@@ -122,6 +121,7 @@ COMMON_DEPEND="
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
 	system-libevent? ( >=dev-libs/libevent-2.0:0= )
 	system-libvpx? ( >=media-libs/libvpx-1.8.0:0=[postproc] )
+	system-png? ( >=media-libs/libpng-1.6.31:0=[apng] )
 	system-sqlite? ( >=dev-db/sqlite-3.33.0:3[secure-delete,debug=] )
 	wifi? (
 		kernel_linux? (
@@ -307,7 +307,6 @@ src_configure() {
 	mozconfig_annotate '' --libdir="${EPREFIX}"/usr/$(get_libdir)
 	mozconfig_annotate 'Gentoo default' --enable-system-hunspell
 	mozconfig_annotate '' --disable-crashreporter
-	mozconfig_annotate 'Gentoo default' --with-system-png
 	mozconfig_annotate '' --enable-system-ffi
 	mozconfig_annotate '' --disable-gconf
 	mozconfig_annotate '' --with-intl-api
@@ -342,6 +341,7 @@ src_configure() {
 	mozconfig_use_with system-jpeg
 	mozconfig_use_with system-icu
 	mozconfig_use_with system-libvpx
+	mozconfig_use_with system-png
 	mozconfig_use_with system-harfbuzz
 	mozconfig_use_with system-harfbuzz system-graphite2
 	mozconfig_use_with system-av1
