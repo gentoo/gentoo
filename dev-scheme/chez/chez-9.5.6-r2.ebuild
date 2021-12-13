@@ -15,7 +15,7 @@ S="${WORKDIR}/${CSV}"
 # Chez Scheme itself is Apache 2.0, but it vendors LZ4 (BSD-2),
 # Nanopass (MIT), stex (MIT), and zlib (ZLIB).
 LICENSE="Apache-2.0 BSD-2 MIT ZLIB"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="X examples ncurses threads"
 
