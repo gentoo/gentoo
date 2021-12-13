@@ -384,10 +384,6 @@ sci-geosciences/josm
 # Masked for removal on 2021-12-13.
 dev-ruby/d3_rails
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-13)
-# java package without consumers, bug #787338. Removal in 30 days.
-dev-db/db-je
-
 # Mart Raudsepp <leio@gentoo.org> (2021-11-11)
 # Needs testing to ensure valac-0.54 works for existing packages
 >=dev-libs/vala-common-0.53
