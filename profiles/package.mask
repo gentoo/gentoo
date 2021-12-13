@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Marco Scardovi <marco@scardovi.com> (2021-12-13)
+# Outdated, we are the only one who still have a package for it.
+# Docker can mount these NFS, AWS EFS, Ceph & Samba/CIFS volumes
+# by itself now. Removal in 30 days. Bug #829068
+net-fs/docker-volume-netshare
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-12-13)
 # Outdated, all versions in core Perl are newer. Removal in 30 days.
 perl-core/IO-Zlib
