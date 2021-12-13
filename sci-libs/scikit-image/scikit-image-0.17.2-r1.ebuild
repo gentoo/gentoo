@@ -14,19 +14,16 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="
-	dev-python/imageio[${PYTHON_USEDEP}]
+RDEPEND="dev-python/imageio[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/networkx[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pywavelets[${PYTHON_USEDEP}]
 	dev-python/scipy[sparse,${PYTHON_USEDEP}]
-"
-DEPEND="${RDEPEND}
-	dev-python/cython[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
-"
+	dev-python/tifffile[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
 
 DOCS=( CONTRIBUTORS.txt RELEASE.txt )
 
