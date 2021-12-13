@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="HTML color names and equivalent RGB values"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 RDEPEND="
 	dev-perl/Graphics-ColorNames
