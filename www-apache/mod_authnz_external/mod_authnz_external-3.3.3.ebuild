@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]] ; then
 	S="${WORKDIR}/${P}/mod_authnz_external"
 else
 	SRC_URI="https://github.com/phokz/mod-auth-external/archive/${P}.tar.gz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/mod-auth-external-${P}"
 fi
 
