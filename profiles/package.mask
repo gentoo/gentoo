@@ -377,13 +377,6 @@ sys-fs/tmsu
 # Removal on 2021-12-13. Bug #819129.
 sci-geosciences/josm
 
-# Hans de Graaff <graaff@gentoo.org> (2021-11-13)
-# No longer maintained upstream. Stuck on an old version 4.x of d3
-# while d3 upstream is now on 7.x. Probably best to use directly via
-# npm or yarn.
-# Masked for removal on 2021-12-13.
-dev-ruby/d3_rails
-
 # Mart Raudsepp <leio@gentoo.org> (2021-11-11)
 # Needs testing to ensure valac-0.54 works for existing packages
 >=dev-libs/vala-common-0.53
