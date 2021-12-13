@@ -357,7 +357,6 @@ net-libs/onion
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-14)
 # java packages without consumers, Removal in 30 days.
 dev-java/milton-mail-api
-dev-java/milton-api
 
 # Mart Raudsepp <leio@gentoo.org> (2021-11-11)
 # Needs testing to ensure valac-0.54 works for existing packages
