@@ -17,7 +17,7 @@ else
 	S="${WORKDIR}/${MY_PN}-${PV}"
 fi
 
-DESCRIPTION="A 6model-based VM for NQP and Rakudo Perl 6"
+DESCRIPTION="A 6model-based VM for NQP and Raku"
 HOMEPAGE="http://moarvm.org"
 LICENSE="Artistic-2"
 SLOT="0"
