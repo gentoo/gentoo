@@ -432,3 +432,21 @@ index cde23357..41f8d78b 100644
 -- 
 2.25.0
 
+diff --git a/doc/element_classes.txt b/doc/element_classes.txt
+index 4b1e72e8..fda9ea07 100644
+--- a/doc/element_classes.txt
++++ b/doc/element_classes.txt
+@@ -576,10 +576,10 @@ subclasses for elements of this namespace:
+ 
+   >>> print(honk_element[0].honk())
+   HONK
+-  >>> print(honk_element[0].honking)
++  >>> print(honk_element[0].honking)  # doctest: +ELLIPSIS
+   Traceback (most recent call last):
+   ...
+-  AttributeError: 'HonkNSElement' object has no attribute 'honking'
++  AttributeError: 'HonkNSElement' object has no attribute 'honking'...
+ 
+   >>> print(honk_element[1].text)  # uses fallback for non-elements
+   comment
+
