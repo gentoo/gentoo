@@ -354,10 +354,6 @@ net-libs/onion
 # Library still needed for bumping dev-java/log4j
 =dev-java/jackson-2.9.10
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-14)
-# java packages without consumers, Removal in 30 days.
-dev-java/milton-mail-api
-
 # Mart Raudsepp <leio@gentoo.org> (2021-11-11)
 # Needs testing to ensure valac-0.54 works for existing packages
 >=dev-libs/vala-common-0.53
