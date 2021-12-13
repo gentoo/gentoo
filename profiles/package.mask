@@ -364,12 +364,6 @@ dev-java/milton-api
 # bug_808948 (CVE-2021-37714).  Removal in 30 days.
 dev-java/jsoup
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-11-13)
-# Broken, no maintainer, outdated, multiple bugs reported, EAPI 5,
-# only revdep sys-fs/tmsu fails to build with go 1.16.
-# Removal on 2021-12-13. Bug #819612. Bug #771054.
-dev-libs/go-fuse
-
 # Mart Raudsepp <leio@gentoo.org> (2021-11-11)
 # Needs testing to ensure valac-0.54 works for existing packages
 >=dev-libs/vala-common-0.53
