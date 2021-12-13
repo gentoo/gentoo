@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-13)
+# Blocks removal of dev-java/log4j:0 bug #828657.
+# Java packages with no active consumer. Removal in 30 days.
+dev-java/slf4j-log4j12
+dev-java/jibx
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-12-13)
 # Outdated, all versions in core Perl are newer. Removal in 30 days.
 perl-core/IO-Zlib
