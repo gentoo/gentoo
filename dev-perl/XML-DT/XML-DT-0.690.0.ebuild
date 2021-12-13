@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="A perl XML down translate module"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc x86"
+KEYWORDS="amd64 ~hppa ppc x86"
 
 RDEPEND="
 	dev-perl/HTTP-Simple
