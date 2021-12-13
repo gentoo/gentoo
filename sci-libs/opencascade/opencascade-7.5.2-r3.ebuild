@@ -14,7 +14,7 @@ SRC_URI="https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/ta
 S="${WORKDIR}/occt-V${MY_PV}"
 
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
-SLOT="${PV_MAJ}"
+SLOT="0/${PV_MAJ}"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="debug doc examples ffmpeg freeimage gles2 json optimize tbb vtk"
 
@@ -25,7 +25,6 @@ REQUIRED_USE="?? ( optimize tbb )"
 RESTRICT="test"
 
 RDEPEND="
-	app-eselect/eselect-opencascade
 	dev-lang/tcl:=
 	dev-lang/tk:=
 	dev-tcltk/itcl
@@ -49,13 +48,11 @@ RDEPEND="
 	tbb? ( <dev-cpp/tbb-2021.4.0 )
 	vtk? ( sci-libs/vtk:=[rendering] )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+
+BDEPEND="
 	dev-cpp/eigen
 	dev-libs/rapidjson
-"
-BDEPEND="
-	app-eselect/eselect-opencascade
 	doc? ( app-doc/doxygen )
 	examples? ( dev-qt/linguist-tools:5 )
 "
@@ -119,7 +116,13 @@ src_configure() {
 	fi
 
 	if use vtk; then
-		if has_version ">=sci-libs/vtk-9.0.0"; then
+		if has_version ">=sci-libs/vtk-9.1.0"; then
+			mycmakeargs+=(
+				-D3RDPARTY_VTK_DIR="${ESYSROOT}"/usr
+				-D3RDPARTY_VTK_INCLUDE_DIR="${ESYSROOT}"/usr/include/vtk-9.1
+				-D3RDPARTY_VTK_LIBRARY_DIR="${ESYSROOT}"/usr/$(get_libdir)
+			)
+		elif has_version ">=sci-libs/vtk-9.0.0"; then
 			mycmakeargs+=(
 				-D3RDPARTY_VTK_DIR="${ESYSROOT}"/usr
 				-D3RDPARTY_VTK_INCLUDE_DIR="${ESYSROOT}"/usr/include/vtk-9.0
@@ -134,11 +137,11 @@ src_configure() {
 	sed -e "s|lib/|$(get_libdir)/|" \
 		-e "s|VAR_PV|${PV}|" \
 		-e "s|VAR_CASROOT|${ESYSROOT}/usr|" \
-		< "${FILESDIR}"/${PN}-${PV_MAJ}.env.in > "${T}"/${PV_MAJ} || die
+		< "${FILESDIR}"/${PN}.env.in > "${T}"/99${PN} || die
 
 	# use TBB for memory allocation optimizations
 	if use tbb; then
-		sed -e 's|^#MMGT_OPT=0$|MMGT_OPT=2|' -i "${T}"/${PV_MAJ} || die
+		sed -e 's|^#MMGT_OPT=0$|MMGT_OPT=2|' -i "${T}"/99${PN} || die
 	fi
 
 	# use internal optimized memory manager and don't clear memory with this
@@ -146,16 +149,14 @@ src_configure() {
 	if use optimize ; then
 		sed -e 's|^#MMGT_OPT=0$|MMGT_OPT=1|' \
 			-e 's|^#MMGT_CLEAR=1$|MMGT_CLEAR=0|' \
-			-i "${T}"/${PV_MAJ} || die
+			-i "${T}"/99${PN} || die
 	fi
 }
 
 src_install() {
 	cmake_src_install
 
-	# respect slotting
-	insinto "/etc/env.d/${PN}"
-	doins "${T}/${PV_MAJ}"
+	doenvd "${T}/99${PN}"
 
 	# remove examples
 	if use !examples; then
@@ -163,9 +164,4 @@ src_install() {
 	fi
 
 	docompress -x /usr/share/doc/${PF}/overview/html
-}
-
-pkg_postinst() {
-	eselect ${PN} set ${PV_MAJ} || die "failed to switch to updated implementation"
-	einfo "You can switch between available ${PN} implementations using eselect ${PN}"
 }
