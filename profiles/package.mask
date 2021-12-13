@@ -388,12 +388,6 @@ dev-ruby/d3_rails
 # java package without consumers, bug #787338. Removal in 30 days.
 dev-db/db-je
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-13)
-# depends on deprecated jdk / jre, bug #787449
-# stuck with EAPI 5, latest release in 2005
-# Removal in 30 days.
-net-analyzer/neti
-
 # Mart Raudsepp <leio@gentoo.org> (2021-11-11)
 # Needs testing to ensure valac-0.54 works for existing packages
 >=dev-libs/vala-common-0.53
