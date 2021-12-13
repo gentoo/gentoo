@@ -452,15 +452,6 @@ net-libs/libsoup:3.0
 # Masked until dev-libs/openssl-3.0* is unmasked
 =dev-libs/gost-engine-3.0*
 
-# Ionen Wolkens <ionen@gentoo.org> (2021-09-03)
-# Known to break plasma, and several other applications on EGLStream
-# wayland, and egl-wayland-1.1.7-r1 is still usable with newer drivers.
-# While it does not prevent using wlroots-based compositors with GBM,
-# it's needed to use some features with it (unmask if wanted).
-# https://github.com/NVIDIA/egl-wayland/issues/40
-# https://github.com/NVIDIA/egl-wayland/issues/41
->=gui-libs/egl-wayland-1.1.8
-
 # Bernard Cafarelli <voyageur@gentoo.org> (2021-08-26)
 # Preparing for final 5.0.0 release
 >=app-text/tesseract-5.0.0_beta
