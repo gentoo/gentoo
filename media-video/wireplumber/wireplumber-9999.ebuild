@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-{3,4} )
 
@@ -40,7 +40,7 @@ BDEPEND="
 DEPEND="
 	${LUA_DEPS}
 	>=dev-libs/glib-2.62
-	>=media-video/pipewire-0.3.39
+	>=media-video/pipewire-0.3.41
 	virtual/libc
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd )
