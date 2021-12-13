@@ -1,0 +1,10 @@
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-12-13)
+# GBM-aware egl-wayland makes qtwayland+kwin mostly unusable, and
+# old egl-wayland leads to issues for everything else using GBM.
+# Feel free to unmask if your configuration is not affected.
+# https://codereview.qt-project.org/c/qt/qtwayland/+/373473
+# https://github.com/NVIDIA/egl-wayland/issues/40
+>=gui-libs/egl-wayland-1.1.8
