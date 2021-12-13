@@ -394,11 +394,6 @@ dev-db/db-je
 # Removal in 30 days.
 net-analyzer/neti
 
-# John Helmert III <ajak@gentoo.org> (2021-11-13)
-# Unmaintained in Gentoo, open security bug, many unfixed otther
-# bugs. Removal on 2021-12-13, bug #764719.
-mail-client/cone
-
 # Mart Raudsepp <leio@gentoo.org> (2021-11-11)
 # Needs testing to ensure valac-0.54 works for existing packages
 >=dev-libs/vala-common-0.53
