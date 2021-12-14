@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-12-07)
+# Masked for testing
+~sci-libs/vtk-9.1.0
+
 # Michał Górny <mgorny@gentoo.org> (2021-12-13)
 # Unmaintained in Gentoo.  Requires media-libs/libpng[apng].
 # Removal on 2022-01-12.  Bug #824830.
