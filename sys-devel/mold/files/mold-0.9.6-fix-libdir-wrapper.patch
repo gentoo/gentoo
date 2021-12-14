@@ -1,0 +1,26 @@
+Should be fixed with a LIBDIR variable in the next release.
+
+https://bugs.gentoo.org/823653
+https://github.com/rui314/mold/issues/127
+--- a/elf/subprocess.cc
++++ b/elf/subprocess.cc
+@@ -267,18 +267,7 @@
+ 
+ template <typename E>
+ std::string find_dso(Context<E> &ctx, const std::string &self) {
+-  // Look for mold-wrapper.so from the same directory as the executable is.
+-  std::string path = std::string(path_dirname(self)) + "/mold-wrapper.so";
+-  if (is_regular_file(path))
+-    return path;
+-
+-  // If not exist, mold might be installed as $PREFIX/bin/mold and the
+-  // DSO as $PREFIX/lib/mold/mold-wrapper.so.
+-  path = path_clean(self + "/../../lib/mold/mold-wrapper.so");
+-  if (is_regular_file(path))
+-    return path;
+-
+-  Fatal(ctx) << "mold-wrapper.so is missing";
++  return "/usr/lib64/mold/mold-wrapper.so";
+ }
+ 
+ template <typename E>
