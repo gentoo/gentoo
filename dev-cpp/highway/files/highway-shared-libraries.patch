@@ -1,0 +1,21 @@
+--- a/CMakeLists.txt	2021-10-24 04:46:57.475685128 +0200
++++ b/CMakeLists.txt	2021-10-24 04:45:56.218467838 +0200
+@@ -182,15 +182,16 @@
+ 
+ endif()  # !MSVC
+ 
+-add_library(hwy STATIC ${HWY_SOURCES})
++add_library(hwy SHARED ${HWY_SOURCES})
+ target_compile_options(hwy PRIVATE ${HWY_FLAGS})
+ set_property(TARGET hwy PROPERTY POSITION_INDEPENDENT_CODE ON)
+ target_include_directories(hwy PUBLIC ${CMAKE_CURRENT_LIST_DIR})
+ 
+-add_library(hwy_contrib STATIC ${HWY_CONTRIB_SOURCES})
++add_library(hwy_contrib SHARED ${HWY_CONTRIB_SOURCES})
+ target_compile_options(hwy_contrib PRIVATE ${HWY_FLAGS})
+ set_property(TARGET hwy_contrib PROPERTY POSITION_INDEPENDENT_CODE ON)
+ target_include_directories(hwy_contrib PUBLIC ${CMAKE_CURRENT_LIST_DIR})
++target_link_libraries(hwy_contrib hwy)
+ 
+ # -------------------------------------------------------- hwy_list_targets
+ # Generate a tool to print the compiled-in targets as defined by the current
