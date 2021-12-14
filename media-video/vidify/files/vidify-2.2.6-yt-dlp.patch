@@ -1,0 +1,122 @@
+diff --git a/README.md b/README.md
+index c4ea164..51e65e6 100644
+--- a/README.md
++++ b/README.md
+@@ -79,7 +79,7 @@ Audiosync is only available on Linux for now. It's strongly recommended to use M
+ * FFTW: `libfftw3` on Debian-based distros.
+ * ffmpeg: `ffmpeg` on most repositories. It must be available on your path.
+ * pulseaudio: `pulseaudio`, pre-installed on most repos.
+-* youtube-dl: this is installed by default with Vidify, but make sure it's available on your path.
++* yt-dlp: this is installed by default with Vidify, but make sure it's available on your path.
+ 
+ It's also available as [`vidify-audiosync`](https://aur.archlinux.org/packages/vidify-audiosync) on the AUR, and it comes pre-installed in the binaries.
+ 
+diff --git a/dev/build_requires.txt b/dev/build_requires.txt
+index ed682fd..a8bbc30 100644
+--- a/dev/build_requires.txt
++++ b/dev/build_requires.txt
+@@ -14,5 +14,5 @@ QtPy
+ SwSpotify>=1.1.1; platform_system == "Windows" or platform_system == "Darwin"
+ tekore < 2.0
+ vidify-audiosync == 0.2.*
+-youtube-dl
++yt-dlp
+ zeroconf
+diff --git a/dev/snapcraft.yaml b/dev/snapcraft.yaml
+index a5446de..00d2aae 100644
+--- a/dev/snapcraft.yaml
++++ b/dev/snapcraft.yaml
+@@ -22,7 +22,7 @@ parts:
+       - python3-pyqt5
+       - python3-appdirs
+       - python3-pydbus
+-      - youtube-dl
++      - yt-dlp
+       # Mpv is used by default because it's lighter and works better
+       # with the audiosync feature.
+       - libmpv-dev
+diff --git a/setup.py b/setup.py
+index 3fdb656..9b1c093 100644
+--- a/setup.py
++++ b/setup.py
+@@ -19,7 +19,7 @@ install_deps = [
+     # Base package
+     'QtPy',
+     'lyricwikia',
+-    'youtube-dl',
++    'yt-dlp',
+     'appdirs',
+     'qdarkstyle',
+     'dataclasses; python_version<"3.7"',
+diff --git a/vidify/player/mpv.py b/vidify/player/mpv.py
+index 4b92571..68bd1a5 100644
+--- a/vidify/player/mpv.py
++++ b/vidify/player/mpv.py
+@@ -30,7 +30,7 @@ locale.setlocale(locale.LC_NUMERIC, 'C')
+ 
+ class MpvPlayer(PlayerBase):
+     # The audio is always muted, which is needed because not all the
+-    # youtube-dl videos are silent. The keep-open flag stops mpv from closing
++    # yt-dlp videos are silent. The keep-open flag stops mpv from closing
+     # after the video is over.
+     DEFAULT_FLAGS = ['mute']
+     DEFAULT_ARGS = {
+diff --git a/vidify/player/vlc.py b/vidify/player/vlc.py
+index 6a0bec7..a7c9ec0 100644
+--- a/vidify/player/vlc.py
++++ b/vidify/player/vlc.py
+@@ -31,7 +31,7 @@ class VLCPlayer(PlayerBase):
+         else:
+             vlc_args += " --quiet"
+         # The audio is always muted, which is needed because not all the
+-        # youtube-dl videos are silent.
++        # yt-dlp videos are silent.
+         # Needed for the audiosync feature: set the Group of Pictures size to
+         # one, so that seeking is more precise.
+         vlc_args += " --no-audio --sout-x264-min-keyint 1"
+diff --git a/vidify/youtube.py b/vidify/youtube.py
+index 1b23bfb..b959f34 100644
+--- a/vidify/youtube.py
++++ b/vidify/youtube.py
+@@ -1,5 +1,5 @@
+ """
+-This module uses youtube-dl to obtain the actual URL of a YouTube link.
++This module uses yt-dlp to obtain the actual URL of a YouTube link.
+ That way, the video can be played directly with a video player like VLC
+ or mpv.
+ """
+@@ -7,7 +7,7 @@ or mpv.
+ import logging
+ from typing import Optional
+ 
+-from youtube_dl import YoutubeDL
++from yt_dlp import YoutubeDL
+ from qtpy.QtCore import QObject, Signal
+ 
+ 
+@@ -63,7 +63,7 @@ class YouTubeDLWorker(QObject):
+ 
+     def get_url(self) -> None:
+         """
+-        Getting the youtube direct link with youtube-dl, intended to be used
++        Getting the youtube direct link with yt-dlp, intended to be used
+         with a QThread. It's guaranteed that either a success signal or a
+         fail signal will be emitted.
+         """
+@@ -74,13 +74,13 @@ class YouTubeDLWorker(QObject):
+             except Exception as e:
+                 # Any kind of error has to be caught, so that it doesn't only
+                 # send the error signal when the download wasn't successful
+-                # (a DownloadError from youtube_dl).
+-                logging.info("YouTube-dl wasn't able to obtain the video: %s",
++                # (a DownloadError from yt_dlp).
++                logging.info("yt-dlp wasn't able to obtain the video: %s",
+                              str(e))
+                 self.fail.emit()
+             else:
+                 if len(data['entries']) == 0:
+-                    logging.info("YouTube-dl returned no entries")
++                    logging.info("yt-dlp returned no entries")
+                     self.fail.emit()
+                 else:
+                     self.success.emit(data)
