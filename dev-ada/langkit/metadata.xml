@@ -4,6 +4,10 @@
 	<maintainer type="project">
 		<email>ada@gentoo.org</email>
 	</maintainer>
+	<use>
+		<flag name="shared">Build shared library</flag>
+		<flag name="static-pic">Build static library with pic code</flag>
+	</use>
 	<longdescription lang="en">
 		Langkit (nickname for language kit) is a tool whose purpose is to make
 		it easy to create syntactic and semantic analysis engines. Write a
