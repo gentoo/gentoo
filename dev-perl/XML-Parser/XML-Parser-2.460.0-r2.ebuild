@@ -37,7 +37,7 @@ src_configure() {
 src_install() {
 	perl-module_src_install
 
-	# "special" test for bug 827966
-	einfo Checking for Expat.so \#827966
+	# "special" test for bug #827966
+	einfo "Checking for Expat.so (bug #827966)"
 	find "${D}" -name Expat.so | grep Expat || die "Something went badly wrong, can't find Expat.so. Please file a bug."
 }
