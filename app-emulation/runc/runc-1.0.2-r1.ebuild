@@ -33,6 +33,8 @@ BDEPEND="
 	test? ( "${RDEPEND}" )
 "
 
+PATCHES=( "${FILESDIR}/CVE-2021-43784.patch" )
+
 # tests need busybox binary, and portage namespace
 # sandboxing disabled: mount-sandbox pid-sandbox ipc-sandbox
 # majority of tests pass
