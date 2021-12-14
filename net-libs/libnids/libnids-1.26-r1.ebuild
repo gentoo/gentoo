@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.24-libdir.patch
 	"${FILESDIR}"/${PN}-1.24-static-libs.patch
 	"${FILESDIR}"/${PN}-1.24-no-inline.patch
+	"${FILESDIR}"/${PN}-1.26-revert-SONAME-bump.patch
 )
 
 src_prepare() {
