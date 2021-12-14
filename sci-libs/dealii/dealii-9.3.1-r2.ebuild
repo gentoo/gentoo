@@ -45,8 +45,7 @@ REQUIRED_USE="
 # accessible. Just fix the version for the time being.
 CAS_VERSION=7.5.3
 
-RDEPEND="dev-libs/boost:=
-	!~dev-libs/boost-1.77.0
+RDEPEND="<dev-libs/boost-1.77.0:=
 	app-arch/bzip2
 	sys-libs/zlib
 	dev-cpp/tbb:=
