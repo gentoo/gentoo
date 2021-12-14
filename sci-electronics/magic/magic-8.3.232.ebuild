@@ -13,7 +13,7 @@ SRC_URI="http://www.opencircuitdesign.com/${PN}/archive/${P}.tgz
 
 LICENSE="HPND GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="cairo debug opengl"
 
 RDEPEND="sys-libs/ncurses:0=
