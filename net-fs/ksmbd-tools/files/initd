@@ -11,8 +11,8 @@ depend() {
 
 description="ksmbd userspace daemon"
 
-command="/usr/sbin/ksmbd.mountd"
-command_control="/usr/sbin/ksmbd.control"
+command="/sbin/ksmbd.mountd"
+command_control="/sbin/ksmbd.control"
 command_args="-s"
 
 required_files="${KSMBD_CONF}"
