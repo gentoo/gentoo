@@ -13,6 +13,7 @@ sys-libs/glibc
 sys-libs/musl
 sys-libs/uclibc-ng
 sys-devel/binutils
+sys-devel/binutils-config
 sys-devel/libtool
 sys-devel/make
 dev-lang/python
