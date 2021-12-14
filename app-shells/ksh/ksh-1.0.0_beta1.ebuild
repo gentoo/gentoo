@@ -45,6 +45,7 @@ src_compile() {
 		"-P"
 	)
 	append-cflags $(test-flags-CC ${extraflags[@]})
+	filter-flags '-fdiagnostics-color=always' # https://github.com/ksh93/ksh/issues/379
 	export CCFLAGS="${CFLAGS} -fno-strict-aliasing"
 
 	tc-export AR CC LD NM
