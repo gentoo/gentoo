@@ -9,6 +9,7 @@
     computing platforms.
   </longdescription>
   <use>
+    <flag name="browser">Enable browser support</flag>
     <flag name="silex">Build silex data browser</flag>
   </use>
   <maintainer type="project">
