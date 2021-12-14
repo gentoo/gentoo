@@ -12,9 +12,23 @@ SRC_URI="http://dist.schmorp.de/${PN}/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+IUSE="elibc_musl"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0-rundir.patch
 )
 
 DOCS=( Changes README )
+
+src_configure() {
+	# Bug #828923
+	local mycmakeargs=()
+	if use elibc_musl; then
+		mycmakeargs+=(
+			-DPT_LASTLOGX_FILE="\"/dev/null/lastlogx\""
+			-DPT_WTMPX_FILE="\"/dev/null/wtmpx\""
+		)
+	fi
+
+	cmake_src_configure
+}
