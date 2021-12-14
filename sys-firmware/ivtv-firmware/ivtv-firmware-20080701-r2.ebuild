@@ -9,7 +9,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="Hauppauge-Firmware"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 
 S=${WORKDIR}
 
