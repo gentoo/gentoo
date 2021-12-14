@@ -43,7 +43,6 @@ src_prepare() {
 	sed -i \
 		-e "s:/usr/lib64/mold/mold-wrapper.so:${EPREFIX}/usr/$(get_libdir)/mold/mold-wrapper.so:" \
 
-
 	# Needs unpackaged dwarfutils
 	rm test/compressed-debug-info.sh \
 		test/compress-debug-sections.sh || die
@@ -69,7 +68,7 @@ src_compile() {
 }
 
 src_test() {
-        emake \
+	emake \
 		SYSTEM_TBB=1 \
 		SYSTEM_MIMALLOC=1 \
 		EXTRA_CFLAGS="${CFLAGS}" \
