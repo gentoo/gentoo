@@ -28,7 +28,7 @@ RDEPEND="
 	sci-physics/vmc:=[c++17]
 	vgm? ( sci-physics/vgm:= )"
 DEPEND="${RDEPEND}"
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-doc/doxygen[dot] )"
 RESTRICT="
 	!examples? ( test )
 	!geant3? ( test )
