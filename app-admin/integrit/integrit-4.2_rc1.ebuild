@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -14,19 +14,20 @@ SRC_URI="https://github.com/integrit/integrit/archive/v${MY_PV}.tar.gz -> ${P}.t
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
 # Tests don't work in 4.2_rc1. Please re-check on version bump!
 RESTRICT="test"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-PATCHES=( "${FILESDIR}"/${PN}-4.1-fix-build-system.patch )
+PATCHES=( "${FILESDIR}/${PN}"-4.1-fix-build-system.patch )
+
+BDEPEND="sys-apps/texinfo"
 
 src_prepare() {
 	default
-	mv configure.{in,ac} || die
-	mv hashtbl/configure.{in,ac} || die
+	mv configure.{in,ac} || die "Failed to move configure.in into .ac"
+	mv hashtbl/configure.{in,ac} || die "Failed to move hashtbl/configure.in into .ac"
 
 	eautoreconf
 	touch ar-lib || die #775746
