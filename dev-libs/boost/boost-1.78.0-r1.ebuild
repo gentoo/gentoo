@@ -43,7 +43,7 @@ RDEPEND="
 	zlib? ( sys-libs/zlib:=[${MULTILIB_USEDEP}] )
 	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
-BDEPEND=">=dev-util/boost-build-${MAJOR_V}"
+BDEPEND=">=dev-util/boost-build-${MAJOR_V}-r1"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.71.0-disable_icu_rpath.patch
