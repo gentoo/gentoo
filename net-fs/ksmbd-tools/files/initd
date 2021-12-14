@@ -23,7 +23,7 @@ start_pre() {
 
 stop() {
 	ebegin "Stopping ${RC_SVCNAME}"
-	"${command_control} -s"
+	"${command_control}" -s
 	eend $?
 }
 
