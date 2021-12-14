@@ -22,6 +22,8 @@ dev-lang/rust
 dev-lang/rust-bin
 sys-apps/sandbox
 dev-util/ccache
+sys-devel/clang
+sys-devel/llvm
 sys-devel/gcc
 sys-devel/gcc-config
 dev-java/java-config
