@@ -36,7 +36,7 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE+="editor +lobby nvtt pch test"
 
 RESTRICT="test"
