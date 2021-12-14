@@ -128,6 +128,11 @@ RDEPEND="${CDEPEND}
 	uwsgi_plugins_rrdtool? ( net-analyzer/rrdtool )"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${P}-py310-fix.patch"
+	"${FILESDIR}/${P}-pynode-compile.patch"
+)
+
 S="${WORKDIR}/${MY_P}"
 
 src_unpack() {
