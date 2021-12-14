@@ -16,7 +16,7 @@ SRC_URI="https://rsync.opensuse.org/distribution/leap/15.2/repo/oss/x86_64/${MY_
 
 LICENSE="freedist"		#446158
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 
 # Bug #827318
 BDEPEND="app-arch/xz-utils[extra-filters]"
