@@ -23,14 +23,7 @@ _IUSE_QT_MODULES="
 IUSE="+pyqt5 pyside2 ${_IUSE_QT_MODULES}"
 unset _IUSE_QT_MODULES
 
-# PySide2 does not support python3_10, nor is it likely that it will in the
-# future since upstream appears to be focussing on PySide6 for Qt6 instead
-# (which is compatible with python3_10). So if we want to use python3_10
-# we have to force disable pyside2.
-REQUIRED_USE="
-	|| ( pyqt5 pyside2 )
-	python_targets_python3_10? ( pyqt5 !pyside2 )
-"
+REQUIRED_USE="|| ( pyqt5 pyside2 )"
 
 # These flags are currently *not* common to both the PySide2 and PyQt5 ebuild
 # Disable them for now, please check periodically if this is still up to date.
@@ -73,15 +66,13 @@ RDEPEND="
 		webengine? ( dev-python/PyQtWebEngine[${PYTHON_USEDEP}] )
 	)
 	pyside2? (
-		$(python_gen_cond_dep '
-			dev-python/pyside2[${PYTHON_USEDEP}]
-			dev-python/pyside2[designer?,gui?,help?,location?,multimedia?]
-			dev-python/pyside2[network?,opengl(+)?,positioning?,printsupport?]
-			dev-python/pyside2[sensors?,serialport(+)?,speech?,sql?,svg?]
-			dev-python/pyside2[testlib?,webchannel?,webengine?,websockets?]
-			dev-python/pyside2[widgets?,x11extras?,xml?,xmlpatterns?]
-			declarative? ( dev-python/pyside2[qml,quick] )
-			' python3_{7..9} )
+		dev-python/pyside2[${PYTHON_USEDEP}]
+		dev-python/pyside2[designer?,gui?,help?,location?,multimedia?]
+		dev-python/pyside2[network?,opengl(+)?,positioning?,printsupport?]
+		dev-python/pyside2[sensors?,serialport(+)?,speech?,sql?,svg?]
+		dev-python/pyside2[testlib?,webchannel?,webengine?,websockets?]
+		dev-python/pyside2[widgets?,x11extras?,xml?,xmlpatterns?]
+		declarative? ( dev-python/pyside2[qml,quick] )
 	)
 "
 
@@ -100,15 +91,13 @@ BDEPEND="
 			dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
 		)
 		pyside2? (
-			$(python_gen_cond_dep '
-				dev-python/pyside2[${PYTHON_USEDEP}]
-				dev-python/pyside2[3d,charts,concurrent,datavis,designer,gui,help]
-				dev-python/pyside2[location,multimedia,network,opengl(+),positioning]
-				dev-python/pyside2[printsupport,qml,quick,script,scripttools,scxml]
-				dev-python/pyside2[sensors,serialport(+),speech,sql,svg,testlib]
-				dev-python/pyside2[webchannel,webengine,websockets,widgets,x11extras]
-				dev-python/pyside2[xml,xmlpatterns]
-				' python3_{7..9} )
+			dev-python/pyside2[${PYTHON_USEDEP}]
+			dev-python/pyside2[3d,charts,concurrent,datavis,designer,gui,help]
+			dev-python/pyside2[location,multimedia,network,opengl(+),positioning]
+			dev-python/pyside2[printsupport,qml,quick,script,scripttools,scxml]
+			dev-python/pyside2[sensors,serialport(+),speech,sql,svg,testlib]
+			dev-python/pyside2[webchannel,webengine,websockets,widgets,x11extras]
+			dev-python/pyside2[xml,xmlpatterns]
 		)
 	)
 "
@@ -142,11 +131,7 @@ python_test() {
 		QT_API="pyqt5" epytest
 	fi
 	if use pyside2; then
-		if [[ "${EPYTHON}" == "python3.10" ]]; then
-			return
-		else
-			QT_API="pyside2" epytest
-		fi
+		QT_API="pyside2" epytest
 	fi
 }
 
