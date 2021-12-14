@@ -1,10 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
 DIST_AUTHOR=RJRAY
-DIST_VERSION=0.82
+DIST_VERSION=0.80
 DIST_EXAMPLES=( "ex/*.xpl" )
 inherit perl-module
 
@@ -12,30 +12,25 @@ DESCRIPTION="An implementation of XML-RPC"
 
 SLOT="0"
 LICENSE="|| ( Artistic-2 LGPL-2.1 )"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	virtual/perl-Carp
-	>=dev-perl/HTTP-Daemon-6.120.0
-	>=dev-perl/HTTP-Message-6.260.0
-	>=dev-perl/libwww-perl-6.510.0
-	>=virtual/perl-Module-Load-0.360.0
-	>=virtual/perl-Scalar-List-Utils-1.550.0
-	>=dev-perl/XML-Parser-2.460.0
+	>=virtual/perl-File-Spec-0.800.0
+	>=dev-perl/libwww-perl-5.834.0
+	>=virtual/perl-Module-Load-0.240.0
+	>=virtual/perl-Scalar-List-Utils-1.200.0
+	>=dev-perl/XML-LibXML-1.850.0
+	>=dev-perl/XML-Parser-2.310.0
 "
-BDEPEND="${RDEPEND}
-	>=virtual/perl-ExtUtils-MakeMaker-7.560.0
+DEPEND="${RDEPEND}
+	virtual/perl-ExtUtils-MakeMaker
 	test? (
-		virtual/perl-IO-Socket-IP
-		dev-perl/Net-Server
-		>=virtual/perl-Test-Simple-1.302.183
+		dev-perl/HTTP-Daemon
+		>=virtual/perl-Test-Simple-0.940.0
 	)
 "
-
-# tests seem to be a bit flaky
-DIST_TEST=do
 
 src_compile() {
 	perl-module_src_compile
