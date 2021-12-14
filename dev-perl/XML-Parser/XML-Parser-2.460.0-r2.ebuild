@@ -18,7 +18,16 @@ RDEPEND="
 	dev-perl/libwww-perl
 "
 DEPEND="${RDEPEND}"
-BDEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}
+	dev-perl/Devel-CheckLib"
+
+src_prepare() {
+	default
+
+	# Drop bundled CheckLib which breaks Expat detection
+	# bug #827966
+	rm inc/Devel/CheckLib.pm || die
+}
 
 src_configure() {
 	myconf="EXPATLIBPATH=${EPREFIX}/usr/$(get_libdir) EXPATINCPATH=${EPREFIX}/usr/include"
