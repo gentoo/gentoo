@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/linux-lc100020/${MY_P}.tar.gz"
 
 LICENSE="|| ( GPL-3 MPL-1.1 )"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="amd64 ppc64 x86"
 
 S="${WORKDIR}"/${MY_P}
 
