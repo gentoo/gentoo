@@ -9,7 +9,7 @@ DESCRIPTION="Scala language-based scripting and REPL"
 HOMEPAGE="https://ammonite.io/"
 SRC_URI="https://github.com/lihaoyi/Ammonite/releases/download/${PV}/${SCALA_VERSION}-${PV} -> ammonite-${PV}"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
