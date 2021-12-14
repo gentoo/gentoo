@@ -46,3 +46,10 @@ src_prepare() {
 	sed -i -e 's:^TIMEOUT = .*:TIMEOUT = 120:' ipykernel/tests/*.py || die
 	distutils-r1_src_prepare
 }
+
+src_install() {
+	distutils-r1_src_install
+	# Use python3 in kernel.json configuration, bug #784764
+	sed -i -e '/python3.[0-9]\+/s//python3/' \
+		"${ED}"/usr/share/jupyter/kernels/python3/kernel.json || die
+}
