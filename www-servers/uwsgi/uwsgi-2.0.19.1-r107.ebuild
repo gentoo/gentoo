@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-1 )
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
@@ -127,6 +127,11 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-uwsgi )
 	uwsgi_plugins_rrdtool? ( net-analyzer/rrdtool )"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+        "${FILESDIR}/${P}-py310-fix.patch"
+        "${FILESDIR}/${P}-pynode-compile.patch"
+)
 
 S="${WORKDIR}/${MY_P}"
 
