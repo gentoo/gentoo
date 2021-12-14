@@ -40,7 +40,8 @@ src_prepare() {
 
 src_configure() {
 	# TODO: add kerberos support, explicitly disable for now
-	econf --enable-krb5=no
+	# tools are expected to recide in /sbin, not /usr/sbin
+	econf --prefix="${EPREFIX}/" --enable-krb5=no
 }
 
 src_install() {
@@ -54,6 +55,9 @@ src_install() {
 
 	newinitd "${FILESDIR}/initd" ksmbd 
 	newconfd "${FILESDIR}/confd" ksmbd
+
+	dosym ksmbd.addshare /sbin/smbshareadd
+	dosym ksmbd.adduser /sbin/smbuseradd
 
 	systemd_dounit ksmbd.service
 }
