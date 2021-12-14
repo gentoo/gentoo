@@ -24,6 +24,7 @@ BDEPEND="test? ( ${PYTHON_DEPS} )"
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc-build.patch
 	"${FILESDIR}"/${P}-use-c++17.patch
+	"${FILESDIR}"/${P}-llvm-earlier-than-12.patch
 )
 
 llvm_check_deps() {
