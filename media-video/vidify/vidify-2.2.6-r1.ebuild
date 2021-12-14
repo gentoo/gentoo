@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit xdg distutils-r1 optfeature virtualx
 
@@ -23,13 +23,16 @@ RDEPEND="
 	dev-python/appdirs[${PYTHON_USEDEP}]
 	dev-python/QtPy[gui,webengine,${PYTHON_USEDEP}]
 	net-misc/lyricwikia[${PYTHON_USEDEP}]
-	net-misc/youtube-dl[${PYTHON_USEDEP}]
+	net-misc/yt-dlp[${PYTHON_USEDEP}]
 	dbus? ( dev-python/pydbus[${PYTHON_USEDEP}] )
 	!dbus? ( dev-python/tekore[${PYTHON_USEDEP}] )
 	mpv? ( dev-python/python-mpv[${PYTHON_USEDEP}] )
 	vlc? ( dev-python/python-vlc[${PYTHON_USEDEP}] )
 	zeroconf? ( dev-python/zeroconf[${PYTHON_USEDEP}] )
 "
+
+# use yt-dlp instead of youtube-dl, otherwise download is too slow for playback
+PATCHES=( "${FILESDIR}/${P}-yt-dlp.patch" )
 
 distutils_enable_tests unittest
 
