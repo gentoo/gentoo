@@ -49,7 +49,10 @@ BDEPEND="
 PDEPEND="
 	>=virtual/dist-kernel-${PV}"
 
-QA_FLAGS_IGNORED="usr/src/linux-.*/scripts/gcc-plugins/.*.so"
+QA_FLAGS_IGNORED="
+	usr/src/linux-.*/scripts/gcc-plugins/.*.so
+	usr/src/linux-.*/vmlinux
+"
 
 src_prepare() {
 	local PATCHES=(
