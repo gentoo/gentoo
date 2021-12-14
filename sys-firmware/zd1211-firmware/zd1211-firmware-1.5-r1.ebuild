@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/project/zd1211/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86"
 
 S="${WORKDIR}"/${PN}
 
