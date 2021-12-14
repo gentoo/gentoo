@@ -11,7 +11,7 @@ RESTRICT="bindist mirror"
 
 LICENSE="bluez-firmware"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~hppa ~ppc ~x86"
+KEYWORDS="amd64 ~arm64 ~hppa ~ppc x86"
 IUSE=""
 
 DOCS=( AUTHORS ChangeLog README )
