@@ -42,6 +42,7 @@ src_prepare() {
 	# https://github.com/rui314/mold/issues/127
 	sed -i \
 		-e "s:/usr/lib64/mold/mold-wrapper.so:${EPREFIX}/usr/$(get_libdir)/mold/mold-wrapper.so:" \
+		elf/subprocess.cc || die
 
 	# Needs unpackaged dwarfutils
 	rm test/compressed-debug-info.sh \
