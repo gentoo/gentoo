@@ -30,7 +30,7 @@ src_prepare() {
 }
 
 src_configure() {
-	myconf="EXPATLIBPATH=${EPREFIX}/usr/$(get_libdir) EXPATINCPATH=${EPREFIX}/usr/include"
+	myconf="EXPATLIBPATH=${ESYSROOT}/usr/$(get_libdir) EXPATINCPATH=${ESYSROOT}/usr/include"
 	perl-module_src_configure
 }
 
