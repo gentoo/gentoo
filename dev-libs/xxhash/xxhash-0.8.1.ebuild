@@ -29,6 +29,11 @@ src_install() {
 	MANDIR="${EPREFIX}/usr/share/man/man1" \
 	emake DESTDIR="${D}" install
 
+	# link man pages by hand, bug #829159
+	dosym xxhsum.1 /usr/share/man/man1/xxh32sum.1
+	dosym xxhsum.1 /usr/share/man/man1/xxh64sum.1
+	dosym xxhsum.1 /usr/share/man/man1/xxh128sum.1
+
 	if ! use static-libs ; then
 		rm "${ED}"/usr/$(get_libdir)/libxxhash.a || die
 	fi
