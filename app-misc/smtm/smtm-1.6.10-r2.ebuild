@@ -11,7 +11,7 @@ SRC_URI="https://eddelbuettel.com/dirk/code/${PN}/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="examples"
 
 DEPEND="dev-perl/Tk
