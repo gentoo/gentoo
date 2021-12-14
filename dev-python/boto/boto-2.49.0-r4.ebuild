@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_USE_SETUPTOOLS=bdepend
 
 inherit distutils-r1
@@ -24,6 +24,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-py3-httplib-strict.patch
 	"${FILESDIR}"/${P}-py3-server-port.patch
 	"${FILESDIR}"/${P}-unbundle-six.patch
+	"${FILESDIR}"/${P}-py310.patch
 )
 
 RDEPEND=">=dev-python/six-1.12.0[${PYTHON_USEDEP}]"
