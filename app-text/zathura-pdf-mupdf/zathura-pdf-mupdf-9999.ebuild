@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson xdg
 
@@ -24,6 +24,7 @@ DEPEND=">=app-text/mupdf-1.17:=
 	>=app-text/zathura-0.3.9
 	dev-libs/girara
 	dev-libs/glib:2
+	dev-libs/gumbo:0
 	media-libs/jbig2dec:=
 	media-libs/openjpeg:2=
 	virtual/jpeg:0
@@ -34,7 +35,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-	sed -i -e '/mupdfthird/d' meson.build || die "sed failed"
+	sed -i -e '/mupdfthird/d' meson.build || die "Failed removing mupdfthird from meson.build"
 
 	default
 }
