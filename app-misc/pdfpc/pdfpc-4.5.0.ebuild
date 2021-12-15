@@ -15,7 +15,7 @@ HOMEPAGE="https://pdfpc.github.io https://github.com/pdfpc/pdfpc"
 LICENSE="GPL-3+"
 SLOT="0"
 IUSE="+gstreamer"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}/.git"
