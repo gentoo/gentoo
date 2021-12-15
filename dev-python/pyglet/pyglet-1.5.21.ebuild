@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 virtualx xdg-utils
 
 DESCRIPTION="Cross-platform windowing and multimedia library for Python"
@@ -18,7 +18,7 @@ IUSE="examples image +sound"
 BDEPEND="
 	test? (
 		dev-python/pillow[${PYTHON_USEDEP}]
-		dev-python/gst-python[${PYTHON_USEDEP}]
+		media-libs/fontconfig
 	)
 "
 RDEPEND="
@@ -39,16 +39,17 @@ DOCS=( DESIGN NOTICE README.md RELEASE_NOTES )
 
 distutils_enable_tests pytest
 
-src_test() {
-	virtx distutils-r1_src_test
-}
-
 python_test() {
 	xdg_environment_reset
 
+	# Deselect openal test, can't open device in sandbox
+	local deselect=(
+		tests/unit/media/test_listener.py::test_openal_listener
+	)
+
 	# Specify path to avoid running interactive tests
 	# We could add in integration tests, but they're slow
-	epytest tests/unit
+	virtx epytest tests/unit ${deselect[@]/#/--deselect }
 }
 
 python_install_all() {
