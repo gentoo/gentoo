@@ -14,7 +14,7 @@ SRC_URI="mirror://openssl/source/${MY_P}.tar.gz"
 LICENSE="openssl"
 SLOT="0/1.1" # .so version of libssl/libcrypto
 [[ "${PV}" = *_pre* ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE="+asm elibc_musl rfc3779 sctp cpu_flags_x86_sse2 sslv3 static-libs test tls-compression tls-heartbeat vanilla"
 RESTRICT="!test? ( test )"
 
@@ -27,7 +27,7 @@ BDEPEND="
 	test? (
 		sys-apps/diffutils
 		sys-devel/bc
-		sys-process/procps
+		kernel_linux? ( sys-process/procps )
 	)"
 PDEPEND="app-misc/ca-certificates"
 
@@ -117,6 +117,21 @@ src_prepare() {
 			-e '/^$config{dirs}/s@ "test",@@' \
 			-i Configure || die
 	fi
+
+	if use prefix && [[ ${CHOST} == *-solaris* ]] ; then
+		# use GNU ld full option, not to confuse it on Solaris
+		sed -i \
+			-e 's/-Wl,-M,/-Wl,--version-script=/' \
+			-e 's/-Wl,-h,/-Wl,--soname=/' \
+			Configurations/10-main.conf || die
+
+		# fix building on Solaris 10
+		# https://github.com/openssl/openssl/issues/6333
+		sed -i \
+			-e 's/-lsocket -lnsl -ldl/-lsocket -lnsl -ldl -lrt/' \
+			Configurations/10-main.conf || die
+	fi
+
 	# The config script does stupid stuff to prompt the user.  Kill it.
 	sed -i '/stty -icanon min 0 time 50; read waste/d' config || die
 	./config --test-sanity || die "I AM NOT SANE"
