@@ -27,6 +27,7 @@ DEPEND="
 	|| (
 		sys-apps/systemd
 		sys-auth/elogind
+		sys-libs/basu
 	)
 	sys-apps/dbus
 	icons? (
