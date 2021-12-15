@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Conrad Kostecki <conikost@gentoo.org> (2021-12-15)
+# Level Zero needs RTLD_DEEPBIND, which does not exist on musl.
+dev-libs/level-zero
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-11-21)
 # No musl patches in ebuild
 <sys-devel/gcc-9
