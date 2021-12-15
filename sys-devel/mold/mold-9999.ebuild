@@ -19,6 +19,7 @@ LICENSE="AGPL-3"
 SLOT="0"
 
 # Try again after 1.0 (nearly there, but path-related issues)
+# https://github.com/rui314/mold/issues/137
 RESTRICT="test"
 
 RDEPEND=">=dev-cpp/tbb-2021.4.0:=
