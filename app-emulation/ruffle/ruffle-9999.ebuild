@@ -5,6 +5,7 @@ EAPI=8
 
 # python is needed by xcb-0.8.2 until update to >=0.10
 PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_REQ_USE="xml"
 inherit cargo desktop flag-o-matic git-r3 python-any-r1 xdg
 
 DESCRIPTION="Flash Player emulator written in Rust"
