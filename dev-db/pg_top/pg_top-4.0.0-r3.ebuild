@@ -15,7 +15,9 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="dev-db/postgresql:=
-	dev-libs/libbsd"
+	dev-libs/libbsd
+	sys-libs/ncurses:=
+	virtual/libelf:="
 DEPEND="${RDEPEND}"
 
 DOCS=( HISTORY.rst README.rst TODO Y2K )
