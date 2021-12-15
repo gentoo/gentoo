@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -15,12 +15,9 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="gmp"
 
 RDEPEND="gmp? ( dev-libs/gmp:0= )"
-DEPEND="${RDEPEND}
-	app-arch/unzip"
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip"
 PATCHES=( "${FILESDIR}/${PN}-0.77-install.patch" )
-
-# No tests are currently provided upstream
-#RESTRICT="test"
 
 src_configure() {
 	local mycmakeargs=(
