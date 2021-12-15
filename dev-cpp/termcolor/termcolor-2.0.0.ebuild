@@ -23,3 +23,7 @@ src_configure() {
 
 	cmake_src_configure
 }
+
+src_test() {
+	"${BUILD_DIR}"/test_termcolor || die
+}
