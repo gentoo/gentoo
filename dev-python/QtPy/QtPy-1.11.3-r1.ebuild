@@ -122,16 +122,12 @@ src_prepare() {
 	sed -i -e "s/from PySide.QtCore import/raise ImportError #/" qtpy/__init__.py || die
 }
 
-src_test() {
-	virtx python_foreach_impl python_test
-}
-
 python_test() {
 	if use pyqt5; then
-		QT_API="pyqt5" epytest
+		virtx QT_API="pyqt5" epytest
 	fi
 	if use pyside2; then
-		QT_API="pyside2" epytest
+		virtx QT_API="pyside2" epytest
 	fi
 }
 
