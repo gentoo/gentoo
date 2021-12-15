@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Marco Scardovi <marco@scardovi.com> (2021-12-15)
+# Outdated, we are the only one who still have a package for them.
+# Removal in 30 days. # Bug #829216
+sys-cluster/mpe2
+sci-biology/gibbs
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-12-14)
 # AT&T decided to roll back community changes in March 2020
 # for version 2020.x.x
