@@ -36,11 +36,7 @@ src_compile() {
 	emake \
 		SYSTEM_TBB=1 \
 		SYSTEM_MIMALLOC=1 \
-		EXTRA_CFLAGS="${CFLAGS}" \
-		EXTRA_CXXFLAGS="${CXXFLAGS}" \
-		EXTRA_CPPFLAGS="${CPPFLAGS}" \
-		EXTRA_LDFLAGS="${LDFLAGS}" \
-		STRIP="true"
+		STRIP="true" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 }
 
@@ -48,10 +44,6 @@ src_test() {
 	emake \
 		SYSTEM_TBB=1 \
 		SYSTEM_MIMALLOC=1 \
-		EXTRA_CFLAGS="${CFLAGS}" \
-		EXTRA_CXXFLAGS="${CXXFLAGS}" \
-		EXTRA_CPPFLAGS="${CPPFLAGS}" \
-		EXTRA_LDFLAGS="${LDFLAGS}" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		STRIP="true"
 		check
@@ -61,11 +53,8 @@ src_install() {
 	emake \
 		SYSTEM_TBB=1 \
 		SYSTEM_MIMALLOC=1 \
-		EXTRA_CFLAGS="${CFLAGS}" \
-		EXTRA_CXXFLAGS="${CXXFLAGS}" \
-		EXTRA_CPPFLAGS="${CPPFLAGS}" \
-		EXTRA_LDFLAGS="${LDFLAGS}" \
 		DESTDIR="${ED}" \
+		PREFIX="${EPREFIX}/usr" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		STRIP="true" \
 		install
