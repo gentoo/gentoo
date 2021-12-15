@@ -17,7 +17,9 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
+BDEPEND="test? (
+	dev-python/mock[${PYTHON_USEDEP}]
+	=dev-python/smmap-5*[${PYTHON_USEDEP}] )"
 RDEPEND="dev-python/GitPython[${PYTHON_USEDEP}]
 	<dev-python/python-slugify-5.0.0[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
