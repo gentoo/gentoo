@@ -15,7 +15,7 @@ HOMEPAGE="http://gtorrentviewer.sourceforge.net/"
 SRC_URI="mirror://sourceforge/project/${PN}/${MY_PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 SLOT="0"
 
 S="${WORKDIR}"/${MY_P}
