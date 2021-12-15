@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/LINBIT/csync2"
 SRC_URI="https://github.com/LINBIT/${PN}/archive/${P}.tar.gz -> ${P}-github.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 IUSE="mysql postgres sqlite ssl xinetd"
 
