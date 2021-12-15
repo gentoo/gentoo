@@ -1,0 +1,125 @@
+From 05f11af435edc57650d0221ed8a74ecfb997e576 Mon Sep 17 00:00:00 2001
+From: Christoph Cullmann <cullmann@kde.org>
+Date: Mon, 6 Dec 2021 18:12:46 +0000
+Subject: [PATCH] improve installation of light fallback icons
+
+icon install works now like this:
+
+* collect all light icons
+* install them just for light theme
+
+* install dark icons
+* install all missing ones from light theme we collected before
+---
+ icons-dark/CMakeLists.txt | 45 +++++++++++----------------------------
+ icons/CMakeLists.txt      | 18 ++++++----------
+ 2 files changed, 20 insertions(+), 43 deletions(-)
+
+diff --git a/icons-dark/CMakeLists.txt b/icons-dark/CMakeLists.txt
+index 40590a8b..ab582c13 100644
+--- a/icons-dark/CMakeLists.txt
++++ b/icons-dark/CMakeLists.txt
+@@ -4,10 +4,6 @@ endif()
+ 
+ ########### install files ###############
+ 
+-set(breeze_icon_dark_dirs
+-    actions animations applets apps devices emblems
+-    mimetypes places status)
+-
+ set(BREEZE_INSTALL_DIR ${KDE_INSTALL_FULL_ICONDIR}/breeze-dark)
+ 
+ if(WITH_ICON_GENERATION)
+@@ -26,36 +22,21 @@ if(NOT WIN32)
+ endif()
+ 
+ if(NOT SKIP_INSTALL_ICONS)
+-    # In order to ensure the dark icons are copied over the light icons which
+-    # are installed into the dark theme for BUG:444095, we need to execute the
+-    # copy command ourselves rather than using CMake's internal copy mechanism
+-    # used by the normal install command, so we use CODE mode of install to
+-    # execute_process and print an appropriate status message.
+-    # See https://bugs.kde.org/show_bug.cgi?id=445489
+-    set(COPY_CMD "cp -a")
+-    set(XCOPY_ARGS "")
+-    if(WIN32)
+-        set(COPY_CMD "xcopy")
+-        set(XCOPY_ARGS "/q /e /y")
+-    endif(WIN32)
+-    install(CODE "cmake_policy(VERSION 3.6)
+-        foreach(CAT_DIR ${breeze_icon_dark_dirs})
+-            execute_process(COMMAND ${COPY_CMD} \${CAT_DIR} \$ENV{DESTDIR}${BREEZE_INSTALL_DIR} ${XCOPY_ARGS} ERROR_QUIET WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+-        endforeach()
+-        file(GLOB_RECURSE ICON_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} LIST_DIRECTORIES false ${CMAKE_CURRENT_SOURCE_DIR}/*.svg)
+-        foreach(ICON_FILE IN LISTS ICON_FILES)
+-            message(STATUS \"Installing: \$ENV{DESTDIR}${BREEZE_INSTALL_DIR}/\${ICON_FILE}\")
+-        endforeach()")
++    file(GLOB_RECURSE icon_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/*.svg")
++    foreach (icon_file ${icon_files})
++        install(FILES ${icon_file} DESTINATION ${BREEZE_INSTALL_DIR} RENAME ${icon_file})
++    endforeach()
++
++    # install for all missing icons the light icons as fallback
++    foreach (icon_file ${BREEZE_LIGHT_ICONS})
++        if (NOT ${icon_file} IN_LIST icon_files)
++            install(FILES ${CMAKE_SOURCE_DIR}/icons/${icon_file} DESTINATION ${BREEZE_INSTALL_DIR} RENAME ${icon_file})
++        endif()
++    endforeach()
++
+     install(FILES index.theme DESTINATION ${BREEZE_INSTALL_DIR})
+     if(WITH_ICON_GENERATION)
+-        install(CODE "cmake_policy(VERSION 3.6)
+-            foreach(GEN_DIR ${breeze_icon_dark_dirs})
+-                execute_process(COMMAND ${COPY_CMD} \${GEN_DIR} \$ENV{DESTDIR}${BREEZE_INSTALL_DIR} ${XCOPY_ARGS} ERROR_QUIET WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/generated)
+-            endforeach()
+-            file(GLOB_RECURSE ICON_FILES RELATIVE ${CMAKE_CURRENT_BINARY_DIR}/generated LIST_DIRECTORIES false ${CMAKE_CURRENT_BINARY_DIR}/generated/*.svg)
+-            foreach(ICON_FILE IN LISTS ICON_FILES)
+-                message(STATUS \"Installing: \$ENV{DESTDIR}${BREEZE_INSTALL_DIR}/\${ICON_FILE}\")
+-            endforeach()")
++        install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/generated/ DESTINATION ${BREEZE_INSTALL_DIR})
+     endif()
+ endif()
+ 
+diff --git a/icons/CMakeLists.txt b/icons/CMakeLists.txt
+index 220b81e9..8f31db4a 100644
+--- a/icons/CMakeLists.txt
++++ b/icons/CMakeLists.txt
+@@ -4,10 +4,6 @@ endif()
+ 
+ ########### install files ###############
+ 
+-set(breeze_icon_dirs
+-    actions animations applets apps categories preferences devices emblems
+-    emotes mimetypes places status)
+-
+ set(BREEZE_INSTALL_DIR ${KDE_INSTALL_FULL_ICONDIR}/breeze)
+ 
+ if(WITH_ICON_GENERATION)
+@@ -26,17 +22,17 @@ if(NOT WIN32)
+ endif()
+ 
+ if(NOT SKIP_INSTALL_ICONS)
+-    install(DIRECTORY ${breeze_icon_dirs} DESTINATION ${BREEZE_INSTALL_DIR})
++    # collect all our icons we need to install, will be used by dark icon set as fallback icons if not there, too
++    file(GLOB_RECURSE icon_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/*.svg")
++    set(BREEZE_LIGHT_ICONS ${icon_files} PARENT_SCOPE)
++    foreach (icon_file ${icon_files})
++        install(FILES ${icon_file} DESTINATION ${BREEZE_INSTALL_DIR} RENAME ${icon_file})
++    endforeach()
++
+     install(FILES index.theme DESTINATION ${BREEZE_INSTALL_DIR})
+     if(WITH_ICON_GENERATION)
+         install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/generated/ DESTINATION ${BREEZE_INSTALL_DIR})
+     endif()
+-
+-    # Install the colored icon sizes into breeze-dark theme as well, to ensure
+-    # that icons are available on alternate environments which do not support
+-    # colorized symbolic icons which are not named as "-symbolic"
+-    # NOTE: icons-dark will install /some/ files over top of these
+-    install(DIRECTORY ${breeze_icon_dirs} DESTINATION ${BREEZE_INSTALL_DIR}-dark)
+ endif()
+ 
+ gtk_update_icon_cache(${BREEZE_INSTALL_DIR})
+-- 
+GitLab
+
