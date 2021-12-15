@@ -46,7 +46,7 @@ src_install() {
 	dosbin bcache make-bcache bcache-super-show
 
 	exeinto $(get_udevdir)
-	doexe bcache-register probe-bcache
+	doexe bcache-register probe-bcache bcache-export-cached
 
 	python_foreach_impl python_doscript bcache-status
 
