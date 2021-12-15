@@ -43,6 +43,8 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
 esac
 
+inherit multiprocessing
+
 EXPORT_FUNCTIONS pkg_pretend pkg_setup
 
 if [[ ! ${_CHECK_REQS_ECLASS} ]]; then
@@ -52,6 +54,13 @@ _CHECK_REQS_ECLASS=1
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # How much RAM is needed? Eg.: CHECKREQS_MEMORY=15M
+
+# @ECLASS-VARIABLE: CHECKREQS_MEMORY_MANGLE_JOBS
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Allow packages to reduce the number of multiprocessing (e.g. make, ninja) jobs
+# to lower memory usage.
+: ${CHECKREQS_MEMORY_MANGLE_JOBS=yes}
 
 # @ECLASS-VARIABLE: CHECKREQS_DISK_BUILD
 # @DEFAULT_UNSET
@@ -346,9 +355,36 @@ _check-reqs_memory() {
 			eend 0
 		else
 			eend 1
-			_check-reqs_unsatisfied \
-				${size} \
-				"RAM"
+
+			# Has the user allowed us to mangle their MAKEOPTS?
+			if [[ ${CHECKREQS_MEMORY_MANGLE_JOBS} == "yes" ]] ; then
+				local jobs=$(makeopts_jobs)
+
+				local estimated_max_memory=$((${actual_memory}/$(_check-reqs_get_kibibytes 1G)))
+				if [[ $((jobs*2)) -gt ${estimated_max_memory} ]] ; then
+					# Number of jobs exceeds RAM/2GB, so clamp it.
+					local new_jobs=$(($(_check-reqs_get_number ${estimated_max_memory}G)*10/20))
+
+					# This might _still_ be too big on small machines. Give up in such cases.
+					# (Users can still set the do nothing variable which is independent of this.)
+					if [[ $((new_jobs*2)) -gt ${estimated_max_memory} ]] ; then
+						_check-reqs_unsatisfied \
+							${size} \
+							"RAM"
+					else
+						# The clamped jobs seem to be enough to satisfy the check-reqs requirement from the ebuild.
+						ewarn "Clamping MAKEOPTS jobs to -j${new_jobs} to reduce memory usage"
+						ewarn "Compiler jobs may use around ~2GB each: https://wiki.gentoo.org/wiki/MAKEOPTS"
+						ewarn "To disable this, set CHECKREQS_MEMORY_MANGLE_JOBS=no."
+
+						MAKEOPTS+=" -j${new_jobs}"
+					fi
+				fi
+			else
+				_check-reqs_unsatisfied \
+					${size} \
+					"RAM"
+			fi
 		fi
 	else
 		eend 1
