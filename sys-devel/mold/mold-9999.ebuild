@@ -18,7 +18,7 @@ fi
 LICENSE="AGPL-3"
 SLOT="0"
 
-# Try again after 0.9.6
+# Try again after 1.0 (nearly there, but path-related issues)
 RESTRICT="test"
 
 RDEPEND=">=dev-cpp/tbb-2021.4.0:=
@@ -29,6 +29,13 @@ RDEPEND=">=dev-cpp/tbb-2021.4.0:=
 		dev-libs/openssl:=
 	)"
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	default
+
+	# Needs unpackaged dwarfdump
+	rm test/elf/{compress-debug-sections.sh,compressed-debug-info.sh} || die
+}
 
 src_compile() {
 	tc-export CC CXX
@@ -41,12 +48,7 @@ src_compile() {
 }
 
 src_test() {
-	emake \
-		SYSTEM_TBB=1 \
-		SYSTEM_MIMALLOC=1 \
-		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		STRIP="true"
-		check
+	emake -C test -f Makefile.linux test
 }
 
 src_install() {
