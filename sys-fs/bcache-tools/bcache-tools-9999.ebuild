@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="Tools for bcache"
-HOMEPAGE="https://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git/"
+HOMEPAGE="https://bcache.evilpiepirate.org/ https://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git/"
 
 SLOT="0"
 LICENSE="GPL-2"

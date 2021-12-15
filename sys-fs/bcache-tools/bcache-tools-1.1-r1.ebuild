@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 inherit flag-o-matic python-r1 toolchain-funcs udev
 
 DESCRIPTION="Tools for bcache"
-HOMEPAGE="https://bcache.evilpiepirate.org/"
+HOMEPAGE="https://bcache.evilpiepirate.org/ https://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git/"
 SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/colyli/${PN}.git/snapshot/${P}.tar.gz"
 
 SLOT="0"
