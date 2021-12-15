@@ -1,0 +1,36 @@
+From 77b678c522cce0e8e7b39087f74e2ac591cd28d0 Mon Sep 17 00:00:00 2001
+From: Ismael Asensio <isma.af@gmail.com>
+Date: Sun, 12 Dec 2021 15:16:28 +0100
+Subject: [PATCH] XDGShellClient: Protect from invalid frameGeometry on
+ updateDecoration
+
+When updating window decoration do not try to restore the previous frameGeometry
+if it was invalid.
+
+This fixes the case when applying a `noBorder=true` rule on a newly created
+client would set it to a minimal window size
+
+Targeted at 5.23 only, since this codepath is being reworked for 5.24
+
+BUG: 445140
+FIXED-IN: 5.23.5
+---
+ src/xdgshellclient.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/xdgshellclient.cpp b/src/xdgshellclient.cpp
+index b4427b8cf7..75c4031498 100644
+--- a/src/xdgshellclient.cpp
++++ b/src/xdgshellclient.cpp
+@@ -637,7 +637,7 @@ void XdgToplevelClient::updateDecoration(bool check_workspace_pos, bool force)
+         scheduleConfigure();
+     }
+     updateShadow();
+-    if (check_workspace_pos) {
++    if (check_workspace_pos && oldFrameGeometry.isValid()) {
+         const QRect oldGeometryRestore = geometryRestore();
+         setGeometryRestore(frameGeometry());
+         checkWorkspacePosition(oldFrameGeometry, oldClientGeometry);
+-- 
+GitLab
+
