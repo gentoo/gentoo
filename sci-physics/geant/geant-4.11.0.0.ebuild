@@ -80,8 +80,6 @@ S="${WORKDIR}/${MY_P}"
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DATADIR="${EPREFIX}/usr/share/geant4"
-		-DCMAKE_INSTALL_PYTHONDIR="${EPREFIX}/usr/lib/${EPYTHON}/site-packages"
-		-DPYTHON_EXECUTABLE="${EPREFIX}/usr/bin/${EPYTHON}"
 		-DCMAKE_CXX_STANDARD=$((usev c++17 || usev c++20) | cut -c4-)
 		-DGEANT4_BUILD_BUILTIN_BACKTRACE=$(usex debug)
 		-DGEANT4_BUILD_MULTITHREADED=$(usex threads)
@@ -108,8 +106,17 @@ src_configure() {
 		-DGEANT4_USE_XM=$(usex motif)
 		-DGEANT4_USE_VTK=$(usex vtk)
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
-		${EXTRA_ECONF}
 	)
+
+	if use python; then
+		mycmakeargs+=(
+			-DPYTHON_EXECUTABLE="${EPREFIX}/usr/bin/${EPYTHON}"
+			-DCMAKE_INSTALL_PYTHONDIR="${EPREFIX}/usr/lib/${EPYTHON}/site-packages"
+		)
+	fi
+
+	[ -v EXTRA_ECONF ] && mycmakeargs+=( ${EXTRA_ECONF} )
+
 	cmake_src_configure
 }
 
