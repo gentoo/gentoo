@@ -4,6 +4,7 @@
 EAPI=7
 
 JAVA_PKG_IUSE="doc source test"
+MAVEN_ID="org.apache-extras.beanshell:bsh:2.0b6"
 
 inherit java-pkg-2 java-ant-2
 
