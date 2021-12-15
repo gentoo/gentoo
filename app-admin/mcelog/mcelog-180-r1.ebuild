@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="selinux"
 
 RDEPEND="selinux? ( sec-policy/selinux-mcelog )"
+DEPEND="${PYTHON_DEPS}"
 
 # TODO: add mce-inject to the tree to support test phase
 RESTRICT="test"
