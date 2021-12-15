@@ -67,8 +67,8 @@ src_install() {
 	local myhost="$(sh bin/package host)"
 	cd "arch/${myhost}" || die
 
-	dodir /bin
-	mv bin/ksh "${ED}"/bin/ || die
+	into /
+	dobin bin/ksh
 	dosym ksh /bin/rksh
 
 	newman man/man1/sh.1 ksh.1
