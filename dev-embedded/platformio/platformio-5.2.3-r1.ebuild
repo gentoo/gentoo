@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN}-core-${PV}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="
 	$(python_gen_cond_dep '
@@ -36,6 +36,7 @@ RDEPEND="
 		>=dev-python/pyelftools-0.25[${PYTHON_USEDEP}]
 		<dev-python/pyelftools-1[${PYTHON_USEDEP}]
 		>=dev-python/marshmallow-2.20.5[${PYTHON_USEDEP}]
+		dev-python/starlette[${PYTHON_USEDEP}]
 		=dev-python/uvicorn-0.15*[${PYTHON_USEDEP}]
 		dev-python/wsproto[${PYTHON_USEDEP}]
 		dev-python/zeroconf[${PYTHON_USEDEP}]
