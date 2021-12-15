@@ -5,4 +5,12 @@
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>
   </maintainer>
+  <use>
+    <flag name="julia">Enables interface for Singular to julia</flag>
+    <flag name="polymake">Enable the interface to TOPCOM</flag>
+  </use>
+  <upstream>
+    <bugs-to>https://github.com/Singular/Singular/issues</bugs-to>
+    <remote-id type="github">Singular/Singular</remote-id>
+  </upstream>
 </pkgmetadata>
