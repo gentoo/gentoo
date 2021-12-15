@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/u/unac/${P/-/_}.orig.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
