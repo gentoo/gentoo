@@ -30,11 +30,6 @@ RDEPEND=">=dev-cpp/tbb-2021.4.0:=
 	)"
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-9999-build-respect-user-FLAGS.patch
-	"${FILESDIR}"/${PN}-9999-don-t-compress-man-page.patch
-)
-
 src_compile() {
 	tc-export CC CXX
 
