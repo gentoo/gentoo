@@ -48,7 +48,10 @@ src_compile() {
 }
 
 src_test() {
-	emake -C test -f Makefile.linux test
+	emake \
+		SYSTEM_TBB=1 \
+		SYSTEM_MIMALLOC=1 \
+		check
 }
 
 src_install() {
