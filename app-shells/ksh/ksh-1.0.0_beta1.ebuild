@@ -14,7 +14,7 @@ SRC_URI="https://github.com/ksh93/${PN}/archive/v${MY_PV}/ksh-v${MY_PV}.tar.gz"
 LICENSE="EPL-1.0"
 SLOT="0"
 
-#KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv"
 
 PATCHES=(
 	"${FILESDIR}/ksh-1.0.0-beta.1-regre-tests.patch"
