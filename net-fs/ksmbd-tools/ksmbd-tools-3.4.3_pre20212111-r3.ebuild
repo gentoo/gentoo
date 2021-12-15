@@ -53,7 +53,7 @@ src_install() {
 	insinto /etc/ksmbd
 	doins smb.conf.example
 
-	newinitd "${FILESDIR}/initd" ksmbd 
+	newinitd "${FILESDIR}/initd" ksmbd
 	newconfd "${FILESDIR}/confd" ksmbd
 
 	dosym ksmbd.addshare /sbin/smbshareadd
