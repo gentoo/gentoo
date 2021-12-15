@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-12-15)
+# Force libunwind/llvm-libunwind (either way, a -lunwind) here as execinfo
+# isn't on musl. bug #818208.
+sys-process/htop unwind
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
 # Do not force system install for libxcrypt here
 >=sys-libs/libxcrypt-4.4.23-r1 -system -compat
