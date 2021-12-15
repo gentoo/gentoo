@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson xdg
 
@@ -9,7 +9,8 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.sr.ht/~exec64/imv/"
 else
-	SRC_URI="https://github.com/eXeC64/imv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://git.sr.ht/~exec64/imv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-v${PV}"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -39,7 +40,7 @@ RDEPEND="
 	heif? ( media-libs/libheif:= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( media-libs/libpng:= )
-	svg? ( >=gnome-base/librsvg-2.44 )
+	svg? ( >=gnome-base/librsvg-2.44:2 )
 	tiff? ( media-libs/tiff )
 	wayland? ( dev-libs/wayland )
 	!sys-apps/renameutils"
