@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml(+)"
-inherit estack flag-o-matic multiprocessing python-any-r1 qt5-build
+inherit check-reqs estack flag-o-matic multiprocessing python-any-r1 qt5-build toolchain-funcs
 
 DESCRIPTION="Library for rendering dynamic web content in Qt5 C++ and QML applications"
 HOMEPAGE="https://www.qt.io/"
@@ -110,29 +110,47 @@ PATCHES=(
 	"${WORKDIR}/${PN}-5.15.2_p20211019-jumbo-build.patch" # bug 813957
 )
 
-pkg_preinst() {
-	elog "This version of Qt WebEngine is based on Chromium version 87.0.4280, with"
-	elog "additional security fixes from newer versions. Extensive as it is, the"
-	elog "list of backports is impossible to evaluate, but always bound to be behind"
-	elog "Chromium's release schedule."
-	elog "In addition, various online services may deny service based on an outdated"
-	elog "user agent version (and/or other checks). Google is already known to do so."
-	elog
-	elog "tldr: Your web browsing experience will be compromised."
-}
-
-src_unpack() {
-	# bug 307861
+qtwebengine_check-reqs() {
+	# bug #307861
 	eshopts_push -s extglob
 	if is-flagq '-g?(gdb)?([1-9])'; then
-		ewarn
 		ewarn "You have enabled debug info (probably have -g or -ggdb in your CFLAGS/CXXFLAGS)."
 		ewarn "You may experience really long compilation times and/or increased memory usage."
 		ewarn "If compilation fails, please try removing -g/-ggdb before reporting a bug."
-		ewarn
 	fi
 	eshopts_pop
 
+	[[ ${MERGE_TYPE} != binary ]] || return
+
+	# (check-reqs added for bug #570534)
+	#
+	# Estimate the amount of RAM required
+	# Multiplier is *10 because Bash doesn't do floating point maths.
+	# Let's crudely assume ~2GB per compiler job for GCC.
+	local multiplier=20
+
+	# And call it ~1.5GB for Clang.
+	if tc-is-clang ; then
+		multiplier=15
+	fi
+
+	local CHECKREQS_DISK_BUILD="7G"
+	local CHECKREQS_DISK_USR="7G"
+	local CHECKREQS_MEMORY=$(($(makeopts_jobs)*multiplier/10))G
+
+	check-reqs_${EBUILD_PHASE_FUNC}
+}
+
+pkg_pretend() {
+	qtwebengine_check-reqs
+}
+
+pkg_setup() {
+	qtwebengine_check-reqs
+	python-any-r1_pkg_setup
+}
+
+src_unpack() {
 	case ${QT5_BUILD_TYPE} in
 		live)    git-r3_src_unpack ;&
 		release) default ;;
@@ -225,4 +243,15 @@ src_install() {
 	if [[ ! -f ${D}${QT5_LIBDIR}/libQt5WebEngine.so ]]; then
 		die "${CATEGORY}/${PF} failed to build anything. Please report to https://bugs.gentoo.org/"
 	fi
+}
+
+pkg_preinst() {
+	elog "This version of Qt WebEngine is based on Chromium version 87.0.4280, with"
+	elog "additional security fixes from newer versions. Extensive as it is, the"
+	elog "list of backports is impossible to evaluate, but always bound to be behind"
+	elog "Chromium's release schedule."
+	elog "In addition, various online services may deny service based on an outdated"
+	elog "user agent version (and/or other checks). Google is already known to do so."
+	elog
+	elog "tldr: Your web browsing experience will be compromised."
 }
