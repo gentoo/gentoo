@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>hollowman@opensuse.org</email>
+    <name>Songlin Jiang</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">openSUSE/Customize-IBus</remote-id>
+    <doc lang="en">https://github.com/openSUSE/Customize-IBus/blob/main/README.md</doc>
+    <doc lang="zh">https://github.com/openSUSE/Customize-IBus/blob/main/README_CN.md</doc>
+    <bugs-to>https://github.com/openSUSE/Customize-IBus/issues</bugs-to>
+  </upstream>
+  <longdescription lang="en">
+    Support Customization of:
+    * Candidate Box Orientation
+    * Candidate Box Animation
+    * Right-click Candidate Box to Switch the Input Mode or Open the Tray Menu
+    * Scroll on Candidate Box to Switch among Pages or Candidates
+    * Fix Candidate Box to Not Follow the Caret and Set Fixed Position
+    * Candidate Box Font
+    * Input Mode Remember and Auto-switch by APP
+    * Change Candidate Box Opacity
+    * Fix IME List Order
+    * Drag Candidate Box to Reposition
+    * Show or Hide Candidate Box Page Buttons
+    * System Tray Menus and Interaction Settings
+    * * Show or Hide Tray Icon
+    * * Directly Click Tray Icon to Switch Input Mode
+    * * Add Additional Menu
+    * Input Source Indicator Appearance and Interaction Settings
+    * * Enable Indicator
+    * * Only Indicate when Switching Input Mode
+    * * Only Indicate when Using ASCII Input Mode
+    * * Not Indicate when Using Single Mode IME
+    * * Right-click Indicator to Hide
+    * * Scroll on Indicator to Switch Input Mode
+    * * Indicator Animation
+    * * Customize Font
+    * * Left-click Indicator to Drag to Move Indicator or Switch Input Mode
+    * * Change Opacity
+    * * Enable Indicator Show Delay and Configure Showing Timeout
+    * * Enable Auto-hide Indicator and Configure Auto-hide Timeout
+    * Theme (Stylesheet Provided or Extracted from GNOME Shell Themes, Refer to Help Instructions in Extension for More)
+    * Candidate Box Background and its Displaying Style
+    * Theme and Background Picture Follow GNOME Night Light Mode
+  </longdescription>
+  <longdescription lang="zh">
+    支持自定义：
+    * 候选框方向
+    * 候选框动画
+    * 右键单击候选框以切换输入源或打开任务栏菜单
+    * 候选框上滚动以切换页面或候选词
+    * 固定候选框使其不跟随光标以及设定固定位置
+    * 候选框字体
+    * 输入模式根据应用记忆并自动切换
+    * 更改候选框透明度
+    * 固定输入法列表顺序
+    * 拖拽移动候选框
+    * 显示或隐藏候选框调页按钮
+    * 系统任务栏托盘显示和交互设置
+    * * 显示或隐藏托盘图标
+    * * 直接点击托盘图标切换输入源
+    * * 添加额外菜单
+    * 输入源指示器及其显示和交互设置
+    * * 启用指示器
+    * * 仅在切换输入法时指示
+    * * 仅在英文输入时指示
+    * * 使用单模式输入法时不指示
+    * * 右击指示器来将其隐藏
+    * * 指示器上滚动来切换输入源
+    * * 指示器显示动画
+    * * 自定义字体
+    * * 左击指示器以拖拽移动或者切换输入源
+    * * 更改透明度
+    * * 启用延时显示以及配置显示时延
+    * * 启用自动隐藏以及配置自动隐藏时延
+    * 皮肤样式主题（提供的或者从GNOME Shell主题中提取的样式表，参见扩展的帮助部分来获取更多指导）
+    * 候选框背景图片及其显示样式
+    * 主题和背景图片跟随GNOME夜灯
+  </longdescription>
+  <stabilize-allarches/>
+</pkgmetadata>
