@@ -12,7 +12,7 @@ DESCRIPTION="Bandwidth Management Module for Apache2"
 HOMEPAGE="http://wp.ivn.cl/apache-bandwidth-mod/"
 SRC_URI="http://legacy.ivn.cl/files/source/${MY_P}.tgz"
 
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 LICENSE="Apache-2.0"
 SLOT="0"
 
