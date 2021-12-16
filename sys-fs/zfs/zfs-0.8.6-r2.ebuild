@@ -154,7 +154,7 @@ src_configure() {
 		--with-linux-obj="${KV_OUT_DIR}"
 		--with-udevdir="$(get_udevdir)"
 		--with-systemdunitdir="$(systemd_get_systemunitdir)"
-		--with-systemdpresetdir="${EPREFIX}/lib/systemd/system-preset"
+		--with-systemdpresetdir="$(systemd_get_systempresetdir)"
 		$(use_enable debug)
 		$(use_enable nls)
 		$(use_enable python pyzfs)
@@ -225,7 +225,7 @@ pkg_postinst() {
 	fi
 
 	if systemd_is_booted || has_version sys-apps/systemd; then
-		einfo "Please refer to ${EROOT}/lib/systemd/system-preset/50-zfs.preset"
+		einfo "Please refer to ${EROOT}/$(systemd_get_systempresetdir)/50-zfs.preset"
 		einfo "for default zfs systemd service configuration"
 	else
 		[[ -e "${EROOT}/etc/runlevels/boot/zfs-import" ]] || \
