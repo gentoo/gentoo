@@ -156,7 +156,7 @@ pkg_postinst() {
 	for POLICY_TYPE in ${POLICY_TYPES} ; do
 		# There have been some changes to the policy store, rebuilding now.
 		# https://marc.info/?l=selinux&m=143757277819717&w=2
-		einfo "Rebuilding store ${POLICY_TYPE} (without re-loading)."
-		semodule -s "${POLICY_TYPE}" -n -B || die "Failed to rebuild policy store ${POLICY_TYPE}"
+		einfo "Rebuilding store ${POLICY_TYPE} in '${ROOT:-/}' (without re-loading)."
+		semodule -S "${ROOT:-/}" -s "${POLICY_TYPE}" -n -B || die "Failed to rebuild policy store ${POLICY_TYPE}"
 	done
 }
