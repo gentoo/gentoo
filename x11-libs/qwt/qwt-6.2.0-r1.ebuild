@@ -6,6 +6,7 @@ EAPI=8
 DOCS_BUILDER="doxygen"
 DOCS_DIR="doc"
 DOCS_CONFIG_NAME="Doxyfile"
+DOCS_DEPEND="media-gfx/graphviz"
 
 inherit qmake-utils docs
 
@@ -62,6 +63,7 @@ src_prepare() {
 
 	cat > qwtbuild.pri <<-EOF || die
 		QWT_CONFIG += qt warn_on thread release no_keywords
+		DEFINES += QWT_MOC_INCLUDE=1
 	EOF
 
 	echo "QWT_CONFIG += QwtDll" >> qwtconfig.pri
