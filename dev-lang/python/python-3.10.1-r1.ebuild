@@ -7,7 +7,7 @@ WANT_LIBTOOL="none"
 inherit autotools check-reqs flag-o-matic multiprocessing pax-utils \
 	python-utils-r1 toolchain-funcs verify-sig
 
-MY_PV=${PV/_alpha/a}
+MY_PV=${PV/_rc/rc}
 MY_P="Python-${MY_PV%_p*}"
 PYVER=$(ver_cut 1-2)
 PATCHSET="python-gentoo-patches-${MY_PV}"
@@ -23,8 +23,8 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
 SLOT="${PYVER}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="bluetooth build examples gdbm hardened libedit lto +ncurses pgo +readline +sqlite +ssl test tk wininst"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="bluetooth build examples gdbm hardened libedit lto +ncurses pgo +readline +sqlite +ssl test tk wininst +xml"
 RESTRICT="!test? ( test )"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
@@ -34,7 +34,6 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="app-arch/bzip2:=
 	app-arch/xz-utils:=
-	>=dev-libs/expat-2.1:=
 	dev-libs/libffi:=
 	sys-apps/util-linux:=
 	>=sys-libs/zlib-1.1.3:=
@@ -54,6 +53,7 @@ RDEPEND="app-arch/bzip2:=
 		dev-tcltk/blt:=
 		dev-tcltk/tix
 	)
+	xml? ( >=dev-libs/expat-2.1:= )
 	!!<sys-apps/sandbox-2.21"
 # bluetooth requires headers from bluez
 DEPEND="${RDEPEND}
@@ -100,6 +100,9 @@ src_prepare() {
 
 	default
 
+	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" \
+		setup.py || die "sed failed to replace @@GENTOO_LIBDIR@@"
+
 	# force correct number of jobs
 	# https://bugs.gentoo.org/737660
 	local jobs=$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")
@@ -113,6 +116,24 @@ src_configure() {
 	local disable
 	# disable automagic bluetooth headers detection
 	use bluetooth || export ac_cv_header_bluetooth_bluetooth_h=no
+	use gdbm      || disable+=" gdbm"
+	use ncurses   || disable+=" _curses _curses_panel"
+	use readline  || disable+=" readline"
+	use sqlite    || disable+=" _sqlite3"
+	use ssl       || export PYTHON_DISABLE_SSL="1"
+	use tk        || disable+=" _tkinter"
+	use xml       || disable+=" _elementtree pyexpat" # _elementtree uses pyexpat.
+	export PYTHON_DISABLE_MODULES="${disable}"
+
+	if ! use xml; then
+		ewarn "You have configured Python without XML support."
+		ewarn "This is NOT a recommended configuration as you"
+		ewarn "may face problems parsing any XML documents."
+	fi
+
+	if [[ -n "${PYTHON_DISABLE_MODULES}" ]]; then
+		einfo "Disabled modules: ${PYTHON_DISABLE_MODULES}"
+	fi
 
 	if [[ "$(gcc-major-version)" -ge 4 ]]; then
 		append-flags -fwrapv
@@ -175,7 +196,6 @@ src_configure() {
 		--without-ensurepip
 		--with-system-expat
 		--with-system-ffi
-		--with-platlibdir=lib
 
 		$(use_with lto)
 		$(use_enable pgo optimizations)
@@ -189,22 +209,6 @@ src_configure() {
 		eerror "Please ensure that /dev/shm is mounted as a tmpfs with mode 1777."
 		die "Broken sem_open function (bug 496328)"
 	fi
-
-	# force-disable modules we don't want built
-	local disable_modules=(
-		NIS
-	)
-	use gdbm || disable_modules+=( _GDBM _DBM )
-	use sqlite || disable_modules+=( _SQLITE3 )
-	use ssl || disable_modules+=( _HASHLIB _SSL )
-	use ncurses || disable_modules+=( _CURSES _CURSES_PANEL )
-	use readline || disable_modules+=( READLINE )
-	use tk || disable_modules+=( _TKINTER )
-
-	local mod
-	for mod in "${disable_modules[@]}"; do
-		echo "MODULE_${mod}=disabled"
-	done >> Makefile || die
 }
 
 src_compile() {
@@ -214,14 +218,13 @@ src_compile() {
 	# Prevent using distutils bundled by setuptools.
 	# https://bugs.gentoo.org/823728
 	export SETUPTOOLS_USE_DISTUTILS=stdlib
-	export PYTHONSTRICTEXTENSIONBUILD=1
 
 	if use pgo ; then
 		# bug 660358
 		local -x COLUMNS=80
 		local -x PYTHONDONTWRITEBYTECODE=
 
-		addpredict /usr/lib/python3.11/site-packages
+		addpredict /usr/lib/python3.10/site-packages
 	fi
 
 	emake CPPFLAGS= CFLAGS= LDFLAGS=
@@ -248,13 +251,10 @@ src_test() {
 		mv "${S}"/Lib/test/test_${test}.py "${T}"
 	done
 
-	# Expects to find skipped tests and fails
-	mv "${S}"/Lib/test/test_tools/test_freeze.py "${T}" || die
-
 	# bug 660358
 	local -x COLUMNS=80
 	local -x PYTHONDONTWRITEBYTECODE=
-	addpredict /usr/lib/python3.11/site-packages
+	addpredict /usr/lib/python3.10/site-packages
 
 	local jobs=$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")
 
@@ -265,8 +265,6 @@ src_test() {
 	for test in ${skipped_tests}; do
 		mv "${T}/test_${test}.py" "${S}"/Lib/test
 	done
-
-	mv "${T}"/test_freeze.py "${S}"/Lib/test/test_tools/test_freeze.py || die
 
 	elog "The following tests have been skipped:"
 	for test in ${skipped_tests}; do
@@ -315,7 +313,7 @@ src_install() {
 		pax-mark m "${ED}/usr/bin/${abiver}"
 	fi
 
-	use sqlite || rm -r "${libdir}/"sqlite3 || die
+	use sqlite || rm -r "${libdir}/"{sqlite3,test/test_sqlite*} || die
 	use tk || rm -r "${ED}/usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*} || die
 
 	dodoc Misc/{ACKS,HISTORY,NEWS}
