@@ -46,8 +46,6 @@ python_prepare_all() {
 
 	emake PREFIX="${EPREFIX}/usr" prepare-install # paths.py.in -> paths.py
 
-	rm pyproject.toml || die # pytest fails if toml isn't installed
-
 	export PBR_VERSION=${PV} # needed if using github's tarball
 }
 
