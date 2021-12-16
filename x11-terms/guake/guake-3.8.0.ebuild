@@ -50,8 +50,9 @@ python_prepare_all() {
 }
 
 python_test() {
-	# uses /usr/bin/bash if SHELL is not exported
-	SHELL=${SHELL} virtx distutils-r1_python_test
+	# - uses /usr/bin/bash if SHELL is not exported
+	# - pytest-xvfb fails with Terminated, virtx alone works
+	SHELL=${SHELL} virtx epytest -p no:xvfb
 }
 
 python_install() {
