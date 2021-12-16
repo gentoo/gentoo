@@ -23,3 +23,8 @@ DOCS=( CHANGELOG.md README.md TODO.rst )
 PATCHES=(
 	"${FILESDIR}"/${P}-python3.10.patch
 )
+
+python_test() {
+	# failure in test_exception_info with pytest-qt
+	epytest -p no:pytest-qt
+}
