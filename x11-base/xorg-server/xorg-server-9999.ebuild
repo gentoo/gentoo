@@ -121,7 +121,6 @@ src_configure() {
 		$(meson_use xnest)
 		$(meson_use xorg)
 		$(meson_use xvfb)
-		-Ddefault_font_path="${EPREFIX}"/usr/share/fonts
 		-Ddocs=false
 		-Ddrm=true
 		-Ddtrace=false
