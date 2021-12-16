@@ -21,6 +21,7 @@ RESTRICT="!test? ( test )"
 
 CDEPEND="
 	media-libs/libglvnd[X]
+	dev-libs/libbsd
 	dev-libs/openssl:0=
 	>=x11-apps/iceauth-1.0.2
 	>=x11-apps/rgb-1.0.3
