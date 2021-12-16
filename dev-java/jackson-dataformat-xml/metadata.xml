@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Data format extension for Jackson to offer alternative support for serializing POJOs as XML and deserializing XML as pojos.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/FasterXML/jackson-dataformat-xml/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
