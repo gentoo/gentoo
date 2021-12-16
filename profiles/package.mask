@@ -371,12 +371,6 @@ dev-java/piccolo2d
 # Removal on 2021-12-16. Bug #819420.
 media-video/google2srt
 
-# Uses EAPI 5, multiple bugs reported, fails to compile,
-# no revdeps, upstream doesn't do regular releases,
-# no other distro is packaging this
-# Removal on 2021-12-16. Bug #770610. Bug #813873. Bug #810682.
-net-libs/onion
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-15)
 # bug #771693 (multiple CVEs).
 # Library still needed for bumping dev-java/log4j
