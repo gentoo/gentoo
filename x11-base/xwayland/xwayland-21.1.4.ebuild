@@ -65,7 +65,7 @@ src_configure() {
 		-Dglamor=true
 		-Dglx=true
 		-Dipv6=true
-		-Drpc=false
+		-Dsecure-rpc=false
 		-Dscreensaver=true
 		-Dsha1=libcrypto
 		-Dxace=true
