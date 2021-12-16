@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit multilib-minimal python-any-r1
 
 DESCRIPTION="C library for the Public Suffix List"
