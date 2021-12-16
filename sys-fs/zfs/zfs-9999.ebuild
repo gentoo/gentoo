@@ -78,6 +78,7 @@ RDEPEND="${DEPEND}
 		!<sys-kernel/genkernel-3.5.1.1
 	)
 	test-suite? (
+		app-shells/ksh
 		sys-apps/kmod[tools]
 		sys-apps/util-linux
 		sys-devel/bc
