@@ -135,6 +135,7 @@ src_configure() {
 		-Dhal=false
 		-Dlinux_acpi=false
 		-Dlinux_apm=false
+		-Dsecure-rpc=false
 		-Dsha1=libcrypto
 		-Dxkb_output_dir="${EPREFIX}/var/lib/xkb"
 		-Dxwayland=false
