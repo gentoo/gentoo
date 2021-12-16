@@ -6,7 +6,7 @@ EAPI=7
 VALA_MIN_API_VERSION="0.14"
 VALA_USE_DEPEND="vapigen"
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit desktop meson python-any-r1 readme.gentoo-r1 vala xdg-utils
 
