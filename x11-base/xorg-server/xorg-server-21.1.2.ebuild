@@ -133,6 +133,11 @@ src_configure() {
 		-Dxkb_output_dir="${EPREFIX}/var/lib/xkb"
 	)
 
+	if [[ ${PV} == 9999 ]] ; then
+		# Gone in 21.1.x, but not in master.
+		emesonargs+=( -Dxwayland=false )
+	fi
+
 	if use systemd || use elogind; then
 		emesonargs+=(
 			-Dsystemd_logind=true

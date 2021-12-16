@@ -131,8 +131,12 @@ src_configure() {
 		-Dsecure-rpc=false
 		-Dsha1=libcrypto
 		-Dxkb_output_dir="${EPREFIX}/var/lib/xkb"
-		-Dxwayland=false
 	)
+
+	if [[ ${PV} == 9999 ]] ; then
+		# Gone in 21.1.x, but not in master.
+		emesonargs+=( -Dxwayland=false )
+	fi
 
 	if use systemd || use elogind; then
 		emesonargs+=(
