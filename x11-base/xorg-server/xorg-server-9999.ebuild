@@ -55,7 +55,6 @@ CDEPEND="
 	)
 	udev? ( virtual/libudev:= )
 	unwind? ( sys-libs/libunwind )
-	>=x11-apps/xinit-1.3.3-r1
 	selinux? ( sys-libs/libselinux )
 	systemd? (
 		sys-apps/dbus
@@ -75,6 +74,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	!systemd? ( gui-libs/display-manager-init )
 	selinux? ( sec-policy/selinux-xserver )
+	xorg? ( >=x11-apps/xinit-1.3.3-r1 )
 "
 BDEPEND="
 	sys-devel/flex
