@@ -1,0 +1,105 @@
+From 463c338b09710609e0dc82f67e03c829a7b83788 Mon Sep 17 00:00:00 2001
+From: Allan Sandfeld Jensen <allan.jensen@qt.io>
+Date: Fri, 14 May 2021 10:43:11 +0200
+Subject: [PATCH] Avoid mixing atomic futex changes and QAtomic
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Either the mix of futex and atomic, or the mix of 32-bit futex and
+64-bit atomic doesn't work. In any case, the existing code leads to
+bad behavior.
+
+* asturm 2021-11-19: Also threw the typo fix from 587e3bb0 into the mix.
+
+Pick-to: 6.1 5.15
+Fixes: QTBUG-92188
+Change-Id: Icc6ba28d6e2465c373d00e84f4da2b92c037e797
+Reviewed-by: Qt CI Bot <qt_ci_bot@qt-project.org>
+Reviewed-by: Mårten Nordheim <marten.nordheim@qt.io>
+(cherry picked from commit 2d9cc639a4a7a5e97979a6034364bd67dfa10c23)
+---
+ src/corelib/thread/qsemaphore.cpp | 46 ++++++++++++-------------------
+ 1 file changed, 17 insertions(+), 29 deletions(-)
+
+diff --git a/src/corelib/thread/qsemaphore.cpp b/src/corelib/thread/qsemaphore.cpp
+index d4fb756b94..1d01fc1b28 100644
+--- a/src/corelib/thread/qsemaphore.cpp
++++ b/src/corelib/thread/qsemaphore.cpp
+@@ -357,47 +357,31 @@ void QSemaphore::release(int n)
+         quintptr prevValue = u.fetchAndAddRelease(nn);
+         if (futexNeedsWake(prevValue)) {
+ #ifdef FUTEX_OP
+-            if (!futexHasWaiterCount) {
+-                /*
+-                   On 32-bit systems, all waiters are waiting on the same address,
+-                   so we'll wake them all and ask the kernel to clear the high bit.
+-
+-                   atomic {
+-                      int oldval = u;
+-                      u = oldval & ~(1 << 31);
+-                      futexWake(u, INT_MAX);
+-                      if (oldval == 0)       // impossible condition
+-                          futexWake(u, INT_MAX);
+-                   }
+-                */
+-                quint32 op = FUTEX_OP_ANDN | FUTEX_OP_OPARG_SHIFT;
+-                quint32 oparg = 31;
+-                quint32 cmp = FUTEX_OP_CMP_EQ;
+-                quint32 cmparg = 0;
+-                futexWakeOp(u, INT_MAX, INT_MAX, u, FUTEX_OP(op, oparg, cmp, cmparg));
+-            } else {
++            if (futexHasWaiterCount) {
+                 /*
+                    On 64-bit systems, the single-token waiters wait on the low half
+                    and the multi-token waiters wait on the upper half. So we ask
+                    the kernel to wake up n single-token waiters and all multi-token
+-                   waiters (if any), then clear the multi-token wait bit.
++                   waiters (if any), and clear the multi-token wait bit.
+ 
+                    atomic {
+                       int oldval = *upper;
+-                      *upper = oldval & ~(1 << 31);
++                      *upper = oldval | 0;
+                       futexWake(lower, n);
+-                      if (oldval < 0)   // sign bit set
++                      if (oldval != 0)   // always true
+                           futexWake(upper, INT_MAX);
+                    }
+                 */
+-                quint32 op = FUTEX_OP_ANDN | FUTEX_OP_OPARG_SHIFT;
+-                quint32 oparg = 31;
+-                quint32 cmp = FUTEX_OP_CMP_LT;
++                quint32 op = FUTEX_OP_OR;
++                quint32 oparg = 0;
++                quint32 cmp = FUTEX_OP_CMP_NE;
+                 quint32 cmparg = 0;
++                u.fetchAndAndRelease(futexNeedsWakeAllBit - 1);
+                 futexWakeOp(*futexLow32(&u), n, INT_MAX, *futexHigh32(&u), FUTEX_OP(op, oparg, cmp, cmparg));
++                return;
+             }
+-#else
+-            // Unset the bit and wake everyone. There are two possibibilies
++#endif
++            // Unset the bit and wake everyone. There are two possibilities
+             // under which a thread can set the bit between the AND and the
+             // futexWake:
+             // 1) it did see the new counter value, but it wasn't enough for
+@@ -405,8 +389,12 @@ void QSemaphore::release(int n)
+             // 2) it did not see the new counter value, in which case its
+             //    futexWait will fail.
+             u.fetchAndAndRelease(futexNeedsWakeAllBit - 1);
+-            futexWakeAll(u);
+-#endif
++            if (futexHasWaiterCount) {
++                futexWakeAll(*futexLow32(&u));
++                futexWakeAll(*futexHigh32(&u));
++            } else {
++                futexWakeAll(u);
++            }
+         }
+         return;
+     }
+-- 
+2.34.0
+
