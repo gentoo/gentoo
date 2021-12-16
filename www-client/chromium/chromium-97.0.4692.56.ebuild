@@ -21,7 +21,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0/beta"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="component-build cups cpu_flags_arm_neon debug +hangouts headless +js-type-check kerberos +official pic +proprietary-codecs pulseaudio screencast selinux +suid +system-ffmpeg +system-harfbuzz +system-icu vaapi wayland widevine"
+IUSE="component-build cups cpu_flags_arm_neon debug +hangouts headless +js-type-check kerberos +official pic +proprietary-codecs pulseaudio screencast selinux +suid +system-ffmpeg +system-harfbuzz +system-icu +system-png vaapi wayland widevine"
 REQUIRED_USE="
 	component-build? ( !suid )
 	screencast? ( wayland )
@@ -57,7 +57,7 @@ COMMON_DEPEND="
 	>=media-libs/freetype-2.11.0-r1:=
 	system-harfbuzz? ( >=media-libs/harfbuzz-2.9.0:0=[icu(-)] )
 	media-libs/libjpeg-turbo:=
-	media-libs/libpng:=
+	system-png? ( media-libs/libpng:=[-apng] )
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? (
 		>=media-video/ffmpeg-4.3:=
@@ -486,6 +486,9 @@ src_prepare() {
 	if ! use system-icu; then
 		keeplibs+=( third_party/icu )
 	fi
+	if ! use system-png; then
+		keeplibs+=( third_party/libpng )
+	fi
 	if use system-harfbuzz; then
 		keeplibs+=( third_party/harfbuzz-ng/utils )
 	else
@@ -593,7 +596,6 @@ src_configure() {
 		#harfbuzz-ng
 		libdrm
 		libjpeg
-		libpng
 		libwebp
 		zlib
 	)
@@ -602,6 +604,9 @@ src_configure() {
 	fi
 	if use system-icu; then
 		gn_system_libraries+=( icu )
+	fi
+	if use system-png; then
+		gn_system_libraries+=( libpng )
 	fi
 	if [[ ${CHROMIUM_FORCE_LIBCXX} != yes ]]; then
 		# unbundle only without libc++, because libc++ is not fully ABI compatible with libstdc++
