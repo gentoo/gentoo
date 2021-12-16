@@ -52,6 +52,7 @@ PDEPEND="
 QA_FLAGS_IGNORED="
 	usr/src/linux-.*/scripts/gcc-plugins/.*.so
 	usr/src/linux-.*/vmlinux
+	usr/src/linux-.*/arch/powerpc/kernel/vdso.*/vdso.*.so.dbg
 "
 
 src_prepare() {
