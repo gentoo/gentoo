@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit apache-module python-single-r1
@@ -26,6 +26,10 @@ APACHE2_MOD_DEFINE="WSGI"
 APACHE2_MOD_FILE="${S}/src/server/.libs/${PN}.so"
 
 DOCFILES="README.rst"
+
+PATCHES=(
+	"${FILESDIR}/${P}-py310.patch"
+)
 
 need_apache2
 
