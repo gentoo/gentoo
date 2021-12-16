@@ -72,7 +72,8 @@ dist-kernel_get_image_path() {
 		arm)
 			echo arch/arm/boot/zImage
 			;;
-		ppc64)
+		ppc|ppc64)
+			# https://www.kernel.org/doc/html/latest/powerpc/bootwrapper.html
 			# ./ is required because of ${image_path%/*}
 			# substitutions in the code
 			echo ./vmlinux
