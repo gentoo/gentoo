@@ -27,7 +27,7 @@ CDEPEND="acct-group/xrootd
 	kerberos? ( virtual/krb5 )
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
-	ssl? ( dev-libs/openssl:0= )
+	ssl? ( <dev-libs/openssl-3.0.0:0= )
 "
 DEPEND="${CDEPEND}"
 BDEPEND="
