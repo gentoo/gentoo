@@ -59,7 +59,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DSYSCONF_INSTALL_DIR="${EPREFIX}"/etc
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DBUILD_SHELL_INTEGRATION_DOLPHIN=$(usex dolphin)
 		-DBUILD_TESTING=$(usex test)
