@@ -37,7 +37,7 @@ SLOT="0/5"
 IUSE="custom-cflags debug dist-kernel kernel-builtin minimal nls pam python +rootfs test-suite"
 
 DEPEND="
-	net-libs/libtirpc
+	net-libs/libtirpc:=
 	sys-apps/util-linux
 	sys-libs/zlib
 	virtual/libudev:=

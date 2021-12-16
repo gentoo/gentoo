@@ -25,7 +25,7 @@ SLOT="0/2" # just libzfs soname major for now. possible candidates: libuutil, li
 IUSE="custom-cflags debug dist-kernel kernel-builtin minimal nls pam python +rootfs test-suite"
 
 DEPEND="
-	net-libs/libtirpc
+	net-libs/libtirpc:=
 	sys-apps/util-linux
 	sys-libs/zlib
 	virtual/awk
