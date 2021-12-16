@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.zip"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 RDEPEND="sys-libs/zlib"
 DEPEND="${RDEPEND}"
