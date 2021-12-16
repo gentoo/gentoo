@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_SINGLE_IMPL=1
 
 inherit bash-completion-r1 distutils-r1 systemd tmpfiles
@@ -42,6 +42,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.11.2-adjust-apache-logs-paths.patch
 	"${FILESDIR}"/${P}-fix-2to3-usage.patch
 	"${FILESDIR}"/${P}-fix-systemd-test.patch
+	"${FILESDIR}"/${P}-python310-server-action.patch
+	"${FILESDIR}"/${P}-python310-server-actions.patch
+	"${FILESDIR}"/${P}-python310-server-jails.patch
 )
 
 python_prepare_all() {
