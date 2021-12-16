@@ -34,13 +34,20 @@ DEPEND="
 		>=media-libs/gegl-0.4.14:0.4[introspection?]
 	)
 	introspection? ( >=dev-libs/gobject-introspection-1.32 )
-	openmp? ( >sys-devel/gcc-5:*[openmp] )
 	nls? ( sys-devel/gettext )
 "
 RDEPEND="
 	${DEPEND}
 	!<media-gfx/mypaint-1.2.1
 "
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
 
 src_configure() {
 	tc-ld-disable-gold # bug 589266
