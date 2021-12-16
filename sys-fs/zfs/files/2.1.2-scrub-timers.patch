@@ -94,7 +94,7 @@ index 000000000..c04ac292a
 +if @sbindir@/zpool status %i | grep "scrub in progress"; then\
 +exec @sbindir@/zpool wait -t scrub %i;\
 +else exec @sbindir@/zpool scrub -w %i; fi'
-+ExecStop=-/bin/sh -c 'exec @sbindir@/zpool scrub -p %i 2>/dev/null || true'
++ExecStop=-/bin/sh -c '@sbindir@/zpool scrub -p %i 2>/dev/null || true'
 -- 
 2.34.1
 
