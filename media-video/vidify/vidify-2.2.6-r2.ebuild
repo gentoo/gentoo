@@ -32,7 +32,10 @@ RDEPEND="
 "
 
 # use yt-dlp instead of youtube-dl, otherwise download is too slow for playback
-PATCHES=( "${FILESDIR}/${P}-yt-dlp.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-yt-dlp.patch"
+	"${FILESDIR}/${P}-python310.patch"
+)
 
 distutils_enable_tests unittest
 
