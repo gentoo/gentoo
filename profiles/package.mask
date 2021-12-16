@@ -96,12 +96,6 @@ games-action/multimc
 # Package without consumers. Bug #828740.  Removal in 30 days.
 www-apache/mod_caucho
 
-# Lars Wendler <polynomial-c@gentoo.org> (2021-12-07)
-# Fails to build with recent kernel headers (bug #801688).
-# Upstream is gone for a long time. Masked for removal in 30 days.
-# Users should switch over to net-dns/dnsmasq which provides similar features.
-net-dns/pdnsd
-
 # David Seifert <soap@gentoo.org> (2021-12-06)
 # Ancient release, EAPI 5, downloads random data,
 # latest version uses Gradle.
