@@ -365,12 +365,6 @@ dev-java/piccolo2d
 ~sys-kernel/vanilla-kernel-5.14.19
 ~virtual/dist-kernel-5.14.19
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-11-16)
-# Outdated java package, uses EAPI 5, no revdeps,
-# no other distro is packaging this.
-# Removal on 2021-12-16. Bug #819420.
-media-video/google2srt
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-15)
 # bug #771693 (multiple CVEs).
 # Library still needed for bumping dev-java/log4j
