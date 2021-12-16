@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( luajit )
 
-inherit lua-single
+inherit lua-single toolchain-funcs
 
 DESCRIPTION="A HTTP benchmarking tool"
 HOMEPAGE="https://www.github.com/wg/wrk"
