@@ -7,7 +7,7 @@ DISTUTILS_OPTIONAL=true
 DISTUTILS_SINGLE_IMPL=true
 GENTOO_DEPEND_ON_PERL=no
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit autotools lua perl-module distutils-r1 flag-o-matic
 
