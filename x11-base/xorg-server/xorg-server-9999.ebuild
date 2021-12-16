@@ -3,7 +3,6 @@
 
 EAPI=7
 
-XORG_DOC=doc
 XORG_TARBALL_SUFFIX="xz"
 XORG_EAUTORECONF="no"
 inherit xorg-3 meson
@@ -72,9 +71,6 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	>=x11-base/xorg-proto-2021.4.99.2
 	>=x11-libs/xtrans-1.3.5
-	doc? (
-		x11-base/xorg-sgml-doctools
-	)
 "
 RDEPEND="${CDEPEND}
 	!systemd? ( gui-libs/display-manager-init )
@@ -106,15 +102,12 @@ src_configure() {
 	# localstatedir is used for the log location; we need to override the default
 	#	from ebuild.sh
 	# sysconfdir is used for the xorg.conf location; same applies
-	# NOTE: fop is used for doc generating; and I have no idea if Gentoo
-	#	package it somewhere
 
 	local emesonargs=(
 		--localstatedir "${EPREFIX}/var"
 		--sysconfdir "${EPREFIX}/etc/X11"
 		--buildtype $(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
-		$(meson_use doc docs)
 		$(meson_use !minimal dri1)
 		$(meson_use !minimal dri2)
 		$(meson_use !minimal dri3)
@@ -129,6 +122,7 @@ src_configure() {
 		$(meson_use xorg)
 		$(meson_use xvfb)
 		-Ddefault_font_path="${EPREFIX}"/usr/share/fonts
+		-Ddocs=false
 		-Ddrm=true
 		-Ddtrace=false
 		-Dipv6=true
