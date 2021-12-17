@@ -14,7 +14,7 @@ SRC_URI="http://www.osgi.org/download/r5/osgi.core-${PV}.jar"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64 x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~x64-macos"
 
 RDEPEND=">=virtual/jre-1.8:*"
 
