@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<longdescription>
+	ISA-L is a collection of optimized low-level functions targeting storage applications. ISA-L includes:
+	* Erasure codes - Fast block Reed-Solomon type erasure codes for any encode/decode matrix in GF(2^8).
+	* CRC - Fast implementations of cyclic redundancy check. Six different polynomials supported.
+		* iscsi32, ieee32, t10dif, ecma64, iso64, jones64.
+	* Raid - calculate and operate on XOR and P+Q parity found in common RAID implementations.
+	* Compression - Fast deflate-compatible data compression.
+	* De-compression - Fast inflate-compatible data compression.
+	* igzip - A command line application like gzip, accelerated with ISA-L.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">intel/isa-l</remote-id>
+	</upstream>
+</pkgmetadata>
