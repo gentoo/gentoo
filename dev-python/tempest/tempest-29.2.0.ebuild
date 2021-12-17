@@ -36,7 +36,6 @@ RDEPEND="
 BDEPEND="
 	>dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
 	test? (
-		dev-python/hacking[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-3.2.0[${PYTHON_USEDEP}]
 		dev-python/stestr[${PYTHON_USEDEP}]
 	)
@@ -50,6 +49,9 @@ src_prepare() {
 	rm -r tempest/tests/lib/services/volume/v3/ || die
 	rm tempest/tests/test_list_tests.py || die
 	rm tempest/tests/lib/cmd/test_check_uuid.py || die
+
+	# remove dep on hacking
+	rm tempest/tests/test_hacking.py || die
 
 	distutils-r1_src_prepare
 }
