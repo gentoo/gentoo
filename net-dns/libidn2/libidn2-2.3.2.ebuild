@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-lang/perl
 	sys-apps/help2man
-	verify-sig? ( app-crypt/openpgp-keys-libidn )
+	verify-sig? ( sec-keys/openpgp-keys-libidn )
 "
 
 src_prepare() {
