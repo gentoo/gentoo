@@ -28,3 +28,4 @@ move app-crypt/openpgp-keys-rust sec-keys/openpgp-keys-rust
 move app-crypt/openpgp-keys-tcpdump sec-keys/openpgp-keys-tcpdump
 move app-crypt/openpgp-keys-teemutoivola sec-keys/openpgp-keys-teemutoivola
 move app-crypt/openpgp-keys-terminator sec-keys/openpgp-keys-terminator
+move app-crypt/openpgp-keys-tor sec-keys/openpgp-keys-tor
