@@ -47,7 +47,7 @@ BDEPEND="
 	dev-perl/XML-XPath
 	dev-python/docutils
 	virtual/pkgconfig
-	verify-sig? ( app-crypt/openpgp-keys-libvirt )"
+	verify-sig? ( sec-keys/openpgp-keys-libvirt )"
 
 # gettext.sh command is used by the libvirt command wrappers, and it's
 # non-optional, so put it into RDEPEND.
