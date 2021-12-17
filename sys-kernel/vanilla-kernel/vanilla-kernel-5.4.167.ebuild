@@ -46,7 +46,7 @@ RDEPEND="
 	!sys-kernel/vanilla-kernel-bin:${SLOT}"
 BDEPEND="
 	debug? ( dev-util/pahole )
-	verify-sig? ( app-crypt/openpgp-keys-kernel )"
+	verify-sig? ( sec-keys/openpgp-keys-kernel )"
 PDEPEND="
 	>=virtual/dist-kernel-${PV}"
 
