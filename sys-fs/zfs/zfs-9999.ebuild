@@ -282,6 +282,8 @@ pkg_postinst() {
 	else
 		[[ -e "${EROOT}/etc/runlevels/boot/zfs-import" ]] || \
 			einfo "You should add zfs-import to the boot runlevel."
+		[[ -e "${EROOT}/etc/runlevels/boot/zfs-load-key" ]] || \
+			einfo "You should add zfs-load-key to the boot runlevel."
 		[[ -e "${EROOT}/etc/runlevels/boot/zfs-mount" ]]|| \
 			einfo "You should add zfs-mount to the boot runlevel."
 		[[ -e "${EROOT}/etc/runlevels/default/zfs-share" ]] || \
