@@ -24,7 +24,7 @@ DEPEND=""
 RDEPEND=">=app-eselect/eselect-rust-20190311"
 BDEPEND="
 	prefix? ( dev-util/patchelf )
-	verify-sig? ( app-crypt/openpgp-keys-rust )
+	verify-sig? ( sec-keys/openpgp-keys-rust )
 "
 
 REQUIRED_USE="x86? ( cpu_flags_x86_sse2 )"
