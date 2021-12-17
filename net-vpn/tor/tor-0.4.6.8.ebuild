@@ -23,7 +23,7 @@ fi
 IUSE="caps doc lzma +man scrypt seccomp selinux +server systemd tor-hardening test zstd"
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/torproject.org.asc
 
-BDEPEND="verify-sig? ( app-crypt/openpgp-keys-tor )"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-tor )"
 DEPEND="
 	dev-libs/libevent:=[ssl]
 	sys-libs/zlib
