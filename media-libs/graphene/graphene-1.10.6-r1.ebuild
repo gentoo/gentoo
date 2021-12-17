@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit xdg-utils meson-multilib python-any-r1
 
 DESCRIPTION="A thin layer of types for graphic libraries"
