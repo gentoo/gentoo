@@ -21,7 +21,7 @@ IUSE="+asm static-libs"
 
 BDEPEND="
 	app-arch/unzip
-	verify-sig? ( app-crypt/openpgp-keys-crypto++ )
+	verify-sig? ( sec-keys/openpgp-keys-crypto++ )
 "
 
 PATCHES=(
