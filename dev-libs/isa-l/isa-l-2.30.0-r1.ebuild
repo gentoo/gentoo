@@ -12,12 +12,15 @@ SRC_URI="https://github.com/intel/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="cpu_flags_x86_avx512f"
 
+# AVX512 support in yasm is still work in progress
 BDEPEND="amd64? (
-	|| (
-		>=dev-lang/nasm-2.13
+	cpu_flags_x86_avx512f? ( >=dev-lang/nasm-2.13 )
+	!cpu_flags_x86_avx512f? ( || (
+		>=dev-lang/nasm-2.11.01
 		>=dev-lang/yasm-1.2.0
-	)
+	) )
 )"
 
 PATCHES=(
