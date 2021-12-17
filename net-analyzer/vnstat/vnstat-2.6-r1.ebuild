@@ -20,7 +20,7 @@ else
 
 	KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86"
 
-	BDEPEND="verify-sig? ( app-crypt/openpgp-keys-teemutoivola )"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-teemutoivola )"
 fi
 
 LICENSE="GPL-2"

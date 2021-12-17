@@ -25,7 +25,7 @@ DEPEND="
 RDEPEND+=" acct-group/vnstat
 	acct-user/vnstat
 	selinux? ( sec-policy/selinux-vnstatd )"
-BDEPEND="verify-sig? ( app-crypt/openpgp-keys-teemutoivola )"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-teemutoivola )"
 
 src_prepare() {
 	default
