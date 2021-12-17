@@ -43,7 +43,7 @@ BDEPEND="
 		dev-python/tblib[${PYTHON_USEDEP}]
 		sys-devel/gettext
 	)
-	verify-sig? ( app-crypt/openpgp-keys-django )
+	verify-sig? ( sec-keys/openpgp-keys-django )
 "
 
 PATCHES=(
