@@ -19,7 +19,7 @@
 # @DESCRIPTION:
 # Sets the actual Dune package name, if different from Gentoo package name.
 # Set before inheriting the eclass.
-: ${DUNE_PKG_NAME:-${PN}}
+: ${DUNE_PKG_NAME:=${PN}}
 
 case ${EAPI:-0} in
 	6|7|8) ;;
@@ -66,6 +66,7 @@ dune_src_test() {
 # @CODE
 dune-install() {
 	local -a pkgs=( "${@}" )
+
 	[[ ${#pkgs[@]} -eq 0 ]] && pkgs=( "${DUNE_PKG_NAME}" )
 
 	local -a myduneopts=(
@@ -73,6 +74,7 @@ dune-install() {
 		--libdir="${D%/}$(ocamlc -where)"
 		--mandir="${ED%/}/usr/share/man"
 	)
+
 	local pkg
 	for pkg in "${pkgs[@]}" ; do
 		ebegin "Installing ${pkg}"
