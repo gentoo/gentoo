@@ -10,3 +10,4 @@ move app-crypt/openpgp-keys-crypto++ sec-keys/openpgp-keys-crypto++
 move app-crypt/openpgp-keys-danielveillard sec-keys/openpgp-keys-danielveillard
 move app-crypt/openpgp-keys-debugedit sec-keys/openpgp-keys-debugedit
 move app-crypt/openpgp-keys-django sec-keys/openpgp-keys-django
+move app-crypt/openpgp-keys-gentoo-auth sec-keys/openpgp-keys-gentoo-auth
