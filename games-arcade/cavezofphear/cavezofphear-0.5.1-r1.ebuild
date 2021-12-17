@@ -12,7 +12,7 @@ S="${WORKDIR}"/${P/cavezof/}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 RDEPEND=">=sys-libs/ncurses-5:0="
 DEPEND="${RDEPEND}"
