@@ -34,7 +34,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-apps/lsb-release
-	verify-sig? ( app-crypt/openpgp-keys-miniupnp )"
+	verify-sig? ( sec-keys/openpgp-keys-miniupnp )"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/miniupnp.asc
 
