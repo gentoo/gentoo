@@ -25,7 +25,7 @@ BDEPEND="
 		virtual/perl-Test-Harness
 		dev-perl/Test-Output
 	)
-	verify-sig? ( app-crypt/openpgp-keys-adamspiers )
+	verify-sig? ( sec-keys/openpgp-keys-adamspiers )
 "
 
 src_configure() {
