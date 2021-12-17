@@ -18,7 +18,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 s
 IUSE="crypt debug examples static-libs elibc_Darwin"
 
 BDEPEND=">=virtual/pkgconfig-1
-	verify-sig? ( app-crypt/openpgp-keys-danielveillard )"
+	verify-sig? ( sec-keys/openpgp-keys-danielveillard )"
 RDEPEND="
 	>=dev-libs/libxml2-2.9.11:2[${MULTILIB_USEDEP}]
 	crypt? ( >=dev-libs/libgcrypt-1.5.3:0=[${MULTILIB_USEDEP}] )
