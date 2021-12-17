@@ -12,3 +12,4 @@ move app-crypt/openpgp-keys-debugedit sec-keys/openpgp-keys-debugedit
 move app-crypt/openpgp-keys-django sec-keys/openpgp-keys-django
 move app-crypt/openpgp-keys-gentoo-auth sec-keys/openpgp-keys-gentoo-auth
 move app-crypt/openpgp-keys-gentoo-release sec-keys/openpgp-keys-gentoo-release
+move app-crypt/openpgp-keys-jedisct1 sec-keys/openpgp-keys-jedisct1
