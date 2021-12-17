@@ -35,7 +35,7 @@ BDEPEND="
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		x11-libs/libnotify[introspection]
 	)
-	verify-sig? ( app-crypt/openpgp-keys-terminator )
+	verify-sig? ( sec-keys/openpgp-keys-terminator )
 "
 distutils_enable_tests pytest
 
