@@ -17,7 +17,7 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
 	app-crypt/gnupg
-	app-crypt/openpgp-keys-gentoo-auth
+	sec-keys/openpgp-keys-gentoo-auth
 	dev-vcs/git"
 DEPEND="${PYTHON_DEPS}"
 
