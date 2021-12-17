@@ -29,7 +29,7 @@ IUSE="+redistributable test X"
 
 RESTRICT="!test? ( test )"
 
-DEPEND=">=media-libs/gmmlib-21.3.1
+DEPEND=">=media-libs/gmmlib-21.3.1:=
 	>=x11-libs/libva-2.13.0[X?]
 "
 RDEPEND="${DEPEND}"
