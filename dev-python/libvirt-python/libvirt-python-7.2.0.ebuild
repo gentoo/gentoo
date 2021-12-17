@@ -37,7 +37,7 @@ BDEPEND="
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 	)
-	verify-sig? ( app-crypt/openpgp-keys-libvirt )
+	verify-sig? ( sec-keys/openpgp-keys-libvirt )
 "
 
 distutils_enable_tests setup.py
