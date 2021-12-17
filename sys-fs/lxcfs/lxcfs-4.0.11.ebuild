@@ -17,7 +17,7 @@ KEYWORDS="amd64 ~riscv ~x86"
 RDEPEND="sys-fs/fuse:3"
 DEPEND="${RDEPEND}"
 BDEPEND="sys-apps/help2man
-	verify-sig? ( app-crypt/openpgp-keys-linuxcontainers )"
+	verify-sig? ( sec-keys/openpgp-keys-linuxcontainers )"
 
 # Looks like these won't ever work in a container/chroot environment. #764620
 RESTRICT="test"
