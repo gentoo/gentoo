@@ -16,3 +16,4 @@ move app-crypt/openpgp-keys-jedisct1 sec-keys/openpgp-keys-jedisct1
 move app-crypt/openpgp-keys-kernel sec-keys/openpgp-keys-kernel
 move app-crypt/openpgp-keys-libidn sec-keys/openpgp-keys-libidn
 move app-crypt/openpgp-keys-libvirt sec-keys/openpgp-keys-libvirt
+move app-crypt/openpgp-keys-linuxcontainers sec-keys/openpgp-keys-linuxcontainers

@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen[dot] )
 	man? ( app-text/docbook-sgml-utils )
-	verify-sig? ( app-crypt/openpgp-keys-linuxcontainers )"
+	verify-sig? ( sec-keys/openpgp-keys-linuxcontainers )"
 
 CONFIG_CHECK="~!NETPRIO_CGROUP
 	~CGROUPS

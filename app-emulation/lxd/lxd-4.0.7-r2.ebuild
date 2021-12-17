@@ -33,7 +33,7 @@ RDEPEND="${DEPEND}
 	virtual/acl"
 BDEPEND="dev-lang/go
 	nls? ( sys-devel/gettext )
-	verify-sig? ( app-crypt/openpgp-keys-linuxcontainers )"
+	verify-sig? ( sec-keys/openpgp-keys-linuxcontainers )"
 
 CONFIG_CHECK="
 	~CGROUPS

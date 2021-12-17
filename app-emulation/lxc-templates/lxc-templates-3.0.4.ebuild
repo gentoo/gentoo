@@ -17,7 +17,7 @@ SLOT="0"
 
 RDEPEND=">=app-emulation/lxc-3.0"
 DEPEND="${RDEPEND}"
-BDEPEND="verify-sig? ( app-crypt/openpgp-keys-linuxcontainers )"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-linuxcontainers )"
 
 PATCHES=( "${FILESDIR}/${PN}-3.0.1-no-cache-dir.patch" )
 DOCS=()

@@ -18,6 +18,6 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 IUSE="verify-sig"
 
 RDEPEND="app-emulation/lxc"
-BDEPEND="verify-sig? ( app-crypt/openpgp-keys-linuxcontainers )"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-linuxcontainers )"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/linuxcontainers.asc
