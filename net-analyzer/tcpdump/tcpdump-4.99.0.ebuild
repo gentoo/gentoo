@@ -58,7 +58,7 @@ DEPEND="
 BDEPEND="drop-root? ( virtual/pkgconfig )"
 
 if [[ ${PV} != *9999* ]] ; then
-	BDEPEND+=" verify-sig? ( app-crypt/openpgp-keys-tcpdump )"
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-tcpdump )"
 fi
 
 PATCHES=(
