@@ -8,3 +8,4 @@ move app-crypt/openpgp-keys-bcl sec-keys/openpgp-keys-bcl
 move app-crypt/openpgp-keys-botan sec-keys/openpgp-keys-botan
 move app-crypt/openpgp-keys-crypto++ sec-keys/openpgp-keys-crypto++
 move app-crypt/openpgp-keys-danielveillard sec-keys/openpgp-keys-danielveillard
+move app-crypt/openpgp-keys-debugedit sec-keys/openpgp-keys-debugedit
