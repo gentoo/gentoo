@@ -39,7 +39,7 @@ SRC_URI+="
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="debug"
 
 RDEPEND="
@@ -63,6 +63,11 @@ src_prepare() {
 			;;
 		arm64)
 			cp "${DISTDIR}/kernel-aarch64.config.${CONFIG_VER}" .config || die
+			;;
+		ppc)
+			# assume powermac/powerbook defconfig
+			# we still package.use.force savedconfig
+			cp "${WORKDIR}"/linux-*/arch/powerpc/configs/pmac32_defconfig .config || die
 			;;
 		ppc64)
 			cp "${DISTDIR}/kernel-ppc64le.config.${CONFIG_VER}" .config || die
