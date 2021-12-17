@@ -25,7 +25,7 @@ RESTRICT="test"
 DEPEND="${PYTHON_DEPS}
 	hfst? ( >=dev-util/hfstospell-0.5.0 )"
 RDEPEND="${DEPEND}"
-BDEPEND="verify-sig? ( app-crypt/openpgp-keys-voikko )"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-voikko )"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/voikko.asc
 
