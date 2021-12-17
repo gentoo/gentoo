@@ -24,3 +24,4 @@ move app-crypt/openpgp-keys-nmap sec-keys/openpgp-keys-nmap
 move app-crypt/openpgp-keys-oletange sec-keys/openpgp-keys-oletange
 move app-crypt/openpgp-keys-openzfs sec-keys/openpgp-keys-openzfs
 move app-crypt/openpgp-keys-python sec-keys/openpgp-keys-python
+move app-crypt/openpgp-keys-rust sec-keys/openpgp-keys-rust
