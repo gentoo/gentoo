@@ -30,6 +30,7 @@ IUSE="+custom-cflags set-as-default test X"
 RESTRICT="!test? ( test )"
 
 DEPEND=">=media-libs/gmmlib-21.3.1
+	<media-libs/gmmlib-21.3.4
 	>=x11-libs/libva-2.13.0[X?]
 "
 RDEPEND="${DEPEND}"
