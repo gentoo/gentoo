@@ -11,7 +11,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">openstack/python-openstacksdk</remote-id>
+		<remote-id type="github">openstack/openstacksdk</remote-id>
 		<remote-id type="pypi">openstacksdk</remote-id>
 	</upstream>
 </pkgmetadata>
