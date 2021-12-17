@@ -58,7 +58,7 @@ BDEPEND="virtual/awk
 "
 
 if [[ ${PV} != "9999" ]] ; then
-	BDEPEND+=" verify-sig? ( app-crypt/openpgp-keys-openzfs )"
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-openzfs )"
 fi
 
 # awk is used for some scripts, completions, and the Dracut module

@@ -49,7 +49,7 @@ BDEPEND="
 # and we don't need in in git ebuild.
 if [[ ${PV} != "9999" ]] ; then
 	BDEPEND+="
-		verify-sig? ( app-crypt/openpgp-keys-openzfs )
+		verify-sig? ( sec-keys/openpgp-keys-openzfs )
 		dist-kernel? ( <virtual/dist-kernel-${ZFS_KERNEL_DEP}:= )
 	"
 fi
