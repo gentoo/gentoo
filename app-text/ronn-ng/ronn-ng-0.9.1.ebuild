@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/apjanke/ronn-ng"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc"
 
 IUSE=""
 
