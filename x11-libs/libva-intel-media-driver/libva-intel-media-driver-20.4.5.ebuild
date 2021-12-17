@@ -27,6 +27,7 @@ IUSE="+custom-cflags set-as-default test X"
 RESTRICT="!test? ( test )"
 
 DEPEND=">=media-libs/gmmlib-20.4.1
+	<media-libs/gmmlib-21.3.4
 	>=x11-libs/libva-2.10.0[X?]
 	>=x11-libs/libpciaccess-0.13.1-r1:=
 "
