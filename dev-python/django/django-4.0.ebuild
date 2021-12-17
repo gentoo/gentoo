@@ -47,7 +47,7 @@ BDEPEND="
 		!!<dev-python/ipython-7.21.0-r1
 		!!=dev-python/ipython-7.22.0-r0
 	)
-	verify-sig? ( >=app-crypt/openpgp-keys-django-20201201 )
+	verify-sig? ( >=sec-keys/openpgp-keys-django-20201201 )
 "
 
 PATCHES=(
