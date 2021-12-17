@@ -2,3 +2,4 @@ move dev-libs/intel-neo dev-libs/intel-compute-runtime
 move dev-python/hyper-h2 dev-python/h2
 move media-radio/KochMorse media-radio/kochmorse
 move sci-misc/jupyterlab-desktop sci-misc/jupyterlab-desktop-bin
+move app-crypt/openpgp-keys-adamspiers sec-keys/openpgp-keys-adamspiers
