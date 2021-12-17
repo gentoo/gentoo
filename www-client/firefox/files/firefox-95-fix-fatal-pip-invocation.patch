@@ -1,0 +1,13 @@
+diff --git a/build/mach_initialize.py b/build/mach_initialize.py
+index 32f3011..5e6e2b4 100644
+--- a/build/mach_initialize.py
++++ b/build/mach_initialize.py
+@@ -207,7 +207,7 @@ def _activate_python_environment(topsrcdir):
+             else "MACH_USE_SYSTEM_PYTHON"
+         )
+ 
+-        has_pip = (
++        has_pip = False and (
+             subprocess.run(
+                 [sys.executable, "-c", "import pip"], stderr=subprocess.DEVNULL
+             ).returncode
