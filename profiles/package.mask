@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-12-17)
+# Annoying package with deps pinned to old versions of packages.
+# All revdeps were eliminated.
+# Removal on 2022-01-16.  Bug #829410.
+dev-python/hacking
+
 # William Hubbs <williamh@gentoo.org> (2021-12-15)
 # This is a go module and is included in projects directly.
 # Bug #819639; masked for removal on 2022-01-15.
