@@ -20,3 +20,4 @@ move app-crypt/openpgp-keys-linuxcontainers sec-keys/openpgp-keys-linuxcontainer
 move app-crypt/openpgp-keys-midipix sec-keys/openpgp-keys-midipix
 move app-crypt/openpgp-keys-miniupnp sec-keys/openpgp-keys-miniupnp
 move app-crypt/openpgp-keys-mlichvar sec-keys/openpgp-keys-mlichvar
+move app-crypt/openpgp-keys-nmap sec-keys/openpgp-keys-nmap

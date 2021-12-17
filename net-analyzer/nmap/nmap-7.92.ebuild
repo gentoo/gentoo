@@ -47,7 +47,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 if [[ ${PV} != *9999* ]] ; then
-	BDEPEND+="verify-sig? ( app-crypt/openpgp-keys-nmap )"
+	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-nmap )"
 fi
 
 PATCHES=(
