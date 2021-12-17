@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Guake/guake/archive/refs/tags/${PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 arm x86"
 IUSE="utempter"
 
 RDEPEND="
