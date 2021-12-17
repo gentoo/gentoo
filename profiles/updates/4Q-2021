@@ -17,3 +17,4 @@ move app-crypt/openpgp-keys-kernel sec-keys/openpgp-keys-kernel
 move app-crypt/openpgp-keys-libidn sec-keys/openpgp-keys-libidn
 move app-crypt/openpgp-keys-libvirt sec-keys/openpgp-keys-libvirt
 move app-crypt/openpgp-keys-linuxcontainers sec-keys/openpgp-keys-linuxcontainers
+move app-crypt/openpgp-keys-midipix sec-keys/openpgp-keys-midipix
