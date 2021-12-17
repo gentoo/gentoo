@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/rsl/stringex"
 LICENSE="MIT"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc"
 IUSE="test"
 
 # we could rely on activerecord[sqlite3], but since we do not remove the
