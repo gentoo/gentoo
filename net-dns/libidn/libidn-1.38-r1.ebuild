@@ -22,7 +22,7 @@ RDEPEND="java? ( >=virtual/jre-1.8:* )"
 BDEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 	java? ( >=virtual/jdk-1.8:* )
 	nls? ( >=sys-devel/gettext-0.17 )
-	verify-sig? ( app-crypt/openpgp-keys-libidn )"
+	verify-sig? ( sec-keys/openpgp-keys-libidn )"
 
 DOCS=( AUTHORS ChangeLog FAQ NEWS README THANKS )
 
