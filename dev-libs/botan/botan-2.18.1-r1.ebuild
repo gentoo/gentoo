@@ -45,7 +45,7 @@ BDEPEND="
 	$(python_gen_any_dep '
 		doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	')
-	verify-sig? ( app-crypt/openpgp-keys-botan )
+	verify-sig? ( sec-keys/openpgp-keys-botan )
 "
 
 # NOTE: Considering patching Botan?
