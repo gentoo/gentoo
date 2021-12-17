@@ -27,7 +27,6 @@ BDEPEND="${CDEPEND}
 	test? (
 		>=dev-python/betamax-0.7.0[${PYTHON_USEDEP}]
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
-		dev-python/hacking[${PYTHON_USEDEP}]
 		>=dev-python/lxml-4.2.0[${PYTHON_USEDEP}]
 		>=dev-python/oauthlib-0.6.2[${PYTHON_USEDEP}]
 		>=dev-python/oslo-config-5.2.0[${PYTHON_USEDEP}]
@@ -46,6 +45,8 @@ src_prepare() {
 	# relies on specific test runner name
 	sed -i -e 's:run\.py:unittest_or_fail.py:' \
 		keystoneauth1/tests/unit/test_session.py || die
+	# remove the test that requires hacking
+	rm keystoneauth1/tests/unit/test_hacking_checks.py || die
 	distutils-r1_src_prepare
 }
 
