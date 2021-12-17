@@ -13,10 +13,12 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
-#DEPEND=""
-#RDEPEND=""
-# TODO: yasm version to support avx512?
-BDEPEND="amd64? ( >=dev-lang/nasm-2.15 )"
+BDEPEND="amd64? (
+	|| (
+		>=dev-lang/nasm-2.13
+		>=dev-lang/yasm-1.2.0
+	)
+)"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.30.0_makefile-no-D.patch
@@ -24,6 +26,11 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	# isa-l does not support arbitrary assemblers on amd64 (and presumably x86),
+	# it must be either nasm or yasm.
+	use amd64 && unset AS
+
 	eautoreconf
 }
 
