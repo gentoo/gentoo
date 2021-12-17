@@ -26,6 +26,7 @@ BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
 			>=dev-python/anyio-3.4.0[${PYTHON_USEDEP}]
+			dev-python/trio[${PYTHON_USEDEP}]
 		' 'python*')
 		dev-python/async_timeout[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}]
