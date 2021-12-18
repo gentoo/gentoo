@@ -72,7 +72,7 @@ DEPEND="
 	x11-libs/libSM
 	input_devices_wacom? ( >=dev-libs/libwacom-0.13 )
 	>=x11-libs/startup-notification-0.7
-	screencast? ( >=media-video/pipewire-0.3.21:0/0.3 )
+	screencast? ( >=media-video/pipewire-0.3.21:= )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
 RDEPEND="${DEPEND}
