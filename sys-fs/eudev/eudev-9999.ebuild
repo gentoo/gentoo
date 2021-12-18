@@ -3,7 +3,7 @@
 
 EAPI=7
 
-KV_min=2.6.39
+KV_MIN=2.6.39
 
 inherit autotools linux-info multilib multilib-minimal toolchain-funcs
 
@@ -23,7 +23,8 @@ SLOT="0"
 IUSE="+kmod introspection rule-generator selinux static-libs test"
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND=">=sys-apps/util-linux-2.20
+DEPEND=">=sys-apps/util-linux-2.20
+	>=sys-kernel/linux-headers-${KV_MIN}
 	virtual/libcrypt:=
 	introspection? ( >=dev-libs/gobject-introspection-1.38 )
 	kmod? ( >=sys-apps/kmod-16 )
@@ -31,15 +32,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.20
 	!<sys-libs/glibc-2.11
 	!sys-apps/gentoo-systemd-integration
 	!sys-apps/systemd"
-DEPEND="${COMMON_DEPEND}
-	dev-util/gperf
-	virtual/os-headers
-	virtual/pkgconfig
-	>=sys-devel/make-3.82-r4
-	>=sys-kernel/linux-headers-${KV_min}
-	test? ( app-text/tree dev-lang/perl )"
-
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	acct-group/input
 	acct-group/kvm
 	acct-group/render
@@ -48,7 +41,11 @@ RDEPEND="${COMMON_DEPEND}
 	!sys-fs/udev
 	!sys-apps/systemd
 	!sys-apps/hwids[udev]"
-
+BDEPEND="dev-util/gperf
+	virtual/os-headers
+	virtual/pkgconfig
+	>=sys-devel/make-3.82-r4
+	test? ( app-text/tree dev-lang/perl )"
 PDEPEND=">=sys-fs/udev-init-scripts-26"
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -75,10 +72,10 @@ pkg_setup() {
 
 	# These are required kernel options, but we don't error out on them
 	# because you can build under one kernel and run under another.
-	if kernel_is lt ${KV_min//./ }; then
+	if kernel_is lt ${KV_MIN//./ }; then
 		ewarn
 		ewarn "Your current running kernel version ${KV_FULL} is too old to run ${P}."
-		ewarn "Make sure to run udev under kernel version ${KV_min} or above."
+		ewarn "Make sure to run udev under kernel version ${KV_MIN} or above."
 		ewarn
 	fi
 }
@@ -86,15 +83,17 @@ pkg_setup() {
 src_prepare() {
 	# change rules back to group uucp instead of dialout for now
 	sed -e 's/GROUP="dialout"/GROUP="uucp"/' -i rules/*.rules \
-	|| die "failed to change group dialout to uucp"
+		|| die "failed to change group dialout to uucp"
 
-	eapply_user
+	default
 	eautoreconf
 }
 
 multilib_src_configure() {
-	tc-export CC #463846
-	export cc_cv_CFLAGS__flto=no #502950
+	# bug #463846
+	tc-export CC
+	# bug #502950
+	export cc_cv_CFLAGS__flto=no
 
 	# Keep sorted by ./configure --help and only pass --disable flags
 	# when *required* to avoid external deps or unnecessary compile
@@ -133,8 +132,10 @@ multilib_src_configure() {
 			--disable-kmod
 			--disable-selinux
 			--disable-rule-generator
+			--disable-hwdb
 		)
 	fi
+
 	ECONF_SOURCE="${S}" econf "${econf_args[@]}"
 }
 
@@ -144,14 +145,6 @@ multilib_src_compile() {
 	else
 		emake -C src/shared
 		emake -C src/libudev
-	fi
-}
-
-multilib_src_install() {
-	if multilib_is_native_abi; then
-		emake DESTDIR="${D}" install
-	else
-		emake -C src/libudev DESTDIR="${D}" install
 	fi
 }
 
@@ -165,12 +158,22 @@ multilib_src_test() {
 		addread /sys
 		addwrite /dev
 		addwrite /run
+
 		default_src_test
 	fi
 }
 
+
+multilib_src_install() {
+	if multilib_is_native_abi; then
+		emake DESTDIR="${D}" install
+	else
+		emake -C src/libudev DESTDIR="${D}" install
+	fi
+}
+
 multilib_src_install_all() {
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 
 	insinto /lib/udev/rules.d
 	doins "${FILESDIR}"/40-gentoo.rules
@@ -182,12 +185,12 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
-	mkdir -p "${EROOT}"run
+	mkdir -p "${EROOT}"/run
 
 	# "losetup -f" is confused if there is an empty /dev/loop/, Bug #338766
 	# So try to remove it here (will only work if empty).
-	rmdir "${EROOT}"dev/loop 2>/dev/null
-	if [[ -d ${EROOT}dev/loop ]]; then
+	rmdir "${EROOT}"/dev/loop 2>/dev/null
+	if [[ -d ${EROOT}/dev/loop ]]; then
 		ewarn "Please make sure your remove /dev/loop,"
 		ewarn "else losetup may be confused when looking for unused devices."
 	fi
@@ -207,15 +210,16 @@ pkg_postinst() {
 	done
 
 	if has_version 'sys-apps/hwids[udev]'; then
-		udevadm hwdb --update --root="${ROOT%/}"
+		udevadm hwdb --update --root="${ROOT}"
 
 		# https://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
 		# reload database after it has be rebuilt, but only if we are not upgrading
 		# also pass if we are -9999 since who knows what hwdb related changes there might be
-		if [[ ${rvres} == doit* ]] && [[ ${ROOT%/} == "" ]] && [[ ${PV} != "9999" ]]; then
+		if [[ ${rvres} == doit* ]] && [[ -z ${ROOT} ]] && [[ ${PV} != "9999" ]]; then
 			udevadm control --reload
 		fi
 	fi
+
 	if [[ ${rvres} != doitnew ]]; then
 		ewarn
 		ewarn "You need to restart eudev as soon as possible to make the"
