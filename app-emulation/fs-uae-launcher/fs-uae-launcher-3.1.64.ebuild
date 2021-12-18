@@ -52,6 +52,8 @@ python_install_all() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
+
 	elog "Some important information:"
 	elog
 	ewarn " - Do not use QtCurve, it will crash PyQt5!"
