@@ -41,6 +41,14 @@
 =sys-kernel/vanilla-kernel-5.14*
 =virtual/dist-kernel-5.14*
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-18)
+# Package without consumers. Bug #829517 Bug_#614480.  Removal in 30 days.
+dev-java/libreadline-java
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-18)
+# Package without consumers. Bug_#736880. Removal in 30 days.
+dev-java/jrrd
+
 # Michał Górny <mgorny@gentoo.org> (2021-12-17)
 # Annoying package with deps pinned to old versions of packages.
 # All revdeps were eliminated.
