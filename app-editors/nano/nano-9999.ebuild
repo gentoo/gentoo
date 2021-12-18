@@ -84,6 +84,9 @@ src_install() {
 		local rcdir="/usr/share/nano"
 		mv "${ED}"${rcdir}/extra/* "${ED}"/${rcdir}/ || die
 		rmdir "${ED}"${rcdir}/extra || die
+
+		insinto "${rcdir}"
+		doins "${FILESDIR}/gentoo.nanorc"
 	fi
 
 	use split-usr && dosym ../../bin/nano /usr/bin/nano
