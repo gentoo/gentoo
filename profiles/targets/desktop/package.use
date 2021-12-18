@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-12-18)
+# Required by media-gfx/digikam
+media-gfx/exiv2 xmp
+
 # Marek Szuba <marecki@gentoo.org> (2020-12-24)
 # Required by qt5
 media-gfx/gmic fftw
