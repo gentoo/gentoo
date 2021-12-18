@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 LUA_COMPAT=( lua5-{3,4} )
 
@@ -13,6 +13,10 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/pipewire/${PN}/-/archive/${PV}/${P}.tar.gz"
+
+	# One commit is in git, the rest are in a PR which should be merged soon
+	# bug #817881
+	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-0.4.5-endianness-fixes.patch.bz2"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
@@ -53,6 +57,14 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 DOCS=( {NEWS,README}.rst )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-m-reserve-device-replace-the-hash-table-key-on-new-i.patch
+	"${FILESDIR}"/${P}-policy-node-wait-for-nodes-when-we-become-unlinked.patch
+	"${FILESDIR}"/${P}-lib-don-t-read-hidden-files-from-the-config-director.patch
+	"${FILESDIR}"/${P}-alsa-handle-the-release-requested-signal.patch
+	"${WORKDIR}"/${P}-endianness-fixes.patch
+)
 
 src_configure() {
 	local emesonargs=(
