@@ -5,7 +5,7 @@ EAPI=7
 
 KV_MIN=2.6.39
 
-inherit autotools linux-info multilib multilib-minimal toolchain-funcs
+inherit autotools linux-info multilib-minimal toolchain-funcs
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/eudev-project/eudev.git"
@@ -29,15 +29,12 @@ DEPEND=">=sys-apps/util-linux-2.20
 	introspection? ( >=dev-libs/gobject-introspection-1.38 )
 	kmod? ( >=sys-apps/kmod-16 )
 	selinux? ( >=sys-libs/libselinux-2.1.9 )
-	!<sys-libs/glibc-2.11
 	!sys-apps/gentoo-systemd-integration
 	!sys-apps/systemd"
 RDEPEND="${DEPEND}
 	acct-group/input
 	acct-group/kvm
 	acct-group/render
-	!<sys-fs/lvm2-2.02.103
-	!<sec-policy/selinux-base-2.20120725-r10
 	!sys-fs/udev
 	!sys-apps/systemd
 	!sys-apps/hwids[udev]"
