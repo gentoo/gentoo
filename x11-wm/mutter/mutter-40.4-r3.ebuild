@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit gnome.org gnome2-utils meson udev xdg
+inherit gnome.org gnome2-utils meson udev virtualx xdg
 
 DESCRIPTION="GNOME compositing window manager based on Clutter"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/mutter/"
 
 LICENSE="GPL-2+"
-SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
+SLOT="0/8" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 
 IUSE="elogind input_devices_wacom +introspection screencast sysprof systemd test udev wayland video_cards_nvidia"
 # native backend requires gles3 for hybrid graphics blitting support, udev and a logind provider
@@ -17,7 +17,7 @@ REQUIRED_USE="
 	test? ( wayland )"
 RESTRICT="!test? ( test )"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 
 # gnome-settings-daemon is build checked, but used at runtime only for org.gnome.settings-daemon.peripherals.keyboard gschema
 # xorg-server is needed at build and runtime with USE=wayland for Xwayland
@@ -31,7 +31,7 @@ DEPEND="
 	>=dev-libs/fribidi-1.0.0
 	>=x11-libs/cairo-1.14[X]
 	>=gnome-base/gsettings-desktop-schemas-40.0[introspection?]
-	>=dev-libs/glib-2.69.0:2
+	>=dev-libs/glib-2.67.3:2
 	gnome-base/gnome-settings-daemon
 	>=dev-libs/json-glib-0.12.0[introspection?]
 	gnome-base/gnome-desktop:3=
@@ -56,13 +56,13 @@ DEPEND="
 	sys-apps/dbus
 	media-libs/mesa[X(+),egl(+)]
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 )
-	systemd? ( sys-apps/systemd )
 	wayland? (
-		>=dev-libs/wayland-protocols-1.21
+		>=dev-libs/wayland-protocols-1.19
 		>=dev-libs/wayland-1.18.0
 		x11-libs/libdrm:=
 		>=media-libs/mesa-17.3[egl(+),gbm(+),wayland,gles2]
-		>=dev-libs/libinput-1.18.0
+		>=dev-libs/libinput-1.15.0
+		systemd? ( sys-apps/systemd )
 		elogind? ( sys-auth/elogind )
 		x11-base/xwayland
 		video_cards_nvidia? ( gui-libs/egl-wayland )
@@ -72,7 +72,7 @@ DEPEND="
 	x11-libs/libSM
 	input_devices_wacom? ( >=dev-libs/libwacom-0.13 )
 	>=x11-libs/startup-notification-0.7
-	screencast? ( >=media-video/pipewire-0.3.21:0/0.3 )
+	screencast? ( >=media-video/pipewire-0.3.21:= )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
 RDEPEND="${DEPEND}
@@ -89,10 +89,7 @@ BDEPEND="
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-	test? (
-		app-text/docbook-xml-dtd:4.5
-		x11-misc/xvfb-run
-	)
+	test? ( app-text/docbook-xml-dtd:4.5 )
 	wayland? (
 		>=sys-kernel/linux-headers-4.4
 		x11-libs/libxcvt
@@ -113,7 +110,6 @@ src_configure() {
 		-Degl=true
 		-Dglx=true
 		$(meson_use wayland)
-		$(meson_use systemd)
 		$(meson_use wayland native_backend)
 		$(meson_use screencast remote_desktop)
 		$(meson_use udev)
@@ -154,7 +150,7 @@ src_configure() {
 src_test() {
 	gnome2_environment_reset # Avoid dconf that looks at XDG_DATA_DIRS, which can sandbox fail if flatpak is installed
 	glib-compile-schemas "${BUILD_DIR}"/data
-	GSETTINGS_SCHEMA_DIR="${BUILD_DIR}"/data meson_src_test --setup=CI
+	GSETTINGS_SCHEMA_DIR="${BUILD_DIR}"/data virtx meson_src_test
 }
 
 pkg_postinst() {
