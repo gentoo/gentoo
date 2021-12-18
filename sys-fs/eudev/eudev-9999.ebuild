@@ -178,9 +178,6 @@ multilib_src_install_all() {
 	insinto /lib/udev/rules.d
 	doins "${FILESDIR}"/40-gentoo.rules
 
-	insinto /lib/udev/hwdb.d
-	doins hwdb/*.hwdb
-
 	use rule-generator && doinitd "${FILESDIR}"/udev-postmount
 }
 
