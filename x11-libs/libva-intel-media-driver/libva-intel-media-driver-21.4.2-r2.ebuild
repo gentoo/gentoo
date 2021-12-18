@@ -12,30 +12,32 @@ if [[ ${PV} == *9999 ]] ; then
 	fi
 	inherit git-r3
 else
-	SRC_URI="https://github.com/intel/media-driver/archive/intel-media-${PV}.tar.gz"
-	S="${WORKDIR}/media-driver-intel-media-${PV}"
-	KEYWORDS="amd64"
+	MY_PV="${PV%_pre}"
+	SRC_URI="https://github.com/intel/media-driver/archive/intel-media-${MY_PV}.tar.gz"
+	S="${WORKDIR}/media-driver-intel-media-${MY_PV}"
+	if [[ ${PV} != *_pre* ]] ; then
+		KEYWORDS="~amd64"
+	fi
 fi
 
 DESCRIPTION="Intel Media Driver for VAAPI (iHD)"
 HOMEPAGE="https://github.com/intel/media-driver"
 
-LICENSE="MIT BSD"
+LICENSE="MIT BSD redistributable? ( no-source-code )"
 SLOT="0"
-IUSE="+custom-cflags set-as-default test X"
+IUSE="+redistributable test X"
 
 RESTRICT="!test? ( test )"
 
-DEPEND=">=media-libs/gmmlib-20.4.1:=
-	<media-libs/gmmlib-21.3.4:=
-	>=x11-libs/libva-2.10.0[X?]
-	>=x11-libs/libpciaccess-0.13.1-r1:=
+DEPEND=">=media-libs/gmmlib-21.3.1:=
+	media-libs/gmmlib:0/0
+	>=x11-libs/libva-2.13.0[X?]
 "
 RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20.2.0_x11_optional.patch
-	"${FILESDIR}"/${PN}-20.4.5_custom_cflags.patch
+	"${FILESDIR}"/${PN}-21.4.2-Remove-unwanted-CFLAGS.patch
 	"${FILESDIR}"/${PN}-20.4.5_testing_in_src_test.patch
 )
 
@@ -46,18 +48,9 @@ src_configure() {
 		-DBUILD_TYPE=Release
 		-DPLATFORM=linux
 		-DUSE_X11=$(usex X)
+		-DENABLE_NONFREE_KERNELS=$(usex redistributable)
 		-DLATEST_CPP_NEEDED=ON # Seems to be the best option for now
-		-DOVERRIDE_COMPILER_FLAGS=$(usex !custom-cflags)
 	)
-
+	local CMAKE_BUILD_TYPE="Release"
 	cmake_src_configure
-}
-
-src_install() {
-	cmake_src_install
-
-	if use set-as-default ; then
-		echo 'LIBVA_DRIVER_NAME="iHD"' > "${T}/55libva-intel-media-driver" || die
-		doenvd "${T}/55libva-intel-media-driver"
-	fi
 }
