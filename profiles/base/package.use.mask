@@ -240,10 +240,6 @@ dev-db/mariadb columnstore
 # Please file a bug if this feature is needed
 dev-python/autobahn xbr
 
-# Thomas Deutschmann <whissi@gentoo.org> (2020-07-27)
-# media-video/pipewire:0/0.3 is only available for certain architectures
-www-client/firefox screencast
-
 # Stephan Hartmann <stha09@googlemail.com> (2020-06-28)
 # Mostly intended for development and not for general use.
 >=www-client/chromium-84 headless
