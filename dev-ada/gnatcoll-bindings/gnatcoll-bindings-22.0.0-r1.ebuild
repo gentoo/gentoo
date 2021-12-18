@@ -17,7 +17,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="gmp iconv lzma openmp python readline +shared static-libs static-pic syslog"
 
-RDEPEND="python? ( ${PYTHON_DEPS} )
+RDEPEND="${PYTHON_DEPS}
 	${ADA_DEPS}
 	dev-ada/gnatcoll-core:=[${ADA_USEDEP},shared?,static-libs?,static-pic?]
 	gmp? ( dev-libs/gmp:* )
@@ -27,7 +27,7 @@ RDEPEND="python? ( ${PYTHON_DEPS} )
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	${ADA_REQUIRED_USE}"
 
 pkg_setup() {
