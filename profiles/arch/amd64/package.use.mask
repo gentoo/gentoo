@@ -93,10 +93,6 @@ app-metrics/collectd -collectd_plugins_gpu_nvidia
 # Columnstore engine is supported on amd64
 dev-db/mariadb -columnstore
 
-# Thomas Deutschmann <whissi@gentoo.org> (2020-07-27)
-# media-video/pipewire:0/0.3 is available for amd64
-www-client/firefox -screencast
-
 # Sam James <sam@gentoo.org> (2020-07-03)
 # Rust is available here
 # Bug #728558
