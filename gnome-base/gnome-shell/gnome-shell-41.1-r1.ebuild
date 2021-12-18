@@ -36,7 +36,7 @@ DEPEND="
 	bluetooth? ( >=net-wireless/gnome-bluetooth-3.9[introspection] )
 	>=media-libs/gstreamer-0.11.92:1.0
 	media-libs/gst-plugins-base:1.0
-	>=media-video/pipewire-0.3.0:0/0.3
+	>=media-video/pipewire-0.3.0:=
 	networkmanager? (
 		>=net-misc/networkmanager-1.10.4:=[introspection]
 		net-libs/libnma[introspection]
