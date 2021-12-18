@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools elisp-common flag-o-matic
 
@@ -12,27 +12,29 @@ MY_DIR2=$(ver_cut 1-3 ${PV})
 MY_DIR=$(ver_rs 1- '-' ${MY_DIR2})
 
 DESCRIPTION="Computer algebra system for polynomial computations"
-HOMEPAGE="https://www.singular.uni-kl.de/ https://github.com/Singular/Sources"
+HOMEPAGE="https://www.singular.uni-kl.de/ https://github.com/Singular/Singular"
 SRC_URI="ftp://jim.mathematik.uni-kl.de/pub/Math/${MY_PN}/SOURCES/${MY_DIR}/${PN}-${MY_PV}.tar.gz"
+S="${WORKDIR}/${PN}-${MY_DIR2}"
 
 LICENSE="BSD GPL-2 GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86 ~x86-linux"
-IUSE="emacs examples +readline static-libs"
+KEYWORDS="~amd64 ~x86 ~x86-linux"
+IUSE="emacs examples julia polymake +readline static-libs"
 
-RDEPEND="dev-libs/gmp:0
-	dev-libs/ntl:=
-	emacs? ( >=app-editors/emacs-23.1:* )
-	sci-mathematics/flint
-	sci-libs/cddlib
+RDEPEND="
 	dev-lang/perl
-	readline? ( sys-libs/readline )"
-
+	dev-libs/gmp:0
+	dev-libs/ntl:=
+	sci-libs/cddlib
+	sci-mathematics/flint
+	emacs? ( >=app-editors/emacs-23.1:* )
+	julia? ( dev-lang/julia )
+	polymake? ( sci-mathematics/polymake )
+	readline? ( sys-libs/readline )
+"
 DEPEND="${RDEPEND}"
 
 SITEFILE=60${PN}-gentoo.el
-
-S="${WORKDIR}/${PN}-${MY_DIR2}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.2.1-htmldoc.patch"
@@ -52,27 +54,30 @@ src_configure() {
 	# makes its way into a release.
 	append-cxxflags $(test-flags-CXX -fno-delete-null-pointer-checks)
 
-	econf \
-		--with-gmp \
-		--with-ntl \
-		--with-flint \
-		--enable-gfanlib \
-		--disable-debug \
-		--disable-doc \
-		--enable-factory \
-		--enable-libfac \
-		--disable-polymake \
-		--with-libparse \
-		--disable-optimizationflags \
-		--without-python \
-		--without-pythonmodule \
-		--disable-python \
-		--disable-python-module \
-		--disable-python_module \
-		--disable-pyobject-module \
-		$(use_enable static-libs static) \
-		$(use_enable emacs) \
+	local myconf=(
+		--disable-debug
+		--disable-doc
+		--disable-optimizationflags
+		--disable-pyobject-module
+		--disable-python
+		--disable-python-module
+		--disable-python_module
+		--enable-factory
+		--enable-gfanlib
+		--enable-libfac
+		--with-flint
+		--with-gmp
+		--with-libparse
+		--with-ntl
+		--without-python
+		--without-pythonmodule
+		$(use_enable emacs)
+		$(use_enable julia)
+		$(use_enable polymake polymake-module)
+		$(use_enable static-libs static)
 		$(use_with readline)
+	)
+	econf "${myconf[@]}"
 }
 
 src_compile() {
