@@ -379,10 +379,6 @@ dev-ruby/rack-ssl
 # Removal on 2021-12-19.  Bug #825038.
 app-mobilephone/adb-sync
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-18)
-# Library without consumers, Removal in 30 days.
-dev-java/piccolo2d
-
 # Mike Pagano <mpagano@gentoo.org> (2021-11-18)
 # Bug introduced in this version that can
 # cause system freeze with data loss.
