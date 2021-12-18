@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/gentoo/eudev"
 
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
-IUSE="+hwdb +kmod introspection rule-generator selinux static-libs test"
+IUSE="+kmod introspection rule-generator selinux static-libs test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND=">=sys-apps/util-linux-2.20
@@ -46,10 +46,10 @@ RDEPEND="${COMMON_DEPEND}
 	!<sys-fs/lvm2-2.02.103
 	!<sec-policy/selinux-base-2.20120725-r10
 	!sys-fs/udev
-	!sys-apps/systemd"
+	!sys-apps/systemd
+	!sys-apps/hwids[udev]"
 
-PDEPEND=">=sys-fs/udev-init-scripts-26
-	hwdb? ( >=sys-apps/hwids-20140304[udev] )"
+PDEPEND=">=sys-fs/udev-init-scripts-26"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/udev.h
@@ -113,7 +113,6 @@ multilib_src_configure() {
 		--with-rootlibexecdir="${EPREFIX}"/lib/udev
 		--enable-split-usr
 		--enable-manpages
-		--disable-hwdb
 	)
 
 	# Only build libudev for non-native_abi, and only install it to libdir,
@@ -176,6 +175,9 @@ multilib_src_install_all() {
 	insinto /lib/udev/rules.d
 	doins "${FILESDIR}"/40-gentoo.rules
 
+	insinto /lib/udev/hwdb.d
+	doins hwdb/*.hwdb
+
 	use rule-generator && doinitd "${FILESDIR}"/udev-postmount
 }
 
@@ -204,7 +206,7 @@ pkg_postinst() {
 		fi
 	done
 
-	if use hwdb && has_version 'sys-apps/hwids[udev]'; then
+	if has_version 'sys-apps/hwids[udev]'; then
 		udevadm hwdb --update --root="${ROOT%/}"
 
 		# https://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
