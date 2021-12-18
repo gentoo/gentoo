@@ -425,7 +425,6 @@ setup_flags() {
 
 	# #829583
 	filter-lfs-flags
-	filter-flags -D_TIME_BITS=64
 
 	unset CBUILD_OPT CTARGET_OPT
 	if use multilib ; then
