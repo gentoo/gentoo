@@ -29,7 +29,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="${LUA_DEPS}
 	app-arch/lz4:=
-	dev-games/mygui
+	>=dev-games/mygui-3.4.1
 	dev-games/recastnavigation:=
 	dev-libs/boost:=[threads(+),zlib]
 	dev-libs/tinyxml[stl]
