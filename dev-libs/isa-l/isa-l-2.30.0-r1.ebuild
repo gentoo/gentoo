@@ -11,7 +11,7 @@ SRC_URI="https://github.com/intel/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="cpu_flags_x86_avx512f"
 
 # AVX512 support in yasm is still work in progress
