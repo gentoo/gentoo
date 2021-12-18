@@ -83,6 +83,6 @@ src_install() {
 			done
 		fi
 	done
-	rm -r "${D}"/usr/share/gpr/manifests || die
+	rm -rf "${D}"/usr/share/gpr/manifests
 	einstalldocs
 }
