@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-12-18)
+# EOL kernel with known vulnerabilities.  Please move to one of the LTS
+# branches.  Bug #829491.
+=sys-kernel/gentoo-kernel-5.14*
+=sys-kernel/gentoo-kernel-bin-5.14*
+=sys-kernel/vanilla-kernel-5.14*
+=virtual/dist-kernel-5.14*
+
 # Michał Górny <mgorny@gentoo.org> (2021-12-17)
 # Annoying package with deps pinned to old versions of packages.
 # All revdeps were eliminated.
@@ -404,14 +412,6 @@ x11-drivers/nvidia-drivers:0/vulkan
 media-libs/libpulse
 media-sound/pulseaudio-daemon
 >=media-sound/pulseaudio-15.0-r100
-
-# Michał Górny <mgorny@gentoo.org> (2021-08-28)
-# EOL kernel with known vulnerabilities.  Please move to 5.14 or one
-# of the LTS branches.  Bug #814464.
-=sys-kernel/gentoo-kernel-5.13*
-=sys-kernel/gentoo-kernel-bin-5.13*
-=sys-kernel/vanilla-kernel-5.13*
-=virtual/dist-kernel-5.13*
 
 # Mart Raudsepp <leio@gentoo.org> (2021-09-23)
 # Incompatible with c++17 abseil-cpp, no in-tree consumers yet
