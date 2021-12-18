@@ -7,9 +7,12 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit python-any-r1 scons-utils toolchain-funcs flag-o-matic
 
+MY_PN="${PN}-4"
+MY_P="${MY_PN}-${PV}"
+
 DESCRIPTION="Synchronous multi-master replication engine that provides the wsrep API"
 HOMEPAGE="https://galeracluster.com"
-SRC_URI="https://releases.galeracluster.com/galera-4/source/galera-4-${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://releases.galeracluster.com/${MY_PN}/source/${MY_P}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2 BSD"
 
 SLOT="0"
@@ -22,46 +25,41 @@ IUSE="cpu_flags_x86_sse4_2 garbd test"
 #   - https://github.com/codership/galera/issues/596
 RESTRICT="test"
 
-CDEPEND="
+COMMON_DEPEND="
 	dev-libs/openssl:0=
 	>=dev-libs/boost-1.41:0=
-	"
+"
 
-BDEPEND=">=sys-devel/gcc-4.4"
-
-DEPEND="${BDEPEND}
-	${CDEPEND}
+DEPEND="
+	${COMMON_DEPEND}
 	dev-libs/check
 	>=dev-cpp/asio-1.10.1[ssl(+)]
 	<dev-cpp/asio-1.12.0
-	"
+"
 
 #Run time only
-RDEPEND="${CDEPEND}"
+RDEPEND="${COMMON_DEPEND}"
 
 # Respect {C,LD}FLAGS.
 PATCHES=(
-	"${FILESDIR}"/${PN}-26.4.6-strip-extra-cflags.patch
-	"${FILESDIR}"/${PN}-26.4.8-respect-toolchain.patch
+	"${FILESDIR}/${PN}"-26.4.6-strip-extra-cflags.patch
+	"${FILESDIR}/${PN}"-26.4.8-respect-toolchain.patch
 )
 
-S="${WORKDIR}/galera-4-${PV}"
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
-
 	# Remove bundled dev-cpp/asio
-	rm -r "${S}/asio" || die
-
+	rm -r "${S}/asio" || die "Failed to remove bundled asio"
 	#Remove optional garbd daemon
 	if ! use garbd ; then
-		rm -r "${S}/garb" || die
+		rm -r "${S}/garb" || die "Failed to remove garbd daemon"
 	fi
 }
 
 src_configure() {
 	tc-export AR CC CXX OBJDUMP
-
 	# strict_build_flags=0 disables -Werror, -pedantic, -Weffc++,
 	# and -Wold-style-cast
 	MYSCONS=(
@@ -84,6 +82,6 @@ src_install() {
 		newinitd "${FILESDIR}/garb.init" garbd
 		doman man/garbd.8
 	fi
-	exeinto /usr/$(get_libdir)/${PN}
+	exeinto /usr/$(get_libdir)/"${PN}"
 	doexe libgalera_smm.so
 }
