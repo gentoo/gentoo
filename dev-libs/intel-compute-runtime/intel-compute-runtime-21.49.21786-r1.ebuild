@@ -15,15 +15,15 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="+l0 +vaapi"
 
 RDEPEND="
 	dev-libs/libnl:3
 	dev-libs/libxml2:2
-	>=dev-util/intel-graphics-compiler-1.0.8744
+	>=dev-util/intel-graphics-compiler-1.0.9389
 	>=dev-util/intel-graphics-system-controller-0.2.4
-	>=media-libs/gmmlib-21.2.1
+	>=media-libs/gmmlib-21.2.1:=
 	>=virtual/opencl-3
 	l0? ( >=dev-libs/level-zero-1.6.2 )
 	vaapi? (
