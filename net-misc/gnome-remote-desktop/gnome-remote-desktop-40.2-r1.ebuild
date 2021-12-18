@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 inherit gnome.org gnome2-utils meson python-any-r1 systemd xdg
 
 DESCRIPTION="Remote desktop daemon for GNOME using pipewire"
@@ -18,7 +18,7 @@ RESTRICT="test" # Tests run xvfb-run directly
 DEPEND="
 	x11-libs/cairo
 	>=dev-libs/glib-2.68:2
-	>=media-video/pipewire-0.3.0:0/0.3
+	>=media-video/pipewire-0.3.0:=
 	app-crypt/libsecret
 	x11-libs/libnotify
 	rdp? (
