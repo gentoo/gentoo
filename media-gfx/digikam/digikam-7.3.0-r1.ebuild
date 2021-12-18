@@ -108,7 +108,10 @@ RDEPEND="${COMMON_DEPEND}
 	panorama? ( media-gfx/hugin )
 "
 
-PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-cmake.patch"
+	"${FILESDIR}/${P}-akonadi-21.12.0.patch"
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
