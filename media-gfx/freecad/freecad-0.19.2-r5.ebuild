@@ -68,7 +68,7 @@ RDEPEND="
 	sci-libs/flann[openmp]
 	sci-libs/hdf5:=[fortran,zlib]
 	>=sci-libs/med-4.0.0-r1[python,${PYTHON_SINGLE_USEDEP}]
-	sci-libs/opencascade:=[vtk(+)]
+	<sci-libs/opencascade-7.6.0:=[vtk(+)]
 	sci-libs/orocos_kdl:=
 	sys-libs/zlib
 	virtual/glu
