@@ -127,7 +127,7 @@ zstd-safe-2.0.5+zstd.1.4.5
 zstd-sys-1.4.17+zstd.1.4.5
 "
 
-inherit bash-completion-r1 cargo elisp-common distutils-r1 flag-o-matic multiprocessing
+inherit bash-completion-r1 cargo elisp-common distutils-r1 flag-o-matic multiprocessing toolchain-funcs
 
 DESCRIPTION="Scalable distributed SCM"
 HOMEPAGE="https://www.mercurial-scm.org/"
@@ -269,6 +269,13 @@ src_test() {
 	rm -f test-convert-tla*		# GNU Arch tla
 	rm -f test-largefiles*		# tends to time out
 	rm -f test-https*			# requires to support tls1.0
+	if [[ $(tc-endian) == "big" ]]; then
+		# tests no working on big-endian
+		# https://bz.mercurial-scm.org/show_bug.cgi?id=6607
+		rm -f test-clone-uncompressed.t
+		rm -f test-generaldelta.t
+		rm -f test-persistent-nodemap.t
+	fi
 	if [[ ${EUID} -eq 0 ]]; then
 		einfo "Removing tests which require user privileges to succeed"
 		rm -f test-convert*
