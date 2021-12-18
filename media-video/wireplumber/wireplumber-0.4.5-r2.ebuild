@@ -17,7 +17,7 @@ else
 	# One commit is in git, the rest are in a PR which should be merged soon
 	# bug #817881
 	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-0.4.5-endianness-fixes.patch.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="Replacement for pipewire-media-session"
