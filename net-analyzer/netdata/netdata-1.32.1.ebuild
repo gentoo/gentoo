@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_8,3_9} )
+PYTHON_COMPAT=( python{3_8,3_9,3_10} )
 
 inherit autotools fcaps linux-info python-single-r1 systemd
 
