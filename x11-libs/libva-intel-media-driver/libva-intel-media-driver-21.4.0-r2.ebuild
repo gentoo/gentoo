@@ -23,21 +23,21 @@ fi
 DESCRIPTION="Intel Media Driver for VAAPI (iHD)"
 HOMEPAGE="https://github.com/intel/media-driver"
 
-LICENSE="MIT BSD redistributable? ( no-source-code )"
+LICENSE="MIT BSD"
 SLOT="0"
-IUSE="+redistributable test X"
+IUSE="+custom-cflags set-as-default test X"
 
 RESTRICT="!test? ( test )"
 
 DEPEND=">=media-libs/gmmlib-21.3.1:=
-	<media-libs/gmmlib-21.3.4:=
+	media-libs/gmmlib:0/0
 	>=x11-libs/libva-2.13.0[X?]
 "
 RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20.2.0_x11_optional.patch
-	"${FILESDIR}"/${PN}-21.4.2-Remove-unwanted-CFLAGS.patch
+	"${FILESDIR}"/${PN}-21.2.2_custom_cflags.patch
 	"${FILESDIR}"/${PN}-20.4.5_testing_in_src_test.patch
 )
 
@@ -48,9 +48,18 @@ src_configure() {
 		-DBUILD_TYPE=Release
 		-DPLATFORM=linux
 		-DUSE_X11=$(usex X)
-		-DENABLE_NONFREE_KERNELS=$(usex redistributable)
 		-DLATEST_CPP_NEEDED=ON # Seems to be the best option for now
+		-DOVERRIDE_COMPILER_FLAGS=$(usex !custom-cflags)
 	)
-	local CMAKE_BUILD_TYPE="Release"
+
 	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+
+	if use set-as-default ; then
+		echo 'LIBVA_DRIVER_NAME="iHD"' > "${T}/55libva-intel-media-driver" || die
+		doenvd "${T}/55libva-intel-media-driver"
+	fi
 }
