@@ -22,7 +22,7 @@ SLOT="0/$(ver_cut 1-2)"
 
 RDEPEND="sys-process/numactl"
 DEPEND="${RDEPEND}"
-BDEPEND="x11-libs/libdrm[amdgpu]"
+BDEPEND="x11-libs/libdrm[video_cards_amdgpu]"
 
 CMAKE_BUILD_TYPE=Release
 
