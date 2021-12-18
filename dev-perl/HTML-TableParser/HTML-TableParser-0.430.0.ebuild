@@ -25,3 +25,5 @@ BDEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.320.0
 	)
 "
+
+PATCHES=( "${FILESDIR}/${P}-tests.patch" )
