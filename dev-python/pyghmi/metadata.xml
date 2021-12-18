@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pyghmi</remote-id>
-		<remote-id type="github">openstack/pyghmi</remote-id>
+		<remote-id type="github">openstack-archive/pyghmi</remote-id>
 	</upstream>
 </pkgmetadata>
