@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Stem is a Python controller library for Tor"
 HOMEPAGE="https://stem.torproject.org"
 COMMIT="57364fae7269ec562c5fc8cdb073ff9463d9a0f0"
-SRC_URI="https://github.com/torproject/stem/archive/${COMMIT}.tar.gz"
+SRC_URI="https://github.com/torproject/stem/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="LGPL-3"
