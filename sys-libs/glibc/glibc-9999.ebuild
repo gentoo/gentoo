@@ -415,6 +415,10 @@ setup_flags() {
 	# #492892
 	filter-flags -frecord-gcc-switches
 
+	# #829583
+	filter-lfs-flags
+	filter-flags -D_TIME_BITS=64
+
 	unset CBUILD_OPT CTARGET_OPT
 	if use multilib ; then
 		CTARGET_OPT=$(get_abi_CTARGET)
