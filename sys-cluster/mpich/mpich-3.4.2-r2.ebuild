@@ -117,6 +117,7 @@ multilib_src_configure() {
 		--with-fiprovider-libdir="$(get_libdir)" \
 		${c} \
 		--with-pm=hydra \
+		--without-ze \
 		--with-device=ch3 \
 		--disable-fast \
 		--enable-versioning \
