@@ -61,6 +61,7 @@ src_prepare() {
 	local knots_patchdir="${WORKDIR}/${KNOTS_P}.patches/"
 
 	eapply "${knots_patchdir}/${KNOTS_P}_p1-syslibs.patch"
+	eapply "${FILESDIR}/${PV}-fix_build_without_leveldb.patch"
 
 	if use knots; then
 		eapply "${knots_patchdir}/${KNOTS_P}_p2-fixes.patch"
