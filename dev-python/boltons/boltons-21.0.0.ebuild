@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mahmoud/boltons/archive/refs/tags/${PV}.tar.gz -> ${
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs \
@@ -23,3 +23,8 @@ DOCS=( CHANGELOG.md README.md TODO.rst )
 PATCHES=(
 	"${FILESDIR}"/${P}-python3.10.patch
 )
+
+python_test() {
+	# failure in test_exception_info with pytest-qt
+	epytest -p no:pytest-qt
+}

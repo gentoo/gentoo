@@ -34,6 +34,8 @@ BDEPEND="${RDEPEND}
 	)
 "
 
+DIST_TEST=do
+
 src_test() {
 	perl_rm_files "t/pod.t" "t/pod_coverage.t" "t/test_changes.t" \
 		"t/test_kwalitee.t" "t/test_meta_json.t"

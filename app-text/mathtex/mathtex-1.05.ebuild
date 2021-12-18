@@ -11,7 +11,7 @@ SRC_URI="https://mirrors.ctan.org/support/${PN}.zip -> ${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="png"
 
 RDEPEND="app-text/dvipng

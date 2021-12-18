@@ -33,6 +33,62 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-12-17)
+# Annoying package with deps pinned to old versions of packages.
+# All revdeps were eliminated.
+# Removal on 2022-01-16.  Bug #829410.
+dev-python/hacking
+
+# William Hubbs <williamh@gentoo.org> (2021-12-15)
+# This is a go module and is included in projects directly.
+# Bug #819639; masked for removal on 2022-01-15.
+dev-go/blackfriday
+
+# Marco Scardovi <marco@scardovi.com> (2021-12-15)
+# Outdated, we are the only one who still have a package for them.
+# Removal in 30 days. # Bug #829216
+sys-cluster/mpe2
+sci-biology/gibbs
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-12-14)
+# AT&T decided to roll back community changes in March 2020
+# for version 2020.x.x
+# This version is no longer maintained.
+# New version is maintained at https://github.com/ksh93/ksh
+# and is available as app-shells/ksh-1.0.0_beta1 at time of writing.
+~app-shells/ksh-2020.0.0
+
+# Marco Scardovi <marco@scardovi.com> (2021-12-13)
+# Outdated, we are the only one who still have a package for it.
+# Docker can mount these NFS, AWS EFS, Ceph & Samba/CIFS volumes
+# by itself now. Removal in 30 days. Bug #829068
+net-fs/docker-volume-netshare
+
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-12-07)
+# Masked for testing
+~sci-libs/vtk-9.1.0
+
+# Michał Górny <mgorny@gentoo.org> (2021-12-13)
+# Unmaintained in Gentoo.  Requires media-libs/libpng[apng].
+# Removal on 2022-01-12.  Bug #824830.
+media-gfx/apngasm
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-12-13)
+# Outdated, all versions in core Perl are newer. Removal in 30 days.
+perl-core/IO-Zlib
+perl-core/Module-CoreList
+perl-core/Test
+perl-core/Text-Balanced
+perl-core/Text-ParseWords
+perl-core/Thread-Semaphore
+perl-core/Time-HiRes
+perl-core/version
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-12)
+# log4j-2.15.0 depends on masked >=virtual/{jdk,jre}-11
+>=dev-java/log4j-api-java9-2.15.0
+>=dev-java/log4j-api-2.15.0
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-12-10)
 # As of MultiMC version 0.6.14 source built versions of MultiMC are no longer
 # usable for anything but development. The sources have been de-branded and
@@ -45,12 +101,6 @@ games-action/multimc
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-10)
 # Package without consumers. Bug #828740.  Removal in 30 days.
 www-apache/mod_caucho
-
-# Lars Wendler <polynomial-c@gentoo.org> (2021-12-07)
-# Fails to build with recent kernel headers (bug #801688).
-# Upstream is gone for a long time. Masked for removal in 30 days.
-# Users should switch over to net-dns/dnsmasq which provides similar features.
-net-dns/pdnsd
 
 # David Seifert <soap@gentoo.org> (2021-12-06)
 # Ancient release, EAPI 5, downloads random data,
@@ -321,67 +371,10 @@ dev-java/piccolo2d
 ~sys-kernel/vanilla-kernel-5.14.19
 ~virtual/dist-kernel-5.14.19
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-11-16)
-# Outdated java package, uses EAPI 5, no revdeps,
-# no other distro is packaging this.
-# Removal on 2021-12-16. Bug #819420.
-media-video/google2srt
-
-# Uses EAPI 5, multiple bugs reported, fails to compile,
-# no revdeps, upstream doesn't do regular releases,
-# no other distro is packaging this
-# Removal on 2021-12-16. Bug #770610. Bug #813873. Bug #810682.
-net-libs/onion
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-15)
 # bug #771693 (multiple CVEs).
 # Library still needed for bumping dev-java/log4j
 =dev-java/jackson-2.9.10
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-14)
-# java packages without consumers, Removal in 30 days.
-dev-java/milton-mail-api
-dev-java/milton-api
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-13)
-# java package without consumers,
-# bug_808948 (CVE-2021-37714).  Removal in 30 days.
-dev-java/jsoup
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-11-13)
-# Broken, no maintainer, outdated, multiple bugs reported, EAPI 5,
-# only revdep sys-fs/tmsu fails to build with go 1.16.
-# Removal on 2021-12-13. Bug #819612. Bug #771054.
-dev-libs/go-fuse
-sys-fs/tmsu
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-11-13)
-# Outdated, multiple bugs reported, uses EAPI 5, no revdeps.
-# Please use sci-geosciences/josm-bin instead.
-# Removal on 2021-12-13. Bug #819129.
-sci-geosciences/josm
-
-# Hans de Graaff <graaff@gentoo.org> (2021-11-13)
-# No longer maintained upstream. Stuck on an old version 4.x of d3
-# while d3 upstream is now on 7.x. Probably best to use directly via
-# npm or yarn.
-# Masked for removal on 2021-12-13.
-dev-ruby/d3_rails
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-13)
-# java package without consumers, bug #787338. Removal in 30 days.
-dev-db/db-je
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-13)
-# depends on deprecated jdk / jre, bug #787449
-# stuck with EAPI 5, latest release in 2005
-# Removal in 30 days.
-net-analyzer/neti
-
-# John Helmert III <ajak@gentoo.org> (2021-11-13)
-# Unmaintained in Gentoo, open security bug, many unfixed otther
-# bugs. Removal on 2021-12-13, bug #764719.
-mail-client/cone
 
 # Mart Raudsepp <leio@gentoo.org> (2021-11-11)
 # Needs testing to ensure valac-0.54 works for existing packages
@@ -465,15 +458,6 @@ net-libs/libsoup:3.0
 # Requires OpenSSL >= 3.0.0
 # Masked until dev-libs/openssl-3.0* is unmasked
 =dev-libs/gost-engine-3.0*
-
-# Ionen Wolkens <ionen@gentoo.org> (2021-09-03)
-# Known to break plasma, and several other applications on EGLStream
-# wayland, and egl-wayland-1.1.7-r1 is still usable with newer drivers.
-# While it does not prevent using wlroots-based compositors with GBM,
-# it's needed to use some features with it (unmask if wanted).
-# https://github.com/NVIDIA/egl-wayland/issues/40
-# https://github.com/NVIDIA/egl-wayland/issues/41
->=gui-libs/egl-wayland-1.1.8
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2021-08-26)
 # Preparing for final 5.0.0 release

@@ -1,0 +1,11 @@
+--- a/doc/CMakeLists.txt	2021-12-12 11:29:13.249013335 +0100
++++ b/doc/CMakeLists.txt	2021-12-17 11:45:36.458111658 +0100
+@@ -30,7 +30,7 @@
+     if (UNIX AND NOT APPLE)
+         install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${MANPAGE}
+                 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+-        install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.ja.1
++        install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.ja.1
+                 DESTINATION ${CMAKE_INSTALL_MANDIR}/ja/man1
+                 RENAME ${MANPAGE})
+         foreach(_lang IN ITEMS cs en es fr ja)

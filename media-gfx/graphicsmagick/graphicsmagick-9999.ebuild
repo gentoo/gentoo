@@ -8,8 +8,6 @@ inherit autotools toolchain-funcs
 MY_P=${P/graphicsm/GraphicsM}
 DESCRIPTION="Collection of tools and libraries for many image formats"
 HOMEPAGE="http://www.graphicsmagick.org/ http://hg.code.sf.net/p/graphicsmagick/code/"
-LICENSE="MIT"
-SLOT="0/${PV%.*}"
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit mercurial
@@ -17,15 +15,18 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
 	S="${WORKDIR}/${MY_P}"
+
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
-IUSE="bzip2 +cxx debug dynamic-loading fpx imagemagick jbig jpeg lcms lzma
-	openmp perl png postscript q16 q32 static-libs svg threads tiff truetype
-	webp wmf X zlib"
+LICENSE="MIT"
+SLOT="0/${PV%.*}"
 
-RDEPEND="
-	dev-libs/libltdl:0
+IUSE="bzip2 +cxx debug dynamic-loading fpx imagemagick jbig jpeg lcms lzma"
+IUSE+=" openmp perl png postscript q16 q32 static-libs svg threads tiff truetype"
+IUSE+=" webp wmf X zlib"
+
+RDEPEND="dev-libs/libltdl:0
 	bzip2? ( app-arch/bzip2 )
 	fpx? ( media-libs/libfpx )
 	imagemagick? ( !media-gfx/imagemagick )
@@ -58,6 +59,7 @@ PATCHES=(
 
 src_prepare() {
 	default
+
 	eautoreconf
 }
 
@@ -106,16 +108,19 @@ src_configure() {
 		$(use_with zlib)
 		$(use_with X x)
 	)
+
 	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
 	default
+
 	use perl && emake perl-build
 }
 
 src_test() {
 	unset DISPLAY # some perl tests fail when DISPLAY is set
+
 	default
 }
 

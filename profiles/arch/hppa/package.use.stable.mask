@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-12-15)
+# Unstable dependencies (dev-libs/libnl, sys-cluster/rdma-core)
+net-libs/libpcap netlink rdma
+
 # Sam James <sam@gentoo.org> (2021-11-17)
 # x11-libs/libXvMC is not marked stable on HPPA
 # media-libs/mesa is not marked stable on HPPA

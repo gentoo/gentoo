@@ -16,7 +16,7 @@ SRC_URI="https://github.com/autotest/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> 
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86"
+KEYWORDS="amd64 ~mips x86"
 
 RDEPEND="dev-perl/IO-Multiplex
 	dev-perl/URI"

@@ -37,7 +37,7 @@ SLOT="0/5"
 IUSE="custom-cflags debug dist-kernel kernel-builtin minimal nls pam python +rootfs test-suite"
 
 DEPEND="
-	net-libs/libtirpc
+	net-libs/libtirpc:=
 	sys-apps/util-linux
 	sys-libs/zlib
 	virtual/libudev:=
@@ -78,6 +78,7 @@ RDEPEND="${DEPEND}
 		!<sys-kernel/genkernel-3.5.1.1
 	)
 	test-suite? (
+		app-shells/ksh
 		sys-apps/kmod[tools]
 		sys-apps/util-linux
 		sys-devel/bc
@@ -197,7 +198,7 @@ src_configure() {
 		--with-pamconfigsdir="${EPREFIX}/unwanted_files"
 		--with-pammoduledir="$(getpam_mod_dir)"
 		--with-systemdunitdir="$(systemd_get_systemunitdir)"
-		--with-systemdpresetdir="${EPREFIX}/lib/systemd/system-preset"
+		--with-systemdpresetdir="$(systemd_get_systempresetdir)"
 		--with-vendor=gentoo
 		# Building zfs-mount-generator.c on musl breaks as strndupa
 		# isn't available. But systemd doesn't support musl anyway, so
@@ -276,11 +277,13 @@ pkg_postinst() {
 	fi
 
 	if systemd_is_booted || has_version sys-apps/systemd; then
-		einfo "Please refer to ${EROOT}/lib/systemd/system-preset/50-zfs.preset"
+		einfo "Please refer to ${EROOT}/$(systemd_get_systempresetdir)/50-zfs.preset"
 		einfo "for default zfs systemd service configuration"
 	else
 		[[ -e "${EROOT}/etc/runlevels/boot/zfs-import" ]] || \
 			einfo "You should add zfs-import to the boot runlevel."
+		[[ -e "${EROOT}/etc/runlevels/boot/zfs-load-key" ]] || \
+			einfo "You should add zfs-load-key to the boot runlevel."
 		[[ -e "${EROOT}/etc/runlevels/boot/zfs-mount" ]]|| \
 			einfo "You should add zfs-mount to the boot runlevel."
 		[[ -e "${EROOT}/etc/runlevels/default/zfs-share" ]] || \

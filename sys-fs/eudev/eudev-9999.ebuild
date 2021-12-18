@@ -1,17 +1,17 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-KV_min=2.6.39
+KV_MIN=2.6.39
 
-inherit autotools linux-info multilib multilib-minimal toolchain-funcs
+inherit autotools linux-info multilib-minimal toolchain-funcs
 
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="https://github.com/gentoo/eudev.git"
+	EGIT_REPO_URI="https://github.com/eudev-project/eudev.git"
 	inherit git-r3
 else
-	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz"
+	SRC_URI="https://github.com/eudev-project/eudev/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
@@ -20,36 +20,30 @@ HOMEPAGE="https://github.com/gentoo/eudev"
 
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
-IUSE="+hwdb +kmod introspection rule-generator selinux static-libs test"
+IUSE="+kmod introspection rule-generator selinux static-libs test"
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND=">=sys-apps/util-linux-2.20
+DEPEND=">=sys-apps/util-linux-2.20
+	>=sys-kernel/linux-headers-${KV_MIN}
 	virtual/libcrypt:=
 	introspection? ( >=dev-libs/gobject-introspection-1.38 )
 	kmod? ( >=sys-apps/kmod-16 )
 	selinux? ( >=sys-libs/libselinux-2.1.9 )
-	!<sys-libs/glibc-2.11
 	!sys-apps/gentoo-systemd-integration
 	!sys-apps/systemd"
-DEPEND="${COMMON_DEPEND}
-	dev-util/gperf
-	virtual/os-headers
-	virtual/pkgconfig
-	>=sys-devel/make-3.82-r4
-	>=sys-kernel/linux-headers-${KV_min}
-	test? ( app-text/tree dev-lang/perl )"
-
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	acct-group/input
 	acct-group/kvm
 	acct-group/render
-	!<sys-fs/lvm2-2.02.103
-	!<sec-policy/selinux-base-2.20120725-r10
 	!sys-fs/udev
-	!sys-apps/systemd"
-
-PDEPEND=">=sys-fs/udev-init-scripts-26
-	hwdb? ( >=sys-apps/hwids-20140304[udev] )"
+	!sys-apps/systemd
+	!sys-apps/hwids[udev]"
+BDEPEND="dev-util/gperf
+	virtual/os-headers
+	virtual/pkgconfig
+	>=sys-devel/make-3.82-r4
+	test? ( app-text/tree dev-lang/perl )"
+PDEPEND=">=sys-fs/udev-init-scripts-26"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/udev.h
@@ -75,10 +69,10 @@ pkg_setup() {
 
 	# These are required kernel options, but we don't error out on them
 	# because you can build under one kernel and run under another.
-	if kernel_is lt ${KV_min//./ }; then
+	if kernel_is lt ${KV_MIN//./ }; then
 		ewarn
 		ewarn "Your current running kernel version ${KV_FULL} is too old to run ${P}."
-		ewarn "Make sure to run udev under kernel version ${KV_min} or above."
+		ewarn "Make sure to run udev under kernel version ${KV_MIN} or above."
 		ewarn
 	fi
 }
@@ -86,15 +80,17 @@ pkg_setup() {
 src_prepare() {
 	# change rules back to group uucp instead of dialout for now
 	sed -e 's/GROUP="dialout"/GROUP="uucp"/' -i rules/*.rules \
-	|| die "failed to change group dialout to uucp"
+		|| die "failed to change group dialout to uucp"
 
-	eapply_user
+	default
 	eautoreconf
 }
 
 multilib_src_configure() {
-	tc-export CC #463846
-	export cc_cv_CFLAGS__flto=no #502950
+	# bug #463846
+	tc-export CC
+	# bug #502950
+	export cc_cv_CFLAGS__flto=no
 
 	# Keep sorted by ./configure --help and only pass --disable flags
 	# when *required* to avoid external deps or unnecessary compile
@@ -113,7 +109,6 @@ multilib_src_configure() {
 		--with-rootlibexecdir="${EPREFIX}"/lib/udev
 		--enable-split-usr
 		--enable-manpages
-		--disable-hwdb
 	)
 
 	# Only build libudev for non-native_abi, and only install it to libdir,
@@ -134,8 +129,10 @@ multilib_src_configure() {
 			--disable-kmod
 			--disable-selinux
 			--disable-rule-generator
+			--disable-hwdb
 		)
 	fi
+
 	ECONF_SOURCE="${S}" econf "${econf_args[@]}"
 }
 
@@ -145,14 +142,6 @@ multilib_src_compile() {
 	else
 		emake -C src/shared
 		emake -C src/libudev
-	fi
-}
-
-multilib_src_install() {
-	if multilib_is_native_abi; then
-		emake DESTDIR="${D}" install
-	else
-		emake -C src/libudev DESTDIR="${D}" install
 	fi
 }
 
@@ -166,12 +155,21 @@ multilib_src_test() {
 		addread /sys
 		addwrite /dev
 		addwrite /run
+
 		default_src_test
 	fi
 }
 
+multilib_src_install() {
+	if multilib_is_native_abi; then
+		emake DESTDIR="${D}" install
+	else
+		emake -C src/libudev DESTDIR="${D}" install
+	fi
+}
+
 multilib_src_install_all() {
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 
 	insinto /lib/udev/rules.d
 	doins "${FILESDIR}"/40-gentoo.rules
@@ -180,12 +178,12 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
-	mkdir -p "${EROOT}"run
+	mkdir -p "${EROOT}"/run
 
 	# "losetup -f" is confused if there is an empty /dev/loop/, Bug #338766
 	# So try to remove it here (will only work if empty).
-	rmdir "${EROOT}"dev/loop 2>/dev/null
-	if [[ -d ${EROOT}dev/loop ]]; then
+	rmdir "${EROOT}"/dev/loop 2>/dev/null
+	if [[ -d ${EROOT}/dev/loop ]]; then
 		ewarn "Please make sure your remove /dev/loop,"
 		ewarn "else losetup may be confused when looking for unused devices."
 	fi
@@ -204,16 +202,17 @@ pkg_postinst() {
 		fi
 	done
 
-	if use hwdb && has_version 'sys-apps/hwids[udev]'; then
-		udevadm hwdb --update --root="${ROOT%/}"
+	if has_version 'sys-apps/hwids[udev]'; then
+		udevadm hwdb --update --root="${ROOT}"
 
 		# https://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
 		# reload database after it has be rebuilt, but only if we are not upgrading
 		# also pass if we are -9999 since who knows what hwdb related changes there might be
-		if [[ ${rvres} == doit* ]] && [[ ${ROOT%/} == "" ]] && [[ ${PV} != "9999" ]]; then
+		if [[ ${rvres} == doit* ]] && [[ -z ${ROOT} ]] && [[ ${PV} != "9999" ]]; then
 			udevadm control --reload
 		fi
 	fi
+
 	if [[ ${rvres} != doitnew ]]; then
 		ewarn
 		ewarn "You need to restart eudev as soon as possible to make the"

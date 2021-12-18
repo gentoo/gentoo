@@ -24,7 +24,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="PSF-2"
 SLOT="${PYVER}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="bluetooth build examples gdbm hardened lto +ncurses pgo +readline +sqlite +ssl test tk wininst"
+IUSE="bluetooth build examples gdbm hardened libedit lto +ncurses pgo +readline +sqlite +ssl test tk wininst"
 RESTRICT="!test? ( test )"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
@@ -42,7 +42,10 @@ RDEPEND="app-arch/bzip2:=
 	virtual/libintl
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
-	readline? ( >=sys-libs/readline-4.1:= )
+	readline? (
+		!libedit? ( >=sys-libs/readline-4.1:= )
+		libedit? ( dev-libs/libedit:= )
+	)
 	sqlite? ( >=dev-db/sqlite-3.3.8:3= )
 	ssl? ( >=dev-libs/openssl-1.1.1:= )
 	tk? (
@@ -176,6 +179,7 @@ src_configure() {
 
 		$(use_with lto)
 		$(use_enable pgo optimizations)
+		$(use_with readline readline "$(usex libedit editline readline)")
 	)
 
 	OPT="" econf "${myeconfargs[@]}"

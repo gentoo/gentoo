@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Sniff out which async library your code is running under"
@@ -20,11 +20,7 @@ KEYWORDS="amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 
 distutils_enable_tests pytest
 
-python_test() {
-	local deselect=(
-		# curio is not packaged
-		sniffio/_tests/test_sniffio.py::test_curio
-	)
-
-	epytest ${deselect[@]/#/--deselect }
-}
+EPYTEST_DESELECT=(
+	# curio is not packaged
+	sniffio/_tests/test_sniffio.py::test_curio
+)

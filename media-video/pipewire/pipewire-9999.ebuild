@@ -12,14 +12,15 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Multimedia processing graphs"
 HOMEPAGE="https://pipewire.org/"
 
 LICENSE="MIT LGPL-2.1+ GPL-2"
-SLOT="0/0.3"
+# ABI was broken in 0.3.42 for https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/49
+SLOT="0/0.4"
 IUSE="bluetooth doc echo-cancel extra gstreamer jack-client jack-sdk pipewire-alsa systemd test v4l"
 
 # Once replacing system JACK libraries is possible, it's likely that

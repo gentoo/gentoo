@@ -4,9 +4,9 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
-inherit distutils-r1 virtualx
+inherit distutils-r1
 
 MY_P=pytest-codeblocks-${PV}
 DESCRIPTION="Extract code blocks from markdown"
@@ -14,16 +14,10 @@ HOMEPAGE="https://github.com/nschloe/pytest-codeblocks/"
 SRC_URI="
 	https://github.com/nschloe/pytest-codeblocks/archive/v${PV}.tar.gz
 		-> ${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
-RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/importlib_metadata[${PYTHON_USEDEP}]
-	' python3_7)
-"
 
 distutils_enable_tests pytest

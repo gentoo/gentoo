@@ -8,7 +8,7 @@ inherit cmake systemd
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/Icinga/icinga2/commit/8cde21ddfd66a0fcfac704544a0fd7990cfc94ec.patch -> ${P}-9092.patch"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Icinga/icinga2.git"

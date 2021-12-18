@@ -50,6 +50,11 @@ BDEPEND="
 	app-crypt/gcr[vala]
 "
 
+PATCHES=(
+	# Fix build against vala-0.52.8. Isn't needed once we use 0.54+ or drop vala:0.52 slots
+	"${FILESDIR}"/${PV}-vala-0.52.8-compat.patch
+)
+
 src_prepare() {
 	xdg_src_prepare
 	vala_src_prepare

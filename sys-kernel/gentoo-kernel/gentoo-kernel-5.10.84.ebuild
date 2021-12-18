@@ -39,7 +39,7 @@ SRC_URI+="
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 IUSE="debug hardened"
 REQUIRED_USE="arm? ( savedconfig )"
 
@@ -50,7 +50,10 @@ BDEPEND="
 PDEPEND="
 	>=virtual/dist-kernel-${PV}"
 
-QA_FLAGS_IGNORED="usr/src/linux-.*/scripts/gcc-plugins/.*.so"
+QA_FLAGS_IGNORED="
+	usr/src/linux-.*/scripts/gcc-plugins/.*.so
+	usr/src/linux-.*/vmlinux
+"
 
 src_prepare() {
 	local PATCHES=(

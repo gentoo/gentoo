@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome2.eclass
 # @MAINTAINER:
 # gnome@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @PROVIDES: gnome2-utils
 # @BLURB: Provides phases for Gnome/Gtk+ based packages.
 # @DESCRIPTION:
@@ -21,14 +21,14 @@ GNOME2_EAUTORECONF=${GNOME2_EAUTORECONF:-""}
 [[ ${EAPI} == [56] ]] && inherit eutils ltprune
 inherit libtool gnome.org gnome2-utils xdg
 
-case ${EAPI:-0} in
+case ${EAPI} in
 	5)
 		EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install pkg_preinst pkg_postinst pkg_postrm
 		;;
-	6|7)
+	6|7|8)
 		EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install pkg_preinst pkg_postinst pkg_postrm
 		;;
-	*) die "EAPI=${EAPI} is not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # @ECLASS-VARIABLE: ELTCONF
@@ -96,7 +96,7 @@ gnome2_src_unpack() {
 # Prepare environment for build, fix build of scrollkeeper documentation,
 # run elibtoolize.
 gnome2_src_prepare() {
-	xdg_src_prepare
+	[[ ${EAPI} != 5 ]] && default
 
 	# Prevent assorted access violations and test failures
 	gnome2_environment_reset

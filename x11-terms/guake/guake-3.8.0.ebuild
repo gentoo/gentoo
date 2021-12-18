@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Guake/guake/archive/refs/tags/${PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 arm x86"
 IUSE="utempter"
 
 RDEPEND="
@@ -46,14 +46,13 @@ python_prepare_all() {
 
 	emake PREFIX="${EPREFIX}/usr" prepare-install # paths.py.in -> paths.py
 
-	rm pyproject.toml || die # pytest fails if toml isn't installed
-
 	export PBR_VERSION=${PV} # needed if using github's tarball
 }
 
 python_test() {
-	# uses /usr/bin/bash if SHELL is not exported
-	SHELL=${SHELL} virtx distutils-r1_python_test
+	# - uses /usr/bin/bash if SHELL is not exported
+	# - pytest-xvfb fails with Terminated, virtx alone works
+	SHELL=${SHELL} virtx epytest -p no:xvfb
 }
 
 python_install() {

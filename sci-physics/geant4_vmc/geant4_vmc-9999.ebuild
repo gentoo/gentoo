@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -28,7 +28,7 @@ RDEPEND="
 	sci-physics/vmc:=[c++17]
 	vgm? ( sci-physics/vgm:= )"
 DEPEND="${RDEPEND}"
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-doc/doxygen[dot] )"
 RESTRICT="
 	!examples? ( test )
 	!geant3? ( test )

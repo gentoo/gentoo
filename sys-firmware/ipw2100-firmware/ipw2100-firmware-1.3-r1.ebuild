@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${MY_P}.tgz"
 
 LICENSE="ipw2100-fw"
 SLOT="${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 S=${WORKDIR}
 

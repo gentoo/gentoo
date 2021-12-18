@@ -12,7 +12,7 @@ SRC_URI="https://github.com/encode/starlette/archive/refs/tags/${PV}.tar.gz -> $
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 # Needs fixing with trio deprecations (dies on ModuleWithDeprecations)
 RESTRICT="test"

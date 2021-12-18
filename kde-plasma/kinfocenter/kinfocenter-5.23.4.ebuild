@@ -15,7 +15,7 @@ SRC_URI+=" https://www.gentoo.org/assets/img/logo/gentoo-3d-small.png -> glogo-s
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 IUSE="gles2-only ieee1394 +opengl +pci usb wayland +X"
 
 REQUIRED_USE="opengl? ( X ) wayland? ( || ( opengl gles2-only ) )"
@@ -75,6 +75,13 @@ src_configure() {
 	fi
 
 	ecm_src_configure
+}
+
+src_test() {
+	local myctestargs=(
+		-E "smbmountmodeltest"
+	)
+	ecm_src_test
 }
 
 src_install() {
