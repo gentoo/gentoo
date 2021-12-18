@@ -25,18 +25,18 @@ DEPEND="
 	>=app-crypt/gcr-3.7.5[introspection]
 	>=dev-libs/glib-2.68:2
 	>=dev-libs/gobject-introspection-1.49.1:=
-	>=dev-libs/gjs-1.69.2
+	>=dev-libs/gjs-1.65.1
 	>=x11-libs/gtk+-3.15.0:3[introspection]
-	>=x11-wm/mutter-41.0:0/9[introspection]
+	>=x11-wm/mutter-40.0:0/8[introspection]
 	>=sys-auth/polkit-0.100[introspection]
-	>=gnome-base/gsettings-desktop-schemas-41_alpha[introspection]
+	>=gnome-base/gsettings-desktop-schemas-3.33.1[introspection]
 	>=x11-libs/startup-notification-0.11
-	>=app-i18n/ibus-1.5.19
+	>=app-i18n/ibus-1.5.2
 	>=gnome-base/gnome-desktop-3.35.90:3=[introspection]
 	bluetooth? ( >=net-wireless/gnome-bluetooth-3.9[introspection] )
 	>=media-libs/gstreamer-0.11.92:1.0
 	media-libs/gst-plugins-base:1.0
-	>=media-video/pipewire-0.3.0:0/0.3
+	>=media-video/pipewire-0.3.0:=
 	networkmanager? (
 		>=net-misc/networkmanager-1.10.4:=[introspection]
 		net-libs/libnma[introspection]
@@ -72,7 +72,7 @@ DEPEND="
 #  for i in `rg -INUo 'const(?s).*imports.gi' |cut -d= -f1 |cut -c7- |sort -u`; do echo $i ;done |cut -d, -f1 |sort -u
 # or
 #  rg -INUo 'const(?s).*imports.gi' |cut -d= -f1 |cut -c7- | sed -e 's:[{}]::g' | awk '{$1=$1; print}' | awk -F',' '{$1=$1;print}' | tr ' ' '\n' | sort -u | sed -e 's/://g'
-# These will give a lot of unnecessary things due to greedy matching (TODO), and `(?s).*?` doesn't seem to work as desired.
+# These will give a lot of unnecessary things due to greey matching (TODO), and `(?s).*?` doesn't seem to work as desired.
 # Compare with `grep -rhI 'imports.gi.versions' |sort -u` for any SLOT requirements
 # Each block:
 # 1. Introspection stuff needed via imports.gi (those that build time check may be listed above already)
@@ -154,18 +154,15 @@ src_configure() {
 		-Dextensions_app=true
 		$(meson_use gtk-doc gtk_doc)
 		-Dman=true
-		$(meson_use test tests)
 		$(meson_use networkmanager)
 		$(meson_use systemd) # this controls journald integration and desktop file user services related property only as of 3.34.4
 		# (structured logging and having gnome-shell launched apps use its own identifier instead of gnome-session)
 		# suspend support is runtime optional via /run/systemd/seats presence and org.freedesktop.login1.Manager dbus interface; elogind should provide what's necessary
-		-Dsoup2=true # libslot SLOT needs to match with what libgweather is using
 	)
 	meson_src_configure
 }
 
 src_test() {
-	gnome2_environment_reset # Avoid dconf that looks at XDG_DATA_DIRS, which can sandbox fail if flatpak is installed
 	virtx meson_src_test
 }
 
