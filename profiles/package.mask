@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Zac Medico <zmedico@gentoo.org> (2021-12-18)
+# Fails to compile and has no reverse dependencies.
+# Removal in 30 days. Bug #800141
+dev-go/go-text
+
 # Mart Raudsepp <leio@gentoo.org> (2021-12-18)
 # GNOME 42 mask
 >=gui-libs/libhandy-1.5.0
