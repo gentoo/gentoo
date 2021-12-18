@@ -163,7 +163,6 @@ multilib_src_test() {
 	fi
 }
 
-
 multilib_src_install() {
 	if multilib_is_native_abi; then
 		emake DESTDIR="${D}" install
