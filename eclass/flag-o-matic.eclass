@@ -193,7 +193,8 @@ filter-lfs-flags() {
 	# _LARGEFILE_SOURCE: enable support for new LFS funcs (ftello/etc...)
 	# _LARGEFILE64_SOURCE: enable support for 64bit variants (off64_t/fseeko64/etc...)
 	# _FILE_OFFSET_BITS: default to 64bit variants (off_t is defined as off64_t)
-	filter-flags -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
+	# _TIME_BITS: default to 64bit time_t (requires _FILE_OFFSET_BITS=64)
+	filter-flags -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_TIME_BITS=64
 }
 
 # @FUNCTION: filter-ldflags
