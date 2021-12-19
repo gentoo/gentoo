@@ -30,7 +30,9 @@ RESTRICT="test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}"
+RDEPEND="${PYTHON_DEPS}
+	elibc_musl? ( sys-libs/argp-standalone )
+"
 DEPEND="
 	ch-image? (
 		$(python_gen_cond_dep '
@@ -45,6 +47,10 @@ DEPEND="
 		')
 		net-misc/rsync
 	)"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.24-musl-argp.patch
+)
 
 src_prepare() {
 	default
