@@ -16,6 +16,10 @@ LICENSE="GPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="gmp iconv lzma openmp python readline +shared static-libs static-pic syslog"
+REQUIRED_USE="|| ( shared static-libs static-pic )
+	|| ( gmp iconv lzma openmp python readline syslog )
+	${PYTHON_REQUIRED_USE}
+	${ADA_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	${ADA_DEPS}
@@ -26,9 +30,6 @@ RDEPEND="${PYTHON_DEPS}
 	"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
-
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	${ADA_REQUIRED_USE}"
 
 QA_EXECSTACK=usr/lib/gnatcoll_readline.*/libgnatcoll_readline.*
 
