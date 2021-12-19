@@ -188,8 +188,6 @@ EGO_SUM=(
 "github.com/chzyer/test v0.0.0-20180213035817-a1ea475d72b1/go.mod"
 "github.com/cilium/ebpf v0.2.0/go.mod"
 "github.com/cilium/ebpf v0.4.0/go.mod"
-"github.com/cilium/ebpf v0.5.0"
-"github.com/cilium/ebpf v0.5.0/go.mod"
 "github.com/cilium/ebpf v0.6.2"
 "github.com/cilium/ebpf v0.6.2/go.mod"
 "github.com/client9/misspell v0.3.4/go.mod"
@@ -269,8 +267,6 @@ EGO_SUM=(
 "github.com/coreos/go-systemd v0.0.0-20190321100706-95778dfbb74e"
 "github.com/coreos/go-systemd v0.0.0-20190321100706-95778dfbb74e/go.mod"
 "github.com/coreos/go-systemd/v22 v22.1.0/go.mod"
-"github.com/coreos/go-systemd/v22 v22.3.1"
-"github.com/coreos/go-systemd/v22 v22.3.1/go.mod"
 "github.com/coreos/go-systemd/v22 v22.3.2"
 "github.com/coreos/go-systemd/v22 v22.3.2/go.mod"
 "github.com/coreos/pkg v0.0.0-20160727233714-3ac0863d7acf/go.mod"
@@ -430,8 +426,8 @@ EGO_SUM=(
 "github.com/golang/protobuf v1.4.0/go.mod"
 "github.com/golang/protobuf v1.4.1/go.mod"
 "github.com/golang/protobuf v1.4.2/go.mod"
-"github.com/golang/protobuf v1.4.3"
 "github.com/golang/protobuf v1.4.3/go.mod"
+"github.com/golang/protobuf v1.5.0"
 "github.com/golang/protobuf v1.5.0/go.mod"
 "github.com/golang/protobuf v1.5.1/go.mod"
 "github.com/golang/protobuf v1.5.2"
@@ -462,8 +458,8 @@ EGO_SUM=(
 "github.com/google/go-cmp v0.5.1/go.mod"
 "github.com/google/go-cmp v0.5.2/go.mod"
 "github.com/google/go-cmp v0.5.3/go.mod"
-"github.com/google/go-cmp v0.5.4"
 "github.com/google/go-cmp v0.5.4/go.mod"
+"github.com/google/go-cmp v0.5.5"
 "github.com/google/go-cmp v0.5.5/go.mod"
 "github.com/google/go-cmp v0.5.6"
 "github.com/google/go-cmp v0.5.6/go.mod"
@@ -925,7 +921,6 @@ EGO_SUM=(
 "github.com/opencontainers/runtime-spec v1.0.3-0.20210316141917-a8c4a9ee0f6b/go.mod"
 "github.com/opencontainers/runtime-spec v1.0.3-0.20210326190908-1c3f411f0417"
 "github.com/opencontainers/runtime-spec v1.0.3-0.20210326190908-1c3f411f0417/go.mod"
-"github.com/opencontainers/selinux v1.8.0"
 "github.com/opencontainers/selinux v1.8.0/go.mod"
 "github.com/opencontainers/selinux v1.8.2"
 "github.com/opencontainers/selinux v1.8.2/go.mod"
@@ -1040,7 +1035,6 @@ EGO_SUM=(
 "github.com/sirupsen/logrus v1.4.1/go.mod"
 "github.com/sirupsen/logrus v1.4.2/go.mod"
 "github.com/sirupsen/logrus v1.6.0/go.mod"
-"github.com/sirupsen/logrus v1.7.0"
 "github.com/sirupsen/logrus v1.7.0/go.mod"
 "github.com/sirupsen/logrus v1.8.1"
 "github.com/sirupsen/logrus v1.8.1/go.mod"
@@ -1137,7 +1131,6 @@ EGO_SUM=(
 "github.com/vishvananda/netns v0.0.0-20200728191858-db3c7e526aae/go.mod"
 "github.com/vmware/govmomi v0.20.3"
 "github.com/vmware/govmomi v0.20.3/go.mod"
-"github.com/willf/bitset v1.1.11"
 "github.com/willf/bitset v1.1.11/go.mod"
 "github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2"
 "github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2/go.mod"
@@ -1182,7 +1175,6 @@ EGO_SUM=(
 "golang.org/x/image v0.0.0-20190227222117-0694c2d4d067/go.mod"
 "golang.org/x/image v0.0.0-20190802002840-cff245a6509b/go.mod"
 "golang.org/x/lint v0.0.0-20181026193005-c67002cb31c3/go.mod"
-"golang.org/x/lint v0.0.0-20190227174305-5b3e6a55c961/go.mod"
 "golang.org/x/lint v0.0.0-20190301231843-5614ed5bae6f/go.mod"
 "golang.org/x/lint v0.0.0-20190313153728-d0100b6bd8b3/go.mod"
 "golang.org/x/lint v0.0.0-20190409202823-959b441ac422/go.mod"
@@ -1217,7 +1209,6 @@ EGO_SUM=(
 "golang.org/x/net v0.0.0-20181201002055-351d144fa1fc/go.mod"
 "golang.org/x/net v0.0.0-20181220203305-927f97764cc3/go.mod"
 "golang.org/x/net v0.0.0-20190108225652-1e06a53dbb7e/go.mod"
-"golang.org/x/net v0.0.0-20190213061140-3a22650c66bd/go.mod"
 "golang.org/x/net v0.0.0-20190311183353-d8887717615a/go.mod"
 "golang.org/x/net v0.0.0-20190404232315-eb5bcb51f2a3/go.mod"
 "golang.org/x/net v0.0.0-20190501004415-9ce7a6920f09/go.mod"
@@ -1329,7 +1320,6 @@ EGO_SUM=(
 "golang.org/x/sys v0.0.0-20201117170446-d9b008d0a637/go.mod"
 "golang.org/x/sys v0.0.0-20201119102817-f84b799fce68/go.mod"
 "golang.org/x/sys v0.0.0-20201201145000-ef89a241ccb3/go.mod"
-"golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c"
 "golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c/go.mod"
 "golang.org/x/sys v0.0.0-20210324051608-47abb6519492/go.mod"
 "golang.org/x/sys v0.0.0-20210330210617-4fbd30eecc44/go.mod"
@@ -1371,7 +1361,6 @@ EGO_SUM=(
 "golang.org/x/tools v0.0.0-20190114222345-bf090417da8b/go.mod"
 "golang.org/x/tools v0.0.0-20190125232054-d66bd3c5d5a6/go.mod"
 "golang.org/x/tools v0.0.0-20190206041539-40960b6deb8e/go.mod"
-"golang.org/x/tools v0.0.0-20190226205152-f727befe758c/go.mod"
 "golang.org/x/tools v0.0.0-20190311212946-11955173bddd/go.mod"
 "golang.org/x/tools v0.0.0-20190312151545-0bb0c0a6e846/go.mod"
 "golang.org/x/tools v0.0.0-20190312170243-e65039ee4138/go.mod"
@@ -1487,11 +1476,8 @@ EGO_SUM=(
 "google.golang.org/appengine v1.6.6/go.mod"
 "google.golang.org/appengine v1.6.7"
 "google.golang.org/appengine v1.6.7/go.mod"
-"google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8/go.mod"
-"google.golang.org/genproto v0.0.0-20190819201941-24fa4b261c55/go.mod"
 "google.golang.org/genproto v0.0.0-20200224152610-e50cd9704f63"
 "google.golang.org/genproto v0.0.0-20200224152610-e50cd9704f63/go.mod"
-"google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013/go.mod"
 "google.golang.org/grpc v1.19.0/go.mod"
 "google.golang.org/grpc v1.20.1/go.mod"
 "google.golang.org/grpc v1.21.0/go.mod"
@@ -1516,9 +1502,8 @@ EGO_SUM=(
 "google.golang.org/protobuf v1.21.0/go.mod"
 "google.golang.org/protobuf v1.22.0/go.mod"
 "google.golang.org/protobuf v1.23.0/go.mod"
-"google.golang.org/protobuf v1.23.1-0.20200526195155-81db48ad09cc/go.mod"
-"google.golang.org/protobuf v1.25.0"
 "google.golang.org/protobuf v1.25.0/go.mod"
+"google.golang.org/protobuf v1.26.0"
 "google.golang.org/protobuf v1.26.0-rc.1/go.mod"
 "google.golang.org/protobuf v1.26.0/go.mod"
 "google.golang.org/protobuf v1.27.1"
@@ -1720,7 +1705,7 @@ go-module_set_globals
 MY_PV=${PV}+k3s1
 SRC_URI="https://github.com/k3s-io/k3s/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}
-	https://github.com/opencontainers/runc/archive/refs/tags/v1.0.0-rc95.tar.gz -> k3s-runc-${K3S_RUNC_VERSION}.tar.gz
+	https://github.com/opencontainers/runc/archive/refs/tags/${K3S_RUNC_VERSION}.tar.gz -> k3s-runc-${K3S_RUNC_VERSION}-r1.tar.gz
 	https://helm.traefik.io/traefik/traefik-${K3S_TRAEFIK_VERSION}.tgz
 	https://github.com/rancher/plugins/archive/refs/tags/v${K3S_CNIPLUGINS_VERSION}-k3s1.tar.gz -> k3s-cni-plugins-${K3S_CNIPLUGINS_VERSION}.tar.gz
 	amd64? ( https://github.com/rancher/k3s-root/releases/download/v${K3S_ROOT_VERSION}/k3s-root-amd64.tar -> k3s-root-amd64-${K3S_ROOT_VERSION}.tar )"
@@ -1765,7 +1750,7 @@ src_prepare() {
 
 	local RUNC_DIR=build/src/github.com/opencontainers/runc
 	mkdir -p "${RUNC_DIR}" || die
-	tar -x --strip-components=1 -f "${DISTDIR}/k3s-runc-${K3S_RUNC_VERSION}.tar.gz" -C "${RUNC_DIR}" || die
+	tar -x --strip-components=1 -f "${DISTDIR}/k3s-runc-${K3S_RUNC_VERSION}-r1.tar.gz" -C "${RUNC_DIR}" || die
 	sed -e 's|mod=vendor|mod=readonly|g' -i "${RUNC_DIR}/Makefile" || die
 
 	sed -e 's:github.com/containerd/containerd => ./.empty-mod/:github.com/containerd/containerd => ./:' \
