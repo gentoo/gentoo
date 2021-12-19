@@ -83,6 +83,7 @@ src_configure() {
 		$(usex selinux '--selinux' '') \
 		$(usex sha512 '--sha512' '') \
 		$(usex systemd '--systemd' '') \
+		$(usex yescrypt '--yescrypt' '') \
 	|| die
 }
 
