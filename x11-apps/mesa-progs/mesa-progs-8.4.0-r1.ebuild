@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit toolchain-funcs
-
 MY_PN="${PN/progs/demos}"
 MY_P="${MY_PN}-${PV}"
 
