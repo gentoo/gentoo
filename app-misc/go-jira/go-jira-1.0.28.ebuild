@@ -7,7 +7,7 @@ EAPI=7
 inherit go-module
 
 DESCRIPTION="A simple JIRA commandline client in Go"
-HOMEPAGE="https://github.com/Netflix-Skunkworks/go-jira"
+HOMEPAGE="https://github.com/go-jira/jira"
 
 EGO_SUM=(
 	"github.com/Masterminds/goutils v1.1.0"
