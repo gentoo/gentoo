@@ -17,3 +17,7 @@ RDEPEND="
 		media-libs/mesa[xa]
 	)"
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-include-order-bool.patch
+)
