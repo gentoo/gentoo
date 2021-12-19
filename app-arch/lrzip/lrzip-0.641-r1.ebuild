@@ -20,9 +20,10 @@ RDEPEND="
 	app-arch/lz4
 	sys-libs/zlib
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-perl/Pod-Parser
+	amd64? ( dev-lang/nasm )
 	x86? ( dev-lang/nasm )
 "
 
@@ -38,7 +39,15 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable static-libs static)
+	# ASM optimizations are only available on amd64 and x86, bug #829003
+	local asm=no
+	if use amd64 || use x86; then
+		asm=no
+	fi
+
+	econf \
+		$(use_enable static-libs static) \
+		--enable-asm=${asm}
 }
 
 src_install() {
