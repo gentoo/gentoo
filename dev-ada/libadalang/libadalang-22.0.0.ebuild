@@ -14,10 +14,11 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3 gcc-runtime-library-exception-3.1"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64"
-IUSE="test shared static-libs static-pic"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
+IUSE="test shared +static-libs static-pic"
+REQUIRED_USE="|| ( shared static-libs static-pic )
+	${PYTHON_REQUIRED_USE}
 	${ADA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
