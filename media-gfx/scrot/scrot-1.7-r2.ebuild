@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit bash-completion-r1
+# Need autotools for docdir patch for now
+inherit autotools bash-completion-r1
 
 DESCRIPTION="Screen capture utility using imlib2 library"
 HOMEPAGE="https://github.com/resurrecting-open-source-projects/scrot"
@@ -45,10 +46,16 @@ DOCS=(
 	AUTHORS ChangeLog README.md
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.7-fix-docdir.patch
+)
+
 src_prepare() {
 	default
 
-	[[ ${PV} == *9999* ]] && eautoreconf
+	# Needed for 1.7 for the docdir patch
+	eautoreconf
+	#[[ ${PV} == *9999* ]] && eautoreconf
 }
 
 src_install() {
