@@ -36,8 +36,13 @@ setup.set_version("${PV}")
 setup.install_html5(
 	"${ED}/usr/share/xpra/www",
 	"$(usex minify uglifyjs copy)",
+	gzip=$(usex gzip True False),
 	brotli=$(usex brotli True False),
-	gzip=$(usex gzip True False)
+	configuration_files=["default-settings.txt"]
 )
 EOF
+
+	insinto /etc/xpra/html5-client
+	doins html5/default-settings.txt
+	dosym ../../../../etc/xpra/html5-client/default-settings.txt /usr/share/xpra/www/default-settings.txt
 }
