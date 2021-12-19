@@ -42,7 +42,7 @@ src_configure() {
 	# ASM optimizations are only available on amd64 and x86, bug #829003
 	local asm=no
 	if use amd64 || use x86; then
-		asm=no
+		asm=yes
 	fi
 
 	econf \
