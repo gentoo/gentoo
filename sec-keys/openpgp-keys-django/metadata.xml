@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>dist-kernel@gentoo.org</email>
+		<email>python@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
 </pkgmetadata>
