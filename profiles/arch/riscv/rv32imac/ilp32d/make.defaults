@@ -3,7 +3,7 @@
 
 # RISC-V rv32imac/ilp32d no-multilib profile
 
-CFLAGS="-O2 -pipe -march=rv32imacdf -mabi=ilp32d"
+CFLAGS="-O2 -pipe -march=rv32imafdc -mabi=ilp32d"
 CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"
