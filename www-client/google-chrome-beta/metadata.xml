@@ -5,6 +5,9 @@
 		<email>chromium@gentoo.org</email>
 		<name>Chromium in Gentoo Project</name>
 	</maintainer>
+	<use>
+		<flag name="emoji">Use <pkg>media-fonts/noto-emoji</pkg> for displaying emoji</flag>
+	</use>
 	<longdescription>
 		Google Chrome is a browser that combines a minimal design with
 		sophisticated technology to make the web faster, safer, and easier.
