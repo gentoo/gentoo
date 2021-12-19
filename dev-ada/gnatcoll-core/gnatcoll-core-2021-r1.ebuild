@@ -17,14 +17,14 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="+shared static-libs static-pic"
+REQUIRED_USE="|| ( shared static-libs static-pic )
+	${ADA_REQUIRED_USE}"
 
 RDEPEND="
 	>=dev-ada/libgpr-2021[${ADA_USEDEP},shared?,static-libs?,static-pic?]
 "
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
-
-REQUIRED_USE="${ADA_REQUIRED_USE}"
 
 S="${WORKDIR}"/${MYP}-src
 
