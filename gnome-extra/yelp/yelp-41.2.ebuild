@@ -17,11 +17,11 @@ RDEPEND="
 	app-arch/bzip2:=
 	>=app-arch/xz-utils-4.9:=
 	dev-db/sqlite:3=
-	>=dev-libs/glib-2.38:2
+	>=dev-libs/glib-2.67.4:2
 	>=dev-libs/libxml2-2.6.5:2
 	>=dev-libs/libxslt-1.1.4
-	>=gnome-extra/yelp-xsl-3.27.1
-	>=net-libs/webkit-gtk-2.34:4
+	>=gnome-extra/yelp-xsl-41.0
+	>=net-libs/webkit-gtk-2.19.2:4
 	>=x11-libs/gtk+-3.13.3:3
 	x11-themes/adwaita-icon-theme
 "
@@ -44,6 +44,7 @@ PATCHES=(
 src_configure() {
 	gnome2_src_configure \
 		--disable-static \
+		--with-webkit2gtk-4-0 \
 		--enable-bz2 \
 		--enable-lzma \
 		APPSTREAM_UTIL=$(type -P true)
