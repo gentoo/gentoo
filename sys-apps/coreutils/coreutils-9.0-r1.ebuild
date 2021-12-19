@@ -59,7 +59,7 @@ RDEPEND+="
 	!<net-fs/netatalk-2.0.3-r4"
 
 pkg_pretend() {
-	if has_version "<sys-fs/zfs-9999" ; then
+	if has_version "<sys-fs/zfs-9999" && grep -q zfs <(lsmod 2>/dev/null) ; then
 		einfo "Checking for running ZFS module version"
 
 		local kmodv minver
