@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Braille translator from the National Federation of the Blind"
-HOMEPAGE="http://www.nfb.org/nfbtrans"
+HOMEPAGE="http://www.nfbnet.org/download/nfbtrans.htm"
 SRC_URI="http://www.nfb.org/Images/nfb/Products_Technology/nfbtr774.zip"
 S="${WORKDIR}"
 
