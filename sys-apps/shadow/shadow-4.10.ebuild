@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools pam
+inherit libtool pam
 
 DESCRIPTION="Utilities to deal with user accounts"
 HOMEPAGE="https://github.com/shadow-maint/shadow"
