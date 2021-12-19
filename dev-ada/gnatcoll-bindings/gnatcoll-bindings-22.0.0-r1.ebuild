@@ -30,6 +30,8 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	${ADA_REQUIRED_USE}"
 
+QA_EXECSTACK=usr/lib/gnatcoll_readline.*/libgnatcoll_readline.*
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 	ada_pkg_setup
