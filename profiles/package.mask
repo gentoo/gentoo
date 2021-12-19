@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-12-19)
+# Outdated and not needed anymore (this was a releng workaround)
+# Removal in 30 days, please compile it yourself from app-emulation/qemu
+app-emulation/qemu-riscv64-bin
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-19)
 # Package without consumers. Bug #771693 (multiple CVEs). Removal in 30 days.
 dev-java/jackson
