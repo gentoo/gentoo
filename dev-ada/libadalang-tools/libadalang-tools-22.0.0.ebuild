@@ -20,7 +20,7 @@ RESTRICT="test"
 
 RDEPEND="${ADA_DEPS}"
 DEPEND="${RDEPEND}
-	dev-ada/libadalang[${ADA_USEDEP},static-libs]"
+	dev-ada/libadalang:=[${ADA_USEDEP},static-libs]"
 BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
 
 src_compile() {
