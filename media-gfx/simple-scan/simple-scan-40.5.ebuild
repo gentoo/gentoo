@@ -22,7 +22,7 @@ DEPEND="
 	x11-libs/cairo:=
 	x11-libs/gdk-pixbuf:2
 	>=dev-libs/libgusb-0.2.7
-	colord? ( >=x11-misc/colord-0.1.24:=[udev] )
+	colord? ( >=x11-misc/colord-0.1.24:=[udev(+)] )
 	webp? ( media-libs/libwebp )
 	>=media-gfx/sane-backends-1.0.20:=
 
