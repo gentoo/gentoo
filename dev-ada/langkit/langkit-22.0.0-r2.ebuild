@@ -14,11 +14,11 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="+shared static-libs static-pic"
-
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	|| ( shared static-libs static-pic )"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-ada/gnatcoll-bindings[iconv,shared?,static-libs?,static-pic?]
