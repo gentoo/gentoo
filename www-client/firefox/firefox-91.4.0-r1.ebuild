@@ -146,7 +146,7 @@ CDEPEND="
 		sys-apps/dbus
 		dev-libs/dbus-glib
 	)
-	screencast? ( media-video/pipewire:0/0.3 )
+	screencast? ( media-video/pipewire:= )
 	system-av1? (
 		>=media-libs/dav1d-0.8.1:=
 		>=media-libs/libaom-1.0.0:=
