@@ -22,7 +22,7 @@ RDEPEND="
 	sys-libs/ncurses:=[unicode(+)]
 	sys-libs/readline:=
 	taglib? ( media-libs/taglib )
-	visualizer? ( sci-libs/fftw:3.0= )
+	visualizer? ( sci-libs/fftw:3.0=[threads] )
 "
 DEPEND="
 	${RDEPEND}
