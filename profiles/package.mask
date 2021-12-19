@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-19)
+# Package without consumers. Bug #771693 (multiple CVEs). Removal in 30 days.
+dev-java/jackson
+
 # Zac Medico <zmedico@gentoo.org> (2021-12-18)
 # Fails to compile and has no reverse dependencies.
 # Removal in 30 days. Bug #800141
@@ -394,11 +398,6 @@ app-mobilephone/adb-sync
 ~sys-kernel/gentoo-kernel-bin-5.14.19
 ~sys-kernel/vanilla-kernel-5.14.19
 ~virtual/dist-kernel-5.14.19
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-15)
-# bug #771693 (multiple CVEs).
-# Library still needed for bumping dev-java/log4j
-=dev-java/jackson-2.9.10
 
 # Mart Raudsepp <leio@gentoo.org> (2021-11-11)
 # Needs testing to ensure valac-0.54 works for existing packages
