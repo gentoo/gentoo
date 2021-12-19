@@ -39,6 +39,10 @@ DEPEND="${RDEPEND}
 PDEPEND="
 	modules? ( >=dev-util/sysdig-kmod-${PV} )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.27.1-grpc-absl-sync.patch
+)
+
 src_prepare() {
 	sed -i -e 's:-ggdb::' CMakeLists.txt || die
 
