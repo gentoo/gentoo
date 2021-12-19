@@ -17,7 +17,7 @@ SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gmp iconv python readline +shared static-libs static-pic syslog"
 
 RDEPEND="${PYTHON_DEPS}
