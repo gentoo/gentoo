@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND=">=dev-python/argon2-cffi-bindings-21.2.0[${PYTHON_USEDEP}]"
 BDEPEND="
-	<dev-python/pyproject2setuppy-22[${PYTHON_USEDEP}]
+	>=dev-python/pyproject2setuppy-22[${PYTHON_USEDEP}]
 	test? (
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 	)
@@ -26,11 +26,6 @@ BDEPEND="
 DOCS=( AUTHORS.rst FAQ.rst README.rst )
 
 src_prepare() {
-	# Patch the tool.flit.module.name entry in pyproject.toml to include
-	# the "src" subfolder. This allows pyproject2setuppy to retrieve the
-	# dynamic version and description correctly.
-	sed -i -e 's:^name = "argon2":name = "src/argon2":' \
-		"pyproject.toml" || die "Unable to patch package name"
 	# Sphinx's conf.py uses importlib.metadata to determine the package
 	# version. However, argon2-cffi is not installed when we try to build
 	# the docs. Therefore, we patch the release version in conf.py.
