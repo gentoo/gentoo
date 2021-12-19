@@ -38,6 +38,8 @@ BDEPEND="
 PATCHES=(
 	# disable teamspaces test since that requires Novell.ICEDesktop.Daemon
 	"${FILESDIR}/${PN}-2.0.2-disable-teamspaces-test.patch"
+
+	"${FILESDIR}/${PN}-2.42.0-fix-disabling-x11.patch"
 )
 
 multilib_src_configure() {
