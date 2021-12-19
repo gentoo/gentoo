@@ -32,6 +32,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 S="${WORKDIR}"/${MYP}
 
+QA_EXECSTACK=usr/lib/gnatcoll_readline.*/libgnatcoll_readline.*
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 	ada_pkg_setup
