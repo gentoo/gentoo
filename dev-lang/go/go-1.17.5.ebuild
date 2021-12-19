@@ -27,7 +27,7 @@ case ${PV}  in
 esac
 
 DESCRIPTION="A concurrent garbage collected and typesafe programming language"
-HOMEPAGE="https://golang.org"
+HOMEPAGE="https://go.dev"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
