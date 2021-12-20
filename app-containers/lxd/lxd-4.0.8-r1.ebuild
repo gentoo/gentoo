@@ -17,7 +17,7 @@ IUSE="apparmor ipv6 nls verify-sig"
 
 DEPEND="acct-group/lxd
 	app-arch/xz-utils
-	>=app-emulation/lxc-3.0.0[apparmor?,seccomp(+)]
+	>=app-containers/lxc-3.0.0[apparmor?,seccomp(+)]
 	dev-db/sqlite:3
 	dev-libs/dqlite
 	dev-libs/lzo
