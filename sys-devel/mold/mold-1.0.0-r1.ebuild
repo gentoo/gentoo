@@ -26,7 +26,7 @@ RDEPEND=">=dev-cpp/tbb-2021.4.0:=
 	dev-libs/xxhash:=
 	sys-libs/zlib
 	!kernel_Darwin? (
-		dev-libs/mimalloc:=
+		<dev-libs/mimalloc-2:=
 		dev-libs/openssl:=
 	)"
 DEPEND="${RDEPEND}"
