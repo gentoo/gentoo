@@ -44,10 +44,11 @@ pkg_pretend() {
 src_prepare() {
 	default
 
-	(
+	if use modules ; then
 		cd "${WORKDIR}"/${NETATOP_P} || die
 		eapply -p1 "${FILESDIR}"/${PN}-2.7.0-netatop-makefile.patch
-	)
+		cd "${S}" || die
+	fi
 
 	tc-export CC PKG_CONFIG
 
