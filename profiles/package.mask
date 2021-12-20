@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2021-12-20)
+# Package is broken and obsolete.
+# Removal on 2022-02-01.  Bug #464364.
+x11-misc/habak
+
 # Piotr Karbowski <slashbeast@gentoo.org> (2021-12-19)
 # No package depends on those bindings anymore.
 # Removal in 30 days.
