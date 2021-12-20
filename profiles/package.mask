@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-12-20)
+# Switches from deprecated stdlib distutils to vendored distutils
+# by default.  Masked for testing.  See tracker bug #822354.
+>=dev-python/setuptools-60
+
 # Jonas Stein <jstein@gentoo.org> (2021-12-20)
 # Package is broken and obsolete.
 # Removal on 2022-02-01.  Bug #828875.
