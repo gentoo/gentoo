@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( shared static-libs static-pic )"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-ada/gnatcoll-bindings[iconv,shared?,static-libs?,static-pic?]
+	dev-ada/gnatcoll-bindings[gmp,iconv,shared?,static-libs?,static-pic?]
 	dev-python/mako[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/funcy[${PYTHON_USEDEP}]
@@ -58,6 +58,7 @@ python_compile_all() {
 }
 
 python_test_all() {
+	export GPR_PROJECT_PATH="${S}"/support
 	${EPYTHON} ./manage.py make --no-langkit-support || die
 	eval $(./manage.py setenv)
 	${EPYTHON} ./manage.py test --verbose |& tee langkit.testOut
