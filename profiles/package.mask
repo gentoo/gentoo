@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-12-20)
+# Requires GCC 8, security vulnerabilities, switch to CUDA 11,
+# consider using clang+NVPTX backend for sm_30 cards.
+# Removal in 90 days, bug #721808, #760708.
+<dev-util/nvidia-cuda-sdk-11
+<dev-util/nvidia-cuda-toolkit-11
+
 # Michał Górny <mgorny@gentoo.org> (2021-12-20)
 # Switches from deprecated stdlib distutils to vendored distutils
 # by default.  Masked for testing.  See tracker bug #822354.
