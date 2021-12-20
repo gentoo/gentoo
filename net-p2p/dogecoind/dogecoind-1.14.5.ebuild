@@ -33,7 +33,8 @@ src_configure() {
 	./autogen.sh || die "autogen failed"
 	local my_econf=(
 		--enable-cxx
-		--with-incompatible-bdb
+		$(use_with wallet incompatible-bdb)
+		--with-gui=no
 		--bindir="${DOGEDIR}/bin"
 		CPPFLAGS="-I/usr/include/db${DB_VER}"
 		CFLAGS="-I/usr/include/db${DB_VER}"
@@ -51,11 +52,13 @@ src_install() {
 	newins "${FILESDIR}/dogecoin.conf" "dogecoin.conf"
 	fperms 600 "${DOGEDIR}/dogecoin.conf"
 	dosym "${DOGEDIR}/bin/dogecoind" "/usr/bin/dogecoind"
+	dosym "${DOGEDIR}/bin/dogecoin-cli" "/usr/bin/dogecoin-cli"
 }
 
 pkg_postinst() {
 	elog "Dogecoin Core ${PV} blockchain node and RPC server has been installed."
 	elog "Dogecoin Core binaries have been placed in ${DOGEDIR}/bin."
 	elog "dogecoind has been symlinked with /usr/bin/dogecoind."
+	elog "dogecoin-cli has been symlinked with /usr/bin/dogecoin-cli."
 	elog "dogecoin.conf is located under ${DOGEDIR}."
 }
