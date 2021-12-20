@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit bash-completion-r1 go-module
 
 DESCRIPTION="Lab wraps Git or Hub, making it simple to interact with repositories on GitLab"
-HOMEPAGE="https://zaquestion.github.io/lab"
+HOMEPAGE="https://zaquestion.github.io/lab/"
 
 EGO_SUM=(
 	"github.com/BurntSushi/toml v0.3.1"
