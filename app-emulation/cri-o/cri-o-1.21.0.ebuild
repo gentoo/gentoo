@@ -1914,7 +1914,7 @@ IUSE="btrfs +device-mapper selinux systemd"
 
 COMMON_DEPEND="
 	app-crypt/gpgme:=
-	app-emulation/conmon
+	app-containers/conmon
 	app-emulation/runc
 	dev-libs/glib:=
 	dev-libs/libassuan:=
