@@ -38,3 +38,4 @@ move app-emulation/cadvisor app-containers/cadvisor
 move app-emulation/conmon app-containers/conmon
 move app-emulation/containers-storage app-containers/containers-storage
 move app-emulation/cri-o app-containers/cri-o
+move app-emulation/cri-tools app-containers/cri-tools
