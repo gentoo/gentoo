@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="heif">Enable support for ISO/IEC 23008-12:2017 HEIF files</flag>
+		<flag name="jpegxl">Enable support for JPEG XL image format</flag>
 		<flag name="vector-icons">Enable support for vector icons (experimental)</flag>
 	</use>
 </pkgmetadata>
