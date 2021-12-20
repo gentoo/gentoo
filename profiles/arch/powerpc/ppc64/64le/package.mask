@@ -31,7 +31,7 @@ sci-mathematics/geogebra-bin
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-17)
 # works on ppc64le
--app-emulation/docker
+-app-containers/docker
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-22
 # criu works on ppc64le

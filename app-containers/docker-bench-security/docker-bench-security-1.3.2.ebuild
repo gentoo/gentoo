@@ -11,7 +11,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND=">=app-emulation/docker-1.10"
+RDEPEND=">=app-containers/docker-1.10"
 
 src_install() {
 dobin "${FILESDIR}/docker-bench-security"

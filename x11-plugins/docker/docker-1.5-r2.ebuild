@@ -28,5 +28,5 @@ src_compile() {
 }
 
 pkg_postinst() {
-	einfo "To avoid collision with app-emulation/docker, binary was renamed to wmdocker"
+	einfo "To avoid collision with app-containers/docker, binary was renamed to wmdocker"
 }

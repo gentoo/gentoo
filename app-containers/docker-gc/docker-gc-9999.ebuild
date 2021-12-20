@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/spotify/docker-gc/"
 LICENSE="Apache-2.0"
 SLOT="0"
 
-RDEPEND="app-emulation/docker"
+RDEPEND="app-containers/docker"
 
 src_install() {
 	dosbin docker-gc

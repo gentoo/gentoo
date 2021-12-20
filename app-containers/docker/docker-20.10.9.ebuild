@@ -4,7 +4,7 @@
 EAPI=7
 EGO_PN=github.com/docker/docker
 MY_PV=${PV/_/-}
-GIT_COMMIT=459d0dfbbb
+GIT_COMMIT=79ea9d3080
 inherit linux-info systemd udev golang-vcs-snapshot
 
 DESCRIPTION="The core functions you need to create Docker images and run Docker containers"
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/moby/moby/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv ~x86"
 IUSE="apparmor aufs btrfs +cli +container-init device-mapper hardened overlay seccomp"
 
 DEPEND="
@@ -37,15 +37,15 @@ RDEPEND="
 	>=dev-vcs/git-1.7
 	>=app-arch/xz-utils-4.9
 	dev-libs/libltdl
-	>=app-containers/containerd-1.4.12[apparmor?,btrfs?,device-mapper?,seccomp?]
+	>=app-containers/containerd-1.4.9[apparmor?,btrfs?,device-mapper?,seccomp?]
 	~app-containers/docker-proxy-0.8.0_p20210525
-	cli? ( ~app-containers/docker-cli-${PV} )
+	cli? ( app-containers/docker-cli )
 	container-init? ( >=sys-process/tini-0.19.0[static] )
 "
 
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#build-dependencies
 BDEPEND="
-	>=dev-lang/go-1.16.12
+	>=dev-lang/go-1.16.6
 	dev-go/go-md2man
 	virtual/pkgconfig
 "
@@ -260,7 +260,7 @@ pkg_postinst() {
 		ewarn "Starting with docker 20.10.2, docker has been split into"
 		ewarn "two packages upstream, so Gentoo has followed suit."
 		ewarn
-		ewarn "app-emulation/docker contains the daemon and"
+		ewarn "app-containers/docker contains the daemon and"
 		ewarn "app-containers/docker-cli contains the docker command."
 		ewarn
 		ewarn "docker currently installs docker-cli using the cli use flag."
@@ -268,7 +268,7 @@ pkg_postinst() {
 		ewarn "This use flag is temporary, so you need to take the"
 		ewarn "following actions:"
 		ewarn
-		ewarn "First, disable the cli use flag for app-emulation/docker"
+		ewarn "First, disable the cli use flag for app-containers/docker"
 		ewarn
 		ewarn "Then, if you need docker-cli and docker on the same machine,"
 		ewarn "run the following command:"
