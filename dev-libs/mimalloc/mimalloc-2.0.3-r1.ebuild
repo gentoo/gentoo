@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/microsoft/mimalloc"
 SRC_URI="https://github.com/microsoft/mimalloc/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0/1"
+SLOT="0/2"
 KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
