@@ -32,9 +32,9 @@ src_prepare() {
 	default
 
 	local d
-	for d in aarch64-Linux arm-Linux Darwin i386-Linux i386-SunOS \
+	for d in aarch64-FreeBSD aarch64-Linux arm-Linux Darwin i386-Linux i386-SunOS \
 		i386-Windows mips64el-Linux ppc64-AIX ppc64le-Linux ppc64-Linux \
-		ppc-AIX sparcv9-Linux sparcv9-SunOS x86_64-DragonFlyBSD \
+		ppc-AIX s390x-Linux sparcv9-Linux sparcv9-SunOS x86_64-DragonFlyBSD \
 		x86_64-FreeBSD x86_64-OpenBSD x86_64-SunOS x86_64-Windows; do
 			rm -r vendor/jruby/lib/jni/$d || die
 	done
