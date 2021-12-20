@@ -5,7 +5,7 @@ EAPI=7
 
 inherit acct-user
 
-DESCRIPTION="User for app-emulation/lxc"
+DESCRIPTION="User for app-containers/lxc"
 ACCT_USER_ID=358
 ACCT_USER_GROUPS=( lxc )
 
