@@ -20,7 +20,7 @@ RESTRICT="test"
 
 COMMON_DEPEND="
 	app-crypt/gpgme:=
-	>=app-emulation/conmon-2.0.0
+	>=app-containers/conmon-2.0.0
 	|| ( >=app-emulation/runc-1.0.0_rc6 app-containers/crun )
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error:=
