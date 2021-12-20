@@ -49,3 +49,4 @@ move app-emulation/docker-swarm app-containers/docker-swarm
 move app-emulation/go-secbench app-containers/go-secbench
 move app-emulation/slirp4netns app-containers/slirp4netns
 move app-emulation/podman app-containers/podman
+move app-emulation/k3d app-containers/k3d
