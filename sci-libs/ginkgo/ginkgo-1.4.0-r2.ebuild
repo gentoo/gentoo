@@ -21,7 +21,7 @@ SLOT="0"
 IUSE="+openmp cuda"
 
 RDEPEND="
-	cuda? ( dev-util/nvidia-cuda-sdk )
+	cuda? ( dev-util/nvidia-cuda-toolkit )
 "
 DEPEND="${RDEPEND}"
 
