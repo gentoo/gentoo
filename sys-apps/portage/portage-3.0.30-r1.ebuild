@@ -81,6 +81,7 @@ pkg_pretend() {
 
 python_prepare_all() {
 	local PATCHES=(
+		"${FILESDIR}/3.0.30-revert-default-enable-soname-dependencies.patch"
 	)
 
 	distutils-r1_python_prepare_all
