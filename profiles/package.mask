@@ -35,6 +35,11 @@
 
 # Jonas Stein <jstein@gentoo.org> (2021-12-20)
 # Package is broken and obsolete.
+# Removal on 2022-02-01.  Bug #828875.
+x11-misc/3ddesktop
+
+# Jonas Stein <jstein@gentoo.org> (2021-12-20)
+# Package is broken and obsolete.
 # Removal on 2022-02-01.  Bug #464364.
 x11-misc/habak
 
