@@ -91,5 +91,5 @@ all_ruby_install() {
 
 	optfeature_header "Optional emulation/container backends:"
 	optfeature "VirtualBox support" app-emulation/virtualbox
-	optfeature "Docker support" app-emulation/docker
+	optfeature "Docker support" app-containers/docker
 }

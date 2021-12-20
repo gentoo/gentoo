@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 RESTRICT="test"
 
 DEPEND="dev-lang/go"
-RDEPEND="app-emulation/docker"
+RDEPEND="app-containers/docker"
 
 src_compile() {
 	GOPATH="${S}" go build -o bin/go-secbench src/${EGO_PN}/cmd/main.go || die

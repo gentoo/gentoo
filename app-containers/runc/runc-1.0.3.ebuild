@@ -41,7 +41,7 @@ RESTRICT+=" test"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_compile() {
-	# Taken from app-emulation/docker-1.7.0-r1
+	# Taken from app-containers/docker-1.7.0-r1
 	export CGO_CFLAGS="-I${ESYSROOT}/usr/include"
 	export CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')
 		-L${ESYSROOT}/usr/$(get_libdir)"

@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="hardened"
 
-RDEPEND="!<app-emulation/docker-20.10.1"
+RDEPEND="!<app-containers/docker-20.10.1"
 BDEPEND="
 	>=dev-lang/go-1.16.6
 	dev-go/go-md2man"
