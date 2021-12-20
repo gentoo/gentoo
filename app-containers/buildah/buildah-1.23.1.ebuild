@@ -15,7 +15,7 @@ KEYWORDS="amd64 arm64"
 IUSE="selinux"
 
 RDEPEND="app-crypt/gpgme:=
-	app-emulation/skopeo
+	app-containers/skopeo
 	dev-libs/libgpg-error:=
 	dev-libs/libassuan:=
 	sys-fs/lvm2:=
