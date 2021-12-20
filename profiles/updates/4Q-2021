@@ -43,3 +43,4 @@ move app-emulation/distrobuilder app-containers/distrobuilder
 move app-emulation/docker-bench-security app-containers/docker-bench-security
 move app-emulation/docker-compose app-containers/docker-compose
 move app-emulation/docker-credential-helpers app-containers/docker-credential-helpers
+move app-emulation/docker-gc app-containers/docker-gc
