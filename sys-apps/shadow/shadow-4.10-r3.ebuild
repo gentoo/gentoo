@@ -215,7 +215,11 @@ src_install() {
 	# Remove manpages that are handled by other packages
 	find "${ED}"/usr/share/man -type f \
 		'(' -name id.1 -o -name getspnam.3 ')' \
-		-delete
+		-delete || die
+
+	if ! use su ; then
+		find "${ED}"/usr/share/man -type f -name su.1 -delete || die
+	fi
 
 	cd "${S}" || die
 	dodoc ChangeLog NEWS TODO
