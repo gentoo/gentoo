@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="optional"
-KFMIN=5.88.0
+KFMIN=5.84.0
 QTMIN=5.15.2
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
@@ -15,7 +15,7 @@ HOMEPAGE="https://invent.kde.org/network/kio-extras"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 IUSE="activities +man mtp nfs openexr phonon samba +sftp taglib X"
 
 # requires running Plasma environment
@@ -51,7 +51,7 @@ DEPEND="
 	)
 	mtp? ( >=media-libs/libmtp-1.1.16:= )
 	nfs? ( net-libs/libtirpc:= )
-	openexr? ( media-libs/openexr:* )
+	openexr? ( media-libs/openexr:= )
 	phonon? ( >=media-libs/phonon-4.11.0 )
 	samba? (
 		net-fs/samba[client]
