@@ -4,13 +4,13 @@
 EAPI=8
 
 DIST_AUTHOR=OALDERS
-DIST_VERSION=6.55
+DIST_VERSION=6.58
 inherit perl-module
 
 DESCRIPTION="A collection of Perl Modules for the WWW"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
 IUSE="ssl"
 
 RDEPEND="
