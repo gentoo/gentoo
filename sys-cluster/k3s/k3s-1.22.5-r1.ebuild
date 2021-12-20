@@ -1718,7 +1718,7 @@ REQUIRED_USE="|| ( amd64 )"
 DEPEND="
 	app-misc/yq
 	net-firewall/conntrack-tools
-	rootless? ( app-emulation/slirp4netns )
+	rootless? ( app-containers/slirp4netns )
 "
 RDEPEND="kubectl-symlink? ( !sys-cluster/kubectl )"
 RESTRICT+=" test"
