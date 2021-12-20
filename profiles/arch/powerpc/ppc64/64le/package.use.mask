@@ -27,7 +27,7 @@ kde-apps/kdenetwork-meta webengine
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
 # criu is unmasked on little-endian ppc64
-app-emulation/crun -criu
+app-containers/crun -criu
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-19)
 # openjfx is keyworded on ppc64le

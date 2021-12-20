@@ -45,7 +45,7 @@ net-libs/webkit-gtk avif
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
 # criu is masked on big-endian ppc*
-app-emulation/crun criu
+app-containers/crun criu
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-07)
 # dev-vcs/darcs is not keyworded on ppc/ppc64
