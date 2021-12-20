@@ -21,7 +21,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	cuda? ( dev-util/nvidia-cuda-sdk )
+	cuda? ( dev-util/nvidia-cuda-toolkit )
 "
 BDEPEND="
 	virtual/pkgconfig
