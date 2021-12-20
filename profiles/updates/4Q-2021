@@ -59,3 +59,4 @@ move app-emulation/runc app-containers/runc
 move app-emulation/s6-overlay app-containers/s6-overlay
 move app-emulation/snapd app-containers/snapd
 move app-emulation/umoci app-containers/umoci
+move app-emulation/docker-cli app-containers/docker-cli

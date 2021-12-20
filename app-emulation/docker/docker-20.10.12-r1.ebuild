@@ -39,7 +39,7 @@ RDEPEND="
 	dev-libs/libltdl
 	>=app-containers/containerd-1.4.12[apparmor?,btrfs?,device-mapper?,seccomp?]
 	~app-containers/docker-proxy-0.8.0_p20210525
-	cli? ( ~app-emulation/docker-cli-${PV} )
+	cli? ( ~app-containers/docker-cli-${PV} )
 	container-init? ( >=sys-process/tini-0.19.0[static] )
 "
 
@@ -261,7 +261,7 @@ pkg_postinst() {
 		ewarn "two packages upstream, so Gentoo has followed suit."
 		ewarn
 		ewarn "app-emulation/docker contains the daemon and"
-		ewarn "app-emulation/docker-cli contains the docker command."
+		ewarn "app-containers/docker-cli contains the docker command."
 		ewarn
 		ewarn "docker currently installs docker-cli using the cli use flag."
 		ewarn
