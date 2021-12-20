@@ -68,7 +68,6 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--disable-account-tools-setuid
-		--enable-shared
 		--disable-static
 		--with-btrfs
 		--without-group-name-max-length
