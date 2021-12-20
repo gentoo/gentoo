@@ -272,11 +272,6 @@ www-apache/mod_extract_forwarded
 # Removal in 30 days. Bug #827654
 www-apache/mod_evasive
 
-# Mike Gilbert <floppym@gentoo.org> (2021-11-27)
-# eudev will be removed on 2022-01-01.
-# Please see the news item published on 2021-08-24 for more information.
-sys-fs/eudev
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-26)
 # Library without consumers. Removal in 30 days.
 dev-java/jss
