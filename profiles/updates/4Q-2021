@@ -47,3 +47,4 @@ move app-emulation/docker-gc app-containers/docker-gc
 move app-emulation/docker-registry app-containers/docker-registry
 move app-emulation/docker-swarm app-containers/docker-swarm
 move app-emulation/go-secbench app-containers/go-secbench
+move app-emulation/slirp4netns app-containers/slirp4netns
