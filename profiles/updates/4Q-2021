@@ -64,3 +64,4 @@ move app-emulation/docker app-containers/docker
 move app-emulation/reg app-containers/reg
 move app-emulation/flannel app-containers/flannel
 move app-emulation/lxd app-containers/lxd
+move app-emulation/lxc-templates app-containers/lxc-templates
