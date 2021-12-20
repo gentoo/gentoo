@@ -5,7 +5,7 @@ EAPI=7
 inherit go-module
 
 DESCRIPTION="command line interface for the Sourcegraph code search tool"
-HOMEPAGE="https://www.sourcegraph.com https://docs.sourcegraph.com/cli"
+HOMEPAGE="https://sourcegraph.com https://docs.sourcegraph.com/cli"
 
 EGO_SUM=(
 	"github.com/Masterminds/semver v1.5.0"
