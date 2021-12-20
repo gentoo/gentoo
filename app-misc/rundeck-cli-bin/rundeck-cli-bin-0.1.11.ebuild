@@ -9,7 +9,7 @@ MY_P="rundeck-cli-${PV}"
 inherit java-pkg-2
 
 DESCRIPTION="Command line tool for rundeck"
-HOMEPAGE="http://rundeck.org"
+HOMEPAGE="http://www.rundeck.com/open-source"
 SRC_URI="https://github.com/rundeck/${MY_PN}/releases/download/v${PV}/${MY_P}-all.jar"
 S="${WORKDIR}"
 
