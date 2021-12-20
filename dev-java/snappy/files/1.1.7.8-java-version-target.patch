@@ -1,0 +1,47 @@
+From e7d1d0167426790ba9b1d28ffa11e0d0c523f3b5 Mon Sep 17 00:00:00 2001
+From: Yuan Liao <liaoyuan@gmail.com>
+Date: Sun, 6 Feb 2022 08:29:20 -0800
+Subject: [PATCH] Allow Java version target to be specified using variable
+
+Signed-off-by: Yuan Liao <liaoyuan@gmail.com>
+---
+ Makefile        | 4 ++--
+ Makefile.common | 2 ++
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 1d82a8a..8eaa319 100644
+--- a/Makefile
++++ b/Makefile
+@@ -92,13 +92,13 @@ snappy-header: $(SNAPPY_CMAKE_CACHE)
+ 
+ $(TARGET)/jni-classes/org/xerial/snappy/SnappyNative.class: $(SRC)/org/xerial/snappy/SnappyNative.java
+ 	@mkdir -p $(TARGET)/jni-classes
+-	$(JAVAC) -source 1.7 -target 1.7 -h $(SRC)/org/xerial/snappy/ -d $(TARGET)/jni-classes -sourcepath $(SRC) $<
++	$(JAVAC) -source $(JAVA_SOURCE) -target $(JAVA_TARGET) -h $(SRC)/org/xerial/snappy/ -d $(TARGET)/jni-classes -sourcepath $(SRC) $<
+ 
+ $(SRC)/org/xerial/snappy/SnappyNative.h: $(TARGET)/jni-classes/org/xerial/snappy/SnappyNative.class
+ 
+ $(TARGET)/jni-classes/org/xerial/snappy/BitShuffleNative.class: $(SRC)/org/xerial/snappy/BitShuffleNative.java
+ 	@mkdir -p $(TARGET)/jni-classes
+-	$(JAVAC) -source 1.7 -target 1.7 -h $(SRC)/org/xerial/snappy/ -d $(TARGET)/jni-classes -sourcepath $(SRC) $<
++	$(JAVAC) -source $(JAVA_SOURCE) -target $(JAVA_TARGET) -h $(SRC)/org/xerial/snappy/ -d $(TARGET)/jni-classes -sourcepath $(SRC) $<
+ 
+ $(SRC)/org/xerial/snappy/BitShuffleNative.h: $(TARGET)/jni-classes/org/xerial/snappy/BitShuffleNative.class
+ 
+diff --git a/Makefile.common b/Makefile.common
+index 534bc4f..86d839b 100755
+--- a/Makefile.common
++++ b/Makefile.common
+@@ -10,6 +10,8 @@ endif
+ JAVA  := "$$JAVA_HOME/bin/java"
+ JAVAC := "$$JAVA_HOME/bin/javac"
+ JAVAH := "$$JAVA_HOME/bin/javah"
++JAVA_SOURCE := 1.8
++JAVA_TARGET := 1.8
+ 
+ LITTLE_ENDIAN	:= "Little Endian"
+ BIG_ENDIAN	:= "Big Endian"
+-- 
+2.34.1
+
