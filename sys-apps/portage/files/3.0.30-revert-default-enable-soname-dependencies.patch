@@ -1,0 +1,52 @@
+From 2c025e87bb6253f869f9e84e6eb0d98eecfd49c4 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Mon, 20 Dec 2021 11:16:30 -0500
+Subject: [PATCH] Revert "emerge: Default enable soname dependencies (bug
+ 687956)"
+To: gentoo-portage-dev@lists.gentoo.org
+
+This change seems to cause problems with emerge --depclean.
+
+Reverts: 6091fcd861034b9b20677098827eff7b7a148853
+Bug: https://bugs.gentoo.org/687956
+Bug: https://bugs.gentoo.org/829623
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ lib/_emerge/create_depgraph_params.py | 2 +-
+ man/emerge.1                          | 7 +++----
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/lib/_emerge/create_depgraph_params.py b/lib/_emerge/create_depgraph_params.py
+index 95c4c2035..11c3e3736 100644
+--- a/lib/_emerge/create_depgraph_params.py
++++ b/lib/_emerge/create_depgraph_params.py
+@@ -104,7 +104,7 @@ def create_depgraph_params(myopts, myaction):
+     if ignore_built_slot_operator_deps is not None:
+         myparams["ignore_built_slot_operator_deps"] = ignore_built_slot_operator_deps
+ 
+-    myparams["ignore_soname_deps"] = myopts.get("--ignore-soname-deps", "n")
++    myparams["ignore_soname_deps"] = myopts.get("--ignore-soname-deps", "y")
+ 
+     dynamic_deps = myopts.get("--dynamic-deps", "y") != "n" and "--nodeps" not in myopts
+     if dynamic_deps:
+diff --git a/man/emerge.1 b/man/emerge.1
+index ff565b46f..8f6d12925 100644
+--- a/man/emerge.1
++++ b/man/emerge.1
+@@ -639,10 +639,9 @@ supported beginning with \fBEAPI 5\fR.
+ .TP
+ .BR "\-\-ignore\-soname\-deps < y | n >"
+ Ignore the soname dependencies of binary and installed packages. This
+-option may be useful when working with binary or installed packages
+-that lack appropriate soname dependency metadata because they were built
+-with a package manager that does not support soname dependencies (perhaps
+-an older version of portage). Soname
++option is enabled by default, since soname dependencies are relatively
++new, and the required metadata is not guaranteed to exist for binary and
++installed packages built with older versions of portage. Also, soname
+ dependencies will be automatically ignored for dependency calculations
+ that can pull unbuilt ebuilds into the dependency graph, since unbuilt
+ ebuilds do not have any soname dependency metadata, making it impossible
+-- 
+2.34.1
+
