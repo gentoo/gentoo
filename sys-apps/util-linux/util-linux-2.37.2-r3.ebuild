@@ -312,8 +312,11 @@ multilib_src_install_all() {
 	fi
 
 	if use pam ; then
+		# See https://github.com/util-linux/util-linux/blob/master/Documentation/PAM-configuration.txt
 		newpamd "${FILESDIR}/runuser.pamd" runuser
 		newpamd "${FILESDIR}/runuser-l.pamd" runuser-l
+
+		newpamd "${FILESDIR}/su-l.pamd" su-l
 	fi
 
 	# Note:
