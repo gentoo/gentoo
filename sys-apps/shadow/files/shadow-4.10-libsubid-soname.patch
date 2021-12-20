@@ -1,7 +1,7 @@
 https://github.com/shadow-maint/shadow/pull/463
 
 From: Sam James <sam@gentoo.org>
-Date: Mon, 20 Dec 2021 01:24:16 +0000
+Date: Mon, 20 Dec 2021 01:37:23 +0000
 Subject: [PATCH] libsubid: fix defining SONAME version
 
 We were overriding this when --enable-shared was passed. We can actually
@@ -11,6 +11,17 @@ us here anyway.
 Without this patch, libsubid is installed as .0.
 
 Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -321,8 +321,6 @@ if test "$with_sha_crypt" = "yes"; then
+ 	AC_DEFINE(USE_SHA_CRYPT, 1, [Define to allow the SHA256 and SHA512 password encryption algorithms])
+ fi
+ 
+-AM_CONDITIONAL(ENABLE_SHARED, test "x$enable_shared" = "xyes")
+-
+ AM_CONDITIONAL(USE_BCRYPT, test "x$with_bcrypt" = "xyes")
+ if test "$with_bcrypt" = "yes"; then
+ 	AC_DEFINE(USE_BCRYPT, 1, [Define to allow the bcrypt password encryption algorithm])
 --- a/libsubid/Makefile.am
 +++ b/libsubid/Makefile.am
 @@ -1,10 +1,6 @@
