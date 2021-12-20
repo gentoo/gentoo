@@ -3,17 +3,15 @@
 
 EAPI=8
 
-EGIT_COMMIT="7232230911c02f81cb50b38f47ccf7100dd066f9"
 inherit autotools linux-info systemd
 
 DESCRIPTION="cifsd/ksmbd kernel server userspace utilities"
 HOMEPAGE="https://github.com/cifsd-team/ksmbd-tools"
-SRC_URI="https://github.com/cifsd-team/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${PN}-${EGIT_COMMIT}.tar.gz"
+SRC_URI="https://github.com/cifsd-team/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-# no keywords for now, for testing.
-#KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 DEPEND="
 	dev-libs/glib:2
@@ -23,12 +21,11 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
-
 pkg_setup() {
 	# we don't want to die() here to be able to build binpkgs
-	kernel_is -lt 5 15 && eerror "kernel >=5.15 required for ${PN}"
+	kernel_is -lt 5 15 && eerror "kernel >= 5.15 required for ${PN}"
 	CONFIG_CHECK="~SMB_SERVER"
+	ERROR_SMB_SERVER="CONFIG_SMB_SERVER is not set: ksmbd is not enabled in kernel, ${PN} will not work"
 	# use krb5 && CONFIG_CHECK+=" ~SMB_SERVER_KERBEROS5"
 	linux-info_pkg_setup
 }
