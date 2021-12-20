@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-EGIT_COMMIT="3450a60d2196cc0bee8a3fc28a7c93a7370d4515"
+EGIT_COMMIT="6e8de00bb224f9931d7402648f0177e7357ed079"
 
 inherit bash-completion-r1 flag-o-matic go-module tmpfiles
 
@@ -135,7 +135,7 @@ src_install() {
 pkg_preinst() {
 	PODMAN_ROOTLESS_UPGRADE=false
 	if use rootless; then
-		has_version 'app-emulation/podman[rootless]' || PODMAN_ROOTLESS_UPGRADE=true
+		has_version 'app-containers/podman[rootless]' || PODMAN_ROOTLESS_UPGRADE=true
 	fi
 }
 

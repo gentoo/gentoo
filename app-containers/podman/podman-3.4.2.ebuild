@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-EGIT_COMMIT="4c5283fabff2de5145838f1847a5a7b2b1fbc0a5"
+EGIT_COMMIT="2ad1fd3555de12de34e20898cc2ef901f08fe5ed"
 
 inherit bash-completion-r1 flag-o-matic go-module tmpfiles
 
@@ -16,7 +16,7 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="apparmor btrfs +fuse +rootless selinux"
-RESTRICT="test"
+RESTRICT+=" test"
 
 COMMON_DEPEND="
 	app-crypt/gpgme:=
@@ -135,7 +135,7 @@ src_install() {
 pkg_preinst() {
 	PODMAN_ROOTLESS_UPGRADE=false
 	if use rootless; then
-		has_version 'app-emulation/podman[rootless]' || PODMAN_ROOTLESS_UPGRADE=true
+		has_version 'app-containers/podman[rootless]' || PODMAN_ROOTLESS_UPGRADE=true
 	fi
 }
 
