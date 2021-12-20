@@ -1,0 +1,12 @@
+diff -r 5a30b6b09e77 tboot/Makefile
+--- a/tboot/Makefile	Fri Dec 10 15:35:42 2021 +0100
++++ b/tboot/Makefile	Mon Dec 20 13:06:09 2021 -0600
+@@ -34,7 +34,7 @@
+ TARGET_LDS := $(CURDIR)/common/tboot.lds
+ 
+ $(TARGET).strip : $(TARGET)
+-	strip $< -o $@
++	$(STRIP) $< -o $@
+ 
+ $(TARGET).gz : $(TARGET).strip
+ 	gzip -n -f -9 < $< > $@
