@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Dogecoin Core 1.14.5 of blockchain node and RPC server."
 HOMEPAGE="https://github.com/dogecoin"
-SRC_URI="https://github.com/dogecoin/dogecoin/archive/refs/heads/master.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dogecoin/dogecoin/archive/refs/tags/v${PV}.tar.gz -> ${PN}-v${PV}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 DB_VER="5.3"
@@ -13,8 +13,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="tests +wallet zmq"
 DOGEDIR="/opt/${PN}"
 DEPEND="
-	dev-libs/libevent:=
-	dev-libs/protobuf
 	dev-libs/openssl
 	sys-devel/libtool
 	sys-devel/automake:=
@@ -27,7 +25,7 @@ BDEPEND="
 	sys-devel/autoconf
 	sys-devel/automake
 "
-WORKDIR_="${WORKDIR}/dogecoin-master"
+WORKDIR_="${WORKDIR}/dogecoin-${PV}"
 S=${WORKDIR_}
 
 src_configure() {
@@ -51,13 +49,13 @@ src_install() {
 	insinto "${DOGEDIR}"
 	#Derived from net-p2p/bitcoind file operations.
 	newins "${FILESDIR}/dogecoin.conf" "dogecoin.conf"
-	newins "${FILESDIR}/dogecoin.example.conf" "dogecoin.example.conf"
 	fperms 600 "${DOGEDIR}/dogecoin.conf"
-	fperms 600 "${DOGEDIR}/dogecoin.example.conf"
+	dosym "${DOGEDIR}/bin/dogecoind" "/usr/bin/dogecoind"
 }
 
 pkg_postinst() {
 	elog "Dogecoin Core ${PV} blockchain node and RPC server has been installed."
 	elog "Dogecoin Core binaries have been placed in ${DOGEDIR}/bin."
+	elog "dogecoind has been symlinked with /usr/bin/dogecoind."
 	elog "dogecoin.conf is located under ${DOGEDIR}."
 }
