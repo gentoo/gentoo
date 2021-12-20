@@ -53,6 +53,6 @@ src_compile() {
 }
 
 src_install() {
-	emake -j1 DESTDIR="${D}"
+	emake -j1 DESTDIR="${D}" install
 	einstalldocs
 }
