@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-EGIT_COMMIT="2ad1fd3555de12de34e20898cc2ef901f08fe5ed"
+EGIT_COMMIT="a6493ae6904a5b7dde2395a374cb77fc45c8a3bc"
 
 inherit bash-completion-r1 flag-o-matic go-module tmpfiles
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/containers/podman/archive/v${PV}.tar.gz -> ${MY_P}.t
 LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 arm64 ~ppc64"
 IUSE="apparmor btrfs +fuse +rootless selinux"
 RESTRICT+=" test"
 
@@ -135,7 +135,7 @@ src_install() {
 pkg_preinst() {
 	PODMAN_ROOTLESS_UPGRADE=false
 	if use rootless; then
-		has_version 'app-emulation/podman[rootless]' || PODMAN_ROOTLESS_UPGRADE=true
+		has_version 'app-containers/podman[rootless]' || PODMAN_ROOTLESS_UPGRADE=true
 	fi
 }
 

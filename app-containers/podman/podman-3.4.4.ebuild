@@ -135,7 +135,7 @@ src_install() {
 pkg_preinst() {
 	PODMAN_ROOTLESS_UPGRADE=false
 	if use rootless; then
-		has_version 'app-emulation/podman[rootless]' || PODMAN_ROOTLESS_UPGRADE=true
+		has_version 'app-containers/podman[rootless]' || PODMAN_ROOTLESS_UPGRADE=true
 	fi
 }
 

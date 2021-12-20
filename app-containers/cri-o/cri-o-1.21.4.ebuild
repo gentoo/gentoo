@@ -1977,7 +1977,7 @@ DEPEND="
 	${COMMON_DEPEND}
 	dev-go/go-md2man"
 RDEPEND="${COMMON_DEPEND}
-	!<app-emulation/podman-1.3.2-r1"
+	!<app-containers/podman-1.3.2-r1"
 
 src_prepare() {
 	default
