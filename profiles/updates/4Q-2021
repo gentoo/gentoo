@@ -52,3 +52,4 @@ move app-emulation/podman app-containers/podman
 move app-emulation/k3d app-containers/k3d
 move app-emulation/nerdctl app-containers/nerdctl
 move app-emulation/skopeo app-containers/skopeo
+move app-emulation/sen app-containers/sen
