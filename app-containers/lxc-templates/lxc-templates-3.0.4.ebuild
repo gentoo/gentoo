@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 LICENSE="LGPL-3"
 SLOT="0"
 
-RDEPEND=">=app-emulation/lxc-3.0"
+RDEPEND=">=app-containers/lxc-3.0"
 DEPEND="${RDEPEND}"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-linuxcontainers )"
 

@@ -123,7 +123,7 @@ sci-physics/lammps kokkos
 
 # Joonas Niilola <juippis@gentoo.org> (2020-05-14)
 # sys-apps/apparmor not keyworded on x86.
-app-emulation/lxc apparmor
+app-containers/lxc apparmor
 app-containers/lxd apparmor
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
