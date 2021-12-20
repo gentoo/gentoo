@@ -32,6 +32,7 @@ DEPEND="${RDEPEND}
 "
 
 BDEPEND="test? (
+	sys-devel/libtool
 	$(python_gen_any_dep '
 		dev-python/lit[${PYTHON_USEDEP}]
 	')
@@ -40,6 +41,8 @@ BDEPEND="test? (
 RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${P^}"
+
+PATCHES=( "${FILESDIR}/3.0.17-gcc11.patch" )
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
