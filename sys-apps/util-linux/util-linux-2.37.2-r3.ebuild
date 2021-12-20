@@ -79,7 +79,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	"
 fi
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) su? ( pam )"
 RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
