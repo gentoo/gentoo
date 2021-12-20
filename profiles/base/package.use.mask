@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# David Seifert <soap@gentoo.org> (2021-12-19)
+# Requires GCC 8, security vulnerabilities, switch to CUDA 11,
+# consider using clang+NVPTX backend for sm_30 cards.
+# Removal in 90 days, bug #721808, #760708.
+dev-libs/cudnn cuda10-2
+
 # Thomas Deutschmann <whissi@gentoo.org> (2021-12-03)
 # Requires newer media-libs/dav1d which isn't available yet,
 # see https://bugzilla.mozilla.org/1734058
