@@ -73,7 +73,9 @@ multilib_src_configure() {
 
 	if use elibc_musl ; then
 		# bug #829690
-		sed -i -e 's:${GRAPHITE_LINK_FLAGS}:-lssp_shared &:' "${S}"/src/CMakeLists.txt || die
+		if use ppc || use x86 ; then
+			sed -i -e 's:${GRAPHITE_LINK_FLAGS}:-lssp_shared &:' "${S}"/src/CMakeLists.txt || die
+		fi
 	fi
 
 	cmake_src_configure
