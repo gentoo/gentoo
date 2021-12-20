@@ -30,6 +30,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.1.5_p20200205-xorg-21.0-build.patch
+	"${FILESDIR}"/${PN}-0.1.5_p20200205-xorg-21.0-build-bool.patch
 )
 
 pkg_setup() {

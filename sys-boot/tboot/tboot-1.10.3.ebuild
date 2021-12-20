@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit flag-o-matic mount-boot
+inherit mount-boot toolchain-funcs
 
 DESCRIPTION="Performs a measured and verified boot using Intel Trusted Execution Technology"
 HOMEPAGE="https://sourceforge.net/projects/tboot/"
@@ -17,21 +17,18 @@ IUSE="custom-cflags selinux"
 # requires patching the kernel src
 RESTRICT="test"
 
-DEPEND="app-crypt/trousers
-app-crypt/tpm-tools
-dev-libs/openssl:0=[-bindist(-)]
-"
+DEPEND="dev-libs/openssl:0=[-bindist(-)]"
 
 RDEPEND="${DEPEND}
-sys-boot/grub:2
-selinux? ( sec-policy/selinux-tboot )"
+	sys-boot/grub:2
+	selinux? ( sec-policy/selinux-tboot )"
 
-DOCS=( README COPYING CHANGELOG )
-PATCHES=( "${FILESDIR}/${PN}-1.9.11-genkernel-path.patch" )
+DOCS=( README.md COPYING CHANGELOG )
+PATCHES=( "${FILESDIR}/${PN}-1.10.3-disable-Werror.patch"
+	  "${FILESDIR}/${PN}-1.10.3-disable-strip.patch" )
 
-src_prepare() {
-	sed -i 's/ -Werror//g' Config.mk || die
-	sed -i 's/^INSTALL_STRIP = -s$//' Config.mk || die # QA Errors
+src_configure() {
+	tc-export AS LD CC CPP AR RANLIB NM OBJCOPY OBJDUMP
 
 	default
 }
@@ -52,15 +49,15 @@ src_install() {
 	emake DISTDIR="${D}" install
 
 	dodoc "${DOCS[@]}"
-	dodoc docs/*.txt lcptools/*.pdf
+	dodoc docs/*.{txt,md}
 
-	cd "${ED}"
+	cd "${ED}" || die
 	mkdir -p usr/lib/tboot/ || die
 	mv boot usr/lib/tboot/ || die
 }
 
 pkg_postinst() {
-	cp "${ROOT}/usr/lib/tboot/boot/*" "${ROOT}/boot/" || die
+	cp "${ROOT}/usr/lib/tboot/boot/"* "${ROOT}/boot/" || die
 
 	ewarn "Please remember to download the SINIT AC Module relevant"
 	ewarn "for your platform from:"

@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND=">=dev-python/argon2-cffi-bindings-21.2.0[${PYTHON_USEDEP}]"
 BDEPEND="
+	<dev-python/pyproject2setuppy-22[${PYTHON_USEDEP}]
 	test? (
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 	)

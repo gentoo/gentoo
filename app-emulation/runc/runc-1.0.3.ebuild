@@ -11,7 +11,7 @@ RUNC_COMMIT=f46b6ba2c9314cfc8caae24a32ec5fe9ef1059fe
 CONFIG_CHECK="~USER_NS"
 
 DESCRIPTION="runc container cli tools"
-HOMEPAGE="http://runc.io"
+HOMEPAGE="http://github.com/opencontainers/runc/"
 MY_PV="${PV/_/-}"
 SRC_URI="https://github.com/opencontainers/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
