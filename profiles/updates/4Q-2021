@@ -34,3 +34,4 @@ move app-emulation/docker-proxy app-containers/docker-proxy
 move app-emulation/containerd app-containers/containerd
 move app-emulation/crun app-containers/crun
 move app-emulation/buildah app-containers/buildah
+move app-emulation/cadvisor app-containers/cadvisor
