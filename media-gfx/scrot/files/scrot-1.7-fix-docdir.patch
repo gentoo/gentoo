@@ -2,7 +2,7 @@ https://github.com/resurrecting-open-source-projects/scrot/pull/175
 
 From: Sam James <sam@gentoo.org>
 Date: Sun, 19 Dec 2021 23:59:45 +0000
-Subject: [PATCH] build: respect docdir
+Subject: [PATCH 1/2] build: respect docdir
 
 Before this patch with --docdir=/usr/share/doc/scrot-1.7-r1 (example downstream
 versioning for patches):
@@ -34,7 +34,7 @@ Bug: https://bugs.gentoo.org/828928
 Signed-off-by: Sam James <sam@gentoo.org>
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -34,8 +34,7 @@ MAINTAINERCLEANFILES = Makefile.in
+@@ -34,10 +34,9 @@ MAINTAINERCLEANFILES = Makefile.in
  
  man_MANS = man/scrot.1
  
@@ -42,5 +42,24 @@ Signed-off-by: Sam James <sam@gentoo.org>
 -docsdir = $(prefix)/share/doc/scrot
 +doc_DATA = README.md AUTHORS ChangeLog doc/scrot.png
  
- EXTRA_DIST = man/scrot.1 $(docs_DATA)
+-EXTRA_DIST = man/scrot.1 $(docs_DATA)
++EXTRA_DIST = man/scrot.1
+ 
+ SUBDIRS = src
+ 
+From: Sam James <sam@gentoo.org>
+Date: Mon, 20 Dec 2021 00:03:35 +0000
+Subject: [PATCH 2/2] build: simplify man page installation
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -36,7 +36,7 @@ man_MANS = man/scrot.1
+ 
+ doc_DATA = README.md AUTHORS ChangeLog doc/scrot.png
+ 
+-EXTRA_DIST = man/scrot.1
++EXTRA_DIST = $(man_MANS)
+ 
+ SUBDIRS = src
  
