@@ -77,7 +77,7 @@ tree-sitter-grammar_src_compile() {
 	${link} ${LDFLAGS} \
 			-shared \
 			*.o \
-			-Wl,-soname ${soname} \
+			-Wl,--soname=${soname} \
 			-o "${WORKDIR}"/${soname} || die
 }
 
