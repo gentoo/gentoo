@@ -182,7 +182,7 @@ pkg_postinst() {
 
 	elog "Please run 'lxc-checkconfig' to see optional kernel features."
 	elog
-	optfeature "automatic template scripts" app-emulation/lxc-templates
+	optfeature "automatic template scripts" app-containers/lxc-templates
 	optfeature "Debian-based distribution container image support" dev-util/debootstrap
 	optfeature "snapshot & restore functionality" sys-process/criu
 }
