@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Joonas Niilola <juippis@gentoo.org> (2021-12-20)
+# Broken, upstream issue/PR open since 2021-05 without reply.
+# Gentoo bug #821253
+media-video/mjpg-streamer http-management
+
 # David Seifert <soap@gentoo.org> (2021-12-19)
 # Requires GCC 8, security vulnerabilities, switch to CUDA 11,
 # consider using clang+NVPTX backend for sm_30 cards.
