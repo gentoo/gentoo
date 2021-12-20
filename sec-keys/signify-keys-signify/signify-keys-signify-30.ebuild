@@ -24,6 +24,8 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 s
 
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/signify.asc
 
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-signify )"
+
 src_install() {
 	insinto /usr/share/signify-keys
 	doins "${DISTDIR}/${MY_P}.pub"
