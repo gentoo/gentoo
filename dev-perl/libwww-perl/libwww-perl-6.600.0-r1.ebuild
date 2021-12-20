@@ -54,9 +54,7 @@ PDEPEND="
 	)
 "
 
-src_install() {
-	perl-module_src_install
-
+pkg_postinst() {
 	# Perform a check to see if the live filesystem is case-INsensitive
 	# or not.  If it is, the symlinks GET, POST and in particular HEAD
 	# will collide with e.g. head from coreutils.  While under Linux
@@ -67,8 +65,8 @@ src_install() {
 	# bash should always be there, if we can find it in capitals, we're
 	# on a case-INsensitive filesystem.
 	if [[ ! -f ${EROOT}/BIN/BASH ]] ; then
-		dosym lwp-request /usr/bin/GET
-		dosym lwp-request /usr/bin/POST
-		dosym lwp-request /usr/bin/HEAD
+		ln -s lwp-request "${EROOT}"/usr/bin/GET
+		ln -s lwp-request "${EROOT}"/usr/bin/POST
+		ln -s lwp-request "${EROOT}"/usr/bin/HEAD
 	fi
 }
