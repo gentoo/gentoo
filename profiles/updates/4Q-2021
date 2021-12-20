@@ -62,3 +62,4 @@ move app-emulation/umoci app-containers/umoci
 move app-emulation/docker-cli app-containers/docker-cli
 move app-emulation/docker app-containers/docker
 move app-emulation/reg app-containers/reg
+move app-emulation/flannel app-containers/flannel
