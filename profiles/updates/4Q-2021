@@ -40,3 +40,4 @@ move app-emulation/containers-storage app-containers/containers-storage
 move app-emulation/cri-o app-containers/cri-o
 move app-emulation/cri-tools app-containers/cri-tools
 move app-emulation/distrobuilder app-containers/distrobuilder
+move app-emulation/docker-bench-security app-containers/docker-bench-security
