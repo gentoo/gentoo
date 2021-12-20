@@ -1915,7 +1915,7 @@ IUSE="btrfs +device-mapper selinux systemd"
 COMMON_DEPEND="
 	app-crypt/gpgme:=
 	app-containers/conmon
-	app-emulation/runc
+	app-containers/runc
 	dev-libs/glib:=
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error:=

@@ -533,7 +533,7 @@ IUSE="seccomp"
 
 DEPEND="seccomp? ( sys-libs/libseccomp )"
 RDEPEND="${DEPEND}
-	app-emulation/runc"
+	app-containers/runc"
 
 src_compile() {
 		IMG_DISABLE_EMBEDDED_RUNC=1 \

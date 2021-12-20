@@ -55,3 +55,4 @@ move app-emulation/skopeo app-containers/skopeo
 move app-emulation/sen app-containers/sen
 move app-emulation/img app-containers/img
 move app-emulation/kompose app-containers/kompose
+move app-emulation/runc app-containers/runc
