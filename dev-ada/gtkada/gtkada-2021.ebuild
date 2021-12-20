@@ -31,7 +31,8 @@ RDEPEND="${ADA_DEPS}
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 
-REQUIRED_USE="${ADA_REQUIRED_USE}"
+REQUIRED_USE="${ADA_REQUIRED_USE}
+	|| ( shared static-libs )"
 
 S="${WORKDIR}"/${MYP}
 
@@ -58,6 +59,8 @@ src_compile() {
 }
 
 src_install() {
-	emake -j1 DESTDIR="${D}"
+	emake -j1 DESTDIR="${D}" install
 	einstalldocs
+	mv "${D}"/usr/share/doc/${PN}/${PN}_* "${D}"/usr/share/doc/${PF} || die
+	rmdir "${D}"/usr/share/doc/${PN} || die
 }
