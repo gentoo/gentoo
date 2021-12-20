@@ -6,7 +6,7 @@ EAPI=7
 CMAKE_ECLASS=cmake
 GENTOO_DEPEND_ON_PERL="no"
 PYTHON_COMPAT=( python3_{7,8,9} )
-inherit perl-module python-any-r1 cmake-multilib
+inherit perl-module python-any-r1 cmake-multilib flag-o-matic
 
 DESCRIPTION="Library providing rendering capabilities for complex non-Roman writing systems"
 HOMEPAGE="https://scripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_home"
@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="perl? ( dev-lang/perl:= )"
 DEPEND="
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	test? ( dev-libs/glib:2 )
 "
 BDEPEND="
@@ -37,7 +37,11 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-1.3.5-includes-libs-perl.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.3.5-includes-libs-perl.patch"
+	"${FILESDIR}/${PN}-1.35-fix-gcc-linking.patch"
+	"${FILESDIR}/${PN}-1.3.14-fix-cmake-files-libdir.patch"
+)
 
 pkg_setup() {
 	use perl && perl_set_version
@@ -45,7 +49,7 @@ pkg_setup() {
 }
 
 python_check_deps() {
-	has_version "dev-python/fonttools[${PYTHON_USEDEP}]"
+	has_version -b "dev-python/fonttools[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
@@ -66,6 +70,11 @@ multilib_src_configure() {
 	[[ ${CHOST} == powerpc*-apple* ]] && mycmakeargs+=(
 		-DGRAPHITE2_NSEGCACHE:BOOL=ON
 	)
+
+	if use elibc_musl ; then
+		# bug #829690
+		sed -i -e 's:${GRAPHITE_LINK_FLAGS}:-lssp_shared &:' "${S}"/src/CMakeLists.txt || die
+	fi
 
 	cmake_src_configure
 
