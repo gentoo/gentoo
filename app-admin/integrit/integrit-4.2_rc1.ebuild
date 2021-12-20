@@ -22,6 +22,8 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 PATCHES=( "${FILESDIR}/${PN}"-4.1-fix-build-system.patch )
 
+BDEPEND="sys-apps/texinfo"
+
 src_prepare() {
 	default
 	mv configure.{in,ac} || die "Failed to move configure.in into .ac"
