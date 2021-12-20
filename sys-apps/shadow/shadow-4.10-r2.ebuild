@@ -3,14 +3,15 @@
 
 EAPI=7
 
-inherit libtool pam
+inherit autotools pam
 
 DESCRIPTION="Utilities to deal with user accounts"
 HOMEPAGE="https://github.com/shadow-maint/shadow"
 SRC_URI="https://github.com/shadow-maint/shadow/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="BSD GPL-2"
-SLOT="0"
+# Subslot is for libsubid's SONAME.
+SLOT="0/4"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="acl audit bcrypt cracklib nls pam selinux skey split-usr su xattr"
 # Taken from the man/Makefile.am file.
@@ -54,12 +55,14 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.1.3-dots-in-usernames.patch"
+	"${FILESDIR}/${PN}-4.10-libsubid-soname.patch"
 )
 
 src_prepare() {
 	default
 
-	elibtoolize
+	eautoreconf
+	#elibtoolize
 }
 
 src_configure() {
