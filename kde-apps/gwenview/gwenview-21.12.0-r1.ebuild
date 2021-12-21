@@ -82,7 +82,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_DISABLE_FIND_PACKAGE_KF5Kipi=OFF
+		-DCMAKE_DISABLE_FIND_PACKAGE_KF5Kipi=ON
 		$(cmake_use_find_package activities KF5Activities)
 		$(cmake_use_find_package fits CFitsio)
 		$(cmake_use_find_package raw KF5KDcraw)
