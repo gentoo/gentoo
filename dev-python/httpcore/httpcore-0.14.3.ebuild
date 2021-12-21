@@ -24,7 +24,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/httpbin[${PYTHON_USEDEP}]
+		dev-python/pytest-httpbin[${PYTHON_USEDEP}]
 		dev-python/pytest-trio[${PYTHON_USEDEP}]
 		dev-python/trio[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
