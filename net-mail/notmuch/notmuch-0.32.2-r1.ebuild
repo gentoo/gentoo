@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_SETUPTOOLS=manual
 NEED_EMACS="24.1"
-PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit bash-completion-r1 desktop distutils-r1 elisp-common flag-o-matic pax-utils toolchain-funcs xdg-utils
 
