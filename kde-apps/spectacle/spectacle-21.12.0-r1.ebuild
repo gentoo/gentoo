@@ -60,7 +60,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_DISABLE_FIND_PACKAGE_KF5Kipi=OFF
+		-DCMAKE_DISABLE_FIND_PACKAGE_KF5Kipi=ON
 		$(cmake_use_find_package annotate kImageAnnotator)
 		$(cmake_use_find_package share KF5Purpose)
 	)
