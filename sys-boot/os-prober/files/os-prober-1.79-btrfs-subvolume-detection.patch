@@ -1,23 +1,22 @@
 Fixes detection of multiple linux installations on different subvolumes of the
-same partition.  Also contains changes from
-https://build.opensuse.org/package/view_file/openSUSE:Factory/os-prober/os-prober-btrfs-always-detect-default.patch
-to fix https://bugs.gentoo.org/790434.
+same partition.  This patch is a combination of https://src.fedoraproject.org/rpms/os-prober/blob/a27e5121193e2222ada672db3521a7d9de70991b/f/os-prober-btrfsfix.patch and https://build.opensuse.org/package/view_file/openSUSE:Factory/os-prober/Improve-btrfs-handling-on-os-probing-for-grub2.patch?rev=56 .
 
 Bug: https://bugs.gentoo.org/790434
+     https://bugs.gentoo.org/817905
      https://bugs.debian.org/688336
      https://bugzilla.redhat.com/888341
 
 --- a/common.sh
 +++ b/common.sh
-@@ -155,6 +155,7 @@
+@@ -155,6 +155,7 @@ parse_proc_mounts () {
  	done
  }
- 
+
 +# add forth parameter to pickup btrfs subvol info
  parsefstab () {
  	while read -r line; do
  		case "$line" in
-@@ -165,12 +166,22 @@
+@@ -165,12 +166,22 @@ parsefstab () {
  				set -f
  				set -- $line
  				set +f
@@ -27,7 +26,7 @@ Bug: https://bugs.gentoo.org/790434
  		esac
  	done
  }
- 
+
 +#check_btrfs_mounted $bootsv $bootuuid)
 +check_btrfs_mounted () {
 +	bootsv="$1"
@@ -43,8 +42,8 @@ Bug: https://bugs.gentoo.org/790434
  		sed 's/\\011/	/g; s/\\012/\n/g; s/\\040/ /g; s/\\134/\\/g'
 --- a/linux-boot-prober
 +++ b/linux-boot-prober
-@@ -5,16 +5,148 @@
- 
+@@ -5,16 +5,143 @@ set -e
+
  newns "$@"
  require_tmpdir
 +ERR="n"
@@ -58,9 +57,9 @@ Bug: https://bugs.gentoo.org/790434
 +bootmnt=
 +bootsv=
 +bootuuid=
- 
+
  grep "^/dev/" /proc/mounts | parse_proc_mounts >"$OS_PROBER_TMP/mounted-map" || true
- 
+
 -partition="$1"
 +if [ -z "$1" ]; then
 +	ERR=y
@@ -80,14 +79,14 @@ Bug: https://bugs.gentoo.org/790434
 +	partition="$1"
 +	type=other
 +fi
- 
+
 -if [ -z "$partition" ]; then
 +if [ "x$ERR" != xn ]; then
  	echo "usage: linux-boot-prober partition" >&2
 +	echo "       linux-boot-prober btrfs UUID=<> subvol=<>" >&2
  	exit 1
  fi
- 
+
 +if [ "$type" = btrfs ]; then
 +	# handle all of the btrfs stuff here
 +	if [ ! -e "/proc/self/mountinfo" ]; then
@@ -111,12 +110,7 @@ Bug: https://bugs.gentoo.org/790434
 +	fi
 +	if [ -z "$mpoint" ]; then
 +		# mount the btrfs root
-+
-+		if [ -n "$subvol" ]; then
-+			opts="-o subvol=$subvol"
-+		fi
-+
-+		if ! mount $opts -t btrfs -U $UUID "$tmpmnt" 2>/dev/null; then
++		if ! mount -o subvol=$subvol -t btrfs -U $UUID "$tmpmnt" 2>/dev/null; then
 +			warn "error mounting btrfs subvol=$subvol UUID=$UUID"
 +			umount "$tmpmnt/boot" 2>/dev/null
 +			umount "$tmpmnt" 2>/dev/null
@@ -194,8 +188,8 @@ Bug: https://bugs.gentoo.org/790434
  if ! mapped="$(mapdevfs "$partition")"; then
  	log "Device '$partition' does not exist; skipping"
  	continue
-@@ -22,8 +154,8 @@
- 
+@@ -22,8 +149,8 @@ fi
+
  if ! grep -q "^$mapped " "$OS_PROBER_TMP/mounted-map"; then
  	for test in /usr/lib/linux-boot-probes/*; do
 -		debug "running $test"
@@ -206,10 +200,10 @@ Bug: https://bugs.gentoo.org/790434
  				break
 --- a/linux-boot-probes/mounted/common/40grub2
 +++ b/linux-boot-probes/mounted/common/40grub2
-@@ -2,17 +2,30 @@
+@@ -2,17 +2,42 @@
  . /usr/share/os-prober/common.sh
  set -e
- 
+
 +# add support for btrfs with no separate /boot
 +# that is, rootsv = bootsv
  partition="$1"
@@ -218,16 +212,28 @@ Bug: https://bugs.gentoo.org/790434
  type="$4"
 +rootsv="$5"
 +bootsv="$6"
- 
+
  found_item=0
- 
+
  entry_result () {
-+	if [ "x$type" = "xbtrfs" -a "$partition" = "$bootpart" ]; then
-+		# trim off the leading subvol
-+		kernelfile=$(echo "$kernel" | cut -d '/' -f 2- | cut -d '/' -f 2-)
-+		if [ "x$rootsv" != "x$bootsv" ]; then
-+		   kernelfile="/boot/$kernelfile"
++	if [ "x$type" = "xbtrfs" ]; then
++		bsv=${bootsv:+/}${bootsv}
++		# if path is not relative to subvolume make it relative
++		kernel=${kernel#${bsv}}
++		kernelfile=$kernel
++		initrd=${initrd#${bsv}}
++		if [ "x$GRUB_FS" != "xbtrfs" ]; then
++		    # absolute path needed: prepend subvolume if $kernel isn't empty
++		    kernel=${kernel:+${bsv}}${kernel}
++		    # handle multiple initrd paths
++		    local initrd_path=
++		    for path in ${initrd}; do
++			    initrd_path+="${bsv}${path} "
++		    done
++		    initrd="${initrd_path% }"
 +		fi
++		# assumed: rootsv != bootsv if rootsv isn't ancestor of bootsv
++		[ "$partition" != "$bootpart" -o "$rootsv" != "$bootsv" ] && kernelfile="/boot${kernelfile}"
 +	else
 +		kernelfile=$kernel
 +	fi
@@ -238,22 +244,41 @@ Bug: https://bugs.gentoo.org/790434
  		result "$rootpart:$bootpart:$title:$kernel:$initrd:$parameters"
  		found_item=1
  	fi
-@@ -108,9 +121,9 @@
-     [ "$mpoint/boot/grub/grub.cfg" -nt "$mpoint/boot/grub/menu.lst" ]); then
- 	debug "parsing grub.cfg"
- 	parse_grub_menu "$mpoint" "$partition" "$bootpart" < "$mpoint/boot/grub/grub.cfg"
--elif [ -e "$mpoint/boot/grub2/grub.cfg" ]; then
-+elif [ -e "$mpoint/boot/grub/grub.cfg" ]; then
- 	debug "parsing grub.cfg"
--	parse_grub_menu "$mpoint" "$partition" "$bootpart" < "$mpoint/boot/grub2/grub.cfg"
-+	parse_grub_menu "$mpoint" "$partition" "$bootpart" < "$mpoint/boot/grub/grub.cfg"
- fi
- 
- if [ "$found_item" = 0 ]; then
+@@ -64,7 +88,7 @@ parse_grub_menu () {
+ 					ignore_item=1
+ 				fi
+ 			;;
+-			linux)
++			linux|linuxefi|linux16)
+ 				# Hack alert: sed off any (hdn,n) but
+ 				# assume the kernel is on the same
+ 				# partition.
+@@ -73,18 +98,18 @@ parse_grub_menu () {
+ 				parameters="$@"
+ 				# Systems with a separate /boot will not have
+ 				# the path to the kernel in grub.cfg.
+-				if [ "$partition" != "$bootpart" ]; then
++				if [ "$partition" != "$bootpart" -a "$type" != "btrfs" ]; then
+ 					kernel="/boot$kernel"
+ 				fi
+ 			;;
+-			initrd)
++			initrd|initrdefi|initrd16)
+ 				shift
+ 				initrd=""
+ 				for initrd_path in "$@"; do
+ 					# sed hack, as above
+ 					initrd_path="$(echo "$initrd_path" | sed 's/(.*)//')"
+ 					# Initrd same.
+-					if [ "$partition" != "$bootpart" ]; then
++					if [ "$partition" != "$bootpart" -a "$type" != "btrfs" ]; then
+ 						initrd_path="/boot$initrd_path"
+ 					fi
+ 					if [ -z "$initrd" ]; then
 --- a/os-prober
 +++ b/os-prober
-@@ -76,9 +76,12 @@
- 
+@@ -76,9 +76,12 @@ partitions () {
+
  	# Also detect OSes on LVM volumes (assumes LVM is active)
  	if type lvs >/dev/null 2>&1; then
 -		echo "$(LVM_SUPPRESS_FD_WARNINGS=1 log_output lvs --noheadings --separator : -o vg_name,lv_name |
@@ -264,21 +289,21 @@ Bug: https://bugs.gentoo.org/790434
 +	# now lets make sure we got all of the btrfs partitions and disks
 +	blkid | grep 'TYPE="btrfs"' | cut -d ':' -f 1
  }
- 
+
  parse_proc_swaps () {
-@@ -136,6 +139,8 @@
+@@ -136,6 +139,8 @@ if [ -f /proc/mdstat ] ; then
  	grep "^md" /proc/mdstat | cut -d: -f2- | parse_proc_mdstat >"$OS_PROBER_TMP/raided-map" || true
  fi
- 
+
 +: >"$OS_PROBER_TMP/btrfs-vols"
 +
  for partition in $(partitions); do
  	if ! mapped="$(mapdevfs "$partition")"; then
  		log "Device '$partition' does not exist; skipping"
-@@ -154,7 +159,26 @@
+@@ -154,7 +159,26 @@ for partition in $(partitions); do
  		continue
  	fi
- 
+
 -	if ! grep -q "^$mapped " "$OS_PROBER_TMP/mounted-map" ; then
 +	# do btrfs processing here; both mounted and unmounted will
 +	# be handled by 50mounted-tests so we can do a subvol only once.
@@ -305,10 +330,10 @@ Bug: https://bugs.gentoo.org/790434
  				debug "running $test on $partition"
 --- a/os-probes/common/50mounted-tests
 +++ b/os-probes/common/50mounted-tests
-@@ -14,19 +14,31 @@
+@@ -14,19 +14,31 @@ do_unmount() {
  	rmdir "$tmpmnt" || true
  }
- 
+
 -types="$(fs_type "$partition")"
 +if [ "x$1" = xbtrfs ]; then
 +	types=btrfs
@@ -342,7 +367,7 @@ Bug: https://bugs.gentoo.org/790434
  elif [ "$types" = ntfs ]; then
  	if type ntfs-3g >/dev/null 2>&1; then
  		types='ntfs-3g ntfs'
-@@ -35,7 +47,7 @@
+@@ -35,7 +47,7 @@ elif [ -z "$types" ]; then
  	if type cryptsetup >/dev/null 2>&1 && \
  	   cryptsetup luksDump "$partition" >/dev/null 2>&1; then
  		debug "$1 is a LUKS partition; skipping"
@@ -351,51 +376,10 @@ Bug: https://bugs.gentoo.org/790434
  	fi
  	for type in $(grep -v nodev /proc/filesystems); do
  		# hfsplus filesystems are mountable as hfs. Try hfs last so
-@@ -58,6 +70,127 @@
+@@ -58,6 +70,108 @@ if [ ! -d "$tmpmnt" ]; then
  fi
- 
+
  mounted=
-+
-+probe_subvol ()
-+{
-+	local subvol=$1
-+	local partition=$2
-+	local UUID=$3
-+	local tmpmnt=$4
-+
-+	mounted=
-+	mpoint="$(grep btrfs /proc/self/mountinfo | grep "$partition " | grep "/$subvol " | cut -d ' ' -f 5)"
-+	ret=1
-+
-+	if [ -n "$subvol" ]; then
-+		opts="-o subvol=$subvol"
-+	fi
-+
-+	if [ -n "$mpoint" ]; then
-+		if [ "x$mpoint" = "x/" ]; then
-+			continue # this is the root for the running system
-+  		fi
-+		mounted=1
-+	else
-+		# again, do not mount btrfs ro
-+		mount -t btrfs $opts -U "$UUID" "$tmpmnt"
-+		mpoint="$tmpmnt"
-+	fi
-+	test="/usr/lib/os-probes/mounted/90linux-distro"
-+	if [ -f "$test" ] && [ -x "$test" ]; then
-+		debug "running subtest $test"
-+		if "$test" "$partition" "$mpoint" btrfs "UUID=$UUID" "subvol=$subvol"; then
-+			debug "os found by subtest $test on subvol $subvol"
-+			ret=0
-+		fi
-+	fi
-+	if [ -z "$mounted" ]; then
-+		if ! umount "$tmpmnt"; then
-+			warn "failed to umount $tmpmnt"
-+		fi
-+	fi
-+	return $ret
-+}
 +
 +# all btrfs processing here.  Handle both unmounted and
 +# mounted subvolumes.
@@ -436,7 +420,7 @@ Bug: https://bugs.gentoo.org/790434
 +		mpoint="$tmpmnt"
 +	    fi
 +
-+	    test="/usr/libexec/os-probes/mounted/90linux-distro"
++	    test="/usr/lib/os-probes/mounted/90linux-distro"
 +	    if [ -f "$test" ] && [ -x "$test" ]; then
 +		debug "running subtest $test"
 +		if "$test" "$partition" "$mpoint" btrfs "UUID=$UUID"; then
@@ -450,24 +434,46 @@ Bug: https://bugs.gentoo.org/790434
 +		fi
 +	    fi
 +	fi
-+	found=
-+	# Always probe subvol or root set as default
-+	if probe_subvol "$defaultvol" "$partition" "$UUID" "$tmpmnt"; then
-+		found=1
-+	fi
 +
-+	# Probe any other OS on subvol
-+	for subvol in $subvols; do
-+		if echo "$rosubvols" | grep -q -x "$subvol" ||
-+		   echo "$sssubvols" | grep -q -x "$subvol" ||
-+		   echo "$defaultvol" | grep -q -x "$subvol"; then
-+			continue
-+		fi
-+		debug "begin btrfs processing for $UUID subvol=$subvol"
-+		if probe_subvol "$subvol" "$partition" "$UUID" "$tmpmnt"; then
-+			found=1
-+		fi
-+	done
++	if [ -z "$subvols" ]; then
++	        debug "no subvols found on btrfs volume $UUID"
++	else
++		found=
++                for subvol in $subvols; do
++			debug "begin btrfs processing for $UUID subvol=$subvol"
++			if echo "$rosubvols" | grep -q -x "$subvol"; then
++				continue
++			fi
++			if echo "$sssubvols" | grep -q -x "$subvol"; then
++				continue
++			fi
++			mounted=
++			mpoint="$(grep btrfs /proc/self/mountinfo | grep "$partition " | grep "/$subvol " | cut -d ' ' -f 5)"
++			if [ -n "$mpoint" ]; then
++				if [ "x$mpoint" = "x/" ]; then
++					continue # this is the root for the running system
++				fi
++				mounted=1
++			else
++				# again, do not mount btrfs ro
++				mount -t btrfs -o subvol="$subvol" -U "$UUID" "$tmpmnt"
++				mpoint="$tmpmnt"
++			fi
++			test="/usr/lib/os-probes/mounted/90linux-distro"
++			if [ -f "$test" ] && [ -x "$test" ]; then
++				debug "running subtest $test"
++				if "$test" "$partition" "$mpoint" btrfs "UUID=$UUID" "subvol=$subvol"; then
++					debug "os found by subtest $test on subvol $subvol"
++					found=1
++				fi
++			fi
++			if [ -z "$mounted" ]; then
++				if ! umount "$tmpmnt"; then
++				    warn "failed to umount $tmpmnt"
++				fi
++			fi
++		done
++	fi
 +	rmdir "$tmpmnt" || true
 +	if [ "$found" ]; then
 +		exit 0
@@ -481,16 +487,16 @@ Bug: https://bugs.gentoo.org/790434
     grub-mount "$partition" "$tmpmnt" 2>/dev/null; then
 --- a/os-probes/mounted/common/90linux-distro
 +++ b/os-probes/mounted/common/90linux-distro
-@@ -7,6 +7,8 @@
+@@ -7,6 +7,8 @@ set -e
  partition="$1"
  dir="$2"
  type="$3"
 +uuid="$4"
 +subvol="$5"
- 
+
  # This test is inaccurate, but given separate / and /boot partitions and the
  # fact that only some architectures have ld-linux.so, I can't see anything
-@@ -143,7 +145,11 @@
+@@ -143,7 +145,11 @@ if (ls "$dir"/lib*/ld*.so* && [ -d "$dir/boot" ] || ls "$dir"/usr/lib*/ld*.so*)
  	fi
  	
          label="$(count_next_label "$short")"
