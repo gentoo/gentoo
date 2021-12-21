@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}
 DOCS=( README.md COPYING CHANGELOG )
 PATCHES=( "${FILESDIR}/${PN}-1.10.3-disable-Werror.patch"
 	  "${FILESDIR}/${PN}-1.10.3-disable-strip.patch"
-	  "${FILESDIR}/${PN}-1.10.3-dont-call-strip-directly.patch" )
+	  "${FILESDIR}/${PN}-1.10.3-dont-call-toolchain-directly.patch" )
 
 src_configure() {
 	tc-export AS LD CC CPP AR RANLIB NM OBJCOPY OBJDUMP STRIP
