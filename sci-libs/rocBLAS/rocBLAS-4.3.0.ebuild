@@ -46,7 +46,8 @@ S="${WORKDIR}"/${PN}-rocm-${PV}
 
 PATCHES=("${FILESDIR}"/${PN}-4.3.0-fix-glibc-2.32-and-above.patch
 	"${FILESDIR}"/${PN}-4.3.0-change-default-Tensile-library-dir.patch
-	"${FILESDIR}"/${PN}-4.3.0-link-system-blas.patch )
+	"${FILESDIR}"/${PN}-4.3.0-link-system-blas.patch 
+	"${FILESDIR}"/${PN}-4.3.0-remove-problematic-test-suites.patch )
 
 src_prepare() {
 	eapply_user
