@@ -39,6 +39,11 @@ BDEPEND="
 "
 # >=gtk-doc-am-1.13, gobject-introspection-common, vala-common needed by eautoreconf
 
+QA_FLAGS_IGNORED="
+	usr/bin/rsvg-convert
+	usr/lib.*/librsvg.*
+"
+
 RESTRICT="test" # Lots of issues due to freetype changes and more; ever since newer tests got backported into 2.40.19
 
 PATCHES=(
