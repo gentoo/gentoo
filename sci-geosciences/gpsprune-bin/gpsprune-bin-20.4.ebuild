@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit desktop
+
 DESCRIPTION="An application for viewing, editing and converting GPS data."
 HOMEPAGE="http://activityworkshop.net/software/gpsprune/index.html"
 SRC_URI="http://activityworkshop.net/software/gpsprune/gpsprune_${PV}.jar"
@@ -61,6 +63,5 @@ src_install()
 		doins "icons/${size}/gpsprune.png"
 	done
 
-	insinto /usr/share/applications
-	doins gpsprune.desktop
+	domenu gpsprune.desktop
 }
