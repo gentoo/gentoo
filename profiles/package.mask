@@ -406,9 +406,8 @@ x11-plugins/purple-facebook
 ~sci-libs/vtk-9.1.0
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-12)
-# log4j-2.15.0 depends on masked >=virtual/{jdk,jre}-11
+# Needs masked >=virtual/{jdk,jre}-11
 >=dev-java/log4j-api-java9-2.15.0
->=dev-java/log4j-api-2.15.0
 
 # Conrad Kostecki <conikost@gentoo.org> (2021-12-04)
 # Masking newer versions for both packages,
