@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit cmake prefix python-any-r1
+inherit cmake multiprocessing prefix python-any-r1
 
 DESCRIPTION="AMD's library for BLAS on ROCm"
 HOMEPAGE="https://github.com/ROCmSoftwarePlatform/rocBLAS"
@@ -54,6 +54,7 @@ src_prepare() {
 	pushd "${WORKDIR}"/Tensile-rocm-${PV} || die
 	eapply "${FILESDIR}/Tensile-${PV}-hsaco-compile-specified-arch.patch" # backported from upstream, should remove after 4.3.0
 	eapply "${FILESDIR}/Tensile-4.3.0-output-commands.patch"
+	sed -e "/Number of parallel jobs to launch/s:default=-1:default=$(makeopts_jobs):" -i Tensile/TensileCreateLibrary.py || die
 	popd || die
 
 	# Fit for Gentoo FHS rule
