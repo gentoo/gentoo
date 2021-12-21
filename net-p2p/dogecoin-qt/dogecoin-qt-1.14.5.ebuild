@@ -2,16 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
+inherit desktop
 DESCRIPTION="Dogecoin Core Qt 1.14.5 (with Graphical User Interface)"
 HOMEPAGE="https://github.com/dogecoin"
-SRC_URI="https://github.com/dogecoin/dogecoin/archive/refs/heads/master.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dogecoin/dogecoin/archive/refs/tags/v${PV}.tar.gz -> ${PN}-v${PV}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 DB_VER="5.3"
 KEYWORDS="~amd64 ~x86"
 IUSE="tests +wallet zmq"
-
 DOGEDIR="/opt/${PN}"
 DEPEND="
 	dev-libs/libevent:=
@@ -34,7 +33,7 @@ BDEPEND="
 	sys-devel/autoconf
 	sys-devel/automake
 "
-WORKDIR_="${WORKDIR}/dogecoin-master"
+WORKDIR_="${WORKDIR}/dogecoin-${PV}"
 S=${WORKDIR_}
 
 src_configure() {
@@ -42,7 +41,7 @@ src_configure() {
 	./autogen.sh || die "autogen failed"
 	local my_econf=(
 		--enable-cxx
-		--with-incompatible-bdb
+		$(use_with wallet incompatible-bdb)
 		--bindir="${DOGEDIR}/bin"
 		CPPFLAGS="-I/usr/include/db${DB_VER}"
 		CFLAGS="-I/usr/include/db${DB_VER}"
@@ -58,9 +57,13 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install
 	insinto "${DOGEDIR}"
+	dosym "${DOGEDIR}/bin/dogecoin-qt" "/usr/bin/dogecoin-qt"
+	doicon "${FILESDIR}/dogecoin.png"
+	domenu "${FILESDIR}/dogecoin-qt.desktop"
 }
 
 pkg_postinst() {
 	elog "Dogecoin Core Qt ${PV} has been installed."
 	elog "Dogecoin Core Qt binaries have been placed in ${DOGEDIR}/bin."
+	elog "dogecoin-qt has been symlinked with /usr/bin/dogecoin-qt."
 }
