@@ -22,6 +22,10 @@ DEPEND="${PYTHON_DEPS}
 	sys-process/numactl"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-avoid_cc_in_install.patch"
+)
+
 src_prepare() {
 	default
 	use elibc_musl && eapply "${FILESDIR}/${P}-musl.patch"

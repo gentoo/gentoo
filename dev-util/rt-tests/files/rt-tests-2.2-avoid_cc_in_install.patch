@@ -1,0 +1,25 @@
+diff --git a/Makefile b/Makefile
+index 569adc1..508d7a7 100644
+--- a/Makefile
++++ b/Makefile
+@@ -38,15 +38,12 @@ else
+ 	CFLAGS	+= -O0 -g
+ endif
+
+-# We make some gueses on how to compile rt-tests based on the machine type
+-# and the ostype. These can often be overridden.
+-dumpmachine := $(shell $(CC) -dumpmachine)
+-
++# We make some guesses on how to compile rt-tests based on the machine type
++# and the ostype.
+ # The ostype is typically something like linux or android
+-ostype := $(lastword $(subst -, ,$(dumpmachine)))
+-
+-machinetype := $(shell echo $(dumpmachine)| \
+-    sed -e 's/-.*//' -e 's/i.86/i386/' -e 's/mips.*/mips/' -e 's/ppc.*/powerpc/')
++ostype := $(shell uname -o | sed -nr 's/(.*)\/.*/\1/p')
++machinetype := $(shell uname -m | \
++    sed -e 's/i.86/i386/' -e 's/mips.*/mips/' -e 's/ppc.*/powerpc/')
+
+ # The default is to assume you have libnuma installed, which is fine to do
+ # even on non-numa machines. If you don't want to install the numa libs, for
