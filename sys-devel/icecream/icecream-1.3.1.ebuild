@@ -1,63 +1,57 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
+AT_NOELIBTOOLIZE="yes"
 inherit autotools systemd tmpfiles
 
-DESCRIPTION='Distributed compiling of C(++) code across several machines; based on distcc'
-HOMEPAGE='https://github.com/icecc/icecream'
+DESCRIPTION="Distributed compiler with a central scheduler to share build load"
+HOMEPAGE="https://github.com/icecc/icecream"
 SRC_URI="https://github.com/icecc/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE='GPL-2'
-SLOT='0'
+LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~sparc ~x86"
-IUSE='systemd'
 
-DEPEND='
+DEPEND="app-arch/libarchive:=
+	app-arch/zstd:=
 	acct-user/icecream
 	acct-group/icecream
-	sys-libs/libcap-ng
-	app-text/docbook2X
-	app-arch/zstd
-'
-RDEPEND="
-	${DEPEND}
-	dev-util/shadowman
-	systemd? ( sys-apps/systemd )
-"
-
-AT_NOELIBTOOLIZE='yes'
+	dev-libs/lzo:2
+	sys-libs/libcap-ng"
+RDEPEND="${DEPEND}
+	dev-util/shadowman"
+BDEPEND="app-text/docbook2X"
 
 src_prepare() {
 	default
+
 	eautoreconf
 }
 
 src_configure() {
 	econf \
 		--enable-clang-rewrite-includes \
-		--enable-clang-wrappers \
-		--disable-fast-install
+		--enable-clang-wrappers
 }
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
 
-	if use systemd; then
-		systemd_dounit "${FILESDIR}/iceccd.service"
-		systemd_dounit "${FILESDIR}/icecc-scheduler.service"
-	else
-		newconfd suse/sysconfig.icecream icecream
-		newinitd "${FILESDIR}/icecream.openrc" icecream
-	fi
+	find "${ED}" -name '*.la' -delete || die
+
+	systemd_dounit "${FILESDIR}"/iceccd.service
+	systemd_dounit "${FILESDIR}"/icecc-scheduler.service
+
+	newconfd suse/sysconfig.icecream icecream
+	newinitd "${FILESDIR}"/icecream.openrc icecream
 
 	keepdir /var/log/icecream
 	fowners icecream:icecream /var/log/icecream
-	fperms  0750 /var/log/icecream
+	fperms 0750 /var/log/icecream
 
-	newtmpfiles "${FILESDIR}/icecream-tmpfiles.conf" icecream.conf
+	newtmpfiles "${FILESDIR}"/icecream-tmpfiles.conf icecream.conf
 
 	insinto /etc/logrotate.d
 	newins suse/logrotate icecream
@@ -67,11 +61,11 @@ src_install() {
 	doins suse/icecc-scheduler.xml
 
 	insinto /usr/share/shadowman/tools
-	newins - icecc <<<'/usr/libexec/icecc/bin'
+	newins - icecc <<<"${EPREFIX}"/usr/libexec/icecc/bin
 }
 
 pkg_prerm() {
-	if [[ -z ${REPLACED_BY_VERSION} && ${ROOT} == / ]]; then
+	if [[ -z ${REPLACED_BY_VERSION} && -z ${ROOT} ]]; then
 		eselect compiler-shadow remove icecc
 	fi
 }
@@ -79,7 +73,7 @@ pkg_prerm() {
 pkg_postinst() {
 	tmpfiles_process icecream.conf
 
-	if [[ ${ROOT} == / ]]; then
+	if [[ -z ${ROOT} ]]; then
 		eselect compiler-shadow update icecc
 	fi
 }
