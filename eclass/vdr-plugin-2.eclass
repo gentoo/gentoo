@@ -15,10 +15,10 @@
 # Eclass for easing maintenance of vdr plugin ebuilds
 
 # @ECLASS-VARIABLE: VDRPLUGIN
-# @INTERNAL
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The name of the vdr plugin, plain name without "vdr-" or "plugin" prefix or suffix.
-# This variable is derived from ${PN}
+# This variable is derived from ${PN} and is read-only for the ebuild.
 
 # @ECLASS-VARIABLE: VDR_CONFD_FILE
 # @DEFAULT_UNSET
