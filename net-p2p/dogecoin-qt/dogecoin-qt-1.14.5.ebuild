@@ -18,7 +18,7 @@ DEPEND="
 	dev-libs/openssl
 	sys-devel/libtool
 	sys-devel/automake:=
-	>=dev-libs/boost-1.77.0-r4
+	>=dev-libs/boost-1.76.0-r1
 	wallet? ( sys-libs/db:"${DB_VER}"=[cxx] )
 	dev-qt/qtcore
 	dev-qt/qtgui
