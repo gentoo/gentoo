@@ -37,6 +37,11 @@ DEPEND="${RDEPEND}
 "
 # >=gtk-doc-am-1.13, gobject-introspection-common, vala-common needed by eautoreconf
 
+QA_FLAGS_IGNORED="
+	usr/bin/rsvg-convert
+	usr/lib.*/librsvg.*
+"
+
 RESTRICT="test" # Lots of issues on 32bit builds, 64bit build seems to get into an infinite compilation sometimes, etc.
 
 src_prepare() {
