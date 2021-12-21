@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit cmake python-any-r1 readme.gentoo-r1
 
@@ -30,6 +30,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}/3.3.1-don-t-override-linker.patch"
 	"${FILESDIR}/3.3.1-sbin-path-sh-test.patch"
+	"${FILESDIR}/3.3.1-drop-some-tests.patch"
 )
 
 RDEPEND="
@@ -86,6 +87,13 @@ src_install() {
 }
 
 src_test() {
+	# some tests are fragile, sanitize environment
+	local -x COLUMNS=80
+	local -X LINES=24
+
+	# very fragile, depends on terminal, size, tmux, screen and timing
+	rm -v tests/pexpects/terminal.py || die 
+
 	cmake_build test
 }
 
