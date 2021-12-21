@@ -18,7 +18,11 @@ IUSE="doc static-libs test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	doc? ( app-doc/doxygen )
+	doc? (
+		app-doc/doxygen
+		dev-python/sphinx
+		dev-python/sphinx_lv2_theme
+)
 "
 RDEPEND=""
 DEPEND="${RDEPEND}
