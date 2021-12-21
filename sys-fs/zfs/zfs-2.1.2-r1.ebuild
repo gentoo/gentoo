@@ -104,6 +104,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}/2.1.2-scrub-timers.patch"
 	"${FILESDIR}/2.1.2-openrc-vendor.patch"
+	"${FILESDIR}/2.1.2-musl-tests.patch"
 )
 
 pkg_pretend() {
