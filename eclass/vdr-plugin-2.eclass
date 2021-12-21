@@ -15,7 +15,6 @@
 # Eclass for easing maintenance of vdr plugin ebuilds
 
 # @ECLASS-VARIABLE: VDRPLUGIN
-# @INTERNAL
 # @DESCRIPTION:
 # The name of the vdr plugin, plain name without "vdr-" or "plugin" prefix or suffix.
 # This variable is derived from ${PN}
