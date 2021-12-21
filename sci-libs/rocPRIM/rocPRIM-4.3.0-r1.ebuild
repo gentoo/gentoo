@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,6 +17,7 @@ IUSE="benchmark test"
 RDEPEND="dev-util/hip:${SLOT}
 	benchmark? ( dev-cpp/benchmark )"
 BDEPEND="dev-util/rocm-cmake:${SLOT}
+	>=dev-util/cmake-3.22
 	test? ( dev-cpp/gtest )"
 DEPEND="${RDEPEND}"
 
@@ -63,7 +64,6 @@ src_configure() {
 		-DBUILD_TEST=$(usex test ON OFF)
 		-DBUILD_BENCHMARK=$(usex benchmark ON OFF)
 		${AMDGPU_TARGETS+-DAMDGPU_TARGETS="${AMDGPU_TARGETS}"}
-		-D__skip_rocmclang="ON" ## fix cmake-3.21 configuration issue caused by officialy support programming language "HIP"
 	)
 
 	cmake_src_configure
