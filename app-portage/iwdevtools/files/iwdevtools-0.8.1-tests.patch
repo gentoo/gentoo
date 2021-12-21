@@ -1,0 +1,50 @@
+https://github.com/ionenwks/iwdevtools/commit/a679594f115e8c9fd54aa70fc0742b7d560a2204
+From: Ionen Wolkens <ionen@gentoo.org>
+Date: Tue, 21 Dec 2021 00:36:40 -0500
+Subject: [PATCH] tests: relax globs for some stderr output checks
+
+portage may add noise to these depending on the system, e.g.
+
+!!! Repository 'gentoo' is missing masters attribute in '/var/db/<snip>
+!!! Set 'masters = iwdevtools' in this file for future compatibility
+
+But these tests are only checking if our own expected error is there,
+the rest is not important.
+
+Reported from: https://bugs.gentoo.org/829740
+--- a/tests/eoldnew/test-pick
++++ b/tests/eoldnew/test-pick
+@@ -7,4 +7,4 @@ export EOLDNEW_EMERGE_CMD=echo
+ expect "old: dev-test/test-1.5.0*new: dev-test/test-2.0.0*" dev-test/test
+ expect "old: dev-test/test-1.0.0*new: dev-test/test-2.0.0*" 2 dev-test/test
+ expect "old: dev-test/test-1.0.0*new: dev-test/test-1.5.0*" =dev-test/test-1.5.0
+-xfail 1 expect -2 "Error:*older version*" =dev-test/test-1.0.0
++xfail 1 expect -2 "*Error: failed to find an older version*" =dev-test/test-1.0.0
+--- a/tests/eoldnew/test-skip-new
++++ b/tests/eoldnew/test-skip-new
+@@ -6,4 +6,4 @@ ebuild "$(get_ebuild test 2.0.0)" merge
+ export EOLDNEW_EMERGE_CMD=echo
+ expect "*=dev-test/test-1.5.0" - dev-test/test
+ expect "*=dev-test/test-1.0.0" 2- dev-test/test
+-xfail 1 expect -2 "Error:*older version*" - =dev-test/test-1.0.0
++xfail 1 expect -2 "*Error: failed to find an older version*" - =dev-test/test-1.0.0
+--- a/tests/qa-cmp/test-missing
++++ b/tests/qa-cmp/test-missing
+@@ -1,4 +1,4 @@
+ set_portroot
+ ebuild "$(get_ebuild test 1.5 :)" install
+-xfail 1 expect -2 "Error:*nothing*" -cI dev-test/test
+-expect -2 "''" -cI --allow-missing dev-test/test
++xfail 1 expect -2 "*Error: found nothing to compare*" -cI dev-test/test
++expect -! -2 "*Error: found nothing to compare*" -cI --allow-missing dev-test/test
+--- a/tests/qa-cmp/test-system
++++ b/tests/qa-cmp/test-system
+@@ -5,7 +5,7 @@ ebuild "$(get_ebuild test 1.5 :)" merge
+ ebuild "$(get_ebuild test 2.5 :)" install
+ expect -! "CMP:*" -c dev-test/test
+ ebuild "$(get_ebuild test 2.5 bin:file{1..2} lib.so:"${LIBD100}")" clean merge
+-xfail 1 expect -2 "Error:*" -c dev-test/test
++xfail 1 expect -2 "*Error: found nothing to compare*" -c dev-test/test
+ expect "*CMP: listing*" -c --single-all dev-test/test
+ ebuild "$(get_ebuild test 3.5 bin:file{3..4} lib.so:{"${LIBD200}","${LIBA300}"})" install
+ expect "*FILES: usr/bin/file3*SONAME: libalt.so.3*FILES:-usr/bin/file1*FILES:+usr/bin/file4*SONAME:-libdummy.so.1*SONAME:+libdummy.so.2*" -c --single-all dev-test/test
