@@ -15,7 +15,7 @@ IUSE="+bzip2 libmd +lzma nls selinux static-libs test unicode +update-alternativ
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=app-arch-gzip-1.7
+	>=app-arch/gzip-1.7
 	>=dev-lang/perl-5.14.2:=
 	bzip2? ( app-arch/bzip2 )
 	libmd? ( app-crypt/libmd )
