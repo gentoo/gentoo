@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND=""
 RDEPEND="${DEPEND}
+		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		dev-python/gatt-python[${PYTHON_USEDEP}]
