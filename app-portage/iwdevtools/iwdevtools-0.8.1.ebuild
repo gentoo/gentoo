@@ -26,6 +26,10 @@ BDEPEND="
 	sys-apps/help2man
 	test? ( ${RDEPEND} )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-tests.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		-Ddocdir=${PF}
