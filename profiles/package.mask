@@ -409,12 +409,6 @@ app-text/XML-Schema-learner
 # Masked for removal in 30 days.
 dev-ruby/rack-ssl
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2021-11-19)
-# Doesn't work with latest versions of adb, source not easily ported
-# to python 3.9 and 3.10. No upstream activity for 7 years.
-# Removal on 2021-12-19.  Bug #825038.
-app-mobilephone/adb-sync
-
 # Mike Pagano <mpagano@gentoo.org> (2021-11-18)
 # Bug introduced in this version that can
 # cause system freeze with data loss.
