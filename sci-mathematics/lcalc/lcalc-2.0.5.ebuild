@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Command-line utility and library for L-function computations"
 HOMEPAGE="https://gitlab.com/sagemath/lcalc"
-SRC_URI="https://gitlab.com/sagemath/lcalc/uploads/4d84022aa5285414eb547121b783601a/${P}.tar.xz"
+SRC_URI="https://gitlab.com/sagemath/lcalc/uploads/25f029f3c02fcb6c3174972e0ac0e192/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 # The subslot is the libLfunction soname major version
