@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake toolchain-funcs
 
 DESCRIPTION="Numerical linear algebra software package"
 HOMEPAGE="https://ginkgo-project.github.io/"
@@ -18,10 +18,11 @@ fi
 
 LICENSE="BSD-with-attribution"
 SLOT="0"
-IUSE="+openmp cuda"
+IUSE="cuda hwloc +openmp"
 
 RDEPEND="
 	cuda? ( dev-util/nvidia-cuda-toolkit )
+	hwloc? ( sys-apps/hwloc:= )
 "
 DEPEND="${RDEPEND}"
 
@@ -42,14 +43,14 @@ src_prepare() {
 }
 
 src_configure() {
-
 	local mycmakeargs=(
 		-DGINKGO_DEVEL_TOOLS=OFF
 		-DGINKGO_BUILD_TESTS=OFF
 		-DGINKGO_BUILD_BENCHMARKS=OFF
 		-DGINKGO_BUILD_REFERENCE=ON
-		-DGINKGO_BUILD_OMP=$(usex openmp)
 		-DGINKGO_BUILD_CUDA=$(usex cuda)
+		-DGINKGO_BUILD_HWLOC=$(usex hwloc)
+		-DGINKGO_BUILD_OMP=$(usex openmp)
 	)
 	cmake_src_configure
 }
