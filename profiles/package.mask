@@ -403,12 +403,6 @@ kde-misc/kimtoy
 # removal in 30 days.  Bug #826386.
 app-text/XML-Schema-learner
 
-# Hans de Graaff <graaff@gentoo.org> (2021-11-20)
-# Obsolete package. Last upstream release in 2014, upstream itself is
-# gone. No reverse dependencies in Gentoo.
-# Masked for removal in 30 days.
-dev-ruby/rack-ssl
-
 # Mike Pagano <mpagano@gentoo.org> (2021-11-18)
 # Bug introduced in this version that can
 # cause system freeze with data loss.
