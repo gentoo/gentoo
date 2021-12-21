@@ -39,6 +39,8 @@ BDEPEND="
 		dev-python/cryptography[${PYTHON_USEDEP}]
 		dev-python/h2[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+		dev-python/pytest-trio[${PYTHON_USEDEP}]
+		dev-python/trio[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 		dev-python/uvicorn[${PYTHON_USEDEP}]
