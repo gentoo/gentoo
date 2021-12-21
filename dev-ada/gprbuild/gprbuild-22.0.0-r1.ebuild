@@ -28,7 +28,10 @@ DEPEND="${ADA_DEPS}"
 RDEPEND="${DEPEND}"
 
 REQUIRED_USE="${ADA_REQUIRED_USE}"
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-nm.patch
+)
 
 src_prepare() {
 	kb_src=../${GPRCONFIG_KB}
