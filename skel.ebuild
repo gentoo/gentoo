@@ -105,6 +105,15 @@ IUSE="gnome X"
 #BDEPEND="virtual/pkgconfig"
 
 
+# Optional patches to make the program compile properly. Gets applied in the
+# src_prepare() phase with EAPIs >=6. Can hold more than one patch in an array
+# form. Patches are placed in the package's files/ directory, e.g.
+# dev-libs/openssl/files/openssl-1.2.3-respect-cflags.patch
+#PATCHES=(
+#	"${FILESDIR}"/${PN}-1.2.3-respect-cflags.patch
+#)
+
+
 # The following src_configure function is implemented as default by portage, so
 # you only need to call it if you need a different behaviour.
 #src_configure() {
