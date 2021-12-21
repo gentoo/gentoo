@@ -25,12 +25,12 @@ RESTRICT="!test? ( test )"
 RDEPEND="dev-python/pyyaml
 	dev-ada/gnatcoll-bindings[${ADA_USEDEP},gmp,iconv,shared?,static-libs?,static-pic?]
 	${ADA_DEPS}
-	${PYTHON_DEPS}"
+	${PYTHON_DEPS}
+	$(python_gen_cond_dep '
+		dev-ada/langkit[${PYTHON_USEDEP},shared?,static-libs?,static-pic?]
+	')"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-ada/langkit[${PYTHON_USEDEP}]
-	')
 "
 BDEPEND="test? (
 		dev-ml/dune
