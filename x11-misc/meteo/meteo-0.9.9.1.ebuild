@@ -30,6 +30,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+# One test needs network (#828052), the other simply checks desktop file
+# validation, that we also test with our QA tests
+RESTRICT="test"
+
 src_prepare() {
 	default
 	vala_src_prepare
