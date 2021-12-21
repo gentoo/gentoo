@@ -41,6 +41,7 @@ distutils_enable_sphinx docs --no-autodoc
 
 pkg_setup() {
 	linux-info_pkg_setup
+	python-single-r1_pkg_setup
 }
 
 python_prepare_all() {
