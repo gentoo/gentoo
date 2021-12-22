@@ -14,12 +14,11 @@ SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v${PV}/${MY_P}.tar.gz"
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="crypt cups examples gnome-keyring gvnc kwallet nls spice ssh rdp telemetry vnc webkit x2go zeroconf"
+IUSE="appindicator crypt cups examples gnome-keyring gvnc kwallet nls spice ssh rdp telemetry vnc webkit x2go zeroconf"
 
 COMMON_DEPEND="
 	dev-libs/glib:2
 	dev-libs/json-glib
-	dev-libs/libappindicator:3
 	dev-libs/libpcre2
 	dev-libs/libsodium:=
 	dev-libs/openssl:0=
@@ -28,6 +27,7 @@ COMMON_DEPEND="
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/libxkbfile
+	appindicator? ( dev-libs/libappindicator:3 )
 	crypt? ( dev-libs/libgcrypt:0= )
 	gnome-keyring? ( app-crypt/libsecret )
 	gvnc? ( net-libs/gtk-vnc )
@@ -43,15 +43,18 @@ COMMON_DEPEND="
 	x2go? ( net-misc/pyhoca-cli )
 	zeroconf? ( >=net-dns/avahi-0.8-r2[dbus,gtk] )
 "
+
+DEPEND="
+	${COMMON_DEPEND}
+	spice? ( app-emulation/spice-protocol )
+"
+
 BDEPEND="
 	dev-util/intltool
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
-DEPEND="
-	${COMMON_DEPEND}
-	app-emulation/spice-protocol
-"
+
 RDEPEND="
 	${COMMON_DEPEND}
 	virtual/freedesktop-icon-theme
@@ -68,6 +71,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DHAVE_LIBAPPINDICATOR=$(usex appindicator ON OFF)
 		-DWITH_AVAHI=$(usex zeroconf)
 		-DWITH_CUPS=$(usex cups)
 		-DWITH_EXAMPLES=$(usex examples)
