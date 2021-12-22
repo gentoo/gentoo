@@ -129,11 +129,6 @@ net-fs/docker-volume-netshare
 # Masked for testing
 ~sci-libs/vtk-9.1.0
 
-# Michał Górny <mgorny@gentoo.org> (2021-12-13)
-# Unmaintained in Gentoo.  Requires media-libs/libpng[apng].
-# Removal on 2022-01-12.  Bug #824830.
-media-gfx/apngasm
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-13)
 # Blocks removal of dev-java/log4j:0 bug #828657.
 # Java packages with no active consumer. Removal in 30 days.
