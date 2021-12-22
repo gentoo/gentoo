@@ -46,7 +46,6 @@ DOCS=( LICENSE.txt ../README.md )
 
 S="${WORKDIR}/slf4j-v_${PV}/${PN}"
 
-JAVA_GENTOO_CLASSPATH="slf4j-api"
 JAVA_SRC_DIR="src/main/java"
 JAVA_RESOURCE_DIRS="src/main/resources"
 
