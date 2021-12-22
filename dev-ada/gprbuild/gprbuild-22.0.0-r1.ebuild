@@ -31,6 +31,7 @@ REQUIRED_USE="${ADA_REQUIRED_USE}"
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-nm.patch
+	"${FILESDIR}"/${P}-ar.patch
 )
 
 src_prepare() {

@@ -1,0 +1,11 @@
+--- a/share/gprconfig/linker.xml	2021-12-22 22:06:14.895471351 +0100
++++ b/share/gprconfig/linker.xml	2021-12-22 22:08:01.050767123 +0100
+@@ -864,7 +864,7 @@
+       <host name="^x86_64-.*linux.*" />
+     </hosts>
+     <config>
+-   for Archive_Builder  use ("ar", "cr");
++   for Archive_Builder  use ("${HOST(Ada)}-ar", "cr");
+    for Archive_Builder_Append_Option use ("q");
+    for Archive_Indexer  use ("ranlib");
+    for Archive_Suffix   use ".a";
