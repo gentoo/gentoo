@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 inherit python-single-r1 multilib-minimal
 
 DESCRIPTION="a library with the aim to simplify DNS programming in C"
