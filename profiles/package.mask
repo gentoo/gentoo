@@ -330,13 +330,6 @@ dev-ruby/minitest:0
 # Masked for removal in 30 days.
 dev-ruby/aws-s3
 
-# Marek Szuba <marecki@gentoo.org> (2021-11-23)
-# No new releases since July 2013, no commits to upstream Git repository
-# since May 2019, long list of known issues (including Bug #681520),
-# unmaintained in Gentoo, EAPI 5. Consider using dev-util/uglifyjs instead.
-# Removal in 30 days. Bug #826470
-dev-util/yuicompressor
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-23)
 # Does not support updated dev-java/pdfbox-2.0.24, Bug #803488
 # Blocks (CVE-2018-11797, CVE-2021-{27807,27906,31811,31812})
