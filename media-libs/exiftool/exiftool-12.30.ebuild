@@ -3,6 +3,9 @@
 
 EAPI=7
 
+# Check https://exiftool.org/history.html for whether a release is 'production'
+# Ideally don't bump to non-production at all, but certainly don't stable.
+
 DIST_NAME=Image-ExifTool
 inherit perl-module
 
