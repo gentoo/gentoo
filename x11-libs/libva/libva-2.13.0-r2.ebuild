@@ -39,7 +39,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-util/wayland-scanner
+	wayland? ( dev-util/wayland-scanner )
 	virtual/pkgconfig
 "
 PDEPEND="utils? ( media-video/libva-utils )"
