@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86"
-IUSE="alsa ao emacs flac gtk jack motif nas ncurses oss selinux slang speex tk vorbis X Xaw3d"
+IUSE="alsa ao emacs flac gtk jack motif nas ncurses ogg oss selinux slang speex tk vorbis X Xaw3d"
 
 REQUIRED_USE="tk? ( X )"
 
@@ -30,12 +30,14 @@ DEPEND="
 	motif? ( >=x11-libs/motif-2.3:0 )
 	nas? ( >=media-libs/nas-1.4 )
 	ncurses? ( sys-libs/ncurses:0= )
+	ogg? ( media-libs/libogg )
 	slang? ( sys-libs/slang )
 	speex? ( media-libs/speex )
-	tk? ( dev-lang/tk:0= )
+	tk? ( dev-lang/tk:= )
 	vorbis? ( media-libs/libvorbis )
 	X? (
-		media-libs/libpng:0=
+		media-libs/libpng:=
+		x11-libs/libX11
 		x11-libs/libXext
 		Xaw3d? ( x11-libs/libXaw3d )
 		!Xaw3d? ( x11-libs/libXaw )
@@ -121,6 +123,7 @@ src_configure() {
 	use flac && audios+=",flac"
 	use speex && audios+=",speex"
 	use vorbis && audios+=",vorbis"
+	use ogg && audios+=",ogg"
 	use oss && audios+=",oss"
 	use jack && audios+=",jack"
 	use ao && audios+=",ao"
