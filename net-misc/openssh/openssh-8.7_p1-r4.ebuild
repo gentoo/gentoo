@@ -21,7 +21,7 @@ HPN_PATCHES=(
 )
 
 SCTP_VER="1.2" SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
-X509_VER="13.2.3" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
+X509_VER="13.2.1" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="https://www.openssh.com/"
@@ -34,7 +34,7 @@ S="${WORKDIR}/${PARCH}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # Probably want to drop ssl defaulting to on in a future version.
 IUSE="abi_mips_n32 audit debug hpn kerberos kernel_linux ldns libedit livecd pam +pie +scp sctp security-key selinux +ssl static test X X509 xmss"
 
@@ -57,7 +57,7 @@ LIB_DEPEND="
 	audit? ( sys-process/audit[static-libs(+)] )
 	ldns? (
 		net-libs/ldns[static-libs(+)]
-		net-libs/ldns[ecdsa,ssl(+)]
+		net-libs/ldns[ecdsa(+),ssl(+)]
 	)
 	libedit? ( dev-libs/libedit:=[static-libs(+)] )
 	sctp? ( net-misc/lksctp-tools[static-libs(+)] )
@@ -164,7 +164,7 @@ src_prepare() {
 			"${S}"/version.h || die "Failed to sed-in SCTP patch version"
 		PATCHSET_VERSION_MACROS+=( 'SSH_SCTP' )
 
-		einfo "Disabling known failing test (cfgparse) caused by SCTP patch ..."
+		einfo "Disabling know failing test (cfgparse) caused by SCTP patch ..."
 		sed -i \
 			-e "/\t\tcfgparse \\\/d" \
 			"${S}"/regress/Makefile || die "Failed to disable known failing test (cfgparse) caused by SCTP patch"
@@ -175,7 +175,7 @@ src_prepare() {
 		mkdir "${hpn_patchdir}" || die
 		cp $(printf -- "${DISTDIR}/%s\n" "${HPN_PATCHES[@]}") "${hpn_patchdir}" || die
 		pushd "${hpn_patchdir}" &>/dev/null || die
-		eapply "${FILESDIR}"/${PN}-8.7_p1-hpn-${HPN_VER}-glue.patch
+		eapply "${FILESDIR}"/${P}-hpn-${HPN_VER}-glue.patch
 		use X509 && eapply "${FILESDIR}"/${PN}-8.7_p1-hpn-${HPN_VER}-X509-glue.patch
 		use sctp && eapply "${FILESDIR}"/${PN}-8.5_p1-hpn-${HPN_VER}-sctp-glue.patch
 		popd &>/dev/null || die
