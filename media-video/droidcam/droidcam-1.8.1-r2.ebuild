@@ -30,7 +30,6 @@ DEPEND="
 	>=media-libs/speex-1.2.0-r1
 	media-video/ffmpeg
 	gtk? (
-		dev-cpp/gtkmm:3.0
 		x11-libs/gdk-pixbuf
 		x11-libs/gtk+:3
 		x11-libs/libX11
