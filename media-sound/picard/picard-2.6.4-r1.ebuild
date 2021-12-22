@@ -13,7 +13,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://musicbrainz.osuosl.org/pub/musicbrainz/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/${PN}-release-${PV}"
 fi
 
@@ -32,6 +32,7 @@ RDEPEND="
 		dev-python/fasteners[${PYTHON_USEDEP}]
 		dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
 		media-libs/mutagen[${PYTHON_USEDEP}]
 		discid? ( dev-python/python-discid[${PYTHON_USEDEP}] )
 	')
