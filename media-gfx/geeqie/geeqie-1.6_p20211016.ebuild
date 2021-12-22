@@ -10,7 +10,7 @@ DESCRIPTION="A lightweight GTK image viewer forked from GQview"
 HOMEPAGE="http://www.geeqie.org"
 MY_PV="0edb0f1265b193ec08ffbde7a1a7871526d29d92"
 # Needs full git checkout to generate ChangeLog, this tarball has it
-SRC_URI="https://dev.gentoo.org/~voyageur/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
