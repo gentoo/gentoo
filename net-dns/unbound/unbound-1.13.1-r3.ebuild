@@ -45,7 +45,10 @@ BDEPEND="virtual/pkgconfig"
 DEPEND="${CDEPEND}
 	python? ( dev-lang/swig )
 	test? (
-		net-dns/ldns-utils[examples]
+		|| (
+			net-libs/ldns[examples(-)]
+			net-dns/ldns-utils[examples(-)]
+		)
 		dev-util/splint
 		app-text/wdiff
 	)
