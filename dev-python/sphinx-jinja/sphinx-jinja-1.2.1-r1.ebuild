@@ -21,3 +21,9 @@ KEYWORDS="~amd64"
 RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
+
+python_install() {
+	# Avoid namespace collision: bug #829747
+	rm "${BUILD_DIR}"/lib/sphinxcontrib/__init__.py || die
+	distutils-r1_python_install
+}
