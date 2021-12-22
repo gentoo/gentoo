@@ -25,7 +25,7 @@ RDEPEND="
 	dev-lang/perl
 	dev-libs/libxml2
 	dev-libs/libxslt
-	net-libs/ldns[ed25519,ed448]
+	net-libs/ldns[ed25519(+),ed448(+)]
 	mysql? (
 		dev-db/mysql-connector-c:0=
 		dev-perl/DBD-mysql
