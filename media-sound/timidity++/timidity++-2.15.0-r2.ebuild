@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools desktop elisp-common systemd toolchain-funcs xdg
+inherit autotools desktop elisp-common flag-o-matic systemd toolchain-funcs xdg
 
 MY_PV="${PV/_/-}"
 MY_P="TiMidity++-${MY_PV}"
@@ -69,6 +69,9 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	mv configure.{in,ac} || die
+
 	eautoreconf
 }
 
@@ -78,6 +81,18 @@ src_configure() {
 	local audios
 	# List by preference
 	local xaw_provider=$(usex Xaw3d 'xaw3d' 'xaw')
+
+	# configure workarounds: configure.in here is written for an old version
+	# of autoconf and upstream seems quite dead.
+	#
+	# 1. Avoid janky configure test breaking
+	# ```checking for sys/wait.h that is POSIX.1 compatible... yes
+	# ./configure: 7995: test: =: unexpected operator```
+	export ac_cv_header_sys_time_h=yes
+	#
+	# 2. And yes, we expect standard header locations (this configure test is flaky for us too)
+	# This avoids a bunch of implicit decl. errors which only happen with USE=-Xaw3d(?!)
+	append-cppflags -DSTDC_HEADERS
 
 	local myeconfargs=(
 		--localstatedir=/var/state/${PN}
