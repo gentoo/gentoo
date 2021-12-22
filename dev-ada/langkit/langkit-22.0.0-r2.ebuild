@@ -4,9 +4,10 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8,9} )
+ADA_COMPAT=( gnat_202{0,1} )
 
 DISTUTILS_USE_SETUPTOOLS=no
-inherit distutils-r1 multiprocessing
+inherit distutils-r1 ada multiprocessing
 
 DESCRIPTION="A Python framework to generate language parsers"
 HOMEPAGE="https://www.adacore.com/community"
@@ -18,10 +19,12 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="+shared static-libs static-pic"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	${ADA_REQUIRED_USE}
 	|| ( shared static-libs static-pic )"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-ada/gnatcoll-bindings[gmp,iconv,shared?,static-libs?,static-pic?]
+	${ADA_DEPS}
+	dev-ada/gnatcoll-bindings[${ADA_USEDEP},gmp,iconv,shared?,static-libs?,static-pic?]
 	dev-python/mako[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/funcy[${PYTHON_USEDEP}]
