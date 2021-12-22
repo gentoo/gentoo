@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools libtool multilib-minimal
+inherit autotools multilib-minimal
 
 MY_P="${P/_/-}"
 
