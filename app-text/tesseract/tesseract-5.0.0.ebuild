@@ -1,14 +1,13 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools multilib-minimal toolchain-funcs
 
 DESCRIPTION="An OCR Engine, originally developed at HP, now open source."
 HOMEPAGE="https://github.com/tesseract-ocr"
-BETA_PV=$(ver_rs 3-4 "-")
-SRC_URI="https://github.com/tesseract-ocr/${PN}/archive/${BETA_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tesseract-ocr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/5"
@@ -37,8 +36,6 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	doc? ( app-doc/doxygen )"
-
-S=${WORKDIR}/${PN}-${BETA_PV}
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
