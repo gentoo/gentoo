@@ -13,7 +13,7 @@ HOMEPAGE="http://tcljava.sourceforge.net"
 SRC_URI="mirror://sourceforge/tcljava/${MY_P}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 IUSE="doc"
 
 CDEPEND=">=dev-lang/tcl-8.4.5:*"
