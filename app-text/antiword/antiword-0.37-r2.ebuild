@@ -1,35 +1,41 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=8
 
-inherit epatch toolchain-funcs
+inherit toolchain-funcs
 
-IUSE="kde"
 PATCHVER="r2"
 DESCRIPTION="free MS Word reader"
 HOMEPAGE="http://www.winfield.demon.nl"
 SRC_URI="http://www.winfield.demon.nl/linux/${P}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/${PN}-gentoo-patches-${PATCHVER}.tar.bz2"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+
+PATCHES=(
+	"${WORKDIR}"/${PN}-gentoo-patches-${PATCHVER}
+	"${FILESDIR}"/${P}-CVE-2014-8123.patch
+)
+
+DOCS=( Docs/{ChangeLog,Exmh,Emacs,FAQ,History,Netscape,QandA,ReadMe,Mozilla,Mutt} )
 
 src_prepare() {
 	# Makefile is a symlink to Makefile.Linux, avoid that we patch it by
 	# accident using patch <2.7, see bug #435492
 	rm Makefile || die
 
-	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/${PN}-gentoo-patches-${PATCHVER}"
+	default
 
 	# Re-add convenience symlink, see above
 	ln -s Makefile.Linux Makefile
-
-	epatch "${FILESDIR}"/${P}-CVE-2014-8123.patch
 }
 
-src_configure() { :; }
+src_configure() {
+	true
+}
 
 src_compile() {
 	emake PREFIX="${EPREFIX}" OPT="${CFLAGS}" CC="$(tc-getCC)" LD="$(tc-getCC)" \
@@ -39,12 +45,11 @@ src_compile() {
 src_install() {
 	emake -j1 PREFIX="${EPREFIX}" DESTDIR="${D}" global_install
 
-	use kde || rm -f "${ED}"/usr/bin/kantiword
+	einstalldocs
 
-	insinto /usr/share/${PN}/examples
-	doins Docs/testdoc.doc Docs/antiword.php
+	docompress -x /usr/share/doc/${PF}/examples
+	docinto examples
+	dodoc Docs/testdoc.doc Docs/antiword.php
 
-	cd Docs
-	doman antiword.1
-	dodoc ChangeLog Exmh Emacs FAQ History Netscape QandA ReadMe Mozilla Mutt
+	doman Docs/antiword.1
 }
