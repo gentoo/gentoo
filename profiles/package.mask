@@ -427,10 +427,6 @@ net-libs/libsoup:3.0
 # Masked until dev-libs/openssl-3.0* is unmasked
 =dev-libs/gost-engine-3.0*
 
-# Bernard Cafarelli <voyageur@gentoo.org> (2021-08-26)
-# Preparing for final 5.0.0 release
->=app-text/tesseract-5.0.0_beta
-
 # Joonas Niilola <juippis@gentoo.org> (2021-07-29)
 # Upstream provided migration instructions from 2. -> 3. update,
 # breaks if not all at least many revdeps. #805011 for tracker bug.
