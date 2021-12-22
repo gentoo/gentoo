@@ -12,7 +12,7 @@ SRC_URI="http://www.nlnetlabs.nl/downloads/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="doc examples python static-libs vim-syntax"
+IUSE="doc examples python static-libs"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -82,8 +82,6 @@ multilib_src_install_all() {
 	find "${D}" -name '*.la' -delete || die
 	use python && python_optimize
 
-	if use vim-syntax ; then
-		insinto /usr/share/vim/vimfiles/ftdetect
-		doins libdns.vim
-	fi
+	insinto /usr/share/vim/vimfiles/ftdetect
+	doins libdns.vim
 }
