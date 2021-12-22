@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools git-r3 multilib-minimal toolchain-funcs
 
@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/tesseract-ocr/${PN}.git"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc jpeg opencl openmp png static-libs tiff training webp"
+IUSE="doc float32 jpeg opencl openmp png static-libs tiff training webp"
 
 COMMON_DEPEND=">=media-libs/leptonica-1.74:=[${MULTILIB_USEDEP},zlib,tiff?,jpeg?,png?,webp?]
 	opencl? (
@@ -55,6 +55,7 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--enable-shared
 		--disable-graphics
+		$(use_enable float32)
 		$(use_enable opencl)
 		$(use_enable openmp)
 		$(use_enable static-libs static)
