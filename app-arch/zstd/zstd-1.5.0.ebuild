@@ -30,6 +30,7 @@ mymake() {
 		AR="$(tc-getAR)" \
 		PREFIX="${EPREFIX}/usr" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
+		V=1 \
 		"${@}"
 }
 
