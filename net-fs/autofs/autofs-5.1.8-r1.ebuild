@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.1.6-pid.patch"
 	"${FILESDIR}/${PN}-5.1.6-pid.patch"
 	"${FILESDIR}/${P}-dmalloc.patch"
+	"${FILESDIR}/${P}-nfsv4-mount.patch"
 )
 
 pkg_setup() {
