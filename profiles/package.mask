@@ -397,12 +397,6 @@ kde-misc/kimtoy
 # and accept a more unstable release.
 >=www-client/chromium-98
 
-# Michael Orlitzky <mjo@gentoo.org> (2021-11-22)
-# Cool package, but no longer developed upstream, and my immediate use
-# for it has expired. No reverse dependencies, deprecated EAPI;
-# removal in 30 days.  Bug #826386.
-app-text/XML-Schema-learner
-
 # Mike Pagano <mpagano@gentoo.org> (2021-11-18)
 # Bug introduced in this version that can
 # cause system freeze with data loss.
