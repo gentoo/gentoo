@@ -9,7 +9,7 @@ SRC_URI="https://github.com/coreruleset/coreruleset/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND=">=www-apache/mod_security-2.9.1"
 
