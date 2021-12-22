@@ -362,13 +362,6 @@ dev-tex/pdfannotextractor
 # Removal in 30 days. Bug #756925
 app-text/dbacl
 
-# Sergey Popov <pinkbyte@gentoo.org> (2021-11-22)
-# Upstream is pretty much dead
-# Has at least one security issue - bug #825358
-# Replaced by net-misc/frr
-# Removal in 30 days
-net-misc/quagga
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-11-22)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
