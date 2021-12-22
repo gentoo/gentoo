@@ -18,7 +18,7 @@ DEPEND="
 	>=dev-cpp/cairomm-1.2.2:0[doc?,${MULTILIB_USEDEP}]
 	>=dev-cpp/glibmm-2.48.0:2[doc?,${MULTILIB_USEDEP}]
 	dev-libs/libsigc++:2[doc?,${MULTILIB_USEDEP}]
-	>=x11-libs/pango-1.41.0[${MULTILIB_USEDEP}]
+	<x11-libs/pango-1.50.0[${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
