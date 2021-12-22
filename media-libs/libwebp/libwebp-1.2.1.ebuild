@@ -8,7 +8,7 @@ MY_P="${P/_/-}"
 
 DESCRIPTION="A lossy image compression format"
 HOMEPAGE="https://developers.google.com/speed/webp/download"
-SRC_URI="http://downloads.webmproject.org/releases/webp/${MY_P}.tar.gz"
+SRC_URI="https://storage.googleapis.com/downloads.webmproject.org/releases/webp/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/7" # subslot = libwebp soname version
