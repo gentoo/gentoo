@@ -200,6 +200,6 @@ pkg_postinst() {
 		ewarn
 		ewarn "zpool create -o compatibility=grub2 ..."
 		ewarn
-		ewarn "Refer to /etc/zfs/compatibility.d/grub2 for list of features."
+		ewarn "Refer to /usr/share/zfs/compatibility.d/grub2 for list of features."
 	fi
 }
