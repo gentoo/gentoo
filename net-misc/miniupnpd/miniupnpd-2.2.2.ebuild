@@ -31,7 +31,8 @@ RDEPEND="
 		net-libs/libnftnl:=
 		net-libs/libmnl:=
 	)"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	elibc_musl? ( sys-libs/queue-standalone )"
 BDEPEND="
 	sys-apps/lsb-release
 	verify-sig? ( sec-keys/openpgp-keys-miniupnp )"
