@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
 ADA_COMPAT=( gnat_202{0,1} )
 
-inherit ada python-single-r1
+inherit ada python-single-r1 multiprocessing
 
 DESCRIPTION="high performance semantic engine for the Ada programming language"
 HOMEPAGE="https://libre.adacore.com/"
@@ -64,6 +64,7 @@ src_configure() {
 src_compile() {
 	${EPYTHON} manage.py build -v \
 		--build-mode "prod" \
+		-j$(makeopts_jobs) \
 		--gargs "-cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS}" \
 		--library-types=${libType} || die
 }
