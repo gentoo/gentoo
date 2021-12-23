@@ -1,16 +1,42 @@
 Needed for musl.
 
-From 9eb3c31415686ae1296d7d450f886eeba5861ec1 Mon Sep 17 00:00:00 2001
-From: Jory Pratt <anarchy@gentoo.org>
-Date: Thu, 3 Jun 2021 18:41:28 -0500
-Subject: [PATCH] Use stddefs.h instead of compiler.h
+https://git.alpinelinux.org/aports/tree/main/linux-headers/include-uapi-linux-swab-Fix-potentially-missing-__always_inline.patch
 
----
- include/uapi/linux/swab.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+From: Matt Redfearn <matt.redfearn@mips.com>
+Date: Wed, 3 Jan 2018 09:57:30 +0000
+Subject: [PATCH] include/uapi/linux/swab: Fix potentially missing
+ __always_inline
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-diff --git a/include/uapi/linux/swab.h b/include/uapi/linux/swab.h
-index 7272f85..3736f2f 100644
+Commit bc27fb68aaad ("include/uapi/linux/byteorder, swab: force inlining
+of some byteswap operations") added __always_inline to swab functions
+and commit 283d75737837 ("uapi/linux/stddef.h: Provide __always_inline to
+userspace headers") added a definition of __always_inline for use in
+exported headers when the kernel's compiler.h is not available.
+
+However, since swab.h does not include stddef.h, if the header soup does
+not indirectly include it, the definition of __always_inline is missing,
+resulting in a compilation failure, which was observed compiling the
+perf tool using exported headers containing this commit:
+
+In file included from /usr/include/linux/byteorder/little_endian.h:12:0,
+                 from /usr/include/asm/byteorder.h:14,
+                 from tools/include/uapi/linux/perf_event.h:20,
+                 from perf.h:8,
+                 from builtin-bench.c:18:
+/usr/include/linux/swab.h:160:8: error: unknown type name ‘__always_inline’
+ static __always_inline __u16 __swab16p(const __u16 *p)
+
+Fix this by replacing the inclusion of linux/compiler.h with
+linux/stddef.h to ensure that we pick up that definition if required,
+without relying on it's indirect inclusion. compiler.h is then included
+indirectly, via stddef.h.
+
+Fixes: 283d75737837 ("uapi/linux/stddef.h: Provide __always_inline to userspace headers")
+Signed-off-by: Matt Redfearn <matt.redfearn@mips.com>
+
 --- a/include/uapi/linux/swab.h
 +++ b/include/uapi/linux/swab.h
 @@ -3,7 +3,7 @@
@@ -22,6 +48,3 @@ index 7272f85..3736f2f 100644
  #include <asm/bitsperlong.h>
  #include <asm/swab.h>
  
--- 
-2.31.1
-
