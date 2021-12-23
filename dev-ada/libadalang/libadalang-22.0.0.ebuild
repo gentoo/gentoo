@@ -38,6 +38,7 @@ BDEPEND="test? (
 		dev-ml/zarith
 		dev-ml/camomile
 		dev-ml/ocaml-ctypes
+		dev-ada/e3-testsuite
 	)"
 
 pkg_setup() {
@@ -68,7 +69,6 @@ src_compile() {
 }
 
 src_test() {
-	#eval $(${EPYTHON} ./manage.py setenv)
 	${EPYTHON} manage.py test --restricted-env -j 1 |& > /dev/null
 	${EPYTHON} manage.py test --restricted-env -j 1 |& tee libadalang.testOut
 	grep -qw FAIL libadalang.testOut && die
