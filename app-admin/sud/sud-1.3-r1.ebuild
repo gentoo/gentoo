@@ -23,7 +23,9 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# bug #713470
 	rm sud/queue.h || die
+
 	eautoreconf
 }
 
