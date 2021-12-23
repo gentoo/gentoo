@@ -42,7 +42,8 @@ src_compile() {
 	append-cppflags -U_FORTIFY_SOURCE
 
 	# used to build and run parsegen at build time (uses zlib wrt BDEPEND)
-	local buildcxx="$(tc-getBUILD_CXX) ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS}"
+	tc-export_build_env BUILD_CXX
+	local buildcxx="${BUILD_CXX} ${BUILD_CXXFLAGS} ${BUILD_CPPFLAGS} ${BUILD_LDFLAGS}"
 
 	use amd64 && multilib_toolchain_setup x86
 	tc-export CC CXX
