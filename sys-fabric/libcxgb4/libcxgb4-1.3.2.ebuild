@@ -15,7 +15,7 @@ KEYWORDS="amd64 x86 ~amd64-linux"
 IUSE=""
 
 RDEPEND="sys-fabric/libibverbs:${SLOT}"
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	elibc_musl? ( sys-libs/queue-standalone )"
 block_other_ofed_versions
 
