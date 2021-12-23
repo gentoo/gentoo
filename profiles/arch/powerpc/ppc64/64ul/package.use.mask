@@ -30,9 +30,11 @@ dev-util/perf clang
 >=app-office/libreoffice-7 java
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-03)
-# Fails to build, needs more work
-www-client/firefox clang
+# Problems even on ppc64le, needs more work
+dev-lang/spidermonkey
 mail-client/thunderbird clang
+www-client/firefox clang
+
 
 # James Le Cuirot <chewi@gentoo.org> (2020-04-23)
 # Requires media-libs/mesa[llvm], which is masked.
