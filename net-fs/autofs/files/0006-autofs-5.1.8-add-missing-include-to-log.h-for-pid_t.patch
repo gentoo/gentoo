@@ -1,0 +1,50 @@
+From 7bc1c15035df2ff3ffe4fb407c4ff942345acf8b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 23 Dec 2021 03:42:17 +0000
+Subject: [PATCH 6/7] autofs-5.1.8 - add missing include to log.h for pid_t
+
+Fixes build failures on musl like:
+```
+../include/log.h:49:8: error: unknown type name 'pid_t'
+   49 | extern pid_t log_pidinfo(struct autofs_point *ap, pid_t pid, char *label);
+      |        ^~~~~
+../include/log.h:49:51: error: unknown type name 'pid_t'; did you mean 'gid_t'?
+   49 | extern pid_t log_pidinfo(struct autofs_point *ap, pid_t pid, char *label);
+      |                                                   ^~~~~
+      |                                                   gid_t
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ CHANGELOG     | 1 +
+ include/log.h | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/CHANGELOG b/CHANGELOG
+index edf2d30..56b9cd9 100644
+--- a/CHANGELOG
++++ b/CHANGELOG
+@@ -4,6 +4,7 @@
+ - musl: define fallback dummy NSS config path
+ - musl: avoid internal stat.h definitions
+ - musl: add missing include to hash.h for _WORDSIZE
++- musl: add missing include to log.h for pid_t
+ 
+ 19/10/2021 autofs-5.1.8
+ - add xdr_exports().
+diff --git a/include/log.h b/include/log.h
+index 69eed96..a7b09f9 100644
+--- a/include/log.h
++++ b/include/log.h
+@@ -17,6 +17,8 @@
+ #ifndef LOG_H
+ #define LOG_H
+ 
++#include <unistd.h>
++
+ /* Define logging functions */
+ 
+ #define LOGOPT_NONE	0x0000
+-- 
+2.34.1
+

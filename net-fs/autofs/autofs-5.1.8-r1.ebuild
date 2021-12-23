@@ -40,10 +40,13 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.1.7-glibc.patch"
-	"${FILESDIR}/${PN}-5.1.6-musl.patch"
-	"${FILESDIR}/${PN}-5.1.6-pid.patch"
-	"${FILESDIR}/${PN}-5.1.6-pid.patch"
+	"${FILESDIR}"/0001-autofs-5.1.8-fix-missing-include-in-hash.h.patch
+	"${FILESDIR}"/0002-autofs-5.1.8-fix-bashism-in-configure.patch
+	"${FILESDIR}"/0003-autofs-5.1.8-define-fallback-dummy-NSS-config-path.patch
+	"${FILESDIR}"/0004-autofs-5.1.8-avoid-internal-stat.h-definitions.patch
+	"${FILESDIR}"/0005-autofs-5.1.8-add-missing-include-to-hash.h-for-_WORD.patch
+	"${FILESDIR}"/0006-autofs-5.1.8-add-missing-include-to-log.h-for-pid_t.patch
+	"${FILESDIR}"/0007-autofs-5.1.8-define-_SWORD_TYPE-for-musl.patch
 	"${FILESDIR}/${P}-dmalloc.patch"
 	"${FILESDIR}/${P}-nfsv4-mount.patch"
 )

@@ -1,0 +1,51 @@
+From f95ec13a2c4db124005d20e6b9d8e370d8a9c395 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 23 Dec 2021 03:32:26 +0000
+Subject: [PATCH 3/7] autofs-5.1.8 - define fallback dummy NSS config path
+
+On musl, _PATH_NSSWITCH_CONF won't be defined (it doesn't support NSS),
+so let's give it a dummy path when it's not defined by glibc.
+
+Fixes build failures like:
+```
+../include/nsswitch.h:27:23: error: '_PATH_NSSWITCH_CONF' undeclared (first use in this function)
+   27 | #define NSSWITCH_FILE _PATH_NSSWITCH_CONF
+      |                       ^~~~~~~~~~~~~~~~~~~
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ CHANGELOG          | 1 +
+ include/nsswitch.h | 4 ++++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/CHANGELOG b/CHANGELOG
+index 93d8c83..0eabf30 100644
+--- a/CHANGELOG
++++ b/CHANGELOG
+@@ -1,6 +1,7 @@
+ 
+ - fix bashism in configure
+ - musl: fix missing include in hash.h
++- musl: define fallback dummy NSS config path
+ 
+ 19/10/2021 autofs-5.1.8
+ - add xdr_exports().
+diff --git a/include/nsswitch.h b/include/nsswitch.h
+index d3e4027..8376113 100644
+--- a/include/nsswitch.h
++++ b/include/nsswitch.h
+@@ -24,6 +24,10 @@
+ #include <netdb.h>
+ #include "list.h"
+ 
++#ifndef _PATH_NSSWITCH_CONF
++#define _PATH_NSSWITCH_CONF "/dev/null"
++#endif
++
+ #define NSSWITCH_FILE _PATH_NSSWITCH_CONF
+ 
+ enum nsswitch_status {
+-- 
+2.34.1
+
