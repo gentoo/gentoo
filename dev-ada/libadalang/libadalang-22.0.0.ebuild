@@ -77,6 +77,7 @@ src_test() {
 src_install() {
 	${EPYTHON} manage.py \
 		install "${D}"/usr \
+		--build-mode "prod" \
 		--library-types=${libType} || die
 	rm -r "${D}"/usr/python || die
 	python_domodule build/python/libadalang
