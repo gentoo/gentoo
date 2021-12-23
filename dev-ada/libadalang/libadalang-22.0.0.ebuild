@@ -69,7 +69,7 @@ src_compile() {
 }
 
 src_test() {
-	${EPYTHON} manage.py test --restricted-env -j 1 |& > /dev/null
+	${EPYTHON} manage.py test --restricted-env -j 1
 	${EPYTHON} manage.py test --restricted-env -j 1 |& tee libadalang.testOut
 	grep -qw FAIL libadalang.testOut && die
 }
