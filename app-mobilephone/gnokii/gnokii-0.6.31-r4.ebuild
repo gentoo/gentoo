@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix_xgnokii_inclusion.patch
 	"${FILESDIR}"/${P}-gcc5.patch
 	"${FILESDIR}"/${P}-gcc7.patch
+	"${FILESDIR}"/${PN}-0.6.31-sqlite-typo.patch
 )
 
 src_prepare() {
