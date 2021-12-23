@@ -93,7 +93,7 @@ src_install() {
 src_test() {
 	# some tests are fragile, sanitize environment
 	local -x COLUMNS=80
-	local -X LINES=24
+	local -x LINES=24
 
 	# very fragile, depends on terminal, size, tmux, screen and timing
 	rm -v tests/pexpects/terminal.py || die
