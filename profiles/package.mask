@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (2021-12-23
+# problems with colours being enabled when run as pipe causing breakage
+# for e.g. genkernel and puppet, bug #829837
+=app-portage/portage-utils-0.93
+
 # David Seifert <soap@gentoo.org> (2021-12-20)
 # Requires GCC 8, security vulnerabilities, switch to CUDA 11,
 # consider using clang+NVPTX backend for sm_30 cards.
