@@ -203,7 +203,7 @@ pkg_postinst() {
 	ewarn "/boot with the new feature flags is not yet available."
 	ewarn "Do *NOT* upgrade root pools to use the new feature flags."
 	ewarn "Any new pools will be created with the new feature flags by default"
-	ewarn "and will not be compatible with older versions of ZFSOnLinux. To"
+	ewarn "and will not be compatible with older versions of OpenZFS. To"
 	ewarn "create a newpool that is backward compatible wih GRUB2, use "
 	ewarn
 	ewarn "zpool create -d -o feature@async_destroy=enabled "
