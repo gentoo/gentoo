@@ -34,6 +34,8 @@ REQUIRED_USE="gnatinspect? ( xref )
 	sqlite? ( sql )
 	db2ada? ( sql )
 	postgres? ( sql )
+	|| ( shared static-libs static-pic )
+	|| ( sql sqlite xref postgres gnatinspect db2ada )
 	${ADA_REQUIRED_USE}
 	${PYTHON_REQUIRED_USE}"
 
