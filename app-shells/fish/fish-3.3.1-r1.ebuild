@@ -92,7 +92,7 @@ src_test() {
 	local -X LINES=24
 
 	# very fragile, depends on terminal, size, tmux, screen and timing
-	rm -v tests/pexpects/terminal.py || die 
+	rm -v tests/pexpects/terminal.py || die
 
 	cmake_build test
 }
