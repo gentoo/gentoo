@@ -76,7 +76,11 @@ src_configure() {
 		-DWITH_GETTEXT="$(usex nls)"
 	)
 	# release tarballs ship pre-built docs // -DHAVE_PREBUILT_DOCS=TRUE
-	[[ ${PV} == 9999 ]] && mycmakeargs+=( -DBUILD_DOCS="$(usex doc)" )
+	if [[ ${PV} == 9999 ]]; then
+		mycmakeargs+=( -DBUILD_DOCS="$(usex doc)" )
+	else
+		mycmakeargs+=( -DBUILD_DOCS=OFF )
+	fi
 	cmake_src_configure
 }
 
