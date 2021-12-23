@@ -18,6 +18,7 @@ SLOT="0"
 RDEPEND="dev-python/docopt[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/pythondialog:0[${PYTHON_USEDEP}]
+	dev-python/distro[${PYTHON_USEDEP}]
 	net-vpn/openvpn"
 DEPEND="${RDEPEND}"
 
