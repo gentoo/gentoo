@@ -1,5 +1,5 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Mask multilib, since we do not want to use it.
-multilib
+# sys-libs/libseccomp has not been ported to rv32 yet
+seccomp
