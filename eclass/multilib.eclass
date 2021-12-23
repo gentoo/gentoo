@@ -412,7 +412,18 @@ multilib_env() {
 			: ${DEFAULT_ABI=ppc64}
 		;;
 		riscv64*)
-			export CFLAGS_lp64d=${CFLAGS_lp64d--mabi=lp64d -march=rv64imafdc}
+			: ${MULTILIB_ABIS=lp64d lp64 ilp32d ilp32}
+			: ${DEFAULT_ABI=lp64d}
+
+			# the default abi is set to the 1-level libdir default
+
+			local __libdir_riscvdefaultabi_variable="LIBDIR_${DEFAULT_ABI}"
+			local __libdir_riscvdefaultabi=${!__libdir_riscvdefaultabi_variable}
+			export ${__libdir_riscvdefaultabi_variable}=${__libdir_riscvdefaultabi:-lib64}
+
+			# all other abi are set to the 2-level libdir default
+
+			export CFLAGS_lp64d=${CFLAGS_lp64d--mabi=lp64d -march=rv64gc}
 			export CHOST_lp64d=${CTARGET}
 			export CTARGET_lp64d=${CTARGET}
 			export LIBDIR_lp64d=${LIBDIR_lp64d-lib64/lp64d}
@@ -431,12 +442,20 @@ multilib_env() {
 			export CHOST_ilp32=${CTARGET/riscv64/riscv32}
 			export CTARGET_ilp32=${CTARGET/riscv64/riscv32}
 			export LIBDIR_ilp32=${LIBDIR_ilp32-lib32/ilp32}
-
-			: ${MULTILIB_ABIS=lp64d lp64 ilp32d ilp32}
-			: ${DEFAULT_ABI=lp64d}
 		;;
 		riscv32*)
-			export CFLAGS_ilp32d=${CFLAGS_ilp32d--mabi=ilp32d}
+			: ${MULTILIB_ABIS=ilp32d ilp32}
+			: ${DEFAULT_ABI=ilp32d}
+
+			# the default abi is set to the 1-level libdir default
+
+			local __libdir_riscvdefaultabi_variable="LIBDIR_${DEFAULT_ABI}"
+			local __libdir_riscvdefaultabi=${!__libdir_riscvdefaultabi_variable}
+			export ${__libdir_riscvdefaultabi_variable}=${__libdir_riscvdefaultabi:-lib}
+
+			# all other abi are set to the 2-level libdir default
+
+			export CFLAGS_ilp32d=${CFLAGS_ilp32d--mabi=ilp32d -march=rv32imafdc}
 			export CHOST_ilp32d=${CTARGET}
 			export CTARGET_ilp32d=${CTARGET}
 			export LIBDIR_ilp32d=${LIBDIR_ilp32d-lib32/ilp32d}
@@ -445,9 +464,6 @@ multilib_env() {
 			export CHOST_ilp32=${CTARGET}
 			export CTARGET_ilp32=${CTARGET}
 			export LIBDIR_ilp32=${LIBDIR_ilp32-lib32/ilp32}
-
-			: ${MULTILIB_ABIS=ilp32d ilp32}
-			: ${DEFAULT_ABI=ilp32d}
 		;;
 		s390x*)
 			export CFLAGS_s390=${CFLAGS_s390--m31} # the 31 is not a typo
