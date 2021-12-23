@@ -7,7 +7,8 @@ inherit linux-info systemd toolchain-funcs
 
 DESCRIPTION="Kernel based automounter"
 HOMEPAGE="https://web.archive.org/web/*/http://www.linux-consulting.com/Amd_AutoFS/autofs.html"
-SRC_URI="https://www.kernel.org/pub/linux/daemons/${PN}/v5/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/daemons/${PN}/v5/${P}.tar.xz
+	https://dev.gentoo.org/~dlan/distfiles/${CATEGORY}/${PN}/${P}-patches-0.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -40,10 +41,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.1.7-glibc.patch"
-	"${FILESDIR}/${PN}-5.1.6-musl.patch"
-	"${FILESDIR}/${PN}-5.1.6-pid.patch"
-	"${FILESDIR}/${PN}-5.1.6-pid.patch"
+	"${WORKDIR}"/${P}-patches/
 	"${FILESDIR}/${P}-dmalloc.patch"
 	"${FILESDIR}/${P}-nfsv4-mount.patch"
 )
