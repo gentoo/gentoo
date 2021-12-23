@@ -119,18 +119,3 @@ multilib_src_install() {
 		dodoc "${SPARENT}"/{ChangeLog*,README.md,changes}
 	fi
 }
-
-pkg_postinst() {
-	for version in ${REPLACING_VERSIONS}; do
-		if ver_test 8.6 -lt ${version}; then
-			echo
-			ewarn "You're upgrading from <${P}, you must recompile the other"
-			ewarn "packages on your system that link with tcl after the upgrade"
-			ewarn "completes. To perform this action, please run revdep-rebuild"
-			ewarn "in package app-portage/gentoolkit."
-			ewarn "If you have dev-lang/tk and dev-tcltk/tclx installed you should"
-			ewarn "upgrade them before this recompilation, too,"
-			echo
-		fi
-	done
-}
