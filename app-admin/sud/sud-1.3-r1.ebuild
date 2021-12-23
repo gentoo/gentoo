@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,12 +12,18 @@ SRC_URI="http://s0ftpj.org/projects/sud/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
-PATCHES=( "${FILESDIR}"/${PN}-1.3-fix-build-system.patch )
+DEPEND="elibc_musl? ( sys-libs/queue-standalone )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3-fix-build-system.patch
+	"${FILESDIR}"/${PN}-1.3-use-system-queue.patch
+)
 
 src_prepare() {
 	default
+
+	rm sud/queue.h || die
 	eautoreconf
 }
 
