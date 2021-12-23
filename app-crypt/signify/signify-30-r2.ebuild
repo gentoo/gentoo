@@ -19,7 +19,8 @@ LICENSE="BSD-1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND=">=dev-libs/libbsd-0.7"
+RDEPEND="!net-mail/signify
+	>=dev-libs/libbsd-0.7"
 DEPEND="${RDEPEND}"
 BDEPEND="verify-sig? ( sec-keys/signify-keys-signify )"
 
