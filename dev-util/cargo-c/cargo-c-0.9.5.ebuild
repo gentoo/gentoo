@@ -171,8 +171,9 @@ RDEPEND="dev-libs/libgit2:=
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}"
-
 BDEPEND=">=virtual/rust-1.56.0"
+
+QA_FLAGS_IGNORED="usr/bin/cargo-capi usr/bin/cargo-cbuild usr/bin/cargo-ctest usr/bin/cargo-cinstall"
 
 src_unpack() {
 	cargo_src_unpack
