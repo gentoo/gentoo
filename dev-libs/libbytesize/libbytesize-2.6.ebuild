@@ -44,6 +44,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.4-no_Werror.patch"
+	"${FILESDIR}/${PN}-2.6-configure-bashism.patch"
 )
 
 python_do() {
