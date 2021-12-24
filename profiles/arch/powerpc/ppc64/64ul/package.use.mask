@@ -31,7 +31,7 @@ dev-util/perf clang
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-03)
 # Problems even on ppc64le, needs more work
-dev-lang/spidermonkey
+dev-lang/spidermonkey clang
 mail-client/thunderbird clang
 www-client/firefox clang
 
