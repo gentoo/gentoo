@@ -46,5 +46,5 @@ src_install() {
 	java-pkg-simple_src_install
 	insinto /usr/share/java-config-2/compiler
 	doins "${FILESDIR}/ecj-${SLOT}"
-	eprefixify "${D}"/usr/share/java-config-2/compiler/ecj-${SLOT}
+	eprefixify "${ED}"/usr/share/java-config-2/compiler/ecj-${SLOT}
 }
