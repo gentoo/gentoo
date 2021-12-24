@@ -323,12 +323,6 @@ net-analyzer/nagios-check_fail2ban
 # Masked for removal in 30 days.
 dev-ruby/minitest:0
 
-# Hans de Graaff <graaff@gentoo.org> (2021-11-25)
-# Last upstream release in 2012 and upstream itself is no longer
-# available. Unlikely to still work correctly. No reverse dependencies.
-# Masked for removal in 30 days.
-dev-ruby/aws-s3
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-23)
 # Does not support updated dev-java/pdfbox-2.0.24, Bug #803488
 # Blocks (CVE-2018-11797, CVE-2021-{27807,27906,31811,31812})
