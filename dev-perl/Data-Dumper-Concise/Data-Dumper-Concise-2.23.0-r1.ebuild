@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Less indentation and newlines plus sub deparsing"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc x86 ~x86-solaris"
+KEYWORDS="amd64 ~arm ~ppc ~riscv x86 ~x86-solaris"
 
 RDEPEND="
 	virtual/perl-Data-Dumper
