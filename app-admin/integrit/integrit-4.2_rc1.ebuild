@@ -13,7 +13,7 @@ SRC_URI="https://github.com/integrit/integrit/archive/v${MY_PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 
 # Tests don't work in 4.2_rc1. Please re-check on version bump!
 RESTRICT="test"
