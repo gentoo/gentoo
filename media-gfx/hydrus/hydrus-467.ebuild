@@ -41,7 +41,7 @@ RDEPEND="
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP},lcms]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		dev-python/pyside2[widgets,gui,${PYTHON_USEDEP}]
