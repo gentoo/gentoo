@@ -11,7 +11,7 @@ LICENSE="GPL-2+ FDL-1.1 LGPL-2.1+"
 SLOT="0"
 IUSE="eds elogind systemd"
 REQUIRED_USE="^^ ( elogind systemd )"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="
 	>=gnome-base/gnome-desktop-2.91.0:3=
