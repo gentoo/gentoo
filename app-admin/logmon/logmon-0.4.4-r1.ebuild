@@ -7,7 +7,7 @@ inherit autotools
 
 MY_P="LogMon-${PV}"
 DESCRIPTION="Split-screen terminal/ncurses based log viewer"
-HOMEPAGE="http://www.edespot.com/code/LogMon/"
+HOMEPAGE="http://www.edespot.com/logmon/"
 SRC_URI="http://www.edespot.com/code/LogMon/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 

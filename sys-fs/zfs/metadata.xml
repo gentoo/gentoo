@@ -17,6 +17,24 @@
 		<flag name="test-suite">Install regression test suite</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">zfsonlinux/zfs</remote-id>
+		<remote-id type="github">openzfs/zfs</remote-id>
 	</upstream>
+	<longdescription lang="en">
+		OpenZFS is an advanced file system and volume manager which was originally developed
+		for Solaris and is now maintained by the OpenZFS community
+
+		It includes the functionality of both traditional file systems and volume manager.
+		It has many advanced features including:
+			* Protection against data corruption. Integrity checking for both data and metadata.
+			* Continuous integrity verification and automatic “self-healing” repair
+			* Data redundancy with mirroring, RAID-Z1/2/3 [and DRAID]
+			* Support for high storage capacities — up to 256 trillion yobibytes (2^128 bytes)
+			* Space-saving with transparent compression using LZ4, GZIP or ZSTD
+			* Hardware-accelerated native encryption
+			* Efficient storage with snapshots and copy-on-write clones
+			* Efficient local or remote replication — send only changed blocks with ZFS send and receive
+
+		The OpenZFS project brings together developers from the Linux, FreeBSD, illumos, MacOS, and Windows platforms.
+		OpenZFS is supported by a wide range of companies.
+	</longdescription>
 </pkgmetadata>

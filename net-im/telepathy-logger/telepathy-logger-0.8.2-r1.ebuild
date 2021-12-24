@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_REQ_USE="xml"
 inherit gnome2 python-any-r1 virtualx
 
 DESCRIPTION="Daemon that centralizes the communication logging within the Telepathy framework"

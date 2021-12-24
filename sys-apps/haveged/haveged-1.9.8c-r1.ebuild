@@ -5,7 +5,7 @@ EAPI=7
 inherit systemd
 
 DESCRIPTION="A simple entropy daemon using the HAVEGE algorithm"
-HOMEPAGE="http://www.issihosts.com/haveged/"
+HOMEPAGE="https://www.issihosts.com/haveged/"
 SRC_URI="https://github.com/jirka-h/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

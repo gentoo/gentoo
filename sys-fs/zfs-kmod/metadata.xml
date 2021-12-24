@@ -10,9 +10,9 @@
 		<name>Sam James</name>
 	</maintainer>
 	<use>
-		<flag name="rootfs">Install zfs-shutdown script to support exporting a pool containing rootfs</flag>
+		<flag name="rootfs">Pull dependencies and check kernel options required for root-on-zfs</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">zfsonlinux/zfs</remote-id>
+		<remote-id type="github">openzfs/zfs</remote-id>
 	</upstream>
 </pkgmetadata>

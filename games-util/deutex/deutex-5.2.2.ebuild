@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit unpacker
 
@@ -16,7 +16,8 @@ IUSE="man +png"
 
 DEPEND="png? ( media-libs/libpng:0= )"
 RDEPEND="${DEPEND}"
-BDEPEND="man? ( app-text/asciidoc )"
+BDEPEND="$(unpacker_src_uri_depends)
+	man? ( app-text/asciidoc )"
 
 src_configure() {
 	econf \

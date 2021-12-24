@@ -26,6 +26,10 @@ DOCS=(
 	regedit.txt
 )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-missing-stdint.patch
+)
+
 src_prepare() {
 	default
 	sed -i -e '/-o/s:$(CC):$(CC) $(LDFLAGS):' Makefile || die

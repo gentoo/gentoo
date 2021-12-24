@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools libtool multilib-minimal
+inherit autotools multilib-minimal
 
 MY_P="${P/_/-}"
 
 DESCRIPTION="A lossy image compression format"
 HOMEPAGE="https://developers.google.com/speed/webp/download"
-SRC_URI="http://downloads.webmproject.org/releases/webp/${MY_P}.tar.gz"
+SRC_URI="https://storage.googleapis.com/downloads.webmproject.org/releases/webp/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/7" # subslot = libwebp soname version

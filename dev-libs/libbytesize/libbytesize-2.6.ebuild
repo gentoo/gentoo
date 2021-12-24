@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit autotools python-r1
 
@@ -44,6 +44,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.4-no_Werror.patch"
+	"${FILESDIR}/${PN}-2.6-configure-bashism.patch"
 )
 
 python_do() {

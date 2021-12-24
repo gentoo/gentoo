@@ -213,7 +213,7 @@ pkg_postinst() {
 		if ! has_version sys-kernel/genkernel && ! has_version sys-kernel/dracut; then
 			elog "root on zfs requires initramfs to boot"
 			elog "the following packages known to provide one and tested on regular basis:"
-			elog "  sys-kernel/dracut"
+			elog "  sys-kernel/dracut ( preferred, module maintained by zfs developers )"
 			elog "  sys-kernel/genkernel"
 		fi
 	fi
