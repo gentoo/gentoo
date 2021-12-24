@@ -18,11 +18,9 @@ RDEPEND="dev-libs/gmp:="
 DEPEND="${RDEPEND}"
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
 	mv example examples || die
 	insinto /usr/share/${PN}
 	doins -r examples
-
-	einstalldocs
 }
