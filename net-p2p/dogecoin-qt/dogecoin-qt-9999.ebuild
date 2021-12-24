@@ -2,14 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit desktop
-DESCRIPTION="Dogecoin Core Qt 1.14.5 (with Graphical User Interface)"
+inherit git-r3 desktop
+DESCRIPTION="Dogecoin Core Qt (live ebuild with Graphical User Interface)"
 HOMEPAGE="https://github.com/dogecoin"
-SRC_URI="https://github.com/dogecoin/dogecoin/archive/refs/tags/v${PV}.tar.gz -> ${PN}-v${PV}.tar.gz"
+EGIT_REPO_URI="https://github.com/dogecoin/dogecoin.git"
 LICENSE="MIT"
 SLOT="0"
 DB_VER="5.3"
-KEYWORDS="~amd64 ~x86"
 IUSE="tests +wallet zmq"
 DOGEDIR="/opt/${PN}"
 DEPEND="
@@ -33,7 +32,7 @@ BDEPEND="
 	sys-devel/autoconf
 	sys-devel/automake
 "
-WORKDIR_="${WORKDIR}/dogecoin-${PV}"
+WORKDIR_="${WORKDIR}/dogecoin-qt-${PV}"
 S=${WORKDIR_}
 
 src_configure() {
@@ -64,7 +63,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Dogecoin Core Qt ${PV} has been installed."
+	elog "Dogecoin Core Qt live ebuild has been installed."
 	elog "Dogecoin Core Qt binaries have been placed in ${DOGEDIR}/bin."
 	elog "dogecoin-qt has been symlinked with /usr/bin/dogecoin-qt."
 }
