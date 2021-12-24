@@ -201,6 +201,9 @@ BDEPEND="
 	capi? ( >=dev-util/cargo-c-0.6.3 )
 "
 
+# Rust
+QA_FLAGS_IGNORED="usr/lib.*/librav1e.* usr/bin/rav1e"
+
 src_unpack() {
 	if [[ ${PV} == *9999* ]]; then
 		git-r3_src_unpack
