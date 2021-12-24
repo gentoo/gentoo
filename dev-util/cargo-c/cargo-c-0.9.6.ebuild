@@ -162,7 +162,7 @@ fi
 
 SRC_URI+=" $(cargo_crate_uris)"
 
-LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 MIT MPL-2.0 MPL-2.0+ Unlicense ZLIB"
+LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 MIT MPL-2.0 Unlicense ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
