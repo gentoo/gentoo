@@ -20,7 +20,7 @@ HOMEPAGE="https://aomedia.org"
 
 LICENSE="BSD-2"
 SLOT="0/3"
-IUSE="doc examples"
+IUSE="doc +examples"
 IUSE="${IUSE} cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3"
 IUSE="${IUSE} cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2"
 IUSE="${IUSE} cpu_flags_arm_neon"
