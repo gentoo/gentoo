@@ -47,6 +47,8 @@ pkg_pretend() {
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+
+	python-any-r1_pkg_setup
 }
 
 src_configure() {
