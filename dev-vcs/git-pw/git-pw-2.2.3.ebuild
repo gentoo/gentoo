@@ -21,8 +21,6 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-PATCHES=( "${FILESDIR}/${P}-test.patch" )
-
 RDEPEND="
 	>=dev-python/arrow-0.10[${PYTHON_USEDEP}]
 	<dev-python/click-8.0[${PYTHON_USEDEP}]
@@ -34,7 +32,7 @@ BDEPEND="
 	dev-python/pbr[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/mock-3.0.0[${PYTHON_USEDEP}]
-		<dev-python/pytest-6.0[${PYTHON_USEDEP}]
+		>=dev-python/pytest-3.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-cov-2.5[${PYTHON_USEDEP}]
 	)
 "
