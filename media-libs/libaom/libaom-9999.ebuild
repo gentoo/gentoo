@@ -52,7 +52,7 @@ multilib_src_configure() {
 		-DENABLE_WERROR=OFF
 
 		# Needs libjxl, currently unpackaged.
-		-DCONFIG_TUNE_BUTTERAUGLI=OFF
+		-DCONFIG_TUNE_BUTTERAUGLI=0
 
 		# neon support is assumed to be always enabled on arm64
 		-DENABLE_NEON=$(usex cpu_flags_arm_neon ON $(usex arm64 ON OFF))
