@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} pypy3 )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r1 xdg-utils
 
 DESCRIPTION="app-emulation/winetricks wrapper for Proton (Steam Play) games"
 HOMEPAGE="https://github.com/Matoking/protontricks"
@@ -42,6 +42,8 @@ python_prepare_all() {
 }
 
 pkg_postinst() {
+	xdg_desktop_database_update
+
 	elog
 
 	if ! use gui; then
@@ -53,4 +55,8 @@ pkg_postinst() {
 	elog "Protontricks can only find games for which a Proton prefix already exists."
 	elog "Make sure to run a Proton game at least once before trying to use protontricks on it."
 	elog
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
