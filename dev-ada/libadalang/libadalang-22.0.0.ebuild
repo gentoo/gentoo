@@ -67,7 +67,7 @@ src_compile() {
 	${EPYTHON} manage.py build -v \
 		--build-mode "prod" \
 		-j$(makeopts_jobs) \
-		--gargs "-cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS}" \
+		--gargs "-cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} -largs:C ${LDFLAGS}" \
 		--library-types=${libType} || die
 	GPR_PROJECT_PATH="${S}"/build \
 		gprbuild -P contrib/highlight/highlight.gpr \
@@ -76,6 +76,7 @@ src_compile() {
 		-XLIBRARY_TYPE=relocatable \
 		-XXMLADA_BUILD=relocatable \
 		-cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} \
+		-largs:C ${LDFLAGS} \
 		|| die
 }
 
