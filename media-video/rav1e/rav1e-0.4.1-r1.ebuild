@@ -286,7 +286,7 @@ IUSE="+capi"
 ASM_DEP=">=dev-lang/nasm-2.15"
 BDEPEND="
 	amd64? ( ${ASM_DEP} )
-	capi? ( dev-util/cargo-c )
+	capi? ( >=dev-util/cargo-c-0.6.3 )
 "
 
 src_unpack() {
