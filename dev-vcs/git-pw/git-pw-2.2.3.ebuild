@@ -27,6 +27,7 @@ RDEPEND="
 	dev-python/pbr[${PYTHON_USEDEP}]
 	<dev-python/requests-3.0[${PYTHON_USEDEP}]
 	>=dev-python/tabulate-0.8[${PYTHON_USEDEP}]
+	>=dev-python/pyyaml-5.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/pbr[${PYTHON_USEDEP}]
