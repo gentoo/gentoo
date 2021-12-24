@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2021-12-24)
+# Alpha version
+=app-editors/ghex-4.0.0_alpha
+
 # David Seifert <soap@gentoo.org> (2021-12-20)
 # Requires GCC 8, security vulnerabilities, switch to CUDA 11,
 # consider using clang+NVPTX backend for sm_30 cards.
