@@ -16,17 +16,16 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="GPL-3 gcc-runtime-library-exception-3.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
-IUSE="test shared +static-libs static-pic"
-REQUIRED_USE="|| ( shared static-libs static-pic )
-	${PYTHON_REQUIRED_USE}
+IUSE="test +static-libs static-pic"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	${ADA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/pyyaml
-	dev-ada/gnatcoll-bindings[${ADA_USEDEP},gmp,iconv,shared?,static-libs?,static-pic?]
+	dev-ada/gnatcoll-bindings[${ADA_USEDEP},gmp,iconv,shared,static-libs?,static-pic?]
 	${ADA_DEPS}
 	${PYTHON_DEPS}
-	dev-ada/langkit[${ADA_USEDEP},shared?,static-libs?,static-pic?]
+	dev-ada/langkit[${ADA_USEDEP},shared,static-libs?,static-pic?]
 	$(python_gen_cond_dep '
 		dev-ada/langkit[${PYTHON_USEDEP}]
 	')"
@@ -51,10 +50,13 @@ pkg_setup() {
 	if use static-pic; then
 		libType+=',static-pic'
 	fi
-	if use shared; then
-		libType+=',relocatable'
-	fi
+	libType+=',relocatable'
 	libType=${libType:1}
+}
+
+src_prepare() {
+	default
+	rm -r testsuite/tests/misc/copyright || die
 }
 
 src_configure() {
@@ -67,11 +69,21 @@ src_compile() {
 		-j$(makeopts_jobs) \
 		--gargs "-cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS}" \
 		--library-types=${libType} || die
+	GPR_PROJECT_PATH="${S}"/build \
+		gprbuild -P contrib/highlight/highlight.gpr \
+		-j$(makeopts_jobs) -v \
+		-XBUILD_MODE=prod \
+		-XLIBRARY_TYPE=relocatable \
+		-XXMLADA_BUILD=relocatable \
+		-cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} \
+		|| die
 }
 
 src_test() {
-	${EPYTHON} manage.py test --restricted-env -j 1
-	${EPYTHON} manage.py test --restricted-env -j 1 |& tee libadalang.testOut
+	${EPYTHON} manage.py test \
+		--build-mode "prod" \
+		--restricted-env -j 1 \
+		|& tee libadalang.testOut
 	grep -qw FAIL libadalang.testOut && die
 }
 
