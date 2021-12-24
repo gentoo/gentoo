@@ -59,15 +59,14 @@ src_configure() {
 }
 
 src_compile() {
-	MAKEOPTS+=" V="
-	default
+	emake V=
 }
 
 src_test() {
-	emake unit-test
+	emake V= unit-test
 }
 
 src_install() {
-	emake DESTDIR="${D}" DATADIR="${ED}/usr/share" install
+	emake V= DESTDIR="${D}" DATADIR="${ED}/usr/share" install
 	dodoc README.md TODO.org
 }
