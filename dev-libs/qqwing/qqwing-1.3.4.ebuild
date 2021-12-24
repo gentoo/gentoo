@@ -9,7 +9,7 @@ SRC_URI="https://qqwing.com/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0/2"
-KEYWORDS="amd64 arm ~arm64 x86"
+KEYWORDS="amd64 arm ~arm64 ~riscv x86"
 
 src_install() {
 	default
