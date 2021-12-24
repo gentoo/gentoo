@@ -4,7 +4,8 @@
 EAPI=8
 
 CMAKE_ECLASS=cmake
-inherit cmake-multilib
+PYTHON_COMPAT=( python3_{8..10} )
+inherit cmake-multilib python-any-r1
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -30,7 +31,8 @@ REQUIRED_USE="
 	cpu_flags_x86_ssse3? ( cpu_flags_x86_sse2 )
 "
 
-BDEPEND="abi_x86_32? ( dev-lang/yasm )
+BDEPEND="${PYTHON_DEPS}
+	abi_x86_32? ( dev-lang/yasm )
 	abi_x86_64? ( dev-lang/yasm )
 	abi_x86_x32? ( dev-lang/yasm )
 	x86-fbsd? ( dev-lang/yasm )
