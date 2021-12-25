@@ -18,6 +18,7 @@ src_configure() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
-	rm "${D}/usr/share/doc/${PF}/LICENSE" || die
+
+	find "${ED}" -name '*.la' -delete || die
+	rm "${ED}"/usr/share/doc/${PF}/LICENSE || die
 }
