@@ -2,11 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 
 <pkgmetadata>
-  <maintainer type="person">
-    <email>xgqt@gentoo.org</email>
-    <name>Maciej Barć</name>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
   </maintainer>
-  <longdescription lang="en">
+  <longdescription>
     Metamath is a tiny language that can express theorems in abstract
     mathematics, accompanied by proofs that can be verified by a computer
     program.
