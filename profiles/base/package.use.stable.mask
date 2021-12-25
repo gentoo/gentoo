@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-12-24)
+# test deps are not stable
+>=sys-fs/zfs-2.0.7 test-suite
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-12-19)
 # test deps are not stable and tests do not work
 # due to network access issues #829430
