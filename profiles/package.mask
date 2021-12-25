@@ -34,7 +34,7 @@
 #--- END OF EXAMPLES ---
 
 # Mike Gilbert <floppym@gentoo.org> (2021-12-24)
-# Replaced by sys-apps/hwdata. Removal on 2021-01-23.
+# Replaced by sys-apps/hwdata. Removal on 2022-01-23.
 sys-apps/hwids
 
 # Jonas Stein <jstein@gentoo.org> (2021-12-24)
