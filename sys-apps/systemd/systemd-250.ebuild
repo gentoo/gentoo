@@ -237,6 +237,7 @@ src_prepare() {
 
 	# Add local patches here
 	PATCHES+=(
+		"${FILESDIR}"/250-fix-openssl.patch
 	)
 
 	if ! use vanilla; then
