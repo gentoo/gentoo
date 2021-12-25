@@ -63,6 +63,7 @@ src_configure() {
 		-Dos=Linux
 		$(meson_use pam)
 		$(meson_feature selinux)
+		-Drootprefix="${EPREFIX}"
 		-Dshell=$(usex bash /bin/bash /bin/sh)
 		$(meson_use sysv-utils sysvinit)
 		-Dtermcap=$(usev ncurses)
