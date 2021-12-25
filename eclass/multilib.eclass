@@ -368,6 +368,15 @@ multilib_env() {
 				;;
 			esac
 		;;
+		loongarch64*)
+			export CFLAGS_lp64d=${CFLAGS_lp64d--mabi=lp64d}
+			export CHOST_lp64d=${CTARGET}
+			export CTARGET_lp64d=${CTARGET}
+			export LIBDIR_lp64d=${LIBDIR_lp64d-lib64}
+
+			: ${MULTILIB_ABIS=lp64d}
+			: ${DEFAULT_ABI=lp64d}
+		;;
 		mips64*|mipsisa64*)
 			export CFLAGS_o32=${CFLAGS_o32--mabi=32}
 			export CHOST_o32=${CTARGET/mips64/mips}
