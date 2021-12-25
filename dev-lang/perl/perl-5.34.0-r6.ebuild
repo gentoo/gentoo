@@ -430,6 +430,12 @@ src_prepare() {
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# fix install_name (soname) not to reference $D
 		sed -i -e '/install_name `pwd/s/`pwd`/\\$(shrpdir)/' Makefile.SH || die
+
+		# fix environ linkage absence (only a real issue on Darwin9)
+		if [[ ${CHOST##*-darwin} -le 9 ]] ; then
+			sed -i -e '/^PLDLFLAGS =/s/=/= -include crt_externs.h -Denviron="(*_NSGetEnviron())"/' \
+				Makefile.SH || die
+		fi
 	fi
 
 	default
@@ -614,9 +620,11 @@ src_configure() {
 		myconf "-Dld=env MACOSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET} $(tc-getCC)"
 
 	# Older macOS with non-Apple GCC chokes on inline in system headers
-	# using c89 mode as injected by cflags.SH
+	# using c89 mode as injected by cflags.SH, in addition, we override
+	# cflags, so we loose PERL_DARWIN which enables compat code that
+	# apparently on more recent macOS releases is no longer necessary
 	[[ ${CHOST} == *-darwin* && ${CHOST##*darwin} -le 9 ]] && tc-is-gcc && \
-		append-cflags -Dinline=__inline__
+		append-cflags -Dinline=__inline__ -DPERL_DARWIN
 
 	# flock on 32-bit sparc Solaris is broken, fall back to fcntl
 	[[ ${CHOST} == sparc-*-solaris* ]] && \
