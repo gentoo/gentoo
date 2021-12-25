@@ -53,8 +53,9 @@ KPV=${PV}${KV_LOCALVERSION}
 
 src_unpack() {
 	default
-	ebegin "Unpacking ${BINPKG}.${ARCH}.xpak"
-	tar -x < <(xz -c -d --single-stream "${DISTDIR}/${BINPKG}.${ARCH}.xpak")
+	# ARCH=ppc64, but tarball is ppc64le. Update if we ever introduce ppc64be binpkg.
+	ebegin "Unpacking ${BINPKG}.${ARCH/%ppc64/ppc64le}.xpak"
+	tar -x < <(xz -c -d --single-stream "${DISTDIR}/${BINPKG}.${ARCH/%ppc64/ppc64le}.xpak")
 	eend ${?} || die "Unpacking ${BINPKG} failed"
 }
 
