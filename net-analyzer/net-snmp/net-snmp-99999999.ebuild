@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_OPTIONAL=yes
 DISTUTILS_SINGLE_IMPL=yes
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 WANT_AUTOMAKE=none
 
 inherit autotools distutils-r1 git-r3 perl-module systemd
@@ -23,12 +23,10 @@ IUSE="
 	X bzip2 doc elf kmem ipv6 lm-sensors mfd-rewrites minimal mysql
 	netlink pcap pci perl python rpm selinux smux ssl tcpd ucd-compat zlib
 "
-
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	rpm? ( bzip2 zlib )
 "
-
 RESTRICT="test"
 
 COMMON_DEPEND="
