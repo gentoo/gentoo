@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/getsenic/gatt-python"
 SRC_URI="https://github.com/getsenic/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 SLOT="0"
 
 RDEPEND="
