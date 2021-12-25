@@ -30,7 +30,12 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils fido2 +gcrypt gnuefi homed hostnamed-fallback http idn importd +kmod +lz4 lzma nat pam pcre pkcs11 policykit pwquality qrcode repart +resolvconf +seccomp selinux split-usr +sysv-utils test tpm vanilla xkb +zstd"
+IUSE="
+	acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils
+	fido2 +gcrypt gnuefi homed hostnamed-fallback http idn importd +kmod +lz4
+	lzma nat pam pcre pkcs11 policykit pwquality qrcode repart +resolvconf
+	+seccomp selinux split-usr +sysv-utils test tpm vanilla xkb +zstd
+"
 
 REQUIRED_USE="
 	homed? ( cryptsetup pam )
