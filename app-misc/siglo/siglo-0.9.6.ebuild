@@ -11,7 +11,7 @@ SRC_URI="https://github.com/alexr4535/siglo/archive/refs/tags/v${PV}.tar.gz -> $
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND=""
