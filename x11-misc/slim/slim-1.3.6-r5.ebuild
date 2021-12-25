@@ -43,6 +43,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-drop-zlib.patch
 	"${FILESDIR}"/${P}-freetype.patch
 	"${FILESDIR}"/${P}-envcpy-bad-pointer-arithmetic.patch
+	"${FILESDIR}"/${PN}-1.3.6-add-missing-libgen_h.patch
 	"${FILESDIR}"/${PN}-1.3.6-gcc11.patch
 )
 
