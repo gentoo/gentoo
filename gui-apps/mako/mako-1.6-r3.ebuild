@@ -13,20 +13,20 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/emersion/${PN}.git"
 else
 	SRC_URI="https://github.com/emersion/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm64 x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+icons"
+IUSE="elogind +icons systemd"
 
 DEPEND="
 	dev-libs/wayland
 	x11-libs/pango
 	x11-libs/cairo
 	|| (
-		sys-apps/systemd
-		sys-auth/elogind
+		systemd? ( sys-apps/systemd )
+		elogind? ( sys-auth/elogind )
 		sys-libs/basu
 	)
 	sys-apps/dbus
@@ -49,5 +49,14 @@ src_configure() {
 		-Dicons=$(usex icons enabled disabled)
 		"-Dwerror=false"
 	)
+
+	if use systemd ; then
+		emesonargs+=( -Dsd-bus-provider=libsystemd )
+	elif use elogind ; then
+		emesonargs+=( -Dsd-bus-provider=libelogind )
+	else
+		emesonargs+=( -Dsd-bus-provider=basu )
+	fi
+
 	meson_src_configure
 }
