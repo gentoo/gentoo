@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7..10} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1 optfeature xdg-utils desktop
 
-DESCRIPTION="Merge or split pdfs; rearrange, rotate, crop pages."
+DESCRIPTION="Merge or split pdfs; rearrange, rotate, crop pages"
 HOMEPAGE="https://github.com/jeromerobert/pdfarranger"
 SRC_URI="https://github.com/jeromerobert/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
