@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{8..9} )
 
 inherit distutils-r1
 
-DESCRIPTION="A library to handle official service types for OpenStack and it's aliases."
+DESCRIPTION="A library to handle official service types for OpenStack and it's aliases"
 HOMEPAGE="https://github.com/openstack/os-service-types"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
