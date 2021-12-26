@@ -7,7 +7,7 @@ SWORD_MINIMUM_VERSION="1.5.9"
 
 inherit sword-module
 
-DESCRIPTION="Kingcomments, commentary on the whole Bible."
+DESCRIPTION="Kingcomments, commentary on the whole Bible"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=KingComm"
 LICENSE="free-noncomm"
 KEYWORDS="~amd64 ~ppc ~riscv ~x86"
