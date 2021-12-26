@@ -7,7 +7,7 @@ PYTHON_COMPAT=( pypy3 python3_{8..10} )
 
 inherit distutils-r1
 
-DESCRIPTION="Create a custom 404 page with absolute URLs hardcoded."
+DESCRIPTION="Create a custom 404 page with absolute URLs hardcoded"
 HOMEPAGE="https://sphinx-notfound-page.readthedocs.io/"
 # PyPI tarballs lack tests
 # https://github.com/readthedocs/sphinx-notfound-page/pull/110
