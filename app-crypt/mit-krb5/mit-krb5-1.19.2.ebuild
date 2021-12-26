@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit autotools flag-o-matic multilib-minimal python-any-r1 systemd toolchain-funcs
 
 MY_P="${P/mit-}"
