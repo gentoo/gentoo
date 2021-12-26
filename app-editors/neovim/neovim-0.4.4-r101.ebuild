@@ -7,7 +7,7 @@ LUA_COMPAT=( lua5-{1..2} luajit )
 
 inherit cmake lua-single optfeature xdg
 
-DESCRIPTION="Vim-fork focused on extensibility and agility."
+DESCRIPTION="Vim-fork focused on extensibility and agility"
 HOMEPAGE="https://neovim.io"
 
 if [[ ${PV} == 9999 ]]; then
