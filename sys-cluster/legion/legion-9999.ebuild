@@ -19,14 +19,13 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="gasnet hwloc test"
+IUSE="examples gasnet hwloc test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+# See bug #821424 for examples/mpi
+DEPEND="examples? ( virtual/mpi[cxx] )
 	gasnet? ( >=sys-cluster/gasnet-1.26.4-r1 )
-	hwloc? ( <sys-apps/hwloc-2:= )
-"
-
+	hwloc? ( <sys-apps/hwloc-2:= )"
 RDEPEND="${DEPEND}"
 
 src_configure() {
@@ -34,7 +33,7 @@ src_configure() {
 		-DLegion_USE_HWLOC=$(usex hwloc)
 		-DLegion_USE_GASNet=$(usex gasnet)
 		-DLegion_ENABLE_TESTING=$(usex test)
-		-DLegion_BUILD_EXAMPLES=ON
+		-DLegion_BUILD_EXAMPLES=$(usex examples)
 		-DLegion_BUILD_TESTS=ON
 		-DLegion_BUILD_TUTORIAL=ON
 	)
