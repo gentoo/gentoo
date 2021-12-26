@@ -10,8 +10,10 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/plymouth/plymouth"
 else
-	SRC_URI="${SRC_URI} https://www.freedesktop.org/software/plymouth/releases/${P}.tar.xz"
+	PRE_RELEASE_SHA="5b91b9ed84cc91759c986634a4d64d474e6092cf"
+	SRC_URI="${SRC_URI} https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PRE_RELEASE_SHA}/${PN}-${PRE_RELEASE_SHA}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	S="${WORKDIR}/${PN}-${PRE_RELEASE_SHA}"
 fi
 
 inherit autotools readme.gentoo-r1 systemd
