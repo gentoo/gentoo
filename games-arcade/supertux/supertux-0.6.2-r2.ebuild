@@ -9,7 +9,7 @@ inherit cmake flag-o-matic
 MY_PV="${PV/_rc/-rc.}"
 MY_P="SuperTux-v${MY_PV}-Source"
 
-DESCRIPTION="A game similar to Super Mario Bros."
+DESCRIPTION="A game similar to Super Mario Bros"
 HOMEPAGE="https://supertux.org/"
 SRC_URI="https://github.com/SuperTux/${PN}/releases/download/v${MY_PV}/${MY_P}.tar.gz"
 
