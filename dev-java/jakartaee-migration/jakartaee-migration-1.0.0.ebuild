@@ -12,7 +12,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="Apache Tomcat tool for migration from Java EE 8 to Jakarta EE 9."
+DESCRIPTION="Apache Tomcat tool for migration from Java EE 8 to Jakarta EE 9"
 HOMEPAGE="https://tomcat.apache.org"
 SRC_URI="mirror://apache/tomcat/${PN}/v${PV}/source/${P}-src.tar.gz -> ${P}-sources.tar.gz"
 LICENSE="Apache-2.0"
