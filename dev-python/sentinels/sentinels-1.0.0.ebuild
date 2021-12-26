@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
-DESCRIPTION="Python Sentinels class which are objects with special meanings."
+DESCRIPTION="Python Sentinels class which are objects with special meanings"
 HOMEPAGE="https://pypi.org/project/sentinels"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
