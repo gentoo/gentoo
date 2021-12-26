@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Displays info about resources used by a program"
 HOMEPAGE="https://www.gnu.org/directory/time.html"
-SRC_URI="http://ftp.gnu.org/pub/gnu/${PN}/${P}.tar.gz"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
