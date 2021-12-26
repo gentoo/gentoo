@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="The async transformation code."
+DESCRIPTION="The async transformation code"
 HOMEPAGE="https://github.com/python-trio/unasync"
 SRC_URI="https://github.com/python-trio/unasync/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
