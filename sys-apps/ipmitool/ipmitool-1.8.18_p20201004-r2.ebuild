@@ -5,7 +5,7 @@ EAPI=7
 
 inherit autotools flag-o-matic systemd
 
-DESCRIPTION="Utility for controlling IPMI enabled devices."
+DESCRIPTION="Utility for controlling IPMI enabled devices"
 HOMEPAGE="http://ipmitool.sf.net/"
 DEBIAN_PR="9.debian"
 DEBIAN_PV="${PV/_p*}"
