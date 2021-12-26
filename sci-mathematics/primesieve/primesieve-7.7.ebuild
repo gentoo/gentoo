@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake
 
-DESCRIPTION="CLI and library for quickly generating prime numbers."
+DESCRIPTION="CLI and library for quickly generating prime numbers"
 HOMEPAGE="https://github.com/kimwalisch/primesieve"
 SRC_URI="https://github.com/kimwalisch/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-2"
