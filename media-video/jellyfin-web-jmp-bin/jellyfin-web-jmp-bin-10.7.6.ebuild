@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="Modified Jellyfin Web Client for use inside Jellyfin Media Player."
+DESCRIPTION="Modified Jellyfin Web Client for use inside Jellyfin Media Player"
 HOMEPAGE="https://github.com/jellyfin/jellyfin-media-player"
 SRC_URI="
 	https://github.com/iwalton3/${PN%-bin}/releases/download/jwc-${PV}/dist.zip -> ${P}.zip
