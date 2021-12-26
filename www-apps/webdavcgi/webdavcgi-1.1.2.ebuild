@@ -5,7 +5,7 @@ EAPI=7
 
 inherit toolchain-funcs
 
-DESCRIPTION="A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV."
+DESCRIPTION="A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV"
 HOMEPAGE="https://danrohde.github.io/webdavcgi/"
 SRC_URI="https://github.com/DanRohde/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
