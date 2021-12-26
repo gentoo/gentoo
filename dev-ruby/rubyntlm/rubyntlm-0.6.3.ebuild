@@ -10,7 +10,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Ruby/NTLM provides message creator and parser for the NTLM authentication."
+DESCRIPTION="Ruby/NTLM provides message creator and parser for the NTLM authentication"
 HOMEPAGE="https://github.com/winrb/rubyntlm"
 
 LICENSE="MIT"
