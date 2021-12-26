@@ -11,7 +11,7 @@ SRC_URI="https://github.com/kimwalisch/${PN}/archive/refs/tags/v${PV}.tar.gz -> 
 LICENSE="BSD-2"
 SLOT="0/7"  # subslot is first component of libprimecount.so version
 KEYWORDS="~amd64"
-IUSE="+executable openmp test"
+IUSE="cpu_flags_x86_popcnt +executable openmp test"
 RESTRICT="!test? ( test )"
 
 DEPEND="sci-mathematics/primesieve:="
@@ -42,6 +42,7 @@ src_configure() {
 		-DBUILD_STATIC_LIBS="OFF"
 		-DBUILD_TESTS="$(usex test)"
 		-DWITH_OPENMP="$(usex openmp)"
+		-DWITH_POPCNT="$(usex cpu_flags_x86_popcnt)"
 	)
 
 	cmake_src_configure
