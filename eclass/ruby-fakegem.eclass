@@ -396,7 +396,7 @@ ruby_fakegem_binwrapper() {
 				# if another implementation already arrived, then make
 				# it generic and break out of the loop. This ensures
 				# that we do at most two iterations.
-				rubycmd="/usr/bin/env ruby"
+				rubycmd="${EPREFIX}/usr/bin/env ruby"
 				break
 			fi
 		done
