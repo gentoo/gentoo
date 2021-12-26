@@ -10,7 +10,7 @@ RUBY_FAKEGEM_GEMSPEC="loofah.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Library for manipulating and transforming HTML/XML documents and fragments."
+DESCRIPTION="Library for manipulating and transforming HTML/XML documents and fragments"
 HOMEPAGE="https://github.com/flavorjones/loofah"
 SRC_URI="https://github.com/flavorjones/loofah/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
