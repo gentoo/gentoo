@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="A pluggable API specification generator."
+DESCRIPTION="A pluggable API specification generator"
 HOMEPAGE="https://github.com/marshmallow-code/apispec/"
 SRC_URI="
 	https://github.com/marshmallow-code/apispec/archive/${PV}.tar.gz
