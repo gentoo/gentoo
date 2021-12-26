@@ -134,11 +134,11 @@ PYTHON_SINGLE_TARGET="python3_9"
 
 # Michał Górny <mgorny@gentoo.org> (2013-08-10)
 # Moved from portage's make.globals.
-# 1) do not uninstall kernel modules and therefore allow replacing them,
+# 1) do not uninstall kernel modules/dtbs and therefore allow replacing them,
 # 2,3) removed wrt bug #663170,
 # 4) protect /var/{run,lock} symlinks for bug 519620
-COLLISION_IGNORE="/lib/modules/*"
-UNINSTALL_IGNORE="/lib/modules/* /var/run /var/lock"
+COLLISION_IGNORE="/boot/dtbs/* /lib/modules/*"
+UNINSTALL_IGNORE="/boot/dtbs/* /lib/modules/* /var/run /var/lock"
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2013-08-23)
 # Make emerge messages default to English as per Council decision
