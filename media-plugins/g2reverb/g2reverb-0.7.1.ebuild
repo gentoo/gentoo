@@ -5,7 +5,7 @@ EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="Stereo reverb LADSPA plugin."
+DESCRIPTION="Stereo reverb LADSPA plugin"
 HOMEPAGE="http://kokkinizita.linuxaudio.org/linuxaudio/"
 SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/${P}.tar.bz2"
 
