@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-cmake-3.11{,-1}.patch # bug 678030
 	"${FILESDIR}"/${P}-cuda-9.patch
 	"${FILESDIR}"/${P}-system-lz4.patch # bug 681898
+	"${FILESDIR}"/flann-1.9.1-system-lz4-pkgconfig.patch
 )
 
 pkg_pretend() {
