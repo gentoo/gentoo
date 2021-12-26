@@ -12,7 +12,7 @@ SRC_URI="https://github.com/StanfordLegion/${PN}/archive/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="gasnet +hwloc"
+IUSE="gasnet hwloc"
 
 DEPEND="
 	gasnet? ( >=sys-cluster/gasnet-1.26.4-r1 )

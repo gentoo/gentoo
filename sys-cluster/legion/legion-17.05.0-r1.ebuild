@@ -18,7 +18,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="gasnet +hwloc"
+IUSE="gasnet hwloc"
 
 DEPEND="
 	gasnet? ( >=sys-cluster/gasnet-1.26.4-r1 )
