@@ -13,6 +13,8 @@
 		<flag name="rootfs">Pull dependencies and check kernel options required for root-on-zfs</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/openzfs/zfs/issues</bugs-to>
+		<doc>https://openzfs.github.io/openzfs-docs</doc>
 		<remote-id type="github">openzfs/zfs</remote-id>
 	</upstream>
 </pkgmetadata>
