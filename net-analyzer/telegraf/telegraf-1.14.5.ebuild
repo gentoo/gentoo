@@ -8,7 +8,7 @@ COMMIT=e77ce3d1
 BRANCH=release-1.14
 VERSION=v${MY_PV}
 
-DESCRIPTION="The plugin-driven server agent for collecting & reporting metrics."
+DESCRIPTION="The plugin-driven server agent for collecting & reporting metrics"
 HOMEPAGE="https://github.com/influxdata/telegraf"
 
 EGO_SUM=(
