@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
-DESCRIPTION="casttube provides a way to interact with the Youtube Chromecast api."
+DESCRIPTION="casttube provides a way to interact with the Youtube Chromecast api"
 HOMEPAGE="https://github.com/ur1katz/casttube"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
