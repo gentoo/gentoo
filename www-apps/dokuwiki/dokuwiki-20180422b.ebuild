@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ inherit webapp
 MY_BASE_PV="${PV:0:4}-${PV:4:2}-${PV:6:2}"
 MY_PV="${MY_BASE_PV}${PV:8:1}"
 
-DESCRIPTION="DokuWiki is a simple to use Wiki aimed at a small company's documentation needs."
+DESCRIPTION="DokuWiki is a simple to use Wiki aimed at a small company's documentation needs"
 HOMEPAGE="https://wiki.dokuwiki.org"
 SRC_URI="https://download.dokuwiki.org/src/${PN}/${PN}-${MY_PV}.tgz"
 
