@@ -10,7 +10,7 @@ HOMEPAGE="http://foo2zjs.rkkda.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+PROPERTIES="live"
 IUSE="test"
 
 RESTRICT="bindist !test? ( test )"
@@ -19,8 +19,8 @@ RDEPEND="net-print/cups
 	net-print/foomatic-db-engine
 	>=net-print/cups-filters-1.0.43-r1[foomatic]
 	virtual/udev"
-DEPEND="${RDEPEND}
-	app-arch/unzip
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip
 	app-editors/vim
 	net-misc/wget
 	sys-apps/ed
@@ -69,15 +69,15 @@ src_compile() {
 	MAKEOPTS=-j1 CC="$(tc-getCC)" default
 }
 
+src_test() {
+	# see bug 419787
+	: ;
+}
+
 src_install() {
 	# ppd files are installed automagically. We have to create a directory
 	# for them.
 	dodir /usr/share/ppd
 
 	emake DESTDIR="${D}" -j1 install install-hotplug
-}
-
-src_test() {
-	# see bug 419787
-	: ;
 }
