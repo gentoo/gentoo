@@ -12,7 +12,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="The core functionality, shared by the Ant tasks and the Maven plugin."
+DESCRIPTION="The core functionality, shared by the Ant tasks and the Maven plugin"
 HOMEPAGE="https://creadur.apache.org/rat/apache-rat-core/"
 SRC_URI="mirror://apache//creadur/apache-rat-${PV}/apache-rat-${PV}-src.tar.bz2"
 LICENSE="Apache-2.0"
