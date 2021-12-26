@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="A 32-level game designed for competitive deathmatch play."
+DESCRIPTION="A 32-level game designed for competitive deathmatch play"
 HOMEPAGE="https://freedoom.github.io"
 
 LICENSE="metapackage"
