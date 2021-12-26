@@ -5,7 +5,7 @@ EAPI=7
 
 inherit meson
 
-DESCRIPTION="A lightweight notification daemon for Wayland. Works on Sway."
+DESCRIPTION="A lightweight notification daemon for Wayland. Works on Sway"
 HOMEPAGE="https://github.com/emersion/mako"
 
 if [[ ${PV} == 9999 ]]; then
