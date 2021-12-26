@@ -19,7 +19,7 @@ else
 	S="${WORKDIR}/${ROS_PN}-${PV}/${PN}"
 fi
 
-DESCRIPTION="The ability to check source files for copyright and license information."
+DESCRIPTION="The ability to check source files for copyright and license information"
 HOMEPAGE="https://github.com/ament/ament_lint"
 
 LICENSE="Apache-2.0"
