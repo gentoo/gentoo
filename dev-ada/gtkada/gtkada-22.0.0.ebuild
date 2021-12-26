@@ -12,9 +12,9 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="+shared static-libs"
+IUSE="+shared static-libs static-pic"
 
 RDEPEND="${ADA_DEPS}
 	dev-libs/atk
@@ -45,6 +45,7 @@ src_configure() {
 	econf \
 		$(use_enable static-libs static) \
 		$(use_enable shared) \
+		$(use_enable static-pic) \
 		--without-GL
 }
 
