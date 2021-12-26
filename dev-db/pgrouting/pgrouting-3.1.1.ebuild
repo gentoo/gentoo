@@ -11,7 +11,7 @@ POSTGRES_USEDEP="server"
 
 inherit cmake postgres-multi
 
-DESCRIPTION="pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality."
+DESCRIPTION="pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality"
 HOMEPAGE="https://pgrouting.org/"
 LICENSE="GPL-2 MIT Boost-1.0"
 
