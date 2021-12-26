@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="locales"
 
 inherit ruby-fakegem systemd tmpfiles
 
-DESCRIPTION="A system automation and configuration management software."
+DESCRIPTION="A system automation and configuration management software"
 HOMEPAGE="https://puppet.com/"
 SRC_URI="https://downloads.puppetlabs.com/puppet/${P}.tar.gz"
 
