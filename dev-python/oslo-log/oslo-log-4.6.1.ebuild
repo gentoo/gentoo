@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..9} )
 inherit distutils-r1
 
-DESCRIPTION="OpenStack logging config library, configuration for all openstack projects."
+DESCRIPTION="OpenStack logging config library, configuration for all openstack projects"
 HOMEPAGE="https://pypi.org/project/oslo.log/ https://github.com/openstack/oslo.log"
 SRC_URI="mirror://pypi/o/oslo.log/oslo.log-${PV}.tar.gz"
 S="${WORKDIR}/oslo.log-${PV}"
