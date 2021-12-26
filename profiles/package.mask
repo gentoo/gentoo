@@ -275,14 +275,6 @@ www-apache/mod_extract_forwarded
 # Removal in 30 days. Bug #827654
 www-apache/mod_evasive
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-26)
-# Library without consumers. Removal in 30 days.
-dev-java/jss
-
-# Alfredo Tupone <tupone@gentoo.org> (2021-11-26)
-# EAPI 6. Removal in 30 days. Bug @827158
-=dev-lang/gnat-gpl-2019-r2
-
 # Hans de Graaff <graaff@gentoo.org> (2021-11-26)
 # Mask new rubygems version for testing. This version uses a new
 # gentoo-defaults profile, bug #789957
