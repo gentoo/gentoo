@@ -257,13 +257,6 @@ x11-themes/xxv-skins
 # Removal in 30 days. Bug #827666
 www-apache/mod_vhost_ldap
 
-# Marek Szuba <marecki@gentoo.org> (2021-11-27)
-# Upstream Web site (including release tarballs) is gone, no activity
-# in their GitHub repository since June 2012. Unmaintained in Gentoo
-# for years, EAPI 5.
-# Removal in 30 days. Bug #827663
-www-apache/mod_ldap_userdir
-
 # Hans de Graaff <graaff@gentoo.org> (2021-11-26)
 # Mask new rubygems version for testing. This version uses a new
 # gentoo-defaults profile, bug #789957
