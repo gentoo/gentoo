@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_{6..9})
+PYTHON_COMPAT=(python3_{6..10})
 inherit gnome.org gnome2-utils meson python-any-r1 xdg
 
 DESCRIPTION="Collection of GSettings schemas for GNOME desktop"
