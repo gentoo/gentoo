@@ -12,7 +12,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="Apache Velocity is a general purpose template engine."
+DESCRIPTION="Apache Velocity is a general purpose template engine"
 HOMEPAGE="https://velocity.apache.org"
 SRC_URI="https://github.com/apache/${PN}-engine/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
