@@ -7,7 +7,7 @@ SWORD_MINIMUM_VERSION="1.6.0"
 
 inherit sword-module
 
-DESCRIPTION="Deutsche Zürcher Bibel von 1931."
+DESCRIPTION="Deutsche Zürcher Bibel von 1931"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=GerZurcher"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~riscv ~x86"
