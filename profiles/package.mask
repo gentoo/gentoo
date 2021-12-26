@@ -283,23 +283,10 @@ dev-java/jss
 # EAPI 6. Removal in 30 days. Bug @827158
 =dev-lang/gnat-gpl-2019-r2
 
-# Marek Szuba <marecki@gentoo.org> (2021-11-25)
-# Upstream discontinued Linux support over 10 years ago so we are now
-# one major version and countless known bugs behind. No source archives
-# published for current versions. Unmaintained in Gentoo for years,
-# EAPI 5. Removal in 30 days. Bug #827522
-sci-biology/ApE
-
 # Hans de Graaff <graaff@gentoo.org> (2021-11-26)
 # Mask new rubygems version for testing. This version uses a new
 # gentoo-defaults profile, bug #789957
 >=dev-ruby/rubygems-3.2.31
-
-# Hans de Graaff <graaff@gentoo.org> (2021-11-26)
-# Old slot, obsolete since 2016. No reverse dependencies. Use the
-# newer slot instead.
-# Masked for removal in 30 days.
-dev-ruby/typhoeus:0
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-23)
 # Does not support updated dev-java/pdfbox-2.0.24, Bug #803488
