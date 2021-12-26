@@ -249,7 +249,6 @@ dev-java/xmpcore
 # EAPI 5, numerous QA violations.
 # Removal in 30 days. Bug #827669
 www-misc/xxv
-x11-themes/xxv-skins
 
 # Hans de Graaff <graaff@gentoo.org> (2021-11-26)
 # Mask new rubygems version for testing. This version uses a new
