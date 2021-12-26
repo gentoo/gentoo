@@ -37,7 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-cmake-3.11{,-1}.patch # bug 678030
 	"${FILESDIR}"/${P}-cuda-9.patch
 	"${FILESDIR}"/${P}-system-lz4.patch # bug 681898
-	"${FILESDIR}"/flann-1.9.1-system-lz4-pkgconfig.patch
+	"${FILESDIR}"/${P}-system-lz4-pkgconfig.patch # bug 827263
 )
 
 pkg_pretend() {
