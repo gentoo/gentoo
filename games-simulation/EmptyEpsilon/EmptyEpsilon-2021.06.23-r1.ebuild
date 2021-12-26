@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake toolchain-funcs
 
-DESCRIPTION="A spaceship bridge simulator game."
+DESCRIPTION="A spaceship bridge simulator game"
 HOMEPAGE="https://daid.github.io/EmptyEpsilon/"
 # This bundles SeriousProton as the build system does not support using
 # a separate SeriousProton instance (and currently EmptyEpsilon seems to
