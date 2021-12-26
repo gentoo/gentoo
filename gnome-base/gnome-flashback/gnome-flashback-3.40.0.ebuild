@@ -11,7 +11,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 IUSE="elogind systemd"
 REQUIRED_USE="^^ ( elogind systemd )"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="
 	>=x11-libs/gdk-pixbuf-2.32.2:2
