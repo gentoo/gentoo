@@ -380,7 +380,7 @@ ecm_src_prepare() {
 
 		if [[ ${ECM_HANDBOOK} = forceoptional ]] ; then
 			ecm_punt_bogus_dep KF5 DocTools
-			sed -i -e "/kdoctools_install/ s/^/#DONT/" CMakeLists.txt || die
+			sed -i -e "/kdoctools_install/I s/^/#DONT/" CMakeLists.txt || die
 		fi
 	fi
 
@@ -412,12 +412,12 @@ ecm_src_prepare() {
 			local f pf="${T}/${P}"-tests-optional.patch
 			touch ${pf} || die "Failed to touch patch file"
 			for f in $(find . -type f -name "CMakeLists.txt" -exec \
-				grep -l "^\s*add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)" {} \;); do
+				grep -li "^\s*add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)" {} \;); do
 				cp ${f} ${f}.old || die "Failed to prepare patch origfile"
 				pushd ${f%/*} > /dev/null || die
 					ecm_punt_bogus_dep Qt5 Test
 					sed -i CMakeLists.txt -e \
-						"/^#/! s/add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)/if(BUILD_TESTING)\n&\nendif()/" \
+						"/^#/! s/add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)/if(BUILD_TESTING)\n&\nendif()/I" \
 						|| die
 				popd > /dev/null || die
 				diff -Naur ${f}.old ${f} 1>>${pf}
