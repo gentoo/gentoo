@@ -11,7 +11,7 @@ MAVEN_ID="org.apache.commons:commons-text:1.9"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="Apache Commons Text is a library focused on algorithms working on strings."
+DESCRIPTION="Apache Commons Text is a library focused on algorithms working on strings"
 HOMEPAGE="https://commons.apache.org/proper/commons-text"
 SRC_URI="https://downloads.apache.org//commons/text/source/${P}-src.tar.gz -> ${P}-sources.tar.gz"
 LICENSE="Apache-2.0"
