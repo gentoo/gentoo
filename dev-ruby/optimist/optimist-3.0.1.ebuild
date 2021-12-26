@@ -9,7 +9,7 @@ RUBY_FAKEGEM_EXTRADOC="FAQ.txt History.txt README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A commandline option parser for Ruby that just gets out of your way."
+DESCRIPTION="A commandline option parser for Ruby that just gets out of your way"
 HOMEPAGE="https://manageiq.github.io/optimist/"
 LICENSE="MIT"
 
