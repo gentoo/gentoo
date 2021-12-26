@@ -7,7 +7,7 @@ inherit xdg
 
 # The string in SRC_URI doesn't follow standard naming convention
 MV="3.1"
-DESCRIPTION="A simple applet that shows what you saved since you quit smoking."
+DESCRIPTION="A simple applet that shows what you saved since you quit smoking"
 HOMEPAGE="http://quitcount.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MV}/${P}.tar.gz"
 
