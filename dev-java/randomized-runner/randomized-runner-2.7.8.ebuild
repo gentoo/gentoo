@@ -12,7 +12,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="JUnit test runner and plugins for running JUnit tests with pseudo-randomness."
+DESCRIPTION="JUnit test runner and plugins for running JUnit tests with pseudo-randomness"
 HOMEPAGE="https://github.com/randomizedtesting/randomizedtesting/randomizedtesting-runner"
 SRC_URI="https://github.com/randomizedtesting/randomizedtesting/archive/refs/tags/release/${PV}.tar.gz -> ${P}.tar.gz"
 
