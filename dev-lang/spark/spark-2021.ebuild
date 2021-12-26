@@ -14,7 +14,7 @@ MYP=${P}-2021-20210519-19A1A-src
 GNATID=005d2b2eff627177986d2517eb31e1959bec6f3a
 GNATDIR=gnat-${PV}-20210519-19A70-src
 
-DESCRIPTION="Software development for high-reliability applications."
+DESCRIPTION="Software development for high-reliability applications"
 HOMEPAGE="http://libre.adacore.com"
 SRC_URI="${ADA_MIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz
 	${ADA_MIRROR}/${GNATID}?filename=${GNATDIR}.tar.gz -> ${GNATDIR}.tar.gz"
