@@ -5,7 +5,7 @@ EAPI=6
 
 inherit toolchain-funcs cmake-utils
 
-DESCRIPTION="Common bricks library for building distributed machine learning."
+DESCRIPTION="Common bricks library for building distributed machine learning"
 HOMEPAGE="https://github.com/dmlc/dmlc-core"
 
 if [[ ${PV} == *9999* ]] ; then
