@@ -5,7 +5,7 @@ EAPI=8
 
 inherit desktop
 
-DESCRIPTION="An application for viewing, editing and converting GPS data."
+DESCRIPTION="An application for viewing, editing and converting GPS data"
 HOMEPAGE="http://activityworkshop.net/software/gpsprune/index.html"
 SRC_URI="http://activityworkshop.net/software/gpsprune/gpsprune_${PV}.jar"
 
