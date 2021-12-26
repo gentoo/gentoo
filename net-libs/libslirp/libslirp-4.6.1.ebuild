@@ -8,7 +8,7 @@ inherit meson
 KEYWORDS="amd64 arm64 ~ppc ppc64 x86"
 MY_P="${PN}-v${PV}"
 SRC_URI="https://gitlab.freedesktop.org/slirp/libslirp/-/archive/v${PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
-DESCRIPTION="A TCP-IP emulator used to provide virtual networking services."
+DESCRIPTION="A TCP-IP emulator used to provide virtual networking services"
 HOMEPAGE="https://gitlab.freedesktop.org/slirp/libslirp"
 
 LICENSE="BSD"
