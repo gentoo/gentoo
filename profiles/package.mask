@@ -264,11 +264,6 @@ www-apache/mod_vhost_ldap
 # Removal in 30 days. Bug #827663
 www-apache/mod_ldap_userdir
 
-# Marek Szuba <marecki@gentoo.org> (2021-11-27)
-# Upstream is long gone, unmaintained in Gentoo for years, EAPI 5.
-# Removal in 30 days. Bug #827657
-www-apache/mod_extract_forwarded
-
 # Hans de Graaff <graaff@gentoo.org> (2021-11-26)
 # Mask new rubygems version for testing. This version uses a new
 # gentoo-defaults profile, bug #789957
