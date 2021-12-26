@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="Icinga PHP libraries for Icinga Web 2."
+DESCRIPTION="Icinga PHP libraries for Icinga Web 2"
 HOMEPAGE="https://github.com/Icinga/icinga-php-library"
 MY_GITHUB_AUTHOR="Icinga"
 SRC_URI="https://github.com/${MY_GITHUB_AUTHOR}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
