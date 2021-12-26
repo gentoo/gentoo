@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 MY_P=${P/-/.}
-DESCRIPTION="Classes for orchestrating Python (virtual) environments."
+DESCRIPTION="Classes for orchestrating Python (virtual) environments"
 HOMEPAGE="https://github.com/jaraco/jaraco.envs"
 SRC_URI="mirror://pypi/${MY_P::1}/${PN/-/.}/${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
