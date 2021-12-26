@@ -24,8 +24,8 @@ python_install_all() {
 	doman docs/metagen.1
 
 	# Bug 814545
-	mv "${D}"/usr/share/doc/${P}/* "${D}"/usr/share/doc/${PF}/ || die
-	rmdir "${D}"/usr/share/doc/${P}/ || die
+	mv "${ED}"/usr/share/doc/${P}/* "${ED}"/usr/share/doc/${PF}/ || die
+	rmdir "${ED}"/usr/share/doc/${P}/ || die
 }
 
 python_test() {
