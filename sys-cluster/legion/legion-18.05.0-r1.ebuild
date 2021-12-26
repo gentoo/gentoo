@@ -18,7 +18,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="gasnet +hwloc test"
+IUSE="gasnet hwloc test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
