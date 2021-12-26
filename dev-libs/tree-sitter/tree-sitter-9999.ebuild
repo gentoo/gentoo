@@ -7,7 +7,7 @@ CARGO_OPTIONAL=1
 
 inherit toolchain-funcs cargo
 
-DESCRIPTION="Tree-sitter is a parser generator tool and an incremental parsing library."
+DESCRIPTION="Tree-sitter is a parser generator tool and an incremental parsing library"
 HOMEPAGE="https://github.com/tree-sitter/tree-sitter"
 
 if [[ ${PV} == *9999* ]]; then
