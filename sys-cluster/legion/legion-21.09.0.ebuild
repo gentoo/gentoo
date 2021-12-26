@@ -7,13 +7,14 @@ inherit cmake
 
 DESCRIPTION="A data-centric parallel programming system"
 HOMEPAGE="https://legion.stanford.edu/"
-if [[ ${PV} = 9999 ]]; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://StanfordLegion/${PN}.git https://github.com/StanfordLegion/${PN}.git"
 else
 	SRC_URI="https://github.com/StanfordLegion/${PN}/archive/${P}.tar.gz"
+	S="${WORKDIR}"/${PN}-${P}
+
 	KEYWORDS="~amd64"
-	S="${WORKDIR}/${PN}-${P}"
 fi
 
 LICENSE="BSD"
@@ -29,14 +30,14 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DLegion_USE_HWLOC=$(usex hwloc)
 		-DLegion_USE_GASNet=$(usex gasnet)
 		-DLegion_ENABLE_TESTING=$(usex test)
-		-DBUILD_SHARED_LIBS=ON
 		-DLegion_BUILD_EXAMPLES=ON
 		-DLegion_BUILD_TESTS=ON
 		-DLegion_BUILD_TUTORIAL=ON
 	)
+
 	cmake_src_configure
 }
