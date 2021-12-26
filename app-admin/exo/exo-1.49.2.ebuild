@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="Command-line tool for everything at Exoscale: compute, storage, dns."
+DESCRIPTION="Command-line tool for everything at Exoscale: compute, storage, dns"
 HOMEPAGE="https://github.com/exoscale/cli"
 SRC_URI="https://github.com/exoscale/cli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
