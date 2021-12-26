@@ -12,7 +12,7 @@ SRC_URI="https://marlam.de/msmtp/releases/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="daemon doc gnome-keyring idn +mta nls sasl ssl vim-syntax"
+IUSE="daemon doc gnome-keyring gnutls idn +mta nls sasl ssl vim-syntax"
 
 # fcaps.eclass unconditionally defines "filecaps" USE flag which we need for
 # USE="daemon" in order to set the caps we need.
@@ -25,7 +25,10 @@ DEPEND="
 	idn? ( net-dns/libidn2:= )
 	nls? ( virtual/libintl )
 	sasl? ( virtual/gsasl )
-	ssl? ( net-libs/gnutls[idn?] )
+	ssl? (
+		gnutls? ( net-libs/gnutls[idn?] )
+		!gnutls? ( dev-libs/libretls:= )
+	)
 "
 
 RDEPEND="${DEPEND}
@@ -74,7 +77,7 @@ src_configure() {
 		$(use_with gnome-keyring libsecret)
 		$(use_with idn libidn)
 		$(use_with sasl libgsasl)
-		$(use_with ssl tls gnutls)
+		$(use_with ssl tls $(usex gnutls gnutls libtls))
 	)
 	econf "${myeconfargs[@]}"
 }
