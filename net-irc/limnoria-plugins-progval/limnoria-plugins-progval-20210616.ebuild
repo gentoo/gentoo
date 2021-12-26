@@ -7,7 +7,7 @@ inherit vcs-snapshot
 
 COMMIT="2049ffbf1fe1e6f26ffad74e628c2adbb84097fb"
 
-DESCRIPTION="Collection of plugins for Supybot/Limnoria I wrote or forked."
+DESCRIPTION="Collection of plugins for Supybot/Limnoria I wrote or forked"
 HOMEPAGE="https://github.com/ProgVal/Supybot-plugins"
 SRC_URI="https://github.com/ProgVal/Supybot-plugins/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
