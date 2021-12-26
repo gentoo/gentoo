@@ -12,7 +12,7 @@ else
 	KEYWORDS="~amd64 ~arm ~mips ~ppc ~x86"
 fi
 
-DESCRIPTION="A standalone implementation of fortify source."
+DESCRIPTION="A standalone implementation of fortify source"
 HOMEPAGE="http://git.2f30.org/fortify-headers/"
 
 LICENSE="ISC"
