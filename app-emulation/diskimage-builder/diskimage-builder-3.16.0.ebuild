@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
-DESCRIPTION="Golden Disk Image builder."
+DESCRIPTION="Golden Disk Image builder"
 HOMEPAGE="http://docs.openstack.org/developer/diskimage-builder/"
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
