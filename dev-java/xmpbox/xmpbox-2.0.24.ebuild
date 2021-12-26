@@ -12,7 +12,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="An open source Java tool that implements Adobe's XMP(TM) specification."
+DESCRIPTION="An open source Java tool that implements Adobe's XMP(TM) specification"
 HOMEPAGE="https://pdfbox.apache.org"
 SRC_URI="mirror://apache/pdfbox/${PV}/pdfbox-${PV}-src.zip"
 
