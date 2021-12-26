@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 virtualx
 
-DESCRIPTION="Python interface to DBus notifications."
+DESCRIPTION="Python interface to DBus notifications"
 HOMEPAGE="https://bitbucket.org/takluyver/pynotify2"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
