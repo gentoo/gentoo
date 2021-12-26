@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit git-r3
 
-DESCRIPTION="Symlinks and syncs browser profile dirs to RAM."
+DESCRIPTION="Symlinks and syncs browser profile dirs to RAM"
 HOMEPAGE="https://wiki.archlinux.org/index.php/Profile-sync-daemon"
 EGIT_REPO_URI="https://github.com/graysky2/${PN}"
 
