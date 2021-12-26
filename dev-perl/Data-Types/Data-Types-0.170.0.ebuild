@@ -8,7 +8,7 @@ DIST_VERSION=0.17
 
 inherit perl-module
 
-DESCRIPTION="Validate and convert data types."
+DESCRIPTION="Validate and convert data types"
 SLOT="0"
 KEYWORDS="amd64"
 IUSE="test"
