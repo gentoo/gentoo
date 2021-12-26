@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="Command-line processors for YAML/JSON/Compatible data."
+DESCRIPTION="Command-line processors for YAML/JSON/Compatible data"
 HOMEPAGE="https://github.com/wwkimball/yamlpath https://github.com/wwkimball/yamlpath/wiki"
 SRC_URI="
 	https://github.com/wwkimball/yamlpath/archive/v${PV}.tar.gz

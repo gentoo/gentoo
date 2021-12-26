@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=bdepend
 
 inherit distutils-r1
 
-DESCRIPTION="Command-line processors for YAML/JSON/Compatible data."
+DESCRIPTION="Command-line processors for YAML/JSON/Compatible data"
 HOMEPAGE="https://github.com/wwkimball/yamlpath https://github.com/wwkimball/yamlpath/wiki"
 SRC_URI="https://github.com/wwkimball/yamlpath/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="ISC"
