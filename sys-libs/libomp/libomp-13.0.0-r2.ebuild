@@ -22,7 +22,7 @@ REQUIRED_USE="
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )
+	hwloc? ( >=sys-apps/hwloc-2.5:0=[${MULTILIB_USEDEP}] )
 	offload? (
 		virtual/libelf:=[${MULTILIB_USEDEP}]
 		dev-libs/libffi:=[${MULTILIB_USEDEP}]
