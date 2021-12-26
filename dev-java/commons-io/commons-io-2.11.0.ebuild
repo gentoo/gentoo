@@ -11,7 +11,7 @@ MAVEN_ID="commons-io:commons-io:2.11.0"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="Utility classes, stream implementations, file filters, and much more."
+DESCRIPTION="Utility classes, stream implementations, file filters, and much more"
 HOMEPAGE="https://commons.apache.org/proper/commons-io/"
 SRC_URI="mirror://apache/commons/io/source/${P}-src.tar.gz -> ${P}-sources.tar.gz"
 LICENSE="Apache-2.0"
