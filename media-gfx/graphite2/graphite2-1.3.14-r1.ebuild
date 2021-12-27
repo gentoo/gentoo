@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_ECLASS=cmake
 GENTOO_DEPEND_ON_PERL="no"
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit perl-module python-any-r1 cmake-multilib
 
 DESCRIPTION="Library providing rendering capabilities for complex non-Roman writing systems"
