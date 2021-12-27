@@ -67,3 +67,4 @@ move app-emulation/lxd app-containers/lxd
 move app-emulation/lxc-templates app-containers/lxc-templates
 move app-emulation/lxc app-containers/lxc
 move dev-libs/stp sci-mathematics/stp
+move app-shells/fzy app-text/fzy
