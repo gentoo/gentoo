@@ -18,7 +18,8 @@ IUSE="glib +shared static-libs static-pic"
 REQUIRED_USE="|| ( shared static-libs static-pic )
 	${ADA_REQUIRED_USE}"
 
-RDEPEND="glib? (
+RDEPEND="${ADA_DEPS}
+	glib? (
 	dev-ada/gtkada[${ADA_USEDEP},shared?,static-libs?,static-pic?]
 	dev-libs/glib
 )"
