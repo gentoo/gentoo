@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 	sci-libs/geos
 	>=sci-libs/proj-8
-	dev-python/pyproj
+	dev-python/pyproj[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
