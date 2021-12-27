@@ -93,7 +93,6 @@ src_configure() {
 		-DKICAD_DOCS="${EPREFIX}/usr/share/doc/${PF}"
 
 		-DKICAD_SCRIPTING_WXPYTHON=ON
-		-DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON
 
 		-DPYTHON_DEST="$(python_get_sitedir)"
 		-DPYTHON_EXECUTABLE="${PYTHON}"
