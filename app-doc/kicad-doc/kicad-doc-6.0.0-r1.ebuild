@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -23,7 +23,7 @@ fi
 
 LICENSE="|| ( GPL-3+ CC-BY-3.0 ) GPL-2"
 SLOT="0"
-# TODO: Change default back to +df once asciidoctor-pdf is packaged
+# TODO: Change default back to +df once asciidoctor-pdf is packaged?
 IUSE="+html pdf"
 
 LANG_USE=" l10n_ca l10n_de l10n_en l10n_es l10n_fr l10n_id l10n_it l10n_ja l10n_pl l10n_ru l10n_zh"
@@ -53,9 +53,12 @@ BDEPEND="
 
 src_configure() {
 	local mycmakeargs=(
+		# May not always work?
+		# https://gitlab.com/kicad/services/kicad-doc/-/issues/808
+		-DADOC_TOOLCHAIN="ASCIIDOC"
 		-DBUILD_FORMATS="$(usev html);$(usev pdf)"
 		-DSINGLE_LANGUAGE="${L10N}"
-		-DKICAD_DOC_PATH="${EPREFIX}/usr/share/doc/${P}/help"
+		-DKICAD_DOC_PATH="${EPREFIX}"/usr/share/doc/${PF}/help
 	)
 	cmake_src_configure
 }
