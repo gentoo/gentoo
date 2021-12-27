@@ -20,6 +20,7 @@ BDEPEND="doc? ( virtual/texi2dvi )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-multilib-syspath.patch
+	"${FILESDIR}"/${PN}-powerpc-darwin.patch
 )
 
 MULTILIB_CHOST_TOOLS=(
