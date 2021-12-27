@@ -1,3 +1,8 @@
+This patch is from julialang repository:
+ https://github.com/JuliaLang/julia/commit/677ce6d3.patch
+but reference comes form ARCH Linux juia package
+  https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
+
 From 677ce6d3adc2f70886f72795b0e5c739e75730ee Mon Sep 17 00:00:00 2001
 From: Valentin Churavy <v.churavy@gmail.com>
 Date: Sat, 28 Aug 2021 16:48:32 +0200
