@@ -6,7 +6,7 @@
     <email>scheme@gentoo.org</email>
     <name>Gentoo Scheme Project</name>
   </maintainer>
-  <longdescription lang="en">
+  <longdescription>
     Idris is a programming language designed to encourage Type-Driven
     Development.
     In type-driven development, types are tools for constructing programs.
@@ -16,7 +16,10 @@
     the more confidence we can have that the resulting program will be correct.
   </longdescription>
   <upstream>
-    <bugs-to>https://github.com/idris-lang/Idris2/issues</bugs-to>
+    <bugs-to>https://github.com/idris-lang/Idris2/issues/</bugs-to>
+    <changelog>
+      https://github.com/idris-lang/Idris2/blob/main/CHANGELOG.md
+    </changelog>
     <remote-id type="github">idris-lang/Idris2</remote-id>
   </upstream>
   <use>
