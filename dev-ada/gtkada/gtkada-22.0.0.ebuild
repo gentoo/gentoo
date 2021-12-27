@@ -33,6 +33,7 @@ REQUIRED_USE="${ADA_REQUIRED_USE}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2017-r1-gentoo.patch
 	"${FILESDIR}"/${PN}-2019-gentoo.patch
+	"${FILESDIR}"/${PN}-2021-uninstall.patch
 )
 
 src_prepare() {
