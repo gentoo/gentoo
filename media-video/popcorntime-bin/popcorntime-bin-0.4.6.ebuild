@@ -48,6 +48,10 @@ QA_PREBUILT="/opt/Popcorn-Time/*"
 S="${WORKDIR}"
 
 src_install() {
+	# remove arm/arm64 files, not needed anyway, avoids QA complaint
+	rm opt/Popcorn-Time/node_modules/bufferutil/prebuilds/linux-arm{,64}/* || die
+	rm opt/Popcorn-Time/node_modules/utf-8-validate/prebuilds/linux-arm{,64}/* || die
+
 	mv "${S}"/* "${ED}" || die
 	dosym ../Popcorn-Time/Popcorn-Time /opt/bin/popcorntime
 }
