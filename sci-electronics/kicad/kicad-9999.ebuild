@@ -4,7 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8,9} )
-
 WX_GTK_VER="3.0-gtk3"
 
 inherit check-reqs cmake optfeature python-single-r1 toolchain-funcs wxwidgets xdg-utils
@@ -26,12 +25,15 @@ else
 	fi
 fi
 
-LICENSE="GPL-2+ GPL-3+ Boost-1.0"
+# BSD for bundled pybind
+LICENSE="GPL-2+ GPL-3+ Boost-1.0 BSD"
 SLOT="0"
 IUSE="doc examples +ngspice openmp +occ +pcm"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+# Contains bundled pybind but it's patched for wx
+# See https://gitlab.com/kicad/code/kicad/-/commit/74e4370a9b146b21883d6a2d1df46c7a10bd0424
 COMMON_DEPEND="
 	>=dev-libs/boost-1.61:=[context,nls]
 	media-libs/freeglut
