@@ -28,7 +28,7 @@ fi
 
 LICENSE="GPL-2+ GPL-3+ Boost-1.0"
 SLOT="0"
-IUSE="doc examples +ngspice openmp occ +pcm"
+IUSE="doc examples +ngspice openmp +occ +pcm"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
