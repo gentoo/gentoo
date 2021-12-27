@@ -56,6 +56,7 @@ src_configure() {
 		# May not always work?
 		# https://gitlab.com/kicad/services/kicad-doc/-/issues/808
 		-DADOC_TOOLCHAIN="ASCIIDOC"
+		# Note: need EAPI 8 usev here, not pre-EAPI 8 behaviour
 		-DBUILD_FORMATS="$(usev html);$(usev pdf)"
 		-DSINGLE_LANGUAGE="${L10N}"
 		-DKICAD_DOC_PATH="${EPREFIX}"/usr/share/doc/${PF}/help
