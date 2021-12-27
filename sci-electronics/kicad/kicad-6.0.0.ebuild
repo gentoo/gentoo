@@ -50,7 +50,7 @@ COMMON_DEPEND="
 		>sci-electronics/ngspice-27[shared]
 	)
 	occ? (
-		>=sci-libs/opencascade-6.8.0:=
+		>=sci-libs/opencascade-7.3.0:=
 	)
 "
 DEPEND="${COMMON_DEPEND}"
