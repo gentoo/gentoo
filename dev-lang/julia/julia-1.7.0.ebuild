@@ -62,6 +62,7 @@ DEPEND="${RDEPEND}
 # https://github.com/archlinux/svntogit-community/tree/7d240cefc127c1a8060316e9296445ef02a06a7b/trunk
 PATCHES=(
 	"${FILESDIR}/${PN}"-1.4.0-no_symlink_llvm.patch
+	# Allow use LLVM 13
 	"${FILESDIR}/${PN}"-llvm13-fix_A.patch
 	"${FILESDIR}/${PN}"-llvm13-fix_B.patch
 	# Adapt to LLVM 13 type changes
