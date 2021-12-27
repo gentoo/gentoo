@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+),xml"
 
 inherit autotools linux-info python-single-r1 readme.gentoo-r1 udev
