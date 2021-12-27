@@ -39,6 +39,7 @@ S="${WORKDIR}"/${MYP}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2017-r1-gentoo.patch
 	"${FILESDIR}"/${PN}-2019-gentoo.patch
+	"${FILESDIR}"/${P}-uninstall.patch
 )
 
 src_prepare() {
