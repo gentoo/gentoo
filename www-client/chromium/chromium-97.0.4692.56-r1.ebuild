@@ -745,9 +745,6 @@ src_configure() {
 		popd > /dev/null || die
 	fi
 
-	# Chromium relies on this, but was disabled in >=clang-10, crbug.com/1042470
-	append-cxxflags $(test-flags-CXX -flax-vector-conversions=all)
-
 	# Disable unknown warning message from clang.
 	tc-is-clang && append-flags -Wno-unknown-warning-option
 
