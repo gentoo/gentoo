@@ -1,0 +1,15 @@
+index 61aef6d..16633e8 100644
+--- a/bindings/python/stp/stp.py.in
++++ b/bindings/python/stp/stp.py.in
+@@ -42,7 +42,10 @@ Py3 = sys.version_info >= (3, 0, 0)
+ if Py3:
+     long = int
+ 
+-from library_path import PATHS
++try:
++    from .library_path import PATHS
++except ImportError:
++    from library_path import PATHS
+ 
+ for path in PATHS:
+     if not os.path.exists(path):
