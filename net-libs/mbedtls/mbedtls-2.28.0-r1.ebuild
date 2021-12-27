@@ -13,7 +13,7 @@ S=${WORKDIR}/${PN}-${P}
 LICENSE="Apache-2.0"
 SLOT="0/7.14.1" # ffmpeg subslot naming: SONAME tuple of {libmbedcrypto.so,libmbedtls.so,libmbedx509.so}
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="cpu_flags_x86_sse2 doc havege programs static-libs test threads zlib"
+IUSE="cmac cpu_flags_x86_sse2 doc havege programs static-libs test threads zlib"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -34,6 +34,7 @@ enable_mbedtls_option() {
 }
 
 src_prepare() {
+	use cmac && enable_mbedtls_option MBEDTLS_CMAC_C
 	use cpu_flags_x86_sse2 && enable_mbedtls_option MBEDTLS_HAVE_SSE2
 	use zlib && enable_mbedtls_option MBEDTLS_ZLIB_SUPPORT
 	use havege && enable_mbedtls_option MBEDTLS_HAVEGE_C
