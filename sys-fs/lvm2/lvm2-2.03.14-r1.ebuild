@@ -99,6 +99,11 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	# Users without systemd get no auto-activation of any logical volume
+	if ! use systemd ; then
+		eapply "${FILESDIR}"/${PN}-2.03.14-dm_lvm_rules_no_systemd.patch
+	fi
+
 	sed -i \
 		-e "1iAR = $(tc-getAR)" \
 		-e "s:CC ?= @CC@:CC = $(tc-getCC):" \
