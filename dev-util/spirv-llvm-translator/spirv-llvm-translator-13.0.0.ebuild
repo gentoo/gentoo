@@ -14,22 +14,20 @@ DESCRIPTION="Bi-directional translator between SPIR-V and LLVM IR"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
 SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-rename-OpConstFunctionPointerINTEL.patch.bz2"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="UoI-NCSA"
 SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64"
 IUSE="test +tools"
 
+REQUIRED_USE="test? ( tools )"
 RESTRICT="!test? ( test )"
 
-S="${WORKDIR}/${MY_P}"
-
 RDEPEND="sys-devel/clang:${SLOT}=[${MULTILIB_USEDEP}]
-		dev-util/spirv-headers"
+	dev-util/spirv-headers"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/lit )"
-
-REQUIRED_USE="test? ( tools )"
 
 LLVM_MAX_SLOT="${SLOT}"
 
