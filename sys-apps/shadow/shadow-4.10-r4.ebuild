@@ -234,12 +234,18 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	# Missing entries from /etc/passwd can cause odd system blips.
+	# See bug #829872.
+	if ! pwck -r -q -R "${EROOT:-/}" &>/dev/null ; then
+		ewarn "Running 'pwck' returned errors. Please run it manually to fix any errors."
+	fi
+
 	# Enable shadow groups.
 	if [ ! -f "${EROOT}"/etc/gshadow ] ; then
-		if grpck -r -R "${EROOT}" 2>/dev/null ; then
-			grpconv -R "${EROOT}"
+		if grpck -r -R "${EROOT:-/}" 2>/dev/null ; then
+			grpconv -R "${EROOT:-/}"
 		else
-			ewarn "Running 'grpck' returned errors.  Please run it by hand, and then"
+			ewarn "Running 'grpck' returned errors. Please run it by hand, and then"
 			ewarn "run 'grpconv' afterwards!"
 		fi
 	fi
