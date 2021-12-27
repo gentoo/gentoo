@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 VALA_USE_DEPEND=vapigen
 
 inherit gnome2 meson-multilib python-any-r1 vala virtualx
@@ -25,16 +25,21 @@ KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 DEPEND="
 	>=dev-libs/glib-2.44:2[${MULTILIB_USEDEP}]
 	crypt? ( >=dev-libs/libgcrypt-1.2.2:0=[${MULTILIB_USEDEP}] )
-	introspection? ( >=dev-libs/gobject-introspection-1.29:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
 RDEPEND="${DEPEND}
 	virtual/secret-service"
 BDEPEND="
+	app-text/docbook-xml-dtd:4.2
 	dev-libs/libxslt
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
+	gtk-doc? (
+		app-text/docbook-xml-dtd:4.1.2
+		dev-util/gtk-doc
+	)
 	test? (
 		$(python_gen_any_dep '
 			dev-python/mock[${PYTHON_USEDEP}]
