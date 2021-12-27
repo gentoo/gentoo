@@ -246,7 +246,7 @@ ada_export() {
 				debug-print "${FUNCNAME}: GNATCHOP = ${GNATCHOP}"
 				;;
 			ADA_PKG_DEP)
-				ADA_PKG_DEP="dev-lang/gnat-gpl:${slot}"
+				ADA_PKG_DEP="dev-lang/gnat-gpl:${slot}[ada]"
 
 				# use-dep
 				if [[ ${ADA_REQ_USE} ]]; then
