@@ -1,7 +1,7 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools xdg
 
@@ -28,4 +28,10 @@ src_prepare() {
 	# Fix the name of the icon
 	sed -i -e 's/Icon=spotify/Icon=spotify-client/g' spotify-tray.desktop.in || die
 	eautoreconf
+}
+
+src_install() {
+	default
+	# remove desktop file, launching is handled in spotify ebuild
+	rm "${ED}/usr/share/applications/spotify-tray.desktop" || die
 }
