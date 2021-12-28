@@ -32,7 +32,7 @@ DEPEND="
 	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/pango[X]
-	>=x11-libs/xapps-2.2.0
+	>=x11-libs/xapp-2.2.0
 
 	systemd? ( >=sys-apps/systemd-183 )
 	!systemd? ( sys-auth/elogind[policykit] )
