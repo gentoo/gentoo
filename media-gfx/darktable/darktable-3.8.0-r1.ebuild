@@ -18,12 +18,18 @@ if [[ ${PV} == *9999 ]]; then
 
 	LANGS=" af ca cs da de el es fi fr gl he hu it ja nb nl pl pt-BR pt-PT ro ru sk sl sq sv th uk zh-CN zh-TW"
 else
-	DOC_PV="3.6"
+	DOC_PV=$(ver_cut 1-2)
 	MY_PV="${PV/_/}"
 	MY_P="${P/_/.}"
 
 	SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${MY_PV}/${MY_P}.tar.xz
-		doc? ( https://docs.darktable.org/usermanual/${DOC_PV}/${PN}_user_manual.pdf -> ${PN}-usermanual-${DOC_PV}.pdf )"
+		doc? (
+			https://docs.darktable.org/usermanual/${DOC_PV}/en/${PN}_user_manual.pdf -> ${PN}-usermanual-${DOC_PV}.en.pdf
+			l10n_de? ( https://docs.darktable.org/usermanual/${DOC_PV}/de/${PN}_user_manual.pdf -> ${PN}-usermanual-${DOC_PV}.de.pdf )
+			l10n_fr? ( https://docs.darktable.org/usermanual/${DOC_PV}/fr/${PN}_user_manual.pdf -> ${PN}-usermanual-${DOC_PV}.fr.pdf )
+			l10n_pt-BR? ( https://docs.darktable.org/usermanual/${DOC_PV}/pt_br/${PN}_user_manual.pdf -> ${PN}-usermanual-${DOC_PV}.pt_br.pdf )
+			l10n_uk? ( https://docs.darktable.org/usermanual/${DOC_PV}/uk/${PN}_user_manual.pdf -> ${PN}-usermanual-${DOC_PV}.uk.pdf )
+		)"
 
 	KEYWORDS="~amd64 ~arm64 -x86"
 	LANGS=" de eo es fi fr he hu it ja pl pt-BR sl uk zh-CN"
@@ -144,7 +150,7 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	# This USE flag is masked for -9999
-	use doc && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.pdf
+	use doc && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.*.pdf
 
 	if use nls; then
 		for lang in ${LANGS} ; do
