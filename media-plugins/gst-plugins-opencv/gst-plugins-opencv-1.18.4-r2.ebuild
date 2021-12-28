@@ -19,6 +19,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/gst-plugins-bad-${PV}-use-system-libs-opencv.patch
+	"${FILESDIR}"/gst-plugins-bad-${PV}-volatile-glib.patch
 )
 
 src_prepare() {
