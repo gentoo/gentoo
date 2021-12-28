@@ -6,8 +6,8 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8,9,10} )
 inherit autotools bash-completion-r1 gnome2-utils linux-info plocale python-single-r1 systemd xdg-utils
 
-DESCRIPTION="A firewall daemon with D-BUS interface providing a dynamic firewall"
-HOMEPAGE="http://www.firewalld.org/"
+DESCRIPTION="A firewall daemon with D-Bus interface providing a dynamic firewall"
+HOMEPAGE="https://www.firewalld.org/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
@@ -49,7 +49,90 @@ QA_AM_MAINTAINER_MODE=".*--run autom4te --language=autotest.*"
 PLOCALES="ar as ast bg bn_IN ca cs da de el en_GB en_US es et eu fa fi fr gl gu hi hu ia id it ja ka kn ko lt ml mr nl or pa pl pt pt_BR ru si sk sq sr sr@latin sv ta te tr uk zh_CN zh_TW"
 
 pkg_setup() {
-	local CONFIG_CHECK="~NF_CONNTRACK ~NETFILTER_XT_MATCH_CONNTRACK"
+	# See bug #830132 for the huge list
+	# We can probably narrow it down a bit but it's rather fragile
+	local CONFIG_CHECK="~NF_CONNTRACK ~NETFILTER_XT_MATCH_CONNTRACK
+	~NETFILTER
+	~NETFILTER_ADVANCED
+	~NETFILTER_INGRESS
+	~NF_NAT_MASQUERADE
+	~NF_NAT_REDIRECT
+	~NF_TABLES_INET
+	~NF_TABLES_IPV4
+	~NF_TABLES_IPV6
+	~NF_CONNTRACK
+	~NF_CONNTRACK_BROADCAST
+	~NF_CONNTRACK_NETBIOS
+	~NF_CONNTRACK_TFTP
+	~NF_CT_NETLINK
+	~NF_CT_NETLINK_HELPER
+	~NF_DEFRAG_IPV4
+	~NF_DEFRAG_IPV6
+	~NF_NAT
+	~NF_NAT_TFTP
+	~NF_REJECT_IPV4
+	~NF_REJECT_IPV6
+	~NF_SOCKET_IPV4
+	~NF_SOCKET_IPV6
+	~NF_TABLES
+	~NF_TABLES_SET
+	~NF_TPROXY_IPV4
+	~NF_TPROXY_IPV6
+	~IP_NF_FILTER
+	~IP_NF_IPTABLES
+	~IP_NF_MANGLE
+	~IP_NF_NAT
+	~IP_NF_RAW
+	~IP_NF_SECURITY
+	~IP_NF_TARGET_MASQUERADE
+	~IP_NF_TARGET_REJECT
+	~IP6_NF_FILTER
+	~IP6_NF_IPTABLES
+	~IP6_NF_MANGLE
+	~IP6_NF_NAT
+	~IP6_NF_RAW
+	~IP6_NF_SECURITY
+	~IP6_NF_TARGET_MASQUERADE
+	~IP6_NF_TARGET_REJECT
+	~IP_SET
+	~NETFILTER_CONNCOUNT
+	~NETFILTER_NETLINK
+	~NETFILTER_NETLINK_OSF
+	~NETFILTER_NETLINK_QUEUE
+	~NETFILTER_SYNPROXY
+	~NETFILTER_XTABLES
+	~NETFILTER_XT_CONNMARK
+	~NETFILTER_XT_MATCH_CONNTRACK
+	~NETFILTER_XT_MATCH_MULTIPORT
+	~NETFILTER_XT_MATCH_STATE
+	~NETFILTER_XT_NAT
+	~NETFILTER_XT_TARGET_MASQUERADE
+	~NFT_COMPAT
+	~NFT_COUNTER
+	~NFT_CT
+	~NFT_FIB
+	~NFT_FIB_INET
+	~NFT_FIB_IPV4
+	~NFT_FIB_IPV6
+	~NFT_HASH
+	~NFT_LIMIT
+	~NFT_LOG
+	~NFT_MASQ
+	~NFT_NAT
+	~NFT_NET
+	~NFT_OBJREF
+	~NFT_QUEUE
+	~NFT_QUOTA
+	~NFT_REDIR
+	~NFT_REJECT
+	~NFT_REJECT_INET
+	~NFT_REJECT_IPV4
+	~NFT_REJECT_IPV6
+	~NFT_SOCKET
+	~NFT_SYNPROXY
+	~NFT_TPROXY
+	~NFT_TUNNEL
+	~NFT_XFRM"
 
 	# kernel >= 4.19 has unified a NF_CONNTRACK module, bug 692944
 	if kernel_is -lt 4 19; then
