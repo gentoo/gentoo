@@ -56,7 +56,8 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DENABLE_DAP_REMOTE_TESTS=OFF
-		-DENABLE_LIBXML2=ON
+		# Enable for >4.8.1 (not yet in a release)
+		#-DENABLE_LIBXML2=ON
 		-DBUILD_UTILITIES=$(usex tools)
 		-DENABLE_DAP=$(usex dap)
 		-DENABLE_DOXYGEN=$(usex doc)
