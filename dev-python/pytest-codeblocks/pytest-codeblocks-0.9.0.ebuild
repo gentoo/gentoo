@@ -8,13 +8,11 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
-MY_P=pytest-codeblocks-${PV}
 DESCRIPTION="Extract code blocks from markdown"
 HOMEPAGE="https://github.com/nschloe/pytest-codeblocks/"
 SRC_URI="
 	https://github.com/nschloe/pytest-codeblocks/archive/v${PV}.tar.gz
-		-> ${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+		-> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
