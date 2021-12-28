@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,12 +14,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+data"
 
-RDEPEND="sci-libs/netcdf
-	sci-libs/gdal
+RDEPEND="sci-libs/netcdf:=
+	sci-libs/gdal:=
 	data? ( sci-geosciences/gshhs-data )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	app-arch/unzip"
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip
+	virtual/pkgconfig"
 
 S="${WORKDIR}/${PN}"
 
