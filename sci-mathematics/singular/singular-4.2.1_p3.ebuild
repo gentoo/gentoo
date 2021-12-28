@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN}-${MY_DIR2}"
 
 LICENSE="BSD GPL-2 GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-linux"
+KEYWORDS="~amd64 ~riscv ~x86 ~x86-linux"
 IUSE="emacs examples julia polymake +readline static-libs"
 
 RDEPEND="
