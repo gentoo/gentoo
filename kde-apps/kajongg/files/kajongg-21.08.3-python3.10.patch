@@ -1,0 +1,109 @@
+From b647417e16f6146f4ae89608fd0494e7780da862 Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Sat, 18 Dec 2021 10:13:32 +0000
+Subject: [PATCH] Fix running with Python 3.10
+
+---
+ src/board.py            | 10 +++++-----
+ src/genericdelegates.py |  2 +-
+ src/humanclient.py      |  4 ++--
+ src/qtreactor.py        |  2 +-
+ src/uitile.py           |  4 ++--
+ 5 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/src/board.py b/src/board.py
+index 2f52a47d..ed432c22 100644
+--- a/src/board.py
++++ b/src/board.py
+@@ -102,7 +102,7 @@ class PlayerWind(AnimatedMixin, QGraphicsObject, StrMixin):
+         """paint the marker"""
+         with Painter(painter):
+             painter.setBrush(self.__brush)
+-            size = Internal.scene.windTileset.faceSize.height()
++            size = int(Internal.scene.windTileset.faceSize.height())
+             ellRect = QRectF(QPoint(), QPoint(size, size))
+             painter.drawEllipse(ellRect)
+             renderer = Internal.scene.windTileset.renderer()
+@@ -112,7 +112,7 @@ class PlayerWind(AnimatedMixin, QGraphicsObject, StrMixin):
+ 
+     def boundingRect(self): # pylint: disable=no-self-use
+         """define the part of the tile we want to see"""
+-        size = Internal.scene.windTileset.faceSize.height() * 1.1
++        size = int(Internal.scene.windTileset.faceSize.height() * 1.1)
+         return QRectF(QPoint(), QPoint(size, size))
+ 
+     def __str__(self):
+@@ -878,11 +878,11 @@ class FittingView(QGraphicsView):
+         tRect = uiTile.boundingRect()
+         tRect = self.viewportTransform().mapRect(tRect)
+         pmapSize = QSize(
+-            tRect.width() * uiTile.scale,
+-            tRect.height() * uiTile.scale)
++            int(tRect.width() * uiTile.scale),
++            int(tRect.height() * uiTile.scale))
+         pMap = uiTile.pixmapFromSvg(pmapSize)
+         drag.setPixmap(pMap)
+-        drag.setHotSpot(QPoint(pMap.width() / 2, pMap.height() / 2))
++        drag.setHotSpot(QPoint(int(pMap.width() / 2), int(pMap.height() / 2)))
+         return drag
+ 
+ 
+diff --git a/src/genericdelegates.py b/src/genericdelegates.py
+index be99eb57..a4521177 100644
+--- a/src/genericdelegates.py
++++ b/src/genericdelegates.py
+@@ -64,7 +64,7 @@ class RichTextColumnDelegate(QStyledItemDelegate):
+         text = index.model().data(index)
+         self.document.setDefaultFont(option.font)
+         self.document.setHtml(text)
+-        return QSize(self.document.idealWidth() + 5,
++        return QSize(int(self.document.idealWidth()) + 5,
+                      option.fontMetrics.height())
+ 
+ 
+diff --git a/src/humanclient.py b/src/humanclient.py
+index 1d3f58f3..8edf848b 100644
+--- a/src/humanclient.py
++++ b/src/humanclient.py
+@@ -321,8 +321,8 @@ class ClientDialog(QDialog):
+             idx if vertical else 0,
+             idx if not vertical else 0)
+ 
+-        geometry.setWidth(width)
+-        geometry.setHeight(height)
++        geometry.setWidth(int(width))
++        geometry.setHeight(int(height))
+         self.setGeometry(geometry)
+ 
+     def showEvent(self, dummyEvent):
+diff --git a/src/qtreactor.py b/src/qtreactor.py
+index bda4782f..c24d01d0 100644
+--- a/src/qtreactor.py
++++ b/src/qtreactor.py
+@@ -250,7 +250,7 @@ class QtReactor(posixbase.PosixReactorBase):
+             timeout = 0
+         else:
+             timeout = self.timeout()
+-        self._timer.setInterval(timeout * 1000)
++        self._timer.setInterval(int(timeout * 1000))
+         self._timer.start()
+ 
+     def runReturn(self, installSignalHandlers=True):
+diff --git a/src/uitile.py b/src/uitile.py
+index 57e322bb..9e4b3f9d 100644
+--- a/src/uitile.py
++++ b/src/uitile.py
+@@ -250,8 +250,8 @@ class UITile(AnimatedMixin, QGraphicsObject, StrMixin):
+         if self.showFace():
+             faceSize = self.tileset.faceSize.toSize()
+             faceSize = QSize(
+-                faceSize.width() * xScale,
+-                faceSize.height() * yScale)
++                int(faceSize.width() * xScale),
++                int(faceSize.height() * yScale))
+             painter.translate(self.facePos())
+             renderer.render(painter, self.tileset.svgName[self.tile.exposed],
+                             QRectF(QPointF(), QSizeF(faceSize)))
+-- 
+GitLab
+

@@ -37,6 +37,8 @@ RDEPEND="${DEPEND}
 	>=kde-apps/libkmahjongg-${PVCUT}:5
 "
 
+PATCHES=( "${FILESDIR}/${PN}-21.08.3-python3.10.patch" )
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 	ecm_pkg_setup
