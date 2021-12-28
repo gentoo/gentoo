@@ -5,7 +5,7 @@ EAPI=7
 
 inherit perl-module
 
-DESCRIPTION="pgBadger is a PostgreSQL log analyzer."
+DESCRIPTION="pgBadger is a PostgreSQL log analyzer"
 HOMEPAGE="https://pgbadger.darold.net/"
 SRC_URI="https://github.com/darold/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

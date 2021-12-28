@@ -1,0 +1,38 @@
+diff --git a/xen/Makefile b/xen/Makefile
+index dfb0efcc..3bd51ec1 100644
+--- a/xen/Makefile
++++ b/xen/Makefile
+@@ -311,9 +311,17 @@ _install: Z=$(CONFIG_XEN_INSTALL_SUFFIX)
+ _install: $(TARGET)$(CONFIG_XEN_INSTALL_SUFFIX)
+ 	[ -d $(D)$(BOOT_DIR) ] || $(INSTALL_DIR) $(D)$(BOOT_DIR)
+ 	$(INSTALL_DATA) $(TARGET)$(Z) $(D)$(BOOT_DIR)/$(T)-$(XEN_FULLVERSION)$(Z)
+-	ln -f -s $(T)-$(XEN_FULLVERSION)$(Z) $(D)$(BOOT_DIR)/$(T)-$(XEN_VERSION).$(XEN_SUBVERSION)$(Z)
+-	ln -f -s $(T)-$(XEN_FULLVERSION)$(Z) $(D)$(BOOT_DIR)/$(T)-$(XEN_VERSION)$(Z)
+-	ln -f -s $(T)-$(XEN_FULLVERSION)$(Z) $(D)$(BOOT_DIR)/$(T)$(Z)
++
++	if [ 'x$(EFI_VENDOR)' == 'x' ]; then \
++		ln -f -s $(T)-$(XEN_FULLVERSION)$(Z) $(D)$(BOOT_DIR)/$(T)-$(XEN_VERSION).$(XEN_SUBVERSION)$(Z); \
++		ln -f -s $(T)-$(XEN_FULLVERSION)$(Z) $(D)$(BOOT_DIR)/$(T)-$(XEN_VERSION)$(Z); \
++		ln -f -s $(T)-$(XEN_FULLVERSION)$(Z) $(D)$(BOOT_DIR)/$(T)$(Z); \
++	else \
++		$(INSTALL_DATA) $(TARGET)$(Z) $(D)$(BOOT_DIR)/$(T)-$(XEN_VERSION).$(XEN_SUBVERSION)$(Z); \
++		$(INSTALL_DATA) $(TARGET)$(Z) $(D)$(BOOT_DIR)/$(T)-$(XEN_VERSION)$(Z); \
++		$(INSTALL_DATA) $(TARGET)$(Z) $(D)$(BOOT_DIR)/$(T)$(Z); \
++	fi;
++
+ 	[ -d "$(D)$(DEBUG_DIR)" ] || $(INSTALL_DIR) $(D)$(DEBUG_DIR)
+ 	$(INSTALL_DATA) $(TARGET)-syms $(D)$(DEBUG_DIR)/$(T)-syms-$(XEN_FULLVERSION)
+ 	$(INSTALL_DATA) $(TARGET)-syms.map $(D)$(DEBUG_DIR)/$(T)-syms-$(XEN_FULLVERSION).map
+diff --git a/xen/arch/x86/Makefile b/xen/arch/x86/Makefile
+index 69b6cfad..d8b09d95 100644
+--- a/xen/arch/x86/Makefile
++++ b/xen/arch/x86/Makefile
+@@ -127,7 +127,7 @@ export XEN_BUILD_EFI := $(shell $(CC) $(XEN_CFLAGS) -c efi/check.c -o efi/check.
+ CFLAGS-$(XEN_BUILD_EFI) += -DXEN_BUILD_EFI
+ 
+ # Check if the linker supports PE.
+-EFI_LDFLAGS = $(patsubst -m%,-mi386pep,$(XEN_LDFLAGS)) --subsystem=10
++EFI_LDFLAGS = -mi386pep $(patsubst -m%,-mi386pep,$(XEN_LDFLAGS)) --subsystem=10
+ XEN_BUILD_PE := $(if $(XEN_BUILD_EFI),$(call ld-option,$(EFI_LDFLAGS) --image-base=0x100000000 -o efi/check.efi efi/check.o))
+ # If the above failed, it may be merely because of the linker not dealing well
+ # with debug info. Try again with stripping it.

@@ -26,7 +26,7 @@ RDEPEND=">=dev-cpp/tbb-2021.4.0:=
 	dev-libs/xxhash:=
 	sys-libs/zlib
 	!kernel_Darwin? (
-		dev-libs/mimalloc:=
+		>=dev-libs/mimalloc-2:=
 		dev-libs/openssl:=
 	)"
 DEPEND="${RDEPEND}"
@@ -44,6 +44,7 @@ src_compile() {
 	emake \
 		SYSTEM_TBB=1 \
 		SYSTEM_MIMALLOC=1 \
+		SYSTEM_XXHASH=1 \
 		STRIP="true" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 }
@@ -59,6 +60,7 @@ src_install() {
 	emake \
 		SYSTEM_TBB=1 \
 		SYSTEM_MIMALLOC=1 \
+		SYSTEM_XXHASH=1 \
 		DESTDIR="${ED}" \
 		PREFIX="${EPREFIX}/usr" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \

@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="Adds SQL read/write support to agate."
+DESCRIPTION="Adds SQL read/write support to agate"
 HOMEPAGE="https://github.com/wireservice/agate-sql https://pypi.org/project/agate-sql/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

@@ -13,6 +13,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="alsa debug doc jack oss static-libs"
+REQUIRED_USE="|| ( alsa jack oss )"
 
 BDEPEND="
 	virtual/pkgconfig

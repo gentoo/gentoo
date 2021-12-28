@@ -5,7 +5,7 @@ EAPI=7
 
 inherit xdg
 
-DESCRIPTION="XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C."
+DESCRIPTION="XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C"
 HOMEPAGE="http://www.xcpc-emulator.net/doku.php/index"
 SRC_URI="https://bitbucket.org/ponceto/xcpc/downloads/${P}.tar.gz"
 

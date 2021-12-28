@@ -16,7 +16,7 @@ else
 fi
 inherit golang-build
 
-DESCRIPTION="The Snappy compression format in the Go programming language."
+DESCRIPTION="The Snappy compression format in the Go programming language"
 HOMEPAGE="https://github.com/golang/snappy"
 LICENSE="BSD"
 SLOT="0/${PV}"

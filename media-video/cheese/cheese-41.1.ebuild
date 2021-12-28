@@ -38,7 +38,10 @@ RDEPEND="${DEPEND}
 	>=media-libs/gst-plugins-good-1.4:1.0
 
 	>=media-plugins/gst-plugins-jpeg-1.4:1.0
-	>=media-plugins/gst-plugins-v4l2-1.4:1.0
+	|| (
+		>=media-plugins/gst-plugins-v4l2-1.4:1.0
+		media-video/pipewire[gstreamer,v4l]
+	)
 	>=media-plugins/gst-plugins-vpx-1.4:1.0
 "
 

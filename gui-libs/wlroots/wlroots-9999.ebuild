@@ -13,9 +13,9 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	SLOT="0/9999"
 else
-	SRC_URI="https://github.com/swaywm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-	SLOT="0/14"
+	SLOT="0/16"
 fi
 
 LICENSE="MIT"
@@ -23,7 +23,7 @@ IUSE="vulkan x11-backend X"
 
 DEPEND="
 	>=dev-libs/libinput-1.14.0:0=
-	>=dev-libs/wayland-1.19.0
+	>=dev-libs/wayland-1.20.0
 	>=dev-libs/wayland-protocols-1.24
 	media-libs/mesa[egl(+),gles2,gbm(+)]
 	sys-auth/seatd:=
@@ -33,7 +33,7 @@ DEPEND="
 		dev-util/vulkan-headers:0=
 		media-libs/vulkan-loader:0=
 	)
-	x11-libs/libdrm
+	>=x11-libs/libdrm-2.4.109:0=
 	x11-libs/libxkbcommon
 	x11-libs/pixman
 	x11-backend? ( x11-libs/libxcb:0= )

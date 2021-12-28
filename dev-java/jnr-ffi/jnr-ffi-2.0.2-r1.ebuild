@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jnr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 LGPL-3 )"
 SLOT="2"
-KEYWORDS="ppc64"
+KEYWORDS="~arm ppc64"
 
 # Fixing https://bugs.gentoo.org/736830 would cost too much time.
 RESTRICT="test"

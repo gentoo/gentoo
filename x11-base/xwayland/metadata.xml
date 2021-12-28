@@ -8,7 +8,6 @@
 <use>
 	<flag name="unwind">Enable libunwind usage for backtraces</flag>
 	<flag name="xcsecurity">Build Security extension</flag>
-	<flag name="rpc">Enable secure rpc</flag>
 </use>
 <upstream>
 	<remote-id type="cpe">cpe:/a:x.org:xorg-server</remote-id>

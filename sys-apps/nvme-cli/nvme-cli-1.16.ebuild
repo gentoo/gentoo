@@ -22,6 +22,10 @@ RDEPEND="json? ( dev-libs/json-c:= )
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-musl-limits.patch
+)
+
 src_prepare() {
 	default
 

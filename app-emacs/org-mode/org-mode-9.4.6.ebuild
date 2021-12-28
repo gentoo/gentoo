@@ -12,7 +12,7 @@ SRC_URI="https://orgmode.org/org-${PV}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.3+ contrib? ( GPL-2+ MIT ) odt-schema? ( OASIS-Open )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="contrib doc odt-schema"
 RESTRICT="test"
 

@@ -16,6 +16,7 @@
 	</longdescription>
 	<use>
 		<flag name="cuda">Add support for cuda assimp (<pkg>dev-util/nvidia-cuda-sdk</pkg>)</flag>
+		<flag name="hwloc">Add support for hwloc (<pkg>sys-apps/hwloc</pkg>)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">ginkgo-project/ginkgo</remote-id>

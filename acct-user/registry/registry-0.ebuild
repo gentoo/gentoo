@@ -5,7 +5,7 @@ EAPI=7
 
 inherit acct-user
 
-DESCRIPTION="A user for app-emulation/docker-registry"
+DESCRIPTION="A user for app-containers/docker-registry"
 
 ACCT_USER_GROUPS=( "registry" )
 ACCT_USER_ID="295"

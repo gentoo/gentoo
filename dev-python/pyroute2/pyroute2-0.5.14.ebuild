@@ -8,7 +8,7 @@ DISTUTILS_USE_SETUPTOOLS=bdepend
 
 inherit distutils-r1
 
-DESCRIPTION="A pure Python netlink and Linux network configuration library."
+DESCRIPTION="A pure Python netlink and Linux network configuration library"
 HOMEPAGE="https://github.com/svinota/pyroute2"
 SRC_URI="https://github.com/svinota/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 

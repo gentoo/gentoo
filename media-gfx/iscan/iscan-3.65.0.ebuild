@@ -12,7 +12,7 @@ SRC_URI="https://support.epson.net/linux/src/scanner/imagescanv3/common/imagesca
 LICENSE="GPL-3+"
 SLOT="0"
 IUSE="graphicsmagick gui test"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND="

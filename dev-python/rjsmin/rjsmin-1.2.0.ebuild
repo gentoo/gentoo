@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="Javascript minifier written in python."
+DESCRIPTION="Javascript minifier written in python"
 HOMEPAGE="http://opensource.perlig.de/rjsmin/"
 SRC_URI="
 	https://github.com/ndparker/rjsmin/archive/${PV}.tar.gz -> ${P}.gh.tar.gz

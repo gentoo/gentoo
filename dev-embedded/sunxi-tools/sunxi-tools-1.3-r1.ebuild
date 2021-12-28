@@ -8,7 +8,7 @@ inherit toolchain-funcs
 MY_PV="v${PV}"
 SRC_URI="https://github.com/linux-sunxi/sunxi-tools/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
-DESCRIPTION="Tools for Allwinner A10 devices."
+DESCRIPTION="Tools for Allwinner A10 devices"
 HOMEPAGE="http://linux-sunxi.org/"
 
 LICENSE="GPL-2"

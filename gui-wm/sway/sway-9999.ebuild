@@ -27,7 +27,7 @@ DEPEND="
 	>=dev-libs/libinput-1.6.0:0=
 	sys-auth/seatd:=
 	dev-libs/libpcre
-	dev-libs/wayland
+	>=dev-libs/wayland-1.20.0
 	x11-libs/cairo
 	x11-libs/libxkbcommon
 	x11-libs/pango
@@ -53,8 +53,8 @@ RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
-	>=dev-libs/wayland-protocols-1.14
-	>=dev-util/meson-0.59.0
+	>=dev-libs/wayland-protocols-1.24
+	>=dev-util/meson-0.60.0
 	virtual/pkgconfig
 "
 if [[ ${PV} == 9999 ]]; then

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 
 inherit toolchain-funcs libtool flag-o-matic bash-completion-r1 usr-ldscript \
 	pam python-r1 multilib-minimal multiprocessing systemd
@@ -79,7 +79,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	"
 fi
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) su? ( pam )"
 RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
@@ -307,8 +307,11 @@ multilib_src_install_all() {
 	fi
 
 	if use pam ; then
+		# See https://github.com/util-linux/util-linux/blob/master/Documentation/PAM-configuration.txt
 		newpamd "${FILESDIR}/runuser.pamd" runuser
 		newpamd "${FILESDIR}/runuser-l.pamd" runuser-l
+
+		newpamd "${FILESDIR}/su-l.pamd" su-l
 	fi
 
 	# Note:

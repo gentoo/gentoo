@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit autotools
 
-DESCRIPTION="A standalone library to implement GNU libc's obstack."
+DESCRIPTION="A standalone library to implement GNU libc's obstack"
 HOMEPAGE="https://github.com/pullmoll/musl-obstack"
 SRC_URI="https://github.com/pullmoll/musl-obstack/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

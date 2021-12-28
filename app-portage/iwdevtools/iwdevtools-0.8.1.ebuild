@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ionenwks/iwdevtools/archive/refs/tags/v${PV}.tar.gz 
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -25,6 +25,10 @@ RDEPEND="
 BDEPEND="
 	sys-apps/help2man
 	test? ( ${RDEPEND} )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-tests.patch
+)
 
 src_configure() {
 	local emesonargs=(

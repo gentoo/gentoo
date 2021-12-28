@@ -272,7 +272,7 @@ else
 		https://github.com/xiph/rav1e/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		$(cargo_crate_uris ${CRATES})
 		"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="The fastest and safest AV1 encoder"
@@ -286,7 +286,7 @@ IUSE="+capi"
 ASM_DEP=">=dev-lang/nasm-2.15"
 BDEPEND="
 	amd64? ( ${ASM_DEP} )
-	capi? ( dev-util/cargo-c )
+	capi? ( >=dev-util/cargo-c-0.6.3 )
 "
 
 src_unpack() {

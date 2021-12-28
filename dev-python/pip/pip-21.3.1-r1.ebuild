@@ -133,12 +133,12 @@ python_install_all() {
 	# 'pip completion' command embeds full $0 into completion script, which confuses
 	# 'complete' and causes QA warning when running as "${PYTHON} -m pip".
 	# This trick sets correct $0 while still calling just installed pip.
-	local pipcmd='import sys; sys.argv[0] = "pip"; from pip._internal.cli.main import main; sys.exit(main())'
+	local pipcmd='import sys; sys.argv[0] = "pip"; __file__ = ""; from pip._internal.cli.main import main; sys.exit(main())'
 
-	${PYTHON} -c "${pipcmd}" completion --bash > "${COMPLETION}" || die
+	"${EPYTHON}" -c "${pipcmd}" completion --bash > "${COMPLETION}" || die
 	newbashcomp "${COMPLETION}" ${PN}
 
-	${PYTHON} -c "${pipcmd}" completion --zsh > "${COMPLETION}" || die
+	"${EPYTHON}" -c "${pipcmd}" completion --zsh > "${COMPLETION}" || die
 	insinto /usr/share/zsh/site-functions
 	newins "${COMPLETION}" _pip
 }

@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit gnome2-utils meson vala xdg
+PYTHON_COMPAT=( python3_{8..10} )
+
+inherit gnome2-utils meson python-any-r1 vala xdg
 
 DESCRIPTION="Forecast application using OpenWeatherMap API"
 HOMEPAGE="https://gitlab.com/bitseater/meteo"
@@ -24,11 +26,15 @@ RDEPEND="${DEPEND}
 	gnome-base/gsettings-desktop-schemas
 	x11-themes/hicolor-icon-theme
 "
-BDEPEND="
+BDEPEND="${PYTHON_DEPS}
 	dev-libs/appstream-glib
 	dev-util/intltool
 	virtual/pkgconfig
 "
+
+# One test needs network (#828052), the other simply checks desktop file
+# validation, that we also test with our QA tests
+RESTRICT="test"
 
 src_prepare() {
 	default

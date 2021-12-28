@@ -54,7 +54,7 @@ winapi-x86_64-pc-windows-gnu-0.4.0
 
 inherit cargo
 
-DESCRIPTION="A fast CSV command line toolkit written in Rust."
+DESCRIPTION="A fast CSV command line toolkit written in Rust"
 HOMEPAGE="https://github.com/BurntSushi/xsv"
 SRC_URI="$(cargo_crate_uris ${CRATES})
 	https://github.com/BurntSushi/xsv/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"

@@ -33,6 +33,26 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2021-12-24)
+# Replaced by sys-apps/hwdata. Removal on 2022-01-23.
+sys-apps/hwids
+
+# Jonas Stein <jstein@gentoo.org> (2021-12-24)
+# Alpha version
+=app-editors/ghex-4.0.0_alpha
+
+# David Seifert <soap@gentoo.org> (2021-12-20)
+# Requires GCC 8, security vulnerabilities, switch to CUDA 11,
+# consider using clang+NVPTX backend for sm_30 cards.
+# Removal in 90 days, bug #721808, #760708.
+<dev-util/nvidia-cuda-sdk-11
+<dev-util/nvidia-cuda-toolkit-11
+
+# Michał Górny <mgorny@gentoo.org> (2021-12-20)
+# Switches from deprecated stdlib distutils to vendored distutils
+# by default.  Masked for testing.  See tracker bug #822354.
+>=dev-python/setuptools-60
+
 # Jonas Stein <jstein@gentoo.org> (2021-12-20)
 # Package is broken and obsolete.
 # Removal on 2022-02-01.  Bug #828875.
@@ -117,11 +137,6 @@ net-fs/docker-volume-netshare
 # Masked for testing
 ~sci-libs/vtk-9.1.0
 
-# Michał Górny <mgorny@gentoo.org> (2021-12-13)
-# Unmaintained in Gentoo.  Requires media-libs/libpng[apng].
-# Removal on 2022-01-12.  Bug #824830.
-media-gfx/apngasm
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-13)
 # Blocks removal of dev-java/log4j:0 bug #828657.
 # Java packages with no active consumer. Removal in 30 days.
@@ -202,211 +217,21 @@ dev-python/python-fcl
 # No revdeps, bug #774498; masked for removal on 2021-12-30.
 dev-libs/qrosscore
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-28)
-# Libraries without consumers. Removal in 30 days.
-dev-java/commons-pool
-dev-java/dict4j
-dev-java/felix-gogo-command
-dev-java/jama
-dev-java/janino
-dev-java/jchardet
-dev-java/jcommon
-dev-java/jdynamite
-dev-java/jfreesvg
-dev-java/jgrapht
-dev-java/jmdns
-dev-java/jsr225
-dev-java/jsr311-api
-dev-java/jsr322
-dev-java/jung
-dev-java/mojarra
-dev-java/neuroph
-dev-java/ognl
-dev-java/piccolo
-dev-java/portletapi
-dev-java/vldocking
-dev-java/ws-commons-util
-dev-java/xml-security
-dev-java/xmpcore
-
-# Marek Szuba <marecki@gentoo.org> (2021-11-27)
-# XXV has been outdated and unmaintained in Gentoo for years.
-# EAPI 5, numerous QA violations.
-# Removal in 30 days. Bug #827669
-www-misc/xxv
-x11-themes/xxv-skins
-
-# Marek Szuba <marecki@gentoo.org> (2021-11-27)
-# No activity in upstream GitHub repository since July 2013,
-# no official release tarballs, unmaintained in Gentoo, EAPI 5.
-# Removal in 30 days. Bug #827666
-www-apache/mod_vhost_ldap
-
-# Marek Szuba <marecki@gentoo.org> (2021-11-27)
-# Upstream Web site (including release tarballs) is gone, no activity
-# in their GitHub repository since June 2012. Unmaintained in Gentoo
-# for years, EAPI 5.
-# Removal in 30 days. Bug #827663
-www-apache/mod_ldap_userdir
-
-# Marek Szuba <marecki@gentoo.org> (2021-11-27)
-# Upstream is long gone, unmaintained in Gentoo for years, EAPI 5.
-# Removal in 30 days. Bug #827657
-www-apache/mod_extract_forwarded
-
-# Marek Szuba <marecki@gentoo.org> (2021-11-27)
-# No upstream activity since October 2005, release tarballs
-# not available any more. Unmaintained in Gentoo, EAPI 5.
-# Removal in 30 days. Bug #827654
-www-apache/mod_evasive
-
-# Mike Gilbert <floppym@gentoo.org> (2021-11-27)
-# eudev will be removed on 2022-01-01.
-# Please see the news item published on 2021-08-24 for more information.
-sys-fs/eudev
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-26)
-# Library without consumers. Removal in 30 days.
-dev-java/jss
-
-# Alfredo Tupone <tupone@gentoo.org> (2021-11-26)
-# EAPI 6. Removal in 30 days. Bug @827158
-=dev-lang/gnat-gpl-2019-r2
-
-# Marek Szuba <marecki@gentoo.org> (2021-11-25)
-# Upstream discontinued Linux support over 10 years ago so we are now
-# one major version and countless known bugs behind. No source archives
-# published for current versions. Unmaintained in Gentoo for years,
-# EAPI 5. Removal in 30 days. Bug #827522
-sci-biology/ApE
-
 # Hans de Graaff <graaff@gentoo.org> (2021-11-26)
 # Mask new rubygems version for testing. This version uses a new
 # gentoo-defaults profile, bug #789957
 >=dev-ruby/rubygems-3.2.31
-
-# Hans de Graaff <graaff@gentoo.org> (2021-11-26)
-# Old slot, obsolete since 2016. No reverse dependencies. Use the
-# newer slot instead.
-# Masked for removal in 30 days.
-dev-ruby/typhoeus:0
-
-# Marek Szuba <marecki@gentoo.org> (2021-11-25)
-# Ancient, very few distributions still package it. Both upstream
-# and the Debian package we use in SRC_URI are now gone. EAPI 5,
-# unmaintained in Gentoo. Consider using net-misc/frr, which supports
-# both RIP and many other routing protocols, instead.
-# Removal in 30 days. Bug #827322
-net-misc/netkit-routed
-
-# Marek Szuba <marecki@gentoo.org> (2021-11-25)
-# Upstream is gone. Unmaintained in Gentoo, last updated
-# back in the CVS era, EAPI 5, open bugs.
-# Removal in 30 days. Bug #826790
-net-analyzer/nagios-check_pidfile
-
-# Marek Szuba <marecki@gentoo.org> (2021-11-25)
-# Upstream is gone. Unmaintained in Gentoo, last updated
-# back in the CVS era, EAPI 5, open bugs.
-# Removal in 30 days. Bug #826786
-net-analyzer/nagios-check_fail2ban
-
-# Hans de Graaff <graaff@gentoo.org> (2021-11-25)
-# Old slot that no longer has reverse dependencies. Last release in
-# 2013. Use minitest 5.x instead.
-# Masked for removal in 30 days.
-dev-ruby/minitest:0
-
-# Hans de Graaff <graaff@gentoo.org> (2021-11-25)
-# Last upstream release in 2012 and upstream itself is no longer
-# available. Unlikely to still work correctly. No reverse dependencies.
-# Masked for removal in 30 days.
-dev-ruby/aws-s3
-
-# Marek Szuba <marecki@gentoo.org> (2021-11-23)
-# No new releases since July 2013, no commits to upstream Git repository
-# since May 2019, long list of known issues (including Bug #681520),
-# unmaintained in Gentoo, EAPI 5. Consider using dev-util/uglifyjs instead.
-# Removal in 30 days. Bug #826470
-dev-util/yuicompressor
-
-# Hans de Graaff <graaff@gentoo.org> (2021-11-23)
-# Obsolete slot, last release in 2017, uses EAPI 5.
-# Use one of the newer slots.
-# Masked for removal in 30 days.
-dev-ruby/ttfunk:1.5
-
-# Marek Szuba <marecki@gentoo.org> (2021-11-23)
-# Last release in 2009, dead upstream. Rendered obsolete by native PDF
-# importers provided by LibreOffice/OpenOffice, which actually read PDFs
-# instead of converting them to images. Unmaintained in Gentoo, EAPI 5.
-# Removal in 30 days. Bug #826382
-app-text/pdf2oo
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-23)
 # Does not support updated dev-java/pdfbox-2.0.24, Bug #803488
 # Blocks (CVE-2018-11797, CVE-2021-{27807,27906,31811,31812})
 dev-tex/pdfannotextractor
 
-# Marek Szuba <marecki@gentoo.org> (2021-11-23)
-# No releases or repo activity upstream since 2013, both versions currently
-# in the tree fail to build (for different reasons), unmaintained in Gentoo,
-# stable ebuild uses EAPI 5.
-# Removal in 30 days. Bug #756925
-app-text/dbacl
-
-# Sergey Popov <pinkbyte@gentoo.org> (2021-11-22)
-# Upstream is pretty much dead
-# Has at least one security issue - bug #825358
-# Replaced by net-misc/frr
-# Removal in 30 days
-net-misc/quagga
-
-# Marek Szuba <marecki@gentoo.org> (2021-11-22)
-# Upstream switched from static documentation to the Wiki format
-# around 10 years ago, and the ebuild we've got in the tree was
-# massively outdated even then (our version: 812, last static
-# upstream version: 2001). No maintainer in Gentoo, EAPI 5.
-# Removal in 30 days. Bug #826454
-app-doc/selfhtml
-
-# Marek Szuba <marecki@gentoo.org> (2021-11-22)
-# Last release in 2008 at the latest, no maintainer in Gentoo for years,
-# EAPI 5, upstream is gone, the only distros which still package it are
-# Gentoo, Funtoo and LiGurOS.
-# Removal in 30 days. Bug #826682
-app-admin/psmon
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-11-22)
-# Unmaintained upstream, never made it to a KF5-based release and Gentoo
-# was the only distro ever packaging such a snapshot. Use kimpanel from
-# kde-plasma/plasma-desktop instead.
-# Removal on 2021-12-22. Bug #824822
-kde-misc/kimtoy
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-11-22)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
 # and accept a more unstable release.
 >=www-client/chromium-98
-
-# Michael Orlitzky <mjo@gentoo.org> (2021-11-22)
-# Cool package, but no longer developed upstream, and my immediate use
-# for it has expired. No reverse dependencies, deprecated EAPI;
-# removal in 30 days.  Bug #826386.
-app-text/XML-Schema-learner
-
-# Hans de Graaff <graaff@gentoo.org> (2021-11-20)
-# Obsolete package. Last upstream release in 2014, upstream itself is
-# gone. No reverse dependencies in Gentoo.
-# Masked for removal in 30 days.
-dev-ruby/rack-ssl
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2021-11-19)
-# Doesn't work with latest versions of adb, source not easily ported
-# to python 3.9 and 3.10. No upstream activity for 7 years.
-# Removal on 2021-12-19.  Bug #825038.
-app-mobilephone/adb-sync
 
 # Mike Pagano <mpagano@gentoo.org> (2021-11-18)
 # Bug introduced in this version that can
@@ -493,10 +318,6 @@ net-libs/libsoup:3.0
 # Requires OpenSSL >= 3.0.0
 # Masked until dev-libs/openssl-3.0* is unmasked
 =dev-libs/gost-engine-3.0*
-
-# Bernard Cafarelli <voyageur@gentoo.org> (2021-08-26)
-# Preparing for final 5.0.0 release
->=app-text/tesseract-5.0.0_beta
 
 # Joonas Niilola <juippis@gentoo.org> (2021-07-29)
 # Upstream provided migration instructions from 2. -> 3. update,

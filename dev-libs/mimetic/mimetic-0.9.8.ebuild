@@ -5,7 +5,7 @@ EAPI=7
 
 inherit autotools
 
-DESCRIPTION="C++ MIME library designed to be easy to use and integrate, fast and efficient."
+DESCRIPTION="C++ MIME library designed to be easy to use and integrate, fast and efficient"
 HOMEPAGE="http://www.codesink.org/mimetic_mime_library.html"
 SRC_URI="http://www.codesink.org/download/${P}.tar.gz"
 

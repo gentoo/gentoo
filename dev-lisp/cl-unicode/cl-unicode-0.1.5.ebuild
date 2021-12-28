@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit common-lisp-3 xdg-utils
 
 MY_P="v${PV}"
 
-DESCRIPTION="Provides Common Lisp implementations with knowledge about Unicode characters."
+DESCRIPTION="Provides Common Lisp implementations with knowledge about Unicode characters"
 HOMEPAGE="http://weitz.de/cl-unicode/"
 SRC_URI="https://github.com/edicl/${PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 

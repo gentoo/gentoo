@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="cuda10-2">On Nvidia CUDA 10.2</flag>
-		<flag name="cuda11-4">On Nvidia CUDA 11.4</flag>
 		<flag name="cuda11-5">On Nvidia CUDA 11.5</flag>
 	</use>
 </pkgmetadata>

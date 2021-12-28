@@ -8,7 +8,7 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Publish an image stream from single image file or avi file."
+DESCRIPTION="Publish an image stream from single image file or avi file"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""

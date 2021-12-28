@@ -10,7 +10,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.rdoc README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="An oEmbed consumer library written in Ruby."
+DESCRIPTION="An oEmbed consumer library written in Ruby"
 HOMEPAGE="https://github.com/judofyr/ruby-oembed"
 LICENSE="MIT"
 

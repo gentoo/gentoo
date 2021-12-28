@@ -12,9 +12,9 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="+shared static-libs"
+IUSE="+shared static-libs static-pic"
 
 RDEPEND="${ADA_DEPS}
 	dev-libs/atk
@@ -33,6 +33,7 @@ REQUIRED_USE="${ADA_REQUIRED_USE}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2017-r1-gentoo.patch
 	"${FILESDIR}"/${PN}-2019-gentoo.patch
+	"${FILESDIR}"/${PN}-2021-uninstall.patch
 )
 
 src_prepare() {
@@ -45,6 +46,7 @@ src_configure() {
 	econf \
 		$(use_enable static-libs static) \
 		$(use_enable shared) \
+		$(use_enable static-pic) \
 		--without-GL
 }
 
@@ -53,6 +55,6 @@ src_compile() {
 }
 
 src_install() {
-	emake -j1 DESTDIR="${D}"
+	emake -j1 DESTDIR="${D}" install
 	einstalldocs
 }

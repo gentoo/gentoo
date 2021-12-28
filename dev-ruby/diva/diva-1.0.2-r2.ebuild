@@ -13,7 +13,7 @@ RUBY_FAKEGEM_GEMSPEC="diva.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Implementation of expression for handling things."
+DESCRIPTION="Implementation of expression for handling things"
 HOMEPAGE="https://github.com/toshia/diva https://rubygems.org/gems/diva"
 SRC_URI="https://github.com/toshia/diva/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

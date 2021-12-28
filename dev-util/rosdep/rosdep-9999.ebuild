@@ -29,7 +29,7 @@ SLOT="0"
 
 # Tests need network
 RESTRICT="test"
-PROPERTIES="test_network"
+PROPERTIES+=" test_network"
 
 RDEPEND="
 	dev-python/catkin_pkg[${PYTHON_USEDEP}]

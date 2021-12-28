@@ -5,7 +5,7 @@ EAPI=7
 
 inherit multilib systemd tmpfiles
 
-DESCRIPTION="Puppet Server is the next-generation application for managing Puppet agents."
+DESCRIPTION="Puppet Server is the next-generation application for managing Puppet agents"
 HOMEPAGE="http://docs.puppetlabs.com/puppetserver/"
 SRC_URI="https://downloads.puppetlabs.com/puppet/${P}.tar.gz"
 

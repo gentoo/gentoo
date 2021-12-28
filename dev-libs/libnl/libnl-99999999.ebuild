@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_OPTIONAL=1
 inherit autotools distutils-r1 git-r3 multilib-minimal
 

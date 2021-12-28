@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/829800
+https://src.fedoraproject.org/rpms/gnokii/raw/rawhide/f/gnokii-0.6.31-sqlite3.patch
+
+Patch by Robert Scheck <robert@fedoraproject.org> for gnokii <= 0.6.31 which adds
+the missing linking to -lsqlite3 by correcting the configure script. Without this
+patch the libsmsd_sqlite.so fails with "undefined symbol: sqlite3_open" simply.
+
+--- a/configure.in
++++ b/configure.in
+@@ -747,7 +747,7 @@
+ have_sqlite=no
+ PKG_CHECK_MODULES(SQLITE3, sqlite3, have_sqlite=yes, have_sqlite=no)
+ if test x$enable_sqlite != xno && test x$PKGCONF != xno ; then
+-	SQLITE_LIBS=SQLITE3_LIBS
++	SQLITE_LIBS=$SQLITE3_LIBS
+ 	dnl SQLITE_CFLAGS=SQLITE3_CFLAGS
+ 	AC_SUBST(SQLITE_LIBS)
+ 	AC_SUBST(SQLITE_CFLAGS)

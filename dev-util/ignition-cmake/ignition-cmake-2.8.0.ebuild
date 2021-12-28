@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake
 
-DESCRIPTION="CMake modules to be used by the Ignition projects."
+DESCRIPTION="CMake modules to be used by the Ignition projects"
 HOMEPAGE="https://github.com/ignitionrobotics/ign-cmake"
 SRC_URI="https://osrf-distributions.s3.amazonaws.com/ign-cmake/releases/${PN}2-${PV}.tar.bz2"
 

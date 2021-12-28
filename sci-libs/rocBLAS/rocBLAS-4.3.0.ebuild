@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6..9} )
 
 inherit cmake prefix python-any-r1
 
-DESCRIPTION="AMD's library for BLAS on ROCm."
+DESCRIPTION="AMD's library for BLAS on ROCm"
 HOMEPAGE="https://github.com/ROCmSoftwarePlatform/rocBLAS"
 SRC_URI="https://github.com/ROCmSoftwarePlatform/rocBLAS/archive/rocm-${PV}.tar.gz -> rocm-${P}.tar.gz
 	https://github.com/ROCmSoftwarePlatform/Tensile/archive/rocm-${PV}.tar.gz -> rocm-Tensile-${PV}.tar.gz"

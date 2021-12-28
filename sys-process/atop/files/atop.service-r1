@@ -1,0 +1,11 @@
+[Unit]
+Description=Atop advanced performance monitor
+Documentation=man:atop(1)
+
+[Service]
+Type=simple
+ExecStart=/usr/share/atop/atop.daily
+KillSignal=SIGUSR2
+
+[Install]
+WantedBy=multi-user.target

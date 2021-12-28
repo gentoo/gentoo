@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_8,3_9,3_10} )
 
-inherit autotools fcaps linux-info python-single-r1 systemd
+inherit autotools fcaps flag-o-matic linux-info python-single-r1 systemd toolchain-funcs
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/netdata/${PN}.git"
@@ -92,6 +92,12 @@ src_prepare() {
 }
 
 src_configure() {
+	if use ppc64; then
+		# bundled dlib does not support vsx on big-endian
+		# https://github.com/davisking/dlib/issues/397
+		[[ $(tc-endian) == big ]] && append-flags -mno-vsx
+	fi
+
 	econf \
 		--localstatedir="${EPREFIX}"/var \
 		--with-user=netdata \

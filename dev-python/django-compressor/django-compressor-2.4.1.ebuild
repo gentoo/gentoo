@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7..9} )
 inherit distutils-r1
 
-DESCRIPTION="Compresses linked and inline JavaScript or CSS into single cached files."
+DESCRIPTION="Compresses linked and inline JavaScript or CSS into single cached files"
 HOMEPAGE="https://django-compressor.readthedocs.io/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN/-/_}/${P/-/_}.tar.gz"
 S="${WORKDIR}/${P/-/_}"

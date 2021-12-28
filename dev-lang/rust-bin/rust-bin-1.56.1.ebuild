@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit prefix rust-toolchain toolchain-funcs verify-sig multilib-minimal
+inherit multilib prefix rust-toolchain toolchain-funcs verify-sig multilib-minimal
 
 MY_P="rust-${PV}"
 # curl -L static.rust-lang.org/dist/channel-rust-${PV}.toml 2>/dev/null | grep "xz_url.*rust-src"
@@ -17,7 +17,7 @@ SRC_URI="$(rust_all_arch_uris ${MY_P})
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="stable"
-KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="clippy cpu_flags_x86_sse2 doc prefix rls rust-src rustfmt"
 
 DEPEND=""

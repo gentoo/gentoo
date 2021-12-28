@@ -7,7 +7,7 @@ PYTHON_COMPAT=( pypy3 python3_{7..10} )
 
 inherit distutils-r1
 
-DESCRIPTION="Easily create navigation for Flask applications."
+DESCRIPTION="Easily create navigation for Flask applications"
 HOMEPAGE="https://pythonhosted.org/flask-nav/"
 # docs are missing from PyPI tarballs
 # https://github.com/mbr/flask-nav/pull/12

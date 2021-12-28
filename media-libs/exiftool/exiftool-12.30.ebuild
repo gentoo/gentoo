@@ -3,11 +3,14 @@
 
 EAPI=7
 
+# Check https://exiftool.org/history.html for whether a release is 'production'
+# Ideally don't bump to non-production at all, but certainly don't stable.
+
 DIST_NAME=Image-ExifTool
 inherit perl-module
 
 DESCRIPTION="Read and write meta information in image, audio and video files"
-HOMEPAGE="https://exiftool.org/"
+HOMEPAGE="https://exiftool.org/ http://exiftool.sourceforge.net/"
 SRC_URI="https://exiftool.org/${DIST_P}.tar.gz"
 
 SLOT="0"

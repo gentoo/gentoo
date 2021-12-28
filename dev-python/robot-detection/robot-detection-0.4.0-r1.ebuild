@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="Module to detect if a given HTTP User Agent is a web crawler."
+DESCRIPTION="Module to detect if a given HTTP User Agent is a web crawler"
 HOMEPAGE="https://github.com/rory/robot-detection"
 SRC_URI="https://github.com/rory/robot-detection/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
