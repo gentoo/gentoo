@@ -26,7 +26,7 @@ DEPEND="
 	x11-libs/xbae
 	fftw? ( sci-libs/fftw:3.0= )
 	jpeg? ( virtual/jpeg:0 )
-	netcdf? ( sci-libs/netcdf )
+	netcdf? ( sci-libs/netcdf:= )
 	png? ( media-libs/libpng:0= )"
 RDEPEND="${DEPEND}
 	x11-misc/xdg-utils"
