@@ -29,7 +29,7 @@ else
 	LANGS=" de eo es fi fr he hu it ja pl pt-BR sl uk zh-CN"
 fi
 
-IUSE="avif colord cups cpu_flags_x86_sse3 doc flickr geolocation gmic gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
+IUSE="avif colord cpu_flags_x86_avx cpu_flags_x86_sse3 cups doc flickr geolocation gmic gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
 	lto lua nls opencl openmp openexr test tools webp
 	${LANGS// / l10n_}"
 
@@ -102,6 +102,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	use cpu_flags_x86_avx && append-flags -mavx
 	use cpu_flags_x86_sse3 && append-flags -msse3
 
 	sed -i -e 's:/appdata:/metainfo:g' data/CMakeLists.txt || die
