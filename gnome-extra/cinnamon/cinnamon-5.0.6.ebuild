@@ -82,7 +82,7 @@ RDEPEND="
 	net-misc/wget
 	sys-apps/accountsservice[introspection]
 	sys-power/upower[introspection]
-	>=x11-libs/xapps-2.2.0[introspection]
+	>=x11-libs/xapp-2.2.0[introspection]
 	x11-misc/xdg-utils
 	x11-themes/adwaita-icon-theme
 	x11-themes/gnome-themes-standard
