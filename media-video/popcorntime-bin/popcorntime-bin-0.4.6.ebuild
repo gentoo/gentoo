@@ -43,7 +43,7 @@ RDEPEND="
 	x11-libs/pango
 "
 
-QA_PREBUILT="/opt/Popcorn-Time/*"
+QA_PREBUILT="opt/Popcorn-Time/*"
 
 S="${WORKDIR}"
 
