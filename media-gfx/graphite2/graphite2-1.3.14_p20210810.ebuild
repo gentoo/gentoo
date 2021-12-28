@@ -3,13 +3,15 @@
 
 EAPI=8
 
+COMMIT=80c52493ef42e6fe605a69dcddd2a691cd8a1380
 GENTOO_DEPEND_ON_PERL="no"
 PYTHON_COMPAT=( python3_{8..10} )
 inherit perl-module python-any-r1 cmake-multilib
 
 DESCRIPTION="Library providing rendering capabilities for complex non-Roman writing systems"
 HOMEPAGE="https://scripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_home"
-SRC_URI="mirror://sourceforge/silgraphite/${PN}/${P}.tgz"
+SRC_URI="https://github.com/silnrsi/graphite/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/graphite-${COMMIT}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -36,13 +38,10 @@ BDEPEND="
 "
 
 PATCHES=(
-	# downstream:
 	"${FILESDIR}/${PN}-1.3.5-includes-libs-perl.patch"
 	"${FILESDIR}/${PN}-1.35-fix-gcc-linking.patch"
 	"${FILESDIR}/${PN}-1.3.14-fix-cmake-files-libdir.patch"
-	"${FILESDIR}/${P}-no-libtool-file.patch"
-	# git master:
-	"${FILESDIR}/${P}-fix-inaccurate-slice-range-calc.patch"
+	"${FILESDIR}/${PN}-1.3.14-no-libtool-file.patch"
 )
 
 pkg_setup() {
