@@ -250,9 +250,22 @@ src_install() {
 	local DISABLE_AUTOFORMATTING=yes
 	local DOC_CONTENTS="\
 Trusted users should be in the 'video' group to use NVIDIA devices.
-You can add yourself by using: gpasswd -a my-user video
+You can add yourself by using: gpasswd -a my-user video\
+$(usex driver "
 
-See '${EPREFIX}/etc/modprobe.d/nvidia.conf' for modules options.\
+Like all out-of-tree kernel modules, it is necessary to rebuild
+${PN} after upgrading or rebuilding the Linux kernel
+by for example running \`emerge @module-rebuild\`. Alternatively,
+if using a distribution kernel (sys-kernel/gentoo-kernel{,-bin}),
+this can be automated by setting USE=dist-kernel globally.
+
+Loaded kernel modules also must not mismatch with the installed
+${PN} version (excluding -r revision), meaning should
+ensure \`eselect kernel list\` points to the kernel that will be
+booted before building and preferably reboot after upgrading
+${PN} (the ebuild will emit a warning if mismatching).
+
+See '${EPREFIX}/etc/modprobe.d/nvidia.conf' for modules options." '')\
 $(use amd64 && usex abi_x86_32 '' "
 
 Note that without USE=abi_x86_32 on ${PN}, 32bit applications
