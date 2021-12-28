@@ -235,7 +235,6 @@ dev-java/jsr311-api
 dev-java/jsr322
 dev-java/jung
 dev-java/mojarra
-dev-java/neuroph
 
 # Hans de Graaff <graaff@gentoo.org> (2021-11-26)
 # Mask new rubygems version for testing. This version uses a new
