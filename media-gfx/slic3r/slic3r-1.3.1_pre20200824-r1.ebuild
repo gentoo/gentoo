@@ -55,16 +55,17 @@ RDEPEND="!=dev-lang/perl-5.16*
 	)"
 DEPEND="${RDEPEND}
 	dev-libs/clipper
-	dev-perl/Devel-CheckLib
 	>=dev-perl/ExtUtils-CppGuess-0.70.0
 	>=dev-perl/ExtUtils-Typemaps-Default-1.50.0
 	>=dev-perl/ExtUtils-XSpp-0.170.0
-	>=dev-perl/Module-Build-0.380.0
-	>=dev-perl/Module-Build-WithXSpp-0.140.0
 	>=virtual/perl-ExtUtils-MakeMaker-6.800.0
 	>=virtual/perl-ExtUtils-ParseXS-3.220.0
 	test? (	virtual/perl-Test-Harness
 		virtual/perl-Test-Simple )"
+
+BDEPEND=">=dev-perl/Module-Build-0.380.0
+	>=dev-perl/Module-Build-WithXSpp-0.140.0
+	dev-perl/Devel-CheckLib"
 
 S="${WORKDIR}/Slic3r-92abbc42dfdd5385c1f9c3a450e2f3da835f8b8d"
 PERL_S="${S}/xs"
