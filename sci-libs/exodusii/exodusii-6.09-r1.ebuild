@@ -21,10 +21,9 @@ IUSE="static-libs test"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="sci-libs/netcdf[hdf5]"
-DEPEND="${RDEPEND}
-	test? ( app-shells/tcsh )
-"
+RDEPEND="sci-libs/netcdf:=[hdf5]"
+DEPEND="${RDEPEND}"
+BDEPEND="test? ( app-shells/tcsh )"
 
 PATCHES=( "${FILESDIR}"/${P}-multilib.patch )
 
