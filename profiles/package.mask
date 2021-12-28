@@ -221,7 +221,6 @@ dev-libs/qrosscore
 # Libraries without consumers. Removal in 30 days.
 dev-java/commons-pool
 dev-java/dict4j
-dev-java/felix-gogo-command
 
 # Hans de Graaff <graaff@gentoo.org> (2021-11-26)
 # Mask new rubygems version for testing. This version uses a new
