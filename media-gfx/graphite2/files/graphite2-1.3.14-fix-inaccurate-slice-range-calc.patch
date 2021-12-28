@@ -1,0 +1,34 @@
+From 5c181c316ee0399d720efe1e75be702f1ca95b66 Mon Sep 17 00:00:00 2001
+From: Martin Hosken <martin_hosken@sil.org>
+Date: Thu, 20 May 2021 13:53:29 +0700
+Subject: [PATCH] Fix inaccurate slice range calculation for bases with
+ diacritics
+
+---
+ src/Pass.cpp | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/Pass.cpp b/src/Pass.cpp
+index db31c22d..47ae2064 100644
+--- a/src/Pass.cpp
++++ b/src/Pass.cpp
+@@ -1056,12 +1056,17 @@ float Pass::resolveKern(Segment *seg, Slot *slotFix, GR_MAYBE_UNUSED Slot *start
+     ymin = min(by + bbb.bl.y, ymin);
+     for (nbor = slotFix->next(); nbor; nbor = nbor->next())
+     {
+-        if (nbor->isChildOf(base))
+-            continue;
+         if (!gc.check(nbor->gid()))
+             return 0.;
+         const Rect &bb = seg->theGlyphBBoxTemporary(nbor->gid());
+         SlotCollision *cNbor = seg->collisionInfo(nbor);
++        const float nby = nbor->origin().y + cNbor->shift().y;
++        if (nbor->isChildOf(base))
++        {
++            ymax = max(nby + bb.tr.y, ymax);
++            ymin = min(nby + bb.bl.y, ymin);
++            continue;
++        }
+         if ((bb.bl.y == 0.f && bb.tr.y == 0.f) || (cNbor->flags() & SlotCollision::COLL_ISSPACE))
+         {
+             if (m_kernColls == InWord)
