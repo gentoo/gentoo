@@ -40,7 +40,7 @@ RDEPEND="
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		dev-python/setproctitle[${PYTHON_USEDEP}]
-		>=dev-python/xapp-2.2.0[${PYTHON_USEDEP}]
+		>=dev-python/python3-xapp-2.2.0[${PYTHON_USEDEP}]
 	')
 
 	systemd? ( >=sys-apps/systemd-31 )
