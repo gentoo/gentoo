@@ -16,15 +16,19 @@ IUSE="examples +ocamlopt"
 
 RDEPEND="
 	>=dev-lang/ocaml-4.09.0:=[ocamlopt=]
+	>=sci-mathematics/psmt2-frontend-0.4.0:=
+
 	>=dev-ml/menhir-20181006:=
 	>=dev-ml/ocplib-simplex-0.4:=
-	>=sci-mathematics/psmt2-frontend-0.4.0:=
 	dev-ml/camlzip:=
+	dev-ml/cmdliner:=
 	dev-ml/num:=
 	dev-ml/seq:=
+	dev-ml/stdlib-shims:=
 	dev-ml/zarith:=
 "
 DEPEND="${RDEPEND}"
+BDEPEND="dev-ml/dune-configurator"
 
 src_prepare() {
 	default
