@@ -12,6 +12,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">flit-core</remote-id>
-    <remote-id type="github">takluyver/flit</remote-id>
+    <remote-id type="github">pypa/flit</remote-id>
   </upstream>
 </pkgmetadata>
