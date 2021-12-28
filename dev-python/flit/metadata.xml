@@ -11,6 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">flit</remote-id>
-		<remote-id type="github">takluyver/flit</remote-id>
+		<remote-id type="github">pypa/flit</remote-id>
 	</upstream>
 </pkgmetadata>
