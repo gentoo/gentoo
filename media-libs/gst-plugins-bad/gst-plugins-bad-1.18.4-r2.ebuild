@@ -3,8 +3,8 @@
 
 EAPI=7
 GST_ORG_MODULE="gst-plugins-bad"
-
-inherit flag-o-matic gstreamer-meson
+PYTHON_COMPAT=( python3_{8,9,10} )
+inherit flag-o-matic gstreamer-meson python-any-r1
 
 DESCRIPTION="Less plugins for GStreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
@@ -37,7 +37,10 @@ RDEPEND="
 	orc? ( >=dev-lang/orc-0.4.17[${MULTILIB_USEDEP}] )
 "
 
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+
+BDEPEND="
+	${PYTHON_DEPS}
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.12
 "
