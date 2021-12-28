@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LUA_COMPAT=( lua5-3 )
+LUA_COMPAT=( lua5-4 )
 
 inherit cmake flag-o-matic lua-single toolchain-funcs xdg
 
