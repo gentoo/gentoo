@@ -6,8 +6,8 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8,9,10} )
 inherit autotools bash-completion-r1 gnome2-utils linux-info plocale python-single-r1 systemd xdg-utils
 
-DESCRIPTION="A firewall daemon with D-BUS interface providing a dynamic firewall"
-HOMEPAGE="http://www.firewalld.org/"
+DESCRIPTION="A firewall daemon with D-Bus interface providing a dynamic firewall"
+HOMEPAGE="https://www.firewalld.org/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
