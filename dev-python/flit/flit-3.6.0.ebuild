@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Simplified packaging of Python modules"
-HOMEPAGE="https://github.com/takluyver/flit https://flit.readthedocs.io/"
+HOMEPAGE="https://github.com/pypa/flit https://flit.readthedocs.io/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
