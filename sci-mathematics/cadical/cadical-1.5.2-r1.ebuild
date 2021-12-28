@@ -14,9 +14,12 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
+PATCHES=( "${FILESDIR}"/${PN}-makefile.in-ar.patch )
+
 DOCS=( BUILD.md CONTRIBUTING NEWS.md README.md VERSION )
 
 src_configure() {
+	tc-export AR
 	CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS} ${LDFLAGS}" ./configure || die
 }
 
