@@ -241,7 +241,6 @@ dev-java/piccolo
 dev-java/portletapi
 dev-java/vldocking
 dev-java/ws-commons-util
-dev-java/xml-security
 
 # Hans de Graaff <graaff@gentoo.org> (2021-11-26)
 # Mask new rubygems version for testing. This version uses a new
