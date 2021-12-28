@@ -45,8 +45,8 @@ RDEPEND="
 		!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
 		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
 	)
-	netcdf? ( sci-libs/netcdf )
-	proj? ( sci-libs/proj )
+	netcdf? ( sci-libs/netcdf:= )
+	proj? ( sci-libs/proj:= )
 	postscript? ( dev-libs/pslib )
 	python? (
 		${PYTHON_DEPS}
