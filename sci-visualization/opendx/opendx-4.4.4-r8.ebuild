@@ -28,7 +28,7 @@ RDEPEND="
 	szip? ( virtual/szip )
 	hdf? ( sci-libs/hdf )
 	cdf? ( sci-libs/cdf )
-	netcdf? ( sci-libs/netcdf )
+	netcdf? ( sci-libs/netcdf:= )
 	tiff? ( media-libs/tiff:0 )
 	imagemagick? ( virtual/imagemagick-tools )"
 
