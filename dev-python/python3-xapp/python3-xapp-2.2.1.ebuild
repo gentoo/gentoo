@@ -23,5 +23,3 @@ RDEPEND="
 	${DEPEND}
 	dev-python/psutil[${PYTHON_USEDEP}]
 "
-
-S="${WORKDIR}/python3-xapp-${PV}"
