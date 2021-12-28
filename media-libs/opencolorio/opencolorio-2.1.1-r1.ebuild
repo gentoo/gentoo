@@ -25,12 +25,10 @@ REQUIRED_USE="
 # https://github.com/AcademySoftwareFoundation/OpenColorIO/issues/1509
 # bug #821073
 # 2.1.1 should be?
-#
-# See bug #802363 for yaml-cpp < dep
 RDEPEND="
 	dev-cpp/pystring
 	dev-python/pybind11
-	<dev-cpp/yaml-cpp-0.7.0:=
+	>=dev-cpp/yaml-cpp-0.7.0:=
 	dev-libs/tinyxml
 	media-libs/ilmbase:=
 	opengl? (
