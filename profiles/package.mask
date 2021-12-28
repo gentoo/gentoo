@@ -217,10 +217,6 @@ dev-python/python-fcl
 # No revdeps, bug #774498; masked for removal on 2021-12-30.
 dev-libs/qrosscore
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-28)
-# Libraries without consumers. Removal in 30 days.
-dev-java/commons-pool
-
 # Hans de Graaff <graaff@gentoo.org> (2021-11-26)
 # Mask new rubygems version for testing. This version uses a new
 # gentoo-defaults profile, bug #789957
