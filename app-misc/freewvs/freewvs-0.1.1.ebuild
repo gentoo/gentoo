@@ -22,3 +22,7 @@ pkg_postinst() {
 	einfo first. You should run this on a regular basis to update
 	einfo the web application data, e.g. via a cronjob.
 }
+
+# Only codingstyle and similar tests, require dependencies
+# not packaged in Gentoo
+RESTRICT="test"
