@@ -29,7 +29,7 @@ RESTRICT="test"
 RDEPEND="
 	!dev-cpp/kokkos
 	dev-libs/boost:=
-	sys-libs/binutils-libs
+	sys-libs/binutils-libs:=
 	virtual/blas
 	virtual/lapack
 	virtual/mpi
@@ -40,24 +40,24 @@ RDEPEND="
 	eigen? ( dev-cpp/eigen:3 )
 	glpk? ( sci-mathematics/glpk )
 	gtest? ( dev-cpp/gtest )
-	hdf5? ( sci-libs/hdf5[mpi] )
-	hypre? ( sci-libs/hypre )
+	hdf5? ( sci-libs/hdf5:=[mpi] )
+	hypre? ( sci-libs/hypre:= )
 	hwloc? ( sys-apps/hwloc:= )
 	matio? ( sci-libs/matio )
 	mkl? ( sci-libs/mkl )
 	metis? ( sci-libs/metis )
 	mumps? ( sci-libs/mumps )
-	netcdf? ( sci-libs/netcdf )
+	netcdf? ( sci-libs/netcdf:= )
 	petsc? ( sci-mathematics/petsc )
 	qd? ( sci-libs/qd )
 	scalapack? ( sci-libs/scalapack )
-	scotch? ( sci-libs/scotch )
+	scotch? ( sci-libs/scotch:= )
 	sparse? ( sci-libs/cxsparse sci-libs/umfpack )
-	superlu? ( sci-libs/superlu )
+	superlu? ( sci-libs/superlu:= )
 	taucs? ( sci-libs/taucs )
 	tbb? ( dev-cpp/tbb:= )
 	tvmet? ( dev-libs/tvmet )
-	yaml? ( dev-cpp/yaml-cpp )
+	yaml? ( dev-cpp/yaml-cpp:= )
 	zlib? ( sys-libs/zlib )
 	X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}
