@@ -463,20 +463,4 @@ pkg_postinst() {
 		elog "If you experience issues, please comment out the option from nvidia.conf."
 		elog "Of note, may possibly cause issues with SLI and Reverse PRIME."
 	fi
-
-	# Try to show this message only to users that may really need it
-	# given the workaround is discouraged and usage isn't widespread.
-	if use X && [[ ${REPLACING_VERSIONS} ]] &&
-		ver_test ${REPLACING_VERSIONS} -lt 460.73.01 &&
-		grep -qr Coolbits "${EROOT}"/etc/X11/{xorg.conf,xorg.conf.d/*.conf} 2>/dev/null; then
-		elog
-		elog "Coolbits support with ${PN} has been restricted to require Xorg"
-		elog "with root privilege by NVIDIA (being in video group is not sufficient)."
-		elog "e.g. attempting to change fan speed with nvidia-settings would fail."
-		elog
-		elog "Depending on your display manager (e.g. sddm starts X as root, gdm doesn't)"
-		elog "or if using startx, it may be necessary to emerge x11-base/xorg-server with"
-		elog 'USE="suid -elogind -systemd" if wish to keep using this feature.'
-		elog "Bug: https://bugs.gentoo.org/784248"
-	fi
 }
