@@ -33,14 +33,14 @@ DEPEND="
 	sys-libs/zlib
 	mpi? (
 		virtual/mpi
-		sci-libs/hdf5[mpi]
+		sci-libs/hdf5:=[mpi]
 	)
 	python? ( ${PYTHON_DEPS} )
 	sci-libs/voro++
 	virtual/blas
 	virtual/lapack
-	sci-libs/fftw:3.0
-	netcdf? ( sci-libs/netcdf )
+	sci-libs/fftw:3.0=
+	netcdf? ( sci-libs/netcdf:= )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
 	kokkos? ( =dev-cpp/kokkos-3.0* )
 	dev-cpp/eigen:3
