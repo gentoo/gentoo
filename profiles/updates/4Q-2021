@@ -68,3 +68,4 @@ move app-emulation/lxc-templates app-containers/lxc-templates
 move app-emulation/lxc app-containers/lxc
 move dev-libs/stp sci-mathematics/stp
 move app-shells/fzy app-text/fzy
+move dev-python/exdown dev-python/pytest-codeblocks
