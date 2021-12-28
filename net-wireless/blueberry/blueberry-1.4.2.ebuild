@@ -22,7 +22,7 @@ RDEPEND="${PYTHON_DEPS}
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		dev-python/setproctitle[${PYTHON_USEDEP}]
-		dev-python/xapp[${PYTHON_USEDEP}]
+		dev-python/python3-xapp[${PYTHON_USEDEP}]
 	')
 	>=net-wireless/gnome-bluetooth-3.14[introspection]
 	net-wireless/bluez[obex]
