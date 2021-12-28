@@ -29,10 +29,12 @@ BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
 src_compile() {
 	build () {
 		gprbuild -v -k -XLIBRARY_TYPE=$1 -XBUILD_MODE=prod \
-			-P src/lal_tools.gpr -p -j$(makeopts_jobs) || die
+			-P src/lal_tools.gpr -p -j$(makeopts_jobs) \
+			-cargs:Ada ${ADAFLAGS} || die
 		gprbuild -v -k -XLIBRARY_TYPE=$1 -XXMLADA_BUILD=$1 \
 			-XBUILD_MODE=prod -XLALTOOLS_SET=all \
-			-P src/build.gpr -p -j$(makeopts_jobs) || die
+			-P src/build.gpr -p -j$(makeopts_jobs) \
+			-cargs:Ada ${ADAFLAGS} || die
 	}
 	if use shared; then
 		build relocatable
