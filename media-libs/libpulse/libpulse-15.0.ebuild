@@ -41,7 +41,10 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-pulseaudio )
 	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )
-	X? ( >=x11-libs/libxcb-1.6[${MULTILIB_USEDEP}] )
+	X? (
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		>=x11-libs/libxcb-1.6[${MULTILIB_USEDEP}]
+	)
 	|| (
 		elibc_glibc? ( virtual/libc )
 		elibc_uclibc? ( virtual/libc )
