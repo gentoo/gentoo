@@ -14,6 +14,11 @@ LICENSE="BSD GPL-2"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 SLOT="0"
 
+# Same failure with 5.4.0.ebuild:
+# See reports at /var/tmp/portage/app-editors/jedit-5.4.0/work/jEdit/build/test/reports/index.html
+# "Failure" "No tests found in org.jedit.io.Native2ASCIIEncodingTest"
+RESTRICT="test"
+
 CP_DEPEND="dev-java/jsr305:0"
 
 # Restricting to java 1.8 as it fails to compile with newer java versions, https://bugs.gentoo.org/828559
