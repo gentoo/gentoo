@@ -11,7 +11,7 @@ SRC_URI="
 	http://www.rambau.wm.uni-bayreuth.de/Software/TOPCOM-${PV}.tar.gz
 	http://www.rambau.wm.uni-bayreuth.de/TOPCOM/TOPCOM-manual.html
 "
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="examples"
