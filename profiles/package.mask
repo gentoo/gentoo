@@ -238,7 +238,6 @@ dev-java/mojarra
 dev-java/neuroph
 dev-java/ognl
 dev-java/piccolo
-dev-java/portletapi
 
 # Hans de Graaff <graaff@gentoo.org> (2021-11-26)
 # Mask new rubygems version for testing. This version uses a new
