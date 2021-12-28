@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit distutils-r1
 
-DESCRIPTION="Python bindings for x11-libs/xapps"
+DESCRIPTION="Python bindings for x11-libs/xapp"
 HOMEPAGE="https://github.com/linuxmint/python3-xapp"
 SRC_URI="https://github.com/linuxmint/python3-xapp/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -17,7 +17,7 @@ KEYWORDS="amd64 ~arm64 ~riscv x86"
 IUSE=""
 
 DEPEND="
-	>=x11-libs/xapps-2.2.0[introspection]
+	>=x11-libs/xapp-2.2.0[introspection]
 "
 RDEPEND="
 	${DEPEND}

@@ -13,7 +13,6 @@ HOMEPAGE="https://github.com/linuxmint/xapp/"
 LICENSE="GPL-3"
 
 SRC_URI="https://github.com/linuxmint/xapp/archive/${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/xapp-${PV}"
 KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 SLOT="0"
