@@ -230,7 +230,6 @@ dev-java/jdynamite
 dev-java/jfreesvg
 dev-java/jgrapht
 dev-java/jmdns
-dev-java/jsr225
 
 # Hans de Graaff <graaff@gentoo.org> (2021-11-26)
 # Mask new rubygems version for testing. This version uses a new
