@@ -8,6 +8,7 @@ inherit toolchain-funcs
 DESCRIPTION="Repair and fix broken pcap files"
 HOMEPAGE="https://f00l.de/pcapfix/"
 SRC_URI="https://f00l.de/pcapfix/${P}.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-1.1.7-musl-stdint.patch.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -15,6 +16,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 DOCS=( Changelog README )
+
+PATCHES=(
+	"${WORKDIR}"/${PN}-1.1.7-musl-stdint.patch
+)
 
 src_prepare() {
 	default
