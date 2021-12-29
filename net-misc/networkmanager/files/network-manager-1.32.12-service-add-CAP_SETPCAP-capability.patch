@@ -1,0 +1,38 @@
+From 0a056943695c3d2c1cc5673fd38444781abf01de Mon Sep 17 00:00:00 2001
+From: Stijn Tintel <stijn@linux-ipv6.be>
+Date: Wed, 29 Dec 2021 02:07:44 +0200
+Subject: [PATCH] service: add CAP_SETPCAP capability
+
+The NetworkManager strongSwan and L2TP plugins fail due to not being
+able to drop capabilities:
+
+dec 29 01:42:36 sylvester charon-nm[15164]: 00[LIB] dropping capabilities failed: Operation not permitted
+dec 29 01:42:36 sylvester charon-nm[15164]: 00[DMN] capability dropping failed - aborting charon-nm
+
+dec 29 02:02:19 taz charon[2191488]: 00[LIB] dropping capabilities failed: Operation not permitted
+dec 29 02:02:19 taz charon[2191488]: 00[DMN] capability dropping failed - aborting charon
+
+Fix this by adding CAP_SETPCAP to the CapabilityBoundingSet parameter of
+the systemd unit file.
+
+Signed-off-by: Stijn Tintel <stijn@linux-ipv6.be>
+---
+ data/NetworkManager.service.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/NetworkManager.service.in b/data/NetworkManager.service.in
+index e23b3a5282..212817d787 100644
+--- a/data/NetworkManager.service.in
++++ b/data/NetworkManager.service.in
+@@ -16,7 +16,7 @@ Restart=on-failure
+ KillMode=process
+ 
+ # CAP_DAC_OVERRIDE: required to open /run/openvswitch/db.sock socket.
+-CapabilityBoundingSet=CAP_NET_ADMIN CAP_DAC_OVERRIDE CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SETGID CAP_SETUID CAP_SYS_MODULE CAP_AUDIT_WRITE CAP_KILL CAP_SYS_CHROOT
++CapabilityBoundingSet=CAP_NET_ADMIN CAP_DAC_OVERRIDE CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SETGID CAP_SETUID CAP_SYS_MODULE CAP_AUDIT_WRITE CAP_KILL CAP_SYS_CHROOT CAP_SETPCAP
+ 
+ ProtectSystem=true
+ ProtectHome=read-only
+-- 
+2.33.1
+
