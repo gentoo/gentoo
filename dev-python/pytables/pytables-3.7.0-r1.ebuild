@@ -22,7 +22,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~a
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
-# See https://github.com/PyTables/PyTables/issues/912 for hdf5 upper bound
 DEPEND="
 	app-arch/bzip2:0=
 	app-arch/lz4:0=
@@ -30,7 +29,7 @@ DEPEND="
 	>=dev-libs/c-blosc-1.11.1:0=
 	dev-libs/lzo:2=
 	>=dev-python/numpy-1.8.1[${PYTHON_USEDEP}]
-	<sci-libs/hdf5-1.12:=
+	>=sci-libs/hdf5-1.10:=
 "
 RDEPEND="${DEPEND}
 	>=dev-python/numexpr-2.5.2[${PYTHON_USEDEP}]
@@ -44,7 +43,7 @@ BDEPEND="
 	)
 "
 
-DOCS=( RELEASE_NOTES.txt THANKS )
+DOCS=( doc/source/release_notes.rst THANKS )
 
 python_prepare_all() {
 	export {BLOSC,BZIP2,LZO,HDF5}_DIR="${ESYSROOT}"/usr
@@ -72,6 +71,7 @@ python_install_all() {
 	if use doc; then
 		DOCS+=( doc/scripts )
 	fi
+
 	distutils-r1_python_install_all
 
 	if use examples; then
