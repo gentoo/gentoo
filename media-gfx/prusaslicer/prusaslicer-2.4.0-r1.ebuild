@@ -16,10 +16,8 @@ SRC_URI="https://github.com/prusa3d/${MY_PN}/archive/version_${PV}.tar.gz -> ${P
 LICENSE="AGPL-3 Boost-1.0 GPL-2 LGPL-3 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gui test"
+IUSE="test"
 
-# tests fail to link with USE=-gui, bug #760096
-REQUIRED_USE="test? ( gui )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -28,9 +26,12 @@ RDEPEND="
 	>=dev-libs/boost-1.73.0:=[nls,threads(+)]
 	dev-libs/cereal
 	dev-libs/expat
+	dev-libs/glib:2
 	dev-libs/gmp:=
 	dev-libs/mpfr:=
 	>=media-gfx/openvdb-8.2
+	net-misc/curl
+	media-libs/glew:0=
 	media-libs/ilmbase:=
 	media-libs/libpng:0=
 	media-libs/qhull:=
@@ -39,15 +40,10 @@ RDEPEND="
 	>=sci-mathematics/cgal-5.0:=
 	sys-apps/dbus
 	sys-libs/zlib:=
-	gui? (
-		dev-libs/glib:2
-		media-libs/glew:0=
-		net-misc/curl
-		virtual/glu
-		virtual/opengl
-		x11-libs/gtk+:3
-		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
-	)
+	virtual/glu
+	virtual/opengl
+	x11-libs/gtk+:3
+	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 "
 DEPEND="${RDEPEND}
 	media-libs/qhull[static-libs]
@@ -69,7 +65,7 @@ src_configure() {
 		-DSLIC3R_BUILD_TESTS=$(usex test)
 		-DSLIC3R_FHS=ON
 		-DSLIC3R_GTK=3
-		-DSLIC3R_GUI=$(usex gui)
+		-DSLIC3R_GUI=ON
 		-DSLIC3R_PCH=OFF
 		-DSLIC3R_STATIC=OFF
 		-DSLIC3R_WX_STABLE=ON
@@ -77,14 +73,4 @@ src_configure() {
 	)
 
 	cmake_src_configure
-}
-
-src_install() {
-	cmake_src_install
-
-	if use gui; then
-		newicon -s 128 resources/icons/PrusaSlicer_128px.png PrusaSlicer.png
-		newicon -s 128 resources/icons/PrusaSlicer-gcodeviewer_128px.png PrusaSlicer-gcodeviewer.png
-		domenu src/platform/unix/Prusa{Slicer,Gcodeviewer}.desktop
-	fi
 }
