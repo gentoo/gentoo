@@ -54,6 +54,7 @@ DEPEND="
 PATCHES=(
 	#"${FILESDIR}"/${PN}-3.3.7-gentoo-cmake.patch
 	"${FILESDIR}"/${PN}-3.3.9-max-macro.patch
+	"${FILESDIR}"/${P}-doc-nocompress.patch # bug 830064
 )
 
 src_prepare() {
