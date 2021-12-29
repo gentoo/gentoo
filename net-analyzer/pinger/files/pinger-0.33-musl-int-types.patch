@@ -1,0 +1,55 @@
+https://bugs.gentoo.org/712746
+--- a/src/globals.h
++++ b/src/globals.h
+@@ -93,8 +93,8 @@ typedef struct host_data_t
+     struct timeval lastok_tv;   /* timestamp of last ok echo */
+     int status;                 /* status of host, online, without reply, ... */
+     double delay;               /* ping latency in miliseconds */
+-    u_int last_seq_sent;        /* sequence nr. of last packet sent */
+-    u_int last_seq_recv;        /* sequence nr. of last packet received */
++    uint last_seq_sent;        /* sequence nr. of last packet sent */
++    uint last_seq_recv;        /* sequence nr. of last packet received */
+     unsigned long long nr_sent; /* number of send and received */
+     unsigned long long nr_recv;
+     int ok_delay;               /* time in ms, after we send next echo when OK (sucessfuly ping - ECHO REPLY) */
+--- a/src/ping.c
++++ b/src/ping.c
+@@ -35,10 +35,10 @@
+ #endif
+ 
+ /* Compute checksum for ICMP output buffer */
+-static u_short cksum(u_short * buf, u_int len)
++static unsigned short cksum(unsigned short * buf, unsigned int len)
+ {
+-    u_int sum = 0;
+-    u_short retval;
++    unsigned int sum = 0;
++    unsigned short retval;
+ 
+     /* 32 bit sum adds sequential 16 bit buffer parts */
+     while (len > 1) {
+@@ -51,12 +51,12 @@ static u_short cksum(u_short * buf, u_int len)
+ 
+         union
+         {
+-            u_short word;
+-            u_char byte;
++            unsigned short word;
++            unsigned char byte;
+         } odd;
+ 
+         odd.word = 0;
+-        odd.byte = *(u_char *) buf;
++        odd.byte = *(unsigned char *) buf;
+         sum += odd.word;
+     }
+ 
+@@ -189,7 +189,7 @@ int send_icmp_echo(host_data * host, hosts_data * hosts)
+     ich->checksum = 0;
+     ich->un.echo.sequence = ++host->last_seq_sent;
+     ich->un.echo.id = getpid() & 0xFFFF;
+-    ich->checksum = cksum((u_short *) outpacket, outpacket_len);
++    ich->checksum = cksum((unsigned short *) outpacket, outpacket_len);
+ 
+     if ((sendto
+          (host->rawfd, outpacket, outpacket_len, 0, (struct sockaddr *) &to,
