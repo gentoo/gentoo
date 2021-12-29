@@ -13,6 +13,7 @@ IUSE="systemd"
 
 RDEPEND="
 	!systemd? ( || (
+		sys-apps/systemd-utils:0/0[udev,${MULTILIB_USEDEP}]
 		>=sys-fs/udev-232:0/0[${MULTILIB_USEDEP}]
 		>=sys-fs/eudev-3.2.9:0/0[${MULTILIB_USEDEP}]
 	) )
