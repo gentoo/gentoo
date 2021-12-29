@@ -28,6 +28,7 @@ BDEPEND="
 	sys-devel/m4"
 
 MODS="application authlogin bootloader clock consoletype cron dmesg fstools getty hostname init iptables libraries locallogin logging lvm miscfiles modutils mount mta netutils nscd portage raid rsync selinuxutil setrans ssh staff storage su sysadm sysnetwork systemd tmpfiles udev userdomain usermanage unprivuser xdg"
+DEL_MODS="hotplug"
 LICENSE="GPL-2"
 SLOT="0"
 S="${WORKDIR}/"
@@ -58,6 +59,10 @@ src_prepare() {
 	for i in ${MODS}; do
 		modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.te) $modfiles"
 		modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.fc) $modfiles"
+	done
+
+	for i in ${DEL_MODS}; do
+		[[ "${MODS}" != *${i}* ]] || die "Duplicate module in MODS and DEL_MODS: ${i}"
 	done
 
 	for i in ${POLICY_TYPES}; do
@@ -111,6 +116,13 @@ pkg_postinst() {
 		cd "${ROOT}/usr/share/selinux/${i}"
 
 		semodule ${root_opts} -s ${i} ${COMMAND}
+
+		for mod in ${DEL_MODS}; do
+			if semodule ${root_opts} -s ${i} -l | grep -q "\b${mod}\b"; then
+				einfo "Removing obsolete ${i} ${mod} policy package"
+				semodule ${root_opts} -s ${i} -r ${mod}
+			fi
+		done
 	done
 
 	# Don't relabel when cross compiling
