@@ -59,7 +59,7 @@ src_prepare() {
 src_configure() {
 	CMAKE_BUILD_TYPE="Release"
 
-	use gui && setup-wxwidgets
+	setup-wxwidgets
 
 	local mycmakeargs=(
 		-DSLIC3R_BUILD_TESTS=$(usex test)
