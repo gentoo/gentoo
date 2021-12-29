@@ -9,6 +9,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 s
 
 RDEPEND="
 	|| (
+		sys-apps/systemd-utils[udev]
 		>=sys-fs/udev-217
 		>=sys-fs/eudev-2.1.1
 		>=sys-apps/systemd-217
