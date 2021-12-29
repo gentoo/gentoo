@@ -73,6 +73,7 @@ src_install() {
 	doins -r "${S}"/*
 	fperms -R a+rX "/usr/share/${PN}/public/"
 	fperms u+x,g+x "/usr/share/${PN}/bin/icingacli"
+	fowners root:icingaweb2 "/usr/share/${PN}/bin/icingacli"
 }
 
 pkg_postinst() {
