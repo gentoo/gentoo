@@ -11,7 +11,7 @@ SRC_URI="https://github.com/dosbox-staging/dosbox-staging/archive/v${PV}.tar.gz 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="+alsa debug dynrec +fluidsynth mt-32 network opengl test"
+IUSE="+alsa debug dynrec +fluidsynth mt-32 network opengl slirp test"
 
 RESTRICT="!test? ( test )"
 
@@ -24,6 +24,7 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 	mt-32? ( media-libs/munt-mt32emu )
 	network? ( media-libs/sdl2-net )
 	opengl? ( virtual/opengl )
+	slirp? ( net-libs/libslirp )
 	media-libs/libpng:0=
 	media-libs/libsdl2[joystick,opengl?,video,X]
 	media-libs/opusfile
@@ -58,6 +59,7 @@ src_configure() {
 		$(meson_use mt-32 use_mt32emu)
 		$(meson_use network use_sdl2_net)
 		$(meson_use opengl use_opengl)
+		$(meson_use slirp use_slirp)
 		$(meson_feature test unit_tests)
 	)
 	meson_src_configure
