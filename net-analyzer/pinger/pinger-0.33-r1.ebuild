@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit autotools epatch flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="Cyclic multi ping utility for selected adresses using GTK/ncurses"
 HOMEPAGE="http://aa.vslib.cz/silk/projekty/pinger/"
@@ -14,15 +14,11 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="gtk2 gtk3 ncurses nls"
 
-REQUIRED_USE="
-	|| ( gtk2 gtk3 ncurses )
-	?? ( gtk2 gtk3 )
-"
-GTK_DEPEND="
-	dev-libs/glib:2
-"
-RDEPEND="
-	gtk2? (
+REQUIRED_USE="|| ( gtk2 gtk3 ncurses )
+	?? ( gtk2 gtk3 )"
+
+GTK_DEPEND="dev-libs/glib:2"
+RDEPEND="gtk2? (
 		${GTK_DEPEND}
 		>=x11-libs/gtk+-2.4:2
 	)
@@ -30,17 +26,19 @@ RDEPEND="
 		${GTK_DEPEND}
 		>=x11-libs/gtk+-3.12:3
 	)
-	ncurses? ( sys-libs/ncurses )
-"
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+	ncurses? ( sys-libs/ncurses:= )"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( AUTHORS BUGS ChangeLog NEWS README )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-musl-int-types.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
+	default
 
 	sed -i -e '/Root privileges/d' src/Makefile.am || die
 
