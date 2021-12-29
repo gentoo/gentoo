@@ -1,0 +1,51 @@
+https://bugs.gentoo.org/823419
+
+Wanted to make this "proper" but Catch2 lacks a pkgconfig file (or a CMake one)
+and it's easier to just do this for now.
+
+Based on patch version of sed commands from upstream bug
+(https://github.com/puppetlabs/cpp-hocon/issues/132) and
+Fedora (https://src.fedoraproject.org/rpms/cpp-hocon/blob/rawhide/f/cpp-hocon.spec#_76).
+
+Makes tests conditional too.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,12 +16,16 @@ if (NOT CMAKE_BUILD_TYPE)
+     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
+ endif()
+ 
+-enable_testing()
+-
+ # Leatherman setup
+-set(LEATHERMAN_COMPONENTS locale catch nowide util)
++set(LEATHERMAN_COMPONENTS locale nowide util)
+ find_package(Leatherman REQUIRED COMPONENTS ${LEATHERMAN_COMPONENTS})
+ 
++option(BUILD_TESTING "Build test suite (needs Catch)" ON)
++
++if(BUILD_TESTING)
++    enable_testing()
++endif()
++
+ ## Before we find any packages, we want to pull in the common leatherman options, as they can affect commonly-used packages.
+ include(options)
+ ## Pull in common cflags setting from leatherman. Don't override CMAKE_CXX_FLAGS at the project root to avoid impacting 3rd party code.
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -91,4 +91,6 @@ symbol_exports(lib${PROJECT_NAME} "${CMAKE_CURRENT_LIST_DIR}/inc/hocon/export.h"
+ leatherman_install(lib${PROJECT_NAME})
+ install(DIRECTORY inc/hocon DESTINATION include)
+ 
+-add_subdirectory(tests)
++if (BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+--- a/lib/tests/CMakeLists.txt
++++ b/lib/tests/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ # Setup compiling the test executable. C++ compile flags are inherited from the parent directory.
+-include_directories(${LEATHERMAN_CATCH_INCLUDE})
++include_directories(@GENTOO_PORTAGE_EPREFIX@/usr/include/catch)
+ 
+ set(TEST_CASES
+     concatenation_test.cc
