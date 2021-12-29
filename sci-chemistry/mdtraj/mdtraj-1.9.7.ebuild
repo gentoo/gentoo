@@ -26,6 +26,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? (
+		dev-python/ipykernel[${PYTHON_USEDEP}]
 		dev-python/jupyter_client[${PYTHON_USEDEP}]
 		dev-python/nbformat[${PYTHON_USEDEP}]
 		sci-libs/scikit-learn[${PYTHON_USEDEP}]
