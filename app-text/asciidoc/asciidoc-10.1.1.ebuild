@@ -17,26 +17,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc test"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
-# lilypond segfaults for me?
-RESTRICT="!test? ( test ) test"
 
 RDEPEND="app-text/docbook-xml-dtd:4.5
 	>=app-text/docbook-xsl-stylesheets-1.75
 	dev-libs/libxslt
 	dev-libs/libxml2:2"
-BDEPEND="
-	test? (
-		app-text/dvipng
-		app-text/dvisvgm
-		dev-texlive/texlive-latex
-		dev-util/source-highlight
-		media-gfx/graphviz
-		media-sound/lilypond
-		virtual/imagemagick-tools[png]
-	)"
 
 DOC_CONTENTS="
 If you are going to use a2x, please also look at a2x(1) under
