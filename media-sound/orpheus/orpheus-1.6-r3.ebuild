@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -12,7 +12,6 @@ SRC_URI="http://konst.org.ua/download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-IUSE=""
 
 RDEPEND="sys-libs/ncurses:0=
 	media-libs/libvorbis
@@ -28,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-bufsize.patch
 	"${FILESDIR}"/${P}-gcc47.patch
 	"${FILESDIR}"/${P}-constify.patch
+	"${FILESDIR}"/${P}-musl-stdint.patch
 )
 
 src_prepare() {
