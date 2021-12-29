@@ -43,5 +43,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Enable and start the icinga-director.service systemd service."
+	elog "Please see the following documentation for installation"
+	elog "https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/02-Installation.md"
+	elog "or upgrading"
+	elog "https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/05-Upgrading.md"
 }
