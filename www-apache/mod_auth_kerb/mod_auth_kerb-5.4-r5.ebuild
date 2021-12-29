@@ -37,6 +37,8 @@ PATCHES=(
 
 	# bug #830208
 	"${FILESDIR}"/${P}-api-change-krb5.patch
+	# bug #673066
+	"${FILESDIR}"/${P}-krb5pwd-double-free.patch
 )
 
 # Work around Bug #616612
@@ -55,7 +57,8 @@ src_compile() {
 
 src_install() {
 	apache-module_src_install
-	dotmpfiles "${FILESDIR}/${PN}.conf"
+
+	dotmpfiles "${FILESDIR}"/${PN}.conf
 }
 
 pkg_postinst() {
