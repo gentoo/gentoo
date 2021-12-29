@@ -105,16 +105,15 @@ wrap_libcxx() {
 		-DLIBCXX_ENABLE_SHARED=OFF
 		-DLIBCXX_ENABLE_STATIC=ON
 		-DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=OFF
-		-DLIBCXXABI_USE_LLVM_UNWINDER=ON
 		-DLIBCXX_CXX_ABI=libcxxabi
 		-DLIBCXX_CXX_ABI_INCLUDE_PATHS="${WORKDIR}"/libcxxabi/include
 		-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
 		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
 		-DLIBCXX_HAS_GCC_S_LIB=OFF
 		-DLIBCXX_INCLUDE_TESTS=OFF
+		-DLIBCXX_INCLUDE_BENCHMARKS=OFF
 	)
 
-	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/libcxxabi/lib -L${BUILD_DIR}/$(get_libdir)"
 	local CMAKE_USE_DIR=${WORKDIR}/libcxx
 	local BUILD_DIR=${BUILD_DIR}/libcxx
 
@@ -129,7 +128,7 @@ multilib_src_test() {
 	wrap_libcxxabi cmake_src_configure
 	wrap_libcxxabi cmake_src_compile
 	wrap_libcxx cmake_src_compile
-	mv "${BUILD_DIR}"/libcxx*/lib/libc++* "${BUILD_DIR}/$(get_libdir)/" || die
+	mv "${BUILD_DIR}"/libcxx*/lib/libc++* "${BUILD_DIR}/lib/" || die
 
 	local -x LIT_PRESERVES_TMP=1
 	cmake_build check-unwind
