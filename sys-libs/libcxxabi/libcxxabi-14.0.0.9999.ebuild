@@ -31,7 +31,7 @@ BDEPEND="
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 	)"
 
-LLVM_COMPONENTS=( libcxx{abi,} llvm/cmake )
+LLVM_COMPONENTS=( libcxx{abi,} llvm/cmake cmake )
 llvm.org_set_globals
 
 python_check_deps() {
