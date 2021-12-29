@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Repair and fix broken pcap files"
 HOMEPAGE="https://f00l.de/pcapfix/"
@@ -18,17 +18,20 @@ IUSE="debug"
 DOCS=( Changelog README )
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.7-respect-CFLAGS.patch
 	"${WORKDIR}"/${PN}-1.1.7-musl-stdint.patch
 )
 
 src_prepare() {
 	default
-	sed -e 's/gcc/$(CC) $(CFLAGS)/g' -i Makefile || die
+
 	use debug || sed -e 's/DEBUGFLAGS = -g/DEBUGFLAGS =/g' -i Makefile || die
 }
 
 src_configure() {
 	tc-export CC
+
+	append-lfs-flags
 }
 
 src_install() {
