@@ -86,7 +86,10 @@ BDEPEND="
 	sys-devel/gettext
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-4.3.1-tests-optional.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.3.1-tests-optional.patch
+	"${FILESDIR}"/${PN}-5.0.0-clang.patch # bug 830225
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
