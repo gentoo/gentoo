@@ -28,6 +28,12 @@ If you are going to use a2x, please also look at a2x(1) under
 REQUISITES for a list of runtime dependencies.
 "
 
+src_install() {
+	distutils-r1_src_install
+
+	readme.gentoo_create_doc
+}
+
 pkg_postinst() {
 	readme.gentoo_print_elog
 
