@@ -55,6 +55,7 @@ multilib_src_configure() {
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 		-DLIBUNWIND_ENABLE_ASSERTIONS=$(usex debug)
 		-DLIBUNWIND_ENABLE_STATIC=$(usex static-libs)
+		-DLIBUNWIND_INSTALL_HEADERS=ON
 		-DLIBUNWIND_TARGET_TRIPLE="${CHOST}"
 		-DLLVM_INCLUDE_TESTS=$(usex test)
 
@@ -132,11 +133,4 @@ multilib_src_test() {
 
 	local -x LIT_PRESERVES_TMP=1
 	cmake_build check-unwind
-}
-
-multilib_src_install() {
-	cmake_src_install
-
-	# install headers like sys-libs/libunwind
-	doheader "${S}"/include/*.h
 }
