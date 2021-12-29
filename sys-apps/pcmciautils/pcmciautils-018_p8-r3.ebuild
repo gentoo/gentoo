@@ -24,6 +24,13 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${PN}-${MY_PV}
 
+PATCHES=(
+	"${WORKDIR}"/debian/patches/no-modprobe-rules.patch
+	"${WORKDIR}"/debian/patches/remove-libsysfs-dep.patch
+	"${FILESDIR}"/${P}-flex-2.6.3-fix.patch
+	"${FILESDIR}"/${PN}-018_p8-musl-unsigned-type.patch
+)
+
 pkg_setup() {
 	CONFIG_CHECK="~PCMCIA"
 	linux-info_pkg_setup
@@ -48,12 +55,6 @@ pkg_setup() {
 
 	use debug && append-cppflags -DDEBUG
 }
-
-PATCHES=(
-	"${WORKDIR}"/debian/patches/no-modprobe-rules.patch
-	"${WORKDIR}"/debian/patches/remove-libsysfs-dep.patch
-	"${FILESDIR}"/${P}-flex-2.6.3-fix.patch
-)
 
 src_prepare() {
 	default
