@@ -1,0 +1,48 @@
+Patch comes from
+  https://github.com/intel/intel-graphics-compiler/pull/210.patch
+
+From aa7df33aebe0ee01b1b4b5267398b1d3c54c6c11 Mon Sep 17 00:00:00 2001
+From: Bruno Pagani <bruno.n.pagani@gmail.com>
+Date: Mon, 18 Oct 2021 15:43:43 +0400
+Subject: [PATCH] lld: copy unwind only when building from source
+
+---
+ external/llvm/llvm_deps.cmake            | 6 ------
+ external/llvm/llvm_lld_source_hook.cmake | 7 +++++++
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/external/llvm/llvm_deps.cmake b/external/llvm/llvm_deps.cmake
+index 425d3766f0f..a02e039c464 100644
+--- a/external/llvm/llvm_deps.cmake
++++ b/external/llvm/llvm_deps.cmake
+@@ -44,12 +44,6 @@ include(llvm_spirv_source_hook)
+ # LLD source hook.
+ if(IGC_OPTION__LLVM_LLD)
+   include(llvm_lld_source_hook)
+-  if(NOT EXISTS "${IGC_LLVM_WORKSPACE_SRC}/libunwind/include/mach-o" AND ${IGC_OPTION__LLVM_PREFERRED_VERSION} GREATER_EQUAL "12.0.0")
+-    # Need to copy one header from unwind package for LLD (only for building from sources)
+-    file(MAKE_DIRECTORY ${IGC_LLVM_WORKSPACE_SRC}/libunwind/include/mach-o)
+-    file(COPY ${DEFAULT_IGC_LLVM_SOURCES_DIR}/libunwind/include/mach-o/compact_unwind_encoding.h
+-         DESTINATION ${IGC_LLVM_WORKSPACE_SRC}/libunwind/include/mach-o/)
+-  endif()
+ endif()
+ 
+ # Process LLVM.
+diff --git a/external/llvm/llvm_lld_source_hook.cmake b/external/llvm/llvm_lld_source_hook.cmake
+index 167d4d86a7f..120fab25b0c 100644
+--- a/external/llvm/llvm_lld_source_hook.cmake
++++ b/external/llvm/llvm_lld_source_hook.cmake
+@@ -47,5 +47,12 @@ if(NOT EXISTS "${IGC_COPIED_LLD_DIR}")
+   execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory ${IGC_OPTION__lld_SOURCES_DIR} ${IGC_COPIED_LLD_DIR})
+ endif()
+ 
++if(NOT EXISTS "${IGC_LLVM_WORKSPACE_SRC}/libunwind/include/mach-o" AND ${IGC_OPTION__LLVM_PREFERRED_VERSION} GREATER_EQUAL "12.0.0")
++  # Need to copy one header from unwind package for LLD (only for building from sources)
++  file(MAKE_DIRECTORY ${IGC_LLVM_WORKSPACE_SRC}/libunwind/include/mach-o)
++  file(COPY ${DEFAULT_IGC_LLVM_SOURCES_DIR}/libunwind/include/mach-o/compact_unwind_encoding.h
++       DESTINATION ${IGC_LLVM_WORKSPACE_SRC}/libunwind/include/mach-o/)
++endif()
++
+ # Just register lld as external llvm project.
+ register_llvm_external_project(lld ${IGC_COPIED_LLD_DIR})
+\ No newline at end of file

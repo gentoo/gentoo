@@ -1,0 +1,25 @@
+Patch comes from
+ https://github.com/intel/intel-graphics-compiler/pull/220.patch
+
+From 4ca5c60b6daf6320a8f23f8ba59e8b63777b997d Mon Sep 17 00:00:00 2001
+From: Bruno Pagani <bruno.n.pagani@gmail.com>
+Date: Fri, 3 Dec 2021 01:53:40 +0400
+Subject: [PATCH] Fix missing include
+
+Same as 6c805b241a4738de3d341d9b49abe9089294d754
+---
+ visa/LocalScheduler/SWSB_G4IR.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/visa/LocalScheduler/SWSB_G4IR.cpp b/visa/LocalScheduler/SWSB_G4IR.cpp
+index c7b5c8a6c72..bea91fc8670 100644
+--- a/visa/LocalScheduler/SWSB_G4IR.cpp
++++ b/visa/LocalScheduler/SWSB_G4IR.cpp
+@@ -16,6 +16,7 @@ SPDX-License-Identifier: MIT
+ #include <algorithm>
+ #include <fstream>
+ #include <functional>
++#include <limits>
+ #include <sstream>
+ #include <queue>
+ 
