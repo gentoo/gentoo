@@ -25,7 +25,7 @@ BDEPEND="
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 	)"
 
-LLVM_COMPONENTS=( libunwind libcxx llvm/cmake )
+LLVM_COMPONENTS=( libunwind libcxx llvm/cmake cmake )
 LLVM_TEST_COMPONENTS=( libcxxabi )
 llvm.org_set_globals
 
