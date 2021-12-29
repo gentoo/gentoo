@@ -91,7 +91,6 @@ multilib_src_configure() {
 }
 
 wrap_libcxx() {
-	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/$(get_libdir)"
 	local CMAKE_USE_DIR=${WORKDIR}/libcxx
 	local BUILD_DIR=${BUILD_DIR}/libcxx
 	local mycmakeargs=(
@@ -113,7 +112,7 @@ wrap_libcxx() {
 
 multilib_src_test() {
 	wrap_libcxx cmake_src_compile
-	mv "${BUILD_DIR}"/libcxx/lib/libc++* "${BUILD_DIR}/$(get_libdir)/" || die
+	mv "${BUILD_DIR}"/libcxx/lib/libc++* "${BUILD_DIR}/lib/" || die
 
 	local -x LIT_PRESERVES_TMP=1
 	cmake_build check-cxxabi
