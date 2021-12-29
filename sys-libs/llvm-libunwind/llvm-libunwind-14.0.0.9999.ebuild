@@ -67,17 +67,23 @@ multilib_src_configure() {
 		-DLIBUNWIND_USE_COMPILER_RT=${use_compiler_rt}
 	)
 	if use test; then
-		local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
-		[[ -n ${clang_path} ]] || die "Unable to find ${CHOST}-clang for tests"
-
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="$(get_lit_flags);--param=cxx_under_test=${clang_path}"
+			-DLLVM_LIT_ARGS="$(get_lit_flags)"
 			-DLIBUNWIND_LIBCXX_PATH="${WORKDIR}/libcxx"
 		)
 	fi
 
 	cmake_src_configure
+
+	if use test; then
+		local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
+		[[ -n ${clang_path} ]] || die "Unable to find ${CHOST}-clang for tests"
+
+		# meh, we need to override the compiler explicitly
+		sed -e "/%{cxx}/s@, '.*'@, '${clang_path}'@" \
+			-i "${BUILD_DIR}"/test/lit.site.cfg || die
+	fi
 }
 
 wrap_libcxxabi() {
