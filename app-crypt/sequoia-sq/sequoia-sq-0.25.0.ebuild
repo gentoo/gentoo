@@ -259,7 +259,7 @@ CRATES="
 inherit bash-completion-r1 cargo
 
 DESCRIPTION="CLI of the Sequoia OpenPGP implementation"
-HOMEPAGE="https://gitlab.com/sequoia-pgp/sequoia"
+HOMEPAGE="https://sequoia-pgp.org/ https://gitlab.com/sequoia-pgp/sequoia"
 
 SRC_URI="
 	https://gitlab.com/sequoia-pgp/sequoia/-/archive/sq/v${PV}/${PN}-v${PV}.tar.bz2
@@ -280,10 +280,12 @@ COMMON_DEPEND="
 	dev-libs/openssl:=
 "
 
-DEPEND="${COMMON_DEPEND}"
+DEPEND="
+	sys-devel/clang
+	${COMMON_DEPEND}
+"
 RDEPEND="${COMMON_DEPEND}"
 BDEPEND="
-	sys-devel/clang
 	virtual/pkgconfig
 "
 
