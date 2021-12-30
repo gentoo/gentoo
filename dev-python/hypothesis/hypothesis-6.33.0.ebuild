@@ -48,7 +48,7 @@ python_prepare() {
 python_test() {
 	# subtests are broken by warnings from random plugins
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	local -x PYTEST_PLUGINS=pytest_mock,xdist.plugin,pytest_forked,_hypothesis_pytestplugin
+	local -x PYTEST_PLUGINS=xdist.plugin,pytest_forked,_hypothesis_pytestplugin
 
 	distutils_install_for_testing
 	epytest tests/cover tests/pytest tests/quality \
