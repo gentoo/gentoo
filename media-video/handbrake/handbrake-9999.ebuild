@@ -31,16 +31,16 @@ RDEPEND="
 	dev-libs/jansson:=
 	dev-libs/libxml2
 	media-libs/a52dec
-	>=media-libs/dav1d-0.5.1
+	>=media-libs/dav1d-0.5.1:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libass:=
-	>=media-libs/libbluray-1.0
+	>=media-libs/libbluray-1.0:=
 	media-libs/libdvdnav
 	media-libs/libdvdread:=
 	media-libs/libsamplerate
 	media-libs/libtheora
 	media-libs/libvorbis
-	>=media-libs/libvpx-1.8
+	>=media-libs/libvpx-1.8:=
 	media-libs/opus
 	media-libs/speex
 	media-libs/x264:=
@@ -48,7 +48,7 @@ RDEPEND="
 	media-sound/lame
 	>=media-video/ffmpeg-4.2.1:0=[postproc,fdk?]
 	sys-libs/zlib
-	fdk? ( media-libs/fdk-aac )
+	fdk? ( media-libs/fdk-aac:= )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
