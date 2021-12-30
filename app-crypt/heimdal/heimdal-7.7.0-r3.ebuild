@@ -29,7 +29,10 @@ CDEPEND="
 	lmdb? ( dev-db/lmdb )
 	caps? ( sys-libs/libcap-ng )
 	>=dev-db/sqlite-3.8.2[${MULTILIB_USEDEP}]
-	>=sys-libs/e2fsprogs-libs-1.42.9[${MULTILIB_USEDEP}]
+	|| (
+		>=sys-fs/e2fsprogs-1.46.4-r51[${MULTILIB_USEDEP}]
+		sys-libs/e2fsprogs-libs[${MULTILIB_USEDEP}]
+	)
 	sys-libs/ncurses:0=
 	>=sys-libs/readline-6.2_p5-r1:0=[${MULTILIB_USEDEP}]
 	afs? ( net-fs/openafs )
