@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8,9} )
 PYTHON_REQ_USE="sqlite"  # bug 572440
@@ -17,10 +17,11 @@ HOMEPAGE="https://grass.osgeo.org/"
 EGIT_REPO_URI="https://github.com/OSGeo/grass.git"
 
 LICENSE="GPL-2"
-SLOT="0/7.9"
-IUSE="blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl openmp png postgres readline sqlite threads tiff truetype X zstd"
+SLOT="0/8.0"
+IUSE="blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype X zstd"
 REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}"
+	${PYTHON_REQUIRED_USE}
+	opengl? ( X )"
 
 RDEPEND="
 	${PYTHON_DEPS}
@@ -42,13 +43,14 @@ RDEPEND="
 		virtual/blas[eselect-ldso(+)]
 	)
 	fftw? ( sci-libs/fftw:3.0= )
-	geos? ( sci-libs/geos )
+	geos? ( sci-libs/geos:= )
 	lapack? ( virtual/lapack[eselect-ldso(+)] )
 	liblas? ( sci-geosciences/liblas )
 	mysql? ( dev-db/mysql-connector-c:= )
 	netcdf? ( sci-libs/netcdf:= )
 	odbc? ( dev-db/unixODBC )
 	opencl? ( virtual/opencl )
+	opengl? ( virtual/opengl )
 	png? ( media-libs/libpng:0= )
 	postgres? ( >=dev-db/postgresql-8.4:= )
 	readline? ( sys-libs/readline:0= )
@@ -57,7 +59,7 @@ RDEPEND="
 	truetype? ( media-libs/freetype:2 )
 	X? (
 		dev-python/wxpython:4.0
-		x11-libs/cairo[X,opengl]
+		x11-libs/cairo[X,opengl?]
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libX11
@@ -150,6 +152,7 @@ src_configure() {
 		$(use_with mysql)
 		$(use_with mysql mysql-includes "${EPREFIX}"/usr/include/mysql)
 		$(use_with sqlite)
+		$(use_with opengl)
 		$(use_with odbc)
 		$(use_with fftw)
 		$(use_with blas)
