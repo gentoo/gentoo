@@ -13,9 +13,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86"
 
-DEPEND="$(unpacker_src_uri_depends)"
+BDEPEND="$(unpacker_src_uri_depends)"
 
-DOCS="AUTHORS ChangeLog NEWS README"
+DOCS=( AUTHORS ChangeLog NEWS README )
 
 src_configure() {
 	# ./configure is not based on autotools
@@ -27,8 +27,13 @@ src_configure() {
 		--prefix=/usr || die
 }
 
+src_compile() {
+	emake AR="$(tc-getAR)"
+}
+
 src_install() {
 	default
+
 	doman doc/${PN}.1
 	doinfo doc/${PN}.info
 }

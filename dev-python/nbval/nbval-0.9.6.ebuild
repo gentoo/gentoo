@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="A py.test plugin to validate Jupyter notebooks"
@@ -25,13 +25,14 @@ RDEPEND="
 "
 BDEPEND="test? ( dev-python/sympy[${PYTHON_USEDEP}] )"
 
-distutils_enable_tests pytest
+distutils_enable_tests --install pytest
 
 python_test() {
+	distutils_install_for_testing
 	local deselect=(
 		--deselect tests/test_ignore.py::test_conf_ignore_stderr
 		--deselect tests/test_timeouts.py::test_timeouts
 	)
 
-	pytest -vv "${deselect[@]}" || die "Tests failed with ${EPYTHON}"
+	epytest "${deselect[@]}"
 }

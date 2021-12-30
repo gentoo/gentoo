@@ -1,0 +1,24 @@
+From e1b2760966b738f1d467013272035433f1666406 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 27 Dec 2021 15:25:25 +0100
+Subject: [PATCH] Fix duplicate "Type" key
+
+Introduced by 542dcd306e236ec776a81e389d0a601387739e48
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ plugins/impex/jp2/krita_jp2.desktop | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/plugins/impex/jp2/krita_jp2.desktop b/plugins/impex/jp2/krita_jp2.desktop
+index 26c448f48b..7de190b247 100644
+--- a/plugins/impex/jp2/krita_jp2.desktop
++++ b/plugins/impex/jp2/krita_jp2.desktop
+@@ -120,4 +120,3 @@ Icon=krita
+ StartupNotify=true
+ NoDisplay=true
+ Terminal=false
+-Type=Application
+-- 
+GitLab
+

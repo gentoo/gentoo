@@ -25,7 +25,7 @@ BDEPEND="
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 	)"
 
-LLVM_COMPONENTS=( libunwind libcxx llvm/cmake )
+LLVM_COMPONENTS=( libunwind libcxx llvm/cmake cmake )
 LLVM_TEST_COMPONENTS=( libcxxabi )
 llvm.org_set_globals
 
@@ -55,6 +55,7 @@ multilib_src_configure() {
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 		-DLIBUNWIND_ENABLE_ASSERTIONS=$(usex debug)
 		-DLIBUNWIND_ENABLE_STATIC=$(usex static-libs)
+		-DLIBUNWIND_INSTALL_HEADERS=ON
 		-DLIBUNWIND_TARGET_TRIPLE="${CHOST}"
 		-DLLVM_INCLUDE_TESTS=$(usex test)
 
@@ -66,17 +67,23 @@ multilib_src_configure() {
 		-DLIBUNWIND_USE_COMPILER_RT=${use_compiler_rt}
 	)
 	if use test; then
-		local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
-		[[ -n ${clang_path} ]] || die "Unable to find ${CHOST}-clang for tests"
-
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="$(get_lit_flags);--param=cxx_under_test=${clang_path}"
+			-DLLVM_LIT_ARGS="$(get_lit_flags)"
 			-DLIBUNWIND_LIBCXX_PATH="${WORKDIR}/libcxx"
 		)
 	fi
 
 	cmake_src_configure
+
+	if use test; then
+		local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
+		[[ -n ${clang_path} ]] || die "Unable to find ${CHOST}-clang for tests"
+
+		# meh, we need to override the compiler explicitly
+		sed -e "/%{cxx}/s@, '.*'@, '${clang_path}'@" \
+			-i "${BUILD_DIR}"/test/lit.site.cfg || die
+	fi
 }
 
 wrap_libcxxabi() {
@@ -104,16 +111,15 @@ wrap_libcxx() {
 		-DLIBCXX_ENABLE_SHARED=OFF
 		-DLIBCXX_ENABLE_STATIC=ON
 		-DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=OFF
-		-DLIBCXXABI_USE_LLVM_UNWINDER=ON
 		-DLIBCXX_CXX_ABI=libcxxabi
 		-DLIBCXX_CXX_ABI_INCLUDE_PATHS="${WORKDIR}"/libcxxabi/include
 		-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
 		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
 		-DLIBCXX_HAS_GCC_S_LIB=OFF
 		-DLIBCXX_INCLUDE_TESTS=OFF
+		-DLIBCXX_INCLUDE_BENCHMARKS=OFF
 	)
 
-	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/libcxxabi/lib -L${BUILD_DIR}/$(get_libdir)"
 	local CMAKE_USE_DIR=${WORKDIR}/libcxx
 	local BUILD_DIR=${BUILD_DIR}/libcxx
 
@@ -128,15 +134,8 @@ multilib_src_test() {
 	wrap_libcxxabi cmake_src_configure
 	wrap_libcxxabi cmake_src_compile
 	wrap_libcxx cmake_src_compile
-	mv "${BUILD_DIR}"/libcxx*/lib/libc++* "${BUILD_DIR}/$(get_libdir)/" || die
+	mv "${BUILD_DIR}"/libcxx*/lib/libc++* "${BUILD_DIR}/lib/" || die
 
 	local -x LIT_PRESERVES_TMP=1
 	cmake_build check-unwind
-}
-
-multilib_src_install() {
-	cmake_src_install
-
-	# install headers like sys-libs/libunwind
-	doheader "${S}"/include/*.h
 }

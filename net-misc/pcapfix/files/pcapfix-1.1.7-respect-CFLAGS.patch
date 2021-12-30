@@ -1,0 +1,21 @@
+https://github.com/Rup0rt/pcapfix/pull/27
+
+From: Sam James <sam@gentoo.org>
+Date: Wed, 29 Dec 2021 06:48:09 +0000
+Subject: [PATCH] build: respect CFLAGS
+
+Allow overriding in the environment by using our value
+as just a default.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Makefile
++++ b/Makefile
+@@ -6,7 +6,7 @@ MANDIR ?= $(PREFIX)/share/man
+ OPTFLAGS = $(shell getconf LFS_CFLAGS) -D_FORTIFY_SOURCE=2 -O2 -fstack-protector --param=ssp-buffer-size=4
+ WARNFLAGS = -Wall -Wextra -std=gnu99 -pedantic -Wformat -Werror=format-security
+ DEBUGFLAGS = -g
+-CFLAGS += $(OPTFLAGS) $(WARNFLAGS) $(DEBUGFLAGS)
++CFLAGS ?= $(OPTFLAGS) $(WARNFLAGS) $(DEBUGFLAGS)
+ 
+ # Determine extra LDFLAGS
+ OS := $(shell uname)

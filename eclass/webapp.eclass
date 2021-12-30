@@ -4,14 +4,14 @@
 # @ECLASS: webapp.eclass
 # @MAINTAINER:
 # web-apps@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: functions for installing applications to run under a web server
 # @DESCRIPTION:
 # The webapp eclass contains functions to handle web applications with
 # webapp-config. Part of the implementation of GLEP #11
 
 case ${EAPI:-0} in
-	[567]) ;;
+	[5678]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -24,7 +24,7 @@ _WEBAPP_ECLASS=1
 # @DESCRIPTION:
 # An ebuild should use WEBAPP_DEPEND if a custom DEPEND needs to be built, most
 # notably in combination with WEBAPP_OPTIONAL.
-WEBAPP_DEPEND=">=app-admin/webapp-config-1.50.15"
+WEBAPP_DEPEND="app-admin/webapp-config"
 
 # @ECLASS-VARIABLE: WEBAPP_NO_AUTO_INSTALL
 # @PRE_INHERIT

@@ -22,7 +22,7 @@ S="${WORKDIR}"
 
 LICENSE="NVIDIA-r2 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
 SLOT="0/${PV%%.*}"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE="+X abi_x86_32 abi_x86_64 +driver persistenced static-libs +tools wayland"
 
 COMMON_DEPEND="
@@ -243,9 +243,22 @@ src_install() {
 	local DISABLE_AUTOFORMATTING=yes
 	local DOC_CONTENTS="\
 Trusted users should be in the 'video' group to use NVIDIA devices.
-You can add yourself by using: gpasswd -a my-user video
+You can add yourself by using: gpasswd -a my-user video\
+$(usex driver "
 
-See '${EPREFIX}/etc/modprobe.d/nvidia.conf' for modules options.\
+Like all out-of-tree kernel modules, it is necessary to rebuild
+${PN} after upgrading or rebuilding the Linux kernel
+by for example running \`emerge @module-rebuild\`. Alternatively,
+if using a distribution kernel (sys-kernel/gentoo-kernel{,-bin}),
+this can be automated by setting USE=dist-kernel globally.
+
+Loaded kernel modules also must not mismatch with the installed
+${PN} version (excluding -r revision), meaning should
+ensure \`eselect kernel list\` points to the kernel that will be
+booted before building and preferably reboot after upgrading
+${PN} (the ebuild will emit a warning if mismatching).
+
+See '${EPREFIX}/etc/modprobe.d/nvidia.conf' for modules options." '')\
 $(use amd64 && usex abi_x86_32 '' "
 
 Note that without USE=abi_x86_32 on ${PN}, 32bit applications
@@ -429,21 +442,5 @@ pkg_postinst() {
 		elog
 		elog "This version of ${PN} only supports EGLStream which is only"
 		elog "supported by a few wayland compositors (e.g. kwin / mutter, not sway)."
-	fi
-
-	# Try to show this message only to users that may really need it
-	# given the workaround is discouraged and usage isn't widespread.
-	if use X && [[ ${REPLACING_VERSIONS} ]] &&
-		ver_test ${REPLACING_VERSIONS} -lt 460.73.01 &&
-		grep -qr Coolbits "${EROOT}"/etc/X11/{xorg.conf,xorg.conf.d/*.conf} 2>/dev/null; then
-		elog
-		elog "Coolbits support with ${PN} has been restricted to require Xorg"
-		elog "with root privilege by NVIDIA (being in video group is not sufficient)."
-		elog "e.g. attempting to change fan speed with nvidia-settings would fail."
-		elog
-		elog "Depending on your display manager (e.g. sddm starts X as root, gdm doesn't)"
-		elog "or if using startx, it may be necessary to emerge x11-base/xorg-server with"
-		elog 'USE="suid -elogind -systemd" if wish to keep using this feature.'
-		elog "Bug: https://bugs.gentoo.org/784248"
 	fi
 }

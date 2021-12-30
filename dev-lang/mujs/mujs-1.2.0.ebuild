@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+inherit flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="An embeddable JavaScript interpreter written in C"
 HOMEPAGE="https://mujs.com/ https://github.com/ccxvii/mujs"
@@ -55,14 +55,7 @@ src_install() {
 		prefix=/usr \
 		install-shared
 
-	# TODO: Tidy up this logic, improve readability
-	if [[ ${CHOST} == *-darwin* ]] ; then
-		mv -v "${ED}"/usr/$(get_libdir)/lib${PN}.so "${ED}"/usr/$(get_libdir)/lib${PN}.${PV}.dylib || die
-		dosym lib${PN}.${PV}.dylib /usr/$(get_libdir)/lib${PN}.dylib
-		dosym lib${PN}.${PV}.dylib /usr/$(get_libdir)/lib${PN}.${PV:0:1}.dylib
-	else
-		mv -v "${ED}"/usr/$(get_libdir)/lib${PN}.so{,.${PV}} || die
-		dosym lib${PN}.so.${PV} /usr/$(get_libdir)/lib${PN}.so
-		dosym lib${PN}.so.${PV} /usr/$(get_libdir)/lib${PN}.so.${PV:0:1}
-	fi
+	mv -v "${ED}"/usr/$(get_libdir)/lib${PN}$(get_libname) "${ED}"/usr/$(get_libdir)/lib${PN}$(get_libname ${PV}) || die "Failed adding version suffix to mujs shared library"
+	dosym lib${PN}$(get_libname ${PV}) /usr/$(get_libdir)/lib${PN}$(get_libname)
+	dosym lib${PN}$(get_libname ${PV}) /usr/$(get_libdir)/lib${PN}$(get_libname ${PV:0:1})
 }

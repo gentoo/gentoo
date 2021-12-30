@@ -5,4 +5,5 @@
     <email>xemacs@gentoo.org</email>
     <name>Gentoo XEmacs project</name>
   </maintainer>
+  <stabilize-allarches/>
 </pkgmetadata>

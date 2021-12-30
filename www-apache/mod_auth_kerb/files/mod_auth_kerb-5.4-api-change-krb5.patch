@@ -1,0 +1,73 @@
+https://sources.debian.org/data/main/liba/libapache-mod-auth-kerb/5.4-2.5/debian/patches/0011-Always-use-NONE-replay-cache-type.patch
+https://bugs.gentoo.org/830208
+
+From: Sam Hartman <hartmans@debian.org>
+Date: Mon, 23 Nov 2020 09:30:22 -0500
+Subject: Always use NONE replay cache type
+
+It's 2020.  Any MIT Kerberos in the wild supports the none replay
+cache type.  The previous code used an internal function to detect
+that replay cache type; that function is no longer available.
+Instead, assume it is present.
+
+An alternative would be to enable the default replay cache.  It was
+originally disabled because of problems between Microsoft
+authenticators and 2004-era MIT Kerberos 1.3.  That's probably a good
+idea.  It probably closes off security attacks, although analyzing the
+impact of replays in cases where neither channel binding nor
+per-message services are used is difficult.  I believe that a replay
+cache is not strictly necessary in the common configuration where
+mod-auth-kerb is used over a TLS-protected connection where the client
+properly verifies the TLS certificate presented by the server prior to
+sending a GSS token.
+
+I have elected not to enable replay cache to affect a minimal change.
+--- a/src/mod_auth_kerb.c
++++ b/src/mod_auth_kerb.c
+@@ -2061,28 +2061,6 @@
+    return ret;
+ }
+ 
+-static int
+-have_rcache_type(const char *type)
+-{
+-   krb5_error_code ret;
+-   krb5_context context;
+-   krb5_rcache id = NULL;
+-   int found;
+-
+-   ret = krb5_init_context(&context);
+-   if (ret)
+-      return 0;
+-
+-   ret = krb5_rc_resolve_full(context, &id, "none:");
+-   found = (ret == 0);
+-
+-   if (ret == 0)
+-      krb5_rc_destroy(context, id);
+-   krb5_free_context(context);
+-
+-   return found;
+-}
+-
+ /*************************************************************************** 
+  Module Setup/Configuration
+  ***************************************************************************/
+@@ -2143,7 +2121,7 @@
+ #ifndef HEIMDAL
+    /* Suppress the MIT replay cache.  Requires MIT Kerberos 1.4.0 or later.
+       1.3.x are covered by the hack overiding the replay calls */
+-   if (getenv("KRB5RCACHETYPE") == NULL && have_rcache_type("none"))
++   if (getenv("KRB5RCACHETYPE") == NULL)
+       putenv(strdup("KRB5RCACHETYPE=none"));
+ #endif
+ }
+@@ -2185,7 +2163,7 @@
+ #ifndef HEIMDAL
+    /* Suppress the MIT replay cache.  Requires MIT Kerberos 1.4.0 or later.
+       1.3.x are covered by the hack overiding the replay calls */
+-   if (getenv("KRB5RCACHETYPE") == NULL && have_rcache_type("none"))
++   if (getenv("KRB5RCACHETYPE") == NULL)
+       putenv(strdup("KRB5RCACHETYPE=none"));
+ #endif
+ #ifdef STANDARD20_MODULE_STUFF

@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-19)
+# java-virtuals and packages without consumers. 
+# Bug #828719. Removal in 30 days.
+java-virtuals/ejb-api
+java-virtuals/saaj-api
+java-virtuals/transaction-api
+java-virtuals/xmlrpc-api
+dev-java/jsr67
+dev-java/glassfish-ejb-api
+
 # Mike Gilbert <floppym@gentoo.org> (2021-12-24)
 # Replaced by sys-apps/hwdata. Removal on 2022-01-23.
 sys-apps/hwids
@@ -216,33 +226,6 @@ dev-python/python-fcl
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-11-30)
 # No revdeps, bug #774498; masked for removal on 2021-12-30.
 dev-libs/qrosscore
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-28)
-# Libraries without consumers. Removal in 30 days.
-dev-java/commons-pool
-dev-java/dict4j
-dev-java/felix-gogo-command
-dev-java/jama
-dev-java/janino
-dev-java/jchardet
-dev-java/jcommon
-dev-java/jdynamite
-dev-java/jfreesvg
-dev-java/jgrapht
-dev-java/jmdns
-dev-java/jsr225
-dev-java/jsr311-api
-dev-java/jsr322
-dev-java/jung
-dev-java/mojarra
-dev-java/neuroph
-dev-java/ognl
-dev-java/piccolo
-dev-java/portletapi
-dev-java/vldocking
-dev-java/ws-commons-util
-dev-java/xml-security
-dev-java/xmpcore
 
 # Hans de Graaff <graaff@gentoo.org> (2021-11-26)
 # Mask new rubygems version for testing. This version uses a new

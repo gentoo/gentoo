@@ -29,10 +29,10 @@ RDEPEND="
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	')
-	sci-libs/gdal
-	sys-libs/gdbm
+	sci-libs/gdal:=
+	sys-libs/gdbm:=
 	sys-libs/ncurses:0=
-	sci-libs/proj
+	sci-libs/proj:=
 	sci-libs/xdrfile
 	sys-libs/zlib
 	media-libs/libglvnd
@@ -46,7 +46,7 @@ RDEPEND="
 	lapack? ( virtual/lapack[eselect-ldso(+)] )
 	liblas? ( sci-geosciences/liblas )
 	mysql? ( dev-db/mysql-connector-c:= )
-	netcdf? ( sci-libs/netcdf )
+	netcdf? ( sci-libs/netcdf:= )
 	odbc? ( dev-db/unixODBC )
 	opencl? ( virtual/opencl )
 	png? ( media-libs/libpng:0= )

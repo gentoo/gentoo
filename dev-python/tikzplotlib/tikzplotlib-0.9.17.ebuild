@@ -25,8 +25,8 @@ RDEPEND="
 
 BDEPEND="
 	test? (
-		dev-python/exdown[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
+		dev-python/pytest-codeblocks[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
 	)"
 
