@@ -32,14 +32,14 @@ RDEPEND="
 	dev-libs/libxml2
 	media-libs/a52dec
 	media-libs/libass:=
-	>=media-libs/libbluray-1.0
-	>=media-libs/dav1d-0.5.1
+	>=media-libs/libbluray-1.0:=
+	>=media-libs/dav1d-0.5.1:=
 	media-libs/libdvdnav
 	media-libs/libdvdread:=
 	media-libs/libsamplerate
 	media-libs/libtheora
 	media-libs/libvorbis
-	>=media-libs/libvpx-1.8
+	>=media-libs/libvpx-1.8:=
 	nvenc? ( media-libs/nv-codec-headers )
 	media-libs/opus
 	media-libs/x264:=
@@ -67,7 +67,7 @@ RDEPEND="
 		x11-libs/libnotify
 		x11-libs/pango
 	)
-	fdk? ( media-libs/fdk-aac )
+	fdk? ( media-libs/fdk-aac:= )
 	x265? ( >=media-libs/x265-3.2:0=[10bit,12bit,numa?] )"
 
 DEPEND="${RDEPEND}
@@ -88,6 +88,9 @@ PATCHES=(
 
 	# Fix x265 linkage... again again #730034
 	"${FILESDIR}/${PN}-1.3.3-x265-link.patch"
+
+	# Fix missing audio stream when using MPEG-4 avformat with ffmpeg-4.4 #791220
+	"${FILESDIR}/${PN}-1.3.3-libhb-fix-audio-encoders-when-linking-to-FFmpeg-4.4.patch"
 )
 
 src_prepare() {
