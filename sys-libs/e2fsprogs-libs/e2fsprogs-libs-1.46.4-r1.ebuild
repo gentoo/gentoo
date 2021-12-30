@@ -17,9 +17,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="static-libs"
 
-RDEPEND="!sys-libs/com_err
-	!sys-libs/ss
-	!<sys-fs/e2fsprogs-1.41.8"
+RDEPEND="!>=sys-fs/e2fsprogs-1.46.4-r51"
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
