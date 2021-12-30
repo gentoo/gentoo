@@ -7,15 +7,15 @@ EAPI=6
 #hackport: flags: -generatemanpage,-testing,-profiling
 
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
-inherit haskell-cabal
+inherit haskell-cabal git-r3
 
 DESCRIPTION="A tiling window manager"
 HOMEPAGE="https://xmonad.org"
-SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/xmonad/xmonad"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="no-autorepeat-keys"
 
 RDEPEND="dev-haskell/data-default:=[profile?]
@@ -23,7 +23,7 @@ RDEPEND="dev-haskell/data-default:=[profile?]
 	dev-haskell/mtl:=[profile?]
 	dev-haskell/setlocale:=[profile?]
 	>=dev-haskell/utf8-string-0.3:=[profile?] <dev-haskell/utf8-string-1.1:=[profile?]
-	>=dev-haskell/x11-1.8:=[profile?] <dev-haskell/x11-1.10:=[profile?]
+	>=dev-haskell/x11-1.10:=[profile?]
 	>=dev-lang/ghc-8.0.1:=
 "
 DEPEND="${RDEPEND}
