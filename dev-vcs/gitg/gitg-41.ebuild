@@ -52,6 +52,10 @@ src_prepare() {
 	default
 	vala_src_prepare
 	xdg_environment_reset
+
+	# it doesn't do anything in DESTDIR mode, except for failing
+	# when python3 symlink is not present
+	echo "#!/bin/sh" > meson_post_install.py || die
 }
 
 src_configure() {
