@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>idl0r@gentoo.org</email>
-		<name>Christian Ruppert</name>
+		<email>robbat2@gentoo.org</email>
+		<name>Robin H. Johnson</name>
 	</maintainer>
 	<longdescription lang="en">
 	Gitolite is an access control layer on top of git, which allows access
