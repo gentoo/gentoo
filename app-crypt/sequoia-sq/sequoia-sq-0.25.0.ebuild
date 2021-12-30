@@ -282,6 +282,10 @@ COMMON_DEPEND="
 
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
+BDEPEND="
+	sys-devel/clang
+	virtual/pkgconfig
+"
 
 src_compile() {
 	cd sq || die
