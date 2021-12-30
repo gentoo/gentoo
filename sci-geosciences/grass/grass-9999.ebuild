@@ -218,13 +218,11 @@ src_install() {
 		sed -i "s|${ED}|/|g" "${scriptMakeDir}/${file}" || die
 	done
 
-	mv ${D}/usr/bin/grass ${D}/usr/bin/${MY_PM} || die
-
 	# get proper folder for grass path in script
 	local gisbase=/usr/$(get_libdir)/${MY_PM}
 	sed -e "s:GISBASE = os.path.normpath(\"${D}/usr/$(get_libdir)/${MY_PM}\"):\
 GISBASE = os.path.normpath(\"${gisbase}\"):" \
-		-i "${ED}"/usr/bin/${MY_PM} || die
+		-i "${ED}"/usr/bin/grass || die
 
 	# get proper fonts path for fontcap
 	sed -i \
@@ -234,7 +232,7 @@ GISBASE = os.path.normpath(\"${gisbase}\"):" \
 	# set proper python interpreter
 	sed -e "s:os.environ\[\"GRASS_PYTHON\"\] = \"python3\":\
 os.environ\[\"GRASS_PYTHON\"\] = \"${EPYTHON}\":" \
-		-i "${ED}"/usr/bin/${MY_PM} || die
+		-i "${ED}"/usr/bin/grass || die
 
 	# set proper GISDBASE directory path in the demolocation .grassrc80 file
 	sed -e "s:GISDBASE\:.*$:GISDBASE\: ${gisbase}:" \
@@ -243,7 +241,7 @@ os.environ\[\"GRASS_PYTHON\"\] = \"${EPYTHON}\":" \
 	if use X; then
 		local GUI="-gui"
 		[[ ${WX_BUILD} == yes ]] && GUI="-wxpython"
-		make_desktop_entry "/usr/bin/${MY_PM} ${GUI}" "${PN}" "${PN}-48x48" "Science;Education"
+		make_desktop_entry "/usr/bin/grass ${GUI}" "${PN}" "${PN}-48x48" "Science;Education"
 		doicon -s 48 gui/icons/${PN}-48x48.png
 	fi
 
