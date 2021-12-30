@@ -81,7 +81,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	# bug 746590
-	"${FILESDIR}/${PN}-7.8-flock.patch"
+	"${FILESDIR}/${PN}-flock.patch"
 )
 
 pkg_setup() {
