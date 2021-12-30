@@ -25,7 +25,7 @@ RDEPEND="dev-haskell/extensible-exceptions:=[profile?]
 	dev-haskell/random:=[profile?]
 	dev-haskell/semigroups:=[profile?]
 	dev-haskell/utf8-string:=[profile?]
-	=dev-haskell/x11-1.10.1:=[profile?] <dev-haskell/x11-1.10:=[profile?]
+	>=dev-haskell/x11-1.10:=[profile?] <dev-haskell/x11-1.11:=[profile?]
 	>=dev-lang/ghc-8.0.1:=
 	>=x11-wm/xmonad-0.16:=[profile?] <x11-wm/xmonad-0.18:=[profile?]
 	xft? ( >=dev-haskell/x11-xft-0.2:=[profile?] )
