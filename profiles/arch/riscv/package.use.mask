@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Yongxinag Liang <tanekliang@gmail.com> (2021-12-30)
+# untested.
+net-misc/vinagre spice
+
 # Alex Fan <alex.fan.q@gmail.com> (2021-12-28)
 # dev-lang/julia doesn't support riscv yet
 sci-mathematics/singular julia
