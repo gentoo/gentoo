@@ -22,7 +22,7 @@ SRC_URI="https://github.com/webmproject/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="BSD"
 SLOT="0/7"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc +highbitdepth postproc static-libs test +threads"
+IUSE="cpu_flags_ppc_vsx3 doc +highbitdepth postproc static-libs test +threads"
 
 REQUIRED_USE="test? ( threads )"
 
@@ -94,6 +94,9 @@ multilib_src_configure() {
 		myconfargs+=( --force-target=arm64-linux-gcc )
 	elif [[ ${ABI} == arm ]] && [[ ${CHOST} == *armv7* ]] ; then
 		myconfargs+=( --force-target=armv7-linux-gcc )
+	elif [[ ${ABI} == ppc64 ]] && [[ $(tc-endian) != big ]] && use cpu_flags_ppc_vsx3; then
+		# only enable this target for at least power9 CPU running little-endian
+		myconfargs+=( --force-target=ppc64le-linux-gcc ) 
 	else
 		myconfargs+=( --force-target=generic-gnu )
 	fi
