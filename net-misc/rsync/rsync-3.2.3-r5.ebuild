@@ -10,7 +10,7 @@ fi
 
 WANT_LIBTOOL=none
 
-inherit autotools prefix systemd
+inherit autotools flag-o-matic prefix systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"
 HOMEPAGE="https://rsync.samba.org/"
@@ -47,6 +47,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# Force enable IPv6 on musl - upstream bug:
+	# https://bugzilla.samba.org/show_bug.cgi?id=10715
+	use elibc_musl && use ipv6 && append-cppflags -DINET6
+
 	local myeconfargs=(
 		--with-rsyncd-conf="${EPREFIX}"/etc/rsyncd.conf
 		--without-included-popt
