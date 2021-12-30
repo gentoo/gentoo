@@ -10,7 +10,7 @@ commitId=94c0a5f137b88113a791a148b60e5e7d019d6fa1
 
 DESCRIPTION="Ada binding to the libfswatch library"
 HOMEPAGE="https://github.com/AdaCore/ada_libfswatch"
-SRC_URI="https://github.com/AdaCore/${PN}/tarball/${commitId}
+SRC_URI="https://github.com/AdaCore/${PN}/archive/${commitId}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3 gcc-runtime-library-exception-3.1"
@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="${ADA_DEPS}
-	dev-ada/gnatcoll-core[${ADA_USEDEP}]
+	dev-ada/gnatcoll-core[${ADA_USEDEP},shared]
 	sys-fs/fswatch"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
@@ -42,13 +42,13 @@ src_prepare() {
 }
 
 src_compile() {
-	gprbuild -p -v -P ada_libfswatch -XLIBRARY_TYPE=static \
+	gprbuild -p -v -P ada_libfswatch -XLIBRARY_TYPE=relocatable \
 		-cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} \
 		|| die
 }
 
 src_install() {
-	gprinstall -v -r -p -P ada_libfswatch -XLIBRARY_TYPE=static \
+	gprinstall -v -r -p -P ada_libfswatch -XLIBRARY_TYPE=relocatable \
 		--prefix="${D}"/usr || die
 	einstalldocs
 }
