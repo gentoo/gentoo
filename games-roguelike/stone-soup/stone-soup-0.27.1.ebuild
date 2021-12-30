@@ -24,7 +24,7 @@ SRC_URI="
 # MIT: json.cc/json.h, some .js files in webserver/static/scripts/contrib/
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
 KEYWORDS="amd64 x86"
-IUSE="debug ncurses sound +tiles"
+IUSE="debug ncurses sound test +tiles"
 
 RDEPEND="
 	${LUA_DEPS}
@@ -51,6 +51,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
 	sys-devel/flex
+	test? ( dev-cpp/catch:0 )
 	tiles? (
 		media-gfx/pngcrush
 		sys-libs/ncurses:0
@@ -90,6 +91,12 @@ src_prepare() {
 
 	sed -i -e "s/GAME = crawl$/GAME = crawl-${SLOT}/" "${S}/Makefile" \
 		|| die "Couldn't append slot to executable name"
+
+	# Replace bundled catch2 package with system implementation
+	# https://bugs.gentoo.org/829950
+	if use test; then
+		cp /usr/include/catch2/catch.hpp "${S}/catch2-tests" || die "Couldn't substitute system catch2"
+	fi
 }
 
 src_compile() {
