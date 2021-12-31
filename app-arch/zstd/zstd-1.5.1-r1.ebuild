@@ -28,6 +28,16 @@ src_prepare() {
 }
 
 mymake() {
+	# We need to turn off asm for certain arches (!amd64) for now.
+	# - bug #829849
+	# - https://bugzilla.redhat.com/show_bug.cgi?id=2035802
+	# - https://github.com/facebook/zstd/issues/2963
+	local asm="ZSTD_NO_ASM=1"
+
+	if use amd64 ; then
+		asm=
+	fi
+
 	emake \
 		CC="$(tc-getCC)" \
 		CXX="$(tc-getCXX)" \
@@ -35,6 +45,7 @@ mymake() {
 		PREFIX="${EPREFIX}/usr" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		V=1 \
+		${asm} \
 		"${@}"
 }
 
