@@ -16,4 +16,8 @@ KEYWORDS="amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="dev-python/nose[${PYTHON_USEDEP}]"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.1.5-setuptools-newline-desc.patch
+)
+
 distutils_enable_tests nose
