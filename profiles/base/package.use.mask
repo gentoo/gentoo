@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# John Helmert III <ajak@gentoo.org> (2021-12-31)
+# Rizin tests require a tarball of binaries of ambiguous license.
+# As such, we cannot properly test it, so mask the flag until this
+# situation is resolved.
+dev-util/rizin test
+
 # Sam James <sam@gentoo.org> (2021-12-27)
 # Doc building is broken and no new releases in a long time.
 # bug #830013
