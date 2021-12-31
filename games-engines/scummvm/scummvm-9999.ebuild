@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-2+ LGPL-2.1 BSD GPL-3-with-font-exception"
 SLOT="0"
-IUSE="a52 aac alsa debug flac fluidsynth fribidi gif glew +gtk jpeg lua mpeg2 mp3 +net opengl png sndio speech theora truetype unsupported vorbis zlib"
+IUSE="a52 aac alsa debug flac fluidsynth fribidi gif +gtk jpeg lua mpeg2 mp3 +net opengl png sndio speech theora truetype unsupported vorbis zlib"
 RESTRICT="test"  # it only looks like there's a test there #77507
 
 RDEPEND="
@@ -47,7 +47,6 @@ RDEPEND="
 			media-libs/mesa[gles2]
 			media-libs/mesa[gles1]
 		)
-		glew? ( media-libs/glew:0= )
 	)
 	png? ( media-libs/libpng:0 )
 	sndio? ( media-sound/sndio:= )
@@ -104,7 +103,6 @@ src_configure() {
 		$(usex fluidsynth '' --disable-fluidsynth)
 		$(use_enable fribidi)
 		$(use_enable gif)
-		$(use opengl && use_enable glew)
 		$(use_enable gtk)
 		$(use_enable jpeg)
 		$(use_enable lua)
