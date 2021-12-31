@@ -3,6 +3,11 @@
 
 ### THIS FILE IS ONLY FOR PACKAGES MASKED ON BOTH 64-BIT AND 32-BIT USERLAND!!!
 
+# Michał Górny <mgorny@gentoo.org> (2021-12-31)
+# PyPy3 is keyworded here.
+-python_targets_pypy3
+-python_single_target_pypy3
+
 # Sam James <sam@gentoo.org> (2021-10-16)
 # media-libs/openexr doesn't work on BE (bug #818424)
 # ...and openscenegraph needs openexr.
