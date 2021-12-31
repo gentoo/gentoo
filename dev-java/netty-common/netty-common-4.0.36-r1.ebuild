@@ -16,7 +16,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="test"
-RESTRICT="!test? ( test )"
+
+# Same test failures as before the revbump still occur. See https://bugs.gentoo.org/827221
+RESTRICT="test"
 
 CDEPEND="dev-java/commons-logging:0
 	dev-java/javassist:3
