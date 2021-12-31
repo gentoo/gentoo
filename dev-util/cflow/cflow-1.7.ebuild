@@ -16,7 +16,8 @@ IUSE="debug emacs nls"
 
 RDEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 	nls? ( virtual/libintl virtual/libiconv )"
-BDEPEND="${RDEPEND}
+DEPEND="nls? ( virtual/libintl virtual/libiconv )"
+BDEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 	sys-devel/flex
 	nls? ( sys-devel/gettext )"
 
