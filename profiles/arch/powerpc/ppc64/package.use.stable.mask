@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2021-12-31)
+# No stable dev-ruby/{thor,tty-editor} on this arch yet
+# and there are many dependencies to go through before there are
+app-text/htmltidy test
+
 # Georgy Yakovlev <gyakovlev@gentoo.org (2021-06-25)
 # ceph is not going to be stable on ppc64
 # https://bugs.gentoo.org/798744

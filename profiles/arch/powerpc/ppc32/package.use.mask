@@ -36,10 +36,6 @@ app-i18n/uim kde
 # media-libs/libheif not keyworded here
 sci-libs/gdal heif
 
-# Marek Szuba <marecki@gentoo.org> (2021-08-11)
-# dev-ruby/tty-editor not keyworded here yet (Bug #807685)
-app-text/htmltidy test
-
 # Matt Turner <mattst88@gentoo.org> (07-25-2021)
 # gdm requires gnome-shell requires rustified librsvg.
 x11-misc/xscreensaver gdm

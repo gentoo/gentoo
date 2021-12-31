@@ -22,10 +22,6 @@ net-dns/dnscrypt-proxy pie
 # Needs media-libs/libldac which builds on ppc64le, but not be
 media-video/pipewire -bluetooth
 
-# Marek Szuba <marecki@gentoo.org> (2021-08-11)
-# dev-ruby/tty-editor not keyworded here yet (Bug #807685)
-app-text/htmltidy test
-
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
 # media-plugins/gst-plugins-webrtc and media-plugins/zam-plugins
 # not keyworded here

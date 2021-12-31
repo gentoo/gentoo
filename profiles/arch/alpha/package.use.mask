@@ -36,7 +36,7 @@ sys-libs/libcap tools
 sys-apps/rng-tools rtlsdr
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-11)
-# dev-ruby/{thor,tty-editor} not keyworded here yet (Bug #807685)
+# dev-ruby/thor not keyworded here
 app-text/htmltidy test
 
 # Matt Turner <mattst88@gentoo.org> (2021-07-23)
