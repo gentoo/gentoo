@@ -16,8 +16,8 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND=""
-DEPEND=""
+DEPEND="${PYTHON_DEPS}"
+RDEPEND="${DEPEND}"
 
 src_compile() {
 	# no build system.
