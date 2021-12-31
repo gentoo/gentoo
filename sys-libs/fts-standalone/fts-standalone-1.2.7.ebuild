@@ -16,8 +16,7 @@ KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 x86"
 IUSE="static-libs"
 
 DEPEND="
-	!sys-libs/glibc
-	!sys-libs/uclibc"
+	!sys-libs/glibc"
 
 src_prepare() {
 	default
@@ -32,5 +31,5 @@ src_configure() {
 src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
-	mv "${ED%/}"/usr/$(get_libdir)/pkgconfig/{musl-fts,fts-standalone}.pc || die
+	mv "${ED}"/usr/$(get_libdir)/pkgconfig/{musl-fts,fts-standalone}.pc || die
 }
