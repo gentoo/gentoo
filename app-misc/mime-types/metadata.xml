@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-  <email>djc@gentoo.org</email>
-  <name>Dirkjan Ochtman</name>
-</maintainer>
-<maintainer type="person">
   <email>eras@gentoo.org</email>
   <name>Eray Aslan</name>
 </maintainer>
