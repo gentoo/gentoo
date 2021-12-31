@@ -4,4 +4,4 @@
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Perl segfaults during build on s390(x). Presumably related to
 # now truly respecting CFLAGS. bug #821577
-=dev-lang/perl-5.34.0-r5
+>=dev-lang/perl-5.34.0-r5
