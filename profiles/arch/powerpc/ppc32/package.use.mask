@@ -3,7 +3,8 @@
 
 # Sam James <sam@gentoo.org> (2021-12-31)
 # dev-lang/julia not keyworded here
-sci-mathematics/singular julia
+# sci-mathematics/polymake not keyworded here
+sci-mathematics/singular julia polymake
 
 # Sam James <sam@gentoo.org> (2021-12-08)
 # Masks involving webkit-gtk; webkit-gtk was dekeyworded on ppc for a while.
