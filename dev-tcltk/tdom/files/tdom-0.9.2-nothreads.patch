@@ -1,0 +1,11 @@
+--- a/generic/tdomDecls.h	2021-12-31 20:52:18.070370435 +0100
++++ b/generic/tdomDecls.h	2021-12-31 20:53:45.892045820 +0100
+@@ -63,7 +63,7 @@
+ EXTERN domDocument *	tcldom_getDocumentFromName(Tcl_Interp *interp,
+ 				char *docName, char **errMsg);
+ /* 18 */
+-EXTERN SchemaData *	tdomGetSchemadata(void);
++EXTERN SchemaData *	tdomGetSchemadata(Tcl_Interp *interp);
+ 
+ typedef struct TdomStubs {
+     int magic;

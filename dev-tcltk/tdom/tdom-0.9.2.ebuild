@@ -23,7 +23,10 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${P}-src
 
-PATCHES=( "${FILESDIR}"/${P}-useCC.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-useCC.patch
+	"${FILESDIR}"/${P}-nothreads.patch
+)
 
 src_prepare() {
 	append-libs -lm
