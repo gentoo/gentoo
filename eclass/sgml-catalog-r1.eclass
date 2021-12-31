@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: sgml-catalog-r1.eclass
@@ -9,9 +9,8 @@
 # @SUPPORTED_EAPIS: 7
 # @BLURB: Functions for installing SGML catalogs
 # @DESCRIPTION:
-# This eclass regenerates /etc/sgml/catalog, /etc/sgml.{,c}env
-# and /etc/env.d/93sgmltools-lite as necessary for the DocBook tooling.
-# This is done via exported pkg_postinst and pkg_postrm phases.
+# This eclass regenerates /etc/sgml/catalog as necessary for the DocBook
+# tooling. This is done via exported pkg_postinst and pkg_postrm phases.
 
 case ${EAPI:-0} in
 	7) ;;
@@ -50,16 +49,9 @@ sgml-catalog-r1_update_catalog() {
 
 # @FUNCTION: sgml-catalog-r1_update_env
 # @DESCRIPTION:
-# Regenerate environment variables and copy them to env.d.
+# Remove obsolete environment files. They can break tools such as asciidoc.
 sgml-catalog-r1_update_env() {
-	# gensgmlenv doesn't support overriding root
-	if [[ -z ${ROOT} && -x "${EPREFIX}/usr/bin/gensgmlenv" ]]; then
-		ebegin "Regenerating SGML environment variables"
-		gensgmlenv &&
-		grep -v export "${EPREFIX}/etc/sgml/sgml.env" > "${T}"/93sgmltools-lite &&
-		mv "${T}"/93sgmltools-lite "${EPREFIX}/etc/env.d/93sgmltools-lite"
-		eend "${?}"
-	fi
+	rm -f "${EROOT}"/etc/env.d/93sgmltools-lite "${EROOT}"/etc/sgml/sgml.{,c}env
 }
 
 sgml-catalog-r1_pkg_postinst() {
