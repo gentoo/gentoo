@@ -34,7 +34,7 @@ mymake() {
 	# - https://github.com/facebook/zstd/issues/2963
 	local asm="ZSTD_NO_ASM=1"
 
-	if use amd64 ; then
+	if use amd64 && [[ ${ABI} == amd64 ]] ; then
 		asm=
 	fi
 
