@@ -17,7 +17,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~sparc"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~sparc"
 
 BDEPEND="
 	test? (
