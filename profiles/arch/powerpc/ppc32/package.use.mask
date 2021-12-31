@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-12-31)
+# dev-lang/julia not keyworded here
+sci-mathematics/singular julia
+
 # Sam James <sam@gentoo.org> (2021-12-08)
 # Masks involving webkit-gtk; webkit-gtk was dekeyworded on ppc for a while.
 # We haven't (yet?) restored keywords for all the bits we had to drop, so
