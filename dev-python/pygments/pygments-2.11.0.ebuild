@@ -27,7 +27,8 @@ BDEPEND="
 		virtual/ttf-fonts
 	)"
 
-distutils_enable_sphinx doc
+distutils_enable_sphinx doc \
+	dev-python/wcag-contrast-ratio
 distutils_enable_tests pytest
 
 python_install_all() {
