@@ -35,7 +35,8 @@ RDEPEND="
 	>=net-misc/curl-7.21.7
 	virtual/opengl
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	media-libs/glm"
 BDEPEND="
 	virtual/pkgconfig
 "
