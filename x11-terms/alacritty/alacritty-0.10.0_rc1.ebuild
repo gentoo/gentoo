@@ -254,7 +254,10 @@ RDEPEND="${COMMON_DEPEND}
 	)
 "
 
-BDEPEND="dev-util/cmake"
+BDEPEND="
+	dev-util/cmake
+	>=virtual/rust-1.53.0
+"
 
 QA_FLAGS_IGNORED="usr/bin/alacritty"
 
