@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2021-12-31)
+# Removal after 2022-05-01.  Bug #830331.
+# Broken and upstream needs new maintainer.
+x11-plugins/purple-facebook
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-19)
 # java-virtuals and packages without consumers. 
 # Bug #828719. Removal in 30 days.
