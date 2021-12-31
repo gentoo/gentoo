@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,6 +30,7 @@ RDEPEND="
 		>=dev-python/pypy3-exe-${PYPY_PV}:${PYPY_PV}[bzip2?,ncurses?]
 		>=dev-python/pypy3-exe-bin-${PYPY_PV}:${PYPY_PV}
 	)
+	dev-lang/python-exec[python_targets_pypy3(-)]
 	dev-libs/openssl:0=
 	gdbm? ( sys-libs/gdbm:0= )
 	sqlite? ( dev-db/sqlite:3= )
