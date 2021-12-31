@@ -21,6 +21,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~sparc"
 
 BDEPEND="
 	test? (
+		dev-python/lxml[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/wcag-contrast-ratio[${PYTHON_USEDEP}]
 		virtual/ttf-fonts
 	)"
