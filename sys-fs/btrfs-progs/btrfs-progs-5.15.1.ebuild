@@ -79,10 +79,6 @@ fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-PATCHES=(
-	"${FILESDIR}"/5.15-musl-const.h-include.patch
-)
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
