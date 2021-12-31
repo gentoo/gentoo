@@ -1,0 +1,28 @@
+From 59994f8b0a431f61786de5715c45c24b0dd76cd1 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Tue, 4 Jan 2022 18:33:12 -0800
+Subject: [PATCH] appmenu-gtk-module/meson.build: only build gtk if requested
+
+Signed-off-by: Georgy Yakovlev <gyakovlev@gentoo.org>
+---
+ subprojects/appmenu-gtk-module/meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/subprojects/appmenu-gtk-module/meson.build b/subprojects/appmenu-gtk-module/meson.build
+index 06ab76d..7279f97 100644
+--- a/meson.build
++++ b/meson.build
+@@ -41,8 +41,8 @@ gtk3_ver = '>=3.22.0'
+ gtk2 = dependency('gtk+-2.0', version: gtk2_ver, required: gtk2_requested)
+ gtk3 = dependency('gtk+-3.0', version: gtk3_ver, required: gtk3_requested)
+ 
+-build_gtk2 = gtk2.found()
+-build_gtk3 = gtk3.found()
++build_gtk2 = gtk2_requested and gtk2.found()
++build_gtk3 = gtk3_requested and gtk3.found()
+ 
+ #################
+ # Configuration #
+-- 
+2.34.1
+

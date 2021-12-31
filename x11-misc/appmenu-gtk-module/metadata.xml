@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">derat/xsettingsd</remote-id>
 	</upstream>
+	<use>
+		<flag name="gtk2">Build module for GTK+2</flag>
+	</use>
 </pkgmetadata>
