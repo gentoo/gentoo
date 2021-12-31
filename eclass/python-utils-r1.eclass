@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-utils-r1.eclass
@@ -416,12 +416,18 @@ _python_export() {
 				case ${impl} in
 					python2.7)
 						PYTHON_PKG_DEP='>=dev-lang/python-2.7.5-r2:2.7';;
+					python3.8)
+						PYTHON_PKG_DEP=">=dev-lang/python-3.8.12_p1-r1:3.8";;
+					python3.9)
+						PYTHON_PKG_DEP=">=dev-lang/python-3.9.9-r1:3.9";;
+					python3.10)
+						PYTHON_PKG_DEP=">=dev-lang/python-3.10.0_p1-r1:3.10";;
 					python*)
 						PYTHON_PKG_DEP="dev-lang/python:${impl#python}";;
 					pypy)
 						PYTHON_PKG_DEP='>=dev-python/pypy-7.3.0:0=';;
 					pypy3)
-						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.7:0=';;
+						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.7-r1:0=';;
 					*)
 						die "Invalid implementation: ${impl}"
 				esac
