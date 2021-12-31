@@ -15,7 +15,7 @@ PATCHSET="python-gentoo-patches-${MY_PV}"
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="https://www.python.org/"
 SRC_URI="https://www.python.org/ftp/python/${PV%%_*}/${MY_P}.tar.xz
-	https://dev.gentoo.org/~floppym/python/${PATCHSET}.tar.xz
+	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz
 	verify-sig? (
 		https://www.python.org/ftp/python/${PV%%_*}/${MY_P}.tar.xz.asc
 	)"
@@ -23,8 +23,8 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
 SLOT="${PYVER}"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="bluetooth build examples gdbm hardened lto +ncurses pgo +readline +sqlite +ssl test tk wininst +xml"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="bluetooth build examples gdbm hardened libedit lto +ncurses pgo +readline +sqlite +ssl test tk wininst +xml"
 RESTRICT="!test? ( test )"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
@@ -34,6 +34,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="app-arch/bzip2:=
 	app-arch/xz-utils:=
+	dev-lang/python-exec[python_targets_python3_10(-)]
 	dev-libs/libffi:=
 	sys-apps/util-linux:=
 	>=sys-libs/zlib-1.1.3:=
@@ -41,7 +42,10 @@ RDEPEND="app-arch/bzip2:=
 	virtual/libintl
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
-	readline? ( >=sys-libs/readline-4.1:= )
+	readline? (
+		!libedit? ( >=sys-libs/readline-4.1:= )
+		libedit? ( dev-libs/libedit:= )
+	)
 	sqlite? ( >=dev-db/sqlite-3.3.8:3= )
 	ssl? ( >=dev-libs/openssl-1.1.1:= )
 	tk? (
@@ -162,7 +166,12 @@ src_configure() {
 
 	if use pgo; then
 		local jobs=$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")
-		export PROFILE_TASK="-m test -j${jobs} --pgo-extended -x test_gdb"
+		export PROFILE_TASK="-m test -j${jobs} --pgo-extended -x test_gdb -u-network"
+
+		# All of these seem to occasionally hang for PGO inconsistently
+		# They'll even hang here but be fine in src_test sometimes.
+		# bug #828535 (and related: bug #788022)
+		PROFILE_TASK+=" -x test_socket -x test_asyncio -x test_httpservers -x test_logging -x test_multiprocessing_fork -x test_xmlrpc"
 
 		if has_version "app-arch/rpm" ; then
 			# Avoid sandbox failure (attempts to write to /var/lib/rpm)
@@ -191,6 +200,7 @@ src_configure() {
 
 		$(use_with lto)
 		$(use_enable pgo optimizations)
+		$(use_with readline readline "$(usex libedit editline readline)")
 	)
 
 	OPT="" econf "${myeconfargs[@]}"
