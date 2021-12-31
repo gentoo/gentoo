@@ -24,7 +24,10 @@ REQUIRED_USE="
 	|| ( chrome chromium firefox vivaldi )
 "
 
-RDEPEND="${PYTHON_DEPS}"
+RDEPEND="
+	${PYTHON_DEPS}
+	app-crypt/pinentry
+"
 
 S="${WORKDIR}"
 
@@ -56,4 +59,10 @@ src_install() {
 		exeinto "${target_dir}"
 		newexe "${P}.py" passff.py
 	done
+}
+
+pkg_postinst() {
+	elog "Make sure to use graphical version of pinentry for ${PN} to work properly"
+	elog "Run 'eselect pinentry list'"
+	elog "And select 'pinentry-qt5' or 'pinentry-gnome'. efl might work too."
 }
