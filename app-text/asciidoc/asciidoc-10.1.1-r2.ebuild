@@ -31,6 +31,10 @@ REQUISITES for a list of runtime dependencies.
 src_install() {
 	distutils-r1_src_install
 
+	# TODO: Consider using Debian patch to allow /usr/share?
+	insinto /usr/share/asciidoc
+	doins -r asciidoc/resources/.
+
 	readme.gentoo_create_doc
 }
 
