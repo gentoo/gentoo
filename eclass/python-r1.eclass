@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-r1.eclass
@@ -125,7 +125,6 @@ fi
 #
 # Example value:
 # @CODE
-# dev-lang/python-exec:=
 # python_targets_python2_7? ( dev-lang/python:2.7[gdbm] )
 # python_targets_pypy? ( dev-python/pypy[gdbm] )
 # @CODE
@@ -206,12 +205,6 @@ _python_set_globals() {
 	local optflags=${flags[@]/%/(-)?}
 	local requse="|| ( ${flags[*]} )"
 	local usedep=${optflags// /,}
-
-	# 1) well, python-exec would suffice as an RDEP
-	# but no point in making this overcomplex, BDEP doesn't hurt anyone
-	# 2) python-exec should be built with all targets forced anyway
-	# but if new targets were added, we may need to force a rebuild
-	deps+=">=dev-lang/python-exec-2:=[${usedep}]"
 
 	if [[ ${PYTHON_DEPS+1} ]]; then
 		# IUSE is magical, so we can't really check it
