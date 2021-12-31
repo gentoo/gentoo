@@ -35,7 +35,7 @@ src_prepare() {
 	default
 
 	# Needs unpackaged dwarfdump
-	rm test/elf/{compress-debug-sections.sh,compressed-debug-info.sh} || die
+	rm test/elf/{compress-debug-sections,compressed-debug-info}.sh || die
 }
 
 src_compile() {
