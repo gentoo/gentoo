@@ -9,3 +9,14 @@
  
  typedef struct TdomStubs {
      int magic;
+--- a/generic/schema.c	2021-12-31 23:19:47.869682736 +0100
++++ b/generic/schema.c	2021-12-31 23:20:14.474255669 +0100
+@@ -419,7 +419,7 @@
+ }
+ #else
+ SchemaData *
+-tdomGetSchemadata (void) 
++tdomGetSchemadata (Tcl_Interp *) 
+ {
+     return GETASI;
+ }
