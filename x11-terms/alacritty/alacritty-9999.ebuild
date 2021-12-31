@@ -86,6 +86,7 @@ src_install() {
 	cargo_src_install --path alacritty
 
 	newman extra/alacritty.man alacritty.1
+	newman extra/alacritty-msg.man alacritty-msg.1
 
 	newbashcomp extra/completions/alacritty.bash alacritty
 
@@ -97,8 +98,6 @@ src_install() {
 
 	domenu extra/linux/Alacritty.desktop
 	newicon extra/logo/compat/alacritty-term.svg Alacritty.svg
-
-	newman extra/alacritty.man alacritty.1
 
 	insinto /usr/share/metainfo
 	doins extra/linux/io.alacritty.Alacritty.appdata.xml
