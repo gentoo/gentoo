@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 PYTHON_REQ_USE="ncurses,readline"
 
-FIRMWARE_ABI_VERSION="6.1.0"
+FIRMWARE_ABI_VERSION="6.2.0"
 
 inherit linux-info toolchain-funcs python-r1 udev fcaps readme.gentoo-r1 \
 		pax-utils xdg-utils
@@ -32,11 +32,11 @@ HOMEPAGE="https://www.qemu.org https://www.linux-kvm.org"
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
 
-IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug +doc
+IUSE="accessibility +aio alsa bpf bzip2 capstone +caps +curl debug +doc
 	+fdt fuse glusterfs gnutls gtk infiniband iscsi io-uring
 	jack jemalloc +jpeg kernel_linux
 	kernel_FreeBSD lzo multipath
-	ncurses nfs nls numa opengl +oss +pin-upstream-blobs
+	ncurses nfs nls numa opengl +oss pam +pin-upstream-blobs
 	plugins +png pulseaudio python rbd sasl +seccomp sdl sdl-image selinux
 	+slirp
 	smartcard snappy spice ssh static static-user systemtap test udev usb
@@ -105,6 +105,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	qemu_softmmu_targets_ppc? ( fdt )
 	qemu_softmmu_targets_riscv32? ( fdt )
 	qemu_softmmu_targets_riscv64? ( fdt )
+	qemu_softmmu_targets_x86_64? ( fdt )
 	sdl-image? ( sdl )
 	static? ( static-user !alsa !gtk !jack !opengl !pulseaudio !plugins !rbd !snappy !udev )
 	static-user? ( !plugins )
@@ -142,6 +143,7 @@ SOFTMMU_TOOLS_DEPEND="
 	)
 	aio? ( dev-libs/libaio[static-libs(+)] )
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
+	bpf? ( dev-libs/libbpf:= )
 	bzip2? ( app-arch/bzip2[static-libs(+)] )
 	capstone? ( dev-libs/capstone:= )
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
@@ -157,11 +159,7 @@ SOFTMMU_TOOLS_DEPEND="
 		x11-libs/gtk+:3
 		vte? ( x11-libs/vte:2.91 )
 	)
-	infiniband? (
-		sys-fabric/libibumad:=[static-libs(+)]
-		sys-fabric/libibverbs:=[static-libs(+)]
-		sys-fabric/librdmacm:=[static-libs(+)]
-	)
+	infiniband? ( sys-cluster/rdma-core[static-libs(+)] )
 	iscsi? ( net-libs/libiscsi )
 	io-uring? ( sys-libs/liburing:=[static-libs(+)] )
 	jack? ( virtual/jack )
@@ -181,6 +179,7 @@ SOFTMMU_TOOLS_DEPEND="
 		media-libs/mesa[static-libs(+)]
 		media-libs/mesa[egl(+),gbm(+)]
 	)
+	pam? ( sys-libs/pam )
 	png? ( media-libs/libpng:0=[static-libs(+)] )
 	pulseaudio? ( media-sound/pulseaudio )
 	rbd? ( sys-cluster/ceph )
@@ -241,8 +240,8 @@ BDEPEND="
 	sys-apps/texinfo
 	virtual/pkgconfig
 	doc? (
-		dev-python/sphinx
-		dev-python/sphinx_rtd_theme
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	)
 	gtk? ( nls? ( sys-devel/gettext ) )
 	test? (
@@ -269,7 +268,10 @@ DEPEND="${CDEPEND}
 	static-user? ( ${ALL_DEPEND} )"
 RDEPEND="${CDEPEND}
 	acct-group/kvm
-	selinux? ( sec-policy/selinux-qemu )"
+	selinux? (
+		sec-policy/selinux-qemu
+		sys-libs/libselinux
+	)"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
@@ -445,6 +447,7 @@ qemu_src_configure() {
 		--disable-containers # bug #732972
 		--disable-guest-agent
 		--disable-strip
+		--with-git-submodules=ignore
 
 		# bug #746752: TCG interpreter has a few limitations:
 		# - it does not support FPU
@@ -465,11 +468,17 @@ qemu_src_configure() {
 		--cc="$(tc-getCC)"
 		--cxx="$(tc-getCXX)"
 		--host-cc="$(tc-getBUILD_CC)"
+		$(use_enable alsa)
 		$(use_enable debug debug-info)
 		$(use_enable debug debug-tcg)
 		$(use_enable doc docs)
+		$(use_enable jack)
 		$(use_enable nls gettext)
+		$(use_enable oss)
+		$(use_enable pam auth-pam)
 		$(use_enable plugins)
+		$(use_enable pulseaudio pa)
+		$(use_enable selinux)
 		$(use_enable xattr attr)
 	)
 
@@ -498,9 +507,17 @@ qemu_src_configure() {
 			echo "--disable-${2:-$1}"
 		fi
 	}
+	# Special case for the malloc flag, because the --disable flag does
+	# not exist and trying like above will break configuring.
+	conf_malloc() {
+		if [[ ! ${buildtype} == "user" ]] ; then
+			usex "${1}" "--enable-malloc=${1}" ""
+		fi
+	}
 	conf_opts+=(
 		$(conf_notuser accessibility brlapi)
 		$(conf_notuser aio linux-aio)
+		$(conf_softmmu bpf)
 		$(conf_notuser bzip2)
 		$(conf_notuser capstone)
 		$(conf_notuser caps cap-ng)
@@ -514,7 +531,7 @@ qemu_src_configure() {
 		$(conf_notuser infiniband rdma)
 		$(conf_notuser iscsi libiscsi)
 		$(conf_notuser io-uring linux-io-uring)
-		$(conf_notuser jemalloc jemalloc)
+		$(conf_malloc jemalloc)
 		$(conf_notuser jpeg vnc-jpeg)
 		$(conf_notuser kernel_linux kvm)
 		$(conf_notuser lzo)
@@ -571,7 +588,7 @@ qemu_src_configure() {
 			$(usev oss)
 		)
 		conf_opts+=(
-			--audio-drv-list=$(printf "%s," "${audio_opts[@]}")
+			--audio-drv-list=$(IFS=,; echo "${audio_opts[*]}")
 		)
 	fi
 
