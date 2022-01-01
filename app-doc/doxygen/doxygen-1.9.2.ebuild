@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -74,7 +74,7 @@ src_prepare() {
 	cmake_src_prepare
 
 	# Ensure we link to -liconv
-	if use elibc_FreeBSD && has_version dev-libs/libiconv || use elibc_uclibc; then
+	if use elibc_FreeBSD && has_version dev-libs/libiconv; then
 		local pro
 		for pro in */*.pro.in */*/*.pro.in; do
 			echo "unix:LIBS += -liconv" >> "${pro}" || die

@@ -71,7 +71,7 @@ src_prepare() {
 	cmake_src_prepare
 
 	# Ensure we link to -liconv
-	if use elibc_FreeBSD && has_version dev-libs/libiconv || use elibc_uclibc; then
+	if use elibc_FreeBSD && has_version dev-libs/libiconv; then
 		local pro
 		for pro in */*.pro.in */*/*.pro.in; do
 			echo "unix:LIBS += -liconv" >> "${pro}" || die
