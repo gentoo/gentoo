@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -96,7 +96,7 @@ multilib_src_configure() {
 		myconfargs+=( --force-target=armv7-linux-gcc )
 	elif [[ ${ABI} == ppc64 ]] && [[ $(tc-endian) != big ]] && use cpu_flags_ppc_vsx3; then
 		# only enable this target for at least power9 CPU running little-endian
-		myconfargs+=( --force-target=ppc64le-linux-gcc ) 
+		myconfargs+=( --force-target=ppc64le-linux-gcc )
 	else
 		myconfargs+=( --force-target=generic-gnu )
 	fi
