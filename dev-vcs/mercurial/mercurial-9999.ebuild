@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -168,7 +168,7 @@ python_test() {
 
 	distutils_install_for_testing
 	cd tests || die
-	"${PYTHON}" run-tests.py \
+	PYTHONWARNINGS=ignore "${PYTHON}" run-tests.py \
 		--jobs $(makeopts_jobs) \
 		--timeout 0 \
 		|| die "Tests fail with ${EPYTHON}"
