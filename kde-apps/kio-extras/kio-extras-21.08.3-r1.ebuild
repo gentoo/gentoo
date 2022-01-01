@@ -70,6 +70,10 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="man? ( dev-util/gperf )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-build-with-x11.patch # Bug 813450
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package activities KF5Activities)
@@ -83,7 +87,7 @@ src_configure() {
 		$(cmake_use_find_package samba Samba)
 		$(cmake_use_find_package sftp libssh)
 		$(cmake_use_find_package taglib Taglib)
-		$(cmake_use_find_package X X11)
+		-DWITH_X11=$(usex X)
 	)
 	use samba && mycmakeargs+=(
 		-DBUILD_KDSoapWSDiscoveryClient=OFF # disable bundled stuff

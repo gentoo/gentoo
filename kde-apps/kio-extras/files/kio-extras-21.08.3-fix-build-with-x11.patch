@@ -1,0 +1,29 @@
+--- a/thumbnail/CMakeLists.txt
++++ b/thumbnail/CMakeLists.txt
+@@ -21,13 +21,19 @@
+     PURPOSE "Provides support for AppImage thumbnails"
+ )
+
+-find_package(X11)
+-set_package_properties(X11 PROPERTIES
+-    DESCRIPTION "X11 libraries"
+-    URL "https://www.x.org"
+-    TYPE OPTIONAL
+-    PURPOSE "Provides support for XCursor thumbnails"
+-)
++option(WITH_X11 "Build with X11 integration" ON)
++if (WITH_X11)
++    find_package(X11 REQUIRED)
++    set(HAVE_X11 TRUE)
++    set_package_properties(X11 PROPERTIES
++        DESCRIPTION "X11 libraries"
++        URL "https://www.x.org"
++        TYPE OPTIONAL
++        PURPOSE "Provides support for XCursor thumbnails"
++    )
++else()
++    set(WITH_X11 OFF)
++endif()
+
+ find_package(Taglib 1.11)
+ set_package_properties(Taglib PROPERTIES
