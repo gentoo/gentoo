@@ -31,7 +31,6 @@ src_prepare() {
 	if use elibc_musl ; then
 		# TODO: May need forward porting to newer versions
 		eapply "${FILESDIR}"/${PN}-5.10-Use-stddefs.h-instead-of-compiler.h.patch
-		eapply "${FILESDIR}"/${PN}-5.10-remove-inclusion-sysinfo.h.patch
 	fi
 
 	default
