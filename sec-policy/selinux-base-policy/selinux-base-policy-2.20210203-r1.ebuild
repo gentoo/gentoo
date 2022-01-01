@@ -27,7 +27,7 @@ BDEPEND="
 	sys-apps/checkpolicy
 	sys-devel/m4"
 
-OLD_MODS="application authlogin bootloader clock consoletype cron dmesg fstools getty hostname hotplug init iptables libraries locallogin logging lvm miscfiles modutils mount mta netutils nscd portage raid rsync selinuxutil setrans ssh staff storage su sysadm sysnetwork systemd tmpfiles udev userdomain usermanage unprivuser xdg"
+DEL_MODS="hotplug"
 MODS="application authlogin bootloader clock consoletype cron dmesg fstools getty hostname init iptables libraries locallogin logging lvm miscfiles modutils mount mta netutils nscd portage raid rsync selinuxutil setrans ssh staff storage su sysadm sysnetwork systemd tmpfiles udev userdomain usermanage unprivuser xdg"
 LICENSE="GPL-2"
 SLOT="0"
@@ -98,7 +98,6 @@ pkg_postinst() {
 
 	# Override the command from the eclass, we need to load in base as well here
 	local COMMAND="-i base.pp"
-	local DEL_MODS=""
 	if has_version "<sys-apps/policycoreutils-2.5"; then
 		COMMAND="-b base.pp"
 	fi
@@ -107,10 +106,8 @@ pkg_postinst() {
 		COMMAND="${COMMAND} -i ${i}.pp"
 	done
 
-	for i in ${OLD_MODS}; do
-		if [ -n "${MODS##*$i*}" ]; then
-			DEL_MODS="${DEL_MODS} ${i}"
-		fi
+	for i in ${DEL_MODS}; do
+		[[ "${MODS}" != "*${i}*" ]] || die "Duplicate module in MODS and DEL_MODS: ${i}"
 	done
 
 	for i in ${POLICY_TYPES}; do
