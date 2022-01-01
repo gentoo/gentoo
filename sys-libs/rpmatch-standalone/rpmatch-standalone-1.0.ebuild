@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,8 +15,7 @@ KEYWORDS="~amd64 ~arm ~mips ~ppc ~x86"
 IUSE="static-libs"
 
 DEPEND="
-	!sys-libs/glibc
-	!sys-libs/uclibc"
+	!sys-libs/glibc"
 
 S="${WORKDIR}/musl-rpmatch-${PV}"
 
