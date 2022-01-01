@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/project/modauthkerb/${PN}/${P}/${P}.tar.gz
 
 LICENSE="BSD openafs-krb5-a HPND"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND="virtual/krb5"
 RDEPEND="${DEPEND}"
