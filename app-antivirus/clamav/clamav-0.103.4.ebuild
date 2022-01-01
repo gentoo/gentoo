@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://www.clamav.net/downloads/production/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
-IUSE="bzip2 doc clamonacc clamdtop clamsubmit iconv ipv6 libclamav-only milter metadata-analysis-api selinux systemd test uclibc xml"
+IUSE="bzip2 doc clamonacc clamdtop clamsubmit iconv ipv6 libclamav-only milter metadata-analysis-api selinux systemd test xml"
 
 REQUIRED_USE="libclamav-only? ( !clamonacc !clamdtop !clamsubmit !milter !metadata-analysis-api )"
 
@@ -70,7 +70,6 @@ src_prepare() {
 src_configure() {
 	use elibc_musl && append-ldflags -lfts
 	use ppc64 && append-flags -mminimal-toc
-	use uclibc && export ac_cv_type_error_t=yes
 
 	# according to configure help it should be
 	# $(use_enable xml)

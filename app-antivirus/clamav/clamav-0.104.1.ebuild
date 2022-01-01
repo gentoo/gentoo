@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -66,7 +66,6 @@ pkg_setup() {
 src_configure() {
 	use elibc_musl && append-ldflags -lfts
 	use ppc64 && append-flags -mminimal-toc
-	use elibc_uclibc && export ac_cv_type_error_t=yes
 
 	local mycmakeargs=(
 		-DDATABASE_DIRECTORY="${EPREFIX}"/var/lib/clamav
