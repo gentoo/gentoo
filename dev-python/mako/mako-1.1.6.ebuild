@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( pypy3 python3_{8..10} )
-inherit distutils-r1 optfeature
+inherit distutils-r1
 
 MY_P=${P^}
 DESCRIPTION="A Python templating language"
@@ -30,8 +30,4 @@ python_install_all() {
 
 	use doc && local HTML_DOCS=( doc/. )
 	distutils-r1_python_install_all
-}
-
-pkg_postinst() {
-	optfeature "caching support" dev-python/beaker
 }
