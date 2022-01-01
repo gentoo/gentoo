@@ -1,5 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# James Le Cuirot <chewi@gentoo.org> (2022-01-01)
+# Some optional emacs dependencies are not keyworded.
+app-editors/emacs gui mailutils
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-28)
 # Needs a lot of Perl packages to be keyworded.
