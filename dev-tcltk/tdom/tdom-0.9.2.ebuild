@@ -35,7 +35,9 @@ src_prepare() {
 		-e 's:-pipe::g' \
 		-e 's:-fomit-frame-pointer::g' \
 		-e '/SHLIB_LD_LIBS/s:\"$: ${TCL_LIB_FLAG}":g' \
-		-i {.,extensions/tnc}/configure tclconfig/tcl.m4 || die
+		-i tclconfig/tcl.m4 || die
+	mv extensions/tnc/configure.{in,ac} || die
+	mv extensions/example/configure.{in,ac} || die
 	default
 	eautoreconf
 }
