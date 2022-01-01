@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -518,7 +518,7 @@ src_configure() {
 	[[ ${COLUMNS:-1} -ge 1 ]] || unset COLUMNS # bug #394091
 
 	# Perl has problems compiling with -Os in your flags with glibc
-	use elibc_uclibc || replace-flags "-Os" "-O2"
+	replace-flags "-Os" "-O2"
 
 	# xlocale.h is going away in glibc-2.26, so it's counterproductive
 	# if we use it and include it in CORE/perl.h ... Perl builds just
@@ -727,7 +727,6 @@ src_test() {
 		ewarn "Test fails with a sandbox error (#328793) if run as root. Skipping tests..."
 		return 0
 	fi
-	use elibc_uclibc && export MAKEOPTS+=" -j1"
 	TEST_JOBS="$(makeopts_jobs)" make test_harness || die "test failed"
 }
 
