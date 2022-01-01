@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,6 +25,7 @@ SRC_URI="
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
 KEYWORDS="amd64 x86"
 IUSE="debug ncurses sound test +tiles"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	${LUA_DEPS}
