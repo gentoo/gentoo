@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic verify-sig
+inherit verify-sig
 
 DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
 HOMEPAGE="https://www.gnu.org/software/parted/"
@@ -24,7 +24,6 @@ RDEPEND="
 		>=sys-libs/ncurses-5.7-r7:0=
 		>=sys-libs/readline-5.2:0=
 	)
-	elibc_uclibc? ( dev-libs/libiconv )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -46,7 +45,6 @@ src_prepare() {
 }
 
 src_configure() {
-	use elibc_uclibc && append-libs -liconv
 	local myconf=(
 		$(use_enable debug)
 		$(use_enable device-mapper)
