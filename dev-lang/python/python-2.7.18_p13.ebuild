@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="PSF-2"
 SLOT="${PYVER}"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="berkdb bluetooth build elibc_uclibc examples gdbm hardened +ncurses +readline +sqlite +ssl tk wininst +xml"
+IUSE="berkdb bluetooth build examples gdbm hardened +ncurses +readline +sqlite +ssl tk wininst +xml"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
 # If you need to apply a patch which requires python for bootstrapping, please
@@ -292,7 +292,6 @@ src_install() {
 	use berkdb || rm -r "${libdir}/"{bsddb,dbhash.py*,test/test_bsddb*} || die
 	use sqlite || rm -r "${libdir}/"{sqlite3,test/test_sqlite*} || die
 	use tk || rm -r "${ED}/usr/bin/idle${PYVER}" "${libdir}/"{idlelib,lib-tk} || die
-	use elibc_uclibc && rm -fr "${libdir}/"{bsddb/test,test}
 
 	use wininst || rm "${libdir}/distutils/command/"wininst-*.exe || die
 
