@@ -1,0 +1,21 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -84,10 +84,15 @@
+ )
+
+ if(NOT APPLE)
+-    find_package(X11)
+-    set_package_properties(X11 PROPERTIES TYPE OPTIONAL)
++    option(WITH_X11 "Build with X11 integration" ON)
++    if (WITH_X11)
++        find_package(X11 REQUIRED)
++        set(HAVE_X11 TRUE)
++        set_package_properties(X11 PROPERTIES TYPE OPTIONAL)
++    endif()
++else()
++    set(WITH_X11 OFF)
+ endif()
+-set(HAVE_X11 ${X11_FOUND})
+
+ # Check for function GETPWUID
+ check_symbol_exists(getpwuid "pwd.h" HAVE_GETPWUID)

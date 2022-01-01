@@ -50,9 +50,13 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-build-with-x11.patch # Bug 813450
+)
+
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package X X11)
+		-DWITH_X11=$(usex X)
 	)
 
 	ecm_src_configure
