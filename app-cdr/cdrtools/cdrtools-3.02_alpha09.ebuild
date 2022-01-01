@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -43,12 +43,6 @@ src_prepare() {
 	default
 
 	gnuconfig_update
-
-	# This fixes a clash with clone() on uclibc.  Upstream isn't
-	# going to include this so let's try to carry it forward.
-	# Contact me if it needs updating.  Bug #486782.
-	# Anthony G. Basile <blueness@gentoo.org>.
-	use elibc_uclibc && eapply "${FILESDIR}"/${PN}-fix-clone-uclibc.patch
 
 	# Remove profiled make files.
 	find -name '*_p.mk' -delete || die "delete *_p.mk"
