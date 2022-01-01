@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,10 +18,9 @@ RDEPEND="ogg? ( >=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-arch/xz-utils
+	sys-devel/gettext
 	virtual/pkgconfig
-	abi_x86_32? ( dev-lang/nasm )
-	!elibc_uclibc? ( sys-devel/gettext )
-"
+	abi_x86_32? ( dev-lang/nasm )"
 
 PATCHES=( "${FILESDIR}/${P}-fix-zero-first-byte-md5sum-check.patch" )
 
