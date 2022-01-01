@@ -7,8 +7,7 @@ inherit flag-o-matic systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="Standard EXT2/EXT3/EXT4 filesystem utilities"
 HOMEPAGE="http://e2fsprogs.sourceforge.net/"
-SRC_URI="https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v${PV}/${P}.tar.xz
-	elibc_mintlib? ( mirror://gentoo/${PN}-1.42.9-mint-r1.patch.xz )"
+SRC_URI="https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
@@ -35,10 +34,6 @@ PATCHES=(
 )
 
 src_prepare() {
-	if [[ ${CHOST} == *-mint* ]] ; then
-		PATCHES+=( "${WORKDIR}"/${PN}-1.42.9-mint-r1.patch )
-	fi
-
 	default
 
 	cp doc/RelNotes/v${PV}.txt ChangeLog || die "Failed to copy Release Notes"
