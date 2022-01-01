@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file is only for generic masks. For arch-specific masks (i.e.
@@ -79,7 +79,6 @@ elibc_DragonFly
 elibc_FreeBSD
 elibc_HPUX
 elibc_Interix
-elibc_mintlib
 elibc_musl
 elibc_NetBSD
 elibc_OpenBSD
