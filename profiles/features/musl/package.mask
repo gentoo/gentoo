@@ -1,5 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Marek Szuba <marecki@gentoo.org> (2022-01-01)
+# Binary-only package linked against glibc.
+app-crypt/rainbowcrack
 
 # Conrad Kostecki <conikost@gentoo.org> (2021-12-15)
 # Level Zero needs RTLD_DEEPBIND, which does not exist on musl.
