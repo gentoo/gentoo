@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ inherit python-any-r1
 
 DESCRIPTION="Optional tools to help manage data in a mergerfs pool"
 HOMEPAGE="https://github.com/trapexit/mergerfs-tools"
-SRC_URI="https://dev.gentoo.org/~slashbeast/distfiles/$PN/$P.tar.xz"
+SRC_URI="https://dev.gentoo.org/~slashbeast/distfiles/${PN}/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0"
