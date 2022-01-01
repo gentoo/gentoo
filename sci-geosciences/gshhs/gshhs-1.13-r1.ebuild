@@ -1,13 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 inherit toolchain-funcs
 
 DESCRIPTION="Global Self-consistent, Hierarchical, High-resolution Shoreline programs"
 HOMEPAGE="https://www.ngdc.noaa.gov/mgg/shorelines/gshhs.html"
 SRC_URI="ftp://ftp.soest.hawaii.edu/pwessel/gshhs/gshhs_1.13_src.zip"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,12 +22,11 @@ DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip
 	virtual/pkgconfig"
 
-S="${WORKDIR}/${PN}"
-
 src_compile() {
 	local p
 	for p in gshhs gshhs_dp gshhstograss; do
-		$(tc-getCC) ${CFLAGS} $($(tc-getPKG_CONFIG) --cflags netcdf) \
+		$(tc-getCC) ${CFLAGS} ${CPPFLAGS} \
+			$($(tc-getPKG_CONFIG) --cflags netcdf) \
 			${LDFLAGS} ${p}.c \
 			$($(tc-getPKG_CONFIG) --libs netcdf) -lgdal -lm -o ${p} \
 			|| die
