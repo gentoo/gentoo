@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,6 +34,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-cpp/gtest )"
 
 DOCS=( AUTHORS README THANKS )
+
+PATCHES=( "${FILESDIR}"/${P}-fix_tests.patch )
 
 src_prepare() {
 	default
