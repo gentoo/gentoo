@@ -9,16 +9,12 @@ inherit cmake fcaps flag-o-matic git-r3 toolchain-funcs wxwidgets
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://pcsx2.net/"
 EGIT_REPO_URI="https://github.com/PCSX2/${PN}.git"
-EGIT_SUBMODULES=(
-	# TODO: unbundle
-	3rdparty/cubeb/cubeb
-	3rdparty/libchdr/libchdr
-)
+EGIT_SUBMODULES=()
 
-LICENSE="GPL-3 BSD ISC"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
+IUSE="pulseaudio test"
 
 RESTRICT="!test? ( test )"
 
@@ -27,16 +23,17 @@ RDEPEND="
 	dev-cpp/rapidyaml:=
 	dev-libs/glib:2
 	dev-libs/libaio
+	dev-libs/libchdr
 	>=dev-libs/libfmt-7.1.3:=
 	dev-libs/libxml2:2
 	media-libs/alsa-lib
+	media-libs/cubeb
 	media-libs/freetype
 	media-libs/libglvnd
 	media-libs/libpng:=
 	media-libs/libsamplerate
 	media-libs/libsdl2[haptic,joystick,sound]
 	media-libs/libsoundtouch:=
-	media-sound/pulseaudio
 	net-libs/libpcap
 	sys-libs/zlib
 	virtual/libudev:=
@@ -46,6 +43,7 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
+	pulseaudio? ( media-sound/pulseaudio )
 "
 DEPEND="
 	${RDEPEND}
@@ -64,6 +62,19 @@ pkg_setup() {
 			append-flags -mxsave
 		fi
 	fi
+}
+
+src_prepare() {
+	cmake_src_prepare
+
+	# unbundle, use sed over patch for less chances to break -9999
+	sed -e '/add_subdir.*cubeb/c\find_package(cubeb REQUIRED)' \
+		-e '/add_subdir.*libchdr/c\pkg_check_modules(chdr REQUIRED IMPORTED_TARGET libchdr)' \
+		-i cmake/SearchForStuff.cmake || die
+	sed -i 's/chdr-static/PkgConfig::chdr/' pcsx2/CMakeLists.txt || die
+
+	# pulseaudio is only used for usb-mic, not audio output
+	use pulseaudio || > cmake/FindPulseAudio.cmake || die
 }
 
 src_configure() {
