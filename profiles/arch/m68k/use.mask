@@ -11,6 +11,7 @@ pulseaudio
 # James Le Cuirot <chewi@gentoo.org> (2021-09-28)
 # Too many unkeyworded dependencies for now.
 efl
+openexr
 subversion
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-27)
