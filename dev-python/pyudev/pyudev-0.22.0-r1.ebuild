@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,10 +30,6 @@ DEPEND="${RDEPEND}
 
 DOCS=( CHANGES.rst README.rst )
 
-PATCHES=(
-	"${FILESDIR}/pyudev-0.22-fix-hypothesis.patch"
-)
-
 distutils_enable_tests pytest
 
 python_prepare_all() {
@@ -46,6 +42,9 @@ python_prepare_all() {
 	# tests: fix run_path
 	sed -i -e "s|== \('/run/udev'\)|in (\1,'/dev/.udev')|g" \
 		tests/test_core.py || die
+
+	# disable use hypothesis timeouts (too short)
+	sed -e '/@settings/s/(/(deadline=None,/' -i tests{,/_device_tests}/*.py || die
 
 	distutils-r1_python_prepare_all
 }
