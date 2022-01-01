@@ -27,7 +27,7 @@ CRATES="
 	clap-2.33.3
 	const_fn-0.4.4
 	cpufeatures-0.1.4
-	cpython-0.6.0
+	cpython-0.7.0
 	crc32fast-1.2.1
 	crossbeam-channel-0.4.4
 	crossbeam-channel-0.5.0
@@ -59,7 +59,7 @@ CRATES="
 	log-0.4.11
 	maybe-uninit-2.0.0
 	memchr-2.3.4
-	memmap-0.7.0
+	memmap2-0.4.0
 	memoffset-0.6.1
 	micro-timer-0.3.1
 	micro-timer-macros-0.3.1
@@ -75,8 +75,8 @@ CRATES="
 	pretty_assertions-0.6.1
 	proc-macro-hack-0.5.19
 	proc-macro2-1.0.24
-	python27-sys-0.6.0
-	python3-sys-0.6.0
+	python27-sys-0.7.0
+	python3-sys-0.7.0
 	quick-error-1.2.3
 	quote-1.0.7
 	rand-0.7.3
@@ -96,6 +96,7 @@ CRATES="
 	scopeguard-1.1.0
 	sha-1-0.9.6
 	sized-chunks-0.6.2
+	stable_deref_trait-1.2.0
 	static_assertions-1.1.0
 	strsim-0.8.0
 	syn-1.0.54
@@ -123,7 +124,7 @@ CRATES="
 	zstd-sys-1.4.17+zstd.1.4.5
 "
 
-inherit bash-completion-r1 cargo elisp-common distutils-r1 flag-o-matic multiprocessing toolchain-funcs
+inherit bash-completion-r1 cargo elisp-common distutils-r1 flag-o-matic multiprocessing
 
 DESCRIPTION="Scalable distributed SCM"
 HOMEPAGE="https://www.mercurial-scm.org/"
@@ -147,6 +148,10 @@ DEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 		app-arch/unzip
 		dev-python/pygments[${PYTHON_USEDEP}]
 		)"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-testing-bigendian.patch
+)
 
 SITEFILE="70${PN}-gentoo.el"
 
@@ -261,13 +266,6 @@ src_test() {
 	rm -f test-largefiles*		# tends to time out
 	rm -f test-https*			# requires to support tls1.0
 	rm -rf test-removeemptydirs*	# requires access to access parent directories
-	if [[ $(tc-endian) == "big" ]]; then
-		# tests no working on big-endian
-		# https://bz.mercurial-scm.org/show_bug.cgi?id=6607
-		rm -f test-clone-uncompressed.t
-		rm -f test-generaldelta.t
-		rm -f test-persistent-nodemap.t
-	fi
 	if [[ ${EUID} -eq 0 ]]; then
 		einfo "Removing tests which require user privileges to succeed"
 		rm -f test-convert*
@@ -283,8 +281,6 @@ src_test() {
 }
 
 python_test() {
-	local TEST_DIR
-
 	distutils_install_for_testing
 	cd tests || die
 	PYTHONWARNINGS=ignore "${PYTHON}" run-tests.py \
