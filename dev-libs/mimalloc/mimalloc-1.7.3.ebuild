@@ -15,10 +15,6 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-PATCHES=(
-#	"${FILESDIR}"/${PN}-1.7.2-GNUInstallDirs.patch
-)
-
 src_configure() {
 	local mycmakeargs=(
 		# TODO: build hardened variant?
