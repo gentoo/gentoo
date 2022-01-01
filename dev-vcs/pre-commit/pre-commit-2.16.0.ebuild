@@ -1,11 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_SINGLE_IMPL=1
-DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1
@@ -16,7 +15,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 
 # TODO: figure out why these tests - all of which invoke git - fail:
 #  - tests/main_test.py::test_all_cmds[autoupdate,hook-impl,install,install-hooks,migrate-config,run,uninstall],
@@ -32,10 +31,10 @@ RESTRICT="test"
 
 RDEPEND="dev-vcs/git
 	$(python_gen_cond_dep '
-		dev-python/cfgv[${PYTHON_USEDEP}]
-		dev-python/identify[${PYTHON_USEDEP}]
-		dev-python/nodeenv[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
+		>=dev-python/cfgv-2.0.0[${PYTHON_USEDEP}]
+		>=dev-python/identify-1.0.0[${PYTHON_USEDEP}]
+		>=dev-python/nodeenv-0.11.1[${PYTHON_USEDEP}]
+		>=dev-python/pyyaml-5.1[${PYTHON_USEDEP}]
 		dev-python/toml[${PYTHON_USEDEP}]
 		>=dev-python/virtualenv-20.0.8[${PYTHON_USEDEP}]
 	')"
