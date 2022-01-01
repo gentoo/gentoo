@@ -1,0 +1,23 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -111,12 +111,14 @@
+                       )
+
+ if (NOT APPLE AND NOT WIN32)
+-    find_package(X11)
+-endif()
+-
+-set(HAVE_X11 ${X11_FOUND})
+-if (HAVE_X11)
+-    find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED X11Extras)
++    option(WITH_X11 "Build with X11 integration" ON)
++    if (WITH_X11)
++        find_package(X11 REQUIRED)
++        find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED X11Extras)
++        set(HAVE_X11 TRUE)
++    endif()
++else()
++    set(WITH_X11 OFF)
+ endif()
+
+ find_package(ACL)

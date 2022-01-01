@@ -73,6 +73,7 @@ PDEPEND=">=kde-frameworks/kded-${PVCUT}:5"
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-copy-between-filesystems.patch
 	"${FILESDIR}"/${P}-fix-KRun-open-URLs-twice.patch # KDE-bug 446272
+	"${FILESDIR}"/${P}-fix-build-with-x11.patch # Bug 813450
 )
 
 src_configure() {
@@ -82,7 +83,7 @@ src_configure() {
 		$(cmake_use_find_package handbook KF5DocTools)
 		$(cmake_use_find_package kerberos GSSAPI)
 		$(cmake_use_find_package kwallet KF5Wallet)
-		$(cmake_use_find_package X X11)
+		-DWITH_X11=$(usex X)
 	)
 
 	ecm_src_configure
