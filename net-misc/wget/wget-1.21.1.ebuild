@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -61,7 +61,6 @@ src_prepare() {
 	# revert some hack that breaks linking, bug #585924
 	if [[ ${CHOST} == *-darwin* ]] \
 	|| [[ ${CHOST} == *-solaris* ]] \
-	|| [[ ${CHOST} == *-uclibc* ]] \
 	|| [[ ${CHOST} == *-cygwin* ]] \
 	; then
 		sed -i \
