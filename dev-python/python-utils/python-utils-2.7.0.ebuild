@@ -18,6 +18,10 @@ RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 
+EPYTEST_IGNORE=(
+	docs
+)
+
 python_prepare_all() {
 	sed -i -e '/--cov/d' -e '/--flake8/d' pytest.ini || die
 	distutils-r1_python_prepare_all
