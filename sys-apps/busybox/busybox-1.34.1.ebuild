@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # See `man savedconfig.eclass` for info on how to use USE=savedconfig.
@@ -149,7 +149,7 @@ src_configure() {
 		busybox_config_option n FEATURE_SH_STANDALONE
 	fi
 
-	# If these are not set and we are using a uclibc/busybox setup
+	# If these are not set and we are using a busybox setup
 	# all calls to system() will fail.
 	busybox_config_option y ASH
 	busybox_config_option y SH_IS_ASH
@@ -172,12 +172,6 @@ src_configure() {
 	busybox_config_option syslog {K,SYS}LOGD LOGGER
 	busybox_config_option systemd FEATURE_SYSTEMD
 	busybox_config_option math FEATURE_AWK_LIBM
-
-	# disable features that uClibc doesn't (yet?) provide.
-	if use elibc_uclibc; then
-		busybox_config_option n FEATURE_SYNC_FANCY #567598
-		busybox_config_option n NSENTER
-	fi
 
 	# all the debug options are compiler related, so punt them
 	busybox_config_option n DEBUG_SANITIZE
