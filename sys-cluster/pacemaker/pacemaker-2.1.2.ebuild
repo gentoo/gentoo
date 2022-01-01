@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ DESCRIPTION="Pacemaker CRM"
 HOMEPAGE="http://www.linux-ha.org/wiki/Pacemaker"
 SRC_URI="https://github.com/ClusterLabs/${PN}/archive/${MY_P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+ LGPL-2.1+ BSD CC-BY-SA-4.0"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="acl smtp snmp"
@@ -65,7 +65,7 @@ src_install() {
 	python_optimize
 
 	# remove provided initd file as we need support for OpenRC
-	rm -r "${ED}/var/run" "${ED}/etc/init.d" || die "Failed to remove old initd"
+	rm -r "${ED}/etc/init.d" || die "Failed to remove old initd"
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 
 	keepdir /var/lib/pacemaker/{blackbox,cib,cores,pengine}
