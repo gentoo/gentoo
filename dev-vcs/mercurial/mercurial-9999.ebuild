@@ -164,8 +164,6 @@ src_test() {
 }
 
 python_test() {
-	local TEST_DIR
-
 	distutils_install_for_testing
 	cd tests || die
 	PYTHONWARNINGS=ignore "${PYTHON}" run-tests.py \
