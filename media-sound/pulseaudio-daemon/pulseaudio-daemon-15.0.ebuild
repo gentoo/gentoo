@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -64,7 +64,6 @@ COMMON_DEPEND="
 	>=media-libs/speexdsp-1.2
 	|| (
 		elibc_glibc? ( virtual/libc )
-		elibc_uclibc? ( virtual/libc )
 		dev-libs/libpcre:3
 	)
 	alsa? ( >=media-libs/alsa-lib-1.0.24 )
