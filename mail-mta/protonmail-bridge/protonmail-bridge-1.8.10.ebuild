@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -688,11 +688,6 @@ src_install() {
 
 pkg_postinst() {
 	use gui && xdg_icon_cache_update
-
-	# Don't bother checking for USE=-gui here, it has never worked yet
-	if [[ -n ${REPLACING_VERSIONS} ]]; then
-		ewarn "Please note that following the removal of ${CATEGORY}/${PN}-bin, the executable and the systemd unit file installed by ${PN} are now called simply '${PN}' rather than '${PN}-cli'"
-	fi
 }
 
 pkg_postrm() {
