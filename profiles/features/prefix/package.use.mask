@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2021-01-27)
@@ -25,8 +25,8 @@ sys-apps/dbus-broker launcher
 www-servers/uwsgi uwsgi_plugins_systemd_logger
 
 # Benda Xu <heroxbd@gentoo.org> (2016-07-28)
-# Needs root privilege.
-sys-fs/eudev hwdb kmod
+# Needs root privileges.
+sys-fs/eudev kmod
 
 # Fabian Groffen <grobian@gentoo.org> (2011-12-08)
 # USE=vanilla produces a broken compiler for Prefix.  Only use this flag
