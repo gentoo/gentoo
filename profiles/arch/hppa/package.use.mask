@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
@@ -234,12 +234,6 @@ app-forensics/sleuthkit java
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
-
-# Robin H. Johnson <robbat2@gentoo.org> (2017-08-05)
-# Upstream Git is switching to PCRE2 w/ JIT.
-# This is not available on some arches, where a fallback to PCRE1 without JIT is used.
-# Since >=dev-vcs/git-2.31.0 pcre1 support has been dropped from git.
-<dev-vcs/git-2.31.0 pcre-jit
 
 # Michał Górny <mgorny@gentoo.org> (2017-06-28)
 # app-misc/dtach is not keyworded, and tests are restricted anyway, so
