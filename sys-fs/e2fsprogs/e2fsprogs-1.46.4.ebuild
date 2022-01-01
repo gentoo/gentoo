@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -88,7 +88,7 @@ src_configure() {
 	)
 	ac_cv_path_LDCONFIG=: econf "${myeconfargs[@]}"
 
-	if [[ ${CHOST} != *-uclibc ]] && grep -qs 'USE_INCLUDED_LIBINTL.*yes' config.{log,status} ; then
+	if grep -qs 'USE_INCLUDED_LIBINTL.*yes' config.{log,status} ; then
 		eerror "INTL sanity check failed, aborting build."
 		eerror "Please post your ${S}/config.log file as an"
 		eerror "attachment to https://bugs.gentoo.org/show_bug.cgi?id=81096"
