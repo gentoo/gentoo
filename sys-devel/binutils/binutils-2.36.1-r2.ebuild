@@ -107,13 +107,6 @@ src_prepare() {
 		fi
 	fi
 
-	# This check should probably go somewhere else, like pkg_pretend.
-	if [[ ${CTARGET} == *-uclibc* ]] ; then
-		if grep -qs 'linux-gnu' "${S}"/ltconfig ; then
-			die "sorry, but this binutils doesn't yet support uClibc :("
-		fi
-	fi
-
 	# Make sure our explicit libdir paths don't get clobbered. #562460
 	sed -i \
 		-e 's:@bfdlibdir@:@libdir@:g' \
