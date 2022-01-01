@@ -291,8 +291,10 @@ src_test() {
 }
 
 python_test() {
-	local TEST_DIR
-
+	if [[ ${EPYTHON} == python3.10 ]]; then
+		einfo "Skipping tests for unsupported Python 3.10"
+		return
+	fi
 	distutils_install_for_testing
 	cd tests || die
 	PYTHONWARNINGS=ignore "${PYTHON}" run-tests.py \
