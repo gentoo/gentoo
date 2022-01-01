@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,7 @@ IUSE="caps gnutls ipv6 pam ldap samba sasl kerberos nis radius ssl snmp selinux 
 	perl qos tproxy \
 	+htcp +wccp +wccpv2 \
 	pf-transparent ipf-transparent kqueue \
-	elibc_uclibc kernel_linux"
+	kernel_linux"
 
 RESTRICT="!test? ( test )"
 
@@ -121,7 +121,7 @@ src_configure() {
 	use ldap && basic_modules+=",SMB_LM,LDAP"
 	use pam && basic_modules+=",PAM"
 	use sasl && basic_modules+=",SASL"
-	use nis && ! use elibc_uclibc && basic_modules+=",NIS"
+	use nis && basic_modules+=",NIS"
 	use radius && basic_modules+=",RADIUS"
 	if use mysql || use postgres || use sqlite ; then
 		basic_modules+=",DB"
