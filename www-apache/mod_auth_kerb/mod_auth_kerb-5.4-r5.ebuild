@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/project/modauthkerb/${PN}/${P}/${P}.tar.gz
 
 LICENSE="BSD openafs-krb5-a HPND"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="virtual/krb5"
 RDEPEND="${DEPEND}"
