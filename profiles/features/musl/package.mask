@@ -59,11 +59,8 @@ app-emulation/dosemu
 
 # Old undated blocks of masks
 #
-
-sys-libs/uclibc-ng
 sys-libs/glibc
 
-# We use eudev which is tested on both uclibc and musl
 # As of 2021-08-08, >=sys-fs/udev-249-r2 is patched in Gentoo
 # to work on musl.
 sys-apps/systemd
