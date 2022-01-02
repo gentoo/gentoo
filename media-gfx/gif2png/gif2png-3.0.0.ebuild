@@ -15,19 +15,22 @@ KEYWORDS="~amd64 -ppc ~ppc64 -sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND=">=media-libs/libpng-1.2:0=
 	sys-libs/zlib:="
-DEPEND="${RDEPEND}
+
+DEPEND="${RDEPEND}"
+
+BDEPEND="
 	>=dev-lang/go-1.17.5"
 
-# Tests are known to fail, #688702
-# EOL; Upstream has rewritten gif2png in Go
+#tests fail because of old python syntax
+#RESTRICT until tests are modernized
 RESTRICT=test
 
 src_prepare() {
 	default
-	cd "${S}"
-	go mod init gif2png
-	go get golang.org/x/crypto/ssh/terminal
-	go get golang.org/x/sys/unix
+	cd "${S}" || die
+	go mod init gif2png || die "go module init failed"
+	go get golang.org/x/crypto/ssh/terminal || die "failed to get terminal package"
+	go get golang.org/x/sys/unix || die "failed to get unix package"
 	tc-export CC
 }
 
