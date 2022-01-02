@@ -228,10 +228,6 @@ net-analyzer/amap
 # Bug #770589; masked for removal on 2021-12-30.
 dev-python/python-fcl
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-11-30)
-# No revdeps, bug #774498; masked for removal on 2021-12-30.
-dev-libs/qrosscore
-
 # Hans de Graaff <graaff@gentoo.org> (2021-11-26)
 # Mask new rubygems version for testing. This version uses a new
 # gentoo-defaults profile, bug #789957
