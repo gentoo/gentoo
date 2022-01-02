@@ -33,10 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
-# Florian Schmaus <flow@gentoo.org (2022-01-02)
+# Florian Schmaus <flow@gentoo.org> (2022-01-02)
 # Unmaintained, upstream gone, only packaged by
 # Gentoo, and the whole idea to unlock based on
 # bluetooth appears to be insecure. Bug #830448
+# Removal after 2022-03-01.
 sys-auth/pam_blue
 
 # Jonas Stein <jstein@gentoo.org> (2022-01-02)
