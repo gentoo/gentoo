@@ -39,12 +39,16 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-build-with-x11.patch # Bug 813450
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package caps Libcap)
 		$(cmake_use_find_package man KF5DocTools)
-		$(cmake_use_find_package X X11)
 		$(cmake_use_find_package X XCB)
+		-DWITH_X11=$(usex X)
 	)
 
 	ecm_src_configure

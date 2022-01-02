@@ -1,0 +1,20 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -30,9 +30,15 @@
+
+ #optional features
+ if (NOT APPLE)
+-    find_package(X11)
++    option(WITH_X11 "Build with X11 integration" ON)
++    if (WITH_X11)
++        find_package(X11 REQUIRED)
++        set(HAVE_X11 TRUE)
++    endif()
++else()
++    set(WITH_X11 OFF)
++
+ endif()
+-set(HAVE_X11 ${X11_FOUND})
+
+ find_package(XCB MODULE COMPONENTS XCB)
+ set_package_properties(XCB PROPERTIES TYPE OPTIONAL)
