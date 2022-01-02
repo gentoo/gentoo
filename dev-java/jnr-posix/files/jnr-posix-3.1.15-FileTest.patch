@@ -1,0 +1,48 @@
+diff --git a/src/test/java/jnr/posix/FileTest.java b/src/test/java/jnr/posix/FileTest.java
+index afadb07..7eb8af7 100644
+--- a/src/test/java/jnr/posix/FileTest.java
++++ b/src/test/java/jnr/posix/FileTest.java
+@@ -8,6 +8,7 @@ import jnr.ffi.Pointer;
+ import jnr.posix.util.Platform;
+ import org.junit.BeforeClass;
+ import org.junit.Test;
++import org.junit.Ignore;
+ 
+ import java.io.*;
+ import java.nio.ByteBuffer;
+@@ -215,7 +216,7 @@ public class FileTest {
+         dir.delete();
+     }
+     
+-    @Test
++    @Ignore @Test
+     public void flockTest() throws Throwable {
+         if (!Platform.IS_WINDOWS) {
+             File tmp = File.createTempFile("flockTest", "tmp");
+@@ -236,7 +237,7 @@ public class FileTest {
+         }
+     }
+ 
+-    @Test
++    @Ignore @Test
+     public void dupTest() throws Throwable {
+         File tmp = File.createTempFile("dupTest", "tmp");
+         RandomAccessFile raf = new RandomAccessFile(tmp, "rw");
+@@ -303,7 +304,7 @@ public class FileTest {
+         }
+     }
+ 
+-    @Test
++    @Ignore @Test
+     public void fcntlDupfdWithArgTest() throws Throwable {
+         if (!Platform.IS_WINDOWS) {
+             File tmp = File.createTempFile("dupTest", "tmp");
+@@ -327,7 +328,7 @@ public class FileTest {
+         }
+     }
+ 
+-    @Test
++    @Ignore @Test
+     public void closeTest() throws Throwable {
+         File tmp = File.createTempFile("closeTest", "tmp");
+         int fd = getFdFromDescriptor(JavaLibCHelper.getDescriptorFromChannel(new RandomAccessFile(tmp, "rw").getChannel()));
