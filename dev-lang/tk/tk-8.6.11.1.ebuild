@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -121,7 +121,7 @@ multilib_src_install() {
 		-e "/^TK_BUILD_STUB_LIB_PATH=/s:${S}-\w*\.\w*:${EPREFIX}/usr/${mylibdir}:g" \
 		-e "/^TK_LIB_FILE=/s:'libtk${v1}..TK_DBGX..so':\"libk${v1}\$\{TK_DBGX\}.so\":g" \
 		-i "${ED}"/usr/${mylibdir}/tkConfig.sh || die
-	if use prefix && [[ ${CHOST} != *-darwin* && ${CHOST} != *-mint* ]] ; then
+	if use prefix && [[ ${CHOST} != *-darwin* ]] ; then
 		sed \
 			-e "/^TK_CC_SEARCH_FLAGS=/s|'$|:${EPREFIX}/usr/${mylibdir}'|g" \
 			-e "/^TK_LD_SEARCH_FLAGS=/s|'$|:${EPREFIX}/usr/${mylibdir}'|" \

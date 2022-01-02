@@ -123,7 +123,7 @@ multilib_src_install() {
 		-e "/^TK_BUILD_STUB_LIB_PATH=/s:${S}-\w*\.\w*:${EPREFIX}/usr/${mylibdir}:g" \
 		-e "/^TK_LIB_FILE=/s:'libtk${v1}..TK_DBGX..so':\"libk${v1}\$\{TK_DBGX\}.so\":g" \
 		-i "${ED}"/usr/${mylibdir}/tkConfig.sh || die
-	if use prefix && [[ ${CHOST} != *-darwin* && ${CHOST} != *-mint* ]] ; then
+	if use prefix && [[ ${CHOST} != *-darwin* ]] ; then
 		sed \
 			-e "/^TK_CC_SEARCH_FLAGS=/s|'$|:${EPREFIX}/usr/${mylibdir}'|g" \
 			-e "/^TK_LD_SEARCH_FLAGS=/s|'$|:${EPREFIX}/usr/${mylibdir}'|" \
