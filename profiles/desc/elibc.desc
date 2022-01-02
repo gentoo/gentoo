@@ -19,5 +19,4 @@ musl - ELIBC setting for systems that use the musl C library
 NetBSD - ELIBC setting for systems that use the NetBSD C library
 OpenBSD - ELIBC setting for systems that use the OpenBSD C library
 SunOS - ELIBC setting for systems that use the Sun Solaris C library
-uclibc - ELIBC setting for systems that use the uClibc C library
 Winnt - ELIBC setting for systems that use Winnt

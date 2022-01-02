@@ -1,4 +1,4 @@
-# Copyright 2003-2021 Gentoo Authors
+# Copyright 2003-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 #############################################
@@ -279,23 +279,6 @@ ppc		default/linux/powerpc/ppc32/17.0/musl			exp
 ppc		default/linux/powerpc/ppc32/17.0/musl/hardened		exp
 x86		default/linux/x86/17.0/musl				exp
 x86		default/linux/x86/17.0/musl/selinux			exp
-
-# Non-embedded uclibc profiles
-# @MAINTAINER: uclibc@gentoo.org
-amd64		default/linux/amd64/17.0/uclibc				exp
-amd64		default/linux/amd64/17.0/uclibc/hardened		exp
-arm		default/linux/arm/17.0/uclibc/armv6j			exp
-arm		default/linux/arm/17.0/uclibc/armv6j/hardened		exp
-arm		default/linux/arm/17.0/uclibc/armv7a			exp
-arm		default/linux/arm/17.0/uclibc/armv7a/hardened		exp
-mips		default/linux/uclibc/mips				exp
-mips		hardened/linux/uclibc/mips				exp
-mips		default/linux/uclibc/mips/mipsel			exp
-mips		hardened/linux/uclibc/mips/mipsel			exp
-ppc		default/linux/powerpc/ppc32/17.0/uclibc			exp
-ppc		default/linux/powerpc/ppc32/17.0/uclibc/hardened	exp
-x86		default/linux/x86/17.0/uclibc				exp
-x86		default/linux/x86/17.0/uclibc/hardened			exp
 
 # These are Gentoo Prefix profiles, maintained by the Prefix team
 # @MAINTAINER: prefix@gentoo.org

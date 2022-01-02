@@ -65,7 +65,6 @@ packagekit
 # Don't put hardened in here.
 # TODO: move multilib into arch/base once inherit order is fixed
 selinux
-uclibc
 multilib
 
 # Mask ELIBC, KERNEL, and USERLAND flags that apply to specific profiles.
@@ -83,7 +82,6 @@ elibc_musl
 elibc_NetBSD
 elibc_OpenBSD
 elibc_SunOS
-elibc_uclibc
 elibc_Winnt
 
 kernel_AIX
