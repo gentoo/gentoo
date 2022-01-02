@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,7 @@ RDEPEND="${ADA_DEPS}
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
 
-S="${WORKDIR}"/AdaCore-${PN}-${commitId:0:7}
+S="${WORKDIR}"/${PN}-${commitId}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-link.patch
