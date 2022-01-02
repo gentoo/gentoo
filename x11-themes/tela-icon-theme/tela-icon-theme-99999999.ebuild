@@ -26,14 +26,18 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="+${MY_COLOR_VARIANTS[*]}" # this is why standard comes first
+IUSE="+${MY_COLOR_VARIANTS[*]} +hardlink" # this is why standard comes first
 
 REQUIRED_USE="|| ( ${MY_COLOR_VARIANTS[*]} )"
 
-# not needed
+# not needed and slows us down, package installs 120 000 small files
 RESTRICT="binchecks strip test"
 
-BDEPEND="app-shells/bash"
+# technically we can use app-arch/harlink too, but it's deprecated
+BDEPEND="
+	app-shells/bash
+	sys-apps/util-linux[hardlink(-)?]
+"
 
 src_prepare() {
 	default
@@ -50,6 +54,10 @@ src_install() {
 
 	dodir /usr/share/icons
 	./install.sh -d "${ED}/usr/share/icons" "${variants[@]}" || die
+	if use hardlink; then
+		einfo "Linking duplicate icons... (may take a long time)"
+		hardlink -pot  "${ED}/usr/share/icons" || die "hardlink failed"
+	fi
 
 	einstalldocs
 }

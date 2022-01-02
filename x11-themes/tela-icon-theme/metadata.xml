@@ -20,9 +20,10 @@
 		<flag name="yellow">Install yellow folder version</flag>
 		<flag name="manjaro">Install manjaro folder version</flag>
 		<flag name="ubuntu">Install ubuntu folder version</flag>
+		<flag name="hardlink">Hardlink duplicate icons to greatly reduce installation size</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://github.com/vinceliuice/Tela-icon-theme/issues/</bugs-to>
+		<bugs-to>https://github.com/vinceliuice/Tela-icon-theme/issues</bugs-to>
 		<remote-id type="github">vinceliuice/Tela-icon-theme</remote-id>
 	</upstream>
 </pkgmetadata>
