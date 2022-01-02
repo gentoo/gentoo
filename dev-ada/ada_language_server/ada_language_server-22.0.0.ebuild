@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -46,11 +46,17 @@ src_compile() {
 	gprbuild -v -j$(makeopts_jobs) -P gnat/lsp_client.gpr -p \
 		-XLIBRARY_TYPE=relocatable \
 		-cargs:Ada ${ADAFLAGS} || die
+	gprbuild -v -j$(makeopts_jobs) -P gnat/lsp_client_glib.gpr -p \
+		-XLIBRARY_TYPE=relocatable \
+		-cargs:Ada ${ADAFLAGS} || die
 	mkdir -p integration/vscode/ada/linux
 	cp -f .obj/server/ada_language_server integration/vscode/ada/linux || die
 }
 
 src_install() {
 	emake install DESTDIR="${D}"/usr
+	gprinstall -f -P gnat/lsp_client_glib.gpr -p -r	--mode=dev \
+		--prefix="${D}"/usr -XBUILD_MODE=dev -XLIBRARY_TYPE=relocatable || die
+
 	einstalldocs
 }
