@@ -56,7 +56,7 @@ src_install() {
 	./install.sh -d "${ED}/usr/share/icons" "${variants[@]}" || die
 	if use hardlink; then
 		einfo "Linking duplicate icons... (may take a long time)"
-		hardlink -pot  "${ED}/usr/share/icons" || die "hardlink failed"
+		hardlink -pot "${ED}/usr/share/icons" || die "hardlink failed"
 	fi
 
 	einstalldocs
