@@ -3,7 +3,6 @@ move media-sound/zam-plugins media-plugins/zam-plugins
 slotmove =dev-ruby/elasticsearch-transport-6.8.3 6 6.8.3
 move dev-python/cfn-python-lint dev-python/cfn-lint
 move dev-python/dbusmock dev-python/python-dbusmock
-move dev-python/fcl dev-python/python-fcl
 move dev-python/python-backoff dev-python/backoff
 move dev-python/python-musicbrainz-ngs dev-python/python-musicbrainzngs
 move dev-python/python-podman dev-python/podman-py
