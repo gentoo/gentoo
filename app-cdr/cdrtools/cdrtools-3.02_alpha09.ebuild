@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit fcaps multilib toolchain-funcs flag-o-matic gnuconfig
+inherit fcaps toolchain-funcs flag-o-matic gnuconfig
 
 MY_P="${P/_alpha/a}"
 
@@ -18,8 +18,7 @@ IUSE="acl caps nls unicode"
 
 RDEPEND="acl? ( virtual/acl )
 	caps? ( sys-libs/libcap )
-	nls? ( virtual/libintl )
-	!app-cdr/cdrkit"
+	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	x11-misc/makedepend
 	nls? ( >=sys-devel/gettext-0.18.1.1 )"
@@ -35,7 +34,6 @@ FILECAPS=(
 cdrtools_os() {
 	local os="linux"
 	[[ ${CHOST} == *-darwin* ]] && os="mac-os10"
-	[[ ${CHOST} == *-freebsd* ]] && os="freebsd"
 	echo "${os}"
 }
 
