@@ -1,4 +1,4 @@
-# Copyright 2004-2021 Gentoo Authors
+# Copyright 2004-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-utils-2.eclass
@@ -28,8 +28,6 @@ _JAVA_UTILS_2_ECLASS=1
 # EAPI 7 has version functions built-in. Use eapi7-ver for all earlier eclasses.
 # Keep versionator inheritance in case consumers are using it implicitly.
 [[ ${EAPI} == [56] ]] && inherit eapi7-ver eutils multilib versionator
-
-IUSE="elibc_FreeBSD"
 
 # Make sure we use java-config-2
 export WANT_JAVA_CONFIG="2"
@@ -1689,11 +1687,8 @@ java-pkg_javac-args() {
 java-pkg_get-jni-cflags() {
 	local flags="-I${JAVA_HOME}/include"
 
-	local platform="linux"
-	use elibc_FreeBSD && platform="freebsd"
-
 	# TODO do a check that the directories are valid
-	flags="${flags} -I${JAVA_HOME}/include/${platform}"
+	flags="${flags} -I${JAVA_HOME}/include/linux"
 
 	echo ${flags}
 }
