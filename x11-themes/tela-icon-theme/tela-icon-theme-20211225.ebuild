@@ -30,6 +30,8 @@ IUSE="${MY_COLOR_VARIANTS[*]/standard/+standard}"
 
 REQUIRED_USE="|| ( ${MY_COLOR_VARIANTS[*]} )"
 
+RESTRICT="binchecks strip test" # not needed
+
 BDEPEND="app-shells/bash"
 
 src_prepare() {
