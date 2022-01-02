@@ -7,8 +7,8 @@ EAPI=8
 MY_PV="${PV:0:4}-${PV:4:2}-${PV:6:2}"
 MY_PN="${PN/t/T}"
 
-# standard is always installed
-MY_COLOR_VARIANTS=( black blue brown green grey orange pink purple red yellow manjaro ubuntu )
+# standard comes first
+MY_COLOR_VARIANTS=( standard black blue brown green grey orange pink purple red yellow manjaro ubuntu )
 
 inherit xdg
 
@@ -26,7 +26,9 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="${MY_COLOR_VARIANTS[*]}"
+IUSE="${MY_COLOR_VARIANTS[*]/standard/+standard}"
+
+REQUIRED_USE="|| ( ${MY_COLOR_VARIANTS[*]} )"
 
 BDEPEND="app-shells/bash"
 
@@ -38,7 +40,6 @@ src_prepare() {
 
 src_install() {
 	local v variants=(
-		standard
 		$(
 			for v in ${MY_COLOR_VARIANTS[@]}; do
 				usev ${v}

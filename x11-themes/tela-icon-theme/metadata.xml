@@ -7,6 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<use>
+		<flag name="standard">Install standard folder version</flag>
 		<flag name="black">Install black folder version</flag>
 		<flag name="blue">Install blue folder version</flag>
 		<flag name="brown">Install bworn folder version</flag>
