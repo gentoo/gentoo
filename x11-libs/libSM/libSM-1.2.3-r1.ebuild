@@ -17,9 +17,9 @@ RDEPEND="x11-base/xorg-proto
 	x11-libs/xtrans
 	uuid? (
 		elibc_Darwin? ( sys-libs/native-uuid )
-		!elibc_FreeBSD? ( !elibc_SunOS? ( !elibc_Darwin? (
+		!elibc_SunOS? ( !elibc_Darwin? (
 			>=sys-apps/util-linux-2.24.1-r3[${MULTILIB_USEDEP}]
-		) ) )
+		) )
 	)"
 DEPEND="${RDEPEND}"
 
