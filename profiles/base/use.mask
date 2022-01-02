@@ -75,7 +75,6 @@ elibc_bionic
 elibc_Cygwin
 elibc_Darwin
 elibc_DragonFly
-elibc_FreeBSD
 elibc_HPUX
 elibc_Interix
 elibc_musl
