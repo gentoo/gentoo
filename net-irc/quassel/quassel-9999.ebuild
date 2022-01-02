@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,8 +25,7 @@ HOMEPAGE="https://quassel-irc.org/"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="bundled-icons crypt +dbus debug kde ldap monolithic oxygen postgres +server snorenotify spell syslog test urlpreview X"
-# Can't seem to find itself (libraries)
-RESTRICT="!test? ( test ) test"
+RESTRICT="!test? ( test )"
 
 SERVER_DEPEND="acct-group/quassel
 	acct-user/quassel
@@ -130,6 +129,10 @@ src_install() {
 		insinto /etc/logrotate.d
 		newins "${FILESDIR}"/quassel.logrotate quassel
 	fi
+}
+
+src_test() {
+	LD_LIBRARY_PATH="${BUILD_DIR}/lib:${LD_LIBRARY_PATH}" cmake_src_test
 }
 
 pkg_postinst() {
