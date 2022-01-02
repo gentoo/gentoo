@@ -70,14 +70,6 @@ pkg_setup() {
 src_prepare() {
 	cmake_src_prepare
 
-	# Ensure we link to -liconv
-	if use elibc_FreeBSD && has_version dev-libs/libiconv; then
-		local pro
-		for pro in */*.pro.in */*/*.pro.in; do
-			echo "unix:LIBS += -liconv" >> "${pro}" || die
-		done
-	fi
-
 	# Call dot with -Teps instead of -Tps for EPS generation - bug #282150
 	sed -i -e '/addJob("ps"/ s/"ps"/"eps"/g' src/dot.cpp || die
 
