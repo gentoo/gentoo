@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit fcaps multilib toolchain-funcs flag-o-matic gnuconfig
+inherit fcaps toolchain-funcs flag-o-matic gnuconfig
 
 MY_P="${P/_alpha/a}"
 
@@ -24,7 +24,6 @@ RDEPEND="
 	acl? ( virtual/acl )
 	caps? ( sys-libs/libcap )
 	nls? ( virtual/libintl )
-	!app-cdr/cdrkit
 	selinux? ( sec-policy/selinux-cdrecord )
 "
 DEPEND="
@@ -42,7 +41,6 @@ FILECAPS=(
 cdrtools_os() {
 	local os="linux"
 	[[ ${CHOST} == *-darwin* ]] && os="mac-os10"
-	[[ ${CHOST} == *-freebsd* ]] && os="freebsd"
 	echo "${os}"
 }
 
