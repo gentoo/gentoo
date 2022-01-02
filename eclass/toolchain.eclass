@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain.eclass
@@ -359,7 +359,6 @@ gentoo_urls() {
 #			with a Cygwin target.
 get_gcc_src_uri() {
 	export PATCH_GCC_VER=${PATCH_GCC_VER:-${GCC_RELEASE_VER}}
-	export UCLIBC_GCC_VER=${UCLIBC_GCC_VER:-${PATCH_GCC_VER}}
 	export MUSL_GCC_VER=${MUSL_GCC_VER:-${PATCH_GCC_VER}}
 	export PIE_GCC_VER=${PIE_GCC_VER:-${GCC_RELEASE_VER}}
 	export HTB_GCC_VER=${HTB_GCC_VER:-${GCC_RELEASE_VER}}
@@ -382,8 +381,6 @@ get_gcc_src_uri() {
 		fi
 	fi
 
-	[[ -n ${UCLIBC_VER} ]] && \
-		GCC_SRC_URI+=" $(gentoo_urls gcc-${UCLIBC_GCC_VER}-uclibc-patches-${UCLIBC_VER}.tar.bz2)"
 	[[ -n ${PATCH_VER} ]] && \
 		GCC_SRC_URI+=" $(gentoo_urls gcc-${PATCH_GCC_VER}-patches-${PATCH_VER}.tar.bz2)"
 	[[ -n ${MUSL_VER} ]] && \
@@ -555,10 +552,6 @@ do_gcc_gentoo_patches() {
 		if [[ -n ${PATCH_VER} ]] ; then
 			tc_apply_patches "Applying Gentoo patches ..." "${WORKDIR}"/patch/*.patch
 			BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION} p${PATCH_VER}"
-		fi
-
-		if [[ -n ${UCLIBC_VER} ]] ; then
-			tc_apply_patches "Applying uClibc patches ..." "${WORKDIR}"/uclibc/*.patch
 		fi
 
 		if [[ -n ${MUSL_VER} ]] && [[ ${CTARGET} == *musl* ]] ; then
@@ -927,17 +920,6 @@ toolchain_src_configure() {
 		*-gnu*)			 needed_libc=glibc;;
 		*-klibc)		 needed_libc=klibc;;
 		*-musl*)		 needed_libc=musl;;
-		*-uclibc*)
-			# Enable shared library support only on targets
-			# that support it: bug #291870
-			if ! echo '#include <features.h>' | \
-			   $(tc-getCPP ${CTARGET}) -E -dD - 2>/dev/null | \
-			   grep -q __HAVE_SHARED__
-			then
-				confgcc+=( --disable-shared )
-			fi
-			needed_libc=uclibc-ng
-			;;
 		*-cygwin)		 needed_libc=cygwin;;
 		x86_64-*-mingw*|\
 		*-w64-mingw*)	 needed_libc=mingw64-runtime;;
@@ -991,14 +973,6 @@ toolchain_src_configure() {
 	# __cxa_atexit is "essential for fully standards-compliant handling of
 	# destructors", but apparently requires glibc.
 	case ${CTARGET} in
-	*-uclibc*)
-		if tc_has_feature nptl ; then
-			confgcc+=(
-				--disable-__cxa_atexit
-				$(use_enable nptl tls)
-			)
-		fi
-		;;
 	*-elf|*-eabi)
 		confgcc+=( --with-newlib )
 		;;
@@ -2324,17 +2298,9 @@ hardened_gcc_works() {
 hardened_gcc_is_stable() {
 	local tocheck
 	if [[ $1 == "pie" ]] ; then
-		if [[ ${CTARGET} == *-uclibc* ]] ; then
-			tocheck=${PIE_UCLIBC_STABLE}
-		else
-			tocheck=${PIE_GLIBC_STABLE}
-		fi
+		tocheck=${PIE_GLIBC_STABLE}
 	elif [[ $1 == "ssp" ]] ; then
-		if [[ ${CTARGET} == *-uclibc* ]] ; then
-			tocheck=${SSP_UCLIBC_STABLE}
-		elif  [[ ${CTARGET} == *-gnu* ]] ; then
-			tocheck=${SSP_STABLE}
-		fi
+		tocheck=${SSP_STABLE}
 	else
 		die "hardened_gcc_stable needs to be called with pie or ssp"
 	fi
