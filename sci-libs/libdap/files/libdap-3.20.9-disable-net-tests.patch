@@ -1,30 +1,8 @@
-Avoid network test failure:
-```
-## --------------------------------- ##
-## libdap 3.20.9 test suite: getdap. ##
-## --------------------------------- ##
-  1: getdap -d http://test.opendap.org/dap/data/nc/fnoc1.nc getdap-testsuite/fnoc1.nc.dds (pass) FAILED (getdapTest.at:34)
-
-## ------------- ##
-```
+https://src.fedoraproject.org/rpms/libdap/raw/rawhide/f/libdap-offline.patch
+https://bugs.gentoo.org/830221
 --- a/tests/Makefile.am
 +++ b/tests/Makefile.am
-@@ -43,7 +43,7 @@ endif
- # TESTS = DASTest DDSTest EXPRTest DMRTest getdapTest
- 
- check_SCRIPTS = $(DASTESTSUITE) $(DDSTESTSUITE) $(EXPRTESTSUITE) \
--	$(DMRTESTSUITE) $(GETDAPTESTSUITE)
-+	$(DMRTESTSUITE)
- 
- # Build the test drivers. The drivers all use the
- # subclassed types in Test*.cc and the TestTypesFactory.
-@@ -117,12 +117,11 @@ DMRTESTSUITE = $(srcdir)/DMRTest
- GETDAPTESTSUITE = $(srcdir)/getdapTest
- 
- check-local: atconfig atlocal $(DASTESTSUITE) $(DDSTESTSUITE) \
--$(EXPRTESTSUITE) $(DMRTESTSUITE) $(GETDAPTESTSUITE) 
-+$(EXPRTESTSUITE) $(DMRTESTSUITE)
- 	$(SHELL) '$(DASTESTSUITE)' $(TESTSUITEFLAGS)
+@@ -120,7 +120,6 @@ $(EXPRTESTSUITE) $(DMRTESTSUITE) $(GETDA
  	$(SHELL) '$(DDSTESTSUITE)' $(TESTSUITEFLAGS)
  	$(SHELL) '$(EXPRTESTSUITE)' $(TESTSUITEFLAGS)
  	$(SHELL) '$(DMRTESTSUITE)' $(TESTSUITEFLAGS)
@@ -32,3 +10,17 @@ Avoid network test failure:
  
  # Make sure there are no spaces after the DASTESTSUITE names. jhrg 3/16/15
  # Delete the scripts here and not using CLEANFILES because this target is
+--- a/unit-tests/Makefile.am
++++ b/unit-tests/Makefile.am
+@@ -78,9 +78,9 @@ D4-xml.tar.gz: D4-xml/DMR_*[0-9].xml
+ if CPPUNIT
+ UNIT_TESTS = marshT arrayT attrTableT structT sequenceT ddsT dasT \
+ 	RegexTest ArrayTest AttrTableTest ByteTest MIMEUtilTest ancT DASTest \
+-	DDSTest	DDXParserTest  generalUtilTest HTTPConnectTest parserUtilTest \
++	DDSTest	DDXParserTest  generalUtilTest parserUtilTest \
+ 	RCReaderTest SequenceTest SignalHandlerTest  MarshallerTest \
+-	HTTPCacheTest ServerFunctionsListUnitTest Int8Test Int16Test UInt16Test \
++	ServerFunctionsListUnitTest Int8Test Int16Test UInt16Test \
+ 	Int32Test UInt32Test Int64Test UInt64Test Float32Test Float64Test \
+ 	D4BaseTypeFactoryTest BaseTypeFactoryTest
+ 
