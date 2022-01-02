@@ -916,7 +916,6 @@ toolchain_src_configure() {
 			# Undoing it here.
 			confgcc+=( --disable-libstdcxx-time )
 			;;
-		*-freebsd*)		 needed_libc=freebsd-lib;;
 		*-gnu*)			 needed_libc=glibc;;
 		*-klibc)		 needed_libc=klibc;;
 		*-musl*)		 needed_libc=musl;;
@@ -984,9 +983,6 @@ toolchain_src_configure() {
 			--enable-__cxa_atexit
 			--enable-clocale=gnu
 		)
-		;;
-	*-freebsd*)
-		confgcc+=( --enable-__cxa_atexit )
 		;;
 	*-solaris*)
 		confgcc+=( --enable-__cxa_atexit )
@@ -2275,8 +2271,6 @@ hardened_gcc_works() {
 		# $gcc_cv_ld_pie is unreliable as it simply take the output of
 		# `ld --help | grep -- -pie`, that reports the option in all cases, also if
 		# the loader doesn't actually load the resulting executables.
-		# To avoid breakage, blacklist FreeBSD here at least
-		[[ ${CTARGET} == *-freebsd* ]] && return 1
 
 		want_pie || return 1
 		_tc_use_if_iuse nopie && return 1
