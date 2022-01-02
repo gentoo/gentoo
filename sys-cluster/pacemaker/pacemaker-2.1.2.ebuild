@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit autotools python-single-r1
@@ -36,7 +37,10 @@ S="${WORKDIR}/${PN}-${MY_P}"
 
 src_prepare() {
 	default
-	sed -i -e "s/ -ggdb//g" configure.ac || die
+	sed -i -e "s/ -ggdb//g" configure.ac || die "Failed to remove the default gdb"
+	sed -i -e \
+		"s|OCF_FUNCTIONS=/dev/null|OCF_FUNCTIONS=/usr/lib64/ocf/resource.d/heartbeat/.ocf-shellfuncs|" \
+		extra/resources/Makefile.am || die
 	eautoreconf
 }
 
@@ -56,7 +60,6 @@ src_configure() {
 		$(use_with smtp esmtp)
 		$(use_with snmp)
 	)
-
 	econf "${myconf[@]}"
 }
 
@@ -64,9 +67,10 @@ src_install() {
 	default
 	python_optimize
 
-	# remove provided initd file as we need support for OpenRC
-	rm -r "${ED}/etc/init.d" || die "Failed to remove old initd"
-	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
+	# Remove provided initd file as we need support for OpenRC
+	# It fails to remove when systemd is installed # Bug 830406
+	rm -rf "${ED}/etc/init.d" || die "Failed to remove old initd"
+	newinitd "${FILESDIR}"/${PN}.initd "${PN}"
 
 	keepdir /var/lib/pacemaker/{blackbox,cib,cores,pengine}
 	keepdir /var/log/pacemaker/bundles
