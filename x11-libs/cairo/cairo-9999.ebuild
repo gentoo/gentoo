@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -88,8 +88,6 @@ multilib_src_configure() {
 	local myopts
 
 	[[ ${CHOST} == *-interix* ]] && append-flags -D_REENTRANT
-
-	use elibc_FreeBSD && myopts+=" --disable-symbol-lookup"
 
 	# [[ ${PV} == *9999* ]] && myopts+=" $(use_enable doc gtk-doc)"
 
