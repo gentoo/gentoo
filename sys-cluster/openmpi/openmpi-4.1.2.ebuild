@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -69,6 +69,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/mpi.h
 	/usr/include/openmpi/ompi/mpi/java/mpiJava.h
 	/usr/include/openmpi/mpiext/mpiext_cuda_c.h
+)
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.1.2-missing-includes.patch
 )
 
 pkg_setup() {
