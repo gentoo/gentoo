@@ -16,12 +16,12 @@ LICENSE="LGPL-2+ BSD"
 SLOT="4/37" # soname version of libwebkit2gtk-4.0
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-IUSE="aqua avif +egl examples gamepad +geolocation gles2-only gnome-keyring +gstreamer gtk-doc +introspection +jpeg2k +jumbo-build lcms libnotify +opengl seccomp spell systemd wayland +X"
+IUSE="aqua avif +egl examples gamepad +geolocation gles2-only gnome-keyring +gstreamer gtk-doc +introspection +jpeg2k +jumbo-build lcms libnotify seccomp spell systemd wayland +X"
 
 # gstreamer with opengl/gles2 needs egl
 REQUIRED_USE="
-	gles2-only? ( egl !opengl )
-	gstreamer? ( opengl? ( egl ) )
+	gles2-only? ( egl )
+	gstreamer? ( egl )
 	wayland? ( egl )
 	|| ( aqua wayland X )
 "
@@ -35,10 +35,6 @@ RESTRICT="test"
 # Various compile-time optionals for gtk+-3.22.0 - ensure it
 # Missing WebRTC support, but ENABLE_MEDIA_STREAM/ENABLE_WEB_RTC is experimental upstream (PRIVATE OFF) and shouldn't be used yet in 2.30
 # >=gst-plugins-opus-1.14.4-r1 for opusparse (required by MSE)
-wpe_depend="
-	>=gui-libs/libwpe-1.5.0:1.0
-	>=gui-libs/wpebackend-fdo-1.7.0:1.0
-"
 # TODO: gst-plugins-base[X] is only needed when build configuration ends up with GLX set, but that's a bit automagic too to fix
 RDEPEND="
 	>=x11-libs/cairo-1.16.0:=[X?]
@@ -66,8 +62,9 @@ RDEPEND="
 	spell? ( >=app-text/enchant-0.22:2 )
 	gstreamer? (
 		>=media-libs/gstreamer-1.14:1.0
-		>=media-libs/gst-plugins-base-1.14:1.0[egl?,opengl?,X?]
+		>=media-libs/gst-plugins-base-1.14:1.0[egl?,X?]
 		gles2-only? ( media-libs/gst-plugins-base:1.0[gles2] )
+		!gles2-only? ( media-libs/gst-plugins-base:1.0[opengl] )
 		>=media-plugins/gst-plugins-opus-1.14.4-r1:1.0
 		>=media-libs/gst-plugins-bad-1.14:1.0 )
 
@@ -86,12 +83,12 @@ RDEPEND="
 
 	egl? ( media-libs/mesa[egl(+)] )
 	gles2-only? ( media-libs/mesa[gles2] )
-	opengl? ( virtual/opengl )
+	!gles2-only? ( virtual/opengl )
 	wayland? (
 		dev-libs/wayland
 		>=dev-libs/wayland-protocols-1.12
-		opengl? ( ${wpe_depend} )
-		gles2-only? ( ${wpe_depend} )
+		>=gui-libs/libwpe-1.5.0:1.0
+		>=gui-libs/wpebackend-fdo-1.7.0:1.0
 	)
 
 	seccomp? (
@@ -103,7 +100,6 @@ RDEPEND="
 	systemd? ( sys-apps/systemd:= )
 	gamepad? ( >=dev-libs/libmanette-0.2.4 )
 "
-unset wpe_depend
 DEPEND="${RDEPEND}"
 # paxctl needed for bug #407085
 # Need real bison, not yacc
@@ -149,16 +145,6 @@ pkg_pretend() {
 		if ! test-flag-CXX -std=c++17 ; then
 			die "You need at least GCC 7.3.x or Clang >= 5 for C++17-specific compiler flags"
 		fi
-	fi
-
-	if ! use opengl && ! use gles2-only; then
-		ewarn
-		ewarn "You are disabling OpenGL usage (USE=opengl or USE=gles2-only) completely."
-		ewarn "This is an unsupported configuration meant for very specific embedded"
-		ewarn "use cases, where there truly is no GL possible (and even that use case"
-		ewarn "is very unlikely to come by). If you have GL (even software-only), you"
-		ewarn "really really should be enabling OpenGL!"
-		ewarn
 	fi
 }
 
@@ -215,21 +201,11 @@ src_configure() {
 	# TODO: Check Web Audio support
 	# should somehow let user select between them?
 
-	# opengl needs to be explicetly handled, bug #576634
-	local use_wpe_renderer=OFF
-	local opengl_enabled
-	if use opengl || use gles2-only; then
-		opengl_enabled=ON
-		use wayland && use_wpe_renderer=ON
-	else
-		opengl_enabled=OFF
-	fi
-
 	local mycmakeargs=(
 		${ruby_interpreter}
 		$(cmake_use_find_package gles2-only OpenGLES2)
 		$(cmake_use_find_package egl EGL)
-		$(cmake_use_find_package opengl OpenGL)
+		$(cmake_use_find_package !gles2-only OpenGL)
 		-DBWRAP_EXECUTABLE:FILEPATH="${EPREFIX}"/usr/bin/bwrap # If bubblewrap[suid] then portage makes it go-r and cmake find_program fails with that
 		-DDBUS_PROXY_EXECUTABLE:FILEPATH="${EPREFIX}"/usr/bin/xdg-dbus-proxy
 		-DPORT=GTK
@@ -242,7 +218,7 @@ src_configure() {
 		-DENABLE_SPELLCHECK=$(usex spell)
 		-DENABLE_UNIFIED_BUILDS=$(usex jumbo-build)
 		-DENABLE_VIDEO=$(usex gstreamer)
-		-DENABLE_WEBGL=${opengl_enabled}
+		-DENABLE_WEBGL=ON
 		# Supported only under ANGLE and default off PRIVATE option still@2.34.1, see
 		# https://bugs.webkit.org/show_bug.cgi?id=225563
 		# https://bugs.webkit.org/show_bug.cgi?id=224888
@@ -261,12 +237,12 @@ src_configure() {
 		-DUSE_LIBHYPHEN=ON
 		-DUSE_LIBNOTIFY=$(usex libnotify)
 		-DUSE_LIBSECRET=$(usex gnome-keyring)
-		-DUSE_OPENGL_OR_ES=${opengl_enabled}
+		-DUSE_OPENGL_OR_ES=ON
 		-DUSE_OPENJPEG=$(usex jpeg2k)
 		-DUSE_SOUP2=ON
 		-DUSE_SYSTEMD=$(usex systemd) # Whether to enable journald logging
 		-DUSE_WOFF2=ON
-		-DUSE_WPE_RENDERER=${use_wpe_renderer} # WPE renderer is used to implement accelerated compositing under wayland
+		-DUSE_WPE_RENDERER=$(usex wayland) # WPE renderer is used to implement accelerated compositing under wayland
 	)
 
 	# https://bugs.gentoo.org/761238
