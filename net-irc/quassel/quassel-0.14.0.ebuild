@@ -74,6 +74,8 @@ RDEPEND="${DEPEND}"
 BDEPEND="dev-qt/linguist-tools:5
 	kde-frameworks/extra-cmake-modules:5"
 
+DEPEND+=" test? ( dev-cpp/gtest dev-qt/qttest )"
+
 DOCS=( AUTHORS ChangeLog README.md )
 
 REQUIRED_USE="|| ( X server monolithic )
