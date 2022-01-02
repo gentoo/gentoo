@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # System-wide defaults for the Portage system
@@ -7,7 +7,7 @@
 # Profile IUSE injection (applies only to ebuilds which use EAPI 5 or later)
 IUSE_IMPLICIT="prefix prefix-guest prefix-stack"
 USE_EXPAND_IMPLICIT="ELIBC KERNEL USERLAND"
-USE_EXPAND_VALUES_ELIBC="AIX bionic Cygwin Darwin DragonFly FreeBSD glibc HPUX Interix mingw mintlib musl NetBSD OpenBSD SunOS uclibc Winnt"
+USE_EXPAND_VALUES_ELIBC="AIX bionic Cygwin Darwin DragonFly FreeBSD glibc HPUX Interix mingw musl NetBSD OpenBSD SunOS uclibc Winnt"
 USE_EXPAND_VALUES_KERNEL="AIX Darwin FreeBSD freemint HPUX linux NetBSD OpenBSD SunOS Winnt"
 USE_EXPAND_VALUES_USERLAND="BSD GNU"
 
