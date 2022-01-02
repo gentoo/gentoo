@@ -11,7 +11,7 @@ S="${WORKDIR}/ctags-${MY_COMMIT_HASH}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20161123-gcc-unused-attribute.patch
