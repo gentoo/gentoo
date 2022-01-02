@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ####################################################################
@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Florian Schmaus <flow@gentoo.org (2022-01-02)
+# Unmaintained, upstream gone, only packaged by
+# Gentoo, and the whole idea to unlock based on
+# bluetooth appears to be insecure. Bug #830448
+sys-auth/pam_blue
+
 # Jonas Stein <jstein@gentoo.org> (2022-01-02)
 # Unmaintained and broken.
 # Removal after 2022-03-01.  Bug #830428.
@@ -44,7 +50,7 @@ www-servers/bozohttpd
 x11-plugins/purple-facebook
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-19)
-# java-virtuals and packages without consumers. 
+# java-virtuals and packages without consumers.
 # Bug #828719. Removal in 30 days.
 java-virtuals/ejb-api
 java-virtuals/saaj-api
