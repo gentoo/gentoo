@@ -5,7 +5,7 @@ EAPI=8
 
 # eg. 20211225 -> 2021-12-25
 MY_PV="${PV:0:4}-${PV:4:2}-${PV:6:2}"
-MY_PN="${PN/t/T}"
+MY_PN="${PN^}"
 
 # standard comes first
 MY_COLOR_VARIANTS=( standard black blue brown green grey orange pink purple red yellow manjaro ubuntu )
