@@ -26,11 +26,12 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="${MY_COLOR_VARIANTS[*]/standard/+standard}"
+IUSE="+${MY_COLOR_VARIANTS[*]}" # this is why standard comes first
 
 REQUIRED_USE="|| ( ${MY_COLOR_VARIANTS[*]} )"
 
-RESTRICT="binchecks strip test" # not needed
+# not needed
+RESTRICT="binchecks strip test"
 
 BDEPEND="app-shells/bash"
 
@@ -42,11 +43,9 @@ src_prepare() {
 
 src_install() {
 	local v variants=(
-		$(
-			for v in ${MY_COLOR_VARIANTS[@]}; do
-				usev ${v}
-			done
-		)
+		$(for v in ${MY_COLOR_VARIANTS[@]}; do
+			usev ${v}
+		done)
 	)
 
 	dodir /usr/share/icons
