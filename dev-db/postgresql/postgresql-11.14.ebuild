@@ -54,7 +54,7 @@ zlib? ( sys-libs/zlib )
 # supported libc in use depend on dev-libs/ossp-uuid. For BSD systems,
 # the libc includes UUID functions.
 UTIL_LINUX_LIBC=( elibc_{glibc,musl} )
-BSD_LIBC=( elibc_{Free,Net,Open}BSD )
+BSD_LIBC=( elibc_{Net,Open}BSD )
 
 nest_usedep() {
 	local front back
