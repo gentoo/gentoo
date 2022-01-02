@@ -12,7 +12,7 @@ SRC_URI="https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v${PV}/$
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="cron fuse lto nls static-libs +threads +tools elibc_FreeBSD"
+IUSE="cron fuse lto nls static-libs +threads +tools"
 
 RDEPEND="
 	!sys-libs/${PN}-libs
@@ -112,12 +112,6 @@ multilib_src_compile() {
 	fi
 
 	emake V=1
-
-	# Build the FreeBSD helper
-	if use elibc_FreeBSD ; then
-		cp "${FILESDIR}"/fsck_ext2fs.c . || die
-		emake V=1 fsck_ext2fs
-	fi
 }
 
 multilib_src_test() {
@@ -148,12 +142,6 @@ multilib_src_install() {
 		# Move shared libraries to /lib/, install static libraries to
 		# /usr/lib/, and install linker scripts to /usr/lib/.
 		gen_usr_ldscript -a e2p ext2fs
-
-		if use elibc_FreeBSD ; then
-			# Install helpers for us
-			into /
-			dosbin "${S}"/fsck_ext2fs
-		fi
 	fi
 
 	gen_usr_ldscript -a com_err ss $(usex kernel_linux '' 'uuid blkid')
@@ -170,15 +158,5 @@ multilib_src_install_all() {
 	if use tools ; then
 		insinto /etc
 		doins "${FILESDIR}"/e2fsck.conf
-
-		if use elibc_FreeBSD ; then
-			into /
-			doman "${FILESDIR}"/fsck_ext2fs.8
-
-			# filefrag is linux only
-			rm \
-				"${ED}"/usr/sbin/filefrag \
-				"${ED}"/usr/share/man/man8/filefrag.8 || die
-		fi
 	fi
 }

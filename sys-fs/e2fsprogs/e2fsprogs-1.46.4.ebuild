@@ -12,7 +12,7 @@ SRC_URI="https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v${PV}/$
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="cron fuse lto nls static-libs +threads elibc_FreeBSD"
+IUSE="cron fuse lto nls static-libs +threads"
 
 RDEPEND="~sys-libs/${PN}-libs-${PV}
 	>=sys-apps/util-linux-2.16
@@ -93,12 +93,6 @@ src_configure() {
 
 src_compile() {
 	emake V=1 COMPILE_ET=compile_et MK_CMDS=mk_cmds
-
-	# Build the FreeBSD helper
-	if use elibc_FreeBSD ; then
-		cp "${FILESDIR}"/fsck_ext2fs.c .
-		emake V=1 fsck_ext2fs
-	fi
 }
 
 src_install() {
@@ -122,17 +116,5 @@ src_install() {
 	# configure doesn't have an option to disable static libs :/
 	if ! use static-libs ; then
 		find "${ED}" -name '*.a' -delete || die
-	fi
-
-	if use elibc_FreeBSD ; then
-		# Install helpers for us
-		into /
-		dosbin "${S}"/fsck_ext2fs
-		doman "${FILESDIR}"/fsck_ext2fs.8
-
-		# filefrag is linux only
-		rm \
-			"${ED}"/usr/sbin/filefrag \
-			"${ED}"/usr/share/man/man8/filefrag.8 || die
 	fi
 }
