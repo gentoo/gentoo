@@ -6,7 +6,7 @@
     <email>scheme@gentoo.org</email>
     <name>Gentoo Scheme Project</name>
   </maintainer>
-  <longdescription lang="en">
+  <longdescription>
     Cyclone Scheme is a brand-new compiler that allows real-world
     application development using the R7RS Scheme Language standard.
     We provide modern features and a stable system capable of generating
