@@ -59,5 +59,9 @@ src_install() {
 		hardlink -pot "${ED}/usr/share/icons" || die "hardlink failed"
 	fi
 
+	# installs broken symlink (by design, but we remove it due to QA warnings)
+	# https://bugs.gentoo.org/830467
+	find "${ED}" -xtype l -name uav.svg -delete || die "removing broken symlinks failed"
+
 	einstalldocs
 }
