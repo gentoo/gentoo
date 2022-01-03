@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,9 +37,9 @@ COMMON_DEPEND="
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
 	media-libs/alsa-lib
 	>=media-libs/taglib-1.11.1_p20181028
-	sys-libs/zlib
 	x11-libs/libX11
 	cdda? ( dev-libs/libcdio:= )
 	gstreamer? (
@@ -67,7 +67,6 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-cpp/gtest-1.8.0
 	dev-libs/boost
 	dev-qt/qttest:5
-	dev-qt/qtx11extras:5
 "
 
 DOCS=( Changelog README.md )
