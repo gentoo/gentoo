@@ -39,8 +39,8 @@ src_install() {
 	local myinstallopts=(
 		--all
 		--dest "${ED}/usr/share/icons"
-		$(usex black '--black' '')
-		$(usex round '--round' '')
+		$(usev black '--black')
+		$(usev round '--round')
 	)
 	bash ./install.sh "${myinstallopts[@]}" || die "install script failed"
 
