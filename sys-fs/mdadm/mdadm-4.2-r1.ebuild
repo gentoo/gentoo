@@ -25,7 +25,6 @@ DEPEND="udev? (
 	)"
 RDEPEND=">=sys-apps/util-linux-2.16
 	udev? ( !static? ( virtual/libudev:= ) )"
-DEPEND="${RDEPEND}"
 
 # The tests edit values in /proc and run tests on software raid devices.
 # Thus, they shouldn't be run on systems with active software RAID devices.
