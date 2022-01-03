@@ -14,9 +14,7 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="9999"
 
-RDEPEND="!dev-lang/julia
-	app-arch/p7zip
-"
+RDEPEND="app-arch/p7zip"
 DEPEND="${RDEPEND}"
 
 RESTRICT="strip"
