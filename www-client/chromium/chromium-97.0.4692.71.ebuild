@@ -1,4 +1,4 @@
-# Copyright 2009-2021 Gentoo Authors
+# Copyright 2009-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -231,6 +231,7 @@ src_prepare() {
 		"${WORKDIR}/patches"
 		"${FILESDIR}/chromium-93-InkDropHost-crash.patch"
 		"${FILESDIR}/chromium-96-EnumTable-crash.patch"
+		"${FILESDIR}/chromium-97-arm64-mte-clang.patch"
 		"${FILESDIR}/chromium-glibc-2.34.patch"
 		"${FILESDIR}/chromium-use-oauth2-client-switches-as-default.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
