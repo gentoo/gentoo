@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Marcin Deranek <marcin.deranek@slonko.net> (2022-01-05)
+# media-gfx/iscan-3 migrated to media-gfx/imagescan
+# Bug #715420. Removal in 30 days.
+>=media-gfx/iscan-3
+>=media-gfx/iscan-plugin-network-nt-1.1.3
+
 # Ionen Wolkens <ionen@gentoo.org> (2022-01-03)
 # Obsolete, higan-purify is now provided by games-emulation/higan
 # as the icarus utility (bug #821121) and dev-games/higan-ananke
