@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,10 +10,9 @@ HOMEPAGE="https://cvsweb.openbsd.org/src/usr.bin/nc/
 	https://salsa.debian.org/debian/netcat-openbsd"
 SRC_URI="http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_${PV}.orig.tar.gz
 	http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_${PV}-2.debian.tar.xz"
+
 LICENSE="BSD"
 SLOT="0"
-IUSE="elibc_Darwin"
-
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x64-macos"
 
 BDEPEND="virtual/pkgconfig"
