@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit pam systemd toolchain-funcs
 
 MY_PV="${PV/_pre/-}"
@@ -16,7 +16,7 @@ SRC_URI="${MY_URI}/${MY_SRC}.tar.gz"
 LICENSE="|| ( IBM EPL-2.0 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="+berkdb cdb dovecot-sasl +eai ldap ldap-bind lmdb memcached mbox mysql nis pam postgres sasl selinux sqlite ssl"
+IUSE="+berkdb cdb dovecot-sasl +eai ldap ldap-bind lmdb mbox memcached mysql nis pam postgres sasl selinux sqlite ssl"
 
 DEPEND="
 	acct-group/postfix
@@ -145,9 +145,11 @@ src_configure() {
 
 	if ! use berkdb; then
 		mycc="${mycc} -DNO_DB"
+		# change default database type
 		if use cdb; then
-			# change default hash format from Berkeley DB to cdb
 			mycc="${mycc} -DDEF_DB_TYPE=\\\"cdb\\\""
+		elif use lmdb; then
+			mycc="${mycc} -DDEF_DB_TYPE=\\\"lmdb\\\""
 		fi
 	fi
 
@@ -155,10 +157,8 @@ src_configure() {
 		mycc="${mycc} -DHAS_CDB -I/usr/include/cdb"
 		# Tinycdb is preferred.
 		if has_version dev-db/tinycdb ; then
-			einfo "Building with dev-db/tinycdb"
 			AUXLIBS_CDB="-lcdb"
 		else
-			einfo "Building with dev-db/cdb"
 			CDB_PATH="/usr/$(get_libdir)"
 			for i in cdb.a alloc.a buffer.a unix.a byte.a ; do
 				AUXLIBS_CDB="${AUXLIBS_CDB} ${CDB_PATH}/${i}"
