@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PATCH_VER="2"
+PATCH_VER="3"
 PATCH_GCC_VER="11.3.0"
 MUSL_VER="1"
 MUSL_GCC_VER="11.2.0"
