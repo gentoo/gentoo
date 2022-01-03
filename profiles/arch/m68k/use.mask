@@ -37,7 +37,12 @@ mpi
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-19)
 # I tried Mesa under qemu-system-m68k with VirtIO-GPU. It didn't work.
+egl
+gles1
+gles2
+opencl
 opengl
+vulkan
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-17)
 # Ruby just crashes on startup.
