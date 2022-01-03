@@ -26,7 +26,7 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="+${MY_COLOR_VARIANTS[*]} +hardlink" # this is why standard comes first
+IUSE="+${MY_COLOR_VARIANTS[*]} +hardlink kde" # this is why standard comes first
 
 REQUIRED_USE="|| ( ${MY_COLOR_VARIANTS[*]} )"
 
@@ -47,6 +47,7 @@ src_prepare() {
 
 src_install() {
 	local v variants=(
+		$(usev kde '-c')
 		$(for v in ${MY_COLOR_VARIANTS[@]}; do
 			usev ${v}
 		done)
