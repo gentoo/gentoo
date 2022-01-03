@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -119,6 +119,7 @@ src_install() {
 	fowners -R icinga:icingacmd /var/lib/icinga2/certs
 	fowners icinga:icinga /var/spool/icinga2
 	fowners icinga:icinga /var/spool/icinga2/perfdata
+	fowners icinga:icingacmd /var/log/icinga2
 
 	fperms ug+rwX,o-rwx /etc/icinga2
 	fperms ug+rwX,o-rwx /var/lib/icinga2
