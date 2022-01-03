@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2021-01-03)
+# Sam James <sam@gentoo.org> (2022-01-03)
 # Need systemd enabled here for depgraph: bug #830485
 # (only sys-fs/eudev supports static which isn't available on systemd profiles)
 sys-fs/mdadm systemd
