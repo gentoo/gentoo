@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ SRC_URI="https://www.open-mpi.org/software/ompi/v$(ver_cut 1-2)/downloads/${MY_P
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux"
-IUSE="cma cuda cxx fortran heterogeneous ipv6 java libompitrace peruse romio
+IUSE="cma cuda cxx fortran ipv6 java libompitrace peruse romio
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
 
 REQUIRED_USE="openmpi_rm_slurm? ( !openmpi_rm_pbs )
@@ -112,7 +112,7 @@ multilib_src_configure() {
 		--with-libevent-libdir="${EPREFIX}/usr/$(get_libdir)"
 
 		$(use_enable cxx mpi-cxx)
-		$(use_enable heterogeneous)
+		--disable-heterogeneous
 		$(use_enable ipv6)
 		$(use_enable libompitrace)
 		$(use_enable peruse)
