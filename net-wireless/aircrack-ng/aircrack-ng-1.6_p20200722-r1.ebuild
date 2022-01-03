@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="+airdrop-ng +airgraph-ng kernel_linux kernel_FreeBSD +netlink +pcre +sqlite +experimental"
+IUSE="+airdrop-ng +airgraph-ng kernel_linux +netlink +pcre +sqlite +experimental"
 
 DEPEND="net-libs/libpcap
 	sys-apps/hwloc:0=
@@ -103,19 +103,4 @@ src_install() {
 	# we don't need aircrack-ng's oui updater, we have our own
 	rm "${ED}"/usr/sbin/airodump-ng-oui-update
 	find "${D}" -xtype f -name '*.la' -delete || die
-}
-
-pkg_postinst() {
-	# Message is (c) FreeBSD
-	# http://www.freebsd.org/cgi/cvsweb.cgi/ports/net-mgmt/aircrack-ng/files/pkg-message.in?rev=1.5
-	if use kernel_FreeBSD ; then
-		einfo "Contrary to Linux, it is not necessary to use airmon-ng to enable the monitor"
-		einfo "mode of your wireless card.  So do not care about what the manpages say about"
-		einfo "airmon-ng, airodump-ng sets monitor mode automatically."
-		echo
-		einfo "To return from monitor mode, issue the following command:"
-		einfo "    ifconfig \${INTERFACE} -mediaopt monitor"
-		einfo
-		einfo "For aireplay-ng you need FreeBSD >= 7.0."
-	fi
 }
