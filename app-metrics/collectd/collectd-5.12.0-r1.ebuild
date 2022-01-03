@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -18,7 +18,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.bz2"
 LICENSE="MIT GPL-2 GPL-2+ GPL-3 GPL-3+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm x86"
-IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux static-libs udev xfs"
+IUSE="contrib debug java kernel_Darwin kernel_linux perl selinux static-libs udev xfs"
 
 # The plugin lists have to follow here since they extend IUSE
 
@@ -150,15 +150,7 @@ COMMON_DEPEND="
 	collectd_plugins_write_redis?		( dev-libs/hiredis:= )
 	collectd_plugins_write_stackdriver?	( net-misc/curl:0= dev-libs/yajl:= )
 	collectd_plugins_xencpu?		( app-emulation/xen-tools:= )
-
-	kernel_FreeBSD? (
-		collectd_plugins_disk?		( sys-libs/libstatgrab:= )
-		collectd_plugins_interface?	( sys-libs/libstatgrab:= )
-		collectd_plugins_load?		( sys-libs/libstatgrab:= )
-		collectd_plugins_memory?	( sys-libs/libstatgrab:= )
-		collectd_plugins_swap?		( sys-libs/libstatgrab:= )
-		collectd_plugins_users?		( sys-libs/libstatgrab:= )
-	)"
+"
 
 # FIXME: should virtual/jdk be here as well?
 BDEPEND="virtual/pkgconfig"
@@ -337,9 +329,6 @@ src_configure() {
 	if use kernel_linux; then
 		einfo "Enabling Linux plugins."
 		myos_plugins=${linux_plugins}
-	elif use kernel_FreeBSD; then
-		einfo "Enabling FreeBSD plugins."
-		myos_plugins=${bsd_plugins}
 	elif use kernel_Darwin; then
 		einfo "Enabling Darwin plugins."
 		myos_plugins=${darwin_plugins}
@@ -376,11 +365,6 @@ src_configure() {
 			if has ${plugin} ${myos_plugins}; then
 				# ... and available in this os
 				myconf+=" $(use_enable collectd_plugins_${plugin} ${plugin})"
-				# ... must we link against libstatgrab? Bug #541518
-				if use kernel_FreeBSD && has ${plugin} ${libstatgrab_plugins}; then
-					einfo "We must link against libstatgrab due to plugin \"${plugin}\" ..."
-					need_libstatgrab=1
-				fi
 			else
 				# ... and NOT available in this os
 				if use collectd_plugins_${plugin}; then
