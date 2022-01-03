@@ -27,10 +27,10 @@ net-print/hplip-plugin -orblite
 media-video/obs-studio nvenc
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-17)
-# media-libs/rnnoise, media-plugins/gst-plugins-webrtc
+# media-plugins/gst-plugins-webrtc
 # and media-plugins/zam-plugins not keyworded here
-media-sound/easyeffects rnnoise webrtc zamaudio
-media-sound/pulseeffects rnnoise webrtc zamaudio
+media-sound/easyeffects zamaudio
+media-sound/pulseeffects webrtc zamaudio
 
 # Sam James <sam@gentoo.org> (2021-07-12)
 # Haskell is (only) available on amd64/x86 right now in Gentoo
