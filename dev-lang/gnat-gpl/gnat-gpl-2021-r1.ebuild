@@ -119,6 +119,9 @@ src_prepare() {
 	eapply "${FILESDIR}"/${P}-gentoo.patch
 	cd -
 	sed -i \
+		-e 's:-fcf-protection":":' \
+		lto-plugin/configure || die
+	sed -i \
 		-e 's:$(P) ::g' \
 		gcc/ada/gcc-interface/Makefile.in \
 		|| die "sed failed"
