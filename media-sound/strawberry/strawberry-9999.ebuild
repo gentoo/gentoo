@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,12 +8,12 @@ inherit cmake flag-o-matic plocale xdg
 PLOCALES="ca cs de es fi fr hu id it ja ko nb nl pl pt_BR ru sv uk zh_CN"
 
 DESCRIPTION="Modern music player and library organizer based on Clementine and Qt"
-HOMEPAGE="https://www.strawbs.org/"
+HOMEPAGE="https://www.strawberrymusicplayer.org/"
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="https://github.com/jonaski/strawberry.git"
+	EGIT_REPO_URI="https://github.com/strawberrymusicplayer/strawberry"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/jonaski/strawberry/releases/download/${PV}/${P}.tar.xz"
+	SRC_URI="https://github.com/strawberrymusicplayer/strawberry/releases/download/${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
@@ -27,10 +27,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 COMMON_DEPEND="
-	app-crypt/qca:2[qt5(+)]
 	dev-db/sqlite:=
 	dev-libs/glib:2
-	dev-libs/libxml2
 	dev-libs/protobuf:=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
@@ -39,11 +37,9 @@ COMMON_DEPEND="
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
 	media-libs/alsa-lib
-	>=media-libs/libmygpo-qt-1.0.9[qt5(+)]
 	>=media-libs/taglib-1.11.1_p20181028
-	sys-libs/zlib
-	virtual/glu
 	x11-libs/libX11
 	cdda? ( dev-libs/libcdio:= )
 	gstreamer? (
@@ -70,10 +66,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	>=dev-cpp/gtest-1.8.0
 	dev-libs/boost
-	dev-qt/qtopengl:5
 	dev-qt/qttest:5
-	dev-qt/qtx11extras:5
-	dev-qt/qtxml:5
 "
 
 DOCS=( Changelog README.md )
