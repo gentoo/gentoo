@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="source"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A single API for accessing various different file systems"
-HOMEPAGE="http://commons.apache.org/vfs/"
+HOMEPAGE="https://commons.apache.org/vfs/"
 SRC_URI="mirror://apache/commons/vfs/source/${P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
