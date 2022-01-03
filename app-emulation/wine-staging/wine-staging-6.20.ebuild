@@ -48,7 +48,7 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="${MY_PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos +faudio +fontconfig +gcrypt +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap mingw +mono mp3 netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl staging test themes +threads +truetype udev +udisks +unwind usb v4l vaapi vkd3d vulkan +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos +faudio +fontconfig +gcrypt +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos +lcms ldap mingw +mono mp3 netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl staging test themes +threads +truetype udev +udisks +unwind usb v4l vaapi vkd3d vulkan +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
@@ -291,10 +291,10 @@ pkg_pretend() {
 		wine_build_environment_check || die
 
 		# Verify OSS support
-		if use oss && ! use kernel_FreeBSD; then
+		if use oss; then
 			if ! has_version ">=media-sound/oss-4"; then
-				eerror "You cannot build wine with USE=oss without having support from a"
-				eerror "FreeBSD kernel or >=media-sound/oss-4 (only available through external repos)"
+				eerror "You cannot build wine with USE=oss without having support from"
+				eerror ">=media-sound/oss-4 (only available through external repos)"
 				eerror
 				die
 			fi
