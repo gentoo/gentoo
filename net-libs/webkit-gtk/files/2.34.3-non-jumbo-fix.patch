@@ -8,23 +8,11 @@ Subject: [PATCH] Non-unified build fixes, early October 2021 edition
 Unreviewed non-unified build fixes.
 ---
 leio: Trimmed to what's relevant to webkitgtk-2.34 branch
+gyakovlev: removed TextTrackClient.h include addition
 
- Source/WebCore/html/track/InbandTextTrack.cpp          | 1 +
  Source/WebCore/inspector/agents/InspectorCanvasAgent.h | 2 ++
- 2 files changed, 3 insertions(+)
+ 1 files changed, 2 insertions(+)
 
-diff --git a/Source/WebCore/html/track/InbandTextTrack.cpp b/Source/WebCore/html/track/InbandTextTrack.cpp
-index d45969fbfc77..ab5605100a94 100644
---- a/Source/WebCore/html/track/InbandTextTrack.cpp
-+++ b/Source/WebCore/html/track/InbandTextTrack.cpp
-@@ -32,6 +32,7 @@
- #include "InbandGenericTextTrack.h"
- #include "InbandTextTrackPrivate.h"
- #include "InbandWebVTTTextTrack.h"
-+#include "TextTrackClient.h"
- #include <wtf/IsoMallocInlines.h>
- 
- namespace WebCore {
 diff --git a/Source/WebCore/inspector/agents/InspectorCanvasAgent.h b/Source/WebCore/inspector/agents/InspectorCanvasAgent.h
 index 7f1012aa2a24..4c7c23995276 100644
 --- a/Source/WebCore/inspector/agents/InspectorCanvasAgent.h
