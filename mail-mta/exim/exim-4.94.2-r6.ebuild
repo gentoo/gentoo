@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -6,7 +6,7 @@ EAPI="7"
 inherit db-use toolchain-funcs multilib pam systemd
 
 IUSE="arc berkdb +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl
-dsn elibc_glibc exiscan-acl gdbm gnutls idn ipv6 ldap lmtp maildir mbx
+dsn exiscan-acl gdbm gnutls idn ipv6 ldap lmtp maildir mbx
 mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux
 socks5 spf sqlite srs +srs-alt srs-native +ssl syslog tdb tcpd +tpda X"
 REQUIRED_USE="
