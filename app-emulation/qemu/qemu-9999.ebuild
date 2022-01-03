@@ -35,7 +35,7 @@ SLOT="0"
 IUSE="accessibility +aio alsa bpf bzip2 capstone +caps +curl debug +doc
 	+fdt fuse glusterfs gnutls gtk infiniband iscsi io-uring
 	jack jemalloc +jpeg kernel_linux
-	kernel_FreeBSD lzo multipath
+	lzo multipath
 	ncurses nfs nls numa opengl +oss pam +pin-upstream-blobs
 	plugins +png pulseaudio python rbd sasl +seccomp sdl sdl-image selinux
 	+slirp
@@ -646,11 +646,6 @@ qemu_src_configure() {
 	echo "../configure ${conf_opts[*]}"
 	cd "${builddir}"
 	../configure "${conf_opts[@]}" || die "configure failed"
-
-	# FreeBSD's kernel does not support QEMU assigning/grabbing
-	# host USB devices yet
-	use kernel_FreeBSD && \
-		sed -i -E -e "s|^(HOST_USB=)bsd|\1stub|" "${S}"/config-host.mak
 }
 
 src_configure() {
