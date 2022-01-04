@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ulrich Müller <ulm@gentoo.org> (2022-01-04)
+# Emacs 23 does not support x86_64-gentoo-linux-musl systems
+# (bug #830408)
+app-editors/emacs:23
+
 # Marek Szuba <marecki@gentoo.org> (2022-01-01)
 # Binary-only package linked against glibc.
 app-crypt/rainbowcrack
