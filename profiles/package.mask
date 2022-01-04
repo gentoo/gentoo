@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Florian Schmaus <flow@gentoo.org> (2022-01-04)
+# Outdated, unmaintained, and has multiple open bugs (bug #732582, bug
+# #739398, bug #756715). As discussed at
+# https://github.com/gentoo/gentoo/pull/23483#issuecomment-1004363556,
+# in its current form it is better maintained in the 'spring' overlay.
+# Removal after 2022-02-04. Bug #830588.
+games-util/springlobby
+
 # Ionen Wolkens <ionen@gentoo.org> (2022-01-03)
 # Obsolete, higan-purify is now provided by games-emulation/higan
 # as the icarus utility (bug #821121) and dev-games/higan-ananke
