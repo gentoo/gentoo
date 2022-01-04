@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,8 +39,9 @@ src_prepare() {
 	local DB_SUPPORTED=(
 		6 5 4 3 2
 	)
-	# on Gentoo/FreeBSD we cannot trust on the symlink /usr/include/db.h
-	# as for Gentoo/Linux, so we need to esplicitely declare the exact berkdb
+
+	# on Gentoo Prefix, we cannot trust the symlink /usr/include/db.h
+	# as for Gentoo/Linux, so we need to explicitly declare the exact berkdb
 	# include path
 	local dbdir="$(db_includedir "${DB_SUPPORTED[@]}" )"
 	local dbname="$(db_libname "${DB_SUPPORTED[@]}" )"
