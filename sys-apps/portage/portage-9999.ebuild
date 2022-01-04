@@ -67,6 +67,7 @@ RDEPEND="
 PDEPEND="
 	!build? (
 		>=net-misc/rsync-2.6.4
+		>=sys-apps/file-5.41
 		userland_GNU? ( >=sys-apps/coreutils-6.4 )
 	)"
 # coreutils-6.4 rdep is for date format in emerge-webrsync #164532
