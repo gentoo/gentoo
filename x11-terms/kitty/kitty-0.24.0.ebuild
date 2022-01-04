@@ -73,8 +73,7 @@ src_prepare() {
 
 	# --shell-integration="enabled no-rc" is the intended way to set
 	# no-rc by default, but setup.py's replacer currently fails
-	# (no-rc prevents modifying users .bashrc without asking, and it's
-	# unnecessary given shell-integration package uses /etc/bash/bashrc.d)
+	# https://github.com/kovidgoyal/kitty/issues/4434
 	sed -i "/shell_integration:/s/'enabled'/&,'no-rc'/" kitty/options/types.py || die
 
 	# test relies on 'who' command which typically works but have 1 VM
