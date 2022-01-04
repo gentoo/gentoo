@@ -13,7 +13,7 @@ SRC_URI="https://github.com/bndtools/bnd/archive/${PV}.REL.tar.gz -> bndlib-${PV
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="amd64 ppc64 x86"
 
 # Tests depend on biz.aQute.junit, which depends on biz.aQute.bndlib, which on
 # its own turn again depends on aQute.libg again; we can temporarily assume that

@@ -17,7 +17,7 @@ LICENSE="LGPL-2.1+"
 # Based off the soname, e.g. /usr/lib64/libflint.so -> libflint.so.15
 SLOT="0/15"
 
-KEYWORDS="amd64 ~arm ~arm64 ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
 IUSE="doc ntl test"
 
 RESTRICT="!test? ( test )"

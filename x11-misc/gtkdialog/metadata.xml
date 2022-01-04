@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>desktop-misc@gentoo.org</email>
-		<name>Gentoo Desktop Miscellaneous Project</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		gtkdialog is a GUI-creation utility that can be used with an arbitrary
 		interpreter. It enables the programmer to describe a graphical user interface

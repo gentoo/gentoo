@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome2-utils.eclass
 # @MAINTAINER:
 # gnome@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @PROVIDES: xdg-utils
 # @BLURB: Auxiliary functions commonly used by Gnome packages.
 # @DESCRIPTION:
@@ -16,14 +16,13 @@
 #  * scrollkeeper (old Gnome help system) management
 
 [[ ${EAPI} == 5 ]] && inherit multilib
-# eutils.eclass: emktemp
 # toolchain-funs.eclass: tc-is-cross-compiler
 # xdg-utils.eclass: xdg_environment_reset, xdg_icon_cache_update
-inherit eutils toolchain-funcs xdg-utils
+inherit toolchain-funcs xdg-utils
 
 case ${EAPI} in
-	5|6|7) ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
+	5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # @ECLASS-VARIABLE: GCONFTOOL_BIN
@@ -379,7 +378,7 @@ gnome2_gdk_pixbuf_update() {
 	fi
 
 	ebegin "Updating gdk-pixbuf loader cache"
-	local tmp_file=$(emktemp)
+	local tmp_file=$(mktemp "${T}"/tmp.XXXXXXXXXX) || die "Failed to create temporary file"
 	${updater} 1> "${tmp_file}" &&
 	chmod 0644 "${tmp_file}" &&
 	cp -f "${tmp_file}" "${EROOT%/}/usr/$(get_libdir)/gdk-pixbuf-2.0/2.10.0/loaders.cache" &&

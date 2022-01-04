@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2021-10-31)
@@ -25,9 +25,8 @@ media-video/mjpg-streamer -input-raspicam
 dev-util/diffoscope pascal pdf
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
-# media-libs/rnnoise, media-plugins/gst-plugins-webrtc
 # and media-plugins/zam-plugins not keyworded here
-media-sound/easyeffects rnnoise webrtc zamaudio
+media-sound/easyeffects zamaudio
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-12)
 # no stable virtual/jdk on this arch

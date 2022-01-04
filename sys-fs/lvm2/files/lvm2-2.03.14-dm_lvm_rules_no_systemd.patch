@@ -1,0 +1,37 @@
+From 88d5b3d711c8546864e57dbfba7591a19be80c4d Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Mon, 27 Dec 2021 00:53:21 +0100
+Subject: [PATCH] Don't use systemd-run in 69-dm-lvm.rules
+
+some people don't run systemd
+---
+ udev/69-dm-lvm.rules.in | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/udev/69-dm-lvm.rules.in b/udev/69-dm-lvm.rules.in
+index 39e5b9807..6ba4efa0f 100644
+--- a/udev/69-dm-lvm.rules.in
++++ b/udev/69-dm-lvm.rules.in
+@@ -62,8 +62,8 @@ ENV{SYSTEMD_READY}="1"
+ # LVM_VG_NAME_COMPLETE='foo'
+ #
+ # When the VG is complete it can be activated, so
+-# vgchange -aay <vgname> is run.  It is run via
+-# systemd since it can take longer to run than
++# vgchange -aay <vgname> is run.  It can take
++# longer to run than
+ # udev wants to block when processing rules.
+ # (if there are hundreds of LVs to activate,
+ # the vgchange can take many seconds.)
+@@ -80,7 +80,7 @@ ENV{SYSTEMD_READY}="1"
+ # it's better suited to appearing in the journal.
+ 
+ IMPORT{program}="(LVM_EXEC)/lvm pvscan --cache --listvg --checkcomplete --vgonline --udevoutput --journal=output $env{DEVNAME}"
+-ENV{LVM_VG_NAME_COMPLETE}=="?*", RUN+="/usr/bin/systemd-run -r --no-block --property DefaultDependencies=no --unit lvm-activate-$env{LVM_VG_NAME_COMPLETE} lvm vgchange -aay --nohints $env{LVM_VG_NAME_COMPLETE}"
++ENV{LVM_VG_NAME_COMPLETE}=="?*", RUN+="(LVM_EXEC)/lvm vgchange -aay --nohints $env{LVM_VG_NAME_COMPLETE}"
+ GOTO="lvm_end"
+ 
+ LABEL="lvm_end"
+-- 
+2.34.1
+

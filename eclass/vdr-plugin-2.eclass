@@ -9,16 +9,16 @@
 # Joerg Bornkessel <hd_brummy@gentoo.org>
 # Christian Ruppert <idl0r@gentoo.org>
 # (undisclosed contributors)
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: common vdr plugin ebuild functions
 # @DESCRIPTION:
 # Eclass for easing maintenance of vdr plugin ebuilds
 
 # @ECLASS-VARIABLE: VDRPLUGIN
-# @INTERNAL
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The name of the vdr plugin, plain name without "vdr-" or "plugin" prefix or suffix.
-# This variable is derived from ${PN}
+# This variable is derived from ${PN} and is read-only for the ebuild.
 
 # @ECLASS-VARIABLE: VDR_CONFD_FILE
 # @DEFAULT_UNSET

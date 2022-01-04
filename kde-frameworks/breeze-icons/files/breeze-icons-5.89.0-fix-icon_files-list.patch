@@ -1,0 +1,41 @@
+From 08bf45db9b883b4201ac3cbb666821472f17ad97 Mon Sep 17 00:00:00 2001
+From: Rodney Dawes <dobey.pwns@gmail.com>
+Date: Mon, 6 Dec 2021 15:13:22 -0500
+Subject: [PATCH] Include "*@*" in the icon_files list for installation
+
+As some of the directories of the theme are symlinks for scaled sizes
+we need to include them in the list of files to install as well.
+---
+ icons-dark/CMakeLists.txt | 2 +-
+ icons/CMakeLists.txt      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/icons-dark/CMakeLists.txt b/icons-dark/CMakeLists.txt
+index ab582c13..6ceddc5c 100644
+--- a/icons-dark/CMakeLists.txt
++++ b/icons-dark/CMakeLists.txt
+@@ -22,7 +22,7 @@ if(NOT WIN32)
+ endif()
+ 
+ if(NOT SKIP_INSTALL_ICONS)
+-    file(GLOB_RECURSE icon_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/*.svg")
++    file(GLOB_RECURSE icon_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/*.svg" "${CMAKE_CURRENT_SOURCE_DIR}/*@*")
+     foreach (icon_file ${icon_files})
+         install(FILES ${icon_file} DESTINATION ${BREEZE_INSTALL_DIR} RENAME ${icon_file})
+     endforeach()
+diff --git a/icons/CMakeLists.txt b/icons/CMakeLists.txt
+index 8f31db4a..b48852eb 100644
+--- a/icons/CMakeLists.txt
++++ b/icons/CMakeLists.txt
+@@ -23,7 +23,7 @@ endif()
+ 
+ if(NOT SKIP_INSTALL_ICONS)
+     # collect all our icons we need to install, will be used by dark icon set as fallback icons if not there, too
+-    file(GLOB_RECURSE icon_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/*.svg")
++    file(GLOB_RECURSE icon_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/*.svg" "${CMAKE_CURRENT_SOURCE_DIR}/*@*")
+     set(BREEZE_LIGHT_ICONS ${icon_files} PARENT_SCOPE)
+     foreach (icon_file ${icon_files})
+         install(FILES ${icon_file} DESTINATION ${BREEZE_INSTALL_DIR} RENAME ${icon_file})
+-- 
+GitLab
+

@@ -6,16 +6,16 @@ EAPI=7
 inherit meson
 
 DESCRIPTION="Pluggable, composable, unopinionated modules for building a Wayland compositor"
-HOMEPAGE="https://github.com/swaywm/wlroots"
+HOMEPAGE="https://gitlab.freedesktop.org/wlroots/wlroots"
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://github.com/swaywm/${PN}.git"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
 	inherit git-r3
 	SLOT="0/9999"
 else
-	SRC_URI="https://github.com/swaywm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-	SLOT="0/14"
+	SLOT="0/16"
 fi
 
 LICENSE="MIT"
@@ -23,8 +23,8 @@ IUSE="vulkan x11-backend X"
 
 DEPEND="
 	>=dev-libs/libinput-1.14.0:0=
-	>=dev-libs/wayland-1.19.0
-	>=dev-libs/wayland-protocols-1.23
+	>=dev-libs/wayland-1.20.0
+	>=dev-libs/wayland-protocols-1.24
 	media-libs/mesa[egl(+),gles2,gbm(+)]
 	sys-auth/seatd:=
 	virtual/libudev
@@ -33,7 +33,7 @@ DEPEND="
 		dev-util/vulkan-headers:0=
 		media-libs/vulkan-loader:0=
 	)
-	x11-libs/libdrm
+	>=x11-libs/libdrm-2.4.109:0=
 	x11-libs/libxkbcommon
 	x11-libs/pixman
 	x11-backend? ( x11-libs/libxcb:0= )
@@ -48,8 +48,8 @@ RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
-	>=dev-libs/wayland-protocols-1.23
-	>=dev-util/meson-0.58.1
+	>=dev-libs/wayland-protocols-1.24
+	>=dev-util/meson-0.60.0
 	virtual/pkgconfig
 "
 

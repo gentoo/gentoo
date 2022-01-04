@@ -15,7 +15,7 @@ if [[ ${PV} == 9999* ]] ; then
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
 		https://dev.gentoo.org/~zlogene/distfiles/app-editors/vim/vim-8.2.0360-gentoo-patches.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 S="${WORKDIR}"/vim-${PV}
 
@@ -193,6 +193,9 @@ src_install() {
 		rm -rv "${ED}${vimfiles}"/{macros,print,tools,tutor} || die "rm failed"
 		rm -v "${ED}"/usr/bin/vimtutor || die "rm failed"
 
+		# Delete defaults.vim to avoid conflicts with one from vim[minimal]
+		rm -v "${ED}${vimfiles}"/defaults.vim || die "rm failed"
+
 		local keep_colors="default"
 		ignore=$(rm -fr "${ED}${vimfiles}"/colors/!(${keep_colors}).vim )
 
@@ -200,6 +203,9 @@ src_install() {
 		# tinkering with the next line might make bad things happen ...
 		keep_syntax="${keep_syntax}|syntax|nosyntax|synload"
 		ignore=$(rm -fr "${ED}${vimfiles}"/syntax/!(${keep_syntax}).vim )
+
+		# Delete skip_defaults_vim config not supported by vim[minimal]
+		sed -i '/skip_defaults_vim/d' "${ED}"/etc/vim/vimrc || die "sed failed"
 
 		eshopts_pop
 	fi

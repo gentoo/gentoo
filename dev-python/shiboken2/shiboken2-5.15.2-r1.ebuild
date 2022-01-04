@@ -14,7 +14,7 @@ EAPI=7
 #     https://bugreports.qt.io/browse/PYSIDE-535
 # Fails to compile with python3.10
 # FAILED: libshiboken/CMakeFiles/libshiboken.dir/sbkstring.cpp.o
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake llvm python-r1 toolchain-funcs
 
@@ -60,6 +60,7 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( AUTHORS )
+PATCHES=( "${FILESDIR}/${P}-python310.patch" )
 
 # Ensure the path returned by get_llvm_prefix() contains clang as well.
 llvm_check_deps() {

@@ -43,6 +43,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.11-static.patch"
+	"${FILESDIR}/${PN}-5.12-detect-ipx-presence.patch"
 )
 
 src_prepare() {

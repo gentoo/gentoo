@@ -24,7 +24,6 @@ RESTRICT="!test? ( test )"
 
 # A part of tests use ffi luajit extension
 REQUIRED_USE="${LUA_REQUIRED_USE}
-	jit? ( lua_single_target_luajit )
 	test? ( lua_single_target_luajit )"
 
 RDEPEND="${LUA_DEPS}
@@ -68,6 +67,8 @@ src_prepare() {
 	cmake_src_prepare
 
 	rm -vrf contrib/{doctest,fmt,lua-bit,snowball,zstd} || die
+
+	> cmake/Toolset.cmake || die #827550
 
 	sed -i -e 's/User=_rspamd/User=rspamd/g' \
 		rspamd.service \

@@ -1,0 +1,30 @@
+From 8a0036fdee0eaa7dc5808dfe2dfc516fc32dfd8e Mon Sep 17 00:00:00 2001
+From: Xaver Hugl <xaver.hugl@gmail.com>
+Date: Thu, 9 Dec 2021 12:51:55 +0100
+Subject: [PATCH] platforms/drm: remove the dpms filter when outputs are added
+
+When the dpms filter is active and an output is hotunplugged, or
+is momentarily detected as hotunplugged, adding a new output should
+remove the dpms filter again.
+
+BUG: 446699
+FIXED-IN: 5.23.5
+---
+ src/plugins/platforms/drm/drm_backend.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/plugins/platforms/drm/drm_backend.cpp b/src/plugins/platforms/drm/drm_backend.cpp
+index a99b720177..d7908f6332 100644
+--- a/src/plugins/platforms/drm/drm_backend.cpp
++++ b/src/plugins/platforms/drm/drm_backend.cpp
+@@ -321,6 +321,7 @@ void DrmBackend::addOutput(DrmAbstractOutput *o)
+         primaryGpu()->removeVirtualOutput(m_placeHolderOutput);
+         m_placeHolderOutput = nullptr;
+     }
++    checkOutputsAreOn();
+ }
+ 
+ void DrmBackend::removeOutput(DrmAbstractOutput *o)
+-- 
+GitLab
+

@@ -1,0 +1,32 @@
+From 81b063f53db8a3d74077522a6ff4f1640cc3fe70 Mon Sep 17 00:00:00 2001
+From: Clemens Lang <cal@macports.org>
+Date: Sun, 14 Nov 2021 18:21:28 +0100
+Subject: [PATCH] Avoid header include guard conflict with OpenSSL 3
+
+OpenSSL 3.x ships an openssl/types.h header that's protected with an
+OPENSSL_TYPES_H include guard macro. OpenSSL's headers fail to parse
+when ykcs11/openssl_types.h defines this symbol.
+
+Switch the include guard for the file to YKCS11_OPENSSL_TYPES_H to
+prevent this from happening.
+
+Signed-off-by: Clemens Lang <cal@macports.org>
+---
+ ykcs11/openssl_types.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ykcs11/openssl_types.h b/ykcs11/openssl_types.h
+index c526d815..f3e1a7c0 100644
+--- a/ykcs11/openssl_types.h
++++ b/ykcs11/openssl_types.h
+@@ -28,8 +28,8 @@
+  *
+  */
+ 
+-#ifndef OPENSSL_TYPES_H
+-#define OPENSSL_TYPES_H
++#ifndef YKCS11_OPENSSL_TYPES_H
++#define YKCS11_OPENSSL_TYPES_H
+ 
+ #include <openssl/bn.h>
+ #include <openssl/x509.h>

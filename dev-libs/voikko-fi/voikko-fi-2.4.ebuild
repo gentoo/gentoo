@@ -22,7 +22,7 @@ DEPEND="dev-libs/foma
 RDEPEND="${DEPEND}"
 BDEPEND="${PYTHON_DEPS}
 	dev-libs/libvoikko
-	verify-sig? ( app-crypt/openpgp-keys-voikko )"
+	verify-sig? ( sec-keys/openpgp-keys-voikko )"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/voikko.asc
 

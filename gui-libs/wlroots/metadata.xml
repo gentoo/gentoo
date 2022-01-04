@@ -31,8 +31,8 @@
 			<email>sir@cmpwn.com</email>
 			<name>Drew DeVault</name>
 		</maintainer>
-		<bugs-to>https://github.com/swaywm/wlroots/issues</bugs-to>
-		<doc>https://github.com/swaywm/wlroots/wiki</doc>
-		<changelog>https://github.com/swaywm/wlroots/releases</changelog>
+		<bugs-to>https://gitlab.freedesktop.org/wlroots/wlroots/-/issues</bugs-to>
+		<doc>https://gitlab.freedesktop.org/wlroots/wlroots/-/wikis/home</doc>
+		<changelog>https://gitlab.freedesktop.org/wlroots/wlroots/-/releases</changelog>
 	</upstream>
 </pkgmetadata>

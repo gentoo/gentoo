@@ -7,7 +7,7 @@
 # @AUTHOR:
 # kiorky <kiorky@cryptelium.net>
 # Petteri Räty <betelgeuse@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @PROVIDES: java-utils-2
 # @BLURB: eclass for ant based Java packages
 # @DESCRIPTION:
@@ -18,7 +18,7 @@
 inherit java-utils-2 multilib
 
 case ${EAPI:-0} in
-	[567]) ;;
+	[5678]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -73,7 +73,7 @@ fi
 # constructed above.
 JAVA_ANT_E_DEPEND="${JAVA_ANT_E_DEPEND}
 	   ${ANT_TASKS_DEPEND}
-	   >=dev-java/javatoolkit-0.3.0-r2"
+	   dev-java/javatoolkit"
 
 # this eclass must be inherited after java-pkg-2 or java-pkg-opt-2
 # if it's java-pkg-opt-2, ant dependencies are pulled based on USE flag

@@ -11,7 +11,7 @@ SRC_URI="https://github.com/nextcloud/desktop/archive/v${PV/_/-}.tar.gz -> ${P}.
 
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc dolphin nautilus test webengine"
 RESTRICT="!test? ( test )"
 
@@ -59,6 +59,9 @@ PATCHES=( "${FILESDIR}"/${PN}-3.3.4-inkscape_to_rsvg.patch )
 S="${WORKDIR}/desktop-${PV/_/-}"
 
 src_prepare() {
+	# We do not package libcloudproviders
+	sed -e "s/pkg_check_modules.*cloudproviders/#&/" -i CMakeLists.txt || die
+
 	# Keep tests in ${T}
 	sed -i -e "s#\"/tmp#\"${T}#g" test/test*.cpp || die
 
@@ -67,10 +70,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DSYSCONF_INSTALL_DIR="${EPREFIX}"/etc
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DBUILD_UPDATER=OFF
-		-DCMAKE_DISABLE_FIND_PACKAGE_Libcloudproviders=ON
 		$(cmake_use_find_package doc Sphinx)
 		$(cmake_use_find_package doc PdfLatex)
 		$(cmake_use_find_package webengine Qt5WebEngine)

@@ -13,7 +13,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-DESCRIPTION="Not Quite Perl, a Perl 6 bootstrapping compiler"
+DESCRIPTION="Not Quite Perl, a Raku bootstrapping compiler"
 HOMEPAGE="https://rakudo.org"
 
 LICENSE="Artistic-2"

@@ -1,5 +1,5 @@
---- mod_dnssd-0.6/src/mod_dnssd.c.httpd24
-+++ mod_dnssd-0.6/src/mod_dnssd.c
+--- a/src/mod_dnssd.c
++++ b/src/mod_dnssd.c
 @@ -26,6 +26,9 @@
  #include <unixd.h>
  #include <apr_signal.h>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		This present project (e3) is a Python framework to ease the
+		development of portable automated build systems (compilation,
+		dependencies management, binary code packaging, and automated
+		testing).
+		The e3 framework is split across multiple Python packages named
+		e3-name and sharing the same namespace: e3.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">adacore/e3-testsuite</remote-id>
+	</upstream>
+</pkgmetadata>

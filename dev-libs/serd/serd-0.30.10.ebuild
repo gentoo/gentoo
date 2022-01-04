@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE='threads(+)'
 inherit python-any-r1 waf-utils multilib-build multilib-minimal
 
@@ -18,7 +18,11 @@ IUSE="doc static-libs test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	doc? ( app-doc/doxygen )
+	doc? (
+		app-doc/doxygen
+		dev-python/sphinx
+		dev-python/sphinx_lv2_theme
+)
 "
 RDEPEND=""
 DEPEND="${RDEPEND}

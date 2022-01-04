@@ -9,7 +9,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="http://www.musl-libc.org/releases/${P}.tar.gz"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
+	KEYWORDS="-* amd64 arm arm64 ~mips ppc ppc64 x86"
 fi
 GETENT_COMMIT="93a08815f8598db442d8b766b463d0150ed8e2ab"
 GETENT_FILE="musl-getent-${GETENT_COMMIT}.c"
@@ -128,7 +128,7 @@ src_install() {
 		# and print $(ARCH)$(SUBARCH).
 		local arch=$(awk '{ k[$1] = $3 } END { printf("%s%s", k["ARCH"], k["SUBARCH"]); }' config.mak)
 
-		if [[ ! -e "${D}"/lib/ld-musl-${arch}.so.1 ]] ; then
+		if [[ ! -e "${ED}"/lib/ld-musl-${arch}.so.1 ]] ; then
 			# During cross (using crossdev), when emerging sys-libs/musl,
 			# if /usr/lib/libc.so.1 doesn't exist on the system, installation
 			# would fail.
@@ -138,10 +138,10 @@ src_install() {
 			# During cross, there's no guarantee that the host is using musl
 			# so that file may not exist. Use a relative symlink within ${D}
 			# instead.
-			dosym8 -r /usr/lib/libc.so.1 /lib/ld-musl-${arch}.so.1
+			dosym8 -r /usr/lib/libc.so /lib/ld-musl-${arch}.so.1
 
 			# If it's still a dead symlnk, OK, we really do need to abort.
-			[[ -e "${D}"/lib/ld-musl-${arch}.so.1 ]] || die
+			[[ -e "${ED}"/lib/ld-musl-${arch}.so.1 ]] || die
 		fi
 
 		cp "${FILESDIR}"/ldconfig.in "${T}" || die

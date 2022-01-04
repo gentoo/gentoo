@@ -14,7 +14,7 @@ LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/2.0"
 IUSE="gtk-doc +miners networkmanager stemmer"
 
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 #RESTRICT="!test? ( test )"
 
 PV_SERIES=$(ver_cut 1-2)

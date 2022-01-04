@@ -55,6 +55,7 @@ multilib_src_configure() {
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 		-DLIBUNWIND_ENABLE_ASSERTIONS=$(usex debug)
 		-DLIBUNWIND_ENABLE_STATIC=$(usex static-libs)
+		-DLIBUNWIND_TARGET_TRIPLE="${CHOST}"
 		-DLLVM_INCLUDE_TESTS=$(usex test)
 
 		# support non-native unwinding; given it's small enough,

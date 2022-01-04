@@ -25,7 +25,7 @@ BDEPEND="
 	sys-apps/help2man
 	virtual/pkgconfig
 	verify-sig? (
-		app-crypt/openpgp-keys-debugedit
+		sec-keys/openpgp-keys-debugedit
 	)
 "
 

@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 VIRTUALX_REQUIRED=manual
 
 inherit ${GIT_ECLASS} meson-multilib python-any-r1 virtualx
@@ -19,7 +19,7 @@ HOMEPAGE="https://gitlab.freedesktop.org/glvnd/libglvnd"
 if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
 else
-	KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 	SRC_URI="https://gitlab.freedesktop.org/glvnd/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2 -> ${P}.tar.bz2"
 	S=${WORKDIR}/${PN}-v${PV}
 fi

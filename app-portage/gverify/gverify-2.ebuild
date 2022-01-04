@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 inherit python-single-r1
 
 DESCRIPTION="gentoo.git signature verification tool"
@@ -17,7 +17,7 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
 	app-crypt/gnupg
-	app-crypt/openpgp-keys-gentoo-auth
+	sec-keys/openpgp-keys-gentoo-auth
 	dev-vcs/git"
 DEPEND="${PYTHON_DEPS}"
 

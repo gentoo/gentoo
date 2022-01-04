@@ -222,14 +222,8 @@ _kde.org_calculate_src_uri() {
 			;;
 	esac
 
-	if [[ ${PN} == kdevelop* ]]; then
-		case ${PV} in
-			*.*.[6-9]? )
-				_src_uri+="unstable/kdevelop/${PV}/src/"
-				RESTRICT+=" mirror"
-				;;
-			*) _src_uri+="stable/kdevelop/${PV}/src/" ;;
-		esac
+	if [[ ${PN} == kdevelop* && ${PV} == 5.6.2 ]]; then
+		_src_uri+="stable/kdevelop/${PV}/src/"
 	fi
 
 	if [[ -n ${KDE_ORG_COMMIT} ]]; then
@@ -270,10 +264,6 @@ _kde.org_calculate_live_repo() {
 
 	if [[ ${PV} != 9999 && ${CATEGORY} == kde-plasma ]]; then
 		EGIT_BRANCH="Plasma/$(ver_cut 1-2)"
-	fi
-
-	if [[ ${PV} != 9999 && ${PN} == kdevelop* ]]; then
-		EGIT_BRANCH="$(ver_cut 1-2)"
 	fi
 
 	# @ECLASS-VARIABLE: EGIT_REPONAME

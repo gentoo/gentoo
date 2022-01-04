@@ -1,0 +1,33 @@
+diff --git a/src/Makefile b/src/Makefile
+index 7ae8218..5c990b0 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -30,7 +30,7 @@ endif
+ ifeq ($(ZLIB), 1)
+ 	CXXFLAGS+= -DZLIB $(shell pkg-config --cflags zlib)
+ endif
+-LDFLAGS+=-L./core/ -g
++LIBS+=-L./core/
+ ifneq ($(shell $(LD) --help 2| grep -- --as-needed), )
+ 	LDFLAGS+= -Wl,--as-needed
+ endif
+@@ -44,7 +44,6 @@ ifeq ($(ZLIB), 1)
+ endif
+ 
+ export CXXFLAGS
+-export LIBS
+ export LDFLAGS
+ 
+ ifeq ($(ZLIB), 1)
+diff --git a/src/gui/Makefile b/src/gui/Makefile
+index 63c4ff5..7946736 100644
+--- a/src/gui/Makefile
++++ b/src/gui/Makefile
+@@ -18,7 +18,6 @@ LIBS+=-L../core -llshw -lresolv $(GTKLIBS)
+ ifeq ($(SQLITE), 1)
+ 	LIBS+= $(shell pkg-config --libs sqlite3)
+ endif
+-LDFLAGS=
+ ifneq ($(shell $(LD) --help 2| grep -- --as-needed), )
+ 	LDFLAGS+= -Wl,--as-needed
+ endif

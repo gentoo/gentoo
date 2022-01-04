@@ -1,0 +1,39 @@
+From 1b81f7493d446449ee3d44332f8fbedf52b149f3 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Sun, 3 Oct 2021 11:48:52 +0200
+Subject: [PATCH] akonadi-search is unused
+
+---
+ CMakeLists.txt     | 3 ---
+ src/CMakeLists.txt | 1 -
+ 3 files changed, 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2b393f911..a46b6254f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -75,9 +75,6 @@ set(CALENDARSUPPORT_LIB_VERSION "5.18.40")
+ set(EVENTVIEW_LIB_VERSION "5.18.42")
+ set(AKONADI_SEARCH_VERSION "5.18.40")
+ 
+-find_package(KF5AkonadiSearch ${AKONADI_SEARCH_VERSION} CONFIG REQUIRED)
+-set_package_properties(KF5AkonadiSearch PROPERTIES DESCRIPTION "The Akonadi Search libraries" URL "ttps://invent.kde.org/pim/akonadi-search" TYPE REQUIRED PURPOSE "Provides search capabilities in pim apps and Akonadi")
+-
+ # Find KF5 package
+ find_package(KF5I18n ${KF5_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KF5Codecs ${KF5_MIN_VERSION} CONFIG REQUIRED)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 72b5a9f39..ea90c2203 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -295,7 +295,6 @@ target_link_libraries(korganizerprivate
+     KF5::AkonadiCore
+     KF5::AkonadiCalendar
+     KF5::AkonadiNotes
+-    KF5::AkonadiSearchPIM
+     KF5::Contacts
+     KF5::CalendarCore
+     KF5::CalendarUtils
+-- 
+GitLab
+

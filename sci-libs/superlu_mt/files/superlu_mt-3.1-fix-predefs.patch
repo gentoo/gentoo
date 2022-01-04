@@ -1,0 +1,22 @@
+--- a/INSTALL/Makefile
++++ b/INSTALL/Makefile
+@@ -19,7 +19,7 @@ slamch.o: slamch.c ; $(CC) $(NOOPTS) -c $<
+ dlamch.o: dlamch.c ; $(CC) $(NOOPTS) -c $<
+ superlu_timer.o: superlu_timer.c; $(CC) $(NOOPTS) -c $<
+ 
+-.c.o: ; $(CC) $(CFLAGS) -c $<
++.c.o: ; $(CC) $(PREDEFS) $(CFLAGS) -c $<
+ 
+ clean:
+ 	rm -f *.o test* *.out
+--- a/SRC/Makefile
++++ b/SRC/Makefile
+@@ -130,7 +130,7 @@ await.o: await.c
+ 	$(CC) -c $(NOOPTS) $< $(VERBOSE)
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) $(CDEFS) $(BLASDEF) -c $< $(VERBOSE)
++	$(CC) ${PREDEFS} $(CFLAGS) $(CDEFS) $(BLASDEF) -c $< $(VERBOSE)
+ 
+ clean:	
+ 	rm -f *.o core ../lib/$(SUPERLULIB)

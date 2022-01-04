@@ -9,7 +9,7 @@ inherit ecm kde.org python-single-r1
 
 DESCRIPTION="Framework based on Gettext for internationalizing user interface text"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -39,4 +39,10 @@ src_configure() {
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
 	ecm_src_configure
+}
+
+src_test() {
+	# requires LANG fr_CH. bug 823816
+	local myctestargs=( -E "(kcountrytest|kcountrysubdivisiontest)" )
+	ecm_src_test
 }

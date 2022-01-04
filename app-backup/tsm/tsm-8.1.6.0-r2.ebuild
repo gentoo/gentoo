@@ -61,8 +61,8 @@ RDEPEND="
 	acl? ( sys-apps/acl )
 	java? ( >=virtual/jre-1.7 )
 	|| (
-		sys-libs/glibc[crypt(+)]
 		sys-libs/libxcrypt[compat]
+		sys-libs/glibc[crypt(+)]
 	)"
 
 S="${WORKDIR}/bacli"

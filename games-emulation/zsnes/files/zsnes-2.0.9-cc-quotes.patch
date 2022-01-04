@@ -1,0 +1,8 @@
+Does not expect CC may have arguments rather than being in CFLAGS, e.g. -m32
+--- a/Makefile
++++ b/Makefile
+@@ -355,3 +355,3 @@
+ 	@echo '===> PSR $@'
+-	$(Q)./$(PSR) $(CFGDEFS) -gcc $(CC_TARGET) -compile -flags '$(CFLAGS)' -cheader $@ -fname $(*F) $(@:.h=.o) $<
++	$(Q)./$(PSR) $(CFGDEFS) -gcc '$(CC_TARGET)' -compile -flags '$(CFLAGS)' -cheader $@ -fname $(*F) $(@:.h=.o) $<
+ 

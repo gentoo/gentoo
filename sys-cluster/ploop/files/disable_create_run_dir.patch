@@ -1,5 +1,5 @@
---- lib/Makefile.old	2015-10-10 15:49:25.377235002 +0300
-+++ lib/Makefile	2015-10-10 15:49:50.021464544 +0300
+--- a/lib/Makefile
++++ b/lib/Makefile
 @@ -76,17 +76,13 @@
  .depend: $(filter-out $(GENERATED),$(SOURCES))
  -include .depend

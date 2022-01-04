@@ -1,0 +1,126 @@
+From 9f19af95e9699420b057b6ff7e99968faf8948a3 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Fri, 3 Dec 2021 16:34:40 +0000
+Subject: [PATCH] containments/panel: Fix initial sizing
+
+Timers for anything that affect layouts are universally wrong.
+
+Ultimately this breaks layouts internal usage of QQmlParserStatus. For
+runtime changes layout internally most relayouting is buffered
+internally till the polish event which is once per frame.
+
+Removing this makes startup faster, less glitchy and more declarative.
+
+
+(cherry picked from commit b2fd1578a0063938a3eda8d8e41f14394b7635f7)
+---
+ containments/panel/contents/ui/main.qml | 34 ++++++-------------------
+ 1 file changed, 8 insertions(+), 26 deletions(-)
+
+diff --git a/containments/panel/contents/ui/main.qml b/containments/panel/contents/ui/main.qml
+index 0a5477476..9b5656acf 100644
+--- a/containments/panel/contents/ui/main.qml
++++ b/containments/panel/contents/ui/main.qml
+@@ -154,14 +154,12 @@ function checkLastSpacer() {
+ 
+ //BEGIN connections
+     Component.onCompleted: {
+-        currentLayout.isLayoutHorizontal = isHorizontal
+         LayoutManager.plasmoid = plasmoid;
+         LayoutManager.root = root;
+         LayoutManager.layout = currentLayout;
+         LayoutManager.lastSpacer = lastSpacer;
+         LayoutManager.marginHighlights = [];
+         LayoutManager.restore();
+-        containmentSizeSyncTimer.restart();
+ 
+         plasmoid.action("configure").visible = Qt.binding(function() {
+             return !plasmoid.immutable;
+@@ -200,7 +198,6 @@ function checkLastSpacer() {
+         event.accept(event.proposedAction);
+         root.fixedWidth = 0;
+         root.fixedHeight = 0;
+-        containmentSizeSyncTimer.restart();
+     }
+ 
+ 
+@@ -215,8 +212,6 @@ function checkLastSpacer() {
+     }
+ 
+     Plasmoid.onUserConfiguringChanged: {
+-        containmentSizeSyncTimer.restart();
+-
+         if (plasmoid.immutable) {
+             if (dragOverlay) {
+                 dragOverlay.destroy();
+@@ -245,11 +240,7 @@ function checkLastSpacer() {
+         }
+     }
+ 
+-    Plasmoid.onFormFactorChanged: containmentSizeSyncTimer.restart();
+-    Containment.onEditModeChanged: containmentSizeSyncTimer.restart();
+-
+     onToolBoxChanged: {
+-        containmentSizeSyncTimer.restart();
+         if (startupTimer.running) {
+             startupTimer.restart();
+         }
+@@ -478,10 +469,16 @@ function checkLastSpacer() {
+ 
+     GridLayout {
+         id: currentLayout
+-        property bool isLayoutHorizontal
++        readonly property bool isLayoutHorizontal: root.isHorizontal
+         rowSpacing: PlasmaCore.Units.smallSpacing
+         columnSpacing: PlasmaCore.Units.smallSpacing
+ 
++        x: (isLayoutHorizontal && root.toolBox && Qt.application.layoutDirection === Qt.RightToLeft && plasmoid.editMode) ? root.toolBox.width : 0;
++        y: 0
++
++        width: root.width - (isLayoutHorizontal && root.toolBox && plasmoid.editMode ? root.toolBox.width : 0)
++        height: root.height - (!isLayoutHorizontal && root.toolBox && plasmoid.editMode ? root.toolBox.height : 0)
++
+         Layout.preferredWidth: {
+             var width = 0;
+             for (var i = 0, length = currentLayout.children.length; i < length; ++i) {
+@@ -505,36 +502,21 @@ function checkLastSpacer() {
+         rows: 1
+         columns: 1
+         //when horizontal layout top-to-bottom, this way it will obey our limit of one row and actually lay out left to right
+-        flow: isHorizontal ? GridLayout.TopToBottom : GridLayout.LeftToRight
++        flow: isLayoutHorizontal ? GridLayout.TopToBottom : GridLayout.LeftToRight
+         layoutDirection: Qt.application.layoutDirection
+     }
+ 
+     onWidthChanged: {
+-        containmentSizeSyncTimer.restart()
+         if (startupTimer.running) {
+             startupTimer.restart();
+         }
+     }
+     onHeightChanged: {
+-        containmentSizeSyncTimer.restart()
+         if (startupTimer.running) {
+             startupTimer.restart();
+         }
+     }
+ 
+-    Timer {
+-        id: containmentSizeSyncTimer
+-        interval: 150
+-        onTriggered: {
+-            dndSpacer.parent = root;
+-            currentLayout.x = (isHorizontal && toolBox && Qt.application.layoutDirection === Qt.RightToLeft && plasmoid.editMode) ? toolBox.width : 0;
+-            currentLayout.y = 0
+-            currentLayout.width = root.width - (isHorizontal && toolBox && plasmoid.editMode ? toolBox.width : 0)
+-            currentLayout.height = root.height - (!isHorizontal && toolBox && plasmoid.editMode ? toolBox.height : 0)
+-            currentLayout.isLayoutHorizontal = isHorizontal
+-        }
+-    }
+-
+     //FIXME: I don't see other ways at the moment a way to see when the UI is REALLY ready
+     Timer {
+         id: startupTimer
+-- 
+GitLab
+

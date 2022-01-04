@@ -40,6 +40,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-giflib.patch
+	"${FILESDIR}"/${P}-narrowing_conversion.patch
 	"${FILESDIR}"/${P}-remove-null-comparison.patch
 	"${FILESDIR}"/${P}-freetype_pkgconfig.patch #788136
 )

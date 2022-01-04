@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 VALA_MIN_API_VERSION="0.14"
 VALA_USE_DEPEND="vapigen"
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit desktop git-r3 meson python-any-r1 readme.gentoo-r1 vala xdg-utils
 
@@ -43,7 +43,7 @@ RDEPEND="
 	sasl? ( dev-libs/cyrus-sasl )
 	smartcard? ( app-emulation/qemu[smartcard] )
 	usbredir? (
-		sys-apps/hwids
+		sys-apps/hwdata
 		>=sys-apps/usbredir-0.4.2
 		virtual/libusb:1
 		policykit? (
@@ -110,7 +110,7 @@ src_configure() {
 
 	if use usbredir; then
 		emesonargs+=( -D "usb-acl-helper-dir=/usr/libexec" )
-		emesonargs+=( -D "usb-ids-path=/usr/share/misc/usb.ids" )
+		emesonargs+=( -D "usb-ids-path=${EPREFIX}/usr/share/hwdata/usb.ids" )
 	fi
 
 	meson_src_configure

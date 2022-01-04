@@ -79,7 +79,7 @@ src_compile() {
 	if use doc; then
 		doxygen || die "generating docs failed"
 		mv docs/html . || die
-		find html -type f \(-name '*.md5' -o -name '*.map'\) -delete || die
+		find html -type f '(' -name '*.md5' -o -name '*.map' ')' -delete || die
 		HTML_DOCS=( html/. )
 	fi
 }

@@ -13,7 +13,7 @@ SRC_URI="https://github.com/pts/sam2p/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 IUSE="examples gif"
 RESTRICT="test"
 
@@ -21,7 +21,10 @@ BDEPEND="dev-lang/perl"
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
-PATCHES=( "${FILESDIR}"/${PN}-build-fixes.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-build-fixes.patch
+	"${FILESDIR}"/${PN}-0.49.4_p20190718-fix-configure-clang.patch
+)
 
 src_prepare() {
 	default
@@ -30,7 +33,7 @@ src_prepare() {
 	mv configure.{in,ac} || die
 
 	# missing include for memset
-	sed -i '1s;^;#include <string.h>\n;' pts_defl.c
+	sed -i '1s;^;#include <string.h>\n;' pts_defl.c || die
 
 	# eautoreconf is still needed or you get bad warnings
 	eautoreconf

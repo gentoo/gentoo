@@ -7,7 +7,7 @@ VALA_USE_DEPEND="vapigen"
 
 inherit gnome.org gnome2-utils meson vala xdg
 
-DESCRIPTION="A nice way to view information about use of system resources."
+DESCRIPTION="A nice way to view information about use of system resources"
 HOMEPAGE="https://wiki.gnome.org/Apps/Usage"
 
 LICENSE="GPL-3+"

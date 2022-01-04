@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 
 RDEPEND="
 	>dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
@@ -23,7 +23,6 @@ BDEPEND="
 	test? (
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/jsonschema-3.2.0[${PYTHON_USEDEP}]
-		dev-python/hacking[${PYTHON_USEDEP}]
 		>=dev-python/prometheus_client-0.4.2[${PYTHON_USEDEP}]
 		dev-python/python-glanceclient[${PYTHON_USEDEP}]
 		>=dev-python/oslo-config-6.1.0[${PYTHON_USEDEP}]

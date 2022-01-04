@@ -1,5 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2021-12-31)
+# Don't apply stable masks to python-exec since we're forcing every
+# impl there anyway. Please keep this in sync with use.stable.mask.
+dev-lang/python-exec -python_targets_pypy3
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-12)
 # telepathy stack is not keyworded
@@ -17,14 +22,9 @@ net-dns/dnscrypt-proxy pie
 # Needs media-libs/libldac which builds on ppc64le, but not be
 media-video/pipewire -bluetooth
 
-# Marek Szuba <marecki@gentoo.org> (2021-08-11)
-# dev-ruby/tty-editor not keyworded here yet (Bug #807685)
-app-text/htmltidy test
-
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
-# media-plugins/gst-plugins-webrtc and media-plugins/zam-plugins
-# not keyworded here
-media-sound/easyeffects webrtc zamaudio
+# media-plugins/zam-plugins not keyworded here
+media-sound/easyeffects zamaudio
 
 # Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
 # Feature currently relies on amd64 prebuilt binaries.

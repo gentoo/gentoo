@@ -1,0 +1,58 @@
+From 61823ced59db5ce7a4223ce2759f3da52d83a0de Mon Sep 17 00:00:00 2001
+From: Jan Beich <jbeich@FreeBSD.org>
+Date: Sat, 27 Nov 2021 23:21:56 +0000
+Subject: [PATCH] build: disable gir install via list to pacify meson >= 0.60.2
+
+meson.build:541:0: ERROR: "install_dir" must be specified when installing a target
+installed-tests/js/meson.build:47:0: ERROR: "install_dir" must be specified when installing a target
+installed-tests/js/meson.build:66:0: ERROR: "install_dir" must be specified when installing a target
+installed-tests/js/meson.build:81:0: ERROR: "install_dir" must be specified when installing a target
+---
+ installed-tests/js/meson.build | 6 +++---
+ meson.build                    | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/installed-tests/js/meson.build b/installed-tests/js/meson.build
+index d3125a7c..564124f2 100644
+--- a/installed-tests/js/meson.build
++++ b/installed-tests/js/meson.build
+@@ -48,7 +48,7 @@ regress_gir = gnome.generate_gir(libregress, includes: regress_gir_includes,
+     sources: regress_sources, namespace: 'Regress', nsversion: '1.0',
+     identifier_prefix: 'Regress', symbol_prefix: 'regress_',
+     extra_args: ['--warn-all', '--warn-error'] + regress_gir_c_args,
+-    install: get_option('installed_tests'), install_dir_gir: false,
++    install: get_option('installed_tests'), install_dir_gir: [false],
+     install_dir_typelib: installed_tests_execdir)
+ regress_typelib = regress_gir[1]
+ 
+@@ -66,7 +66,7 @@ libwarnlib = library('warnlib', warnlib_sources,
+ warnlib_gir = gnome.generate_gir(libwarnlib, includes: ['Gio-2.0'],
+     sources: warnlib_sources, namespace: 'WarnLib', nsversion: '1.0',
+     symbol_prefix: 'warnlib_', header: 'warnlib.h',
+-    install: get_option('installed_tests'), install_dir_gir: false,
++    install: get_option('installed_tests'), install_dir_gir: [false],
+     install_dir_typelib: installed_tests_execdir)
+ warnlib_typelib = warnlib_gir[1]
+ 
+@@ -82,7 +82,7 @@ gimarshallingtests_gir = gnome.generate_gir(libgimarshallingtests,
+     includes: ['Gio-2.0'], sources: gimarshallingtests_sources,
+     namespace: 'GIMarshallingTests', nsversion: '1.0',
+     symbol_prefix: 'gi_marshalling_tests_', extra_args: '--warn-error',
+-    install: get_option('installed_tests'), install_dir_gir: false,
++    install: get_option('installed_tests'), install_dir_gir: [false],
+     install_dir_typelib: installed_tests_execdir)
+ gimarshallingtests_typelib = gimarshallingtests_gir[1]
+ 
+diff --git a/meson.build b/meson.build
+index aa55addc..43ba4af1 100644
+--- a/meson.build
++++ b/meson.build
+@@ -542,7 +542,7 @@ gjs_private_gir = gnome.generate_gir(libgjs,
+     includes: ['GObject-2.0', 'Gio-2.0'], sources: libgjs_private_sources,
+     namespace: 'CjsPrivate', nsversion: '1.0', identifier_prefix: 'Gjs',
+     symbol_prefix: 'gjs_', extra_args: '--warn-error', install: true,
+-    install_dir_gir: false, install_dir_typelib: pkglibdir / 'girepository-1.0')
++    install_dir_gir: [false], install_dir_typelib: pkglibdir / 'girepository-1.0')
+ gjs_private_typelib = gjs_private_gir[1]
+ 
+ ### Build gjs-console interpreter ##############################################

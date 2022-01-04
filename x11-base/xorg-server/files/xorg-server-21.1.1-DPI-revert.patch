@@ -1,0 +1,133 @@
+https://gitlab.freedesktop.org/xorg/xserver/-/commit/35af1299e73483eaf93d913a960e1d1738bc7de6
+
+From: Povilas Kanapickas <povilas@radix.lt>
+Date: Sat, 13 Nov 2021 17:23:54 +0200
+Subject: [PATCH] Revert "hw/xfree86: Propagate physical dimensions from DRM
+ connector"
+
+Quite a lot of applications currently expect the screen DPI exposed by
+the X server to be 96 even when the real display DPI is different.
+Additionally, currently Xwayland completely ignores any hardware
+information and sets the DPI to 96. Accordingly the new behavior, even
+if it fixes a bug, should not be enabled automatically to all users.
+
+A better solution would be to make the default DPI stay as is and enable
+the correct behavior with a command line option (maybe -dpi auto, or
+similar). For now let's just revert the bug fix.
+
+This reverts commit 05b3c681ea2f478c0cb941c2f8279919cf78de6d.
+
+Signed-off-by: Povilas Kanapickas <povilas@radix.lt>
+--- a/hw/xfree86/common/xf86Helper.c
++++ b/hw/xfree86/common/xf86Helper.c
+@@ -55,7 +55,6 @@
+ #include "xf86Xinput.h"
+ #include "xf86InPriv.h"
+ #include "mivalidate.h"
+-#include "xf86Crtc.h"
+ 
+ /* For xf86GetClocks */
+ #if defined(CSRG_BASED) || defined(__GNU__)
+@@ -852,9 +851,8 @@ xf86SetDpi(ScrnInfoPtr pScrn, int x, int y)
+ {
+     MessageType from = X_DEFAULT;
+     xf86MonPtr DDC = (xf86MonPtr) (pScrn->monitor->DDC);
+-    int probedWidthmm, probedHeightmm;
++    int ddcWidthmm, ddcHeightmm;
+     int widthErr, heightErr;
+-    xf86OutputPtr compat = xf86CompatOutput(pScrn);
+ 
+     /* XXX Maybe there is no need for widthmm/heightmm in ScrnInfoRec */
+     pScrn->widthmm = pScrn->monitor->widthmm;
+@@ -864,15 +862,11 @@ xf86SetDpi(ScrnInfoPtr pScrn, int x, int y)
+         /* DDC gives display size in mm for individual modes,
+          * but cm for monitor
+          */
+-        probedWidthmm = DDC->features.hsize * 10;  /* 10mm in 1cm */
+-        probedHeightmm = DDC->features.vsize * 10; /* 10mm in 1cm */
+-    }
+-    else if (compat && compat->mm_width > 0 && compat->mm_height > 0) {
+-        probedWidthmm = compat->mm_width;
+-        probedHeightmm = compat->mm_height;
++        ddcWidthmm = DDC->features.hsize * 10;  /* 10mm in 1cm */
++        ddcHeightmm = DDC->features.vsize * 10; /* 10mm in 1cm */
+     }
+     else {
+-        probedWidthmm = probedHeightmm = 0;
++        ddcWidthmm = ddcHeightmm = 0;
+     }
+ 
+     if (monitorResolution > 0) {
+@@ -898,15 +892,15 @@ xf86SetDpi(ScrnInfoPtr pScrn, int x, int y)
+                    pScrn->widthmm, pScrn->heightmm);
+ 
+         /* Warn if config and probe disagree about display size */
+-        if (probedWidthmm && probedHeightmm) {
++        if (ddcWidthmm && ddcHeightmm) {
+             if (pScrn->widthmm > 0) {
+-                widthErr = abs(probedWidthmm - pScrn->widthmm);
++                widthErr = abs(ddcWidthmm - pScrn->widthmm);
+             }
+             else {
+                 widthErr = 0;
+             }
+             if (pScrn->heightmm > 0) {
+-                heightErr = abs(probedHeightmm - pScrn->heightmm);
++                heightErr = abs(ddcHeightmm - pScrn->heightmm);
+             }
+             else {
+                 heightErr = 0;
+@@ -915,17 +909,17 @@ xf86SetDpi(ScrnInfoPtr pScrn, int x, int y)
+                 /* Should include config file name for monitor here */
+                 xf86DrvMsg(pScrn->scrnIndex, X_WARNING,
+                            "Probed monitor is %dx%d mm, using Displaysize %dx%d mm\n",
+-                           probedWidthmm, probedHeightmm, pScrn->widthmm,
++                           ddcWidthmm, ddcHeightmm, pScrn->widthmm,
+                            pScrn->heightmm);
+             }
+         }
+     }
+-    else if (probedWidthmm && probedHeightmm) {
++    else if (ddcWidthmm && ddcHeightmm) {
+         from = X_PROBED;
+         xf86DrvMsg(pScrn->scrnIndex, from, "Display dimensions: (%d, %d) mm\n",
+-                   probedWidthmm, probedHeightmm);
+-        pScrn->widthmm = probedWidthmm;
+-        pScrn->heightmm = probedHeightmm;
++                   ddcWidthmm, ddcHeightmm);
++        pScrn->widthmm = ddcWidthmm;
++        pScrn->heightmm = ddcHeightmm;
+         if (pScrn->widthmm > 0) {
+             pScrn->xDpi =
+                 (int) ((double) pScrn->virtualX * MMPERINCH / pScrn->widthmm);
+--- a/hw/xfree86/modes/xf86Crtc.c
++++ b/hw/xfree86/modes/xf86Crtc.c
+@@ -3256,10 +3256,8 @@ xf86OutputSetEDID(xf86OutputPtr output, xf86MonPtr edid_mon)
+     free(output->MonInfo);
+ 
+     output->MonInfo = edid_mon;
+-    if (edid_mon) {
+-        output->mm_width = 0;
+-        output->mm_height = 0;
+-    }
++    output->mm_width = 0;
++    output->mm_height = 0;
+ 
+     if (debug_modes) {
+         xf86DrvMsg(scrn->scrnIndex, X_INFO, "EDID for output %s\n",
+--- a/hw/xfree86/modes/xf86RandR12.c
++++ b/hw/xfree86/modes/xf86RandR12.c
+@@ -806,12 +806,6 @@ xf86RandR12CreateScreenResources(ScreenPtr pScreen)
+                 mmWidth = output->conf_monitor->mon_width;
+                 mmHeight = output->conf_monitor->mon_height;
+             }
+-            else if (output &&
+-                (output->mm_width > 0 &&
+-                 output->mm_height > 0)) {
+-                mmWidth = output->mm_width;
+-                mmHeight = output->mm_height;
+-            }
+             else {
+                 /*
+                  * Otherwise, just set the screen to DEFAULT_DPI
+GitLab

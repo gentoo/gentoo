@@ -5,6 +5,7 @@
 # Jupyterlab and friends require net-libs/nodejs
 dev-python/jupyterlab
 dev-python/jupyterlab-lsp
+sci-misc/jupyterlab-desktop-bin
 
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-13)
 # Is reverse-dependency of dev-qt/qtwebengine
@@ -47,7 +48,7 @@ kde-apps/akonadiconsole:5
 kde-apps/akregator:5
 kde-apps/calendarjanitor:5
 kde-apps/calendarsupport:5
->=kde-apps/cantor-21.08.0:5
+kde-apps/cantor:5
 kde-apps/eventviews:5
 kde-apps/grantlee-editor:5
 kde-apps/incidenceeditor:5
@@ -95,9 +96,11 @@ net-p2p/ktorrent:5
 sci-geosciences/qmapshack
 sci-mathematics/rkward:5
 sci-mathematics/rstudio
+sci-visualization/labplot:5
 www-client/falkon
 www-client/otter
 www-client/qutebrowser
+media-video/jellyfin-media-player
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-09-20)
 # Binary-only with no x32 support

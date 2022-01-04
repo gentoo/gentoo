@@ -31,7 +31,7 @@ BDEPEND="
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 	)"
 
-LLVM_COMPONENTS=( libcxx{abi,} llvm/cmake )
+LLVM_COMPONENTS=( libcxx{abi,} llvm/cmake cmake )
 llvm.org_set_globals
 
 python_check_deps() {
@@ -75,6 +75,7 @@ multilib_src_configure() {
 		# upstream is omitting standard search path for this
 		# probably because gcc & clang are bundling their own unwind.h
 		-DLIBCXXABI_LIBUNWIND_INCLUDES="${EPREFIX}"/usr/include
+		-DLIBCXXABI_TARGET_TRIPLE="${CHOST}"
 	)
 	if use test; then
 		local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
@@ -90,7 +91,6 @@ multilib_src_configure() {
 }
 
 wrap_libcxx() {
-	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/$(get_libdir)"
 	local CMAKE_USE_DIR=${WORKDIR}/libcxx
 	local BUILD_DIR=${BUILD_DIR}/libcxx
 	local mycmakeargs=(
@@ -104,6 +104,7 @@ wrap_libcxx() {
 		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
 		-DLIBCXX_HAS_GCC_S_LIB=OFF
 		-DLIBCXX_INCLUDE_TESTS=OFF
+		-DLIBCXX_TARGET_TRIPLE="${CHOST}"
 	)
 
 	"${@}"
@@ -111,7 +112,7 @@ wrap_libcxx() {
 
 multilib_src_test() {
 	wrap_libcxx cmake_src_compile
-	mv "${BUILD_DIR}"/libcxx/lib/libc++* "${BUILD_DIR}/$(get_libdir)/" || die
+	mv "${BUILD_DIR}"/libcxx/lib/libc++* "${BUILD_DIR}/lib/" || die
 
 	local -x LIT_PRESERVES_TMP=1
 	cmake_build check-cxxabi

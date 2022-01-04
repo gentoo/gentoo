@@ -9,7 +9,7 @@ PHP_EXT_NEEDED_USE="session(-)?"
 DOCS=( README example.php )
 HTML_DOCS=( memcache.php )
 
-USE_PHP="php7-3 php7-4 php8-0"
+USE_PHP="php7-3 php7-4 php8-0 php8-1"
 
 inherit php-ext-pecl-r3
 
@@ -25,6 +25,7 @@ IUSE="+session"
 DEPEND="php_targets_php7-3? ( sys-libs/zlib ) php_targets_php7-4? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}
 	php_targets_php8-0? ( dev-php/pecl-memcache:8[php_targets_php8-0(-)?] )
+	php_targets_php8-1? ( dev-php/pecl-memcache:8[php_targets_php8-1(-)?] )
 "
 
 # The test suite requires memcached to be running.

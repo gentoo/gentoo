@@ -5,7 +5,7 @@ EAPI=7
 
 inherit java-pkg-opt-2
 
-DESCRIPTION="A compiler for the Perl 6 programming language"
+DESCRIPTION="A compiler for the Raku programming language"
 HOMEPAGE="https://rakudo.org"
 
 if [[ ${PV} == "9999" ]]; then

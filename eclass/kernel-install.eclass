@@ -73,6 +73,7 @@ BDEPEND="
 		sys-fs/e2fsprogs
 		amd64? ( app-emulation/qemu[qemu_softmmu_targets_x86_64] )
 		arm64? ( app-emulation/qemu[qemu_softmmu_targets_aarch64] )
+		ppc? ( app-emulation/qemu[qemu_softmmu_targets_ppc] )
 		ppc64? ( app-emulation/qemu[qemu_softmmu_targets_ppc64] )
 		x86? ( app-emulation/qemu[qemu_softmmu_targets_i386] )
 	)"
@@ -160,6 +161,9 @@ kernel-install_get_qemu_arch() {
 			;;
 		arm64)
 			echo aarch64
+			;;
+		ppc)
+			echo ppc
 			;;
 		ppc64)
 			echo ppc64
@@ -293,6 +297,11 @@ kernel-install_test() {
 			;;
 		i386|x86_64)
 			qemu_extra_args="-cpu max"
+			qemu_extra_append="console=ttyS0,115200n8"
+			;;
+		ppc)
+			# https://wiki.qemu.org/Documentation/Platforms/PowerPC#Command_line_options
+			qemu_extra_args="-boot d -L pc-bios -M mac99,via=pmu"
 			qemu_extra_append="console=ttyS0,115200n8"
 			;;
 		ppc64)

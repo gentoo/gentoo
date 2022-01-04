@@ -793,15 +793,15 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0 Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc64 x86"
 IUSE="selinux tools"
 
 RDEPEND="acct-group/syncthing
 	acct-user/syncthing
 	tools? ( acct-group/stdiscosrv
 		acct-group/strelaysrv
-		acct-user/stdiscosrv
-		acct-user/strelaysrv )
+		<acct-user/stdiscosrv-1
+		<acct-user/strelaysrv-1 )
 	selinux? ( sec-policy/selinux-syncthing )"
 
 DOCS=( README.md AUTHORS CONTRIBUTING.md )

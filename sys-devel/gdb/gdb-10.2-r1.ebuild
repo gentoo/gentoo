@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -236,11 +236,6 @@ src_install() {
 
 	# Remove shared info pages
 	rm -f "${ED}"/usr/share/info/{annotate,bfd,configure,standards}.info*
-
-	# gcore is part of ubin on freebsd
-	if [[ ${CHOST} == *-freebsd* ]]; then
-		rm "${ED}"/usr/bin/gcore || die
-	fi
 
 	if use python; then
 		python_optimize "${ED}"/usr/share/gdb/python/gdb

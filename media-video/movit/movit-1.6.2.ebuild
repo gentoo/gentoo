@@ -21,7 +21,7 @@ IUSE=""
 
 RDEPEND="media-libs/mesa[X(+)]
 	>=dev-cpp/eigen-3.2.0:3
-	media-libs/libepoxy
+	media-libs/libepoxy[egl]
 	>=sci-libs/fftw-3
 	media-libs/libsdl2
 	"

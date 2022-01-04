@@ -9,6 +9,7 @@
 		<email>fonts@gentoo.org</email>
 		<name>Fonts</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 WenQuanYi project intends to provide the open-source community with the most
 complete, standard compliant, high-quality Chinese fonts and resources. TrueType

@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 AUTOTOOLS_AUTO_DEPEND=no
 AT_NOEAUTOHEADER=yes  # because expat_config.h.in would need post-processing
-inherit autotools multilib-minimal usr-ldscript
+inherit autotools multilib-minimal
 
 DESCRIPTION="Stream-oriented XML parser library"
 HOMEPAGE="https://libexpat.github.io/"
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/libexpat/libexpat/releases/download/R_${PV//\./_}/ex
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
-IUSE="elibc_FreeBSD examples static-libs unicode"
+IUSE="examples static-libs unicode"
 BDEPEND="unicode? ( ${AUTOTOOLS_DEPEND} )"
 
 DOCS=( README.md )
@@ -72,12 +72,6 @@ multilib_src_install() {
 		cp expat.pc expatw.pc
 		sed -i -e '/^Libs/s:-lexpat:&w:' expatw.pc || die
 		popd >/dev/null
-	fi
-
-	if multilib_is_native_abi ; then
-		# libgeom in /lib and ifconfig in /sbin require libexpat on FreeBSD since
-		# we stripped the libbsdxml copy starting from freebsd-lib-8.2-r1
-		use elibc_FreeBSD && gen_usr_ldscript -a expat
 	fi
 }
 

@@ -5,7 +5,7 @@ EAPI=7
 
 inherit autotools multilib-minimal toolchain-funcs
 
-DESCRIPTION="An OCR Engine, originally developed at HP, now open source."
+DESCRIPTION="An OCR Engine, originally developed at HP, now open source"
 HOMEPAGE="https://github.com/tesseract-ocr"
 SRC_URI="https://github.com/tesseract-ocr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 

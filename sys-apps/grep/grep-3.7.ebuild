@@ -29,6 +29,8 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
+PATCHES=( "${FILESDIR}/ppc-musl.patch" )
+
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 
 src_prepare() {

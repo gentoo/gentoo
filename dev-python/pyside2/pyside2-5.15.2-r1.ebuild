@@ -5,7 +5,7 @@ EAPI=7
 
 # TODO: Add PyPy once officially supported. See also:
 #     https://bugreports.qt.io/browse/PYSIDE-535
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake python-r1 virtualx
 
@@ -114,6 +114,8 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	test? ( x11-misc/xvfb-run )
 "
+
+PATCHES=( "${FILESDIR}/${P}-python310.patch" )
 
 src_configure() {
 	# See COLLECT_MODULE_IF_FOUND macros in CMakeLists.txt

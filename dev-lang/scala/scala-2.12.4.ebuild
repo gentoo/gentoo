@@ -83,9 +83,7 @@ DEPEND="${COMMON_DEP}
 		>=dev-java/sbt-0.13.13
 		media-gfx/graphviz
 	)
-	binary? (
-		>=virtual/jdk-1.8
-	)
+	>=virtual/jdk-1.8
 	app-arch/xz-utils:0"
 
 RDEPEND="${COMMON_DEP}
@@ -146,7 +144,7 @@ src_prepare() {
 			gjl_package=sbt
 			gjl_jar="sbt-launch.jar"
 			gjl_java_args="-Dsbt.version=0.13.13 -Dfile.encoding=UTF8 -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -Duser.home="${WORKDIR}""
-			source /usr/share/java-config-2/launcher/launcher.bash
+			source "${EPREFIX}"/usr/share/java-config-2/launcher/launcher.bash
 		EOF
 		chmod u+x "${S}/sbt" || die
 

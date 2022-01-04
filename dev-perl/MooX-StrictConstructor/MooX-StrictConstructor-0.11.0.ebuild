@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Make your Moo-based object constructors blow up on unknown attributes"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 RDEPEND="
 	dev-perl/Class-Method-Modifiers

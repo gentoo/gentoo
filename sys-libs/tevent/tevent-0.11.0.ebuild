@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
 
 RDEPEND="
-	!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
+	dev-libs/libbsd[${MULTILIB_USEDEP}]
 	>=sys-libs/talloc-2.3.1[${MULTILIB_USEDEP}]
 	python? (
 		${PYTHON_DEPS}

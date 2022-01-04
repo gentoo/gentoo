@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-11-15)
+# Only available on PPC*.
+sys-apps/util-linux rtas
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-01)
 # requires sys-apps/dbus-broker, which is not widely keyworded yet.
 sys-apps/systemd hostnamed-fallback
@@ -93,7 +97,7 @@ sys-block/fio io-uring zbc
 #  - ich_descriptors_tools (USE=tools) is only compiled on amd64 and x86,
 #  - internal is presently only supported on amd64/x86 and mipsel,
 #  - the others only work on x86 due to lack of PCI-port I/O support.
-sys-apps/flashrom atahpt atapromise internal nic3com nicnatsemi nicrealtek rayer-spi satamv tools
+sys-apps/flashrom atahpt atapromise atavia drkaiser gfxnvidia internal it8212 nic3com nicintel nicintel-eeprom nicintel-spi nicnatsemi nicrealtek ogp-spi rayer-spi satamv satasii tools
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # requires clisp whichis keyworded on fewer arches

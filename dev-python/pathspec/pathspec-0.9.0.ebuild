@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
-DESCRIPTION="Utility library for gitignore style pattern matching of file paths."
+DESCRIPTION="Utility library for gitignore style pattern matching of file paths"
 HOMEPAGE="https://github.com/cpburnz/python-path-specification https://pypi.org/project/pathspec/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

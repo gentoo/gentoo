@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit meson bash-completion-r1 linux-info python-any-r1 readme.gentoo-r1 tmpfiles verify-sig
 
@@ -49,7 +49,7 @@ BDEPEND="
 	dev-python/docutils
 	virtual/pkgconfig
 	bash-completion? ( >=app-shells/bash-completion-2.0 )
-	verify-sig? ( app-crypt/openpgp-keys-libvirt )"
+	verify-sig? ( sec-keys/openpgp-keys-libvirt )"
 
 # gettext.sh command is used by the libvirt command wrappers, and it's
 # non-optional, so put it into RDEPEND.

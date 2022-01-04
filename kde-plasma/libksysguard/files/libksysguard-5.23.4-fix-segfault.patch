@@ -1,0 +1,76 @@
+From 311faef0ef0e5f60eebed2a5a00c43f5cb60aab1 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 7 Dec 2021 22:23:17 +0100
+Subject: [PATCH] Handle process parent changes in ProcessDataModel
+
+When the PPID of a process changes, it moves around in the model, changing the
+layout. This needs to be announced properly, otherwise users of the model get
+confused, leading to weird behaviour and crashes.
+
+The added code is pretty much a direct copy from ProcessModel.
+
+BUG: 446534
+
+
+(cherry picked from commit a0d70929a1b5e38bd8bf61e1895321124acf03a7)
+---
+ processcore/process_data_model.cpp | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
+
+diff --git a/processcore/process_data_model.cpp b/processcore/process_data_model.cpp
+index 172ce7f..f776372 100644
+--- a/processcore/process_data_model.cpp
++++ b/processcore/process_data_model.cpp
+@@ -24,6 +24,8 @@ public:
+     Private(ProcessDataModel *q);
+     void beginInsertRow(KSysGuard::Process *parent);
+     void endInsertRow();
++    void beginMoveProcess(KSysGuard::Process *process, KSysGuard::Process *new_parent);
++    void endMoveProcess();
+     void beginRemoveRow(KSysGuard::Process *process);
+     void endRemoveRow();
+ 
+@@ -65,6 +67,12 @@ ProcessDataModel::Private::Private(ProcessDataModel *_q)
+     connect(m_processes.get(), &KSysGuard::Processes::endAddProcess, q, [this]() {
+         endInsertRow();
+     });
++    connect(m_processes.get(), &KSysGuard::Processes::beginMoveProcess, q, [this](KSysGuard::Process *process, KSysGuard::Process *new_parent) {
++        beginMoveProcess(process, new_parent);
++    });
++    connect(m_processes.get(), &KSysGuard::Processes::endMoveProcess, q, [this]() {
++        endMoveProcess();
++    });
+     connect(m_processes.get(), &KSysGuard::Processes::beginRemoveProcess, q, [this](KSysGuard::Process *process) {
+         beginRemoveRow(process);
+     });
+@@ -335,6 +343,27 @@ void ProcessDataModel::Private::endRemoveRow()
+     q->endRemoveRows();
+ }
+ 
++void ProcessDataModel::Private::beginMoveProcess(KSysGuard::Process *process, KSysGuard::Process *new_parent)
++{
++    if (m_flatList)
++        return; // We don't need to move processes when in simple mode
++
++    int current_row = process->parent()->children().indexOf(process);
++    Q_ASSERT(current_row != -1);
++    int new_row = new_parent->children().count();
++    QModelIndex sourceParent = getQModelIndex(process->parent(), 0);
++    QModelIndex destinationParent = getQModelIndex(new_parent, 0);
++    q->beginMoveRows(sourceParent, current_row, current_row, destinationParent, new_row);
++}
++
++void ProcessDataModel::Private::endMoveProcess()
++{
++    if (m_flatList)
++        return; // We don't need to move processes when in simple mode
++
++    q->endMoveRows();
++}
++
+ void ProcessDataModel::Private::update()
+ {
+     Processes::UpdateFlags flags;
+-- 
+GitLab
+

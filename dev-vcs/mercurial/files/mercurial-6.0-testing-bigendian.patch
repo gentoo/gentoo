@@ -1,0 +1,255 @@
+# HG changeset patch
+# User Julien Cristau <jcristau@debian.org>
+# Date 1629904487 -7200
+#      Wed Aug 25 17:14:47 2021 +0200
+# Branch stable
+# Node ID e11f903fd7a6e80b6168c7ef6e28f20349e681e2
+# Parent  132819e1fa1565b45fc09093ebbfbe991b0a0f5d
+tests: allow for variation in zstd output as seen on s390x and powerpc
+
+--- a/tests/hghave.py
++++ b/tests/hghave.py
+@@ -1141,8 +1141,13 @@ def has_lzma():
+         return True
+     except ImportError:
+         return False
+ 
+ 
+ @check("bash", "bash shell")
+ def has_bash():
+     return matchoutput("bash -c 'echo hi'", b'^hi$')
++
++
++@check("bigendian", "big-endian CPU")
++def has_bigendian():
++    return sys.byteorder == 'big'
+--- a/tests/test-clone-stream.t
++++ b/tests/test-clone-stream.t
+@@ -399,21 +399,23 @@ getbundle requests with stream=1 are unc
+   00b0: 00 00 00 00 00 00 00 01 ff ff ff ff ff ff ff ff |................|
+   00c0: 80 29 63 a0 49 d3 23 87 bf ce fe 56 67 92 67 2c |.)c.I.#....Vg.g,|
+   00d0: 69 d1 ec 39 00 00 00 00 00 00 00 00 00 00 00 00 |i..9............|
+   00e0: 75 30 73 26 45 64 61 74 61 2f 30 30 63 68 61 6e |u0s&Edata/00chan|
+   00f0: 67 65 6c 6f 67 2d 61 62 33 34 39 31 38 30 61 30 |gelog-ab349180a0|
+ #endif
+ #if zstd no-rust
+   $ f --size --hex --bytes 256 body
+-  body: size=116340
++  body: size=116340 (no-bigendian !)
++  body: size=116335 (bigendian !)
+   0000: 04 6e 6f 6e 65 48 47 32 30 00 00 00 00 00 00 00 |.noneHG20.......|
+   0010: 9a 07 53 54 52 45 41 4d 32 00 00 00 00 03 00 09 |..STREAM2.......|
+   0020: 06 09 04 0c 5e 62 79 74 65 63 6f 75 6e 74 31 30 |....^bytecount10|
+-  0030: 31 32 37 36 66 69 6c 65 63 6f 75 6e 74 31 30 39 |1276filecount109|
++  0030: 31 32 37 36 66 69 6c 65 63 6f 75 6e 74 31 30 39 |1276filecount109| (no-bigendian !)
++  0030: 31 32 37 31 66 69 6c 65 63 6f 75 6e 74 31 30 39 |1271filecount109| (bigendian !)
+   0040: 33 72 65 71 75 69 72 65 6d 65 6e 74 73 64 6f 74 |3requirementsdot|
+   0050: 65 6e 63 6f 64 65 25 32 43 66 6e 63 61 63 68 65 |encode%2Cfncache|
+   0060: 25 32 43 67 65 6e 65 72 61 6c 64 65 6c 74 61 25 |%2Cgeneraldelta%|
+   0070: 32 43 72 65 76 6c 6f 67 2d 63 6f 6d 70 72 65 73 |2Crevlog-compres|
+   0080: 73 69 6f 6e 2d 7a 73 74 64 25 32 43 72 65 76 6c |sion-zstd%2Crevl|
+   0090: 6f 67 76 31 25 32 43 73 70 61 72 73 65 72 65 76 |ogv1%2Csparserev|
+   00a0: 6c 6f 67 25 32 43 73 74 6f 72 65 00 00 80 00 73 |log%2Cstore....s|
+   00b0: 08 42 64 61 74 61 2f 30 2e 69 00 03 00 01 00 00 |.Bdata/0.i......|
+@@ -528,17 +530,18 @@ Clone with background file closing enabl
+   1093 files to transfer, 102 KB of data (no-zstd !)
+   1093 files to transfer, 98.9 KB of data (zstd !)
+   starting 4 threads for background file closing
+   starting 4 threads for background file closing
+   updating the branch cache
+   transferred 102 KB in * seconds (* */sec) (glob) (no-zstd !)
+   bundle2-input-part: total payload size 118984 (no-zstd !)
+   transferred 98.9 KB in * seconds (* */sec) (glob) (zstd !)
+-  bundle2-input-part: total payload size 116145 (zstd !)
++  bundle2-input-part: total payload size 116145 (zstd no-bigendian !)
++  bundle2-input-part: total payload size 116140 (zstd bigendian !)
+   bundle2-input-part: "listkeys" (params: 1 mandatory) supported
+   bundle2-input-bundle: 2 parts total
+   checking for updated bookmarks
+   updating the branch cache
+   (sent 3 HTTP requests and * bytes; received * bytes in responses) (glob)
+ #endif
+ 
+ Cannot stream clone when there are secret changesets
+--- a/tests/test-generaldelta.t
++++ b/tests/test-generaldelta.t
+@@ -285,21 +285,24 @@ test maxdeltachainspan
+        47       3       30       46      p1         58       1380       1729   1.25290      1729         0    0.00000
+        48       3       31       47      p1         58       1426       1787   1.25316      1787         0    0.00000
+        49       4        1       -1    base        197        316        197   0.62342       197         0    0.00000 (no-zstd !)
+        50       4        2       49      p1         58        362        255   0.70442       255         0    0.00000 (no-zstd !)
+        51       4        3       50    prev        356        594        611   1.02862       611         0    0.00000 (no-zstd !)
+        52       4        4       51      p1         58        640        669   1.04531       669         0    0.00000 (no-zstd !)
+        49       4        1       -1    base        205        316        205   0.64873       205         0    0.00000 (zstd !)
+        50       4        2       49      p1         58        362        263   0.72652       263         0    0.00000 (zstd !)
+-       51       4        3       50    prev        366        594        629   1.05892       629         0    0.00000 (zstd !)
+-       52       4        4       51      p1         58        640        687   1.07344       687         0    0.00000 (zstd !)
++       51       4        3       50    prev        366        594        629   1.05892       629         0    0.00000 (zstd no-bigendian !)
++       52       4        4       51      p1         58        640        687   1.07344       687         0    0.00000 (zstd no-bigendian !)
++       51       4        3       50    prev        367        594        630   1.06061       630         0    0.00000 (zstd bigendian !)
++       52       4        4       51      p1         58        640        688   1.07500       688         0    0.00000 (zstd bigendian !)
+        53       5        1       -1    base          0          0          0   0.00000         0         0    0.00000
+        54       6        1       -1    base        369        640        369   0.57656       369         0    0.00000 (no-zstd !)
+-       54       6        1       -1    base        375        640        375   0.58594       375         0    0.00000 (zstd !)
++       54       6        1       -1    base        375        640        375   0.58594       375         0    0.00000 (zstd no-bigendian !)
++       54       6        1       -1    base        376        640        376   0.58750       376         0    0.00000 (zstd bigendian !)
+   $ hg clone --pull source-repo --config experimental.maxdeltachainspan=2800 relax-chain --config format.generaldelta=yes
+   requesting all changes
+   adding changesets
+   adding manifests
+   adding file changes
+   added 55 changesets with 53 changes to 53 files (+2 heads)
+   new changesets 61246295ee1e:c930ac4a5b32
+   updating to branch default
+@@ -357,20 +360,22 @@ test maxdeltachainspan
+        48       3       31       47      p1         58       1426       1787   1.25316      1787         0    0.00000
+        49       4        1       -1    base        197        316        197   0.62342       197         0    0.00000 (no-zstd !)
+        50       4        2       49      p1         58        362        255   0.70442       255         0    0.00000 (no-zstd !)
+        51       2       13       17      p1         58        594        739   1.24411      2781      2042    2.76319 (no-zstd !)
+        52       5        1       -1    base        369        640        369   0.57656       369         0    0.00000 (no-zstd !)
+        49       4        1       -1    base        205        316        205   0.64873       205         0    0.00000 (zstd !)
+        50       4        2       49      p1         58        362        263   0.72652       263         0    0.00000 (zstd !)
+        51       2       13       17      p1         58        594        739   1.24411      2789      2050    2.77402 (zstd !)
+-       52       5        1       -1    base        375        640        375   0.58594       375         0    0.00000 (zstd !)
++       52       5        1       -1    base        375        640        375   0.58594       375         0    0.00000 (zstd no-bigendian !)
++       52       5        1       -1    base        376        640        376   0.58750       376         0    0.00000 (zstd bigendian !)
+        53       6        1       -1    base          0          0          0   0.00000         0         0    0.00000
+        54       7        1       -1    base        369        640        369   0.57656       369         0    0.00000 (no-zstd !)
+-       54       7        1       -1    base        375        640        375   0.58594       375         0    0.00000 (zstd !)
++       54       7        1       -1    base        375        640        375   0.58594       375         0    0.00000 (zstd no-bigendian !)
++       54       7        1       -1    base        376        640        376   0.58750       376         0    0.00000 (zstd bigendian !)
+   $ hg clone --pull source-repo --config experimental.maxdeltachainspan=0 noconst-chain --config format.usegeneraldelta=yes --config storage.revlog.reuse-external-delta-parent=no
+   requesting all changes
+   adding changesets
+   adding manifests
+   adding file changes
+   added 55 changesets with 53 changes to 53 files (+2 heads)
+   new changesets 61246295ee1e:c930ac4a5b32
+   updating to branch default
+@@ -427,9 +432,10 @@ test maxdeltachainspan
+        47       3       30       46      p1         58       1380       1729   1.25290      1729         0    0.00000
+        48       3       31       47      p1         58       1426       1787   1.25316      1787         0    0.00000
+        49       1        7        5      p1         58        316        389   1.23101      2857      2468    6.34447
+        50       1        8       49      p1         58        362        447   1.23481      2915      2468    5.52125
+        51       2       13       17      p1         58        594        739   1.24411      2642      1903    2.57510
+        52       2       14       51      p1         58        640        797   1.24531      2700      1903    2.38770
+        53       4        1       -1    base          0          0          0   0.00000         0         0    0.00000
+        54       5        1       -1    base        369        640        369   0.57656       369         0    0.00000 (no-zstd !)
+-       54       5        1       -1    base        375        640        375   0.58594       375         0    0.00000 (zstd !)
++       54       5        1       -1    base        375        640        375   0.58594       375         0    0.00000 (zstd no-bigendian !)
++       54       5        1       -1    base        376        640        376   0.58750       376         0    0.00000 (zstd bigendian !)
+--- a/tests/test-persistent-nodemap.t
++++ b/tests/test-persistent-nodemap.t
+@@ -1017,17 +1017,18 @@ Simple case
+ No race condition
+ 
+   $ hg clone -U --stream ssh://user@dummy/test-repo stream-clone --debug | egrep '00(changelog|manifest)'
+   adding [s] 00manifest.n (62 bytes)
+   adding [s] 00manifest-*.nd (118 KB) (glob)
+   adding [s] 00changelog.n (62 bytes)
+   adding [s] 00changelog-*.nd (118 KB) (glob)
+   adding [s] 00manifest.d (452 KB) (no-zstd !)
+-  adding [s] 00manifest.d (491 KB) (zstd !)
++  adding [s] 00manifest.d (491 KB) (zstd no-bigendian !)
++  adding [s] 00manifest.d (492 KB) (zstd bigendian !)
+   adding [s] 00changelog.d (360 KB) (no-zstd !)
+   adding [s] 00changelog.d (368 KB) (zstd !)
+   adding [s] 00manifest.i (313 KB)
+   adding [s] 00changelog.i (313 KB)
+   $ ls -1 stream-clone/.hg/store/ | egrep '00(changelog|manifest)(\.n|-.*\.nd)'
+   00changelog-*.nd (glob)
+   00changelog.n
+   00manifest-*.nd (glob)
+@@ -1057,17 +1058,18 @@ setup the step-by-step stream cloning
+   > [extensions]
+   > steps=$RUNTESTDIR/testlib/ext-stream-clone-steps.py
+   > EOF
+ 
+ Check and record file state beforehand
+ 
+   $ f --size test-repo/.hg/store/00changelog*
+   test-repo/.hg/store/00changelog-*.nd: size=121088 (glob)
+-  test-repo/.hg/store/00changelog.d: size=376891 (zstd !)
++  test-repo/.hg/store/00changelog.d: size=376891 (zstd no-bigendian !)
++  test-repo/.hg/store/00changelog.d: size=376889 (zstd bigendian !)
+   test-repo/.hg/store/00changelog.d: size=368890 (no-zstd !)
+   test-repo/.hg/store/00changelog.i: size=320384
+   test-repo/.hg/store/00changelog.n: size=62
+   $ hg -R test-repo debugnodemap --metadata | tee server-metadata.txt
+   uid: * (glob)
+   tip-rev: 5005
+   tip-node: 90d5d3ba2fc47db50f712570487cb261a68c8ffe
+   data-length: 121088
+@@ -1087,28 +1089,30 @@ Do a mix of clone and commit at the same
+   $ touch $HG_TEST_STREAM_WALKED_FILE_2
+   $ $RUNTESTDIR/testlib/wait-on-file 10 $HG_TEST_STREAM_WALKED_FILE_3
+   $ cat clone-output
+   adding [s] 00manifest.n (62 bytes)
+   adding [s] 00manifest-*.nd (118 KB) (glob)
+   adding [s] 00changelog.n (62 bytes)
+   adding [s] 00changelog-*.nd (118 KB) (glob)
+   adding [s] 00manifest.d (452 KB) (no-zstd !)
+-  adding [s] 00manifest.d (491 KB) (zstd !)
++  adding [s] 00manifest.d (491 KB) (zstd no-bigendian !)
++  adding [s] 00manifest.d (492 KB) (zstd bigendian !)
+   adding [s] 00changelog.d (360 KB) (no-zstd !)
+   adding [s] 00changelog.d (368 KB) (zstd !)
+   adding [s] 00manifest.i (313 KB)
+   adding [s] 00changelog.i (313 KB)
+ 
+ Check the result state
+ 
+   $ f --size stream-clone-race-1/.hg/store/00changelog*
+   stream-clone-race-1/.hg/store/00changelog-*.nd: size=121088 (glob)
+   stream-clone-race-1/.hg/store/00changelog.d: size=368890 (no-zstd !)
+-  stream-clone-race-1/.hg/store/00changelog.d: size=376891 (zstd !)
++  stream-clone-race-1/.hg/store/00changelog.d: size=376891 (zstd no-bigendian !)
++  stream-clone-race-1/.hg/store/00changelog.d: size=376889 (zstd bigendian !)
+   stream-clone-race-1/.hg/store/00changelog.i: size=320384
+   stream-clone-race-1/.hg/store/00changelog.n: size=62
+ 
+   $ hg -R stream-clone-race-1 debugnodemap --metadata | tee client-metadata.txt
+   uid: * (glob)
+   tip-rev: 5005
+   tip-node: 90d5d3ba2fc47db50f712570487cb261a68c8ffe
+   data-length: 121088
+@@ -1152,17 +1156,18 @@ get changed, however to make thing simpl
+ this test.
+ 
+ Check the initial state
+ 
+   $ f --size test-repo/.hg/store/00changelog*
+   test-repo/.hg/store/00changelog-*.nd: size=121344 (glob) (rust !)
+   test-repo/.hg/store/00changelog-*.nd: size=121344 (glob) (pure !)
+   test-repo/.hg/store/00changelog-*.nd: size=121152 (glob) (no-rust no-pure !)
+-  test-repo/.hg/store/00changelog.d: size=376950 (zstd !)
++  test-repo/.hg/store/00changelog.d: size=376950 (zstd no-bigendian !)
++  test-repo/.hg/store/00changelog.d: size=376948 (zstd bigendian !)
+   test-repo/.hg/store/00changelog.d: size=368949 (no-zstd !)
+   test-repo/.hg/store/00changelog.i: size=320448
+   test-repo/.hg/store/00changelog.n: size=62
+   $ hg -R test-repo debugnodemap --metadata | tee server-metadata-2.txt
+   uid: * (glob)
+   tip-rev: 5006
+   tip-node: ed2ec1eef9aa2a0ec5057c51483bc148d03e810b
+   data-length: 121344 (rust !)
+@@ -1203,17 +1208,18 @@ Performe the mix of clone and full refre
+   adding [s] 00changelog.i (313 KB)
+ 
+ Check the result.
+ 
+   $ f --size stream-clone-race-2/.hg/store/00changelog*
+   stream-clone-race-2/.hg/store/00changelog-*.nd: size=121344 (glob) (rust !)
+   stream-clone-race-2/.hg/store/00changelog-*.nd: size=121344 (glob) (pure !)
+   stream-clone-race-2/.hg/store/00changelog-*.nd: size=121152 (glob) (no-rust no-pure !)
+-  stream-clone-race-2/.hg/store/00changelog.d: size=376950 (zstd !)
++  stream-clone-race-2/.hg/store/00changelog.d: size=376950 (zstd no-bigendian !)
++  stream-clone-race-2/.hg/store/00changelog.d: size=376948 (zstd bigendian !)
+   stream-clone-race-2/.hg/store/00changelog.d: size=368949 (no-zstd !)
+   stream-clone-race-2/.hg/store/00changelog.i: size=320448
+   stream-clone-race-2/.hg/store/00changelog.n: size=62
+ 
+   $ hg -R stream-clone-race-2 debugnodemap --metadata | tee client-metadata-2.txt
+   uid: * (glob)
+   tip-rev: 5006
+   tip-node: ed2ec1eef9aa2a0ec5057c51483bc148d03e810b

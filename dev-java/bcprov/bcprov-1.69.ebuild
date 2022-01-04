@@ -15,7 +15,7 @@ SRC_URI="https://github.com/bcgit/bc-java/archive/refs/tags/r${PV/./rv}.tar.gz -
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
@@ -58,7 +58,7 @@ JAVA_TEST_RUN_ONLY=(
 check_env() {
 	if use test; then
 		# this is needed only for tests
-		CHECKREQS_MEMORY="1200M"
+		CHECKREQS_MEMORY="2048M"
 		check-reqs_pkg_pretend
 	fi
 }

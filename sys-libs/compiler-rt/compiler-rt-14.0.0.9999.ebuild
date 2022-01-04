@@ -12,7 +12,7 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="$(ver_cut 1-3)"
 KEYWORDS=""
-IUSE="+clang debug test"
+IUSE="+abi_x86_32 abi_x86_64 +clang debug test"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
 CLANG_SLOT=${SLOT%%.*}
@@ -26,9 +26,11 @@ BDEPEND="
 		$(python_gen_any_dep ">=dev-python/lit-9.0.1[\${PYTHON_USEDEP}]")
 		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT}
 	)
-	${PYTHON_DEPS}"
+	!test? (
+		${PYTHON_DEPS}
+	)"
 
-LLVM_COMPONENTS=( compiler-rt )
+LLVM_COMPONENTS=( compiler-rt cmake )
 LLVM_PATCHSET=9999-1
 llvm.org_set_globals
 
@@ -93,6 +95,13 @@ src_configure() {
 
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
+
+	if use amd64; then
+		mycmakeargs+=(
+			-DCAN_TARGET_i386=$(usex abi_x86_32)
+			-DCAN_TARGET_x86_64=$(usex abi_x86_64)
+		)
+	fi
 
 	if use prefix && [[ "${CHOST}" == *-darwin* ]] ; then
 		mycmakeargs+=(

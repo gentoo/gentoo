@@ -5,6 +5,6 @@ EAPI=7
 
 inherit acct-group
 
-DESCRIPTION="A group for app-emulation/docker-registry"
+DESCRIPTION="A group for app-containers/docker-registry"
 
 ACCT_GROUP_ID="295"

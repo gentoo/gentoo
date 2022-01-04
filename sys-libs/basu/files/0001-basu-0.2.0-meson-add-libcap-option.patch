@@ -1,0 +1,39 @@
+From 64c1c624ea63f7a3eba4f0b7cf6a7d7aff952982 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Fri, 5 Nov 2021 18:36:54 +0100
+Subject: [PATCH 1/2] meson: add libcap option
+
+it's better to provide the user with this choice instead of
+unconditionally magically depending on it
+---
+ meson.build       | 2 +-
+ meson_options.txt | 3 +++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 056c7c4..357b346 100644
+--- a/meson.build
++++ b/meson.build
+@@ -231,7 +231,7 @@ threads = dependency('threads')
+ librt = cc.find_library('rt')
+ libm = cc.find_library('m')
+ 
+-libcap = dependency('libcap', required: false)
++libcap = dependency('libcap', required: get_option('libcap'))
+ have_libcap = libcap.found()
+ conf.set10('HAVE_LIBCAP', have_libcap)
+ 
+diff --git a/meson_options.txt b/meson_options.txt
+index 8cf3a33..ae5c7b1 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -14,3 +14,6 @@ option('system-bus-address', type : 'string',
+ 
+ option('audit', type : 'combo', choices : ['auto', 'true', 'false'],
+        description : 'libaudit support')
++
++option('libcap', type : 'feature',
++       description : 'libcap support')
+-- 
+2.32.0
+

@@ -8,14 +8,7 @@
     UCL objects into different formats such as "nginx like", json,
     yaml and compact json
   </longdescription>
-  <maintainer type="person" proxied="yes">
-    <email>gentoo@aisha.cc</email>
-    <name>Aisha Tammy</name>
-  </maintainer>
-  <maintainer type="project" proxied="proxy">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <use>
     <flag name="regex">Enable regex support</flag>
     <flag name="sign">Enable signatures check</flag>

@@ -1,5 +1,0 @@
---- a/setup.cfg	2021-05-24 12:19:38.163108453 -0700
-+++ b/setup.cfg	2021-05-24 12:19:58.714979990 -0700
-@@ -2 +2 @@
--description-file = README
-+description_file = README

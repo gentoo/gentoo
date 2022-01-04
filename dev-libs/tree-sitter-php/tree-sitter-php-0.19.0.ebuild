@@ -6,7 +6,7 @@ EAPI=8
 inherit tree-sitter-grammar
 
 DESCRIPTION="PHP grammar for Tree-sitter"
-HOMEPAGE="https://github.com/tree-sitter/tree-sitter-json"
+HOMEPAGE="https://github.com/tree-sitter/tree-sitter-php"
 
 LICENSE="MIT"
 SLOT="0"

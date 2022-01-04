@@ -120,7 +120,6 @@ pkg_postinst() {
 	elog "optional dependencies:"
 	elog "  media-sound/sox (sound playback if you don't have libcanberra"
 	elog "    enabled)"
-	elog "  x11-plugins/hexchat-javascript (javascript support)"
 	elog "  x11-themes/sound-theme-freedesktop (default BEEP sound,"
 	elog "    needs libcanberra enabled)"
 }

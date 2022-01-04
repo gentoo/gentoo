@@ -14,7 +14,7 @@ SRC_URI="https://github.com/linuxmint/cjs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT || ( MPL-1.1 LGPL-2+ GPL-2+ )"
 SLOT="0"
 IUSE="+cairo examples gtk readline sysprof test"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 RDEPEND="
 	dev-lang/spidermonkey:78
@@ -38,6 +38,10 @@ BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}/cjs-5.0.1-meson-0.60.2.patch"
+)
 
 src_prepare() {
 	default

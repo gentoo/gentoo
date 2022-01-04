@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Keep them sorted
@@ -319,7 +319,6 @@ tiff - Add support for the TIFF image format
 timidity - Build with Timidity++ (MIDI sequencer) support
 tk - Add support for Tk GUI toolkit
 truetype - Add support for FreeType and/or FreeType2 fonts
-uclibc - Enable uclibc specific patches and build or link uclibc
 udev - Enable virtual/udev integration (device discovery, power and storage device support, etc)
 udisks - Enable storage management support (automounting, volume monitoring, etc)
 unicode - Add support for Unicode

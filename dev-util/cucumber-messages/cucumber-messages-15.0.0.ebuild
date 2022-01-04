@@ -15,7 +15,7 @@ DESCRIPTION="Protocol Buffer messages for Cucumber's inter-process communication
 HOMEPAGE="https://cucumber.io/"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
 SLOT="$(ver_cut 1)"
 
 ruby_add_rdepend ">=dev-util/protobuf-cucumber-3.10.8:3"

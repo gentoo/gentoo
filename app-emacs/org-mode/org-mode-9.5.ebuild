@@ -22,6 +22,8 @@ BDEPEND="doc? ( virtual/texi2dvi )"
 
 SITEFILE="50${PN}-gentoo.el"
 
+PATCHES=("${FILESDIR}/${P}-parallel-make.patch")
+
 src_compile() {
 	emake datadir="${EPREFIX}${SITEETC}/${PN}"
 	use doc && emake pdf card

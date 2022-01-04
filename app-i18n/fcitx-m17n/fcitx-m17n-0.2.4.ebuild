@@ -1,4 +1,4 @@
-# Copyright 2016-2020 Gentoo Authors
+# Copyright 2016-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -21,7 +21,7 @@ fi
 
 LICENSE="LGPL-2.1+"
 SLOT="4"
-KEYWORDS="amd64 ~hppa ppc ppc64 x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 ~riscv x86"
 IUSE=""
 
 BDEPEND=">=app-i18n/fcitx-4.2.9:4

@@ -52,7 +52,7 @@ ADDONS_SRC=(
 	# not packaged in Gentoo, https://www.netlib.org/fp/dtoa.c
 	"${ADDONS_URI}/dtoa-20180411.tgz"
 	# not packaged in Gentoo, https://skia.org/
-	"${ADDONS_URI}/skia-m94-975fcdd755dfc5d57cddbb25857e0c4ac29abe98.tar.xz"
+	"${ADDONS_URI}/skia-m97-a7230803d64ae9d44f4e1282444801119a3ae967.tar.xz"
 	"base? (
 		${ADDONS_URI}/commons-logging-1.2-src.tar.gz
 		${ADDONS_URI}/ba2930200c9f019c2d93a8c88c651a0f-flow-engine-0.9.4.zip
@@ -107,30 +107,6 @@ SLOT="0"
 [[ ${MY_PV} == *9999* ]] || \
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux"
 
-BDEPEND="
-	dev-util/intltool
-	sys-devel/bison
-	sys-devel/flex
-	sys-devel/gettext
-	virtual/pkgconfig
-	clang? (
-		|| (
-			(	sys-devel/clang:13
-				sys-devel/llvm:13
-				=sys-devel/lld-13*	)
-			(	sys-devel/clang:12
-				sys-devel/llvm:12
-				=sys-devel/lld-12*	)
-			(	sys-devel/clang:11
-				sys-devel/llvm:11
-				=sys-devel/lld-11*	)
-			(	sys-devel/clang:10
-				sys-devel/llvm:10
-				=sys-devel/lld-10*	)
-		)
-	)
-	odk? ( >=app-doc/doxygen-1.8.4 )
-"
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
@@ -162,7 +138,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/icu:=
 	dev-libs/libassuan
 	dev-libs/libgpg-error
-	dev-libs/liborcus:0/0.16
+	dev-libs/liborcus:0/0.17
 	dev-libs/librevenge
 	dev-libs/libxml2
 	dev-libs/libxslt
@@ -251,7 +227,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-perl/Archive-Zip
 	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3.1
-	dev-util/mdds:1/1.5
+	dev-util/mdds:1/2.0
 	media-libs/glm
 	sys-devel/ucpp
 	x11-base/xorg-proto
@@ -282,6 +258,27 @@ RDEPEND="${COMMON_DEPEND}
 		>=virtual/jre-1.8
 	) )
 	kde? ( kde-frameworks/breeze-icons:* )
+"
+BDEPEND="
+	dev-util/intltool
+	sys-devel/bison
+	sys-devel/flex
+	sys-devel/gettext
+	virtual/pkgconfig
+	clang? (
+		|| (
+			(	sys-devel/clang:13
+				sys-devel/llvm:13
+				=sys-devel/lld-13*	)
+			(	sys-devel/clang:12
+				sys-devel/llvm:12
+				=sys-devel/lld-12*	)
+			(	sys-devel/clang:11
+				sys-devel/llvm:11
+				=sys-devel/lld-11*	)
+		)
+	)
+	odk? ( >=app-doc/doxygen-1.8.4 )
 "
 if [[ ${MY_PV} != *9999* ]] && [[ ${PV} != *_* ]]; then
 	PDEPEND="=app-office/libreoffice-l10n-$(ver_cut 1-2)*"

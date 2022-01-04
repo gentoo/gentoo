@@ -1,21 +1,38 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andrey Grozin <grozin@gentoo.org> (2022-01-03)
+# dev-libs/utfcpp is not keyworded yet
+media-gfx/asymptote lsp
+
+# Yongxinag Liang <tanekliang@gmail.com> (2021-12-30)
+# untested.
+net-misc/vinagre spice
+
+# Alex Fan <alex.fan.q@gmail.com> (2021-12-28)
+# dev-lang/julia doesn't support riscv yet
+sci-mathematics/singular julia
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2012-12-25)
+# Requires dev-qt/qtwebengine
+sci-astronomy/stellarium webengine
+
+# Alex Fan <alex.fan.q@gmail.com> (2021-12-12)
+# dev-python/uvloop fails test #806412
+# but with it installed, anyio passes all tests
+dev-python/anyio test
+
+# Alex Fan <alex.fan.q@gmail.com> (2021-11-19)
+# depends on dev-lang/ocaml
+app-accessibility/brltty ocaml ocamlopt
+
+# Alex Fan <alex.fan.q@gmail.com> (2021-11-19)
+# opengl -> dev-python/pygame is not keyworded yet
+dev-python/sympy opengl
 
 # Sam James <sam@gentoo.org> (2021-10-26)
 # sys-libs/libhugetlbfs is not keyworded on ~riscv right now
 sys-apps/nvme-cli hugepages
-
-# Michael Seifert <m.seifert@digitalernachschub.de> (2021-10-23)
-# dev-python/furo isn't keyworded here
-dev-python/argon2-cffi doc
-
-# Alex Fan <alexfanqi@yahoo.com> (2021-10-11)
-# sci-libs/sundials fails several tests #817680
-sci-mathematics/octave sundials
-
-# Alex Fan <alexfanqi@yahoo.com> (2021-09-27)
-# depends on mysql
-kde-apps/akonadi mysql
 
 # Marek Szuba <marecki@gentoo.org> (2021-09-23)
 # mkdocs ecosystem only partly keyworded on riscv, has rather messy
@@ -34,14 +51,6 @@ media-libs/devil nvtt
 app-portage/layman darcs
 #  - app-text/pandoc
 sys-cluster/ceph pmdk
-
-# Sam James <sam@gentoo.org> (2021-09-12)
-# Marek Szuba <marecki@gentoo.org> (2021-07-05)
-# dev-ruby/asciidoctor isn't keyworded here
-app-admin/keepassxc doc
-dev-libs/nanomsg doc
-dev-util/ccache doc
-net-misc/chrony html
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-09-15)
 # Marek Szuba <marecki@gentoo.org> (2021-09-07)
@@ -101,7 +110,7 @@ gnome-base/gdm accessibility
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # dependencies not keyworded/tested
-kde-plasma/plasma-meta accessibility grub plymouth pulseaudio
+kde-plasma/plasma-meta grub plymouth
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-17)
 # sys-libs/libfaketime does not work properly on this arch
@@ -178,7 +187,6 @@ sys-cluster/slurm ofed
 # This doesn't work for (any) riscv yet.
 dev-libs/libpcre2 jit
 dev-libs/libpcre jit
-<dev-vcs/git-2.31.0 pcre-jit
 www-servers/nginx pcre-jit
 
 # app-shells/fish not keyworded due to failing tests (Bug #807742).

@@ -12,5 +12,6 @@
 		<flag name="git">Enable support for Git VCS in <pkg>kde-apps/dolphin</pkg> via <pkg>kde-apps/dolphin-plugins-git</pkg></flag>
 		<flag name="mercurial">Enable support for Mercurial VCS in <pkg>kde-apps/dolphin</pkg> via <pkg>kde-apps/dolphin-plugins-mercurial</pkg></flag>
 		<flag name="subversion">Enable support for Apache Subversion VCS in <pkg>kde-apps/dolphin</pkg> via <pkg>kde-apps/dolphin-plugins-subversion</pkg></flag>
+		<flag name="webengine">Enable <pkg>dev-util/kdevelop</pkg>, requiring <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>
 </pkgmetadata>

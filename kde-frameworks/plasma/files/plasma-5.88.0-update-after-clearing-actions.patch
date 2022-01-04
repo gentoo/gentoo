@@ -1,0 +1,29 @@
+From 77fedf1f9919eb2cc07c8ecccdd70ad2a7343161 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Sat, 4 Dec 2021 18:08:43 +0800
+Subject: [PATCH] wallpaperinterface: Update "contextualActions" after clearing
+ actions
+
+After clearing the entire action collection, "contextualActions" needs
+to be updated to remove invalid action pointers.
+
+BUG: 446195
+---
+ src/scriptengines/qml/plasmoid/wallpaperinterface.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/scriptengines/qml/plasmoid/wallpaperinterface.cpp b/src/scriptengines/qml/plasmoid/wallpaperinterface.cpp
+index 65adf838e..49bdb9512 100644
+--- a/src/scriptengines/qml/plasmoid/wallpaperinterface.cpp
++++ b/src/scriptengines/qml/plasmoid/wallpaperinterface.cpp
+@@ -115,6 +115,7 @@ void WallpaperInterface::syncWallpaperPackage()
+     }
+ 
+     m_actions->clear();
++    setProperty("contextualActions", QVariant::fromValue(contextualActions()));
+     m_pkg = KPackage::PackageLoader::self()->loadPackage(QStringLiteral("Plasma/Wallpaper"));
+     m_pkg.setPath(m_wallpaperPlugin);
+     if (!m_pkg.isValid()) {
+-- 
+GitLab
+

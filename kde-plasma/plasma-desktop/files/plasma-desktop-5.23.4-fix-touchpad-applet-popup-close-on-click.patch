@@ -1,0 +1,53 @@
+From 2131daa05195a2b55f593acf3d323cf4c2a89936 Mon Sep 17 00:00:00 2001
+From: Nate Graham <nate@kde.org>
+Date: Thu, 2 Dec 2021 20:13:46 -0700
+Subject: [PATCH] kcms/touchpad/applet: Make the popup close on click
+
+BUG: 445982
+FIXED-IN: 5.23.5
+(cherry picked from commit 4cb2de984ab79bc257af0135bf92ea7390d5617f)
+---
+ .../applet/qml/contents/ui/touchpad.qml       | 23 +++++++++++--------
+ 1 file changed, 13 insertions(+), 10 deletions(-)
+
+diff --git a/kcms/touchpad/applet/qml/contents/ui/touchpad.qml b/kcms/touchpad/applet/qml/contents/ui/touchpad.qml
+index 3f5eb722f..106859c3a 100644
+--- a/kcms/touchpad/applet/qml/contents/ui/touchpad.qml
++++ b/kcms/touchpad/applet/qml/contents/ui/touchpad.qml
+@@ -56,20 +56,23 @@ Item {
+         connectedSources: dataSource.sources
+     }
+ 
+-    Plasmoid.compactRepresentation: PlasmaCore.ToolTipArea {
+-        id: toolTip
++    Plasmoid.compactRepresentation: PlasmaCore.IconItem {
++        implicitWidth: PlasmaCore.Units.iconSizes.small
++        implicitHeight: PlasmaCore.Units.iconSizes.small
+ 
+-        Layout.minimumWidth: PlasmaCore.Units.iconSizes.small
+-        Layout.minimumHeight: Layout.minimumWidth
++        source: plasmoid.icon
++        active: parent.containsMouse
+ 
+-        mainText: plasmoid.title
+-        subText: plasmoid.toolTipSubText
++        PlasmaCore.ToolTipArea {
++            mainText: plasmoid.title
++            subText: plasmoid.toolTipSubText
++        }
+ 
+-        PlasmaCore.IconItem {
++        MouseArea {
+             anchors.fill: parent
+-            source: plasmoid.icon
+-            active: parent.containsMouse
+-            enabled: root.hasTouchpad
++            onClicked: {
++                plasmoid.expanded = !plasmoid.expanded;
++            }
+         }
+     }
+ 
+-- 
+GitLab
+

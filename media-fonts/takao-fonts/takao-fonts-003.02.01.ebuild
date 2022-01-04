@@ -9,18 +9,15 @@ MY_P="${PN}-ttf-${PV}"
 
 DESCRIPTION="A community developed derivatives of IPA Fonts"
 HOMEPAGE="https://launchpad.net/takao-fonts"
-SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${MY_P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${MY_P}.tar.gz"
 
 LICENSE="IPAfont"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~riscv x86"
 IUSE=""
-# Only installs fonts
-RESTRICT="strip binchecks"
+RESTRICT="binchecks strip"
 
 S="${WORKDIR}/${MY_P}"
-FONT_SUFFIX="ttf"
-FONT_S="${S}"
-FONT_CONF=( "${FILESDIR}/66-${PN}.conf" )
 
-DOCS="ChangeLog README*"
+FONT_CONF=( "${FILESDIR}/66-${PN}.conf" )
+FONT_SUFFIX="ttf"

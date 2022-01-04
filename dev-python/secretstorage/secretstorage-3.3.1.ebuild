@@ -9,14 +9,14 @@ inherit distutils-r1
 
 MY_PN="SecretStorage"
 
-DESCRIPTION="Python bindings to FreeDesktop.org Secret Service API."
+DESCRIPTION="Python bindings to FreeDesktop.org Secret Service API"
 HOMEPAGE="https://github.com/mitya57/secretstorage https://pypi.org/project/SecretStorage/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]

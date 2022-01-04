@@ -115,7 +115,7 @@ SETUPTOOLS_DEP="python_single_target_python3_8? ( >=dev-python/setuptools-42.0.2
 test-DISTUTILS_USE_SETUPTOOLS no "${BASE_DEPS}" "${BASE_DEPS}"
 test-DISTUTILS_USE_SETUPTOOLS bdepend "${BASE_DEPS} ${SETUPTOOLS_DEP}" "${BASE_DEPS}"
 test-DISTUTILS_USE_SETUPTOOLS rdepend "${BASE_DEPS} ${SETUPTOOLS_DEP}" "${BASE_DEPS} ${SETUPTOOLS_DEP}"
-test-DISTUTILS_USE_SETUPTOOLS pyproject.toml "${BASE_DEPS} python_single_target_python3_8? ( dev-python/pyproject2setuppy[python_targets_python3_8(-)] )" "${BASE_DEPS}"
+test-DISTUTILS_USE_SETUPTOOLS pyproject.toml "${BASE_DEPS} python_single_target_python3_8? ( >=dev-python/pyproject2setuppy-22[python_targets_python3_8(-)] )" "${BASE_DEPS}"
 test-DISTUTILS_USE_SETUPTOOLS manual "${BASE_DEPS}" "${BASE_DEPS}"
 eoutdent
 

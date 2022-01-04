@@ -11,7 +11,7 @@ DISTUTILS_USE_SETUPTOOLS=manual
 inherit distutils-r1
 
 MY_PN="${PN/-/.}"
-DESCRIPTION="Distutils command to view/validate packages's rst text long_descriptions."
+DESCRIPTION="Distutils command to view/validate packages's rst text long_descriptions"
 HOMEPAGE="https://github.com/collective/collective.checkdocs"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.zip"
 S="${WORKDIR}/${MY_PN}-${PV}"

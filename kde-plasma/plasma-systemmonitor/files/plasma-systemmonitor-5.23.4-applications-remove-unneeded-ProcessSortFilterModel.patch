@@ -1,0 +1,73 @@
+From 50f6378144ed244b9c1cd3e325ecbe45dd7544d4 Mon Sep 17 00:00:00 2001
+From: David Redondo <kde@david-redondo.de>
+Date: Mon, 22 Nov 2021 12:15:14 +0100
+Subject: [PATCH] ApplicationsTable: Remove unneeded ProcessSortFilterModel
+
+ProcessSortFilterModel handles filtering pids and to which user a process
+belongs over a normal QSortFilterProxyModel. In doing so it also
+sets the filterKeyColumn to nameColumn in findColumns(). Note that the name
+of the name columns of the process and application table is different
+("name" and "appName"), so the filterKeyColumn is also set by ApplicationTableView.
+However this is racey depending on when the binding is evaluated.
+Since we don't need the extra features of the ProcessSortFilterModel we can use
+the existing SortFilterProxyModel in charge of filtering columns (something that
+the ProcessSortFilterModel also did) to also handle the row filtering.
+BUG:445544
+FIXED-IN:5.23.4
+
+
+(cherry picked from commit a96bc99a3650c3bf2e48ab1287dc779dbba87c51)
+---
+ .../contents/ui/ApplicationsTableView.qml         | 15 ++++-----------
+ 1 file changed, 4 insertions(+), 11 deletions(-)
+
+diff --git a/src/faces/applicationstable/contents/ui/ApplicationsTableView.qml b/src/faces/applicationstable/contents/ui/ApplicationsTableView.qml
+index 38915b3..3f3ed4f 100644
+--- a/src/faces/applicationstable/contents/ui/ApplicationsTableView.qml
++++ b/src/faces/applicationstable/contents/ui/ApplicationsTableView.qml
+@@ -32,7 +32,7 @@ Table.BaseTableView {
+     property alias columnDisplay: displayModel.columnDisplay
+     property alias sourceModel: appModel
+ 
+-    property alias filterString: filterProxy.filterString
++    property alias filterString: sortColumnFilter.filterString
+ 
+     property var selectedApplications: {
+         var result = []
+@@ -83,8 +83,9 @@ Table.BaseTableView {
+     model: KItemModels.KSortFilterProxyModel {
+         id: sortColumnFilter
+ 
+-        sourceModel: filterProxy
+-
++        sourceModel: cacheModel
++        filterKeyColumn: appModel.nameColumn
++        filterCaseSensitivity: Qt.CaseInsensitive
+         filterColumnCallback: function(column, parent) {
+             // Note: This assumes displayModel column == appModel column
+             // This may not always hold, but we get incorrect results if we try to
+@@ -99,13 +100,6 @@ Table.BaseTableView {
+         sortRole: "Value"
+     }
+ 
+-    Table.ProcessSortFilterModel {
+-        id: filterProxy
+-        sourceModel: cacheModel
+-        filterKeyColumn: appModel.nameColumn
+-        filterCaseSensitivity: Qt.CaseInsensitive
+-    }
+-
+     Table.ComponentCacheProxyModel {
+         id: cacheModel
+         sourceModel: displayModel
+@@ -184,7 +178,6 @@ Table.BaseTableView {
+             Table.FirstCellDelegate {
+                 iconName: {
+                     var index = sortColumnFilter.mapToSource(sortColumnFilter.index(model.row, 0));
+-                    index = filterProxy.mapToSource(filterProxy.index(index.row, 0));
+                     index = appModel.index(index.row, appModel.iconColumn)
+                     return appModel.data(index)
+                     return ""
+-- 
+GitLab
+

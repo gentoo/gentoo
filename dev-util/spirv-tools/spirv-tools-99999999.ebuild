@@ -5,7 +5,7 @@ EAPI=7
 
 MY_PN=SPIRV-Tools
 CMAKE_ECLASS="cmake"
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake-multilib python-any-r1
 
 if [[ ${PV} == *9999* ]]; then
@@ -26,7 +26,7 @@ SLOT="0"
 # Tests fail upon finding symbols that do not match a regular expression
 # in the generated library. Easily hit with non-standard compiler flags
 RESTRICT="test"
-COMMON_DEPEND=">=dev-util/spirv-headers-1.5.4.2_pre20210526"
+COMMON_DEPEND="~dev-util/spirv-headers-1.2.198"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND=""
 BDEPEND="${PYTHON_DEPS}

@@ -10,7 +10,7 @@ LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-3"
 FFMPEG_VERSION="4.4"
 CODENAME="N"
 FFMPEG_KODI_VERSION="Alpha1"
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_VERSION}.tar.gz -> libdvdread-${LIBDVDREAD_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_VERSION}.tar.gz -> libdvdnav-${LIBDVDNAV_VERSION}.tar.gz
@@ -329,6 +329,12 @@ src_compile() {
 }
 
 src_test() {
+	local myctestargs=(
+		# Known failing, unreliable test
+		# bug #743938
+		-E "(TestCPUInfo.GetCPUFrequency)"
+	)
+
 	# see https://github.com/xbmc/xbmc/issues/17860#issuecomment-630120213
 	KODI_HOME="${BUILD_DIR}" cmake_build check
 }

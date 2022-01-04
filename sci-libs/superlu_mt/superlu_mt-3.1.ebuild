@@ -61,8 +61,7 @@ src_prepare() {
 		TMGLIB=libtmglib.a
 	EOF
 	SONAME=lib${PN}.so.${SOVERSION}
-	sed -e 's|../make.inc|make.inc|' \
-		-e "s|../SRC|${EPREFIX}/usr/include/${PN}|" \
+	sed -e "s|../SRC|${EPREFIX}/usr/include/${PN}|" \
 		-e '/:.*$(SUPERLULIB)/s|../lib/$(SUPERLULIB)||g' \
 		-e 's|../lib/$(SUPERLULIB)|-lsuperlu_mt|g' \
 		-i EXAMPLE/Makefile || die

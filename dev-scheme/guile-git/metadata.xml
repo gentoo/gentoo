@@ -2,13 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 
 <pkgmetadata>
-  <maintainer type="person" proxied="yes">
-    <email>xgqt@riseup.net</email>
-    <name>Maciej Barć</name>
-  </maintainer>
-  <maintainer type="project" proxied="proxy">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
   </maintainer>
   <upstream>
     <bugs-to>https://gitlab.com/guile-git/guile-git</bugs-to>

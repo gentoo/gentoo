@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=dev-python/Babel-1[${PYTHON_USEDEP}]
@@ -28,7 +28,7 @@ RDEPEND="
 	>=dev-python/wtforms-1.0.5[${PYTHON_USEDEP}]
 "
 
-distutils_enable_sphinx docs
+distutils_enable_sphinx docs dev-python/pallets-sphinx-themes dev-python/sphinxcontrib-log_cabinet dev-python/sphinx-issues
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(

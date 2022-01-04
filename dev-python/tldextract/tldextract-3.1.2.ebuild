@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="Accurately separate the TLD from the registered domain and subdomains of a URL."
+DESCRIPTION="Accurately separate the TLD from the registered domain and subdomains of a URL"
 HOMEPAGE="https://pypi.org/project/tldextract/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

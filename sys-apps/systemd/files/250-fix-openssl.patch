@@ -1,0 +1,102 @@
+From 9bcf483b117b23ae25bf4a5d39ddc3eade8659a6 Mon Sep 17 00:00:00 2001
+From: Yu Watanabe <watanabe.yu+github@gmail.com>
+Date: Fri, 24 Dec 2021 10:06:13 +0900
+Subject: [PATCH] meson: fix build with -Dcryptolib=openssl
+ -Ddns-over-tls=false
+
+Previously, when -Ddns-over-tls=false, libopenssl was missing in the
+dependency of resolved.
+Also, this drops libgpg_error when it is not necessary.
+
+Replaces #21878.
+---
+ meson.build             | 3 +--
+ src/resolve/meson.build | 9 +--------
+ 2 files changed, 2 insertions(+), 10 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index c0cbadecb123..0b7c1918ad4c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1474,7 +1474,7 @@ conf.set10('PREFER_OPENSSL',
+            opt == 'openssl' or (opt == 'auto' and conf.get('HAVE_OPENSSL') == 1 and conf.get('HAVE_GCRYPT') == 0))
+ conf.set10('HAVE_OPENSSL_OR_GCRYPT',
+            conf.get('HAVE_OPENSSL') == 1 or conf.get('HAVE_GCRYPT') == 1)
+-lib_openssl_or_gcrypt = conf.get('PREFER_OPENSSL') == 1 ? libopenssl : libgcrypt
++lib_openssl_or_gcrypt = conf.get('PREFER_OPENSSL') == 1 ? [libopenssl] : [libgcrypt, libgpg_error]
+ 
+ dns_over_tls = get_option('dns-over-tls')
+ if dns_over_tls != 'false'
+@@ -2200,7 +2200,6 @@ if conf.get('ENABLE_RESOLVE') == 1
+                              libsystemd_resolve_core],
+                 dependencies : [threads,
+                                 lib_openssl_or_gcrypt,
+-                                libgpg_error,
+                                 libm,
+                                 libidn],
+                 install_rpath : rootlibexecdir,
+diff --git a/src/resolve/meson.build b/src/resolve/meson.build
+index 0580fbeec625..2cdf24b1cbef 100644
+--- a/src/resolve/meson.build
++++ b/src/resolve/meson.build
+@@ -135,7 +135,7 @@ systemd_resolved_sources += custom_target(
+         output : 'resolved-dnssd-gperf.c',
+         command : [gperf, '@INPUT@', '--output-file', '@OUTPUT@'])
+ 
+-systemd_resolved_dependencies = [threads, libgpg_error, libm]
++systemd_resolved_dependencies = [threads, libm] + [lib_openssl_or_gcrypt]
+ if conf.get('ENABLE_DNS_OVER_TLS') == 1
+         if conf.get('DNS_OVER_TLS_USE_GNUTLS') == 1
+                 systemd_resolved_sources += files(
+@@ -178,14 +178,12 @@ tests += [
+          [libsystemd_resolve_core,
+           libshared],
+          [lib_openssl_or_gcrypt,
+-          libgpg_error,
+           libm]],
+ 
+         [['src/resolve/test-dns-packet.c'],
+          [libsystemd_resolve_core,
+           libshared],
+          [lib_openssl_or_gcrypt,
+-          libgpg_error,
+           libm]],
+ 
+         [['src/resolve/test-resolved-etc-hosts.c',
+@@ -194,21 +192,18 @@ tests += [
+          [libsystemd_resolve_core,
+           libshared],
+          [lib_openssl_or_gcrypt,
+-          libgpg_error,
+           libm]],
+ 
+         [['src/resolve/test-resolved-packet.c'],
+          [libsystemd_resolve_core,
+           libshared],
+          [lib_openssl_or_gcrypt,
+-          libgpg_error,
+           libm]],
+ 
+         [['src/resolve/test-dnssec.c'],
+          [libsystemd_resolve_core,
+           libshared],
+          [lib_openssl_or_gcrypt,
+-          libgpg_error,
+           libm],
+          [], 'HAVE_OPENSSL_OR_GCRYPT'],
+ 
+@@ -216,7 +211,6 @@ tests += [
+          [libsystemd_resolve_core,
+           libshared],
+          [lib_openssl_or_gcrypt,
+-          libgpg_error,
+           libm],
+          [], '', 'manual'],
+ ]
+@@ -226,6 +220,5 @@ fuzzers += [
+          [libsystemd_resolve_core,
+           libshared],
+          [lib_openssl_or_gcrypt,
+-          libgpg_error,
+           libm]],
+ ]

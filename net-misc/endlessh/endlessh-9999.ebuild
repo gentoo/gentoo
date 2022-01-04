@@ -33,7 +33,7 @@ src_prepare() {
 		Makefile || die
 
 	sed -i -e "/^ExecStart=/ s:=/usr/local:=${EPREFIX}/usr:" \
-		util/endlessh.service || die
+		-e /InaccessiblePaths/d util/endlessh.service || die
 }
 
 src_install() {

@@ -68,6 +68,9 @@
 			will not be compatible with systems using an earlier glibc
 			version.
 		</flag>
+		<flag name="yescrypt">
+			Switch Linux-PAM's pam_unix module to use yescrypt for passwords hashes rather than MD5
+		</flag>
 		<flag name="pam_krb5">
 			Enable pam_krb5 module on system auth stack, as an alternative
 			to pam_unix. If Kerberos authentication succeed, only pam_unix

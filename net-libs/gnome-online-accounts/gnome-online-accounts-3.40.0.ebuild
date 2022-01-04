@@ -59,7 +59,10 @@ src_prepare() {
 
 src_configure() {
 	# TODO: Give users a way to set the G/FB/Windows Live secrets
-	gnome2_src_configure \
+
+	# CONFIG_SHELL for bashisms in bug #829494, patch submitted upstream.
+	# Can be removed in future.
+	CONFIG_SHELL="${BROOT}/bin/bash" gnome2_src_configure \
 		--disable-static \
 		--enable-backend \
 		--enable-documentation \

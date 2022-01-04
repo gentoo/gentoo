@@ -1,0 +1,39 @@
+From edbcda19be3720b164e9961226bfa74271f2b9b5 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 27 Nov 2021 11:35:28 +0100
+Subject: [PATCH] Make sure to disable futile external repo fetching
+
+---
+ CMakeLists.txt                 | 2 +-
+ cmake/rinutils_bootstrap.cmake | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c991dcb47..b0c13d4ff 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -210,7 +210,7 @@ ENDIF ()
+ # Clone the patsolve repository with the appropriate branch.
+ SET (pats_dir "patsolve")
+ 
+-IF (NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${pats_dir}")
++IF (0)
+     EXECUTE_PROCESS(
+         COMMAND "git" "clone" "https://github.com/shlomif/patsolve.git" "${pats_dir}"
+         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+diff --git a/cmake/rinutils_bootstrap.cmake b/cmake/rinutils_bootstrap.cmake
+index 3879bce85..cf2ea168d 100644
+--- a/cmake/rinutils_bootstrap.cmake
++++ b/cmake/rinutils_bootstrap.cmake
+@@ -5,7 +5,7 @@ MACRO(RINUTILS_SET_UP_FLAGS)
+     SET (rinutils_inc_dir "${rinutils_dir_absolute}/rinutils/include")
+     SET (rinutils_git_tag "0.6.0")
+ 
+-    find_package(Rinutils QUIET)
++    find_package(Rinutils REQUIRED)
+     IF ("${Rinutils_FOUND}")
+         INCLUDE_DIRECTORIES(AFTER ${RINUTILS_INCLUDE_DIR} ${RINUTILS_INCLUDE_DIRS})
+     ELSE ()
+-- 
+2.34.1
+

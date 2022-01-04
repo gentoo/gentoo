@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="Python wrapper for jikan.moe API."
+DESCRIPTION="Python wrapper for jikan.moe API"
 HOMEPAGE="https://pypi.org/project/jikanpy/"
 SRC_URI="https://github.com/abhinavk99/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

@@ -11,12 +11,6 @@ Signed-off-by: Mike Frysinger <vapier@gentoo.org>
 Forward ported from libcap-2.20 to libcap-2.25
 
 Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
----
- progs/Makefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/progs/Makefile b/progs/Makefile
-index c094a24..4a6db38 100644
 --- a/progs/Makefile
 +++ b/progs/Makefile
 @@ -27,7 +27,7 @@ install: all
@@ -28,6 +22,3 @@ index c094a24..4a6db38 100644
  endif
  
  clean:
--- 
-2.7.1
-

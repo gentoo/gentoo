@@ -22,10 +22,10 @@ RDEPEND="
 		media-libs/libsdl2[joystick,sound,video]
 		media-libs/sdl2-mixer
 		net-misc/curl
-		odalaunch? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
 		portmidi? ( media-libs/portmidi )
 		X? ( x11-libs/libX11 )
 	)
+	odalaunch? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
 	server? (
 		upnp? ( net-libs/miniupnpc:= )
 	)"

@@ -30,7 +30,9 @@ RESTRICT="test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}"
+RDEPEND="${PYTHON_DEPS}
+	elibc_musl? ( sys-libs/argp-standalone )
+"
 DEPEND="
 	ch-image? (
 		$(python_gen_cond_dep '
@@ -48,6 +50,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.24-dash.patch
+	"${FILESDIR}"/${PN}-0.24-musl-argp.patch
 )
 
 src_prepare() {
@@ -72,8 +75,8 @@ src_configure() {
 
 pkg_postinst() {
 	elog "Various builders are supported, as alternative to the internal ch-image."
-	optfeature "Building with Buildah" app-emulation/buildah
-	optfeature "Building with Docker" app-emulation/docker
+	optfeature "Building with Buildah" app-containers/buildah
+	optfeature "Building with Docker" app-containers/docker
 	optfeature "Progress bars during long operations" sys-apps/pv
 	optfeature "Pack and unpack squashfs images" sys-fs/squashfs-tools
 	optfeature "Mount and umount squashfs images" sys-fs/squashfuse

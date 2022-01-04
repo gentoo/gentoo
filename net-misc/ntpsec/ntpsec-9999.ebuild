@@ -3,10 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE='threads(+)'
+DISTUTILS_USE_SETUPTOOLS=no
 
-inherit flag-o-matic python-r1 waf-utils systemd
+inherit distutils-r1 flag-o-matic waf-utils systemd
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -14,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${PN}-${PV}.tar.gz"
 	RESTRICT="mirror"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 arm arm64 ~riscv ~x86"
 fi
 
 DESCRIPTION="The NTP reference implementation, refactored"
@@ -22,8 +23,8 @@ HOMEPAGE="https://www.ntpsec.org/"
 
 NTPSEC_REFCLOCK=(
 	oncore trimble truetime gpsd jjy generic spectracom
-	shm pps hpgps zyfer arbiter nmea neoclock modem
-	local)
+	shm pps hpgps zyfer arbiter nmea modem local
+	)
 
 IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 
@@ -48,7 +49,7 @@ RDEPEND="${CDEPEND}
 	acct-user/ntp
 "
 DEPEND="${CDEPEND}
-	app-text/asciidoc
+	>=app-text/asciidoc-8.6.8
 	dev-libs/libxslt
 	app-text/docbook-xsl-stylesheets
 	sys-devel/bison
@@ -56,15 +57,23 @@ DEPEND="${CDEPEND}
 	rclock_pps? ( net-misc/pps-tools )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
+)
+
 WAF_BINARY="${S}/waf"
 
 src_prepare() {
 	default
+
 	# Remove autostripping of binaries
 	sed -i -e '/Strip binaries/d' wscript || die
 	if ! use libbsd ; then
 		eapply "${FILESDIR}/${PN}-no-bsd.patch"
 	fi
+	# remove extra default pool servers
+	sed -i '/use-pool/s/^/#/' "${S}"/etc/ntp.d/default.conf || die
+
 	python_copy_sources
 }
 
@@ -85,9 +94,10 @@ src_configure() {
 	local myconf=(
 		--nopyc
 		--nopyo
+		--enable-pylib ext
 		--refclock="${CLOCKSTRING}"
-		--build-epoch="$(date +%s)"
-		$(use doc	&& echo "--enable-doc")
+		#--build-epoch="$(date +%s)"
+		$(use doc	|| echo "--disable-doc")
 		$(use early	&& echo "--enable-early-droproot")
 		$(use gdb	&& echo "--enable-debug-gdb")
 		$(use samba	&& echo "--enable-mssntp")
@@ -114,6 +124,7 @@ src_compile() {
 src_install() {
 	python_install() {
 		waf-utils_src_install
+		python_fix_shebang "${ED}"
 	}
 	python_foreach_impl run_in_build_dir python_install
 	python_foreach_impl python_optimize

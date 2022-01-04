@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Bump with sci-calculators/qalculate-gtk!
+
 inherit toolchain-funcs
 
 DESCRIPTION="A modern multi-purpose calculator library"
@@ -11,7 +13,7 @@ SRC_URI="https://github.com/Qalculate/${PN}/releases/download/v${PV}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0/22"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="curl icu gnuplot readline"
 
 DEPEND="

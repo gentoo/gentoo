@@ -15,6 +15,7 @@
 	<flag name="kill">build the kill program</flag>
 	<flag name="logger">build the logger program</flag>
 	<flag name="pam">build runuser helper</flag>
+	<flag name="rtas">Add support for the Run Time Abstraction Services (RTAS)</flag>
 	<flag name="su">build the su program</flag>
 	<flag name="suid">
 		install mount/umount as setuid so non-root users may mount/umount devices,

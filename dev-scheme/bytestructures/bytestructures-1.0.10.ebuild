@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Structured access to bytevector contents"
 HOMEPAGE="https://github.com/TaylanUB/scheme-bytestructures/"
@@ -11,13 +11,14 @@ LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+RESTRICT="strip"
 
 RDEPEND=">=dev-scheme/guile-2.0.0:="
 DEPEND="${RDEPEND}"
 
 # guile generates ELF files without use of C or machine code
 # It's a portage's false positive. bug #677600
-QA_FLAGS_IGNORED='.*[.]go'
+QA_PREBUILT='*[.]go'
 
 src_prepare() {
 	default

@@ -1,0 +1,50 @@
+From 8accc777a5b3ab1e53341f1838ed636652dc1221 Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Mon, 13 Dec 2021 12:53:32 +0200
+Subject: [PATCH] Fix memory leak in some plasma components
+
+A few plasma components cache QSGTexture. Those components rely on
+texture references going away with QSGNode users. However, with the
+current tear down logic, OffscreenQuickView won't destroy any paint
+nodes.
+
+Destroy QQuickRenderControl before QQuickWindow to ensure that are no
+paint nodes left alive after OffscreenQuickView.
+
+BUG: 444429
+BUG: 444381
+BUG: 444077
+BUG: 444306
+(cherry picked from commit 64f2cdf9ed290a1fb7c2bf41753613078eb023c4)
+---
+ src/libkwineffects/kwineffectquickview.cpp | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/src/libkwineffects/kwineffectquickview.cpp b/src/libkwineffects/kwineffectquickview.cpp
+index ca5a025729..14be1e1b25 100644
+--- a/src/libkwineffects/kwineffectquickview.cpp
++++ b/src/libkwineffects/kwineffectquickview.cpp
+@@ -160,13 +160,15 @@ EffectQuickView::EffectQuickView(QObject *parent, QWindow *renderWindow, ExportM
+ EffectQuickView::~EffectQuickView()
+ {
+     if (d->m_glcontext) {
+-        d->m_glcontext->makeCurrent(d->m_offscreenSurface.data());
+         // close the view whilst we have an active GL context
+-        delete d->m_view;
+-        d->m_view = nullptr;
+-        d->m_renderControl->invalidate();
+-        d->m_glcontext->doneCurrent();
++        d->m_glcontext->makeCurrent(d->m_offscreenSurface.data());
+     }
++
++    delete d->m_renderControl; // Always delete render control first.
++    d->m_renderControl = nullptr;
++
++    delete d->m_view;
++    d->m_view = nullptr;
+ }
+ 
+ bool EffectQuickView::automaticRepaint() const
+-- 
+GitLab
+

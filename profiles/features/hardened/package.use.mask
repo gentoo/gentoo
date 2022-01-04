@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 sys-apps/hwloc gl
@@ -12,6 +12,3 @@ www-client/firefox gmp-autoupdate
 # net-fs/openafs-kernel module can't be used on hardened,
 # see bug 540196.
 net-fs/openafs modules
-
-# jit don't work on hardened.
-dev-vcs/git pcre-jit

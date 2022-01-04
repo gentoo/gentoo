@@ -1,8 +1,0 @@
-# Copyright 2019-2019 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Brian Evans <grknight@gentoo.org> (2019-02-27)
-# Avoid conflict between kde-plasma/plasma-workspace[systemd] requiring sys-apps/dbus[user-session]
-# and net-wireless/bluez[systemd,-user-session] requiring sys-apps/dbus[-user-session].
-net-wireless/bluez user-session
-sys-apps/dbus user-session

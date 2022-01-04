@@ -12,7 +12,7 @@ JAVA_TESTING_FRAMEWORKS="junit"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="Jaxen is a universal XPath engine for Java."
+DESCRIPTION="Jaxen is a universal XPath engine for Java"
 HOMEPAGE="http://www.cafeconleche.org/jaxen/"
 SRC_URI="https://github.com/${PN}-xpath/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 

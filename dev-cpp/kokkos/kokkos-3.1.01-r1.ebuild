@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 -x86"
+KEYWORDS="amd64 -x86"
 IUSE="+openmp test"
 RESTRICT="!test? ( test )"
 
@@ -40,4 +40,15 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	local myctestargs=(
+		# Contains "death tests" which are known/expected(?) to fail
+		# https://github.com/kokkos/kokkos/issues/3033
+		# bug #791514
+		-E "(KokkosCore_UnitTest_OpenMP|KokkosCore_UnitTest_Serial)"
+	)
+
+	cmake_src_test
 }

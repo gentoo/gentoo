@@ -1,5 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2021-11-22)
+# Unmask older libcrypt virtual until libxcrypt is stable on sparc (pending)
+# bug #809410
+-virtual/libcrypt:0/1
 
 # Raúl Porcel <armin76@gentoo.org> (2014-11-17)
 # Mask sys-devel/kgcc64 since >=gcc-4.4 can build 64bit kernels

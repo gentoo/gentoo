@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="A locking API for expiring values while a single thread generates a new value."
+DESCRIPTION="A locking API for expiring values while a single thread generates a new value"
 HOMEPAGE="https://github.com/sqlalchemy/dogpile.cache"
 SRC_URI="mirror://pypi/${PN:0:1}/dogpile.cache/dogpile.cache-${PV}.tar.gz"
 S="${WORKDIR}/dogpile.cache-${PV}"

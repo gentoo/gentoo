@@ -19,7 +19,7 @@ HOMEPAGE="http://www.gnucap.org/"
 IUSE="examples"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 
 # NOTE: readline could be made optional, but I don't see a point for now.
 RDEPEND="sys-libs/readline:="

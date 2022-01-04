@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,8 +22,7 @@ RDEPEND="x11-libs/libXmu
 	media-libs/libpng:0=
 	virtual/jpeg:=
 	x11-apps/sessreg
-	pam? (	sys-libs/pam
-		!x11-misc/slimlock )"
+	pam? ( sys-libs/pam )"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="virtual/pkgconfig"
@@ -43,16 +42,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}-drop-zlib.patch
 	"${FILESDIR}"/${P}-freetype.patch
 	"${FILESDIR}"/${P}-envcpy-bad-pointer-arithmetic.patch
+	"${FILESDIR}"/${PN}-1.3.6-add-missing-libgen_h.patch
 	"${FILESDIR}"/${PN}-1.3.6-gcc11.patch
 )
 
 src_prepare() {
 	cmake_src_prepare
-
-	if use elibc_FreeBSD; then
-		sed -i -e 's/"-DHAVE_SHADOW"/"-DNEEDS_BASENAME"/' CMakeLists.txt \
-			|| die
-	fi
 
 	if use branding; then
 		sed -i -e 's/  default/  slim-gentoo-simple/' slim.conf || die

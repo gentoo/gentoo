@@ -16,7 +16,6 @@
 		<flag name="digilent-spi">Enable support for Digilent iCEblink40 development board</flag>
 		<flag name="drkaiser">Enable Dr. Kaiser programmer</flag>
 		<flag name="dummy">Enable dummy tracing</flag>
-		<flag name="ene-lpc">Enable ENE LPC interface keyboard controller</flag>
 		<flag name="ft2232-spi">Enable ftdi programmer, flashing through FTDI/SPI USB interface</flag>
 		<flag name="gfxnvidia">Enable NVIDIA programmer</flag>
 		<flag name="internal">Enable internal/onboard support</flag>
@@ -26,7 +25,6 @@
 		<flag name="linux-mtd">Enable support for Linux mtd SPI flash devices</flag>
 		<flag name="linux-spi">Enable support for Linux userspace spidev interface</flag>
 		<flag name="lspcon-i2c-spi">Enable support for Parade lspcon USB-C to HDMI protocol translator</flag>
-		<flag name="mec1308">Enable support for Microchip MEC1308 embedded controller</flag>
 		<flag name="mstarddc-spi">Support for SPI flash ROMs accessible through DDC in MSTAR-equipped displays</flag>
 		<flag name="nic3com">Enable 3Com NIC programmer</flag>
 		<flag name="nicintel">Support for Intel NICs</flag>

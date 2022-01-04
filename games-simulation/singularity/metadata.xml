@@ -6,6 +6,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">endgame-singularity</remote-id>
+		<remote-id type="github">singularity/singularity</remote-id>
 	</upstream>
 </pkgmetadata>

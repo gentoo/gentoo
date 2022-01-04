@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 IUSE=""
 
 DEPEND=">=sys-libs/pam-0.64"

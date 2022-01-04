@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,14 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Marek Szuba <marecki@gentoo.org> (2022-01-03)
+# no stable media-libs/rnnoise on this arch yet
+media-sound/pulseeffects rnnoise
+
+# Marek Szuba <marecki@gentoo.org> (2022-01-03)
+# no stable dev-ruby/tty-editor on this arch yet
+app-text/htmltidy test
 
 # Joonas Niilola <juippis@gentoo.org> (2021-08-13)
 # dev-libs/efl is stabilized on x86.

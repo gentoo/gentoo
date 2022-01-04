@@ -3,14 +3,14 @@
 
 EAPI=8
 
-KDE_ORG_COMMIT=c9fde86b0a2440133bc08f4811b6ca793be47f0a
+KDE_ORG_COMMIT=7c6c0030cf80ef7b9ace42996b0e0c3a72f76860
 QT5_MODULE="qtbase"
 inherit qt5-build
 
 DESCRIPTION="Set of components for creating classic desktop-style UIs for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 fi
 
 # keep IUSE defaults in sync with qtgui

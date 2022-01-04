@@ -47,7 +47,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 if [[ ${PV} != *9999* ]] ; then
-	BDEPEND+="verify-sig? ( app-crypt/openpgp-keys-nmap )"
+	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-nmap )"
 fi
 
 PATCHES=(
@@ -122,7 +122,7 @@ src_compile() {
 }
 
 src_install() {
-	LC_ALL=C emake -j1 \
+	LC_ALL=C emake \
 		DESTDIR="${D}" \
 		STRIP=: \
 		nmapdatadir="${EPREFIX}"/usr/share/nmap \

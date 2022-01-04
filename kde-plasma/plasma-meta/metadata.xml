@@ -23,7 +23,6 @@
 		<flag name="legacy-systray">Add support for legacy applications using <pkg>kde-plasma/xembed-sni-proxy</pkg></flag>
 		<flag name="plymouth">Pull in Breeze theme for <pkg>sys-boot/plymouth</pkg></flag>
 		<flag name="pulseaudio">Install Plasma applet for PulseAudio volume management</flag>
-		<flag name="qrcode">Enable support for easy WiFi network sharing using QR codes with <pkg>kde-plasma/plasma-nm</pkg></flag>
 		<flag name="sddm">Pull in the <pkg>x11-misc/sddm</pkg> display manager and system settings module</flag>
 		<flag name="sdk">Pull in <pkg>kde-plasma/plasma-sdk</pkg> for Plasma development</flag>
 		<flag name="smart">Pull in <pkg>kde-plasma/plasma-disks</pkg> for disk health monitoring</flag>

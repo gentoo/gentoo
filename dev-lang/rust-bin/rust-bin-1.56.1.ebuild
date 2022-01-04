@@ -3,11 +3,11 @@
 
 EAPI=7
 
-inherit prefix rust-toolchain toolchain-funcs verify-sig multilib-minimal
+inherit multilib prefix rust-toolchain toolchain-funcs verify-sig multilib-minimal
 
 MY_P="rust-${PV}"
 # curl -L static.rust-lang.org/dist/channel-rust-${PV}.toml 2>/dev/null | grep "xz_url.*rust-src"
-MY_SRC_URI="${RUST_TOOLCHAIN_BASEURL}/2021-11-01/rust-src-${PV}.tar.xz"
+MY_SRC_URI="${RUST_TOOLCHAIN_BASEURL%/}/2021-11-01/rust-src-${PV}.tar.xz"
 
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="https://www.rust-lang.org/"
@@ -17,14 +17,14 @@ SRC_URI="$(rust_all_arch_uris ${MY_P})
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="stable"
-KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="clippy cpu_flags_x86_sse2 doc prefix rls rust-src rustfmt"
 
 DEPEND=""
 RDEPEND=">=app-eselect/eselect-rust-20190311"
 BDEPEND="
 	prefix? ( dev-util/patchelf )
-	verify-sig? ( app-crypt/openpgp-keys-rust )
+	verify-sig? ( sec-keys/openpgp-keys-rust )
 "
 
 REQUIRED_USE="x86? ( cpu_flags_x86_sse2 )"

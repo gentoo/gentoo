@@ -1,3 +1,5 @@
+Originally added in: https://gitweb.gentoo.org/repo/gentoo.git/commit/dev-python/numpy/files?id=e5ce90a04e79f6413604e96e4803cb95ada7c859
+https://bugs.gentoo.org/567938
 diff --git a/numpy/distutils/system_info.py b/numpy/distutils/system_info.py
 index 82e864a5c..1d77e5854 100644
 --- a/numpy/distutils/system_info.py

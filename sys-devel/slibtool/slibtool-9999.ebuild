@@ -20,7 +20,7 @@ else
 
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos"
 
-	BDEPEND="verify-sig? ( app-crypt/openpgp-keys-midipix )"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-midipix )"
 fi
 
 LICENSE="MIT"

@@ -1,0 +1,16 @@
+Avoid adding all kinds of things to the toolchain's flags that within
+Gentoo (Prefix) we really shouldn't, such as sysroot, deployment target,
+arch, etc.
+
+--- a/tools/darwin.jam
++++ b/tools/darwin.jam
+@@ -240,6 +240,9 @@
+         }
+     }
+ 
++    # leave compiler flags etc. up to the toolchain
++    return $(version-feature) ;
++
+     if $(version-feature)
+     {
+         if $(.debug-configuration)

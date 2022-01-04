@@ -16,6 +16,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-lang/erlang-21:0=[ssl]
+	<dev-lang/erlang-24
 "
 # 'mix' tool collides with sci-biology/phylip, bug #537514
 RDEPEND="${DEPEND}

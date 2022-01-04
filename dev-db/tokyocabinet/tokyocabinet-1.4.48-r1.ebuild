@@ -12,7 +12,7 @@ SRC_URI="https://fallabs.com/tokyocabinet/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="bzip2 debug doc examples threads zlib"
+IUSE="bzip2 doc examples threads zlib"
 
 DEPEND="bzip2? ( app-arch/bzip2 )
 	zlib? ( sys-libs/zlib )"
@@ -46,7 +46,6 @@ src_prepare() {
 src_configure() {
 	# we use the "fastest" target without the -O3
 	econf \
-		$(use_enable debug) \
 		$(use_enable bzip2 bzip) \
 		$(use_enable zlib) \
 		$(use_enable threads pthread) \

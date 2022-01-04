@@ -48,7 +48,7 @@ VERSION_ZSTD="1.5.0"
 
 COMMON_URI="
 	https://github.com/g2p/bcache-tools/archive/399021549984ad27bf4a13ae85e458833fe003d7.tar.gz -> bcache-tools-${VERSION_BCACHE_TOOLS}.tar.gz
-	https://dl.bintray.com/boostorg/release/${VERSION_BOOST}/source/boost_${VERSION_BOOST//./_}.tar.bz2
+	https://boostorg.jfrog.io/artifactory/main/release/${VERSION_BOOST}/source/boost_${VERSION_BOOST//./_}.tar.bz2
 	https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v${VERSION_BTRFS_PROGS}.tar.xz
 	https://www.busybox.net/downloads/busybox-${VERSION_BUSYBOX}.tar.bz2
 	mirror://gnu/coreutils/coreutils-${VERSION_COREUTILS}.tar.xz

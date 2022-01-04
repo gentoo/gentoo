@@ -32,7 +32,7 @@ src_compile() {
 }
 
 src_install() {
-	emake prefix=/usr DESTDIR="${ED}" install
+	emake CC="$(tc-getCC)" prefix=/usr DESTDIR="${ED}" install
 	python_fix_shebang "${ED}"
 	python_optimize
 }

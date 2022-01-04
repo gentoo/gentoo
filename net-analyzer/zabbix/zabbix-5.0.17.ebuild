@@ -234,11 +234,11 @@ SRC_URI="https://cdn.zabbix.com/${PN}/sources/stable/$(ver_cut 1-2)/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+agent +agent2 curl frontend gnutls ipv6 java ldap libxml2 mysql odbc openipmi +openssl oracle +postgres proxy server snmp sqlite ssh ssl static"
 REQUIRED_USE="|| ( agent agent2 frontend proxy server )
 	proxy? ( ^^ ( mysql oracle postgres sqlite ) )
-	server? ( ^^ ( mysql oracle postgres ) )
+	server? ( ^^ ( mysql oracle postgres ) !sqlite )
 	ssl? ( ^^ ( gnutls openssl ) )
 	static? ( !oracle !snmp )"
 
@@ -349,10 +349,6 @@ pkg_setup() {
 	fi
 
 	java-pkg-opt-2_pkg_setup
-}
-
-src_prepare() {
-	default
 }
 
 src_configure() {

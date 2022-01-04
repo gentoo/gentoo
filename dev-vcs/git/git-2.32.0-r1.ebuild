@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -46,7 +46,7 @@ if [[ ${PV} != *9999 ]]; then
 			${SRC_URI_KORG}/${PN}-htmldocs-${DOC_VER}.tar.${SRC_URI_SUFFIX}
 			)"
 	[[ "${PV}" == *_rc* ]] || \
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="GPL-2"
@@ -224,13 +224,6 @@ exportmakeopts() {
 
 	if has_version '>=app-text/asciidoc-8.0' ; then
 		myopts+=( ASCIIDOC8=YesPlease )
-	fi
-
-	# Bug 290465:
-	# builtin-fetch-pack.c:816: error: 'struct stat' has no member named 'st_mtim'
-	if [[ "${CHOST}" == *-uclibc* ]] ; then
-		myopts+=( NO_NSEC=YesPlease )
-		use iconv && myopts+=( NEEDS_LIBICONV=YesPlease )
 	fi
 
 	export MY_MAKEOPTS="${myopts[@]}"

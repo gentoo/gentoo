@@ -17,7 +17,7 @@ SRC_URI="ftp://jim.mathematik.uni-kl.de/pub/Math/${MY_PN}/SOURCES/${MY_DIR}/${PN
 
 LICENSE="BSD GPL-2 GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~x86-linux"
+KEYWORDS="amd64 ~ppc x86 ~x86-linux"
 IUSE="emacs examples +readline static-libs"
 
 RDEPEND="dev-libs/gmp:0

@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-{3,4} )
 
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/pipewire/${PN}/-/archive/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Replacement for pipewire-media-session"
@@ -40,7 +40,7 @@ BDEPEND="
 DEPEND="
 	${LUA_DEPS}
 	>=dev-libs/glib-2.62
-	>=media-video/pipewire-0.3.39
+	>=media-video/pipewire-0.3.42:=
 	virtual/libc
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd )
@@ -56,6 +56,7 @@ DOCS=( {NEWS,README}.rst )
 
 src_configure() {
 	local emesonargs=(
+		-Ddoc=disabled # Ebuild not wired up yet (Sphinx, Doxygen?)
 		-Dintrospection=disabled # Only used for Sphinx doc generation
 		-Dsystem-lua=true # We always unbundle everything we can
 		-Dsystem-lua-version=$(ver_cut 1-2 $(lua_get_version))
@@ -75,8 +76,8 @@ pkg_postinst() {
 	if systemd_is_booted ; then
 		ewarn "pipewire-media-session.service is no longer installed. You must switch"
 		ewarn "to wireplumber.service user unit before your next logout/reboot:"
-		ewarn "systemctl --user disable --now pipewire-media-session.service"
-		ewarn "systemctl --user enable --now wireplumber.service"
+		ewarn "systemctl --user disable pipewire-media-session.service"
+		ewarn "systemctl --user --force enable wireplumber.service"
 	else
 		ewarn "Switch to WirePlumber will happen the next time gentoo-pipewire-launcher"
 		ewarn "is started (a replacement for directly calling pipewire binary)."

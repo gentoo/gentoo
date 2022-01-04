@@ -31,9 +31,9 @@ BDEPEND="
 	abi_x86_64? ( ${ASM_DEPEND} )"
 
 PATCHES=(
-	"${FILESDIR}/arm-r1.patch"
-	"${FILESDIR}/neon.patch"
-	"${FILESDIR}/x265-3.3-ppc64.patch"
+	"${FILESDIR}/${PN}-9999-arm.patch"
+	#"${FILESDIR}/neon.patch"
+	"${FILESDIR}/${PN}-9999-ppc64.patch"
 	"${FILESDIR}/tests.patch"
 	"${FILESDIR}/test-ns.patch"
 )

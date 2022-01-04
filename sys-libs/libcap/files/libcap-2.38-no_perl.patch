@@ -14,12 +14,6 @@ Forward ported from libcap-2.26 to libcap-2.28
 Forward ported from libcap-2.28 to libcap-2.38
 
 Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
----
- libcap/Makefile | 26 +++++++++++++++++++-------
- 1 file changed, 19 insertions(+), 7 deletions(-)
-
-diff --git a/libcap/Makefile b/libcap/Makefile
-index 3d6463d..df2526c 100644
 --- a/libcap/Makefile
 +++ b/libcap/Makefile
 @@ -22,6 +22,8 @@ MAJLIBNAME=$(LIBNAME).$(VERSION)
@@ -66,6 +60,3 @@ index 3d6463d..df2526c 100644
  
  $(STACAPLIBNAME): $(CAPOBJS)
  	$(AR) rcs $@ $^
--- 
-2.27.0
-

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -41,10 +41,12 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-pulseaudio )
 	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )
-	X? ( >=x11-libs/libxcb-1.6[${MULTILIB_USEDEP}] )
+	X? (
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		>=x11-libs/libxcb-1.6[${MULTILIB_USEDEP}]
+	)
 	|| (
 		elibc_glibc? ( virtual/libc )
-		elibc_uclibc? ( virtual/libc )
 		dev-libs/libpcre:3
 	)
 	!<media-sound/pulseaudio-15.0-r100

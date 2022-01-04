@@ -42,7 +42,7 @@ BDEPEND=">=virtual/pkgconfig-0-r1
 	test-full? (
 		app-crypt/dieharder
 		>=app-misc/datefudge-1.22
-		dev-libs/softhsm:2[-bindist]
+		dev-libs/softhsm:2[-bindist(-)]
 		net-dialup/ppp
 		net-misc/socat
 	)"

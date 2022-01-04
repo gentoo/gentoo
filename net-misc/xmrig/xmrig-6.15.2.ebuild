@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/xmrig/xmrig/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm64"
+	KEYWORDS="amd64 arm64"
 fi
 
 LICENSE="Apache-2.0 GPL-3+ MIT"

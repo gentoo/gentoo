@@ -130,7 +130,7 @@ _distutils_set_globals() {
 			rdep+=" ${setuptools_dep}"
 			;;
 		pyproject.toml)
-			bdep+=' >=dev-python/pyproject2setuppy-18[${PYTHON_USEDEP}]'
+			bdep+=' >=dev-python/pyproject2setuppy-22[${PYTHON_USEDEP}]'
 			;;
 		*)
 			die "Invalid DISTUTILS_USE_SETUPTOOLS=${DISTUTILS_USE_SETUPTOOLS}"

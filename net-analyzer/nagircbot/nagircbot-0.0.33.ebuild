@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -13,15 +13,14 @@ LICENSE="GPL-2" # GPL-2 only
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-CDEPEND="
-	dev-libs/openssl:0="
-DEPEND="virtual/pkgconfig
-	${CDEPEND}"
-RDEPEND="net-analyzer/nagios-core
-	${CDEPEND}"
+DEPEND="dev-libs/openssl:0="
+RDEPEND="${DEPEND}
+net-analyzer/nagios-core"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-	cp -av Makefile{,.org}
+	default
+	cp -av Makefile{,.org} || die
 
 	sed -i Makefile \
 		-e 's:-lcrypto -lssl:$(shell ${PKG_CONFIG} --libs openssl):g' \
@@ -31,7 +30,7 @@ src_prepare() {
 
 src_compile() {
 	tc-export PKG_CONFIG
-	emake CC=$(tc-getCC) CXX=$(tc-getCXX)
+	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)"
 }
 
 src_install() {

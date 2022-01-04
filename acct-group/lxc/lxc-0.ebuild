@@ -6,4 +6,4 @@ EAPI=7
 inherit acct-group
 
 ACCT_GROUP_ID=358
-DESCRIPTION="Group for app-emulation/lxc"
+DESCRIPTION="Group for app-containers/lxc"

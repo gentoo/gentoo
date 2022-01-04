@@ -35,6 +35,7 @@ src_prepare() {
 	eapply -p0 "${FILESDIR}"/${P}-zlib-1.2.5.2.patch #405323
 	eapply "${FILESDIR}"/${P}-minor-typo.patch #580290
 	eapply "${FILESDIR}"/${P}-openssl-1.1-compatibility.patch
+	eapply "${FILESDIR}"/${P}-missing-includes.patch
 
 	eapply_user
 

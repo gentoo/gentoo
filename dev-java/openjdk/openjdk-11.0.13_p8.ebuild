@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools check-reqs flag-o-matic java-pkg-2 java-vm-2 multiprocessing pax-utils toolchain-funcs
+inherit check-reqs flag-o-matic java-pkg-2 java-vm-2 multiprocessing pax-utils toolchain-funcs
 
 # we need -ga tag to fetch tarball and unpack it, but exact number everywhere else to
 # set build version properly
@@ -15,7 +15,7 @@ HOMEPAGE="https://openjdk.java.net"
 SRC_URI="https://github.com/${PN}/jdk${SLOT}u-dev/archive/refs/tags/jdk-${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm arm64 ppc64"
 
 IUSE="alsa cups debug doc examples gentoo-vm headless-awt javafx +jbootstrap +pch selinux source systemtap"
 
@@ -178,6 +178,11 @@ src_configure() {
 	)
 
 	if use javafx; then
+		# this is not useful for users, just for upstream developers
+		# build system compares mesa version in md file
+		# https://bugs.gentoo.org/822612
+		export LEGAL_EXCLUDES=mesa3d.md
+
 		local zip="${EPREFIX%/}/usr/$(get_libdir)/openjfx-${SLOT}/javafx-exports.zip"
 		if [[ -r ${zip} ]]; then
 			myconf+=( --with-import-modules="${zip}" )
@@ -206,6 +211,7 @@ src_compile() {
 		JOBS=$(makeopts_jobs)
 		LOG=debug
 		CFLAGS_WARNINGS_ARE_ERRORS= # No -Werror
+		NICE= # Use PORTAGE_NICENESS, don't adjust further down
 		$(usex doc docs '')
 		$(usex jbootstrap bootcycle-images product-images)
 	)

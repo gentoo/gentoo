@@ -12,7 +12,7 @@ SRC_URI="https://github.com/jenisys/parse_type/archive/refs/tags/v${PV}.tar.gz -
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 RDEPEND="
 	dev-python/parse[${PYTHON_USEDEP}]

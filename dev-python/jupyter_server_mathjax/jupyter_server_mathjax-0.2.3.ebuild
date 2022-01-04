@@ -24,3 +24,11 @@ BDEPEND="
 RDEPEND="dev-python/jupyter_server[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
+
+python_prepare_all() {
+	# Don't try (and fail) to fetch things from the internet with npm
+	# https://bugs.gentoo.org/820317
+	sed -i -e '/install_npm(here)/d' setup.py || die
+
+	distutils-r1_python_prepare_all
+}

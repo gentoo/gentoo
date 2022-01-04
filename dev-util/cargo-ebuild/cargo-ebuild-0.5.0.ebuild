@@ -136,7 +136,7 @@ CRATES="
 
 inherit cargo
 
-DESCRIPTION="Generates an ebuild for a package using the in-tree eclasses."
+DESCRIPTION="Generates an ebuild for a package using the in-tree eclasses"
 HOMEPAGE="https://gitweb.gentoo.org/proj/cargo-ebuild.git"
 SRC_URI="https://gitweb.gentoo.org/proj/${PN}.git/snapshot/${P}.tar.bz2
 	$(cargo_crate_uris)"

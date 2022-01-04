@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 
 inherit toolchain-funcs libtool flag-o-matic bash-completion-r1 usr-ldscript \
 	pam python-r1 multilib-minimal multiprocessing systemd
@@ -25,7 +25,7 @@ HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/ https://github.com/
 
 LICENSE="GPL-2 GPL-3 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
-IUSE="audit build caps +cramfs cryptsetup fdformat +hardlink kill +logger magic ncurses nls pam python +readline selinux slang static-libs su +suid systemd test tty-helpers udev unicode userland_GNU"
+IUSE="audit build caps +cramfs cryptsetup fdformat +hardlink kill +logger magic ncurses nls pam python +readline rtas selinux slang static-libs +su +suid systemd test tty-helpers udev unicode userland_GNU"
 
 # Most lib deps here are related to programs rather than our libs,
 # so we rarely need to specify ${MULTILIB_USEDEP}.
@@ -42,10 +42,9 @@ RDEPEND="
 	)
 	nls? ( virtual/libintl[${MULTILIB_USEDEP}] )
 	pam? ( sys-libs/pam )
-	ppc? ( sys-libs/librtas )
-	ppc64? ( sys-libs/librtas )
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
+	rtas? ( sys-libs/librtas )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
 	slang? ( sys-libs/slang )
 	!build? ( systemd? ( sys-apps/systemd ) )
@@ -80,7 +79,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	"
 fi
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) su? ( pam )"
 RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
@@ -154,6 +153,9 @@ multilib_src_configure() {
 	# Undo bad ncurses handling by upstream. Fall back to pkg-config. #601530
 	export NCURSES6_CONFIG=false NCURSES5_CONFIG=false
 	export NCURSESW6_CONFIG=false NCURSESW5_CONFIG=false
+
+	# Avoid automagic dependency on ppc*
+	export ac_cv_lib_rtas_rtas_get_sysparm=$(usex rtas)
 
 	# configure args shared by python and non-python builds
 	local commonargs=(
@@ -305,8 +307,11 @@ multilib_src_install_all() {
 	fi
 
 	if use pam ; then
+		# See https://github.com/util-linux/util-linux/blob/master/Documentation/PAM-configuration.txt
 		newpamd "${FILESDIR}/runuser.pamd" runuser
 		newpamd "${FILESDIR}/runuser-l.pamd" runuser-l
+
+		newpamd "${FILESDIR}/su-l.pamd" su-l
 	fi
 
 	# Note:

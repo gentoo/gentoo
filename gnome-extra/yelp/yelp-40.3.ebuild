@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Yelp"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
 RDEPEND="
 	app-arch/bzip2:=

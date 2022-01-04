@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit toolchain-funcs
-
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gcc-config.git"
 	inherit git-r3
@@ -15,6 +13,7 @@ fi
 
 DESCRIPTION="Utility to manage compilers"
 HOMEPAGE="https://gitweb.gentoo.org/proj/gcc-config.git/"
+
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+cc-wrappers +native-symlinks"

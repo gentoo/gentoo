@@ -675,6 +675,7 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 			fi
 			;;
 		ia64*)		echo ia64;;
+		loongarch*)	ninj loongarch loong;;
 		m68*)		echo m68k;;
 		metag*)		echo metag;;
 		microblaze*)	echo microblaze;;
@@ -752,6 +753,7 @@ tc-endian() {
 		hppa*)		echo big;;
 		i?86*)		echo little;;
 		ia64*)		echo little;;
+		loongarch*)	echo little;;
 		m68*)		echo big;;
 		mips*l*)	echo little;;
 		mips*)		echo big;;

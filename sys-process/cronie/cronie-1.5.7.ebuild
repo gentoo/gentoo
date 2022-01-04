@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,6 @@ DEPEND="
 		!sys-process/anacron
 		!sys-process/systemd-cron
 		elibc_musl? ( sys-libs/obstack-standalone )
-		elibc_uclibc? ( sys-libs/obstack-standalone )
 	)
 "
 RDEPEND="${DEPEND}
@@ -53,7 +52,7 @@ src_configure() {
 	)
 
 	if use anacron ; then
-		if use elibc_musl || use elibc_uclibc ; then
+		if use elibc_musl ; then
 			append-cflags "-lobstack"
 		fi
 	fi

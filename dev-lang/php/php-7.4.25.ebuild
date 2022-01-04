@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -146,6 +146,7 @@ PHP_MV="$(ver_cut 1)"
 
 PATCHES=(
 	"${FILESDIR}"/php-iodbc-header-location.patch
+	"${FILESDIR}/php-icu-70.patch"
 )
 
 php_install_ini() {
@@ -261,7 +262,7 @@ src_configure() {
 		$(use_with gmp gmp "${EPREFIX}/usr")
 		$(use_with mhash mhash "${EPREFIX}/usr")
 		$(use_with iconv iconv \
-			$(use elibc_glibc || use elibc_musl || use elibc_FreeBSD || echo "${EPREFIX}/usr"))
+			$(use elibc_glibc || use elibc_musl || echo "${EPREFIX}/usr"))
 		$(use_enable intl)
 		$(use_enable ipv6)
 		$(use_enable json)

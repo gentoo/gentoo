@@ -17,11 +17,10 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 BDEPEND="
 	test? (
-		dev-python/cryptography[${PYTHON_USEDEP}]
 		!hppa? ( !ia64? (
 			$(python_gen_cond_dep '
 				dev-python/greenlet[${PYTHON_USEDEP}]
@@ -30,11 +29,23 @@ BDEPEND="
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/pytest-xprocess[${PYTHON_USEDEP}]
 		dev-python/watchdog[${PYTHON_USEDEP}]
+		!alpha? ( !hppa? ( !ia64? (
+			dev-python/cryptography[${PYTHON_USEDEP}]
+		) ) )
 	)"
 
 distutils_enable_tests pytest
 
 python_test() {
+	local EPYTEST_DESELECT=()
+	if ! has_version "dev-python/cryptography[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			"tests/test_serving.py::test_server[https]"
+			tests/test_serving.py::test_ssl_dev_cert
+			tests/test_serving.py::test_ssl_object
+		)
+	fi
+
 	distutils_install_for_testing --via-venv
 
 	# the default portage tempdir is too long for AF_UNIX sockets

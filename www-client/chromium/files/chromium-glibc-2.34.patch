@@ -26,3 +26,25 @@ index ca353c4..5cdabcf 100644
  
    // Only set an alternative stack if there isn't already one, or if the current
    // one is too small.
+diff --git a/sandbox/linux/services/credentials.cc b/sandbox/linux/services/credentials.cc
+index ca6b595..1c1ee42 100644
+--- a/sandbox/linux/services/credentials.cc
++++ b/sandbox/linux/services/credentials.cc
+@@ -11,6 +11,7 @@
+ #include <stddef.h>
+ #include <stdint.h>
+ #include <stdio.h>
++#include <string.h>
+ #include <sys/syscall.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
+@@ -100,7 +101,8 @@ bool ChrootToSafeEmptyDir() {
+   // TODO(crbug.com/1247458) Broken in MSan builds after LLVM f1bb30a4956f.
+   clone_flags |= CLONE_VM | CLONE_VFORK | CLONE_SETTLS;
+ 
+-  char tls_buf[PTHREAD_STACK_MIN] = {0};
++  char tls_buf[PTHREAD_STACK_MIN];
++  memset(tls_buf, 0, PTHREAD_STACK_MIN);
+   tls = tls_buf;
+ #endif
+ 

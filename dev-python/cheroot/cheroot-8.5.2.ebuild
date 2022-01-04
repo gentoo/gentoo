@@ -29,11 +29,13 @@ BDEPEND="
 		dev-python/portend[${PYTHON_USEDEP}]
 		dev-python/pytest-forked[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-1.11.0[${PYTHON_USEDEP}]
-		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		dev-python/requests-toolbelt[${PYTHON_USEDEP}]
 		dev-python/requests-unixsocket[${PYTHON_USEDEP}]
-		dev-python/trustme[${PYTHON_USEDEP}]
 		dev-python/urllib3[${PYTHON_USEDEP}]
+		!ia64? (
+			dev-python/pyopenssl[${PYTHON_USEDEP}]
+			dev-python/trustme[${PYTHON_USEDEP}]
+		)
 	)
 "
 
@@ -55,6 +57,15 @@ python_prepare_all() {
 }
 
 python_test() {
+	local EPYTEST_IGNORE=()
+	if ! has_version "dev-python/pyopenssl[${PYTHON_USEDEP}]" ||
+		! has_version "dev-python/trustme[${PYTHON_USEDEP}]"
+	then
+		EPYTEST_IGNORE+=(
+			lib/cheroot/test/test_ssl.py
+		)
+	fi
+
 	cd "${BUILD_DIR}" || die
 	epytest
 }

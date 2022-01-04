@@ -22,7 +22,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
 SLOT="${PYVER}/${PYVER}m"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="bluetooth build examples gdbm hardened +ncurses +readline +sqlite +ssl test tk wininst +xml"
 RESTRICT="!test? ( test )"
 
@@ -56,7 +56,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	virtual/awk
 	virtual/pkgconfig
-	verify-sig? ( app-crypt/openpgp-keys-python )
+	verify-sig? ( sec-keys/openpgp-keys-python )
 	!sys-devel/gcc[libffi(-)]"
 RDEPEND+=" !build? ( app-misc/mime-types )"
 

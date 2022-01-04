@@ -1,9 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
+
 inherit python-single-r1
 
 DESCRIPTION="General purpose formula parser & interpreter"
@@ -14,13 +15,13 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/ixion/ixion.git"
 	inherit git-r3 autotools
 else
-	MDDS_SLOT="1/1.5"
+	MDDS_SLOT="1/2.0"
 	SRC_URI="https://kohei.us/files/ixion/src/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="MIT"
-SLOT="0/0.16" # based on SONAME of libixion.so
+SLOT="0/0.17" # based on SONAME of libixion.so
 IUSE="debug python +threads"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

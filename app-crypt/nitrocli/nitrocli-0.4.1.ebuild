@@ -70,13 +70,13 @@ winapi-x86_64-pc-windows-gnu-0.4.0
 
 inherit bash-completion-r1 cargo
 
-DESCRIPTION="A command line tool for interacting with Nitrokey devices."
+DESCRIPTION="A command line tool for interacting with Nitrokey devices"
 HOMEPAGE="https://github.com/d-e-s-o/nitrocli"
 SRC_URI="$(cargo_crate_uris)"
 
 LICENSE="Apache-2.0 BSD-2 CC0-1.0 GPL-3+ LGPL-3 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 
 DEPEND="
 	dev-libs/hidapi

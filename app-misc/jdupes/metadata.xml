@@ -13,6 +13,10 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="dedupe">Enable deduplication support</flag>
+		<flag name="lowmem">Enable support for low-memory operation</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">jbruchon/jdupes</remote-id>
 	</upstream>

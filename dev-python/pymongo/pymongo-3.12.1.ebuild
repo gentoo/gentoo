@@ -30,7 +30,7 @@ BDEPEND="
 DISTUTILS_IN_SOURCE_BUILD=1
 
 distutils_enable_sphinx doc
-distutils_enable_tests nose
+distutils_enable_tests unittest
 
 reqcheck() {
 	if use test; then

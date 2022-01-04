@@ -20,8 +20,11 @@ fi
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="doc jack ladspa +lv2"
-REQUIRED_USE="|| ( jack ladspa lv2 )"
+IUSE="doc jack ladspa +lv2 test"
+REQUIRED_USE="|| ( jack ladspa lv2 )
+	test? ( jack )"
+
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/expat
@@ -40,6 +43,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.29_armv8a-dsp.patch
+)
 
 src_compile() {
 	use doc && MODULES+="doc"

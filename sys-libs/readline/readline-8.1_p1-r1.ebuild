@@ -6,7 +6,7 @@ EAPI=7
 inherit flag-o-matic multilib multilib-minimal preserve-libs toolchain-funcs usr-ldscript
 
 # Official patches
-# See ftp://ftp.cwru.edu/pub/bash/readline-7.0-patches/
+# See ftp://ftp.cwru.edu/pub/bash/readline-8.1-patches/
 PLEVEL="${PV##*_p}"
 MY_PV="${PV/_p*}"
 MY_PV="${MY_PV/_/-}"

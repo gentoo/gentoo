@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -220,13 +220,6 @@ exportmakeopts() {
 
 	if has_version '>=app-text/asciidoc-8.0' ; then
 		myopts+=( ASCIIDOC8=YesPlease )
-	fi
-
-	# Bug 290465:
-	# builtin-fetch-pack.c:816: error: 'struct stat' has no member named 'st_mtim'
-	if [[ "${CHOST}" == *-uclibc* ]] ; then
-		myopts+=( NO_NSEC=YesPlease )
-		use iconv && myopts+=( NEEDS_LIBICONV=YesPlease )
 	fi
 
 	export MY_MAKEOPTS="${myopts[@]}"
@@ -513,7 +506,7 @@ src_install() {
 	fi
 
 	if ! use prefix ; then
-		newinitd "${FILESDIR}"/git-daemon-r1.initd git-daemon
+		newinitd "${FILESDIR}"/git-daemon-r2.initd git-daemon
 		newconfd "${FILESDIR}"/git-daemon.confd git-daemon
 		systemd_newunit "${FILESDIR}/git-daemon_at-r1.service" \
 			"git-daemon@.service"

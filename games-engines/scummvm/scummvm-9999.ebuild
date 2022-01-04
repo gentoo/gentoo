@@ -11,14 +11,14 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/scummvm/scummvm"
 else
-	SRC_URI="https://scummvm.org/frs/scummvm/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+	SRC_URI="https://downloads.scummvm.org/frs/scummvm/${PV}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 	S="${WORKDIR}/${PN}-${P}"
 fi
 
 LICENSE="GPL-2+ LGPL-2.1 BSD GPL-3-with-font-exception"
 SLOT="0"
-IUSE="a52 aac alsa debug flac fluidsynth fribidi glew +gtk jpeg lua mpeg2 mp3 +net opengl png sndio speech theora truetype unsupported vorbis zlib"
+IUSE="a52 aac alsa debug flac fluidsynth fribidi gif +gtk jpeg lua mpeg2 mp3 +net opengl png sndio speech theora truetype unsupported vorbis zlib"
 RESTRICT="test"  # it only looks like there's a test there #77507
 
 RDEPEND="
@@ -29,6 +29,7 @@ RDEPEND="
 	flac? ( media-libs/flac )
 	fluidsynth? ( media-sound/fluidsynth:= )
 	fribidi? ( dev-libs/fribidi )
+	gif? ( media-libs/giflib )
 	gtk? (
 		dev-libs/glib:2
 		x11-libs/gtk+:3
@@ -46,7 +47,6 @@ RDEPEND="
 			media-libs/mesa[gles2]
 			media-libs/mesa[gles1]
 		)
-		glew? ( media-libs/glew:0= )
 	)
 	png? ( media-libs/libpng:0 )
 	sndio? ( media-sound/sndio:= )
@@ -102,7 +102,7 @@ src_configure() {
 		$(use_enable flac)
 		$(usex fluidsynth '' --disable-fluidsynth)
 		$(use_enable fribidi)
-		$(use opengl && use_enable glew)
+		$(use_enable gif)
 		$(use_enable gtk)
 		$(use_enable jpeg)
 		$(use_enable lua)

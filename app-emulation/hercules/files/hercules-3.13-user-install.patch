@@ -1,0 +1,21 @@
+the ebuild will handle these, so no need to do it directly which will fail when
+building as non-root.
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -730,15 +730,6 @@ endif
+ 	(cd $(DESTDIR)$(bindir); @LN_S@ ./dasdcopy$(EXEEXT) cfba2fba$(EXEEXT))
+ 	rm -f $(DESTDIR)$(bindir)/cckd2ckd$(EXEEXT)
+ 	(cd $(DESTDIR)$(bindir); @LN_S@ ./dasdcopy$(EXEEXT) cckd2ckd$(EXEEXT))
+-if SETUID_HERCIFC
+-	chown root $(DESTDIR)$(bindir)/hercifc
+-if HERCIFC_GROUPSET
+-	chgrp $(HERCIFC_GROUPNAME) $(DESTDIR)$(bindir)/hercifc
+-endif
+-	chmod 0750 $(DESTDIR)$(bindir)/hercifc
+-	chmod +s   $(DESTDIR)$(bindir)/hercifc
+-	rm                             hercifc
+-endif
+ 
+ uninstall-local:
+ 

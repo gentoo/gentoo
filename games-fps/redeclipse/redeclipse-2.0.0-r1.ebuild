@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/base/releases/download/v${PV}/${PN}_${PV}_nix.
 # According to doc/license.txt file
 LICENSE="ZLIB CC-BY-SA-4.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="dedicated"
 
 DEPEND="!dedicated? (

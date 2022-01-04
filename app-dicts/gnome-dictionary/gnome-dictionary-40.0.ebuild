@@ -24,6 +24,7 @@ BDEPEND="
 	app-text/docbook-xml-dtd:4.3
 	dev-libs/libxslt
 	dev-util/glib-utils
+	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "

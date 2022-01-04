@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools git-r3
 
 DESCRIPTION="a terminal emulator based off of libvte that aims to be fast and lightweight"
-HOMEPAGE="https://lilyterm.luna.com.tw"
+HOMEPAGE="https://lilyterm.luna.com.tw https://github.com/Tetralet/LilyTerm"
 EGIT_REPO_URI="https://github.com/Tetralet/LilyTerm"
 
 SLOT="0"

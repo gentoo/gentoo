@@ -14,7 +14,7 @@ DESCRIPTION="Incidence editor for korganizer"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE=""
 
 RDEPEND="
@@ -58,6 +58,11 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	test? ( >=kde-apps/akonadi-${PVCUT}:5[tools] )
 "
+
+src_prepare() {
+	ecm_src_prepare
+	ecm_punt_bogus_dep KF5 GrantleeTheme
+}
 
 src_configure() {
 	local mycmakeargs=(

@@ -1,12 +1,14 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit flag-o-matic multilib toolchain-funcs
+EAPI=7
+
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="the Utah Raster Toolkit is a library for dealing with raster images"
 HOMEPAGE="https://www.cs.utah.edu/gdc/projects/urt/"
 SRC_URI="ftp://ftp.iastate.edu/pub/utah-raster/${P}.tar.Z"
+S="${WORKDIR}"
 
 LICENSE="URT gif? ( free-noncomm )"
 SLOT="0/3.1b-r2"
@@ -24,11 +26,6 @@ DEPEND="
 	X? ( x11-base/xorg-proto )
 "
 
-S=${WORKDIR}
-
-urt_config() {
-	use $1 && echo "#define $2" || echo "##define $2"
-}
 PATCHES=(
 	"${FILESDIR}"/${P}-rle-fixes.patch
 	"${FILESDIR}"/${P}-compile-updates.patch
@@ -40,13 +37,17 @@ PATCHES=(
 	"${FILESDIR}"/${P}-implicit-function-declarations.patch
 )
 
+urt_config() {
+	use $1 && echo "#define $2" || echo "##define $2"
+}
+
 src_prepare() {
-	rm -f bin/README
+	rm -f bin/README || die
 
 	default
 
 	# punt bogus manpage #109511
-	rm -f man/man1/template.1
+	rm -f man/man1/template.1 || die
 
 	# stupid OS X declares a stack_t type already #107428
 	sed -i -e 's:stack_t:_urt_stack:g' tools/clock/rleClock.c || die
@@ -56,9 +57,9 @@ src_prepare() {
 src_configure() {
 	append-cflags -fPIC
 
-	sed -i -e '/^CFLAGS/s: -O : :' makefile.hdr
+	sed -i -e '/^CFLAGS/s: -O : :' makefile.hdr || die
 
-	cp "${FILESDIR}"/gentoo-config config/gentoo
+	cp "${FILESDIR}"/gentoo-config config/gentoo || die
 	cat >> config/gentoo <<-EOF
 	$(urt_config X X11)
 	$(urt_config postscript POSTSCRIPT)
@@ -69,7 +70,7 @@ src_configure() {
 	$(has_version media-libs/giflib && urt_config gif GIF)
 	EOF
 
-	./Configure config/gentoo || die "config"
+	./Configure config/gentoo || die "configure failed"
 }
 
 src_compile() {
@@ -82,7 +83,7 @@ src_compile() {
 src_install() {
 	mkdir -p man-dest/man{1,3,5}
 	# this just installs it into some local dirs
-	make install || die
+	emake install
 
 	use tools && dobin bin/*
 

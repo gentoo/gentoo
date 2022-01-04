@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit toolchain-funcs
-
 MY_PN="${PN/progs/demos}"
 MY_P="${MY_PN}-${PV}"
 
@@ -33,6 +31,8 @@ DEPEND="${RDEPEND}
 	media-libs/glew
 	virtual/glu
 	x11-base/xorg-proto"
+BDEPEND="sys-apps/grep
+	sys-apps/file"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-improve-printing.patch
@@ -59,10 +59,15 @@ src_compile() {
 }
 
 src_install() {
-	dobin src/xdemos/{glxgears,glxinfo}
+	local demo='src/xdemos'
 	if use egl; then
-		dobin src/egl/opengl/egl{info,gears_x11}
+		demo="${demo} src/egl/opengl"
 
-		use gles2 && dobin src/egl/opengles2/es2{_info,gears_x11}
+		use gles2 && demo="${demo} src/egl/opengles2"
 	fi
+
+	# Ensure only the binaries are installed and not a similarly named wrapper script
+	find ${demo} -type f -print0 |
+		xargs -0 file | grep executable | grep ELF | cut -f 1 -d : |
+		xargs -I '{}' dobin '{}' || die
 }

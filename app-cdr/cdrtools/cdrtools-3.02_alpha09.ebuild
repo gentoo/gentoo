@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit fcaps multilib toolchain-funcs flag-o-matic gnuconfig
+inherit fcaps toolchain-funcs flag-o-matic gnuconfig
 
 MY_P="${P/_alpha/a}"
 
@@ -18,8 +18,7 @@ IUSE="acl caps nls unicode"
 
 RDEPEND="acl? ( virtual/acl )
 	caps? ( sys-libs/libcap )
-	nls? ( virtual/libintl )
-	!app-cdr/cdrkit"
+	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	x11-misc/makedepend
 	nls? ( >=sys-devel/gettext-0.18.1.1 )"
@@ -35,7 +34,6 @@ FILECAPS=(
 cdrtools_os() {
 	local os="linux"
 	[[ ${CHOST} == *-darwin* ]] && os="mac-os10"
-	[[ ${CHOST} == *-freebsd* ]] && os="freebsd"
 	echo "${os}"
 }
 
@@ -43,12 +41,6 @@ src_prepare() {
 	default
 
 	gnuconfig_update
-
-	# This fixes a clash with clone() on uclibc.  Upstream isn't
-	# going to include this so let's try to carry it forward.
-	# Contact me if it needs updating.  Bug #486782.
-	# Anthony G. Basile <blueness@gentoo.org>.
-	use elibc_uclibc && eapply "${FILESDIR}"/${PN}-fix-clone-uclibc.patch
 
 	# Remove profiled make files.
 	find -name '*_p.mk' -delete || die "delete *_p.mk"

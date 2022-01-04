@@ -1,0 +1,17 @@
+Repeated calls to AM_INIT_AUTOMAKE made fatal in 1.16.5:
+https://git.savannah.gnu.org/cgit/automake.git/commit/?id=f4a3a70f69e1dbccb6578f39ef47835098a04624.
+
+https://bugs.gentoo.org/818094
+https://bugs.gentoo.org/827973
+
+--- a/bin/configure.ac
++++ b/bin/configure.ac
+@@ -4,8 +4,6 @@ AM_INIT_AUTOMAKE([foreign])
+ AM_MAINTAINER_MODE
+ AC_CANONICAL_HOST
+ 
+-AM_INIT_AUTOMAKE
+-
+ AC_EXEEXT
+ AC_OBJEXT
+ 

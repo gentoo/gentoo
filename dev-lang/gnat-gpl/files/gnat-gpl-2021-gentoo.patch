@@ -39,3 +39,13 @@
 +  %{fdump-scos:-fpreserve-decisions-generic}\
    %{fprofile-arcs|fprofile-generate*|coverage:\
 -    %{!fprofile-update=singel:\
+--- a/gcc-10-2021-20210519-19A74-src/config/cet.m4	2022-01-01 11:18:09.663425422 +0100
++++ b/gcc-10-2021-20210519-19A74-src/config/cet.m4	2022-01-01 11:18:14.809345911 +0100
+@@ -62,7 +62,6 @@
+   i[[34567]]86-*-linux* | x86_64-*-linux*)
+     may_have_cet=yes
+     save_CFLAGS="$CFLAGS"
+-    CFLAGS="$CFLAGS -fcf-protection"
+     case "$enable_cet" in
+       auto)
+ 	# Check if target supports multi-byte NOPs

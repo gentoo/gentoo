@@ -13,7 +13,7 @@ HOMEPAGE="https://openjdk.java.net"
 SRC_URI="https://github.com/openjdk/jdk${SLOT}u/archive/refs/tags/jdk-${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm arm64 ppc64"
 
 IUSE="alsa cups debug doc examples gentoo-vm headless-awt javafx +jbootstrap +pch selinux source systemtap"
 
@@ -205,6 +205,7 @@ src_compile() {
 		JOBS=$(makeopts_jobs)
 		LOG=debug
 		CFLAGS_WARNINGS_ARE_ERRORS= # No -Werror
+		NICE= # Use PORTAGE_NICENESS, don't adjust further down
 		$(usex doc docs '')
 		$(usex jbootstrap bootcycle-images product-images)
 	)

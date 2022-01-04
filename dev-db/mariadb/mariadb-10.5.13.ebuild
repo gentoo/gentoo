@@ -18,7 +18,7 @@ SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
 HOMEPAGE="https://mariadb.org/"
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2 LGPL-2.1+"
-SLOT="10.5/${SUBSLOT:-0}"
+SLOT="$(ver_cut 1-2)/${SUBSLOT:-0}"
 IUSE="+backup bindist columnstore cracklib debug extraengine galera innodb-lz4
 	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 mroonga
 	numa odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
@@ -498,19 +498,12 @@ src_test() {
 	}
 
 	local TESTDIR="${BUILD_DIR}/mysql-test"
-	local retstatus_unit
 	local retstatus_tests
 
 	if ! use server ; then
 		einfo "Skipping server tests due to minimal build."
 		return 0
 	fi
-
-	einfo ">>> Test phase [test]: ${CATEGORY}/${PF}"
-
-	# Run CTest (test-units)
-	cmake_src_test
-	retstatus_unit=$?
 
 	# Ensure that parallel runs don't die
 	export MTR_BUILD_THREAD="$((${RANDOM} % 100))"
@@ -557,6 +550,10 @@ src_test() {
 
 	# create directories because mysqladmin might run out of order
 	mkdir -p "${T}"/var-tests{,/log} || die
+
+	if [[ ! -f "${S}/mysql-test/unstable-tests" ]] ; then
+		touch "${S}"/mysql-test/unstable-tests || die
+	fi
 
 	cp "${S}"/mysql-test/unstable-tests "${T}/disabled.def" || die
 
@@ -611,10 +608,9 @@ src_test() {
 	pkill -9 -f "${S}/sql" 2>/dev/null
 
 	local failures=""
-	[[ $retstatus_unit -eq 0 ]] || failures="${failures} test-unit"
-	[[ $retstatus_tests -eq 0 ]] || failures="${failures} tests"
+	[[ ${retstatus_tests} -eq 0 ]] || failures="${failures} tests"
 
-	[[ -z "$failures" ]] || die "Test failures: $failures"
+	[[ -z "${failures}" ]] || die "Test failures: ${failures}"
 	einfo "Tests successfully completed"
 }
 

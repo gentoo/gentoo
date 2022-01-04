@@ -168,3 +168,27 @@ index 3d64939584..d2bfbf958c 100644
  void criu_set_notify_cb(int (*cb)(char *action, criu_notify_arg_t na));
  
  /* Get pid of root task. 0 if not available */
+From: Radostin Stoyanov <radostin@redhat.com>
+Date: Fri, 3 Sep 2021 14:14:41 +0100
+Subject: [PATCH] lib: install images/rpc.pb-c.h
+
+Since commit 1c25914 compiling crun with libcriu also requires
+/usr/include/criu/rpc.pb-c.h
+
+Signed-off-by: Radostin Stoyanov <radostin@redhat.com>
+---
+ lib/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/Makefile b/lib/Makefile
+index f9b66701e0..575a7bad3f 100644
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -1,6 +1,6 @@
+ CRIU_SO			:= libcriu.so
+ CRIU_A			:= libcriu.a
+-UAPI_HEADERS		:= lib/c/criu.h images/rpc.proto criu/include/version.h
++UAPI_HEADERS		:= lib/c/criu.h images/rpc.proto images/rpc.pb-c.h criu/include/version.h
+ 
+ #
+ # File to keep track of files installed by setup.py

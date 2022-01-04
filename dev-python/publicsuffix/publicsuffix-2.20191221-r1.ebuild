@@ -8,7 +8,7 @@ inherit distutils-r1
 
 MY_PV=release-2.2019-12-21
 
-DESCRIPTION="Get a public suffix for a domain name using the Public Suffix List."
+DESCRIPTION="Get a public suffix for a domain name using the Public Suffix List"
 HOMEPAGE="https://github.com/nexB/python-publicsuffix2"
 SRC_URI="
 	https://github.com/nexB/python-publicsuffix2/archive/${MY_PV}.tar.gz

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit cmake llvm llvm.org python-any-r1
+inherit cmake flag-o-matic llvm llvm.org python-any-r1
 
 DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="https://llvm.org/"
@@ -50,6 +50,8 @@ src_unpack() {
 src_configure() {
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
+
+	use elibc_musl && append-ldflags -Wl,-z,stack-size=2097152
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON

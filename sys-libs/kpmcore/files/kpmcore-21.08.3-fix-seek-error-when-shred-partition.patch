@@ -1,0 +1,27 @@
+From e9fc875c5e233401afd12f54ab0472c66ff6fdff Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andrius=20=C5=A0tikonas?= <andrius@stikonas.eu>
+Date: Fri, 12 Nov 2021 01:02:15 +0000
+Subject: [PATCH] Fix seek error when filling device with random data or
+ zeroes.
+
+---
+ src/util/externalcommandhelper.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/util/externalcommandhelper.cpp b/src/util/externalcommandhelper.cpp
+index 6e61aba..0fa400d 100644
+--- a/src/util/externalcommandhelper.cpp
++++ b/src/util/externalcommandhelper.cpp
+@@ -80,7 +80,8 @@ bool ExternalCommandHelper::readData(const QString& sourceDevice, QByteArray& bu
+         return false;
+     }
+ 
+-    if (!device.seek(offset)) {
++    // Sequential devices such as /dev/zero or /dev/urandom return false on seek().
++    if (!device.isSequential() && !device.seek(offset)) {
+         qCritical() << xi18n("Could not seek position %1 on device <filename>%2</filename>.", offset, sourceDevice);
+         return false;
+     }
+-- 
+GitLab
+

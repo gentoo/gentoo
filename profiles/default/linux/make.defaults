@@ -53,3 +53,8 @@ VIDEO_CARDS="dummy fbdev v4l"
 # Note that adding LDFLAGS="-Wl,-O1 ${LDFLAGS}" breaks dev-util/boost-build
 # because of whitespace.
 LDFLAGS="-Wl,-O1 -Wl,--as-needed"
+
+# Mike Gilbert <floppym@gentoo.org> (2021-12-17)
+# Prevent automagic use of 64-bit time_t.
+# https://bugs.gentoo.org/828001
+gl_cv_type_time_t_bits_macro="no"

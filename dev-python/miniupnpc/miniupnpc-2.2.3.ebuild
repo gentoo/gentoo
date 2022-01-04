@@ -14,12 +14,12 @@ SRC_URI="http://miniupnp.free.fr/files/${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 RDEPEND=">=net-libs/miniupnpc-${PV}:0="
 DEPEND="${RDEPEND}"
-BDEPEND="verify-sig? ( app-crypt/openpgp-keys-miniupnp )"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-miniupnp )"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/miniupnp.asc
 

@@ -63,7 +63,7 @@ pkg_postinst() {
 	elog ""
 	optfeature "QEMU Support" "app-emulation/qemu"
 	optfeature "Virtualbox Support" "app-emulation/virtualbox"
-	optfeature "Docker Support" "app-emulation/docker"
+	optfeature "Docker Support" "app-containers/docker"
 	optfeature "Wireshark Support" "net-analyzer/wireshark"
 	elog ""
 	elog "The following packages are currently unsupported:"

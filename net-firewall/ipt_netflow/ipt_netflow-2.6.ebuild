@@ -32,6 +32,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.0-configure.patch" # bug #455984
 	"${FILESDIR}/${PN}-2.6-gentoo.patch"
 	"${FILESDIR}/${P}-ref_module_fix.patch" # bug #781014
+	"${FILESDIR}/${P}-fix-linux-headers-5.14.patch" # bug #813993
+
 )
 
 pkg_setup() {

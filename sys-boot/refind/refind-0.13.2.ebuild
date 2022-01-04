@@ -11,13 +11,17 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PV}/${PN}-src-${PV}.tar.gz"
 
 LICENSE="BSD GPL-2 GPL-3 FDL-1.3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 FS_USE="btrfs +ext2 +ext4 hfs +iso9660 ntfs reiserfs"
 IUSE="${FS_USE} custom-cflags doc"
 
 DEPEND="sys-boot/gnu-efi"
 
 DOCS=( README.txt )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gnuefi-3.0.14.patch
+)
 
 pkg_pretend() {
 	if use custom-cflags; then

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NSS: Required by kde-apps/okular[pdf]
@@ -52,11 +52,7 @@ net-firewall/nftables json python xtables
 # Required by dev-qt/qtwebengine:5
 sys-libs/zlib minizip
 
-# Required by kde-plasma/kwin; >=1.20.13-r1 has dropped the flag
-<x11-base/xorg-server-1.20.13-r1 wayland
-
 # Keep existing defaults after dropping IUSE=phonon from make.defaults
 <app-office/calligra-3.3 phonon
 kde-apps/kio-extras phonon
 kde-apps/marble phonon
-

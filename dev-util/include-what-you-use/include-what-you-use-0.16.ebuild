@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..10} )
 
-inherit cmake flag-o-matic llvm python-single-r1
+inherit cmake llvm python-single-r1
 
 DESCRIPTION="Find unused include directives in C/C++ programs"
 HOMEPAGE="https://include-what-you-use.org/"
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 LLVM_MAX_SLOT=12
 

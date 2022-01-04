@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 
 inherit qmake-utils python-single-r1 desktop
 
@@ -13,7 +13,7 @@ SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 DEPEND="${PYTHON_DEPS}

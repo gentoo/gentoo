@@ -21,7 +21,7 @@ DEPEND="|| (
 	dev-libs/voikko-fi"
 RDEPEND="${DEPEND}
 	dev-libs/libvoikko"
-BDEPEND="verify-sig? ( app-crypt/openpgp-keys-voikko )"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-voikko )"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/voikko.asc
 

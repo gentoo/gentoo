@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-11-15)
+# librtas is available on (only) ppc*
+sys-apps/util-linux -rtas
+
 # Michael Seifert <m.seifert@digitalernachschub.de> (2021-10-23)
 # dev-python/furo isn't keyworded here
 dev-python/argon2-cffi doc
@@ -41,7 +45,7 @@ net-libs/webkit-gtk avif
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
 # criu is masked on big-endian ppc*
-app-emulation/crun criu
+app-containers/crun criu
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-07)
 # dev-vcs/darcs is not keyworded on ppc/ppc64
@@ -145,6 +149,7 @@ app-emulation/qemu capstone
 # Amy Liffey <amynka@gentoo.org (2018-01-21)
 # dev-libs/cereal not keyworded for ppc
 media-libs/opencv contribdnn
+media-plugins/frei0r-plugins facedetect
 
 # Robin H. Johnson <robbat2@gentoo.org> (2017-11-10)
 # Masked for dependencies:

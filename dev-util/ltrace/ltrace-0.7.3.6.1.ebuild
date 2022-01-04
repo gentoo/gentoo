@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 LTRACE_V=$(ver_cut 1-3)
-DB_V=$(ver_cut 4-5)
+DB_V=$(ver_cut 4-)
 
 DESCRIPTION="trace library calls made at runtime"
 HOMEPAGE="https://gitlab.com/cespedes/ltrace"
@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ppc ~ppc64 ~sparc x86"
 IUSE="debug selinux test unwind"
 
 RDEPEND="virtual/libelf:=

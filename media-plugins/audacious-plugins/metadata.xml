@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>asturm@gentoo.org</email>
-		<name>Andreas Sturmlechner</name>
+	<maintainer type="person" proxied="yes">
+		<email>marco@scardovi.com</email>
+		<name>Marco Scardovi</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>sound@gentoo.org</email>
@@ -15,6 +19,7 @@
 		<flag name="cue">Support CUE sheets using the libcue library</flag>
 		<flag name="fluidsynth">Support FluidSynth as MIDI synth backend</flag>
 		<flag name="gme">Support various gaming console music formats</flag>
+		<flag name="openmpt">Add support for OpenMTP</flag>
 		<flag name="http">Support HTTP streams through neon</flag>
 		<flag name="scrobbler">Build with scrobbler/LastFM submission support</flag>
 		<flag name="sid">Build with SID (Commodore 64 Audio) support</flag>

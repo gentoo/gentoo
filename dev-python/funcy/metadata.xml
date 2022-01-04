@@ -12,5 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">funcy</remote-id>
+		<remote-id type="github">Suor/funcy</remote-id>
 	</upstream>
 </pkgmetadata>

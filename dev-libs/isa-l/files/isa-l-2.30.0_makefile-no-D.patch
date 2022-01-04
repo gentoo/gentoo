@@ -1,0 +1,16 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -142,11 +142,11 @@
+ EXTRA_DIST += tools/yasm-filter.sh tools/nasm-filter.sh
+ EXTRA_DIST += tools/yasm-cet-filter.sh tools/nasm-cet-filter.sh
+ 
+-AM_CFLAGS = ${my_CFLAGS} ${INCLUDE} $(src_include) ${D}
++AM_CFLAGS = ${my_CFLAGS} ${INCLUDE} $(src_include) ${DIST_D}
+ if CPU_AARCH64
+ AM_CCASFLAGS = ${AM_CFLAGS}
+ else
+-AM_CCASFLAGS = ${yasm_args} ${INCLUDE} ${src_include} ${DEFS} ${D}
++AM_CCASFLAGS = ${yasm_args} ${INCLUDE} ${src_include} ${DEFS} ${DIST_D}
+ endif
+ 
+ .asm.s:

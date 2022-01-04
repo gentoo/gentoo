@@ -75,6 +75,7 @@ multilib_src_configure() {
 		# upstream is omitting standard search path for this
 		# probably because gcc & clang are bundling their own unwind.h
 		-DLIBCXXABI_LIBUNWIND_INCLUDES="${EPREFIX}"/usr/include
+		-DLIBCXXABI_TARGET_TRIPLE="${CHOST}"
 	)
 	if use test; then
 		local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
@@ -104,6 +105,7 @@ wrap_libcxx() {
 		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
 		-DLIBCXX_HAS_GCC_S_LIB=OFF
 		-DLIBCXX_INCLUDE_TESTS=OFF
+		-DLIBCXX_TARGET_TRIPLE="${CHOST}"
 	)
 
 	"${@}"

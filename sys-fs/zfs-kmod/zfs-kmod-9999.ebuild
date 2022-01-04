@@ -19,7 +19,7 @@ else
 	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz"
 	SRC_URI+=" verify-sig? ( https://github.com/openzfs/zfs/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz.asc )"
 	S="${WORKDIR}/zfs-${PV%_rc?}"
-	ZFS_KERNEL_COMPAT="5.14"
+	ZFS_KERNEL_COMPAT="5.15"
 
 	#  increments minor eg 5.14 -> 5.15, and still supports override.
 	ZFS_KERNEL_DEP="${ZFS_KERNEL_COMPAT_OVERRIDE:-${ZFS_KERNEL_COMPAT}}"
@@ -49,7 +49,7 @@ BDEPEND="
 # and we don't need in in git ebuild.
 if [[ ${PV} != "9999" ]] ; then
 	BDEPEND+="
-		verify-sig? ( app-crypt/openpgp-keys-openzfs )
+		verify-sig? ( sec-keys/openpgp-keys-openzfs )
 		dist-kernel? ( <virtual/dist-kernel-${ZFS_KERNEL_DEP}:= )
 	"
 fi
@@ -195,11 +195,11 @@ pkg_postinst() {
 		ewarn "/boot with the new feature flags is not yet available."
 		ewarn "Do *NOT* upgrade root pools to use the new feature flags."
 		ewarn "Any new pools will be created with the new feature flags by default"
-		ewarn "and will not be compatible with older versions of ZFSOnLinux. To"
+		ewarn "and will not be compatible with older versions of OpenZFS. To"
 		ewarn "create a newpool that is backward compatible wih GRUB2, use "
 		ewarn
 		ewarn "zpool create -o compatibility=grub2 ..."
 		ewarn
-		ewarn "Refer to /etc/zfs/compatibility.d/grub2 for list of features."
+		ewarn "Refer to /usr/share/zfs/compatibility.d/grub2 for list of features."
 	fi
 }

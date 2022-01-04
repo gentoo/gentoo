@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils libtool flag-o-matic gnuconfig multilib toolchain-funcs
+inherit libtool flag-o-matic gnuconfig strip-linguas toolchain-funcs
 
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
@@ -111,13 +111,6 @@ src_prepare() {
 			einfo "Applying binutils patchset ${patchsetname}"
 			eapply "${WORKDIR}/patch"
 			einfo "Done."
-		fi
-	fi
-
-	# This check should probably go somewhere else, like pkg_pretend.
-	if [[ ${CTARGET} == *-uclibc* ]] ; then
-		if grep -qs 'linux-gnu' "${S}"/ltconfig ; then
-			die "sorry, but this binutils doesn't yet support uClibc :("
 		fi
 	fi
 

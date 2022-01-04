@@ -15,6 +15,7 @@ KEYWORDS="amd64 ~ppc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.03-debian.patch
+	"${FILESDIR}"/${PN}-1.04-musl-if-ether.patch
 )
 
 src_prepare() {

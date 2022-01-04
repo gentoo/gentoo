@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<use>
+		<flag name="standard">Install standard folder version</flag>
+		<flag name="black">Install black folder version</flag>
+		<flag name="blue">Install blue folder version</flag>
+		<flag name="brown">Install bworn folder version</flag>
+		<flag name="green">Install green folder version</flag>
+		<flag name="grey">Install grey folder version</flag>
+		<flag name="orange">Install orange folder version</flag>
+		<flag name="pink">Install pink folder version</flag>
+		<flag name="purple">Install purple folder version</flag>
+		<flag name="red">Install red older version</flag>
+		<flag name="yellow">Install yellow folder version</flag>
+		<flag name="manjaro">Install manjaro folder version</flag>
+		<flag name="ubuntu">Install ubuntu folder version</flag>
+		<flag name="kde">Install colorshceme version for KDE plasma (folder color follow the colorscheme)</flag>
+		<flag name="hardlink">Hardlink duplicate icons to greatly reduce installation size</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/vinceliuice/Tela-icon-theme/issues</bugs-to>
+		<remote-id type="github">vinceliuice/Tela-icon-theme</remote-id>
+	</upstream>
+</pkgmetadata>

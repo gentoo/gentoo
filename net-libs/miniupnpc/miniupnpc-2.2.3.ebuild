@@ -18,7 +18,7 @@ IUSE="ipv6 kernel_linux"
 RDEPEND=""
 BDEPEND="
 	kernel_linux? ( sys-apps/lsb-release sys-apps/which )
-	verify-sig? ( app-crypt/openpgp-keys-miniupnp )"
+	verify-sig? ( sec-keys/openpgp-keys-miniupnp )"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/miniupnp.asc
 

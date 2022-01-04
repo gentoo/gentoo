@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 RDEPEND="
 	>=dev-python/babelfish-0.5.5[${PYTHON_USEDEP}]
@@ -23,6 +23,11 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/importlib_resources[${PYTHON_USEDEP}]
 	' python3_8 pypy3)
+"
+BDEPEND="
+	test? (
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_tests pytest

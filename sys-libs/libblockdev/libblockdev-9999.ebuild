@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 inherit autotools python-single-r1 xdg-utils
 
 DESCRIPTION="A library for manipulating block devices"
@@ -25,7 +25,9 @@ fi
 LICENSE="LGPL-2+"
 SLOT="0"
 IUSE="bcache +cryptsetup device-mapper dmraid escrow gtk-doc introspection lvm kbd test +tools vdo"
-RESTRICT="!test? ( test )"
+# Tests require root. In a future release, we may be able to run a smaller
+# subset with new run_tests.py arguments.
+RESTRICT="!test? ( test ) test"
 
 RDEPEND="
 	>=dev-libs/glib-2.42.2
@@ -105,6 +107,13 @@ src_configure() {
 		--with-python3
 	)
 	econf "${myeconfargs[@]}"
+}
+
+src_test() {
+	# See http://storaged.org/libblockdev/ch03.html
+	# The 'check' target just does Pylint.
+	# ... but it needs root.
+	emake test
 }
 
 src_install() {

@@ -1,0 +1,24 @@
+commit 779376e0a1e3c55a8bdc40c5e55ce9bb50ee8eae
+Author:     Thomas Deutschmann <whissi@gentoo.org>
+AuthorDate: Tue Nov 16 18:33:12 2021 +0100
+Commit:     Thomas Deutschmann <whissi@gentoo.org>
+CommitDate: Tue Nov 16 18:33:12 2021 +0100
+
+    btrfs-progs-5.15+ needs libudev
+    
+    Fixes: d3ee3d06 ("Bump btrfs-progs to v5.15")
+    Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
+
+diff --git a/defaults/software.sh b/defaults/software.sh
+index 9f64ab0..ec2bacb 100644
+--- a/defaults/software.sh
++++ b/defaults/software.sh
+@@ -32,7 +32,7 @@ GKPKG_BOOST_BUILD_BINPKG="${GKPKG_BOOST_BUILD_BINPKG:-%%CACHE%%/boost-build-${GK
+ 
+ GKPKG_BTRFS_PROGS_PN="btrfs-progs"
+ GKPKG_BTRFS_PROGS_PV="${GKPKG_BTRFS_PROGS_PV:-VERSION_BTRFS_PROGS}"
+-GKPKG_BTRFS_PROGS_DEPS="util-linux zlib zstd lzo"
++GKPKG_BTRFS_PROGS_DEPS="util-linux zlib zstd lzo eudev"
+ GKPKG_BTRFS_PROGS_SRCTAR="${GKPKG_BTRFS_PROGS_SRCTAR:-${DISTDIR}/btrfs-progs-v${GKPKG_BTRFS_PROGS_PV}.tar.xz}"
+ GKPKG_BTRFS_PROGS_SRCDIR="${GKPKG_BTRFS_PROGS_SRCDIR:-btrfs-progs-v${GKPKG_BTRFS_PROGS_PV}}"
+ GKPKG_BTRFS_PROGS_BINPKG="${GKPKG_BTRFS_PROGS_BINPKG:-%%CACHE%%/btrfs-progs-${GKPKG_BTRFS_PROGS_PV}-%%ARCH%%.tar.xz}"

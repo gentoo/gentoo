@@ -16,7 +16,7 @@ SRC_URI="https://dev.gentoo.org/~polynomial-c/virtualbox/${MY_P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="pax-kernel"
 
 RDEPEND="!=app-emulation/virtualbox-9999"

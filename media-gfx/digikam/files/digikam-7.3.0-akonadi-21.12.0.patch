@@ -1,0 +1,31 @@
+From 95a8ece964681fc6823e968541da2da2da06b3dd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=96mer=20Fad=C4=B1l=20USTA?= <omerusta@gmail.com>
+Date: Sat, 2 Oct 2021 21:50:04 +0300
+Subject: [PATCH] Fix compile for newer Akonadi Build Versions
+
+---
+ core/utilities/extrasupport/addressbook/akonadiiface.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/core/utilities/extrasupport/addressbook/akonadiiface.cpp b/core/utilities/extrasupport/addressbook/akonadiiface.cpp
+index 8e43dad0da..cb38036e39 100644
+--- a/core/utilities/extrasupport/addressbook/akonadiiface.cpp
++++ b/core/utilities/extrasupport/addressbook/akonadiiface.cpp
+@@ -41,7 +41,14 @@
+ #endif
+ 
+ #include <kjob.h>
++#include <akonadi_version.h>
++
++#if AKONADI_VERSION >= QT_VERSION_CHECK(5, 18, 41)
++#include <Akonadi/Item>
++#else
+ #include <AkonadiCore/Item>
++#endif
++
+ #include <Akonadi/Contact/ContactSearchJob>
+ #include <KContacts/Addressee>
+ 
+-- 
+2.34.1
+

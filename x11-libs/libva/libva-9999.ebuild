@@ -30,7 +30,6 @@ RDEPEND="
 	opengl? ( >=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}] )
 	wayland? (
 		>=dev-libs/wayland-1.11[${MULTILIB_USEDEP}]
-		dev-util/wayland-scanner[${MULTILIB_USEDEP}]
 	)
 	X? (
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
@@ -40,6 +39,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	wayland? ( dev-util/wayland-scanner )
 	virtual/pkgconfig
 "
 PDEPEND="utils? ( media-video/libva-utils )"

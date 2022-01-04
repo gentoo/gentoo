@@ -5,7 +5,7 @@ EAPI=6
 
 JAVA_PKG_IUSE="doc source"
 
-inherit flag-o-matic java-pkg-2 java-pkg-simple multiprocessing toolchain-funcs
+inherit eapi7-ver flag-o-matic java-pkg-2 java-pkg-simple multiprocessing toolchain-funcs
 
 EGRADLE_VER="4.10.3"
 EHG_COMMIT="9f49e3b6147f"

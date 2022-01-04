@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,43 +9,49 @@ inherit cmake fcaps flag-o-matic git-r3 toolchain-funcs wxwidgets
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://pcsx2.net/"
 EGIT_REPO_URI="https://github.com/PCSX2/${PN}.git"
-EGIT_SUBMODULES=( 3rdparty/libchdr/libchdr )
+EGIT_SUBMODULES=()
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
+IUSE="pulseaudio test"
 
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	app-arch/bzip2
 	app-arch/xz-utils
-	dev-cpp/yaml-cpp:=
+	dev-cpp/rapidyaml:=
+	dev-libs/glib:2
 	dev-libs/libaio
+	dev-libs/libchdr
 	>=dev-libs/libfmt-7.1.3:=
 	dev-libs/libxml2:2
 	media-libs/alsa-lib
+	media-libs/cubeb
+	media-libs/freetype
+	media-libs/libglvnd
 	media-libs/libpng:=
 	media-libs/libsamplerate
 	media-libs/libsdl2[haptic,joystick,sound]
-	media-libs/libsoundtouch
-	media-libs/portaudio
+	media-libs/libsoundtouch:=
 	net-libs/libpcap
 	sys-libs/zlib
-	virtual/libudev
-	virtual/opengl
+	virtual/libudev:=
+	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/libICE
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
+	pulseaudio? ( media-sound/pulseaudio )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto"
 BDEPEND="test? ( dev-cpp/gtest )"
 
 FILECAPS=(
-	-m 755 "CAP_NET_RAW+eip CAP_NET_ADMIN+eip" usr/bin/PCSX2
+	-m 755 "CAP_NET_RAW+eip CAP_NET_ADMIN+eip" usr/bin/pcsx2
 )
 
 pkg_setup() {
@@ -56,6 +62,19 @@ pkg_setup() {
 			append-flags -mxsave
 		fi
 	fi
+}
+
+src_prepare() {
+	cmake_src_prepare
+
+	# unbundle, use sed over patch for less chances to break -9999
+	sed -e '/add_subdir.*cubeb/c\find_package(cubeb REQUIRED)' \
+		-e '/add_subdir.*libchdr/c\pkg_check_modules(chdr REQUIRED IMPORTED_TARGET libchdr)' \
+		-i cmake/SearchForStuff.cmake || die
+	sed -i 's/chdr-static/PkgConfig::chdr/' pcsx2/CMakeLists.txt || die
+
+	# pulseaudio is only used for usb-mic, not audio output
+	use pulseaudio || > cmake/FindPulseAudio.cmake || die
 }
 
 src_configure() {
@@ -73,7 +92,6 @@ src_configure() {
 		-DDISABLE_PCSX2_WRAPPER=TRUE
 		-DDISABLE_SETCAP=TRUE
 		-DENABLE_TESTS="$(usex test)"
-		-DOPTIMIZATION_FLAG=
 		-DPACKAGE_MODE=TRUE
 		-DXDG_STD=TRUE
 
@@ -86,13 +104,4 @@ src_configure() {
 
 	setup-wxwidgets
 	cmake_src_configure
-}
-
-src_install() {
-	# Upstream issues:
-	#  https://github.com/PCSX2/pcsx2/issues/417
-	#  https://github.com/PCSX2/pcsx2/issues/3077
-	QA_EXECSTACK="usr/bin/PCSX2"
-	QA_TEXTRELS="usr/$(get_libdir)/PCSX2/* usr/bin/PCSX2"
-	cmake_src_install
 }

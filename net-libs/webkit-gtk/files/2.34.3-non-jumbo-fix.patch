@@ -1,0 +1,31 @@
+From f8efe9f2d128a897c0b2a054bf05200cb842d9b2 Mon Sep 17 00:00:00 2001
+From: "don.olmstead@sony.com"
+ <don.olmstead@sony.com@268f45cc-cd09-0410-ab3c-d52691b4dbfc>
+Date: Sun, 3 Oct 2021 23:00:17 +0000
+Subject: [PATCH] Non-unified build fixes, early October 2021 edition
+ https://bugs.webkit.org/show_bug.cgi?id=231143
+
+Unreviewed non-unified build fixes.
+---
+leio: Trimmed to what's relevant to webkitgtk-2.34 branch
+gyakovlev: removed TextTrackClient.h include addition
+
+ Source/WebCore/inspector/agents/InspectorCanvasAgent.h | 2 ++
+ 1 files changed, 2 insertions(+)
+
+diff --git a/Source/WebCore/inspector/agents/InspectorCanvasAgent.h b/Source/WebCore/inspector/agents/InspectorCanvasAgent.h
+index 7f1012aa2a24..4c7c23995276 100644
+--- a/Source/WebCore/inspector/agents/InspectorCanvasAgent.h
++++ b/Source/WebCore/inspector/agents/InspectorCanvasAgent.h
+@@ -44,6 +44,8 @@ class InjectedScriptManager;
+ namespace WebCore {
+ 
+ class CanvasRenderingContext;
++class Frame;
++
+ #if ENABLE(WEBGL)
+ class InspectorShaderProgram;
+ class WebGLProgram;
+-- 
+2.32.0
+

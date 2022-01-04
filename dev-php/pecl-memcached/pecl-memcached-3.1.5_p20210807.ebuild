@@ -5,7 +5,7 @@ EAPI=7
 PHP_EXT_NAME="memcached"
 DOCS=( ChangeLog README.markdown )
 
-USE_PHP="php7-3 php7-4 php8-0"
+USE_PHP="php7-3 php7-4 php8-0 php8-1"
 inherit php-ext-pecl-r3
 
 DESCRIPTION="Interface PHP with memcached via libmemcached library"
@@ -34,7 +34,12 @@ RDEPEND="
 	php_targets_php8-0? (
 		${COMMON_DEPEND} dev-lang/php:8.0[session(-)?]
 		igbinary? ( dev-php/igbinary[php_targets_php8-0(-)] )
-	)"
+	)
+	php_targets_php8-1? (
+		${COMMON_DEPEND} dev-lang/php:8.1[session(-)?]
+		igbinary? ( dev-php/igbinary[php_targets_php8-1(-)] )
+	)
+"
 DEPEND="${RDEPEND} test? ( net-misc/memcached )"
 
 PATCHES=( "${FILESDIR}/3.1.5-fix-tests.patch" )

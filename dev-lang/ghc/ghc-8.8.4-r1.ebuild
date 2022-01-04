@@ -510,6 +510,7 @@ src_prepare() {
 		eapply "${FILESDIR}"/${PN}-7.8.3-prim-lm.patch
 		eapply "${FILESDIR}"/${PN}-8.0.2-no-relax-everywhere.patch
 		eapply "${FILESDIR}"/${PN}-8.4.2-allow-cross-bootstrap.patch
+		eapply "${FILESDIR}"/${P}-autoconf-2.71.patch
 		# fixed in 8.8.4. See https://gitlab.haskell.org/ghc/ghc/-/blob/ghc-8.8.4-release/configure.ac#L1273
 		# eapply "${FILESDIR}"/${PN}-8.6.5-numa.patch
 		# rumors say this is fixed properly in 8.8.3. Let's check!

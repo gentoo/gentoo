@@ -1,0 +1,34 @@
+From 2ba1b0b642d540f74f0e21e7aaa272644ea4eda5 Mon Sep 17 00:00:00 2001
+From: Marco Martin <notmart@gmail.com>
+Date: Mon, 8 Nov 2021 16:12:38 +0000
+Subject: [PATCH] make the OSD an actual wayland OSD
+
+when the OnScreenDisplay type is set, set it on the plasma shell surface
+so KWin can actually treat it as such
+
+CCBUG:428859
+---
+ src/plasmaquick/dialog.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/plasmaquick/dialog.cpp b/src/plasmaquick/dialog.cpp
+index 4cea3a28e..3254b8320 100644
+--- a/src/plasmaquick/dialog.cpp
++++ b/src/plasmaquick/dialog.cpp
+@@ -736,6 +736,13 @@ void DialogPrivate::applyType()
+         if (!wmType) {
+             KWindowSystem::setType(q->winId(), static_cast<NET::WindowType>(type));
+         }
++#if HAVE_KWAYLAND
++        if (type == Dialog::OnScreenDisplay) {
++            if (shellSurface) {
++                shellSurface->setRole(KWayland::Client::PlasmaShellSurface::Role::OnScreenDisplay);
++            }
++        }
++#endif
+     } else {
+         q->setFlags(Qt::FramelessWindowHint | q->flags());
+ 
+-- 
+GitLab
+

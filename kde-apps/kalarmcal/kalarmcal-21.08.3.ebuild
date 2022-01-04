@@ -13,7 +13,7 @@ DESCRIPTION="Client library to access and handling of KAlarm calendar data"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE=""
 
 RDEPEND="
@@ -31,5 +31,7 @@ DEPEND="${RDEPEND}
 "
 
 src_test() {
-	LC_TIME="C" ecm_src_test #bug 665626
+	# LC_TIME bug 665626
+	# TZ bug https://bugs.kde.org/show_bug.cgi?id=445734
+	LC_TIME="C" TZ=UTC ecm_src_test
 }

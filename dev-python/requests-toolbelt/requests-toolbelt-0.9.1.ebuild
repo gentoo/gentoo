@@ -20,7 +20,10 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-python/betamax[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pyopenssl[${PYTHON_USEDEP}]
+		!alpha? ( !hppa? ( !ia64? (
+			dev-python/cryptography[${PYTHON_USEDEP}]
+			dev-python/pyopenssl[${PYTHON_USEDEP}]
+		) ) )
 	)"
 
 DOCS=( AUTHORS.rst HISTORY.rst README.rst )
@@ -29,15 +32,27 @@ PATCHES=(
 	"${FILESDIR}/requests-toolbelt-0.8.0-test-tracebacks.patch"
 	"${FILESDIR}/requests-toolbelt-0.9.1-tests.patch"
 
-	# disable python2.7 test failures with newer requests versions
-	# bug: https://bugs.gentoo.org/635824
-	# https://github.com/requests/toolbelt/issues/213
-	"${FILESDIR}/requests-toolbelt-0.9.1-tests-py2.patch"
-
-	# disable tests that require internet access
-	"${FILESDIR}/requests-toolbelt-0.9.1-tests-internet.patch"
-
 	"${FILESDIR}/requests-toolbelt-0.9.1-py310.patch"
 )
 
 distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_DESELECT=(
+		# Internet
+		tests/test_multipart_encoder.py::TestFileFromURLWrapper::test_no_content_length_header
+		tests/test_multipart_encoder.py::TestFileFromURLWrapper::test_read_file
+		tests/test_multipart_encoder.py::TestMultipartEncoder::test_reads_file_from_url_wrapper
+	)
+
+	local EPYTEST_IGNORE=()
+	if ! has_version "dev-python/cryptography[${PYTHON_USEDEP}]" ||
+		! has_version "dev-python/pyopenssl[${PYTHON_USEDEP}]"
+	then
+		EPYTEST_IGNORE+=(
+			tests/test_x509_adapter.py
+		)
+	fi
+
+	epytest
+}

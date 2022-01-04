@@ -44,7 +44,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 BDEPEND="
 	dev-util/gtk-doc-am
 	virtual/pkgconfig
-	verify-sig? ( app-crypt/openpgp-keys-danielveillard )
+	verify-sig? ( sec-keys/openpgp-keys-danielveillard )
 "
 RDEPEND="
 	>=sys-libs/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]

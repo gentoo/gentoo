@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit pam python-any-r1 readme.gentoo-r1
 
@@ -21,13 +21,14 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="caps debug elogind gnome-keyring homed minimal mktemp +nullok pam_krb5 pam_ssh +passwdqc pwhistory pwquality securetty selinux +sha512 systemd"
+IUSE="caps debug elogind gnome-keyring homed minimal mktemp +nullok pam_krb5 pam_ssh +passwdqc pwhistory pwquality securetty selinux +sha512 systemd yescrypt"
 
 RESTRICT="binchecks"
 
 REQUIRED_USE="
 	?? ( elogind systemd )
 	?? ( passwdqc pwquality )
+	?? ( sha512 yescrypt )
 	pwhistory? ( || ( passwdqc pwquality ) )
 	homed? ( !pam_krb5 )
 	pam_krb5? ( !homed )
@@ -52,6 +53,7 @@ RDEPEND="
 	sha512? ( >=sys-libs/pam-${MIN_PAM_REQ} )
 	homed? ( sys-apps/systemd[homed] )
 	systemd? ( sys-apps/systemd[pam] )
+	yescrypt? ( sys-libs/libxcrypt[system] )
 "
 
 BDEPEND="$(python_gen_any_dep '
@@ -81,6 +83,7 @@ src_configure() {
 		$(usex selinux '--selinux' '') \
 		$(usex sha512 '--sha512' '') \
 		$(usex systemd '--systemd' '') \
+		$(usex yescrypt '--yescrypt' '') \
 	|| die
 }
 

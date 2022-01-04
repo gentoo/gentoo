@@ -15,7 +15,7 @@ PHP_EXT_PECL_FILENAME="${MY_P}.tgz"
 
 inherit php-ext-pecl-r3
 
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="amd64 ~ia64 x86"
 LICENSE="PHP-3.01"
 
 DESCRIPTION="PHP wrapper for libevent2"

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -48,13 +48,12 @@ RDEPEND="
 		>=app-admin/eselect-1.2
 		rsync-verify? (
 			>=app-portage/gemato-14.5[${PYTHON_USEDEP}]
-			>=app-crypt/openpgp-keys-gentoo-release-20180706
+			>=sec-keys/openpgp-keys-gentoo-release-20180706
 			>=app-crypt/gnupg-2.2.4-r2[ssl(-)]
 		)
 	)
 	elibc_glibc? ( >=sys-apps/sandbox-2.2 )
 	elibc_musl? ( >=sys-apps/sandbox-2.2 )
-	elibc_uclibc? ( >=sys-apps/sandbox-2.2 )
 	kernel_linux? ( sys-apps/util-linux )
 	>=app-misc/pax-utils-0.1.17
 	selinux? ( >=sys-libs/libselinux-2.0.94[python,${PYTHON_USEDEP}] )

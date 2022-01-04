@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libzapojit"
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="+introspection"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.28:2

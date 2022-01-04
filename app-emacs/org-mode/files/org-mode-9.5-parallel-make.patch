@@ -1,0 +1,73 @@
+https://bugs.gentoo.org/829055
+
+From b6c5f028a061557e2edb64eef897cd4a28b2afeb Mon Sep 17 00:00:00 2001
+From: Marco Wahl <marcowahlsoft@gmail.com>
+Date: Mon, 20 Dec 2021 22:27:50 +0100
+Subject: [PATCH] Fix parallel make of docs
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* doc/Makefile: Split multiple target "org.texi orgguide.texi".
+* mk/org-fixup.el (org-make-manual, org-make-guide):  New functions.
+  (org-make-manuals): Make obsolete.
+
+Reported by Ulrich Müller.  https://list.orgmode.org/uee67gr96@gentoo.org/
+---
+ doc/Makefile    | 10 ++++++++--
+ mk/org-fixup.el | 15 +++++++++++++++
+ 2 files changed, 23 insertions(+), 2 deletions(-)
+
+diff --git a/doc/Makefile b/doc/Makefile
+index 7fb96e65d..cb6d72bdc 100644
+--- a/doc/Makefile
++++ b/doc/Makefile
+@@ -27,11 +27,17 @@ guide::		orgguide.texi org-version.inc
+ 	../mk/guidesplit.pl $@/*
+ endif
+ 
+-org.texi orgguide.texi:	org-manual.org org-guide.org
++org.texi:	org-manual.org
+ 	$(BATCH) 				      \
+ 	  --eval '(add-to-list `load-path "../lisp")' \
+ 	  --eval '(load "../mk/org-fixup.el")' 	      \
+-	  --eval '(org-make-manuals)'
++	  --eval '(org-make-manual)'
++
++orgguide.texi:	org-guide.org
++	$(BATCH) 				      \
++	  --eval '(add-to-list `load-path "../lisp")' \
++	  --eval '(load "../mk/org-fixup.el")' 	      \
++	  --eval '(org-make-guide)'
+ 
+ org-version.inc:	org.texi
+ 	@echo "org-version: $(ORGVERSION) ($(GITVERSION))"
+diff --git a/mk/org-fixup.el b/mk/org-fixup.el
+index c0eef23cb..0e26cc7e7 100644
+--- a/mk/org-fixup.el
++++ b/mk/org-fixup.el
+@@ -27,6 +27,21 @@
+ (require 'autoload)
+ (require 'org-compat "org-compat.el")
+ 
++(defun org-make-manual ()
++  "Generate the Texinfo file out of the Org manual."
++  (require 'ox-texinfo)
++  (find-file "../doc/org-manual.org")
++  (org-texinfo-export-to-texinfo))
++
++(defun org-make-guide ()
++  "Generate the Texinfo file out of the Org guide."
++  (require 'ox-texinfo)
++  (find-file "../doc/org-guide.org")
++  (org-texinfo-export-to-texinfo))
++
++(make-obsolete 'org-make-manuals
++               "use org-make-manual and org-make-guide."
++               "9.6")
+ (defun org-make-manuals ()
+   "Generate the Texinfo files out of Org manuals."
+   (require 'ox-texinfo)
+-- 
+2.34.1
+

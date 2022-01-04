@@ -1,5 +1,26 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Marek Szuba <marecki@gentoo.org> (2022-01-01)
+# Binary-only package linked against glibc.
+app-crypt/rainbowcrack
+
+# Conrad Kostecki <conikost@gentoo.org> (2021-12-15)
+# Level Zero needs RTLD_DEEPBIND, which does not exist on musl.
+dev-libs/level-zero
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-11-21)
+# No musl patches in ebuild
+<sys-devel/gcc-9
+
+# Sam James <sam@gentoo.org> (2021-11-20)
+# Wants /usr/bin/locale
+# Fails to build with errors like:
+# ```
+# Use of uninitialized value $Text::WrapI18N::charmap in pattern match (m//) at /usr/lib/perl5/vendor_perl/5.34/Text/WrapI18N.pm line 155.
+# Can't exec "/usr/bin/locale": No such file or directory at /usr/lib/perl5/vendor_perl/5.34/Text/WrapI18N.pm line 134.
+# ```
+app-text/po4a
 
 # Hank Leininger <hlein@korelogic.com> (2021-07-14)
 # Uses glibc-specific rexec(3) function, bug #715898
@@ -8,6 +29,7 @@ net-misc/netkit-rsh
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
 # Mask the libxcrypt-based virtual
 ~virtual/libcrypt-2
+-virtual/libcrypt:0/1
 
 # David Seifert <soap@gentoo.org> (2021-02-08)
 # nvidia-drivers only works against glibc.
@@ -35,17 +57,10 @@ app-emulation/ski
 # Linux debugger needs a port to musl.
 app-emulation/dosemu
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-03-20)
-# No source builds for musl
-app-emulation/firecracker
-
 # Old undated blocks of masks
 #
-
-sys-libs/uclibc-ng
 sys-libs/glibc
 
-# We use eudev which is tested on both uclibc and musl
 # As of 2021-08-08, >=sys-fs/udev-249-r2 is patched in Gentoo
 # to work on musl.
 sys-apps/systemd

@@ -15,7 +15,7 @@ S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 ~ia64 x86 ~amd64-linux ~x64-macos"
 
 RDEPEND="
 	|| (

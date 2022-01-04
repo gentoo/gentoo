@@ -1,0 +1,42 @@
+https://gitlab.gnome.org/alexl/variant-schema-compiler/-/merge_requests/11.patch
+
+From 8850e4d0da76a85c5f9926cd40e148e0b29bddac Mon Sep 17 00:00:00 2001
+From: Phaedrus Leeds <mwleeds@protonmail.com>
+Date: Thu, 16 Dec 2021 10:50:10 -0800
+Subject: [PATCH] Fix runtime error when using pyparsing >= 3.0.2
+
+Ever since this commit
+(https://github.com/pyparsing/pyparsing/commit/4ab17bb55)
+variant-schema-compiler has failed to execute when used by Flatpak like
+this:
+$ variant-schema-compiler/variant-schema-compiler --outfile-header
+common/flatpak-variant-private.h --outfile
+common/flatpak-variant-impl-private.h --prefix var
+./data/flatpak-variants.gv
+
+For some reason our use of leaveWhitespace() to ensure that a named type
+has a ' right before its name no longer works. But fortunately pyparsing
+has a Combine() which does exactly what we want.
+
+See https://github.com/flatpak/flatpak/issues/4534
+
+Fixes https://gitlab.gnome.org/alexl/variant-schema-compiler/-/issues/4
+---
+ variant-schema-compiler | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/subprojects/variant-schema-compiler/variant-schema-compiler
++++ b/subprojects/variant-schema-compiler/variant-schema-compiler
+@@ -1740,7 +1740,7 @@ def handleNameableType(toks):
+         add_named_type(typename_prefix + name, type)
+     return type
+ 
+-nameableType = (Optional((Suppress("'") + ident).leaveWhitespace()) + (arrayType ^ maybeType ^ dictType ^ structType)).setParseAction(handleNameableType)
++nameableType = (Optional(Combine(Suppress("'") + ident)) + (arrayType ^ maybeType ^ dictType ^ structType)).setParseAction(handleNameableType)
+ 
+ typeSpec <<= basicType  ^ variantType ^ namedType ^ nameableType
+ 
+-- 
+GitLab
+
+

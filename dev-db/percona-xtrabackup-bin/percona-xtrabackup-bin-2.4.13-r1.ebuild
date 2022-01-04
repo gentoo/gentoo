@@ -30,8 +30,8 @@ RDEPEND="dev-libs/libaio
 	sys-libs/zlib
 	sys-process/numactl
 	|| (
-		sys-libs/glibc[crypt(+)]
 		sys-libs/libxcrypt[compat]
+		sys-libs/glibc[crypt(+)]
 	)
 	!dev-db/percona-xtrabackup"
 

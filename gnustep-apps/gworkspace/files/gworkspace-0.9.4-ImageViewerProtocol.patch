@@ -1,0 +1,186 @@
+diff -Naur gworkspace-0.9.4.orig/Inspector/ContentViewers/ImageViewer/ImageViewer.h gworkspace-0.9.4/Inspector/ContentViewers/ImageViewer/ImageViewer.h
+--- gworkspace-0.9.4.orig/Inspector/ContentViewers/ImageViewer/ImageViewer.h	2016-06-07 18:13:08.000000000 +0200
++++ gworkspace-0.9.4/Inspector/ContentViewers/ImageViewer/ImageViewer.h	2021-12-06 14:18:12.024085590 +0100
+@@ -1,8 +1,9 @@
+ /* ImageViewer.h
+  *  
+- * Copyright (C) 2004-2016 Free Software Foundation, Inc.
++ * Copyright (C) 2004-2020 Free Software Foundation, Inc.
+  *
+- * Author: Enrico Sersale <enrico@imago.ro>
++ * Authors: Enrico Sersale <enrico@imago.ro>
++ *          Riccardo Mottola <rm@gnu.org>
+  * Date: January 2004
+  *
+  * This file is part of the GNUstep Inspector application
+@@ -36,6 +37,7 @@
+ @class NSWorkspace;
+ @class ProgressView;
+ @class ImageResizer;
++
+ @protocol ContentInspectorProtocol
+ 
+ - (void)contentsReadyAt:(NSString *)path;
+@@ -51,7 +53,7 @@
+ 
+ @end
+ 
+-@interface ImageViewer : NSView <ContentViewersProtocol>
++@interface ImageViewer : NSView <ContentViewersProtocol, ImageViewerProtocol>
+ {
+   NSArray *extsarr;
+   BOOL valid;	
+@@ -76,9 +78,9 @@
+   NSWorkspace *ws;
+ }
+ 
+-- (void)setResizer:(id)anObject;
++- (oneway void)setResizer:(id)anObject;
+ 
+-- (void)imageReady:(NSDictionary *)imginfo;
++- (oneway void)imageReady:(NSDictionary *)imginfo;
+ 
+ - (void)editFile:(id)sender;
+ 
+diff -Naur gworkspace-0.9.4.orig/Inspector/ContentViewers/ImageViewer/ImageViewer.m gworkspace-0.9.4/Inspector/ContentViewers/ImageViewer/ImageViewer.m
+--- gworkspace-0.9.4.orig/Inspector/ContentViewers/ImageViewer/ImageViewer.m	2016-06-07 18:13:08.000000000 +0200
++++ gworkspace-0.9.4/Inspector/ContentViewers/ImageViewer/ImageViewer.m	2021-12-06 14:18:12.024085590 +0100
+@@ -198,7 +198,7 @@
+   }
+ }
+ 
+-- (void)setResizer:(id)anObject
++- (oneway void)setResizer:(id)anObject
+ {
+     NSSize imsize = [imview bounds].size;
+ 
+@@ -207,6 +207,7 @@
+     [anObject setProtocolForProxy: @protocol(ImageResizerProtocol)];
+     resizer = (ImageResizer *)anObject;
+     RETAIN (resizer);
++    [resizer setProxy: self];
+     [self addSubview: progView]; 
+     [progView start];    
+     [resizer readImageAtPath: imagePath setSize: imsize];
+@@ -214,7 +215,7 @@
+ 
+ 
+ 
+-- (void)imageReady:(NSDictionary *)imginfo
++- (oneway void)imageReady:(NSDictionary *)imginfo
+ {
+   NSData *imgdata;
+   BOOL imgok;
+diff -Naur gworkspace-0.9.4.orig/Inspector/ContentViewers/ImageViewer/Resizer.h gworkspace-0.9.4/Inspector/ContentViewers/ImageViewer/Resizer.h
+--- gworkspace-0.9.4.orig/Inspector/ContentViewers/ImageViewer/Resizer.h	2016-06-01 18:35:46.000000000 +0200
++++ gworkspace-0.9.4/Inspector/ContentViewers/ImageViewer/Resizer.h	2021-12-06 14:18:12.024085590 +0100
+@@ -1,9 +1,10 @@
+ /* Resizer.m
+ h
+  *  
+- * Copyright (C) 2005-2016 Free Software Foundation, Inc.
++ * Copyright (C) 2005-2020 Free Software Foundation, Inc.
+  *
+- * Author: Enrico Sersale <enrico@imago.ro>
++ * Authors: Enrico Sersale <enrico@imago.ro>
++ *          Riccardo Mottola <rm@gnu.org>
+  * Date: May 2016
+  *
+  * This file is part of the GNUstep Inspector application
+@@ -23,14 +24,15 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02111 USA.
+  */
+ 
+-
+-NSConnection *serverConnection;
++#import "ContentViewersProtocol.h"
+ 
+ @interface ImageResizer : NSObject
+ {
+-
++  id <ImageViewerProtocol> imageViewerProxy;
+ }
+ 
++- (void)setProxy:(id <ImageViewerProtocol>)ivp;
++
+ - (void)readImageAtPath:(NSString *)path
+                 setSize:(NSSize)imsize;
+ 
+diff -Naur gworkspace-0.9.4.orig/Inspector/ContentViewers/ImageViewer/Resizer.m gworkspace-0.9.4/Inspector/ContentViewers/ImageViewer/Resizer.m
+--- gworkspace-0.9.4.orig/Inspector/ContentViewers/ImageViewer/Resizer.m	2016-06-07 17:28:36.000000000 +0200
++++ gworkspace-0.9.4/Inspector/ContentViewers/ImageViewer/Resizer.m	2021-12-06 14:18:45.928073537 +0100
+@@ -33,24 +33,13 @@
+   do { if (GW_DEBUG_LOG) \
+     NSLog(format , ## args); } while (0)
+ 
+-@protocol ImageViewerProtocol
+-
+-- (oneway void)setResizer:(id)anObject;
+-
+-- (oneway void)imageReady:(NSDictionary *)dict;
+-
+-@end
+-
+-
+-
+-
+-
+ @implementation ImageResizer
+ 
+ + (void)connectWithPorts:(NSArray *)portArray
+ {
+   NSAutoreleasePool *pool;
+   ImageResizer *serverObject;
++  NSConnection *serverConnection;
+ 
+   pool = [[NSAutoreleasePool alloc] init];
+ 
+@@ -77,6 +66,11 @@
+ 
+ #define MIX_LIM 16
+ 
++- (void)setProxy:(id <ImageViewerProtocol>)ivp
++{
++  imageViewerProxy = ivp;
++}
++
+ - (void)readImageAtPath:(NSString *)path
+                 setSize:(NSSize)imsize
+ {
+@@ -191,7 +185,7 @@
+     
+     RELEASE (srcImage);
+   }
+-  [(id <ImageViewerProtocol>)[serverConnection rootProxy] imageReady: info];
++  [imageViewerProxy imageReady: info];
+   RELEASE (arp);
+ }
+ 
+diff -Naur gworkspace-0.9.4.orig/Inspector/ContentViewersProtocol.h gworkspace-0.9.4/Inspector/ContentViewersProtocol.h
+--- gworkspace-0.9.4.orig/Inspector/ContentViewersProtocol.h	2010-06-16 19:45:53.000000000 +0200
++++ gworkspace-0.9.4/Inspector/ContentViewersProtocol.h	2021-12-06 14:18:12.025085590 +0100
+@@ -1,8 +1,9 @@
+ /* ContentViewersProtocol.h
+  *  
+- * Copyright (C) 2004 Free Software Foundation, Inc.
++ * Copyright (C) 2004-2020 Free Software Foundation, Inc.
+  *
+- * Author: Enrico Sersale <enrico@imago.ro>
++ * Authors: Enrico Sersale <enrico@imago.ro>
++ *          Riccardo Mottola <rm@gnu.org>
+  * Date: January 2004
+  *
+  * This file is part of the GNUstep GWorkspace application
+@@ -48,4 +49,12 @@
+ 
+ @end 
+ 
++/* Proxy for DO connection */
+ 
++@protocol ImageViewerProtocol
++
++- (oneway void)setResizer:(id)anObject;
++
++- (oneway void)imageReady:(NSDictionary *)dict;
++
++@end

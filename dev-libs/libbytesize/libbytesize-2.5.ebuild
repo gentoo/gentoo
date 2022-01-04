@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit autotools python-r1
 
@@ -66,7 +66,7 @@ src_configure() {
 		$(use_with tools)
 	)
 	local ECONF_SOURCE="${S}"
-	python_do econf "${myeconfargs[@]}"
+	CONFIG_SHELL="${BROOT}/bin/bash" python_do econf "${myeconfargs[@]}"
 }
 
 src_compile() {

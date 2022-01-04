@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit flag-o-matic
+
 DESCRIPTION="Darwin Csu (crt1.o) - Mac OS X 10.10 version"
 HOMEPAGE="http://www.opensource.apple.com/"
 SRC_URI="http://www.opensource.apple.com/tarballs/Csu/Csu-${PV}.tar.gz"
@@ -21,6 +23,10 @@ DEPEND="|| (
 	)"
 
 src_prepare() {
+	# apart from gcc-4.2.1 possibly not understanding, this better not
+	# be aggressively optimised
+	filter-flags -march=* -mtune=*
+
 	# since we don't have crt0, we can't build it either
 	sed -i \
 		-e 's:$(SYMROOT)/crt0.o::' \

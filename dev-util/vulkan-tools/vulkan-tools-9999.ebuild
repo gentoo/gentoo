@@ -13,9 +13,9 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/sdk-${PV}.0.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv"
-	S="${WORKDIR}"/${MY_PN}-${PV}
+	S="${WORKDIR}"/${MY_PN}-sdk-${PV}.0
 fi
 
 DESCRIPTION="Official Vulkan Tools and Utilities for Windows, Linux, Android, and MacOS"
@@ -30,10 +30,10 @@ REQUIRED_USE="cube? ( ^^ ( X wayland ) )"
 
 BDEPEND="${PYTHON_DEPS}
 	>=dev-util/cmake-3.10.2
-	cube? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )
+	cube? ( ~dev-util/glslang-${PV}:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
-	>=media-libs/vulkan-loader-${PV}:=[${MULTILIB_USEDEP},wayland?,X?]
+	~media-libs/vulkan-loader-${PV}:=[${MULTILIB_USEDEP},wayland?,X?]
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11:=[${MULTILIB_USEDEP}]
@@ -41,7 +41,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	>=dev-util/vulkan-headers-${PV}
+	~dev-util/vulkan-headers-${PV}
 "
 
 pkg_setup() {

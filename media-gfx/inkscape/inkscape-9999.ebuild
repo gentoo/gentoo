@@ -33,6 +33,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-cpp/gtkmm:3.0
 	>=dev-cpp/pangomm-2.40:1.4
 	>=dev-libs/boehm-gc-7.1:=
+	>=dev-libs/boost-1.65:=
 	dev-libs/double-conversion:=
 	>=dev-libs/glib-2.41
 	>=dev-libs/libsigc++-2.8:2
@@ -91,7 +92,6 @@ RDEPEND="${COMMON_DEPEND}
 	postscript? ( app-text/ghostscript-gpl )
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-libs/boost-1.65
 	test? ( dev-cpp/gtest )
 "
 
@@ -139,6 +139,10 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_test() {
+	cmake_build -j1 check
+}
+
 src_install() {
 	cmake_src_install
 
@@ -157,8 +161,4 @@ src_install() {
 
 	# Empty directory causes sandbox issues, see bug #761915
 	rm -r "${ED}/usr/share/inkscape/fonts" || die "Failed to remove fonts directory."
-}
-
-src_test() {
-	cmake_build -j1 check
 }

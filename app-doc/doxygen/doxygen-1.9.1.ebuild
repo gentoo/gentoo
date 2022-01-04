@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,8 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/doxygen/doxygen.git"
 else
 	SRC_URI="http://doxygen.nl/files/${P}.src.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	SRC_URI+=" mirror://sourceforge/doxygen/rel-${PV}/${P}.src.tar.gz"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Documentation system for most programming languages"
@@ -71,14 +72,6 @@ pkg_setup() {
 
 src_prepare() {
 	cmake_src_prepare
-
-	# Ensure we link to -liconv
-	if use elibc_FreeBSD && has_version dev-libs/libiconv || use elibc_uclibc; then
-		local pro
-		for pro in */*.pro.in */*/*.pro.in; do
-			echo "unix:LIBS += -liconv" >> "${pro}" || die
-		done
-	fi
 
 	# Call dot with -Teps instead of -Tps for EPS generation - bug #282150
 	sed -i -e '/addJob("ps"/ s/"ps"/"eps"/g' src/dot.cpp || die

@@ -12,7 +12,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="FDL-1.1+"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ppc ~riscv x86"
 
 HTML_DOCS=( "." )
 

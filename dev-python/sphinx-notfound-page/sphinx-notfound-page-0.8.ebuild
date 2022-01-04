@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( pypy3 python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="Create a custom 404 page with absolute URLs hardcoded."
+DESCRIPTION="Create a custom 404 page with absolute URLs hardcoded"
 HOMEPAGE="https://sphinx-notfound-page.readthedocs.io/"
 # PyPI tarballs lack tests
 # https://github.com/readthedocs/sphinx-notfound-page/pull/110
@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 
 RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]"
 

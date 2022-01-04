@@ -32,6 +32,8 @@
 		instead of bundled.</flag>
 	<flag name="system-libvpx">Use the system-wide <pkg>media-libs/libvpx</pkg>
 		instead of bundled.</flag>
+	<flag name="system-png">Use the system-wide <pkg>media-libs/libpng</pkg>
+		instead of bundled (requires APNG patches).</flag>
 	<flag name="system-webp">Use the system-wide <pkg>media-libs/libwebp</pkg>
 		instead of bundled.</flag>
 </use>

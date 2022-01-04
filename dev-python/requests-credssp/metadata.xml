@@ -7,6 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">jborean93/requests-credssp</remote-id>
 		<remote-id type="pypi">requests-credssp</remote-id>
 	</upstream>
 </pkgmetadata>

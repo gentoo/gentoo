@@ -1,0 +1,29 @@
+https://github.com/tomtom/tlib_vim/commit/b5f9f6c83ade9b5640580bf9792a332dd453dfd0
+https://bugs.gentoo.org/828429
+
+From: Laurent Stacul <laurent.stacul@gmail.com>
+Date: Mon, 12 Jul 2021 15:51:16 +0200
+Subject: [PATCH] Fix error E1208 raised by vim >=8.2.3141
+
+Starting vim 8.2.3141 with the tlib_vim plugin will raised the following
+error message at startup:
+
+  Error detected while processing .vim/pack/stac/start/tlib_vim/plugin/02tlib.vim:
+  line   77: E1208: -complete used without -nargsPress ENTER or type command to continue
+
+The reason is the following change in vim:
+
+  https://github.com/vim/vim/commit/de69a7353e9bec552e15dbe3706a9f4e88080fce
+
+Which forbid the com[mand] command with -nargs=0 and -complete options.
+--- a/plugin/02tlib.vim
++++ b/plugin/02tlib.vim
+@@ -74,7 +74,7 @@ command! -nargs=1 -complete=command TBrowseOutput call tlib#cmd#BrowseOutput(<q-
+ "
+ " EXAMPLES: >
+ "   TBrowseScriptnames 
+-command! -nargs=0 -complete=command TBrowseScriptnames call tlib#cmd#TBrowseScriptnames()
++command! -nargs=0 TBrowseScriptnames call tlib#cmd#TBrowseScriptnames()
+ 
+ 
+ " :display: :Texecqfl CMD

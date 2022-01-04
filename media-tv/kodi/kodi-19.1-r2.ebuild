@@ -26,7 +26,7 @@ else
 	MY_PV=${MY_PV/_rc/RC}
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI+=" https://github.com/xbmc/xbmc/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm arm64 ~x86"
+	KEYWORDS="amd64 ~arm arm64 x86"
 	S=${WORKDIR}/xbmc-${MY_PV}
 fi
 
@@ -332,6 +332,12 @@ src_compile() {
 }
 
 src_test() {
+	local myctestargs=(
+		# Known failing, unreliable test
+		# bug #743938
+		-E "(TestCPUInfo.GetCPUFrequency)"
+	)
+
 	# see https://github.com/xbmc/xbmc/issues/17860#issuecomment-630120213
 	KODI_HOME="${BUILD_DIR}" cmake_build check
 }

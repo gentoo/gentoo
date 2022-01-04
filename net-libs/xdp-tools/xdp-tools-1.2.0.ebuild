@@ -9,7 +9,7 @@ SRC_URI="https://github.com/xdp-project/${PN}/archive/refs/tags/v${PV}.tar.gz ->
 
 LICENSE="GPL-2 LGPL-2.1 BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 IUSE="+doc +tools"
 

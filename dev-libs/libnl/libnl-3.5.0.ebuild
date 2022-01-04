@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_OPTIONAL=1
 inherit distutils-r1 libtool multilib-minimal
 
@@ -19,7 +19,7 @@ S="${WORKDIR}/${LIBNL_P}"
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
 SLOT="3"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="+debug static-libs python test +threads utils"
+IUSE="+debug python test utils"
 RESTRICT="!test? ( test )"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
@@ -68,10 +68,9 @@ src_prepare() {
 
 multilib_src_configure() {
 	econf \
+		--disable-static \
 		$(multilib_native_use_enable utils cli) \
-		$(use_enable debug) \
-		$(use_enable static-libs static) \
-		$(use_enable threads)
+		$(use_enable debug)
 }
 
 multilib_src_compile() {

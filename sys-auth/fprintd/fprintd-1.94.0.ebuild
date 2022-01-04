@@ -14,7 +14,7 @@ SRC_URI="https://gitlab.freedesktop.org/libfprint/${PN}/-/archive/v${PV}/${MY_P}
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc ~sparc x86"
 IUSE="doc pam systemd test"
 RESTRICT="!test? ( test )"
 
@@ -42,6 +42,7 @@ DEPEND="
 
 BDEPEND="
 	dev-lang/perl
+	dev-util/gdbus-codegen
 	virtual/pkgconfig
 	doc? (
 		dev-libs/libxml2

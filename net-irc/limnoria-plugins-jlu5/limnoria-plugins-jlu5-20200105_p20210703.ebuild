@@ -7,7 +7,7 @@ inherit vcs-snapshot
 
 COMMIT="7e959b9f24632d0fa9f587da6e1cde951397ae97"
 
-DESCRIPTION="A collection of plugins for the Limnoria IRC bot."
+DESCRIPTION="A collection of plugins for the Limnoria IRC bot"
 HOMEPAGE="https://github.com/jlu5/SupyPlugins"
 SRC_URI="https://github.com/jlu5/SupyPlugins/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 

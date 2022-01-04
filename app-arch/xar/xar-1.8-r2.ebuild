@@ -15,6 +15,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ppc64 sparc x86 ~amd64-linux ~
 IUSE="kernel_Darwin"
 
 RDEPEND="
+	elibc_musl? ( sys-libs/fts-standalone )
 	!kernel_Darwin? (
 		!kernel_SunOS? ( virtual/acl )
 		dev-libs/openssl:0=[${MULTILIB_USEDEP}]
@@ -39,6 +40,7 @@ S=${WORKDIR}/${PN}-${APPLE_PV}/${PN}
 
 multilib_src_configure() {
 	use kernel_Darwin || append-libs $($(tc-getPKG_CONFIG) --libs openssl)
+	use elibc_musl && append-libs $($(tc-getPKG_CONFIG) --libs fts-standalone)
 	ECONF_SOURCE=${S} \
 	econf \
 		--disable-static

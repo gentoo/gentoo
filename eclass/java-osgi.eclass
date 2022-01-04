@@ -6,7 +6,7 @@
 # java@gentoo.org
 # @AUTHOR:
 # Java maintainers <java@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @PROVIDES: java-utils-2
 # @BLURB: Java OSGi eclass
 # @DESCRIPTION:
@@ -16,7 +16,7 @@
 # could extend this so that Gentoo Java system would be fully OSGi compliant.
 
 case ${EAPI:-0} in
-	[567]) ;;
+	[5678]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 

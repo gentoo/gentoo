@@ -16,7 +16,10 @@ if [[ ${PV} = *9999* ]] ; then
 	EGIT_REPO_URI="https://git.blender.org/blender.git"
 else
 	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	# Update these between major releases.
+	#TEST_TARBALL_VERSION=SLOT_NUMBER
+	#SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.bz2 )"
+	KEYWORDS="~amd64 ~arm ~arm64"
 fi
 
 SLOT="${PV%.*}"
@@ -24,7 +27,7 @@ LICENSE="|| ( GPL-3 BL )"
 IUSE="+bullet +dds +fluid +openexr +system-python +system-numpy +tbb \
 	alembic collada +color-management cuda +cycles \
 	debug doc +embree +ffmpeg +fftw +gmp headless jack jemalloc jpeg2k \
-	man ndof nls openal opencl +oidn +openimageio +openmp +opensubdiv \
+	man ndof nls openal +oidn +openimageio +openmp +opensubdiv \
 	+openvdb +osl +pdf +potrace +pugixml pulseaudio sdl +sndfile standalone test +tiff valgrind"
 RESTRICT="!test? ( test )"
 
@@ -33,7 +36,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	cuda? ( cycles )
 	cycles? ( openexr tiff openimageio )
 	fluid? ( tbb )
-	opencl? ( cycles )
 	openvdb? ( tbb )
 	osl? ( cycles )
 	standalone? ( cycles )
@@ -47,6 +49,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/zstandard[${PYTHON_USEDEP}]
 	')
 	media-libs/freetype:=
 	media-libs/glew:*
@@ -79,14 +82,13 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
-	opencl? ( virtual/opencl )
 	oidn? ( >=media-libs/oidn-1.4.1 )
 	openimageio? ( >=media-libs/openimageio-2.2.13.1:= )
 	openexr? (
 		media-libs/ilmbase:=
 		media-libs/openexr:=
 	)
-	opensubdiv? ( >=media-libs/opensubdiv-3.4.0[cuda=,opencl=] )
+	opensubdiv? ( >=media-libs/opensubdiv-3.4.0[cuda=] )
 	openvdb? (
 		>=media-gfx/openvdb-7.1.0
 		dev-libs/c-blosc:=
@@ -136,8 +138,8 @@ blender_get_version() {
 		# Add period (290 -> 2.90).
 		BV=${BV:0:1}.${BV:1}
 	else
-		# Add period and strip last number (300 -> 3.0)
-		BV=${BV:0:1}.${BV:1:1}
+		# Add period and skip the middle number (301 -> 3.1)
+		BV=${BV:0:1}.${BV:2}
 	fi
 }
 
@@ -152,16 +154,20 @@ pkg_setup() {
 
 src_unpack() {
 	if [[ ${PV} = *9999* ]] ; then
-		TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/tests
 		git-r3_src_unpack
+		if use test; then
+			TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/tests
+			subversion_fetch ${TESTS_SVN_URL} ../lib/tests
+		fi
 	else
 		default
-		TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/tags/blender-${SLOT}-release/lib/tests
+		if use test; then
+			#The tests are downloaded from: https://svn.blender.org/svnroot/bf-blender/tags/blender-${SLOT}-release/lib/tests
+			mkdir -p lib || die
+			mv "${WORKDIR}"/blender-${TEST_TARBALL_VERSION}-tests/tests lib || die
+		fi
 	fi
 
-	if use test; then
-		subversion_fetch ${TESTS_SVN_URL} ../lib/tests
-	fi
 }
 
 src_prepare() {
@@ -178,7 +184,6 @@ src_prepare() {
 	sed -e "s|blender.svg|blender-${BV}.svg|" -i source/creator/CMakeLists.txt || die
 	sed -e "s|blender-symbolic.svg|blender-${BV}-symbolic.svg|" -i source/creator/CMakeLists.txt || die
 	sed -e "s|blender.desktop|blender-${BV}.desktop|" -i source/creator/CMakeLists.txt || die
-	sed -e "s|blender-thumbnailer.py|blender-${BV}-thumbnailer.py|" -i source/creator/CMakeLists.txt || die
 
 	sed -e "s|Name=Blender|Name=Blender ${PV}|" -i release/freedesktop/blender.desktop || die
 	sed -e "s|Exec=blender|Exec=blender-${BV}|" -i release/freedesktop/blender.desktop || die
@@ -187,7 +192,6 @@ src_prepare() {
 	mv release/freedesktop/icons/scalable/apps/blender.svg release/freedesktop/icons/scalable/apps/blender-${BV}.svg || die
 	mv release/freedesktop/icons/symbolic/apps/blender-symbolic.svg release/freedesktop/icons/symbolic/apps/blender-${BV}-symbolic.svg || die
 	mv release/freedesktop/blender.desktop release/freedesktop/blender-${BV}.desktop || die
-	mv release/bin/blender-thumbnailer.py release/bin/blender-${BV}-thumbnailer.py || die
 
 	if use test; then
 		# Without this the tests will try to use /usr/bin/blender and /usr/share/blender/ to run the tests.
@@ -213,7 +217,6 @@ src_configure() {
 		-DWITH_CXX_GUARDEDALLOC=$(usex debug)
 		-DWITH_CYCLES=$(usex cycles)
 		-DWITH_CYCLES_DEVICE_CUDA=$(usex cuda TRUE FALSE)
-		-DWITH_CYCLES_DEVICE_OPENCL=$(usex opencl)
 		-DWITH_CYCLES_EMBREE=$(usex embree)
 		-DWITH_CYCLES_OSL=$(usex osl)
 		-DWITH_CYCLES_STANDALONE=$(usex standalone)
@@ -260,32 +263,19 @@ src_configure() {
 		-DWITH_USD=OFF
 		-DWITH_XR_OPENXR=OFF
 	)
+
 	append-flags $(usex debug '-DDEBUG' '-DNDEBUG')
 
-	cmake_src_configure
-}
-
-src_compile() {
-	cmake_src_compile
-
-	if use doc; then
-		# Workaround for binary drivers.
-		addpredict /dev/ati
-		addpredict /dev/dri
-		addpredict /dev/nvidiactl
-
-		einfo "Generating Blender C/C++ API docs ..."
-		cd "${CMAKE_USE_DIR}"/doc/doxygen || die
-		doxygen -u Doxyfile || die
-		doxygen || die "doxygen failed to build API docs."
-
-		cd "${CMAKE_USE_DIR}" || die
-		einfo "Generating (BPY) Blender Python API docs ..."
-		"${BUILD_DIR}"/bin/blender --background --python doc/python_api/sphinx_doc_gen.py -noaudio || die "sphinx failed."
-
-		cd "${CMAKE_USE_DIR}"/doc/python_api || die
-		sphinx-build sphinx-in BPY_API || die "sphinx failed."
+	if tc-is-gcc ; then
+		# These options only exist when GCC is detected.
+		# We disable these to respect the user's choice of linker.
+		mycmakeargs+=(
+			-DWITH_LINKER_GOLD=OFF
+			-DWITH_LINKER_LLD=OFF
+		)
 	fi
+
+	cmake_src_configure
 }
 
 src_test() {
@@ -298,6 +288,11 @@ src_test() {
 	# (Because the data is in the image directory and it will default to look in /usr/share)
 	export BLENDER_SYSTEM_SCRIPTS=${ED}/usr/share/blender/${BV}/scripts
 	export BLENDER_SYSTEM_DATAFILES=${ED}/usr/share/blender/${BV}/datafiles
+
+	# Sanity check that the script and datafile path is valid.
+	# If they are not vaild, blender will fallback to the default path which is not what we want.
+	[ -d "$BLENDER_SYSTEM_SCRIPTS" ] || die "The custom script path is invalid, fix the ebuild!"
+	[ -d "$BLENDER_SYSTEM_DATAFILES" ] || die "The custom datafiles path is invalid, fix the ebuild!"
 
 	cmake_src_test
 
@@ -315,14 +310,6 @@ src_install() {
 		dobin "${BUILD_DIR}"/bin/cycles
 	fi
 
-	if use doc; then
-		docinto "html/API/python"
-		dodoc -r "${CMAKE_USE_DIR}"/doc/python_api/BPY_API/.
-
-		docinto "html/API/blender"
-		dodoc -r "${CMAKE_USE_DIR}"/doc/doxygen/html/.
-	fi
-
 	cmake_src_install
 
 	if use man; then
@@ -330,14 +317,44 @@ src_install() {
 		mv "${ED}/usr/share/man/man1/blender.1" "${ED}/usr/share/man/man1/blender-${BV}.1" || die
 	fi
 
+	if use doc; then
+		# Define custom blender data/script file paths. Otherwise Blender will not be able to find them during doc building.
+		# (Because the data is in the image directory and it will default to look in /usr/share)
+		export BLENDER_SYSTEM_SCRIPTS=${ED}/usr/share/blender/${BV}/scripts
+		export BLENDER_SYSTEM_DATAFILES=${ED}/usr/share/blender/${BV}/datafiles
+
+		# Workaround for binary drivers.
+		addpredict /dev/ati
+		addpredict /dev/dri
+		addpredict /dev/nvidiactl
+
+		einfo "Generating Blender C/C++ API docs ..."
+		cd "${CMAKE_USE_DIR}"/doc/doxygen || die
+		doxygen -u Doxyfile || die
+		doxygen || die "doxygen failed to build API docs."
+
+		cd "${CMAKE_USE_DIR}" || die
+		einfo "Generating (BPY) Blender Python API docs ..."
+		"${BUILD_DIR}"/bin/blender --background --python doc/python_api/sphinx_doc_gen.py -noaudio || die "sphinx failed."
+
+		cd "${CMAKE_USE_DIR}"/doc/python_api || die
+		sphinx-build sphinx-in BPY_API || die "sphinx failed."
+
+		docinto "html/API/python"
+		dodoc -r "${CMAKE_USE_DIR}"/doc/python_api/BPY_API/.
+
+		docinto "html/API/blender"
+		dodoc -r "${CMAKE_USE_DIR}"/doc/doxygen/html/.
+	fi
+
 	# Fix doc installdir
 	docinto html
 	dodoc "${CMAKE_USE_DIR}"/release/text/readme.html
 	rm -r "${ED}"/usr/share/doc/blender || die
 
-	python_fix_shebang "${ED}/usr/bin/blender-${BV}-thumbnailer.py"
 	python_optimize "${ED}/usr/share/blender/${BV}/scripts"
 
+	mv "${ED}/usr/bin/blender-thumbnailer" "${ED}/usr/bin/blender-${BV}-thumbnailer" || die
 	mv "${ED}/usr/bin/blender" "${ED}/usr/bin/blender-${BV}" || die
 }
 

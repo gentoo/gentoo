@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,6 @@ src_prepare() {
 		Makefile || die "sed Makefile failed"
 
 	if ! use elibc_glibc ; then
-		[[ ${CHOST} == *-*bsd* ]] && local reglibs="-lcompat"
 		[[ ${CHOST} == *-darwin* ]] && local reglibs="-lc"
 		has_version "app-text/recode[nls]" && reglibs="${reglibs} -lintl"
 		sed -i \

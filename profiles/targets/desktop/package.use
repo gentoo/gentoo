@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-12-18)
+# Required by media-gfx/digikam
+media-gfx/exiv2 xmp
+
 # Marek Szuba <marecki@gentoo.org> (2020-12-24)
 # Required by qt5
 media-gfx/gmic fftw
@@ -68,10 +72,6 @@ dev-python/PyQt5 gui multimedia network printsupport widgets
 # Enable x11-libs/libxcb[xkb] as it is needed by x11-libs/libxkbcommon[X]
 # and the X flag is enabled by default in the desktop profile
 x11-libs/libxcb xkb
-
-# Samuli Suominen <ssuominen@gentoo.org> (2011-09-27)
-# Required by mozilla browsers wrt #372419
-media-libs/libpng apng
 
 # Samuli Suominen <ssuominen@gentoo.org> (2010-12-19)
 # gudev, required by freedesktop.org udev helpers like udisks and upower

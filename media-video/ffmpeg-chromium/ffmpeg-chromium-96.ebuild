@@ -16,7 +16,7 @@ LICENSE="
 	gpl? ( GPL-2 )
 "
 
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="amd64 ~arm ~arm64"
 
 # Options to use as use_enable in the foo[:bar] form.
 # This will feed configure with $(use_enable foo bar)

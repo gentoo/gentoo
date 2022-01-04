@@ -1,0 +1,36 @@
+Fix collision with libudev symbols when statically linking.
+
+https://bugs.gentoo.org/830485
+--- a/mdadm.h
++++ b/mdadm.h
+@@ -1665,7 +1665,7 @@
+ extern void udev_block(char *devnm);
+ extern void udev_unblock(void);
+ 
+-extern int in_initrd(void);
++extern int mdadm_in_initrd(void);
+ 
+ struct cmap_hooks {
+ 	void *cmap_handle;      /* corosync lib related */
+--- a/mdmon.c
++++ b/mdmon.c
+@@ -309,7 +309,7 @@
+ 		{NULL, 0, NULL, 0}
+ 	};
+ 
+-	if (in_initrd()) {
++	if (mdadm_in_initrd()) {
+ 		/*
+ 		 * set first char of argv[0] to @. This is used by
+ 		 * systemd to signal that the task was launched from
+--- a/util.c
++++ b/util.c
+@@ -2219,7 +2219,7 @@
+ 	return 0;
+ }
+ 
+-int in_initrd(void)
++int mdadm_in_initrd(void)
+ {
+ 	/* This is based on similar function in systemd. */
+ 	struct statfs s;

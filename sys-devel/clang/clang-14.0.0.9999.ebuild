@@ -173,6 +173,7 @@ get_distribution_components() {
 			clang-offload-bundler
 			clang-offload-wrapper
 			clang-refactor
+			clang-repl
 			clang-rename
 			clang-scan-deps
 			diagtool
@@ -261,6 +262,7 @@ multilib_src_configure() {
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
+		-DLLVM_EXTERNAL_LIT="${BUILD_DIR}/bin/llvm-lit"
 		-DLLVM_LIT_ARGS="$(get_lit_flags)"
 	)
 

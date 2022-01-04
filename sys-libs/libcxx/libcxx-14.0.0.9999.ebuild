@@ -34,7 +34,7 @@ BDEPEND="
 
 DOCS=( CREDITS.TXT )
 
-LLVM_COMPONENTS=( libcxx{,abi} llvm/{cmake,utils/llvm-lit} )
+LLVM_COMPONENTS=( libcxx{,abi} llvm/{cmake,utils/llvm-lit} cmake )
 LLVM_PATCHSET=9999-1
 llvm.org_set_globals
 
@@ -132,6 +132,7 @@ multilib_src_configure() {
 		-DLIBCXX_INCLUDE_TESTS=$(usex test)
 		-DLIBCXX_USE_COMPILER_RT=${want_compiler_rt}
 		-DLIBCXX_HAS_ATOMIC_LIB=${want_gcc_s}
+		-DLIBCXX_TARGET_TRIPLE="${CHOST}"
 		-DCMAKE_SHARED_LINKER_FLAGS="${extra_libs[*]} ${LDFLAGS}"
 	)
 

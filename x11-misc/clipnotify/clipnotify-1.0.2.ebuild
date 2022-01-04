@@ -18,6 +18,12 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+src_compile() {
+	# Running into parallel jobs issues with -j16 on v1.0.2. There's only one .c file
+	# to compile. Go figure...
+	emake -j1
+}
+
 src_install() {
 	dobin clipnotify
 }

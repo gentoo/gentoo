@@ -59,7 +59,7 @@ BDEPEND="
 	virtual/awk
 	virtual/pkgconfig
 	sys-devel/autoconf-archive
-	verify-sig? ( app-crypt/openpgp-keys-python )
+	verify-sig? ( sec-keys/openpgp-keys-python )
 	!sys-devel/gcc[libffi(-)]"
 RDEPEND+=" !build? ( app-misc/mime-types )"
 
@@ -179,6 +179,9 @@ src_compile() {
 	# Ensure sed works as expected
 	# https://bugs.gentoo.org/594768
 	local -x LC_ALL=C
+	# Prevent using distutils bundled by setuptools.
+	# https://bugs.gentoo.org/823728
+	export SETUPTOOLS_USE_DISTUTILS=stdlib
 
 	emake CPPFLAGS= CFLAGS= LDFLAGS=
 

@@ -30,8 +30,10 @@ BDEPEND="
 	test? (
 		dev-python/pytest-httpbin[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		dev-python/trustme[${PYTHON_USEDEP}]
 		>=dev-python/PySocks-1.5.6[${PYTHON_USEDEP}]
+		!alpha? ( !hppa? ( !ia64? (
+			dev-python/trustme[${PYTHON_USEDEP}]
+		) ) )
 	)
 "
 
@@ -39,21 +41,28 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/${P}-test.patch
+	"${FILESDIR}"/${P}-trustme-dep.patch
 )
 
 python_test() {
-	local deselect=(
-		# Internet
+	local EPYTEST_DESELECT=(
+		# Internet (doctests)
 		requests/__init__.py::requests
 		requests/api.py::requests.api.request
 		requests/models.py::requests.models.PreparedRequest
 		requests/sessions.py::requests.sessions.Session
-		tests/test_requests.py::TestRequests::test_https_warnings
+		# require IPv4 interface in 10.* range
 		tests/test_requests.py::TestTimeout::test_connect_timeout
 		tests/test_requests.py::TestTimeout::test_total_timeout_connect
 		# TODO: openssl?
 		tests/test_requests.py::TestRequests::test_pyopenssl_redirect
 	)
 
-	epytest ${deselect[@]/#/--deselect }
+	if ! has_version "dev-python/trustme[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			tests/test_requests.py::TestRequests::test_https_warnings
+		)
+	fi
+
+	epytest
 }

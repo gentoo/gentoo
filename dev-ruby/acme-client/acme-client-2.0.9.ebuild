@@ -13,7 +13,7 @@ RUBY_FAKEGEM_GEMSPEC="acme-client.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A Ruby client for the letsencrypt's ACME protocol."
+DESCRIPTION="A Ruby client for the letsencrypt's ACME protocol"
 HOMEPAGE="https://github.com/unixcharles/acme-client"
 SRC_URI="https://github.com/unixcharles/acme-client/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

@@ -8,7 +8,7 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Definitions for rosserial_client targets for TivaC Launchpad evaluation boards."
+DESCRIPTION="Definitions for rosserial_client targets for TivaC Launchpad evaluation boards"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""

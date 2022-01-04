@@ -6,9 +6,47 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-26)
-# Depends on masked sys-fabric/dapl
-sys-fabric/ofed dapl
+# John Helmert III <ajak@gentoo.org> (2021-12-31)
+# Rizin tests require a tarball of binaries of ambiguous license.
+# As such, we cannot properly test it, so mask the flag until this
+# situation is resolved.
+dev-util/rizin test
+
+# Sam James <sam@gentoo.org> (2021-12-27)
+# Doc building is broken and no new releases in a long time.
+# bug #830013
+sci-libs/flann doc
+
+# Joonas Niilola <juippis@gentoo.org> (2021-12-20)
+# Broken, upstream issue/PR open since 2021-05 without reply.
+# Gentoo bug #821253
+media-video/mjpg-streamer http-management
+
+# David Seifert <soap@gentoo.org> (2021-12-19)
+# Requires GCC 8, security vulnerabilities, switch to CUDA 11,
+# consider using clang+NVPTX backend for sm_30 cards.
+# Removal in 90 days, bug #721808, #760708.
+dev-libs/cudnn cuda10-2
+
+# Thomas Deutschmann <whissi@gentoo.org> (2021-12-03)
+# Requires newer media-libs/dav1d which isn't available yet,
+# see https://bugzilla.mozilla.org/1734058
+>=www-client/firefox-95.0 system-av1
+
+# Wolfgang E. Sanyer <ezzieyguywuf@gmail.com> (2021-12-01)
+# Requires pandoc, which is unstable due to various haskell dependencies
+# (including ghc)
+>=sys-apps/exa-0.10.1 man
+
+# Sam James <sam@gentoo.org> (2021-11-26)
+# Needs unpackaged asciidoctor-pdf for now
+# bug #827290
+>=app-doc/kicad-doc-6.0.0_rc1 pdf
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-23)
+# pdfannotextractor gets masked as it does not support
+# updated dev-java/pdfbox-2.0.24, Bug #803488
+app-text/texlive pdfannotextractor
 
 # Conrad Kostecki <conikost@gentoo.org> (2021-10-23)
 # Build tools is currently broken, so masking until upstream fixes
@@ -189,11 +227,6 @@ x11-libs/colord-gtk doc
 <sys-devel/clang-14 llvm_targets_CSKY llvm_targets_M68k
 <sys-devel/llvm-14 llvm_targets_CSKY llvm_targets_M68k
 
-# Joonas Niilola <juippis@gentoo.org> (2020-12-03)
-# Doc building seem to be very random without any predictability,
-# bug #734104
-media-gfx/blender doc
-
 # Marek Szuba <marecki@gentoo.org> (2020-11-30)
 # Vendored therecipe/qt violates network sandbox + uses external binary
 # Qt libraries; see https://github.com/ProtonMail/proton-bridge/issues/16
@@ -228,10 +261,6 @@ dev-db/mariadb columnstore
 # Required dependencies are not yet in the Gentoo ebuild tree
 # Please file a bug if this feature is needed
 dev-python/autobahn xbr
-
-# Thomas Deutschmann <whissi@gentoo.org> (2020-07-27)
-# media-video/pipewire:0/0.3 is only available for certain architectures
-www-client/firefox screencast
 
 # Stephan Hartmann <stha09@googlemail.com> (2020-06-28)
 # Mostly intended for development and not for general use.
@@ -405,6 +434,7 @@ sys-devel/binutils-hppa64 cet
 sys-devel/gdb cet
 sys-libs/binutils-libs cet
 sys-libs/glibc cet
+sys-devel/gcc cet
 
 # Michał Górny <mgorny@gentoo.org> (2018-06-13)
 # Requires app-arch/snappy[static-libs] that is no longer available.
@@ -428,7 +458,7 @@ app-emulation/fuse backend-svga
 # Patrick McLean <chutzpah@gentoo.org> (2018-03-06)
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-12-25)
 # Requires dev-libs/boost-1.72 that is gone
-sys-cluster/ceph system-boost
+<sys-cluster/ceph-15 system-boost
 
 # Brian Evans <grknight@gentoo.org> (2018-03-05)
 # Mask embedded USE on virtual/mysql and friends to transition it to be obsolete

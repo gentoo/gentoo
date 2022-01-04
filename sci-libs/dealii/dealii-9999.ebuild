@@ -46,6 +46,7 @@ REQUIRED_USE="
 CAS_VERSION=7.5.3
 
 RDEPEND="dev-libs/boost:=
+	!~dev-libs/boost-1.77.0
 	app-arch/bzip2
 	sys-libs/zlib
 	dev-cpp/cpp-taskflow
@@ -53,7 +54,7 @@ RDEPEND="dev-libs/boost:=
 	adolc? ( sci-libs/adolc )
 	arpack? ( sci-libs/arpack[mpi=] )
 	assimp? ( media-libs/assimp )
-	cuda? ( dev-util/nvidia-cuda-sdk )
+	cuda? ( dev-util/nvidia-cuda-toolkit )
 	ginkgo? ( sci-libs/ginkgo )
 	gmsh? ( sci-libs/gmsh )
 	gsl? ( sci-libs/gsl:= )

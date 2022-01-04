@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="Composable complex class support for attrs and dataclasses."
+DESCRIPTION="Composable complex class support for attrs and dataclasses"
 HOMEPAGE="
 	https://pypi.org/project/cattrs/
 	https://github.com/Tinche/cattrs/"

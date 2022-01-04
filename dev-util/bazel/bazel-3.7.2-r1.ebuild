@@ -12,7 +12,7 @@ SRC_URI="https://github.com/bazelbuild/bazel/releases/download/${PV}/${P}-dist.z
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="examples tools"
 # strip corrupts the bazel binary
 # test fails with network-sandbox: An error occurred during the fetch of repository 'io_bazel_skydoc' (bug 690794)
@@ -66,6 +66,7 @@ src_prepare() {
 	addpredict /proc
 
 	eapply "${FILESDIR}/${PN}-3.2.0-include-limits-for-gcc-11.patch"
+	eapply "${FILESDIR}/${PN}-3.7.2-musl-temp-failure-retry.patch"
 }
 
 src_compile() {

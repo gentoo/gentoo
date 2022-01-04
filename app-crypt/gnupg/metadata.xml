@@ -14,11 +14,6 @@
 		<name>Gentoo Base System</name>
 	</maintainer>
 	<use>
-		<flag name="scd-shared-access">
-		Allow concurrent access to scdaemon by multiple apps from same
-		user. Useful if you want to use scdaemon with gnupg and for
-		example NitroKey.
-		</flag>
 		<flag name="smartcard">
 		Build scdaemon software. Enables usage of OpenPGP cards. For
 		other type of smartcards, try <pkg>app-crypt/gnupg-pkcs11-scd</pkg>.

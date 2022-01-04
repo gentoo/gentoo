@@ -112,7 +112,7 @@ EOF
 }
 
 src_test() {
-	make -C src/ check
+	emake -C src/ check
 }
 
 src_install() {

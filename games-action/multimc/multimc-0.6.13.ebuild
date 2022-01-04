@@ -38,11 +38,11 @@ COMMON_DEPEND="
 	dev-qt/qtxml:5
 "
 DEPEND="${COMMON_DEPEND}
-	>=virtual/jdk-1.8.0
+	virtual/jdk:1.8
 "
 RDEPEND="${COMMON_DEPEND}
 	sys-libs/zlib
-	>=virtual/jre-1.8.0
+	>=virtual/jre-1.8:*
 	virtual/opengl
 	x11-libs/libXrandr
 "

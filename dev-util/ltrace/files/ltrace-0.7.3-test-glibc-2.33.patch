@@ -5,7 +5,7 @@
  set pattern "SYS_unlink"
  ltrace_verify_output ${objdir}/${subdir}/${testfile}.ltrace $pattern 1
 -set pattern "SYS_(new)?stat"
-+set pattern "SYS_(new)?stat|SYS_newfstatat"
++set pattern "SYS_(new)?stat|SYS_fstatat64|SYS_newfstatat"
  ltrace_verify_output ${objdir}/${subdir}/${testfile}.ltrace $pattern 1 egrep
  set pattern "SYS_access"
  ltrace_verify_output ${objdir}/${subdir}/${testfile}.ltrace $pattern 1

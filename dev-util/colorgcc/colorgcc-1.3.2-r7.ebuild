@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="Perl script to colorise the gcc output."
+DESCRIPTION="Perl script to colorise the gcc output"
 HOMEPAGE="http://schlueters.de/colorgcc.html"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 

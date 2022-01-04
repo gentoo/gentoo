@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/ark/ https://utils.kde.org/projects/ark/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE="zip"
 
 RDEPEND="
@@ -44,8 +44,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
+	test? ( >=dev-libs/libzip-1.2.0:= )
 "
-BDEPEND="sys-devel/gettext"
+BDEPEND="
+	sys-devel/gettext
+	test? ( amd64? ( app-arch/rar ) x86? ( app-arch/rar ) )
+"
 
 src_configure() {
 	local mycmakeargs=(
@@ -53,6 +57,15 @@ src_configure() {
 	)
 
 	ecm_src_configure
+}
+
+src_test() {
+	local myctestargs=(
+		# bug 822177: may segfault or hang indefinitely
+		-E "(kerfuffle-addtoarchivetest)"
+	)
+
+	ecm_src_test
 }
 
 pkg_postinst() {

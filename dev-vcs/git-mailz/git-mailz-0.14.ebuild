@@ -10,12 +10,15 @@ SRC_URI="http://codex.sigpipe.cz/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-shells/zsh
 	dev-vcs/git
 	virtual/mta
 "
+BDEPEND="test? ( dev-util/cram )"
 
 src_compile() {
 	emake GZIPCMD="true"

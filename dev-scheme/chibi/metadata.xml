@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Chibi-Scheme is a very small library intended for use as an extension
+    and scripting language in C programs. In addition to support for
+    lightweight VM-based threads, each VM itself runs in an isolated heap
+    allowing multiple VMs to run simultaneously in different OS threads.
+    Despite the small size, Chibi-Scheme attempts to do The Right Thing.
+    The default settings include:
+    - a full numeric tower, with rational and complex numbers
+    - full and seamless Unicode support
+    - low-level and high-level hygienic macros
+    - an extensible module system
+    Specifically, the default repl language contains all bindings from R7RS
+    small, available explicitly as the (scheme small) library. The language
+    is built in layers, however - see the manual for instructions on
+    compiling with fewer features or requesting a smaller language
+    on startup.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/ashinn/chibi-scheme/issues</bugs-to>
+    <remote-id type="github">ashinn/chibi-scheme</remote-id>
+  </upstream>
+</pkgmetadata>

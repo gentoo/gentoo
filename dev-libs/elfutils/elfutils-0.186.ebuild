@@ -1,4 +1,4 @@
-# Copyright 2003-2021 Gentoo Authors
+# Copyright 2003-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,10 +8,11 @@ inherit flag-o-matic multilib-minimal
 DESCRIPTION="Libraries/utilities to handle ELF objects (drop in replacement for libelf)"
 HOMEPAGE="https://elfutils.org/"
 SRC_URI="https://sourceware.org/elfutils/ftp/${PV}/${P}.tar.bz2"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-0.186-patches.tar.gz"
 
 LICENSE="|| ( GPL-2+ LGPL-3+ ) utils? ( GPL-3+ )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 lzma nls static-libs test +threads +utils valgrind zstd"
 
 RDEPEND=">=sys-libs/zlib-1.2.8-r1[static-libs?,${MULTILIB_USEDEP}]
@@ -36,23 +37,14 @@ BDEPEND="nls? ( sys-devel/gettext )
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.175-disable-biarch-test-PR24158.patch
-	"${FILESDIR}"/${PN}-0.177-disable-large.patch
-	"${FILESDIR}"/${PN}-0.180-PaX-support.patch
+	"${WORKDIR}"/${PN}-0.186-patches/
 )
 
 src_prepare() {
 	default
 
 	if use elibc_musl; then
-		mkdir -p "${T}"/musl || die
-		cp -rv "${FILESDIR}"/musl/*.patch "${T}"/musl || die
-
-		# Delete patches upstreamed in 0.186
-		rm "${T}/musl/${PN}-0.185-error-h.patch" || die
-		rm "${T}/musl/${PN}-0.185-strndupa.patch" || die
-
-		eapply "${T}"/musl/
+		eapply "${WORKDIR}"/${PN}-0.186-patches/musl/
 	fi
 
 	if ! use static-libs; then

@@ -31,7 +31,8 @@ DEPEND=" ${RDEPEND}
 	virtual/pkgconfig
 	dev-lang/swig
 	>=sys-devel/libtool-2.2
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen
+		dev-util/source-highlight )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

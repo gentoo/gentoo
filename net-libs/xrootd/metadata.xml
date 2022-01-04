@@ -9,12 +9,13 @@
   XROOTD software framework is a fully generic suite for fast, low latency
   and scalable data access, which can serve natively any kind of data,
   organized as a hierarchical filesystem-like namespace, based on the
-  concept of directory. 
+  concept of directory.
   It is usually used with <pkg>sci-physics/root</pkg> and its PROOF
   facilities for cluster computing in high energy physics.
 </longdescription>
   <use>
     <flag name="fuse">Enable the <pkg>sys-fs/fuse</pkg> filesystem driver</flag>
     <flag name="http">Enable http protocol support</flag>
+    <flag name="server">Install xrootd server and related plug-ins</flag>
   </use>
 </pkgmetadata>

@@ -17,8 +17,8 @@ KEYWORDS="-* ~amd64 ~x86"
 
 RDEPEND="
 	|| (
-		sys-libs/glibc[crypt(+)]
 		sys-libs/libxcrypt[compat]
+		sys-libs/glibc[crypt(+)]
 	)
 	dev-libs/glib:2
 	dev-libs/openssl:0

@@ -40,7 +40,7 @@ VERSION_ZLIB="1.2.11"
 VERSION_ZSTD="1.4.5"
 
 COMMON_URI="
-	https://dl.bintray.com/boostorg/release/${VERSION_BOOST}/source/boost_${VERSION_BOOST//./_}.tar.bz2
+	https://boostorg.jfrog.io/artifactory/main/release/${VERSION_BOOST}/source/boost_${VERSION_BOOST//./_}.tar.bz2
 	https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v${VERSION_BTRFS_PROGS}.tar.xz
 	https://www.busybox.net/downloads/busybox-${VERSION_BUSYBOX}.tar.bz2
 	mirror://gnu/coreutils/coreutils-${VERSION_COREUTILS}.tar.xz

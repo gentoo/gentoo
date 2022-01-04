@@ -115,11 +115,6 @@ video_cards_r300
 video_cards_r600
 video_cards_radeonsi
 
-# USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
-# Bug #184563, 2007-09-18
-# Robin H. Johnson <robbat2@gentoo.org>
-audit
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
 # media-libs/xine-lib is not keyworded
 xine

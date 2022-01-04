@@ -1,0 +1,12 @@
+[Unit]
+Description=Icecream distributed compiler scheduler
+
+[Service]
+Type=simple
+User=icecream
+Group=icecream
+SyslogIdentifier=icecc-scheduler
+ExecStart=/usr/sbin/icecc-scheduler -u icecream -l /var/log/icecream/scheduler -v
+
+[Install]
+WantedBy=multi-user.target

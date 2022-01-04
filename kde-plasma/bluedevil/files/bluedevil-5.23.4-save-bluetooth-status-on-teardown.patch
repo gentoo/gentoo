@@ -1,0 +1,89 @@
+From daaa18920ae93b482585eb3df790a6d5a647b6db Mon Sep 17 00:00:00 2001
+From: Nate Graham <nate@kde.org>
+Date: Fri, 19 Nov 2021 19:37:58 -0700
+Subject: [PATCH] Save bluetooth status on teardown
+
+Instead of watching for the shutdown and restart signals, just save
+status anytime kded quits, which automatically covers those use cases as
+well as when logging out. This is what the code was already halfway
+doing; let's go all the way.
+
+BUG: 445376
+FIXED-IN: 5.23.5
+(cherry picked from commit e57bb7580251f38e798bea21cdad43a3f90f2568)
+---
+ src/kded/devicemonitor.cpp | 29 +++--------------------------
+ src/kded/devicemonitor.h   |  1 -
+ 2 files changed, 3 insertions(+), 27 deletions(-)
+
+diff --git a/src/kded/devicemonitor.cpp b/src/kded/devicemonitor.cpp
+index 735747ee..5090a8be 100644
+--- a/src/kded/devicemonitor.cpp
++++ b/src/kded/devicemonitor.cpp
+@@ -46,15 +46,6 @@ DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
+                                          this,
+                                          SLOT(login1PrepareForSleep(bool)));
+ 
+-    // Catch shutdown events so we can save status when shutting down and
+-    // optionally resume when starting up
+-    QDBusConnection::systemBus().connect(QStringLiteral("org.freedesktop.login1"),
+-                                         QStringLiteral("/org/freedesktop/login1"),
+-                                         QStringLiteral("org.freedesktop.login1.Manager"),
+-                                         QStringLiteral("PrepareForShutdown"),
+-                                         this,
+-                                         SLOT(login1PrepareForShutdown(bool)));
+-
+     // Set initial state
+     const KConfigGroup globalGroup = m_config->group("Global");
+     const QString launchState = globalGroup.readEntry("launchState", "remember");
+@@ -75,17 +66,11 @@ DeviceMonitor::DeviceMonitor(BlueDevilDaemon *daemon)
+     }
+ }
+ 
+-// Save state when tearing down to avoid getting out of sync if kded crashes
+-// or is manually restarted
+ DeviceMonitor::~DeviceMonitor()
+ {
+-    KConfigGroup globalGroup = m_config->group("Global");
+-
+-    if (m_manager->isBluetoothBlocked()) {
+-        globalGroup.writeEntry<bool>("bluetoothBlocked", true);
+-    } else {
+-        globalGroup.deleteEntry("bluetoothBlocked");
+-    }
++    // Save state when tearing down to avoid getting out of sync if kded crashes
++    // or is manually restarted
++    saveState();
+ }
+ 
+ KFilePlacesModel *DeviceMonitor::places()
+@@ -140,14 +125,6 @@ void DeviceMonitor::login1PrepareForSleep(bool active)
+     }
+ }
+ 
+-void DeviceMonitor::login1PrepareForShutdown(bool active)
+-{
+-    if (active) {
+-        qCDebug(BLUEDAEMON) << "About to shut down";
+-        saveState();
+-    }
+-}
+-
+ void DeviceMonitor::saveState()
+ {
+     KConfigGroup adaptersGroup = m_config->group("Adapters");
+diff --git a/src/kded/devicemonitor.h b/src/kded/devicemonitor.h
+index 6a35fed4..a7b38cab 100644
+--- a/src/kded/devicemonitor.h
++++ b/src/kded/devicemonitor.h
+@@ -35,7 +35,6 @@ private Q_SLOTS:
+ 
+     void deviceConnectedChanged(bool connected);
+     void login1PrepareForSleep(bool active);
+-    void login1PrepareForShutdown(bool active);
+ 
+ private:
+     void restoreState();
+-- 
+GitLab
+

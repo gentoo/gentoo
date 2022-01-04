@@ -5,7 +5,9 @@ EAPI=7
 
 DESCRIPTION="The best variant of the Yacc parser generator"
 HOMEPAGE="https://invisible-island.net/byacc/byacc.html"
-SRC_URI="https://invisible-mirror.net/archives/byacc/${P}.tgz"
+SRC_URI="ftp://ftp.invisible-island.net/byacc/${P}.tgz"
+# Seems to be unreliable (unstable tarballs): bug #820167.
+#SRC_URI="https://invisible-mirror.net/archives/byacc/${P}.tgz"
 
 LICENSE="public-domain"
 SLOT="0"

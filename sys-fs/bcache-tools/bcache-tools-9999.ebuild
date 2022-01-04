@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{7..10} )
 
@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="Tools for bcache"
-HOMEPAGE="https://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git/"
+HOMEPAGE="https://bcache.evilpiepirate.org/ https://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git/"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -46,7 +46,7 @@ src_install() {
 	dosbin bcache make-bcache bcache-super-show
 
 	exeinto $(get_udevdir)
-	doexe bcache-register probe-bcache
+	doexe bcache-register probe-bcache bcache-export-cached
 
 	python_foreach_impl python_doscript bcache-status
 

@@ -1,3 +1,5 @@
+(See https://bugs.gentoo.org/828520 too)
+
 From: Sam James <sam@gentoo.org>
 Date: Wed, 10 Nov 2021 04:53:33 +0000
 Subject: [PATCH] Don't hardcode paths to utilities
@@ -20,7 +22,7 @@ this package is fragile enough. Leaving it for now.
 -SED_PATH=@SED@
 -GREP_PATH=@GREP@
 -ZIP_PATH=@ZIP@
-+LINKS_PATH=$(command -v links)
++LINKS_PATH=$(command -v elinks || command -v links)
 +W3M_PATH=$(command -v w3m)
 +LYNX_PATH=$(command -v lynx)
 +GCP_PATH=$(command -v cp)

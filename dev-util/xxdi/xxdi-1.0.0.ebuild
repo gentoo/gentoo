@@ -12,7 +12,7 @@ S="${WORKDIR}"/${PN}-${MODULE_VERSION}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc ppc64 x86"
+KEYWORDS="amd64 arm64 ppc ppc64 ~riscv x86"
 
 RDEPEND="dev-lang/perl
 	dev-perl/File-Slurp"

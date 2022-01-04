@@ -6,8 +6,8 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="The fastest feature-rich C++11/14/17/20 single-header testing framework"
-HOMEPAGE="https://github.com/onqtam/doctest"
-SRC_URI="https://github.com/onqtam/doctest/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/doctest/doctest"
+SRC_URI="https://github.com/doctest/doctest/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

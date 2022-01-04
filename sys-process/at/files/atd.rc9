@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile="/run/atd.pid"
+command="/usr/sbin/atd"
+command_args="${ATD_OPTS}"
+command_args_foreground="-f"
+
+depend() {
+	need clock
+	use logger
+}
