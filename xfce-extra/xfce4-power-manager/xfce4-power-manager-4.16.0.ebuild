@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~riscv x86"
-IUSE="kernel_linux networkmanager +panel-plugin policykit"
+IUSE="networkmanager +panel-plugin policykit"
 
 DEPEND=">=dev-libs/glib-2.50
 	>=sys-power/upower-0.99.0
