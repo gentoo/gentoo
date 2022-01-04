@@ -64,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-lib-don-t-read-hidden-files-from-the-config-director.patch
 	"${FILESDIR}"/${P}-alsa-handle-the-release-requested-signal.patch
 	"${FILESDIR}"/${P}-access-config-add-restricted-access-permissions.patch
+	"${FILESDIR}"/${P}-default-routes.lua-reevaluate-current-profile-only-f.patch
 	"${WORKDIR}"/${P}-endianness-fixes.patch
 )
 
