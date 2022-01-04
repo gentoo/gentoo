@@ -104,10 +104,6 @@ prefix
 prefix-guest
 prefix-stack
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (2010-10-19)
-# masking flags that only apply to FreeBSD
-kqueue
-
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-18)
 # Prelude is being masked for removal
 prelude
