@@ -108,7 +108,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	qemu_softmmu_targets_x86_64? ( fdt )
 	sdl-image? ( sdl )
 	static? ( static-user !alsa !gtk !jack !opengl !pam !pulseaudio !plugins !rbd !snappy !udev )
-	static-user? ( !plugins )
+	static-user? ( !pam !plugins )
 	vhost-user-fs? ( caps seccomp )
 	virgl? ( opengl )
 	virtfs? ( caps xattr )
