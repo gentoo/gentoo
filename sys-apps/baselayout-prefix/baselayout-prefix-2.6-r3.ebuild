@@ -22,7 +22,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="build kernel_linux +split-usr"
+IUSE="build +split-usr"
 
 RDEPEND="!sys-apps/baselayout"  #681760
 
