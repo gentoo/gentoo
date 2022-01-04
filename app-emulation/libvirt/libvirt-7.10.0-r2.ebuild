@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -135,6 +135,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.7.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-6.7.0-fix-paths-for-apparmor.patch
 	"${FILESDIR}"/${PN}-7.9.0-fix_cgroupv2.patch
+	"${FILESDIR}"/${PN}-7.10.0-fix_soname.patch
 )
 
 pkg_setup() {
