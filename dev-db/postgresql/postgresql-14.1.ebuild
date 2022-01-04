@@ -20,7 +20,7 @@ LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
-IUSE="debug doc icu kerberos kernel_linux ldap llvm lz4 nls pam
+IUSE="debug doc icu kerberos ldap llvm lz4 nls pam
 	  perl python +readline selinux +server systemd ssl static-libs tcl
 	  threads uuid xml zlib"
 
