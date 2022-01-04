@@ -19,11 +19,11 @@ HOMEPAGE="https://sw.kovidgoyal.net/kitty/"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+X debug test wayland"
+IUSE="+X debug test transfer wayland"
 REQUIRED_USE="
 	|| ( X wayland )
 	${PYTHON_REQUIRED_USE}"
-RESTRICT="!test? ( test )"
+RESTRICT="!X? ( test ) !test? ( test ) !transfer? ( test ) !wayland? ( test )"
 
 RDEPEND="
 	${PYTHON_DEPS}
@@ -33,7 +33,6 @@ RDEPEND="
 	media-libs/lcms:2
 	media-libs/libglvnd[X?]
 	media-libs/libpng:=
-	net-libs/librsync:=
 	sys-apps/dbus
 	sys-libs/zlib:=
 	x11-libs/libxkbcommon[X?]
@@ -41,6 +40,7 @@ RDEPEND="
 	~x11-terms/kitty-shell-integration-${PV}
 	~x11-terms/kitty-terminfo-${PV}
 	X? ( x11-libs/libX11 )
+	transfer? ( net-libs/librsync:= )
 	wayland? ( dev-libs/wayland )"
 DEPEND="
 	${RDEPEND}
@@ -66,10 +66,17 @@ PATCHES=(
 src_prepare() {
 	default
 
-	sed "s/'x11 wayland'/'$(usev X x11) $(usev wayland)'/" -i setup.py || die
-	sed "s/else linux_backends/else [$(usev X "'x11',")$(usev wayland "'wayland'")]/" \
-		-i kitty_tests/check_build.py || die
-	use X || sed "/glfw_path('x11')/s/x11/wayland/" -i kitty_tests/glfw.py || die
+	sed -i "s/'x11 wayland'/'$(usev X x11) $(usev wayland)'/" setup.py || die
+
+	if use !transfer; then
+		sed -i 's/rs_cflag =/& []#/;/files.*rsync/d' setup.py || die
+		rm -r kittens/transfer || die
+	fi
+
+	# --shell-integration="enabled no-rc" is the intended way to set
+	# no-rc by default, but setup.py's replacer currently fails
+	# https://github.com/kovidgoyal/kitty/issues/4434
+	sed -i "/shell_integration:/s/'enabled'/&,'no-rc'/" kitty/options/types.py || die
 
 	# test relies on 'who' command which typically works but have 1 VM
 	# where it didn't only under portage/sandbox, needs investigation but
@@ -89,7 +96,6 @@ src_compile() {
 		--disable-link-time-optimization
 		--ignore-compiler-warnings
 		--libdir-name=$(get_libdir)
-		--shell-integration="enabled no-rc"
 		--update-check-interval=0
 		--verbose
 		$(usev debug --debug)
