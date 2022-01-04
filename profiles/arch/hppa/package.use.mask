@@ -102,7 +102,7 @@ dev-vcs/mercurial rust
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
 # Dependency not keyworded on this arch.
-dev-libs/efl avif lua_single_target_luajit physics
+dev-libs/efl avif heif lua_single_target_luajit physics
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
