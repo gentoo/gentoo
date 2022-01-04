@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.xz"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc64 x86"
-IUSE="kernel_linux systemd"
+IUSE="systemd"
 
 DEPEND="dev-libs/hidapi
 	dev-libs/json-c:="
