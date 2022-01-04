@@ -41,6 +41,13 @@ src_prepare() {
 		src/lib/Makefile.in || die
 
 	eautoreconf
+
+	# Should be able to drop in next version.
+	# Taken from autogen.sh (bug #704074):
+	sed -i \
+		-e "s/#define PACKAGE/#define NDPI_PACKAGE/g" \
+		-e "s/#define VERSION/#define NDPI_VERSION/g" \
+		configure || die
 }
 
 src_test() {
