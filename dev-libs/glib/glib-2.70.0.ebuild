@@ -11,7 +11,7 @@ HOMEPAGE="https://www.gtk.org/"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
-IUSE="dbus debug +elf fam gtk-doc kernel_linux +mime selinux static-libs sysprof systemtap test utils xattr"
+IUSE="dbus debug +elf fam gtk-doc +mime selinux static-libs sysprof systemtap test utils xattr"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="gtk-doc? ( test )" # Bug #777636
 
