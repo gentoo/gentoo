@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_SINGLE_IMPL=1
 
 inherit bash-completion-r1 distutils-r1 systemd tmpfiles
@@ -31,8 +31,7 @@ RDEPEND="
 			|| (
 				dev-python/python-systemd[${PYTHON_USEDEP}]
 				sys-apps/systemd[python(-),${PYTHON_USEDEP}]
-			)
-		' 'python*')
+			)' 'python*' )
 	)
 "
 
@@ -40,16 +39,15 @@ DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.11.2-adjust-apache-logs-paths.patch
+	"${FILESDIR}"/${PN}-0.11.2-upstream-openrc.patch
 )
 
 python_prepare_all() {
+	distutils-r1_python_prepare_all
+
 	# Replace /var/run with /run, but not in the top source directory
 	find . -mindepth 2 -type f -exec \
 		sed -i -e 's|/var\(/run/fail2ban\)|\1|g' {} + || die
-
-	sed -i -e 's|runscript|openrc-run|g' files/gentoo-initd || die
-
-	distutils-r1_python_prepare_all
 }
 
 python_compile() {
@@ -69,12 +67,13 @@ python_install_all() {
 
 	rm -rf "${ED}"/usr/share/doc/${PN} "${ED}"/run || die
 
-	# Not ${FILESDIR}
-	newconfd files/gentoo-confd ${PN}
-	newinitd files/gentoo-initd ${PN}
+	newconfd files/fail2ban-openrc.conf ${PN}
 
-	sed -e "s:@BINDIR@:${EPREFIX}/usr/bin:g" files/${PN}.service.in > "${T}"/${PN}.service || die
-	systemd_dounit "${T}"/${PN}.service
+	# These two are placed in the ${BUILD_DIR} after being "built"
+	# in install_scripts().
+	newinitd "${BUILD_DIR}/fail2ban-openrc.init" "${PN}"
+	systemd_dounit "${BUILD_DIR}/${PN}.service"
+
 	dotmpfiles files/${PN}-tmpfiles.conf
 
 	doman man/*.{1,5}
@@ -98,7 +97,7 @@ pkg_preinst() {
 pkg_postinst() {
 	tmpfiles_process ${PN}-tmpfiles.conf
 
-	if [[ ${previous_less_than_0_7} == 0 ]] ; then
+	if [[ ${previous_less_than_0_7} = 0 ]] ; then
 		elog
 		elog "Configuration files are now in /etc/fail2ban/"
 		elog "You probably have to manually update your configuration"
