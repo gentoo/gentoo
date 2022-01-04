@@ -14,7 +14,6 @@
 		<flag name="blowfish">Compile with blowfish encryption support</flag>
 		<flag name="chroot">Compile with chroot support</flag>
 		<flag name="http">Compile with HTTP server support</flag>
-		<flag name="kqueue">Compile with kqueue() support</flag>
 		<flag name="memsave">Compile with memory protection</flag>
 		<flag name="telnet">Compile with Telnet server support</flag>
 	</use>
