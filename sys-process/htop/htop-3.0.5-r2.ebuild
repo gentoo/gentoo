@@ -14,7 +14,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-IUSE="debug hwloc kernel_linux lm-sensors openvz unicode vserver"
+IUSE="debug hwloc lm-sensors openvz unicode vserver"
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND="sys-libs/ncurses:=[unicode(+)?]

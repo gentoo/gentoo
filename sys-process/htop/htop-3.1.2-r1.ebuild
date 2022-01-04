@@ -14,7 +14,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~
 
 LICENSE="BSD GPL-2+"
 SLOT="0"
-IUSE="caps debug delayacct hwloc kernel_linux lm-sensors llvm-libunwind openvz unicode unwind vserver"
+IUSE="caps debug delayacct hwloc lm-sensors llvm-libunwind openvz unicode unwind vserver"
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND="
