@@ -13,7 +13,6 @@
     <flag name="htcp">Enable HTCP protocol</flag>
     <flag name="logrotate">Use <pkg>app-admin/logrotate</pkg> for rotating
       logs</flag>
-    <flag name="kqueue">Enables *BSD kqueue() support</flag>
     <flag name="qos">Adds support for Quality of Service using netfilter conntrack
       - see qos_flow directive for more info</flag>
     <flag name="ssl-crtd">Adds support for dynamic SSL certificate generation in
