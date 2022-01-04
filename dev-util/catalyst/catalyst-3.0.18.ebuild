@@ -22,7 +22,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Catalyst"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="ccache doc +iso kernel_linux system-bootloader"
+IUSE="ccache doc +iso system-bootloader"
 
 DEPEND="
 	app-text/asciidoc
