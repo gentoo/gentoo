@@ -12,7 +12,6 @@ SRC_URI="http://www.digit-labs.org/files/tools/${PN}/releases/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86 ~x64-macos"
-IUSE="kernel_Darwin kernel_linux kernel_SunOS"
 
 RDEPEND="net-libs/libpcap"
 DEPEND="${RDEPEND}"
