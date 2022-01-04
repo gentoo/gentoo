@@ -18,7 +18,7 @@ SRC_URI="ftp://ftp.cac.washington.edu/imap/${MY_P}.tar.Z
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="doc +ipv6 kerberos kernel_linux pam ssl static-libs topal chappa"
+IUSE="doc +ipv6 kerberos pam ssl static-libs topal chappa"
 
 RDEPEND="
 	!net-mail/uw-imap
