@@ -1,5 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors.
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Ulrich Müller <ulm@gentoo.org> (2022-01-04)
+# musl iconv doesn't know about shift-jis which is needed for Japanese
+# documentation (bug #830436)
+app-emacs/yatex l10n_ja
 
 # Conrad Kostecki <conikost@gentoo.org> (2021-12-15)
 # Support for L0 needs RTLD_DEEPBIND, which does not exist on musl.
