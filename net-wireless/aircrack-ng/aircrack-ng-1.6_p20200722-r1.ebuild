@@ -25,7 +25,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="+airdrop-ng +airgraph-ng kernel_linux +netlink +pcre +sqlite +experimental"
+IUSE="+airdrop-ng +airgraph-ng +netlink +pcre +sqlite +experimental"
 
 DEPEND="net-libs/libpcap
 	sys-apps/hwloc:0=
