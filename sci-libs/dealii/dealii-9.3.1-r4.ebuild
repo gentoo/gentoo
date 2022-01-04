@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,7 +45,7 @@ REQUIRED_USE="
 # accessible. Just fix the version for the time being.
 CAS_VERSION=7.5.3
 
-RDEPEND="<dev-libs/boost-1.77.0:=
+RDEPEND="dev-libs/boost:=
 	app-arch/bzip2
 	sys-libs/zlib
 	dev-cpp/tbb:=
@@ -80,6 +80,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.1.1-no-ld-flags.patch
+	"${FILESDIR}"/${PN}-9.1.1-fix_boost_177.patch
 )
 
 src_configure() {
