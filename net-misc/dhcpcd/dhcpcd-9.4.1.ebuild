@@ -22,7 +22,7 @@ HOMEPAGE="https://github.com/NetworkConfiguration/dhcpcd/
 https://roy.marples.name/projects/dhcpcd/"
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="debug +embedded ipv6 kernel_linux privsep +udev"
+IUSE="debug +embedded ipv6 privsep +udev"
 
 COMMON_DEPEND="udev? ( virtual/udev )"
 DEPEND="${COMMON_DEPEND}"
