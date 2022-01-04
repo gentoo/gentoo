@@ -8,7 +8,7 @@ inherit llvm pax-utils toolchain-funcs
 # correct versions for stdlibs are in deps/checksums
 # for everything else, run with network-sandbox and wait for the crash
 
-MY_LLVM_V="13.0.1"
+MY_LLVM_V="13.0.0"
 
 DESCRIPTION="High-performance programming language for technical computing"
 HOMEPAGE="https://julialang.org/"
@@ -33,8 +33,8 @@ RDEPEND+="
 	dev-libs/libgit2:0
 	>=dev-libs/libpcre2-10.23:0=[jit,unicode]
 	dev-libs/mpfr:0=
-	dev-libs/libutf8proc:0=[-cjk]
-	dev-util/patchelf
+	>=dev-libs/libutf8proc-2.6.1:0=[-cjk]
+	>=dev-util/patchelf-0.13
 	>=net-libs/mbedtls-2.2
 	net-misc/curl[http2,ssh]
 	sci-libs/amd:0=
@@ -68,8 +68,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}"-1.7.0-hardcoded-libs.patch
 	"${FILESDIR}/${PN}"-1.7.0-do_not_set_rpath.patch
 )
-	# just remove patchelf from linux ?? just my own solution to sigsegv error ??
-	#"${FILESDIR}/${PN}"-turnoff-patchelf.patch
 
 pkg_setup() {
 	use system-llvm && llvm_pkg_setup
@@ -130,9 +128,10 @@ src_configure() {
 		USE_SYSTEM_DSFMT:=1
 		USE_SYSTEM_BLAS:=1
 		USE_SYSTEM_LAPACK:=1
+		USE_SYSTEM_LIBBLASTRAMPOLINE:=0
 		USE_SYSTEM_GMP:=1
 		USE_SYSTEM_MPFR:=1
-		USE_SYSTEM_SUITESPARSE:=1
+		USE_SYSTEM_LIBSUITESPARSE:=1
 		USE_SYSTEM_LIBUV:=0
 		USE_SYSTEM_UTF8PROC:=1
 		USE_SYSTEM_MBEDTLS:=1
