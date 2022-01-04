@@ -23,7 +23,7 @@ RDEPEND="
 	dev-libs/protobuf:=
 	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtnetwork-${QTMIN}:5
+	>=dev-qt/qtnetwork-${QTMIN}:5[ssl]
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
