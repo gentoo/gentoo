@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -84,10 +84,10 @@ src_prepare() {
 	default
 
 	# respect CC et al. (bug 243886)
-	sed -e "/^AS/s:as:$(tc-getAS):" \
-		-e "/^CC/s:gcc:$(tc-getCC):" \
-		-e "/^CPP/s:gcc:$(tc-getCC):" \
-		-e "/^CFLAGS/{s:-O[0123s]:: ; s:=:= ${CFLAGS}:}" \
+	sed -e "/^AS/s|as|$(tc-getAS)|" \
+		-e "/^CC/s|gcc|$(tc-getCC)|" \
+		-e "/^CPP/s|gcc|$(tc-getCC)|" \
+		-e "/^CFLAGS/{s|-O[0123s]|| ; s|=|= ${CFLAGS}|}" \
 		-i base/runtime/objs/mk.* || die
 
 	sed -i "s|nm |$(tc-getNM) |g" config/chk-global-names.sh || die
@@ -109,7 +109,7 @@ src_install() {
 	for file in bin/{*,.*} ; do
 		[[ -f ${file} ]] &&
 			sed -e "2iSMLNJ_HOME=${EPREFIX}/${DIR}" \
-				-e "s:${WORKDIR}:${EPREFIX}/${DIR}:" \
+				-e "s|${WORKDIR}|${EPREFIX}/${DIR}|" \
 				-i ${file}
 	done
 
