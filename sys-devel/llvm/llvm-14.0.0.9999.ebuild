@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,8 +19,7 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA BSD public-domain rc"
 SLOT="$(ver_cut 1)"
 KEYWORDS=""
-IUSE="+binutils-plugin debug doc exegesis libedit +libffi ncurses test xar xml
-	z3 kernel_Darwin"
+IUSE="+binutils-plugin debug doc exegesis libedit +libffi ncurses test xar xml z3"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
