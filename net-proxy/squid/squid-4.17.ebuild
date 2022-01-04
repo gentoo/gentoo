@@ -25,8 +25,7 @@ IUSE="caps gnutls ipv6 pam ldap samba sasl kerberos nis radius ssl snmp selinux 
 	ecap esi ssl-crtd \
 	mysql postgres sqlite systemd \
 	perl qos tproxy \
-	+htcp +wccp +wccpv2 \
-	kernel_linux"
+	+htcp +wccp +wccpv2"
 
 RESTRICT="!test? ( test )"
 
