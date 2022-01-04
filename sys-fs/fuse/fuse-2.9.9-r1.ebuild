@@ -15,7 +15,7 @@ SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/iconv.m4.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="examples kernel_linux static-libs"
+IUSE="examples static-libs"
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND=">=sys-fs/fuse-common-3.3.0-r1"
