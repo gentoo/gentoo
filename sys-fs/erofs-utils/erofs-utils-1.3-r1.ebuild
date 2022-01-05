@@ -16,7 +16,7 @@ SLOT="0"
 IUSE="fuse +lz4 selinux +uuid"
 
 RDEPEND="
-	fuse? ( sys-fs/fuse )
+	fuse? ( sys-fs/fuse:0 )
 	lz4? ( app-arch/lz4:0= )
 	selinux? ( sys-libs/libselinux:0= )
 	uuid? ( sys-apps/util-linux )
