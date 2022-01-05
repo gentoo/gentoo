@@ -43,6 +43,12 @@
 # Removal on 2022-02-06. Bug #830727
 net-libs/jreen
 
+# Marco Scardovi <marco@scardovi.com> (2022-01-01)
+# Dead upstream (also sourceforge page is dead)
+# We are the only one who still supports it
+# Removing in 30 days. # Bug 830389
+sys-cluster/onesis
+
 # Florian Schmaus <flow@gentoo.org> (2022-01-04)
 # Outdated, unmaintained, and has multiple open bugs (bug #732582, bug
 # #739398, bug #756715). As discussed at
