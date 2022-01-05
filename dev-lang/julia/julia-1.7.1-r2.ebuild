@@ -15,9 +15,9 @@ HOMEPAGE="https://julialang.org/"
 
 SRC_URI="
 	https://github.com/JuliaLang/julia/releases/download/v${PV}/${P}-full.tar.gz
-	https://github.com/JuliaLang/julia/commit/1eb063f1.patch -> ${PN}-1.7.0-llvm_13_compat_part_4.patch
-	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/f8c918b0.patch -> ${PN}-1.7.0-llvm_13_compat_part_5.patch
-	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/63303980.patch -> ${PN}-1.7.0-llvm_13_compat_part_6.patch
+	https://github.com/JuliaLang/julia/commit/1eb063f1.patch -> ${PN}-1.7.1-llvm_13_compat_part_3.patch
+	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/f8c918b0.patch -> ${PN}-1.7.1-llvm_13_compat_part_4.patch
+	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/63303980.patch -> ${PN}-1.7.1-llvm_13_compat_part_5.patch
 "
 
 LICENSE="MIT"
@@ -62,14 +62,14 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}"-1.4.0-no_symlink_llvm.patch
-	"${FILESDIR}/${PN}"-1.7.0-llvm_13_compat_part_1.patch
-	"${FILESDIR}/${PN}"-1.7.0-llvm_13_compat_part_2.patch
-	"${DISTDIR}/${PN}"-1.7.0-llvm_13_compat_part_4.patch
-	"${DISTDIR}/${PN}"-1.7.0-llvm_13_compat_part_5.patch
-	"${DISTDIR}/${PN}"-1.7.0-llvm_13_compat_part_6.patch
-	"${FILESDIR}/${PN}"-1.7.0-libgit-1.2.patch
-	"${FILESDIR}/${PN}"-1.7.0-make-install-no-build.patch
-	"${FILESDIR}/${PN}"-1.7.0-hardcoded-libs.patch
+	"${FILESDIR}/${PN}"-1.6.5-llvm_13_compat_part_1.patch
+	"${FILESDIR}/${PN}"-1.6.5-llvm_13_compat_part_2.patch
+	"${DISTDIR}/${PN}"-1.7.1-llvm_13_compat_part_3.patch
+	"${DISTDIR}/${PN}"-1.7.1-llvm_13_compat_part_4.patch
+	"${DISTDIR}/${PN}"-1.7.1-llvm_13_compat_part_5.patch
+	"${FILESDIR}/${PN}"-1.6.5-libgit-1.2.patch
+	"${FILESDIR}/${PN}"-1.6.5-make-install-no-build.patch
+	"${FILESDIR}/${PN}"-1.7.1-hardcoded-libs.patch
 	"${FILESDIR}/${PN}"-1.7.1-do_not_set_rpath.patch
 )
 
