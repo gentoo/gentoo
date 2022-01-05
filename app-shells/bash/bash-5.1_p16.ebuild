@@ -27,7 +27,7 @@ patches() {
 		echo "${@/#/${DISTDIR}/}"
 	else
 		local u
-		for u in ftp://ftp.cwru.edu/pub/bash mirror://gnu/${pn} ; do
+		for u in mirror://gnu/${pn} ftp://ftp.cwru.edu/pub/bash ; do
 			printf "${u}/${pn}-${pv}-patches/%s " "$@"
 		done
 	fi
