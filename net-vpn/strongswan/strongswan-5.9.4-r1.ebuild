@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -138,6 +138,7 @@ src_configure() {
 		--enable-ikev2 \
 		--enable-swanctl \
 		--enable-socket-dynamic \
+		--enable-cmd \
 		$(use_enable curl) \
 		$(use_enable constraints) \
 		$(use_enable ldap) \
