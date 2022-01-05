@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (2022-01-05)
+# gnome-boxes requires spice-gtk[vala]
+net-misc/spice-gtk vala
+
 # Mart Raudsepp <leio@gentoo.org> (2021-08-13)
 # evolution-data-server requires libical[vala] and libgdata[vala] by default
 dev-libs/libical vala
