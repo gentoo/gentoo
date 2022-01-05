@@ -21,7 +21,7 @@ index 00000000..9454ef68
 --- /dev/null
 +++ b/files/fail2ban-openrc.conf
 @@ -0,0 +1,2 @@
-+# For available options, plase run "fail2ban-server --help".
++# For available options, please run "fail2ban-server --help".
 +#FAIL2BAN_OPTIONS="-x"
 diff --git a/files/fail2ban-openrc.init.in b/files/fail2ban-openrc.init.in
 new file mode 100755
