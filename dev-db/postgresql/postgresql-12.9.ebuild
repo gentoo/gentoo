@@ -54,7 +54,6 @@ zlib? ( sys-libs/zlib )
 # supported libc in use depend on dev-libs/ossp-uuid. For BSD systems,
 # the libc includes UUID functions.
 UTIL_LINUX_LIBC=( elibc_{glibc,musl} )
-BSD_LIBC=( elibc_{Net,Open}BSD )
 
 nest_usedep() {
 	local front back
@@ -69,7 +68,7 @@ nest_usedep() {
 CDEPEND+="
 uuid? (
 	${UTIL_LINUX_LIBC[@]/%/? ( sys-apps/util-linux )}
-	$(nest_usedep ${UTIL_LINUX_LIBC[@]/#/!} ${BSD_LIBC[@]/#/!} dev-libs/ossp-uuid)
+	$(nest_usedep ${UTIL_LINUX_LIBC[@]/#/!} dev-libs/ossp-uuid)
 )"
 
 DEPEND="${CDEPEND}
@@ -126,9 +125,6 @@ src_configure() {
 	if use uuid; then
 		for i in ${UTIL_LINUX_LIBC[@]}; do
 			use ${i} && uuid_config="--with-uuid=e2fs"
-		done
-		for i in ${BSD_LIBC[@]}; do
-			use ${i} && uuid_config="--with-uuid=bsd"
 		done
 		[[ -z $uuid_config ]] && uuid_config="--with-uuid=ossp"
 	fi
