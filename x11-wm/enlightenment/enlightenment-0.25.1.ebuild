@@ -10,6 +10,10 @@ HOMEPAGE="https://www.enlightenment.org"
 SRC_URI="https://download.enlightenment.org/rel/apps/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-2"
+
+# Historically enlightenment was slotted to separate e16 from e17. e16 is now
+# packaged as x11-wm/e16, but the slot is kept because it's more complicated to
+# reset it rather than just to keep it.
 SLOT="0.17/${PV%%_*}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="acpi bluetooth connman doc exif geolocation nls pam policykit systemd udisks wayland xwayland"
