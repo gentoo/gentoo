@@ -15,7 +15,6 @@ SRC_URI="
 		elibc_glibc? ( ${BASE_SRC_URI}/linux/x64/${MY_PV}/${MY_P}-linux-x86_64.tar.gz )
 		elibc_musl? ( ${BASE_SRC_URI}/musl/x64/${MY_PV}/${MY_P}-musl-x86_64.tar.gz )
 	)
-	amd64-fbsd? ( ${BASE_SRC_URI}/freebsd/x64/${MY_PV}/${MY_P}-freebsd-x86_64.tar.gz )
 	arm64? ( ${BASE_SRC_URI}/linux/aarch64/${MY_PV}/${MY_P}-linux-aarch64.tar.gz )
 "
 
