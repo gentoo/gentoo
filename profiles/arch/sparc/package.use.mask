@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Vadim Misbakh-Soloviov <mva@gentoo.org> (2021-12-09)
@@ -146,10 +146,6 @@ dev-python/pyopengl test
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
 # dev-libs/criterion not yet keyworded
 >=app-admin/syslog-ng-3.25 test
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
-# Not keyworded on sparc
-net-misc/whois xcrypt
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
 # test dependencies for USE=gstreamer not keyworded on sparc
