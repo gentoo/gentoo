@@ -22,7 +22,7 @@ LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+X avif bmp connman cpu_flags_arm_neon dds debug drm +eet efl-one elogind examples fbcon
-	+fontconfig fribidi gif gles2-only gnutls glib +gstreamer harfbuzz heif hyphen ibus ico
+	+fontconfig fribidi gif gnutls glib +gstreamer harfbuzz heif hyphen ibus ico
 	jpeg2k json nls mono opengl +pdf physics pmaps postscript psd pulseaudio raw scim
 	sdl +sound +svg +system-lz4 systemd tga tgv tiff tslib unwind v4l vnc wayland webp xcf
 	xim xpm xpresent zeroconf"
@@ -52,6 +52,7 @@ RDEPEND="${LUA_DEPS}
 	X? (
 		media-libs/freetype
 		x11-libs/libX11
+		x11-libs/libXScrnSaver
 		x11-libs/libXcomposite
 		x11-libs/libXcursor
 		x11-libs/libXdamage
@@ -62,7 +63,7 @@ RDEPEND="${LUA_DEPS}
 		x11-libs/libXrandr
 		x11-libs/libXrender
 		x11-libs/libXtst
-		x11-libs/libXScrnSaver
+		x11-libs/libxkbcommon
 		wayland? ( x11-libs/libxkbcommon[X] )
 	)
 	avif? ( media-libs/libavif:= )
@@ -80,10 +81,6 @@ RDEPEND="${LUA_DEPS}
 	)
 	fontconfig? ( media-libs/fontconfig )
 	fribidi? ( dev-libs/fribidi )
-	gles2-only? (
-		media-libs/mesa[egl(+),gles2]
-		virtual/opengl
-	)
 	glib? ( dev-libs/glib:2 )
 	gnutls? ( net-libs/gnutls:= )
 	!gnutls? ( dev-libs/openssl:0= )
@@ -127,7 +124,8 @@ RDEPEND="${LUA_DEPS}
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+	wayland? ( dev-util/wayland-scanner )"
 
 pkg_setup() {
 	# Deprecated, provided for backward-compatibility. Everything is moved to libefreet.so.
