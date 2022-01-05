@@ -78,9 +78,7 @@ src_prepare() {
 	# https://github.com/kovidgoyal/kitty/issues/4434
 	sed -i "/shell_integration:/s/'enabled'/&,'no-rc'/" kitty/options/types.py || die
 
-	# test relies on 'who' command which typically works but have 1 VM
-	# where it didn't only under portage/sandbox, needs investigation but
-	# disable for now
+	# test relies on 'who' command which doesn't detect users with pid-sandbox
 	rm kitty_tests/utmp.py || die
 
 	# skip docs for live version
