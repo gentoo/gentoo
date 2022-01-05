@@ -57,7 +57,6 @@ RDEPEND+="
 	virtual/lapack"
 
 DEPEND="${RDEPEND}
-	dev-util/patchelf
 	virtual/pkgconfig
 	!system-llvm? ( dev-util/cmake )"
 
