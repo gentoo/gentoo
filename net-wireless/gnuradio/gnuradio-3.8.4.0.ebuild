@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,8 @@ if [[ ${PV} =~ "9999" ]]; then
 	EGIT_BRANCH="maint-3.8"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/gnuradio/gnuradio/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/gnuradio/gnuradio/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+		https://patch-diff.githubusercontent.com/raw/gnuradio/gnuradio/pull/5324.patch -> ${PN}-5324.patch"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
@@ -114,6 +115,8 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-util/cppunit-1.9.14 )
 	zeromq? ( net-libs/cppzmq )
 "
+
+PATCHES=( "${DISTDIR}/${PN}-5324.patch" )
 
 src_prepare() {
 	xdg_environment_reset #534582
