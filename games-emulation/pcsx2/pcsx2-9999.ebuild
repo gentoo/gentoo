@@ -9,9 +9,9 @@ inherit cmake fcaps flag-o-matic git-r3 toolchain-funcs wxwidgets
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://pcsx2.net/"
 EGIT_REPO_URI="https://github.com/PCSX2/${PN}.git"
-EGIT_SUBMODULES=()
+EGIT_SUBMODULES=( 3rdparty/imgui/imgui )
 
-LICENSE="GPL-3"
+LICENSE="GPL-3 Apache-2.0 OFL-1.1" # TODO: needs review for a full list
 SLOT="0"
 KEYWORDS=""
 IUSE="pulseaudio test"
@@ -42,6 +42,7 @@ RDEPEND="
 	x11-libs/libICE
 	x11-libs/libX11
 	x11-libs/libXext
+	x11-libs/libXrandr
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	pulseaudio? ( media-sound/pulseaudio )
 "
@@ -96,8 +97,6 @@ src_configure() {
 		-DXDG_STD=TRUE
 
 		-DCMAKE_LIBRARY_PATH="/usr/$(get_libdir)/${PN}"
-		# wxGTK must be built against same sdl version
-		-DSDL2_API=TRUE
 		-DUSE_SYSTEM_YAML=TRUE
 		-DUSE_VTUNE=FALSE
 	)
