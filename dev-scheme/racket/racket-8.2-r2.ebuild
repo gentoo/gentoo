@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop optfeature xdg-utils
+inherit desktop optfeature readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="General purpose, multi-paradigm Lisp-Scheme programming language"
 HOMEPAGE="https://racket-lang.org/"
@@ -57,6 +57,13 @@ PATCHES=(
 	# https://github.com/racket/racket/commit/4f0e1703979d704c4f91b009945c324450acec7a
 	"${FILESDIR}/Makefile-starter.patch"
 )
+
+DOC_CONTENTS="
+If you wish to use sys-libs/readline instead of dev-libs/libedit
+for readline-like features in the Racket's REPL you can install
+the package 'readline-gpl' using raco, Racket's package manager
+https://pkgs.racket-lang.org/package/readline-gpl
+"
 
 # Package database files
 PKGDB=(
@@ -134,6 +141,8 @@ src_install() {
 		make_desktop_entry "gracket" "GRacket" "racket" "Development;Education;"
 		make_desktop_entry "plt-games" "PLT Games" "racket" "Education;Game;"
 	fi
+
+	readme.gentoo_create_doc
 }
 
 pkg_preinst() {
@@ -157,8 +166,10 @@ pkg_preinst() {
 pkg_postinst() {
 	post_X_update
 
-	optfeature "readline editing features in REPL" dev-libs/libedit sys-libs/readline
+	optfeature "readline editing features in REPL" dev-libs/libedit
 	optfeature "generating PDF files using Scribble" dev-texlive/texlive-fontsextra
+
+	readme.gentoo_print_elog
 }
 
 pkg_postrm() {
