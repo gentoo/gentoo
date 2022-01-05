@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>mail@dennis-eisele.de</email>
+		<email>kernlpanic@dennis-eisele.de</email>
 		<name>Dennis Eisele</name>
 	</maintainer>
 	<maintainer type="person" proxied="yes">
