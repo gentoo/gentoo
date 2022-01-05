@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,19 +20,16 @@ SRC_URI_BASE="https://docs.broadcom.com/docs-and-downloads"
 SRC_URI_PREFIX="${SRC_URI_BASE}/host-bus-adapters/host-bus-adapters-common-files/sas_sata_12g_p${PV}_point_release"
 
 SRC_URI_LINUX="${SRC_URI_PREFIX}/Installer_P${PV}_for_Linux.zip"
-SRC_URI_FREEBSD="${SRC_URI_PREFIX}/Installer_P${PV}_for_FreeBSD.zip"
 SRC_URI_SOLARIS="${SRC_URI_PREFIX}/Installer_P${PV}_for_Solaris.zip"
 SRC_URI_UEFI="${SRC_URI_PREFIX}/Installer_P${PV}_for_UEFI.zip"
 
-DISTFILE_BINS=( "${SRC_URI_LINUX##*/}" "${SRC_URI_FREEBSD##*/}" "${SRC_URI_SOLARIS##*/}" "${SRC_URI_UEFI##*/}" )
+DISTFILE_BINS=( "${SRC_URI_LINUX##*/}" "${SRC_URI_SOLARIS##*/}" "${SRC_URI_UEFI##*/}" )
 DISTFILE_DOC=sas3Flash_quickRefGuide_rev1-0.pdf
 
 SRC_URI="
 	amd64? ( ${SRC_URI_LINUX} )
 	x86? ( ${SRC_URI_LINUX} )
 	ppc64? ( ${SRC_URI_LINUX} )
-	amd64-fbsd? ( ${SRC_URI_FREEBSD} )
-	x86-fbsd? ( ${SRC_URI_FREEBSD} )
 	x64-solaris? ( ${SRC_URI_SOLARIS} )
 	x86-solaris? ( ${SRC_URI_SOLARIS} )
 	sparc-solaris? ( ${SRC_URI_SOLARIS} )
@@ -82,12 +79,6 @@ src_install() {
 	elif use ppc64; then
 		doexe Installer_P16_for_Linux/sas3flash_linux_ppc64_rel/sas3flash
 		DOCS+=( Installer_P"${PV}"_for_Linux/README_Installer_P"${PV}"_Linux.txt )
-	elif use amd64-fbsd; then
-		doexe Installer_P16_for_FreeBSD/sas3flash_freebsd_amd64_rel/sas3flash
-		DOCS+=( Installer_P"${PV}"_for_FreeBSD/README_Installer_P"${PV}"_FreeBSD.txt )
-	elif use x86-fbsd; then
-		doexe Installer_P16_for_FreeBSD/sas3flash_freebsd_i386_rel/sas3flash
-		DOCS+=( Installer_P"${PV}"_for_FreeBSD/README_Installer_P"${PV}"_FreeBSD.txt )
 	elif use x64-solaris || use x86-solaris; then
 		doexe Installer_P16_for_Solaris/sas3flash_solaris_x86_rel/sas3flash
 		DOCS+=( Installer_P"${PV}"_for_Solaris/README_Installer_P"${PV}"_Solaris.txt )
