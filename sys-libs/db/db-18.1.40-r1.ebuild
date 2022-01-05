@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -148,9 +148,7 @@ multilib_src_configure() {
 
 	# Add linker versions to the symbols. Easier to do, and safer than header file
 	# mumbo jumbo.
-	if use userland_GNU ; then
-		append-ldflags -Wl,--default-symver
-	fi
+	append-ldflags -Wl,--default-symver
 
 	# use `set` here since the java opts will contain whitespace
 	if multilib_is_native_abi && use java ; then
