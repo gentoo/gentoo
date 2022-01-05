@@ -141,7 +141,6 @@ DEPEND="${RDEPEND}
 		app-text/docbook-xsl-stylesheets
 	)
 	x86? ( ${ASM_DEP} )
-	x86-fbsd? ( ${ASM_DEP} )
 "
 RDEPEND+="
 	selinux? ( sec-policy/selinux-mplayer )
