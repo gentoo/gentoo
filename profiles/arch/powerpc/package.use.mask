@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2021-11-15)
@@ -246,10 +246,6 @@ gnome-extra/sushi office
 dev-haskell/dlist test
 dev-haskell/haskell-src-exts test
 dev-util/bnfc test
-
-# Anthony G. Basile <blueness@gentoo.org> (2014-08-17)
-# This pulls in qemu[smartcard] which is masked
-net-misc/spice-gtk smartcard
 
 # Anthony G. Basile <blueness@gentoo.org> (2014-08-16)
 # Ultimately pulls in nodejs which is broken.
