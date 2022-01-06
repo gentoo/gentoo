@@ -1,0 +1,27 @@
+Respect flags for blastrampoline library
+--- a/deps/blastrampoline.mk	2021-12-20 22:21:31.000000000 +0100   
++++ b/deps/blastrampoline.mk	2022-01-05 23:35:44.069957772 +0100
+@@ -11,7 +11,7 @@
+ 	echo 1 > $@
+ 
+ $(BUILDDIR)/$(BLASTRAMPOLINE_SRC_DIR)/build-compiled: $(BUILDDIR)/$(BLASTRAMPOLINE_SRC_DIR)/build-configured
+-	cd $(dir $@)/src && $(MAKE) $(MAKE_COMMON)
++	cd $(dir $@)/src && $(MAKE) $(MAKE_COMMON) F2C_AUTODETECTION=1 CFLAGS="${CFLAGS} -fPIC -DF2C_AUTODETECTION" LDFLAGS="-shared ${LDFLAGS}"
+ 	echo 1 > $@
+ 
+ define BLASTRAMPOLINE_INSTALL
+
+Respect flags for /usr/bin/julia and for  /usr/lib64/libjulia.so.1.7
+--- a/cli/Makefile	2021-12-23 02:12:50.000000000 +0100
++++ b/cli/Makefile	2022-01-06 17:47:21.938662881 +0100
+@@ -8,8 +8,8 @@
+ 
+ HEADERS := $(addprefix $(SRCDIR)/,jl_exports.h loader.h) $(addprefix $(JULIAHOME)/src/,julia_fasttls.h support/platform.h support/dirpath.h jl_exported_data.inc jl_exported_funcs.inc)
+ 
+-LOADER_CFLAGS = $(JCFLAGS) -I$(BUILDROOT)/src -I$(JULIAHOME)/src -I$(JULIAHOME)/src/support -I$(build_includedir) -ffreestanding
+-LOADER_LDFLAGS = $(JLDFLAGS) -ffreestanding -L$(build_shlibdir) -L$(build_libdir)
++LOADER_CFLAGS = $(JCFLAGS) ${CFLAGS} -I$(BUILDROOT)/src -I$(JULIAHOME)/src -I$(JULIAHOME)/src/support -I$(build_includedir) -ffreestanding
++LOADER_LDFLAGS = $(JLDFLAGS) ${LDFLAGS} -ffreestanding -L$(build_shlibdir) -L$(build_libdir)
+ 
+ ifeq ($(OS),WINNT)
+ LOADER_CFLAGS += -municode -mconsole -nostdlib -fno-stack-check -fno-stack-protector -mno-stack-arg-probe

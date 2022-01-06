@@ -71,6 +71,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}"-1.6.5-make-install-no-build.patch
 	"${FILESDIR}/${PN}"-1.7.1-hardcoded-libs.patch
 	"${FILESDIR}/${PN}"-1.7.1-do_not_set_rpath.patch
+	"${FILESDIR}/${PN}"-1.7.1-RespcFLAGS.patch
+	"${FILESDIR}/${PN}"-1.7.1-sys.so_OptFLAGS.patch
 )
 
 pkg_setup() {
@@ -113,6 +115,9 @@ src_configure() {
 
 	# julia does not play well with the system versions of libuv
 	# USE_SYSTEM_LIBM=0 implies using external openlibm
+		#JCXXFLAGS="${CXXFLAGS}"
+		#JCFLAGS=${CFLAGS}
+
 	cat <<-EOF > Make.user
 		LOCALBASE:="${EPREFIX}/usr"
 		override prefix:="${EPREFIX}/usr"
