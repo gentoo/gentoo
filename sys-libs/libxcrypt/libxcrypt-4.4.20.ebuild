@@ -1,4 +1,4 @@
-# Copyright 2004-2021 Gentoo Authors
+# Copyright 2004-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,6 @@ DEPEND="system? (
 	)"
 RDEPEND="${DEPEND}"
 BDEPEND="dev-lang/perl
-	sys-apps/findutils
 	test? ( $(python_gen_any_dep 'dev-python/passlib[${PYTHON_USEDEP}]') )"
 
 python_check_deps() {
