@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -74,7 +74,6 @@ DEPEND="
 	dev-libs/appstream-glib
 	dev-util/gtk-update-icon-cache
 	>=dev-util/intltool-0.40.1
-	sys-apps/findutils
 	>=sys-devel/gettext-0.19
 	>=sys-devel/libtool-2.2
 	virtual/pkgconfig
