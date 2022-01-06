@@ -1,3 +1,8 @@
+Gentoo bug: https://bugs.gentoo.org/830170
+Upstream bug: https://gitlab.com/qemu-project/qemu/-/issues/786
+Patches taken from
+https://lore.kernel.org/qemu-devel/20211227193120.1084176-1-imammedo@redhat.com/
+
 commit dce6c86f54eab61028e110497c222e73381379df
 Author: Igor Mammedov <imammedo@redhat.com>
 Date:   Mon Dec 27 14:31:17 2021 -0500
