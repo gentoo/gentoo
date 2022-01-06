@@ -45,6 +45,7 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	dev-lang/perl
+	sys-apps/debianutils
 	perl? ( tk? (
 			dev-lang/tk
 			dev-perl/Tk
@@ -53,7 +54,6 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	rplay? ( media-sound/rplay )
 	lock? ( x11-misc/xlockmore )
-	userland_GNU? ( sys-apps/debianutils )
 	netpbm? ( media-libs/netpbm )
 "
 DEPEND="${COMMON_DEPEND}
