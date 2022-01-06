@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-python/django-1.11.19[sqlite?,${PYTHON_USEDEP}]
 	>=dev-python/django-tagging-0.4.6[${PYTHON_USEDEP}]
 	dev-python/cairocffi[${PYTHON_USEDEP}]
-	<dev-python/pyparsing-3[${PYTHON_USEDEP}]
+	dev-python/pyparsing[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]
