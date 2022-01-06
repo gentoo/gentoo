@@ -13,6 +13,8 @@ SRC_URI="https://github.com/endless-sky/endless-sky/archive/v${PV}.tar.gz -> ${P
 LICENSE="CC-BY-SA-4.0 CC-BY-SA-3.0 GPL-3+ public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 # Needs work; doesn't link against SDL 2
 RESTRICT="test"
@@ -24,15 +26,18 @@ RDEPEND="media-libs/glew:0=
 	media-libs/libpng:=
 	media-libs/openal
 	virtual/opengl"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-cpp/catch:0 )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.14-respect-cflags.patch
 	"${FILESDIR}"/${PN}-0.9.14-no-games-path.patch
+	"${FILESDIR}"/${PN}-0.9.14-dont-compress-man-page.patch
+	"${FILESDIR}"/${PN}-0.9.14-use-system-catch2.patch
 )
 
 src_compile() {
-	tc-export CXX
+	tc-export AR CXX
 
 	escons
 }
