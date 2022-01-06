@@ -21,7 +21,7 @@ HOMEPAGE="https://pipewire.org/"
 LICENSE="MIT LGPL-2.1+ GPL-2"
 # ABI was broken in 0.3.42 for https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/49
 SLOT="0/0.4"
-IUSE="bluetooth doc echo-cancel extra gstreamer jack-client jack-sdk libusb pipewire-alsa ssl systemd test v4l zeroconf"
+IUSE="bluetooth doc echo-cancel extra gstreamer jack-client jack-sdk pipewire-alsa ssl systemd test usb v4l zeroconf"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -72,7 +72,6 @@ RDEPEND="
 		!media-sound/jack-audio-connection-kit
 		!media-sound/jack2
 	)
-	libusb? ( virtual/libusb:1 )
 	pipewire-alsa? (
 		>=media-libs/alsa-lib-1.1.7[${MULTILIB_USEDEP}]
 		!media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio]
@@ -80,6 +79,7 @@ RDEPEND="
 	!pipewire-alsa? ( media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio] )
 	ssl? ( dev-libs/openssl:= )
 	systemd? ( sys-apps/systemd )
+	usb? ( virtual/libusb:1 )
 	v4l? ( media-libs/libv4l )
 	zeroconf? ( net-dns/avahi )
 "
@@ -175,7 +175,7 @@ multilib_src_configure() {
 		$(meson_native_use_feature v4l v4l2)
 		-Dlibcamera=disabled # libcamera is not in Portage tree
 		$(meson_native_use_feature ssl raop)
-		$(meson_native_use_feature libusb)
+		$(meson_native_use_feature usb libusb)
 		-Dvideoconvert=enabled # Matches upstream
 		-Dvideotestsrc=enabled # Matches upstream
 		-Dvolume=enabled # Matches upstream
