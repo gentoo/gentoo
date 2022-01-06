@@ -22,7 +22,10 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	test? ( dev-cpp/gtest )
+"
 
 BDEPEND="
 	python? (
