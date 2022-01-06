@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-python/django-1.11.19[sqlite?,${PYTHON_USEDEP}]
 	>=dev-python/django-tagging-0.4.6[${PYTHON_USEDEP}]
 	dev-python/cairocffi[${PYTHON_USEDEP}]
-	dev-python/pyparsing[${PYTHON_USEDEP}]
+	<dev-python/pyparsing-3[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]
@@ -37,6 +37,8 @@ PATCHES=(
 	# Do not install the configuration and data files. We install them
 	# somewhere sensible by hand.
 	"${FILESDIR}"/${PN}-1.1.7-fhs-paths.patch
+	# pyparsing fix, can be dropped from 1.1.9 onwards
+	"${FILESDIR}"/${PN}-1.1.8-pyparsing3.patch
 )
 
 python_prepare_all() {
