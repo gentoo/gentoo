@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -67,6 +67,7 @@ RESTRICT="fetch splitdebug"
 DEPEND="app-arch/unzip"
 RDEPEND="
 	>=dev-libs/libaio-0.3.109-r5[${MULTILIB_USEDEP}]
+	sys-libs/glibc
 	!<dev-db/oracle-instantclient-basic-12
 	!<dev-db/oracle-instantclient-odbc-12
 	!<dev-db/oracle-instantclient-jdbc-12
