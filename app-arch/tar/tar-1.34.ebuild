@@ -12,7 +12,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 [[ -n "$(ver_cut 3)" ]] && [[ "$(ver_cut 3)" -ge 90 ]] || \
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="acl minimal nls selinux userland_GNU xattr"
+IUSE="acl minimal nls selinux xattr"
 
 RDEPEND="
 	acl? ( virtual/acl )
@@ -25,23 +25,11 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
-src_prepare() {
-	default
-
-	if ! use userland_GNU ; then
-		sed -i \
-			-e 's:/backup\.sh:/gbackup.sh:' \
-			scripts/{backup,dump-remind,restore}.in \
-			|| die "sed non-GNU"
-	fi
-}
-
 src_configure() {
 	local myeconfargs=(
 		--bindir="${EPREFIX}"/bin
 		--enable-backup-scripts
 		--libexecdir="${EPREFIX}"/usr/sbin
-		$(usex userland_GNU "" "--program-prefix=g")
 		$(use_with acl posix-acls)
 		$(use_enable nls)
 		$(use_with selinux)
@@ -53,12 +41,9 @@ src_configure() {
 src_install() {
 	default
 
-	local p=$(usex userland_GNU "" "g")
-	if [[ -z ${p} ]] ; then
-		# a nasty yet required piece of baggage
-		exeinto /etc
-		doexe "${FILESDIR}"/rmt
-	fi
+	# a nasty yet required piece of baggage
+	exeinto /etc
+	doexe "${FILESDIR}"/rmt
 
 	# autoconf looks for gtar before tar (in configure scripts), hence
 	# in Prefix it is important that it is there, otherwise, a gtar from
@@ -68,12 +53,12 @@ src_install() {
 		dosym tar /bin/gtar
 	fi
 
-	mv "${ED}"/usr/sbin/${p}backup{,-tar} || die
-	mv "${ED}"/usr/sbin/${p}restore{,-tar} || die
+	mv "${ED}"/usr/sbin/backup{,-tar} || die
+	mv "${ED}"/usr/sbin/restore{,-tar} || die
 
 	if use minimal ; then
 		find "${ED}"/etc "${ED}"/*bin/ "${ED}"/usr/*bin/ \
-			-type f -a '!' '(' -name tar -o -name ${p}tar ')' \
+			-type f -a '!' '(' -name tar -o -name tar ')' \
 			-delete || die
 	fi
 }
