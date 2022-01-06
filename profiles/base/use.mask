@@ -70,26 +70,14 @@ multilib
 # Mask ELIBC, KERNEL, and USERLAND flags that apply to specific profiles.
 userland_BSD
 
-elibc_AIX
 elibc_bionic
 elibc_Cygwin
 elibc_Darwin
-elibc_DragonFly
-elibc_HPUX
-elibc_Interix
 elibc_musl
-elibc_NetBSD
-elibc_OpenBSD
 elibc_SunOS
 elibc_Winnt
 
-kernel_AIX
 kernel_Darwin
-kernel_FreeBSD
-kernel_freemint
-kernel_HPUX
-kernel_NetBSD
-kernel_OpenBSD
 kernel_SunOS
 kernel_Winnt
 

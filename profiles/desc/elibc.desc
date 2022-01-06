@@ -4,18 +4,11 @@
 # This file contains descriptions of ELIBC USE_EXPAND flags.
 
 # Keep it sorted.
-
-AIX - ELIBC setting for systems that use the AIX C library
 bionic - ELIBC setting for systems that use Android's Bionic C library
 Cygwin - ELIBC setting for systems that use Cygwin
 Darwin - ELIBC setting for systems that use the Darwin C library
-DragonFly - ELIBC setting for systems that use the DragonFly C library
 glibc - ELIBC setting for systems that use the GNU C library
-HPUX - ELIBC setting for systems that use the HP-UX C library
-Interix - ELIBC setting for systems that use the Interix C library
 mingw - ELIBC setting for systems that use the Minimalist GNU for Windows library
 musl - ELIBC setting for systems that use the musl C library
-NetBSD - ELIBC setting for systems that use the NetBSD C library
-OpenBSD - ELIBC setting for systems that use the OpenBSD C library
 SunOS - ELIBC setting for systems that use the Sun Solaris C library
 Winnt - ELIBC setting for systems that use Winnt
