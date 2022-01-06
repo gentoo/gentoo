@@ -1,0 +1,229 @@
+Bunch of patches from https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/49
+Requires pipewire 0.3.42 for 03f0a7c9bac3e61126fc852e543b8ea254471eb7.
+
+--- a/tests/wp/spa-pod.c
++++ b/tests/wp/spa-pod.c
+@@ -6,6 +6,8 @@
+  * SPDX-License-Identifier: MIT
+  */
+ 
++#include <stdbool.h>
++
+ #include <wp/wp.h>
+ 
+ static void
+@@ -428,12 +430,12 @@ test_spa_pod_object (void)
+         wp_spa_type_name (wp_spa_pod_get_spa_type (pod)));
+ 
+     const char *id_name;
+-    gboolean mute = TRUE;
++    bool mute = true;
+     float vol = 0.0;
+     gint32 frequency;
+     const char *device;
+     gint64 device_fd;
+-    gboolean custom = FALSE;
++    bool custom = false;
+     g_assert_true (wp_spa_pod_get_object (pod,
+         &id_name,
+         "mute", "b", &mute,
+@@ -475,12 +477,12 @@ test_spa_pod_object (void)
+         wp_spa_type_name (wp_spa_pod_get_spa_type (pod)));
+ 
+     const char *id_name;
+-    gboolean mute = TRUE;
++    bool mute = true;
+     float vol = 0.0;
+     gint32 frequency;
+     const char *device;
+     gint64 device_fd;
+-    gboolean custom = FALSE;
++    bool custom = false;
+     g_autoptr (WpSpaPodParser) p = wp_spa_pod_parser_new_object (pod, &id_name);
+     g_assert_nonnull (pod);
+     g_assert_true (wp_spa_pod_parser_get (p, "mute", "b", &mute, NULL));
+@@ -603,7 +605,7 @@ test_spa_pod_struct (void)
+     g_assert_true (wp_spa_pod_parser_get (p, "P", &value_object, NULL));
+     g_assert_nonnull (value_object);
+     const char *id_name;
+-    gboolean mute = TRUE;
++    bool mute = true;
+ 
+     g_assert_true (wp_spa_pod_get_object (value_object,
+         &id_name,
+--- a/tests/wp/endpoint.c
++++ b/tests/wp/endpoint.c
+@@ -499,7 +499,7 @@ test_endpoint_with_props (TestEndpointFixture *fixture, gconstpointer data)
+     g_auto (GValue) item = G_VALUE_INIT;
+     g_autoptr (WpSpaPod) pod = NULL;
+     gfloat float_value = 0.0f;
+-    gboolean boolean_value = TRUE;
++    bool boolean_value = true;
+ 
+     iterator = wp_pipewire_object_enum_params_sync (
+         WP_PIPEWIRE_OBJECT (fixture->proxy_endpoint), "Props", NULL);
+@@ -513,7 +513,7 @@ test_endpoint_with_props (TestEndpointFixture *fixture, gconstpointer data)
+             "mute", "b", &boolean_value,
+             NULL));
+     g_assert_cmpfloat_with_epsilon (float_value, 1.0f, 0.001);
+-    g_assert_cmpint (boolean_value, ==, FALSE);
++    g_assert_cmpint (boolean_value, ==, false);
+   }
+ 
+   /* setup change signals */
+@@ -541,7 +541,7 @@ test_endpoint_with_props (TestEndpointFixture *fixture, gconstpointer data)
+     g_auto (GValue) item = G_VALUE_INIT;
+     g_autoptr (WpSpaPod) pod = NULL;
+     gfloat float_value = 0.0f;
+-    gboolean boolean_value = TRUE;
++    bool boolean_value = true;
+ 
+     iterator = wp_pipewire_object_enum_params_sync (
+         WP_PIPEWIRE_OBJECT (fixture->proxy_endpoint), "Props", NULL);
+@@ -556,14 +556,14 @@ test_endpoint_with_props (TestEndpointFixture *fixture, gconstpointer data)
+             "mute", "b", &boolean_value,
+             NULL));
+     g_assert_cmpfloat_with_epsilon (float_value, 0.7f, 0.001);
+-    g_assert_cmpint (boolean_value, ==, FALSE);
++    g_assert_cmpint (boolean_value, ==, false);
+   }
+   {
+     g_autoptr (WpIterator) iterator = NULL;
+     g_auto (GValue) item = G_VALUE_INIT;
+     g_autoptr (WpSpaPod) pod = NULL;
+     gfloat float_value = 0.0f;
+-    gboolean boolean_value = TRUE;
++    bool boolean_value = true;
+ 
+     iterator = wp_pipewire_object_enum_params_sync (
+         WP_PIPEWIRE_OBJECT (fixture->impl_endpoint), "Props", NULL);
+@@ -577,14 +577,14 @@ test_endpoint_with_props (TestEndpointFixture *fixture, gconstpointer data)
+             "mute", "b", &boolean_value,
+             NULL));
+     g_assert_cmpfloat_with_epsilon (float_value, 0.7f, 0.001);
+-    g_assert_cmpint (boolean_value, ==, FALSE);
++    g_assert_cmpint (boolean_value, ==, false);
+   }
+   {
+     g_autoptr (WpIterator) iterator = NULL;
+     g_auto (GValue) item = G_VALUE_INIT;
+     g_autoptr (WpSpaPod) pod = NULL;
+     gfloat float_value = 0.0f;
+-    gboolean boolean_value = TRUE;
++    bool boolean_value = true;
+ 
+     iterator = wp_pipewire_object_enum_params_sync (
+         WP_PIPEWIRE_OBJECT (endpoint->node), "Props", NULL);
+@@ -598,7 +598,7 @@ test_endpoint_with_props (TestEndpointFixture *fixture, gconstpointer data)
+             "mute", "b", &boolean_value,
+             NULL));
+     g_assert_cmpfloat_with_epsilon (float_value, 0.7f, 0.001);
+-    g_assert_cmpint (boolean_value, ==, FALSE);
++    g_assert_cmpint (boolean_value, ==, false);
+   }
+ 
+   /* change control on the impl */
+@@ -618,7 +618,7 @@ test_endpoint_with_props (TestEndpointFixture *fixture, gconstpointer data)
+     g_auto (GValue) item = G_VALUE_INIT;
+     g_autoptr (WpSpaPod) pod = NULL;
+     gfloat float_value = 0.0f;
+-    gboolean boolean_value = TRUE;
++    bool boolean_value = true;
+ 
+     iterator = wp_pipewire_object_enum_params_sync (
+         WP_PIPEWIRE_OBJECT (fixture->proxy_endpoint), "Props", NULL);
+@@ -633,14 +633,14 @@ test_endpoint_with_props (TestEndpointFixture *fixture, gconstpointer data)
+             "mute", "b", &boolean_value,
+             NULL));
+     g_assert_cmpfloat_with_epsilon (float_value, 0.7f, 0.001);
+-    g_assert_cmpint (boolean_value, ==, TRUE);
++    g_assert_cmpint (boolean_value, ==, true);
+   }
+   {
+     g_autoptr (WpIterator) iterator = NULL;
+     g_auto (GValue) item = G_VALUE_INIT;
+     g_autoptr (WpSpaPod) pod = NULL;
+     gfloat float_value = 0.0f;
+-    gboolean boolean_value = TRUE;
++    bool boolean_value = true;
+ 
+     iterator = wp_pipewire_object_enum_params_sync (
+         WP_PIPEWIRE_OBJECT (fixture->impl_endpoint), "Props", NULL);
+@@ -654,14 +654,14 @@ test_endpoint_with_props (TestEndpointFixture *fixture, gconstpointer data)
+             "mute", "b", &boolean_value,
+             NULL));
+     g_assert_cmpfloat_with_epsilon (float_value, 0.7f, 0.001);
+-    g_assert_cmpint (boolean_value, ==, TRUE);
++    g_assert_cmpint (boolean_value, ==, true);
+   }
+   {
+     g_autoptr (WpIterator) iterator = NULL;
+     g_auto (GValue) item = G_VALUE_INIT;
+     g_autoptr (WpSpaPod) pod = NULL;
+     gfloat float_value = 0.0f;
+-    gboolean boolean_value = TRUE;
++    bool boolean_value = true;
+ 
+     iterator = wp_pipewire_object_enum_params_sync (
+         WP_PIPEWIRE_OBJECT (endpoint->node), "Props", NULL);
+@@ -675,7 +675,7 @@ test_endpoint_with_props (TestEndpointFixture *fixture, gconstpointer data)
+             "mute", "b", &boolean_value,
+             NULL));
+     g_assert_cmpfloat_with_epsilon (float_value, 0.7f, 0.001);
+-    g_assert_cmpint (boolean_value, ==, TRUE);
++    g_assert_cmpint (boolean_value, ==, true);
+   }
+ 
+   /* change control on the node */
+@@ -695,7 +695,7 @@ test_endpoint_with_props (TestEndpointFixture *fixture, gconstpointer data)
+     g_auto (GValue) item = G_VALUE_INIT;
+     g_autoptr (WpSpaPod) pod = NULL;
+     gfloat float_value = 0.0f;
+-    gboolean boolean_value = TRUE;
++    bool boolean_value = true;
+ 
+     iterator = wp_pipewire_object_enum_params_sync (
+         WP_PIPEWIRE_OBJECT (fixture->proxy_endpoint), "Props", NULL);
+@@ -709,14 +709,14 @@ test_endpoint_with_props (TestEndpointFixture *fixture, gconstpointer data)
+             "mute", "b", &boolean_value,
+             NULL));
+     g_assert_cmpfloat_with_epsilon (float_value, 0.2f, 0.001);
+-    g_assert_cmpint (boolean_value, ==, TRUE);
++    g_assert_cmpint (boolean_value, ==, true);
+   }
+   {
+     g_autoptr (WpIterator) iterator = NULL;
+     g_auto (GValue) item = G_VALUE_INIT;
+     g_autoptr (WpSpaPod) pod = NULL;
+     gfloat float_value = 0.0f;
+-    gboolean boolean_value = TRUE;
++    bool boolean_value = true;
+ 
+     iterator = wp_pipewire_object_enum_params_sync (
+         WP_PIPEWIRE_OBJECT (fixture->impl_endpoint), "Props", NULL);
+@@ -730,14 +730,14 @@ test_endpoint_with_props (TestEndpointFixture *fixture, gconstpointer data)
+             "mute", "b", &boolean_value,
+             NULL));
+     g_assert_cmpfloat_with_epsilon (float_value, 0.2f, 0.001);
+-    g_assert_cmpint (boolean_value, ==, TRUE);
++    g_assert_cmpint (boolean_value, ==, true);
+   }
+   {
+     g_autoptr (WpIterator) iterator = NULL;
+     g_auto (GValue) item = G_VALUE_INIT;
+     g_autoptr (WpSpaPod) pod = NULL;
+     gfloat float_value = 0.0f;
+-    gboolean boolean_value = TRUE;
++    bool boolean_value = true;
+ 
+     iterator = wp_pipewire_object_enum_params_sync (
+         WP_PIPEWIRE_OBJECT (endpoint->node), "Props", NULL);
+@@ -751,7 +751,7 @@ test_endpoint_with_props (TestEndpointFixture *fixture, gconstpointer data)
+             "mute", "b", &boolean_value,
+             NULL));
+     g_assert_cmpfloat_with_epsilon (float_value, 0.2f, 0.001);
+-    g_assert_cmpint (boolean_value, ==, TRUE);
++    g_assert_cmpint (boolean_value, ==, true);
+   }
+ 
+   /* destroy impl endpoint */
