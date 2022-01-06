@@ -10,7 +10,11 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/kovidgoyal/kitty.git"
 else
-	SRC_URI="https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz"
+	inherit verify-sig
+	SRC_URI="
+		https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz
+		verify-sig? ( https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz.sig )"
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/kovidgoyal.gpg"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -58,6 +62,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? ( $(python_gen_cond_dep 'dev-python/pillow[${PYTHON_USEDEP}]') )
 	wayland? ( dev-util/wayland-scanner )"
+[[ ${PV} == 9999 ]] || BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-kovidgoyal )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.23.1-flags.patch
