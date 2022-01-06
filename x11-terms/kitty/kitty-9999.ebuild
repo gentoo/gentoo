@@ -73,11 +73,6 @@ src_prepare() {
 		rm -r kittens/transfer || die
 	fi
 
-	# --shell-integration="enabled no-rc" is the intended way to set
-	# no-rc by default, but setup.py's replacer currently fails
-	# https://github.com/kovidgoyal/kitty/issues/4434
-	sed -i "/shell_integration:/s/'enabled'/&,'no-rc'/" kitty/options/types.py || die
-
 	# test relies on 'who' command which doesn't detect users with pid-sandbox
 	rm kitty_tests/utmp.py || die
 
@@ -94,6 +89,7 @@ src_compile() {
 		--disable-link-time-optimization
 		--ignore-compiler-warnings
 		--libdir-name=$(get_libdir)
+		--shell-integration="enabled no-rc"
 		--update-check-interval=0
 		--verbose
 		$(usev debug --debug)
