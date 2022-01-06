@@ -1,5 +1,5 @@
 commit 9bcfa2a6d3eaa5df00ae728c44811faf08effbd3
-Author: John Helmert III <jchelmert3@posteo.net>
+Author: John Helmert III <ajak@gentoo.org>
 Date:   Thu Jan 6 11:12:58 2022 -0600
 
     shlr/rizin-shell-parser/src: Never rebuild parser.c
