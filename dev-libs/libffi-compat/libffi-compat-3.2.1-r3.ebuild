@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,7 +42,6 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	use userland_BSD && export HOST="${CHOST}"
 	econf \
 		--disable-static \
 		$(use_enable pax-kernel pax_emutramp) \
