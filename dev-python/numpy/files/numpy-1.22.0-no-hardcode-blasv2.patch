@@ -2,12 +2,9 @@ Originally added in: https://gitweb.gentoo.org/repo/gentoo.git/commit/dev-python
 https://bugs.gentoo.org/567938
 --- a/numpy/distutils/system_info.py
 +++ b/numpy/distutils/system_info.py
-@@ -502,36 +502,7 @@ def get_info(name, notfound_action=0):
-       2 - raise error
-     """
-     cl = {'armpl': armpl_info,
--          'blas_armpl': blas_armpl_info,
--          'lapack_armpl': lapack_armpl_info,
+@@ -505,33 +505,7 @@ def get_info(name, notfound_action=0):
+           'blas_armpl': blas_armpl_info,
+           'lapack_armpl': lapack_armpl_info,
            'fftw3_armpl': fftw3_armpl_info,
 -          'atlas': atlas_info,  # use lapack_opt or blas_opt instead
 -          'atlas_threads': atlas_threads_info,                # ditto
@@ -31,7 +28,7 @@ https://bugs.gentoo.org/567938
 -          'blis': blis_info,                  # use blas_opt instead
 -          'lapack_mkl': lapack_mkl_info,      # use lapack_opt instead
 -          'blas_mkl': blas_mkl_info,          # use blas_opt instead
--          'accelerate': accelerate_info,      # use blas_opt instead
+           'accelerate': accelerate_info,      # use blas_opt instead
 -          'openblas64_': openblas64__info,
 -          'openblas64__lapack': openblas64__lapack_info,
 -          'openblas_ilp64': openblas_ilp64_info,
@@ -39,32 +36,7 @@ https://bugs.gentoo.org/567938
            'x11': x11_info,
            'fft_opt': fft_opt_info,
            'fftw': fftw_info,
-@@ -543,24 +514,12 @@ def get_info(name, notfound_action=0):
-           'dfftw_threads': dfftw_threads_info,
-           'sfftw_threads': sfftw_threads_info,
-           'djbfft': djbfft_info,
--          'blas': blas_info,                  # use blas_opt instead
--          'lapack': lapack_info,              # use lapack_opt instead
--          'lapack_src': lapack_src_info,
--          'blas_src': blas_src_info,
-           'numpy': numpy_info,
-           'f2py': f2py_info,
-           'Numeric': Numeric_info,
-           'numeric': Numeric_info,
-           'numarray': numarray_info,
-           'numerix': numerix_info,
--          'lapack_opt': lapack_opt_info,
--          'lapack_ilp64_opt': lapack_ilp64_opt_info,
--          'lapack_ilp64_plain_opt': lapack_ilp64_plain_opt_info,
--          'lapack64__opt': lapack64__opt_info,
--          'blas_opt': blas_opt_info,
--          'blas_ilp64_opt': blas_ilp64_opt_info,
--          'blas_ilp64_plain_opt': blas_ilp64_plain_opt_info,
--          'blas64__opt': blas64__opt_info,
-           'boost_python': boost_python_info,
-           'agg2': agg2_info,
-           'wx': wx_info,
-@@ -951,10 +910,7 @@ class system_info:
+@@ -951,10 +925,7 @@ class system_info:
          return [b for b in [a.strip() for a in libs.split(',')] if b]
  
      def get_libraries(self, key='libraries'):
@@ -72,7 +44,7 @@ https://bugs.gentoo.org/567938
 -            return self.get_libs(key, default=self._lib_names)
 -        else:
 -            return self.get_libs(key, '')
-+        return self.get_libs(key, '')
++      return self.get_libs(key, '')
  
      def library_extensions(self):
          c = customized_ccompiler()
