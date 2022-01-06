@@ -35,7 +35,6 @@ DEPEND="system? (
 "
 RDEPEND="${DEPEND}"
 BDEPEND="dev-lang/perl
-	sys-apps/findutils
 	test? ( $(python_gen_any_dep 'dev-python/passlib[${PYTHON_USEDEP}]') )"
 
 python_check_deps() {
