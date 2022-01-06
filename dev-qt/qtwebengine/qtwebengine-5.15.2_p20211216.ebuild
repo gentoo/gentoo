@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -136,7 +136,11 @@ qtwebengine_check-reqs() {
 
 	local CHECKREQS_DISK_BUILD="7G"
 	local CHECKREQS_DISK_USR="150M"
-	local CHECKREQS_MEMORY=$(($(makeopts_jobs)*multiplier/10))G
+	if ! has "distcc" ${FEATURES} ; then
+		# bug #830661
+		# Not super realistic to come up with good estimates for distcc right now
+		local CHECKREQS_MEMORY=$(($(makeopts_jobs)*multiplier/10))G
+	fi
 
 	check-reqs_${EBUILD_PHASE_FUNC}
 }
