@@ -1,0 +1,20 @@
+--- tdesktop-3.3.0-full.orig/Telegram/lib_spellcheck/spellcheck/platform/linux/spellcheck_linux.cpp
++++ tdesktop-3.3.0-full/Telegram/lib_spellcheck/spellcheck/platform/linux/spellcheck_linux.cpp
+@@ -34,7 +34,7 @@
+ auto IsHebrew(const QString &word) {
+ 	// Words with mixed scripts will be automatically ignored,
+ 	// so this check should be fine.
+-	return ::Spellchecker::WordScript(&word) == QChar::Script_Hebrew;
++	return ::Spellchecker::WordScript(word) == QChar::Script_Hebrew;
+ }
+ 
+ class EnchantSpellChecker {
+@@ -154,7 +154,7 @@
+ }
+ 
+ auto EnchantSpellChecker::findSuggestions(const QString &word) {
+-	const auto wordScript = ::Spellchecker::WordScript(&word);
++	const auto wordScript = ::Spellchecker::WordScript(word);
+ 	auto w = word.toStdString();
+ 	std::vector<QString> result;
+ 	if (!_validators.size()) {
