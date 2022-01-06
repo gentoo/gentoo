@@ -63,3 +63,9 @@ app-shells/bash mem-scramble
 
 # static linking works with musl
 app-shells/mksh -static
+
+# Marco Genasci <fedeliallalinea@gmail.com> (2022-01-06)
+# Pulls dev-db/oracle-instantclient which doesn't work on musl
+app-metrics/collectd collectd_plugins_oracle
+dev-lang/php oci8-instant-client
+dev-qt/qtsql oci8
