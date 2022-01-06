@@ -33,6 +33,7 @@ BDEPEND="
 
 multilib_src_configure() {
 	local emesonargs=(
+		-Dmaintainer-mode=false
 		$(meson_native_use_bool doc build-documentation)
 	)
 	meson_src_configure
