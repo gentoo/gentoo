@@ -64,10 +64,6 @@ qt5
 # valgrind has no m68k port.
 valgrind
 
-# Matt Turner <mattst88@gentoo.org> (2019-12-05)
-# media-libs/libglvnd is not keyworded
-libglvnd
-
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependencies not keyworded.
 appindicator
@@ -147,6 +143,4 @@ slang
 systemd
 tcl
 tk
-X
 xemacs
-xpm
