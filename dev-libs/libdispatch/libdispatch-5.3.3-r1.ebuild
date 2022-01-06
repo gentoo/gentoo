@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit flag-o-matic cmake toolchain-funcs
 
 MY_PN="swift-corelibs-${PN}"
 MY_PV="swift-${PV}-RELEASE"
