@@ -1,6 +1,17 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marco Genasci <fedeliallalinea@gmail.com> (2022-01-06)
+# dev-db/oracle-instantclient package linked against glibc,
+# and the other packages depends on it.
+dev-db/oracle-instantclient
+dev-db/oracle-instantclient-basic
+dev-db/oracle-instantclient-jdbc
+dev-db/oracle-instantclient-odbc
+dev-db/oracle-instantclient-sqlplus
+dev-db/ocp
+dev-db/sqlcl-bin
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-01-05)
 # Binary package linked to glibc
 app-text/zotero-bin
