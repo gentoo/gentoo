@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,12 +15,12 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 s
 IUSE="debug kerberos pam selinux static-libs tcpd upnp"
 
 CDEPEND="
+	sys-apps/shadow
 	virtual/libcrypt:=
 	kerberos? ( virtual/krb5 )
 	pam? ( sys-libs/pam )
 	tcpd? ( sys-apps/tcp-wrappers )
 	upnp? ( net-libs/miniupnpc:= )
-	userland_GNU? ( sys-apps/shadow )
 "
 DEPEND="
 	${CDEPEND}
