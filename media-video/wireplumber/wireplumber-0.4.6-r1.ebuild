@@ -55,7 +55,10 @@ RDEPEND="${DEPEND}"
 DOCS=( {NEWS,README}.rst )
 
 PATCHES=(
-	"${FILESDIR}"/${P}-endianness-fixes.patch
+	"${FILESDIR}"/${P}-policy-node-fix-typo-when-finding-best-target.patch
+	"${FILESDIR}"/${P}-policy-node-schedule-a-rescan-without-timeout-if-def.patch
+	"${FILESDIR}"/${P}-policy-node-find-best-linkable-if-default-one-cannot.patch
+	"${FILESDIR}"/${P}-spa-pod-fix-different-architecture-errors-for-boolea.patch
 )
 
 src_configure() {
