@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -47,6 +47,10 @@ CONFIG_CHECK="
 	~SECCOMP
 	~USER_NS
 	~UTS_NS
+
+	~KVM
+	~MACVTAP
+	~VHOST_VSOCK
 "
 
 ERROR_IPC_NS="CONFIG_IPC_NS is required."
@@ -54,6 +58,10 @@ ERROR_NET_NS="CONFIG_NET_NS is required."
 ERROR_PID_NS="CONFIG_PID_NS is required."
 ERROR_SECCOMP="CONFIG_SECCOMP is required."
 ERROR_UTS_NS="CONFIG_UTS_NS is required."
+
+WARNING_KVM="CONFIG_KVM and CONFIG_KVM_AMD/-INTEL is required for virtual machines."
+WARNING_MACVTAP="CONFIG_MACVTAP is required for virtual machines."
+WARNING_VHOST_VSOCK="CONFIG_VHOST_VSOCK is required for virtual machines."
 
 # Go magic.
 QA_PREBUILT="/usr/bin/fuidshift
@@ -91,6 +99,7 @@ src_prepare() {
 		-e "s:/usr/share/OVMF:/usr/share/edk2-ovmf:g" \
 		-e "s:OVMF_VARS.ms.fd:OVMF_VARS.secboot.fd:g" \
 		doc/environment.md \
+		lxd/apparmor/instance.go \
 		lxd/apparmor/instance_qemu.go \
 		lxd/instance/drivers/driver_qemu.go || die "Failed to fix hardcoded ovmf paths."
 
@@ -167,9 +176,12 @@ pkg_postinst() {
 	elog
 	elog "Consult https://wiki.gentoo.org/wiki/LXD for more information,"
 	elog "including a Quick Start."
+	elog "For virtual machine support, see:"
+	elog "https://wiki.gentoo.org/wiki/LXD#Virtual_machines"
 	elog
 	elog "Please run 'lxc-checkconfig' to see all optional kernel features."
 	elog
+	optfeature "virtual machine support" app-emulation/qemu[spice,usbredir,virtfs]
 	optfeature "btrfs storage backend" sys-fs/btrfs-progs
 	optfeature "lvm2 storage backend" sys-fs/lvm2
 	optfeature "zfs storage backend" sys-fs/zfs
