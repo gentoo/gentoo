@@ -14,7 +14,9 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+caps curl +constraints debug dhcp eap farp gcrypt +gmp ldap mysql networkmanager +non-root +openssl selinux sqlite systemd pam pkcs11"
 
 STRONGSWAN_PLUGINS_STD="led lookip systime-fix unity vici"
-STRONGSWAN_PLUGINS_OPT="aesni blowfish bypass-lan ccm chapoly ctr forecast gcm ha ipseckey newhope ntru padlock rdrand save-keys unbound whitelist"
+STRONGSWAN_PLUGINS_OPT="aesni blowfish bypass-lan ccm chapoly ctr forecast gcm
+ha ipseckey newhope ntru padlock rdrand save-keys unbound whitelist
+xauth-noauth"
 for mod in $STRONGSWAN_PLUGINS_STD; do
 	IUSE="${IUSE} +strongswan_plugins_${mod}"
 done

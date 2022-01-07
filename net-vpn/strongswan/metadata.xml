@@ -52,6 +52,7 @@
 		<flag name="strongswan_plugins_save-keys">Enable plugin that saves IKE and/or ESP keys to files compatible with Wireshark (for debugging)</flag>
 		<flag name="strongswan_plugins_unbound">Enable support for the unbound plugin</flag>
 		<flag name="strongswan_plugins_whitelist">Enable support for the whitelist plugin</flag>
+		<flag name="strongswan_plugins_xauth-noauth">Enable support for the xauth-noauth plugin</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:strongswan:strongswan</remote-id>
