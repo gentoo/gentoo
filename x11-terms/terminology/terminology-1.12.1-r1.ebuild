@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="extras nls"
 
-RDEPEND="|| ( dev-libs/efl[X,opengl] dev-libs/efl[wayland] )
+RDEPEND="|| ( dev-libs/efl[X] dev-libs/efl[wayland] )
 	app-arch/lz4
 	>=dev-libs/efl-1.26.1[eet,fontconfig]"
 DEPEND="${RDEPEND}"
