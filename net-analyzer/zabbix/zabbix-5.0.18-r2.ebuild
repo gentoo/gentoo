@@ -255,7 +255,7 @@ COMMON_DEPEND="
 	mysql? ( dev-db/mysql-connector-c )
 	odbc? ( dev-db/unixODBC )
 	openipmi? ( sys-libs/openipmi )
-	oracle? ( dev-db/oracle-instantclient-basic )
+	oracle? ( dev-db/oracle-instantclient[odbc,sdk] )
 	postgres? ( dev-db/postgresql:* )
 	proxy?  ( sys-libs/zlib )
 	server? (
@@ -340,12 +340,6 @@ pkg_setup() {
 			eerror "It looks like you don't have Oracle installed."
 			eerror
 			die "Environment variable ORACLE_HOME is not set"
-		fi
-		if has_version 'dev-db/oracle-instantclient-basic'; then
-			ewarn
-			ewarn "Please ensure you have a full install of the Oracle client."
-			ewarn "dev-db/oracle-instantclient* is NOT sufficient."
-			ewarn
 		fi
 	fi
 
