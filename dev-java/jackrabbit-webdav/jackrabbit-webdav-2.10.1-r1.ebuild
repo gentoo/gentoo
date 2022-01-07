@@ -32,6 +32,8 @@ DEPEND=">=virtual/jdk-1.8:*
 RDEPEND=">=virtual/jre-1.8:*
 	${CDEPEND}"
 
+BDEPEND="app-arch/unzip"
+
 JAVA_ANT_REWRITE_CLASSPATH="true"
 EANT_GENTOO_CLASSPATH="
 	bndlib

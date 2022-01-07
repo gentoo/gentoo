@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -25,7 +25,8 @@ CDEPEND="dev-java/bndlib:0
 	dev-java/commons-httpclient:3
 	java-virtuals/servlet-api:2.3"
 
-DEPEND=">=virtual/jdk-1.6
+DEPEND="app-arch/unzip
+	>=virtual/jdk-1.6
 	${CDEPEND}
 	test? ( dev-java/ant-junit:0 )"
 
