@@ -68,10 +68,6 @@ DEPEND="app-arch/unzip"
 RDEPEND="
 	>=dev-libs/libaio-0.3.109-r5[${MULTILIB_USEDEP}]
 	sys-libs/glibc
-	!<dev-db/oracle-instantclient-basic-12
-	!<dev-db/oracle-instantclient-odbc-12
-	!<dev-db/oracle-instantclient-jdbc-12
-	!<dev-db/oracle-instantclient-sqlplus-12
 "
 
 S="${WORKDIR}/${MY_P}"
