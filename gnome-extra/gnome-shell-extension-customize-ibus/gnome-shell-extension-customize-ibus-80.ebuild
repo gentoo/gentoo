@@ -10,7 +10,7 @@ SRC_URI="https://github.com/openSUSE/Customize-IBus/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 BDEPEND="
@@ -29,15 +29,15 @@ S="${WORKDIR}/Customize-IBus-${PV}"
 extension_uuid="customize-ibus@hollowman.ml"
 
 src_compile() {
-	emake _build VERSION=${PV} || die "failed to build"
+	emake _build VERSION=${PV}
 }
 
 src_install() {
 	einstalldocs
-	rm -f README.md LICENSE
+	rm -f README.md LICENSE || die
 	insinto /usr/share/glib-2.0/schemas
 	doins _build/schemas/*.xml
-	rm -rf _build/schemas/*.xml
+	rm -rf _build/schemas/*.xml || die
 	insinto /usr/share/gnome-shell/extensions/"${extension_uuid}"
 	doins -r _build/*
 }
