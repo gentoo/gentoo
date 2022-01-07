@@ -13,7 +13,7 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="|| ( dev-libs/efl[X,opengl] dev-libs/efl[wayland] )
+DEPEND="|| ( dev-libs/efl[X] dev-libs/efl[wayland] )
 	>=dev-libs/efl-1.26.1[gstreamer]
 	media-plugins/gst-plugins-meta[ffmpeg]"
 RDEPEND="${DEPEND}"
