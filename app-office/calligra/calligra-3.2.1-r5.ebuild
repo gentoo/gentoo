@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -117,7 +117,9 @@ BDEPEND="sys-devel/gettext"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.89-no-arch-detection.patch
 	"${FILESDIR}"/${P}-cmake-3.16.patch # bug 796224
-	"${FILESDIR}"/${P}-{openexr-3,imath}.patch
+	"${FILESDIR}"/${P}-{openexr-3,imath-{1,2}}.patch
+	"${FILESDIR}"/${P}-cxx17-for-poppler-22.patch
+	"${FILESDIR}"/${P}-cxx17-fixes.patch
 )
 
 pkg_pretend() {
