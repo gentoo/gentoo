@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN="php-timer"
 
@@ -17,7 +17,7 @@ IUSE=""
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 RDEPEND="dev-php/fedora-autoloader
-	>=dev-lang/php-7.1:*"
+	>=dev-lang/php-7.3:*"
 
 src_install() {
 	insinto /usr/share/php/PHP/Timer
