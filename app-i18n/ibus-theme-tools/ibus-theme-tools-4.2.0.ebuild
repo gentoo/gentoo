@@ -12,14 +12,11 @@ HOMEPAGE="
 	https://pypi.org/project/ibus-theme-tools/
 	https://github.com/openSUSE/IBus-Theme-Tools
 "
-SRC_URI="
-	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
-	https://github.com/openSUSE/IBus-Theme-Tools/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
-"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 RDEPEND="
 	sys-devel/gettext
