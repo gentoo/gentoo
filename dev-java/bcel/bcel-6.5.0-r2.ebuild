@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -31,15 +31,13 @@ DEPEND="
 	>=virtual/jdk-1.8:*
 	!arm? (
 		!arm64? (
-			!ppc64? (
-				test? (
-					dev-java/commons-collections:4
-					dev-java/commons-io:1
-					dev-java/commons-lang:3.6
-					dev-java/jna:4
-					dev-java/jmh-core:0
-					dev-java/oracle-javamail:0
-				)
+			test? (
+				dev-java/commons-collections:4
+				dev-java/commons-io:1
+				dev-java/commons-lang:3.6
+				dev-java/jna:4
+				dev-java/jmh-core:0
+				dev-java/oracle-javamail:0
 			)
 		)
 	)
