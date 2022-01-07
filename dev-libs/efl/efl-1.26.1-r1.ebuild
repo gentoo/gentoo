@@ -33,6 +33,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}
 	drm? ( wayland )
 	examples? ( eet svg )
 	ibus? ( glib )
+	opengl? ( X )
 	pulseaudio? ( sound )
 	xim? ( X )
 	xpresent? ( X )"
@@ -50,6 +51,7 @@ RDEPEND="${LUA_DEPS}
 	sys-libs/zlib
 	virtual/jpeg
 	X? (
+		!opengl? ( media-libs/mesa[egl(+),gles2] )
 		media-libs/freetype
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
@@ -221,6 +223,8 @@ src_configure() {
 		emesonargs+=( -D opengl=es-egl )
 	elif ! use wayland && use opengl; then
 		emesonargs+=( -D opengl=full )
+	elif ! use wayland && use X && ! use opengl; then
+		emesonargs+=( -D opengl=es-egl )
 	else
 		emesonargs+=( -D opengl=none )
 	fi
