@@ -1,14 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Parallelized network login hacker"
 HOMEPAGE="https://github.com/vanhauser-thc/thc-hydra"
 SRC_URI="https://github.com/vanhauser-thc/thc-hydra/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/thc-${P}"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -33,7 +31,7 @@ RDEPEND="
 	mongodb? ( dev-libs/mongo-c-driver )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	ncurses? ( sys-libs/ncurses:= )
-	oracle? ( dev-db/oracle-instantclient-basic )
+	oracle? ( dev-db/oracle-instantclient[sdk] )
 	pcre? ( dev-libs/libpcre )
 	postgres? ( dev-db/postgresql:* )
 	rdp? ( net-misc/freerdp )
@@ -41,12 +39,11 @@ RDEPEND="
 	subversion? ( dev-vcs/subversion )
 	zlib? ( sys-libs/zlib )
 "
-DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-9.2-respect-cflags-more.patch
-)
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+"
+S=${WORKDIR}/thc-${P}
 
 src_prepare() {
 	default
@@ -66,6 +63,8 @@ src_prepare() {
 src_configure() {
 	# Note: the top level configure script is not autoconf-based
 	tc-export CC PKG_CONFIG
+
+	append-cflags -fcommon
 
 	export OPTS="${CFLAGS}"
 
