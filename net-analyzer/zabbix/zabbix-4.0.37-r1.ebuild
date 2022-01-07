@@ -15,7 +15,7 @@ SRC_URI="https://cdn.zabbix.com/${PN}/sources/stable/4.0/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+agent curl frontend gnutls ipv6 java ldap libxml2 mbedtls mysql odbc openipmi +openssl oracle +postgres proxy server snmp sqlite ssh ssl static xmpp"
 REQUIRED_USE="|| ( agent frontend proxy server )
 	ssl? ( ^^ ( gnutls mbedtls openssl ) )
@@ -35,7 +35,7 @@ COMMON_DEPEND="
 	mysql? ( dev-db/mysql-connector-c )
 	odbc? ( dev-db/unixODBC )
 	openipmi? ( sys-libs/openipmi )
-	oracle? ( dev-db/oracle-instantclient-basic )
+	oracle? ( dev-db/oracle-instantclient[odbc,sdk] )
 	postgres? ( dev-db/postgresql:* )
 	proxy?  ( sys-libs/zlib )
 	server? (
@@ -115,12 +115,6 @@ pkg_setup() {
 			eerror "It looks like you don't have Oracle installed."
 			eerror
 			die "Environment variable ORACLE_HOME is not set"
-		fi
-		if has_version 'dev-db/oracle-instantclient-basic'; then
-			ewarn
-			ewarn "Please ensure you have a full install of the Oracle client."
-			ewarn "dev-db/oracle-instantclient* is NOT sufficient."
-			ewarn
 		fi
 	fi
 
@@ -272,12 +266,12 @@ src_install() {
 		doexe src/zabbix_java/bin/zabbix-java-gateway-${MY_PV}.jar
 		exeinto /${ZABBIXJAVA_BASE}/lib
 		doexe \
-			src/zabbix_java/lib/logback-classic-1.2.3.jar \
+			src/zabbix_java/lib/logback-classic-1.2.9.jar \
 			src/zabbix_java/lib/logback-console.xml \
-			src/zabbix_java/lib/logback-core-1.2.3.jar \
+			src/zabbix_java/lib/logback-core-1.2.9.jar \
 			src/zabbix_java/lib/logback.xml \
 			src/zabbix_java/lib/android-json-4.3_r3.1.jar \
-			src/zabbix_java/lib/slf4j-api-1.7.30.jar
+			src/zabbix_java/lib/slf4j-api-1.7.32.jar
 		newinitd "${FILESDIR}"/zabbix-jmx-proxy.init zabbix-jmx-proxy
 		newconfd "${FILESDIR}"/zabbix-jmx-proxy.conf zabbix-jmx-proxy
 	fi
