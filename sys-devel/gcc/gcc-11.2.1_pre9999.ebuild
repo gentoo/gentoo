@@ -15,7 +15,8 @@ inherit toolchain
 # Technically only if USE=hardened *too* right now, but no point in complicating it further.
 # If GCC is enabling CET by default, we need glibc to be built with support for it.
 # bug #830454
-RDEPEND="elibc_glibc? ( cet? ( sys-libs/glibc[cet(-)] ) )"
+RDEPEND="elibc_glibc? ( sys-libs/glibc[cet(-)?] )"
+DEPEND="${RDEPEND}"
 BDEPEND="${CATEGORY}/binutils[cet(-)?]"
 
 src_prepare() {
