@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,15 +14,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
-RDEPEND="
-	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/urllib3[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/requests[${PYTHON_USEDEP}]"
 BDEPEND="
+	dev-python/pbr[${PYTHON_USEDEP}]
 	test? ( dev-python/waitress[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
-
-src_prepare() {
-	sed -e '/pbr/d' -i setup.py|| die
-	distutils-r1_src_prepare
-}
