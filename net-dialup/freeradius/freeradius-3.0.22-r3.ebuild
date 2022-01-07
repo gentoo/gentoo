@@ -1,27 +1,28 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit autotools pam python-single-r1 systemd
 
-MY_PV=$(ver_rs 1- "_")
+MY_P="${PN}-server-${PV}"
 
 DESCRIPTION="Highly configurable free RADIUS server"
-HOMEPAGE="https://freeradius.org/"
-SRC_URI="https://github.com/FreeRADIUS/freeradius-server/archive/release_${MY_PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/freeradius-server-release_${MY_PV}"
+SRC_URI="
+	ftp://ftp.freeradius.org/pub/radius/${MY_P}.tar.gz
+	ftp://ftp.freeradius.org/pub/radius/old/${MY_P}.tar.gz
+"
+HOMEPAGE="http://www.freeradius.org/"
 
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE="
 	debug firebird iodbc kerberos ldap memcached mysql mongodb odbc oracle pam
 	pcap postgres python readline redis rest samba sqlite ssl systemd
 "
-
 RESTRICT="test firebird? ( bindist )"
 
 # NOTE: Temporary freeradius doesn't support linking with mariadb client
@@ -45,7 +46,7 @@ RDEPEND="acct-group/radius
 	mysql? ( dev-db/mysql-connector-c )
 	mongodb? ( >=dev-libs/mongo-c-driver-1.13.0-r1 )
 	odbc? ( dev-db/unixODBC )
-	oracle? ( dev-db/oracle-instantclient-basic )
+	oracle? ( dev-db/oracle-instantclient[sdk] )
 	pam? ( sys-libs/pam )
 	pcap? ( net-libs/libpcap )
 	postgres? ( dev-db/postgresql:= )
@@ -63,8 +64,7 @@ DEPEND="${RDEPEND}"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-# 721040
-QA_SONAME="usr/lib.*/libfreeradius-.*.so"
+S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.20-systemd-service.patch
@@ -235,7 +235,7 @@ src_install() {
 	rm "${ED}/usr/sbin/rc.radiusd" || die
 
 	newinitd "${FILESDIR}/radius.init-r4" radiusd
-	newconfd "${FILESDIR}/radius.conf-r6" radiusd
+	newconfd "${FILESDIR}/radius.conf-r5" radiusd
 
 	if ! use systemd ; then
 		# If systemd builtin is not enabled we need use Type=Simple
@@ -253,9 +253,9 @@ pkg_config() {
 	if use ssl; then
 		cd "${ROOT}"/etc/raddb/certs || die
 		./bootstrap || die "Error while running ./bootstrap script."
-		chown root:radius "${ROOT}"/etc/raddb/certs || die
-		chown root:radius "${ROOT}"/etc/raddb/certs/ca.pem || die
-		chown root:radius "${ROOT}"/etc/raddb/certs/server.{key,crt,pem} || die
+		fowners root:radius "${ROOT}"/etc/raddb/certs
+		fowners root:radius "${ROOT}"/etc/raddb/certs/ca.pem
+		fowners root:radius "${ROOT}"/etc/raddb/certs/server.{key,crt,pem}
 	fi
 }
 
