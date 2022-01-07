@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-01-07)
+# Unmaintained, cmake warnings, QA notices, weird build error, no revdeps.
+# Removal on 2022-02-06. Bug #830727
+net-libs/jreen
+
 # Florian Schmaus <flow@gentoo.org> (2022-01-04)
 # Outdated, unmaintained, and has multiple open bugs (bug #732582, bug
 # #739398, bug #756715). As discussed at
