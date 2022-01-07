@@ -195,6 +195,8 @@ multilib_src_configure() {
 		*) myeconfargs+=( ac_cv_prog_RC= ac_cv_prog_ac_ct_RC= ) ;;
 	esac
 
+	export CC_BUILD="$(tc-getBUILD_CC)"
+
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
