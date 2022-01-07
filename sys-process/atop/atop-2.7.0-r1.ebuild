@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -85,8 +85,7 @@ src_install() {
 
 		systemd_dounit "${NETATOP_S}"/netatop.service
 
-		# TODO: openrc init script
-		#install -T -m 0755 netatop.init /etc/init.d/netatop
+		newinitd "${FILESDIR}"/netatop.rc netatop
 	fi
 
 	emake DESTDIR="${D}" genericinstall
