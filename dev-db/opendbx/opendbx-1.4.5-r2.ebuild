@@ -1,31 +1,26 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 inherit flag-o-matic
 
-MY_PN="lib${PN}"
-MY_P="${MY_PN}-${PV}"
-
 DESCRIPTION="OpenDBX - A database abstraction layer"
 HOMEPAGE="https://www.linuxnetworks.de/doc/index.php/OpenDBX"
-SRC_URI="https://www.linuxnetworks.de/opendbx/download/${MY_P}.tar.gz"
+SRC_URI="https://www.linuxnetworks.de/opendbx/download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x64-solaris"
+KEYWORDS="amd64 x86"
 IUSE="firebird +mysql oracle postgres sqlite"
 RESTRICT="firebird? ( bindist )"
 
 RDEPEND="mysql? ( dev-db/mysql-connector-c:0= )
 	postgres? ( dev-db/postgresql:* )
 	sqlite? ( dev-db/sqlite:3 )
-	oracle? ( dev-db/oracle-instantclient-basic )
+	oracle? ( dev-db/oracle-instantclient[sdk] )
 	firebird? ( dev-db/firebird )"
 DEPEND="${RDEPEND} app-doc/doxygen app-text/docbook2X"
-
-S="${WORKDIR}"/${MY_P}
 
 REQUIRED_USE="|| ( firebird mysql oracle postgres sqlite )"
 
@@ -64,6 +59,9 @@ src_configure() {
 		# - vanilla instantclient lacks libdir (instantclient-*.zip)
 		append-ldflags -L"${ORACLE_HOME}"
 	fi
+
+	# bug #788304
+	append-cxxflags -std=c++14
 
 	econf --with-backends="${backends}"
 }
