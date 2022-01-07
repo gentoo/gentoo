@@ -67,8 +67,11 @@ python_install() {
 	distutils-r1_python_install \
 		--install-data="${EPREFIX}"/usr/share/${PN}
 
-	insinto /etc/${PN}
-	newins webapp/graphite/local_settings.py.example local_settings.py
+	# copy the file once, to keep the timestamps correct, #808863
+	if [[ ! -e ${ED}/etc/${PN}/local_settings.py ]] ; then
+		insinto /etc/${PN}
+		newins webapp/graphite/local_settings.py.example local_settings.py
+	fi
 	pushd "${D}/$(python_get_sitedir)"/graphite > /dev/null || die
 	ln -s ../../../../../etc/${PN}/local_settings.py local_settings.py || die
 	popd > /dev/null || die
