@@ -122,7 +122,7 @@ COMMON_DEPEND="
 	collectd_plugins_notify_email?		( net-libs/libesmtp:= )
 	collectd_plugins_nut?			( >=sys-power/nut-2.7.2-r2 )
 	collectd_plugins_openldap?		( net-nds/openldap )
-	collectd_plugins_oracle?		( dev-db/oracle-instantclient-basic )
+	collectd_plugins_oracle?		( dev-db/oracle-instantclient[sdk] )
 	collectd_plugins_ovs_events?		( dev-libs/yajl:= )
 	collectd_plugins_ovs_stats?		( dev-libs/yajl:= )
 	collectd_plugins_perl?			( dev-lang/perl:=[ithreads] )
