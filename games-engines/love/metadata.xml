@@ -5,4 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<use>
+		<flag name="gme">Use <pkg>media-libs/game-music-emu</pkg> to support additional music formats</flag>
+	</use>
 </pkgmetadata>
