@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-db/oracle-instantclient-basic
+	dev-db/oracle-instantclient[sdk]
 	dev-libs/popt
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
