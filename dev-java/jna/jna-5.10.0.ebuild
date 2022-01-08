@@ -35,6 +35,7 @@ DEPEND="
 		dev-java/reflections:0
 	)
 	${CDEPEND}
+	x11-libs/libXt
 "
 
 RDEPEND="
