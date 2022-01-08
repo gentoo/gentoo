@@ -33,6 +33,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-01-08)
+# Ancient versions of spyder preventing clean up of things down the tree.
+# Sadly, this means we are also going to have to say goodbye to some plugins
+# that never got ported to the newer plugin system.
+# Removal in 15 days
+<dev-python/spyder-5.1.0
+<dev-python/spyder-kernels-2.1.0
+# Stuck on spyder-4
+dev-python/spyder-line-profiler
+dev-python/spyder-memory-profiler
+# Stuck on spyder-5.0
+dev-python/spyder-notebook
+<=dev-python/spyder-unittest-0.4.1-r50
+dev-python/spyder-vim
+
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
 # This is likely to cause issues in tests; Unmask if using for other purposes
