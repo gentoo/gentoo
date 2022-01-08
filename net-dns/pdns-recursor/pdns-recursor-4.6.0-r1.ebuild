@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://downloads.powerdns.com/releases/${P/_/-}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug dnstap snmp sodium systemd test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
@@ -36,6 +36,8 @@ S="${WORKDIR}"/${P/_/-}
 pkg_setup() {
 	lua-single_pkg_setup
 	filter-flags -ftree-vectorize
+	append-lfs-flags
+	append-cppflags -D_TIME_BITS=64
 }
 
 src_configure() {
