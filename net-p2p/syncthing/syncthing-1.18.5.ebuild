@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -828,8 +828,10 @@ src_prepare() {
 }
 
 src_compile() {
-	go run build.go -version "v${PV}" -no-upgrade install \
+	go run build.go -version "v${PV}" -no-upgrade build \
 		$(usex tools "all" "") || die "build failed"
+	mkdir bin || die
+	mv "${PN}$(go env GOEXE)" bin/ || die
 }
 
 src_test() {
