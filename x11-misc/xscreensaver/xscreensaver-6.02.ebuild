@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools flag-o-matic font multilib optfeature pam
+inherit autotools flag-o-matic font optfeature pam strip-linguas
 
-DESCRIPTION="modular screen saver and locker for the X Window System"
+DESCRIPTION="Modular screen saver and locker for the X Window System"
 HOMEPAGE="https://www.jwz.org/xscreensaver/"
 SRC_URI="https://www.jwz.org/xscreensaver/${P}.tar.gz"
 
@@ -25,20 +25,16 @@ REQUIRED_USE="
 	glx? ( opengl )
 	gtk? ( png )
 	opengl? ( png )
-	elogind? ( !systemd )
+	?? ( elogind systemd )
 "
 
 COMMON_DEPEND="
 	dev-libs/libxml2
-	media-libs/netpbm
-	virtual/libcrypt:=
 	x11-apps/appres
 	x11-apps/xwininfo
 	x11-libs/libX11
 	x11-libs/libXext
-	xft? ( x11-libs/libXft )
 	x11-libs/libXi
-	x11-libs/libXmu
 	x11-libs/libXrandr
 	x11-libs/libXt
 	x11-libs/libXxf86vm
@@ -52,7 +48,7 @@ COMMON_DEPEND="
 	new-login? (
 		gdm? ( gnome-base/gdm )
 		!gdm? ( || ( x11-misc/lightdm lxde-base/lxdm ) )
-		)
+	)
 	opengl? (
 		virtual/glu
 		virtual/opengl
@@ -60,6 +56,7 @@ COMMON_DEPEND="
 	pam? ( sys-libs/pam )
 	png? ( media-libs/libpng:= )
 	systemd? ( >=sys-apps/systemd-221 )
+	xft? ( x11-libs/libXft )
 	xinerama? ( x11-libs/libXinerama )
 "
 # For USE="perl" see output of `qlist xscreensaver | grep bin | xargs grep '::'`
@@ -75,11 +72,13 @@ RDEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
+	x11-base/xorg-proto
+"
+BDEPEND="
 	dev-util/intltool
 	sys-devel/bc
 	sys-devel/gettext
 	virtual/pkgconfig
-	x11-base/xorg-proto
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.01-interix.patch
@@ -139,6 +138,10 @@ src_configure() {
 	fi
 
 	unset BC_ENV_ARGS #24568
+
+	# Works similarly to -Werror, 
+	# https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wimplicit-function-declaration
+	filter-flags -pedantic-errors
 
 	# WARNING: This is NOT a normal autoconf script
 	# Some of the --with options are NOT standard, and expect "--with-X=no" rather than "--without-X"
@@ -207,17 +210,14 @@ src_install() {
 	einstalldocs
 
 	if use pam; then
-		rm -f "${ED}/etc/pam.d/xscreensaver" # install our version instead
 		fperms 755 /usr/bin/${PN}
 		pamd_mimic_system ${PN} auth
 	fi
 
 	# bugs #809599, #828869
 	if ! use gtk; then
-		rm -f "${ED}/usr/bin/xscreensaver-demo"
+		rm "${ED}/usr/bin/xscreensaver-demo" || die
 	fi
-
-	rm -f "${ED}"/usr/share/${PN}/config/{electricsheep,fireflies}.xml
 }
 
 pkg_postinst() {
