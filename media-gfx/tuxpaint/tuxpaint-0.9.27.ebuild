@@ -11,21 +11,21 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND="
 	app-text/libpaper
 	dev-libs/fribidi
 	gnome-base/librsvg:2
-	media-gfx/libimagequant
 	>=media-libs/libpng-1.2:0=
 	>=media-libs/freetype-2:2
 	media-libs/libsdl[joystick]
-	media-libs/sdl-gfx
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer
 	media-libs/sdl-pango
 	media-libs/sdl-ttf
+	media-libs/sdl-gfx
+	media-gfx/libimagequant
 	x11-libs/cairo
 "
 DEPEND="${RDEPEND}"
@@ -35,24 +35,13 @@ BDEPEND="
 	sys-devel/gettext
 "
 
-src_prepare() {
-
-	sed -i \
-		-e 's|linux_ARCH_INSTALL:=install-xdg|linux_ARCH_INSTALL:=|' \
-		-e "s|linux_PREFIX:=/usr/local|linux_PREFIX:=/usr|" \
-		-e "s:/lib/:/$(get_libdir)/:g" \
-		-e 's:/share/doc/tuxpaint-$(VER_VERSION)/:'"/share/doc/${PF}/:g" \
-		-e '/@gzip -f/d' \
-		-e '/@chmod a+rx,g-w,o-w $(MAN_PREFIX)/d' \
-		-e "s|linux_ARCH_CFLAGS:=|linux_ARCH_CFLAGS:= ${CFLAGS}|" \
-		Makefile || die
-
-	eapply_user
-}
+PATCHES=(
+	${FILESDIR}"/${P}-Makefile.patch"
+)
 
 src_compile() {
 	# parallel build may break things
-	emake -j1 CC="$(tc-getCC)"
+	emake -j1 CC="$(tc-getCC)" LIBDIR="$(get_libdir)"
 }
 
 src_install() {
