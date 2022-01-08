@@ -8,7 +8,7 @@ inherit autotools
 DESCRIPTION="Wallpaper setting utility for X"
 HOMEPAGE="https://github.com/stoeckmann/xwallpaper"
 
-if [ ${PV} == "9999" ] ; then
+if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/stoeckmann/${PN}.git"
 else
