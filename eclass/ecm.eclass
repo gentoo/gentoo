@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ecm.eclass
@@ -310,6 +310,55 @@ _ecm_strip_handbook_translations() {
 			popd > /dev/null || die
 		fi
 	done
+}
+
+# @FUNCTION: _ecm_punt_kfqt_module
+# @INTERNAL
+# @USAGE: <prefix> <dependency>
+# @DESCRIPTION:
+# Removes a specified dependency from a find_package call with multiple
+# components.
+_ecm_punt_kfqt_module() {
+	local prefix=${1}
+	local dep=${2}
+
+	[[ ! -e "CMakeLists.txt" ]] && return
+
+	# FIXME: dep=WebKit will result in 'Widgets' over 'WebKitWidgets' (no regression)
+	pcregrep -Mni "(?s)find_package\s*\(\s*${prefix}(\d+|\\$\{\w*\})[^)]*?${dep}.*?\)" \
+		CMakeLists.txt > "${T}/bogus${dep}"
+
+	# pcregrep returns non-zero on no matches/error
+	[[ $? -ne 0 ]] && return
+
+	local length=$(wc -l "${T}/bogus${dep}" | cut -d " " -f 1)
+	local first=$(head -n 1 "${T}/bogus${dep}" | cut -d ":" -f 1)
+	local last=$(( length + first - 1))
+
+	sed -e "${first},${last}s/${dep}//" -i CMakeLists.txt || die
+
+	if [[ ${length} -eq 1 ]] ; then
+		sed -e "/find_package\s*(\s*${prefix}\([0-9]\|\${[A-Z0-9_]*}\)\(\s\+\(REQUIRED\|CONFIG\|COMPONENTS\|\${[A-Z0-9_]*}\)\)\+\s*)/Is/^/# '${dep}' removed by ecm.eclass - /" \
+			-i CMakeLists.txt || die
+	fi
+}
+
+# @FUNCTION: ecm_punt_kf_module
+# @USAGE: <modulename>
+# @DESCRIPTION:
+# Removes a Frameworks (KF - matching any single-digit version)
+# module from a find_package call with multiple components.
+ecm_punt_kf_module() {
+	_ecm_punt_kfqt_module kf ${1}
+}
+
+# @FUNCTION: ecm_punt_qt_module
+# @USAGE: <modulename>
+# @DESCRIPTION:
+# Removes a Qt (matching any single-digit version) module from a
+# find_package call with multiple components.
+ecm_punt_qt_module() {
+	_ecm_punt_kfqt_module qt ${1}
 }
 
 # @FUNCTION: ecm_punt_bogus_dep
