@@ -149,10 +149,6 @@ DEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 		dev-python/pygments[${PYTHON_USEDEP}]
 		)"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-testing-bigendian.patch
-)
-
 SITEFILE="70${PN}-gentoo.el"
 
 RESTRICT="!test? ( test )"
