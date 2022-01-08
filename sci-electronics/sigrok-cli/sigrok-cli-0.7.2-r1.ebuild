@@ -1,11 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-
-inherit python-single-r1 xdg-utils
+inherit xdg-utils
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
@@ -21,14 +19,10 @@ HOMEPAGE="https://sigrok.org/wiki/Sigrok-cli"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="+decode"
-REQUIRED_USE="decode? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND=">=dev-libs/glib-2.32.0
 	>=sci-libs/libsigrok-0.5.0:=
-	decode? (
-		>=sci-libs/libsigrokdecode-0.5.0:=[${PYTHON_SINGLE_USEDEP}]
-		${PYTHON_DEPS}
-	)"
+	decode? ( >=sci-libs/libsigrokdecode-0.5.0:= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
