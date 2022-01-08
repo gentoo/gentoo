@@ -1,5 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Joonas Niilola <juippis@gentoo.org> (20222-01-08
+# -xft broken, investigate in bug #830777
+~x11-misc/xscreensaver-6.02 xft
 
 # Michał Górny <mgorny@gentoo.org> (2021-11-04)
 # Enable all LLVM targets unconditionally.  Unfortunately, disabling
