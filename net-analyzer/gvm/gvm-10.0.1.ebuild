@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,6 @@ pkg_postinst() {
 	optfeature "web server scanning and testing tool" net-analyzer/nikto
 	optfeature "port scanner" net-analyzer/nmap
 	optfeature "IPsec VPN scanning, fingerprinting and testing tool" net-analyzer/ike-scan
-	optfeature "application protocol detection tool" net-analyzer/amap
 	optfeature "OVALdi — an OVAL Interpreter" app-forensics/ovaldi
 	optfeature "Linux-kernel-based portscanner" net-analyzer/portbunny
 	optfeature "web application attack and audit framework" net-analyzer/w3af
