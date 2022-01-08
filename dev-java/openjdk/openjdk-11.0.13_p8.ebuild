@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/${PN}/jdk${SLOT}u-dev/archive/refs/tags/jdk-${MY_PV}
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~arm arm64 ppc64"
 
-IUSE="alsa cups debug doc examples gentoo-vm headless-awt javafx +jbootstrap +pch selinux source systemtap"
+IUSE="alsa cups debug doc examples gentoo-vm headless-awt javafx +jbootstrap pch selinux source systemtap"
 
 COMMON_DEPEND="
 	media-libs/freetype:2=
