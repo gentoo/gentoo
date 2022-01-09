@@ -61,7 +61,8 @@ src_prepare() {
 			sed --in-place \
 				-e 's/from pipenv.vendor import '"${pkgName}"'/import '"${pkgName}"'/g' \
 				-e 's/from pipenv.vendor.'"${pkgName}"'\(.*\) import \(\w*\)/from '"${pkgName}"'\1 import \2/g' \
-				-e 's/import pipenv.vendor.'"${pkgName}"' as '"${pkgName}"'/import '"${pkgName}"'/g'
+				-e 's/import pipenv.vendor.'"${pkgName}"' as '"${pkgName}"'/import '"${pkgName}"'/g' \
+				-e 's/from .vendor import '"${pkgName}"'/import '"${pkgName}"'/g'
 	done
 	assert "Failed to sed sources"
 
