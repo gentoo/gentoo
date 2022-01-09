@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -119,7 +119,13 @@ src_configure() {
 	fi
 
 	if use vtk; then
-		if has_version ">=sci-libs/vtk-9.0.0"; then
+		if has_version ">=sci-libs/vtk-9.1.0"; then
+			mycmakeargs+=(
+				-D3RDPARTY_VTK_DIR="${ESYSROOT}"/usr
+				-D3RDPARTY_VTK_INCLUDE_DIR="${ESYSROOT}"/usr/include/vtk-9.1
+				-D3RDPARTY_VTK_LIBRARY_DIR="${ESYSROOT}"/usr/$(get_libdir)
+			)
+		elif has_version ">=sci-libs/vtk-9.0.0"; then
 			mycmakeargs+=(
 				-D3RDPARTY_VTK_DIR="${ESYSROOT}"/usr
 				-D3RDPARTY_VTK_INCLUDE_DIR="${ESYSROOT}"/usr/include/vtk-9.0
