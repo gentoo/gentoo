@@ -1,21 +1,21 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
-DESCRIPTION="A library to decode Bluetooth baseband packets"
-HOMEPAGE="http://libbtbb.sourceforge.net/"
+DESCRIPTION="Library to decode Bluetooth baseband packets"
+HOMEPAGE="https://github.com/greatscottgadgets/libbtbb"
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/greatscottgadgets/libbtbb.git"
 	inherit git-r3
 else
 	MY_PV=${PV/\./-}
 	MY_PV=${MY_PV/./-R}
-	S=${WORKDIR}/${PN}-${MY_PV}
 	SRC_URI="https://github.com/greatscottgadgets/${PN}/archive/${MY_PV}.tar.gz -> ${PN}-${MY_PV}.tar.gz"
+	S="${WORKDIR}"/${PN}-${MY_PV}
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
@@ -24,13 +24,12 @@ SLOT="0/${PV}"
 IUSE="static-libs wireshark-plugins"
 
 RDEPEND="
-	wireshark-plugins? (
-		>=net-analyzer/wireshark-1.8.3-r1:=
-	)
+	wireshark-plugins? ( >=net-analyzer/wireshark-1.8.3-r1:= )
 "
 DEPEND="${RDEPEND}
-	wireshark-plugins? ( dev-libs/glib
-			virtual/pkgconfig )"
+	wireshark-plugins? ( dev-libs/glib )
+"
+BDEPEND="virtual/pkgconfig"
 
 get_PV() { local pv=$(best_version $1); pv=${pv#$1-}; pv=${pv%-r*}; pv=${pv//_}; echo ${pv}; }
 
