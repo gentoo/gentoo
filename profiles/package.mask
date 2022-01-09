@@ -504,8 +504,6 @@ app-office/texmacs
 # on it so these virtuals are not yet required. If you wish to use
 # Java 11+ then install openjdk-(jdk|jre)-bin directly.
 # bug #697014
-virtual/jdk:11
-virtual/jre:11
 virtual/jdk:17
 virtual/jre:17
 
