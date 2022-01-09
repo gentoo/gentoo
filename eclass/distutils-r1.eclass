@@ -405,7 +405,7 @@ distutils_enable_tests() {
 			test_pkg=">=dev-python/nose-1.3.7-r4"
 			;;
 		pytest)
-			test_pkg=">=dev-python/pytest-4.5.0"
+			test_pkg=">=dev-python/pytest-6.2.5-r2"
 			;;
 		setup.py)
 			;;
