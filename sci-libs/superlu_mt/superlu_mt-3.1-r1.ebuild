@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SRC_URI="https://portal.nersc.gov/project/sparse/superlu/${PN}_${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${SOVERSION}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples int64 openmp static-libs test threads"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( openmp threads )"
