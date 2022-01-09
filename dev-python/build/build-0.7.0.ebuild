@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~ppc"
 
 RDEPEND="
 	>=dev-python/packaging-19.0[${PYTHON_USEDEP}]
