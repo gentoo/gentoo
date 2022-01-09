@@ -14,7 +14,7 @@ HOMEPAGE="https://www.gpxsee.org/"
 SRC_URI="https://github.com/tumic0/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 RDEPEND="dev-qt/qtwidgets:5
 	dev-qt/qtgui:5
