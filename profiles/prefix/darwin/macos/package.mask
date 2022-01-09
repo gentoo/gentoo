@@ -8,3 +8,4 @@
 # bug #829847
 =app-editors/nano-5.9
 =app-editors/nano-6.0
+=app-arch/gzip-1.11
