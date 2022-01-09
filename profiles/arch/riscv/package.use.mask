@@ -6,6 +6,7 @@
 app-emulation/qemu xen
 # untested useflag: rbd glusterfs
 app-emulation/qemu rbd glusterfs
+sys-fs/multipath-tools rbd
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-16)
 # requires sys-apps/dbus-broker, which is keyworded here.
