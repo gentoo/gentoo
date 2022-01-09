@@ -26,7 +26,8 @@ video_cards_radeon
 video_cards_radeonsi
 
 # James Le Cuirot <chewi@gentoo.org> (2021-10-02)
-# Keywording aside, m68k CPUs are probably too slow for PulseAudio and PipeWire.
+# Keywording aside, m68k CPUs are too slow for PulseAudio, PipeWire, JACK.
+jack
 pipewire
 pulseaudio
 
