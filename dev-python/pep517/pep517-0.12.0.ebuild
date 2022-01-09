@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~ppc"
 
 RDEPEND="
 	dev-python/tomli[${PYTHON_USEDEP}]"
