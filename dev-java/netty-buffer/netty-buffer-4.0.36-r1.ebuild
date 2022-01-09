@@ -10,7 +10,7 @@ JAVA_PKG_IUSE="doc source test"
 MAVEN_ID="io.netty:netty-buffer:4.0.36.Final"
 JAVA_TESTING_FRAMEWORKS="junit-4"
 
-inherit java-pkg-2 java-pkg-simple
+inherit check-reqs java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Async event-driven framework for high performance network applications"
 HOMEPAGE="https://netty.io/"
