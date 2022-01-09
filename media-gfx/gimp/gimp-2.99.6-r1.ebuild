@@ -30,6 +30,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	>=app-text/poppler-0.90.1[cairo]
 	>=app-text/poppler-data-0.4.9
+	>=dev-libs/appstream-glib-0.7.16
 	>=dev-libs/atk-2.34.1
 	>=dev-libs/glib-2.62.6:2
 	>=dev-libs/json-glib-1.4.4
@@ -51,8 +52,8 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	virtual/jpeg
 	>=x11-libs/cairo-1.16.0
-	>=x11-libs/gdk-pixbuf-2.40.0:2
-	>=x11-libs/gtk+-3.24.16:3
+	>=x11-libs/gdk-pixbuf-2.40.0:2[introspection]
+	>=x11-libs/gtk+-3.24.16:3[introspection]
 	x11-libs/libXcursor
 	>=x11-libs/pango-1.44.7
 	aalib? ( media-libs/aalib )
@@ -92,7 +93,6 @@ RDEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	>=dev-lang/perl-5.30.3
-	>=dev-libs/appstream-glib-0.7.16
 	dev-util/gdbus-codegen
 	dev-util/gtk-update-icon-cache
 	>=dev-util/intltool-0.51.0
