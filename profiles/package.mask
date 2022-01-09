@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-01-09)
+# No more revdeps after sys-cluster/mpe2 last-rites was initiated.
+# Removal on 2022-01-31, bug #547208
+sys-cluster/mpich2
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-01-08)
 # Ancient versions of spyder preventing clean up of things down the tree.
 # Sadly, this means we are also going to have to say goodbye to some plugins
