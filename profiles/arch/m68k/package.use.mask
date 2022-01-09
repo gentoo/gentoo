@@ -79,10 +79,6 @@ sys-libs/glibc gd
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
 
-# Matt Turner <mattst88@gentoo.org> (2017-02-25)
-# Needs libepoxy keywording, bug #510940
-x11-base/xorg-server wayland
-
 # Raúl Porcel <armin76@gentoo.org> (2013-01-23)
 # Architecture is unsupported
 dev-libs/libpcre jit
