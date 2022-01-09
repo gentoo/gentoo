@@ -73,6 +73,8 @@ BDEPEND="
 	sys-devel/gettext
 "
 
+PATCHES=( "${FILESDIR}/${P}-taglib-ifdef.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Csv=ON
