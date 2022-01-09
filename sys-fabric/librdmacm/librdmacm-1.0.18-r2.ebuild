@@ -1,14 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 OFED_VER="3.12"
 OFED_RC="1"
 OFED_RC_VER="1"
 OFED_SUFFIX="1"
 
-inherit eutils openib multilib-minimal
+inherit openib multilib-minimal
 
 DESCRIPTION="OpenIB userspace RDMA CM library"
 
@@ -27,5 +27,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	use static-libs || find "${ED}/usr" -name '*.la' -delete
+	find "${ED}" -name '*.la' -delete || die
 }
