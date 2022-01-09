@@ -1,5 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2022-01-09)
+# No provider (e.g. OpenJDK) available on big endian PPC64 right now
+virtual/jdk:11
+virtual/jre:11
 
 # Sam James <sam@gentoo.org> (2021-10-16)
 # Mask for media-libs/openexr and its reverse dependencies.
