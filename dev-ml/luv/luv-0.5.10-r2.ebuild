@@ -23,3 +23,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-ml/alcotest )"
+
+src_prepare() {
+	cp /usr/share/gnuconfig/config.guess src/c/vendor/configure/config.guess \
+		|| die
+	default
+}
