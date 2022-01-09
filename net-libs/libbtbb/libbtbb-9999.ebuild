@@ -70,7 +70,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PYTHON=OFF
 		-DBUILD_STATIC_LIB=$(usex static-libs)
-		-DBUILD_ROOT="${ED}"
 	)
 	cmake_src_configure
 
