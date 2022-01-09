@@ -1,4 +1,4 @@
-# Copyright 2017-2021 Gentoo Authors
+# Copyright 2017-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ CRATES="
 	bitflags-1.2.1
 	block-0.1.6
 	bumpalo-3.8.0
-	calloop-0.9.1
+	calloop-0.9.3
 	cc-1.0.72
 	cfg-if-0.1.10
 	cfg-if-1.0.0
@@ -45,7 +45,6 @@ CRATES="
 	dispatch-0.2.0
 	dlib-0.5.0
 	downcast-rs-1.2.0
-	dtoa-0.4.8
 	dwrote-0.11.0
 	embed-resource-1.6.5
 	expat-sys-2.1.6
@@ -70,14 +69,16 @@ CRATES="
 	glutin_gles2_sys-0.1.5
 	glutin_glx_sys-0.1.7
 	glutin_wgl_sys-0.1.5
+	hashbrown-0.11.2
 	heck-0.3.3
 	hermit-abi-0.1.19
 	ident_case-1.0.1
+	indexmap-1.7.0
 	inotify-0.7.1
 	inotify-sys-0.1.5
 	instant-0.1.12
 	iovec-0.1.4
-	itoa-0.4.8
+	itoa-1.0.1
 	jni-sys-0.3.0
 	js-sys-0.3.55
 	kernel32-sys-0.2.2
@@ -94,6 +95,7 @@ CRATES="
 	memchr-2.4.1
 	memmap2-0.3.1
 	memoffset-0.6.5
+	minimal-lexical-0.2.1
 	miniz_oxide-0.3.7
 	mio-0.6.23
 	mio-0.8.0
@@ -108,7 +110,7 @@ CRATES="
 	ndk-sys-0.2.2
 	net2-0.2.37
 	nix-0.22.2
-	nom-5.1.2
+	nom-7.1.0
 	notify-4.0.17
 	ntapi-0.3.6
 	num_enum-0.5.4
@@ -137,10 +139,10 @@ CRATES="
 	same-file-1.0.6
 	scoped-tls-1.0.0
 	scopeguard-1.1.0
-	serde-1.0.131
-	serde_derive-1.0.131
-	serde_json-1.0.72
-	serde_yaml-0.8.18
+	serde-1.0.133
+	serde_derive-1.0.133
+	serde_json-1.0.74
+	serde_yaml-0.8.23
 	servo-fontconfig-0.5.1
 	servo-fontconfig-sys-5.1.0
 	shared_library-0.1.9
@@ -149,7 +151,7 @@ CRATES="
 	signal-hook-registry-1.4.0
 	slab-0.4.5
 	smallvec-1.7.0
-	smithay-client-toolkit-0.15.2
+	smithay-client-toolkit-0.15.3
 	smithay-clipboard-0.6.5
 	spsc-buffer-0.1.1
 	strsim-0.8.0
@@ -179,13 +181,13 @@ CRATES="
 	wasm-bindgen-macro-0.2.78
 	wasm-bindgen-macro-support-0.2.78
 	wasm-bindgen-shared-0.2.78
-	wayland-client-0.29.1
-	wayland-commons-0.29.1
-	wayland-cursor-0.29.1
-	wayland-egl-0.29.1
-	wayland-protocols-0.29.1
-	wayland-scanner-0.29.1
-	wayland-sys-0.29.1
+	wayland-client-0.29.3
+	wayland-commons-0.29.3
+	wayland-cursor-0.29.3
+	wayland-egl-0.29.3
+	wayland-protocols-0.29.3
+	wayland-scanner-0.29.3
+	wayland-sys-0.29.3
 	web-sys-0.3.55
 	winapi-0.2.8
 	winapi-0.3.9
@@ -193,14 +195,14 @@ CRATES="
 	winapi-i686-pc-windows-gnu-0.4.0
 	winapi-util-0.1.5
 	winapi-x86_64-pc-windows-gnu-0.4.0
-	winit-0.26.0
+	winit-0.26.1
 	winreg-0.10.1
 	wio-0.2.2
 	ws2_32-sys-0.2.1
 	x11-clipboard-0.5.2
 	x11-dl-2.19.1
 	xcb-0.9.0
-	xcursor-0.3.1
+	xcursor-0.3.4
 	xdg-2.4.0
 	xml-rs-0.8.4
 	yaml-rust-0.4.5
