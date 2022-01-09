@@ -38,10 +38,10 @@ COMMON_DEPEND="
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.40.21:2
 	>=media-gfx/mypaint-brushes-2.0.2:=
-	>=media-libs/babl-0.1.86[introspection,lcms,vala?]
+	>=media-libs/babl-0.1.88[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
-	>=media-libs/gegl-0.4.32:0.4[cairo,introspection,lcms,vala?]
+	>=media-libs/gegl-0.4.34:0.4[cairo,introspection,lcms,vala?]
 	>=media-libs/gexiv2-0.10.10
 	>=media-libs/harfbuzz-2.6.5:=
 	>=media-libs/lcms-2.9:2
@@ -101,10 +101,7 @@ DEPEND="
 	>=sys-devel/automake-1.11
 	>=sys-devel/gettext-0.21
 	>=sys-devel/libtool-2.4.6
-	doc? (
-		>=dev-util/gtk-doc-1.32
-		dev-util/gtk-doc-am
-	)
+	doc? ( dev-util/gi-docgen )
 	vala? ( $(vala_depend) )
 "
 
@@ -131,14 +128,6 @@ src_prepare() {
 
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
 	sed 's:-DGIMP_DISABLE_DEPRECATED:-DGIMP_protect_DISABLE_DEPRECATED:g' -i configure.ac || die #615144
-
-	# Fix checking of gtk-doc.make if USE="-doc" like autogen.sh
-	# USE="doc" is currently broken for gimp-9999 due to absence of appropriate *.m4 file
-	if ! use doc ; then
-		echo "EXTRA_DIST = missing-gtk-doc" > gtk-doc.make
-		sed -i -e "/CLEANFILES/s/^/#/g" \
-		"${S}"/devel-docs/{libgimp,libgimpbase,libgimpcolor,libgimpconfig,libgimpmath,libgimpmodule,libgimpthumb,libgimpwidgets}/Makefile.am || die
-	fi
 
 	gnome2_src_prepare  # calls eautoreconf
 
@@ -184,7 +173,7 @@ src_configure() {
 		$(use_enable cpu_flags_ppc_altivec altivec)
 		$(use_enable cpu_flags_x86_mmx mmx)
 		$(use_enable cpu_flags_x86_sse sse)
-		$(use_enable doc gtk_doc)
+		$(use_enable doc gi-docgen)
 		$(use_enable vector-icons)
 		$(use_with aalib aa)
 		$(use_with alsa)
