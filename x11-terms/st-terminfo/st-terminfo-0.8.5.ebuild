@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://dl.suckless.org/st/st-${PV}.tar.gz"
 	S="${WORKDIR}/st-${PV}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="MIT-with-advertising"
