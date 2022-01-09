@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit dune
+inherit dune gnuconfig
 
 DESCRIPTION="Binding to libuv: cross-platform asynchronous I/O"
 HOMEPAGE="https://github.com/aantron/luv"
@@ -22,10 +22,11 @@ RDEPEND="
 	dev-ml/result:=
 "
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-ml/alcotest )"
+BDEPEND="sys-devel/gnuconfig
+	test? ( dev-ml/alcotest )"
 
 src_prepare() {
-	cp /usr/share/gnuconfig/config.guess src/c/vendor/configure/config.guess \
-		|| die
 	default
+
+	cp "${BROOT}"/usr/share/gnuconfig/config.{guess,sub} src/c/vendor/configure/ || die
 }
