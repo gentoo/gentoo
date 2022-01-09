@@ -2,6 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # James Le Cuirot <chewi@gentoo.org> (2022-01-09)
+# Most usage of KMS requires GBM, which is provided by Mesa, which currently
+# doesn't work on m68k.
+media-libs/cogl kms
+media-libs/libsdl2 kms
+
+# James Le Cuirot <chewi@gentoo.org> (2022-01-09)
 # Requires dev-lang/go, which is not ported to m68k.
 sys-libs/libcap tools
 
