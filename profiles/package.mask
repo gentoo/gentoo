@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Marco Genasci <fedeliallalinea@gmail.com> (2022-01-09)
+# Removed in favor of unified package dev-db/oracle-instantclient
+# Removal on 2022-02-08. Bug #589146
+dev-db/oracle-instantclient-basic
+dev-db/oracle-instantclient-jdbc
+dev-db/oracle-instantclient-odbc
+dev-db/oracle-instantclient-sqlplus
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-01-07)
 # Unmaintained, cmake warnings, QA notices, weird build error, no revdeps.
 # Removal on 2022-02-06. Bug #830727
