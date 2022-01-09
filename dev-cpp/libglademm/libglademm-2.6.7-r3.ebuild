@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=8
+
 GNOME_TARBALL_SUFFIX="bz2"
 
-inherit eutils flag-o-matic gnome2 multilib-minimal
+inherit gnome2 multilib-minimal
 
 DESCRIPTION="C++ bindings for libglade"
 HOMEPAGE="https://www.gtkmm.org"
@@ -20,9 +20,8 @@ RDEPEND="
 	>=dev-cpp/gtkmm-2.24.3:2.4[${MULTILIB_USEDEP}]
 	>=dev-cpp/glibmm-2.34.1:2[${MULTILIB_USEDEP}]
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	# we will control install manually in install
@@ -32,8 +31,6 @@ src_prepare() {
 	# don't waste time building the examples
 	sed -i 's/^\(SUBDIRS =.*\)examples\(.*\)$/\1\2/' \
 		Makefile.am Makefile.in || die "sed Makefile.{am,in} failed (2)"
-
-	append-cxxflags -std=c++11 #566584
 
 	gnome2_src_prepare
 }
@@ -45,30 +42,22 @@ multilib_src_configure() {
 multilib_src_compile() {
 	gnome2_src_compile
 
-	if multilib_is_native_abi && use doc; then
-		emake -C "docs/reference" all
-	fi
+	multilib_is_native_abi && use doc && emake -C docs/reference all
 }
 
 multilib_src_install() {
 	gnome2_src_install
 
-	if use examples; then
-		emake -C "examples" distclean
-	fi
+	use examples && emake -C examples distclean
 }
 
 multilib_src_install_all() {
+	use doc && HTML_DOCS=( docs/reference/html/. )
 	einstalldocs
 
-	if use doc ; then
-		dohtml -r docs/reference/html/*
-	fi
-
 	if use examples; then
-		find "${S}/examples" -name "Makefile*" -delete \
+		find examples/ -name 'Makefile*' -delete \
 			|| die "examples cleanup failed"
-		insinto "/usr/share/doc/${PF}"
-		doins -r examples
+		dodoc -r examples
 	fi
 }
