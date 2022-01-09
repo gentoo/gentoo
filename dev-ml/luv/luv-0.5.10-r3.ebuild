@@ -18,12 +18,12 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	<=dev-lang/ocaml-4.13:=[ocamlopt?]
 	dev-libs/libuv:=
-	dev-ml/ocaml-ctypes:=
-	dev-ml/result:=
+	dev-ml/ocaml-ctypes:=[ocamlopt?]
+	dev-ml/result:=[ocamlopt?]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/gnuconfig
-	test? ( dev-ml/alcotest )"
+	test? ( dev-ml/alcotest[ocamlopt?] )"
 
 src_prepare() {
 	default
