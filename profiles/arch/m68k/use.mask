@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -m68k
 
+# James Le Cuirot <chewi@gentoo.org> (2022-01-09)
+# vim is keyworded for ~m68k but I'm not testing plugins.
+vim-syntax
+
 # James Le Cuirot <chewi@gentoo.org> (2022-01-01)
 # Hardware that probably doesn't apply to m68k.
 input_devices_elographics
