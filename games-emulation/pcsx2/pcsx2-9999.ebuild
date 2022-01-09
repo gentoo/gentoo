@@ -9,7 +9,11 @@ inherit cmake fcaps flag-o-matic git-r3 toolchain-funcs wxwidgets
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://pcsx2.net/"
 EGIT_REPO_URI="https://github.com/PCSX2/${PN}.git"
-EGIT_SUBMODULES=( 3rdparty/imgui/imgui )
+EGIT_SUBMODULES=(
+	3rdparty/glslang/glslang # needs StandAlone/ResourceLimits.h
+	3rdparty/imgui/imgui # not made to be system-wide
+	3rdparty/vulkan-headers # to keep in sync with glslang
+)
 
 LICENSE="GPL-3 Apache-2.0 OFL-1.1" # TODO: needs review for a full list
 SLOT="0"
