@@ -1,0 +1,25 @@
+Prevent integer overflow for unknown fields.
+
+https://github.com/protocolbuffers/protobuf/issues/6205
+https://github.com/protocolbuffers/protobuf/pull/7016
+https://github.com/protocolbuffers/protobuf/commit/5100be2b7746391c2724e2793e1428c36b63c98b
+
+--- /python/google/protobuf/pyext/unknown_fields.cc
++++ /python/google/protobuf/pyext/unknown_fields.cc
+@@ -274,13 +274,13 @@
+   PyObject* data = NULL;
+   switch (field->type()) {
+     case UnknownField::TYPE_VARINT:
+-      data = PyLong_FromLong(field->varint());
++      data = PyLong_FromUnsignedLongLong(field->varint());
+       break;
+     case UnknownField::TYPE_FIXED32:
+-      data = PyLong_FromLong(field->fixed32());
++      data = PyLong_FromUnsignedLong(field->fixed32());
+       break;
+     case UnknownField::TYPE_FIXED64:
+-      data = PyLong_FromLong(field->fixed64());
++      data = PyLong_FromUnsignedLongLong(field->fixed64());
+       break;
+     case UnknownField::TYPE_LENGTH_DELIMITED:
+       data = PyBytes_FromStringAndSize(field->length_delimited().data(),
