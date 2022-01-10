@@ -91,6 +91,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.2.3-soname.patch"
 	"${FILESDIR}/${PN}-2.3.0-curl.patch" # bug 659840
 	"${FILESDIR}/${PN}-3.3.0-libdir.patch"
+	"${FILESDIR}/${P}-poppler-22.01.0-c++17.patch"
 )
 
 src_prepare() {
