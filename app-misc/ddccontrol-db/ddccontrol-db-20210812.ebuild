@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -14,10 +14,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="nls"
 
-RDEPEND="nls? ( sys-devel/gettext )"
-DEPEND="${RDEPEND}
-		dev-util/intltool
-		dev-perl/XML-Parser"
+BDEPEND="
+	dev-util/intltool
+	dev-perl/XML-Parser
+	nls? ( sys-devel/gettext )"
 
 src_prepare() {
 	touch db/options.xml.h ABOUT-NLS config.rpath || die
@@ -27,9 +27,4 @@ src_prepare() {
 
 src_configure() {
 	econf $(use_enable nls)
-}
-
-src_install() {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS ChangeLog NEWS README.md
 }
