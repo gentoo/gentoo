@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv x86 ~x64-macos"
 
 RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]"
 
