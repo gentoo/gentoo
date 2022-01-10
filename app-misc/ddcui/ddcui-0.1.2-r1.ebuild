@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SLOT="0"
 
 DEPEND="
 	dev-libs/glib
-	>=app-misc/ddcutil-0.9.9
+	>=app-misc/ddcutil-0.9.9:0/3
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qthelp:5
