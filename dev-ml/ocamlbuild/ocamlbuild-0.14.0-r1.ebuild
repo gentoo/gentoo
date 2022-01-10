@@ -12,6 +12,7 @@ SLOT="0/${PV}"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="test? ( ocamlopt )"
 
 RDEPEND=">=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?]"
 DEPEND="${RDEPEND}
