@@ -858,6 +858,26 @@ distutils-r1_python_test() {
 	fi
 }
 
+# @FUNCTION: _distutils-r1_rename_egg_info
+# @INTERNAL
+# @USAGE: <root>
+# @DESCRIPTION:
+# Rename installed egg-info directories to avoid collisions with files
+# installed earlier.
+_distutils-r1_rename_egg_info() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local root=${1}
+
+	local enabled=$("${EPYTHON}" \
+		-c 'from _distutils_hack import enabled; print(enabled())' 2>/dev/null)
+	[[ ${enabled} != True ]] && return
+
+	while IFS= read -r -d '' f; do
+		mv "${f}" "${f%.egg-info}.g.egg-info" || die
+	done < <(find "${root}$(python_get_sitedir)" -name '*.egg-info' -type d -print0)
+}
+
 # @FUNCTION: distutils-r1_python_install
 # @USAGE: [additional-args...]
 # @DESCRIPTION:
@@ -947,6 +967,8 @@ distutils-r1_python_install() {
 	if [[ -n ${pypy_dirs} ]]; then
 		die "Package installs 'share' in PyPy prefix, see bug #465546."
 	fi
+
+	_distutils-r1_rename_egg_info "${root}"
 
 	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 		multibuild_merge_root "${root}" "${D%/}"
