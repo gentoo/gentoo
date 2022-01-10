@@ -30,8 +30,7 @@ RDEPEND="app-misc/ddccontrol-db
 	)
 	pci? ( sys-apps/pciutils )"
 DEPEND="${RDEPEND}"
-BDEPEND="${RDEPEND}
-	dev-perl/XML-Parser
+BDEPEND="dev-perl/XML-Parser
 	dev-util/intltool
 	sys-kernel/linux-headers
 	doc? (
