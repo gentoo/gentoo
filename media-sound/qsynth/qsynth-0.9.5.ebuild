@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake desktop xdg
 
@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="mirror://sourceforge/qsynth/${P}.tar.gz"
-	KEYWORDS="amd64 ppc ppc64 x86"
+	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -54,7 +54,7 @@ src_install() {
 
 	# The desktop file is invalid, and we also change the command
 	# depending on useflags
-	rm "${D}/usr/share/applications/qsynth.desktop" || die
+	rm "${D}/usr/share/applications/org.rncbc.qsynth.desktop" || die
 
 	local cmd
 	if use jack; then
