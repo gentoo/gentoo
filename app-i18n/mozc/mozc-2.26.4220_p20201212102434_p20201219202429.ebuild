@@ -1,4 +1,4 @@
-# Copyright 2010-2021 Gentoo Authors
+# Copyright 2010-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -47,14 +47,14 @@ REQUIRED_USE="|| ( emacs fcitx4 ibus )"
 RESTRICT="!test? ( test )"
 
 BDEPEND="$(python_gen_any_dep 'dev-python/six[${PYTHON_USEDEP}]')
-	<dev-libs/protobuf-3.19
+	>=dev-libs/protobuf-3.0.0
 	dev-util/gyp
 	dev-util/ninja
 	virtual/pkgconfig
 	emacs? ( app-editors/emacs:* )
 	fcitx4? ( sys-devel/gettext )"
 DEPEND="=dev-cpp/abseil-cpp-20200923*[cxx17(+)]
-	<dev-libs/protobuf-3.19:=
+	>=dev-libs/protobuf-3.0.0:=
 	fcitx4? (
 		app-i18n/fcitx:4
 		virtual/libintl
