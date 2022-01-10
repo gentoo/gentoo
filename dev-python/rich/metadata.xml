@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">rich</remote-id>
-		<remote-id type="github">willmcgugan/rich</remote-id>
+		<remote-id type="github">Textualize/rich</remote-id>
 	</upstream>
 </pkgmetadata>
