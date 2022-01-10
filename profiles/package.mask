@@ -239,10 +239,6 @@ perl-core/version
 >=dev-java/log4j-api-java9-2.15.0
 >=dev-java/log4j-api-2.15.0
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-11)
-# Package without consumers. Bug #732792.  Removal in 30 days.
-app-arch/fastjar
-
 # Conrad Kostecki <conikost@gentoo.org> (2021-12-04)
 # Masking newer versions for both packages,
 # as they cannot be compiled due upstream change.
