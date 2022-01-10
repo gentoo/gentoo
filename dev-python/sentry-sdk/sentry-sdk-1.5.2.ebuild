@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Python client for Sentry"
@@ -24,7 +24,6 @@ BDEPEND="
 		dev-python/asttokens[${PYTHON_USEDEP}]
 		dev-python/django[${PYTHON_USEDEP}]
 		dev-python/executing[${PYTHON_USEDEP}]
-		dev-python/eventlet[${PYTHON_USEDEP}]
 		dev-python/fakeredis[${PYTHON_USEDEP}]
 		dev-python/flask-login[${PYTHON_USEDEP}]
 		dev-python/gevent[${PYTHON_USEDEP}]
@@ -36,6 +35,9 @@ BDEPEND="
 		dev-python/pytest-localserver[${PYTHON_USEDEP}]
 		dev-python/werkzeug[${PYTHON_USEDEP}]
 		dev-python/zope-event[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/eventlet[${PYTHON_USEDEP}]
+		' python3_{8..9})
 	)
 "
 
