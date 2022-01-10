@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
-DESCRIPTION="control monitor parameters, like brightness, contrast, RGB color levels via DDC"
+DESCRIPTION="Control monitor parameters, like brightness, contrast, RGB color levels via DDC"
 HOMEPAGE="http://ddccontrol.sourceforge.net/"
 SRC_URI="https://github.com/ddccontrol/ddccontrol/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -15,25 +15,33 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc gtk nls +pci static-libs"
 
 RDEPEND="app-misc/ddccontrol-db
+	dev-libs/glib:2
 	dev-libs/libxml2:2
 	app-arch/xz-utils
-	gtk? ( x11-libs/gtk+:2 )
-	nls? ( sys-devel/gettext )
+	gtk? (
+		dev-libs/atk
+		media-libs/fontconfig
+		media-libs/freetype
+		media-libs/harfbuzz:=
+		x11-libs/cairo
+		x11-libs/gdk-pixbuf:2
+		x11-libs/gtk+:2
+		x11-libs/pango
+	)
 	pci? ( sys-apps/pciutils )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}
 	dev-perl/XML-Parser
 	dev-util/intltool
 	sys-kernel/linux-headers
 	doc? (
 		>=app-text/docbook-xsl-stylesheets-1.65.1
-		>=dev-libs/libxslt-1.1.6
 		app-text/htmltidy
-	)"
+		>=dev-libs/libxslt-1.1.6
+	)
+	nls? ( sys-devel/gettext )"
 
 src_prepare() {
-	sed -i 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.ac || die #467574
-	sed -i '/;Application/d' src/gddccontrol/gddccontrol.desktop.in || die
-
 	# ppc/ppc64 do not have inb/outb/ioperm
 	# they also do not have (sys|asm)/io.h
 	if ! use amd64 && ! use x86 ; then
@@ -50,7 +58,7 @@ src_prepare() {
 			src/ddcpci/main.c || die
 	fi
 
-	eapply_user
+	default
 
 	## Save for a rainy day or future patching
 	touch config.rpath ABOUT-NLS
