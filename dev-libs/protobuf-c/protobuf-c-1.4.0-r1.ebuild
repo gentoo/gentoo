@@ -20,9 +20,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
+BDEPEND=">=dev-libs/protobuf-3:0
+	virtual/pkgconfig"
 DEPEND=">=dev-libs/protobuf-3:0=[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
-BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.0-include-path.patch
