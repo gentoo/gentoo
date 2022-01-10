@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,6 @@ BDEPEND="sys-apps/texinfo"
 
 DOCS="ChangeLog keyword-generation.sh"
 ELISP_TEXINFO="${PN}.texi"
-SITEFILE="50${PN}-gentoo-1.52.el"
+SITEFILE="50${PN}-gentoo-1.54.el"
 DOC_CONTENTS="Some optional features may require installation of additional
 	packages, like dev-python/docutils-glep for glep."
