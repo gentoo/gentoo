@@ -3,13 +3,13 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic linux-info udev
+inherit autotools linux-info udev
 
 DESCRIPTION="Program for querying and changing monitor settings"
-HOMEPAGE="http://www.ddcutil.com/"
+HOMEPAGE="https://www.ddcutil.com/"
 SRC_URI="https://github.com/rockowitz/ddcutil/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-SLOT="0"
+SLOT="0/4"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="drm introspection usb-monitor user-permissions video_cards_nvidia X"
