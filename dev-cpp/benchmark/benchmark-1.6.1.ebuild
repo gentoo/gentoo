@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="A microbenchmark support library"
 HOMEPAGE="https://github.com/google/benchmark"
