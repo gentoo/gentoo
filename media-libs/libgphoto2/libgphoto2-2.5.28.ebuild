@@ -99,7 +99,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myconf
-	use doc || myconf=( ac_cv_path_DOXYGEN=false )
+	use doc || myconf=( ac_cv_path_DOXYGEN=no )
 
 	# Upstream doesn't default to --enable-option-checking due having another
 	# configure in libgphoto2_port/ that also needs to be checked on every bump
