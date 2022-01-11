@@ -1,19 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 DESCRIPTION="Addon mrtg contrib for stats ping/loss packets"
-SRC_URI="ftp://ftp.pwo.de/pub/pwo/mrtg/${PN}/${P}.tar.gz"
 HOMEPAGE="http://pwo.de/projects/mrtg/"
+SRC_URI="ftp://ftp.pwo.de/pub/pwo/mrtg/${PN}/${P}.tar.gz"
 
-KEYWORDS="~x86"
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~x86"
 
-DEPEND="dev-lang/perl"
+BDEPEND="dev-lang/perl"
 RDEPEND="
-	${DEPEND}
 	net-analyzer/mrtg
 "
 
