@@ -43,7 +43,6 @@ src_install() {
 	rm -r apps || die
 	rm sqlninja.conf.example || die
 
-	dodir /usr/lib/${PN}
 	insinto /usr/lib/${PN}
 	exeinto /usr/lib/${PN}
 	doins -r *
