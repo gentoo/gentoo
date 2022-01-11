@@ -5,4 +5,9 @@
 		<email>dist-kernel@gentoo.org</email>
 		<name>Distribution Kernel Project</name>
 	</maintainer>
+	<use>
+		<flag name="grub" restrict="&lt;sys-kernel/installkernel-gentoo-4">
+			Re-generate grub.cfg on each kernel installation
+		</flag>
+	</use>
 </pkgmetadata>
