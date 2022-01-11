@@ -1,7 +1,7 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic qmake-utils
 
@@ -20,10 +20,11 @@ fi
 DESCRIPTION="Open source RGB lighting control that doesn't depend on manufacturer software"
 HOMEPAGE="https://openrgb.org https://gitlab.com/CalcProgrammer1/OpenRGB/"
 LICENSE="GPL-2"
-SLOT="0/1"
+# subslot is OPENRGB_PLUGIN_API_VERSION from https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/OpenRGBPluginInterface.h
+SLOT="0/2"
 
 RDEPEND="
-	dev-libs/hidapi:=
+	dev-libs/hidapi
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
@@ -40,6 +41,7 @@ BDEPEND="
 
 PATCHES+=(
 	"${FILESDIR}"/OpenRGB-0.7-plugins.patch
+	"${FILESDIR}"/OpenRGB-0.7-udev.patch
 )
 
 src_prepare() {
@@ -65,11 +67,5 @@ src_install() {
 
 	# This is for plugins. Upstream doesn't install any headers at all.
 	insinto /usr/include/OpenRGB
-	doins *.h
-	insinto /usr/include/OpenRGB/RGBController
-	doins RGBController/*.h
-	insinto /usr/include/OpenRGB/i2c_smbus
-	doins i2c_smbus/*.h
-	insinto /usr/include/OpenRGB/net_port
-	doins net_port/*.h
+	find . -name '*.h' -exec cp --parents '{}' "${ED}/usr/include/OpenRGB/" ';' || die
 }
