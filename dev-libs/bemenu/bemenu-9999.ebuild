@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,6 +29,7 @@ DEPEND="
 		dev-libs/wayland-protocols
 		x11-libs/cairo
 		x11-libs/pango
+		x11-libs/libxcb
 	)
 	X? (
 		x11-libs/libxcb
