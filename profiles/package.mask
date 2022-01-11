@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolić <jsmolic@gentoo.org> (2022-01-11)
+# Outdated java package, uses EAPI 5, no other distro
+# is packaging this.
+# Removal on 2022-02-10. Bug #826810.
+net-analyzer/jmx2munin
+
 # Eray Aslan <eras@gentoo.org> (2021-01-11)
 # New upstream with new versioning scheme
 # Please use version 2.1.53
