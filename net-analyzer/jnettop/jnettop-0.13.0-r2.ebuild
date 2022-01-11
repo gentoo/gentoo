@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit autotools epatch
+inherit autotools
 
 DESCRIPTION="A top like console network traffic visualiser"
-HOMEPAGE="http://jnettop.kubs.info/"
+HOMEPAGE="https://sourceforge.net/projects/jnettop"
 SRC_URI="http://jnettop.kubs.info/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -21,15 +21,16 @@ RDEPEND="
 	ncurses? ( sys-libs/ncurses )
 	syslog? ( virtual/logger )
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-DOCS=( AUTHORS ChangeLog NEWS README )
+PATCHES=(
+	"${FILESDIR}/${P}-asneeded.patch"
+	"${FILESDIR}/${P}-tinfo.patch"
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}/${P}-asneeded.patch" \
-		"${FILESDIR}/${P}-tinfo.patch"
+	default
 	eautoreconf
 }
 
