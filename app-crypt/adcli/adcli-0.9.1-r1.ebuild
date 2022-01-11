@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,6 +27,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-glibc-2.34-resolv.patch
+	"${FILESDIR}"/${P}-library-include-endian.h-for-le32toh.patch
 )
 
 src_prepare() {
