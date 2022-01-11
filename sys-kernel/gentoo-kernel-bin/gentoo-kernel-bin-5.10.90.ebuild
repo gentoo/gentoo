@@ -114,6 +114,11 @@ src_test() {
 src_install() {
 	mv lib usr "${ED}"/ || die
 
+	# FIXME: requires proper mount-boot
+	if [[ -d boot/dtbs ]]; then
+		mv boot "${ED}"/ || die
+	fi
+
 	# strip out-of-source build stuffs from modprep
 	# and then copy built files
 	find modprep -type f '(' \
