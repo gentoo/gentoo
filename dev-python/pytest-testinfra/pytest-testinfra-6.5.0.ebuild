@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -20,12 +20,24 @@ RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		app-admin/ansible
-		app-admin/salt[${PYTHON_USEDEP}]
 		dev-python/paramiko[${PYTHON_USEDEP}]
 		dev-python/pywinrm[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			app-admin/salt[${PYTHON_USEDEP}]
+		' python3_{8..9} )
 	)"
 
 distutils_enable_tests pytest
+
+python_test() {
+	if [[ ${EPYTHON} == "python3.10" ]]; then
+		ewarn "Some of the tests are skipped on ${EPYTHON} because it still isn't supported by app-admin/salt"
+		local EPYTEST_DESELECT=(
+			test/test_backends.py::test_backend_importables
+		)
+	fi
+	epytest
+}
 
 pkg_postinst() {
 	elog "For the list of available connection back-ends and their dependencies,"
