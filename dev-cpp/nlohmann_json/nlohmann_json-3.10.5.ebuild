@@ -3,6 +3,11 @@
 
 EAPI=8
 
+#DOCS_BUILDER="mkdocs"
+# Needs unpackaged plantuml-markdown too
+# ... but plantuml (Python bindings anyway) need network access to generate bits at runtime.
+#DOCS_DEPEND="dev-python/mkdocs-material-extensions dev-python/mkdocs-minify-plugin"
+#DOCS_DIR="doc/mkdocs"
 inherit cmake
 
 # Check https://github.com/nlohmann/json/blob/develop/cmake/download_test_data.cmake to find test archive version
@@ -17,12 +22,10 @@ S="${WORKDIR}/json-${PV}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
-IUSE="doc test"
+IUSE="test"
 # Need to report failing tests upstream
 # Tests only just added, large test suite, majority pass
 RESTRICT="test"
-
-BDEPEND="doc? ( app-doc/doxygen )"
 
 DOCS=( ChangeLog.md README.md )
 
@@ -41,11 +44,6 @@ src_configure() {
 
 src_compile() {
 	cmake_src_compile
-
-	if use doc; then
-		emake -C doc
-		HTML_DOCS=( doc/html/. )
-	fi
 }
 
 src_test() {
