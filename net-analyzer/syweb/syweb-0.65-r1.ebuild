@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 WEBAPP_MANUAL_SLOT="yes"
 inherit webapp
@@ -9,17 +9,18 @@ inherit webapp
 DESCRIPTION="Web frontend to symon"
 HOMEPAGE="http://www.xs4all.nl/~wpd/symon/"
 SRC_URI="http://www.xs4all.nl/~wpd/symon/philes/${P}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
 
-RDEPEND="virtual/httpd-php
-	net-analyzer/rrdtool"
+RDEPEND="
+	net-analyzer/rrdtool
+	virtual/httpd-php
+"
 
 need_httpd_cgi
-
-S=${WORKDIR}/${PN}
 
 src_install() {
 	webapp_src_preinst
