@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -107,14 +107,9 @@ src_configure() {
 		-DCMAKE_SKIP_RPATH="ON"
 	)
 
-	local OCC_P=$(best_version sci-libs/opencascade)
-	OCC_P=${OCC_P#sci-libs/}
-	OCC_P=${OCC_P%-r*}
-
 	use occ && mycmakeargs+=(
-		-DOCC_INCLUDE_DIR="${CASROOT}"/include/${OCC_P}
-		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/${OCC_P}
-
+		-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
+		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/opencascade
 	)
 
 	cmake_src_configure
@@ -123,7 +118,7 @@ src_configure() {
 src_compile() {
 	cmake_src_compile
 	if use doc; then
-		cmake_src_compile dev-docs doxygen-docs
+		cmake_src_compile doxygen-docs
 	fi
 }
 
@@ -142,7 +137,7 @@ src_install() {
 	if use doc ; then
 		dodoc uncrustify.cfg
 		cd Documentation || die
-		dodoc -r *.txt kicad_doxygen_logo.png notes_about_pcbnew_new_file_format.odt doxygen/. development/doxygen/.
+		dodoc -r *.txt kicad_doxygen_logo.png notes_about_pcbnew_new_file_format.odt doxygen/.
 	fi
 }
 
