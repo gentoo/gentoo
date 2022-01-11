@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Eray Aslan <eras@gentoo.org> (2021-01-11)
+# New upstream with new versioning scheme
+# Please use version 2.1.53
+# Removal on 2021-02-10 bug #762958
+=app-misc/mime-types-9
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-01-09)
 # No more revdeps after sys-cluster/mpe2 last-rites was initiated.
 # Removal on 2022-01-31, bug #547208
