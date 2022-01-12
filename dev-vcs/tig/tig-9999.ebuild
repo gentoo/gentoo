@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit bash-completion-r1
 
@@ -18,14 +18,18 @@ HOMEPAGE="https://jonas.github.io/tig/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="test unicode"
+IUSE="pcre test unicode"
 REQUIRED_USE="test? ( unicode )"
 
 DEPEND="
 	sys-libs/ncurses:=[unicode(+)?]
-	sys-libs/readline:0="
-RDEPEND="${DEPEND}
-	dev-vcs/git"
+	sys-libs/readline:0=
+	pcre? ( dev-libs/libpcre2:= )
+"
+RDEPEND="
+	${DEPEND}
+	dev-vcs/git
+"
 [[ ${PV} == "9999" ]] && BDEPEND+=" app-text/asciidoc app-text/xmlto"
 
 # encoding/env issues
@@ -37,7 +41,9 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_with unicode ncursesw)
+	econf \
+		$(use_with pcre) \
+		$(use_with unicode ncursesw)
 }
 
 src_compile() {
@@ -47,7 +53,7 @@ src_compile() {
 
 src_test() {
 	# workaround parallel test failures
-	emake -j1 test
+	LC_ALL=en_US.utf8 emake -j1 test
 }
 
 src_install() {
