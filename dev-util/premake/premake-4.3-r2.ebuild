@@ -1,25 +1,21 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit versionator epatch
+EAPI=8
 
 DESCRIPTION="A makefile generation tool"
 HOMEPAGE="http://industriousone.com/premake"
 SRC_URI="mirror://sourceforge/premake/${P}-src.zip"
 
 LICENSE="BSD"
-SLOT=$(get_major_version)
+SLOT="4"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
-DEPEND="app-arch/unzip"
-RDEPEND=""
+BDEPEND="app-arch/unzip"
 
-src_prepare() {
-	epatch "${FILESDIR}/archless.patch"
-}
+PATCHES=(
+	"${FILESDIR}"/archless.patch
+)
 
 src_compile() {
 	emake -C build/gmake.unix/
