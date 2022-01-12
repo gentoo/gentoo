@@ -19,6 +19,8 @@ RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
 BDEPEND="${RDEPEND}"
 DEPEND="dev-ml/findlib:=[ocamlopt?]"
 
+PATCHES=( "${FILESDIR}"/${P}-ocamlopt.patch )
+
 src_compile() {
 	emake CFLAGS="${CFLAGS}" NATDYNLINK="$(usex ocamlopt true false)"
 }

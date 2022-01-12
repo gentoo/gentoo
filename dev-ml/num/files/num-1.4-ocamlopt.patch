@@ -1,0 +1,15 @@
+--- a/src/Makefile	2022-01-12 19:58:54.655901110 +0100
++++ b/src/Makefile	2022-01-12 19:59:25.446339664 +0100
+@@ -33,11 +33,10 @@
+ 
+ all:: libnums.$(A) nums.cma
+ 
++ifeq "$(NATDYNLINK)" "true"
+ ifneq "$(ARCH)" "none"
+ all:: nums.cmxa
+ endif
+-
+-ifeq "$(NATDYNLINK)" "true"
+ all:: nums.cmxs
+ endif
+ 
