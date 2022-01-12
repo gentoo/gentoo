@@ -37,7 +37,9 @@ BDEPEND="
 		dev-python/sphinx
 		dev-python/sphinxcontrib-bibtex
 		media-gfx/graphviz
-		|| ( dev-texlive/texlive-latex dev-tex/latexmk dev-tex/rubber )
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-fontsrecommended
+		dev-texlive/texlive-latexextra
 	)
 "
 
