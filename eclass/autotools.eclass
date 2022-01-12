@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: autotools.eclass
@@ -666,12 +666,6 @@ autotools_m4sysdir_include() {
 	# First try to use the paths the system integrator has set up.
 	local paths=( $(eval echo ${AT_SYS_M4DIR}) )
 
-	if [[ ${#paths[@]} -eq 0 && -n ${SYSROOT} ]] ; then
-		# If they didn't give us anything, then default to the SYSROOT.
-		# This helps when cross-compiling.
-		local path="${SYSROOT}/usr/share/aclocal"
-		[[ -d ${path} ]] && paths+=( "${path}" )
-	fi
 	_autotools_m4dir_include "${paths[@]}"
 }
 
