@@ -4,6 +4,7 @@
 EAPI=7
 
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="org.python:jython:2.7.0"
 
 inherit java-pkg-2 java-ant-2 python-utils-r1 flag-o-matic
 
