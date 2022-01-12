@@ -18,7 +18,7 @@ BDEPEND="doc? ( app-doc/doxygen )"
 
 src_configure() {
 	econf \
-		$(use_enable fftw fft) \
+		$(use_enable fftw fft)
 	# Prevent doc from being generated automagically
 	if ! use doc; then
 		touch doc/doxygen-build.stamp || die
