@@ -96,7 +96,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake DONTSTRIP=1
+	emake STRIP=: DONTSTRIP=1
 }
 
 src_install() {
