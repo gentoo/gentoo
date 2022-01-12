@@ -234,11 +234,6 @@ net-fs/docker-volume-netshare
 # Masked for testing
 ~sci-libs/vtk-9.1.0
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-13)
-# Blocks removal of dev-java/log4j:0 bug #828657.
-# Java packages with no active consumer. Removal in 30 days.
-dev-java/slf4j-log4j12
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-12)
 # log4j-2.15.0 depends on masked >=virtual/{jdk,jre}-11
 >=dev-java/log4j-api-java9-2.15.0
