@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="examples"
 
 RDEPEND="
-	>=dev-python/py-amqp-5.0.6[${PYTHON_USEDEP}]
+	>=dev-python/py-amqp-5.0.9[${PYTHON_USEDEP}]
 	<dev-python/py-amqp-6.0.0[${PYTHON_USEDEP}]
 	dev-python/vine[${PYTHON_USEDEP}]
 "
