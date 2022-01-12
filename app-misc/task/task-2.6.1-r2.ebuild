@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -62,7 +62,7 @@ src_install() {
 	doins scripts/zsh/*
 
 	# fish-completions
-	insinto /usr/share/fish/completions
+	insinto /usr/share/fish/vendor_completions.d
 	doins scripts/fish/*
 
 	exeinto "/usr/share/${PN}/scripts"
