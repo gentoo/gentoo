@@ -1,9 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=8
 
 DESCRIPTION="A nice tool to manage amt-enabled machines"
 HOMEPAGE="https://www.kraxel.org/blog/linux/amtterm/"
@@ -14,13 +12,18 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE="gtk"
 
-DEPEND="gtk? (
-	x11-libs/gtk+:3
-	x11-libs/vte:2.91 )"
+DEPEND="
+	gtk? (
+		x11-libs/gtk+:3
+		x11-libs/vte:2.91
+	)
+"
 RDEPEND="${DEPEND}
-	dev-perl/SOAP-Lite"
+	dev-perl/SOAP-Lite
+"
 
 src_prepare() {
+	default
 	sed -i -e 's|\(INSTALL_BINARY  := \$(INSTALL)\) \$(STRIP)|\1|' mk/Variables.mk || die
 }
 
@@ -33,14 +36,14 @@ src_configure() {
 }
 
 src_compile() {
-	prefix="/usr" emake
+	emake prefix="${EPREFIX}"/usr
 }
 
 src_install() {
-	prefix="/usr" emake DESTDIR=${ED} install
+	emake prefix="${EPREFIX}"/usr DESTDIR="${D}" install
 
 	if ! use gtk; then
-		rm -rf "${D}"/usr/share/applications || die
-		rm -rf "${D}"/usr/share/man/man1/gamt* || die
+		rm -r "${ED}"/usr/share/applications || die
+		rm -r "${ED}"/usr/share/man/man1/gamt* || die
 	fi
 }
