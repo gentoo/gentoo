@@ -238,7 +238,6 @@ net-fs/docker-volume-netshare
 # Blocks removal of dev-java/log4j:0 bug #828657.
 # Java packages with no active consumer. Removal in 30 days.
 dev-java/slf4j-log4j12
-dev-java/jibx
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-12)
 # log4j-2.15.0 depends on masked >=virtual/{jdk,jre}-11
