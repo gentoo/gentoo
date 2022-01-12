@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,8 +35,7 @@ else
 	LANGS=" de eo es fi fr he hu it ja pl pt-BR sl uk zh-CN"
 fi
 
-IUSE="avif colord cpu_flags_x86_avx cpu_flags_x86_sse3 cups doc flickr geolocation gmic gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
-	lto lua nls opencl openmp openexr test tools webp
+IUSE="avif colord cpu_flags_x86_avx cpu_flags_x86_sse3 cups doc flickr gamepad geolocation gmic gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet lto lua midi nls opencl openmp openexr test tools webp
 	${LANGS// / l10n_}"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
@@ -68,6 +67,7 @@ DEPEND="dev-db/sqlite:3
 	colord? ( x11-libs/colord-gtk:0= )
 	cups? ( net-print/cups )
 	flickr? ( media-libs/flickcurl )
+	gamepad? ( media-libs/libsdl2 )
 	geolocation? ( >=sci-geosciences/osm-gps-map-1.1.0 )
 	gmic? ( media-gfx/gmic )
 	gnome-keyring? ( >=app-crypt/libsecret-0.18 )
@@ -75,6 +75,7 @@ DEPEND="dev-db/sqlite:3
 	graphicsmagick? ( media-gfx/graphicsmagick )
 	jpeg2k? ( media-libs/openjpeg:2= )
 	lua? ( ${LUA_DEPS} )
+	midi? ( media-libs/portmidi )
 	opencl? ( virtual/opencl )
 	openexr? ( media-libs/openexr:= )
 	webp? ( media-libs/libwebp:0= )"
@@ -87,6 +88,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.0_jsonschema-automagic.patch
 	"${FILESDIR}"/${PN}-3.4.1_libxcf-cmake.patch
 	"${FILESDIR}"/${PN}-3.6.1_openexr.patch
+	"${FILESDIR}"/${PN}-3.8.0_libs-deps-automagic.patch
 )
 
 S="${WORKDIR}/${P/_/~}"
@@ -140,6 +142,8 @@ src_configure() {
 		-DUSE_OPENEXR=$(usex openexr)
 		-DUSE_OPENJPEG=$(usex jpeg2k)
 		-DUSE_OPENMP=$(usex openmp)
+		-DUSE_PORTMIDI=$(usex midi)
+		-DUSE_SDL2=$(usex gamepad)
 		-DUSE_WEBP=$(usex webp)
 		-DWANT_JSON_VALIDATION=$(usex test)
 	)
