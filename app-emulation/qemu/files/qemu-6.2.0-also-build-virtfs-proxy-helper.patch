@@ -23,7 +23,9 @@ index fbe856700..d6918b04c 100644
      libcap_ng.found())
  
 -have_virtfs_proxy_helper = have_virtfs and have_tools
-+have_virtfs_proxy_helper = have_tools
++have_virtfs_proxy_helper = have_tools and libcap_ng.found()
+
+
  
  if get_option('virtfs').enabled()
    if not have_virtfs
