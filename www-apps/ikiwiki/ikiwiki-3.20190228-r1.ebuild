@@ -16,7 +16,6 @@ KEYWORDS="amd64 ~x86"
 IUSE="extras minimal test"
 RESTRICT="!test? ( test )"
 
-
 #Authen::Passphrase
 #Search::Xapian
 #Locale::gettext
