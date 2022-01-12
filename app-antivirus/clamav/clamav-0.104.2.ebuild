@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake flag-o-matic python-any-r1 systemd tmpfiles
@@ -140,7 +140,7 @@ src_install() {
 				-e "s/^#\(PidFile .*\)/\1/" \
 				-e "s/^#\(DatabaseOwner .*\)/\1/" \
 				-e "s:^\#\(UpdateLogFile\) .*:\1 ${EPREFIX}/var/log/clamav/freshclam.log:" \
-				-e "s:^\#\(NotifyClamd\).*:\1 ${EPREFIX}/etc/clamd.conf:" \
+				-e "s:^\#\(NotifyClamd\).*:\1 ${EPREFIX}/etc/clamav/clamd.conf:" \
 				-e "s:^\#\(ScriptedUpdates\).*:\1 yes:" \
 				-e "s/^#\(DatabaseDirectory .*\)/\1/" \
 				"${ED}"/etc/clamav/freshclam.conf.sample > \
