@@ -4,6 +4,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2022-01-12)
+# PCH has proven itself to be unreliable and lead to spurious build
+# failures. Masking so users aren't exposed to such failures without opting-in.
+# Failures aren't always reproducible and implementations are often fragile.
+# Please speak to <toolchain@gentoo.org> and/or <qa@gentoo.org> before dropping.
+# See e.g. bug #753323, bug #822690.
+pch
+
 # Hans de Graaff <graaff@gentoo.org> (2021-07-09)
 # Mask Ruby 2.5 as EOL
 ruby_targets_ruby25
