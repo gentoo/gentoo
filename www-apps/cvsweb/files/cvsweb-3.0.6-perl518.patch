@@ -3,8 +3,8 @@ http://cvsweb.netbsd.org/bsdweb.cgi/pkgsrc/www/cvsweb/patches/patch-cvsweb.cgi.d
 
 Fix warnings from newer perl versions
 
---- cvsweb.cgi.orig	2013-07-30 12:49:33.268655300 +0000
-+++ cvsweb.cgi
+--- a/cvsweb.cgi
++++ b/cvsweb.cgi
 @@ -1192,7 +1192,7 @@ EOF
  <legend>General options</legend>
  <input type="hidden" name="copt" value="1" />
