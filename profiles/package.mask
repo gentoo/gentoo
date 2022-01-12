@@ -53,6 +53,14 @@ sci-biology/rmblast
 # Removal on 2022-02-11. Bug #828708.
 sci-chemistry/molscript
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-12)
+# java-packages without consumers. Removal in 30 days.
+dev-java/myfaces-api
+dev-java/cdi-api
+dev-java/cofoja
+dev-java/laf-plugin
+dev-java/args4j
+
 # Jakov Smolić <jsmolic@gentoo.org> (2022-01-12)
 # Outdated java package, uses EAPI 5, no revdeps,
 # no other distro is packaging this.
