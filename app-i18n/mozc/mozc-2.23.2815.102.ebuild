@@ -1,4 +1,4 @@
-# Copyright 2010-2021 Gentoo Authors
+# Copyright 2010-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -41,13 +41,13 @@ REQUIRED_USE="|| ( emacs fcitx4 ibus ) gui? ( ^^ ( handwriting-tegaki handwritin
 RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
-	<dev-libs/protobuf-3.19
+	>=dev-libs/protobuf-3.0.0
 	dev-util/gyp
 	dev-util/ninja
 	virtual/pkgconfig
 	emacs? ( app-editors/emacs:* )
 	fcitx4? ( sys-devel/gettext )"
-RDEPEND="<dev-libs/protobuf-3.19:=
+RDEPEND=">=dev-libs/protobuf-3.0.0:=
 	emacs? ( app-editors/emacs:* )
 	fcitx4? (
 		app-i18n/fcitx:4
@@ -113,6 +113,7 @@ src_prepare() {
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-system_libraries.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-gcc-8.patch"
 	eapply -p2 "${DISTDIR}/${PN}-2.23.2815.102-protobuf_generated_classes_no_inheritance.patch"
+	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-protobuf-3.18.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-environmental_variables.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-reiwa.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-server_path_check.patch"
