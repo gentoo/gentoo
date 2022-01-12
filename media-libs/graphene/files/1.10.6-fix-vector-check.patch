@@ -4,6 +4,7 @@ Date: Wed, 9 Jun 2021 15:47:14 +0200
 Subject: [PATCH] meson: fix gcc vector 64-bit check
 
 the previous behavior only ever enabled gcc vectors no x86_64
+patch origin: https://github.com/ebassi/graphene/pull/233
 ---
  meson.build | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
