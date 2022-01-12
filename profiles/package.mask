@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-01-12)
+# Outdated java package, uses EAPI 5, no revdeps,
+# no other distro is packaging this.
+# Removal on 2022-02-11. Bug #828682.
+sys-cluster/projections
+
+# Jakov Smolić <jsmolic@gentoo.org> (2022-01-12)
 # Dead upstream, unmaintained, uses EAPI 5,
 # numerous open bugs, fails to compile.
 # Removal on 2022-02-11. Bug #828692.
