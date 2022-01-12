@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-01-12)
+# Upstream gone, uses EAPI 5, no revdeps, no other
+# distro is packaging this.
+# Removal on 2022-02-11. Bug #828708.
+sci-chemistry/molscript
+
+# Jakov Smolić <jsmolic@gentoo.org> (2022-01-12)
 # Outdated java package, uses EAPI 5, no revdeps,
 # no other distro is packaging this.
 # Removal on 2022-02-11. Bug #828682.
