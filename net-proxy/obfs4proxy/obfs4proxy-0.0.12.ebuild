@@ -53,7 +53,7 @@ SRC_URI="https://gitlab.com/yawning/obfs4/-/archive/${P}/obfs4-${P}.tar.gz -> ${
 # See https://gitlab.com/yawning/obfs4/-/issues/5#note_573104796 for licence clarification
 LICENSE="BSD CC0-1.0 BZIP2 GPL-3+ MIT public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~riscv ~x86"
 
 S="${WORKDIR}/obfs4-${P}"
 
