@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://www.awstats.org/files/${P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 LICENSE="GPL-3"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
-IUSE="geoip ipv6"
+IUSE="geoip geoip2 ipv6"
 
 SLOT="0"
 
@@ -21,6 +21,9 @@ RDEPEND="
 	virtual/perl-Time-Local
 	geoip? (
 		dev-perl/Geo-IP
+	)
+	geoip2? (
+		dev-perl/GeoIP2
 	)
 	ipv6? (
 		dev-perl/Net-DNS
@@ -32,6 +35,7 @@ DEPEND=""
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-7.1-gentoo.diff
 	eapply "${FILESDIR}"/${P}-mime.patch
+	eapply "${FILESDIR}"/${P}-Only-look-for-configuration-in-dedicated-awstats-dir.patch
 
 	# change default installation directory
 	find . -type f -exec sed \
@@ -50,12 +54,12 @@ src_prepare() {
 
 	if use ipv6; then
 		sed -e "s|^#\(LoadPlugin=\"ipv6\"\)$|\1|" \
-		-i "${S}"/wwwroot/cgi-bin/awstats.model.conf || die "sed failed"
+			-i "${S}"/wwwroot/cgi-bin/awstats.model.conf || die "sed failed"
 	fi
 
 	if use geoip; then
 		sed -e '/LoadPlugin="geoip /aLoadPlugin="geoip GEOIP_STANDARD /usr/share/GeoIP/GeoIP.dat"' \
-		-i "${S}"/wwwroot/cgi-bin/awstats.model.conf || die "sed failed"
+			-i "${S}"/wwwroot/cgi-bin/awstats.model.conf || die "sed failed"
 	fi
 
 	find "${S}" '(' -type f -not -name '*.pl' ')' -exec chmod -x {} + || die
@@ -106,5 +110,5 @@ pkg_postinst() {
 	ewarn "This ebuild does no longer use webapp-config to install"
 	ewarn "instead you should point your configuration to the stable"
 	ewarn "directory tree in the following path:"
-	ewarn "    /usr/share/awstats"
+	ewarn "	   /usr/share/awstats"
 }

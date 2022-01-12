@@ -1,0 +1,34 @@
+From 0d4d4c05f8e73be8f71dd361dc55cbd52858b823 Mon Sep 17 00:00:00 2001
+From: Beuc <beuc@beuc.net>
+Date: Thu, 17 Dec 2020 18:14:43 +0100
+Subject: [PATCH 18/20] Only look for configuration in dedicated awstats
+ directories
+
+Fixes #195/CVE-2020-35176
+---
+ wwwroot/cgi-bin/awstats.pl | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/wwwroot/cgi-bin/awstats.pl b/wwwroot/cgi-bin/awstats.pl
+index e709b7f5..8341c0a5 100755
+--- a/wwwroot/cgi-bin/awstats.pl
++++ b/wwwroot/cgi-bin/awstats.pl
+@@ -1711,13 +1711,13 @@ sub Read_Config {
+ 	# Check config file in common possible directories :
+ 	# Windows :                   				"$DIR" (same dir than awstats.pl)
+ 	# Standard, Mandrake and Debian package :	"/etc/awstats"
+-	# Other possible directories :				"/usr/local/etc/awstats", "/etc"
++	# Other possible directories :				"/usr/local/etc/awstats",
+ 	# FHS standard, Suse package : 				"/etc/opt/awstats"
+ 	my $configdir         = shift;
+ 	my @PossibleConfigDir = (
+ 			"$DIR",
+ 			"/etc/awstats",
+-			"/usr/local/etc/awstats", "/etc",
++			"/usr/local/etc/awstats",
+ 			"/etc/opt/awstats"
+ 		); 
+ 
+-- 
+2.34.1
+
