@@ -6,25 +6,20 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: A generic eclass for building multiple variants of packages.
 # @DESCRIPTION:
 # The multibuild eclass aims to provide a generic framework for building
 # multiple 'variants' of a package (e.g. multilib, Python
 # implementations).
 
-case "${EAPI:-0}" in
-	[0-3])
-		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
-		;;
-	[4-8])
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_MULTIBUILD} ]]; then
+if [[ ! ${_MULTIBUILD_ECLASS} ]]; then
+_MULTIBUILD_ECLASS=1
 
 # @ECLASS-VARIABLE: MULTIBUILD_VARIANTS
 # @REQUIRED
@@ -137,25 +132,6 @@ multibuild_foreach_variant() {
 	return ${ret}
 }
 
-# @FUNCTION: multibuild_parallel_foreach_variant
-# @USAGE: [<argv>...]
-# @DESCRIPTION:
-# Run the passed command repeatedly for each of the enabled package
-# variants. This used to run the commands in parallel but now it's
-# just a deprecated alias to multibuild_foreach_variant.
-#
-# The function returns 0 if all commands return 0, or the first non-zero
-# exit status otherwise. However, it performs all the invocations
-# nevertheless. It is preferred to call 'die' inside of the passed
-# function.
-multibuild_parallel_foreach_variant() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}"
-
-	multibuild_foreach_variant "${@}"
-}
-
 # @FUNCTION: multibuild_for_best_variant
 # @USAGE: [<argv>...]
 # @DESCRIPTION:
@@ -172,10 +148,7 @@ multibuild_for_best_variant() {
 	[[ ${MULTIBUILD_VARIANTS} ]] \
 		|| die "MULTIBUILD_VARIANTS need to be set"
 
-	# bash-4.1 can't handle negative subscripts
-	local MULTIBUILD_VARIANTS=(
-		"${MULTIBUILD_VARIANTS[$(( ${#MULTIBUILD_VARIANTS[@]} - 1 ))]}"
-	)
+	local MULTIBUILD_VARIANTS=( "${MULTIBUILD_VARIANTS[-1]}" )
 	multibuild_foreach_variant "${@}"
 }
 
@@ -239,5 +212,4 @@ multibuild_merge_root() {
 	rm -rf "${src}" || die
 }
 
-_MULTIBUILD=1
 fi
