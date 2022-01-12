@@ -192,15 +192,10 @@ multibuild_copy_sources() {
 
 	einfo "Will copy sources from ${_MULTIBUILD_INITIAL_BUILD_DIR}"
 
-	local cp_args=()
-	if cp --reflink=auto --version &>/dev/null; then
-		# enable reflinking if possible to make this faster
-		cp_args+=( --reflink=auto )
-	fi
-
 	_multibuild_create_source_copy() {
 		einfo "${MULTIBUILD_VARIANT}: copying to ${BUILD_DIR}"
-		cp -p -R "${cp_args[@]}" \
+		# enable reflinking if possible to make this faster
+		cp -p -R --reflink=auto \
 			"${_MULTIBUILD_INITIAL_BUILD_DIR}" "${BUILD_DIR}" || die
 	}
 
@@ -234,31 +229,14 @@ run_in_build_dir() {
 # (the real root). Both directories have to be real, absolute paths
 # (i.e. including ${D}). Source root will be removed.
 multibuild_merge_root() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local src=${1}
 	local dest=${2}
 
-	local ret
-	local cp_args=()
-
-	if cp -a --version &>/dev/null; then
-		cp_args+=( -a )
-	else
-		cp_args+=( -P -R -p )
-	fi
-
-	if cp --reflink=auto --version &>/dev/null; then
-		# enable reflinking if possible to make this faster
-		cp_args+=( --reflink=auto )
-	fi
-
-	cp "${cp_args[@]}" "${src}"/. "${dest}"/
-	ret=${?}
-
-	if [[ ${ret} -ne 0 ]]; then
-		die "${MULTIBUILD_VARIANT:-(unknown)}: merging image failed."
-	fi
-
-	rm -rf "${src}"
+	# enable reflinking if possible to make this faster
+	cp -a --reflink=auto "${src}"/. "${dest}"/ || die "${MULTIBUILD_VARIANT:-(unknown)}: merging image failed"
+	rm -rf "${src}" || die
 }
 
 _MULTIBUILD=1
