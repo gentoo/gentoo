@@ -1,35 +1,35 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit epatch toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Command line tool to automate the process of ripping and burning DVDs"
-SRC_URI="mirror://sourceforge/lxdvdrip/${P}.tgz"
 HOMEPAGE="https://sourceforge.net/projects/lxdvdrip/"
+SRC_URI="mirror://sourceforge/lxdvdrip/${P}.tgz"
+S="${WORKDIR}/${PN}"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
 DEPEND="media-libs/libdvdread"
 RDEPEND="${DEPEND}
 	>=media-video/dvdauthor-0.6.9
 	media-video/streamdvd
-	media-video/mpgtx"
+	media-video/mpgtx
+"
 
-S="${WORKDIR}/${PN}"
-
-src_prepare() {
-	epatch "${FILESDIR}/${P}-makefile.patch"
-	epatch "${FILESDIR}/${P}-vamps-makefile.patch"
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-vamps-makefile.patch
+)
 
 src_compile() {
-	CC="$(tc-getCC)" emake
-	cd "${S}/vamps"
-	emake CC="$(tc-getCC)"
+	tc-export CC
+	emake
+	emake -C vamps
 }
 
 src_install() {
@@ -45,6 +45,6 @@ src_install() {
 	insinto /etc
 	newins doc-pak/lxdvdrip.conf.EN lxdvdrip.conf
 
-	cd "${S}/vamps"
+	cd vamps || die
 	emake PREFIX="${D}/usr" install
 }
