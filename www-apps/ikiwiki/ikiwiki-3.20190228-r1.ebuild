@@ -1,21 +1,21 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 inherit perl-module
 
 DESCRIPTION="A wiki compiler"
 HOMEPAGE="http://ikiwiki.info/"
 SRC_URI="mirror://debian/pool/main/i/ikiwiki/${PN}_${PV}.orig.tar.xz"
+S="${WORKDIR}/IkiWiki-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="amd64 ~x86"
 IUSE="extras minimal test"
 RESTRICT="!test? ( test )"
-KEYWORDS="amd64 ~x86"
 
-S=${WORKDIR}/IkiWiki-${PV}
 
 #Authen::Passphrase
 #Search::Xapian
@@ -81,12 +81,13 @@ RDEPEND="${DEPEND}
 	)
 "
 
-DEPEND="${DEPEND}
-	test? ( ${TEST_DEPEND} )"
+BDEPEND="test? ( ${TEST_DEPEND} )"
 
 SRC_TEST=do
 
 src_prepare() {
+	default
+
 	#bug 498444 /usr/lib/plan9/lib/fortunes.index
 	addpredict "/usr/lib/plan9/lib/fortunes"
 
@@ -106,6 +107,6 @@ src_install() {
 
 	#insinto /usr/share/doc/${PF}/examples
 	#doins -r doc/examples/*
-	dohtml -r -A setup html/*
+	dodoc -r html/.
 	dodoc debian/{NEWS,changelog}
 }
