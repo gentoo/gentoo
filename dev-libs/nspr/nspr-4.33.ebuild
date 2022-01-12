@@ -60,7 +60,7 @@ multilib_src_configure() {
 	# We use the standard BUILD_xxx but nspr uses HOST_xxx
 	tc-export_build_env BUILD_CC
 	export HOST_CC=${BUILD_CC} HOST_CFLAGS=${BUILD_CFLAGS} HOST_LDFLAGS=${BUILD_LDFLAGS}
-	tc-export AR CC CXX RANLIB
+	tc-export AR AS CC CXX RANLIB
 	[[ ${CBUILD} != ${CHOST} ]] \
 		&& export CROSS_COMPILE=1 \
 		|| unset CROSS_COMPILE
@@ -98,6 +98,7 @@ multilib_src_configure() {
 	# Ancient autoconf needs help finding the right tools.
 	LC_ALL="C" ECONF_SOURCE="${S}/nspr" \
 	ac_cv_path_AR="${AR}" \
+	ac_cv_path_AS="${AS}" \
 	econf "${myconf[@]}"
 }
 
