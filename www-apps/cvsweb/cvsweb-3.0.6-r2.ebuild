@@ -35,7 +35,7 @@ src_install() {
 	cp css/cvsweb.css "${ED}"/${MY_HTDOCSDIR} || die
 	exeinto ${MY_CGIBINDIR}
 	doexe cvsweb.cgi
-	chmod +x "${ED}"/${MY_CGIBINDIR}/cvsweb.cgi
+	fperms +x ${MY_CGIBINDIR}/cvsweb.cgi
 
 	dodoc README TODO NEWS ChangeLog
 
