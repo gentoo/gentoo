@@ -246,7 +246,6 @@ perl-core/IO-Zlib
 perl-core/Module-CoreList
 perl-core/Test
 perl-core/Text-Balanced
-perl-core/Text-ParseWords
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-12)
 # log4j-2.15.0 depends on masked >=virtual/{jdk,jre}-11
