@@ -34,6 +34,14 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-01-12)
+# Outdated, using EAPI 5, multiple open bugs, compile
+# and test failures. No other major distro is packaging this.
+# Removal on 2022-02-11. Bug #828706. Bug #828701.
+sci-biology/repeatmasker
+sci-biology/repeatmasker-libraries
+sci-biology/rmblast
+
+# Jakov Smolić <jsmolic@gentoo.org> (2022-01-12)
 # Upstream gone, uses EAPI 5, no revdeps, no other
 # distro is packaging this.
 # Removal on 2022-02-11. Bug #828708.
