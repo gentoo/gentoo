@@ -1,27 +1,28 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit epatch toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="An application for working with the Microchip PicKit2 PIC programmer"
 HOMEPAGE="http://www.microchip.com/pickit2"
 SRC_URI="http://ww1.microchip.com/downloads/en/DeviceDoc/${PN}v${PV}LinuxMacSource.tar.gz"
+S="${WORKDIR}/${PN}v${PV}LinuxMacSource"
 
 LICENSE="MicroChip-PK2"
 SLOT="0"
 KEYWORDS="~amd64 ppc ppc64 ~x86"
-IUSE=""
 
 DEPEND="virtual/libusb:0"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${PN}v${PV}LinuxMacSource
+PATCHES=(
+	"${FILESDIR}"/${PN}-add-share-dir-for-dev-file-${PV}.patch
+)
 
 src_prepare() {
-	# Patch adds /usr/share/pk2 to the default search for the device file
-	epatch "${FILESDIR}/${PN}-add-share-dir-for-dev-file-${PV}.patch"
+	default
 
 	# Fix up the Makefile
 	sed \
@@ -40,7 +41,7 @@ src_compile() {
 
 src_install() {
 	# Copy the device files and PicKit2 OS
-	insinto "/usr/share/pk2"
+	insinto /usr/share/pk2
 	doins PK2DeviceFile.dat PK2V023200.hex
 	# Install the program
 	dobin pk2cmd
