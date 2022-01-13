@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -135,8 +135,7 @@ src_configure() {
 
 	# prepare /etc/env.d file
 	sed -e "s|lib/|$(get_libdir)/|" \
-		-e "s|VAR_PV|${PV}|" \
-		-e "s|VAR_CASROOT|${ESYSROOT}/usr|" \
+		-e "s|VAR_CASROOT|${EPREFIX}/usr|" \
 		< "${FILESDIR}"/${PN}.env.in > "${T}"/99${PN} || die
 
 	# use TBB for memory allocation optimizations
