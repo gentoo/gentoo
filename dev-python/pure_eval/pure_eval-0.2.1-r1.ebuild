@@ -15,6 +15,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="dev-python/wheel[${PYTHON_USEDEP}]"
+BDEPEND="dev-python/wheel[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
