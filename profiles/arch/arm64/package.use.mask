@@ -402,10 +402,6 @@ app-office/gnumeric libgda
 # Missing keywords, bug #492820
 net-im/telepathy-connection-managers sipe
 
-# Pacho Ramos <pacho@gentoo.org> (2013-10-31)
-# Missing keywords, bug #478254
-gnome-base/gnome classic
-
 # Sergey Popov <pinkbyte@gentoo.org> (2013-09-06)
 # sci-libs/hdf does not build properly on arm
 dev-perl/PDL	hdf
