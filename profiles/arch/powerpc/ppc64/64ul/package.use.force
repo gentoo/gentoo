@@ -1,0 +1,8 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-01-13)
+# Bootstrapping is possible using our build snapshot, but force
+# the user to rebuild  
+dev-java/openjdk:11 -system-bootstrap jbootstrap
+dev-java/openjdk:17 -system-bootstrap jbootstrap
