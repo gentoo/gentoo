@@ -15,11 +15,9 @@ SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${GENTOO_PATC
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="+cron systemd"
+IUSE="+cron"
 
-DEPEND="systemd? ( sys-apps/systemd )"
-RDEPEND="${DEPEND}
-	cron? ( virtual/cron )"
+RDEPEND="cron? ( virtual/cron )"
 
 PATCHES=(
 	"${WORKDIR}/${GENTOO_PATCH}"
@@ -29,6 +27,7 @@ PATCHES=(
 
 src_prepare() {
 	default
+
 	sed -e 's:/var/adm/:/var/log/:g' \
 		-i chklastlog.c || die
 }
@@ -45,21 +44,24 @@ src_install() {
 		exeinto /etc/cron.weekly
 		newexe "${FILESDIR}"/${PN}.cron ${PN}
 	fi
+
 	systemd_dounit "${FILESDIR}/${PN}.timer" "${FILESDIR}/${PN}.service"
 }
 
 pkg_postinst() {
 	if use cron ; then
 		elog
-		elog "Edit /etc/cron.weekly/chkrootkit to activate chkrootkit!"
+		elog "Edit ${EROOT}/etc/cron.weekly/chkrootkit to activate chkrootkit!"
 		elog
 	fi
-	if use systemd ; then
+
+	if systemd_is_booted || has_version sys-apps/systemd ; then
 		elog
 		elog "To enable the systemd timer, run the following command:"
 		elog "   systemctl enable --now chkrootkit.timer"
 		elog
 	fi
+
 	elog
 	elog "Some applications, such as portsentry, will cause chkrootkit"
 	elog "to produce false positives.  Read the chkrootkit FAQ at"
