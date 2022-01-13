@@ -25,6 +25,7 @@ REQUIRED_USE="?? ( optimize tbb )"
 RESTRICT="test"
 
 RDEPEND="
+	!app-eselect/eselect-opencascade
 	dev-lang/tcl:=
 	dev-lang/tk:=
 	dev-tcltk/itcl
