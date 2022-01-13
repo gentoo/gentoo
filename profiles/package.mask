@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-01-13)
+# A temporary hack used by flit to workaround a problem with pip.
+# No longer used by modern flit versions.
+# Removal on 2022-02-12.  Bug #831156.
+dev-python/intreehooks
+
 # Jakov Smolić <jsmolic@gentoo.org> (2022-01-13)
 # Dead upstream, uses EAPI 5, multiple open bugs, no revdeps,
 # no other distro is packaging this.
