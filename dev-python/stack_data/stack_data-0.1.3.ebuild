@@ -19,8 +19,9 @@ BDEPEND="test? (
 		dev-python/asttokens[${PYTHON_USEDEP}]
 		dev-python/executing[${PYTHON_USEDEP}]
 		dev-python/typeguard[${PYTHON_USEDEP}]
-		dev-python/pure_eval[${PYTHON_USEDEP}]
 		dev-python/littleutils[${PYTHON_USEDEP}]
+		dev-python/pure_eval[${PYTHON_USEDEP}]
+		dev-python/pygments[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest
