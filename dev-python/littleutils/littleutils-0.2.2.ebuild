@@ -14,3 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+
+python_test() {
+	"${EPYTHON}" -m doctest -v ${PN}/__init__.py || die "Tests fail with ${EPYTHON}"
+}
