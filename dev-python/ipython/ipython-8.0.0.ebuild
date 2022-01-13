@@ -28,7 +28,7 @@ RDEPEND="
 	>=dev-python/prompt_toolkit-2[${PYTHON_USEDEP}]
 	<dev-python/prompt_toolkit-3.1[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
-	dev-python/traitlets[${PYTHON_USEDEP}]
+	>=dev-python/traitlets-5.0[${PYTHON_USEDEP}]
 	matplotlib? (
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/matplotlib-inline[${PYTHON_USEDEP}]
@@ -42,8 +42,7 @@ BDEPEND="
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/matplotlib-inline[${PYTHON_USEDEP}]
 		dev-python/nbformat[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
-		>=dev-python/numpy-1.17[${PYTHON_USEDEP}]
+		>=dev-python/numpy-1.19[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/stack_data[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
