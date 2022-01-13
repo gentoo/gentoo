@@ -1033,6 +1033,10 @@ distutils-r1_run_phase() {
 
 	local -x LDSHARED="${CC} ${ldopts}" LDCXXSHARED="${CXX} ${ldopts}"
 
+	# Undo the default switch in setuptools-60+ for the time being,
+	# to avoid replacing .egg-info file with directory in-place.
+	local -x SETUPTOOLS_USE_DISTUTILS="${SETUPTOOLS_USE_DISTUTILS:-stdlib}"
+
 	"${@}"
 
 	cd "${_DISTUTILS_INITIAL_CWD}" || die
