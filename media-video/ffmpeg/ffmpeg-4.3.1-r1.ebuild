@@ -464,6 +464,7 @@ multilib_src_configure() {
 		--cxx="$(tc-getCXX)" \
 		--ar="$(tc-getAR)" \
 		--nm="$(tc-getNM)" \
+		--strip="$(tc-getSTRIP)" \
 		--ranlib="$(tc-getRANLIB)" \
 		--pkg-config="$(tc-getPKG_CONFIG)" \
 		--optflags="${CFLAGS}" \
