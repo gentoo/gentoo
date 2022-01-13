@@ -93,6 +93,8 @@ src_install() {
 	# useless -${PV} copies ?
 	rm "${ED}"/usr/bin/atop*-${PV} || die
 
+	# Note: in the next release (> 2.7.1), switch to upstream files
+	# (ours are now upstreamed)
 	newinitd "${FILESDIR}"/${PN}.rc-r2 ${PN}
 	newinitd "${FILESDIR}"/atopacct.rc atopacct
 
