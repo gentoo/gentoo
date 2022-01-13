@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/831079
+--- a/mono/btls/CMakeLists.txt
++++ b/mono/btls/CMakeLists.txt
+@@ -12,11 +12,6 @@ endif()
+ enable_language(C)
+ enable_language(CXX)
+ 
+-find_program(CCACHE_PROGRAM ccache)
+-if(CCACHE_PROGRAM)
+-    set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
+-endif()
+-
+ if (MSVC OR CYGWIN)
+ 	set(BTLS_HOST_WIN32 1)
+ endif ()
+@@ -129,4 +124,4 @@ endif ()
+ 
+ if (CYGWIN)
+ 	target_link_libraries (mono-btls-shared wsock32 ws2_32)
+-endif ()
+\ No newline at end of file
++endif ()
