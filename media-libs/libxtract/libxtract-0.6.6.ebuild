@@ -14,7 +14,7 @@ IUSE="doc fftw"
 
 RDEPEND="fftw? ( sci-libs/fftw:3.0 )"
 DEPEND="${RDEPEND}"
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-doc/doxygen[dot] )"
 
 src_configure() {
 	econf \
