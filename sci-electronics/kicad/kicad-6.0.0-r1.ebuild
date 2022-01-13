@@ -35,6 +35,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # Contains bundled pybind but it's patched for wx
 # See https://gitlab.com/kicad/code/kicad/-/commit/74e4370a9b146b21883d6a2d1df46c7a10bd0424
 COMMON_DEPEND="
+	!sci-electronics/kicad-i18n
 	>=dev-libs/boost-1.61:=[context,nls]
 	media-libs/freeglut
 	media-libs/glew:0=
@@ -93,6 +94,10 @@ src_configure() {
 		-DKICAD_DOCS="${EPREFIX}/usr/share/doc/${PF}"
 
 		-DKICAD_SCRIPTING_WXPYTHON=ON
+
+		# Merged from separate -i18n package, bug #830274
+		-DKICAD_BUILD_I18N=ON
+		-DKICAD_I18N_UNIX_STRICT_PATH=ON
 
 		-DPYTHON_DEST="$(python_get_sitedir)"
 		-DPYTHON_EXECUTABLE="${PYTHON}"
