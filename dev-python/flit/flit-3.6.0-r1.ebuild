@@ -18,7 +18,6 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	dev-python/docutils[${PYTHON_USEDEP}]
 	>=dev-python/flit_core-3.2.0[${PYTHON_USEDEP}]
-	dev-python/intreehooks[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/requests_download[${PYTHON_USEDEP}]
 	dev-python/tomli[${PYTHON_USEDEP}]
