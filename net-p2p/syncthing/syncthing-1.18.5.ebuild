@@ -828,10 +828,8 @@ src_prepare() {
 }
 
 src_compile() {
-	go run build.go -version "v${PV}" -no-upgrade build \
+	go run build.go -version "v${PV}" -no-upgrade install \
 		$(usex tools "all" "") || die "build failed"
-	mkdir bin || die
-	mv "${PN}$(go env GOEXE)" bin/ || die
 }
 
 src_test() {
