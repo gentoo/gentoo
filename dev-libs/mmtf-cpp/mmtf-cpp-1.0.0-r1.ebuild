@@ -1,9 +1,9 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="The pure C++ implementation of the MMTF API, decoder and encoder"
 HOMEPAGE="https://github.com/rcsb/mmtf-cpp"
