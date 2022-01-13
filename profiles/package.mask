@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-13)
+# java-package without consumers. Bug #831107. Removal in 30 days.
+dev-java/dnsjava
+
 # Michał Górny <mgorny@gentoo.org> (2022-01-13)
 # A temporary hack used by flit to workaround a problem with pip.
 # No longer used by modern flit versions.
