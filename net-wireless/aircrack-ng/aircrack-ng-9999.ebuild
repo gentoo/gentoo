@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 DISTUTILS_OPTIONAL=1
 
 inherit toolchain-funcs distutils-r1 flag-o-matic autotools
@@ -27,6 +27,7 @@ IUSE="+airdrop-ng +airgraph-ng +netlink +pcre +sqlite +experimental"
 
 DEPEND="net-libs/libpcap
 	sys-apps/hwloc:0=
+	dev-libs/libbsd
 	dev-libs/openssl:0=
 	netlink? ( dev-libs/libnl:3 )
 	pcre? ( dev-libs/libpcre )
