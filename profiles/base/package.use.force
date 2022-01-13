@@ -1,7 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Joonas Niilola <juippis@gentoo.org> (20222-01-08
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-01-13)
+# Prefer to use openjdk-bin for bootstrapping
+dev-java/openjdk:17 system-bootstrap
+
+# Joonas Niilola <juippis@gentoo.org> (2022-01-08)
 # -xft broken, investigate in bug #830777
 ~x11-misc/xscreensaver-6.02 xft
 
