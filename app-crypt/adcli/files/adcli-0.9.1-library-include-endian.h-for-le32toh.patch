@@ -1,4 +1,6 @@
-From dfbaa1b7f7cde281e23464ceb24699d4686651ab Mon Sep 17 00:00:00 2001
+https://bugs.gentoo.org/830325
+https://gitlab.freedesktop.org/realmd/adcli/-/merge_requests/47
+
 From: Henning Schild <henning@hennsch.de>
 Date: Tue, 11 Jan 2022 08:22:55 +0100
 Subject: [PATCH] library: include endian.h for le32toh
@@ -7,12 +9,6 @@ upstream commit 938065a751c0876eb837a27f8c1443fc7d0d2551
 
 linking against musl libc we need to include that specifically, actually
 also according to "man 3 endian".
----
- library/adutil.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/library/adutil.c b/library/adutil.c
-index 9b0c47f3b7e9..4bb06a3a7588 100644
 --- a/library/adutil.c
 +++ b/library/adutil.c
 @@ -29,6 +29,7 @@
@@ -23,6 +19,3 @@ index 9b0c47f3b7e9..4bb06a3a7588 100644
  #include <errno.h>
  #include <stdio.h>
  #include <stdlib.h>
--- 
-2.34.1
-
