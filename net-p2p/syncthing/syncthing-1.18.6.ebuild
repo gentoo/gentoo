@@ -828,8 +828,10 @@ src_prepare() {
 }
 
 src_compile() {
-	go run build.go -version "v${PV}" -no-upgrade install \
-		$(usex tools "all" "") || die "build failed"
+	mkdir bin || die
+	GOARCH= go run build.go -version "v${PV}" -no-upgrade -build-out=bin \
+		"${GOARCH:+-goarch="${GOARCH}"}" \
+		build $(usex tools "all" "") || die "build failed"
 }
 
 src_test() {
