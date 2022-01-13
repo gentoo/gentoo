@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -50,6 +50,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/libgudev:=
 	>=dev-libs/libjcat-0.1.0[gpg,pkcs7]
 	>=dev-libs/libxmlb-0.1.13:=[introspection?]
+	$(python_gen_cond_dep '
+		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
+	')
 	>=net-libs/libsoup-2.51.92:2.4[introspection?]
 	net-misc/curl
 	virtual/udev
