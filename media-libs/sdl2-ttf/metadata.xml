@@ -12,4 +12,7 @@
 		example string for a given
 		TrueType font file.
 	</longdescription>
+	<use>
+		<flag name="harfbuzz">Use <pkg>media-libs/harfbuzz</pkg> for enhanced font rendering</flag>
+	</use>
 </pkgmetadata>
