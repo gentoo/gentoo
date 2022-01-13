@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 
 RDEPEND="
-	>=dev-python/cachetools-2.0.0[${PYTHON_USEDEP}]
+	<dev-python/cachetools-5.0.0[${PYTHON_USEDEP}]
 	dev-python/namespace-google[${PYTHON_USEDEP}]
 	>=dev-python/pyasn1-0.1.7[${PYTHON_USEDEP}]
 	>=dev-python/pyasn1-modules-0.2.1[${PYTHON_USEDEP}]
