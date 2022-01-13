@@ -19,9 +19,9 @@ IUSE="+harfbuzz static-libs X"
 # On bumps, check external/ for versions of bundled freetype + harfbuzz
 # to crank up the dep bounds.
 RDEPEND=">=media-libs/libsdl2-2.0.12[${MULTILIB_USEDEP}]
-	>=media-libs/harfbuzz-2.8.0:=[${MULTILIB_USEDEP}]
-	>=media-libs/freetype-2.10.4[${MULTILIB_USEDEP}]
+	>=media-libs/freetype-2.10.4[harfbuzz?,${MULTILIB_USEDEP}]
 	virtual/opengl[${MULTILIB_USEDEP}]
+	harfbuzz? ( >=media-libs/harfbuzz-2.8.0:=[${MULTILIB_USEDEP}] )
 	X? ( >=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
