@@ -78,6 +78,7 @@ CRATES="
 	inotify-sys-0.1.5
 	instant-0.1.12
 	iovec-0.1.4
+	itoa-0.4.8
 	itoa-1.0.1
 	jni-sys-0.3.0
 	js-sys-0.3.55
@@ -162,7 +163,8 @@ CRATES="
 	textwrap-0.11.0
 	thiserror-1.0.30
 	thiserror-impl-1.0.30
-	time-0.1.43
+	time-0.3.5
+	time-macros-0.2.3
 	toml-0.5.8
 	unicode-segmentation-1.8.0
 	unicode-width-0.1.9
@@ -181,13 +183,13 @@ CRATES="
 	wasm-bindgen-macro-0.2.78
 	wasm-bindgen-macro-support-0.2.78
 	wasm-bindgen-shared-0.2.78
-	wayland-client-0.29.3
-	wayland-commons-0.29.3
-	wayland-cursor-0.29.3
-	wayland-egl-0.29.3
-	wayland-protocols-0.29.3
-	wayland-scanner-0.29.3
-	wayland-sys-0.29.3
+	wayland-client-0.29.4
+	wayland-commons-0.29.4
+	wayland-cursor-0.29.4
+	wayland-egl-0.29.4
+	wayland-protocols-0.29.4
+	wayland-scanner-0.29.4
+	wayland-sys-0.29.4
 	web-sys-0.3.55
 	winapi-0.2.8
 	winapi-0.3.9
