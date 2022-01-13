@@ -6,7 +6,7 @@
 # rust@gentoo.org
 # @AUTHOR:
 # Doug Goldstein <cardoe@gentoo.org>
-# Georgy Yakovlev <gyakovlev@genoto.org>
+# Georgy Yakovlev <gyakovlev@gentoo.org>
 # @SUPPORTED_EAPIS: 7 8
 # @BLURB: common functions and variables for cargo builds
 
