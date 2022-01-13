@@ -5,17 +5,40 @@ EAPI=6
 
 inherit check-reqs eapi7-ver flag-o-matic java-pkg-2 java-vm-2 multiprocessing pax-utils toolchain-funcs
 
+# variable name format: <UPPERCASE_KEYWORD>_XPAK
+PPC64_XPAK="17.0.1_p12" # big-endian bootstrap tarball
+
+# Usage: bootstrap_uri <keyword> <version> [extracond]
+# Example: $(bootstrap_uri ppc64 17.0.1_p12 big-endian)
+# Output: ppc64? ( big-endian? ( https://...17.0.1_p12-ppc64.tar.xz ) )
+bootstrap_uri() {
+	local baseuri="https://dev.gentoo.org/~arthurzam/distfiles/dev-java/${PN}/${PN}-bootstrap"
+	local suff="tar.xz"
+	local kw="${1:?${FUNCNAME[0]}: keyword not specified}"
+	local ver="${2:?${FUNCNAME[0]}: version not specified}"
+	local cond="${3-}"
+
+	# here be dragons
+	echo "${kw}? ( ${cond:+${cond}? (} ${baseuri}-${ver}-${kw}.${suff} ${cond:+) })"
+}
+
 MY_PV="${PV//_p/+}"
 SLOT="$(ver_cut 1)"
 
 DESCRIPTION="Open source implementation of the Java programming language"
 HOMEPAGE="https://openjdk.java.net"
-SRC_URI="https://github.com/openjdk/jdk${SLOT}u/archive/refs/tags/jdk-${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/openjdk/jdk${SLOT}u/archive/refs/tags/jdk-${MY_PV}.tar.gz
+		-> ${P}.tar.gz
+	!system-bootstrap? (
+		$(bootstrap_uri ppc64 ${PPC64_XPAK} big-endian)
+	)
+"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
 
-IUSE="alsa cups debug doc examples gentoo-vm headless-awt javafx +jbootstrap pch selinux source systemtap"
+IUSE="alsa big-endian cups debug doc examples gentoo-vm headless-awt javafx +jbootstrap pch selinux source system-bootstrap systemtap"
 
 COMMON_DEPEND="
 	media-libs/freetype:2=
@@ -61,9 +84,11 @@ DEPEND="
 	x11-libs/libXt
 	x11-libs/libXtst
 	javafx? ( dev-java/openjfx:${SLOT}= )
-	|| (
-		dev-java/openjdk-bin:${SLOT}
-		dev-java/openjdk:${SLOT}
+	system-bootstrap? (
+		|| (
+			dev-java/openjdk-bin:${SLOT}
+			dev-java/openjdk:${SLOT}
+		)
 	)
 "
 
@@ -117,6 +142,9 @@ pkg_setup() {
 
 	if has_version --host-root dev-java/openjdk:${SLOT}; then
 		export JDK_HOME=${EPREFIX}/usr/$(get_libdir)/openjdk-${SLOT}
+	elif use !system-bootstrap ; then
+		local xpakvar="${ARCH^^}_XPAK"
+		export JDK_HOME="${WORKDIR}/openjdk-bootstrap-${!xpakvar}"
 	else
 		if [[ ${MERGE_TYPE} != "binary" ]]; then
 			JDK_HOME=$(best_version --host-root dev-java/openjdk-bin:${SLOT})
@@ -155,12 +183,12 @@ src_configure() {
 		--with-extra-cflags="${CFLAGS}"
 		--with-extra-cxxflags="${CXXFLAGS}"
 		--with-extra-ldflags="${LDFLAGS}"
-		--with-freetype=system
-		--with-giflib=system
-		--with-harfbuzz=system
-		--with-lcms=system
-		--with-libjpeg=system
-		--with-libpng=system
+		--with-freetype="${XPAK_BOOTSTRAP:-system}"
+		--with-giflib="${XPAK_BOOTSTRAP:-system}"
+		--with-harfbuzz="${XPAK_BOOTSTRAP:-system}"
+		--with-lcms="${XPAK_BOOTSTRAP:-system}"
+		--with-libjpeg="${XPAK_BOOTSTRAP:-system}"
+		--with-libpng="${XPAK_BOOTSTRAP:-system}"
 		--with-native-debug-symbols=$(usex debug internal none)
 		--with-vendor-name="Gentoo"
 		--with-vendor-url="https://gentoo.org"
@@ -170,7 +198,7 @@ src_configure() {
 		--with-version-pre=""
 		--with-version-string="${PV%_p*}"
 		--with-version-build="${PV#*_p}"
-		--with-zlib=system
+		--with-zlib="${XPAK_BOOTSTRAP:-system}"
 		--enable-dtrace=$(usex systemtap yes no)
 		--enable-headless-only=$(usex headless-awt yes no)
 		$(tc-is-clang && echo "--with-toolchain-type=clang")
@@ -190,6 +218,11 @@ src_configure() {
 		myconf+=( --enable-precompiled-headers )
 	else
 		myconf+=( --disable-precompiled-headers )
+	fi
+
+	if use !system-bootstrap ; then
+		addpredict /dev/random
+		addpredict /proc/self/coredump_filter
 	fi
 
 	(
