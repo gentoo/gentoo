@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{7..10} )
-inherit cmake-multilib python-single-r1
+inherit cmake-multilib multilib python-single-r1
 
 DESCRIPTION="Tool for tracing, analyzing, and debugging graphics APIs"
 HOMEPAGE="https://github.com/apitrace/apitrace"
