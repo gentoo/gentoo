@@ -4,7 +4,6 @@
 EAPI=7
 
 DIST_AUTHOR=CWEST
-DIST_VERSION=1.01
 inherit perl-module
 
 DESCRIPTION="Pid File Manipulation"
