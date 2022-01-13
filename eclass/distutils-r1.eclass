@@ -554,14 +554,26 @@ distutils_install_for_testing() {
 	local add_args=()
 
 	if [[ ${install_method} == venv ]]; then
-		"${EPYTHON}" -m venv --system-site-packages --without-pip \
-			"${TEST_DIR}" || die
+		# create a quasi-venv
+		mkdir -p "${TEST_DIR}"/bin || die
+		ln -s "${PYTHON}" "${TEST_DIR}/bin/${EPYTHON}" || die
+		ln -s "${EPYTHON}" "${TEST_DIR}/bin/python3" || die
+		ln -s "${EPYTHON}" "${TEST_DIR}/bin/python" || die
+		cat > "${TEST_DIR}"/pyvenv.cfg <<-EOF || die
+			include-system-site-packages = true
+		EOF
 
 		# we only do the minimal necessary subset of activate script
 		PATH=${TEST_DIR}/bin:${PATH}
 		# unset PYTHONPATH in order to prevent BUILD_DIR from overriding
 		# venv packages
 		unset PYTHONPATH
+
+		# force root-style install (note: venv adds TEST_DIR to prefixes,
+		# so we need to pass --root=/)
+		add_args=(
+			--root=/
+		)
 	else
 		local bindir=${TEST_DIR}/scripts
 		local libdir=${TEST_DIR}/lib
