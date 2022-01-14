@@ -17,8 +17,8 @@ IUSE="gssapi rdma"
 # Since the GSS option only controls some extra files to be enabled,
 # there's nothing to list in the depend string for it.
 RDEPEND="
-	dev-libs/userspace-rcu
-	rdma? ( sys-fabric/librdmacm )
+	dev-libs/userspace-rcu:=
+	rdma? ( sys-cluster/rdma-core )
 "
 DEPEND="
 	${RDEPEND}
