@@ -807,6 +807,7 @@ DOCS=( README.md AUTHORS CONTRIBUTING.md )
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.4-TestIssue5063_timeout.patch
 	"${FILESDIR}"/${PN}-1.18.4-tool_users.patch
+	"${FILESDIR}"/${PN}-1.18.5-build-out.patch
 )
 
 src_prepare() {
@@ -828,9 +829,8 @@ src_prepare() {
 }
 
 src_compile() {
-	mkdir bin || die
-	GOARCH= go run build.go -version "v${PV}" -no-upgrade -build-out=bin \
-		"${GOARCH:+-goarch="${GOARCH}"}" \
+	GOARCH= go run build.go -version "v${PV}" -no-upgrade -build-out=bin/ \
+		${GOARCH:+-goarch="${GOARCH}"} \
 		build $(usex tools "all" "") || die "build failed"
 }
 
