@@ -24,8 +24,12 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
+# NB: newer git doesn't use mock anymore
 BDEPEND="
 	app-arch/unzip
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_tests pytest
