@@ -39,9 +39,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable glade) \
-		--disable-static \
 		--enable-libtool-lock
-
 }
 
 src_install() {
