@@ -97,7 +97,7 @@ FFMPEG_FLAG_MAP=(
 FFMPEG_ENCODER_FLAG_MAP=(
 	amrenc:libvo-amrwbenc mp3:libmp3lame
 	kvazaar:libkvazaar libaom
-	openh264:libopenh264 rav1e:librav1e snappy:libsnappy theora:libtheora twolame:libtwolame
+	openh264:libopenh264 rav1e:librav1e snappy:libsnappy svt-av1:libsvtav1 theora:libtheora twolame:libtwolame
 	webp:libwebp x264:libx264 x265:libx265 xvid:libxvid
 )
 
@@ -249,6 +249,7 @@ RDEPEND="
 		gnome-base/librsvg:2=[${MULTILIB_USEDEP}]
 		x11-libs/cairo[${MULTILIB_USEDEP}]
 	)
+	svt-av1? ( >=media-libs/svt-av1-0.8.4[${MULTILIB_USEDEP}] )
 	truetype? ( >=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}] )
 	vaapi? ( >=x11-libs/libva-1.2.1-r1:0=[${MULTILIB_USEDEP}] )
 	video_cards_nvidia? ( >=media-libs/nv-codec-headers-9.1.23.1[${MULTILIB_USEDEP}] )
