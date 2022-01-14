@@ -10,9 +10,9 @@ FORTRAN_NEEDED=lapack
 
 inherit distutils-r1 flag-o-matic fortran-2 toolchain-funcs
 
-# Not ready yet
-#DOC_PV=${PV}
-DOC_PV=1.21.0
+DOC_PV=${PV}
+# For when docs aren't ready yet, set to last version
+#DOC_PV=1.22.0
 DESCRIPTION="Fast array and numerical python library"
 HOMEPAGE="https://numpy.org/"
 SRC_URI="
