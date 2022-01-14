@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ IUSE="cuda efa usnic rocr verbs"
 DEPEND="
 	rocr? ( dev-libs/rocr-runtime:= )
 	usnic? ( dev-libs/libnl:= )
-	verbs? ( sys-fabric/libibverbs:= )
+	verbs? ( sys-cluster/rdma-core )
 "
 RDEPEND="
 	${DEPEND}
