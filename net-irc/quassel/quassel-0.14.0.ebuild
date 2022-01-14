@@ -87,6 +87,10 @@ REQUIRED_USE="|| ( X server monolithic )
 	spell? ( || ( X monolithic ) )
 	syslog? ( || ( server monolithic ) )"
 
+PATCHES=(
+	"${FILESDIR}/quassel-0.14.0-cxxflags.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
