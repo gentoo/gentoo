@@ -53,6 +53,7 @@
 	<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
 	<flag name="srt">Enable support for Secure Reliable Transport (SRT) via <pkg>net-libs/srt</pkg></flag>
 	<flag name="ssh">Enable SSH/sftp support via <pkg>net-libs/libssh</pkg>.</flag>
+	<flag name="svt-av1">Enables AV1 encoding support via <pkg>media-libs/svt-av1</pkg>.</flag>
 	<flag name="twolame">Enables MP2 encoding via <pkg>media-sound/twolame</pkg> as an alternative to the internal encoder.</flag>
 	<flag name="vidstab">Enables video stabilization filter using vid.stab library (<pkg>media-libs/vidstab</pkg>).</flag>
 	<flag name="vpx">Enables VP8 and VP9 codec support using libvpx: Decoding does not require this to be enabled but libvpx can also be used for decoding; encoding requires this useflag to be enabled though.</flag>
