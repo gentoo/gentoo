@@ -18,7 +18,7 @@ SRC_URI="
 "
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND=">=virtual/jre-1.7"
 DEPEND=">=virtual/jdk-1.7"
