@@ -62,6 +62,7 @@ DEPEND="
 	x11-libs/libXtst
 	javafx? ( dev-java/openjfx:${SLOT}= )
 	|| (
+		dev-java/openjdk-bootstrap:${SLOT}
 		dev-java/openjdk-bin:${SLOT}
 		dev-java/openjdk:${SLOT}
 	)
@@ -102,10 +103,7 @@ pkg_setup() {
 	# The nastiness below is necessary while the gentoo-vm USE flag is
 	# masked. First we call java-pkg-2_pkg_setup if it looks like the
 	# flag was unmasked against one of the possible build VMs. If not,
-	# we try finding one of them in their expected locations. This would
-	# have been slightly less messy if openjdk-bin had been installed to
-	# /opt/${PN}-${SLOT} or if there was a mechanism to install a VM env
-	# file but disable it so that it would not normally be selectable.
+	# we try finding one of them in their expected locations.
 
 	local vm
 	for vm in ${JAVA_PKG_WANT_BUILD_VM}; do
@@ -115,16 +113,35 @@ pkg_setup() {
 		fi
 	done
 
-	if has_version --host-root dev-java/openjdk:${SLOT}; then
-		export JDK_HOME=${EPREFIX}/usr/$(get_libdir)/openjdk-${SLOT}
-	else
-		if [[ ${MERGE_TYPE} != "binary" ]]; then
-			JDK_HOME=$(best_version --host-root dev-java/openjdk-bin:${SLOT})
-			[[ -n ${JDK_HOME} ]] || die "Build VM not found!"
-			JDK_HOME=${JDK_HOME#*/}
-			JDK_HOME=${EPREFIX}/opt/${JDK_HOME%-r*}
-			export JDK_HOME
+	if [[ ${MERGE_TYPE} != "binary" ]]; then
+		if has_version --host-root dev-java/openjdk:${SLOT}; then
+			JDK_HOME="${EPREFIX}/usr/$(get_libdir)/openjdk-${SLOT}"
+			if [[ -x ${JDK_HOME}/bin/javac ]]; then
+				export JDK_HOME
+				einfo "Using ${PN} for build"
+				return
+			fi
+		elif has_version --host-root dev-java/openjdk-bin:${SLOT}; then
+			JDK_HOME="${EPREFIX}/opt/openjdk-bin-${SLOT}"
+			if [[ -x ${JDK_HOME}/bin/javac ]]; then
+				export JDK_HOME
+				return
+			fi
+		elif has_version --host-root dev-java/openjdk-bootstrap:${SLOT}; then
+			JDK_HOME="${EPREFIX}/opt/${PN}-bootstrap/${SLOT}"
+			if [[ -x ${JDK_HOME}/bin/javac ]]; then
+				export JDK_HOME
+				addpredict /dev/random
+				addpredict /proc/self/coredump_filter
+				if use ppc64; then
+					[[ $(tc-endian) != big ]] && die "openjdk-bootstrap is big-endian only"
+				fi
+				einfo "Using ${PN}-bootstrap for build"
+				return
+			fi
 		fi
+
+		[[ -n ${JDK_HOME} ]] && die "Could not build JDK"
 	fi
 }
 
@@ -155,12 +172,12 @@ src_configure() {
 		--with-extra-cflags="${CFLAGS}"
 		--with-extra-cxxflags="${CXXFLAGS}"
 		--with-extra-ldflags="${LDFLAGS}"
-		--with-freetype=system
-		--with-giflib=system
-		--with-harfbuzz=system
-		--with-lcms=system
-		--with-libjpeg=system
-		--with-libpng=system
+		--with-freetype="${I_KNOW_WHAT_I_AM_DOING_BOOTSTRAP:-system}"
+		--with-giflib="${I_KNOW_WHAT_I_AM_DOING_BOOTSTRAP:-system}"
+		--with-harfbuzz="${I_KNOW_WHAT_I_AM_DOING_BOOTSTRAP:-system}"
+		--with-lcms="${I_KNOW_WHAT_I_AM_DOING_BOOTSTRAP:-system}"
+		--with-libjpeg="${I_KNOW_WHAT_I_AM_DOING_BOOTSTRAP:-system}"
+		--with-libpng="${I_KNOW_WHAT_I_AM_DOING_BOOTSTRAP:-system}"
 		--with-native-debug-symbols=$(usex debug internal none)
 		--with-vendor-name="Gentoo"
 		--with-vendor-url="https://gentoo.org"
@@ -170,7 +187,7 @@ src_configure() {
 		--with-version-pre=""
 		--with-version-string="${PV%_p*}"
 		--with-version-build="${PV#*_p}"
-		--with-zlib=system
+		--with-zlib="${I_KNOW_WHAT_I_AM_DOING_BOOTSTRAP:-system}"
 		--enable-dtrace=$(usex systemtap yes no)
 		--enable-headless-only=$(usex headless-awt yes no)
 		$(tc-is-clang && echo "--with-toolchain-type=clang")
