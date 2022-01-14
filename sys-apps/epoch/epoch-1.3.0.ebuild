@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}_${PV/rc/RC}"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 arm ~x86"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~PROC_FS"
