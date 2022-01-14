@@ -36,10 +36,7 @@ LIB_DEPEND="aio? ( dev-libs/libaio[static-libs(+)] )
 	io-uring? ( sys-libs/liburing:=[static-libs(+)] )
 	numa? ( sys-process/numactl[static-libs(+)] )
 	rbd? ( sys-cluster/ceph[static-libs(+)] )
-	rdma? (
-		sys-fabric/libibverbs[static-libs(+)]
-		sys-fabric/librdmacm[static-libs(+)]
-	)
+	rdma? ( sys-cluster/rdma-core[static-libs(+)] )
 	tcmalloc? ( dev-util/google-perftools:=[static-libs(+)] )
 	zbc? ( >=sys-block/libzbc-5 )
 	zlib? ( sys-libs/zlib[static-libs(+)] )"
@@ -59,8 +56,6 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/fio-2.2.13-libmtd.patch
-	# Upstream patch, should be able to drop in the next release
-	"${FILESDIR}"/fio-3.27-drop-raw.patch
 )
 
 python_check_deps() {
