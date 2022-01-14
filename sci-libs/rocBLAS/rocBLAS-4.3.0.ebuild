@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/ROCmSoftwarePlatform/rocBLAS"
 SRC_URI="https://github.com/ROCmSoftwarePlatform/rocBLAS/archive/rocm-${PV}.tar.gz -> rocm-${P}.tar.gz
 	https://github.com/ROCmSoftwarePlatform/Tensile/archive/rocm-${PV}.tar.gz -> rocm-Tensile-${PV}.tar.gz"
 
-LICENSE="MIT"
+LICENSE="BSD"
 KEYWORDS="~amd64"
 IUSE="benchmark test"
 SLOT="0/$(ver_cut 1-2)"
@@ -46,7 +46,7 @@ S="${WORKDIR}"/${PN}-rocm-${PV}
 
 PATCHES=("${FILESDIR}"/${PN}-4.3.0-fix-glibc-2.32-and-above.patch
 	"${FILESDIR}"/${PN}-4.3.0-change-default-Tensile-library-dir.patch
-	"${FILESDIR}"/${PN}-4.3.0-link-system-blas.patch 
+	"${FILESDIR}"/${PN}-4.3.0-link-system-blas.patch
 	"${FILESDIR}"/${PN}-4.3.0-remove-problematic-test-suites.patch )
 
 src_prepare() {
