@@ -120,7 +120,7 @@ src_install() {
 	for tool in "${ED}"/usr/share/bcc/tools/*; do
 		[[ ! -x ${tool} && ! -L ${tool} || -d ${tool} ]] && continue
 		name=${tool##*/}
-		[[ -n ${rename_tools[${tool##*/}]} ]] && name=bcc-${tool}
+		[[ -n ${rename_tools[${name}]} ]] && name=bcc-${name}
 		dosym8 -r "${tool#${ED}}" /usr/sbin/${name}
 	done
 
