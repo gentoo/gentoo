@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -95,7 +95,7 @@ BDEPEND="
 QA_FLAGS_IGNORED=".*/site-packages/${PN}/${PN}.abi3.so"
 
 src_compile() {
-	maturin build $(usev !debug --release) --no-sdist || die
+	maturin build $(usev !debug --release) --no-sdist --skip-auditwheel || die
 
 	mv target/$(usex debug{,} release)/lib${PN}.so ${PN}/${PN}.abi3.so || die
 }
