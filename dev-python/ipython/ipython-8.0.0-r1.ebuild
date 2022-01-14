@@ -21,17 +21,19 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/backcall[${PYTHON_USEDEP}]
+	dev-python/black[${PYTHON_USEDEP}]
 	dev-python/decorator[${PYTHON_USEDEP}]
 	>=dev-python/jedi-0.16[${PYTHON_USEDEP}]
+	dev-python/matplotlib-inline[${PYTHON_USEDEP}]
 	>=dev-python/pexpect-4.3[${PYTHON_USEDEP}]
 	dev-python/pickleshare[${PYTHON_USEDEP}]
 	>=dev-python/prompt_toolkit-2[${PYTHON_USEDEP}]
 	<dev-python/prompt_toolkit-3.1[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
+	dev-python/stack_data[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-5.0[${PYTHON_USEDEP}]
 	matplotlib? (
 		dev-python/matplotlib[${PYTHON_USEDEP}]
-		dev-python/matplotlib-inline[${PYTHON_USEDEP}]
 	)
 "
 
@@ -39,12 +41,10 @@ BDEPEND="
 	test? (
 		app-text/dvipng[truetype]
 		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
-		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/matplotlib-inline[${PYTHON_USEDEP}]
 		dev-python/nbformat[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.19[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
-		dev-python/stack_data[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
 	)
 	doc? (
@@ -102,16 +102,17 @@ python_compile_all() {
 
 python_test() {
 	local -x IPYTHON_TESTING_TIMEOUT_SCALE=20
-	local EPYTEST_DESELECT=()
+	local EPYTEST_DESELECT=(
+		# Internet
+		IPython/core/display.py::IPython.core.display.Image.__init__
+		# TODO
+		IPython/core/tests/test_oinspect.py::test_class_signature
+		IPython/core/tests/test_oinspect.py::test_render_signature_long
+	)
 	[[ ${EPYTHON} == python3.10 ]] && EPYTEST_DESELECT+=(
 		# TODO
 		IPython/core/tests/test_completer.py::TestCompleter::test_all_completions_dups
 		IPython/core/tests/test_completer.py::TestCompleter::test_deduplicate_completions
-		IPython/core/tests/test_oinspect.py::test_pinfo_docstring_if_detail_and_no_source
-		# fails due to changed argparse output
-		IPython/core/tests/test_magic_arguments.py::test_magic_arguments
-		# py3.10 API incompat, doesn't look important
-		IPython/lib/tests/test_pretty.py::test_pprint_heap_allocated_type
 	)
 	virtx epytest
 }
