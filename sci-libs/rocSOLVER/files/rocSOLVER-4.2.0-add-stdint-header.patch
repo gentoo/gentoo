@@ -1,0 +1,12 @@
+fix compilation error rocsolver-extra-types.h:11:9: error: unknown type name 'uint32_t'
+--- a/library/include/rocsolver-extra-types.h
++++ b/library/include/rocsolver-extra-types.h
+@@ -5,6 +5,8 @@
+ #ifndef ROCSOLVER_EXTRAS_H_
+ #define ROCSOLVER_EXTRAS_H_
+ 
++#include "stdint.h"
++
+ /*! \brief Used to specify the logging layer mode using a bitwise combination
+  *of rocblas_layer_mode values.
+  ********************************************************************************/
