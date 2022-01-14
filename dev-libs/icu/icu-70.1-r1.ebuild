@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 IUSE="debug doc examples static-libs"
 
 BDEPEND="${PYTHON_DEPS}
+	sys-devel/autoconf-archive
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen[dot] )
 "
@@ -29,9 +30,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-65.1-remove-bashisms.patch"
 	"${FILESDIR}/${PN}-64.2-darwin.patch"
 	"${FILESDIR}/${PN}-68.1-nonunicode.patch"
-	# Should be in the next rleease, but check
+	# Should both be in the next release, but check
 	# https://bugs.gentoo.org/788112
 	"${FILESDIR}/${PN}-69.1-fix-ub-units.patch"
+	"${FILESDIR}/${PN}-70.1-fix-ucptrietest.patch"
 )
 
 src_prepare() {
