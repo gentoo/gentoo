@@ -33,11 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2022-01-14)
-# Possible issues with default device selection
-# https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/163
-=media-video/wireplumber-0.4.7
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-13)
 # java-package without consumers. Bug #831107. Removal in 30 days.
 dev-java/dnsjava
