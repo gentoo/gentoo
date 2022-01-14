@@ -22,6 +22,7 @@
 		<flag name='macho'>Enable macho module</flag>
 		<flag name='magic'>Enable magic module</flag>
 		<flag name='profiling'>Enable rules profiling</flag>
+		<flag name='python'>Pulls in python binding via <pkg>dev-python/yara-python</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">VirusTotal/yara</remote-id>

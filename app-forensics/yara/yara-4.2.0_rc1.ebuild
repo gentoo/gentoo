@@ -12,7 +12,7 @@ SRC_URI="https://github.com/virustotal/yara/archive/v${PV/_/-}.tar.gz -> ${P}.ta
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="+dex +dotnet +cuckoo +macho +magic profiling"
+IUSE="+dex +dotnet +cuckoo +macho +magic profiling python"
 
 DEPEND="
 	dev-libs/openssl:0=
@@ -20,6 +20,7 @@ DEPEND="
 	magic? ( sys-apps/file:0= )
 "
 RDEPEND="${DEPEND}"
+PDEPEND="python? ( =dev-python/yara-python-4* )"
 
 S="${WORKDIR}/${PN}-${PV/_/-}"
 
