@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,6 +26,7 @@ RDEPEND="!<dev-util/ragel-7.0.3"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.14.7-drop-julia-check.patch
 	"${FILESDIR}"/${PN}-0.14.7-disable-static-lib.patch
+	"${FILESDIR}"/${PN}-0.14.7-solaris.patch
 )
 
 src_prepare() {
