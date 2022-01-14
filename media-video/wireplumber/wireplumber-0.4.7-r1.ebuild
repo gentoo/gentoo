@@ -54,6 +54,10 @@ RDEPEND="${DEPEND}"
 
 DOCS=( {NEWS,README}.rst )
 
+PATCHES=(
+	"$FILESDIR"/${P}-default-nodes-handle-nodes-without-Routes.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		-Ddoc=disabled # Ebuild not wired up yet (Sphinx, Doxygen?)
