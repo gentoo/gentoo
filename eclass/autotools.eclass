@@ -332,8 +332,26 @@ eaclocal_amflags() {
 # They also force installing the support files for safety.
 # Respects AT_M4DIR for additional directories to search for macros.
 eaclocal() {
+	# Feed in a list of paths:
+	# - ${BROOT}/usr/share/aclocal
+	# - ${ESYSROOT}/usr/share/aclocal
+	# See bug #677002
+	if [[ ${EAPI} != [56] ]] ; then
+		if [[ ! -f "${T}"/aclocal/dirlist ]] ; then
+			mkdir "${T}"/aclocal || die
+			cat <<- EOF > "${T}"/aclocal/dirlist || die
+				${BROOT}/usr/share/aclocal
+				${ESYSROOT}/usr/share/aclocal
+			EOF
+		fi
+
+		local system_acdir=" --system-acdir=${T}/aclocal"
+	else
+		local system_acdir=""
+	fi
+
 	[[ ! -f aclocal.m4 || -n $(grep -e 'generated.*by aclocal' aclocal.m4) ]] && \
-		autotools_run_tool --at-m4flags aclocal "$@" $(eaclocal_amflags)
+		autotools_run_tool --at-m4flags aclocal "$@" $(eaclocal_amflags) ${system_acdir}
 }
 
 # @FUNCTION: _elibtoolize
