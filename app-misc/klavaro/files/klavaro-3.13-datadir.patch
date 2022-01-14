@@ -1,0 +1,13 @@
+diff --git a/data/Makefile.am b/data/Makefile.am
+index 727d2e21dced..ee6ba6f8d70b 100644
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -185,7 +185,7 @@ desktopdir = $(datarootdir)/applications
+ desktop_in_file = klavaro.desktop.in
+ desktop_DATA = $(desktop_in_file:.desktop.in=.desktop)
+ @INTLTOOL_XML_RULE@
+-appdatadir = $(datarootdir)/appdata
++appdatadir = $(datarootdir)/metainfo
+ appdata_in_files = klavaro.appdata.xml.in
+ appdata_DATA = $(appdata_in_files:.xml.in=.xml)
+ DISTCLEANFILES = $(desktop_DATA) \
