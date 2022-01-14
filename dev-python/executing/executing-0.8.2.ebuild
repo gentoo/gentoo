@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 
 # asttokens is optional runtime dep
 BDEPEND="
