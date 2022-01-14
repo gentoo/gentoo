@@ -27,7 +27,6 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.2_makefile-liblist-automagic.patch
 	"${FILESDIR}"/${PN}-4.1.0_install-perms.patch
-	"${FILESDIR}"/${PN}-4.2.4_makefile-toolchain-vars.patch
 )
 
 src_prepare() {
