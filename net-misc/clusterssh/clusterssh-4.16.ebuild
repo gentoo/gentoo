@@ -16,7 +16,7 @@ else
 	#DIST_VERSION="$(ver_cut 1-2)"
 	#die "|$(ver_cut 1-2)_$(ver_cut 3)|"
 
-	KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 fi
 
 inherit perl-module
