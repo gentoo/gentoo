@@ -1,4 +1,4 @@
-default/linux/amd64/17.1/systemd
+default/linux/amd64/17.1/hardened/selinux
 
 The amd64 17.1 profiles switch to a more standard 'no SYMLINK_LIB' 
 multilib layout, and require an explicit migration. The migration is
