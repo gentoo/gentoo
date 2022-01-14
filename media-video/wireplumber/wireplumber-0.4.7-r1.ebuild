@@ -55,7 +55,7 @@ RDEPEND="${DEPEND}"
 DOCS=( {NEWS,README}.rst )
 
 PATCHES=(
-	"$FILESDIR"/${P}-default-nodes-handle-nodes-without-Routes.patch
+	"${FILESDIR}"/${P}-default-nodes-handle-nodes-without-Routes.patch
 )
 
 src_configure() {
