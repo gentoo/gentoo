@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,6 +27,8 @@ DEPEND="${RDEPEND}
 	dev-ml/topkg
 	test? ( dev-ml/mtime )
 "
+
+QA_FLAGS_IGNORED='.*'
 
 src_compile() {
 	ocaml pkg/pkg.ml build --tests $(usex test true false) || die
