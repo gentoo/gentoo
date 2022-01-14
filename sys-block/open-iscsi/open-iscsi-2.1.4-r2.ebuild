@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ DEPEND="
 	sys-apps/kmod
 	sys-block/open-isns:=
 	sys-kernel/linux-headers
-	infiniband? ( sys-fabric/ofed )
+	infiniband? ( sys-cluster/rdma-core )
 	dev-libs/openssl:0=
 	systemd? ( sys-apps/systemd )
 "
