@@ -54,6 +54,14 @@
      } else if (!strcasecmp(argv[arg], "-buttonmap")) {
        if (++arg >= argc) Usage();
        button = atoi(argv[arg]);
+@@ -842,6 +842,7 @@ static void Usage()
+   printf("       -completeregionup <COORDINATE>\n");
+   printf("       -completeregionlow <COORDINATE>\n");
+   printf("       -struts\n");
++  printf("       -keymap <FROM-KEYSYM> <TO-KEYSYM>\n");
+ #ifdef WIN_2_X
+   printf("       -offset [-]<pixel offset of \"to\">\n");
+   printf("WIN_2_X build allows Windows or X as -from display\n");
 @@ -2200,6 +2224,7 @@ XKeyEvent *pEv;
    PSHADOW   pShadow;
    Bool      bPress;
@@ -78,3 +86,30 @@
    /* If CapsLock is on, we need to do some funny business to make sure the */
    /* "to" display does the right thing */
    if(doCapsLkHack && (pEv->state & 0x2))
+
+--- a./x2x.1
++++ b./x2x.1
+@@ -309,6 +309,12 @@ Describes uppermost coordinate of complete rectangle region in from-display.
+ .B \-completeregionlow
+ .IP
+ Describes lowermost coordinate of complete rectangle region in from-display.
++.TP
++.B \-keymap \fIfrom-keysym\fP \fIto-keysym\fP
++.IP
++Translates the \fIfrom-keysym\fP keysym of the first X to \fIto-keysym\fP of the second X.
++See X11/keysymdef.h for available keysyms.
++Alternatively you can use setxkbmap, as described in the BUGS section.
+ .SH EXAMPLES
+ Calling the system whose keyboard is to be used "primary" and the
+ other system "secondary", you need to specify either \-from
+@@ -329,6 +333,10 @@ secondary $ ssh \-X primary x2x \-from :0 \-west
+ run directly indirectly on primary:
+ .IP
+ primary $ ssh \-A secondary env DISPLAY=:0.0 ssh \-X primary x2x \-from :0 \-east
++.TP
++set a custom keymap binding:
++.IP
++x2x -keymap ISO_Level3_Shift Mode_switch
+ 
+ .RE
+ If your primary display is configured with several monitors having different
