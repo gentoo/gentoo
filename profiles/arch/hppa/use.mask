@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -255,10 +255,6 @@ ieee1394
 # Guy Martin <gmsoft@gentoo.org> (2005-06-25)
 # mono is not yet supported on hppa
 mono
-
-# Guy Martin <gmsoft@gentoo.org> (2005-02-18)
-# No emboss support on hppa for now
-emboss
 
 # Guy Martin <gmsoft@gentoo.org> (2004-08-08)
 # Wifi stuff not test yet because of lack of hardware
