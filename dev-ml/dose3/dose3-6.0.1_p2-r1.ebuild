@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-$(ver_cut 1-3)"
 LICENSE="LGPL-3"
 SLOT="0/${PV}"
 KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
-IUSE="+ocamlopt test"
+IUSE="+ocamlopt"
 
 BDEPEND="
 	dev-ml/findlib
@@ -34,9 +34,7 @@ RDEPEND="
 	dev-ml/xml-light:=[ocamlopt=]
 	app-arch/rpm
 "
-DEPEND="${RDEPEND}
-	test? ( dev-python/pyyaml[libyaml(+)] )
-"
+DEPEND="${RDEPEND}"
 
 # missing test data
 RESTRICT="test"
