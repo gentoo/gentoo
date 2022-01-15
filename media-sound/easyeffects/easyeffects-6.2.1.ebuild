@@ -30,7 +30,7 @@ DEPEND="dev-cpp/nlohmann_json
 	dev-libs/libfmt
 	>=dev-libs/libsigc++-3.0.6:3
 	>=gui-libs/gtk-4.2.1:4
-	gui-libs/libadwaita
+	gui-libs/libadwaita:1
 	media-libs/libbs2b
 	>=media-libs/libebur128-1.2.0
 	media-libs/libsndfile
