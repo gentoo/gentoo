@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ HOMEPAGE="https://www.libvirt.org/ https://gitlab.com/libvirt/libvirt/"
 LICENSE="LGPL-2.1"
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/libvirt.org.asc
 IUSE="
-	apparmor audit bash-completion +caps dtrace firewalld fuse glusterfs
+	apparmor audit +caps dtrace firewalld fuse glusterfs
 	iscsi iscsi-direct +libvirtd lvm libssh lxc nfs nls numa openvz
 	parted pcap policykit +qemu rbd sasl selinux +udev
 	virtualbox +virt-network wireshark-plugins xen zfs
@@ -48,7 +48,6 @@ BDEPEND="
 	dev-perl/XML-XPath
 	dev-python/docutils
 	virtual/pkgconfig
-	bash-completion? ( >=app-shells/bash-completion-2.0 )
 	verify-sig? ( sec-keys/openpgp-keys-libvirt )"
 
 # gettext.sh command is used by the libvirt command wrappers, and it's
@@ -279,6 +278,9 @@ src_configure() {
 		--localstatedir="${EPREFIX}/var"
 		-Drunstatedir="${EPREFIX}/run"
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
+
+		-Dbash_completion=enabled
+		-Dbash_completion_dir="$(get_bashcompdir)"
 	)
 
 	meson_src_configure
