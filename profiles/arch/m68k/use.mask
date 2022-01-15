@@ -4,6 +4,11 @@
 # Unmask the flag which corresponds to ARCH.
 -m68k
 
+# James Le Cuirot <chewi@gentoo.org> (2022-01-15)
+# Most of the PostgreSQL tests pass on m68k, but some fail and some hang. I
+# suggest you put your data elsewhere.
+postgres
+
 # James Le Cuirot <chewi@gentoo.org> (2022-01-09)
 # Although Wayland could possibly work in a limited manner, Mesa is required for
 # most things, and that isn't working on m68k.
