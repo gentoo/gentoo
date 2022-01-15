@@ -60,27 +60,19 @@ net-misc/unison gtk
 sci-mathematics/z3 java
 media-libs/portmidi java
 
-# Mart Raudsepp <leio@gentoo.org> (2019-08-27)
-# Missing stable net-libs/webkit-gtk
-dev-util/glade webkit
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-10)
 # Needs kde-frameworks/{kwallet,ki18n,kconfig} stable
 dev-vcs/subversion kwallet
 net-libs/libproxy kde
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-10)
-# Needs kde-plasma/{polkit-kde-agent,plasma-workspace stable
+# Needs kde-plasma/{polkit-kde-agent,plasma-workspace} stable
 sys-auth/polkit kde
 virtual/notification-daemon kde
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-11-04)
 # media-libs/libmtp stabilisation timeout, bug #661162
 gnome-base/gvfs mtp
-
-# Ulrich Müller <ulm@gentoo.org> (2018-08-09)
-# Needs net-libs/webkit-gtk which is not stable, bug #663248
-app-editors/emacs xwidgets
 
 # Akinori Hattori <hattya@gentoo.org> (2018-06-23)
 # No stable Java
@@ -157,11 +149,6 @@ net-misc/networkmanager teamd
 # Missing stable, bug #529462
 media-gfx/graphviz java
 
-# Markus Meier <maekke@gentoo.org> (2015-07-30)
-# Missing stable
-x11-libs/wxGTK webkit
-dev-python/wxpython webkit
-
 # Markus Meier <maekke@gentoo.org> (2015-07-19)
 # Missing stable
 media-libs/gegl umfpack
@@ -171,7 +158,5 @@ media-libs/gegl umfpack
 net-misc/connman l2tp pptp
 
 # Pacho Ramos <pacho@gentoo.org> (2014-07-02)
-# Mask due Gnome3 not going to be stabilized on this arch
-gnome-base/gvfs google
-net-libs/libproxy webkit
+# net-libs/rest is not stable on arm yet
 >=x11-libs/gtk+-3.12.2 cloudprint
