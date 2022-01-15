@@ -234,6 +234,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-97-arm64-mte-clang.patch"
 		"${FILESDIR}/chromium-97-fix-tag-dragging.patch"
 		"${FILESDIR}/chromium-97-fix-tag-dragging-i3.patch"
+		"${FILESDIR}/chromium-97-arm-tflite-cast.patch"
 		"${FILESDIR}/chromium-glibc-2.34.patch"
 		"${FILESDIR}/chromium-use-oauth2-client-switches-as-default.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
