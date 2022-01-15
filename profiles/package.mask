@@ -32,7 +32,6 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
-<<<<<<< HEAD
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-15)
 # Last branch update happened ~ 12 month ago.
@@ -44,9 +43,6 @@
 ~sys-fs/zfs-0.8.6
 ~sys-fs/zfs-kmod-0.8.6
 
-||||||| parent of 8b4d5f684a22 (profiles: Mask dev-db/oracle-instantclient-* for removal)
-=======
-
 # Marco Genasci <fedeliallalinea@gmail.com> (2022-01-15)
 # Removed in favor of unified package dev-db/oracle-instantclient
 # Removal on 2022-02-15. Bug #589146
@@ -55,7 +51,6 @@ dev-db/oracle-instantclient-jdbc
 dev-db/oracle-instantclient-odbc
 dev-db/oracle-instantclient-sqlplus
 
->>>>>>> 8b4d5f684a22 (profiles: Mask dev-db/oracle-instantclient-* for removal)
 # Ulrich Müller <ulm@gentoo.org> (2022-01-15)
 # Pretest versions, masked for testing.
 <app-editors/emacs-28.0.9999:28-vcs
