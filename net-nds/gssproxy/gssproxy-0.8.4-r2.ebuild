@@ -82,7 +82,10 @@ src_install() {
 	newins examples/mech gssproxy.conf
 
 	keepdir /var/lib/gssproxy
+	keepdir /var/lib/gssproxy/clients
 	keepdir /var/lib/gssproxy/rcache
+	fperms 0700 /var/lib/gssproxy/clients
+	fperms 0700 /var/lib/gssproxy/rcache
 
 	# The build installs a bunch of empty dirs, so prune them.
 	find "${ED}" -depth -type d -empty -delete || die
