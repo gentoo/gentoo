@@ -105,7 +105,6 @@ src_configure() {
 		-DUSE_FREEIMAGE=$(usex freeimage)
 		-DUSE_FREETYPE=ON
 		-DUSE_GLES2=$(usex gles2)
-		-DUSE_OPENGL=$(usex !gles2)
 		# no package in tree
 		-DUSE_OPENVR=OFF
 		-DUSE_RAPIDJSON=$(usex json)
