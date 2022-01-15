@@ -250,10 +250,6 @@ app-metrics/collectd -collectd_plugins_mqtt
 # Cannot test non-free dependency dev-libs/device-atlas-api-c
 net-proxy/haproxy device-atlas
 
-# Alon Bar-Lev <alonbl@gentoo.org> (2017-03-10)
-# net-firewall/ipset is not available on arm
-net-firewall/firehol ipset
-
 # Christoph Junghans <junghans@gentoo.org> (2017-02-05)
 # Mask some fabrics
 sys-cluster/openmpi java openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
@@ -389,9 +385,8 @@ mail-filter/opendkim opendbx stats
 >=media-sound/easytag-2.2.0 opus test
 
 # Yixun Lan <dlan@gentoo.org> (2014-04-12)
-# app-emulation/qemu is not keyworded on arm arch.
 # app-text/pandoc is not keyworded on arm arch.
-app-emulation/xen-tools system-qemu doc
+app-emulation/xen-tools doc
 
 # Markus Meier <maekke@gentoo.org> (2013-12-26)
 # Unkeyworded deps, bug #488724
@@ -458,10 +453,6 @@ x11-misc/colord argyllcms extra-print-profiles
 # requires app-office/unoconv, which requires virtual/ooo, which is not
 # keyworded here. Remove mask if this situation changes.
 gnome-extra/sushi office
-
-# Markus Meier <maekke@gentoo.org> (2012-Dez-25)
-# unkeyworded deps for app-accessibility/speech-dispatcher
-app-accessibility/speech-dispatcher flite
 
 # Markus Meier <maekke@gentoo.org> (2012-12-08)
 # mask app-office/libreoffice java extensions
