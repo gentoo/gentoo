@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -82,6 +82,7 @@ src_install() {
 	newins examples/mech gssproxy.conf
 
 	keepdir /var/lib/gssproxy
+	keepdir /var/lib/gssproxy/rcache
 
 	# The build installs a bunch of empty dirs, so prune them.
 	find "${ED}" -depth -type d -empty -delete || die
