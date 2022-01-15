@@ -24,6 +24,18 @@ RDEPEND="
 
 DOCS=( CREDITS README.md BUGS CHANGES TODO doc/README.patents )
 
+src_prepare() {
+	default
+	sed -e 's:/var/run/:/run/:' -i \
+		file.h \
+		l2tp.h \
+		xl2tpd-control.c \
+		doc/l2tp-secrets.5 \
+		doc/xl2tpd.8 \
+		doc/xl2tpd.conf.5 \
+		|| die "Error updating /var/run to /run"
+}
+
 src_compile() {
 	tc-export CC
 	local OSFLAGS="-DLINUX"
