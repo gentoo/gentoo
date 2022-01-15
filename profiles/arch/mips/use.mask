@@ -173,24 +173,8 @@ gphoto2
 diet
 
 # Stephen P. Becker <geoman@gentoo.org>
-# masked because it hoses xchat on 64-bit machines
-xosd
-
-# Stephen P. Becker <geoman@gentoo.org>
 # masked for now until this can be properly tested with alsa
 jack
-
-# Stephen P. Becker <geoman@gentoo.org>
-# masked because of silly java deps with gnome (we have no jre on mips)
-accessibility
-
-# Stephen P. Becker <geoman@gentoo.org>
-# masked because I say so, gnome--
-pda
-
-# Stephen P. Becker <geoman@gentoo.org>
-# masked because gaim sucks
-evo
 
 # Paul de Vrieze <pauldv@gentoo.org>
 # There is no java in this profile (if there is it must be available). Without
