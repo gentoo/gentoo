@@ -117,6 +117,7 @@ pkg_setup() {
 
 src_prepare() {
 	local PATCHES=(
+		"${FILESDIR}/249.9-cross-compile.patch"
 	)
 	use elibc_musl && PATCHES+=( "${WORKDIR}"/musl-patches )
 
