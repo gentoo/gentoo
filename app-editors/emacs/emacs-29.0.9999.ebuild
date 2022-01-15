@@ -228,7 +228,7 @@ src_configure() {
 		einfo "Configuring to build with Nextstep (Macintosh Cocoa) support"
 		myconf+=" --with-ns --disable-ns-self-contained"
 		myconf+=" --without-x --without-pgtk"
-	elif use gtk || ! use X; then
+	elif use gtk && ! use X; then
 		einfo "Configuring to build with pure GTK (without X11) support"
 		myconf+=" --with-pgtk --without-x --without-ns"
 		myconf+=" $(use_with gconf)"
