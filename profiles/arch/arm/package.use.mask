@@ -208,10 +208,6 @@ net-libs/gnutls test-full
 # Moved from use.mask since they are flags local to one package.
 media-tv/tvheadend hdhomerun
 
-# Michał Górny <mgorny@gentoo.org> (2017-11-29)
-# All current clang versions are broken on ARM.
-app-doc/doxygen clang
-
 # Patrice Clement <monsieurp@gentoo.org> (2017-09-24)
 # Unmask Raspberry Pi support on arm.
 media-video/mpv -raspberry-pi
