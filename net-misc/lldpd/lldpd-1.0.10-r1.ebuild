@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ LICENSE="ISC"
 SLOT="0/4.9.0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cdp doc +dot1 +dot3 edp fdp graph +lldpmed old-kernel sanitizers
-	seccomp sonmp snmp static-libs test readline xml zsh-completion"
+	seccomp sonmp snmp static-libs test readline xml"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -25,7 +25,6 @@ RDEPEND="
 	seccomp? ( sys-libs/libseccomp:= )
 	snmp? ( net-analyzer/net-snmp:=[extensible(+)] )
 	xml? ( dev-libs/libxml2:= )
-	zsh-completion? ( app-shells/zsh )
 "
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
