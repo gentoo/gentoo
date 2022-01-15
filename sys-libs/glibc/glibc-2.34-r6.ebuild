@@ -181,6 +181,12 @@ XFAIL_TEST_LIST=(
 	# https://sourceware.org/PR19329
 	# https://bugs.gentoo.org/719674#c12
 	tst-stack4
+
+	# The following tests fail only inside portage
+	# https://bugs.gentoo.org/831267
+	tst-system
+	tst-strerror
+	tst-strsignal
 )
 
 #
