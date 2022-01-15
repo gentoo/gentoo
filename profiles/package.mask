@@ -32,6 +32,9 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+# Ulrich Müller <ulm@gentoo.org> (2022-01-15)
+# Pretest versions, masked for testing.
+<app-editors/emacs-28.0.9999:28-vcs
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-13)
 # java-package without consumers. Bug #831107. Removal in 30 days.
