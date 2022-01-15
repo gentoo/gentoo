@@ -54,6 +54,7 @@ QA_EXECSTACK="usr/lib/systemd/boot/efi/*"
 
 PATCHES=(
 	"${FILESDIR}/249-libshared-static.patch"
+	"${FILESDIR}/249.9-cross-compile.patch"
 )
 
 src_configure() {
