@@ -58,7 +58,7 @@ src_configure() {
 }
 
 src_test() {
-	virtx "${BUILD_DIR}/tests/${PN}_test"
+	virtx "${BUILD_DIR}/tests/${PN}_test" || die
 }
 
 pkg_postinst() {
