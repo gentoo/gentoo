@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools optfeature
+inherit autotools optfeature xdg-utils
 
 DESCRIPTION="Another free touch typing tutor program"
 HOMEPAGE="https://klavaro.sourceforge.net/"
@@ -41,5 +41,10 @@ src_prepare() {
 }
 
 pkg_postinst() {
+	xdg_icon_cache_update
 	optfeature "instructions via synthesized speech" app-accessibility/espeak
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
