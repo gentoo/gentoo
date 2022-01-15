@@ -134,10 +134,6 @@ dev-python/pyopengl test
 # dev-libs/criterion not yet keyworded
 >=app-admin/syslog-ng-3.25 test
 
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
-# Not keyworded on hppa
-net-misc/whois xcrypt
-
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-18)
 # nagios and icinga not stable on hppa
 sys-libs/freeipmi nagios
