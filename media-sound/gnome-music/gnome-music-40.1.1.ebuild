@@ -53,6 +53,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+RESTRICT="test" # only does desktop and appdata validation, and latter needs network to validate screenshot from https
+
 pkg_setup() {
 	python_setup
 }
