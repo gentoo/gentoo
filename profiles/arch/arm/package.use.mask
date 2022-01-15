@@ -387,10 +387,6 @@ net-im/telepathy-connection-managers sipe
 # Missing keywords, bug #478254
 gnome-base/gnome classic extras
 
-# Markus Meier <maekke@gentoo.org> (2013-09-15)
-# Unkeyworded deps, bug #481462
-dev-python/ipython nbconvert
-
 # Sergey Popov <pinkbyte@gentoo.org> (2013-09-06)
 # sci-libs/hdf does not build properly on arm
 dev-perl/PDL hdf

@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-01-15)
+# dev-python/nbconvert not yet marked stable on arm
+dev-python/ipython nbconvert
+
+# Sam James <sam@gentoo.org> (2022-01-15)
 # dev-libs/criterion is not marked stable yet
 app-admin/syslog-ng test
 
