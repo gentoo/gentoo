@@ -16,7 +16,9 @@ IUSE=""
 S="${WORKDIR}/systemd-${PV}"
 
 RDEPEND=">=sys-apps/systemd-217:="
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
+	app-arch/xz-utils:0
 	dev-util/gperf
 	>=dev-util/intltool-0.50
 	>=sys-apps/coreutils-8.16
