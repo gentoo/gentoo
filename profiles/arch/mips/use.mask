@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -167,10 +167,6 @@ scanner
 # Hardave Riar <hardave@gentoo.org>
 # This should work, someone with a usb card and digital camera should test it
 gphoto2
-
-# Ciaran McCreesh <ciaranm@gentoo.org>
-# unresolved dep, bug #82428
-emboss
 
 # Joshua Kinard <kumba@gentoo.org>
 # dietlibc isn't known to work on mips
