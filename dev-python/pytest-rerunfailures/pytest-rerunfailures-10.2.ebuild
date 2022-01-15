@@ -17,7 +17,15 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 s
 
 BDEPEND="
 	>=dev-python/pytest-5.0[${PYTHON_USEDEP}]
-	test? ( !!dev-python/flaky )
 "
 
 distutils_enable_tests pytest
+
+python_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	local -x PYTEST_PLUGINS=pytest_rerunfailures
+	if has_version "dev-python/pytest-xdist[${PYTHON_USEDEP}]"; then
+		PYTEST_PLUGINS+=,xdist.plugin
+	fi
+	epytest
+}
