@@ -1,17 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
 
-inherit cmake python-single-r1
+PYTHON_COMPAT=( python3_{8..10} )
+inherit cmake python-any-r1
 
-DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
-HOMEPAGE="https://www.gnuradio.org/"
-LICENSE="GPL-3"
+DESCRIPTION="Compact LMS7002M library suitable for resource-limited MCUs"
+HOMEPAGE="https://github.com/xtrx-sdr/liblms7002m"
+LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 
-if [[ ${PV} =~ "9999" ]]; then
+if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/xtrx-sdr/liblms7002m.git"
 	inherit git-r3
 else
@@ -21,12 +21,15 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-IUSE=""
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+BDEPEND="
+	$(python_gen_any_dep '
+		dev-python/cheetah3[${PYTHON_USEDEP}]
+	')
+"
 
-RDEPEND="${PYTHON_DEPS}
-		$(python_gen_cond_dep 'dev-python/cheetah3[${PYTHON_USEDEP}]')"
-DEPEND="${RDEPEND}"
+python_check_deps() {
+	has_version "dev-python/cheetah3[${PYTHON_USEDEP}]"
+}
 
 src_configure() {
 	mycmakeargs=(
