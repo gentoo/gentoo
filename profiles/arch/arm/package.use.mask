@@ -144,17 +144,9 @@ dev-python/pbr test
 # anymore, bug #692802
 net-libs/gnome-online-accounts gnome
 
-# Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
-# Not keyworded on arm
-net-misc/whois xcrypt
-
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-04)
 # zfs is not keyworded on arm
 dev-util/schroot zfs
-
-# Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
-# dev-libs/criterion is not keyworded yet
-app-admin/syslog-ng test
 
 # Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
 # PPS should work on all arches, but only keyworded on some arches
@@ -425,10 +417,6 @@ dev-python/ipython nbconvert
 # Sergey Popov <pinkbyte@gentoo.org> (2013-09-06)
 # sci-libs/hdf does not build properly on arm
 dev-perl/PDL hdf
-
-# Michael Weber <xmw@gentoo.org> (2013-08-23)
-# Unkeyworded deps
-media-gfx/fim graphicsmagick svg
 
 # Markus Meier <maekke@gentoo.org> (2013-08-04)
 # Unkeyworded deps, bug #474026
