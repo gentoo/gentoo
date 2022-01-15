@@ -71,10 +71,6 @@ dev-python/pbr test
 # tests optionally depend on dev-python/hypothesis
 dev-python/numpy test
 
-# Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
-# Not keyworded on ppc
-net-misc/whois xcrypt
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-19)
 # Unsupported on ppc/ppc64
 www-client/chromium widevine

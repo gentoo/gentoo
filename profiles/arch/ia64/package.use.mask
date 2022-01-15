@@ -125,10 +125,6 @@ media-gfx/inkscape cdr visio
 # Requires media-libs/mesa[llvm], which is masked.
 dev-python/pyopengl test
 
-# Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
-# Not keyworded on ia64
-net-misc/whois xcrypt
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-04-20)
 # dev-lang/ruby is not keyworded (a dep)
 app-text/texlive context l10n_ja
