@@ -71,15 +71,6 @@ app-emulation/qemu smartcard rbd xen virgl
 app-emulation/qemu glusterfs io-uring
 app-emulation/spice smartcard
 
-# Sam James <sam@gentoo.org> (2020-07-30)
-# glslang is not yet stable on arm64
-media-libs/mesa vulkan-overlay
-
-# Sam James <sam@gentoo.org> (2020-07-16)
-# Needs unstable dev-python/networkx
-# bug #732492
-app-portage/nattka depgraph-order
-
 # Sam James <sam@gentoo.org> (2020-06-29)
 # Deps not yet stable
 dev-python/pymongo test
