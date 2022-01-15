@@ -82,6 +82,12 @@ sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 sys-libs/compiler-rt-sanitizers -gwp-asan
 sys-libs/compiler-rt-sanitizers -profile
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-10-06)
+# - aesni plugin is supported on x86
+# - rdrand plugin is supported on x86
+# - padlock plugin is supported on x86
+net-vpn/strongswan -strongswan_plugins_aesni -strongswan_plugins_rdrand -strongswan_plugins_padlock
+
 # Sam James <sam@gentoo.org> (2020-10-05)
 # Guile only supports JIT on some arches
 # (See 9.3.8 in the Guile manual)
@@ -206,11 +212,9 @@ app-admin/conserver -freeipmi
 # No Spice protocol for x86
 app-emulation/nemu spice
 
-# Thomas Deutschmann <whissi@gentoo.org> (2020-10-06)
-# - aesni plugin is supported on x86
-# - rdrand plugin is supported on x86
-# - padlock plugin is supported on x86
-net-vpn/strongswan -strongswan_plugins_aesni -strongswan_plugins_rdrand -strongswan_plugins_padlock
+# Tomáš Mózes <hydrapolic@gmail.com> (2019-11-02)
+# Requires dev-db/mongodb which has dropped x86 support
+dev-php/pecl-mongodb test
 
 # Alexys Jacob <ultrabug@gentoo.org> (2018-11-05)
 # Requires dev-db/mongodb which has dropped x86 support
@@ -338,7 +342,7 @@ media-libs/libmikmod cpu_flags_x86_sse2
 
 # Sergey Popov <pinkbyte@gentoo.org> (2013-12-27)
 # Boost.Context can be built on x86
-dev-libs/boost	-context
+dev-libs/boost -context
 
 # Tim Harder <radhermit@gentoo.org> (2013-08-13)
 # dev-lang/luajit keyworded for x86 (masked in base)
@@ -370,7 +374,7 @@ gnustep-base/gnustep-make -libobjc2
 # Doug Goldstein <cardoe@gentoo.org> (2012-01-17)
 # The SPICE server is only supported on 64-bit platforms and not on 32-bit
 # https://lists.freedesktop.org/archives/spice-devel/2015-September/021846.html
-app-emulation/qemu	spice
+app-emulation/qemu spice
 
 # Samuli Suominen <ssuominen@gentoo.org> (2011-12-06)
 # NuppelVideo support is x86 only
@@ -405,7 +409,3 @@ media-gfx/iscan -X
 
 # Steve Dibb <beandog@gentoo.org> (2008-09-29)
 media-video/mplayer -cpudetection
-
-# Tomáš Mózes <hydrapolic@gmail.com> (2019-11-02)
-# Requires dev-db/mongodb which has dropped x86 support
-dev-php/pecl-mongodb test
