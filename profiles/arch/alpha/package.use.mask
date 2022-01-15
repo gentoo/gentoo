@@ -175,10 +175,6 @@ net-libs/gnome-online-accounts gnome
 # Requires media-libs/mesa[llvm], which is masked.
 dev-python/pyopengl test
 
-# Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
-# Not keyworded on alpha
-net-misc/whois xcrypt
-
 # Matt Turner <mattst88@gentoo.org> (2020-03-17)
 # Requires an insane (and always growing) number of ruby deps
 sys-block/thin-provisioning-tools test

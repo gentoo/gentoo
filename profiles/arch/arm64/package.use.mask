@@ -175,10 +175,6 @@ lxqt-base/lxqt-meta archiver
 # static-pie works on arm64, #719444
 sys-libs/glibc -static-pie
 
-# Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
-# Not keyworded on arm64
-net-misc/whois xcrypt
-
 # Patrick McLean <chutzpah@gentoo.org> (2019-03-26)
 # Some test deps aren't keyworded on arm64
 dev-python/kazoo test
