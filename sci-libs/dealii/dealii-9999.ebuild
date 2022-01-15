@@ -43,7 +43,7 @@ REQUIRED_USE="
 # FIXME: The opencascade-7.5.1 ebuild uses a new file system layout where
 # the names of the correct include and library directories are not easily
 # accessible. Just fix the version for the time being.
-CAS_VERSION=7.5.3
+CAS_VERSION=7.6.0
 
 RDEPEND="dev-libs/boost:=
 	app-arch/bzip2
