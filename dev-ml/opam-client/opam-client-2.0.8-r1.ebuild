@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,8 @@ S="${WORKDIR}/opam-${PV/_/-}"
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
-IUSE="+ocamlopt"
+IUSE="+ocamlopt test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-ml/cmdliner:=
@@ -24,6 +25,7 @@ RDEPEND="
 	dev-ml/re:=
 "
 DEPEND="${RDEPEND}"
+BDEPEND="test? ( sys-apps/bubblewrap )"
 
 # Cherry-picked from https://deb.debian.org/debian/pool/main/o/opam/opam_2.0.8-1.debian.tar.xz
 PATCHES=( "${FILESDIR}/debian-Port-to-Dose3-6.0.1.patch" )
