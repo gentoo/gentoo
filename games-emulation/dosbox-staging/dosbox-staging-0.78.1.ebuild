@@ -35,6 +35,8 @@ BDEPEND="test? ( dev-cpp/gtest )"
 
 DOCS=( AUTHORS README THANKS )
 
+PATCHES=( "${FILESDIR}"/${P}-musl.patch )
+
 src_prepare() {
 	default
 
