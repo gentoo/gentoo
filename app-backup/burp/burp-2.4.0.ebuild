@@ -22,6 +22,7 @@ COMMON_DEPEND="acct-group/burp
 	dev-libs/openssl:0=
 	net-libs/librsync:=
 	sys-libs/ncurses:0=
+	sys-libs/libcap
 	sys-libs/zlib
 	virtual/libcrypt:=
 	acl? ( sys-apps/acl )
