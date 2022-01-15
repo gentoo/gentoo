@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -57,46 +57,6 @@ RDEPEND+="
 	!sys-apps/mktemp
 	!<app-forensics/tct-1.18-r1
 	!<net-fs/netatalk-2.0.3-r4"
-
-pkg_pretend() {
-	if has_version "<sys-fs/zfs-9999" && grep -q zfs <(lsmod 2>/dev/null) ; then
-		einfo "Checking for running ZFS module version"
-
-		local kmodv minver
-		kmodv="$(grep kmod <(zfs -V 2>/dev/null))"
-		# Convert zfs-kmod-2.1.1-r3-gentoo -> 2.1.1-r3
-		kmodv="${kmodv//zfs-kmod-}"
-		kmodv="${kmodv%%-gentoo}"
-
-		minver="$(ver_cut 2 ${kmodv})"
-		local diemsg=$(cat <<-EOF
-			Attempted installation of ${P} on unsupported version of zfs-kmod!
-			Please reboot to a newer version of zfs-kmod first:
-			zfs-kmod >=2.0.7 or zfs-kmod >=2.1.1-r3
-			Using ${P} with running version of zfs-kmod of can
-			lead to data loss while using cp command on some configurations.
-			See https://github.com/openzfs/zfs/issues/11900 for details.
-		EOF
-		)
-
-		case "${minver}" in
-			# 2.0.x
-			0)
-				ver_test "${kmodv}" -lt 2.0.7 && die "${diemsg}"
-				;;
-			# 2.1.x
-			1)
-				ver_test "${kmodv}" -lt 2.1.1-r3 && die "${diemsg}"
-				;;
-			# 0.8.x/9999
-			*)
-				# We can't really cover this case realistically
-				# 9999 is too hard to check and 0.8.x isn't being supported anymore.
-				;;
-		esac
-	fi
-
-}
 
 pkg_setup() {
 	if use test ; then
