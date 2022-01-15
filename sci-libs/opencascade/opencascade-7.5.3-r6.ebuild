@@ -88,15 +88,20 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_DOC_Overview=$(usex doc)
 		-DBUILD_Inspector=$(usex examples)
-		-DBUILD_WITH_DEBUG=$(usex debug)
-		-DINSTALL_DIR_BIN="$(get_libdir)/${P}/bin"
-		-DINSTALL_DIR_CMAKE="$(get_libdir)/cmake/${P}"
+
+		-DINSTALL_DIR_BIN="$(get_libdir)/${PN}/bin"
+		-DINSTALL_DIR_CMAKE="$(get_libdir)/cmake/${PN}"
+		-DINSTALL_DIR_DATA="share/${PN}/data"
 		-DINSTALL_DIR_DOC="share/doc/${PF}"
-		-DINSTALL_DIR_LIB="$(get_libdir)/${P}"
-		-DINSTALL_DIR_SCRIPT="$(get_libdir)/${P}/bin"
-		-DINSTALL_DIR_WITH_VERSION=ON
+		-DINSTALL_DIR_INCLUDE="include/${PN}"
+		-DINSTALL_DIR_LIB="$(get_libdir)/${PN}"
+		-DINSTALL_DIR_RESOURCE="share/${PN}/resources"
+		-DINSTALL_DIR_SAMPLES="share/${PN}/samples"
+		-DINSTALL_DIR_SCRIPT="$(get_libdir)/${PN}/bin"
+		-DINSTALL_DIR_WITH_VERSION=OFF
 		-DINSTALL_SAMPLES=$(usex examples)
 		-DINSTALL_TEST_CASES=NO
+
 		-DUSE_D3D=NO
 		-DUSE_FFMPEG=$(usex ffmpeg)
 		-DUSE_FREEIMAGE=$(usex freeimage)
@@ -160,7 +165,7 @@ src_install() {
 
 	# remove examples
 	if use !examples; then
-		rm -r "${ED}/usr/share/${P}/samples" || die
+		rm -r "${ED}/usr/share/${PN}/samples" || die
 	fi
 
 	docompress -x /usr/share/doc/${PF}/overview/html
