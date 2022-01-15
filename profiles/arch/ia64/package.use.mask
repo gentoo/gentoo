@@ -268,11 +268,6 @@ sci-libs/gdal mdb
 # pulls in unkeyworded lapack
 sci-libs/gdal armadillo
 
-# Michał Górny <mgorny@gentoo.org> (2017-06-28)
-# app-misc/dtach is not keyworded, and tests are restricted anyway, so
-# no point in pursuing it right now.
-app-shells/bash-completion test
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-06-17)
 # Pulls in dev-db/redis which is not keyworded on ia64.
 mail-filter/pyzor test
