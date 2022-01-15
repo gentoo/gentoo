@@ -139,11 +139,6 @@ lxqt-base/lxqt-meta archiver
 # no keywords
 dev-python/pbr test
 
-# Mart Raudsepp <leio@gentoo.org> (2020-04-25)
-# gnome-base/gnome-control-center not keyworded on arm
-# anymore, bug #692802
-net-libs/gnome-online-accounts gnome
-
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-04)
 # zfs is not keyworded on arm
 dev-util/schroot zfs
