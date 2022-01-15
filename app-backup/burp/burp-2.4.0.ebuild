@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="acl ipv6 test xattr"
 
 RESTRICT="!test? ( test )"
 
-CDEPEND="acct-group/burp
+COMMON_DEPEND="acct-group/burp
 	acct-user/burp
 	dev-libs/uthash
 	dev-libs/openssl:0=
@@ -26,11 +26,11 @@ CDEPEND="acct-group/burp
 	virtual/libcrypt:=
 	acl? ( sys-apps/acl )
 	xattr? ( sys-apps/attr )"
-DEPEND="${CDEPEND}
+DEPEND="${COMMON_DEPEND}
 	test? ( dev-libs/check )"
 BDEPEND=">=sys-devel/autoconf-2.71
 	virtual/pkgconfig"
-RDEPEND="${CDEPEND}
+RDEPEND="${COMMON_DEPEND}
 	virtual/logger"
 
 PATCHES=(
