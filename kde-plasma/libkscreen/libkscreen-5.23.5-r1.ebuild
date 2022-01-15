@@ -22,11 +22,15 @@ IUSE=""
 RESTRICT="test"
 
 DEPEND="
+	dev-libs/wayland
+	>=dev-libs/plasma-wayland-protocols-1.4.0
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtwayland-${QTMIN}:5
 	>=dev-qt/qtx11extras-${QTMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/kwayland-${KFMIN}:5
 	x11-libs/libxcb
 "
 RDEPEND="${DEPEND}"
+BDEPEND="dev-util/wayland-scanner"
