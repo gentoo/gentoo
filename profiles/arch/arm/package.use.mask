@@ -366,10 +366,6 @@ www-client/chromium widevine
 www-client/vivaldi widevine
 www-client/vivaldi-snapshot widevine
 
-# Markus Meier <maekke@gentoo.org> (2015-01-17)
-# Unkeyworded deps, bug #536226
-net-vpn/strongswan strongswan_plugins_unbound
-
 # Benda Xu <heroxbd@gentoo.org> (2015-01-03)
 # not tested
 app-i18n/scim-anthy kasumi
