@@ -131,10 +131,6 @@ kde-plasma/kdeplasma-addons webengine
 # Tests require Valgrind, not available on <armv7a
 dev-libs/rapidjson test
 
-# Michał Górny <mgorny@gentoo.org> (2020-06-14)
-# Requires dev-python/networkx.
-app-portage/nattka depgraph-order
-
 # Jimi Huotari <chiitoo@gentoo.org> (2020-05-17)
 # Mask until 'app-arch/lxqt-archiver' is keyworded.
 lxqt-base/lxqt-meta archiver

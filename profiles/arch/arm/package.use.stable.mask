@@ -6,10 +6,6 @@
 sys-kernel/gentoo-kernel debug
 sys-kernel/vanilla-kernel debug
 
-# Sam James <sam@gentoo.org> (2021-11-20)
-# dev-python/networkx is not yet marked stable on arm*
-app-admin/setools infoflow
-
 # Sam James <sam@gentoo.org> (2021-10-25)
 # Various dependencies not yet stable on arm
 # bug #816981
