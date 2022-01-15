@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND=">=dev-libs/wayland-1.17.0"
 DEPEND="${RDEPEND}
