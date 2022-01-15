@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~mips ~riscv sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~riscv ~sparc ~x86"
 IUSE="doc"
 
 BDEPEND="doc? ( app-doc/doxygen )"
