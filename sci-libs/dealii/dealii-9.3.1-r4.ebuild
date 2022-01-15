@@ -40,11 +40,6 @@ REQUIRED_USE="
 	slepc? ( petsc )
 	trilinos? ( mpi )"
 
-# FIXME: The opencascade-7.5.1 ebuild uses a new file system layout where
-# the names of the correct include and library directories are not easily
-# accessible. Just fix the version for the time being.
-CAS_VERSION=7.6.0
-
 RDEPEND="dev-libs/boost:=
 	app-arch/bzip2
 	sys-libs/zlib
@@ -64,7 +59,7 @@ RDEPEND="dev-libs/boost:=
 	)
 	mpi? ( virtual/mpi[cxx] )
 	muparser? ( dev-cpp/muParser )
-	opencascade? ( ~sci-libs/opencascade-${CAS_VERSION}:= )
+	opencascade? ( >=sci-libs/opencascade-7.6.0:= )
 	p4est? ( sci-libs/p4est[mpi] )
 	petsc? ( sci-mathematics/petsc[mpi=] )
 	scalapack? ( sci-libs/scalapack )
@@ -128,13 +123,12 @@ src_configure() {
 		-DDEAL_II_WITH_TRILINOS="$(usex trilinos)"
 	)
 
-	# Do a little dance for purely cosmetic "QA" reasons.
+	# Do a little dance for purely cosmetic QA reasons.
 	use opencascade && mycmakeargs+=(
-		-DOPENCASCADE_DIR="${CASROOT}/$(get_libdir)/opencascade-${CAS_VERSION}"
-		-DOPENCASCADE_INCLUDE_DIR="${CASROOT}/include/opencascade-${CAS_VERSION}"
+		-DOPENCASCADE_DIR="${CASROOT}/$(get_libdir)/opencascade"
 	)
 
-	# Do a little dance for purely cosmetic "QA" reasons. The build system
+	# Do a little dance for purely cosmetic QA reasons. The build system
 	# does query for the highest instruction set first and skips the other
 	# variables if a "higher" variant is set
 	if use cpu_flags_x86_avx512f; then
