@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
-inherit autotools epatch
+inherit autotools
 
 MY_PV="${PV//_beta/b}"
 MY_PV="${MY_PV/_p/p}"
@@ -39,9 +39,11 @@ REQUIRED_USE="^^ ( qdbm tokyocabinet )"
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/${P}-ifconfig.patch"
+		"${FILESDIR}/${P}-sysmacros.patch"
+	)
 	default
-	epatch "${FILESDIR}/${P}-ifconfig.patch"
-	epatch "${FILESDIR}/${P}-sysmacros.patch"
 	eautoreconf
 }
 
@@ -143,7 +145,7 @@ pkg_postinst() {
 }
 
 pkg_config() {
-	if [ "${ROOT}" == "/" ]; then
+	if [[ -z ${ROOT} ]]; then
 		if [ ! -f "/var/cfengine/ppkeys/localhost.priv" ]; then
 			einfo "Generating keys for localhost."
 			/usr/sbin/cf-key
