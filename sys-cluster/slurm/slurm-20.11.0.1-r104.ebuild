@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -48,7 +48,7 @@ COMMON_DEPEND="
 	amd64? ( netloc? ( >=sys-apps/hwloc-2.1.0:=[netloc] ) )
 	hdf5? ( <sci-libs/hdf5-1.12:= )
 	numa? ( sys-process/numactl )
-	ofed? ( sys-fabric/ofed )
+	ofed? ( sys-cluster/rdma-core )
 	ucx? ( sys-cluster/ucx )
 	X? ( net-libs/libssh2 )
 	>=sys-apps/hwloc-1.1.1-r1:=
