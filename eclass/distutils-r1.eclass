@@ -461,6 +461,9 @@ distutils_enable_tests() {
 	_DISTUTILS_TEST_INSTALL=
 	case ${1} in
 		--install)
+			if [[ ${DISTUTILS_USE_PEP517} ]]; then
+				die "${FUNCNAME} --install is not implemented in PEP517 mode"
+			fi
 			_DISTUTILS_TEST_INSTALL=1
 			shift
 			;;
@@ -688,6 +691,10 @@ distutils_install_for_testing() {
 # Stub out ez_setup.py and distribute_setup.py to prevent packages
 # from trying to download a local copy of setuptools.
 _distutils-r1_disable_ez_setup() {
+	if [[ ${DISTUTILS_USE_PEP517} ]]; then
+		die "${FUNCNAME} is not implemented in PEP517 mode"
+	fi
+
 	local stub="def use_setuptools(*args, **kwargs): pass"
 	if [[ -f ez_setup.py ]]; then
 		echo "${stub}" > ez_setup.py || die
@@ -702,6 +709,10 @@ _distutils-r1_disable_ez_setup() {
 # @DESCRIPTION:
 # Generate setup.py for pyproject.toml if requested.
 _distutils-r1_handle_pyproject_toml() {
+	if [[ ${DISTUTILS_USE_PEP517} ]]; then
+		die "${FUNCNAME} is not implemented in PEP517 mode"
+	fi
+
 	[[ ${DISTUTILS_USE_SETUPTOOLS} == manual ]] && return
 
 	if [[ ! -f setup.py && -f pyproject.toml ]]; then
@@ -772,6 +783,10 @@ distutils-r1_python_prepare_all() {
 # Create implementation-specific configuration file for distutils,
 # setting proper build-dir (and install-dir) paths.
 _distutils-r1_create_setup_cfg() {
+	if [[ ${DISTUTILS_USE_PEP517} ]]; then
+		die "${FUNCNAME} is not implemented in PEP517 mode"
+	fi
+
 	cat > "${HOME}"/.pydistutils.cfg <<-_EOF_ || die
 		[build]
 		build_base = ${BUILD_DIR}
@@ -827,6 +842,10 @@ _distutils-r1_create_setup_cfg() {
 # egg-base in esetup.py). This way, we respect whatever's in upstream
 # egg-info.
 _distutils-r1_copy_egg_info() {
+	if [[ ${DISTUTILS_USE_PEP517} ]]; then
+		die "${FUNCNAME} is not implemented in PEP517 mode"
+	fi
+
 	mkdir -p "${BUILD_DIR}" || die
 	# stupid freebsd can't do 'cp -t ${BUILD_DIR} {} +'
 	find -name '*.egg-info' -type d -exec cp -R -p {} "${BUILD_DIR}"/ ';' || die
@@ -878,7 +897,9 @@ distutils-r1_python_compile() {
 	# call setup.py build when using setuptools (either via PEP517
 	# or in legacy mode)
 	if [[ ${DISTUTILS_USE_PEP517:-setuptools} == setuptools ]]; then
-		_distutils-r1_copy_egg_info
+		if [[ ! ${DISTUTILS_USE_PEP517} ]]; then
+			_distutils-r1_copy_egg_info
+		fi
 
 		# distutils is parallel-capable since py3.5
 		local jobs=$(makeopts_jobs "${MAKEOPTS}" INF)
@@ -903,7 +924,7 @@ distutils-r1_python_compile() {
 		addpredict /usr/local # bug 498232
 
 		local -x WHEEL_BUILD_DIR=${BUILD_DIR}/wheel
-		mkdir -p "${WHEEL_BUILD_DIR}"
+		mkdir -p "${WHEEL_BUILD_DIR}" || die
 
 		local build_backend
 		if [[ -f pyproject.toml ]]; then
