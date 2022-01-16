@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64"
 
 # NB: newer git doesn't use mock anymore
 BDEPEND="
