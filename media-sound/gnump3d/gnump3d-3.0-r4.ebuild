@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib perl-module
+inherit perl-module
 
 DESCRIPTION="A streaming server for MP3, OGG vorbis and other streamable files"
 HOMEPAGE="https://www.gnu.org/software/gnump3d/"
