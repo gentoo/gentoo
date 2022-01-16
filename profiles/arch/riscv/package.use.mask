@@ -85,11 +85,6 @@ dev-python/nbconvert test
 #  sys-apps/flashrom USE=introspection fail to build, bug 811321
 sys-apps/fwupd flashrom introspection spi uefi
 
-# Marek Szuba <marecki@gentoo.org> (2021-08-25)
-# sys-fabric/infinipath-psm does not support riscv
-sys-cluster/openmpi openmpi_fabrics_psm
-sys-fabric/ofed ofed_drivers_psm
-
 # Marek Szuba <marecki@gentoo.org> (2021-08-23)
 # sys-cluster/ceph not keyworded here yet due to several dependencies
 # failing tests
