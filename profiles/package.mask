@@ -33,6 +33,34 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-01-16)
+# Most of these packages have been merged into sys-cluster/rdma-core and
+# have long been dead and unmaintained.
+# Removal in 30 days, bug #830999.
+sys-fabric/ibacm
+sys-fabric/infiniband-diags
+sys-fabric/infinipath-psm
+sys-fabric/libcxgb3
+sys-fabric/libcxgb4
+sys-fabric/libehca
+sys-fabric/libibcm
+sys-fabric/libibmad
+sys-fabric/libibumad
+sys-fabric/libibverbs
+sys-fabric/libipathverbs
+sys-fabric/libmlx4
+sys-fabric/libmlx5
+sys-fabric/libmthca
+sys-fabric/libnes
+sys-fabric/libocrdma
+sys-fabric/librdmacm
+sys-fabric/ofed
+sys-fabric/rds-tools
+sys-fabric/srptools
+<sys-fabric/opensm-3.3.23
+<sys-fabric/perftest-4.4.0.37
+<sys-fabric/qperf-0.4.11
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-15)
 # Last branch update happened ~ 12 month ago.
 # Maximum kernel supported is 5.9, which we no longer package.
