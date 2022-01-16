@@ -67,14 +67,6 @@ src_prepare() {
 			-e 's/^  LIBICONV=$/:/' \
 			configure || die
 	fi
-
-	if [[ ${CHOST} == *-darwin* && ${CHOST##*-darwin} -le 17 ]] ; then
-		# Fix older Darwin inline definition problem
-		# fixed upstream
-		# https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=commit;h=29d79d473f52b0ec58f50c95ef782c66fc0ead21
-		sed -i -e '/define _GL_EXTERN_INLINE_STDHEADER_BUG/s/_BUG/_DISABLE/' \
-			src/config.h.in || die
-	fi
 }
 
 src_configure() {
