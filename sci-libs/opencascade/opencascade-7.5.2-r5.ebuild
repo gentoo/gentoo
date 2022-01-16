@@ -106,7 +106,7 @@ src_configure() {
 		-DUSE_FFMPEG=$(usex ffmpeg)
 		-DUSE_FREEIMAGE=$(usex freeimage)
 		-DUSE_FREETYPE=ON
-		-DUSE_GLES2=$(usex gles2)
+		-DUSE_GLES2=$(usex gles2-only)
 		-DUSE_RAPIDJSON=$(usex json)
 		-DUSE_TBB=$(usex tbb)
 		-DUSE_VTK=$(usex vtk)
