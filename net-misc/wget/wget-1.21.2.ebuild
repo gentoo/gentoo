@@ -35,18 +35,19 @@ RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="
 	${RDEPEND}
 	static? ( ${LIB_DEPEND} )
+"
+BDEPEND="
+	app-arch/xz-utils
+	dev-lang/perl
+	sys-apps/texinfo
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
 	test? (
 		${PYTHON_DEPS}
-		dev-lang/perl
 		dev-perl/HTTP-Daemon
 		dev-perl/HTTP-Message
 		dev-perl/IO-Socket-SSL
 	)
-"
-BDEPEND="
-	app-arch/xz-utils
-	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
 "
 
 DOCS=( AUTHORS MAILING-LIST NEWS README )
