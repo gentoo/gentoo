@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ RDEPEND="
 	sys-apps/diffutils
 	sys-apps/file
 	sys-apps/portage
-	sys-apps/util-linux"
+	|| ( sys-apps/util-linux app-misc/getopt )"
 BDEPEND="
 	sys-apps/help2man
 	test? ( ${RDEPEND} )"
@@ -33,6 +33,8 @@ src_configure() {
 		-Dshellcheck=false
 		$(meson_use test)
 	)
+
+	has_version sys-apps/util-linux || emesonargs+=( -Dgetopt=getopt-long )
 
 	meson_src_configure
 }
