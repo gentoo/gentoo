@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,7 +37,7 @@ SRC_URI+=" https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.x
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 x86"
 IUSE="debug hardened"
 REQUIRED_USE="arm? ( savedconfig )"
 
