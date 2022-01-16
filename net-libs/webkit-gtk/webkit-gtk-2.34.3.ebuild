@@ -184,7 +184,7 @@ src_configure() {
 	# Try to use less memory, bug #469942 (see Fedora .spec for reference)
 	# --no-keep-memory doesn't work on ia64, bug #502492
 	if ! use ia64; then
-		append-ldflags "-Wl,--no-keep-memory"
+		append-ldflags $(test-flags-CCLD "-Wl,--no-keep-memory")
 	fi
 
 	# Ruby situation is a bit complicated. See bug 513888
