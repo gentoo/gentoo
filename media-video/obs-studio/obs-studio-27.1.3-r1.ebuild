@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -121,6 +121,7 @@ QA_PREBUILT="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-26.1.2-python-3.8.patch"
+	"${FILESDIR}/${PN}-27.1.3-ffmpeg-5.0.patch"
 )
 
 pkg_setup() {
