@@ -36,6 +36,7 @@ RDEPEND="
 "
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
+JAVA_ANT_CLASSPATH_TAGS="javac javadoc"
 
 EANT_BUILD_TARGET="jars"
 EANT_TEST_TARGET="run-tests -Djunit-available=true"
