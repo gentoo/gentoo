@@ -47,7 +47,10 @@ RDEPEND="
 	sys-libs/libcap
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:3[X]
+	|| (
+		x11-libs/gtk+:3[X]
+		gui-libs/gtk:4[X]
+	)
 	x11-libs/libdrm
 	>=x11-libs/libX11-1.5.0
 	x11-libs/libXcomposite
