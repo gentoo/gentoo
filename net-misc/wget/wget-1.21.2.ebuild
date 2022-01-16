@@ -67,6 +67,8 @@ src_prepare() {
 			-e 's/^  LIBICONV=$/:/' \
 			configure || die
 	fi
+
+	sed -i -e "s:/usr/local/etc:${EPREFIX}/etc:g" doc/{sample.wgetrc,wget.texi} || die
 }
 
 src_configure() {
@@ -107,15 +109,4 @@ src_configure() {
 	)
 	ac_cv_libunistring=no \
 	econf "${myeconfargs[@]}"
-}
-
-src_install() {
-	default
-
-	sed -i \
-		-e "s:/usr/local/etc:${EPREFIX}/etc:g" \
-		"${ED}"/etc/wgetrc \
-		"${ED}"/usr/share/man/man1/wget.1 \
-		"${ED}"/usr/share/info/wget.info \
-		|| die
 }
