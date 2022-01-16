@@ -315,7 +315,7 @@ src_compile() {
 		git_emake gitweb || die "emake gitweb (cgi) failed"
 	fi
 
-	if [[ ${CHOST} == *-darwin* && ! tc-is-gcc ]]; then
+	if [[ ${CHOST} == *-darwin* ]] && tc-is-clang ; then
 		pushd contrib/credential/osxkeychain &>/dev/null || die
 		git_emake CC=$(tc-getCC) CFLAGS="${CFLAGS}" \
 			|| die "emake credential-osxkeychain"
@@ -362,7 +362,7 @@ src_compile() {
 src_install() {
 	git_emake DESTDIR="${D}" install || die "make install failed"
 
-	if [[ ${CHOST} == *-darwin* && ! tc-is-gcc ]]; then
+	if [[ ${CHOST} == *-darwin* ]] && tc-is-clang ; then
 		dobin contrib/credential/osxkeychain/git-credential-osxkeychain
 	fi
 
