@@ -9,7 +9,7 @@
 # net-misc/vde
 # sys-cluster/ceph
 # sys-firmware/edk2-ovmf
-app-emulation/qemu ceph slirp spice virgl vde
+app-emulation/qemu rbd slirp spice virgl vde
 app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
 app-emulation/qemu qemu_softmmu_targets_ppc qemu_softmmu_targets_ppc64
 
