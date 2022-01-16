@@ -12,8 +12,7 @@ S=${WORKDIR}/${MY_P}
 
 IUSE_OPENMPI_FABRICS="
 	openmpi_fabrics_ofed
-	openmpi_fabrics_knem
-	openmpi_fabrics_psm"
+	openmpi_fabrics_knem"
 
 IUSE_OPENMPI_RM="
 	openmpi_rm_pbs
@@ -35,9 +34,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux"
 IUSE="cma cuda cxx fortran ipv6 java libompitrace peruse romio
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
 
-REQUIRED_USE="openmpi_rm_slurm? ( !openmpi_rm_pbs )
+REQUIRED_USE="
+	openmpi_rm_slurm? ( !openmpi_rm_pbs )
 	openmpi_rm_pbs? ( !openmpi_rm_slurm )
-	openmpi_fabrics_psm? ( openmpi_fabrics_ofed )
 	openmpi_ofed_features_control-hdr-padding? ( openmpi_fabrics_ofed )
 	openmpi_ofed_features_udcm? ( openmpi_fabrics_ofed )
 	openmpi_ofed_features_rdmacm? ( openmpi_fabrics_ofed )
@@ -52,12 +51,11 @@ CDEPEND="
 	>=sys-apps/hwloc-2.0.2:=[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1:= )
-	openmpi_fabrics_ofed? ( || ( sys-cluster/rdma-core sys-fabric/ofed:* ) )
+	openmpi_fabrics_ofed? ( sys-cluster/rdma-core )
 	openmpi_fabrics_knem? ( sys-cluster/knem )
-	openmpi_fabrics_psm? ( sys-fabric/infinipath-psm:* )
 	openmpi_rm_pbs? ( sys-cluster/torque )
 	openmpi_rm_slurm? ( sys-cluster/slurm )
-	openmpi_ofed_features_rdmacm? ( || ( sys-cluster/rdma-core sys-fabric/librdmacm:* ) )"
+	openmpi_ofed_features_rdmacm? ( sys-cluster/rdma-core )"
 
 RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.8:* )"
@@ -130,7 +128,6 @@ multilib_src_configure() {
 		$(multilib_native_use_with cuda cuda "${EPREFIX}"/opt/cuda)
 		$(multilib_native_use_with openmpi_fabrics_ofed verbs "${EPREFIX}"/usr)
 		$(multilib_native_use_with openmpi_fabrics_knem knem "${EPREFIX}"/usr)
-		$(multilib_native_use_with openmpi_fabrics_psm psm "${EPREFIX}"/usr)
 		$(multilib_native_use_with openmpi_rm_pbs tm)
 		$(multilib_native_use_with openmpi_rm_slurm slurm)
 	)

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,8 +12,7 @@ S=${WORKDIR}/${MY_P}
 
 IUSE_OPENMPI_FABRICS="
 	openmpi_fabrics_ofed
-	openmpi_fabrics_knem
-	openmpi_fabrics_psm"
+	openmpi_fabrics_knem"
 
 IUSE_OPENMPI_RM="
 	openmpi_rm_pbs
@@ -34,9 +33,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
 IUSE="cma cuda cxx fortran heterogeneous ipv6 java numa romio
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
 
-REQUIRED_USE="openmpi_rm_slurm? ( !openmpi_rm_pbs )
+REQUIRED_USE="
+	openmpi_rm_slurm? ( !openmpi_rm_pbs )
 	openmpi_rm_pbs? ( !openmpi_rm_slurm )
-	openmpi_fabrics_psm? ( openmpi_fabrics_ofed )
 	openmpi_ofed_features_control-hdr-padding? ( openmpi_fabrics_ofed )
 	openmpi_ofed_features_udcm? ( openmpi_fabrics_ofed )
 	openmpi_ofed_features_rdmacm? ( openmpi_fabrics_ofed )
@@ -53,12 +52,11 @@ CDEPEND="
 	<sys-apps/hwloc-2:=[${MULTILIB_USEDEP},numa?]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1:= )
-	openmpi_fabrics_ofed? ( sys-fabric/ofed:* )
+	openmpi_fabrics_ofed? ( sys-cluster/rdma-core )
 	openmpi_fabrics_knem? ( sys-cluster/knem )
-	openmpi_fabrics_psm? ( sys-fabric/infinipath-psm:* )
 	openmpi_rm_pbs? ( sys-cluster/torque )
 	openmpi_rm_slurm? ( sys-cluster/slurm )
-	openmpi_ofed_features_rdmacm? ( sys-fabric/librdmacm:* )"
+	openmpi_ofed_features_rdmacm? ( sys-cluster/rdma-core )"
 
 RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.6 )"
@@ -117,7 +115,6 @@ multilib_src_configure() {
 		$(multilib_native_use_enable java mpi-java) \
 		$(multilib_native_use_with openmpi_fabrics_ofed verbs "${EPREFIX}"/usr) \
 		$(multilib_native_use_with openmpi_fabrics_knem knem "${EPREFIX}"/usr) \
-		$(multilib_native_use_with openmpi_fabrics_psm psm "${EPREFIX}"/usr) \
 		$(multilib_native_use_enable openmpi_ofed_features_control-hdr-padding openib-control-hdr-padding) \
 		$(multilib_native_use_enable openmpi_ofed_features_rdmacm openib-rdmacm) \
 		$(multilib_native_use_enable openmpi_ofed_features_udcm openib-udcm) \
