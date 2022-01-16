@@ -53,6 +53,7 @@ DEPEND="
 	x11-libs/libXdamage
 	x11-libs/libXfixes
 	x11-libs/libXrandr
+	x11-libs/libXres
 	x11-libs/libXtst
 	x11-libs/libxkbfile
 	brotli? ( app-arch/brotli )
