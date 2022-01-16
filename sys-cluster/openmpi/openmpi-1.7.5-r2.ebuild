@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,8 +13,7 @@ S="${WORKDIR}"/${MY_P}
 
 IUSE_OPENMPI_FABRICS="
 	openmpi_fabrics_ofed
-	openmpi_fabrics_knem
-	openmpi_fabrics_psm"
+	openmpi_fabrics_knem"
 
 IUSE_OPENMPI_RM="
 	openmpi_rm_pbs
@@ -36,9 +35,9 @@ KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
 IUSE="cma cuda +cxx fortran heterogeneous ipv6 mpi-threads romio threads vt
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
 
-REQUIRED_USE="openmpi_rm_slurm? ( !openmpi_rm_pbs )
+REQUIRED_USE="
+	openmpi_rm_slurm? ( !openmpi_rm_pbs )
 	openmpi_rm_pbs? ( !openmpi_rm_slurm )
-	openmpi_fabrics_psm? ( openmpi_fabrics_ofed )
 	openmpi_ofed_features_control-hdr-padding? ( openmpi_fabrics_ofed )
 	openmpi_ofed_features_connectx-xrc? ( openmpi_fabrics_ofed )
 	openmpi_ofed_features_rdmacm? ( openmpi_fabrics_ofed )
@@ -59,12 +58,11 @@ RDEPEND="
 	dev-libs/libltdl:0
 	<sys-apps/hwloc-2:=
 	cuda? ( dev-util/nvidia-cuda-toolkit )
-	openmpi_fabrics_ofed? ( sys-fabric/ofed )
+	openmpi_fabrics_ofed? ( sys-cluster/rdma-core )
 	openmpi_fabrics_knem? ( sys-cluster/knem )
-	openmpi_fabrics_psm? ( sys-fabric/infinipath-psm )
 	openmpi_rm_pbs? ( sys-cluster/torque )
 	openmpi_rm_slurm? ( sys-cluster/slurm )
-	openmpi_ofed_features_rdmacm? ( sys-fabric/librdmacm )
+	openmpi_ofed_features_rdmacm? ( sys-cluster/rdma-core )
 	"
 DEPEND="${RDEPEND}"
 
@@ -137,7 +135,6 @@ src_configure() {
 		$(use_enable ipv6) \
 		$(use_with openmpi_fabrics_ofed verbs "${EPREFIX}"/usr) \
 		$(use_with openmpi_fabrics_knem knem "${EPREFIX}"/usr) \
-		$(use_with openmpi_fabrics_psm psm "${EPREFIX}"/usr) \
 		$(use_enable openmpi_ofed_features_control-hdr-padding openib-control-hdr-padding) \
 		$(use_enable openmpi_ofed_features_connectx-xrc openib-connectx-xrc) \
 		$(use_enable openmpi_ofed_features_rdmacm openib-rdmacm) \
