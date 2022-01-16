@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Beddek <telans@posteo.de> (2022-01-19)
+# FFmpeg 5.0 ABI/API changes break many packages.
+# Masking for tracker/tinderbox.
+>=media-video/ffmpeg-5.0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-01-18)
 # KDE Release Service 5.23.90 (5.24 Beta) mask - pre-release version
 # See also: https://kde.org/announcements/plasma/5/5.23.90/
