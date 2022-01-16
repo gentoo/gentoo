@@ -49,7 +49,7 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
-DOCS=( AUTHORS MAILING-LIST NEWS README doc/sample.wgetrc )
+DOCS=( AUTHORS MAILING-LIST NEWS README )
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
