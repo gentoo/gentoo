@@ -25,6 +25,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	# should be in.. 2022?
 	"${FILESDIR}"/${PN}-2021.4.0-lto.patch
+	"${FILESDIR}"/${PN}-2021.5.0-musl-deepbind.patch
 )
 
 src_configure() {
