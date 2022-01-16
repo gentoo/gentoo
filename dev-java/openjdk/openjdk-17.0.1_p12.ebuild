@@ -7,6 +7,7 @@ inherit check-reqs eapi7-ver flag-o-matic java-pkg-2 java-vm-2 multiprocessing p
 
 # variable name format: <UPPERCASE_KEYWORD>_XPAK
 PPC64_XPAK="17.0.1_p12" # big-endian bootstrap tarball
+X86_XPAK="17.0.1_p12"
 
 # Usage: bootstrap_uri <keyword> <version> [extracond]
 # Example: $(bootstrap_uri ppc64 17.0.1_p12 big-endian)
@@ -32,11 +33,12 @@ SRC_URI="
 		-> ${P}.tar.gz
 	!system-bootstrap? (
 		$(bootstrap_uri ppc64 ${PPC64_XPAK} big-endian)
+		$(bootstrap_uri x86 ${X86_XPAK})
 	)
 "
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm arm64 ppc64"
+KEYWORDS="amd64 ~arm arm64 ppc64 ~x86"
 
 IUSE="alsa big-endian cups debug doc examples gentoo-vm headless-awt javafx +jbootstrap pch selinux source system-bootstrap systemtap"
 
