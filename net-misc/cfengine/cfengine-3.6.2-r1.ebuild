@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,7 +9,7 @@ MY_PV="${PV//_beta/b}"
 MY_PV="${MY_PV/_p/p}"
 MY_P="${PN}-${MY_PV}"
 
-DESCRIPTION="An automated suite of programs for configuring and maintaining Unix-like computers"
+DESCRIPTION="An suite of programs for configuring and maintaining Unix-like computers"
 HOMEPAGE="http://www.cfengine.org/"
 SRC_URI="http://cfengine.package-repos.s3.amazonaws.com/tarballs/${MY_P}.tar.gz
 	masterfiles? ( http://cfengine.package-repos.s3.amazonaws.com/tarballs/masterfiles-${MY_PV}.tar.gz -> ${PN}-masterfiles-${MY_PV}.tar.gz )"
