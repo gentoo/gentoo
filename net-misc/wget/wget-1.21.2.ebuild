@@ -84,6 +84,7 @@ src_configure() {
 	# Further, libunistring is only needed w/older libidn2 installs,
 	# and since we force the latest, we can force off libunistring. #612498
 	local myeconfargs=(
+		ac_cv_libunistring=no
 		--disable-assert
 		--disable-pcre
 		--disable-rpath
@@ -104,6 +105,5 @@ src_configure() {
 		$(use_with uuid libuuid)
 		$(use_with zlib)
 	)
-	ac_cv_libunistring=no \
 	econf "${myeconfargs[@]}"
 }
