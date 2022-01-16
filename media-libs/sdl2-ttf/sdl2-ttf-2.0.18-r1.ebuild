@@ -7,7 +7,7 @@ inherit multilib-minimal
 
 MY_P="SDL2_ttf-${PV}"
 DESCRIPTION="Library that allows you to use TrueType fonts in SDL applications"
-HOMEPAGE="https//www.libsdl.org/projects/SDL_ttf/"
+HOMEPAGE="https://www.libsdl.org/projects/SDL_ttf/"
 SRC_URI="https://www.libsdl.org/projects/SDL_ttf/release/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
