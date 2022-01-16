@@ -59,14 +59,11 @@ src_prepare() {
 	default
 
 	# revert some hack that breaks linking, bug #585924
-	if [[ ${CHOST} == *-darwin* ]] \
-	|| [[ ${CHOST} == *-solaris* ]] \
-	|| [[ ${CHOST} == *-cygwin* ]] \
-	; then
-		sed -i \
-			-e 's/^  LIBICONV=$/:/' \
-			configure || die
-	fi
+	case ${CHOST} in
+		*-darwin*|*-solaris*|*-cygwin*)
+			sed -i -e 's/^  LIBICONV=$/:/' configure || die
+			;;
+	esac
 
 	sed -i -e "s:/usr/local/etc:${EPREFIX}/etc:g" doc/{sample.wgetrc,wget.texi} || die
 }
