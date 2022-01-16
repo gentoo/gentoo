@@ -35,8 +35,9 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-export CC
-	export CC_FOR_BUILD=$(tc-getBUILD_CC)
+	unset CROSS_COMPILE
+	export COMPILER=$(tc-getCC)
+	export HOSTCC=$(tc-getBUILD_CC)
 
 	tc-ld-disable-gold
 
