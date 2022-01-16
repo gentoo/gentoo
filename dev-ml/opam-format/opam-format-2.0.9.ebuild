@@ -16,7 +16,8 @@ OPAM_INSTALLER="${S}/opam-installer"
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="amd64 arm arm64 ppc ppc64 ~x86"
-IUSE="+ocamlopt"
+IUSE="+ocamlopt test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	~dev-ml/opam-core-${PV}:=
@@ -26,6 +27,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-ml/cppo"
+BDEPEND="test? (
+	sys-apps/bubblewrap
+	dev-ml/mccs
+)"
 
 # Cherry-picked from https://deb.debian.org/debian/pool/main/o/opam/opam_2.0.8-1.debian.tar.xz
 PATCHES=( "${FILESDIR}/debian-Port-to-Dose3-6.0.1.patch" )
