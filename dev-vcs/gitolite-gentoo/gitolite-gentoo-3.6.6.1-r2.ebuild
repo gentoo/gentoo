@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -69,7 +69,7 @@ src_install() {
 
 	dodir /usr/bin
 	for bin in gitolite{,-shell}; do
-		dosym /usr/libexec/${PN}/${bin} /usr/bin/${bin}
+		dosym ../libexec/${PN}/${bin} /usr/bin/${bin}
 	done
 
 	if use tools; then
