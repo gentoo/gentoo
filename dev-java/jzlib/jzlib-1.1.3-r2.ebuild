@@ -4,6 +4,7 @@
 EAPI=7
 
 JAVA_PKG_IUSE="examples source test"
+MAVEN_ID="com.jcraft:jzlib:1.1.3"
 
 inherit java-pkg-2 java-pkg-simple
 
