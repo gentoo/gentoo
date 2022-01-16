@@ -41,7 +41,7 @@ src_prepare() {
 		-e "s:/X11R6::" \
 		conf/linux || die
 	sed -i -e "s:head -1:head -n 1:" util/build || die
-	epatch "${FILESDIR}"/${P}-gcc-4.1.patch
+	eapply "${FILESDIR}"/${P}-gcc-4.1.patch
 
 	# fix possible buffer overflow (bug #339539)
 	sed -i -e "s:fgets(buf, BSIZE_SP:fgets(buf, sizeof(buf):g" \
