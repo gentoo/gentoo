@@ -297,11 +297,6 @@ dev-java/jrrd
 # Removal on 2022-01-16.  Bug #829410.
 dev-python/hacking
 
-# William Hubbs <williamh@gentoo.org> (2021-12-15)
-# This is a go module and is included in projects directly.
-# Bug #819639; masked for removal on 2022-01-15.
-dev-go/blackfriday
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-12-14)
 # AT&T decided to roll back community changes in March 2020
 # for version 2020.x.x
