@@ -287,10 +287,6 @@ dev-go/go-text
 # Package without consumers. Bug #829517 Bug_#614480.  Removal in 30 days.
 dev-java/libreadline-java
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-18)
-# Package without consumers. Bug_#736880. Removal in 30 days.
-dev-java/jrrd
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-12-14)
 # AT&T decided to roll back community changes in March 2020
 # for version 2020.x.x
