@@ -67,9 +67,8 @@ RDEPEND="${CDEPEND}
 	sys-apps/dbus
 	virtual/freedesktop-icon-theme
 	>=x11-libs/cairo-1.10[X]
-	x11-libs/gdk-pixbuf
+	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-3.11:3[wayland?]
-	x11-libs/libxcb
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXcursor
@@ -79,6 +78,8 @@ RDEPEND="${CDEPEND}
 	x11-libs/libXi
 	x11-libs/libXrandr
 	x11-libs/libXrender
+	x11-libs/libXtst
+	x11-libs/libxcb
 	>=x11-libs/pango-1.22.0
 	ffmpeg? ( media-video/ffmpeg )
 	pulseaudio? ( media-sound/pulseaudio )
