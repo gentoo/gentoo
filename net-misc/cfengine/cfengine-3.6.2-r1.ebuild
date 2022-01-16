@@ -22,7 +22,7 @@ IUSE="acl examples libvirt mysql masterfiles postgres +qdbm selinux tokyocabinet
 
 DEPEND="acl? ( virtual/acl )
 	mysql? ( virtual/mysql )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:= )
 	selinux? ( sys-libs/libselinux )
 	tokyocabinet? ( dev-db/tokyocabinet )
 	qdbm? ( dev-db/qdbm )
