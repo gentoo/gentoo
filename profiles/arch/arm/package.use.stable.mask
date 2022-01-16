@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-01-16)
+# net-libs/gnome-online-accounts is not marked stable on arm yet
+gnome-base/gvfs google
+
 # Sam James <sam@gentoo.org> (2022-01-15)
 # dev-python/nbconvert not yet marked stable on arm
 dev-python/ipython nbconvert
@@ -28,11 +32,6 @@ app-text/htmltidy test
 # Dependencies not yet stable, drags in
 # large amount of fabric. bug #763954
 sys-block/open-iscsi infiniband
-
-# Sam James <sam@gentoo.org> (2021-02-09)
-# dev-libs/libgdata is not (yet?) stable on arm
-# bug #769767, bug #769764
-mail-client/claws-mail gdata
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
 # media-libs/libffado is not stable yet, which itself has unstable and
