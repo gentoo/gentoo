@@ -34,7 +34,7 @@ src_configure() {
 	append-cflags -DG_DISABLE_ASSERT -DG_DISABLE_CHECKS -DG_DISABLE_CAST_CHECKS
 
 	local emesonargs=(
-		-Dipv6=true
+		-Duse_ipv6=true
 		-Dbuild_man=true
 	)
 	meson_src_configure
