@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -62,7 +62,7 @@ src_install() {
 	# install binaries
 	dobin obj/bin/{spice3,nutmeg,sconvert,multidec,proc2mod}
 	newbin obj/bin/help spice.help
-	dosym /usr/bin/spice3 /usr/bin/spice
+	dosym spice3 /usr/bin/spice
 	# install runtime stuff
 	rm -f lib/make*
 	dodir /usr/$(get_libdir)/spice
