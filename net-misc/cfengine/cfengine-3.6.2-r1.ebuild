@@ -103,7 +103,7 @@ src_install() {
 	# binaries here. This is the default search location for the
 	# binaries.
 	for bin in promises agent monitord serverd execd runagent key; do
-		dosym /usr/sbin/cf-$bin /var/cfengine/bin/cf-$bin
+		dosym ../../../usr/sbin/cf-$bin /var/cfengine/bin/cf-$bin
 	done
 
 	if use masterfiles; then
