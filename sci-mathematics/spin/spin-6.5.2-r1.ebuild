@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,6 +27,7 @@ BDEPEND="virtual/yacc"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.5.2-makefile.patch
+	"${FILESDIR}"/${PN}-6.5.2-nesting_limit.patch
 )
 
 S="${WORKDIR}"/${MY_P}/Src
