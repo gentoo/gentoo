@@ -39,6 +39,11 @@ src_prepare() {
 	sed -i -e "s:gcc:$(tc-getCC):" test/colm.d/gentests.sh || die
 	sed -i -e "s:g++:$(tc-getCXX):" test/colm.d/gentests.sh || die
 
+	# fix linkage on Darwin from colm itself during build
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		sed -i -e 's/libcolm\.so/libcolm.dylib/' src/main.cc || die
+	fi
+
 	eautoreconf
 }
 
