@@ -20,7 +20,6 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs --no-autodoc
 distutils_enable_tests pytest
 
 python_test() {
