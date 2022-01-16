@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa"
+KEYWORDS="~amd64 ~hppa ~s390"
 
 # check inside src/poetry/core/_vendor/vendor.txt
 RDEPEND="
