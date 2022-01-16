@@ -88,12 +88,12 @@ src_install() {
 	find "${D}"/usr/share -name "*.cf" | xargs sed -i "s,/sbin/ifconfig,$(which ifconfig),g"
 
 	# Evil workaround for now..
-	mv "${D}"/usr/share/doc/${PN}/ "${D}"/usr/share/doc/${PF}
+	mv "${ED}"/usr/share/doc/${PN}/ "${ED}"/usr/share/doc/${PF}
 
 	dodoc AUTHORS
 
 	if ! use examples; then
-		rm -rf "${D}"/usr/share/doc/${PF}/example*
+		rm -rf "${ED}"/usr/share/doc/${PF}/example*
 	fi
 
 	# Create cfengine working directory
@@ -132,10 +132,10 @@ pkg_postinst() {
 
 	# Fix old cf-servd, remove it after some releases.
 	local found=0
-	for fname in $(find /etc/runlevels/ -type f -or -type l -name 'cf-servd'); do
+	for fname in $(find "${EROOT}"/etc/runlevels/ -type f -or -type l -name 'cf-servd'); do
 		found=1
-		rm $fname
-		ln -s /etc/init.d/cf-serverd $(echo $fname | sed 's:cf-servd:cf-serverd:')
+		rm "$fname"
+		ln -s "${EROOT}"/etc/init.d/cf-serverd $(echo "$fname" | sed 's:cf-servd:cf-serverd:')
 	done
 
 	if [ "${found}" -eq 1 ]; then
