@@ -1,5 +1,5 @@
---- a./Makefile
-+++ b./Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -72,7 +72,7 @@ endif
  # <HOSTROOT> is the directory containing support files for building for <HOST>:
  #   <HOSTROOT>/include        Header files.
@@ -45,6 +45,15 @@
  MAN_PREFIX:=$(DESTDIR)$(PREFIX)/share/man
  DEVMAN_PREFIX:=$(DESTDIR)$(PREFIX)/share/man
  
+@@ -358,7 +358,7 @@ MOUSE_CFLAGS:=-Isrc/$(MOUSEDIR) -D$(CURSOR_SHAPES)_CURSOR_SHAPES
+ # are 132x80.  On larger screens, they will be bigger (since the New dialog
+ # is always 4x4 thumbnails); therefore, generating larger thumbs, which can
+ # be still be scaled down fairly quickly (esp. complicated SVG ones).
+-CONVERT_OPTS:=-alpha Background -alpha Off +depth -resize !264x160 -background white -interlace none
++CONVERT_OPTS:=-resize 264x160 -background white -extent 0x0 -interlace none
+ 
+ .SUFFIXES:
+ 
 @@ -545,7 +545,7 @@ trans:
  windows_ARCH_INSTALL:=install-dlls install-tpconf-i18n
  macos_ARCH_INSTALL:=install-macbundle TuxPaint.dmg install-man install-importscript install-bash-completion
@@ -73,6 +82,30 @@
  	-rm -f -r $(CONFDIR)
  	-rm $(COMPLETIONDIR)/tuxpaint-completion.bash
  	-rm -r $(MAGIC_PREFIX)
+@@ -791,11 +791,11 @@ $(THUMB_STARTERS):
+ 	@mkdir -p starters/.thumbs
+ 	@if [ "x" != "x"$(STARTER_BACK_NAME) ] ; \
+ 	then \
+-		composite $(STARTER_NAME) $(STARTER_BACK_NAME) obj/tmp_$(notdir $(STARTER_NAME)).png ; \
+-		convert $(CONVERT_OPTS) obj/tmp_$(notdir $(STARTER_NAME)).png $@ 2> /dev/null ; \
++		gm composite $(STARTER_NAME) $(STARTER_BACK_NAME) obj/tmp_$(notdir $(STARTER_NAME)).png 2> /dev/null ; \
++		gm convert $(CONVERT_OPTS) obj/tmp_$(notdir $(STARTER_NAME)).png $@ || echo "($@ failed)" ; \
+ 		rm obj/tmp_$(notdir $(STARTER_NAME)).png ; \
+ 	else \
+-		convert $(CONVERT_OPTS) $(STARTER_NAME) $@ 2> /dev/null || ( echo "($@ failed)" ; rm $@ ) ; \
++		gm convert $(CONVERT_OPTS) $(STARTER_NAME) $@ 2> /dev/null || ( echo "($@ failed)" ; rm $@ ) ; \
+ 	fi
+ 
+ $(INSTALLED_THUMB_STARTERS): $(DATA_PREFIX)/%: %
+@@ -850,7 +850,7 @@ TEMPLATE_NAME=$(or $(wildcard $(subst templates/.thumbs,templates,$(@:-t.png=.sv
+ $(THUMB_TEMPLATES):
+ 	@printf "."
+ 	@mkdir -p templates/.thumbs
+-	@convert $(CONVERT_OPTS) $(TEMPLATE_NAME) $@ 2> /dev/null || ( echo "($@ failed)" ; rm $@ ) ; \
++	@gm convert $(CONVERT_OPTS) $(TEMPLATE_NAME) $@ 2> /dev/null || ( echo "($@ failed)" ; rm $@ ) ; \
+ 
+ $(INSTALLED_THUMB_TEMPLATES): $(DATA_PREFIX)/%: %
+ 	@install -D -m 644 $< $@ || ( echo "NO THUMB $<" )
 @@ -962,9 +962,9 @@ install-dlls:
  	@cp -R win32/etc/ $(BIN_PREFIX)
  	@echo
