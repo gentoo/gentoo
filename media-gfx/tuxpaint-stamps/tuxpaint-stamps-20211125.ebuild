@@ -8,7 +8,7 @@ MY_P=${PN}-${PV:0:4}.${PV:4:2}.${PV:6:2}
 DESCRIPTION="Set of 'Rubber Stamp' images which can be used within Tux Paint"
 HOMEPAGE="http://www.tuxpaint.org/"
 SRC_URI="mirror://sourceforge/tuxpaint/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,10 +20,6 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-make-382.patch
 )
-
-src_prepare() {
-	default
-}
 
 src_install() {
 	emake PREFIX="${D}/usr" install-all
