@@ -57,3 +57,8 @@ src_configure() {
 	# Used by tests/Makefile
 	export GRUB_PREFIX=grub
 }
+
+src_compile() {
+	# https://bugs.gentoo.org/831334
+	emake HOST_MARCH=
+}
