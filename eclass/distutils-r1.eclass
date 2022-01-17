@@ -971,6 +971,12 @@ distutils-r1_python_compile() {
 			--no-compile-bytecode ||
 			die "installer failed"
 
+		# clean the build tree; otherwise we may end up with PyPy3
+		# extensions duplicated into CPython dists
+		if [[ ${DISTUTILS_USE_PEP517:-setuptools} == setuptools ]]; then
+			esetup.py clean -a
+		fi
+
 		# enable venv magic inside the install tree
 		mkdir -p "${root}"/usr/bin || die
 		ln -s "${PYTHON}" "${root}/usr/bin/${EPYTHON}" || die
