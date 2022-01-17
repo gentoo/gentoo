@@ -29,7 +29,9 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	local PATCHES=(
-		"${FILESDIR}"/${PN}-38-ia64-relro.patch
+		"${FILESDIR}"/efivar-38-ia64-relro.patch
+		"${FILESDIR}"/efivar-38-march-native.patch
+		"${FILESDIR}"/efivar-38-Makefile-dep.patch
 	)
 	default
 }
@@ -56,9 +58,4 @@ src_configure() {
 
 	# Used by tests/Makefile
 	export GRUB_PREFIX=grub
-}
-
-src_compile() {
-	# https://bugs.gentoo.org/831334
-	emake HOST_MARCH=
 }
