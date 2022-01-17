@@ -5,6 +5,7 @@
 		<email>whissi@gentoo.org</email>
 		<name>Thomas Deutschmann</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<bugs-to>https://github.com/kbr/fritzconnection/issues</bugs-to>
 		<remote-id type="github">kbr/fritzconnection</remote-id>
