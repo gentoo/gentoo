@@ -60,9 +60,9 @@ multilib_src_configure() {
 		use cpu_flags_ppc_altivec || local -x gcry_cv_cc_ppc_altivec=no
 		use cpu_flags_ppc_altivec || local -x gcry_cv_cc_ppc_altivec_cflags=no
 		# power8 vector extension, aka arch 2.07 ISA, also checked below via ppc-crypto-support
-		use cpu_flags_ppc_vsx2    || local -x gcry_cv_gcc_inline_asm_ppc_altivec=no
+		use cpu_flags_ppc_vsx2 || local -x gcry_cv_gcc_inline_asm_ppc_altivec=no
 		# power9 vector extension, aka arch 3.00 ISA
-		use cpu_flags_ppc_vsx3    || local -x gcry_cv_gcc_inline_asm_ppc_arch_3_00=no
+		use cpu_flags_ppc_vsx3 || local -x gcry_cv_gcc_inline_asm_ppc_arch_3_00=no
 	fi
 
 	local myeconfargs=(
