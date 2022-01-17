@@ -33,6 +33,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-17)
+# Java-packages with no consumers and depending on virtual/{jdk,jre}-1.6
+# Removal in 30 days.
+dev-java/felix-shell
+dev-java/felix-utils
+dev-java/glassfish-transaction-api
+dev-java/jnlp-api
+dev-java/kxml
+dev-java/myfaces-builder-annotations
+dev-java/nanoxml
+dev-java/osgi-obr
+dev-java/tomcat-jstl-spec
+
 # Jakov Smolić <jsmolic@gentoo.org> (2022-01-19)
 # The following list of packages is still using EAPI 5
 # and has no reverse dependencies.
