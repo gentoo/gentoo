@@ -10,6 +10,10 @@
     <email>ml@gentoo.org</email>
     <name>ML</name>
   </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
   <longdescription>
     Why3 is a platform for deductive program verification. It provides
     a rich language for specification and programming, called WhyML,
