@@ -85,7 +85,7 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	# fix ifconfig path in provided promises
-	find "${D}"/usr/share -name "*.cf" | xargs sed -i "s,/sbin/ifconfig,$(which ifconfig),g"
+	find "${ED}"/usr/share -name "*.cf" | xargs sed -i "s,/sbin/ifconfig,$(which ifconfig),g"
 
 	# Evil workaround for now..
 	mv "${ED}"/usr/share/doc/${PN}/ "${ED}"/usr/share/doc/${PF}
@@ -135,7 +135,7 @@ pkg_postinst() {
 	for fname in $(find "${EROOT}"/etc/runlevels/ -type f -or -type l -name 'cf-servd'); do
 		found=1
 		rm "$fname"
-		ln -s "${EROOT}"/etc/init.d/cf-serverd $(echo "$fname" | sed 's:cf-servd:cf-serverd:')
+		ln -s /etc/init.d/cf-serverd $(echo "$fname" | sed 's:cf-servd:cf-serverd:')
 	done
 
 	if [ "${found}" -eq 1 ]; then
