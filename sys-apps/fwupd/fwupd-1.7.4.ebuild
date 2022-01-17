@@ -86,6 +86,10 @@ DEPEND="
 	x11-libs/pango[introspection]
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.7.4-efivar38.patch" #831327
+)
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 	if use nvme ; then
