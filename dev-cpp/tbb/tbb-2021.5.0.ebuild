@@ -26,6 +26,8 @@ PATCHES=(
 	# should be in.. 2022?
 	"${FILESDIR}"/${PN}-2021.4.0-lto.patch
 	"${FILESDIR}"/${PN}-2021.5.0-musl-deepbind.patch
+	# need to verify this is in master
+	"${FILESDIR}"/${PN}-2021.5.0-musl-mallinfo.patch
 )
 
 src_configure() {
