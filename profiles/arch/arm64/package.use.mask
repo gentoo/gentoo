@@ -6,7 +6,7 @@
 sys-cluster/slurm ofed
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-16)
-# requires sys-apps/dbus-broker, which keyworded here.
+# requires sys-apps/dbus-broker, which is keyworded here.
 sys-apps/systemd -hostnamed-fallback
 
 # Sam James <sam@gentoo.org> (2021-10-31)
