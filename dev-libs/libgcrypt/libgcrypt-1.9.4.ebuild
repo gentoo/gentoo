@@ -12,7 +12,7 @@ SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 LICENSE="LGPL-2.1 MIT"
 SLOT="0/20" # subslot = soname major version
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+asm cpu_flags_arm_neon cpu_flags_arm_aes cpu_flags_arm_sha1 cpu_flags_arm_sha2 cpu_flags_ppc_vsx2 cpu_flags_x86_aes cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_padlock cpu_flags_x86_sha cpu_flags_x86_sse4_1 doc o-flag-munging static-libs"
+IUSE="+asm cpu_flags_arm_neon cpu_flags_arm_aes cpu_flags_arm_sha1 cpu_flags_arm_sha2 cpu_flags_ppc_altivec cpu_flags_ppc_vsx2 cpu_flags_ppc_vsx3 cpu_flags_x86_aes cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_padlock cpu_flags_x86_sha cpu_flags_x86_sse4_1 doc o-flag-munging static-libs"
 
 # Build system only has --disable-arm-crypto-support right now
 # If changing this, update src_configure logic too.
@@ -20,9 +20,13 @@ IUSE="+asm cpu_flags_arm_neon cpu_flags_arm_aes cpu_flags_arm_sha1 cpu_flags_arm
 # but this looks like it might change in future. This is just a safety check
 # in case people somehow do have a CPU which only supports some. They must
 # for now disable them all if that's the case.
-REQUIRED_USE="cpu_flags_arm_aes? ( cpu_flags_arm_sha1 cpu_flags_arm_sha2 )
+REQUIRED_USE="
+	cpu_flags_arm_aes? ( cpu_flags_arm_sha1 cpu_flags_arm_sha2 )
 	cpu_flags_arm_sha1? ( cpu_flags_arm_aes cpu_flags_arm_sha2 )
-	cpu_flags_arm_sha2? ( cpu_flags_arm_aes cpu_flags_arm_sha1 )"
+	cpu_flags_arm_sha2? ( cpu_flags_arm_aes cpu_flags_arm_sha1 )
+	cpu_flags_ppc_vsx3? ( cpu_flags_ppc_altivec cpu_flags_ppc_vsx2 )
+	cpu_flags_ppc_vsx2? ( cpu_flags_ppc_altivec )
+"
 
 RDEPEND=">=dev-libs/libgpg-error-1.25[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
@@ -49,6 +53,18 @@ multilib_src_configure() {
 		# function for that, we'll have to abuse cflags for this
 		append-cflags -Wa,--divide
 	fi
+
+	if [[ ${CHOST} == powerpc* ]] ; then
+		# ./configure does a lot of automagic, prevent that
+		# generic ppc32+ppc64 altivec
+		use cpu_flags_ppc_altivec || local -x gcry_cv_cc_ppc_altivec=no
+		use cpu_flags_ppc_altivec || local -x gcry_cv_cc_ppc_altivec_cflags=no
+		# power8 vector extension, aka arch 2.07 ISA, also checked below via ppc-crypto-support
+		use cpu_flags_ppc_vsx2    || local -x gcry_cv_gcc_inline_asm_ppc_altivec=no
+		# power9 vector extension, aka arch 3.00 ISA
+		use cpu_flags_ppc_vsx3    || local -x gcry_cv_gcc_inline_asm_ppc_arch_3_00=no
+	fi
+
 	local myeconfargs=(
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
 
