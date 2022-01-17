@@ -6,6 +6,10 @@
     <email>ml@gentoo.org</email>
     <name>ML</name>
   </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
   <longdescription>
     EasyCrypt is a toolset for reasoning about relational properties of
     probabilistic computations with adversarial code. Its main application is
