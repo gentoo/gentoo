@@ -49,10 +49,6 @@ app-text/enchant voikko
 # No drivers on this architecture support Vulkan
 media-libs/mesa vulkan vulkan-overlay zink
 
-# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
-# Mask until dev-libs/libfido2 is keyworded
-net-misc/openssh security-key
-
 # Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # USE=collab requires unkeyworded net-libs/loudmouth & dev-cpp/asio.
 # USE=grammar requires dev-libs/link-grammar.
