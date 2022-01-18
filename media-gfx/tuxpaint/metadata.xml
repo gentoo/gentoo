@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>rndxelement@protonmail.com</email>
+		<name>Philipp Rösner</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
   <longdescription>
   Tux Paint is a free drawing program designed for young children
   (kids ages 3 and up). It has a simple, easy-to-use interface, fun
