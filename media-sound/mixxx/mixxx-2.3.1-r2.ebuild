@@ -45,7 +45,7 @@ RDEPEND="
 	media-libs/libsndfile
 	media-libs/libsoundtouch
 	media-libs/libvorbis
-	media-libs/portaudio
+	media-libs/portaudio[alsa]
 	media-libs/portmidi
 	media-libs/rubberband
 	media-libs/taglib
