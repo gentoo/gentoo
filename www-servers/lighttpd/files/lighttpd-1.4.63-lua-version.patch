@@ -1,0 +1,71 @@
+diff --git a/meson_options.txt b/meson_options.txt
+index 92c85ec0..b68dfe20 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -181,3 +181,8 @@ option('moduledir',
+ 	value: 'lib/lighttpd',
+ 	description: 'Location to install modules to (relative to prefix)',
+ )
++
++option('lua_version',
++	type: 'string',
++	description: 'Look for a specific lua version',
++)
+diff --git a/src/meson.build b/src/meson.build
+index ac5dfa3f..3ca92486 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -390,29 +390,35 @@ endif
+ liblua = []
+ if get_option('with_lua')
+ 	found_lua = false
+-	foreach l: ['lua5.4', 'lua-5.4', 'lua5.3', 'lua-5.3', 'lua5.2', 'lua-5.2', 'lua5.1', 'lua-5.1', 'lua']
+-		if not(found_lua)
+-			liblua = dependency(l, required: false)
+-			if (liblua.found())
+-				found_lua = true
+-			else
+-				liblua = compiler.find_library(l, required: false)
++	lua_version = get_option('lua_version')
++	if (lua_version != '')
++		liblua = dependency(lua_version, required: false)
++		found_lua = true
++	else
++		foreach l: ['lua5.4', 'lua-5.4', 'lua5.3', 'lua-5.3', 'lua5.2', 'lua-5.2', 'lua5.1', 'lua-5.1', 'lua']
++			if not(found_lua)
++				liblua = dependency(l, required: false)
+ 				if (liblua.found())
+ 					found_lua = true
+-					liblua_found_header = false
+-					foreach ib: include_base_paths
+-						if not(liblua_found_header)
+-							i = join_paths(ib, l)
+-							if compiler.has_header(join_paths(i, 'lua.h'))
+-								liblua_found_header = true
+-								liblua += [ declare_dependency(include_directories: include_directories(i)) ]
++				else
++					liblua = compiler.find_library(l, required: false)
++					if (liblua.found())
++						found_lua = true
++						liblua_found_header = false
++						foreach ib: include_base_paths
++							if not(liblua_found_header)
++								i = join_paths(ib, l)
++								if compiler.has_header(join_paths(i, 'lua.h'))
++									liblua_found_header = true
++									liblua += [ declare_dependency(include_directories: include_directories(i)) ]
++								endif
+ 							endif
+-						endif
+-					endforeach
++						endforeach
++					endif
+ 				endif
+ 			endif
+-		endif
+-	endforeach
++		endforeach
++	endif
+ 	if not(found_lua)
+ 		error('Couldn\'t find any lua library')
+ 	endif
