@@ -1,0 +1,255 @@
+fix "invalid suffix on literal; C++11 requires a space between literal and string macro"
+
+--- a/src/dig.cpp
++++ b/src/dig.cpp
+@@ -378,10 +378,10 @@
+ 
+ 
+     if(state->skip) {
+-        fprintf(state->auditFile, "\nSkipped the first %"PRIu64 "bytes of %s...\n",
++        fprintf(state->auditFile, "\nSkipped the first %" PRIu64 "bytes of %s...\n",
+             state->skip, scalpelInputGetId(state->inReader));
+         if(state->modeVerbose) {
+-            fprintf(stdout, "\nSkipped the first %"PRIu64 "bytes of %s...\n",
++            fprintf(stdout, "\nSkipped the first %" PRIu64 "bytes of %s...\n",
+                 state->skip, scalpelInputGetId(state->inReader));
+         }
+     }
+@@ -448,7 +448,7 @@
+             // found a header--record location in header offsets database
+             if(state->modeVerbose) {
+ 
+-                fprintf(stdout, "A %s header was found at : %"PRIu64 "\n",
++                fprintf(stdout, "A %s header was found at : %" PRIu64 "\n",
+                     currentneedle->suffix,
+                     positionUseCoverageBlockmap(state, startLocation));
+ 
+@@ -478,7 +478,7 @@
+ 
+                     if(state->modeVerbose) {
+                         fprintf(stdout,
+-                            "Memory reallocation performed, total header storage = %"PRIu64 "\n",
++                            "Memory reallocation performed, total header storage = %" PRIu64 "\n",
+                             currentneedle->offsets.headerstorage);
+                     }
+             }
+@@ -494,7 +494,7 @@
+             // found a footer--record location in footer offsets database
+             if(state->modeVerbose) {
+ 
+-                fprintf(stdout, "A %s footer was found at : %"PRIu64 "\n",
++                fprintf(stdout, "A %s footer was found at : %" PRIu64 "\n",
+                     currentneedle->suffix,
+                     positionUseCoverageBlockmap(state, startLocation));
+ 
+@@ -524,7 +524,7 @@
+                     if(state->modeVerbose) {
+ 
+                         fprintf(stdout,
+-                            "Memory reallocation performed, total footer storage = %"PRIu64 "\n",
++                            "Memory reallocation performed, total footer storage = %" PRIu64 "\n",
+                             currentneedle->offsets.footerstorage);
+                     }
+             }
+@@ -618,7 +618,7 @@
+             // found a header--record location in header offsets database
+             if(state->modeVerbose) {
+ 
+-                fprintf(stdout, "A %s header was found at : %"PRIu64 "\n",
++                fprintf(stdout, "A %s header was found at : %" PRIu64 "\n",
+                     currentneedle->suffix,
+                     positionUseCoverageBlockmap(state, startLocation));
+             }
+@@ -647,7 +647,7 @@
+                     if(state->modeVerbose) {
+ 
+                         fprintf(stdout,
+-                            "Memory reallocation performed, total header storage = %"PRIu64 "\n",
++                            "Memory reallocation performed, total header storage = %" PRIu64 "\n",
+                             currentneedle->offsets.headerstorage);
+ 
+                     }
+@@ -756,7 +756,7 @@
+             startLocation = offset + (foundat[needlenum][i] - readbuffer);
+             if(state->modeVerbose) {
+ 
+-                fprintf(stdout, "A %s footer was found at : %"PRIu64 "\n",
++                fprintf(stdout, "A %s footer was found at : %" PRIu64 "\n",
+                     currentneedle->suffix,
+                     positionUseCoverageBlockmap(state, startLocation));
+             }
+@@ -784,7 +784,7 @@
+                     if(state->modeVerbose) {
+ 
+                         fprintf(stdout,
+-                            "Memory reallocation performed, total footer storage = %"PRIu64 "\n",
++                            "Memory reallocation performed, total footer storage = %" PRIu64 "\n",
+                             currentneedle->offsets.footerstorage);
+                     }
+             }
+@@ -991,7 +991,7 @@
+         state->inReader)) > longestneedle - 1) {
+ 
+             if(state->modeVerbose) {
+-                fprintf(stdout, "Read %"PRIu64 " bytes from image file.\n", bytesread);
++                fprintf(stdout, "Read %" PRIu64 " bytes from image file.\n", bytesread);
+             }
+ 
+             if((err = scalpelInputGetError(state->inReader))) {
+@@ -1106,7 +1106,7 @@
+ 
+ 
+     if(state->modeVerbose) {
+-        fprintf(stdout, "Total file size is %"PRIu64 " bytes\n", filesize);
++        fprintf(stdout, "Total file size is %" PRIu64 " bytes\n", filesize);
+     }
+ 
+ 
+@@ -1537,7 +1537,7 @@
+             fprintf(stdout, "%s", currentneedle->endtext);
+         }
+ 
+-        fprintf(stdout, "\" --> %"PRIu64 " files\n", currentneedle->numfilestocarve);
++        fprintf(stdout, "\" --> %" PRIu64 " files\n", currentneedle->numfilestocarve);
+ 
+ 
+     }
+@@ -1915,7 +1915,7 @@
+             (unsigned long
+             long)(ceil((double)filesize / (double)state->coverageblocksize));
+ 
+-        fprintf(stdout, "# of blocks in coverage blockmap is %"PRIu64 ".\n",
++        fprintf(stdout, "# of blocks in coverage blockmap is %" PRIu64 ".\n",
+             state->coveragenumblocks);
+ 
+ 
+@@ -1970,7 +1970,7 @@
+             (unsigned long long)ceil((double)filesize /
+             (double)state->coverageblocksize);
+ 
+-        fprintf(stdout, "# of blocks in coverage blockmap is %"PRIu64 ".\n",
++        fprintf(stdout, "# of blocks in coverage blockmap is %" PRIu64 ".\n",
+             state->coveragenumblocks);
+ 
+         fprintf(stdout, "Allocating and clearing in-core coverage bitmap.\n");
+@@ -2374,7 +2374,7 @@
+ 
+         if(state->modeVerbose && state->useCoverageBlockmap) {
+             fprintf(stdout,
+-                "Coverage map decreased current file position by %"PRIu64 " bytes.\n",
++                "Coverage map decreased current file position by %" PRIu64 " bytes.\n",
+                 (unsigned long long)decrease);
+         }
+     }
+@@ -2399,7 +2399,7 @@
+     if(state->useCoverageBlockmap) {
+         if(state->modeVerbose) {
+             fprintf(stdout,
+-                "Issuing coverage map-based READ, wants %"PRIu64 " bytes.\n",
++                "Issuing coverage map-based READ, wants %" PRIu64 " bytes.\n",
+                 neededbytes);
+         }
+ 
+@@ -2425,7 +2425,7 @@
+ 
+                 if(state->modeVerbose) {
+                     fprintf(stdout,
+-                        "fread using coverage map to skip %"PRIu64 " bytes.\n", bytestoskip);
++                        "fread using coverage map to skip %" PRIu64 " bytes.\n", bytestoskip);
+                 }
+ 
+                 scalpelInputSeeko(inReader, (off64_t) bytestoskip, SCALPEL_SEEK_CUR);
+@@ -2450,7 +2450,7 @@
+ 
+                 if(state->modeVerbose) {
+                     fprintf(stdout,
+-                        "fread using coverage map found %"PRIu64 " consecutive bytes.\n",
++                        "fread using coverage map found %" PRIu64 " consecutive bytes.\n",
+                         bytestoread);
+                 }
+ 
+@@ -2465,7 +2465,7 @@
+                 curpos += bytestoread;
+ 
+                 if(state->modeVerbose) {
+-                    fprintf(stdout, "fread using coverage map read %"PRIu64 " bytes.\n",
++                    fprintf(stdout, "fread using coverage map read %" PRIu64 " bytes.\n",
+                         bytesread);
+                 }
+         }
+@@ -2879,7 +2879,7 @@
+             }
+ 
+             // # of headers
+-            if(fprintf(dbfile, "%"PRIu64 "\n", currentneedle->offsets.numheaders)
++            if(fprintf(dbfile, "%" PRIu64 "\n", currentneedle->offsets.numheaders)
+                 <= 0) {
+ 
+                     fprintf(stderr,
+@@ -2893,7 +2893,7 @@
+             for(i = 0; i < currentneedle->offsets.numheaders; i++) {
+ #ifdef _WIN32
+                 if(fprintf
+-                    (dbfile, "%"PRIu64 "\n",
++                    (dbfile, "%" PRIu64 "\n",
+                     positionUseCoverageBlockmap(state,
+                     currentneedle->offsets.
+                     headers[i])) <= 0) {
+@@ -2913,7 +2913,7 @@
+             }
+ 
+             // # of footers
+-            if(fprintf(dbfile, "%"PRIu64 "\n", currentneedle->offsets.numfooters)
++            if(fprintf(dbfile, "%" PRIu64 "\n", currentneedle->offsets.numfooters)
+                 <= 0) {
+                     fprintf(stderr,
+                         "Error writing to header/footer database file: %s\n", fn);
+@@ -2925,7 +2925,7 @@
+             // all footer positions for current suffix
+             for(i = 0; i < currentneedle->offsets.numfooters; i++) {
+                 if(fprintf
+-                    (dbfile, "%"PRIu64 "\n",
++                    (dbfile, "%" PRIu64 "\n",
+                     positionUseCoverageBlockmap(state,
+                     currentneedle->offsets.
+                     footers[i])) <= 0) {
+--- a/src/helpers.cpp
++++ b/src/helpers.cpp
+@@ -528,7 +528,7 @@
+         if((scalpelInputSeeko(inReader, state->skip, SCALPEL_SEEK_SET))) {
+ 
+             fprintf(stderr,
+-                "ERROR: Couldn't skip %"PRIu64 " bytes at the start of input file %s\n",
++                "ERROR: Couldn't skip %" PRIu64 " bytes at the start of input file %s\n",
+                 state->skip, inputId);
+ 
+ 
+@@ -543,7 +543,7 @@
+         }
+         else {
+ 
+-            fprintf(stderr, "\nSkipped the first %"PRIu64 " bytes of %s...\n",
++            fprintf(stderr, "\nSkipped the first %" PRIu64 " bytes of %s...\n",
+                 state->skip, inputId);
+ 
+ 
+--- a/src/scalpel_exec.cpp
++++ b/src/scalpel_exec.cpp
+@@ -141,7 +141,7 @@
+     }
+ 
+     fprintf(stdout,
+-        "\nScalpel is done, files carved = %"PRIu64 ", elapsed  = %ld secs.\n",
++        "\nScalpel is done, files carved = %" PRIu64 ", elapsed  = %ld secs.\n",
+         state.fileswritten, (int)time(0) - starttime);
+ 
+     destroy_threading_model(&state);
+@@ -348,7 +348,7 @@
+             numopts++;
+             state->skip = strtoull(optarg, NULL, 10);
+             fprintf(stdout,
+-                "Skipping the first %"PRIu64 " bytes of each image file.\n", state->skip);
++                "Skipping the first %" PRIu64 " bytes of each image file.\n", state->skip);
+             break;
+ 
+         case 'c':
