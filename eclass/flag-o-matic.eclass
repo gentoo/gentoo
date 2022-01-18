@@ -80,6 +80,7 @@ _setup-allowed-flags() {
 		# Cosmetic/output related, see e.g. bug #830534
 		-fno-diagnostics-color '-fmessage-length=*'
 		-fno-ident -fpermissive -frecord-gcc-switches
+		-frecord-command-line
 		'-fdiagnostics*' '-fplugin*'
 		'-W*' -w
 
