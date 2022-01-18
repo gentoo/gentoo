@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,6 +32,11 @@ src_unpack() {
 }
 
 src_configure() {
+	# The DoConfig script builds its own libtool, but doesn't
+	# really try to set up the build environment (bug 718892).
+	export CC=$(tc-getCC)
+	export CXX=$(tc-getCXX)
+
 	# Currently the build system can build a static library or both
 	# static and shared libraries, but not only shared libraries. The
 	# name NTL_GMP_LIP is *not* a typo.
