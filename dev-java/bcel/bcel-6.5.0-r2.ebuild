@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -13,7 +13,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Apache Commons Bytecode Engineering Library"
-HOMEPAGE="https://commons.apache.org/proper/commons-bcel"
+HOMEPAGE="https://commons.apache.org/proper/commons-bcel/"
 SRC_URI="mirror://apache/commons/${PN}/source/${P}-src.tar.gz -> ${P}-sources.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -29,19 +29,13 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64
 
 DEPEND="
 	>=virtual/jdk-1.8:*
-	!arm? (
-		!arm64? (
-			!ppc64? (
-				test? (
-					dev-java/commons-collections:4
-					dev-java/commons-io:1
-					dev-java/commons-lang:3.6
-					dev-java/jna:4
-					dev-java/jmh-core:0
-					dev-java/oracle-javamail:0
-				)
-			)
-		)
+	test? (
+		dev-java/commons-collections:4
+		dev-java/commons-io:1
+		dev-java/commons-lang:3.6
+		dev-java/jna:4
+		dev-java/jmh-core:0
+		dev-java/oracle-javamail:0
 	)
 "
 
@@ -49,7 +43,7 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 "
 
-RESTRICT="!test? ( test ) arm? ( test ) arm64? ( test ) ppc64? ( test )"
+RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${P}-src"
 
