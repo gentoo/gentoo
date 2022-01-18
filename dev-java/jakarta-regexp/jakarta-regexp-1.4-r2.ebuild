@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="100% Pure Java Regular Expression package"
 SRC_URI="mirror://apache/jakarta/regexp/source/${P}.tar.gz"
-HOMEPAGE="http://jakarta.apache.org/"
+HOMEPAGE="https://jakarta.apache.org/"
 
 SLOT="${PV}"
 IUSE=""
