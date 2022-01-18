@@ -139,7 +139,7 @@ src_configure() {
 		$(cmake_use_find_package opengl OpenGL)
 		$(cmake_use_find_package panorama KF5ThreadWeaver)
 		$(cmake_use_find_package scanner KF5Sane)
-		$(cmake_use_find_package semantic-desktop KF5FileMetaData)
+		-DENABLE_KFILEMETADATASUPPORT=$(usex semantic-desktop)
 		$(cmake_use_find_package X X11)
 	)
 
