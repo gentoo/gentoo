@@ -61,7 +61,7 @@ src_configure() {
 		$(ocamlnet_use_enable tk tcl) \
 		$(ocamlnet_use_enable zip zip) \
 		$(ocamlnet_use_with httpd nethttpd) \
-		-cpp $(tc-getPROG CPP cpp) \
+		-cpp "$(tc-getPROG CPP cpp)" \
 		|| die "Error: econf failed!"
 }
 
