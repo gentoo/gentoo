@@ -119,6 +119,8 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	eapply "${FILESDIR}/desktop-file.patch" # bug 828071
+
 	# disable unwanted plugins
 	for plugin in "${QTC_PLUGINS[@]#[+-]}"; do
 		if ! use ${plugin%:*}; then
