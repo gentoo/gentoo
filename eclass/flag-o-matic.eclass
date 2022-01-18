@@ -62,6 +62,8 @@ _setup-allowed-flags() {
 		-gstabs -gstabs+
 		-gz
 
+		# Cosmetic/output related, see e.g. bug #830534
+		-fno-diagnostics-color '-fmessage-length=*'
 		-fno-ident -fpermissive -frecord-gcc-switches
 		'-fdiagnostics*' '-fplugin*'
 		'-W*' -w
