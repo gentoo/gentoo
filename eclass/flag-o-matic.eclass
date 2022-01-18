@@ -73,6 +73,7 @@ _setup-allowed-flags() {
 		-gdwarf '-gdwarf-*'
 		-gstabs -gstabs+
 		-gz
+		-glldb
 
 		# Cosmetic/output related, see e.g. bug #830534
 		-fno-diagnostics-color '-fmessage-length=*'
