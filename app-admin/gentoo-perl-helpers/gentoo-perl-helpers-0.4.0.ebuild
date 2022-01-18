@@ -27,7 +27,7 @@ RDEPEND="
 	$(: multiple --quiet, --format and anti-slot support)
 	>=app-portage/portage-utils-0.80_pre20190620
 "
-DEPEND=""
+DEPEND="app-arch/xz-utils[extra-filters]"
 
 src_prepare() {
 	sed -i -e "s^@@LIBDIR@@^${EPREFIX}/usr/lib/gentoo-perl-helpers^g" 		\
