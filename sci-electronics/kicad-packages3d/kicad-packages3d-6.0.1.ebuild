@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,11 +15,12 @@ else
 	MY_PV="${PV/_rc/-rc}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://gitlab.com/kicad/libraries/${PN}/-/archive/${MY_PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN/3d/3D}-${MY_PV}" # check for directory hash
 
 	if [[ ${PV} != *_rc* ]] ; then
 		KEYWORDS="~amd64 ~arm64 ~x86"
 	fi
+
+	S="${WORKDIR}/${PN/3d/3D}-${MY_PV}-530926da52f5226de6fc3167cf2e0671fb7f0cec"
 fi
 
 IUSE="+occ"
