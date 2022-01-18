@@ -109,6 +109,9 @@ _setup-allowed-flags() {
 		-mfix-rm7000 -mno-fix-rm7000 -mfix-r10000 -mno-fix-r10000
 		'-mr10k-cache-barrier=*' -mthumb -marm
 
+		# needed for arm64 (and in particular SCS)
+		-ffixed-x18
+
 		# gcc 4.5
 		-mno-fma4 -mno-movbe -mno-xop -mno-lwp
 		# gcc 4.6
