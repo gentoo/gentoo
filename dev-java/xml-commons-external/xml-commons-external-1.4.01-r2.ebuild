@@ -22,3 +22,5 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-mac
 RDEPEND=">=virtual/jre-1.8:*"
 DEPEND=">=virtual/jdk-1.8:*"
 BDEPEND="source? ( app-arch/zip )"
+
+JAVADOC_ARGS="-source 8"
