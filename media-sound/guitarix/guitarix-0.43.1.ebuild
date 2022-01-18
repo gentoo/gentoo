@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/guitarix/guitarix/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="bluetooth debug lv2 nls nsm +standalone zeroconf"
 REQUIRED_USE="|| ( lv2 standalone )"
 
