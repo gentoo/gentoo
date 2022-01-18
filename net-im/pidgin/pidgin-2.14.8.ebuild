@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -134,6 +134,7 @@ DYNAMIC_PRPLS="irc,jabber,simple"
 
 PATCHES=(
 	"${DISTDIR}/${PN}-2.10.9-irc_join_sleep.patch" # 577286
+	"${FILESDIR}/${P}-libpurple_test_fix.patch" #819774
 )
 
 pkg_pretend() {
