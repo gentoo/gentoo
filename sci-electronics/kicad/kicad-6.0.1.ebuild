@@ -93,7 +93,7 @@ src_configure() {
 	xdg_environment_reset
 
 	local mycmakeargs=(
-		-DKICAD_DOCS="${EPREFIX}/usr/share/doc/${PF}"
+		-DKICAD_DOCS="${EPREFIX}/usr/share/doc/${PN}-doc-${PV}"
 
 		-DKICAD_SCRIPTING_WXPYTHON=ON
 
