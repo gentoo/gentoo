@@ -55,6 +55,11 @@ _setup-allowed-flags() {
 		'-fstack-check*' -fno-stack-check
 		-fbounds-check -fbounds-checking
 		-fno-PIE -fno-pie -nopie -no-pie
+		# Spectre mitigations, bug #646076
+		'-mindirect-branch=*'
+		-mindirect-branch-register
+		'-mfunction-return=*'
+		-mretpoline
 
 		# Misc
 		-fno-unit-at-a-time -fno-strict-overflow
