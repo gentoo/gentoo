@@ -49,13 +49,20 @@ setup-allowed-flags() {
 _setup-allowed-flags() {
 	ALLOWED_FLAGS=(
 		-pipe -O '-O[12sg]' '-mcpu=*' '-march=*' '-mtune=*'
-		'-fstack-protector*'
-		'-fsanitize*' '-fno-sanitize*'
-		'-fstack-check*' -fno-stack-check
-		-fbounds-check -fbounds-checking -fno-strict-overflow
-		-fno-PIE -fno-pie -nopie -no-pie -fno-unit-at-a-time
 
-		# debugging symbols should generally be very safe to add
+		# Hardening flags
+		'-fstack-protector*'
+		'-fstack-check*' -fno-stack-check
+		-fbounds-check -fbounds-checking
+		-fno-PIE -fno-pie -nopie -no-pie
+
+		# Misc
+		-fno-unit-at-a-time -fno-strict-overflow
+
+		# Sanitizers
+		'-fsanitize*' '-fno-sanitize*'
+
+		# Debugging symbols should generally be very safe to add
 		-g '-g[0-9]'
 		-ggdb '-ggdb[0-9]'
 		-gdwarf '-gdwarf-*'
