@@ -337,11 +337,6 @@ x11-misc/habak
 # Removal in 30 days.
 dev-python/pytaglib
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-12-19)
-# Outdated and not needed anymore (this was a releng workaround)
-# Removal in 30 days, please compile it yourself from app-emulation/qemu
-app-emulation/qemu-riscv64-bin
-
 # Mart Raudsepp <leio@gentoo.org> (2021-12-18)
 # GNOME 42 mask
 >=gui-libs/libhandy-1.5.0
