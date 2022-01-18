@@ -26,6 +26,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${PV}-dump-fix-de-nid-issues.patch"
+	"${FILESDIR}/${PV}-fsck-add-missing-include.patch"
 )
 
 src_prepare() {
