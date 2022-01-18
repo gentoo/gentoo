@@ -70,8 +70,8 @@ IUSE="clang cpu_flags_arm_neon debug +jit lto test"
 # 91.5.0, only lld seems to be supported with lto.
 REQUIRED_USE="lto? ( clang )"
 
-RESTRICT="test"
-# RESTRICT="!test? ( test )"
+#RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
 	virtual/rust
@@ -343,6 +343,9 @@ src_configure() {
 		fi
 	fi
 
+	export MACH_USE_SYSTEM_PYTHON=1
+	export PIP_NO_CACHE_DIR=off
+
 	# Show flags we will use
 	einfo "Build CFLAGS:    ${CFLAGS}"
 	einfo "Build CXXFLAGS:  ${CXXFLAGS}"
@@ -369,61 +372,29 @@ src_test() {
 		die "Smoke-test failed: did interpreter initialization fail?"
 	fi
 
-	local -a KNOWN_TESTFAILURES
-	KNOWN_TESTFAILURES+=( non262/Date/reset-time-zone-cache-same-offset.js )
-	KNOWN_TESTFAILURES+=( non262/Date/time-zone-path.js )
-	KNOWN_TESTFAILURES+=( non262/Date/time-zones-historic.js )
-	KNOWN_TESTFAILURES+=( non262/Date/time-zones-imported.js )
-	KNOWN_TESTFAILURES+=( non262/Date/toString-localized.js )
-	KNOWN_TESTFAILURES+=( non262/Date/toString-localized-posix.js )
-	KNOWN_TESTFAILURES+=( non262/Intl/Date/toLocaleString_timeZone.js )
-	KNOWN_TESTFAILURES+=( non262/Intl/Date/toLocaleDateString_timeZone.js )
-	KNOWN_TESTFAILURES+=( non262/Intl/DateTimeFormat/format.js )
-	KNOWN_TESTFAILURES+=( non262/Intl/DateTimeFormat/format_timeZone.js )
-	KNOWN_TESTFAILURES+=( non262/Intl/DateTimeFormat/timeZone_backward_links.js )
-	KNOWN_TESTFAILURES+=( non262/Intl/DateTimeFormat/tz-environment-variable.js )
-	KNOWN_TESTFAILURES+=( non262/Intl/DisplayNames/language.js )
-	KNOWN_TESTFAILURES+=( non262/Intl/DisplayNames/region.js )
-	KNOWN_TESTFAILURES+=( non262/Intl/Locale/likely-subtags.js )
-	KNOWN_TESTFAILURES+=( non262/Intl/Locale/likely-subtags-generated.js )
-	KNOWN_TESTFAILURES+=( test262/intl402/Locale/prototype/minimize/removing-likely-subtags-first-adds-likely-subtags.js )
+	cp "${FILESDIR}"/spidermonkey-91-known-test-failures.txt "${T}"/known_failures.list || die
 
 	if use x86 ; then
-		KNOWN_TESTFAILURES+=( non262/Date/timeclip.js )
-		KNOWN_TESTFAILURES+=( test262/built-ins/Number/prototype/toPrecision/return-values.js )
-		KNOWN_TESTFAILURES+=( test262/language/types/number/S8.5_A2.1.js )
-		KNOWN_TESTFAILURES+=( test262/language/types/number/S8.5_A2.2.js )
+		echo "non262/Date/timeclip.js" >> "${T}"/known_failures.list
+		echo "test262/built-ins/Number/prototype/toPrecision/return-values.js" >> "${T}"/known_failures.list
+		echo "test262/language/types/number/S8.5_A2.1.js" >> "${T}"/known_failures.list
+		echo "test262/language/types/number/S8.5_A2.2.js" >> "${T}"/known_failures.list
 	fi
 
 	if [[ $(tc-endian) == "big" ]] ; then
-		KNOWN_TESTFAILURES+=( test262/built-ins/TypedArray/prototype/set/typedarray-arg-set-values-same-buffer-other-type.js )
+		echo "non262/extensions/clone-errors.js" >> "${T}"/known_failures.list
+		echo "test262/built-ins/Date/UTC/fp-evaluation-order.js" >> "${T}"/known_failures.list
+		echo "test262/built-ins/TypedArray/prototype/set/typedarray-arg-set-values-same-buffer-other-type.js" >> "${T}"/known_failures.list
 	fi
 
-	echo "" > "${T}"/known_failures.list || die
-
-	local KNOWN_TESTFAILURE
-	for KNOWN_TESTFAILURE in ${KNOWN_TESTFAILURES[@]} ; do
-		echo "${KNOWN_TESTFAILURE}" >> "${T}"/known_failures.list
-	done
-
-	PYTHONPATH="${S}/tests/lib" \
-		${PYTHON} \
+	${EPYTHON} \
 		"${S}"/tests/jstests.py -d -s -t 1800 --wpt=disabled --no-progress \
 		--exclude-file="${T}"/known_failures.list \
 		"${MOZJS_BUILDDIR}"/js/src/js \
 		|| die
 
 	if use jit ; then
-		KNOWN_TESTFAILURES=()
-
-		echo "" > "${T}"/known_failures.list || die
-
-		for KNOWN_TESTFAILURE in ${KNOWN_TESTFAILURES[@]} ; do
-			echo "${KNOWN_TESTFAILURE}" >> "${T}"/known_failures.list
-		done
-
-		PYTHONPATH="${S}/tests/lib" \
-			${PYTHON} \
+		${EPYTHON} \
 			"${S}"/tests/jstests.py -d -s -t 1800 --wpt=disabled --no-progress \
 			--exclude-file="${T}"/known_failures.list \
 			"${MOZJS_BUILDDIR}"/js/src/js basic \
