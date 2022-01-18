@@ -93,6 +93,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.38.1-build-Make-colord-and-wacom-optional-and-controllabl.patch
 	"${FILESDIR}"/${PN}-3.38.1-build-Allow-NM-optional-on-Linux.patch
 	"${FILESDIR}"/${PN}-3.38.1-Allow-udev-optional-on-Linux.patch
+	"${FILESDIR}"/${P}-meson-0.61-build.patch
 )
 
 python_check_deps() {
