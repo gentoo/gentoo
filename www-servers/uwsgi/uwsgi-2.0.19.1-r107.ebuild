@@ -17,7 +17,7 @@ USE_PHP="php7-3 php7-4" # deps must be registered separately below
 
 MY_P="${P/_/-}"
 
-inherit flag-o-matic lua-single pax-utils php-ext-source-r3 python-r1 ruby-ng
+inherit lua-single pax-utils php-ext-source-r3 python-r1 ruby-ng
 
 DESCRIPTION="uWSGI server for Python web applications"
 HOMEPAGE="https://projects.unbit.it/uwsgi/"
