@@ -32,6 +32,7 @@ src_prepare() {
 		"${FILESDIR}"/efivar-38-ia64-relro.patch
 		"${FILESDIR}"/efivar-38-march-native.patch
 		"${FILESDIR}"/efivar-38-Makefile-dep.patch
+		"${FILESDIR}"/efivar-38-binutils-2.36.patch
 	)
 	default
 }
