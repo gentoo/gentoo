@@ -24,6 +24,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${PV}-dump-fix-de-nid-issues.patch"
+)
+
 src_prepare() {
 	default
 	eautoreconf
