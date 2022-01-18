@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 
 inherit distutils-r1
 
@@ -21,7 +21,6 @@ BDEPEND="
 	test? (
 		dev-python/atomicwrites[${PYTHON_USEDEP}]
 		dev-python/regex[${PYTHON_USEDEP}]
-		dev-python/js2py[${PYTHON_USEDEP}]
 	)"
 
 python_test() {
