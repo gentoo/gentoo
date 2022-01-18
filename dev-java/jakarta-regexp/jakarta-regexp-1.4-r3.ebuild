@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 JAVA_PKG_IUSE="doc source"
 
@@ -14,20 +14,19 @@ HOMEPAGE="https://jakarta.apache.org/"
 SLOT="${PV}"
 IUSE=""
 LICENSE="Apache-1.1"
-KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 
 RDEPEND="
-	>=virtual/jre-1.6"
+	>=virtual/jre-1.8:*"
 
 DEPEND="
-	>=virtual/jdk-1.6
-	source? ( app-arch/zip )"
+	>=virtual/jdk-1.8:*"
 
 S="${WORKDIR}/${P}"
 
 JAVA_SRC_DIR="src/java"
 
-java_prepare() {
+src_prepare() {
+	default
 	java-pkg_clean
-	rm build.xml || die
 }
