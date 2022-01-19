@@ -33,6 +33,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolić <jsmolic@gentoo.org> (2022-01-19)
+# The following list of packages is still using EAPI 5
+# and has no reverse dependencies.
+# Removal on 2022-02-18.
+dev-java/jtds
+dev-java/ecj-gcj
+dev-java/freehep-graphicsio-tests
+dev-java/freehep-graphicsio
+dev-java/freehep-graphics2d
+dev-java/colt
+
 # James Beddek <telans@posteo.de> (2022-01-19)
 # FFmpeg 5.0 ABI/API changes break many packages.
 # Masking for tracker/tinderbox.
