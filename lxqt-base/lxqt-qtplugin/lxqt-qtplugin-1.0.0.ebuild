@@ -26,13 +26,12 @@ BDEPEND="
 	>=dev-util/lxqt-build-tools-0.10.0
 "
 DEPEND="
-	dev-libs/libdbusmenu-qt:=[qt5(+)]
+	dev-libs/libdbusmenu-qt[qt5(+)]
 	>=dev-libs/libqtxdg-3.7.0
 	>=dev-qt/qtcore-5.15:5
 	>=dev-qt/qtdbus-5.15:5
 	>=dev-qt/qtgui-5.15:5=
 	>=dev-qt/qtwidgets-5.15:5
-	>=dev-qt/qtx11extras-5.15:5
 	=x11-libs/libfm-qt-${MY_PV}*
 "
 RDEPEND="${DEPEND}"

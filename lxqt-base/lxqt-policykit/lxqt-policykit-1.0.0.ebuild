@@ -27,12 +27,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="
-	dev-libs/glib:2
-	>=dev-libs/libqtxdg-3.3.1
 	>=dev-qt/qtcore-5.15:5
 	>=dev-qt/qtgui-5.15:5
 	>=dev-qt/qtwidgets-5.15:5
-	=lxqt-base/liblxqt-${MY_PV}*
+	=lxqt-base/liblxqt-${MY_PV}*:=
 	>=sys-auth/polkit-qt-0.113.0
 "
 RDEPEND="${DEPEND}"

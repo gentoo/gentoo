@@ -27,7 +27,7 @@ DEPEND="
 	>=dev-qt/qtwidgets-5.15:5
 	>=dev-qt/qtx11extras-5.15:5
 	x11-libs/libX11
-	~x11-libs/qtermwidget-${PV}
+	~x11-libs/qtermwidget-${PV}:=
 "
 RDEPEND="${DEPEND}"
 

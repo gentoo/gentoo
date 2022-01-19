@@ -33,9 +33,10 @@ DEPEND="
 	>=dev-qt/qtgui-5.15:5
 	>=dev-qt/qtsvg-5.15:5
 	>=dev-qt/qtwidgets-5.15:5
+	kde-frameworks/kwindowsystem:5
 	kde-frameworks/kidletime:5
 	kde-frameworks/solid:5
-	=lxqt-base/liblxqt-${MY_PV}*
+	=lxqt-base/liblxqt-${MY_PV}*:=
 	=lxqt-base/lxqt-globalkeys-${MY_PV}*
 	sys-power/upower
 "

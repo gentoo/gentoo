@@ -24,7 +24,7 @@ DEPEND="
 	>=dev-qt/qtgui-5.15:5
 	>=dev-qt/qtwidgets-5.15:5
 	>=dev-qt/qtx11extras-5.15:5
-	>=lxqt-base/liblxqt-1
+	=lxqt-base/liblxqt-1*:=
 "
 RDEPEND="${DEPEND}"
 

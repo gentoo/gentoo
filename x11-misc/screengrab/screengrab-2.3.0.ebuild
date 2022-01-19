@@ -25,8 +25,7 @@ DEPEND="
 	>=dev-qt/qtx11extras-5.15:5
 	kde-frameworks/kwindowsystem:5[X]
 	x11-libs/libX11
-	x11-libs/libxcb
-	x11-libs/libXfixes
+	x11-libs/libxcb:=
 "
 RDEPEND="${DEPEND}"
 
