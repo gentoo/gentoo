@@ -36,6 +36,7 @@ media-gfx/imagemagick svg
 # James Le Cuirot <chewi@gentoo.org> (2021-09-19)
 # Requires Ruby, which is broken on m68k.
 app-text/htmltidy test
+net-misc/chrony html
 sys-block/thin-provisioning-tools test
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-19)
