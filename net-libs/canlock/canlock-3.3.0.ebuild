@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit toolchain-funcs
-
 DESCRIPTION="A library for creating and verifying Usenet cancel locks"
 HOMEPAGE="https://micha.freeshell.org/libcanlock/"
 SRC_URI="https://micha.freeshell.org/lib${PN}/src/lib${P}.tar.bz2"
@@ -12,7 +10,7 @@ S="${WORKDIR}/lib${P}"
 
 LICENSE="BSD MIT"
 SLOT="0/3"
-KEYWORDS="amd64 arm ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="header-parser +legacy"
 
 BDEPEND="
