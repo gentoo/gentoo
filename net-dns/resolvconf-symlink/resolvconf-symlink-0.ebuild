@@ -10,7 +10,7 @@ S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="~amd64 ~m68k ~riscv ~x86"
 IUSE="+symlink"
 
 pkg_preinst() {
