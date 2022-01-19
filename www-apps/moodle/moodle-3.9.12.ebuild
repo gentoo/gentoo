@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -39,7 +39,7 @@ IUSE="${DB_TYPES} ${AUTHENTICATION_MODES} vhosts"
 # and the moodle documentation for other possibilities.
 DEPEND=""
 RDEPEND="
-	>=dev-lang/php-7.3[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
+	>=dev-lang/php-7.2[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
 	virtual/httpd-php
 	virtual/cron"
 
