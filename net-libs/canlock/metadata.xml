@@ -9,8 +9,7 @@
 	</maintainer>
 </upstream>
 <use>
-	<flag name="legacy" restrict="&gt;=net-libs/canlock-3.0">
-		Enable or disable building legacy code (v2 compatible)
-	</flag>
+	<flag name="header-parser">Build article header parsers</flag>
+	<flag name="legacy">Build legacy API (v2 compatible)</flag>
 </use>
 </pkgmetadata>
