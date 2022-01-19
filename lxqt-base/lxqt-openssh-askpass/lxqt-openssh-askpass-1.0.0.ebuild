@@ -27,7 +27,7 @@ BDEPEND="
 DEPEND="
 	>=dev-qt/qtcore-5.15:5
 	>=dev-qt/qtwidgets-5.15:5
-	=lxqt-base/liblxqt-${MY_PV}*
+	=lxqt-base/liblxqt-${MY_PV}*:=
 "
 RDEPEND="${DEPEND}"
 

@@ -22,9 +22,9 @@ SLOT="0"
 BDEPEND=">=dev-util/lxqt-build-tools-0.10.0"
 DEPEND="
 	app-admin/sudo
-	>=dev-libs/libqtxdg-3.3.1
+	>=dev-qt/qtgui-5.15:5
 	>=dev-qt/qtcore-5.15:5
 	>=dev-qt/qtwidgets-5.15:5
-	~lxqt-base/liblxqt-${PV}
+	~lxqt-base/liblxqt-${PV}:=
 "
 RDEPEND="${DEPEND}"

@@ -27,14 +27,14 @@ BDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="
-	>=dev-cpp/muParser-2.2.3:=
+	>=dev-cpp/muParser-2.2.3
 	>=dev-libs/libqtxdg-3.3.1
 	>=dev-qt/qtcore-5.15:5
 	>=dev-qt/qtgui-5.15:5
 	>=dev-qt/qtwidgets-5.15:5
 	>=dev-qt/qtxml-5.15:5
 	kde-frameworks/kwindowsystem:5
-	=lxqt-base/liblxqt-${MY_PV}*
+	=lxqt-base/liblxqt-${MY_PV}*:=
 	=lxqt-base/lxqt-globalkeys-${MY_PV}*
 "
 RDEPEND="${DEPEND}"
