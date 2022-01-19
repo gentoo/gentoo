@@ -192,6 +192,23 @@ dev-java/dnsjava
 dev-python/intreehooks
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-01-13)
+# The following list of packages is still using EAPI 5
+# and has no reverse dependencies.
+# Removal on 2022-02-12.
+dev-java/jargs
+dev-java/jtds
+dev-java/ecj-gcj
+dev-java/freehep-graphicsio-tests
+dev-java/freehep-graphicsio
+dev-java/freehep-graphics2d
+dev-java/commons-jexl
+dev-java/colt
+dev-java/touchgraph-graphlayout
+dev-java/junitperf
+dev-java/tomcat-jstl-impl
+dev-java/glassfish-servlet-api
+
+# Jakov Smolić <jsmolic@gentoo.org> (2022-01-13)
 # Dead upstream, uses EAPI 5, multiple open bugs, no revdeps,
 # no other distro is packaging this.
 # Removal on 2022-02-12. Bug #828703.
