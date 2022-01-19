@@ -13,8 +13,9 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Gson JSON library"
-HOMEPAGE="https://github.com/google/gson/gson"
+HOMEPAGE="https://github.com/google/gson"
 SRC_URI="https://github.com/google/${PN}/archive/${PN}-parent-${PV}.tar.gz -> ${P}-sources.tar.gz"
+
 LICENSE="Apache-2.0"
 SLOT="2.6"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
@@ -53,4 +54,12 @@ JAVA_TEST_EXCLUDES=(
 src_prepare() {
 	default
 	sed -i "s/\${project.version}/${PV}/g" src/main/java-templates/com/google/gson/internal/GsonBuildConfig.java || die "Failed to set version"
+}
+
+src_test() {
+	local vm_version="$(java-config -g PROVIDES_VERSION)"
+	if [[ "${vm_version}" == "1.8" ]] ; then
+		JAVA_TEST_EXCLUDES+=( "com.google.gson.JsonArrayTest" )
+	fi
+	java-pkg-simple_src_test
 }
