@@ -31,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-test-disable-largefile.patch
 	"${FILESDIR}"/${P}-tests.patch
 	"${FILESDIR}"/${P}-testsuite-python-write.patch
+	"${FILESDIR}"/${P}-widgets.patch
 )
 
 src_configure() {
