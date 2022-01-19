@@ -18,6 +18,9 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+BDEPEND="
+	dev-python/pytest[${PYTHON_USEDEP}]"
+
 distutils_enable_tests pytest
 
 python_test() {
