@@ -26,12 +26,13 @@ BDEPEND="
 	>=dev-util/lxqt-build-tools-0.10.0
 "
 DEPEND="
+	dev-libs/glib:2
 	dev-libs/json-glib
 	>=dev-qt/qtcore-5.15:5
 	>=dev-qt/qtgui-5.15:5
 	>=dev-qt/qtwidgets-5.15:5
 	>=dev-qt/qtx11extras-5.15:5
-	>=x11-libs/libfm-qt-1
+	>=x11-libs/libfm-qt-1:=
 "
 RDEPEND="${DEPEND}"
 

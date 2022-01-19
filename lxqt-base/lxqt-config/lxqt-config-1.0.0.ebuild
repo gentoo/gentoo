@@ -33,6 +33,7 @@ DEPEND="
 	>=dev-qt/qtsvg-5.15:5
 	>=dev-qt/qtx11extras-5.15:5
 	>=dev-qt/qtxml-5.15:5
+	kde-frameworks/kwindowsystem:5
 	=lxqt-base/liblxqt-${MY_PV}*:=
 	sys-libs/zlib:=
 	x11-apps/setxkbmap

@@ -32,7 +32,7 @@ DEPEND="
 	>=dev-qt/qtx11extras-5.15:5
 	>=lxde-base/menu-cache-1.1.0:=
 	media-libs/libexif
-	x11-libs/libxcb
+	x11-libs/libxcb:=
 "
 RDEPEND="${DEPEND}"
 

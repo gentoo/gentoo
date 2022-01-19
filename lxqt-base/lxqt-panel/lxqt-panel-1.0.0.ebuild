@@ -52,7 +52,7 @@ DEPEND="
 	x11-libs/libX11
 	cpuload? ( sys-libs/libstatgrab )
 	kbindicator? ( x11-libs/libxkbcommon )
-	lm-sensors? ( sys-apps/lm-sensors )
+	lm-sensors? ( sys-apps/lm-sensors:= )
 	mount? ( kde-frameworks/solid:5 )
 	networkmonitor? ( sys-libs/libstatgrab )
 	statusnotifier? (
