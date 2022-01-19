@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,7 +38,6 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.1-noreadline.patch
-	"${FILESDIR}"/${PN}-3.2.1-configure-fix-audit-parameter-check.patch
 	"${FILESDIR}"/${PN}-3.2.1-musl-getopt-order.patch
 )
 
