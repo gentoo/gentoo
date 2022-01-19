@@ -37,7 +37,6 @@
 # The following list of packages is still using EAPI 5
 # and has no reverse dependencies.
 # Removal on 2022-02-18.
-dev-java/jtds
 dev-java/ecj-gcj
 dev-java/freehep-graphicsio-tests
 dev-java/freehep-graphicsio
