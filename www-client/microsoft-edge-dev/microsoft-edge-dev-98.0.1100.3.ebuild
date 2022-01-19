@@ -1,4 +1,4 @@
-# Copyright 2011-2021 Gentoo Authors
+# Copyright 2011-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -91,6 +91,10 @@ src_install() {
 
 	gzip -d usr/share/doc/${PF}/changelog.gz || die
 	gzip -d usr/share/man/man1/${MY_PN}.1.gz || die
+	if [[ -L usr/share/man/man1/${PN}.1.gz ]]; then
+		rm usr/share/man/man1/${PN}.1.gz || die
+		dosym ${MY_PN}.1 usr/share/man/man1/${PN}.1
+	fi
 
 	local suffix=
 	[[ ${PN} == microsoft-edge-beta ]] && suffix=_beta
