@@ -971,6 +971,12 @@ distutils-r1_python_compile() {
 			--no-compile-bytecode ||
 			die "installer failed"
 
+		# TODO: workaround for a bug in installer; remove once we depend
+		# on a properly fixed version
+		if [[ -d ${root}/usr/bin ]]; then
+			chmod +x "${root}"/usr/bin/* || die
+		fi
+
 		# clean the build tree; otherwise we may end up with PyPy3
 		# extensions duplicated into CPython dists
 		if [[ ${DISTUTILS_USE_PEP517:-setuptools} == setuptools ]]; then
