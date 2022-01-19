@@ -44,6 +44,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source system-bootstrap systemtap"
 
+REQUIRED_USE="!system-bootstrap? ( jbootstrap )"
+
 COMMON_DEPEND="
 	media-libs/freetype:2=
 	media-libs/giflib:0/7
