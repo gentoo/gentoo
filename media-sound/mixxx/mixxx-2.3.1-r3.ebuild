@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake xdg udev
+inherit cmake plocale xdg udev
 
 DESCRIPTION="Advanced Digital DJ tool based on Qt"
 HOMEPAGE="https://www.mixxx.org/"
@@ -20,7 +20,7 @@ else
 fi
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac doc ffmpeg hid keyfinder lv2 modplug mp3 mp4 opus qtkeychain shout wavpack"
+IUSE="aac ffmpeg hid keyfinder lv2 modplug mp3 mp4 opus qtkeychain shout wavpack"
 
 RDEPEND="
 	dev-db/sqlite
@@ -88,6 +88,22 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.1-benchmark_compile_fix.patch
 )
 
+PLOCALES="
+	ca cs de en es fi fr gl id it ja kn nl pl pt ro ru sl sq sr tr zh-CN zh-TW
+"
+PLOCALE_BACKUP="en"
+
+mixxx_set_globals() {
+	local lang
+	local MANUAL_URI_BASE="https://downloads.mixxx.org/manual/$(ver_cut 1-2)"
+	for lang in ${PLOCALES/ en} ; do
+		SRC_URI+=" l10n_${lang}? ( ${MANUAL_URI_BASE}/${PN}-manual-$(ver_cut 1-2)-${lang/ja/ja-JP}.pdf )"
+		IUSE+=" l10n_${lang}"
+	done
+	SRC_URI+=" ${MANUAL_URI_BASE}/${PN}-manual-$(ver_cut 1-2)-en.pdf"
+}
+mixxx_set_globals
+
 src_prepare() {
 	cmake_src_prepare
 }
@@ -129,8 +145,9 @@ src_compile() {
 src_install() {
 	cmake_src_install
 	udev_newrules "${S}"/res/linux/mixxx-usb-uaccess.rules 69-mixxx-usb-uaccess.rules
-
-	if use doc ; then
-		dodoc README Mixxx-Manual.pdf
-	fi
+	dodoc README.md CHANGELOG.md
+	local locale
+	for locale in $(plocale_get_locales) ; do
+		dodoc ${DISTDIR}/${PN}-manual-$(ver_cut 1-2)-${locale/ja/ja-JP}.pdf
+	done
 }
