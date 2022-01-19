@@ -37,7 +37,6 @@ JAVA_SRC_DIR="src/main/java"
 JAVADOC_ARGS="-source 8"
 # https://github.com/mvel/mvel/blob/mvel2-2.3.2.Final/pom.xml#L131
 JAVA_MAIN_CLASS="org.mvel2.sh.Main"
-JAVA_LAUNCHER_FILENAME="${PN}"
 
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 JAVA_TEST_SRC_DIR="src/test/java"
