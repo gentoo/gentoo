@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-01-13)
-# Prefer to use openjdk-bin for bootstrapping
+# Force to use installed openjdk{,-bin} for bootstrapping
 dev-java/openjdk:17 system-bootstrap
 
 # Joonas Niilola <juippis@gentoo.org> (2022-01-08)
