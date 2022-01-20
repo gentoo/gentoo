@@ -1068,7 +1068,7 @@ distutils-r1_python_test() {
 
 	case ${_DISTUTILS_TEST_RUNNER} in
 		nose)
-			nosetests -v "${@}"
+			"${EPYTHON}" -m nose -v "${@}"
 			;;
 		pytest)
 			epytest
