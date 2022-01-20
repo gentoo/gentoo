@@ -91,7 +91,6 @@ pkg_setup() {
 		PROC_FS
 		~DRM_KMS_HELPER
 		~SYSVIPC
-		~!DRM_SIMPLEDRM
 		~!LOCKDEP
 		~!SLUB_DEBUG_ON
 		!DEBUG_MUTEXES"
@@ -99,11 +98,7 @@ pkg_setup() {
 	of drivers (no custom config), and for wayland / nvidia-drm.modeset=1.
 	Cannot be directly selected in the kernel's menuconfig, and may need
 	selection of a DRM device even if unused, e.g. CONFIG_DRM_AMDGPU=m or
-	DRM_I915=y, DRM_NOUVEAU=m also acceptable if a module and not built-in.
-	Note: DRM_SIMPLEDRM may cause issues and may be better disabled for now."
-	local ERROR_DRM_SIMPLEDRM="CONFIG_DRM_SIMPLEDRM: is set but may or may not lead to a blank
-	console with a NVIDIA GPU. If you experience issues, try
-	disabling it and instead use FB_EFI or FB_SIMPLE for now."
+	DRM_I915=y, DRM_NOUVEAU=m also acceptable if a module and not built-in."
 
 	use amd64 && kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
 
