@@ -13,7 +13,7 @@ SRC_URI="
 "
 S="${WORKDIR}"
 
-KEYWORDS="-* ~amd64 x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="prog-express"
 SLOT="0"
 
