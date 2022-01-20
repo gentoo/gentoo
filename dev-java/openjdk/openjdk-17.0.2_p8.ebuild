@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit check-reqs eapi7-ver flag-o-matic java-pkg-2 java-vm-2 multiprocessing pax-utils toolchain-funcs
+inherit check-reqs eapi7-ver flag-o-matic java-pkg-2 java-vm-2 multiprocessing toolchain-funcs
 
 # variable name format: <UPPERCASE_KEYWORD>_XPAK
 PPC64_XPAK="17.0.1_p12" # big-endian bootstrap tarball
@@ -40,7 +40,7 @@ SRC_URI="
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
-IUSE="alsa big-endian cups debug doc examples gentoo-vm headless-awt javafx +jbootstrap pch selinux source system-bootstrap systemtap"
+IUSE="alsa big-endian cups debug doc examples gentoo-vm headless-awt javafx +jbootstrap selinux source system-bootstrap systemtap"
 
 COMMON_DEPEND="
 	media-libs/freetype:2=
@@ -179,6 +179,7 @@ src_configure() {
 
 	local myconf=(
 		--disable-ccache
+		--disable-precompiled-headers
 		--disable-warnings-as-errors
 		--enable-full-docs=no
 		--with-boot-jdk="${JDK_HOME}"
@@ -213,13 +214,6 @@ src_configure() {
 		else
 			die "${zip} not found or not readable"
 		fi
-	fi
-
-	# PaX breaks pch, bug #601016
-	if use pch && ! host-is-pax; then
-		myconf+=( --enable-precompiled-headers )
-	else
-		myconf+=( --disable-precompiled-headers )
 	fi
 
 	if use !system-bootstrap ; then
