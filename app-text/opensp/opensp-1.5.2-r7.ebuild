@@ -1,14 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit flag-o-matic autotools
+
+inherit autotools flag-o-matic
 
 MY_P=${P/opensp/OpenSP}
 
 DESCRIPTION="A free, object-oriented toolkit for SGML parsing and entity management"
 HOMEPAGE="http://openjade.sourceforge.net/"
 SRC_URI="mirror://sourceforge/openjade/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
@@ -16,11 +18,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 IUSE="doc elibc_glibc nls static-libs test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	elibc_glibc? ( net-libs/libnsl:0= )"
-
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )
+RDEPEND="elibc_glibc? ( net-libs/libnsl:0= )"
+DEPEND="${RDEPEND}"
+BDEPEND="nls? ( sys-devel/gettext )
 	doc? (
 		app-text/xmlto
 		app-text/docbook-xml-dtd:4.1.2
@@ -30,8 +30,6 @@ DEPEND="${RDEPEND}
 		app-text/openjade
 		app-text/sgml-common
 	)"
-
-S=${WORKDIR}/${MY_P}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-segfault.patch
