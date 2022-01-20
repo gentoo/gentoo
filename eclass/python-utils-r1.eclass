@@ -1250,7 +1250,8 @@ build_sphinx() {
 	sed -i -e 's:^intersphinx_mapping:disabled_&:' \
 		"${dir}"/conf.py || die
 	# not all packages include the Makefile in pypi tarball
-	sphinx-build -b html -d "${dir}"/_build/doctrees "${dir}" \
+	"${EPYTHON}" -m sphinx.cmd.build \
+		-b html -d "${dir}"/_build/doctrees "${dir}" \
 		"${dir}"/_build/html || die
 
 	HTML_DOCS+=( "${dir}/_build/html/." )
