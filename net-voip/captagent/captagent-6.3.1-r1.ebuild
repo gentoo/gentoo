@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,8 +15,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="ipv6 mysql pcre redis ssl"
 
 PATCHES=(
-	# https://github.com/sipcapture/captagent/pull/239 (should be accepted).
+	# https://github.com/sipcapture/captagent/pull/239 (merged).
 	"${FILESDIR}/${P}-gcc10.patch"
+	# https://github.com/sipcapture/captagent/pull/245 (merged).
+	"${FILESDIR}/${P}-captagent-6.3.1-r1-clang.patch"
 	# Already upstreamed for next version.
 	"${FILESDIR}/${P}-configure.patch"
 )
