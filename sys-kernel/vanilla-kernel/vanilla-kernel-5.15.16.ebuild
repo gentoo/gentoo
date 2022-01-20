@@ -81,6 +81,9 @@ src_prepare() {
 			cp "${DISTDIR}/kernel-aarch64-fedora.config.${CONFIG_VER}" .config || die
 			biendian=true
 			;;
+		hppa)
+			return
+			;;
 		ppc)
 			# assume powermac/powerbook defconfig
 			# we still package.use.force savedconfig
