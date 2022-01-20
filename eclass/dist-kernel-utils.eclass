@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dist-kernel-utils.eclass
@@ -72,7 +72,7 @@ dist-kernel_get_image_path() {
 		arm)
 			echo arch/arm/boot/zImage
 			;;
-		ppc|ppc64)
+		hppa|ppc|ppc64)
 			# https://www.kernel.org/doc/html/latest/powerpc/bootwrapper.html
 			# ./ is required because of ${image_path%/*}
 			# substitutions in the code
