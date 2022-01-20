@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND=">=dev-python/requests-2.20[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
-		>=dev-util/stripe-mock-0.115.0
+		>=dev-util/stripe-mock-0.117.0
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		net-misc/curl
 	)
