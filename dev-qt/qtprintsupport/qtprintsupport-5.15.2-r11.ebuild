@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-KDE_ORG_COMMIT=7c6c0030cf80ef7b9ace42996b0e0c3a72f76860
+KDE_ORG_COMMIT=f4ac0b55c37f2b594ffbe639db43dac365825c7c
 QT5_MODULE="qtbase"
 VIRTUALX_REQUIRED="test"
 inherit qt5-build
