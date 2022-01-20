@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,6 +30,8 @@ RDEPEND=">=dev-cpp/tbb-2021.4.0:=
 		dev-libs/openssl:=
 	)"
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-no-gold-in-version.patch" )
 
 src_prepare() {
 	default
