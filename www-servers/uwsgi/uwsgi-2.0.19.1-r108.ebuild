@@ -131,6 +131,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}/${P}-py310-fix.patch"
 	"${FILESDIR}/${P}-pynode-compile.patch"
+	"${FILESDIR}/${P}-py310-fix-2.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
