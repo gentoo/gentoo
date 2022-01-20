@@ -1,9 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 optfeature xdg
 
@@ -27,20 +28,17 @@ RDEPEND="
 	dev-qt/qtgui:5[png]
 	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' python3_8)
 	$(python_gen_cond_dep '
-		>=dev-python/colorama-0.4.4[${PYTHON_USEDEP}]
+		dev-python/colorama[${PYTHON_USEDEP}]
 		>=dev-python/jinja-3.0.2[${PYTHON_USEDEP}]
 		>=dev-python/markupsafe-2.0.1[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/PyQt5[${PYTHON_USEDEP},dbus,declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
 		dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
-		>=dev-python/pyyaml-5.4.1[${PYTHON_USEDEP},libyaml(+)]
-		>=dev-python/typing-extensions-3.10.0.2[${PYTHON_USEDEP}]
-		>=dev-python/zipp-3.6.0[${PYTHON_USEDEP}]
-		adblock? ( >=dev-python/adblock-0.5.0[${PYTHON_USEDEP}] )
-	')
+		dev-python/pyyaml[${PYTHON_USEDEP},libyaml(+)]
+		dev-python/zipp[${PYTHON_USEDEP}]
+		adblock? ( dev-python/adblock[${PYTHON_USEDEP}] )')
 	widevine? ( www-plugins/chrome-binary-plugins )"
 BDEPEND="
-	app-text/asciidoc
 	$(python_gen_cond_dep '
 		test? (
 			dev-python/beautifulsoup4[${PYTHON_USEDEP}]
@@ -53,8 +51,8 @@ BDEPEND="
 			dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 			dev-python/pytest-xvfb[${PYTHON_USEDEP}]
 			dev-python/tldextract[${PYTHON_USEDEP}]
-		)
-	')"
+		)')"
+[[ ${PV} != 9999 ]] || BDEPEND+=" app-text/asciidoc"
 
 distutils_enable_tests pytest
 
@@ -62,10 +60,12 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 
 	if use widevine; then
-		sed "/yield from _qtwebengine_settings_args/a\    yield '--widevine-path=${EPREFIX}/usr/$(get_libdir)/chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so'" \
+		local widevine=${EPREFIX}/usr/$(get_libdir)/chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so
+		sed "/yield from _qtwebengine_settings_args/a\    yield '--widevine-path=${widevine}'" \
 			-i ${PN}/config/qtargs.py || die
 	fi
 
+	# let eclass handle python
 	sed -i '/setup.py/d' misc/Makefile || die
 
 	[[ ${PV} != 9999 ]] || ${EPYTHON} scripts/asciidoc2html.py || die
@@ -88,8 +88,6 @@ python_test() {
 		# tests that don't know about our newer qtwebengine
 		tests/unit/browser/webengine/test_webenginedownloads.py::TestDataUrlWorkaround
 		tests/unit/utils/test_version.py::TestChromiumVersion
-		# needs qtwebkit and isn't skipped by default
-		tests/unit/config/test_websettings.py::test_config_init
 		# may misbehave depending on installed old python versions
 		tests/unit/misc/test_checkpyver.py::test_old_python
 		# bug 819393
@@ -102,7 +100,7 @@ python_test() {
 }
 
 python_install_all() {
-	emake -f misc/Makefile DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
+	emake -f misc/Makefile DESTDIR="${D}" PREFIX="${EPREFIX}"/usr install
 
 	rm "${ED}"/usr/share/${PN}/scripts/{mkvenv,utils}.py || die
 	fperms -x /usr/share/${PN}/{scripts/cycle-inputs.js,userscripts/README.md}
