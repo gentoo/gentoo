@@ -76,6 +76,7 @@ src_prepare() {
 			biendian=true
 			;;
 		hppa)
+			return
 			;;
 		ppc)
 			# assume powermac/powerbook defconfig
