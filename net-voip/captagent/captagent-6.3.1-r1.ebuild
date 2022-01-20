@@ -18,7 +18,7 @@ PATCHES=(
 	# https://github.com/sipcapture/captagent/pull/239 (merged).
 	"${FILESDIR}/${P}-gcc10.patch"
 	# https://github.com/sipcapture/captagent/pull/245 (merged).
-	"${FILESDIR}/${P}-captagent-6.3.1-r1-clang.patch"
+	"${FILESDIR}/${PN}-6.3.1-r1-clang.patch"
 	# Already upstreamed for next version.
 	"${FILESDIR}/${P}-configure.patch"
 )
