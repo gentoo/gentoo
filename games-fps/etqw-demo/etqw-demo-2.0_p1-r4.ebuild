@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ MY_REV=$(ver_cut 3-)
 MY_BODY="ETQW-demo${MY_MAJOR}-client-full.r${MY_REV/p/}.x86"
 
 DESCRIPTION="Enemy Territory: Quake Wars demo"
-HOMEPAGE="http://zerowing.idsoftware.com/linux/etqw/"
+HOMEPAGE="https://zerowing.idsoftware.com/linux/etqw/ETQWFrontPage/index.html"
 SRC_URI="mirror://idsoftware/etqw/${MY_BODY}.run"
 S="${WORKDIR}"
 
