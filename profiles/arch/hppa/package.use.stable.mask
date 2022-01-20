@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,10 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Sam James <sam@gentoo.org> (2022-01-20)
+# net-misc/pps-tools is not marked stable on HPPA
+net-misc/chrony pps
 
 # Sam James <sam@gentoo.org> (2021-12-15)
 # Unstable dependencies (dev-libs/libnl, sys-cluster/rdma-core)
