@@ -1,0 +1,29 @@
+https://gitlab.gnome.org/GNOME/tali/-/merge_requests/14.patch
+https://bugs.gentoo.org/831461
+
+From 79509bf3e9456f52d6ac87538700e3ac89db4006 Mon Sep 17 00:00:00 2001
+From: rvalue <i@rvalue.moe>
+Date: Tue, 16 Nov 2021 05:56:26 +0000
+Subject: [PATCH] Remove incorrect i18n.merge_file argument
+
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -22,7 +22,7 @@ install_data ([ 'gnome-dice-1.svg',
+ install_data (project_id + '.gschema.xml',
+               install_dir: join_paths (datadir, 'glib-2.0', 'schemas'))
+ 
+-desktop_file = i18n.merge_file ('desktop-file',
++desktop_file = i18n.merge_file (
+                  input: project_id + '.desktop.in',
+                  output: project_id + '.desktop',
+                  install: true,
+@@ -41,7 +41,7 @@ if desktop_file_validate.found()
+   )
+ endif
+ 
+-appdata_file = i18n.merge_file ('appdata-file',
++appdata_file = i18n.merge_file (
+                  input: project_id + '.appdata.xml.in',
+                  output: project_id + '.appdata.xml',
+                  install: true,
+GitLab
