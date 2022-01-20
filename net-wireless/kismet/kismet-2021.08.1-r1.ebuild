@@ -85,6 +85,8 @@ PDEPEND="
 		net-wireless/rtl-sdr
 	)"
 
+PATCHES=( "${FILESDIR}"/kismet-2021.08.1-nopcre.patch )
+
 src_prepare() {
 	sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
 		conf/kismet_logging.conf || die
@@ -110,7 +112,7 @@ src_prepare() {
 	sed -i -e 's| -s||g' \
 		-e 's|@mangrp@|root|g' Makefile.in || die
 
-	eapply_user
+	default
 
 	#just use set to fix setup.py
 	find . -name "Makefile.in" -exec sed -i 's#setup.py install#setup.py install --root=$(DESTDIR)#' {} + || die
