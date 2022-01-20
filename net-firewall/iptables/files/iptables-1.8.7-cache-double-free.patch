@@ -1,0 +1,61 @@
+commit 4318961230bce82958df82b57f1796143bf2f421
+Author: Phil Sutter <phil@nwl.cc>
+Date:   Tue Sep 21 11:39:45 2021 +0200
+
+    nft: cache: Avoid double free of unrecognized base-chains
+    
+    On error, nft_cache_add_chain() frees the allocated nft_chain object
+    along with the nftnl_chain it points at. Fix nftnl_chain_list_cb() to
+    not free the nftnl_chain again in that case.
+    
+    Fixes: 176c92c26bfc9 ("nft: Introduce a dedicated base chain array")
+    Signed-off-by: Phil Sutter <phil@nwl.cc>
+
+diff --git a/iptables/nft-cache.c b/iptables/nft-cache.c
+index 2c88301c..9a03bbfb 100644
+--- a/iptables/nft-cache.c
++++ b/iptables/nft-cache.c
+@@ -314,9 +314,7 @@ static int nftnl_chain_list_cb(const struct nlmsghdr *nlh, void *data)
+ 		goto out;
+ 	}
+ 
+-	if (nft_cache_add_chain(h, t, c))
+-		goto out;
+-
++	nft_cache_add_chain(h, t, c);
+ 	return MNL_CB_OK;
+ out:
+ 	nftnl_chain_free(c);
+diff --git a/iptables/tests/shell/testcases/chain/0004extra-base_0 b/iptables/tests/shell/testcases/chain/0004extra-base_0
+new file mode 100755
+index 00000000..1b85b060
+--- /dev/null
++++ b/iptables/tests/shell/testcases/chain/0004extra-base_0
+@@ -0,0 +1,27 @@
++#!/bin/bash
++
++case $XT_MULTI in
++*xtables-nft-multi)
++	;;
++*)
++	echo skip $XT_MULTI
++	exit 0
++	;;
++esac
++
++set -e
++
++nft -f - <<EOF
++table ip filter {
++        chain INPUT {
++                type filter hook input priority filter
++                counter packets 218 bytes 91375 accept
++        }
++
++        chain x {
++                type filter hook input priority filter
++        }
++}
++EOF
++
++$XT_MULTI iptables -L
