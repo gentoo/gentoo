@@ -12,7 +12,7 @@ DESCRIPTION="User-mode driver and GTK-based GUI for Steam Controllers and others
 HOMEPAGE="https://github.com/Ryochan7/sc-controller/"
 SRC_URI="https://github.com/Ryochan7/sc-controller/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2 CC0-1.0 MIT"
+LICENSE="GPL-2 BSD CC-BY-3.0 CC0-1.0 LGPL-2.1 MIT PSF-2 ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+udev"
