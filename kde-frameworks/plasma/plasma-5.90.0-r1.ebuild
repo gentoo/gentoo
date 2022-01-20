@@ -59,7 +59,10 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="man? ( >=kde-frameworks/kdoctools-${PVCUT}:5 )"
 
-PATCHES=( "${FILESDIR}/${P}-KDEBUG-448590.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-KDEBUG-447752.patch"
+	"${FILESDIR}/${P}-KDEBUG-448590.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
