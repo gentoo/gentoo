@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake plocale xdg udev
+inherit cmake xdg udev
 
 DESCRIPTION="Advanced Digital DJ tool based on Qt"
 HOMEPAGE="https://www.mixxx.org/"
@@ -71,9 +71,12 @@ RDEPEND="
 	mp4? ( media-libs/libmp4v2:= )
 	opus? (	media-libs/opusfile )
 	qtkeychain? ( dev-libs/qtkeychain )
-	shout? ( >=media-libs/libshout-2.4.5 )
 	wavpack? ( media-sound/wavpack )
 	"
+	# libshout-idjc-2.4.6 is required. Please check and re-add once it's
+	# available in ::gentoo
+	# Meanwhile we're using the bundled libshout-idjc. See bug #775443
+	#shout? ( >=media-libs/libshout-idjc-2.4.6 )
 
 DEPEND="${RDEPEND}
 	dev-qt/qtconcurrent:5
@@ -91,14 +94,13 @@ PATCHES=(
 PLOCALES="
 	ca cs de en es fi fr gl id it ja kn nl pl pt ro ru sl sq sr tr zh-CN zh-TW
 "
-PLOCALE_BACKUP="en"
 
 mixxx_set_globals() {
 	local lang
 	local MANUAL_URI_BASE="https://downloads.mixxx.org/manual/$(ver_cut 1-2)"
-	for lang in ${PLOCALES/ en} ; do
+	for lang in ${PLOCALES} ; do
 		SRC_URI+=" l10n_${lang}? ( ${MANUAL_URI_BASE}/${PN}-manual-$(ver_cut 1-2)-${lang/ja/ja-JP}.pdf )"
-		IUSE+=" l10n_${lang}"
+		IUSE+=" l10n_${lang/ en/ +en}"
 	done
 	SRC_URI+=" ${MANUAL_URI_BASE}/${PN}-manual-$(ver_cut 1-2)-en.pdf"
 }
@@ -147,7 +149,9 @@ src_install() {
 	udev_newrules "${S}"/res/linux/mixxx-usb-uaccess.rules 69-mixxx-usb-uaccess.rules
 	dodoc README.md CHANGELOG.md
 	local locale
-	for locale in $(plocale_get_locales) ; do
-		dodoc ${DISTDIR}/${PN}-manual-$(ver_cut 1-2)-${locale/ja/ja-JP}.pdf
+	for locale in ${PLOCALES} ; do
+		if use l10n_${locale} ; then
+			dodoc ${DISTDIR}/${PN}-manual-$(ver_cut 1-2)-${locale/ja/ja-JP}.pdf
+		fi
 	done
 }
