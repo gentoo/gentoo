@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-01-20)
+# Only supports cpu_flags_x86_aes in 64-bit mode
+net-fs/samba cpu_flags_x86_aes
+
 # Conrad Kostecki <conikost@gentoo.org> (2021-11-16)
 # AppArmor is not available on x86
 app-benchmarks/stress-ng apparmor
