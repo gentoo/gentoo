@@ -314,6 +314,14 @@ src_configure() {
 		targets = "${LLVM_TARGETS// /;}"
 		experimental-targets = ""
 		link-shared = $(toml_usex system-llvm)
+		$(case "${rust_target}" in
+			i586-*-linux-*)
+				# https://github.com/rust-lang/rust/issues/93059
+				echo 'cflags = "-fcf-protection=none"'
+				echo 'cxxflags = "-fcf-protection=none"'
+				echo 'ldflags = "-fcf-protection=none"'
+				;;
+		esac)
 		[build]
 		build-stage = 2
 		test-stage = 2
