@@ -42,7 +42,7 @@ SRC_URI="
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
-IUSE="alsa big-endian cups debug doc examples gentoo-vm headless-awt javafx +jbootstrap pch selinux source system-bootstrap systemtap"
+IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap pch selinux source system-bootstrap systemtap"
 
 COMMON_DEPEND="
 	media-libs/freetype:2=
@@ -128,35 +128,17 @@ pkg_setup() {
 	JAVA_PKG_WANT_SOURCE="${SLOT}"
 	JAVA_PKG_WANT_TARGET="${SLOT}"
 
-	# The nastiness below is necessary while the gentoo-vm USE flag is
-	# masked. First we call java-pkg-2_pkg_setup if it looks like the
-	# flag was unmasked against one of the possible build VMs. If not,
-	# we try finding one of them in their expected locations. This would
-	# have been slightly less messy if openjdk-bin had been installed to
-	# /opt/${PN}-${SLOT} or if there was a mechanism to install a VM env
-	# file but disable it so that it would not normally be selectable.
-
-	local vm
-	for vm in ${JAVA_PKG_WANT_BUILD_VM}; do
-		if [[ -d ${EPREFIX}/usr/lib/jvm/${vm} ]]; then
-			java-pkg-2_pkg_setup
-			return
-		fi
-	done
-
-	if has_version --host-root dev-java/openjdk:${SLOT}; then
-		export JDK_HOME=${EPREFIX}/usr/$(get_libdir)/openjdk-${SLOT}
-	elif use !system-bootstrap ; then
+	if use system-bootstrap; then
+		for vm in ${JAVA_PKG_WANT_BUILD_VM}; do
+			if [[ -d ${EPREFIX}/usr/lib/jvm/${vm} ]]; then
+				java-pkg-2_pkg_setup
+				return
+			fi
+		done
+	else
+		[[ ${MERGE_TYPE} != "binary" ]] && return
 		local xpakvar="${ARCH^^}_XPAK"
 		export JDK_HOME="${WORKDIR}/openjdk-bootstrap-${!xpakvar}"
-	else
-		if [[ ${MERGE_TYPE} != "binary" ]]; then
-			JDK_HOME=$(best_version --host-root dev-java/openjdk-bin:${SLOT})
-			[[ -n ${JDK_HOME} ]] || die "Build VM not found!"
-			JDK_HOME=${JDK_HOME#*/}
-			JDK_HOME=${EPREFIX}/opt/${JDK_HOME%-r*}
-			export JDK_HOME
-		fi
 	fi
 }
 
@@ -291,7 +273,7 @@ src_install() {
 	einfo "Creating the Class Data Sharing archives and disabling usage tracking"
 	"${ddest}/bin/java" -server -Xshare:dump -Djdk.disableLastUsageTracking || die
 
-	use gentoo-vm && java-vm_install-env "${FILESDIR}"/${PN}-${SLOT}.env.sh
+	java-vm_install-env "${FILESDIR}"/${PN}-${SLOT}.env.sh
 	java-vm_revdep-mask
 	java-vm_sandbox-predict /dev/random /proc/self/coredump_filter
 
