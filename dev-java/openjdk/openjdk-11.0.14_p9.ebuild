@@ -138,7 +138,7 @@ pkg_setup() {
 			fi
 		done
 	else
-		[[ ${MERGE_TYPE} != "binary" ]] && return
+		[[ ${MERGE_TYPE} == "binary" ]] && return
 		local xpakvar="${ARCH^^}_XPAK"
 		export JDK_HOME="${WORKDIR}/openjdk-bootstrap-${!xpakvar}"
 	fi

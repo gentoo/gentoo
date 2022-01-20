@@ -150,7 +150,7 @@ pkg_setup() {
 		local xpakvar="${ARCH^^}_XPAK"
 		export JDK_HOME="${WORKDIR}/openjdk-bootstrap-${!xpakvar}"
 	else
-		if [[ ${MERGE_TYPE} != "binary" ]]; then
+		if [[ ${MERGE_TYPE} == "binary" ]]; then
 			JDK_HOME=$(best_version --host-root dev-java/openjdk-bin:${SLOT})
 			[[ -n ${JDK_HOME} ]] || die "Build VM not found!"
 			JDK_HOME=${JDK_HOME#*/}
