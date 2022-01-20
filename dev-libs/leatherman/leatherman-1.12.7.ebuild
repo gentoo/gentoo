@@ -49,14 +49,8 @@ src_configure() {
 	fi
 
 	cmake_src_configure
-	cd "${BUILD_DIR}"
-	eapply "${FILESDIR}"/${P}-SIGSTKSZ.patch
 }
 
 src_test() {
 	"${WORKDIR}/${P}"_build/bin/leatherman_test || die
-}
-
-src_install() {
-	cmake_src_install
 }
