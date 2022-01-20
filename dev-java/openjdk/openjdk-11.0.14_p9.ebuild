@@ -44,7 +44,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source system-bootstrap systemtap"
 
-REQUIRED_USE="!system-bootstrap? ( jbootstrap )"
+REQUIRED_USE="
+	javafx? ( alsa !headless-awt )
+	!system-bootstrap? ( jbootstrap )
+"
 
 COMMON_DEPEND="
 	media-libs/freetype:2=
@@ -97,8 +100,6 @@ DEPEND="
 		)
 	)
 "
-
-REQUIRED_USE="javafx? ( alsa !headless-awt )"
 
 S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV}"
 
