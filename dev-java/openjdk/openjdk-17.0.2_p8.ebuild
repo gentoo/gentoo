@@ -47,7 +47,6 @@ REQUIRED_USE="
 	!system-bootstrap? ( jbootstrap )
 "
 
-
 COMMON_DEPEND="
 	media-libs/freetype:2=
 	media-libs/giflib:0/7
