@@ -6,6 +6,5 @@
 net-im/telegram-desktop
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-02-01)
-# Temurin ppc64 build is little-endian only so it's impossible
-# to build openjdk:11 and later, but it's possible to build openjdk:8 with icedtea{,-bin}
+# Temurin ppc64 builds are little-endiain only
 dev-java/openjdk-bin
