@@ -24,6 +24,7 @@ RDEPEND="
 		dev-python/python-evdev[${PYTHON_USEDEP}]
 		dev-python/vdf[${PYTHON_USEDEP}]')
 	gnome-base/librsvg[introspection]
+	virtual/libusb
 	x11-libs/gtk+:3[introspection]
 	udev? ( games-util/game-device-udev-rules )"
 
