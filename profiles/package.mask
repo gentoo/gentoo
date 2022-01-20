@@ -272,7 +272,6 @@ dev-python/spyder-line-profiler
 dev-python/spyder-memory-profiler
 # Stuck on spyder-5.0
 dev-python/spyder-notebook
-<=dev-python/spyder-unittest-0.4.1-r50
 dev-python/spyder-vim
 
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
