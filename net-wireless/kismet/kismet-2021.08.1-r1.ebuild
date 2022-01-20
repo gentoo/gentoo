@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 
-inherit autotools multilib python-single-r1 udev systemd
+inherit autotools python-single-r1 udev systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://www.kismetwireless.net/git/${PN}.git"
@@ -46,7 +46,7 @@ CDEPEND="
 	sys-libs/zlib:=
 	dev-db/sqlite:=
 	net-libs/libmicrohttpd:=
-	net-libs/libwebsockets:=[client]
+	net-libs/libwebsockets:=[client,lejp]
 	kernel_linux? ( sys-libs/libcap
 			dev-libs/libnl:3
 			net-libs/libpcap
@@ -175,7 +175,7 @@ pkg_preinst() {
 migrate_config() {
 	einfo "Kismet Configuration files are now read from /etc/kismet/"
 	ewarn "Please keep user specific settings in /etc/kismet/kismet_site.conf"
-	if [ -n "$(ls ${EROOT}/etc/kismet_*.conf 2> /dev/null)" ]; then
+	if [ -n "$(ls "${EROOT}"/etc/kismet_*.conf 2> /dev/null)" ]; then
 		ewarn "Files at /etc/kismet_*.conf will not be read and should be removed"
 	fi
 	if [ -f "${EROOT}/etc/kismet_site.conf" ] && [ ! -f "${EROOT}/etc/kismet/kismet_site.conf" ]; then
