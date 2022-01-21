@@ -17,7 +17,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-scheme/racket:="
+RDEPEND="dev-scheme/racket:=[-minimal]"
 BDEPEND="${RDEPEND}"
 
 DOCS=( CONTRIBUTING.md README.md THANKS.md )
