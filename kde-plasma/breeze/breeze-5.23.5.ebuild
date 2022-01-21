@@ -35,9 +35,7 @@ RDEPEND="
 	>=kde-plasma/kdecoration-${PVCUT}:5
 	X? ( x11-libs/libxcb )
 "
-DEPEND="${RDEPEND}
-	>=kde-frameworks/kpackage-${KFMIN}:5
-"
+DEPEND="${RDEPEND}"
 PDEPEND="
 	>=kde-frameworks/breeze-icons-${KFMIN}:5
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
