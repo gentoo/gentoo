@@ -33,14 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Brian Evans <grknight@gentoo.org> (2022-01-21)
-# PHP 7.3 is end-of-life
-# Please upgrade to a newer slot
-# Guide at https://www.php.net/manual/en/migration74.incompatible.php
-# Removal in 30 days
-dev-lang/php:7.3
-virtual/httpd-php:7.3
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-17)
 # Java-packages with no consumers and depending on virtual/{jdk,jre}-1.6
 # Removal in 30 days.
