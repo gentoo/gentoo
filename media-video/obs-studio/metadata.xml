@@ -5,9 +5,9 @@
     <email>chiitoo@gentoo.org</email>
     <name>Jimi Huotari</name>
   </maintainer>
-  <maintainer type="person" proxied="proxy">
-    <email>ionen@gentoo.org</email>
-    <name>Ionen Wolkens</name>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <longdescription>
     A rewrite of what was formerly known as "Open Broadcaster Software",
