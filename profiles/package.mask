@@ -330,7 +330,6 @@ x11-plugins/purple-facebook
 java-virtuals/ejb-api
 java-virtuals/saaj-api
 java-virtuals/transaction-api
-java-virtuals/xmlrpc-api
 
 # Mike Gilbert <floppym@gentoo.org> (2021-12-24)
 # Replaced by sys-apps/hwdata. Removal on 2022-01-23.
