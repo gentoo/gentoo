@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit findlib
+inherit findlib toolchain-funcs
 
 DESCRIPTION="OCaml interface to the Tcl/Tk GUI framework"
 HOMEPAGE="https://garrigue.github.io/labltk/"
@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-li
 IUSE="+ocamlopt X"
 
 RDEPEND="dev-lang/tk:=
-	<dev-lang/ocaml-4.13
+	<dev-lang/ocaml-4.12
 	>=dev-lang/ocaml-4.11:=[ocamlopt?,X(+)?]"
 DEPEND="${RDEPEND}
 	dev-ml/findlib
@@ -24,6 +24,14 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/findlib.patch"
 )
+
+src_prepare() {
+	sed -i \
+		-e "s|ranlib|$(tc-getRANLIB)|" \
+		frx/Makefile \
+		|| die
+	default
+}
 
 src_configure() {
 	./configure --use-findlib --verbose $(usex X "--tk-x11" "--tk-no-x11") || die "configure failed!"
