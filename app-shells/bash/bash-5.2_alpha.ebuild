@@ -3,6 +3,12 @@
 
 EAPI=7
 
+# TODO on release:
+# - check READLINE_VER, obviously
+# - remove autotools/eautoreconf from readline ebuild
+# - tidy up is_release check in this ebuild for using system readline
+# (presumably there weren't always readline releases for bash RCs etc)
+
 inherit flag-o-matic toolchain-funcs prefix
 
 # Official patchlevel
@@ -154,7 +160,8 @@ src_configure() {
 	# is at least what's in the DEPEND up above.
 	export ac_cv_rl_version=${READLINE_VER%%_*}
 
-	if is_release ; then
+	# TODO: Clean this up before 5.2 release
+	if [[ ${PV} == 5.2_alpha ]] || is_release ; then
 		# Use system readline only with released versions.
 		myconf+=( --with-installed-readline=. )
 	fi
