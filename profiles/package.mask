@@ -332,7 +332,6 @@ java-virtuals/saaj-api
 java-virtuals/transaction-api
 java-virtuals/xmlrpc-api
 dev-java/jsr67
-dev-java/glassfish-ejb-api
 
 # Mike Gilbert <floppym@gentoo.org> (2021-12-24)
 # Replaced by sys-apps/hwdata. Removal on 2022-01-23.
