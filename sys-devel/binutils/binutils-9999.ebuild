@@ -8,7 +8,7 @@ inherit libtool flag-o-matic gnuconfig strip-linguas toolchain-funcs
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 LICENSE="GPL-3+"
-IUSE="cet default-gold doc +gold multitarget +nls +plugins static-libs test vanilla"
+IUSE="cet default-gold doc +gold multitarget +nls pgo +plugins static-libs test vanilla"
 REQUIRED_USE="default-gold? ( gold )"
 
 # Variables that can be set here  (ignored for live ebuilds)
@@ -273,6 +273,8 @@ src_configure() {
 		# Ideally we would like automagic-or-disabled here.
 		# But the check does not quite work on i686: bug #760926.
 		$(use_enable cet)
+
+		$(use_enable pgo pgo-build lto)
 	)
 	echo ./configure "${myconf[@]}"
 	"${S}"/configure "${myconf[@]}" || die
