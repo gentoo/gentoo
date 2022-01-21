@@ -25,8 +25,10 @@
 		<flag name="maxminddb">Add support for geolocation using libMaxMindDB</flag>
 		<flag name="mbedtls">Build module for TLS via Mbed TLS</flag>
 		<flag name="mmap">Use mmap with files owned by lighttpd. This is a dangerous option as it may allow local users to trigger SIGBUS crashes.</flag>
+		<flag name="nettle">Use dev-libs/nettle as crypto backend</flag>
 		<flag name="nss">Build module for TLS via Mozilla's Network Security Services</flag>
 		<flag name="rrdtool">Enable rrdtool support via mod_rrdtool</flag>
+		<flag name="system-xxhash">Use system provided libxxhash</flag>
 		<flag name="webdav">Enable webdav properties</flag>
 		<flag name="zlib">Enable output compression via gzip or deflate algorithms</flag>
 		<flag name="zstd">Enable output compression via Zstandard algorithm</flag>
