@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,6 +36,8 @@ PATCHES=(
 	# Fix HiDPI handling in X11 fallback
 	# https://gitlab.gnome.org/GNOME/gnome-screenshot/-/issues/128
 	"${FILESDIR}"/${PN}-40.0-fix-hidpi.patch
+
+	"${FILESDIR}"/${P}-fix-meson-0.61-build.patch
 )
 
 DOC_CONTENTS="${P} saves screenshots in ~/Pictures/ and defaults to
