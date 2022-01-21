@@ -18,10 +18,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-scheme/racket:="
-DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}"
 
 DOCS=( CONTRIBUTING.md README.md THANKS.md )
 ELISP_TEXINFO="doc/racket-mode.texi"
+PATCHES=( "${FILESDIR}/${PN}-racket-util.el-defvar.patch" )
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {
@@ -42,6 +43,6 @@ src_install() {
 	elisp_src_install
 
 	# Install Racket files
-	insinto "${SITELISP}/${PN}"
+	insinto "${SITEETC}/${PN}"
 	doins -r racket
 }
