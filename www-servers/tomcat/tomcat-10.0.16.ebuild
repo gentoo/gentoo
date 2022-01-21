@@ -77,7 +77,9 @@ src_prepare() {
 	rm -rv java/jakarta/{el,servlet} || die
 
 	eapply "${FILESDIR}/${PN}-10.0.16-build.xml.patch"
-	java-pkg_is-vm-version-eq 1.8 && eapply "${FILESDIR}/${PN}-10.0.16-build.xml-strip-html5.patch"
+
+	local vm_version="$(java-config -g PROVIDES_VERSION)"
+	[[ "${vm_version}" == "1.8" ]] && eapply "${FILESDIR}/${PN}-10.0.16-build.xml-strip-html5.patch"
 
 	# For use of catalina.sh in netbeans
 	sed -i -e "/^# ----- Execute The Requested Command/ a\
