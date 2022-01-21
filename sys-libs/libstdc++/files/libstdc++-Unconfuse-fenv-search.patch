@@ -1,0 +1,59 @@
+From 9119ebda79677ba0ea7e492509ca3bd742e5eb01 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Wed, 9 Jun 2021 16:52:54 +0200
+Subject: [PATCH] Unconfuse <fenv> search
+
+Upstream: no, https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100017
+Source: Stolen from
+https://github.com/devkitPro/buildscripts/blob/fdb7c8a6d2639251535be4f6ea1530ba6fd476c3/dkppc/patches/gcc-11.1.0.patch
+Reason: Subsequent builds after initial installation of libstdc++:11 fail
+to properly include <fenv>, resulting in "error: 'fenv_t' has not been
+declared in '::' and similar errors.
+---
+ libstdc++-v3/include/c_compatibility/fenv.h | 6 ++++++
+ libstdc++-v3/include/c_global/cfenv         | 8 +++++---
+ 2 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/libstdc++-v3/include/c_compatibility/fenv.h b/libstdc++-v3/include/c_compatibility/fenv.h
+index 0413e3b7c25..ff5f8bbe1a1 100644
+--- a/libstdc++-v3/include/c_compatibility/fenv.h
++++ b/libstdc++-v3/include/c_compatibility/fenv.h
+@@ -26,6 +26,10 @@
+  *  This is a Standard C++ Library header.
+  */
+ 
++#if !defined __cplusplus || defined _GLIBCXX_INCLUDE_NEXT_C_HEADERS
++# include_next <fenv.h>
++#else
++
+ #ifndef _GLIBCXX_FENV_H
+ #define _GLIBCXX_FENV_H 1
+ 
+@@ -79,3 +83,5 @@ namespace std
+ #endif // C++11
+ 
+ #endif // _GLIBCXX_FENV_H
++
++#endif // __cplusplus
+diff --git a/libstdc++-v3/include/c_global/cfenv b/libstdc++-v3/include/c_global/cfenv
+index 0b0ec35a837..d24cb1a3c81 100644
+--- a/libstdc++-v3/include/c_global/cfenv
++++ b/libstdc++-v3/include/c_global/cfenv
+@@ -37,9 +37,11 @@
+ 
+ #include <bits/c++config.h>
+ 
+-#if _GLIBCXX_HAVE_FENV_H
+-# include <fenv.h>
+-#endif
++// Need to ensure this finds the C library's <fenv.h> not a libstdc++
++// wrapper that might already be installed later in the include search path.
++#define _GLIBCXX_INCLUDE_NEXT_C_HEADERS
++#include_next <fenv.h>
++#undef _GLIBCXX_INCLUDE_NEXT_C_HEADERS
+ 
+ #ifdef _GLIBCXX_USE_C99_FENV_TR1
+ 
+-- 
+2.32.0
+
