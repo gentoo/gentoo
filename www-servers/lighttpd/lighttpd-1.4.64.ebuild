@@ -167,7 +167,7 @@ src_install() {
 	find "${D}" -name '*.la' -delete || die
 
 	# init script stuff
-	newinitd "${FILESDIR}"/lighttpd.initd lighttpd
+	newinitd "${FILESDIR}"/lighttpd.initd-r1 lighttpd
 	newconfd "${FILESDIR}"/lighttpd.confd lighttpd
 
 	# configs
