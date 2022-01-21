@@ -21,4 +21,5 @@ src_prepare() {
 	cmake_src_prepare
 
 	sed -i 's/-Werror//' CMakeLists.txt || die
+	sed -i '/-fsanitize=/d' test/CMakeLists.txt || die
 }
