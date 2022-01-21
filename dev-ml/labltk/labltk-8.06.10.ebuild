@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit findlib
+inherit findlib toolchain-funcs
 
 DESCRIPTION="OCaml interface to the Tcl/Tk GUI framework"
 HOMEPAGE="https://garrigue.github.io/labltk/"
@@ -30,6 +30,10 @@ PATCHES=(
 src_prepare() {
 	has_version "dev-lang/ocaml:0/4.11" && \
 		eapply "${FILESDIR}"/${P}-this-expression-has-type.patch
+	sed -i \
+		-e "s|ranlib|$(tc-getRANLIB)|" \
+		frx/Makefile \
+		|| die
 	default
 }
 
