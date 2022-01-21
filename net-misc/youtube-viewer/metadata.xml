@@ -15,7 +15,6 @@
 	</upstream>
 	<use>
 		<flag name="gtk">Install the gtk3 GUI</flag>
-		<flag name="gtk2">Use the old gtk2 GUI instead of the gtk3 one</flag>
 	</use>
 	<longdescription lang="en">
 		Youtube Viewer is a CLI application dedicated for searching and
