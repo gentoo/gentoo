@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -43,6 +43,7 @@ src_prepare() {
 		Makefile || die
 	sed -i \
 		-e 's|-lncurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0) -lunwind|g' \
+		-e "s|ar r|$(tc-getAR) r|g" \
 		c-lib/Makefile || die
 	sed -i \
 		-e 's|-lcurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0) -lunwind|g' \
