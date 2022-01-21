@@ -13,5 +13,6 @@
 </longdescription>
   <upstream>
     <remote-id type="pypi">pygraphviz</remote-id>
+    <remote-id type="github">pygraphviz/pygraphviz</remote-id>
   </upstream>
 </pkgmetadata>
