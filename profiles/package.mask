@@ -328,7 +328,6 @@ x11-plugins/purple-facebook
 # java-virtuals and packages without consumers.
 # Bug #828719. Removal in 30 days.
 java-virtuals/ejb-api
-java-virtuals/saaj-api
 
 # Mike Gilbert <floppym@gentoo.org> (2021-12-24)
 # Replaced by sys-apps/hwdata. Removal on 2022-01-23.
