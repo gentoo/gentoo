@@ -1,8 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 llvm.org
@@ -20,7 +21,8 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	test? (
 		dev-python/psutil[${PYTHON_USEDEP}]
-		sys-devel/llvm )"
+		sys-devel/llvm
+	)"
 
 LLVM_COMPONENTS=( llvm/utils/lit )
 llvm.org_set_globals
