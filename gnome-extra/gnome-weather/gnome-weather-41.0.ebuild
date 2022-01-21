@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,11 +31,16 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
+
 # Tests have a lot of issues, starting with reliance on a system installation,
 # accessing the network and other intermittent failures with network-sandbox disabled
 # https://gitlab.gnome.org/GNOME/gnome-weather/issues/67 (and rest not filed)
 # test dep: $(python_gen_any_dep 'dev-util/dogtail[${PYTHON_USEDEP}]')
 # With 3.34, this is now behind a dogtail option we can pass (and have data validation)
+
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-meson-0.61-build.patch
+)
 
 src_configure() {
 	meson_src_configure -Dprofile=default -Ddogtail=false
