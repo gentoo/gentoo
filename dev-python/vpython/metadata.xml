@@ -15,5 +15,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">vpython</remote-id>
+		<remote-id type="github">vpython/vpython-jupyter</remote-id>
 	</upstream>
 </pkgmetadata>
