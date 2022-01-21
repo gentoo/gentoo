@@ -6,6 +6,7 @@ EAPI=6
 inherit check-reqs eapi7-ver flag-o-matic java-pkg-2 java-vm-2 multiprocessing toolchain-funcs
 
 # variable name format: <UPPERCASE_KEYWORD>_XPAK
+ARM64_XPAK="17.0.2_p8" # musl bootstrap install
 PPC64_XPAK="17.0.1_p12" # big-endian bootstrap tarball
 X86_XPAK="17.0.1_p12"
 
@@ -18,9 +19,10 @@ bootstrap_uri() {
 	local kw="${1:?${FUNCNAME[0]}: keyword not specified}"
 	local ver="${2:?${FUNCNAME[0]}: version not specified}"
 	local cond="${3-}"
+	[[ ${cond} == elibc_musl* ]] && local musl=yes
 
 	# here be dragons
-	echo "${kw}? ( ${cond:+${cond}? (} ${baseuri}-${ver}-${kw}.${suff} ${cond:+) })"
+	echo "${kw}? ( ${cond:+${cond}? (} ${baseuri}-${ver}-${kw}${musl:+-musl}.${suff} ${cond:+) })"
 }
 
 MY_PV="${PV//_p/+}"
@@ -32,6 +34,7 @@ SRC_URI="
 	https://github.com/openjdk/jdk${SLOT}u/archive/refs/tags/jdk-${MY_PV}.tar.gz
 		-> ${P}.tar.gz
 	!system-bootstrap? (
+		$(bootstrap_uri arm64 ${ARM64_XPAK} elibc_musl)
 		$(bootstrap_uri ppc64 ${PPC64_XPAK} big-endian)
 		$(bootstrap_uri x86 ${X86_XPAK})
 	)
