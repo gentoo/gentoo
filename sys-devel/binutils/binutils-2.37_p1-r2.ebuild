@@ -275,6 +275,11 @@ src_configure() {
 
 		$(use_enable pgo pgo-build lto)
 	)
+
+	if use pgo ; then
+		export BUILD_CFLAGS="${CFLAGS}"
+	fi
+
 	echo ./configure "${myconf[@]}"
 	"${S}"/configure "${myconf[@]}" || die
 
