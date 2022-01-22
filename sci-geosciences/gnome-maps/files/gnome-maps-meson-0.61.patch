@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/831655
+https://gitlab.gnome.org/GNOME/gnome-maps/-/commit/def20cbb26e59e5023fe157e691de48d7afe7210
+
+From e81cbf910755c0387677a43a7427da4ec073e1eb Mon Sep 17 00:00:00 2001
+From: Marcus Lundblad <ml@update.uu.se>
+Date: Fri, 14 Jan 2022 23:33:43 +0100
+Subject: [PATCH] meson: Remove unnesseray argument to i18n.merg_file
+
+This causes a build failure with meson 0.60 (or later).
+Remove it, as it's ignored also for earlier meson versions.
+
+Fixes #418
+
+(cherry picked from commit def20cbb26e59e5023fe157e691de48d7afe7210)
+---
+ data/meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/data/meson.build b/data/meson.build
+index 2be4ee73..4ef7eba0 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -33,7 +33,6 @@ install_data(
+ appdata = app_id + '.appdata.xml'
+ 
+ appdata_file = i18n.merge_file(
+-	appdata,
+ 	input: appdata + '.in',
+ 	output: appdata,
+ 	po_dir: po_dir,
+-- 
+2.34.1
+
