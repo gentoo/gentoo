@@ -32,7 +32,10 @@ BDEPEND="
 	sys-devel/autoconf-archive
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${PN}-5.8.1-lld.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.8.1-lld.patch
+	"${FILESDIR}"/${P}-musl.patch
+)
 
 pkg_setup() {
 	if use aspell && use hunspell; then
