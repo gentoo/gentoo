@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vala.eclass
@@ -6,7 +6,7 @@
 # gnome@gentoo.org
 # @AUTHOR:
 # Alexandre Rostovtsev <tetromino@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Sets up the environment for using a specific version of vala.
 # @DESCRIPTION:
 # This eclass sets up commonly used environment variables for using a specific
@@ -17,7 +17,7 @@
 # This eclass provides one phase function: src_prepare.
 
 case ${EAPI:-0} in
-	[67]) inherit eutils multilib ;;
+	[678]) inherit multilib ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
