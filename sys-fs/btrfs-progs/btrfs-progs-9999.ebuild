@@ -45,7 +45,7 @@ RDEPEND="
 	zstd? ( app-arch/zstd:0= )
 "
 DEPEND="${RDEPEND}
-	>=sys-kernel/linux-headers-5.10
+	>=sys-kernel/linux-headers-5.11
 	convert? ( sys-apps/acl )
 	python? (
 		$(python_gen_cond_dep '
