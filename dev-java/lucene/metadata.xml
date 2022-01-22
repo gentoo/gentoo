@@ -5,7 +5,4 @@
   <email>java@gentoo.org</email>
   <name>Java</name>
 </maintainer>
-<use>
-  <flag name="contrib">Include extra functionality from contrib/</flag>
-</use>
 </pkgmetadata>
