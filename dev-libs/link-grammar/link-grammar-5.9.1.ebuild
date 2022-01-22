@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
-inherit autotools java-pkg-opt-2 python-r1 out-of-source
+inherit autotools python-r1 out-of-source
 
 DESCRIPTION="A Syntactic English parser"
 HOMEPAGE="https://www.abisource.com/projects/link-grammar/ https://www.link.cs.cmu.edu/link/"
@@ -14,7 +14,7 @@ SRC_URI="https://www.abisource.com/downloads/${PN}/${PV}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/5"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="aspell +hunspell java python" # pcre
+IUSE="aspell +hunspell python" # pcre
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # XXX: sqlite is automagic
@@ -24,10 +24,6 @@ RDEPEND="
 	dev-db/sqlite:3
 	aspell? ( app-text/aspell )
 	hunspell? ( app-text/hunspell )
-	java? (
-		>=virtual/jdk-1.6:*
-		dev-java/ant-core
-	)
 	python? ( ${PYTHON_DEPS} )
 	!sci-mathematics/minisat"
 DEPEND="${RDEPEND}"
@@ -36,21 +32,18 @@ BDEPEND="
 	sys-devel/autoconf-archive
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${PN}-5.8.1-lld.patch )
+
 pkg_setup() {
 	if use aspell && use hunspell; then
 		ewarn "You have enabled 'aspell' and 'hunspell' support, but both cannot coexist,"
 		ewarn "only hunspell will be built. Press Ctrl+C and set only 'aspell' USE flag if"
 		ewarn "you want aspell support."
 	fi
-	use java && java-pkg-opt-2_pkg_setup
 }
 
 src_prepare() {
 	default
-	use java && java-pkg-opt-2_src_prepare
-
-	eapply "${FILESDIR}"/${PN}-5.8.1-lld.patch
-
 	eautoreconf
 }
 
@@ -58,13 +51,14 @@ my_src_configure() {
 	local myconf=(
 		--disable-maintainer-mode
 		--disable-editline
+		# java is hopelessly broken, invokes maven at build time (bug #806157)
+		--disable-java-bindings
 		--disable-perl-bindings
 		--disable-static
 		--enable-sat-solver=bundled
 		$(use_enable aspell)
 		$(use_enable hunspell)
-		$(usex hunspell --with-hunspell-dictdir="${EPREFIX}"/usr/share/myspell '')
-		$(use_enable java java-bindings)
+		$(usev hunspell --with-hunspell-dictdir="${EPREFIX}"/usr/share/myspell)
 		# $(use_enable pcre regex-tokenizer)
 		# $(use_with pcre)
 	)
@@ -116,8 +110,4 @@ my_src_install() {
 
 	# no static archives
 	find "${ED}" -name '*.la' -delete || die
-}
-
-pkg_preinst() {
-	use java && java-pkg-opt-2_pkg_preinst
 }
