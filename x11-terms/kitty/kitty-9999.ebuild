@@ -124,4 +124,5 @@ pkg_postinst() {
 
 	optfeature "in-terminal image display with kitty icat" media-gfx/imagemagick
 	optfeature "audio-based terminal bell support" media-libs/libcanberra
+	optfeature "opening links from the terminal" x11-misc/xdg-utils
 }
