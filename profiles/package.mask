@@ -33,6 +33,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-22)
+# Vulnerable versions of rust, along with ebuilds that
+# do not build with fixed rust verions
+# removal in 7 days
+# https://bugs.gentoo.org/831638
+# https://bugs.gentoo.org/821157
+# https://bugs.gentoo.org/824066
+<dev-lang/rust-1.58.1
+<dev-lang/rust-bin-1.58.1
+<virtual/rust-1.58.1
+<=www-client/seamonkey-2.53.9.1-r1
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-01-22)
 # Prelink support is being removed from glibc and was
 # already somewhat broken for a while...
