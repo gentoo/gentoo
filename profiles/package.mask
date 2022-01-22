@@ -36,7 +36,7 @@
 # Mike Gilbert <floppym@gentoo.org> (2022-01-22)
 # Breaks many GNOME packages.
 # https://bugs.gentoo.org/831474
->=dev-util/meson-0.61
+=dev-util/meson-0.61*
 
 # Joonas Niilola <juippis@gentoo.org> (2022-01-22)
 # Served its purpose. Not supported or used by any browser anymore.
