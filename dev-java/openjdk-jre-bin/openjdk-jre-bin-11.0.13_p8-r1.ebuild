@@ -49,7 +49,7 @@ S="${WORKDIR}/jdk-${MY_PV}-jre"
 
 src_install() {
 	local dest="/opt/${P}"
-	local ddest="${ED%/}/${dest#/}"
+	local ddest="${ED}/${dest#/}"
 
 	# Not sure why they bundle this as it's commonly available and they
 	# only do so on x86_64. It's needed by libfontmanager.so. IcedTea
