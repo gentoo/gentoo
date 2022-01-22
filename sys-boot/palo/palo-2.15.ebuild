@@ -17,6 +17,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="-* ~hppa"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.00-toolchain.patch
