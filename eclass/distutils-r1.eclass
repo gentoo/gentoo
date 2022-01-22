@@ -973,6 +973,7 @@ distutils-r1_python_compile() {
 
 		# TODO: workaround for a bug in installer; remove once we depend
 		# on a properly fixed version
+		# https://github.com/pradyunsg/installer/commit/245896289a590bd9be505bd061d4f49372948a16
 		if [[ -d ${root}${EPREFIX}/usr/bin ]]; then
 			chmod +x "${root}${EPREFIX}"/usr/bin/* || die
 		fi
