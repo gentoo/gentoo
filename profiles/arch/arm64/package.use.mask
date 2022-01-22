@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-01-22)
+# Supports 64-bit NEON
+dev-libs/libgcrypt -cpu_flags_arm_neon
+
 # Sam James <sam@gentoo.org> (2022-01-02)
 # sys-fabric/ofed is not keyworded here
 sys-cluster/slurm ofed
