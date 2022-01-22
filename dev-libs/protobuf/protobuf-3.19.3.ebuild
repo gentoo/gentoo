@@ -61,6 +61,9 @@ src_prepare() {
 	# https://github.com/protocolbuffers/protobuf/issues/9392
 	sed -e "s/^AC_PROG_OBJC$/AS_CASE([\$target_os], [darwin*], [AC_PROG_OBJC], [AM_CONDITIONAL([am__fastdepOBJC], [false])])/" -i configure.ac || die
 
+	# https://github.com/protocolbuffers/protobuf/issues/9433
+	sed -e "/^[[:space:]]*static_assert(alignof(T) <= 8, \"\");$/d" -i src/google/protobuf/descriptor.cc || die
+
 	eautoreconf
 }
 
