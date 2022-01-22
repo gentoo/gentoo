@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
 IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg
-openmp postscript readline spell static-libs svg2 test visio wpg"
+openmp postscript readline spell svg2 test visio wpg"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -130,7 +130,7 @@ src_configure() {
 		-DWITH_JEMALLOC=$(usex jemalloc)
 		-DENABLE_LCMS=ON
 		-DWITH_OPENMP=$(usex openmp)
-		-DBUILD_SHARED_LIBS=$(usex !static-libs)
+		-DBUILD_SHARED_LIBS=ON
 		-DWITH_SVG2=$(usex svg2)
 		-DWITH_LIBVISIO=$(usex visio)
 		-DWITH_LIBWPG=$(usex wpg)
@@ -152,7 +152,6 @@ src_install() {
 
 	find "${ED}"/usr/share/man -type f -maxdepth 3 -name '*.gz' -exec gzip -d {} \; || die
 
-	# No extensions are present in beta1
 	local extdir="${ED}"/usr/share/${PN}/extensions
 
 	if [[ -e "${extdir}" ]] && [[ -n $(find "${extdir}" -mindepth 1) ]]; then
