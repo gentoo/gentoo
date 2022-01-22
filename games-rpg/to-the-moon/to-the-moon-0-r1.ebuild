@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit desktop unpacker wrapper
 MY_PN="ToTheMoon"
 
 DESCRIPTION="Two doctors traversing the memories of a dying man to fulfill his last wish"
-HOMEPAGE="http://freebirdgames.com/games/to-the-moon"
+HOMEPAGE="https://freebirdgames.com/games/to-the-moon/"
 SRC_URI="${MY_PN}_linux_1389114090.sh"
 S="${WORKDIR}/data"
 
