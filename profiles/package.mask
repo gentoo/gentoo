@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Marco Scardovi <marco@scardovi.com> (2022-01-22)
+# We don't use it at all and it is unmaintained
+# We are gonna drop it. And seriously: why is it
+# packaged at all?
+# https://bugs.gentoo.org/831843
+app-admin/calamares
+
 # Mike Gilbert <floppym@gentoo.org> (2022-01-22)
 # Breaks many GNOME packages.
 # https://bugs.gentoo.org/831474
