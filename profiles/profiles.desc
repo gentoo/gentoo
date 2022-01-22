@@ -137,6 +137,7 @@ ia64		default/linux/ia64/17.0/desktop			stable
 ia64		default/linux/ia64/17.0/desktop/gnome		stable
 ia64		default/linux/ia64/17.0/desktop/gnome/systemd	stable
 ia64		default/linux/ia64/17.0/developer		exp
+ia64		default/linux/ia64/17.0/systemd			exp
 
 # M68K Profiles
 # @MAINTAINER: m68k@gentoo.org
