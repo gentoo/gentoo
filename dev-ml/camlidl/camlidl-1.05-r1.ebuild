@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,6 +22,14 @@ PATCHES=(
 	"${FILESDIR}/nowarn.patch"
 )
 
+src_prepare() {
+	sed -i \
+		-e "s|ar rc|$(tc-getAR) rc|g" \
+		runtime/Makefile.unix \
+		|| die
+	default
+}
+
 src_compile() {
 	# Use the UNIX makefile
 	libdir=$(ocamlc -where || die)
@@ -42,7 +50,7 @@ src_test() {
 
 src_install() {
 	libdir=$(ocamlc -where || die)
-	dodir ${libdir#${EPREFIX}}/caml
+	dodir "${libdir#${EPREFIX}}"/caml
 
 	dodir /usr/bin
 	# Install
