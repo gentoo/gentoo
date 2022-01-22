@@ -4,7 +4,7 @@
 # @ECLASS: out-of-source.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: convenient wrapper to build autotools packages out-of-source
 # @DESCRIPTION:
 # This eclass provides a minimalistic wrapper interface to easily
@@ -33,7 +33,7 @@
 # @CODE
 
 case ${EAPI} in
-	6|7|8);;
+	7|8);;
 	*) die "EAPI ${EAPI:-0} unsupported (too old)";;
 esac
 
