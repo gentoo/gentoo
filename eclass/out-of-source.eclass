@@ -37,9 +37,8 @@ case ${EAPI} in
 	*) die "EAPI ${EAPI:-0} unsupported (too old)";;
 esac
 
-EXPORT_FUNCTIONS src_configure src_compile src_test src_install
-
 if [[ ! ${_OUT_OF_SOURCE_ECLASS} ]]; then
+_OUT_OF_SOURCE_ECLASS=1
 
 # @FUNCTION: out-of-source_src_configure
 # @DESCRIPTION:
@@ -121,5 +120,6 @@ out-of-source_src_install() {
 	fi
 }
 
-_OUT_OF_SOURCE_ECLASS=1
 fi
+
+EXPORT_FUNCTIONS src_configure src_compile src_test src_install
