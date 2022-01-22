@@ -36,8 +36,8 @@
 -www-client/chromium
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-07)↲
-# works on little-endian↲
-sci-mathematics/geogebra-bin
+# works on little-endian
+-sci-mathematics/geogebra-bin
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-17)
 # works on ppc64le
