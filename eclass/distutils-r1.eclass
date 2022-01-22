@@ -977,6 +977,11 @@ distutils-r1_python_compile() {
 			chmod +x "${root}"/usr/bin/* || die
 		fi
 
+		# remove installed licenses
+		find "${root}$(python_get_sitedir)" \
+			'(' -path '*.dist-info/COPYING*' -o \
+			-path '*.dist-info/LICENSE*' ')' -delete || die
+
 		# clean the build tree; otherwise we may end up with PyPy3
 		# extensions duplicated into CPython dists
 		if [[ ${DISTUTILS_USE_PEP517:-setuptools} == setuptools ]]; then
