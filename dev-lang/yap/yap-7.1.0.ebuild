@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit cmake flag-o-matic python-single-r1
 
-PATCHSET_VER="2"
+PATCHSET_VER="3"
 
 DESCRIPTION="YAP is a high-performance Prolog compiler"
 HOMEPAGE="http://www.dcc.fc.up.pt/~vsc/Yap/"
