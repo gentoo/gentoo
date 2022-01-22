@@ -5,7 +5,7 @@ EAPI="7"
 
 # Patch version
 FIREFOX_PATCHSET="firefox-91esr-patches-04.tar.xz"
-SPIDERMONKEY_PATCHSET="spidermonkey-91-patches-01.tar.xz"
+SPIDERMONKEY_PATCHSET="spidermonkey-91-patches-02j.tar.xz"
 
 LLVM_MAX_SLOT=13
 
@@ -66,9 +66,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc64 ~riscv ~s390 ~x86"
 SLOT="91"
 LICENSE="MPL-2.0"
 IUSE="clang cpu_flags_arm_neon debug +jit lto test"
-
-# 91.5.0, only lld seems to be supported with lto.
-REQUIRED_USE="lto? ( clang )"
 
 #RESTRICT="test"
 RESTRICT="!test? ( test )"
