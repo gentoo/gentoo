@@ -96,6 +96,7 @@ RDEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
 	"${FILESDIR}"/${PN}-3.4.2-cmake-lua-version.patch
+	"${FILESDIR}"/${P}-fix-build-no-zlib.patch
 )
 
 pkg_setup() {
