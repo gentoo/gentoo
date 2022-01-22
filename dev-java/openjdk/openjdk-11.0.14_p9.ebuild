@@ -95,8 +95,8 @@ DEPEND="
 	javafx? ( dev-java/openjfx:${SLOT}= )
 	system-bootstrap? (
 		|| (
-			dev-java/openjdk-bin:${SLOT}
-			dev-java/openjdk:${SLOT}
+			dev-java/openjdk-bin:${SLOT}[gentoo-vm(+)]
+			dev-java/openjdk:${SLOT}[gentoo-vm(+)]
 		)
 	)
 "
