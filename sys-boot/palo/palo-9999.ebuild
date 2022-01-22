@@ -11,8 +11,8 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git"
 	inherit git-r3
 else
-        SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/deller/${PN}.git/snapshot/${P}.tar.gz"
-        KEYWORDS="-* ~hppa"
+	SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/deller/${PN}.git/snapshot/${P}.tar.gz"
+	KEYWORDS="-* ~hppa"
 fi
 
 LICENSE="GPL-2"
