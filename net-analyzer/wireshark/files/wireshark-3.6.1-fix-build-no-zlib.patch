@@ -1,0 +1,82 @@
+https://gitlab.com/wireshark/wireshark/-/commit/5dc11653a364975e5cc9a4a994d9d88e138e8385.patch
+https://gitlab.com/wireshark/wireshark/-/issues/17899
+
+From: Guy Harris <gharris@sonic.net>
+Date: Fri, 21 Jan 2022 15:04:28 -0800
+Subject: [PATCH] Fix no-ZLib builds.
+
+Don't use ZLib routines or data types if we're built without ZLib.
+
+Don't support --compress-type=gzip, or a gzip check box in the Output
+pane of the Capture Options dialog, if we're built without ZLib.
+
+Fixes #17899.
+
+
+(cherry picked from commit 125f5cbd881c2e1236d968a3e8fdcf5af2606e77)
+--- a/capture_opts.c
++++ b/capture_opts.c
+@@ -986,9 +986,18 @@ capture_opts_add_opt(capture_options *capture_opts, int opt, const char *optarg_
+         if (strcmp(optarg_str_p, "none") == 0) {
+             ;
+         } else if (strcmp(optarg_str_p, "gzip") == 0) {
++#ifdef HAVE_ZLIB
+             ;
++#else
++            cmdarg_err("'gzip' compression is not supported");
++            return 1;
++#endif
+         } else {
++#ifdef HAVE_ZLIB
+             cmdarg_err("parameter of --compress-type can be 'none' or 'gzip'");
++#else
++            cmdarg_err("parameter of --compress-type can only be 'none'");
++#endif
+             return 1;
+         }
+         capture_opts->compress_type = g_strdup(optarg_str_p);
+--- a/ringbuffer.c
++++ b/ringbuffer.c
+@@ -124,6 +124,7 @@ static void CleanupOldCap(gchar* name)
+   g_mutex_unlock(&rb_data.mutex);
+ }
+ 
++#ifdef HAVE_ZLIB
+ /*
+  * compress capture file
+  */
+@@ -200,6 +201,7 @@ static int ringbuf_start_compress_file(rb_file* rfile)
+   g_thread_new("exec_compress", &exec_compress_thread, name);
+   return 0;
+ }
++#endif
+ 
+ /*
+  * create the next filename and open a new binary file with that name
+@@ -216,9 +218,11 @@ static int ringbuf_open_file(rb_file *rfile, int *err)
+       /* remove old file (if any, so ignore error) */
+       ws_unlink(rfile->name);
+     }
++#ifdef HAVE_ZLIB
+     else if (rb_data.compress_type != NULL && strcmp(rb_data.compress_type, "gzip") == 0) {
+       ringbuf_start_compress_file(rfile);
+     }
++#endif
+     g_free(rfile->name);
+   }
+ 
+--- a/ui/qt/capture_options_dialog.cpp
++++ b/ui/qt/capture_options_dialog.cpp
+@@ -486,7 +486,11 @@ void CaptureOptionsDialog::on_gbNewFileAuto_toggled(bool checked)
+     ui->stopMBComboBox->setEnabled(checked?false:true);
+     ui->gbCompression->setEnabled(checked);
+     ui->rbCompressionNone->setEnabled(checked);
++#ifdef HAVE_ZLIB
+     ui->rbCompressionGzip->setEnabled(checked);
++#else
++    ui->rbCompressionGzip->setEnabled(false);
++#endif
+ }
+ 
+ void CaptureOptionsDialog::on_cbUpdatePacketsRT_toggled(bool checked)
+GitLab
