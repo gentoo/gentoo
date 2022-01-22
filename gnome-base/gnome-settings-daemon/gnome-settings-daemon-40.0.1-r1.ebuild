@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -93,6 +93,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.38.1-build-Allow-NM-optional-on-Linux.patch
 	"${FILESDIR}"/${PN}-3.38.1-Allow-udev-optional-on-Linux.patch
 	"${FILESDIR}"/gnome-settings-daemon-40.0.1-build-fix-str-bool-comparison.patch
+	"${FILESDIR}"/gnome-settings-daemon-41.0-meson-0.61-build.patch
 )
 
 python_check_deps() {
