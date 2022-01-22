@@ -973,8 +973,8 @@ distutils-r1_python_compile() {
 
 		# TODO: workaround for a bug in installer; remove once we depend
 		# on a properly fixed version
-		if [[ -d ${root}/usr/bin ]]; then
-			chmod +x "${root}"/usr/bin/* || die
+		if [[ -d ${root}${EPREFIX}/usr/bin ]]; then
+			chmod +x "${root}${EPREFIX}"/usr/bin/* || die
 		fi
 
 		# remove installed licenses
@@ -989,11 +989,11 @@ distutils-r1_python_compile() {
 		fi
 
 		# enable venv magic inside the install tree
-		mkdir -p "${root}"/usr/bin || die
-		ln -s "${PYTHON}" "${root}/usr/bin/${EPYTHON}" || die
-		ln -s "${EPYTHON}" "${root}/usr/bin/python3" || die
-		ln -s "${EPYTHON}" "${root}/usr/bin/python" || die
-		cat > "${root}"/usr/pyvenv.cfg <<-EOF || die
+		mkdir -p "${root}${EPREFIX}"/usr/bin || die
+		ln -s "${PYTHON}" "${root}${EPREFIX}/usr/bin/${EPYTHON}" || die
+		ln -s "${EPYTHON}" "${root}${EPREFIX}/usr/bin/python3" || die
+		ln -s "${EPYTHON}" "${root}${EPREFIX}/usr/bin/python" || die
+		cat > "${root}${EPREFIX}"/usr/pyvenv.cfg <<-EOF || die
 			include-system-site-packages = true
 		EOF
 	fi
@@ -1115,11 +1115,11 @@ distutils-r1_python_install() {
 		[[ -d ${rscriptdir} ]] &&
 			die "${rscriptdir} should not exist!"
 		# remove venv magic
-		rm "${root}"/usr/{pyvenv.cfg,bin/{python,python3,${EPYTHON}}} || die
-		find "${root}"/usr/bin -empty -delete || die
-		if [[ ! ${DISTUTILS_SINGLE_IMPL} && -d ${root}/usr/bin ]]; then
+		rm "${root}${EPREFIX}"/usr/{pyvenv.cfg,bin/{python,python3,${EPYTHON}}} || die
+		find "${root}${EPREFIX}"/usr/bin -empty -delete || die
+		if [[ ! ${DISTUTILS_SINGLE_IMPL} && -d ${root}${EPREFIX}/usr/bin ]]; then
 			mkdir -p "${rscriptdir%/*}" || die
-			mv "${root}/usr/bin" "${rscriptdir}" || die
+			mv "${root}${EPREFIX}/usr/bin" "${rscriptdir}" || die
 		fi
 	else
 		local root=${D%/}/_${EPYTHON}
@@ -1189,8 +1189,8 @@ distutils-r1_python_install() {
 	local shopt_save=$(shopt -p nullglob)
 	shopt -s nullglob
 	local pypy_dirs=(
-		"${root}/usr/$(get_libdir)"/pypy*/share
-		"${root}/usr/lib"/pypy*/share
+		"${root}${EPREFIX}/usr/$(get_libdir)"/pypy*/share
+		"${root}${EPREFIX}/usr/lib"/pypy*/share
 	)
 	${shopt_save}
 
@@ -1249,7 +1249,7 @@ distutils-r1_run_phase() {
 	fi
 
 	if [[ ${DISTUTILS_USE_PEP517} ]]; then
-		local -x PATH=${BUILD_DIR}/install/usr/bin:${PATH}
+		local -x PATH=${BUILD_DIR}/install${EPREFIX}/usr/bin:${PATH}
 	else
 		local -x PYTHONPATH="${BUILD_DIR}/lib:${PYTHONPATH}"
 
