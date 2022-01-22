@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-01-22)
+# Prelink support is being removed from glibc and was
+# already somewhat broken for a while...
+# hmaccalc hard-depends on it (?).
+# Removal in 30 days.
+sys-devel/prelink
+app-crypt/hmaccalc
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-17)
 # Java-packages with no consumers and depending on virtual/{jdk,jre}-1.6
 # Removal in 30 days.
