@@ -6,15 +6,21 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml"
 MY_P="${P/_/}"
-inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1 git-r3
+inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1
+
+if [[ ${PV} = 9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://gitlab.com/inkscape/inkscape.git"
+else
+	SRC_URI="https://media.inkscape.org/dl/resources/file/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+fi
 
 DESCRIPTION="SVG based generic vector-drawing program"
 HOMEPAGE="https://inkscape.org/"
-EGIT_REPO_URI="https://gitlab.com/inkscape/inkscape.git"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
 IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg
 openmp postscript readline spell svg2 test visio wpg"
 
@@ -103,6 +109,15 @@ pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
 	fi
+}
+
+src_unpack() {
+	if [[ ${PV} = 9999* ]]; then
+		git-r3_src_unpack
+	else
+		default
+	fi
+	[[ -d "${S}" ]] || mv -v "${WORKDIR}/${P}_202"?-??-* "${S}" || die
 }
 
 src_prepare() {
