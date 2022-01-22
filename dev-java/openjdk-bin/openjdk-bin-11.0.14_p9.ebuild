@@ -72,7 +72,7 @@ src_unpack() {
 
 src_install() {
 	local dest="/opt/${PN}-${SLOT}"
-	local ddest="${ED%/}/${dest#/}"
+	local ddest="${ED}/${dest#/}"
 
 	# on macOS if they would exist they would be called .dylib, but most
 	# importantly, there are no different providers, so everything
