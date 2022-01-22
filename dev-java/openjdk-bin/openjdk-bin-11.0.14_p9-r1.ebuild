@@ -71,7 +71,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dest="/opt/${PN}-${SLOT}"
+	local dest="/opt/${P}"
 	local ddest="${ED}/${dest#/}"
 
 	# on macOS if they would exist they would be called .dylib, but most
@@ -106,6 +106,9 @@ src_install() {
 
 	dodir "${dest}"
 	cp -pPR * "${ddest}" || die
+
+	# provide stable symlink
+	dosym "${P}" "/opt/${PN}-${SLOT}"
 
 	java-vm_install-env "${FILESDIR}"/${PN}-${SLOT}.env.sh
 	java-vm_set-pax-markings "${ddest}"
