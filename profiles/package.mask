@@ -295,7 +295,6 @@ sys-cluster/mpich2
 # Sadly, this means we are also going to have to say goodbye to some plugins
 # that never got ported to the newer plugin system.
 # Removal in 15 days
-<dev-python/spyder-5.1.0
 <dev-python/spyder-kernels-2.1.0
 
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
