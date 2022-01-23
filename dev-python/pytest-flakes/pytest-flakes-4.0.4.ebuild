@@ -19,3 +19,7 @@ RDEPEND="
 	dev-python/pytest[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
+
+python_test() {
+	epytest -p flakes
+}
