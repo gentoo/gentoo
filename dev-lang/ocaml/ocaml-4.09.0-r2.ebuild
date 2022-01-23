@@ -21,6 +21,8 @@ BDEPEND="${RDEPEND}
 PDEPEND="emacs? ( app-emacs/ocaml-mode )
 	xemacs? ( app-xemacs/ocaml )"
 
+QA_FLAGS_IGNORED='/usr/lib.*/ocaml/bigarray.cmxs'
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.09.0-gcc-10.patch
 	"${FILESDIR}"/${P}-cflags.patch
