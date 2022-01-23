@@ -8,7 +8,8 @@ inherit autotools flag-o-matic linux-info
 DESCRIPTION="Resource manager and queuing system based on OpenPBS"
 HOMEPAGE="http://www.adaptivecomputing.com/products/open-source/torque"
 SRC_URI="https://github.com/adaptivecomputing/torque/archive/6a0b37f85c7d644e9217cbab1542792d646f59a6.tar.gz -> ${P}-gh-20170829.tar.gz
-	https://dev.gentoo.org/~juippis/distfiles/tmp/torque-6.0.4-gcc7.patch"
+	https://dev.gentoo.org/~juippis/distfiles/tmp/torque-6.0.4-gcc7.patch
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-6.0.4-glibc-2.34-pthread.patch.bz2"
 
 LICENSE="torque-2.5"
 SLOT="0"
@@ -52,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.3-fix-emptystring-comparison.patch
 	"${FILESDIR}"/${P}-no-openssl.patch
 	"${FILESDIR}"/${P}-error_buf_overflow_prevent.patch
+	"${WORKDIR}"/${P}-glibc-2.34-pthread.patch
 )
 
 pkg_setup() {
@@ -116,6 +118,11 @@ src_configure() {
 		--disable-silent-rules \
 		--with-tcp-retry-limit=2 \
 		--without-loadlibfile
+}
+
+src_compile() {
+	# The .c files are C++, and $(CC) is misused.
+	emake CC="$(tc-getCXX)"
 }
 
 src_install() {
