@@ -17,3 +17,7 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 x86"
 RDEPEND=">=dev-python/flake8-3.5.0[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
+
+python_test() {
+	epytest -p flake8
+}
