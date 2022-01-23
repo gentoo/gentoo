@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ DEPEND="
 	>=media-libs/imlib2-1.4.2[X,png]
 	x11-libs/cairo[X]
 	x11-libs/pango
-	tint2conf? ( x11-libs/gtk+:2 )
+	tint2conf? ( x11-libs/gtk+:3 )
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
