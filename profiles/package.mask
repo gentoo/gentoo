@@ -299,7 +299,6 @@ sys-cluster/mpich2
 <dev-python/spyder-kernels-2.1.0
 # Stuck on spyder-4
 dev-python/spyder-line-profiler
-dev-python/spyder-memory-profiler
 # Stuck on spyder-5.0
 dev-python/spyder-notebook
 dev-python/spyder-vim
