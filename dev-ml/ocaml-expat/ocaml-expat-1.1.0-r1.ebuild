@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,10 @@ DEPEND="${RDEPEND}
 SLOT="0/${PV}"
 LICENSE="MIT"
 KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
-PATCHES=( "${FILESDIR}/ounit2.patch" )
+PATCHES=(
+	"${FILESDIR}/ounit2.patch"
+	"${FILESDIR}/${P}-cc.patch"
+)
 
 src_compile() {
 	emake depend
