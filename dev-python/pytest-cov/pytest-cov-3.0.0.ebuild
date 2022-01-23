@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,6 +35,11 @@ BDEPEND="
 distutils_enable_sphinx docs \
 	dev-python/sphinx-py3doc-enhanced-theme
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/pytest-dev/pytest-cov/pull/518
+	"${FILESDIR}"/${P}-coverage-6.2.patch
+)
 
 EPYTEST_DESELECT=(
 	# attempts to install packages via pip (network)
