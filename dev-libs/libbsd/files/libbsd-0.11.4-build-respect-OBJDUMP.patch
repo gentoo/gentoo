@@ -1,0 +1,26 @@
+https://gitlab.freedesktop.org/libbsd/libbsd/-/merge_requests/16
+
+From 3fbb632b460a4f2d37036cf3959736938494459e Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 23 Jan 2022 15:36:55 +0000
+Subject: [PATCH] build: respect $(OBJDUMP)
+
+We already search for it in `./configure` so let's respect
+the result of that search.
+
+This helps with cross-compilation and any other cases
+where one might want to choose a different toolchain.
+
+Bug: https://bugs.gentoo.org/831863
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -141,7 +141,7 @@ TRANSPARENT_LIBMD_DEPENDS = format.ld
+ 
+ format.ld:
+ 	$(CC) -shared -nostdlib -nostartfiles -x assembler /dev/null -o $@.so
+-	objdump -f $@.so | sed -n 's/.*file format \(.*\)/OUTPUT_FORMAT(\1)/;T;p' > $@
++	$(OBJDUMP) -f $@.so | sed -n 's/.*file format \(.*\)/OUTPUT_FORMAT(\1)/;T;p' > $@
+ 	rm -f $@.so
+ endif
+ 
