@@ -1,0 +1,294 @@
+diff -up torque/configure.ac.system-jsoncpp torque/configure.ac
+--- torque/configure.ac.system-jsoncpp	2021-01-28 17:33:44.008649547 -0500
++++ torque/configure.ac	2021-01-28 17:37:26.446751483 -0500
+@@ -1311,6 +1311,13 @@ if test "x$HWLOC_CFLAGS" != "xnone"; the
+ fi
+ 
+ 
++PKG_CHECK_MODULES([JSONCPP], [jsoncpp],
++  [ CFLAGS="$CFLAGS $JSONCPP_CFLAGS"; CPPFLAGS="$CPPFLAGS $JSONCPP_CFLAGS"; ],
++  [ AC_MSG_ERROR([$JSONCPP_PKG_ERRORS])])
++
++LIBS="$LIBS $JSONCPP_LIBS";
++
++
+ dnl enable pbs_mom to use the cpuset API from libcpuset
+ dnl only makes sense with cpusets enabled
+ AC_ARG_ENABLE(libcpuset, [  --enable-libcpuset      Allows pbs_mom to use the cpuset API from libcpuset])
+diff -up torque/src/include/machine.hpp.system-jsoncpp torque/src/include/machine.hpp
+--- torque/src/include/machine.hpp.system-jsoncpp	2021-01-28 17:15:46.295362401 -0500
++++ torque/src/include/machine.hpp	2021-01-28 17:15:58.310420979 -0500
+@@ -14,7 +14,7 @@
+ #include "pbs_job.h"
+ #include "req.hpp"
+ #include "allocation.hpp"
+-#include "json/json.h"
++#include <json/json.h>
+ extern const int ALL_TASKS;
+ 
+ 
+diff -up torque/src/include/Makefile.am.system-jsoncpp torque/src/include/Makefile.am
+--- torque/src/include/Makefile.am.system-jsoncpp	2021-01-28 17:15:10.067185774 -0500
++++ torque/src/include/Makefile.am	2021-01-28 17:15:22.285245341 -0500
+@@ -27,8 +27,8 @@ noinst_HEADERS = acct.h array.h assertio
+ 		 job_usage_info.hpp machine.hpp req.hpp complete_req.hpp trq_cgroups.h \
+ 		 job_recovery.h allocation.hpp attr_req_info.hpp acl_special.hpp restricted_host.hpp \
+ 		 pbs_helper.h mail_throttler.hpp lib_ifl.h runjob_help.hpp pmix_tracker.hpp \
+-		 pmix_operation.hpp job_host_data.hpp policy_values.h plugin_internal.h json/json.h \
+-		 json/json-forwards.h authorized_hosts.hpp numa_constants.h
++		 pmix_operation.hpp job_host_data.hpp policy_values.h plugin_internal.h \
++		 authorized_hosts.hpp numa_constants.h
+ 
+ BUILT_SOURCES = site_job_attr_def.h site_job_attr_enum.h \
+ 		site_qmgr_node_print.h site_qmgr_que_print.h \
+diff -up torque/src/include/pbs_job.h.system-jsoncpp torque/src/include/pbs_job.h
+--- torque/src/include/pbs_job.h.system-jsoncpp	2021-01-28 17:16:09.054473361 -0500
++++ torque/src/include/pbs_job.h	2021-01-28 17:18:26.715144482 -0500
+@@ -104,7 +104,7 @@
+ #include "tcp.h" /* tcp_chan */
+ #include "net_connect.h"
+ #include "job_host_data.hpp"
+-#include "json/json.h"
++#include <json/json.h>
+ 
+ 
+ #define SAVEJOB_BUF_SIZE 8192
+diff -up torque/src/lib/Libutils/Makefile.am.system-jsoncpp torque/src/lib/Libutils/Makefile.am
+--- torque/src/lib/Libutils/Makefile.am.system-jsoncpp	2021-01-28 17:19:31.650461068 -0500
++++ torque/src/lib/Libutils/Makefile.am	2021-01-28 17:19:42.934516083 -0500
+@@ -10,6 +10,6 @@ noinst_LIBRARIES = libutils.a
+ libutils_a_SOURCES = u_groups.c u_tree.c u_mu.c u_MXML.c u_xml.c u_threadpool.c u_lock_ctl.c \
+ 										 u_mom_hierarchy.c u_hash_map_structs.c u_users.c u_constants.c u_mutex_mgr.cpp \
+ 										 u_misc.c u_putenv.c u_wrapper.c u_timer.cpp machine.cpp numa_chip.cpp \
+-										 numa_core.cpp numa_pci_device.cpp numa_socket.cpp allocation.cpp jsoncpp.cpp \
++										 numa_core.cpp numa_pci_device.cpp numa_socket.cpp allocation.cpp \
+ 										 authorized_hosts.cpp numa_constants.cpp
+ 
+diff -up torque/src/resmom/catch_child.c.system-jsoncpp torque/src/resmom/catch_child.c
+--- torque/src/resmom/catch_child.c.system-jsoncpp	2021-01-28 17:20:20.852700949 -0500
++++ torque/src/resmom/catch_child.c	2021-01-28 17:20:32.701758691 -0500
+@@ -51,7 +51,7 @@
+ #include "pbs_cpuset.h"
+ #endif
+ #include "mom_config.h"
+-#include "json/json.h"
++#include <json/json.h>
+ 
+ #define DIS_REPLY_READ_RETRY 10
+ 
+diff -up torque/src/resmom/mom_server.c.system-jsoncpp torque/src/resmom/mom_server.c
+--- torque/src/resmom/mom_server.c.system-jsoncpp	2021-01-28 17:20:47.497830825 -0500
++++ torque/src/resmom/mom_server.c	2021-01-28 17:21:04.386913166 -0500
+@@ -251,7 +251,7 @@
+ #include "machine.hpp"
+ #endif
+ #ifdef USE_RESOURCE_PLUGIN
+-#include "json/json.h"
++#include <json/json.h>
+ #include "trq_plugin_api.h"
+ #include "plugin_internal.h"
+ #endif
+diff -up torque/src/resmom/prolog.c.system-jsoncpp torque/src/resmom/prolog.c
+--- torque/src/resmom/prolog.c.system-jsoncpp	2021-01-28 17:21:37.352073884 -0500
++++ torque/src/resmom/prolog.c	2021-01-28 17:21:49.191131604 -0500
+@@ -108,7 +108,7 @@
+ #include "net_connect.h"
+ #include "utils.h"
+ #include "mom_config.h"
+-#include "json/json.h"
++#include <json/json.h>
+ 
+ 
+ const int   PELOG_DOESNT_EXIST = -1;
+diff -up torque/src/resmom/requests.c.system-jsoncpp torque/src/resmom/requests.c
+--- torque/src/resmom/requests.c.system-jsoncpp	2021-01-28 17:22:05.545211337 -0500
++++ torque/src/resmom/requests.c	2021-01-28 17:22:16.108262836 -0500
+@@ -123,7 +123,7 @@
+ #include "power_state.hpp"
+ #ifdef USE_RESOURCE_PLUGIN
+ #include "plugin_internal.h"
+-#include "json/json.h"
++#include <json/json.h>
+ #endif
+ 
+ #ifdef _CRAY
+diff -up torque/src/server/job.cpp.system-jsoncpp torque/src/server/job.cpp
+--- torque/src/server/job.cpp.system-jsoncpp	2021-01-28 17:22:46.476410893 -0500
++++ torque/src/server/job.cpp	2021-01-28 17:22:57.246463402 -0500
+@@ -1,7 +1,7 @@
+ #include <pbs_config.h>
+ #include "pbs_job.h"
+ #include "log.h"
+-#include "json/json.h"
++#include <json/json.h>
+ 
+ 
+ /**
+diff -up torque/src/server/node_manager.c.system-jsoncpp torque/src/server/node_manager.c
+--- torque/src/server/node_manager.c.system-jsoncpp	2021-01-28 17:24:40.798968223 -0500
++++ torque/src/server/node_manager.c	2021-01-28 17:24:52.041023032 -0500
+@@ -140,7 +140,7 @@
+ #endif
+ #include "runjob_help.hpp"
+ #include "plugin_internal.h"
+-#include "json/json.h"
++#include <json/json.h>
+ #include "authorized_hosts.hpp"
+ 
+ #define IS_VALID_STR(STR)  (((STR) != NULL) && ((STR)[0] != '\0'))
+diff -up torque/src/server/pbsnode.cpp.system-jsoncpp torque/src/server/pbsnode.cpp
+--- torque/src/server/pbsnode.cpp.system-jsoncpp	2021-01-28 17:22:27.386317821 -0500
++++ torque/src/server/pbsnode.cpp	2021-01-28 17:22:38.162370359 -0500
+@@ -9,7 +9,7 @@
+ #include "../lib/Libnet/lib_net.h" /* pbs_getaddrinfo */
+ #include "alps_constants.h"
+ #include "policy_values.h"
+-#include "json/json.h"
++#include <json/json.h>
+ #include "plugin_internal.h"
+ 
+ #define MSG_LEN_LONG 160
+diff -up torque/src/test/catch_child/scaffolding.c.system-jsoncpp torque/src/test/catch_child/scaffolding.c
+--- torque/src/test/catch_child/scaffolding.c.system-jsoncpp	2021-01-28 17:25:02.101072079 -0500
++++ torque/src/test/catch_child/scaffolding.c	2021-01-28 17:25:14.307131588 -0500
+@@ -20,7 +20,7 @@
+ #include "mom_func.h"
+ #include "mom_job_cleanup.h"
+ #include "complete_req.hpp"
+-#include "json/json.h"
++#include <json/json.h>
+ 
+ int server_down;
+ int called_open_socket = 0;
+diff -up torque/src/test/job/test_uut.c.system-jsoncpp torque/src/test/job/test_uut.c
+--- torque/src/test/job/test_uut.c.system-jsoncpp	2021-01-28 17:25:24.008178885 -0500
++++ torque/src/test/job/test_uut.c	2021-01-28 17:25:33.824226742 -0500
+@@ -5,7 +5,7 @@
+ 
+ #include "pbs_error.h"
+ #include "pbs_job.h"
+-#include "json/json.h"
++#include <json/json.h>
+ #include <check.h>
+ 
+ extern attribute_def job_attr_def[];
+diff -up torque/src/test/machine/scaffolding.c.system-jsoncpp torque/src/test/machine/scaffolding.c
+--- torque/src/test/machine/scaffolding.c.system-jsoncpp	2021-01-28 17:26:18.917446590 -0500
++++ torque/src/test/machine/scaffolding.c	2021-01-28 17:26:28.467493151 -0500
+@@ -6,7 +6,7 @@
+ #include "pbs_error.h"
+ #include "allocation.hpp"
+ #include "complete_req.hpp"
+-#include "json/json.h"
++#include <json/json.h>
+ #include "numa_constants.h"
+ 
+ int num_for_host;
+diff -up torque/src/test/machine/test_uut.c.system-jsoncpp torque/src/test/machine/test_uut.c
+--- torque/src/test/machine/test_uut.c.system-jsoncpp	2021-01-28 17:26:37.960539433 -0500
++++ torque/src/test/machine/test_uut.c	2021-01-28 17:26:48.545591403 -0500
+@@ -9,7 +9,7 @@
+ #include "pbs_job.h"
+ #include "complete_req.hpp"
+ #include "pbs_config.h"
+-#include "json/json.h"
++#include <json/json.h>
+ 
+ extern int hardware_style;
+ 
+diff -up torque/src/test/node_manager/scaffolding.c.system-jsoncpp torque/src/test/node_manager/scaffolding.c
+--- torque/src/test/node_manager/scaffolding.c.system-jsoncpp	2021-01-28 17:25:45.583284073 -0500
++++ torque/src/test/node_manager/scaffolding.c	2021-01-28 17:25:57.028339872 -0500
+@@ -21,7 +21,7 @@
+ #include "id_map.hpp"
+ #include "machine.hpp"
+ #include "complete_req.hpp"
+-#include "json/json.h"
++#include <json/json.h>
+ #include "authorized_hosts.hpp"
+ 
+ 
+diff -up torque/src/test/numa_chip/scaffolding.c.system-jsoncpp torque/src/test/numa_chip/scaffolding.c
+--- torque/src/test/numa_chip/scaffolding.c.system-jsoncpp	2021-01-28 17:27:17.770736185 -0500
++++ torque/src/test/numa_chip/scaffolding.c	2021-01-28 17:27:25.892776426 -0500
+@@ -4,7 +4,7 @@
+ #include "log.h"
+ #include "pbs_error.h"
+ #include "machine.hpp"
+-#include "json/json.h"
++#include <json/json.h>
+ #include "numa_constants.h"
+ 
+ const char  *use_cores = "usecores";
+diff -up torque/src/test/numa_chip/test_uut.c.system-jsoncpp torque/src/test/numa_chip/test_uut.c
+--- torque/src/test/numa_chip/test_uut.c.system-jsoncpp	2021-01-28 17:27:33.612814672 -0500
++++ torque/src/test/numa_chip/test_uut.c	2021-01-28 17:27:41.267852594 -0500
+@@ -6,7 +6,7 @@
+ #include "hwloc.h"
+ #include "pbs_error.h"
+ #include <sstream>
+-#include "json/json.h"
++#include <json/json.h>
+ 
+ extern int recorded;
+ 
+diff -up torque/src/test/numa_socket/scaffolding.c.system-jsoncpp torque/src/test/numa_socket/scaffolding.c
+--- torque/src/test/numa_socket/scaffolding.c.system-jsoncpp	2021-01-28 17:27:51.494903256 -0500
++++ torque/src/test/numa_socket/scaffolding.c	2021-01-28 17:28:01.090950793 -0500
+@@ -6,7 +6,7 @@
+ #include "pbs_error.h"
+ #include "req.hpp"
+ #include "allocation.hpp"
+-#include "json/json.h"
++#include <json/json.h>
+ 
+ int hardware_style;
+ float tasks;
+diff -up torque/src/test/numa_socket/test_uut.c.system-jsoncpp torque/src/test/numa_socket/test_uut.c
+--- torque/src/test/numa_socket/test_uut.c.system-jsoncpp	2021-01-28 17:28:13.915014321 -0500
++++ torque/src/test/numa_socket/test_uut.c	2021-01-28 17:28:22.609057389 -0500
+@@ -8,7 +8,7 @@
+ #include "pbs_error.h"
+ #include "allocation.hpp"
+ #include "req.hpp"
+-#include "json/json.h"
++#include <json/json.h>
+ 
+ extern float tasks;
+ extern int placed;
+diff -up torque/src/test/parse_config/scaffolding.c.system-jsoncpp torque/src/test/parse_config/scaffolding.c
+--- torque/src/test/parse_config/scaffolding.c.system-jsoncpp	2021-01-28 17:29:00.388244539 -0500
++++ torque/src/test/parse_config/scaffolding.c	2021-01-28 17:29:10.473294499 -0500
+@@ -7,7 +7,7 @@
+ #include "pbs_job.h"
+ #include "u_tree.h"
+ #include "log.h"
+-#include "json/json.h"
++#include <json/json.h>
+ #include "authorized_hosts.hpp"
+ 
+ #define LOG_BUF_SIZE        16384
+diff -up torque/src/test/parse_config/test_uut.c.system-jsoncpp torque/src/test/parse_config/test_uut.c
+--- torque/src/test/parse_config/test_uut.c.system-jsoncpp	2021-01-28 17:28:40.823147618 -0500
++++ torque/src/test/parse_config/test_uut.c	2021-01-28 17:28:51.173198890 -0500
+@@ -5,7 +5,7 @@
+ 
+ #include "pbs_job.h"
+ #include "mom_func.h"
+-#include "json/json.h"
++#include <json/json.h>
+ 
+ extern int encode_used_ctr;
+ extern int encode_flagged_attrs_ctr;
+diff -up torque/src/test/prolog/scaffolding.c.system-jsoncpp torque/src/test/prolog/scaffolding.c
+--- torque/src/test/prolog/scaffolding.c.system-jsoncpp	2021-01-28 17:29:18.930336393 -0500
++++ torque/src/test/prolog/scaffolding.c	2021-01-28 17:29:28.645384519 -0500
+@@ -13,7 +13,7 @@
+ #include "libpbs.h" /* job_file */
+ #include "mom_config.h"
+ #include "mom_mach.h"
+-#include "json/json.h"
++#include <json/json.h>
+ 
+ #define MAXLINE 1024
+ 

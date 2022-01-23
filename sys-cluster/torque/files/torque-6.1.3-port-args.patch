@@ -1,0 +1,46 @@
+diff -up torque/contrib/init.d/pbs_mom.in.port-args torque/contrib/init.d/pbs_mom.in
+--- torque/contrib/init.d/pbs_mom.in.port-args	2021-01-28 16:29:53.554947436 -0500
++++ torque/contrib/init.d/pbs_mom.in	2021-01-28 16:33:43.410074859 -0500
+@@ -25,6 +25,8 @@ SBIN_PATH=@sbindir@
+ PBS_DAEMON="$SBIN_PATH/pbs_mom"
+ PBS_HOME=@PBS_HOME@
+ PBS_ARGS=""
++# this should be the integer port value
++PBS_PORT=""
+ 
+ SUBSYS_LOCK="/var/lock/subsys/pbs_mom"
+ 
+@@ -32,6 +34,14 @@ if [ -f /etc/sysconfig/pbs_mom ];then
+ 	. /etc/sysconfig/pbs_mom
+ fi
+ 
++if [ -z "$PBS_PORT" ]; then
++   momctl_port_arg=""
++   pbs_mom_port_arg=""
++else
++   momctl_port_arg="$PBS_PORT"
++   pbs_mom_port_arg="-M $PBS_PORT"
++fi
++
+ MOM_LOCK="$PBS_HOME/mom_priv/mom.lock"
+ 
+ if [ -z "$previous" ];then
+@@ -84,7 +94,7 @@ kill_pbs_mom() {
+ 	retval=1
+ 	for i in {1..5}; do
+ 		kill -0 $pid &>/dev/null || return 0
+-		$SBIN_PATH/momctl -s && return $?
++		$SBIN_PATH/momctl -s $momctl_port_arg && return $?
+ 		sleep 1
+ 	done
+ 	return $retval
+@@ -110,7 +120,7 @@ case "$1" in
+ 		fi
+ 
+ 		# ulimit -c unlimited  # Uncomment this to preserve core files
+-		daemon $PBS_DAEMON $args -d $PBS_HOME $PBS_ARGS
++		daemon $PBS_DAEMON $args $pbs_mom_port_arg -d $PBS_HOME $PBS_ARGS
+ 		RET=$?
+ 		touch $SUBSYS_LOCK
+ 		echo
+diff -up torque/contrib/init.d/pbs_sched.in.port-args torque/contrib/init.d/pbs_sched.in

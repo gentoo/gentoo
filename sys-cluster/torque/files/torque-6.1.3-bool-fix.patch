@@ -1,0 +1,33 @@
+diff -up torque/src/drmaa/src/compat.h.bool-fix torque/src/drmaa/src/compat.h
+--- torque/src/drmaa/src/compat.h.bool-fix	2021-01-28 17:59:06.149190046 -0500
++++ torque/src/drmaa/src/compat.h	2021-01-28 17:59:16.941243507 -0500
+@@ -51,6 +51,7 @@ int asprintf(char **strp, const char *fm
+ int vasprintf(char **strp, const char *fmt, va_list ap);
+ #endif
+ 
++/*
+ #ifndef HAVE_STDBOOL_H
+ # ifndef bool
+ #  define bool int
+@@ -62,6 +63,7 @@ int vasprintf(char **strp, const char *f
+ #  define false 0
+ # endif
+ #endif
++*/
+ 
+ #ifdef __cplusplus
+ }
+diff -up torque/src/include/pbs_ifl.h.bool-fix torque/src/include/pbs_ifl.h
+--- torque/src/include/pbs_ifl.h.bool-fix	2021-01-28 16:14:24.000000000 -0500
++++ torque/src/include/pbs_ifl.h	2021-01-28 17:50:17.068569045 -0500
+@@ -87,6 +87,10 @@
+ #define _PBS_IFL_DEF
+ #include <sys/socket.h>
+ 
++#ifdef __cplusplus
++#include <stdbool.h>
++#endif /* __cplusplus */
++
+ /* Attribute Names used by user commands */
+ 
+ #define ATTR_a "Execution_Time"

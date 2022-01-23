@@ -1,0 +1,436 @@
+diff -up torque/acinclude.m4.cleanup torque/acinclude.m4
+--- torque/acinclude.m4.cleanup	2021-01-28 16:14:17.000000000 -0500
++++ torque/acinclude.m4	2021-04-13 14:14:09.320271814 -0400
+@@ -20,12 +20,14 @@ dnl
+ AC_DEFUN([AC_DECL_H_ERRNO],
+ [AC_CACHE_CHECK([for h_errno declaration in netdb.h],
+   ac_cv_decl_h_errno,
+-[AC_TRY_COMPILE([#include <sys/types.h>
++[AC_COMPILE_IFELSE({AC_LANG_SOURCE([[
++#include <sys/types.h>
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>
+ #endif
+ #include <netdb.h>
+-], [int _ZzQ = (int)(h_errno + 1);],
++int _ZzQ = (int)(h_errno + 1);
++]]),
+   ac_cv_decl_h_errno=yes, ac_cv_decl_h_errno=no)])
+ if test $ac_cv_decl_h_errno = yes; then
+   AC_DEFINE(H_ERRNO_DECLARED, 1,
+@@ -183,7 +185,7 @@ AC_CHECK_MEMBER(struct stat64.st_mode,
+ #include <sys/stat.h>
+ #include <unistd.h>])
+ 
+-AC_MSG_CHECKING([if largefile compiles (looking at you, OSX)])
++AC_MSG_CHECKING([if largefile compiles])
+ AC_COMPILE_IFELSE([AC_LANG_SOURCE([ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
+diff -up torque/buildutils/ac_c_bigendian_cross.m4.cleanup torque/buildutils/ac_c_bigendian_cross.m4
+--- torque/buildutils/ac_c_bigendian_cross.m4.cleanup	2021-01-28 16:14:17.000000000 -0500
++++ torque/buildutils/ac_c_bigendian_cross.m4	2021-04-13 14:14:09.320271814 -0400
+@@ -19,18 +19,18 @@ AC_DEFUN([AC_C_BIGENDIAN_CROSS],
+ [AC_CACHE_CHECK(whether byte ordering is bigendian, ac_cv_c_bigendian,
+ [ac_cv_c_bigendian=unknown
+ # See if sys/param.h defines the BYTE_ORDER macro.
+-AC_TRY_COMPILE([#include <sys/types.h>
+-#include <sys/param.h>], [
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <sys/types.h>
++#include <sys/param.h>]], [[
+ #if !BYTE_ORDER || !BIG_ENDIAN || !LITTLE_ENDIAN
+  bogus endian macros
+-#endif], [# It does; now see whether it defined to BIG_ENDIAN or not.
++#endif]])],[# It does; now see whether it defined to BIG_ENDIAN or not.
+ AC_TRY_COMPILE([#include <sys/types.h>
+ #include <sys/param.h>], [
+ #if BYTE_ORDER != BIG_ENDIAN
+  not big endian
+-#endif], ac_cv_c_bigendian=yes, ac_cv_c_bigendian=no)])
++#endif], ac_cv_c_bigendian=yes, ac_cv_c_bigendian=no)],[])
+ if test $ac_cv_c_bigendian = unknown; then
+-AC_TRY_RUN([main () {
++AC_RUN_IFELSE([AC_LANG_SOURCE([[main () {
+   /* Are we little or big endian?  From Harbison&Steele.  */
+   union
+   {
+@@ -39,8 +39,7 @@ AC_TRY_RUN([main () {
+   } u;
+   u.l = 1;
+   exit (u.c[sizeof (long) - 1] == 1);
+-}], ac_cv_c_bigendian=no, ac_cv_c_bigendian=yes,
+-[ echo $ac_n "cross-compiling... " 2>&AC_FD_MSG ])
++}]])],[ac_cv_c_bigendian=no],[ac_cv_c_bigendian=yes],[ echo $ac_n "cross-compiling... " 2>&AS_MESSAGE_FD ])
+ fi])
+ if test $ac_cv_c_bigendian = unknown; then
+ AC_MSG_CHECKING(to probe for byte ordering)
+@@ -57,18 +56,18 @@ EOF
+ ] if test -f conftest.c ; then
+      if ${CC-cc} -c conftest.c -o conftest.o && test -f conftest.o ; then
+         if test `grep -l BIGenDianSyS conftest.o` ; then
+-           echo $ac_n ' big endian probe OK, ' 1>&AC_FD_MSG
++           echo $ac_n ' big endian probe OK, ' 1>&AS_MESSAGE_FD
+ 	   ac_cv_c_bigendian=yes
+         fi
+         if test `grep -l LiTTleEnDian conftest.o` ; then
+-           echo $ac_n ' little endian probe OK, ' 1>&AC_FD_MSG
++           echo $ac_n ' little endian probe OK, ' 1>&AS_MESSAGE_FD
+ 	   if test $ac_cv_c_bigendian = yes ; then
+ 	    ac_cv_c_bigendian=unknown;
+            else
+             ac_cv_c_bigendian=no
+            fi
+         fi
+-	echo $ac_n 'guessing bigendian ...  ' >&AC_FD_MSG
++	echo $ac_n 'guessing bigendian ...  ' >&AS_MESSAGE_FD
+      fi
+   fi
+ AC_MSG_RESULT($ac_cv_c_bigendian)
+diff -up torque/buildutils/acx_pthread.m4.cleanup torque/buildutils/acx_pthread.m4
+--- torque/buildutils/acx_pthread.m4.cleanup	2021-01-28 16:14:17.000000000 -0500
++++ torque/buildutils/acx_pthread.m4	2021-04-13 14:14:09.320271814 -0400
+@@ -56,7 +56,7 @@ dnl @license GPLWithACException
+ AC_DEFUN([ACX_PTHREAD], [
+ AC_REQUIRE([AC_CANONICAL_HOST])
+ AC_LANG_SAVE
+-AC_LANG_C
++AC_LANG([C])
+ acx_pthread_ok=no
+ 
+ # We used to check for pthread.h first, but this fails if pthread.h
+diff -up torque/buildutils/ax_cflags_gcc_option.m4.cleanup torque/buildutils/ax_cflags_gcc_option.m4
+--- torque/buildutils/ax_cflags_gcc_option.m4.cleanup	2021-01-28 16:14:17.000000000 -0500
++++ torque/buildutils/ax_cflags_gcc_option.m4	2021-04-13 14:14:09.320271814 -0400
+@@ -87,15 +87,14 @@ AS_VAR_PUSHDEF([VAR],[ac_cv_cflags_gcc_o
+ AC_CACHE_CHECK([m4_ifval($1,$1,FLAGS) for gcc m4_ifval($2,$2,-option)],
+ VAR,[VAR="no, unknown"
+  AC_LANG_SAVE
+- AC_LANG_C
++ AC_LANG([C])
+  ac_save_[]FLAGS="$[]FLAGS"
+ for ac_arg dnl
+ in "-pedantic -Werror % m4_ifval($2,$2,-option)"  dnl   GCC
+    "-pedantic % m4_ifval($2,$2,-option) %% no, obsolete"  dnl new GCC
+    #
+ do FLAGS="$ac_save_[]FLAGS "`echo $ac_arg | sed -e 's,%%.*,,' -e 's,%,,'`
+-   AC_TRY_COMPILE([],[return 0;],
+-   [VAR=`echo $ac_arg | sed -e 's,.*% *,,'` ; break])
++   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[return 0;]])],[VAR=`echo $ac_arg | sed -e 's,.*% *,,'` ; break],[])
+ done
+  FLAGS="$ac_save_[]FLAGS"
+  AC_LANG_RESTORE
+@@ -123,15 +122,14 @@ AS_VAR_PUSHDEF([VAR],[ac_cv_cxxflags_gcc
+ AC_CACHE_CHECK([m4_ifval($1,$1,FLAGS) for gcc m4_ifval($2,$2,-option)],
+ VAR,[VAR="no, unknown"
+  AC_LANG_SAVE
+- AC_LANG_CPLUSPLUS
++ AC_LANG([C++])
+  ac_save_[]FLAGS="$[]FLAGS"
+ for ac_arg dnl
+ in "-pedantic -Werror % m4_ifval($2,$2,-option)"  dnl   GCC
+    "-pedantic % m4_ifval($2,$2,-option) %% no, obsolete"  dnl new GCC
+    #
+ do FLAGS="$ac_save_[]FLAGS "`echo $ac_arg | sed -e 's,%%.*,,' -e 's,%,,'`
+-   AC_TRY_COMPILE([],[return 0;],
+-   [VAR=`echo $ac_arg | sed -e 's,.*% *,,'` ; break])
++   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[return 0;]])],[VAR=`echo $ac_arg | sed -e 's,.*% *,,'` ; break],[])
+ done
+  FLAGS="$ac_save_[]FLAGS"
+  AC_LANG_RESTORE
+@@ -158,15 +156,14 @@ AS_VAR_PUSHDEF([VAR],[ac_cv_cflags_gcc_o
+ AC_CACHE_CHECK([m4_ifval($2,$2,FLAGS) for gcc m4_ifval($1,$1,-option)],
+ VAR,[VAR="no, unknown"
+  AC_LANG_SAVE
+- AC_LANG_C
++ AC_LANG([C])
+  ac_save_[]FLAGS="$[]FLAGS"
+ for ac_arg dnl
+ in "-pedantic -Werror % m4_ifval($1,$1,-option)"  dnl   GCC
+    "-pedantic % m4_ifval($1,$1,-option) %% no, obsolete"  dnl new GCC
+    #
+ do FLAGS="$ac_save_[]FLAGS "`echo $ac_arg | sed -e 's,%%.*,,' -e 's,%,,'`
+-   AC_TRY_COMPILE([],[return 0;],
+-   [VAR=`echo $ac_arg | sed -e 's,.*% *,,'` ; break])
++   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[return 0;]])],[VAR=`echo $ac_arg | sed -e 's,.*% *,,'` ; break],[])
+ done
+  FLAGS="$ac_save_[]FLAGS"
+  AC_LANG_RESTORE
+@@ -194,15 +191,14 @@ AS_VAR_PUSHDEF([VAR],[ac_cv_cxxflags_gcc
+ AC_CACHE_CHECK([m4_ifval($2,$2,FLAGS) for gcc m4_ifval($1,$1,-option)],
+ VAR,[VAR="no, unknown"
+  AC_LANG_SAVE
+- AC_LANG_CPLUSPLUS
++ AC_LANG([C++])
+  ac_save_[]FLAGS="$[]FLAGS"
+ for ac_arg dnl
+ in "-pedantic -Werror % m4_ifval($1,$1,-option)"  dnl   GCC
+    "-pedantic % m4_ifval($1,$1,-option) %% no, obsolete"  dnl new GCC
+    #
+ do FLAGS="$ac_save_[]FLAGS "`echo $ac_arg | sed -e 's,%%.*,,' -e 's,%,,'`
+-   AC_TRY_COMPILE([],[return 0;],
+-   [VAR=`echo $ac_arg | sed -e 's,.*% *,,'` ; break])
++   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[return 0;]])],[VAR=`echo $ac_arg | sed -e 's,.*% *,,'` ; break],[])
+ done
+  FLAGS="$ac_save_[]FLAGS"
+  AC_LANG_RESTORE
+diff -up torque/buildutils/tac_tcltk.m4.cleanup torque/buildutils/tac_tcltk.m4
+--- torque/buildutils/tac_tcltk.m4.cleanup	2021-01-28 16:14:17.000000000 -0500
++++ torque/buildutils/tac_tcltk.m4	2021-04-13 14:14:09.320271814 -0400
+@@ -215,7 +215,7 @@ fi
+ 
+ 
+ AC_ARG_WITH(tclatrsep,
+-    AC_HELP_STRING([--with-tclatrsep=CHAR],[set the Tcl attribute separator character
++    AS_HELP_STRING([--with-tclatrsep=CHAR],[set the Tcl attribute separator character
+                         this will default to "." if unspecified]),
+     [tcl_atrsep="${withval}"], [tcl_atrsep="."])
+ if test "$TCL" = "1" ; then
+diff -up torque/buildutils/tcl.m4.cleanup torque/buildutils/tcl.m4
+--- torque/buildutils/tcl.m4.cleanup	2021-01-28 16:14:17.000000000 -0500
++++ torque/buildutils/tcl.m4	2021-04-13 14:14:09.320271814 -0400
+@@ -44,7 +44,7 @@ AC_DEFUN([TEA_PATH_TCLCONFIG], [
+     if test x"${no_tcl}" = x ; then
+ 	# we reset no_tcl in case something fails here
+ 	no_tcl=true
+-	AC_ARG_WITH(tcl, AC_HELP_STRING([--with-tcl],[directory containing tcl configuration (tclConfig.sh)]), with_tclconfig=${withval})
++	AC_ARG_WITH(tcl, AS_HELP_STRING([--with-tcl],[directory containing tcl configuration (tclConfig.sh)]), with_tclconfig=${withval})
+ 	AC_MSG_CHECKING([for Tcl configuration])
+ 	AC_CACHE_VAL(ac_cv_c_tclconfig,[
+ 
+@@ -141,7 +141,7 @@ AC_DEFUN([TEA_PATH_TKCONFIG], [
+     if test x"${no_tk}" = x ; then
+ 	# we reset no_tk in case something fails here
+ 	no_tk=true
+-	AC_ARG_WITH(tk, AC_HELP_STRING([--with-tk],[directory containing tk configuration (tkConfig.sh)]), with_tkconfig=${withval})
++	AC_ARG_WITH(tk, AS_HELP_STRING([--with-tk],[directory containing tk configuration (tkConfig.sh)]), with_tkconfig=${withval})
+ 	AC_MSG_CHECKING([for Tk configuration])
+ 	AC_CACHE_VAL(ac_cv_c_tkconfig,[
+ 
+@@ -440,7 +440,7 @@ AC_DEFUN([TEA_ENABLE_THREADS], [
+ 		# Check a little harder for __pthread_mutex_init in the
+ 		# same library, as some systems hide it there until
+ 		# pthread.h is defined.	 We could alternatively do an
+-		# AC_TRY_COMPILE with pthread.h, but that will work with
++		# AC_COMPILE_IFELSE with pthread.h, but that will work with
+ 		# libpthread really doesn't exist, like AIX 4.2.
+ 		# [Bug: 4359]
+ 		AC_CHECK_LIB(pthread, __pthread_mutex_init,
+@@ -621,8 +621,10 @@ AC_DEFUN([TEA_ENABLE_LANGINFO], [
+     fi
+     AC_MSG_CHECKING([whether to use nl_langinfo])
+     if test "$langinfo_ok" = "yes"; then
+-	AC_TRY_COMPILE([#include <langinfo.h>],
+-		[nl_langinfo(CODESET);],[langinfo_ok=yes],[langinfo_ok=no])
++	AC_COMPILE_IFELSE([AC_LANG_SOURCE([[
++		#include <langinfo.h>
++		nl_langinfo(CODESET);]]),
++		langinfo_ok=yes , langinfo_ok=no])
+ 	if test "$langinfo_ok" = "no"; then
+ 	    langinfo_ok="no (could not compile with nl_langinfo)";
+ 	fi
+@@ -1626,7 +1628,8 @@ dnl AC_CHECK_TOOL(AR, ar, :)
+ 
+     if test "x$DL_OBJS" = "xtclLoadAout.o" ; then
+ 	AC_MSG_CHECKING([sys/exec.h])
+-	AC_TRY_COMPILE([#include <sys/exec.h>],[
++	AC_COMPILE_IFELSE([AC_LANG_SOURCE([[
++	    #include <sys/exec.h>
+ 	    struct exec foo;
+ 	    unsigned long seek;
+ 	    int flag;
+@@ -1637,13 +1640,14 @@ dnl AC_CHECK_TOOL(AR, ar, :)
+ #endif
+ 	    flag = (foo.a_magic == OMAGIC);
+ 	    return foo.a_text + foo.a_data + foo.a_bss + foo.a_entry;
+-    ], tcl_ok=usable, tcl_ok=unusable)
++    ]]), tcl_ok=usable, tcl_ok=unusable])
+ 	AC_MSG_RESULT([$tcl_ok])
+ 	if test $tcl_ok = usable; then
+ 	    AC_DEFINE(USE_SYS_EXEC_H)
+ 	else
+ 	    AC_MSG_CHECKING([a.out.h])
+-	    AC_TRY_COMPILE([#include <a.out.h>],[
++	    AC_COMPILE_IFELSE([AC_LANG_SOURCE([[
++		#include <a.out.h>
+ 		struct exec foo;
+ 		unsigned long seek;
+ 		int flag;
+@@ -1654,13 +1658,14 @@ dnl AC_CHECK_TOOL(AR, ar, :)
+ #endif
+ 		flag = (foo.a_magic == OMAGIC);
+ 		return foo.a_text + foo.a_data + foo.a_bss + foo.a_entry;
+-	    ], tcl_ok=usable, tcl_ok=unusable)
++	    ]]), tcl_ok=usable, tcl_ok=unusable])
+ 	    AC_MSG_RESULT([$tcl_ok])
+ 	    if test $tcl_ok = usable; then
+ 		AC_DEFINE(USE_A_OUT_H)
+ 	    else
+ 		AC_MSG_CHECKING([sys/exec_aout.h])
+-		AC_TRY_COMPILE([#include <sys/exec_aout.h>],[
++		AC_COMPILE_IFELSE([AC_LANG_SOURCE([[
++		    #include <sys/exec_aout.h>
+ 		    struct exec foo;
+ 		    unsigned long seek;
+ 		    int flag;
+@@ -1671,7 +1676,7 @@ dnl AC_CHECK_TOOL(AR, ar, :)
+ #endif
+ 		    flag = (foo.a_midmag == OMAGIC);
+ 		    return foo.a_text + foo.a_data + foo.a_bss + foo.a_entry;
+-		], tcl_ok=usable, tcl_ok=unusable)
++		]]), tcl_ok=usable, tcl_ok=unusable])
+ 		AC_MSG_RESULT([$tcl_ok])
+ 		if test $tcl_ok = usable; then
+ 		    AC_DEFINE(USE_SYS_EXEC_AOUT_H)
+@@ -1913,7 +1918,7 @@ int main() {
+ 
+ AC_DEFUN([TEA_MISSING_POSIX_HEADERS], [
+     AC_MSG_CHECKING([dirent.h])
+-    AC_TRY_LINK([#include <sys/types.h>
++    AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <sys/types.h>
+ #include <dirent.h>], [
+ #ifndef _POSIX_SOURCE
+ #   ifdef __Lynx__
+@@ -1932,7 +1937,7 @@ d = opendir("foobar");
+ entryPtr = readdir(d);
+ p = entryPtr->d_name;
+ closedir(d);
+-], tcl_ok=yes, tcl_ok=no)
++]])], [tcl_ok=yes], [tcl_ok=no])
+ 
+     if test $tcl_ok = no; then
+ 	AC_DEFINE(NO_DIRENT_H)
+@@ -2165,8 +2170,8 @@ AC_DEFUN([TEA_TIME_HANDLER], [
+ 
+     AC_MSG_CHECKING([tm_tzadj in struct tm])
+     AC_CACHE_VAL(tcl_cv_member_tm_tzadj,
+-	AC_TRY_COMPILE([#include <time.h>], [struct tm tm; tm.tm_tzadj;],
+-	    tcl_cv_member_tm_tzadj=yes, tcl_cv_member_tm_tzadj=no))
++	AC_COMPILE_IFELSE([AC_LANG_SOURCE([[#include <time.h>], [struct tm tm; tm.tm_tzadj;]]),
++	    tcl_cv_member_tm_tzadj=yes, tcl_cv_member_tm_tzadj=no]))
+     AC_MSG_RESULT([$tcl_cv_member_tm_tzadj])
+     if test $tcl_cv_member_tm_tzadj = yes ; then
+ 	AC_DEFINE(HAVE_TM_TZADJ)
+@@ -2174,8 +2179,8 @@ AC_DEFUN([TEA_TIME_HANDLER], [
+ 
+     AC_MSG_CHECKING([tm_gmtoff in struct tm])
+     AC_CACHE_VAL(tcl_cv_member_tm_gmtoff,
+-	AC_TRY_COMPILE([#include <time.h>], [struct tm tm; tm.tm_gmtoff;],
+-	    tcl_cv_member_tm_gmtoff=yes, tcl_cv_member_tm_gmtoff=no))
++	AC_COMPILE_IFELSE([AC_LANG_SOURCE([[#include <time.h>], [struct tm tm; tm.tm_gmtoff;]]),
++	    tcl_cv_member_tm_gmtoff=yes, tcl_cv_member_tm_gmtoff=no]))
+     AC_MSG_RESULT([$tcl_cv_member_tm_gmtoff])
+     if test $tcl_cv_member_tm_gmtoff = yes ; then
+ 	AC_DEFINE(HAVE_TM_GMTOFF)
+@@ -2187,11 +2192,11 @@ AC_DEFUN([TEA_TIME_HANDLER], [
+     #
+     AC_MSG_CHECKING([long timezone variable])
+     AC_CACHE_VAL(tcl_cv_var_timezone,
+-	AC_TRY_COMPILE([#include <time.h>],
++	AC_COMPILE_IFELSE([AC_LANG_SOURCE([[#include <time.h>],
+ 	    [extern long timezone;
+ 	    timezone += 1;
+-	    exit (0);],
+-	    tcl_cv_timezone_long=yes, tcl_cv_timezone_long=no))
++	    exit (0);]]),
++	    tcl_cv_timezone_long=yes, tcl_cv_timezone_long=no]))
+     AC_MSG_RESULT([$tcl_cv_timezone_long])
+     if test $tcl_cv_timezone_long = yes ; then
+ 	AC_DEFINE(HAVE_TIMEZONE_VAR)
+@@ -2201,11 +2206,11 @@ AC_DEFUN([TEA_TIME_HANDLER], [
+ 	#
+ 	AC_MSG_CHECKING([time_t timezone variable])
+ 	AC_CACHE_VAL(tcl_cv_timezone_time,
+-	    AC_TRY_COMPILE([#include <time.h>],
++	    AC_COMPILE_IFELSE([AC_LANG_SOURCE([[#include <time.h>],
+ 		[extern time_t timezone;
+ 		timezone += 1;
+-		exit (0);],
+-		tcl_cv_timezone_time=yes, tcl_cv_timezone_time=no))
++		exit (0);]]),
++		tcl_cv_timezone_time=yes, tcl_cv_timezone_time=no]))
+ 	AC_MSG_RESULT([$tcl_cv_timezone_time])
+ 	if test $tcl_cv_timezone_time = yes ; then
+ 	    AC_DEFINE(HAVE_TIMEZONE_VAR)
+@@ -2372,8 +2377,7 @@ AC_DEFUN([TEA_TCL_LINK_LIBS], [
+ AC_DEFUN([TEA_TCL_EARLY_FLAG],[
+     AC_CACHE_VAL([tcl_cv_flag_]translit($1,[A-Z],[a-z]),
+ 	AC_TRY_COMPILE([$2], $3, [tcl_cv_flag_]translit($1,[A-Z],[a-z])=no,
+-	    AC_TRY_COMPILE([[#define ]$1[ 1
+-]$2], $3,
++	    AC_TRY_COMPILE([[#define ]$1[ 1]$2], $3,
+ 		[tcl_cv_flag_]translit($1,[A-Z],[a-z])=yes,
+ 		[tcl_cv_flag_]translit($1,[A-Z],[a-z])=no)))
+     if test ["x${tcl_cv_flag_]translit($1,[A-Z],[a-z])[}" = "xyes"] ; then
+@@ -2436,9 +2440,12 @@ AC_DEFUN([TEA_TCL_64BIT_FLAGS], [
+ 	# Now check for auxiliary declarations
+ 	AC_MSG_CHECKING([for struct dirent64])
+ 	AC_CACHE_VAL(tcl_cv_struct_dirent64,[
+-	    AC_TRY_COMPILE([#include <sys/types.h>
+-#include <sys/dirent.h>],[struct dirent64 p;],
+-		tcl_cv_struct_dirent64=yes,tcl_cv_struct_dirent64=no)])
++	    AC_COMPILE_IFELSE([AC_LANG_SOURCE([[
++#include <sys/types.h>
++#include <sys/dirent.h>
++struct dirent64 p;
++        ]]),
++		tcl_cv_struct_dirent64=yes,tcl_cv_struct_dirent64=no])])
+ 	if test "x${tcl_cv_struct_dirent64}" = "xyes" ; then
+ 	    AC_DEFINE(HAVE_STRUCT_DIRENT64)
+ 	fi
+@@ -2446,9 +2453,11 @@ AC_DEFUN([TEA_TCL_64BIT_FLAGS], [
+ 
+ 	AC_MSG_CHECKING([for struct stat64])
+ 	AC_CACHE_VAL(tcl_cv_struct_stat64,[
+-	    AC_TRY_COMPILE([#include <sys/stat.h>],[struct stat64 p;
+-],
+-		tcl_cv_struct_stat64=yes,tcl_cv_struct_stat64=no)])
++	    AC_COMPILE_IFELSE([AC_LANG_SOURCE([[
++#include <sys/stat.h>
++struct stat64 p;
++        ]]),
++		tcl_cv_struct_stat64=yes,tcl_cv_struct_stat64=no])])
+ 	if test "x${tcl_cv_struct_stat64}" = "xyes" ; then
+ 	    AC_DEFINE(HAVE_STRUCT_STAT64)
+ 	fi
+@@ -2456,9 +2465,11 @@ AC_DEFUN([TEA_TCL_64BIT_FLAGS], [
+ 
+ 	AC_MSG_CHECKING([for off64_t])
+ 	AC_CACHE_VAL(tcl_cv_type_off64_t,[
+-	    AC_TRY_COMPILE([#include <sys/types.h>],[off64_t offset;
+-],
+-		tcl_cv_type_off64_t=yes,tcl_cv_type_off64_t=no)])
++	    AC_COMPILE_IFELSE([AC_LANG_SOURCE([[
++#include <sys/types.h>
++off64_t offset;
++	]])},
++		tcl_cv_type_off64_t=yes,tcl_cv_type_off64_t=no])])
+ 	if test "x${tcl_cv_type_off64_t}" = "xyes" ; then
+ 	    AC_DEFINE(HAVE_TYPE_OFF64_T)
+ 	fi
+@@ -2898,7 +2909,7 @@ AC_DEFUN([TEA_PRIVATE_TCL_HEADERS], [
+ AC_DEFUN([TEA_PUBLIC_TCL_HEADERS], [
+     AC_MSG_CHECKING([for Tcl public headers])
+ 
+-    AC_ARG_WITH(tclinclude, AC_HELP_STRING([--with-tclinclude],[directory containing the public Tcl header files]), with_tclinclude=${withval})
++    AC_ARG_WITH(tclinclude, AS_HELP_STRING([--with-tclinclude],[directory containing the public Tcl header files]), with_tclinclude=${withval})
+ 
+     AC_CACHE_VAL(ac_cv_c_tclh, [
+ 	# Use the value from --with-tclinclude, if it was given
+@@ -3027,7 +3038,7 @@ AC_DEFUN([TEA_PRIVATE_TK_HEADERS], [
+ AC_DEFUN([TEA_PUBLIC_TK_HEADERS], [
+     AC_MSG_CHECKING([for Tk public headers])
+ 
+-    AC_ARG_WITH(tkinclude, AC_HELP_STRING([--with-tkinclude],[directory containing the public Tk header files.]), with_tkinclude=${withval})
++    AC_ARG_WITH(tkinclude, AS_HELP_STRING([--with-tkinclude],[directory containing the public Tk header files.]), with_tkinclude=${withval})
+ 
+     AC_CACHE_VAL(ac_cv_c_tkh, [
+ 	# Use the value from --with-tkinclude, if it was given
+@@ -3222,7 +3233,7 @@ AC_DEFUN([TEA_PATH_CONFIG], [
+     if test x"${no_$1}" = x ; then
+ 	# we reset no_$1 in case something fails here
+ 	no_$1=true
+-	AC_ARG_WITH($1, AC_HELP_STRING([--with-$1],[directory containing $1 configuration ($1Config.sh)]), with_$1config=${withval})
++	AC_ARG_WITH($1, AS_HELP_STRING([--with-$1],[directory containing $1 configuration ($1Config.sh)]), with_$1config=${withval})
+ 	AC_MSG_CHECKING([for $1 configuration])
+ 	AC_CACHE_VAL(ac_cv_c_$1config,[
+ 
