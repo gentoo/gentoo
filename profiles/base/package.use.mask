@@ -1,10 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # New entries go on top.
 
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
+
+# Sam James <sam@gentoo.org> (2022-01-23)
+# Java bindings are broken with OpenJDK 11+ and we're not
+# aware of any consumers. bug #713866
+# The bindings will be removed in 30 days due to their state
+# of disrepair.
+sys-libs/db java
 
 # Sam James <sam@gentoo.org> (2022-01-12)
 # Unmask PCH for now for GCC to avoid unnecessary rebuilds
