@@ -41,6 +41,8 @@ BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}"/${P}-missing-include.patch )
+
 WAF_BINARY="${S}/buildtools/bin/waf"
 
 pkg_setup() {
