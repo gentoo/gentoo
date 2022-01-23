@@ -91,3 +91,7 @@ pkg_postrm() {
 	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
+
+# tests in this release don't work, see also:
+# https://dev.gajim.org/gajim/gajim/-/issues/10755
+RESTRICT="test"
