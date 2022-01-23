@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools flag-o-matic linux-info
+inherit autotools flag-o-matic linux-info toolchain-funcs
 
 DESCRIPTION="Resource manager and queuing system based on OpenPBS"
 HOMEPAGE="http://www.adaptivecomputing.com/products/open-source/torque"
