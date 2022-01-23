@@ -41,7 +41,15 @@ PATCHES=(
 	"${FILESDIR}"/${P}-coverage-6.2.patch
 )
 
-EPYTEST_DESELECT=(
-	# attempts to install packages via pip (network)
-	tests/test_pytest_cov.py::test_dist_missing_data
-)
+python_test() {
+	# NB: disabling all plugins speeds tests up a lot
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	local -x PYTEST_PLUGINS=pytest_cov.plugin,xdist.plugin,xdist.looponfail
+
+	local EPYTEST_DESELECT=(
+		# attempts to install packages via pip (network)
+		tests/test_pytest_cov.py::test_dist_missing_data
+	)
+
+	epytest
+}
