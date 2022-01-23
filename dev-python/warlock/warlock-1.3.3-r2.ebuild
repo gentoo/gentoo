@@ -29,3 +29,8 @@ EPYTEST_DESELECT=(
 	# (its only dep) does not seem to be affected
 	tests/test_core.py::TestCore::test_recursive_models
 )
+
+src_prepare() {
+	sed -i -e '/--cov/d' pytest.ini || die
+	distutils-r1_src_prepare
+}
