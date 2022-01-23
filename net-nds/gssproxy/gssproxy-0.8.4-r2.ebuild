@@ -55,6 +55,8 @@ RESTRICT="test"
 # 		"${S}/tests/testlib.py" || die
 # }
 
+PATCHES=( "${FILESDIR}"/${P}-include.patch )
+
 src_configure() {
 	local myeconfargs=(
 		# The build assumes localstatedir is /var and takes care of
