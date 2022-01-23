@@ -1,7 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Suite of small networking utilities for Unix systems"
 HOMEPAGE="https://www.skarnet.org/software/s6-networking/"
@@ -33,9 +35,13 @@ src_prepare() {
 	# Avoid QA warning for LDFLAGS addition; avoid overriding -fstack-protector
 	sed -i -e 's/.*-Wl,--hash-style=both$/:/' -e '/-fno-stack-protector$/d' \
 		configure || die
+
+	sed -i -e '/AR := /d' -e '/RANLIB := /d' Makefile || die
 }
 
 src_configure() {
+	tc-export AR CC RANLIB
+
 	econf \
 		--bindir=/bin \
 		--dynlibdir=/usr/$(get_libdir) \
