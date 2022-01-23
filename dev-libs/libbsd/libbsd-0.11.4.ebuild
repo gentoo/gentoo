@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Library to provide useful functions commonly found on BSD systems"
 HOMEPAGE="https://libbsd.freedesktop.org/wiki/ https://gitlab.freedesktop.org/libbsd/libbsd"
@@ -18,6 +18,17 @@ RDEPEND="app-crypt/libmd[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-3.17
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.11.4-build-respect-OBJDUMP.patch
+)
+
+src_prepare() {
+	default
+
+	# Needed for objdump patch
+	eautoreconf
+}
 
 multilib_src_configure() {
 	# The build system will install libbsd-ctor.a despite of USE="-static-libs"
