@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -134,13 +134,13 @@ src_configure() {
 		$(use_with pcre pcre2) \
 		$(use_with sasl) \
 		$(use_with ssl openssl) \
-		$(use_with system-xxhash) \
+		$(use_with system-xxhash xxhash) \
 		$(use_with webdav webdav-props) \
 		$(use_with webdav webdav-locks) \
 		$(use_with xattr attr) \
 		$(use_with zlib) \
 		$(use_with zstd) \
-		$(use_with unwind)
+		$(use_with unwind libunwind)
 }
 
 src_compile() {
