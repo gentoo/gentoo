@@ -9,7 +9,7 @@
 # Sam James <sam@gentoo.org> (2022-01-23)
 # Java bindings are broken with OpenJDK 11+ and we're not
 # aware of any consumers. bug #713866
-# The bindings will be removed in 30 days due to their state
+# The bindings will be removed on 2022-02-23 due to their state
 # of disrepair.
 sys-libs/db java
 
