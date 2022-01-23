@@ -42,6 +42,7 @@ BDEPEND="
 DEPEND="
 	dev-libs/libfmt:=
 	media-libs/glew:0=
+	media-libs/libepoxy
 	media-libs/libpng:0=
 	sys-libs/zlib:=
 	virtual/glu
