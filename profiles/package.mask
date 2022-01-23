@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-23)
+# Java-libraries with no consumers and depending on virtual/{jdk,jre}-1.6
+# Removal in 30 days.
+dev-java/yanfs
+dev-java/xp
+dev-java/felix-gogo-runtime
+
 # Mike Gilbert <floppym@gentoo.org> (2022-01-22)
 # Breaks many GNOME packages.
 # https://bugs.gentoo.org/831474
