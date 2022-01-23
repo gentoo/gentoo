@@ -10,7 +10,7 @@ HOMEPAGE="https://www.shoup.net/ntl/ https://github.com/libntl/ntl"
 SRC_URI="https://www.shoup.net/ntl/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
-SLOT="0/43"
+SLOT="0/44"
 KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="bindist doc static-libs threads cpu_flags_x86_avx2"
 
