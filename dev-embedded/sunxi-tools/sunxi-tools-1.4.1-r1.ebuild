@@ -16,7 +16,12 @@ SLOT="0"
 IUSE=""
 KEYWORDS="~amd64"
 
-DEPEND="virtual/libusb"
+RDEPEND="acct-group/plugdev
+	virtual/libusb:1
+	virtual/udev"
+
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${P}-respect-user-supplied-cflags.patch"
@@ -24,7 +29,11 @@ PATCHES=(
 )
 
 src_compile() {
-	emake CC="$(tc-getCC)" tools misc
+	tc-export PKG_CONFIG
+
+	emake LIBUSB_CFLAGS="$(${PKG_CONFIG} --cflags libusb-1.0)" \
+		LIBUSB_LIBS="$(${PKG_CONFIG} --libs libusb-1.0)" \
+		CC="$(tc-getCC)" tools misc
 }
 
 src_install() {
