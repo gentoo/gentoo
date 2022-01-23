@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 MY_P="${PN}-$(ver_rs 2 -)"
 
 DESCRIPTION="A library of curses widgets"
-HOMEPAGE="https://dickey.his.com/cdk/cdk.html"
+HOMEPAGE="https://dickey.his.com/cdk/cdk.html https://github.com/ThomasDickey/cdk-snapshots"
 SRC_URI="ftp://ftp.invisible-island.net/cdk/${MY_P}.tgz"
 S="${WORKDIR}"/${MY_P}
 
