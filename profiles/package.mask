@@ -297,8 +297,6 @@ sys-cluster/mpich2
 # Removal in 15 days
 <dev-python/spyder-5.1.0
 <dev-python/spyder-kernels-2.1.0
-# Stuck on spyder-5.0
-dev-python/spyder-notebook
 
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
