@@ -52,3 +52,14 @@
  	  -I$(ROOTDIR)/runtime $(SHAREDLIB_CFLAGS) -DNATIVE_CODE \
  	  -DTARGET_$(ARCH) -DMODEL_$(MODEL) -DSYS_$(SYSTEM) \
  	  $(OUTPUTOBJ)$@ -c $<
+--- a/tools/Makefile	2022-01-23 09:57:00.788877931 +0100
++++ b/tools/Makefile	2022-01-23 09:57:21.735516656 +0100
+@@ -322,7 +322,7 @@
+ endif
+ 
+ objinfo_helper$(EXE): objinfo_helper.c $(ROOTDIR)/runtime/caml/s.h
+-	$(CC) $(OC_CFLAGS) $(OC_CPPFLAGS) -I$(ROOTDIR)/runtime $(OUTPUTEXE)$@ \
++	$(CC) $(OC_CFLAGS) $(CFLAGS) $(OC_CPPFLAGS) -I$(ROOTDIR)/runtime $(OUTPUTEXE)$@ \
+           $(DEF_SYMBOL_PREFIX) $(LIBBFD_INCLUDE) $< $(LIBBFD_LINK)
+ 
+ OBJINFO=$(ROOTDIR)/compilerlibs/ocamlcommon.cma \
