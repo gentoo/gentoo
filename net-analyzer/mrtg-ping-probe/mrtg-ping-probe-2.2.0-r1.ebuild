@@ -17,6 +17,7 @@ RDEPEND="
 "
 
 src_prepare() {
+	default
 	sed -i check-ping-fmt \
 		-e 's:#!/usr/local/bin/perl -w:#!/usr/bin/perl -w:' \
 		|| die
