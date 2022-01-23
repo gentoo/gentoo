@@ -219,6 +219,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 src_test() {
+	# Skip tests depending on a network connection. Bug #831772
+	rm internal/txlib/update_test.go || die
 	go test ./... || die
 }
 
