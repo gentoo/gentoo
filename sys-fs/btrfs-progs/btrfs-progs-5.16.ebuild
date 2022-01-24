@@ -45,7 +45,7 @@ RDEPEND="
 	zstd? ( app-arch/zstd:0= )
 "
 DEPEND="${RDEPEND}
-	>=sys-kernel/linux-headers-5.11
+	>=sys-kernel/linux-headers-5.10
 	convert? ( sys-apps/acl )
 	python? (
 		$(python_gen_cond_dep '
@@ -78,6 +78,10 @@ if [[ ${PV} == 9999 ]]; then
 fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+PATCHES=(
+	"${FILESDIR}"/5.16-linux-headers-before-5.11.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
