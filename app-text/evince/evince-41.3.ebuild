@@ -67,6 +67,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/${PV}"-fix-build-with-meson-0.61.1.patch
+)
+
 src_prepare() {
 	xdg_src_prepare
 
