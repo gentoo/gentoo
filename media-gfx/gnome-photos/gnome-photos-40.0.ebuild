@@ -59,6 +59,10 @@ BDEPEND="
 	test? ( $(python_gen_any_dep 'dev-util/dogtail[${PYTHON_USEDEP}]') )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PV}"-fix-build-with-meson-0.61.1.patch
+)
+
 DOCS=() # meson installs docs itself
 
 python_check_deps() {
