@@ -1,13 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1 bash-completion-r1 vcs-snapshot prefix
+inherit distutils-r1 vcs-snapshot prefix
 
 DESCRIPTION="change directory command that learns"
 HOMEPAGE="https://github.com/wting/autojump"
