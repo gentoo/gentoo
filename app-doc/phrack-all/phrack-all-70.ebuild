@@ -13,4 +13,4 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
-RDEPEND=$(printf '~app-doc/phrack-%02i ' {1..69})
+RDEPEND=$(printf '~app-doc/phrack-%02i ' {1..70})
