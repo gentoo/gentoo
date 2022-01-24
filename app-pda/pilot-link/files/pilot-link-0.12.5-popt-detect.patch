@@ -1,0 +1,31 @@
+diff -ur pilot-link-0.12.5/configure.ac pilot-link-0.12.5_new/configure.ac
+--- pilot-link-0.12.5/configure.ac	2009-09-14 13:44:01.000000000 +0200
++++ pilot-link-0.12.5_new/configure.ac	2022-01-24 18:16:00.474089490 +0100
+@@ -390,15 +390,19 @@
+ if test "x$enable_conduits" != "xno"; then
+ 	if test "x$with_included_popt" != "xyes"; then
+ 		dnl Determine if system popt is good enough
++        have_popt=no
+ 		save_LIBS="$LIBS"
+-		AC_CHECK_HEADER(popt.h,
+-			AC_CHECK_DECL(POPT_BIT_SET,
+-				AC_CHECK_LIB(popt, poptStrippedArgv,,
+-					[with_included_popt="yes"]),
+-				[with_included_popt="yes"],
+-				[#include <popt.h>]),
+-			[with_included_popt="yes"]
+-		)
++		AC_CHECK_HEADER(popt.h, have_popt=yes)
++        if test "$have_popt" = yes; then
++            AC_CHECK_DECL(POPT_BIT_SET,
++                          AC_CHECK_LIB(popt, 
++                                       poptStrippedArgv,, 
++                                       [with_included_popt="yes"]),
++                          [with_included_popt="yes"], 
++                          [#include <popt.h>])
++        else
++            [with_included_popt="yes"]
++        fi
+ 		LIBS="$save_LIBS"
+ 	fi
+ 
