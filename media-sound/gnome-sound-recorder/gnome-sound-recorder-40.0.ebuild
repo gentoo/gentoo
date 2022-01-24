@@ -35,6 +35,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/${PV}"-fix-build-with-meson-0.61.1.patch
+)
+
 pkg_setup() {
 	python-any-r1_pkg_setup
 }
