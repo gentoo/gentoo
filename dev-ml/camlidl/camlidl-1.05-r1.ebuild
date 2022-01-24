@@ -39,7 +39,7 @@ src_compile() {
 	ln -s Makefile.unix config/Makefile || die
 
 	# Make
-	emake -j1
+	emake -j1 RANLIB="$(tc-getRANLIB)"
 }
 
 src_test() {
@@ -54,7 +54,7 @@ src_install() {
 
 	dodir /usr/bin
 	# Install
-	emake BINDIR="${ED}/usr/bin" OCAMLLIB="${D}${libdir}" install
+	emake BINDIR="${ED}/usr/bin" OCAMLLIB="${D}${libdir}" RANLIB="$(tc-getRANLIB)" install
 
 	# Add package header
 	sed -e "s/@VERSION/${P}/g" "${FILESDIR}/META.camlidl" >	"${D}${libdir}/META.camlidl" || die
