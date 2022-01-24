@@ -74,6 +74,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/3.38.0-gst-inspect-sandbox.patch # Allow disabling calls to gst-inspect (sandbox issue)
+	"${FILESDIR}/${PV}"-fix-build-with-meson-0.61.1.patch
 )
 
 pkg_setup() {
