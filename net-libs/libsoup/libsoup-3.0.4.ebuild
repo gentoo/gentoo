@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -82,7 +82,6 @@ multilib_src_configure() {
 		$(meson_native_use_feature introspection)
 		$(meson_native_use_feature vala vapi)
 		$(meson_native_use_bool gtk-doc gtk_doc)
-		# TODO: Tests fail with network-sandbox or 32bit (upstream issue #236) for 2.99.9
 		$(meson_use test tests)
 		-Dinstalled_tests=false
 		$(meson_feature sysprof)
