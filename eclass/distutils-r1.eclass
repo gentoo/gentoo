@@ -157,7 +157,7 @@ _distutils_set_globals() {
 		# installer is used to install the wheel
 		# tomli is used to read build-backend from pyproject.toml
 		bdep+='
-			>=dev-python/installer-0.4.0_p20220115[${PYTHON_USEDEP}]
+			>=dev-python/installer-0.4.0_p20220124[${PYTHON_USEDEP}]
 			dev-python/tomli[${PYTHON_USEDEP}]'
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
@@ -970,13 +970,6 @@ distutils-r1_python_compile() {
 		"${EPYTHON}" -m installer -d "${root}" "${wheel}" \
 			--no-compile-bytecode ||
 			die "installer failed"
-
-		# TODO: workaround for a bug in installer; remove once we depend
-		# on a properly fixed version
-		# https://github.com/pradyunsg/installer/commit/245896289a590bd9be505bd061d4f49372948a16
-		if [[ -d ${root}${EPREFIX}/usr/bin ]]; then
-			chmod +x "${root}${EPREFIX}"/usr/bin/* || die
-		fi
 
 		# remove installed licenses
 		find "${root}$(python_get_sitedir)" \
