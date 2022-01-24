@@ -37,14 +37,7 @@ RDEPEND="app-arch/bzip2:=
 	virtual/libintl
 	berkdb? ( || (
 		sys-libs/db:5.3
-		sys-libs/db:5.1
 		sys-libs/db:4.8
-		sys-libs/db:4.7
-		sys-libs/db:4.6
-		sys-libs/db:4.5
-		sys-libs/db:4.4
-		sys-libs/db:4.3
-		sys-libs/db:4.2
 	) )
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
