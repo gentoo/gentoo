@@ -17,9 +17,9 @@ src_configure() {
 	# not autotools-based
 	local myconf=(
 		--prefix="${EPREFIX}"/usr
-		CXX="$(tc-getCXX)"
+		CC="$(tc-getCC)"
 		CPPFLAGS="${CPPFLAGS}"
-		CXXFLAGS="${CXXFLAGS}"
+		CFLAGS="${CFLAGS}"
 		LDFLAGS="${LDFLAGS}"
 	)
 
