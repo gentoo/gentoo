@@ -140,7 +140,7 @@ src_configure() {
 
 	unset BC_ENV_ARGS #24568
 
-	# Works similarly to -Werror, 
+	# Works similarly to -Werror,
 	# https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wimplicit-function-declaration
 	filter-flags -pedantic-errors
 
