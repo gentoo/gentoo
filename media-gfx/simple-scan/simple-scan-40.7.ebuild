@@ -47,6 +47,7 @@ BDEPEND="
 PATCHES=(
 	# Add control for optional dependencies
 	"${FILESDIR}"/40.0-add-control-optional-deps.patch
+	"${FILESDIR}/${PV}"-fix-build-with-meson-0.61.1.patch
 )
 
 src_prepare() {
