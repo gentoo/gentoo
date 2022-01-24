@@ -43,6 +43,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${PV}"-fix-build-with-meson-0.61.1.patch
+)
+
 pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
