@@ -276,7 +276,8 @@ src_configure() {
 		# But the check does not quite work on i686: bug #760926.
 		$(use_enable cet)
 
-		$(use_enable pgo pgo-build lto)
+		# No LTO for HPPA64 right now as we don't build kgcc64 with LTO support.
+		$(use_enable pgo pgo-build)
 	)
 
 	if use pgo ; then
