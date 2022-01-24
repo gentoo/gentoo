@@ -139,6 +139,7 @@ PATCHES=(
 	"${FILESDIR}"/40.0-optional-bluetooth.patch
 	# Change favorites defaults, bug #479918
 	"${FILESDIR}"/40.0-defaults.patch
+	"${FILESDIR}/${PV}"-fix-build-with-meson-0.61.1.patch
 )
 
 src_prepare() {
