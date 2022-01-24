@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,10 +20,19 @@ BDEPEND="
 	test? ( dev-ml/alcotest )
 "
 
+src_compile() {
+	exts=.cma
+	use ocamlopt && exts+=' .cmx .cmxa'
+	export pkgs
+	emake TARGETS=${exts}
+}
+
 src_install() {
-	findlib_src_install
+	local archive=''
+	use ocamlopt && archive='_build/lib/process.a'
+	findlib_src_install TARGETS=${exts} ARCHIVES=${archives}
 }
 
 src_test() {
-	emake -j1 test
+	emake -j1 TARGETS=${exts} test
 }
