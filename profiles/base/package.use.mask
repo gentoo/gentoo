@@ -6,6 +6,13 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2021-01-24)
+# USE=custom-cflags is _particularly_ dangerous on sys-libs/glibc and
+# can result in not just build-time failures for glibc itself, but
+# runtime crashes. The effect of using USE=custom-cflags globally in make.conf
+# isn't the same as it is for just glibc specifically.
+sys-libs/glibc custom-cflags
+
 # Sam James <sam@gentoo.org> (2022-01-23)
 # Java bindings are broken with OpenJDK 11+ and we're not
 # aware of any consumers. bug #713866
