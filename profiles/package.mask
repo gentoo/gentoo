@@ -340,10 +340,6 @@ www-servers/bozohttpd
 # Broken and upstream needs new maintainer.
 x11-plugins/purple-facebook
 
-# Mike Gilbert <floppym@gentoo.org> (2021-12-24)
-# Replaced by sys-apps/hwdata. Removal on 2022-01-23.
-sys-apps/hwids
-
 # Jonas Stein <jstein@gentoo.org> (2021-12-24)
 # Alpha version
 =app-editors/ghex-4.0.0_alpha
