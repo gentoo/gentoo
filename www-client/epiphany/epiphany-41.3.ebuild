@@ -50,6 +50,7 @@ BDEPEND="
 PATCHES=(
 	# Allow /var/tmp prefixed recursive delete (due to package manager setting TMPDIR)
 	"${FILESDIR}"/var-tmp-tests.patch
+	"${FILESDIR}/${PV}"-fix-build-with-meson-0.61.1.patch
 )
 
 src_configure() {
