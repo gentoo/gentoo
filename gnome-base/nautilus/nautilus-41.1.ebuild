@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ DEPEND="
 	>=media-libs/gexiv2-0.10.0
 	gstreamer? ( media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0 )
-	>=app-arch/gnome-autoar-0.3.0
+	>=app-arch/gnome-autoar-0.4.0
 	>=gnome-base/gnome-desktop-3.0.0:3=
 	>=x11-libs/gtk+-3.22.27:3[X,introspection?]
 	>=gui-libs/libhandy-1.1.90:1
