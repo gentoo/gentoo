@@ -53,6 +53,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/${PV}"-fix-build-with-meson-0.61.1.patch
+)
+
 RESTRICT="test" # only does desktop and appdata validation, and latter needs network to validate screenshot from https
 
 pkg_setup() {
