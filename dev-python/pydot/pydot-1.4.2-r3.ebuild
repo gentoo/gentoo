@@ -27,7 +27,7 @@ BDEPEND="
 	)"
 
 PATCHES=(
-#	"${FILESDIR}"/${PN}-1.4.2-pyparsing-3.patch
+	"${FILESDIR}"/${PN}-1.4.2-pyparsing-3.patch
 )
 
 python_test() {
