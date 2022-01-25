@@ -23,9 +23,11 @@ python_install_all() {
 	distutils-r1_python_install_all
 	doman docs/metagen.1
 
-	# Bug 814545
-	mv "${ED}"/usr/share/doc/${P}/* "${ED}"/usr/share/doc/${PF}/ || die
-	rmdir "${ED}"/usr/share/doc/${P}/ || die
+	# Bug 814545 and 832069
+	if [[ ${PF} != ${P} ]]; then  # to be robust across bumps
+		mv "${ED}"/usr/share/doc/${P}/* "${ED}"/usr/share/doc/${PF}/ || die
+		rmdir "${ED}"/usr/share/doc/${P}/ || die
+	fi
 }
 
 python_test() {
