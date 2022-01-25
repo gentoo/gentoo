@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # --enable-static-lame triggers bug #814380 with EAPI-8, could work
@@ -14,7 +14,7 @@ S="${WORKDIR}/${P}.0"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="
 	alsa cpuhistory debug doc ethernet ffmpeg flac gif +gtk headless jpeg
 	lame mpg123 ogg openmp oss parport pci png portaudio pulseaudio sdl zlib"
