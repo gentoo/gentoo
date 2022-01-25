@@ -1,0 +1,26 @@
+From f3329de2b89e791a6e75bdbc15f7820f28092e8d Mon Sep 17 00:00:00 2001
+From: Marco Genasci <fedeliallalinea@gmail.com>
+Date: Tue, 25 Jan 2022 19:35:33 +0100
+Subject: [PATCH] Allow to use xdgdesktopportal dialogs
+
+Closes: https://sourceforge.net/p/qt5ct/tickets/84
+---
+ src/qt5ct/appearancepage.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/qt5ct/appearancepage.cpp b/src/qt5ct/appearancepage.cpp
+index 950c183..1292708 100644
+--- a/src/qt5ct/appearancepage.cpp
++++ b/src/qt5ct/appearancepage.cpp
+@@ -92,6 +92,8 @@ AppearancePage::AppearancePage(QWidget *parent) :
+         m_ui->dialogComboBox->addItem("GTK3", "gtk3");
+     if(keys.contains("kde"))
+         m_ui->dialogComboBox->addItem("KDE", "kde");
++    if (keys.contains("xdgdesktopportal"))
++        m_ui->dialogComboBox->addItem("XDG Desktop Portal", "xdgdesktopportal");
+ #endif
+ 
+     readSettings();
+-- 
+2.34.1
+
