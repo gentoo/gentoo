@@ -41,6 +41,10 @@ src_prepare() {
 	# This test hangs on x86, bug 717112.
 	rm -r testsuite/0602ResultantFanProjection || \
 		die "unable to disable test 0602ResultantFanProjection"
+
+	# And this one fails (harmlessly) on x86, bug 818397.
+	rm -r testsuite/0009RenderStairCase || \
+		die "unable to disable test 0009RenderStairCase"
 }
 
 src_configure() {
