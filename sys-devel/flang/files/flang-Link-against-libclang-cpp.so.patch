@@ -1,0 +1,84 @@
+From ba485d5bd56fd00e2e12522e76788bc52a87a4a9 Mon Sep 17 00:00:00 2001
+From: Tom Stellard <tstellar@redhat.com>
+Date: Mon, 9 Aug 2021 23:57:11 -0700
+Subject: [PATCH] Link against libclang-cpp.so
+
+---
+ flang/lib/Frontend/CMakeLists.txt       | 5 ++---
+ flang/lib/FrontendTool/CMakeLists.txt   | 5 ++---
+ flang/tools/flang-driver/CMakeLists.txt | 3 +--
+ flang/unittests/Frontend/CMakeLists.txt | 2 +-
+ 4 files changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/lib/Frontend/CMakeLists.txt b/lib/Frontend/CMakeLists.txt
+index abaa77f6af54..0f40f1d97f93 100644
+--- a/lib/Frontend/CMakeLists.txt
++++ b/lib/Frontend/CMakeLists.txt
+@@ -9,7 +9,7 @@ add_flang_library(flangFrontend
+   TextDiagnostic.cpp
+ 
+   DEPENDS
+-  clangBasic
++  clang-cpp
+ 
+   LINK_LIBS
+   FortranParser
+@@ -17,8 +17,7 @@ add_flang_library(flangFrontend
+   FortranEvaluate
+   FortranCommon
+   FortranLower
+-  clangBasic
+-  clangDriver
++  clang-cpp
+ 
+   LINK_COMPONENTS
+   Option
+diff --git a/lib/FrontendTool/CMakeLists.txt b/lib/FrontendTool/CMakeLists.txt
+index 65e1dd5188ac..e9e1bba122c6 100644
+--- a/lib/FrontendTool/CMakeLists.txt
++++ b/lib/FrontendTool/CMakeLists.txt
+@@ -2,12 +2,11 @@ add_flang_library(flangFrontendTool
+   ExecuteCompilerInvocation.cpp
+ 
+   DEPENDS
+-  clangBasic
++  clang-cpp
+ 
+   LINK_LIBS
+   flangFrontend
+-  clangBasic
+-  clangDriver
++  clang-cpp
+ 
+   LINK_COMPONENTS
+   Option
+diff --git a/tools/flang-driver/CMakeLists.txt b/tools/flang-driver/CMakeLists.txt
+index 4c7ad220d223..76fba10538ce 100644
+--- a/tools/flang-driver/CMakeLists.txt
++++ b/tools/flang-driver/CMakeLists.txt
+@@ -23,8 +23,7 @@ target_link_libraries(flang-new
+ 
+ clang_target_link_libraries(flang-new
+   PRIVATE
+-  clangDriver
+-  clangBasic
++  clang-cpp
+ )
+ 
+ install(TARGETS flang-new DESTINATION bin)
+diff --git a/unittests/Frontend/CMakeLists.txt b/unittests/Frontend/CMakeLists.txt
+index b78adf3f5022..29a2007f6f8c 100644
+--- a/unittests/Frontend/CMakeLists.txt
++++ b/unittests/Frontend/CMakeLists.txt
+@@ -5,7 +5,7 @@ add_flang_unittest(FlangFrontendTests
+ 
+ target_link_libraries(FlangFrontendTests
+   PRIVATE
+-  clangBasic
++  clang-cpp
+   flangFrontend
+   flangFrontendTool
+   FortranParser
+-- 
+2.27.0
+
