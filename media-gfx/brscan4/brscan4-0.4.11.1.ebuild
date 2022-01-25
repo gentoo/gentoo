@@ -20,6 +20,7 @@ IUSE="zeroconf"
 RESTRICT="strip"
 
 RDEPEND="media-gfx/sane-backends
+	sys-libs/glibc
 	virtual/libusb:0
 	zeroconf? ( net-dns/avahi )"
 
