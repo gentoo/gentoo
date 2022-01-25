@@ -31,6 +31,10 @@ BDEPEND="
 	gnome-base/librsvg:2[vala]
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-40.0-meson-0.61.patch
+)
+
 src_prepare() {
 	xdg_src_prepare
 	vala_src_prepare
