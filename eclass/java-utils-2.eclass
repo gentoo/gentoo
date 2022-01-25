@@ -2194,8 +2194,7 @@ java-pkg_init() {
 	java-config --help >/dev/null || {
 		eerror ""
 		eerror "Can't run java-config --help"
-		eerror "Have you upgraded python recently but haven't"
-		eerror "run python-updater yet?"
+		eerror "Have you upgraded Python recently but not completed a world upgrade yet?"
 		die "Can't run java-config --help"
 	}
 
