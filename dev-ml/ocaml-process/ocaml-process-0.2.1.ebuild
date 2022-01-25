@@ -24,13 +24,13 @@ src_compile() {
 	exts=.cma
 	use ocamlopt && exts+=' .cmx .cmxa'
 	export pkgs
-	emake TARGETS=${exts}
+	emake TARGETS="${exts}"
 }
 
 src_install() {
 	local archive=''
 	use ocamlopt && archive='_build/lib/process.a'
-	findlib_src_install TARGETS=${exts} ARCHIVES=${archives}
+	findlib_src_install TARGETS="${exts}" ARCHIVES=${archives}
 }
 
 src_test() {
