@@ -1,0 +1,44 @@
+From c4d9f5aac80d02b7e7447d2eda698e17a245071e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Tue, 25 Jan 2022 18:36:36 +0100
+Subject: [PATCH basu] meson: fix linking on LLD 13/LD 2.37 and older CCs
+
+For compilers that do not support __attribute((retain)),
+-z no-start-stop-gc is a requirement.
+---
+Submitted at: https://lists.sr.ht/~emersion/public-inbox/patches/28722#%3C20220125192953.1781959-1-arsen@aarsen.me%3E
+Gentoo bug: https://bugs.gentoo.org/832045
+
+ meson.build | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/meson.build b/meson.build
+index 1f29690..74e9934 100644
+--- a/meson.build
++++ b/meson.build
+@@ -101,6 +101,22 @@ if get_option('buildtype') != 'debug'
+         possible_link_flags += '-Wl,--gc-sections'
+ endif
+ 
++if cc.get_id() in ['gcc', 'clang']
++# XXX(arsen): remember to update with a future meson release
++        has_retain_attr = cc.compiles(
++                '__attribute__((retain)) int x;',
++                args : ['-Werror=attributes'],
++                name : 'compiler supports __attribute__((retain))'
++        )
++
++        if not has_retain_attr and cc.has_link_argument('-Wl,-z,start-stop-gc')
++                possible_link_flags += [
++                        '-Wl,-z,nostart-stop-gc'
++                ]
++        endif
++endif
++
++
+ add_project_arguments(cc.get_supported_arguments(possible_cc_flags), language : 'c')
+ add_project_link_arguments(cc.get_supported_link_arguments(possible_link_flags), language : 'c')
+ 
+-- 
+2.34.1
+
