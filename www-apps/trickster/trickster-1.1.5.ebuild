@@ -19,6 +19,8 @@ COMMON_DEPEND="
 	DEPEND="${COMMON_DEPEND}"
 	RDEPEND="${COMMON_DEPEND}"
 
+	RESTRICT="test"
+
 src_compile() {
 	set -- go build -mod vendor ./cmd/trickster
 	echo $@
