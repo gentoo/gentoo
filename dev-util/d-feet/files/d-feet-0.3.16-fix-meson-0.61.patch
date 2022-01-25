@@ -1,0 +1,31 @@
+https://gitlab.gnome.org/GNOME/d-feet/-/merge_requests/32
+https://bugs.gentoo.org/831524
+
+From 05465d486afdba116dbc22fc22c1e6573aea4f22 Mon Sep 17 00:00:00 2001
+From: Jan Beich <jbeich@FreeBSD.org>
+Date: Mon, 24 Jan 2022 12:11:57 +0000
+Subject: [PATCH] meson: drop unused argument for i18n.merge_file()
+
+Ignored in Meson < 0.60.0, deprecated since 0.60.1 and fatal since 0.61.0.
+
+data/meson.build:15:0: ERROR: Function does not take positional arguments.
+data/meson.build:27:0: ERROR: Function does not take positional arguments.
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -13,7 +13,6 @@ desktop_in = configure_file(
+ )
+ 
+ i18n.merge_file(
+-  desktop,
+   type: 'desktop',
+   input: desktop_in,
+   output: '@BASENAME@',
+@@ -25,7 +24,6 @@ i18n.merge_file(
+ appdata = df_namespace + '.appdata.xml'
+ 
+ i18n.merge_file(
+-  appdata,
+   input: appdata + '.in',
+   output: '@BASENAME@',
+   po_dir: po_dir,
+GitLab
