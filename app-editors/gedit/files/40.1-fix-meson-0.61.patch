@@ -1,0 +1,29 @@
+https://gitlab.gnome.org/GNOME/gedit/-/merge_requests/124.patch
+https://bugs.gentoo.org/831925
+
+From c6c7c6580bc7f82a7d449b8ee33ae44f8b6f4a1f Mon Sep 17 00:00:00 2001
+From: rvalue <i@rvalue.moe>
+Date: Wed, 15 Dec 2021 07:02:09 +0000
+Subject: [PATCH] Remove incorrect args for i18n.merge_file
+
+The positional argument has been silently ignored for a time. And it causes failure
+with "ERROR: Function does not take positional arguments" since meson 0.60.0
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -4,7 +4,6 @@ install_man('gedit.1')
+ 
+ appdata = 'org.gnome.gedit.appdata.xml'
+ appdata_file = i18n.merge_file(
+-  appdata,
+   input: appdata + '.in',
+   output: appdata,
+   po_dir: '../po/',
+@@ -23,7 +22,6 @@ endif
+ 
+ desktop_file = 'org.gnome.gedit.desktop'
+ desktop_output_file = i18n.merge_file(
+-  desktop_file,
+   type: 'desktop',
+   input: desktop_file + '.in',
+   output: desktop_file,
+GitLab
