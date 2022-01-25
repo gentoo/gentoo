@@ -35,7 +35,6 @@ RDEPEND="${PYTHON_DEPS}
 		>=dev-python/libvirt-python-6.10.0[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
-		dev-python/tqdm[${PYTHON_USEDEP}]
 	')
 	>=sys-libs/libosinfo-0.2.10[introspection]
 	gtk? (
@@ -51,9 +50,11 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-python/docutils
 	dev-util/intltool"
 
-distutils_enable_tests pytest
-
 DOCS=( README.md NEWS.md )
+
+# Doesn't seem to play nicely in a sandboxed environment.
+RESTRICT="test"
+distutils_enable_tests pytest
 
 src_prepare() {
 	distutils-r1_src_prepare
@@ -70,23 +71,22 @@ python_install() {
 src_install() {
 	local mydistutilsargs=( --no-update-icon-cache --no-compile-schemas )
 	distutils-r1_src_install
+
+	python_fix_shebang "${ED}"/usr/share/virt-manager
 }
 
 pkg_preinst() {
 	if use gtk; then
 		gnome2_pkg_preinst
 
-		cd "${ED}"
-		export GNOME2_ECLASS_ICONS=$(find 'usr/share/virt-manager/icons' -maxdepth 1 -mindepth 1 -type d 2> /dev/null)
+		cd "${ED}" || die
+		export GNOME2_ECLASS_ICONS=$(find 'usr/share/virt-manager/icons' -maxdepth 1 -mindepth 1 -type d 2> /dev/null || die)
 	else
-		rm -rf "${ED}/usr/share/virt-manager/virtManager"
-		rm -f "${ED}/usr/share/virt-manager/virt-manager"
-		rm -rf "${ED}/usr/share/virt-manager/ui/"
-		rm -rf "${ED}/usr/share/virt-manager/icons/"
-		rm -rf "${ED}/usr/share/man/man1/virt-manager.1*"
-		rm -rf "${ED}/usr/share/icons/"
-		rm -rf "${ED}/usr/share/applications/virt-manager.desktop"
-		rm -rf "${ED}/usr/bin/virt-manager"
+		rm -r "${ED}/usr/share/virt-manager/ui/" || die
+		rm -r "${ED}/usr/share/virt-manager/icons/" || die
+		rm -r "${ED}/usr/share/icons/" || die
+		rm -r "${ED}/usr/share/applications/virt-manager.desktop" || die
+		rm -r "${ED}/usr/bin/virt-manager" || die
 	fi
 }
 
