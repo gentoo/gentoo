@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="${MY_SRC}/LFS-BOOK-${PV}.tar.xz
 	${MY_SRC}-systemd/LFS-BOOK-${PV}.tar.bz2 -> LFS-BOOK-${PV}-systemd.tar.bz2
 	htmlsingle? (
 		${MY_SRC}/LFS-BOOK-${PV}-NOCHUNKS.html
-		${MY_SRC}-systemd/LFS-BOOK-${PV}-NOCHUNKS.html
+		${MY_SRC}-systemd/LFS-BOOK-${PV}-NOCHUNKS.html -> LFS-BOOK-${PV}-systemd-NOCHUNKS.html
 	)
 	pdf? (
 		${MY_SRC}/LFS-BOOK-${PV}.pdf
