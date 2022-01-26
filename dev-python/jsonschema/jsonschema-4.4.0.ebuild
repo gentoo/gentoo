@@ -36,12 +36,6 @@ RDEPEND+="
 		>=dev-python/webcolors-1.11[${PYTHON_USEDEP}]
 "
 
-BDEPEND="
-	test? (
-		dev-python/twisted[${PYTHON_USEDEP}]
-	)
-"
-
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
