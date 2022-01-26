@@ -13,7 +13,7 @@ SRC_URI="http://www.clarkware.com/software/${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 DEPEND=">=virtual/jdk-1.8
