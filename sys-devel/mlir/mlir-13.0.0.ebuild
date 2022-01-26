@@ -5,51 +5,45 @@ EAPI=7
 
 CMAKE_ECLASS=cmake
 
-inherit cmake-multilib llvm
+inherit cmake-multilib llvm llvm.org
+
+##flag-o-matic
 
 DESCRIPTION="Multi-Level IR Compiler Framework for LLVM"
 HOMEPAGE="https://mlir.llvm.org/"
-SRC_URI="https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV}/llvm-project-${PV}.src.tar.xz"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA MIT"
 SLOT="13"
 KEYWORDS="~amd64"
-IUSE="test +clang"
+IUSE="test"
 
-DEPEND="
+RDEPEND="~sys-devel/llvm-${PV}"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/llvm:13=[${MULTILIB_USEDEP}]
-	clang? ( sys-devel/clang:13=[${MULTILIB_USEDEP}] )
+	sys-devel/clang:13=[${MULTILIB_USEDEP}]
+	sys-devel/lld
 "
 RDEPEND="${DEPEND}"
 RESTRICT="!test? ( test )"
 
 LLVM_MAX_SLOT=13
+LLVM_COMPONENTS=( mlir )
+llvm.org_set_globals
 
 src_unpack() {
-	unpack llvm-project-${PV}.src.tar.xz
-	mv "${WORKDIR}/llvm-project-${PV}.src/mlir" "${WORKDIR}/${P}" || die
-}
-
-pkg_setup() {
-	use system-llvm && llvm_pkg_setup
-	if use clang ; then
-		export CC=clang
-		export CXX=clang++
-		export AR=llvm-ar
-		export LD=lld
-		export RANLIB=llvm-ranlib
-		export NM=llvm-nm
-	fi
+	unpack llvmorg-${PV}.tar.gz
+	mv "${WORKDIR}/llvm-project-llvmorg-${PV}/mlir" "${WORKDIR}/mlir" || die
 }
 
 multilib_src_configure() {
 	local mycmakeargs=(
 		-GNinja
 		-DCMAKE_BUILD_TYPE=Release
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${SLOT}"
+		-DCMAKE_INSTALL_PREFIX="${BROOT}/usr/lib/llvm/${SLOT}"
 		-DBUILD_SHARED_LIBS:BOOL=ON
 		-DLLVM_LINK_LLVM_DYLIB:BOOL=ON
-		-DCMAKE_PREFIX_PATH="${EPREFIX}/usr/lib/llvm/${SLOT}/$(get_libdir)/cmake/llvm/"
+		-DCMAKE_PREFIX_PATH="${BROOT}/usr/lib/llvm/${SLOT}/$(get_libdir)/cmake/llvm/"
 		-DLLVM_LINK_LLVM_DYLIB=ON
 		-DLLVM_BUILD_LLVM_DYLIB=ON
 		-DMLIR_LINK_MLIR_DYLIB=ON

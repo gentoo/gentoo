@@ -7,7 +7,4 @@
 	<longdescription>Multi-Level Intermediate Representation (MLIR) is:
 	The MLIR project is a novel approach to building reusable and extensible compiler infrastructure. MLIR aims to address software fragmentation, improve compilation for heterogeneous hardware, significantly reduce the cost of building domain specific compilers, and aid in connecting existing compilers together.
 	</longdescription>
-	<use>
-		<flag name="clang">Switch to clang/clang++ compiler instead of system wide compiler</flag>
-	</use>
 </pkgmetadata>
