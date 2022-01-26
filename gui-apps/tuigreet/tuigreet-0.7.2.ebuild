@@ -1,7 +1,7 @@
 # Copyright 2017-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 CRATES="
 ahash-0.4.7
@@ -143,7 +143,7 @@ DESCRIPTION="TUI greeter for greetd login manager"
 HOMEPAGE="https://github.com/apognu/tuigreet"
 
 SRC_URI="https://github.com/apognu/tuigreet/archive/${PV}.tar.gz -> ${P}.tar.gz
-	$(cargo_crate_uris ${CRATES})"
+	$(cargo_crate_uris)"
 
 QA_FLAGS_IGNORED="usr/bin/tuigreet"
 
