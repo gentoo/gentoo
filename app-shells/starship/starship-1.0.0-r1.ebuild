@@ -269,6 +269,8 @@ LICENSE="
 SLOT="0"
 KEYWORDS="amd64"
 
+IUSE="notify-rust"
+
 BDEPEND=">=virtual/rust-1.56"
 DEPEND="
 	>=dev-libs/libgit2-1.2.0:=
@@ -282,8 +284,11 @@ src_configure() {
 	export PKG_CONFIG_ALLOW_CROSS=1
 	export LIBGIT2_SYS_USE_PKG_CONFIG=1
 	export OPENSSL_NO_VENDOR=true
+	myfeatures=(
+		$(usev notify-rust)
+	)
 
-	cargo_src_configure
+	cargo_src_configure --no-default-features
 }
 
 src_install() {
