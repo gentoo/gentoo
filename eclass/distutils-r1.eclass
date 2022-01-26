@@ -982,14 +982,30 @@ distutils-r1_python_compile() {
 			esetup.py clean -a
 		fi
 
+		# copy executables to python-exec directory
+		# we do it early so that we can alter bindir recklessly
+		local bindir=${root}${EPREFIX}/usr/bin
+		local rscriptdir=${root}$(python_get_scriptdir)
+		[[ -d ${rscriptdir} ]] &&
+			die "${rscriptdir} should not exist!"
+		if [[ -d ${bindir} ]]; then
+			mkdir -p "${rscriptdir}" || die
+			cp -a --reflink=auto "${bindir}"/. "${rscriptdir}"/ || die
+		fi
+
 		# enable venv magic inside the install tree
-		mkdir -p "${root}${EPREFIX}"/usr/bin || die
-		ln -s "${PYTHON}" "${root}${EPREFIX}/usr/bin/${EPYTHON}" || die
-		ln -s "${EPYTHON}" "${root}${EPREFIX}/usr/bin/python3" || die
-		ln -s "${EPYTHON}" "${root}${EPREFIX}/usr/bin/python" || die
-		cat > "${root}${EPREFIX}"/usr/pyvenv.cfg <<-EOF || die
+		mkdir -p "${bindir}" || die
+		ln -s "${PYTHON}" "${bindir}/${EPYTHON}" || die
+		ln -s "${EPYTHON}" "${bindir}/python3" || die
+		ln -s "${EPYTHON}" "${bindir}/python" || die
+		cat > "${bindir}"/pyvenv.cfg <<-EOF || die
 			include-system-site-packages = true
 		EOF
+
+		# we need to change shebangs to point to the venv-python
+		find "${bindir}" -type f -exec sed -i \
+			-e "1s@^#!\(${EPREFIX}/usr/bin/\(python\|pypy\)\)@#!${root}\1@" \
+			{} + || die
 	fi
 }
 
@@ -1105,16 +1121,9 @@ distutils-r1_python_install() {
 	local scriptdir=${EPREFIX}/usr/bin
 	if [[ ${DISTUTILS_USE_PEP517} ]]; then
 		local root=${BUILD_DIR}/install
-		local rscriptdir=${root}$(python_get_scriptdir)
-		[[ -d ${rscriptdir} ]] &&
-			die "${rscriptdir} should not exist!"
-		# remove venv magic
-		rm "${root}${EPREFIX}"/usr/{pyvenv.cfg,bin/{python,python3,${EPYTHON}}} || die
-		find "${root}${EPREFIX}"/usr/bin -empty -delete || die
-		if [[ ! ${DISTUTILS_SINGLE_IMPL} && -d ${root}${EPREFIX}/usr/bin ]]; then
-			mkdir -p "${rscriptdir%/*}" || die
-			mv "${root}${EPREFIX}/usr/bin" "${rscriptdir}" || die
-		fi
+		# remove the altered bindir, executables from the package
+		# are already in scriptdir
+		rm -r "${root}${scriptdir}" || die
 	else
 		local root=${D%/}/_${EPYTHON}
 		[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D%/}
