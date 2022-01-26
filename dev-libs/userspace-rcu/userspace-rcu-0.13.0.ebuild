@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="userspace RCU (read-copy-update) library"
 HOMEPAGE="https://liburcu.org/"
 SRC_URI="https://lttng.org/files/urcu/${P}.tar.bz2"
@@ -14,6 +16,12 @@ IUSE="static-libs regression-test test"
 RESTRICT="!test? ( test )"
 
 DEPEND="test? ( sys-process/time )"
+
+src_prepare() {
+	default
+
+	eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(
