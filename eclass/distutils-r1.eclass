@@ -952,7 +952,7 @@ distutils-r1_python_compile() {
 			fi
 		fi
 
-		einfo "Building a wheel via ${build_backend}"
+		einfo "  Building the wheel via ${build_backend}"
 		"${EPYTHON}" -c "import ${build_backend%:*}; \
 			import os; \
 			${build_backend/:/.}.build_wheel(os.environ['WHEEL_BUILD_DIR'])" ||
@@ -964,6 +964,7 @@ distutils-r1_python_compile() {
 		fi
 
 		local root=${BUILD_DIR}/install
+		einfo "  Installing the wheel to ${root}"
 		# NB: --compile-bytecode does not produce the correct paths,
 		# and python_optimize doesn't handle being called outside D,
 		# so we just defer compiling until the final merge
