@@ -4,8 +4,7 @@
 # please keep this ebuild at EAPI 7 -- sys-apps/portage dep
 EAPI=7
 
-# Set to 'manual' to avoid triggering install QA check
-DISTUTILS_USE_SETUPTOOLS=manual
+DISTUTILS_USE_PEP517=standalone
 PYTHON_COMPAT=( python3_{8..10} pypy3 )
 PYTHON_REQ_USE="xml(+)"
 
@@ -31,6 +30,7 @@ RDEPEND="
 "
 BDEPEND="
 	${RDEPEND}
+	dev-python/wheel[${PYTHON_USEDEP}]
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/build[${PYTHON_USEDEP}]
@@ -54,9 +54,6 @@ PDEPEND="
 	>=dev-python/certifi-2016.9.26[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]"
 
-# Force in-source build because build system modifies sources.
-DISTUTILS_IN_SOURCE_BUILD=1
-
 DOCS=( {CHANGES,README}.rst )
 
 src_prepare() {
@@ -79,7 +76,6 @@ python_test() {
 	# keep in sync with python_gen_cond_dep above!
 	has "${EPYTHON}" python3.{8..10} pypy3 || continue
 
-	distutils_install_for_testing
 	local EPYTEST_DESELECT=(
 		# network
 		setuptools/tests/integration/test_pip_install_sdist.py::test_install_sdist
@@ -99,9 +95,4 @@ python_test() {
 	# It tries to sandbox the test in a tempdir
 	HOME="${PWD}" epytest \
 		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" setuptools
-}
-
-python_install() {
-	export DISTRIBUTE_DISABLE_VERSIONED_EASY_INSTALL_SCRIPT=1
-	distutils-r1_python_install
 }
