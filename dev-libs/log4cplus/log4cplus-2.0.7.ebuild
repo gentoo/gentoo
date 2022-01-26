@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="C++ port of the Log for Java (log4j) logging library"
-HOMEPAGE="http://log4cplus.sourceforge.net/ https://github.com/log4cplus/log4cplus"
+HOMEPAGE="https://log4cplus.sourceforge.io/ https://github.com/log4cplus/log4cplus"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}-stable/${PV}/${P}.tar.bz2"
 
 LICENSE="|| ( Apache-2.0 BSD-2 )"
