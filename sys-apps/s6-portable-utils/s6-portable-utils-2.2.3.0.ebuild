@@ -14,9 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="static"
 
-RDEPEND="!static? ( >=dev-libs/skalibs-2.9.3.0:= )"
+RDEPEND="!static? ( >=dev-libs/skalibs-2.10.0.0:= )"
 DEPEND="${RDEPEND}
-	static? ( >=dev-libs/skalibs-2.9.3.0[static-libs] )
+	static? ( >=dev-libs/skalibs-2.10.0.0[static-libs] )
 "
 
 HTML_DOCS=( doc/. )

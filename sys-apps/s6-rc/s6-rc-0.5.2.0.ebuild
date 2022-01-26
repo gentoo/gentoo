@@ -16,9 +16,9 @@ IUSE="static static-libs"
 
 REQUIRED_USE="static? ( static-libs )"
 
-RDEPEND=">=dev-lang/execline-2.6.1.1:=[static-libs?]
-	>=dev-libs/skalibs-2.9.3.0:=[static-libs?]
-	>=sys-apps/s6-2.9.2.0:=[execline,static-libs?]
+RDEPEND="<dev-lang/execline-2.7.0.0:=[static-libs?]
+	<dev-libs/skalibs-2.10.0.0:=[static-libs?]
+	<sys-apps/s6-2.10.0.0:=[execline,static-libs?]
 "
 DEPEND="${RDEPEND}"
 
