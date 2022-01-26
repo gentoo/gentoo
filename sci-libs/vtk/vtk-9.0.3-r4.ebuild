@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -47,6 +47,7 @@ REQUIRED_USE="
 	qt5? ( X rendering )
 	tk? ( X rendering python )
 	web? ( python )
+	^^ ( X offscreen )
 "
 
 RDEPEND="
@@ -358,9 +359,9 @@ src_configure() {
 
 	if use offscreen; then
 		mycmakeargs+=(
-			-DVTK_OPENGL_HAS_OSMESA=ON
 			-DVTK_DEFAULT_RENDER_WINDOW_OFFSCREEN=ON
 			-DVTK_DEFAULT_RENDER_WINDOW_HEADLESS=ON
+			-DVTK_OPENGL_HAS_OSMESA=ON
 		)
 	fi
 
