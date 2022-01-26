@@ -105,7 +105,6 @@ dev-java/colt
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-01-18)
 # KDE Release Service 5.23.90 (5.24 Beta) mask - pre-release version
 # See also: https://kde.org/announcements/plasma/5/5.23.90/
-# KDE Plasma Beta Review Day on 2022-01-20: https://tinyurl.com/kdereview
 ~kde-plasma/bluedevil-5.23.90
 ~kde-plasma/breeze-5.23.90
 ~kde-plasma/breeze-grub-5.23.90
