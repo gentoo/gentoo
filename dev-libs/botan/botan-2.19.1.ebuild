@@ -115,6 +115,7 @@ src_configure() {
 		$(usev !cpu_flags_x86_sse4_1 '--disable-sse4.1')
 		$(usev !cpu_flags_x86_sse4_2 '--disable-sse4.2')
 
+		# HPPA's GCC doesn't support SSP (presumably due to stack direction)
 		$(usev hppa '--without-stack-protector')
 
 		$(use_with boost)
