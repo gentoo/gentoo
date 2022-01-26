@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # This file requires eapi 5 or later. New entries go on top.
@@ -121,10 +121,6 @@ pulseaudio
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-12-08)
 # sys-auth/elogind is not stable here.
 elogind
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2019-03-03)
-# No stable sys-apps/systemd on hppa.
-systemd
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-05-20)
 openal
