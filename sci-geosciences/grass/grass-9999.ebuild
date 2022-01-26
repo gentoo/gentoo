@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,15 +9,15 @@ WX_GTK_VER="3.0-gtk3"
 
 inherit autotools desktop git-r3 python-single-r1 toolchain-funcs wxwidgets xdg
 
-MY_P="${PN}8.0"
-MY_PM="${MY_P/.}"
-
 DESCRIPTION="A free GIS with raster and vector functionality, as well as 3D vizualization"
 HOMEPAGE="https://grass.osgeo.org/"
 EGIT_REPO_URI="https://github.com/OSGeo/grass.git"
 
 LICENSE="GPL-2"
-SLOT="0/8.0"
+SLOT="0/8.1"
+GVERSION=${SLOT#*/}
+MY_P="${PN}${GVERSION}"
+MY_PM="${MY_P/.}"
 IUSE="blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype X zstd"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -234,9 +234,9 @@ GISBASE = os.path.normpath(\"${gisbase}\"):" \
 os.environ\[\"GRASS_PYTHON\"\] = \"${EPYTHON}\":" \
 		-i "${ED}"/usr/bin/grass || die
 
-	# set proper GISDBASE directory path in the demolocation .grassrc80 file
+	# set proper GISDBASE directory path in the demolocation .grassrc${GVERSION//.} file
 	sed -e "s:GISDBASE\:.*$:GISDBASE\: ${gisbase}:" \
-		-i "${ED}"${gisbase}/demolocation/.grassrc80 || die
+		-i "${ED}"${gisbase}/demolocation/.grassrc${GVERSION//.} || die
 
 	if use X; then
 		local GUI="-gui"

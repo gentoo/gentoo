@@ -1,0 +1,70 @@
+From b60c2e4d1770660280d97cae9e82f3040ab97229 Mon Sep 17 00:00:00 2001
+From: "philn@webkit.org"
+ <philn@webkit.org@268f45cc-cd09-0410-ab3c-d52691b4dbfc>
+Date: Sat, 11 Sep 2021 11:34:42 +0000
+Subject: [PATCH] [GLIB] MediaSession is not enabled
+ https://bugs.webkit.org/show_bug.cgi?id=217991 <rdar://problem/70740119>
+
+leio: Extracted to include only the side-effect of fixing unity builds on
+some machine configurations.
+Thanks-To gen2dev
+---
+ Source/WebCore/platform/PlatformScreen.h            | 6 ++++++
+ Source/WebCore/platform/graphics/ImageFrame.h       | 6 ++++++
+ Source/WebCore/platform/graphics/ImageOrientation.h | 6 ++++++
+ 3 files changed, 18 insertions(+)
+
+diff --git a/Source/WebCore/platform/PlatformScreen.h b/Source/WebCore/platform/PlatformScreen.h
+index d3f12a6538b8..d47d193e8bee 100644
+--- a/Source/WebCore/platform/PlatformScreen.h
++++ b/Source/WebCore/platform/PlatformScreen.h
+@@ -48,6 +48,12 @@ OBJC_CLASS UIScreen;
+ typedef struct CGColorSpace *CGColorSpaceRef;
+ #endif
+ 
++// X11 headers define a bunch of macros with common terms, interfering with WebCore and WTF enum values.
++// As a workaround, we explicitly undef them here.
++#if defined(None)
++#undef None
++#endif
++
+ namespace WebCore {
+ 
+ class DestinationColorSpace;
+diff --git a/Source/WebCore/platform/graphics/ImageFrame.h b/Source/WebCore/platform/graphics/ImageFrame.h
+index 9843aac40eb4..92e1d4486c5f 100644
+--- a/Source/WebCore/platform/graphics/ImageFrame.h
++++ b/Source/WebCore/platform/graphics/ImageFrame.h
+@@ -33,6 +33,12 @@
+ #include "NativeImage.h"
+ #include <wtf/Seconds.h>
+ 
++// X11 headers define a bunch of macros with common terms, interfering with WebCore and WTF enum values.
++// As a workaround, we explicitly undef them here.
++#if defined(None)
++#undef None
++#endif
++
+ namespace WebCore {
+ 
+ class ImageFrame {
+diff --git a/Source/WebCore/platform/graphics/ImageOrientation.h b/Source/WebCore/platform/graphics/ImageOrientation.h
+index d990a3dc555f..5de271e52352 100644
+--- a/Source/WebCore/platform/graphics/ImageOrientation.h
++++ b/Source/WebCore/platform/graphics/ImageOrientation.h
+@@ -30,6 +30,12 @@
+ #include "FloatSize.h"
+ #include <wtf/EnumTraits.h>
+ 
++// X11 headers define a bunch of macros with common terms, interfering with WebCore and WTF enum values.
++// As a workaround, we explicitly undef them here.
++#if defined(None)
++#undef None
++#endif
++
+ namespace WebCore {
+ 
+ struct ImageOrientation {
+-- 
+2.32.0
+

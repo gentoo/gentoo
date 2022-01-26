@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: apache-2.eclass
@@ -449,15 +449,6 @@ apache-2_pkg_setup() {
 	elog "Please note that you need SysV IPC support in your kernel."
 	elog "Make sure CONFIG_SYSVIPC=y is set."
 	elog
-
-	if use userland_BSD; then
-		elog "On BSD systems you need to add the following line to /boot/loader.conf:"
-		elog "  accf_http_load=\"YES\""
-		if use ssl ; then
-			elog "  accf_data_load=\"YES\""
-		fi
-		elog
-	fi
 
 	if [[ ${EAPI} != 6 ]] && use apache2_modules_lua ; then
 		lua-single_pkg_setup

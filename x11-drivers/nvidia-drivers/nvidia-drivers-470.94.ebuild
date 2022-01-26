@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -89,7 +89,6 @@ pkg_setup() {
 		PROC_FS
 		~DRM_KMS_HELPER
 		~SYSVIPC
-		~!DRM_SIMPLEDRM
 		~!LOCKDEP
 		~!SLUB_DEBUG_ON
 		!DEBUG_MUTEXES"
@@ -97,8 +96,7 @@ pkg_setup() {
 	of drivers (no custom config), and for wayland / nvidia-drm.modeset=1.
 	Cannot be directly selected in the kernel's menuconfig, and may need
 	selection of a DRM device even if unused, e.g. CONFIG_DRM_AMDGPU=m or
-	DRM_I915=y, DRM_NOUVEAU=m also acceptable if a module and not built-in.
-	Note: DRM_SIMPLEDRM may cause issues and is better disabled for now."
+	DRM_I915=y, DRM_NOUVEAU=m also acceptable if a module and not built-in."
 
 	use amd64 && kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
 
@@ -132,8 +130,8 @@ pkg_setup() {
 	if kernel_is -gt ${NV_KERNEL_MAX/./ }; then
 		ewarn "Kernel ${KV_MAJOR}.${KV_MINOR} is either known to break this version of ${PN}"
 		ewarn "or was not tested with it. It is recommended to use one of:"
-		ewarn "  <=sys-kernel/gentoo-kernel-${NV_KERNEL_MAX}"
-		ewarn "  <=sys-kernel/gentoo-sources-${NV_KERNEL_MAX}"
+		ewarn "  <=sys-kernel/gentoo-kernel-${NV_KERNEL_MAX}.x"
+		ewarn "  <=sys-kernel/gentoo-sources-${NV_KERNEL_MAX}.x"
 		ewarn "You are free to try or use /etc/portage/patches, but support will"
 		ewarn "not be given and issues wait until NVIDIA releases a fixed version."
 		ewarn

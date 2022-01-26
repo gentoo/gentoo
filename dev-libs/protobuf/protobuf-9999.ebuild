@@ -1,4 +1,4 @@
-# Copyright 2008-2021 Gentoo Authors
+# Copyright 2008-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -52,6 +52,7 @@ src_configure() {
 
 multilib_src_configure() {
 	local options=(
+		OBJC="$(tc-getBUILD_CC)"
 		$(use_enable static-libs static)
 		$(use_with zlib)
 	)

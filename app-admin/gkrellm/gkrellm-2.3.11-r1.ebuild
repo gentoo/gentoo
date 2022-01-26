@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ else
 fi
 LICENSE="GPL-3"
 SLOT="2"
-IUSE="gnutls hddtemp lm-sensors nls ntlm ssl kernel_FreeBSD X"
+IUSE="gnutls hddtemp lm-sensors nls ntlm ssl X"
 
 RDEPEND="
 	acct-group/gkrellmd
@@ -66,11 +66,6 @@ pkg_pretend() {
 	fi
 }
 
-pkg_setup() {
-	TARGET=
-	use kernel_FreeBSD && TARGET="freebsd"
-}
-
 src_prepare() {
 	sed -e 's:-O2 ::' \
 		-e 's:override CC:CFLAGS:' \
@@ -85,6 +80,8 @@ src_prepare() {
 }
 
 src_compile() {
+	TARGET=
+
 	if use X ; then
 		emake \
 			${TARGET} \

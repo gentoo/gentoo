@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/daid/EmptyEpsilon/archive/EE-${PV}.tar.gz -> EmptyEp
 # use Creative Commons and the bundled SeriousProton is MIT-licensed.
 LICENSE="GPL-2 CC-BY-SA-3.0 MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	>=dev-cpp/json11-1.0.0

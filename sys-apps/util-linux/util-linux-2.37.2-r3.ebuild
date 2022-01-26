@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/ https://github.com/
 
 LICENSE="GPL-2 GPL-3 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
-IUSE="audit build caps +cramfs cryptsetup fdformat +hardlink kill +logger magic ncurses nls pam python +readline rtas selinux slang static-libs +su +suid systemd test tty-helpers udev unicode userland_GNU"
+IUSE="audit build caps +cramfs cryptsetup fdformat +hardlink kill +logger magic ncurses nls pam python +readline rtas selinux slang static-libs +su +suid systemd test tty-helpers udev unicode"
 
 # Most lib deps here are related to programs rather than our libs,
 # so we rarely need to specify ${MULTILIB_USEDEP}.
@@ -97,13 +97,6 @@ src_prepare() {
 		-e "s|UUIDD_SOCKET=\"\$(mktemp -u \"\${TS_OUTDIR}/uuiddXXXXXXXXXXXXX\")\"|UUIDD_SOCKET=\"\$(mktemp -u \"${T}/uuiddXXXXXXXXXXXXX.sock\")\"|g" \
 		tests/ts/uuid/uuidd || die "Failed to fix uuidd test"
 
-	if ! use userland_GNU ; then
-		# test runner is using GNU-specific xargs call
-		sed -i -e 's:xargs:gxargs:' tests/run.sh || die
-		# test requires util-linux uuidgen (which we don't build)
-		rm tests/ts/uuid/oids || die
-	fi
-
 	if [[ ${PV} == 9999 ]] ; then
 		po/update-potfiles
 		eautoreconf
@@ -132,14 +125,10 @@ python_configure() {
 		--disable-bash-completion
 		--without-systemdsystemunitdir
 		--with-python
+		--enable-libblkid
+		--enable-libmount
+		--enable-pylibmount
 	)
-	if use userland_GNU ; then
-		myeconfargs+=(
-			--enable-libblkid
-			--enable-libmount
-			--enable-pylibmount
-		)
-	fi
 	mkdir "${BUILD_DIR}" || die
 	pushd "${BUILD_DIR}" >/dev/null || die
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
@@ -188,8 +177,7 @@ multilib_src_configure() {
 		$(use_with ncurses tinfo)
 		$(use_with selinux)
 	)
-	# build programs only on GNU, on *BSD we want libraries only
-	if multilib_is_native_abi && use userland_GNU ; then
+	if multilib_is_native_abi ; then
 		myeconfargs+=(
 			--disable-chfn-chsh
 			--disable-login
@@ -236,13 +224,8 @@ multilib_src_configure() {
 			--enable-libblkid
 			--enable-libsmartcols
 			--enable-libfdisk
+			--enable-libmount
 		)
-		if use userland_GNU ; then
-			# those libraries don't work on *BSD
-			myeconfargs+=(
-				--enable-libmount
-			)
-		fi
 	fi
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 
@@ -293,7 +276,7 @@ multilib_src_install() {
 	# This needs to be called AFTER python_install call (#689190)
 	emake DESTDIR="${D}" install
 
-	if multilib_is_native_abi && use userland_GNU ; then
+	if multilib_is_native_abi ; then
 		# need the libs in /
 		gen_usr_ldscript -a blkid fdisk mount smartcols uuid
 	fi
@@ -304,12 +287,6 @@ multilib_src_install_all() {
 
 	# e2fsprogs-libs didnt install .la files, and .pc work fine
 	find "${ED}" -name "*.la" -delete || die
-
-	if ! use userland_GNU ; then
-		# manpage collisions
-		# TODO: figure out a good way to keep them
-		rm "${ED}"/usr/share/man/man3/uuid* || die
-	fi
 
 	if use pam ; then
 		# See https://github.com/util-linux/util-linux/blob/master/Documentation/PAM-configuration.txt

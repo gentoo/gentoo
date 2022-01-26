@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,15 +31,10 @@ DEPEND="${RDEPEND}
 BDEPEND="nls? ( sys-devel/gettext )"
 
 src_configure() {
-	local myconf=()
-	if use userland_GNU; then
-		myconf+=( --exec-prefix="${EPREFIX}" )
-	else
-		myconf+=( --program-prefix=g )
-	fi
-
 	use static && append-ldflags -static
-	myconf+=(
+
+	local myconf=(
+		--exec-prefix="${EPREFIX}"
 		$(use_enable acl)
 		$(use_enable nls)
 		$(use_with selinux)

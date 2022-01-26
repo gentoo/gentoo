@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -9,7 +9,7 @@ inherit toolchain-funcs
 MY_PV="${PV/50/5}"
 
 PATCHREV="1"
-DESCRIPTION="ARCLoad - SGI Multi-bootloader.  Able to bootload many different SGI Systems"
+DESCRIPTION="ARCLoad - Bootloader for SGI IP22/IP32/IP27/IP28/IP30 Systems"
 HOMEPAGE="https://www.linux-mips.org/wiki/ARCLoad"
 SRC_URI="https://www.linux-mips.org/pub/linux/mips/people/skylark/${PN}-${MY_PV}.tar.bz2
 	 mirror://gentoo/${P}-patches-v${PATCHREV}.tar.xz"

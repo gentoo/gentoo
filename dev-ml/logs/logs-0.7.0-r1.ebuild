@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -47,7 +47,7 @@ src_compile() {
 		--with-js_of_ocaml false \
 		--with-fmt $(usex fmt true false) \
 		--with-cmdliner $(usex cli true false) \
-		--with-lwt $(usex fmt true false) \
+		--with-lwt $(usex lwt true false) \
 		--tests $(usex test true false) \
 		--with-base-threads true \
 		|| die

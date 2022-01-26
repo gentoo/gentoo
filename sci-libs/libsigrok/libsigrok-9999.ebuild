@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 USE_RUBY="ruby26 ruby25"
 RUBY_OPTIONAL="yes"
 
@@ -22,7 +22,7 @@ HOMEPAGE="https://sigrok.org/wiki/Libsigrok"
 
 LICENSE="GPL-3"
 SLOT="0/9999"
-IUSE="+cxx ftdi java parport python ruby serial static-libs test +udev usb"
+IUSE="bluetooth +cxx ftdi hidapi java nettle parport python ruby serial static-libs test +udev usb"
 REQUIRED_USE="java? ( cxx )
 	python? ( cxx ${PYTHON_REQUIRED_USE} )
 	ruby? ( cxx || ( $(ruby_get_use_targets) ) )"
@@ -33,8 +33,11 @@ RESTRICT="!test? ( test )"
 LIB_DEPEND="
 	>=dev-libs/glib-2.32.0[static-libs(+)]
 	>=dev-libs/libzip-0.8:=[static-libs(+)]
+	bluetooth? ( >=net-wireless/bluez-4.0:= )
 	cxx? ( dev-cpp/glibmm:2[static-libs(+)] )
 	ftdi? ( dev-embedded/libftdi:1[static-libs(+)] )
+	hidapi? ( >=dev-libs/hidapi-0.8.0 )
+	nettle? ( dev-libs/nettle:=[static-libs(+)] )
 	parport? ( sys-libs/libieee1284[static-libs(+)] )
 	python? (
 		${PYTHON_DEPS}
@@ -97,7 +100,10 @@ src_prepare() {
 
 sigrok_src_configure() {
 	econf \
+		$(use_with bluetooth libbluez) \
 		$(use_with ftdi libftdi) \
+		$(use_with hidapi libhidapi) \
+		$(use_with nettle libnettle) \
 		$(use_with parport libieee1284) \
 		$(use_with serial libserialport) \
 		$(use_with usb libusb) \

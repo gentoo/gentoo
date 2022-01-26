@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/linuxmint/cjs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT || ( MPL-1.1 LGPL-2+ GPL-2+ )"
 SLOT="0"
-IUSE="+cairo examples gtk readline sysprof test"
+IUSE="+cairo examples readline sysprof test"
 KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 RDEPEND="
@@ -30,18 +30,13 @@ DEPEND="
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 )
 	test? (
 		sys-apps/dbus
-
-		gtk? ( x11-libs/gtk+:3[introspection] )
+		x11-libs/gtk+:3[introspection]
 	)
 "
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 "
-
-PATCHES=(
-	"${FILESDIR}/cjs-5.0.1-meson-0.60.2.patch"
-)
 
 src_prepare() {
 	default

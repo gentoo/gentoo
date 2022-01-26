@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ DESCRIPTION="A HTTP benchmarking tool"
 HOMEPAGE="https://www.github.com/wg/wrk"
 SRC_URI="https://www.github.com/wg/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="Apache-2.0 BSD MIT"
 SLOT="0"
 REQUIRED_USE="${LUA_REQUIRED_USE}"

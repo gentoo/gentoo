@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -73,7 +73,7 @@ multilib_src_configure() {
 		--with-ldap-conf-file=/etc/nslcd.conf
 		--with-nslcd-pidfile=/run/nslcd/nslcd.pid
 		--with-nslcd-socket=/run/nslcd/socket
-		$(usex x86-fbsd '--with-nss-flavour=' '--with-nss-flavour=' 'freebsd' 'glibc')
+		--with-nss-flavour=glibc
 		$(use_enable pynslcd)
 		$(use_enable debug)
 		$(use_enable kerberos)

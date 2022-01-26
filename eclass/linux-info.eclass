@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: linux-info.eclass
@@ -136,8 +136,6 @@ inherit toolchain-funcs
 [[ ${EAPI:-0} == [0123456] ]] && inherit eapi7-ver
 
 EXPORT_FUNCTIONS pkg_setup
-
-IUSE="kernel_linux"
 
 # Bug fixes
 # fix to bug #75034

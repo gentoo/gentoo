@@ -1,4 +1,4 @@
-# Copyright 2011-2021 Gentoo Authors
+# Copyright 2011-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -43,6 +43,7 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.35-gentoo-system-users.patch
+	"${FILESDIR}"/${P}-meson-0.61-build.patch
 )
 
 src_configure() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,13 +11,14 @@ SRC_URI="https://www.spice-space.org/download/releases/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gtk selinux systemd"
 
 CDEPEND="
 	dev-libs/glib:2
 	>=app-emulation/spice-protocol-0.14.0
 	media-libs/alsa-lib
+	sys-apps/dbus
 	>=x11-libs/libpciaccess-0.10
 	x11-libs/libdrm
 	x11-libs/libXfixes

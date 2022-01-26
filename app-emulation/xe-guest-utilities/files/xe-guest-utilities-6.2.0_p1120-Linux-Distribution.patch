@@ -1,5 +1,5 @@
---- usr/sbin/xe-linux-distribution.orig	2013-06-14 07:57:18.000000000 -0500
-+++ usr/sbin/xe-linux-distribution	2014-04-19 13:54:13.270477193 -0500
+--- a/xe-linux-distribution
++++ b/xe-linux-distribution
 @@ -1,6 +1,7 @@
  #! /bin/sh
  

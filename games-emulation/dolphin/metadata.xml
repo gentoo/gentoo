@@ -13,7 +13,6 @@
 		<flag name="discord-presence">Enables Discord Rich Presence, show the current game on Discord</flag>
 		<flag name="evdev">Enable evdev input support</flag>
 		<flag name="log">Increase logging output</flag>
-		<flag name="lto">Add support for link-time optimizations.</flag>
 		<flag name="mgba">Enables GBA controllers emulation using libmgba.</flag>
 		<flag name="vulkan">Enable support for Vulkan-based video backend.</flag>
 	</use>

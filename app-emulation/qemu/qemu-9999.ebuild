@@ -34,8 +34,8 @@ SLOT="0"
 
 IUSE="accessibility +aio alsa bpf bzip2 capstone +caps +curl debug +doc
 	+fdt fuse glusterfs gnutls gtk infiniband iscsi io-uring
-	jack jemalloc +jpeg kernel_linux
-	kernel_FreeBSD lzo multipath
+	jack jemalloc +jpeg
+	lzo multipath
 	ncurses nfs nls numa opengl +oss pam +pin-upstream-blobs
 	plugins +png pulseaudio python rbd sasl +seccomp sdl sdl-image selinux
 	+slirp
@@ -107,7 +107,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	qemu_softmmu_targets_riscv64? ( fdt )
 	qemu_softmmu_targets_x86_64? ( fdt )
 	sdl-image? ( sdl )
-	static? ( static-user !alsa !gtk !jack !opengl !pulseaudio !plugins !rbd !snappy !udev )
+	static? ( static-user !alsa !gtk !jack !opengl !pam !pulseaudio !plugins !rbd !snappy !udev )
 	static-user? ( !plugins )
 	vhost-user-fs? ( caps seccomp )
 	virgl? ( opengl )
@@ -278,6 +278,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.2.0-disable-keymap.patch
 	"${FILESDIR}"/${PN}-6.0.0-make.patch
 	"${FILESDIR}"/${PN}-6.1.0-strings.patch
+	"${FILESDIR}"/${PN}-6.2.0-also-build-virtfs-proxy-helper.patch
 )
 
 QA_PREBUILT="
@@ -471,11 +472,9 @@ qemu_src_configure() {
 		$(use_enable alsa)
 		$(use_enable debug debug-info)
 		$(use_enable debug debug-tcg)
-		$(use_enable doc docs)
 		$(use_enable jack)
 		$(use_enable nls gettext)
 		$(use_enable oss)
-		$(use_enable pam auth-pam)
 		$(use_enable plugins)
 		$(use_enable pulseaudio pa)
 		$(use_enable selinux)
@@ -522,6 +521,7 @@ qemu_src_configure() {
 		$(conf_notuser capstone)
 		$(conf_notuser caps cap-ng)
 		$(conf_notuser curl)
+		$(conf_tools doc docs)
 		$(conf_notuser fdt)
 		$(conf_notuser fuse)
 		$(conf_notuser glusterfs)
@@ -540,6 +540,7 @@ qemu_src_configure() {
 		$(conf_notuser nfs libnfs)
 		$(conf_notuser numa)
 		$(conf_notuser opengl)
+		$(conf_notuser pam auth-pam)
 		$(conf_notuser png vnc-png)
 		$(conf_notuser rbd)
 		$(conf_notuser sasl vnc-sasl)
@@ -646,11 +647,6 @@ qemu_src_configure() {
 	echo "../configure ${conf_opts[*]}"
 	cd "${builddir}"
 	../configure "${conf_opts[@]}" || die "configure failed"
-
-	# FreeBSD's kernel does not support QEMU assigning/grabbing
-	# host USB devices yet
-	use kernel_FreeBSD && \
-		sed -i -E -e "s|^(HOST_USB=)bsd|\1stub|" "${S}"/config-host.mak
 }
 
 src_configure() {

@@ -33,8 +33,6 @@ BDEPEND="dev-lang/perl
 	abi_x86_32? ( dev-lang/yasm )
 	abi_x86_64? ( dev-lang/yasm )
 	abi_x86_x32? ( dev-lang/yasm )
-	x86-fbsd? ( dev-lang/yasm )
-	amd64-fbsd? ( dev-lang/yasm )
 	doc? (
 		app-doc/doxygen
 		dev-lang/php

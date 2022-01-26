@@ -11,5 +11,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">ujson</remote-id>
+    <remote-id type="github">ultrajson/ultrajson</remote-id>
   </upstream>
 </pkgmetadata>

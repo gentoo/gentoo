@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: readme.gentoo-r1.eclass
@@ -24,6 +24,11 @@ case ${EAPI} in
 	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+# @ECLASS-VARIABLE: DOC_CONTENTS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# The information that is used to create the README.gentoo file.
 
 # @ECLASS-VARIABLE: DISABLE_AUTOFORMATTING
 # @DEFAULT_UNSET

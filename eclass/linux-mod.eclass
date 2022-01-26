@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: linux-mod.eclass
@@ -170,7 +170,7 @@ esac
 	0) die "EAPI=${EAPI} is not supported with MODULES_OPTIONAL_USE_IUSE_DEFAULT due to lack of IUSE defaults" ;;
 esac
 
-IUSE="kernel_linux dist-kernel
+IUSE="dist-kernel
 	${MODULES_OPTIONAL_USE:+${_modules_optional_use_iuse_default}}${MODULES_OPTIONAL_USE}"
 SLOT="0"
 RDEPEND="

@@ -69,3 +69,6 @@ move app-emulation/lxc app-containers/lxc
 move dev-libs/stp sci-mathematics/stp
 move app-shells/fzy app-text/fzy
 move dev-python/exdown dev-python/pytest-codeblocks
+slotmove sci-libs/opencascade 7.5 0
+move dev-python/xapp dev-python/python3-xapp
+move x11-libs/xapps x11-libs/xapp

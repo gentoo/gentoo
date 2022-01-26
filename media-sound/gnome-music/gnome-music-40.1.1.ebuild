@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit gnome.org gnome2-utils meson python-single-r1 xdg
 
@@ -53,13 +53,14 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/${PV}"-fix-build-with-meson-0.61.1.patch
+)
+
+RESTRICT="test" # only does desktop and appdata validation, and latter needs network to validate screenshot from https
+
 pkg_setup() {
 	python_setup
-}
-
-src_prepare() {
-	sed -e '/sys.path.insert/d' -i "${S}"/gnome-music.in || die "python fixup sed failed"
-	xdg_src_prepare
 }
 
 src_install() {

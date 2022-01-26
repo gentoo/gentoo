@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -74,7 +74,7 @@ build_src_configure() {
 		--disable-xzlib
 		--disable-zlib
 	)
-	tc-env_build econf "${myeconfargs[@]}"
+	econf_build "${myeconfargs[@]}"
 }
 
 need_build_file() {

@@ -10,6 +10,6 @@
 		Relative monitor positions are shown graphically and can be changed in a drag-and-drop way.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">arandr/arandr</remote-id>
+		<remote-id type="gitlab">arandr/arandr</remote-id>
 	</upstream>
 </pkgmetadata>

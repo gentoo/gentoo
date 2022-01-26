@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: findlib.eclass
@@ -23,7 +23,7 @@ _FINDLIB_ECLASS=1
 QA_FLAGS_IGNORED='.*'
 
 # Required to use the ocamlopt? dep in RDEPEND below
-IUSE="ocamlopt"
+IUSE="+ocamlopt"
 
 # From this findlib version, there is proper stublibs support.
 DEPEND=">=dev-ml/findlib-1.0.4-r1"

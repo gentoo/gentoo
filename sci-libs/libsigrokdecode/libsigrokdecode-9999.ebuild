@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,7 @@ src_prepare() {
 	default
 
 	# bug #794592
-	sed -i -e 's/\[SRD_PKGLIBS\],$/& [python3-embed], [python3],/' configure.ac || die
+	sed -i -e "s/\[SRD_PKGLIBS\],\$/& [python-${EPYTHON#python}-embed], [python-${EPYTHON#python}],/" configure.ac || die
 
 	eautoreconf
 }

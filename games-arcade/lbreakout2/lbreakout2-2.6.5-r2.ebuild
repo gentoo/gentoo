@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ LB_LEVELS_V="20141220"
 LB_THEMES_V="20141220"
 
 DESCRIPTION="Breakout clone written with the SDL library"
-HOMEPAGE="http://lgames.sourceforge.net/LBreakout2/"
+HOMEPAGE="https://lgames.sourceforge.io/LBreakout2/"
 SRC_URI="
 	mirror://sourceforge/lgames/${P}.tar.gz
 	mirror://sourceforge/lgames/add-ons/lbreakout2/${PN}-levelsets-${LB_LEVELS_V}.tar.gz

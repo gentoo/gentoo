@@ -18,7 +18,7 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="cpu_flags_x86_sse2 curl doc elibc_Darwin examples iconv icu static-libs test threads"
+IUSE="cpu_flags_x86_sse2 curl doc examples iconv icu static-libs test threads"
 
 RESTRICT="!test? ( test )"
 

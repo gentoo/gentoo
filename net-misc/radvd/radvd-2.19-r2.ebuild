@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="http://v6web.litech.org/radvd/dist/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ppc ~ppc64 ~riscv sparc x86"
-IUSE="kernel_FreeBSD selinux test"
+IUSE="selinux test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
@@ -52,12 +52,6 @@ src_install() {
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
 
 	systemd_dounit "${FILESDIR}"/${PN}.service
-
-	if use kernel_FreeBSD ; then
-		sed -e \
-			's/^SYSCTL_FORWARD=.*$/SYSCTL_FORWARD=net.inet6.ip6.forwarding/g' \
-			-i "${D}"/etc/init.d/${PN} || die
-	fi
 
 	readme.gentoo_create_doc
 }

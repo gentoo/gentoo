@@ -1,5 +1,5 @@
---- Makefile.orig	2014-03-17 15:40:30.886570544 -0600
-+++ Makefile	2014-03-17 15:41:22.729159468 -0600
+--- a/Makefile
++++ b/Makefile
 @@ -3,31 +3,15 @@
  HINWEIS1 = 'Check the configuration file in /etc with the Changelog'
  HINWEIS2 = 'Comparez le fichier de config. en /etc avec le Changelog'

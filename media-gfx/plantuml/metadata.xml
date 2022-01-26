@@ -17,5 +17,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">plantuml</remote-id>
+		<remote-id type="github">plantuml/plantuml</remote-id>
 	</upstream>
 </pkgmetadata>

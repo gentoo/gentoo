@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2021-11-15)
@@ -70,10 +70,6 @@ dev-python/pbr test
 # Benda Xu <heroxbd@gentoo.org> (2020-04-27)
 # tests optionally depend on dev-python/hypothesis
 dev-python/numpy test
-
-# Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
-# Not keyworded on ppc
-net-misc/whois xcrypt
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-19)
 # Unsupported on ppc/ppc64
@@ -247,10 +243,6 @@ dev-haskell/dlist test
 dev-haskell/haskell-src-exts test
 dev-util/bnfc test
 
-# Anthony G. Basile <blueness@gentoo.org> (2014-08-17)
-# This pulls in qemu[smartcard] which is masked
-net-misc/spice-gtk smartcard
-
 # Anthony G. Basile <blueness@gentoo.org> (2014-08-16)
 # Ultimately pulls in nodejs which is broken.
 dev-ruby/sprockets test
@@ -340,7 +332,7 @@ net-misc/connman ofono
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2012-01-20)
 # Mask some use flags for openmpi due to unkeyworded deps
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Patrick McLean <chutzpah@gentoo.org> (2011-09-07)
 # missing keywords on dependencies

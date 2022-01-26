@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,6 +40,8 @@ BDEPEND=">=sys-devel/gettext-0.19.8"
 
 PATCHES=(
 	"${FILESDIR}"/3.28.1-gentoo-cursor-themes.patch # Add contents of Gentoo's cursor theme directory to cursor theme list
+
+	"${FILESDIR}"/${PN}-40.0-meson-0.61.patch
 )
 
 src_install() {

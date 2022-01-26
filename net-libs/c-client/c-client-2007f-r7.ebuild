@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ SRC_URI="ftp://ftp.cac.washington.edu/imap/${MY_P}.tar.Z
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="doc +ipv6 kerberos kernel_linux kernel_FreeBSD pam ssl static-libs topal chappa"
+IUSE="doc +ipv6 kerberos pam ssl static-libs topal chappa"
 
 RDEPEND="
 	!net-mail/uw-imap
@@ -107,8 +107,6 @@ src_compile() {
 		# Fall back to "slx" when USE=pam is not set. This ensures that
 		# we link in libcrypt to get the crypt() routine (bug #456928).
 		use pam && target=lnp passwdtype=pam || target=slx passwdtype=std
-	elif use kernel_FreeBSD ; then
-		target=bsf passwdtype=pam
 	fi
 	use kerberos \
 		&& mymake="EXTRAAUTHENTICATORS=gss" \

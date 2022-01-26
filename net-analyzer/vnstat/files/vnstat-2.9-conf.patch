@@ -1,0 +1,39 @@
+diff --git a/cfg/vnstat.conf b/cfg/vnstat.conf
+index f404de5..d2bd928 100644
+--- a/cfg/vnstat.conf
++++ b/cfg/vnstat.conf
+@@ -80,10 +80,10 @@
+ ##
+ 
+ # switch to given user when started as root (leave empty to disable)
+-;DaemonUser ""
++;DaemonUser "vnstat"
+ 
+ # switch to given group when started as root (leave empty to disable)
+-;DaemonGroup ""
++;DaemonGroup "vnstat"
+ 
+ # try to detect interface maximum bandwidth, 0 = disable feature
+ # MaxBandwidth will be used as fallback value when enabled
+@@ -161,7 +161,7 @@
+ ;LogFile "/var/log/vnstat/vnstat.log"
+ 
+ # file used as daemon pid / lock file
+-;PidFile "/var/run/vnstat/vnstat.pid"
++;PidFile "/run/vnstat/vnstat.pid"
+ 
+ # 1 = 64-bit, 0 = 32-bit, -1 = old style logic, -2 = automatic detection
+ ;64bitInterfaceCounters -2
+diff --git a/src/common.h b/src/common.h
+index bb2fb56..f148004 100644
+--- a/src/common.h
++++ b/src/common.h
+@@ -241,7 +241,7 @@ and most can be changed later from the config file.
+ #define CREATEDIRS 1
+ #define UPDATEFILEOWNER 1
+ #define LOGFILE "/var/log/vnstat/vnstat.log"
+-#define PIDFILE "/var/run/vnstat/vnstat.pid"
++#define PIDFILE "/run/vnstat/vnstat.pid"
+ #define IS64BIT -2
+ #define WALDB 0
+ #define WALDBCHECKPOINTINTERVALMINS 240

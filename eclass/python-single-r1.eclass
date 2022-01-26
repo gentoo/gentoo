@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-single-r1.eclass
@@ -136,7 +136,6 @@ EXPORT_FUNCTIONS pkg_setup
 #
 # Example value:
 # @CODE
-# dev-lang/python-exec:=
 # python_single_target_python2_7? ( dev-lang/python:2.7[gdbm] )
 # python_single_target_pypy? ( dev-python/pypy[gdbm] )
 # @CODE
@@ -219,13 +218,8 @@ _python_single_set_globals() {
 	local deps= i PYTHON_PKG_DEP
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		_python_export "${i}" PYTHON_PKG_DEP
-		# 1) well, python-exec would suffice as an RDEP
-		# but no point in making this overcomplex, BDEP doesn't hurt anyone
-		# 2) python-exec should be built with all targets forced anyway
-		# but if new targets were added, we may need to force a rebuild
 		deps+="python_single_target_${i}? (
 			${PYTHON_PKG_DEP}
-			>=dev-lang/python-exec-2:=[python_targets_${i}]
 		) "
 	done
 

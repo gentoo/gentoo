@@ -102,7 +102,7 @@ dev-vcs/mercurial rust
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
 # Dependency not keyworded on this arch.
-dev-libs/efl avif lua_single_target_luajit physics
+dev-libs/efl avif heif lua_single_target_luajit physics
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
@@ -133,10 +133,6 @@ dev-python/pyopengl test
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
 # dev-libs/criterion not yet keyworded
 >=app-admin/syslog-ng-3.25 test
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
-# Not keyworded on hppa
-net-misc/whois xcrypt
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-18)
 # nagios and icinga not stable on hppa
@@ -234,11 +230,6 @@ app-forensics/sleuthkit java
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
-
-# Michał Górny <mgorny@gentoo.org> (2017-06-28)
-# app-misc/dtach is not keyworded, and tests are restricted anyway, so
-# no point in pursuing it right now.
-app-shells/bash-completion test
 
 # Jeroen Roovers <jer@gentoo.org> (2017-02-04)
 # media-libs/libilbc has not been ported to HPPA

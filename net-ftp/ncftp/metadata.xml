@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<longdescription>
+	<maintainer type="person" proxied="yes">
+		<email>ceamac.paragon@gmail.com</email>
+		<name>Viorel Munteanu</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
 NcFTP Client (also known as just NcFTP) is a set of FREE application 
 programs implementing the File Transfer Protocol (FTP).
 
@@ -11,5 +18,5 @@ popular alternative to the FTP program, /usr/bin/ftp. NcFTP offers many
 ease-of-use and performance enhancements over the stock ftp client, and 
 runs on a wide variety of UNIX platforms as well as operating systems 
 such as Microsoft Windows and Apple Mac OS X.
-</longdescription>
+	</longdescription>
 </pkgmetadata>

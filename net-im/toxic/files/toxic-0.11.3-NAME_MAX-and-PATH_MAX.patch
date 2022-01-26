@@ -1,0 +1,39 @@
+diff -ruN src/autocomplete.c src/autocomplete.c
+--- src/autocomplete.c
++++ src/autocomplete.c
+@@ -29,6 +29,7 @@
+ #include <sys/dir.h>
+ #else
+ #include <dirent.h>
++#include <linux/limits.h>
+ #endif /* __APPLE__ */
+ 
+ #include "configdir.h"
+diff -ruN src/file_transfers.h src/file_transfers.h
+--- src/file_transfers.h
++++ src/file_transfers.h
+@@ -25,6 +25,10 @@
+ 
+ #include <limits.h>
+ 
++#ifdef __linux__
++#include <linux/limits.h>
++#endif
++
+ #include "notify.h"
+ #include "toxic.h"
+ #include "windows.h"
+diff -ruN src/settings.h src/settings.h
+--- src/settings.h
++++ src/settings.h
+@@ -25,6 +25,10 @@
+ 
+ #include <limits.h>
+ 
++#ifdef __linux__
++#include <linux/limits.h>
++#endif
++
+ #include <tox/tox.h>
+ 
+ /* Represents line_* hints max strlen */

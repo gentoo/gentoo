@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,6 +9,7 @@ inherit multilib flag-o-matic pax-utils toolchain-funcs
 BV_X86=1.4.3
 BV_AMD64=1.4.8
 BV_PPC=1.2.7
+BV_PPC64LE=1.5.8
 BV_SPARC=1.0.28
 BV_ALPHA=1.0.28
 BV_ARM=1.3.12
@@ -25,6 +26,7 @@ SRC_URI="mirror://sourceforge/sbcl/${P}-source.tar.bz2
 	x86? ( mirror://sourceforge/sbcl/${PN}-${BV_X86}-x86-linux-binary.tar.bz2 )
 	amd64? ( mirror://sourceforge/sbcl/${PN}-${BV_AMD64}-x86-64-linux-binary.tar.bz2 )
 	ppc? ( mirror://sourceforge/sbcl/${PN}-${BV_PPC}-powerpc-linux-binary.tar.bz2 )
+	ppc64? ( mirror://sourceforge/sbcl/${PN}-${BV_PPC64LE}-ppc64le-linux-binary.tar.bz2 )
 	sparc? ( mirror://sourceforge/sbcl/${PN}-${BV_SPARC}-sparc-linux-binary.tar.bz2 )
 	alpha? ( mirror://sourceforge/sbcl/${PN}-${BV_ALPHA}-alpha-linux-binary.tar.bz2 )
 	arm? ( mirror://sourceforge/sbcl/${PN}-${BV_ARM}-armhf-linux-binary.tar.bz2 )
@@ -37,7 +39,7 @@ SRC_URI="mirror://sourceforge/sbcl/${P}-source.tar.bz2
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+KEYWORDS="-* amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE="debug doc source +threads +unicode zlib"
 
 CDEPEND=">=dev-lisp/asdf-3.1:="

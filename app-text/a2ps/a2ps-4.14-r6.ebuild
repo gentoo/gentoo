@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="cjk emacs latex nls static-libs userland_BSD userland_GNU vanilla"
+IUSE="cjk emacs latex nls static-libs vanilla"
 
 RESTRICT=test
 
@@ -20,10 +20,10 @@ RDEPEND="app-text/ghostscript-gpl
 	app-text/libpaper
 	>=app-text/psutils-1.17
 	app-text/wdiff
+	>=sys-apps/coreutils-6.10-r1
 	emacs? ( >=app-editors/emacs-23.1:* )
 	latex? ( virtual/latex-base )
-	nls? ( virtual/libintl )
-	userland_GNU? ( >=sys-apps/coreutils-6.10-r1 )"
+	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	>=dev-util/gperf-2.7.2
 	virtual/yacc

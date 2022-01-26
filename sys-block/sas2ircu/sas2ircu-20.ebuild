@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,11 +6,13 @@ inherit mount-boot
 
 DESCRIPTION="LSI MPT-SAS2 controller management tool"
 HOMEPAGE="https://www.broadcom.com/products/storage/host-bus-adapters/sas-9207-8e#tab-archive-drivers4-abc"
+
 LICENSE="LSI"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~ppc64 ~x86 ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="efi doc"
 RESTRICT="strip fetch mirror"
+
 DEPEND="app-arch/unzip"
 RDEPEND=""
 QA_PREBUILT="opt/lsi/sas2ircu boot/efi/sas2ircu.efi"
@@ -85,8 +87,6 @@ src_install() {
 	exeinto /opt/lsi/
 	use amd64 || use x86 && doexe sas2ircu_linux_x86_rel/sas2ircu
 	use ppc64 && doexe sas2ircu_linux_x86_rel/sas2ircu
-	use amd64-fbsd && doexe sas2ircu_freebsd_amd64_rel/sas2ircu
-	use x86-fbsd && doexe sas2ircu_freebsd_i386_rel/sas2ircu
 	use x64-solaris || use x86-solaris && doexe sas2ircu_solaris_x86_rel/sas2ircu
 	use sparc-solaris && doexe sas2ircu_solaris_sparc_rel/sas2ircu
 	if use efi; then

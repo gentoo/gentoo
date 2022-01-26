@@ -1,9 +1,9 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake
+inherit flag-o-matic cmake toolchain-funcs
 
 MY_PN="swift-corelibs-${PN}"
 MY_PV="swift-${PV}-RELEASE"
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/apple/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ppc64 ~riscv x86"
 
 DEPEND="!gnustep-base/libobjc2"
 RDEPEND="${DEPEND}"

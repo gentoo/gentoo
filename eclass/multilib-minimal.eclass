@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multilib-minimal.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @PROVIDES: multilib-build
 # @BLURB: wrapper for multilib builds providing convenient multilib_src_* functions
 # @DESCRIPTION:
@@ -23,18 +23,15 @@
 #
 # If you need generic install rules, use multilib_src_install_all function.
 
-
 case ${EAPI} in
-	5|6|7|8) ;;
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-
-[[ ${EAPI} == 5 ]] && inherit eutils
 inherit multilib-build
 
-EXPORT_FUNCTIONS src_configure src_compile src_test src_install
-
+if [[ ! ${_MULTILIB_MINIMAL_ECLASS} ]]; then
+_MULTILIB_MINIMAL_ECLASS=1
 
 multilib-minimal_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
@@ -123,3 +120,7 @@ multilib-minimal_src_install() {
 		einstalldocs
 	fi
 }
+
+fi
+
+EXPORT_FUNCTIONS src_configure src_compile src_test src_install

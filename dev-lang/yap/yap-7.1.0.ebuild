@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit cmake flag-o-matic python-single-r1
 
-PATCHSET_VER="1"
+PATCHSET_VER="3"
 
 DESCRIPTION="YAP is a high-performance Prolog compiler"
 HOMEPAGE="http://www.dcc.fc.up.pt/~vsc/Yap/"

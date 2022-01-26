@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="build kernel_FreeBSD kernel_linux +split-usr"
+IUSE="build +split-usr"
 
 pkg_setup() {
 	multilib_layout
@@ -245,7 +245,7 @@ src_prepare() {
 
 src_install() {
 	emake \
-		OS=$(usex kernel_FreeBSD BSD Linux) \
+		OS=Linux \
 		DESTDIR="${ED}" \
 		install
 

@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Beddek <telans@posteo.de> (2022-01-15)
+# media-libs/svt-av1 is not keyworded here
+media-video/ffmpeg svt-av1
+
 # Michał Górny <mgorny@gentoo.org> (2021-12-30)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.mask.
@@ -170,10 +174,6 @@ net-libs/gnome-online-accounts gnome
 # James Le Cuirot <chewi@gentoo.org> (2020-04-23)
 # Requires media-libs/mesa[llvm], which is masked.
 dev-python/pyopengl test
-
-# Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
-# Not keyworded on alpha
-net-misc/whois xcrypt
 
 # Matt Turner <mattst88@gentoo.org> (2020-03-17)
 # Requires an insane (and always growing) number of ruby deps
@@ -461,7 +461,7 @@ x11-misc/xscreensaver new-login
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Raúl Porcel <armin76@gentoo.org> (2011-10-08)
 # Needs media-sound/lilypond

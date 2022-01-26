@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 [[ "${PV}" == *beta* ]] || \
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="selinux ibm static kernel_FreeBSD"
+IUSE="selinux ibm static"
 
 CDEPEND="
 	selinux? (
@@ -76,13 +76,6 @@ src_prepare() {
 		)
 	fi
 	(use arm || use mips || use sparc) && sed -i '/ttyS0/s:#::' inittab
-	if use kernel_FreeBSD ; then
-		sed -i \
-			-e 's/linux/cons25/g' \
-			-e 's/ttyS0/cuaa0/g' \
-			-e 's/ttyS1/cuaa1/g' \
-			inittab #121786
-	fi
 	if use x86 || use amd64 ; then
 		sed -i \
 			-e '/ttyS[01]/s:9600:115200:' \

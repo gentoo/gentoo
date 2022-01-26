@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,21 +23,22 @@ RDEPEND="
 	)
 	rpc? (
 		elibc_glibc? ( sys-libs/glibc[-rpc(-)] )
-		net-libs/libtirpc
+		net-libs/libtirpc:=
 		net-libs/rpcsvc-proto
 	)
 	tcpd? ( sys-apps/tcp-wrappers )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
-	nls? ( sys-devel/gettext )
-"
-PDEPEND="
-	rpc? ( net-nds/rpcbind )
-"
+BDEPEND="nls? ( sys-devel/gettext )"
+PDEPEND="rpc? ( net-nds/rpcbind )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-musl-cdefs.patch
+)
 
 src_prepare() {
 	default
+
 	eautoreconf
 }
 
@@ -50,6 +51,7 @@ src_configure() {
 		$(use_enable rpc)
 		$(use_enable rpc rpcsetquota)
 	)
+
 	econf "${myeconfargs[@]}"
 }
 

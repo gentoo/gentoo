@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,6 +18,7 @@ CDEPEND="
 	dev-libs/glib:2
 	>=app-emulation/spice-protocol-0.14.0
 	media-libs/alsa-lib
+	sys-apps/dbus
 	>=x11-libs/libpciaccess-0.10
 	x11-libs/libdrm
 	x11-libs/libXfixes

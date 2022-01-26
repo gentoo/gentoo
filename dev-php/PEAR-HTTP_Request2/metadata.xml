@@ -11,4 +11,5 @@
 		<flag name="ssl">Force dev-lang/php to be compiled with ssl extension</flag>
 		<flag name="zlib">Force dev-lang/php to be compiled with zlib extension</flag>
 	</use>
+	<stabilize-allarches/>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,8 +16,8 @@ IUSE="+openpty sixel toolbar truetype unicode Xaw3d xinerama"
 
 BDEPEND="virtual/pkgconfig
 	x11-base/xorg-proto"
-DEPEND="kernel_linux? ( sys-libs/libutempter )
-	kernel_FreeBSD? ( sys-libs/libutempter )
+DEPEND="
+	kernel_linux? ( sys-libs/libutempter )
 	media-libs/fontconfig:1.0
 	>=sys-libs/ncurses-5.7-r7:0=
 	x11-apps/xmessage

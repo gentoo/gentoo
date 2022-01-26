@@ -24,6 +24,8 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-lto.patch
+	# bug 827883
+	"${FILESDIR}"/${P}-missing-TBB_machine_fetchadd4.patch
 )
 
 src_configure() {

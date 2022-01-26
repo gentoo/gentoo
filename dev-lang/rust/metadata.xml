@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="clippy">Install clippy, Rust code linter</flag>
+		<flag name="dist">Install dist tarballs (used for bootstrapping)</flag>
 		<flag name="miri">Install miri, an interpreter for Rust's mid-level intermediate representation (requires USE=nightly)</flag>
 		<flag name="nightly">Enable nightly (UNSTABLE) features</flag>
 		<flag name="parallel-compiler">Build a multi-threaded rustc (experimental, not tested by upstream)</flag>

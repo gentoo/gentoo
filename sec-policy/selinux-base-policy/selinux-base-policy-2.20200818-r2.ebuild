@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -72,7 +72,7 @@ src_prepare() {
 
 src_compile() {
 	for i in ${POLICY_TYPES}; do
-		emake NAME=$i SHAREDIR="${ROOT}"/usr/share/selinux -C "${S}"/${i}
+		emake NAME=$i SHAREDIR="${SYSROOT%/}/usr/share/selinux" -C "${S}"/${i}
 	done
 }
 

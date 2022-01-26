@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake desktop qmake-utils xdg
+inherit cmake desktop xdg
 
 DESCRIPTION="Qt application to control FluidSynth"
 HOMEPAGE="https://qsynth.sourceforge.io/"
@@ -52,7 +52,7 @@ src_install() {
 
 	# The desktop file is invalid, and we also change the command
 	# depending on useflags
-	rm "${D}/usr/share/applications/qsynth.desktop" || die
+	rm "${D}/usr/share/applications/org.rncbc.qsynth.desktop" || die
 
 	local cmd
 	if use jack; then

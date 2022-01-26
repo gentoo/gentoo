@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -35,7 +35,7 @@ SRC_URI="${SRC_URI}
 
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gssapi gstreamer kerberos kernel_FreeBSD ldap mingw +mono mp3 netapi nls odbc openal opencl +opengl osmesa oss +perl pcap prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl test +threads +truetype udev +udisks +unwind usb v4l vkd3d vulkan +X +xcomposite xinerama"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos +fontconfig +gecko gphoto2 gssapi gstreamer kerberos ldap mingw +mono mp3 netapi nls odbc openal opencl +opengl osmesa oss +perl pcap prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl test +threads +truetype udev +udisks +unwind usb v4l vkd3d vulkan +X +xcomposite xinerama"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
@@ -243,10 +243,10 @@ pkg_pretend() {
 	wine_build_environment_check || die
 
 	# Verify OSS support
-	if use oss && ! use kernel_FreeBSD; then
+	if use oss; then
 		if ! has_version ">=media-sound/oss-4"; then
-			eerror "You cannot build wine with USE=oss without having support from a"
-			eerror "FreeBSD kernel or >=media-sound/oss-4 (only available through external repos)"
+			eerror "You cannot build wine with USE=oss without having support from"
+			eerror ">=media-sound/oss-4 (only available through external repos)"
 			eerror
 			die
 		fi

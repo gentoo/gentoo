@@ -19,7 +19,7 @@ KEYWORDS="amd64 x86"
 IUSE="+epoll ssl static-libs test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="ssl? ( >net-libs/gnutls-2.12.20:= )"
+RDEPEND="ssl? ( >net-libs/gnutls-2.12.20:=[${MULTILIB_USEDEP}] )"
 
 # We disable tests below because they're broken,
 # but if enabled, we'll need this.

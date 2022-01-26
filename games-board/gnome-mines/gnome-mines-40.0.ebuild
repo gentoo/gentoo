@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit gnome.org gnome2-utils meson python-any-r1 vala xdg
 
 DESCRIPTION="Clear hidden mines from a minefield"
@@ -30,6 +30,10 @@ BDEPEND="
 	virtual/pkgconfig
 	gnome-base/librsvg:2[vala]
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-40.0-meson-0.61.patch
+)
 
 src_prepare() {
 	xdg_src_prepare

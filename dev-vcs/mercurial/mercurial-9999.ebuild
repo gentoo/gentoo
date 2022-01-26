@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{7..10} )
 PYTHON_REQ_USE="threads(+)"
@@ -66,7 +66,6 @@ src_compile() {
 
 python_compile() {
 	filter-flags -ftracer -ftree-vectorize
-	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	if use rust; then
 		local -x HGWITHRUSTEXT="cpython"
 	fi

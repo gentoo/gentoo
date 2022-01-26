@@ -77,7 +77,7 @@ inherit distutils-r1
 einfo distutils_enable_tests
 eindent
 BASE_IUSE="+python_single_target_python3_8"
-BASE_DEPS="python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] )"
+BASE_DEPS="python_single_target_python3_8? ( >=dev-lang/python-3.8.12_p1-r1:3.8 )"
 TEST_RESTRICT="!test? ( test )"
 
 einfo "empty RDEPEND"

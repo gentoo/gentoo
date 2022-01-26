@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,6 +22,14 @@ PATCHES=(
 	"${FILESDIR}/nowarn.patch"
 )
 
+src_prepare() {
+	sed -i \
+		-e "s|ar rc|$(tc-getAR) rc|g" \
+		runtime/Makefile.unix \
+		|| die
+	default
+}
+
 src_compile() {
 	# Use the UNIX makefile
 	libdir=$(ocamlc -where || die)
@@ -31,7 +39,7 @@ src_compile() {
 	ln -s Makefile.unix config/Makefile || die
 
 	# Make
-	emake -j1
+	emake -j1 RANLIB="$(tc-getRANLIB)"
 }
 
 src_test() {
@@ -42,11 +50,11 @@ src_test() {
 
 src_install() {
 	libdir=$(ocamlc -where || die)
-	dodir ${libdir#${EPREFIX}}/caml
+	dodir "${libdir#${EPREFIX}}"/caml
 
 	dodir /usr/bin
 	# Install
-	emake BINDIR="${ED}/usr/bin" OCAMLLIB="${D}${libdir}" install
+	emake BINDIR="${ED}/usr/bin" OCAMLLIB="${D}${libdir}" RANLIB="$(tc-getRANLIB)" install
 
 	# Add package header
 	sed -e "s/@VERSION/${P}/g" "${FILESDIR}/META.camlidl" >	"${D}${libdir}/META.camlidl" || die

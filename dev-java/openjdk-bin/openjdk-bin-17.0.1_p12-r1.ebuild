@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -85,7 +85,7 @@ src_unpack() {
 
 src_install() {
 	local dest="/opt/${P}"
-	local ddest="${ED%/}/${dest#/}"
+	local ddest="${ED}/${dest#/}"
 
 	# on macOS if they would exist they would be called .dylib, but most
 	# importantly, there are no different providers, so everything

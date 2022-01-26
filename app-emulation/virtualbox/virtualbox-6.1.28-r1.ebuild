@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
 KEYWORDS="amd64"
-IUSE="alsa debug doc dtrace headless java lvm +opus pam pax-kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
+IUSE="alsa debug doc dtrace headless java lvm +opus pam pax-kernel pch pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
@@ -178,6 +178,11 @@ src_prepare() {
 	# Disable things unused or split into separate ebuilds
 	sed -e "s@MY_LIBDIR@$(get_libdir)@" \
 		"${FILESDIR}"/${PN}-5-localconfig > LocalConfig.kmk || die
+
+	if ! use pch ; then
+		# bug #753323
+		echo -e "VBOX_WITHOUT_PRECOMPILED_HEADERS=1\r\n" >> LocalConfig.kmk || die
+	fi
 
 	# Respect LDFLAGS
 	sed -e "s@_LDFLAGS\.${ARCH}*.*=@& ${LDFLAGS}@g" \

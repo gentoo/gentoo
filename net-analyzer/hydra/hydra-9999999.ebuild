@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ RDEPEND="
 	mongodb? ( dev-libs/mongo-c-driver )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	ncurses? ( sys-libs/ncurses:= )
-	oracle? ( dev-db/oracle-instantclient-basic )
+	oracle? ( dev-db/oracle-instantclient[sdk] )
 	pcre? ( dev-libs/libpcre )
 	postgres? ( dev-db/postgresql:* )
 	rdp? ( net-misc/freerdp )

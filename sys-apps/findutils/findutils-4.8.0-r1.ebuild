@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -56,12 +56,10 @@ src_configure() {
 		append-cppflags '-D__nonnull\(X\)='
 	fi
 
-	program_prefix=$(usex userland_GNU '' g)
 	local myeconfargs=(
 		--with-packager="Gentoo"
 		--with-packager-version="${PVR}"
 		--with-packager-bug-reports="https://bugs.gentoo.org/"
-		--program-prefix=${program_prefix}
 		$(use_enable nls)
 		$(use_with selinux)
 		--libexecdir='$(libdir)'/find

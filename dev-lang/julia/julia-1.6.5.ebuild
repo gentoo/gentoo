@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -64,12 +64,12 @@ PATCHES=(
 	"${FILESDIR}/${PN}"-1.1.0-fix_llvm_install.patch
 	"${FILESDIR}/${PN}"-1.4.0-no_symlink_llvm.patch
 	"${FILESDIR}/${PN}"-1.6.5-llvm_bad_perf_fix.patch
-	"${FILESDIR}/${PN}"-1.7.0-llvm_13_compat_part_1.patch
-	"${FILESDIR}/${PN}"-1.7.0-llvm_13_compat_part_2.patch
-	"${FILESDIR}/${PN}"-1.7.0-llvm_13_compat_part_3.patch
+	"${FILESDIR}/${PN}"-1.6.5-llvm_13_compat_part_1.patch
+	"${FILESDIR}/${PN}"-1.6.5-llvm_13_compat_part_2.patch
+	"${FILESDIR}/${PN}"-1.6.5-llvm_13_compat_part_3.patch
 	"${FILESDIR}/${PN}"-1.6.5-llvm_13_compat_part_4.patch
-	"${FILESDIR}/${PN}"-1.7.0-libgit-1.2.patch
-	"${FILESDIR}/${PN}"-1.7.0-make-install-no-build.patch
+	"${FILESDIR}/${PN}"-1.6.5-libgit-1.2.patch
+	"${FILESDIR}/${PN}"-1.6.5-make-install-no-build.patch
 	"${FILESDIR}/${PN}"-1.6.5-hardcoded-libs.patch
 	"${FILESDIR}/${PN}"-1.6.5-do_not_set_rpath.patch
 	"${FILESDIR}/${PN}"-1.6.5-lazy_artifacts_fix.patch

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ SLOT="0/3" # based on SONAME of libupower-glib.so
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 
 # gtk-doc files are not available as prebuilt in the tarball
-IUSE="doc +introspection ios kernel_FreeBSD kernel_linux selinux"
+IUSE="doc +introspection ios selinux"
 
 DEPEND="
 	>=dev-libs/glib-2.38:2
@@ -60,8 +60,6 @@ src_configure() {
 
 	if use kernel_linux ; then
 		backend=linux
-	elif use kernel_FreeBSD ; then
-		backend=freebsd
 	else
 		backend=dummy
 	fi

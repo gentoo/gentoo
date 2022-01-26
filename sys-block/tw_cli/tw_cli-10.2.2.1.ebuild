@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,9 +11,7 @@ ThreeDM2_PV="9.5.5.1"
 
 SRC_URI_BASE="http://www.lsi.com/downloads/Public/SATA/SATA%20Common%20Files/"
 SRC_URI_A_linux="CLI_linux-from_the_${PV}_${ThreeDM2_PV}_codesets.zip"
-SRC_URI_A_fbsd="CLI_freebsd-from_the_${PV}_${ThreeDM2_PV}_codesets.zip"
 SRC_URI="kernel_linux? ( ${SRC_URI_BASE}/${SRC_URI_A_linux} )
-		 kernel_FreeBSD? ( ${SRC_URI_BASE}/${SRC_URI_A_fbsd} )
 		 https://gitweb.gentoo.org/repo/gentoo.git/plain/licenses/LSI-tw_cli"
 # The license is not available easily from upstream (embedded in a textbox),
 # nor in the upstream tarball, but needs to be installed, and can't be

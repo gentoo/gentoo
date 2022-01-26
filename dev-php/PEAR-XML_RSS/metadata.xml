@@ -9,4 +9,5 @@
     <remote-id type="github">pear/XML_RSS</remote-id>
     <remote-id type="pear">XML_RSS</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,14 +11,12 @@ ThreeDM2_PV="9.5.5.1"
 
 SRC_URI_BASE="http://www.lsi.com/downloads/Public/SATA/SATA%20Common%20Files/"
 SRC_URI_A_linux="CLI_linux-from_the_${PV}_${ThreeDM2_PV}_codesets.zip"
-#SRC_URI_A_fbsd="CLI_freebsd-from_the_${PV}_${ThreeDM2_PV}_codesets.zip"
 # 10.2.2.1 special case:
 # Newer kernels cause a segmentation fault, and a special build is available for Linux only.
 # https://www.broadcom.com/support/knowledgebase/1211161501805/debian-8-twcli-causes-fault-segment-failure
 EXTRA_linux="https://docs.broadcom.com/docs-and-downloads/kb-documents/lsi/368_tw_cli_debian8_beta.tgz"
 EXTRA_fbsd=""
 [ -n "${SRC_URI_A_linux}${EXTRA_linux}" ] && SRC_URI+=" kernel_linux? ( ${SRC_URI_A_linux:+${SRC_URI_BASE}/}${SRC_URI_A_linux} ${EXTRA_linux} )"
-[ -n "${SRC_URI_A_fbsd}${EXTRA_fbsd}" ] && SRC_URI+=" kernel_FreeBSD? ( ${SRC_URI_A_fbsd:+${SRC_URI_BASE}/}${SRC_URI_A_fbsd} ${EXTRA_fbsd} )"
 # The license is not available easily from upstream (embedded in a textbox),
 # nor in the upstream tarball, but needs to be installed, and can't be
 # referenced via PORTDIR per bug #373349.

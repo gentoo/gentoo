@@ -3,6 +3,7 @@
 
 EAPI=6
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="com.sun.mail:javax.mail:1.5.6"
 
 inherit java-pkg-2 java-ant-2
 

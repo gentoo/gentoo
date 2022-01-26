@@ -1,0 +1,24 @@
+From e5dcac6abd6129829c4983d6635916cee8f1a627 Mon Sep 17 00:00:00 2001
+From: Jory Pratt <anarchy@gentoo.org>
+Date: Sun, 12 Sep 2021 09:46:11 -0500
+Subject: [PATCH] include limits.h for PATH_MAX for musl support
+
+---
+ tools/mesh-cfgtest.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tools/mesh-cfgtest.c b/tools/mesh-cfgtest.c
+index fa0474f..bfc8e1b 100644
+--- a/tools/mesh-cfgtest.c
++++ b/tools/mesh-cfgtest.c
+@@ -26,6 +26,7 @@
+ #include <time.h>
+ #include <unistd.h>
+ #include <sys/stat.h>
++#include <limits.h>
+ 
+ #include <ell/ell.h>
+ 
+-- 
+2.32.0
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -83,11 +83,11 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-110.82-pax-p3.patch"
 	default
 	for file in mk.*; do
-		sed -e "/^AS/s:as:$(tc-getAS):" \
-			-e "/^CC/s:gcc:$(tc-getCC):" \
-			-e "/^CPP/s:gcc:$(tc-getCC):" \
-			-e "/^CFLAGS/{s:-O[0123s]:: ; s:=:= ${CFLAGS}:}" \
-			-e "/^PAXMARK/s:true:"$(usex pax-kernel "paxmark.sh" "true")":" \
+		sed -e "/^AS/s|as|$(tc-getAS)|" \
+			-e "/^CC/s|gcc|$(tc-getCC)|" \
+			-e "/^CPP/s|gcc|$(tc-getCC)|" \
+			-e "/^CFLAGS/{s|-O[0123s]|| ; s|=|= ${CFLAGS}|}" \
+			-e "/^PAXMARK/s|true|"$(usex pax-kernel "paxmark.sh" "true")"|" \
 			-i base/runtime/objs/${file}
 	done
 }
@@ -138,7 +138,7 @@ src_install() {
 	DIR=/usr/${SUBDIR}
 	for file in bin/{*,.*}; do
 		[[ -f ${file} ]] && sed -e "2iSMLNJ_HOME=${EPREFIX}/${DIR}" \
-								-e "s:${WORKDIR}:${EPREFIX}/${DIR}:" -i ${file}
+								-e "s|${WORKDIR}|${EPREFIX}/${DIR}|" -i ${file}
 	done
 	dodir ${DIR}/bin
 	exeinto ${DIR}/bin

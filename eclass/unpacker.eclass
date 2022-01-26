@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: unpacker.eclass
@@ -509,9 +509,6 @@ unpacker_src_uri_depends() {
 		case ${uri} in
 		*.cpio.*|*.cpio)
 			d="app-arch/cpio" ;;
-		*.deb)
-			# platforms like AIX don't have a good ar
-			d="kernel_AIX? ( app-arch/deb2targz )" ;;
 		*.rar|*.RAR)
 			d="app-arch/unrar" ;;
 		*.7z)

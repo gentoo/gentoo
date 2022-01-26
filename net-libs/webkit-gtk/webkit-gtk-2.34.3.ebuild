@@ -14,7 +14,7 @@ SRC_URI="https://www.webkitgtk.org/releases/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2+ BSD"
 SLOT="4/37" # soname version of libwebkit2gtk-4.0
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="aqua avif +egl examples gamepad +geolocation gles2-only gnome-keyring +gstreamer gtk-doc +introspection +jpeg2k +jumbo-build lcms libnotify seccomp spell systemd wayland +X"
 
@@ -159,6 +159,7 @@ pkg_setup() {
 src_prepare() {
 	eapply "${FILESDIR}"/2.34.3-opengl-without-X-fixes.patch
 	eapply "${FILESDIR}"/2.34.3-non-jumbo-fix.patch
+	eapply "${FILESDIR}"/2.34.3-jumbo-fix.patch # bug 830638
 	cmake_src_prepare
 	gnome2_src_prepare
 }
@@ -183,7 +184,7 @@ src_configure() {
 	# Try to use less memory, bug #469942 (see Fedora .spec for reference)
 	# --no-keep-memory doesn't work on ia64, bug #502492
 	if ! use ia64; then
-		append-ldflags "-Wl,--no-keep-memory"
+		append-ldflags $(test-flags-CCLD "-Wl,--no-keep-memory")
 	fi
 
 	# Ruby situation is a bit complicated. See bug 513888

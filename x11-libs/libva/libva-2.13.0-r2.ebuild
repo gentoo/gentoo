@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ else
 	# To simplify updates, portage use tarballs without pre-build 'configure'
 	# which are always available.
 	SRC_URI="https://github.com/intel/libva/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="MIT"

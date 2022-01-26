@@ -1,26 +1,24 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit xdg-utils toolchain-funcs
 
 MY_P="${PN%-icon-theme}-${PV}"
 DESCRIPTION="Elementary icons forked from upstream, extended and maintained for Xfce"
 HOMEPAGE="https://github.com/shimmerproject/elementary-xfce"
 SRC_URI="https://github.com/shimmerproject/elementary-xfce/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="public-domain GPL-1 GPL-2 GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND=""
-DEPEND="media-gfx/optipng
-	sys-apps/findutils
+BDEPEND="
+	media-gfx/optipng
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3"
-
-S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	# custom script

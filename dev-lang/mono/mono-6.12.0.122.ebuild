@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,6 +36,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.12-try-catch.patch
+	"${FILESDIR}"/${PN}-6.12.0.122-disable-automagic-ccache.patch
 )
 
 pkg_pretend() {

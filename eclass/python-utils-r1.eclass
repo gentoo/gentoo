@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-utils-r1.eclass
@@ -416,12 +416,18 @@ _python_export() {
 				case ${impl} in
 					python2.7)
 						PYTHON_PKG_DEP='>=dev-lang/python-2.7.5-r2:2.7';;
+					python3.8)
+						PYTHON_PKG_DEP=">=dev-lang/python-3.8.12_p1-r1:3.8";;
+					python3.9)
+						PYTHON_PKG_DEP=">=dev-lang/python-3.9.9-r1:3.9";;
+					python3.10)
+						PYTHON_PKG_DEP=">=dev-lang/python-3.10.0_p1-r1:3.10";;
 					python*)
 						PYTHON_PKG_DEP="dev-lang/python:${impl#python}";;
 					pypy)
 						PYTHON_PKG_DEP='>=dev-python/pypy-7.3.0:0=';;
 					pypy3)
-						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.7:0=';;
+						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.7-r1:0=';;
 					*)
 						die "Invalid implementation: ${impl}"
 				esac
@@ -1244,7 +1250,8 @@ build_sphinx() {
 	sed -i -e 's:^intersphinx_mapping:disabled_&:' \
 		"${dir}"/conf.py || die
 	# not all packages include the Makefile in pypi tarball
-	sphinx-build -b html -d "${dir}"/_build/doctrees "${dir}" \
+	"${EPYTHON}" -m sphinx.cmd.build \
+		-b html -d "${dir}"/_build/doctrees "${dir}" \
 		"${dir}"/_build/html || die
 
 	HTML_DOCS+=( "${dir}/_build/html/." )
@@ -1291,6 +1298,16 @@ epytest() {
 
 	_python_check_EPYTHON
 
+	local color
+	case ${NOCOLOR} in
+		true|yes)
+			color=no
+			;;
+		*)
+			color=yes
+			;;
+	esac
+
 	local args=(
 		# verbose progress reporting and tracebacks
 		-vv
@@ -1302,6 +1319,16 @@ epytest() {
 		# override filterwarnings=error, we do not really want -Werror
 		# for end users, as it tends to fail on new warnings from deps
 		-Wdefault
+		# override color output
+		"--color=${color}"
+		# disable the undesirable-dependency plugins by default to
+		# trigger missing argument strips.  strip options that require
+		# them from config files.  enable them explicitly via "-p ..."
+		# if you *really* need them.
+		-p no:cov
+		-p no:flake8
+		-p no:flakes
+		-p no:pylint
 	)
 	local x
 	for x in "${EPYTEST_DESELECT[@]}"; do

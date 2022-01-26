@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit multilib perl-module
+inherit perl-module
 
 DESCRIPTION="A streaming server for MP3, OGG vorbis and other streamable files"
 HOMEPAGE="https://www.gnu.org/software/gnump3d/"
@@ -43,7 +43,7 @@ src_install() {
 	doins lib/gnump3d/lang/*.pm
 
 	dobin bin/gnump3d2 bin/gnump3d-top bin/gnump3d-index
-	dosym /usr/bin/gnump3d2 /usr/bin/gnump3d
+	dosym gnump3d2 /usr/bin/gnump3d
 	doman man/*.1
 
 	insinto /usr/share/gnump3d

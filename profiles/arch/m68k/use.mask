@@ -4,6 +4,20 @@
 # Unmask the flag which corresponds to ARCH.
 -m68k
 
+# James Le Cuirot <chewi@gentoo.org> (2022-01-15)
+# Most of the PostgreSQL tests pass on m68k, but some fail and some hang. I
+# suggest you put your data elsewhere.
+postgres
+
+# James Le Cuirot <chewi@gentoo.org> (2022-01-09)
+# Although Wayland could possibly work in a limited manner, Mesa is required for
+# most things, and that isn't working on m68k.
+wayland
+
+# James Le Cuirot <chewi@gentoo.org> (2022-01-09)
+# vim is keyworded for ~m68k but I'm not testing plugins.
+vim-syntax
+
 # James Le Cuirot <chewi@gentoo.org> (2022-01-01)
 # Hardware that probably doesn't apply to m68k.
 input_devices_elographics
@@ -17,7 +31,9 @@ video_cards_radeon
 video_cards_radeonsi
 
 # James Le Cuirot <chewi@gentoo.org> (2021-10-02)
-# Keywording aside, m68k CPUs are probably too slow for PulseAudio.
+# Keywording aside, m68k CPUs are too slow for PulseAudio, PipeWire, JACK.
+jack
+pipewire
 pulseaudio
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-28)
@@ -63,10 +79,6 @@ qt5
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-23)
 # valgrind has no m68k port.
 valgrind
-
-# Matt Turner <mattst88@gentoo.org> (2019-12-05)
-# media-libs/libglvnd is not keyworded
-libglvnd
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependencies not keyworded.
@@ -147,6 +159,4 @@ slang
 systemd
 tcl
 tk
-X
 xemacs
-xpm

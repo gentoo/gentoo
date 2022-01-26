@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ if [[ ${KDE_BUILD_TYPE} != live ]]; then
 		SRC_URI="mirror://kde/stable/${PN}/${PV}/"
 	fi
 	SRC_URI+="digiKam-${PV/_/-}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/${PN}-${PV/_/-}"
 fi
 
@@ -139,7 +139,7 @@ src_configure() {
 		$(cmake_use_find_package opengl OpenGL)
 		$(cmake_use_find_package panorama KF5ThreadWeaver)
 		$(cmake_use_find_package scanner KF5Sane)
-		$(cmake_use_find_package semantic-desktop KF5FileMetaData)
+		-DENABLE_KFILEMETADATASUPPORT=$(usex semantic-desktop)
 		$(cmake_use_find_package X X11)
 	)
 

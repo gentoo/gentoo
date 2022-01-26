@@ -1,10 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2021-12-23)
-# Fails to build due to gnulib errors:
-# ```timespec.h:52:21: error: expected identifier or ‘(’ before ‘struct’
-# 52 | _GL_TIMESPEC_INLINE struct timespec```
-# bug #829847
-=app-editors/nano-5.9
-=app-editors/nano-6.0
+# Fabian Groffen <grobian@gentoo.org> (2022-01-08)
+# malloc crash during install on >=11.0, bug #830425
+=dev-util/cmake-3.22.1

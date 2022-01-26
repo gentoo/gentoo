@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8,9} )
 WX_GTK_VER="3.0-gtk3"
@@ -28,13 +28,14 @@ fi
 # BSD for bundled pybind
 LICENSE="GPL-2+ GPL-3+ Boost-1.0 BSD"
 SLOT="0"
-IUSE="doc examples +ngspice openmp +occ +pcm"
+IUSE="doc examples +ngspice nls openmp +occ +pcm"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Contains bundled pybind but it's patched for wx
 # See https://gitlab.com/kicad/code/kicad/-/commit/74e4370a9b146b21883d6a2d1df46c7a10bd0424
 COMMON_DEPEND="
+	!sci-electronics/kicad-i18n
 	>=dev-libs/boost-1.61:=[context,nls]
 	media-libs/freeglut
 	media-libs/glew:0=
@@ -50,6 +51,9 @@ COMMON_DEPEND="
 	${PYTHON_DEPS}
 	ngspice? (
 		>sci-electronics/ngspice-27[shared]
+	)
+	nls? (
+		sys-devel/gettext
 	)
 	occ? (
 		>=sci-libs/opencascade-7.3.0:=
@@ -67,8 +71,7 @@ if [[ ${PV} == 9999 ]] ; then
 	BDEPEND+=" >=x11-misc/util-macros-1.18"
 fi
 
-CHECKREQS_DISK_BUILD="800M"
-CAS_VERSION=7.5.3
+CHECKREQS_DISK_BUILD="900M"
 
 pkg_setup() {
 	use openmp && tc-check-openmp
@@ -94,6 +97,10 @@ src_configure() {
 
 		-DKICAD_SCRIPTING_WXPYTHON=ON
 
+		# Merged from separate -i18n package, bug #830274
+		-DKICAD_BUILD_I18N="$(usex nls)"
+		-DKICAD_I18N_UNIX_STRICT_PATH="$(usex nls)"
+
 		-DPYTHON_DEST="$(python_get_sitedir)"
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
@@ -107,14 +114,9 @@ src_configure() {
 		-DCMAKE_SKIP_RPATH="ON"
 	)
 
-	local OCC_P=$(best_version sci-libs/opencascade)
-	OCC_P=${OCC_P#sci-libs/}
-	OCC_P=${OCC_P%-r*}
-
 	use occ && mycmakeargs+=(
-		-DOCC_INCLUDE_DIR="${CASROOT}"/include/${OCC_P}
-		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/${OCC_P}
-
+		-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
+		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/opencascade
 	)
 
 	cmake_src_configure
@@ -123,7 +125,7 @@ src_configure() {
 src_compile() {
 	cmake_src_compile
 	if use doc; then
-		cmake_src_compile dev-docs doxygen-docs
+		cmake_src_compile doxygen-docs
 	fi
 }
 
@@ -142,7 +144,7 @@ src_install() {
 	if use doc ; then
 		dodoc uncrustify.cfg
 		cd Documentation || die
-		dodoc -r *.txt kicad_doxygen_logo.png notes_about_pcbnew_new_file_format.odt doxygen/. development/doxygen/.
+		dodoc -r *.txt kicad_doxygen_logo.png notes_about_pcbnew_new_file_format.odt doxygen/.
 	fi
 }
 

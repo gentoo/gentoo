@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ else
 fi
 
 SLOT="0"
-IUSE="ap +crda broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
+IUSE="ap +crda broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps"
 
 # CONFIG_PRIVSEP=y does not have sufficient support for the new driver
 # interface functions used for MACsec, so this combination cannot be used
@@ -312,10 +312,6 @@ src_configure() {
 		if use ps3 ; then
 			Kconfig_style_config DRIVER_PS3
 		fi
-
-	elif use kernel_FreeBSD ; then
-		# FreeBSD specific driver
-		Kconfig_style_config DRIVER_BSD
 	fi
 
 	# Wi-Fi Protected Setup (WPS)

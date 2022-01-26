@@ -1,4 +1,4 @@
-# Copyright 2013-2021 Gentoo Authors
+# Copyright 2013-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multilib-build.eclass
@@ -6,7 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @PROVIDES: multibuild
 # @BLURB: flags and utility functions for building multilib packages
 # @DESCRIPTION:
@@ -19,14 +19,13 @@
 # to properly request multilib enabled.
 
 case ${EAPI} in
-	5|6|7|8) ;;
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ -z ${_MULTILIB_BUILD} ]]; then
-_MULTILIB_BUILD=1
+if [[ -z ${_MULTILIB_BUILD_ECLASS} ]]; then
+_MULTILIB_BUILD_ECLASS=1
 
-[[ ${EAPI} == 5 ]] && inherit eutils
 inherit multibuild multilib
 
 # @ECLASS-VARIABLE: _MULTILIB_FLAGS
@@ -242,23 +241,6 @@ multilib_parallel_foreach_abi() {
 
 	local MULTIBUILD_VARIANTS=( $(multilib_get_enabled_abi_pairs) )
 	multibuild_foreach_variant _multilib_multibuild_wrapper "${@}"
-}
-
-# @FUNCTION: multilib_for_best_abi
-# @USAGE: <argv>...
-# @DESCRIPTION:
-# Runs the given command with setup for the 'best' (usually native) ABI.
-multilib_for_best_abi() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	[[ ${EAPI} == 5 ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}, use multilib_is_native_abi() instead"
-
-	eqawarn "QA warning: multilib_for_best_abi() function is deprecated and should"
-	eqawarn "not be used. The multilib_is_native_abi() check may be used instead."
-
-	local MULTIBUILD_VARIANTS=( $(multilib_get_enabled_abi_pairs) )
-
-	multibuild_for_best_variant _multilib_multibuild_wrapper "${@}"
 }
 
 # @FUNCTION: multilib_check_headers
@@ -581,20 +563,6 @@ multilib_is_native_abi() {
 	[[ ${#} -eq 0 ]] || die "${FUNCNAME}: too many arguments"
 
 	[[ ${COMPLETE_MULTILIB} == yes || ${ABI} == ${DEFAULT_ABI} ]]
-}
-
-# @FUNCTION: multilib_build_binaries
-# @DESCRIPTION:
-# Deprecated synonym for multilib_is_native_abi
-multilib_build_binaries() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	[[ ${EAPI} == 5 ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}, use multilib_is_native_abi() instead"
-
-	eqawarn "QA warning: multilib_build_binaries is deprecated. Please use the equivalent"
-	eqawarn "multilib_is_native_abi function instead."
-
-	multilib_is_native_abi "${@}"
 }
 
 # @FUNCTION: multilib_native_use_with

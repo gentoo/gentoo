@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,8 +16,7 @@ IUSE=""
 
 RDEPEND="sys-libs/zlib
 	media-libs/libpng:0="
-DEPEND="${RDEPEND}
-	sys-apps/findutils"
+DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS.txt README.txt )
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -46,6 +46,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/3.38.0-optional-vapi.patch
+	"${FILESDIR}"/${P}-meson-0.61-build.patch
 )
 
 pkg_setup() {

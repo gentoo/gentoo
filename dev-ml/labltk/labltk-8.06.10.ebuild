@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit findlib
+inherit findlib toolchain-funcs
 
 DESCRIPTION="OCaml interface to the Tcl/Tk GUI framework"
 HOMEPAGE="https://garrigue.github.io/labltk/"
@@ -16,6 +16,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 x86 ~amd64-linux ~x
 IUSE="+ocamlopt X"
 
 RDEPEND="dev-lang/tk:=
+	<dev-lang/ocaml-4.13
 	>=dev-lang/ocaml-4.11:=[ocamlopt?,X(+)?]"
 DEPEND="${RDEPEND}
 	dev-ml/findlib
@@ -29,6 +30,10 @@ PATCHES=(
 src_prepare() {
 	has_version "dev-lang/ocaml:0/4.11" && \
 		eapply "${FILESDIR}"/${P}-this-expression-has-type.patch
+	sed -i \
+		-e "s|ranlib|$(tc-getRANLIB)|" \
+		frx/Makefile \
+		|| die
 	default
 }
 

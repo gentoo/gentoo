@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,33 +26,37 @@ HOMEPAGE="https://celestia.space"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="glut lua nls +qt5 theora"
+IUSE="ffmpeg glut lua nls +qt5"
 REQUIRED_USE="|| ( glut qt5 )
 	lua? ( ${LUA_REQUIRED_USE} )"
 
 BDEPEND="
 	dev-cpp/eigen
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
+	nls? (
+		sys-devel/gettext
+		virtual/libintl
+	)
 "
 DEPEND="
 	dev-libs/libfmt:=
+	media-libs/freetype
 	media-libs/glew:0=
+	media-libs/libepoxy
+	media-libs/libglvnd
 	media-libs/libpng:0=
 	sys-libs/zlib:=
 	virtual/glu
 	virtual/jpeg:0
 	virtual/opengl
+	ffmpeg? ( media-video/ffmpeg )
 	glut? ( media-libs/freeglut )
 	lua? ( ${LUA_DEPS} )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
+		dev-qt/qtopengl:5
 		dev-qt/qtwidgets:5
-	)
-	theora? (
-		media-libs/libogg
-		media-libs/libtheora
 	)
 "
 RDEPEND="${DEPEND}"
@@ -81,7 +85,7 @@ src_configure() {
 		-DENABLE_GTK=OFF
 		-DENABLE_QT="$(usex qt5)"
 		-DENABLE_WIN=OFF
-		-DENABLE_THEORA="$(usex theora)"
+		-DENABLE_FFMPEG="$(usex ffmpeg)"
 	)
 	# Upstream always looks for LuaJIT first unless stopped, and we only need
 	# the version specification when linking against PUC Lua

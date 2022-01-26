@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -19,7 +19,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/version-${PV}.tar.gz -
 
 LICENSE="dom4j"
 SLOT="1"
-KEYWORDS="amd64 arm64 ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 IUSE="jaxen"
 
 CDEPEND="

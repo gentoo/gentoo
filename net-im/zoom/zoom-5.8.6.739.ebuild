@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -54,6 +54,7 @@ RDEPEND="!games-engines/zoom
 		dev-qt/qtquickcontrols2:5
 		dev-qt/qtsvg:5
 		dev-qt/qtwidgets:5
+		dev-qt/qtx11extras:5
 		wayland? ( dev-qt/qtwayland )
 	)"
 

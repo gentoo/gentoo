@@ -21,14 +21,14 @@ RESTRICT="!test? ( test )"
 # the libspice-server only uses the headers of libcacard
 RDEPEND="
 	dev-lang/orc
-	>=dev-libs/glib-2.22:2
+	>=dev-libs/glib-2.38:2
 	sys-libs/zlib
 	virtual/jpeg:0=
 	>=x11-libs/pixman-0.17.7
 	dev-libs/openssl:0=
 	lz4? ( app-arch/lz4:0= )
 	opus? ( media-libs/opus )
-	smartcard? ( >=app-emulation/libcacard-0.1.2 )
+	smartcard? ( >=app-emulation/libcacard-2.5.1 )
 	sasl? ( dev-libs/cyrus-sasl )
 	gstreamer? (
 		media-libs/gstreamer:1.0

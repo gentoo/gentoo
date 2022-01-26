@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ DIST_VERSION=2.548
 inherit perl-module
 
 DESCRIPTION="Simple DirectMedia Layer (SDL) bindings for perl"
-HOMEPAGE="http://sdl.perl.org/ http://search.cpan.org/dist/SDL/ https://github.com/PerlGameDev/SDL"
+HOMEPAGE="http://sdl.perl.org/ https://search.cpan.org/dist/SDL/ https://github.com/PerlGameDev/SDL"
 
 LICENSE="GPL-2 OFL-1.1"
 SLOT="0"

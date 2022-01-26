@@ -5,6 +5,10 @@
 -elibc_musl
 elibc_glibc
 
+# Marco Genasci <fedeliallalinea@gmail.com> (2022-01-06)
+# Pulls dev-db/oracle-instantclient which doesn't work on musl
+oracle
+
 # Musl doesn't have support for utmp/wtmp by design
 utmp
 wtmp

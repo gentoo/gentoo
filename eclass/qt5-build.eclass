@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qt5-build.eclass
@@ -490,13 +490,6 @@ qt5_base_configure() {
 		-testsdir "${QT5_TESTSDIR}"
 
 		# force appropriate compiler
-		$(if use kernel_FreeBSD; then
-			if tc-is-gcc; then
-				echo -platform freebsd-g++
-			elif tc-is-clang; then
-				echo -platform freebsd-clang
-			fi
-		fi)
 		$(if use kernel_linux; then
 			if tc-is-gcc; then
 				echo -platform linux-g++

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,10 +12,11 @@ SLOT="0/${PV}"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="test? ( ocamlopt )"
 
 RDEPEND=">=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?]"
 DEPEND="${RDEPEND}
-	test? ( dev-ml/findlib )"
+	dev-ml/findlib"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.14.0-Disable-tests-failing-with-OCaml-4.08.0.patch

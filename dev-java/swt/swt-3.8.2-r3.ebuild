@@ -15,8 +15,7 @@ SRC_URI="
 	amd64? ( ${MY_DMF}/${MY_P}-gtk-linux-x86_64.zip )
 	ppc? ( ${MY_DMF}/${MY_P}-gtk-linux-x86.zip )
 	ppc64? ( ${MY_DMF}/${MY_P}-gtk-linux-ppc64.zip )
-	x86? ( ${MY_DMF}/${MY_P}-gtk-linux-x86.zip )
-	x86-fbsd? ( ${MY_DMF}/${MY_P}-gtk-linux-x86.zip )"
+	x86? ( ${MY_DMF}/${MY_P}-gtk-linux-x86.zip )"
 
 LICENSE="CPL-1.0 LGPL-2.1 MPL-1.1"
 SLOT="3.8"
@@ -135,7 +134,6 @@ src_compile() {
 src_install() {
 	swtArch=${ARCH}
 	use amd64 && swtArch=x86_64
-	use x86-fbsd && swtArch=x86
 
 	sed "s/SWT_ARCH/${swtArch}/" "${FILESDIR}/${PN}-${SLOT}-manifest" > "MANIFEST_TMP.MF" || die
 	use cairo || sed -i -e "/ org.eclipse.swt.internal.cairo; x-internal:=true,/d" "MANIFEST_TMP.MF"

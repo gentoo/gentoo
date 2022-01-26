@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,14 +16,14 @@ if [[ ${PV} = *_rc* ]]; then
 	SRC_URI="mirror://samba/rc/${MY_P}.tar.gz"
 else
 	SRC_URI="mirror://samba/stable/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="acl addc ads ceph client cluster cups debug dmapi fam glusterfs
-gpg iprint json ldap pam profiling-data python quota +regedit selinux
+IUSE="acl addc ads ceph client cluster cpu_flags_x86_aes cups debug dmapi fam
+glusterfs gpg iprint json ldap pam profiling-data python quota +regedit selinux
 snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test winbind
 zeroconf"
 
@@ -210,6 +210,7 @@ multilib_src_configure() {
 		--nopyc
 		--nopyo
 		--without-winexe
+		--accel-aes=$(usex cpu_flags_x86_aes intelaesni none)
 		$(multilib_native_use_with acl acl-support)
 		$(multilib_native_usex addc '' '--without-ad-dc')
 		$(multilib_native_use_with ads)

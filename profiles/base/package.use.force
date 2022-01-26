@@ -1,5 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-01-13)
+# Force to use installed openjdk{,-bin} for bootstrapping
+dev-java/openjdk:11 system-bootstrap
+dev-java/openjdk:17 system-bootstrap
+
+# Joonas Niilola <juippis@gentoo.org> (2022-01-08)
+# -xft broken, investigate in bug #830777
+~x11-misc/xscreensaver-6.02 xft
 
 # Michał Górny <mgorny@gentoo.org> (2021-11-04)
 # Enable all LLVM targets unconditionally.  Unfortunately, disabling

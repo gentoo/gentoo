@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit toolchain-funcs python-any-r1
 
@@ -20,7 +20,7 @@ if [[ ${PV} == *9999* || -n "${EGIT_COMMIT}" ]] ; then
 	EGIT_REPO_URI="git://git.seabios.org/seabios.git"
 	inherit git-r3
 else
-	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sparc x86"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 	SRC_URI="
 		!binary? ( https://www.seabios.org/downloads/${P}.tar.gz )

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ MY_PN="${PN/-/.}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Dependency injection for Java (JSR-330)"
-HOMEPAGE="https://code.google.com/p/atinject/"
+HOMEPAGE="https://github.com/javax-inject/javax-inject"
 SRC_URI="http://central.maven.org/maven2/javax/inject/${MY_PN}/${PV}/${MY_P}-sources.jar -> ${P}.jar"
 
 LICENSE="Apache-2.0"

@@ -12,4 +12,6 @@ depend() {
 
 start_pre() {
 	checkpath -d -m 0755 /var/lib/gssproxy
+	checkpath -d -m 0700 /var/lib/gssproxy/clients
+	checkpath -d -m 0700 /var/lib/gssproxy/rcache
 }

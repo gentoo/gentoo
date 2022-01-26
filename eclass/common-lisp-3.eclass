@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: common-lisp-3.eclass
@@ -167,13 +167,11 @@ common-lisp-install-asdf() {
 
 # @FUNCTION: common-lisp-3_src_install
 # @DESCRIPTION:
-# Recursively install Lisp sources, asdf files and most common doc files.
+# Recursively install Lisp sources, asdf files and doc files.
 common-lisp-3_src_install() {
 	common-lisp-install-sources .
 	common-lisp-install-asdf
-	for i in AUTHORS README* HEADER TODO* CHANGELOG Change[lL]og CHANGES BUGS CONTRIBUTORS *NEWS* ; do
-		[[ -f ${i} ]] && dodoc ${i}
-	done
+	einstalldocs
 }
 
 # @FUNCTION: common-lisp-find-lisp-impl

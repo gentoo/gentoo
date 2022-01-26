@@ -1,6 +1,35 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ulrich Müller <ulm@gentoo.org> (2022-01-25)
+# Binary package linked to glibc
+media-gfx/brscan4
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-01-22)
+# Binary packages linked to glibc
+app-backup/tsm
+sci-electronics/labone
+
+# Marco Genasci <fedeliallalinea@gmail.com> (2022-01-06)
+# dev-db/oracle-instantclient package linked against glibc,
+# and the other packages depends on it.
+dev-db/oracle-instantclient
+dev-db/oracle-instantclient-basic
+dev-db/oracle-instantclient-jdbc
+dev-db/oracle-instantclient-odbc
+dev-db/oracle-instantclient-sqlplus
+dev-db/ocp
+dev-db/sqlcl-bin
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-01-05)
+# Binary package linked to glibc
+app-text/zotero-bin
+
+# Ulrich Müller <ulm@gentoo.org> (2022-01-04)
+# Emacs 23 does not support x86_64-gentoo-linux-musl systems
+# (bug #830408)
+app-editors/emacs:23
+
 # Marek Szuba <marecki@gentoo.org> (2022-01-01)
 # Binary-only package linked against glibc.
 app-crypt/rainbowcrack

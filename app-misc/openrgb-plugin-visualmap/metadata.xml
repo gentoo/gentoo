@@ -10,6 +10,6 @@
 		<name>Alexey Sokolov</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="gitlab">OpenRGBDevelopers/OpenRGBEffectsPlugin</remote-id>
+		<remote-id type="gitlab">OpenRGBDevelopers/OpenRGBVisualMapPlugin</remote-id>
 	</upstream>
 </pkgmetadata>

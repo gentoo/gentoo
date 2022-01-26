@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,9 +36,6 @@ arch_binaries="$arch_binaries amd64? ( https://slyfox.uni.cx/~slyfox/distfiles/g
 #arch_binaries="$arch_binaries ppc64? ( !big-endian? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-powerpc64le-unknown-linux-gnu.tbz2 ) )"
 #arch_binaries="$arch_binaries sparc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-sparc.tbz2 )"
 arch_binaries="$arch_binaries x86? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-i686-pc-linux-gnu.tbz2 )"
-
-# various ports:
-#arch_binaries="$arch_binaries x86-fbsd? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-x86-fbsd.tbz2 )"
 
 # 0 - yet
 yet_binary() {

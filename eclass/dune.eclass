@@ -50,7 +50,7 @@ dune_src_compile() {
 
 dune_src_test() {
 	ebegin "Testing"
-	dune runtest
+	dune runtest --profile release
 	eend $? || die
 }
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,8 +22,7 @@ HOMEPAGE="https://git.kernel.org/pub/scm/network/wireless/iwd.git/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+client cpu_flags_x86_aes cpu_flags_x86_ssse3 +crda elibc_musl +monitor ofono
-standalone systemd wired"
+IUSE="+client cpu_flags_x86_aes cpu_flags_x86_ssse3 +crda +monitor ofono standalone systemd wired"
 
 DEPEND="
 	sys-apps/dbus

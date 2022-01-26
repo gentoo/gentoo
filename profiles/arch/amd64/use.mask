@@ -1,10 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -amd64
-
-# SECTION: Unmask
 
 # Michał Górny <mgorny@gentoo.org> (2021-01-07)
 # Prebuilt kernels are supported here.
@@ -91,14 +89,6 @@
 -sane_backends_mustek_pp
 -sane_backends_qcam
 
-# Alex Legler <a3li@gentoo.org> (2010-05-03)
-# Add support for Ruby Enterprise Edition targets where rubyee is available
-# -ruby_targets_ree18
-
-# Hans de Graaff <graaff@gentoo.org> (2011-10-21)
-# Add support for Rubinius targets where rbx is available
-#-ruby_targets_rbx
-
 # Lilo works on amd64, so ...
 -lilo
 
@@ -153,13 +143,9 @@
 # Unmask as it works on amd64
 -lcd_devices_luise
 
-# SECTION: Unavailable/Broken
-
 # 2004-06-22 - Taken from 2004.0 profile
 # masked
 3dfx
 
 # fdk-aac is already keyworded here
 -fdk
-
-# NOT NECESSARY - SECTION

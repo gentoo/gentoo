@@ -7,8 +7,8 @@
 # Profile IUSE injection (applies only to ebuilds which use EAPI 5 or later)
 IUSE_IMPLICIT="prefix prefix-guest prefix-stack"
 USE_EXPAND_IMPLICIT="ELIBC KERNEL USERLAND"
-USE_EXPAND_VALUES_ELIBC="AIX bionic Cygwin Darwin DragonFly glibc HPUX Interix mingw musl NetBSD OpenBSD SunOS Winnt"
-USE_EXPAND_VALUES_KERNEL="AIX Darwin FreeBSD freemint HPUX linux NetBSD OpenBSD SunOS Winnt"
+USE_EXPAND_VALUES_ELIBC="bionic Cygwin Darwin glibc mingw musl SunOS Winnt"
+USE_EXPAND_VALUES_KERNEL="Darwin linux SunOS Winnt"
 USE_EXPAND_VALUES_USERLAND="BSD GNU"
 
 # Env vars to expand into USE vars.  Modifying this requires prior
@@ -134,11 +134,11 @@ PYTHON_SINGLE_TARGET="python3_9"
 
 # Michał Górny <mgorny@gentoo.org> (2013-08-10)
 # Moved from portage's make.globals.
-# 1) do not uninstall kernel modules and therefore allow replacing them,
+# 1) do not uninstall kernel modules/dtbs and therefore allow replacing them,
 # 2,3) removed wrt bug #663170,
 # 4) protect /var/{run,lock} symlinks for bug 519620
-COLLISION_IGNORE="/lib/modules/*"
-UNINSTALL_IGNORE="/lib/modules/* /var/run /var/lock"
+COLLISION_IGNORE="/boot/dtbs/* /lib/modules/*"
+UNINSTALL_IGNORE="/boot/dtbs/* /lib/modules/* /var/run /var/lock"
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2013-08-23)
 # Make emerge messages default to English as per Council decision
@@ -166,7 +166,7 @@ POSTGRES_TARGETS="postgres12 postgres13"
 # Moreover, it should only contain targets that have a stable version
 # of PHP, to avoid pulling in an unstable PHP on stable systems.
 #
-PHP_TARGETS="php7-3 php7-4"
+PHP_TARGETS="php7-4 php8-0"
 
 # Alfredo Tupone <tupone@gentoo.org> (2019-09-03)
 #

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,6 +30,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}2-inbuf.patch
 	"${FILESDIR}"/${PN}-3.0.5-fno-common.patch
+	"${FILESDIR}"/${PN}-3.0.5-disable-ssl.patch
 )
 DOCS="AUTHORS ChangeLog README NEWS doc/*.txt doc/README"
 

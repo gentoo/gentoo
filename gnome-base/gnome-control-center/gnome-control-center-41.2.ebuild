@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,6 +9,7 @@ inherit gnome.org gnome2-utils meson python-any-r1 xdg
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-control-center"
 SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${PF}-patchset.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-meson-0.61-build.patch.bz2"
 
 LICENSE="GPL-2+"
 SLOT="2"
@@ -124,6 +125,9 @@ PATCHES=(
 	# https://bugzilla.gnome.org/686840, 697478, 700145
 	# Fix some absolute paths to be appropriate for Gentoo
 	"${WORKDIR}"/patches/
+
+	# bug #831435
+	"${WORKDIR}"/${P}-meson-0.61-build.patch
 )
 
 python_check_deps() {

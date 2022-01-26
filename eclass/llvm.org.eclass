@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm.org.eclass
@@ -294,6 +294,14 @@ llvm.org_src_unpack() {
 			"${WORKDIR}/llvm-gentoo-patchset-${LLVM_PATCHSET}" |
 			xargs rm
 		assert
+
+		if ver_test -ge 13.0.1_rc3; then
+			# fail if no patches remain
+			if [[ ! -s ${WORKDIR}/llvm-gentoo-patchset-${LLVM_PATCHSET} ]]
+			then
+				die "No patches in the patchset apply to the package"
+			fi
+		fi
 	fi
 }
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ HOMEPAGE="https://openmp.llvm.org"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS=""
-IUSE="cuda debug hwloc kernel_linux offload ompt test
+IUSE="cuda debug hwloc offload ompt test
 	llvm_targets_AMDGPU llvm_targets_NVPTX"
 # CUDA works only with the x86_64 ABI
 REQUIRED_USE="

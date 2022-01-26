@@ -1,5 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Joshua Kinard <kumba@gentoo.org> (2022-01-17)
+# Mask USE 'doc' for dev-libs/libcbor to avoid dragging in
+# a massive set of texlive dependencies.  This copies m68k.
+# See Bug #709752.
+dev-libs/libcbor doc
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-17)
 # net-wireless/rtl-sdr not keyworded here
@@ -43,10 +49,6 @@ app-text/enchant voikko
 # No drivers on this architecture support Vulkan
 media-libs/mesa vulkan vulkan-overlay zink
 
-# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
-# Mask until dev-libs/libfido2 is keyworded
-net-misc/openssh security-key
-
 # Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # USE=collab requires unkeyworded net-libs/loudmouth & dev-cpp/asio.
 # USE=grammar requires dev-libs/link-grammar.
@@ -70,11 +72,6 @@ sys-kernel/mips-sources -ip27 -ip28 -ip30
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=opencl that is masked in this profile.
 net-misc/bfgminer adl lm-sensors
-
-# Michał Górny <mgorny@gentoo.org> (2017-06-28)
-# app-misc/dtach is not keyworded, and tests are restricted anyway, so
-# no point in pursuing it right now.
-app-shells/bash-completion test
 
 # Mart Raudsepp <leio@gentoo.org> (2017-05-27)
 # app-pda/libimobiledevice, app-pda/libplist and co not tested

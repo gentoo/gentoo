@@ -1,15 +1,15 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
-inherit autotools epatch
+inherit autotools
 
 MY_PV="${PV//_beta/b}"
 MY_PV="${MY_PV/_p/p}"
 MY_P="${PN}-${MY_PV}"
 
-DESCRIPTION="An automated suite of programs for configuring and maintaining Unix-like computers"
+DESCRIPTION="An suite of programs for configuring and maintaining Unix-like computers"
 HOMEPAGE="http://www.cfengine.org/"
 SRC_URI="http://cfengine.package-repos.s3.amazonaws.com/tarballs/${MY_P}.tar.gz
 	masterfiles? ( http://cfengine.package-repos.s3.amazonaws.com/tarballs/masterfiles-${MY_PV}.tar.gz -> ${PN}-masterfiles-${MY_PV}.tar.gz )"
@@ -22,7 +22,7 @@ IUSE="acl examples libvirt mysql masterfiles postgres +qdbm selinux tokyocabinet
 
 DEPEND="acl? ( virtual/acl )
 	mysql? ( virtual/mysql )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:= )
 	selinux? ( sys-libs/libselinux )
 	tokyocabinet? ( dev-db/tokyocabinet )
 	qdbm? ( dev-db/qdbm )
@@ -39,9 +39,11 @@ REQUIRED_USE="^^ ( qdbm tokyocabinet )"
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/${P}-ifconfig.patch"
+		"${FILESDIR}/${P}-sysmacros.patch"
+	)
 	default
-	epatch "${FILESDIR}/${P}-ifconfig.patch"
-	epatch "${FILESDIR}/${P}-sysmacros.patch"
 	eautoreconf
 }
 
@@ -83,15 +85,15 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	# fix ifconfig path in provided promises
-	find "${D}"/usr/share -name "*.cf" | xargs sed -i "s,/sbin/ifconfig,$(which ifconfig),g"
+	find "${ED}"/usr/share -name "*.cf" | xargs sed -i "s,/sbin/ifconfig,$(which ifconfig),g"
 
 	# Evil workaround for now..
-	mv "${D}"/usr/share/doc/${PN}/ "${D}"/usr/share/doc/${PF}
+	mv "${ED}"/usr/share/doc/${PN}/ "${ED}"/usr/share/doc/${PF}
 
 	dodoc AUTHORS
 
 	if ! use examples; then
-		rm -rf "${D}"/usr/share/doc/${PF}/example*
+		rm -rf "${ED}"/usr/share/doc/${PF}/example*
 	fi
 
 	# Create cfengine working directory
@@ -103,7 +105,7 @@ src_install() {
 	# binaries here. This is the default search location for the
 	# binaries.
 	for bin in promises agent monitord serverd execd runagent key; do
-		dosym /usr/sbin/cf-$bin /var/cfengine/bin/cf-$bin
+		dosym ../../../usr/sbin/cf-$bin /var/cfengine/bin/cf-$bin
 	done
 
 	if use masterfiles; then
@@ -130,10 +132,10 @@ pkg_postinst() {
 
 	# Fix old cf-servd, remove it after some releases.
 	local found=0
-	for fname in $(find /etc/runlevels/ -type f -or -type l -name 'cf-servd'); do
+	for fname in $(find "${EROOT}"/etc/runlevels/ -type f -or -type l -name 'cf-servd'); do
 		found=1
-		rm $fname
-		ln -s /etc/init.d/cf-serverd $(echo $fname | sed 's:cf-servd:cf-serverd:')
+		rm "$fname"
+		ln -s /etc/init.d/cf-serverd $(echo "$fname" | sed 's:cf-servd:cf-serverd:')
 	done
 
 	if [ "${found}" -eq 1 ]; then
@@ -143,7 +145,7 @@ pkg_postinst() {
 }
 
 pkg_config() {
-	if [ "${ROOT}" == "/" ]; then
+	if [[ -z ${ROOT} ]]; then
 		if [ ! -f "/var/cfengine/ppkeys/localhost.priv" ]; then
 			einfo "Generating keys for localhost."
 			/usr/sbin/cf-key

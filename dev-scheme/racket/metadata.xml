@@ -5,7 +5,7 @@
     <email>scheme@gentoo.org</email>
     <name>Gentoo Scheme Project</name>
   </maintainer>
-  <longdescription lang="en">
+  <longdescription>
 ==Grow your Program==
 Racket's interactive mode encourages experimentation, and quick scripts easily compose into larger systems. Small scripts and large systems both benefit from native-code JIT compilation. When a system gets too big to keep in your head, you can add static types.
 

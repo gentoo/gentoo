@@ -10,7 +10,6 @@
 		<name>Thomas Deutschmann</name>
 	</maintainer>
 	<use>
-		<flag name="agent">Enable update notification agent</flag>
 		<flag name="archive">Use <pkg>app-arch/libarchive</pkg> for archives support</flag>
 		<flag name="amt">Build and install Intel AMT plugin</flag>
 		<flag name="dell">Enable Dell-specific support</flag>

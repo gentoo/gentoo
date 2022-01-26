@@ -1,9 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+PYTHON_COMPAT=( python3_{8..10} )
 VALA_MIN_API_VERSION="0.40"
-inherit gnome.org gnome2-utils meson xdg vala
+inherit gnome.org gnome2-utils meson python-any-r1 xdg vala
 
 DESCRIPTION="Turn off all the lights"
 HOMEPAGE="https://wiki.gnome.org/Apps/Lightsoff"
@@ -21,6 +22,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 # libxml2:2 needed for glib-compile-resources xml-stripblanks attributes
 BDEPEND="
+	${PYTHON_DEPS}
 	dev-libs/appstream-glib
 	dev-libs/libxml2:2
 	dev-util/itstool

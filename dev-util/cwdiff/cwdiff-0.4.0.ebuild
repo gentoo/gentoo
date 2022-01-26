@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/junghans/${PN}.git"
@@ -18,11 +18,8 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="mercurial"
 
-DEPEND="sys-apps/help2man
-	sys-apps/coreutils"
+BDEPEND="sys-apps/help2man"
 RDEPEND="
-	sys-apps/sed
-	app-shells/bash
 	app-text/wdiff
 	sys-apps/diffutils
 	mercurial? ( dev-vcs/mercurial )

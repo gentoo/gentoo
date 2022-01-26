@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Build written by Andrew John Hughes (gnu_andrew@member.fsf.org)
@@ -69,7 +69,7 @@ LICENSE="Apache-1.1 Apache-2.0 GPL-1 GPL-2 GPL-2-with-linking-exception LGPL-2 M
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 IUSE="+alsa cacao +cups doc examples +gtk headless-awt
-	jamvm +jbootstrap kerberos pax-kernel +pch
+	jamvm +jbootstrap kerberos pax-kernel pch
 	pulseaudio sctp selinux shenandoah smartcard +source +system-lcms test zero"
 
 RESTRICT="!test? ( test )"

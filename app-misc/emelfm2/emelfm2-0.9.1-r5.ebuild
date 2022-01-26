@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="http://emelfm2.net/rel/${P}.tar.bz2"
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86"
-IUSE="acl ansi gimp +gtk3 kernel_linux nls policykit spell udisks"
+IUSE="acl ansi gimp +gtk3 nls policykit spell udisks"
 
 REQUIRED_USE="spell? ( !gtk3 )"
 RESTRICT="test"

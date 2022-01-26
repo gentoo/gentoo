@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -84,8 +84,8 @@ src_install() {
 	doins "${FILESDIR}"/psybnc.conf
 
 	keepdir "${PSYBNC_HOME}"/{log,motd,scripts}
-	dosym /usr/share/psybnc/lang "${PSYBNC_HOME}"/lang
-	dosym /usr/share/psybnc/help "${PSYBNC_HOME}"/help
+	dosym ../../../usr/share/psybnc/lang "${PSYBNC_HOME}"/lang
+	dosym ../../../usr/share/psybnc/help "${PSYBNC_HOME}"/help
 
 	fowners psybnc:psybnc "${PSYBNC_HOME}"/{,log,motd,scripts} /etc/psybnc/psybnc.conf
 	fperms 0750 "${PSYBNC_HOME}"/{,log,motd,scripts}
@@ -93,7 +93,7 @@ src_install() {
 
 	if use ssl; then
 		keepdir /etc/psybnc/ssl
-		dosym /etc/psybnc/ssl "${PSYBNC_HOME}"/key
+		dosym ../../../etc/psybnc/ssl "${PSYBNC_HOME}"/key
 	else
 		# Drop SSL listener from psybnc.conf
 		sed -i -e "/^# Default SSL listener$/,+4 d" "${D}"/etc/psybnc/psybnc.conf || die

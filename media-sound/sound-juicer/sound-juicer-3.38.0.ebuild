@@ -1,8 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit gnome2 meson
+PYTHON_COMPAT=( python3_{8..10} )
+inherit python-any-r1 gnome2 meson
 
 DESCRIPTION="CD ripper for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/SoundJuicer"
@@ -10,8 +11,8 @@ HOMEPAGE="https://wiki.gnome.org/Apps/SoundJuicer"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ia64 ppc ppc64 ~riscv ~sparc x86"
-IUSE="flac test vorbis"
-RESTRICT="!test? ( test )"
+IUSE="flac vorbis"
+RESTRICT="test" # only does appdata validation, which fails with network-sandbox
 
 DEPEND="
 	>=dev-libs/glib-2.49.5:2[dbus]
@@ -38,11 +39,12 @@ RDEPEND="${DEPEND}
 	media-plugins/gst-plugins-meta:1.0
 "
 BDEPEND="
+	${PYTHON_DEPS}
+	app-text/docbook-xml-dtd:4.3
 	dev-libs/appstream-glib
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.6
 	virtual/pkgconfig
-	test? ( ~app-text/docbook-xml-dtd-4.3 )
 "
 
 src_prepare() {

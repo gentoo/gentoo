@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,7 +36,7 @@ DEPEND="
 	>=x11-libs/libnotify-0.7.3
 	>=media-sound/pulseaudio-12.99.3[glib]
 	>=sys-auth/polkit-0.114
-	>=sys-power/upower-0.99.8:=
+	>=sys-power/upower-0.99.12:=
 	x11-libs/libX11
 	>=x11-libs/libXfixes-6.0.0
 	udev? ( dev-libs/libgudev:= )
@@ -93,6 +93,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.38.1-build-Make-colord-and-wacom-optional-and-controllabl.patch
 	"${FILESDIR}"/${PN}-3.38.1-build-Allow-NM-optional-on-Linux.patch
 	"${FILESDIR}"/${PN}-3.38.1-Allow-udev-optional-on-Linux.patch
+	"${FILESDIR}"/${P}-meson-0.61-build.patch
 )
 
 python_check_deps() {

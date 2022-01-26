@@ -5,9 +5,6 @@
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 	</maintainer>
-	<use>
-		<flag name="wireshark-plugins">Build the wireshark plugins for bluetooth baseband sniffing</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">greatscottgadgets/libbtbb</remote-id>
 		<remote-id type="sourceforge">libbtbb</remote-id>

@@ -32,7 +32,5 @@
     <flag name="aspell">Uses <pkg>app-text/aspell</pkg> for spell checking.
       Requires an installed dictionary from <cat>app-dicts</cat></flag>
     <flag name="flag">Description of how USE='flag' affects this package</flag>
-    <flag name="userland_GNU">Description of how USERLAND='GNU' affects this
-      package</flag>
   </use>
 </pkgmetadata>

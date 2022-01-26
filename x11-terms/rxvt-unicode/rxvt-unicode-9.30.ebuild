@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,10 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="24-bit-color 256-color blink fading-colors +font-styles gdk-pixbuf iso14755 +mousewheel
-	+perl startup-notification unicode3 xft"
+	perl startup-notification unicode3 xft"
+
+# Bug #830329
+REQUIRED_USE="perl? ( fading-colors )"
 
 RDEPEND=">=sys-libs/ncurses-5.7-r6:=
 	dev-libs/libptytty

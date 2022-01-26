@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -248,7 +248,7 @@ NGINX_MODULES_3RD="
 "
 
 IUSE="aio debug +http +http2 +http-cache +ipv6 libatomic +pcre
-	pcre-jit rtmp selinux ssl threads userland_GNU vim-syntax"
+	pcre-jit rtmp selinux ssl threads vim-syntax"
 
 for mod in $NGINX_MODULES_STD; do
 	IUSE="${IUSE} +nginx_modules_http_${mod}"
@@ -289,9 +289,7 @@ CDEPEND="
 		>=dev-libs/openssl-1.0.1c:0=
 	)
 	http-cache? (
-		userland_GNU? (
-			dev-libs/openssl:0=
-		)
+		dev-libs/openssl:0=
 	)
 	nginx_modules_http_brotli? ( app-arch/brotli:= )
 	nginx_modules_http_geoip? ( dev-libs/geoip )
@@ -302,11 +300,7 @@ CDEPEND="
 	nginx_modules_http_image_filter? ( media-libs/gd:=[jpeg,png] )
 	nginx_modules_http_perl? ( >=dev-lang/perl-5.8:= )
 	nginx_modules_http_rewrite? ( dev-libs/libpcre:= )
-	nginx_modules_http_secure_link? (
-		userland_GNU? (
-			dev-libs/openssl:0=
-		)
-	)
+	nginx_modules_http_secure_link? ( dev-libs/openssl:0= )
 	nginx_modules_http_xslt? ( dev-libs/libxml2:= dev-libs/libxslt )
 	nginx_modules_http_lua? ( ${LUA_DEPS} )
 	nginx_modules_http_auth_pam? ( sys-libs/pam )

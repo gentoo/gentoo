@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,15 +33,65 @@ else
 	fi
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars webp wide-int +X Xaw3d xft +xpm xwidgets zlib"
 RESTRICT="test"
+
+X_DEPEND="x11-libs/libICE
+	x11-libs/libSM
+	x11-libs/libX11
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libXinerama
+	x11-libs/libXrandr
+	x11-libs/libxcb
+	x11-misc/xbitmaps
+	xpm? ( x11-libs/libXpm )
+	xft? (
+		media-libs/fontconfig
+		media-libs/freetype
+		x11-libs/libXft
+		x11-libs/libXrender
+		cairo? ( >=x11-libs/cairo-1.12.18 )
+		harfbuzz? ( media-libs/harfbuzz:0= )
+		m17n-lib? (
+			>=dev-libs/libotf-0.9.4
+			>=dev-libs/m17n-lib-1.5.1
+		)
+	)
+	gtk? (
+		x11-libs/gtk+:3
+		xwidgets? (
+			net-libs/webkit-gtk:4=
+			x11-libs/libXcomposite
+		)
+	)
+	!gtk? (
+		motif? (
+			>=x11-libs/motif-2.3:0
+			x11-libs/libXpm
+			x11-libs/libXmu
+			x11-libs/libXt
+		)
+		!motif? (
+			Xaw3d? (
+				x11-libs/libXaw3d
+				x11-libs/libXmu
+				x11-libs/libXt
+			)
+			!Xaw3d? ( athena? (
+				x11-libs/libXaw
+				x11-libs/libXmu
+				x11-libs/libXt
+			) )
+		)
+	)"
 
 RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	sys-libs/ncurses:0=
@@ -63,60 +113,39 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
-	gui? ( !aqua? (
-		x11-libs/libICE
-		x11-libs/libSM
-		x11-libs/libX11
-		x11-libs/libXext
-		x11-libs/libXfixes
-		x11-libs/libXinerama
-		x11-libs/libXrandr
-		x11-libs/libxcb
-		x11-misc/xbitmaps
-		gconf? ( >=gnome-base/gconf-2.26.2 )
-		gsettings? ( >=dev-libs/glib-2.28.6 )
+	gui? (
 		gif? ( media-libs/giflib:0= )
 		jpeg? ( virtual/jpeg:0= )
 		png? ( >=media-libs/libpng-1.4:0= )
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff:0 )
-		xpm? ( x11-libs/libXpm )
+		webp? ( media-libs/libwebp:0= )
 		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0= )
-		xft? (
-			media-libs/fontconfig
-			media-libs/freetype
-			x11-libs/libXft
-			x11-libs/libXrender
-			cairo? ( >=x11-libs/cairo-1.12.18 )
-			harfbuzz? ( media-libs/harfbuzz:0= )
-			m17n-lib? (
-				>=dev-libs/libotf-0.9.4
-				>=dev-libs/m17n-lib-1.5.1
-			)
-		)
-		gtk? (
-			x11-libs/gtk+:3
-			xwidgets? (
-				net-libs/webkit-gtk:4=
-				x11-libs/libXcomposite
-			)
-		)
-		!gtk? (
-			Xaw3d? (
-				x11-libs/libXaw3d
-				x11-libs/libXmu
-				x11-libs/libXt
-			)
-			!Xaw3d? ( athena? (
-				x11-libs/libXaw
-				x11-libs/libXmu
-				x11-libs/libXt
+		!aqua? (
+			gconf? ( >=gnome-base/gconf-2.26.2 )
+			gsettings? ( >=dev-libs/glib-2.28.6 )
+			gtk? ( !X? (
+				media-libs/fontconfig
+				media-libs/freetype
+				>=x11-libs/cairo-1.12.18
+				x11-libs/gtk+:3
+				harfbuzz? ( media-libs/harfbuzz:0= )
+				m17n-lib? (
+					>=dev-libs/libotf-0.9.4
+					>=dev-libs/m17n-lib-1.5.1
+				)
+				xwidgets? ( net-libs/webkit-gtk:4= )
 			) )
+			!gtk? ( ${X_DEPEND} )
+			X? ( ${X_DEPEND} )
 		)
-	) )"
+	)"
 
 DEPEND="${RDEPEND}
-	gui? ( !aqua? ( x11-base/xorg-proto ) )"
+	gui? ( !aqua? (
+		!gtk? ( x11-base/xorg-proto )
+		X? ( x11-base/xorg-proto )
+	) )"
 
 BDEPEND="sys-apps/texinfo
 	virtual/pkgconfig
@@ -181,25 +210,41 @@ src_configure() {
 		myconf+=" --with-sound=$(usex sound oss)"
 	fi
 
+	# Emacs supports these window systems:
+	# X11, pure GTK (without X11), or Nextstep (Aqua/Cocoa).
+	# General GUI support is enabled by the "gui" USE flag, then
+	# the window system is selected as follows:
+	#   "aqua" -> Nextstep
+	#   "gtk -X" -> pure GTK
+	#   otherwise -> X11
+	# For X11 there is the further choice of toolkits GTK, Motif,
+	# Athena (Lucid), or no toolkit. They are enabled (in order of
+	# preference) with the "gtk", "motif", "Xaw3d", and "athena" flags.
+
 	if ! use gui; then
 		einfo "Configuring to build without window system support"
-		myconf+=" --without-x --without-ns"
+		myconf+=" --without-x --without-pgtk --without-ns"
 	elif use aqua; then
 		einfo "Configuring to build with Nextstep (Macintosh Cocoa) support"
 		myconf+=" --with-ns --disable-ns-self-contained"
-		myconf+=" --without-x"
-	else
-		myconf+=" --with-x --without-ns"
+		myconf+=" --without-x --without-pgtk"
+	elif use gtk && ! use X; then
+		einfo "Configuring to build with pure GTK (without X11) support"
+		myconf+=" --with-pgtk --without-x --without-ns"
 		myconf+=" $(use_with gconf)"
 		myconf+=" $(use_with gsettings)"
 		myconf+=" $(use_with toolkit-scroll-bars)"
-		myconf+=" $(use_with gif)"
-		myconf+=" $(use_with jpeg)"
-		myconf+=" $(use_with png)"
-		myconf+=" $(use_with svg rsvg)"
-		myconf+=" $(use_with tiff)"
+		myconf+=" $(use_with harfbuzz)"
+		myconf+=" $(use_with m17n-lib libotf)"
+		myconf+=" $(use_with m17n-lib m17n-flt)"
+		myconf+=" $(use_with xwidgets)"
+	else
+		# X11
+		myconf+=" --with-x --without-pgtk --without-ns"
+		myconf+=" $(use_with gconf)"
+		myconf+=" $(use_with gsettings)"
+		myconf+=" $(use_with toolkit-scroll-bars)"
 		myconf+=" $(use_with xpm)"
-		myconf+=" $(use_with imagemagick)"
 
 		if use xft; then
 			myconf+=" --with-xft"
@@ -227,13 +272,20 @@ src_configure() {
 				See <https://gitlab.gnome.org/GNOME/gtk/-/issues/221> and
 				<https://gitlab.gnome.org/GNOME/gtk/-/issues/2315>.
 				If you intend to use more than one display, then it is strongly
-				recommended that you compile Emacs with the Athena/Lucid
-				toolkit instead.
+				recommended that you compile Emacs with the Athena/Lucid or the
+				Motif toolkit instead.
 			EOF
 			myconf+=" --with-x-toolkit=gtk3 $(use_with xwidgets)"
-			for f in Xaw3d athena; do
+			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
+			done
+		elif use motif; then
+			einfo "Configuring to build with Motif toolkit"
+			myconf+=" --with-x-toolkit=motif"
+			for f in Xaw3d athena; do
+				use ${f} && ewarn \
+					"USE flag \"${f}\" has no effect if \"motif\" is set."
 			done
 		elif use athena || use Xaw3d; then
 			einfo "Configuring to build with Athena/Lucid toolkit"
@@ -246,6 +298,17 @@ src_configure() {
 			"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
 	fi
 
+	if use gui; then
+		# Common flags recognised for all GUIs
+		myconf+=" $(use_with gif)"
+		myconf+=" $(use_with jpeg)"
+		myconf+=" $(use_with png)"
+		myconf+=" $(use_with svg rsvg)"
+		myconf+=" $(use_with tiff)"
+		myconf+=" $(use_with webp)"
+		myconf+=" $(use_with imagemagick)"
+	fi
+
 	if tc-is-cross-compiler; then
 		# Configure a CBUILD directory when cross-compiling to make tools
 		mkdir "${S}-build" && pushd "${S}-build" >/dev/null || die
@@ -253,6 +316,9 @@ src_configure() {
 		popd >/dev/null || die
 		# Don't try to execute the binary for dumping during the build
 		myconf+=" --with-dumping=none"
+	elif use m68k; then
+		# Workaround for https://debbugs.gnu.org/44531
+		myconf+=" --with-dumping=unexec"
 	else
 		myconf+=" --with-dumping=pdumper"
 	fi

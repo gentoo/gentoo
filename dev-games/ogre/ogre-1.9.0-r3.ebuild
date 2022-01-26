@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_REMOVE_MODULES_LIST="FindFreetype FindDoxygen FindZLIB"
 
-inherit cmake vcs-snapshot
+inherit cmake flag-o-matic vcs-snapshot
 
 DESCRIPTION="Object-oriented Graphics Rendering Engine"
 HOMEPAGE="https://www.ogre3d.org/"
@@ -112,6 +112,11 @@ src_configure() {
 			mycmakeargs+=( -DOGRE_CONFIG_THREAD_PROVIDER=${f} )
 			break
 		done
+	fi
+
+	if use examples ; then
+		# bug #829253
+		append-cxxflags -std=c++14
 	fi
 
 	cmake_src_configure

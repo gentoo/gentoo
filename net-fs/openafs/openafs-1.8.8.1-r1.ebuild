@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -126,8 +126,6 @@ src_configure() {
 			fi
 			myconf+=( --with-linux-kernel-headers="${KV_DIR}" \
 					  --with-linux-kernel-build="${KV_OUT_DIR}" )
-		elif use kernel_FreeBSD; then
-			myconf+=( --with-bsd-kernel-build="${BSD_BUILD_DIR}" )
 		fi
 	fi
 
@@ -186,9 +184,6 @@ src_install() {
 			MODULE_NAMES="libafs(fs/openafs:${srcdir})"
 
 			linux-mod_src_install
-		elif use kernel_FreeBSD; then
-			insinto /boot/modules
-			doins "${S}"/src/libafs/MODLOAD/libafs.ko
 		fi
 	fi
 
@@ -285,7 +280,6 @@ pkg_preinst() {
 pkg_postinst() {
 	if use modules; then
 		# Update linker.hints file
-		use kernel_FreeBSD && /usr/sbin/kldxref "${EPREFIX}/boot/modules"
 		use kernel_linux && linux-mod_pkg_postinst
 	fi
 
@@ -308,7 +302,6 @@ pkg_postinst() {
 pkg_postrm() {
 	if use modules; then
 		# Update linker.hints file
-		use kernel_FreeBSD && /usr/sbin/kldxref "${EPREFIX}/boot/modules"
 		use kernel_linux && linux-mod_pkg_postrm
 	fi
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,12 +16,13 @@ MY_PV=$(ver_rs 2 'b' )
 
 SRC_URI="
 	amd64? ( https://www.mersenne.org/ftp_root/gimps/p95v${MY_PV/./}.linux64.tar.gz -> ${P}.linux64.tar.gz )
+	x86? ( https://www.mersenne.org/ftp_root/gimps/p95v${MY_PV/./}.linux32.tar.gz -> ${P}.linux32.tar.gz )
 	"
 
 SLOT="0"
 LICENSE="GIMPS"
 RESTRICT="mirror bindist"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* ~amd64 ~x86"
 
 # Since there are no statically linked binaries for this version of mprime,
 # and no static binaries for amd64 in general, we use the dynamically linked

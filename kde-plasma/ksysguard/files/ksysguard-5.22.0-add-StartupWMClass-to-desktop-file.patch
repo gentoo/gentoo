@@ -1,0 +1,21 @@
+From 6b0c2ca25571c7d0d2dd94f1f539ba8ed6796347 Mon Sep 17 00:00:00 2001
+From: Shriraj Hegde <shriraj.hegde@gmail.com>
+Date: Wed, 9 Jun 2021 08:21:46 +0000
+Subject: [PATCH] Add StartupWMClass to desktop file
+
+---
+ gui/org.kde.ksysguard.desktop | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gui/org.kde.ksysguard.desktop b/gui/org.kde.ksysguard.desktop
+index 0c59d5b7..feb4f220 100755
+--- a/gui/org.kde.ksysguard.desktop
++++ b/gui/org.kde.ksysguard.desktop
+@@ -224,3 +224,4 @@ StartupNotify=true
+ X-DBUS-StartupType=Multi
+ Categories=Qt;KDE;System;
+ X-DBUS-ServiceName=org.kde.ksysguard
++StartupWMClass=ksysguard
+-- 
+GitLab
+

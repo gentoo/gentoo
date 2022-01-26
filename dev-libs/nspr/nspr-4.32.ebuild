@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="https://archive.mozilla.org/pub/nspr/releases/v${PV}/src/${P}.tar.gz"
 LICENSE="|| ( MPL-2.0 GPL-2 LGPL-2.1 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
-IUSE="debug elibc_musl"
+IUSE="debug"
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/nspr-config
@@ -60,7 +60,7 @@ multilib_src_configure() {
 	# We use the standard BUILD_xxx but nspr uses HOST_xxx
 	tc-export_build_env BUILD_CC
 	export HOST_CC=${BUILD_CC} HOST_CFLAGS=${BUILD_CFLAGS} HOST_LDFLAGS=${BUILD_LDFLAGS}
-	tc-export AR CC CXX RANLIB
+	tc-export AR AS CC CXX RANLIB
 	[[ ${CBUILD} != ${CHOST} ]] \
 		&& export CROSS_COMPILE=1 \
 		|| unset CROSS_COMPILE
@@ -98,6 +98,7 @@ multilib_src_configure() {
 	# Ancient autoconf needs help finding the right tools.
 	LC_ALL="C" ECONF_SOURCE="${S}/nspr" \
 	ac_cv_path_AR="${AR}" \
+	ac_cv_path_AS="${AS}" \
 	econf "${myconf[@]}"
 }
 

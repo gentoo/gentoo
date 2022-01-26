@@ -125,10 +125,6 @@ media-gfx/inkscape cdr visio
 # Requires media-libs/mesa[llvm], which is masked.
 dev-python/pyopengl test
 
-# Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
-# Not keyworded on ia64
-net-misc/whois xcrypt
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-04-20)
 # dev-lang/ruby is not keyworded (a dep)
 app-text/texlive context l10n_ja
@@ -271,11 +267,6 @@ sci-libs/gdal mdb
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-07-20)
 # pulls in unkeyworded lapack
 sci-libs/gdal armadillo
-
-# Michał Górny <mgorny@gentoo.org> (2017-06-28)
-# app-misc/dtach is not keyworded, and tests are restricted anyway, so
-# no point in pursuing it right now.
-app-shells/bash-completion test
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-06-17)
 # Pulls in dev-db/redis which is not keyworded on ia64.
@@ -462,7 +453,7 @@ x11-misc/xscreensaver new-login
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # Mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_fabrics_sctp openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_fabrics_sctp openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Raúl Porcel <armin76@gentoo.org> (2011-11-05)
 # jit not supported on ia64

@@ -10,6 +10,6 @@
 		<name>Alexey Sokolov</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="gitlab">OpenRGBDevelopers/openrgbskinplugin</remote-id>
+		<remote-id type="gitlab">OpenRGBDevelopers/OpenRGBSkinPlugin</remote-id>
 	</upstream>
 </pkgmetadata>

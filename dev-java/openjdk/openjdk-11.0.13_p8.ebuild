@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/${PN}/jdk${SLOT}u-dev/archive/refs/tags/jdk-${MY_PV}
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~arm arm64 ppc64"
 
-IUSE="alsa cups debug doc examples gentoo-vm headless-awt javafx +jbootstrap +pch selinux source systemtap"
+IUSE="alsa cups debug doc examples gentoo-vm headless-awt javafx +jbootstrap pch selinux source systemtap"
 
 COMMON_DEPEND="
 	media-libs/freetype:2=
@@ -269,16 +269,4 @@ src_install() {
 
 pkg_postinst() {
 	java-vm-2_pkg_postinst
-
-	if use gentoo-vm ; then
-		ewarn "WARNING! You have enabled the gentoo-vm USE flag, making this JDK"
-		ewarn "recognised by the system. This will almost certainly break"
-		ewarn "many java ebuilds as they are not ready for openjdk-11"
-	else
-		ewarn "The experimental gentoo-vm USE flag has not been enabled so this JDK"
-		ewarn "will not be recognised by the system. For example, simply calling"
-		ewarn "\"java\" will launch a different JVM. This is necessary until Gentoo"
-		ewarn "fully supports Java ${SLOT}. This JDK must therefore be invoked using its"
-		ewarn "absolute location under ${EPREFIX}/usr/$(get_libdir)/${PN}-${SLOT}."
-	fi
 }

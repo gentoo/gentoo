@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -74,7 +74,7 @@ src_unpack() {
 
 src_install() {
 	local dest="/opt/${P}"
-	local ddest="${ED%/}/${dest#/}"
+	local ddest="${ED}/${dest#/}"
 
 	# on macOS if they would exist they would be called .dylib, but most
 	# importantly, there are no different providers, so everything
@@ -121,16 +121,4 @@ src_install() {
 
 pkg_postinst() {
 	java-vm-2_pkg_postinst
-
-	if use gentoo-vm ; then
-		ewarn "WARNING! You have enabled the gentoo-vm USE flag, making this JDK"
-		ewarn "recognised by the system. This will almost certainly break"
-		ewarn "many java ebuilds as they are not ready for openjdk-11"
-	else
-		ewarn "The experimental gentoo-vm USE flag has not been enabled so this JDK"
-		ewarn "will not be recognised by the system. For example, simply calling"
-		ewarn "\"java\" will launch a different JVM. This is necessary until Gentoo"
-		ewarn "fully supports Java 11. This JDK must therefore be invoked using its"
-		ewarn "absolute location under ${EPREFIX}/opt/${P}."
-	fi
 }

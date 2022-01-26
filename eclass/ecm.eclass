@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ecm.eclass
@@ -312,6 +312,55 @@ _ecm_strip_handbook_translations() {
 	done
 }
 
+# @FUNCTION: _ecm_punt_kfqt_module
+# @INTERNAL
+# @USAGE: <prefix> <dependency>
+# @DESCRIPTION:
+# Removes a specified dependency from a find_package call with multiple
+# components.
+_ecm_punt_kfqt_module() {
+	local prefix=${1}
+	local dep=${2}
+
+	[[ ! -e "CMakeLists.txt" ]] && return
+
+	# FIXME: dep=WebKit will result in 'Widgets' over 'WebKitWidgets' (no regression)
+	pcregrep -Mni "(?s)find_package\s*\(\s*${prefix}(\d+|\\$\{\w*\})[^)]*?${dep}.*?\)" \
+		CMakeLists.txt > "${T}/bogus${dep}"
+
+	# pcregrep returns non-zero on no matches/error
+	[[ $? -ne 0 ]] && return
+
+	local length=$(wc -l "${T}/bogus${dep}" | cut -d " " -f 1)
+	local first=$(head -n 1 "${T}/bogus${dep}" | cut -d ":" -f 1)
+	local last=$(( length + first - 1))
+
+	sed -e "${first},${last}s/${dep}//" -i CMakeLists.txt || die
+
+	if [[ ${length} -eq 1 ]] ; then
+		sed -e "/find_package\s*(\s*${prefix}\([0-9]\|\${[A-Z0-9_]*}\)\(\s\+\(REQUIRED\|CONFIG\|COMPONENTS\|\${[A-Z0-9_]*}\)\)\+\s*)/Is/^/# '${dep}' removed by ecm.eclass - /" \
+			-i CMakeLists.txt || die
+	fi
+}
+
+# @FUNCTION: ecm_punt_kf_module
+# @USAGE: <modulename>
+# @DESCRIPTION:
+# Removes a Frameworks (KF - matching any single-digit version)
+# module from a find_package call with multiple components.
+ecm_punt_kf_module() {
+	_ecm_punt_kfqt_module kf ${1}
+}
+
+# @FUNCTION: ecm_punt_qt_module
+# @USAGE: <modulename>
+# @DESCRIPTION:
+# Removes a Qt (matching any single-digit version) module from a
+# find_package call with multiple components.
+ecm_punt_qt_module() {
+	_ecm_punt_kfqt_module qt ${1}
+}
+
 # @FUNCTION: ecm_punt_bogus_dep
 # @USAGE: <prefix> <dependency>
 # @DESCRIPTION:
@@ -379,8 +428,8 @@ ecm_src_prepare() {
 		cmake_comment_add_subdirectory ${ECM_HANDBOOK_DIR}
 
 		if [[ ${ECM_HANDBOOK} = forceoptional ]] ; then
-			ecm_punt_bogus_dep KF5 DocTools
-			sed -i -e "/kdoctools_install/ s/^/#DONT/" CMakeLists.txt || die
+			ecm_punt_kf_module DocTools
+			sed -i -e "/kdoctools_install/I s/^/#DONT/" CMakeLists.txt || die
 		fi
 	fi
 
@@ -404,20 +453,20 @@ ecm_src_prepare() {
 	# only build unit tests when required
 	if ! { in_iuse test && use test; } ; then
 		if [[ ${ECM_TEST} = forceoptional ]] ; then
-			ecm_punt_bogus_dep Qt5 Test
+			ecm_punt_qt_module Test
 			# if forceoptional, also cover non-kde categories
 			cmake_comment_add_subdirectory autotests test tests
 		elif [[ ${ECM_TEST} = forceoptional-recursive ]] ; then
-			ecm_punt_bogus_dep Qt5 Test
+			ecm_punt_qt_module Test
 			local f pf="${T}/${P}"-tests-optional.patch
 			touch ${pf} || die "Failed to touch patch file"
 			for f in $(find . -type f -name "CMakeLists.txt" -exec \
-				grep -l "^\s*add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)" {} \;); do
+				grep -li "^\s*add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)" {} \;); do
 				cp ${f} ${f}.old || die "Failed to prepare patch origfile"
 				pushd ${f%/*} > /dev/null || die
-					ecm_punt_bogus_dep Qt5 Test
+					ecm_punt_qt_module Test
 					sed -i CMakeLists.txt -e \
-						"/^#/! s/add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)/if(BUILD_TESTING)\n&\nendif()/" \
+						"/^#/! s/add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)/if(BUILD_TESTING)\n&\nendif()/I" \
 						|| die
 				popd > /dev/null || die
 				diff -Naur ${f}.old ${f} 1>>${pf}

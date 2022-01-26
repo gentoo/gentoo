@@ -25,7 +25,7 @@
 # Since Go programs are statically linked, it is important that your ebuild's
 # LICENSE= setting includes the licenses of all statically linked
 # dependencies. So please make sure it is accurate.
-# You can use a utility like dev-util/golicense (network connectivity is
+# You can use a utility like dev-go/golicense (network connectivity is
 # required) to extract this information from the compiled binary.
 #
 # @EXAMPLE:

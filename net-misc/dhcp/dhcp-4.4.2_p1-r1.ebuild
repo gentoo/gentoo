@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ SRC_URI="ftp://ftp.isc.org/isc/dhcp/${MY_P}.tar.gz
 LICENSE="MPL-2.0 BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="+client ipv6 kernel_linux ldap selinux +server ssl vim-syntax"
+IUSE="+client ipv6 ldap selinux +server ssl vim-syntax"
 
 DEPEND="
 	acct-group/dhcp

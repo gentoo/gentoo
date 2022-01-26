@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -41,7 +41,7 @@ src_prepare() {
 		-e "s:/X11R6::" \
 		conf/linux || die
 	sed -i -e "s:head -1:head -n 1:" util/build || die
-	epatch "${FILESDIR}"/${P}-gcc-4.1.patch
+	eapply "${FILESDIR}"/${P}-gcc-4.1.patch
 
 	# fix possible buffer overflow (bug #339539)
 	sed -i -e "s:fgets(buf, BSIZE_SP:fgets(buf, sizeof(buf):g" \
@@ -62,7 +62,7 @@ src_install() {
 	# install binaries
 	dobin obj/bin/{spice3,nutmeg,sconvert,multidec,proc2mod}
 	newbin obj/bin/help spice.help
-	dosym /usr/bin/spice3 /usr/bin/spice
+	dosym spice3 /usr/bin/spice
 	# install runtime stuff
 	rm -f lib/make*
 	dodir /usr/$(get_libdir)/spice

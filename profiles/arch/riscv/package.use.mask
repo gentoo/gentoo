@@ -1,6 +1,17 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Yongxinag Liang <tanekliang@gmail.com> (2022-01-09)
+# app-emulation/xen-tools doesn't support riscv yet
+app-emulation/qemu xen
+# untested useflag: rbd glusterfs
+app-emulation/qemu rbd glusterfs
+sys-fs/multipath-tools rbd
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-16)
+# requires sys-apps/dbus-broker, which is keyworded here.
+sys-apps/systemd -hostnamed-fallback
+
 # Andrey Grozin <grozin@gentoo.org> (2022-01-03)
 # dev-libs/utfcpp is not keyworded yet
 media-gfx/asymptote lsp
@@ -84,11 +95,6 @@ dev-python/nbconvert test
 #  sys-apps/flashrom no risc-v support, bug 810880
 #  sys-apps/flashrom USE=introspection fail to build, bug 811321
 sys-apps/fwupd flashrom introspection spi uefi
-
-# Marek Szuba <marecki@gentoo.org> (2021-08-25)
-# sys-fabric/infinipath-psm does not support riscv
-sys-cluster/openmpi openmpi_fabrics_psm
-sys-fabric/ofed ofed_drivers_psm
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-23)
 # sys-cluster/ceph not keyworded here yet due to several dependencies

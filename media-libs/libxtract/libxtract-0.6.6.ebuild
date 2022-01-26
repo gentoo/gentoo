@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 DESCRIPTION="A simple, portable, lightweight library of audio feature extraction functions"
 HOMEPAGE="https://github.com/jamiebullock/LibXtract"
@@ -10,23 +10,24 @@ SRC_URI="https://github.com/downloads/jamiebullock/LibXtract/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ppc64 x86"
-IUSE="doc fftw static-libs"
+IUSE="doc fftw"
 
 RDEPEND="fftw? ( sci-libs/fftw:3.0 )"
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-doc/doxygen[dot] )"
 
 src_configure() {
 	econf \
-		$(use_enable fftw fft) \
-		$(use_enable static-libs static)
+		$(use_enable fftw fft)
 	# Prevent doc from being generated automagically
-	use doc || touch doc/doxygen-build.stamp
+	if ! use doc; then
+		touch doc/doxygen-build.stamp || die
+	fi
 }
 
 src_install() {
 	emake DESTDIR="${D}" install
-	find "${ED}" -name "*.la" -delete
+	find "${ED}" -name "*.la" -delete || die
 	dodoc README.md TODO AUTHORS
-	use doc && dohtml doc/html/*
+	use doc && dodoc -r doc/html/.
 }

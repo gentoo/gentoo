@@ -97,7 +97,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	if [[ ! -z ${PATCH_VER} ]] ; then
+	if [[ -n ${PATCH_VER} ]] ; then
 		# Use upstream patch to enable development mode
 		rm -v "${WORKDIR}/patch"/0000-Gentoo-Git-is-development.patch || die
 

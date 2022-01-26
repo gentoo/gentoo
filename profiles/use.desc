@@ -299,7 +299,7 @@ startup-notification - Enable application startup event feedback mechanism
 static - !!do not set this during bootstrap!! Causes binaries to be statically linked instead of dynamically
 static-libs - Build static versions of dynamic libraries as well
 subversion - Enable subversion (version control system) support
-suid - Enable setuid root program, with potential security risks
+suid - Enable setuid root program(s)
 svg - Add support for SVG (Scalable Vector Graphics)
 svga - Add support for SVGAlib (graphics library)
 symlink - Force kernel ebuilds to automatically update the /usr/src/linux symlink

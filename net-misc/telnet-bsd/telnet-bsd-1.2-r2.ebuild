@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,15 +32,6 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoreconf
-}
-
-src_configure() {
-	# FreeBSD doesn't seem to support PIE neither does hppa
-	if use kernel_FreeBSD; then
-		export libc_cv_fpie="no"
-	fi
-
-	econf
 }
 
 src_compile() {

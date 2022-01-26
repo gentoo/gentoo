@@ -15,8 +15,8 @@
 	</maintainer>
 	<longdescription>
 		The original GIS, yes the first one, developed by the US
-		Army Corp of Engineers, now an active open source GIS. See the GRASS Documentation
-		Project for more info http://grass.itc.it/gdp/index.php
+		Army Corp of Engineers, now an active free and open source GIS. See the GRASS Documentation
+		Project for more info https://grass.osgeo.org/.
 	</longdescription>
 	<use>
 		<flag name="geos">Use <pkg>sci-libs/geos</pkg> for v.buffer and adds extended options to the v.select module</flag>

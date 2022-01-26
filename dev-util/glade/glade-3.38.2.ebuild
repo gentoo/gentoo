@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -50,6 +50,9 @@ PATCHES=(
 	# To avoid file collison with other slots, rename help module.
 	# Prevent the UI from loading glade:3's gladeui devhelp documentation.
 	"${FILESDIR}"/${PN}-3.14.1-doc-version.patch
+
+	# https://bugs.gentoo.org/831453
+	"${FILESDIR}"/glade-3.38.2-meson-0.61.patch
 )
 
 pkg_setup() {

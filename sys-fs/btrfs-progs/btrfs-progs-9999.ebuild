@@ -1,4 +1,4 @@
-# Copyright 2008-2021 Gentoo Authors
+# Copyright 2008-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ LICENSE="GPL-2"
 SLOT="0/${libbtrfs_soname}"
 IUSE="+convert doc python reiserfs static static-libs +zstd"
 
-RESTRICT=test # tries to mount repared filesystems
+RESTRICT="test" # tries to mount repaired filesystems
 
 RDEPEND="
 	dev-libs/lzo:2=
@@ -45,7 +45,7 @@ RDEPEND="
 	zstd? ( app-arch/zstd:0= )
 "
 DEPEND="${RDEPEND}
-	>=sys-kernel/linux-headers-5.10
+	>=sys-kernel/linux-headers-5.11
 	convert? ( sys-apps/acl )
 	python? (
 		$(python_gen_cond_dep '
@@ -74,7 +74,7 @@ BDEPEND="
 "
 
 if [[ ${PV} == 9999 ]]; then
-	DEPEND+=" sys-devel/gnuconfig"
+	BDEPEND+=" sys-devel/gnuconfig"
 fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -91,8 +91,8 @@ src_prepare() {
 		local automakedir="$(autotools_run_tool --at-output automake --print-libdir)"
 		[[ -e ${automakedir} ]] || die "Could not locate automake directory"
 		ln -s "${automakedir}"/install-sh config/install-sh || die
-		ln -s "${EPREFIX}"/usr/share/gnuconfig/config.guess config/config.guess || die
-		ln -s "${EPREFIX}"/usr/share/gnuconfig/config.sub config/config.sub || die
+		ln -s "${BROOT}"/usr/share/gnuconfig/config.guess config/config.guess || die
+		ln -s "${BROOT}"/usr/share/gnuconfig/config.sub config/config.sub || die
 	fi
 }
 
@@ -107,6 +107,7 @@ src_configure() {
 		$(use_enable zstd)
 		--with-convert=ext2$(usex reiserfs ',reiserfs' '')
 	)
+
 	econf "${myeconfargs[@]}"
 }
 
@@ -119,8 +120,11 @@ src_install() {
 		$(usex python install_python '')
 		$(usex static install-static '')
 	)
+
 	emake V=1 DESTDIR="${D}" install "${makeargs[@]}"
+
 	newbashcomp btrfs-completion btrfs
+
 	use python && python_optimize
 
 	# install prebuilt subset of manuals
