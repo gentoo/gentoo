@@ -127,6 +127,7 @@ arm64		default/linux/arm64/17.0/big-endian		exp
 # HPPA Profiles
 # @MAINTAINER: hppa@gentoo.org
 hppa		default/linux/hppa/17.0				stable
+hppa		default/linux/hppa/17.0/systemd			exp
 hppa		default/linux/hppa/17.0/desktop			stable
 hppa		default/linux/hppa/17.0/developer		exp
 
