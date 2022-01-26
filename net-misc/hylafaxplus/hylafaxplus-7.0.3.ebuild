@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_PN="${PN/plus/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Enterprise client-server fax package for class 1 and 2 fax modems"
-HOMEPAGE="http://hylafax.sourceforge.net"
+HOMEPAGE="https://hylafax.sourceforge.io/"
 SRC_URI="mirror://sourceforge/hylafax/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
