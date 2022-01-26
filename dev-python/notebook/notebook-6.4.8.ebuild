@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64"
 
 RDEPEND="
 	>=dev-libs/mathjax-2.4
