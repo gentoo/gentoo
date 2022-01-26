@@ -20,7 +20,7 @@ SRC_URI="https://github.com/grosser/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/bundler )"
