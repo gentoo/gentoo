@@ -266,10 +266,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 BDEPEND=">=virtual/rust-1.56"
-DEPEND="
-	>=dev-libs/libgit2-1.2.0:=
-	dev-libs/openssl:0=
-"
+DEPEND=">=dev-libs/libgit2-1.2.0:="
 RDEPEND="${DEPEND}"
 
 QA_FLAGS_IGNORED="usr/bin/starship"
