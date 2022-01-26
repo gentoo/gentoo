@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools optfeature xdg-utils
 
 DESCRIPTION="Another free touch typing tutor program"
-HOMEPAGE="https://klavaro.sourceforge.net/"
+HOMEPAGE="https://klavaro.sourceforge.io/"
 SRC_URI="mirror://sourceforge/project/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
