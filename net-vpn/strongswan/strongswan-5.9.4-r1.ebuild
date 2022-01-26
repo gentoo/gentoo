@@ -282,15 +282,10 @@ pkg_postinst() {
 		elog "This imposes several limitations mainly to the IKEv1 daemon 'pluto'"
 		elog "but also a few to the IKEv2 daemon 'charon'."
 		elog
-		elog "Please carefully read: http://wiki.strongswan.org/wiki/nonRoot"
+		elog "Please carefully read: http://wiki.strongswan.org/projects/strongswan/wiki/ReducedPrivileges"
 		elog
-		elog "pluto uses a helper script by default to insert/remove routing and"
-		elog "policy rules upon connection start/stop which requires superuser"
-		elog "privileges. charon in contrast does this internally and can do so"
-		elog "even with reduced (user) privileges."
-		elog
-		elog "Thus if you require IKEv1 (pluto) or need to specify a custom updown"
-		elog "script to pluto or charon which requires superuser privileges, you"
+		elog "Thus if you require to specify a custom updown"
+		elog "script to charon which requires superuser privileges, you"
 		elog "can work around this limitation by using sudo to grant the"
 		elog "user \"ipsec\" the appropriate rights."
 		elog "For example (the default case):"
