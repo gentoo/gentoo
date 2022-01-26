@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,6 +15,10 @@ LICENSE="public-domain"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
+	|| (
+		>=sys-devel/gcc-4.2:*[openmp]
+		sys-devel/clang-runtime:*[openmp]
+	)
 	dev-libs/gmp:0=
 	sci-mathematics/gmp-ecm"
 RDEPEND="${DEPEND}"

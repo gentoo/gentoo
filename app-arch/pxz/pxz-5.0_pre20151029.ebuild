@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jnovy/pxz/archive/fcfea93957d96b7661d1439cf4b767ecfd
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux"
 IUSE=""
 
 # needs the library from xz-utils
@@ -26,4 +26,8 @@ src_prepare() {
 	export BINDIR="${EPREFIX}"/usr/bin
 	export MANDIR="${EPREFIX}"/usr/share/man
 	default_src_prepare
+
+	if use elibc_musl ; then
+	    sed -i -e '/<error.h>/c\#define error(R,E,S,...) fprintf(stderr, S "\\n", ##__VA_ARGS__); exit(R)' pxz.c
+	fi
 }

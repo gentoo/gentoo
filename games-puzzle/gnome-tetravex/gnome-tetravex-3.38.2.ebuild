@@ -29,6 +29,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.38.2-meson-0.61.patch
+)
+
 src_prepare() {
 	xdg_src_prepare
 	vala_src_prepare

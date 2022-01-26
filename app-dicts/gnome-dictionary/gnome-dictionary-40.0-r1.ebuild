@@ -29,6 +29,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-meson-0.61.patch
+)
+
 src_configure() {
 	# Replicate what a release buildtype would set, as we use -Dbuildtype=plain
 	append-cflags -DG_DISABLE_ASSERT -DG_DISABLE_CHECKS -DG_DISABLE_CAST_CHECKS

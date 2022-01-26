@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-01-26)
+# Various unstable dependencies
+sys-apps/systemd fido2 http nat policykit qrcode xkb
+
 # Sam James <sam@gentoo.org> (2022-01-20)
 # net-misc/pps-tools is not marked stable on HPPA
 net-misc/chrony pps

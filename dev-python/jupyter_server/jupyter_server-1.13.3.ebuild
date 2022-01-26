@@ -42,9 +42,13 @@ BDEPEND="
 		dev-python/pytest-console-scripts[${PYTHON_USEDEP}]
 	)"
 
-# TODO: Package 'myst_parser'
-# distutils_enable_sphinx docs/source
-# 	dev-python/pydata-sphinx-theme
+distutils_enable_sphinx docs/source \
+	dev-python/pydata-sphinx-theme \
+	dev-python/myst_parser \
+	dev-python/ipython \
+	dev-python/sphinxemoji \
+	dev-python/sphinxcontrib_github_alt \
+	dev-python/sphinxcontrib-openapi
 distutils_enable_tests --install pytest
 
 python_prepare_all() {

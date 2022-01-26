@@ -79,6 +79,10 @@ fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+PATCHES=(
+	"${FILESDIR}"/5.16-linux-headers-before-5.11.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }

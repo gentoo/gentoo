@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,20 @@ distutils_enable_sphinx docs \
 	dev-python/sphinx-py3doc-enhanced-theme
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# attempts to install packages via pip (network)
-	tests/test_pytest_cov.py::test_dist_missing_data
+PATCHES=(
+	# https://github.com/pytest-dev/pytest-cov/pull/518
+	"${FILESDIR}"/${P}-coverage-6.2.patch
 )
+
+python_test() {
+	# NB: disabling all plugins speeds tests up a lot
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	local -x PYTEST_PLUGINS=pytest_cov.plugin,xdist.plugin,xdist.looponfail
+
+	local EPYTEST_DESELECT=(
+		# attempts to install packages via pip (network)
+		tests/test_pytest_cov.py::test_dist_missing_data
+	)
+
+	epytest
+}

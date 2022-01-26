@@ -1,6 +1,15 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ulrich Müller <ulm@gentoo.org> (2022-01-25)
+# Binary package linked to glibc
+media-gfx/brscan4
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-01-22)
+# Binary packages linked to glibc
+app-backup/tsm
+sci-electronics/labone
+
 # Marco Genasci <fedeliallalinea@gmail.com> (2022-01-06)
 # dev-db/oracle-instantclient package linked against glibc,
 # and the other packages depends on it.

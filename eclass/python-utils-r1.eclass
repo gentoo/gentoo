@@ -1321,6 +1321,14 @@ epytest() {
 		-Wdefault
 		# override color output
 		"--color=${color}"
+		# disable the undesirable-dependency plugins by default to
+		# trigger missing argument strips.  strip options that require
+		# them from config files.  enable them explicitly via "-p ..."
+		# if you *really* need them.
+		-p no:cov
+		-p no:flake8
+		-p no:flakes
+		-p no:pylint
 	)
 	local x
 	for x in "${EPYTEST_DESELECT[@]}"; do

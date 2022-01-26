@@ -1,6 +1,13 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Yongxinag Liang <tanekliang@gmail.com> (2022-01-09)
+# app-emulation/xen-tools doesn't support riscv yet
+app-emulation/qemu xen
+# untested useflag: rbd glusterfs
+app-emulation/qemu rbd glusterfs
+sys-fs/multipath-tools rbd
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-16)
 # requires sys-apps/dbus-broker, which is keyworded here.
 sys-apps/systemd -hostnamed-fallback

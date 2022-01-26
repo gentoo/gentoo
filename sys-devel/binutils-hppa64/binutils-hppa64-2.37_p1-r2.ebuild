@@ -34,7 +34,7 @@ else
 	[[ -z ${PATCH_VER} ]] || SRC_URI="${SRC_URI}
 		https://dev.gentoo.org/~${PATCH_DEV}/distfiles/binutils-${PATCH_BINUTILS_VER}-patches-${PATCH_VER}.tar.xz"
 	SLOT=$(ver_cut 1-2)
-	#KEYWORDS="-* ~hppa"
+	KEYWORDS="-* ~hppa"
 fi
 
 #
@@ -276,7 +276,8 @@ src_configure() {
 		# But the check does not quite work on i686: bug #760926.
 		$(use_enable cet)
 
-		$(use_enable pgo pgo-build lto)
+		# No LTO for HPPA64 right now as we don't build kgcc64 with LTO support.
+		$(use_enable pgo pgo-build)
 	)
 
 	if use pgo ; then

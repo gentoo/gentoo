@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,6 +37,10 @@ BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig"
 
 REQUIRED_USE="|| ( spice vnc )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-10.0_p20210730-meson-0.61.patch
+)
 
 src_prepare() {
 	default

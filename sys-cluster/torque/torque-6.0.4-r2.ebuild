@@ -1,14 +1,15 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit autotools flag-o-matic linux-info
+inherit autotools flag-o-matic linux-info toolchain-funcs
 
 DESCRIPTION="Resource manager and queuing system based on OpenPBS"
 HOMEPAGE="http://www.adaptivecomputing.com/products/open-source/torque"
 SRC_URI="https://github.com/adaptivecomputing/torque/archive/6a0b37f85c7d644e9217cbab1542792d646f59a6.tar.gz -> ${P}-gh-20170829.tar.gz
-	https://dev.gentoo.org/~juippis/distfiles/tmp/torque-6.0.4-gcc7.patch"
+	https://dev.gentoo.org/~juippis/distfiles/tmp/torque-6.0.4-gcc7.patch
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-6.0.4-glibc-2.34-pthread.patch.bz2"
 
 LICENSE="torque-2.5"
 SLOT="0"
@@ -52,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.3-fix-emptystring-comparison.patch
 	"${FILESDIR}"/${P}-no-openssl.patch
 	"${FILESDIR}"/${P}-error_buf_overflow_prevent.patch
+	"${WORKDIR}"/${P}-glibc-2.34-pthread.patch
 )
 
 pkg_setup() {
@@ -59,9 +61,9 @@ pkg_setup() {
 
 	# Find a Torque server to use.  Check environment, then
 	# current setup (if any), and fall back on current hostname.
-	if [ -z "${PBS_SERVER_NAME}" ]; then
-		if [ -f "${ROOT}${PBS_SERVER_HOME}/server_name" ]; then
-			PBS_SERVER_NAME="$(<${ROOT}${PBS_SERVER_HOME}/server_name)"
+	if [[ -z "${PBS_SERVER_NAME}" ]]; then
+		if [ -f "${EROOT}/${PBS_SERVER_HOME}/server_name" ]; then
+			PBS_SERVER_NAME="$(<${EROOT}/${PBS_SERVER_HOME}/server_name)"
 		else
 			PBS_SERVER_NAME=$(hostname -f)
 		fi
@@ -118,6 +120,11 @@ src_configure() {
 		--without-loadlibfile
 }
 
+src_compile() {
+	# The .c files are C++, and $(CC) is misused.
+	emake CC="$(tc-getCXX)"
+}
+
 src_install() {
 	local dir
 
@@ -142,6 +149,7 @@ src_install() {
 		newinitd "${FILESDIR}"/pbs_server-init.d-munge pbs_server
 		newinitd "${FILESDIR}"/pbs_sched-init.d pbs_sched
 	fi
+
 	newinitd "${FILESDIR}"/pbs_mom-init.d-munge pbs_mom
 	newconfd "${FILESDIR}"/${PN}-conf.d-munge ${PN}
 	newinitd "${FILESDIR}"/trqauthd-init.d trqauthd
@@ -149,13 +157,13 @@ src_install() {
 }
 
 pkg_preinst() {
-	if [[ -f "${ROOT}etc/pbs_environment" ]]; then
-		cp "${ROOT}etc/pbs_environment" "${ED}"/etc/pbs_environment || die
+	if [[ -f "${EROOT}/etc/pbs_environment" ]]; then
+		cp "${EROOT}/etc/pbs_environment" "${ED}"/etc/pbs_environment || die
 	fi
 
-	if use server && [[ -f "${ROOT}${PBS_SERVER_HOME}/server_priv/nodes" ]]; then
+	if use server && [[ -f "${EROOT}/${PBS_SERVER_HOME}/server_priv/nodes" ]]; then
 		cp \
-			"${EROOT}${PBS_SERVER_HOME}/server_priv/nodes" \
+			"${EROOT}/${PBS_SERVER_HOME}/server_priv/nodes" \
 			"${ED}/${PBS_SERVER_HOME}/server_priv/nodes" || die
 	fi
 

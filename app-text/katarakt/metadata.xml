@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>kurt@kmk-computers.de</email>
+    <name>Kurt Kanzenbach</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription lang="en">
+    katarakt is a simple PDF viewer. It is designed to use as much available
+    screen space as possible.
+
+    There are currently two layouts. The presentation layout is very simple and
+    only supports scrolling on a per page basis. As the name suggests the
+    current page is displayed in the center and zoomed to fit the window. It is
+    active by default.
+
+    The grid layout is much more advanced and offers continuous (smooth, per
+    pixel) scrolling, zooming and adjusting the column count. Pages keep their
+    correct relative size and are shown in a grid.
+  </longdescription>
+</pkgmetadata>

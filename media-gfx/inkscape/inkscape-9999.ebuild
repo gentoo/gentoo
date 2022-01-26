@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,17 +6,23 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml"
 MY_P="${P/_/}"
-inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1 git-r3
+inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1
+
+if [[ ${PV} = 9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://gitlab.com/inkscape/inkscape.git"
+else
+	SRC_URI="https://media.inkscape.org/dl/resources/file/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+fi
 
 DESCRIPTION="SVG based generic vector-drawing program"
 HOMEPAGE="https://inkscape.org/"
-EGIT_REPO_URI="https://gitlab.com/inkscape/inkscape.git"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
 IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg
-openmp postscript readline spell static-libs svg2 test visio wpg"
+openmp postscript readline spell svg2 test visio wpg"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -105,6 +111,15 @@ pkg_pretend() {
 	fi
 }
 
+src_unpack() {
+	if [[ ${PV} = 9999* ]]; then
+		git-r3_src_unpack
+	else
+		default
+	fi
+	[[ -d "${S}" ]] || mv -v "${WORKDIR}/${P}_202"?-??-* "${S}" || die
+}
+
 src_prepare() {
 	cmake_src_prepare
 	sed -i "/install.*COPYING/d" CMakeScripts/ConfigCPack.cmake || die
@@ -130,7 +145,7 @@ src_configure() {
 		-DWITH_JEMALLOC=$(usex jemalloc)
 		-DENABLE_LCMS=ON
 		-DWITH_OPENMP=$(usex openmp)
-		-DBUILD_SHARED_LIBS=$(usex !static-libs)
+		-DBUILD_SHARED_LIBS=ON
 		-DWITH_SVG2=$(usex svg2)
 		-DWITH_LIBVISIO=$(usex visio)
 		-DWITH_LIBWPG=$(usex wpg)
@@ -152,7 +167,6 @@ src_install() {
 
 	find "${ED}"/usr/share/man -type f -maxdepth 3 -name '*.gz' -exec gzip -d {} \; || die
 
-	# No extensions are present in beta1
 	local extdir="${ED}"/usr/share/${PN}/extensions
 
 	if [[ -e "${extdir}" ]] && [[ -n $(find "${extdir}" -mindepth 1) ]]; then

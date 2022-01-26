@@ -70,6 +70,7 @@ media-sound/jack2 ieee1394
 app-emulation/qemu smartcard rbd xen virgl
 app-emulation/qemu glusterfs io-uring
 app-emulation/spice smartcard
+net-misc/spice-gtk smartcard
 
 # Sam James <sam@gentoo.org> (2020-06-29)
 # Deps not yet stable

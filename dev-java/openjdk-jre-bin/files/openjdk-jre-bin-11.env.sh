@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-VERSION="AdoptOpenJDK JRE ${PV}"
+VERSION="Eclipse Temurin JRE ${PV}"
 JAVA_HOME="${EPREFIX}/opt/${P}"
 JDK_HOME="${EPREFIX}/opt/${P}"
 JAVAC="\${JAVA_HOME}/bin/javac"
