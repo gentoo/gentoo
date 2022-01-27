@@ -33,11 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Michał Górny <mgorny@gentoo.org> (2022-01-27)
-# compileall often hangs on random packages in this version.  Masking
-# until we resolve that.
-=dev-python/pypy3-7.3.8_rc1
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-23)
 # Java-libraries with no consumers and depending on virtual/{jdk,jre}-1.6
 # Removal in 30 days.
