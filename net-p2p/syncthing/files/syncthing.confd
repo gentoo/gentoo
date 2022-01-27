@@ -20,5 +20,9 @@
 # Nice level of syncthing
 #SYNCTHING_NICE="0"
 
+# Where the syncthing GUI should listen. Can be a http(s) URI or a Unix domain socket
+#SYNCTHING_GUI_ADDRESS="http://127.0.0.1:8384"
+#SYNCTHING_GUI_ADDRESS="unix:/run/syncthing.sock"
+
 # Extra options for syncthing
 #SYNCTHING_OPTS=""
