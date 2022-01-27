@@ -862,13 +862,13 @@ _distutils-r1_backend_to_key() {
 
 	local backend=${1}
 	case ${backend} in
-		flit_core.buildapi)
+		flit_core.buildapi|flit.buildapi)
 			echo flit
 			;;
 		pdm.pep517.api)
 			echo pdm
 			;;
-		poetry.core.masonry.api)
+		poetry.core.masonry.api|poetry.masonry.api)
 			echo poetry
 			;;
 		setuptools.build_meta|setuptools.build_meta:__legacy__)
@@ -949,6 +949,27 @@ distutils-r1_python_compile() {
 				eerror "expected: DISTUTILS_USE_PEP517=${expected_value}"
 				eerror "(backend: ${build_backend})"
 				die "DISTUTILS_USE_PEP517 value incorrect"
+			fi
+
+			# fix deprecated backends up
+			local new_backend=
+			case ${build_backend} in
+				flit.buildapi)
+					new_backend=flit_core.buildapi
+					;;
+				poetry.masonry.api)
+					new_backend=poetry.core.masonry.api
+					;;
+			esac
+
+			if [[ -n ${new_backend} ]]; then
+				if [[ ! ${_DISTUTILS_DEPRECATED_BACKEND_WARNED} ]]; then
+					eqawarn "${build_backend} backend is deprecated.  Please see:"
+					eqawarn "https://projects.gentoo.org/python/guide/distutils.html#deprecated-pep-517-backends"
+					eqawarn "The eclass will be using ${new_backend} instead."
+					_DISTUTILS_DEPRECATED_BACKEND_WARNED=1
+				fi
+				build_backend=${new_backend}
 			fi
 		fi
 
