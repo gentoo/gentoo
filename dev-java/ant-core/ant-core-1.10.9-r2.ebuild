@@ -23,12 +23,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
-# Some dependencies for building Javadoc are unavailable on these architectures
-REQUIRED_USE="doc? ( !arm !arm64 )"
-
 CDEPEND=">=virtual/jdk-1.8:*"
 DEPEND="${CDEPEND}
-	doc? ( !arm? ( !arm64? (
+	doc? (
 		dev-java/bcel:0
 		dev-java/bsf:2.3
 		dev-java/commons-logging:0
@@ -44,7 +41,7 @@ DEPEND="${CDEPEND}
 		dev-java/xalan:0
 		dev-java/xml-commons-resolver:0
 		dev-java/xz-java:0
-	) ) )"
+	)"
 RDEPEND="${CDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
