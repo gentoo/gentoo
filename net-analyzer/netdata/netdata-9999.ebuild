@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -102,7 +102,6 @@ src_configure() {
 		--localstatedir="${EPREFIX}"/var \
 		--with-user=netdata \
 		$(use_enable cloud) \
-		$(use_with cloud aclk-ng) \
 		$(use_enable jsonc) \
 		$(use_enable cups plugin-cups) \
 		$(use_enable dbengine) \

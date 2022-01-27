@@ -102,7 +102,6 @@ src_configure() {
 		--localstatedir="${EPREFIX}"/var \
 		--with-user=netdata \
 		$(use_enable cloud) \
-		$(use_with cloud aclk-ng) \
 		$(use_enable jsonc) \
 		$(use_enable cups plugin-cups) \
 		$(use_enable dbengine) \
