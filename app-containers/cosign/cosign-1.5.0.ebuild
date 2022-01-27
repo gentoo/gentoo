@@ -13,6 +13,10 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-makefile.patch
+)
+
 src_prepare() {
 	default
 	mv ../vendor . || die
