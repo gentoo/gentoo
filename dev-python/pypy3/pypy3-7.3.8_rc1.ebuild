@@ -176,9 +176,7 @@ src_install() {
 	python_domodule epython.py
 
 	einfo "Byte-compiling Python standard library..."
-	# TODO: parallel compileall hangs sometimes
-	# https://foss.heptapod.net/pypy/pypy/-/issues/3650
-	MAKEOPTS=-j1 python_optimize "${ED}${dest}"
+	python_optimize "${ED}${dest}"
 
 	# remove to avoid collisions
 	rm "${PYTHON}" || die
