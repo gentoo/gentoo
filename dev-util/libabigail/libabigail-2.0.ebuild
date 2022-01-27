@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit autotools python-any-r1 out-of-source
 
@@ -22,6 +22,7 @@ RDEPEND="
 	dev-libs/libxml2:2"
 DEPEND="${RDEPEND}"
 BDEPEND="
+	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
 		dev-python/sphinx
