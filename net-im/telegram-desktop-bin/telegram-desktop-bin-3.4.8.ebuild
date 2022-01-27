@@ -18,6 +18,7 @@ KEYWORDS="-* ~amd64"
 
 QA_PREBUILT="usr/bin/telegram-desktop"
 # current desktop-file-utils-0.26 does not understand Version=1.5
+# https://gitlab.freedesktop.org/xdg/desktop-file-utils/-/issues/59
 QA_DESKTOP_FILE="usr/share/applications/telegramdesktop.desktop"
 
 RDEPEND="
