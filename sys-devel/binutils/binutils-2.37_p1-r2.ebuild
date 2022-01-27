@@ -276,7 +276,7 @@ src_configure() {
 		$(use_enable pgo pgo-build lto)
 	)
 
-	if use pgo ; then
+	if use pgo && ! is_cross ; then
 		export BUILD_CFLAGS="${CFLAGS}"
 	fi
 
