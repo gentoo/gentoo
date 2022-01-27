@@ -6,11 +6,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-27)
-# shenanoah gc is not available on all arches
-# https://wiki.openjdk.java.net/display/shenandoah/Main
-dev-java/openjdk:11 shenandoahgc
-
 # Sam James <sam@gentoo.org> (2021-01-24)
 # USE=custom-cflags is _particularly_ dangerous on sys-libs/glibc and
 # can result in not just build-time failures for glibc itself, but
