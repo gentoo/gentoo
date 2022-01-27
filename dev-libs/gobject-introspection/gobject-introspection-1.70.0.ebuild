@@ -9,6 +9,7 @@ inherit gnome.org meson python-single-r1 xdg
 
 DESCRIPTION="Introspection system for GObject-based libraries"
 HOMEPAGE="https://wiki.gnome.org/Projects/GObjectIntrospection"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-meson-0.61.patch.bz2"
 
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="0"
@@ -49,7 +50,7 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-meson-0.61.patch
+	"${WORKDIR}"/${P}-meson-0.61.patch
 )
 
 pkg_setup() {
