@@ -193,9 +193,6 @@ src_install() {
 		rm -rv "${ED}${vimfiles}"/{macros,print,tools,tutor} || die "rm failed"
 		rm -v "${ED}"/usr/bin/vimtutor || die "rm failed"
 
-		# Delete defaults.vim to avoid conflicts with one from vim[minimal]
-		rm -v "${ED}${vimfiles}"/defaults.vim || die "rm failed"
-
 		local keep_colors="default"
 		ignore=$(rm -fr "${ED}${vimfiles}"/colors/!(${keep_colors}).vim )
 
@@ -208,6 +205,13 @@ src_install() {
 		sed -i '/skip_defaults_vim/d' "${ED}"/etc/vim/vimrc || die "sed failed"
 
 		eshopts_pop
+	fi
+
+	# Delete defaults.vim to avoid conflicts with one from vim.
+	# If defaults.vim already exists in files installed from vim,
+	# do not install defaults.vim.
+	if [[ -f "${vimfiles}/defaults.vim" ]]; then
+		rm -v "${ED}${vimfiles}"/defaults.vim || die "rm failed"
 	fi
 
 	newbashcomp "${FILESDIR}"/xxd-completion xxd
