@@ -29,8 +29,12 @@ DEPEND="${PYTHON_DEPS}
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-Use-mock-from-unittest.patch
+)
+
 src_prepare() {
-	eapply_user
+	default
 	sed -e "s:/usr/local/share:/usr/share:" \
 		-i bin/autojump.sh || die
 
