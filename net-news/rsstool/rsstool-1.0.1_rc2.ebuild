@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit toolchain-funcs
 MY_P=${PN}-${PV/_}
 
 DESCRIPTION="cmdline tool to read, parse, merge, and write RSS (and Atom) feeds"
-HOMEPAGE="http://rsstool.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/rsstool/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}-src.zip"
 S="${WORKDIR}"/${MY_P}-src/src
 
