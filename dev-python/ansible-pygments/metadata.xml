@@ -5,6 +5,13 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<longdescription>
+		This project provides a <pkg>dev-python/pygments</pkg> lexer that is able to handle
+		<pkg>app-admin/ansible</pkg> output. It may be used anywhere Pygments is integrated.
+		The lexer is registered globally under the name "ansible-output".
+
+		It also provides a Pygments style for tools needing to highlight code snippets.
+	</longdescription>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">ansible-community/ansible-pygments</remote-id>
