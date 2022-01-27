@@ -49,7 +49,8 @@ RDEPEND="
 		media-libs/fontconfig:1.0
 		media-libs/freetype:2
 		media-libs/harfbuzz
-		>=sys-libs/glibc-2.2.5:*
+		elibc_glibc? ( >=sys-libs/glibc-2.2.5:* )
+		elibc_musl? ( sys-libs/musl )
 		sys-libs/zlib
 		alsa? ( media-libs/alsa-lib )
 		cups? ( net-print/cups )
