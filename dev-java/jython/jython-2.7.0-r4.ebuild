@@ -33,7 +33,6 @@ CP_DEPEND="dev-java/antlr:3
 	dev-java/jnr-netdb:1.0
 	dev-java/stringtemplate:0
 	dev-java/xerces:2
-	java-virtuals/script-api:0
 	java-virtuals/servlet-api:3.0"
 RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"
