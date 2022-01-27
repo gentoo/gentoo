@@ -96,13 +96,12 @@ src_configure() {
 		-DDISABLE_BUILD_DATE=TRUE
 		-DDISABLE_PCSX2_WRAPPER=TRUE
 		-DDISABLE_SETCAP=TRUE
-		-DENABLE_TESTS="$(usex test)"
+		-DENABLE_TESTS=$(usex test)
 		-DPACKAGE_MODE=TRUE
-		-DXDG_STD=TRUE
-
-		-DCMAKE_LIBRARY_PATH="/usr/$(get_libdir)/${PN}"
+		-DSDL2_API=TRUE # uses SDL2 either way but option is needed if wxGTK[sdl]
 		-DUSE_SYSTEM_YAML=TRUE
 		-DUSE_VTUNE=FALSE
+		-DXDG_STD=TRUE
 	)
 
 	setup-wxwidgets
