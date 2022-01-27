@@ -318,8 +318,10 @@ src_install() {
 
 	# Fix an issue of missing defaults.vim when USE=minimal.
 	if use minimal ; then
-		insinto ${vimfiles}
-		doins runtime/defaults.vim
+		if [[ ! -f "${vimfiles}/defaults.vim" ]]; then
+			insinto ${vimfiles}
+			doins runtime/defaults.vim
+		fi
 	fi
 
 	domenu runtime/vim.desktop
