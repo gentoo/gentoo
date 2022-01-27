@@ -855,7 +855,7 @@ src_install() {
 	systemd_dounit etc/linux-systemd/system/${PN}{@,-resume}.service
 	systemd_douserunit etc/linux-systemd/user/${PN}.service
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
+	newinitd "${FILESDIR}"/${PN}.initd-r2 ${PN}
 
 	keepdir /var/log/${PN}
 	insinto /etc/logrotate.d
