@@ -6,15 +6,17 @@ EAPI=8
 DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Generate simple tables in terminals from a nested list of strings"
 HOMEPAGE="https://robpol86.github.io/terminaltables/"
-EGIT_REPO_URI="https://github.com/matthewdeanmartin/${PN}.git"
+SRC_URI="
+	https://github.com/matthewdeanmartin/terminaltables/archive/v${PV}.tar.gz
+		-> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
 	test? (
@@ -24,6 +26,10 @@ BDEPEND="
 	)"
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/terminaltables-3.1.0-stdout.patch
+)
 
 src_prepare() {
 	sed -e '/requires/s:poetry:&-core:' \
