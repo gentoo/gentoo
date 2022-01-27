@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools
 
 MY_P="${PN}-$(ver_rs 2 '')"
 DESCRIPTION="Another free touch typing tutor program"
-HOMEPAGE="http://klavaro.sourceforge.net/"
+HOMEPAGE="https://klavaro.sourceforge.io/"
 SRC_URI="mirror://sourceforge/project/${PN}/${MY_P}.tar.bz2"
 S="${WORKDIR}"/${MY_P}
 
