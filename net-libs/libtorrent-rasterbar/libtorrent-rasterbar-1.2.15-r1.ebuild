@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/arvidn/libtorrent/releases/download/v${PV}/${P}.tar.
 
 LICENSE="BSD"
 SLOT="0/10"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+dht debug python ssl test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
