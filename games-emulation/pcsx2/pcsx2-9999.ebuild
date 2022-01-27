@@ -103,6 +103,7 @@ src_configure() {
 		-DCMAKE_LIBRARY_PATH="/usr/$(get_libdir)/${PN}"
 		-DUSE_SYSTEM_YAML=TRUE
 		-DUSE_VTUNE=FALSE
+		-DSDL2_API=TRUE
 	)
 
 	setup-wxwidgets
