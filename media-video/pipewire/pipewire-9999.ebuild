@@ -21,7 +21,7 @@ HOMEPAGE="https://pipewire.org/"
 LICENSE="MIT LGPL-2.1+ GPL-2"
 # ABI was broken in 0.3.42 for https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/49
 SLOT="0/0.4"
-IUSE="bluetooth doc echo-cancel extra gstreamer jack-client jack-sdk lv2 pipewire-alsa ssl systemd test v4l zeroconf"
+IUSE="bluetooth doc echo-cancel extra gstreamer jack-client jack-sdk lv2 pipewire-alsa ssl systemd test v4l X zeroconf"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -82,6 +82,10 @@ RDEPEND="
 	ssl? ( dev-libs/openssl:= )
 	systemd? ( sys-apps/systemd )
 	v4l? ( media-libs/libv4l )
+	X? (
+		media-libs/libcanberra
+		x11-libs/libX11
+	)
 	zeroconf? ( net-dns/avahi )
 "
 
@@ -131,6 +135,7 @@ src_prepare() {
 multilib_src_configure() {
 	local emesonargs=(
 		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
+
 		$(meson_native_use_feature zeroconf avahi)
 		$(meson_native_use_feature doc docs)
 		$(meson_native_enabled examples) # TODO: Figure out if this is still important now that media-session gone
@@ -185,6 +190,10 @@ multilib_src_configure() {
 		-Dsdl2=disabled # Controls SDL2 dependent code (currently only examples when -Dinstalled_tests=enabled which we never install)
 		$(meson_native_use_feature extra sndfile) # Enables libsndfile dependent code (currently only pw-cat)
 		-Dsession-managers="[]" # All available session managers are now their own projects, so there's nothing to build
+
+		# Just for bell sounds in X11 right now.
+		$(meson_native_use_feature X x11)
+		$(meson_native_use_feature X libcanberra)
 	)
 
 	meson_src_configure
