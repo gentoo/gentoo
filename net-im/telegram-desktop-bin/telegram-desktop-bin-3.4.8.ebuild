@@ -17,6 +17,8 @@ SLOT="0"
 KEYWORDS="-* ~amd64"
 
 QA_PREBUILT="usr/bin/telegram-desktop"
+# current desktop-file-utils-0.26 does not understand Version=1.5
+QA_DESKTOP_FILE="usr/share/applications/telegramdesktop.desktop"
 
 RDEPEND="
 	dev-libs/glib:2
