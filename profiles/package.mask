@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-27)
+# Java-library + java-virtual with no consumers.
+# Removal in 30 days.
+java-virtuals/script-api
+dev-java/jsr223
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-23)
 # Java-libraries with no consumers and depending on virtual/{jdk,jre}-1.6
 # Removal in 30 days.
