@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-27)
+# shenanoah gc is available on this arch
+# https://wiki.openjdk.java.net/display/shenandoah/Main
+dev-java/openjdk:11 -shenandoahgc
+
 # Sam James <sam@gentoo.org> (2022-01-22)
 # Supports 64-bit NEON
 dev-libs/libgcrypt -cpu_flags_arm_neon
