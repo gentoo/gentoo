@@ -62,7 +62,7 @@ PATCHES=(
 	"${FILESDIR}"/polkit-0.115-elogind.patch
 
 	"${FILESDIR}"/polkit-0.117-CVE-2021-3560.patch
-	"${FILESDIR}"/polkit-0.120-CVE-2021-4043.patch
+	"${FILESDIR}"/polkit-0.120-CVE-2021-4034.patch
 )
 
 QA_MULTILIB_PATHS="
