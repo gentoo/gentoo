@@ -85,6 +85,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	# bug 746590
 	"${FILESDIR}/${PN}-flock.patch"
+	"${FILESDIR}/${PN}-${PV}-mkhtml.patch"
 )
 
 pkg_setup() {
