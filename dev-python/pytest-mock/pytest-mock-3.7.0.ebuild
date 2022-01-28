@@ -15,8 +15,13 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
 
-RDEPEND=">=dev-python/pytest-6[${PYTHON_USEDEP}]"
-BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]"
+RDEPEND="
+	>=dev-python/pytest-6[${PYTHON_USEDEP}]"
+BDEPEND="
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	test? (
+		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests pytest
 
