@@ -8,8 +8,8 @@ FINDLIB_USE="ocaml"
 JAVA_PKG_WANT_SOURCE="1.8"
 JAVA_PKG_WANT_TARGET="1.8"
 
-inherit findlib multilib toolchain-funcs java-pkg-opt-2 flag-o-matic usr-ldscript \
-	autotools udev systemd python-r1 tmpfiles
+inherit findlib toolchain-funcs java-pkg-opt-2 usr-ldscript autotools  \
+	systemd python-r1 tmpfiles
 
 DESCRIPTION="Daemon that provides access to the Linux/Unix console for a blind person"
 HOMEPAGE="https://brltty.app/"
