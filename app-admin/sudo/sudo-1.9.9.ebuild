@@ -163,10 +163,10 @@ src_install() {
 	default
 
 	if use ldap ; then
-		dodoc README.LDAP
+		dodoc README.LDAP.md
 
 		cat <<-EOF > "${T}"/ldap.conf.sudo
-		# See ldap.conf(5) and README.LDAP for details
+		# See ldap.conf(5) and README.LDAP.md for details
 		# This file should only be readable by root
 
 		# supported directives: host, port, ssl, ldap_version
