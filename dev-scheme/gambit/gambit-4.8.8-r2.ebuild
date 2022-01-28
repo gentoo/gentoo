@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit elisp-common
 
@@ -16,9 +16,10 @@ LICENSE="|| ( Apache-2.0 LGPL-2.1 )"
 SLOT="0"
 KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 
-RDEPEND="ssl? ( dev-libs/openssl:0 )"
-DEPEND="
-	${RDEPEND}
+RDEPEND="ssl? ( dev-libs/openssl:0= )"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	app-text/ghostscript-gpl
 	emacs? ( >=app-editors/emacs-23.1:* )
 "
 
