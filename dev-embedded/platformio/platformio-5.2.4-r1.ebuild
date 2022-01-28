@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN}-core-${PV}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
@@ -70,7 +70,7 @@ distutils_enable_tests pytest
 
 src_prepare() {
 	# Allow newer versions of zeroconf, Bug #831181.
-	sed -i '/zeroconf/s/==/>=/' "${S}"/setup.py
+	sed -i '/zeroconf/s/==/>=/' "${S}"/setup.py || die
 	default
 }
 
