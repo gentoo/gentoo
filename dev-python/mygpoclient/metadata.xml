@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">mygpoclient</remote-id>
+		<remote-id type="github">gpodder/mygpoclient</remote-id>
 	</upstream>
 </pkgmetadata>
