@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 optfeature
 
 MY_P=${PN}-$(ver_rs 3 -)
@@ -31,6 +31,7 @@ RDEPEND="
 	>=dev-python/txaio-21.2.1[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	>=dev-python/hyperlink-21.0.0[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
@@ -74,7 +75,7 @@ python_prepare_all() {
 
 	# remove twisted plugin cache regen in setup.py
 	# to fix tinderbox sandbox issue
-	sed -e 's/regenerate Twisted plugin cache/DO NOT & in Gentoo\nexit()/' \
+	sed -e '/import/s:reactor:__importmustfail__:' \
 		-i setup.py || die
 
 	distutils-r1_python_prepare_all
@@ -83,7 +84,7 @@ python_prepare_all() {
 python_test() {
 	einfo "Testing all, cryptosign using twisted"
 	local -x USE_TWISTED=true
-	cd "${BUILD_DIR}"/lib || die
+	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
 	"${EPYTHON}" -m twisted.trial autobahn || die "Tests failed with ${EPYTHON}"
 	unset USE_TWISTED
 
@@ -92,7 +93,7 @@ python_test() {
 	epytest autobahn/wamp/test/test_wamp_{cryptosign,component_aio}.py
 	unset USE_ASYNCIO
 
-	rm -f "${BUILD_DIR}"/lib/twisted/plugins/dropin.cache || die
+	rm -f twisted/plugins/dropin.cache || die
 }
 
 pkg_postinst() {
