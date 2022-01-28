@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,9 +16,9 @@ IUSE="doc test"
 
 RDEPEND="dev-libs/icu"
 DEPEND="${RDEPEND}
-	doc? ( app-text/ronn )
 	test? ( >=dev-cpp/catch-2.3.0:0 )
 	>=dev-libs/boost-1.62[icu,nls]"
+BDEPEND="doc? ( || ( app-text/ronn-ng app-text/ronn ) )"
 
 DOCS=( CHANGELOG.md )
 
