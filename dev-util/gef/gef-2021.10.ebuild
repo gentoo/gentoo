@@ -10,7 +10,7 @@ inherit python-single-r1 wrapper
 DESCRIPTION="A GDB Enhanced Features for exploit devs & reversers"
 HOMEPAGE="https://github.com/hugsy/gef"
 
-if [[ "${PV}" == *9999 ]]; then
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/hugsy/gef"
 else
@@ -20,9 +20,9 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="doc"
-RESTRICT="test"
-
+IUSE="doc test"
+# Seem to hang right now?
+RESTRICT="!test? ( test ) test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -36,28 +36,33 @@ RDEPEND="
 		dev-util/unicorn[python,${PYTHON_USEDEP}]
 	')"
 
-BDEPEND="doc? ( dev-python/mkdocs )"
-
-pkg_setup() {
-	python-single-r1_pkg_setup
-}
+BDEPEND="doc? ( dev-python/mkdocs )
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/pytest-xdist[${PYTHON_USEDEP}]
+		')
+	)"
 
 src_compile() {
+	# Tries to compile tests
 	:
 }
 
 src_install() {
-	insinto "/usr/share/${PN}"
+	insinto /usr/share/${PN}
 	doins -r *.py
 
-	python_optimize "${D}/usr/share/${PN}"
+	python_optimize "${ED}"/usr/share/${PN}
 
 	make_wrapper "gdb-gef" \
-	"gdb -ex \"source /usr/share/${PN}/gef.py\"" || die
+	"gdb -ex \"source ${EPREFIX}/usr/share/${PN}/gef.py\"" || die
 
 	if use doc; then
+		# TODO: docs.eclass?
 		mkdocs build -d html || die
-		rm "${WORKDIR}/${P}/html/sitemap.xml.gz" || die
+
+		rm "${WORKDIR}"/${P}/html/sitemap.xml.gz || die
 		dodoc -r html/
 	fi
 
