@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -49,7 +49,7 @@ RDEPEND="
 	net-libs/ignition-transport:8=
 	sci-libs/ignition-common:3=
 	sci-libs/ignition-fuel-tools:4=
-	<x11-libs/qwt-6.2.0:6=[qt5(+)]
+	x11-libs/qwt:6=[qt5(+)]
 "
 DEPEND="${RDEPEND}
 	dev-qt/qttest:5
@@ -57,7 +57,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/libxslt )
 "
 BDEPEND="
-	app-text/ronn
+	|| ( app-text/ronn-ng app-text/ronn )
 	app-arch/gzip
 	virtual/pkgconfig
 "
