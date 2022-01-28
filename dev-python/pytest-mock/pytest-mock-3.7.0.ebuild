@@ -25,12 +25,10 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-src_prepare() {
-	sed -e 's/runpytest_subprocess(/&"-p","no:xprocess",/' -i tests/test_pytest_mock.py || die
-	distutils-r1_src_prepare
-}
-
 python_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	local -x PYTEST_PLUGINS=pytest_mock,pytest_asyncio.plugin
+
 	if has_version dev-python/mock; then
 		local EPYTEST_DESELECT=(
 			tests/test_pytest_mock.py::test_standalone_mock
