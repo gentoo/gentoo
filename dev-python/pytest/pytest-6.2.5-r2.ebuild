@@ -58,6 +58,19 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# broken by epytest args
 		testing/test_warnings.py::test_works_with_filterwarnings
+
+		# tend to be broken by random pytest plugins
+		# (these tests patch PYTEST_DISABLE_PLUGIN_AUTOLOAD out)
+		testing/test_helpconfig.py::test_version_less_verbose
+		testing/test_helpconfig.py::test_version_verbose
+		testing/test_junitxml.py::test_random_report_log_xdist
+		testing/test_junitxml.py::test_runs_twice_xdist
+		testing/test_terminal.py::TestProgressOutputStyle::test_xdist_normal
+		testing/test_terminal.py::TestProgressOutputStyle::test_xdist_normal_count
+		testing/test_terminal.py::TestProgressOutputStyle::test_xdist_verbose
+		testing/test_terminal.py::TestProgressWithTeardown::test_xdist_normal
+		testing/test_terminal.py::TestTerminalFunctional::test_header_trailer_info
+		testing/test_terminal.py::TestTerminalFunctional::test_no_header_trailer_info
 	)
 
 	epytest -p xdist -n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
