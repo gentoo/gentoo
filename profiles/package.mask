@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-02-13)
+# This package is completely broken and some libraries existing only for
+# it cause unneeded workload for Java team. Removal in 30 days.
+# Bug #831106, bug #784107.
+games-strategy/triplea
+
 # Matthew Smith <matthew@gentoo.org> (2022-02-13)
 # Dead upstream, incompatible with newer versions of makeself.
 # Removal after 2022-03-15.  Bug #781947.
