@@ -1,0 +1,99 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="checkconfig checkzones"
+extra_started_commands="reload"
+
+depend() {
+	need net
+	use logger
+	provide dns
+}
+
+NAMED_CONF=${NAMED_CONF:-/etc/bind/named.conf}
+
+_get_pidfile() {
+	# as suggested in bug #107724, bug 335398#c17
+	[ -n "${PIDFILE}" ] || PIDFILE=$(\
+			/usr/bin/named-checkconf -p ${NAMED_CONF} | grep 'pid-file' | cut -d\" -f2)
+	[ -z "${PIDFILE}" ] && PIDFILE="/run/named/named.pid"
+}
+
+checkconfig() {
+	ebegin "Checking named configuration"
+
+	if [ ! -f "${NAMED_CONF}" ] ; then
+		eerror "No ${NAMED_CONF} file exists!"
+		return 1
+	fi
+	/usr/bin/named-checkconf ${NAMED_CONF} || {
+		eerror "named-checkconf failed! Please fix your config first."
+		return 1
+	}
+	eend 0
+}
+
+checkzones() {
+	ebegin "Checking named configuration and zones"
+	/usr/bin/named-checkconf -z ${NAMED_CONF}
+	eend $?
+}
+
+start() {
+	local piddir
+
+	ebegin "Starting named"
+	checkconfig || { eend 1; return 1; }
+
+	# create piddir (usually /run/named) if necessary, bug 334535
+	_get_pidfile
+	piddir="${PIDFILE%/*}"
+	checkpath -q -d -o root:named -m 0770 "${piddir}" || {
+		eerror "Failed to create PID directory at $piddir"
+		eend 1
+		return 1
+	}
+
+	# In case someone have $CPU set in /etc/conf.d/named
+	if [ -n "${CPU}" ] && [ "${CPU}" -gt 0 ]; then
+		CPU="-n ${CPU}"
+	fi
+
+	start-stop-daemon --start --pidfile ${PIDFILE} \
+		--nicelevel ${NAMED_NICELEVEL:-0} \
+		--exec /usr/sbin/named \
+		-- -u named ${CPU} ${OPTIONS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping named"
+	# -R 10, bug 335398
+	_get_pidfile
+	start-stop-daemon --stop --retry 10 --pidfile $PIDFILE \
+		--exec /usr/sbin/named
+	eend $?
+}
+
+reload() {
+	local ret
+
+	ebegin "Reloading named.conf and zone files"
+
+	checkconfig || { eend 1; return 1; }
+
+	_get_pidfile
+	if [ -n "${PIDFILE}" ]; then
+		start-stop-daemon --pidfile $PIDFILE --signal HUP
+		ret=$?
+	else
+		ewarn "Unable to determine the pidfile... this is"
+		ewarn "a fallback mode. Please check your installation!"
+
+		$RC_SERVICE restart
+		ret=$?
+	fi
+
+	eend $ret
+}

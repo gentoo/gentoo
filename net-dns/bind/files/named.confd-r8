@@ -1,0 +1,18 @@
+# Set various named options here.
+#
+#OPTIONS=""
+
+# config file path
+NAMED_CONF="/etc/bind/named.conf"
+
+# Set this to the number of processors you want bind to use.
+# Leave this unchanged if you want bind to automatically detect the number
+#CPU="1"
+
+# Default pid file location
+# use named.conf to specify pid-file location
+
+# Scheduling priority: 19 is the lowest and -20 is the highest.
+# Default: 0
+#NAMED_NICELEVEL="0"
+
