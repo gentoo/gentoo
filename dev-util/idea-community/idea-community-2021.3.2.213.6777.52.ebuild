@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ MY_PN="idea"
 # ( jre 11.0.10 build 1304.4  )
 JRE11_BASE="11_0_13"
 JRE11_VER="1751.21"
-IDEA_VER="2.192198250.1510025193.1640803004-350593612.1638138682"
+IDEA_VER="2.64818794.438087111.1643395105-983510988.1643395105"
 
 # distinguish settings for official stable releases and EAP-version releases
 if [[ "$(ver_cut 7)"x = "prex" ]]
