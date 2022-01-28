@@ -1786,7 +1786,7 @@ EGO_SUM=(
 	"sigs.k8s.io/yaml v1.3.0/go.mod"
 	)
 go-module_set_globals
-SRC_URI="https://github.com/helm/helm/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/helm/helm/archive/v${MY_PV}.tar.gz -> k8s-${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
 LICENSE="Apache-2.0"
