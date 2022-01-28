@@ -110,6 +110,8 @@ src_prepare() {
 	sed -i -e 's| -s||g' \
 		-e 's|@mangrp@|root|g' Makefile.in || die
 
+	#remove this patch on bump
+	eapply "${FILESDIR}/kismet-2022-01-3-wardrive.patch"
 	eapply_user
 
 	#just use set to fix setup.py
