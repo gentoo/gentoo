@@ -23,6 +23,7 @@ SRC_URI="https://packages.microsoft.com/repos/edge/pool/main/m/${MY_PN}/${MY_P}_
 LICENSE="microsoft-edge"
 SLOT="0"
 RESTRICT="bindist mirror strip"
+IUSE="+mip"
 
 RDEPEND="
 	app-accessibility/at-spi2-atk:2
@@ -55,6 +56,7 @@ RDEPEND="
 	x11-libs/libxshmfence
 	x11-libs/pango
 	x11-misc/xdg-utils
+	mip? ( app-crypt/libsecret )
 "
 
 QA_PREBUILT="*"
@@ -104,6 +106,10 @@ src_install() {
 	for size in 16 24 32 48 64 128 256 ; do
 		newicon -s ${size} "${EDGE_HOME}/product_logo_${size}${suffix}.png" ${PN}.png
 	done
+
+	if ! use mip; then
+		rm "${EDGE_HOME}"/libmip_{core,protection_sdk}.so || die
+	fi
 
 	pax-mark m "${EDGE_HOME}/msedge"
 }
