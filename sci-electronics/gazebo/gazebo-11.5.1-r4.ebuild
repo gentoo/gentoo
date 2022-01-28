@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -57,7 +57,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/libxslt )
 "
 BDEPEND="
-	app-text/ronn
+	|| ( app-text/ronn-ng app-text/ronn )
 	app-arch/gzip
 	virtual/pkgconfig
 "
