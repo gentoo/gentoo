@@ -22,6 +22,7 @@ RDEPEND="
 	dev-db/mysql-connector-c
 	dev-libs/boost:=
 	sci-biology/bamtools
+	sci-biology/samtools:0
 	sci-libs/gsl
 	sci-libs/htslib
 	sci-libs/suitesparse
