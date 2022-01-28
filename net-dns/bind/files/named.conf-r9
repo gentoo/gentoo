@@ -1,0 +1,21 @@
+options {
+        directory "/var/cache/bind";
+	pid-file "/run/named/named.pid";
+        listen-on { 127.0.0.1; };
+        listen-on-v6 { ::1; };
+        allow-recursion {
+                none;
+        };
+        allow-transfer {
+                none;
+        };
+        allow-update {
+                none;
+        };
+};
+
+zone "example.com." {
+        type primary;
+        file "/var/lib/bind/db.example.com";
+        notify explicit;
+};
