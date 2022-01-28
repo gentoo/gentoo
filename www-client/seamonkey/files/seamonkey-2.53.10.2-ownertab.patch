@@ -3,6 +3,7 @@
 # Date 1628960364 -7200
 # Parent  45d5ea1452b1c406303ff3be289df08cde3d5a04
 Bug 1623054 - Set owner tab for proper tab focus handling after close. r=IanN a=IanN
+Upstream bug-report: https://bugzilla.mozilla.org/show_bug.cgi?id=1623054
 
 diff --git seamonkey-2.53.10.2/comm/suite/app/profile/suite-prefs.js seamonkey-2.53.10.2/comm/suite/app/profile/suite-prefs.js
 --- seamonkey-2.53.10.2/comm/suite/app/profile/suite-prefs.js
