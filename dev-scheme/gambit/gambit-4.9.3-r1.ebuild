@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,10 @@ RDEPEND="ssl? (
 DEPEND="
 	${RDEPEND}
 "
-BDEPEND="emacs? ( >=app-editors/emacs-23.1:* )"
+BDEPEND="
+	app-text/ghostscript-gpl
+	emacs? ( >=app-editors/emacs-23.1:* )
+"
 
 SITEFILE="50gambit-gentoo.el"
 
