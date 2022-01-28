@@ -30,7 +30,3 @@ DEPEND="${RDEPEND}
 		dev-perl/Test-Pod-Coverage
 	)
 "
-
-src_prepare() {
-	perl-module_src_prepare
-}
