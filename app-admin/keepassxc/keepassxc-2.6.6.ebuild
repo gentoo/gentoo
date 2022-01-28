@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,8 +13,8 @@ if [[ "${PV}" != 9999 ]] ; then
 		SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
 		S="${WORKDIR}/${P/_/-}"
 	else
-		SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV}.tar.gz -> ${P}.tar.gz"
-		#SRC_URI="https://github.com/keepassxreboot/keepassxc/releases/download/${PV}/${P}-src.tar.xz"
+		#SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV}.tar.gz -> ${P}.tar.gz"
+		SRC_URI="https://github.com/keepassxreboot/keepassxc/releases/download/${PV}/${P}-src.tar.xz"
 		KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 	fi
 else
@@ -63,9 +63,6 @@ BDEPEND="
 "
 
 src_prepare() {
-	 use test || \
-		sed -e "/^find_package(Qt5Test/d" -i CMakeLists.txt || die
-
 	if [[ "${PV}" != *_beta* ]] && [[ "${PV}" != 9999 ]] && [[ ! -f .version ]] ; then
 		printf '%s' "${PV}" > .version || die
 	fi
