@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ LICENSE="Apache-2.0 BSD BSD-2 BSD-4 ISC MIT"
 SLOT="0"
 IUSE="doc test"
 
-BDEPEND="doc? ( app-text/ronn )"
+BDEPEND="doc? ( || ( app-text/ronn-ng app-text/ronn ) )"
 RDEPEND="dev-vcs/git"
 
 RESTRICT+=" !test? ( test )"
