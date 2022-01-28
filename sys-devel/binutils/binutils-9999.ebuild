@@ -283,7 +283,6 @@ src_configure() {
 		fi
 	fi
 
-
 	if use pgo && ! is_cross ; then
 		export BUILD_CFLAGS="${CFLAGS}"
 	fi
