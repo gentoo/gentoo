@@ -53,7 +53,9 @@ src_test() {
 python_test() {
 	distutils_install_for_testing --via-root
 
-	"${EPYTHON}" -m pytest -vv --lsof -rfsxX -p no:pkgcore -p no:flaky \
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+
+	"${EPYTHON}" -m pytest -vv --lsof -rfsxX -p xdist \
 		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" ||
 		die "Tests failed with ${EPYTHON}"
 }
