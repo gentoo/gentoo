@@ -10,17 +10,18 @@ HOMEPAGE="http://virustotal.github.io/yara/"
 SRC_URI="https://github.com/virustotal/yara/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="0/8"
 KEYWORDS="~amd64 ~x86"
-IUSE="+dex +dotnet +cuckoo +macho +magic profiling python"
+IUSE="+dex +dotnet +cuckoo +macho +magic profiling python test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
-	dev-libs/openssl:0=
+	dev-libs/openssl:=
 	cuckoo? ( dev-libs/jansson:= )
-	magic? ( sys-apps/file:0= )
+	magic? ( sys-apps/file:= )
 "
 RDEPEND="${DEPEND}"
-PDEPEND="python? ( =dev-python/yara-python-4* )"
+PDEPEND="python? ( =dev-python/yara-python-$(ver_cut 1)* )"
 
 src_prepare() {
 	default
@@ -34,5 +35,18 @@ src_configure() {
 		$(use_enable magic) \
 		$(use_enable dotnet) \
 		$(use_enable macho) \
-		$(use_enable dex)
+		$(use_enable dex) \
+		$(use_enable test static)
+}
+
+src_test() {
+	emake check
+}
+
+src_install() {
+	default
+
+	# TODO: Allow tests to work against dyn. lib rather than building
+	# statically just for tests.
+	find "${ED}" -name '*.a' -delete || die
 }
