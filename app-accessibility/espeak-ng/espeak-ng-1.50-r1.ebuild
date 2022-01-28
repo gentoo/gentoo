@@ -7,17 +7,11 @@ inherit autotools
 
 DESCRIPTION="Software speech synthesizer for English, and some other languages"
 HOMEPAGE="https://github.com/espeak-ng/espeak-ng"
-
-if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://github.com/espeak-ng/espeak-ng.git"
-	inherit git-r3
-else
-	SRC_URI="https://github.com/espeak-ng/espeak-ng/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
-fi
+SRC_URI="https://github.com/espeak-ng/espeak-ng/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+ Turkowski unicode"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+async +klatt l10n_ru l10n_zh man mbrola +sound"
 
 COMMON_DEPEND="
@@ -46,6 +40,10 @@ src_prepare() {
 		-e "/translate.check/d" \
 		Makefile.am || die
 
+	# https://github.com/espeak-ng/espeak-ng/issues/699
+	# fixed in master
+	sed -i -e "s/int samplerate;/static int samplerate;/" src/espeak-ng.c || die
+
 	eautoreconf
 }
 
@@ -55,8 +53,8 @@ src_configure() {
 		$(use_with async)
 		$(use_with klatt)
 		$(use_with l10n_ru extdict-ru)
-		$(use_with l10n_zh extdict-cmn)
-		$(use_with l10n_zh extdict-yue)
+		$(use_with l10n_zh extdict-zh)
+		$(use_with l10n_zh extdict-zhy)
 		$(use_with mbrola)
 		$(use_with sound pcaudiolib)
 		--without-libfuzzer
