@@ -55,7 +55,10 @@ python_test() {
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 
-	"${EPYTHON}" -m pytest -vv --lsof -rfsxX -p xdist \
-		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" ||
-		die "Tests failed with ${EPYTHON}"
+	local EPYTEST_DESELECT=(
+		# broken by epytest args
+		testing/test_warnings.py::test_works_with_filterwarnings
+	)
+
+	epytest -p xdist -n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
 }
