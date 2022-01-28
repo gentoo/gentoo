@@ -273,9 +273,16 @@ src_configure() {
 		# Ideally we would like automagic-or-disabled here.
 		# But the check does not quite work on i686: bug #760926.
 		$(use_enable cet)
-
-		$(use_enable pgo pgo-build lto)
 	)
+
+	if ! is_cross ; then
+		myconf+=( $(use_enable pgo pgo-build lto) )
+
+		if use pgo ; then
+			export BUILD_CFLAGS="${CFLAGS}"
+		fi
+	fi
+
 
 	if use pgo && ! is_cross ; then
 		export BUILD_CFLAGS="${CFLAGS}"
