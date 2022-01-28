@@ -1,7 +1,7 @@
 # Copyright 2010-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit elisp-common multiprocessing python-any-r1 toolchain-funcs
@@ -134,7 +134,7 @@ src_unpack() {
 
 		if use fcitx4; then
 			unpack fcitx-${PN}-${PV%%_p*}-${FCITX_MOZC_DATE}.tar.gz
-			mv mozc-${FCITX_MOZC_GIT_REVISION} fcitx-${PN}
+			mv mozc-${FCITX_MOZC_GIT_REVISION} fcitx-${PN} || die
 		fi
 	fi
 }
