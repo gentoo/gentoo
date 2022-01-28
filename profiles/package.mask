@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-28)
+# This package is completely broken and some libraries existing only for
+# it cause unneeded workload for Java team. Removal in 30 days.
+# Bug #831106, bug #784107.
+games-strategy/triplea
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-27)
 # Java-library + java-virtual with no consumers.
 # Removal in 30 days.
