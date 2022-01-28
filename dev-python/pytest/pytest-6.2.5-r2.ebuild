@@ -38,6 +38,11 @@ BDEPEND="
 		dev-python/xmlschema[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=(
+	# backport fixes for py3.10 test regressions
+	"${FILESDIR}"/${P}-py310.patch
+)
+
 src_test() {
 	# workaround new readline defaults
 	echo "set enable-bracketed-paste off" > "${T}"/inputrc || die
