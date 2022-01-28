@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/806354
+--- a/configure.ac
++++ b/configure.ac
+@@ -104,13 +104,6 @@ dnl ------------------------------------
+ dnl Checks for header files
+ dnl --------------------------------------
+ dnl
+-AC_HEADER_STDC
+-if test $ac_cv_header_stdc = yes; then
+- AC_MSG_RESULT(Ok! I have just found them.)
+-else
+-  AC_MSG_ERROR(Cannot find ANSI C header files!)
+-fi
+-
+ AC_HEADER_STDBOOL
+ AC_CHECK_HEADERS(fcntl.h locale.h stddef.h \
+   stdlib.h string.h sys/file.h time.h unistd.h wchar.h wctype.h)
