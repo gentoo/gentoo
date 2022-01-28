@@ -16,6 +16,8 @@ IUSE="doc ipv6 static-libs"
 
 HTML_DOCS=( doc/. )
 
+PATCHES=( "${FILESDIR}/${P}-respect-user-provided-flags.patch" )
+
 src_prepare() {
 	default
 
