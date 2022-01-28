@@ -8,9 +8,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/network/connman/connman.git"
 else
-	#SRC_URI="https://www.kernel.org/pub/linux/network/${PN}/${P}.tar.xz"
-	COMMIT="6f1315d1960fc3f71bca9b3044f4f2b1560aea5f"
-	SRC_URI="https://git.kernel.org/pub/scm/network/${PN}/${PN}.git/snapshot/${PN}-${COMMIT}.tar.gz"
+	SRC_URI="https://www.kernel.org/pub/linux/network/${PN}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
@@ -48,8 +46,6 @@ RDEPEND=">=dev-libs/glib-2.16
 
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-2.6.39"
-
-S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare() {
 	default
