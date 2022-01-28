@@ -34,7 +34,6 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.11-fix-deflateParams-usage.patch
 	"${FILESDIR}"/${PN}-1.2.11-minizip-drop-crypt-header.patch #658536
-	"${FILESDIR}"/${PN}-1.2.11-configure-fix-AR-RANLIB-NM-detection.patch #831628
 )
 
 src_prepare() {
