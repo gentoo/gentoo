@@ -25,6 +25,7 @@ src_prepare() {
 	default
 
 	# Needed for tests patch
+	# ... and refresh libtool (see https://github.com/gentoo/gentoo/pull/23973)
 	eautoreconf
 }
 
