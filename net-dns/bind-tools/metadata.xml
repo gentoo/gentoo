@@ -11,5 +11,6 @@
 	</maintainer>
 	<use>
 		<flag name="gssapi">Enable gssapi support</flag>
+		<flag name="lmdb">Enable LMDB support</flag>
 	</use>
 </pkgmetadata>
