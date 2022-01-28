@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python3_{9..10} )
 inherit cmake distutils-r1
 
 DESCRIPTION="A lightweight multi-platform, multi-architecture CPU emulator framework"
-HOMEPAGE="http://www.unicorn-engine.org"
+HOMEPAGE="https://www.unicorn-engine.org"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -20,21 +20,19 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
+S="${WORKDIR}/${PN}-${MY_PV}"
+
 LICENSE="GPL-2"
-SLOT="0"
-
-UNICORN_TARGETS="x86 arm aarch64 riscv mips sparc m68k ppc"
-
+SLOT="0/2"
 IUSE="python static-libs"
-
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DEPEND="dev-libs/glib:2
-	virtual/pkgconfig
-	${PYTHON_DEPS}"
+DEPEND="${PYTHON_DEPS}
+	dev-libs/glib:2"
 RDEPEND="python? ( ${PYTHON_DEPS} )"
+BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/${PN}-${MY_PV}"
+UNICORN_TARGETS="x86 arm aarch64 riscv mips sparc m68k ppc"
 
 wrap_python() {
 	if use python; then
@@ -44,13 +42,14 @@ wrap_python() {
 
 		pushd bindings/python >/dev/null || die
 		distutils-r1_${1} "$@"
-		popd >/dev/null
+		popd >/dev/null || die
 	fi
 }
 
 src_prepare() {
-	# build from sources
-	rm -r bindings/python/prebuilt || die "failed to remove prebuild"
+	# Build from sources
+	rm -r bindings/python/prebuilt || die "failed to remove prebuilt files"
+
 	cmake_src_prepare
 	wrap_python ${FUNCNAME}
 }
@@ -58,15 +57,18 @@ src_prepare() {
 src_configure(){
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
-		-DUNICORN_BUILD_SHARED="$(usex static-libs OFF ON)"
+		-DUNICORN_BUILD_SHARED=$(usex !static-libs)
 		-DUNICORN_ARCH="${UNICORN_TARGETS}"
 	)
+
 	cmake_src_configure
+
 	wrap_python ${FUNCNAME}
 }
 
 src_compile() {
 	cmake_src_compile
+
 	wrap_python ${FUNCNAME}
 }
 
