@@ -1,0 +1,20 @@
+https://github.com/telmich/gpm/commit/4337fd9fc2d2ea83654f2ca69245503730231ac3
+
+From: iljavs <ivansprundel@ioactive.com>
+Date: Mon, 27 Jun 2016 01:17:57 -0700
+Subject: [PATCH] fix signedness issue
+
+This commit fixes a signedness issue, where a negative vc coming from a malicious client could possibly cause memory corruption.
+--- a/src/daemon/processconn.c
++++ b/src/daemon/processconn.c
+@@ -67,7 +67,8 @@ int processConn(int fd)
+       return -1;
+    }
+ 
+-   if((vc = request->vc) > MAX_VC) {
++   vc = request->vc;
++   if(vc > MAX_VC || vc < 0) {
+       gpm_report(GPM_PR_DEBUG, GPM_MESS_REQUEST_ON, vc, MAX_VC);
+       free(info);
+       close(newfd);
+
