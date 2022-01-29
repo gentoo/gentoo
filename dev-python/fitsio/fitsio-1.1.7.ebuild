@@ -23,14 +23,15 @@ RDEPEND="
 "
 BDEPEND="${RDEPEND}"
 
-src_prepare() {
-	sed -e '/self.use_system_fitsio/s/False/True/' -i setup.py || die
-
-	distutils-r1_src_prepare
+src_configure() {
+	cat >> setup.cfg <<-EOF || die
+		[build_ext]
+		use_system_fitsio = True
+	EOF
 }
 
 python_test() {
-	cp -r -l -n fitsio "${BUILD_DIR}/lib" || die
-	cd "${BUILD_DIR}/lib" || die
-	${EPYTHON} -c "import fitsio; exit(fitsio.test.test())" || die "Tests failed with ${EPYTHON}"
+	cd "${T}" || die
+	"${EPYTHON}" -c "import fitsio; exit(fitsio.test.test())" ||
+		die "Tests failed with ${EPYTHON}"
 }
