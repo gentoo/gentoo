@@ -152,7 +152,7 @@ src_compile() {
 	if use python; then
 		python_build() {
 			cd "Bindings/Python" || die
-			emake
+			emake -j1
 		}
 		python_foreach_impl run_in_build_dir python_build
 	fi
@@ -163,12 +163,12 @@ src_install() {
 		findlib_src_preinst
 	fi
 
-	emake INSTALL_ROOT="${D}" OCAML_LDCONF= install
+	emake -j1 INSTALL_ROOT="${D}" OCAML_LDCONF= install
 
 	if use python; then
 		python_install() {
 			cd "Bindings/Python" || die
-			emake INSTALL_ROOT="${D}" install
+			emake -j1 INSTALL_ROOT="${D}" install
 		}
 		python_foreach_impl run_in_build_dir python_install
 	fi
