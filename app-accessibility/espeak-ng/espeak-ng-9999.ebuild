@@ -67,11 +67,6 @@ src_configure() {
 	econf "${econf_args[@]}"
 }
 
-src_compile() {
-	# see docs/building.md
-	emake -j1
-}
-
 src_test() {
 	emake check
 }
