@@ -13,7 +13,7 @@ SRC_URI="https://caucho.com/download/resin-${PV}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="3.1"
-KEYWORDS="~amd64 ~ppc64 x86"
+KEYWORDS="amd64 ~ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
