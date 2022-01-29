@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit dune
 
@@ -16,6 +16,7 @@ KEYWORDS="~amd64"
 IUSE="+ocamlopt"
 
 RDEPEND="
+	<dev-lang/ocaml-4.13.0:=[ocamlopt?]
 	dev-ml/fix:=
 	dev-ml/menhir:=
 	dev-ml/merlin-extend:=
@@ -25,9 +26,14 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-src_install() {
-	dune_src_install reason
-	dune_src_install rtop
+DOCS=(
+	CODE_OF_CONDUCT.md HISTORY.md ORIGINS.md PLAN README.md
+	docs/GETTING_STARTED_CONTRIBUTING.md
+	docs/TYPE_PARAMETERS_PARSING.md
+	docs/USING_PARSER_PROGRAMMATICALLY.md
+)
 
-	dodoc *.md
+src_install() {
+	dune-install reason rtop
+	einstalldocs
 }
