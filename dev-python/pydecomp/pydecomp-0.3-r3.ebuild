@@ -23,3 +23,5 @@ HOMEPAGE="https://github.com/dol-sen/pyDeComp"
 
 LICENSE="BSD"
 SLOT="0"
+
+PATCHES=( "${FILESDIR}/${PV}-no-pixz-index.patch" )
