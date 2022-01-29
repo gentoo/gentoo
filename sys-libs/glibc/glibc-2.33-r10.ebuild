@@ -438,33 +438,6 @@ setup_flags() {
 	filter-flags '-fstack-protector*'
 }
 
-want_tls() {
-	# Archs that can use TLS (Thread Local Storage)
-	case $(tc-arch) in
-		x86)
-			# requires i486 or better #106556
-			[[ ${CTARGET} == i[4567]86* ]] && return 0
-			return 1
-		;;
-	esac
-	return 0
-}
-
-want__thread() {
-	want_tls || return 1
-
-	# For some reason --with-tls --with__thread is causing segfaults on sparc32.
-	[[ ${PROFILE_ARCH} == "sparc" ]] && return 1
-
-	[[ -n ${WANT__THREAD} ]] && return ${WANT__THREAD}
-
-	# only test gcc -- can't test linking yet
-	tc-has-tls -c ${CTARGET}
-	WANT__THREAD=$?
-
-	return ${WANT__THREAD}
-}
-
 use_multiarch() {
 	# Allow user to disable runtime arch detection in multilib.
 	use multiarch || return 1
@@ -783,14 +756,6 @@ sanity_prechecks() {
 
 	# When we actually have to compile something...
 	if ! just_headers && [[ ${MERGE_TYPE} != "binary" ]] ; then
-		ebegin "Checking gcc for __thread support"
-		if ! eend $(want__thread ; echo $?) ; then
-			echo
-			eerror "Could not find a gcc that supports the __thread directive!"
-			eerror "Please update your binutils/gcc and try again."
-			die "No __thread support in gcc!"
-		fi
-
 		if [[ ${CTARGET} == *-linux* ]] ; then
 			local run_kv build_kv want_kv
 
