@@ -1146,6 +1146,9 @@ distutils-r1_python_install() {
 		# remove the altered bindir, executables from the package
 		# are already in scriptdir
 		rm -r "${root}${scriptdir}" || die
+		if [[ ${DISTUTILS_SINGLE_IMPL} ]]; then
+			mv "${root}$(python_get_scriptdir)" "${root}${scriptdir}" || die
+		fi
 	else
 		local root=${D%/}/_${EPYTHON}
 		[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D%/}
