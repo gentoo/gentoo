@@ -26,6 +26,9 @@ BDEPEND=""
 S="${WORKDIR}/alphabetical-grid-extension-${PV}"
 extension_uuid="AlphabeticalAppGrid@stuarthayhurst"
 
+# Tests are only useful for upstream
+RESTRICT="test"
+
 # Not useful for us
 src_compile() { :; }
 
