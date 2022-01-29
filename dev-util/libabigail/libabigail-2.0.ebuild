@@ -19,7 +19,8 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/elfutils
-	dev-libs/libxml2:2"
+	dev-libs/libxml2:2
+	elibc_musl? ( sys-libs/fts-standalone )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
