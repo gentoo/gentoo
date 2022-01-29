@@ -260,8 +260,8 @@ do_compile_test() {
 	rm -f glibc-test*
 	printf '%b' "$*" > glibc-test.c
 
-	# Most of the time CC is already set, but not in early sanity checks.
-	nonfatal emake glibc-test CC="${CC-$(tc-getCC ${CTARGET})}"
+	# We assume CC is already set up.
+	nonfatal emake glibc-test
 	ret=$?
 
 	popd >/dev/null
@@ -743,7 +743,7 @@ sanity_prechecks() {
 			ebegin "Checking that IA32 emulation is enabled in the running kernel"
 			echo 'int main(){return 0;}' > "${T}/check-ia32-emulation.c"
 			local STAT
-			if "${CC-${CHOST}-gcc}" ${CFLAGS_x86} "${T}/check-ia32-emulation.c" -o "${T}/check-ia32-emulation.elf32"; then
+			if ${CC-${CHOST}-gcc} ${CFLAGS_x86} "${T}/check-ia32-emulation.c" -o "${T}/check-ia32-emulation.elf32"; then
 				"${T}/check-ia32-emulation.elf32"
 				STAT=$?
 			else
@@ -809,9 +809,6 @@ upgrade_warning() {
 # pkg_pretend
 
 pkg_pretend() {
-	# All the checks...
-	einfo "Checking general environment sanity."
-	sanity_prechecks
 	upgrade_warning
 }
 
@@ -823,12 +820,12 @@ pkg_setup() {
 # src_unpack
 
 src_unpack() {
-	# Consistency is not guaranteed between pkg_ and src_ ...
+	setup_env
+
+	einfo "Checking general environment sanity."
 	sanity_prechecks
 
 	use multilib-bootstrap && unpack gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz
-
-	setup_env
 
 	if [[ ${PV} == 9999* ]] ; then
 		EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/toolchain/glibc-patches.git"
