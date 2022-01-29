@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-01-29)
+# No maintainer.  No upstream activity since Dec 2019.
+# Tests not enabled.  No revdeps.
+# Removal on 2022-02-28.  Bug #832318.
+dev-python/django-pglocks
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-27)
 # Java-library + java-virtual with no consumers.
 # Removal in 30 days.
