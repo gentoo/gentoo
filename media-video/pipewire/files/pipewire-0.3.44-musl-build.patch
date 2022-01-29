@@ -1,0 +1,33 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/3256c6e5e7e2cef1f765dc05a001114359cc3134
+
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Thu, 27 Jan 2022 14:59:11 +0100
+Subject: [PATCH] tools: fix compilation with musl
+
+--- a/src/tools/pw-cli.c
++++ b/src/tools/pw-cli.c
+@@ -36,6 +36,10 @@
+ #include <readline/readline.h>
+ #include <readline/history.h>
+ 
++#if !defined(FNM_EXTMATCH)
++#define FNM_EXTMATCH 0
++#endif
++
+ #define spa_debug(...) fprintf(stdout,__VA_ARGS__);fputc('\n', stdout)
+ 
+ #include <spa/utils/result.h>
+--- a/src/tools/pw-dump.c
++++ b/src/tools/pw-dump.c
+@@ -32,6 +32,10 @@
+ #include <math.h>
+ #include <fnmatch.h>
+ 
++#if !defined(FNM_EXTMATCH)
++#define FNM_EXTMATCH 0
++#endif
++
+ #include <spa/utils/result.h>
+ #include <spa/utils/string.h>
+ #include <spa/pod/iter.h>
+GitLab
