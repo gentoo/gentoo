@@ -20,7 +20,7 @@ SRC_URI="https://download.virtualbox.org/virtualbox/${DIR_PV:-${MY_PV}}/${MY_P}.
 LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="alsa debug doc dtrace headless java lvm +opus pam pax-kernel pch pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
 COMMON_DEPEND="
@@ -43,7 +43,10 @@ COMMON_DEPEND="
 		x11-libs/libXext
 		x11-libs/libXmu
 		x11-libs/libXt
-		opengl? ( media-libs/libglvnd[X] )
+		opengl? (
+			media-libs/libglvnd[X]
+			virtual/glu
+		)
 		qt5? (
 			dev-qt/qtcore:5
 			dev-qt/qtgui:5
@@ -181,8 +184,7 @@ src_prepare() {
 
 	if ! use pch ; then
 		# bug #753323
-		printf '\n%s\n' "VBOX_WITHOUT_PRECOMPILED_HEADERS=1" \
-			>> LocalConfig.kmk || die
+		echo -e "VBOX_WITHOUT_PRECOMPILED_HEADERS=1\r\n" >> LocalConfig.kmk || die
 	fi
 
 	# Respect LDFLAGS
