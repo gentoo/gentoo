@@ -1,8 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=8
 
 inherit gnome2
 
@@ -11,8 +10,8 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libzapojit"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="+introspection"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~sparc x86"
+IUSE="+introspection"
 
 RDEPEND="
 	>=dev-libs/glib-2.28:2
@@ -23,7 +22,8 @@ RDEPEND="
 
 	introspection? ( >=dev-libs/gobject-introspection-1.30.0 )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=dev-util/gtk-doc-am-1.11
 	>=dev-util/intltool-0.35.0
 	sys-devel/gettext
@@ -34,6 +34,5 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	gnome2_src_configure \
-		--disable-static \
 		$(use_enable introspection)
 }
