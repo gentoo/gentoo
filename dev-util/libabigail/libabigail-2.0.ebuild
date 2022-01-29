@@ -30,6 +30,8 @@ BDEPEND="
 	)
 	test? ( ${PYTHON_DEPS} )"
 
+PATCHES=( "${FILESDIR}"/${P}-musl.patch )
+
 src_prepare() {
 	default
 	# need to run our autotools, due to ltmain.sh including Redhat calls:
