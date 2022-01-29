@@ -56,6 +56,8 @@ RDEPEND="${COMMON_DEPEND}
 
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${P}-musl.patch )
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 
