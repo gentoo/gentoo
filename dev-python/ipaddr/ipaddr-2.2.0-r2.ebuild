@@ -16,8 +16,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
-src_configure() {
-	2to3 -n -w --no-diffs *.py || die
+python_configure_all() {
+	"${EPYTHON}" -m lib2to3 -n -w --no-diffs *.py || die
 }
 
 python_test() {
