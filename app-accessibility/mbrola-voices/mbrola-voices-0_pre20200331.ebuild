@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="https://github.com/numediart/mbrola-voices/archive/${GIT_COMMIT}.tar.gz
 
 LICENSE="MBROLA-VOICES"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ppc ppc64 sparc x86"
 
 # This maps the l10n values to the appropriate voices
 declare -A voicemap
