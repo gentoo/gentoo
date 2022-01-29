@@ -7,7 +7,7 @@
 +CFLAGS += -DVERSION="$(VERSION)"
  
 -CFLAGS += -Wall -W -g -O2 -D_FORTIFY_SOURCE=2 -I. -Iinclude
-+CFLAGS += -Wall -W -I. -Iinclude
++CFLAGS += -Wall -W -I. -Iinclude -D_GNU_SOURCE=1
  ifneq ($(SYSROOT),)
  CFLAGS += --sysroot=$(SYSROOT)
  endif
