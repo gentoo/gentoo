@@ -1,0 +1,34 @@
+--- a/configure.ac	2020-10-19 22:50:43.160537331 +0200
++++ b/configure.ac	2020-10-19 22:56:41.724847150 +0200
+@@ -352,7 +352,7 @@
+ AM_CONDITIONAL([have_libusb], [test x != "x$LIBUSB_LIBS"])
+ 
+ AS_IF([test xno != "x$with_magick_pp"],
+-   AS_CASE("x$with_magick_pp",
++   [AS_CASE("x$with_magick_pp",
+      [xGraphicsMagick],
+        [PKG_CHECK_MODULES([LIBMAGICK_PP], [GraphicsMagick++],
+           [AC_DEFINE([HAVE_GRAPHICS_MAGICK_PP], [1])])
+@@ -373,11 +373,11 @@
+        ],
+      [dnl default case
+       AC_MSG_ERROR([unknown value: --with-magick-pp=$with_magick_pp])
+-     ]))
++     ])])
+ AM_CONDITIONAL([have_libmagick_pp], [test x != "x$LIBMAGICK_PP_LIBS"])
+ 
+ AS_IF([test xno != "x$with_magick"],
+-   AS_CASE("x$with_magick",
++   [AS_CASE("x$with_magick",
+      [xGraphicsMagick],
+        [AC_CHECK_PROGS([MAGICK_CONVERT], [gm])
+         AS_IF([test xgm != x$MAGICK_CONVERT],
+@@ -408,7 +408,7 @@
+        ],
+      [dnl default case
+       AC_MSG_ERROR([unknown value: --with-magick=$with_magick])
+-     ]))
++     ])])
+ AC_DEFINE_UNQUOTED([MAGICK_CONVERT], ["$MAGICK_CONVERT"])
+ AM_CONDITIONAL([have_magick], [test x != "x$MAGICK_CONVERT"])
+ 

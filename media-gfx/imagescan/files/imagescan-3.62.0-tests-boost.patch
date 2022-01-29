@@ -1,0 +1,81 @@
+commit 13f483741fb1da2bf3d5e96286d0fe84a3f77288
+Author: Olaf Meeuwissen <paddy-hack@member.fsf.org>
+Date:   Sun Mar 3 21:25:46 2019 +0900
+
+    Switch BOOST_MESSAGE usage to use BOOST_TEST_MESSAGE
+    
+    The former has been marked as deprecated since Boost 1.34.0 and was
+    removed in 1.59.0 (released 2015-08-13).
+
+diff --git a/lib/tests/memory.cpp b/lib/tests/memory.cpp
+index 3fa21df..bf523df 100644
+--- a/lib/tests/memory.cpp
++++ b/lib/tests/memory.cpp
+@@ -1,5 +1,6 @@
+ //  memory.cpp -- unit tests for the memory device implementations
+ //  Copyright (C) 2012, 2015  SEIKO EPSON CORPORATION
++//  Copyright (C) 2019  Olaf Meeuwissen
+ //
+ //  License: GPL-3.0+
+ //  Author : EPSON AVASYS CORPORATION
+@@ -145,7 +146,7 @@ constant_octets (octet value)
+   const streamsize margin = 10;
+   const octet nul = 0x00;
+   traits::assign (buffer, size, nul);
+-  BOOST_MESSAGE ("value: " << value );
++  BOOST_TEST_MESSAGE ("value: " << value );
+ 
+   setmem_idevice dev (shared_ptr<setmem_idevice::generator>
+                       (new const_generator (value)));
+diff --git a/sane/tests/backend.cpp b/sane/tests/backend.cpp
+index f2ff7ef..e21edd0 100644
+--- a/sane/tests/backend.cpp
++++ b/sane/tests/backend.cpp
+@@ -1,5 +1,6 @@
+ //  backend.cpp -- unit tests for the SANE utsushi backend
+ //  Copyright (C) 2012, 2013, 2015  SEIKO EPSON CORPORATION
++//  Copyright (C) 2019  Olaf Meeuwissen
+ //
+ //  License: GPL-3.0+
+ //  Author : EPSON AVASYS CORPORATION
+@@ -755,8 +756,8 @@ drop_test_suite (const std::string& name)
+   but::traverse_test_tree (tuid, tcc);
+ 
+   master.remove (tuid);
+-  BOOST_MESSAGE ("Disabled \"" << name << "\" test suite for lack of "
+-                 "a mock device (" << tcc.p_count << " test cases)");
++  BOOST_TEST_MESSAGE ("Disabled \"" << name << "\" test suite for lack of "
++                      "a mock device (" << tcc.p_count << " test cases)");
+ }
+ 
+ bool
+@@ -766,7 +767,7 @@ init_test_runner ()
+ 
+   but::master_test_suite_t& master (but::framework::master_test_suite ());
+ 
+-  BOOST_MESSAGE ("Initializing \"" << master.p_name << "\" test suite");
++  BOOST_TEST_MESSAGE ("Initializing \"" << master.p_name << "\" test suite");
+ 
+   utsushi::monitor mon;    // to discover devices
+ 
+commit dcd5de24246b8ac5a96f971b6b0adfb910f5c60e
+Author: Olaf Meeuwissen <paddy-hack@member.fsf.org>
+Date:   Sun Mar 3 21:40:39 2019 +0900
+
+    Add headers needed by Boost 1.59.0 and later
+
+diff --git a/sane/tests/backend.cpp b/sane/tests/backend.cpp
+index e21edd0..77fbf96 100644
+--- a/sane/tests/backend.cpp
++++ b/sane/tests/backend.cpp
+@@ -27,6 +27,10 @@
+ #include <cstring>
+ 
+ #include <boost/test/unit_test.hpp>
++#if 105800 <= BOOST_VERSION
++#include <boost/test/tree/test_case_counter.hpp>
++#include <boost/test/tree/traverse.hpp>
++#endif
+ #include <boost/preprocessor/cat.hpp>
+ 
+ #include <ltdl.h>
