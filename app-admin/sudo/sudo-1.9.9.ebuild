@@ -187,7 +187,7 @@ src_install() {
 		fperms 0440 /etc/ldap.conf.sudo
 
 		insinto /etc/openldap/schema
-		newins doc/schema.OpenLDAP sudo.schema
+		newins docs/schema.OpenLDAP sudo.schema
 	fi
 
 	if use pam; then
