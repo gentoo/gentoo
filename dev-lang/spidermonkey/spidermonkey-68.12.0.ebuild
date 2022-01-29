@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="ssl"
 
 WANT_AUTOCONF="2.1"
@@ -62,7 +62,7 @@ RESTRICT="!test? ( test )"
 BDEPEND="dev-lang/python:2.7
 	test? ( ${PYTHON_DEPS} )"
 
-DEPEND=">=dev-libs/icu-63.1:=
+DEPEND="<dev-libs/icu-70:=
 	>=dev-libs/nspr-4.21
 	sys-libs/readline:0=
 	>=sys-libs/zlib-1.2.3"
@@ -194,6 +194,10 @@ src_test() {
 	KNOWN_TESTFAILURES+=( non262/Date/time-zones-historic.js )
 	KNOWN_TESTFAILURES+=( non262/Date/toString-localized-posix.js )
 	KNOWN_TESTFAILURES+=( non262/Date/reset-time-zone-cache-same-offset.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/DateTimeFormat/format_timeZone.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/DateTimeFormat/format.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/Date/toLocaleDateString_timeZone.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/Date/toLocaleString_timeZone.js )
 
 	if use x86 ; then
 		KNOWN_TESTFAILURES+=( test262/language/types/number/S8.5_A2.1.js )
