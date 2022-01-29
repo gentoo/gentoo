@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,6 +18,7 @@ PID=218
 DESCRIPTION="Parallel solver for very large sparse linear systems"
 HOMEPAGE="https://pastix.gforge.inria.fr"
 SRC_URI="https://gforge.inria.fr/frs/download.php/latestfile/${PID}/${PN}_${PV}.tar.bz2"
+S="${WORKDIR}/${PN}_${PV}/src"
 
 LICENSE="CeCILL-C"
 SLOT="0"
@@ -33,7 +34,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/${PN}_${PV}/src"
+PATCHES=( "${FILESDIR}"/${P}-MPI-3.0.patch )
 
 src_prepare() {
 	default
