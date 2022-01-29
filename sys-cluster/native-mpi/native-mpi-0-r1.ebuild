@@ -1,36 +1,31 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
+inherit toolchain-funcs
 
 DESCRIPTION="Use native OS MPI in prefix environment"
 HOMEPAGE="https://prefix.gentoo.org"
-SRC_URI=""
+S="${WORKDIR}"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64-linux ~x86-linux"
-IUSE=""
-
-DEPEND=""
-RDEPEND="${DEPEND}"
-
-S="${WORKDIR}"
 
 src_install() {
-	cat >> "${T}"/99mpi <<- EOF || die
-	MPI_CC=gcc
-	MPI_CXX=g++
-	MPI_FC=gfortran
-	MPI_F90=gfortran
-	HPMPI_F77=gfortran
-	EOF
-	doenvd "${T}"/99mpi
+	newenvd - 99mpi <<-_EOF_
+		MPI_CC=$(tc-getCC)
+		MPI_CXX=$(tc-getCXX)
+		MPI_FC=$(tc-getFC)
+		MPI_F90=$(tc-getFC)
+		HPMPI_F77=$(tc-getFC)
+	_EOF_
 }
 
 pkg_postinst() {
 	einfo
-	einfo "Please read and edit ${EPREFIX}/etc/env.d/99mpi"
+	einfo "Please read and edit ${EROOT}/etc/env.d/99mpi"
 	einfo "to add needed values for your os-mpi implentation"
 	einfo
 }
