@@ -1,6 +1,5 @@
-diff -Naur msieve-1.50/common/minimize.c msieve-copy/common/minimize.c
---- msieve-1.50/common/minimize.c	2011-07-04 23:32:33.000000000 +0800
-+++ msieve-copy/common/minimize.c	2012-11-26 23:09:22.889240528 +0800
+--- a/common/minimize.c
++++ b/common/minimize.c
 @@ -210,7 +210,7 @@
  		}
  	}
@@ -10,9 +9,8 @@ diff -Naur msieve-1.50/common/minimize.c msieve-copy/common/minimize.c
  	*min_out = x;
  	*status = 1;
  	return fx;
-diff -Naur msieve-1.50/gnfs/poly/stage2/optimize.c msieve-copy/gnfs/poly/stage2/optimize.c
---- msieve-1.50/gnfs/poly/stage2/optimize.c	2011-10-15 23:03:39.000000000 +0800
-+++ msieve-copy/gnfs/poly/stage2/optimize.c	2012-11-26 23:14:36.243232414 +0800
+--- a/gnfs/poly/stage2/optimize.c
++++ b/gnfs/poly/stage2/optimize.c
 @@ -430,9 +430,9 @@
  #if 0
  	printf("norm %.7e skew %lf\n", *pol_norm, best[SKEWNESS]);
@@ -25,9 +23,8 @@ diff -Naur msieve-1.50/gnfs/poly/stage2/optimize.c msieve-copy/gnfs/poly/stage2/
  #endif
  }
  
-diff -Naur msieve-1.50/gnfs/poly/stage2/stage2.c msieve-copy/gnfs/poly/stage2/stage2.c
---- msieve-1.50/gnfs/poly/stage2/stage2.c	2011-10-09 09:32:49.000000000 +0800
-+++ msieve-copy/gnfs/poly/stage2/stage2.c	2012-11-26 23:14:30.894232552 +0800
+--- a/gnfs/poly/stage2/stage2.c
++++ b/gnfs/poly/stage2/stage2.c
 @@ -122,10 +122,10 @@
  	}
  
