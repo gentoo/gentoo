@@ -1,0 +1,11 @@
+--- a/sane/version.hpp	2020-12-22 07:44:15.000000000 +0100
++++ b/sane/version.hpp	2022-01-22 22:47:47.508608348 +0100
+@@ -37,7 +37,7 @@
+ #include <sane/sane.h>
+ }
+ 
+-#if !((SANE_MAJOR == SANE_CURRENT_MAJOR) && (SANE_MINOR == 0))
++#if !(SANE_MAJOR == SANE_CURRENT_MAJOR)
+ #error "SANE installation violates versioning portability constraints."
+ #endif
+ 
