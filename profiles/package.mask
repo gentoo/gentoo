@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (2022-01-29)
+# Fails to compile with GCC on macOS.  No revdeps.
+# Removal on 2022-02-28.  Bug #832309.
+dev-perl/Mac-Pasteboard
+
 # Michał Górny <mgorny@gentoo.org> (2022-01-29)
 # No maintainer.  No upstream activity since Dec 2019.
 # Tests not enabled.  No revdeps.
