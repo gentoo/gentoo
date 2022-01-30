@@ -25,7 +25,7 @@ UNIPATCH_LIST="${DISTDIR}/v${PV}-zen1.patch.xz"
 UNIPATCH_STRICTORDER="yes"
 
 K_EXTRAEINFO="For more info on zen-sources, and for how to report problems, see: \
-${HOMEPAGE}, also go to #zen-sources on freenode"
+${HOMEPAGE}, also go to #zen-sources on oftc"
 
 pkg_setup() {
 	ewarn

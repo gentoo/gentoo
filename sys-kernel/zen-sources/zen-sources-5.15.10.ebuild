@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -25,7 +25,7 @@ UNIPATCH_LIST="${DISTDIR}/v${PV}-zen1.patch.xz"
 UNIPATCH_STRICTORDER="yes"
 
 K_EXTRAEINFO="For more info on zen-sources, and for how to report problems, see: \
-${HOMEPAGE}, also go to #zen-sources on freenode"
+${HOMEPAGE}, also go to #zen-sources on oftc"
 
 pkg_setup() {
 	ewarn
