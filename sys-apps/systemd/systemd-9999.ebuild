@@ -1,4 +1,4 @@
-# Copyright 2011-2021 Gentoo Authors
+# Copyright 2011-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -181,7 +181,7 @@ pkg_pretend() {
 			ewarn "See https://bugs.gentoo.org/674458."
 		fi
 
-		local CONFIG_CHECK="~AUTOFS4_FS ~BLK_DEV_BSG ~CGROUPS
+		local CONFIG_CHECK="~AUTOFS4_FS ~BINFMT_MISC ~BLK_DEV_BSG ~CGROUPS
 			~DEVTMPFS ~EPOLL ~FANOTIFY ~FHANDLE
 			~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~PROC_FS ~SIGNALFD ~SYSFS
 			~TIMERFD ~TMPFS_XATTR ~UNIX ~USER_NS
