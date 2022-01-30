@@ -1,12 +1,12 @@
 # Copyright 2001-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="8"
 
 inherit autotools libtool multilib-minimal
 
 DESCRIPTION="HTTP and WebDAV client library"
-HOMEPAGE="https://notroj.github.io/neon/"
+HOMEPAGE="https://notroj.github.io/neon/ https://github.com/notroj/neon"
 SRC_URI="https://notroj.github.io/neon/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -16,7 +16,7 @@ IUSE="doc expat gnutls kerberos libproxy nls pkcs11 ssl static-libs zlib"
 RESTRICT="test"
 
 BDEPEND="virtual/pkgconfig"
-RDEPEND="expat? ( dev-libs/expat:0=[${MULTILIB_USEDEP}] )
+DEPEND="expat? ( dev-libs/expat:0=[${MULTILIB_USEDEP}] )
 	!expat? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	kerberos? ( virtual/krb5:0=[${MULTILIB_USEDEP}] )
 	libproxy? ( net-libs/libproxy:0=[${MULTILIB_USEDEP}] )
@@ -26,17 +26,17 @@ RDEPEND="expat? ( dev-libs/expat:0=[${MULTILIB_USEDEP}] )
 			app-misc/ca-certificates
 			net-libs/gnutls:0=[${MULTILIB_USEDEP}]
 		)
-		!gnutls? (
-			dev-libs/openssl:0=[${MULTILIB_USEDEP}]
-		)
+		!gnutls? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 		pkcs11? ( dev-libs/pakchois:0=[${MULTILIB_USEDEP}] )
 	)
 	zlib? ( sys-libs/zlib:0=[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/neon-config
 )
+
+DOCS=( AUTHORS BUGS NEWS README.md THANKS TODO )
 
 src_prepare() {
 	# Use CHOST-prefixed version of xml2-config for cross-compilation.
@@ -91,15 +91,12 @@ multilib_src_install() {
 	emake DESTDIR="${D}" install-{config,headers,lib,man,nls}
 
 	if multilib_is_native_abi && use doc; then
-		(
-			docinto html
-			dodoc -r doc/html/*
-		)
+		dodoc -r doc/html
 	fi
 }
 
 multilib_src_install_all() {
-	find "${D}" -name "*.la" -type f -delete || die
+	find "${ED}" -name "*.la" -delete || die
 
-	dodoc AUTHORS BUGS NEWS README.md THANKS TODO
+	einstalldocs
 }
