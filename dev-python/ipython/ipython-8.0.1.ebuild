@@ -99,6 +99,10 @@ python_compile_all() {
 	fi
 }
 
+src_test() {
+	virtx distutils-r1_src_test
+}
+
 python_test() {
 	local -x IPYTHON_TESTING_TIMEOUT_SCALE=20
 	local EPYTEST_DESELECT=(
@@ -113,7 +117,7 @@ python_test() {
 		IPython/core/tests/test_completer.py::TestCompleter::test_all_completions_dups
 		IPython/core/tests/test_completer.py::TestCompleter::test_deduplicate_completions
 	)
-	virtx epytest
+	epytest || die "Tests failed with ${EPYTHON}"
 }
 
 python_install() {
