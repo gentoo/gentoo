@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,19 +17,21 @@ else
 	else
 		MY_PV="${PV/_/-}"
 		MY_P="${PN}-${MY_PV}"
-		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/${MY_PV}/${MY_P}.tar.gz
-			https://dl.mumble.info/${MY_P}.tar.gz"
-		S="${WORKDIR}/${P/_*}"
+		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/v${MY_PV}/${MY_P}.tar.gz"
+		S="${WORKDIR}/${P/_*}.src"
 	fi
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="BSD MIT"
 SLOT="0"
-IUSE="+alsa +dbus debug g15 jack portaudio pulseaudio nls +rnnoise speech test zeroconf"
+IUSE="+alsa +dbus debug g15 jack pipewire portaudio pulseaudio multilib nls +rnnoise speech test zeroconf"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	>=dev-libs/openssl-1.0.0b:0=
+	dev-libs/poco
+	>=dev-libs/protobuf-2.2.0:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
@@ -37,8 +39,6 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	dev-libs/poco
-	>=dev-libs/protobuf-2.2.0:=
 	>=media-libs/libsndfile-1.0.20[-minimal]
 	>=media-libs/opus-1.3.1
 	>=media-libs/speex-1.2.0
@@ -50,9 +50,9 @@ RDEPEND="
 	dbus? ( dev-qt/qtdbus:5 )
 	g15? ( app-misc/g15daemon )
 	jack? ( virtual/jack )
-	>=dev-libs/openssl-1.0.0b:0=
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
+	pipewire? ( media-video/pipewire )
 	speech? ( >=app-accessibility/speech-dispatcher-0.8.0 )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 "
@@ -74,7 +74,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-Dalsa="$(usex alsa)"
-		-DBUILD_TESTING="$(usex test)"
+		-Dtests="$(usex test)"
 		-Dbundled-celt="ON"
 		-Dbundled-opus="OFF"
 		-Dbundled-speex="OFF"
@@ -83,6 +83,8 @@ src_configure() {
 		-Djackaudio="$(usex jack)"
 		-Doverlay="ON"
 		-Dportaudio="$(usex portaudio)"
+		-Doverlay-xcompile="$(usex multilib)"
+		-Dpipewire="$(usex pipewire)"
 		-Dpulseaudio="$(usex pulseaudio)"
 		-Drnnoise="$(usex rnnoise)"
 		-Dserver="OFF"
@@ -92,14 +94,18 @@ src_configure() {
 		-Dzeroconf="$(usex zeroconf)"
 	)
 
+	if [[ "${PV}" != 9999 ]] ; then
+		mycmakeargs+=( -DBUILD_NUMBER="$(ver_cut 3)" )
+	fi
+
 	cmake_src_configure
 }
 
 src_install() {
 	cmake_src_install
 
-	if use amd64 ; then
-		# The 32bit overlay library gets automatically built and installed on x86_64 platforms.
+	if use amd64 && use multilib ; then
+		# The 32bit overlay library gets built when multilib is enabled.
 		# Install it into the correct 32bit lib dir.
 		local libdir_64="/usr/$(get_libdir)/mumble"
 		local libdir_32="/usr/$(get_abi_var LIBDIR x86)/mumble"
