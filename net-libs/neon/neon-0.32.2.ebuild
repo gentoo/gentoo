@@ -15,6 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~
 IUSE="doc expat gnutls kerberos libproxy nls pkcs11 ssl static-libs zlib"
 RESTRICT="test"
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="expat? ( dev-libs/expat:0=[${MULTILIB_USEDEP}] )
 	!expat? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	kerberos? ( virtual/krb5:0=[${MULTILIB_USEDEP}] )
@@ -32,11 +33,6 @@ RDEPEND="expat? ( dev-libs/expat:0=[${MULTILIB_USEDEP}] )
 	)
 	zlib? ( sys-libs/zlib:0=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
-BDEPEND="
-	app-text/docbook-xml-dtd:4.5
-	app-text/xmlto
-	virtual/pkgconfig
-"
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/neon-config
