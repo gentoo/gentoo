@@ -1,13 +1,13 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools plocale xdg
+inherit autotools xdg flag-o-matic plocale
 
 DESCRIPTION="DeaDBeeF is a modular audio player similar to foobar2000"
 HOMEPAGE="https://deadbeef.sourceforge.io/"
-SRC_URI="https://github.com/DeaDBeeF-Player/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="
 	GPL-2
@@ -15,8 +15,8 @@ LICENSE="
 	wavpack? ( BSD )
 "
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="aac alsa cdda converter cover dts ffmpeg flac +hotkeys lastfm mp3 musepack nls notify nullout opus oss pulseaudio shellexec +supereq threads vorbis wavpack"
+KEYWORDS="~amd64 ~x86"
+IUSE="aac alsa cdda converter cover dts ffmpeg flac +hotkeys lastfm mp3 musepack nls notify nullout opus oss pulseaudio sc68 shellexec +supereq threads vorbis wavpack"
 
 REQUIRED_USE="
 	|| ( alsa oss pulseaudio nullout )
@@ -43,17 +43,24 @@ DEPEND="
 	mp3? ( media-sound/mpg123 )
 	musepack? ( media-sound/musepack-tools )
 	nls? ( virtual/libintl )
-	notify? ( sys-apps/dbus )
+	notify? (
+		sys-apps/dbus
+		dev-libs/libdispatch
+	)
 	opus? ( media-libs/opusfile	)
 	pulseaudio? ( media-sound/pulseaudio )
 	vorbis? ( media-libs/libvorbis )
 	wavpack? ( media-sound/wavpack )
+	lastfm? ( dev-libs/libdispatch )
 "
 
 RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-util/intltool
 	sys-devel/gettext
+	sys-devel/clang
+	sys-devel/llvm
+	virtual/pkgconfig
 "
 
 PATCHES=(
@@ -86,7 +93,7 @@ src_prepare() {
 	drop_and_stub "${S}/intl"
 
 	# Plugins that are undesired for whatever reason, candidates for unbundling and such.
-	for i in adplug alac dumb ffap mms gme mono2stereo psf sc60 shn sid soundtouch wma; do
+	for i in adplug alac dumb ffap mms gme mono2stereo psf shn sid soundtouch wma; do
 		drop_and_stub "${S}/plugins/${i}"
 	done
 
@@ -94,6 +101,20 @@ src_prepare() {
 }
 
 src_configure () {
+	if ! tc-is-clang; then
+		AR=llvm-ar
+		CC=${CHOST}-clang
+		CXX=${CHOST}-clang++
+		NM=llvm-nm
+		RANLIB=llvm-ranlib
+
+		strip-unsupported-flags
+	fi
+
+	export HOST_CC="$(tc-getBUILD_CC)"
+	export HOST_CXX="$(tc-getBUILD_CXX)"
+	tc-export CC CXX LD AR NM OBJDUMP RANLIB PKG_CONFIG
+
 	local myconf=(
 		"--disable-static"
 		"--disable-staticlink"
@@ -112,7 +133,6 @@ src_configure () {
 		"--disable-mono2stereo"
 		"--disable-psf"
 		"--disable-rgscanner"
-		"--disable-sc68"
 		"--disable-shn"
 		"--disable-sid"
 		"--disable-sndfile"
@@ -148,6 +168,7 @@ src_configure () {
 		"$(use_enable nullout)"
 		"$(use_enable opus)"
 		"$(use_enable pulseaudio pulse)"
+		"$(use_enable sc68)"
 		"$(use_enable shellexec)"
 		"$(use_enable shellexec shellexecui)"
 		"$(use_enable lastfm lfm)"
