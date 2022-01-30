@@ -86,8 +86,7 @@ src_install() {
 	doman docs/buildbot.1
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r docs/examples
+		dodoc -r docs/examples
 	fi
 
 	newconfd "${FILESDIR}/buildmaster.confd" buildmaster
