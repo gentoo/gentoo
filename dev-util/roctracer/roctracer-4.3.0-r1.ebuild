@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -47,7 +47,7 @@ src_prepare() {
 	sed -e "/LIBRARY DESTINATION/s,lib,$(get_libdir)," \
 		-e "/add_subdirectory ( \${TEST_DIR} \${PROJECT_BINARY_DIR}/d" \
 		-e "/DESTINATION/s,\${DEST_NAME}/include,include/roctracer," \
-		-e "/install ( FILES \${PROJECT_BINARY_DIR}/d" \
+		-e "/install ( FILES \${PROJECT_BINARY_DIR}\/so/d" \
 		-e "/DESTINATION/s,\${DEST_NAME}/lib64,$(get_libdir)/roctracer,g" \
 		-i CMakeLists.txt || die
 
