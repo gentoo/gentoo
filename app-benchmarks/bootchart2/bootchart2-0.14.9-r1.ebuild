@@ -1,9 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit linux-info systemd toolchain-funcs
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
+
+inherit linux-info python-single-r1 systemd toolchain-funcs
 
 DESCRIPTION="Performance analysis and visualization of the system boot process"
 HOMEPAGE="https://github.com/xrmx/bootchart"
@@ -14,12 +16,14 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="+cairo"
 
+REQUIRED_USE="cairo? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!cairo? ( test )"
 
 RDEPEND="
-	!app-benchmarks/bootchart
-	cairo? ( dev-python/pycairo )
-	sys-apps/lsb-release"
+	cairo? ( ${PYTHON_DEPS} $(python_gen_cond_dep 'dev-python/pycairo[${PYTHON_USEDEP}]') )
+	sys-apps/lsb-release
+"
+BDEPEND="cairo? ( ${PYTHON_DEPS} )"
 
 S="${WORKDIR}"/${PN%2}-${PV}
 
@@ -31,17 +35,16 @@ PATCHES=(
 
 src_prepare() {
 	default
+	python_setup
 	tc-export CC
+
+	# Redirects systemd unit directory,
+	# as well as disable the built-in python setup.
 	sed -i \
 		-e "/^SYSTEMD_UNIT_DIR/s:=.*:= $(systemd_get_systemunitdir):g" \
+		-e "/^install/s:py-install-compile::g" \
+		-e "/pybootchartgui.1/d" \
 		Makefile || die
-
-	if ! use cairo; then
-		sed -i \
-			-e "/^install/s:py-install-compile::g" \
-			-e "/pybootchartgui.1/d" \
-			Makefile || die
-	fi
 
 	sed -i \
 		-e '/^EXIT_PROC/s:^.*$:EXIT_PROC="agetty mgetty mingetty:g' \
@@ -55,6 +58,16 @@ src_test() {
 src_install() {
 	export DOCDIR=/usr/share/doc/${PF}
 	default
+
+	if use cairo; then
+		doman pybootchartgui.1
+
+		python_scriptinto /usr/bin
+		python_newscript pybootchartgui{.py,}
+
+		python_domodule pybootchartgui
+		python_optimize
+	fi
 
 	# Note: LIBDIR is hardcoded as /lib in collector/common.h, so we shouldn't
 	# just change it. Since no libraries are installed, /lib is fine.
