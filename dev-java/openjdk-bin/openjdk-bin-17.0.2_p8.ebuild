@@ -33,6 +33,7 @@ SRC_URI="
 	$(abi_uri aarch64 arm64)
 	$(abi_uri x64 amd64)
 	$(abi_uri x64 amd64 musl)
+	$(abi_uri aarch64 arm64-macos)
 	$(abi_uri x64 x64-macos)
 "
 
