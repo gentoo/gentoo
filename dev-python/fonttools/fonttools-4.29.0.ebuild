@@ -48,7 +48,11 @@ src_configure() {
 	export FONTTOOLS_WITH_CYTHON=1
 }
 
-python_test() {
+src_test() {
 	# virtualx used when matplotlib is installed causing plot module tests to run
-	virtx epytest Tests fontTools
+	virtx distutils-r1_src_test
+}
+
+python_test() {
+	epytest Tests fontTools || die "Tests failed with ${EPYTHON}"
 }
