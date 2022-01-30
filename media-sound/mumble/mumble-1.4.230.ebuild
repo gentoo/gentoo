@@ -57,6 +57,7 @@ RDEPEND="
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 "
 DEPEND="${RDEPEND}
+	dev-qt/qtconcurrent:5
 	>=dev-libs/boost-1.41.0
 	x11-base/xorg-proto
 "
