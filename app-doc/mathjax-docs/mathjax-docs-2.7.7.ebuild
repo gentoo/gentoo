@@ -24,6 +24,10 @@ BDEPEND="
 	')
 "
 
+DOCS=(
+	README.md
+)
+
 src_prepare() {
 	default
 	egit_clean
@@ -31,10 +35,4 @@ src_prepare() {
 
 src_compile() {
 	build_sphinx "${S}"
-}
-
-src_install() {
-	local DOCS=( README.md )
-	default
-	dosym ${P} /usr/share/doc/${PN}-${SLOT}
 }
