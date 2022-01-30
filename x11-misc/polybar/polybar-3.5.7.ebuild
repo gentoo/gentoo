@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 XPP_COMMIT="044e69d05db7f89339bda1ccd1efe0263b01c8f6"
 I3IPCPP_COMMIT="86ddf7102c6903ae0cc543071e2d375403fc0727"
 
