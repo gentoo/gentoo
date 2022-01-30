@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -60,7 +60,7 @@ RESTRICT=test
 src_configure() {
 	# Without this, the build system tries to use "the highest possible"
 	# optimization level and will override what's in your CXXFLAGS.
-	export CXXOPT=$(get-flag -O)
+	export CXXOPT=""
 
 	tc-export CC CXX
 
@@ -71,7 +71,10 @@ src_configure() {
 	use bliss && append-cxxflags -DBLISS_USE_GMP
 
 	# This isn't an autotools ./configure script, so a lot of things
-	# don't work the way you'd expect.
+	# don't work the way you'd expect. We disable openmp unconditionally
+	# because it's only supposedly only used for building the bundled
+	# libnormaliz (we unbundle it) and for something called to_simplex
+	# that I can't find anywhere in the polymake source.
 	./configure --prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
 		--libexecdir="${EPREFIX}/usr/$(get_libdir)/polymake" \
@@ -81,6 +84,7 @@ src_configure() {
 		--without-native \
 		--without-scip \
 		--without-soplex \
+		--without-openmp \
 		$(use_with bliss bliss "${EPREFIX}/usr") \
 		$(use_with cdd cdd "${EPREFIX}/usr") \
 		$(use_with flint flint "${EPREFIX}/usr") \
