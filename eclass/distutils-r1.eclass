@@ -1319,8 +1319,10 @@ distutils-r1_run_phase() {
 	local -x LDSHARED="${CC} ${ldopts}" LDCXXSHARED="${CXX} ${ldopts}"
 
 	"${@}"
+	local ret=${?}
 
 	cd "${_DISTUTILS_INITIAL_CWD}" || die
+	return "${ret}"
 }
 
 # @FUNCTION: _distutils-r1_run_common_phase
@@ -1378,14 +1380,14 @@ _distutils-r1_run_foreach_impl() {
 
 distutils-r1_src_prepare() {
 	debug-print-function ${FUNCNAME} "${@}"
-
+	local ret=0
 	local _DISTUTILS_DEFAULT_CALLED
 
 	# common preparations
 	if declare -f python_prepare_all >/dev/null; then
-		python_prepare_all
+		python_prepare_all || ret=${?}
 	else
-		distutils-r1_python_prepare_all
+		distutils-r1_python_prepare_all || ret=${?}
 	fi
 
 	if [[ ! ${_DISTUTILS_DEFAULT_CALLED} ]]; then
@@ -1393,35 +1395,45 @@ distutils-r1_src_prepare() {
 	fi
 
 	if declare -f python_prepare >/dev/null; then
-		_distutils-r1_run_foreach_impl python_prepare
+		_distutils-r1_run_foreach_impl python_prepare || ret=${?}
 	fi
+
+	return ${ret}
 }
 
 distutils-r1_src_configure() {
+	debug-print-function ${FUNCNAME} "${@}"
+	local ret=0
+
 	python_export_utf8_locale
 	[[ ${EAPI} == 6 ]] && xdg_environment_reset # Bug 577704
 
 	if declare -f python_configure >/dev/null; then
-		_distutils-r1_run_foreach_impl python_configure
+		_distutils-r1_run_foreach_impl python_configure || ret=${?}
 	fi
 
 	if declare -f python_configure_all >/dev/null; then
-		_distutils-r1_run_common_phase python_configure_all
+		_distutils-r1_run_common_phase python_configure_all || ret=${?}
 	fi
+
+	return ${ret}
 }
 
 distutils-r1_src_compile() {
 	debug-print-function ${FUNCNAME} "${@}"
+	local ret=0
 
 	if declare -f python_compile >/dev/null; then
-		_distutils-r1_run_foreach_impl python_compile
+		_distutils-r1_run_foreach_impl python_compile || ret=${?}
 	else
-		_distutils-r1_run_foreach_impl distutils-r1_python_compile
+		_distutils-r1_run_foreach_impl distutils-r1_python_compile || ret=${?}
 	fi
 
 	if declare -f python_compile_all >/dev/null; then
-		_distutils-r1_run_common_phase python_compile_all
+		_distutils-r1_run_common_phase python_compile_all || ret=${?}
 	fi
+
+	return ${ret}
 }
 
 # @FUNCTION: _distutils-r1_clean_egg_info
@@ -1440,17 +1452,20 @@ _distutils-r1_clean_egg_info() {
 
 distutils-r1_src_test() {
 	debug-print-function ${FUNCNAME} "${@}"
+	local ret=0
 
 	if declare -f python_test >/dev/null; then
-		_distutils-r1_run_foreach_impl python_test
+		_distutils-r1_run_foreach_impl python_test || ret=${?}
 		if [[ ! ${DISTUTILS_USE_PEP517} ]]; then
 			_distutils-r1_run_foreach_impl _distutils-r1_clean_egg_info
 		fi
 	fi
 
 	if declare -f python_test_all >/dev/null; then
-		_distutils-r1_run_common_phase python_test_all
+		_distutils-r1_run_common_phase python_test_all || ret=${?}
 	fi
+
+	return ${ret}
 }
 
 # @FUNCTION: _distutils-r1_check_namespace_pth
@@ -1482,20 +1497,23 @@ _distutils-r1_check_namespace_pth() {
 
 distutils-r1_src_install() {
 	debug-print-function ${FUNCNAME} "${@}"
+	local ret=0
 
 	if declare -f python_install >/dev/null; then
-		_distutils-r1_run_foreach_impl python_install
+		_distutils-r1_run_foreach_impl python_install || ret=${?}
 	else
-		_distutils-r1_run_foreach_impl distutils-r1_python_install
+		_distutils-r1_run_foreach_impl distutils-r1_python_install || ret=${?}
 	fi
 
 	if declare -f python_install_all >/dev/null; then
-		_distutils-r1_run_common_phase python_install_all
+		_distutils-r1_run_common_phase python_install_all || ret=${?}
 	else
-		_distutils-r1_run_common_phase distutils-r1_python_install_all
+		_distutils-r1_run_common_phase distutils-r1_python_install_all || ret=${?}
 	fi
 
 	_distutils-r1_check_namespace_pth
+
+	return ${ret}
 }
 
 _DISTUTILS_R1=1
