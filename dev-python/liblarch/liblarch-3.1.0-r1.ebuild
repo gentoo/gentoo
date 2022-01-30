@@ -24,6 +24,6 @@ RDEPEND="${DEPEND}"
 
 distutils_enable_tests pytest
 
-python_test() {
-	virtx epytest
+src_test() {
+	virtx distutils-r1_src_test
 }
