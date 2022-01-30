@@ -16,7 +16,8 @@ src_prepare() {
 	default
 
 	sed -i -e '/^LDFLAGS/{s:-s::g; s:= :+= :g}' \
-		-e '/^CFLAGS/{s: -Os::g; s:= :+= :g}' config.mk || die
+		-e '/^CFLAGS/{s: -Os::g; s:= :+= :g}' \
+		-e 's|share/doc|share|' config.mk || die
 }
 
 src_compile() {
@@ -27,6 +28,7 @@ src_install() {
 	emake \
 		DESTDIR="${D}" \
 		PREFIX="${EPREFIX}"/usr \
-		DOCDIR="${EPREFIX}"/usr/share/doc/${PF} \
 		install
+
+	dodoc CHANGES README FAQ
 }
