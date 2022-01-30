@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,6 +17,10 @@ IUSE="debug"
 DEPEND="sys-fs/sysfsutils"
 RDEPEND="${DEPEND}
 	sys-apps/dmidecode"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-mitac-hawk.patch
+)
 
 src_prepare() {
 	default
