@@ -1428,6 +1428,10 @@ distutils-r1_src_compile() {
 # Those files ended up being unversioned, and caused issues:
 # https://bugs.gentoo.org/534058
 _distutils-r1_clean_egg_info() {
+	if [[ ${DISTUTILS_USE_PEP517} ]]; then
+		die "${FUNCNAME} is not implemented in PEP517 mode"
+	fi
+
 	rm -rf "${BUILD_DIR}"/lib/*.egg-info || die
 }
 
@@ -1436,7 +1440,9 @@ distutils-r1_src_test() {
 
 	if declare -f python_test >/dev/null; then
 		_distutils-r1_run_foreach_impl python_test
-		_distutils-r1_run_foreach_impl _distutils-r1_clean_egg_info
+		if [[ ! ${DISTUTILS_USE_PEP517} ]]; then
+			_distutils-r1_run_foreach_impl _distutils-r1_clean_egg_info
+		fi
 	fi
 
 	if declare -f python_test_all >/dev/null; then
