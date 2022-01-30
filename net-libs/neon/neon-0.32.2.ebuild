@@ -39,12 +39,6 @@ MULTILIB_CHOST_TOOLS=(
 DOCS=( AUTHORS BUGS NEWS README.md THANKS TODO )
 
 src_prepare() {
-	# Use CHOST-prefixed version of xml2-config for cross-compilation.
-	sed -e "s/AC_CHECK_PROG(XML2_CONFIG,/AC_CHECK_TOOL(XML2_CONFIG,/" -i macros/neon-xml-parser.m4 || die "sed failed"
-
-	# Fix compatibility with OpenSSL >=1.1.
-	sed -e "s/RSA_F_RSA_PRIVATE_ENCRYPT/RSA_F_RSA_OSSL_PRIVATE_ENCRYPT/" -i src/ne_pkcs11.c || die "sed failed"
-
 	eapply_user
 
 	AT_M4DIR="macros" eautoreconf
