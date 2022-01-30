@@ -33,7 +33,7 @@ BDEPEND="
 distutils_enable_tests pytest
 distutils_enable_sphinx doc dev-python/mock
 
-python_test() {
+src_test() {
 	local -x MPLBACKEND=Agg
-	virtx epytest
+	virtx distutils-r1_src_test
 }
