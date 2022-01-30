@@ -4,8 +4,7 @@
 EAPI="6"
 
 DESCRIPTION="wrapper for automake to manage multiple automake versions"
-HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI=""
+HOMEPAGE="https://gitweb.gentoo.org/proj/autotools-wrappers.git"
 
 LICENSE="GPL-2"
 SLOT="0"
