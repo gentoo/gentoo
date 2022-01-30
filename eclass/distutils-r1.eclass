@@ -544,6 +544,9 @@ esetup.py() {
 	if [[ ${DISTUTILS_USE_SETUPTOOLS} == pyproject.toml ]]; then
 		setup_py=( -m pyproject2setuppy )
 	elif [[ ! -f setup.py ]]; then
+		if [[ ! -f setup.cfg ]]; then
+			die "${FUNCNAME}: setup.py nor setup.cfg not found"
+		fi
 		setup_py=( -c "from setuptools import setup; setup()" )
 	fi
 
