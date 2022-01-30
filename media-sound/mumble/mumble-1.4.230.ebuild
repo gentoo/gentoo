@@ -29,6 +29,9 @@ IUSE="+alsa +dbus debug g15 jack pipewire portaudio pulseaudio multilib nls +rnn
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	>=dev-libs/openssl-1.0.0b:0=
+	dev-libs/poco
+	>=dev-libs/protobuf-2.2.0:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
@@ -36,8 +39,6 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	dev-libs/poco
-	>=dev-libs/protobuf-2.2.0:=
 	>=media-libs/libsndfile-1.0.20[-minimal]
 	>=media-libs/opus-1.3.1
 	>=media-libs/speex-1.2.0
@@ -49,7 +50,6 @@ RDEPEND="
 	dbus? ( dev-qt/qtdbus:5 )
 	g15? ( app-misc/g15daemon )
 	jack? ( virtual/jack )
-	>=dev-libs/openssl-1.0.0b:0=
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
 	pipewire? ( media-video/pipewire )
@@ -93,6 +93,10 @@ src_configure() {
 		-Dupdate="OFF"
 		-Dzeroconf="$(usex zeroconf)"
 	)
+
+	if [[ "${PV}" != 9999 ]] ; then
+		mycmakeargs+=( -DBUILD_NUMBER="$(ver_cut 3)" )
+	fi
 
 	cmake_src_configure
 }
