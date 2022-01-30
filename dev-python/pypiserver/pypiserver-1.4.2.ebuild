@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,6 +40,8 @@ python_test() {
 		tests/test_server.py::test_hash_algos
 		tests/test_server.py::test_pipInstall_openOk
 		tests/test_server.py::test_pipInstall_authedOk
+		# TODO
+		tests/test_app.py::test_root_count
 	)
 
 	if ! has_version "dev-python/twine[${PYTHON_USEDEP}]"; then
