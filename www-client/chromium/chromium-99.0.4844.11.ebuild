@@ -13,7 +13,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic ninja-utils pax-utils python-
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="2"
+PATCHSET="3"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz"
@@ -21,44 +21,64 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0/dev"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="component-build cups cpu_flags_arm_neon debug +hangouts headless +js-type-check kerberos +official pic +proprietary-codecs pulseaudio screencast selinux +suid +system-ffmpeg +system-harfbuzz +system-icu +system-png vaapi wayland widevine"
+IUSE="component-build cups cpu_flags_arm_neon debug gtk4 +hangouts headless +js-type-check kerberos libcxx +official pic +proprietary-codecs pulseaudio screencast selinux +suid +system-ffmpeg +system-harfbuzz +system-icu +system-png vaapi wayland widevine"
 REQUIRED_USE="
-	component-build? ( !suid )
+	component-build? ( !suid !libcxx )
 	screencast? ( wayland )
 "
 
 COMMON_X_DEPEND="
-	media-libs/mesa:=[gbm(+)]
-	x11-libs/libX11:=
+	x11-libs/gdk-pixbuf:2
 	x11-libs/libXcomposite:=
 	x11-libs/libXcursor:=
 	x11-libs/libXdamage:=
-	x11-libs/libXext:=
 	x11-libs/libXfixes:=
 	>=x11-libs/libXi-1.6.0:=
 	x11-libs/libXrandr:=
 	x11-libs/libXrender:=
 	x11-libs/libXtst:=
-	x11-libs/libxcb:=
 	x11-libs/libxshmfence:=
-	vaapi? ( >=x11-libs/libva-2.7:=[X,drm] )
+	virtual/opengl
 "
 
-COMMON_DEPEND="
-	app-arch/bzip2:=
-	cups? ( >=net-print/cups-1.3.11:= )
-	dev-libs/expat:=
-	dev-libs/glib:2
+COMMON_SNAPSHOT_DEPEND="
+	system-icu? ( >=dev-libs/icu-69.1:= )
 	>=dev-libs/libxml2-2.9.4-r3:=[icu]
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.26:=
-	>=media-libs/alsa-lib-1.0.19:=
+	!libcxx? ( >=dev-libs/re2-0.2019.08.01:= )
+	dev-libs/libxslt:=
 	media-libs/fontconfig:=
 	>=media-libs/freetype-2.11.0-r1:=
 	system-harfbuzz? ( >=media-libs/harfbuzz-3:0=[icu(-)] )
 	media-libs/libjpeg-turbo:=
 	system-png? ( media-libs/libpng:=[-apng] )
-	pulseaudio? ( media-sound/pulseaudio:= )
+	>=media-libs/libwebp-0.4.0:=
+	media-libs/mesa:=[gbm(+)]
+	>=media-libs/openh264-1.6.0:=
+	sys-libs/zlib:=
+	x11-libs/libdrm:=
+	!headless? (
+		dev-libs/glib:2
+		>=media-libs/alsa-lib-1.0.19:=
+		pulseaudio? ( media-sound/pulseaudio:= )
+		kerberos? ( virtual/krb5 )
+		vaapi? ( >=x11-libs/libva-2.7:=[X,drm] )
+		x11-libs/libX11:=
+		x11-libs/libXext:=
+		x11-libs/libxcb:=
+		x11-libs/libxkbcommon:=
+		wayland? (
+			dev-libs/wayland:=
+			screencast? ( media-video/pipewire:= )
+		)
+	)
+"
+
+COMMON_DEPEND="
+	${COMMON_SNAPSHOT_DEPEND}
+	app-arch/bzip2:=
+	dev-libs/expat:=
 	system-ffmpeg? (
 		>=media-video/ffmpeg-4.3:=
 		|| (
@@ -69,45 +89,46 @@ COMMON_DEPEND="
 	)
 	net-misc/curl[ssl]
 	sys-apps/dbus:=
-	sys-apps/pciutils:=
-	virtual/udev
-	x11-libs/cairo:=
-	x11-libs/gdk-pixbuf:2
-	x11-libs/libxkbcommon:=
-	x11-libs/pango:=
 	media-libs/flac:=
-	>=media-libs/libwebp-0.4.0:=
 	sys-libs/zlib:=[minizip]
-	kerberos? ( virtual/krb5 )
 	!headless? (
 		${COMMON_X_DEPEND}
 		>=app-accessibility/at-spi2-atk-2.26:2
 		>=app-accessibility/at-spi2-core-2.26:2
 		>=dev-libs/atk-2.26
-		x11-libs/gtk+:3[X]
-		wayland? (
-			dev-libs/wayland:=
-			screencast? ( media-video/pipewire:= )
-			x11-libs/gtk+:3[wayland,X]
-			x11-libs/libdrm:=
-		)
+		cups? ( >=net-print/cups-1.3.11:= )
+		sys-apps/pciutils:=
+		virtual/udev
+		x11-libs/cairo:=
+		x11-libs/pango:=
 	)
 "
 RDEPEND="${COMMON_DEPEND}
+	!headless? (
+		|| (
+			x11-libs/gtk+:3[X,wayland?]
+			gui-libs/gtk:4[X,wayland?]
+		)
+	)
 	x11-misc/xdg-utils
-	virtual/opengl
 	virtual/ttf-fonts
 	selinux? ( sec-policy/selinux-chromium )
 "
 DEPEND="${COMMON_DEPEND}
+	!headless? (
+		gtk4? ( gui-libs/gtk:4[X,wayland?] )
+		!gtk4? ( x11-libs/gtk+:3[X,wayland?] )
+	)
 "
 # dev-vcs/git - https://bugs.gentoo.org/593476
 BDEPEND="
+	${COMMON_SNAPSHOT_DEPEND}
 	${PYTHON_DEPS}
 	$(python_gen_any_dep '
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	')
 	>=app-arch/gzip-1.7
+	libcxx? ( >=sys-devel/clang-12 )
 	dev-lang/perl
 	>=dev-util/gn-0.1807
 	dev-vcs/git
@@ -122,24 +143,9 @@ BDEPEND="
 
 # These are intended for ebuild maintainer use to force clang if GCC is broken.
 : ${CHROMIUM_FORCE_CLANG=no}
-: ${CHROMIUM_FORCE_LIBCXX=no}
 
 if [[ ${CHROMIUM_FORCE_CLANG} == yes ]]; then
 	BDEPEND+=" >=sys-devel/clang-12"
-fi
-
-if [[ ${CHROMIUM_FORCE_LIBCXX} == yes ]]; then
-	RDEPEND+=" >=sys-libs/libcxx-12"
-	DEPEND+=" >=sys-libs/libcxx-12"
-else
-	COMMON_DEPEND="
-		dev-libs/libxslt:=
-		>=dev-libs/re2-0.2019.08.01:=
-		>=media-libs/openh264-1.6.0:=
-		system-icu? ( >=dev-libs/icu-69.1:= )
-	"
-	RDEPEND+="${COMMON_DEPEND}"
-	DEPEND+="${COMMON_DEPEND}"
 fi
 
 if ! has chromium_pkg_die ${EBUILD_DEATH_HOOKS}; then
@@ -185,8 +191,9 @@ pre_build_checks() {
 		if tc-is-gcc && ! ver_test "$(gcc-version)" -ge 9.2; then
 			die "At least gcc 9.2 is required"
 		fi
-		if [[ ${CHROMIUM_FORCE_CLANG} == yes ]] || tc-is-clang; then
-			CPP="${CHOST}-clang++ -E"
+		if [[ ${CHROMIUM_FORCE_CLANG} == yes ]] || tc-is-clang || use libcxx; then
+			tc-is-cross-compiler && CPP=${CBUILD}-clang++ || CPP=${CHOST}-clang++
+			CPP+=" -E"
 			if ! ver_test "$(clang-major-version)" -ge 12; then
 				die "At least clang 12 is required"
 			fi
@@ -196,6 +203,7 @@ pre_build_checks() {
 	# Check build requirements, bug #541816 and bug #471810 .
 	CHECKREQS_MEMORY="4G"
 	CHECKREQS_DISK_BUILD="9G"
+	tc-is-cross-compiler && CHECKREQS_DISK_BUILD="12G"
 	if ( shopt -s extglob; is-flagq '-g?(gdb)?([1-9])' ); then
 		if use custom-cflags || use component-build; then
 			CHECKREQS_DISK_BUILD="25G"
@@ -209,6 +217,13 @@ pre_build_checks() {
 
 pkg_pretend() {
 	pre_build_checks
+
+	if use headless; then
+		local headless_unused_flags=("cups" "kerberos" "pulseaudio" "vaapi" "wayland")
+		for myiuse in ${headless_unused_flags[@]}; do
+			use ${myiuse} && ewarn "Ignoring USE=${myiuse} since USE=headless is set."
+		done
+	fi
 }
 
 pkg_setup() {
@@ -236,6 +251,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-glibc-2.34-r1.patch"
 		"${FILESDIR}/chromium-use-oauth2-client-switches-as-default.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
+		"${FILESDIR}/chromium-cross-compile.patch"
 	)
 
 	default
@@ -492,6 +508,9 @@ src_prepare() {
 	if ! use system-png; then
 		keeplibs+=( third_party/libpng )
 	fi
+	if use libcxx; then
+		keeplibs+=( third_party/re2 )
+	fi
 	if use system-harfbuzz; then
 		keeplibs+=( third_party/harfbuzz-ng/utils )
 	else
@@ -499,15 +518,6 @@ src_prepare() {
 	fi
 	if use wayland && ! use headless ; then
 		keeplibs+=( third_party/wayland )
-	fi
-	if [[ ${CHROMIUM_FORCE_LIBCXX} == yes ]]; then
-		keeplibs+=( third_party/libxml )
-		keeplibs+=( third_party/libxslt )
-		keeplibs+=( third_party/openh264 )
-		keeplibs+=( third_party/re2 )
-		if use system-icu; then
-			keeplibs+=( third_party/icu )
-		fi
 	fi
 	if use arm64 || use ppc64 ; then
 		keeplibs+=( third_party/swiftshader/third_party/llvm-10.0 )
@@ -542,19 +552,23 @@ src_configure() {
 	# Make sure the build system will use the right tools, bug #340795.
 	tc-export AR CC CXX NM
 
-	if [[ ${CHROMIUM_FORCE_CLANG} == yes ]] && ! tc-is-clang; then
-		# Force clang since gcc is pretty broken at the moment.
-		CC=${CHOST}-clang
-		CXX=${CHOST}-clang++
+	if { [[ ${CHROMIUM_FORCE_CLANG} == yes ]] || use libcxx; } && ! tc-is-clang; then
+		# Force clang since gcc is either broken or build is using libcxx.
+		if tc-is-cross-compiler; then
+			CC="${CBUILD}-clang -target ${CHOST} --sysroot ${ESYSROOT}"
+			CXX="${CBUILD}-clang++ -target ${CHOST} --sysroot ${ESYSROOT}"
+			BUILD_CC=${CBUILD}-clang
+			BUILD_CXX=${CBUILD}-clang++
+		else
+			CC=${CHOST}-clang
+			CXX=${CHOST}-clang++
+		fi
 		strip-unsupported-flags
 	fi
 
-	if tc-is-clang; then
+	if tc-is-clang || use libcxx; then
 		myconf_gn+=" is_clang=true clang_use_chrome_plugins=false"
 	else
-		if [[ ${CHROMIUM_FORCE_LIBCXX} == yes ]]; then
-			die "Compiling with sys-libs/libcxx requires clang."
-		fi
 		myconf_gn+=" is_clang=false"
 	fi
 
@@ -565,6 +579,18 @@ src_configure() {
 		tc-export BUILD_{AR,CC,CXX,NM}
 		myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:host\""
 		myconf_gn+=" v8_snapshot_toolchain=\"//build/toolchain/linux/unbundle:host\""
+		myconf_gn+=" pkg_config=\"$(tc-get_PKG_CONFIG)\""
+		myconf_gn+=" host_pkg_config=\"$(tc-getBUILD_PKG_CONFIG)\""
+
+		# setup cups-config, build system only uses --libs option
+		if use cups; then
+			mkdir "${T}/cups-config" || die
+			cp "${ESYSROOT}/usr/bin/${CHOST}-cups-config" "${T}/cups-config/cups-config" || die
+			export PATH="${PATH}:${T}/cups-config"
+		fi
+
+		# Don't inherit PKG_CONFIG_PATH from environment
+		local -x PKG_CONFIG_PATH=
 	else
 		myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:default\""
 	fi
@@ -600,6 +626,9 @@ src_configure() {
 		libdrm
 		libjpeg
 		libwebp
+		libxml
+		libxslt
+		openh264
 		zlib
 	)
 	if use system-ffmpeg; then
@@ -611,11 +640,8 @@ src_configure() {
 	if use system-png; then
 		gn_system_libraries+=( libpng )
 	fi
-	if [[ ${CHROMIUM_FORCE_LIBCXX} != yes ]]; then
-		# unbundle only without libc++, because libc++ is not fully ABI compatible with libstdc++
-		gn_system_libraries+=( libxml )
-		gn_system_libraries+=( libxslt )
-		gn_system_libraries+=( openh264 )
+	# re2 library interface relies on std::string and std::vector
+	if ! use libcxx; then
 		gn_system_libraries+=( re2 )
 	fi
 	build/linux/unbundle/replace_gn_files.py --system-libraries "${gn_system_libraries[@]}" || die
@@ -630,11 +656,21 @@ src_configure() {
 	myconf_gn+=" enable_js_type_check=$(usex js-type-check true false)"
 	myconf_gn+=" enable_hangout_services_extension=$(usex hangouts true false)"
 	myconf_gn+=" enable_widevine=$(usex widevine true false)"
-	myconf_gn+=" use_cups=$(usex cups true false)"
-	myconf_gn+=" use_kerberos=$(usex kerberos true false)"
-	myconf_gn+=" use_pulseaudio=$(usex pulseaudio true false)"
-	myconf_gn+=" use_vaapi=$(usex vaapi true false)"
-	myconf_gn+=" rtc_use_pipewire=$(usex screencast true false)"
+
+	if use headless; then
+		myconf_gn+=" use_cups=false"
+		myconf_gn+=" use_kerberos=false"
+		myconf_gn+=" use_pulseaudio=false"
+		myconf_gn+=" use_vaapi=false"
+		myconf_gn+=" rtc_use_pipewire=false"
+	else
+		myconf_gn+=" use_cups=$(usex cups true false)"
+		myconf_gn+=" use_kerberos=$(usex kerberos true false)"
+		myconf_gn+=" use_pulseaudio=$(usex pulseaudio true false)"
+		myconf_gn+=" use_vaapi=$(usex vaapi true false)"
+		myconf_gn+=" rtc_use_pipewire=$(usex screencast true false)"
+		myconf_gn+=" gtk_version=$(usex gtk4 4 3)"
+	fi
 
 	# TODO: link_pulseaudio=true for GN.
 
@@ -643,7 +679,8 @@ src_configure() {
 	# Never use bundled gold binary. Disable gold linker flags for now.
 	# Do not use bundled clang.
 	# Trying to use gold results in linker crash.
-	myconf_gn+=" use_gold=false use_sysroot=false use_custom_libcxx=false"
+	myconf_gn+=" use_gold=false use_sysroot=false"
+	myconf_gn+=" use_custom_libcxx=$(usex libcxx true false)"
 
 	# Disable forced lld, bug 641556
 	myconf_gn+=" use_lld=false"
@@ -686,11 +723,6 @@ src_configure() {
 		if [[ ${myarch} == amd64 || ${myarch} == x86 ]]; then
 			filter-flags -mno-mmx -mno-sse2 -mno-ssse3 -mno-sse4.1 -mno-avx -mno-avx2 -mno-fma -mno-fma4
 		fi
-	fi
-
-	if [[ ${CHROMIUM_FORCE_LIBCXX} == yes ]]; then
-		append-flags -stdlib=libc++
-		append-ldflags -stdlib=libc++
 	fi
 
 	if [[ $myarch = amd64 ]] ; then
@@ -749,10 +781,16 @@ src_configure() {
 	fi
 
 	# Disable unknown warning message from clang.
-	tc-is-clang && append-flags -Wno-unknown-warning-option
+	if tc-is-clang; then
+		append-flags -Wno-unknown-warning-option
+		if tc-is-cross-compiler; then
+			export BUILD_CXXFLAGS+=" -Wno-unknown-warning-option"
+			export BUILD_CFLAGS+=" -Wno-unknown-warning-option"
+		fi
+	fi
 
-	# Explicitly disable ICU data file support for system-icu builds.
-	if use system-icu; then
+	# Explicitly disable ICU data file support for system-icu/headless builds.
+	if use system-icu || use headless; then
 		myconf_gn+=" icu_use_data_file=false"
 	fi
 
@@ -763,7 +801,12 @@ src_configure() {
 	if use wayland || use headless; then
 		if use headless; then
 			myconf_gn+=" ozone_platform=\"headless\""
-			myconf_gn+=" use_x11=false"
+			myconf_gn+=" use_xkbcommon=false use_gtk=false"
+			myconf_gn+=" use_glib=false use_gio=false"
+			myconf_gn+=" use_pangocairo=false use_alsa=false"
+			myconf_gn+=" use_libpci=false use_udev=false"
+			myconf_gn+=" enable_print_preview=false"
+			myconf_gn+=" enable_remoting=false"
 		else
 			myconf_gn+=" ozone_platform_wayland=true"
 			myconf_gn+=" use_system_libdrm=true"
@@ -897,7 +940,7 @@ src_install() {
 		[[ ${#files[@]} -gt 0 ]] && doins "${files[@]}"
 	)
 
-	if ! use system-icu; then
+	if ! use system-icu && ! use headless; then
 		doins out/Release/icudtl.dat
 	fi
 
@@ -947,15 +990,22 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	readme.gentoo_print_elog
 
-	if use vaapi; then
-		elog "VA-API is disabled by default at runtime. You have to enable it"
-		elog "by adding --enable-features=VaapiVideoDecoder to CHROMIUM_FLAGS"
-		elog "in /etc/chromium/default."
-	fi
-	if use screencast; then
-		elog "Screencast is disabled by default at runtime. Either enable it"
-		elog "by navigating to chrome://flags/#enable-webrtc-pipewire-capturer"
-		elog "inside Chromium or add --enable-webrtc-pipewire-capturer"
-		elog "to CHROMIUM_FLAGS in /etc/chromium/default."
+	if ! use headless; then
+		if use vaapi; then
+			elog "VA-API is disabled by default at runtime. You have to enable it"
+			elog "by adding --enable-features=VaapiVideoDecoder to CHROMIUM_FLAGS"
+			elog "in /etc/chromium/default."
+		fi
+		if use screencast; then
+			elog "Screencast is disabled by default at runtime. Either enable it"
+			elog "by navigating to chrome://flags/#enable-webrtc-pipewire-capturer"
+			elog "inside Chromium or add --enable-webrtc-pipewire-capturer"
+			elog "to CHROMIUM_FLAGS in /etc/chromium/default."
+		fi
+		if use gtk4; then
+			elog "Chromium prefers GTK3 over GTK4 at runtime. To override this"
+			elog "behavior you need to pass --gtk-version=4, e.g. by adding it"
+			elog "to CHROMIUM_FLAGS in /etc/chromium/default."
+		fi
 	fi
 }
