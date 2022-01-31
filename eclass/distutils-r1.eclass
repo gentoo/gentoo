@@ -213,15 +213,17 @@ _distutils_set_globals() {
 		[[ -n ${rdep} ]] && rdep="$(python_gen_cond_dep "${rdep}")"
 	fi
 
-	RDEPEND="${PYTHON_DEPS} ${rdep}"
-	if [[ ${EAPI} != 6 ]]; then
-		BDEPEND="${PYTHON_DEPS} ${bdep}"
-	else
-		DEPEND="${PYTHON_DEPS} ${bdep}"
+	if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
+		RDEPEND="${PYTHON_DEPS} ${rdep}"
+		if [[ ${EAPI} != 6 ]]; then
+			BDEPEND="${PYTHON_DEPS} ${bdep}"
+		else
+			DEPEND="${PYTHON_DEPS} ${bdep}"
+		fi
+		REQUIRED_USE=${PYTHON_REQUIRED_USE}
 	fi
-	REQUIRED_USE=${PYTHON_REQUIRED_USE}
 }
-[[ ! ${DISTUTILS_OPTIONAL} ]] && _distutils_set_globals
+_distutils_set_globals
 unset -f _distutils_set_globals
 
 # @ECLASS-VARIABLE: PATCHES
