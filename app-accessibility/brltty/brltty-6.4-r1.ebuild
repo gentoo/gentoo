@@ -74,6 +74,10 @@ BDEPEND="
 
 HTML_DOCS=( "${S}"/Documents/Manual-BrlAPI/. )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-respect-AR.patch
+)
+
 src_prepare() {
 	default
 
