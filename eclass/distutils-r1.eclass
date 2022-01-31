@@ -128,6 +128,24 @@ esac
 # It is available only in non-PEP517 mode.  It needs to be set before
 # the inherit line.
 
+# @ECLASS-VARIABLE: DISTUTILS_DEPS
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# This is an eclass-generated build-time dependency string for the build
+# system packages.  This string is automatically appended to BDEPEND
+# unless DISTUTILS_OPTIONAL is used.  This variable is available only
+# in PEP 517 mode.
+#
+# Example use:
+# @CODE
+# DISTUTILS_OPTIONAL=1
+# # ...
+# RDEPEND="${PYTHON_DEPS}"
+# BDEPEND="
+#     ${PYTHON_DEPS}
+#     ${DISTUTILS_DEPS}"
+# @CODE
+
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
 [[ ${EAPI} == 6 ]] && inherit eutils xdg-utils
@@ -156,7 +174,7 @@ _distutils_set_globals() {
 
 		# installer is used to install the wheel
 		# tomli is used to read build-backend from pyproject.toml
-		bdep+='
+		bdep='
 			>=dev-python/installer-0.4.0_p20220124[${PYTHON_USEDEP}]
 			dev-python/tomli[${PYTHON_USEDEP}]'
 		case ${DISTUTILS_USE_PEP517} in
@@ -211,6 +229,20 @@ _distutils_set_globals() {
 	else
 		[[ -n ${bdep} ]] && bdep="$(python_gen_cond_dep "${bdep}")"
 		[[ -n ${rdep} ]] && rdep="$(python_gen_cond_dep "${rdep}")"
+	fi
+
+	if [[ ${DISTUTILS_USE_PEP517} ]]; then
+		if [[ ${DISTUTILS_DEPS+1} ]]; then
+			if [[ ${DISTUTILS_DEPS} != "${bdep}" ]]; then
+				eerror "DISTUTILS_DEPS have changed between inherits!"
+				eerror "Before: ${DISTUTILS_DEPS}"
+				eerror "Now   : ${bdep}"
+				die "DISTUTILS_DEPS integrity check failed"
+			fi
+		else
+			DISTUTILS_DEPS=${bdep}
+			readonly DISTUTILS_DEPS
+		fi
 	fi
 
 	if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
