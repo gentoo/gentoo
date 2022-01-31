@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 MY_P="CherryPy-${PV}"
@@ -40,6 +40,11 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_prepare_all() {
+	local PATCHES=(
+		# https://github.com/cherrypy/cherrypy/pull/1946
+		"${FILESDIR}"/${P}-close-files.patch
+	)
+
 	sed -r -e '/(pytest-sugar|pytest-cov)/ d' \
 		-i setup.py || die
 
