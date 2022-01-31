@@ -4,7 +4,7 @@
 EAPI=8
 
 CMAKE_ECLASS=cmake
-inherit cmake-multilib
+inherit cmake-multilib flag-o-matic
 
 MY_PV="${PV%.*}${PV##*.}"
 DESCRIPTION="Low bit rate speech codec"
@@ -25,6 +25,9 @@ RESTRICT="test"
 #BDEPEND="test? ( sci-mathematics/octave )"
 
 multilib_src_configure() {
+	# bug #817437
+	replace-flags -Os -O2
+
 	local mycmakeargs=(
 		-DUNITTEST=$(usex test)
 		-DINSTALL_EXAMPLES=$(usex examples)
