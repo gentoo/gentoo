@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit dune
 
@@ -19,13 +19,15 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-lang/ocaml:=
+	<dev-ml/jst-config-0.15.0
+	>=dev-ml/ppx_optcomp-0.14.3:=
 	dev-ml/base:=
 	dev-ml/base_bigstring:=
 	dev-ml/base_quickcheck:=
 	dev-ml/bin_prot:=
 	dev-ml/fieldslib:=
 	dev-ml/jane-street-headers:=
-	dev-ml/jst-config:=
+	dev-ml/ocaml-migrate-parsetree:=
 	dev-ml/ppx_assert:=
 	dev-ml/ppx_base:=
 	dev-ml/ppx_hash:=
@@ -33,12 +35,11 @@ RDEPEND="
 	dev-ml/ppx_jane:=
 	dev-ml/ppx_sexp_conv:=
 	dev-ml/ppx_sexp_message:=
-	dev-ml/splittable_random:=
 	dev-ml/sexplib:=
+	dev-ml/splittable_random:=
 	dev-ml/stdio:=
 	dev-ml/time_now:=
 	dev-ml/typerep:=
 	dev-ml/variantslib:=
-	dev-ml/ocaml-migrate-parsetree:=
 "
 DEPEND="${RDEPEND}"
