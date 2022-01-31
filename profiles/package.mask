@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-01-31)
+# Fork of media-video/atomicparsley. media-video/atomicparsley now uses this
+# fork (wez), so just switch to that. No need for a separate package for the fork.
+# Removal on 2022-02-31. bug #668708.
+media-video/atomicparsley-wez
+
 # Michał Górny <mgorny@gentoo.org> (2022-01-30)
 # NIH package with no revdeps and an awful build system that can't work
 # with PEP 517 builders.  Last release in 2017.
