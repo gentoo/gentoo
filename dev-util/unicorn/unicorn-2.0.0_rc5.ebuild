@@ -31,14 +31,8 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 DEPEND="${PYTHON_DEPS}
 	dev-libs/glib:2"
 RDEPEND="python? ( ${PYTHON_DEPS} )"
-# See bug #832337 re Python deps
 BDEPEND="virtual/pkgconfig
-	python? (
-		>=dev-python/installer-0.4.0_p20220124[${PYTHON_USEDEP}]
-		dev-python/tomli[${PYTHON_USEDEP}]
-		>=dev-python/setuptools-60.5.0[${PYTHON_USEDEP}]
-		dev-python/wheel[${PYTHON_USEDEP}]
-	)"
+	python? ( ${DISTUTILS_DEPS} )"
 
 UNICORN_TARGETS="x86 arm aarch64 riscv mips sparc m68k ppc"
 
