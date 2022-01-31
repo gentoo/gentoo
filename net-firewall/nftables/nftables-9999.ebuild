@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..10} )
-
-inherit autotools linux-info python-r1 systemd
+DISTUTILS_OPTIONAL=1
+inherit autotools linux-info distutils-r1 systemd
 
 DESCRIPTION="Linux kernel (3.13+) firewall, NAT and packet mangling tools"
 HOMEPAGE="https://netfilter.org/projects/nftables/"
@@ -56,15 +56,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.9.8-slibtool.patch"
 )
 
-python_make() {
-	emake \
-		-C py \
-		abs_builddir="${S}" \
-		DESTDIR="${D}" \
-		PYTHON_BIN="${PYTHON}" \
-		"${@}"
-}
-
 pkg_setup() {
 	if kernel_is ge 3 13; then
 		if use modern-kernel && kernel_is lt 3 18; then
@@ -87,6 +78,12 @@ src_prepare() {
 		-i files/osf/Makefile.am || die
 
 	eautoreconf
+
+	if use python; then
+		pushd py >/dev/null || die
+		distutils-r1_src_prepare
+		popd >/dev/null || die
+	fi
 }
 
 src_configure() {
@@ -104,13 +101,21 @@ src_configure() {
 		$(use_with xtables)
 	)
 	econf "${myeconfargs[@]}"
+
+	if use python; then
+		pushd py >/dev/null || die
+		distutils-r1_src_configure
+		popd >/dev/null || die
+	fi
 }
 
 src_compile() {
 	default
 
 	if use python; then
-		python_foreach_impl python_make
+		pushd py >/dev/null || die
+		distutils-r1_src_compile
+		popd >/dev/null || die
 	fi
 }
 
@@ -134,8 +139,9 @@ src_install() {
 	systemd_dounit "${FILESDIR}"/systemd/${PN}-restore.service
 
 	if use python ; then
-		python_foreach_impl python_make install
-		python_foreach_impl python_optimize
+		pushd py >/dev/null || die
+		distutils-r1_src_install
+		popd >/dev/null || die
 	fi
 
 	find "${ED}" -type f -name "*.la" -delete || die
