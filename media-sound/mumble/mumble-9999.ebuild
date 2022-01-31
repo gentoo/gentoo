@@ -58,6 +58,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-qt/qtconcurrent:5
+	dev-qt/qttest:5
 	>=dev-libs/boost-1.41.0
 	x11-base/xorg-proto
 "
