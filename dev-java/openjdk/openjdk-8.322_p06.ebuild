@@ -170,6 +170,8 @@ src_compile() {
 	local myemakeargs=(
 		JOBS=$(makeopts_jobs)
 		LOG=debug
+		CFLAGS_WARNINGS_ARE_ERRORS= # No -Werror
+		NICE= # Use PORTAGE_NICENESS, don't adjust further down
 		$(usex doc docs '')
 		$(usex jbootstrap bootcycle-images images)
 	)
