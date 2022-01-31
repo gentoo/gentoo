@@ -5,6 +5,7 @@ EAPI=8
 
 MY_PV=${PV/_/-}
 
+DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{9..10} )
 inherit cmake distutils-r1
@@ -30,7 +31,14 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 DEPEND="${PYTHON_DEPS}
 	dev-libs/glib:2"
 RDEPEND="python? ( ${PYTHON_DEPS} )"
-BDEPEND="virtual/pkgconfig"
+# See bug #832337 re Python deps
+BDEPEND="virtual/pkgconfig
+	python? (
+		>=dev-python/installer-0.4.0_p20220124[${PYTHON_USEDEP}]
+		dev-python/tomli[${PYTHON_USEDEP}]
+		>=dev-python/setuptools-60.5.0[${PYTHON_USEDEP}]
+		dev-python/wheel[${PYTHON_USEDEP}]
+	)"
 
 UNICORN_TARGETS="x86 arm aarch64 riscv mips sparc m68k ppc"
 
