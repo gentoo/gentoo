@@ -21,8 +21,10 @@ DEPEND="
 	>=sys-kernel/linux-headers-5.6
 	"
 BDEPEND="
-	app-doc/doxygen
-	app-text/pandoc
+	doc? (
+		app-doc/doxygen
+		app-text/pandoc
+	)
 	virtual/pkgconfig
 	"
 
