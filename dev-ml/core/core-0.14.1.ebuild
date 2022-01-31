@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,5 +26,6 @@ RDEPEND="
 	dev-ml/spawn:=
 	dev-ml/stdio:=
 	dev-ml/timezone:=
+	<dev-ml/jane-street-headers-0.15:=
 "
 DEPEND="${RDEPEND}"
