@@ -39,7 +39,6 @@ DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.11.2-adjust-apache-logs-paths.patch
-	"${FILESDIR}"/${PN}-0.11.2-upstream-openrc.patch
 )
 
 python_prepare_all() {
