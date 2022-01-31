@@ -23,6 +23,8 @@ BDEPEND="${PYTHON_DEPS}
 	test? ( app-misc/fdupes )
 "
 
+PATCHES=( "${FILESDIR}/${P}-fix-dupe-tests.patch" )
+
 python_check_deps() {
 	has_version "dev-python/lxml[${PYTHON_USEDEP}]"
 }
