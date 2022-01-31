@@ -142,7 +142,7 @@ src_install() {
 	insinto /usr/share/murmur/
 	doins src/murmur/Murmur.ice
 
-	newinitd "${FILESDIR}"/murmur.initd-r1 murmur
+	newinitd "${FILESDIR}"/murmur.initd-r2 murmur
 	newconfd "${FILESDIR}"/murmur.confd murmur
 
 	systemd_dounit scripts/${PN}.service
