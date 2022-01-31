@@ -161,6 +161,6 @@ src_install() {
 	cd "${T}"/usession*-0 || die
 	newbin testing_1/pypy3.9-c pypy3.9-c-${PYPY_PV}
 	insinto /usr/include/pypy3.9/${PYPY_PV}
-	doins pypy_*.h
+	doins *.h
 	pax-mark m "${ED}/usr/bin/pypy3.9-c-${PYPY_PV}"
 }
