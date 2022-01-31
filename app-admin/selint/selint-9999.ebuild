@@ -1,11 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
-inherit toolchain-funcs
-
-DESCRIPTION="Policy Analysis Tools for SELinux"
+DESCRIPTION="Static code analysis of refpolicy style SELinux policy"
 HOMEPAGE="https://github.com/TresysTechnology/selint/wiki"
 
 if [[ ${PV} == 9999 ]] ; then
