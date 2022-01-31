@@ -24,6 +24,7 @@ dev-db/sqlcl-bin
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-01-05)
 # Binary package linked to glibc
 app-text/zotero-bin
+media-video/popcorntime-bin
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-04)
 # Emacs 23 does not support x86_64-gentoo-linux-musl systems
