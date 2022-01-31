@@ -23,6 +23,8 @@ BDEPEND="${PYTHON_DEPS}
 "
 DEPEND="test? ( dev-qt/qttest:5 )"
 
+PATCHES=( "${FILESDIR}/${P}-fix-dupe-tests.patch" )
+
 python_check_deps() {
 	has_version "dev-python/lxml[${PYTHON_USEDEP}]"
 }
