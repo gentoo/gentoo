@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://git.deluge-torrent.org/${PN}"
 else
 	SRC_URI="http://download.deluge-torrent.org/source/2.0/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~ppc ~sparc ~x86"
+	KEYWORDS="amd64 ~arm ~ppc ~sparc x86"
 fi
 
 LICENSE="GPL-2"
