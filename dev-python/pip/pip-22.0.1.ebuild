@@ -112,6 +112,8 @@ python_test() {
 	pushd "${WORKDIR}/virtualenv-${VENV_PV}" >/dev/null || die
 	distutils_install_for_testing
 	popd >/dev/null || die
+	# prevent it from being installed
+	rm -r "${BUILD_DIR}"/lib/virtualenv* || die
 
 	local -x GENTOO_PIP_TESTING=1 \
 		PATH="${TEST_DIR}/scripts:${PATH}" \
