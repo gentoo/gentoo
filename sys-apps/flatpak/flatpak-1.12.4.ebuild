@@ -13,7 +13,7 @@ HOMEPAGE="https://flatpak.org/"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="doc gtk kde introspection policykit seccomp systemd"
+IUSE="doc gtk kde introspection policykit seccomp systemd X"
 RESTRICT+=" test"
 
 RDEPEND="
@@ -38,9 +38,11 @@ RDEPEND="
 	sys-apps/dbus
 	>=sys-fs/fuse-2.9.9:0=
 	sys-apps/xdg-dbus-proxy
-	x11-apps/xauth
+	X? (
+		x11-apps/xauth
+		x11-libs/libXau:=
+	)
 	x11-libs/gdk-pixbuf:2=
-	x11-libs/libXau:=
 	policykit? ( >=sys-auth/polkit-0.98:= )
 	seccomp? ( sys-libs/libseccomp:= )
 	systemd? ( sys-apps/systemd:= )
@@ -86,10 +88,10 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--enable-sandboxed-triggers
-		--enable-xauth
 		--localstatedir="${EPREFIX}"/var
 		--with-system-bubblewrap
 		--with-system-dbus-proxy
+		$(use_enable X xauth)
 		$(use_enable doc documentation)
 		$(use_enable doc gtk-doc)
 		$(use_enable introspection)
