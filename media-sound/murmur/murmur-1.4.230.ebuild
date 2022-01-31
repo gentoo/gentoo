@@ -54,6 +54,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.41.0
+	dev-qt/qttest:5
 "
 BDEPEND="
 	acct-group/murmur
