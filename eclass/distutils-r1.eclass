@@ -201,6 +201,11 @@ _distutils_set_globals() {
 				die "Unknown DISTUTILS_USE_PEP517=${DISTUTILS_USE_PEP517}"
 				;;
 		esac
+	elif [[ ${DISTUTILS_OPTIONAL} ]]; then
+		if [[ ${DISTUTILS_USE_SETUPTOOLS} ]]; then
+			eqawarn "QA Notice: DISTUTILS_USE_SETUPTOOLS is not used when DISTUTILS_OPTIONAL"
+			eqawarn "is enabled."
+		fi
 	else
 		local setuptools_dep='>=dev-python/setuptools-42.0.2[${PYTHON_USEDEP}]'
 
