@@ -50,6 +50,8 @@ python_test() {
 		distutils_install_for_testing
 		popd >/dev/null || die
 	done
+	# remove examples leaked into BUILD_DIR
+	rm "${BUILD_DIR}"/lib/example* || die
 
 	local EPYTEST_IGNORE=(
 		# Excluded from upstream's test script
