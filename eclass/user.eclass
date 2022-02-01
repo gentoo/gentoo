@@ -12,9 +12,6 @@
 # The user eclass contains a suite of functions that allow ebuilds
 # to quickly make sure users in the installed system are sane.
 
-if [[ -z ${_USER_ECLASS} ]]; then
-_USER_ECLASS=1
-
 case ${EAPI} in
 	6|7) ;;
 	8)
@@ -28,6 +25,9 @@ case ${EAPI} in
 		;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ -z ${_USER_ECLASS} ]]; then
+_USER_ECLASS=1
 
 inherit user-info
 
