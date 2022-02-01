@@ -113,8 +113,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.6.6-wheel-sudo.patch
 
 	# Make evolution-data-server integration optional
-	# https://github.com/linuxmint/cinnamon/pull/10567
-	"${FILESDIR}"/${PN}-5.2.7-optional-eds.patch
+	"${FILESDIR}"/${PN}-5.2.7-eds-detection.patch
 )
 
 src_prepare() {
@@ -133,7 +132,6 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		$(meson_use eds build_calendar_server)
 		$(meson_use gstreamer build_recorder)
 		$(meson_use gtk-doc docs)
 		-Ddisable_networkmanager=$(usex networkmanager false true)
