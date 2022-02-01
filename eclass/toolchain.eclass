@@ -7,6 +7,15 @@
 # @SUPPORTED_EAPIS: 7 8
 # @BLURB: Common code for sys-devel/gcc ebuilds
 
+case ${EAPI} in
+	7) inherit eutils ;;
+	8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ ! ${_TOOLCHAIN_ECLASS} ]]; then
+_TOOLCHAIN_ECLASS=1
+
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
 
@@ -29,15 +38,6 @@ if tc_is_live ; then
 fi
 
 FEATURES=${FEATURES/multilib-strict/}
-
-case ${EAPI} in
-	7) inherit eutils ;;
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
-EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure \
-	src_compile src_test src_install pkg_postinst pkg_postrm
 
 #---->> globals <<----
 
@@ -2321,6 +2321,11 @@ toolchain_death_notice() {
 		popd >/dev/null
 	fi
 }
+
+fi
+
+EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure \
+	src_compile src_test src_install pkg_postinst pkg_postrm
 
 # Note [implicitly enabled flags]
 # -------------------------------
