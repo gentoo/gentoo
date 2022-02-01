@@ -353,14 +353,6 @@ sys-cluster/onesis
 # Removal after 2022-02-04. Bug #830588.
 games-util/springlobby
 
-# Ionen Wolkens <ionen@gentoo.org> (2022-01-03)
-# Obsolete, higan-purify is now provided by games-emulation/higan
-# as the icarus utility (bug #821121) and dev-games/higan-ananke
-# has no known uses without higan-purify (bug #821124). Further
-# stuck on gtk2 with dead HOMEPAGE / SRC_URI.
-# Removal after 2022-02-02.
-games-util/higan-purify
-
 # Florian Schmaus <flow@gentoo.org> (2022-01-02)
 # Unmaintained, upstream gone, only packaged by
 # Gentoo, and the whole idea to unlock based on
