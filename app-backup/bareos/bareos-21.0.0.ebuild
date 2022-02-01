@@ -17,7 +17,7 @@ RESTRICT="mirror"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="X acl ceph clientonly +director glusterfs ipv6 jansson lmdb
+IUSE="X acl ceph clientonly +director glusterfs ipv6 lmdb
 	logwatch ndmp readline scsi-crypto
 	static +storage-daemon systemd tcpd vim-syntax vmware xattr"
 
@@ -36,7 +36,6 @@ DEPEND="
 		dev-db/postgresql:*[threads]
 		director? (
 			virtual/mta
-			jansson? ( dev-libs/jansson:= )
 		)
 	)
 	logwatch? ( sys-apps/logwatch )
@@ -45,13 +44,15 @@ DEPEND="
 	readline? ( sys-libs/readline:0 )
 	static? (
 		acl? ( virtual/acl[static-libs] )
-		sys-libs/zlib[static-libs]
+		dev-libs/jansson:=[static-libs]
 		dev-libs/lzo[static-libs]
-		sys-libs/ncurses:=[static-libs]
 		dev-libs/openssl:0=[static-libs]
+		sys-libs/ncurses:=[static-libs]
+		sys-libs/zlib[static-libs]
 	)
 	!static? (
 		acl? ( virtual/acl )
+		dev-libs/jansson:=
 		dev-libs/lzo
 		dev-libs/openssl:0=
 		sys-libs/ncurses:=
