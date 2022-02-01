@@ -25,6 +25,7 @@ RDEPEND="!games-engines/zoom
 	media-sound/mpg123
 	sys-apps/dbus
 	sys-apps/util-linux
+	sys-libs/glibc
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libxcb
