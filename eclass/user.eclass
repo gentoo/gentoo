@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: user.eclass
 # @MAINTAINER:
 # base-system@gentoo.org (Linux)
 # Michał Górny <mgorny@gentoo.org> (NetBSD)
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: user management in ebuilds
 # @DEPRECATED: acct-user/acct-group packages
 # @DESCRIPTION:
@@ -15,8 +15,8 @@
 if [[ -z ${_USER_ECLASS} ]]; then
 _USER_ECLASS=1
 
-case ${EAPI:-0} in
-	5|6|7) ;;
+case ${EAPI} in
+	6|7) ;;
 	8)
 		if [[ ${CATEGORY} != acct-* ]]; then
 			eerror "In EAPI ${EAPI}, packages must not inherit user.eclass"
