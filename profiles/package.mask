@@ -360,7 +360,6 @@ games-util/springlobby
 # stuck on gtk2 with dead HOMEPAGE / SRC_URI.
 # Removal after 2022-02-02.
 games-util/higan-purify
-dev-games/higan-ananke
 
 # Florian Schmaus <flow@gentoo.org> (2022-01-02)
 # Unmaintained, upstream gone, only packaged by
