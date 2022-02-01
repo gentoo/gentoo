@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-02-01)
+# sys-cluster/ucx is not marked stable on amd64
+sys-cluster/slurm ucx
+
 # Joonas Niilola <juippis@gentoo.org> (2021-08-13)
 # dev-libs/efl is stabilized on amd64.
 app-crypt/pinentry -efl
