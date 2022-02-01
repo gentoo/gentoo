@@ -36,5 +36,5 @@ src_prepare() {
 }
 
 python_test() {
-	pytest -vv tests || die "Tests failed with ${EPYTHON}"
+	epytest tests
 }
