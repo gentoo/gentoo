@@ -1,17 +1,17 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: usr-ldscript.eclass
 # @MAINTAINER:
 # Toolchain Ninjas <toolchain@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Defines the gen_usr_ldscript function.
 
 if [[ -z ${_USR_LDSCRIPT_ECLASS} ]]; then
 _USR_LDSCRIPT_ECLASS=1
 
 case ${EAPI} in
-	5|6|7|8) ;;
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
