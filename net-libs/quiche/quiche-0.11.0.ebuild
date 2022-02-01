@@ -176,6 +176,10 @@ RDEPEND=""
 
 BUILD_DIR="${WORKDIR}/${P}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-pkg-config-output-path.patch"
+)
+
 src_unpack() {
 	if [[ "${PV}" == *9999* ]]; then
 		git-r3_src_unpack
