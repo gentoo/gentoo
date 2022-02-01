@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1 optfeature
 
 DESCRIPTION="Python library for renrering rich text, tables, etc. to the terminal"
@@ -24,6 +24,10 @@ RDEPEND="
 	dev-python/pygments[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-pypy3.patch
+)
 
 python_test() {
 	local EPYTEST_DESELECT=(
