@@ -18,7 +18,7 @@ else
 	# To simplify updates, portage use tarballs without pre-build 'configure'
 	# which are always available.
 	SRC_URI="https://github.com/intel/libva/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm64 ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="MIT"
