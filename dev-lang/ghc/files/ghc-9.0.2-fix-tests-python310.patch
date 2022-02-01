@@ -1,0 +1,33 @@
+From 81a8f7a7daeb87db53d598ced4b303f8f320442f Mon Sep 17 00:00:00 2001
+From: Zubin Duggal <zubin.duggal@gmail.com>
+Date: Wed, 12 Jan 2022 23:01:40 +0530
+Subject: [PATCH] testsuite: Fix import on python 3.10
+
+---
+ testsuite/driver/testlib.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/testsuite/driver/testlib.py b/testsuite/driver/testlib.py
+index fb2a7010f59..6b6462f527b 100644
+--- a/testsuite/driver/testlib.py
++++ b/testsuite/driver/testlib.py
+@@ -16,6 +16,7 @@ import sys
+ from math import ceil, trunc, floor, log
+ from pathlib import Path, PurePath
+ import collections
++import collections.abc
+ import subprocess
+ 
+ from testglobals import config, ghc_env, default_testopts, brokens, t, \
+@@ -907,7 +908,7 @@ def join_normalisers(*a):
+         Taken from http://stackoverflow.com/a/2158532/946226
+         """
+         for el in l:
+-            if (isinstance(el, collections.Iterable)
++            if (isinstance(el, collections.abc.Iterable)
+                 and not isinstance(el, (bytes, str))):
+                 for sub in flatten(el):
+                     yield sub
+-- 
+GitLab
+
