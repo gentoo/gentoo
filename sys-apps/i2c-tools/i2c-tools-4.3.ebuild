@@ -1,11 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python{3_8,3_9} )
 DISTUTILS_OPTIONAL="1"
-DISTUTILS_USE_SETUPTOOLS=bdepend
 
 inherit distutils-r1 flag-o-matic toolchain-funcs
 
@@ -21,7 +20,11 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	python? ( ${PYTHON_DEPS} )"
-DEPEND="${RDEPEND}"
+BDEPEND="
+	python? (
+		${PYTHON_DEPS}
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	)"
 
 src_prepare() {
 	default
