@@ -94,7 +94,9 @@ src_prepare() {
 		-i "${S}"/scripts/murmur.{conf,ini} || die
 
 	# Adjust systemd service file to our config location #689208
-	sed "s@/etc/${PN}\.ini@/etc/${PN}/${PN}.ini@" \
+	sed \
+		-e "s@/etc/${PN}\.ini@/etc/${PN}/${PN}.ini@" \
+		-e "s@murmurd@mumble-server@" \
 		-i scripts/${PN}.service || die
 
 	cmake_src_prepare
@@ -116,7 +118,9 @@ src_configure() {
 		-Dserver="ON"
 		-Dzeroconf="$(usex zeroconf)"
 	)
-
+	if [[ "${PV}" != 9999 ]] ; then
+		mycmakeargs+=( -DBUILD_NUMBER="$(ver_cut 3)" )
+	fi
 	cmake_src_configure
 }
 
