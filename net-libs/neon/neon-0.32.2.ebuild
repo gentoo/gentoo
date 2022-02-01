@@ -12,10 +12,16 @@ SRC_URI="https://notroj.github.io/neon/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/27"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc +expat gnutls kerberos libproxy nls pkcs11 ssl static-libs zlib"
-RESTRICT="test"
+IUSE="doc +expat gnutls kerberos libproxy nls pkcs11 ssl static-libs test zlib"
+RESTRICT="!test? ( test )"
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig
+	test? (
+		ssl? (
+			dev-libs/openssl:0
+			pkcs11? ( dev-libs/nss )
+		)
+	)"
 DEPEND="expat? ( dev-libs/expat:0=[${MULTILIB_USEDEP}] )
 	!expat? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	kerberos? ( virtual/krb5:0=[${MULTILIB_USEDEP}] )
@@ -39,6 +45,12 @@ MULTILIB_CHOST_TOOLS=(
 DOCS=( AUTHORS BUGS NEWS README.md THANKS TODO )
 
 src_prepare() {
+	if use gnutls; then
+		# Ignore failure of test pkcs11.
+		# https://github.com/notroj/neon/issues/72
+		sed -e "s/T(pkcs11)/T_XFAIL(pkcs11)/" -i test/ssl.c || die
+	fi
+
 	eapply_user
 
 	AT_M4DIR="macros" eautoreconf
