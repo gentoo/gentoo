@@ -47,7 +47,8 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS src_unpack
+if [[ ! ${_VCS_SNAPSHOT_ECLASS} ]]; then
+_VCS_SNAPSHOT_ECLASS=1
 
 # @FUNCTION: vcs-snapshot_src_unpack
 # @DESCRIPTION:
@@ -110,3 +111,7 @@ vcs-snapshot_src_unpack() {
 		[[ ${w} == eerror ]] && die "${FUNCNAME}: Unnecessary usage detected"
 	fi
 }
+
+fi
+
+EXPORT_FUNCTIONS src_unpack
