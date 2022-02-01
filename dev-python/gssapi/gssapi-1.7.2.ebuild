@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,6 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
-	cp -r -l -n gssapi "${BUILD_DIR}/lib" || die
-	cd "${BUILD_DIR}/lib" || die
-	epytest
+	cd "${T}" || die
+	epytest --pyargs gssapi
 }
