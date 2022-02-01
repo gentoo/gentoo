@@ -26,6 +26,7 @@ RDEPEND="
 	media-fonts/noto-emoji
 	media-libs/alsa-lib
 	net-print/cups
+	sys-libs/glibc
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
