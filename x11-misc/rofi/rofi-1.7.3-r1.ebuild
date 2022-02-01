@@ -22,19 +22,15 @@ BDEPEND="
 "
 RDEPEND="
 	dev-libs/glib:2
-	gnome-base/librsvg:2
-	media-libs/freetype
-	virtual/jpeg
 	x11-libs/cairo[X,xcb(+)]
-	x11-libs/libXft
-	x11-libs/libXinerama
-	x11-libs/libxcb
+	x11-libs/gdk-pixbuf:2
+	x11-libs/libxcb:=
 	x11-libs/libxkbcommon[X]
 	x11-libs/pango[X]
 	x11-libs/startup-notification
 	x11-libs/xcb-util
+	x11-libs/xcb-util-cursor
 	x11-libs/xcb-util-wm
-	x11-libs/xcb-util-xrm
 	x11-misc/xkeyboard-config
 "
 DEPEND="
