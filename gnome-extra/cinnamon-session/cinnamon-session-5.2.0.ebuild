@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -63,6 +63,22 @@ src_configure() {
 		$(meson_use ipv6)
 	)
 	meson_src_configure
+}
+
+src_install() {
+	# A bit icky. Let the docs be installed in the wrong dir, then
+	# install them to the correct dir.
+	local dbus_doc_dir="${ED}/usr/share/doc/cinnamon-session/dbus"
+	use doc && local HTML_DOCS=( "$dbus_doc_dir" )
+
+	meson_src_install
+
+	# Clean-up the incorrectly installed docs.
+	# Fail if unhandled (new) files are encountered.
+	if use doc; then
+		rm -r "$dbus_doc_dir" || die
+		rm -d "${ED}/usr/share/doc/cinnamon-session" || die
+	fi
 }
 
 pkg_postinst() {
