@@ -15,7 +15,7 @@ SRC_URI="https://github.com/minetest/${MY_PN}/archive/refs/tags/${MY_PV}.tar.gz 
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="media-libs/libpng:0=
 	sys-libs/zlib
