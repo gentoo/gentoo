@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vcs-clean.eclass
@@ -6,11 +6,11 @@
 # base-system@gentoo.org
 # @AUTHOR:
 # Benedikt Böhm <hollow@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: helper functions to remove VCS directories
 
-case ${EAPI:-0} in
-	[567]) ;;
+case ${EAPI} in
+	5|6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
