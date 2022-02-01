@@ -1,7 +1,7 @@
 # Copyright 2003-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 inherit autotools
 
@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~ppc ppc64 ~sparc x86"
 IUSE="nls"
 
 BDEPEND="sys-devel/gettext"
-DEPEND="<net-libs/neon-0.33.0:="
+DEPEND=">=net-libs/neon-0.27.0:="
 RDEPEND="${DEPEND}"
 
 DOCS=(BUGS ChangeLog FAQ NEWS README THANKS TODO)
