@@ -6,8 +6,9 @@
 net-im/mattermost-desktop-bin
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-25)
-# Binary package linked to glibc
+# Binary packages linked to glibc
 media-gfx/brscan4
+net-im/zoom
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-01-22)
 # Binary packages linked to glibc
