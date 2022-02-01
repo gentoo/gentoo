@@ -7,13 +7,13 @@
 # @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Defines the gen_usr_ldscript function.
 
-if [[ -z ${_USR_LDSCRIPT_ECLASS} ]]; then
-_USR_LDSCRIPT_ECLASS=1
-
 case ${EAPI} in
 	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ -z ${_USR_LDSCRIPT_ECLASS} ]]; then
+_USR_LDSCRIPT_ECLASS=1
 
 inherit multilib toolchain-funcs
 
