@@ -28,6 +28,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtxml:5
+	dev-qt/qtsql:5
 	>=net-libs/libtorrent-rasterbar-1.2.12:0=
 	sys-libs/zlib
 	dbus? ( dev-qt/qtdbus:5 )
