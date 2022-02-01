@@ -12,12 +12,12 @@ MY_PV="${PV//_pre*}"
 MY_P="${PN}-${MY_PV}"
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/mysql/${PN}-8.0.27-patches-02.tar.xz"
+PATCH_SET=( https://dev.gentoo.org/~{whissi,dlan}/dist/mysql/${PN}-8.0.27-patches-03.tar.xz )
 
 SRC_URI="https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-${MY_PV}.tar.gz
 	https://cdn.mysql.com/archives/mysql-8.0/mysql-boost-${MY_PV}.tar.gz
 	http://downloads.mysql.com/archives/MySQL-8.0/${PN}-boost-${MY_PV}.tar.gz
-	${PATCH_SET}"
+	${PATCH_SET[@]}"
 
 HOMEPAGE="https://www.mysql.com/"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
