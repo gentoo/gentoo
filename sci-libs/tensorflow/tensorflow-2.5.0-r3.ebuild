@@ -1,11 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{7,8,9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
 MY_PV=${PV/_rc/-rc}
 MY_P=${PN}-${MY_PV}
 
@@ -106,6 +105,7 @@ RDEPEND="
 		>=dev-python/opt-einsum-3.3.0[${PYTHON_USEDEP}]
 		>=dev-python/protobuf-python-3.13.0[${PYTHON_USEDEP}]
 		dev-python/pybind11[${PYTHON_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 		dev-python/tblib[${PYTHON_USEDEP}]
 		dev-python/termcolor[${PYTHON_USEDEP}]
@@ -117,11 +117,7 @@ RDEPEND="
 		>=sci-libs/keras-preprocessing-1.1.2[${PYTHON_USEDEP}]
 		>=sci-visualization/tensorboard-2.5.0[${PYTHON_USEDEP}]
 	)"
-DEPEND="${RDEPEND}
-	python? (
-		dev-python/mock
-		dev-python/setuptools
-	)"
+DEPEND="${RDEPEND}"
 PDEPEND="python? (
 		>=sci-libs/tensorflow-estimator-2.5.0[${PYTHON_USEDEP}]
 	)"
@@ -135,8 +131,9 @@ BDEPEND="
 	)
 	!python? ( dev-lang/python )
 	python? (
-		dev-python/cython
-		dev-python/mock
+		dev-python/cython[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
 		>=dev-python/grpcio-tools-1.28
 	)"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
