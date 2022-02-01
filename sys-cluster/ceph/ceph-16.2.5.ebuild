@@ -4,7 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
 DISTUTILS_OPTIONAL=1
 LUA_COMPAT=( lua5-3 )
 
@@ -102,14 +101,15 @@ DEPEND="
 	xfs? ( sys-fs/xfsprogs:= )
 	zbd? ( sys-block/libzbd:= )
 	zfs? ( sys-fs/zfs:= )
-	${PYTHON_DEPS}
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	amd64? ( dev-lang/nasm )
 	x86? ( dev-lang/yasm )
 	app-arch/cpio
 	>=dev-util/cmake-3.5.0
 	dev-python/cython[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sphinx
 	dev-util/cunit
 	dev-util/gperf
@@ -136,6 +136,7 @@ BDEPEND="
 "
 RDEPEND="
 	${DEPEND}
+	${PYTHON_DEPS}
 	app-admin/sudo
 	net-misc/socat
 	sys-apps/gptfdisk
@@ -155,6 +156,7 @@ RDEPEND="
 	dev-python/prettytable[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	mgr? (
 		dev-python/jsonpatch[${PYTHON_USEDEP}]
