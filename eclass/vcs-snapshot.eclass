@@ -4,7 +4,7 @@
 # @ECLASS: vcs-snapshot.eclass
 # @MAINTAINER:
 # mgorny@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: support eclass for unpacking VCS snapshot tarballs
 # @DESCRIPTION:
 # THIS ECLASS IS NOT NECESSARY FOR MODERN GITHUB AND GITLAB SNAPSHOTS.
@@ -42,9 +42,9 @@
 # and however the tarballs were originally packed, all files will appear
 # in ${WORKDIR}/${P} and ${WORKDIR}/${P}-otherstuff respectively.
 
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6|7|8) ;;
-	*) die "vcs-snapshot.eclass API in EAPI ${EAPI} not yet established."
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 EXPORT_FUNCTIONS src_unpack
@@ -102,7 +102,7 @@ vcs-snapshot_src_unpack() {
 
 	if [[ ! ${renamed_any} ]]; then
 		local w=eerror
-		[[ ${EAPI} == [0123456] ]] && w=eqawarn
+		[[ ${EAPI} == 6 ]] && w=eqawarn
 		"${w}" "${FUNCNAME} did not find any archives that needed renaming."
 		"${w}" "Please verify that its usage is really necessary, and remove"
 		"${w}" "the inherit if it is not."
