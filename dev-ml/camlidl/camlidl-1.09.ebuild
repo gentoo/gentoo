@@ -53,6 +53,7 @@ src_install() {
 	dodir "${libdir#${EPREFIX}}"/caml
 
 	dodir /usr/bin
+	dodir /usr/$(get_libdir)/ocaml/stublibs
 	# Install
 	emake BINDIR="${ED}/usr/bin" OCAMLLIB="${D}${libdir}" RANLIB="$(tc-getRANLIB)" install
 
