@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -156,7 +156,7 @@ S="${WORKDIR}/${P/git-/}"
 
 LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 LGPL-3+ MIT Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
