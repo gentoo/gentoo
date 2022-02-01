@@ -32,13 +32,8 @@ python_compile() {
 	distutils-r1_python_compile -j1
 }
 
-src_test() {
-	# prevent relative import
-	rm -r systemd || die
-	distutils-r1_src_test
-}
-
 python_test() {
 	unset NOTIFY_SOCKET
+	cd "${T}" || die
 	epytest --pyargs systemd -o cache_dir="${T}"
 }
