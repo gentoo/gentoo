@@ -1,11 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_OPTIONAL=1
-DISTUTILS_USE_SETUPTOOLS=no
 # ninja: error: build.ninja:521: multiple rules generate pm_java/pmdefaults.jar [-w dupbuild=err]
 CMAKE_MAKEFILE_GENERATOR="emake"
 inherit cmake desktop xdg distutils-r1 java-pkg-opt-2 flag-o-matic
