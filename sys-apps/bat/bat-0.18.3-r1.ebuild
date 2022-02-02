@@ -1,4 +1,4 @@
-# Copyright 2017-2021 Gentoo Authors
+# Copyright 2017-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -153,7 +153,7 @@ CRATES="
 	yaml-rust-0.4.5
 "
 
-inherit cargo
+inherit bash-completion-r1 cargo
 
 DESCRIPTION="cat(1) clone with syntax highlighting and Git integration"
 # Double check the homepage as the cargo_metadata crate
@@ -191,14 +191,16 @@ src_install() {
 
 	einstalldocs
 
-	doman target/release/build/bat-*/out/assets/manual/bat.1
+	local build_dir=( target/$(usex debug{,} release)/build/${PN}-*/out )
+	cd ${build_dir[0]} || die "Cannot change directory to ${PN} build"
 
-	insinto /usr/share/fish/vendor_completions.d/
-	doins target/release/build/bat-*/out/assets/completions/bat.fish
+	doman assets/manual/bat.1
 
-	# Hack to find/install generated zsh completions files as it can be present in
-	# multiple directories
-	local BUILD_DIR="$(dirname $(find target/release -name bat.zsh -print -quit || die) || die)"
-	insinto /usr/share/zsh/site-functions/
-	newins "${BUILD_DIR}"/bat.zsh _${PN}
+	newbashcomp assets/completions/${PN}.bash ${PN}
+
+	insinto /usr/share/zsh/site-functions
+	newins assets/completions/${PN}.zsh _${PN}
+
+	insinto /usr/share/fish/vendor_completions.d
+	doins assets/completions/${PN}.fish
 }
