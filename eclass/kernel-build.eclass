@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-build.eclass
@@ -51,6 +51,20 @@ BDEPEND="
 # or restore savedconfig, and get build tree configured for modprep.
 kernel-build_src_configure() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	if ! tc-is-cross-compiler && use hppa ; then
+		if [[ ${CHOST} == hppa2.0-* ]] ; then
+			# Only hppa2.0 can handle 64-bit anyway.
+			# Right now, hppa2.0 can run both 32-bit and 64-bit kernels,
+			# but it seems like most people do 64-bit kernels now
+			# (obviously needed for more RAM too).
+
+			# TODO: What if they want a 32-bit kernel?
+			# Not too worried about this case right now.
+			elog "Forcing 64 bit (${CHOST/2.0/64}) build..."
+			export CHOST=${CHOST/2.0/64}
+		fi
+	fi
 
 	# force ld.bfd if we can find it easily
 	local LD="$(tc-getLD)"
