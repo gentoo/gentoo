@@ -33,6 +33,7 @@ RDEPEND="
 	net-print/cups[${MULTILIB_USEDEP}]
 	sys-apps/dbus[${MULTILIB_USEDEP}]
 	sys-devel/gcc[cxx]
+	sys-libs/glibc
 	virtual/ttf-fonts
 	x11-libs/cairo[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
