@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}/$(ver_cut 1-3)/${P}.tar.bz2"
 
 LICENSE="GPL-2 BSD"
 SLOT="0/18.0"
-KEYWORDS="amd64 arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm ~ppc ~ppc64 x86"
 IUSE="acl cracklib dbus debug kerberos ldap pam pgp quota samba +shadow ssl tracker tcpd zeroconf"
 
 CDEPEND="
