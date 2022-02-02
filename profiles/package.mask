@@ -587,11 +587,6 @@ net-libs/libsoup:3.0
 # Version 3.15 is broken with Emacs 27.2.
 =app-emacs/mic-paren-3.15-r0
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-04-18)
-# dev-java/xerces-2.12.1 depends on masked >=virtual/{jdk,jre}-11
-# https://bugs.gentoo.org/782697
->=dev-java/xerces-2.12.1
-
 # Sam James <sam@gentoo.org> (2021-03-30)
 # Seems to break dev-tex/culmus-latex
 # Masking until we can investigate & fix
