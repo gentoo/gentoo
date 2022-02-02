@@ -44,13 +44,13 @@ esac
 
 dune_src_compile() {
 	ebegin "Building"
-	dune build @install --profile release
+	dune build @install --display short --profile release
 	eend $? || die
 }
 
 dune_src_test() {
 	ebegin "Testing"
-	dune runtest --profile release
+	dune runtest --display short --profile release
 	eend $? || die
 }
 
