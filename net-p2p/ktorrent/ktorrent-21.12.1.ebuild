@@ -77,7 +77,6 @@ src_configure() {
 		-DENABLE_BWSCHEDULER_PLUGIN=$(usex bwscheduler)
 		-DENABLE_DOWNLOADORDER_PLUGIN=$(usex downloadorder)
 		-DENABLE_INFOWIDGET_PLUGIN=$(usex infowidget)
-		-DWITH_SYSTEM_GEOIP=$(usex infowidget)
 		-DENABLE_IPFILTER_PLUGIN=$(usex ipfilter)
 		-DENABLE_LOGVIEWER_PLUGIN=$(usex logviewer)
 		-DENABLE_MAGNETGENERATOR_PLUGIN=$(usex magnetgenerator)
