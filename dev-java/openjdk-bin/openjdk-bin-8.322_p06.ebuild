@@ -33,7 +33,7 @@ SRC_URI="
 "
 
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x64-macos"
+KEYWORDS="amd64 arm64 ~ppc64 ~x64-macos"
 
 IUSE="alsa cups examples headless-awt selinux source"
 
