@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-02-02)
+# net-analyzer/net-snmp is not marked stable on HPPA
+net-analyzer/ifstat snmp
+
 # Sam James <sam@gentoo.org> (2022-02-01)
 # Unstable Tcl/Tk dependencies
 dev-libs/libisoburn launch-frontend launch-frontend-setuid frontend-optional
