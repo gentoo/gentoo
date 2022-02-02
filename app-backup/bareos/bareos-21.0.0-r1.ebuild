@@ -12,14 +12,20 @@ inherit python-any-r1 systemd cmake tmpfiles
 DESCRIPTION="Featureful client/server network backup suite"
 HOMEPAGE="https://www.bareos.org/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/Release/${PV}.tar.gz -> ${P}.tar.gz"
-RESTRICT="mirror"
+
+# some tests still fail propably due to missing bits in src_test -> TODO
+RESTRICT="mirror test"
+#RESTRICT="
+#	mirror
+#	!test? ( test )
+#"
 
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="X acl ceph clientonly +director glusterfs ipv6 lmdb
 	logwatch ndmp readline scsi-crypto
-	static +storage-daemon systemd tcpd vim-syntax vmware xattr"
+	static +storage-daemon systemd tcpd test vim-syntax vmware xattr"
 
 # get cmake variables from core/cmake/BareosSetVariableDefaults.cmake
 DEPEND="
@@ -68,7 +74,15 @@ RDEPEND="${DEPEND}
 	)
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 	"
-BDEPEND="${PYTHON_DEPS}"
+
+BDEPEND="
+	${PYTHON_DEPS}
+	test? (
+		dev-cpp/gtest
+		dev-db/postgresql:*[server,threads]
+		dev-db/mariadb:*[server]
+	)
+"
 
 REQUIRED_USE="
 	static? ( clientonly )
@@ -104,6 +118,26 @@ pkg_pretend() {
 		ewarn
 		die "current catalog backend not supported anymore"
 	fi
+}
+
+src_test() {
+	# initialze catalog test database
+	initdb -D "${T}"/pgsql || die
+	pg_ctl -w -D "${T}"/pgsql start \
+		-o "-h '' -k '${T}'" || die
+	createuser -h "${T}" bareos || die
+	createdb -h "${T}" --owner bareos bareos || die
+	export PGHOST="${T}"
+
+	# initiale mariadb database for backup tests
+	# $USER must be set and != root
+	export USER=portage
+
+	default
+	cmake_src_test
+
+	pg_ctl -w -D "${T}"/pgsql stop || die
+	rm -rvf "${T}"/pgsql
 }
 
 src_prepare() {
