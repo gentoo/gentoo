@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-02-02)
+# sys-cluster/ucx is not marked stable on x86
+sys-cluster/slurm ucx
+
 # Marek Szuba <marecki@gentoo.org> (2022-01-03)
 # no stable media-libs/rnnoise on this arch yet
 media-sound/pulseeffects rnnoise
