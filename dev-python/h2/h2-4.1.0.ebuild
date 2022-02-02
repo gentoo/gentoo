@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="HTTP/2 State-Machine based protocol implementation"
