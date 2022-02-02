@@ -29,9 +29,10 @@ RDEPEND="
 
 DEPEND="${PYTHON_DEPS}"
 
-PATCHES=( "${FILESDIR}"/${PN}-4.14.0-no_compress_man.patch )
+# src/unitests only works against system installed devedeng
+RESTRICT="test"
 
-distutils_enable_tests unittest
+PATCHES=( "${FILESDIR}"/${PN}-4.14.0-no_compress_man.patch )
 
 src_prepare() {
 	default
@@ -43,11 +44,4 @@ src_prepare() {
 
 	# Desktop icon
 	sed -e "/^Icon/s/.svg$//#" -i data/devede_ng.py.desktop || die
-}
-
-python_test() {
-	pushd src/unitests || die
-	eunittest
-	popd || die
-
 }
