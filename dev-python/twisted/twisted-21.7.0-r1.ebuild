@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 virtualx
@@ -57,11 +57,13 @@ BDEPEND="
 		dev-python/bcrypt[${PYTHON_USEDEP}]
 		>=dev-python/constantly-15.1.0[${PYTHON_USEDEP}]
 		dev-python/cython-test-exception-raiser[${PYTHON_USEDEP}]
-		dev-python/gmpy[${PYTHON_USEDEP}]
 		dev-python/idna[${PYTHON_USEDEP}]
 		dev-python/pyasn1[${PYTHON_USEDEP}]
 		dev-python/pyserial[${PYTHON_USEDEP}]
 		net-misc/openssh
+		$(python_gen_cond_dep '
+			dev-python/gmpy[${PYTHON_USEDEP}]
+		' 'python*')
 		!alpha? ( !hppa? ( !ia64? (
 			>=dev-python/cryptography-0.9.1[${PYTHON_USEDEP}]
 			>=dev-python/pyopenssl-0.13[${PYTHON_USEDEP}]
