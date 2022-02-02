@@ -25,6 +25,7 @@ BDEPEND="
 		app-doc/doxygen
 		dev-texlive/texlive-fontsrecommended
 		media-gfx/transfig
+		dev-texlive/texlive-latexextra
 		virtual/texi2dvi
 	)"
 
