@@ -1,0 +1,18 @@
+diff -Naur gentoo-vdr-scripts-2.8.orig/etc/sudoers.d/vdr gentoo-vdr-scripts-2.8/etc/sudoers.d/vdr
+--- gentoo-vdr-scripts-2.8.orig/etc/sudoers.d/vdr	2019-12-15 01:04:54.000000000 +0100
++++ gentoo-vdr-scripts-2.8/etc/sudoers.d/vdr	2021-05-29 16:26:34.623489561 +0200
+@@ -1 +1,2 @@
+ vdr ALL=NOPASSWD:/usr/share/vdr/bin/vdrshutdown-really.sh
++vdr ALL=NOPASSWD:/bin/systemctl daemon-reload
+diff -Naur gentoo-vdr-scripts-2.8.orig/usr/share/vdr/systemd/vdr-systemd_helper.sh gentoo-vdr-scripts-2.8/usr/share/vdr/systemd/vdr-systemd_helper.sh
+--- gentoo-vdr-scripts-2.8.orig/usr/share/vdr/systemd/vdr-systemd_helper.sh	2019-12-15 01:04:54.000000000 +0100
++++ gentoo-vdr-scripts-2.8/usr/share/vdr/systemd/vdr-systemd_helper.sh	2021-05-29 17:19:16.810413833 +0200
+@@ -105,7 +105,7 @@
+ 	# as the user under which vdr will run is controlled by systemd
+ 	sed -e "s:'-u' 'vdr' ::" -i ${SYSTEMD_ENV_FILE}
+ 
+-	sync
++	sudo systemctl daemon-reload
+ 	eend "--start-pre"
+ elif [ "$1" = "--start-post" ]; then
+ 	ebegin "--start-post"
