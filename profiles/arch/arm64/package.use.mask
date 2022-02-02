@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-02-02)
+# sys-cluster/knem is not keyworded on arm64
+sys-cluster/openmpi openmpi_fabrics_knem
+
 # Sam James <sam@gentoo.org> (2022-02-01)
 # sys-cluster/ucx is not keyworded on arm64
 sys-cluster/slurm ucx
