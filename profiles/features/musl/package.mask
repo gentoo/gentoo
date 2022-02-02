@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Robert Siebeck <gentoo.2019@r123.de> (2022-02-02)
+# Binary package linked to glibc, bug #832483
+net-im/signal-desktop-bin
+
 # Ben Kohler <bkohler@gentoo.org> (2022-02-02)
 # Binary backage linked to glibc
 net-misc/dropbox
