@@ -20,6 +20,6 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~hppa"
 
 distutils_enable_tests pytest
