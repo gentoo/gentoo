@@ -34,3 +34,10 @@ src_compile() {
 		--ignore-promoted-rules
 	eend $? || die
 }
+
+dune_src_test() {
+	ebegin "Testing"
+	dune runtest --display short --profile release \
+		--ignore-promoted-rules
+	eend $? || die
+}
