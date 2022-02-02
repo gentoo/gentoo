@@ -18,7 +18,7 @@ else
 	MY_P="${PN}-${MY_PV}"
 	INHERIT_GIT=""
 	SRC_URI="https://github.com/SchedMD/slurm/archive/${MY_P}.tar.gz"
-	KEYWORDS="amd64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 fi
 
 inherit autotools bash-completion-r1 lua-single pam perl-module prefix toolchain-funcs systemd ${INHERIT_GIT} tmpfiles
