@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=poetry
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{8..10} )
 
 inherit distutils-r1
@@ -19,3 +19,12 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 BDEPEND="test? ( dev-python/pyyaml[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
+
+src_configure() {
+	# use setup.py to avoid circular dep with poetry-core
+	cat > pyproject.toml <<-EOF || die
+		[build-system]
+		requires = ["setuptools", "wheel"]
+		build-backend = "setuptools.build_meta"
+	EOF
+}
