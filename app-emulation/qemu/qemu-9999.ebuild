@@ -33,7 +33,7 @@ LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
 
 IUSE="accessibility +aio alsa bpf bzip2 capstone +caps +curl debug +doc
-	+fdt fuse glusterfs gnutls gtk infiniband iscsi io-uring
+	+fdt fuse glusterfs +gnutls gtk infiniband iscsi io-uring
 	jack jemalloc +jpeg
 	lzo multipath
 	ncurses nfs nls numa opengl +oss pam +pin-upstream-blobs
@@ -112,6 +112,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	vhost-user-fs? ( caps seccomp )
 	virgl? ( opengl )
 	virtfs? ( caps xattr )
+	vnc? ( gnutls )
 	vte? ( gtk )
 	multipath? ( udev )
 	plugins? ( !static !static-user )
