@@ -22,6 +22,11 @@ src_prepare() {
 	sed -i \
 		-e 's/$(CC) -o/$(CC) $(OPTIMIZATION) $(EXTRA_FLAGS) -o/' \
 		"${S}"/Makefile.in || die
+
+	# Bug 738936 fails to compile with clang/LLVM toolchain
+	sed -i \
+		-e 's/"NEWLINE/" NEWLINE/g'\
+		"${S}"/config.C || die
 	eapply_user
 }
 
