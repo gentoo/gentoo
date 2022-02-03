@@ -47,6 +47,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-meson-drop-unused-argument-for-i18n.merge_file.patch
+)
+
 src_prepare() {
 	# Avoid sandbox failures
 	sed -i -e '/gst_inspect/d' meson.build || die
