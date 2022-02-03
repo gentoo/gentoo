@@ -42,6 +42,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.11-polkit-pcscd.patch
+	"${FILESDIR}"/${P}-no-libusb-udev.patch
 )
 
 DOCS=( AUTHORS HELP README SECURITY ChangeLog )
