@@ -1,5 +1,9 @@
-# Copyright 2014-2021 Gentoo Authors
+# Copyright 2014-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2022-02-03)
+# sys-libs/llvm-libunwind isn't marked stable here
+llvm-libunwind
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-08-13)
 # media-gfx/gimp is not stable
