@@ -3,6 +3,10 @@
 
 # Conrad Kostecki <conikost@gentoo.org> (2022-02-03)
 # Binary package linked to glibc
+games-server/bedrock-server
+
+# Conrad Kostecki <conikost@gentoo.org> (2022-02-03)
+# Binary package linked to glibc
 dev-libs/luise
 
 # Conrad Kostecki <conikost@gentoo.org> (2022-02-03)
