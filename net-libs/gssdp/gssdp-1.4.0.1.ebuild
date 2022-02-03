@@ -55,7 +55,8 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	if use gtk-doc ; then
-		mv "${ED}"/usr/share/doc/{gssdp-1.2/reference,${PF}/html} || die
+		mv "${ED}"/usr/share/doc/{gssdp-1.2,${PF}} || die
+		mv "${ED}"/usr/share/doc/${PF}/{reference,html} || die
 		rmdir "${ED}"/usr/share/doc/gssdp-1.2
 	fi
 }
