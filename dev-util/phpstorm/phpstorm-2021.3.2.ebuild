@@ -1,26 +1,23 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit desktop wrapper
 
-SLOT="0"
-MY_PV="211.7628.25"
+MY_PV="213.6777.58"
 MY_PN="PhpStorm"
-
-KEYWORDS="amd64"
-SRC_URI="https://download.jetbrains.com/webide/${MY_PN}-${PV}.tar.gz"
 
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
 HOMEPAGE="https://www.jetbrains.com/phpstorm"
+SRC_URI="https://download.jetbrains.com/webide/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="|| ( IDEA IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )
 	Apache-1.1 Apache-2.0 BSD BSD-2 CC0-1.0 CDDL-1.1 CPL-0.5 CPL-1.0
 	EPL-1.0 EPL-2.0 GPL-2 GPL-2-with-classpath-exception GPL-3 ISC JDOM
 	LGPL-2.1+ LGPL-3 MIT MPL-1.0 MPL-1.1 OFL public-domain PSF-2 UoI-NCSA ZLIB"
-
-IUSE=""
-REQUIRED_USE=""
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+RESTRICT="mirror"
 
 BDEPEND="dev-util/patchelf"
 
@@ -58,22 +55,29 @@ RDEPEND="
 	x11-libs/pango
 "
 
-RESTRICT="mirror"
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
 QA_PREBUILT="opt/${P}/*"
 
 src_prepare() {
 	default
 
-	rm -vf "${S}"/help/ReferenceCardForMac.pdf || die
+	local remove_me=(
+		help/ReferenceCardForMac.pdf
+		lib/pty4j-native/linux/aarch64
+		lib/pty4j-native/linux/arm
+		lib/pty4j-native/linux/mips64el
+		lib/pty4j-native/linux/ppc64le
+		plugins/performanceTesting/bin/*.dll
+		plugins/performanceTesting/bin/libyjpagent.dylib
+		plugins/performanceTesting/bin/libyjpagent.so
+		plugins/remote-dev-server/selfcontained
+		plugins/tailwindcss/server/prebuilds/linux-x64/node.napi.musl.node
+	)
 
-	rm -vf "${S}"/bin/fsnotifier || die
-	rm -vf "${S}"/bin/phpstorm.vmoptions || die
+	use amd64 || remove_me+=( lib/pty4j-native/linux/x86_64 )
+	use x86 || remove_me+=( lib/pty4j-native/linux/x86 )
 
-	rm -vf "${S}"/plugins/performanceTesting/bin/libyjpagent.so || die
-	rm -vf "${S}"/plugins/performanceTesting/bin/*.dll || die
-	rm -vf "${S}"/plugins/performanceTesting/bin/libyjpagent.dylib || die
-	rm -vrf "${S}"/lib/pty4j-native/linux/{aarch64,mips64el,ppc64le,x86} || die
+	rm -rv "${remove_me[@]}" || die
 
 	sed -i \
 		-e "\$a\\\\" \
@@ -93,20 +97,19 @@ src_prepare() {
 
 src_install() {
 	local DIR="/opt/${P}"
-	local JRE_DIR="jbr"
 
 	insinto "${DIR}"
 	doins -r *
-	fperms 755 "${DIR}"/bin/{format.sh,fsnotifier64,inspect.sh,ltedit.sh,phpstorm.sh,printenv.py,restart.py}
+	fperms 755 "${DIR}"/bin/{format.sh,fsnotifier,inspect.sh,ltedit.sh,phpstorm.sh,printenv.py,restart.py}
 
-	fperms 755 "${DIR}"/"${JRE_DIR}"/bin/{jaotc,java,javac,jcmd,jdb,jfr,jhsdb,jjs,jmap,jps,jrunscript,jstack,jstat,keytool,pack200,rmid,rmiregistry,serialver,unpack200}
-	fperms 755 "${DIR}"/"${JRE_DIR}"/lib/{chrome-sandbox,jcef_helper,jexec,jspawnhelper}
+	fperms 755 "${DIR}"/jbr/bin/{jaotc,java,javac,jcmd,jdb,jfr,jhsdb,jjs,jmap,jps,jrunscript,jstack,jstat,keytool,pack200,rmid,rmiregistry,serialver,unpack200}
+	fperms 755 "${DIR}"/jbr/lib/{chrome-sandbox,jcef_helper,jexec,jspawnhelper}
 
 	make_wrapper "${PN}" "${DIR}/bin/${PN}.sh"
 	newicon "bin/${PN}.svg" "${PN}.svg"
 	make_desktop_entry "${PN}" "phpstorm" "${PN}" "Development;IDE;"
 
 	# recommended by: https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
-	dodir /etc/sysctl.d/
-	echo "fs.inotify.max_user_watches = 524288" > "${D}/etc/sysctl.d/30-idea-inotify-watches.conf" || die
+  dodir /usr/lib/sysctl.d/
+  echo "fs.inotify.max_user_watches = 524288" > "${D}/usr/lib/sysctl.d/30-clion-inotify-watches.conf" || die
 }
