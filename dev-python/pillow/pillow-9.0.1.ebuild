@@ -49,6 +49,7 @@ BDEPEND="
 
 EPYTEST_DESELECT=(
 	# Fails because of ghostscript?
+	# https://github.com/python-pillow/Pillow/issues/6013
 	Tests/test_file_eps.py::test_showpage
 	Tests/test_file_eps.py::test_bytesio_object
 	Tests/test_file_eps.py::test_render_scale1
