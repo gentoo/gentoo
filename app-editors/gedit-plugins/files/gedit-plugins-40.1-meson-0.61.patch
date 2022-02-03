@@ -1,0 +1,208 @@
+https://gitlab.gnome.org/GNOME/gedit-plugins/-/merge_requests/27.patch
+https://bugs.gentoo.org/832315
+
+From: Jan Beich <jbeich@FreeBSD.org>
+Date: Tue, 25 Jan 2022 12:10:06 +0000
+Subject: [PATCH] meson: drop unused argument for i18n.merge_file()
+
+Ignored in Meson < 0.60.0, deprecated since 0.60.1 and fatal since 0.61.0.
+
+plugins/bookmarks/meson.build:43:0: ERROR: Function does not take positional arguments.
+plugins/bracketcompletion/meson.build:32:0: ERROR: Function does not take positional arguments.
+plugins/charmap/meson.build:28:0: ERROR: Function does not take positional arguments.
+plugins/codecomment/meson.build:32:0: ERROR: Function does not take positional arguments.
+plugins/colorpicker/meson.build:32:0: ERROR: Function does not take positional arguments.
+plugins/colorschemer/meson.build:41:0: ERROR: Function does not take positional arguments.
+plugins/commander/meson.build:37:0: ERROR: Function does not take positional arguments.
+plugins/drawspaces/meson.build:58:0: ERROR: Function does not take positional arguments.
+plugins/findinfiles/meson.build:64:0: ERROR: Function does not take positional arguments.
+plugins/git/meson.build:28:0: ERROR: Function does not take positional arguments.
+plugins/joinlines/meson.build:32:0: ERROR: Function does not take positional arguments.
+plugins/multiedit/meson.build:28:0: ERROR: Function does not take positional arguments.
+plugins/smartspaces/meson.build:36:0: ERROR: Function does not take positional arguments.
+plugins/synctex/meson.build:28:0: ERROR: Function does not take positional arguments.
+plugins/terminal/meson.build:40:0: ERROR: Function does not take positional arguments.
+plugins/textsize/meson.build:28:0: ERROR: Function does not take positional arguments.
+plugins/translate/meson.build:49:0: ERROR: Function does not take positional arguments.
+plugins/wordcompletion/meson.build:57:0: ERROR: Function does not take positional arguments.
+--- a/plugins/bookmarks/meson.build
++++ b/plugins/bookmarks/meson.build
+@@ -41,7 +41,6 @@ bookmarks_plugin = custom_target(
+ )
+ 
+ bookmarks_metainfo = i18n.merge_file(
+-  'gedit-bookmarks.metainfo.xml',
+   input: 'gedit-bookmarks.metainfo.xml.in',
+   output: 'gedit-bookmarks.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+--- a/plugins/bracketcompletion/meson.build
++++ b/plugins/bracketcompletion/meson.build
+@@ -30,7 +30,6 @@ bracketcompletion_plugin = custom_target(
+ )
+ 
+ bracketcompletion_metainfo = i18n.merge_file(
+-  'gedit-bracketcompletion.metainfo.xml',
+   input: 'gedit-bracketcompletion.metainfo.xml.in',
+   output: 'gedit-bracketcompletion.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+--- a/plugins/charmap/meson.build
++++ b/plugins/charmap/meson.build
+@@ -26,7 +26,6 @@ charmap_plugin = custom_target(
+ )
+ 
+ charmap_metainfo = i18n.merge_file(
+-  'gedit-charmap.metainfo.xml',
+   input: 'gedit-charmap.metainfo.xml.in',
+   output: 'gedit-charmap.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+--- a/plugins/codecomment/meson.build
++++ b/plugins/codecomment/meson.build
+@@ -30,7 +30,6 @@ codecomment_plugin = custom_target(
+ )
+ 
+ codecomment_metainfo = i18n.merge_file(
+-  'gedit-codecomment.metainfo.xml',
+   input: 'gedit-codecomment.metainfo.xml.in',
+   output: 'gedit-codecomment.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+--- a/plugins/colorpicker/meson.build
++++ b/plugins/colorpicker/meson.build
+@@ -30,7 +30,6 @@ colorpicker_plugin = custom_target(
+ )
+ 
+ colorpicker_metainfo = i18n.merge_file(
+-  'gedit-colorpicker.metainfo.xml',
+   input: 'gedit-colorpicker.metainfo.xml.in',
+   output: 'gedit-colorpicker.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+--- a/plugins/colorschemer/meson.build
++++ b/plugins/colorschemer/meson.build
+@@ -39,7 +39,6 @@ colorschemer_plugin = custom_target(
+ )
+ 
+ colorschemer_metainfo = i18n.merge_file(
+-  'gedit-colorschemer.metainfo.xml',
+   input: 'gedit-colorschemer.metainfo.xml.in',
+   output: 'gedit-colorschemer.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+--- a/plugins/commander/meson.build
++++ b/plugins/commander/meson.build
+@@ -35,7 +35,6 @@ commander_plugin = custom_target(
+ )
+ 
+ commander_metainfo = i18n.merge_file(
+-  'gedit-commander.metainfo.xml',
+   input: 'gedit-commander.metainfo.xml.in',
+   output: 'gedit-commander.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+--- a/plugins/drawspaces/meson.build
++++ b/plugins/drawspaces/meson.build
+@@ -56,7 +56,6 @@ install_data(
+ )
+ 
+ drawspaces_metainfo = i18n.merge_file(
+-  'gedit-drawspaces.metainfo.xml',
+   input: 'gedit-drawspaces.metainfo.xml.in',
+   output: 'gedit-drawspaces.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+--- a/plugins/findinfiles/meson.build
++++ b/plugins/findinfiles/meson.build
+@@ -62,7 +62,6 @@ findinfiles_plugin = custom_target(
+ )
+ 
+ findinfiles_metainfo = i18n.merge_file(
+-  'gedit-findinfiles.metainfo.xml',
+   input: 'gedit-findinfiles.metainfo.xml.in',
+   output: 'gedit-findinfiles.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+--- a/plugins/git/meson.build
++++ b/plugins/git/meson.build
+@@ -26,7 +26,6 @@ git_plugin = custom_target(
+ )
+ 
+ git_metainfo = i18n.merge_file(
+-  'gedit-git.metainfo.xml',
+   input: 'gedit-git.metainfo.xml.in',
+   output: 'gedit-git.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+--- a/plugins/joinlines/meson.build
++++ b/plugins/joinlines/meson.build
+@@ -30,7 +30,6 @@ joinlines_plugin = custom_target(
+ )
+ 
+ joinlines_metainfo = i18n.merge_file(
+-  'gedit-joinlines.metainfo.xml',
+   input: 'gedit-joinlines.metainfo.xml.in',
+   output: 'gedit-joinlines.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+--- a/plugins/multiedit/meson.build
++++ b/plugins/multiedit/meson.build
+@@ -26,7 +26,6 @@ multiedit_plugin = custom_target(
+ )
+ 
+ multiedit_metainfo = i18n.merge_file(
+-  'gedit-multiedit.metainfo.xml',
+   input: 'gedit-multiedit.metainfo.xml.in',
+   output: 'gedit-multiedit.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+--- a/plugins/smartspaces/meson.build
++++ b/plugins/smartspaces/meson.build
+@@ -34,7 +34,6 @@ smartspaces_plugin = custom_target(
+ )
+ 
+ smartspaces_metainfo = i18n.merge_file(
+-  'gedit-smartspaces.metainfo.xml',
+   input: 'gedit-smartspaces.metainfo.xml.in',
+   output: 'gedit-smartspaces.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+--- a/plugins/synctex/meson.build
++++ b/plugins/synctex/meson.build
+@@ -26,7 +26,6 @@ synctex_plugin = custom_target(
+ )
+ 
+ synctex_metainfo = i18n.merge_file(
+-  'gedit-synctex.metainfo.xml',
+   input: 'gedit-synctex.metainfo.xml.in',
+   output: 'gedit-synctex.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+--- a/plugins/terminal/meson.build
++++ b/plugins/terminal/meson.build
+@@ -38,7 +38,6 @@ install_data(
+ )
+ 
+ terminal_metainfo = i18n.merge_file(
+-  'gedit-terminal.metainfo.xml',
+   input: 'gedit-terminal.metainfo.xml.in',
+   output: 'gedit-terminal.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+--- a/plugins/textsize/meson.build
++++ b/plugins/textsize/meson.build
+@@ -26,7 +26,6 @@ textsize_plugin = custom_target(
+ )
+ 
+ textsize_metainfo = i18n.merge_file(
+-  'gedit-textsize.metainfo.xml',
+   input: 'gedit-textsize.metainfo.xml.in',
+   output: 'gedit-textsize.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+--- a/plugins/translate/meson.build
++++ b/plugins/translate/meson.build
+@@ -47,7 +47,6 @@ install_data(
+ )
+ 
+ translate_metainfo = i18n.merge_file(
+-  'gedit-translate.metainfo.xml',
+   input: 'gedit-translate.metainfo.xml.in',
+   output: 'gedit-translate.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+--- a/plugins/wordcompletion/meson.build
++++ b/plugins/wordcompletion/meson.build
+@@ -55,7 +55,6 @@ install_data(
+ )
+ 
+ wordcompletion_metainfo = i18n.merge_file(
+-  'gedit-wordcompletion.metainfo.xml',
+   input: 'gedit-wordcompletion.metainfo.xml.in',
+   output: 'gedit-wordcompletion.metainfo.xml',
+   po_dir: join_paths(srcdir, 'po'),
+GitLab
