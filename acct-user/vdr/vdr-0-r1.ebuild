@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -59,4 +59,5 @@ pkg_preinst() {
 			die "user action required"
 		fi
 	fi
+	acct-user_pkg_preinst
 }
