@@ -26,6 +26,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
+	dev-util/glib-utils
 	gtk-doc? ( dev-util/gtk-doc
 		app-text/docbook-xml-dtd:4.3 )
 	vala? ( $(vala_depend) )
