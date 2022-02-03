@@ -21,13 +21,12 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.10.2-fix-musl-compat-stdint.patch
+	"${FILESDIR}"/${PN}-1.10.2-respect-AR.patch
 )
 
 src_prepare() {
 	default
 
-	# Don't use hardcoded 'ar' command
-	sed -s '/^AC_PROG_CC/a m4_ifdef([AM_PROG_AR], [AM_PROG_AR], [AC_SUBST([AR], [$(tc-getAR])])' -i configure.ac || die
 	eautoreconf
 }
 
