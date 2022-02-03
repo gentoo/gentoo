@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/appdirs[${PYTHON_USEDEP}]
-	dev-python/jaraco-text[${PYTHON_USEDEP}]
+	>=dev-python/jaraco-text-3.7.0[${PYTHON_USEDEP}]
 	dev-python/more-itertools[${PYTHON_USEDEP}]
 	dev-python/ordered-set[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
