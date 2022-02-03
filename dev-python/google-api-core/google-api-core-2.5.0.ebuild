@@ -55,7 +55,7 @@ EPYTEST_DESELECT=(
 	tests/unit/test_operation.py::test_exception_with_error_code
 )
 
-python_install_all() {
-	distutils-r1_python_install_all
-	find "${D}" -name '*.pth' -delete || die
+python_compile() {
+	distutils-r1_python_compile
+	find "${BUILD_DIR}" -name '*.pth' -delete || die
 }
