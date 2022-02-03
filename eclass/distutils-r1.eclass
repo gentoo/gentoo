@@ -984,6 +984,53 @@ _distutils-r1_get_backend() {
 	echo "${build_backend}"
 }
 
+# @FUNCTION: distutils_pep517_install
+# @USAGE: [<root>]
+# @DESCRIPTION:
+# Build the wheel for the package in the current directory using PEP 517
+# backend and install it into <root>.  If <root> is not specified,
+# ${BUILD_DIR}/install is used.
+#
+# This function is intended for expert use only.  It does not handle
+# wrapping executables.
+distutils_pep517_install() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local root=${1:-${BUILD_DIR}/install}
+	local -x WHEEL_BUILD_DIR=${BUILD_DIR}/wheel
+	mkdir -p "${WHEEL_BUILD_DIR}" || die
+
+	local build_backend=$(_distutils-r1_get_backend)
+	einfo "  Building the wheel for ${PWD#${WORKDIR}/} via ${build_backend}"
+	local wheel=$("${EPYTHON}" -c "import ${build_backend%:*}; \
+		import os; \
+		print(${build_backend/:/.}.build_wheel(os.environ['WHEEL_BUILD_DIR']),
+			file=os.fdopen(3, 'w'))" 3>&1 >&2 || die "Wheel build failed")
+	[[ -n ${wheel} ]] || die "No wheel name returned"
+
+	einfo "  Installing the wheel to ${root}"
+	# NB: --compile-bytecode does not produce the correct paths,
+	# and python_optimize doesn't handle being called outside D,
+	# so we just defer compiling until the final merge
+	# NB: we override sys.prefix & sys.exec_prefix because otherwise
+	# installer would use virtualenv's prefix
+	local -x PYTHON_PREFIX=${EPREFIX}/usr
+	"${EPYTHON}" -c 'import os, sys; sys.prefix = sys.exec_prefix = os.environ["PYTHON_PREFIX"]; from installer.__main__ import main; main(sys.argv[1:])' \
+		-d "${root}" "${WHEEL_BUILD_DIR}/${wheel}" --no-compile-bytecode ||
+		die "installer failed"
+
+	# remove installed licenses
+	find "${root}$(python_get_sitedir)" \
+		'(' -path '*.dist-info/COPYING*' -o \
+		-path '*.dist-info/LICENSE*' ')' -delete || die
+
+	# clean the build tree; otherwise we may end up with PyPy3
+	# extensions duplicated into CPython dists
+	if [[ ${DISTUTILS_USE_PEP517:-setuptools} == setuptools ]]; then
+		esetup.py clean -a
+	fi
+}
+
 # @FUNCTION: distutils-r1_python_compile
 # @USAGE: [additional-args...]
 # @DESCRIPTION:
@@ -1027,36 +1074,8 @@ distutils-r1_python_compile() {
 		addpredict /usr/lib/portage/pym
 		addpredict /usr/local # bug 498232
 
-		local -x WHEEL_BUILD_DIR=${BUILD_DIR}/wheel
-		mkdir -p "${WHEEL_BUILD_DIR}" || die
-
-		local build_backend=$(_distutils-r1_get_backend)
-		einfo "  Building the wheel via ${build_backend}"
-		local wheel=$("${EPYTHON}" -c "import ${build_backend%:*}; \
-			import os; \
-			print(${build_backend/:/.}.build_wheel(os.environ['WHEEL_BUILD_DIR']), \
-				file=os.fdopen(3, 'w'))" 3>&1 >&2 || die "Wheel build failed")
-		[[ -n ${wheel} ]] || die "No wheel name returned"
-
 		local root=${BUILD_DIR}/install
-		einfo "  Installing the wheel to ${root}"
-		# NB: --compile-bytecode does not produce the correct paths,
-		# and python_optimize doesn't handle being called outside D,
-		# so we just defer compiling until the final merge
-		"${EPYTHON}" -m installer -d "${root}" "${WHEEL_BUILD_DIR}/${wheel}" \
-			--no-compile-bytecode ||
-			die "installer failed"
-
-		# remove installed licenses
-		find "${root}$(python_get_sitedir)" \
-			'(' -path '*.dist-info/COPYING*' -o \
-			-path '*.dist-info/LICENSE*' ')' -delete || die
-
-		# clean the build tree; otherwise we may end up with PyPy3
-		# extensions duplicated into CPython dists
-		if [[ ${DISTUTILS_USE_PEP517:-setuptools} == setuptools ]]; then
-			esetup.py clean -a
-		fi
+		distutils_pep517_install "${root}"
 
 		# copy executables to python-exec directory
 		# we do it early so that we can alter bindir recklessly
