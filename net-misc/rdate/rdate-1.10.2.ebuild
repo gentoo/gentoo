@@ -5,7 +5,7 @@ EAPI=8
 
 MY_P="openrdate"
 
-inherit autotools toolchain-funcs
+inherit autotools
 
 DESCRIPTION="Use TCP or UDP to retrieve the current time of another machine"
 HOMEPAGE="https://github.com/resurrecting-open-source-projects/openrdate"
