@@ -3,6 +3,10 @@
 
 # Conrad Kostecki <conikost@gentoo.org> (2022-02-03)
 # Binary package linked to glibc
+app-misc/kryoflux-dtc
+
+# Conrad Kostecki <conikost@gentoo.org> (2022-02-03)
+# Binary package linked to glibc
 app-benchmarks/geekbench
 
 # Robert Siebeck <gentoo.2019@r123.de> (2022-02-02)
