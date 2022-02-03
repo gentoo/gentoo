@@ -922,6 +922,68 @@ _distutils-r1_backend_to_key() {
 	esac
 }
 
+# @FUNCTION: _distutils-r1_get_backend
+# @INTERNAL
+# @DESCRIPTION:
+# Read (or guess, in case of setuptools) the build-backend
+# for the package in the current directory.
+_distutils-r1_get_backend() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local build_backend
+	if [[ -f pyproject.toml ]]; then
+		# if pyproject.toml exists, try getting the backend from it
+		# NB: this could fail if pyproject.toml doesn't list one
+		build_backend=$("${EPYTHON}" -c 'import tomli; \
+			print(tomli.load(open("pyproject.toml", "rb")) \
+				["build-system"]["build-backend"])' 2>/dev/null)
+	fi
+	if [[ -z ${build_backend} && ${DISTUTILS_USE_PEP517} == setuptools &&
+		-f setup.py ]]
+	then
+		# use the legacy setuptools backend as a fallback
+		build_backend=setuptools.build_meta:__legacy__
+	fi
+	if [[ -z ${build_backend} ]]; then
+		die "Unable to obtain build-backend from pyproject.toml"
+	fi
+
+	if [[ ${DISTUTILS_USE_PEP517} != standalone ]]; then
+		# verify whether DISTUTILS_USE_PEP517 was set correctly
+		local expected_value=$(_distutils-r1_backend_to_key "${build_backend}")
+		if [[ ${DISTUTILS_USE_PEP517} != ${expected_value} ]]; then
+			eerror "DISTUTILS_USE_PEP517 does not match pyproject.toml!"
+			eerror "    have: DISTUTILS_USE_PEP517=${DISTUTILS_USE_PEP517}"
+			eerror "expected: DISTUTILS_USE_PEP517=${expected_value}"
+			eerror "(backend: ${build_backend})"
+			die "DISTUTILS_USE_PEP517 value incorrect"
+		fi
+
+		# fix deprecated backends up
+		local new_backend=
+		case ${build_backend} in
+			flit.buildapi)
+				new_backend=flit_core.buildapi
+				;;
+			poetry.masonry.api)
+				new_backend=poetry.core.masonry.api
+				;;
+		esac
+
+		if [[ -n ${new_backend} ]]; then
+			if [[ ! -f ${T}/.distutils_deprecated_backend_warned ]]; then
+				eqawarn "${build_backend} backend is deprecated.  Please see:"
+				eqawarn "https://projects.gentoo.org/python/guide/distutils.html#deprecated-pep-517-backends"
+				eqawarn "The eclass will be using ${new_backend} instead."
+				> "${T}"/.distutils_deprecated_backend_warned || die
+			fi
+			build_backend=${new_backend}
+		fi
+	fi
+
+	echo "${build_backend}"
+}
+
 # @FUNCTION: distutils-r1_python_compile
 # @USAGE: [additional-args...]
 # @DESCRIPTION:
@@ -968,53 +1030,7 @@ distutils-r1_python_compile() {
 		local -x WHEEL_BUILD_DIR=${BUILD_DIR}/wheel
 		mkdir -p "${WHEEL_BUILD_DIR}" || die
 
-		local build_backend
-		if [[ -f pyproject.toml ]]; then
-			build_backend=$("${EPYTHON}" -c 'import tomli; \
-				print(tomli.load(open("pyproject.toml", "rb")) \
-					["build-system"]["build-backend"])' 2>/dev/null)
-		fi
-		if [[ -z ${build_backend} && ${DISTUTILS_USE_PEP517} == setuptools &&
-			-f setup.py ]]
-		then
-			# use the legacy setuptools backend
-			build_backend=setuptools.build_meta:__legacy__
-		fi
-		[[ -z ${build_backend} ]] &&
-			die "Unable to obtain build-backend from pyproject.toml"
-
-		if [[ ${DISTUTILS_USE_PEP517} != standalone ]]; then
-			local expected_value=$(_distutils-r1_backend_to_key "${build_backend}")
-			if [[ ${DISTUTILS_USE_PEP517} != ${expected_value} ]]; then
-				eerror "DISTUTILS_USE_PEP517 does not match pyproject.toml!"
-				eerror "    have: DISTUTILS_USE_PEP517=${DISTUTILS_USE_PEP517}"
-				eerror "expected: DISTUTILS_USE_PEP517=${expected_value}"
-				eerror "(backend: ${build_backend})"
-				die "DISTUTILS_USE_PEP517 value incorrect"
-			fi
-
-			# fix deprecated backends up
-			local new_backend=
-			case ${build_backend} in
-				flit.buildapi)
-					new_backend=flit_core.buildapi
-					;;
-				poetry.masonry.api)
-					new_backend=poetry.core.masonry.api
-					;;
-			esac
-
-			if [[ -n ${new_backend} ]]; then
-				if [[ ! ${_DISTUTILS_DEPRECATED_BACKEND_WARNED} ]]; then
-					eqawarn "${build_backend} backend is deprecated.  Please see:"
-					eqawarn "https://projects.gentoo.org/python/guide/distutils.html#deprecated-pep-517-backends"
-					eqawarn "The eclass will be using ${new_backend} instead."
-					_DISTUTILS_DEPRECATED_BACKEND_WARNED=1
-				fi
-				build_backend=${new_backend}
-			fi
-		fi
-
+		local build_backend=$(_distutils-r1_get_backend)
 		einfo "  Building the wheel via ${build_backend}"
 		"${EPYTHON}" -c "import ${build_backend%:*}; \
 			import os; \
