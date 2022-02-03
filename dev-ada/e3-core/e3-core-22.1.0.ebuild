@@ -1,9 +1,10 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
+DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 toolchain-funcs
 
 DESCRIPTION="Ease the development of portable automated build systems"
@@ -39,11 +40,15 @@ PATCHES=(
 	"${FILESDIR}"/${P}-test.patch
 )
 
-distutils_enable_tests --install pytest
+distutils_enable_tests pytest
 
 src_compile() {
 	local PLATFORM=x86_64-linux
 	rm src/e3/os/data/rlimit* || die
 	$(tc-getCC) ${CFLAGS} -o src/e3/os/data/rlimit-${PLATFORM} tools/rlimit/rlimit.c ${LDFLAGS}
 	distutils-r1_src_compile
+}
+
+python_test() {
+	epytest -p no:markdown
 }
