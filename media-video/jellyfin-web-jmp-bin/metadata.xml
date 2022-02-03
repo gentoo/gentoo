@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>arsen@aarsen.me</email>
 		<name>Arsen Arsenović</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>telans@posteo.de</email>
 		<name>James Beddek</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
