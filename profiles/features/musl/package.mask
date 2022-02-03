@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Conrad Kostecki <conikost@gentoo.org> (2022-02-03)
+# Binary package linked to glibc
+app-benchmarks/geekbench
+
 # Robert Siebeck <gentoo.2019@r123.de> (2022-02-02)
 # Binary package linked to glibc, bug #832483
 net-im/signal-desktop-bin
@@ -14,7 +18,7 @@ net-misc/dropbox
 net-misc/yandex-disk
 
 # David Seifert <soap@gentoo.org> (2022-02-02)
-# Binary packages linked to glibc
+# Binary package linked to glibc
 net-im/skypeforlinux
 
 # Viorel Munteanu <ceamac.paragon@gmail.com> (2022-02-01)
