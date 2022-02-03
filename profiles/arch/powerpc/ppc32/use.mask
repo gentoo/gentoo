@@ -1,4 +1,4 @@
-# Copyright 2008-2021 Gentoo Authors
+# Copyright 2008-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -13,10 +13,6 @@ gnome-online-accounts
 # ...and openscenegraph needs openexr.
 openexr
 osg
-
-# Sam James <sam@gentoo.org> (2021-10-11)
-# sys-libs/llvm-libunwind isn't keyworded here
-llvm-libunwind
 
 # Matt Turner <mattst88@gentoo.org> (07-25-2021)
 # gnome-shell requires rustified librsvg.
