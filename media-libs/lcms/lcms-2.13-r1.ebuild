@@ -25,6 +25,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-grayscale-regression.patch
+)
+
 src_prepare() {
 	default
 
