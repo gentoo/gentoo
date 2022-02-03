@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit systemd toolchain-funcs tmpfiles
+inherit systemd flag-o-matic toolchain-funcs tmpfiles
 
 DESCRIPTION="IPsec implementation for Linux, fork of Openswan"
 HOMEPAGE="https://libreswan.org/"
@@ -46,6 +46,7 @@ RDEPEND="${DEPEND}
 	!net-vpn/strongswan
 	selinux? ( sec-policy/selinux-ipsec )
 "
+DEPEND+=" elibc_musl? ( sys-libs/queue-standalone )"
 
 usetf() {
 	usex "$1" true false
@@ -61,6 +62,9 @@ src_prepare() {
 
 src_configure() {
 	tc-export AR CC
+
+	use elibc_musl && append-cflags -DGLIBC_KERN_FLIP_HEADERS
+
 	export PREFIX=/usr
 	export FINALEXAMPLECONFDIR=/usr/share/doc/${PF}
 	export FINALDOCDIR=/usr/share/doc/${PF}/html
