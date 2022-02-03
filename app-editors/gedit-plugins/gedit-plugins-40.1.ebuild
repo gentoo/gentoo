@@ -58,6 +58,10 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-40.1-meson-0.61.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
