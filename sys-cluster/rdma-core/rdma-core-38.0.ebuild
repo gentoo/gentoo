@@ -33,7 +33,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/cython[${PYTHON_MULTI_USEDEP}]
+			dev-python/cython[${PYTHON_USEDEP}]
 		')
 	)"
 
