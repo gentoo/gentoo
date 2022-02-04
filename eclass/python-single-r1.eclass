@@ -341,14 +341,7 @@ python_gen_cond_dep() {
 			local single_usedep="python_single_target_${impl}(-)"
 			local multi_usedep="python_targets_${impl}(-)"
 
-			if [[ ${EAPI} != [67] ]]; then
-				if [[ ${dep} == *\$\{PYTHON_MULTI_USEDEP\}* ]]; then
-					die "Replace PYTHON_MULTI_USEDEP with PYTHON_USEDEP in EAPI ${EAPI}"
-				fi
-			fi
-
 			local subdep=${dep//\$\{PYTHON_SINGLE_USEDEP\}/${single_usedep}}
-			subdep=${subdep//\$\{PYTHON_MULTI_USEDEP\}/${multi_usedep}}
 			matches+=( "python_single_target_${impl}? (
 				${subdep//\$\{PYTHON_USEDEP\}/${multi_usedep}} )" )
 		fi
