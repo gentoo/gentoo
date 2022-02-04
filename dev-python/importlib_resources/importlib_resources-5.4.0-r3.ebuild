@@ -19,7 +19,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/zipp[${PYTHON_USEDEP}]
+		>=dev-python/zipp-3.7.0-r1[${PYTHON_USEDEP}]
 	' python3_{8,9} pypy3)"
 
 distutils_enable_tests unittest
