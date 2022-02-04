@@ -15,7 +15,6 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
 BDEPEND="
-	dev-python/toml[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-3.4.2[${PYTHON_USEDEP}]
 	test? ( dev-python/jaraco-itertools[${PYTHON_USEDEP}] )
 "
