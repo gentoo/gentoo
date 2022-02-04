@@ -20,7 +20,6 @@ RDEPEND="
 	dev-python/more-itertools[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/toml[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/jaraco-classes[${PYTHON_USEDEP}]
