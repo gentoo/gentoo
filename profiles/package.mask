@@ -324,11 +324,6 @@ net-analyzer/jmx2munin
 # Removal on 2021-02-10 bug #762958
 =app-misc/mime-types-9
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-01-09)
-# No more revdeps after sys-cluster/mpe2 last-rites was initiated.
-# Removal on 2022-01-31, bug #547208
-sys-cluster/mpich2
-
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
 # This is likely to cause issues in tests; Unmask if using for other purposes
