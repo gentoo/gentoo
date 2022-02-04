@@ -995,24 +995,6 @@ python_is_python3() {
 	[[ ${impl} == python3* || ${impl} == pypy3 ]]
 }
 
-# @FUNCTION: python_is_installed
-# @USAGE: [<impl>]
-# @DESCRIPTION:
-# Check whether the interpreter for <impl> (or ${EPYTHON}) is installed.
-# Uses has_version with a proper dependency string.
-#
-# Returns 0 (true) if it is, 1 (false) otherwise.
-python_is_installed() {
-	local impl=${1:-${EPYTHON}}
-	[[ ${impl} ]] || die "${FUNCNAME}: no impl nor EPYTHON"
-	local hasv_args=( -b )
-	[[ ${EAPI} == 6 ]] && hasv_args=( --host-root )
-
-	local PYTHON_PKG_DEP
-	_python_export "${impl}" PYTHON_PKG_DEP
-	has_version "${hasv_args[@]}" "${PYTHON_PKG_DEP}"
-}
-
 # @FUNCTION: python_fix_shebang
 # @USAGE: [-f|--force] [-q|--quiet] <path>...
 # @DESCRIPTION:
@@ -1379,13 +1361,15 @@ _python_run_check_deps() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local impl=${1}
+	local hasv_args=( -b )
+	[[ ${EAPI} == 6 ]] && hasv_args=( --host-root )
 
 	einfo "Checking whether ${impl} is suitable ..."
 
 	local PYTHON_PKG_DEP
 	_python_export "${impl}" PYTHON_PKG_DEP
 	ebegin "  ${PYTHON_PKG_DEP}"
-	python_is_installed "${impl}"
+	has_version "${hasv_args[@]}" "${PYTHON_PKG_DEP}"
 	eend ${?} || return 1
 	declare -f python_check_deps >/dev/null || return 0
 
