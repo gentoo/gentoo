@@ -82,7 +82,11 @@ _python_verify_patterns() {
 
 	local impl pattern
 	for pattern; do
-		[[ ${pattern} == -[23] ]] && continue
+		case ${pattern} in
+			-[23]|3.[89]|3.10)
+				continue
+				;;
+		esac
 
 		for impl in "${_PYTHON_ALL_IMPLS[@]}" "${_PYTHON_HISTORICAL_IMPLS[@]}"
 		do
@@ -190,12 +194,14 @@ _python_set_impls() {
 # Matches if no patterns are provided.
 #
 # <impl> can be in PYTHON_COMPAT or EPYTHON form. The patterns
-# are fnmatch-style.
+# can either be fnmatch-style or stdlib versions, e.g. "3.8", "3.9".
+# In the latter case, pypy3 will match if there is at least one pypy3
+# version matching the stdlib version.
 _python_impl_matches() {
 	[[ ${#} -ge 1 ]] || die "${FUNCNAME}: takes at least 1 parameter"
 	[[ ${#} -eq 1 ]] && return 0
 
-	local impl=${1} pattern
+	local impl=${1/./_} pattern
 	shift
 
 	for pattern; do
@@ -218,9 +224,17 @@ _python_impl_matches() {
 				fi
 				return 0
 				;;
+			3.8)
+				# the only unmasked pypy3 version is pypy3.8 atm
+				[[ ${impl} == python${pattern/./_} || ${impl} == pypy3 ]] &&
+					return 0
+				;;
+			3.9|3.10)
+				[[ ${impl} == python${pattern/./_} ]] && return 0
+				;;
 			*)
 				# unify value style to allow lax matching
-				[[ ${impl/./_} == ${pattern/./_} ]] && return 0
+				[[ ${impl} == ${pattern/./_} ]] && return 0
 				;;
 		esac
 	done
