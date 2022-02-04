@@ -294,7 +294,7 @@ python_setup() {
 
 		_python_export "${impls[0]}" EPYTHON PYTHON
 		_python_wrapper_setup
-		einfo "Using ${EPYTHON} to build"
+		einfo "Using ${EPYTHON} to build (via PYTHON_COMPAT_OVERRIDE)"
 		return
 	fi
 
@@ -308,7 +308,7 @@ python_setup() {
 		elif _python_run_check_deps "${impl}"; then
 			_python_export EPYTHON PYTHON
 			_python_wrapper_setup
-			einfo "Using ${EPYTHON} to build"
+			einfo "Using ${EPYTHON} to build (via EPYTHON)"
 			return
 		fi
 	fi
@@ -320,7 +320,7 @@ python_setup() {
 		_python_export "${impl}" EPYTHON PYTHON
 		if _python_run_check_deps "${impl}"; then
 			_python_wrapper_setup
-			einfo "Using ${EPYTHON} to build"
+			einfo "Using ${EPYTHON} to build (via PYTHON_COMPAT iteration)"
 			return
 		fi
 	done
