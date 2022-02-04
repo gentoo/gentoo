@@ -27,3 +27,14 @@ BDEPEND="
 
 distutils_enable_sphinx docs '>=dev-python/rst-linker-1.9'
 distutils_enable_tests pytest
+
+src_test() {
+	# create a pkgutil-style __init__.py in order to fix pytest's
+	# determination of package paths
+	# https://bugs.gentoo.org/832713
+	cat > jaraco/__init__.py <<-EOF || die
+		__path__ = __import__('pkgutil').extend_path(__path__, __name__)
+	EOF
+	distutils-r1_src_test
+	rm jaraco/__init__.py || die
+}
