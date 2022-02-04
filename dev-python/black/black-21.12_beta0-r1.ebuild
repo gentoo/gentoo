@@ -31,7 +31,6 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/aiohttp-3.7.4[${PYTHON_USEDEP}]
 		dev-python/aiohttp-cors[${PYTHON_USEDEP}]
