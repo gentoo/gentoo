@@ -70,7 +70,7 @@ REQUIRED_USE="|| ( ${LANG_SUPPORT_SIMPLE[@]} ${LANG_SUPPORT_EXTENDED[@]} )
 	uwsgi_plugins_router_xmldir? ( xml !expat )
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	python-asyncio? ( || ( $(python_gen_useflags -3) ) )
+	python-asyncio? ( python )
 	python-gevent? ( python )
 	expat? ( xml )"
 
