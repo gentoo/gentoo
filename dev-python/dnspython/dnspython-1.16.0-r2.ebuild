@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,6 @@ IUSE="examples"
 RDEPEND="dev-python/pycryptodome[${PYTHON_USEDEP}]
 	>=dev-python/ecdsa-0.13[${PYTHON_USEDEP}]
 	>=dev-python/idna-2.1[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' -2)
 	!dev-python/dnspython:py2
 	!dev-python/dnspython:py3"
 
