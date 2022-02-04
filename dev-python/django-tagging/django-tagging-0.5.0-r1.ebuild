@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-python/django-1.0[${PYTHON_USEDEP}]"
+# wants smart_text which was removed from django-4.0 and up
+RDEPEND=">=dev-python/django-1.0[${PYTHON_USEDEP}]
+	<dev-python/django-4[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
 		$(python_gen_impl_dep sqlite)
