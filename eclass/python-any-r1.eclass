@@ -271,31 +271,6 @@ python_gen_any_dep() {
 	echo "|| ( ${out})"
 }
 
-# @FUNCTION: _python_EPYTHON_supported
-# @USAGE: <epython>
-# @INTERNAL
-# @DESCRIPTION:
-# Check whether the specified implementation is supported by package
-# (specified in PYTHON_COMPAT). Calls python_check_deps() if declared.
-_python_EPYTHON_supported() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	local EPYTHON=${1}
-	local i=${EPYTHON/./_}
-
-	if python_is_installed "${i}"; then
-		if declare -f python_check_deps >/dev/null; then
-			local PYTHON_USEDEP="python_targets_${i}(-)"
-			local PYTHON_SINGLE_USEDEP="python_single_target_${i}(-)"
-			python_check_deps
-			return ${?}
-		fi
-
-		return 0
-	fi
-	return 1
-}
-
 # @FUNCTION: python_setup
 # @DESCRIPTION:
 # Determine what the best installed (and supported) Python
@@ -330,7 +305,7 @@ python_setup() {
 			einfo "EPYTHON (${EPYTHON}) not supported by the package"
 		elif ! has "${impl}" "${_PYTHON_ALL_IMPLS[@]}"; then
 			ewarn "Invalid EPYTHON: ${EPYTHON}"
-		elif _python_EPYTHON_supported "${EPYTHON}"; then
+		elif _python_run_check_deps "${impl}"; then
 			_python_export EPYTHON PYTHON
 			_python_wrapper_setup
 			einfo "Using ${EPYTHON} to build"
@@ -341,8 +316,9 @@ python_setup() {
 	# fallback to best installed impl.
 	# (reverse iteration over _PYTHON_SUPPORTED_IMPLS)
 	for (( i = ${#_PYTHON_SUPPORTED_IMPLS[@]} - 1; i >= 0; i-- )); do
-		_python_export "${_PYTHON_SUPPORTED_IMPLS[i]}" EPYTHON PYTHON
-		if _python_EPYTHON_supported "${EPYTHON}"; then
+		local impl=${_PYTHON_SUPPORTED_IMPLS[i]}
+		_python_export "${impl}" EPYTHON PYTHON
+		if _python_run_check_deps "${impl}"; then
 			_python_wrapper_setup
 			einfo "Using ${EPYTHON} to build"
 			return
