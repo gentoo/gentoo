@@ -7,6 +7,7 @@
 # @SUPPORTED_EAPIS: 5 6 7
 # @PROVIDES: golang-base
 # @BLURB: Eclass for fetching and unpacking go repositories.
+# @DEPRECATED: Go packages should use the go-module eclass
 # @DESCRIPTION:
 # This eclass is written to ease the maintenance of live ebuilds
 # of software written in the Go programming language.
