@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r1
 
 MY_PN=${PN/-/.}
 MY_P=${MY_PN}-${PV}
@@ -36,15 +36,6 @@ PATCHES=(
 )
 
 distutils_enable_tests setup.py
-
-python_compile() {
-	if ! python_is_python3; then
-		local CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}"
-		append-flags -fno-strict-aliasing
-	fi
-
-	distutils-r1_python_compile
-}
 
 python_install_all() {
 	distutils-r1_python_install_all
