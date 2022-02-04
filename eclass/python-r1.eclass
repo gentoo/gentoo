@@ -289,11 +289,6 @@ _python_validate_useflags() {
 # are both in PYTHON_COMPAT and match any of the patterns passed
 # as parameters to the function.
 #
-# The patterns are fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values).  Remember to escape
-# or quote the fnmatch patterns to prevent accidental shell filename
-# expansion.
-#
 # This is an internal function used to implement python_gen_cond_dep.
 _python_gen_usedep() {
 	debug-print-function ${FUNCNAME} "${@}"
@@ -322,10 +317,8 @@ _python_gen_usedep() {
 # are both in PYTHON_COMPAT and match any of the patterns passed
 # as parameters to the function.
 #
-# The patterns are fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values).  Remember to escape
-# or quote the fnmatch patterns to prevent accidental shell filename
-# expansion.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # Example:
 # @CODE
@@ -359,10 +352,8 @@ python_gen_useflags() {
 # of Python implementations which are both in PYTHON_COMPAT and match
 # any of the patterns passed as the remaining parameters.
 #
-# The patterns are fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values).  Remember to escape
-# or quote the fnmatch patterns to prevent accidental shell filename
-# expansion.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # In order to enforce USE constraints on the packages, verbatim
 # '${PYTHON_USEDEP}' (quoted!) may be placed in the dependency
@@ -423,10 +414,8 @@ python_gen_cond_dep() {
 # patterns are passed, the output dependencies will be generated only
 # for the implementations matching them.
 #
-# The patterns are fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values).  Remember to escape
-# or quote the fnmatch patterns to prevent accidental shell filename
-# expansion.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # Use this function when you need to request different USE flags
 # on the Python interpreter depending on package's USE flags. If you
@@ -479,10 +468,8 @@ python_gen_impl_dep() {
 #
 # Optionally, patterns may be specified to restrict the dependency to
 # a subset of Python implementations supported by the ebuild.
-# The patterns are fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values).  Remember to escape
-# or quote the fnmatch patterns to prevent accidental shell filename
-# expansion.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # This should be used along with an appropriate python_check_deps()
 # that checks which of the any-of blocks were matched, and python_setup
@@ -669,10 +656,8 @@ python_foreach_impl() {
 # The python_check_deps() function in the any-of mode needs to be
 # accompanied by appropriate any-of dependencies.
 #
-# The patterns are fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values).  Remember to escape
-# or quote the fnmatch patterns to prevent accidental shell filename
-# expansion.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # This function needs to be used when Python is being called outside
 # of python_foreach_impl calls (e.g. for shared processes like doc

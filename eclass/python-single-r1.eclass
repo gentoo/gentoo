@@ -266,10 +266,8 @@ if [[ ! ${_PYTHON_SINGLE_R1} ]]; then
 # are both in PYTHON_COMPAT and match any of the patterns passed
 # as parameters to the function.
 #
-# The patterns are fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values).  Remember to escape
-# or quote the fnmatch patterns to prevent accidental shell filename
-# expansion.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # Example:
 # @CODE
@@ -303,10 +301,8 @@ python_gen_useflags() {
 # of Python implementations which are both in PYTHON_COMPAT and match
 # any of the patterns passed as the remaining parameters.
 #
-# The patterns are fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values).  Remember to escape
-# or quote the fnmatch patterns to prevent accidental shell filename
-# expansion.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # In order to enforce USE constraints on the packages, verbatim
 # '${PYTHON_SINGLE_USEDEP}' and '${PYTHON_USEDEP}' (quoted!) may
@@ -359,10 +355,8 @@ python_gen_cond_dep() {
 # patterns are passed, the output dependencies will be generated only
 # for the implementations matching them.
 #
-# The patterns are fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values).  Remember to escape
-# or quote the fnmatch patterns to prevent accidental shell filename
-# expansion.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # Use this function when you need to request different USE flags
 # on the Python interpreter depending on package's USE flags. If you

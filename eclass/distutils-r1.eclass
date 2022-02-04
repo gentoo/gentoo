@@ -333,9 +333,8 @@ unset -f _distutils_set_globals
 # (allowing any implementation). If multiple values are specified,
 # implementations matching any of the patterns will be accepted.
 #
-# The patterns are fnmatch-style patterns (matched via bash == operator
-# against PYTHON_COMPAT values). Remember to escape or quote the fnmatch
-# patterns to prevent accidental shell filename expansion.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # If the restriction needs to apply conditionally to a USE flag,
 # the variable should be set conditionally as well (e.g. in an early
