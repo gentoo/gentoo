@@ -6,7 +6,6 @@
     <name>Gentoo Mathematics Project</name>
   </maintainer>
   <use>
-    <flag name="julia">Enables interface for Singular to julia</flag>
     <flag name="polymake">Enable the interface to TOPCOM</flag>
   </use>
   <upstream>

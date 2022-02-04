@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,8 +18,8 @@ S="${WORKDIR}/${PN}-${MY_DIR2}"
 
 LICENSE="BSD GPL-2 GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-linux"
-IUSE="emacs examples julia polymake +readline static-libs"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86 ~x86-linux"
+IUSE="emacs examples polymake +readline static-libs"
 
 RDEPEND="
 	dev-lang/perl
@@ -28,7 +28,6 @@ RDEPEND="
 	sci-libs/cddlib
 	sci-mathematics/flint
 	emacs? ( >=app-editors/emacs-23.1:* )
-	julia? ( dev-lang/julia )
 	polymake? ( sci-mathematics/polymake )
 	readline? ( sys-libs/readline )
 "
@@ -37,7 +36,7 @@ DEPEND="${RDEPEND}"
 SITEFILE=60${PN}-gentoo.el
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.2.0-doc_install-v2.patch"
+	"${FILESDIR}/${PN}-4.2.1-htmldoc.patch"
 )
 
 src_prepare() {
