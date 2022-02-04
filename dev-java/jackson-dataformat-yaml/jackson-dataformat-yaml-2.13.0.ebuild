@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -12,7 +12,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="Support for reading and writing YAML-encoded data via Jackson abstractions."
+DESCRIPTION="Support for reading and writing YAML-encoded data via Jackson abstractions"
 HOMEPAGE="https://github.com/FasterXML/jackson-dataformats-text"
 SRC_URI="https://github.com/FasterXML/jackson-dataformats-text/archive/refs/tags/jackson-dataformats-text-${PV}.tar.gz -> ${P}.tar.gz"
 
