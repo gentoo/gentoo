@@ -1380,12 +1380,20 @@ _python_run_check_deps() {
 
 	local impl=${1}
 
-	python_is_installed "${impl}" || return 1
+	einfo "Checking whether ${impl} is suitable ..."
+
+	local PYTHON_PKG_DEP
+	_python_export "${impl}" PYTHON_PKG_DEP
+	ebegin "  ${PYTHON_PKG_DEP}"
+	python_is_installed "${impl}"
+	eend ${?} || return 1
 	declare -f python_check_deps >/dev/null || return 0
 
 	local PYTHON_USEDEP="python_targets_${impl}(-)"
 	local PYTHON_SINGLE_USEDEP="python_single_target_${impl}(-)"
+	ebegin "  python_check_deps"
 	python_check_deps
+	eend ${?}
 }
 
 _PYTHON_UTILS_R1=1
