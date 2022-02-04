@@ -838,22 +838,6 @@ python_doheader() {
 	)
 }
 
-# @FUNCTION: python_wrapper_setup
-# @USAGE: [<path> [<impl>]]
-# @DESCRIPTION:
-# Backwards compatibility function.  The relevant API is now considered
-# private, please use python_setup instead.
-python_wrapper_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	eqawarn "python_wrapper_setup() is part of private eclass API."
-	eqawarn "Please call python_setup() instead."
-
-	[[ ${EAPI} == [67] ]] || die "${FUNCNAME} banned in EAPI ${EAPI}"
-
-	_python_wrapper_setup "${@}"
-}
-
 # @FUNCTION: _python_wrapper_setup
 # @USAGE: [<path> [<impl>]]
 # @INTERNAL
