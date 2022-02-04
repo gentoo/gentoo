@@ -345,14 +345,6 @@ net-libs/jreen
 # Removing in 30 days. # Bug 830389
 sys-cluster/onesis
 
-# Florian Schmaus <flow@gentoo.org> (2022-01-04)
-# Outdated, unmaintained, and has multiple open bugs (bug #732582, bug
-# #739398, bug #756715). As discussed at
-# https://github.com/gentoo/gentoo/pull/23483#issuecomment-1004363556,
-# in its current form it is better maintained in the 'spring' overlay.
-# Removal after 2022-02-04. Bug #830588.
-games-util/springlobby
-
 # Florian Schmaus <flow@gentoo.org> (2022-01-02)
 # Unmaintained, upstream gone, only packaged by
 # Gentoo, and the whole idea to unlock based on
