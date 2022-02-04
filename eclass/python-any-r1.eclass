@@ -283,28 +283,15 @@ _python_EPYTHON_supported() {
 	local EPYTHON=${1}
 	local i=${EPYTHON/./_}
 
-	case "${i}" in
-		python*|jython*|pypy*)
-			;;
-		*)
-			ewarn "Invalid EPYTHON: ${EPYTHON}"
-			return 1
-			;;
-	esac
-
-	if has "${i}" "${_PYTHON_SUPPORTED_IMPLS[@]}"; then
-		if python_is_installed "${i}"; then
-			if declare -f python_check_deps >/dev/null; then
-				local PYTHON_USEDEP="python_targets_${i}(-)"
-				local PYTHON_SINGLE_USEDEP="python_single_target_${i}(-)"
-				python_check_deps
-				return ${?}
-			fi
-
-			return 0
+	if python_is_installed "${i}"; then
+		if declare -f python_check_deps >/dev/null; then
+			local PYTHON_USEDEP="python_targets_${i}(-)"
+			local PYTHON_SINGLE_USEDEP="python_single_target_${i}(-)"
+			python_check_deps
+			return ${?}
 		fi
-	elif ! has "${i}" "${_PYTHON_ALL_IMPLS[@]}"; then
-		ewarn "Invalid EPYTHON: ${EPYTHON}"
+
+		return 0
 	fi
 	return 1
 }
@@ -338,7 +325,12 @@ python_setup() {
 
 	# first, try ${EPYTHON}... maybe it's good enough for us.
 	if [[ ${EPYTHON} ]]; then
-		if _python_EPYTHON_supported "${EPYTHON}"; then
+		local impl=${EPYTHON/./_}
+		if ! has "${impl}" "${_PYTHON_SUPPORTED_IMPLS[@]}"; then
+			einfo "EPYTHON (${EPYTHON}) not supported by the package"
+		elif ! has "${impl}" "${_PYTHON_ALL_IMPLS[@]}"; then
+			ewarn "Invalid EPYTHON: ${EPYTHON}"
+		elif _python_EPYTHON_supported "${EPYTHON}"; then
 			_python_export EPYTHON PYTHON
 			_python_wrapper_setup
 			einfo "Using ${EPYTHON} to build"
