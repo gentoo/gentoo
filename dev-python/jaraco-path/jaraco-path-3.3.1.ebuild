@@ -19,7 +19,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 s
 
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
 "
 
 distutils_enable_sphinx docs \
