@@ -31,7 +31,11 @@ distutils_enable_tests pytest
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 python_test() {
-	# needed for doctests to work
-	> jaraco/__init__.py || die
+	# create a pkgutil-style __init__.py in order to fix pytest's
+	# determination of package paths
+	cat > jaraco/__init__.py <<-EOF || die
+		__path__ = __import__('pkgutil').extend_path(__path__, __name__)
+	EOF
 	epytest --doctest-modules
+	rm jaraco/__init__.py || die
 }
