@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 DISTUTILS_OPTIONAL=yes
 
 inherit distutils-r1 toolchain-funcs virtualx
