@@ -201,6 +201,7 @@ _python_impl_matches() {
 	for pattern; do
 		case ${pattern} in
 			-2|python2*|pypy)
+				die "oh no: ${pattern}"
 				if [[ ${EAPI} != [67] ]]; then
 					eerror
 					eerror "Python 2 is no longer supported in Gentoo, please remove Python 2"
@@ -209,6 +210,7 @@ _python_impl_matches() {
 				fi
 				;;
 			-3)
+				die "oh no: ${pattern}"
 				# NB: "python3*" is fine, as "not pypy3"
 				if [[ ${EAPI} != [67] ]]; then
 					eerror
