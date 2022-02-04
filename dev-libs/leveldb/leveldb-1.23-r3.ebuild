@@ -12,13 +12,14 @@ SRC_URI="https://github.com/google/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.
 LICENSE="BSD"
 SLOT="0/1"
 KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
-IUSE="+crc32c +snappy +tcmalloc test"
-
+IUSE="+snappy +tcmalloc test"
 RESTRICT="!test? ( test )"
 
-DEPEND="crc32c? ( dev-libs/crc32c )
-	snappy? ( app-arch/snappy )
-	tcmalloc? ( dev-util/google-perftools )"
+DEPEND="
+	dev-libs/crc32c
+	snappy? ( app-arch/snappy:= )
+	tcmalloc? ( dev-util/google-perftools:= )
+"
 RDEPEND="${DEPEND}"
 BDEPEND="test? ( dev-cpp/gtest )"
 
@@ -34,9 +35,15 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=ON
+		-DHAVE_CRC32C=ON
 		-DLEVELDB_BUILD_BENCHMARKS=OFF
+		-DHAVE_SNAPPY=$(usex snappy)
+		-DHAVE_TCMALLOC=$(usex tcmalloc)
 		-DLEVELDB_BUILD_TESTS=$(usex test)
 	)
 	cmake_src_configure
+}
+
+src_test() {
+	TEST_TMPDIR="${T}" TEMP="${T}" cmake_src_test
 }
