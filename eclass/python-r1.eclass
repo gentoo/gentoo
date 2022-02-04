@@ -393,9 +393,15 @@ python_gen_cond_dep() {
 	_python_verify_patterns "${@}"
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
-			# substitute ${PYTHON_USEDEP} if used
-			# (since python_gen_usedep() will not return ${PYTHON_USEDEP}
-			#  the code is run at most once)
+			# substitute ${PYTHON_USEDEP} with USE-dep on *all* matching
+			# targets, if it is used.  this ensures that Portage will
+			# report all missing USE flags simultaneously rather than
+			# requesting the user to enable them one by one.
+			#
+			# NB: the first call with replace all instances
+			# of ${PYTHON_USEDEP}, so the condition will be false
+			# on subsequent loop iterations and _python_gen_usedep()
+			# will run at most once.
 			if [[ ${dep} == *'${PYTHON_USEDEP}'* ]]; then
 				local usedep=$(_python_gen_usedep "${@}")
 				dep=${dep//\$\{PYTHON_USEDEP\}/${usedep}}
