@@ -573,15 +573,6 @@ python_get_scriptdir() {
 python_optimize() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	if [[ ${EBUILD_PHASE} == pre* || ${EBUILD_PHASE} == post* ]]; then
-		eerror "The new Python eclasses expect the compiled Python files to"
-		eerror "be controlled by the Package Manager. For this reason,"
-		eerror "the python_optimize function can be used only during src_* phases"
-		eerror "(src_install most commonly) and not during pkg_* phases."
-		echo
-		die "python_optimize is not to be used in pre/post* phases"
-	fi
-
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 
 	local PYTHON=${PYTHON}
