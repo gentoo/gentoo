@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-crash-after-fresh-install.patch
 	"${FILESDIR}"/${P}-screen-geometry-is-deprecated.patch
 	"${FILESDIR}"/${P}-endl-is-deprecated.patch
+	"${FILESDIR}"/${P}-disable-warnings-as-errors.patch
 )
 
 src_configure() {
