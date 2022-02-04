@@ -19,7 +19,7 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="crypt djvu epub +image-backend markdown mobi +pdf +plucker +postscript qml share speech +tiff"
 
-DEPEND="
+COMMON_DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtprintsupport-${QTMIN}:5
@@ -59,7 +59,10 @@ DEPEND="
 	speech? ( >=dev-qt/qtspeech-${QTMIN}:5 )
 	tiff? ( media-libs/tiff:0 )
 "
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	markdown? ( >=app-text/discount-2.2.7-r1 )
+"
+RDEPEND="${COMMON_DEPEND}
 	image-backend? ( >=kde-frameworks/kimageformats-${KFMIN}:5 )
 	qml? (
 		>=dev-qt/qtquickcontrols2-${QTMIN}:5
