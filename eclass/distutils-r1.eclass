@@ -426,9 +426,13 @@ distutils_enable_sphinx() {
 
 		python_check_deps() {
 			use doc || return 0
+
+			local hasv_args=( -b )
+			[[ ${EAPI} == 6 ]] && hasv_args=( --host-root )
 			local p
 			for p in dev-python/sphinx "${_DISTUTILS_SPHINX_PLUGINS[@]}"; do
-				has_version "${p}[${PYTHON_USEDEP}]" || return 1
+				has_version "${hasv_args[@]}" "${p}[${PYTHON_USEDEP}]" ||
+					return 1
 			done
 		}
 	else
