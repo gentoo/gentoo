@@ -1397,5 +1397,47 @@ _python_run_check_deps() {
 	eend ${?}
 }
 
+# @FUNCTION: python_has_version
+# @USAGE: [-b|-d|-r] <atom>...
+# @DESCRIPTION:
+# A convenience wrapper for has_version() with verbose output and better
+# defaults for use in python_check_deps().
+#
+# The wrapper accepts EAPI 7+-style -b/-d/-r options to indicate
+# the root to perform the lookup on.  Unlike has_version, the default
+# is -b.  In EAPI 6, -b and -d are translated to --host-root
+# for compatibility.
+#
+# The wrapper accepts multiple package specifications.  For the check
+# to succeed, *all* specified atoms must match.
+python_has_version() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local root_arg=( -b )
+	case ${1} in
+		-b|-d|-r)
+			root_arg=( "${1}" )
+			shift
+			;;
+	esac
+
+	if [[ ${EAPI} == 6 ]]; then
+		if [[ ${root_arg} == -r ]]; then
+			root_arg=()
+		else
+			root_arg=( --host-root )
+		fi
+	fi
+
+	local pkg
+	for pkg; do
+		ebegin "    ${pkg}"
+		has_version "${root_arg[@]}" "${pkg}"
+		eend ${?} || return
+	done
+
+	return 0
+}
+
 _PYTHON_UTILS_R1=1
 fi
