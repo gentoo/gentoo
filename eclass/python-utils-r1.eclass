@@ -316,13 +316,23 @@ _python_export() {
 				;;
 			PYTHON_SITEDIR)
 				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-				PYTHON_SITEDIR=$("${PYTHON}" -c 'import sysconfig; print(sysconfig.get_path("purelib"))') || die
+				PYTHON_SITEDIR=$(
+					"${PYTHON}" - <<-EOF || die
+						import sysconfig
+						print(sysconfig.get_path("purelib"))
+					EOF
+				)
 				export PYTHON_SITEDIR
 				debug-print "${FUNCNAME}: PYTHON_SITEDIR = ${PYTHON_SITEDIR}"
 				;;
 			PYTHON_INCLUDEDIR)
 				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-				PYTHON_INCLUDEDIR=$("${PYTHON}" -c 'import sysconfig; print(sysconfig.get_path("platinclude"))') || die
+				PYTHON_INCLUDEDIR=$(
+					"${PYTHON}" - <<-EOF || die
+						import sysconfig
+						print(sysconfig.get_path("platinclude"))
+					EOF
+				)
 				export PYTHON_INCLUDEDIR
 				debug-print "${FUNCNAME}: PYTHON_INCLUDEDIR = ${PYTHON_INCLUDEDIR}"
 
@@ -333,7 +343,17 @@ _python_export() {
 				;;
 			PYTHON_LIBPATH)
 				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-				PYTHON_LIBPATH=$("${PYTHON}" -c 'import os.path, sysconfig; print(os.path.join(sysconfig.get_config_var("LIBDIR"), sysconfig.get_config_var("LDLIBRARY")) if sysconfig.get_config_var("LDLIBRARY") else "")') || die
+				PYTHON_LIBPATH=$(
+					"${PYTHON}" - <<-EOF || die
+						import os.path, sysconfig
+						print(
+							os.path.join(
+								sysconfig.get_config_var("LIBDIR"),
+								sysconfig.get_config_var("LDLIBRARY"))
+							if sysconfig.get_config_var("LDLIBRARY")
+							else "")
+					EOF
+				)
 				export PYTHON_LIBPATH
 				debug-print "${FUNCNAME}: PYTHON_LIBPATH = ${PYTHON_LIBPATH}"
 
@@ -383,7 +403,13 @@ _python_export() {
 				case "${impl}" in
 					python*)
 						[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-						flags=$("${PYTHON}" -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS") or "")') || die
+						flags=$(
+							"${PYTHON}" - <<-EOF || die
+								import sysconfig
+								print(sysconfig.get_config_var("ABIFLAGS")
+									or "")
+							EOF
+						)
 						val=${PYTHON}${flags}-config
 						;;
 					*)
@@ -574,7 +600,12 @@ python_optimize() {
 			if [[ ${f} == /* && -d ${D%/}${f} ]]; then
 				set -- "${D%/}${f}" "${@}"
 			fi
-		done < <("${PYTHON}" -c 'import sys; print("".join(x + "\0" for x in sys.path))' || die)
+		done < <(
+			"${PYTHON}" - <<-EOF || die
+				import sys
+				print("".join(x + "\0" for x in sys.path))
+			EOF
+		)
 
 		debug-print "${FUNCNAME}: using sys.path: ${*/%/;}"
 	fi
