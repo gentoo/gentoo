@@ -1,0 +1,27 @@
+https://github.com/macports/macports-ports/blob/master/archivers/libarchive/files/patch-libarchive-3.5-strnlen.diff
+
+next release should have a fix for this
+
+--- a/libarchive/archive_read_support_format_mtree.c
++++ b/libarchive/archive_read_support_format_mtree.c
+@@ -65,6 +65,20 @@ __FBSDID("$FreeBSD: head/lib/libarchive/archive_read_support_format_mtree.c 2011
+ #define O_CLOEXEC	0
+ #endif
+ 
++#ifdef __APPLE__
++#if  __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ < 1070
++static size_t strnlen(const char *s, size_t maxlen) {
++  size_t l = 0;
++  while (l < maxlen && *s) {
++    l++;
++    s++;
++  }
++  return l;
++}
++#endif
++#endif
++
++
+ #define	MTREE_HAS_DEVICE	0x0001
+ #define	MTREE_HAS_FFLAGS	0x0002
+ #define	MTREE_HAS_GID		0x0004

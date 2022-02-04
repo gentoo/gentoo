@@ -13,7 +13,7 @@ HOMEPAGE="https://git.kernel.org/?p=linux/kernel/git/davem/silo.git;a=summary"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="-* ~sparc"
+KEYWORDS="-* sparc"
 IUSE="tilo-only"
 
 DEPEND="sys-fs/e2fsprogs
@@ -33,24 +33,30 @@ src_prepare() {
 	sed -i -e '/^	$(STRIP) ieee32.b/d' first/Makefile || die
 }
 
+_emake() {
+	# We inject '-m32' / '-m elf32_sparc' to follow 'Rules.make' defaults.
+
+	emake \
+		HOSTCC="$(tc-getBUILD_CC)" \
+		CC="$(tc-getCC) -m32" \
+		STRIP="$(tc-getSTRIP)" \
+		NM="$(tc-getNM)" \
+		LD="$(tc-getLD) -m elf32_sparc" \
+		TILO_ONLY=$(usex tilo-only yes no) \
+		\
+		"$@"
+}
+
 src_compile() {
 	filter-flags "-fstack-protector"
 
-	CC="$(tc-getCC)" \
-	STRIP="$(tc-getSTRIP)" \
-	NM="$(tc-getNM)" \
-	LD="$(tc-getLD)" \
-		emake $(usex tilo-only '-C tilo' '')
+	_emake
 }
 
 src_install() {
-	default
+	_emake DESTDIR="${D}" install
 
 	dodoc first-isofs/README.SILO_ISOFS docs/README*
-
-	# Fix maketilo manpage
-	rm "${D}"/usr/share/man/man1/maketilo.1
-	dosym tilo.1 /usr/share/man/man1/maketilo.1
 }
 
 pkg_postinst() {

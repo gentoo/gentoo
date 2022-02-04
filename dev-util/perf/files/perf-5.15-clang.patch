@@ -1,0 +1,231 @@
+From e1f1cbfe812e4a019034105ab5e81fd9f0742353 Mon Sep 17 00:00:00 2001
+From: Ian Rogers <irogers@google.com>
+Date: Mon, 11 Oct 2021 19:13:20 -0700
+Subject: [PATCH 1/3] tools: Bump minimum LLVM C++ std to GNU++14
+
+LLVM 9 (current release is LLVM 13) moved the minimum C++ version to
+GNU++14. Bump the version numbers in the feature test and perf build.
+
+Reviewed-by: Fangrui Song <maskray@google.com>
+Signed-off-by: Ian Rogers <irogers@google.com>
+Cc: Alexander Shishkin <alexander.shishkin@linux.intel.com>
+Cc: Daniel Borkmann <daniel@iogearbox.net>
+Cc: Ingo Molnar <mingo@redhat.com>
+Cc: Jiri Olsa <jolsa@redhat.com>
+Cc: Leo Yan <leo.yan@linaro.org>
+Cc: Mark Rutland <mark.rutland@arm.com>
+Cc: Michael Petlan <mpetlan@redhat.com>
+Cc: Namhyung Kim <namhyung@kernel.org>
+Cc: Nathan Chancellor <nathan@kernel.org>
+Cc: Nick Desaulniers <ndesaulniers@google.com>
+Cc: Peter Zijlstra <peterz@infradead.org>
+Cc: Sedat Dilek <sedat.dilek@gmail.com>
+Cc: llvm@lists.linux.dev
+Link: https://lore.kernel.org/r/20211012021321.291635-1-irogers@google.com
+Signed-off-by: Arnaldo Carvalho de Melo <acme@redhat.com>
+---
+ tools/build/feature/Makefile | 6 +++---
+ tools/perf/Makefile.config   | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tools/build/feature/Makefile b/tools/build/feature/Makefile
+index eff55d287db1..9756e589e4ae 100644
+--- a/tools/build/feature/Makefile
++++ b/tools/build/feature/Makefile
+@@ -296,7 +296,7 @@ $(OUTPUT)test-jvmti-cmlr.bin:
+ 	$(BUILD)
+ 
+ $(OUTPUT)test-llvm.bin:
+-	$(BUILDXX) -std=gnu++11 				\
++	$(BUILDXX) -std=gnu++14 				\
+ 		-I$(shell $(LLVM_CONFIG) --includedir) 		\
+ 		-L$(shell $(LLVM_CONFIG) --libdir)		\
+ 		$(shell $(LLVM_CONFIG) --libs Core BPF)		\
+@@ -304,12 +304,12 @@ $(OUTPUT)test-llvm.bin:
+ 		> $(@:.bin=.make.output) 2>&1
+ 
+ $(OUTPUT)test-llvm-version.bin:
+-	$(BUILDXX) -std=gnu++11 				\
++	$(BUILDXX) -std=gnu++14					\
+ 		-I$(shell $(LLVM_CONFIG) --includedir)		\
+ 		> $(@:.bin=.make.output) 2>&1
+ 
+ $(OUTPUT)test-clang.bin:
+-	$(BUILDXX) -std=gnu++11 				\
++	$(BUILDXX) -std=gnu++14					\
+ 		-I$(shell $(LLVM_CONFIG) --includedir) 		\
+ 		-L$(shell $(LLVM_CONFIG) --libdir)		\
+ 		-Wl,--start-group -lclangBasic -lclangDriver	\
+diff --git a/tools/perf/Makefile.config b/tools/perf/Makefile.config
+index 14e3e8d702a0..ddbe86defe39 100644
+--- a/tools/perf/Makefile.config
++++ b/tools/perf/Makefile.config
+@@ -285,7 +285,7 @@ CORE_CFLAGS += -Wall
+ CORE_CFLAGS += -Wextra
+ CORE_CFLAGS += -std=gnu99
+ 
+-CXXFLAGS += -std=gnu++11 -fno-exceptions -fno-rtti
++CXXFLAGS += -std=gnu++14 -fno-exceptions -fno-rtti
+ CXXFLAGS += -Wall
+ CXXFLAGS += -fno-omit-frame-pointer
+ CXXFLAGS += -ggdb3
+-- 
+2.33.1
+
+
+From 3e5c11995e04a9e3351330c34c4c802ce50df46c Mon Sep 17 00:00:00 2001
+From: Ian Rogers <irogers@google.com>
+Date: Mon, 11 Oct 2021 19:13:21 -0700
+Subject: [PATCH 2/3] perf clang: Fixes for more recent LLVM/clang
+
+The parameters to two functions and the location of a variable have
+changed in more recent LLVM/clang releases.
+
+Remove the unneecessary -fmessage-length and -ferror-limit flags, the
+former causes failures like:
+
+  58: builtin clang support                                           :
+  58.1: builtin clang compile C source to IR                          :
+  --- start ---
+  test child forked, pid 279307
+  error: unknown argument: '-fmessage-length'
+  1 error generated.
+  test child finished with -1
+
+Tested with LLVM 6, 8, 9, 10 and 11.
+
+Reviewed-by: Fangrui Song <maskray@google.com>
+Signed-off-by: Ian Rogers <irogers@google.com>
+Cc: Alexander Shishkin <alexander.shishkin@linux.intel.com>
+Cc: Daniel Borkmann <daniel@iogearbox.net>
+Cc: Ingo Molnar <mingo@redhat.com>
+Cc: Jiri Olsa <jolsa@redhat.com>
+Cc: Leo Yan <leo.yan@linaro.org>
+Cc: Mark Rutland <mark.rutland@arm.com>
+Cc: Michael Petlan <mpetlan@redhat.com>
+Cc: Namhyung Kim <namhyung@kernel.org>
+Cc: Nathan Chancellor <nathan@kernel.org>
+Cc: Nick Desaulniers <ndesaulniers@google.com>
+Cc: Peter Zijlstra <peterz@infradead.org>
+Cc: Sedat Dilek <sedat.dilek@gmail.com>,
+Cc: llvm@lists.linux.dev
+Signed-off-by: Arnaldo Carvalho de Melo <acme@redhat.com>
+---
+ tools/perf/util/c++/clang.cpp | 21 +++++++++++++--------
+ 1 file changed, 13 insertions(+), 8 deletions(-)
+
+diff --git a/tools/perf/util/c++/clang.cpp b/tools/perf/util/c++/clang.cpp
+index c8885dfa3667..df7b18fb6b6e 100644
+--- a/tools/perf/util/c++/clang.cpp
++++ b/tools/perf/util/c++/clang.cpp
+@@ -43,8 +43,6 @@ createCompilerInvocation(llvm::opt::ArgStringList CFlags, StringRef& Path,
+ 		"-cc1",
+ 		"-triple", "bpf-pc-linux",
+ 		"-fsyntax-only",
+-		"-ferror-limit", "19",
+-		"-fmessage-length", "127",
+ 		"-O2",
+ 		"-nostdsysteminc",
+ 		"-nobuiltininc",
+@@ -55,7 +53,11 @@ createCompilerInvocation(llvm::opt::ArgStringList CFlags, StringRef& Path,
+ 		"-x", "c"};
+ 
+ 	CCArgs.append(CFlags.begin(), CFlags.end());
+-	CompilerInvocation *CI = tooling::newInvocation(&Diags, CCArgs);
++	CompilerInvocation *CI = tooling::newInvocation(&Diags, CCArgs
++#if CLANG_VERSION_MAJOR >= 11
++                                                        ,/*BinaryName=*/nullptr
++#endif
++                                                        );
+ 
+ 	FrontendOptions& Opts = CI->getFrontendOpts();
+ 	Opts.Inputs.clear();
+@@ -151,13 +153,16 @@ getBPFObjectFromModule(llvm::Module *Module)
+ 
+ 	legacy::PassManager PM;
+ 	bool NotAdded;
+-#if CLANG_VERSION_MAJOR < 7
+-	NotAdded = TargetMachine->addPassesToEmitFile(PM, ostream,
+-						      TargetMachine::CGFT_ObjectFile);
++	NotAdded = TargetMachine->addPassesToEmitFile(PM, ostream
++#if CLANG_VERSION_MAJOR >= 7
++                                                      , /*DwoOut=*/nullptr
++#endif
++#if CLANG_VERSION_MAJOR < 10
++                                                      , TargetMachine::CGFT_ObjectFile
+ #else
+-	NotAdded = TargetMachine->addPassesToEmitFile(PM, ostream, nullptr,
+-						      TargetMachine::CGFT_ObjectFile);
++                                                      , llvm::CGFT_ObjectFile
+ #endif
++                                                      );
+ 	if (NotAdded) {
+ 		llvm::errs() << "TargetMachine can't emit a file of this type\n";
+ 		return std::unique_ptr<llvm::SmallVectorImpl<char>>(nullptr);
+-- 
+2.33.1
+
+
+From aa2b4e5e920cbaadc0fed9b8aa7c4498feee3dd5 Mon Sep 17 00:00:00 2001
+From: Guilherme Amadio <amadio@cern.ch>
+Date: Thu, 29 Apr 2021 13:44:48 +0200
+Subject: [PATCH 3/3] tools feature: update LLVM/Clang detection
+
+Since LLVM/Clang 10, individual libraries have been merged into
+monolithic libraries libLLVM.so, libclang.so, and libclang-cpp.so.
+---
+ tools/build/feature/Makefile | 8 +++-----
+ tools/perf/Makefile.perf     | 7 ++-----
+ 2 files changed, 5 insertions(+), 10 deletions(-)
+
+diff --git a/tools/build/feature/Makefile b/tools/build/feature/Makefile
+index 9756e589e4ae..23478bd06093 100644
+--- a/tools/build/feature/Makefile
++++ b/tools/build/feature/Makefile
+@@ -299,7 +299,7 @@ $(OUTPUT)test-llvm.bin:
+ 	$(BUILDXX) -std=gnu++14 				\
+ 		-I$(shell $(LLVM_CONFIG) --includedir) 		\
+ 		-L$(shell $(LLVM_CONFIG) --libdir)		\
+-		$(shell $(LLVM_CONFIG) --libs Core BPF)		\
++		$(shell $(LLVM_CONFIG) --libs)			\
+ 		$(shell $(LLVM_CONFIG) --system-libs)		\
+ 		> $(@:.bin=.make.output) 2>&1
+ 
+@@ -312,11 +312,9 @@ $(OUTPUT)test-clang.bin:
+ 	$(BUILDXX) -std=gnu++14					\
+ 		-I$(shell $(LLVM_CONFIG) --includedir) 		\
+ 		-L$(shell $(LLVM_CONFIG) --libdir)		\
+-		-Wl,--start-group -lclangBasic -lclangDriver	\
+-		  -lclangFrontend -lclangEdit -lclangLex	\
+-		  -lclangAST -Wl,--end-group 			\
+-		$(shell $(LLVM_CONFIG) --libs Core option)	\
++		$(shell $(LLVM_CONFIG) --libs)			\
+ 		$(shell $(LLVM_CONFIG) --system-libs)		\
++		-lclang-cpp					\
+ 		> $(@:.bin=.make.output) 2>&1
+ 
+ -include $(OUTPUT)*.d
+diff --git a/tools/perf/Makefile.perf b/tools/perf/Makefile.perf
+index b856afa6eb52..d0ff0ddf9c18 100644
+--- a/tools/perf/Makefile.perf
++++ b/tools/perf/Makefile.perf
+@@ -410,14 +410,11 @@ EXTLIBS := $(call filter-out,$(EXCLUDE_EXTLIBS),$(EXTLIBS))
+ LIBS = -Wl,--whole-archive $(PERFLIBS) $(EXTRA_PERFLIBS) -Wl,--no-whole-archive -Wl,--start-group $(EXTLIBS) -Wl,--end-group
+ 
+ ifeq ($(USE_CLANG), 1)
+-  CLANGLIBS_LIST = AST Basic CodeGen Driver Frontend Lex Tooling Edit Sema Analysis Parse Serialization
+-  CLANGLIBS_NOEXT_LIST = $(foreach l,$(CLANGLIBS_LIST),$(shell $(LLVM_CONFIG) --libdir)/libclang$(l))
+-  LIBCLANG = $(foreach l,$(CLANGLIBS_NOEXT_LIST),$(wildcard $(l).a $(l).so))
+-  LIBS += -Wl,--start-group $(LIBCLANG) -Wl,--end-group
++  LIBS += -lclang-cpp
+ endif
+ 
+ ifeq ($(USE_LLVM), 1)
+-  LIBLLVM = $(shell $(LLVM_CONFIG) --libs all) $(shell $(LLVM_CONFIG) --system-libs)
++  LIBLLVM = $(shell $(LLVM_CONFIG) --libs) $(shell $(LLVM_CONFIG) --system-libs)
+   LIBS += -L$(shell $(LLVM_CONFIG) --libdir) $(LIBLLVM)
+ endif
+ 
+-- 
+2.33.1
+

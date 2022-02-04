@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ RDEPEND="x11-libs/gtk+:2
 	x11-libs/libXext"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	gkrellm? ( >=app-admin/gkrellm-2 )"
+	gkrellm? ( >=app-admin/gkrellm-2[X] )"
 
 PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 

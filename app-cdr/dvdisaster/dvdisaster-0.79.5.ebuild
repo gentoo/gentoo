@@ -1,12 +1,13 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit desktop gnome2-utils toolchain-funcs
+EAPI=7
+
+inherit desktop toolchain-funcs xdg
 
 DESCRIPTION="Tool for creating error correction data (ecc) for optical media (DVD, CD, BD)"
 HOMEPAGE="http://dvdisaster.net/"
-SRC_URI="http://dvdisaster.net/downloads/${PN}-${PV}.tar.bz2"
+SRC_URI="http://dvdisaster.net/downloads/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -20,28 +21,36 @@ done
 unset dvdi_lang
 
 RDEPEND="
-	>=dev-libs/glib-2.32:2
-	nls? ( virtual/libintl )
-	>=x11-libs/gtk+-2.6:2
+	dev-libs/glib:2
 	x11-libs/gdk-pixbuf
-"
-DEPEND="${RDEPEND}
+	x11-libs/gtk+:2
+	nls? ( virtual/libintl )"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	nls? ( sys-devel/gettext )
 	virtual/os-headers
-	virtual/pkgconfig
-"
+	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+
+DOCS=( CHANGELOG CREDITS.en README README.MODIFYING TODO TRANSLATION.HOWTO )
+
+src_prepare() {
+	default
+	sed -i -e "s@CC=gcc@CC=$(tc-getCC)@" scripts/bash-based-configure || die
+}
 
 src_configure() {
 	./configure \
-		--prefix=/usr \
-		--bindir=/usr/bin \
-		--mandir=/usr/share/man \
-		--docdir=/usr/share/doc \
+		--prefix="${EPREFIX}"/usr \
+		--bindir="${EPREFIX}"/usr/bin \
+		--mandir="${EPREFIX}"/usr/share/man \
+		--docdir="${EPREFIX}"/usr/share/doc \
 		--docsubdir=${PF} \
-		--localedir=/usr/share/locale \
+		--localedir="${EPREFIX}"/usr/share/locale \
 		--buildroot="${D}" \
-		--with-nls=$(usex nls) \
-		--with-memdebug=$(usex debug) || die
+		--with-memdebug=$(usex debug) \
+		--with-nls=$(usex nls) || die
 }
 
 src_compile() {
@@ -49,7 +58,7 @@ src_compile() {
 }
 
 src_install() {
-	DOCS="CHANGELOG CREDITS.en README* TODO *HOWTO" default
+	default
 
 	newicon contrib/${PN}48.png ${PN}.png
 	make_desktop_entry ${PN} ${PN} ${PN} 'System;Utility'
@@ -59,7 +68,7 @@ src_install() {
 		newicon -s ${res} contrib/${PN}${res}.png ${PN}.png
 	done
 
-	local dest="${D}"usr/share
+	local dest="${ED}"/usr/share
 
 	local dvdi_lang
 	for dvdi_lang in ${dvdi_langs}; do
@@ -69,8 +78,5 @@ src_install() {
 			${dest}/man/${dvdi_lang/-/_} || die
 	done
 
-	rm -f "${D}"usr/bin/*-uninstall.sh || die
+	rm ${ED}/usr/bin/*-uninstall.sh || die
 }
-
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }

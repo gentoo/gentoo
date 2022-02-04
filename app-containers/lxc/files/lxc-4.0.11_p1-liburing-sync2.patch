@@ -1,0 +1,28 @@
+From a585382b972c25ee8489147d94918d001ef439a7 Mon Sep 17 00:00:00 2001
+From: Christian Brauner <christian.brauner@ubuntu.com>
+Date: Thu, 28 Oct 2021 17:39:42 +0200
+Subject: [PATCH] start: check event loop type before closing fd
+
+Since this is a union we might otherwise stomp on io_uring mmap()ed
+memory.
+
+Fixes: #4016
+Signed-off-by: Christian Brauner <christian.brauner@ubuntu.com>
+---
+ src/lxc/start.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/lxc/start.c b/src/lxc/start.c
+index 8f7173ec8c..1a6046c7a4 100644
+--- a/src/lxc/start.c
++++ b/src/lxc/start.c
+@@ -629,7 +629,8 @@ int lxc_poll(const char *name, struct lxc_handler *handler)
+ 	TRACE("Mainloop is ready");
+ 
+ 	ret = lxc_mainloop(&descr, -1);
+-	close_prot_errno_disarm(descr.epfd);
++	if (descr.type == LXC_MAINLOOP_EPOLL)
++		close_prot_errno_disarm(descr.epfd);
+ 	if (ret < 0 || !handler->init_died)
+ 		goto out_mainloop_console;
+ 

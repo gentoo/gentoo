@@ -14,10 +14,10 @@ Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
  3 files changed, 22 insertions(+), 2 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 398415f09..7144f0990 100644
+index 50b0bd163..8673740cc 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -95,9 +95,14 @@ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS
+@@ -102,9 +102,14 @@ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS
      Test
      Widgets
      Xml
@@ -34,10 +34,10 @@ index 398415f09..7144f0990 100644
  find_package(KF5 REQUIRED COMPONENTS
      Archive
 diff --git a/umbrello/CMakeLists.txt b/umbrello/CMakeLists.txt
-index 264b25fde..f3286ae46 100644
+index 4a2168542..fd5ef8fbf 100644
 --- a/umbrello/CMakeLists.txt
 +++ b/umbrello/CMakeLists.txt
-@@ -549,7 +551,6 @@ else()
+@@ -549,7 +549,6 @@ else()
          Qt5::Xml
          Qt5::PrintSupport
          Qt5::Svg
@@ -45,7 +45,7 @@ index 264b25fde..f3286ae46 100644
          KF5::Archive
          KF5::Completion
          KF5::CoreAddons
-@@ -565,6 +566,9 @@ else()
+@@ -565,6 +564,9 @@ else()
          ${LIBXML2_LIBRARIES}
          codeimport
      )
@@ -56,10 +56,10 @@ index 264b25fde..f3286ae46 100644
          ICONS
          ${CMAKE_CURRENT_SOURCE_DIR}/pics/global/16-apps-umbrello.png
 diff --git a/umbrello/umlappprivate.h b/umbrello/umlappprivate.h
-index a85de1f22..a7212cc8d 100644
+index 0c832048d..ad425a37f 100644
 --- a/umbrello/umlappprivate.h
 +++ b/umbrello/umlappprivate.h
-@@ -42,7 +42,11 @@
+@@ -37,7 +37,11 @@
  #include <QFileInfo>
  #include <QListWidget>
  #include <QObject>
@@ -71,7 +71,7 @@ index a85de1f22..a7212cc8d 100644
  
  class QWidget;
  
-@@ -160,6 +164,7 @@ public slots:
+@@ -155,6 +159,7 @@ public slots:
          // qDebug() << html;
          welcomeWindow = new QDockWidget(i18n("Welcome"), parent);
          welcomeWindow->setObjectName(QLatin1String("WelcomeDock"));
@@ -79,7 +79,7 @@ index a85de1f22..a7212cc8d 100644
          QWebView *view = new QWebView;
          view->page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
          view->setContextMenuPolicy(Qt::NoContextMenu);
-@@ -167,6 +172,14 @@ public slots:
+@@ -162,6 +167,14 @@ public slots:
          view->setHtml(html);
          view->show();
          welcomeWindow->setWidget(view);
@@ -94,6 +94,18 @@ index a85de1f22..a7212cc8d 100644
          parent->addDockWidget(Qt::RightDockWidgetArea, welcomeWindow);
  
          viewWelcomeWindow = parent->actionCollection()->add<KToggleAction>(QLatin1String("view_show_welcome"));
+diff --git a/unittests/CMakeLists.txt b/unittests/CMakeLists.txt
+index 26bd4b870..9dadb484a 100644
+--- a/unittests/CMakeLists.txt
++++ b/unittests/CMakeLists.txt
+@@ -59,7 +59,6 @@ else()
+         Qt5::Xml
+         Qt5::Test
+         Qt5::Widgets
+-        Qt5::WebKitWidgets
+         KF5::I18n
+         KF5::Crash
+         ${LIBXML2_LIBRARIES}
 -- 
 2.29.2
 

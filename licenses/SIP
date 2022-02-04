@@ -1,18 +1,19 @@
 RIVERBANK COMPUTING LIMITED LICENSE AGREEMENT FOR SIP
 
-1. This LICENSE AGREEMENT is between Riverbank Computing Limited ("Riverbank"),
-and the Individual or Organization ("Licensee") accessing and otherwise using
-SIP software in source or binary form and its associated documentation.  SIP
-comprises a software tool for generating Python bindings for software C and C++
-libraries, and a Python extension module used at runtime by those generated
-bindings.
+1. This LICENSE AGREEMENT ("the SIP License") is between Riverbank Computing
+Limited ("Riverbank"), and the Individual or Organization ("Licensee")
+accessing and otherwise using SIP software in source or binary form and its
+associated documentation.  SIP comprises a software tool for generating Python
+bindings for software C and C++ libraries, and a Python extension module used
+at runtime by those generated bindings.  This License Agreement may also be
+applied to other software packages written by Riverbank.
 
 2. Subject to the terms and conditions of this License Agreement, Riverbank
 hereby grants Licensee a nonexclusive, royalty-free, world-wide license to
 reproduce, analyze, test, perform and/or display publicly, prepare derivative
 works, distribute, and otherwise use SIP alone or in any derivative version,
 provided, however, that Riverbank's License Agreement and Riverbank's notice of
-copyright, e.g., "Copyright (c) 2014 Riverbank Computing Limited; All Rights
+copyright, e.g., "Copyright (c) 2015 Riverbank Computing Limited; All Rights
 Reserved" are retained in SIP alone or in any derivative version prepared by
 Licensee.
 

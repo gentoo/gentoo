@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit vim-plugin
 
@@ -14,5 +14,6 @@ KEYWORDS="amd64 x86"
 VIM_PLUGIN_HELPFILES="misc.txt"
 
 src_prepare() {
-	rm INSTALL.md addon-info.json autoload/xolox/misc/echo.exe || die
+	rm autoload/xolox/misc/echo.exe || die
+	default
 }

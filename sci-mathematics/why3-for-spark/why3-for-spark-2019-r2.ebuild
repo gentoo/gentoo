@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,20 +14,20 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="coq doc emacs gtk html hypothesis-selection +ocamlopt zarith zip"
-RESTRICT=strip
+RESTRICT="strip"
 
-DEPEND=">=dev-lang/ocaml-4.09.0[ocamlopt?]
+DEPEND=">=dev-lang/ocaml-4.09.0:=[ocamlopt=]
 	>=dev-ml/ocamlbuild-0.14.0
-	dev-ml/menhir
-	dev-ml/num
+	dev-ml/menhir:=
+	dev-ml/num:=
 	coq? ( >=sci-mathematics/coq-8.9.1 )
 	doc? ( dev-tex/rubber )
-	gtk? ( >=dev-ml/lablgtk-2.18.8[sourceview] )
+	gtk? ( >=dev-ml/lablgtk-2.18.8:=[sourceview] )
 	emacs? ( >=app-editors/emacs-23.1:* )
-	html? ( dev-tex/hevea )
-	hypothesis-selection? ( dev-ml/ocamlgraph )
-	zarith? ( dev-ml/zarith )
-	zip? ( >=dev-ml/camlzip-1.07 )"
+	html? ( dev-tex/hevea:= )
+	hypothesis-selection? ( dev-ml/ocamlgraph:= )
+	zarith? ( dev-ml/zarith:= )
+	zip? ( >=dev-ml/camlzip-1.07:= )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MYP}

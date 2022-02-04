@@ -1,5 +1,5 @@
---- convert/eyuvtojpeg.c
-+++ convert/eyuvtojpeg.c
+--- a/convert/eyuvtojpeg.c
++++ b/convert/eyuvtojpeg.c
 @@ -25,6 +25,7 @@
  #include <string.h>
  #include <stdio.h>
@@ -41,8 +41,8 @@
  }
  
  
---- convert/vidtoeyuv.c
-+++ convert/vidtoeyuv.c
+--- a/convert/vidtoeyuv.c
++++ b/convert/vidtoeyuv.c
 @@ -125,9 +125,9 @@
    XImage *ximage;
    char *tdata;
@@ -81,8 +81,8 @@
  
        for (j=0; j<nth-1; j++) {
  	if (read (fd, &image, sizeof(image)) != sizeof(image)) {
---- convert/vidtojpeg.c
-+++ convert/vidtojpeg.c
+--- a/convert/vidtojpeg.c
++++ b/convert/vidtojpeg.c
 @@ -123,9 +123,9 @@
    XImage *ximage;
    char *tdata;
@@ -121,8 +121,8 @@
    }
  }
  
---- convert/vidtoppm.c
-+++ convert/vidtoppm.c
+--- a/convert/vidtoppm.c
++++ b/convert/vidtoppm.c
 @@ -220,9 +220,11 @@
  
  
@@ -148,8 +148,8 @@
 +    unlink(tempfile);
    }
  }
---- convert/eyuvtoppm.c
-+++ convert/eyuvtoppm.c
+--- a/convert/eyuvtoppm.c
++++ b/convert/eyuvtoppm.c
 @@ -100,13 +100,9 @@
      fpointer = fopen(dest, "w");
      if (fpointer == NULL) {

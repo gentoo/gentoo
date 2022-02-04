@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -13,12 +13,11 @@ DESCRIPTION="A modular textUI IRC client with IPv6 support"
 HOMEPAGE="https://irssi.org/"
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="otr +perl selinux socks5 +proxy libressl"
+IUSE="otr +perl selinux socks5 +proxy"
 
 COMMON_DEPEND="sys-libs/ncurses:0=
 	>=dev-libs/glib-2.6.0
-	!libressl? ( dev-libs/openssl:= )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:=
 	otr? (
 		>=dev-libs/libgcrypt-1.2.0:0=
 		>=net-libs/libotr-4.1.0

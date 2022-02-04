@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
 inherit autotools
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://nongnu/m17n/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="X anthy athena bidi fontconfig gd libotf libxml2 spell xft"
 
 RDEPEND="~dev-db/m17n-db-${PV}
@@ -30,8 +30,8 @@ RDEPEND="~dev-db/m17n-db-${PV}
 	anthy? ( app-i18n/anthy )
 	libxml2? ( dev-libs/libxml2 )
 	spell? ( app-text/aspell )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-configure.patch

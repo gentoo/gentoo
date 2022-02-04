@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <longdescription>
+    The stdint library provides signed and unsigned integer types of various
+    fixed widths: 8, 16, 24, 32, 40, 48, 56, 64 and 128 bit.
+    This interface is similar to Int32 and Int64 from the base library but
+    provides more functions and constants like arithmetic and bit-wise
+    operations, constants like maximum and minimum values, infix operators
+    conversion to and from every other integer type (including int, float and
+    nativeint), parsing from and conversion to readable strings (binary, octal,
+    decimal, hexademical), conversion to and from buffers in both big endian
+    and little endian byte order.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/andrenth/ocaml-stdint/issues/</bugs-to>
+    <remote-id type="github">andrenth/ocaml-stdint</remote-id>
+  </upstream>
+</pkgmetadata>

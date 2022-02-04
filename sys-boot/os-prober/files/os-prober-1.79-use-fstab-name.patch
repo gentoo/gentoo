@@ -1,0 +1,34 @@
+For symlinks to partions in fstab, returns the partition name from fstab instead
+of the name of its resolved destination, eg., for /dev/mapper/mylvmvol in fstab,
+linked to /dev/dm-2, return "mylvmvol" instead of "dm-2".
+
+Bug: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=699839
+     https://bugzilla.redhat.com/show_bug.cgi?id=893472
+
+--- a/common.sh
++++ b/common.sh
+@@ -269,7 +269,7 @@ linux_mount_boot () {
+ 				if [ "$bindfrom" != "$tmpmnt/boot" ]; then
+ 					if mount --bind "$bindfrom" "$tmpmnt/boot"; then
+ 						mounted=1
+-						bootpart="$1"
++						bootpart="$tmppart"
+ 					else
+ 						debug "failed to bind-mount $bindfrom onto $tmpmnt/boot"
+ 					fi
+@@ -277,6 +277,15 @@ linux_mount_boot () {
+ 			fi
+ 			if [ "$mounted" ]; then
+ 				:
++			elif [ -e "$tmppart" ]; then
++				bootpart="$tmppart"
++				boottomnt="$tmppart"
++			elif [ -e "$tmpmnt/$tmppart" ]; then
++				bootpart="$tmppart"
++				boottomnt="$tmpmnt/$tmppart"
++			elif [ -e "/target/$tmppart" ]; then
++				bootpart="$tmppart"
++				boottomnt="/target/$tmppart"
+ 			elif [ -e "$1" ]; then
+ 				bootpart="$1"
+ 				boottomnt="$1"

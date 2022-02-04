@@ -1,0 +1,141 @@
+https://github.com/checkpoint-restore/criu/pull/1517
+
+From d72536d9a821f9ff64f5dd62c9f8a282e3e5ec85 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Wed, 16 Jun 2021 15:43:04 -0400
+Subject: [PATCH] build: respect $PKG_CONFIG settings
+
+The build needs to respect $PKG_CONFIG env var like other standard
+build systems and the the upstream pkg-config project itself.  This
+allows the package builder to point it to the right tool when doing
+a cross-compile build.  Otherwise the host pkg-config tool is used
+which won't have access to the packages in the cross sysroot.
+
+Signed-off-by: Mike Frysinger <vapier@chromium.org>
+---
+ Makefile.config              | 2 +-
+ criu/Makefile                | 2 +-
+ scripts/nmk/scripts/tools.mk | 1 +
+ scripts/nmk/scripts/utils.mk | 2 +-
+ test/zdtm/Makefile.inc       | 8 +++++---
+ test/zdtm/lib/Makefile       | 2 +-
+ test/zdtm/static/Makefile    | 2 +-
+ 7 files changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile.config b/Makefile.config
+index 3d99e680be7f..6e3e1b062256 100644
+--- a/Makefile.config
++++ b/Makefile.config
+@@ -30,7 +30,7 @@ else
+ endif
+ 
+ ifeq ($(call pkg-config-check,libnftables),y)
+-        LIB_NFTABLES	:= $(shell pkg-config --libs libnftables)
++        LIB_NFTABLES	:= $(shell $(PKG_CONFIG) --libs libnftables)
+         ifeq ($(call try-cc,$(FEATURE_TEST_NFTABLES_LIB_API_0),$(LIB_NFTABLES)),true)
+                 LIBS_FEATURES	+= $(LIB_NFTABLES)
+                 FEATURE_DEFINES	+= -DCONFIG_HAS_NFTABLES_LIB_API_0
+diff --git a/criu/Makefile b/criu/Makefile
+index ceb49ce09925..11d454c81026 100644
+--- a/criu/Makefile
++++ b/criu/Makefile
+@@ -27,7 +27,7 @@ CFLAGS			+= -iquote include
+ CFLAGS			+= -iquote images
+ CFLAGS			+= -iquote $(ARCH_DIR)/include
+ CFLAGS			+= -iquote .
+-CFLAGS			+= $(shell pkg-config --cflags libnl-3.0)
++CFLAGS			+= $(shell $(PKG_CONFIG) --cflags libnl-3.0)
+ CFLAGS			+= $(CONFIG-DEFINES)
+ 
+ ifeq ($(GMON),1)
+diff --git a/scripts/nmk/scripts/tools.mk b/scripts/nmk/scripts/tools.mk
+index c5794401c734..1681d4e9092b 100644
+--- a/scripts/nmk/scripts/tools.mk
++++ b/scripts/nmk/scripts/tools.mk
+@@ -17,6 +17,7 @@ AR		:= $(CROSS_COMPILE)ar
+ STRIP		:= $(CROSS_COMPILE)strip
+ OBJCOPY		:= $(CROSS_COMPILE)objcopy
+ OBJDUMP		:= $(CROSS_COMPILE)objdump
++PKG_CONFIG	?= pkg-config
+ NM		:= $(CROSS_COMPILE)nm
+ MAKE		:= make
+ MKDIR		:= mkdir -p
+diff --git a/scripts/nmk/scripts/utils.mk b/scripts/nmk/scripts/utils.mk
+index b9790615ca7f..f93fdf911cef 100644
+--- a/scripts/nmk/scripts/utils.mk
++++ b/scripts/nmk/scripts/utils.mk
+@@ -16,7 +16,7 @@ try-asm = $(call try-compile,assembler-with-cpp,$(1),$(2),$(3))
+ 
+ # pkg-config-check
+ # Usage: ifeq ($(call pkg-config-check, library),y)
+-pkg-config-check = $(shell sh -c 'pkg-config $(1) && echo y')
++pkg-config-check = $(shell sh -c '$(PKG_CONFIG) $(1) && echo y')
+ 
+ #
+ # Remove duplicates.
+diff --git a/test/zdtm/Makefile.inc b/test/zdtm/Makefile.inc
+index 43763321f956..e4af9c51e9e4 100644
+--- a/test/zdtm/Makefile.inc
++++ b/test/zdtm/Makefile.inc
+@@ -37,6 +37,7 @@ HOSTCC	?= gcc
+ ifeq ($(origin CC), default)
+         CC := $(CROSS_COMPILE)$(HOSTCC)
+ endif
++PKG_CONFIG ?= pkg-config
+ CFLAGS	+= -g -O2 -Wall -Werror -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0
+ CFLAGS	+= -Wdeclaration-after-statement -Wstrict-prototypes
+ CFLAGS	+= $(USERCFLAGS)
+@@ -54,8 +55,9 @@ endif
+ RM := rm -f --one-file-system
+ 
+ ifeq ($(COMPAT_TEST),y)
++$(error bad juju)
+         # Firstly look for 32-bit libs and then in standard path.
+-        PKG_CONFIG_PATH := $(shell pkg-config --variable pc_path pkg-config)
++        PKG_CONFIG_PATH := $(shell $(PKG_CONFIG) --variable pc_path pkg-config)
+         PKG_CONFIG_PATH := /usr/lib32/pkgconfig:$(PKG_CONFIG_PATH)
+ ifeq ($(ARCH),x86)
+         export CFLAGS += -m32
+@@ -66,11 +68,11 @@ endif
+ endif
+ 
+ define pkg-libs
+-        $(shell PKG_CONFIG_PATH="$(PKG_CONFIG_PATH)" pkg-config --libs $(1))
++        $(shell PKG_CONFIG_PATH="$(PKG_CONFIG_PATH)" $(PKG_CONFIG) --libs $(1))
+ endef
+ 
+ define pkg-cflags
+-        $(shell PKG_CONFIG_PATH="$(PKG_CONFIG_PATH)" pkg-config --cflags $(1))
++        $(shell PKG_CONFIG_PATH="$(PKG_CONFIG_PATH)" $(PKG_CONFIG) --cflags $(1))
+ endef
+ 
+ %.d: %.c
+diff --git a/test/zdtm/lib/Makefile b/test/zdtm/lib/Makefile
+index 05fe64e91703..5ecf8bccf27b 100644
+--- a/test/zdtm/lib/Makefile
++++ b/test/zdtm/lib/Makefile
+@@ -6,7 +6,7 @@ LIB	:= libzdtmtst.a
+ 
+ LIBSRC	:= datagen.c msg.c parseargs.c test.c streamutil.c lock.c ns.c tcp.c unix.c fs.c sysctl.c
+ 
+-pkg-config-check = $(shell sh -c 'pkg-config $(1) && echo y')
++pkg-config-check = $(shell sh -c '$(PKG_CONFIG) $(1) && echo y')
+ ifeq ($(call pkg-config-check,libbpf),y)
+ LIBSRC	+= bpfmap_zdtm.c
+ endif
+diff --git a/test/zdtm/static/Makefile b/test/zdtm/static/Makefile
+index e60fe6dc2d66..c5f3c98be3ed 100644
+--- a/test/zdtm/static/Makefile
++++ b/test/zdtm/static/Makefile
+@@ -241,7 +241,7 @@ TST_NOFILE	:=				\
+ 		sigtrap01			\
+ #		jobctl00			\
+ 
+-pkg-config-check = $(shell sh -c 'pkg-config $(1) && echo y')
++pkg-config-check = $(shell sh -c '$(PKG_CONFIG) $(1) && echo y')
+ ifeq ($(call pkg-config-check,libbpf),y)
+ TST_NOFILE	+=				\
+ 		bpf_hash			\
+-- 
+2.31.1
+

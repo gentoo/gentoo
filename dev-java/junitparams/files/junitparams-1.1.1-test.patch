@@ -1,0 +1,45 @@
+--- a/src/test/java/junitparams/BeforeAfterClassTest.java
++++ b/src/test/java/junitparams/BeforeAfterClassTest.java
+@@ -41,7 +41,7 @@ public class BeforeAfterClassTest {
+ 
+         assertThat(result.getFailureCount()).isEqualTo(1);
+         assertThat(result.getFailures().get(0).getException())
+-                .hasMessage("Method fail() should be static");
++                .hasMessage("Invalid test class 'junitparams.BeforeAfterClassTest$NonStaticBeforeTest':\n  1. Method fail() should be static");
+     }
+ 
+ 
+--- a/src/test/java/junitparams/RulesTest.java
++++ b/src/test/java/junitparams/RulesTest.java
+@@ -45,7 +45,7 @@ public class RulesTest {
+ 
+         assertThat(result.getFailureCount()).isEqualTo(1);
+         assertThat(result.getFailures().get(0).getException())
+-                .hasMessage("The @Rule 'testRule' must be public.");
++                .hasMessage("Invalid test class 'junitparams.RulesTest$ProtectedRuleTest':\n  1. The @Rule 'testRule' must be public.");
+     }
+ 
+     public class ProtectedRuleTest {
+
+--- a/src/test/java/junitparams/FilterableTest.java
++++ b/src/test/java/junitparams/FilterableTest.java
+@@ -44,8 +44,8 @@ public class FilterableTest {
+ 
+         Description description = request.getRunner().getDescription();
+ 
+-        assertThat(description.getChildren()).hasSize(1);
+-        assertThat(description.getChildren().get(0).getChildren()).hasSize(0);
++        assertThat(description.getChildren()).hasSize(2);
++        assertThat(description.getChildren().get(0).getChildren()).hasSize(2);
+     }
+ 
+     @Test
+@@ -54,7 +54,7 @@ public class FilterableTest {
+ 
+         Description description = request.getRunner().getDescription();
+ 
+-        assertThat(description.getChildren()).hasSize(1);
++        assertThat(description.getChildren()).hasSize(2);
+         assertThat(description.getChildren().get(0).getChildren()).hasSize(2);
+     }
+ 

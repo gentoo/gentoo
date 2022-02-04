@@ -1,0 +1,74 @@
+--- a/bfast/AlignNTSpace.c
++++ b/bfast/AlignNTSpace.c
+@@ -478,7 +478,7 @@
+ 	}
+ }
+ 
+-inline void AlignNTSpaceFillInCell(char *read,
++void AlignNTSpaceFillInCell(char *read,
+ 		int32_t readLength,
+ 		char *reference,
+ 		int32_t referenceLength,
+--- a/bfast/AlignNTSpace.h
++++ b/bfast/AlignNTSpace.h
+@@ -10,5 +10,5 @@
+ void AlignNTSpaceRecoverAlignmentFromMatrix(AlignedEntry*, AlignMatrix*, char*, int, char*, int, int32_t, int32_t, int, int32_t, char, int);
+ void AlignNTSpaceInitializeAtStart(AlignMatrix*, ScoringMatrix*, int32_t, int32_t);
+ void AlignNTSpaceInitializeToExtend(AlignMatrix*, ScoringMatrix*, int32_t, int32_t, int32_t, int32_t);
+-inline void AlignNTSpaceFillInCell(char*, int32_t, char*, int32_t, ScoringMatrix*, AlignMatrix*, int32_t, int32_t, int32_t, int32_t);
++void AlignNTSpaceFillInCell(char*, int32_t, char*, int32_t, ScoringMatrix*, AlignMatrix*, int32_t, int32_t, int32_t, int32_t);
+ #endif
+--- a/bfast/BLib.c
++++ b/bfast/BLib.c
+@@ -90,7 +90,7 @@
+ }
+ 
+ /* TODO */
+-inline char ToUpper(char a)
++char ToUpper(char a)
+ {
+   if(97 <= a && a < 122) return (char)(a - 32);
+   return a;
+--- a/bfast/BLib.h
++++ b/bfast/BLib.h
+@@ -16,7 +16,7 @@
+ int ParseFastaHeaderLine(char*);
+ char ToLower(char);
+ void ToLowerRead(char*, int);
+-inline char ToUpper(char);
++char ToUpper(char);
+ void ToUpperRead(char*, int);
+ void ReverseRead(char*, char*, int);
+ void ReverseReadFourBit(int8_t*, int8_t*, int);
+--- a/bfast/ScoringMatrix.c
++++ b/bfast/ScoringMatrix.c
+@@ -98,14 +98,14 @@
+ 	return 1;
+ }
+ 
+-inline int32_t ScoringMatrixGetNTScore(char a,
++int32_t ScoringMatrixGetNTScore(char a,
+ 		char b,
+ 		ScoringMatrix *sm)
+ {
+ 	return (ToUpper(a) == ToUpper(b)) ? sm->ntMatch : sm->ntMismatch;
+ }
+ 
+-inline int32_t ScoringMatrixGetColorScore(char a, 
++int32_t ScoringMatrixGetColorScore(char a, 
+ 		char b, 
+ 		ScoringMatrix *sm) 
+ {
+--- a/bfast/ScoringMatrix.h
++++ b/bfast/ScoringMatrix.h
+@@ -3,8 +3,8 @@
+ 
+ #include "BLibDefinitions.h"
+ 
+-inline int32_t ScoringMatrixGetNTScore(char, char, ScoringMatrix*);
+-inline int32_t ScoringMatrixGetColorScore(char, char, ScoringMatrix*);
++int32_t ScoringMatrixGetNTScore(char, char, ScoringMatrix*);
++int32_t ScoringMatrixGetColorScore(char, char, ScoringMatrix*);
+ 
+ int ScoringMatrixRead(char*, ScoringMatrix*, int);
+ void ScoringMatrixInitialize(ScoringMatrix*);

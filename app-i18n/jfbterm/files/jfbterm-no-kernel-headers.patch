@@ -1,0 +1,17 @@
+Remove usage of kernel headers, deprecated since linux-headers-2.6.18.
+Patch by Shunichi Fuji <palgowr@gmail.com>.
+
+See bug #156306
+
+--- a/fbdpsp.c
++++ b/fbdpsp.c
+@@ -827,8 +827,7 @@
+ 
+ #ifdef JFB_VGA16FB
+ 
+-#include <asm/io.h>
+-#include <asm/system.h>
++#include <sys/io.h>
+ 
+ #define GRAPHICS_ADDR_REG 0x3ce         /* Graphics address register. */
+ #define GRAPHICS_DATA_REG 0x3cf         /* Graphics data register. */

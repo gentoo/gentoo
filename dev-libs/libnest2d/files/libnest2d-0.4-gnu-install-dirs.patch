@@ -1,0 +1,25 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -114,6 +114,7 @@
+ endif()
+ 
+ include(CMakePackageConfigHelpers)
++include(GNUInstallDirs)
+ 
+ write_basic_package_version_file(
+     "${CMAKE_CURRENT_BINARY_DIR}/cmakeexports/${PROJECT_NAME}ConfigVersion.cmake"     
+@@ -123,10 +124,10 @@
+ 
+ install(TARGETS libnest2d libnest2d_headeronly ${LIBNAME} 
+   EXPORT ${PROJECT_NAME}Targets
+-  RUNTIME DESTINATION bin 
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib
+-  INCLUDES DESTINATION include)
++  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ 
+ export(EXPORT ${PROJECT_NAME}Targets 
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/cmakeexports/${PROJECT_NAME}Targets.cmake" 

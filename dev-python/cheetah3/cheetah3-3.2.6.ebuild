@@ -1,17 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6..9} )
-DISTUTILS_USE_SETUPTOOLS=bdepend
+
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Python-powered template engine and code generator"
-HOMEPAGE="http://www.cheetahtemplate.org/ https://pypi.org/project/Cheetah3/"
+HOMEPAGE="https://cheetahtemplate.org/ https://pypi.org/project/Cheetah3/"
 SRC_URI="https://github.com/CheetahTemplate3/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 SLOT="0"
 
 RDEPEND="
@@ -21,6 +21,10 @@ RDEPEND="
 BDEPEND="${RDEPEND}"
 
 DOCS=( ANNOUNCE.rst README.rst TODO )
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-py3.10-tests.patch"
+)
 
 python_prepare_all() {
 	# Disable broken tests.

@@ -1,0 +1,39 @@
+diff --git a/config.pri b/config.pri
+index 2b8d943..6034b6a 100644
+--- a/config.pri
++++ b/config.pri
+@@ -278,30 +278,13 @@ osx_dist {
+ 
+ contains(PRESET, linux_package) {
+ 	### dynamically link against Qwt(3D) installed system-wide
+-
+-        exists(/usr/include/qt5/qwt5-qt5)      {INCLUDEPATH+=/usr/include/qt5/qwt5-qt5}
+-        exists(/usr/include/qt5/qwtplot3d-qt5) {INCLUDEPATH+=/usr/include/qt5/qwtplot3d-qt5}
+-        exists(/usr/include/qwt5-qt5) {INCLUDEPATH+=/usr/include/qwt5-qt5}
+-        exists(/usr/include/qwtplot3d) {INCLUDEPATH+=/usr/include/qwtplot3d}
+-
+-        system (ls /usr/lib*/libqwt5-qt5.so) {LIBS+=-lqwt5-qt5}
+-        system (ls /usr/lib*/*/libqwt5-qt5.so) {LIBS+=-lqwt5-qt5}
+-        system (ls /usr/lib*/libqwt-qt5.so) {LIBS+=-lqwt-qt5}
+-        system (ls /usr/lib*/libqwtplot3d-qt5.so) {LIBS+=-lqwtplot3d-qt5}
+-        system (ls /usr/lib*/*/libqwtplot3d-qt5.so) {LIBS+=-lqwtplot3d-qt5}
+-
+-
++	INCLUDEPATH  +=/usr/include/qwt5
++	INCLUDEPATH  +=/usr/include/qwtplot3d
++	LIBS         +=-lqwt5-qt5
++	LIBS         +=-lqwtplot3d
+ 	LIBS         += -lz -lGLU 
+-
+-	INCLUDEPATH  += /usr/include/muParser
+ 	LIBS         += -lgsl -lgslcblas
+ 	LIBS         += -lmuparser 
+-
+-        # enable user installed packages
+-        INCLUDEPATH = "$(HOME)/usr/include" $$INCLUDEPATH
+-        QMAKE_LIBDIR = "$(HOME)/usr/lib" $$QMAKE_LIBDIR
+-
+-
+ }
+ 
+ contains(PRESET, self_contained) {

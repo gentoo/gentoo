@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mozlinguas-v2.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Nirbheek Chauhan <nirbheek@gentoo.org>
 # Ian Stakenvicius <axs@gentoo.org>
-# @SUPPORTED_EAPIS: 2 3 4 5 6
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Handle language packs for mozilla products
 # @DESCRIPTION:
 # Sets IUSE according to MOZ_LANGS (language packs available). Also exports
@@ -17,15 +17,18 @@
 inherit mozextension
 
 case "${EAPI:-0}" in
-	0|1)
-		die "EAPI ${EAPI:-0} does not support the '->' SRC_URI operator";;
-	2|3|4|5|6)
-		EXPORT_FUNCTIONS src_unpack src_compile src_install;;
+	6)
+		inherit eapi7-ver ;;
+	7|8)
+		;;
 	*)
-		die "EAPI ${EAPI} is not supported, contact eclass maintainers";;
+		die "EAPI ${EAPI} is not supported, contact eclass maintainers" ;;
 esac
 
+EXPORT_FUNCTIONS src_unpack src_compile src_install
+
 # @ECLASS-VARIABLE: MOZ_LANGS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array containing the list of language pack xpis available for
 # this release. The list can be updated with scripts/get_langs.sh from the
@@ -33,34 +36,40 @@ esac
 : ${MOZ_LANGS:=()}
 
 # @ECLASS-VARIABLE: MOZ_PV
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Ebuild package version converted to equivalent upstream version.
 # Defaults to ${PV}, and should be overridden for alphas, betas, and RCs
 : ${MOZ_PV:="${PV}"}
 
 # @ECLASS-VARIABLE: MOZ_PN
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Ebuild package name converted to equivalent upstream name.
 # Defaults to ${PN}, and should be overridden for binary ebuilds.
 : ${MOZ_PN:="${PN}"}
 
 # @ECLASS-VARIABLE: MOZ_P
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Ebuild package name + version converted to upstream equivalent.
 # Defaults to ${MOZ_PN}-${MOZ_PV}
 : ${MOZ_P:="${MOZ_PN}-${MOZ_PV}"}
 
 # @ECLASS-VARIABLE: MOZ_FTP_URI
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # The ftp URI prefix for the release tarballs and language packs.
 : ${MOZ_FTP_URI:=""}
 
 # @ECLASS-VARIABLE: MOZ_HTTP_URI
+# @PRE_INHERIT
 # @DESCRIPTION:
 # The http URI prefix for the release tarballs and language packs.
 : ${MOZ_HTTP_URI:=""}
 
 # @ECLASS-VARIABLE: MOZ_LANGPACK_HTTP_URI
+# @PRE_INHERIT
 # @DESCRIPTION:
 # An alternative http URI if it differs from official mozilla URI.
 # Defaults to whatever MOZ_HTTP_URI was set to.
@@ -89,6 +98,8 @@ esac
 : ${MOZ_LANGPACK_UNOFFICIAL:=""}
 
 # @ECLASS-VARIABLE: MOZ_GENERATE_LANGPACKS
+# @PRE_INHERIT
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This flag specifies whether or not the langpacks should be
 # generated directly during the build process, rather than
@@ -104,6 +115,8 @@ esac
 : ${MOZ_L10N_SOURCEDIR:="${WORKDIR}/l10n-sources"}
 
 # @ECLASS-VARIABLE: MOZ_L10N_URI_PREFIX
+# @PRE_INHERIT
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # The full URI prefix of the distfile for each l10n locale.  The
 # AB_CD and MOZ_L10N_URI_SUFFIX will be appended to this to complete the
@@ -113,12 +126,14 @@ esac
 : ${MOZ_L10N_URI_PREFIX:=""}
 
 # @ECLASS-VARIABLE: MOZ_L10N_URI_SUFFIX
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # The suffix of l10n source distfiles.
 # Defaults to '.tar.xz'
 : ${MOZ_L10N_URI_SUFFIX:=".tar.xz"}
 
 # @ECLASS-VARIABLE: MOZ_FORCE_UPSTREAM_L10N
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this to use upstream langpaks even if the package normally
 # shouldn't (ie it is an alpha or beta package)
@@ -284,10 +299,13 @@ mozlinguas_src_compile() {
 		# leverage BUILD_OBJ_DIR if set otherwise assume PWD.
 		local x y targets=( "langpack" ) localedir="${BUILD_OBJ_DIR:-.}"
 		case ${PN} in
-			*firefox)
+			*firefox|waterfox*)
 				localedir+="/browser/locales"
 				;;
 			seamonkey)
+				if [[ "$(ver_cut 2)" -gt 53 ]] || { [[ "$(ver_cut 2)" -eq 53 ]] && [[ "$(ver_cut 3)" -ge 6 ]] ; } ; then
+					localedir+="/comm"
+				fi
 				localedir+="/suite/locales"
 				;;
 			*thunderbird)

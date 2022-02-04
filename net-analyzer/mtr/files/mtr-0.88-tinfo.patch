@@ -1,3 +1,4 @@
+https://github.com/traviscross/mtr/pull/368
 --- a/configure.ac
 +++ b/configure.ac
 @@ -101,7 +101,10 @@

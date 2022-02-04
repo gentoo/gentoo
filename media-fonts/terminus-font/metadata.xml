@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>fonts@gentoo.org</email>
     <name>Fonts</name>
   </maintainer>
   <maintainer type="person">
-    <email>slyfox@gentoo.org</email>
-    <name>Sergei Trofimovich</name>
+    <email>marecki@gentoo.org</email>
+    <name>Marek Szuba</name>
   </maintainer>
+  <maintainer type="person">
+    <email>slashbeast@gentoo.org</email>
+    <name>Piotr Karbowski</name>
+  </maintainer>
+  <stabilize-allarches/>
   <use>
     <flag name="a-like-o">
       Changes view of letter 'a' - a looks like o (see homepage)
+    </flag>
+    <flag name="center-tilde">
+      Place the '~' character vertically centered on the line instead of to the
+      top.
     </flag>
     <flag name="distinct-l">
       ll2 variant with more distinctive l (lowercase L)
@@ -19,8 +28,11 @@
     <flag name="otf">
       Install Open Type Font (OTF) (required for HarfBuzz backend)
     </flag>
-    <flag name="pcf">
-      Install Portable Compiled Font (PCF) (required for X11)
+    <flag name="pcf-8bit">
+      Install Portable Compiled Font (PCF) (X11 bitmap fonts), 8-bit encodings
+    </flag>
+    <flag name="pcf-unicode">
+      Install Portable Compiled Font (PCF) (X11 bitmap fonts), Unicode encodings
     </flag>
     <flag name="psf">
       Install PC Screen Font (PSF) with unicode data (for linux console)
@@ -41,13 +53,6 @@
     </flag>
     <flag name="ru-k">
       Changes view of Russian letter 'k' (see homepage)
-    </flag>
-    <flag name="center-tilde">
-      Place the '~' character vertically centered on the line instead of to the
-      top.
-    </flag>
-    <flag name="pcf-unicode-only">
-      Remove non-unicode PCF fonts that could be problematic. See bug #520222.
     </flag>
   </use>
   <upstream>

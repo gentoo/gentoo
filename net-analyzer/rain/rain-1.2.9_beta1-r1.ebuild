@@ -10,7 +10,7 @@ DESCRIPTION="powerful tool for testing stability of utilizing IP protocols"
 HOMEPAGE="http://www.mirrors.wiretapped.net/security/packet-construction/rain/"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
 SRC_URI="
 	mirror://ubuntu/pool/universe/r/${PN}/${MY_P}.orig.tar.gz
 	mirror://ubuntu/pool/universe/r/${PN}/${MY_P}-1.diff.gz

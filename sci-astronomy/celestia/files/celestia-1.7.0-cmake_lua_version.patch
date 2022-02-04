@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -179,7 +179,7 @@
+ 
+   find_package(LuaJIT)
+   if(NOT LUAJIT_FOUND)
+-    find_package(Lua REQUIRED)
++    find_package(Lua ${LUA_VERSION} EXACT REQUIRED)
+   endif()
+   include_directories(${LUA_INCLUDE_DIR})
+   link_libraries(${LUA_LIBRARIES})

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
@@ -8,7 +8,7 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">more-itertools</remote-id>
-		<remote-id type="github">erikrose/more-itertools</remote-id>
-		<bugs-to>https://github.com/erikrose/more-itertools/issues</bugs-to>
+		<remote-id type="github">more-itertools/more-itertools</remote-id>
+		<bugs-to>https://github.com/more-itertools/more-itertools/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

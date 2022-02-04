@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>blueness@gentoo.org</email>
@@ -10,4 +10,7 @@
 		<name>Gentoo Hardened</name>
 	</maintainer>
 	<longdescription>ELF kickers is a collection of programs that manipulate ELF files. The main purpose of these programs is to be illustrative and educational -- to help fellow programmers understand the ELF file format and something of how it works under the Linux platform.</longdescription>
+	<upstream>
+		<remote-id type="github">BR903/ELFkickers</remote-id>
+	</upstream>
 </pkgmetadata>

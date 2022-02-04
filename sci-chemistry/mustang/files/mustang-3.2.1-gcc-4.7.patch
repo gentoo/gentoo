@@ -1,8 +1,3 @@
- src/superpose_on_core_2.cpp |    2 ++
- 1 files changed, 2 insertions(+), 0 deletions(-)
-
-diff --git a/src/superpose_on_core_2.cpp b/src/superpose_on_core_2.cpp
-index ae137de..059dfe3 100644
 --- a/src/superpose_on_core_2.cpp
 +++ b/src/superpose_on_core_2.cpp
 @@ -55,6 +55,8 @@ using std::ofstream ;

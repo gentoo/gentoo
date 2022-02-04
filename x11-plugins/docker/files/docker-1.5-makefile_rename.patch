@@ -1,5 +1,5 @@
---- a/Makefile	2015-01-19 20:10:47.762522964 +0100
-+++ b/Makefile	2015-01-19 20:11:11.463545692 +0100
+--- a/Makefile
++++ b/Makefile
 @@ -5,12 +5,10 @@
  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
  
@@ -33,7 +33,7 @@
 -	$(CC) $(CFLAGS) -L$(XLIBPATH) -lX11 \
 -		`pkg-config --libs glib-2.0` $^ -o $@
 +	$(CC) $(LDFLAGS) $(CFLAGS) $^ -lX11 \
-+		`pkg-config --libs glib-2.0` -o $@
++		`${PKG_CONFIG} --libs glib-2.0` -o $@
  
  %.o: %.c
  	$(CC) -c $(CFLAGS) `pkg-config --cflags glib-2.0` $<

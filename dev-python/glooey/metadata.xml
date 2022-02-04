@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer type="project">
-        <email>3dprint@gentoo.org</email>
-        <name>Gentoo 3D Printer Project</name>
-    </maintainer>
+    <!-- maintainer-needed -->
     <longdescription>
         Every game needs a user interface that matches its look and feel. The purpose of glooey is to help you make
         such an interface. Towards this end, glooey provides 7 powerful placement widgets, a label widget, an image
@@ -14,6 +11,8 @@
         the ground running if your game fits one of those genres).
     </longdescription>
     <upstream>
+        <bugs-to>https://github.com/kxgames/glooey/issues</bugs-to>
+        <doc>https://glooey.readthedocs.io/</doc>
         <remote-id type="github">kxgames/glooey</remote-id>
         <remote-id type="pypi">glooey</remote-id>
     </upstream>

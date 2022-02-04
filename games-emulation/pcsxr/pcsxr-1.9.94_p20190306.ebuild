@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake xdg-utils
+inherit flag-o-matic xdg cmake
 
 EGIT_COMMIT="62467b86871aee3d70c7445f3cb79f0858ec566e"
 MY_P=${PN}-${EGIT_COMMIT}
@@ -36,17 +36,16 @@ RDEPEND="
 	ccdda? ( >=media-video/ffmpeg-3:= )
 	openal? ( media-libs/openal:= )
 	pulseaudio? ( media-sound/pulseaudio:= )
-	sdl? ( media-libs/libsdl2:=[sound] )
-"
+	sdl? ( media-libs/libsdl2:=[sound] )"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="
 	app-arch/unzip
 	dev-util/intltool
-	sys-devel/gettext:0
-"
+	sys-devel/gettext:0"
 
 src_configure() {
+	append-cflags -fcommon
 	local sound_backend
 
 	if use pulseaudio; then
@@ -77,12 +76,4 @@ src_install() {
 	cmake_src_install
 	mv "${ED}"/usr/share/doc/pcsxr/* "${ED}/usr/share/doc/${PF}/" || die
 	rmdir "${ED}"/usr/share/doc/pcsxr || die
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

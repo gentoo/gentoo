@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>vpayno+gentoo@gmail.com</email>
-		<name>Victor Payno</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
 	</maintainer>
 	<longdescription lang="en">
 		This module adds UTF-8 support to Lua.

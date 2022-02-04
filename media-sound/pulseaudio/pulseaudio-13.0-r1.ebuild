@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools bash-completion-r1 flag-o-matic gnome2-utils linux-info systemd toolchain-funcs udev multilib-minimal
+inherit autotools bash-completion-r1 flag-o-matic gnome2-utils linux-info systemd toolchain-funcs udev multilib-minimal tmpfiles
 
 DESCRIPTION="A networked sound server with an advanced plugin system"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/PulseAudio/"
@@ -15,11 +15,11 @@ SRC_URI="https://freedesktop.org/software/pulseaudio/releases/${P}.tar.xz"
 LICENSE="!gdbm? ( LGPL-2.1 ) gdbm? ( GPL-2 )"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 
 # +alsa-plugin as discussed in bug #519530
 IUSE="+alsa +alsa-plugin +asyncns bluetooth +caps dbus doc equalizer elogind gconf
-+gdbm +glib gtk ipv6 jack libsamplerate libressl lirc native-headset cpu_flags_arm_neon
++gdbm +glib gtk ipv6 jack libsamplerate lirc native-headset cpu_flags_arm_neon
 ofono-headset +orc oss qt5 realtime selinux sox ssl systemd system-wide tcpd test
 +udev +webrtc-aec +X zeroconf"
 
@@ -39,7 +39,6 @@ REQUIRED_USE="
 RDEPEND="
 	|| (
 		elibc_glibc? ( virtual/libc )
-		elibc_uclibc? ( virtual/libc )
 		dev-libs/libpcre
 	)
 	>=media-libs/libsndfile-1.0.20[${MULTILIB_USEDEP}]
@@ -71,13 +70,10 @@ RDEPEND="
 	ofono-headset? ( >=net-misc/ofono-1.13 )
 	orc? ( >=dev-lang/orc-0.4.15 )
 	sox? ( >=media-libs/soxr-0.1.1 )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	media-libs/speexdsp
 	gdbm? ( sys-libs/gdbm:= )
-	webrtc-aec? ( >=media-libs/webrtc-audio-processing-0.2 )
+	webrtc-aec? ( >=media-libs/webrtc-audio-processing-0.2:0 )
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd:0=[${MULTILIB_USEDEP}] )
 	dev-libs/libltdl:0
@@ -114,6 +110,7 @@ RDEPEND="${RDEPEND}
 
 BDEPEND="
 	doc? ( app-doc/doxygen )
+	orc? ( >=dev-lang/orc-0.4.15 )
 	system-wide? ( dev-util/unifdef )
 	test? ( >=dev-libs/check-0.9.10 )
 	sys-devel/gettext
@@ -123,6 +120,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/pulseaudio-11.1-disable-flat-volumes.patch # bug 627894
+	"${FILESDIR}"/${P}-clang.patch
 )
 
 pkg_pretend() {
@@ -182,6 +180,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with equalizer fftw)
 		$(multilib_native_use_with sox soxr)
 		$(multilib_native_usex gdbm '--with-database=gdbm' '--with-database=simple')
+		$(multilib_native_usex orc "ORCC=${BROOT}/usr/bin/orcc" '')
 		$(use_enable glib glib2)
 		$(use_enable asyncns)
 		$(use_enable cpu_flags_arm_neon neon-opt)
@@ -200,8 +199,8 @@ multilib_src_configure() {
 		local PKGCONFIG="$(tc-getPKG_CONFIG)"
 		myconf+=(
 			--enable-systemd-login
-			SYSTEMDLOGIN_CFLAGS="$(${PKGCONFIG} --cflags "libelogind" 2>/dev/null)"
-			SYSTEMDLOGIN_LIBS="$(${PKGCONFIG} --libs "libelogind" 2>/dev/null)"
+			SYSTEMDLOGIN_CFLAGS="$(${PKGCONFIG} --cflags "libelogind")"
+			SYSTEMDLOGIN_LIBS="$(${PKGCONFIG} --libs "libelogind")"
 		)
 	fi
 
@@ -292,7 +291,7 @@ multilib_src_install_all() {
 		systemd_dounit "${FILESDIR}/${PN}.service"
 
 		# We need /var/run/pulse, bug #442852
-		systemd_newtmpfilesd "${FILESDIR}/${PN}.tmpfiles" "${PN}.conf"
+		newtmpfiles "${FILESDIR}/${PN}.tmpfiles" "${PN}.conf"
 	else
 		# Prevent warnings when system-wide is not used, bug #447694
 		if use dbus ; then
@@ -313,6 +312,8 @@ multilib_src_install_all() {
 pkg_postinst() {
 	gnome2_schemas_update
 	if use system-wide; then
+		tmpfiles_process "${PN}.conf"
+
 		elog "You have enabled the 'system-wide' USE flag for pulseaudio."
 		elog "This mode should only be used on headless servers, embedded systems,"
 		elog "or thin clients. It will usually require manual configuration, and is"

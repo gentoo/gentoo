@@ -1,5 +1,5 @@
---- biounzip-1.1-old/biounzip.c	2007-03-08 02:06:16.000000000 +0200
-+++ biounzip-1.1/biounzip.c	2007-03-08 02:06:50.000000000 +0200
+--- a/biounzip.c
++++ b/biounzip.c
 @@ -127,7 +127,7 @@
  void writefile(bzfile *ptr, FILE *fp, char *destdir)
  {

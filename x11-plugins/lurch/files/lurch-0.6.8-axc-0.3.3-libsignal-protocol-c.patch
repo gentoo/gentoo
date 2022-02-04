@@ -1,0 +1,91 @@
+From d5c2d8902ec268a1e6f8a9f5bd6fabde1e8ddf6a Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Thu, 3 Dec 2020 23:59:00 +0100
+Subject: [PATCH] axc: Use system's libsignal-protocol-c shared library
+
+---
+ Makefile | 26 ++++++++++----------------
+ 1 file changed, 10 insertions(+), 16 deletions(-)
+
+diff --git a/lib/axc/Makefile b/lib/axc/Makefile
+index 601e4fb..d08dd85 100644
+--- a/lib/axc/Makefile
++++ b/lib/axc/Makefile
+@@ -14,6 +14,9 @@ GLIB_LDFLAGS ?= $(shell $(PKG_CONFIG) --libs glib-2.0)
+ SQLITE3_CFLAGS ?= $(shell $(PKG_CONFIG) --cflags sqlite3)
+ SQLITE3_LDFLAGS ?= $(shell $(PKG_CONFIG) --libs sqlite3)
+ 
++LIBSIGNAL_PROTOCOL_C_CFLAGS ?= $(shell $(PKG_CONFIG) --cflags libsignal-protocol-c)
++LIBSIGNAL_PROTOCOL_C_LDFLAGS ?= $(shell $(PKG_CONFIG) --libs libsignal-protocol-c)
++
+ LIBGCRYPT_CONFIG ?= libgcrypt-config
+ LIBGCRYPT_LDFLAGS ?= $(shell $(LIBGCRYPT_CONFIG) --libs)
+ 
+@@ -24,26 +27,24 @@ TDIR = test
+ TFN = test_all
+ CDIR = coverage
+ 
+-AX_DIR=./lib/libsignal-protocol-c
+-AX_BDIR=$(AX_DIR)/build/src
+-AX_PATH=$(AX_BDIR)/libsignal-protocol-c.a
+-
+ PKGCFG_C=$(GLIB_CFLAGS) \
+ 	 $(SQLITE3_CFLAGS) \
++	 $(LIBSIGNAL_PROTOCOL_C_CFLAGS) \
+ 	 $(LIBGCRYPT_CFLAGS)
+ 
+ PKGCFG_L=$(GLIB_LDFLAGS) \
+ 	 $(SQLITE3_LDFLAGS) \
++	 $(LIBSIGNAL_PROTOCOL_C_LDFLAGS) \
+ 	 $(LIBGCRYPT_LDFLAGS)
+ 
+-HEADERS=-I$(AX_DIR)/src
++HEADERS=
+ CFLAGS += $(HEADERS) $(PKGCFG_C) -std=c11 -g -Wall -Wextra -Wpedantic \
+ 		  -Wstrict-overflow -fno-strict-aliasing -funsigned-char \
+ 		  -fno-builtin-memset
+ CPPFLAGS += -D_XOPEN_SOURCE=700 -D_BSD_SOURCE -D_POSIX_SOURCE -D_GNU_SOURCE -D_DEFAULT_SOURCE
+ TESTFLAGS=$(HEADERS) $(PKGCFG_C) -g -O0 --coverage
+ PICFLAGS=-fPIC $(CFLAGS)
+-LDFLAGS += -pthread -ldl $(PKGCFG_L) $(AX_PATH) -lm
++LDFLAGS += -pthread -ldl $(PKGCFG_L) -lm
+ LDFLAGS_T= -lcmocka $(LDFLAGS)
+ 
+ all: $(BDIR)/libaxc.a
+@@ -51,7 +52,7 @@ all: $(BDIR)/libaxc.a
+ $(BDIR):
+ 	$(MKDIR_P) $@
+ 
+-client: $(SDIR)/message_client.c $(BDIR)/axc_store.o $(BDIR)/axc_crypto.o $(BDIR)/axc.o $(AX_PATH)
++client: $(SDIR)/message_client.c $(BDIR)/axc_store.o $(BDIR)/axc_crypto.o $(BDIR)/axc.o
+ 	$(MKDIR_P) $@
+ 	$(CC) $(CPPFLAGS) $(CFLAGS) $^ -o $@/$@.o $(LDFLAGS)
+ 
+@@ -73,15 +74,8 @@ $(BDIR)/libaxc.a: $(BDIR)/axc.o $(BDIR)/axc_crypto.o $(BDIR)/axc_store.o
+ $(BDIR)/libaxc-nt.a: $(BDIR)/axc-nt.o $(BDIR)/axc_crypto.o $(BDIR)/axc_store.o
+ 	$(AR) rcs $@ $^
+ 
+-$(AX_PATH):
+-	cd $(AX_DIR) && \
+-		$(MKDIR_P) build && \
+-		cd build && \
+-		$(CMAKE) $(CMAKE_FLAGS) ..  && \
+-		$(MAKE)
+-
+ .PHONY: test
+-test: $(AX_PATH) test_store test_client
++test: test_store test_client
+ 
+ .PHONY: test_store
+ test_store: $(SDIR)/axc_store.c $(SDIR)/axc_crypto.c $(TDIR)/test_store.c
+@@ -109,6 +103,6 @@ clean:
+ 	
+ .PHONY: clean-all
+ clean-all: clean
+-	rm -rf client $(BDIR) $(CDIR) $(AX_DIR)/build
++	rm -rf client $(BDIR) $(CDIR)
+ 
+ 
+-- 
+2.27.0
+

@@ -1,0 +1,26 @@
+diff --git a/jni/GNUmakefile b/jni/GNUmakefile
+index c0f298c..457626f 100755
+--- a/jni/GNUmakefile
++++ b/jni/GNUmakefile
+@@ -278,16 +278,16 @@ debug:
+ 	@echo "OBJS=$(OBJS)"
+ 
+ $(LIBJFFI):  $(OBJS) $(LIBFFI_LIBS)
+-	$(CC) -o $@ $(LDFLAGS) $(SOFLAGS) $(OBJS) $(LIBFFI) $(LIBS)
++	$(CC) -o $@ $(LDFLAGS) $(SOFLAGS) $(OBJS) $(LIBFFI) $(LIBS) $(LIBFFI_LIBS)
+ 	$(STRIP) $@
+ 
+ $(BUILD_DIR)/%.o : $(SRC_DIR)/%.c $(wildcard $(JFFI_SRC_DIR)/*.h)
+-	@mkdir -p $(@D)
+-	@$(CCACHE) $(CC) $(CFLAGS) -c $< -o $@
++	mkdir -p $(@D)
++	$(CCACHE) $(CC) $(CFLAGS) -c $< -o $@
+ 
+ $(BUILD_DIR)/%.o : $(SRC_DIR)/%.S $(wildcard $(JFFI_SRC_DIR)/*.h)
+-	@mkdir -p $(@D)
+-	@$(CC) $(CFLAGS) -o $@ -c $<
++	mkdir -p $(@D)
++	$(CC) $(CFLAGS) -o $@ -c $<
+ 
+ $(OBJS) : $(LIBFFI)
+ 

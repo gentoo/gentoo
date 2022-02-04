@@ -2,9 +2,8 @@ fix compile when using clang as $CC:
 
 Based on patch from https://bugs.launchpad.net/hugin/+bug/1213585 (rebased)
 
-diff -r 2a43e83684d5 src/foreign/zthread/include/zthread/Guard.h
---- a/include/zthread/Guard.h	Sat Aug 10 11:31:46 2013 +0200
-+++ b/include/zthread/Guard.h	Sun Aug 18 09:46:43 2013 +0200
+--- a/include/zthread/Guard.h
++++ b/include/zthread/Guard.h
 @@ -108,7 +108,7 @@
    }
  

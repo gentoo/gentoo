@@ -1,0 +1,87 @@
+From 60b50a9076c06933f7255afc8df0733a4311f767 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tim=20R=C3=BChsen?= <tim.ruehsen@gmx.de>
+Date: Thu, 29 Oct 2020 23:05:18 +0100
+Subject: [PATCH] * configure.ac: Fix configure.ac bashisms
+
+Reported-by: Brian Inglis
+
+Backported to 1.99.2 release
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ configure.ac | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index ab3d9fdf..4cc5eff2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -350,13 +350,13 @@ if test "$enable_doc" = yes; then
+   if test -n "$DOXYGEN" || test -n "$PANDOC"; then
+     LIBWGET_DOCS_INFO="yes (found:"
+     if test -n "$DOXYGEN"; then
+-      LIBWGET_DOCS_INFO+=" Doxygen)"
++      LIBWGET_DOCS_INFO="$LIBWGET_DOCS_INFO Doxygen)"
+ 	else
+ 	  LIBWGET_DOCS_INFO="no"
+     fi
+     WGET2_DOCS_INFO="yes (found:"
+     if test -n "$PANDOC"; then
+-      WGET2_DOCS_INFO+=" Pandoc)"
++      WGET2_DOCS_INFO="$WGET2_DOCS_INFO Pandoc)"
+ 	else
+ 	  WGET2_DOCS_INFO="no"
+     fi
+@@ -440,7 +440,7 @@ PKG_PROG_PKG_CONFIG
+ 
+ AC_ARG_WITH(ssl, AS_HELP_STRING([--with-ssl], [Use SSL/TLS with specified library. Options: 'gnutls' (default), 'openssl', 'wolfssl' or 'none']), with_ssl=$withval, with_ssl=gnutls)
+ 
+-AS_IF([test "x$with_ssl" == "xgnutls"], [
++AS_IF([test "x$with_ssl" = "xgnutls"], [
+   PKG_CHECK_MODULES([GNUTLS], [gnutls], [
+     with_gnutls=yes
+     LIBS="$GNUTLS_LIBS $LIBS"
+@@ -452,16 +452,16 @@ AS_IF([test "x$with_ssl" == "xgnutls"], [
+       [with_gnutls=no;  AC_MSG_WARN(*** GNUTLS was not found. You will not be able to use HTTPS. Fallback to libnettle for hashing and checksumming.)])
+   ])
+ 
+-  AS_IF([test "x$with_gnutls" == xyes], [
++  AS_IF([test "x$with_gnutls" = xyes], [
+     AC_SEARCH_LIBS(gnutls_hash, gnutls, [with_gnutls_hash=yes])
+-    AS_IF([test "x$with_gnutls_hash" == xyes],
++    AS_IF([test "x$with_gnutls_hash" = xyes],
+       [AC_CHECK_HEADERS([gnutls/crypto.h], [], [], [#include <gnutls/gnutls.h>])])
+     AC_CHECK_HEADERS([gnutls/ocsp.h])
+     AC_CHECK_FUNCS(gnutls_srp_server_get_username gnutls_transport_get_int)
+   ])
+ ])
+ 
+-AS_IF([test "x$with_ssl" == "xopenssl"], [
++AS_IF([test "x$with_ssl" = "xopenssl"], [
+   PKG_CHECK_MODULES([OPENSSL], [openssl], [
+     with_openssl=yes
+     LIBS="$OPENSSL_LIBS $LIBS"
+@@ -474,7 +474,7 @@ AS_IF([test "x$with_ssl" == "xopenssl"], [
+     ])
+   ])
+ 
+-  AS_IF([test "x$with_openssl" == xyes], [
++  AS_IF([test "x$with_openssl" = xyes], [
+     AC_CHECK_HEADERS([openssl/ssl.h])
+     AC_CHECK_HEADERS([openssl/x509_vfy.h])
+     AC_CHECK_FUNCS(SSL_new X509_STORE_add_lookup)
+@@ -846,9 +846,9 @@ AC_CONFIG_FILES([Makefile
+ AC_OUTPUT
+ 
+ # Check if expected TLS library was found and print it
+-AS_IF([test "x$with_ssl" == xwolfssl && test "x$with_wolfssl" == xno], [ssl_enabled="(not found)"],
+-  [test "x$with_ssl" == xopenssl && test "x$with_openssl" == xno], [ssl_enabled="(not found)"],
+-  [test "x$with_ssl" == xgnutls && test "x$with_gnutls" == xno], [ssl_enabled="(not found)"],
++AS_IF([test "x$with_ssl" = xwolfssl && test "x$with_wolfssl" = xno], [ssl_enabled="(not found)"],
++  [test "x$with_ssl" = xopenssl && test "x$with_openssl" = xno], [ssl_enabled="(not found)"],
++  [test "x$with_ssl" = xgnutls && test "x$with_gnutls" = xno], [ssl_enabled="(not found)"],
+   [])
+ 
+ AC_MSG_NOTICE([Summary of build options:
+-- 
+2.30.0
+

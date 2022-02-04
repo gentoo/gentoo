@@ -1,16 +1,30 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Author : Alastair Tse <liquidx@gentoo.org>
-#
-# Convienence class to do stardict dictionary installations.
-#
+# @ECLASS: stardict.eclass
+# @MAINTAINER:
+# No maintainer <maintainer-needed@gentoo.org>
+# @AUTHOR:
+# Alastair Tse <liquidx@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7
+# @BLURB: Convenience class to do stardict dictionary installations.
+# @DESCRIPTION:
 # Usage:
 #   - Variables to set :
 #      * FROM_LANG     -  From this language
 #      * TO_LANG       -  To this language
 #      * DICT_PREFIX   -  SRC_URI prefix, like "dictd_www.mova.org_"
 #	   * DICT_SUFFIX   -  SRC_URI after the prefix.
+
+case ${EAPI:-0} in
+	[67]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+EXPORT_FUNCTIONS src_compile src_install
+
+if [[ -z ${_STARDICT_ECLASS} ]] ; then
+_STARDICT_ECLASS=1
 
 RESTRICT="strip"
 
@@ -25,21 +39,25 @@ fi
 
 HOMEPAGE="http://stardict.sourceforge.net/"
 SRC_URI="mirror://sourceforge/stardict/${DICT_P}.tar.bz2"
+S="${WORKDIR}"/${DICT_P}
 
-IUSE="gzip"
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
+IUSE="+zlib"
 
-DEPEND="|| ( >=app-text/stardict-2.4.2
+DEPEND="
+	|| (
+		>=app-text/stardict-2.4.2
 		app-text/sdcv
-		app-text/goldendict )
-	gzip? ( app-arch/gzip
-		app-text/dictd )"
-
-S=${WORKDIR}/${DICT_P}
+		app-text/goldendict
+	)
+	zlib? (
+		app-arch/gzip
+		app-text/dictd
+	)"
 
 stardict_src_compile() {
-	if use gzip; then
+	if use zlib; then
 		for file in *.idx; do
 			[[ -f $file ]] && gzip ${file}
 		done
@@ -56,4 +74,4 @@ stardict_src_install() {
 	doins *.ifo
 }
 
-EXPORT_FUNCTIONS src_compile src_install
+fi

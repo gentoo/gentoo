@@ -1,0 +1,10 @@
+--- a/src/spdk/app/spdk_top/Makefile	2021-04-02 14:27:44.307824110 -0700
++++ b/src/spdk/app/spdk_top/Makefile	2021-04-02 14:27:56.722742839 -0700
+@@ -39,6 +39,6 @@
+ C_SRCS := spdk_top.c
+ 
+ SPDK_LIB_LIST = jsonrpc json rpc log util
+-LIBS=-lncurses -lpanel -lmenu
++LIBS=-lncurses -ltinfo -lpanel -lmenu
+ 
+ include $(SPDK_ROOT_DIR)/mk/spdk.app.mk

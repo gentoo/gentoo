@@ -21,6 +21,7 @@ LICENSE="GPL-2"
 SLOT="$(ver_cut 1)"
 KEYWORDS="amd64 ~arm ppc ppc64 x86"
 IUSE="ed25519 test"
+RESTRICT="!test? ( test )"
 
 ruby_add_rdepend "virtual/ruby-ssl ed25519? ( >=dev-ruby/ed25519-1.2:1 dev-ruby/x25519 dev-ruby/bcrypt_pbkdf:1 )"
 ruby_add_bdepend "test? ( dev-ruby/test-unit:2 >=dev-ruby/mocha-0.13 )"

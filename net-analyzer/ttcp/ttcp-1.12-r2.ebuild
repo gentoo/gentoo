@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 SRC_URI="
 	mirror://gentoo/${P}.tar.bz2
-	https://dev.gentoo.org/~jer/${P}.c
+	https://dev.gentoo.org/~jsmolic/distfiles/${P}.c
 "
 src_compile() {
 	$(tc-getCC) ${CFLAGS} ${LDFLAGS} -o ${PN} "${DISTDIR}"/${P}.c || die

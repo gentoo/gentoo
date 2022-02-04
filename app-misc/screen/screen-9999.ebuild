@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ HOMEPAGE="https://www.gnu.org/software/screen/"
 
 if [[ "${PV}" != 9999 ]] ; then
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/screen.git"
@@ -24,6 +24,7 @@ IUSE="debug nethack pam selinux multiuser"
 
 CDEPEND="
 	>=sys-libs/ncurses-5.2:0=
+	virtual/libcrypt:=
 	pam? ( sys-libs/pam )"
 RDEPEND="${CDEPEND}
 	acct-group/utmp
@@ -129,7 +130,9 @@ src_install() {
 	insinto /etc
 	doins "${FILESDIR}"/screenrc
 
-	pamd_mimic_system screen auth
+	if use pam; then
+		pamd_mimic_system screen auth
+	fi
 
 	dodoc "${DOCS[@]}"
 }
@@ -142,18 +145,7 @@ pkg_postinst() {
 		elog "applications. Please check /etc/screenrc for information on these changes."
 	fi
 
-	# Add /tmp/screen in case it doesn't exist yet. This should solve
-	# problems like bug #508634 where tmpfiles.d isn't in effect.
-	local rundir="${EROOT}/tmp/${PN}"
-	if [[ ! -d ${rundir} ]] ; then
-		if use multiuser || use prefix ; then
-			tmpfiles_group="root"
-		else
-			tmpfiles_group="utmp"
-		fi
-		mkdir -m 0775 "${rundir}"
-		chgrp ${tmpfiles_group} "${rundir}"
-	fi
+	tmpfiles_process screen.conf
 
-	ewarn "This revision changes the screen socket location to ${rundir}"
+	ewarn "This revision changes the screen socket location to ${EROOT}/tmp/${PN}"
 }

@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit desktop toolchain-funcs
 
 DEB_V=${PV}-4.1
 EXTRAS1="eboard-extras-1pl2"
@@ -21,11 +21,23 @@ KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
 RDEPEND="
+	dev-libs/atk
+	dev-libs/glib
+	dev-libs/gobject-introspection
+	media-libs/fontconfig
+	media-libs/freetype
 	media-libs/libpng:0=
-	x11-libs/gtk+:2"
-DEPEND="${RDEPEND}
+	sys-libs/zlib
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf
+	x11-libs/gtk+:2
+	x11-libs/pango
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-lang/perl
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${WORKDIR}"/${PN}_${DEB_V}.diff
@@ -60,7 +72,7 @@ src_install() {
 	newicon icon-eboard.xpm ${PN}.xpm
 	make_desktop_entry ${PN} ${PN} ${PN}
 
-	cd "${WORKDIR}"/${EXTRAS1}
+	cd "${WORKDIR}"/${EXTRAS1} || die
 	insinto /usr/share/${PN}
 	doins *.png *.wav
 	newins extras1.conf themeconf.extras1
@@ -68,7 +80,7 @@ src_install() {
 	newdoc README README.extras
 	dodoc CREDITS
 
-	cd "${WORKDIR}"/${EXTRAS2}
+	cd "${WORKDIR}"/${EXTRAS2} || die
 	doins *.png *.wav
 	newins extras2.conf themeconf.extras2
 }

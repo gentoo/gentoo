@@ -1,0 +1,52 @@
+https://cgit.freedesktop.org/nouveau/xf86-video-nouveau/commit/?id=e80e73ced69b15662103d0fd6837db4ce6c6eb5b
+https://bugs.gentoo.org/827878
+
+From: Dave Airlie <airlied@redhat.com>
+Date: Mon, 13 Jul 2020 09:20:15 +1000
+Subject: nouveau: fixup driver for new X server ABI
+
+--- a/src/compat-api.h
++++ b/src/compat-api.h
+@@ -102,4 +102,8 @@
+ 
+ #endif
+ 
++#if ABI_VIDEODRV_VERSION < SET_ABI_VERSION(25, 2)
++#define secondary_dst slave_dst
++#endif
++
+ #endif
+--- a/src/nouveau_exa.c
++++ b/src/nouveau_exa.c
+@@ -157,7 +157,7 @@ nouveau_exa_destroy_pixmap(ScreenPtr pScreen, void *priv)
+ 
+ #ifdef NOUVEAU_PIXMAP_SHARING
+ static Bool
+-nouveau_exa_share_pixmap_backing(PixmapPtr ppix, ScreenPtr slave, void **handle_p)
++nouveau_exa_share_pixmap_backing(PixmapPtr ppix, ScreenPtr secondary, void **handle_p)
+ {
+ 	struct nouveau_bo *bo = nouveau_pixmap_bo(ppix);
+ 	struct nouveau_pixmap *nvpix = nouveau_pixmap(ppix);
+--- a/src/nv_driver.c
++++ b/src/nv_driver.c
+@@ -559,16 +559,16 @@ redisplay_dirty(ScreenPtr screen, PixmapDirtyUpdatePtr dirty)
+ {
+ 	RegionRec pixregion;
+ 
+-	PixmapRegionInit(&pixregion, dirty->slave_dst);
++	PixmapRegionInit(&pixregion, dirty->secondary_dst);
+ 
+-	DamageRegionAppend(&dirty->slave_dst->drawable, &pixregion);
++	DamageRegionAppend(&dirty->secondary_dst->drawable, &pixregion);
+ #ifdef HAS_DIRTYTRACKING_ROTATION
+ 	PixmapSyncDirtyHelper(dirty);
+ #else
+ 	PixmapSyncDirtyHelper(dirty, &pixregion);
+ #endif
+ 
+-	DamageRegionProcessPending(&dirty->slave_dst->drawable);
++	DamageRegionProcessPending(&dirty->secondary_dst->drawable);
+ 	RegionUninit(&pixregion);
+ }
+ 
+cgit v1.2.1

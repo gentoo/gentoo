@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-pear-r2.eclass
@@ -6,7 +6,7 @@
 # Gentoo PHP Team <php-bugs@gentoo.org>
 # @AUTHOR:
 # Author: Brian Evans <grknight@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Provides means for an easy installation of PEAR packages.
 # @DESCRIPTION:
 # This eclass provides means for an easy installation of PEAR packages.
@@ -18,6 +18,9 @@ EXPORT_FUNCTIONS src_install pkg_postinst pkg_postrm
 
 case "${EAPI:-0}" in
 	6|7)
+		;;
+	8)
+		IDEPEND=">=dev-php/pear-1.8.1"
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} for ${ECLASS}"
@@ -39,7 +42,8 @@ RDEPEND=">=dev-php/pear-1.8.1"
 
 # @ECLASS-VARIABLE: PEAR-P
 # @INTERNAL
-# @DESCRIPTION: Combines PHP_PEAR_PKG_NAME and PEAR_PV
+# @DESCRIPTION:
+# Combines PHP_PEAR_PKG_NAME and PEAR_PV
 PEAR_P="${PHP_PEAR_PKG_NAME}-${PEAR_PV}"
 
 # @ECLASS-VARIABLE: PHP_PEAR_DOMAIN

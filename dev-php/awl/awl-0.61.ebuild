@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( <dev-php/phpunit-6 )"
+BDEPEND="test? ( dev-php/phpunit )"
 RDEPEND="dev-lang/php:*[pdo,postgres,xml]"
 
 S="${WORKDIR}"
@@ -23,7 +23,7 @@ src_compile() {
 }
 
 src_test() {
-	phpunit tests/ || die "test suite failed"
+	phpunit --do-not-cache-result tests/ || die "test suite failed"
 }
 
 src_install() {

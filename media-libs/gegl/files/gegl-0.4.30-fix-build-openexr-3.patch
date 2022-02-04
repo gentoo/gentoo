@@ -1,0 +1,22 @@
+From 499a239d158fadb3a04499255b5b282a8a6023bb Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Sat, 24 Apr 2021 10:51:09 +0000
+Subject: [PATCH] Fix build with OpenEXR 3
+
+Add a header that is no longer transitively included
+---
+ operations/external/exr-save.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/operations/external/exr-save.cc b/operations/external/exr-save.cc
+index 1e8c09d96..87abed511 100644
+--- a/operations/external/exr-save.cc
++++ b/operations/external/exr-save.cc
+@@ -45,6 +45,7 @@ extern "C" {
+ #include <ImfChromaticities.h>
+ #include <ImfStandardAttributes.h>
+ #include <ImfArray.h>
++#include <ImfFrameBuffer.h>
+ #include "ImathRandom.h"
+ 
+ 

@@ -1,0 +1,37 @@
+From f881f614f11472090394538d4424f408cb61d581 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Fri, 22 Jun 2018 11:44:27 +0200
+Subject: [PATCH 2/2] fix error message with php 7+ (-Wformat warnings raised
+ by 7.3)
+
+---
+ geos.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/geos.c b/geos.c
+index 2c81428..fc679e8 100755
+--- a/geos.c
++++ b/geos.c
+@@ -189,11 +189,19 @@ getRelay(zval* val, zend_class_entry* ce) {
+ 
+     if ( proxy->std.ce != ce ) {
+         php_error_docref(NULL TSRMLS_CC, E_ERROR,
++#if PHP_VERSION_ID >= 70000
++            "Relay object is not an %s", ZSTR_VAL(ce->name));
++#else
+             "Relay object is not an %s", ce->name);
++#endif
+     }
+     if ( ! proxy->relay ) {
+         php_error_docref(NULL TSRMLS_CC, E_ERROR,
++#if PHP_VERSION_ID >= 70000
++            "Relay object for object of type %s is not set", ZSTR_VAL(ce->name));
++#else
+             "Relay object for object of type %s is not set", ce->name);
++#endif
+     }
+     return proxy->relay;
+ }
+-- 
+2.14.4
+

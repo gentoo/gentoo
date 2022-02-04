@@ -1,10 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: golang-vcs.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
+# @PROVIDES: golang-base
 # @BLURB: Eclass for fetching and unpacking go repositories.
 # @DESCRIPTION:
 # This eclass is written to ease the maintenance of live ebuilds
@@ -41,6 +42,7 @@ PROPERTIES+=" live"
 # @CODE
 
 # @ECLASS-VARIABLE: EGO_STORE_DIR
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Storage directory for Go sources.
 #

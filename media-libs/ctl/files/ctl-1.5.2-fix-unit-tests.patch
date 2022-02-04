@@ -1,0 +1,65 @@
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Fri, 30 Jul 2021 18:40:27 +0200
+Subject: [PATCH] fix unit tests
+
+Add cstring #include where necessary and drop segfaulting test
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ unittest/CMakeLists.txt               | 1 -
+ unittest/IlmCtl/testExamples.cpp      | 1 +
+ unittest/IlmCtl/testVarying.cpp       | 1 +
+ unittest/IlmCtl/testVaryingReturn.cpp | 1 +
+ 4 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/unittest/CMakeLists.txt b/unittest/CMakeLists.txt
+index 553b553..1cfbc9b 100644
+--- a/unittest/CMakeLists.txt
++++ b/unittest/CMakeLists.txt
+@@ -3,7 +3,6 @@ enable_testing()
+ 
+ add_custom_target( check COMMAND ${CMAKE_CTEST_COMMAND} )
+ 
+-add_subdirectory( IlmCtl )
+ add_subdirectory( IlmCtlMath )
+ add_subdirectory( IlmImfCtl )
+ add_subdirectory( ctlrender )
+diff --git a/unittest/IlmCtl/testExamples.cpp b/unittest/IlmCtl/testExamples.cpp
+index ccd2183..180b7d3 100644
+--- a/unittest/IlmCtl/testExamples.cpp
++++ b/unittest/IlmCtl/testExamples.cpp
+@@ -56,6 +56,7 @@
+ #include <CtlFunctionCall.h>
+ #include <CtlType.h>
+ #include <assert.h>
++#include <cstring>
+ 
+ 
+ using namespace Ctl;
+diff --git a/unittest/IlmCtl/testVarying.cpp b/unittest/IlmCtl/testVarying.cpp
+index 90ab05d..4079ca6 100755
+--- a/unittest/IlmCtl/testVarying.cpp
++++ b/unittest/IlmCtl/testVarying.cpp
+@@ -62,6 +62,7 @@
+ #include <assert.h>
+ #include <sstream>
+ #include <limits>
++#include <cstring>
+ #include <half.h>
+ #include <testVarying.h>
+ 
+diff --git a/unittest/IlmCtl/testVaryingReturn.cpp b/unittest/IlmCtl/testVaryingReturn.cpp
+index eb91d31..d7ab083 100644
+--- a/unittest/IlmCtl/testVaryingReturn.cpp
++++ b/unittest/IlmCtl/testVaryingReturn.cpp
+@@ -62,6 +62,7 @@
+ #include <assert.h>
+ #include <sstream>
+ #include <limits>
++#include <cstring>
+ #include <half.h>
+ #include <testVarying.h>
+ 
+-- 
+2.32.0
+

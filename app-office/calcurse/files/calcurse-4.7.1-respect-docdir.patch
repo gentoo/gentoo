@@ -1,0 +1,13 @@
+# Gentoo bug "app-office/calcurse: Unable to find documentation"
+# https://bugs.gentoo.org/813438
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -57,8 +57,6 @@ CLEANFILES = \
+ 	submitting-patches.html \
+ 	calcurse.1
+ 
+-docdir = $(datadir)/doc/$(PACKAGE)
+-
+ .txt.html:
+ if HAVE_ASCIIDOC
+ 	$(AM_V_GEN) $(ASCIIDOC) $(ASCIIDOC_ARGS) $<

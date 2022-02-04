@@ -1,0 +1,37 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${MOTION_USER:="motion"}
+: ${MOTION_GROUP:="motion"}
+
+[ "${MOTION_UMASK}" ] && umask="${MOTION_UMASK}"
+[ "${MOTION_CONFIGFILE}" ] && command_args="-c ${MOTION_CONFIGFILE}"
+[ "${MOTION_LOGFILE}" ] && command_args="${command_args} -l ${MOTION_LOGFILE}"
+[ "${MOTION_LOGTYPE}" ] && command_args="${command_args} -k ${MOTION_LOGTYPE}"
+[ "${MOTION_LOGLEVEL}" ] && command_args="${command_args} -d ${MOTION_LOGLEVEL}"
+
+command=/usr/bin/motion
+command_user="${MOTION_USER}:${MOTION_GROUP}"
+
+start_pre() {
+  if [ "${MOTION_DIR}" ] ; then
+    checkpath -d -o "${MOTION_USER}":"${MOTION_GROUP}" "${MOTION_DIR}"
+    directory="${MOTION_DIR}"
+  fi
+  if [ "${MOTION_LOGFILE}" ] ; then
+    checkpath -f -o "${MOTION_USER}":"${MOTION_GROUP}" "${LOGFILE}"
+  fi
+  if [ "${MOTION_PIDFILE}" ] ; then
+    pidfile="${MOTION_PIDFILE}"
+    command_background=true
+  else
+    supervisor=supervise-daemon
+  fi
+}
+
+depend() {
+  need localmount
+  after bootmisc
+  use mysql postgresq
+}

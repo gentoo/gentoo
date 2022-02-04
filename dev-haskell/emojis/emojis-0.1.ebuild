@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
-DESCRIPTION="Conversion between emoji characters and their names."
+DESCRIPTION="Conversion between emoji characters and their names"
 HOMEPAGE="https://github.com/jgm/emojis#readme"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 

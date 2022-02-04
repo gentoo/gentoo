@@ -1,0 +1,23 @@
+diff --git a/Makefile-2.4 b/Makefile-2.4
+index b900268..9946cef 100644
+--- a/Makefile-2.4
++++ b/Makefile-2.4
+@@ -43,9 +43,6 @@
+ LINUX_HEADERS := /usr/src/linux-`uname -r`/include/
+ LINUX_MODULES := /lib/modules/`uname -r`/kernel/
+ 
+-CC := gcc
+-CFLAGS := -O2 -g -Wall
+-
+ LIBPARAPIN_OBJS := parapin.o
+ 
+ EXAMPLE_DIR := examples
+@@ -82,7 +79,7 @@ allinstall: install modulesinstall $(BINDINGS)-install
+ ##### libraries
+ 
+ libparapin.a: $(LIBPARAPIN_OBJS)
+-	ar -cr libparapin.a $(LIBPARAPIN_OBJS)
++	$(AR) -cr libparapin.a $(LIBPARAPIN_OBJS)
+ 
+ parapin.o: parapin.c parapin.h parapin-linux.h
+ 	$(CC) $(CFLAGS) -c parapin.c

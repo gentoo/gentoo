@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,20 +13,16 @@ if [[ ${PV} == *9999 ]]; then
 else
 	COMMIT_ID="4c221a05d949a3767a2671de139c6014909daf6b"
 	SRC_URI="https://github.com/Rudde/${PN}/archive/${COMMIT_ID}.tar.gz -> ${PN}-${COMMIT_ID}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 	S="${WORKDIR}/${PN}-${COMMIT_ID}"
 fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
-IUSE="threads +ssl libressl debug"
+IUSE="threads +ssl debug"
 
 RDEPEND="
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 "
 
 DEPEND="${RDEPEND}"

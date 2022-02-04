@@ -1,0 +1,13 @@
+As the code below the altered block shows, this was redundant to begin with.
+
+--- a/tdfsb.c
++++ b/tdfsb.c
+@@ -2794,8 +2794,6 @@
+                             else
+                             {
+                                 strcpy(TDFSB_CURRENTPATH,temp_trunc);        
+-                                TDFSB_FUNC_IDLE=nullDisplay; TDFSB_FUNC_DISP=noDisplay; 
+-                                return;
+                             }
+ 			    TDFSB_FUNC_IDLE=nullDisplay;
+                             TDFSB_FUNC_DISP=noDisplay;

@@ -1,10 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools eutils python-single-r1
+PYTHON_COMPAT=( python3_{8,9} )
+
+inherit autotools python-single-r1
 
 DESCRIPTION="Locate and modify variables in executing processes"
 HOMEPAGE="https://github.com/scanmem/scanmem"
@@ -12,7 +13,7 @@ SRC_URI="https://github.com/scanmem/scanmem/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="gui static-libs"
 
 DEPEND="sys-libs/readline:0="
@@ -54,5 +55,6 @@ src_install() {
 		dodoc gui/{README,TODO}
 		python_fix_shebang "${ED}"
 	fi
+
 	find "${ED}" -type f -name "*.la" -delete || die
 }

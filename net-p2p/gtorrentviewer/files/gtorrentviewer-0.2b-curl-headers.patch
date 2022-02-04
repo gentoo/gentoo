@@ -1,5 +1,3 @@
-diff --git a/src/main.c b/src/main.c
-index fc51205..f46d30a 100644
 --- a/src/main.c
 +++ b/src/main.c
 @@ -40,7 +40,6 @@

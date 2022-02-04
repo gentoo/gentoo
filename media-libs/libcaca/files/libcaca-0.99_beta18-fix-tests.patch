@@ -1,13 +1,13 @@
---- test/Makefile.am
-+++ test/Makefile.am
+--- a/test/Makefile.am
++++ b/test/Makefile.am
 @@ -1,3 +1,5 @@
 +AM_TESTS_ENVIRONMENT = \
 +	top_srcdir="$(top_srcdir)"
  
  AM_CPPFLAGS = -I$(top_srcdir) -I$(top_srcdir)/caca -I../caca
  
---- test/check-copyright
-+++ test/check-copyright
+--- a/test/check-copyright
++++ b/test/check-copyright
 @@ -3,10 +3,11 @@
  #
  # Check that the copyright information is valid
@@ -30,8 +30,8 @@
        echo "error: $dir/$x lacks proper copyright information"
        nfails=$(($nfails + 1))
      elif [ -d ../.git ]; then
---- test/check-source
-+++ test/check-source
+--- a/test/check-source
++++ b/test/check-source
 @@ -3,6 +3,7 @@
  #
  # Check that we have no tabs or trailing spaces in the source code

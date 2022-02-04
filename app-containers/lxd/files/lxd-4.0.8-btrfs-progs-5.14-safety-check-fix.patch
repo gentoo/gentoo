@@ -1,0 +1,75 @@
+From 5efac9cfed92a890dc1a073fe60b1c814c305267 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?St=C3=A9phane=20Graber?= <stgraber@ubuntu.com>
+Date: Thu, 4 Nov 2021 14:05:27 -0400
+Subject: [PATCH] lxd/storage/btrfs: Support 5.14.2
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Closes #9418
+
+Signed-off-by: Stéphane Graber <stgraber@ubuntu.com>
+---
+ lxd/storage/drivers/driver_btrfs.go       | 18 ++++++++++++++++++
+ lxd/storage/drivers/driver_btrfs_utils.go |  8 +++++++-
+ 2 files changed, 25 insertions(+), 1 deletion(-)
+
+diff --git a/lxd/storage/drivers/driver_btrfs.go b/lxd/storage/drivers/driver_btrfs.go
+index e6a64bf8136..a47be766f8f 100644
+--- a/lxd/storage/drivers/driver_btrfs.go
++++ b/lxd/storage/drivers/driver_btrfs.go
+@@ -17,10 +17,12 @@ import (
+ 	"github.com/lxc/lxd/shared/api"
+ 	"github.com/lxc/lxd/shared/units"
+ 	"github.com/lxc/lxd/shared/validate"
++	"github.com/lxc/lxd/shared/version"
+ )
+ 
+ var btrfsVersion string
+ var btrfsLoaded bool
++var btrfsPropertyForce bool
+ 
+ type btrfs struct {
+ 	common
+@@ -64,6 +66,22 @@ func (d *btrfs) load() error {
+ 		}
+ 	}
+ 
++	// Check if we need --force to set properties.
++	ver5142, err := version.Parse("5.14.2")
++	if err != nil {
++		return err
++	}
++
++	ourVer, err := version.Parse(btrfsVersion)
++	if err != nil {
++		return err
++	}
++
++	// If running 5.14.2 or older, we need --force.
++	if ourVer.Compare(ver5142) > 0 {
++		btrfsPropertyForce = true
++	}
++
+ 	btrfsLoaded = true
+ 	return nil
+ }
+diff --git a/lxd/storage/drivers/driver_btrfs_utils.go b/lxd/storage/drivers/driver_btrfs_utils.go
+index e1a359e8490..0618e29e6f2 100644
+--- a/lxd/storage/drivers/driver_btrfs_utils.go
++++ b/lxd/storage/drivers/driver_btrfs_utils.go
+@@ -308,7 +308,13 @@ func (d *btrfs) setSubvolumeReadonlyProperty(path string, readonly bool) error {
+ 		return nil
+ 	}
+ 
+-	_, err := shared.RunCommand("btrfs", "property", "set", "-ts", path, "ro", fmt.Sprintf("%t", readonly))
++	args := []string{"property", "set"}
++	if btrfsPropertyForce {
++		args = append(args, "-f")
++	}
++	args = append(args, "-ts", path, "ro", fmt.Sprintf("%t", readonly))
++
++	_, err := shared.RunCommand("btrfs", args...)
+ 	return err
+ }
+ 

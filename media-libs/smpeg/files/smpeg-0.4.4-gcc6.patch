@@ -1,5 +1,5 @@
---- smpeg-0.4.4/audio/huffmantable.cpp.old	2016-09-21 17:28:34.497031221 -0400
-+++ smpeg-0.4.4/audio/huffmantable.cpp	2016-09-21 17:30:24.346141555 -0400
+--- smpeg-0.4.4/audio/huffmantable.cpp.old
++++ smpeg-0.4.4/audio/huffmantable.cpp
 @@ -550,11 +550,11 @@
  
  const HUFFMANCODETABLE MPEGaudio::ht[HTN]=

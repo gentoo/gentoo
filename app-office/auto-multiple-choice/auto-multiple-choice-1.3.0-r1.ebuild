@@ -6,8 +6,9 @@ EAPI=7
 inherit toolchain-funcs perl-functions latex-package
 
 DESCRIPTION="Create and manage multiple choice questionnaries, including automated marking"
-HOMEPAGE="http://home.gna.org/auto-qcm/"
-SRC_URI="http://download.gna.org/auto-qcm/${PN}_${PV}_sources.tar.gz"
+HOMEPAGE="http://www.auto-multiple-choice.net/"
+SRC_URI="http://download.auto-multiple-choice.net/${PN}_${PV}_sources.tar.gz"
+
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

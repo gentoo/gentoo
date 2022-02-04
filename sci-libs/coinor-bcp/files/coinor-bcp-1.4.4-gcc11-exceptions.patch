@@ -1,0 +1,36 @@
+https://github.com/coin-or/Bcp/commit/e581a2dd4b55352eb318c15e8281b3cc9d8abe23.patch
+https://bugs.gentoo.org/786306
+
+From e581a2dd4b55352eb318c15e8281b3cc9d8abe23 Mon Sep 17 00:00:00 2001
+From: Julien Schueller <schueller@phimeca.com>
+Date: Fri, 14 Aug 2020 09:58:47 +0200
+Subject: [PATCH] Fix deprecated dynamic exception warning
+
+warning: dynamic exception specifications are deprecated in C++11
+--- a/src/include/BCP_buffer.hpp
++++ b/src/include/BCP_buffer.hpp
+@@ -101,13 +101,13 @@ class BCP_buffer{
+    /**@name Modifying methods */
+    /*@{*/
+    /** Position the read head in the buffer. Must be between 0 and size(). */
+-   inline void set_position(const int pos) throw(BCP_fatal_error) {
++   inline void set_position(const int pos) {
+      if (pos < 0 || pos > size())
+        throw BCP_fatal_error("Incorrest buffer position setting.\n");
+      _pos = pos;
+    }
+    /** Cut off the end of the buffer. Must be between 0 and size(). */
+-   inline void set_size(const int s) throw(BCP_fatal_error) {
++   inline void set_size(const int s) {
+      if (s < 0 || s > size())
+        throw BCP_fatal_error("Incorrest buffer position setting.\n");
+      _size = s;
+@@ -221,7 +221,7 @@ class BCP_buffer{
+    */
+    template <class T> BCP_buffer& unpack(T*& values, int& length,
+ 					 bool allocate = true)
+-     throw(BCP_fatal_error) {
++   {
+      if (allocate) {
+ #ifdef PARANOID
+        if (_pos + sizeof(int) > _size)

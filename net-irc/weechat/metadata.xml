@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>gyakovlev@gentoo.org</email>
@@ -14,10 +14,10 @@
 		<flag name="fifo">Enable FIFO support (sh pipes)</flag>
 		<flag name="irc">Enable IRC protocol support</flag>
 		<flag name="logger">Enable support for logging</flag>
-		<flag name="man">Build and install man pages</flag>
 		<flag name="relay">Enable relay plugin (experimental)</flag>
 		<flag name="scripts">Build infrastructure for scripting</flag>
 		<flag name="trigger">Enable trigger plugin</flag>
+		<flag name="typing">Enable typing plugin</flag>
 		<flag name="xfer">Enable xfer plugin support</flag>
 	</use>
 </pkgmetadata>

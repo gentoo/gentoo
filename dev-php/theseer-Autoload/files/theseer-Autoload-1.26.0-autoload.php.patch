@@ -1,0 +1,12 @@
+--- a/composer/bin/phpab
++++ b/composer/bin/phpab
+@@ -56,7 +56,7 @@ foreach ($files as $file) {
+     }
+ }
+ 
+-require __DIR__ . '/../../src/autoload.php';
++require 'TheSeer/Autoload/autoload.php';
+ 
+ $factory = new \TheSeer\Autoload\Factory();
+ $factory->getCLI()->run();
+ 

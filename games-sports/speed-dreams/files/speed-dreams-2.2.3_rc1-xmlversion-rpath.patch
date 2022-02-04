@@ -1,0 +1,11 @@
+Building with install rpath makes things simpler, but this is an issue
+for used-only-at-build-time xmlversion. Suboptimal fix given all these
+are built for CHOST.
+--- a/src/tools/xmlversion/CMakeLists.txt
++++ b/src/tools/xmlversion/CMakeLists.txt
+@@ -2,4 +2,5 @@
+ PROJECT(xmlversion)
+ 
++SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+ SET(XMLVERSION_SOURCES main.cpp)
+ 

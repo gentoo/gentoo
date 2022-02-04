@@ -1,0 +1,22 @@
+[Unit]
+Description=Prometheus
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=prometheus
+Group=prometheus
+ExecStart=/usr/bin/prometheus \
+  --web.enable-lifecycle \
+  --config.file=/etc/prometheus/prometheus.yml \
+  --storage.tsdb.path="/var/lib/prometheus/data" \
+  --web.console.templates=/etc/prometheus/consoles \
+  --web.console.libraries=/etc/prometheus/console_libraries \
+  --web.listen-address=0.0.0.0:9090 \
+  --web.enable-admin-api 
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

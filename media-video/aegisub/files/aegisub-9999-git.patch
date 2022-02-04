@@ -59,20 +59,3 @@ index e45a54767..1bd0120ed 100644
    CPPFLAGS="$aegisub_save_CPPFLAGS"
    LIBS="$aegisub_save_LIBS"
  ])
-diff --git a/src/libresrc/libresrc.cpp b/src/libresrc/libresrc.cpp
-index 79dc0f16c..8648d2987 100644
---- a/src/libresrc/libresrc.cpp
-+++ b/src/libresrc/libresrc.cpp
-@@ -22,9 +22,10 @@
- 
- wxBitmap libresrc_getimage(const unsigned char *buff, size_t size, double scale, int dir) {
- 	wxMemoryInputStream mem(buff, size);
-+        auto img = wxImage(mem);
- 	if (dir != wxLayout_RightToLeft)
--		return wxBitmap(wxImage(mem), -1, scale);
--	return wxBitmap(wxImage(mem).Mirror(), -1, scale);
-+            return wxBitmap(img.Scale(img.GetHeight() * scale, img.GetWidth() * scale));
-+	return wxBitmap(img.Mirror().Scale(img.GetHeight() * scale, img.GetWidth() * scale));
- }
- 
- wxIcon libresrc_geticon(const unsigned char *buff, size_t size) {

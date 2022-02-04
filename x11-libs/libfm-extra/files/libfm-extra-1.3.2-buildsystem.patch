@@ -1,0 +1,59 @@
+From a5cabf67a7460ce27c73e66c9ac98481c6cd1db2 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 15 Mar 2021 09:44:40 +0100
+Subject: [PATCH] Drop -Werror and unwanted CPPFLAGS, disable docs
+
+---
+ Makefile.am  | 2 +-
+ configure.ac | 8 ++------
+ 2 files changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 427edae..f5fd4f0 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -5,7 +5,7 @@ NULL=
+ DIST_SUBDIRS = src po data
+ 
+ # a little trick against gtk-doc is here
+-SUBDIRS_DOCS = docs
++SUBDIRS_DOCS = 
+ 
+ EXTRA_DIST_DOCS = \
+ 	gtk-doc.make \
+diff --git a/configure.ac b/configure.ac
+index bf6b07f..2f331ec 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,7 +3,7 @@
+ 
+ AC_PREREQ([2.63])
+ AC_INIT([libfm], [1.3.2], [http://pcmanfm.sourceforge.net/])
+-AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects no-dist-gzip dist-xz -Wno-portability])
++AM_INIT_AUTOMAKE([-Wall foreign subdir-objects no-dist-gzip dist-xz -Wno-portability])
+ AC_CONFIG_MACRO_DIR(m4)
+ AC_CONFIG_HEADERS([config.h])
+ 
+@@ -277,7 +277,7 @@ AC_ARG_ENABLE(debug,
+ )
+ if test "$enable_debug" = "yes"; then
+     # turn on debug and disable optimization
+-    CPPFLAGS="$CPPFLAGS -DG_ENABLE_DEBUG -O0 -g"
++    CPPFLAGS="$CPPFLAGS -DG_ENABLE_DEBUG"
+     case "$CC" in
+     gcc*)
+         CPPFLAGS="$CPPFLAGS -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers"
+@@ -323,10 +323,6 @@ AC_CONFIG_FILES([
+     data/lxshortcut.1
+     data/ui/Makefile
+     po/Makefile.in
+-    docs/Makefile
+-    docs/reference/Makefile
+-    docs/reference/libfm/Makefile
+-    docs/reference/libfm/version.xml
+     libfm.pc
+     libfm-gtk.pc
+     libfm-gtk3.pc
+-- 
+2.30.2
+

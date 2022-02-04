@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,6 @@ RDEPEND="dev-libs/tre
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-find-utf8proc-headers.patch"
 	"${FILESDIR}/${P}-fix-icu-build.patch"
 	"${FILESDIR}/${P}-fix-missing-limits-header.patch"
 	"${FILESDIR}/${P}-fix-segfault-on-certain-input.patch"

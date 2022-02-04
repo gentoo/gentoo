@@ -1,15 +1,23 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
 		<email>pabloorduna98@gmail.com</email>
 		<name>Pablo Orduna</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
-		<name>Gentoo Proxy Maintainers Project</name>
+		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="transfer">Enable transfer kitten using <pkg>net-libs/librsync</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="github">kovidgoyal/kitty</remote-id>
+		<changelog>https://sw.kovidgoyal.net/kitty/changelog</changelog>
 	</upstream>
 </pkgmetadata>

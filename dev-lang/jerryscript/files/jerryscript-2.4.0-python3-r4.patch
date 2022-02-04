@@ -1,0 +1,236 @@
+From 22d8b904d85e548aa06d2d665aeaaee510a2435a Mon Sep 17 00:00:00 2001
+From: Zac Medico <zmedico@gmail.com>
+Date: Sun, 23 May 2021 13:46:30 -0700
+Subject: [PATCH] Python debugger support for Python 3 (in addition to Python
+ 2)
+
+- Added safe_ord compatibility to pass through int arguments
+- Fixed JerryDebugger to decode bytes as utf8 strings when necessary
+- Fixed WebSocket send_message method to use packed_data[0:1] bytes slice
+
+JerryScript-DCO-1.0-Signed-off-by: Zac Medico <zmedico@gmail.com>
+---
+ jerry-debugger/jerry_client_main.py      | 82 ++++++++++++++----------
+ jerry-debugger/jerry_client_rawpacket.py | 13 +++-
+ jerry-debugger/jerry_client_websocket.py | 15 ++++-
+ 3 files changed, 74 insertions(+), 36 deletions(-)
+
+diff --git a/jerry-debugger/jerry_client_main.py b/jerry-debugger/jerry_client_main.py
+index e65d0e14..ee3ffd26 100644
+--- a/jerry-debugger/jerry_client_main.py
++++ b/jerry-debugger/jerry_client_main.py
+@@ -151,2 +151,11 @@ def arguments_parse():
+ 
++if sys.version_info.major >= 3:
++    def safe_ord(c):
++        if isinstance(c, int):
++            return c
++        return ord(c)
++else:
++	safe_ord = ord
++
++
+ class JerryBreakpoint(object):
+@@ -309,8 +318,8 @@ class JerryDebugger(object):
+ 
+-        if len(result) != config_size or ord(result[0]) != JERRY_DEBUGGER_CONFIGURATION:
++        if len(result) != config_size or safe_ord(result[0]) != JERRY_DEBUGGER_CONFIGURATION:
+             raise Exception("Unexpected configuration")
+ 
+-        self.little_endian = ord(result[1]) & JERRY_DEBUGGER_LITTLE_ENDIAN
+-        self.max_message_size = ord(result[6])
+-        self.cp_size = ord(result[7])
++        self.little_endian = safe_ord(result[1]) & JERRY_DEBUGGER_LITTLE_ENDIAN
++        self.max_message_size = safe_ord(result[6])
++        self.cp_size = safe_ord(result[7])
+ 
+@@ -402,3 +411,3 @@ class JerryDebugger(object):
+             if args != "pending":
+-                for i in self.active_breakpoint_list.values():
++                for i in list(self.active_breakpoint_list.values()):
+                     breakpoint = self.active_breakpoint_list[i.active_index]
+@@ -563,2 +572,3 @@ class JerryDebugger(object):
+     def _send_string(self, args, message_type, index=0):
++        args = args.encode("utf8")
+ 
+@@ -686,3 +696,3 @@ class JerryDebugger(object):
+ 
+-            buffer_type = ord(data[0])
++            buffer_type = safe_ord(data[0])
+             buffer_size = len(data) -1
+@@ -740,6 +750,6 @@ class JerryDebugger(object):
+             elif buffer_type == JERRY_DEBUGGER_EXCEPTION_STR:
+-                self.exception_string += data[1:]
++                self.exception_string += data[1:].decode("utf8")
+ 
+             elif buffer_type == JERRY_DEBUGGER_EXCEPTION_STR_END:
+-                self.exception_string += data[1:]
++                self.exception_string += data[1:].decode("utf8")
+ 
+@@ -810,3 +820,3 @@ class JerryDebugger(object):
+             elif buffer_type in [JERRY_DEBUGGER_SCOPE_VARIABLES, JERRY_DEBUGGER_SCOPE_VARIABLES_END]:
+-                self.scope_vars += "".join(data[1:])
++                self.scope_vars += "".join(data[1:].decode("utf8"))
+ 
+@@ -866,5 +876,5 @@ class JerryDebugger(object):
+     def _parse_source(self, data):
+-        source_code = ""
+-        source_code_name = ""
+-        function_name = ""
++        source_code = b""
++        source_code_name = b""
++        function_name = b""
+         stack = [{"line": 1,
+@@ -881,3 +891,3 @@ class JerryDebugger(object):
+ 
+-            buffer_type = ord(data[0])
++            buffer_type = safe_ord(data[0])
+             buffer_size = len(data) - 1
+@@ -905,10 +915,10 @@ class JerryDebugger(object):
+ 
+-                stack.append({"source": source_code,
+-                              "source_name": source_code_name,
++                stack.append({"source": source_code.decode("utf8"),
++                              "source_name": source_code_name.decode("utf8"),
+                               "line": position[0],
+                               "column": position[1],
+-                              "name": function_name,
++                              "name": function_name.decode("utf8"),
+                               "lines": [],
+                               "offsets": []})
+-                function_name = ""
++                function_name = b""
+ 
+@@ -939,4 +949,4 @@ class JerryDebugger(object):
+                 if not stack:
+-                    func_desc["source"] = source_code
+-                    func_desc["source_name"] = source_code_name
++                    func_desc["source"] = source_code.decode("utf8")
++                    func_desc["source_name"] = source_code_name.decode("utf8")
+ 
+@@ -991,3 +1001,3 @@ class JerryDebugger(object):
+ 
+-            for breakpoint_index, breakpoint in bp_list.items():
++            for breakpoint_index, breakpoint in list(bp_list.items()):
+                 source_lines = 0
+@@ -1134,3 +1144,3 @@ class JerryDebugger(object):
+                                JERRY_DEBUGGER_OUTPUT_RESULT_END]:
+-                subtype = ord(data[-1])
++                subtype = safe_ord(data[-1])
+                 message += data[1:-1]
+@@ -1141,3 +1151,3 @@ class JerryDebugger(object):
+             data = self.channel.get_message(True)
+-            buffer_type = ord(data[0])
++            buffer_type = safe_ord(data[0])
+             # Checks if the next frame would be an invalid data frame.
+@@ -1153,4 +1163,4 @@ class JerryDebugger(object):
+                 message = self.current_out + message
+-                lines = message.split("\n")
+-                self.current_out = lines.pop()
++                lines = message.decode("utf8").split("\n")
++                self.current_out = lines.pop().encode("utf8")
+ 
+@@ -1162,4 +1172,4 @@ class JerryDebugger(object):
+                 message = self.current_log + message
+-                lines = message.split("\n")
+-                self.current_log = lines.pop()
++                lines = message.decode("utf8").split("\n")
++                self.current_log = lines.pop().encode("utf8")
+ 
+@@ -1167,2 +1177,3 @@ class JerryDebugger(object):
+ 
++            message = message.decode("utf8")
+             if not message.endswith("\n"):
+@@ -1176,2 +1187,5 @@ class JerryDebugger(object):
+                 return "%strace: %s%s" % (self.blue, self.nocolor, message)
++        else:
++            message = message.decode("utf8")
++
+ 
+@@ -1195,3 +1209,3 @@ class JerryDebugger(object):
+             # Process name
+-            name_length = ord(self.scope_vars[buff_pos:buff_pos + 1])
++            name_length = safe_ord(self.scope_vars[buff_pos:buff_pos + 1])
+             buff_pos += 1
+@@ -1201,3 +1215,3 @@ class JerryDebugger(object):
+             # Process type
+-            value_type = ord(self.scope_vars[buff_pos:buff_pos + 1])
++            value_type = safe_ord(self.scope_vars[buff_pos:buff_pos + 1])
+ 
+@@ -1205,3 +1219,3 @@ class JerryDebugger(object):
+ 
+-            value_length = ord(self.scope_vars[buff_pos:buff_pos + 1])
++            value_length = safe_ord(self.scope_vars[buff_pos:buff_pos + 1])
+             buff_pos += 1
+@@ -1236,12 +1250,12 @@ class JerryDebugger(object):
+         for i, level in enumerate(self.scope_data):
+-            if ord(level) == JERRY_DEBUGGER_SCOPE_WITH:
++            if safe_ord(level) == JERRY_DEBUGGER_SCOPE_WITH:
+                 table.append([str(i), 'with'])
+-            elif ord(level) == JERRY_DEBUGGER_SCOPE_GLOBAL:
++            elif safe_ord(level) == JERRY_DEBUGGER_SCOPE_GLOBAL:
+                 table.append([str(i), 'global'])
+-            elif ord(level) == JERRY_DEBUGGER_SCOPE_NON_CLOSURE:
++            elif safe_ord(level) == JERRY_DEBUGGER_SCOPE_NON_CLOSURE:
+                 # Currently it is only marks the catch closure.
+                 table.append([str(i), 'catch'])
+-            elif ord(level) == JERRY_DEBUGGER_SCOPE_LOCAL:
++            elif safe_ord(level) == JERRY_DEBUGGER_SCOPE_LOCAL:
+                 table.append([str(i), 'local'])
+-            elif ord(level) == JERRY_DEBUGGER_SCOPE_CLOSURE:
++            elif safe_ord(level) == JERRY_DEBUGGER_SCOPE_CLOSURE:
+                 table.append([str(i), 'closure'])
+diff --git a/jerry-debugger/jerry_client_rawpacket.py b/jerry-debugger/jerry_client_rawpacket.py
+index 5c3304ed..275be83c 100644
+--- a/jerry-debugger/jerry_client_rawpacket.py
++++ b/jerry-debugger/jerry_client_rawpacket.py
+@@ -17,2 +17,3 @@
+ import struct
++import sys
+ 
+@@ -20,2 +21,12 @@ MAX_BUFFER_SIZE = 256
+ 
++
++if sys.version_info.major >= 3:
++    def safe_ord(c):
++        if isinstance(c, int):
++            return c
++        return ord(c)
++else:
++	safe_ord = ord
++
++
+ class RawPacket(object):
+@@ -72,3 +83,3 @@ class RawPacket(object):
+             if len(self.data_buffer) >= 1:
+-                size = ord(self.data_buffer[0])
++                size = safe_ord(self.data_buffer[0])
+                 if size == 0:
+diff --git a/jerry-debugger/jerry_client_websocket.py b/jerry-debugger/jerry_client_websocket.py
+index fe2c761a..9c755966 100644
+--- a/jerry-debugger/jerry_client_websocket.py
++++ b/jerry-debugger/jerry_client_websocket.py
+@@ -17,2 +17,3 @@
+ import struct
++import sys
+ 
+@@ -22,2 +23,14 @@ WEBSOCKET_FIN_BIT = 0x80
+ 
++
++if sys.version_info.major >= 3:
++    # pylint: disable=invalid-name
++    _ord_orig = ord
++    def _ord_compat(c):
++        if isinstance(c, int):
++            return c
++        return _ord_orig(c)
++    # pylint: disable=redefined-builtin
++    ord = _ord_compat
++
++
+ class WebSocket(object):
+@@ -94,3 +107,3 @@ class WebSocket(object):
+                               WEBSOCKET_BINARY_FRAME | WEBSOCKET_FIN_BIT,
+-                              WEBSOCKET_FIN_BIT + struct.unpack(byte_order + "B", packed_data[0])[0],
++                              WEBSOCKET_FIN_BIT + struct.unpack(byte_order + "B", packed_data[0:1])[0],
+                               0) + packed_data[1:]

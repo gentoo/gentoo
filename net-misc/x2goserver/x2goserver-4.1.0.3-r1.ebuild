@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib systemd toolchain-funcs xdg
+
+inherit systemd tmpfiles toolchain-funcs xdg
 
 DESCRIPTION="The X2Go server"
 HOMEPAGE="http://www.x2go.org"
@@ -10,7 +11,7 @@ SRC_URI="http://code.x2go.org/releases/source/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+fuse postgres +sqlite"
 
 REQUIRED_USE="|| ( postgres sqlite )"
@@ -41,7 +42,7 @@ RDEPEND="acct-user/x2gouser
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.1.0.0-Xresources.patch
 	"${FILESDIR}"/${PN}-4.1.0.0-skip_man2html.patch
-	)
+)
 
 src_prepare() {
 	default
@@ -78,7 +79,9 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process x2goserver.conf
 	xdg_pkg_postinst
+
 	if use sqlite ; then
 		if [[ -f "${EROOT}"/var/lib/x2go/x2go_sessions ]] ; then
 			elog "To use sqlite and update your existing database, run:"
@@ -89,6 +92,7 @@ pkg_postinst() {
 		fi
 
 	fi
+
 	if use postgres ; then
 		elog "To use a PostgreSQL database, more information is availabe here:"
 		elog "http://www.x2go.org/doku.php/wiki:advanced:multi-node:x2goserver-pgsql"

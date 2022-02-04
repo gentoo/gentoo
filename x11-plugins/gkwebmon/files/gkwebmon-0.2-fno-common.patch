@@ -1,0 +1,38 @@
+--- a/webmon.c
++++ b/webmon.c
+@@ -7,6 +7,8 @@
+ #include <openssl/md5.h>
+ #include <pthread.h>
+ 
++int updatetime;
++
+ 
+ void clear_entry(int i)
+ {
+--- a/webmon.h
++++ b/webmon.h
+@@ -6,7 +6,7 @@
+ 
+ /* this is included in the saved config file */
+ 
+-int	updatetime;   /* how often to check webpages (in hours) */
++extern int	updatetime;   /* how often to check webpages (in hours) */
+ 
+ struct webinfo {
+   char          *urlData;       /* full url, pointed into by pointers below, internal '\0' */
+@@ -21,11 +21,13 @@ struct webinfo {
+   char		use;
+   char		updated; /* new md5 checksum in place */
+   char		flagged; /* a changed has been posted to tooltips for this entry */
+-} wi[20];
++};
++
++extern struct webinfo wi[20];
+ 
+ /* end of data for config file */
+ 
+-char wheretostore;  /* 0 == webinfo.init_md5, 1 == webinfo.new_md5 */
++extern char wheretostore;  /* 0 == webinfo.init_md5, 1 == webinfo.new_md5 */
+ 
+ void parse_url_to_config_struct(int i, gchar *instr);  /* parse URL and store data in webinfo struct */
+ char *make_url_from_config_struct(int i);

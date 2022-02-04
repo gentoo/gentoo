@@ -1,13 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR plugin: VDR OSD access for ext. programs through a TCP/IP socket connection"
-HOMEPAGE="http://www.udo-richter.de/vdr/osdserver.en.html"
-SRC_URI=" http://www.udo-richter.de/vdr/files/${P}.tgz"
+HOMEPAGE="https://www.udo-richter.de/vdr/osdserver.en.html"
+SRC_URI=" https://www.udo-richter.de/vdr/files/${P}.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"

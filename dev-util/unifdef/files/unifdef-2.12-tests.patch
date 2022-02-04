@@ -1,0 +1,24 @@
+https://github.com/fanf2/unifdef/pull/13
+
+--- a/tests/multi-generic-sh
++++ b/tests/multi-generic-sh
+@@ -9,7 +9,7 @@ unifdef -M~ $opts $mfiles
+ e=$?
+ for f in $mfiles
+ do
+-	diff -u $f~ $f | sed '/^[+-]\{3\} /s/	.*//'
++	LANG=C diff -u $f~ $f | sed '/^[+-]\{3\} /s/	.*//'
+ 	rm -f $f~ $f
+ done
+ exit $e
+--- a/unifdefall.sh
++++ b/unifdefall.sh
+@@ -48,7 +48,7 @@ export LC_ALL=C
+ # list of all controlling macros; assume these are undefined
+ "$unifdef" $debug -s "$@" | sort -u | sed 's/^/#undef /' >"$tmp/undefs"
+ # list of all macro definitions
+-cc -E -dM "$@" | sort >"$tmp/defs"
++${CC-cc} -E -dM "$@" | sort >"$tmp/defs"
+ 
+ case $debug in
+ -d)	cat "$tmp/undefs" "$tmp/defs" 1>&2

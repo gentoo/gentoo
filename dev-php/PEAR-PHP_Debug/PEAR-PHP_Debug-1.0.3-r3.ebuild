@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 inherit php-pear-r2
 
-DESCRIPTION="Provides traces, timings, executed queries, watched variables etc. "
+DESCRIPTION="Provides traces, timings, executed queries, watched variables etc."
 
 LICENSE="MIT"
 SLOT="0"

@@ -1,9 +1,9 @@
-# Copyright 2006-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-
+EAPI="7"
 USE_RUBY="ruby25 ruby26 ruby27"
+
 inherit autotools ruby-utils
 
 DESCRIPTION="Japanese handwriting recognition engine"
@@ -14,9 +14,8 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="hyperestraier mysql ruby ${USE_RUBY//ruby/ruby_targets_ruby} subversion"
-REQUIRED_USE="ruby? ( ^^ ( ${USE_RUBY//ruby/ruby_targets_ruby} ) )"
-
 RESTRICT="test"
+REQUIRED_USE="ruby? ( ^^ ( ${USE_RUBY//ruby/ruby_targets_ruby} ) )"
 
 RDEPEND="dev-libs/glib:2
 	hyperestraier? ( app-text/hyperestraier )
@@ -30,8 +29,8 @@ RDEPEND="dev-libs/glib:2
 		done)
 	)
 	subversion? ( dev-vcs/subversion )"
-DEPEND="${RDEPEND}
-	dev-util/glib-utils
+DEPEND="${RDEPEND}"
+BDEPEND="dev-util/glib-utils
 	dev-util/gtk-doc-am
 	dev-util/intltool
 	virtual/pkgconfig"
@@ -66,9 +65,9 @@ src_configure() {
 
 	econf \
 		$(use_enable ruby dict-ruby) \
+		$(use_with ruby ruby "$(type -P ${ruby})") \
 		--disable-static \
 		--without-python \
-		$(use_with ruby ruby "$(type -P ${ruby})") \
 		--with-svn-include="${EPREFIX}"/usr/include \
 		--with-svn-lib="${EPREFIX}"/usr/$(get_libdir)
 }

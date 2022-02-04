@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit cmake kde.org xdg-utils
+inherit cmake desktop kde.org xdg-utils
 
 DESCRIPTION="Fast heap memory profiler"
-HOMEPAGE="https://apps.kde.org/en/heaptrack
+HOMEPAGE="https://apps.kde.org/heaptrack/
 https://milianw.de/blog/heaptrack-a-heap-memory-profiler-for-linux"
 
 LICENSE="LGPL-2.1+"
@@ -14,12 +14,11 @@ SLOT="0"
 KEYWORDS=""
 IUSE="+gui test zstd"
 
-BDEPEND="
-	gui? ( kde-frameworks/extra-cmake-modules:5 )
-"
+RESTRICT="!test? ( test )"
+
 DEPEND="
-	dev-libs/boost:=
-	sys-libs/libunwind
+	dev-libs/boost:=[zstd?]
+	sys-libs/libunwind:=
 	sys-libs/zlib
 	gui? (
 		dev-libs/kdiagram:5
@@ -40,26 +39,32 @@ DEPEND="
 RDEPEND="${DEPEND}
 	gui? ( >=kde-frameworks/kf-env-4 )
 "
+BDEPEND="
+	gui? ( kde-frameworks/extra-cmake-modules:5 )
+"
 
-RESTRICT+=" !test? ( test )"
+src_prepare() {
+	cmake_src_prepare
+	rm -rf 3rdparty/boost-zstd || die # ensure no bundling
+}
 
 src_configure() {
 	local mycmakeargs=(
 		-DHEAPTRACK_BUILD_GUI=$(usex gui)
 		-DBUILD_TESTING=$(usex test)
-		$(cmake_use_find_package zstd Zstd)
+		$(cmake_use_find_package zstd ZSTD)
 	)
 	cmake_src_configure
 }
 
-xdg_pkg_postinst() {
+pkg_postinst() {
 	if use gui; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
 	fi
 }
 
-xdg_pkg_postrm() {
+pkg_postrm() {
 	if use gui; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update

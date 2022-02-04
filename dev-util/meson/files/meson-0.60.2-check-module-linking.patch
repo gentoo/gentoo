@@ -1,0 +1,28 @@
+From df7ddc7ec19886ccdc433f42379c04c1df793565 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Thu, 25 Nov 2021 21:19:32 -0500
+Subject: [PATCH] Remove premature return in build.check_module_linking()
+
+We want to loop over all link_targets to update
+backwards_compat_want_soname if necessary.
+
+Fixes: ec9bdc6edb17d1d9da5df2d6525025242c119f3a
+---
+ mesonbuild/build.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/mesonbuild/build.py b/mesonbuild/build.py
+index ad18a7f6a..263942556 100644
+--- a/mesonbuild/build.py
++++ b/mesonbuild/build.py
+@@ -1601,7 +1601,6 @@ You probably should put it in link_with instead.''')
+                             '\n             '
+                             'use shared_libary() with `override_options: [\'b_lundef=false\']` instead.')
+                     link_target.backwards_compat_want_soname = True
+-                return
+ 
+ class Generator(HoldableObject):
+     def __init__(self, exe: T.Union['Executable', programs.ExternalProgram],
+-- 
+2.34.0
+

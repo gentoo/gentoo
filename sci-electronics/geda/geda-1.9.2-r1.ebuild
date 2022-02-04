@@ -1,46 +1,47 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils xdg-utils gnome2-utils versionator
+EAPI=7
+
+inherit autotools xdg
 
 MY_PN=${PN}-gaf
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="GPL Electronic Design Automation (gEDA):gaf core package"
 HOMEPAGE="http://wiki.geda-project.org/geda:gaf"
-SRC_URI="http://ftp.geda-project.org/${MY_PN}/unstable/v$(get_version_component_range 1-2)/${PV}/${MY_P}.tar.gz"
+SRC_URI="http://ftp.geda-project.org/${MY_PN}/unstable/v$(ver_cut 1-2)/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="debug doc examples nls stroke threads"
 
-CDEPEND="
+RDEPEND="
 	dev-libs/glib:2
+	dev-scheme/guile
+	sci-electronics/electronics-menu
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:2
 	x11-libs/pango
-	>=x11-libs/cairo-1.2.0
-	x11-libs/gdk-pixbuf
-	>=dev-scheme/guile-2.0.0
 	nls? ( virtual/libintl )
-	stroke? ( >=dev-libs/libstroke-0.5.1 )"
+	stroke? ( dev-libs/libstroke )"
 
-DEPEND="${CDEPEND}
-	sys-apps/groff
+DEPEND="${RDEPEND}
 	dev-util/desktop-file-utils
-	x11-misc/shared-mime-info
+	x11-misc/shared-mime-info"
+BDEPEND="
+	sys-apps/groff
 	virtual/pkgconfig
-	nls? ( >=sys-devel/gettext-0.16 )"
+	nls? ( sys-devel/gettext )"
 
-RDEPEND="${CDEPEND}
-	sci-electronics/electronics-menu"
+S="${WORKDIR}/${MY_P}"
 
-S=${WORKDIR}/${MY_P}
-
-DOCS="AUTHORS NEWS README"
-
-PATCHES=( "${FILESDIR}"/${P}-guile-2.2.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-guile-2.2.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_prepare() {
 	default
@@ -65,36 +66,30 @@ src_prepare() {
 	sed -i -e 's/sarlacc_schem_LDFLAGS =/sarlacc_schem_LDFLAGS = $(GIO_LIBS)/' \
 		contrib/sarlacc_schem/Makefile.am || die
 
+	rm docs/wiki/media/geda/gsch2pcb-libs.tar.gz || die
+
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		$(use_enable threads threads posix) \
-		$(use_with stroke libstroke) \
-		$(use_enable nls) \
-		$(use_enable debug assert) \
-		--disable-doxygen \
-		--disable-rpath \
+	local myconf=(
+		--disable-doxygen
+		--disable-rpath
 		--disable-update-xdg-database
+		$(use_enable debug assert)
+		$(use_enable nls)
+		$(use_enable threads threads posix)
+		$(use_with stroke libstroke)
+	)
+
+	econf "${myconf[@]}"
 }
 
 src_test() {
 	emake -j1 check
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 }

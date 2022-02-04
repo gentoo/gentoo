@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit toolchain-funcs
 
 DESCRIPTION="A full-screen task-switcher providing Apple Expose-like functionality"
@@ -11,7 +12,6 @@ SRC_URI="http://thegraveyard.org/files/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
 RDEPEND="media-libs/imlib2[X]
 	x11-libs/libXext
@@ -20,8 +20,8 @@ RDEPEND="media-libs/imlib2[X]
 	x11-libs/libXmu
 	x11-libs/libXft"
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto
-	virtual/pkgconfig"
+	x11-base/xorg-proto"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-pointer-size.patch
@@ -32,7 +32,7 @@ PATCHES=(
 DOCS=( CHANGELOG skippyrc-default )
 
 src_compile() {
-	tc-export CC
+	tc-export CC PKG_CONFIG
 	default
 }
 

@@ -8,7 +8,7 @@
 # Seemant Kulleen <seemant@gentoo.org>
 # Andreas K. Huettel <dilfridge@gentoo.org>
 # Kent Fredric <kentnl@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: helper functions eclass for perl modules
 # @DESCRIPTION:
 # The perl-functions eclass is designed to allow easier installation of perl
@@ -19,7 +19,7 @@
 [[ ${CATEGORY} == "perl-core" ]] && inherit alternatives
 
 case "${EAPI:-0}" in
-	5|6|7)
+	5|6|7|8)
 		;;
 	*)
 		die "EAPI=${EAPI} is not supported by perl-functions.eclass"
@@ -125,6 +125,17 @@ perl_delete_emptybsdir() {
 			-a -name '*.bs' -a -empty -delete
 		find "${D}" -depth -mindepth 1 -type d -empty -delete
 	fi
+}
+
+# @FUNCTION: perl_fix_permissions
+# @DESCRIPTION:
+# Make all of ${D} user-writable, since EU::MM does silly things with
+# the w bit. See bug 554346.
+perl_fix_permissions() {
+	debug-print-function $FUNCNAME "$@"
+	perl_set_version
+	einfo Fixing installed file permissions
+	fperms -R u+w /
 }
 
 # @FUNCTION: perl_fix_packlist
@@ -585,4 +596,32 @@ perl_domodule() {
 
 	insinto "/${target#/}"
 	doins "${doins_opts[@]}" "${files[@]}"
+}
+
+# @FUNCTION: perl_get_wikiurl
+# @DESCRIPTION:
+# Convenience helper for returning the Gentoo Wiki maintenance page URL of a
+# package. Optionally a suffix can be passed for an in-page anchor.
+#
+# Example:
+# @CODE
+# my_url="$(perl_get_wikiurl Testing)"
+# @CODE
+
+perl_get_wikiurl() {
+	debug-print-function $FUNCNAME "$@"
+
+	if [[ -z "${1}" ]]; then
+		echo "https://wiki.gentoo.org/wiki/Project:Perl/maint-notes/${CATEGORY}/${PN}"
+	else
+		echo "https://wiki.gentoo.org/wiki/Project:Perl/maint-notes/${CATEGORY}/${PN}#${1}"
+	fi
+}
+
+perl_get_wikiurl_features() {
+	perl_get_wikiurl Optional_Features
+}
+
+perl_get_wikiurl_tests() {
+	perl_get_wikiurl Testing
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
     <maintainer type="project">
         <email>python@gentoo.org</email>
@@ -8,7 +8,7 @@
     <stabilize-allarches/>
     <upstream>
         <remote-id type="pypi">Flask-WTF</remote-id>
-        <remote-id type="github">lepture/flask-wtf</remote-id>
-        <bugs-to>https://github.com/lepture/flask-wtf/issues</bugs-to>
+        <remote-id type="github">wtforms/flask-wtf</remote-id>
+        <bugs-to>https://github.com/wtforms/flask-wtf/issues</bugs-to>
     </upstream>
 </pkgmetadata>

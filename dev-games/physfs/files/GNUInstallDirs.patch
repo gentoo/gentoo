@@ -1,0 +1,74 @@
+From 727d7a5265ad856fd473ad1c621d6c03dd306d6d Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 10 Jul 2021 22:55:53 +0100
+Subject: [PATCH] Use the GNUInstallDirs CMake module to respect installation
+ locations
+
+Apparently use of LIB_SUFFIX is now discouraged. GNUInstallDirs does a
+better job of setting a default.
+
+The libdir of ${prefix}/lib in the pkg-config file caused warnings,
+and possibly even failures, when linking on multilib systems where
+/usr/lib is for 32-bit libraries rather than 64-bit libraries.
+---
+ CMakeLists.txt      | 15 ++++++++-------
+ extras/physfs.pc.in |  6 +++---
+ 2 files changed, 11 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4a67c27..6c26cb1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,6 +14,8 @@ cmake_minimum_required(VERSION 2.8.4)
+ project(PhysicsFS)
+ set(PHYSFS_VERSION 3.0.2)
+ 
++include(GNUInstallDirs)
++
+ # Increment this if/when we break backwards compatibility.
+ set(PHYSFS_SOVERSION 1)
+ 
+@@ -213,11 +215,11 @@ if(PHYSFS_BUILD_TEST)
+     set(PHYSFS_INSTALL_TARGETS ${PHYSFS_INSTALL_TARGETS} ";test_physfs")
+ endif()
+ 
+-install(TARGETS ${PHYSFS_INSTALL_TARGETS}
+-        RUNTIME DESTINATION bin
+-        LIBRARY DESTINATION lib${LIB_SUFFIX}
+-        ARCHIVE DESTINATION lib${LIB_SUFFIX})
+-install(FILES src/physfs.h DESTINATION include)
++install(TARGETS ${PHYSFS_INSTALL_TARGETS} EXPORT PhysFSExport
++        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
++install(FILES src/physfs.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ 
+ find_package(Doxygen)
+ if(DOXYGEN_FOUND)
+@@ -271,7 +273,7 @@ if(NOT MSVC)
+     )
+     install(
+         FILES "${CMAKE_CURRENT_BINARY_DIR}/extras/physfs.pc"
+-        DESTINATION "lib${LIB_SUFFIX}/pkgconfig"
++        DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig"
+     )
+ endif()
+ 
+diff --git a/extras/physfs.pc.in b/extras/physfs.pc.in
+index 6cd0972..f7e0307 100644
+--- a/extras/physfs.pc.in
++++ b/extras/physfs.pc.in
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+-exec_prefix=${prefix}
+-libdir=${exec_prefix}/lib
+-includedir=${prefix}/include
++exec_prefix=@CMAKE_INSTALL_PREFIX@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+ 
+ Name: PhysicsFS
+ Description: PhysicsFS is a library to provide abstract access to various archives.
+-- 
+2.31.1
+

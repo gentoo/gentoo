@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,9 @@ VIM_PLUGIN_HELPFILES="${PN}.txt"
 
 S=${WORKDIR}/${MY_P}
 
+DOCS=( README CHANGES.TXT )
+
 src_prepare() {
 	default
-	rm -r test samples addon-info.json || die
+	rm -r test samples || die
 }

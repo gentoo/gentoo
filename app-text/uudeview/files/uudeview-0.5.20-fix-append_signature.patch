@@ -1,0 +1,36 @@
+From 3bd5dee4226142df3645b8a027ef9142277257cf Mon Sep 17 00:00:00 2001
+From: tastytea <tastytea@tastytea.de>
+Date: Sat, 1 May 2021 17:51:47 +0200
+Subject: [PATCH] Make append_signature() void.
+
+If the type specifier is missing, it defaults to int. From the looks of
+it, the function is meant to be void.
+---
+ inews/inews.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/inews/inews.c b/inews/inews.c
+index 5fa309d..d1c1ee8 100644
+--- a/inews/inews.c
++++ b/inews/inews.c
+@@ -143,7 +143,7 @@ char	*argv[];
+ 		fprintf(ser_wr_fp, "%s\r\n", s);
+ 	}
+ 
+-	append_signature();
++	void append_signature();
+ 
+ 	fprintf(ser_wr_fp, ".\r\n");
+ 	(void) fflush(ser_wr_fp);
+@@ -181,7 +181,7 @@ char	*argv[];
+  * The rn-style DOTDIR environmental variable is used if present.
+  */
+ 
+-append_signature()
++void append_signature()
+ {
+ 	char	line[256], sigfile[256];
+ 	char	*cp;
+-- 
+2.26.3
+

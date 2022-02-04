@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit check-reqs eutils
+inherit check-reqs wrapper
 
 BONUSPACK_P="dedicatedserver3339-bonuspack.zip"
 PATCH_P="ut2004-lnxpatch${PV%.*}-2.tar.bz2"
@@ -14,6 +14,7 @@ SRC_URI="
 	http://ut2004.ut-files.com/Patches/Linux/${PATCH_P}
 	https://dev.gentoo.org/~chewi/distfiles/ut2004-v${PV/./-}-linux-dedicated.7z
 "
+S="${WORKDIR}"
 
 LICENSE="ut2003"
 SLOT="0"
@@ -24,19 +25,18 @@ BDEPEND="
 	app-arch/p7zip
 	app-arch/unzip
 "
-
 RDEPEND="
 	!games-fps/ut2004
 	!games-fps/ut2004-data
 	games-fps/ut2004-bonuspack-ece
 	games-fps/ut2004-bonuspack-mega
 	sys-libs/glibc
+	sys-libs/libstdc++-v3
 "
 
 CHECKREQS_DISK_BUILD="2G"
 QA_PREBUILT="*"
 
-S="${WORKDIR}"
 DIR="/opt/${PN%-ded}"
 
 src_prepare() {

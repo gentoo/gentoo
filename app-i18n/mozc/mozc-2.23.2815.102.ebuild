@@ -1,8 +1,8 @@
-# Copyright 2010-2020 Gentoo Authors
+# Copyright 2010-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-PYTHON_COMPAT=(python{3_7,3_8,3_9})
+EAPI="8"
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit elisp-common multiprocessing python-any-r1 toolchain-funcs
 
@@ -113,6 +113,7 @@ src_prepare() {
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-system_libraries.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-gcc-8.patch"
 	eapply -p2 "${DISTDIR}/${PN}-2.23.2815.102-protobuf_generated_classes_no_inheritance.patch"
+	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-protobuf-3.18.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-environmental_variables.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-reiwa.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-server_path_check.patch"

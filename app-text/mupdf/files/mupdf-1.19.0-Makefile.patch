@@ -1,0 +1,37 @@
+diff --git a/Makefile b/Makefile
+index 7fa74b3..e842374 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,7 +3,7 @@
+ -include user.make
+ 
+ ifndef build
+-  build := release
++  build := debug
+ endif
+ 
+ default: all
+@@ -252,17 +252,19 @@ $(THIRD_GLUT_LIB) : $(THIRD_GLUT_OBJ)
+ $(THREAD_LIB) : $(THREAD_OBJ)
+ $(PKCS7_LIB) : $(PKCS7_OBJ)
+ else
+-MUPDF_LIB = $(OUT)/libmupdf.a
++MUPDF_LIB = libmupdf.so.$(GENTOO_PV) 
+ LIBS_TO_INSTALL_IN_LIB = $(MUPDF_LIB) $(THIRD_LIB)
+-THIRD_LIB = $(OUT)/libmupdf-third.a
++THIRD_LIB = 
++MUPDF_STATIC = $(OUT)/libmupdf.a
+ ifneq ($(USE_SYSTEM_GLUT),yes)
+ THIRD_GLUT_LIB = $(OUT)/libmupdf-glut.a
+ endif
+ THREAD_LIB = $(OUT)/libmupdf-threads.a
+ PKCS7_LIB = $(OUT)/libmupdf-pkcs7.a
+ 
+-$(MUPDF_LIB) : $(MUPDF_OBJ)
+-$(THIRD_LIB) : $(THIRD_OBJ)
++$(MUPDF_LIB) : $(MUPDF_OBJ) $(THIRD_OBJ)
++	$(QUIET_LINK) $(CC) $(LDFLAGS) --shared -Wl,-soname -Wl,$(MUPDF_LIB) -o $@ $^ $(THIRD_LIBS) $(LIBS)
++$(MUPDF_STATIC): $(MUPDF_OBJ) $(THIRD_OBJ)
+ $(THIRD_GLUT_LIB) : $(THIRD_GLUT_OBJ)
+ $(THREAD_LIB) : $(THREAD_OBJ)
+ $(PKCS7_LIB) : $(PKCS7_OBJ)

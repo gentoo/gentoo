@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/787710
+--- a/src/md2.h
++++ b/src/md2.h
+@@ -68,7 +68,7 @@ struct tMaterialInfo
+ {
+   char  strName[255];
+   char  strFile[255];
+-  byte color[3];
++  sdb_byte color[3];
+   int   textureId;
+   float uTile;
+   float vTile;
+@@ -151,8 +151,8 @@ struct tMd2Header
+ 
+ struct tMd2AliasTriangle
+ {
+-  byte vertex[3];
+-  byte lightNormalIndex;
++  sdb_byte vertex[3];
++  sdb_byte lightNormalIndex;
+ };
+ 
+ struct tMd2Triangle
+--- a/src/models.h
++++ b/src/models.h
+@@ -43,7 +43,7 @@ struct tMaterialInfo
+ {
+ 	char  strName[255];			// The texture name
+ 	char  strFile[255];			// The texture file name (If this is set it's a texture map)
+-	byte color[3];				// The color of the object (R, G, B)
++	sdb_byte color[3];				// The color of the object (R, G, B)
+ 	int   texureId;				// the texture ID
+ 	float uTile;				// u tiling of texture  
+ 	float vTile;				// v tiling of texture	
+--- a/src/sdb.h
++++ b/src/sdb.h
+@@ -175,7 +175,7 @@ using namespace std;
+ #define MOUSE_BUTTON_2   -2
+ #define MOUSE_BUTTON_3   -3
+ 
+-typedef unsigned char byte;
++typedef unsigned char sdb_byte;
+ 
+ enum TEXTURE_NAMES {
+ // Fonts

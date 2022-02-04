@@ -1,0 +1,6 @@
+# Copyright 2020 Gentoo Authors.
+# Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-04-27)
+# rust-bin is awailable on arm64 musl
+-dev-lang/rust-bin

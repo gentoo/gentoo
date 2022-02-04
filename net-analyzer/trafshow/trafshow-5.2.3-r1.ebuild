@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.nsk.su/pub/RinetSoftware/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="3"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ppc64 sparc x86"
 IUSE="slang"
 
 DEPEND="

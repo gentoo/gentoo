@@ -1,0 +1,3 @@
+#!/bin/sh
+export QT_API="${QT_API:-pyside2}"
+exec /usr/bin/python -OO /opt/hydrus/client.pyw "$@"

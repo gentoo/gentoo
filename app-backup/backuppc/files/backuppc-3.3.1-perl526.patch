@@ -1,6 +1,6 @@
-diff -ruN BackupPC-3.3.1.orig/lib/BackupPC/Lib.pm BackupPC-3.3.1/lib/BackupPC/Lib.pm
---- BackupPC-3.3.1.orig/lib/BackupPC/Lib.pm	2015-01-12 01:19:53.000000000 +0100
-+++ BackupPC-3.3.1/lib/BackupPC/Lib.pm	2017-07-08 00:31:52.100003197 +0200
+diff -ruN a/lib/BackupPC/Lib.pm a/lib/BackupPC/Lib.pm
+--- a/lib/BackupPC/Lib.pm	2015-01-12 01:19:53.000000000 +0100
++++ b/lib/BackupPC/Lib.pm	2017-07-08 00:31:52.100003197 +0200
 @@ -1261,7 +1261,7 @@
          #
          # Replace scalar variables first

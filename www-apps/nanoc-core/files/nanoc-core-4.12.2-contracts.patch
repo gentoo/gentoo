@@ -1,0 +1,16 @@
+Support for contracts is a development-only mechanism which impacts performance.
+It produces a warning on each run that is not easy to act on for our users,
+so patch this out altogether.
+
+--- a/lib/nanoc/core/contracts_support.rb	2021-07-11 08:54:09.979327770 +0200
++++ b/lib/nanoc/core/contracts_support.rb	2021-05-28 11:33:52.000000000 +0200
+@@ -90,8 +90,7 @@
+ 
+         contracts_loadable =
+           begin
++            false
+-            require 'contracts'
+-            true
+           rescue LoadError
+             false
+           end

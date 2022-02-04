@@ -1,28 +1,29 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders"
 HOMEPAGE="https://www.syslinux.org/"
-# Final releases in 6.xx/$PV.tar.* (literal "xx")
-# Testing releases in Testing/$PV/$PV.tar.*
+# Final releases in 6.xx/${PV}.tar.* (literal "xx")
+# Testing releases in Testing/${PV}/${PV}.tar.*
 SRC_URI_DIR=${PV:0:1}.xx
 SRC_URI_TESTING=Testing/${PV:0:4}
-[[ ${PV/_alpha} != $PV ]] && SRC_URI_DIR=$SRC_URI_TESTING
-[[ ${PV/_beta} != $PV ]] && SRC_URI_DIR=$SRC_URI_TESTING
-[[ ${PV/_pre} != $PV ]] && SRC_URI_DIR=$SRC_URI_TESTING
-[[ ${PV/_rc} != $PV ]] && SRC_URI_DIR=$SRC_URI_TESTING
+[[ ${PV/_alpha} != ${PV} ]] && SRC_URI_DIR=${SRC_URI_TESTING}
+[[ ${PV/_beta} != ${PV} ]] && SRC_URI_DIR=${SRC_URI_TESTING}
+[[ ${PV/_pre} != ${PV} ]] && SRC_URI_DIR=${SRC_URI_TESTING}
+[[ ${PV/_rc} != ${PV} ]] && SRC_URI_DIR=${SRC_URI_TESTING}
 SRC_URI="https://www.kernel.org/pub/linux/utils/boot/syslinux/${SRC_URI_DIR}/${P/_/-}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="custom-cflags"
 
-RDEPEND="sys-fs/mtools
+RDEPEND="sys-apps/util-linux
+	sys-fs/mtools
 	dev-perl/Crypt-PasswdMD5
 	dev-perl/Digest-SHA1"
 DEPEND="${RDEPEND}

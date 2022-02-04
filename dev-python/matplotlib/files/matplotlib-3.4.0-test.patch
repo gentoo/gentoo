@@ -1,0 +1,239 @@
+From d44a24b3744b568fc12209ede6be782babb847b7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 26 Mar 2021 13:42:49 +0100
+Subject: [PATCH] Increase image comparison limits
+
+Most of the tests require exact match which apparently doesn't always
+happen in non-pristine environments.  Some of them have very big
+differences due to texlive font rendering changes.
+---
+ lib/matplotlib/tests/test_arrow_patches.py                | 6 +++---
+ lib/matplotlib/tests/test_axes.py                         | 4 ++--
+ lib/matplotlib/tests/test_backend_pgf.py                  | 8 +++++---
+ lib/matplotlib/tests/test_figure.py                       | 5 +++--
+ lib/matplotlib/tests/test_legend.py                       | 6 +++---
+ lib/matplotlib/tests/test_units.py                        | 4 ++--
+ lib/matplotlib/tests/test_usetex.py                       | 3 ++-
+ lib/mpl_toolkits/tests/test_axes_grid1.py                 | 2 +-
+ .../tests/test_axisartist_grid_helper_curvelinear.py      | 2 +-
+ lib/mpl_toolkits/tests/test_mplot3d.py                    | 2 +-
+ 10 files changed, 23 insertions(+), 19 deletions(-)
+
+diff --git a/lib/matplotlib/tests/test_arrow_patches.py b/lib/matplotlib/tests/test_arrow_patches.py
+index 3c95535e0..c4fad3486 100644
+--- a/lib/matplotlib/tests/test_arrow_patches.py
++++ b/lib/matplotlib/tests/test_arrow_patches.py
+@@ -67,7 +67,7 @@ def __prepare_fancyarrow_dpi_cor_test():
+ 
+ 
+ @image_comparison(['fancyarrow_dpi_cor_100dpi.png'], remove_text=True,
+-                  tol=0 if platform.machine() == 'x86_64' else 0.02,
++                  tol=0.015 if platform.machine() == 'x86_64' else 0.02,
+                   savefig_kwarg=dict(dpi=100))
+ def test_fancyarrow_dpi_cor_100dpi():
+     """
+@@ -82,7 +82,7 @@ def test_fancyarrow_dpi_cor_100dpi():
+ 
+ 
+ @image_comparison(['fancyarrow_dpi_cor_200dpi.png'], remove_text=True,
+-                  tol=0 if platform.machine() == 'x86_64' else 0.02,
++                  tol=0.018 if platform.machine() == 'x86_64' else 0.02,
+                   savefig_kwarg=dict(dpi=200))
+ def test_fancyarrow_dpi_cor_200dpi():
+     """
+@@ -115,7 +115,7 @@ def test_fancyarrow_dash():
+ 
+ 
+ @image_comparison(['arrow_styles.png'], style='mpl20', remove_text=True,
+-                  tol=0 if platform.machine() == 'x86_64' else 0.005)
++                  tol=0.005)
+ def test_arrow_styles():
+     styles = mpatches.ArrowStyle.get_styles()
+ 
+diff --git a/lib/matplotlib/tests/test_axes.py b/lib/matplotlib/tests/test_axes.py
+index ed76af576..772f96177 100644
+--- a/lib/matplotlib/tests/test_axes.py
++++ b/lib/matplotlib/tests/test_axes.py
+@@ -3807,7 +3807,7 @@ def test_hist_labels():
+     assert bars[0].get_label() == '00'
+ 
+ 
+-@image_comparison(['transparent_markers'], remove_text=True)
++@image_comparison(['transparent_markers'], remove_text=True, tol=5)
+ def test_transparent_markers():
+     np.random.seed(0)
+     data = np.random.random(50)
+@@ -4083,7 +4083,7 @@ def test_vertex_markers():
+ 
+ 
+ @image_comparison(['vline_hline_zorder', 'errorbar_zorder'],
+-                  tol=0 if platform.machine() == 'x86_64' else 0.02)
++                  tol=0.015 if platform.machine() == 'x86_64' else 0.02)
+ def test_eb_line_zorder():
+     x = list(range(10))
+ 
+diff --git a/lib/matplotlib/tests/test_backend_pgf.py b/lib/matplotlib/tests/test_backend_pgf.py
+index 75f50ecbf..6973a9681 100644
+--- a/lib/matplotlib/tests/test_backend_pgf.py
++++ b/lib/matplotlib/tests/test_backend_pgf.py
+@@ -91,7 +91,8 @@ def test_xelatex():
+ @needs_pdflatex
+ @pytest.mark.skipif(not _has_tex_package('ucs'), reason='needs ucs.sty')
+ @pytest.mark.backend('pgf')
+-@image_comparison(['pgf_pdflatex.pdf'], style='default')
++@image_comparison(['pgf_pdflatex.pdf'], style='default',
++                  tol=11.669)
+ def test_pdflatex():
+     if os.environ.get('APPVEYOR'):
+         pytest.xfail("pdflatex test does not work on appveyor due to missing "
+@@ -127,7 +128,7 @@ def test_rcupdate():
+                 'pgf.preamble': ('\\usepackage[utf8x]{inputenc}'
+                                  '\\usepackage[T1]{fontenc}'
+                                  '\\usepackage{sfmath}')}]
+-    tol = [6, 0]
++    tol = [6, 14]
+     for i, rc_set in enumerate(rc_sets):
+         with mpl.rc_context(rc_set):
+             for substring, pkg in [('sfmath', 'sfmath'), ('utf8x', 'ucs')]:
+@@ -153,7 +154,8 @@ def test_pathclip():
+ # test mixed mode rendering
+ @needs_xelatex
+ @pytest.mark.backend('pgf')
+-@image_comparison(['pgf_mixedmode.pdf'], style='default')
++@image_comparison(['pgf_mixedmode.pdf'], style='default',
++                  tol=1.086)
+ def test_mixedmode():
+     mpl.rcParams.update({'font.family': 'serif', 'pgf.rcfonts': False})
+     Y, X = np.ogrid[-1:1:40j, -1:1:40j]
+diff --git a/lib/matplotlib/tests/test_figure.py b/lib/matplotlib/tests/test_figure.py
+index 15f084fc1..14fc6b191 100644
+--- a/lib/matplotlib/tests/test_figure.py
++++ b/lib/matplotlib/tests/test_figure.py
+@@ -21,7 +21,7 @@ import pytest
+ 
+ 
+ @image_comparison(['figure_align_labels'], extensions=['png', 'svg'],
+-                  tol=0 if platform.machine() == 'x86_64' else 0.01)
++                  tol=0.02)
+ def test_align_labels():
+     fig = plt.figure(tight_layout=True)
+     gs = gridspec.GridSpec(3, 3)
+@@ -902,7 +902,8 @@ def test_subfigure():
+ 
+ @image_comparison(['test_subfigure_ss.png'], style='mpl20',
+                   savefig_kwarg={'facecolor': 'teal'},
+-                  remove_text=False)
++                  remove_text=False,
++                  tol=0.013)
+ def test_subfigure_ss():
+     # test assigning the subfigure via subplotspec
+     np.random.seed(19680801)
+diff --git a/lib/matplotlib/tests/test_legend.py b/lib/matplotlib/tests/test_legend.py
+index cebf26ea0..d7a5c3a88 100644
+--- a/lib/matplotlib/tests/test_legend.py
++++ b/lib/matplotlib/tests/test_legend.py
+@@ -100,7 +100,7 @@ def test_multiple_keys():
+ 
+ 
+ @image_comparison(['rgba_alpha.png'], remove_text=True,
+-                  tol=0 if platform.machine() == 'x86_64' else 0.01)
++                  tol=0.02)
+ def test_alpha_rgba():
+     fig, ax = plt.subplots()
+     ax.plot(range(10), lw=5)
+@@ -109,7 +109,7 @@ def test_alpha_rgba():
+ 
+ 
+ @image_comparison(['rcparam_alpha.png'], remove_text=True,
+-                  tol=0 if platform.machine() == 'x86_64' else 0.01)
++                  tol=0.02)
+ def test_alpha_rcparam():
+     fig, ax = plt.subplots()
+     ax.plot(range(10), lw=5)
+@@ -135,7 +135,7 @@ def test_fancy():
+ 
+ 
+ @image_comparison(['framealpha'], remove_text=True,
+-                  tol=0 if platform.machine() == 'x86_64' else 0.02)
++                  tol=0.02)
+ def test_framealpha():
+     x = np.linspace(1, 100, 100)
+     y = x
+diff --git a/lib/matplotlib/tests/test_units.py b/lib/matplotlib/tests/test_units.py
+index 3f40a99a2..059a9f9a5 100644
+--- a/lib/matplotlib/tests/test_units.py
++++ b/lib/matplotlib/tests/test_units.py
+@@ -75,7 +75,7 @@ def quantity_converter():
+ # Tests that the conversion machinery works properly for classes that
+ # work as a facade over numpy arrays (like pint)
+ @image_comparison(['plot_pint.png'], remove_text=False, style='mpl20',
+-                  tol=0 if platform.machine() == 'x86_64' else 0.01)
++                  tol=0.002 if platform.machine() == 'x86_64' else 0.01)
+ def test_numpy_facade(quantity_converter):
+     # use former defaults to match existing baseline image
+     plt.rcParams['axes.formatter.limits'] = -7, 7
+@@ -102,7 +102,7 @@ def test_numpy_facade(quantity_converter):
+ 
+ # Tests gh-8908
+ @image_comparison(['plot_masked_units.png'], remove_text=True, style='mpl20',
+-                  tol=0 if platform.machine() == 'x86_64' else 0.01)
++                  tol=0.02)
+ def test_plot_masked_units():
+     data = np.linspace(-5, 5)
+     data_masked = np.ma.array(data, mask=(data > -2) & (data < 2))
+diff --git a/lib/matplotlib/tests/test_usetex.py b/lib/matplotlib/tests/test_usetex.py
+index 2d79e155e..cc46fe00c 100644
+--- a/lib/matplotlib/tests/test_usetex.py
++++ b/lib/matplotlib/tests/test_usetex.py
+@@ -14,7 +14,8 @@ if not mpl.checkdep_usetex(True):
+ @image_comparison(
+     baseline_images=['test_usetex'],
+     extensions=['pdf', 'png'],
+-    style="mpl20")
++    style="mpl20",
++    tol=21)
+ def test_usetex():
+     mpl.rcParams['text.usetex'] = True
+     fig, ax = plt.subplots()
+diff --git a/lib/mpl_toolkits/tests/test_axes_grid1.py b/lib/mpl_toolkits/tests/test_axes_grid1.py
+index 0e1602e81..6a54b0d43 100644
+--- a/lib/mpl_toolkits/tests/test_axes_grid1.py
++++ b/lib/mpl_toolkits/tests/test_axes_grid1.py
+@@ -323,7 +323,7 @@ def test_zooming_with_inverted_axes():
+ 
+ 
+ @image_comparison(['anchored_direction_arrows.png'],
+-                  tol=0 if platform.machine() == 'x86_64' else 0.01)
++                  tol=0.02)
+ def test_anchored_direction_arrows():
+     fig, ax = plt.subplots()
+     ax.imshow(np.zeros((10, 10)), interpolation='nearest')
+diff --git a/lib/mpl_toolkits/tests/test_axisartist_grid_helper_curvelinear.py b/lib/mpl_toolkits/tests/test_axisartist_grid_helper_curvelinear.py
+index 9a78a2676..09300adac 100644
+--- a/lib/mpl_toolkits/tests/test_axisartist_grid_helper_curvelinear.py
++++ b/lib/mpl_toolkits/tests/test_axisartist_grid_helper_curvelinear.py
+@@ -17,7 +17,7 @@ from mpl_toolkits.axisartist.grid_helper_curvelinear import \
+ 
+ 
+ @image_comparison(['custom_transform.png'], style='default',
+-                  tol=0.03 if platform.machine() == 'x86_64' else 0.04)
++                  tol=0.039)
+ def test_custom_transform():
+     class MyTransform(Transform):
+         input_dims = output_dims = 2
+diff --git a/lib/mpl_toolkits/tests/test_mplot3d.py b/lib/mpl_toolkits/tests/test_mplot3d.py
+index f55edaa4a..60687be5b 100644
+--- a/lib/mpl_toolkits/tests/test_mplot3d.py
++++ b/lib/mpl_toolkits/tests/test_mplot3d.py
+@@ -1269,7 +1269,7 @@ def test_errorbar3d():
+ 
+ 
+ @image_comparison(['stem3d.png'], style='mpl20',
+-                  tol=0.0 if platform.machine() == 'x86_64' else 0.003)
++                  tol=0.003)
+ def test_stem3d():
+     fig, axs = plt.subplots(2, 3, figsize=(8, 6),
+                             constrained_layout=True,
+-- 
+2.31.0
+

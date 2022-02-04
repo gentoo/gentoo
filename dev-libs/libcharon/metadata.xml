@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>3dprint@gentoo.org</email>
@@ -9,21 +9,18 @@
 		<email>alexxy@gentoo.org</email>
 		<name>Alexey Shvetsov</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>mathy@vanvoorden.be</email>
 		<name>Mathy Vanvoorden</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>perlovka@gmail.com</email>
 		<name>Michael Perlov</name>
 	</maintainer>
-	<slots>
-		<subslots>soname major version number</subslots>
-	</slots>
 	<longdescription>
 		Library to read and write several 3D-printing related file formats including G-Code and Ultimaker File Package (UFP).
 	</longdescription>
@@ -31,6 +28,7 @@
 		<flag name="client">Install the charon client library</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/Ultimaker/libCharon/issues</bugs-to>
 		<remote-id type="github">Ultimaker/libCharon</remote-id>
 	</upstream>
 </pkgmetadata>

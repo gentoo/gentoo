@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/accounts-sso/${PN}/-/archive/VERSION_${PV}/${PN}-VER
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 IUSE="doc test"
 
 BDEPEND="doc? ( app-doc/doxygen )"
@@ -50,10 +50,6 @@ src_prepare() {
 		-i lib/plugins/doc/doc.pri || die
 	sed -e "/^documentation.path = /c\documentation.path = \$\${INSTALL_PREFIX}/share/doc/${PF}/libsignon-qt/" \
 		-i lib/SignOn/doc/doc.pri || die
-
-	# std flags
-	sed -e "/CONFIG += c++11/d" \
-		-i common-project-config.pri || die "failed fixing CXXFLAGS"
 
 	use doc || sed -e "/include(\s*doc\/doc.pri\s*)/d" \
 		-i signon.pro lib/SignOn/SignOn.pro lib/plugins/plugins.pro || die

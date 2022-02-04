@@ -1,0 +1,30 @@
+From 6f0503b1930a0776ef45fa7bc87a87e9dc69dacf Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sat, 21 Aug 2021 15:09:58 -0400
+Subject: [PATCH] Skip test-double if the fr_FR.UTF-8 locale is not available
+
+Bug: https://bugs.gentoo.org/809359
+---
+ tests/test-double.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test-double.c b/tests/test-double.c
+index 0092d8b..7ba3abe 100644
+--- a/tests/test-double.c
++++ b/tests/test-double.c
+@@ -54,7 +54,11 @@ test_double (void)
+ int main(int argc, char **argv)
+ {
+ 	setlocale (LC_ALL, NULL);
+-	setlocale (LC_NUMERIC, "fr_FR.UTF-8");
++	if (!setlocale (LC_NUMERIC, "fr_FR.UTF-8"))
++		/* Skip the test if fr_FR.UTF-8 is not available */
++		/* https://mesonbuild.com/Unit-tests.html#skipped-tests-and-hard-errors */
++		return 77;
++
+ 	g_test_init (&argc, &argv, NULL);
+ 
+ 	g_test_add_func ("/gudev/double", test_double);
+-- 
+2.33.0
+

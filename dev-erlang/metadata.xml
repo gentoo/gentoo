@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <catmetadata>
 	<longdescription lang="en">
 		The dev-erlang category contains libraries, utilities or
@@ -15,7 +15,7 @@
 	</longdescription>
 	<longdescription lang="ja">
 		dev-erlangカテゴリーにはErlangプログラミング言語で記述された/のために
-		記述されたライブラリーと>ユーティリティとバインディングが含まれます。
+		記述されたライブラリーと&gt;ユーティリティとバインディングが含まれます。
 	</longdescription>
 	<longdescription lang="nl">
 		De dev-erlang categorie bevat bibliotheken en hulpmiddelen voor het
@@ -39,4 +39,3 @@
 		Erlang.
 	</longdescription>
 </catmetadata>
-

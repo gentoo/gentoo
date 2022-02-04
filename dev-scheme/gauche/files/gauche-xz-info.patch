@@ -1,31 +1,31 @@
 --- a/lib/gauche/interactive/info.scm
 +++ b/lib/gauche/interactive/info.scm
-@@ -137,7 +137,8 @@
-                             :paths paths
-                             :pred (^p (or (file-is-readable? p)
-                                           (file-is-readable? #"~|p|.gz")
--                                          (file-is-readable? #"~|p|.bz2"))))
-+                                          (file-is-readable? #"~|p|.bz2")
-+                                          (file-is-readable? #"~|p|.xz"))))
-         (errorf "couldn't find info file ~s in paths: ~s" *info-file* paths))
-     ))
+@@ -113,7 +113,8 @@
+                       :paths (get-info-paths)
+                       :pred (^p (or (file-is-readable? p)
+                                     (file-is-readable? #"~|p|.gz")
+-                                    (file-is-readable? #"~|p|.bz2")))))
++                                    (file-is-readable? #"~|p|.bz2")
++                                    (file-is-readable? #"~|p|.xz")))))
  
+ (define (handle-ambiguous-name entry-name)
+   (let* ([keys (map x->string (hash-table-keys (~ (get-info)'index)))]
 --- a/lib/text/info.scm
 +++ b/lib/text/info.scm
-@@ -64,6 +64,7 @@
+@@ -67,6 +67,7 @@
  
  ;; Find bzip2 location
  (define bzip2  (find-file-in-paths "bzip2"))
 +(define xz     (find-file-in-paths "xz"))
  
- ;; Read an info file FILE, and returns a list of strings splitted by ^_ (#\u001f)
- ;; If FILE is not found, look for compressed one.
-@@ -78,6 +79,8 @@
-                      (close-input-port zp)))))]
+ (cond-expand
+  [gauche.sys.zlib]
+@@ -90,6 +91,8 @@
+              (with-input-from-process #"~gzip -c -d ~|file|.gz" thunk)])]
            [(and bzip2 (file-exists? #"~|file|.bz2"))
             (with-input-from-process #"~bzip2 -c -d ~|file|.bz2" thunk)]
 +          [(and xz (file-exists? #"~|file|.xz"))
 +           (with-input-from-process #"~xz -c -d ~|file|.xz" thunk)]
            [else (error "can't find info file" file)]))
    (with-input-from-info
-    (lambda ()
+    (^[]

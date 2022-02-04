@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_7,3_8} )
+PYTHON_COMPAT=( python{3_7,3_8,3_9} )
 
 inherit python-single-r1 systemd udev multilib-minimal
 
@@ -16,7 +16,7 @@ SRC_URI="https://pcsclite.apdu.fr/files/${P}.tar.bz2"
 # upstream.
 LICENSE="BSD ISC MIT GPL-3+ GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 # This is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
@@ -28,7 +28,7 @@ REQUIRED_USE="^^ ( udev libusb ) ${PYTHON_REQUIRED_USE}"
 # No dependencies need the MULTILIB_DEPS because the libraries are actually
 # standalone, the deps are only needed for the daemon itself.
 DEPEND="libusb? ( virtual/libusb:1 )
-	udev? ( virtual/udev )
+	udev? ( virtual/libudev:= )
 	policykit? ( >=sys-auth/polkit-0.111 )
 	acct-group/openct
 	acct-group/pcscd

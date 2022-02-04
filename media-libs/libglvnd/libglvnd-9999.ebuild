@@ -1,4 +1,4 @@
-# Copyright 2018-2020 Gentoo Authors
+# Copyright 2018-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,10 +9,10 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 VIRTUALX_REQUIRED=manual
 
-inherit ${GIT_ECLASS} meson multilib-minimal python-any-r1 virtualx
+inherit ${GIT_ECLASS} meson-multilib python-any-r1 virtualx
 
 DESCRIPTION="The GL Vendor-Neutral Dispatch library"
 HOMEPAGE="https://gitlab.freedesktop.org/glvnd/libglvnd"
@@ -42,7 +42,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
-	sed -i -e "/^PLATFORM_SYMBOLS/a \    '__gentoo_check_ldflags__'," \
+	sed -i -e "/^PLATFORM_SYMBOLS/a '__gentoo_check_ldflags__'," \
 		bin/symbols-check.py || die
 }
 
@@ -51,13 +51,9 @@ multilib_src_configure() {
 		$(meson_feature X x11)
 		$(meson_feature X glx)
 	)
-	use elibc_musl && emesonargs+=( -Dtls=disabled )
+	use elibc_musl && emesonargs+=( -Dtls=false )
 
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
 }
 
 multilib_src_test() {
@@ -66,8 +62,4 @@ multilib_src_test() {
 	else
 		meson_src_test
 	fi
-}
-
-multilib_src_install() {
-	meson_src_install
 }

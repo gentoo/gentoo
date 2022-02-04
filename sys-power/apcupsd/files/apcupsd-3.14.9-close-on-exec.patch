@@ -1,0 +1,50 @@
+Close the socket on exec - avoid leaked file descriptors, patch from Fedora
+
+--- a/src/apcnis.c
++++ b/src/apcnis.c
+@@ -157,6 +157,9 @@ void do_server(UPSINFO *ups)
+       sleep(5 * 60);
+    }
+ 
++   /* Close the socket on exec - avoid leaked file descriptors */
++   fcntl(sockfd, F_SETFD, FD_CLOEXEC);
++
+    /* Reuse old sockets */
+ #ifndef HAVE_MINGW
+    if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, (void*)&turnon, sizeof(turnon)) < 0) {
+--- a/src/apcupsd.c
++++ b/src/apcupsd.c
+@@ -212,6 +212,9 @@ int main(int argc, char *argv[])
+       if (ups->event_fd < 0) {
+          log_event(ups, LOG_WARNING, "Could not open events file %s: %s\n",
+             ups->eventfile, strerror(errno));
++      } else {
++         /* Close the file on exec - avoid leaked file descriptors */
++         fcntl(ups->event_fd, F_SETFD, FD_CLOEXEC);
+       }
+    }
+ 
+--- a/src/drivers/usb/linux/linux-usb.c
++++ b/src/drivers/usb/linux/linux-usb.c
+@@ -246,8 +246,11 @@ bool LinuxUsbUpsDriver::open_usb_device()
+    /* Retry 10 times */
+    for (i = 0; i < 10; i++) {
+       _fd = open_device(_ups->device);
+-      if (_fd != -1)
++      if (_fd != -1) {
++         /* Close the device on exec - avoid leaked file descriptors */
++         fcntl(_fd, F_SETFD, FD_CLOEXEC);
+          return true;
++      }
+       sleep(1);
+    }
+ 
+@@ -270,6 +273,7 @@ auto_detect:
+             asnprintf(devname, sizeof(devname), "%s%d", hiddev[j], k);
+             _fd = open_device(devname);
+             if (_fd != -1) {
++               fcntl(_fd, F_SETFD, FD_CLOEXEC);
+                /* Successful open, save device name and return */
+                strlcpy(_ups->device, devname, sizeof(_ups->device));
+                return true;
+ 

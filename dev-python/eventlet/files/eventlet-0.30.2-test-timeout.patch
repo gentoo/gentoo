@@ -1,0 +1,39 @@
+From 0b8fd069386354d2d7e5464ce0b0d5b7d1795376 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 11 Apr 2021 12:20:09 +0200
+Subject: [PATCH] Force test timeouts to 60 s
+
+The upstream test timeouts are far too low for a busy system, and there
+is no point in pursuing such low values anyway.  Force 60 s that should
+be reasonably safe for our test runs.
+---
+ tests/__init__.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/__init__.py b/tests/__init__.py
+index 82cd247..3a943c4 100644
+--- a/tests/__init__.py
++++ b/tests/__init__.py
+@@ -170,8 +170,8 @@ class LimitedTestCase(unittest.TestCase):
+ 
+     def setUp(self):
+         self.previous_alarm = None
+-        self.timer = eventlet.Timeout(self.TEST_TIMEOUT,
+-                                      TestIsTakingTooLong(self.TEST_TIMEOUT))
++        self.timer = eventlet.Timeout(60,
++                                      TestIsTakingTooLong(60))
+ 
+     def reset_timeout(self, new_timeout):
+         """Changes the timeout duration; only has effect during one test.
+@@ -350,7 +350,7 @@ def run_python(path, env=None, args=None, timeout=None, pythonpath_extend=None,
+         stdout=subprocess.PIPE,
+     )
+     if timeout is None:
+-        timeout = 10
++        timeout = 60
+     try:
+         output, _ = p.communicate(timeout=timeout)
+     except subprocess.TimeoutExpired:
+-- 
+2.31.1
+

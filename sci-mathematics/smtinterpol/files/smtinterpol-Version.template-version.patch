@@ -1,0 +1,11 @@
+index bf87cd1..6ca4533 100644
+--- a/SMTInterpol/src/de/uni_freiburg/informatik/ultimate/smtinterpol/Version.template
++++ b/SMTInterpol/src/de/uni_freiburg/informatik/ultimate/smtinterpol/Version.template
+@@ -23,5 +23,5 @@ package de.uni_freiburg.informatik.ultimate.smtinterpol;
+  * @author Jochen Hoenicke
+  */
+ public interface Version {
+-	public final static String VERSION = "${version}";
++	public final static String VERSION = "0";
+ }
+\ No newline at end of file

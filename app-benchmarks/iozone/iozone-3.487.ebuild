@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -18,7 +18,7 @@ EAPI="7"
 #        ->   openbsd              (32bit)   <-
 #        ->   openbsd-threads      (32bit)   <-
 #
-# ~ia64 ~s390 alpha(?) x86-fbsd
+# ~ia64 ~s390 alpha(?)
 
 inherit toolchain-funcs
 
@@ -50,7 +50,6 @@ src_configure() {
 		amd64)		PLATFORM="linux-AMD64";;
 		ia64)		PLATFORM="linux-ia64";;
 		s390)		PLATFORM="linux-S390";;
-		x86-fbsd)	PLATFORM="freebsd";;
 		*)		PLATFORM="linux-${ARCH}";;
 	esac
 }

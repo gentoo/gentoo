@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>sound@gentoo.org</email>
@@ -8,6 +8,7 @@
   <use>
     <flag name="amr">Enables Adaptive Multi-Rate Audio support</flag>
     <flag name="id3tag">Enables ID3 tagging with id3tag library</flag>
+    <flag name="sndio">Enable support for sndio</flag>
     <flag name="twolame">Enables twolame support (MPEG Audio Layer 2 encoder)</flag>
   </use>
   <upstream>

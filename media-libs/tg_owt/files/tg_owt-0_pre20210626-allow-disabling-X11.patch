@@ -1,0 +1,108 @@
+Add -DTG_OWT_USE_X11
+
+Allows disabling X11 desktop capturing independently of pipewire support, for
+the few people that run wayland without any X11 support whatsoever.
+
+This setup is untested, but supported by the GNI build system, see:
+* src/modules/desktop_capture/BUILD.gn (option rtc_use_x11_extensions)
+
+Toggling the WEBRTC_USE_X11 define also affects some files under
+src/modules/audio_device, but that falls under "X11 support", regardless...
+
+--- tg_owt-91d836dc84a16584c6ac52b36c04c0de504d9c34.orig/CMakeLists.txt
++++ tg_owt-91d836dc84a16584c6ac52b36c04c0de504d9c34/CMakeLists.txt
+@@ -21,11 +21,13 @@
+ 
+ option(BUILD_SHARED_LIBS "Builds shared libraries instead of static." ${TG_OWT_PACKAGED_BUILD})
+ option(TG_OWT_USE_PROTOBUF "Use protobuf to generate additional headers. Useful for packaged build." ${BUILD_SHARED_LIBS})
++option(TG_OWT_USE_X11 "Use X11 for desktop capture on non-Apple Unix." ON)
+ option(TG_OWT_USE_PIPEWIRE "Use pipewire for desktop capture on non-Apple Unix." ON)
+ option(TG_OWT_DLOPEN_PIPEWIRE "dlopen pipewire 0.3 for desktop capture on non-Apple Unix." ${not_packaged_build})
+ option(TG_OWT_BUILD_AUDIO_BACKENDS "Build webrtc audio backends." ON)
+ 
+ if (NOT UNIX OR APPLE)
++    set(TG_OWT_USE_X11 OFF)
+     set(TG_OWT_USE_PIPEWIRE OFF)
+ endif()
+ 
+@@ -87,6 +89,10 @@
+ add_library(tg_owt)
+ init_target(tg_owt)
+ 
++if (TG_OWT_USE_X11)
++    link_x11(tg_owt)
++endif()
++
+ if (TG_OWT_USE_PIPEWIRE)
+     link_glib(tg_owt)
+     if (TG_OWT_DLOPEN_PIPEWIRE)
+@@ -169,7 +175,6 @@
+ target_link_libraries(tg_owt PUBLIC tg_owt::libwebrtcbuild)
+ 
+ if (UNIX AND NOT APPLE)
+-    link_x11(tg_owt)
+ endif()
+ 
+ function(add_sublibrary postfix)
+@@ -2161,6 +2166,37 @@
+     )
+ endif()
+ 
++if (NOT TG_OWT_USE_X11)
++    remove_target_sources(tg_owt ${webrtc_loc}
++        modules/desktop_capture/linux/mouse_cursor_monitor_x11.cc
++        modules/desktop_capture/linux/mouse_cursor_monitor_x11.h
++        modules/desktop_capture/linux/screen_capturer_x11.cc
++        modules/desktop_capture/linux/screen_capturer_x11.h
++        modules/desktop_capture/linux/shared_x_display.cc
++        modules/desktop_capture/linux/shared_x_display.h
++        modules/desktop_capture/linux/window_capturer_x11.cc
++        modules/desktop_capture/linux/window_capturer_x11.h
++        modules/desktop_capture/linux/window_finder_x11.cc
++        modules/desktop_capture/linux/window_finder_x11.h
++        modules/desktop_capture/linux/window_list_utils.cc
++        modules/desktop_capture/linux/window_list_utils.h
++        modules/desktop_capture/linux/x_atom_cache.cc
++        modules/desktop_capture/linux/x_atom_cache.h
++        modules/desktop_capture/linux/x_error_trap.cc
++        modules/desktop_capture/linux/x_error_trap.h
++        modules/desktop_capture/linux/x_server_pixel_buffer.cc
++        modules/desktop_capture/linux/x_server_pixel_buffer.h
++        modules/desktop_capture/linux/x_window_property.cc
++        modules/desktop_capture/linux/x_window_property.h
++
++        modules/desktop_capture/screen_drawer.cc
++        modules/desktop_capture/screen_drawer.h
++        modules/desktop_capture/screen_drawer_linux.cc
++        modules/desktop_capture/screen_drawer_lock_posix.cc
++        modules/desktop_capture/screen_drawer_lock_posix.h
++    )
++endif()
++
+ if (NOT TG_OWT_USE_PIPEWIRE)
+     remove_target_sources(tg_owt ${webrtc_loc}
+         modules/desktop_capture/linux/base_capturer_pipewire.cc
+--- tg_owt-91d836dc84a16584c6ac52b36c04c0de504d9c34.orig/cmake/libwebrtcbuild.cmake
++++ tg_owt-91d836dc84a16584c6ac52b36c04c0de504d9c34/cmake/libwebrtcbuild.cmake
+@@ -27,6 +27,13 @@
+     BWE_TEST_LOGGING_COMPILE_TIME_ENABLE=0
+ )
+ 
++if (TG_OWT_USE_X11)
++    target_compile_definitions(libwebrtcbuild
++    INTERFACE
++        WEBRTC_USE_X11
++    )
++endif()
++
+ if (TG_OWT_USE_PIPEWIRE)
+     target_compile_definitions(libwebrtcbuild
+     INTERFACE
+@@ -63,7 +70,6 @@
+     INTERFACE
+         WEBRTC_POSIX
+         WEBRTC_LINUX
+-        WEBRTC_USE_X11
+     )
+ endif()
+ 

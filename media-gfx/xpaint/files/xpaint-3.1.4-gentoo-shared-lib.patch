@@ -1,0 +1,15 @@
+xpaint was compiling and installing a shared library but it was not using it, linking with the static one instead
+This patch attempts to link with libxpaintrw.so instead
+So we can pass --disable-static to configure
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -79,7 +79,7 @@
+ 
+ xpaint_SOURCES = $(BASE_HDRS) $(BASE_SRCS)
+ 
+-xpaint_LDADD = xpaintrw/.libs/libxpaintrw.a @X_LIBS@ @X_LIBS_EXTRA@
++xpaint_LDADD = -Lxpaintrw/.libs -lxpaintrw @X_LIBS@ @X_LIBS_EXTRA@
+ 
+ docs: INSTALL README TODO ChangeLog
+ .PHONY:

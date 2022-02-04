@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>python@gentoo.org</email>
@@ -18,10 +18,6 @@
   just-in-time (JIT) compiler, i.e. it does not require a compiler at
   runtime.
 </longdescription>
-  <use>
-    <flag name="mkl">Enable support for Intel Vector Math Library, part of
-  <pkg>sci-libs/mkl</pkg>.</flag>
-  </use>
   <upstream>
     <remote-id type="pypi">numexpr</remote-id>
     <remote-id type="github">pydata/numexpr</remote-id>

@@ -1,0 +1,24 @@
+From 667e38ababb69b68ddcd3c453bd78f022198559a Mon Sep 17 00:00:00 2001
+From: Thomas Klausner <tk@giga.or.at>
+Date: Sun, 21 Jul 2019 21:17:59 +0200
+Subject: [PATCH 6/7] On NetBSD, include sys/socket.h for AF_INET{,6}.
+
+---
+ src/print_wireless_info.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/print_wireless_info.c b/src/print_wireless_info.c
+index 8b2d210..6215704 100644
+--- a/src/print_wireless_info.c
++++ b/src/print_wireless_info.c
+@@ -61,6 +61,7 @@
+ 
+ #ifdef __NetBSD__
+ #include <sys/types.h>
++#include <sys/socket.h>
+ #include <net80211/ieee80211.h>
+ #define IW_ESSID_MAX_SIZE IEEE80211_NWID_LEN
+ #endif
+-- 
+2.26.2
+

@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PLOCALES="de es fr it pl pt_BR ro_RO ru sk zh_CN"
-inherit desktop l10n qmake-utils xdg
+inherit desktop plocale qmake-utils xdg
 
 DESCRIPTION="Powerful cross-platform SQLite database manager"
 HOMEPAGE="https://sqlitestudio.pl"
@@ -39,8 +39,6 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	dev-qt/linguist-tools:5
 "
-
-PATCHES=( "${FILESDIR}"/${P}-libressl.patch )
 
 S="${WORKDIR}"
 core_build_dir="${S}/output/build"
@@ -100,9 +98,9 @@ src_prepare() {
 	}
 
 	local ts_dir_main="SQLiteStudio3/sqlitestudio/translations"
-	l10n_find_plocales_changes ${ts_dir_main} "sqlitestudio_" '.ts'
-	l10n_for_each_locale_do prepare_locale
-	l10n_for_each_disabled_locale_do rm_locale
+	plocale_find_changes ${ts_dir_main} "sqlitestudio_" '.ts'
+	plocale_for_each_locale prepare_locale
+	plocale_for_each_disabled_locale rm_locale
 
 	# prevent "multilib-strict check failed" with USE test
 	sed -i -e 's/\(target.*usr\/\)lib/\1'$(get_libdir)'/' \

@@ -1,0 +1,40 @@
+--- a/chain.c
++++ b/chain.c
+@@ -21,7 +21,7 @@ Author : Peter Turczak <p_turczak@wiwa.de>
+ #include "chain.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+-
++#include <string.h>
+ 
+ struct element* newchain()
+ {
+--- a/filedb.c
++++ b/filedb.c
+@@ -1,5 +1,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <stdlib.h>
++#include <string.h>
+ #include <unistd.h>
+ #include "chain.h"
+ #include "filedb.h"
+--- a/inifile.c
++++ b/inifile.c
+@@ -1,5 +1,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include "inifile.h"
+ 
+ /*
+--- a/watchd.c
++++ b/watchd.c
+@@ -25,6 +25,7 @@ Syntax   : watchd
+ #include <sys/types.h>
+ #include <sys/timeb.h>
+ #include <sys/stat.h>
++#include <sys/time.h>
+ #include <sys/wait.h>
+ #include <stdio.h>
+ #include <stdlib.h>

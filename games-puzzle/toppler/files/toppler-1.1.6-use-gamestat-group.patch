@@ -1,0 +1,16 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -55,11 +55,11 @@ EXTRA_DIST = \
+   toppler.qpg
+ 
+ install-exec-hook:
+-	-chgrp games $(DESTDIR)$(bindir)/toppler
++	-chgrp gamestat $(DESTDIR)$(bindir)/toppler
+ 	-chmod 2755 $(DESTDIR)$(bindir)/toppler
+ 
+ install-data-hook:
+-	-chgrp games $(DESTDIR)$(pkglocalstatedir)/$(PACKAGE).hsc
++	-chgrp gamestat $(DESTDIR)$(pkglocalstatedir)/$(PACKAGE).hsc
+ 	-chmod 0664 $(DESTDIR)$(pkglocalstatedir)/$(PACKAGE).hsc
+ 
+ abs_builddir = @abs_builddir@

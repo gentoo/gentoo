@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,10 +11,12 @@ SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 
 LICENSE="LGPL-2"
 SLOT="0/0.16"
-KEYWORDS="amd64 hppa ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~hppa ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
 
-DEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-doc/doxygen )"
+
+PATCHES=( "${FILESDIR}"/${P}-slibtool.patch )
 
 src_prepare() {
 	default

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-fakegem.eclass
@@ -8,7 +8,8 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 4 5 6 7 8
+# @PROVIDES: ruby-ng
 # @BLURB: An eclass for installing Ruby packages to behave like RubyGems.
 # @DESCRIPTION:
 # This eclass allows to install arbitrary Ruby libraries (including Gems),
@@ -17,12 +18,14 @@
 inherit ruby-ng
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_NAME
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Sets the Gem name for the generated fake gemspec.
 # This variable MUST be set before inheriting the eclass.
 RUBY_FAKEGEM_NAME="${RUBY_FAKEGEM_NAME:-${PN}}"
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_VERSION
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Sets the Gem version for the generated fake gemspec.
 # This variable MUST be set before inheriting the eclass.
@@ -58,7 +61,7 @@ RUBY_FAKEGEM_TASK_TEST="${RUBY_FAKEGEM_TASK_TEST-test}"
 #  - yard (calls `yard`, adds dev-ruby/yard to the dependencies);
 #  - none
 case ${EAPI} in
-	4|5|6)
+	5|6)
 		RUBY_FAKEGEM_RECIPE_DOC="${RUBY_FAKEGEM_RECIPE_DOC-rake}"
 		;;
 	*)
@@ -113,16 +116,31 @@ RUBY_FAKEGEM_BINDIR="${RUBY_FAKEGEM_BINDIR-bin}"
 # get installed. Some gems provide extra files such as version information,
 # Rails generators, or data that needs to be installed as well.
 
-case "${EAPI:-0}" in
-	0|1|2|3)
-		die "Unsupported EAPI=${EAPI} (too old) for ruby-fakegem.eclass" ;;
-	4|5|6|7)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
-esac
+# @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTENSIONS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# List of extensions supported by this gem. Each extension is listed as
+# the configuration script that needs to be run to generate the
+# extension.
 
+# @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTENSION_OPTIONS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Additional options that are passed when configuring the
+# extension. Some extensions use this to locate paths or turn specific
+# parts of the extionsion on or off.
+
+# @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTENSION_LIBDIR
+# @DESCRIPTION:
+# The lib directory where extensions are copied directly after they have
+# been compiled. This is needed to run tests on the code and was the
+# legacy way to install extensions for a long time.
+RUBY_FAKEGEM_EXTENSION_LIBDIR="${RUBY_FAKEGEM_EXTENSION_LIBDIR-lib}"
+
+case ${EAPI} in
+	5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 RUBY_FAKEGEM_SUFFIX="${RUBY_FAKEGEM_SUFFIX:-}"
 
@@ -187,7 +205,7 @@ SRC_URI="https://rubygems.org/gems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}$
 ruby_add_bdepend "virtual/rubygems !!dev-ruby/psych"
 ruby_add_rdepend virtual/rubygems
 case ${EAPI} in
-	4|5|6)
+	5|6)
 		;;
 	*)
 		ruby_add_depend virtual/rubygems
@@ -274,7 +292,7 @@ ruby_fakegem_install_gemspec() {
 # RUBY_FAKEGEM_GEMSPEC. This file is eval'ed to produce a final specification
 # in a way similar to packaging the gemspec file.
 ruby_fakegem_gemspec_gemspec() {
-	${RUBY} -e "puts eval(File::open('$1').read).to_ruby" > $2
+	${RUBY} --disable=did_you_mean -e "puts eval(File::open('$1').read).to_ruby" > $2
 }
 
 # @FUNCTION: ruby_fakegem_metadata_gemspec
@@ -284,7 +302,7 @@ ruby_fakegem_gemspec_gemspec() {
 # the metadata distributed by the gem itself. This is similar to how
 # rubygems creates an installation from a .gem file.
 ruby_fakegem_metadata_gemspec() {
-	${RUBY} -r yaml -e "puts Gem::Specification.from_yaml(File::open('$1', :encoding => 'UTF-8').read).to_ruby" > $2
+	${RUBY} --disable=did_you_mean -r yaml -e "puts Gem::Specification.from_yaml(File::open('$1', :encoding => 'UTF-8').read).to_ruby" > $2
 }
 
 # @FUNCTION: ruby_fakegem_genspec
@@ -302,7 +320,7 @@ ruby_fakegem_metadata_gemspec() {
 # See RUBY_FAKEGEM_REQUIRE_PATHS for setting extra require paths.
 ruby_fakegem_genspec() {
 	case ${EAPI} in
-		4|5|6) ;;
+		5|6) ;;
 		*)
 			eqawarn "Generating generic fallback gemspec *without* dependencies"
 			eqawarn "This will only work when there are no runtime dependencies"
@@ -387,6 +405,23 @@ EOF
 	) || die "Unable to create fakegem wrapper"
 }
 
+# @FUNCTION: each_fakegem_configure
+# @DESCRIPTION:
+# Configure extensions defined in RUBY_FAKEGEM_EXTENSIONS, if any.
+each_fakegem_configure() {
+	tc-export PKG_CONFIG
+	for extension in "${RUBY_FAKEGEM_EXTENSIONS[@]}" ; do
+		CC=$(tc-getCC) ${RUBY} --disable=did_you_mean -C ${extension%/*} ${extension##*/} --with-cflags="${CFLAGS}" --with-ldflags="${LDFLAGS}" ${RUBY_FAKEGM_EXTENSION_OPTIONS} || die
+	done
+}
+
+# @FUNCTION: each_ruby_configure
+# @DESCRIPTION:
+# Run each_fakegem_configure for each ruby target
+each_ruby_configure() {
+	each_fakegem_configure
+}
+
 # @FUNCTION: all_fakegem_compile
 # @DESCRIPTION:
 # Build documentation for the package if indicated by the doc USE flag
@@ -406,6 +441,24 @@ all_fakegem_compile() {
 				;;
 		esac
 	fi
+}
+
+# @FUNCTION: each_fakegem_compile
+# @DESCRIPTION:
+# Compile extensions defined in RUBY_FAKEGEM_EXTENSIONS, if any.
+each_fakegem_compile() {
+	for extension in "${RUBY_FAKEGEM_EXTENSIONS[@]}" ; do
+		emake V=1 -C ${extension%/*}
+		mkdir -p "${RUBY_FAKEGEM_EXTENSION_LIBDIR%/}"
+		cp "${extension%/*}"/*$(get_modname) "${RUBY_FAKEGEM_EXTENSION_LIBDIR%/}/" || die "Copy of extension into ${RUBY_FAKEGEM_EXTENSION_LIBDIR} failed"
+	done
+}
+
+# @FUNCTION: each_ruby_compile
+# @DESCRIPTION:
+# Run each_fakegem_compile for each ruby target
+each_ruby_compile() {
+	each_fakegem_compile
 }
 
 # @FUNCTION: all_ruby_unpack
@@ -467,7 +520,7 @@ all_ruby_compile() {
 each_fakegem_test() {
 	case ${RUBY_FAKEGEM_RECIPE_TEST} in
 		rake)
-			${RUBY} -S rake ${RUBY_FAKEGEM_TASK_TEST} || die "tests failed"
+			${RUBY} --disable=did_you_mean -S rake ${RUBY_FAKEGEM_TASK_TEST} || die "tests failed"
 			;;
 		rspec)
 			RSPEC_VERSION=2 ruby-ng_rspec
@@ -493,6 +546,24 @@ if [[ ${RUBY_FAKEGEM_RECIPE_TEST} != none ]]; then
 		}
 fi
 
+# @FUNCTION: ruby_fakegem_extensions_installed
+# @DESCRIPTION:
+# Install the marker indicating that extensions have been
+# installed. This is normally done as part of the extension
+# installation, but may be useful when we handle extensions manually.
+ruby_fakegem_extensions_installed() {
+	mkdir -p "${ED}$(ruby_fakegem_extensionsdir)" || die
+	touch "${ED}$(ruby_fakegem_extensionsdir)/gem.build_complete" || die
+}
+
+# @FUNCTION: ruby_fakegem_extensionsdir
+# @DESCRIPTION:
+# The directory where rubygems expects extensions for this package
+# version.
+ruby_fakegem_extensionsdir() {
+	echo "$(ruby_fakegem_gemsdir)/extensions/$(ruby_rbconfig_value 'arch')/$(ruby_rbconfig_value 'ruby_version')/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}"
+}
+
 # @FUNCTION: each_fakegem_install
 # @DESCRIPTION:
 # Install the package for each ruby target.
@@ -506,6 +577,16 @@ each_fakegem_install() {
 
 	[[ -n ${_gemlibdirs} ]] && \
 		ruby_fakegem_doins -r ${_gemlibdirs}
+
+	if [[ -n ${RUBY_FAKEGEM_EXTENSIONS} ]] && [ ${#RUBY_FAKEGEM_EXTENSIONS[@]} -ge 0 ]; then
+		einfo "installing extensions"
+
+		for extension in ${RUBY_FAKEGEM_EXTENSIONS[@]} ; do
+			emake V=1 sitearchdir="${ED}$(ruby_fakegem_extensionsdir)" sitelibdir="${ED}$(ruby_rbconfig_value 'sitelibdir')" -C ${extension%/*} install
+		done
+
+		ruby_fakegem_extensions_installed
+	fi
 }
 
 # @FUNCTION: each_ruby_install

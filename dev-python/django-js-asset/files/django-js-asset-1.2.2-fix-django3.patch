@@ -1,0 +1,55 @@
+From 232536ba50a2e1a0cffc6046dbcdfdec22cb0d9e Mon Sep 17 00:00:00 2001
+From: Matthias Kestenholz <mk@feinheit.ch>
+Date: Fri, 15 May 2020 08:51:33 +0200
+Subject: [PATCH] Adapt the test suite to changes in Django
+
+--- a/tests/testapp/test_js_asset.py
++++ b/tests/testapp/test_js_asset.py
+@@ -1,11 +1,15 @@
+ from __future__ import unicode_literals
+ 
++import django
+ from django.forms import Media
+ from django.test import TestCase
+ 
+ from js_asset.js import JS
+ 
+ 
++JS_TYPE = ' type="text/javascript"' if django.VERSION < (3, 1) else ""
++
++
+ class AssetTest(TestCase):
+     def test_asset(self):
+         media = Media(
+@@ -25,15 +29,17 @@ def test_asset(self):
+             html,
+         )
+         self.assertInHTML(
+-            '<script type="text/javascript" src="/static/app/test.js"></script>',  # noqa
++            '<script{} src="/static/app/test.js"></script>'.format(JS_TYPE),  # noqa
+             html,
+         )
+         self.assertInHTML(
+-            '<script type="text/javascript" src="/static/app/asset.js" data-the-answer="42" id="asset-script"></script>',  # noqa
++            '<script{} src="/static/app/asset.js" data-the-answer="42" id="asset-script"></script>'.format(  # noqa
++                JS_TYPE
++            ),
+             html,
+         )
+         self.assertInHTML(
+-            '<script type="text/javascript" src="/static/app/asset-without.js"></script>',  # noqa
++            '<script{} src="/static/app/asset-without.js"></script>'.format(JS_TYPE),
+             html,
+         )
+ 
+@@ -42,7 +48,9 @@ def test_absolute(self):
+         html = "%s" % media
+ 
+         self.assertInHTML(
+-            '<script type="text/javascript" src="https://cdn.example.org/script.js"></script>',  # noqa
++            '<script{} src="https://cdn.example.org/script.js"></script>'.format(
++                JS_TYPE
++            ),
+             html,
+         )
+ 

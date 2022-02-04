@@ -3,7 +3,7 @@
 
 EAPI=7
 
-POSTGRES_COMPAT=( 9.{5..6} 10 11 12 )
+POSTGRES_COMPAT=( 9.6 10 11 12 )
 
 inherit desktop postgres qmake-utils
 

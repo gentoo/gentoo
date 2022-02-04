@@ -1,0 +1,22 @@
+--- a/src/include/unidiags.h
++++ b/src/include/unidiags.h
+@@ -65,7 +65,7 @@ bits    Source bits     Definition
+ 
+ #define BIT(x)                (1<<x)
+ 
+-UINT shit;
++extern UINT shit;
+ 
+ typedef struct _V34INFO {                /* for key 18 */
+        UINT INFOa_bits4049  :10;
+--- a/src/manager/dspsrv.c
++++ b/src/manager/dspsrv.c
+@@ -75,7 +75,7 @@ HANDLE                hMwThread;
+ DWORD                 MwThreadId;
+ /* @TBD CRITICAL_SECTION      MwTerminateSection; */
+ BOOL                  MwTerminate = FALSE;
+-HANDLE                hDrv;
++extern HANDLE                hDrv;
+ HANDLE                hMwProcess;
+ 
+ BOOL AllocateHeaps( void );

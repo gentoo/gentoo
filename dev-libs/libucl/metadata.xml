@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <longdescription>
     UCL is heavily infused by nginx configuration as the example of a
@@ -8,14 +8,7 @@
     UCL objects into different formats such as "nginx like", json,
     yaml and compact json
   </longdescription>
-  <maintainer type="person">
-    <email>gentoo@aisha.cc</email>
-    <name>Aisha Tammy</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <use>
     <flag name="regex">Enable regex support</flag>
     <flag name="sign">Enable signatures check</flag>

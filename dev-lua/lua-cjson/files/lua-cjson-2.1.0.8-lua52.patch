@@ -1,0 +1,143 @@
+From e8dddaf2c9c370f3676441304955d81543c5cceb Mon Sep 17 00:00:00 2001
+From: leaf corcoran <leafot@gmail.com>
+Date: Sat, 21 Sep 2019 17:31:38 -0700
+Subject: [PATCH 1/5] support lua 5.2 with LUA_COMPAT_ALL
+
+---
+ lua_cjson.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/lua_cjson.c b/lua_cjson.c
+index 2a69699..83118b1 100644
+--- a/lua_cjson.c
++++ b/lua_cjson.c
+@@ -36,6 +36,9 @@
+  *       difficult to know object/array sizes ahead of time.
+  */
+ 
++
++#define LUA_COMPAT_ALL 1
++
+ #include <assert.h>
+ #include <stdint.h>
+ #include <string.h>
+
+From 2b3c3c866701a0110a6ac50a9bec9f23adc2956e Mon Sep 17 00:00:00 2001
+From: leaf corcoran <leafot@gmail.com>
+Date: Sat, 21 Sep 2019 18:01:05 -0700
+Subject: [PATCH 2/5] support lua 5.3 with LUA_COMPAT_5_1
+
+---
+ lua_cjson.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lua_cjson.c b/lua_cjson.c
+index 83118b1..9d25f7c 100644
+--- a/lua_cjson.c
++++ b/lua_cjson.c
+@@ -38,6 +38,7 @@
+ 
+ 
+ #define LUA_COMPAT_ALL 1
++#define LUA_COMPAT_5_1 1
+ 
+ #include <assert.h>
+ #include <stdint.h>
+
+From 639c4a38bf0b1bddef4bfdb22bb6a3f8493cc3fe Mon Sep 17 00:00:00 2001
+From: leaf corcoran <leafot@gmail.com>
+Date: Sat, 21 Sep 2019 18:18:27 -0700
+Subject: [PATCH 3/5] Lua 5.2+ unpack support
+
+---
+ lua/cjson/util.lua | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/lua/cjson/util.lua b/lua/cjson/util.lua
+index 5d80106..48fa33c 100644
+--- a/lua/cjson/util.lua
++++ b/lua/cjson/util.lua
+@@ -1,5 +1,7 @@
+ local json = require "cjson"
+ 
++local unpack = unpack or table.unpack
++
+ -- Various common routines used by the Lua CJSON package
+ --
+ -- Mark Pulford <mark@kyne.com.au>
+
+From 9163dd3c431bd7ab45bdb218c32c8c9633ddf2cc Mon Sep 17 00:00:00 2001
+From: leaf corcoran <leafot@gmail.com>
+Date: Sat, 21 Sep 2019 18:43:47 -0700
+Subject: [PATCH 4/5] Lua 5.2+ maxn support
+
+---
+ lua/cjson/util.lua | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/lua/cjson/util.lua b/lua/cjson/util.lua
+index 48fa33c..2405257 100644
+--- a/lua/cjson/util.lua
++++ b/lua/cjson/util.lua
+@@ -2,6 +2,16 @@ local json = require "cjson"
+ 
+ local unpack = unpack or table.unpack
+ 
++local maxn = table.maxn or function(t)
++    local max = 0
++    for k,v in pairs(t) do
++        if type(k) == "number" and k > max then
++            max = k
++        end
++    end
++    return max
++end
++
+ -- Various common routines used by the Lua CJSON package
+ --
+ -- Mark Pulford <mark@kyne.com.au>
+@@ -194,7 +204,7 @@ local function run_test(testname, func, input, should_work, output)
+     local result = {}
+     local tmp = { pcall(func, unpack(input)) }
+     local success = tmp[1]
+-    for i = 2, table.maxn(tmp) do
++    for i = 2, maxn(tmp) do
+         result[i - 1] = tmp[i]
+     end
+ 
+
+From c390998582b959389d0fc039743c96e861902587 Mon Sep 17 00:00:00 2001
+From: leaf corcoran <leafot@gmail.com>
+Date: Sun, 22 Sep 2019 13:43:18 -0700
+Subject: [PATCH 5/5] use macro instead of header defines for Lua 5.2+ support
+
+---
+ lua_cjson.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/lua_cjson.c b/lua_cjson.c
+index 9d25f7c..718a5b9 100644
+--- a/lua_cjson.c
++++ b/lua_cjson.c
+@@ -36,10 +36,6 @@
+  *       difficult to know object/array sizes ahead of time.
+  */
+ 
+-
+-#define LUA_COMPAT_ALL 1
+-#define LUA_COMPAT_5_1 1
+-
+ #include <assert.h>
+ #include <stdint.h>
+ #include <string.h>
+@@ -105,6 +101,10 @@
+ #define json_lightudata_mask(ludata)    (ludata)
+ #endif
+ 
++#if LUA_VERSION_NUM > 501
++#define lua_objlen(L,i)		lua_rawlen(L, (i))
++#endif
++
+ static const char * const *json_empty_array;
+ static const char * const *json_array;
+ 

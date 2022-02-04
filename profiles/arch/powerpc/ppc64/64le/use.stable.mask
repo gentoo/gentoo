@@ -1,11 +1,12 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
-# works, but deps not stable yet
-vaapi
+# Michał Górny <mgorny@gentoo.org> (2021-12-31)
+# PyPy3 target is not ready for stable.
+python_targets_pypy3
+python_single_target_pypy3
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
-# works on ppc64le, but not yet stable
-video_cards_amdgpu
-video_cards_ast
+# Sam James <sam@gentoo.org> (2021-11-14)
+# media-libs/openexr is not marked stable on ppc64
+# (it's broken on BE and it's more convenient to keep it at ~arch here for now)
+openexr

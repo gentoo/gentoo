@@ -1,5 +1,3 @@
-diff --git a/makefile b/makefile
-index 4813b55..f20af02 100644
 --- a/makefile
 +++ b/makefile
 @@ -1,21 +1,23 @@
@@ -33,8 +31,6 @@ index 4813b55..f20af02 100644
  	
  clean :
  	rm -f *.o goos good
-diff --git a/src/makefile b/src/makefile
-index 10cf6c3..1dfd02d 100644
 --- a/src/makefile
 +++ b/src/makefile
 @@ -1,16 +1,17 @@
@@ -60,8 +56,6 @@ index 10cf6c3..1dfd02d 100644
  	
  clean :
  	rm -f *.o $(THISLIB)
-diff --git a/util/makefile b/util/makefile
-index 6dad0d1..5c9d24f 100644
 --- a/util/makefile
 +++ b/util/makefile
 @@ -6,11 +6,12 @@ SOBJLIB = saxpy.o scopy.o sdot.o snrm2.o sscal.o

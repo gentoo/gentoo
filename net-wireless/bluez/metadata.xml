@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
   <email>pacho@gentoo.org</email>
@@ -17,7 +17,6 @@
   <flag name="midi">Enable MIDI support</flag>
   <flag name="obex">Enable OBEX transfer support</flag>
   <flag name="test-programs">Install tools for testing of various Bluetooth functions</flag>
-  <flag name="user-session">Allow compatibility with user-session semantics for session bus under systemd</flag>
 </use>
 <upstream>
   <remote-id type="cpe">cpe:/a:bluez:bluez</remote-id>

@@ -1,4 +1,4 @@
-# Copyright 2006-2020 Gentoo Authors
+# Copyright 2006-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -9,7 +9,7 @@ SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 
 LICENSE="LGPL-2.1+"
 SLOT="0/1"
-KEYWORDS="amd64 ppc ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 ~riscv x86"
 IUSE="nls static-libs test"
 RESTRICT="!test? ( test )"
 

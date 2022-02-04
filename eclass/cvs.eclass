@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cvs.eclass
 # @MAINTAINER:
 # vapier@gentoo.org (and anyone who wants to help)
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: This eclass provides generic cvs fetching functions
 # @DESCRIPTION:
 # This eclass provides the generic cvs fetching functions. To use this from an
@@ -15,6 +15,11 @@
 
 if [[ -z ${_CVS_ECLASS} ]]; then
 _CVS_ECLASS=1
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # TODO:
 
@@ -62,6 +67,7 @@ _CVS_ECLASS=1
 # CVS options given after the cvs checkout command.
 
 # @ECLASS-VARIABLE: ECVS_OFFLINE
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Set this variable to a non-empty value to disable the automatic updating of
 # a CVS source tree. This is intended to be set outside the cvs source
@@ -131,6 +137,7 @@ _CVS_ECLASS=1
 #: ${ECVS_BRANCH:="HEAD"}
 
 # @ECLASS-VARIABLE: ECVS_AUTH
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Authentication method to use
 #
@@ -177,7 +184,7 @@ PROPERTIES+=" live"
 
 # add cvs to deps
 # ssh is used for ext auth
-DEPEND="dev-vcs/cvs"
+BDEPEND="dev-vcs/cvs"
 
 if [[ ${ECVS_AUTH} == "ext" ]] ; then
 	#default to ssh
@@ -185,16 +192,12 @@ if [[ ${ECVS_AUTH} == "ext" ]] ; then
 	if [[ ${CVS_RSH} != "ssh" ]] ; then
 		die "Support for ext auth with clients other than ssh has not been implemented yet"
 	fi
-	DEPEND+=" net-misc/openssh"
+	BDEPEND+=" net-misc/openssh"
 fi
 
-case ${EAPI:-0} in
-	4|5|6) ;;
-	7) BDEPEND="${DEPEND}"; DEPEND="" ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} is not supported" ;;
-esac
-
-# called from cvs_src_unpack
+# @FUNCTION: cvs_fetch
+# @DESCRIPTION:
+# Fetch sources from a CVS repository.  Called from cvs_src_unpack.
 cvs_fetch() {
 	# Make these options local variables so that the global values are
 	# not affected by modifications in this function.
@@ -256,10 +259,10 @@ cvs_fetch() {
 		# just remove the last path element in the string)
 
 		debug-print "${FUNCNAME}: checkout mode. creating cvs directory"
-		addwrite /foobar
-		addwrite /
-		mkdir -p "/${ECVS_TOP_DIR}"
-		export SANDBOX_WRITE="${SANDBOX_WRITE//:\/foobar:\/}"
+		(
+			addwrite /
+			mkdir -p "${ECVS_TOP_DIR}" || die "mkdir ${ECVS_TOP_DIR} failed"
+		)
 	fi
 
 	# In case ECVS_TOP_DIR is a symlink to a dir, get the real path,

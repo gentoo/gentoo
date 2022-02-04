@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/708372
+--- a/auth.c
++++ b/auth.c
+@@ -70,7 +70,7 @@ void gen_chal(char *buf)
+ void encrypt_chal(char *chal, char *pwd)
+ { 
+    register int i;
+-   BF_KEY key;
++   extern BF_KEY key;
+ 
+    BF_set_key(&key, 16, MD5(pwd,strlen(pwd),NULL));
+ 
+--- a/lfd_encrypt.c
++++ b/lfd_encrypt.c
+@@ -64,8 +64,8 @@
+ #define ENC_BUF_SIZE VTUN_FRAME_SIZE + 128 
+ #define ENC_KEY_SIZE 16
+ 
+-BF_KEY key;
+-char * enc_buf;
++extern BF_KEY key;
++extern char * enc_buf;
+ char * dec_buf;
+ 
+ #define CIPHER_INIT		0

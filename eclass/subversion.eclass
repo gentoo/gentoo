@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: subversion.eclass
@@ -14,18 +14,10 @@
 
 ESVN="${ECLASS}"
 
-case ${EAPI:-0} in
-	4|5)
-		inherit eutils
-		EXPORT_FUNCTIONS src_unpack src_prepare pkg_preinst
-		;;
-	6|7)
-		inherit estack
-		EXPORT_FUNCTIONS src_unpack pkg_preinst
-		;;
-	*)
-		die "${ESVN}: EAPI ${EAPI:-0} is not supported"
-		;;
+case ${EAPI} in
+	4|5) inherit eutils ;;
+	6|7) inherit estack ;;
+	*) die "${ESVN}: EAPI ${EAPI:-0} is not supported" ;;
 esac
 
 PROPERTIES+=" live"
@@ -40,6 +32,7 @@ case ${EAPI} in
 esac
 
 # @ECLASS-VARIABLE: ESVN_STORE_DIR
+# @USER_VARIABLE
 # @DESCRIPTION:
 # subversion sources store directory. Users may override this in /etc/portage/make.conf
 [[ -z ${ESVN_STORE_DIR} ]] && ESVN_STORE_DIR="${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}/svn-src"
@@ -151,6 +144,8 @@ ESVN_PATCHES="${ESVN_PATCHES:-}"
 ESVN_RESTRICT="${ESVN_RESTRICT:-}"
 
 # @ECLASS-VARIABLE: ESVN_OFFLINE
+# @USER_VARIABLE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this variable to a non-empty value to disable the automatic updating of
 # an svn source tree. This is intended to be set outside the subversion source
@@ -158,6 +153,7 @@ ESVN_RESTRICT="${ESVN_RESTRICT:-}"
 ESVN_OFFLINE="${ESVN_OFFLINE:-${EVCS_OFFLINE}}"
 
 # @ECLASS-VARIABLE: ESVN_UMASK
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Set this variable to a custom umask. This is intended to be set by users.
 # By setting this to something like 002, it can make life easier for people
@@ -168,6 +164,7 @@ ESVN_OFFLINE="${ESVN_OFFLINE:-${EVCS_OFFLINE}}"
 ESVN_UMASK="${ESVN_UMASK:-${EVCS_UMASK}}"
 
 # @ECLASS-VARIABLE: ESVN_UP_FREQ
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Set the minimum number of hours between svn up'ing in any given svn module. This is particularly
 # useful for split KDE ebuilds where we want to ensure that all submodules are compiled for the same
@@ -175,6 +172,7 @@ ESVN_UMASK="${ESVN_UMASK:-${EVCS_UMASK}}"
 ESVN_UP_FREQ="${ESVN_UP_FREQ:=}"
 
 # @ECLASS-VARIABLE: ESCM_LOGDIR
+# @USER_VARIABLE
 # @DESCRIPTION:
 # User configuration variable. If set to a path such as e.g. /var/log/scm any
 # package inheriting from subversion.eclass will record svn revision to
@@ -537,3 +535,8 @@ subversion__get_peg_revision() {
 
 	echo "${peg_rev}"
 }
+
+EXPORT_FUNCTIONS src_unpack pkg_preinst
+if [[ ${EAPI} == [45] ]]; then
+	EXPORT_FUNCTIONS src_prepare
+fi

@@ -1,0 +1,46 @@
+From 282cfdcde179ec44d053b257e13aa715158596bd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andrius=20=C5=A0tikonas?= <andrius@stikonas.eu>
+Date: Sat, 30 Oct 2021 21:13:07 +0100
+Subject: [PATCH] Do not destroy zfs pool when removing zfs partition.
+
+This can be dangerous, e.g. if partition is part of raid set.
+So better be more cautious and in some cases fail to remove partition
+than lose data.
+---
+ src/fs/zfs.cpp | 7 -------
+ src/fs/zfs.h   | 1 -
+ 2 files changed, 8 deletions(-)
+
+diff --git a/src/fs/zfs.cpp b/src/fs/zfs.cpp
+index 5d12894..5f4c87d 100644
+--- a/src/fs/zfs.cpp
++++ b/src/fs/zfs.cpp
+@@ -77,13 +77,6 @@ qint64 zfs::maxCapacity() const
+     return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
+ }
+ 
+-bool zfs::remove(Report& report, const QString& deviceNode) const
+-{
+-    Q_UNUSED(deviceNode)
+-    ExternalCommand cmd(report, QStringLiteral("zpool"), { QStringLiteral("destroy"), QStringLiteral("-f"), label() });
+-    return cmd.run(-1) && cmd.exitCode() == 0;
+-}
+-
+ bool zfs::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
+ {
+     Q_UNUSED(deviceNode)
+diff --git a/src/fs/zfs.h b/src/fs/zfs.h
+index 6e559de..61026c3 100644
+--- a/src/fs/zfs.h
++++ b/src/fs/zfs.h
+@@ -35,7 +35,6 @@ public:
+ public:
+     void init() override;
+ 
+-    bool remove(Report& report, const QString& deviceNode) const override;
+     bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
+ 
+     CommandSupportType supportGetUsed() const override {
+-- 
+GitLab
+

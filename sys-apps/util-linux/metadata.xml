@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="project">
 	<email>base-system@gentoo.org</email>
@@ -15,10 +15,13 @@
 	<flag name="kill">build the kill program</flag>
 	<flag name="logger">build the logger program</flag>
 	<flag name="pam">build runuser helper</flag>
+	<flag name="rtas">Add support for the Run Time Abstraction Services (RTAS)</flag>
 	<flag name="su">build the su program</flag>
 	<flag name="suid">
-		install mount/umount as setuid so non-root users may mount/umount devices,
-		and wall/write as setgid so non-root users can notify other users
+		Install some programs with suid bit set to provide additional functionality.
+		mount/umount: non-root users may mount/umount devices
+		wall/write: non-root users can notify other users
+		su: non-root users may become root
 	</flag>
 	<flag name="tty-helpers">install the mesg/wall/write tools for talking to local users</flag>
 </use>

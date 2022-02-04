@@ -1,0 +1,10 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -82,6 +82,7 @@
+ fi
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
++AM_PROG_AR
+ 
+ # Checks for libraries.
+ AC_CHECK_LIB(m, sin)

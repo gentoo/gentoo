@@ -1,5 +1,37 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2022-01-16)
+# net-libs/gnome-online-accounts is not marked stable on arm yet
+gnome-base/gvfs google
+
+# Sam James <sam@gentoo.org> (2022-01-15)
+# dev-python/nbconvert not yet marked stable on arm
+dev-python/ipython nbconvert
+
+# Sam James <sam@gentoo.org> (2022-01-15)
+# dev-libs/criterion is not marked stable yet
+app-admin/syslog-ng test
+
+# Sam James <sam@gentoo.org> (2022-01-15)
+# Requires dev-util/pahole which is not yet marked stable on arm.
+sys-kernel/gentoo-kernel debug
+sys-kernel/vanilla-kernel debug
+
+# Sam James <sam@gentoo.org> (2021-10-25)
+# Various dependencies not yet stable on arm
+# bug #816981
+dev-python/ipython notebook smp
+
+# Marek Szuba <marecki@gentoo.org> (2021-09-25)
+# No stable dev-ruby/{thor,tty-editor} on this arch yet
+# and there are many dependencies to go through before there are
+app-text/htmltidy test
+
+# Sam James <sam@gentoo.org> (2021-03-04)
+# Dependencies not yet stable, drags in
+# large amount of fabric. bug #763954
+sys-block/open-iscsi infiniband
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
 # media-libs/libffado is not stable yet, which itself has unstable and
@@ -22,21 +54,10 @@ net-misc/openssh security-key
 dev-util/geany-plugins markdown
 net-misc/unison gtk
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-02)
-# media-video/pipewire is not stable yet
-dev-libs/weston pipewire
-<kde-apps/krfb-20.07.80 wayland
-<sys-apps/xdg-desktop-portal-1.7.2 screencast
-x11-wm/mutter screencast
-
 # Michał Górny <mgorny@gentoo.org> (2019-09-08)
 # virtual/jdk is not stable here.
 sci-mathematics/z3 java
 media-libs/portmidi java
-
-# Mart Raudsepp <leio@gentoo.org> (2019-08-27)
-# Missing stable net-libs/webkit-gtk
-dev-util/glade webkit
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-10)
 # Needs kde-frameworks/{kwallet,ki18n,kconfig} stable
@@ -44,17 +65,13 @@ dev-vcs/subversion kwallet
 net-libs/libproxy kde
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-10)
-# Needs kde-plasma/{polkit-kde-agent,plasma-workspace stable
+# Needs kde-plasma/{polkit-kde-agent,plasma-workspace} stable
 sys-auth/polkit kde
 virtual/notification-daemon kde
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-11-04)
 # media-libs/libmtp stabilisation timeout, bug #661162
 gnome-base/gvfs mtp
-
-# Ulrich Müller <ulm@gentoo.org> (2018-08-09)
-# Needs net-libs/webkit-gtk which is not stable, bug #663248
-app-editors/emacs xwidgets
 
 # Akinori Hattori <hattya@gentoo.org> (2018-06-23)
 # No stable Java
@@ -63,11 +80,6 @@ dev-db/qdbm java
 # Pacho Ramos <pacho@gentoo.org> (2018-05-28)
 # Don't rely on stable inkscape
 app-text/dblatex inkscape
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-07)
-# Requires not stabilised dev-python/restkit
-dev-python/wsgiproxy2 test
-dev-python/pyquery test
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-05-07)
 # Requires not stabilised dev-python/matplotlib
@@ -116,17 +128,13 @@ dev-db/mariadb galera
 # Not going to be stable for now
 dev-util/geany-plugins gtkspell
 
-# Pacho Ramos <pacho@gentoo.org> (2016-12-31)
-# No stable for arm
-sys-fs/dmraid dietlibc klibc
-
-# Christoph Junghans <junghans@gentoo.org> (2016-11-27)
-# no stable mpi on arm yet, but maybe in the future
-<=sci-libs/fftw-3.3.4 mpi
-
 # Markus Meier <maekke@gentoo.org> (2016-09-27)
 # Missing stable
 dev-db/mariadb jdbc
+
+# Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
+# RPI support on arm
+dev-libs/libcec -raspberry-pi
 
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (2016-04-13)
 # Requires special hardware to test and stabilize properly.
@@ -140,11 +148,6 @@ net-misc/networkmanager teamd
 # Missing stable, bug #529462
 media-gfx/graphviz java
 
-# Markus Meier <maekke@gentoo.org> (2015-07-30)
-# Missing stable
-x11-libs/wxGTK webkit
-dev-python/wxpython webkit
-
 # Markus Meier <maekke@gentoo.org> (2015-07-19)
 # Missing stable
 media-libs/gegl umfpack
@@ -154,11 +157,5 @@ media-libs/gegl umfpack
 net-misc/connman l2tp pptp
 
 # Pacho Ramos <pacho@gentoo.org> (2014-07-02)
-# Mask due Gnome3 not going to be stabilized on this arch
-gnome-base/gvfs google
-net-libs/libproxy webkit
+# net-libs/rest is not stable on arm yet
 >=x11-libs/gtk+-3.12.2 cloudprint
-
-# Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
-# RPI support on arm
-dev-libs/libcec -raspberry-pi

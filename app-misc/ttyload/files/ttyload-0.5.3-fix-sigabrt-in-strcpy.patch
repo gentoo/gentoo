@@ -1,0 +1,16 @@
+Subject: Fix SIGABRT in strcpy() call when running
+From: Ricardo Mones <mones@debian.org>
+Forwarded: https://github.com/lindes/ttyload/issues/8
+Last-Update: 2019-01-13
+
+--- a/ttyload.h
++++ b/ttyload.h
+@@ -34,7 +34,7 @@ typedef struct load_list {
+ /* storage for clock display along the bottom */
+ typedef struct clock_info {
+ 	int	pos;
+-	char	clock[6];
++	char	clock[7];
+         time_t  when;
+     } clock_info;
+ 

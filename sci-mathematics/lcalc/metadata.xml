@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+
+  <maintainer type="person" proxied="yes">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+
+  <upstream>
+    <remote-id type="gitlab">sagemath/lcalc</remote-id>
+  </upstream>
+  <use>
+    <flag name="double">Use double precision (the upstream default)</flag>
+    <flag name="double-double">
+      Use <pkg>sci-libs/qd</pkg>for double-double precision
+    </flag>
+    <!-- Broken upstream: https://gitlab.com/sagemath/lcalc/-/issues/7
+    <flag name="multiple-precision">
+      Use <pkg>dev-libs/mpfr</pkg>for multiple precision
+    </flag>
+    -->
+    <flag name="pari">
+      Use <pkg>sci-mathematics/pari</pkg> for elliptic curve L-functions
+    </flag>
+    <flag name="quad-double">
+      Use <pkg>sci-libs/qd</pkg>for quad-double precision
+    </flag>
+  </use>
+</pkgmetadata>

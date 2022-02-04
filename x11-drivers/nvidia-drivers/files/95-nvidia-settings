@@ -1,2 +1,0 @@
-#!/bin/sh
-/opt/bin/nvidia-settings --load-config-only

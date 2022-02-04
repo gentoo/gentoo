@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/543870#c11
+--- a/doc/doxygen.cfg.in	2014-05-16 21:19:51.000000000 +0200
++++ b/doc/doxygen.cfg.in	2016-12-22 13:31:00.181040572 +0100
+@@ -1069,7 +1069,7 @@
+ # obsolete.
+ # This tag requires that the tag GENERATE_HTML is set to YES.
+ 
+-HTML_STYLESHEET        = doxygen.css
++HTML_STYLESHEET        = @srcdir@/doxygen.css
+ 
+ # The HTML_EXTRA_STYLESHEET tag can be used to specify an additional user-
+ # defined cascading style sheet that is included after the standard style sheets

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: fixheadtails.eclass
@@ -8,6 +8,12 @@
 # Original author John Mylchreest <johnm@gentoo.org>
 # @BLURB: functions to replace obsolete head/tail with POSIX compliant ones
 
+# @FUNCTION: _do_sed_fix
+# @INTERNAL
+# @USAGE: <file>
+# @DESCRIPTION:
+# Apply series of regular expressions via sed to file
+# to make head/tail compliant
 _do_sed_fix() {
 	einfo " - fixed $1"
 	sed -i \
@@ -37,5 +43,5 @@ ht_fix_all() {
 	MATCHES=$(grep -l -s -i -R -e "head -[ 0-9]" -e "tail [+-][ 0-9]" * | sort -u)
 	[[ -n ${MATCHES} ]] \
 		&& ht_fix_file ${MATCHES} \
-		|| einfo "No need for ht_fix_all anymore !"
+		|| einfo "No need for ht_fix_all anymore!"
 }

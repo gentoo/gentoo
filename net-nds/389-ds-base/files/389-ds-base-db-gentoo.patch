@@ -1,0 +1,17 @@
+diff --git a/m4/db.m4 b/m4/db.m4
+index c916c2b83..a9dd5ef2b 100644
+--- a/m4/db.m4
++++ b/m4/db.m4
+@@ -96,9 +96,9 @@ if test -z "$db_inc"; then
+ fi
+ 
+ dnl figure out which version of db we're using from the header file
+-db_ver_maj=`grep DB_VERSION_MAJOR $db_incdir/db.h | awk '{print $3}'`
+-db_ver_min=`grep DB_VERSION_MINOR $db_incdir/db.h | awk '{print $3}'`
+-db_ver_pat=`grep DB_VERSION_PATCH $db_incdir/db.h | awk '{print $3}'`
++db_ver_maj=`gcc -E -fdirectives-only $db_incdir/db.h | grep DB_VERSION_MAJOR | awk '{print $3}'`
++db_ver_min=`gcc -E -fdirectives-only $db_incdir/db.h | grep DB_VERSION_MINOR | awk '{print $3}'`
++db_ver_pat=`gcc -E -fdirectives-only $db_incdir/db.h | grep DB_VERSION_PATCH | awk '{print $3}'`
+ 
+ dnl Ensure that we have libdb at least 4.7, older versions aren't supported
+ if test ${db_ver_maj} -lt 4; then

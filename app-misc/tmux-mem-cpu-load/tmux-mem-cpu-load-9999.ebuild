@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit cmake-utils
 IUSE=""
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI=${EGIT_REPO_URI:-"git://github.com/thewtex/tmux-mem-cpu-load.git"}
+	EGIT_REPO_URI=${EGIT_REPO_URI:-"https://github.com/thewtex/tmux-mem-cpu-load.git"}
 	SRC_URI=""
 else
 	KEYWORDS=""

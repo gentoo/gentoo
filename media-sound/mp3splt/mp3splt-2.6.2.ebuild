@@ -1,11 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit multilib
-
-DESCRIPTION="a command line utility to split mp3 and ogg files without decoding"
+DESCRIPTION="A command line utility to split mp3 and ogg files without decoding"
 HOMEPAGE="http://mp3splt.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
@@ -15,9 +13,11 @@ KEYWORDS="~alpha amd64 ~hppa ~ppc ~ppc64 sparc x86"
 IUSE="flac"
 
 RDEPEND=">=media-libs/libmp3splt-0.9.2-r1[flac?]"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
-	sys-devel/gettext"
+	sys-devel/gettext
+"
 
 src_configure() {
 	econf \

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,15 +8,22 @@ OFED_RC="1"
 OFED_RC_VER="1"
 OFED_SUFFIX="1"
 
-inherit openib
+inherit epatch openib
 
 DESCRIPTION="OpenIB - driver for Chelsio T4-based iWARP (RDMA over IP/ethernet)"
-KEYWORDS="amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux"
 IUSE=""
 
-DEPEND="sys-fabric/libibverbs:${SLOT}"
-RDEPEND="${DEPEND}"
+RDEPEND="sys-fabric/libibverbs:${SLOT}"
+DEPEND="${RDEPEND}
+	elibc_musl? ( sys-libs/queue-standalone )"
 block_other_ofed_versions
+
+src_prepare() {
+	# bug #713776
+	epatch "${FILESDIR}"/${PN}-1.3.2-use-system-queue.patch
+	rm src/queue.h || die
+}
 
 src_configure() {
 	econf --disable-static

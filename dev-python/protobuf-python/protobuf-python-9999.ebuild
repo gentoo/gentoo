@@ -1,9 +1,8 @@
-# Copyright 2008-2020 Gentoo Authors
+# Copyright 2008-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=(python{3_6,3_7,3_8,3_9})
-DISTUTILS_USE_SETUPTOOLS="bdepend"
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -23,7 +22,7 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/25"
+SLOT="0/30"
 KEYWORDS=""
 IUSE=""
 
@@ -33,8 +32,7 @@ BDEPEND="${PYTHON_DEPS}
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${PYTHON_DEPS}
 	~dev-libs/protobuf-${PV}"
-RDEPEND="${BDEPEND}
-	!<dev-libs/protobuf-3[python(-)]"
+RDEPEND="${BDEPEND}"
 
 S="${WORKDIR}/protobuf-${PV}/python"
 
@@ -44,7 +42,6 @@ fi
 
 python_prepare_all() {
 	pushd "${WORKDIR}/protobuf-${PV}" > /dev/null || die
-	eapply "${FILESDIR}/${PN}-3.13.0-google.protobuf.pyext._message.PyUnknownFieldRef.patch"
 	eapply_user
 	popd > /dev/null || die
 
@@ -62,5 +59,5 @@ python_test() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	find "${D}" -name "*.pth" -type f -delete || die
+	find "${ED}" -name "*.pth" -type f -delete || die
 }

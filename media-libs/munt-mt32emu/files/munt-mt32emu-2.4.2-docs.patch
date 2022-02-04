@@ -1,0 +1,14 @@
+diff --color -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2021-01-17 13:16:00.000000000 +0000
++++ b/CMakeLists.txt	2021-01-30 22:56:28.027134357 +0000
+@@ -261,8 +261,8 @@
+ 
+ if(libmt32emu_PACKAGE_TYPE STREQUAL "Runtime" OR NOT libmt32emu_PACKAGE_TYPE STREQUAL "Devel")
+   install(FILES
+-    AUTHORS.txt COPYING.txt COPYING.LESSER.txt NEWS.txt README.md TODO.txt
+-    DESTINATION share/doc/munt/libmt32emu
++    AUTHORS.txt NEWS.txt README.md TODO.txt
++    DESTINATION share/doc/$ENV{PF}
+   )
+ endif()
+ 

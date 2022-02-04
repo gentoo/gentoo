@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+
+name="CNI-DHCP"
+description="virtual dhcp server for containers"
+command="/opt/cni/bin/dhcp"
+command_args="daemon"
+command_background=true
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}
+
+stop_post() {
+	if [ -e /run/cni/dhcp.sock ]; then
+		ebegin "Cleaning socket for ${name}"
+		rm -f /run/cni/dhcp.sock
+		eend $? "Failed to cleanup socket"
+	fi
+}

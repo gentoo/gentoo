@@ -1,0 +1,44 @@
+--- a/src/tracebox/PacketModification.h
++++ b/src/tracebox/PacketModification.h
+@@ -8,7 +8,7 @@
+ #ifndef __PACKETMODIFICATION_H__
+ #define __PACKETMODIFICATION_H__
+ 
+-#include "crafter.h"
++#include <crafter.h>
+ #ifdef HAVE_LIBJSON
+ #include <json/json.h>
+ #endif
+--- a/src/tracebox/PartialHeader.h
++++ b/src/tracebox/PartialHeader.h
+@@ -8,7 +8,7 @@
+ #ifndef __PARTIALHEADER_H__
+ #define __PARTIALHEADER_H__
+ 
+-#include "crafter.h"
++#include <crafter.h>
+ 
+ /* ICMP message can contains partial header information */
+ 
+--- a/src/tracebox/script.h
++++ b/src/tracebox/script.h
+@@ -9,7 +9,7 @@
+ #ifndef __TRACEBOX_SCRIPT_H__
+ #define __TRACEBOX_SCRIPT_H__
+ 
+-#include "crafter.h"
++#include <crafter.h>
+ 
+ Crafter::Packet *script_packet(std::string& cmd);
+ int script_exec(const char*, int, char**);
+--- a/src/tracebox/tracebox.h
++++ b/src/tracebox/tracebox.h
+@@ -11,7 +11,7 @@
+ 
+ #include <memory>
+ 
+-#include "crafter.h"
++#include <crafter.h>
+ #include "config.h"
+ #include "PacketModification.h"
+ 

@@ -1,17 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_6,3_7,3_8,3_9} )
+PYTHON_COMPAT=( python{3_8,3_9,3_10} )
 
-inherit autotools fcaps linux-info python-single-r1 systemd
+inherit autotools fcaps flag-o-matic linux-info python-single-r1 systemd toolchain-funcs
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/netdata/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/netdata/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	SRC_URI="https://github.com/netdata/${PN}/releases/download/${PV}/${PN}-${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${PV}"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Linux real time system monitoring, done right!"
@@ -19,7 +20,7 @@ HOMEPAGE="https://github.com/netdata/netdata https://my-netdata.io/"
 
 LICENSE="GPL-3+ MIT BSD"
 SLOT="0"
-IUSE="caps +compression cpu_flags_x86_sse2 cups +dbengine ipmi +jsonc kinesis +lto mongodb mysql nfacct nodejs postgres prometheus +python tor xen"
+IUSE="caps cloud +compression cpu_flags_x86_sse2 cups +dbengine ipmi +jsonc kinesis +lto mongodb mysql nfacct nodejs postgres prometheus +python tor xen"
 REQUIRED_USE="
 	mysql? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -35,6 +36,7 @@ RDEPEND="
 		net-analyzer/openbsd-netcat
 		net-analyzer/netcat
 	)
+	net-libs/libwebsockets
 	net-misc/curl
 	net-misc/wget
 	sys-apps/util-linux
@@ -63,15 +65,10 @@ RDEPEND="
 	)
 	python? (
 		${PYTHON_DEPS}
-		$(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]')
-		mysql? (
-			|| (
-				$(python_gen_cond_dep 'dev-python/mysqlclient[${PYTHON_MULTI_USEDEP}]')
-				$(python_gen_cond_dep 'dev-python/mysql-python[${PYTHON_MULTI_USEDEP}]')
-			)
-		)
-		postgres? ( $(python_gen_cond_dep 'dev-python/psycopg:2[${PYTHON_MULTI_USEDEP}]') )
-		tor? ( $(python_gen_cond_dep 'net-libs/stem[${PYTHON_MULTI_USEDEP}]') )
+		$(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
+		mysql? ( $(python_gen_cond_dep 'dev-python/mysqlclient[${PYTHON_USEDEP}]') )
+		postgres? ( $(python_gen_cond_dep 'dev-python/psycopg:2[${PYTHON_USEDEP}]') )
+		tor? ( $(python_gen_cond_dep 'net-libs/stem[${PYTHON_USEDEP}]') )
 	)
 	xen? (
 		app-emulation/xen-tools
@@ -95,11 +92,16 @@ src_prepare() {
 }
 
 src_configure() {
-	# --disable-cloud: https://github.com/netdata/netdata/issues/8961
+	if use ppc64; then
+		# bundled dlib does not support vsx on big-endian
+		# https://github.com/davisking/dlib/issues/397
+		[[ $(tc-endian) == big ]] && append-flags -mno-vsx
+	fi
+
 	econf \
 		--localstatedir="${EPREFIX}"/var \
 		--with-user=netdata \
-		--disable-cloud \
+		$(use_enable cloud) \
 		$(use_enable jsonc) \
 		$(use_enable cups plugin-cups) \
 		$(use_enable dbengine) \
@@ -112,6 +114,11 @@ src_configure() {
 		$(use_enable xen plugin-xenstat) \
 		$(use_enable cpu_flags_x86_sse2 x86-sse) \
 		$(use_with compression zlib)
+}
+
+src_compile() {
+	emake clean
+	default
 }
 
 src_install() {
@@ -136,7 +143,15 @@ src_install() {
 pkg_postinst() {
 	fcaps_pkg_postinst
 
+	if use nfacct ; then
+		fcaps 'cap_net_admin' 'usr/libexec/netdata/plugins.d/nfacct.plugin'
+	fi
+
 	if use xen ; then
 		fcaps 'cap_dac_override' 'usr/libexec/netdata/plugins.d/xenstat.plugin'
+	fi
+
+	if use ipmi ; then
+	    fcaps 'cap_dac_override' 'usr/libexec/netdata/plugins.d/freeipmi.plugin'
 	fi
 }

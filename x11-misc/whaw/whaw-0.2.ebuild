@@ -1,9 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Window manager independent Window Layout tool"
 HOMEPAGE="http://repetae.net/computer/whaw/"
@@ -20,7 +18,6 @@ RDEPEND="dev-libs/popt
 "
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-fix-implicit-declaration-warning.patch"
-	epatch_user
-}
+PATCHES=(
+	"${FILESDIR}/${P}-fix-implicit-declaration-warning.patch"
+)

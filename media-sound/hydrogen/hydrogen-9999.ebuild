@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,6 @@ HOMEPAGE="http://www.hydrogen-music.org/"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN}-music/${PN}"
-	KEYWORDS=""
 else
 	MY_PV=${PV/_/-}
 	SRC_URI="https://github.com/${PN}-music/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
@@ -41,6 +40,7 @@ CDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	archive? ( app-arch/libarchive )
 	!archive? ( >=dev-libs/libtar-1.2.11-r3 )
+	doc? ( dev-texlive/texlive-fontutils )
 	jack? ( virtual/jack )
 	ladspa? ( media-libs/liblrdf )
 	lash? ( media-sound/lash )
@@ -58,8 +58,7 @@ RDEPEND="${CDEPEND}"
 DOCS=( AUTHORS ChangeLog DEVELOPERS README.txt )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.0.0-gnuinstalldirs.patch"
-	"${FILESDIR}/${P}-i18n-path.patch"
+	"${FILESDIR}/${PN}-1.1.0-gnuinstalldirs.patch"
 )
 
 src_prepare() {
@@ -72,7 +71,6 @@ src_configure() {
 		-DWANT_CPPUNIT=OFF
 		-DWANT_DEBUG=OFF
 		-DWANT_JACK=$(usex jack)
-		-DWANT_JACKSESSION=$(usex jack)
 		-DWANT_LADSPA=$(usex ladspa)
 		-DWANT_LASH=$(usex lash)
 		-DWANT_LIBARCHIVE=$(usex archive)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
     <email>juippis@gentoo.org</email>
@@ -15,11 +15,11 @@
     <flag name="fribidi">Enable bidirectional text support</flag>
     <flag name="glib">Enable <pkg>dev-libs/glib</pkg> support</flag>
     <flag name="harfbuzz">Enable complex text shaping and layout support</flag>
+    <flag name="heif">Enable HEIF image loader</flag>
     <flag name="hyphen">Enable text hyphenation support</flag>
     <flag name="ibus">Enable Intelligent Input Bus</flag>
     <flag name="ico">Enable Ico image loader</flag>
     <flag name="json">Enable lottie animation support</flag>
-    <flag name="luajit">USE <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg></flag>
     <flag name="mono">Enable mono bindings</flag>
     <flag name="physics">Enable Bullet physics effects and support</flag>
     <flag name="pmaps">Enable PMAPS image loader</flag>

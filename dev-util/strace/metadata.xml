@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>base-system@gentoo.org</email>
@@ -17,6 +17,7 @@
     </flag>
   </use>
   <upstream>
+    <remote-id type="github">strace/strace</remote-id>
     <remote-id type="sourceforge">strace</remote-id>
   </upstream>
 </pkgmetadata>

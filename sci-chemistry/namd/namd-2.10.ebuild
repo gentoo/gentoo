@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 MY_PN="NAMD"
 
-inherit eutils multilib toolchain-funcs flag-o-matic
+inherit multilib toolchain-funcs flag-o-matic
 
 DESCRIPTION="A powerful and highly parallelized molecular dynamics code"
 HOMEPAGE="http://www.ks.uiuc.edu/Research/namd/"

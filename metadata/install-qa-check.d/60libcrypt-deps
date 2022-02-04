@@ -1,0 +1,47 @@
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# QA check: ensure that package specifies a dependency on virtual/libcrypt
+# Author: Georgy Yakovlev <gyakovlev@gentoo.org>
+# Maintainer Sam James <sam@gentoo.org>
+
+libcrypt_check() {
+	if ! type -P scanelf >/dev/null || has binchecks ${PORTAGE_RESTRICT}; then
+		return
+	fi
+
+	# skip libcrypt.so providers
+	case "${CATEGORY}/${PN}" in
+		sys-libs/libxcrypt|sys-libs/glibc|sys-libs/musl|sys-libs/uclibc-ng)
+			return
+			;;
+	esac
+
+	if grep -q -E "virtual/libcrypt|sys-libs/libxcrypt" <<<${RDEPEND}; then
+		# nothing to do here
+		return
+	fi
+
+	local libcrypt_consumers
+	# grep outputs newline separated list of files, so it's ok to skip specifying delimiter
+	IFS= mapfile libcrypt_consumers < <(find "${ED}" -type f -executable \
+		-print0 | xargs -0 scanelf -qyRF '%F %n' | grep 'libcrypt\.so' 2>/dev/null )
+	
+	if [[ -n ${libcrypt_consumers[@]} ]]; then
+		eqawarn "QA Notice: Binary files linked to libcrypt.so found"
+		eqawarn "But a dependency on virtual/libcrypt is not declared!"
+		eqawarn
+		eqatag -v virtual-libcrypt.missing "${libcrypt_consumers[@]%% *}"
+		eqawarn
+		eqawarn "Please add virtual/libcrypt:= dependency"
+		eqawarn "Gentoo bug: https://bugs.gentoo.org/699422"
+		eqawarn "Tracker bug: https://bugs.gentoo.org/798963"
+		eqawarn "See: https://wiki.gentoo.org/wiki/Project:Toolchain/libcrypt_implementation"
+	fi
+	
+}
+
+libcrypt_check
+: # guarantee successful exit
+
+# vim:ft=sh

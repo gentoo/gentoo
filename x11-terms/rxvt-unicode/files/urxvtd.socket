@@ -1,0 +1,8 @@
+[Unit]
+Description=rxvt-unicode terminal daemon socket
+
+[Socket]
+ListenStream=%h/.urxvt/urxvtd-%H
+
+[Install]
+WantedBy=sockets.target

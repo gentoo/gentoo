@@ -1,0 +1,79 @@
+--- a/lib/Makefile.linux
++++ b/lib/Makefile.linux
+@@ -27,9 +27,9 @@
+ ###############################################################################
+
+ LZMADIR = liblzma
+-CC = gcc
+-CFLAGS = -O3 -W -Wall -c -fPIC -DOPENCTM_BUILD -I$(LZMADIR) -DLZMA_PREFIX_CTM -std=c99 -pedantic
+-CFLAGS_LZMA = -O3 -W -Wall -c -fPIC -DLZMA_PREFIX_CTM -std=c99 -pedantic
++CFLAGS += -W -Wall -c -fPIC -std=c99 -pedantic
++INCDEF = -DOPENCTM_BUILD -I$(LZMADIR) -DLZMA_PREFIX_CTM
++INCDEF_LZMA = -DLZMA_PREFIX_CTM
+ RM = rm -f
+ DEPEND = $(CPP) -MM
+
+@@ -71,15 +71,15 @@
+ 	$(RM) $(DYNAMICLIB) $(SONAME) $(LIBNAME) $(OBJS) $(LZMA_OBJS)
+
+ $(DYNAMICLIB): $(OBJS) $(LZMA_OBJS)
+-	gcc -shared -s -Wl,-soname,$(SONAME) -o $@ $(OBJS) $(LZMA_OBJS) -lm
++	$(CC) $(LDFLAGS) -shared -s -Wl,-soname,$(SONAME) -o $@ $(OBJS) $(LZMA_OBJS) -lm
+ 	ln -s $(DYNAMICLIB) $(SONAME)
+ 	ln -s $(DYNAMICLIB) $(LIBNAME)
+
+ %.o: %.c
+-	$(CC) $(CFLAGS) $<
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(INCDEF) $<
+
+ %.o: $(LZMADIR)/%.c
+-	$(CC) $(CFLAGS_LZMA) $<
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(INCDEF_LZMA) $<
+
+ depend:
+ 	$(DEPEND) $(SRCS) $(LZMA_SRCS) > make.depend
+--- a/tools/Makefile.linux
++++ b/tools/Makefile.linux
+@@ -29,8 +29,7 @@
+ GLEWDIR = /usr/include/GL
+ RPLYDIR = rply
+
+-CPP = g++
+-CPPFLAGS = -c -O3 -W -Wall `${PKG_CONFIG} --cflags gtk+-2.0` -I$(OPENCTMDIR) -I$(RPLYDIR) -I$(GLEWDIR)
++CXXFLAGS += -W -Wall `${PKG_CONFIG} --cflags gtk+-2.0` -I$(OPENCTMDIR) -I$(RPLYDIR) -I$(GLEWDIR)
+
+ MESHOBJS = mesh.o meshio.o ctm.o ply.o rply.o stl.o 3ds.o dae.o obj.o lwo.o off.o wrl.o
+ CTMCONVOBJS = ctmconv.o common.o systimer.o convoptions.o $(MESHOBJS)
+@@ -43,18 +42,18 @@
+ 	rm -f ctmconv ctmviewer ctmbench $(CTMCONVOBJS) $(CTMVIEWEROBJS) $(CTMBENCHOBJS) bin2c phong_frag.h phong_vert.h
+
+ ctmconv: $(CTMCONVOBJS)
+-	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMCONVOBJS) -lopenctm -ltinyxml
++	$(CXX) $(LDFLAGS) -s -o $@ -L$(OPENCTMDIR) $(CTMCONVOBJS) -lopenctm -ltinyxml
+
+ ctmviewer: $(CTMVIEWEROBJS)
+-	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMVIEWEROBJS) -lopenctm \
++	$(CXX) $(LDFLAGS) -s -o $@ -L$(OPENCTMDIR) $(CTMVIEWEROBJS) -lopenctm \
+ 	-ltinyxml -ljpeg -lpnglite -lz -lGL -lglut -lGLU -lGLEW \
+ 	-lgtk-x11-2.0 -lgobject-2.0 -lglib-2.0
+
+ ctmbench: $(CTMBENCHOBJS)
+-	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMBENCHOBJS) -lopenctm
++	$(CXX) $(LDFLAGS) -s -o $@ -L$(OPENCTMDIR) $(CTMBENCHOBJS) -lopenctm
+
+ %.o: %.cpp
+-	$(CPP) $(CPPFLAGS) -o $@ $<
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
+
+ ctmconv.o: ctmconv.cpp systimer.h convoptions.h mesh.h meshio.h
+ ctmviewer.o: ctmviewer.cpp common.h image.h systimer.h sysdialog.h mesh.h meshio.h phong_vert.h phong_frag.h icons/icon_open.h icons/icon_save.h icons/icon_help.h
+@@ -83,7 +82,7 @@
+ 	./bin2c phong.frag phongFragSrc > $@
+
+ bin2c: bin2c.cpp
+-	$(CPP) -Os -W -Wall -o $@ $<
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -Os -W -Wall -o $@ $<
+
+ rply.o: $(RPLYDIR)/rply.c
+-	gcc -c -O2 -W -I$(RPLYDIR) -o $@ $<
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c -O2 -W -I$(RPLYDIR) -o $@ $<

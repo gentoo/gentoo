@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
@@ -13,9 +13,9 @@
 		
 		To solve those problems this package does the following:
 		
-		* Reexport the original APIs under the \&quot;Rebase\&quot; namespace.
+		* Reexport the original APIs under the \"Rebase\" namespace.
 		
-		* Export all the possible non-conflicting symbols from the \&quot;Rebase.Prelude\&quot; module.
+		* Export all the possible non-conflicting symbols from the \"Rebase.Prelude\" module.
 		
 		* Give priority to the modern practices in the conflicting cases.
 		

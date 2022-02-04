@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit autotools gnome2-utils linux-info python-single-r1 systemd xdg-utils
 
 DESCRIPTION="Simple and intuitive GTK+ Bluetooth Manager"
@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="https://github.com/blueman-project/${PN}/releases/download/${PV/_/.}/${P/_/.}.tar.xz"
 	S=${WORKDIR}/${P/_/.}
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 # icons are GPL-2
@@ -26,19 +26,19 @@ IUSE="appindicator network nls policykit pulseaudio"
 
 DEPEND="
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	>=net-wireless/bluez-5:=
 	${PYTHON_DEPS}"
 BDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/cython[${PYTHON_MULTI_USEDEP}]
+		dev-python/cython[${PYTHON_USEDEP}]
 	')
 	virtual/pkgconfig
 	nls? ( dev-util/intltool sys-devel/gettext )"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycairo[${PYTHON_USEDEP}]
 	')
 	sys-apps/dbus
 	x11-libs/gtk+:3[introspection]
@@ -117,7 +117,7 @@ src_install() {
 		doins "${FILESDIR}/01-org.blueman.rules"
 	fi
 
-	rm "${D}"/$(python_get_sitedir)/*.la || die
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {

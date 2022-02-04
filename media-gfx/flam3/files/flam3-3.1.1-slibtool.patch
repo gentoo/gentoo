@@ -1,0 +1,53 @@
+From 78ea170715b57bbde0275447dbcc8b20a926b05d Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sun, 28 Mar 2021 13:15:53 -0700
+Subject: [PATCH] build: Fix undefined libm references.
+
+---
+ Makefile.am  | 11 ++++++-----
+ configure.ac |  2 ++
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index c3d0f42..78954e8 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -11,19 +11,20 @@ lib_LTLIBRARIES = libflam3.la
+ include_HEADERS = flam3.h isaac.h isaacs.h rect.c
+ 
+ libflam3_la_SOURCES = flam3.c filters.c parser.c variations.c interpolation.c palettes.c jpeg.c png.c isaac.c
+-libflam3_la_LDFLAGS = -no-undefined -ljpeg -lpng -lz -lpthread
++libflam3_la_LDFLAGS = -no-undefined
++libflam3_la_LIBADD = -ljpeg -lpng -lz -lpthread $(LIBM)
+ 
+ flam3_genome_SOURCES = flam3-genome.c docstring.c
+-flam3_genome_LDADD = libflam3.la -lm
++flam3_genome_LDADD = libflam3.la
+ 
+ flam3_animate_SOURCES = flam3-animate.c docstring.c
+-flam3_animate_LDADD = libflam3.la -lm
++flam3_animate_LDADD = libflam3.la
+ 
+ flam3_render_SOURCES = flam3-render.c docstring.c
+-flam3_render_LDADD = libflam3.la -lm
++flam3_render_LDADD = libflam3.la
+ 
+ flam3_convert_SOURCES = flam3-convert.c docstring.c
+-flam3_convert_LDADD = libflam3.la -lm
++flam3_convert_LDADD = libflam3.la
+ 
+ pkgdata_DATA = flam3-palettes.xml
+ 
+diff --git a/configure.ac b/configure.ac
+index c427bb5..f7f4839 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -28,6 +28,8 @@ AC_CHECK_LIB([z],[deflateInit_],,[AC_MSG_ERROR([zlib is required.])])
+ AC_CHECK_LIB([png],[png_write_image],,[AC_MSG_ERROR([The png library is required.])])
+ AC_CHECK_LIB([xml2],[xmlParseFile],,[AC_MSG_ERROR([The xml2 library is required.])])
+ 
++AC_CHECK_LIBM
++AC_SUBST([LIBM])
+ 
+ if test "${enable_atomic_ops}" = "" ; then
+   enable_atomic_ops=yes

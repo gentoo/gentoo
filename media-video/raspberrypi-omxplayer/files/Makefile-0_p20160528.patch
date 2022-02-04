@@ -1,5 +1,5 @@
---- omxplayer-9999/Makefile
-+++ omxplayer-9999/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -2,9 +2,11 @@
  
  CFLAGS+=-std=c++0x -D__STDC_CONSTANT_MACROS -D__STDC_LIMIT_MACROS -DTARGET_POSIX -DTARGET_LINUX -fPIC -DPIC -D_REENTRANT -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DHAVE_CMAKE_CONFIG -D__VIDEOCORE4__ -U_FORTIFY_SOURCE -Wall -DHAVE_OMXLIB -DUSE_EXTERNAL_FFMPEG  -DHAVE_LIBAVCODEC_AVCODEC_H -DHAVE_LIBAVUTIL_OPT_H -DHAVE_LIBAVUTIL_MEM_H -DHAVE_LIBAVUTIL_AVUTIL_H -DHAVE_LIBAVFORMAT_AVFORMAT_H -DHAVE_LIBAVFILTER_AVFILTER_H -DHAVE_LIBSWRESAMPLE_SWRESAMPLE_H -DOMX -DOMX_SKIP64BIT -ftree-vectorize -DUSE_EXTERNAL_OMX -DTARGET_RASPBERRY_PI -DUSE_EXTERNAL_LIBBCM_HOST
@@ -7,10 +7,10 @@
 -LDFLAGS+=-L./ -Lffmpeg_compiled/usr/local/lib/ -lc -lWFC -lGLESv2 -lEGL -lbcm_host -lopenmaxil -lfreetype -lz
 +PKGS=freetype2 dbus-1 libavcodec libavutil libavformat libswresample libswscale libpcre
 +
-+LIBS+=-lrt -lpthread $(shell pkg-config --libs $(PKGS)) -L/opt/vc/lib
++LIBS+=-lrt -lpthread $(shell ${PKG_CONFIG} --libs $(PKGS)) -L/opt/vc/lib
  
 -INCLUDES+=-I./ -Ilinux -Iffmpeg_compiled/usr/local/include/ -I /usr/include/dbus-1.0 -I /usr/lib/arm-linux-gnueabihf/dbus-1.0/include
-+INCLUDES+=$(shell pkg-config --cflags $(PKGS)) -I/opt/vc/include -I. -Ilinux
++INCLUDES+=$(shell ${PKG_CONFIG} --cflags $(PKGS)) -I/opt/vc/include -I. -Ilinux
  
  DIST ?= omxplayer-dist
  

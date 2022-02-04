@@ -1,0 +1,10 @@
+[Unit]
+Description=System wide PulseAudio instance
+After=syslog.target network.target alsasound.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/pulseaudio --system --log-target=syslog
+
+[Install]
+WantedBy=multi-user.target

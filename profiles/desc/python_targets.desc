@@ -1,11 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors.
+# Copyright 1999-2021 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of PYTHON_TARGETS USE_EXPAND flags.
 
-python2_7 - Build with Python 2.7
-python3_6 - Build with Python 3.6
-python3_7 - Build with Python 3.7
 python3_8 - Build with Python 3.8
 python3_9 - Build with Python 3.9
+python3_10 - Build with Python 3.10
 pypy3 - Build with PyPy3

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ inherit perl-module db-use multilib
 DESCRIPTION="This module provides Berkeley DB interface for Perl"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 
 # Install DB_File if you want older support. BerkleyDB no longer
 # supports less than 2.0.
@@ -39,8 +39,9 @@ src_prepare() {
 	local DB_SUPPORTED=(
 		6 5 4 3 2
 	)
-	# on Gentoo/FreeBSD we cannot trust on the symlink /usr/include/db.h
-	# as for Gentoo/Linux, so we need to esplicitely declare the exact berkdb
+
+	# on Gentoo Prefix, we cannot trust the symlink /usr/include/db.h
+	# as for Gentoo/Linux, so we need to explicitly declare the exact berkdb
 	# include path
 	local dbdir="$(db_includedir "${DB_SUPPORTED[@]}" )"
 	local dbname="$(db_libname "${DB_SUPPORTED[@]}" )"

@@ -1,5 +1,3 @@
-diff --git a/configure b/configure
-index 5efe49d..de8d6f2 100755
 --- a/configure
 +++ b/configure
 @@ -3677,7 +3677,7 @@ case "$TARGET_SYS" in

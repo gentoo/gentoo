@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit git-r3
 
@@ -10,7 +10,7 @@ EGIT_BRANCH="master"
 DESCRIPTION="Gentoo Package Manager Specification (draft)"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Package_Manager_Specification"
 
-LICENSE="CC-BY-SA-3.0"
+LICENSE="CC-BY-SA-4.0"
 SLOT="live"
 IUSE="html twoside"
 
@@ -19,18 +19,16 @@ IUSE="html twoside"
 #   paralist, tocbibind
 # texlive-mathscience for algorithm, algorithmic
 BDEPEND="dev-texlive/texlive-bibtexextra
-	dev-texlive/texlive-fontsrecommended
-	dev-texlive/texlive-latex
 	>=dev-texlive/texlive-latexextra-2020-r2
-	dev-texlive/texlive-latexrecommended
 	dev-texlive/texlive-mathscience
+	virtual/latex-base
 	html? ( >=dev-tex/tex4ht-20090611_p1038-r11 )"
 RDEPEND="!app-doc/pms-bin"
 
 src_compile() {
 	# just in case; we shouldn't be generating any fonts
 	export VARTEXFONTS="${T}/fonts"
-	emake $(usex twoside TWOSIDE=yes "")
+	emake $(usev twoside TWOSIDE=yes)
 	use html && emake html
 }
 

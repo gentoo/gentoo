@@ -1,7 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Generates an init binary for s6-based init systems"
 HOMEPAGE="https://www.skarnet.org/software/s6-linux-init/"
@@ -14,9 +16,9 @@ IUSE="static static-libs +sysv-utils"
 
 REQUIRED_USE="static? ( static-libs )"
 
-RDEPEND=">=dev-lang/execline-2.6.1.0:=[static-libs?]
-	>=dev-libs/skalibs-2.9.2.1:=[static-libs?]
-	>=sys-apps/s6-2.9.2.0:=[execline,static-libs?]
+RDEPEND="<dev-lang/execline-2.7.0.0:=[static-libs?]
+	<dev-libs/skalibs-2.10.0.0:=[static-libs?]
+	<sys-apps/s6-2.10.0.0:=[execline,static-libs?]
 	sysv-utils? (
 		!sys-apps/systemd[sysv-utils]
 		!sys-apps/sysvinit
@@ -32,9 +34,13 @@ src_prepare() {
 	# Avoid QA warning for LDFLAGS addition; avoid overriding -fstack-protector
 	sed -i -e 's/.*-Wl,--hash-style=both$/:/' -e '/-fno-stack-protector$/d' \
 		configure || die
+
+	sed -i -e '/AR := /d' -e '/RANLIB := /d' Makefile || die
 }
 
 src_configure() {
+	tc-export AR CC RANLIB
+
 	econf \
 		--bindir=/bin \
 		--dynlibdir=/usr/$(get_libdir) \

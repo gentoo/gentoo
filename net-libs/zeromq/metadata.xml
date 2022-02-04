@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>whissi@gentoo.org</email>
@@ -31,6 +31,10 @@
 		<flag name="drafts">
 			Build draft API, which may change at any time without any notice, and
 			is therefore not recommended for normal use.
+		</flag>
+		<flag name="libbsd">
+			Use strlcpy() from <pkg>dev-libs/libbsd</pkg> instead of internal
+			implementation.
 		</flag>
 		<flag name="pgm">
 			Build PGM (Pragmatic General Multicast)extention, a protocol for reliable 

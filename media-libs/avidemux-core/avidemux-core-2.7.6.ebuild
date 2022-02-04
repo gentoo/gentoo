@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -75,6 +75,8 @@ src_prepare() {
 src_configure() {
 	# See bug 432322.
 	use x86 && replace-flags -O0 -O1
+	# Bug 768210
+	append-cxxflags -std=gnu++14
 
 	local mycmakeargs=(
 		-DAVIDEMUX_SOURCE_DIR='${S}'

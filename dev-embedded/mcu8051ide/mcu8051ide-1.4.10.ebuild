@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit cmake-utils xdg
 
-DESCRIPTION="Graphical IDE for microcontrollers based on 8051."
+DESCRIPTION="Graphical IDE for microcontrollers based on 8051"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 

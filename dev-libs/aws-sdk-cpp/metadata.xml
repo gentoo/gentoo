@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>amit.prakash.ambasta@gmail.com</email>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>sven.eden@prydeworx.com</email>
 		<name>Sven Eden</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -22,7 +22,7 @@
 		via GitHub Issues.
 	</longdescription>
 	<use>
-		<flag name="http">Enable http support via curl</flag>
+		<flag name="http">Enable http support via net-misc/curl</flag>
 		<flag name="rtti">Flag to enable/disable rtti within the library</flag>
 		<flag name="unity-build">
 			Build using a single unified .cpp file for each service library.
@@ -45,8 +45,8 @@
 			SSO : AWS Single Sign-On (SSO) makes it easy to centrally manage access to multiple AWS
 				accounts and business applications and provide users with single sign-on access to all
 				their assigned accounts and applications from one place.
-			Also enables acm-pca, identity-management, identitystore, sso-oidc and sts (Security Token
-			Service).
+			Also enables acm-pca, identity-management, identitystore, sso-admin, sso-oidc and sts
+			(Security Token Service).
 		</flag>
 		<flag name="apigateway">
 			Create and deploy your own REST and WebSocket APIs at any scale.
@@ -143,10 +143,16 @@
 			The following modules besides monitoring are also enabled:
 			Application Insights: Monitor .NET and SQL Server applications.
 			App Mesh            : Monitor and control microservices running on AWS.
+			Audit Manager       : Helps to continuously audit your AWS usage to simplify how you manage
+				risk and compliance with regulations and industry standards.
 			CloudTrail          : Monitor AWS deployments in the cloud by getting a history of AWS API
 				calls, including API calls made via the AWS Management Console, the AWS SDKs, the
 				command line tools, and higher-level AWS services.
 			Compute Optimizer   : Recommends optimal AWS compute resources for your workloads.
+			Detective           : Analyze, investigate, and identify the root cause of security findings
+				or suspicious activities. 
+			DevOps Guru         : Generates operational insights using machine learning to help to improve
+				the performance of operational applications.
 			GuardDuty           : Continuous security monitoring service.
 			Health              : Provides personalized information about events that can affect the AWS
 				infrastructure, guides through scheduled changes, and accelerates the troubleshooting
@@ -194,6 +200,7 @@
 		</flag>
 		<flag name="ecr">
 			Amazon Elastic Container Registry (ECR) is a fully managed Docker container registry.
+			Also enables Amazon ECR Public.
 		</flag>
 		<flag name="ecs">
 			Amazon Elastic Container Service (ECS) is a highly scalable, fast, container management service.
@@ -201,6 +208,7 @@
 		<flag name="eks">
 			Amazon Elastic Kubernetes Service (EKS) is a managed service to run Kubernetes on AWS without
 			own Kubernetes clusters.
+			Also enables Amazon EMR on EKS.
 		</flag>
 		<flag name="elasticache">
 			Set up, manage, and scale distributed in-memory cache environments in the AWS Cloud
@@ -258,7 +266,7 @@
 				(such as sensors, actuators, embedded devices, or smart appliances) and the AWS Cloud
 				over MQTT and HTTP.
 			greengrass    : Extends AWS onto physical devices so they can act locally on the data they
-				generate.
+				generate. Installed are both Version 1 and Version 2.
 			iot1click     : A service for simple devices to trigger AWS Lambda functions that execute a
 				specific action.
 			iotanalytics  : Provides advanced data analysis for AWS IoT.
@@ -268,8 +276,8 @@
 			iotthingsgraph: Integrated set of tools that enable developers to build IoT applications using
 				devices and services that use different data representation standards and communication
 				protocols.
-			Also enables iot1click-devices, iot1click-projects, iot-data, iotevents-data, iot-jobs-data and
-			iotsecuretunneling.
+			Also enables iot1click-devices, iot1click-projects, iotdeviceadvisor, iot-data, iotevents-data, iotfleethub,
+			iot-jobs-data, iotsecuretunneling and iotwireless.
 		</flag>
 		<flag name="kendra">
 			Amazon Kendra is a search service, powered by machine learning, that enables users to search
@@ -293,7 +301,7 @@
 		</flag>
 		<flag name="lex">
 			Amazon Lex is an AWS service for building conversational interfaces into applications using
-			voice and text.
+			voice and text. Installed are both Version1 and Version 2.
 			Also enables lex-models.
 		</flag>
 		<flag name="lambda">AWS Lambda: Run code without provisioning or managing servers.</flag>
@@ -302,6 +310,10 @@
 		</flag>
 		<flag name="lightsail">
 			The easiest way to get started with AWS for developers who just need virtual private servers
+		</flag>
+		<flag name="lookoutvision">
+			Amazon Lookout for Vision enables you to find visual defects in industrial products, accurately
+			and at scale. 
 		</flag>
 		<flag name="machinelearning">
 			The algorithms of Amazon Machine Learning create machine learning (ML) models by finding
@@ -327,7 +339,11 @@
 			Marketplace Metering Service   : A pricing and metering feature that AWS Marketplace sellers can
 				use to directly charge for their software along one of four dimensions: users, data,
 				bandwidth, or hosts.
-			Also enables marketplace-catalog and pricing.
+			Also enables marketplace-catalog, pricing and servicecatalog-appregistry.
+		</flag>
+		<flag name="mwaa">
+			Amazon Managed Workflows for Apache Airflow (Amazon MWAA) is a managed service for Apache
+			Airflow that makes it easy for you to build and manage your workflows in the cloud.
 		</flag>
 		<flag name="networkmanager">
 			Transit Gateway Network Manager (Network Manager) enables you to create a global network, in
@@ -346,17 +362,18 @@
 			you would like to have any of the following modules to have their own USE flag, please open a
 			bug report and it will most probably get one.
 			The modules are:
-			AWSMigrationHub, alexaforbusiness, appflow, braket, clouddirectory, comprehend,
-			comprehendmedical, connect, datapipeline, datasync, directconnect, discovery, dms, docdb, ds,
-			dynamodb, gamelift, glue, groundstation, importexport, kafka, lakeformation, migrationhub-
-			config, mq, mturk-requester, neptune, quicksight, redshift, robomaker, sdb, schemas, service-
-			quotas, servicecatalog, servicediscovery, signer, sms, snowball, ssm, states, storagegateway,
-			support and swf.
+			AWSMigrationHub, alexaforbusiness, appflow, appintegrations, braket, clouddirectory, comprehend,
+			comprehendmedical, connect, connect-contact-lens, customer-profiles, datapipeline, databrew,
+			datasync, directconnect, discovery, dms, docdb, ds, dynamodb, gamelift, glue, groundstation,
+			healthlake, importexport, kafka, lakeformation, migrationhub-config, mq, mturk-requester,
+			neptune, quicksight, redshift, robomaker, sdb, schemas, service-quotas, servicecatalog,
+			servicediscovery, signer, sms, snowball, ssm, states, storagegateway, support and swf.
 		</flag>
 		<flag name="outposts">
 			AWS Outposts brings native AWS services, infrastructure, and operating models to virtually any
 			data center, co-location space, or on-premises facility. You can use the same services, tools,
 			and partner solutions to develop for the cloud and on premises.
+			Also enables s3outposts.
 		</flag>
 		<flag name="personalize">
 			Real-time personalization and recommendations, based on the same technology used at Amazon.com.
@@ -408,7 +425,8 @@
 			Fully managed machine learning service. With Amazon SageMaker, data scientists and developers
 			can quickly and easily build and train machine learning models, and then directly deploy them
 			into a production-ready hosted environment.
-			Also enables sagemaker-a2i-runtime and sagemaker-runtime.
+			Also enables sagemaker-a2i-runtime, sagemaker-edge, sagemaker-featurestore-runtime and
+			sagemaker-runtime.
 		</flag>
 		<flag name="secretsmanager">
 			Encrypt, store, and retrieve credentials for databases and other services.
@@ -431,6 +449,11 @@
 		<flag name="textract">
 			Amazon Textract to add document text detection and analysis to applications.
 		</flag>
+		<flag name="timestream">
+			Store and analyze sensor data for IoT applications, metrics for DevOps use cases, and telemetry
+			for application monitoring scenarios such as clickstream data analysis.
+			Note: The two modules enabled are timestream-query and timestream-write.
+		</flag>
 		<flag name="transcribe">
 			A transcription services for audio files. It uses advanced machine learning technologies to
 			recognize spoken words and transcribe them into text.
@@ -445,7 +468,12 @@
 			CloudFront distributions or an Application Load Balancer. Can also be used to block or allow
 			requests based on conditions such as the IP addresses that requests originate from or values in
 			the requests.
-			Also enables fms, waf-regional and wafv2
+			Also enables fms, network-firewall, waf-regional and wafv2
+		</flag>
+		<flag name="wellarchitected">
+			Use the AWS Well-Architected Tool to review your workloads against current AWS architectural best practices.
+			The AWS Well-Architected Tool measures the workload and provides recommendations on how to improve your
+			architecture.
 		</flag>
 	</use>
 </pkgmetadata>

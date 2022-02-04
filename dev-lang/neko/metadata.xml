@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <use>
+    <flag name="apache">Build Apache modules</flag>
+  </use>
+  <longdescription>
+    Neko is a high-level dynamically typed programming language. It can be
+    used as an embedded scripting language. It has been designed to provide
+    a common runtime for several different languages. Learning and using
+    Neko is very easy. You can easily extend the language with C libraries.
+    You can also write generators from your own language to Neko and then
+    use the Neko Runtime to compile, run, and access existing libraries.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/HaxeFoundation/neko/issues/</bugs-to>
+    <remote-id type="github">HaxeFoundation/neko</remote-id>
+  </upstream>
+</pkgmetadata>

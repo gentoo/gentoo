@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools
+
+inherit autotools flag-o-matic
 
 DESCRIPTION="Portable C++ runtime for threads and sockets"
 HOMEPAGE="https://www.gnu.org/software/commoncpp"
@@ -11,29 +12,21 @@ SRC_URI="mirror://gnu/commoncpp/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0/8" # soname version
 KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux"
-IUSE="doc static-libs +cxx debug libressl ssl gnutls"
+IUSE="doc +cxx debug ssl gnutls"
 
 RDEPEND="
 	ssl? (
-		gnutls? (
-			net-libs/gnutls:0=
-			dev-libs/libgcrypt:0=
-		)
-		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
-		)
+		net-libs/gnutls:=
+		dev-libs/libgcrypt:=
 	)"
-
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
-"
-
-DOCS=(README NEWS SUPPORT ChangeLog AUTHORS)
+	doc? ( app-doc/doxygen )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-6.0.3-install_gcrypt.m4_file.patch"
+	"${FILESDIR}"/${PN}-6.0.3-install_gcrypt.m4_file.patch
+	"${FILESDIR}"/${PN}-7.0.0-c++17-dynamic-exception-specifications.patch
 )
 
 src_prepare() {
@@ -50,28 +43,33 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=""
-	if use ssl; then
-		myconf+=" --with-sslstack=$(usex gnutls gnu ssl) "
-	else
-		myconf+=" --with-sslstack=nossl ";
-	fi
+	# https://bugs.gentoo.org/730018
+	# need to link GCC's libatomic when compiling with clang
+	append-libs -latomic
 
 	local myeconfargs=(
-		$(use_enable cxx stdcpp)
-		${myconf}
-		--enable-atomics
+		--disable-static
 		--with-pkg-config
+		# don't bother with openssl, incompatible with the 1.1 API
+		--with-sslstack=$(usex ssl gnu nossl)
+		$(use_enable cxx stdcpp)
 	)
-	econf "${myeconfargs}"
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
 	default
-	use doc && emake doxy
+
+	if use doc; then
+		emake doxy
+		HTML_DOCS=( doc/html/. )
+	fi
 }
 
 src_install() {
-	use doc && HTML_DOCS="doc/html/*"
 	default
+	dodoc SUPPORT
+
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }

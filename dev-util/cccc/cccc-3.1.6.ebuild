@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils toolchain-funcs flag-o-matic
+inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="Source metrics (line counts, complexity, etc) for Java and C++"
 HOMEPAGE="http://sarnold.github.io/cccc/"
@@ -60,12 +60,13 @@ src_install() {
 
 	if use doc ; then
 		docinto html
-		dodoc cccc/*.html || die "html docs failed"
+		dodoc cccc/*.html
 		if use apidoc ; then
 			docinto html/api
-			dodoc -r doxygen/html/. || die "apidocs failed"
-			docinto html/metrics
-			dodoc ccccout/* || die "metrics failed"
+			dodoc -r doxygen/html/.
+
+			docinto html/metrics/
+			dodoc ccccout/*
 		fi
 	fi
 }

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Window Maker dock app that provides a system tray for GNOME/KDE applications"
 HOMEPAGE="https://github.com/bbidulock/wmsystray"
@@ -17,11 +17,11 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="amd64 ppc ~sparc x86"
 
-# Let's honour Gentoo CFLAGS and use correct install program
-# Fix for #61704, cannot compile with gcc 3.4.1:
-# it's a trivial change and does not affect other compilers...
-PATCHES=( "${FILESDIR}/${P}-Makefile.patch"
-	"${FILESDIR}/${P}-gcc-3.4.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-Makefile.patch"
+	"${FILESDIR}/${P}-gcc-3.4.patch"
+	"${FILESDIR}/${P}-return-type.patch"
+)
 
 DOCS=( README HACKING AUTHORS )
 
@@ -35,7 +35,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake EXTRACFLAGS="${CFLAGS}"
+	emake CC="$(tc-getCC)" EXTRACFLAGS="${CFLAGS}"
 }
 
 src_install() {

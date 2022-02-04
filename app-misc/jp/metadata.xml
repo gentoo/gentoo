@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+		<name>Zac Medico</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/jmespath/jp/issues</bugs-to>
+		<changelog>https://github.com/jmespath/jp/commits/master</changelog>
+		<remote-id type="github">jmespath/jp</remote-id>
+	</upstream>
+	<use>
+		<flag name="jpp">
+			Install jpp which is an extended superset of the jp CLI for JMESPath
+		</flag>
+	</use>
+</pkgmetadata>

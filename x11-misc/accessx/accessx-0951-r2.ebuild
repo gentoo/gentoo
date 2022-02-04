@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit toolchain-funcs
 
 DESCRIPTION="Interface to the XKEYBOARD extension in X11"
@@ -16,7 +17,10 @@ IUSE=""
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	dev-lang/tk:0="
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+"
 
 S=${WORKDIR}/${PN}
 PATCHES=( "${FILESDIR}"/${P}-build.patch )

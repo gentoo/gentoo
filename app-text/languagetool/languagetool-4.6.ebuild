@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,7 @@ CP_DEPEND="
 RDEPEND=">=virtual/jre-1.8
 	${CP_DEPEND}"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 S=${WORKDIR}/${MY_P}
 

@@ -1,0 +1,56 @@
+Fix -Werror=return-type warnings to prevent gcc-8+ from
+corrupting caller's stack.
+
+Also detected by -fsanitize=undefined as:
+runtime error: execution reached the end of a value-returning
+function without returning a value
+--- a/src/input.cpp
++++ b/src/input.cpp
+@@ -103,5 +103,6 @@ float InputHandler::bindingState(int key)
+   }
+   else
+     return 0.0;
++  return 0.0;
+ }
+ 
+--- a/src/objects.h
++++ b/src/objects.h
+@@ -545,12 +545,12 @@ class Object : public LevelObject
+     bool Augmented() { return augmented; }
+     void Augment() { model[1].set(MDL_PLAYER_TORSO2); augmented = true; }
+ 
+-    virtual Weapon* Wpn() {}
+-    virtual int CurrWeapon() {}
++    virtual Weapon* Wpn() { return 0; }
++    virtual int CurrWeapon() { return 0; }
+     virtual void selectWeapon(int wp) {}
+-    virtual char weaponState(int wp) {}
+-    virtual char keyState(int wp) {}
+-    virtual Vector2D* WeaponPoint() {}
++    virtual char weaponState(int wp) { return 0; }
++    virtual char keyState(int wp) { return 0; }
++    virtual Vector2D* WeaponPoint() { return 0; }
+     
+     void giveKey(int key) { keys |= 1 << key-1; }
+     virtual void givePowerup(int idx) {}
+--- a/src/sdb.h
++++ b/src/sdb.h
+@@ -370,7 +370,7 @@ class Vector2D
+     void set(float nx, float ny) { c[X] = nx; c[Y] = ny; c[Z] = 0; }
+     void apply() { glVertex3fv(c); }
+     void print() { printf("(%f, %f)\n", c[X], c[Y]); }
+-    Vector2D operator = (Vector2D v) { c[X] = v.c[X]; c[Y] = v.c[Y]; }
++    Vector2D operator = (Vector2D v) { c[X] = v.c[X]; c[Y] = v.c[Y]; return *this; }
+     void operator += (Vector2D v) { c[X] += v.c[X]; c[Y] += v.c[Y]; }
+     void operator -= (Vector2D v) { c[X] -= v.c[X]; c[Y] -= v.c[Y]; }
+     void operator += (float s) { c[X] += s; c[Y] += s; }
+--- a/src/weapons.cpp
++++ b/src/weapons.cpp
+@@ -135,6 +135,7 @@ bool Weapon::fire(float x, float y, float head, float h)
+   }
+   else
+     return false;
++  return false;
+ }
+ 
+ void Weapon::releaseTrigger(float x, float y, float head, float h)

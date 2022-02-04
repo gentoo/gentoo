@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/rogers0/${PN}/archive/debian/${MY_PV}.tar.gz -> ${P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 IUSE=""
 
 DEPEND="net-libs/libcork"
@@ -32,6 +32,7 @@ src_prepare() {
 			*/*/*/*.c \
 			*/*/*/*.c.in \
 			*/*/*.c */*.c || die
+	sed -i -e "s/-Werror/-Wextra/" CMakeLists.txt || die
 
 	mv include/{,libcork}ipset || die
 

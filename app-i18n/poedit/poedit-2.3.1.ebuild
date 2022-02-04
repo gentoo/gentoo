@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 PLOCALES="af an ar az be be@latin bg bs ca ckb co cs da de el en_GB es et eu fa fi fr ga gl he hr hu hy id is it ja ka kab kk ko lt lv ms nb nl oc pa pl pt_BR pt_PT ro ru sk sl sq sr sv tg th tr uk uz vi zh_CN zh_TW"
 WX_GTK_VER=3.0-gtk3
 
-inherit gnome2-utils l10n wxwidgets xdg
+inherit gnome2-utils plocale wxwidgets xdg
 
 DESCRIPTION="GUI gettext translations editor"
 HOMEPAGE="https://poedit.net"
@@ -36,8 +36,8 @@ src_prepare() {
 		rm "locales/${1}.mo" || die
 	}
 
-	l10n_find_plocales_changes 'locales' '' '.mo'
-	l10n_for_each_disabled_locale_do my_rm_loc
+	plocale_find_changes 'locales' '' '.mo'
+	plocale_for_each_disabled_locale my_rm_loc
 
 	setup-wxwidgets
 	xdg_src_prepare

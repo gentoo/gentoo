@@ -1,13 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit vdr-plugin-2
 
-DESCRIPTION="VDR plugin: control an linear or horizon actuator attached trough the parallel port"
-HOMEPAGE="http://ventoso.org/luca/vdr/"
-SRC_URI="http://ventoso.org/luca/vdr/${P}.tgz"
+DESCRIPTION="VDR plugin: control a horz. or vert. actuator attached through the parallel port"
+HOMEPAGE="https://ventoso.org/luca/vdr/"
+SRC_URI="https://ventoso.org/luca/vdr/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

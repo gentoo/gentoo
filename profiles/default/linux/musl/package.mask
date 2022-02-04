@@ -1,10 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-sys-libs/uclibc-ng
 sys-libs/glibc
 
-# We use eudev which is tested on both uclibc and musl
+# We use eudev which is tested on musl
 sys-apps/systemd
 sys-fs/udev
 
@@ -35,7 +34,6 @@ games-arcade/barbarian-bin
 games-arcade/dynamitejack
 games-arcade/jardinains
 games-arcade/thinktanks-demo
-games-emulation/nestra
 games-emulation/zinc
 games-emulation/zsnes
 games-fps/etqw-demo

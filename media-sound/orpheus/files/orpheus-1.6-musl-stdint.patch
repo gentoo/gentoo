@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/715698
+--- a/src/mp3track.cc
++++ b/src/mp3track.cc
+@@ -33,6 +33,7 @@
+ #include <sys/stat.h>
+ #include <signal.h>
+ #include <unistd.h>
++#include <stdint.h>
+ #include <stdio.h>
+ #include <netinet/in.h>
+ 
+@@ -55,8 +56,8 @@ static int cpid = -1, trackcount = 0;
+ static FILE *fpread, *fpwrite;
+ static char cbuf[65535];
+ 
+-static u_int32_t extract_bitfield(unsigned char *h, int start, int end) {
+-    u_int32_t hdr;
++static uint32_t extract_bitfield(unsigned char *h, int start, int end) {
++    uint32_t hdr;
+     memcpy(&hdr, h, 4);
+     hdr = ntohl(hdr);
+     hdr = hdr << start;
+@@ -237,7 +238,7 @@ void mp3track::readtag() {
+ 	11025, 12000, 8000, 0
+     };
+ 
+-    u_int32_t aux;
++    uint32_t aux;
+     int i, filelen;
+ 
+     if(f.is_open()) {

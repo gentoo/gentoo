@@ -1,0 +1,28 @@
+From 623d7e397baff3a8ab1695e190b13bc60153b64c Mon Sep 17 00:00:00 2001
+From: Mario Sanchez Prada <msanchez@gnome.org>
+Date: Mon, 7 Dec 2020 22:26:34 +0100
+Subject: [PATCH] Use meson's "warning_level" build option instead of
+ "warnlevel"
+
+The correct option's name is "warning_level", so change it for it
+to actually be effective while building.
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 37f76d7..87e4de3 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2,7 +2,7 @@ project('frogr', 'c',
+         version: '1.5',
+         license: 'GPL3',
+         default_options: [
+-            'warnlevel=2',
++            'warning_level=2',
+             'werror=true'
+         ])
+ 
+-- 
+GitLab
+

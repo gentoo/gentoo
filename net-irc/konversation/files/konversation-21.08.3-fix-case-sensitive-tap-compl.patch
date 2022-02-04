@@ -1,0 +1,28 @@
+From 68d4efb0e9dbcf1fa22c7975d92164a2f991256b Mon Sep 17 00:00:00 2001
+From: Luke Dashjr <luke-jr+git@utopios.org>
+Date: Sat, 18 Dec 2021 21:40:56 +0000
+Subject: [PATCH] Bugfix: Correct behaviour of "case sensitive" tab completion
+ option
+
+Fixes regression from 5dfb6583.
+BUG:442109
+---
+ src/irc/channel.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/irc/channel.cpp b/src/irc/channel.cpp
+index 7acc86f1..9521c695 100644
+--- a/src/irc/channel.cpp
++++ b/src/irc/channel.cpp
+@@ -2822,7 +2822,7 @@ QString NickList::completeNick(const QString& pattern, bool& complete, QStringLi
+ 
+     const QRegularExpression regexp(
+         prefix + QRegularExpression::escape(pattern),
+-        caseSensitive ? QRegularExpression::CaseInsensitiveOption : QRegularExpression::NoPatternOption);
++        caseSensitive ? QRegularExpression::NoPatternOption : QRegularExpression::CaseInsensitiveOption);
+ 
+     for (Nick* nick : *this) {
+         newNick = nick->getChannelNick()->getNickname();
+-- 
+GitLab
+

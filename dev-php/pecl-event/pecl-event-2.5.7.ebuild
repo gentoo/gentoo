@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -12,7 +12,7 @@ USE_PHP="php7-2 php7-3 php7-4"
 
 inherit php-ext-pecl-r3
 
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="amd64 ~ia64 x86"
 LICENSE="PHP-3.01"
 
 DESCRIPTION="PHP wrapper for libevent2"
@@ -20,10 +20,7 @@ SLOT="0"
 
 DEPEND="
 	>=dev-libs/libevent-2.0.2
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	php_targets_php7-2? ( dev-lang/php:7.2[sockets?] )
 	php_targets_php7-3? ( dev-lang/php:7.3[sockets?] )
 	php_targets_php7-4? ( dev-lang/php:7.4[sockets?] )"
@@ -32,7 +29,7 @@ RDEPEND="
 	${DEPEND}
 	!dev-php/pecl-libevent"
 
-IUSE="debug examples +extra libressl +sockets +ssl threads"
+IUSE="debug examples +extra +sockets +ssl threads"
 
 src_configure() {
 	local PHP_EXT_ECONF_ARGS=(

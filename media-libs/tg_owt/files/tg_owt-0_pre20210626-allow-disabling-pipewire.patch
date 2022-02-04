@@ -1,0 +1,36 @@
+Fix an issue with -DTG_OWT_USE_PIPEWIRE=OFF
+
+Some files were erroneously being included despite the option being turned off
+
+--- tg_owt-91d836dc84a16584c6ac52b36c04c0de504d9c34.orig/CMakeLists.txt
++++ tg_owt-91d836dc84a16584c6ac52b36c04c0de504d9c34/CMakeLists.txt
+@@ -88,6 +88,7 @@
+ init_target(tg_owt)
+ 
+ if (TG_OWT_USE_PIPEWIRE)
++    link_glib(tg_owt)
+     if (TG_OWT_DLOPEN_PIPEWIRE)
+         include(cmake/generate_stubs.cmake)
+         set(stubs_loc ${webrtc_loc}/modules/desktop_capture/linux)
+@@ -169,7 +170,6 @@
+ 
+ if (UNIX AND NOT APPLE)
+     link_x11(tg_owt)
+-    link_glib(tg_owt)
+ endif()
+ 
+ function(add_sublibrary postfix)
+@@ -2161,6 +2161,13 @@
+     )
+ endif()
+ 
++if (NOT TG_OWT_USE_PIPEWIRE)
++    remove_target_sources(tg_owt ${webrtc_loc}
++        modules/desktop_capture/linux/base_capturer_pipewire.cc
++        modules/desktop_capture/linux/base_capturer_pipewire.h
++    )
++endif()
++
+ if (NOT TG_OWT_BUILD_AUDIO_BACKENDS)
+     remove_target_sources(tg_owt ${webrtc_loc}
+         rtc_base/win/windows_version.cc

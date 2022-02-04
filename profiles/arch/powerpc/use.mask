@@ -1,8 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # PPC Specific use flags
 #
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-06-06)
+# XEN does not support ppc/ppc64 yet
+xen
 
 # David Seifert <soap@gentoo.org (2020-05-17)
 # Mono is hopelessly broken on ppc32
@@ -50,9 +54,6 @@ gnuefi
 appindicator
 ayatana
 
-#Klibc does not work
-klibc
-
 # These flags should only be used for ppc
 -ppcsha1
 # Unmask the Altivec instruction set
@@ -65,7 +66,6 @@ klibc
 #
 3dfx
 acpi
-lm-sensors
 rar
 hdf
 xvmc
@@ -75,7 +75,6 @@ cg
 dmi
 # Masked vaapi for PowerPC until it works on hardware available to PowerPC users (cell, etc.)
 vaapi
-
 
 ### Other flags -- Please put additional maskings below here
 
@@ -135,4 +134,3 @@ nvtt
 # Pacho Ramos <pacho@gentoo.org> (2014-01-08)
 # Unmask systemd since it is keyworded here.
 -systemd
-

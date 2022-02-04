@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit toolchain-funcs
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://repo.or.cz/${PN}.git
-		http://repo.or.cz/r/${PN}.git"
+	EGIT_REPO_URI="https://repo.or.cz/${PN}.git
+		https://repo.or.cz/r/${PN}.git"
 	inherit git-r3
 else
 	SRC_URI="http://repo.or.cz/w/smatch.git/snapshot/${PV}.tar.gz -> ${P}.tar.gz
@@ -15,7 +15,7 @@ else
 	S=${WORKDIR}/${PN}
 fi
 
-DESCRIPTION="static analysis tool for C"
+DESCRIPTION="Static analysis tool for C"
 HOMEPAGE="http://smatch.sourceforge.net/"
 
 LICENSE="OSL-1.1"

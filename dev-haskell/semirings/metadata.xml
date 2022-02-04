@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
@@ -35,6 +35,6 @@
 		
 		(*) left and right distributes over addition, and
 		
-		multiplication by &#39;0&#39; annihilates R.
+		multiplication by '0' annihilates R.
 	</longdescription>
 </pkgmetadata>

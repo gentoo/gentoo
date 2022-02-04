@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/709790
+--- a/jpilot-dump.c
++++ b/jpilot-dump.c
+@@ -76,7 +76,7 @@ const char *formatT;
+  * this code but must be instantiated for the code to compile.  
+  * The same is true of the functions which are only used in GUI mode. */
+ pid_t jpilot_master_pid = -1;
+-int pipe_to_parent;
++extern int pipe_to_parent;
+ GtkWidget *glob_dialog;
+ GtkWidget *glob_date_label;
+ gint glob_date_timer_tag;
+--- a/jpilot-sync.c
++++ b/jpilot-sync.c
+@@ -37,7 +37,8 @@
+ #include "otherconv.h"
+ 
+ /******************************* Global vars **********************************/
+-int pipe_to_parent, pipe_from_parent;
++extern int pipe_to_parent;
++int pipe_from_parent;
+ pid_t glob_child_pid;
+ unsigned char skip_plugins;
+ 
+--- a/jpilot.c
++++ b/jpilot.c
+@@ -84,7 +84,8 @@
+ /* #define PIPE_DEBUG */
+ /******************************* Global vars **********************************/
+ /* Application-wide globals */
+-int pipe_from_child, pipe_to_parent;
++extern int pipe_to_parent;
++int pipe_from_child;
+ int pipe_from_parent, pipe_to_child;
+ /* Main GTK window for application */
+ GtkWidget *window;

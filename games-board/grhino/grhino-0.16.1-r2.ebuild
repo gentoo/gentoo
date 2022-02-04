@@ -1,8 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Reversi game for GNOME, supporting the Go/Game Text Protocol"
 HOMEPAGE="http://rhino.sourceforge.net/"
@@ -16,9 +15,8 @@ IUSE="nls"
 RDEPEND="
 	nls? ( virtual/libintl )
 "
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )
-"
+DEPEND="${RDEPEND}"
+BDEPEND="nls? ( sys-devel/gettext )"
 
 src_prepare() {
 	default

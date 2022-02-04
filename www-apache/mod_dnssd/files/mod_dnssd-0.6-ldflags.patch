@@ -1,8 +1,5 @@
----
- Respect LDFLAGS and properly use LIBS to avoid missing symbols at runtime.
-
---- src/Makefile.in
-+++ src/Makefile.in
+--- a/src/Makefile.in
++++ b/src/Makefile.in
 @@ -16,13 +16,14 @@
  
  APXS=@APXS@

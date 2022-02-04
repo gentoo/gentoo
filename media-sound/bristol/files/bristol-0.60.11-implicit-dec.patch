@@ -1,5 +1,5 @@
---- bristol-0.60.11/bristol/bristolmemorymoog.c
-+++ bristol-0.60.11/bristol/bristolmemorymoog.c
+--- a/bristol/bristolmemorymoog.c
++++ b/bristol/bristolmemorymoog.c
 @@ -33,6 +33,7 @@
  #include "bristolmemorymoog.h"
  

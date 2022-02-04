@@ -1,0 +1,16 @@
+index 263d3d8..68a8fea 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -45,11 +45,9 @@ int f() {
+ 
+ # Try to optimize.
+ AC_MSG_CHECKING([[for optimization flags]])
+-new_CFLAGS="-O3 -funroll-loops -finline-functions -fomit-frame-pointer"
++new_CFLAGS=""
+ saved_CFLAGS="$CFLAGS"
+ CFLAGS="$CFLAGS $new_CFLAGS"
+-# Remove any existing "-O2", or it will override what we're doing.
+-CFLAGS=$( printf "%s" "$CFLAGS" | sed -e 's/ -O2/ /' )
+ AC_LINK_IFELSE(
+   [AC_LANG_PROGRAM([[
+ #include <stdio.h>

@@ -1,13 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
 DESCRIPTION="Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim"
 HOMEPAGE="https://savannah.nongnu.org/projects/fbi-improved"
 SRC_URI="http://download.savannah.gnu.org/releases/fbi-improved/${P/_rc/-rc}.tar.bz2"
+S="${WORKDIR}"/${P/_rc/-rc}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -31,17 +32,16 @@ RDEPEND="media-fonts/terminus-font
 	svg? ( media-gfx/inkscape )
 	tiff? ( media-libs/tiff:0 )
 	xfig? ( media-gfx/xfig )"
-DEPEND="${RDEPEND}
-	sys-devel/bison
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/bison
 	sys-devel/flex"
-
-S=${WORKDIR}/${P/_rc/-rc}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.4_rc3-poppler031.patch"
 	"${FILESDIR}/${PN}-0.5_rc3-jpeg.patch"
 	"${FILESDIR}/${PN}-0.5_rc3-libsdl.patch"
 	"${FILESDIR}/${PN}-0.5_rc3-jpeg-9c.patch"
+	"${FILESDIR}/${PN}-0.5_rc3-deg-symbol.patch"
 )
 
 src_prepare() {

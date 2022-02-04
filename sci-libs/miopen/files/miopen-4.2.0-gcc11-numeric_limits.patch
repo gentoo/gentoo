@@ -1,0 +1,14 @@
+See: https://stackoverflow.com/questions/4798936/numeric-limits-was-not-declared-in-this-scope-no-matching-function-for-call-t
+
+https://www.gnu.org/software/gcc/gcc-11/porting_to.html#header-dep-changes
+
+--- MIOpen-rocm-4.2.0/src/include/miopen/float_equal.hpp
++++ MIOpen-rocm-4.2.0/src/include/miopen/float_equal.hpp
+@@ -29,6 +29,7 @@
+ #include <algorithm>
+ #include <cmath>
+ #include <numeric>
++#include <limits>
+ #ifdef _MSC_VER
+ #include <iso646.h>
+ #endif

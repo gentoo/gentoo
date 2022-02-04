@@ -17,7 +17,7 @@ KEYWORDS="amd64 x86"
 IUSE="debug"
 
 RDEPEND="
-	>=media-libs/libprojectm-2.1.0
+	>=media-libs/libprojectm-3.1.12:0=
 	media-libs/libsdl
 	=media-libs/libvisual-0.4*
 	virtual/opengl

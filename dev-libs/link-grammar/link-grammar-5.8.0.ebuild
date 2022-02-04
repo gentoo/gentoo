@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit autotools java-pkg-opt-2 python-r1 out-of-source
 
@@ -13,7 +13,7 @@ SRC_URI="https://www.abisource.com/downloads/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 sparc x86"
 IUSE="aspell +hunspell java python" # pcre
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">breezy-team/breezy</remote-id>
+		<remote-id type="launchpad">brz</remote-id>
+		<remote-id type="pypi">breezy</remote-id>
+	</upstream>
+</pkgmetadata>

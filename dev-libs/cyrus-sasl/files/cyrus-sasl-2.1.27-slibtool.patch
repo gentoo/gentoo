@@ -1,0 +1,18 @@
+https://github.com/cyrusimap/cyrus-sasl/pull/623
+https://bugs.gentoo.org/775875
+
+From 5b8075eeba8d0334573689450b07610c176a2618 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Wed, 9 Sep 2020 07:29:38 -0700
+Subject: [PATCH] common: Define the missing crypto_compat_version version.
+
+--- a/common/Makefile.am
++++ b/common/Makefile.am
+@@ -46,6 +46,7 @@
+ # See <http://www.gnu.org/software/libtool/manual/libtool.html#Versioning>
+ # CURRENT:REVISION:AGE
+ plugin_common_version = 3:0:0
++crypto_compat_version = 0:0:0
+ 
+ AM_CPPFLAGS=-fPIC -I$(top_srcdir)/include -I$(top_builddir)/include
+ 

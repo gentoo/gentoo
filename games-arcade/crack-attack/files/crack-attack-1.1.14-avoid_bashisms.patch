@@ -1,0 +1,15 @@
+--- crack-attack-1.1.14/configure.ac
++++ crack-attack-1.1.14/configure.ac
+@@ -75,10 +75,10 @@
+     ],[found_sound=no]
+   )
+ 
+-  if test "$enable_sound" == "yes" -a "$found_sound" == "no"; then
++  if test "$enable_sound" = "yes" -a "$found_sound" = "no"; then
+     AC_MSG_ERROR(libSDL and SDL_mixer are required for sound)
+   fi
+-  if test "$found_sound" == "yes"; then
++  if test "$found_sound" = "yes"; then
+     AUDIO_CFLAGS="$SDL_CFLAGS"
+     AUDIO_LIBS="$SDL_LIBS -lSDL_mixer"
+     AC_DEFINE(AUDIO_ENABLED, 1, [Has audio support])

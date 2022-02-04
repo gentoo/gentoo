@@ -1,17 +1,17 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools desktop eutils
+EAPI=7
 
-DESCRIPTION="An arcade 2D shoot-em-up game"
-HOMEPAGE="http://linux.tlk.fr/"
-SRC_URI="http://linux.tlk.fr/games/Powermanga/download/${P}.tgz"
+inherit autotools desktop wrapper
 
-LICENSE="GPL-3"
+DESCRIPTION="Arcade 2D shoot-em-up game"
+HOMEPAGE="https://linux.tlk.fr/"
+SRC_URI="https://linux.tlk.fr/games/Powermanga/download/${P}.tgz"
+
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="acct-group/gamestat
 	>=media-libs/libsdl-1.2[sound,joystick,video]

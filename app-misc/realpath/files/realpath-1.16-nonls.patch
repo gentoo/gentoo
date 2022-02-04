@@ -1,8 +1,3 @@
- src/realpath.c |    6 +-----
- 1 files changed, 1 insertions(+), 5 deletions(-)
-
-diff --git a/src/realpath.c b/src/realpath.c
-index 76fc909..e2cf86f 100644
 --- a/src/realpath.c
 +++ b/src/realpath.c
 @@ -23,10 +23,9 @@

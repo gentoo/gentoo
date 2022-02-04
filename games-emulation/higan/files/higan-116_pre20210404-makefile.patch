@@ -1,0 +1,85 @@
+--- a/higan-ui/GNUmakefile
++++ b/higan-ui/GNUmakefile
+@@ -54,7 +54,7 @@
+ 
+ all: $(all.objects)
+ 	$(info Linking $(output.path)/$(name) ...)
+-	+@$(compiler) -o $(output.path)/$(name) $(all.objects) $(all.options)
++	$(compiler) $(LDFLAGS) -o $(output.path)/$(name) $(all.objects) $(all.options)
+ ifeq ($(platform),macos)
+ 	rm -rf $(output.path)/$(name).app
+ 	mkdir -p $(output.path)/$(name).app/Contents/MacOS/
+--- a/hiro/GNUmakefile
++++ b/hiro/GNUmakefile
+@@ -70,7 +70,7 @@
+ 	$(if $(filter qt%,$(hiro)),$(info Compiling $(hiro.path)/qt/qt.moc ...))
+ 	$(if $(filter qt%,$(hiro)),@$(moc) -i -o $(hiro.path)/qt/qt.moc $(hiro.path)/qt/qt.hpp)
+ 	$(info Compiling $(subst ../,,$<) ...)
+-	@$(compiler) $(hiro.flags) $(flags) $(flags.deps) -c $< -o $@
++	$(compiler) $(hiro.flags) $(flags) $(flags.deps) -c $< -o $@
+ 
+ $(object.path)/hiro-resource.o: $(hiro.resource)
+ 	$(info Compiling $(subst ../,,$<) ...)
+--- a/icarus/GNUmakefile
++++ b/icarus/GNUmakefile
+@@ -19,7 +19,7 @@
+ 
+ all: $(hiro.objects) $(objects)
+ 	$(info Linking $(output.path)/$(name) ...)
+-	+@$(compiler) -o $(output.path)/$(name) $(hiro.objects) $(objects) $(hiro.options) $(options)
++	$(compiler) $(LDFLAGS) -o $(output.path)/$(name) $(hiro.objects) $(objects) $(hiro.options) $(options)
+ ifeq ($(platform),macos)
+ 	rm -rf $(output.path)/$(name).app
+ 	mkdir -p $(output.path)/$(name).app/Contents/MacOS/
+--- a/nall/GNUmakefile
++++ b/nall/GNUmakefile
+@@ -77,17 +77,7 @@
+ endif
+ 
+ # build optimization levels
+-ifeq ($(build),debug)
+-  flags += -Og -g -DBUILD_DEBUG
+-else ifeq ($(build),stable)
+-  flags += -O1 -DBUILD_STABLE
+-else ifeq ($(build),size)
+-  flags += -Os -DBUILD_SIZE
+-else ifeq ($(build),release)
+-  flags += -O2 -DBUILD_RELEASE
+-else ifeq ($(build),performance)
+-  flags += -O3 -DBUILD_PERFORMANCE
+-endif
++flags += $(CPPFLAGS) $(CXXFLAGS) -DBUILD_RELEASE
+ 
+ # link-time optimization
+ ifeq ($(lto),true)
+@@ -167,7 +157,7 @@
+ 
+ %.o: $<
+ 	$(info Compiling $(subst ../,,$<) ...)
+-	@$(call compile)
++	$(call compile)
+ 
+ # function compile([arguments])
+ compile = \
+--- a/ruby/GNUmakefile
++++ b/ruby/GNUmakefile
+@@ -74,7 +74,7 @@
+ 
+ $(object.path)/ruby.o: $(ruby.path)/ruby.cpp $(call rwildcard,$(ruby.path))
+ 	$(info Compiling $(subst ../,,$<) ...)
+-	@$(compiler) $(ruby.flags) $(flags) $(flags.deps) -c $< -o $@
++	$(compiler) $(ruby.flags) $(flags) $(flags.deps) -c $< -o $@
+ 
+ ruby.verbose:
+ 	$(info ruby Drivers:)
+--- a/sourcery/GNUmakefile
++++ b/sourcery/GNUmakefile
+@@ -11,7 +11,7 @@
+ 
+ all: $(objects)
+ 	$(info Linking out/$(name) ...)
+-	+@$(compiler) -o out/$(name) $(objects) $(options)
++	$(compiler) $(LDFLAGS) -o out/$(name) $(objects) $(options)
+ 
+ verbose: nall.verbose all;
+ 

@@ -1,0 +1,13 @@
+diff --git a/Makefile.in b/Makefile.in
+index e0dd2a6..9bca63f 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1416,7 +1416,7 @@ appiconsvg_DATA = data/icons/scalable/amsynth.svg
+ desktopdir = $(datadir)/applications
+ desktop_in_files = data/amsynth.desktop.in
+ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+-appdatadir = $(datadir)/appdata
++appdatadir = $(datadir)/metadata
+ appdata_in_files = data/amsynth.appdata.xml.in \
+ 	data/dssi-amsynth-plugin.metainfo.xml.in \
+ 	data/lv2-amsynth-plugin.metainfo.xml.in \

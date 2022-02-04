@@ -1,31 +1,31 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit autotools eutils ltprune
+inherit autotools
 
 DESCRIPTION="Pidgin GPG/OpenPGP (XEP-0027) plugin"
 HOMEPAGE="https://github.com/Draghtnod/Pidgin-GPG"
 SRC_URI="https://github.com/Draghtnod/Pidgin-GPG/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~riscv ~x86"
 
 RDEPEND="app-crypt/gpgme
 	net-im/pidgin"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/Pidgin-GPG-${PV}"
 
 src_prepare() {
+	default
 	eautoreconf
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }

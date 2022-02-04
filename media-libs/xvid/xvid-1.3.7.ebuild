@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,8 +13,8 @@ SRC_URI="https://downloads.xvid.com/downloads/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="elibc_FreeBSD examples pic +threads"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+IUSE="examples pic +threads"
 
 NASM=">=dev-lang/nasm-2"
 YASM=">=dev-lang/yasm-1"
@@ -22,7 +22,6 @@ YASM=">=dev-lang/yasm-1"
 BDEPEND="sys-apps/grep"
 DEPEND="amd64? ( || ( ${YASM} ${NASM} ) )
 	x86? ( || ( ${YASM} ${NASM} ) )
-	x86-macos? ( ${NASM} )
 	x64-macos? ( ${NASM} )"
 
 S="${WORKDIR}/${MY_PN}/build/generic"
@@ -48,7 +47,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	use sparc && append-cflags -mno-vis #357149
-	use elibc_FreeBSD && export ac_cv_prog_ac_yasm=no #477736
 
 	local myconf=( $(use_enable threads pthread) )
 	if use pic || [[ ${ABI} == "x32" ]] ; then #421841

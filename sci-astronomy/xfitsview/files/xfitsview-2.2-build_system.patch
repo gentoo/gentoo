@@ -1,9 +1,22 @@
 * Fix parallel build
 * Respect LDFLAGS
 * Fix build with gmake 3.82
+* Respect AR
 
-http://bugs.gentoo.org/show_bug.cgi?id=337479
+https://bugs.gentoo.org/337479
+https://bugs.gentoo.org/725292
 
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -44,7 +44,7 @@
+ 
+ #  build fitssub library
+ $(ARCH)/libfitsLib.a: ${OBJECTS}
+-	ar rv $(ARCH)/libfitsLib.a ${OBJECTS}
++	${AR} rv $(ARCH)/libfitsLib.a ${OBJECTS}
+ 	${RANLIB} $(ARCH)/libfitsLib.a
+ 
+ clean:
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -61,26 +61,26 @@

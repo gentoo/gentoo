@@ -1,16 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+LUA_COMPAT=( luajit )
+LUA_REQ_USE="lua52compat"
 
 WX_GTK_VER=3.0-gtk3
 PLOCALES="ar be bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_BR pt_PT ru sr_RS sr_RS@latin uk_UA vi zh_CN zh_TW"
 
-inherit autotools gnome2-utils l10n wxwidgets xdg-utils git-r3
+inherit autotools lua-single plocale wxwidgets xdg-utils git-r3
 
 DESCRIPTION="Advanced subtitle editor"
-HOMEPAGE="http://www.aegisub.org/ https://github.com/Aegisub/Aegisub"
-EGIT_REPO_URI="https://github.com/${PN^}/${PN^}.git"
+HOMEPAGE="http://www.aegisub.org/ https://github.com/wangqr/Aegisub"
+EGIT_REPO_URI="https://github.com/wangqr/${PN^}.git"
 # Submodules are used to pull bundled libraries.
 EGIT_SUBMODULES=()
 
@@ -23,10 +26,9 @@ RESTRICT="test"
 # aegisub bundles luabins (https://github.com/agladysh/luabins).
 # Unfortunately, luabins upstream is practically dead since 2010.
 # Thus unbundling luabins isn't worth the effort.
-RDEPEND="
+RDEPEND="${LUA_DEPS}
 	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,debug?]
-	dev-lang/luajit:2[lua52compat]
-	dev-libs/boost:=[icu,nls,threads]
+	dev-libs/boost:=[icu,nls,threads(+)]
 	dev-libs/icu:=
 	media-libs/ffmpegsource:=
 	media-libs/fontconfig
@@ -43,17 +45,22 @@ RDEPEND="
 	spell? ( app-text/hunspell:= )
 	uchardet? ( app-i18n/uchardet )
 "
-DEPEND="${RDEPEND}
-	dev-util/intltool
+DEPEND="${RDEPEND}"
+BDEPEND="dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
 "
 
-REQUIRED_USE="|| ( alsa openal oss portaudio pulseaudio )"
+REQUIRED_USE="${LUA_REQUIRED_USE}
+	|| ( alsa openal oss portaudio pulseaudio )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-git.patch"
 )
+
+pkg_setup() {
+	lua-single_pkg_setup
+}
 
 src_prepare() {
 	default_src_prepare
@@ -65,8 +72,8 @@ src_prepare() {
 		rm "po/${1}.po" || die
 	}
 
-	l10n_find_plocales_changes 'po' '' '.po'
-	l10n_for_each_disabled_locale_do remove_locale
+	plocale_find_changes 'po' '' '.po'
+	plocale_for_each_disabled_locale remove_locale
 
 	# See http://devel.aegisub.org/ticket/1914
 	config_rpath_update "${S}"/config.rpath
@@ -107,16 +114,12 @@ src_test() {
 	emake test-libaegisub
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <catmetadata>
 	<longdescription lang="en">
 		The x11-base category contains various X11 base implementations.
@@ -30,4 +30,3 @@
 		Kategoria x11-base zawiera podstawowe implementacje X11.
 	</longdescription>
 </catmetadata>
-

@@ -1,8 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 JAVA_PKG_IUSE="doc examples source test"
+MAVEN_ID="org.mozilla:rhino:1.7.7"
+
 inherit java-pkg-2 java-ant-2 versionator
 
 # rhino -> Rhino

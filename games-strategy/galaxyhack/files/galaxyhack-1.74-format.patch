@@ -1,5 +1,5 @@
---- a/JSDL.cpp.old	2016-01-04 10:42:56.404316856 +0100
-+++ b/JSDL.cpp	2016-01-04 10:51:16.744255312 +0100
+--- a/JSDL.cpp
++++ b/JSDL.cpp
 @@ -47,14 +47,14 @@
  	if (!globalSettings.batch) {
  		if (SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO) == -1) {

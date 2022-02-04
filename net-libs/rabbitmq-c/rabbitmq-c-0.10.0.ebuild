@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -13,23 +13,20 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/alanxz/${PN}.git"
 else
 	SRC_URI="https://github.com/alanxz/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 LICENSE="MIT"
 SLOT="0/4"
-IUSE="doc libressl test +ssl static-libs tools"
+IUSE="doc test +ssl static-libs tools"
 
 REQUIRED_USE="test? ( static-libs )"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="ssl? (
-		libressl? ( dev-libs/libressl:= )
-		!libressl? ( dev-libs/openssl:0= )
-	)
+RDEPEND="ssl? ( dev-libs/openssl:0= )
 	tools? ( dev-libs/popt )"
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	tools? ( app-text/xmlto )"
 DOCS=( AUTHORS README.md THANKS TODO )

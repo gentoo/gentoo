@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
     <email>grozin@gentoo.org</email>
@@ -16,6 +16,7 @@
   And of course it's even better and easier to use.
 </longdescription>
   <upstream>
+    <remote-id type="github">Maproom/qmapshack</remote-id>
     <remote-id type="bitbucket">maproom/qmapshack</remote-id>
   </upstream>
 </pkgmetadata>

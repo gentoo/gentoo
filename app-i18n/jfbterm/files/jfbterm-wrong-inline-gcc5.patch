@@ -1,0 +1,24 @@
+https://src.fedoraproject.org/rpms/jfbterm/blob/rawhide/f/jfbterm-0.4.7-wrong-inline-gcc5.patch
+
+--- a/pen.c
++++ b/pen.c
+@@ -62,7 +62,7 @@
+ 	p->attr = q->attr;
+ }
+ 
+-inline void tpen_off_all_attribute(TPen* p)
++void tpen_off_all_attribute(TPen* p)
+ {
+ 	p->bcol = 0;
+ 	p->fcol = 7;
+--- a/pen.h
++++ b/pen.h
+@@ -58,7 +58,7 @@
+ void tpen_init(TPen* p);
+ void tpen_final(TPen* p);
+ void tpen_copy(TPen* p, TPen* q);
+-inline void tpen_off_all_attribute(TPen* p);
++void tpen_off_all_attribute(TPen* p);
+ void tpen_higlight(TPen* p);
+ void tpen_dehiglight(TPen* p);
+ void tpen_underline(TPen* p);

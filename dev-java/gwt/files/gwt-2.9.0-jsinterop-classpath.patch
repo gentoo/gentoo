@@ -1,0 +1,20 @@
+# It's unclear how upstream gets their "dev.compile.test" target to compile
+# without this - it could be that their testing is done with the local tools/
+# dir, and that some assumptions are made somewhere in the bulid system that
+# don't apply when the tools dir is elsewhere. Either way, this fixes it.
+#
+# a Pull Request (of sorts) has been issued with upstream to incorporate this
+# change. I would list the PR link here, but they use gerrit, and i don't
+# understand what happened to my submission after I issued
+# `git push upstream HEAD:refs/for/master`
+
+--- a/dev/build.xml
++++ b/dev/build.xml
+@@ -60,6 +60,7 @@
+         <pathelement
+             location="${gwt.tools.lib}/streamhtmlparser/streamhtmlparser-jsilver-r10/streamhtmlparser-jsilver-r10-1.5-rebased.jar"/>
+         <pathelement location="${gwt.build.lib}/gwt-dev-${build.host.platform}.jar"/>
++        <pathelement location="${gwt.tools.lib}/jsinterop/jsinterop-annotations-2.0.0.jar"/>
+         <pathelement location="${alldeps.jar}"/>
+       </classpath>
+     </gwt.javac>

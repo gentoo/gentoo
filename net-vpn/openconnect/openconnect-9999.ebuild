@@ -1,9 +1,9 @@
-# Copyright 2011-2020 Gentoo Authors
+# Copyright 2011-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8,3_9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml"
 
 inherit linux-info python-any-r1
@@ -12,26 +12,25 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/openconnect/openconnect.git"
 	inherit git-r3 autotools
 else
-	ARCHIVE_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	SRC_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 fi
-VPNC_VER=20200226
-SRC_URI="${ARCHIVE_URI}
-	ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-${VPNC_VER}.tar.gz"
 
 DESCRIPTION="Free client for Cisco AnyConnect SSL VPN software"
 HOMEPAGE="http://www.infradead.org/openconnect.html"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
-IUSE="doc +gnutls gssapi libproxy lz4 nls smartcard stoken test"
+IUSE="doc +gnutls gssapi libproxy lz4 nls pskc smartcard stoken test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/libxml2
 	sys-libs/zlib
+	app-crypt/p11-kit
 	!gnutls? (
 		>=dev-libs/openssl-1.0.1h:0=
+		dev-libs/libp11
 	)
 	gnutls? (
 		app-crypt/trousers
@@ -45,11 +44,13 @@ DEPEND="
 	libproxy? ( net-libs/libproxy )
 	lz4? ( app-arch/lz4:= )
 	nls? ( virtual/libintl )
+	pskc? ( sys-auth/oath-toolkit[pskc] )
 	smartcard? ( sys-apps/pcsc-lite:0= )
 	stoken? ( app-crypt/stoken )
 "
 RDEPEND="${DEPEND}
 	sys-apps/iproute2
+	>=net-vpn/vpnc-scripts-20210402-r1
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -105,9 +106,10 @@ src_configure() {
 		$(use_with libproxy)
 		$(use_with lz4)
 		$(use_with gssapi)
+		$(use_with pskc libpskc)
 		$(use_with smartcard libpcsclite)
 		$(use_with stoken)
-		--with-vpnc-script="${EPREFIX}/etc/openconnect/openconnect.sh"
+		--with-vpnc-script="${EPREFIX}/etc/vpnc/vpnc-script"
 		--without-java
 	)
 
@@ -129,18 +131,12 @@ src_test() {
 
 src_install() {
 	default
-
 	find "${ED}" -name '*.la' -delete || die
 
-	dodoc "${FILESDIR}"/README.OpenRC.txt
+	dodoc "${FILESDIR}"/README.OpenRC
 
-	newinitd "${FILESDIR}"/openconnect.init.in-r4 openconnect
-	insinto /etc/openconnect
-
-	newconfd "${FILESDIR}"/openconnect.conf.in openconnect
-
-	exeinto /etc/openconnect
-	newexe "${WORKDIR}"/vpnc-scripts-${VPNC_VER}/vpnc-script openconnect.sh
+	newconfd "${FILESDIR}"/openconnect.confd openconnect
+	newinitd "${FILESDIR}"/openconnect.initd openconnect
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/openconnect.logrotate openconnect

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>desktop-misc@gentoo.org</email>
-		<name>Gentoo Desktop Miscellaneous Project</name>
+	<maintainer type="person">
+		<email>ultrabug@gentoo.org</email>
+		<name>Alexys Jacob</name>
 	</maintainer>
 	<longdescription>
 		i3status is a small program (about 1500 SLOC) for generating a status bar for

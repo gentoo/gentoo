@@ -1,0 +1,24 @@
+diff -ruN PDL-2.054.orig/Libtmp/Minuit/Makefile.PL PDL-2.054/Libtmp/Minuit/Makefile.PL
+--- PDL-2.054.orig/Libtmp/Minuit/Makefile.PL	2021-06-13 15:28:36.000000000 +0200
++++ PDL-2.054/Libtmp/Minuit/Makefile.PL	2021-07-29 00:34:57.754727357 +0200
+@@ -139,7 +139,7 @@
+ 	    ("
+ 
+ minuitlib/$_\$(OBJ_EXT): minuitlib/$_.f 
+-	$mycompiler -c $hack_64bit -o minuitlib/$_\$(OBJ_EXT) $mycflags minuitlib/$_.f
++	\$(FC) \$(FFLAGS) -fPIC -c -o minuitlib/$_\$(OBJ_EXT) $mycflags minuitlib/$_.f
+ " )} @minuitfiles;
+ 
+ 	if (!defined($PDL::Config{MINUIT_LIB})){
+diff -ruN PDL-2.054.orig/Libtmp/Slatec/Makefile.PL PDL-2.054/Libtmp/Slatec/Makefile.PL
+--- PDL-2.054.orig/Libtmp/Slatec/Makefile.PL	2021-06-13 15:29:15.000000000 +0200
++++ PDL-2.054/Libtmp/Slatec/Makefile.PL	2021-07-29 00:34:57.754727357 +0200
+@@ -103,7 +103,7 @@
+ ("
+ 
+ slatec/$_\$(OBJ_EXT): slatec/$_.f 
+-	$mycompiler -c $hack_64bit -o slatec/$_\$(OBJ_EXT) $mycflags slatec/$_.f
++	\$(FC) \$(FFLAGS) -c -fPIC -o slatec/$_\$(OBJ_EXT) $mycflags slatec/$_.f
+ " )} @slatecfiles;
+  
+ };

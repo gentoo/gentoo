@@ -1,5 +1,5 @@
---- usr/sbin/xe-update-guest-attrs.orig	2013-06-14 07:57:18.000000000 -0500
-+++ usr/sbin/xe-update-guest-attrs	2014-04-19 13:38:14.627477193 -0500
+--- a/xe-update-guest-attrs
++++ b/xe-update-guest-attrs
 @@ -1,6 +1,7 @@
  #!/bin/sh
  

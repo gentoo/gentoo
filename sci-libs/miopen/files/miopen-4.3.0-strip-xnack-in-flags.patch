@@ -1,0 +1,18 @@
+if options like :xnack- exists in ${AMDGPU_TARGETS}, CMakeLists cannot handle HIP_COMPILER_FLAGS well
+
+the original regex replace should include :+- so xnack- is stripped as well. Otherwise clang complation at MIOpen runtime will fail.
+
+Signed-off-by: Yiyang Wu <xgreenlandforwyy@gmail.com>
+--- orig/CMakeLists.txt
++++ MIOpen-rocm-4.3.0/CMakeLists.txt
+@@ -191,8 +191,8 @@ find_package(hip REQUIRED PATHS /opt/roc
+ message(STATUS "Build with HIP ${hip_VERSION}")
+ target_flags(HIP_COMPILER_FLAGS hip::device)
+ # Remove cuda arch flags
+-string(REGEX REPLACE --cuda-gpu-arch=[a-z0-9]+ "" HIP_COMPILER_FLAGS "${HIP_COMPILER_FLAGS}")
+-string(REGEX REPLACE --offload-arch=[a-z0-9]+ "" HIP_COMPILER_FLAGS "${HIP_COMPILER_FLAGS}")
++string(REGEX REPLACE --cuda-gpu-arch=[a-z0-9:+-]+ "" HIP_COMPILER_FLAGS "${HIP_COMPILER_FLAGS}")
++string(REGEX REPLACE --offload-arch=[a-z0-9:+-]+ "" HIP_COMPILER_FLAGS "${HIP_COMPILER_FLAGS}")
+ 
+ # Override HIP version in config.h, if necessary.
+ # The variables set by find_package() can't be overwritten,

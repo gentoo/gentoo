@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eutils flag-o-matic ltprune multilib-minimal
+inherit autotools flag-o-matic multilib-minimal
 
 DESCRIPTION="Full Database Encryption for SQLite"
 HOMEPAGE="https://www.zetetic.net/sqlcipher/"
@@ -13,14 +13,13 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-IUSE="libedit readline libressl static-libs tcl test"
+IUSE="libedit readline static-libs tcl test"
 RESTRICT="!test? ( test )"
 
 # Tcl is always needed by buildsystem
 RDEPEND="
 	libedit? ( dev-libs/libedit[${MULTILIB_USEDEP}] )
-	!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
-	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+	dev-libs/openssl:0=[${MULTILIB_USEDEP}]
 	readline? ( sys-libs/readline:0=[${MULTILIB_USEDEP}] )
 	tcl? ( dev-lang/tcl:=[${MULTILIB_USEDEP}] )
 "
@@ -37,16 +36,13 @@ REQUIRED_USE="
 DOCS=( README.md )
 
 src_prepare() {
-	# bug #678502
-	eapply "${FILESDIR}/${P}-libressl-2.8.patch"
-
 	append-cflags -DSQLITE_HAS_CODEC
-	eapply_user
+	default
 	eautoreconf
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} \
+	ECONF_SOURCE="${S}" \
 	econf \
 		--enable-fts3 \
 		--enable-fts4 \
@@ -60,6 +56,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
+
 	einstalldocs
 }

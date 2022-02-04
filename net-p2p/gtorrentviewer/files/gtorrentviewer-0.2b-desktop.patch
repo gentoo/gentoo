@@ -1,5 +1,5 @@
---- data/gtorrentviewer.desktop.in.old	2014-11-22 17:48:55.859683842 +0100
-+++ data/gtorrentviewer.desktop.in	2014-11-22 17:49:25.400108137 +0100
+--- a/data/gtorrentviewer.desktop.in
++++ b/data/gtorrentviewer.desktop.in
 @@ -3,11 +3,9 @@
  _GenericName=Torrent Viewer
  _Comment=Viewer and Editor for .torrent files

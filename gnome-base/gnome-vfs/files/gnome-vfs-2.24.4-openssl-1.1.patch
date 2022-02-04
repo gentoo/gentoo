@@ -4,8 +4,8 @@ struct SSL is opaque in openssl-1.1; and the SSL_free() man page
 says that one should not free members of it manually (in both
 the openssl-1.0 and openssl-1.1 man pages).
 
---- libgnomevfs/gnome-vfs-ssl.c.orig	2010-02-09 12:16:14.000000000 +0000
-+++ libgnomevfs/gnome-vfs-ssl.c
+--- a/libgnomevfs/gnome-vfs-ssl.c
++++ b/libgnomevfs/gnome-vfs-ssl.c
 @@ -400,9 +400,6 @@ gnome_vfs_ssl_create_from_fd (GnomeVFSSS
  			}
  		}

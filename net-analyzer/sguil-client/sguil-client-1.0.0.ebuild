@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ DESCRIPTION="GUI Console for sguil Network Security Monitoring"
 HOMEPAGE="https://github.com/bammv/sguil"
 SRC_URI="https://github.com/bammv/sguil/archive/v${PV}.tar.gz -> ${P/-client}.tar.gz"
 
-LICENSE="QPL"
+LICENSE="GPL-3 GPL-2+ QPL-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ssl"

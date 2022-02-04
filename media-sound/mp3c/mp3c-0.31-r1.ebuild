@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ IUSE="mp3 vorbis"
 DEPEND="sys-libs/ncurses:0="
 RDEPEND="
 	${DEPEND}
-	virtual/cdrtools
+	app-cdr/cdrtools
 	mp3? (
 		media-sound/lame
 		media-sound/mp3info

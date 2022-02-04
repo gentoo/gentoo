@@ -1,0 +1,39 @@
+From e0abf88a15d23fbf793cf872397016ad86aeaaa8 Mon Sep 17 00:00:00 2001
+From: lapseofreason <lapseofreason0@gmail.com>
+Date: Tue, 8 Jun 2021 16:01:58 +0200
+Subject: [PATCH] fix(crypt): remove quotes from cryptsetupopts
+
+Fixes #1528.
+---
+ modules.d/90crypt/cryptroot-ask.sh | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/modules.d/90crypt/cryptroot-ask.sh b/modules.d/90crypt/cryptroot-ask.sh
+index 37a4deea..b1f8df81 100755
+--- a/modules.d/90crypt/cryptroot-ask.sh
++++ b/modules.d/90crypt/cryptroot-ask.sh
+@@ -138,8 +138,9 @@ unset allowdiscards
+ ask_passphrase=1
+ 
+ if [ -n "$luksfile" -a "$luksfile" != "none" -a -e "$luksfile" ]; then
++    # shellcheck disable=SC2086
+     if readkey "$luksfile" / "$device" \
+-        | cryptsetup -d - "$cryptsetupopts" luksOpen "$device" "$luksname"; then
++        | cryptsetup -d - $cryptsetupopts luksOpen "$device" "$luksname"; then
+         ask_passphrase=0
+     fi
+ elif [ "$is_keysource" -ne 0 ]; then
+@@ -164,8 +165,9 @@ else
+         unset tmp
+ 
+         info "Using '$keypath' on '$keydev'"
++        # shellcheck disable=SC2086
+         readkey "$keypath" "$keydev" "$device" \
+-            | cryptsetup -d - "$cryptsetupopts" luksOpen "$device" "$luksname" \
++            | cryptsetup -d - $cryptsetupopts luksOpen "$device" "$luksname" \
+             && ask_passphrase=0
+         unset keypath keydev
+         break
+-- 
+2.32.0
+

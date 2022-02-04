@@ -1,8 +1,8 @@
-# Copyright 2010-2020 Gentoo Authors
+# Copyright 2010-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=(python{3_7,3_8,3_9})
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit cmake python-any-r1
 
@@ -27,7 +27,7 @@ fi
 # deps/tclap-1.2.1: MIT
 LICENSE="Apache-2.0 BSD-2 MIT test? ( BSD )"
 SLOT="0/2"
-KEYWORDS="amd64 arm64 hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm64 ~hppa ppc ppc64 sparc x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 

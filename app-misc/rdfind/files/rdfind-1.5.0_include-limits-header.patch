@@ -1,0 +1,25 @@
+From 054eda51711cb2623bad022db613381fa8c183d0 Mon Sep 17 00:00:00 2001
+From: tastytea <tastytea@tastytea.de>
+Date: Sun, 15 Aug 2021 16:50:44 +0200
+Subject: [PATCH] Include limits header.
+
+Needed for std::numeric_limits.
+---
+ rdfind.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/rdfind.cc b/rdfind.cc
+index fbd6cb8..64dd8f6 100644
+--- a/rdfind.cc
++++ b/rdfind.cc
+@@ -9,6 +9,7 @@
+ // std
+ #include <algorithm>
+ #include <iostream>
++#include <limits>
+ #include <string>
+ #include <vector>
+ 
+-- 
+2.31.1
+

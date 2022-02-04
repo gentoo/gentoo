@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,13 +12,14 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 
-DEPEND="
+RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXft
 	x11-libs/libXinerama
 "
-RDEPEND="
-	${DEPEND}
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
 "
 
 src_prepare() {

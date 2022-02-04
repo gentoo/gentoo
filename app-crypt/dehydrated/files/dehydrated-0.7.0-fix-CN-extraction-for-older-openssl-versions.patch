@@ -1,0 +1,30 @@
+From 29b67962ac07d5d2b24f69c863a9ef31e8ac53ee Mon Sep 17 00:00:00 2001
+From: Lukas Schauer <lukas@schauer.so>
+Date: Fri, 11 Dec 2020 18:02:51 +0100
+Subject: [PATCH] fix CN extraction for older openssl versions
+
+---
+ dehydrated | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/dehydrated b/dehydrated
+index 622165e..37e0ab6 100755
+--- a/dehydrated
++++ b/dehydrated
+@@ -926,14 +926,14 @@ extract_altnames() {
+     printf "%s" "${altnames}" | tr '\n' ' '
+   else
+     # No SANs, extract CN
+-    altnames="$( <<<"${reqtext}" grep '^[[:space:]]*Subject:' | _sed -e 's/.* CN ?= ?([^ /,]*).*/\1/' )"
++    altnames="$( <<<"${reqtext}" grep '^[[:space:]]*Subject:' | _sed -e 's/.*[ /]CN ?= ?([^ /,]*).*/\1/' )"
+     printf "%s" "${altnames}"
+   fi
+ }
+ 
+ # Get last issuer CN in certificate chain
+ get_last_cn() {
+-  <<<"${1}" _sed 'H;/-----BEGIN CERTIFICATE-----/h;$!d;x' | "${OPENSSL}" x509 -noout -issuer | head -n1 | _sed -e 's/.* CN ?= ?([^/,]*).*/\1/'
++  <<<"${1}" _sed 'H;/-----BEGIN CERTIFICATE-----/h;$!d;x' | "${OPENSSL}" x509 -noout -issuer | head -n1 | _sed -e 's/.*[ /]CN ?= ?([^/,]*).*/\1/'
+ }
+ 
+ # Create certificate for domain(s) and outputs it FD 3

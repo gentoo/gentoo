@@ -1,0 +1,30 @@
+From 6552e5374c335d62ba960a74b5b978897c823376 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 28 Jul 2021 10:33:22 +0200
+Subject: [PATCH] Fix creating non-listening sockets in tests on some platforms
+
+Fix the listen() invocation for the test server not to pass a backlog
+value of zero.  The value of zero means no backlog which effectively
+means that the socket can not accept any connections.  This does not
+matter for the majority of platforms since the value is only advisory
+and the platform tends to go with a bigger backlog anyway.  However,
+a few platforms (e.g. alpha or riscv Linux) do take the value literally,
+and therefore the tests fail since they are unable to connect to
+the server.  Let Python use a 'default reasonable value' instead.
+---
+ tests/testserver/server.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/testserver/server.py b/tests/testserver/server.py
+index 132221f7c4..92dcb6cb1a 100644
+--- a/tests/testserver/server.py
++++ b/tests/testserver/server.py
+@@ -78,7 +78,7 @@ def run(self):
+     def _create_socket_and_bind(self):
+         sock = socket.socket()
+         sock.bind((self.host, self.port))
+-        sock.listen(0)
++        sock.listen()
+         return sock
+ 
+     def _close_server_sock_ignore_errors(self):

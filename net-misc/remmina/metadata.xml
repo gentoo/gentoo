@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>bkohler@gentoo.org</email>
@@ -14,10 +14,11 @@
 		Currently RDP, VNC, SPICE, NX, XDMCP and SSH are supported.
 	</longdescription>
 	<use>
+		<flag name="gvnc">Enable GVNC plugin using gtk-vnc, suitable for KVM and Vino servers</flag>
 		<flag name="kwallet">Enable KDE Wallet plugin</flag>
 		<flag name="spice">Support connecting to SPICE-enabled virtual machines</flag>
 		<flag name="ssh">Enable support for SSH/SFTP protocol</flag>
-		<flag name="telepathy">Enable telepathy support</flag>
+		<flag name="x2go">Enable support for X2Go</flag>
 	</use>
 	<upstream>
 		<remote-id type="gitlab">Remmina/Remmina</remote-id>

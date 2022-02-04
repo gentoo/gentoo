@@ -21,8 +21,8 @@
 -LIBS = -L/usr/lib -lc -L${X11LIB} -lX11 `pkg-config --libs xft`
 -
 -DEFS = -DVERSION=\"${VERSION}\" -DSYSCONFPATH=\"${CONF}\"
-+CFLAGS += -I. -I/usr/include `pkg-config --cflags x11 xft`
-+LIBS 	 += -L/usr/lib -lc `pkg-config --libs x11 xft`
++CFLAGS += -I. -I/usr/include `${PKG_CONFIG} --cflags x11 xft`
++LIBS 	 += -L/usr/lib -lc `${PKG_CONFIG} --libs x11 xft`
 +CPPFLAGS += -DVERSION=\"${VERSION}\" -DSYSCONFPATH=\"${CONF}\"
  
  # flags
@@ -42,8 +42,8 @@
 -
 +ifdef MULTIHEAD
 +CPPFLAGS += -DXRANDR=1
-+LIBS += `pkg-config --libs xrandr`
-+CCFLAGS += `pkg-config --libs xrandr`
++LIBS += `${PKG_CONFIG} --libs xrandr`
++CCFLAGS += `${PKG_CONFIG} --libs xrandr`
 +endif
  # Solaris
  #CFLAGS = -fast ${INCS} -DVERSION=\"${VERSION}\"

@@ -1,0 +1,21 @@
+Fixes errors like "umount: /var/lib/os-prober/mount: target is busy."
+which can appear in some corner-cases.
+
+Bug: https://bugzilla.redhat.com/903906
+
+--- a/common.sh
++++ b/common.sh
+@@ -336,3 +336,13 @@ linux_mount_boot () {
+ 
+ 	mountboot="$bootpart $mounted"
+ }
++
++umount_exec=$(which umount)
++umount() {
++	if ! $umount_exec $@ 2> /dev/null; then
++		error "umount error, retrying after 1 sec"
++		sleep 1
++		$umount_exec $@
++	fi
++}
++

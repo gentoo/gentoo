@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person" proxied="yes">
+    <email>randy@electronsweatshop.com</email>
+    <name>Randy Barlow</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription lang="en">
+    The Log File Navigator, lnav for short, is an advanced log file viewer for the small-scale. It
+    is a terminal application that can understand your log files and make it easy for you to find
+    problems with little to no setup.
+  </longdescription>
   <upstream>
     <remote-id type="github">tstack/lnav</remote-id>
   </upstream>

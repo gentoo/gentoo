@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 DESCRIPTION="Bluetooth, infrared or cable remote control service"
 HOMEPAGE="http://anyremote.sourceforge.net/"
@@ -24,9 +24,8 @@ RDEPEND="
 	zeroconf? ( net-dns/avahi )
 "
 
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 

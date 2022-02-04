@@ -1,11 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit vcs-snapshot
-
-COMMIT="b7e8e7b0efd9d73344e022e204f2e99e6321136e"
 DESCRIPTION="a rsync-based dump file system backup tool"
 HOMEPAGE="https://github.com/chneukirchen/rdumpfs"
 SRC_URI="https://github.com/chneukirchen/rdumpfs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -15,10 +12,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+xattr"
 
-DEPEND=""
 RDEPEND="net-misc/rsync[xattr?]"
 
 src_prepare() {
+	default
 	use xattr || sed -i '/RDUMPFS_DEFAULT_ARGS:=/s/aHAX/aHA/' "${PN}" || die
 }
 

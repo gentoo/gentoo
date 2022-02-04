@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit python-r1 cmake fortran-2
 
@@ -12,7 +12,7 @@ HOMEPAGE="https://ab-initio.mit.edu/nlopt/"
 SRC_URI="https://github.com/stevengj/nlopt/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1 MIT"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="cxx guile octave python static-libs test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

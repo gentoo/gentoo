@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib multilib-minimal
+inherit multilib-minimal
 
 MY_PV=${PV/_rc/-rc}
 MY_P=${PN}-${MY_PV}
@@ -13,8 +13,8 @@ SRC_URI="https://github.com/libffi/libffi/releases/download/v${MY_PV}/${MY_P}.ta
 
 LICENSE="MIT"
 SLOT="0/7" # SONAME=libffi.so.7
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="debug pax_kernel static-libs test"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="debug pax-kernel static-libs test"
 
 RESTRICT="!test? ( test )"
 
@@ -39,8 +39,16 @@ S=${WORKDIR}/${MY_P}
 
 ECONF_SOURCE=${S}
 
+src_prepare() {
+	default
+	if [[ ${CHOST} == arm64-*-darwin* ]] ; then
+		# ensure we use aarch64 asm, not x86 on arm64
+		sed -i -e 's/aarch64\*-\*-\*/arm64*-*-*|&/' \
+			configure configure.host || die
+	fi
+}
+
 multilib_src_configure() {
-	use userland_BSD && export HOST="${CHOST}"
 	# --includedir= path maintains a few properties:
 	# 1. have stable name across libffi versions: some packages like
 	#    dev-lang/ghc or kde-frameworks/networkmanager-qt embed
@@ -56,7 +64,7 @@ multilib_src_configure() {
 		--includedir="${EPREFIX}"/usr/$(get_libdir)/${PN}/include \
 		--disable-multi-os-directory \
 		$(use_enable static-libs static) \
-		$(use_enable pax_kernel pax_emutramp) \
+		$(use_enable pax-kernel pax_emutramp) \
 		$(use_enable debug)
 }
 

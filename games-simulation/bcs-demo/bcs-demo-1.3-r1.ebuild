@@ -1,19 +1,20 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils unpacker
+EAPI=7
+inherit wrapper unpacker
 
 DESCRIPTION="design and build bridges and then stress test them with trains"
 HOMEPAGE="http://www.chroniclogic.com/pontifex2.htm"
 SRC_URI="ftp://ggdev-1.homelan.com/bcs/bcsdemo_v${PV/./_}.sh.bin
 	http://www.highprogrammer.com/alan/pfx2/openal-alan-hack-0.0.1.tar.gz"
+S="${WORKDIR}"
 
 LICENSE="BCS"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
-RESTRICT="strip"
+
+RESTRICT="bindist mirror strip"
 
 RDEPEND="
 	media-libs/libsdl[abi_x86_32(-)]
@@ -23,8 +24,6 @@ RDEPEND="
 	x11-libs/libXdmcp[abi_x86_32(-)]
 	x11-libs/libXext[abi_x86_32(-)]
 	virtual/opengl[abi_x86_32(-)]"
-
-S=${WORKDIR}
 
 dir=/opt/${PN}
 Ddir=${D}/${dir}

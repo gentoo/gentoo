@@ -1,0 +1,136 @@
+From: Alan Modra <amodra@gmail.com>
+Date: Mon, 16 Nov 2020 22:08:05 +0000 (+1030)
+Subject: PR26882, --enable-textrel-check=warning test failures on powerpc
+X-Git-Tag: binutils-2_36~578
+X-Git-Url: https://sourceware.org/git/?p=binutils-gdb.git;a=commitdiff_plain;h=7cc340055d3993a25ded914aef88f784f16d46bc;hp=6f2643dbd2192e6fff77a5e6fec5141d209fd7d0
+
+PR26882, --enable-textrel-check=warning test failures on powerpc
+
+	PR 26882
+	* testsuite/ld-powerpc/dotsym3.d: Add "-z notext" to ld options.
+	* testsuite/ld-powerpc/dotsym4.d: Likewise.
+	* testsuite/ld-powerpc/ppc476-shared.d: Likewise.
+	* testsuite/ld-powerpc/ppc476-shared2.d: Likewise.
+	* testsuite/ld-powerpc/powerpc.exp: Likewise for various tests.
+	* testsuite/ld-undefined/weak-fundef.s: Add BLPLT variant.
+	* testsuite/ld-undefined/weak-undef.exp: Define BLPLT for ppc32.
+---
+
+diff --git a/ld/testsuite/ld-powerpc/dotsym3.d b/ld/testsuite/ld-powerpc/dotsym3.d
+index fac2f8ec732..215a9c2a6c1 100644
+--- a/ld/testsuite/ld-powerpc/dotsym3.d
++++ b/ld/testsuite/ld-powerpc/dotsym3.d
+@@ -1,7 +1,7 @@
+ #source: nodotsym.s
+ #source: dotsymref.s
+ #as: -a64
+-#ld: -melf64ppc -Ttext=0x1000 -shared
++#ld: -melf64ppc -Ttext=0x1000 -shared -z notext
+ #objdump: -dR
+ 
+ .*:     file format .*
+diff --git a/ld/testsuite/ld-powerpc/dotsym4.d b/ld/testsuite/ld-powerpc/dotsym4.d
+index fdd92f3da76..d774e83bcf6 100644
+--- a/ld/testsuite/ld-powerpc/dotsym4.d
++++ b/ld/testsuite/ld-powerpc/dotsym4.d
+@@ -1,7 +1,7 @@
+ #source: dotsymref.s
+ #source: nodotsym.s
+ #as: -a64
+-#ld: -melf64ppc -Ttext=0x1000 -shared
++#ld: -melf64ppc -Ttext=0x1000 -shared -z notext
+ #objdump: -dR
+ 
+ .*:     file format .*
+diff --git a/ld/testsuite/ld-powerpc/powerpc.exp b/ld/testsuite/ld-powerpc/powerpc.exp
+index 74af28d7421..2cbefb841c2 100644
+--- a/ld/testsuite/ld-powerpc/powerpc.exp
++++ b/ld/testsuite/ld-powerpc/powerpc.exp
+@@ -99,7 +99,7 @@ proc supports_ppc64 { } {
+ # readelf: Apply readelf options on result.  Compare with regex (last arg).
+ 
+ set ppcelftests {
+-    {"Reloc section order" "-melf32ppc -shared -z nocombreloc" "" "-a32" {reloc.s}
++    {"Reloc section order" "-melf32ppc -shared -z nocombreloc -z notext" "" "-a32" {reloc.s}
+      {{objdump -hw reloc.d}} "reloc.so"}
+     {"APUinfo section processing" "-melf32ppc" ""
+      "-a32 -me500" {apuinfo1.s apuinfo-nul.s apuinfo2.s}
+@@ -134,7 +134,7 @@ set ppcelftests {
+      {{readelf -WSsrl tlsexe32no.r} {objdump -dr tlsexe32no.d}
+       {objdump -sj.got tlsexe32no.g} {objdump -sj.tdata tlsexe32.t}}
+      "tlsexe32no"}
+-    {"TLS32 shared" "-shared -melf32ppc --no-plt-align --no-ld-generated-unwind-info --hash-style=sysv tmpdir/tls32.o" "" "" {}
++    {"TLS32 shared" "-shared -melf32ppc --no-plt-align --no-ld-generated-unwind-info --hash-style=sysv -z notext tmpdir/tls32.o" "" "" {}
+      {{readelf -WSsrl tlsso32.r} {objdump -dr tlsso32.d}
+       {objdump -sj.got tlsso32.g} {objdump -sj.tdata tlsso32.t}}
+      "tls32.so"}
+@@ -202,7 +202,7 @@ set ppc64elftests {
+      {{readelf -WSsrl tlsexeno.r} {objdump -dr tlsexeno.d}
+       {objdump -sj.got tlsexeno.g} {objdump -sj.tdata tlsexe.t}}
+      "tlsexeno"}
+-    {"TLS shared" "-shared -melf64ppc --no-plt-align --no-ld-generated-unwind-info --hash-style=sysv tmpdir/tls.o" "" "" {}
++    {"TLS shared" "-shared -melf64ppc --no-plt-align --no-ld-generated-unwind-info --hash-style=sysv -z notext tmpdir/tls.o" "" "" {}
+      {{readelf -WSsrl tlsso.r} {objdump -dr tlsso.d}
+       {objdump -sj.got tlsso.g} {objdump -sj.tdata tlsso.t}}
+      "tls.so"}
+@@ -229,7 +229,7 @@ set ppc64elftests {
+      {{readelf -WSsrl tlsexetoc.r} {objdump -dr tlsexetocno.d}
+       {objdump -sj.got tlsexetocno.g} {objdump -sj.tdata tlsexetoc.t}}
+      "tlsexetocno"}
+-    {"TLSTOC shared" "-shared -melf64ppc --no-plt-align --no-ld-generated-unwind-info --hash-style=sysv tmpdir/tlstoc.o" "" "" {}
++    {"TLSTOC shared" "-shared -melf64ppc --no-plt-align --no-ld-generated-unwind-info --hash-style=sysv -z notext tmpdir/tlstoc.o" "" "" {}
+      {{readelf -WSsrl tlstocso.r} {objdump -dr tlstocso.d}
+       {objdump -sj.got tlstocso.g} {objdump -sj.tdata tlstocso.t}}
+      "tlstoc.so"}
+diff --git a/ld/testsuite/ld-powerpc/ppc476-shared.d b/ld/testsuite/ld-powerpc/ppc476-shared.d
+index 7953cb44e25..3b2cc8a155c 100644
+--- a/ld/testsuite/ld-powerpc/ppc476-shared.d
++++ b/ld/testsuite/ld-powerpc/ppc476-shared.d
+@@ -1,6 +1,6 @@
+ #source: ppc476-shared.s
+ #as: -a32
+-#ld: -melf32ppc -q -shared -z common-page-size=0x10000 --ppc476-workaround -T ppc476-shared.lnk
++#ld: -melf32ppc -q -shared -z common-page-size=0x10000 -z notext --ppc476-workaround -T ppc476-shared.lnk
+ #objdump: -dr
+ #target: powerpc*-*-*
+ 
+diff --git a/ld/testsuite/ld-powerpc/ppc476-shared2.d b/ld/testsuite/ld-powerpc/ppc476-shared2.d
+index 26a5c41f988..48917fd4d92 100644
+--- a/ld/testsuite/ld-powerpc/ppc476-shared2.d
++++ b/ld/testsuite/ld-powerpc/ppc476-shared2.d
+@@ -1,6 +1,6 @@
+ #source: ppc476-shared.s
+ #as: -a32
+-#ld: -melf32ppc -shared -z common-page-size=0x10000 --ppc476-workaround -T ppc476-shared.lnk
++#ld: -melf32ppc -shared -z common-page-size=0x10000 -z notext --ppc476-workaround -T ppc476-shared.lnk
+ #objdump: -R
+ #target: powerpc*-*-*
+ 
+diff --git a/ld/testsuite/ld-undefined/weak-fundef.s b/ld/testsuite/ld-undefined/weak-fundef.s
+index 2c20f799417..de8f641b6c2 100644
+--- a/ld/testsuite/ld-undefined/weak-fundef.s
++++ b/ld/testsuite/ld-undefined/weak-fundef.s
+@@ -5,6 +5,9 @@
+ 	bl undef_weak_fun
+ 	nop
+  .endif
++ .ifdef BLPLT
++	bl undef_weak_fun@plt
++ .endif
+  .ifdef CALLPLT
+ 	call undef_weak_fun@plt
+  .endif
+diff --git a/ld/testsuite/ld-undefined/weak-undef.exp b/ld/testsuite/ld-undefined/weak-undef.exp
+index 50c8e1483e3..14b6774c5bc 100644
+--- a/ld/testsuite/ld-undefined/weak-undef.exp
++++ b/ld/testsuite/ld-undefined/weak-undef.exp
+@@ -105,7 +105,8 @@ set asflags ""
+ switch -glob $target_triplet {
+     aarch64* -
+     arm* -
+-    powerpc* { set asflags "--defsym BL=1" }
++    powerpc64* { set asflags "--defsym BL=1" }
++    powerpc* { set asflags "--defsym BLPLT=1" }
+     hppa* { set asflags "--defsym HPPA=1" }
+     i\[3-7\]86* -
+     x86_64* { set asflags "--defsym CALLPLT=1" }

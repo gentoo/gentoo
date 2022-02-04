@@ -1,0 +1,16 @@
+--- a/configure
++++ b/configure
+@@ -4721,10 +4733,10 @@ test "$make_type" = "GNU Make" && GNUMAKE=''
+ $as_echo "$make_type" >&6; }
+ 
+ 
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking whether the linker accepts -export-dynamic" >&5
+-$as_echo_n "checking whether the linker accepts -export-dynamic... " >&6; }
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking whether the linker accepts -rdynamic" >&5
++$as_echo_n "checking whether the linker accepts -rdynamic... " >&6; }
+ OLDLDFLAGS=$LDFLAGS
+-LDFLAGS="$LDFLAGS -export-dynamic"
++LDFLAGS="$LDFLAGS -rdynamic"
+ if test "$cross_compiling" = yes; then :
+   ac_export_dynamic=no
+ else

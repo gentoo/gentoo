@@ -1,5 +1,3 @@
-Index: smpeg-0.4.4/configure.in
-===================================================================
 --- smpeg-0.4.4.orig/configure.in
 +++ smpeg-0.4.4/configure.in
 @@ -148,6 +148,7 @@ if test x$enable_mmx = xyes; then

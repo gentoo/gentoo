@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit toolchain-funcs eutils savedconfig
+inherit toolchain-funcs savedconfig
 
 GIT_REV="546dd51de8459d4d09958891f426fa2c73ff090d"
 GIT_SHORT=${GIT_REV:0:7}
@@ -25,8 +25,8 @@ SOURCE_DEPEND="app-arch/xz-utils
 	dev-lang/perl
 	sys-libs/zlib
 	iso? (
+		app-cdr/cdrtools
 		sys-boot/syslinux
-		virtual/cdrtools
 	)"
 DEPEND="
 	!binary? (

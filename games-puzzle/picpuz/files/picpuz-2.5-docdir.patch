@@ -1,0 +1,7 @@
+Simplify opening the html guide with right path.
+--- a/zfuncs.cc
++++ b/zfuncs.cc
+@@ -3222,2 +3222,3 @@
+    using namespace zfuncs;
++   showz_html("file://" PREFIX "/share/doc/" DOCDIR "/html/userguide-en.html"); return;
+ 

@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-inherit eutils gnome2
+inherit gnome2
 
 DESCRIPTION="Program for creating labels and business cards"
 HOMEPAGE="https://glabels.org/"
@@ -31,6 +31,10 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.28
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/glabels-externs.patch # Fix compilation with -fno-common/gcc10; patch from Fedora
+)
 
 src_configure() {
 	gnome2_src_configure \

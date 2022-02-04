@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <longdescription>
+    sedlex is a lexer generator for OCaml. It is similar to ocamllex, but
+    supports Unicode. Unlike ocamllex, sedlex allows lexer specifications
+    within regular OCaml source files. Lexing specific constructs are provided
+    via a ppx syntax extension.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/ocaml-community/sedlex/issues/</bugs-to>
+    <remote-id type="github">ocaml-community/sedlex</remote-id>
+  </upstream>
+</pkgmetadata>

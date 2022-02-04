@@ -1,5 +1,5 @@
---- madt/madt.c.orig
-+++ madt/madt.c
+--- a/madt/madt.c
++++ b/madt/madt.c
 @@ -46,7 +46,7 @@
  {
  	size_t retval;

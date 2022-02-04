@@ -1,0 +1,10 @@
+--- urlgrabber-urlgrabber-4-1-0/test/test_mirror.py.orig	2020-11-16 18:47:43.724337579 +0100
++++ urlgrabber-urlgrabber-4-1-0/test/test_mirror.py	2020-11-16 18:47:57.724337574 +0100
+@@ -290,6 +290,7 @@
+             self.exit = False
+ 
+         self.thread = threading.Thread(target=server)
++        self.thread.daemon = True
+         self.thread.start()
+ 
+         # create grabber and mirror group objects

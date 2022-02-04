@@ -1,0 +1,31 @@
+From 06fa7792a51cb970e5d010a393cb88eb127830d7 Mon Sep 17 00:00:00 2001
+From: Frederik Seiffert <frederik@algoriddim.com>
+Date: Thu, 12 Nov 2020 17:18:09 +0100
+Subject: [PATCH] Fix compilation with ICU 68.
+
+---
+ Source/GSICUString.h | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/Source/GSICUString.h b/Source/GSICUString.h
+index a82447a51..15c21491d 100644
+--- a/Source/GSICUString.h
++++ b/Source/GSICUString.h
+@@ -2,6 +2,17 @@
+ #import <Foundation/NSException.h>
+ #include <unicode/utext.h>
+ 
++/*
++ * Define TRUE/FALSE to be used with UBool parameters, as these are no longer
++ * defined in ICU as of ICU 68.
++ */
++#ifndef TRUE
++#define TRUE 1
++#endif
++#ifndef FALSE
++#define FALSE 0
++#endif
++
+ /**
+  * Initialises a UText structure with an NSString.  If txt is NULL, then this
+  * allocates a new structure on the heap, otherwise it fills in the existing

@@ -1,0 +1,6 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2021-11-09)
+# Doesn't support arm64. Fall back to snapshot in ::prefix for now.
+=sys-devel/gcc-11.2.0

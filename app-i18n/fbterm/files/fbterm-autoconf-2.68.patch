@@ -1,0 +1,24 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -85,16 +85,16 @@
+ 
+ if test x"$EPOLL" = xauto -a x"$cross_compiling" = xno; then
+   AC_RUN_IFELSE(
+-    AC_LANG_PROGRAM([[#include <sys/epoll.h>]],
+-      [[if (epoll_create(10) >= 0) return 0; return 1;]]),
++    [AC_LANG_PROGRAM([[#include <sys/epoll.h>]],
++      [[if (epoll_create(10) >= 0) return 0; return 1;]])],
+     [EPOLL=yes]
+   )
+ fi
+ 
+ if test x"$SIGNALFD" = xauto -a x"$cross_compiling" = xno; then
+   AC_RUN_IFELSE(
+-    AC_LANG_PROGRAM([[#include <sys/signalfd.h>]],
+-      [[sigset_t mask; if (signalfd(-1, &mask, 0) >= 0) return 0; return 1;]]),
++    [AC_LANG_PROGRAM([[#include <sys/signalfd.h>]],
++      [[sigset_t mask; if (signalfd(-1, &mask, 0) >= 0) return 0; return 1;]])],
+     [SIGNALFD=yes]
+   )
+ fi
+install-data-local:

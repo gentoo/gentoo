@@ -1,0 +1,15 @@
+--- a/Headers/Additions/GNUstepGUI/GSCharacterPanel.h.old
++++ b/Headers/Additions/GNUstepGUI/GSCharacterPanel.h
+@@ -26,6 +26,12 @@
+    Free Software Foundation, 51 Franklin Street, Fifth Floor, 
+    Boston, MA 02110-1301, USA.
+ */ 
++#ifndef TRUE
++#define TRUE 1
++#endif
++#ifndef FALSE
++#define FALSE 0
++#endif
+ 
+ #ifndef _GNUstep_H_GSCharacterPanel
+ #define _GNUstep_H_GSCharacterPanel

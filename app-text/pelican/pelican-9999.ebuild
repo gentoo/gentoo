@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_6,3_7} )
+
+PYTHON_COMPAT=( python3_{7,8,9} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 git-r3
 
@@ -13,12 +15,10 @@ EGIT_CHECKOUT_DIR="${WORKDIR}/${P}"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE="doc examples markdown test"
-# Tests fail for this release but are fixed upstream
-RESTRICT="test"
+IUSE="doc examples markdown"
 
-DEPEND=">=dev-python/feedgenerator-1.6[${PYTHON_USEDEP}]
+RESTRICT="test"
+RDEPEND=">=dev-python/feedgenerator-1.9[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.7[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
@@ -28,14 +28,11 @@ DEPEND=">=dev-python/feedgenerator-1.6[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	markdown? ( dev-python/markdown[${PYTHON_USEDEP}] )
-	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/markdown[${PYTHON_USEDEP}]
-	)"
-RDEPEND=""
-
+	markdown? ( dev-python/markdown[${PYTHON_USEDEP}] )"
+DEPEND="test? ( dev-python/markdown[${PYTHON_USEDEP}] )"
 DOCS=( README.rst )
+
+distutils_enable_tests nose
 
 python_compile_all() {
 	use doc && emake -C docs html
@@ -49,8 +46,4 @@ python_install_all() {
 		doins -r samples
 	fi
 	distutils-r1_python_install_all
-}
-
-python_test() {
-	nosetests || die "Testing failed with ${EPYTHON}"
 }

@@ -1,10 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: golang-build.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
+# @PROVIDES: golang-base
 # @BLURB: Eclass for compiling go packages.
 # @DESCRIPTION:
 # This eclass provides default  src_compile, src_test and src_install

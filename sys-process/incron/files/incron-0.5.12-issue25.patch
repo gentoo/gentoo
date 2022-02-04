@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/785448
+
+Origin: https://github.com/ar-/incron/issues/25#issuecomment-583796322
+
+--- old/usertable.cpp
++++ new/usertable.cpp
+@@ -370,20 +370,21 @@ void UserTable::OnEvent(InotifyEvent& rEvt)
+ {
+   InotifyWatch* pW = rEvt.GetWatch();
+   IncronTabEntry* pE = FindEntry(pW);
++  std::string pW_path = pW->GetPath();
+ 
+   // no entry found - this shouldn't occur
+   if (pE == NULL)
+     return;
+ 
+   // discard event if user has no access rights to watch path
+-  if (!(m_fSysTable || MayAccess(pW->GetPath(), DONT_FOLLOW(rEvt.GetMask()))))
++  if (!(m_fSysTable || MayAccess(pW_path, DONT_FOLLOW(rEvt.GetMask()))))
+     return;
+     
+   //#if 0
+   // log output for each dir + file + event
+   std::string events;
+   rEvt.DumpTypes(events);
+-  syslog(LOG_INFO, "PATH (%s) FILE (%s) EVENT (%s)", pW->GetPath().c_str() , IncronTabEntry::GetSafePath(rEvt.GetName()).c_str() , events.c_str());
++  syslog(LOG_INFO, "PATH (%s) FILE (%s) EVENT (%s)", pW_path.c_str() , IncronTabEntry::GetSafePath(rEvt.GetName()).c_str() , events.c_str());
+   //#endif
+   
+   // add new watch for newly created subdirs
+@@ -422,7 +423,7 @@ void UserTable::OnEvent(InotifyEvent& rEvt)
+       else {
+         cmd.append(cs.substr(oldpos, pos-oldpos));
+         if (cs[px] == '@') {          // base path
+-          cmd.append(IncronTabEntry::GetSafePath(pW->GetPath()));
++          cmd.append(IncronTabEntry::GetSafePath(pW_path));
+           oldpos = pos + 2;
+         }
+         else if (cs[px] == '#') {     // file name
+ 

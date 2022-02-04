@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_EXAMPLES=( "examples/*" )
 
 if [[ "${PV}" != "9999" ]]; then
 	DIST_VERSION=${PV%.0}
-	DIST_AUTHOR="AKHUETTEL"
+	DIST_AUTHOR=AKHUETTEL
 	KEYWORDS="~amd64 ~x86"
 	inherit perl-module
 else
@@ -21,10 +21,8 @@ DESCRIPTION="Measurement control and automation with Perl"
 HOMEPAGE="https://www.labmeasurement.de"
 
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-DZIL_PLUGINS=( Git PodWeaver AuthorsFromGit )
+DZIL_PLUGINS=( Git PodWeaver AuthorsFromGit RPM Test-ReportPrereqs )
 
 RDEPEND="
 	virtual/perl-Carp
@@ -44,6 +42,7 @@ RDEPEND="
 	dev-perl/List-MoreUtils
 	virtual/perl-Scalar-List-Utils
 	virtual/perl-Math-Complex
+	dev-perl/Math-Round
 	>=virtual/perl-Module-Load-0.260.0
 	>=dev-perl/Moose-2.121.300
 	>=dev-perl/MooseX-Params-Validate-0.180.0
@@ -68,8 +67,7 @@ RDEPEND="
 	dev-perl/Lab-VXI11
 	dev-perl/USB-TMC
 "
-DEPEND="
-	${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/File-Slurper
@@ -81,6 +79,7 @@ DEPEND="
 		dev-perl/aliased
 	)
 "
+
 if [[ "${PV}" == "9999" ]]; then
 	DEPEND="${DEPEND}
 		dev-perl/Dist-Zilla"

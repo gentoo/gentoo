@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Raspberry Pi userspace tools and libraries"
 HOMEPAGE="https://github.com/raspberrypi/userland"
@@ -11,7 +11,6 @@ HOMEPAGE="https://github.com/raspberrypi/userland"
 if [[ ${PV} == 9999* ]]; then
 	inherit git-2
 	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
-	SRC_URI=""
 else
 	GIT_COMMIT="dff5760"
 	SRC_URI="https://github.com/raspberrypi/userland/tarball/${GIT_COMMIT} -> ${P}.tar.gz"
@@ -46,15 +45,19 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
+
 	# init script for Debian, not useful on Gentoo
 	sed -i "/DESTINATION \/etc\/init.d/,+2d" interface/vmcs_host/linux/vcfiled/CMakeLists.txt || die
 
 	# wayland egl support
-	epatch "${FILESDIR}"/next-resource-handle.patch
+	eapply "${FILESDIR}"/next-resource-handle.patch
+
+	cmake_src_prepare
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# provide OpenGL ES v1 according to https://github.com/raspberrypi/firmware/issues/78
 	dosym libGLESv2.so /opt/vc/lib/libGLESv1_CM.so

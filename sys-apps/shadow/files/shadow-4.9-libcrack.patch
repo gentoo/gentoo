@@ -1,0 +1,27 @@
+From 6becc82e262205f8a23bf9fe1127af57286826ee Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Mon, 2 Aug 2021 11:51:44 -0400
+Subject: [PATCH] libsubid: fix build with libcrack
+
+Fixes a link failure:
+
+  ../libsubid/.libs/libsubid.so: undefined reference to `FascistCheck'
+
+Bug: https://bugs.gentoo.org/806124
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ libsubid/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libsubid/Makefile.am b/libsubid/Makefile.am
+index 8bba02ab..bfc982ef 100644
+--- a/libsubid/Makefile.am
++++ b/libsubid/Makefile.am
+@@ -11,6 +11,7 @@ MISCLIBS = \
+ 	$(LIBAUDIT) \
+ 	$(LIBSELINUX) \
+ 	$(LIBSEMANAGE) \
++	$(LIBCRACK) \
+ 	$(LIBCRYPT_NOPAM) \
+ 	$(LIBSKEY) \
+ 	$(LIBMD) \

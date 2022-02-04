@@ -1,0 +1,11 @@
+--- a/Makefile	2021-08-14 19:52:35.575039425 +0200
++++ b/Makefile	2021-08-14 19:53:00.403530958 +0200
+@@ -47,8 +47,6 @@
+ 
+ ### Includes and Defines (add further entries here):
+ 
+-#INCLUDES +=
+-INCLUDES += -I$(VDRDIR)/include -I$(DVBDIR)/include
+ DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
+ DEFINES += -DFILEBROWSER_PLUGIN_BUILD
+ 

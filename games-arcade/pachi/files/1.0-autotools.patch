@@ -1,5 +1,5 @@
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -1,5 +1,7 @@
  # Process this file with autoconf to produce a configure script.
 +AC_PREREQ([2.54])
@@ -17,8 +17,8 @@
  fi
  
  eval DATAPATH=`eval echo "$DATADIR"`
---- data/Makefile.am
-+++ data/Makefile.am
+--- a/data/Makefile.am
++++ b/data/Makefile.am
 @@ -10,13 +10,13 @@
  objects_v2.dat \
  rooms_v2.dat
@@ -39,8 +39,8 @@
 +	for file in $(score_DATA_); do                                       \
 +		$(INSTALL) -g $(group) -m $(perms) $$file $(DESTDIR)$(scoredir); \
 +	done
---- Makefile.am
-+++ Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -1 +1 @@
 -SUBDIRS = src Tgfx data fonts music sounds docs
 +SUBDIRS = src Tgfx data fonts music sounds

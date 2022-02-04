@@ -1,0 +1,37 @@
+diff -ur a/src/gps_functions.c b/src/gps_functions.c
+--- a/src/gps_functions.c
++++ b/src/gps_functions.c
+@@ -753,12 +753,20 @@
+ 	{
+ 		gpsdata->satellites_used = libgps_gpsdata.satellites_used;
+ 		gpsdata->hdop = libgps_gpsdata.dop.hdop;
++#if GPSD_API_MAJOR_VERSION >= 9 /* API change. gpsd version 3.20 and subsequent. */
++		gpsdata->fix.time = libgps_gpsdata.fix.time.tv_sec + (libgps_gpsdata.fix.time.tv_nsec*1e-9);
++#else
+ 		gpsdata->fix.time = libgps_gpsdata.fix.time;
++#endif
+ 		if (isnan(gpsdata->fix.time))
+ 		{
+ 			gpsdata->fix.time = (time_t) 0;
+ 		}
++#if GPSD_API_MAJOR_VERSION >= 9
++		gpsdata->valid = (libgps_gpsdata.fix.status != STATUS_NO_FIX);
++#else
+ 		gpsdata->valid = (libgps_gpsdata.status != STATUS_NO_FIX);
++#endif
+ 		if (gpsdata->valid)
+ 		{
+ 			gpsdata->seen_valid = TRUE;
+@@ -767,7 +775,11 @@
+ 			gpsdata->fix.longitude = libgps_gpsdata.fix.longitude;
+ 			gpsdata->fix.speed = libgps_gpsdata.fix.speed;
+ 			gpsdata->fix.heading = libgps_gpsdata.fix.track;
++#if GPSD_API_MAJOR_VERSION >= 9
++			gpsdata->fix.altitude = libgps_gpsdata.fix.altMSL;
++#else
+ 			gpsdata->fix.altitude = libgps_gpsdata.fix.altitude;
++#endif
+ 		}
+ 
+ 		g_source_remove(watchdog);
+

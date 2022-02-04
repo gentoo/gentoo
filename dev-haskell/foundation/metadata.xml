@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name='experimental'>enable building experimental features, known as highly unstable or without good support cross-platform</flag>
+		<flag name="experimental">enable building experimental features, known as highly unstable or without good support cross-platform</flag>
 	</use>
 	<longdescription>
 		A custom prelude with no dependencies apart from base.
@@ -15,7 +15,7 @@
 		
 		* provide a base like sets of modules that provide a consistent set of features and bugfixes across multiple versions of GHC (unlike base).
 		
-		* provide a better and more efficient prelude than base&#39;s prelude.
+		* provide a better and more efficient prelude than base's prelude.
 		
 		* be self-sufficient: no external dependencies apart from base.
 		

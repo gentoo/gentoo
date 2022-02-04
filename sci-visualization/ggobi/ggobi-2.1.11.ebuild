@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils autotools xdg
+EAPI=7
+
+inherit autotools xdg
 
 DESCRIPTION="Visualization program for exploring high-dimensional data"
 HOMEPAGE="http://www.ggobi.org/"
@@ -19,26 +20,28 @@ RDEPEND="
 	dev-libs/libxml2:2
 	media-gfx/graphviz
 	x11-libs/gtk+:2"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.1.8-plugindir.patch
+	"${FILESDIR}"/${PN}-2.1.9-as-needed.patch
+	"${FILESDIR}"/${PN}-2.1.10-desktop.patch
+	"${FILESDIR}"/${PN}-2.1.11-Wformat-security.patch
+)
 
 src_prepare() {
-	sed -i \
-		-e 's|ND_coord_i|ND_coord|' \
-		plugins/GraphLayout/graphviz.c || die
+	default
+	sed -e 's|ND_coord_i|ND_coord|' \
+		-i plugins/GraphLayout/graphviz.c || die
 	rm m4/libtool.m4 m4/lt*m4 plugins/*/aclocal.m4 || die
-	epatch \
-		"${FILESDIR}"/${PN}-2.1.8-plugindir.patch \
-		"${FILESDIR}"/${PN}-2.1.9-as-needed.patch \
-		"${FILESDIR}"/${PN}-2.1.10-desktop.patch \
-		"${FILESDIR}"/${PN}-2.1.11-Wformat-security.patch
+
 	# need the ${S} for recursivity lookup
 	AT_M4DIR="${S}"/m4 eautoreconf
 }
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--disable-rpath \
 		$(use_enable nls) \
 		$(use_with !minimal all-plugins)
@@ -50,7 +53,14 @@ src_compile() {
 
 src_install() {
 	default
+
 	insinto /etc/xdg/ggobi
 	doins ggobirc
-	use doc || rm "${ED}"/usr/share/doc/${PF}/*.pdf
+
+	if ! use doc; then
+		rm "${ED}"/usr/share/doc/${PF}/*.pdf || die
+	fi
+
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }

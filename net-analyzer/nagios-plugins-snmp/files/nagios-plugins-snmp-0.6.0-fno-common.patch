@@ -1,0 +1,86 @@
+diff --git a/src/nagios_common_snmp.c b/src/nagios_common_snmp.c
+index 5bdc571..73f96e8 100755
+--- a/src/nagios_common_snmp.c
++++ b/src/nagios_common_snmp.c
+@@ -1,5 +1,21 @@
+ #include "nagios_common_snmp.h"
+ 
++char plugin_name[30]; /* plugin name */
++char plugin_tmp_prefix[50];
++char output[MAX_OUTPUT];
++int output_overflow;
++char *p_output;
++char *o_host;
++int o_verb;
++char* error;
++int o_port,o_timeout;
++int o_help, o_verbose,o_version,o_v2c;
++int retries;
++int o_snmpver,snmp_bulk;
++char *o_community,*o_login,*o_passwd,*o_privpasswd;
++char *o_protocols[2],*o_authproto,*o_privproto;
++struct snmp_session session, *ss;
++
+ int init_plugins_gettext(){
+ 	if (setlocale( LC_ALL, "" )==NULL) return 1;
+ 	bindtextdomain( PACKAGE, LOCALEDIR );
+diff --git a/src/nagios_common_snmp.h b/src/nagios_common_snmp.h
+index 8903fd0..1b3fa3a 100755
+--- a/src/nagios_common_snmp.h
++++ b/src/nagios_common_snmp.h
+@@ -56,8 +56,8 @@ int init_plugins_gettext();
+ /*********************************** Utilities ****************************************/
+ /* cache utilities */
+ 
+-char plugin_name[30]; /* plugin name */
+-char plugin_tmp_prefix[50];
++extern char plugin_name[30]; /* plugin name */
++extern char plugin_tmp_prefix[50];
+ 
+ /* defined in configure script */
+ /*#define BASE_CACHE "/tmp/cache"*/
+@@ -71,12 +71,12 @@ int write_cache(snmp_table **descT,int num);
+ 
+ /* maximum caracters in ouput */
+ #define MAX_OUTPUT 500
+-char output[MAX_OUTPUT];
+-int output_overflow;
++extern char output[MAX_OUTPUT];
++extern int output_overflow;
+ 
+ /* maximum caracters for performance output label*/
+ #define MAX_LABEL_SIZE 50
+-char *p_output;
++extern char *p_output;
+ 
+ /* Put data in output */
+ void strcat_output(const char *string);
+@@ -143,18 +143,18 @@ int get_options (int narg, char* const valarg[],options_nagsnmp *liste, int n_li
+ #define TIMEOUT_DEFAULT 3
+ 
+ /* standard options */
+-char *o_host;
+-int o_verb;
+-char* error; 
++extern char *o_host;
++extern int o_verb;
++extern char* error;
+ /* snmp options */
+-int o_port,o_timeout;
+-int o_help, o_verbose,o_version,o_v2c; 
+-int retries;
+-int o_snmpver,snmp_bulk;
+-char *o_community,*o_login,*o_passwd,*o_privpasswd;
+-char *o_protocols[2],*o_authproto,*o_privproto;
++extern int o_port,o_timeout;
++extern int o_help, o_verbose,o_version,o_v2c;
++extern int retries;
++extern int o_snmpver,snmp_bulk;
++extern char *o_community,*o_login,*o_passwd,*o_privpasswd;
++extern char *o_protocols[2],*o_authproto,*o_privproto;
+ /* snmp sessions */
+-struct snmp_session session, *ss;
++extern struct snmp_session session, *ss;
+ 
+ /* Common options definition and check */
+ #define common_usage "[-v -V] -H <host> -C <snmp_community> [-2] | (-l login -x passwd [-X pass -L <authp>,<privp>)  [-p <port>] [-t <timeout>]"

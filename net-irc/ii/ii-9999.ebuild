@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit git-r3 toolchain-funcs
 
 DESCRIPTION="A minimalist FIFO and filesystem-based IRC client"
@@ -10,19 +10,12 @@ EGIT_REPO_URI="https://git.suckless.org/ii"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 
 src_prepare() {
 	default
 
-	sed -i \
-		-e '/^CFLAGS/{s: -Os::g; s:= :+= :g}' \
-		-e '/^CC/d' \
-		-e '/^LDFLAGS/{s:-s::g; s:= :+= :g}' \
-		config.mk || die
-	sed -i \
-		-e 's|@${CC}|$(CC)|g' \
-		Makefile || die
+	sed -i -e '/^LDFLAGS/{s:-s::g; s:= :+= :g}' \
+		-e '/^CFLAGS/{s: -Os::g; s:= :+= :g}' config.mk || die
 }
 
 src_compile() {
@@ -30,7 +23,9 @@ src_compile() {
 }
 
 src_install() {
-	dobin ii
-	dodoc CHANGES FAQ README
-	doman *.1
+	emake \
+		DESTDIR="${D}" \
+		PREFIX="${EPREFIX}"/usr \
+		DOCPREFIX="${EPREFIX}"/usr/share/doc/${PF} \
+		install
 }

@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>embedded@gentoo.org</email>
 		<name>Embedded Gentoo</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>fercerpav@gmail.com</email>
 		<name>Paul Fertser</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
 	<use>
+		<flag name="capstone">Use <pkg>dev-libs/capstone</pkg> for disassembly support</flag>
 		<flag name="cmsis-dap">Support for CMSIS-DAP compliant adapters</flag>
 		<flag name="dummy">Build the dummy port driver</flag>
 		<flag name="jlink"> Build the SEGGER J-Link driver</flag>

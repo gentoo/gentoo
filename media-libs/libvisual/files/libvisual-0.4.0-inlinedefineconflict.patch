@@ -1,7 +1,7 @@
 http://pkgs.fedoraproject.org/gitweb/?p=libvisual.git;a=tree
 
---- libvisual/lv_cache.c
-+++ libvisual/lv_cache.c
+--- a/libvisual/lv_cache.c
++++ b/libvisual/lv_cache.c
 @@ -32,7 +32,7 @@
  static int cache_dtor (VisObject *object);
  static int cache_remove_list_entry (VisCache *cache, VisListEntry **le);
@@ -20,8 +20,8 @@ http://pkgs.fedoraproject.org/gitweb/?p=libvisual.git;a=tree
  {
  	VisCacheEntry *centry;
  
---- libvisual/lv_defines.h
-+++ libvisual/lv_defines.h
+--- a/libvisual/lv_defines.h
++++ b/libvisual/lv_defines.h
 @@ -63,13 +63,13 @@
  
  /* Compiler specific optimalization macros */
@@ -38,8 +38,8 @@ http://pkgs.fedoraproject.org/gitweb/?p=libvisual.git;a=tree
  # define __malloc		/* no malloc */
  # define __packed		/* no packed */
  # define VIS_LIKELY(x)		(x)
---- libvisual/lv_time.h
-+++ libvisual/lv_time.h
+--- a/libvisual/lv_time.h
++++ b/libvisual/lv_time.h
 @@ -101,7 +101,7 @@
   *
   * @return Nothing.

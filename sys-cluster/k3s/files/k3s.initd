@@ -1,0 +1,32 @@
+#!/sbin/openrc-run
+
+name=k3s
+description="Lightweight Kubernetes"
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+command="/usr/bin/k3s"
+command_user="${command_user:-"root:root"}"
+command_args="${command_args:-"server"}"
+command_background="true"
+output_log="${output_log:-"/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"}"
+error_log="${error_log:-"${output_log}"}"
+start_stop_daemon_args="${start_stop_daemon_args:-"--user ${command_user%:*} --group ${command_user#*:} --stdout ${output_log} --stderr ${error_log}"}"
+
+: "${supervisor:=supervise-daemon}"
+: "${respawn_delay:=5}"
+: "${respawn_max:=0}"
+
+depend() {
+	after network-online
+	want cgroups
+}
+
+start() {
+	checkpath --directory --mode 755 --owner root "${pidfile%/*}"
+	checkpath --directory --mode 755 --owner "${command_user}" "${output_log%/*}"
+	default_start
+}
+
+set -o allexport
+if [ -f /etc/environment ]; then source /etc/environment; fi
+if [ -f /etc/rancher/k3s/k3s.env ]; then source /etc/rancher/k3s/k3s.env; fi
+set +o allexport

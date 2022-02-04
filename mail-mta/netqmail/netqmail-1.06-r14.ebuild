@@ -41,8 +41,8 @@ SRC_URI="mirror://qmail/${P}.tar.gz
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
-IUSE="authcram gencertdaily highvolume libressl pop3 qmail-spp ssl vanilla"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
+IUSE="authcram gencertdaily highvolume pop3 qmail-spp ssl vanilla"
 REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume )"
 RESTRICT="test"
 
@@ -60,10 +60,7 @@ DEPEND="
 	net-mail/queue-repair
 	sys-apps/gentoo-functions
 	sys-apps/groff
-	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.1:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( >=dev-libs/openssl-1.1:0= )
 "
 RDEPEND="${DEPEND}
 	sys-apps/ucspi-tcp
@@ -85,17 +82,6 @@ RDEPEND="${DEPEND}
 	!mail-mta/sendmail
 	!mail-mta/ssmtp[mta]
 "
-
-pkg_setup() {
-	if [[ -n "${QMAIL_PATCH_DIR}" ]]; then
-		eerror
-		eerror "The QMAIL_PATCH_DIR variable for custom patches"
-		eerror "has been removed from ${PN}. If you need custom patches"
-		eerror "see 'user patches' in the portage manual."
-		eerror
-		die "QMAIL_PATCH_DIR is not supported anymore"
-	fi
-}
 
 src_unpack() {
 	genqmail_src_unpack
@@ -185,10 +171,6 @@ pkg_postinst() {
 	elog "http://www.lifewithqmail.com/"
 	elog "  -- Life with qmail"
 	elog
-}
-
-pkg_preinst() {
-	qmail_tcprules_fixup
 }
 
 pkg_config() {

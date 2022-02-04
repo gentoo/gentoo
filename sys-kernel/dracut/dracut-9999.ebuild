@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,10 +19,9 @@ HOMEPAGE="https://dracut.wiki.kernel.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="selinux"
+IUSE="selinux test"
 
-# Tests need root privileges, bug #298014
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-arch/cpio
@@ -58,13 +57,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-DOCS=( AUTHORS HACKING NEWS README.md README.generic README.kernel README.modules
-	README.testsuite TODO )
-
 QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
 PATCHES=(
-	"${FILESDIR}"/050-gentoo-ldconfig-paths.patch
+	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
 )
 
 src_configure() {
@@ -86,11 +82,29 @@ src_configure() {
 	fi
 }
 
-src_install() {
-	default
+src_test() {
+	if [[ ${EUID} != 0 ]]; then
+		# Tests need root privileges, bug #298014
+		ewarn "Skipping tests: Not running as root."
+	elif [[ ! -w /dev/kvm ]]; then
+		ewarn "Skipping tests: Unable to access /dev/kvm."
+	else
+		emake -C test check
+	fi
+}
 
-	insinto /etc/logrotate.d
-	newins dracut.logrotate dracut
+src_install() {
+	local DOCS=(
+		AUTHORS
+		NEWS.md
+		README.md
+		docs/README.cross
+		docs/README.generic
+		docs/README.kernel
+		docs/SECURITY.md
+	)
+
+	default
 
 	docinto html
 	dodoc dracut.html
@@ -124,9 +138,6 @@ pkg_postinst() {
 		ewarn ""
 	fi
 
-	elog "To get additional features, a number of optional runtime"
-	elog "dependencies may be installed:"
-	elog ""
 	optfeature "Networking support" net-misc/networkmanager
 	optfeature "Legacy networking support" net-misc/curl "net-misc/dhcp[client]" \
 		sys-apps/iproute2 "net-misc/iputils[arping]"

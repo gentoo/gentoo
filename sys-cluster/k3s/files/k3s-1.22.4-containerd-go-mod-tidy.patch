@@ -1,0 +1,63 @@
+diff -Nr -U1 a/vendor/github.com/containerd/containerd/go.mod b/vendor/github.com/containerd/containerd/go.mod
+--- a/vendor/github.com/containerd/containerd/go.mod
++++ b/vendor/github.com/containerd/containerd/go.mod
+@@ -7,4 +7,2 @@
+ 	github.com/Microsoft/hcsshim v0.8.23
+-	github.com/containerd/aufs v1.0.0
+-	github.com/containerd/btrfs v1.0.0
+ 	github.com/containerd/cgroups v1.0.1
+@@ -19,3 +17,2 @@
+ 	github.com/containerd/typeurl v1.0.2
+-	github.com/containerd/zfs v1.0.0
+ 	github.com/containernetworking/plugins v0.9.1
+@@ -30,3 +27,2 @@
+ 	github.com/gogo/protobuf v1.3.2
+-	github.com/google/go-cmp v0.5.6
+ 	github.com/google/uuid v1.2.0
+@@ -47,6 +43,3 @@
+ 	github.com/prometheus/client_golang v1.11.0
+-	github.com/prometheus/procfs v0.6.0 // indirect; temporarily force v0.6.0, which was previously defined in imgcrypt as explicit version
+-	github.com/satori/go.uuid v1.2.0 // indirect
+ 	github.com/sirupsen/logrus v1.8.1
+-	github.com/stretchr/testify v1.7.0
+ 	github.com/tchap/go-patricia v2.2.6+incompatible
+@@ -58,4 +51,2 @@
+ 	google.golang.org/grpc v1.38.0
+-	google.golang.org/protobuf v1.26.0
+-	gotest.tools/v3 v3.0.3
+ 	k8s.io/api v0.22.0
+@@ -64,3 +55,2 @@
+ 	k8s.io/client-go v0.22.0
+-	k8s.io/component-base v0.22.0
+ 	k8s.io/cri-api v0.22.0
+diff -Nr -U1 a/vendor/github.com/containerd/containerd/go.sum b/vendor/github.com/containerd/containerd/go.sum
+--- a/vendor/github.com/containerd/containerd/go.sum
++++ b/vendor/github.com/containerd/containerd/go.sum
+@@ -74,2 +74,3 @@
+ github.com/buger/jsonparser v0.0.0-20180808090653-f4dd9f5a6b44/go.mod h1:bbYlZJ7hK1yFx9hf58LP0zeX7UjIGs20ufpu3evjr+s=
++github.com/cenkalti/backoff/v4 v4.1.1/go.mod h1:scbssz8iZGpm3xbr14ovlUdkxfGXNInqkPWOWmG2CLw=
+ github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
+@@ -95,5 +96,3 @@
+ github.com/cockroachdb/logtags v0.0.0-20190617123548-eb05cc24525f/go.mod h1:i/u985jwjWRlyHXQbwatDASoW0RMlZ/3i9yJHE2xLkI=
+-github.com/containerd/aufs v1.0.0 h1:2oeJiwX5HstO7shSrPZjrohJZLzK36wvpdmzDRkL/LY=
+ github.com/containerd/aufs v1.0.0/go.mod h1:kL5kd6KM5TzQjR79jljyi4olc1Vrx6XBlcyj3gNv2PU=
+-github.com/containerd/btrfs v1.0.0 h1:osn1exbzdub9L5SouXO5swW4ea/xVdJZ3wokxN5GrnA=
+ github.com/containerd/btrfs v1.0.0/go.mod h1:zMcX3qkXTAi9GI50+0HOeuV8LU2ryCE/V2vG/ZBiTss=
+@@ -125,3 +124,2 @@
+ github.com/containerd/typeurl v1.0.2/go.mod h1:9trJWW2sRlGub4wZJRTW83VtbOLS6hwcDZXTn6oPz9s=
+-github.com/containerd/zfs v1.0.0 h1:cXLJbx+4Jj7rNsTiqVfm6i+RNLx6FFA2fMmDlEf+Wm8=
+ github.com/containerd/zfs v1.0.0/go.mod h1:m+m51S1DvAP6r3FcmYCp54bQ34pyOwTieQDNRIRHsFY=
+@@ -371,3 +369,2 @@
+ github.com/miekg/pkcs11 v1.0.3/go.mod h1:XsNlhZGX73bx86s2hdc/FuaLm2CPZJemRLMA+WTFxgs=
+-github.com/mistifyio/go-zfs v2.1.2-0.20190413222219-f784269be439+incompatible h1:aKW/4cBs+yK6gpqU3K/oIwk9Q/XICqd3zOX/UFuvqmk=
+ github.com/mistifyio/go-zfs v2.1.2-0.20190413222219-f784269be439+incompatible/go.mod h1:8AuVvqP/mXw1px98n46wfvcGfQ4ci2FwoAjKYxuo3Z4=
+@@ -831,4 +828,4 @@
+ google.golang.org/protobuf v1.26.0-rc.1/go.mod h1:jlhhOSvTdKEhbULTjvd4ARK9grFBp09yW+WbY/TyQbw=
+-google.golang.org/protobuf v1.26.0 h1:bxAC2xTBsZGibn2RTntX0oH50xLsqy1OxA9tTL3p/lk=
+ google.golang.org/protobuf v1.26.0/go.mod h1:9q0QmTI4eRPtz6boOQmLYwt+qCgq0jsYwAQnmE0givc=
++google.golang.org/protobuf v1.27.1 h1:SnqbnDw1V7RiZcXPx5MEeqPv2s79L9i7BJUlG/+RurQ=
+ google.golang.org/protobuf v1.27.1/go.mod h1:9q0QmTI4eRPtz6boOQmLYwt+qCgq0jsYwAQnmE0givc=
+@@ -869,3 +866,2 @@
+ gotest.tools/v3 v3.0.2/go.mod h1:3SzNCllyD9/Y+b5r9JIKQ474KzkZyqLqEfYqMsX94Bk=
+-gotest.tools/v3 v3.0.3 h1:4AuOwCGf4lLR9u3YOe2awrHygurzhO/HeQ6laiA6Sx0=
+ gotest.tools/v3 v3.0.3/go.mod h1:Z7Lb0S5l+klDB31fvDQX8ss/FlKDxtlFlw3Oa8Ymbl8=

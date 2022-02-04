@@ -1,7 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit optfeature
 
 MY_PN="${PN/f/F}"
 
@@ -17,19 +19,16 @@ else
 	S="${WORKDIR}/${MY_PN}-${PV}"
 fi
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
-IUSE="curl X"
-
-DEPEND=""
-RDEPEND="
-	curl? ( net-misc/curl )
-	X? (
-		media-gfx/scrot
-		x11-apps/xdpyinfo
-	)"
 
 src_install() {
 	newbin ${PN}-dev ${PN}
 	einstalldocs
+}
+
+pkg_postinst() {
+	optfeature "screenshot taking" media-gfx/scrot
+	optfeature "screenshot uploading" net-misc/curl
+	optfeature "resolution detection" x11-apps/xdpyinfo
 }

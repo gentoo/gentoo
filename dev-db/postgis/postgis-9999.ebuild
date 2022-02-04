@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-POSTGRES_COMPAT=( 9.{5..6} {10..12} )
+POSTGRES_COMPAT=( 9.6 {10..14} )
 POSTGRES_USEDEP="server"
-inherit autotools eapi7-ver postgres-multi
+inherit autotools postgres-multi toolchain-funcs
 
 MY_P="${PN}-$(ver_rs 3 '')"
 
@@ -25,9 +25,9 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="address-standardizer doc gtk static-libs test topology"
+IUSE="address-standardizer doc gtk static-libs topology"
 
-REQUIRED_USE="test? ( doc ) ${POSTGRES_REQ_USE}"
+REQUIRED_USE="${POSTGRES_REQ_USE}"
 
 # Needs a running psql instance, doesn't work out of the box
 RESTRICT="test"
@@ -36,7 +36,7 @@ RDEPEND="${POSTGRES_DEP}
 	dev-libs/json-c:=
 	dev-libs/libxml2:2
 	dev-libs/protobuf-c:=
-	>=sci-libs/geos-3.6.0
+	>=sci-libs/geos-3.9.0
 	>=sci-libs/proj-4.9.0:=
 	>=sci-libs/gdal-1.10.0:=
 	address-standardizer? ( dev-libs/libpcre )
@@ -50,10 +50,13 @@ DEPEND="${RDEPEND}
 		dev-libs/libxslt
 		virtual/imagemagick-tools[png]
 	)
-	test? ( dev-util/cunit )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-2.2.0-arflags.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-2.2.0-arflags.patch"
+	"${FILESDIR}/${PN}-3.0.3-avoid-calling-ar-directly.patch"
+	"${FILESDIR}/${PN}-3.0.3-try-other-cpp-names.patch"
+)
 
 src_prepare() {
 	default
@@ -68,6 +71,9 @@ src_prepare() {
 	# *FLAGS settings.
 	QA_FLAGS_IGNORED="usr/lib(64)?/(rt)?postgis-${PGIS}\.so"
 
+	# bug #775968
+	touch build-aux/ar-lib || die
+
 	local AT_M4DIR="macros"
 	eautoreconf
 
@@ -75,8 +81,9 @@ src_prepare() {
 }
 
 src_configure() {
+	export CPP=$(tc-getCPP)
+
 	local myeconfargs=(
-		--with-protobuf # funky misdetection if enabled but --without-protobuf
 		$(use_with address-standardizer)
 		$(use_with gtk gui)
 		$(use_with topology)

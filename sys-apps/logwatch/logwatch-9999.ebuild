@@ -1,11 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 inherit tmpfiles
-
-PATCHES=()
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/logwatch/git ${PN}"
@@ -20,9 +18,7 @@ HOMEPAGE="https://sourceforge.net/projects/logwatch/"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
 
-DEPEND=""
 RDEPEND="virtual/cron
 	virtual/mta
 	virtual/mailx
@@ -32,6 +28,8 @@ RDEPEND="virtual/cron
 	dev-perl/Tie-IxHash
 	dev-perl/Sys-CPU
 	dev-perl/Sys-MemInfo"
+
+PATCHES=()
 
 src_install() {
 	dodir /usr/share/logwatch/lib

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 PLOCALES="be bg ca cs de en eo es et fa fi fr he hu it ja kk mk nl pl pt pt_BR ru sk sl sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit l10n qmake-utils xdg
+inherit plocale qmake-utils xdg
 
 DESCRIPTION="Qt XMPP client"
 HOMEPAGE="https://psi-im.org"
@@ -110,7 +110,7 @@ src_install() {
 		"${mylrelease}" "translations/${PN}_${1}.ts" || die "lrelease ${1} failed"
 		doins "translations/${PN}_${1}.qm"
 	}
-	l10n_for_each_locale_do install_locale
+	plocale_for_each_locale install_locale
 }
 
 pkg_postinst() {

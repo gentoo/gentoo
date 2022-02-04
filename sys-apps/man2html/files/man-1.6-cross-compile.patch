@@ -1,8 +1,8 @@
 Fix up to work with cross-compiling ... most of these tests only
 need to see if the example compiled, not whether it runs ...
 
---- configure
-+++ configure
+--- a/configure
++++ b/configure
 @@ -232,15 +232,13 @@
  
  echo checking for POSIX.1 header files

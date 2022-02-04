@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eutils toolchain-funcs flag-o-matic
+inherit autotools flag-o-matic toolchain-funcs
 
-DESCRIPTION="An IGS client written in C++"
+DESCRIPTION="IGS client written in C++"
 HOMEPAGE="https://ccdw.org/~cjj/prog/ccgo/"
 SRC_URI="https://ccdw.org/~cjj/prog/ccgo/src/${P}.tar.gz"
 
@@ -18,8 +18,8 @@ RDEPEND="
 	>=dev-cpp/gconfmm-2.6
 	>=dev-cpp/gtkmm-2.4:2.4
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
 PATCHES=(
@@ -37,8 +37,8 @@ src_prepare() {
 
 	sed -i \
 		-e '/^localedir/s/=.*/=@localedir@/' \
-		-e '/^appicondir/s:=.*:=/usr/share/pixmaps:' \
-		-e '/^desktopdir/s:=.*:=/usr/share/applications:' \
+		-e "/^appicondir/s|=.*|=${EPREFIX}/usr/share/pixmaps|" \
+		-e "/^desktopdir/s|=.*|=${EPREFIX}/usr/share/applications|" \
 		Makefile.am || die
 
 	# cargo cult from bug #569528
@@ -52,7 +52,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--localedir=/usr/share/locale \
+		--localedir="${EPREFIX}"/usr/share/locale \
 		$(use_enable nls)
 }
 

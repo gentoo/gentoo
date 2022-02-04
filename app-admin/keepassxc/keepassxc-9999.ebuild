@@ -1,14 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit cmake xdg
+inherit cmake flag-o-matic xdg
 
 DESCRIPTION="KeePassXC - KeePass Cross-platform Community Edition"
 HOMEPAGE="https://keepassxc.org"
 
-if [[ "${PV}" != 9999 ]] ; then
+if [[ "${PV}" != *9999 ]] ; then
 	if [[ "${PV}" == *_beta* ]] ; then
 		SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
 		S="${WORKDIR}/${P/_/-}"
@@ -20,16 +20,17 @@ if [[ "${PV}" != 9999 ]] ; then
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/keepassxreboot/${PN}"
+	[[ "${PV}" != 9999 ]] && EGIT_BRANCH="master"
 fi
 
 LICENSE="LGPL-2.1 GPL-2 GPL-3"
 SLOT="0"
-IUSE="autotype browser ccache keeshare +network test yubikey"
+IUSE="autotype browser ccache doc keeshare +network test yubikey"
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	app-crypt/argon2:=
-	dev-libs/libgcrypt:=
-	>=dev-libs/libsodium-1.0.12:=
+	dev-libs/botan:2
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -43,11 +44,13 @@ RDEPEND="
 	autotype? (
 		dev-qt/qtx11extras:5
 		x11-libs/libX11
-		x11-libs/libXi
 		x11-libs/libXtst
 	)
-	keeshare? ( dev-libs/quazip )
-	yubikey? ( sys-auth/ykpers )
+	keeshare? ( sys-libs/zlib:=[minizip] )
+	yubikey? (
+		dev-libs/libusb:1
+		sys-apps/pcsc-lite
+	)
 "
 
 DEPEND="
@@ -57,24 +60,27 @@ DEPEND="
 "
 BDEPEND="
 	ccache? ( dev-util/ccache )
+	doc? ( dev-ruby/asciidoctor )
 "
 
-RESTRICT="!test? ( test )"
-
 src_prepare() {
-	 use test || \
-		sed -e "/^find_package(Qt5Test/d" -i CMakeLists.txt || die
+	if [[ "${PV}" != *_beta* ]] && [[ "${PV}" != *9999 ]] && [[ ! -f .version ]] ; then
+		printf '%s' "${PV}" > .version || die
+	fi
 
 	 cmake_src_prepare
 }
 
 src_configure() {
+	# https://github.com/keepassxreboot/keepassxc/issues/5801
+	filter-flags -flto*
+
 	local mycmakeargs=(
 		-DWITH_CCACHE="$(usex ccache)"
 		-DWITH_GUI_TESTS=OFF
 		-DWITH_TESTS="$(usex test)"
 		-DWITH_XC_AUTOTYPE="$(usex autotype)"
-		-DWITH_XC_DOCS=OFF
+		-DWITH_XC_DOCS="$(usex doc)"
 		-DWITH_XC_BROWSER="$(usex browser)"
 		-DWITH_XC_FDOSECRETS=ON
 		-DWITH_XC_KEESHARE="$(usex keeshare)"
@@ -85,6 +91,9 @@ src_configure() {
 	)
 	if [[ "${PV}" == *_beta* ]] ; then
 		mycmakeargs+=( -DOVERRIDE_VERSION="${PV/_/-}" )
+	fi
+	if [[ "${PV}" != 9999 ]] ; then
+		mycmakeargs+=( -DWITH_XC_KEESHARE_SECURE="$(usex keeshare)" )
 	fi
 	cmake_src_configure
 }

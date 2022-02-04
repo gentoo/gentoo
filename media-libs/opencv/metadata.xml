@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>amynka@gentoo.org</email>
@@ -37,7 +37,8 @@ Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Under
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:opencv:opencv</remote-id>
-		<remote-id type="sourceforge">opencvlibrary</remote-id>
+		<remote-id type="github">opencv/opencv</remote-id>
 		<remote-id type="github">Itseez/opencv_contrib</remote-id>
+		<remote-id type="sourceforge">opencvlibrary</remote-id>
 	</upstream>
 </pkgmetadata>

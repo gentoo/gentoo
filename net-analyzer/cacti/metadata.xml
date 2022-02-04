@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		Cacti is a complete network graphing solution designed to harness the
 		power of RRDTool's data storage and graphing functionality. Cacti
@@ -17,4 +18,7 @@
 	<use>
 		<flag name="doc">install html documentation</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">Cacti/cacti</remote-id>
+	</upstream>
 </pkgmetadata>

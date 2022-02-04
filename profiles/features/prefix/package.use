@@ -1,2 +1,11 @@
+# Sam James <sam@gentoo.org> (2021-12-22)
+# We don't use 'su' in Prefix because it requires privileges
+# (And PAM for util-linux).
+sys-apps/util-linux -su
+
 # Don't enable the security measures for convienence
 sys-apps/portage -rsync-verify
+
+# Yiyang Wu <xgreenlandforwyy@gmail.com> (2021-03-03)
+# bazel should link libstdc++ statically in prefix to avoid finding host's libstdc++ when building other packages
+dev-util/bazel static-libs

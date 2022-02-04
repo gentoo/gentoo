@@ -1,0 +1,42 @@
+--- a/man/minicom.1
++++ b/man/minicom.1
+@@ -469,7 +469,7 @@
+ .TP 0.5i
+ .B D - Script program
+ Which program to use as the script interpreter. Defaults to the
+-program "runscript", but if you want to use something else (eg,
++program "/usr/bin/runscript", but if you want to use something else (eg,
+ /bin/sh or "expect") it is possible.  Stdin and stdout are connected
+ to the modem, stderr to the screen.
+ .RS 0.5i
+--- a/man/runscript.1
++++ b/man/runscript.1
+@@ -5,7 +5,7 @@
+ .\" for conditions under which this file may be redistributed.
+ .TH RUNSCRIPT 1 "$Date: 2007-10-07 18:13:51 $" "User's Manual"
+ .SH NAME
+-runscript \- script interpreter for minicom
++/usr/bin/runscript \- script interpreter for minicom
+ .SH SYNOPSIS
+ .B runscript
+ .RI "scriptname [logfile [homedir]]"
+--- a/src/rwconf.c
++++ b/src/rwconf.c
+@@ -105,7 +105,7 @@
+   { N_("No"),		0,  "kermreal" },
+   { "3",		0,   "colusage" },
+   /* The script program */
+-  { "runscript",	0,   "scriptprog" },
++  { "/usr/bin/runscript",	0,   "scriptprog" },
+   /* Modem parameters */
+   { "",                 0,   "minit" },
+   { "",                 0,   "mreset" },
+@@ -245,7 +245,7 @@
+   int matched;
+ 
+   if (conftype == CONFIG_GLOBAL)
+-    strcpy(P_SCRIPTPROG, "runscript");
++    strcpy(P_SCRIPTPROG, "/usr/bin/runscript");
+ 
+   line = malloc(line_size);
+   if (!line) {

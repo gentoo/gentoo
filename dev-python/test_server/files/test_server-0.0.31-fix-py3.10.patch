@@ -1,0 +1,20 @@
+From: Karthikeyan Singaravelan <tir.karthi@gmail.com>
+Date: Fri, 10 Apr 2020 06:30:21 +0000
+Subject: [PATCH] Import ABC from collections.abc instead of collections for
+ Python 3 compatibility.
+
+--- a/test_server/server.py
++++ b/test_server/server.py
+@@ -6,7 +6,11 @@
+ import time
+ import types
+ from six.moves.urllib.parse import urljoin
+-from collections import defaultdict, Iterable
++from collections import defaultdict
++try:
++    from collections.abc import Iterable
++except ImportError:
++    from collections import Iterable
+ 
+ import six
+ from webtest.http import StopableWSGIServer

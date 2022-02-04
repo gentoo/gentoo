@@ -1,0 +1,35 @@
+diff --git a/bpytop.py b/bpytop.py
+index 16482c0..a2b18d6 100755
+--- a/bpytop.py
++++ b/bpytop.py
+@@ -63,16 +63,21 @@ args.add_argument("-b", "--boxes",		action="store",	dest="boxes", 	help = "which
+ args.add_argument("-lc", "--low-color", action="store_true", 			help = "disable truecolor, converts 24-bit colors to 256-color")
+ args.add_argument("-v", "--version",	action="store_true", 			help = "show version info and exit")
+ args.add_argument("--debug",			action="store_true", 			help = "start with loglevel set to DEBUG overriding value set in config")
+-stdargs = args.parse_args()
+ 
+-if stdargs.version:
+-	print(f'bpytop version: {VERSION}\n'
+-		f'psutil version: {".".join(str(x) for x in psutil.version_info)}')
+-	raise SystemExit(0)
+-
+-ARG_BOXES: str = stdargs.boxes
+-LOW_COLOR: bool = stdargs.low_color
+-DEBUG: bool = stdargs.debug
++if __name__ == "__main__":
++	stdargs = args.parse_args()
++	if stdargs.version:
++		print(f'bpytop version: {VERSION}\n'
++			f'psutil version: {".".join(str(x) for x in psutil.version_info)}')
++		raise SystemExit(0)
++
++	ARG_BOXES: str = stdargs.boxes
++	LOW_COLOR: bool = stdargs.low_color
++	DEBUG: bool = stdargs.debug
++else:
++	ARG_BOXES = None
++	LOW_COLOR = False
++	DEBUG = False
+ 
+ #? Variables ------------------------------------------------------------------------------------->
+ 

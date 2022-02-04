@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools flag-o-matic
+EAPI=7
+
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Handles power management and special keys on laptops"
 HOMEPAGE="http://pbbuttons.berlios.de"
@@ -11,36 +12,31 @@ SRC_URI="mirror://sourceforge/pbbuttons/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ppc ~x86"
-IUSE="acpi alsa doc ibam macbook oss static-libs"
+IUSE="acpi alsa doc ibam macbook oss"
 
 RDEPEND="
-	>=dev-libs/glib-2.6
-	alsa? ( >=media-libs/alsa-lib-1.0 )
+	dev-libs/glib
+	alsa? ( media-libs/alsa-lib )
 	macbook? (
 		sys-apps/pciutils
 		sys-libs/libsmbios
-	)
-"
-DEPEND="
-	 ${RDEPEND}
-	doc? ( app-doc/doxygen )
-"
+	)"
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-doc/doxygen )"
 PATCHES=(
-	"${FILESDIR}/${PN}-0.8.1-cpufreq.patch"
-	"${FILESDIR}/${PN}-0.8.1-fnmode.patch"
-	"${FILESDIR}/${PN}-0.8.1-laptopmode.sh.patch"
-	"${FILESDIR}/${PN}-0.8.1-lm.patch"
-	"${FILESDIR}/${PN}-0.8.1-lz.patch"
+	"${FILESDIR}"/${PN}-0.8.1-cpufreq.patch
+	"${FILESDIR}"/${PN}-0.8.1-fnmode.patch
+	"${FILESDIR}"/${PN}-0.8.1-laptopmode.sh.patch
+	"${FILESDIR}"/${PN}-0.8.1-lm.patch
+	"${FILESDIR}"/${PN}-0.8.1-lz.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_prepare() {
-	### Don't link with g++ if we don't use ibam
-	if ! use ibam; then
-		eapply "${FILESDIR}/${PN}-0.8.1-g++.patch"
-	fi
+	# Don't link with g++ if we don't use ibam
+	use ibam || eapply "${FILESDIR}"/${PN}-0.8.1-g++.patch
 
 	default
-
 	eautoconf
 }
 
@@ -48,6 +44,7 @@ src_configure() {
 	# Fix crash bug on some systems
 	replace-flags -O? -O1
 
+	local laptop
 	if use macbook; then
 		laptop=macbook
 	elif use x86 || use amd64; then
@@ -61,12 +58,12 @@ src_configure() {
 		laptop=powerbook
 	fi
 
-	laptop=$laptop \
-		econf \
+	econf \
 		$(use_with alsa) \
 		$(use_with doc doxygen_docs) \
 		$(use_with ibam) \
-		$(use_with oss)
+		$(use_with oss) \
+		laptop="${laptop}"
 
 }
 
@@ -74,30 +71,34 @@ src_compile() {
 	# Thanks to Stefan Bruda for this workaround
 	# Using -j1 fixes a parallel build issue with the docs
 	if use doc; then
-		emake -j1
+		emake -j1 AR="$(tc-getAR)"
 	else
-		emake
+		emake AR="$(tc-getAR)"
 	fi
 }
 
 src_install() {
 	dodir /etc/power
-	use ibam && dodir /var/lib/ibam
+	if use ibam; then
+		dodir /var/lib/ibam
+		keepdir /var/lib/ibam
+	fi
 
 	default
 
-	use static-libs || rm "${D}"/usr/$(get_libdir)/libpbb.a
+	rm "${ED}"/usr/$(get_libdir)/libpbb.a || die
 
-	newinitd "${FILESDIR}/pbbuttonsd.rc6" pbbuttonsd
+	newinitd "${FILESDIR}"/pbbuttonsd.rc6 pbbuttonsd
 	dodoc README
 	use doc && dodoc -r doc/
 
 	dodir /etc/power/resume.d
+	keepdir /etc/power/resume.d
 	dodir /etc/power/suspend.d
-	dodir /etc/power/scripts.d
+	keepdir /etc/power/suspend.d
 	exeinto /etc/power/scripts.d
 	doexe "${FILESDIR}"/wireless
-	ln -s "${D}"/etc/power/scripts.d/wireless "${D}"/etc/power/resume.d/wireless
+	dosym ../scripts.d/wireless /etc/power/resume.d/wireless
 }
 
 pkg_postinst() {

@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
-inherit cmake flag-o-matic toolchain-funcs
+inherit cmake toolchain-funcs
 
 MY_PN="openvas"
 MY_DN="openvassd"
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/greenbone/openvas-scanner/archive/v${PV}.tar.gz -> $
 SLOT="0"
 LICENSE="GPL-2 GPL-2+"
 KEYWORDS="~amd64 ~x86"
-IUSE="cron extras test"
+IUSE="cron extras snmp test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -27,7 +27,7 @@ DEPEND="
 	dev-libs/libgcrypt:=
 	dev-libs/libksba
 	>=net-analyzer/gvm-libs-11.0.1
-	net-analyzer/net-snmp
+	snmp? ( net-analyzer/net-snmp:= )
 	net-libs/gnutls:=
 	net-libs/libpcap
 	net-libs/libssh:="
@@ -48,13 +48,18 @@ BDEPEND="
 	)
 	test? ( dev-libs/cgreen )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-disable-automagic-dep.patch
+	"${FILESDIR}"/${P}-fix-linking-with-lld.patch
+)
+
 BUILD_DIR="${WORKDIR}/${MY_PN}-${PV}_build"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
 	cmake_src_prepare
 	# QA-Fix | Correct FHS/Gentoo policy paths for 7.0.0
-	sed -i -e "s*/doc/openvas-scanner/*/doc/openvas-scanner-${PV}/*g" "$S"/src/CMakeLists.txt || die
+	sed -i -e "s*/doc/openvas-scanner/*/doc/openvas-scanner-${PV}/*g" "${S}"/src/CMakeLists.txt || die
 	# QA-Fix | Remove !CLANG doxygen warnings for 7.0.0
 	if use extras; then
 		if ! tc-is-clang; then
@@ -75,6 +80,7 @@ src_configure() {
 		"-DLOCALSTATEDIR=${EPREFIX}/var"
 		"-DSYSCONFDIR=${EPREFIX}/etc"
 		"-DSBINDIR=${EPREFIX}/usr/bin"
+		"-DBUILD_WITH_SNMP=$(usex snmp)"
 	)
 	cmake_src_configure
 }

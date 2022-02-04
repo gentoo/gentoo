@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ SRC_URI="https://dev.gentoo.org/~bircoph/distfiles/${P}.tar.xz
 
 LICENSE="CPL-1.0 GPL-3 LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="advertisement cal debug dictdotcn espeak examples flite
 fortune gucharmap +htmlparse info man perl +powerwordparse
 pronounce qqwry spell tools updateinfo +wikiparse +wordnet

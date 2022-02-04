@@ -1,28 +1,25 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
-MY_P=${PN}_${PV}
-
+MY_P="${PN}_${PV}"
 DESCRIPTION="A sequence assembler for very short reads"
 HOMEPAGE="https://www.ebi.ac.uk/~zerbino/velvet/"
 SRC_URI="https://www.ebi.ac.uk/~zerbino/velvet/${MY_P}.tgz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc openmp"
 
-RDEPEND=""
-DEPEND="${RDEPEND}
-	doc? ( virtual/latex-base )"
-
-S="${WORKDIR}"/${MY_P}
+BDEPEND="doc? ( virtual/latex-base )"
 
 src_prepare() {
+	default
 	if ! use doc; then
 		sed -i -e '/default :/ s/doc//' "${S}"/Makefile || die
 	fi
@@ -48,7 +45,7 @@ src_prepare() {
 	tc-export CC
 
 	MAKE_XOPTS=(
-		CC=$(tc-getCC)
+		CC="$(tc-getCC)"
 		CFLAGS="${CFLAGS}"
 		OPT="${CFLAGS}"
 	)

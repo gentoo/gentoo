@@ -1,0 +1,20 @@
+diff -Naru a/src/Makefile b/src/Makefile
+--- a/src/Makefile	2021-07-14 09:25:15.509797042 +0200
++++ b/src/Makefile	2021-07-14 09:25:46.689797121 +0200
+@@ -27,13 +27,13 @@
+ all: aescrypt aescrypt_keygen
+ 
+ aescrypt: $(AESCRYPT_OBJS)
+-	$(CC) $(CFLAGS) $(LIBS) -o $@ $(AESCRYPT_OBJS)
++	$(CC) $(CFLAGS) $(LIBS) $(LDFLAGS) -o $@ $(AESCRYPT_OBJS)
+ 
+ aescrypt_keygen: $(KEYGEN_OBJS)
+-	$(CC) $(CFLAGS) $(LIBS) -o $@ $(KEYGEN_OBJS)
++	$(CC) $(CFLAGS) $(LIBS) $(LDFLAGS) -o $@ $(KEYGEN_OBJS)
+ 
+ %.o: %.c %.h
+-	$(CC) $(CFLAGS) -c $*.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -c $*.c
+ 
+ install: aescrypt
+ 	install -o root -g root -m 755 aescrypt /usr/bin

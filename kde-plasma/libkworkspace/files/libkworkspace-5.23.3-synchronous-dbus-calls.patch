@@ -1,0 +1,48 @@
+From 9ecd45f28dc5c3a4b1716d09e0ba121ec5fb2a50 Mon Sep 17 00:00:00 2001
+From: Joe Breuer <kde@jmbreuer.net>
+Date: Mon, 1 Nov 2021 07:19:51 +0000
+Subject: [PATCH] Fix sleep/suspend sometimes not working ... from
+ ksmserver-logout-greeter, by making the DBus calls synchronous.
+
+---
+ libkworkspace/sessionmanagementbackend.cpp | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/sessionmanagementbackend.cpp b/sessionmanagementbackend.cpp
+index 83cd39395..a77a8a475 100644
+--- a/sessionmanagementbackend.cpp
++++ b/sessionmanagementbackend.cpp
+@@ -137,7 +137,6 @@ void LogindSessionBackend::shutdown()
+ {
+     // logind will confirm credentials with the caller, if the app quits after sending this
+     // this may fail
+-    // its not really needed for suspend tasks where the calling app won't be closing
+     m_login1->PowerOff(true).waitForFinished();
+ }
+ 
+@@ -148,17 +147,19 @@ void LogindSessionBackend::reboot()
+ 
+ void LogindSessionBackend::suspend()
+ {
+-    m_login1->Suspend(true);
++    // these need to be synchronous as well - ksmserver-logout-greeter specifically calls these
++    // and will quit immediately after
++    m_login1->Suspend(true).waitForFinished();
+ }
+ 
+ void LogindSessionBackend::hybridSuspend()
+ {
+-    m_login1->HybridSleep(true);
++    m_login1->HybridSleep(true).waitForFinished();
+ }
+ 
+ void LogindSessionBackend::hibernate()
+ {
+-    m_login1->Hibernate(true);
++    m_login1->Hibernate(true).waitForFinished();;
+ }
+ 
+ bool LogindSessionBackend::canShutdown() const
+-- 
+GitLab
+

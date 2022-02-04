@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,12 +6,12 @@ EAPI=7
 inherit font
 
 DESCRIPTION="Vollkorn, the free and healthy typeface for bread and butter use"
-HOMEPAGE="http://friedrichalthausen.de/?page_id=411"
+HOMEPAGE="http://vollkorn-typeface.com/"
 SRC_URI="http://friedrichalthausen.de/Vollkorn-${PV}.zip"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 # Only installs fonts
 RESTRICT="strip binchecks"

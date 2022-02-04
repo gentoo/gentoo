@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1
 
@@ -14,12 +14,12 @@ SRC_URI="https://www.bitbucket.org/jraedler/${PN}3/downloads/Polygon3-${PV}.zip"
 
 LICENSE="LGPL-2"
 SLOT="3"
-IUSE="examples"
 KEYWORDS="amd64 ppc x86"
+IUSE="examples"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
-S=${WORKDIR}/Polygon3-${PV}
+S="${WORKDIR}/Polygon3-${PV}"
 
 DOCS=( doc/{Polygon.txt,Polygon.pdf} )
 
@@ -28,6 +28,7 @@ python_prepare_all() {
 		mkdir examples || die
 		mv doc/{Examples.py,testpoly.gpf} examples || die
 	fi
+
 	distutils-r1_python_prepare_all
 }
 

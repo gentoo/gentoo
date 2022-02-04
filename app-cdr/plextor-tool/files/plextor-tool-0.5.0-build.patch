@@ -1,5 +1,5 @@
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -2,17 +2,17 @@
  #               Copyright (c) 1999-2002 Georg Huettenegger
  #

@@ -1,0 +1,18 @@
+From: Sam James <sam@gentoo.org>
+Date: Fri, 10 Dec 2021 03:19:45 +0000
+Subject: [PATCH 3/3] Makefile: don't override CPPFLAGS
+
+There's no need to explicitly blank this and it prevents overrides
+from the environment.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Makefile
++++ b/Makefile
+@@ -26,7 +26,6 @@ CXXFILES?= iptstate.cc
+ 
+ # THIS IS FOR NORMAL COMPILATION
+ LIBS?= $(shell $(PKG_CONFIG) --libs ncurses libnetfilter_conntrack)
+-CPPFLAGS=
+ 
+ ### YOU SHOULDN'T NEED TO CHANGE ANYTHING BELOW THIS
+ 

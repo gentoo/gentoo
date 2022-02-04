@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,9 +16,3 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="dev-lang/jsonnet"
 
 S="${WORKDIR}/${PN}-${COMMIT_HASH}"
-
-src_prepare() {
-	default
-
-	rm -f LICENSE .gitignore || die
-}

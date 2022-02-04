@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="7zip">Install <pkg>app-arch/p7zip</pkg> for 7zip archive support in <pkg>kde-apps/ark</pkg></flag>
 		<flag name="floppy">Install <pkg>kde-apps/kfloppy</pkg> to format and create DOS or ext2fs filesystems in a floppy.</flag>

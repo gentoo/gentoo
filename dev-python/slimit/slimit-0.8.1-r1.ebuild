@@ -1,11 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
-
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 inherit distutils-r1
 
 DESCRIPTION="A JavaScript minifier written in Python"
@@ -34,5 +32,5 @@ python_compile() {
 }
 
 python_test() {
-	pytest -vv "${BUILD_DIR}" || die "Tests failed with ${EPYTHON}"
+	epytest "${BUILD_DIR}"
 }

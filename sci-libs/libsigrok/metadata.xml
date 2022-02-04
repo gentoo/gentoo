@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="project">
  <email>embedded@gentoo.org</email>
@@ -11,7 +11,9 @@
   as well as input/output file format support.
 </longdescription>
 <use>
- <flag name="ftdi">Enable drivers that need libftdi</flag>
+ <flag name="ftdi">Enable drivers that need <pkg>dev-embedded/libftdi</pkg></flag>
+ <flag name="hidapi">Enable drivers that need <pkg>dev-libs/hidapi</pkg></flag>
+ <flag name="nettle">Enable drivers that need <pkg>dev-libs/nettle</pkg></flag>
  <flag name="parport">Enable drivers that are parallel (IEEE1284) based</flag>
  <flag name="serial">Enable drivers that are serial (RS232) based</flag>
 </use>

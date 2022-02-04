@@ -1,0 +1,22 @@
+Respect the 'AR' environment variable.
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -103,7 +103,7 @@ $(LIBOBJS):
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) $(INCS) -c $(srcdir)/missing/$*.c
+ 
+ libmissing.a: $(LIBOBJS)
+-	ar -cr $@ $(LIBOBJS)
++	$(AR) -cr $@ $(LIBOBJS)
+ 	$(RANLIB) $@
+ 
+ dsniff: $(HDRS) $(SRCS) $(OBJS) libmissing.a
+--- a/configure.in
++++ b/configure.in
+@@ -17,6 +17,7 @@ dnl Checks for programs.
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
++AC_CHECK_PROG(AR,ar,ar)
+ 
+ dnl Checks for header files.
+ AC_PATH_XTRA

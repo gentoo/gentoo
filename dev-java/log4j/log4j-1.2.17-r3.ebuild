@@ -1,9 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="log4j:log4j:1.2.17"
 
 inherit java-pkg-2 java-ant-2
 
@@ -12,7 +13,7 @@ SRC_URI="mirror://apache/logging/${PN}/${PV}/${P}.tar.gz"
 HOMEPAGE="http://logging.apache.org/log4j/"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux"
 IUSE="javamail jms"
 
 CDEPEND="

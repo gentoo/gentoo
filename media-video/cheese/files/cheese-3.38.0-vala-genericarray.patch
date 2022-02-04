@@ -1,0 +1,177 @@
+From 7cf6268e54620bbbe5e6e61800c50fb0cb4bea57 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Corentin=20No=C3=ABl?= <corentin@elementary.io>
+Date: Fri, 16 Oct 2020 19:56:26 +0200
+Subject: [PATCH] Change GLib.PtrArray into GLib.GenericArray
+
+This is the vala-friendly way of handling GPtrArray.
+Fix several memory leaks on the go and unnecessary reference increase.
+---
+ src/cheese-preferences.vala | 26 ++++++++++++--------------
+ src/cheese-window.vala      | 22 +++++++++++-----------
+ src/vapi/cheese-common.vapi |  2 +-
+ 3 files changed, 24 insertions(+), 26 deletions(-)
+
+diff --git a/src/cheese-preferences.vala b/src/cheese-preferences.vala
+index f56af7e0..80a92431 100644
+--- a/src/cheese-preferences.vala
++++ b/src/cheese-preferences.vala
+@@ -100,7 +100,7 @@ public PreferencesDialog (Cheese.Camera camera)
+    */
+   private void initialize_camera_devices ()
+   {
+-    unowned GLib.PtrArray devices = camera.get_camera_devices ();
++    GLib.GenericArray<unowned Cheese.CameraDevice> devices = camera.get_camera_devices ();
+     camera_model = new Gtk.ListStore (2, typeof (string), typeof (Cheese.CameraDevice));
+ 
+     source_combo.model = camera_model;
+@@ -357,13 +357,13 @@ public PreferencesDialog (Cheese.Camera camera)
+    */
+   private void on_camera_update_num_camera_devices ()
+   {
+-    unowned GLib.PtrArray devices = camera.get_camera_devices ();
+-    Cheese.CameraDevice   dev;
++    GLib.GenericArray<unowned Cheese.CameraDevice> devices = camera.get_camera_devices ();
++    unowned Cheese.CameraDevice   dev;
+ 
+     // Add (if) / Remove (else) a camera device.
+-    if (devices.len > camera_model.iter_n_children (null))
++    if (devices.length > camera_model.iter_n_children (null))
+     {
+-      dev = (Cheese.CameraDevice) devices.index (devices.len - 1);
++      dev = devices.get (devices.length - 1);
+       add_camera_device(dev);
+     }
+     else
+@@ -382,12 +382,11 @@ public PreferencesDialog (Cheese.Camera camera)
+       bool device_removed = false;
+       devices.foreach ((device) =>
+       {
+-        var old_device = (Cheese.CameraDevice) device;
+         Cheese.CameraDevice new_device;
+         camera_model.get (iter, 1, out new_device, -1);
+ 
+         // Found the device that was removed.
+-        if (old_device != new_device)
++        if (device != new_device)
+         {
+             remove_camera_device (iter, new_device, active_device);
+             device_removed = true;
+@@ -418,17 +417,16 @@ public PreferencesDialog (Cheese.Camera camera)
+    *
+    * @param device a Cheese.CameraDevice to add to the device combo box model
+    */
+-  private void add_camera_device (void *device)
++  private void add_camera_device (Cheese.CameraDevice device)
+   {
+     TreeIter iter;
+-    Cheese.CameraDevice dev = (Cheese.CameraDevice) device;
+ 
+     camera_model.append (out iter);
+     camera_model.set (iter,
+-                      0, dev.get_name (),
+-                      1, dev);
++                      0, device.get_name (),
++                      1, device);
+ 
+-    if (camera.get_selected_device () == dev)
++    if (camera.get_selected_device () == device)
+         source_combo.set_active_iter (iter);
+ 
+     if (camera_model.iter_n_children (null) > 1)
+@@ -445,12 +443,12 @@ public PreferencesDialog (Cheese.Camera camera)
+   private void remove_camera_device (TreeIter iter, Cheese.CameraDevice device_node,
+                              Cheese.CameraDevice active_device_node)
+   {
+-      unowned GLib.PtrArray devices = camera.get_camera_devices ();
++      GLib.GenericArray<unowned Cheese.CameraDevice> devices = camera.get_camera_devices ();
+ 
+       // Check if the camera that we want to remove, is the active one
+       if (device_node == active_device_node)
+       {
+-        if (devices.len > 0)
++        if (devices.length > 0)
+           set_new_available_camera_device (iter);
+         else
+           this.hide ();
+diff --git a/src/cheese-window.vala b/src/cheese-window.vala
+index ff069808..cc119b68 100644
+--- a/src/cheese-window.vala
++++ b/src/cheese-window.vala
+@@ -1216,9 +1216,9 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
+    */
+   public void on_switch_camera_clicked ()
+   {
+-      Cheese.CameraDevice selected;
+-      Cheese.CameraDevice next = null;
+-      GLib.PtrArray cameras;
++      unowned Cheese.CameraDevice selected;
++      unowned Cheese.CameraDevice next = null;
++      GLib.GenericArray<unowned Cheese.CameraDevice> cameras;
+       uint i;
+ 
+       if (camera == null)
+@@ -1235,9 +1235,9 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
+ 
+       cameras = camera.get_camera_devices ();
+ 
+-      for (i = 0; i < cameras.len; i++)
++      for (i = 0; i < cameras.length; i++)
+       {
+-          next = (Cheese.CameraDevice )cameras.index (i);
++          next = cameras.get (i);
+ 
+           if (next == selected)
+           {
+@@ -1245,13 +1245,13 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
+           }
+       }
+ 
+-      if (i + 1 < cameras.len)
++      if (i + 1 < cameras.length)
+       {
+-          next = (Cheese.CameraDevice )cameras.index (i + 1);
++          next = cameras.get (i + 1);
+       }
+       else
+       {
+-          next = (Cheese.CameraDevice )cameras.index (0);
++          next = cameras.get (0);
+       }
+ 
+       if (next == selected)
+@@ -1269,8 +1269,8 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
+    */
+   public void set_switch_camera_button_state ()
+   {
+-      Cheese.CameraDevice selected;
+-      GLib.PtrArray cameras;
++      unowned Cheese.CameraDevice selected;
++      GLib.GenericArray<unowned Cheese.CameraDevice> cameras;
+ 
+       if (camera == null)
+       {
+@@ -1288,7 +1288,7 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
+ 
+       cameras = camera.get_camera_devices ();
+ 
+-      if (cameras.len > 1)
++      if (cameras.length > 1)
+       {
+          switch_camera_button.set_visible (true);
+          return;
+diff --git a/src/vapi/cheese-common.vapi b/src/vapi/cheese-common.vapi
+index 6517cdfc..e4ae7ad3 100644
+--- a/src/vapi/cheese-common.vapi
++++ b/src/vapi/cheese-common.vapi
+@@ -35,7 +35,7 @@ namespace Cheese
+     [CCode (has_construct_function = false)]
+     public Camera (Clutter.Actor video_texture, string camera_device_node, int x_resolution, int y_resolution);
+     public bool                        get_balance_property_range (string property, double min, double max, double def);
+-    public unowned GLib.PtrArray       get_camera_devices ();
++    public GLib.GenericArray<unowned Cheese.CameraDevice> get_camera_devices ();
+     public unowned Cheese.VideoFormat  get_current_video_format ();
+     public int                         get_num_camera_devices ();
+     public unowned Cheese.CameraDevice get_selected_device ();
+-- 
+GitLab
+

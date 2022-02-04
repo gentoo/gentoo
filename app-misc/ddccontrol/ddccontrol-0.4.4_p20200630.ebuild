@@ -1,21 +1,21 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils autotools
+inherit autotools
 
-DESCRIPTION="DDCControl allows control of monitor parameters via DDC"
+DESCRIPTION="control monitor parameters, like brightness, contrast, RGB color levels via DDC"
 HOMEPAGE="http://ddccontrol.sourceforge.net/"
 COMMIT_ID="f3d003f63aaa0407d3147b04848e0722f78695d5"
 MY_PV=${COMMIT_ID:-${PV}}
 SRC_URI="https://github.com/ddccontrol/ddccontrol/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc gtk nls +pci static-libs"
-S=${WORKDIR}/${PN}-${COMMIT_ID}
+S="${WORKDIR}/${PN}-${COMMIT_ID}"
 
 RDEPEND="app-misc/ddccontrol-db
 	dev-libs/libxml2:2

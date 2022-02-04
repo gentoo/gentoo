@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>alexey+gentoo@asokolov.org</email>
 		<name>Alexey Sokolov</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -24,6 +24,7 @@
 		<flag name="media">Enable sound and video support</flag>
 		<flag name="stars">Install extra star catalogs</flag>
 		<flag name="telescope">Enable telescope control via <pkg>sci-libs/indilib</pkg></flag>
+		<flag name="webengine">Show online results about the selected star in an embedded window using <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">Stellarium/stellarium</remote-id>

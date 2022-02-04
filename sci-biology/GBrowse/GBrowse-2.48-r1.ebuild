@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ inherit perl-module webapp
 DESCRIPTION="Generic Model Organism Database Project - The Generic Genome Browser"
 HOMEPAGE="http://gmod.org/wiki/GBrowse"
 KEYWORDS="~amd64 ~x86"
-IUSE="-minimal mysql postgres +sqlite"
+IUSE="minimal mysql postgres +sqlite"
 
 SLOT="0"
 WEBAPP_MANUAL_SLOT="yes"

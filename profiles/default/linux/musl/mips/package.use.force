@@ -3,6 +3,3 @@
 dev-ml/llvm-ocaml llvm_targets_Mips
 sys-devel/clang llvm_targets_Mips
 sys-devel/llvm llvm_targets_Mips
-
-# The only working option
-dev-util/pkgconf pkg-config

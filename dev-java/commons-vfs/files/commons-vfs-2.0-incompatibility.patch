@@ -1,6 +1,5 @@
-diff -urN a/core/src/main/java/org/apache/commons/vfs2/provider/webdav/ExceptionConverter.java b/core/src/main/java/org/apache/commons/vfs2/provider/webdav/ExceptionConverter.java
---- a/core/src/main/java/org/apache/commons/vfs2/provider/webdav/ExceptionConverter.java	2013-07-05 15:28:39.072739044 +0200
-+++ b/core/src/main/java/org/apache/commons/vfs2/provider/webdav/ExceptionConverter.java	2013-07-05 15:30:24.799404027 +0200
+--- a/src/main/java/org/apache/commons/vfs2/provider/webdav/ExceptionConverter.java	2013-07-05 15:28:39.072739044 +0200
++++ b/src/main/java/org/apache/commons/vfs2/provider/webdav/ExceptionConverter.java	2013-07-05 15:30:24.799404027 +0200
 @@ -50,7 +50,7 @@
          {
              try
@@ -10,9 +9,8 @@ diff -urN a/core/src/main/java/org/apache/commons/vfs2/provider/webdav/Exception
                  if (DomUtil.matches(error, DavException.XML_ERROR, DavConstants.NAMESPACE))
                  {
                      if (DomUtil.hasChildElement(error, "exception", null))
-diff -urN a/core/src/main/java/org/apache/commons/vfs2/provider/webdav/WebdavFileObject.java b/core/src/main/java/org/apache/commons/vfs2/provider/webdav/WebdavFileObject.java
---- a/core/src/main/java/org/apache/commons/vfs2/provider/webdav/WebdavFileObject.java	2013-07-05 15:28:39.072739044 +0200
-+++ b/core/src/main/java/org/apache/commons/vfs2/provider/webdav/WebdavFileObject.java	2013-07-05 15:31:02.449403426 +0200
+--- a/src/main/java/org/apache/commons/vfs2/provider/webdav/WebdavFileObject.java	2013-07-05 15:28:39.072739044 +0200
++++ b/src/main/java/org/apache/commons/vfs2/provider/webdav/WebdavFileObject.java	2013-07-05 15:31:02.449403426 +0200
 @@ -63,6 +63,7 @@
  import org.apache.jackrabbit.webdav.client.methods.UncheckoutMethod;
  import org.apache.jackrabbit.webdav.client.methods.VersionControlMethod;

@@ -1,5 +1,5 @@
---- src/csrc/Makefile.orig	2015-10-18 14:31:56.752486000 +0000
-+++ src/csrc/Makefile	2015-10-18 14:33:11.502486000 +0000
+--- a/src/csrc/Makefile.orig	2015-10-18 14:31:56.752486000 +0000
++++ b/src/csrc/Makefile	2015-10-18 14:33:11.502486000 +0000
 @@ -28,11 +28,8 @@
  		-I$(JAVA_HOME)/include/linux fec-jinterf.c \
  		-o fec8-jinterf.o

@@ -1,5 +1,5 @@
---- htb.init.old	2005-03-15 14:56:08.328305288 +0200
-+++ htb.init		2005-03-15 15:05:16.612953352 +0200
+--- a/htb.init
++++ b/htb.init
 @@ -240,6 +240,10 @@
  #      Maximum packet size HTB creates rate maps for. The default should
  #      be sufficient for most cases, it certainly is for Ethernet.

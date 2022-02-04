@@ -1,0 +1,27 @@
+From f883dc94360af37ce85c8a9215c861fdc0431dee Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conikost@gentoo.org>
+Date: Sat, 28 Aug 2021 00:09:09 +0200
+Subject: [PATCH] IGC: CMakeLists: add project
+
+If project is not added, CMake will warn about it:
+No project() command is present. The top-level CMakeLists.txt file
+must contain a literal, direct call to the project() command.
+
+Signed-off-by: Conrad Kostecki <conrad@kostecki.com>
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bfbcf52eca4..5b04555b21f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,6 +8,8 @@
+ 
+ cmake_minimum_required(VERSION 3.13.4 FATAL_ERROR)
+ 
++project(IGC)
++
+ add_subdirectory(IGC)
+ 
+ list(APPEND IGC__IGC_TARGETS "igc_dll")

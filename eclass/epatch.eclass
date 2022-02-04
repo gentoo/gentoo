@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: epatch.eclass
@@ -294,7 +294,7 @@ epatch() {
 		local rel_paths=$(egrep -n '^[-+]{3} [^	]*[.][.]/' "${PATCH_TARGET}")
 		if [[ -n ${rel_paths} ]] ; then
 			echo
-			eerror "Rejected Patch: ${patchname} !"
+			eerror "Rejected Patch: ${patchname}!"
 			eerror " ( ${PATCH_TARGET} )"
 			eerror
 			eerror "Your patch uses relative paths '../':"
@@ -359,14 +359,14 @@ epatch() {
 
 		if [[ ${count} -ge 5 ]] ; then
 			echo
-			eerror "Failed Patch: ${patchname} !"
+			eerror "Failed patch: ${patchname}!"
 			eerror " ( ${PATCH_TARGET} )"
 			eerror
-			eerror "Include in your bugreport the contents of:"
+			eerror "Include in your bug report the contents of:"
 			eerror
 			eerror "  ${STDERR_TARGET}"
 			echo
-			die "Failed Patch: ${patchname}!"
+			die "Failed patch: ${patchname}!"
 		fi
 
 		# if everything worked, delete the full debug patch log
@@ -389,7 +389,8 @@ epatch() {
 case ${EAPI:-0} in
 0|1|2|3|4|5)
 
-# @VARIABLE: EPATCH_USER_SOURCE
+# @ECLASS_VARIABLE: EPATCH_USER_SOURCE
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Location for user patches, see the epatch_user function.
 # Should be set by the user. Don't set this in ebuilds.

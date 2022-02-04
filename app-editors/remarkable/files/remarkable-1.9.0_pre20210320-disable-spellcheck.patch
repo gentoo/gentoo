@@ -1,0 +1,23 @@
+Remove the spellcheck option permanently unless someone is packaging
+pygtkspellcheck for Gentoo
+
+Signed-off-by: Martin Dummer <martin.dummer@gmx.net>
+
+--- a/remarkable/RemarkableWindow.py
++++ b/remarkable/RemarkableWindow.py
+@@ -41,13 +41,8 @@
+ import warnings
+ from findBar import FindBar
+ 
+-# Check if gtkspellcheck is installed
+-try:
+-    from gtkspellcheck import SpellChecker
+-    spellcheck_enabled = True
+-except:
+-    print("*Spellchecking not enabled.\n*To enable spellchecking install pygtkspellcheck\n*https://pypi.python.org/pypi/pygtkspellcheck/")
+-    spellcheck_enabled = False
++# spellcheck permanently disabled
++spellcheck_enabled = False
+ 
+ import logging
+ logger = logging.getLogger('remarkable')

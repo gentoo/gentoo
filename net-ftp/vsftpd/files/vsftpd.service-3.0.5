@@ -1,0 +1,10 @@
+[Unit]
+Description=Very Secure FTP Daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/vsftpd
+
+[Install]
+WantedBy=multi-user.target

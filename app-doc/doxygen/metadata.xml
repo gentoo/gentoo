@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>tamiko@gentoo.org</email>
@@ -12,6 +12,9 @@
 		IDL (Corba and Microsoft flavors) and to some extent PHP, C#, and D,
 		as well as other languages (using additional helper tools).
 	</longdescription>
+	<upstream>
+		<remote-id type="github">doxygen/doxygen</remote-id>
+	</upstream>
 	<use>
 		<flag name="clang">support for <pkg>sys-devel/clang</pkg> assisted parsing</flag>
 		<flag name="dot">allow to create dot graphs using <pkg>media-gfx/graphviz</pkg></flag>

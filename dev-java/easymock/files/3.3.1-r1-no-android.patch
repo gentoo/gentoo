@@ -1,0 +1,15 @@
+--- a/easymock/src/main/java/org/easymock/internal/MocksControl.java
++++ b/easymock/src/main/java/org/easymock/internal/MocksControl.java
+@@ -137,12 +137,6 @@ public class MocksControl implements IMocksControl, IExpectationSetters<Object>,
+             return cached;
+         }
+ 
+-        // ///CLOVER:OFF
+-        if (AndroidSupport.isAndroid()) {
+-            return classProxyFactory = new AndroidClassProxyFactory();
+-        }
+-        // ///CLOVER:ON
+-
+         try {
+             return classProxyFactory = new ClassProxyFactory();
+         } catch (final NoClassDefFoundError e) {

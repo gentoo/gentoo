@@ -3,8 +3,8 @@ Fix by Bertrand Jacquin <beber AT meleeweb.net>
 Gentoo bugreport: https://bugs.gentoo.org/show_bug.cgi?id=373365
 Upstream bugreport: https://developer.berlios.de/bugs/?func=detailbug&bug_id=18190&group_id=1208
 
---- configure.in.orig	2011-06-28 16:26:10.000000000 +0200
-+++ configure.in	2011-06-28 16:26:12.000000000 +0200
+--- a/configure.in
++++ b/configure.in
 @@ -104,32 +104,40 @@
  AC_CHECK_FUNCS(flock fcntl uname gethostname sysinfo getdomainname)
  AC_CHECK_FUNCS(stricmp random rand snprintf vsnprintf)

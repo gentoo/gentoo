@@ -26,7 +26,7 @@
  
  ibam-krell.o: ibam-krell.cpp ibam.hpp ibam.inl
 -	$(CC) $(CFLAGS) -fPIC `pkg-config gtk+-2.0 --cflags` `gdk-pixbuf-config --cflags` -c ibam-krell.cpp
-+	$(CXX) $(CXXFLAGS) -fPIC `pkg-config gtk+-2.0 --cflags` `gdk-pixbuf-config --cflags` -c ibam-krell.cpp
++	$(CXX) $(CXXFLAGS) -fPIC `${PKG_CONFIG} gtk+-2.0 --cflags` `gdk-pixbuf-config --cflags` -c ibam-krell.cpp
  
  krell1:	ibam-krell1.so
  

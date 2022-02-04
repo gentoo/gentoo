@@ -1,0 +1,65 @@
+From 17a24f873122b96481adefaadc128bd1abba594f Mon Sep 17 00:00:00 2001
+From: Tormod Volden <debian.tormod@gmail.com>
+Date: Sat, 21 Aug 2021 13:06:34 +0200
+Subject: [PATCH 02/15] stm32: Consistent and unique erase error messages
+
+Signed-off-by: Tormod Volden <debian.tormod@gmail.com>
+---
+ stm32.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/stm32.c b/stm32.c
+index 82fa26a..e071905 100644
+--- a/stm32.c
++++ b/stm32.c
+@@ -797,7 +797,7 @@ static stm32_err_t stm32_mass_erase(const stm32_t *stm)
+ 		return STM32_ERR_OK;
+ 	}
+ 
+-	/* extended erase */
++	/* extended erase (0x44 or 0x45) */
+ 	buf[0] = 0xFF;	/* 0xFFFF the magic number for mass erase */
+ 	buf[1] = 0xFF;
+ 	buf[2] = 0x00;  /* checksum */
+@@ -870,11 +870,12 @@ static stm32_err_t stm32_pages_erase(const stm32_t *stm, uint32_t spage, uint32_
+ 		p_err = port->write(port, buf, i);
+ 		free(buf);
+ 		if (p_err != PORT_ERR_OK) {
+-			fprintf(stderr, "Erase failed.\n");
++			fprintf(stderr, "Erase failed sending list of pages.\n");
+ 			return STM32_ERR_UNKNOWN;
+ 		}
+ 		s_err = stm32_get_ack_timeout(stm, pages * STM32_PAGEERASE_TIMEOUT);
+ 		if (s_err != STM32_ERR_OK) {
++			fprintf(stderr, "Erase failed.\n");
+ 			if (port->flags & PORT_STRETCH_W)
+ 				stm32_warn_stretching("erase");
+ 			return STM32_ERR_UNKNOWN;
+@@ -882,7 +883,7 @@ static stm32_err_t stm32_pages_erase(const stm32_t *stm, uint32_t spage, uint32_
+ 		return STM32_ERR_OK;
+ 	}
+ 
+-	/* extended erase */
++	/* extended erase (0x44 or 0x45) */
+ 	buf = malloc(2 + 2 * pages + 1);
+ 	if (!buf)
+ 		return STM32_ERR_UNKNOWN;
+@@ -925,13 +926,13 @@ static stm32_err_t stm32_pages_erase(const stm32_t *stm, uint32_t spage, uint32_
+ 	p_err = port->write(port, buf, i);
+ 	free(buf);
+ 	if (p_err != PORT_ERR_OK) {
+-		fprintf(stderr, "Page-by-page erase error.\n");
++		fprintf(stderr, "Extended erase failed sending list of pages.\n");
+ 		return STM32_ERR_UNKNOWN;
+ 	}
+ 
+ 	s_err = stm32_get_ack_timeout(stm, pages * STM32_PAGEERASE_TIMEOUT);
+ 	if (s_err != STM32_ERR_OK) {
+-		fprintf(stderr, "Page-by-page erase failed. Check the maximum pages your device supports.\n");
++		fprintf(stderr, "Extended erase failed. Check the maximum pages your device supports.\n");
+ 		if ((port->flags & PORT_STRETCH_W)
+ 		    && stm->cmd->er != STM32_CMD_EE_NS)
+ 			stm32_warn_stretching("erase");
+-- 
+2.33.0.309.g3052b89438-goog
+

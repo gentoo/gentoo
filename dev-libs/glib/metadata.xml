@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>gnome@gentoo.org</email>
@@ -9,6 +9,10 @@
 		<flag name="dbus">
 			Enable dependencies required by glib libraries
 			using dbus service to manage settings saving
+		</flag>
+		<flag name="elf">
+			Enable support for listing and extracting from
+			ELF resource files with gresource tool
 		</flag>
 		<flag name="mime">
 			Pull in shared MIME database that many glib-based

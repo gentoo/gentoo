@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -12,11 +12,10 @@ SRC_URI="http://www.gasmi.net/down/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="libressl postgres"
+IUSE="postgres"
 # Not adding a mysql USE flag. The package defaults to it, so we will too.
 DEPEND="sys-libs/zlib
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl )
+	dev-libs/openssl:0=
 	!postgres? ( dev-db/mysql-connector-c:0= )
 	postgres? ( dev-db/postgresql:*[server] )"
 RDEPEND="${DEPEND}"

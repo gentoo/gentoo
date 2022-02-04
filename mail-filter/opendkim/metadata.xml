@@ -1,27 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-
-  <maintainer type="person">
-    <email>gentoo@seichter.de</email>
-    <name>Ralph Seichter</name>
-  </maintainer>
-
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>klondike@gentoo.org</email>
     <name>Francisco Blas Izquierdo Riera</name>
   </maintainer>
-
   <maintainer type="person">
     <email>mjo@gentoo.org</email>
     <name>Michael Orlitzky</name>
   </maintainer>
-
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
-
   <longdescription>
     A program implementing the Milter API that signs and verifies
     using the DKIM standard. This is a fork of Sendmail's DKIM-milter

@@ -1,0 +1,112 @@
+ommit 4ae420734990ab9f5ccc038262368256b9323f4a
+Merge: b66799f 994c1c7
+Author: Evgeniy Dushistov <dushistov@mail.ru>
+Date:   Wed Dec 23 04:30:13 2020 +0300
+
+    Merge pull request #67 from doozan/master
+
+    Use binary search for synonyms, fixes #31
+
+diff --git a/src/stardict_lib.cpp b/src/stardict_lib.cpp
+index 0af4304..6b1f92b 100644
+--- a/src/stardict_lib.cpp
++++ b/src/stardict_lib.cpp
+@@ -833,21 +833,23 @@ bool SynFile::load(const std::string &url, gulong wc)
+ {
+     struct stat stat_buf;
+     if (!stat(url.c_str(), &stat_buf)) {
+-        MapFile syn;
+-        if (!syn.open(url.c_str(), stat_buf.st_size))
++
++        if (!synfile.open(url.c_str(), stat_buf.st_size))
+             return false;
+-        const gchar *current = syn.begin();
++
++        synlist.resize(wc + 1);
++        gchar *p1 = synfile.begin();
++
+         for (unsigned long i = 0; i < wc; i++) {
+             // each entry in a syn-file is:
+             // - 0-terminated string
+             // 4-byte index into .dict file in network byte order
+-            glib::CharStr lower_string{ g_utf8_casefold(current, -1) };
+-            std::string synonym{ get_impl(lower_string) };
+-            current += synonym.length() + 1;
+-            const guint32 idx = g_ntohl(get_uint32(current));
+-            current += sizeof(idx);
+-            synonyms[synonym] = idx;
++
++            synlist[i] = p1;
++            p1 += strlen(p1) + 1 + 4;
+         }
++        synlist[wc] = p1;
++
+         return true;
+     } else {
+         return false;
+@@ -856,13 +858,38 @@ bool SynFile::load(const std::string &url, gulong wc)
+ 
+ bool SynFile::lookup(const char *str, glong &idx)
+ {
+-    glib::CharStr lower_string{ g_utf8_casefold(str, -1) };
+-    auto it = synonyms.find(get_impl(lower_string));
+-    if (it != synonyms.end()) {
+-        idx = it->second;
+-        return true;
++    bool bFound = false;
++    glong iTo = synlist.size() - 2;
++    if (iTo <0) return false;
++
++    if (stardict_strcmp(str, get_key(0)) < 0) {
++        idx = 0;
++    } else if (stardict_strcmp(str, get_key(iTo)) > 0) {
++        idx = INVALID_INDEX;
++    } else {
++        glong iThisIndex = 0;
++        glong iFrom = 0;
++        gint cmpint;
++        while (iFrom <= iTo) {
++            iThisIndex = (iFrom + iTo) / 2;
++            cmpint = stardict_strcmp(str, get_key(iThisIndex));
++            if (cmpint > 0)
++                iFrom = iThisIndex + 1;
++            else if (cmpint < 0)
++                iTo = iThisIndex - 1;
++            else {
++                bFound = true;
++                break;
++            }
++        }
++        if (!bFound)
++            idx = iFrom; //next
++        else {
++            const gchar *key = get_key(iThisIndex);
++            idx = g_ntohl(get_uint32(key+strlen(key)+1));
++        }
+     }
+-    return false;
++    return bFound;
+ }
+ 
+ bool Dict::Lookup(const char *str, glong &idx)
+diff --git a/src/stardict_lib.hpp b/src/stardict_lib.hpp
+index a629cbe..38f76f4 100644
+--- a/src/stardict_lib.hpp
++++ b/src/stardict_lib.hpp
+@@ -102,11 +102,15 @@ public:
+ class SynFile
+ {
+ public:
++    SynFile() {}
++    ~SynFile() {}
+     bool load(const std::string &url, gulong wc);
+     bool lookup(const char *str, glong &idx);
++    const gchar *get_key(glong idx) { return synlist[idx]; }
+ 
+ private:
+-    std::map<std::string, gulong> synonyms;
++    MapFile synfile;
++    std::vector<gchar *> synlist;
+ };
+ 
+ class Dict : public DictBase

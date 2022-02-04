@@ -1,7 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
+inherit xdg
 
 DESCRIPTION="Iconsets for Claws Mail"
 HOMEPAGE="https://www.claws-mail.org/"
@@ -13,7 +15,6 @@ KEYWORDS="~alpha amd64 ~ppc ~ppc64 x86"
 RESTRICT="mirror bindist"
 
 RDEPEND="mail-client/claws-mail"
-DEPEND=""
 
 src_install() {
 	insinto /usr/share/claws-mail/themes

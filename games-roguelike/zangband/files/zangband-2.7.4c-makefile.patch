@@ -1,5 +1,5 @@
---- makefile.in.orig
-+++ makefile.in
+--- a/makefile.in
++++ b/makefile.in
 @@ -111,17 +111,6 @@
  %.o: %.c
  	$(CC) $(CFLAGS) $(CPPFLAGS) $(DEFS) $< -c -o $@ $(DEFS)

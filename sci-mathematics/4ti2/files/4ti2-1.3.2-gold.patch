@@ -1,9 +1,3 @@
- m4/glpk-check.m4         |    2 +-
- src/groebner/Makefile.am |    2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/src/groebner/Makefile.am b/src/groebner/Makefile.am
-index 992c4ae..ba2f463 100644
 --- a/src/groebner/Makefile.am
 +++ b/src/groebner/Makefile.am
 @@ -269,7 +269,7 @@ lib4ti2int64_la_SOURCES = $(lib4ti2sources)

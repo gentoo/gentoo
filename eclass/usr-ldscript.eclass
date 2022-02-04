@@ -1,19 +1,19 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: usr-ldscript.eclass
 # @MAINTAINER:
 # Toolchain Ninjas <toolchain@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Defines the gen_usr_ldscript function.
+
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_USR_LDSCRIPT_ECLASS} ]]; then
 _USR_LDSCRIPT_ECLASS=1
-
-case ${EAPI:-0} in
-	4|5|6|7) ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
-esac
 
 inherit multilib toolchain-funcs
 
@@ -49,7 +49,6 @@ gen_usr_ldscript() {
 	*-darwin*) ;;
 	*-android*) return 0 ;;
 	*linux*|*-freebsd*|*-openbsd*|*-netbsd*)
-		use prefix && return 0
 		use split-usr || return 0
 		;;
 	*) return 0 ;;

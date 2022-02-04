@@ -1,0 +1,12 @@
+--- a/src/gkrellmss.h
++++ b/src/gkrellmss.h
+@@ -212,7 +212,7 @@
+ #define	DRAW_GRID	1
+ 
+ 
+-SoundMonitor	*gkrellmss;
++extern SoundMonitor *gkrellmss;
+ 
+ 
+ void		gkrellmss_add_sound_sources(void);
+

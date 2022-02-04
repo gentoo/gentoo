@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>conikost@gentoo.org</email>
@@ -15,7 +15,7 @@
 		for short to Windows, Linux, Mac OS X, FreeBSD and several handhelds.
 	</longdescription>
 	<use>
-		<flag name="demo">Install the Duke Nukem 3D demo files, provided by <pkg>games-fps/duke3d-demodata</pkg>.</flag>
+		<flag name="duke3d">Install the Duke Nukem 3D data files, provided by <pkg>games-fps/duke3d-data</pkg>.</flag>
 		<flag name="fluidsynth">Install <pkg>media-libs/sdl2-mixer</pkg> with fluidsynth support.</flag>
 		<flag name="hrp">Install the Duke Nukem 3D High Resolution Pack.</flag>
 		<flag name="offensive">Install the Duke Nukem 3D XXX Pack.</flag>

@@ -1,0 +1,11 @@
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -17,7 +17,7 @@
+ # These are set by configure
+ # NB: cc and various flags must match the ones used to compile Gauche,
+ # so the make invocator shouldn't casually override them.
+-CFLAGS   = @DEFS@ @X_CFLAGS@ @GLUT_INCDIR@ @GLEW_INCDIR@
++CFLAGS   = @DEFS@ @CFLAGS@ @X_CFLAGS@ @GLUT_INCDIR@ @GLEW_INCDIR@
+ LDFLAGS  = @LDFLAGS@
+ OBJEXT   = @OBJEXT@
+ SOEXT    = @SOEXT@

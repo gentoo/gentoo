@@ -11,7 +11,6 @@ Reviewed-by: James Cowgill <jcowgill@debian.org>
 Bug-Debian: https://bugs.debian.org/834180
 Forwarded: no
 Index: bristol-0.60.11/libbristolaudio/audioEngineJack.c
-===================================================================
 --- a/libbristolaudio/audioEngineJack.c
 +++ b/libbristolaudio/audioEngineJack.c
 @@ -38,9 +38,6 @@

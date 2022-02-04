@@ -1,10 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
+LUA_COMPAT=( lua5-3 )
+
 [[ ${PV} == *9999 ]] && SCM="git-r3"
-inherit toolchain-funcs flag-o-matic systemd linux-info $SCM
+inherit toolchain-funcs flag-o-matic lua-single systemd linux-info ${SCM}
 
 MY_P="${PN}-${PV/_beta/-dev}"
 
@@ -19,31 +21,34 @@ else
 fi
 
 LICENSE="GPL-2 LGPL-2.1"
-SLOT="0"
-IUSE="+crypt doc examples libressl slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter
+SLOT="0/$(ver_cut 1-2)"
+IUSE="+crypt doc examples slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter
 ssl systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
 	pcre2-jit? ( pcre2 )
 	pcre? ( !pcre2 )
+	lua? ( ${LUA_REQUIRED_USE} )
 	device-atlas? ( pcre )
 	?? ( slz zlib )"
 
+BDEPEND="virtual/pkgconfig"
 DEPEND="
+	crypt? ( virtual/libcrypt:= )
 	pcre? (
 		dev-libs/libpcre
 		pcre-jit? ( dev-libs/libpcre[jit] )
 	)
 	pcre2? (
-		dev-libs/libpcre
-		pcre2-jit? ( dev-libs/libpcre2[jit] )
+		dev-libs/libpcre2:=
+		pcre2-jit? ( dev-libs/libpcre2:=[jit] )
 	)
 	ssl? (
-		!libressl? ( dev-libs/openssl:0=[zlib?] )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 	slz? ( dev-libs/libslz:= )
+	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
-	lua? ( dev-lang/lua:5.3 )
+	lua? ( ${LUA_DEPS} )
 	device-atlas? ( dev-libs/device-atlas-api-c )"
 RDEPEND="${DEPEND}
 	acct-group/haproxy
@@ -54,9 +59,9 @@ S="${WORKDIR}/${MY_P}"
 DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS README )
 CONTRIBS=( halog iprange )
 # ip6range is present in 1.6, but broken.
-ver_test $PV -ge 1.7.0 && CONTRIBS+=( ip6range spoa_example tcploop )
+ver_test ${PV} -ge 1.7.0 && CONTRIBS+=( ip6range spoa_example tcploop )
 # TODO: mod_defender - requires apache / APR, modsecurity - the same
-ver_test $PV -ge 1.8.0 && CONTRIBS+=( hpack )
+ver_test ${PV} -ge 1.8.0 && CONTRIBS+=( hpack )
 
 haproxy_use() {
 	(( $# != 2 )) && die "${FUNCNAME} <USE flag> <make option>"
@@ -65,6 +70,7 @@ haproxy_use() {
 }
 
 pkg_setup() {
+	use lua && lua-single_pkg_setup
 	if use net_ns; then
 		CONFIG_CHECK="~NET_NS"
 		linux-info_pkg_setup
@@ -123,8 +129,8 @@ src_install() {
 	dosbin haproxy
 	dosym ../sbin/haproxy /usr/bin/haproxy
 
-	newconfd "${FILESDIR}/${PN}.confd" $PN
-	newinitd "${FILESDIR}/${PN}.initd-r6" $PN
+	newconfd "${FILESDIR}/${PN}.confd" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-r6" ${PN}
 
 	doman doc/haproxy.1
 

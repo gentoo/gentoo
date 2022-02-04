@@ -1,5 +1,5 @@
---- slim.conf.orig	2010-08-25 11:52:23.000000000 -0400
-+++ slim.conf	2010-08-25 11:58:58.000000000 -0400
+--- a/slim.conf.orig	2010-08-25 11:52:23.000000000 -0400
++++ b/slim.conf	2010-08-25 11:58:58.000000000 -0400
 @@ -2,7 +2,7 @@
  # Note: -xauth $authfile is automatically appended
  default_path        /bin:/usr/bin:/usr/local/bin

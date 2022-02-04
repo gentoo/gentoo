@@ -1,9 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit eutils
 
 DESCRIPTION="Perl/Curses front-end for Taskwarrior (app-misc/task)"
 HOMEPAGE="https://github.com/scottkosty/vit"
@@ -12,7 +10,6 @@ SRC_URI="https://github.com/scottkosty/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE=""
 
 DEPEND="
 	app-misc/task

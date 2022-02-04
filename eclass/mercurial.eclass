@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mercurial.eclass
@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Next gen author: Krzysztof Pawlik <nelchael@gentoo.org>
 # Original author: Aron Griffis <agriffis@gentoo.org>
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: This eclass provides generic mercurial fetching functions
 # @DESCRIPTION:
 # This eclass provides generic mercurial fetching functions. To fetch sources
@@ -14,13 +15,25 @@
 # you need to share single repository between several ebuilds set EHG_PROJECT to
 # project name in all of them.
 
-inherit eutils
+case ${EAPI:-0} in
+	[78]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
-EXPORT_FUNCTIONS src_unpack
+if [[ -z ${_MERCURIAL_ECLASS} ]] ; then
+_MERCURIAL_ECLASS=1
 
 PROPERTIES+=" live"
 
-DEPEND="dev-vcs/mercurial"
+case ${EAPI:-0} in
+	7)
+		# For compatibiilty only (indirect inherits).
+		# Eclass itself doesn't need it.
+		inherit eutils
+		;;
+esac
+
+BDEPEND="dev-vcs/mercurial"
 
 # @ECLASS-VARIABLE: EHG_REPO_URI
 # @DESCRIPTION:
@@ -35,6 +48,7 @@ DEPEND="dev-vcs/mercurial"
 : ${EHG_REVISION:="default"}
 
 # @ECLASS-VARIABLE: EHG_STORE_DIR
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Mercurial sources store directory. Users may override this in /etc/portage/make.conf
 [[ -z "${EHG_STORE_DIR}" ]] && EHG_STORE_DIR="${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}/hg-src"
@@ -47,7 +61,7 @@ DEPEND="dev-vcs/mercurial"
 # between several ebuilds.
 [[ -z "${EHG_PROJECT}" ]] && EHG_PROJECT="${PN}"
 
-# @ECLASS-VARIABLE: EGIT_CHECKOUT_DIR
+# @ECLASS-VARIABLE: EHG_CHECKOUT_DIR
 # @DESCRIPTION:
 # The directory to check the hg sources out to.
 #
@@ -201,3 +215,7 @@ function mercurial_src_unpack {
 	mercurial_fetch
 	mercurial_bootstrap
 }
+
+fi
+
+EXPORT_FUNCTIONS src_unpack

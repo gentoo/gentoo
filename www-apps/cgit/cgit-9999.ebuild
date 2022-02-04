@@ -1,11 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
+LUA_COMPAT=( lua5-{1..2} luajit )
 WEBAPP_MANUAL_SLOT="yes"
 
-inherit webapp eutils multilib user toolchain-funcs git-r3
+inherit git-r3 lua-single toolchain-funcs webapp
 
 [[ -z "${CGIT_CACHEDIR}" ]] && CGIT_CACHEDIR="/var/cache/${PN}/"
 
@@ -17,18 +18,19 @@ EGIT_REPO_URI="https://git.zx2c4.com/cgit"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc +highlight +lua +luajit"
+IUSE="doc +highlight +lua test"
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
+	acct-group/cgit
+	acct-user/cgit
 	dev-vcs/git
-	sys-libs/zlib
-	dev-libs/openssl:0
-	virtual/httpd-cgi
 	highlight? ( || ( dev-python/pygments app-text/highlight ) )
-	lua? (
-		luajit? ( dev-lang/luajit )
-		!luajit? ( dev-lang/lua:0 )
-	)
+	dev-libs/openssl:0=
+	lua? ( ${LUA_DEPS} )
+	sys-libs/zlib
+	virtual/httpd-cgi
 "
 # ebuilds without WEBAPP_MANUAL_SLOT="yes" are broken
 DEPEND="${RDEPEND}
@@ -38,8 +40,7 @@ DEPEND="${RDEPEND}
 
 pkg_setup() {
 	webapp_pkg_setup
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 -1 ${PN}
+	use lua && lua-single_pkg_setup
 }
 
 src_prepare() {
@@ -50,16 +51,12 @@ src_prepare() {
 	echo "CACHE_ROOT = ${CGIT_CACHEDIR}" >> cgit.conf
 	echo "DESTDIR = ${D}" >> cgit.conf
 	if use lua; then
-		if use luajit; then
-			echo "LUA_PKGCONFIG = luajit" >> cgit.conf
-		else
-			echo "LUA_PKGCONFIG = lua" >> cgit.conf
-		fi
+		echo "LUA_PKGCONFIG = ${ELUA}" >> cgit.conf
 	else
 		echo "NO_LUA = 1" >> cgit.conf
 	fi
 
-	epatch_user
+	eapply_user
 }
 
 src_compile() {
@@ -84,6 +81,10 @@ src_install() {
 	keepdir "${CGIT_CACHEDIR}"
 	fowners ${PN}:${PN} "${CGIT_CACHEDIR}"
 	fperms 700 "${CGIT_CACHEDIR}"
+}
+
+src_test() {
+	emake V=1 AR="$(tc-getAR)" CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" test
 }
 
 pkg_postinst() {

@@ -1,22 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-SCM=""
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SCM="git-r3"
-	EGIT_REPO_URI="https://github.com/vcstools/wstool"
-fi
-
-inherit ${SCM} distutils-r1
+PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_IN_SOURCE_BUILD="yes"
+inherit distutils-r1
 
 DESCRIPTION="Commands to manage several local SCM repositories for ROS"
 HOMEPAGE="https://wiki.ros.org/wstool"
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SRC_URI=""
-	KEYWORDS=""
+
+if [[ ${PV} == 9999* ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/vcstools/wstool"
 else
 	SRC_URI="http://download.ros.org/downloads/${PN}/${P}.tar.gz
 		https://github.com/vcstools/wstool/archive/${PV}.tar.gz -> ${P}.tar.gz
@@ -26,38 +22,32 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	>=dev-python/vcstools-0.1.38[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
+	dev-python/sphinx
 	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-vcs/git
 		dev-vcs/bzr
 		dev-vcs/mercurial
 		dev-vcs/subversion
 	)
 "
-BDEPEND="
-	dev-python/sphinx
-"
 
-DISTUTILS_IN_SOURCE_BUILD="yes"
+distutils_enable_tests nose
 
-python_test() {
+src_test() {
 	# From travis.yml
 	# Set git config to silence some stuff in the tests
-	git config --global user.email "foo@example.com"
-	git config --global user.name "Foo Bar"
+	git config --global user.email "foo@example.com" || die
+	git config --global user.name "Foo Bar" || die
 	# Set the hg user
-	echo -e "[ui]\nusername = Your Name <your@mail.com>" >> ~/.hgrc
+	echo -e "[ui]\nusername = Your Name <your@mail.com>" >> ~/.hgrc || die
 	# Set the bzr user
-	bzr whoami "Your Name <name@example.com>"
+	bzr whoami "Your Name <name@example.com>" || die
 	# command to run tests
-	nosetests --with-coverage --cover-package=wstool || die
+	distutils-r1_src_test
 }

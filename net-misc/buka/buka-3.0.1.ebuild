@@ -1,22 +1,21 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit optfeature
+EAPI=8
 
 COMMIT="45e6b32de708759a4e15181a8e2ad5de55cc78ef"
-S=${WORKDIR}/${P}-${COMMIT}
+inherit optfeature
 
 DESCRIPTION="Download manga from buka.cn"
 HOMEPAGE="https://gitlab.com/drylemon/buka"
 SRC_URI="https://gitlab.com/drylemon/buka/repository/${PV}/archive.tar.gz?ref=${PV} -> ${P}.tar.gz"
+S=${WORKDIR}/${P}-${COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-python/beautifulsoup
+RDEPEND="dev-python/beautifulsoup4
 	dev-python/requests
 	sys-process/parallel
 	net-misc/curl

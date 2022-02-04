@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ EAPI=7
 inherit go-module
 
 DESCRIPTION="A simple JIRA commandline client in Go"
-HOMEPAGE="https://github.com/Netflix-Skunkworks/go-jira"
+HOMEPAGE="https://github.com/go-jira/jira"
 
 EGO_SUM=(
 	"github.com/Masterminds/goutils v1.1.0"

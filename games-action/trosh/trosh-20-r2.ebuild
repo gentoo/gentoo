@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop eutils gnome2-utils
+inherit desktop wrapper xdg
 
 DESCRIPTION="A game made in 20 hours for a friend. It has explosions"
 HOMEPAGE="https://stabyourself.net/trosh/"
@@ -18,7 +18,7 @@ LVSLOT="0.8"
 RDEPEND="
 	games-engines/love:${LVSLOT}
 	media-libs/devil[png]"
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 
@@ -33,16 +33,4 @@ src_install() {
 	doicon -s 32 "${DISTDIR}"/${PN}.png
 	make_wrapper ${PN} "love-${LVSLOT} ${PN}.love" "${dir}"
 	make_desktop_entry ${PN}
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }

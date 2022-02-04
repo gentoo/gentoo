@@ -1,0 +1,32 @@
+https://git.linux-nfs.org/?p=steved/nfs-utils.git;a=commitdiff;h=feb3dfc7127cf1337530ccb06ed90e818b026a07#patch1
+https://bugzilla.redhat.com/show_bug.cgi?id=1979816
+https://bugs.gentoo.org/808183
+
+Slightly rebased by sam@ to account for version.h moving around.
+
+From feb3dfc7127cf1337530ccb06ed90e818b026a07 Mon Sep 17 00:00:00 2001
+From: Steve Dickson <steved@redhat.com>
+Date: Wed, 22 Sep 2021 11:31:56 -0400
+Subject: [PATCH] mountd: only do NFSv4 logging on supported kernels.
+
+Fixes: https://bugzilla.redhat.com/show_bug.cgi?id=1979816
+Signed-off-by: Steve Dickson <steved@redhat.com>
+--- a/support/export/v4clients.c
++++ b/support/export/v4clients.c
+@@ -10,6 +10,7 @@
+ #include <sys/inotify.h>
+ #include <errno.h>
+ #include "export.h"
++#include "../../utils/mount/version.h"
+ 
+ /* search.h declares 'struct entry' and nfs_prot.h
+  * does too.  Easiest fix is to trick search.h into
+@@ -23,6 +24,8 @@ static int clients_fd = -1;
+ 
+ void v4clients_init(void)
+ {
++	if (linux_version_code() < MAKE_VERSION(5, 3, 0))
++		return;
+ 	if (clients_fd >= 0)
+ 		return;
+ 	clients_fd = inotify_init1(IN_NONBLOCK);

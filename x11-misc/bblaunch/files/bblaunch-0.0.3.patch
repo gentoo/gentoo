@@ -1,5 +1,5 @@
---- bblaunch.c.orig	2002-05-06 23:35:57.000000000 -0500
-+++ bblaunch.c	2004-06-15 07:21:11.080972712 -0500
+--- a/bblaunch.c
++++ b/bblaunch.c
 @@ -170,7 +170,7 @@
  	launchargs.iconic = False;
  	launchargs.pause = 1000;

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file masks out USE flags that are simply NOT allowed in the default
@@ -10,4 +10,4 @@
 -selinux
 
 # no policy yet
-systemd
+homed

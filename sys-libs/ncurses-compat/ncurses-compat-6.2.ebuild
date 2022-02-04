@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This version is just for the ABI .5 library
@@ -23,7 +23,7 @@ fi
 LICENSE="MIT"
 # The subslot reflects the SONAME.
 SLOT="5/5"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="gpm tinfo unicode"
 
 DEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP}] )"
@@ -69,7 +69,7 @@ src_configure() {
 	# This comes up when cross-compiling, doing multilib builds, upgrading,
 	# or installing for the first time.  Build a local copy of tic whenever
 	# the host version isn't available. #249363 #557598
-	if ! ROOT=/ has_version -b "~sys-libs/${P}:0" ; then
+	if ! has_version -b "~sys-libs/${P}:0" ; then
 		local lbuildflags="-static"
 
 		# some toolchains don't quite support static linking
@@ -181,7 +181,7 @@ do_configure() {
 
 src_compile() {
 	# See comments in src_configure.
-	if ! ROOT=/ has_version -b "~sys-libs/${P}:0" ; then
+	if ! has_version -b "~sys-libs/${P}:0" ; then
 		BUILD_DIR="${WORKDIR}" \
 		do_compile cross -C progs tic
 	fi

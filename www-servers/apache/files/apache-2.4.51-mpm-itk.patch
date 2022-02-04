@@ -1,0 +1,34 @@
+Backport of upstream r1894171 to fix segfaults with mpm-itk.
+
+https://bugs.gentoo.org/816258
+https://bz.apache.org/bugzilla/show_bug.cgi?id=65627
+
+--- a/server/connection.c	2021/09/21 20:03:52	1893497
++++ b/server/connection.c	2021/10/12 16:48:18	1894171
+@@ -145,9 +145,7 @@
+ {
+     apr_socket_t *csd = ap_get_conn_socket(c);
+ 
+-    if (!csd) {
+-        return 1;
+-    }
++    ap_assert(csd != NULL);
+ 
+     if (ap_prep_lingering_close(c)) {
+         return 1;
+@@ -178,6 +176,15 @@
+     apr_time_t now, timeup = 0;
+     apr_socket_t *csd = ap_get_conn_socket(c);
+ 
++    if (!csd) {
++        /* Be safe with third-party modules that:
++         *   ap_set_core_module_config(c->conn_config, NULL)
++         * to no-op ap_lingering_close().
++         */
++        c->aborted = 1;
++        return;
++    }
++
+     if (ap_start_lingering_close(c)) {
+         apr_socket_close(csd);
+         return;

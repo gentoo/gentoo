@@ -1,0 +1,29 @@
+From aac3f106ff012e1d6835b20c250dcf09c364530c Mon Sep 17 00:00:00 2001
+From: Christian Brauner <christian.brauner@ubuntu.com>
+Date: Thu, 28 Oct 2021 17:39:11 +0200
+Subject: [PATCH] mainloop: make sure that descr->ring is allocated
+
+This is future proofing more than anything else.
+
+Signed-off-by: Christian Brauner <christian.brauner@ubuntu.com>
+---
+ src/lxc/mainloop.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/lxc/mainloop.c b/src/lxc/mainloop.c
+index 7c8f5d86af..17a4d55293 100644
+--- a/src/lxc/mainloop.c
++++ b/src/lxc/mainloop.c
+@@ -515,8 +515,10 @@ void lxc_mainloop_close(struct lxc_async_descr *descr)
+ 
+ 	if (descr->type == LXC_MAINLOOP_IO_URING) {
+ #if HAVE_LIBURING
+-		io_uring_queue_exit(descr->ring);
+-		munmap(descr->ring, sizeof(struct io_uring));
++		if (descr->ring) {
++			io_uring_queue_exit(descr->ring);
++			munmap(descr->ring, sizeof(struct io_uring));
++		}
+ #else
+ 		ERROR("Unsupported io_uring mainloop");
+ #endif

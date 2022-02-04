@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic ltprune vcs-snapshot
+inherit autotools flag-o-matic vcs-snapshot
 
 DESCRIPTION="A libav/ffmpeg based source library for easy frame accurate access"
 HOMEPAGE="https://github.com/FFMS/ffms2"
@@ -42,5 +42,5 @@ src_prepare() {
 
 src_install() {
 	default_src_install
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

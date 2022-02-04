@@ -1,0 +1,11 @@
+--- a/zuluCrypt-cli/bin/security.h
++++ b/zuluCrypt-cli/bin/security.h
+@@ -35,7 +35,7 @@ extern "C" {
+  * set the function to be called when an attempt to evelate or downgrade privileges fail
+  * zuluCryptSecurityPrivilegeElevationError global variable is defined in security.c
+  */
+-void ( *zuluCryptSecurityPrivilegeElevationError )( const char * ) ;
++extern void ( *zuluCryptSecurityPrivilegeElevationError )( const char * ) ;
+ 
+ void zuluCryptSecuritySetPrivilegeElevationErrorFunction( void ( * ) ( const char * ) ) ;
+ 

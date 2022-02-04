@@ -1,4 +1,4 @@
-# Copyright 2004-2020 Gentoo Authors
+# Copyright 2004-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: check-reqs.eclass
@@ -7,8 +7,8 @@
 # @AUTHOR:
 # Bo Ørsted Andresen <zlin@gentoo.org>
 # Original Author: Ciaran McCreesh <ciaranm@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
-# @BLURB: Provides a uniform way of handling ebuild which have very high build requirements
+# @SUPPORTED_EAPIS: 6 7 8
+# @BLURB: Provides a uniform way of handling ebuilds with very high build requirements
 # @DESCRIPTION:
 # This eclass provides a uniform way of handling ebuilds which have very high
 # build requirements in terms of memory or disk space. It provides a function
@@ -38,14 +38,22 @@
 # These checks should probably mostly work on non-Linux, and they should
 # probably degrade gracefully if they don't. Probably.
 
-if [[ ! ${_CHECK_REQS_ECLASS_} ]]; then
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
+esac
+
+EXPORT_FUNCTIONS pkg_pretend pkg_setup
+
+if [[ ! ${_CHECK_REQS_ECLASS} ]]; then
+_CHECK_REQS_ECLASS=1
 
 # @ECLASS-VARIABLE: CHECKREQS_MEMORY
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # How much RAM is needed? Eg.: CHECKREQS_MEMORY=15M
 
-# @ECLASS-VARIABLE:  CHECKREQS_DISK_BUILD
+# @ECLASS-VARIABLE: CHECKREQS_DISK_BUILD
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # How much diskspace is needed to build the package? Eg.: CHECKREQS_DISK_BUILD=2T
@@ -60,19 +68,13 @@ if [[ ! ${_CHECK_REQS_ECLASS_} ]]; then
 # @DESCRIPTION:
 # How much space is needed in /var? Eg.: CHECKREQS_DISK_VAR=3000M
 
-case ${EAPI:-0} in
-	4|5|6|7) ;;
-	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
-esac
-
-EXPORT_FUNCTIONS pkg_pretend pkg_setup
-
-# Obsolete function executing all the checks and printing out results
-check_reqs() {
-	eerror "Package calling old ${FUNCNAME} function."
-	eerror "It should call check-reqs_pkg_pretend and check-reqs_pkg_setup."
-	die "${FUNCNAME} is banned"
-}
+# @ECLASS-VARIABLE: CHECKREQS_DONOTHING
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Do not error out in _check-reqs_output if requirements are not met.
+# This is a user flag and should under _no circumstances_ be set in the ebuild.
+[[ -n ${I_KNOW_WHAT_I_AM_DOING} ]] && CHECKREQS_DONOTHING=1
 
 # @FUNCTION: check-reqs_pkg_setup
 # @DESCRIPTION:
@@ -82,9 +84,9 @@ check_reqs() {
 check-reqs_pkg_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	check-reqs_prepare
-	check-reqs_run
-	check-reqs_output
+	_check-reqs_prepare
+	_check-reqs_run
+	_check-reqs_output
 }
 
 # @FUNCTION: check-reqs_pkg_pretend
@@ -101,6 +103,16 @@ check-reqs_pkg_pretend() {
 # @DESCRIPTION:
 # Internal function that checks the variables that should be defined.
 check-reqs_prepare() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_prepare "$@"
+}
+
+# @FUNCTION: _check-reqs_prepare
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that checks the variables that should be defined.
+_check-reqs_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ -z ${CHECKREQS_MEMORY} &&
@@ -118,6 +130,16 @@ check-reqs_prepare() {
 # @DESCRIPTION:
 # Internal function that runs the check based on variable settings.
 check-reqs_run() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_run "$@"
+}
+
+# @FUNCTION: _check-reqs_run
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that runs the check based on variable settings.
+_check-reqs_run() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	# some people are *censored*
@@ -125,23 +147,23 @@ check-reqs_run() {
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		[[ -n ${CHECKREQS_MEMORY} ]] && \
-			check-reqs_memory \
+			_check-reqs_memory \
 				${CHECKREQS_MEMORY}
 
 		[[ -n ${CHECKREQS_DISK_BUILD} ]] && \
-			check-reqs_disk \
+			_check-reqs_disk \
 				"${T}" \
 				"${CHECKREQS_DISK_BUILD}"
 	fi
 
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
 		[[ -n ${CHECKREQS_DISK_USR} ]] && \
-			check-reqs_disk \
+			_check-reqs_disk \
 				"${EROOT%/}/usr" \
 				"${CHECKREQS_DISK_USR}"
 
 		[[ -n ${CHECKREQS_DISK_VAR} ]] && \
-			check-reqs_disk \
+			_check-reqs_disk \
 				"${EROOT%/}/var" \
 				"${CHECKREQS_DISK_VAR}"
 	fi
@@ -153,6 +175,17 @@ check-reqs_run() {
 # Internal function that returns number in KiB.
 # Returns 1024**2 for 1G or 1024**3 for 1T.
 check-reqs_get_kibibytes() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_get_kibibytes "$@"
+}
+
+# @FUNCTION: _check-reqs_get_kibibytes
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that returns number in KiB.
+# Returns 1024**2 for 1G or 1024**3 for 1T.
+_check-reqs_get_kibibytes() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${1} ]] && die "Usage: ${FUNCNAME} [size]"
@@ -176,6 +209,17 @@ check-reqs_get_kibibytes() {
 # Internal function that returns the numerical value without the unit.
 # Returns "1" for "1G" or "150" for "150T".
 check-reqs_get_number() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_get_number "$@"
+}
+
+# @FUNCTION: _check-reqs_get_number
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that returns the numerical value without the unit.
+# Returns "1" for "1G" or "150" for "150T".
+_check-reqs_get_number() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${1} ]] && die "Usage: ${FUNCNAME} [size]"
@@ -192,6 +236,17 @@ check-reqs_get_number() {
 # Internal function that returns the unit without the numerical value.
 # Returns "GiB" for "1G" or "TiB" for "150T".
 check-reqs_get_unit() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_get_unit "$@"
+}
+
+# @FUNCTION: _check-reqs_get_unit
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that returns the unit without the numerical value.
+# Returns "GiB" for "1G" or "TiB" for "150T".
+_check-reqs_get_unit() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${1} ]] && die "Usage: ${FUNCNAME} [size]"
@@ -214,11 +269,22 @@ check-reqs_get_unit() {
 # Internal function that prints the warning and dies if required based on
 # the test results.
 check-reqs_output() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_get_unit "$@"
+}
+
+# @FUNCTION: _check-reqs_output
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that prints the warning and dies if required based on
+# the test results.
+_check-reqs_output() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local msg="ewarn"
 
-	[[ ${EBUILD_PHASE} == "pretend" && -z ${I_KNOW_WHAT_I_AM_DOING} ]] && msg="eerror"
+	[[ ${EBUILD_PHASE} == "pretend" && -z ${CHECKREQS_DONOTHING} ]] && msg="eerror"
 	if [[ -n ${CHECKREQS_FAILED} ]]; then
 		${msg}
 		${msg} "Space constraints set in the ebuild were not met!"
@@ -226,7 +292,7 @@ check-reqs_output() {
 		${msg} "as per failed tests."
 		${msg}
 
-		[[ ${EBUILD_PHASE} == "pretend" && -z ${I_KNOW_WHAT_I_AM_DOING} ]] && \
+		[[ ${EBUILD_PHASE} == "pretend" && -z ${CHECKREQS_DONOTHING} ]] && \
 			die "Build requirements not met!"
 	fi
 }
@@ -236,6 +302,16 @@ check-reqs_output() {
 # @DESCRIPTION:
 # Internal function that checks size of RAM.
 check-reqs_memory() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_memory "$@"
+}
+
+# @FUNCTION: _check-reqs_memory
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that checks size of RAM.
+_check-reqs_memory() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${1} ]] && die "Usage: ${FUNCNAME} [size]"
@@ -244,7 +320,7 @@ check-reqs_memory() {
 	local actual_memory
 	local actual_swap
 
-	check-reqs_start_phase \
+	_check-reqs_start_phase \
 		${size} \
 		"RAM"
 
@@ -260,17 +336,17 @@ check-reqs_memory() {
 			| sed -e 's/^[^:=]*[:=][[:space:]]*//')
 	fi
 	if [[ -n ${actual_memory} ]] ; then
-		if [[ ${actual_memory} -ge $(check-reqs_get_kibibytes ${size}) ]] ; then
+		if [[ ${actual_memory} -ge $(_check-reqs_get_kibibytes ${size}) ]] ; then
 			eend 0
 		elif [[ -n ${actual_swap} && $((${actual_memory} + ${actual_swap})) \
-				-ge $(check-reqs_get_kibibytes ${size}) ]] ; then
+				-ge $(_check-reqs_get_kibibytes ${size}) ]] ; then
 			ewarn "Amount of main memory is insufficient, but amount"
 			ewarn "of main memory combined with swap is sufficient."
 			ewarn "Build process may make computer very slow!"
 			eend 0
 		else
 			eend 1
-			check-reqs_unsatisfied \
+			_check-reqs_unsatisfied \
 				${size} \
 				"RAM"
 		fi
@@ -285,6 +361,16 @@ check-reqs_memory() {
 # @DESCRIPTION:
 # Internal function that checks space on the harddrive.
 check-reqs_disk() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_disk "$@"
+}
+
+# @FUNCTION: _check-reqs_disk
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that checks space on the harddrive.
+_check-reqs_disk() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${2} ]] && die "Usage: ${FUNCNAME} [path] [size]"
@@ -293,16 +379,16 @@ check-reqs_disk() {
 	local size=${2}
 	local space_kbi
 
-	check-reqs_start_phase \
+	_check-reqs_start_phase \
 		${size} \
 		"disk space at \"${path}\""
 
 	space_kbi=$(df -Pk "${1}" 2>/dev/null | awk 'FNR == 2 {print $4}')
 
 	if [[ $? == 0 && -n ${space_kbi} ]] ; then
-		if [[ ${space_kbi} -lt $(check-reqs_get_kibibytes ${size}) ]] ; then
+		if [[ ${space_kbi} -lt $(_check-reqs_get_kibibytes ${size}) ]] ; then
 			eend 1
-			check-reqs_unsatisfied \
+			_check-reqs_unsatisfied \
 				${size} \
 				"disk space at \"${path}\""
 		else
@@ -319,13 +405,23 @@ check-reqs_disk() {
 # @DESCRIPTION:
 # Internal function that inform about started check
 check-reqs_start_phase() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_start_phase "$@"
+}
+
+# @FUNCTION: _check-reqs_start_phase
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that inform about started check
+_check-reqs_start_phase() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${2} ]] && die "Usage: ${FUNCNAME} [size] [location]"
 
 	local size=${1}
 	local location=${2}
-	local sizeunit="$(check-reqs_get_number ${size}) $(check-reqs_get_unit ${size})"
+	local sizeunit="$(_check-reqs_get_number ${size}) $(_check-reqs_get_unit ${size})"
 
 	ebegin "Checking for at least ${sizeunit} ${location}"
 }
@@ -333,10 +429,22 @@ check-reqs_start_phase() {
 # @FUNCTION: check-reqs_unsatisfied
 # @INTERNAL
 # @DESCRIPTION:
-# Internal function that inform about check result.
+# Internal function that informs about check result.
 # It has different output between pretend and setup phase,
 # where in pretend phase it is fatal.
 check-reqs_unsatisfied() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_unsatisfied "$@"
+}
+
+# @FUNCTION: _check-reqs_unsatisfied
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that informs about check result.
+# It has different output between pretend and setup phase,
+# where in pretend phase it is fatal.
+_check-reqs_unsatisfied() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${2} ]] && die "Usage: ${FUNCNAME} [size] [location]"
@@ -344,18 +452,17 @@ check-reqs_unsatisfied() {
 	local msg="ewarn"
 	local size=${1}
 	local location=${2}
-	local sizeunit="$(check-reqs_get_number ${size}) $(check-reqs_get_unit ${size})"
+	local sizeunit="$(_check-reqs_get_number ${size}) $(_check-reqs_get_unit ${size})"
 
-	[[ ${EBUILD_PHASE} == "pretend" && -z ${I_KNOW_WHAT_I_AM_DOING} ]] && msg="eerror"
+	[[ ${EBUILD_PHASE} == "pretend" && -z ${CHECKREQS_DONOTHING} ]] && msg="eerror"
 	${msg} "There is NOT at least ${sizeunit} ${location}"
 
 	# @ECLASS-VARIABLE: CHECKREQS_FAILED
-	# @DESCRIPTION:
 	# @INTERNAL
+	# @DESCRIPTION:
 	# If set the checks failed and eclass should abort the build.
 	# Internal, do not set yourself.
 	CHECKREQS_FAILED="true"
 }
 
-_CHECK_REQS_ECLASS_=1
 fi

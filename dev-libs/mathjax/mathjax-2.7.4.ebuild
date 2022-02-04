@@ -1,22 +1,21 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils vcs-clean
+inherit vcs-clean
 
 DESCRIPTION="JavaScript display engine for LaTeX, MathML and AsciiMath"
 HOMEPAGE="https://www.mathjax.org/"
 SRC_URI="https://github.com/mathjax/MathJax/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/MathJax-${PV}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~arm64 hppa ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
 
 RESTRICT="binchecks strip"
-
-S=${WORKDIR}/MathJax-${PV}
 
 make_webconf() {
 	# web server config file - should we really do this?

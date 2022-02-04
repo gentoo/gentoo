@@ -1,0 +1,19 @@
+diff --git a/Makefile b/Makefile
+index f4e2954..191c7e2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -535,9 +535,11 @@ soelim: $(SOELIM_OBJS)
+ # --- maintainer targets ---
+ 
+ www-install: www
+-	$(INSTALL_DATA) mandoc.css $(HTDOCDIR)
+-	$(INSTALL_DATA) $(WWW_MANS) $(HTDOCDIR)/man
+-	$(INSTALL_DATA) $(WWW_INCS) $(HTDOCDIR)/includes
++	mkdir -p $(DESTDIR)$(HTDOCDIR)/man
++	mkdir -p $(DESTDIR)$(HTDOCDIR)/includes
++	$(INSTALL_DATA) mandoc.css $(DESTDIR)$(HTDOCDIR)
++	$(INSTALL_DATA) $(WWW_MANS) $(DESTDIR)$(HTDOCDIR)/man
++	$(INSTALL_DATA) $(WWW_INCS) $(DESTDIR)$(HTDOCDIR)/includes
+ 
+ depend: config.h
+ 	mkdep -f Makefile.depend $(CFLAGS) $(SRCS)

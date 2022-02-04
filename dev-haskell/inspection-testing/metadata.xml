@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
@@ -27,7 +27,7 @@
 		this checking can be part of the ususal development cycle
 		and regressions caught early.
 		
-		See the documentation in &quot;Test.Inspection&quot; or the project
+		See the documentation in "Test.Inspection" or the project
 		webpage for more examples and more information.
 	</longdescription>
 </pkgmetadata>

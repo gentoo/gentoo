@@ -1,0 +1,7 @@
+/var/log/monit.log {
+        rotate 15
+        daily
+        postrotate
+                /usr/bin/monit reload >/dev/null 2>&1
+        endscript
+}

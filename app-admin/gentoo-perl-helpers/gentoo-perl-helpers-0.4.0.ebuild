@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,13 +12,12 @@ SRC_URI="
 "
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE=""
 
 # Assumed System:
 # sys-apps/coreutils
 # sys-apps/grep
-# sys-apps/findutils
 # sys-apps/sed
 # app-shells/bash
 # sys-apps/gawk
@@ -28,7 +27,7 @@ RDEPEND="
 	$(: multiple --quiet, --format and anti-slot support)
 	>=app-portage/portage-utils-0.80_pre20190620
 "
-DEPEND=""
+DEPEND="app-arch/xz-utils[extra-filters]"
 
 src_prepare() {
 	sed -i -e "s^@@LIBDIR@@^${EPREFIX}/usr/lib/gentoo-perl-helpers^g" 		\

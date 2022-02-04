@@ -1,13 +1,23 @@
-Index: flobopuyo-0.20/PuyoGame.h
-===================================================================
---- flobopuyo-0.20.orig/PuyoGame.h
-+++ flobopuyo-0.20/PuyoGame.h
-@@ -46,7 +46,7 @@ public:
-     virtual ~PuyoPuyo() {};
-     PuyoState getPuyoState();
+https://bugs.gentoo.org/106406
+https://bugs.gentoo.org/121259
+--- a/IosVector.cpp
++++ b/IosVector.cpp
+@@ -104,3 +104,3 @@
+ 	for (int i = 0, j = getSize() ; i < j ; i++)
+-		fprintf(stderr, "elt[%d]=%d ", i, (int)getElementAt(i));
++		fprintf(stderr, "elt[%d]=%p ", i, getElementAt(i));
+ 	fprintf(stderr, "\n");
+--- a/PuyoGame.cpp
++++ b/PuyoGame.cpp
+@@ -47,3 +47,3 @@
+ 	else
+-		return (PuyoState)(int)(sequenceItems.getElementAt(sequence));
++		return (PuyoState)(long)(sequenceItems.getElementAt(sequence));
+ }
+--- a/PuyoGame.h
++++ b/PuyoGame.h
+@@ -48,3 +48,3 @@
      void setPuyoState(PuyoState state);
 -    bool PuyoPuyo::isFalling();
 +    bool isFalling();
      int getPuyoX() const;
-     int getPuyoY() const;
-     void setPuyoXY(int X, int Y);

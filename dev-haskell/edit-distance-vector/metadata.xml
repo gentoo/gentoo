@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
@@ -10,7 +10,7 @@
 		find the optimal edit script and cost between two sequences.
 		
 		The implementation in this package is specialised to sequences represented
-		with &quot;Data.Vector&quot; but is otherwise agnostic to:
+		with "Data.Vector" but is otherwise agnostic to:
 		
 		* The type of values in the vectors;
 		

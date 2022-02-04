@@ -1,0 +1,26 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -259,12 +259,12 @@ $(VM): c/main.o $(OBJS) $(UNIX_OBJS) $(LIBOBJS) $(EXTERNAL_OBJECTS)
+ $(LIBCIG): c/main.o $(OBJS)
+ #	$(CC) -r -o $@ main.o $(OBJS)
+ 	$(RM) $@
+-	$(AR) $@ c/main.o  $(OBJS)
++	$(AR) qc $@ c/main.o  $(OBJS)
+ 	$(RANLIB) $@
+ 
+ $(LIBSCSHVM): c/smain.o $(OBJS)
+ 	$(RM) $@
+-	$(AR) $@ c/smain.o $(OBJS)
++	$(AR) qc $@ c/smain.o $(OBJS)
+ 	$(RANLIB) $@
+ 
+ $(LIBSCSH): $(OBJS) $(UNIX_OBJS) $(LIBOBJS) $(EXTERNAL_OBJECTS)
+@@ -274,7 +274,7 @@ $(LIBSCSH): $(OBJS) $(UNIX_OBJS) $(LIBOBJS) $(EXTERNAL_OBJECTS)
+ 		$(EXTERNAL_INITIALIZERS) &&					\
+ 	$(CC) -c $(CFLAGS) -o  /tmp/s48_external_$$$$.o				\
+ 			/tmp/s48_external_$$$$.c &&				\
+-	$(AR) $@ $(OBJS) $(UNIX_OBJS) $(LIBOBJS) $(EXTERNAL_OBJECTS)	\
++	$(AR) qc $@ $(OBJS) $(UNIX_OBJS) $(LIBOBJS) $(EXTERNAL_OBJECTS)	\
+ 		/tmp/s48_external_$$$$.o &&					\
+ 	$(RANLIB) $@ &&								\
+ 	rm -f /tmp/s48_external_$$$$.c /tmp/s48_external_$$$$.o	

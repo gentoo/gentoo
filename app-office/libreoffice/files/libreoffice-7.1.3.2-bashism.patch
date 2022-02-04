@@ -1,0 +1,33 @@
+From 2c4dd73c4c9f471fa2083f9f99dd27a7148f3175 Mon Sep 17 00:00:00 2001
+From: Julien Nabet <serval2412@yahoo.fr>
+Date: Mon, 17 May 2021 18:43:48 +0200
+Subject: tdf#142335: fix bashism in configure.ac
+
+Thanks to Matt Whitlock!
+
+(also reported in https://bugs.gentoo.org/show_bug.cgi?id=780432)
+
+Change-Id: I38fec6faf9a929adf1f300b8c369ec6c16a91ed8
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/115716
+Tested-by: Jenkins
+Reviewed-by: Heiko Tietze <heiko.tietze@documentfoundation.org>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index d7b831435713..3d14c5e4258c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -2682,7 +2682,7 @@ AC_SUBST(ENABLE_RELEASE_BUILD)
+ AC_SUBST(GET_TASK_ALLOW_ENTITLEMENT)
+ 
+ AC_MSG_CHECKING([whether to build a Community flavor])
+-if test -z "$enable_community_flavor" -o "$enable_community_flavor" == "yes"; then
++if test -z "$enable_community_flavor" -o "$enable_community_flavor" = "yes"; then
+     AC_DEFINE(HAVE_FEATURE_COMMUNITY_FLAVOR)
+     AC_MSG_RESULT([yes])
+ else
+-- 
+cgit v1.2.1
+

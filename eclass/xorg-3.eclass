@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xorg-3.eclass
@@ -9,6 +9,7 @@
 # Author: Donnie Berkholz <dberkholz@gentoo.org>
 # Author: Matt Turner <mattst88@gentoo.org>
 # @SUPPORTED_EAPIS: 7
+# @PROVIDES: multilib-minimal
 # @BLURB: Reduces code duplication in the modularized X11 ebuilds.
 # @DESCRIPTION:
 # This eclass makes trivial X ebuilds possible for apps, drivers,
@@ -24,7 +25,7 @@
 GIT_ECLASS=""
 if [[ ${PV} == *9999* ]]; then
 	GIT_ECLASS="git-r3"
-	XORG_EAUTORECONF="yes"
+	: ${XORG_EAUTORECONF:="yes"}
 fi
 
 # If we're a font package, but not the font.alias one
@@ -42,6 +43,7 @@ if [[ ${CATEGORY} = media-fonts ]]; then
 fi
 
 # @ECLASS-VARIABLE: XORG_MULTILIB
+# @PRE_INHERIT
 # @DESCRIPTION:
 # If set to 'yes', the multilib support for package will be enabled. Set
 # before inheriting this eclass.
@@ -67,18 +69,21 @@ EXPORT_FUNCTIONS ${EXPORTED_FUNCTIONS}
 IUSE=""
 
 # @ECLASS-VARIABLE: XORG_EAUTORECONF
+# @PRE_INHERIT
 # @DESCRIPTION:
 # If set to 'yes' and configure.ac exists, eautoreconf will run. Set
 # before inheriting this eclass.
 : ${XORG_EAUTORECONF:="no"}
 
 # @ECLASS-VARIABLE: XORG_BASE_INDIVIDUAL_URI
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Set up SRC_URI for individual modular releases. If set to an empty
 # string, no SRC_URI will be provided by the eclass.
 : ${XORG_BASE_INDIVIDUAL_URI="https://www.x.org/releases/individual"}
 
 # @ECLASS-VARIABLE: XORG_MODULE
+# @PRE_INHERIT
 # @DESCRIPTION:
 # The subdirectory to download source from. Possible settings are app,
 # doc, data, util, driver, font, lib, proto, xserver. Set above the
@@ -99,6 +104,7 @@ if [[ ${XORG_MODULE} == auto ]]; then
 fi
 
 # @ECLASS-VARIABLE: XORG_PACKAGE_NAME
+# @PRE_INHERIT
 # @DESCRIPTION:
 # For git checkout the git repository might differ from package name.
 # This variable can be used for proper directory specification
@@ -107,6 +113,7 @@ fi
 HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/${XORG_MODULE}${XORG_PACKAGE_NAME}"
 
 # @ECLASS-VARIABLE: XORG_TARBALL_SUFFIX
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Most X11 projects provide tarballs as tar.bz2 or tar.xz. This eclass defaults
 # to bz2.
@@ -127,7 +134,7 @@ fi
 
 # Set up autotools shared dependencies
 # Remember that all versions here MUST be stable
-XORG_EAUTORECONF_ARCHES="ppc-aix x86-winnt"
+XORG_EAUTORECONF_ARCHES="x86-winnt"
 EAUTORECONF_DEPEND+="
 	>=sys-devel/libtool-2.2.6a
 	sys-devel/m4"
@@ -156,6 +163,7 @@ if [[ ${FONT} == yes ]]; then
 	BDEPEND+=" x11-apps/bdftopcf"
 
 	# @ECLASS-VARIABLE: FONT_DIR
+	# @PRE_INHERIT
 	# @DESCRIPTION:
 	# If you're creating a font package and the suffix of PN is not equal to
 	# the subdirectory of /usr/share/fonts/ it should install into, set
@@ -169,31 +177,10 @@ if [[ ${FONT} == yes ]]; then
 	FONT_DIR=${FONT_DIR/type1/Type1}
 	FONT_DIR=${FONT_DIR/speedo/Speedo}
 fi
-
-# @ECLASS-VARIABLE: XORG_STATIC
-# @DESCRIPTION:
-# Enables static-libs useflag. Set to no, if your package gets:
-#
-# QA: configure: WARNING: unrecognized options: --disable-static
-: ${XORG_STATIC:="yes"}
-
-# Add static-libs useflag where useful.
-if [[ ${XORG_STATIC} == yes \
-		&& ${FONT} != yes \
-		&& ${CATEGORY} != app-doc \
-		&& ${CATEGORY} != x11-apps \
-		&& ${CATEGORY} != x11-drivers \
-		&& ${CATEGORY} != media-fonts \
-		&& ${PN} != util-macros \
-		&& ${PN} != xbitmaps \
-		&& ${PN} != xorg-cf-files \
-		&& ${PN/xcursor} = ${PN} ]]; then
-	IUSE+=" static-libs"
-fi
-
 BDEPEND+=" virtual/pkgconfig"
 
 # @ECLASS-VARIABLE: XORG_DRI
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Possible values are "always" or the value of the useflag DRI capabilities
 # are required for. Default value is "no"
@@ -227,6 +214,7 @@ fi
 
 
 # @ECLASS-VARIABLE: XORG_DOC
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Possible values are "always" or the value of the useflag doc packages
 # are required for. Default value is "no"
@@ -287,7 +275,7 @@ xorg-3_src_unpack() {
 		unpack ${A}
 	fi
 
-	[[ -n ${FONT_OPTIONS} ]] && einfo "Detected font directory: ${FONT_DIR}"
+	[[ -n ${FONT} ]] && einfo "Detected font directory: ${FONT_DIR}"
 }
 
 # @FUNCTION: xorg-3_reconf_source
@@ -329,13 +317,17 @@ xorg-3_src_prepare() {
 xorg-3_font_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	# Pass --with-fontrootdir to override pkgconf SYSROOT behavior.
+	# https://bugs.gentoo.org/815520
+	if grep -q -s "with-fontrootdir" "${ECONF_SOURCE:-.}"/configure; then
+		FONT_OPTIONS+=( --with-fontrootdir="${EPREFIX}"/usr/share/fonts )
+	fi
+
 	if has nls ${IUSE//+} && ! use nls; then
 		if ! grep -q -s "disable-all-encodings" ${ECONF_SOURCE:-.}/configure; then
 			die "--disable-all-encodings option not available in configure"
 		fi
-		FONT_OPTIONS+="
-			--disable-all-encodings
-			--enable-iso8859-1"
+		FONT_OPTIONS+=( --disable-all-encodings --enable-iso8859-1 )
 	fi
 }
 
@@ -377,6 +369,7 @@ xorg-3_src_configure() {
 	# @DEFAULT_UNSET
 	local xorgconfadd=("${XORG_CONFIGURE_OPTIONS[@]}")
 
+	local FONT_OPTIONS=()
 	[[ -n "${FONT}" ]] && xorg-3_font_configure
 
 	# Check if package supports disabling of dep tracking
@@ -391,10 +384,16 @@ xorg-3_src_configure() {
 		local selective_werror="--disable-selective-werror"
 	fi
 
+	# Check if package supports disabling of static libraries
+	if grep -q -s "able-static" ${ECONF_SOURCE:-.}/configure; then
+		local no_static="--disable-static"
+	fi
+
 	local econfargs=(
 		${dep_track}
 		${selective_werror}
-		${FONT_OPTIONS}
+		${no_static}
+		"${FONT_OPTIONS[@]}"
 		"${xorgconfadd[@]}"
 	)
 
@@ -446,6 +445,7 @@ xorg-3_src_install() {
 		multilib-minimal_src_install "$@"
 	else
 		emake DESTDIR="${D}" "${install_args[@]}" "$@" install || die "emake install failed"
+		einstalldocs
 	fi
 
 	# Many X11 libraries unconditionally install developer documentation

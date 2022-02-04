@@ -2,27 +2,31 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 WX_GTK_VER="3.0-gtk3"
-inherit autotools desktop git-r3 wxwidgets xdg-utils
+
+inherit autotools desktop wxwidgets xdg-utils
 
 DESCRIPTION="Utility for viewing Compiled HTML Help (CHM) files"
 HOMEPAGE="https://github.com/rzvncj/xCHM/"
-EGIT_REPO_URI="https://github.com/rzvncj/xCHM/"
+
+if [[ ${PV} == *9999 ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/rzvncj/xCHM/"
+else
+	SRC_URI="https://github.com/rzvncj/xCHM/releases/download/${PV}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~ppc ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="nls"
 
-RDEPEND="
-	>=dev-libs/chmlib-0.36
+RDEPEND=">=dev-libs/chmlib-0.36
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
-	nls? ( virtual/libintl )
-"
-DEPEND="
-	${RDEPEND}
-	nls? ( sys-devel/gettext )
-"
+	nls? ( virtual/libintl )"
+DEPEND="${RDEPEND}"
+BDEPEND="nls? ( sys-devel/gettext )"
 
 src_prepare() {
 	default
@@ -35,8 +39,6 @@ src_configure() {
 
 src_install() {
 	default
-
-	dodoc AUTHORS README ChangeLog
 
 	domenu "${FILESDIR}"/xchm.desktop
 	insinto /usr/share/mime/packages

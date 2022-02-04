@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>gnome@gentoo.org</email>
@@ -8,8 +8,6 @@
 	<use>
 		<flag name="nautilus">Build contextual menu extension for
 			<pkg>gnome-base/nautilus</pkg>.</flag>
-		<flag name="packagekit">Enable support for the distro-neutral package
-			manager GUI PackageKit</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">fileroller</remote-id>

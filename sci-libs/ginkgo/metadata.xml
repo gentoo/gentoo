@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>tamiko@gentoo.org</email>
@@ -16,6 +16,7 @@
 	</longdescription>
 	<use>
 		<flag name="cuda">Add support for cuda assimp (<pkg>dev-util/nvidia-cuda-sdk</pkg>)</flag>
+		<flag name="hwloc">Add support for hwloc (<pkg>sys-apps/hwloc</pkg>)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">ginkgo-project/ginkgo</remote-id>

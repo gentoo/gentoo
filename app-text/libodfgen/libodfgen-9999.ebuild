@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-if [[ ${PV} == 9999 ]]; then
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/libwpd/libodfgen"
 	inherit autotools git-r3
 else
@@ -13,12 +13,15 @@ fi
 
 DESCRIPTION="Library to generate ODF documents from libwpd and libwpg"
 HOMEPAGE="http://libwpd.sourceforge.net/"
+
 LICENSE="|| ( LGPL-2.1 MPL-2.0 )"
 SLOT="0"
-
 IUSE="doc"
 
-RDEPEND="dev-libs/librevenge"
+RDEPEND="
+	dev-libs/librevenge
+	dev-libs/libxml2:2
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig

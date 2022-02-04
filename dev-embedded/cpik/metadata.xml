@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>rafaelmartins@gentoo.org</email>
-		<name>Rafael G. Martins</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		CPIK (the C compiler for PIC18 devices) is released under the GPL licence.
 		CPIK is an easy to use, near ANSI C compiler which is fully integrated with

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Chemical structure drawing program - focused on presentation"
 HOMEPAGE="http://easychem.sourceforge.net/"
@@ -12,18 +12,22 @@ SRC_URI="mirror://sourceforge/easychem/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
 RDEPEND="
-	x11-libs/gtk+:2
 	app-text/ghostscript-gpl
-	media-gfx/pstoedit"
-DEPEND="${RDEPEND}
+	media-gfx/pstoedit
+	x11-libs/gtk+:2
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-lang/perl
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
+
+PATCHES=( "${FILESDIR}"/${PV}-gentoo.patch )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PV}-gentoo.patch
+	default
 	tc-export CC
 }
 

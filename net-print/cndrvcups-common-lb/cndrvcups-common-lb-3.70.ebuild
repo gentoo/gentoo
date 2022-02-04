@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools
+
+inherit autotools multilib toolchain-funcs
 
 MY_PV="$(ver_rs 1- '')"
 SOURCES_NAME="linux-UFRII-drv-v${MY_PV}-uken"
@@ -10,23 +11,21 @@ SOURCES_NAME="linux-UFRII-drv-v${MY_PV}-uken"
 DESCRIPTION="Common files for Canon drivers"
 HOMEPAGE="https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx"
 SRC_URI="http://gdlp01.c-wss.com/gds/8/0100007658/08/${SOURCES_NAME}-05.tar.gz"
+S="${WORKDIR}/${SOURCES_NAME}/Sources/${P/-lb-${PV}/-4.10}"
 
 # GPL-2 License inside LICENSE-EN.txt files
 LICENSE="Canon-UFR-II GPL-2 MIT"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+KEYWORDS="-* amd64 x86"
 
 RDEPEND="
 	>=dev-libs/libxml2-2.6:2
 	>=gnome-base/libglade-2.4:2.0
 	>=net-print/cups-1.1.17
-	>=x11-libs/gtk+-2.4:2
-"
-DEPEND="${DEPEND}"
-BDEPEND=""
+	>=x11-libs/gtk+-2.4:2"
+DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/${SOURCES_NAME}/Sources/${P/-lb-${PV}/-4.10}"
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 pkg_setup() {
 	# Don't raise a fuss over pre-built binaries
@@ -39,11 +38,9 @@ pkg_setup() {
 		/usr/$(get_abi_LIBDIR x86)/libcaiousb.so.1.0.0
 		/usr/$(get_abi_LIBDIR x86)/libcaiowrap.so.1.0.0
 		/usr/$(get_abi_LIBDIR x86)/libcanon_slim.so.1.0.0
-		/usr/$(get_libdir)/libcanonc3pl.so.1.0.0
-	"
+		/usr/$(get_libdir)/libcanonc3pl.so.1.0.0"
 	QA_SONAME="
-		/usr/$(get_abi_LIBDIR x86)/libcaiousb.so.1.0.0
-	"
+		/usr/$(get_abi_LIBDIR x86)/libcaiousb.so.1.0.0"
 }
 
 src_unpack() {
@@ -66,6 +63,8 @@ src_prepare() {
 		"s:backenddir = \$(libdir)/cups/backend:backenddir = `cups-config --serverbin`/backend:" \
 		backend/Makefile.am || die
 
+	sed -i -e "s@CC=gcc@CC=$(tc-getCC)@" c3plmod_ipc/Makefile || die
+
 	export "LIBS=-lgtk-x11-2.0 -lgobject-2.0 -lglib-2.0 -lgmodule-2.0"
 	change_dir mv configure.in configure.ac
 	change_dir sed -i -e 's/configure.in/configure.ac/' configure.ac
@@ -77,7 +76,7 @@ src_configure() {
 }
 
 src_compile() {
-	change_dir emake
+	change_dir emake AR="$(tc-getAR)"
 
 	# Cannot be moved to 'change_dir' as it doesn't need eautoreconf
 	cd "${S}/c3plmod_ipc" || die
@@ -116,4 +115,6 @@ src_install() {
 	if [[ "$(get_libdir)" != lib ]] && [[ ${SYMLINK_LIB} = yes ]]; then
 		dosym "../$(get_libdir)/libc3pl.so" /usr/lib/libc3pl.so
 	fi
+
+	find "${ED}" -name '*.la' -o -name '*.a' -delete || die
 }

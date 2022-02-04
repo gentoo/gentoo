@@ -1,5 +1,5 @@
---- a/Makefile.org	2004-02-20 22:53:28.000000000 +0100
-+++ b/Makefile	2010-02-08 12:01:11.000000000 +0100
+--- a/Makefile
++++ b/Makefile
 @@ -43,20 +43,16 @@
              else echo Bleeding Edge Version; \
          fi;)
@@ -12,7 +12,7 @@
 -    -I /usr/X11R6/include
 -LDFLAGS = -s
 +CFLAGS += -DNDEBUG -Wall "-DXROOTCONSOLE_VERSION=\"$(VERSION)\"" \
-+    $(shell pkg-config --cflags x11)
++    $(shell ${PKG_CONFIG} --cflags x11)
  
  # for testing
  #CFLAGS = -g -Wall "-DXROOTCONSOLE_VERSION=\"$(VERSION) (debug build)\"" \
@@ -20,7 +20,7 @@
  #LDFLAGS = 
  
 -LIBS = -L/usr/X11R6/lib -lX11 -lutil
-+LIBS = $(shell pkg-config --libs x11) -lutil
++LIBS = $(shell ${PKG_CONFIG} --libs x11) -lutil
  
  OBJS = main.o util.o
  

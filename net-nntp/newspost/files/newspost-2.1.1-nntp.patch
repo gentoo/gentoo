@@ -1,5 +1,5 @@
---- newspost-2.1.1.orig/base/nntp.c
-+++ newspost-2.1.1/base/nntp.c
+--- a/base/nntp.c
++++ b/base/nntp.c
 @@ -26,6 +26,10 @@
  *** Public Routines
  **/
@@ -56,8 +56,8 @@
  	}
  	
  	buff = buff_add(buff, "From: %s\r\n", data->from->data);
---- newspost-2.1.1.orig/base/utils.c
-+++ newspost-2.1.1/base/utils.c
+--- a/base/utils.c
++++ b/base/utils.c
 @@ -44,7 +44,7 @@
  }
  

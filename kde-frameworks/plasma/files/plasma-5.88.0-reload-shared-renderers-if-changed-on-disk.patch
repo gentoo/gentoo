@@ -1,0 +1,269 @@
+From fe9e118ff2212d48a0ea5fcc0346d6312978f3ed Mon Sep 17 00:00:00 2001
+From: Marco Martin <notmart@gmail.com>
+Date: Mon, 29 Nov 2021 14:40:38 +0000
+Subject: [PATCH] Reload shared renderers when a file changed on disk
+
+When we have to render a new pixmap, compare the file date with the date of the last time the file was cached. if the dates are different (not only older, in order to allow downgrades) then force the svg renderer to be reloaded from the new file, otherwise the renderer with the old file still loaded will save in cache old graphics with the id derived from the date of the new file, causing a wrong cache entry
+
+BUG:445516
+---
+ src/plasma/private/svg_p.h |  15 +++++-
+ src/plasma/svg.cpp         | 100 +++++++++++++++++++++++++++----------
+ 2 files changed, 86 insertions(+), 29 deletions(-)
+
+diff --git a/src/plasma/private/svg_p.h b/src/plasma/private/svg_p.h
+index 11b68f21c..d39f274b4 100644
+--- a/src/plasma/private/svg_p.h
++++ b/src/plasma/private/svg_p.h
+@@ -30,8 +30,14 @@ public:
+ 
+     SharedSvgRenderer(const QByteArray &contents, const QString &styleSheet, QHash<QString, QRectF> &interestingElements, QObject *parent = nullptr);
+ 
++    void reload();
++
+ private:
+     bool load(const QByteArray &contents, const QString &styleSheet, QHash<QString, QRectF> &interestingElements);
++
++    QString m_filename;
++    QString m_styleSheet;
++    QHash<QString, QRectF> m_interestingElements;
+ };
+ 
+ class SvgPrivate
+@@ -125,9 +131,8 @@ public:
+     bool findElementRect(SvgPrivate::CacheId cacheId, QRectF &rect);
+     bool findElementRect(uint id, const QString &filePath, QRectF &rect);
+ 
+-    void loadImageFromCache(const QString &path, uint lastModified);
++    bool loadImageFromCache(const QString &path, uint lastModified);
+     void dropImageFromCache(const QString &path);
+-    void expireCache(const QString &path);
+ 
+     void setNaturalSize(const QString &path, qreal scaleFactor, const QSizeF &size);
+     QSizeF naturalSize(const QString &path, qreal scaleFactor);
+@@ -140,10 +145,15 @@ public:
+ 
+     QStringList cachedKeysForPath(const QString &path) const;
+ 
++    unsigned int lastModifiedTimeFromCache(const QString &filePath);
++
+     void updateLastModified(const QString &filePath, unsigned int lastModified);
+ 
+     static const uint s_seed;
+ 
++Q_SIGNALS:
++    void lastModifiedChanged(const QString &filePath, unsigned int lastModified);
++
+ private:
+     QTimer *m_configSyncTimer = nullptr;
+     QString m_iconThemePath;
+@@ -156,6 +166,7 @@ private:
+     QHash<uint, QRectF> m_localRectCache;
+     QHash<QString, QSet<unsigned int>> m_invalidElements;
+     QHash<QString, QList<QSize>> m_sizeHintsForId;
++    QHash<QString, unsigned int> m_lastModifiedTimes;
+ };
+ }
+ 
+diff --git a/src/plasma/svg.cpp b/src/plasma/svg.cpp
+index 1749381b7..47cf142e1 100644
+--- a/src/plasma/svg.cpp
++++ b/src/plasma/svg.cpp
+@@ -73,6 +73,9 @@ SharedSvgRenderer::SharedSvgRenderer(const QString &filename, const QString &sty
+     if (!file.open(QIODevice::ReadOnly)) {
+         return;
+     }
++    m_filename = filename;
++    m_styleSheet = styleSheet;
++    m_interestingElements = interestingElements;
+     load(file.readAll(), styleSheet, interestingElements);
+ }
+ 
+@@ -82,6 +85,16 @@ SharedSvgRenderer::SharedSvgRenderer(const QByteArray &contents, const QString &
+     load(contents, styleSheet, interestingElements);
+ }
+ 
++void SharedSvgRenderer::reload()
++{
++    KCompressionDevice file(m_filename, KCompressionDevice::GZip);
++    if (!file.open(QIODevice::ReadOnly)) {
++        return;
++    }
++
++    load(file.readAll(), m_styleSheet, m_interestingElements);
++}
++
+ bool SharedSvgRenderer::load(const QByteArray &contents, const QString &styleSheet, QHash<QString, QRectF> &interestingElements)
+ {
+     // Apply the style sheet.
+@@ -161,21 +174,31 @@ void SvgRectsCache::insert(Plasma::SvgPrivate::CacheId cacheId, const QRectF &re
+ 
+ void SvgRectsCache::insert(uint id, const QString &filePath, const QRectF &rect, unsigned int lastModified)
+ {
+-    if (m_localRectCache.contains(id)) {
++    const unsigned int savedTime = lastModifiedTimeFromCache(filePath);
++
++    if (savedTime == lastModified && m_localRectCache.contains(id)) {
+         return;
+     }
+ 
+     m_localRectCache.insert(id, rect);
+ 
++
+     KConfigGroup imageGroup(m_svgElementsCache, filePath);
+-    imageGroup.writeEntry("LastModified", lastModified);
++
+     if (rect.isValid()) {
+         imageGroup.writeEntry(QString::number(id), rect);
+     } else {
+         m_invalidElements[filePath] << id;
+         imageGroup.writeEntry("Invalidelements", m_invalidElements[filePath].values());
+     }
++
+     QMetaObject::invokeMethod(m_configSyncTimer, qOverload<>(&QTimer::start));
++
++    if (savedTime != lastModified) {
++        m_lastModifiedTimes[filePath] = lastModified;
++        imageGroup.writeEntry("LastModified", lastModified);
++        Q_EMIT lastModifiedChanged(filePath, lastModified);
++    }
+ }
+ 
+ bool SvgRectsCache::findElementRect(Plasma::SvgPrivate::CacheId cacheId, QRectF &rect)
+@@ -201,20 +224,21 @@ bool SvgRectsCache::findElementRect(uint id, const QString &filePath, QRectF &re
+     return true;
+ }
+ 
+-void SvgRectsCache::loadImageFromCache(const QString &path, uint lastModified)
++bool SvgRectsCache::loadImageFromCache(const QString &path, uint lastModified)
+ {
+     if (path.isEmpty()) {
+-        return;
++        return false;
+     }
+ 
+     KConfigGroup imageGroup(m_svgElementsCache, path);
+ 
+-    unsigned int savedTime = imageGroup.readEntry("LastModified", 0);
++    unsigned int savedTime = lastModifiedTimeFromCache(path);
+ 
+-    if (lastModified > savedTime) {
++    // Reload even if is older, to support downgrades
++    if (lastModified != savedTime) {
+         imageGroup.deleteGroup();
+         QMetaObject::invokeMethod(m_configSyncTimer, qOverload<>(&QTimer::start));
+-        return;
++        return false;
+     }
+ 
+     auto &elements = m_invalidElements[path];
+@@ -231,6 +255,7 @@ void SvgRectsCache::loadImageFromCache(const QString &path, uint lastModified)
+             }
+         }
+     }
++    return true;
+ }
+ 
+ void SvgRectsCache::dropImageFromCache(const QString &path)
+@@ -302,22 +327,6 @@ void SvgRectsCache::setIconThemePath(const QString &path)
+     QMetaObject::invokeMethod(m_configSyncTimer, qOverload<>(&QTimer::start));
+ }
+ 
+-void SvgRectsCache::expireCache(const QString &path)
+-{
+-    KConfigGroup imageGroup(m_svgElementsCache, path);
+-
+-    unsigned int savedTime = imageGroup.readEntry("LastModified", QDateTime().toSecsSinceEpoch());
+-    QFileInfo info(path);
+-    if (info.exists()) {
+-        unsigned int lastModified = info.lastModified().toSecsSinceEpoch();
+-        if (lastModified <= savedTime) {
+-            return;
+-        }
+-    }
+-
+-    imageGroup.deleteGroup();
+-}
+-
+ void SvgRectsCache::setNaturalSize(const QString &path, qreal scaleFactor, const QSizeF &size)
+ {
+     KConfigGroup imageGroup(m_svgElementsCache, path);
+@@ -349,11 +358,30 @@ QStringList SvgRectsCache::cachedKeysForPath(const QString &path) const
+     return filtered;
+ }
+ 
++unsigned int SvgRectsCache::lastModifiedTimeFromCache(const QString &filePath)
++{
++    const auto &i = m_lastModifiedTimes.constFind(filePath);
++    if (i != m_lastModifiedTimes.constEnd()) {
++        return i.value();
++    }
++
++    KConfigGroup imageGroup(m_svgElementsCache, filePath);
++    const unsigned int savedTime = imageGroup.readEntry("LastModified", 0);
++    m_lastModifiedTimes[filePath] = savedTime;
++    return savedTime;
++}
++
+ void SvgRectsCache::updateLastModified(const QString &filePath, unsigned int lastModified)
+ {
+     KConfigGroup imageGroup(m_svgElementsCache, filePath);
+-    imageGroup.writeEntry("LastModified", lastModified);
+-    QMetaObject::invokeMethod(m_configSyncTimer, qOverload<>(&QTimer::start));
++    const unsigned int savedTime = lastModifiedTimeFromCache(filePath);
++
++    if (savedTime != lastModified) {
++        m_lastModifiedTimes[filePath] = lastModified;
++        imageGroup.writeEntry("LastModified", lastModified);
++        QMetaObject::invokeMethod(m_configSyncTimer, qOverload<>(&QTimer::start));
++        Q_EMIT lastModifiedChanged(filePath, lastModified);
++    }
+ }
+ 
+ SvgPrivate::SvgPrivate(Svg *svg)
+@@ -463,7 +491,17 @@ bool SvgPrivate::setImagePath(const QString &imagePath)
+ 
+     lastModified = lastModifiedDate.toSecsSinceEpoch();
+ 
+-    SvgRectsCache::instance()->loadImageFromCache(path, lastModified);
++    const bool imageWasCached = SvgRectsCache::instance()->loadImageFromCache(path, lastModified);
++
++    if (!imageWasCached) {
++        auto i = s_renderers.constBegin();
++        while (i != s_renderers.constEnd()) {
++            if (i.key().contains(path)) {
++                i.value()->reload();
++            }
++            i++;
++        }
++    }
+ 
+     // check if svg wants colorscheme applied
+     checkColorHints();
+@@ -552,7 +590,8 @@ QPixmap SvgPrivate::findInCache(const QString &elementId, qreal ratio, const QSi
+     const QString id = cachePath(actualElementId, size);
+ 
+     QPixmap p;
+-    if (cacheRendering && cacheAndColorsTheme()->findInCache(id, p, lastModified)) {
++    if (cacheRendering && lastModified == SvgRectsCache::instance()->lastModifiedTimeFromCache(path)
++        && cacheAndColorsTheme()->findInCache(id, p, lastModified)) {
+         p.setDevicePixelRatio(ratio);
+         // qCDebug(LOG_PLASMA) << "found cached version of " << id << p.size();
+         return p;
+@@ -845,6 +884,13 @@ Svg::Svg(QObject *parent)
+     : QObject(parent)
+     , d(new SvgPrivate(this))
+ {
++    connect(SvgRectsCache::instance(), &SvgRectsCache::lastModifiedChanged,
++            this, [this] (const QString &filePath, unsigned int lastModified) {
++                if (d->lastModified != lastModified && filePath == d->path) {
++                    d->lastModified = lastModified;
++                    Q_EMIT repaintNeeded();
++                }
++            });
+ }
+ 
+ Svg::~Svg()
+-- 
+GitLab
+

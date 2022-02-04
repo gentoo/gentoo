@@ -1,0 +1,199 @@
+ configure.ac | 58 +++++++++++++++++++++++++++++-----------------------------
+ 1 file changed, 29 insertions(+), 29 deletions(-)
+
+diff --git i/configure.ac w/configure.ac
+index 9589fa6f2..2d519f1ba 100644
+--- i/configure.ac
++++ w/configure.ac
+@@ -287,7 +287,7 @@ AC_ARG_ENABLE([translator],
+   AS_HELP_STRING([--disable-translator], [build only runtime utilities]),
+   [],
+   [enable_translator="yes"])
+-AM_CONDITIONAL([BUILD_TRANSLATOR], [test "$enable_translator" == "yes"])
++AM_CONDITIONAL([BUILD_TRANSLATOR], [test "$enable_translator" = "yes"])
+ 
+ dnl Handle the option to build the crash extension
+ AC_ARG_ENABLE([crash],
+@@ -328,25 +328,25 @@ AC_CHECK_PROG(have_latex, latex, yes, no)
+ AC_CHECK_PROG(have_dvips, dvips, yes, no)
+ AC_CHECK_PROG(have_ps2pdf, ps2pdf, yes, no)
+ if test "x${have_latex}${have_dvips}${have_ps2pdf}" != "xyesyesyes"; then
+-   if test "$enable_docs" == "yes"; then
++   if test "$enable_docs" = "yes"; then
+       AC_MSG_ERROR([cannot find all tools for building documentation])
+    fi
+-  if test "$enable_docs" == "check"; then
++  if test "$enable_docs" = "check"; then
+     AC_MSG_WARN([will not build documentation, cannot find all tools])
+   fi
+ fi
+-if test "$enable_docs" == "prebuilt"; then
++if test "$enable_docs" = "prebuilt"; then
+   AC_MSG_NOTICE([will only install prebuilt documentation])
+ fi
+-if test "x${have_latex}${have_dvips}${have_ps2pdf}" == "xyesyesyes" -a "$enable_docs" != "no" -a "$enable_docs" != "prebuilt"; then
++if test "x${have_latex}${have_dvips}${have_ps2pdf}" = "xyesyesyes" -a "$enable_docs" != "no" -a "$enable_docs" != "prebuilt"; then
+    building_docs="yes"
+    installing_prebuilt_docs="yes"
+ fi
+-if test "$enable_docs" == "no"; then
++if test "$enable_docs" = "no"; then
+    installing_prebuilt_docs="no"
+ fi
+-AM_CONDITIONAL([BUILD_DOCS], [test "$building_docs" == "yes"])
+-AM_CONDITIONAL([INSTALL_PREBUILT_DOCS], [test "$installing_prebuilt_docs" == "yes"])
++AM_CONDITIONAL([BUILD_DOCS], [test "$building_docs" = "yes"])
++AM_CONDITIONAL([INSTALL_PREBUILT_DOCS], [test "$installing_prebuilt_docs" = "yes"])
+ 
+ 
+ dnl Handle the option to build the reference documentation
+@@ -356,17 +356,17 @@ AC_ARG_ENABLE([refdocs],
+     [enable building reference documentation (default on if other documentation built).]),
+   [enable_refdocs=$enableval],
+   [enable_refdocs="check"])
+-if test "$building_docs" == "no" -a "$enable_refdocs" == "yes" ; then
++if test "$building_docs" = "no" -a "$enable_refdocs" = "yes" ; then
+    AC_MSG_ERROR([must use --enable-docs with --enable-refdocs])
+ fi
+-if test "$enable_refdocs" != "no" -a "${building_docs}" == "yes"; then
++if test "$enable_refdocs" != "no" -a "${building_docs}" = "yes"; then
+    building_refdocs="yes"
+ fi
+-AM_CONDITIONAL([BUILD_REFDOCS], [test "$building_refdocs" == "yes"])
++AM_CONDITIONAL([BUILD_REFDOCS], [test "$building_refdocs" = "yes"])
+ 
+ AC_CHECK_PROG(have_xmlto, xmlto, yes, no)
+ AC_CHECK_PROG(have_fop, fop, yes, no)
+-if test "x${have_fop}" == "xyes"; then
++if test "x${have_fop}" = "xyes"; then
+    # Due to rhbz505364 / 830266, we must actually test-run fop, not just
+    # hope that it works.
+    AC_MSG_CHECKING([to see if xmlto --with-fop actually works])
+@@ -378,8 +378,8 @@ if test "x${have_fop}" == "xyes"; then
+    fi
+    rm -f dummy-tapsets.pdf
+ fi
+-AM_CONDITIONAL([HAVE_FOP], [test "$have_fop" == "yes"])
+-AM_CONDITIONAL([HAVE_XMLTO], [test "$have_xmlto" == "yes"])
++AM_CONDITIONAL([HAVE_FOP], [test "$have_fop" = "yes"])
++AM_CONDITIONAL([HAVE_XMLTO], [test "$have_xmlto" = "yes"])
+ 
+ dnl Handle the option to build the html documentation
+ building_htmldocs="no"
+@@ -388,11 +388,11 @@ AC_ARG_ENABLE([htmldocs],
+     [enable building html documentation (default off).]),
+     [building_htmldocs=$enableval],
+     [building_htmldocs="no"])
+-if test "$have_xmlto" == "no" -a "$building_htmldocs" == "yes"; then
++if test "$have_xmlto" = "no" -a "$building_htmldocs" = "yes"; then
+    AC_MSG_ERROR([xmlto required for building html documentation])
+ fi
+ 
+-AM_CONDITIONAL([BUILD_HTMLDOCS], [test "$building_htmldocs" == "yes"])
++AM_CONDITIONAL([BUILD_HTMLDOCS], [test "$building_htmldocs" = "yes"])
+ 
+ dnl There is a strange bug in older versions of xmlto when generating pdf.
+ dnl https://bugzilla.redhat.com/show_bug.cgi?id=526273
+@@ -412,10 +412,10 @@ cat > conftest.xml << 'EOF'
+    </book>
+ EOF
+ 
+-if test "x${have_xmlto}" == "xyes"; then
++if test "x${have_xmlto}" = "xyes"; then
+ AC_MSG_CHECKING([for xmlto --stringparam support])
+    xmlto --stringparam man.authors.section.enabled=0 html-nochunks conftest.xml >/dev/null 2>&1
+-   if test $? == 0; then
++   if test $? = 0; then
+       have_xmlto_stringparam="yes"
+       AC_MSG_RESULT([yes])
+    else
+@@ -423,7 +423,7 @@ AC_MSG_CHECKING([for xmlto --stringparam support])
+    fi
+    rm -f conftest.html
+ fi
+-AM_CONDITIONAL([XMLTO_STRINGPARAM], [test "$have_xmlto_stringparam" == "yes"])
++AM_CONDITIONAL([XMLTO_STRINGPARAM], [test "$have_xmlto_stringparam" = "yes"])
+ 
+ rm -f conftest.xml
+ 
+@@ -489,7 +489,7 @@ dnl See if we have enough libraries and tools to build the compile server
+     AC_MSG_WARN([will not build systemtap compile server, cannot find nss headers])
+   fi		       
+ fi
+-AM_CONDITIONAL([BUILD_SERVER], [test "${have_nss}" == "yes" -a "$enable_server" != "no"])
++AM_CONDITIONAL([BUILD_SERVER], [test "${have_nss}" = "yes" -a "$enable_server" != "no"])
+ 
+ if test "${have_nss}" != "yes"; then
+   AC_MSG_WARN([compile-server client functionality will be disabled, cannot find nss development files])
+@@ -530,10 +530,10 @@ if test "$with_rpm" != "no"; then
+                     AC_DEFINE([HAVE_LIBRPMIO],[1],[have librpmio])
+                     stap_LIBS="$stap_LIBS -lc -lrpmio"
+                     have_librpmio="yes"], [have_librpmio="no"])
+-  if test "x$have_librpm" != "xyes" -a "$with_rpm" == "yes"; then
++  if test "x$have_librpm" != "xyes" -a "$with_rpm" = "yes"; then
+      AC_MSG_ERROR([cannot find librpm])
+   fi
+-  if test "x$have_librpmio" != "xyes" -a "$with_rpm" == "yes"; then
++  if test "x$have_librpmio" != "xyes" -a "$with_rpm" = "yes"; then
+      AC_MSG_WARN([cannot find librpmio])
+   fi
+ fi
+@@ -570,7 +570,7 @@ else
+ 	    [Define if you have the readline library (-lreadline).])
+ fi
+ AC_SUBST([READLINE_LIBS])
+-AM_CONDITIONAL([HAVE_LIBREADLINE], [test "$have_libreadline" == "yes"])
++AM_CONDITIONAL([HAVE_LIBREADLINE], [test "$have_libreadline" = "yes"])
+ 
+ dnl End of readline checks: restore LIBS
+ LIBS=$LIBS_no_readline
+@@ -726,7 +726,7 @@ dnl See if we have enough libraries and tools to build the virt server
+     AC_MSG_WARN([will not build systemtap virt support, cannot find xml2 headers])
+   fi		       
+ fi
+-AM_CONDITIONAL([BUILD_VIRT], [test "${have_libvirt}" == "yes" -a "${have_libxml2}" == "yes" -a "$enable_virt" != "no"])
++AM_CONDITIONAL([BUILD_VIRT], [test "${have_libvirt}" = "yes" -a "${have_libxml2}" = "yes" -a "$enable_virt" != "no"])
+ 
+ dnl Handle the option to build python2 probe support
+ AC_ARG_WITH([python2-probes],
+@@ -801,11 +801,11 @@ if test "$enable_monitor" != "no"; then
+ dnl Check for presence of json-c and ncurses for use in monitor mode
+ PKG_CHECK_MODULES([jsonc], [json-c >= 0.11], [have_jsonc=yes], [have_jsonc=no])
+ PKG_CHECK_MODULES([ncurses], [ncurses], [have_ncurses=yes], [have_ncurses=no])
+-if test "${have_jsonc}" == "yes" -a "${have_ncurses}" == yes; then
++if test "${have_jsonc}" = "yes" -a "${have_ncurses}" = yes; then
+   AC_DEFINE([HAVE_MONITOR_LIBS],[1],[Define to 1 if json-c and ncurses libraries are installed])
+ fi
+ fi
+-AM_CONDITIONAL([HAVE_MONITOR_LIBS], [test "${have_jsonc}" == "yes" -a "${have_ncurses}" == "yes" -a "$enable_monitor" != "no"])
++AM_CONDITIONAL([HAVE_MONITOR_LIBS], [test "${have_jsonc}" = "yes" -a "${have_ncurses}" = "yes" -a "$enable_monitor" != "no"])
+ 
+ AC_CACHE_CHECK([for assembler .section "?" flags support], stap_cv_sectionq, [
+ old_CFLAGS="$CFLAGS"
+@@ -840,7 +840,7 @@ AS_IF([test "x$with_bpf" != "xno"], [
+                [],
+                [#include <linux/bpf.h>])
+     ])
+-AM_CONDITIONAL(HAVE_BPF_DECLS, [test "x$ac_cv_have_decl_BPF_PROG_TYPE_PERF_EVENT" == "xyes"])
++AM_CONDITIONAL(HAVE_BPF_DECLS, [test "x$ac_cv_have_decl_BPF_PROG_TYPE_PERF_EVENT" = "xyes"])
+ AC_CONFIG_FILES([includes/sys/sdt-config.h po/Makefile.in])
+ 
+ dnl determine whether BPF raw tracepoints are available
+@@ -931,7 +931,7 @@ AS_IF([test "x$enable_http" = "xyes"],
+    dnl If we have all of the libraries, the json-c and nss libraries,
+    dnl and full C++11 support, we could build the httpd web
+    dnl compilation service.
+-   AS_IF([test "x$have_libmicrohttpd" == "xtrue" -a "x$have_libuuid" == "xtrue" -a "x$have_libcurl" == "xtrue" -a "x$have_jsonc" == "xyes" -a "x$have_nss" == "xyes" -a "x$have_openssl" == "xyes" -a "x$have_cxx0x" == "xno"], [have_http_support=yes])])
++   AS_IF([test "x$have_libmicrohttpd" = "xtrue" -a "x$have_libuuid" = "xtrue" -a "x$have_libcurl" = "xtrue" -a "x$have_jsonc" = "xyes" -a "x$have_nss" = "xyes" -a "x$have_openssl" = "xyes" -a "x$have_cxx0x" = "xno"], [have_http_support=yes])])
+ 
+ AS_IF([test "x$have_http_support" = "xyes"],
+   [AC_DEFINE([HAVE_HTTP_SUPPORT], [1],
+@@ -976,7 +976,7 @@ initscript/99stap/module-setup.sh \
+ initscript/99stap/install \
+ initscript/99stap/check ])
+ AC_CONFIG_SUBDIRS(testsuite)
+-if test $enable_translator == "yes"; then
++if test $enable_translator = "yes"; then
+ 	AC_CONFIG_FILES([run-stap], [chmod +x run-stap])
+ fi
+ AC_CONFIG_FILES([dtrace], [chmod +x dtrace])

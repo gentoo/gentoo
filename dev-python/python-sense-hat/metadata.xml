@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>conikost@gentoo.org</email>
@@ -11,7 +11,8 @@
 		to the International Space Station.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://github.com/RPi-Distro/python-sense-hat/issues</bugs-to>
-		<remote-id type="github">RPi-Distro/python-sense-hat</remote-id>
+		<bugs-to>https://github.com/astro-pi/python-sense-hat/issues</bugs-to>
+		<remote-id type="github">astro-pi/python-sense-hat</remote-id>
+		<remote-id type="pypi">sense-hat</remote-id>
 	</upstream>
 </pkgmetadata>

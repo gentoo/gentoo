@@ -1,0 +1,45 @@
+--- a/src/via_driver.h
++++ b/src/via_driver.h
+@@ -393,9 +393,6 @@ typedef struct
+ } VIAEntRec, *VIAEntPtr;
+ 
+ 
+-/* In via_display.c. */
+-const xf86CrtcFuncsRec iga1_crtc_funcs;
+-const xf86CrtcFuncsRec iga2_crtc_funcs;
+ 
+ /* In via_exa.c. */
+ Bool viaInitExa(ScreenPtr pScreen);
+--- a/src/via_sii164.h
++++ b/src/via_sii164.h
+@@ -47,7 +47,7 @@ typedef struct _viaSiI164 {
+ } viaSiI164Rec, *viaSiI164RecPtr;
+ 
+ 
+-const xf86OutputFuncsRec via_sii164_funcs;
++extern const xf86OutputFuncsRec via_sii164_funcs;
+ 
+ Bool viaSiI164Init(ScrnInfoPtr pScrn, I2CBusPtr pI2CBus);
+ 
+--- a/src/via_ums.h
++++ b/src/via_ums.h
+@@ -260,6 +260,8 @@ void viaIGA2SetDisplayRegister(ScrnInfoPtr pScrn, DisplayModePtr mode);
+ void viaIGA2Save(ScrnInfoPtr pScrn);
+ void viaIGA2Restore(ScrnInfoPtr pScrn);
+ void ViaShadowCRTCSetMode(ScrnInfoPtr pScrn, DisplayModePtr mode);
++extern const xf86CrtcFuncsRec iga1_crtc_funcs;
++extern const xf86CrtcFuncsRec iga2_crtc_funcs;
+ 
+ /* via_analog.c */
+ void via_analog_init(ScrnInfoPtr pScrn);
+--- a/src/via_vt1632.h
++++ b/src/via_vt1632.h
+@@ -44,7 +44,7 @@ typedef struct _viaVT1632Rec {
+ } viaVT1632Rec, *viaVT1632RecPtr;
+ 
+ 
+-const xf86OutputFuncsRec via_vt1632_funcs;
++extern const xf86OutputFuncsRec via_vt1632_funcs;
+ 
+ Bool viaVT1632Init(ScrnInfoPtr pScrn, I2CBusPtr pI2CBus);
+ 

@@ -1,14 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 inherit toolchain-funcs
 
-DESCRIPTION="displays a count and a graph of the traffic over a specified network connection"
-LICENSE="GPL-2"
-HOMEPAGE="http://www.xs4all.nl/~rsmith/software/"
-SRC_URI="http://www.xs4all.nl/~rsmith/software/${P}.tar.gz"
+DESCRIPTION="Displays a count and a graph of the traffic over a specified network connection"
+HOMEPAGE="https://www.xs4all.nl/~rsmith/software/"
+SRC_URI="https://www.xs4all.nl/~rsmith/software/${P}.tar.gz"
 
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 sparc x86"
 
@@ -19,13 +20,19 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.11.3-libdir.patch"
+)
+
 src_prepare() {
 	sed -i \
-		-e 's:CFLAGS = -pipe -O2 -Wall:CFLAGS += -Wall:' \
-		-e 's:LFLAGS = -s -pipe:LFLAGS = $(LDFLAGS):' \
+		-e 's;CFLAGS = -pipe -O2 -Wall;CFLAGS += -Wall;' \
+		-e 's;LFLAGS = -s -pipe;LFLAGS = $(LDFLAGS);' \
 		-e 's:gcc -MM:$(CC) -MM:' \
 		-e 's:/usr/X11R6:/usr:g' \
 		Makefile || die
+
+	default
 }
 
 src_compile() {

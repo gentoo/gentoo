@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit cmake xdg-utils pax-utils systemd
 if [[ ${PV} != *9999* ]]; then
 	MY_P=${PN}-${PV/_/-}
 	SRC_URI="https://quassel-irc.org/pub/${MY_P}.tar.bz2"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86 ~amd64-linux ~sparc-solaris"
+	KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86 ~amd64-linux ~sparc-solaris"
 	S="${WORKDIR}/${MY_P}"
 else
 	EGIT_REPO_URI=( "https://github.com/${PN}/${PN}" )
@@ -20,7 +20,7 @@ HOMEPAGE="https://quassel-irc.org/"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="bundled-icons crypt +dbus debug kde ldap monolithic oxygen postgres +server
-snorenotify +ssl syslog urlpreview X"
+snorenotify spell +ssl syslog urlpreview X"
 
 SERVER_DEPEND="
 	acct-group/quassel
@@ -53,9 +53,9 @@ GUI_DEPEND="
 		kde-frameworks/ktextwidgets:5
 		kde-frameworks/kwidgetsaddons:5
 		kde-frameworks/kxmlgui:5
-		kde-frameworks/sonnet:5
 	)
 	snorenotify? ( >=x11-libs/snorenotify-0.7.0 )
+	spell? ( kde-frameworks/sonnet:5 )
 	urlpreview? ( dev-qt/qtwebengine:5[widgets] )
 "
 
@@ -83,10 +83,11 @@ DOCS=( AUTHORS ChangeLog README.md )
 REQUIRED_USE="
 	|| ( X server monolithic )
 	crypt? ( || ( server monolithic ) )
-	kde? ( || ( X monolithic ) dbus )
+	kde? ( dbus spell )
 	ldap? ( || ( server monolithic ) )
 	postgres? ( || ( server monolithic ) )
 	snorenotify? ( || ( X monolithic ) )
+	spell? ( || ( X monolithic ) )
 	syslog? ( || ( server monolithic ) )
 "
 
@@ -109,6 +110,7 @@ src_configure() {
 		-DWITH_OXYGEN_ICONS=$(usex oxygen)
 		-DWANT_CORE=$(usex server)
 		$(cmake_use_find_package snorenotify LibsnoreQt5)
+		$(cmake_use_find_package spell KF5Sonnet)
 		-DWITH_WEBENGINE=$(usex urlpreview)
 		-DWANT_QTCLIENT=$(usex X)
 	)

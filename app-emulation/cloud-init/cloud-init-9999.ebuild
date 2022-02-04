@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
+PYTHON_COMPAT=( python3_7 python3_8 python3_9 )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_REPO_URI="https://git.launchpad.net/cloud-init"
 else
 	SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 DESCRIPTION="Cloud instance initialisation magic"
@@ -40,9 +40,7 @@ DEPEND="
 		>=dev-python/httpretty-0.7.1[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/unittest2[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}]
-		dev-python/contextlib2[${PYTHON_USEDEP}]
 	)
 "
 RDEPEND="
@@ -57,7 +55,7 @@ PATCHES=(
 	# Fix Gentoo support
 	# https://code.launchpad.net/~gilles-dartiguelongue/cloud-init/+git/cloud-init/+merge/358777
 	"${FILESDIR}/${PN}-18.4-fix-packages-module.patch"
-	"${FILESDIR}/${PN}-20.1-gentoo-support-upstream-templates.patch"
+	"${FILESDIR}/${PN}-21.2-gentoo-support-upstream-templates.patch"
 	"${FILESDIR}"/18.4-fix-filename-for-storing-locale.patch
 	"${FILESDIR}"/18.4-fix-update_package_sources-function.patch
 	"${FILESDIR}"/18.4-add-support-for-package_upgrade.patch

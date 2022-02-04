@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,6 +10,7 @@ MY_PN=OS
 DESCRIPTION="COIN-OR Optimization Services"
 HOMEPAGE="https://projects.coin-or.org/OS/"
 SRC_URI="http://www.coin-or.org/download/source/${MY_PN}/${MY_PN}-${PV}.tgz"
+S="${WORKDIR}/${MY_PN}-${PV}/${MY_PN}"
 
 LICENSE="EPL-1.0"
 SLOT="0/6"
@@ -32,9 +33,9 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )
 	test? ( sci-libs/coinor-sample )"
 
-S="${WORKDIR}/${MY_PN}-${PV}/${MY_PN}"
-
-PATCHES=( "${FILESDIR}/${PN}-2.10.1-fix-c++14.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-2.10.1-fix-c++14.patch"
+)
 
 src_prepare() {
 	default
@@ -45,6 +46,11 @@ src_prepare() {
 
 src_configure() {
 	append-cppflags -DNDEBUG
+
+	# Can be dropped > 2.10.3 as patches landed upstream but don't
+	# apply cleanly to 2.10.1.
+	# bug #808793
+	append-cxxflags -std=c++14
 
 	econf \
 		--enable-shared \

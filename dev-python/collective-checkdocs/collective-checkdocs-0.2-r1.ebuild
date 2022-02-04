@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6..9} )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 # TODO: revert to rdepend once this is merged:
 # https://github.com/collective/collective.checkdocs/pull/11
 DISTUTILS_USE_SETUPTOOLS=manual
@@ -11,7 +11,7 @@ DISTUTILS_USE_SETUPTOOLS=manual
 inherit distutils-r1
 
 MY_PN="${PN/-/.}"
-DESCRIPTION="Distutils command to view/validate packages's rst text long_descriptions."
+DESCRIPTION="Distutils command to view/validate packages's rst text long_descriptions"
 HOMEPAGE="https://github.com/collective/collective.checkdocs"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.zip"
 S="${WORKDIR}/${MY_PN}-${PV}"

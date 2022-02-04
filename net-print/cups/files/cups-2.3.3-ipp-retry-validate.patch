@@ -1,0 +1,43 @@
+From 6e6999b1f74457b7fd6057a31f1d3606de19a05b Mon Sep 17 00:00:00 2001
+From: Michael R Sweet <michael.r.sweet@gmail.com>
+Date: Fri, 9 Apr 2021 10:20:04 -0400
+Subject: [PATCH] Retry Validate-Job once, if needed (Issue #132)
+
+---
+ CHANGES.md    |  1 +
+ backend/ipp.c | 14 +++++++++++++-
+ 2 files changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/backend/ipp.c b/backend/ipp.c
+index 63353a66d..020ab7fd4 100644
+--- a/backend/ipp.c
++++ b/backend/ipp.c
+@@ -256,6 +257,7 @@ main(int  argc,				/* I - Number of command-line args */
+ 		get_job_attrs = 0,	/* Does printer support Get-Job-Attributes? */
+ 		send_document = 0,	/* Does printer support Send-Document? */
+ 		validate_job = 0,	/* Does printer support Validate-Job? */
++		validate_retried = 0,	/* Was Validate-Job request retried? */
+ 		copies,			/* Number of copies for job */
+ 		copies_remaining;	/* Number of copies remaining */
+   const char	*content_type,		/* CONTENT_TYPE environment variable */
+@@ -1559,7 +1561,17 @@ main(int  argc,				/* I - Number of command-line args */
+              ipp_status == IPP_STATUS_ERROR_BAD_REQUEST)
+       break;
+     else if (job_auth == NULL && ipp_status > IPP_STATUS_ERROR_BAD_REQUEST)
++    {
++      if (!validate_retried)
++      {
++        // Retry Validate-Job operation once, to work around known printer bug...
++        validate_retried = 1;
++        sleep(10);
++        continue;
++      }
++
+       goto cleanup;
++    }
+   }
+ 
+  /*
+-- 
+2.26.3
+

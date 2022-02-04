@@ -1,6 +1,0 @@
-[Unit]
-Description=Store and restore ip6tables firewall rules
-
-[Install]
-Also=ip6tables-store.service
-Also=ip6tables-restore.service

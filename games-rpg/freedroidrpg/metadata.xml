@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>games@gentoo.org</email>
@@ -29,6 +29,8 @@ fully express their creativity.
 <use>
   <flag name="devtools">Compile the additional dev tools</flag>
   <flag name="profile">Enable the integration of the ingame real-time profiler</flag>
-  <flag name="sanitize">Compile with address sanitizer</flag>
 </use>
+<upstream>
+  <remote-id type="gitlab">freedroid/freedroid-src</remote-id>
+</upstream>
 </pkgmetadata>

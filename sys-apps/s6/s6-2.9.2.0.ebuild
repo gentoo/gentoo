@@ -1,7 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="skarnet.org's small and secure supervision software suite"
 HOMEPAGE="https://www.skarnet.org/software/s6/"
@@ -9,13 +11,13 @@ SRC_URI="https://www.skarnet.org/software/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+execline static static-libs"
 
 REQUIRED_USE="static? ( static-libs )"
 
-RDEPEND="execline? ( >=dev-lang/execline-2.6.0.1:=[static-libs?] )
-	>=dev-libs/skalibs-2.9.2.1:=[static-libs?]
+RDEPEND="execline? ( <dev-lang/execline-2.7.0.0:=[static-libs?] )
+	<dev-libs/skalibs-2.10.0.0:=[static-libs?]
 "
 DEPEND="${RDEPEND}"
 
@@ -27,9 +29,13 @@ src_prepare() {
 	# Avoid QA warning for LDFLAGS addition; avoid overriding -fstack-protector
 	sed -i -e 's/.*-Wl,--hash-style=both$/:/' -e '/-fno-stack-protector$/d' \
 		configure || die
+
+	sed -i -e '/AR := /d' -e '/RANLIB := /d' Makefile || die
 }
 
 src_configure() {
+	tc-export AR CC RANLIB
+
 	econf \
 		--bindir=/bin \
 		--dynlibdir=/usr/$(get_libdir) \

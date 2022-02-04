@@ -1,0 +1,28 @@
+From 031cc8495ef5008e744bc3bf1e970e894083d1a1 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Mon, 26 Jul 2021 19:50:25 +0300
+Subject: [PATCH] Replace URL for versions.xml
+
+Replace versions.xml URL to
+http://www.aaabbb.de/FirmwareUsbprog/versions.xml as only one viable
+source for firmwares.
+---
+ usbprog/usbprog.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/usbprog/usbprog.h b/usbprog/usbprog.h
+index 38d069e..35dc86b 100644
+--- a/usbprog/usbprog.h
++++ b/usbprog/usbprog.h
+@@ -26,7 +26,7 @@ namespace usbprog {
+ 
+ /* Preprocessor definitions {{{ */
+ 
+-#define DEFAULT_INDEX_URL       "http://www.ixbat.de/usbprog/versions.xml"
++#define DEFAULT_INDEX_URL       "http://www.aaabbb.de/FirmwareUsbprog/versions.xml"
+ #define AUTO_NOT_UPDATE_TIME    10
+ 
+ /* }}} */
+-- 
+2.31.1
+

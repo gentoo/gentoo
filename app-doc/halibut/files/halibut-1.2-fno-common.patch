@@ -1,0 +1,22 @@
+--- a/bk_paper.c
++++ b/bk_paper.c
+@@ -75,6 +75,8 @@
+ #include "halibut.h"
+ #include "paper.h"
+ 
++font_info *all_fonts;
++
+ typedef struct paper_conf_Tag paper_conf;
+ typedef struct paper_idx_Tag paper_idx;
+ 
+--- a/paper.h
++++ b/paper.h
+@@ -78,7 +78,7 @@ struct ligature_Tag {
+  * metrics are read in.
+  */
+ 
+-font_info *all_fonts;
++extern font_info *all_fonts;
+ 
+ struct font_info_Tag {
+     font_info *next;

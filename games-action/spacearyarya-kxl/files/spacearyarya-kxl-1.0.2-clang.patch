@@ -1,11 +1,19 @@
---- a/src/ranking.c.bak	2016-07-27 16:42:34.367945713 -0500
-+++ b/src/ranking.c	2016-07-27 16:43:34.679949783 -0500
-@@ -5,7 +5,7 @@
- /**********************
-   スコアランキング
+Use void so that clang does not complain about missing (unused)
+return value, and also add missing string.h.
+--- a/src/ranking.c
++++ b/src/ranking.c
+@@ -1,2 +1,3 @@
+ #include <pwd.h>
++#include <string.h>
+ #include "geki4.h"
+@@ -7,3 +8,3 @@
   **********************/
 -int ScoreRanking(void)
 +void ScoreRanking(void)
  {
-   Uint16 i, j, k;
-   struct passwd *pw;
+--- a/src/ranking.h
++++ b/src/ranking.h
+@@ -3,2 +3,3 @@
+ 
++void ScoreRanking(void);
+ void RankingScore(void);

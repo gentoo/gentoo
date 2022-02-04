@@ -1,0 +1,62 @@
+Use Tcl_Free() for arguments allocated with Tcl_SplitList().
+Use Tcl_Alloc() for arguments passed to tcl to be freed by TCL_DYNAMIC.
+
+https://bugs.gentoo.org/757924
+--- a/tclhfs.c
++++ b/tclhfs.c
+@@ -1313,7 +1313,7 @@ int cmd_hfs(ClientData clientData, Tcl_Interp *interp,
+ 	  badblocks = ALLOCX(unsigned long, listc);
+ 	  if (listc && badblocks == 0)
+ 	    {
+-	      free(listv);
++	      Tcl_Free((char *) listv);
+ 
+ 	      interp->result = "out of memory";
+ 	      return TCL_ERROR;
+@@ -1324,13 +1324,13 @@ int cmd_hfs(ClientData clientData, Tcl_Interp *interp,
+ 	      if (Tcl_ExprLong(interp, listv[i],
+ 			       (long *) &badblocks[i]) != TCL_OK)
+ 		{
+-		  free(listv);
++		  Tcl_Free((char *) listv);
+ 		  FREE(badblocks);
+ 		  return TCL_ERROR;
+ 		}
+ 	    }
+ 
+-	  free(listv);
++	  Tcl_Free((char *) listv);
+ 
+ 	  if (do_format(argv[2], partno, 0, argv[4], listc, badblocks) == -1)
+ 	    {
+--- a/tclhfs.c
++++ b/tclhfs.c
+@@ -378,7 +378,7 @@ int file_cmd(ClientData clientData, Tcl_Interp *interp,
+ 	      return TCL_ERROR;
+ 	    }
+ 
+-	  mem = ALLOC(char, bytes + 1);
++	  mem = Tcl_Alloc(bytes + 1);
+ 	  if (mem == 0)
+ 	    {
+ 	      interp->result = "out of memory";
+--- a/tclhfs.c
++++ b/tclhfs.c
+@@ -902,7 +902,7 @@ int vol_cmd(ClientData clientData, Tcl_Interp *interp,
+ 	    }
+ 
+ 	  result = Tcl_Merge(listc, listv);
+-	  free(listv);
++	  Tcl_Free((char *)listv);
+ 
+ 	  Tcl_SetResult(interp, result, TCL_DYNAMIC);
+ 	}
+@@ -1038,7 +1038,7 @@ int vol_cmd(ClientData clientData, Tcl_Interp *interp,
+ 	    return TCL_ERROR;
+ 
+ 	  fargv = hfs_glob(vol, listc, listv, &fargc);
+-	  free(listv);
++	  Tcl_Free((char*)listv);
+ 
+ 	  if (fargv == 0)
+ 	    {

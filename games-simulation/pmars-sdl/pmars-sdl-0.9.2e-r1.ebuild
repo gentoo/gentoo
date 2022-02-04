@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit readme.gentoo-r1 toolchain-funcs
+EAPI=7
+
+inherit flag-o-matic toolchain-funcs readme.gentoo-r1
 
 MY_PN="${PN/-sdl/}"
 MY_PV="${PV/e/-5}"
@@ -11,6 +12,7 @@ MY_P="${MY_PN}-${MY_PV}"
 DESCRIPTION="Portable redcode simulator's sdl port for core war"
 HOMEPAGE="https://corewar.co.uk/pihlaja/pmars-sdl/"
 SRC_URI="https://corewar.co.uk/pihlaja/pmars-sdl/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
@@ -23,10 +25,11 @@ RDEPEND="
 	!sdl? ( !X? ( sys-libs/ncurses:0= ) )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/${MY_P}"
-
-PATCHES=( "${FILESDIR}"/${P}-format.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-format.patch
+)
 
 DOC_CONTENTS="
 	There are some macros in /usr/share/pmars/macros
@@ -35,41 +38,48 @@ DOC_CONTENTS="
 "
 
 src_compile() {
-	CFLAGS="${CFLAGS} -DEXT94 -DPERMUTATE"
-	LFLAGS="-x"
+	local LIB=""
+	export LFLAGS="-x"
+
+	append-cppflags -DEXT94 -DPERMUTATE
 
 	if use sdl ; then
-		CFLAGS="${CFLAGS} -DSDLGRAPHX `sdl-config --cflags`"
-		LIB=`sdl-config --libs`
+		append-cflags $(sdl-config --cflags)
+		append-cppflags -DSDLGRAPHX
+
+		LIB="$(sdl-config --libs)"
 	elif use X ; then
-		CFLAGS="${CFLAGS} -DXWINGRAPHX"
-		LIB="-L/usr/X11R6/lib -lX11"
+		append-cppflags -DXWINGRAPHX
+
+		LIB="$($(tc-getPKG_CONFIG) --libs x11)"
 	else
-		CFLAGS="${CFLAGS} -DCURSESGRAPHX"
-		LIB="-lcurses -ltinfo"
+		append-cppflags -DCURSESGRAPHX
+
+		LIB="$($(tc-getPKG_CONFIG) --libs ncurses)"
 	fi
 
-	cd src
+	cd src || die
 
-	SRC="asm.c
-		 cdb.c
-		 clparse.c
-		 disasm.c
-		 eval.c
-		 global.c
-		 pmars.c
-		 sim.c
-		 pos.c
-		 str_eng.c
-		 token.c"
+	local programs=(
+		asm.c
+		cdb.c
+		clparse.c
+		disasm.c
+		eval.c
+		global.c
+		pmars.c
+		sim.c
+		pos.c
+		str_eng.c
+		token.c
+	)
 
-	for x in ${SRC}; do
-		einfo "compiling ${x}"
-		$(tc-getCC) ${CFLAGS} ${x} -c || die
+	for program in "${programs[@]}" ; do
+		einfo "Compiling ${program}"
+		$(tc-getCC) ${CPPFLAGS} ${CFLAGS} ${program} -c || die
 	done
 
-	echo
-	einfo "linking with LIB: ${LIB}"
+	einfo "Linking with LIB: ${LIB}"
 	$(tc-getCC) ${LDFLAGS} *.o ${LIB} -o ${MY_PN} || die
 }
 
@@ -80,10 +90,10 @@ src_install() {
 	dodoc AUTHORS CONTRIB ChangeLog README doc/redcode.ref
 	readme.gentoo_create_doc
 
-	insinto "/usr/share/${MY_PN}/warriors"
+	insinto /usr/share/${MY_PN}/warriors
 	doins warriors/*
 
-	insinto "/usr/share/${MY_PN}/macros"
+	insinto /usr/share/${MY_PN}/macros
 	doins config/*.mac
 }
 

@@ -1,5 +1,5 @@
---- vaiobright-2.5/Makefile.orig	2002-10-20 16:52:19.000000000 -0600
-+++ vaiobright-2.5/Makefile	2007-02-21 08:55:39.000000000 -0600
+--- a/Makefile
++++ b/Makefile
 @@ -1,10 +1,11 @@
  HOME	= .
  PREFIX  = /usr
@@ -7,11 +7,11 @@
 +CC	?= cc
  INCLUDE	= -I./ -I${PREFIX}/include
 -OPTS	= -shared `pkg-config gtk+-2.0 --cflags`
-+CFLAGS	+= -shared `pkg-config gtk+-2.0 --cflags` -fPIC
++CFLAGS	+= -shared `${PKG_CONFIG} gtk+-2.0 --cflags` -fPIC
 +LDFLAGS  += -shared -fPIC
  DEFINES = 
 -LIBS	= `pkg-config gtk+-2.0 --cflags`
-+LIBS	= `pkg-config gtk+-2.0 --libs`
++LIBS	= `${PKG_CONFIG} gtk+-2.0 --libs`
  
  GKVO	= vaiobright.o
  GKV	= vaiobright.so 

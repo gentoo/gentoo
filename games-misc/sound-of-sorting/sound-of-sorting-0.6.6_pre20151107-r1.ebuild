@@ -1,7 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 WX_GTK_VER="3.0"
 
 inherit vcs-snapshot wxwidgets
@@ -15,15 +16,13 @@ SRC_URI="https://github.com/bingmann/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 RDEPEND="
 	media-libs/libsdl
-	x11-libs/wxGTK:${WX_GTK_VER}
-"
+	x11-libs/wxGTK:${WX_GTK_VER}"
 DEPEND="${RDEPEND}"
 
-src_unpack() {
-	vcs-snapshot_src_unpack
-	need-wxwidgets unicode
+src_configure() {
+	setup-wxwidgets unicode
+	default
 }

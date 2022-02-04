@@ -1,0 +1,36 @@
+From 3be743ebd34cfb1992d52ffe38ac5512e36aae12 Mon Sep 17 00:00:00 2001
+From: Waqar Ahmed <waqar.17a@gmail.com>
+Date: Thu, 11 Nov 2021 11:14:47 +0500
+Subject: [PATCH] Revert "completion: invoke always"
+
+This reverts commit d116503df2ca1b159c13ae77aac88cdb08408659.
+---
+ src/completion/katecompletionwidget.cpp | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/src/completion/katecompletionwidget.cpp b/src/completion/katecompletionwidget.cpp
+index 3af1f2b5..73a36423 100644
+--- a/src/completion/katecompletionwidget.cpp
++++ b/src/completion/katecompletionwidget.cpp
+@@ -35,7 +35,6 @@
+ #include <QToolButton>
+ 
+ const bool hideAutomaticCompletionOnExactMatch = true;
+-const bool invokeCompletionAlways = true;
+ 
+ // If this is true, the completion-list is navigated up/down when 'tab' is pressed, instead of doing partial completion
+ const bool shellLikeTabCompletion = false;
+@@ -418,9 +417,7 @@ void KateCompletionWidget::startCompletion(const KTextEditor::Range &word,
+         }
+         if (m_completionRanges.contains(model)) {
+             if (*m_completionRanges[model].range == range) {
+-                if (!invokeCompletionAlways) {
+-                    continue; // Leave it running as it is
+-                }
++                continue; // Leave it running as it is
+             } else { // delete the range that was used previously
+                 KTextEditor::MovingRange *oldRange = m_completionRanges[model].range;
+                 // qCDebug(LOG_KTE)<<"removing completion range 2";
+-- 
+GitLab
+

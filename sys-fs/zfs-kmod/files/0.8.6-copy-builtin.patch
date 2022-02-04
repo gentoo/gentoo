@@ -1,0 +1,27 @@
+From 0ce99b43b339226d62362f624d37f80a921eb197 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Fri, 18 Dec 2020 11:35:07 -0800
+Subject: [PATCH] copy-builtin: handle missing .gitignore
+
+acfc4944d0d6db114db9f2bb5401251c5bd767b6 broke copy-builtin in
+release tarballs, because those do not contain .gitignore file.
+Adding -f to rm call will make it return 0 even if file does not exist.
+
+Signed-off-by: Georgy Yakovlev <gyakovlev@gentoo.org>
+---
+ copy-builtin | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/copy-builtin b/copy-builtin
+index 84f469fef02..6a6eb1f3695 100755
+--- a/copy-builtin
++++ b/copy-builtin
+@@ -36,7 +36,7 @@ rm -rf "$KERNEL_DIR/include/zfs" "$KERNEL_DIR/fs/zfs"
+ cp --recursive include "$KERNEL_DIR/include/zfs"
+ cp --recursive module "$KERNEL_DIR/fs/zfs"
+ cp zfs_config.h "$KERNEL_DIR/include/zfs/"
+-rm "$KERNEL_DIR/include/zfs/.gitignore"
++rm -f "$KERNEL_DIR/include/zfs/.gitignore"
+ 
+ for MODULE in "${MODULES[@]}"
+ do

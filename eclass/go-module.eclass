@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: go-module.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # William Hubbs <williamh@gentoo.org>
 # Robin H. Johnson <robbat2@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: basic eclass for building software written as go modules
 # @DESCRIPTION:
 # This eclass provides basic settings and functions needed by all software
@@ -25,7 +25,7 @@
 # Since Go programs are statically linked, it is important that your ebuild's
 # LICENSE= setting includes the licenses of all statically linked
 # dependencies. So please make sure it is accurate.
-# You can use a utility like dev-util/golicense (network connectivity is
+# You can use a utility like dev-go/golicense (network connectivity is
 # required) to extract this information from the compiled binary.
 #
 # @EXAMPLE:
@@ -46,22 +46,26 @@
 #
 # @CODE
 
-case ${EAPI:-0} in
-	7) ;;
-	*) die "${ECLASS} EAPI ${EAPI} is not supported."
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_GO_MODULE} ]]; then
 
 _GO_MODULE=1
 
-BDEPEND=">=dev-lang/go-1.12"
+if [[ ! ${GO_OPTIONAL} ]]; then
+	BDEPEND=">=dev-lang/go-1.12"
 
-# Workaround for pkgcheck false positive: https://github.com/pkgcore/pkgcheck/issues/214
-# MissingUnpackerDep: version ...: missing BDEPEND="app-arch/unzip"
-# Added here rather than to each affected package, so it can be cleaned up just
-# once when pkgcheck is improved.
-BDEPEND+=" app-arch/unzip"
+	# Workaround for pkgcheck false positive: https://github.com/pkgcore/pkgcheck/issues/214
+	# MissingUnpackerDep: version ...: missing BDEPEND="app-arch/unzip"
+	# Added here rather than to each affected package, so it can be cleaned up just
+	# once when pkgcheck is improved.
+	BDEPEND+=" app-arch/unzip"
+
+	EXPORT_FUNCTIONS src_unpack
+fi
 
 # Force go to build in module mode.
 # In this mode the GOPATH environment variable is ignored.
@@ -75,17 +79,13 @@ export GOCACHE="${T}/go-build"
 # The following go flags should be used for all builds.
 # -v prints the names of packages as they are compiled
 # -x prints commands as they are executed
-# -mod=readonly do not update go.mod/go.sum but fail if updates are needed
-# -mod=vendor use the vendor directory instead of downloading dependencies
-export GOFLAGS="-v -x -mod=readonly"
+export GOFLAGS="-v -x -modcacherw"
 
 # Do not complain about CFLAGS etc since go projects do not use them.
 QA_FLAGS_IGNORED='.*'
 
 # Go packages should not be stripped with strip(1).
 RESTRICT+=" strip"
-
-EXPORT_FUNCTIONS src_unpack pkg_postinst
 
 # @ECLASS-VARIABLE: EGO_SUM
 # @DESCRIPTION:
@@ -148,6 +148,17 @@ EXPORT_FUNCTIONS src_unpack pkg_postinst
 # Associative array to avoid O(N*M) performance when populating the GOPROXY
 # directory structure.
 declare -A -g _GOMODULE_GOSUM_REVERSE_MAP
+
+# @ECLASS-VARIABLE: GO_OPTIONAL
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# If set to a non-null value before inherit, then the Go part of the
+# ebuild will be considered optional. No dependencies will be added and
+# no phase functions will be exported.
+#
+# If you enable GO_OPTIONAL, you have to set BDEPEND on >=dev-lang/go-1.12
+# for your package and call go-module_src_unpack manually.
 
 # @FUNCTION: go-module_set_globals
 # @DESCRIPTION:
@@ -232,8 +243,52 @@ go-module_set_globals() {
 	readonly EGO_SUM_SRC_URI
 	readonly _GOMODULE_GOSUM_REVERSE_MAP
 
+	# export the GOPROXY setting
+	export GOPROXY="file://${T}/go-proxy"
+
 	# Set the guard that we are safe
 	_GO_MODULE_SET_GLOBALS_CALLED=1
+}
+
+# @FUNCTION: go-module_setup_proxy
+# @DESCRIPTION:
+# If your ebuild redefines src_unpack and uses EGO_SUM you need to call
+# this function in src_unpack.
+# It sets up the go module proxy in the appropriate location.
+go-module_setup_proxy() {
+	# shellcheck disable=SC2120
+	debug-print-function "${FUNCNAME}" "$@"
+
+	if [[ ! ${_GO_MODULE_SET_GLOBALS_CALLED} ]]; then
+		die "go-module_set_globals must be called in global scope"
+	fi
+
+	local goproxy_dir="${GOPROXY/file:\/\//}"
+	mkdir -p "${goproxy_dir}" || die
+
+	# For each Golang module distfile, look up where it's supposed to go and
+	# symlink it into place.
+	local f
+	local goproxy_mod_dir
+	for f in ${A}; do
+		goproxy_mod_path="${_GOMODULE_GOSUM_REVERSE_MAP["${f}"]}"
+		if [[ -n "${goproxy_mod_path}" ]]; then
+			debug-print-function "Populating go proxy for ${goproxy_mod_path}"
+			# Build symlink hierarchy
+			goproxy_mod_dir=$( dirname "${goproxy_dir}"/"${goproxy_mod_path}" )
+			mkdir -p "${goproxy_mod_dir}" || die
+			ln -sf "${DISTDIR}"/"${f}" "${goproxy_dir}/${goproxy_mod_path}" ||
+				die "Failed to ln"
+			local v=${goproxy_mod_path}
+			v="${v%.mod}"
+			v="${v%.zip}"
+			v="${v//*\/}"
+			_go-module_gosum_synthesize_files "${goproxy_mod_dir}" "${v}"
+		fi
+	done
+
+	# Validate the gosum now
+	_go-module_src_unpack_verify_gosum
 }
 
 # @FUNCTION: go-module_src_unpack
@@ -268,7 +323,7 @@ _go-module_src_unpack_gosum() {
 		die "go-module_set_globals must be called in global scope"
 	fi
 
-	local goproxy_dir="${T}/go-proxy"
+	local goproxy_dir="${GOPROXY/file:\/\//}"
 	mkdir -p "${goproxy_dir}" || die
 
 	# For each Golang module distfile, look up where it's supposed to go, and
@@ -293,7 +348,6 @@ _go-module_src_unpack_gosum() {
 			unpack "$f"
 		fi
 	done
-	export GOPROXY="file://${goproxy_dir}"
 
 	# Validate the gosum now
 	_go-module_src_unpack_verify_gosum
@@ -372,21 +426,6 @@ go-module_live_vendor() {
 	pushd "${S}" >& /dev/null || die
 	go mod vendor || die
 	popd >& /dev/null || die
-}
-
-# @FUNCTION: go-module_pkg_postinst
-# @DESCRIPTION:
-# Display a warning about security updates for Go programs.
-go-module_pkg_postinst() {
-	debug-print-function "${FUNCNAME}" "$@"
-	[[ -n ${REPLACING_VERSIONS} ]] && return 0
-	ewarn "${PN} is written in the Go programming language."
-	ewarn "Since this language is statically linked, security"
-	ewarn "updates will be handled in individual packages and will be"
-	ewarn "difficult for us to track as a distribution."
-	ewarn "For this reason, please update any go packages asap when new"
-	ewarn "versions enter the tree or go stable if you are running the"
-	ewarn "stable tree."
 }
 
 # @FUNCTION: _go-module_gomod_encode

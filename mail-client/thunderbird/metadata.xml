@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="project">
 	<email>mozilla@gentoo.org</email>
@@ -8,12 +8,14 @@
 <use>
 	<flag name="clang">Use Clang compiler instead of GCC</flag>
 	<flag name="eme-free">Disable EME (DRM plugin) cabability at build time</flag>
+	<flag name="hwaccel">Force-enable hardware-accelerated rendering (Mozilla bug 594876)</flag>
 	<flag name="lto">Enable Link Time Optimization (LTO). Requires Gold linker when using GCC
 		or LDD linker when using Clang</flag>
 	<flag name="openh264">Use <pkg>media-libs/openh264</pkg> for H.264 support
 		instead of downloading binary blob from Mozilla at runtime</flag>
 	<flag name="pgo">Add support for profile-guided optimization using gcc-4.5,
 		for faster binaries. This option will double the compile time.</flag>
+	<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
 	<flag name="system-av1">Use the system-wide <pkg>media-libs/dav1d</pkg>
 		and <pkg>media-libs/libaom</pkg> library instead of bundled.</flag>
 	<flag name="system-harfbuzz">Use the system-wide <pkg>media-libs/harfbuzz</pkg>
@@ -26,9 +28,9 @@
 		instead of bundled.</flag>
 	<flag name="system-libvpx">Use the system-wide <pkg>media-libs/libvpx</pkg>
 		instead of bundled.</flag>
+	<flag name="system-png">Use the system-wide <pkg>media-libs/libpng</pkg>
+		instead of bundled (requires APNG patches)</flag>
 	<flag name="system-webp">Use the system-wide <pkg>media-libs/libwebp</pkg>
 		instead of bundled.</flag>
-
-
 </use>
 </pkgmetadata>

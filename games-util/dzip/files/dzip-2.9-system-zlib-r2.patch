@@ -1,5 +1,5 @@
---- dzip.h
-+++ dzip.h
+--- a/dzip.h
++++ b/dzip.h
 @@ -2,7 +2,7 @@
  #include <stdlib.h>
  #include <string.h>
@@ -16,8 +16,8 @@
 -#endif
 \ No newline at end of file
 +#endif
---- Makefile.linux
-+++ Makefile.linux
+--- a/Makefile.linux
++++ b/Makefile.linux
 @@ -1,18 +1,17 @@
  # Makefile for linux
  
@@ -50,8 +50,8 @@
 -v1code.o: v1code.c dzip.h dzipcon.h
 \ No newline at end of file
 +v1code.o: v1code.c dzip.h dzipcon.h
---- conmain.c.orig	2010-01-17 15:10:20.938605770 +0000
-+++ conmain.c	2010-01-17 15:10:34.180603846 +0000
+--- a/conmain.c
++++ b/conmain.c
 @@ -507,8 +507,8 @@
  		if (!strcmp(argv[i],"-o")) i++;
  	}

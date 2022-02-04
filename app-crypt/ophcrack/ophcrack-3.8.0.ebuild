@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,17 +6,17 @@ EAPI=7
 inherit desktop toolchain-funcs
 
 DESCRIPTION="A time-memory-trade-off-cracker"
-HOMEPAGE="http://ophcrack.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://ophcrack.sourceforge.io/"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug libressl qt5 +tables"
+IUSE="debug qt5 +tables"
 
 DEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
+	dev-libs/expat
 	net-libs/netwib
 	qt5? (
 		dev-qt/qtcharts:5

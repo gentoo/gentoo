@@ -3,10 +3,7 @@ Add knob to disable valgrind at test runtime.
 When valgrind is installed in system but is not
 working we should still be able to run tests.
 
-Reported-by: Diego Elio Pettenò
 Bug: https://bugs.gentoo.org/424377
-diff --git a/waftools/unittest.py b/waftools/unittest.py
-index 4317287..6179dfd 100644
 --- a/waftools/unittest.py
 +++ b/waftools/unittest.py
 @@ -64,7 +64,8 @@ def generate_coverage(bld):
@@ -19,8 +16,6 @@ index 4317287..6179dfd 100644
      conf.find_program("lcov", var="LCOV", mandatory=False)
      conf.find_program("genhtml", var="GENHTML", mandatory=False)
  
-diff --git a/wscript b/wscript
-index 99c1fa3..a98d5e3 100644
 --- a/wscript
 +++ b/wscript
 @@ -501,6 +501,10 @@ def options(opt):

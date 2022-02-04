@@ -1,6 +1,6 @@
-diff -up PyPAM-0.5.0/PAMmodule.c.dealloc PyPAM-0.5.0/PAMmodule.c
---- PyPAM-0.5.0/PAMmodule.c.dealloc	2011-01-17 22:48:22.000000000 +0100
-+++ PyPAM-0.5.0/PAMmodule.c	2011-01-18 21:24:59.000000000 +0100
+diff -up a/PAMmodule.c b/PAMmodule.c
+--- a/PAMmodule.c
++++ b/PAMmodule.c
 @@ -538,10 +538,11 @@ static void PyPAM_dealloc(PyPAMObject *s
      free(self->service);
      free(self->user);

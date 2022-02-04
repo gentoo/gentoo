@@ -1,0 +1,42 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="save"
+
+NFACCT_SAVE=${NFACCT_SAVE:-/var/lib/nfacct/counters-save}
+
+depend() {
+	before iptables ip6tables
+}
+
+checkconfig() {
+	if [ ! -f "${NFACCT_SAVE}" ] ; then
+		eerror "Not starting ${SVCNAME}. First create some counters then run:"
+		eerror "/etc/init.d/${SVCNAME} save"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Loading nfacct counters"
+	nfacct restore < "${NFACCT_SAVE}"
+	eend $?
+}
+
+stop() {
+	if [ "${SAVE_ON_STOP}" = "yes" ] ; then
+		save || return 1
+	fi
+	ebegin "Removing nfacct counters"
+	nfacct flush
+	eend $?
+}
+
+save() {
+	ebegin "Saving nfacct counters"
+	nfacct list > "${NFACCT_SAVE}"
+	eend $?
+}

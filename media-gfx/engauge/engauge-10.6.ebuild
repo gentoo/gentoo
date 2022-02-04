@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,11 +7,11 @@ inherit desktop qmake-utils xdg
 
 DESCRIPTION="Convert an image file showing a graph or map into numbers"
 HOMEPAGE="https://markummitchell.github.io/engauge-digitizer/"
-SRC_URI="https://github.com/markummitchell/engauge-digitizer/archive/v$PV.tar.gz -> engauge-digitizer-$PV.tar.gz"
+SRC_URI="https://github.com/markummitchell/engauge-digitizer/archive/v${PV}.tar.gz -> engauge-digitizer-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc examples jpeg2k pdf"
 
 RDEPEND="dev-qt/qtcore:5
@@ -70,7 +70,7 @@ src_install() {
 	# Install qt help files
 	insinto /usr/share/doc/${PF} # this must match sed expression in src_prepare
 	doins bin/documentation/engauge.{qch,qhc}
-	docompress -x "${EPREFIX}"/usr/share/doc/$PF/engauge.{qch,qhc}
+	docompress -x "${EPREFIX}"/usr/share/doc/${PF}/engauge.{qch,qhc}
 
 	if use doc; then
 		pushd doc >/dev/null || die

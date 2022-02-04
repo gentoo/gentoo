@@ -1,0 +1,122 @@
+--- a/tp_as.c
++++ b/tp_as.c
+@@ -50,6 +50,7 @@ static char * ra_service;
+ static struct hostent * ra_hostent;
+ static struct servent * ra_servent;
+ 
++char as_string[1024];
+ 
+ int setup_as ( void )
+ {
+--- a/tp_as.h
++++ b/tp_as.h
+@@ -33,7 +33,7 @@
+ #ifndef TP_AS_H
+ #define TP_AS_H 1
+ 
+-char as_string[1024];
++extern char as_string[1024];
+ 
+ /*! Initialisation function for AS lookups; returns 0 iff successful. */
+ int setup_as(void);
+--- a/tp_miscfunc.c
++++ b/tp_miscfunc.c
+@@ -52,6 +52,8 @@
+ #include <dmalloc.h>
+ #endif /* HAVE_LIBDMALLOC */
+ 
++struct cleanup tixe_cleanup;
++
+ /*
+  * take a comma separated list (sans spaces) and give them a miss
+  * (ie don't send probes with the ttl set to these numbers)
+--- a/tp_miscfunc.h
++++ b/tp_miscfunc.h
+@@ -32,7 +32,8 @@ struct cleanup {
+ 	unsigned int libnet_cleanup : 1;
+ 	unsigned int pcap_cleanup : 1;
+ 	unsigned int addrinfo_cleanup : 1;
+-} tixe_cleanup;
++};
++extern struct cleanup tixe_cleanup;
+ 
+ int parse_skips ( char * );
+ 
+--- a/traceproto.c
++++ b/traceproto.c
+@@ -55,6 +55,12 @@
+ #include <dmalloc.h>
+ #endif /* HAVE_LIBDMALLOC */
+ 
++struct tp_align_ref tp_align_freelist;
++struct behavior behavior;
++struct packet packet;
++struct state state;
++struct debug debug;
++
+ int main( int argc, char * argv[] )
+ {
+ 
+--- a/traceproto.h
++++ b/traceproto.h
+@@ -104,9 +104,10 @@ enum tp_tstamps {
+ struct tp_align_ref {
+ 	struct tp_align_ref * next;
+ 	u_char * ref;
+-} tp_align_freelist;
++};
++extern struct tp_align_ref tp_align_freelist;
+ 
+-struct {
++struct behavior {
+ 	unsigned int continuous : 1;
+ 	unsigned int continuous_accounting : 1;
+ 	unsigned int do_skip : 1;
+@@ -148,9 +149,10 @@ struct {
+ 	char timestamp_str [ TP_TIMESTAMP_LEN ];
+ 	char timestamp_style;
+ 	struct addrinfo hint;
+-} behavior;
++};
++extern struct behavior behavior;
+ 
+-struct {
++struct packet {
+ 	int dst_port;
+ 	int src_port;
+ 	int protocol_number;
+@@ -161,9 +163,10 @@ struct {
+ 	long packed_src;
+ 	unsigned short frag_bit;
+ 	unsigned short ip_id;
+-} packet;
++};
++extern struct packet packet;
+ 
+-struct {
++struct state {
+ 	char * prog;
+ 	unsigned int account_hops;
+ 	struct hop_record {
+@@ -208,9 +211,10 @@ struct {
+ 	unsigned int low_ttl;
+ 	unsigned int incr_error : 1;
+ 	unsigned int target_response : 1;
+-} state;
++};
++extern struct state state;
+ 
+-struct {
++struct debug {
+ 	unsigned int loop : 1;
+ 	unsigned int interface : 1;
+ 	unsigned int send_buf : 1;
+@@ -219,6 +223,7 @@ struct {
+ 	unsigned int timestamp : 1;
+ 	unsigned int as_lookup : 1;
+ 	unsigned int memory : 1;
+-} debug;
++};
++extern struct debug debug;
+ 
+ #endif /* TRACEPROTO_H */

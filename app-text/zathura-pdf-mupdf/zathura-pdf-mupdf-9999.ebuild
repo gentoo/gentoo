@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson xdg
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://git.pwmt.org/pwmt/zathura-pdf-mupdf.git"
+	EGIT_REPO_URI="https://github.com/pwmt/zathura-pdf-mupdf.git"
 	EGIT_BRANCH="develop"
 else
 	KEYWORDS="~amd64 ~arm ~x86"
@@ -24,9 +24,6 @@ DEPEND=">=app-text/mupdf-1.17:=
 	>=app-text/zathura-0.3.9
 	dev-libs/girara
 	dev-libs/glib:2
-	media-libs/jbig2dec:=
-	media-libs/openjpeg:2=
-	virtual/jpeg:0
 	x11-libs/cairo"
 
 RDEPEND="${DEPEND}"
@@ -34,7 +31,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-	sed -i -e '/mupdfthird/d' meson.build || die "sed failed"
+	sed -i -e '/mupdfthird/d' meson.build || die "Failed removing mupdfthird from meson.build"
 
 	default
 }

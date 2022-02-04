@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,11 +9,11 @@ RUBY_FAKEGEM_EXTRADOC="FAQ.txt History.txt README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A commandline option parser for Ruby that just gets out of your way."
+DESCRIPTION="A commandline option parser for Ruby that just gets out of your way"
 HOMEPAGE="https://manageiq.github.io/optimist/"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="3"
 IUSE=""
 

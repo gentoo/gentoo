@@ -4,7 +4,7 @@
 EAPI=7
 
 RESTRICT="test"
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 

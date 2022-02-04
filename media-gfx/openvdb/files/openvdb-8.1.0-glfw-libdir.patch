@@ -1,0 +1,21 @@
+Custom cmake file used to find GLFW always looks at lib/cmake first
+ignoring alternate libdirs and leads to using wrong libraries.
+
+https://bugs.gentoo.org/800200
+[rebased by sam]
+--- a/cmake/OpenVDBGLFW3Setup.cmake
++++ b/cmake/OpenVDBGLFW3Setup.cmake
+@@ -83,10 +83,10 @@ endif()
+ 
+ list(APPEND _GLFW3_ROOT_SEARCH_DIR ${SYSTEM_LIBRARY_PATHS})
+ 
+-set(_GLFW3_PATH_SUFFIXES "lib/cmake/glfw3" "cmake/glfw3" "glfw3")
++set(_GLFW3_PATH_SUFFIXES "cmake/glfw3" "glfw3")
+ 
+ # GLFW 3.1 installs CMake modules into glfw instead of glfw3
+-list(APPEND _GLFW3_PATH_SUFFIXES "lib/cmake/glfw" "cmake/glfw" "glfw")
++list(APPEND _GLFW3_PATH_SUFFIXES "cmake/glfw" "glfw")
+ 
+ find_path(GLFW3_CMAKE_LOCATION glfw3Config.cmake
+   ${_FIND_GLFW3_ADDITIONAL_OPTIONS}
+

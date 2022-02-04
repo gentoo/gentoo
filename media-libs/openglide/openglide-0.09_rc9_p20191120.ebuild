@@ -1,15 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 COMMIT="c300160d0a8292bc04e79dd59e6cc178aa648dec"
 
-inherit autotools eutils multilib-minimal
+inherit autotools multilib-minimal
 
-DESCRIPTION="A Glide to OpenGL wrapper"
+DESCRIPTION="Glide to OpenGL wrapper"
 HOMEPAGE="http://openglide.sourceforge.net/"
 SRC_URI="https://github.com/voyageur/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -56,6 +57,9 @@ multilib_src_install_all() {
 	newexe platform/dosbox/glide2x.ovl glide2x-dosbox.ovl
 	newexe platform/dosemu/glide2x.ovl glide2x-dosemu.ovl
 
-	rm "${ED}"/usr/*/*.la || die
+	# Drop the libtool file *if* it exists
+	# bug #778266
+	find "${ED}" -name '*.la' -delete || die
+
 	einstalldocs
 }

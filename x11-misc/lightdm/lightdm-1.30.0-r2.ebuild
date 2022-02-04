@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools flag-o-matic pam qmake-utils readme.gentoo-r1 systemd user vala xdg-utils
+inherit autotools pam qmake-utils readme.gentoo-r1 systemd user vala xdg-utils
 
 DESCRIPTION="A lightweight display manager"
 HOMEPAGE="https://github.com/CanonicalLtd/lightdm"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/CanonicalLtd/lightdm/releases/download/${PV}/${P}.ta
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 x86"
+KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~riscv x86"
 IUSE="audit +gnome +gtk +introspection non_root qt5 vala"
 
 COMMON_DEPEND="
@@ -98,8 +98,6 @@ src_configure() {
 	einfo "Default greeter: ${_greeter}"
 	einfo "Default session: ${_session}"
 	einfo "Greeter user: ${_user}"
-
-	use qt5 && append-cxxflags -std=c++11
 
 	# also disable tests because libsystem.c does not build. Tests are
 	# restricted so it does not matter anyway.

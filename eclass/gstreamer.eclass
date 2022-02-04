@@ -11,6 +11,7 @@
 # foser <foser@gentoo.org>
 # zaheerm <zaheerm@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6
+# @PROVIDES: multilib-minimal
 # @BLURB: Helps building core & split gstreamer plugins.
 # @DESCRIPTION:
 # Eclass to make external gst-plugins emergable on a per-plugin basis

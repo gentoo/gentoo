@@ -1,0 +1,41 @@
+From a0c29913114164ff3f2ba4e255ccee1c52cb3e86 Mon Sep 17 00:00:00 2001
+From: Alvin Wong <alvin@alvinhc.com>
+Date: Sat, 19 Jun 2021 16:29:45 +0800
+Subject: [PATCH] Fix PyKrita cleanup using qApp::aboutToQuit to prevent crash
+
+Suspecting that we can't have Python clean up its QObject's inside
+QCoreApplication's destructor, but must be done before it.
+
+BUG: 417465
+---
+ plugins/extensions/pykrita/plugin/plugin.cpp | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
+
+diff --git a/plugins/extensions/pykrita/plugin/plugin.cpp b/plugins/extensions/pykrita/plugin/plugin.cpp
+index ef0e27eb65..66f552b007 100644
+--- a/plugins/extensions/pykrita/plugin/plugin.cpp
++++ b/plugins/extensions/pykrita/plugin/plugin.cpp
+@@ -13,6 +13,8 @@
+ #include <kis_preference_set_registry.h>
+ #include "pyqtpluginsettings.h"
+ 
++#include <QCoreApplication>
++
+ #include <Krita.h>
+ 
+ K_PLUGIN_FACTORY_WITH_JSON(KritaPyQtPluginFactory, "kritapykrita.json", registerPlugin<KritaPyQtPlugin>();)
+@@ -74,6 +76,12 @@ KritaPyQtPlugin::KritaPyQtPlugin(QObject *parent, const QVariantList &)
+     Q_FOREACH (Extension *extension, Krita::instance()->extensions()) {
+         extension->setup();
+     }
++
++    // This ensures that QObject's owned by Python are destructed before
++    // the destructor of QCoreApplication is called, in order to prevent
++    // a crash on exit.
++    // See https://bugs.kde.org/show_bug.cgi?id=417465
++    connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, []() { PyKrita::finalize(); });
+ }
+ 
+ KritaPyQtPlugin::~KritaPyQtPlugin()
+-- 
+GitLab

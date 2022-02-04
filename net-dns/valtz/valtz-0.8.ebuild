@@ -9,7 +9,7 @@ HOMEPAGE="http://michael.orlitzky.com/code/valtz.xhtml"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="dev-lang/perl"

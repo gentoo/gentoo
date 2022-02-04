@@ -1,0 +1,29 @@
+From ca1362a4250b7124d9ae03506eb80a767f06e282 Mon Sep 17 00:00:00 2001
+From: Arthur Zamarin <arthurzam@gentoo.org>
+Date: Fri, 20 Aug 2021 10:15:59 +0300
+Subject: [PATCH] Fix for Python3.10
+
+Signed-off-by: Arthur Zamarin <arthurzam@gentoo.org>
+---
+ src/future/moves/test/support.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/future/moves/test/support.py b/src/future/moves/test/support.py
+index e9aa0f4..4ae2ffd 100644
+--- a/src/future/moves/test/support.py
++++ b/src/future/moves/test/support.py
+@@ -3,6 +3,11 @@ from future.standard_library import suspend_hooks
+ from future.utils import PY3
+ 
+ if PY3:
++    try:
++        from test.support.os_helper import *
++        from test.support.warnings_helper import *
++    except ImportError:
++        pass
+     from test.support import *
+ else:
+     __future_module__ = True
+-- 
+2.33.0
+

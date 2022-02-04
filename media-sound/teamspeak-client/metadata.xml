@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>conikost@gentoo.org</email>
@@ -12,4 +12,7 @@
 		The client software connects to a TeamSpeak server of the user's choice,
 		from which the user may join chat channels.
 	</longdescription>
+	<use>
+		<flag name="system-libcxx">Use <pkg>sys-libs/libcxx</pkg> instead of shipped libs.</flag>
+	</use>
 </pkgmetadata>

@@ -1,0 +1,60 @@
+--- a/CommonSource/DataStructures/UnorderedMap.h
++++ b/CommonSource/DataStructures/UnorderedMap.h
+@@ -42,13 +42,9 @@
+ 
+ #else // all decent C++ compilers
+ 
+-#ifdef WIN32
+ #include <unordered_map>
+-#else // Linux
+-#include <tr1/unordered_map>
+-#endif
+ 
+-using namespace std::tr1;
++using namespace std;
+ 
+ #endif
+ 
+--- a/CommonSource/DataStructures/UnorderedSet.h
++++ b/CommonSource/DataStructures/UnorderedSet.h
+@@ -42,13 +42,9 @@
+ 
+ #else // all decent C++ compilers
+ 
+-#ifdef WIN32
+ #include <unordered_set>
+-#else // Linux
+-#include <tr1/unordered_set>
+-#endif
+ 
+-using namespace std::tr1;
++using namespace std;
+ 
+ #endif
+ 
+--- a/CommonSource/Utilities/RegexUtilities.h
++++ b/CommonSource/Utilities/RegexUtilities.h
+@@ -12,10 +12,7 @@
+ #define REGEXUTILITIES_H_
+ 
+ #include <iostream>
+-#ifdef WIN32
+ #include <regex>
+-using namespace std::tr1;
+-#endif
+ #include <string>
+ #include <vector>
+ #include <cstdlib>
+--- a/MosaikBuild/MosaikBuild.h
++++ b/MosaikBuild/MosaikBuild.h
+@@ -15,10 +15,7 @@
+ #include <iostream>
+ #include <fstream>
+ #include <map>
+-#ifdef WIN32
+ #include <regex>
+-using namespace std::tr1;
+-#endif
+ #include <set>
+ #include <sstream>
+ #include "ColorspaceUtilities.h"

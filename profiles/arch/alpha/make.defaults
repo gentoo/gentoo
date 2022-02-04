@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="alpha"
@@ -21,12 +21,7 @@ LIBDIR_alpha="lib"
 
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
-VIDEO_CARDS="fbdev glint mga nv r128 radeon"
-
-# Chris Gianelloni <wolf31o2@gentoo.org> (2007-02-05)
-# Defaults for audio drivers. These are copied from x86 (minus modems), since
-# Alpha supports the same busses.
-ALSA_CARDS="ali5451 als4000 bt87x ca0106 cmipci emu10k1 ens1370 ens1371 es1938 es1968 fm801 hda-intel intel8x0 maestro3 trident usb-audio via82xx ymfpci"
+VIDEO_CARDS="fbdev mga nv r128 radeon"
 
 # Tobias Klausmann <klausman@gentoo.org> (2018-06-25)
 # Enable USE=libtirpc by default, to ease dependency resolution during

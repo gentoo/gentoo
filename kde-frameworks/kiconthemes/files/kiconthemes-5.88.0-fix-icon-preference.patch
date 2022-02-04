@@ -1,0 +1,122 @@
+From 13181b03eac3c85f0649d5399d8c3037c388928c Mon Sep 17 00:00:00 2001
+From: Jan Blackquill <uhhadd@gmail.com>
+Date: Thu, 25 Nov 2021 14:51:06 -0500
+Subject: [PATCH] KIconLoader: prefer icons from current theme before falling
+ back to other themes
+
+BUG: 445804
+---
+ autotests/kiconloader_unittest.cpp | 25 ++++++++++++++++++++++
+ src/kiconloader.cpp                | 34 ++++++------------------------
+ 2 files changed, 32 insertions(+), 27 deletions(-)
+
+diff --git a/autotests/kiconloader_unittest.cpp b/autotests/kiconloader_unittest.cpp
+index 813215d..c232111 100644
+--- a/autotests/kiconloader_unittest.cpp
++++ b/autotests/kiconloader_unittest.cpp
+@@ -112,6 +112,12 @@ private Q_SLOTS:
+         QVERIFY(QFile::copy(QStringLiteral(":/test-22x22.png"), testIconsDir.filePath(QStringLiteral("breeze/22x22/mimetypes/unknown.png"))));
+         QVERIFY(QFile::copy(QStringLiteral(":/coloredsvgicon.svg"), testIconsDir.filePath(QStringLiteral("breeze/22x22/apps/coloredsvgicon.svg"))));
+ 
++        // prepare some icons for our actions test
++        // when querying breeze for 'one-two', we expect
++        // 'one' from breeze instead of oxygen's 'one-two'.
++        QVERIFY(QFile::copy(QStringLiteral(":/test-22x22.png"), testIconsDir.filePath(QStringLiteral("oxygen/22x22/actions/one-two.png"))));
++        QVERIFY(QFile::copy(QStringLiteral(":/test-22x22.png"), testIconsDir.filePath(QStringLiteral("breeze/22x22/actions/one.png"))));
++
+         QVERIFY(QFile::setPermissions(breezeThemeFile, QFileDevice::ReadOwner | QFileDevice::WriteOwner));
+         KConfig configFile(breezeThemeFile);
+         KConfigGroup iconThemeGroup = configFile.group("Icon Theme");
+@@ -332,6 +338,25 @@ private Q_SLOTS:
+         QVERIFY(QFile::exists(unknownPath));
+     }
+ 
++    void testCorrectFallback()
++    {
++        // we want to prefer icons from the same theme
++
++        // so if we have something like:
++        /*
++            oxygen:
++                one-two
++
++            breeze:
++                one
++        */
++        // and we ask for 'one-two', we expect to see 'one' from breeze instead
++        // of 'one-two' from oxygen.
++        QString path;
++        KIconLoader::global()->loadIcon(QStringLiteral("one-two"), KIconLoader::Desktop, 24, KIconLoader::DefaultState, QStringList(), &path);
++        QVERIFY(path.contains("breeze/22x22/actions"));
++    }
++
+     void testPathStore()
+     {
+         QString path;
+diff --git a/src/kiconloader.cpp b/src/kiconloader.cpp
+index 4d4181d..8a644d4 100644
+--- a/src/kiconloader.cpp
++++ b/src/kiconloader.cpp
+@@ -1021,12 +1021,7 @@ QString KIconLoaderPrivate::findMatchingIcon(const QString &name, int size, qrea
+ {
+     const_cast<KIconLoaderPrivate *>(this)->initIconThemes();
+ 
+-    // Do two passes through themeNodes.
+-    //
+-    // The first pass looks for an exact match in each themeNode one after the other.
+-    // If one is found and it is an app icon then return that icon.
+-    //
+-    // In the next pass (assuming the first pass failed), it looks for
++    // This looks for the exact match and its
+     // generic fallbacks in each themeNode one after the other.
+ 
+     // In theory we should only do this for mimetype icons, not for app icons,
+@@ -1036,22 +1031,17 @@ QString KIconLoaderPrivate::findMatchingIcon(const QString &name, int size, qrea
+     // Once everyone uses that to look up mimetype icons, we can kill the fallback code
+     // from this method.
+ 
+-    for (KIconThemeNode *themeNode : std::as_const(links)) {
+-        const QString path = themeNode->theme->iconPathByName(name, size, KIconLoader::MatchBest, scale);
+-        if (!path.isEmpty()) {
+-            return path;
+-        }
+-    }
+-
+-    if (name.endsWith(QLatin1String("-x-generic"))) {
+-        return QString(); // no further fallback
+-    }
+-    bool genericFallback = false;
++    bool genericFallback = name.endsWith(QLatin1String("-x-generic"));;
+     QString path;
+     for (KIconThemeNode *themeNode : std::as_const(links)) {
+         QString currentName = name;
+ 
+         while (!currentName.isEmpty()) {
++            path = themeNode->theme->iconPathByName(currentName, size, KIconLoader::MatchBest, scale);
++            if (!path.isEmpty()) {
++                return path;
++            }
++
+             if (genericFallback) {
+                 // we already tested the base name
+                 break;
+@@ -1088,16 +1078,6 @@ QString KIconLoaderPrivate::findMatchingIcon(const QString &name, int size, qrea
+                     break;
+                 }
+             }
+-
+-            if (currentName.isEmpty()) {
+-                break;
+-            }
+-
+-            // qCDebug(KICONTHEMES) << "Looking up" << currentName;
+-            path = themeNode->theme->iconPathByName(currentName, size, KIconLoader::MatchBest, scale);
+-            if (!path.isEmpty()) {
+-                return path;
+-            }
+         }
+     }
+ 
+-- 
+GitLab
+

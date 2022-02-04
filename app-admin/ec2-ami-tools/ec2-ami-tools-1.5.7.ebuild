@@ -1,22 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 USE_RUBY="ruby24 ruby25 ruby26"
-
-inherit ruby-single versionator
+inherit ruby-single
 
 DESCRIPTION="Command-line tools that serve as client interface to the Amazon EC2 web service"
 HOMEPAGE="https://aws.amazon.com/en/tools/"
 SRC_URI="http://s3.amazonaws.com/ec2-downloads/${P}.zip"
 
-LICENSE="Amazon
-	|| ( Ruby GPL-2 )"
+LICENSE="Amazon || ( Ruby GPL-2 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 RDEPEND="
 	${RUBY_DEPS}
 	virtual/ruby-ssl
@@ -27,7 +25,7 @@ src_prepare() {
 	# Remove a left behind license file.
 	rm -f lib/ec2/oem/LICENSE.txt || die 'Removal of LICENSE failed.'
 
-	eapply_user
+	default
 }
 
 src_install() {

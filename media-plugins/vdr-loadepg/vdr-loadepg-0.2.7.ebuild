@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,9 @@ EAPI=7
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR : Loadepg Plugin; Canal+ group (Mediahighway)"
-HOMEPAGE="http://lukkinosat.altervista.org/"
-SRC_URI="http://lukkinosat.altervista.org/${P}.tgz"
+HOMEPAGE="https://lukkinosat.altervista.org/"
+SRC_URI="https://lukkinosat.altervista.org/${P}.tgz"
+S="${WORKDIR}/${P}"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
@@ -15,8 +16,6 @@ LICENSE="GPL-2"
 
 DEPEND="media-video/vdr"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${P}"
 
 src_prepare() {
 	# remove untranslated po files

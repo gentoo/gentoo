@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file specifies packages that are considered deprecated (but not
@@ -17,23 +17,18 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-20)
-# dev-qt/qtwebkit is in the process of being removed, tracker bug #684580
-dev-qt/qtwebkit
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-06-30)
+# Deprecated upstream, see HOMEPAGE
+dev-perl/Mail-Sender
 
-# Thomas Deutschmann <whissi@gentoo.org> (2020-09-08)
-# Dead implementations, please migrate to >=zeromq-4
-dev-perl/ZMQ-LibZMQ2
-dev-perl/ZMQ-LibZMQ3
-<net-libs/zeromq-4
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-06-11)
+# gtk2. Nuff said. See HOMEPAGE, too.
+dev-perl/Gtk2-SourceView2
+dev-perl/Gtk2-Unique
 
 # Mart Raudsepp <leio@gentoo.org> (2020-07-04)
 # Port to gtk+:3 using wxGTK:3.0-gtk3 SLOT
 x11-libs/wxGTK:3.0
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-05-17)
-# Abandoned upstream, countless bugs. Removal tracked in bug #659616
-sys-power/pm-utils
 
 # Kent Fredric <kentnl@gentoo.org> (2020-04-15)
 # Functionality now provided by Net::SMTP 3.25+
@@ -50,18 +45,6 @@ gnome-base/gnome-vfs
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-08)
 # x11-libs/gtkglext is in the process of being removed, tracker bug #698950
 x11-libs/gtkglext
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-02-22)
-# virtual/libffi has only one dev-libs/libffi provider. Use that instead.
-# bug #699796.
-virtual/libffi
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-09)
-# Test coverage reporting is not useful for Gentoo ebuilds.  The deps
-# against coverage plugins are either entirely spurious, or the build
-# systems need to be fixed to work without them.
-dev-python/nose-cover3
-dev-python/nosexcover
 
 # Zac Medico <zmedico@gentoo.org> (2019-12-06)
 # These golang libraries should be vendored either by upstream or via

@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>php-bugs@gentoo.org</email>
@@ -9,4 +9,5 @@
     <remote-id type="github">pear/pear_exception</remote-id>
     <remote-id type="pear">PEAR_Exception</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>

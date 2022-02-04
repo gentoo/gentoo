@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A desktop sticky note program for the unix geek"
@@ -10,7 +11,7 @@ SRC_URI="mirror://sourceforge/xnots/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 -riscv x86"
 IUSE="vim-syntax"
 
 RDEPEND="
@@ -23,9 +24,10 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
 	x11-base/xorg-proto
 "
+BDEPEND="virtual/pkgconfig"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.1-gcc6.patch
 )

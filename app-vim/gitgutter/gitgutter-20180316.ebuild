@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,7 +24,6 @@ RDEPEND="dev-vcs/git"
 src_prepare() {
 	default
 
-	# remove unwanted files
-	rm LICENCE README* screenshot.png unplace.vim || die
+	# remove unwanted test dir
 	rm -r test || die
 }

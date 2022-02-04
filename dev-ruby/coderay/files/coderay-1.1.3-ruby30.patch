@@ -1,0 +1,51 @@
+From c1c15034749684fcad91ad2bcb2fcd2056faf18d Mon Sep 17 00:00:00 2001
+From: Mamoru TASAKA <mtasaka@fedoraproject.org>
+Date: Sun, 21 Feb 2021 23:04:03 +0900
+Subject: [PATCH] Fix test suite for ruby 3.0 change for methods on subclass of
+ Array
+
+With ruby 3.0, especially with https://github.com/ruby/ruby/pull/3690 ,
+for subclass of Array, `flatten` method now returns the instance of Array,
+not of the subclass.
+
+To keep the object instance of the subclass, use `flatten!` instead.
+---
+ test/unit/debug.rb     | 3 ++-
+ test/unit/statistic.rb | 5 +++--
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/test/unit/debug.rb b/test/unit/debug.rb
+index 88baf563..b694f21e 100644
+--- a/test/unit/debug.rb
++++ b/test/unit/debug.rb
+@@ -24,7 +24,8 @@ def test_creation
+     ["   \n", :space],
+     ["[]", :method],
+     [:end_line, :head],
+-  ].flatten
++  ]
++  TEST_INPUT.flatten!
+   TEST_OUTPUT = <<-'DEBUG'.chomp
+ integer(10)operator((\\\))string<content(test)>head[
+ 
+diff --git a/test/unit/statistic.rb b/test/unit/statistic.rb
+index 1326dca6..776774d4 100644
+--- a/test/unit/statistic.rb
++++ b/test/unit/statistic.rb
+@@ -24,7 +24,8 @@ def test_creation
+     ["   \n", :space],
+     ["[]", :method],
+     [:end_line, :test],
+-  ].flatten
++  ]
++  TEST_INPUT.flatten!
+   TEST_OUTPUT = <<-'DEBUG'
+ 
+ Code Statistics
+@@ -56,4 +57,4 @@ def test_filtering_text_tokens
+     assert_equal TEST_OUTPUT, TEST_INPUT.statistic
+   end
+   
+-end
+\ No newline at end of file
++end

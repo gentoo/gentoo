@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: linux-info.eclass
@@ -33,8 +33,10 @@
 # @DESCRIPTION:
 # A string containing the directory of the target kernel sources. The default value is
 # "/usr/src/linux"
+KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 
 # @ECLASS-VARIABLE: CONFIG_CHECK
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string containing a list of .config options to check for before
 # proceeding with the install.
@@ -57,13 +59,20 @@
 # sources.
 
 # @ECLASS-VARIABLE: ERROR_<CFG>
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string containing the error message to display when the check against CONFIG_CHECK
 # fails. <CFG> should reference the appropriate option used in CONFIG_CHECK.
 #
-#   e.g.: ERROR_MTRR="MTRR exists in the .config but shouldn't!!"
+# e.g.: ERROR_MTRR="MTRR exists in the .config but shouldn't!!"
+#
+# CONFIG_CHECK="CFG" with ERROR_<CFG>="Error Message" will die
+# CONFIG_CHECK="~CFG" with ERROR_<CFG>="Error Message" calls eerror without dieing
+# CONFIG_CHECK="~CFG" with WARNING_<CFG>="Warning Message" calls ewarn without dieing
+
 
 # @ECLASS-VARIABLE: KBUILD_OUTPUT
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string passed on commandline, or set from the kernel makefile. It contains the directory
 # which is to be used as the kernel object directory.
@@ -71,36 +80,53 @@
 # There are also a couple of variables which are set by this, and shouldn't be
 # set by hand. These are as follows:
 
+# @ECLASS-VARIABLE: KERNEL_MAKEFILE
+# @INTERNAL
+# @DESCRIPTION:
+# According to upstream documentation, by default, when make looks for the makefile, it tries
+# the following names, in order: GNUmakefile, makefile and Makefile. Set this variable to the
+# proper Makefile name or the eclass will search in this order for it.
+# See https://www.gnu.org/software/make/manual/make.html
+: ${KERNEL_MAKEFILE:=""}
+
 # @ECLASS-VARIABLE: KV_FULL
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the full kernel version. ie: 2.6.9-gentoo-johnm-r1
 
 # @ECLASS-VARIABLE: KV_MAJOR
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's an integer containing the kernel major version. ie: 2
 
 # @ECLASS-VARIABLE: KV_MINOR
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's an integer containing the kernel minor version. ie: 6
 
 # @ECLASS-VARIABLE: KV_PATCH
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's an integer containing the kernel patch version. ie: 9
 
 # @ECLASS-VARIABLE: KV_EXTRA
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the kernel EXTRAVERSION. ie: -gentoo
 
 # @ECLASS-VARIABLE: KV_LOCAL
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the kernel LOCALVERSION concatenation. ie: -johnm
 
 # @ECLASS-VARIABLE: KV_DIR
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the kernel source directory, will be null if
 # KERNEL_DIR is invalid.
 
 # @ECLASS-VARIABLE: KV_OUT_DIR
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the kernel object directory, will be KV_DIR unless
 # KBUILD_OUTPUT is used. This should be used for referencing .config.
@@ -110,13 +136,6 @@ inherit toolchain-funcs
 [[ ${EAPI:-0} == [0123456] ]] && inherit eapi7-ver
 
 EXPORT_FUNCTIONS pkg_setup
-
-IUSE="kernel_linux"
-
-# Overwritable environment Var's
-# ---------------------------------------
-KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
-
 
 # Bug fixes
 # fix to bug #75034
@@ -183,9 +202,11 @@ getfilevar() {
 		unset ARCH
 
 		# We use nonfatal because we want the caller to take care of things #373151
+		# Pass need-config= to make to avoid config check in kernel Makefile.
+		# Pass dot-config=0 to avoid the config check in kernels prior to 5.4.
 		[[ ${EAPI:-0} == [0123] ]] && nonfatal() { "$@"; }
 		echo -e "e:\\n\\t@echo \$(${1})\\ninclude ${basefname}" | \
-			nonfatal emake -C "${basedname}" M="${T}" ${BUILD_FIXES} -s -f - 2>/dev/null
+			nonfatal emake -C "${basedname}" --no-print-directory M="${T}" dot-config=0 need-config= ${BUILD_FIXES} -s -f - 2>/dev/null
 
 		ARCH=${myARCH}
 	fi
@@ -383,7 +404,7 @@ kernel_is() {
 	linux-info_get_any_version
 
 	# Now we can continue
-	local operator test value
+	local operator
 
 	case ${1#-} in
 	  lt) operator="-lt"; shift;;
@@ -395,9 +416,10 @@ kernel_is() {
 	esac
 	[[ $# -gt 3 ]] && die "Error in kernel-2_kernel_is(): too many parameters"
 
-	: $(( test = (KV_MAJOR << 16) + (KV_MINOR << 8) + KV_PATCH ))
-	: $(( value = (${1:-${KV_MAJOR}} << 16) + (${2:-${KV_MINOR}} << 8) + ${3:-${KV_PATCH}} ))
-	[ ${test} ${operator} ${value} ]
+	ver_test \
+		"${KV_MAJOR:-0}.${KV_MINOR:-0}.${KV_PATCH:-0}" \
+		"${operator}" \
+		"${1:-${KV_MAJOR:-0}}.${2:-${KV_MINOR:-0}}.${3:-${KV_PATCH:-0}}"
 }
 
 get_localversion() {
@@ -445,7 +467,7 @@ get_version_warning_done=
 #
 # The kernel version variables (KV_MAJOR, KV_MINOR, KV_PATCH, KV_EXTRA and KV_LOCAL) are also set.
 #
-# The KV_DIR is set using the KERNEL_DIR env var, the KV_DIR_OUT is set using a valid
+# The KV_DIR is set using the KERNEL_DIR env var, the KV_OUT_DIR is set using a valid
 # KBUILD_OUTPUT (in a decreasing priority list, we look for the env var, makefile var or the
 # symlink /lib/modules/${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}${KV_EXTRA}/build).
 get_version() {
@@ -497,7 +519,9 @@ get_version() {
 		qeinfo "    ${KV_DIR}"
 	fi
 
-	if [ ! -s "${KV_DIR}/Makefile" ]
+	kernel_get_makefile
+
+	if [[ ! -s ${KERNEL_MAKEFILE} ]]
 	then
 		if [ -z "${get_version_warning_done}" ]; then
 			get_version_warning_done=1
@@ -513,9 +537,6 @@ get_version() {
 	# do we pass KBUILD_OUTPUT on the CLI?
 	local OUTPUT_DIR=${KBUILD_OUTPUT}
 
-	# keep track of it
-	KERNEL_MAKEFILE="${KV_DIR}/Makefile"
-
 	if [[ -z ${OUTPUT_DIR} ]]; then
 		# Decide the function used to extract makefile variables.
 		local mkfunc=$(get_makefile_extract_function "${KERNEL_MAKEFILE}")
@@ -526,14 +547,11 @@ get_version() {
 
 	# And contrary to existing functions I feel we shouldn't trust the
 	# directory name to find version information as this seems insane.
-	# So we parse ${KERNEL_MAKEFILE}.  We should be able to trust that
-	# the Makefile is simple enough to use the noexec extract function.
-	# This has been true for every release thus far, and it's faster
-	# than using make to evaluate the Makefile every time.
-	KV_MAJOR=$(getfilevar_noexec VERSION "${KERNEL_MAKEFILE}")
-	KV_MINOR=$(getfilevar_noexec PATCHLEVEL "${KERNEL_MAKEFILE}")
-	KV_PATCH=$(getfilevar_noexec SUBLEVEL "${KERNEL_MAKEFILE}")
-	KV_EXTRA=$(getfilevar_noexec EXTRAVERSION "${KERNEL_MAKEFILE}")
+	# So we parse ${KERNEL_MAKEFILE}.  
+	KV_MAJOR=$(getfilevar VERSION "${KERNEL_MAKEFILE}")
+	KV_MINOR=$(getfilevar PATCHLEVEL "${KERNEL_MAKEFILE}")
+	KV_PATCH=$(getfilevar SUBLEVEL "${KERNEL_MAKEFILE}")
+	KV_EXTRA=$(getfilevar EXTRAVERSION "${KERNEL_MAKEFILE}")
 
 	if [ -z "${KV_MAJOR}" -o -z "${KV_MINOR}" -o -z "${KV_PATCH}" ]
 	then
@@ -610,34 +628,27 @@ get_running_version() {
 		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
 	fi
 
-	KV_FULL=$(uname -r)
+	local kv=$(uname -r)
 
-	if [[ -f ${ROOT%/}/lib/modules/${KV_FULL}/source/Makefile && -f ${ROOT%/}/lib/modules/${KV_FULL}/build/Makefile ]]; then
-		KERNEL_DIR=$(readlink -f ${ROOT%/}/lib/modules/${KV_FULL}/source)
-		KBUILD_OUTPUT=$(readlink -f ${ROOT%/}/lib/modules/${KV_FULL}/build)
-		unset KV_FULL
-		get_version
-		return $?
-	elif [[ -f ${ROOT%/}/lib/modules/${KV_FULL}/source/Makefile ]]; then
-		KERNEL_DIR=$(readlink -f ${ROOT%/}/lib/modules/${KV_FULL}/source)
-		unset KV_FULL
-		get_version
-		return $?
-	elif [[ -f ${ROOT%/}/lib/modules/${KV_FULL}/build/Makefile ]]; then
-		KERNEL_DIR=$(readlink -f ${ROOT%/}/lib/modules/${KV_FULL}/build)
-		unset KV_FULL
-		get_version
-		return $?
-	else
-		# This handles a variety of weird kernel versions.  Make sure to update
-		# tests/linux-info_get_running_version.sh if you want to change this.
-		local kv_full=${KV_FULL//[-+_]*}
-		KV_MAJOR=$(ver_cut 1 ${kv_full})
-		KV_MINOR=$(ver_cut 2 ${kv_full})
-		KV_PATCH=$(ver_cut 3 ${kv_full})
-		KV_EXTRA="${KV_FULL#${KV_MAJOR}.${KV_MINOR}${KV_PATCH:+.${KV_PATCH}}}"
-		: ${KV_PATCH:=0}
+	if [[ -f ${ROOT%/}/lib/modules/${kv}/source/Makefile ]]; then
+		KERNEL_DIR=$(readlink -f "${ROOT%/}/lib/modules/${kv}/source")
+		if [[ -f ${ROOT%/}/lib/modules/${kv}/build/Makefile ]]; then
+			KBUILD_OUTPUT=$(readlink -f "${ROOT%/}/lib/modules/${kv}/build")
+		fi
+		get_version && return 0
 	fi
+
+	KV_FULL=${kv}
+
+	# This handles a variety of weird kernel versions.  Make sure to update
+	# tests/linux-info_get_running_version.sh if you want to change this.
+	local kv_full=${KV_FULL//[-+_]*}
+	KV_MAJOR=$(ver_cut 1 ${kv_full})
+	KV_MINOR=$(ver_cut 2 ${kv_full})
+	KV_PATCH=$(ver_cut 3 ${kv_full})
+	KV_EXTRA="${KV_FULL#${KV_MAJOR}.${KV_MINOR}${KV_PATCH:+.${KV_PATCH}}}"
+	: ${KV_PATCH:=0}
+
 	return 0
 }
 
@@ -944,20 +955,19 @@ linux-info_pkg_setup() {
 
 	linux-info_get_any_version
 
-	if kernel_is 2 4; then
-		if [ "$( gcc-major-version )" -eq "4" ] ; then
-			echo
-			ewarn "Be warned !! >=sys-devel/gcc-4.0.0 isn't supported with"
-			ewarn "linux-2.4 (or modules building against a linux-2.4 kernel)!"
-			echo
-			ewarn "Either switch to another gcc-version (via gcc-config) or use a"
-			ewarn "newer kernel that supports gcc-4."
-			echo
-			ewarn "Also be aware that bugreports about gcc-4 not working"
-			ewarn "with linux-2.4 based ebuilds will be closed as INVALID!"
-			echo
-		fi
-	fi
-
 	[ -n "${CONFIG_CHECK}" ] && check_extra_config;
+}
+
+# @FUNCTION: kernel_get_makefile
+# @DESCRIPTION:
+# Support the possibility that the Makefile could be one of the following and should
+# be checked in the order described here:
+# https://www.gnu.org/software/make/manual/make.html
+# Order of checking and valid Makefiles names:  GNUMakefile, makefile, Makefile
+kernel_get_makefile() {
+
+	[[ -s ${KV_DIR}/GNUMakefile ]] && KERNEL_MAKEFILE="${KV_DIR}/GNUMakefile" && return
+	[[ -s ${KV_DIR}/makefile ]] && KERNEL_MAKEFILE="${KV_DIR}/makefile" && return
+	[[ -s ${KV_DIR}/Makefile ]] && KERNEL_MAKEFILE="${KV_DIR}/Makefile" && return
+
 }

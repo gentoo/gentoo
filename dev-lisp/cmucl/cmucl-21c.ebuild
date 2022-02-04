@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils toolchain-funcs multilib
+inherit toolchain-funcs multilib
 
 MY_PV=${PV:0:3}
 
@@ -14,7 +14,7 @@ SRC_URI="http://common-lisp.net/project/cmucl/downloads/release/${MY_PV}/cmucl-s
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="-* x86"
 IUSE="X doc source"
 
 CDEPEND=">=dev-lisp/asdf-2.33-r3:=

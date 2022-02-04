@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 if ! source /lib/gentoo/functions.sh ; then
@@ -61,6 +61,9 @@ die() {
 }
 
 has_version() {
+	while [[ $1 == -* ]]; do
+		shift
+	done
 	portageq has_version / "$@"
 }
 

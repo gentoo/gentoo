@@ -1,5 +1,5 @@
---- backgammon/common_source/fancy.c.old	2007-05-16 20:16:46.000000000 +0200
-+++ backgammon/common_source/fancy.c	2007-05-16 20:19:00.000000000 +0200
+--- a/backgammon/common_source/fancy.c
++++ b/backgammon/common_source/fancy.c
 @@ -58,7 +58,7 @@
  int     lUP;			/* length of UP */
  int     CO;			/* number of columns */

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit perl-module
 
 DESCRIPTION="Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats"
-HOMEPAGE="http://kitenet.net/programs/alien"
+HOMEPAGE="https://sourceforge.net/projects/alien-pkg-convert"
 SRC_URI="mirror://debian/pool/main/a/${PN}/${PN}_${PV}.tar.xz -> ${P}.tar.xz"
 
 LICENSE="LGPL-2.1"

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ DESCRIPTION="C implementation of the ISAAC PRNG algorithm"
 
 LICENSE="public-domain || ( Artistic GPL-1+ )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="minimal test"
 RESTRICT="!test? ( test )"
 
@@ -43,11 +43,13 @@ PERL_RM_FILES=(
 	t/release-pod-syntax.t
 	t/release-portability.t
 )
+
 src_configure() {
 	unset LD
 	[[ -n "${CCLD}" ]] && export LD="${CCLD}"
 	perl-module_src_configure
 }
+
 src_compile() {
 	./Build --config "optimize=${CFLAGS}" build || die
 }

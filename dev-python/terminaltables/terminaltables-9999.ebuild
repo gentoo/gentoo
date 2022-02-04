@@ -1,15 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{6..9} )
-EGIT_REPO_URI="https://github.com/Robpol86/${PN}.git"
+DISTUTILS_USE_PEP517=poetry
+PYTHON_COMPAT=( python3_{8..10} )
+
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Generate simple tables in terminals from a nested list of strings"
-HOMEPAGE="https://robpol86.github.io/terminaltables"
-SRC_URI=""
+HOMEPAGE="https://robpol86.github.io/terminaltables/"
+EGIT_REPO_URI="https://github.com/matthewdeanmartin/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -19,8 +20,15 @@ BDEPEND="
 	test? (
 		dev-python/colorama[${PYTHON_USEDEP}]
 		dev-python/colorclass[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/termcolor[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	sed -e '/requires/s:poetry:&-core:' \
+		-e '/backend/s:poetry:&.core:' \
+		-i pyproject.toml || die
+
+	distutils-r1_src_prepare
+}

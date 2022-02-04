@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PLOCALES="cs da de en_GB es fi fr hu it ja ko nl pl pt_BR ru zh_CN"
-inherit cmake l10n qmake-utils xdg
+inherit cmake plocale qmake-utils xdg
 
 DESCRIPTION="Featureful and configurable Qt client for the music player daemon (MPD)"
 HOMEPAGE="https://github.com/CDrummond/cantata"
@@ -23,10 +23,9 @@ REQUIRED_USE="
 	musicbrainz? ( || ( cdio cdda ) taglib )
 	replaygain? ( taglib )
 "
+# cantata has no tests
+RESTRICT="test"
 
-BDEPEND="
-	dev-qt/linguist-tools:5
-"
 COMMON_DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -62,11 +61,15 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	dev-qt/qtconcurrent:5
 "
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
 
-# cantata has no tests
-RESTRICT="test"
-
-PATCHES=( "${FILESDIR}/${PN}-2.2.0-headers.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-2.2.0-headers.patch"
+	"${FILESDIR}/${P}-solid-musl.patch" # bug 792555
+	"${FILESDIR}/${P}-main-musl.patch" # bug 807763
+)
 
 src_prepare() {
 	remove_locale() {
@@ -78,8 +81,8 @@ src_prepare() {
 	# Unbundle 3rd party libs
 	rm -r 3rdparty/{ebur128,qtsingleapplication} || die
 
-	l10n_find_plocales_changes "translations" "${PN}_" ".ts"
-	l10n_for_each_disabled_locale_do remove_locale
+	plocale_find_changes "translations" "${PN}_" ".ts"
+	plocale_for_each_disabled_locale remove_locale
 }
 
 src_configure() {

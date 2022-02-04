@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/784071
+https://git.suckless.org/st/commit/2f6e597ed871cff91c627850d03152cae5f45779.html
+--- a/x.c
++++ b/x.c
+@@ -1585,8 +1585,9 @@ xsettitle(char *p)
+ 	XTextProperty prop;
+ 	DEFAULT(p, opt_title);
+ 
+-	Xutf8TextListToTextProperty(xw.dpy, &p, 1, XUTF8StringStyle,
+-			&prop);
++	if (Xutf8TextListToTextProperty(xw.dpy, &p, 1, XUTF8StringStyle,
++			&prop) != Success)
++		return;
+ 	XSetWMName(xw.dpy, xw.win, &prop);
+ 	XSetTextProperty(xw.dpy, xw.win, &prop, xw.netwmname);
+ 	XFree(prop.value);

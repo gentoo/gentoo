@@ -1,0 +1,21 @@
+From 9bfb05700386254afabb38f762e0ea860b567209 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Tue, 26 Jan 2021 20:42:14 +0100
+Subject: [PATCH] Don't use accidental pytest API, fix tests for pytest 6.2+
+
+https://github.com/ftobia/pytest-ordering/pull/76
+
+--- a/tests/test_ordering.py
++++ b/tests/test_ordering.py
+@@ -12,9 +12,9 @@ def item_names_for(testdir):
+     def _item_names_for(tests_content):
+         # some strange code to extract sorted items
+         items = testdir.getitems(tests_content)
+-        hook = testdir.config.hook
++        hook = items[0].config.hook
+         hook.pytest_collection_modifyitems(session=items[0].session,
+-                                           config=testdir.config, items=items)
++                                           config=items[0].config, items=items)
+         return [item.name for item in items]
+
+     return _item_names_for

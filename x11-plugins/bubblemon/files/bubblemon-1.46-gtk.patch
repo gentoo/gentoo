@@ -40,8 +40,8 @@
  # no user serviceable parts below
  EXTRA += $(WMAN)
 +# gtk cflags and gtk lib flags
-+GTK2_CFLAGS = $(shell pkg-config gtk+-2.0 --cflags)
-+GTK2_LIBS = $(shell pkg-config gtk+-2.0 --libs)
++GTK2_CFLAGS = $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++GTK2_LIBS = $(shell ${PKG_CONFIG} gtk+-2.0 --libs)
 +
 +
  # optimization cflags

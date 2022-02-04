@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit python-single-r1 vim-plugin vcs-snapshot
 
@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/vimoutliner/vimoutliner"
 SRC_URI="https://github.com/vimoutliner/vimoutliner/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ia64 ppc sparc x86"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -24,11 +24,12 @@ VIM_PLUGIN_MESSAGES="filetype"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	$(python_gen_cond_dep 'dev-python/autopep8[${PYTHON_MULTI_USEDEP}]')
+	$(python_gen_cond_dep 'dev-python/autopep8[${PYTHON_USEDEP}]')
 "
 
-DEPEND="
-	${RDEPEND}"
+DEPEND="${RDEPEND}"
+
+DOCS=( README CHANGELOG TODO.otl )
 
 src_prepare() {
 	default
@@ -46,5 +47,4 @@ src_compile() {
 		2to3 -w -n --no-diffs "${pyscript}" >& /dev/null || die
 		python_fix_shebang -f -q "${pyscript}"
 	done
-	rm -v README.detailed || die
 }

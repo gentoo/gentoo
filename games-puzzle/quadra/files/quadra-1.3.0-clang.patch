@@ -1,0 +1,10 @@
+https://bugs.gentoo.org/730862
+--- a/source/update.cc
++++ b/source/update.cc
+@@ -87,4 +87,4 @@
+   buf.resize(0);
+-  buf.append("GET "UPDATE_PATH" HTTP/1.0\r\n");
+-  buf.append("Host: "UPDATE_HOST"\r\n");
++  buf.append("GET " UPDATE_PATH " HTTP/1.0\r\n");
++  buf.append("Host: " UPDATE_HOST "\r\n");
+   buf.append("Connection: close\r\n");

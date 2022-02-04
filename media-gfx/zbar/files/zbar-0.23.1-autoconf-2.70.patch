@@ -1,0 +1,38 @@
+https://github.com/mchehab/zbar/commit/89e7900d85dd54ef351a7ed582aec6a5a5d7fa37
+https://bugs.gentoo.org/775656
+
+From 89e7900d85dd54ef351a7ed582aec6a5a5d7fa37 Mon Sep 17 00:00:00 2001
+From: Boyuan Yang <byang@debian.org>
+Date: Thu, 31 Dec 2020 12:56:26 -0500
+Subject: [PATCH] configure.ac: Fix quote issue (autoconf 2.70 compat)
+
+One of the AS_IF() macro was not properly quoted. This commit
+fixes that issue.
+
+This patch closes: #132 (fixes this bug report).
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index df0220a8..db4bc902 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -656,7 +656,7 @@ AS_IF([test "x$with_qt" != "xno"],
+ 					    [with_qt="no"])])])
+ 
+ AS_IF([test "x$with_qt" != "xno"],
+-   AS_IF([test "x$with_qt5" != "xno"],
++   [AS_IF([test "x$with_qt5" != "xno"],
+     [AC_CHECK_PROGS(MOC, [moc-qt5 moc])
+      AC_MSG_NOTICE([using moc from $MOC])
+      QT_VERSION=`$PKG_CONFIG Qt5Gui --modversion`
+@@ -672,7 +672,7 @@ dnl -fPIC has no effect on Windows and breaks windres
+      QT_VERSION=`$PKG_CONFIG QtGui --modversion`
+      AC_MSG_NOTICE([using Qt version $QT_VERSION])
+      qt_pkgconfig_file="zbar-qt.pc"
+-     ]))
++     ])])
+ 
+ AM_CONDITIONAL([HAVE_QT], [test "x$with_qt" = "xyes"])
+ 

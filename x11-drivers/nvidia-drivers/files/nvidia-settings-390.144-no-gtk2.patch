@@ -1,0 +1,11 @@
+--- a/nvidia-settings/src/Makefile
++++ b/nvidia-settings/src/Makefile
+@@ -132,3 +132,2 @@
+ GTK2LIB_DIR  = $(OUTPUTDIR)/gtk2
+-GTK2LIB = $(OUTPUTDIR)/$(GTK2LIB_NAME)
+ GTK2LIB_SONAME = $(GTK2LIB_NAME).$(NVIDIA_SETTINGS_VERSION)
+@@ -276,4 +275,2 @@
+ 	$(MKDIR) $(LIBDIR)
+-	$(INSTALL) $(INSTALL_LIB_ARGS) $(GTK2LIB) \
+-	    $(LIBDIR)/$(GTK2LIB_SONAME)
+ ifdef BUILD_GTK3LIB

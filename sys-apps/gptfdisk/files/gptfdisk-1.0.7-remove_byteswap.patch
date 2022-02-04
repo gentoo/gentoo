@@ -1,0 +1,50 @@
+From fded770b55fdb3a201ad515d785c17ac35705652 Mon Sep 17 00:00:00 2001
+From: Erik Larsson <catacombae@gmail.com>
+Date: Tue, 8 Jun 2021 16:11:21 +0300
+Subject: [PATCH] gptpart.cc: Remove byteswap commands in
+ GPTPart::SetName(const string&).
+
+The byteswapping done in GPTPart::SetName(const string&) was reversed
+later when GPTPart::ReversePartBytes() was called.
+
+The intended design seems to have been to keep the fields in native
+endianness until just before the partition is written to disk when all
+the GPTPart data is byteswapped all at once with a call to
+GPTPart::ReversePartBytes().
+However this was defeated by leaving the original byteswaps in there and
+effectively the name was swapped back to the native-endian form. For big
+endian systems this meant that a UTF-16BE string was written to disk,
+violating the specification and causing interoperability problems.
+
+Fixed by removing these inline byteswaps in GPTPart::SetName(const
+string&).
+---
+ gptpart.cc | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/gptpart.cc b/gptpart.cc
+index 81bbcf0..841140a 100644
+--- a/gptpart.cc
++++ b/gptpart.cc
+@@ -242,7 +242,6 @@ void GPTPart::SetName(const string & theName) {
+       // then to utf16le
+       if ( uni < 0x10000 ) {
+          name[ pos ] = (uint16_t) uni ;
+-         if ( ! IsLittleEndian() ) ReverseBytes( name + pos , 2 ) ;
+          pos ++ ;
+       } // if
+       else {
+@@ -252,10 +251,8 @@ void GPTPart::SetName(const string & theName) {
+          } // if
+          uni -= 0x10000 ;
+          name[ pos ] = (uint16_t)( uni >> 10 ) | 0xd800 ;
+-         if ( ! IsLittleEndian() ) ReverseBytes( name + pos , 2 ) ;
+          pos ++ ;
+          name[ pos ] = (uint16_t)( uni & 0x3ff ) | 0xdc00 ;
+-         if ( ! IsLittleEndian() ) ReverseBytes( name + pos , 2 ) ;
+          pos ++ ;
+       }
+    } // for
+-- 
+2.32.0
+

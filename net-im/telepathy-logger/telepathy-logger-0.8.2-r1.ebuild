@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-GCONF_DEBUG="no"
-PYTHON_COMPAT=( python3_{6..9} )
+EAPI=7
 
-inherit epatch gnome2 python-any-r1 virtualx
+PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_REQ_USE="xml"
+inherit gnome2 python-any-r1 virtualx
 
 DESCRIPTION="Daemon that centralizes the communication logging within the Telepathy framework"
 HOMEPAGE="https://telepathy.freedesktop.org/wiki/Logger"
@@ -15,7 +15,7 @@ SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.bz2
 
 LICENSE="LGPL-2.1+"
 SLOT="0/3"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86 ~x86-linux"
 IUSE="+introspection"
 
 RDEPEND="
@@ -28,7 +28,8 @@ RDEPEND="
 	dev-db/sqlite:3
 	introspection? ( >=dev-libs/gobject-introspection-0.9.6 )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	${PYTHON_DEPS}
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.10
@@ -36,10 +37,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-src_prepare() {
-	epatch "${DISTDIR}"/${P}-py3.patch
-	gnome2_src_prepare
-}
+PATCHES=( "${DISTDIR}"/${P}-py3.patch )
 
 src_configure() {
 	# --enable-debug needed due to https://bugs.freedesktop.org/show_bug.cgi?id=83390

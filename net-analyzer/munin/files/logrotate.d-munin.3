@@ -3,7 +3,7 @@
 	missingok
 	rotate 7
 	compress
-	copytruncate
+	delaycompress
 	notifempty
 	create 640 root root
 	postrotate
@@ -17,6 +17,7 @@
 	missingok
 	rotate 7
 	compress
+	delaycompress
 	notifempty
 	nocreate
 }
@@ -26,6 +27,7 @@
 	missingok
 	rotate 7
 	compress
+	delaycompress
 	notifempty
 	create 640 @CGIUSER@
 }

@@ -1,5 +1,5 @@
---- src/main.c.orig	2016-11-13 15:11:58.511021203 +0000
-+++ src/main.c	2016-11-13 15:12:21.096021358 +0000
+--- a/src/main.c
++++ b/src/main.c
 @@ -1142,8 +1142,9 @@ static ReturnCode HandleEpochCommand(int
  		ShutdownMemBus(false); //We're done with membus now.
  		

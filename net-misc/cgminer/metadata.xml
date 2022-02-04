@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>blueness@gentoo.org</email>
-		<name>Anthony G. Basile</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="ants1">Enable support for Antminer S1 Bitmain</flag>
 		<flag name="ants2">Enable support for Antminer S2 Bitmain</flag>
@@ -36,4 +33,3 @@
 		<remote-id type="github">ckolivas/cgminer</remote-id>
 	</upstream>
 </pkgmetadata>
-

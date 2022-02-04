@@ -26,8 +26,8 @@
 -else
 -	CFLAGS += $(CFLAGS1)
 -endif
-+CFLAGS += -D$(GTK_VER) `pkg-config --cflags gtk+-2.0`
-+LDLIBS = `pkg-config --libs gtk+-2.0`
++CFLAGS += -D$(GTK_VER) `${PKG_CONFIG} --cflags gtk+-2.0`
++LDLIBS = `${PKG_CONFIG} --libs gtk+-2.0`
  DEBUG =
  #DEBUG = -D DEBUG
  GDAVL = gdavl

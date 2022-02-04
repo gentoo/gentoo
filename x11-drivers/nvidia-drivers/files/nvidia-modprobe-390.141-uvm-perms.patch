@@ -1,0 +1,12 @@
+Create /dev/nvidia-uvm* by respecting nvidia.conf's permissions.
+--- a/nvidia-modprobe/modprobe-utils/nvidia-modprobe-utils.c
++++ b/nvidia-modprobe/modprobe-utils/nvidia-modprobe-utils.c
+@@ -742,6 +742,6 @@
+     }
+ 
+-    return mknod_helper(major, base_minor, NV_UVM_DEVICE_NAME, NULL) &&
+-           mknod_helper(major, base_minor + 1, NV_UVM_TOOLS_DEVICE_NAME, NULL);
++    return mknod_helper(major, base_minor, NV_UVM_DEVICE_NAME, NV_PROC_REGISTRY_PATH) &&
++           mknod_helper(major, base_minor + 1, NV_UVM_TOOLS_DEVICE_NAME, NV_PROC_REGISTRY_PATH);
+ }
+ 

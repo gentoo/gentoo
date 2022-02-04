@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/764113
+--- a/src/IniConfig.cpp
++++ b/src/IniConfig.cpp
+@@ -36,6 +36,7 @@
+ #  include <sys/types.h>
+ #  include <sys/stat.h>  /* mkdir */
+ #  include <dirent.h>    /* opendir */
++#  include <limits.h>
+ #else
+ #  include <windows.h>
+ #endif

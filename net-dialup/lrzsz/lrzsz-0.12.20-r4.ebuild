@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://www.ohse.de/uwe/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="nls"
 
 DEPEND="nls? ( virtual/libintl )"
@@ -30,6 +30,7 @@ DOCS=( AUTHORS COMPATABILITY ChangeLog NEWS \
 
 src_prepare() {
 	default
+
 	# automake is unhappy if this is missing
 	>> config.rpath || die
 	# This is too old.  Remove it so automake puts in a newer copy.
@@ -43,13 +44,14 @@ src_prepare() {
 src_configure() {
 	tc-export CC
 	append-flags -Wstrict-prototypes
+
 	econf $(use_enable nls)
 }
 
 src_test() {
-	#Don't use check target.
-	#See bug #120748 before changing this function.
-	make vcheck || die "tests failed"
+	# Don't use check target.
+	# See bug #120748 before changing this function.
+	emake vcheck
 }
 
 src_install() {

@@ -1,0 +1,34 @@
+--- a/test-tool/iscsi-support.c
++++ b/test-tool/iscsi-support.c
+@@ -119,7 +119,8 @@ int readonly;
+ int sbc3_support;
+ int maximum_transfer_length;
+ 
+-int (*real_iscsi_queue_pdu)(struct iscsi_context *iscsi, struct iscsi_pdu *pdu);
++static int (*real_iscsi_queue_pdu)(struct iscsi_context *iscsi, struct iscsi_pdu *pdu);
++int (*local_iscsi_queue_pdu)(struct iscsi_context *iscsi, struct iscsi_pdu *pdu);
+ 
+ static const unsigned char zeroBlock[4096];
+ 
+--- a/test-tool/iscsi-support.h
++++ b/test-tool/iscsi-support.h
+@@ -779,7 +779,7 @@ struct iscsi_async_state {
+ void wait_until_test_finished(struct iscsi_context *iscsi, struct iscsi_async_state *test_state);
+ 
+ struct iscsi_pdu;
+-int (*local_iscsi_queue_pdu)(struct iscsi_context *iscsi, struct iscsi_pdu *pdu);
++extern int (*local_iscsi_queue_pdu)(struct iscsi_context *iscsi, struct iscsi_pdu *pdu);
+ 
+ struct scsi_command_descriptor *get_command_descriptor(int opcode, int sa);
+ 
+--- a/test-tool/iscsi-test-cu.c
++++ b/test-tool/iscsi-test-cu.c
+@@ -63,7 +63,7 @@ static unsigned int maxsectors;
+  * this allows us to redefine how PDU are queued, at times, for
+  * testing purposes
+  */
+-int (*real_iscsi_queue_pdu)(struct iscsi_context *iscsi, struct iscsi_pdu *pdu);
++int (*real_iscsi_queue_pdu)(struct iscsi_context *iscsi, struct iscsi_pdu *pdu) = NULL;
+ 
+ /*****************************************************************
+  *

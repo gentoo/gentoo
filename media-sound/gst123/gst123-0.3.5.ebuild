@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-DESCRIPTION="A GStreamer based command line media player"
-HOMEPAGE="http://space.twc.de/~stefan/gst123.php"
-SRC_URI="http://space.twc.de/~stefan/gst123/${P}.tar.bz2"
+DESCRIPTION="GStreamer based command line media player"
+HOMEPAGE="https://space.twc.de/~stefan/gst123.php"
+SRC_URI="https://space.twc.de/~stefan/gst123/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
@@ -21,5 +21,5 @@ CDEPEND="
 "
 RDEPEND="${CDEPEND}
 	media-plugins/gst-plugins-meta:1.0"
-DEPEND="${CDEPEND}
-	virtual/pkgconfig"
+DEPEND="${CDEPEND}"
+BDEPEND="virtual/pkgconfig"

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
-PYTHON_COMPAT=( python3_8 )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 linux-info optfeature ${SRC_ECLASS}
@@ -30,7 +30,8 @@ BDEPEND="
 DEPEND="
 	sys-apps/portage[${PYTHON_USEDEP}]
 	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
+	dev-python/fasteners[${PYTHON_USEDEP}]
+	dev-python/tomli[${PYTHON_USEDEP}]
 	sys-apps/util-linux[python,${PYTHON_USEDEP}]
 "
 RDEPEND="
@@ -41,32 +42,31 @@ RDEPEND="
 	app-arch/tar[xattr]
 	dev-vcs/git
 	sys-fs/dosfstools
-	sys-fs/squashfs-tools-ng
+	sys-fs/squashfs-tools-ng[tools]
 
 	iso? (
-		virtual/cdrtools
+		app-cdr/cdrtools
+		dev-libs/libisoburn
 
 		amd64? (
 			sys-boot/grub[grub_platforms_efi-32,grub_platforms_efi-64]
+			sys-fs/mtools
 		)
-		alpha? (
-			dev-libs/libisoburn
+		arm64?  (
+			sys-boot/grub[grub_platforms_efi-64]
+			sys-fs/mtools
 		)
 		ia64?  (
-			dev-libs/libisoburn
 			sys-boot/grub[grub_platforms_efi-64]
 			sys-fs/mtools
 		)
 		ppc?   (
-			dev-libs/libisoburn
 			sys-boot/grub:2[grub_platforms_ieee1275]
 		)
 		ppc64? (
-			dev-libs/libisoburn
 			sys-boot/grub:2[grub_platforms_ieee1275]
 		)
 		sparc? (
-			dev-libs/libisoburn
 			sys-boot/grub:2[grub_platforms_ieee1275]
 		)
 		x86?   (
@@ -104,8 +104,6 @@ python_install_all() {
 
 pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		elog
-		elog "You may consider installing the following optional packages:"
 		optfeature "ccache support" dev-util/ccache
 	fi
 }

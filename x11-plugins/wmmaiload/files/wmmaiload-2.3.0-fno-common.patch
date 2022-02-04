@@ -1,0 +1,113 @@
+diff -Naur wmmaiload-2.3.0.orig/wmmaiload-config/main.c wmmaiload-2.3.0/wmmaiload-config/main.c
+--- wmmaiload-2.3.0.orig/wmmaiload-config/main.c	2005-07-13 21:51:28.000000000 +0200
++++ wmmaiload-2.3.0/wmmaiload-config/main.c	2020-12-20 22:04:03.170530520 +0100
+@@ -11,6 +11,18 @@
+ #include "mainwindow.h"
+ #include "actions.h"
+ 
++int backlight;
++int update_interval;
++int boxnum;
++int check_delay;
++int switch_authorized;
++int run_once;
++int test_size;
++char *config_file;
++char *light_color;
++char *command;
++char *notif_cmd;
++MailBox *mboxes;
+ 
+ void Usage ()
+ {
+diff -Naur wmmaiload-2.3.0.orig/wmmaiload-config/mainwindow.c wmmaiload-2.3.0/wmmaiload-config/mainwindow.c
+--- wmmaiload-2.3.0.orig/wmmaiload-config/mainwindow.c	2009-02-23 03:58:00.000000000 +0100
++++ wmmaiload-2.3.0/wmmaiload-config/mainwindow.c	2020-12-20 22:05:14.978622375 +0100
+@@ -9,6 +9,19 @@
+ #include "mainwindow.h"
+ #include "actions.h"
+ 
++GtkWidget *application;
++GtkWidget *filelist;
++GtkWidget *wid_backlight;
++GtkWidget *wid_blink;
++GtkWidget *wid_interval;
++GtkWidget *wid_checkdelay;
++GtkWidget *wid_color;
++GtkWidget *wid_command;
++GtkWidget *wid_notify;
++GtkWidget *wid_runonce;
++GtkWidget *wid_testsize;
++
++int selected_row;
+ 
+ static GtkWidget *b_edit;
+ static GtkWidget *b_set;
+diff -Naur wmmaiload-2.3.0.orig/wmmaiload-config/mainwindow.h wmmaiload-2.3.0/wmmaiload-config/mainwindow.h
+--- wmmaiload-2.3.0.orig/wmmaiload-config/mainwindow.h	2005-07-07 20:54:17.000000000 +0200
++++ wmmaiload-2.3.0/wmmaiload-config/mainwindow.h	2020-12-20 22:05:14.978622375 +0100
+@@ -7,19 +7,19 @@
+ 
+ #include <gtk/gtk.h>
+ 
+-GtkWidget *application;
+-GtkWidget *filelist;
+-GtkWidget *wid_backlight;
+-GtkWidget *wid_blink;
+-GtkWidget *wid_interval;
+-GtkWidget *wid_checkdelay;
+-GtkWidget *wid_color;
+-GtkWidget *wid_command;
+-GtkWidget *wid_notify;
+-GtkWidget *wid_runonce;
+-GtkWidget *wid_testsize;
++extern GtkWidget *application;
++extern GtkWidget *filelist;
++extern GtkWidget *wid_backlight;
++extern GtkWidget *wid_blink;
++extern GtkWidget *wid_interval;
++extern GtkWidget *wid_checkdelay;
++extern GtkWidget *wid_color;
++extern GtkWidget *wid_command;
++extern GtkWidget *wid_notify;
++extern GtkWidget *wid_runonce;
++extern GtkWidget *wid_testsize;
+ 
+-int selected_row;
++extern int selected_row;
+ 
+ gint list_unsel_cb (GtkCList *clist,
+                     gint row,
+diff -Naur wmmaiload-2.3.0.orig/wmmaiload-config/variables.h wmmaiload-2.3.0/wmmaiload-config/variables.h
+--- wmmaiload-2.3.0.orig/wmmaiload-config/variables.h	2005-07-07 20:54:17.000000000 +0200
++++ wmmaiload-2.3.0/wmmaiload-config/variables.h	2020-12-20 22:04:03.170530520 +0100
+@@ -7,17 +7,17 @@
+ 
+ #include "defines.h"
+ 
+-int backlight;
+-int update_interval;
+-int boxnum;
+-int check_delay;
+-int switch_authorized;
+-int run_once;
+-int test_size;
+-char *config_file;
+-char *light_color;
+-char *command;
+-char *notif_cmd;
+-MailBox *mboxes;
++extern int backlight;
++extern int update_interval;
++extern int boxnum;
++extern int check_delay;
++extern int switch_authorized;
++extern int run_once;
++extern int test_size;
++extern char *config_file;
++extern char *light_color;
++extern char *command;
++extern char *notif_cmd;
++extern MailBox *mboxes;
+ 
+ #endif

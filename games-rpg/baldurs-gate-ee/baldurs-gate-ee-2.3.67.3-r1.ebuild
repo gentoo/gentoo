@@ -1,13 +1,14 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils unpacker
+inherit desktop unpacker wrapper
 
 DESCRIPTION="Baldur's Gate: Enhanced Edition"
 HOMEPAGE="https://www.baldursgate.com/"
 SRC_URI="gog_baldur_s_gate_enhanced_edition_2.5.0.9.sh"
+S="${WORKDIR}/data/noarch"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -22,9 +23,7 @@ RDEPEND="dev-libs/expat[abi_x86_32(-)]
 	virtual/opengl[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]"
 
-QA_PREBUILT="/opt/${PN}/BaldursGate"
-
-S="${WORKDIR}/data/noarch"
+QA_PREBUILT="opt/${PN}/BaldursGate"
 
 pkg_nofetch() {
 	einfo "Please buy and download \"${SRC_URI}\" from"

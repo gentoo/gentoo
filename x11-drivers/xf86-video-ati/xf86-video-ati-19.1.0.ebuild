@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ inherit linux-info xorg-3
 if [[ ${PV} == 9999* ]]; then
 	SRC_URI=""
 else
-	KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
+	KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 ~riscv sparc x86"
 fi
 
 DESCRIPTION="ATI video driver"
@@ -29,7 +29,7 @@ PATCHES=(
 )
 
 pkg_pretend() {
-	if use kernel_linux ; then
+	if use kernel_linux; then
 		if kernel_is -ge 3 9; then
 			CONFIG_CHECK="~!DRM_RADEON_UMS ~!FB_RADEON"
 		else
@@ -40,8 +40,14 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	XORG_CONFIGURE_OPTIONS=(
+	linux-info_pkg_setup
+	xorg-3_pkg_setup
+}
+
+src_configure() {
+	local XORG_CONFIGURE_OPTIONS=(
 		--enable-glamor
 		$(use_enable udev)
 	)
+	xorg-3_src_configure
 }

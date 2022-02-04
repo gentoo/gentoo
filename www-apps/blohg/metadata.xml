@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>rafaelmartins@gentoo.org</email>
-		<name>Rafael G. Martins</name>
-	</maintainer>
+	<!-- maintainer-needed -->
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		blohg is a Mercurial (or Git) based blogging engine written in Python,
 		built with the Flask micro-framework and some of his available extensions.
@@ -19,6 +17,7 @@
 		</maintainer>
 		<bugs-to>mailto:blohg@librelist.com</bugs-to>
 		<remote-id type="pypi">blohg</remote-id>
+		<remote-id type="github">rafaelmartins/blohg</remote-id>
 	</upstream>
 	<use>
 		<flag name="git">Enable Git support</flag>

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,6 @@ IUSE=""
 # Assumed System:
 # sys-apps/coreutils
 # sys-apps/grep
-# sys-apps/findutils
 # sys-apps/sed
 # app-shells/bash
 # sys-apps/gawk

@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Reports network interface statistics"
@@ -10,20 +11,22 @@ SRC_URI="
 	https://www.frenchfries.net/paul/tcpstat/${P/_p*}.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-$(ver_cut 4).debian.tar.xz
 "
+S="${WORKDIR}"/${P/_p*}
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ppc64 sparc x86"
 IUSE="ipv6"
 
 DEPEND="
 	net-libs/libpcap
 	sys-libs/db:*
 "
-RDEPEND="
-	${DEPEND}
-"
+RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
+
 DOCS=( AUTHORS ChangeLog NEWS README doc/Tips_and_Tricks.txt )
+
 PATCHES=(
 	"${FILESDIR}"/${P}-_DEFAULT_SOURCE.patch
 	"${FILESDIR}"/${P}-ipv6.patch
@@ -31,7 +34,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-off-by-one.patch
 	"${FILESDIR}"/${P}-unused.patch
 )
-S=${WORKDIR}/${P/_p*}
 
 src_prepare() {
 	eapply $(
@@ -39,8 +41,8 @@ src_prepare() {
 			do echo "${WORKDIR}"/debian/patches/${patch}
 		done
 		) ${PATCHES[@]}
-	eapply_user
 
+	eapply_user
 	eautoreconf
 }
 

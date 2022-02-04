@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="object code file converted (COFF, ELF, OMF, MACHO)"
 HOMEPAGE="https://agner.org/optimize/#objconv"
 # original URL is "http://agner.org/optimize/objconv.zip", but it's unversioned.
 # I copy those to distfiles time to time. last modified: 2018-Oct-07
-SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${P}.zip"
+SRC_URI="https://dev.gentoo.org/~sam/distfiles/${P}.zip"
 LICENSE="GPL-2"
 
 SLOT="0"

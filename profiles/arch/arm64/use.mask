@@ -1,8 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -arm64
+
+# Michał Górny <mgorny@gentoo.org> (2021-01-07)
+# Prebuilt kernels are supported here.
+-dist-kernel
 
 # Sam James <sam@gentoo.org> (2020-10-08)
 # PyPy3 works on arm64
@@ -42,11 +46,6 @@ cpu_flags_arm_neon
 # Dependency not keyworded (dev-libs/libindicate).
 appindicator
 ayatana
-
-# Mart Raudsepp <leio@gentoo.org> (2019-01-07)
-# Does not work on arm64 until dev-lang/luajit-2.1
-# https://github.com/LuaJIT/LuaJIT/issues/26
-luajit
 
 # Michał Górny <mgorny@gentoo.org> (2018-07-09)
 # No OpenCL provider is available on arm64.
@@ -97,16 +96,12 @@ zvbi
 sid
 mms
 ieee1394
-pm-utils
 darcs
 bs2b
-ladspa
 ggi
-nut
 dvd
 fits
 lpsol
-quvi
 zvbi
 gts
 anthy
@@ -142,8 +137,3 @@ video_cards_r200
 video_cards_r300
 video_cards_r600
 video_cards_radeonsi
-
-# USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
-# Bug #184563, (2007-09-18)
-# Robin H. Johnson <robbat2@gentoo.org>
-audit

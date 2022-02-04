@@ -1,41 +1,47 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 savedconfig toolchain-funcs
+inherit savedconfig toolchain-funcs desktop xdg
 
 DESCRIPTION="a simple web browser based on WebKit/GTK+"
 HOMEPAGE="https://surf.suckless.org/"
-EGIT_REPO_URI="https://git.suckless.org/surf"
-EGIT_BRANCH="surf-webkit2"
+
+if [[ ${PV} == "9999" ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.suckless.org/surf"
+	EGIT_BRANCH="surf-webkit2"
+else
+	SRC_URI="https://dl.suckless.org/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~riscv ~x86"
+fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+IUSE="tabbed"
 
-COMMON_DEPEND="
+DEPEND="
 	app-crypt/gcr[gtk]
 	dev-libs/glib:2
 	net-libs/webkit-gtk:4
 	x11-libs/gtk+:3
 	x11-libs/libX11
 "
-DEPEND="
-	${COMMON_DEPEND}
-	virtual/pkgconfig
-"
-RDEPEND="
+RDEPEND="${DEPEND}
 	!sci-chemistry/surf
-	${COMMON_DEPEND}
 	!savedconfig? (
-		>=x11-misc/dmenu-4.7
 		net-misc/curl
 		x11-apps/xprop
+		x11-misc/dmenu
 		x11-terms/st
 	)
+	tabbed? ( x11-misc/tabbed )
+"
+BDEPEND="
+	virtual/pkgconfig
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-gentoo.patch
+	"${FILESDIR}"/${PN}-2.1-gentoo.patch
 )
 
 pkg_setup() {
@@ -62,5 +68,30 @@ src_prepare() {
 src_install() {
 	default
 
+	if use tabbed; then
+		dobin surf-open.sh
+	fi
+
 	save_config config.h
+
+	newicon "${S}"/"${PN}".png "${PN}".png
+
+	local mime_types="text/html;text/xml;application/xhtml+xml;"
+	mime_types+="x-scheme-handler/http;x-scheme-handler/https;"
+	make_desktop_entry \
+		"surf" \
+		"Surf" \
+		"surf" \
+		"Network;WebBrowser" \
+		"MimeType=${mime_types}\nStartupWMClass=surf"
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }

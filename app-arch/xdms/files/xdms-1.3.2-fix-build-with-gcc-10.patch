@@ -1,0 +1,80 @@
+https://sources.debian.org/patches/xdms/1.3.2-7/0002-Fix-build-with-gcc-10.patch/
+
+From: Jeff Law <law@redhat.com>
+Date: Sat, 9 May 2020 15:16:39 +0200
+Subject: Fix build with gcc-10
+--- a/src/u_deep.c
++++ b/src/u_deep.c
+@@ -17,9 +17,9 @@
+ #include "getbits.h"
+ 
+ 
+-INLINE USHORT DecodeChar(void);
+-INLINE USHORT DecodePosition(void);
+-INLINE void update(USHORT c);
++static INLINE USHORT DecodeChar(void);
++static INLINE USHORT DecodePosition(void);
++static INLINE void update(USHORT c);
+ static void reconst(void);
+ 
+ 
+@@ -98,7 +98,7 @@ USHORT Unpack_DEEP(UCHAR *in, UCHAR *out, USHORT origsize){
+ 
+ 
+ 
+-INLINE USHORT DecodeChar(void){
++static INLINE USHORT DecodeChar(void){
+ 	USHORT c;
+ 
+ 	c = son[R];
+@@ -117,7 +117,7 @@ INLINE USHORT DecodeChar(void){
+ 
+ 
+ 
+-INLINE USHORT DecodePosition(void){
++static INLINE USHORT DecodePosition(void){
+ 	USHORT i, j, c;
+ 
+ 	i = GETBITS(8);  DROPBITS(8);
+@@ -171,7 +171,7 @@ static void reconst(void){
+ 
+ /* increment frequency of given code by one, and update tree */
+ 
+-INLINE void update(USHORT c){
++static INLINE void update(USHORT c){
+ 	USHORT i, j, k, l;
+ 
+ 	if (freq[R] == MAX_FREQ) {
+diff --git a/src/u_heavy.c b/src/u_heavy.c
+index fff93d3..8557b71 100644
+--- a/src/u_heavy.c
++++ b/src/u_heavy.c
+@@ -30,8 +30,8 @@ USHORT heavy_text_loc;
+ 
+ static USHORT read_tree_c(void);
+ static USHORT read_tree_p(void);
+-INLINE USHORT decode_c(void);
+-INLINE USHORT decode_p(void);
++static INLINE USHORT decode_c(void);
++static INLINE USHORT decode_p(void);
+ 
+ 
+ 
+@@ -74,7 +74,7 @@ USHORT Unpack_HEAVY(UCHAR *in, UCHAR *out, UCHAR flags, USHORT origsize){
+ 
+ 
+ 
+-INLINE USHORT decode_c(void){
++static INLINE USHORT decode_c(void){
+ 	USHORT i, j, m;
+ 
+ 	j = c_table[GETBITS(12)];
+@@ -96,7 +96,7 @@ INLINE USHORT decode_c(void){
+ 
+ 
+ 
+-INLINE USHORT decode_p(void){
++static INLINE USHORT decode_p(void){
+ 	USHORT i, j, m;
+ 
+ 	j = pt_table[GETBITS(8)];

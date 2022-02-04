@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
     <email>grozin@gentoo.org</email>
@@ -14,6 +14,7 @@
     attempting to mimic the shell syntax (shell combinators) where it makes sense,
     while keeping it all Pythonic and cross-platform.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">plumbum</remote-id>
     <remote-id type="github">tomerfiliba/plumbum</remote-id>

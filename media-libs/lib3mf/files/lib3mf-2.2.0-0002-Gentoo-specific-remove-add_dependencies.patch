@@ -1,0 +1,29 @@
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Wed, 25 Aug 2021 18:19:25 +0200
+Subject: [PATCH] [Gentoo specific] remove add_dependencies
+
+Remove the add_dependencies commands on ssl and crypto.
+We use global openssl support instead of package libressl.
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ Tests/CPP_Bindings/CMakeLists.txt | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/Tests/CPP_Bindings/CMakeLists.txt b/Tests/CPP_Bindings/CMakeLists.txt
+index 4a816a5..c26c498 100644
+--- a/Tests/CPP_Bindings/CMakeLists.txt
++++ b/Tests/CPP_Bindings/CMakeLists.txt
+@@ -47,9 +47,6 @@ if (WIN32)
+ 	target_compile_options(${TESTNAME} PUBLIC "$<$<CONFIG:RELEASE>:/O2;/sdl;/WX;/Oi;/Gy;/FC;/MD;/wd4996>")
+ endif()
+ 
+-add_dependencies(${TESTNAME} ssl)
+-add_dependencies(${TESTNAME} crypto)
+-
+ target_include_directories(${TESTNAME} PRIVATE
+ 	${CMAKE_CURRENT_SOURCE_DIR}/Include
+ 	${gtest_SOURCE_DIR}/include
+-- 
+2.32.0
+

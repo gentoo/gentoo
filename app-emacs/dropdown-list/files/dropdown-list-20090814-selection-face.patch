@@ -1,7 +1,7 @@
 http://code.google.com/p/yasnippet/issues/detail?id=23
 
---- dropdown-list.el~
-+++ dropdown-list.el
+--- a/dropdown-list.el
++++ b/dropdown-list.el
 @@ -69,7 +69,7 @@
    "*Bla." :group 'dropdown-list)
  

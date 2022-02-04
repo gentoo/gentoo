@@ -1,19 +1,17 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 DESCRIPTION="Meta-package for Telepathy Connection Managers"
 HOMEPAGE="https://telepathy.freedesktop.org/"
-SRC_URI=""
+
 LICENSE="metapackage"
 SLOT="0"
-
 KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux"
 
-IUSE="gadu icq +irc meanwhile msn sip sipe +xmpp yahoo steam zeroconf"
+IUSE="gadu icq +irc meanwhile msn sip sipe steam +xmpp yahoo zeroconf"
 
-DEPEND=""
 # These version support the 0.24.0 Telepathy specification
 # They work with Mission Control 5.14
 RDEPEND="

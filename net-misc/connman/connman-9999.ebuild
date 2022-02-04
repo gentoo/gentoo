@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -13,7 +13,7 @@ else
 fi
 
 DESCRIPTION="Provides a daemon for managing internet connections"
-HOMEPAGE="https://01.org/connman"
+HOMEPAGE="https://git.kernel.org/pub/scm/network/connman/connman.git/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -55,6 +55,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		--localstatedir=/var \
+		--runstatedir=/run \
 		--with-systemdunitdir=$(systemd_get_systemunitdir) \
 		--with-tmpfilesdir="${EPREFIX}"/usr/lib/tmpfiles.d \
 		--enable-client \
@@ -96,5 +97,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	tmpfiles_process /usr/lib/tmpfiles.d/connman_resolvconf.conf
+	tmpfiles_process connman_resolvconf.conf
 }

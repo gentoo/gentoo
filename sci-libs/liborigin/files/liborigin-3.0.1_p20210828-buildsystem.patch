@@ -1,0 +1,70 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a8e5914..a1a129c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -41,7 +41,6 @@ set (devel-headers
+ 	OriginObj.h
+ 	OriginFile.h
+ 	OriginParser.h
+-	tree.hh
+ 	)
+ 
+ # allow for installation of individual targets
+@@ -59,12 +58,8 @@ else()
+     message("File parsing will NOT be logged. Define GENERATE_CODE_FOR_LOG to activate logging.")
+ endif ()
+ 
+-# Static library
+-add_library (origin_static STATIC $<TARGET_OBJECTS:origin>)
+-
+-set_target_properties(origin_static PROPERTIES OUTPUT_NAME "origin" )
+-
+ if( "${CMAKE_SOURCE_DIR}" STREQUAL "${PROJECT_SOURCE_DIR}" )
++  include(GNUInstallDirs)
+ 
+   # Shared library
+   add_library( origin_shared SHARED $<TARGET_OBJECTS:origin>)
+@@ -74,15 +69,16 @@ if( "${CMAKE_SOURCE_DIR}" STREQUAL "${PROJECT_SOURCE_DIR}" )
+ 	SOVERSION ${PROJECT_VERSION_MAJOR}
+     )
+   # Generate a pkg-config file matching this config
+-  configure_file( "liborigin.pc.in" "$liborigin.pc" @ONLY )
++  configure_file( "liborigin.pc.in" "liborigin.pc" @ONLY )
+ 
++  if(ENABLE_TOOLS)
+   # command line util
+   add_executable(opj2dat opj2dat.cpp)
+-  target_link_libraries (opj2dat origin_static)
++  target_link_libraries (opj2dat origin_shared)
++  endif ()
+   
+-  include(GNUInstallDirs)
+   # install libraries
+-  install( TARGETS origin_shared origin_static
++  install( TARGETS origin_shared
+     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+@@ -92,7 +88,9 @@ if( "${CMAKE_SOURCE_DIR}" STREQUAL "${PROJECT_SOURCE_DIR}" )
+   # install pkg-config file
+   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/liborigin.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+   #
++  if(ENABLE_TOOLS)
+   install(TARGETS opj2dat DESTINATION ${CMAKE_INSTALL_BINDIR} OPTIONAL)
++  endif ()
+   # documentation
+   install(FILES COPYING FORMAT README
+     DESTINATION ${CMAKE_INSTALL_DOCDIR}
+diff --git a/liborigin.pc.in b/liborigin.pc.in
+index b6f7c90..55f82fa 100644
+--- a/liborigin.pc.in
++++ b/liborigin.pc.in
+@@ -5,7 +5,7 @@ includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+ 
+ Name: liborigin
+ Description: Library for reading OriginLab files
+-Version: @LIBORIGIN_VERSION_MAJOR@.@LIBORIGIN_VERSION_MINOR@.@LIBORIGIN_VERSION_BUGFIX@
++Version: @liborigin_VERSION_MAJOR@.@liborigin_VERSION_MINOR@.@liborigin_VERSION_PATCH@
+ 
+ Requires:
+ Libs: -L${libdir} -lorigin

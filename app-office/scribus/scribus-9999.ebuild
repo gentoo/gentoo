@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="tk?"
 inherit cmake desktop flag-o-matic python-single-r1 subversion xdg
 
@@ -23,10 +23,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 # osg
 # couple of third_party libs bundled
-BDEPEND="
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig
-"
 DEPEND="${PYTHON_DEPS}
 	app-text/libmspub
 	app-text/libqxp
@@ -64,19 +60,23 @@ DEPEND="${PYTHON_DEPS}
 	pdf? ( app-text/podofo:0= )
 	scripts? (
 		$(python_gen_cond_dep '
-			dev-python/pillow[tk?,${PYTHON_MULTI_USEDEP}]
+			dev-python/pillow[tk?,${PYTHON_USEDEP}]
 		')
 	)
 "
 RDEPEND="${DEPEND}
 	app-text/ghostscript-gpl
 "
+BDEPEND="
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	# non(?)-upstreamable
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
 	"${FILESDIR}"/${PN}-1.5.6-docdir.patch
-	"${FILESDIR}"/${PN}-1.5.5-findhyphen-1.patch
+	"${FILESDIR}"/${PN}-1.5.8-findhyphen-1.patch
 	"${FILESDIR}"/${PN}-1.5.6-findhyphen.patch
 )
 
@@ -109,6 +109,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DHAVE_PYTHON=ON
 		-DWANT_DISTROBUILD=ON
+		-DWANT_CPP17=ON
 		-DDOCDIR="${EPREFIX}"/usr/share/doc/${PF}/
 		-DPython3_EXECUTABLE="${PYTHON}"
 		-DWITH_BOOST=$(usex boost)

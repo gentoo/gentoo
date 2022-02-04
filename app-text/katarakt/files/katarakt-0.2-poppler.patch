@@ -1,0 +1,29 @@
+From 23b68e9c48204d43b37b23735ad9ea0b219fec7b Mon Sep 17 00:00:00 2001
+From: Philipp Erhardt <Philipp.Erhardt@informatik.stud.uni-erlangen.de>
+Date: Mon, 19 Oct 2020 20:42:37 +0200
+Subject: [PATCH] Fix compilation if the version number contains a leading zero
+
+---
+ katarakt.pro | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/katarakt.pro b/katarakt.pro
+index a632713db2ce..84cd59797d0a 100644
+--- a/katarakt.pro
++++ b/katarakt.pro
+@@ -17,9 +17,9 @@ unix {
+ 
+     isEmpty(PKG_CONFIG):PKG_CONFIG = pkg-config    # same as in link_pkgconfig.prf
+     POPPLER_VERSION = $$system($$PKG_CONFIG --modversion $$POPPLER)
+-    POPPLER_VERSION_MAJOR = $$system(echo "$$POPPLER_VERSION" | cut -d . -f 1)
+-    POPPLER_VERSION_MINOR = $$system(echo "$$POPPLER_VERSION" | cut -d . -f 2)
+-    POPPLER_VERSION_MICRO = $$system(echo "$$POPPLER_VERSION" | cut -d . -f 3)
++    POPPLER_VERSION_MAJOR = $$system(echo "$$POPPLER_VERSION" | cut -d . -f 1 | sed "\'s,^0*\\(.\\),\1,\'")
++    POPPLER_VERSION_MINOR = $$system(echo "$$POPPLER_VERSION" | cut -d . -f 2 | sed "\'s,^0*\\(.\\),\1,\'")
++    POPPLER_VERSION_MICRO = $$system(echo "$$POPPLER_VERSION" | cut -d . -f 3 | sed "\'s,^0*\\(.\\),\1,\'")
+ 
+     DEFINES += POPPLER_VERSION_MAJOR=$$POPPLER_VERSION_MAJOR
+     DEFINES += POPPLER_VERSION_MINOR=$$POPPLER_VERSION_MINOR
+-- 
+2.33.0
+

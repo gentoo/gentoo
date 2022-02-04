@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils linux-info
+inherit cmake linux-info
 
 DESCRIPTION="utility that shows an estimated instantaneous bandwidth on USB buses and devices"
 HOMEPAGE="https://github.com/aguinet/usbtop"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/aguinet/usbtop/archive/release-${PV}.tar.gz -> ${P}.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE=""
 
 DEPEND="net-libs/libpcap:=[usb]

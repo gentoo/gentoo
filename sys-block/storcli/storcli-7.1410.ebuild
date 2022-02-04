@@ -14,7 +14,7 @@ SRC_URI="https://docs.broadcom.com/docs-and-downloads/docs-and-downloads/raid-co
 
 LICENSE="Avago LSI BSD"
 SLOT="0/7.14"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE=""
 
 RDEPEND=""

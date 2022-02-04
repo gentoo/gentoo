@@ -1,9 +1,9 @@
---- cdctl/Makefile.in
-+++ cdctl/Makefile.in
-@@ -1,8 +1,8 @@
- CC=gcc
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1,8 +1,7 @@
+-CC=gcc
 -CFLAGS=-Wall -g
-+CFLAGS:=-Wall -g
++CFLAGS += -Wall
  BINS=cdctl sndreset
  OBJS=cdctl.o version.o ioctls.o iso_header.o
 -DOCS=NEWS NUTSANDBOLTS LICENSE PUBLICKEY README SEGFAULTS
@@ -11,7 +11,7 @@
  # NOTE:  all man pages are installed in $(mandir)/man1 -- see install-mans
  MANS=cdctl.1
  MOS=cdctl.mo
-@@ -22,6 +22,8 @@
+@@ -22,6 +21,8 @@ INSTALL = @INSTALL@
  INSTALL_DIR = $(INSTALL) -d
  INSTALL_DATA = $(INSTALL) -m 644
  
@@ -20,7 +20,7 @@
  all: $(BINS)
  
  cdctl: $(OBJS)
-@@ -35,25 +37,21 @@
+@@ -35,25 +36,21 @@ iso_header.o: iso_header.c
  indent:
  	indent -kr -cdb -sc *.c
  

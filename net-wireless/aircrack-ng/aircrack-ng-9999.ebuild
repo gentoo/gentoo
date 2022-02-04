@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 DISTUTILS_OPTIONAL=1
 
 inherit toolchain-funcs distutils-r1 flag-o-matic autotools
@@ -23,26 +23,26 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="+airdrop-ng +airgraph-ng kernel_linux kernel_FreeBSD libressl +netlink +pcre +sqlite +experimental"
+IUSE="+airdrop-ng +airgraph-ng +netlink +pcre +sqlite +experimental"
 
 DEPEND="net-libs/libpcap
 	sys-apps/hwloc:0=
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/libbsd
+	dev-libs/openssl:0=
 	netlink? ( dev-libs/libnl:3 )
 	pcre? ( dev-libs/libpcre )
 	airdrop-ng? ( ${PYTHON_DEPS} )
 	airgraph-ng? ( ${PYTHON_DEPS} )
 	experimental? ( sys-libs/zlib )
 	sqlite? ( >=dev-db/sqlite-3.4 )"
-RDEPEND="${DEPEND}"
-PDEPEND="kernel_linux? (
+RDEPEND="${DEPEND}
+	kernel_linux? (
 		net-wireless/iw
 		net-wireless/wireless-tools
 		sys-apps/ethtool
 		sys-apps/usbutils
 		sys-apps/pciutils )
-	sys-apps/hwids
+	sys-apps/hwdata
 	airdrop-ng? ( net-wireless/lorcon[python,${PYTHON_USEDEP}] )"
 
 REQUIRED_USE="
@@ -99,19 +99,4 @@ src_install() {
 	# we don't need aircrack-ng's oui updater, we have our own
 	rm "${ED}"/usr/sbin/airodump-ng-oui-update
 	find "${D}" -xtype f -name '*.la' -delete || die
-}
-
-pkg_postinst() {
-	# Message is (c) FreeBSD
-	# http://www.freebsd.org/cgi/cvsweb.cgi/ports/net-mgmt/aircrack-ng/files/pkg-message.in?rev=1.5
-	if use kernel_FreeBSD ; then
-		einfo "Contrary to Linux, it is not necessary to use airmon-ng to enable the monitor"
-		einfo "mode of your wireless card.  So do not care about what the manpages say about"
-		einfo "airmon-ng, airodump-ng sets monitor mode automatically."
-		echo
-		einfo "To return from monitor mode, issue the following command:"
-		einfo "    ifconfig \${INTERFACE} -mediaopt monitor"
-		einfo
-		einfo "For aireplay-ng you need FreeBSD >= 7.0."
-	fi
 }

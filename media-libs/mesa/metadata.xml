@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>x11@gentoo.org</email>
@@ -8,7 +8,6 @@
 	<use>
 		<flag name="classic">Build drivers based on the classic architecture.</flag>
 		<flag name="d3d9">Enable Direct 3D9 API through Nine state tracker. Can be used together with patched wine.</flag>
-		<flag name="dri3">Enable DRI3 support.</flag>
 		<flag name="egl">Enable EGL support.</flag>
 		<flag name="gallium">Build drivers based on Gallium3D, the new architecture for 3D graphics drivers.</flag>
 		<flag name="gbm">Enable the Graphics Buffer Manager for EGL on KMS.</flag>

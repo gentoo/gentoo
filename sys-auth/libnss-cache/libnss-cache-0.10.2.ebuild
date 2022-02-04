@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit multilib-minimal toolchain-funcs
 
@@ -12,7 +12,8 @@ SRC_URI="https://nsscache.googlecode.com/files/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+
+RESTRICT=test # needs special sudo configuration, bug #422567
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.10.1-make.patch
@@ -29,5 +30,5 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	emake DESTDIR="${ED}" LIBDIR="${ED%/}/usr/$(get_libdir)" install
+	emake DESTDIR="${ED}" LIBDIR="${ED}/usr/$(get_libdir)" install
 }

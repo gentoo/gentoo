@@ -1,0 +1,107 @@
+From f144113688168e2bd86d24a48c8d7cdfdb4ccaab Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@gentoo.org>
+Date: Fri, 21 May 2021 17:17:45 +0200
+Subject: [PATCH] bmo#1318905: Make SpiderMonkey build on Linux/RISC-V
+
+Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
+---
+ build/moz.configure/init.configure                           | 3 +++
+ js/src/jit/AtomicOperations.h                                | 2 +-
+ js/src/jit/shared/AtomicOperations-feeling-lucky-gcc.h       | 5 +++++
+ mfbt/tests/TestPoisonArea.cpp                                | 3 +++
+ python/mozbuild/mozbuild/configure/constants.py              | 2 ++
+ .../mozbuild/test/configure/test_toolchain_configure.py      | 4 ++++
+ 6 files changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/build/moz.configure/init.configure b/build/moz.configure/init.configure
+index b887153321a..5c275076061 100644
+--- a/build/moz.configure/init.configure
++++ b/build/moz.configure/init.configure
+@@ -755,6 +755,9 @@ def split_triplet(triplet, allow_msvc=False):
+     elif cpu.startswith('aarch64'):
+         canonical_cpu = 'aarch64'
+         endianness = 'little'
++    elif cpu in ('riscv64', 'riscv64gc'):
++        canonical_cpu = 'riscv64'
++        endianness = 'little'
+     elif cpu == 'sh4':
+         canonical_cpu = 'sh4'
+         endianness = 'little'
+diff --git a/js/src/jit/AtomicOperations.h b/js/src/jit/AtomicOperations.h
+index 0f45ac8b58e..f48d2adce97 100644
+--- a/js/src/jit/AtomicOperations.h
++++ b/js/src/jit/AtomicOperations.h
+@@ -392,7 +392,7 @@ inline bool AtomicOperations::isLockfreeJS(int32_t size) {
+     defined(__ppc64__) || defined(__PPC64__) || defined(__ppc64le__) || \
+     defined(__PPC64LE__) || defined(__alpha__) || defined(__hppa__) ||  \
+     defined(__ia64__) || defined(__sh__) || defined(__s390__) || \
+-    defined(__s390x__)
++    defined(__s390x__) || defined(__riscv)
+ #  include "jit/shared/AtomicOperations-feeling-lucky.h"
+ #else
+ #  error "No AtomicOperations support provided for this platform"
+diff --git a/js/src/jit/shared/AtomicOperations-feeling-lucky-gcc.h b/js/src/jit/shared/AtomicOperations-feeling-lucky-gcc.h
+index f002cd46c93..1ce40efaccc 100644
+--- a/js/src/jit/shared/AtomicOperations-feeling-lucky-gcc.h
++++ b/js/src/jit/shared/AtomicOperations-feeling-lucky-gcc.h
+@@ -63,6 +63,11 @@
+ #  define HAS_64BIT_LOCKFREE
+ #endif
+ 
++#if defined(__riscv) && __riscv_xlen == 64
++#  define HAS_64BIT_ATOMICS
++#  define HAS_64BIT_LOCKFREE
++#endif
++
+ #ifdef __sparc__
+ #  ifdef __LP64__
+ #    define HAS_64BIT_ATOMICS
+diff --git a/mfbt/tests/TestPoisonArea.cpp b/mfbt/tests/TestPoisonArea.cpp
+index fbd33647150..9d2ffa498b7 100644
+--- a/mfbt/tests/TestPoisonArea.cpp
++++ b/mfbt/tests/TestPoisonArea.cpp
+@@ -132,6 +132,9 @@
+ #elif defined _ARCH_PPC || defined _ARCH_PWR || defined _ARCH_PWR2
+ #  define RETURN_INSTR 0x4E800020 /* blr */
+ 
++#elif defined __riscv
++#  define RETURN_INSTR 0x80828082 /* ret; ret */
++
+ #elif defined __sparc || defined __sparcv9
+ #  define RETURN_INSTR 0x81c3e008 /* retl */
+ 
+diff --git a/python/mozbuild/mozbuild/configure/constants.py b/python/mozbuild/mozbuild/configure/constants.py
+index 7542dcdc636..49ef3b857db 100644
+--- a/python/mozbuild/mozbuild/configure/constants.py
++++ b/python/mozbuild/mozbuild/configure/constants.py
+@@ -49,6 +49,7 @@
+     'mips64': 64,
+     'ppc': 32,
+     'ppc64': 64,
++    'riscv64': 64,
+     's390': 32,
+     's390x': 64,
+     'sh4': 32,
+@@ -87,6 +88,7 @@
+     ('sparc', '__sparc__'),
+     ('mips64', '__mips64'),
+     ('mips32', '__mips__'),
++    ('riscv64', '__riscv && __riscv_xlen == 64'),
+     ('sh4', '__sh__'),
+ ))
+ 
+diff --git a/python/mozbuild/mozbuild/test/configure/test_toolchain_configure.py b/python/mozbuild/mozbuild/test/configure/test_toolchain_configure.py
+index 37c4e26f0fb..5d3d5891dca 100755
+--- a/python/mozbuild/mozbuild/test/configure/test_toolchain_configure.py
++++ b/python/mozbuild/mozbuild/test/configure/test_toolchain_configure.py
+@@ -1208,6 +1208,10 @@ class LinuxCrossCompileToolchainTest(BaseToolchainTest):
+         'mips-unknown-linux-gnu': big_endian + {
+             '__mips__': 1,
+         },
++        'riscv64-unknown-linux-gnu': little_endian + {
++            '__riscv': 1,
++            '__riscv_xlen': 64,
++        },
+         'sh4-unknown-linux-gnu': little_endian + {
+             '__sh__': 1,
+         },

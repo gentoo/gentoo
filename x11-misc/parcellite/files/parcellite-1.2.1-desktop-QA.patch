@@ -1,0 +1,9 @@
+--- a/data/parcellite.desktop.in
++++ b/data/parcellite.desktop.in
+@@ -6,5 +6,5 @@
+ Exec=parcellite
+ Terminal=false
+ Type=Application
+-Categories=GTK;GNOME;Application;Utility;
++Categories=GTK;GNOME;Utility;
+ OnlyShowIn=GNOME;KDE;LXDE;MATE;Razor;ROX;TDE;Unity;XFCE;Old;

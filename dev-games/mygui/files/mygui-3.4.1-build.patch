@@ -1,0 +1,52 @@
+diff --git a/CMake/ConfigureBuild.cmake b/CMake/ConfigureBuild.cmake
+--- a/CMake/ConfigureBuild.cmake
++++ b/CMake/ConfigureBuild.cmake
+@@ -4,6 +4,8 @@
+ # also prepare package files for pkg-config and CMake.
+ #######################################################################
+ 
++include(GNUInstallDirs)
++
+ # should we build static libs?
+ if (MYGUI_STATIC)
+   set(MYGUI_LIB_TYPE STATIC)
+diff --git a/CMake/Utils/MyGUIConfigTargets.cmake b/CMake/Utils/MyGUIConfigTargets.cmake
+--- a/CMake/Utils/MyGUIConfigTargets.cmake
++++ b/CMake/Utils/MyGUIConfigTargets.cmake
+@@ -1,6 +1,8 @@
+ # Configure settings and install targets
+ # FIXME: Copypasted from Ogre and need lots of changes
+ 
++include(GNUInstallDirs)
++
+ if (WIN32)
+ 	set(MYGUI_RELEASE_PATH "/Release")
+ 	set(MYGUI_RELWDBG_PATH "/RelWithDebInfo")
+@@ -32,6 +34,12 @@ endif ()
+ 
+ # install targets according to current build type
+ function(mygui_install_target TARGETNAME SUFFIX)
++	install(TARGETS ${TARGETNAME}
++		RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}" CONFIGURATIONS Gentoo ""
++		LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}" CONFIGURATIONS Gentoo ""
++		ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}" CONFIGURATIONS Gentoo ""
++		FRAMEWORK DESTINATION "${MYGUI_FRAMEWORK_PATH}" CONFIGURATIONS Gentoo ""
++	)
+ 	install(TARGETS ${TARGETNAME}
+ 		RUNTIME DESTINATION "bin${MYGUI_RELEASE_PATH}" CONFIGURATIONS Release None ""
+ 		LIBRARY DESTINATION "lib${MYGUI_LIB_RELEASE_PATH}${SUFFIX}" CONFIGURATIONS Release None ""
+@@ -183,7 +191,13 @@ function(mygui_app PROJECTNAME SOLUTIONFOLDER)
+ 		endif ()
+ 		add_executable(${PROJECTNAME} ${MYGUI_EXEC_TYPE} ${HEADER_FILES} ${SOURCE_FILES})
+ 	endif ()
+-	set_target_properties(${PROJECTNAME} PROPERTIES FOLDER ${SOLUTIONFOLDER})
++
++	# rename demo target
++	if (${SOLUTIONFOLDER} STREQUAL "Demos")
++		set_target_properties(${PROJECTNAME} PROPERTIES FOLDER ${SOLUTIONFOLDER} OUTPUT_NAME MYGUI-${PROJECTNAME})
++	else()
++		set_target_properties(${PROJECTNAME} PROPERTIES FOLDER ${SOLUTIONFOLDER})
++	endif()
+ 
+ 	add_dependencies(${PROJECTNAME} MyGUIEngine Common)
+ 

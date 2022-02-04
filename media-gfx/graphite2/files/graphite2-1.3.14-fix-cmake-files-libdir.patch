@@ -1,0 +1,13 @@
+Fix CMake install path. Noticed as part of the SSP patch (which we handle in
+the ebuild instead).
+
+https://git.alpinelinux.org/aports/tree/main/graphite2/cmake.patch?h=3.15-stable
+https://bugs.gentoo.org/829690
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -156,4 +152,4 @@ endif()
+ 
+ 
+ install(TARGETS graphite2 EXPORT graphite2 LIBRARY DESTINATION lib${LIB_SUFFIX} ARCHIVE DESTINATION lib${LIB_SUFFIX} PUBLIC_HEADER DESTINATION include/graphite2 RUNTIME DESTINATION bin)
+-install(EXPORT graphite2 DESTINATION share/graphite2 NAMESPACE gr2_)
++install(EXPORT graphite2 DESTINATION lib${LIB_SUFFIX}/cmake/graphite2 NAMESPACE gr2_)

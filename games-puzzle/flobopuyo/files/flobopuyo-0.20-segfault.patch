@@ -1,0 +1,84 @@
+Fatch adjusted from Fedora to fix segfault when using optimizations.
+https://bugs.gentoo.org/815262
+--- a/PuyoGame.cpp
++++ b/PuyoGame.cpp
+@@ -639,3 +639,3 @@
+                             PuyoPuyo *markedPuyo = getPuyoAt(u, v);
+-                            if (markedPuyo->getPuyoState() == PUYO_MARKED) {
++                            if (markedPuyo && markedPuyo->getPuyoState() == PUYO_MARKED) {
+                                 // mark the puyo so we wont'do the job twice
+--- a/PuyoGame.h
++++ b/PuyoGame.h
+@@ -112,6 +112,18 @@
+   PuyoState getCompanionState() const { return companionPuyo->getPuyoState(); }
+-  PuyoState getFallingState() const { return fallingPuyo->getPuyoState(); }
++  PuyoState getFallingState() const {
++    if (fallingPuyo)
++      return fallingPuyo->getPuyoState();
++    return PUYO_EMPTY;
++  }
+ 
+-  int getFallingX() const { return fallingPuyo->getPuyoX(); }
+-  int getFallingY() const { return fallingPuyo->getPuyoY(); }
++  int getFallingX() const {
++    if (fallingPuyo)
++      return fallingPuyo->getPuyoX();
++    return 0;
++  }
++  int getFallingY() const {
++    if (fallingPuyo)
++      return fallingPuyo->getPuyoY();
++    return 0;
++  }
+   int getCompanionX() const { return companionPuyo->getPuyoX(); }
+--- a/PuyoIA.cpp
++++ b/PuyoIA.cpp
+@@ -111,6 +111,6 @@
+     {
+-      if ((c_x<(PUYODIMX - 1)) && (c_color == (game->getPuyoAt(c_x+1,c_y))->getPuyoState())) /* Test du pattern a droite */
++      if ((c_x<(PUYODIMX - 1)) && (c_color == (game->getPuyoCellAt(c_x+1,c_y))))
+       {
+-        PuyoState cColorA = (game->getPuyoAt(c_x+1,c_y+1))->getPuyoState();
+-        if ((c_color!=cColorA) && (cColorA>5) && (cColorA<11) && (cColorA == (game->getPuyoAt(c_x+1,c_y-1))->getPuyoState()))
++        PuyoState cColorA = (game->getPuyoCellAt(c_x+1,c_y+1));
++        if ((c_color!=cColorA) && (cColorA>5) && (cColorA<11) && (cColorA == (game->getPuyoCellAt(c_x+1,c_y-1))))
+         {
+@@ -120,6 +120,6 @@
+                     
+-      if ((c_x>0) && (c_color == (game->getPuyoAt(c_x-1,c_y))->getPuyoState())) /* Test du pattern a gauche */
++      if ((c_x>0) && (c_color == (game->getPuyoCellAt(c_x-1,c_y))))
+       {
+-        PuyoState cColorB = (game->getPuyoAt(c_x-1,c_y+1))->getPuyoState();
+-        if ((c_color!=cColorB) && (cColorB>5) && (cColorB<11) && (cColorB == (game->getPuyoAt(c_x-1,c_y-1))->getPuyoState()))
++        PuyoState cColorB = (game->getPuyoCellAt(c_x-1,c_y+1));
++        if ((c_color!=cColorB) && (cColorB>5) && (cColorB<11) && (cColorB == (game->getPuyoCellAt(c_x-1,c_y-1))))
+         {
+@@ -131,3 +131,3 @@
+     {
+-      if (c_color == (game->getPuyoAt(c_x,c_y+2))->getPuyoState())
++      if (c_color == (game->getPuyoCellAt(c_x,c_y+2)))
+       {
+@@ -140,6 +140,6 @@
+     {
+-      if ((f_x<(PUYODIMX - 1)) && (f_color == (game->getPuyoAt(f_x+1,f_y))->getPuyoState())) /* Test du pattern a droite */
++      if ((f_x<(PUYODIMX - 1)) && (f_color == (game->getPuyoCellAt(f_x+1,f_y))))
+       {
+-        PuyoState fColorA = (game->getPuyoAt(f_x+1,f_y+1))->getPuyoState();
+-        if ((f_color!=fColorA) && (fColorA>5) && (fColorA<11) && (fColorA == (game->getPuyoAt(f_x+1,f_y-1))->getPuyoState()))
++        PuyoState fColorA = (game->getPuyoCellAt(f_x+1,f_y+1));
++        if ((f_color!=fColorA) && (fColorA>5) && (fColorA<11) && (fColorA == (game->getPuyoCellAt(f_x+1,f_y-1))))
+         {
+@@ -149,6 +149,6 @@
+                                   
+-      if ((f_x>0) && (f_color == (game->getPuyoAt(f_x-1,f_y))->getPuyoState())) /* Test du pattern a gauche */
++      if ((f_x>0) && (f_color == (game->getPuyoCellAt(f_x-1,f_y))))
+       {
+         PuyoState fColorB = (game->getPuyoAt(f_x-1,f_y+1))->getPuyoState();
+-        if ((f_color!=fColorB) && (fColorB>5) && (fColorB<11) && (fColorB == (game->getPuyoAt(f_x-1,f_y-1))->getPuyoState()))
++        if ((f_color!=fColorB) && (fColorB>5) && (fColorB<11) && (fColorB == (game->getPuyoCellAt(f_x-1,f_y-1))))
+         {
+@@ -160,3 +160,3 @@
+     {
+-      if (f_color == (game->getPuyoAt(f_x,f_y+2))->getPuyoState())
++      if (f_color == (game->getPuyoCellAt(f_x,f_y+2)))
+       {

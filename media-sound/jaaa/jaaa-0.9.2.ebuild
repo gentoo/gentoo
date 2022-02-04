@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,9 +12,8 @@ SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-IUSE=""
 
-CDEPEND="
+RDEPEND="
 	dev-libs/libclthreads
 	>=media-libs/zita-alsa-pcmi-0.3
 	sci-libs/fftw:3.0=
@@ -22,15 +21,15 @@ CDEPEND="
 	x11-libs/gtk+:2
 	x11-libs/libclxclient
 "
-RDEPEND="${CDEPEND}"
-DEPEND="${CDEPEND}"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-Makefile.patch
 )
 
 src_compile() {
-	tc-export CXX
+	tc-export CXX PKG_CONFIG
 	emake -C source PREFIX="${EPREFIX}"/usr
 }
 

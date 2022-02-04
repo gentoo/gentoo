@@ -1,0 +1,31 @@
+--- a/tests/font.test	2020-12-26 19:15:55.199228774 +0100
++++ b/tests/font.test	2020-12-26 19:18:05.414951407 +0100
+@@ -399,7 +399,7 @@
+     # (tkfont == NULL)
+     font measure "\{xyz" abc
+ } -returnCodes error -result "font \"{xyz\" doesn't exist"
+-test font-9.5 {font command: measure} -body {
++test font-9.5 {font command: measure} -constraints knownBug -body {
+     # Tk_TextWidth()
+     expr {[font measure $fixed "abcdefg"] == [font measure $fixed "a"]*7 }
+ } -result 1
+@@ -450,7 +450,7 @@
+     # (Tcl_GetIndexFromObj() != TCL_OK)
+     font metrics $fixed -xyz
+ } -returnCodes error -result {bad metric "-xyz": must be -ascent, -descent, -linespace, or -fixed}
+-test font-10.9 {font command: metrics: get individual metrics} -body {
++test font-10.9 {font command: metrics: get individual metrics} -constraints knownBug -body {
+     font metrics $fixed -ascent
+     font metrics $fixed -descent
+     font metrics $fixed -linespace
+--- a/tests/scrollbar.test	2021-12-12 10:20:06.460611347 +0100
++++ b/tests/scrollbar.test	2021-12-12 10:21:12.204503285 +0100
+@@ -717,7 +717,7 @@
+     destroy .t .s
+ } -result {5.0}
+ 
+-test scrollbar-10.2.1 {<MouseWheel> event on scrollbar} -constraints {notAqua} -setup {
++test scrollbar-10.2.1 {<MouseWheel> event on scrollbar} -constraints knownBug -setup {
+     destroy .t .s
+ } -body {
+     pack [text .t -xscrollcommand {.s set} -wrap none] -side top

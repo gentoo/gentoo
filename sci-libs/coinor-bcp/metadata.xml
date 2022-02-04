@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>sci@gentoo.org</email>
@@ -13,4 +13,7 @@
 		the implementational effort. involved with implementing a branch and
 		bound framework from scratch.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">coin-or/Bcp</remote-id>
+	</upstream>
 </pkgmetadata>

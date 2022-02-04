@@ -1,0 +1,52 @@
+From 72b75e1976b50372f07271a5235ee8e9c75bdac4 Mon Sep 17 00:00:00 2001
+From: Kamalesh Babulal <kamalesh@linux.ibm.com>
+Date: Mon, 21 Jun 2021 11:42:02 +0530
+Subject: [PATCH] vpddbenv_c: fix compile warnings
+
+src/vpddbenv_c.c: In function 'new_vpddbenv':
+src/vpddbenv_c.c:56:17: warning: 'strncat' specified bound 1 equals source length [-Wstringop-overflow=]
+   56 |                 strncat( ret->fullPath, "/" , 1 );
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/vpddbenv_c.c:58:17: warning: 'strncat' accessing between 258 and 9223372036854775804 bytes at offsets 514 and 257 may overlap 1 byte at offset 514 [-Wrestrict]
+   58 |                 strncat( ret->fullPath, ret->dbFileName, strlen(ret->dbFileName) );
+      |
+                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+While compiling the code with GCC-11 (Fedora 34), the GCC complains
+about src string length and N bytes mentioned in the strncat() are of
+same length. It gets suspicious, when strncat() mimics strcat(), the
+strcat() was replaced using strncat() by the commit 38de4e65205
+("libvpd: Convert strcat to strncat") as part of secure coding.
+
+refactor the code using snprintf(), making the code lean and keep the
+GCC happy as well.
+
+Signed-off-by: Kamalesh Babulal <kamalesh@linux.ibm.com>
+Signed-off-by: Vasant Hegde <hegdevasant@linux.vnet.ibm.com>
+---
+ src/vpddbenv_c.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/src/vpddbenv_c.c b/src/vpddbenv_c.c
+index 96aecd3..bae36e9 100644
+--- a/src/vpddbenv_c.c
++++ b/src/vpddbenv_c.c
+@@ -50,14 +50,10 @@ struct vpddbenv * new_vpddbenv( const char *dir, const char *file )
+ 		ret->dbFileName[MAX_NAME_LENGTH] = '\0';
+ 	}
+ 
+-	strncpy( ret->fullPath, ret->envDir , FULL_PATH_SIZE - 1);
+-
+-	if (strlen(ret->fullPath) + 1 < FULL_PATH_SIZE)
+-		strncat( ret->fullPath, "/" , 1 );
+-	if (strlen(ret->fullPath) + strlen(ret->dbFileName) < FULL_PATH_SIZE)
+-		strncat( ret->fullPath, ret->dbFileName, strlen (ret->dbFileName) );
+-
+-	ret->fullPath[FULL_PATH_SIZE - 1] = '\0';
++	if ( ( strlen( ret->envDir ) + strlen( ret->dbFileName ) + 1 ) <
++			FULL_PATH_SIZE )
++		snprintf( ret->fullPath, FULL_PATH_SIZE,
++				"%s/%s", ret->envDir, ret->dbFileName );
+ 	
+ 	rc = sqlite3_open( ret->fullPath, &(ret->db) );
+ 	if( rc != SQLITE_OK )

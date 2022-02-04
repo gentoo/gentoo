@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tds.tgz"
 
 LICENSE="LPPL-1.3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="+biber doc examples"
 
 DEPEND="dev-texlive/texlive-bibtexextra

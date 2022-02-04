@@ -1,7 +1,0 @@
-CANNASERVER_ENABLE_SYSLOG="yes"
-
-# Specify user to run as
-CANNASERVER_OWNER="bin"
-
-# Options for cannaserver
-CANNASERVER_OPTS=""

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,8 @@ LEAPSECONDS_DATE="20081114"
 SRC_URI="https://cr.yp.to/clockspeed/${P}.tar.gz
 	https://dev.gentoo.org/~pacho/maintainer-needed/leapsecs.dat."$LEAPSECONDS_DATE""
 
-LICENSE="all-rights-reserved"
+# http://cr.yp.to/distributors.html
+LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 ~mips x86"
 IUSE="static selinux"

@@ -1,0 +1,29 @@
+From bda9b88e883207b99781352c68610980e23fa62f Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 11 Aug 2021 01:58:05 +0100
+Subject: [PATCH] Adjust Apache log paths for Gentoo
+
+Closes: https://bugs.gentoo.org/805485
+---
+ config/paths-common.conf | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/config/paths-common.conf b/config/paths-common.conf
+index 7383caf..4f4a6e1 100644
+--- a/config/paths-common.conf
++++ b/config/paths-common.conf
+@@ -36,9 +36,9 @@ sshd_backend = %(default_backend)s
+ dropbear_log = %(syslog_authpriv)s
+ dropbear_backend = %(default_backend)s
+ 
+-apache_error_log = /var/log/apache2/*error.log
++apache_error_log = /var/log/apache2/*error_log
+ 
+-apache_access_log = /var/log/apache2/*access.log
++apache_access_log = /var/log/apache2/*access_log
+ 
+ # from /etc/audit/auditd.conf
+ auditd_log = /var/log/audit/audit.log
+-- 
+2.32.0
+

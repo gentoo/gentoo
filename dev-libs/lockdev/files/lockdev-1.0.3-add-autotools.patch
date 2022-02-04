@@ -5,8 +5,8 @@ Contributed by Nick Fortino (nfortino@gmail.com) 2/1/2009
 
 Updated by Jonathan Callen <abcd@gentoo.org> 2009-09-11
 
---- Makefile.am
-+++ Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -0,0 +1,20 @@
 +include_HEADERS = src/lockdev.h src/ttylock.h
 +
@@ -28,9 +28,9 @@ Updated by Jonathan Callen <abcd@gentoo.org> 2009-09-11
 +	for page in $(manpage_links); do \
 +		$(LN_S) -f lockdev.3 $(DESTDIR)$(man3dir)/$${page} ; \
 +	done
---- configure.ac
-+++ configure.ac
-@@ -0,0 +1,22 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -0,0 +1,25 @@
 +AC_INIT([lockdev], [1.0.3], [BUG-REPORT-ADDRESS])
 +AC_CONFIG_AUX_DIR([scripts])
 +AM_INIT_AUTOMAKE
@@ -51,5 +51,8 @@ Updated by Jonathan Callen <abcd@gentoo.org> 2009-09-11
 +# Checks for programs.
 +AC_PROG_LN_S
 +
++AC_HEADER_MAJOR
++
++AC_CONFIG_HEADERS([config.h])
 +AC_CONFIG_FILES([Makefile])
 +AC_OUTPUT

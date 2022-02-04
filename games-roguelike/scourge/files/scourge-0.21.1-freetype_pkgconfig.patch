@@ -1,7 +1,5 @@
-Index: scourge/configure.in
-===================================================================
---- scourge/configure.in	(revision 3411)
-+++ scourge/configure.in	(working copy)
+--- a/configure.in
++++ b/configure.in
 @@ -56,6 +56,7 @@
  # Set up binreloc (for a relocatable autopackage file)
  AM_BINRELOC

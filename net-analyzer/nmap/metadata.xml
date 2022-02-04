@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>sam@gentoo.org</email>
@@ -9,9 +9,9 @@
 		<email>dilfridge@gentoo.org</email>
 		<name>Andreas K. Hüttel</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>netmon@gentoo.org</email>
-		<name>Gentoo network monitoring and analysis project</name>
+	<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
 	</maintainer>
 	<use>
 		<flag name="libssh2">Enable SSH support through <pkg>net-libs/libssh2</pkg></flag>

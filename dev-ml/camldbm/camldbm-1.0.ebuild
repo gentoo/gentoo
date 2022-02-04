@@ -1,7 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="OCaml binding to the NDBM/GDBM Unix databases"
 HOMEPAGE="http://forge.ocamlcore.org/projects/camldbm/"
@@ -19,6 +21,14 @@ PATCHES=(
 	"${FILESDIR}/hasgotfix.patch"
 	"${FILESDIR}/include_fix.patch"
 )
+
+src_prepare() {
+	sed -i \
+		-e "s|ranlib|$(tc-getRANLIB)|g" \
+		Makefile \
+		|| die
+	default
+}
 
 src_install() {
 	dodir "$(ocamlc -where)/stublibs" # required and makefile does not create it

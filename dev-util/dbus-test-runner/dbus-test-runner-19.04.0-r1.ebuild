@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 inherit flag-o-matic python-single-r1
 
 DESCRIPTION="Run executables under a new DBus session for testing"
@@ -12,7 +12,7 @@ SRC_URI="https://launchpad.net/${PN}/$(ver_cut 1-2)/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -30,20 +30,20 @@ COMMON_DEPEND="${PYTHON_DEPS}
 DEPEND="${COMMON_DEPEND}
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/dbusmock[${PYTHON_MULTI_USEDEP}]
+			dev-python/python-dbusmock[${PYTHON_USEDEP}]
 		')
 	)
 "
 RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/dbusmock[${PYTHON_MULTI_USEDEP}]
+		dev-python/python-dbusmock[${PYTHON_USEDEP}]
 	')
 "
 
 src_prepare() {
 	default
 
-	# bind to specific Python version (with dbusmock installed)
+	# bind to specific Python version (with python-dbusmock installed)
 	sed -i -e "s:python3:${EPYTHON}:" \
 		libdbustest/dbus-mock.c tests/test-libdbustest-mock.c || die
 }

@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
-inherit cmake flag-o-matic systemd toolchain-funcs
+inherit cmake systemd toolchain-funcs
 
 DESCRIPTION="Greenbone vulnerability manager, previously named openvas-manager"
 HOMEPAGE="https://www.greenbone.net/en/"
@@ -13,9 +13,7 @@ SRC_URI="https://github.com/greenbone/gvmd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
-IUSE="extras +postgres sqlite test"
-# keep deprecated USE Flags for revdep of gvm
-REQUIRED_USE="postgres !sqlite"
+IUSE="extras test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -46,15 +44,15 @@ BDEPEND="
 	test? ( dev-libs/cgreen )"
 
 PATCHES=(
-	# Replace deprecated glibc sys_siglist with strsignal 
+	# Replace deprecated glibc sys_siglist with strsignal
 	"${FILESDIR}/${P}-glibc_siglist.patch"
 )
 
 src_prepare() {
 	cmake_src_prepare
 	# QA-Fix | Use correct FHS/Gentoo policy paths for 9.0.0
-	sed -i -e "s*share/doc/gvm/html/*share/doc/gvmd-${PV}/html/*g" "$S"/doc/CMakeLists.txt || die
-	sed -i -e "s*/doc/gvm/*/doc/gvmd-${PV}/*g" "$S"/CMakeLists.txt || die
+	sed -i -e "s*share/doc/gvm/html/*share/doc/gvmd-${PV}/html/*g" "${S}"/doc/CMakeLists.txt || die
+	sed -i -e "s*/doc/gvm/*/doc/gvmd-${PV}/*g" "${S}"/CMakeLists.txt || die
 	# QA-Fix | Remove !CLANG Doxygen warnings for 9.0.0
 	if use extras; then
 		if ! tc-is-clang; then

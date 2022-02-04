@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>conikost@gentoo.org</email>
@@ -16,12 +16,12 @@
 	<use>
 		<flag name="ethlcd">Enable support for ethlcd in the hd44780 driver.</flag>
 		<flag name="extra-charmaps">Enable extra language specific charmaps.</flag>
-		<flag name="freetype">Enable support for <pkg>media-libs/freetype</pkg> in the glcd driver.</flag>
 		<flag name="menu">Enable menu support in the lcdproc client.</flag>
 		<flag name="nfs">Display NFS filesystem stats in the lcdproc client.</flag>
 		<flag name="png">Enable support for <pkg>media-libs/libpng</pkg> in the glcd driver.</flag>
 		<flag name="samba">Display SMBFS filesystem stats in the lcdproc client.</flag>
 		<flag name="test-menu">Enable test menu support for the lcdproc server.</flag>
+		<flag name="truetype">Enable support for <pkg>media-libs/freetype</pkg> in the glcd driver.</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://www.github.com/lcdproc/lcdproc/issues</bugs-to>

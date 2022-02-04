@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop qmake-utils xdg-utils
+inherit qmake-utils xdg-utils
 
 DESCRIPTION="2D animation and drawing program based on Qt5"
 HOMEPAGE="https://www.pencil2d.org/"

@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+EAPI=7
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 PYTHON_REQ_USE='threads(+)'
 PLOCALES="cs de el en_GB es eu fr it ja nn pl pt pt_PT ru sv zh"
-inherit eutils toolchain-funcs flag-o-matic l10n python-any-r1 waf-utils
+inherit eutils toolchain-funcs flag-o-matic plocale python-any-r1 waf-utils desktop xdg
 
 DESCRIPTION="Digital Audio Workstation"
 HOMEPAGE="https://ardour.org/"
@@ -15,16 +15,16 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://community.ardour.org/src/Ardour-${PV}.0.tar.bz2"
+	SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/Ardour-${PV}.0.tar.bz2"
 	S="${WORKDIR}/Ardour-${PV}.0"
 fi
 
 LICENSE="GPL-2"
-SLOT="6"
+SLOT="7"
 IUSE="altivec doc jack nls phonehome pulseaudio cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
-	dev-cpp/glibmm
+	dev-cpp/glibmm:2
 	dev-cpp/gtkmm:2.4
 	dev-cpp/libgnomecanvasmm:2.6
 	dev-libs/boost:=
@@ -59,16 +59,26 @@ RDEPEND="
 	media-libs/lilv
 	media-libs/sratom
 	dev-libs/sord
-	media-libs/suil
+	media-libs/suil[gtk]
 	media-libs/lv2"
 #	!bundled-libs? ( media-sound/fluidsynth ) at least libltc is missing to be able to unbundle...
 
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	jack? ( virtual/jack )
+	dev-util/itstool
 	sys-devel/gettext
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen[dot] )"
+	doc? ( app-doc/doxygen[dot] )
+	jack? ( virtual/jack )"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-6.8-metadata.patch"
+)
+
+pkg_pretend() {
+	[[ $(tc-getLD) == *gold* ]] && (has_version sci-libs/fftw[openmp] || has_version sci-libs/fftw[threads]) && \
+		ewarn "Linking with gold linker might produce broken executable, see bug #733972"
+}
 
 pkg_setup() {
 	if has_version \>=dev-libs/libsigc++-2.6 ; then
@@ -78,7 +88,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply_user
+	xdg_src_prepare
+
 	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript || die
 	MARCH=$(get-flag march)
 	OPTFLAGS=""
@@ -91,7 +102,7 @@ src_prepare() {
 	fi
 	if use cpu_flags_x86_mmx; then
 		if [[ ${MARCH} == "i486" ]]; then
-		    elog "You enabled mmx with i486 set as march! You have been warned!"
+			elog "You enabled mmx with i486 set as march! You have been warned!"
 		fi
 		OPTFLAGS="${OPTFLAGS} mmx"
 	fi
@@ -107,40 +118,68 @@ src_prepare() {
 	my_lcmsg() {
 		rm -f {gtk2_ardour,gtk2_ardour/appdata,libs/ardour,libs/gtkmm2ext}/po/${1}.po
 	}
-	l10n_for_each_disabled_locale_do my_lcmsg
+	plocale_for_each_disabled_locale my_lcmsg
 }
 
 src_configure() {
-	local backends="alsa"
+	# avoid bug https://bugs.gentoo.org/800067
+	local -x AS="$(tc-getCC) -c"
+
+	local backends="alsa,dummy"
 	use jack && backends+=",jack"
 	use pulseaudio && backends+=",pulseaudio"
 
 	tc-export CC CXX
 	mkdir -p "${D}"
-	waf-utils_src_configure \
-		--destdir="${D}" \
-		--configdir=/etc \
-		--optimize \
-		--with-backends=${backends} \
-		$(usex doc "--docs" '') \
-		$({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization") \
-		$(usex phonehome "--phone-home" "--no-phone-home") \
+	local myconf=(
+		--configdir=/etc
+		--freedesktop
+		--noconfirm
+		--optimize
+		--with-backends=${backends}
+		$({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization")
+		$(usex doc "--docs" '')
 		$(usex nls "--nls" "--no-nls")
-#not possible right now		--use-external-libs
+		$(usex phonehome "--phone-home" "--no-phone-home")
+		# not possible right now  --use-external-libs
+	)
+
+	waf-utils_src_configure "${myconf[@]}"
 }
+
 src_compile() {
 	waf-utils_src_compile
 	use nls && waf-utils_src_compile i18n
 }
+
 src_install() {
+	local s
+
 	waf-utils_src_install
-	mv ${PN}.1 ${PN}${SLOT}.1
+
+	mv ${PN}.1 ${PN}${SLOT}.1 || die
 	doman ${PN}${SLOT}.1
-	newicon "${S}/gtk2_ardour/resources/Ardour-icon_48px.png" ${PN}${SLOT}.png
-	make_desktop_entry ardour6 ardour6 ardour6 AudioVideo
+
+	for s in 16 22 32 48 256 512; do
+		newicon -s ${s} gtk2_ardour/resources/Ardour-icon_${s}px.png ardour${SLOT}.png
+	done
+
+	# the build system still installs ardour6.png files so we get rid of those to not conflict with ardour:6
+	find "${D}/usr/share/icons/" -name ardour6.png -delete
+
+	sed -i \
+		-e "s/\(^Name=\).*/\1Ardour ${SLOT}/" \
+		-e 's/;AudioEditing;/;X-AudioEditing;/' \
+		build/gtk2_ardour/ardour${SLOT}.desktop || die
+	domenu build/gtk2_ardour/ardour${SLOT}.desktop
+
+	insinto /usr/share/mime/packages
+	newins build/gtk2_ardour/ardour.xml ardour${SLOT}.xml
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
+
 	elog "Please do _not_ report problems with the package to ${PN} upstream."
 	elog "If you think you've found a bug, check the upstream binary package"
 	elog "before you report anything to upstream."

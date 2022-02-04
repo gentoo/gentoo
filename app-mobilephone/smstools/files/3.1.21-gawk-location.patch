@@ -1,9 +1,0 @@
-diff -uNr smstools3.ORIG/scripts/hex2bin smstools3/scripts/hex2bin
---- smstools3.ORIG/scripts/hex2bin	2017-09-11 14:11:48.040928533 +0100
-+++ smstools3/scripts/hex2bin	2017-09-11 14:12:00.925927820 +0100
-@@ -1,4 +1,4 @@
--#!/bin/gawk -f
-+#!/usr/bin/gawk -f
- 
- # This script reads a hex-dump and converts it to a binary file.
- # The hex-dump must contain one or more hexadecimal numbers separated

@@ -1,0 +1,134 @@
+--- a/rlogind/network.c
++++ b/rlogind/network.c
+@@ -90,7 +90,7 @@
+ 
+ 
+ static char *
+-find_hostname(const struct sockaddr_in *fromp, int *hostokp)
++find_hostname(const struct sockaddr_in *fromp, int no_host_check, int *hostokp)
+ {
+ 	struct hostent *hop;
+ 	char *hname;
+@@ -102,7 +102,7 @@
+ 		hname = strdup(inet_ntoa(fromp->sin_addr));
+ 		hostok = 1;
+ 	} 
+-	else if (check_all || local_domain(hop->h_name)) {
++	else if ((check_all || local_domain(hop->h_name )) && !no_host_check ) {
+ 		/*
+ 		 * If name returned by gethostbyaddr is in our domain,
+ 		 * attempt to verify that we haven't been fooled by someone
+@@ -143,7 +143,7 @@
+ 
+ 
+ char * 
+-network_init(int f, int *hostokp)
++network_init(int f, int no_host_check, int *hostokp)
+ {
+ 	struct sockaddr_in from, *fromp;
+ 	socklen_t fromlen;
+@@ -177,7 +177,7 @@
+ 
+ 	alarm(0);
+ 
+-	hname = find_hostname(fromp, hostokp);
++	hname = find_hostname(fromp,no_host_check, hostokp);
+ 
+ 	port = ntohs(fromp->sin_port);
+ 	if (fromp->sin_family != AF_INET ||
+--- a/rlogind/rlogind.c
++++ b/rlogind/rlogind.c
+@@ -84,6 +84,7 @@
+ int use_rhosts = 1;
+ int allow_root_rhosts = 0;
+ int deny_all_rhosts_hequiv = 0;
++static int no_host_check = 0;
+ 
+ static char oobdata[] = {(char)TIOCPKT_WINDOW};
+ static char line[MAXPATHLEN];
+@@ -386,7 +387,7 @@
+     int hostok;
+     char lusername[32], rusername[32], termtype[256];
+ 
+-    hname = network_init(netfd, &hostok);
++    hname = network_init(netfd, no_host_check, &hostok);
+ 
+     getstr(rusername, sizeof(rusername), "remuser too long");
+     getstr(lusername, sizeof(lusername), "locuser too long");
+@@ -439,15 +440,16 @@
+     openlog("rlogind", LOG_PID | LOG_CONS, LOG_AUTH);
+ 
+     opterr = 0;
+-    while ((ch = getopt(argc, argv, "ahLln")) != EOF) {
++    while ((ch = getopt(argc, argv, "ahLlDn")) != EOF) {
+ 	switch (ch) {
+ 	    case 'a': check_all = 1; break;
+ 	    case 'h': allow_root_rhosts = 1; break;
+ 	    case 'L': deny_all_rhosts_hequiv = 1; break;
+ 	    case 'l': use_rhosts = 0; break;
++	    case 'D': no_host_check = 1; break;			      
+ 	    case 'n': keepalive = 0; break;
+ 	    case '?': default:
+-		syslog(LOG_ERR, "usage: rlogind [-ahLln]");
++		syslog(LOG_ERR, "usage: rlogind [-ahLlDn]");
+ 		break;
+ 	}
+     }
+--- a/rlogind/rlogind.h
++++ b/rlogind/rlogind.h
+@@ -3,7 +3,7 @@
+ void fatal(int f, const char *msg, int syserr);
+ 
+ /* network.c */
+-char *network_init(int fd, int *hostokp);
++char *network_init(int fd, int no_host_check, int *hostokp);
+ void network_confirm(void);
+ void network_anticonfirm(void);
+ void network_close(void);
+--- a/rshd/rshd.c
++++ b/rshd/rshd.c
+@@ -90,13 +90,14 @@
+ static pam_handle_t *pamh;
+ #endif /* USE_PAM */
+ 
+-#define	OPTIONS	"ahlLn"
++#define	OPTIONS	"ahlLnD"
+ 
+ static int keepalive = 1;
+ static int check_all = 0;
+ static int paranoid = 0;
+ static int sent_null;
+-static int allow_root_rhosts=0;
++static int allow_root_rhosts = 0;
++static int no_host_check = 0;
+ 
+ char	username[20] = "USER=";
+ char	homedir[64] = "HOME=";
+@@ -305,6 +306,7 @@
+ 	/*
+ 	 * Attempt to confirm the DNS. 
+ 	 */
++
+ #ifdef	RES_DNSRCH
+ 	_res.options &= ~RES_DNSRCH;
+ #endif
+@@ -323,6 +325,8 @@
+ 	}
+ 	syslog(LOG_NOTICE, "Host addr %s not listed for host %s",
+ 	       inet_ntoa(fromp->sin_addr), hp->h_name);
++	if ( no_host_check == 1 ) 
++		return hostname;
+ 	fail("Host address mismatch for %s\n", 
+ 	     remuser, inet_ntoa(fromp->sin_addr), locuser, cmdbuf);
+ 	return NULL; /* not reachable */
+@@ -596,6 +600,10 @@
+ 			paranoid = 1;
+ 			break;
+ 
++		case 'D':
++			no_host_check = 1;
++			break;	
++			
+ 		case '?':
+ 		default:
+ 			syslog(LOG_ERR, "usage: rshd [-%s]", OPTIONS);

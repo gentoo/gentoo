@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,9 @@ RDEPEND="app-crypt/gnupg
 	dev-lang/php:*[posix,unicode]
 	dev-php/PEAR-Console_CommandLine
 	dev-php/PEAR-Exception"
-BDEPEND="test? ( ${RDEPEND} <dev-php/phpunit-6 )"
+BDEPEND="test? ( ${RDEPEND} <dev-php/phpunit-9 )"
+
+PATCHES=( "${FILESDIR}/1.6.4-fix-tests.patch" )
 
 S="${WORKDIR}/${MY_P}"
 

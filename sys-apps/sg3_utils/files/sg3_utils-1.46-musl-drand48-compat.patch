@@ -1,0 +1,99 @@
+diff -Naurp sg3_utils-1.46.orig/doc/sg_dd.8 sg3_utils-1.46/doc/sg_dd.8
+--- sg3_utils-1.46.orig/doc/sg_dd.8	2021-03-22 00:36:43.000000000 -0400
++++ sg3_utils-1.46/doc/sg_dd.8	2021-08-16 14:07:16.703526168 -0400
+@@ -394,7 +394,7 @@ random
+ this flag is only active with \fIiflag=\fR and when given replaces
+ \fIif=IFILE\fR. If both are given an error is generated. The input will
+ be a stream of pseudo random bytes. The Linux getrandom(2) system call is
+-used to create a seed and thereadter mrand48_r(3) is used to generate a
++used to create a seed and thereadter mrand48(3) is used to generate a
+ pseudo random sequence, 4 bytes at a time. The quality of the randomness
+ can be viewed with the ent(1) utility. This is not a high quality random
+ number generator, it is built for speed, not quality. One application is
+diff -Naurp sg3_utils-1.46.orig/src/sg_dd.c sg3_utils-1.46/src/sg_dd.c
+--- sg3_utils-1.46.orig/src/sg_dd.c	2021-03-27 20:58:36.000000000 -0400
++++ sg3_utils-1.46/src/sg_dd.c	2021-08-16 12:56:26.316550042 -0400
+@@ -176,7 +176,6 @@ static uint8_t * free_zeros_buff = NULL;
+ static int read_long_blk_inc = READ_LONG_DEF_BLK_INC;
+ 
+ static long seed;
+-static struct drand48_data drand;/* opaque, used by srand48_r and mrand48_r */
+ 
+ static const char * proc_allow_dio = "/proc/scsi/sg/allow_dio";
+ 
+@@ -2124,7 +2123,7 @@ main(int argc, char * argv[])
+ #endif
+         if (verbose > 1)
+             pr2serr("seed=%ld\n", seed);
+-        srand48_r(seed, &drand);
++        srand48(seed);
+     } else if (iflag.zero) {
+        ccp = "<zero bytes>";
+        cc2p = "00";
+@@ -2401,7 +2400,7 @@ main(int argc, char * argv[])
+                 for (kk = 0; kk < blocks; ++kk, bp += blk_sz) {
+                     for (j = 0; j < blk_sz; j += jbump) {
+                        /* mrand48 takes uniformly from [-2^31, 2^31) */
+-                        mrand48_r(&drand, &rn);
++                        rn = mrand48();
+                         *((uint32_t *)(bp + j)) = (uint32_t)rn;
+                     }
+                 }
+diff -Naurp sg3_utils-1.46.orig/testing/sgh_dd.cpp sg3_utils-1.46/testing/sgh_dd.cpp
+--- sg3_utils-1.46.orig/testing/sgh_dd.cpp	2021-03-28 21:27:17.000000000 -0400
++++ sg3_utils-1.46/testing/sgh_dd.cpp	2021-08-16 14:06:37.262536902 -0400
+@@ -312,7 +312,6 @@ typedef struct request_element
+     uint32_t in_mrq_q_blks;
+     uint32_t out_mrq_q_blks;
+     long seed;
+-    struct drand48_data drand;  /* opaque, used by srand48_r and mrand48_r */
+     pthread_t mrq_abort_thread_id;
+     Mrq_abort_info mai;
+ } Rq_elem;
+@@ -1491,7 +1490,7 @@ read_write_thread(void * v_tip)
+ #endif
+         if (vb > 1)
+             pr2serr_lk("thread=%d: seed=%ld\n", rep->id, rep->seed);
+-        srand48_r(rep->seed, &rep->drand);
++        srand48(rep->seed);
+     }
+     if (clp->in_flags.same_fds || clp->out_flags.same_fds)
+         ;
+@@ -1804,7 +1803,7 @@ normal_in_rd(Rq_elem * rep, int blocks)
+             for (k = 0, bp = rep->buffp; k < blocks; ++k, bp += clp->bs) {
+                 for (j = 0; j < clp->bs; j += jbump) {
+                     /* mrand48 takes uniformly from [-2^31, 2^31) */
+-                    mrand48_r(&rep->drand, &rn);
++                    rn = mrand48();
+                     *((uint32_t *)(bp + j)) = (uint32_t)rn;
+                 }
+             }
+diff -Naurp sg3_utils-1.46.orig/testing/sg_mrq_dd.cpp sg3_utils-1.46/testing/sg_mrq_dd.cpp
+--- sg3_utils-1.46.orig/testing/sg_mrq_dd.cpp	2021-03-28 21:27:17.000000000 -0400
++++ sg3_utils-1.46/testing/sg_mrq_dd.cpp	2021-08-16 14:06:45.842752108 -0400
+@@ -313,7 +313,6 @@ typedef struct request_element
+     int out_local_partial;
+     int in_resid_bytes;
+     long seed;
+-    struct drand48_data drand; /* opaque, used by srand48_r and mrand48_r */
+ } Rq_elem;
+ 
+ /* Additional parameters for sg_start_io() and sg_finish_io() */
+@@ -1310,7 +1309,7 @@ read_write_thread(struct global_collecti
+ #endif
+         if (vb > 1)
+             pr2serr_lk("[%d] %s: seed=%ld\n", id, __func__, rep->seed);
+-        srand48_r(rep->seed, &rep->drand);
++        srand48(rep->seed);
+     }
+ 
+     if (in_is_sg && clp->infp) {
+@@ -1524,7 +1523,7 @@ normal_in_rd(Rq_elem * rep, int64_t lba,
+             for (k = 0; k < blocks; ++k, bp += clp->bs) {
+                 for (j = 0; j < clp->bs; j += jbump) {
+                    /* mrand48 takes uniformly from [-2^31, 2^31) */
+-                    mrand48_r(&rep->drand, &rn);
++                    rn = mrand48();
+                     *((uint32_t *)(bp + j)) = (uint32_t)rn;
+                 }
+             }

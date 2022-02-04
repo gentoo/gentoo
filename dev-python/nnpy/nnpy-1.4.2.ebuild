@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -14,7 +14,6 @@ SRC_URI="https://github.com/nanomsg/nnpy/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm"
-IUSE=""
 
 DEPEND="
 	dev-python/cffi:=[${PYTHON_USEDEP}]
@@ -22,6 +21,4 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-python_test() {
-	PYTHONPATH="${S}:${PYTHONPATH}" "${PYTHON}" -m nnpy.tests || die
-}
+distutils_enable_tests unittest

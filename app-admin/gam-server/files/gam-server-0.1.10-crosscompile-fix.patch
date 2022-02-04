@@ -1,5 +1,5 @@
---- configure.in.orig	2009-04-26 23:00:43.445135823 +0300
-+++ configure.in	2009-04-26 23:25:04.042489243 +0300
+--- a/configure.in
++++ b/configure.in
 @@ -389,8 +389,7 @@
  
  AC_MSG_CHECKING(abstract socket namespace)

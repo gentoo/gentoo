@@ -1,0 +1,53 @@
+From ea89dcdbf167acd634300296172926c2e8d85804 Mon Sep 17 00:00:00 2001
+From: Cole Robinson <crobinso@redhat.com>
+Date: Sat, 15 Feb 2020 18:03:11 -0500
+Subject: [PATCH] test-tool: Use 'extern int' in headers
+
+Without this, linking fails on Fedora rawhide. Example:
+
+...
+/usr/bin/ld: test_async_lu_reset_simple.o:/root/libiscsi/libiscsi.git/test-tool/iscsi-support.h:59: multiple definition of `param_list_len_err_ascqs'; iscsi-test-cu.o:/root/libiscsi/libiscsi.git/test-tool/iscsi-support.h:59: first defined here
+/usr/bin/ld: test_async_lu_reset_simple.o:/root/libiscsi/libiscsi.git/test-tool/iscsi-support.h:58: multiple definition of `invalid_cdb_ascqs'; iscsi-test-cu.o:/root/libiscsi/libiscsi.git/test-tool/iscsi-support.h:58: first defined here
+...
+
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+---
+ test-tool/iscsi-support.h | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/test-tool/iscsi-support.h b/test-tool/iscsi-support.h
+index 7aa9e45..9c3a461 100644
+--- a/test-tool/iscsi-support.h
++++ b/test-tool/iscsi-support.h
+@@ -53,17 +53,17 @@ extern const char *initiatorname2;
+ #define EXPECT_RESERVATION_CONFLICT SCSI_STATUS_RESERVATION_CONFLICT, 0, NULL, 0
+ #define EXPECT_COPY_ABORTED SCSI_STATUS_CHECK_CONDITION, SCSI_SENSE_COPY_ABORTED, copy_aborted_ascqs, 3
+ 
+-int no_medium_ascqs[3];
+-int lba_oob_ascqs[1];
+-int invalid_cdb_ascqs[2];
+-int param_list_len_err_ascqs[1];
+-int too_many_desc_ascqs[2];
+-int unsupp_desc_code_ascqs[2];
+-int write_protect_ascqs[3];
+-int sanitize_ascqs[1];
+-int removal_ascqs[1];
+-int miscompare_ascqs[1];
+-int copy_aborted_ascqs[3];
++extern int no_medium_ascqs[3];
++extern int lba_oob_ascqs[1];
++extern int invalid_cdb_ascqs[2];
++extern int param_list_len_err_ascqs[1];
++extern int too_many_desc_ascqs[2];
++extern int unsupp_desc_code_ascqs[2];
++extern int write_protect_ascqs[3];
++extern int sanitize_ascqs[1];
++extern int removal_ascqs[1];
++extern int miscompare_ascqs[1];
++extern int copy_aborted_ascqs[3];
+ 
+ extern int loglevel;
+ #define LOG_SILENT  0
+-- 
+2.31.1
+

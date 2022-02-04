@@ -1,0 +1,33 @@
+--- a/Makefile	2021-11-18 21:58:13.144841987 +0100
++++ b/Makefile	2021-11-18 21:59:15.974876738 +0100
+@@ -185,10 +185,9 @@
+ #  build
+ 
+ build-tools-native:
+-	$(GPRBUILD) -p $(GPROPTS) $(GPR_STATIC) tools/tools.gpr
++	$(GPRBUILD) -p $(GPROPTS) $(GPR_SHARED) tools/tools.gpr
+ 
+ build-lib-native:
+-	$(GPRBUILD) -p $(GPROPTS) aws.gpr
+ ifeq (${ENABLE_SHARED}, true)
+ 	$(GPRBUILD) -p $(GPROPTS) $(GPR_SHARED) aws.gpr
+ endif
+@@ -259,15 +258,15 @@
+ 	--build-var=LIBRARY_TYPE --build-var=AWS_BUILD
+ 
+ install-lib-native:
+-	$(GPRINSTALL) $(GPROPTS) $(GPRINST_OPTS) $(GPR_DEFAULT) \
+-		--build-name=$(DEFAULT_LIBRARY_TYPE) aws.gpr
+ ifeq (${ENABLE_SHARED}, true)
+ 	$(GPRINSTALL) $(GPROPTS) $(GPRINST_OPTS) \
+ 		$(GPR_OTHER) --build-name=$(OTHER_LIBRARY_TYPE) aws.gpr
++	$(GPRINSTALL) $(GPROPTS) $(GPRINST_OPTS) \
++		$(GPR_OTHER) --build-name=$(OTHER_LIBRARY_TYPE) ssl/ssl.gpr
+ endif
+ 
+ install-tools-native:
+-	$(GPRINSTALL) $(GPROPTS) $(GPRINST_OPTS) $(GPR_STATIC) --mode=usage \
++	$(GPRINSTALL) $(GPROPTS) $(GPRINST_OPTS) $(GPR_SHARED) --mode=usage \
+ 		--build-name=$(DEFAULT_LIBRARY_TYPE) \
+ 		--install-name=aws tools/tools.gpr
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,12 +18,11 @@ HOMEPAGE="https://icinga.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="console jumbo-build libressl lto mail mariadb minimal +mysql nano-syntax +plugins postgres systemd +vim-syntax"
+IUSE="console jumbo-build lto mail mariadb minimal +mysql nano-syntax +plugins postgres systemd +vim-syntax"
 
 # Add accounts to DEPEND because of fowners in src_install
 DEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	>=dev-libs/boost-1.66.0:=[context]
 	console? ( dev-libs/libedit )
 	mariadb? ( dev-db/mariadb-connector-c:= )
@@ -106,11 +105,13 @@ src_install() {
 	rm -r "${D}/run" || die "failed to remove /run"
 	rm -r "${D}/var/cache" || die "failed to remove /var/cache"
 
-	fowners root:icinga /etc/icinga2
+	fowners -R icinga:icinga /etc/icinga2
 	fperms 0750 /etc/icinga2
 	fowners icinga:icinga /var/lib/icinga2
-	fowners icinga:icinga /var/spool/icinga2
 	fowners -R icinga:icingacmd /var/lib/icinga2/api
+	fowners -R icinga:icingacmd /var/lib/icinga2/certificate-requests
+	fowners -R icinga:icingacmd /var/lib/icinga2/certs
+	fowners icinga:icinga /var/spool/icinga2
 	fowners icinga:icinga /var/spool/icinga2/perfdata
 	fowners icinga:icingacmd /var/log/icinga2
 

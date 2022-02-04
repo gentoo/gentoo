@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="project">
  <email>toolchain@gentoo.org</email>
  <name>Gentoo Toolchain Project</name>
 </maintainer>
 <use>
- <flag name="client">Install the main "gdb" program (most people want this)</flag>
+ <flag name="cet">Enable Intel Control-flow Enforcement Technology.</flag>
  <flag name="lzma">Support lzma compression in ELF debug info</flag>
  <flag name="multitarget">Support all known targets in one gdb binary</flag>
  <flag name="python">Enable support for the new internal scripting language, as well as extended pretty printers</flag>

@@ -1,0 +1,11 @@
+--- a/src/output.cpp
++++ b/src/output.cpp
+@@ -163,7 +163,7 @@
+   m_pFile->Write(acBuf, strlen(acBuf));
+   sprintf(acBuf, "%s", "# generated with SffToBmp\n");
+   m_pFile->Write(acBuf, strlen(acBuf));
+-  sprintf(acBuf, "%ld %ld\n", aWidth, aHeight);
++  sprintf(acBuf, "%u %u\n", aWidth, aHeight);
+   m_pFile->Write(acBuf, strlen(acBuf));
+ }
+ 

@@ -1,11 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ssl-cert.eclass
 # @MAINTAINER:
+# maintainer-needed@gentoo.org
 # @AUTHOR:
 # Max Kalika <max@gentoo.org>
-# @SUPPORTED_EAPIS: 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Eclass for SSL certificates
 # @DESCRIPTION:
 # This eclass implements a standard installation procedure for installing
@@ -13,43 +14,42 @@
 # @EXAMPLE:
 # "install_cert /foo/bar" installs ${ROOT}/foo/bar.{key,csr,crt,pem}
 
-# Guard against unsupported EAPIs.  We need EAPI >= 1 for slot dependencies.
-case "${EAPI:-0}" in
-	0)
-		die "${ECLASS}.eclass: EAPI=0 is not supported.  Please upgrade to EAPI >= 1."
-		;;
-	1|2|3|4|5|6|7)
-		;;
-	*)
-		die "${ECLASS}.eclass: EAPI=${EAPI} is not supported yet."
-		;;
+case "${EAPI}" in
+	6|7|8) ;;
+	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
+if [[ ! ${_SSL_CERT_ECLASS} ]]; then
+_SSL_CERT_ECLASS=1
+
 # @ECLASS-VARIABLE: SSL_CERT_MANDATORY
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Set to non zero if ssl-cert is mandatory for ebuild.
 : ${SSL_CERT_MANDATORY:=0}
 
 # @ECLASS-VARIABLE: SSL_CERT_USE
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Use flag to append dependency to.
 : ${SSL_CERT_USE:=ssl}
 
 # @ECLASS-VARIABLE: SSL_DEPS_SKIP
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Set to non zero to skip adding to DEPEND and IUSE.
 : ${SSL_DEPS_SKIP:=0}
 
 if [[ "${SSL_DEPS_SKIP}" == "0" ]]; then
 	if [[ "${SSL_CERT_MANDATORY}" == "0" ]]; then
-		SSL_DEPEND="${SSL_CERT_USE}? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) )"
+		SSL_DEPEND="${SSL_CERT_USE}? ( dev-libs/openssl:0 )"
 		IUSE="${SSL_CERT_USE}"
 	else
-		SSL_DEPEND="|| ( dev-libs/openssl:0 dev-libs/libressl:0 )"
+		SSL_DEPEND="dev-libs/openssl:0"
 	fi
 
 	case "${EAPI}" in
-		1|2|3|4|5|6)
+		6)
 			DEPEND="${SSL_DEPEND}"
 		;;
 		*)
@@ -61,12 +61,12 @@ if [[ "${SSL_DEPS_SKIP}" == "0" ]]; then
 fi
 
 # @FUNCTION: gen_cnf
+# @INTERNAL
 # @USAGE:
 # @DESCRIPTION:
 # Initializes variables and generates the needed
 # OpenSSL configuration file and a CA serial file
 #
-# Access: private
 gen_cnf() {
 	# Location of the config file
 	SSL_CONF="${T}/${$}ssl.cnf"
@@ -113,13 +113,13 @@ gen_cnf() {
 }
 
 # @FUNCTION: get_base
+# @INTERNAL
 # @USAGE: [if_ca]
 # @RETURN: <base path>
 # @DESCRIPTION:
 # Simple function to determine whether we're creating
 # a CA (which should only be done once) or final part
 #
-# Access: private
 get_base() {
 	if [ "${1}" ] ; then
 		echo "${T}/${$}ca"
@@ -129,32 +129,28 @@ get_base() {
 }
 
 # @FUNCTION: gen_key
+# @INTERNAL
 # @USAGE: <base path>
 # @DESCRIPTION:
 # Generates an RSA key
 #
-# Access: private
 gen_key() {
 	local base=$(get_base "$1")
 	ebegin "Generating ${SSL_BITS} bit RSA key${1:+ for CA}"
-	if openssl version | grep -i libressl > /dev/null; then
-		openssl genrsa -out "${base}.key" "${SSL_BITS}" &> /dev/null
-	else
 		openssl genrsa -rand "${SSL_RANDOM}" \
 			-out "${base}.key" "${SSL_BITS}" &> /dev/null
-	fi
 	eend $?
 
 	return $?
 }
 
 # @FUNCTION: gen_csr
+# @INTERNAL
 # @USAGE: <base path>
 # @DESCRIPTION:
 # Generates a certificate signing request using
 # the key made by gen_key()
 #
-# Access: private
 gen_csr() {
 	local base=$(get_base "$1")
 	ebegin "Generating Certificate Signing Request${1:+ for CA}"
@@ -166,6 +162,7 @@ gen_csr() {
 }
 
 # @FUNCTION: gen_crt
+# @INTERNAL
 # @USAGE: <base path>
 # @DESCRIPTION:
 # Generates either a self-signed CA certificate using
@@ -173,7 +170,6 @@ gen_csr() {
 # a signed server certificate using the CA cert previously
 # created by gen_crt()
 #
-# Access: private
 gen_crt() {
 	local base=$(get_base "$1")
 	if [ "${1}" ] ; then
@@ -196,12 +192,12 @@ gen_crt() {
 }
 
 # @FUNCTION: gen_pem
+# @INTERNAL
 # @USAGE: <base path>
 # @DESCRIPTION:
 # Generates a PEM file by concatinating the key
 # and cert file created by gen_key() and gen_cert()
 #
-# Access: private
 gen_pem() {
 	local base=$(get_base "$1")
 	ebegin "Generating PEM Certificate"
@@ -220,7 +216,6 @@ gen_pem() {
 #
 # Example: "install_cert /foo/bar" installs ${ROOT}/foo/bar.{key,csr,crt,pem}
 #
-# Access: public
 install_cert() {
 	if [ $# -lt 1 ] ; then
 		eerror "At least one argument needed"
@@ -284,3 +279,5 @@ install_cert() {
 		ewarn "Some requested certificates were not generated"
 	fi
 }
+
+fi

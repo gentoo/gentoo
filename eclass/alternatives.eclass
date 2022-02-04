@@ -1,9 +1,12 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: alternatives.eclass
+# @MAINTAINER:
+# maintainer-needed@gentoo.org
 # @AUTHOR:
-# Original author: Alastair Tse <liquidx@gentoo.org> (03 Oct 2003)
+# Alastair Tse <liquidx@gentoo.org> (03 Oct 2003)
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Creates symlink to the latest version of multiple slotted packages.
 # @DESCRIPTION:
 # When a package is SLOT'ed, very often we need to have a symlink to the
@@ -38,6 +41,16 @@
 # link to. It is probably more robust against version upgrades. You should
 # consider using this unless you are want to do something special.
 
+case ${EAPI} in
+	[5-7]) ;;
+	*)     die "EAPI=${EAPI:-0} is not supported" ;;
+esac
+
+EXPORT_FUNCTIONS pkg_postinst pkg_postrm
+
+if [[ -z ${_ALTERNATIVES_ECLASS} ]]; then
+_ALTERNATIVES_ECLASS=1
+
 # @ECLASS-VARIABLE: SOURCE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -50,9 +63,8 @@
 
 # @FUNCTION: alternatives_auto_makesym
 # @DESCRIPTION:
-# automatic deduction based on a symlink and a regex mask
+# Automatic deduction (Bash pathname expansion) based on a symlink and a regex mask
 alternatives_auto_makesym() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EROOT="${ROOT}"
 	local SYMLINK REGEX ALT myregex
 	SYMLINK=$1
 	REGEX=$2
@@ -72,8 +84,10 @@ alternatives_auto_makesym() {
 	alternatives_makesym ${SYMLINK} ${ALT}
 }
 
+# @FUNCTION: alternatives_makesym
+# @DESCRIPTION:
+# Creates symlink based on a symlink and regex mask literally
 alternatives_makesym() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 	local ALTERNATIVES=""
 	local SYMLINK=""
 	local alt pref
@@ -121,7 +135,7 @@ alternatives_makesym() {
 	fi
 }
 
-# @FUNCTION: alernatives-pkg_postinst
+# @FUNCTION: alternatives_pkg_postinst
 # @DESCRIPTION:
 # The alternatives pkg_postinst, this function will be exported
 alternatives_pkg_postinst() {
@@ -139,4 +153,4 @@ alternatives_pkg_postrm() {
 	fi
 }
 
-EXPORT_FUNCTIONS pkg_postinst pkg_postrm
+fi

@@ -1,5 +1,5 @@
---- base/Config.cpp
-+++ base/Config.cpp
+--- a/base/Config.cpp
++++ b/base/Config.cpp
 @@ -423,8 +423,8 @@
    m_sDataDir = string(EM_DATADIR) + "/";
    m_sExeDir = "./";

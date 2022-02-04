@@ -1,0 +1,41 @@
+https://sourceware.org/git/?p=binutils-gdb.git;a=patch;h=80d1206d7fea6eb756183e2825abdfd0f00cd976
+https://sourceware.org/PR27999
+
+From 80d1206d7fea6eb756183e2825abdfd0f00cd976 Mon Sep 17 00:00:00 2001
+From: Andreas Schwab <schwab@suse.de>
+Date: Mon, 21 Jun 2021 11:38:23 +0200
+Subject: [PATCH] gdb: Support DW_LLE_start_end
+
+Without that it is impossible to debug on riscv64.
+
+--- a/gdb/dwarf2/loc.c
++++ b/gdb/dwarf2/loc.c
+@@ -255,9 +255,27 @@ decode_debug_loclists_addresses (dwarf2_per_cu_data *per_cu,
+       *new_ptr = loc_ptr;
+       return DEBUG_LOC_OFFSET_PAIR;
+ 
++    case DW_LLE_start_end:
++      if (loc_ptr + 2 * addr_size > buf_end)
++	return DEBUG_LOC_BUFFER_OVERFLOW;
++
++      if (signed_addr_p)
++	*low = extract_signed_integer (loc_ptr, addr_size, byte_order);
++      else
++	*low = extract_unsigned_integer (loc_ptr, addr_size, byte_order);
++
++      loc_ptr += addr_size;
++      if (signed_addr_p)
++	*high = extract_signed_integer (loc_ptr, addr_size, byte_order);
++      else
++	*high = extract_unsigned_integer (loc_ptr, addr_size, byte_order);
++
++      loc_ptr += addr_size;
++      *new_ptr = loc_ptr;
++      return DEBUG_LOC_START_END;
++
+     /* Following cases are not supported yet.  */
+     case DW_LLE_startx_endx:
+-    case DW_LLE_start_end:
+     case DW_LLE_default_location:
+     default:
+       return DEBUG_LOC_INVALID_ENTRY;

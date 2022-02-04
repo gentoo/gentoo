@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,15 +11,16 @@ SRC_URI="https://www.freedesktop.org/software/vaapi/releases/libva-vdpau-driver/
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm64 x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 IUSE="debug opengl"
 
-RDEPEND=">=x11-libs/libva-1.2.1-r1:=[X,opengl?,${MULTILIB_USEDEP}]
+RDEPEND="
+	>=x11-libs/libva-1.2.1-r1:=[X,opengl?,${MULTILIB_USEDEP}]
+	>=x11-libs/libvdpau-0.8[${MULTILIB_USEDEP}]
 	opengl? ( >=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}] )
-	>=x11-libs/libvdpau-0.8[${MULTILIB_USEDEP}]"
-
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( NEWS README AUTHORS )
 

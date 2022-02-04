@@ -1,0 +1,49 @@
+From 2ffb20201c00a4de9c8082c909e2428c2b46d5c2 Mon Sep 17 00:00:00 2001
+From: jolheiser <john.olheiser@gmail.com>
+Date: Sun, 3 Oct 2021 16:23:29 -0500
+Subject: [PATCH] Fix TCP constant
+
+Signed-off-by: jolheiser <john.olheiser@gmail.com>
+---
+ src/tcp/tcp.go      | 7 +++----
+ src/tcp/tcp_test.go | 4 ++--
+ 2 files changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/src/tcp/tcp.go b/src/tcp/tcp.go
+index 2714e5f1..d271756b 100644
+--- a/src/tcp/tcp.go
++++ b/src/tcp/tcp.go
+@@ -37,10 +37,9 @@ type roomMap struct {
+ 	sync.Mutex
+ }
+ 
+-const (
+-	timeToRoomDeletion = 10 * time.Minute
+-	pingRoom           = "pinglkasjdlfjsaldjf"
+-)
++const pingRoom = "pinglkasjdlfjsaldjf"
++
++var timeToRoomDeletion = 10 * time.Minute
+ 
+ // Run starts a tcp listener, run async
+ func Run(debugLevel, host, port, password string, banner ...string) (err error) {
+diff --git a/src/tcp/tcp_test.go b/src/tcp/tcp_test.go
+index 165f9537..6ba99677 100644
+--- a/src/tcp/tcp_test.go
++++ b/src/tcp/tcp_test.go
+@@ -25,13 +25,13 @@ func TestTCP(t *testing.T) {
+ 	log.SetLevel("error")
+ 	timeToRoomDeletion = 100 * time.Millisecond
+ 	go Run("debug", "localhost", "8281", "pass123", "8282")
+-	time.Sleep(100 * time.Millisecond)
++	time.Sleep(timeToRoomDeletion)
+ 	err := PingServer("localhost:8281")
+ 	assert.Nil(t, err)
+ 	err = PingServer("localhost:8333")
+ 	assert.NotNil(t, err)
+ 
+-	time.Sleep(100 * time.Millisecond)
++	time.Sleep(timeToRoomDeletion)
+ 	c1, banner, _, err := ConnectToTCPServer("localhost:8281", "pass123", "testRoom", 1*time.Minute)
+ 	assert.Equal(t, banner, "8282")
+ 	assert.Nil(t, err)

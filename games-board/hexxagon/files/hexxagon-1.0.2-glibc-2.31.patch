@@ -1,0 +1,11 @@
+glibc-2.31 removed timezone support and it conflicts with the re-declaration.
+https://bugs.gentoo.org/710712
+--- a/src/gui/microtime.h
++++ b/src/gui/microtime.h
+@@ -24,6 +24,4 @@
+ #include <time.h>
+ 
+-int gettimeofday(struct timeval *tv, struct timezone *tz);
+-int settimeofday(const struct timeval *tv , const struct timezone *tz);
+ 
+ class MicroTime

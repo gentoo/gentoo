@@ -1,0 +1,28 @@
+Fix build with gtk-doc-1.32
+
+This bug was reported here:
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=939956
+
+The issue is that gtk-doc-1.32 no longer generates empty tree_index
+files.  The recommendation is that liblangtag be modified to no longer
+reference what used to be an empty tree_index, but is now a missing
+file.  The same bug report contained the patch implemented here, which
+removes the reference to a now-missing tree_index file.
+
+The fix should already be provided in newer versions of liblangtag.
+
+diff --git a/docs/liblangtag-docs.sgml b/docs/liblangtag-docs.sgml
+index 1234567..1234567 100644
+--- a/docs/liblangtag-docs.sgml
++++ b/docs/liblangtag-docs.sgml
+@@ -58,10 +58,6 @@
+     </section>
+ 
+   </chapter>
+-  <chapter id="object-tree">
+-    <title>Object Hierarchy</title>
+-     <xi:include href="xml/tree_index.sgml"/>
+-  </chapter>
+   <index id="api-index-full">
+     <title>API Index</title>
+     <xi:include href="xml/api-index-full.xml"><xi:fallback /></xi:include>

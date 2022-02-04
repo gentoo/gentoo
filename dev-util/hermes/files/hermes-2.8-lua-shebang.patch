@@ -1,0 +1,23 @@
+diff --git a/bin/lua_cmd b/bin/lua_cmd
+index fabc5d5..32c8e13 100755
+--- a/bin/lua_cmd
++++ b/bin/lua_cmd
+@@ -37,7 +37,7 @@ extra=
+ if [ "x$LUA_PATH" != x ]; then
+   extra=";$LUA_PATH"
+ else
+-  extra=";`lua -e 'print(package.path)'`"
++  extra=";`@LUA@ -e 'print(package.path)'`"
+ fi
+ 
+ export LUA_PATH="$execLuaPath$extra"
+diff --git a/lib/tool.lua b/lib/tool.lua
+index 01acca1..bec5e8d 100755
+--- a/lib/tool.lua
++++ b/lib/tool.lua
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env lua
++#!@LUA@
+ _DEBUG      = false
+ local posix = require("posix")
+ 

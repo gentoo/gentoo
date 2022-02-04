@@ -1,10 +1,9 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 optfeature
 
@@ -16,21 +15,17 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm64 x86"
 
-RDEPEND="
-	dev-python/dnspython[${PYTHON_USEDEP}]
-"
-
-distutils_enable_tests unittest
-
-BDEPEND+="
+RDEPEND="dev-python/dnspython[${PYTHON_USEDEP}]"
+BDEPEND="
 	test? (
 		dev-python/authres[${PYTHON_USEDEP}]
 		dev-python/pynacl[${PYTHON_USEDEP}]
 	)
 "
 
+distutils_enable_tests unittest
+
 pkg_postinst() {
-	elog "Optional dependencies:"
 	optfeature "ARC support" dev-python/authres
 	optfeature "ed25519 capability" dev-python/pynacl
 	optfeature "asyncio support" dev-python/aiodns

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_EXTRADOC="Readme.md"
 
@@ -22,7 +22,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-ruby_add_bdepend "test? ( dev-ruby/rails:5.2 dev-ruby/activerecord:5.2[sqlite] dev-ruby/temple )"
+ruby_add_bdepend "test? ( dev-ruby/rails:6.0 dev-ruby/activerecord:6.0[sqlite] dev-ruby/temple )"
 ruby_add_rdepend ">=dev-ruby/fast_gettext-0.9.0:*"
 
 all_ruby_prepare() {
@@ -34,5 +34,5 @@ all_ruby_prepare() {
 	rm spec/gettext_i18n_rails/slim_parser_spec.rb spec/gettext_i18n_rails/haml_parser_spec.rb || die
 
 	# Test against Rails 4.2.0
-	sed -e '1igem "rails", "~>5.2.0"' -i spec/spec_helper.rb || die
+	sed -e '1igem "rails", "~>6.0.0"' -i spec/spec_helper.rb || die
 }

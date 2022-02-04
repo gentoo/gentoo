@@ -1,0 +1,204 @@
+diff --git a/Dockerfile b/Dockerfile
+index a52759e..506c28a 100644
+--- a/Dockerfile
++++ b/Dockerfile
+@@ -1,10 +1,13 @@
+ ARG PHP_IMAGE=php:8.0
+ FROM $PHP_IMAGE
+ 
++RUN docker-php-ext-configure pcntl --enable-pcntl \
++    && docker-php-ext-install -j$(nproc) pcntl
++
+ RUN apt-get update && apt-get install -y \ 
+ 	git \
+ 	zlib1g-dev \
+-	memcached ; 
++	memcached ;
+ 
+ COPY docker/host.conf /etc/host.conf
+ 
+diff --git a/README b/README
+index b36fa46..07f8f89 100644
+--- a/README
++++ b/README
+@@ -3,7 +3,7 @@ This is an official repository for pecl-memcache plugin since 2019.
+ This repository contains modified pecl-memcache plugin ported to PHP8,
+ which was originally developed for the need of hosting company in Slovakia (Websupport.sk). 
+ 
+-The latest release is 8.0 (released: 2020-12-06) with support for PHP 8.0.
++The latest release is 8.0 (released: 2020-12-06) with support for PHP 8.0 and unofficial support for PHP 7.3 and 7.4
+ 
+ Please use version 4.0.5.1 (released: 2020-12-19) for PHP 7.x from branch NON_BLOCKING_IO_php7.
+ 
+diff --git a/Vagrantfile b/Vagrantfile
+new file mode 100644
+index 0000000..8665890
+--- /dev/null
++++ b/Vagrantfile
+@@ -0,0 +1,17 @@
++# -*- mode: ruby -*-
++# vi: set ft=ruby :
++
++VAGRANTFILE_API_VERSION = '2'
++
++Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
++    config.vm.box = 'ubuntu/bionic64'
++
++    config.vm.provider :virtualbox do |vb|
++        vb.name = 'ext-memcache-dev'
++        vb.memory = 1024
++        vb.cpus = 2
++    end
++
++    config.vm.provision 'docker'
++
++end
+diff --git a/src/memcache.c b/src/memcache.c
+index 7c3a660..2cb675b 100644
+--- a/src/memcache.c
++++ b/src/memcache.c
+@@ -924,7 +924,7 @@ static void php_mmc_store(INTERNAL_FUNCTION_PARAMETERS, int op) /* {{{ */
+ 				continue;
+ 			}
+ 
+-			/* begin sending requests immediatly */
++			/* begin sending requests immediately */
+ 			mmc_pool_select(pool);
+ 		} ZEND_HASH_FOREACH_END();
+ 	}
+@@ -1089,7 +1089,7 @@ static void php_mmc_numeric(INTERNAL_FUNCTION_PARAMETERS, int deleted, int inver
+ 				continue;
+ 			}
+ 
+-			/* begin sending requests immediatly */
++			/* begin sending requests immediately */
+ 			mmc_pool_select(pool);
+ 		} ZEND_HASH_FOREACH_END();
+ 
+@@ -1319,8 +1319,9 @@ static void php_mmc_connect(INTERNAL_FUNCTION_PARAMETERS, zend_bool persistent)
+ 	size_t host_len;
+ 	zend_long tcp_port = MEMCACHE_G(default_port);
+ 	double timeout = MMC_DEFAULT_TIMEOUT;
++	zend_bool null_port;
+ 
+-	if (zend_parse_parameters(ZEND_NUM_ARGS(), "s|ld", &host, &host_len, &tcp_port, &timeout) == FAILURE) {
++	if (zend_parse_parameters(ZEND_NUM_ARGS(), "s|l!d", &host, &host_len, &tcp_port, &null_port, &timeout) == FAILURE) {
+ 		return;
+ 	}
+ 
+@@ -2492,7 +2493,7 @@ PHP_FUNCTION(memcache_flush)
+ 		pool->protocol->flush(request, delay);
+ 
+ 		if (mmc_pool_schedule(pool, pool->servers[i], request) == MMC_OK) {
+-			/* begin sending requests immediatly */
++			/* begin sending requests immediately */
+ 			mmc_pool_select(pool);
+ 		}
+ 	}
+diff --git a/src/memcache_pool.c b/src/memcache_pool.c
+index 733a0c5..e52389d 100644
+--- a/src/memcache_pool.c
++++ b/src/memcache_pool.c
+@@ -1303,7 +1303,7 @@ int mmc_pool_schedule_get(
+ 		pool->protocol->end_get(mmc->buildreq);
+ 		mmc_pool_schedule(pool, mmc, mmc->buildreq);
+ 
+-		/* begin sending requests immediatly */
++		/* begin sending requests immediately */
+ 		mmc_pool_select(pool);
+ 
+ 		mmc->buildreq = mmc_pool_request_get(
+diff --git a/src/memcache_session.c b/src/memcache_session.c
+index e4a80de..d3aab24 100644
+--- a/src/memcache_session.c
++++ b/src/memcache_session.c
+@@ -319,7 +319,7 @@ PS_READ_FUNC(memcache)
+ 			ZVAL_NULL(&addresult);
+ 
+ 			/* third request fetches the data, data is only valid if either of the lock requests succeeded */
+-			ZVAL_EMPTY_STRING(&dataresult);
++			ZVAL_NULL(&dataresult);
+ 
+ 			/* create requests */
+ 			if (php_mmc_session_read_request(pool, &zkey, lockparam, &addresult, dataparam, &lockrequest, &addrequest, &datarequest) != MMC_OK) {
+diff --git a/tests/redundancy_test.phpt b/tests/redundancy_test.phpt
+new file mode 100644
+index 0000000..fb5ab84
+--- /dev/null
++++ b/tests/redundancy_test.phpt
+@@ -0,0 +1,75 @@
++--TEST--
++redundancy test
++--SKIPIF--
++<?php include 'connect.inc'; if (!MEMCACHE_HAVE_SESSION) print 'skip not compiled with session support'; else if (!function_exists('pcntl_fork')) print 'skip not compiled with pcntl_fork() support'; ?>
++--FILE--
++<?php
++
++include 'connect.inc';
++
++$sid = md5(rand());
++
++ini_set('session.save_handler', 'memcache');
++ini_set('memcache.session_save_path', "tcp://$host:$port,tcp://$host2:$port2");
++ini_set('memcache.session_redundancy', 3);
++
++$memcache1 = test_connect1();
++$memcache2 = test_connect2();
++
++$pid = pcntl_fork();
++if (!$pid) {
++    // In child process
++    session_id($sid);
++    session_start();
++    if (!isset($_SESSION['counter']))
++        $_SESSION['counter'] = 0;
++    $_SESSION['counter'] += 1;
++    session_write_close();
++
++    exit(0);
++}
++pcntl_waitpid($pid, $status);
++
++$memcache1->flush();
++
++$pid = pcntl_fork();
++if (!$pid) {
++    // In child process
++    session_id($sid);
++    session_start();
++    if (!isset($_SESSION['counter']))
++        $_SESSION['counter'] = 0;
++    $_SESSION['counter'] += 1;
++    session_write_close();
++
++    exit(0);
++}
++pcntl_waitpid($pid, $status);
++
++$memcache2->flush();
++
++$pid = pcntl_fork();
++if (!$pid) {
++    // In child process
++    session_id($sid);
++    session_start();
++    if (!isset($_SESSION['counter']))
++        $_SESSION['counter'] = 0;
++    $_SESSION['counter'] += 1;
++    session_write_close();
++
++    exit(0);
++}
++pcntl_waitpid($pid, $status);
++
++
++session_id($sid);
++session_start();
++var_dump($_SESSION);
++
++?>
++--EXPECT--
++array(1) {
++  ["counter"]=>
++  int(3)
++}

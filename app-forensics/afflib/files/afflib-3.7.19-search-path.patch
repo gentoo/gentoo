@@ -1,0 +1,29 @@
+diff --git a/configure.ac b/configure.ac
+index d902e4b..914ccf5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -30,24 +30,6 @@ AC_CONFIG_MACRO_DIR([m4])
+ m4_include([m4/acx_pthread.m4])
+ ACX_PTHREAD()
+ 
+-if test x"${cross_compiling}" = "xno" ; then
+-  # Bring additional directories where things might be found into our
+-  # search path. I don't know why autoconf doesn't do this by default
+-  for spfx in ${prefix} /sw /opt/local /usr/local ; do
+-    AC_MSG_NOTICE([checking ${spfx}/include])
+-    if test -d ${spfx}/include; then
+-        CPPFLAGS="$CPPFLAGS -I${spfx}/include"
+-        LDFLAGS="$LDFLAGS -L${spfx}/lib"
+-        AC_MSG_NOTICE([ *** ADDING ${spfx}/include to CPPFLAGS *** ])
+-        AC_MSG_NOTICE([ *** ADDING ${spfx}/lib to LDFLAGS *** ])
+-    fi
+-  done
+-  AC_MSG_NOTICE([ CPPFLAGS = ${CPPFLAGS} ])
+-  AC_MSG_NOTICE([ LDFLAGS = ${LDFLAGS} ])
+-else
+-  AC_MSG_NOTICE([Cross Compiling --- will not update CPPFALGS or LDFLAGS with /usr/local, /opt/local or /sw])
+-fi
+-
+ if test -r /bin/uname.exe ; then
+   if test `uname -o` == "Msys" ; then
+     AC_MSG_NOTICE([Compiling with Msys. Setting flags appropriately.])

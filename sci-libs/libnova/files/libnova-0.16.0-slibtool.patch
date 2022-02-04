@@ -1,0 +1,26 @@
+From 857957a9229b49044070301da24b84dcb2bb0d67 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sun, 28 Mar 2021 07:49:22 -0700
+Subject: [PATCH] build: Link with the libelp .la file.
+
+---
+ src/Makefile.am | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index aab450c..6d2b62e 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -46,8 +46,7 @@ noinst_HEADERS = \
+ 	lunar-priv.h
+ 
+ libnova_la_LIBADD = \
+-	-Lelp/ \
+-	-lelp
++	elp/libelp.la
+ 
+ libnova_la_LDFLAGS = \
+ 	-version-info $(LT_VERSION) \
+-- 
+2.29.2
+

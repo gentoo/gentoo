@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ HOMEPAGE="http://ocsigen.org/lwt"
 
 SLOT="0/${PV}"
 LICENSE="LGPL-2.1-with-linking-exception"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 IUSE="+ocamlopt"
 
 DEPEND="
@@ -23,8 +23,7 @@ DEPEND="
 	dev-ml/react:=
 	dev-ml/dune-configurator:=
 	dev-libs/libev"
-RDEPEND="${DEPEND}
-	!<www-servers/ocsigen-1.1"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	>=dev-ml/cppo-1.6.6
 	dev-ml/findlib"
@@ -32,4 +31,5 @@ BDEPEND="
 # backported from https://github.com/ocsigen/lwt/pull/807
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.3.0-ppxlib-0.18.0.patch
+	"${FILESDIR}"/${P}-ocaml-4.12.patch
 )

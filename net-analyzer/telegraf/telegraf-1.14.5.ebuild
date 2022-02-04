@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ COMMIT=e77ce3d1
 BRANCH=release-1.14
 VERSION=v${MY_PV}
 
-DESCRIPTION="The plugin-driven server agent for collecting & reporting metrics."
+DESCRIPTION="The plugin-driven server agent for collecting & reporting metrics"
 HOMEPAGE="https://github.com/influxdata/telegraf"
 
 EGO_SUM=(
@@ -929,7 +929,7 @@ src_install() {
 	insinto /etc/logrotate.d
 	doins etc/logrotate.d/telegraf
 
-systemd_dounit scripts/telegraf.service
+	systemd_dounit scripts/telegraf.service
 	newconfd "${FILESDIR}"/telegraf.confd telegraf
 	newinitd "${FILESDIR}"/telegraf.rc telegraf
 

@@ -1,17 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="open source high performance realtime 3D engine written in C++"
-HOMEPAGE="http://irrlicht.sourceforge.net/"
+HOMEPAGE="https://irrlicht.sourceforge.io/"
 SRC_URI="mirror://sourceforge/irrlicht/${P}.zip
 	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="debug doc static-libs"
 
 RDEPEND="app-arch/bzip2

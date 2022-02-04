@@ -1,38 +1,35 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_OPTIONAL=1
 inherit autotools distutils-r1 git-r3 multilib-minimal
 
 DESCRIPTION="Libraries providing APIs to netlink protocol based Linux kernel interfaces"
-HOMEPAGE="http://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
+HOMEPAGE="https://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
 EGIT_REPO_URI="https://github.com/thom311/libnl"
+
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
 SLOT="3"
 KEYWORDS=""
-IUSE="+debug static-libs python +threads utils"
+IUSE="+debug python test utils"
+RESTRICT="!test? ( test )"
 
-RDEPEND="
-	python? ( ${PYTHON_DEPS} )
-"
-DEPEND="
-	${RDEPEND}
-"
+RDEPEND="python? ( ${PYTHON_DEPS} )"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex
 	python? ( dev-lang/swig )
+	test? ( dev-libs/check )
 "
-REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
-"
-DOCS=(
-	ChangeLog
-)
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+DOCS=( ChangeLog )
+
 MULTILIB_WRAPPED_HEADERS=(
 	# we do not install CLI stuff for non-native
 	/usr/include/libnl3/netlink/cli/addr.h
@@ -48,6 +45,7 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libnl3/netlink/cli/tc.h
 	/usr/include/libnl3/netlink/cli/utils.h
 )
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-99999999-2to3.patch
 )
@@ -70,11 +68,9 @@ src_prepare() {
 
 multilib_src_configure() {
 	econf \
+		--disable-static \
 		$(multilib_native_use_enable utils cli) \
-		$(use_enable debug) \
-		$(use_enable static-libs static) \
-		$(use_enable threads) \
-		--disable-doc
+		$(use_enable debug)
 }
 
 multilib_src_compile() {
@@ -107,5 +103,5 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }

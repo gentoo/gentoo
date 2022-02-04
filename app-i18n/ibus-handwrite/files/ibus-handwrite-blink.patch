@@ -1,0 +1,23 @@
+From fcffa8f1ed798db3c2c4db0dbfc953f3147d37ba Mon Sep 17 00:00:00 2001
+From: Peng Wu <pwu@redhat.com>
+Date: Mon, 31 Aug 2020 15:32:48 +0800
+Subject: [PATCH] Fix focus in/out issue
+
+---
+ src/engine.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/engine.c b/src/engine.c
+index da01f06..d3d924e 100644
+--- a/src/engine.c
++++ b/src/engine.c
+@@ -155,9 +155,7 @@ static void ibus_handwrite_engine_focus_in(IBusHandwriteEngine *engine)
+ 
+ static void ibus_handwrite_engine_focus_out(IBusHandwriteEngine *engine)
+ {
+-	UI_hide_ui(engine);
+ 	printf("%s \n", __func__);
+-
+ }
+ 
+ static void ibus_handwrite_engine_reset(IBusHandwriteEngine *engine)

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -29,8 +29,16 @@ DEPEND="${RDEPEND}
 "
 # TODO add a useflag for enable-video or header-bar???
 
+PATCHES=(
+	"${FILESDIR}/frogr-1.5-warning-level.patch"
+	"${FILESDIR}/frogr-1.5-meson-0.61-build.patch"
+)
+
 src_configure() {
-	local emesonargs=()
+	local emesonargs=(
+		# bug #714132
+		-Dwerror=false
+	)
 	meson_src_configure
 }
 

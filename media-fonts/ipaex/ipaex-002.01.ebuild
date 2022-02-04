@@ -1,26 +1,26 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 inherit font
 
 MY_P="IPAexfont${PV/.}"
 
 DESCRIPTION="Japanese IPA extended TrueType fonts"
-HOMEPAGE="http://ipafont.ipa.go.jp/"
-SRC_URI="http://dl.ipafont.ipa.go.jp/IPAexfont/${MY_P}.zip"
+HOMEPAGE="https://moji.or.jp/ipafont/"
+SRC_URI="https://moji.or.jp/wp-content/ipafont/IPAexfont/${MY_P}.zip"
 
 LICENSE="IPAfont"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 ~s390 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
-RESTRICT="binchecks strip test"
+RESTRICT="binchecks strip"
 
-DEPEND="app-arch/unzip"
-RDEPEND=""
+BDEPEND="app-arch/unzip"
 S="${WORKDIR}/${MY_P}"
 
-FONT_SUFFIX="ttf"
-FONT_S="${S}"
+DOCS=( Readme_${MY_P}.txt )
+
 FONT_CONF=( "${FILESDIR}"/66-${PN}.conf )
-DOCS=( "Readme_${MY_P}.txt" )
+FONT_SUFFIX="ttf"

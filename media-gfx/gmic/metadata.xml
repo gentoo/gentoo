@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>marecki@gentoo.org</email>
@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="cli">Build CLI interface</flag>
-		<flag name="digikam">Build <pkg>media-gfx/digikam</pkg> plugin</flag>
 		<flag name="krita">Build <pkg>media-gfx/krita</pkg> plugin</flag>
 		<flag name="opencv">Enable support for webcams using the OpenCV library</flag>
 	</use>

@@ -1,17 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 VALA_MIN_API_VERSION="0.34"
-inherit cmake-utils gnome2-utils vala xdg-utils
+inherit cmake vala xdg readme.gentoo-r1
 
 DESCRIPTION="Modern Jabber/XMPP Client using GTK+/Vala"
 HOMEPAGE="https://dino.im"
+
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+gpg +http +omemo +notification-sound"
+IUSE="+gpg +http +omemo +notification-sound test"
+RESTRICT="!test? ( test )"
 
 MY_REPO_URI="https://github.com/dino/dino"
 if [[ ${PV} == "9999" ]]; then
@@ -23,12 +25,15 @@ else
 fi
 
 RDEPEND="
+	app-text/gspell[vala]
 	dev-db/sqlite:3
 	dev-libs/glib:2
 	dev-libs/icu
 	dev-libs/libgee:0.8
 	net-libs/glib-networking
+	>=net-libs/libnice-0.1.15
 	net-libs/libsignal-protocol-c
+	net-libs/libsrtp:2
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
@@ -44,11 +49,13 @@ RDEPEND="
 DEPEND="
 	$(vala_depend)
 	${RDEPEND}
+	media-libs/gst-plugins-base
+	media-libs/gstreamer
 	sys-devel/gettext
 "
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	vala_src_prepare
 }
 
@@ -65,28 +72,22 @@ src_configure() {
 		"-DENABLED_PLUGINS=$(local IFS=";"; echo "${enabled_plugins[*]}")"
 		"-DDISABLED_PLUGINS=$(local IFS=";"; echo "${disabled_plugins[*]}")"
 		"-DVALA_EXECUTABLE=${VALAC}"
+		"-DBUILD_TESTS=$(usex test)"
 	)
 
-	if has test ${FEATURES}; then
-		mycmakeargs+=("-DBUILD_TESTS=yes")
-	fi
-
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
 	"${BUILD_DIR}"/xmpp-vala-test || die
 }
 
-update_caches() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+src_install() {
+	cmake_src_install
+	readme.gentoo_create_doc
 }
 
-pkg_postinst() {
-	update_caches
-}
-
-pkg_postrm() {
-	update_caches
+src_postinst() {
+	xdg_pkg_postinst
+	readme.gentoo_print_elog
 }

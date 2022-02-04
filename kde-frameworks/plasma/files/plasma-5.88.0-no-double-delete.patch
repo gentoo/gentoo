@@ -1,0 +1,28 @@
+From 9b37459570f75e09f17aadf32f7abfe8b8d4d1e0 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Sat, 4 Dec 2021 17:16:30 +0800
+Subject: [PATCH] wallpaperinterface: Don't double delete action
+
+`removeAction` already deletes the action, it makes no sense to delete
+the action again and will crash plasmashell.
+
+CCBUG: 446195
+---
+ src/scriptengines/qml/plasmoid/wallpaperinterface.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/scriptengines/qml/plasmoid/wallpaperinterface.cpp b/src/scriptengines/qml/plasmoid/wallpaperinterface.cpp
+index 570cf8e45..65adf838e 100644
+--- a/src/scriptengines/qml/plasmoid/wallpaperinterface.cpp
++++ b/src/scriptengines/qml/plasmoid/wallpaperinterface.cpp
+@@ -229,7 +229,6 @@ void WallpaperInterface::removeAction(const QString &name)
+ 
+     if (action) {
+         m_actions->removeAction(action);
+-        delete action;
+     }
+     setProperty("contextualActions", QVariant::fromValue(contextualActions()));
+ }
+-- 
+GitLab
+

@@ -1,0 +1,11 @@
+--- a/inifiles.ml
++++ b/inifiles.ml
+@@ -257,7 +257,7 @@
+        func
+        initial
+        (List.rev_map
+-	  (new inifile)
++	  (fun x -> new inifile x)
+ 	  (List.filter
+ 	     check_file
+ 	     (List.rev_map

@@ -1,12 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils pam autotools autotools-utils
+inherit autotools pam
 
 MY_P="${P/_beta/beta}"
-S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="pam module to allow password-storing in \$HOME/dotfiles"
 HOMEPAGE="http://0pointer.de/lennart/projects/pam_dotfile/
@@ -18,14 +17,15 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="doc"
 
+BDEPEND="doc? ( www-client/lynx )"
 RDEPEND="sys-libs/pam"
-DEPEND="${RDEPEND}
-	doc? ( www-client/lynx )"
+DEPEND="${RDEPEND}"
 
-HTML_DOCS="doc"
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
+	default
+	eapply "${FILESDIR}"/${P}-gentoo.patch
 	eautoreconf
 }
 
@@ -34,12 +34,12 @@ src_configure() {
 		$(use_enable doc lynx)
 		--with-pammoddir=$(getpam_mod_dir)
 	)
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 
 	# kill the libtool archives
-	rm -rf "${D}"/$(getpam_mod_dir)/*.la
+	rm -rf "${D}"/$(getpam_mod_dir)/*.la || die
 }

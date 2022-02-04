@@ -1,22 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: user.eclass
 # @MAINTAINER:
 # base-system@gentoo.org (Linux)
 # Michał Górny <mgorny@gentoo.org> (NetBSD)
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: user management in ebuilds
 # @DEPRECATED: acct-user/acct-group packages
 # @DESCRIPTION:
 # The user eclass contains a suite of functions that allow ebuilds
 # to quickly make sure users in the installed system are sane.
 
-if [[ -z ${_USER_ECLASS} ]]; then
-_USER_ECLASS=1
-
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6|7) ;;
-	*)
+case ${EAPI} in
+	6|7) ;;
+	8)
 		if [[ ${CATEGORY} != acct-* ]]; then
 			eerror "In EAPI ${EAPI}, packages must not inherit user.eclass"
 			eerror "unless they are in the acct-user or acct-group category."
@@ -25,21 +23,27 @@ case ${EAPI:-0} in
 			die "Invalid \"inherit user\" in EAPI ${EAPI}"
 		fi
 		;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ -z ${_USER_ECLASS} ]]; then
+_USER_ECLASS=1
 
 inherit user-info
 
 # @FUNCTION: _assert_pkg_ebuild_phase
 # @INTERNAL
 # @USAGE: <calling func name>
+# @DESCRIPTION:
+# Raises an alert if the phase is not suitable for user.eclass usage.
 _assert_pkg_ebuild_phase() {
 	case ${EBUILD_PHASE} in
 	setup|preinst|postinst|prerm|postrm) ;;
 	*)
 		eerror "'$1()' called from '${EBUILD_PHASE}' phase which is not OK:"
 		eerror "You may only call from pkg_{setup,{pre,post}{inst,rm}} functions."
-		eerror "Package fails at QA and at life.  Please file a bug."
-		die "Bad package!  $1 is only for use in some pkg_* functions!"
+		eerror "Package has serious QA issues.  Please file a bug."
+		die "Bad package!  ${1} is only for use in some pkg_* functions!"
 	esac
 }
 
@@ -88,8 +92,8 @@ enewuser() {
 	_assert_pkg_ebuild_phase ${FUNCNAME}
 
 	local create_home=1 force_uid=
-	while [[ $1 == -* ]]; do
-		case $1 in
+	while [[ ${1} == -* ]]; do
+		case ${1} in
 			-F) force_uid=1;;
 			-M) create_home=;;
 			*) die "${FUNCNAME}: invalid option ${1}";;
@@ -98,9 +102,9 @@ enewuser() {
 	done
 
 	# get the username
-	local euser=$1; shift
+	local euser=${1}; shift
 	if [[ -z ${euser} ]] ; then
-		eerror "No username specified !"
+		eerror "No username specified!"
 		die "Cannot call enewuser without a username"
 	fi
 
@@ -114,7 +118,7 @@ enewuser() {
 	local opts=()
 
 	# handle uid
-	local euid=$1; shift
+	local euid=${1}; shift
 	if [[ -n ${euid} && ${euid} != -1 ]] ; then
 		if [[ ${euid} -gt 0 ]] ; then
 			if [[ -n $(egetent passwd ${euid}) ]] ; then
@@ -122,7 +126,7 @@ enewuser() {
 				euid="next"
 			fi
 		else
-			eerror "Userid given but is not greater than 0 !"
+			eerror "Userid given but is not greater than 0!"
 			die "${euid} is not a valid UID"
 		fi
 	else
@@ -139,10 +143,10 @@ enewuser() {
 	elog " - Userid: ${euid}"
 
 	# handle shell
-	local eshell=$1; shift
+	local eshell=${1}; shift
 	if [[ ! -z ${eshell} ]] && [[ ${eshell} != "-1" ]] ; then
 		if [[ ! -e ${ROOT}${eshell} ]] ; then
-			eerror "A shell was specified but it does not exist !"
+			eerror "A shell was specified but it does not exist!"
 			die "${eshell} does not exist in ${ROOT}"
 		fi
 		if [[ ${eshell} == */false || ${eshell} == */nologin ]] ; then
@@ -156,7 +160,7 @@ enewuser() {
 	opts+=( -s "${eshell}" )
 
 	# handle homedir
-	local ehome=$1; shift
+	local ehome=${1}; shift
 	if [[ -z ${ehome} ]] || [[ ${ehome} == "-1" ]] ; then
 		ehome="/dev/null"
 	fi
@@ -164,7 +168,7 @@ enewuser() {
 	opts+=( -d "${ehome}" )
 
 	# handle groups
-	local egroups=$1; shift
+	local egroups=${1}; shift
 	local g egroups_arr
 	IFS="," read -r -a egroups_arr <<<"${egroups}"
 	if [[ ${#egroups_arr[@]} -gt 0 ]] ; then
@@ -243,8 +247,8 @@ enewgroup() {
 	_assert_pkg_ebuild_phase ${FUNCNAME}
 
 	local force_gid=
-	while [[ $1 == -* ]]; do
-		case $1 in
+	while [[ ${1} == -* ]]; do
+		case ${1} in
 			-F) force_gid=1;;
 			*) die "${FUNCNAME}: invalid option ${1}";;
 		esac
@@ -252,9 +256,9 @@ enewgroup() {
 	done
 
 	# get the group
-	local egroup=$1; shift
+	local egroup=${1}; shift
 	if [[ -z ${egroup} ]] ; then
-		eerror "No group specified !"
+		eerror "No group specified!"
 		die "Cannot call enewgroup without a group"
 	fi
 
@@ -265,7 +269,7 @@ enewgroup() {
 	elog "Adding group '${egroup}' to your system ..."
 
 	# handle gid
-	local egid=$1; shift
+	local egid=${1}; shift
 	if [[ -n ${egid} && ${egid} != -1 ]] ; then
 		if [[ ${egid} -gt 0 ]] ; then
 			if [[ -n $(egetent group ${egid}) ]] ; then
@@ -273,7 +277,7 @@ enewgroup() {
 				egid="next available; requested gid taken"
 			fi
 		else
-			eerror "Groupid given but is not greater than 0 !"
+			eerror "Groupid given but is not greater than 0!"
 			die "${egid} is not a valid GID"
 		fi
 	else
@@ -337,9 +341,9 @@ esethome() {
 	_assert_pkg_ebuild_phase ${FUNCNAME}
 
 	# get the username
-	local euser=$1; shift
+	local euser=${1}; shift
 	if [[ -z ${euser} ]] ; then
-		eerror "No username specified !"
+		eerror "No username specified!"
 		die "Cannot call esethome without a username"
 	fi
 
@@ -350,9 +354,9 @@ esethome() {
 	fi
 
 	# handle homedir
-	local ehome=$1; shift
+	local ehome=${1}; shift
 	if [[ -z ${ehome} ]] ; then
-		eerror "No home directory specified !"
+		eerror "No home directory specified!"
 		die "Cannot call esethome without a home directory or '-1'"
 	fi
 
@@ -406,9 +410,9 @@ esetshell() {
 	_assert_pkg_ebuild_phase ${FUNCNAME}
 
 	# get the username
-	local euser=$1; shift
+	local euser=${1}; shift
 	if [[ -z ${euser} ]] ; then
-		eerror "No username specified !"
+		eerror "No username specified!"
 		die "Cannot call esetshell without a username"
 	fi
 
@@ -419,9 +423,9 @@ esetshell() {
 	fi
 
 	# handle shell
-	local eshell=$1; shift
+	local eshell=${1}; shift
 	if [[ -z ${eshell} ]] ; then
-		eerror "No shell specified !"
+		eerror "No shell specified!"
 		die "Cannot call esetshell without a shell or '-1'"
 	fi
 
@@ -466,9 +470,9 @@ esetcomment() {
 	_assert_pkg_ebuild_phase ${FUNCNAME}
 
 	# get the username
-	local euser=$1; shift
+	local euser=${1}; shift
 	if [[ -z ${euser} ]] ; then
-		eerror "No username specified !"
+		eerror "No username specified!"
 		die "Cannot call esetcomment without a username"
 	fi
 
@@ -479,9 +483,9 @@ esetcomment() {
 	fi
 
 	# handle comment
-	local ecomment=$1; shift
+	local ecomment=${1}; shift
 	if [[ -z ${ecomment} ]] ; then
-		eerror "No comment specified !"
+		eerror "No comment specified!"
 		die "Cannot call esetcomment without a comment"
 	fi
 
@@ -525,7 +529,7 @@ esetgroups() {
 	[[ ${#} -eq 2 ]] || die "Usage: ${FUNCNAME} <user> <groups>"
 
 	# get the username
-	local euser=$1; shift
+	local euser=${1}; shift
 
 	# lets see if the username already exists
 	if [[ -z $(egetent passwd "${euser}") ]] ; then
@@ -534,7 +538,7 @@ esetgroups() {
 	fi
 
 	# handle group
-	local egroups=$1; shift
+	local egroups=${1}; shift
 
 	local g egroups_arr=()
 	IFS="," read -r -a egroups_arr <<<"${egroups}"

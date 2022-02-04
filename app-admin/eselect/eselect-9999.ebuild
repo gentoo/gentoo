@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/eselect.git"
 
@@ -10,21 +10,19 @@ inherit autotools git-r3 bash-completion-r1
 DESCRIPTION="Gentoo's multi-purpose configuration and management tool"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Eselect"
 
-LICENSE="GPL-2+ || ( GPL-2+ CC-BY-SA-3.0 )"
+LICENSE="GPL-2+ || ( GPL-2+ CC-BY-SA-4.0 )"
 SLOT="0"
 IUSE="doc emacs vim-syntax"
 
-RDEPEND="sys-apps/sed
+DEPEND="sys-apps/sed
 	|| (
 		sys-apps/coreutils
 		app-misc/realpath
 	)"
-DEPEND="${RDEPEND}
-	doc? ( dev-python/docutils )"
-RDEPEND="${RDEPEND}
+RDEPEND="${DEPEND}
 	sys-apps/file
 	sys-libs/ncurses:0"
-
+BDEPEND="doc? ( dev-python/docutils )"
 PDEPEND="emacs? ( app-emacs/eselect-mode )
 	vim-syntax? ( app-vim/eselect-syntax )"
 

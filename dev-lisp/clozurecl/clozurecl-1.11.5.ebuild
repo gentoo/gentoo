@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils flag-o-matic multilib toolchain-funcs vcs-clean
+inherit flag-o-matic multilib toolchain-funcs vcs-clean
 
 MY_PN=ccl
 MY_P=${MY_PN}-${PV}
@@ -14,7 +14,6 @@ SRC_URI="
 	x86? ( https://github.com/Clozure/ccl/releases/download/v${PV}/${MY_P}-linuxx86.tar.gz )
 	amd64? ( https://github.com/Clozure/ccl/releases/download/v${PV}/${MY_P}-linuxx86.tar.gz )
 	arm? ( https://github.com/Clozure/ccl/releases/download/v${PV}/${MY_P}-linuxarm.tar.gz )
-	x86-macos? ( https://github.com/Clozure/ccl/releases/download/v${PV}/${MY_P}-darwinx86.tar.gz )
 	x64-macos? ( https://github.com/Clozure/ccl/releases/download/v${PV}/${MY_P}-darwinx86.tar.gz )
 	x86-solaris? ( https://github.com/Clozure/ccl/releases/download/v${PV}/${MY_P}-solarisx86.tar.gz )
 	x64-solaris? ( https://github.com/Clozure/ccl/releases/download/v${PV}/${MY_P}-solarisx86.tar.gz )
@@ -22,7 +21,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="-* amd64 x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="doc"
 
 RDEPEND=">=dev-lisp/asdf-2.33-r3:="
@@ -31,7 +30,10 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}"/${MY_PN}
 ENVD="${T}/50ccl"
 
-PATCHES=( "${FILESDIR}"/${P}-no-pie-32.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-no-pie-32.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_prepare() {
 	default
@@ -39,9 +41,7 @@ src_prepare() {
 }
 
 src_configure() {
-	if use x86-macos; then
-		CCL_RUNTIME=dx86cl; CCL_HEADERS=darwin-x86-headers; CCL_KERNEL=darwinx8632
-	elif use x64-macos; then
+	if use x64-macos; then
 		CCL_RUNTIME=dx86cl64; CCL_HEADERS=darwin-x86-headers64; CCL_KERNEL=darwinx8664
 	elif use x86-solaris; then
 		CCL_RUNTIME=sx86cl; CCL_HEADERS=solarisx86-headers; CCL_KERNEL=solarisx86

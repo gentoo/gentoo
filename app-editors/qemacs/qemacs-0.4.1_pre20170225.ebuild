@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,8 +12,8 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+ GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm ~ppc x86"
-IUSE="gui png unicode xv"
+KEYWORDS="amd64 arm ~ppc ~riscv x86"
+IUSE="gui png xv"
 RESTRICT="test"
 
 RDEPEND="

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,10 +23,10 @@ RDEPEND="${DEPEND}
 	dev-lang/perl"
 
 PATCHES=(
-  "${FILESDIR}/${P}-Fix-typos-132.patch"
-  "${FILESDIR}/${P}-pius-keyring-mgr-Fix-constants-134.patch"
-  "${FILESDIR}/${P}-Fix-typo-in-readme-135.patch"
-  "${FILESDIR}/${P}-Minor-fixes-for-pius-report-137.patch"
+	"${FILESDIR}/${P}-Fix-typos-132.patch"
+	"${FILESDIR}/${P}-pius-keyring-mgr-Fix-constants-134.patch"
+	"${FILESDIR}/${P}-Fix-typo-in-readme-135.patch"
+	"${FILESDIR}/${P}-Minor-fixes-for-pius-report-137.patch"
 )
 
 python_test() {

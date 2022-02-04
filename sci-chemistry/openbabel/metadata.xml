@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>sci-chemistry@gentoo.org</email>
@@ -14,4 +14,8 @@
 	<upstream>
 		<remote-id type="sourceforge">openbabel</remote-id>
 	</upstream>
+	<use>
+		<flag name="inchi">Build support for IUPAC International Chemical Identifier format</flag>
+		<flag name="json">Build support for JSON formats (ChemDoodle, PubChem, etc...)</flag>
+	</use>
 </pkgmetadata>

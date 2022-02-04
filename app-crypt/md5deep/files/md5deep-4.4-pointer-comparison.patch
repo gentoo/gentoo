@@ -1,0 +1,11 @@
+--- a/src/hash.cpp
++++ b/src/hash.cpp
+@@ -279,7 +279,7 @@
+ 		MAP_FILE|
+ #endif
+ 		MAP_SHARED,fd,0);
+-	    if(fdht->base>0){		
++	    if(fdht->base){		
+ 		/* mmap is successful, so set the bounds.
+ 		 * if it is not successful, we default to reading the fd
+ 		 */

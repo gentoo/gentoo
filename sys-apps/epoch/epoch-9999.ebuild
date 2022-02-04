@@ -1,22 +1,18 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=8
 
-inherit eutils linux-info git-r3
+inherit linux-info git-r3
 
-MY_PV="${PV/rc/RC}"
-MY_P="${PN}-${MY_PV}"
-
-DESCRIPTION="An init system, a /sbin/init replacement; designed for simplicity"
-HOMEPAGE="http://universe2.us/epoch.html"
+DESCRIPTION="Init system, /sbin/init replacement; designed for simplicity"
+HOMEPAGE="https://universe2.us/epoch.html"
 EGIT_REPO_URI="https://github.com/Subsentient/epoch.git"
+S="${WORKDIR}/${PN}-${PV/rc/RC}"
 
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS=""
-
-S="${WORKDIR}/${MY_P}"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~PROC_FS"
@@ -24,9 +20,9 @@ pkg_pretend() {
 	[[ ${MERGE_TYPE} != buildonly ]] && check_extra_config
 }
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.0-fix-CFLAGS.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0-fix-CFLAGS.patch
+)
 
 src_compile() {
 	NEED_EMPTY_CFLAGS=1 sh ./buildepoch.sh || die "Cannot build epoch."
@@ -67,7 +63,7 @@ pkg_postinst() {
 	elog ""
 	elog "Additional information about epoch is available at"
 	elog "${HOMEPAGE} and configuration documentation at"
-	elog "http://universe2.us/epochconfig.html which is useful reading material."
+	elog "https://universe2.us/epochconfig.html which is useful reading material."
 	elog ""
-	elog "Its author Subsentient can be contacted at #epoch on irc.freenode.net."
+	elog "Its author Subsentient can be contacted at #epoch on irc.libera.chat."
 }

@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/garrigue/lablgtk/releases/download/${PV}/${DUNE_PKG_
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="3/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 IUSE="+ocamlopt sourceview"
 
 BDEPEND="dev-ml/camlp5"
@@ -20,6 +20,7 @@ DEPEND="
 	app-text/gtkspell:3=
 	x11-libs/gtk+:3=
 	dev-ml/cairo2:=
+	x11-libs/gtksourceview:3.0=
 "
 RDEPEND="${DEPEND}"
 PDEPEND="sourceview? ( dev-ml/lablgtk-sourceview:${SLOT} )"

@@ -1,5 +1,5 @@
---- tcltk/Makefile.old	2011-04-26 17:40:36.000000000 +0000
-+++ tcltk/Makefile	2011-04-26 17:41:05.000000000 +0000
+--- a/tcltk/Makefile
++++ b/tcltk/Makefile
 @@ -26,7 +26,7 @@
  	${CP} irsimexec $(DESTDIR)${TCLDIR}/irsimexec
  
@@ -9,8 +9,8 @@
  		${LIBS} ${LIB_SPECS}
  
  irsim.tcl: irsim.tcl.in
---- irsim/Makefile.old	2011-04-26 17:46:38.000000000 +0000
-+++ irsim/Makefile	2011-04-26 17:47:21.000000000 +0000
+--- a/irsim/Makefile
++++ b/irsim/Makefile
 @@ -22,7 +22,7 @@
  tclirsim${SHDLIB_EXT}: ${EXTRA_LIBS}
  	@echo --- making irsim Tcl library \(tclirsim${SHDLIB_EXT}\)
@@ -20,8 +20,8 @@
  		${EXTRA_LIBS} -lc ${LIBS} ${LD_EXTRA_LIBS}
  
  $(DESTDIR)${BINDIR}/irsim:
---- random/Makefile.old	2011-04-26 17:48:46.000000000 +0000
-+++ random/Makefile	2011-04-26 17:49:02.000000000 +0000
+--- a/random/Makefile
++++ b/random/Makefile
 @@ -21,7 +21,7 @@
  random${SHDLIB_EXT}: randwrap.o
  	@echo --- making random Tcl library
@@ -31,8 +31,8 @@
  		${MAC_SHARED} -lc ${LIBS} ${LD_EXTRA_LIBS}
  
  install-tcl: $(DESTDIR)${TCLDIR}/random${SHDLIB_EXT}
---- tclsubckt/Makefile.old	2011-04-26 17:50:23.000000000 +0000
-+++ tclsubckt/Makefile	2011-04-26 17:50:45.000000000 +0000
+--- a/tclsubckt/Makefile
++++ b/tclsubckt/Makefile
 @@ -22,7 +22,7 @@
  diglib${SHDLIB_EXT}: diglib.o
  	@echo --- making diglib subcircuit shared library

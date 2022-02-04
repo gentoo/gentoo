@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>slashbeast@gentoo.org</email>
@@ -9,13 +9,14 @@
 		<remote-id type="github">DeaDBeeF-Player/deadbeef</remote-id>
 	</upstream>
 	<use>
-		<flag name='converter'>File format converter</flag>
-		<flag name='cover'>Support for cover art</flag>
-		<flag name='hotkeys'>Keyboard shortcuts support</flag>
-		<flag name='lastfm'>last.fm/AudioScrobbler protocol support</flag>
-		<flag name='notify'>Desktop notifications support</flag>
-		<flag name='nullout'>Dummy output driver</flag>
-		<flag name='shellexec'>Define custom shell commands that can be called on tracks</flag>
-		<flag name='supereq'>Enable equalizer</flag>
+		<flag name="converter">File format converter</flag>
+		<flag name="cover">Support for cover art</flag>
+		<flag name="hotkeys">Keyboard shortcuts support</flag>
+		<flag name="lastfm">last.fm/AudioScrobbler protocol support</flag>
+		<flag name="notify">Desktop notifications support</flag>
+		<flag name="nullout">Dummy output driver</flag>
+		<flag name="sc68">Atari ST and Amiga music player</flag>
+		<flag name="shellexec">Define custom shell commands that can be called on tracks</flag>
+		<flag name="supereq">Enable equalizer</flag>
 	</use>
 </pkgmetadata>

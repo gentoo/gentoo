@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
@@ -9,7 +9,7 @@
 		The library provides functions to read, write and manipulate MIDI, WAVE and
 		SoundFont2 multimedia files. It is written entirely in Haskell (without any
 		FFI). It uses efficient  parsing and building combinators for binary data
-		stored in ByteStrings (based on the one in &#39;binary&#39; package).
+		stored in ByteStrings (based on the one in 'binary' package).
 		
 		Correctness of significant parts of the library has been validated with
 		QuickCheck and Haskell Program Coverage (HPC) tool-kits.

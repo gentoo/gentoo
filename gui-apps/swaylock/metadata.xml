@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>speedjack95@gmail.com</email>
 		<name>Niccolò Scatena</name>
 	</maintainer>
@@ -18,9 +18,7 @@
 		Swaylock is the official screen locker for <pkg>gui-wm/sway</pkg>.
 	</longdescription>
 	<use>
-		<flag name="fish-completion">Enable fish completion support</flag>
 		<flag name="gdk-pixbuf">Enable additional image format support via the <pkg>x11-libs/gdk-pixbuf</pkg> library</flag>
-		<flag name="man">Build and install man pages</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">swaywm/swaylock</remote-id>

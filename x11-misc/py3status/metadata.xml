@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>ultrabug@gentoo.org</email>
@@ -11,6 +11,7 @@
 	</upstream>
 	<use>
 		<flag name="gevent">Install extra requirement <pkg>dev-python/gevent</pkg> to enable green threads.</flag>
+		<flag name="minimal">Don't depend on <pkg>x11-misc/i3status</pkg> if you don't plan to use any of its built-in modules.</flag>
 		<flag name="udev">Install extra requirement <pkg>dev-python/pyudev</pkg> to enable udev events monitoring on modules.</flag>
 	</use>
 </pkgmetadata>

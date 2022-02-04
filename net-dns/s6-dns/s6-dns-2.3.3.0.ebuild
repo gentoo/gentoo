@@ -1,7 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Suite of DNS client programs and libraries for Unix systems"
 HOMEPAGE="https://www.skarnet.org/software/s6-dns/"
@@ -14,7 +16,7 @@ IUSE="static static-libs"
 
 REQUIRED_USE="static? ( static-libs )"
 
-RDEPEND=">=dev-libs/skalibs-2.9.3.0:=[static-libs?]"
+RDEPEND="<dev-libs/skalibs-2.10.0.0:=[static-libs?]"
 DEPEND="${RDEPEND}"
 
 HTML_DOCS=( doc/. )
@@ -25,9 +27,13 @@ src_prepare() {
 	# Avoid QA warning for LDFLAGS addition; avoid overriding -fstack-protector
 	sed -i -e 's/.*-Wl,--hash-style=both$/:/' -e '/-fno-stack-protector$/d' \
 		configure || die
+
+	sed -i -e '/AR := /d' -e '/RANLIB := /d' Makefile || die
 }
 
 src_configure() {
+	tc-export AR CC RANLIB
+
 	econf \
 		--bindir=/bin \
 		--dynlibdir=/usr/$(get_libdir) \

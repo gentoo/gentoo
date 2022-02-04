@@ -1,5 +1,3 @@
-diff --git a/bin/iodbc-config.in b/bin/iodbc-config.in
-index 08d46ae..576aa8b 100644
 --- a/bin/iodbc-config.in
 +++ b/bin/iodbc-config.in
 @@ -145,10 +145,10 @@ while test $# -gt 0; do

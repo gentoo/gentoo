@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,13 +19,12 @@ else
 	KEYWORDS="~alpha amd64 arm ppc ppc64 sparc x86"
 fi
 
-IUSE="doc geoip gtk ipv6 libressl ncurses +plugins test"
+IUSE="doc geoip gtk ipv6 ncurses +plugins test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/libbsd
 	dev-libs/libpcre
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	net-libs/libnet:1.1
 	>=net-libs/libpcap-0.8.1
 	sys-libs/zlib
@@ -47,8 +46,6 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	sys-devel/flex
 	virtual/yacc"
-
-PATCHES=( "${FILESDIR}"/${P}-libressl.patch )
 
 src_prepare() {
 	sed -i "s:Release:Release Gentoo:" CMakeLists.txt || die

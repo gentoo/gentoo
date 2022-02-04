@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>torokhov-s-a@yandex.ru</email>
+		<name>Sergey Torokhov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="gitlab">ericvsmith/toposort</remote-id>
+		<remote-id type="pypi">toposort</remote-id>
+	</upstream>
+</pkgmetadata>

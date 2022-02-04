@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="MIT public-domain"
 SLOT="0/3"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 # X required for font eclass
 IUSE="+X static-libs"
 REQUIRED_USE="X"
@@ -26,8 +26,7 @@ FONT_S=${S}/fonts
 FONT_SUFFIX="gz"
 DOCS="README ChangeLog NEWS AUTHORS"
 
-src_configure()
-{
+src_configure() {
 	# Font installation handled by font eclass
 	econf \
 		$(use_enable static-libs static) \
@@ -35,8 +34,7 @@ src_configure()
 		--without-examples
 }
 
-src_install()
-{
+src_install() {
 	emake DESTDIR="${D}" install
 	font_src_install
 }

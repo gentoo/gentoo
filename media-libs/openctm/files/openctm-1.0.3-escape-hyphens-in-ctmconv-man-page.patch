@@ -1,0 +1,11 @@
+--- a/doc/ctmconv.1
++++ b/doc/ctmconv.1
+@@ -24,7 +24,7 @@
+ Scale the mesh by a scalar factor.
+ .TP
+ .B --upaxis arg
+-Set up axis (X, Y, Z, -X, -Y, -Z). If != Z, the mesh will be flipped.
++Set up axis (X, Y, Z, \-X, \-Y, \-Z). If != Z, the mesh will be flipped.
+ .TP
+ .B --flip
+ Flip triangle orientation.

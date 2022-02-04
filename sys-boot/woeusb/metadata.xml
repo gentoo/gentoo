@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>pacho@gentoo.org</email>
-</maintainer>
-<use>
-	<flag name="minimal">Install only woeusb tool</flag>
-</use>
+	<maintainer type="person" proxied="yes">
+		<email>petrus.zy.07@gmail.com</email>
+		<name>Petrus Zhao</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">WoeUSB/WoeUSB</remote-id>
+	</upstream>
 </pkgmetadata>

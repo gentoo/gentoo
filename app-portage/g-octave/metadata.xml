@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>rafaelmartins@gentoo.org</email>
-		<name>Rafael G. Martins</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>sci-mathematics@gentoo.org</email>
 		<name>Gentoo Mathematics Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		g-octave is a tool that generates and installs ebuilds for Octave-Forge
 		packages "on-the-fly" to Gentoo Linux, using Portage. It's capable to

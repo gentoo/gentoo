@@ -1,0 +1,36 @@
+From 3eaf480ae5d615e8e26153cca98115ff0f23135f Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Mon, 5 Oct 2020 20:11:26 +0200
+Subject: [PATCH] Support quazip 1.0
+
+Update FindQuaZip to find the QuaZip 1.0 library names and include dirs. Once support for quazip<1 is dropped this should be ported to use quazip's own QuaZipConfig
+---
+ cmake/modules/FindQuaZip.cmake | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/cmake/modules/FindQuaZip.cmake b/cmake/modules/FindQuaZip.cmake
+index 7e628fcd4b..345c7909ab 100644
+--- a/cmake/modules/FindQuaZip.cmake
++++ b/cmake/modules/FindQuaZip.cmake
+@@ -25,15 +25,15 @@ ELSE (QUAZIP_INCLUDE_DIRS AND QUAZIP_LIBRARIES)
+ 	ELSE(WIN32)
+ 		FIND_PACKAGE(PkgConfig)
+ #     pkg_check_modules(PC_QCA2 QUIET qca2)
+-		pkg_check_modules(PC_QUAZIP quazip)
++		pkg_check_modules(PC_QUAZIP quazip quazip1-qt5)
+ 		FIND_LIBRARY(QUAZIP_LIBRARIES
+ 			WIN32_DEBUG_POSTFIX d
+-            NAMES quazip${QUAZIP_LIB_VERSION_SUFFIX}
++            NAMES quazip${QUAZIP_LIB_VERSION_SUFFIX} quazip1-qt5
+ 			HINTS /usr/lib /usr/lib64
+ 		)
+ 		FIND_PATH(QUAZIP_INCLUDE_DIR quazip.h
+ 			HINTS /usr/include /usr/local/include
+-			PATH_SUFFIXES quazip${QUAZIP_LIB_VERSION_SUFFIX}
++			PATH_SUFFIXES quazip${QUAZIP_LIB_VERSION_SUFFIX} QuaZip-Qt5-1.0/quazip
+ 		)
+ 		FIND_PATH(QUAZIP_ZLIB_INCLUDE_DIR zlib.h HINTS /usr/include /usr/local/include)
+ 	ENDIF (WIN32)
+-- 
+GitLab
+

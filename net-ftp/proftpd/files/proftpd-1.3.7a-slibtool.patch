@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/778332
+https://github.com/proftpd/proftpd/commit/4ffe04158840130e023ed3d3e558b8d70e28e20e
+
+From 2a15ce409f70c67ba9b1e09de67c3fca0b38eff8 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sun, 21 Mar 2021 12:38:52 -0700
+Subject: [PATCH] build: Fix linking the static libsupp.a library.
+
+---
+ configure.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/configure.in
++++ b/configure.in
+@@ -88,7 +88,7 @@ if test $ac_cv_prog_gcc = no -a "$OSTYPE" = "-DHPUX10"; then
+   CFLAGS="$CFLAGS -Ae"
+ fi
+ 
+-LDFLAGS="-L\$(top_srcdir)/lib -L\$(top_builddir)/lib $LDFLAGS"
++LDFLAGS="-Wl,-L\$(top_srcdir)/lib,-L\$(top_builddir)/lib $LDFLAGS"
+ 
+ # AIX has issues with the -rdynamic linker flag.  How many different AIX
+ # versions should we support here?
+--- a/configure
++++ b/configure
+@@ -14932,7 +14944,7 @@ if test $ac_cv_c_compiler_gnu = no -a "$OSTYPE" = "-DHPUX10"; then
+   CFLAGS="$CFLAGS -Ae"
+ fi
+ 
+-LDFLAGS="-L\$(top_srcdir)/lib -L\$(top_builddir)/lib $LDFLAGS"
++LDFLAGS="-Wl,-L\$(top_srcdir)/lib,-L\$(top_builddir)/lib $LDFLAGS"
+ 
+ # AIX has issues with the -rdynamic linker flag.  How many different AIX
+ # versions should we support here?

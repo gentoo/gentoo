@@ -1,6 +1,6 @@
-diff -r -U2 reduze-2.2.orig/reduze/CMakeLists.txt reduze-2.2/reduze/CMakeLists.txt
---- reduze-2.2.orig/reduze/CMakeLists.txt	2017-11-17 14:11:58.000000000 +0700
-+++ reduze-2.2/reduze/CMakeLists.txt	2017-12-19 20:27:17.508528174 +0700
+diff -r -U2 a/reduze/CMakeLists.txt b/reduze/CMakeLists.txt
+--- a/reduze/CMakeLists.txt	2017-11-17 14:11:58.000000000 +0700
++++ b/reduze/CMakeLists.txt	2017-12-19 20:27:17.508528174 +0700
 @@ -84,9 +84,8 @@
  	message (STATUS "Building with Berkeley DB support")
  	find_path(DB_INCLUDE_PATH NAMES dbstl_common.h

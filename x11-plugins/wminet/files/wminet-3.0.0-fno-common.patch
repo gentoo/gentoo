@@ -1,0 +1,23 @@
+diff -Naur wminet-3.0.0.orig/src/wmgeneral.h wminet-3.0.0/src/wmgeneral.h
+--- wminet-3.0.0.orig/src/wmgeneral.h	2001-12-02 19:03:14.000000000 +0100
++++ wminet-3.0.0/src/wmgeneral.h	2021-01-01 22:51:46.875206930 +0100
+@@ -15,7 +15,7 @@
+  /* Global variable */
+ /*******************/
+ 
+-Display		*display;
++extern Display		*display;
+ 
+   /***********************/
+  /* Function Prototypes */
+diff -Naur wminet-3.0.0.orig/src/wminet.c wminet-3.0.0/src/wminet.c
+--- wminet-3.0.0.orig/src/wminet.c	2001-11-24 12:03:32.000000000 +0100
++++ wminet-3.0.0/src/wminet.c	2021-01-01 22:51:41.493202753 +0100
+@@ -78,6 +78,7 @@
+ /* Globals                                */
+ /******************************************/
+ 
++Display		*display;
+ char mask[MASK_WIDTH * MASK_HEIGHT];
+ int monitor_tcp = 0;
+ int monitor_udp = 0;

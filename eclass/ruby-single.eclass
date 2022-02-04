@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-single.eclass
@@ -7,7 +7,8 @@
 # @AUTHOR:
 # Author: Hans de Graaff <graaff@gentoo.org>
 # Based on python-single-r1 by: Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 4 5 6 7 8
+# @PROVIDES: ruby-utils
 # @BLURB: An eclass for Ruby packages not installed for multiple implementations.
 # @DESCRIPTION:
 # An eclass for packages which don't support being installed for
@@ -17,7 +18,7 @@
 # pull in the dependency on the requested ruby targets.
 #
 # @CODE
-# USE_RUBY="ruby20 ruby21"
+# USE_RUBY="ruby26 ruby27"
 # inherit ruby-single
 # RDEPEND="${RUBY_DEPS}"
 # @CODE
@@ -26,7 +27,7 @@ case "${EAPI:-0}" in
 	0|1|2|3)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	4|5|6|7)
+	4|5|6|7|8)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -39,6 +40,7 @@ inherit ruby-utils
 
 # @ECLASS-VARIABLE: USE_RUBY
 # @DEFAULT_UNSET
+# @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
 # This variable contains a space separated list of targets (see above) a package
@@ -65,7 +67,7 @@ inherit ruby-utils
 #
 # Example value:
 # @CODE
-# || ( dev-lang/ruby:2.0 dev-lang/ruby:1.9 ) virtual/rubygems
+# || ( dev-lang/ruby:2.7 dev-lang/ruby:2.6 ) virtual/rubygems
 # @CODE
 #
 # The order of dependencies will change over time to best match the

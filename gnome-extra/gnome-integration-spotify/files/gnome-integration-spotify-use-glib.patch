@@ -1,0 +1,40 @@
+--- a/spotify-dbus.py	2021-04-12 11:11:00.710360694 +0200
++++ b/spotify-dbus.py	2021-04-12 11:23:16.895644502 +0200
+@@ -39,7 +39,7 @@
+ import sys
+ import dbus
+ import time
+-from gi.repository import GObject
++from gi.repository import GLib
+ import hashlib
+ import sys
+ if (sys.version_info) < (3, 0):
+@@ -146,8 +146,8 @@
+ 					interface.connect_to_signal('ActionInvoked', self.action_listener)
+ 	
+ 				interface.connect_to_signal('NotificationClosed', self.action_dismisser)
+-				GObject.threads_init()
+-				GObject.timeout_add(self.timeout * 10, self.action_listener)
++				GLib.threads_init()
++				GLib.timeout_add(self.timeout * 10, self.action_listener)
+ 	
+ 		return self.nid
+ 		
+@@ -532,7 +532,7 @@
+ 			self.locale = locale
+ 		
+ 		# loop must be global to can quit from listener
+-		self.loop = GObject.MainLoop()
++		self.loop = GLib.MainLoop()
+ 		
+ 		# Prepare loop for interactive notifications or daemon mode
+ 		self.dloop = DBusGMainLoop()
+@@ -606,7 +606,7 @@
+ 		
+ 			# Start loop listening for track changes
+ 			try:
+-				GObject.timeout_add(100, self.change_listener)
++				GLib.timeout_add(100, self.change_listener)
+ 				self.loop.run()
+ 			except KeyboardInterrupt:
+ 				print('Stopping daemon...')

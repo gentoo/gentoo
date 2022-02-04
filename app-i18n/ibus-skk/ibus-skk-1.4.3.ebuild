@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -11,17 +11,16 @@ SRC_URI="https://github.com/ueno/${PN}/releases/download/${P}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls"
 
-CDEPEND="app-i18n/ibus
+DEPEND="app-i18n/ibus
 	>=app-i18n/libskk-1.0.2
 	x11-libs/gtk+:3
 	nls? ( virtual/libintl )"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	app-i18n/skk-jisyo"
-DEPEND="${CDEPEND}
-	$(vala_depend)
+BDEPEND="$(vala_depend)
 	dev-util/intltool
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"

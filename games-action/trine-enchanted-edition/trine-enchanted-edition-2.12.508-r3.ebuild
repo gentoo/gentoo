@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,6 +12,7 @@ MY_PN="Trine Enchanted Edition"
 DESCRIPTION="The original sidescrolling action platformer under the Trine 2 engine"
 HOMEPAGE="https://www.frozenbyte.com/games/trine-enchanted-edition"
 SRC_URI="${MY_P}_humble_linux_full.zip"
+
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
@@ -20,7 +21,7 @@ RESTRICT="bindist fetch splitdebug"
 
 QA_PREBUILT="opt/${PN}/${PN}*"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 # SDL 1.3 is bundled but the game appears to be statically linked
 # against SDL 2.0.3. We can bypass this and use our own SDL 2 by setting

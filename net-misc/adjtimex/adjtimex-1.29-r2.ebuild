@@ -1,16 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit eutils fixheadtails toolchain-funcs
+inherit fixheadtails toolchain-funcs
 
 DEBIAN_PV="10"
 MY_P="${P/-/_}"
 DEBIAN_URI="mirror://debian/pool/main/${PN:0:1}/${PN}"
 DEBIAN_PATCH="${MY_P}-${DEBIAN_PV}.debian.tar.xz"
 DEBIAN_SRC="${MY_P}.orig.tar.gz"
-DESCRIPTION="display or set the kernel time variables"
+DESCRIPTION="Display or set the kernel time variables"
 HOMEPAGE="https://www.ibiblio.org/pub/Linux/system/admin/time/adjtimex.lsm https://github.com/rogers0/adjtimex"
 SRC_URI="${DEBIAN_URI}/${DEBIAN_PATCH}
 	${DEBIAN_URI}/${DEBIAN_SRC}"
@@ -18,14 +18,10 @@ SRC_URI="${DEBIAN_URI}/${DEBIAN_PATCH}
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc x86"
-IUSE=""
-
-DEPEND="sys-apps/sed"
-RDEPEND=""
 
 src_unpack() {
 	unpack "${DEBIAN_SRC}"
-	cd "${S}" || die "Failed to cd $S"
+	cd "${S}" || die "Failed to cd ${S}"
 	unpack "${DEBIAN_PATCH}"
 }
 
@@ -35,6 +31,7 @@ src_prepare() {
 	for f in $(cat "$DEBPATCHDIR/series") ; do
 		eapply "$DEBPATCHDIR"/$f
 	done
+
 	# Then gentoo changes
 	for i in debian/adjtimexconfig debian/adjtimexconfig.8 ; do
 		sed -e 's|/etc/default/adjtimex|/etc/conf.d/adjtimex|' \
@@ -42,12 +39,15 @@ src_prepare() {
 		sed -e 's|^/sbin/adjtimex |/usr/sbin/adjtimex |' \
 			-i.orig ${i}
 	done
+
 	eapply "${FILESDIR}"/${PN}-1.29-r2-gentoo-utc.patch
 	ht_fix_file debian/adjtimexconfig
+
 	sed -i \
 		-e '/CFLAGS = -Wall -t/,/endif/d' \
 		-e '/$(CC).* -o/s|$(CFLAGS)|& $(LDFLAGS)|g' \
 		Makefile.in || die "sed Makefile.in"
+
 	eapply_user
 }
 

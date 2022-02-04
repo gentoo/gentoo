@@ -1,7 +1,7 @@
 Fix building with --disable-nls.
 
---- /src/cadaver.c
-+++ /src/cadaver.c
+--- a/src/cadaver.c
++++ b/src/cadaver.c
 @@ -838,11 +838,11 @@
  
      progname = argv[0];

@@ -1,6 +1,6 @@
 diff -ur Makefile.old Makefile
---- Makefile	2001-12-29 20:37:22.000000000 -0500
-+++ Makefile	2003-07-17 22:14:50.000000000 -0400
+--- a/linux/Makefile
++++ b/linux/Makefile
 @@ -54,7 +54,7 @@
  RELEASE_CFLAGS=$(BASE_CFLAGS) -O6 -ffast-math -funroll-loops \
  	-fomit-frame-pointer -fexpensive-optimizations
@@ -11,8 +11,8 @@ diff -ur Makefile.old Makefile
  endif
  
 diff -ur sys_linux.c.old sys_linux.c
---- sys_linux.c.old	2001-12-22 18:45:58.000000000 -0500
-+++ sys_linux.c	2003-07-17 22:34:11.000000000 -0400
+--- a/linux/sys_linux.c
++++ b/linux/sys_linux.c
 @@ -220,7 +220,7 @@
  	char	curpath[MAX_OSPATH];
  	char	*path;
@@ -38,8 +38,8 @@ diff -ur sys_linux.c.old sys_linux.c
  	}
  
 diff -ur ../qcommon/files.c ../qcommon/files.c
---- ../qcommon/files.c	2001-12-22 16:32:26.000000000 -0500
-+++ ../qcommon/files.c	2003-07-17 22:34:29.000000000 -0400
+--- a/qcommon/files.c
++++ b/qcommon/files.c
 @@ -865,7 +865,7 @@
  	//
  	// start up with baseq2 by default
@@ -50,8 +50,8 @@ diff -ur ../qcommon/files.c ../qcommon/files.c
  	// any set gamedirs will be freed up to here
  	fs_base_searchpaths = fs_searchpaths;
 diff -ur ../qcommon/qcommon.h ../qcommon/qcommon.h
---- ../qcommon/qcommon.h	2001-12-22 16:32:26.000000000 -0500
-+++ ../qcommon/qcommon.h	2003-07-17 21:20:03.000000000 -0400
+--- a/qcommon/qcommon.h
++++ b/qcommon/qcommon.h
 @@ -25,7 +25,7 @@
  
  #define	VERSION		3.21

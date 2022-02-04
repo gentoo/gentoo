@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake
+PYTHON_COMPAT=( python3_{7..9} )
+inherit cmake python-any-r1
 
 MY_P=colobot-gold-${PV}-alpha
 MUSIC_P=colobot-music_ogg_${PV}-alpha
@@ -14,13 +15,14 @@ SRC_URI="
 	https://github.com/colobot/colobot-data/archive/${MY_P}.tar.gz -> ${MY_P}.data.tar.gz
 	music? (
 		https://colobot.info/files/music/${MUSIC_P}.tar.gz )"
+S=${WORKDIR}/${PN}-${MY_P}
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+music"
 
-S="${WORKDIR}/${PN}-${MY_P}"
+BDEPEND=${PYTHON_DEPS}
 
 src_unpack() {
 	unpack "${MY_P}.data.tar.gz"

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>xfce@gentoo.org</email>
-    <name>XFCE Team</name>
-  </maintainer>
-  <use>
-    <flag name='gtk2'>Enable GTK+2 plugin support.</flag>
-  </use>
+	<maintainer type="project">
+		<email>xfce@gentoo.org</email>
+		<name>XFCE Team</name>
+	</maintainer>
+	<use>
+		<flag name="dbusmenu">
+			Enable <pkg>dev-libs/libdbusmenu</pkg> integration
+			(in status notifier plugin)
+		</flag>
+	</use>
 </pkgmetadata>

@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit flag-o-matic git-r3 toolchain-funcs
 
 DESCRIPTION="A desktop sticky note program for the unix geek"
@@ -22,9 +23,9 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
 	x11-base/xorg-proto
 "
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default

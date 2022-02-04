@@ -1,0 +1,38 @@
+From 27ab05863dc56fcd7254bccf30797f9e3c448cac Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Mon, 12 Jul 2021 10:36:04 -0400
+Subject: [PATCH] libdm: add SELINUX_STATIC_LIBS and UDEV_STATIC_LIBS to
+ make.tmpl.in
+
+Fixes link failure for dmsetup.static.
+---
+ libdm/make.tmpl.in | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/libdm/make.tmpl.in b/libdm/make.tmpl.in
+index a306101d5..2309fb3e5 100644
+--- a/libdm/make.tmpl.in
++++ b/libdm/make.tmpl.in
+@@ -55,7 +55,7 @@ RM = rm -f
+ 
+ LIBS += @LIBS@ $(PTHREAD_LIBS) $(SELINUX_LIBS) $(UDEV_LIBS) $(RT_LIBS) $(M_LIBS)
+ # Extra libraries always linked with static binaries
+-STATIC_LIBS = $(PTHREAD_LIBS)
++STATIC_LIBS = $(PTHREAD_LIBS) $(SELINUX_STATIC_LIBS) $(UDEV_STATIC_LIBS)
+ DEFS += @DEFS@
+ # FIXME set this only where it's needed, not globally?
+ CFLAGS ?= @COPTIMISE_FLAG@ @CFLAGS@
+@@ -71,8 +71,10 @@ PTHREAD_LIBS = @PTHREAD_LIBS@
+ READLINE_LIBS = @READLINE_LIBS@
+ EDITLINE_LIBS = @EDITLINE_LIBS@
+ SELINUX_LIBS = @SELINUX_LIBS@
++SELINUX_STATIC_LIBS = @SELINUX_STATIC_LIBS@
+ UDEV_CFLAGS = @UDEV_CFLAGS@
+ UDEV_LIBS = @UDEV_LIBS@
++UDEV_STATIC_LIBS = @UDEV_STATIC_LIBS@
+ BLKID_CFLAGS = @BLKID_CFLAGS@
+ BLKID_LIBS = @BLKID_LIBS@
+ SYSTEMD_LIBS = @SYSTEMD_LIBS@
+-- 
+2.32.0
+

@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake git-r3 systemd
 
@@ -13,19 +13,19 @@ EGIT_REPO_URI="https://github.com/TokTok/c-toxcore.git"
 LICENSE="GPL-3+"
 SLOT="0/0.2"
 KEYWORDS=""
-IUSE="+av daemon dht-node ipv6 log-debug +log-error log-info log-trace log-warn static-libs test"
+IUSE="+av daemon dht-node ipv6 log-debug +log-error log-info log-trace log-warn test"
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="^^ ( log-debug log-error log-info log-trace log-warn )
+REQUIRED_USE="?? ( log-debug log-error log-info log-trace log-warn )
 		daemon? ( dht-node )"
 
 BDEPEND="virtual/pkgconfig"
-DEPEND=">dev-libs/libsodium-0.6.1:=[asm,urandom,-minimal]
+DEPEND="dev-libs/libsodium:=[asm,urandom,-minimal]
 	av? (
 		media-libs/libvpx:=
 		media-libs/opus
 	)
-	daemon? ( dev-libs/libconfig )"
+	daemon? ( dev-libs/libconfig:= )"
 RDEPEND="
 	${DEPEND}
 	daemon? (
@@ -36,31 +36,26 @@ RDEPEND="
 src_prepare() {
 	cmake_src_prepare
 
-	# Remove faulty tests
-	local faultytest=(lan_discovery save_compatibility)
-	local testname=
-	for testname in "${faultytest[@]}"; do
+	#remove faulty tests
+	for testname in lan_discovery save_compatibility set_status_message; do
 		sed -i -e "/^auto_test(${testname})$/d" CMakeLists.txt || die
 	done
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DAUTOTEST=$(usex test)
-		-DBOOTSTRAP_DAEMON=$(usex daemon)
-		-DBUILD_MISC_TESTS=$(usex test)
-		-DBUILD_TOXAV=$(usex av)
-		-DDHT_BOOTSTRAP=$(usex dht-node)
+		-DAUTOTEST=$(usex test ON OFF)
+		-DBOOTSTRAP_DAEMON=$(usex daemon ON OFF)
+		-DBUILD_MISC_TESTS=$(usex test ON OFF)
+		-DBUILD_TOXAV=$(usex av ON OFF)
+		-DDHT_BOOTSTRAP=$(usex dht-node ON OFF)
 		-DENABLE_SHARED=ON
-		-DENABLE_STATIC=$(usex static-libs)
-		-DMUST_BUILD_TOXAV=$(usex av)
-	)
-
+		-DENABLE_STATIC=OFF
+		-DMUST_BUILD_TOXAV=$(usex av ON OFF))
 	if use test; then
 		mycmakeargs+=(
 			-DTEST_TIMEOUT_SECONDS=120
-			-DUSE_IPV6=$(usex ipv6)
-		)
+			-DUSE_IPV6=$(usex ipv6 ON OFF))
 	else
 		mycmakeargs+=(-DUSE_IPV6=OFF)
 	fi

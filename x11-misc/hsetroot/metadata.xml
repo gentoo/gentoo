@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>desktop-misc@gentoo.org</email>
-	<name>Gentoo Desktop Miscellaneous Project</name>
-</maintainer>
-<longdescription>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<longdescription>
 hsetroot is a tool which allows you to compose wallpapers ("root pixmaps") for
 X. It has a lot of options like rendering gradients, solids, images but it also
 allows you to perform manipulations on those things, or chain them together.
@@ -19,5 +19,5 @@ maximum aspect). It supports the following manipulations: tinting (overlaying a
 color mask), blurring, sharpening, flipping (horizontally, diagonally,
 vertically) it also allows you to adjust brightness, contrast and gamma-level.
 hsetroot also supports alpha-channels when rendering things.
-</longdescription>
+	</longdescription>
 </pkgmetadata>

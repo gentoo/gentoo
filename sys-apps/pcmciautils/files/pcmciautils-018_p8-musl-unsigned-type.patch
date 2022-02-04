@@ -1,0 +1,24 @@
+https://git.alpinelinux.org/aports/plain/main/pcmciautils/unsigned.patch
+https://bugs.gentoo.org/716120
+--- a/src/read-cis.c
++++ b/src/read-cis.c
+@@ -51,7 +51,7 @@
+ 		/* Get indirect link from the MFC tuple */
+ 		read_cis(tuple->Flags.link_space,
+ 			       tuple->LinkOffset, 5, link);
+-		ofs = *(u_int *)(link+1);
++		ofs = *(unsigned int *)(link+1);
+ 		tuple->Flags.space = (link[0] == CISTPL_MFC_ATTR);
+ 		/* Move to the next indirect link */
+ 		tuple->LinkOffset += 5;
+--- a/src/yacc_config.y
++++ b/src/yacc_config.y
+@@ -40,7 +40,7 @@
+ 
+ %union {
+     char *str;
+-    u_long num;
++    unsigned long num;
+     struct adjust_list_t *adjust;
+ }
+ 

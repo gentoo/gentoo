@@ -1,0 +1,26 @@
+From: Zdenek Dohnal <zdohnal@redhat.com>
+Date: Tue, 13 Apr 2021 15:44:14 +0200
+Subject: backend/usb-libusb.c: Use 60s timeout for reading at backchannel
+
+Some older models malfunction if timeout is too short.
+
+Origin: upstream, https://github.com/OpenPrinting/cups/pull/174
+Bug: https://github.com/OpenPrinting/cups/issues/160
+Bug-Debian: https://bugs.debian.org/989073
+---
+ backend/usb-libusb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/backend/usb-libusb.c b/backend/usb-libusb.c
+index d6b0eb4..fbb0d9d 100644
+--- a/backend/usb-libusb.c
++++ b/backend/usb-libusb.c
+@@ -1704,7 +1704,7 @@ static void *read_thread(void *reference)
+     readstatus = libusb_bulk_transfer(g.printer->handle,
+ 				      g.printer->read_endp,
+ 				      readbuffer, rbytes,
+-				      &rbytes, 250);
++				      &rbytes, 60000);
+     if (readstatus == LIBUSB_SUCCESS && rbytes > 0)
+     {
+       fprintf(stderr, "DEBUG: Read %d bytes of back-channel data...\n", (int)rbytes);

@@ -1,7 +1,6 @@
 http://bugs.gentoo.org/335324
-
---- intl/Makefile.in
-+++ intl/Makefile.in
+--- a/intl/Makefile.in
++++ b/intl/Makefile.in
 @@ -202,12 +202,12 @@
  # The dependency for intlh.inst is different in gettext and all other
  # packages.  Because we cannot you GNU make features we have to solve

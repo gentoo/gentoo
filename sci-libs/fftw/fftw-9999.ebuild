@@ -1,37 +1,36 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 FORTRAN_NEEDED=fortran
 
-inherit flag-o-matic fortran-2 multibuild multilib-minimal toolchain-funcs
+inherit fortran-2 multibuild multilib-minimal toolchain-funcs
 
 DESCRIPTION="Fast C library for the Discrete Fourier Transform"
-HOMEPAGE="http://www.fftw.org/"
+HOMEPAGE="https://www.fftw.org/"
 
 MY_P=${PN}-${PV/_p/-pl}
 
-if [[ ${PV} = *9999 ]]; then
+if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/FFTW/fftw3.git"
 else
-	SRC_URI="http://www.fftw.org/${PN}-${PV/_p/-pl}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	SRC_URI="https://www.fftw.org/${PN}-${PV/_p/-pl}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
+
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"
 SLOT="3.0/3"
-IUSE="cpu_flags_ppc_altivec cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse cpu_flags_x86_sse2 doc fortran mpi neon openmp quad static-libs test threads zbus"
+IUSE="cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse cpu_flags_x86_sse2 doc fortran mpi openmp test threads zbus"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	mpi? ( >=virtual/mpi-2.0-r4[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}
-	quad? ( sys-devel/gcc[fortran] )
-	test? ( dev-lang/perl )"
+RDEPEND="mpi? ( >=virtual/mpi-2.0-r4[${MULTILIB_USEDEP}] )"
+DEPEND="${RDEPEND}"
+BDEPEND="test? ( dev-lang/perl )"
 
-S=${WORKDIR}/${MY_P}
 HTML_DOCS=( doc/html/. )
 
 pkg_pretend() {
@@ -45,50 +44,32 @@ pkg_setup() {
 	fi
 
 	fortran-2_pkg_setup
-
 	MULTIBUILD_VARIANTS=( single double longdouble )
-	if use quad; then
-		if ! tc-is-gcc; then
-			ewarn "quad precision only available for gcc >= 4.6"
-			die "need quad precision capable gcc"
-		fi
-		MULTIBUILD_VARIANTS+=( quad )
-	fi
 }
 
 src_prepare() {
 	default
 
 	# fix info file for category directory
-	if [[ ${PV} = *9999 ]]; then
-		sed -i -e
-			's/Texinfo documentation system/Libraries/' \
-			doc/fftw3."info" || die "failed to fix info file"
-
-		eautoreconf
-	fi
+	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 multilib_src_configure() {
-	# jlec reported USE=quad on abi_x86_32 has too few registers
-	# stub Makefiles
-	if [[ ${MULTILIB_ABI_FLAG} == abi_x86_32 && ${MULTIBUILD_ID} == quad-* ]]; then
-		mkdir -p "${BUILD_DIR}/tests" || die
-		echo "all: ;" > "${BUILD_DIR}/Makefile" || die
-		echo "install: ;" >> "${BUILD_DIR}/Makefile" || die
-		echo "smallcheck: ;" > "${BUILD_DIR}/tests/Makefile" || die
-		return 0
-	fi
-
 	local myconf=(
 		--enable-shared
-		$(use_enable static-libs static)
+		--disable-static
 		$(use_enable "cpu_flags_x86_fma$(usex cpu_flags_x86_fma3 3 4)" fma)
 		$(use_enable fortran)
 		$(use_enable zbus mips-zbus-timer)
 		$(use_enable threads)
 		$(use_enable openmp)
 	)
+
+	[[ ${PV} == *9999 ]] && myconf+=( --enable-maintainer-mode )
+
+	# --enable-quad-precision is a brittle feature that requires
+	# __float128 support from the toolchain, which is lacking on
+	# most niche architectures. Bug #770346
 	case "${MULTIBUILD_ID}" in
 		single-*)
 			# altivec, sse, single-paired only work for single
@@ -99,7 +80,7 @@ multilib_src_configure() {
 				$(use_enable cpu_flags_x86_avx2 avx2)
 				$(use_enable cpu_flags_x86_sse sse)
 				$(use_enable cpu_flags_x86_sse2 sse2)
-				$(use_enable neon)
+				$(use_enable cpu_flags_arm_neon neon)
 				$(use_enable mpi)
 			)
 			;;
@@ -117,13 +98,6 @@ multilib_src_configure() {
 			myconf+=(
 				--enable-long-double
 				$(use_enable mpi)
-			)
-			;;
-
-		quad-*)
-			# quad does not support mpi
-			myconf+=(
-				--enable-quad-precision
 			)
 			;;
 
@@ -166,17 +140,20 @@ src_install() {
 		docinto faq
 		dodoc -r doc/FAQ/fftw-faq.html/.
 	else
-		rm -r "${ED%/}"/usr/share/doc/${PF}/html || die
+		rm -r "${ED}"/usr/share/doc/${PF}/html || die
 	fi
 
-	local x
-	for x in "${ED%/}"/usr/lib*/pkgconfig/*.pc; do
-		local u
-		for u in $(usev mpi) $(usev threads) $(usex openmp omp ""); do
-			sed -e "s|-lfftw3[flq]\?|&_${u} &|" "$x" > "${x%.pc}_${u}.pc" || die
+	augment_pc_files() {
+		local x
+		for x in "${ED}"/usr/$(get_libdir)/pkgconfig/*.pc; do
+			local u
+			for u in $(usev mpi) $(usev threads) $(usex openmp omp ""); do
+				sed -e "s|-lfftw3[flq]\?|&_${u} &|" "${x}" > "${x%.pc}_${u}.pc" || die
+			done
 		done
-	done
+	}
+	multilib_foreach_abi augment_pc_files
 
 	# fftw uses pkg-config to record its private dependencies
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }

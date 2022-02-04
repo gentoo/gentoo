@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils dotnet ltprune
+inherit dotnet
 
 DESCRIPTION="Library for using System.Drawing with Mono"
 HOMEPAGE="https://www.mono-project.com"
@@ -46,5 +46,5 @@ src_install() {
 		[[ -e "${docfile}" ]] && dodoc "${docfile}"
 	done
 	[[ "${DOCS[@]}" ]] && dodoc "${DOCS[@]}"
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

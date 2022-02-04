@@ -16,7 +16,7 @@ if [[ ${PV} = 9999 ]] ; then
 	EGIT_BOOTSTRAP=""
 else
 	SRC_URI="https://github.com/MaartenBaert/${PKGNAME}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/${PKGNAME}-${PV}"
 fi
 
@@ -43,7 +43,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
 
-PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" ) # bug #624480, in git master
 
 pkg_pretend() {
 	if [[ "${ABI}" == amd64 ]]; then

@@ -10,7 +10,7 @@ SRC_URI="http://luxik.cdi.cz/~devik/qos/${PN}/${PN}${PV}.tgz"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 RESTRICT="mirror bindist"
 
 S=${WORKDIR}/${PN}

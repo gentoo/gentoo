@@ -1,6 +1,5 @@
-diff -ru gnuboy-1.0.3.orig/defs.h gnuboy-1.0.3/defs.h
---- gnuboy-1.0.3.orig/defs.h	2001-01-23 07:04:22.000000000 -0500
-+++ gnuboy-1.0.3/defs.h	2014-07-04 03:56:46.685149736 -0400
+--- a/defs.h
++++ b/defs.h
 @@ -4,6 +4,10 @@
  #ifndef __DEFS_H__
  #define __DEFS_H__

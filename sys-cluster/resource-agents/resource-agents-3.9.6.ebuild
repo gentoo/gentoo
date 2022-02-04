@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 MY_P="${P/resource-}"
-inherit autotools eutils multilib
+inherit autotools multilib
 
 DESCRIPTION="Resources pack for Heartbeat / Pacemaker"
 HOMEPAGE="http://www.linux-ha.org/wiki/Resource_Agents"
@@ -12,12 +12,11 @@ SRC_URI="https://github.com/ClusterLabs/resource-agents/archive/v${PV}.tar.gz ->
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa x86"
+KEYWORDS="amd64 ~hppa x86"
 IUSE="doc libnet rgmanager"
 
 RDEPEND="sys-apps/iproute2
 	sys-cluster/cluster-glue
-	!<sys-cluster/heartbeat-3.0
 	libnet? ( net-libs/libnet:1.1 )"
 DEPEND="${RDEPEND}
 	doc? (

@@ -1,6 +1,8 @@
 #!/bin/bash
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+file_version="2021.0"		# update manually: <year>.<counter>
 
 # people who were here:
 # (drobbins, 06 Jun 2003)
@@ -55,9 +57,6 @@ v_echo() {
 	env "$@"
 }
 
-cvsver="$Id$" # TODO: FIXME for Git era
-cvsver=${cvsver##*,v }
-cvsver=${cvsver%%Exp*}
 file_copyright=$(sed -n '/Copyright/!b;s/^# *//;p;q' $0)
 
 usage() {
@@ -94,7 +93,7 @@ for opt in "$@" ; do
 		--resume|-r)  STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} --usepkg --buildpkg";;
 		--verbose|-v) STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} -v"     ; V_ECHO=v_echo;;
 		--version|-V)
-			einfo "Gentoo Linux bootstrap ${cvsver}"
+			einfo "Gentoo Linux bootstrap ${file_version}"
 			exit 0
 			;;
 		*)

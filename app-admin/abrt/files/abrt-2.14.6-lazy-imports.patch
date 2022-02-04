@@ -1,0 +1,57 @@
+From 4755f2171aa50a72d8ec03260c8cbc602263a6c0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Fri, 24 Sep 2021 17:48:07 +0200
+Subject: [PATCH] Use lazy imports in abrt_exception_handler3
+
+The abrt_exception_handler3 module is always imported when Python starts,
+but all the modules imported from it (except sys) are only used during crashes.
+
+Especially the systemd.journal import is really expensive.
+
+Fixes https://bugzilla.redhat.com/show_bug.cgi?id=2007664
+---
+ src/hooks/abrt_exception_handler3.py.in | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/hooks/abrt_exception_handler3.py.in b/src/hooks/abrt_exception_handler3.py.in
+index 89e2474b..0bc548e0 100644
+--- a/src/hooks/abrt_exception_handler3.py.in
++++ b/src/hooks/abrt_exception_handler3.py.in
+@@ -20,13 +20,15 @@
+ Module for the ABRT exception handling hook
+ """
+ 
++# Avoid importing anything but sys here, use lazy imports.
++# This file is imported on every Python startup,
++# all unused imports only increase the startup time and memory usage.
+ import sys
+-import os
+ 
+-from systemd import journal
+ 
+ def syslog(msg):
+     """Log message to system logger (journal)"""
++    from systemd import journal
+ 
+     journal.send(msg)
+ 
+@@ -68,6 +70,8 @@ def send(data):
+ 
+ 
+ def write_dump(tb_text, tb):
++    import os
++
+     if sys.argv[0][0] == "/":
+         executable = os.path.abspath(sys.argv[0])
+     else:
+@@ -118,6 +122,7 @@ def handle_exception(etype, value, tb):
+         sys.excepthook = sys.__excepthook__  # pylint: disable-msg=E1101
+ 
+         import errno
++        import os
+ 
+         # Ignore Ctrl-C
+         # SystemExit rhbz#636913 -> this exception is not an error
+-- 
+2.31.1
+

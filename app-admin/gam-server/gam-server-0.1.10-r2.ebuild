@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
+
 GNOME_ORG_MODULE="gamin"
 GNOME_TARBALL_SUFFIX="bz2"
-
-inherit autotools eutils flag-o-matic libtool multilib gnome.org
+inherit autotools epatch flag-o-matic multilib gnome.org
 
 DESCRIPTION="Library providing the FAM File Alteration Monitor API"
 HOMEPAGE="https://www.gnome.org/~veillard/gamin/"
@@ -15,8 +15,8 @@ SRC_URI="${SRC_URI}
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~x86-solaris"
-IUSE="debug kernel_linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x86-solaris"
+IUSE="debug"
 
 RDEPEND=">=dev-libs/glib-2:2
 	>=dev-libs/libgamin-0.1.10

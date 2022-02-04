@@ -1,10 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-DESCRIPTION="Modified versions of kinit for refreshing kerberos tickets
-automatically"
+DESCRIPTION="Modified versions of kinit for refreshing kerberos tickets automatically"
 HOMEPAGE="https://www.eyrie.org/~eagle/software/kstart/"
 SRC_URI="https://archives.eyrie.org/software/kerberos/${P}.tar.gz"
 
@@ -15,7 +14,7 @@ IUSE="afs"
 
 DEPEND="virtual/krb5
 		afs? ( net-fs/openafs )"
-RDEPEND="$DEPEND"
+RDEPEND="${DEPEND}"
 
 src_configure() {
 	econf \

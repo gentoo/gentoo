@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,7 @@ SRC_URI="http://www.soft-switch.org/downloads/spandsp/${P/_}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
 IUSE="doc fixed-point cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 static-libs"
 
 RDEPEND="media-libs/tiff
@@ -57,7 +57,7 @@ src_install() {
 
 	if ! use static-libs; then
 		# remove useless la file when not installing static lib
-		rm "${D}"/usr/$(get_libdir)/lib${PN}.la || die "rm failed"
+		find "${ED}" -name '*.la' -delete || die
 	fi
 
 	if use doc; then

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils toolchain-funcs git-r3
+inherit toolchain-funcs git-r3
 
 DESCRIPTION="JACK Recording utility"
 HOMEPAGE="https://github.com/kmatheussen/jack_capture"
@@ -11,21 +11,20 @@ EGIT_REPO_URI="https://github.com/kmatheussen/jack_capture.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="mp3 ogg osc"
 
-CDEPEND="
+RDEPEND="
 	media-libs/libsndfile
 	virtual/jack
 	mp3? ( media-sound/lame )
 	ogg? ( media-libs/libogg )
 	osc? ( media-libs/liblo )
 "
-RDEPEND="${CDEPEND}"
-DEPEND="${CDEPEND}"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.9.73-r1-Makefile.patch"
+	"${FILESDIR}"/${PN}-0.9.73-r1-Makefile.patch
 )
 
 DOCS=( README config )
@@ -38,15 +37,13 @@ src_prepare() {
 	use osc || sed -i -e 's/HAVE_LIBLO 1/HAVE_LIBLO 0/' -e '/COMPILEFLAGS .* liblo/d' gen_das_config_h.sh
 }
 
-src_compile()
-{
+src_compile() {
 	tc-export CC CXX
 
-	emake PREFIX="${EPREFIX}/usr" jack_capture
+	emake PKG_CONFIG="$(tc-getPKG_CONFIG)" PREFIX="${EPREFIX}/usr" jack_capture
 }
 
-src_install()
-{
+src_install() {
 	dobin jack_capture
 
 	dodoc "${DOCS[@]}"

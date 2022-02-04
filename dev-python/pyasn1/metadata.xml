@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>python@gentoo.org</email>
@@ -8,7 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">pyasn1</remote-id>
-    <remote-id type="sourceforge">pyasn1</remote-id>
     <remote-id type="github">etingof/pyasn1</remote-id>
   </upstream>
 </pkgmetadata>

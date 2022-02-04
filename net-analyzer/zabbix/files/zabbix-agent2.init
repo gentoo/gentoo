@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/zabbix_agent2"
+command_args="--foreground --config /etc/zabbix/zabbix_agent2.conf"
+command_background="true"
+command_user="zabbix:zabbix"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+	provide zabbix-agent
+	use zabbix-server
+}
+
+start_pre() {
+	checkpath -q -d -m 0750 -o root:zabbix /etc/zabbix
+	checkpath -q -f -m 0640 -o root:zabbix /etc/zabbix/*.conf
+}

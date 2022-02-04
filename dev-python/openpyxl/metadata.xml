@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
@@ -8,8 +8,9 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">openpyxl</remote-id>
-		<bugs-to>https://foss.heptapod.net/openpyxl/openpyxl/issues</bugs-to>
+		<remote-id type="heptapod">openpyxl/openpyxl</remote-id>
+		<bugs-to>https://foss.heptapod.net/openpyxl/openpyxl/-/issues</bugs-to>
 		<changelog>https://openpyxl.readthedocs.io/en/stable/changes.html</changelog>
-		<doc>https://openpyxl.readthedocs.io</doc>
+		<doc>https://openpyxl.readthedocs.io/</doc>
 	</upstream>
 </pkgmetadata>

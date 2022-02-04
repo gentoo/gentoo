@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://www.hzog.net/pub/${PN}-1.9.9-r1.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 RDEPEND="
 	>=x11-libs/libxcb-1.11[xkb]
@@ -42,7 +42,7 @@ src_install() {
 	ebegin "Changing references from 'page' to 'pagewm'"
 	mv "${D}"usr/bin/page "${D}"usr/bin/pagewm || die "Could not rename binary!"
 	sed -i -e "s:/usr/bin/page:/usr/bin/pagewm:" "${D}"usr/share/applications/page.desktop || die "Could not change .desktop file!"
-	eend
+	eend $?
 }
 
 pkg_postinst() {

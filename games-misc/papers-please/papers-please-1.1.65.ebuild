@@ -1,21 +1,21 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils games
+inherit desktop wrapper
 
 DESCRIPTION="A Dystopian Document Thriller"
 HOMEPAGE="http://papersplea.se"
 SRC_URI="papers-please_${PV}_i386.tar.gz"
+S="${WORKDIR}"/${PN}
 
 LICENSE="PAPERS-PLEASE"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 RESTRICT="fetch bindist"
 
-QA_PREBUILT="${GAMES_PREFIX_OPT#/}/${PN}/*"
+QA_PREBUILT="opt/${PN}/*"
 
 RDEPEND="
 	amd64? (
@@ -39,8 +39,6 @@ RDEPEND="
 		virtual/opengl
 	)"
 
-S=${WORKDIR}/${PN}
-
 pkg_nofetch() {
 	einfo
 	einfo "Please buy & download ${SRC_URI} from:"
@@ -50,21 +48,21 @@ pkg_nofetch() {
 }
 
 src_prepare() {
+	default
+
 	rm -v launch.sh LICENSE || die
 	mv README "${T}"/README || die
 }
 
 src_install() {
-	local dir=${GAMES_PREFIX_OPT}/${PN}
+	local dir=/opt/${PN}
 
-	insinto "${dir}"
+	insinto ${dir}
 	doins -r *
-	fperms +x "${dir}"/PapersPlease
+	fperms +x ${dir}/PapersPlease
 
-	games_make_wrapper ${PN} "./PapersPlease" "${dir}" "${dir}"
+	make_wrapper ${PN} "./PapersPlease" "${dir}" "${dir}"
 	make_desktop_entry ${PN} "Papers, Please"
 
 	dodoc "${T}"/README
-
-	prepgamesdirs
 }

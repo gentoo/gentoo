@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>games@gentoo.org</email>
@@ -14,6 +14,7 @@
 			(might be needed for some mods)</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">0ad/0ad</remote-id>
 		<remote-id type="sourceforge">zero-ad</remote-id>
 	</upstream>
 </pkgmetadata>

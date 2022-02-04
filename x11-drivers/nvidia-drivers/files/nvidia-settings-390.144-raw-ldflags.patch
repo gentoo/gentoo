@@ -1,0 +1,9 @@
+Currently need to pass ABI flags if LD is ld.lld for USE=tools
+ld.lld: error: target emulation unknown: -m or at least one .o file required
+--- a/nvidia-settings/utils.mk
++++ b/nvidia-settings/utils.mk
+@@ -477,3 +477,3 @@
+ 	$(at_if_quiet)cd $$(dir $(1)); \
+-	$$(call quiet_cmd_no_at,LD) -r -z noexecstack --format=binary \
++	$$(call quiet_cmd_no_at,LD) $$(RAW_LDFLAGS) -r -z noexecstack --format=binary \
+ 	    $$(notdir $(1)) -o $$(OUTPUTDIR_ABSOLUTE)/$$(notdir $$@)

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,9 +13,9 @@ IUSE="debug"
 DEPEND="mail-filter/opendkim
 	mail-mta/courier
 	dev-db/opendbx
-	dev-libs/nettle
-	net-dns/libidn2
-	dev-libs/libunistring"
+	dev-libs/nettle:=
+	net-dns/libidn2:=
+	dev-libs/libunistring:="
 RDEPEND="${DEPEND}"
 
 # For working tests we need a fix for opendkim,

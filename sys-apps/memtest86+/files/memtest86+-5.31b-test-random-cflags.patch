@@ -1,0 +1,17 @@
+make sure we re-use the existing CFLAGS settings so that we get all the right
+flags (like -fno-stack-protector).  just append the few changes we want (the
+optimization levels).
+
+https://bugs.gentoo.org/590974
+
+--- a/Makefile
++++ b/Makefile
+@@ -65,7 +65,7 @@
+ 	$(CC) -Wall -Werror -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC $(SMP_FL) -fno-stack-protector   -c -o memsize.o memsize.c
+ 
+ random.o: random.c
+-	$(CC) -c -Wall -march=i486 -m32 -O3 -fomit-frame-pointer -fno-builtin -ffreestanding random.c
++random.o: CFLAGS += -O3 -fno-PIC
+ 
+ clean:
+ 	rm -f *.o *.s *.iso memtest.bin memtest memtest_shared \

@@ -1,0 +1,22 @@
+diff --git a/Makefile.linux b/Makefile.linux
+index 7418a63..3d433bd 100644
+--- a/Makefile.linux
++++ b/Makefile.linux
+@@ -447,7 +447,7 @@ atest : atest.c demod.o demod_afsk.o demod_psk.o demod_9600.o \
+ # Multiple AGWPE network or serial port clients to test TNCs side by side.
+ 
+ aclients : aclients.c ax25_pad.c fcs_calc.c textcolor.o misc.a
+-	$(CC) $(CFLAGS) -g -o $@ $^ 
++	$(CC) $(CFLAGS) -g -o $@ $^ $(LDFLAGS)
+ 
+ 
+ # Talk to a KISS TNC.
+@@ -466,7 +466,7 @@ cm108 : cm108.c textcolor.o misc.a
+ # Touch Tone to Speech sample application.
+ 
+ ttcalc : ttcalc.o ax25_pad.o fcs_calc.o textcolor.o misc.a
+-	$(CC) $(CFLAGS) -g -o $@ $^ 
++	$(CC) $(CFLAGS) -g -o $@ $^ $(LDFLAGS)
+ 
+ 
+ # -----------------------------------------  Libraries  --------------------------------------------

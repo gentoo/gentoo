@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils readme.gentoo-r1
+inherit cmake readme.gentoo-r1
 
-DESCRIPTION="simple fan control program for thinkpads"
-HOMEPAGE="http://thinkfan.sourceforge.net"
+DESCRIPTION="Simple fan control program for thinkpads"
+HOMEPAGE="https://github.com/vmatare/thinkfan"
 SRC_URI="https://github.com/vmatare/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -25,18 +25,18 @@ DOC_CONTENTS="
 "
 
 src_configure() {
-	local mycmakeargs+=(
+	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DUSE_NVML="$(usex nvidia)"
 		-DUSE_ATASMART="$(usex atasmart)"
 		-DUSE_YAML="$(usex yaml)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	readme.gentoo_create_doc
 }

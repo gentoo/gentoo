@@ -1,0 +1,26 @@
+From: Karthikeyan Singaravelan <tir.karthi@gmail.com>
+Date: Sun, 10 Jan 2021 21:12:36 +0530
+Subject: [PATCH] Import ABC from collections.abc (#525)
+
+--- a/test_login.py
++++ b/test_login.py
+@@ -12,6 +12,10 @@
+     from mock import ANY, patch, Mock
+ except ImportError:
+     from unittest.mock import ANY, patch, Mock
++try:
++    from collections.abc import Hashable
++except ImportError:
++    from collections import Hashable
+ from semantic_version import Version
+ 
+ 
+@@ -1548,7 +1552,7 @@ def test_equality(self):
+         self.assertTrue(first != u'1')
+ 
+     def test_hashable(self):
+-        self.assertTrue(isinstance(UserMixin(), collections.Hashable))
++        self.assertTrue(isinstance(UserMixin(), Hashable))
+ 
+ 
+ class AnonymousUserTestCase(unittest.TestCase):

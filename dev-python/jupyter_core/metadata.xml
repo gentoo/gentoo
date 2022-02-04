@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>sci@gentoo.org</email>
@@ -14,8 +14,9 @@
     This package contains base application classes and configuration
     inhertited by other projects. It doesn't do much on its own.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
-    <remote-id type="pypi">jupyter_core</remote-id>
+    <remote-id type="pypi">jupyter-core</remote-id>
     <remote-id type="github">jupyter/jupyter_core</remote-id>
   </upstream>
 </pkgmetadata>

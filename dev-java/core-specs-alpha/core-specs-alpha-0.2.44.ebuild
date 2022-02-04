@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ EGIT_REF="d69f559"
 MY_PN=${PN//-/.}
 MY_P=${MY_PN}-${PV}
 
-DESCRIPTION="A Clojure library with specs to describe Clojure core macros and functions."
+DESCRIPTION="A Clojure library with specs to describe Clojure core macros and functions"
 HOMEPAGE="https://clojure.org/ https://github.com/clojure/core.specs.alpha"
 SRC_URI="https://github.com/clojure/${MY_PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 

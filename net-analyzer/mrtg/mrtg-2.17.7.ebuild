@@ -1,8 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit multilib
 
 DESCRIPTION="A tool to monitor the traffic load on network-links"
 HOMEPAGE="https://oss.oetiker.ch/mrtg/"
@@ -10,7 +9,7 @@ SRC_URI="https://oss.oetiker.ch/mrtg/pub/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 sparc x86"
 IUSE="selinux"
 
 DEPEND="
@@ -23,6 +22,7 @@ RDEPEND="
 	${DEPEND}
 	selinux? ( sec-policy/selinux-mrtg )
 "
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.17.4-socket6.patch
 )

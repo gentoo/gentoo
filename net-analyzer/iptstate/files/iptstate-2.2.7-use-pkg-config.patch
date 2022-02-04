@@ -1,0 +1,21 @@
+https://github.com/jaymzh/iptstate/pull/21
+
+From: Sam James <sam@gentoo.org>
+Date: Fri, 10 Dec 2021 03:10:42 +0000
+Subject: [PATCH 2/2] Makefile: Use pkg-config
+
+Depending on platform, linking against ncurses may require -ltinfo as well,
+and linking against netfilter_conntrack may require -lnetfilter too.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Makefile
++++ b/Makefile
+@@ -25,7 +25,7 @@ CXXFLAGS?= -g -Wall -O2 -Werror=format-security -Wformat-truncation=0
+ CXXFILES?= iptstate.cc
+ 
+ # THIS IS FOR NORMAL COMPILATION
+-LIBS?= -lncurses -lnetfilter_conntrack
++LIBS?= $(shell $(PKG_CONFIG) --libs ncurses libnetfilter_conntrack)
+ CPPFLAGS=
+ 
+ ### YOU SHOULDN'T NEED TO CHANGE ANYTHING BELOW THIS

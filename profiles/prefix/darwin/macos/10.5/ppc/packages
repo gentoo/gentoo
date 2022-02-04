@@ -1,8 +1,0 @@
-# Copyright 1999-2018 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# Mac OS X Leopard/PPC uses FSF gcc and gcc-apple (not Clang)
-*sys-devel/gcc
-*sys-devel/gcc-config
--*sys-devel/clang
-*sys-devel/gcc-apple

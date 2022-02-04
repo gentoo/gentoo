@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
     <email>robbat2@gentoo.org</email>
@@ -31,7 +31,6 @@
     <flag name="highlight">GitWeb support for app-text/highlight</flag>
     <flag name="mediawiki">Support pulling and pushing from MediaWiki</flag>
     <flag name="mediawiki-experimental">Add experimental patches for improved MediaWiki support</flag>
-    <flag name="pcre-jit">Enable JIT for pcre</flag>
     <flag name="perforce">Add support for Perforce version control system (requires manual installation of Perforce client)</flag>
     <flag name="ppcsha1">Make use of a bundled routine that is optimized for the PPC arch</flag>
     <flag name="subversion">Include git-svn for <pkg>dev-vcs/subversion</pkg> support</flag>

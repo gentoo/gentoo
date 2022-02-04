@@ -1,0 +1,23 @@
+From 60fed7b9f80cbb3d9cb7a9e42ad8c0f3c513801d Mon Sep 17 00:00:00 2001
+From: Saiyang Gou <gousaiyang@163.com>
+Date: Sat, 29 May 2021 18:17:24 -0700
+Subject: [PATCH] Fix flaky test_cache_last_used_update again (#189)
+
+This is a follow up for #177. On Windows, `assert node_cache_item.last_used < now` may fail as the two time values can be equal.
+---
+ test/test_cache.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/test_cache.py b/test/test_cache.py
+index f4291c2..5e633fc 100644
+--- a/test/test_cache.py
++++ b/test/test_cache.py
+@@ -137,7 +137,7 @@ def test_cache_last_used_update(diff_cache, use_file_io):
+     parse('somecode', cache=True, path=p)
+     node_cache_item = next(iter(parser_cache.values()))[p]
+     now = time.time()
+-    assert node_cache_item.last_used < now
++    assert node_cache_item.last_used <= now
+ 
+     if use_file_io:
+         f = _FixedTimeFileIO(p, 'code', node_cache_item.last_used - 10)

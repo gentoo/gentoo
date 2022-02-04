@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,7 +36,7 @@ RDEPEND="
 	media-libs/lcms:2
 	media-libs/libpng:0=
 	media-libs/libraw:=
-	media-libs/openexr:=
+	media-libs/openexr:0=
 	media-libs/tiff:0
 	sci-libs/fftw:3.0=[threads]
 	sci-libs/gsl:=

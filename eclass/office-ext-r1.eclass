@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: office-ext-r1.eclass
@@ -6,23 +6,21 @@
 # The office team <office@gentoo.org>
 # @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
-# @BLURB: Eclass for installing libreoffice/openoffice extensions
+# @SUPPORTED_EAPIS: 5 7
+# @BLURB: Eclass for installing libreoffice extensions
 # @DESCRIPTION:
-# Eclass for easing maintenance of libreoffice/openoffice extensions.
+# Eclass for easing maintenance of libreoffice extensions.
 
 case "${EAPI:-0}" in
-	5|6) inherit multilib ;;
-	7) ;;
+	5) inherit eutils multilib ;;
+	7) inherit eutils ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
-# eutils.eclass: emktemp
-inherit eutils
-
-OEXT_EXPORTED_FUNCTIONS="src_unpack src_install pkg_postinst pkg_prerm"
+EXPORT_FUNCTIONS src_unpack src_install
 
 # @ECLASS-VARIABLE: OFFICE_REQ_USE
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Useflags required on office implementation for the extension.
 #
@@ -43,11 +41,12 @@ fi
 #
 # Example:
 # @CODE
-# OFFICE_IMPLEMENTATIONS=( "libreoffice" "openoffice" )
+# OFFICE_IMPLEMENTATIONS=( "libreoffice" )
 # @CODE
-[[ -z ${OFFICE_IMPLEMENTATIONS} ]] && OFFICE_IMPLEMENTATIONS=( "libreoffice" "openoffice" )
+[[ -z ${OFFICE_IMPLEMENTATIONS} ]] && OFFICE_IMPLEMENTATIONS=( "libreoffice" )
 
 # @ECLASS-VARIABLE: OFFICE_EXTENSIONS
+# @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
 # Array containing list of extensions to install.
@@ -76,14 +75,7 @@ RDEPEND=""
 
 for i in ${OFFICE_IMPLEMENTATIONS[@]}; do
 	IUSE+=" office_implementation_${i}"
-	if [[ ${i} == "openoffice" ]]; then
-		# special only binary
-		RDEPEND+="
-			office_implementation_openoffice? (
-				app-office/openoffice-bin${OFFICE_REQ_USE}
-			)
-		"
-	else
+	if [[ ${i} == "libreoffice" ]]; then
 		RDEPEND+="
 			office_implementation_${i}? (
 				|| (
@@ -123,12 +115,12 @@ office-ext-r1_src_unpack() {
 		if [[ -f "${OFFICE_EXTENSIONS_LOCATION}/${i}" ]] ; then
 			case ${i} in
 				*.oxt)
-					mkdir -p "${WORKDIR}/${i}/"
-					pushd "${WORKDIR}/${i}/" > /dev/null
-					echo ">>> Unpacking "${OFFICE_EXTENSIONS_LOCATION}/${i}" to ${PWD}"
+					mkdir -p "${WORKDIR}/${i}/" || die
+					pushd "${WORKDIR}/${i}/" > /dev/null || die
+					einfo "Unpacking "${OFFICE_EXTENSIONS_LOCATION}/${i}" to ${PWD}"
 					unzip -qo ${OFFICE_EXTENSIONS_LOCATION}/${i}
 					assert "failed unpacking ${OFFICE_EXTENSIONS_LOCATION}/${i}"
-					popd > /dev/null
+					popd > /dev/null || die
 					;;
 				*) unpack ${i} ;;
 			esac
@@ -147,97 +139,12 @@ office-ext-r1_src_install() {
 
 	for i in ${OFFICE_IMPLEMENTATIONS[@]}; do
 		if use office_implementation_${i}; then
-			if [[ ${i} == openoffice ]]; then
-				# OOO needs to use uno because direct deployment segfaults.
-				# This is bug by their side, but i don't want to waste time
-				# fixing it myself.
-				insinto /usr/$(get_libdir)/${i}/share/extension/install
-				for j in ${OFFICE_EXTENSIONS[@]}; do
-					doins ${OFFICE_EXTENSIONS_LOCATION}/${j}
-				done
-			else
-				for j in ${OFFICE_EXTENSIONS[@]}; do
-					pushd "${WORKDIR}/${j}/" > /dev/null
-					insinto /usr/$(get_libdir)/${i}/share/extensions/${j/.oxt/}
-					doins -r *
-					popd > /dev/null
-				done
-			fi
+			for j in ${OFFICE_EXTENSIONS[@]}; do
+				pushd "${WORKDIR}/${j}/" > /dev/null || die
+				insinto /usr/$(get_libdir)/${i}/share/extensions/${j/.oxt/}
+				doins -r *
+				popd > /dev/null || die
+			done
 		fi
 	done
 }
-
-#### OPENOFFICE COMPAT CODE
-
-UNOPKG_BINARY="/usr/lib64/openoffice/program/unopkg"
-
-# @FUNCTION: office-ext-r1_add_extension
-# @DESCRIPTION:
-# Install the extension into the libreoffice/openoffice.
-office-ext-r1_add_extension() {
-	debug-print-function ${FUNCNAME} "$@"
-	local ext=$1
-	local tmpdir=$(emktemp -d)
-
-	debug-print "${FUNCNAME}: ${UNOPKG_BINARY} add --shared \"${ext}\""
-	ebegin "Adding office extension: \"${ext}\""
-	${UNOPKG_BINARY} add --suppress-license \
-		--shared "${ext}" \
-		"-env:UserInstallation=file:///${tmpdir}" \
-		"-env:JFW_PLUGIN_DO_NOT_CHECK_ACCESSIBILITY=1"
-	eend $?
-	${UNOPKG_BINARY} list --shared > /dev/null
-	rm -r "${tmpdir}" || dir "failed to clean up"
-}
-
-# @FUNCTION: office-ext-r1_remove_extension
-# @DESCRIPTION:
-# Remove the extension from the libreoffice/openoffice.
-office-ext-r1_remove_extension() {
-	debug-print-function ${FUNCNAME} "$@"
-	local ext=$1
-	local tmpdir=$(mktemp -d --tmpdir="${T}")
-
-	debug-print "${FUNCNAME}: ${UNOPKG_BINARY} remove --shared \"${ext}\""
-	ebegin "Removing office extension: \"${ext}\""
-	${UNOPKG_BINARY} remove --suppress-license \
-		--shared "${ext}" \
-		"-env:UserInstallation=file:///${tmpdir}" \
-		"-env:JFW_PLUGIN_DO_NOT_CHECK_ACCESSIBILITY=1"
-	eend $?
-	${UNOPKG_BINARY} list --shared > /dev/null
-	rm -r "${tmpdir}" || dir "failed to clean up"
-}
-
-# @FUNCTION: office-ext-r1_pkg_postinst
-# @DESCRIPTION:
-# Add the extensions to the openoffice.
-office-ext-r1_pkg_postinst() {
-	if in_iuse office_implementation_openoffice && use office_implementation_openoffice; then
-		debug-print-function ${FUNCNAME} "$@"
-		debug-print "Extensions: ${OFFICE_EXTENSIONS[@]}"
-		local i
-
-		for i in ${OFFICE_EXTENSIONS[@]}; do
-			office-ext-r1_add_extension "/usr/lib64/openoffice/share/extension/install/${i}"
-		done
-	fi
-}
-
-# @FUNCTION: office-ext-r1_pkg_prerm
-# @DESCRIPTION:
-# Remove the extensions from the openoffice.
-office-ext-r1_pkg_prerm() {
-	if in_iuse office_implementation_openoffice && use office_implementation_openoffice; then
-		debug-print-function ${FUNCNAME} "$@"
-		debug-print "Extensions: ${OFFICE_EXTENSIONS[@]}"
-		local i
-
-		for i in ${OFFICE_EXTENSIONS[@]}; do
-			office-ext-r1_remove_extension "${i}"
-		done
-	fi
-}
-
-EXPORT_FUNCTIONS ${OEXT_EXPORTED_FUNCTIONS}
-unset OEXT_EXPORTED_FUNCTIONS

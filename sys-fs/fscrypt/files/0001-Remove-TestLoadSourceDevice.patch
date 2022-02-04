@@ -1,0 +1,44 @@
+From 462a36e7b039d5c7e33d95237f6c697fa59775da Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Sat, 17 Apr 2021 18:15:05 +0200
+Subject: [PATCH] Remove TestLoadSourceDevice
+
+This test requires /dev/loop0, which may not always be available.
+---
+ filesystem/mountpoint_test.go | 20 --------------------
+ 1 file changed, 20 deletions(-)
+
+diff --git a/filesystem/mountpoint_test.go b/filesystem/mountpoint_test.go
+index 633ff947aaf7..9981db181a13 100644
+--- a/filesystem/mountpoint_test.go
++++ b/filesystem/mountpoint_test.go
+@@ -92,26 +92,6 @@ func TestLoadMountInfoBasic(t *testing.T) {
+ 	}
+ }
+ 
+-// Test that Mount.Device is set to the mountpoint's source device if
+-// applicable, otherwise it is set to the empty string.
+-func TestLoadSourceDevice(t *testing.T) {
+-	var mountinfo = `
+-15 0 7:0 / / rw shared:1 - foo /dev/loop0 rw,data=ordered
+-31 15 0:27 / /tmp rw,nosuid,nodev shared:17 - tmpfs tmpfs rw
+-`
+-	beginLoadMountInfoTest()
+-	defer endLoadMountInfoTest()
+-	loadMountInfoFromString(mountinfo)
+-	mnt := mountForDevice("7:0")
+-	if mnt.Device != "/dev/loop0" {
+-		t.Error("mnt.Device wasn't set to source device")
+-	}
+-	mnt = mountForDevice("0:27")
+-	if mnt.Device != "" {
+-		t.Error("mnt.Device wasn't set to empty string for an invalid device")
+-	}
+-}
+-
+ // Test that non-directory mounts are ignored.
+ func TestNondirectoryMountsIgnored(t *testing.T) {
+ 	beginLoadMountInfoTest()
+-- 
+2.30.2
+

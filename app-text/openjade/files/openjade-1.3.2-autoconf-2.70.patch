@@ -1,0 +1,30 @@
+diff --git a/config/configure.in b/config/configure.in
+index 466c4ee..5af1de5 100644
+--- a/config/configure.in
++++ b/config/configure.in
+@@ -12,9 +12,8 @@ dnl
+ dnl  Credits: this autoconf script was largely "inspired" <g> by the
+ dnl  autoconf script around SP made by Henry Thompson.
+ dnl
+-AC_INIT(dsssl)
++AC_INIT(openjade, 1.3.2)
+ AC_CONFIG_AUX_DIR(config)
+-AM_INIT_AUTOMAKE( openjade, 1.3.2)
+ TOP=`pwd`
+ AC_SUBST(TOP)
+ dnl
+diff --git a/include/config.h.in b/include/config.h.in
+index 2a6fd39..f8ccf1c 100644
+--- a/include/config.h.in
++++ b/include/config.h.in
+@@ -18,8 +18,8 @@
+ #endif
+ #endif
+ 
+-#define OPENJADE_PACKAGE PACKAGE
+-#define OPENJADE_VERSION VERSION
++#define OPENJADE_PACKAGE "@PACKAGE_NAME@"
++#define OPENJADE_VERSION "@PACKAGE_VERSION@"
+ #ifndef OPENJADE_MESSAGE_DOMAIN
+ #define OPENJADE_MESSAGE_DOMAIN ""
+ #endif

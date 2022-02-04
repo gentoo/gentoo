@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ DEPEND="
 	dev-libs/libatasmart:0=
 	sys-libs/ncurses:0="
 
-RDEPEND="$DEPEND"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	sed -e "s#^set(CMAKE_CXX_FLAGS.*#set(CMAKE_CXX_FLAGS \"${CXXFLAGS} -Wall -std=c++11\")#" \

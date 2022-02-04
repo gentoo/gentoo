@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ DESCRIPTION="MongoDB database driver for PHP"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="libressl sasl test"
+IUSE="sasl test"
 
 PHP_DEPEND="
 	php_targets_php7-2? ( dev-lang/php:7.2[json,ssl,zlib] )
@@ -22,8 +22,7 @@ PHP_DEPEND="
 COMMON_DEPEND="${PHP_DEPEND}
 	>=dev-libs/libbson-1.16.2
 	>=dev-libs/mongo-c-driver-1.16.2[sasl?,ssl]
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	sasl? ( dev-libs/cyrus-sasl )"
 DEPEND="${COMMON_DEPEND}
 	test? ( dev-db/mongodb )"

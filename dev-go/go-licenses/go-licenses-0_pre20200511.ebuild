@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -172,7 +172,7 @@ RESTRICT="test"
 src_prepare() {
 	eapply_user
 
-	local share="${EROOT}/usr/share/licenseclassifier"
+	local share="${ESYSROOT}/usr/share/licenseclassifier"
 
 	local vendored_const_path="vendor/github.com/google/licenseclassifier"
 	go mod vendor || die

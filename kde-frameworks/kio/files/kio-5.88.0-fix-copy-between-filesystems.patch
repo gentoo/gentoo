@@ -1,0 +1,28 @@
+From aef544ebbb11e842209f3b071eaa9d1c2f26fa40 Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Wed, 17 Nov 2021 23:45:17 +0100
+Subject: [PATCH] Fix copying between different filesystems on Linux < 5.3
+
+From the copy_file_range manpage
+
+EXDEV  The files referred to by fd_in and fd_out are not on the same mounted filesystem (pre Linux 5.3).
+---
+ src/ioslaves/file/file_unix.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ioslaves/file/file_unix.cpp b/src/ioslaves/file/file_unix.cpp
+index b4eca2ae9..02b5dc14c 100644
+--- a/src/ioslaves/file/file_unix.cpp
++++ b/src/ioslaves/file/file_unix.cpp
+@@ -813,7 +813,7 @@ void FileProtocol::copy(const QUrl &srcUrl, const QUrl &destUrl, int _mode, JobF
+         const ssize_t copiedBytes = ::copy_file_range(srcFile.handle(), nullptr, destFile.handle(), nullptr, s_maxIPCSize, 0);
+ 
+         if (copiedBytes == -1) {
+-            if (errno == EINVAL) {
++            if (errno == EINVAL || errno == EXDEV) {
+                 break; // will continue with next copy mechanism
+             }
+ 
+-- 
+GitLab
+

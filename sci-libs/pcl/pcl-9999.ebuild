@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,10 +9,9 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/PointCloudLibrary/pcl"
 fi
 
-inherit ${SCM} cmake-utils multilib
+inherit ${SCM} cmake multilib
 
 if [ "${PV#9999}" != "${PV}" ] ; then
-	KEYWORDS=""
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm"
@@ -23,20 +22,20 @@ fi
 HOMEPAGE="https://pointclouds.org/"
 DESCRIPTION="2D/3D image and point cloud processing"
 LICENSE="BSD"
-SLOT="0/1.11"
+SLOT="0/1.12"
 IUSE="cuda doc opengl openni openni2 pcap png +qhull qt5 usb vtk cpu_flags_x86_sse test tutorials"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=sci-libs/flann-1.7.1
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-cpp/eigen:3
 	opengl? ( virtual/opengl media-libs/freeglut )
 	openni? ( dev-libs/OpenNI )
 	openni2? ( dev-libs/OpenNI2 )
 	pcap? ( net-libs/libpcap )
 	png? ( media-libs/libpng:0= )
-	qhull? ( media-libs/qhull )
+	qhull? ( media-libs/qhull:= )
 	qt5? (
 		dev-qt/qtgui:5
 		dev-qt/qtcore:5
@@ -80,5 +79,5 @@ src_configure() {
 		"-DWITH_TUTORIALS=$(usex tutorials TRUE FALSE)"
 		"-DBUILD_TESTS=$(usex test TRUE FALSE)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

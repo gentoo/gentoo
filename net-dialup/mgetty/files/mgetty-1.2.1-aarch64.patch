@@ -1,0 +1,11 @@
+diff -U3 -r a/mgetty.h b/mgetty.h
+--- a/mgetty.h	2006-01-01 12:13:18.000000000 -0500
++++ b/mgetty.h	2018-01-13 12:53:00.337516215 -0500
+@@ -198,7 +198,7 @@
+  */
+ #if defined(__alpha__) || defined(__sparc64__) || \
+ 	    defined(__ia64__) || defined(__s390x__) || defined(__x86_64__) || \
+-	    defined(__powerpc64__)
++	    defined(__powerpc64__) || defined(__aarch64__)
+ # define PTR_IS_LONG
+ #endif

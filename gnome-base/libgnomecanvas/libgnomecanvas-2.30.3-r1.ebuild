@@ -1,19 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-GCONF_DEBUG="no"
-GNOME_TARBALL_SUFFIX="bz2"
-GNOME2_LA_PUNT="yes"
+EAPI=7
 
-inherit eutils gnome2 multilib multilib-minimal virtualx
+GNOME_TARBALL_SUFFIX="bz2"
+inherit gnome2 multilib-minimal virtualx
 
 DESCRIPTION="The Gnome 2 Canvas library"
 HOMEPAGE="https://library.gnome.org/devel/libgnomecanvas/stable/"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="glade"
 
 RDEPEND=">=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
@@ -22,7 +20,8 @@ RDEPEND=">=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
 	>=x11-libs/pango-1.36.3[${MULTILIB_USEDEP}]
 	glade? ( >=gnome-base/libglade-2.6.4-r1:2.0[${MULTILIB_USEDEP}] )"
 
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=dev-lang/perl-5
 	sys-devel/gettext
 	dev-util/glib-utils
@@ -54,11 +53,6 @@ multilib_src_install() {
 	gnome2_src_install
 }
 
-multilib_src_install_all() {
-	DOCS="AUTHORS ChangeLog NEWS README"
-	einstalldocs
-}
-
 multilib_src_test() {
-	Xemake check || die "Test phase failed"
+	virtx emake check
 }

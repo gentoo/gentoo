@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit eutils
+inherit strip-linguas
 
 DESCRIPTION="A text menu based utility for configuring ppp"
 HOMEPAGE="https://packages.qa.debian.org/p/pppconfig.html"
@@ -14,15 +14,16 @@ LICENSE="GPL-2"
 KEYWORDS="amd64 ppc x86"
 IUSE="nls"
 
-RDEPEND="net-dialup/ppp
+RDEPEND="
+	net-dialup/ppp
 	dev-util/dialog
 	dev-lang/perl"
-DEPEND="nls? ( sys-devel/gettext )"
+BDEPEND="nls? ( sys-devel/gettext )"
 
 src_prepare() {
-	if use nls; then
-		strip-linguas -i po/
-	fi
+	default
+
+	use nls && strip-linguas -i po/
 }
 
 src_compile() {

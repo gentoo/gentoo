@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/777297
+
+From dea50ce8e57aeb99034b880ee20ed91103e44555 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Fri, 19 Mar 2021 10:05:37 -0700
+Subject: [PATCH] build: Fix undefined X11 references.
+
+---
+ extras/immodules/client-gtk/gtk2/Makefile.am | 1 +
+ extras/immodules/client-gtk/gtk3/Makefile.am | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/extras/immodules/client-gtk/gtk2/Makefile.am b/extras/immodules/client-gtk/gtk2/Makefile.am
+index 8192f08..e7a7937 100644
+--- a/extras/immodules/client-gtk/gtk2/Makefile.am
++++ b/extras/immodules/client-gtk/gtk2/Makefile.am
+@@ -41,6 +41,7 @@ im_scim_la_CFLAGS  =@GTK2_CFLAGS@
+ im_scim_la_LDFLAGS = -rpath $(moduledir) \
+ 		     -avoid-version -no-undefined \
+ 		     -module \
++		     @X_LIBS@ \
+ 		     @GTK2_LIBS@
+ 
+ im_scim_la_LIBADD  = $(top_builddir)/extras/immodules/common/libscimbridgecommon.la \
+diff --git a/extras/immodules/client-gtk/gtk3/Makefile.am b/extras/immodules/client-gtk/gtk3/Makefile.am
+index b868c80..d6f656d 100644
+--- a/extras/immodules/client-gtk/gtk3/Makefile.am
++++ b/extras/immodules/client-gtk/gtk3/Makefile.am
+@@ -41,6 +41,7 @@ im_scim_la_CFLAGS  =@GTK3_CFLAGS@
+ im_scim_la_LDFLAGS = -rpath $(moduledir) \
+ 		     -avoid-version -no-undefined \
+ 		     -module \
++		     @X_LIBS@ \
+ 		     @GTK3_LIBS@
+ 
+ im_scim_la_LIBADD  = $(top_builddir)/extras/immodules/common/libscimbridgecommon.la \

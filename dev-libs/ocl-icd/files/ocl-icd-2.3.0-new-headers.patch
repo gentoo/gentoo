@@ -1,0 +1,94 @@
+From aed1832c81c0971ea001e12d41e04df834257f94 Mon Sep 17 00:00:00 2001
+From: Brice Videau <bvideau@anl.gov>
+Date: Wed, 12 May 2021 10:24:44 -0500
+Subject: [PATCH] Updated to support latest Khronos headers.
+
+---
+ icd_generator.rb                              |   4 +-
+ khronos-headers/CL/cl.h                       |  46 +--
+ khronos-headers/CL/cl_d3d10.h                 |  12 +-
+ khronos-headers/CL/cl_d3d11.h                 |  12 +-
+ khronos-headers/CL/cl_dx9_media_sharing.h     |  32 +-
+ khronos-headers/CL/cl_egl.h                   |   8 +-
+ khronos-headers/CL/cl_ext.h                   | 228 +++++++++----
+ khronos-headers/CL/cl_gl.h                    |  22 +-
+ khronos-headers/CL/cl_gl_ext.h                |  26 +-
+ khronos-headers/CL/cl_icd.h                   | 316 +++++++++---------
+ khronos-headers/CL/cl_layer.h                 |   4 +-
+ khronos-headers/CL/cl_platform.h              | 125 ++++---
+ .../CL/cl_va_api_media_sharing_intel.h        |  24 +-
+ khronos-headers/CL/opencl.h                   |   3 +-
+ ocl_interface.yaml                            |  10 +-
+ run_dummy_icd.c                               |   1 -
+ 16 files changed, 484 insertions(+), 389 deletions(-)
+
+diff --git a/icd_generator.rb b/icd_generator.rb
+index bb0f2e9..ed4217f 100644
+--- a/icd_generator.rb
++++ b/icd_generator.rb
+@@ -57,7 +57,7 @@ module IcdGenerator
+                          "clGetGLContextInfoKHR", "clUnloadCompiler",
+     "clCreateContext", "clCreateContextFromType", "clWaitForEvents"]
+   $header_files = ["/usr/include/CL/cl.h", "/usr/include/CL/cl_gl.h", "/usr/include/CL/cl_egl.h",
+-    "/usr/include/CL/cl_ext.h", "/usr/include/CL/cl_gl_ext.h"]
++    "/usr/include/CL/cl_ext.h"]
+   $windows_header_files = ["/usr/include/CL/cl_dx9_media_sharing.h", "/usr/include/CL/cl_d3d11.h", "/usr/include/CL/cl_d3d10.h"]
+   $cl_data_type_error = { "cl_platform_id"   => "CL_INVALID_PLATFORM",
+                           "cl_device_id"     => "CL_INVALID_DEVICE",
+@@ -246,7 +246,7 @@ def self.generate_run_dummy_icd_source
+     run_dummy_icd += "\n\n"
+     $api_entries.each_key { |func_name|
+        next if $forbidden_funcs.include?(func_name)
+-       run_dummy_icd += $api_entries[func_name]+";\n"
++       run_dummy_icd += $api_entries[func_name]+"\n"
+     }
+     run_dummy_icd += "\n\n"
+     run_dummy_icd += "void call_all_OpenCL_functions(cl_platform_id chosen_platform) {\n"
+diff --git a/ocl_interface.yaml b/ocl_interface.yaml
+index 1e80f16..43a0e59 100644
+--- a/ocl_interface.yaml
++++ b/ocl_interface.yaml
+@@ -674,18 +674,18 @@
+                         const cl_device_partition_property_ext * /* properties */,
+                         cl_uint /*num_entries*/,
+                         cl_device_id * /*out_devices*/,
+-                        cl_uint * /*num_devices*/ ) CL_EXT_SUFFIX__VERSION_1_1;
++                        cl_uint * /*num_devices*/ ) CL_API_SUFFIX__VERSION_1_1;
+ 90: |-
+   CL_API_ENTRY cl_int CL_API_CALL
+-  clRetainDeviceEXT( cl_device_id /*device*/ ) CL_EXT_SUFFIX__VERSION_1_1;
++  clRetainDeviceEXT( cl_device_id /*device*/ ) CL_API_SUFFIX__VERSION_1_1;
+ 91: |-
+   CL_API_ENTRY cl_int CL_API_CALL
+-  clReleaseDeviceEXT( cl_device_id /*device*/ ) CL_EXT_SUFFIX__VERSION_1_1;
++  clReleaseDeviceEXT( cl_device_id /*device*/ ) CL_API_SUFFIX__VERSION_1_1;
+ 92: |-
+   CL_API_ENTRY cl_event CL_API_CALL
+   clCreateEventFromGLsyncKHR(cl_context           /* context */,
+                              cl_GLsync            /* cl_GLsync */,
+-                             cl_int *             /* errcode_ret */) CL_EXT_SUFFIX__VERSION_1_1;
++                             cl_int *             /* errcode_ret */) CL_API_SUFFIX__VERSION_1_1;
+ 93: |-
+   CL_API_ENTRY cl_int CL_API_CALL
+   clCreateSubDevices(cl_device_id                         /* in_device */,
+@@ -1016,7 +1016,7 @@
+                              const void * /*input_value*/,
+                              size_t /*param_value_size*/,
+                              void* /*param_value*/,
+-                             size_t* /*param_value_size_ret*/ ) CL_EXT_SUFFIX__VERSION_2_0;
++                             size_t* /*param_value_size_ret*/ ) CL_API_SUFFIX__VERSION_2_0;
+ 137: |-
+   CL_API_ENTRY cl_kernel CL_API_CALL
+   clCloneKernel(cl_kernel     /* source_kernel */,
+diff --git a/run_dummy_icd.c b/run_dummy_icd.c
+index 400c1b0..c064b19 100644
+--- a/run_dummy_icd.c
++++ b/run_dummy_icd.c
+@@ -39,7 +39,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #  include <CL/cl_gl.h>
+ #  include <CL/cl_egl.h>
+ #  include <CL/cl_ext.h>
+-#  include <CL/cl_gl_ext.h>
+ #pragma GCC diagnostic pop
+ #include <string.h>
+ #include "ocl_icd_debug.h"

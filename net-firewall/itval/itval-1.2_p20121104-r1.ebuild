@@ -15,7 +15,7 @@ SRC_URI="https://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-libs/fddl

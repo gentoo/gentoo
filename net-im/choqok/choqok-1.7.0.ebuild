@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Free/Open Source micro-blogging client by KDE"
-HOMEPAGE="https://choqok.kde.org/ https://apps.kde.org/en/choqok"
+HOMEPAGE="https://choqok.kde.org/ https://apps.kde.org/choqok/"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV%.0}/src/${P}.tar.xz"

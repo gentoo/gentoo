@@ -1,0 +1,24 @@
+--- a/configure.in	2012-05-06 18:11:47.000000000 -0400
++++ b/configure.in	2012-05-06 18:15:08.000000000 -0400
+@@ -708,7 +708,7 @@
+ fi
+ 
+ case $target in
+-  *-sunos4*|*-*-netbsd|NetBSD-*|FreeBSD-*|OpenBSD-*|*-*-cygwin*|*-*-mingw*)
++  *-sunos4*|*-*-netbsd|NetBSD-*|FreeBSD-*|*-*-freebsd*|OpenBSD-*|*-*-cygwin*|*-*-mingw*)
+     TCL_LIB_NAME="tcl${TCL_MAJOR_VERSION}${TCL_MINOR_VERSION}"
+     TK_LIB_NAME="tk${TK_MAJOR_VERSION}${TK_MINOR_VERSION}"
+     ;;
+@@ -1241,6 +1241,12 @@
+     EXTRA_LIB_SPECS="-ldl"
+     ;;
+ 
++  *-gentoo-netbsd*|*-gentoo-freebsd*|*-gentoo-openbsd*)
++    SHLIB_CFLAGS="-fPIC"
++    SHLIB_LD="${CC}"
++    SHLIB_LD_FLAGS='-rdynamic -shared -Wl,-E -Wl,-soname,$@'
++    ;;
++
+   *-netbsd*|*-freebsd*|*-openbsd*)
+     # Not available on all versions:  check for include file.
+     AC_CHECK_HEADER(dlfcn.h, test_ok=yes, test_ok=no)

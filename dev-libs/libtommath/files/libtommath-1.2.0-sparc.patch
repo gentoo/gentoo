@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/781938
+https://github.com/libtom/libtommath/issues/509
+https://github.com/libtom/libtommath/pull/510 (didn't apply)
+https://github.com/tcltk/tcl/commit/dadb2c18d0b1b2bd26628aded323e9df4566d463
+
+From: "jan.nijtmans" <nijtmans@users.sourceforge.net>
+Date: Wed, 14 Jul 2021 15:54:56 +0000
+Subject: [PATCH] Fix build on Linux/Sparc with 32 bit userspace. See:
+ [https://github.com/libtom/libtommath/issues/509] for the upstream libtommath
+ fix
+
+--- a/tommath.h
++++ b/tommath.h
+@@ -45,7 +45,7 @@ extern "C" {
+     defined(__ia64) || defined(__ia64__) || defined(__itanium__) || defined(_M_IA64) || \
+     defined(__LP64__) || defined(_LP64) || defined(__64BIT__)
+ #   if !(defined(MP_64BIT) || defined(MP_32BIT) || defined(MP_16BIT) || defined(MP_8BIT))
+-#      if defined(__GNUC__) && !defined(__hppa)
++#      if defined(__GNUC__) && defined(__SIZEOF_INT128__) && !defined(__hppa)
+ /* we support 128bit integers only via: __attribute__((mode(TI))) */
+ #         define MP_64BIT
+ #      else

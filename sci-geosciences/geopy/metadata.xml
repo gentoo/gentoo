@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<longdescription lang="en">
+		geopy is a Python client for several popular geocoding web services.
+		geopy makes it easy for Python developers to locate the coordinates
+		of addresses, cities, countries, and landmarks across the globe using
+		third-party geocoders and other data sources.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">geopy/geopy</remote-id>
+	</upstream>
+</pkgmetadata>

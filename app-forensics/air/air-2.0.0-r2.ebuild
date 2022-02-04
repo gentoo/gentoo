@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="A GUI front-end to dd/dc3dd"
-HOMEPAGE="http://air-imager.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/air-imager/"
 SRC_URI="mirror://sourceforge/air-imager/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -13,11 +13,11 @@ KEYWORDS="amd64 ppc x86"
 IUSE="crypt"
 
 # coreutils are needed for /usr/bin/split binary
-COMMON_DEPEND="userland_GNU? ( sys-apps/coreutils )"
+COMMON_DEPEND="sys-apps/coreutils"
 
 DEPEND="${COMMON_DEPEND}
+	app-arch/sharutils
 	>=dev-perl/Tk-804.27.0
-	userland_GNU? ( app-arch/sharutils )
 "
 # TODO: air can utilize dc3dd, but it is not in portage ATM
 RDEPEND="${COMMON_DEPEND}

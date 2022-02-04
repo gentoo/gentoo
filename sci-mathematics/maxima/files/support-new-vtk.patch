@@ -1,0 +1,26 @@
+commit c21598340008892173578718afa577f93ebfdd45
+Author: Leo Butler <l_butler@users.sourceforge.net>
+Date:   Sat Feb 13 16:16:20 2021 -0600
+
+    Fix SF Bug #3714, Update maxima to use vtk-8.2.0
+    
+    The GlobalImmediateModeRenderingOn method was deprecated in the VTK
+    codebase in 2017,
+    
+    https://github.com/Kitware/VTK/commit/67e054c91063be30e8e991de489fdda3af668e22
+    
+    This commit may change or break draw-vtk user code that relies on
+    older versions of vtk.
+
+diff --git a/share/draw/vtk.lisp b/share/draw/vtk.lisp
+index 6ff0f9586..1964048d2 100644
+--- a/share/draw/vtk.lisp
++++ b/share/draw/vtk.lisp
+@@ -224,7 +224,6 @@
+ (defun vtkpolydatamapper-code (mn fn con)
+   (concatenate 'string
+     (format nil "~a=vtk.vtkPolyDataMapper()~%" mn)
+-    (format nil "~a.GlobalImmediateModeRenderingOn()~%" mn) 
+     (if con
+       (format nil "~a.SetInputConnection(~a.GetOutputPort())~%" mn fn)
+       "") ))

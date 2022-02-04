@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,11 +7,10 @@ WANT_AUTOCONF="2.5"
 WANT_AUTOMAKE="1.15"
 WANT_LIBTOOL="latest"
 
-if [[ $PV = *9999* ]]; then
+if [[ ${PV} = *9999* ]]; then
 	scm="git-r3"
 	SRC_URI=""
 	EGIT_REPO_URI="git://git.whamcloud.com/fs/lustre-release.git"
-	KEYWORDS=""
 	EGIT_BRANCH="master"
 else
 	scm=""
@@ -22,7 +21,7 @@ fi
 SUPPORTED_KV_MAJOR=4
 SUPPORTED_KV_MINOR=19
 
-inherit ${scm} autotools linux-info linux-mod toolchain-funcs udev flag-o-matic
+inherit ${scm} autotools linux-info linux-mod toolchain-funcs flag-o-matic
 
 DESCRIPTION="Lustre is a parallel distributed file system"
 HOMEPAGE="http://wiki.whamcloud.com/"
@@ -70,7 +69,7 @@ pkg_setup() {
 
 src_prepare() {
 	if [ ${#PATCHES[0]} -ne 0 ]; then
-		epatch ${PATCHES[@]}
+		eapply ${PATCHES[@]}
 	fi
 
 	eapply_user

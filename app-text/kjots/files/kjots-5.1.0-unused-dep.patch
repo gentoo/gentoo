@@ -1,0 +1,45 @@
+From 1aa82d97c3140ebb93e642c48d187d37cea2e537 Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Sat, 20 Feb 2021 22:00:41 +0100
+Subject: [PATCH] Drop unused libkdepim dependency
+
+---
+ CMakeLists.txt     | 2 --
+ src/CMakeLists.txt | 1 -
+ 2 files changed, 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3d79806..5204908 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -24,7 +24,6 @@ set(KDEPIMLIBS_LIB_VERSION "5.1.0")
+ set(KMIME_LIB_VERSION "4.87.0")
+ set(KPIMTEXTEDIT_LIB_VERSION "5.14.44")
+ set(KONTACTINTERFACE_LIB_VERSION "4.82.0")
+-set(LIBKDEPIM_LIB_VERSION "5.14.1")
+ 
+ #Qt Packages
+ set(QT_REQUIRED_VERSION "5.6.0")
+@@ -45,7 +44,6 @@ find_package(KF5Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
+ find_package(KF5AkonadiNotes ${AKONADINOTES_LIB_VERSION} CONFIG REQUIRED)
+ find_package(KF5PimTextEdit ${KPIMTEXTEDIT_LIB_VERSION} CONFIG REQUIRED)
+ find_package(KF5KontactInterface ${KONTACTINTERFACE_LIB_VERSION} CONFIG REQUIRED)
+-find_package(KF5Libkdepim ${LIBKDEPIM_LIB_VERSION} CONFIG REQUIRED)
+ 
+ find_package(Grantlee5 "5.0" CONFIG REQUIRED)
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index a512dab..e66e805 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -49,7 +49,6 @@ target_link_libraries(kjots_common
+   KF5::PimTextEdit
+   KF5::XmlGui
+   KF5::KIOWidgets
+-  KF5::Libkdepim
+   Grantlee5::Templates
+   Grantlee5::TextDocument
+ )
+-- 
+GitLab
+

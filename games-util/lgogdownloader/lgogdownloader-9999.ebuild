@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake git-r3
 
@@ -14,7 +14,7 @@ IUSE="gui"
 
 RDEPEND=">=app-crypt/rhash-1.3.3-r2:0=
 	dev-cpp/htmlcxx:0=
-	dev-libs/boost:0=
+	dev-libs/boost:0=[zlib]
 	>=dev-libs/jsoncpp-1.7:0=
 	dev-libs/tinyxml2:0=
 	>=net-misc/curl-7.32:0=[ssl]

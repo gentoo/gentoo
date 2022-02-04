@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit apache-module eutils
+inherit apache-module epatch
 
 DESCRIPTION="Reverse proxy add forward module"
 HOMEPAGE="http://stderr.net/apache/rpaf/"

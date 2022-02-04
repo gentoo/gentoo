@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation.
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of CURL_SSL USE_EXPAND flags for net-misc/curl
@@ -6,7 +6,6 @@
 
 axtls - Use axTLS
 gnutls - Use GnuTLS
-libressl - Use LibreSSL
 mbedtls - Use mbed TLS
 nss - Use Mozilla's Network Security Services 
 openssl - Use OpenSSL

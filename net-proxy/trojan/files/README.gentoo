@@ -1,0 +1,14 @@
+Notes:
+ 1) starting from version 1.16.0-r2, the daemon will
+run as user='trojan', previous it's run as user='nobody',
+you might want to fix the permissions at /etc/trojan/*.
+
+ 2) Running Trojan with multi instances
+
+   a) Using OpenRC
+    Prepare /etc/trojan/${foo}.json first
+    # ln -s /etc/init.d/trojan{,.${foo}}
+    # rc-update add trojan.${foo} default
+
+   b) Using Systemd
+    # systemctl enable trojan.${foo}

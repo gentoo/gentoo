@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
@@ -14,5 +14,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">sigmavirus24/github3.py</remote-id>
+		<remote-id type="pypi">github3.py</remote-id>
 	</upstream>
 </pkgmetadata>

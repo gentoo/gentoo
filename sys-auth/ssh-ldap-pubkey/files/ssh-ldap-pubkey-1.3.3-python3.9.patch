@@ -1,0 +1,34 @@
+commit 56b4b77bfa2b063b3f3686b54d8e39f6bce1d2a0
+Author:     Thomas Deutschmann <whissi@whissi.de>
+AuthorDate: Wed Jun 2 17:40:06 2021 +0200
+Commit:     Thomas Deutschmann <whissi@whissi.de>
+CommitDate: Wed Jun 2 18:01:16 2021 +0200
+
+    Use decodebytes instead of decodestring in Python 3.9
+    
+    base64.decodestring(), alias deprecated since Python 3.1, has been removed
+    in Python 3.9 in favor of new base64.decodebytes() function [Link 1].
+    
+    Link 1: https://docs.python.org/3.9/whatsnew/3.9.html#removed
+    Closes: https://github.com/jirutka/ssh-ldap-pubkey/issues/49
+
+diff --git a/ssh_ldap_pubkey/__init__.py b/ssh_ldap_pubkey/__init__.py
+index 5da2ade..d80b335 100644
+--- a/ssh_ldap_pubkey/__init__.py
++++ b/ssh_ldap_pubkey/__init__.py
+@@ -39,8 +39,14 @@ def is_valid_openssh_pubkey(pubkey):
+         key_type, data64 = map(_encode, pubkey.split()[0:2])
+     except (ValueError, AttributeError):
+         return False
++
++    if hasattr(base64, "decodebytes"):
++        decodebytes = base64.decodebytes
++    else:
++        decodebytes = base64.decodestring
++
+     try:
+-        data = base64.decodestring(data64)
++        data = decodebytes(data64)
+     except base64.binascii.Error:
+         return False
+ 

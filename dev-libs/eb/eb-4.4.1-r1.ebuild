@@ -1,15 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="EB is a C library and utilities for accessing CD-ROM books"
-HOMEPAGE="http://www.sra.co.jp/people/m-kasahr/eb/"
+HOMEPAGE="https://web.archive.org/web/20120330123930/http://www.sra.co.jp/people/m-kasahr/eb/"
 SRC_URI="ftp://ftp.sra.co.jp/pub/misc/eb/${P}.tar.lzma"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="ipv6 nls threads"
 
 RDEPEND="
@@ -19,6 +21,11 @@ DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"
 
 DOCS=( AUTHORS ChangeLog{,.0,.1,.2} NEWS README )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \

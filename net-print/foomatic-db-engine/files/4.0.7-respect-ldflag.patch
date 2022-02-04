@@ -1,5 +1,5 @@
---- foomatic-db-engine-4.0.2/Makefile.in.orig	2009-07-23 11:45:28.487999828 +0200
-+++ foomatic-db-engine-4.0.2/Makefile.in	2009-07-23 11:45:53.939525006 +0200
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -231,10 +231,10 @@
  	( cd lib && $(PERL) Makefile.PL verbose INSTALLDIRS=$(PERL_INSTALLDIRS) )
  

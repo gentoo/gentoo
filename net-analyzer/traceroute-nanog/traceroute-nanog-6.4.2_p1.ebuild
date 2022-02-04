@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,13 +8,13 @@ DEB_PL="1"
 DESCRIPTION="Traceroute with AS lookup, TOS support, MTU discovery and other features"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="
-	https://dev.gentoo.org/~jer/${PN}_${PV/_p*}.orig.tar.gz
-	https://dev.gentoo.org/~jer/${PN}_${PV/_p*}-${PV/*_p}.diff.gz
+	https://dev.gentoo.org/~jsmolic/distfiles/${PN}_${PV/_p*}.orig.tar.gz
+	https://dev.gentoo.org/~jsmolic/distfiles/${PN}_${PV/_p*}-${PV/*_p}.diff.gz
 "
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~riscv x86"
 
 S=${WORKDIR}/${P/_p*}.orig
 

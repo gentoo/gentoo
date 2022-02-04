@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/646188
+--- a/ttaenc.h
++++ b/ttaenc.h
+@@ -41,6 +41,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
++#include <stdint.h>
+ #endif
+ 
+ #ifdef _MSC
+@@ -101,8 +102,8 @@
+ typedef unsigned __int32 uint32;
+ typedef unsigned __int64 uint64;
+ #else
+-typedef __uint32_t uint32;
+-typedef __uint64_t uint64;
++typedef uint32_t uint32;
++typedef uint64_t uint64;
+ #endif
+ 
+ #define PREDICTOR1(x, k)	((int)((((uint64)x << k) - x) >> k))

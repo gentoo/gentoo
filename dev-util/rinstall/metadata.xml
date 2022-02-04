@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    rinstall is an helper tool that installs software and additional data into
+    the system. Many programs often include man pages, documentation, config
+    files and there is no standard way to install them except for using
+    Makefiles. However, Makefiles are notoriously complicated to setup; it is
+    especially hard to follow the Directory Variables from the GNU Coding
+    Standard.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/danyspin97/rinstall/issues/</bugs-to>
+    <remote-id type="github">DanySpin97/rinstall</remote-id>
+  </upstream>
+</pkgmetadata>

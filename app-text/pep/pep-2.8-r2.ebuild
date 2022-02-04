@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,11 +13,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~mips ppc x86 ~x86-linux ~ppc-macos"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 S=${WORKDIR}
 
-# pep does not come with autconf so here's a patch to configure
+# pep does not come with autoconf so here's a patch to configure
 # Makefile with the correct path
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
@@ -35,7 +35,7 @@ src_prepare() {
 
 src_compile() {
 	# make man page too
-	make Doc/pep.1 || die "make man page failed"
+	emake Doc/pep.1
 	emake CC="$(tc-getCC)"
 }
 

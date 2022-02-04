@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>sci@gentoo.org</email>
@@ -12,4 +12,7 @@
 		layers. The BiCePS Linear Integer Solver (BLIS) is a concretization
 		of the BiCePS layer for solving mixed-integer linear programs.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">coin-or/CHiPPS-BLIS</remote-id>
+	</upstream>
 </pkgmetadata>

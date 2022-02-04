@@ -1,30 +1,36 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils flag-o-matic libtool ltprune
+inherit flag-o-matic libtool
 
 MY_P=${PN}-${PV/_/-}
 
 DESCRIPTION="Library for accessing and manipulating reiserfs partitions"
 HOMEPAGE="http://reiserfs.linux.kiev.ua/"
 SRC_URI="http://reiserfs.linux.kiev.ua/snapshots/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ~ppc64 ~sparc x86"
 IUSE="debug examples nls static-libs"
 
-RDEPEND=""
-DEPEND="${RDEPEND}
+DEPEND="
 	sys-apps/util-linux
-	nls? ( sys-devel/gettext )"
+	nls? (
+		sys-devel/gettext
+		virtual/libintl
+	)
+"
 
-S=${WORKDIR}/${MY_P}
+PATCHES=(
+	"${FILESDIR}"/${P}-autotools.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-autotools.patch
+	default
 
 	elibtoolize
 }
@@ -47,8 +53,9 @@ src_install() {
 		dodoc demos/*.c
 	fi
 
+	find "${ED}" -name '*.la' -delete || die
+
 	rm -r "${ED}"/usr/{sbin,share/man} || die
-	prune_libtool_files
 }
 
 pkg_postinst() {

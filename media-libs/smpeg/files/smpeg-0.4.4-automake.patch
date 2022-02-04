@@ -1,5 +1,3 @@
-Index: smpeg-0.4.4/configure.in
-===================================================================
 --- smpeg-0.4.4.orig/configure.in
 +++ smpeg-0.4.4/configure.in
 @@ -53,6 +53,8 @@ AC_LIBTOOL_WIN32_DLL

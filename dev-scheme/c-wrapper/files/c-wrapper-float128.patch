@@ -1,0 +1,79 @@
+https://aur.archlinux.org/cgit/aur.git/tree/12_float128.patch?h=gauche-c-wrapper
+
+Description: Workaround for usage of math.h including type _Float128
+Author: Fabian Brosda <fabi3141@gmx.de>
+Last-Update: 2020-07-10
+
+--- a/src/c-lex.c
++++ b/src/c-lex.c
+@@ -360,6 +360,7 @@
+         "double",
+         "void",
+         "_Bool",
++        "_Float128",
+         NULL,
+     };
+     int i;
+--- a/src/c-parser.c
++++ b/src/c-parser.c
+@@ -103,6 +103,7 @@
+ DEFINE_SYM(double);
+ DEFINE_SYM(void);
+ DEFINE_SYM(_Bool);
++DEFINE_SYM(_Float128);
+ DEFINE_SYM(__builtin_va_list);
+ DEFINE_SYM(U_struct);
+ DEFINE_SYM(U_union);
+@@ -470,6 +471,8 @@
+         SCM_RETURN(SYM(c_void));
+     } else if (SCM_EQ(car, SYM(_Bool))) {
+         SCM_RETURN(SYM(c_int));
++    } else if (SCM_EQ(car, SYM(_Float128))) {
++        SCM_RETURN(SYM(c_double));
+     } else if (SCM_EQ(car, SYM(__builtin_va_list))) {
+         SCM_RETURN(SCM_LIST2(SCM_LIST3(SYM(with_module), SYM(c_wrapper_c_ffi), SYM(ptr)), SYM(c_void)));
+     } else if (SCM_PAIRP(car) && SCM_EQ(SCM_CAR(car), SYM(U_struct))) {
+@@ -1859,6 +1862,7 @@
+     INIT_SYM(double, "double");
+     INIT_SYM(void, "void");
+     INIT_SYM(_Bool, "_Bool");
++    INIT_SYM(_Float128, "_Float128");
+     INIT_SYM(__builtin_va_list, "__builtin_va_list");
+     INIT_SYM(U_struct, "STRUCT");
+     INIT_SYM(U_union, "UNION");
+--- a/testsuite/Makefile.in
++++ b/testsuite/Makefile.in
+@@ -73,6 +73,7 @@
+ 	$(GOSH) -I../src -I../lib cwrappertest.scm >> test.log
+ 	$(GOSH) -I../src -I../lib struct_in_union-test.scm >> test.log
+ 	$(GOSH) -I../src -I../lib stdio-test.scm >> test.log
++	$(GOSH) -I../src -I../lib math-test.scm >> test.log
+ 	$(GOSH) -I../src -I../lib inline-test.scm >> test.log
+ 	$(GOSH) -I../src -I../lib fptr_array-test.scm >> test.log
+ 	$(GOSH) -I../src -I../lib array_qualifier-test.scm >> test.log
+--- a/testsuite/math-test.scm
++++ b/testsuite/math-test.scm
+@@ -0,0 +1,23 @@
++;;;
++;;; Test include math.h
++;;;
++
++(use gauche.test)
++
++(test-start "c-wrapper (include math.h)")
++(use c-wrapper)
++
++(c-include "math.h")
++
++(test "trunc"
++      1.0
++      (lambda ()
++        (trunc 1.9)))
++
++(test "pow"
++      625.0
++      (lambda ()
++        (pow 5 4)))
++
++;; epilogue
++(test-end)

@@ -1,0 +1,281 @@
+https://bugs.gentoo.org/790230
+
+Avod std::min / #define min() macro clash.
+--- a/src/avp/bh_cable.c
++++ b/src/avp/bh_cable.c
+@@ -100 +100 @@ void PowerCableBehaveFun(STRATEGYBLOCK* sbptr)
+-				health_gained=min(pc_bhv->current_charge,max_health-current_health);
++				health_gained=avp_min(pc_bhv->current_charge,max_health-current_health);
+--- a/src/avp/bh_deathvol.c
++++ b/src/avp/bh_deathvol.c
+@@ -96 +96 @@ void DeathVolumeBehaveFun(STRATEGYBLOCK* vol_sbptr)
+-			if(max(miny,dv_bhv->volume_min.vy) > min(maxy,dv_bhv->volume_max.vy)) continue;
++			if(avp_max(miny,dv_bhv->volume_min.vy) > avp_min(maxy,dv_bhv->volume_max.vy)) continue;
+--- a/src/avp/bh_gener.c
++++ b/src/avp/bh_gener.c
+@@ -159,2 +159,2 @@ void GeneratorBehaviour(STRATEGYBLOCK *sbPtr)
+-			genBlock->GenerationRate=min(genBlock->GenerationRate,GENSPERMINUTE_MAX*100);
+-			genBlock->GenerationRate=max(genBlock->GenerationRate,GENSPERMINUTE_MIN*100);
++			genBlock->GenerationRate=avp_min(genBlock->GenerationRate,GENSPERMINUTE_MAX*100);
++			genBlock->GenerationRate=avp_max(genBlock->GenerationRate,GENSPERMINUTE_MIN*100);
+@@ -1174 +1174 @@ static int GeneratorBalance_LocalLimit(int normal_limit)
+-		int shift = min(GeneratorBalance.MaxAIShift,4);
++		int shift = avp_min(GeneratorBalance.MaxAIShift,4);
+@@ -1178 +1178 @@ static int GeneratorBalance_LocalLimit(int normal_limit)
+-		return(normal_limit + min(alien_shortfall,shift));
++		return(normal_limit + avp_min(alien_shortfall,shift));
+--- a/src/avp/bh_queen.c
++++ b/src/avp/bh_queen.c
+@@ -3464 +3464 @@ void QueenBehaviour(STRATEGYBLOCK *sbPtr)
+-								Player->ObStrategyBlock->DynPtr->LinImpulse.vx=min(Player->ObStrategyBlock->DynPtr->LinImpulse.vx,-3000);
++								Player->ObStrategyBlock->DynPtr->LinImpulse.vx=avp_min(Player->ObStrategyBlock->DynPtr->LinImpulse.vx,-3000);
+@@ -4639 +4639 @@ void HandleHangarAirlock()
+-						AirlockTimeOpen=max(AirlockTimeOpen,30*ONE_FIXED);
++						AirlockTimeOpen=avp_max(AirlockTimeOpen,30*ONE_FIXED);
+@@ -4692 +4692 @@ void HandleHangarAirlock()
+-							cur_impulse->vx=min(cur_impulse->vx,impulse.vx);
++							cur_impulse->vx=avp_min(cur_impulse->vx,impulse.vx);
+@@ -4700 +4700 @@ void HandleHangarAirlock()
+-							cur_impulse->vx=max(cur_impulse->vx,impulse.vx);
++							cur_impulse->vx=avp_max(cur_impulse->vx,impulse.vx);
+@@ -4709 +4709 @@ void HandleHangarAirlock()
+-							cur_impulse->vy=min(cur_impulse->vy,impulse.vy);
++							cur_impulse->vy=avp_min(cur_impulse->vy,impulse.vy);
+@@ -4717 +4717 @@ void HandleHangarAirlock()
+-							cur_impulse->vy=max(cur_impulse->vy,impulse.vy);
++							cur_impulse->vy=avp_max(cur_impulse->vy,impulse.vy);
+@@ -4727 +4727 @@ void HandleHangarAirlock()
+-							cur_impulse->vz=min(cur_impulse->vz,impulse.vz);
++							cur_impulse->vz=avp_min(cur_impulse->vz,impulse.vz);
+@@ -4735 +4735 @@ void HandleHangarAirlock()
+-							cur_impulse->vz=max(cur_impulse->vz,impulse.vz);
++							cur_impulse->vz=avp_max(cur_impulse->vz,impulse.vz);
+--- a/src/avp/hud.c
++++ b/src/avp/hud.c
+@@ -946 +946 @@ static void DisplayHealthAndArmour(void)
+-		health = min(health,99);
++		health = avp_min(health,99);
+@@ -951 +951 @@ static void DisplayHealthAndArmour(void)
+-		armour = min(armour,99);
++		armour = avp_min(armour,99);
+--- a/src/avp/win95/avpchunk.cpp
++++ b/src/avp/win95/avpchunk.cpp
+@@ -283 +283 @@ AVP_Generator_Extended_Settings_Chunk::AVP_Generator_Extended_Settings_Chunk(Chu
+-	size_t size=max(*(int*) data,(int)sizeof(AVP_Generator_Weighting));
++	size_t size=avp_max(*(int*) data,(int)sizeof(AVP_Generator_Weighting));
+@@ -554 +554 @@ AVP_Environment_Settings_Chunk::AVP_Environment_Settings_Chunk(Chunk_With_Childr
+-	size_t size=max(data_size,sizeof(AVP_Environment_Settings));
++	size_t size=avp_max(data_size,sizeof(AVP_Environment_Settings));
+@@ -645 +645 @@ AVP_Decal_Chunk::AVP_Decal_Chunk(Chunk_With_Children* parent,const char* data,si
+-	decal_size=max(loaded_decal_size,(int)sizeof(AVP_Decal));
++	decal_size=avp_max(loaded_decal_size,(int)sizeof(AVP_Decal));
+--- a/src/avp/win95/objsetup.cpp
++++ b/src/avp/win95/objsetup.cpp
+@@ -959 +959 @@ void add_placed_hierarchy(Placed_Hierarchy_Chunk* phc,const char* fname,const ch
+-		phtt->num_sounds=max(phtt->num_sounds,isc->index+1);
++		phtt->num_sounds=avp_max(phtt->num_sounds,isc->index+1);
+@@ -993 +993 @@ void add_placed_hierarchy(Placed_Hierarchy_Chunk* phc,const char* fname,const ch
+-		phtt->num_sequences=max(phtt->num_sequences,phsc->index+1);
++		phtt->num_sequences=avp_max(phtt->num_sequences,phsc->index+1);
+@@ -1780,5 +1780,5 @@ static void add_placed_light(Object_Chunk* ob,int list_pos,AVP_Strategy_Chunk* a
+-	pltd->fade_up_time=(max(lchunk->light.fade_up_time,1)*ONE_FIXED)/1000;
+-	pltd->fade_down_time=(max(lchunk->light.fade_down_time,1)*ONE_FIXED)/1000;
+-	pltd->up_time=(max(lchunk->light.up_time,1)*ONE_FIXED)/1000;
+-	pltd->down_time=(max(lchunk->light.down_time,1)*ONE_FIXED)/1000;
+-	pltd->timer=(max(lchunk->light.start_time,1)*ONE_FIXED)/1000;
++	pltd->fade_up_time=(avp_max(lchunk->light.fade_up_time,1)*ONE_FIXED)/1000;
++	pltd->fade_down_time=(avp_max(lchunk->light.fade_down_time,1)*ONE_FIXED)/1000;
++	pltd->up_time=(avp_max(lchunk->light.up_time,1)*ONE_FIXED)/1000;
++	pltd->down_time=(avp_max(lchunk->light.down_time,1)*ONE_FIXED)/1000;
++	pltd->timer=(avp_max(lchunk->light.start_time,1)*ONE_FIXED)/1000;
+@@ -3811 +3811 @@ void setup_particle_generators(Environment_Data_Chunk * envd)
+-			part_temp->frequency=ONE_FIXED/max(data_chunk->quantity,1);
++			part_temp->frequency=ONE_FIXED/avp_max(data_chunk->quantity,1);
+--- a/src/avp/win95/pldnet.c
++++ b/src/avp/win95/pldnet.c
+@@ -1612 +1612 @@ void NetSendMessages(void)
+-			netGameData.sendTimer=max(0,netGameData.sendTimer);
++			netGameData.sendTimer=avp_max(0,netGameData.sendTimer);
+@@ -2018,3 +2018,3 @@ void AddNetMsg_GameDescription(void)
+-		messagePtr->numDeaths[0]=(unsigned char) min(netGameData.numDeaths[0],255);
+-		messagePtr->numDeaths[1]=(unsigned char) min(netGameData.numDeaths[1],255);
+-		messagePtr->numDeaths[2]=(unsigned char) min(netGameData.numDeaths[2],255);
++		messagePtr->numDeaths[0]=(unsigned char) avp_min(netGameData.numDeaths[0],255);
++		messagePtr->numDeaths[1]=(unsigned char) avp_min(netGameData.numDeaths[1],255);
++		messagePtr->numDeaths[2]=(unsigned char) avp_min(netGameData.numDeaths[2],255);
+@@ -9825,2 +9825,2 @@ static int GetDynamicScoreMultiplier(int playerKilledIndex,int killerIndex)
+-	scoreFor=max(500,scoreFor+500);
+-	scoreAgainst=max(500,scoreAgainst+500);
++	scoreFor=avp_max(500,scoreFor+500);
++	scoreAgainst=avp_max(500,scoreAgainst+500);
+@@ -10536 +10536 @@ int DetermineAvailableCharacterTypes(BOOL ConsiderUsedCharacters)
+-		CharacterTypesAvailable[i]=max(0,CharacterTypesAvailable[i]);
++		CharacterTypesAvailable[i]=avp_max(0,CharacterTypesAvailable[i]);
+@@ -10540 +10540 @@ int DetermineAvailableCharacterTypes(BOOL ConsiderUsedCharacters)
+-		CharacterSubTypesAvailable[i]=max(0,CharacterSubTypesAvailable[i]);
++		CharacterSubTypesAvailable[i]=avp_max(0,CharacterSubTypesAvailable[i]);
+@@ -10550 +10550 @@ int DetermineAvailableCharacterTypes(BOOL ConsiderUsedCharacters)
+-		CharacterSubTypesAvailable[i]=min(CharacterSubTypesAvailable[i],CharacterTypesAvailable[NGCT_Marine]);	
++		CharacterSubTypesAvailable[i]=avp_min(CharacterSubTypesAvailable[i],CharacterTypesAvailable[NGCT_Marine]);	
+@@ -10553 +10553 @@ int DetermineAvailableCharacterTypes(BOOL ConsiderUsedCharacters)
+-	CharacterTypesAvailable[NGCT_Marine]=min(CharacterTypesAvailable[NGCT_Marine],maxMarines);
++	CharacterTypesAvailable[NGCT_Marine]=avp_min(CharacterTypesAvailable[NGCT_Marine],maxMarines);
+--- a/src/avp/win95/projload.cpp
++++ b/src/avp/win95/projload.cpp
+@@ -170 +170 @@ void setup_paths(RIFFHANDLE h)
+-		PathArraySize=max(PathArraySize,apc->PathID+1);	
++		PathArraySize=avp_max(PathArraySize,apc->PathID+1);	
+@@ -190 +190 @@ void setup_paths(RIFFHANDLE h)
+-			length=max(length,(length-1)*2);
++			length=avp_max(length,(length-1)*2);
+@@ -466 +466 @@ Global_Hierarchy_Store::Global_Hierarchy_Store (RIFFHANDLE h)
+-		max_index=max(max_index,isc->index);
++		max_index=avp_max(max_index,isc->index);
+@@ -719 +719 @@ void Global_Hierarchy_Store::setup_alternate_shape_sets(List <Object_ShapeNum_Pa
+-		max_index=max(max_index,coll->Set_Collection_Num);	
++		max_index=avp_max(max_index,coll->Set_Collection_Num);	
+@@ -991 +991 @@ SECTION * Global_Hierarchy_Store::build_hierarchy (Object_Hierarchy_Chunk * ohc,
+-						kfd->Sequence_Length =(unsigned short) min(seq->frames[frame_no].at_frame_no - this_frame_no,65535);
++						kfd->Sequence_Length =(unsigned short) avp_min(seq->frames[frame_no].at_frame_no - this_frame_no,65535);
+@@ -995 +995 @@ SECTION * Global_Hierarchy_Store::build_hierarchy (Object_Hierarchy_Chunk * ohc,
+-						kfd->Sequence_Length =(unsigned short) min(65536 - this_frame_no,65535);
++						kfd->Sequence_Length =(unsigned short) avp_min(65536 - this_frame_no,65535);
+@@ -1199 +1199 @@ SECTION * Global_Hierarchy_Store::build_hierarchy (Object_Hierarchy_Chunk * ohc,
+-						kfd->Sequence_Length =(unsigned short) min(frame_array[frame_no]->at_frame_no - this_frame_no,65535);
++						kfd->Sequence_Length =(unsigned short) avp_min(frame_array[frame_no]->at_frame_no - this_frame_no,65535);
+@@ -1203 +1203 @@ SECTION * Global_Hierarchy_Store::build_hierarchy (Object_Hierarchy_Chunk * ohc,
+-						kfd->Sequence_Length =(unsigned short) min(65536 - this_frame_no , 65535);
++						kfd->Sequence_Length =(unsigned short) avp_min(65536 - this_frame_no , 65535);
+--- a/src/files.c
++++ b/src/files.c
+@@ -668 +668 @@ void InitGameDirectories(char *argv0)
+-				copylen = min(len, PATH_MAX-1);
++				copylen = avp_min(len, PATH_MAX-1);
+--- a/src/fixer.h
++++ b/src/fixer.h
+@@ -50,7 +50,2 @@ extern "C" {
+-#ifndef min
+-#define min(a, b) (((a) < (b)) ? (a) : (b))
+-#endif
+-
+-#ifndef max
+-#define max(a, b) (((a) > (b)) ? (a) : (b))
+-#endif
++#define avp_min(a, b) (((a) < (b)) ? (a) : (b))
++#define avp_max(a, b) (((a) > (b)) ? (a) : (b))
+--- a/src/main.c
++++ b/src/main.c
+@@ -461 +461 @@ static void load_opengl_library(const char *lib)
+-		copylen = min(len, PATH_MAX-1);
++		copylen = avp_min(len, PATH_MAX-1);
+--- a/src/win95/bmpnames.cpp
++++ b/src/win95/bmpnames.cpp
+@@ -131 +131 @@ Chunk_With_BMPs::Chunk_With_BMPs (Chunk_With_Children * parent, const char * con
+-		max_index = max (bn.index, max_index);
++		max_index = avp_max (bn.index, max_index);
+--- a/src/win95/chnkload.cpp
++++ b/src/win95/chnkload.cpp
+@@ -675 +675 @@ static void setup_tex_conv_array (
+-			max_indices = max(bns().index,max_indices);
++			max_indices = avp_max(bns().index,max_indices);
+@@ -1180 +1180 @@ BOOL load_rif_bitmaps (RIFFHANDLE h, int/* flags*/)
+-			h->max_index = max(bns().index,h->max_index);
++			h->max_index = avp_max(bns().index,h->max_index);
+@@ -1622 +1622 @@ void DeallocateRifLoadedShapeheader(SHAPEHEADER * shp)
+-					max_num_texs = max (max_num_texs, shp->items[i][3] &0x7fff);
++					max_num_texs = avp_max (max_num_texs, shp->items[i][3] &0x7fff);
+@@ -2141 +2141 @@ void SetupAnimatingShape(Shape_Chunk* sc,SHAPEHEADER* shp, Shape_Merge_Data_Chun
+-		numseq=max(assc->sequence_data.SequenceNum+1,numseq);
++		numseq=avp_max(assc->sequence_data.SequenceNum+1,numseq);
+@@ -2176,3 +2176,3 @@ void SetupAnimatingShape(Shape_Chunk* sc,SHAPEHEADER* shp, Shape_Merge_Data_Chun
+-		int x=max(-sas->min_x,sas->max_x);
+-		int y=max(-sas->min_y,sas->max_y);
+-		int z=max(-sas->min_z,sas->max_z);
++		int x=avp_max(-sas->min_x,sas->max_x);
++		int y=avp_max(-sas->min_y,sas->max_y);
++		int z=avp_max(-sas->min_z,sas->max_z);
+@@ -2612 +2612 @@ BOOL copy_sprite_to_shapeheader (RIFFHANDLE h, SHAPEHEADER *& shphd,Sprite_Heade
+-			local_max_index = max(bns().index,local_max_index);
++			local_max_index = avp_max(bns().index,local_max_index);
+@@ -2774 +2774 @@ BOOL copy_sprite_to_shapeheader (RIFFHANDLE h, SHAPEHEADER *& shphd,Sprite_Heade
+-		MaxSeq=max(MaxSeq,((Sprite_Action_Chunk*)chlif())->Action);
++		MaxSeq=avp_max(MaxSeq,((Sprite_Action_Chunk*)chlif())->Action);
+--- a/src/win95/chnktype.cpp
++++ b/src/win95/chnktype.cpp
+@@ -1047,3 +1047,3 @@ void ChunkAnimSequence::UpdateNormalsAndExtents(ChunkShape const * cs,List<int>*
+-			max.x = max(max.x, caf->v_list[j].x);
+-			max.y = max(max.y, caf->v_list[j].y);
+-			max.z = max(max.z, caf->v_list[j].z);
++			max.x = avp_max(max.x, caf->v_list[j].x);
++			max.y = avp_max(max.y, caf->v_list[j].y);
++			max.z = avp_max(max.z, caf->v_list[j].z);
+@@ -1051,3 +1051,3 @@ void ChunkAnimSequence::UpdateNormalsAndExtents(ChunkShape const * cs,List<int>*
+-			min.x = min(min.x, caf->v_list[j].x);
+-			min.y = min(min.y, caf->v_list[j].y);
+-			min.z = min(min.z, caf->v_list[j].z);
++			min.x = avp_min(min.x, caf->v_list[j].x);
++			min.y = avp_min(min.y, caf->v_list[j].y);
++			min.z = avp_min(min.z, caf->v_list[j].z);
+@@ -1057 +1057 @@ void ChunkAnimSequence::UpdateNormalsAndExtents(ChunkShape const * cs,List<int>*
+-			radius = max (radius, (float)temp_rad);
++			radius = avp_max (radius, (float)temp_rad);
+--- a/src/win95/inline.h
++++ b/src/win95/inline.h
+@@ -4,7 +4,2 @@
+-#ifndef min
+-#define min(a, b) (((a) < (b)) ? (a) : (b))
+-#endif
+-
+-#ifndef max
+-#define max(a, b) (((a) > (b)) ? (a) : (b))
+-#endif
++#define avp_min(a, b) (((a) < (b)) ? (a) : (b))
++#define avp_max(a, b) (((a) > (b)) ? (a) : (b))
+--- a/src/win95/ltchunk.cpp
++++ b/src/win95/ltchunk.cpp
+@@ -334,2 +334,2 @@ int Light_Scale_Chunk::ApplyPrelightScale(int l)
+-	l=min(l,255);
+-	return max(l,prelight_multiply_above);
++	l=avp_min(l,255);
++	return avp_max(l,prelight_multiply_above);
+@@ -343,2 +343,2 @@ int Light_Scale_Chunk::ApplyRuntimeScale(int l)
+-	l=min(l,255);
+-	return max(l,runtime_multiply_above);
++	l=avp_min(l,255);
++	return avp_max(l,runtime_multiply_above);
+--- a/src/win95/mishchnk.cpp
++++ b/src/win95/mishchnk.cpp
+@@ -628 +628 @@ void File_Chunk::post_input_processing()
+-		Shape_Chunk::max_id = max (Shape_Chunk::max_id,sli()->get_header()->file_id_num);	
++		Shape_Chunk::max_id = avp_max (Shape_Chunk::max_id,sli()->get_header()->file_id_num);	
+@@ -1518 +1518 @@ void File_Chunk::build_object_array()
+-		object_array_size=max(object_array_size,oblif()->object_data.index_num+1);
++		object_array_size=avp_max(object_array_size,oblif()->object_data.index_num+1);
+@@ -1867 +1867 @@ void RIF_File_Chunk::post_input_processing()
+-		Shape_Chunk::max_id = max (Shape_Chunk::max_id,sli()->get_header()->file_id_num);	
++		Shape_Chunk::max_id = avp_max (Shape_Chunk::max_id,sli()->get_header()->file_id_num);	
+--- a/src/win95/shpchunk.cpp
++++ b/src/win95/shpchunk.cpp
+@@ -194,3 +194,3 @@ void Shape_Chunk::post_input_processing()
+-		max.x = max(max.x, shape_data_store->v_list[i].x);
+-		max.y = max(max.y, shape_data_store->v_list[i].y);
+-		max.z = max(max.z, shape_data_store->v_list[i].z);
++		max.x = avp_max(max.x, shape_data_store->v_list[i].x);
++		max.y = avp_max(max.y, shape_data_store->v_list[i].y);
++		max.z = avp_max(max.z, shape_data_store->v_list[i].z);
+@@ -198,3 +198,3 @@ void Shape_Chunk::post_input_processing()
+-		min.x = min(min.x, shape_data_store->v_list[i].x);
+-		min.y = min(min.y, shape_data_store->v_list[i].y);
+-		min.z = min(min.z, shape_data_store->v_list[i].z);
++		min.x = avp_min(min.x, shape_data_store->v_list[i].x);
++		min.y = avp_min(min.y, shape_data_store->v_list[i].y);
++		min.z = avp_min(min.z, shape_data_store->v_list[i].z);
+@@ -204 +204 @@ void Shape_Chunk::post_input_processing()
+-		radius = max (radius, temp_rad);
++		radius = avp_max (radius, temp_rad);
+@@ -1462 +1462 @@ void Shape_Header_Chunk::prepare_for_output()
+-	Shape_Chunk::max_id = max(Shape_Chunk::max_id, file_id_num);
++	Shape_Chunk::max_id = avp_max(Shape_Chunk::max_id, file_id_num);
+@@ -1786 +1786 @@ void Shape_Morphing_Data_Chunk::prepare_for_output()
+-		max_id = max (max_id, ((Shape_Sub_Shape_Chunk *)cli())->get_header()->file_id_num);
++		max_id = avp_max (max_id, ((Shape_Sub_Shape_Chunk *)cli())->get_header()->file_id_num);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>python@gentoo.org</email>
@@ -10,8 +10,4 @@
     <remote-id type="pypi">nose</remote-id>
     <remote-id type="github">nose-devs/nose</remote-id>
   </upstream>
-  <use>
-    <flag name="coverage">Pull in <pkg>dev-python/coverage</pkg> needed
-      for nose-xcover plugin.</flag>
-  </use>
 </pkgmetadata>

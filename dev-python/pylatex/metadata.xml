@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>ddenoncin@gmail.com</email>
 		<name>David Denoncin</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 	PyLaTeX is a Python library for creating and compiling LaTeX 
 	files or snippets. The goal of this library is being an easy, 
@@ -17,6 +17,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">JelteF/PyLaTeX</remote-id>
-		<remote-id type="pypi">pylatex</remote-id>
+		<remote-id type="pypi">PyLaTeX</remote-id>
 	</upstream>
 </pkgmetadata>

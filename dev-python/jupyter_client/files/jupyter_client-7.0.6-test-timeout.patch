@@ -1,0 +1,38 @@
+Avoid test timeouts on slower hosts like e.g. ia64 (guppy):
+```
+FAILED jupyter_client/tests/test_kernelmanager.py::TestParallel::test_start_sequence_kernels[tcp] - Failed: Timeout >30.0s
+FAILED jupyter_client/tests/test_kernelmanager.py::TestParallel::test_start_sequence_kernels[ipc] - Failed: Timeout >30.0s
+```
+--- a/jupyter_client/tests/test_client.py
++++ b/jupyter_client/tests/test_client.py
+@@ -13,7 +13,7 @@ from jupyter_client.kernelspec import KernelSpecManager
+ from jupyter_client.kernelspec import NATIVE_KERNEL_NAME
+ from jupyter_client.kernelspec import NoSuchKernel
+ 
+-TIMEOUT = 30
++TIMEOUT = 180
+ 
+ pjoin = os.path.join
+ 
+--- a/jupyter_client/tests/test_kernelmanager.py
++++ b/jupyter_client/tests/test_kernelmanager.py
+@@ -24,7 +24,7 @@ from jupyter_client import KernelManager
+ 
+ pjoin = os.path.join
+ 
+-TIMEOUT = 30
++TIMEOUT = 180
+ 
+ 
+ @pytest.fixture(params=["tcp", "ipc"])
+--- a/jupyter_client/tests/test_multikernelmanager.py
++++ b/jupyter_client/tests/test_multikernelmanager.py
+@@ -22,7 +22,7 @@ from jupyter_client import KernelManager
+ from jupyter_client.multikernelmanager import AsyncMultiKernelManager
+ from jupyter_client.multikernelmanager import MultiKernelManager
+ 
+-TIMEOUT = 30
++TIMEOUT = 180
+ 
+ 
+ class TestKernelManager(TestCase):

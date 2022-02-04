@@ -1,47 +1,50 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="7"
 
 inherit toolchain-funcs
 
 DESCRIPTION="Vietnamese input keyboard for X"
-SRC_URI="http://xvnkb.sourceforge.net/${P}.tar.bz2"
 HOMEPAGE="http://xvnkb.sourceforge.net/"
+SRC_URI="http://${PN}.sourceforge.net/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="spell xft"
 
-RDEPEND="
-	x11-libs/libX11:=
+RDEPEND="x11-libs/libX11:=
 	xft? ( x11-libs/libXft:= )"
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
+BDEPEND="xft? ( virtual/pkgconfig )"
 
-PATCHES=( "${FILESDIR}"/${P}-ldflags.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-cc.patch
+	"${FILESDIR}"/${P}-ldflags.patch
+)
+
+src_prepare() {
+	default
+	tc-export CC
+}
 
 src_configure() {
-	tc-export CC
-
-	local myconf=()
-	! use spell && myconf+=( --no-spellcheck )
-	! use xft && myconf+=( --no-xft )
-
 	# *not* autotools
 	./configure \
-		--use-extstroke "${myconf[@]}" \
+		$(usex spell '' '--no-spellcheck') \
+		$(usex xft '' '--no-xft') \
+		--use-extstroke \
 		|| die "./configure failed"
 }
 
 src_install() {
-	dobin xvnkb
-	dobin tools/xvnkb_ctrl
+	dobin ${PN}
+	dobin tools/${PN}_ctrl
 
-	dolib.so xvnkb.so.${PV}
-	dosym xvnkb.so.${PV} /usr/$(get_libdir)/xvnkb.so
+	dolib.so ${PN}.so.${PV}
+	dosym ${PN}.so.${PV} /usr/$(get_libdir)/${PN}.so
 
 	einstalldocs
 	dodoc -r doc/. scripts contrib
@@ -51,10 +54,10 @@ pkg_postinst() {
 	elog "Remember to"
 	elog "$ export LANG=en_US.UTF-8"
 	elog "(or any other UTF-8 locale) and"
-	elog "$ export LD_PRELOAD=/usr/$(get_libdir)/xvnkb.so"
+	elog "$ export LD_PRELOAD=/usr/$(get_libdir)/${PN}.so"
 	elog "before starting X Window"
 	elog "More documents are in ${EROOT}/usr/share/doc/${PF}"
 
 	ewarn "Programs with suid/sgid will have LD_PRELOAD cleared"
-	ewarn "You have to unset suid/sgid to use with xvnkb"
+	ewarn "You have to unset suid/sgid to use with ${PN}"
 }

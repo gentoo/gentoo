@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 JAVA_PKG_IUSE="doc source"
 
-inherit eutils check-reqs java-pkg-2
+inherit check-reqs java-pkg-2
 
 SV="$(ver_cut 1-2)"
 SBTV="0.13.18"
@@ -48,7 +48,7 @@ SRC_URI="
 	)"
 LICENSE="BSD"
 SLOT="${SV}/${PV}"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="binary emacs"
 
@@ -57,13 +57,10 @@ COMMON_DEP="dev-java/ant-core:0
 
 DEPEND="${COMMON_DEP}
 	!binary? (
-		>=virtual/jdk-1.8:*
 		>=dev-java/sbt-${SBTV}:0
 		media-gfx/graphviz
 	)
-	binary? (
-		>=virtual/jdk-1.8:*
-	)
+	>=virtual/jdk-1.8:*
 	app-arch/xz-utils:0"
 
 RDEPEND="${COMMON_DEP}
@@ -130,7 +127,7 @@ src_prepare() {
 			gjl_package=sbt
 			gjl_jar="sbt-launch.jar"
 			gjl_java_args="-Dsbt.version=${SBT_PVR} -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -Duser.home="${WORKDIR}""
-			source /usr/share/java-config-2/launcher/launcher.bash
+			source "${EPREFIX}"/usr/share/java-config-2/launcher/launcher.bash
 		EOF
 		chmod u+x "${S}/sbt" || die
 

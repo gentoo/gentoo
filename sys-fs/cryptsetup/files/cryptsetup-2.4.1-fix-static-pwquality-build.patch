@@ -1,0 +1,225 @@
+From 26cc1644b489578c76ec6f576614ca885c00a35d Mon Sep 17 00:00:00 2001
+From: Milan Broz <gmazyland@gmail.com>
+Date: Wed, 6 Oct 2021 12:27:25 +0200
+Subject: [PATCH 1/2] Do not link integritysetup and veritysetup with
+ pwquality.
+
+These tools do not read passphrases, no need to link to these libraries.
+
+Just move the helper code that introduced this dependence as a side-effect.
+
+Fixes: #677
+---
+ src/Makemodule.am    |  6 -----
+ src/utils_password.c | 56 --------------------------------------------
+ src/utils_tools.c    | 56 ++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 56 insertions(+), 62 deletions(-)
+
+diff --git a/src/Makemodule.am b/src/Makemodule.am
+index a6dc50cf..f2b896bf 100644
+--- a/src/Makemodule.am
++++ b/src/Makemodule.am
+@@ -52,7 +52,6 @@ veritysetup_SOURCES =		\
+ 	src/utils_arg_names.h	\
+ 	src/utils_arg_macros.h	\
+ 	src/utils_tools.c	\
+-	src/utils_password.c	\
+ 	src/veritysetup.c	\
+ 	src/veritysetup_args.h	\
+ 	src/veritysetup_arg_list.h	\
+@@ -61,8 +60,6 @@ veritysetup_SOURCES =		\
+ veritysetup_LDADD = $(LDADD)	\
+ 	libcryptsetup.la	\
+ 	@POPT_LIBS@		\
+-	@PWQUALITY_LIBS@	\
+-	@PASSWDQC_LIBS@		\
+ 	@BLKID_LIBS@
+ 
+ sbin_PROGRAMS += veritysetup
+@@ -91,7 +88,6 @@ integritysetup_SOURCES =	\
+ 	src/utils_arg_names.h	\
+ 	src/utils_arg_macros.h	\
+ 	src/utils_tools.c	\
+-	src/utils_password.c	\
+ 	src/utils_blockdev.c	\
+ 	src/integritysetup.c	\
+ 	src/integritysetup_args.h \
+@@ -101,8 +97,6 @@ integritysetup_SOURCES =	\
+ integritysetup_LDADD = $(LDADD)	\
+ 	libcryptsetup.la	\
+ 	@POPT_LIBS@		\
+-	@PWQUALITY_LIBS@	\
+-	@PASSWDQC_LIBS@		\
+ 	@UUID_LIBS@		\
+ 	@BLKID_LIBS@
+ 
+diff --git a/src/utils_password.c b/src/utils_password.c
+index 58f3a7b3..65618b9c 100644
+--- a/src/utils_password.c
++++ b/src/utils_password.c
+@@ -318,59 +318,3 @@ void tools_passphrase_msg(int r)
+ 	else if (r == -ENOENT)
+ 		log_err(_("No usable keyslot is available."));
+ }
+-
+-int tools_read_mk(const char *file, char **key, int keysize)
+-{
+-	int fd = -1, r = -EINVAL;
+-
+-	if (keysize <= 0 || !key)
+-		return -EINVAL;
+-
+-	*key = crypt_safe_alloc(keysize);
+-	if (!*key)
+-		return -ENOMEM;
+-
+-	fd = open(file, O_RDONLY);
+-	if (fd == -1) {
+-		log_err(_("Cannot read keyfile %s."), file);
+-		goto out;
+-	}
+-
+-	if (read_buffer(fd, *key, keysize) != keysize) {
+-		log_err(_("Cannot read %d bytes from keyfile %s."), keysize, file);
+-		goto out;
+-	}
+-	r = 0;
+-out:
+-	if (fd != -1)
+-		close(fd);
+-
+-	if (r) {
+-		crypt_safe_free(*key);
+-		*key = NULL;
+-	}
+-
+-	return r;
+-}
+-
+-int tools_write_mk(const char *file, const char *key, int keysize)
+-{
+-	int fd, r = -EINVAL;
+-
+-	if (keysize <= 0 || !key)
+-		return -EINVAL;
+-
+-	fd = open(file, O_CREAT|O_EXCL|O_WRONLY, S_IRUSR);
+-	if (fd < 0) {
+-		log_err(_("Cannot open keyfile %s for write."), file);
+-		return r;
+-	}
+-
+-	if (write_buffer(fd, key, keysize) == keysize)
+-		r = 0;
+-	else
+-		log_err(_("Cannot write to keyfile %s."), file);
+-
+-	close(fd);
+-	return r;
+-}
+diff --git a/src/utils_tools.c b/src/utils_tools.c
+index dbd83695..cf66e4c4 100644
+--- a/src/utils_tools.c
++++ b/src/utils_tools.c
+@@ -493,3 +493,59 @@ int tools_reencrypt_progress(uint64_t size, uint64_t offset, void *usrptr)
+ 
+ 	return r;
+ }
++
++int tools_read_mk(const char *file, char **key, int keysize)
++{
++	int fd = -1, r = -EINVAL;
++
++	if (keysize <= 0 || !key)
++		return -EINVAL;
++
++	*key = crypt_safe_alloc(keysize);
++	if (!*key)
++		return -ENOMEM;
++
++	fd = open(file, O_RDONLY);
++	if (fd == -1) {
++		log_err(_("Cannot read keyfile %s."), file);
++		goto out;
++	}
++
++	if (read_buffer(fd, *key, keysize) != keysize) {
++		log_err(_("Cannot read %d bytes from keyfile %s."), keysize, file);
++		goto out;
++	}
++	r = 0;
++out:
++	if (fd != -1)
++		close(fd);
++
++	if (r) {
++		crypt_safe_free(*key);
++		*key = NULL;
++	}
++
++	return r;
++}
++
++int tools_write_mk(const char *file, const char *key, int keysize)
++{
++	int fd, r = -EINVAL;
++
++	if (keysize <= 0 || !key)
++		return -EINVAL;
++
++	fd = open(file, O_CREAT|O_EXCL|O_WRONLY, S_IRUSR);
++	if (fd < 0) {
++		log_err(_("Cannot open keyfile %s for write."), file);
++		return r;
++	}
++
++	if (write_buffer(fd, key, keysize) == keysize)
++		r = 0;
++	else
++		log_err(_("Cannot write to keyfile %s."), file);
++
++	close(fd);
++	return r;
++}
+-- 
+GitLab
+
+
+From d20beacba060f34e3ab0d71d191f59434031e98f Mon Sep 17 00:00:00 2001
+From: Milan Broz <gmazyland@gmail.com>
+Date: Wed, 6 Oct 2021 12:45:20 +0200
+Subject: [PATCH 2/2] Remove redundant link to uuid lib for static build.
+
+Veritysetup does not need to link this library at all, for others
+we have link already in flags.
+---
+ src/Makemodule.am | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/src/Makemodule.am b/src/Makemodule.am
+index f2b896bf..49e0c5aa 100644
+--- a/src/Makemodule.am
++++ b/src/Makemodule.am
+@@ -71,8 +71,7 @@ veritysetup_static_LDFLAGS = $(AM_LDFLAGS) -all-static
+ veritysetup_static_LDADD =	\
+ 	$(veritysetup_LDADD)	\
+ 	@CRYPTO_STATIC_LIBS@	\
+-	@DEVMAPPER_STATIC_LIBS@	\
+-	@UUID_LIBS@
++	@DEVMAPPER_STATIC_LIBS@
+ endif
+ endif
+ 
+@@ -109,8 +108,7 @@ integritysetup_static_LDFLAGS = $(AM_LDFLAGS) -all-static
+ integritysetup_static_LDADD =	\
+ 	$(integritysetup_LDADD)	\
+ 	@CRYPTO_STATIC_LIBS@	\
+-	@DEVMAPPER_STATIC_LIBS@	\
+-	@UUID_LIBS@
++	@DEVMAPPER_STATIC_LIBS@
+ endif
+ endif
+ 
+-- 
+GitLab
+

@@ -1,0 +1,18 @@
+Remove hardcoded paths from .desktop, not replacing with
+make_desktop_entry given upstream's also defines MimeType.
+--- a/fceux.desktop
++++ b/fceux.desktop
+@@ -7,4 +7,4 @@
+ Comment=Emulate NES ROMs
+-Exec=/usr/bin/fceux %f
+-Icon=/usr/share/pixmaps/fceux1.png
++Exec=fceux %f
++Icon=fceux1
+ Terminal=false
+@@ -17,3 +17,2 @@
+ Exec=fceux -f 1
+-OnlyShowIn=Unity
+ [Desktop Action DefaultConfig]
+@@ -21,2 +20 @@
+ Exec=fceux --no-config 1
+-OnlyShowIn=Unity

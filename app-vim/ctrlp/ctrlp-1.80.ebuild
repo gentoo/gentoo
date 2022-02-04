@@ -14,3 +14,5 @@ KEYWORDS="amd64 x86"
 S="${WORKDIR}/${PN}.vim-${PV}"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
+
+DOCS=( readme.md )

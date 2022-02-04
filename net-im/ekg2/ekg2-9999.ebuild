@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ RDEPEND="dev-libs/glib:2
 	xmpp? ( dev-libs/expat:0= )
 	zlib? ( sys-libs/zlib:0= )
 
-	ncurses? ( sys-libs/ncurses:0=[unicode=]
+	ncurses? ( sys-libs/ncurses:=[unicode(+)=]
 		gpm? ( sys-libs/gpm:0= )
 		spell? ( app-text/aspell:0= ) )
 	sqlite? ( dev-db/sqlite:3= )"

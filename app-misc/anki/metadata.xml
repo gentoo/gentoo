@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>patrick@gentoo.org</email>
@@ -10,12 +10,7 @@
 		(such as words and phrases in a foreign language) as
 		quickly, easily and efficiently as possible.
 	</longdescription>
-	<use>
-		<flag name="recording">
-			Enable support for audio recording
-		</flag>
-		<flag name="sound">
-			Enable support for adding sound to cards
-		</flag>
-	</use>
+	<upstream>
+		<remote-id type="github">ankitects/anki</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>chiitoo@gentoo.org</email>
+		<name>Jimi Huotari</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
-		<flag name="notification">Adds support for GTK Status Notifier tray backends</flag>
-		<flag name="X">Adds support for X11</flag>
+		<flag name="notification">Use snorenotify for desktop notifications</flag>
+		<flag name="spellcheck">Enable spell checking support</flag>
+		<flag name="X">Enable auto-away support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">qTox/qTox</remote-id>

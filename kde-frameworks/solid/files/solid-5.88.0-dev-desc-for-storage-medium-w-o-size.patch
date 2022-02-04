@@ -1,0 +1,37 @@
+From c521c9e53693eb6f8f1926db72b78787b063f27f Mon Sep 17 00:00:00 2001
+From: Kai Uwe Broulik <kde@privat.broulik.de>
+Date: Fri, 19 Nov 2021 12:10:37 +0100
+Subject: [PATCH] Add device description for storage medium without size
+
+"0B Removable Media" is not very helpful, just omit the size then.
+---
+ src/solid/devices/backends/udisks2/udisksdevice.cpp | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/src/solid/devices/backends/udisks2/udisksdevice.cpp b/src/solid/devices/backends/udisks2/udisksdevice.cpp
+index ad55edd..5d75065 100644
+--- a/src/solid/devices/backends/udisks2/udisksdevice.cpp
++++ b/src/solid/devices/backends/udisks2/udisksdevice.cpp
+@@ -576,9 +576,17 @@ QString Device::volumeDescription() const
+         description = tr("Floppy Disk");
+     } else {
+         if (drive_is_removable) {
+-            description = tr("%1 Removable Media", "%1 is the size").arg(size_str);
++            if (storageVolume.size() > 0) {
++                description = tr("%1 Removable Media", "%1 is the size").arg(size_str);
++            } else {
++                description = tr("Removable Media");
++            }
+         } else {
+-            description = tr("%1 Media", "%1 is the size").arg(size_str);
++            if (storageVolume.size() > 0) {
++                description = tr("%1 Media", "%1 is the size").arg(size_str);
++            } else {
++                description = tr("Storage Media");
++            }
+         }
+     }
+ 
+-- 
+GitLab
+

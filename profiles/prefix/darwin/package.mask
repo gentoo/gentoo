@@ -5,14 +5,6 @@
 # util-linux has no business on Darwin systems
 sys-apps/util-linux
 
-# Fabian Groffen <grobian@gentoo.org> (2012-02-19)
-# Using FSF GCC on Mac OS X is not supported by Gentoo Prefix.  While
-# the FSF GCC compiler is certainly useful, some - if not many -
-# packages expect the Apple branch of GCC, and its (sometimes peculiar)
-# behaviour.  Do not file bugs for packages that fail to compile with
-# FSF GCC, if you have patches, please send them directly to upstream.
-sys-devel/gcc
-
 # Fabian Groffen <grobian@gentoo.org> (2011-12-30)
 # Does not support Darwin, http://mj.ucw.cz/pciutils.html
 sys-apps/pciutils

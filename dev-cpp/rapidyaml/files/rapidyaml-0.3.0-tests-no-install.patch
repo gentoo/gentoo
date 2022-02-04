@@ -1,0 +1,18 @@
+--- a/ext/c4fs/CMakeLists.txt
++++ b/ext/c4fs/CMakeLists.txt
+@@ -18,6 +18,4 @@
+ )
+ 
+-c4_install_target(c4fs)
+-c4_install_exports()
+ 
+ c4_add_dev_targets()
+--- a/ext/c4log/CMakeLists.txt
++++ b/ext/c4log/CMakeLists.txt
+@@ -21,6 +21,4 @@
+     )
+ 
+-c4_install_target(c4log)
+-c4_install_exports()
+ 
+ c4_add_dev_targets()

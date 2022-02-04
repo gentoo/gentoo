@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -23,7 +23,6 @@ DEPEND="virtual/pkgconfig
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit subversion
-	KEYWORDS=""
 else
 	KEYWORDS="~amd64 ~arm ~x86"
 	SRC_URI="http://yate.null.ro/tarballs/${PN}6/yate-bts-${PV}-1.tar.gz"

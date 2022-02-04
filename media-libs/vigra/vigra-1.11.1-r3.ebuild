@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="threads(+),xml"
-inherit cmake python-r1
+inherit cmake flag-o-matic python-r1
 
 DESCRIPTION="C++ computer vision library emphasizing customizable algorithms and structures"
 HOMEPAGE="https://ukoethe.github.io/vigra/"
@@ -97,11 +97,15 @@ src_prepare() {
 
 	if ! use test; then
 		cmake_comment_add_subdirectory test
-		sed -e "/ADD_SUBDIRECTORY.*test/s/^/#DONT /" -i vigranumpy/CMakeLists.txt || die
+		cmake_run_in vigranumpy cmake_comment_add_subdirectory test
 	fi
 }
 
 src_configure() {
+	# Needed for now ("fix" compatibility with >=sci-libs/hdf5-1.12)
+	# bug #808731
+	use hdf5 && append-cppflags -DH5_USE_110_API
+
 	vigra_configure() {
 		local mycmakeargs=(
 			-DAUTOEXEC_TESTS=OFF

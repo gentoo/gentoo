@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
@@ -22,3 +22,7 @@ pkg_postinst() {
 	einfo first. You should run this on a regular basis to update
 	einfo the web application data, e.g. via a cronjob.
 }
+
+# Only codingstyle and similar tests, require dependencies
+# not packaged in Gentoo
+RESTRICT="test"

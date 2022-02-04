@@ -1,17 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-vm-2.eclass
 # @MAINTAINER:
 # java@gentoo.org
-# @SUPPORTED_EAPIS: 5 6
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Java Virtual Machine eclass
 # @DESCRIPTION:
 # This eclass provides functionality which assists with installing
 # virtual machines, and ensures that they are recognized by java-config.
 
 case ${EAPI:-0} in
-	5|6) ;;
+	[678]) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
@@ -20,8 +20,9 @@ inherit multilib pax-utils prefix xdg-utils
 EXPORT_FUNCTIONS pkg_setup pkg_postinst pkg_prerm pkg_postrm
 
 RDEPEND="
-	>=dev-java/java-config-2.2.0-r3
-	>=app-eselect/eselect-java-0.4.0"
+	dev-java/java-config
+	app-eselect/eselect-java
+"
 DEPEND="${RDEPEND}"
 
 export WANT_JAVA_CONFIG=2
@@ -186,7 +187,7 @@ set_java_env() {
 
 	# Make the symlink
 	dodir "${JAVA_VM_DIR}"
-	dosym ${java_home#${EPREFIX}} ${JAVA_VM_DIR}/${VMHANDLE}
+	dosym "${java_home}" "${JAVA_VM_DIR}/${VMHANDLE}"
 }
 
 
@@ -228,7 +229,7 @@ java-vm_install-env() {
 
 	# Make the symlink
 	dodir "${JAVA_VM_DIR}"
-	dosym "${java_home#${EPREFIX}}" "${JAVA_VM_DIR}/${VMHANDLE}"
+	dosym "${java_home}" "${JAVA_VM_DIR}/${VMHANDLE}"
 }
 
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,19 +11,17 @@ SRC_URI="https://github.com/twogood/unshield/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~hppa ~ppc x86"
+KEYWORDS="amd64 ~arm64 ~hppa ~ppc ~riscv x86"
 
-# OpenSSL (or LibreSSL) is detected at build time, and used to determine
+# OpenSSL is detected at build time, and used to determine
 # whether or not a hand-rolled md5 implementation is used. The build
 # system prefers OpenSSL's implementation if it's available, and OpenSSL
 # is common enough, so we prefer it too. Since the dependency is
-# automagic (there's no way to hide it), we require Open/LibreSSL
+# automagic (there's no way to hide it), we require OpenSSL
 # unconditionally.
-IUSE="libressl"
 
 DEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"
 

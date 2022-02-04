@@ -1,3 +1,4 @@
+https://github.com/mattthias/slurm/pull/38
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -25,7 +25,7 @@

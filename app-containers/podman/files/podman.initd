@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 2015-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Podman Remote API Service"
+LOG_PATH="/var/log/${RC_SVCNAME}"
+RUN_PATH="/run/${RC_SVCNAME}"
+: ${LOG_LEVEL:=error}
+: ${RUN_AS_USER:=root:root}
+: ${SOCKET:=unix:/run/${RC_SVCNAME}/podman.sock}
+pidfile="${RUN_PATH}/${RC_SVCNAME}.pid"
+command="/usr/bin/podman"
+command_args="--log-level ${LOG_LEVEL} system service -t 0 ${SOCKET}"
+command_background="true"
+start_stop_daemon_args="--stdout ${LOG_PATH}/${RC_SVCNAME}.log --stderr ${LOG_PATH}/${RC_SVCNAME}.log --user ${RUN_AS_USER}"
+
+start() {
+	checkpath -o "${RUN_AS_USER}" -d "${RUN_PATH}" "${LOG_PATH}"
+	default_start
+}

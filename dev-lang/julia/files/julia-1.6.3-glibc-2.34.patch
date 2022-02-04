@@ -1,0 +1,32 @@
+https://github.com/JuliaLang/julia/commit/09a49c6b57fbde109f0f0c2aa9aa05cef2c1dd40
+https://bugs.gentoo.org/824486
+
+From: t-bltg <13423344+t-bltg@users.noreply.github.com>
+Date: Thu, 12 Aug 2021 21:36:18 +0200
+Subject: [PATCH] MINSIGSTKSZ is no longer constant in glibc (#41860)
+
+MINSIGSTKSZ is redefined to sysconf(_SC_MINSIGSTKSZ) starting from glibc 2.34
+
+Co-authored-by: t-bltg <t-bltg@users.noreply.github.com>
+(cherry picked from commit f19b9a20dde2688c642b7dd709b5d9446e4df2f6)
+--- a/src/task.c
++++ b/src/task.c
+@@ -29,6 +29,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <signal.h>
++#include <unistd.h>
+ #include <errno.h>
+ #include <inttypes.h>
+ #include "julia.h"
+@@ -75,8 +76,8 @@ static inline void tsan_switch_to_ctx(jl_ucontext_t *ctx) {}
+ 
+ // empirically, jl_finish_task needs about 64k stack space to infer/run
+ // and additionally, gc-stack reserves 64k for the guard pages
+-#if defined(MINSIGSTKSZ) && MINSIGSTKSZ > 131072
+-#define MINSTKSZ MINSIGSTKSZ
++#if defined(MINSIGSTKSZ)
++#define MINSTKSZ (MINSIGSTKSZ > 131072 ? MINSIGSTKSZ : 131072)
+ #else
+ #define MINSTKSZ 131072
+ #endif

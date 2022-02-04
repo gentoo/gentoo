@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-ext-source-r3.eclass
 # @MAINTAINER:
 # Gentoo PHP team <php-bugs@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Compile and install standalone PHP extensions.
 # @DESCRIPTION:
 # A unified interface for compiling and installing standalone PHP
@@ -12,16 +12,15 @@
 
 inherit autotools
 
-EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test
-
 case ${EAPI:-0} in
 	6) inherit eapi7-ver ;;
-	7) ;;
+	7|8) ;;
 	*)
 		die "${ECLASS} is not compatible with EAPI=${EAPI}"
 esac
 
 # @ECLASS-VARIABLE: PHP_EXT_NAME
+# @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
 # The extension name. This must be set, otherwise the eclass dies.
@@ -87,6 +86,7 @@ esac
 : ${PHP_INI_NAME:=${PHP_EXT_NAME}}
 
 # @ECLASS-VARIABLE: PHP_EXT_NEEDED_USE
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A list of USE flags to append to each PHP target selected
@@ -134,7 +134,7 @@ RDEPEND="${PHPDEPEND}"
 
 case ${EAPI:-0} in
 	6) DEPEND="${TOOLDEPS} ${PHPDEPEND}" ;;
-	7) DEPEND="${PHPDEPEND}" ; BDEPEND="${TOOLDEPS} ${PHPDEPEND}" ;;
+	7|8) DEPEND="${PHPDEPEND}" ; BDEPEND="${TOOLDEPS} ${PHPDEPEND}" ;;
 esac
 
 unset PHPDEPEND TOOLDEPS
@@ -459,3 +459,5 @@ php-ext-source-r3_addtoinifiles() {
 		done
 	done
 }
+
+EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test

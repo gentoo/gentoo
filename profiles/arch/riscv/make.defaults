@@ -15,6 +15,15 @@ FCFLAGS="${CFLAGS}"
 
 SYMLINK_LIB="no"
 
+# Note about LIBDIR_*: 
+# 1) To keep in step with other arches and distributions we use "lib" for 32bit
+#    and "lib64" for 64bit for the *default* ABI.
+#    NOT the two level dirs from the specification, and NOT lib32 as specified
+#    as 32bit fallback.
+# 2) The LIBDIRs provided *here* are the ones for secondary ABI in the multilib
+#    case.
+#    The LIBDIR for the *primary* ABI MUST be overridden in an inheriting profile.
+
 # Flags for lp64d
 LIBDIR_lp64d="lib64/lp64d"
 CFLAGS_lp64d="-mabi=lp64d"
@@ -42,7 +51,8 @@ CHOST_ilp32="riscv32-unknown-linux-gnu"
 # Since many people will want to test this in qemu...
 FEATURES="-pid-sandbox -network-sandbox -ipc-sandbox"
 
-# The following stuff is, e.g., defined in subdirs:
+# The following stuff MUST be defined in subdirs:
 # ABI
 # DEFAULT_ABI
 # MULTILIB_ABIS
+# LIBDIR_* for DEFAULT_ABI

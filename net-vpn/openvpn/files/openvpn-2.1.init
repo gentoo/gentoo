@@ -1,13 +1,13 @@
 #!/sbin/openrc-run
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 VPNDIR=${VPNDIR:-/etc/openvpn}
 VPN=${SVCNAME#*.}
 if [ -n "${VPN}" ] && [ ${SVCNAME} != "openvpn" ]; then
-	VPNPID="/var/run/openvpn.${VPN}.pid"
+	VPNPID="/run/openvpn.${VPN}.pid"
 else
-	VPNPID="/var/run/openvpn.pid"
+	VPNPID="/run/openvpn.pid"
 fi
 VPNCONF="${VPNDIR}/${VPN}.conf"
 

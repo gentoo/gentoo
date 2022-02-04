@@ -1,0 +1,7 @@
+# configuration file for /etc/init.d/nvidia-persistenced
+
+# NVPD_USER: user to run as, needs access to /dev/nvidia* (video group)
+NVPD_USER="nvpd"
+
+# ARGS: additional arguments, see nvidia-persistenced(1)
+ARGS=""

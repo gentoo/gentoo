@@ -1,5 +1,5 @@
---- fidlib-0.9.10/fidlib.h
-+++ fidlib-0.9.10/fidlib.h
+--- a/fidlib.h
++++ b/fidlib.h
 @@ -2,6 +2,13 @@
  //	fidlib include file
  //

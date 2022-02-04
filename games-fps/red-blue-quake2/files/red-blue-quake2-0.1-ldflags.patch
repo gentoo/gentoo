@@ -1,5 +1,5 @@
---- Makefile.old	2010-10-18 09:09:48.000000000 +0200
-+++ Makefile	2010-10-18 09:15:59.000000000 +0200
+--- a/linux/Makefile
++++ b/linux/Makefile
 @@ -59,7 +59,7 @@
  endif
  

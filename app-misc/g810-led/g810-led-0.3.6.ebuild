@@ -1,9 +1,9 @@
-# Copyright 2018-2019 Gentoo Authors
+# Copyright 2018-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit systemd udev eutils
+inherit systemd udev
 
 DESCRIPTION="Led controller for Logitech G- Keyboards"
 HOMEPAGE="https://github.com/MatMoul/g810-led"

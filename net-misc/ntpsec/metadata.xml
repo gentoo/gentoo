@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>nerdboy@gentoo.org</email>
-		<name>Stephen L Arnold</name>
-	</maintainer>
 	<maintainer type="person">
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
@@ -32,7 +28,6 @@ NTPsec project - a secure, hardened, and improved implementation of Network Time
 		<flag name="rclock_zyfer">Zyfer driver</flag>
 		<flag name="rclock_arbiter">Arbiter 1088A/B GPS driver</flag>
 		<flag name="rclock_nmea">NMEA GPS driver</flag>
-		<flag name="rclock_neoclock">NeoClock4X DCF77/TDF driver</flag>
 		<flag name="rclock_modem">NIST/USNO/PTB Modem Time Services</flag>
 		<flag name="rclock_local">Support for undisciplined local clock (not recommended)</flag>
 		<flag name="smear">Specify the interval over which a leap second is applied (experimental)</flag>

@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -18,7 +18,8 @@ RDEPEND="
 	app-pda/pilot-link
 	dev-libs/libgcrypt:0=
 	x11-libs/gtk+:2"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	nls? (
 		dev-util/intltool
 		sys-devel/gettext
@@ -26,8 +27,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.8.2-qa-desktop-file.patch
-	"${FILESDIR}"/${PN}-1.8.2-fix-paths.patch
+	"${FILESDIR}"/${P}-qa-desktop-file.patch
+	"${FILESDIR}"/${P}-fix-paths.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_prepare() {
@@ -45,6 +47,6 @@ src_install() {
 	default
 	docompress -x /usr/share/doc/${PF}/icons
 
-	# .la files for plugins are useless
-	find "${D}" -name '*.la' -delete || die
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }

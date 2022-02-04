@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	after modules
+}
+
+start() {
+	ebegin "Starting languagetool [server]"
+	start-stop-daemon --start --background --exec /bin/bash /usr/bin/languagetool-server \
+        --config "/etc/languagetool.cfg" --allow-origin "*" --port 8081
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping languagetool [server]"
+	start-stop-daemon --stop --exec /bin/bash /usr/bin/languagetool-server 
+	eend $?
+}

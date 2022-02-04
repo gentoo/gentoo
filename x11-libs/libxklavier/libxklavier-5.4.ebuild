@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit libtool vala xdg-utils
 
@@ -11,7 +11,7 @@ SRC_URI="https://people.freedesktop.org/~svu/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0/16"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="+introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 
@@ -27,7 +27,8 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.30:= )
 	vala? ( $(vala_depend) )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.4
 	sys-devel/gettext
@@ -54,5 +55,5 @@ src_configure() {
 src_install() {
 	default
 	dodoc CREDITS
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -type f -name '*.la' -delete || die
 }

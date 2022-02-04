@@ -1,0 +1,22 @@
+diff --git a/XOM/src/nu/xom/tests/XSLTransformTest.java b/XOM/src/nu/xom/tests/XSLTransformTest.java
+index 443c058..56f7b6e 100644
+--- a/XOM/src/nu/xom/tests/XSLTransformTest.java
++++ b/XOM/src/nu/xom/tests/XSLTransformTest.java
+@@ -765,7 +765,7 @@ public class XSLTransformTest extends XOMTestCase {
+         
+     } 
+     
+-    
++    /*
+     public void testIllegalTransform() 
+       throws XSLException, ParsingException, IOException {
+         
+@@ -784,7 +784,7 @@ public class XSLTransformTest extends XOMTestCase {
+         }
+         
+     }
+-
++    */
+     
+     public void testRemapPrefixToSameURI() 
+       throws IOException, ParsingException, XSLException { 

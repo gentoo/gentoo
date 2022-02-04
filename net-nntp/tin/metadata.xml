@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <!-- maintainer-needed -->
+<upstream>
+<doc>http://www.tin.org/bin/man.cgi?section=1&amp;topic=tin</doc>
+</upstream>
 <use>
-<flag name="cancel-locks">Enable Cancel-Lock header functionality (also enables USE=evil)</flag>
+<flag name="cancel-locks">Enable Cancel-Lock header functionality</flag>
 <flag name="gpg">Enable <pkg>app-crypt/gnupg</pkg> support</flag>
-<flag name="etiquette">Enable the display off posting etiquettes</flag>
-<flag name="mime">Add MIME support</flag>
 </use>
 </pkgmetadata>

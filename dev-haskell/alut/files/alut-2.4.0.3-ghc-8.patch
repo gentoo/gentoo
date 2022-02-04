@@ -1,0 +1,10 @@
+--- a/examples/Basic/OpenALInfo.hs
++++ b/examples/Basic/OpenALInfo.hs
+@@ -7,6 +7,7 @@
+ 
+ import Text.PrettyPrint
+ import Sound.ALUT
++import Prelude hiding ((<>))
+ 
+ -- This program prints some basic information about ALC and AL.
+ 

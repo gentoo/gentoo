@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # QA check: ensure that metadata files are installed in /usr/share/metainfo
@@ -13,9 +13,8 @@ appdata_path_check() {
 	done < <(find "${ED%/}/usr/share/appdata" -name '*.xml' -print0 || die)
 
 	if [[ ${found[@]} ]]; then
-		eqawarn
-		eqawarn "This package seems to install metainfo files into the following"
-		eqawarn "location(s):"
+		eqawarn "QA Notice: This package seems to install metainfo files into the"
+		eqawarn "following location(s):"
 		eqawarn
 		eqatag -v appdata.invalid-path "${found[@]#${D%/}}"
 		eqawarn

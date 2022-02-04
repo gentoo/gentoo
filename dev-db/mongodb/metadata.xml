@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>ultrabug@gentoo.org</email>
@@ -15,7 +15,7 @@
 	</longdescription>
 	<use>
 		<flag name="lto">Adds support for link time optimization</flag>
-		<flag name="mms-agent">Install the MongoDB Monitoring Service agent</flag>
+		<flag name="mongosh">Install the MongoDB shell from <pkg>app-admin/mongosh-bin</pkg></flag>
 		<flag name="tools">Install the MongoDB tools (mongoimport, mongodump...) from <pkg>app-admin/mongo-tools</pkg></flag>
 	</use>
 </pkgmetadata>

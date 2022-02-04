@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>chiitoo@gentoo.org</email>
 		<name>Jimi Huotari</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>NP-Hardass@gentoo.org</email>
-		<name>NP-Hardass</name>
+		<email>np-hardass@gentoo.org</email>
+		<name>Adam Feldman</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>wine@gentoo.org</email>

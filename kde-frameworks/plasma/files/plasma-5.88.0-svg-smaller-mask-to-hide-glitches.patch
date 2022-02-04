@@ -1,0 +1,42 @@
+From 9ba4ed4da72a3d1bbec8920d93a547cf633cfacd Mon Sep 17 00:00:00 2001
+From: Marco Martin <notmart@gmail.com>
+Date: Wed, 10 Nov 2021 15:50:10 +0100
+Subject: [PATCH] smaller mask to hide glitches
+
+This makes the mask slightly maller than the frame. Since the svg will have antialiasing and the mask not,
+there will be artifacts at the corners, if they go under the svg they're less evident
+
+CCBUG:438644
+---
+ src/plasmaquick/dialog.cpp | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/plasmaquick/dialog.cpp b/src/plasmaquick/dialog.cpp
+index 3254b8320..6b3963303 100644
+--- a/src/plasmaquick/dialog.cpp
++++ b/src/plasmaquick/dialog.cpp
+@@ -237,14 +237,19 @@ void DialogPrivate::updateTheme()
+             frameSvgItem->setImagePath(prefix + QStringLiteral("dialogs/background"));
+         }
+ 
+-        KWindowEffects::enableBlurBehind(q, theme.blurBehindEnabled(), frameSvgItem->mask());
++        // This makes the mask slightly maller than the frame. Since the svg will have antialiasing and the mask not,
++        // there will be artifacts at the corners, if they go under the svg they're less evident
++        frameSvgItem->frameSvg()->resizeFrame(q->size() - QSize(2,2));
++        const QRegion mask = frameSvgItem->frameSvg()->mask().translated(1,1);
++        KWindowEffects::enableBlurBehind(q, theme.blurBehindEnabled(), mask);
+ 
+         KWindowEffects::enableBackgroundContrast(q,
+                                                  theme.backgroundContrastEnabled(),
+                                                  theme.backgroundContrast(),
+                                                  theme.backgroundIntensity(),
+                                                  theme.backgroundSaturation(),
+-                                                 frameSvgItem->mask());
++                                                 mask);
++        frameSvgItem->frameSvg()->resizeFrame(q->size());
+ 
+         if (KWindowSystem::compositingActive()) {
+             if (hasMask) {
+-- 
+GitLab
+

@@ -1,0 +1,21 @@
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Fri, 30 Jul 2021 17:54:15 +0200
+Subject: [PATCH] install dpx library
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ lib/dpx/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/dpx/CMakeLists.txt b/lib/dpx/CMakeLists.txt
+index 918890e..2ed69d1 100644
+--- a/lib/dpx/CMakeLists.txt
++++ b/lib/dpx/CMakeLists.txt
+@@ -12,3 +12,4 @@ add_library( ctldpx
+ )
+ 
+ target_link_libraries( ctldpx ${IlmBase_LIBRARIES} )
++install( TARGETS ctldpx DESTINATION ${CMAKE_INSTALL_LIBDIR} )
+-- 
+2.32.0
+

@@ -1,0 +1,51 @@
+From ffaa4290742302dc25976abefc7a7888fee65fec Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sat, 24 Apr 2021 20:46:28 +0200
+Subject: [PATCH] Remove unused KIconThemes dep
+
+---
+ CMakeLists.txt                | 1 -
+ src/CMakeLists.txt            | 1 -
+ src/sieveeditormainwindow.cpp | 2 --
+ 3 files changed, 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d529344..a6f5aaa 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -59,7 +59,6 @@ find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Widgets Network)
+ find_package(KF5DBusAddons ${KF5_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KF5Crash ${KF5_MIN_VERSION} REQUIRED)
+ find_package(KF5Bookmarks ${KF5_MIN_VERSION} REQUIRED)
+-find_package(KF5IconThemes ${KF5_MIN_VERSION} REQUIRED)
+ find_package(KF5KIO ${KF5_MIN_VERSION} REQUIRED)
+ find_package(KF5DocTools ${KF5_MIN_VERSION})
+ set_package_properties(KF5DocTools PROPERTIES DESCRIPTION
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 565851a..c6c8914 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -85,7 +85,6 @@ target_link_libraries(libsieveeditor
+     KF5::MailTransport
+     KF5::Bookmarks
+     KF5::I18n
+-    KF5::IconThemes
+     KF5::XmlGui
+     KF5::PimCommon
+     KF5::KSieveUi
+diff --git a/src/sieveeditormainwindow.cpp b/src/sieveeditormainwindow.cpp
+index 73e1c7d..bd4258b 100644
+--- a/src/sieveeditormainwindow.cpp
++++ b/src/sieveeditormainwindow.cpp
+@@ -17,8 +17,6 @@
+ #include "sieveserversettings.h"
+ #include <PimCommon/KActionMenuChangeCase>
+ 
+-#include <KIconEngine>
+-#include <KIconLoader>
+ #include <KSharedConfig>
+ #include <PimCommon/NetworkManager>
+ 
+-- 
+GitLab
+

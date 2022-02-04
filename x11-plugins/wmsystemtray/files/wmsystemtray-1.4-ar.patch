@@ -1,0 +1,11 @@
+diff -Naur wmsystemtray-1.4.orig/configure.ac wmsystemtray-1.4/configure.ac
+--- wmsystemtray-1.4.orig/configure.ac	2014-02-23 03:14:09.000000000 +0100
++++ wmsystemtray-1.4/configure.ac	2021-01-03 00:23:12.004713692 +0100
+@@ -9,6 +9,7 @@
+ AC_SUBST(VERSION)
+ 
+ # Checks for programs.
++AM_PROG_AR
+ AC_PROG_AWK
+ AC_PROG_CC
+ AC_PROG_CC_STDC

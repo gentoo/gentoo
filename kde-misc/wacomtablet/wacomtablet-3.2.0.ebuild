@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="System settings module for Wacom tablets"
-HOMEPAGE="https://apps.kde.org/en/wacomtablet
+HOMEPAGE="https://apps.kde.org/wacomtablet/
 https://userbase.kde.org/Wacomtablet"
 
 LICENSE="GPL-2"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
     <email>chutzpah@gentoo.org</email>
@@ -10,6 +10,7 @@
     <name>Python</name>
   </maintainer>
   <upstream>
+    <remote-id type="github">saltstack/libnacl</remote-id>
     <remote-id type="pypi">libnacl</remote-id>
   </upstream>
 </pkgmetadata>

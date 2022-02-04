@@ -1,0 +1,24 @@
+Taken from: https://git.buildroot.net/buildroot/tree/package/w_scan/0002-si_types-h-fix-build-with-gcc-10.patch?id=2e8bf36dc4421f2213f8fa6de91b2c9bf3d64e45
+Author: Fabrice Fontaine <fontaine.fabrice@gmail.com>
+
+--- w_scan-20170107.orig/si_types.h	2020-09-20 11:09:56.776963441 +0200
++++ w_scan-20170107/si_types.h	2020-09-20 11:13:13.149232478 +0200
+@@ -114,7 +114,7 @@
+   uint32_t logical_channel_number;
+   uint8_t  running;
+   void   * priv;
+-} service_t, * p_service_t;
++};
+ 
+ /*******************************************************************************
+ /* transponder type.
+@@ -201,7 +201,7 @@
+   /*----------------------------*/
+   char * network_name;
+   network_change_t network_change;
+-} __attribute__((packed))  transponder_t, * p_transponder_t;
++} __attribute__((packed));
+ 
+ /*******************************************************************************
+ /* satellite channel routing type.
+

@@ -1,0 +1,26 @@
+--- a/configure.in
++++ b/configure.in
+@@ -82,9 +82,9 @@ AC_ARG_WITH(libpcap,
+ 	if cd $withval; then withval=`pwd`; cd $owd; fi
+ 	PCAPINC="-I$withval/include"
+ 	if test -f $withval/lib/libwpcap.a; then
+-	   PCAPLIB="-L$withval/lib -lwpcap"
++	   PCAPLIB="-L$withval/${libdir} -lwpcap"
+ 	else
+-	   PCAPLIB="-L$withval/lib -lpcap"
++	   PCAPLIB="-L$withval/${libdir} -lpcap"
+         fi
+      else
+         AC_ERROR(pcap.h, net/bpf.h, or libpcap.a not found in $withval)
+@@ -94,9 +94,9 @@ AC_ARG_WITH(libpcap,
+ [ if test -f ${prefix}/include/pcap.h; then
+      PCAPINC="-I${prefix}/include"
+      if test -f ${prefix}/lib/libwpcap.a; then
+-	PCAPLIB="-L${prefix}/lib -lwpcap"
++	PCAPLIB="-L${libdir} -lwpcap"
+      else
+-        PCAPLIB="-L${prefix}/lib -lpcap"
++        PCAPLIB="-L${libdir} -lpcap"
+      fi
+   elif test -f /usr/include/pcap/pcap.h; then
+      PCAPINC="-I/usr/include/pcap"

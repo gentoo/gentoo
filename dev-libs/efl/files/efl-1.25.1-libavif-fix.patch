@@ -1,0 +1,71 @@
+From 00f5eed1d2390d204c83a2cb78a37531f6bbe49c Mon Sep 17 00:00:00 2001
+From: "Carsten Haitzler (Rasterman)" <raster@rasterman.com>
+Date: Fri, 18 Dec 2020 11:16:38 +0000
+Subject: evas - avif - fix for 0.8.2 libavif that broke api
+
+also require 0.8.2 ... as well - no point trying to support older
+versions forever and this is still experimental.
+
+fixes T8844
+@fix
+---
+ src/modules/evas/image_loaders/avif/evas_image_load_avif.c | 14 ++++----------
+ 1 file changed, 4 insertions(+), 10 deletions(-)
+
+(limited to 'src/modules/evas/image_loaders/avif/evas_image_load_avif.c')
+
+diff --git a/src/modules/evas/image_loaders/avif/evas_image_load_avif.c b/src/modules/evas/image_loaders/avif/evas_image_load_avif.c
+index 34b6da9bd3..f7cfe0ef03 100644
+--- a/src/modules/evas/image_loaders/avif/evas_image_load_avif.c
++++ b/src/modules/evas/image_loaders/avif/evas_image_load_avif.c
+@@ -43,7 +43,6 @@ evas_image_load_file_head_avif_internal(Evas_Loader_Internal *loader,
+                                         int *error)
+ {
+    Evas_Image_Animated *animated;
+-   avifROData raw;
+    avifDecoder *decoder;
+    avifResult res;
+    Eina_Bool ret;
+@@ -55,9 +54,6 @@ evas_image_load_file_head_avif_internal(Evas_Loader_Internal *loader,
+    prop->h = 0;
+    prop->alpha = EINA_FALSE;
+ 
+-   raw.size = length;
+-   raw.data = (const uint8_t *)map;
+-
+    decoder = avifDecoderCreate();
+    if (!decoder)
+      {
+@@ -65,7 +61,8 @@ evas_image_load_file_head_avif_internal(Evas_Loader_Internal *loader,
+         return ret;
+      }
+ 
+-   res = avifDecoderParse(decoder, &raw);
++   avifDecoderSetIOMemory(decoder, (const uint8_t *)map, length);
++   res = avifDecoderParse(decoder);
+    if (res != AVIF_RESULT_OK)
+      {
+         ERR("avif file format invalid");
+@@ -141,7 +138,6 @@ evas_image_load_file_data_avif_internal(Evas_Loader_Internal *loader,
+    decoder = loader->decoder;
+    if (!decoder)
+      {
+-        avifROData raw;
+         decoder = avifDecoderCreate();
+         if (!decoder)
+           {
+@@ -149,10 +145,8 @@ evas_image_load_file_data_avif_internal(Evas_Loader_Internal *loader,
+              return EINA_FALSE;
+           }
+ 
+-        raw.size = length;
+-        raw.data = (const uint8_t *)map;
+-
+-        res = avifDecoderParse(decoder, &raw);
++        avifDecoderSetIOMemory(decoder, (const uint8_t *)map, length);
++        res = avifDecoderParse(decoder);
+         if (res != AVIF_RESULT_OK)
+           {
+              *error = EVAS_LOAD_ERROR_GENERIC;
+-- 
+cgit v1.2.1

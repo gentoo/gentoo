@@ -1,19 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils toolchain-funcs
+
+inherit toolchain-funcs
 
 DESCRIPTION="Ultrafast implementation of ping"
 HOMEPAGE="http://apenwarr.ca/netselect/"
 SRC_URI="
 	https://github.com/apenwarr/${PN}/archive/${P}.tar.gz
-	ipv6? ( https://dev.gentoo.org/~jer/${P}-ipv6.patch.xz )
+	ipv6? ( https://dev.gentoo.org/~jsmolic/distfiles/${P}-ipv6.patch.xz )
 "
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="ipv6"
 
 PATCHES=(

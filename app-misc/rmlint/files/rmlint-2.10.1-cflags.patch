@@ -1,0 +1,18 @@
+--- a/SConstruct
++++ b/SConstruct
+@@ -724,7 +724,6 @@ if ARGUMENTS.get('DEBUG') == "1":
+     O_value = ARGUMENTS.get('O', O_DEBUG)
+ else:
+     conf.env.Append(CCFLAGS=['-DG_DISABLE_ASSERT', '-DNDEBUG'])
+-    conf.env.Append(LINKFLAGS=['-s'])
+     O_value = ARGUMENTS.get('O', O_RELEASE)
+ 
+ if O_value == 'debug':
+@@ -735,7 +734,6 @@ elif O_value == 'release':
+ cc_O_option = '-O' + O_value
+ 
+ print("Using compiler optimisation {} (to change, run scons with O=[0|1|2|3|s|fast])".format(cc_O_option))
+-conf.env.Append(CCFLAGS=[cc_O_option])
+ 
+ if ARGUMENTS.get('SYMBOLS') == '1':
+     print("Compiling with debugging symbols")
