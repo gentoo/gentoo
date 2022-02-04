@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,6 @@ IUSE="examples"
 
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
