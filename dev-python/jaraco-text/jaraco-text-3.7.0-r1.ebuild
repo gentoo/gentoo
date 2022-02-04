@@ -19,9 +19,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~x86"
 
 RDEPEND="
-	>=dev-python/jaraco-context-4.1[${PYTHON_USEDEP}]
-	dev-python/jaraco-functools[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' python3_8 pypy3)
+	>=dev-python/jaraco-context-4.1.1-r1[${PYTHON_USEDEP}]
+	>=dev-python/jaraco-functools-3.5.0-r1[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/importlib_resources-5.4.0-r3[${PYTHON_USEDEP}]
+	' python3_8 pypy3)
 "
 
 distutils_enable_sphinx docs \
