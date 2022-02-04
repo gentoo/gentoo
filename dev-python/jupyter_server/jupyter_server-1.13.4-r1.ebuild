@@ -47,7 +47,7 @@ distutils_enable_sphinx docs/source \
 	dev-python/myst_parser \
 	dev-python/ipython \
 	dev-python/sphinxemoji \
-	dev-python/sphinxcontrib_github_alt \
+	dev-python/sphinxcontrib-github-alt \
 	dev-python/sphinxcontrib-openapi
 distutils_enable_tests --install pytest
 
