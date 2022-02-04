@@ -1231,10 +1231,24 @@ build_sphinx() {
 
 	sed -i -e 's:^intersphinx_mapping:disabled_&:' \
 		"${dir}"/conf.py || die
-	# not all packages include the Makefile in pypi tarball
-	"${EPYTHON}" -m sphinx.cmd.build \
-		-b html -d "${dir}"/_build/doctrees "${dir}" \
-		"${dir}"/_build/html || die
+	# 1. not all packages include the Makefile in pypi tarball,
+	# so we call sphinx-build directly
+	# 2. if autodoc is used, we need to call sphinx via EPYTHON,
+	# to ensure that PEP 517 venv is respected
+	# 3. if autodoc is not used, then sphinx might not be installed
+	# for the current impl, so we need a fallback to sphinx-build
+	local command=( "${EPYTHON}" -m sphinx.cmd.build )
+	if ! "${EPYTHON}" -c "import sphinx.cmd.build" 2>/dev/null; then
+		command=( sphinx-build )
+	fi
+	command+=(
+		-b html
+		-d "${dir}"/_build/doctrees
+		"${dir}"
+		"${dir}"/_build/html
+	)
+	echo "${command[@]}" >&2
+	"${command[@]}" || die
 
 	HTML_DOCS+=( "${dir}/_build/html/." )
 }
