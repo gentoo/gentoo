@@ -188,7 +188,6 @@ src_compile() {
 
 python_compile() {
 	filter-flags -ftracer -ftree-vectorize
-	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	if use rust; then
 		local -x HGWITHRUSTEXT="cpython"
 	fi
