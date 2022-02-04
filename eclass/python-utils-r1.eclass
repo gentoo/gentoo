@@ -610,6 +610,7 @@ python_optimize() {
 		local instpath=${d#${D%/}}
 		instpath=/${instpath##/}
 
+		einfo "Optimize Python modules for ${instpath}"
 		case "${EPYTHON}" in
 			python2.7|python3.[34])
 				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
