@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,9 +18,7 @@ DEPEND="
 	x11-libs/cairo:=[svg]
 	dev-ml/dune-configurator:=
 "
-RDEPEND="${DEPEND}
-	!dev-ml/ocaml-cairo
-"
+RDEPEND="${DEPEND}"
 BDEPEND=""
 
 # >>> Test phase: dev-ml/cairo2-0.6.1
