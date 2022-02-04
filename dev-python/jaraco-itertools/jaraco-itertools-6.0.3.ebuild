@@ -22,7 +22,6 @@ RDEPEND="
 "
 BDEPEND="
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
 "
 
 distutils_enable_sphinx docs '>=dev-python/jaraco-packaging-3.2' \
