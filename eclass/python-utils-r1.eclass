@@ -945,23 +945,6 @@ _python_wrapper_setup() {
 	export PATH PKG_CONFIG_PATH
 }
 
-# @FUNCTION: python_is_python3
-# @USAGE: [<impl>]
-# @DESCRIPTION:
-# Check whether <impl> (or ${EPYTHON}) is a Python3k variant
-# (i.e. uses syntax and stdlib of Python 3.*).
-#
-# Returns 0 (true) if it is, 1 (false) otherwise.
-python_is_python3() {
-	eqawarn "${FUNCNAME} is deprecated, as Python 2 is not supported anymore"
-	[[ ${EAPI} == [67] ]] || die "${FUNCNAME} banned in EAPI ${EAPI}"
-
-	local impl=${1:-${EPYTHON}}
-	[[ ${impl} ]] || die "python_is_python3: no impl nor EPYTHON"
-
-	[[ ${impl} == python3* || ${impl} == pypy3 ]]
-}
-
 # @FUNCTION: python_fix_shebang
 # @USAGE: [-f|--force] [-q|--quiet] <path>...
 # @DESCRIPTION:
