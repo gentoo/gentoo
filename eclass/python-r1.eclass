@@ -740,12 +740,7 @@ python_setup() {
 
 		# if python_check_deps() is declared, switch into any-of mode
 		if [[ ${has_check_deps} ]]; then
-			# first check if the interpreter is installed
-			python_is_installed "${impl}" || continue
-			# then run python_check_deps
-			local PYTHON_USEDEP="python_targets_${impl}(-)"
-			local PYTHON_SINGLE_USEDEP="python_single_target_${impl}(-)"
-			python_check_deps || continue
+			_python_run_check_deps "${impl}" || continue
 		fi
 
 		found=1

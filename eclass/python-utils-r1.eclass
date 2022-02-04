@@ -1368,5 +1368,25 @@ eunittest() {
 	return ${?}
 }
 
+# @FUNCTION: _python_run_check_deps
+# @INTERNAL
+# @USAGE: <impl>
+# @DESCRIPTION:
+# Verify whether <impl> is an acceptable choice to run any-r1 style
+# code.  Checks whether the interpreter is installed, runs
+# python_check_deps() if declared.
+_python_run_check_deps() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local impl=${1}
+
+	python_is_installed "${impl}" || return 1
+	declare -f python_check_deps >/dev/null || return 0
+
+	local PYTHON_USEDEP="python_targets_${impl}(-)"
+	local PYTHON_SINGLE_USEDEP="python_single_target_${impl}(-)"
+	python_check_deps
+}
+
 _PYTHON_UTILS_R1=1
 fi
