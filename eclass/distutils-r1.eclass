@@ -936,9 +936,13 @@ _distutils-r1_get_backend() {
 	if [[ -f pyproject.toml ]]; then
 		# if pyproject.toml exists, try getting the backend from it
 		# NB: this could fail if pyproject.toml doesn't list one
-		build_backend=$("${EPYTHON}" -c 'import tomli; \
-			print(tomli.load(open("pyproject.toml", "rb")) \
-				["build-system"]["build-backend"])' 2>/dev/null)
+		build_backend=$(
+			"${EPYTHON}" - <<-EOF 2>/dev/null
+				import tomli
+				print(tomli.load(open("pyproject.toml", "rb"))
+					["build-system"]["build-backend"])
+			EOF
+		)
 	fi
 	if [[ -z ${build_backend} && ${DISTUTILS_USE_PEP517} == setuptools &&
 		-f setup.py ]]
@@ -1004,10 +1008,14 @@ distutils_pep517_install() {
 
 	local build_backend=$(_distutils-r1_get_backend)
 	einfo "  Building the wheel for ${PWD#${WORKDIR}/} via ${build_backend}"
-	local wheel=$("${EPYTHON}" -c "import ${build_backend%:*}; \
-		import os; \
-		print(${build_backend/:/.}.build_wheel(os.environ['WHEEL_BUILD_DIR']),
-			file=os.fdopen(3, 'w'))" 3>&1 >&2 || die "Wheel build failed")
+	local wheel=$(
+		"${EPYTHON}" - 3>&1 >&2 <<-EOF || die "Wheel build failed"
+			import ${build_backend%:*}
+			import os
+			print(${build_backend/:/.}.build_wheel(os.environ['WHEEL_BUILD_DIR']),
+				file=os.fdopen(3, 'w'))
+		EOF
+	)
 	[[ -n ${wheel} ]] || die "No wheel name returned"
 
 	einfo "  Installing the wheel to ${root}"
@@ -1017,9 +1025,13 @@ distutils_pep517_install() {
 	# NB: we override sys.prefix & sys.exec_prefix because otherwise
 	# installer would use virtualenv's prefix
 	local -x PYTHON_PREFIX=${EPREFIX}/usr
-	"${EPYTHON}" -c 'import os, sys; sys.prefix = sys.exec_prefix = os.environ["PYTHON_PREFIX"]; from installer.__main__ import main; main(sys.argv[1:])' \
-		-d "${root}" "${WHEEL_BUILD_DIR}/${wheel}" --no-compile-bytecode ||
-		die "installer failed"
+	"${EPYTHON}" - -d "${root}" "${WHEEL_BUILD_DIR}/${wheel}" --no-compile-bytecode \
+			<<-EOF || die "installer failed"
+		import os, sys
+		sys.prefix = sys.exec_prefix = os.environ["PYTHON_PREFIX"]
+		from installer.__main__ import main
+		main(sys.argv[1:])
+	EOF
 
 	# remove installed licenses
 	find "${root}$(python_get_sitedir)" \
