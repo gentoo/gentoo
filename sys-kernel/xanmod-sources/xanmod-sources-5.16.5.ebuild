@@ -10,7 +10,7 @@ ETYPE="sources"
 inherit kernel-2
 detect_version
 
-DESCRIPTION="Full XanMod sources with cacule option and including the Gentoo patchset "
+DESCRIPTION="Full XanMod sources with the Gentoo patchset "
 HOMEPAGE="https://xanmod.org"
 LICENSE+=" CDDL"
 KEYWORDS="~amd64"
