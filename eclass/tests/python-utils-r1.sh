@@ -156,11 +156,6 @@ fi
 test_var PYTHON_PKG_DEP pypy3 '*dev-python/pypy3*:0='
 test_var PYTHON_SCRIPTDIR pypy3 /usr/lib/python-exec/pypy3
 
-test_is "python_is_python3 python2.7" 1
-test_is "python_is_python3 python3.2" 0
-test_is "python_is_python3 pypy" 1
-test_is "python_is_python3 pypy3" 0
-
 # generic shebangs
 test_fix_shebang '#!/usr/bin/python' python3.6 '#!/usr/bin/python3.6'
 test_fix_shebang '#!/usr/bin/python' pypy3 '#!/usr/bin/pypy3'
