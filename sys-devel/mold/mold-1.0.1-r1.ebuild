@@ -63,7 +63,7 @@ src_install() {
 		SYSTEM_TBB=1 \
 		SYSTEM_MIMALLOC=1 \
 		SYSTEM_XXHASH=1 \
-		DESTDIR="${ED}" \
+		DESTDIR="${D}" \
 		PREFIX="${EPREFIX}/usr" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		STRIP="true" \
