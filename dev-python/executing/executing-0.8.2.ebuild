@@ -21,7 +21,6 @@ KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 # asttokens is optional runtime dep
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
 	test? (
 		dev-python/asttokens[${PYTHON_USEDEP}]
 	)"
