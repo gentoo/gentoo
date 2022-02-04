@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # please keep this ebuild at EAPI 7 -- sys-apps/portage dep
@@ -46,6 +46,5 @@ src_prepare() {
 }
 
 python_test() {
-	python_is_python3 || return
 	pytest -vv || die "Tests fail with ${EPYTHON}"
 }
