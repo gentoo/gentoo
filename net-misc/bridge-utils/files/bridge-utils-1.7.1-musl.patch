@@ -1,0 +1,10 @@
+--- a/libbridge/libbridge.h
++++ b/libbridge/libbridge.h
+@@ -23,6 +23,7 @@
+ #include <sys/socket.h>
+ #include <sys/time.h>
+ #include <netinet/in.h>
++#include <limits.h>
+ 
+ #include <linux/if.h>
+ #include <linux/if_bridge.h>
