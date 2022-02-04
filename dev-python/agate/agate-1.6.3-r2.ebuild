@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,3 +35,8 @@ EPYTEST_DESELECT=(
 	tests/test_data_types.py::TestDate::test_cast_format_locale
 	tests/test_data_types.py::TestDateTime::test_cast_format_locale
 )
+
+python_prepare_all() {
+	sed -i -e "s:\\(parsedatetime>=2.1\\),[^']*:\1:" -i setup.py || die
+	distutils-r1_python_prepare_all
+}
