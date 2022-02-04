@@ -43,3 +43,10 @@ EPYTEST_IGNORE=(
 	# hangs
 	tests/backends/test_kwallet.py
 )
+
+src_prepare() {
+	# remove jaraco.tidelift dependency from docs, quite useless
+	sed -e '/tidelift/d' -i docs/conf.py docs/index.rst || die
+
+	distutils-r1_src_prepare
+}
