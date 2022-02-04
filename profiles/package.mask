@@ -339,12 +339,6 @@ sys-cluster/mpich2
 # Removal on 2022-02-06. Bug #830727
 net-libs/jreen
 
-# Marco Scardovi <marco@scardovi.com> (2022-01-01)
-# Dead upstream (also sourceforge page is dead)
-# We are the only one who still supports it
-# Removing in 30 days. # Bug 830389
-sys-cluster/onesis
-
 # Florian Schmaus <flow@gentoo.org> (2022-01-02)
 # Unmaintained, upstream gone, only packaged by
 # Gentoo, and the whole idea to unlock based on
