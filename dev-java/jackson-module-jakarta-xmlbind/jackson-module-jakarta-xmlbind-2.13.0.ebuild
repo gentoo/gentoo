@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -12,7 +12,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="Support for using Jakarta XML Bind (aka JAXB 3.0) annotations."
+DESCRIPTION="Support for using Jakarta XML Bind (aka JAXB 3.0) annotations"
 HOMEPAGE="https://github.com/FasterXML/jackson-modules-base"
 SRC_URI="https://github.com/FasterXML/jackson-modules-base/archive/refs/tags/jackson-modules-base-${PV}.tar.gz -> ${P}.tar.gz"
 
