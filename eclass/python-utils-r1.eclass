@@ -266,23 +266,6 @@ _python_impl_matches() {
 # python2.7
 # @CODE
 
-# @FUNCTION: python_export
-# @USAGE: [<impl>] <variables>...
-# @INTERNAL
-# @DESCRIPTION:
-# Backwards compatibility function.  The relevant API is now considered
-# private, please use python_get* instead.
-python_export() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	eqawarn "python_export() is part of private eclass API."
-	eqawarn "Please call python_get*() instead."
-
-	[[ ${EAPI} == [67] ]] || die "${FUNCNAME} banned in EAPI ${EAPI}"
-
-	_python_export "${@}"
-}
-
 # @FUNCTION: _python_export
 # @USAGE: [<impl>] <variables>...
 # @INTERNAL
