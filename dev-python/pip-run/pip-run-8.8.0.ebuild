@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~x86"
 
 RDEPEND="
 	dev-python/autocommand[${PYTHON_USEDEP}]
