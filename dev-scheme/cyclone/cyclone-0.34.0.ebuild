@@ -16,7 +16,7 @@ if [[ "${PV}" == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/justinethier/${PN}-bootstrap.git"
 else
 	SRC_URI="https://github.com/justinethier/${PN}-bootstrap/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~x86"
 	S="${WORKDIR}/${PN}-bootstrap-${PV}"
 fi
 
