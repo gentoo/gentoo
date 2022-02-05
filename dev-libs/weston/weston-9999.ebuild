@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,6 +31,7 @@ REQUIRED_USE="
 	colord? ( lcms )
 	drm? ( gles2 )
 	pipewire? ( drm )
+	remoting? ( drm gles2 )
 	screen-sharing? ( rdp )
 	test? ( desktop headless xwayland )
 	wayland-compositor? ( gles2 )
