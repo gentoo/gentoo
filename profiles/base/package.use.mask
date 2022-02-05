@@ -10,6 +10,7 @@
 # We're still ironing out some kinks and writing documentation for
 # this feature, so keep masked for now.
 media-video/pipewire system-service
+media-video/wireplumber system-service
 
 # Sam James <sam@gentoo.org> (2021-01-24)
 # USE=custom-cflags is _particularly_ dangerous on sys-libs/glibc and
