@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">django-configurations</remote-id>
+		<remote-id type="github">jazzband/django-configurations</remote-id>
 	</upstream>
 </pkgmetadata>
