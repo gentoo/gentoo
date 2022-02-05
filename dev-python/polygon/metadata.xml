@@ -12,5 +12,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">Polygon</remote-id>
+		<remote-id type="github">jraedler/Polygon3</remote-id>
 	</upstream>
 </pkgmetadata>
