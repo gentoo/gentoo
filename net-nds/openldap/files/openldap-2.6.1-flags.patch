@@ -1,0 +1,416 @@
+diff --git a/contrib/slapd-modules/acl/Makefile b/contrib/slapd-modules/acl/Makefile
+index 2195e2d72..3efaaad72 100644
+--- a/contrib/slapd-modules/acl/Makefile
++++ b/contrib/slapd-modules/acl/Makefile
+@@ -8,7 +8,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = 
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/addpartial/Makefile b/contrib/slapd-modules/addpartial/Makefile
+index ecb7cd0a3..e278dc080 100644
+--- a/contrib/slapd-modules/addpartial/Makefile
++++ b/contrib/slapd-modules/addpartial/Makefile
+@@ -8,7 +8,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = 
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/adremap/Makefile b/contrib/slapd-modules/adremap/Makefile
+index b008eabd6..23d3658c3 100644
+--- a/contrib/slapd-modules/adremap/Makefile
++++ b/contrib/slapd-modules/adremap/Makefile
+@@ -19,7 +19,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ INSTALL = /usr/bin/install
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = -DSLAPD_OVER_ADREMAP=SLAPD_MOD_DYNAMIC
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/allop/Makefile b/contrib/slapd-modules/allop/Makefile
+index 053f3774a..11998ce87 100644
+--- a/contrib/slapd-modules/allop/Makefile
++++ b/contrib/slapd-modules/allop/Makefile
+@@ -9,7 +9,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ INSTALL = /usr/bin/install
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = 
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/allowed/Makefile b/contrib/slapd-modules/allowed/Makefile
+index 32cb43241..674d6cafd 100644
+--- a/contrib/slapd-modules/allowed/Makefile
++++ b/contrib/slapd-modules/allowed/Makefile
+@@ -20,7 +20,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = -DSLAPD_OVER_ALLOWED=SLAPD_MOD_DYNAMIC
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/authzid/Makefile b/contrib/slapd-modules/authzid/Makefile
+index ef9c4bc4f..49a756c35 100644
+--- a/contrib/slapd-modules/authzid/Makefile
++++ b/contrib/slapd-modules/authzid/Makefile
+@@ -20,7 +20,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = 
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/autogroup/Makefile b/contrib/slapd-modules/autogroup/Makefile
+index 7dd6613cf..f19acae6c 100644
+--- a/contrib/slapd-modules/autogroup/Makefile
++++ b/contrib/slapd-modules/autogroup/Makefile
+@@ -8,7 +8,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = 
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/cloak/Makefile b/contrib/slapd-modules/cloak/Makefile
+index c54e6b134..9360ef2dc 100644
+--- a/contrib/slapd-modules/cloak/Makefile
++++ b/contrib/slapd-modules/cloak/Makefile
+@@ -9,7 +9,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ INSTALL = /usr/bin/install
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = -DSLAPD_OVER_CLOAK=SLAPD_MOD_DYNAMIC
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/comp_match/Makefile b/contrib/slapd-modules/comp_match/Makefile
+index 9b78c5c12..e1cb8fe3c 100644
+--- a/contrib/slapd-modules/comp_match/Makefile
++++ b/contrib/slapd-modules/comp_match/Makefile
+@@ -31,7 +31,7 @@ SSL_LIB = -lcrypto -L$(SSL_DIR)/lib
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = -DLDAP_COMPONENT
+ INCS = $(LDAP_INC) $(SNACC_INC) $(SSL_INC)
+ LIBS = $(LDAP_LIB) $(SNACC_LIB) $(SSL_LIB)
+diff --git a/contrib/slapd-modules/datamorph/Makefile b/contrib/slapd-modules/datamorph/Makefile
+index 82bce493c..19231c71d 100644
+--- a/contrib/slapd-modules/datamorph/Makefile
++++ b/contrib/slapd-modules/datamorph/Makefile
+@@ -22,7 +22,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ INSTALL = /usr/bin/install
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = -DSLAPD_OVER_DATAMORPH=SLAPD_MOD_DYNAMIC
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/denyop/Makefile b/contrib/slapd-modules/denyop/Makefile
+index 2cea18b06..d11dd8d4a 100644
+--- a/contrib/slapd-modules/denyop/Makefile
++++ b/contrib/slapd-modules/denyop/Makefile
+@@ -8,7 +8,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = -DSLAPD_OVER_DENYOP=SLAPD_MOD_DYNAMIC
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/dsaschema/Makefile b/contrib/slapd-modules/dsaschema/Makefile
+index 3a88fc01f..97e0642f3 100644
+--- a/contrib/slapd-modules/dsaschema/Makefile
++++ b/contrib/slapd-modules/dsaschema/Makefile
+@@ -8,7 +8,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = 
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/dupent/Makefile b/contrib/slapd-modules/dupent/Makefile
+index 6b3543862..1cc09a8b4 100644
+--- a/contrib/slapd-modules/dupent/Makefile
++++ b/contrib/slapd-modules/dupent/Makefile
+@@ -20,7 +20,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = -DSLAPD_OVER_DUPENT=SLAPD_MOD_DYNAMIC
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/kinit/Makefile b/contrib/slapd-modules/kinit/Makefile
+index 7b25ced76..9f339e810 100644
+--- a/contrib/slapd-modules/kinit/Makefile
++++ b/contrib/slapd-modules/kinit/Makefile
+@@ -8,7 +8,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = 
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB) -lkrb5
+diff --git a/contrib/slapd-modules/lastbind/Makefile b/contrib/slapd-modules/lastbind/Makefile
+index c273cd3a0..da9fa172f 100644
+--- a/contrib/slapd-modules/lastbind/Makefile
++++ b/contrib/slapd-modules/lastbind/Makefile
+@@ -19,7 +19,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ INSTALL = /usr/bin/install
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = -DSLAPD_OVER_LASTBIND=SLAPD_MOD_DYNAMIC
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/lastmod/Makefile b/contrib/slapd-modules/lastmod/Makefile
+index 9b06c28fb..be583722b 100644
+--- a/contrib/slapd-modules/lastmod/Makefile
++++ b/contrib/slapd-modules/lastmod/Makefile
+@@ -9,7 +9,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ INSTALL = /usr/bin/install
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = -DSLAPD_OVER_LASTMOD=SLAPD_MOD_DYNAMIC
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/noopsrch/Makefile b/contrib/slapd-modules/noopsrch/Makefile
+index 2934a3214..22a3db04b 100644
+--- a/contrib/slapd-modules/noopsrch/Makefile
++++ b/contrib/slapd-modules/noopsrch/Makefile
+@@ -20,7 +20,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2 -Wall
++OPT = -Wall -Wall
+ DEFS = -DSLAPD_OVER_NOOPSRCH=SLAPD_MOD_DYNAMIC
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/nops/Makefile b/contrib/slapd-modules/nops/Makefile
+index 94a5bcd23..86dcdfd76 100644
+--- a/contrib/slapd-modules/nops/Makefile
++++ b/contrib/slapd-modules/nops/Makefile
+@@ -9,7 +9,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ INSTALL = /usr/bin/install
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = -DSLAPD_OVER_NOPS=SLAPD_MOD_DYNAMIC
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/nssov/Makefile b/contrib/slapd-modules/nssov/Makefile
+index 13987c250..c2c26d473 100644
+--- a/contrib/slapd-modules/nssov/Makefile
++++ b/contrib/slapd-modules/nssov/Makefile
+@@ -27,7 +27,7 @@ NLDAPD_INC=-Inss-pam-ldapd
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ INSTALL = /usr/bin/install
+-OPT = -g -O2
++OPT = -Wall
+ CC = gcc
+ DEFS =
+ INCS = $(LDAP_INC) $(NLDAPD_INC)
+diff --git a/contrib/slapd-modules/passwd/Makefile b/contrib/slapd-modules/passwd/Makefile
+index 634649603..4b6be2617 100644
+--- a/contrib/slapd-modules/passwd/Makefile
++++ b/contrib/slapd-modules/passwd/Makefile
+@@ -9,7 +9,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ INSTALL = /usr/bin/install
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = 
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/passwd/pbkdf2/Makefile b/contrib/slapd-modules/passwd/pbkdf2/Makefile
+index 6279f50c1..20769028e 100644
+--- a/contrib/slapd-modules/passwd/pbkdf2/Makefile
++++ b/contrib/slapd-modules/passwd/pbkdf2/Makefile
+@@ -9,7 +9,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ INSTALL = /usr/bin/install
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ #DEFS = -DSLAPD_PBKDF2_DEBUG
+ 
+ SSL_INC =
+diff --git a/contrib/slapd-modules/passwd/sha2/Makefile b/contrib/slapd-modules/passwd/sha2/Makefile
+index 2d2075688..f8a77d24d 100644
+--- a/contrib/slapd-modules/passwd/sha2/Makefile
++++ b/contrib/slapd-modules/passwd/sha2/Makefile
+@@ -9,7 +9,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ INSTALL = /usr/bin/install
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = 
+ #DEFS = -DSLAPD_SHA2_DEBUG
+ INCS = $(LDAP_INC)
+diff --git a/contrib/slapd-modules/passwd/totp/Makefile b/contrib/slapd-modules/passwd/totp/Makefile
+index f7dff4bd7..463a45248 100644
+--- a/contrib/slapd-modules/passwd/totp/Makefile
++++ b/contrib/slapd-modules/passwd/totp/Makefile
+@@ -9,7 +9,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ INSTALL = /usr/bin/install
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = 
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/ppm/Makefile b/contrib/slapd-modules/ppm/Makefile
+index 7b6efaddd..f26faca2b 100644
+--- a/contrib/slapd-modules/ppm/Makefile
++++ b/contrib/slapd-modules/ppm/Makefile
+@@ -18,7 +18,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/liblber/liblber.la $(LDAP_BUILD)/libraries/li
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ INSTALL = /usr/bin/install
+ CC = gcc
+-OPT = -g -O2 -fpic
++OPT = -Wall -fpic
+ 
+ # To skip linking against CRACKLIB make CRACK=no
+ CRACK=yes
+diff --git a/contrib/slapd-modules/proxyOld/Makefile b/contrib/slapd-modules/proxyOld/Makefile
+index d92967c39..f2e7524a9 100644
+--- a/contrib/slapd-modules/proxyOld/Makefile
++++ b/contrib/slapd-modules/proxyOld/Makefile
+@@ -20,7 +20,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = 
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/rbac/Makefile b/contrib/slapd-modules/rbac/Makefile
+index 1180bd6a1..59b614ade 100755
+--- a/contrib/slapd-modules/rbac/Makefile
++++ b/contrib/slapd-modules/rbac/Makefile
+@@ -9,7 +9,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ INSTALL = /usr/bin/install
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = -DSLAPD_OVER_RBAC=SLAPD_MOD_DYNAMIC
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/samba4/Makefile b/contrib/slapd-modules/samba4/Makefile
+index f53d130d2..a4b6600ca 100644
+--- a/contrib/slapd-modules/samba4/Makefile
++++ b/contrib/slapd-modules/samba4/Makefile
+@@ -20,7 +20,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = -DSLAPD_OVER_RDNVAL=SLAPD_MOD_DYNAMIC \
+ 	-DSLAPD_OVER_PGUID=SLAPD_MOD_DYNAMIC \
+ 	-DSLAPD_OVER_VERNUM=SLAPD_MOD_DYNAMIC
+diff --git a/contrib/slapd-modules/smbk5pwd/Makefile b/contrib/slapd-modules/smbk5pwd/Makefile
+index a1c2c8eef..c2b1c16bb 100644
+--- a/contrib/slapd-modules/smbk5pwd/Makefile
++++ b/contrib/slapd-modules/smbk5pwd/Makefile
+@@ -27,7 +27,7 @@ HEIMDAL_LIB = -L/usr/heimdal/lib -lkrb5 -lkadm5srv
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ INSTALL = /usr/bin/install
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ # Omit DO_KRB5, DO_SAMBA or DO_SHADOW if you don't want to support it.
+ DEFS = -DDO_KRB5 -DDO_SAMBA -DDO_SHADOW
+ INCS = $(LDAP_INC) $(HEIMDAL_INC) $(SSL_INC)
+diff --git a/contrib/slapd-modules/trace/Makefile b/contrib/slapd-modules/trace/Makefile
+index 1bf8a5541..9026c2c93 100644
+--- a/contrib/slapd-modules/trace/Makefile
++++ b/contrib/slapd-modules/trace/Makefile
+@@ -8,7 +8,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = -DSLAPD_OVER_TRACE=SLAPD_MOD_DYNAMIC
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/usn/Makefile b/contrib/slapd-modules/usn/Makefile
+index d7af04b10..eae938a3e 100644
+--- a/contrib/slapd-modules/usn/Makefile
++++ b/contrib/slapd-modules/usn/Makefile
+@@ -8,7 +8,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = -DSLAPD_OVER_USN=SLAPD_MOD_DYNAMIC
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/variant/Makefile b/contrib/slapd-modules/variant/Makefile
+index 07effed6c..a83373b48 100644
+--- a/contrib/slapd-modules/variant/Makefile
++++ b/contrib/slapd-modules/variant/Makefile
+@@ -22,7 +22,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ INSTALL = /usr/bin/install
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = -DSLAPD_OVER_VARIANT=SLAPD_MOD_DYNAMIC
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
+diff --git a/contrib/slapd-modules/vc/Makefile b/contrib/slapd-modules/vc/Makefile
+index 9fe67ab27..526037e50 100644
+--- a/contrib/slapd-modules/vc/Makefile
++++ b/contrib/slapd-modules/vc/Makefile
+@@ -20,7 +20,7 @@ LDAP_LIB = $(LDAP_BUILD)/libraries/libldap/libldap.la \
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2
++OPT = -Wall
+ DEFS = 
+ INCS = $(LDAP_INC)
+ LIBS = $(LDAP_LIB)
