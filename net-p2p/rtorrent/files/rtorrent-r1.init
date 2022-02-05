@@ -6,6 +6,7 @@ description="rTorrent BitTorrent client"
 command="/usr/bin/rtorrent"
 command_args="-o system.daemon.set=true"
 command_background=true
+command_user="${USER}"
 pidfile="/run/rtorrent.pid"
 
 depend()

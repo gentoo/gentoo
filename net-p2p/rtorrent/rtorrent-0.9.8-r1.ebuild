@@ -59,6 +59,7 @@ src_install() {
 	default
 	doman doc/rtorrent.1
 
-	newinitd ${FILESDIR}/rtorrent-r1.init rtorrent
+	newinitd "${FILESDIR}/rtorrent-r1.init" rtorrent
+	newconfd "${FILESDIR}/rtorrentd.conf" rtorrent
 	systemd_newunit "${FILESDIR}/rtorrentd_at-r1.service" "rtorrentd@.service"
 }
