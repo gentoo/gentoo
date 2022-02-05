@@ -16,7 +16,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/virt-manager/virt-manager.git"
-	EGIT_BRANCH="master"
+	EGIT_BRANCH="main"
 else
 	SRC_URI="http://virt-manager.org/download/sources/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
