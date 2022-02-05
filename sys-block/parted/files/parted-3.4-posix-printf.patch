@@ -1,0 +1,63 @@
+From 9665bdd5d6756058bb3b767eacc1c195667bf276 Mon Sep 17 00:00:00 2001
+From: Kerin Millar <kfm@plushkava.net>
+Date: Sat, 5 Feb 2022 03:29:34 +0000
+Subject: [PATCH] tests: have printf(1) use octal numbers for POSIX conformance
+
+Per https://pubs.opengroup.org/onlinepubs/9699919799/utilities/printf.html,
+backslash-escape sequences incorporating hexadecimal numbers are non-standard.
+
+Signed-off-by: Kerin Millar <kfm@plushkava.net>
+---
+ tests/t0205-gpt-list-clobbers-pmbr.sh                       | 4 ++--
+ tests/t0206-gpt-print-with-corrupt-primary-clobbers-pmbr.sh | 4 ++--
+ tests/t2500-probe-corrupt-hfs.sh                            | 4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/tests/t0205-gpt-list-clobbers-pmbr.sh b/tests/t0205-gpt-list-clobbers-pmbr.sh
+index 52f60cc..b1664fb 100644
+--- a/tests/t0205-gpt-list-clobbers-pmbr.sh
++++ b/tests/t0205-gpt-list-clobbers-pmbr.sh
+@@ -36,8 +36,8 @@ parted -m -s $dev u s p                        || fail=1
+ 
+ # Write non-NUL bytes all over the MBR, so we're likely to see any change.
+ # However, be careful to leave the type of the first partition, 0xEE,
+-# as well as the final two magic bytes.
+-printf '%0450d\xee%059d\x55\xaa' 0 0 | dd of=$dev count=1 conv=notrunc || fail=1
++# as well as the final two magic bytes, 0x55 0xAA.
++printf '%0450d\356%059d\125\252' 0 0 | dd of=$dev count=1 conv=notrunc || fail=1
+ 
+ dd if=$dev of=before count=1 || fail=1
+ 
+diff --git a/tests/t0206-gpt-print-with-corrupt-primary-clobbers-pmbr.sh b/tests/t0206-gpt-print-with-corrupt-primary-clobbers-pmbr.sh
+index 83c2a9c..8f2a4ef 100755
+--- a/tests/t0206-gpt-print-with-corrupt-primary-clobbers-pmbr.sh
++++ b/tests/t0206-gpt-print-with-corrupt-primary-clobbers-pmbr.sh
+@@ -32,8 +32,8 @@ parted -m -s $dev u s p                        || fail=1
+ 
+ # Write non-NUL bytes all over the MBR, so we're likely to see any change.
+ # However, be careful to leave the type of the first partition, 0xEE,
+-# as well as the final two magic bytes.
+-printf '%0450d\xee%059d\x55\xaa' 0 0 | dd of=$dev count=1 conv=notrunc || fail=1
++# as well as the final two magic bytes, 0x55 0xAA.
++printf '%0450d\356%059d\125\252' 0 0 | dd of=$dev count=1 conv=notrunc || fail=1
+ 
+ dd if=$dev of=before count=1 || fail=1
+ 
+diff --git a/tests/t2500-probe-corrupt-hfs.sh b/tests/t2500-probe-corrupt-hfs.sh
+index 3b4ade8..32ddcfc 100755
+--- a/tests/t2500-probe-corrupt-hfs.sh
++++ b/tests/t2500-probe-corrupt-hfs.sh
+@@ -29,8 +29,8 @@ compare /dev/null out || fail=1
+ 
+ parted -s "$dev" u s p || fail=1
+ 
+-# Poke an HFS+ signature into place
+-printf '\x48\x2b' | dd of=$dev seek=$((2048+2)) conv=notrunc || fail=1
++# Poke an HFS+ signature into place (0x48 0x2B)
++printf '\110\053' | dd of=$dev seek=$((2048+2)) conv=notrunc || fail=1
+ 
+ # Or, if starting from a valid HFS/HFS+ file system, poke these:
+ # offset 18 total_blocks=0(16b)
+-- 
+2.35.1
+
