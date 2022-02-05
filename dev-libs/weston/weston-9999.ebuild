@@ -9,7 +9,8 @@ if [[ ${PV} = 9999* ]]; then
 	EXPERIMENTAL="true"
 fi
 
-inherit meson readme.gentoo-r1 xdg-utils ${GIT_ECLASS}
+PYTHON_COMPAT=( python3_{9..10} )
+inherit meson python-any-r1 readme.gentoo-r1 xdg-utils ${GIT_ECLASS}
 
 DESCRIPTION="Wayland reference compositor"
 HOMEPAGE="https://wayland.freedesktop.org/ https://gitlab.freedesktop.org/wayland/weston"
@@ -91,6 +92,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	${PYTHON_DEPS}
 	virtual/pkgconfig
 "
 
