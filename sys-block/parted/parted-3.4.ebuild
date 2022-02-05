@@ -37,6 +37,8 @@ VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/bcl.asc
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2-po4a-mandir.patch
 	"${FILESDIR}"/${PN}-3.3-atari.patch
+	# https://lists.gnu.org/archive/html/bug-parted/2022-02/msg00000.html
+	"${FILESDIR}"/${P}-posix-printf.patch
 )
 
 src_prepare() {
