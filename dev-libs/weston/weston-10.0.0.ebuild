@@ -94,6 +94,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-10.0.0-backend-default.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		$(meson_use drm backend-drm)
