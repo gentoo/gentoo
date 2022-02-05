@@ -31,6 +31,7 @@ REQUIRED_USE="
 	colord? ( lcms )
 	drm? ( gles2 )
 	pipewire? ( drm )
+	remoting? ( drm gles2 )
 	screen-sharing? ( rdp )
 	test? ( desktop headless xwayland )
 	wayland-compositor? ( gles2 )
