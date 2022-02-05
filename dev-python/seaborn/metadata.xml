@@ -30,7 +30,7 @@
 		* High-level abstractions for structuring grids of plots that let you easily build complex visualizations
 	</longdescription>
 	<upstream>
-		<remote-id type="pypi">seaborne</remote-id>
+		<remote-id type="pypi">seaborn</remote-id>
 		<remote-id type="github">mwaskom/seaborn</remote-id>
 	</upstream>
 </pkgmetadata>
