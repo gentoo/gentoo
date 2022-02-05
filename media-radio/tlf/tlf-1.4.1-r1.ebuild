@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -20,23 +20,27 @@ RDEPEND="sys-libs/ncurses:=
 	dev-libs/glib:2
 	media-libs/hamlib:=
 	media-sound/sox
-	dev-libs/xmlrpc-c[curl]"
+	dev-libs/xmlrpc-c[curl]
+	elibc_musl? ( sys-libs/argp-standalone )"
 DEPEND="
 	${RDEPEND}
 	test? ( dev-util/cmocka )"
 
-PATCHES=( "${FILESDIR}"/${P}-zone_nr.patch )
+PATCHES=( "${FILESDIR}/${P}-zone_nr.patch"
+	  "${FILESDIR}/${P}-musl.patch"
+	)
 
 src_prepare() {
 	if has_version '>=media-libs/hamlib-4.2' ; then
 		sed -i -e "s/FILPATHLEN/HAMLIB_FILPATHLEN/g" "${S}"/src/sendqrg.c || die
 	fi
 
-	eapply ${PATCHES}
+	eapply ${PATCHES[@]}
 	eapply_user
 }
 
 src_configure() {
+	use elibc_musl && append-libs argp
 	append-ldflags -L/usr/$(get_libdir)/hamlib
 	econf --enable-fldigi-xmlrpc
 }
