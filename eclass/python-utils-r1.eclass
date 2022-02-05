@@ -123,6 +123,8 @@ _python_set_impls() {
 	if [[ $(declare -p PYTHON_COMPAT) != "declare -a"* ]]; then
 		die 'PYTHON_COMPAT must be an array.'
 	fi
+
+	local obsolete=()
 	if [[ ! ${PYTHON_COMPAT_NO_STRICT} ]]; then
 		for i in "${PYTHON_COMPAT[@]}"; do
 			# check for incorrect implementations
@@ -130,7 +132,10 @@ _python_set_impls() {
 			# please keep them in sync with _PYTHON_ALL_IMPLS
 			# and _PYTHON_HISTORICAL_IMPLS
 			case ${i} in
-				jython2_7|pypy|pypy1_[89]|pypy2_0|pypy3|python2_[5-7]|python3_[1-9]|python3_10)
+				pypy3|python2_7|python3_[89]|python3_10)
+					;;
+				jython2_7|pypy|pypy1_[89]|pypy2_0|python2_[5-6]|python3_[1-7])
+					obsolete+=( "${i}" )
 					;;
 				*)
 					if has "${i}" "${_PYTHON_ALL_IMPLS[@]}" \
@@ -142,6 +147,17 @@ _python_set_impls() {
 					fi
 			esac
 		done
+	fi
+
+	if [[ -n ${obsolete[@]} && ${EBUILD_PHASE} == setup ]]; then
+		# complain if people don't clean up old impls while touching
+		# the ebuilds recently.  use the copyright year to infer last
+		# modification
+		# NB: this check doesn't have to work reliably
+		if [[ $(head -n 1 "${EBUILD}" 2>/dev/null) == *2022* ]]; then
+			eqawarn "Please clean PYTHON_COMPAT of obsolete implementations:"
+			eqawarn "  ${obsolete[*]}"
+		fi
 	fi
 
 	local supp=() unsupp=()
