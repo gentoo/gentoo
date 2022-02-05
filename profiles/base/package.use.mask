@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Jason A. Donenfeld <zx2c4@gentoo.org> (2022-02-04)
+# We're still ironing out some kinks and writing documentation for
+# this feature, so keep masked for now.
+media-video/pipewire system-service
+
 # Sam James <sam@gentoo.org> (2021-01-24)
 # USE=custom-cflags is _particularly_ dangerous on sys-libs/glibc and
 # can result in not just build-time failures for glibc itself, but
