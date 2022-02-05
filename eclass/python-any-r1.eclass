@@ -299,13 +299,13 @@ python_setup() {
 	fi
 
 	# first, try ${EPYTHON}... maybe it's good enough for us.
-	if [[ ${EPYTHON} ]]; then
-		local impl=${EPYTHON/./_}
-		if ! has "${impl}" "${_PYTHON_SUPPORTED_IMPLS[@]}"; then
+	local epython_impl=${EPYTHON/./_}
+	if [[ ${epython_impl} ]]; then
+		if ! has "${epython_impl}" "${_PYTHON_SUPPORTED_IMPLS[@]}"; then
 			einfo "EPYTHON (${EPYTHON}) not supported by the package"
-		elif ! has "${impl}" "${_PYTHON_ALL_IMPLS[@]}"; then
+		elif ! has "${epython_impl}" "${_PYTHON_ALL_IMPLS[@]}"; then
 			ewarn "Invalid EPYTHON: ${EPYTHON}"
-		elif _python_run_check_deps "${impl}"; then
+		elif _python_run_check_deps "${epython_impl}"; then
 			_python_export EPYTHON PYTHON
 			_python_wrapper_setup
 			einfo "Using ${EPYTHON} to build (via EPYTHON)"
@@ -313,10 +313,12 @@ python_setup() {
 		fi
 	fi
 
-	# fallback to best installed impl.
+	# fallback to the best installed impl.
 	# (reverse iteration over _PYTHON_SUPPORTED_IMPLS)
 	for (( i = ${#_PYTHON_SUPPORTED_IMPLS[@]} - 1; i >= 0; i-- )); do
 		local impl=${_PYTHON_SUPPORTED_IMPLS[i]}
+		# avoid checking EPYTHON twice
+		[[ ${impl} == ${epython_impl} ]] && continue
 		_python_export "${impl}" EPYTHON PYTHON
 		if _python_run_check_deps "${impl}"; then
 			_python_wrapper_setup
