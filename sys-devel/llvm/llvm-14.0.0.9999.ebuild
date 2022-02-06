@@ -235,6 +235,7 @@ get_distribution_components() {
 			llvm-cxxdump
 			llvm-cxxfilt
 			llvm-cxxmap
+			llvm-debuginfod-find
 			llvm-diff
 			llvm-dis
 			llvm-dlltool
@@ -280,6 +281,7 @@ get_distribution_components() {
 			llvm-strip
 			llvm-symbolizer
 			llvm-tapi-diff
+			llvm-tli-checker
 			llvm-undname
 			llvm-windres
 			llvm-xray
