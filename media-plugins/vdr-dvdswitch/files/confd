@@ -1,0 +1,17 @@
+# Global config file for vdrplugin dvdswitch
+
+# Script to use for reading DVDs
+#  default: Use standard-script
+#
+#DVDSWITCH_READ_DVD="/usr/share/vdr/dvdchanger/dvdchanger_readdvd.sh"
+
+# Script to use for writing DVDs
+#  default: Use standard-script
+#
+#DVDSWITCH_WRITE_DVD="/usr/share/vdr/dvdchanger/dvdchanger_writedvd.sh"
+
+# Slow down the burn speed
+# parameters are numeric ( 1 ... n )
+#  default: 0 (unbreaked)
+#
+#DVDSWITCH_BURNSPEED="0"
