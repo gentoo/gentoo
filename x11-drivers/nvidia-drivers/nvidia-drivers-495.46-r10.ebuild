@@ -27,6 +27,7 @@ RESTRICT="bindist"
 
 COMMON_DEPEND="
 	acct-group/video
+	sys-libs/glibc
 	persistenced? (
 		acct-user/nvpd
 		net-libs/libtirpc:=

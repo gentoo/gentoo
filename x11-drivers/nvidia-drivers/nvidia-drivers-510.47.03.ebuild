@@ -27,6 +27,7 @@ IUSE="+X abi_x86_32 abi_x86_64 +driver persistenced static-libs +tools wayland"
 
 COMMON_DEPEND="
 	acct-group/video
+	sys-libs/glibc
 	X? ( x11-libs/libpciaccess )
 	persistenced? (
 		acct-user/nvpd
