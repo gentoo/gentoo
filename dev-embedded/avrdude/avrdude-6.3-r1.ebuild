@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]] ; then
 else
 	SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 
-	KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
+	KEYWORDS="amd64 ~arm ppc ~ppc64 x86"
 fi
 
 SRC_URI+=" doc? (
