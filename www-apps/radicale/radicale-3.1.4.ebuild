@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/passlib[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/vobject[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	sys-apps/util-linux
 "
 
