@@ -33,6 +33,7 @@ COMMON_DEPEND="
 	acct-group/video
 	acct-user/nvpd
 	net-libs/libtirpc:=
+	sys-libs/glibc
 	tools? (
 		dev-libs/atk
 		dev-libs/glib:2
