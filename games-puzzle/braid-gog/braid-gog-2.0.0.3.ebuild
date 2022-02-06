@@ -12,7 +12,7 @@ SRC_URI="gog_${MY_PN}_${PV}.sh"
 
 LICENSE="GOG-EULA Arphic CC-BY-NC-SA-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="bindist fetch splitdebug"
 
 BDEPEND="
