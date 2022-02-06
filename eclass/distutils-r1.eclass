@@ -176,7 +176,7 @@ _distutils_set_globals() {
 		# tomli is used to read build-backend from pyproject.toml
 		bdep='
 			>=dev-python/installer-0.4.0_p20220124[${PYTHON_USEDEP}]
-			dev-python/tomli[${PYTHON_USEDEP}]'
+			>=dev-python/tomli-1.2.3[${PYTHON_USEDEP}]'
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
 				bdep+='
