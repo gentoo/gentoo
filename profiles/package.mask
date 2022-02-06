@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2022-02-06)
+# Dead upstream, unmaintained, open bugs.
+# Removal after 2022-04-01.  Bug #832808.
+app-misc/emelfm2
+
 # Sam James <sam@gentoo.org> (2022-01-31)
 # Fork of media-video/atomicparsley. media-video/atomicparsley now uses this
 # fork (wez), so just switch to that. No need for a separate package for the fork.
