@@ -23,16 +23,15 @@ index d013a1c..c9de4d4 100644
  
  install: all
  	mkdir -p $(DESTDIR)$(BINDIR)
-@@ -153,7 +154,7 @@ install: all
- 	$(INSTALL_DATA) lowdown.pc $(DESTDIR)$(LIBDIR)/pkgconfig
+@@ -153,6 +154,7 @@ install: all
  	$(INSTALL_PROGRAM) lowdown $(DESTDIR)$(BINDIR)
  	$(INSTALL_PROGRAM) lowdown-diff $(DESTDIR)$(BINDIR)
--	$(INSTALL_LIB) liblowdown.so $(DESTDIR)$(LIBDIR)
+ 	$(INSTALL_LIB) liblowdown.so $(DESTDIR)$(LIBDIR)
 +	$(INSTALL_LIB) liblowdown.so.1 $(DESTDIR)$(LIBDIR)
  	$(INSTALL_DATA) lowdown.h $(DESTDIR)$(INCLUDEDIR)
  	for f in $(MANS) ; do \
  		name=`basename $$f .html` ; \
-@@ -271,7 +272,7 @@ main.o: lowdown.h
+@@ -271,7 +273,7 @@ main.o: lowdown.h
  
  clean:
  	rm -f $(OBJS) $(COMPAT_OBJS) main.o

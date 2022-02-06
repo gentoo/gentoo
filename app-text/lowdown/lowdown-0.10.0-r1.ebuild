@@ -22,6 +22,7 @@ PATCHES=(
 	"${FILESDIR}/lowdown-0.10.0-shared-library.patch"
 	"${FILESDIR}/lowdown-0.10.0-dont-install-static-lib.patch"
 	"${FILESDIR}/lowdown-0.10.0-linking.patch"
+	"${FILESDIR}/lowdown-0.10.0-pkgconfig-libmd.patch"
 )
 
 src_configure() {
