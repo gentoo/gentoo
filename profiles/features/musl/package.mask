@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-02-06)
+# Latest version doesn't build on musl
+# bug #831363
+=sys-libs/efivar-38
+
 # Stephan Hartmann <sultan@gentoo.org> (2022-02-05)
 # Binary package linked to glibc
 net-im/teams
