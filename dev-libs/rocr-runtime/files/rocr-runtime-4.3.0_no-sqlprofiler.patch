@@ -1,0 +1,29 @@
+Index: ROCR-Runtime-rocm-4.3.0/src/core/runtime/amd_gpu_agent.cpp
+===================================================================
+--- src/core/runtime/amd_gpu_agent.cpp
++++ src/core/runtime/amd_gpu_agent.cpp
+@@ -861,11 +861,6 @@ hsa_status_t GpuAgent::GetInfo(hsa_agent
+         setFlag(HSA_EXTENSION_IMAGES);
+       }
+ 
+-      if (os::LibHandle lib = os::LoadLib(kAqlProfileLib)) {
+-        os::CloseLib(lib);
+-        setFlag(HSA_EXTENSION_AMD_AQLPROFILE);
+-      }
+-
+       setFlag(HSA_EXTENSION_AMD_PROFILER);
+ 
+       break;
+Index: ROCR-Runtime-rocm-4.3.0/src/core/runtime/hsa.cpp
+===================================================================
+--- src/core/runtime/hsa.cpp
++++ src/core/runtime/hsa.cpp
+@@ -471,7 +471,7 @@ hsa_status_t hsa_system_get_major_extens
+     return HSA_STATUS_SUCCESS;
+   }
+ 
+-  if (extension == HSA_EXTENSION_AMD_AQLPROFILE) {
++  if (0) {
+     if (version_major != hsa_ven_amd_aqlprofile_VERSION_MAJOR) {
+       debug_print("aqlprofile API incompatible ver %d, current ver %d\n",
+         version_major, hsa_ven_amd_aqlprofile_VERSION_MAJOR);
