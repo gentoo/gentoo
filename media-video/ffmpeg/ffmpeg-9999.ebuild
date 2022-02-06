@@ -456,7 +456,7 @@ multilib_src_configure() {
 	)
 
 	local extra_libs
-	if use arm || use ppc ; then
+	if use arm || use ppc || use mips || [[ ${CHOST} == *i486* ]] ; then
 		# bug #782811
 		# bug #790590
 		extra_libs+="$(test-flags-CCLD -latomic) "
