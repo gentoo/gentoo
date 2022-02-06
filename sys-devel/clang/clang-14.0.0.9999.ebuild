@@ -51,7 +51,7 @@ LLVM_TEST_COMPONENTS=(
 	llvm/utils/{lit,llvm-lit,unittest}
 	llvm/utils/{UpdateTestChecks,update_cc_test_checks.py}
 )
-LLVM_PATCHSET=9999-2
+LLVM_PATCHSET=9999-r3
 LLVM_USE_TARGETS=llvm
 llvm.org_set_globals
 
@@ -80,7 +80,7 @@ src_prepare() {
 
 	# add Gentoo Portage Prefix for Darwin (see prefix-dirs.patch)
 	eprefixify \
-		lib/Frontend/InitHeaderSearch.cpp \
+		lib/Lex/InitHeaderSearch.cpp \
 		lib/Driver/ToolChains/Darwin.cpp || die
 }
 
