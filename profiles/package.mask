@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Stephan Hartmann <sultan@gentoo.org> (2022-02-06)
+# Dev channel releases are only for people who
+# are developers or want more experimental features
+# and accept a more unstable release.
+>=www-client/chromium-100
+
 # Jonas Stein <jstein@gentoo.org> (2022-02-06)
 # Dead upstream, unmaintained, open bugs.
 # Removal after 2022-04-01.  Bug #832808.
