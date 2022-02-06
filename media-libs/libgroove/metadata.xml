@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person" proxied="yes">
-	<email>sir.suriv@gmail.com</email>
-	<name>Diogo Pereira</name>
-</maintainer>
-<maintainer type="project" proxied="proxy">
-	<email>proxy-maint@gentoo.org</email>
-	<name>Proxy Maintainers</name>
-</maintainer>
+<!-- maintainer-needed -->
 <longdescription lang="en">
 	This library provides decoding and encoding of audio on a playlist. It is intended to be used as a backend for music player applications. That said, it is also generic enough to be used as a backend for any streaming audio processing utility.
 </longdescription>
