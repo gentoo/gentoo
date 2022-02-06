@@ -4,7 +4,7 @@
 EAPI=8
 
 ECM_HANDBOOK="forceoptional"
-KFMIN=5.86.0
+KFMIN=5.90.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=5.15.2
 VIRTUALX_REQUIRED="test"
@@ -14,7 +14,7 @@ DESCRIPTION="Extra Plasma applets and engines"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="5"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="share webengine"
 
 RESTRICT="test" # bug 727846
@@ -53,6 +53,9 @@ RDEPEND="${DEPEND}
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 	>=kde-plasma/plasma-workspace-${PVCUT}:5
 "
+
+# https://mail.kde.org/pipermail/distributions/2022-February/001130.html
+PATCHES=( "${FILESDIR}/${PN}-5.23.5-fix-comic-ProvidersUrl.patch" )
 
 src_configure() {
 	local mycmakeargs=(
