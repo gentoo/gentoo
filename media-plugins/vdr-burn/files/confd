@@ -5,7 +5,7 @@
 # Restart of VDR is needed after some changes
 
 # Set way to your DVD Writer Drive
-#	allowed values: directory names
+#	allowed values: device names
 #	default: /dev/dvd
 #
 #BURN_DVDWRITER="/dev/dvd"
@@ -13,14 +13,13 @@
 # Set your tmp DIR where the files will be converted
 # ! >= 10 Gb free Disc Space needed
 #	allowed values: directory names
-#	default: /var/vdr/video
+#	default: <vdr-homedir>/video
 #
 #BURN_DATADIR="/var/vdr/video"
 
-# Way to your not burned iso files 
+# Way to your not burned iso files
 #	allowed values: directory names
-#	default: /var/vdr/video/dvd-images
+#	default: <vdr-homedir>/video/dvd-images
 #
-#BURN_ISODIR="/var/vdr/video/dvd-images" 
+#BURN_ISODIR="/var/vdr/video/dvd-images"
 
- 
