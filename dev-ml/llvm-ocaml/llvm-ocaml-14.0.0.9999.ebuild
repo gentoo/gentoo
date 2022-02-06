@@ -29,7 +29,7 @@ BDEPEND="
 	test? ( dev-ml/ounit2 )
 	${PYTHON_DEPS}"
 
-LLVM_COMPONENTS=( llvm )
+LLVM_COMPONENTS=( llvm cmake third-party )
 LLVM_USE_TARGETS=llvm
 llvm.org_set_globals
 
