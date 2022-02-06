@@ -3,8 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 systemd
 
@@ -36,6 +35,8 @@ BDEPEND="
 	)
 "
 
+distutils_enable_tests --install pytest
+
 S="${WORKDIR}/${MY_P}"
 
 RDIR=/var/lib/"${PN}"
@@ -46,8 +47,6 @@ src_prepare() {
 	sed -i '/^addopts =/d' setup.cfg || die
 	distutils-r1_src_prepare
 }
-
-distutils_enable_tests --install pytest
 
 python_test() {
 	epytest radicale/tests/
