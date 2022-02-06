@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="forceoptional"
-KFMIN=5.90.0
+KFMIN=5.86.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=5.15.2
 VIRTUALX_REQUIRED="test"
@@ -15,9 +15,9 @@ DESCRIPTION="KDE Plasma workspace"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="appstream +calendar +fontconfig geolocation gps +policykit
-screencast +semantic-desktop telemetry"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
+IUSE="appstream +calculator +calendar +fontconfig geolocation gps screencast
++semantic-desktop telemetry"
 
 REQUIRED_USE="gps? ( geolocation )"
 RESTRICT="test"
@@ -84,7 +84,6 @@ COMMON_DEPEND="
 	>=kde-plasma/libksysguard-${PVCUT}:5
 	>=kde-plasma/libkworkspace-${PVCUT}:5
 	>=media-libs/phonon-4.11.0
-	sci-libs/libqalculate:=
 	sys-libs/zlib
 	x11-libs/libICE
 	x11-libs/libSM
@@ -98,6 +97,7 @@ COMMON_DEPEND="
 	x11-libs/xcb-util
 	x11-libs/xcb-util-image
 	appstream? ( dev-libs/appstream[qt5] )
+	calculator? ( sci-libs/libqalculate:= )
 	calendar? ( >=kde-frameworks/kholidays-${KFMIN}:5 )
 	fontconfig? (
 		>=dev-qt/qtprintsupport-${QTMIN}:5
@@ -117,7 +117,7 @@ COMMON_DEPEND="
 	telemetry? ( dev-libs/kuserfeedback:5 )
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-libs/plasma-wayland-protocols-1.6.0
+	>=dev-libs/plasma-wayland-protocols-1.1.1
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 	>=dev-util/wayland-scanner-1.19.0
 	x11-base/xorg-proto
@@ -142,8 +142,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-apps/xrdb
 	x11-apps/xsetroot
 	!<kde-plasma/breeze-5.22.90:5
-	!<kde-plasma/plasma-desktop-5.23.90:5
-	policykit? ( sys-apps/accountsservice )
+	!<kde-plasma/plasma-desktop-5.21.90:5
 "
 BDEPEND="virtual/pkgconfig"
 PDEPEND=">=kde-plasma/kde-cli-tools-${PVCUT}:5"
@@ -151,6 +150,10 @@ PDEPEND=">=kde-plasma/kde-cli-tools-${PVCUT}:5"
 PATCHES=(
 	"${FILESDIR}/${PN}-5.21.5-split-libkworkspace.patch" # downstream
 	"${FILESDIR}/${PN}-5.22.5-krunner-cwd-at-home.patch" # TODO upstream: KDE-bug 432975, bug 767478
+	# https://mail.kde.org/pipermail/distributions/2022-February/001129.html
+	"${FILESDIR}/${P}-fix-wallpaperplugin-ProvidersUrl.patch"
+	# https://mail.kde.org/pipermail/distributions/2022-February/001133.html
+	"${FILESDIR}/${P}-fix-kcmfontinst-ProvidersUrl.patch"
 )
 
 src_prepare() {
@@ -167,9 +170,9 @@ src_prepare() {
 		sed -e "s/^pkg_check_modules.*PipeWire/#&/" -i CMakeLists.txt || die
 	fi
 
-	if ! use policykit; then
-		cmake_run_in kcms cmake_comment_add_subdirectory users
-	fi
+	# KDE-bug: 433730
+	use calculator ||
+		cmake_run_in runners cmake_comment_add_subdirectory calculator
 }
 
 src_configure() {
