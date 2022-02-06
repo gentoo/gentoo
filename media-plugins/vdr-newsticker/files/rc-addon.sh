@@ -3,5 +3,6 @@
 #
 
 plugin_pre_vdr_start() {
-	add_plugin_param "--output=/var/vdr/newsticker"
+	local vdr_user_home=$( getent passwd "vdr" | cut -d: -f6 )
+	add_plugin_param "--output=${vdr_user_home}/newsticker"
 }
