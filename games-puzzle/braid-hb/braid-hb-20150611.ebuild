@@ -12,7 +12,7 @@ SRC_URI="BraidSetup-${PV:0:4}-${PV:4:2}-${PV:6:2}.sh"
 
 LICENSE="all-rights-reserved Arphic CC-BY-NC-SA-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="bindist fetch splitdebug"
 
 BDEPEND="
