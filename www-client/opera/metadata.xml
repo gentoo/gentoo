@@ -5,11 +5,6 @@
 		<email>chromium@gentoo.org</email>
 		<name>Chromium in Gentoo Project</name>
 	</maintainer>
-	<longdescription>
-Opera is a graphical Web browser available on several platforms. The desktop
-version runs on GNU/Linux and FreeBSD. Versions for Macintosh and
-Windows are also available.
-	</longdescription>
 	<use>
 		<flag name="proprietary-codecs">Enable codecs for patent-encumbered audio and video formats.</flag>
 	</use>
