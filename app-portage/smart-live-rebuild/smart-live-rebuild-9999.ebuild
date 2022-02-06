@@ -1,28 +1,23 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=no
+DISTUTILS_USE_PEP517=flit
 PYTHON_COMPAT=( python3_{8..10} )
 
-EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Check live packages for updates and emerge them as necessary"
 HOMEPAGE="https://github.com/mgorny/smart-live-rebuild/"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 RDEPEND=">=app-portage/gentoopm-0.2.1[${PYTHON_USEDEP}]"
 
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests pytest
 
 python_install_all() {
 	distutils-r1_python_install_all
