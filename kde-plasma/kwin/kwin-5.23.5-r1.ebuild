@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_HANDBOOK="optional"
 ECM_TEST="optional"
-KFMIN=5.90.0
+KFMIN=5.86.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=5.15.2
 VIRTUALX_REQUIRED="test"
@@ -15,13 +15,13 @@ DESCRIPTION="Flexible, composited Window Manager for windowing systems on Linux"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 IUSE="accessibility caps gles2-only multimedia plasma screencast"
 
 RESTRICT="test"
 
 COMMON_DEPEND="
-	>=dev-libs/libinput-1.19
+	>=dev-libs/libinput-1.14
 	>=dev-libs/wayland-1.2
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5
@@ -36,7 +36,6 @@ COMMON_DEPEND="
 	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/kcrash-${KFMIN}:5
-	>=kde-frameworks/kdbusaddons-${KFMIN}:5
 	>=kde-frameworks/kdeclarative-${KFMIN}:5
 	>=kde-frameworks/kglobalaccel-${KFMIN}:5=
 	>=kde-frameworks/ki18n-${KFMIN}:5
@@ -97,6 +96,9 @@ DEPEND="${COMMON_DEPEND}
 	)
 "
 PDEPEND=">=kde-plasma/kde-cli-tools-${PVCUT}:5"
+
+# https://mail.kde.org/pipermail/distributions/2022-February/001127.html
+PATCHES=( "${FILESDIR}/${P}-fix-ProvidersUrl.patch" )
 
 src_prepare() {
 	ecm_src_prepare
