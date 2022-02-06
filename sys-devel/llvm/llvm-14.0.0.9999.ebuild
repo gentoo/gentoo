@@ -55,7 +55,7 @@ RDEPEND="${RDEPEND}
 PDEPEND="sys-devel/llvm-common
 	binutils-plugin? ( >=sys-devel/llvmgold-${SLOT} )"
 
-LLVM_COMPONENTS=( llvm third-party )
+LLVM_COMPONENTS=( llvm cmake third-party )
 LLVM_MANPAGES=build
 LLVM_PATCHSET=9999-1
 LLVM_USE_TARGETS=provide
