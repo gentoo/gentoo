@@ -17,10 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2022-02-05)
-# dev-qt/qtwebengine not stable on ppc64 yet
-sci-astronomy/stellarium webengine
-
 # Marek Szuba <marecki@gentoo.org> (2021-12-31)
 # No stable dev-ruby/{thor,tty-editor} on this arch yet
 # and there are many dependencies to go through before there are
