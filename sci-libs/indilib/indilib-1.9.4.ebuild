@@ -39,6 +39,10 @@ DEPEND="${RDEPEND}
 	websocket? ( dev-cpp/websocketpp )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.9.4-musl-stdint.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DINDI_BUILD_QT5_CLIENT=OFF
