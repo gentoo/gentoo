@@ -48,7 +48,7 @@ COMMON_DEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/pyside2[designer,gui,widgets,${PYTHON_USEDEP}]
+			dev-python/pyside2[designer,gui,webengine,widgets,${PYTHON_USEDEP}]
 			dev-python/shiboken2[${PYTHON_USEDEP}]
 		')
 	)
