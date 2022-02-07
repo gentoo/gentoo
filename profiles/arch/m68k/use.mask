@@ -4,6 +4,14 @@
 # Unmask the flag which corresponds to ARCH.
 -m68k
 
+# James Le Cuirot <chewi@gentoo.org> (2021-01-30)
+# GTK is not keyworded or tested.
+gtk
+gtk2
+gtk3
+gtk4
+wxwidgets
+
 # James Le Cuirot <chewi@gentoo.org> (2022-01-30)
 # The app-shells/fish tests fail on m68k, so it remains unkeyworded.
 fish-completion
@@ -140,7 +148,6 @@ emacs
 emf
 gnome-keyring
 graphite
-gtk
 guile
 hardened
 heif
