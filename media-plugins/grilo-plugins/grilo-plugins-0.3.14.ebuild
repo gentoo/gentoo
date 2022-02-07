@@ -63,6 +63,14 @@ BDEPEND="
 	lua? ( dev-util/gperf )
 "
 
+pkg_pretend() {
+	if use gnome-online-accounts; then
+		if ! use flickr && ! use lua; then
+			ewarn "Ignoring USE=gnome-online-accounts USE does not contain flickr or lua"
+		fi
+	fi
+}
+
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 }
@@ -101,8 +109,12 @@ src_configure() {
 		-Denable-tracker=no
 		-Denable-tracker3=$(usex tracker yes no)
 		-Denable-youtube=$(usex youtube yes no)
-		$(meson_feature gnome-online-accounts goa)
 		-Dhelp=no
 	)
+	if use flickr || use lua; then
+		emesonargs+=($(meson_feature gnome-online-accounts goa))
+	else
+		emesonargs+=(-Dgoa=disabled)
+	fi
 	meson_src_configure
 }
