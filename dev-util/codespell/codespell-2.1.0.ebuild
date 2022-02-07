@@ -15,7 +15,7 @@ SRC_URI="https://github.com/codespell-project/codespell/archive/v${PV}.tar.gz ->
 # Dictionary licensed under CC-BY-SA-3.0
 LICENSE="GPL-2 CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="
 	sys-apps/help2man
