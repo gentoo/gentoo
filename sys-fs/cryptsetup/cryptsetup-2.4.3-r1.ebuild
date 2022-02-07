@@ -19,7 +19,7 @@ CRYPTO_BACKENDS="gcrypt kernel nettle +openssl"
 IUSE="${CRYPTO_BACKENDS} +argon2 nls pwquality reencrypt ssh static static-libs test +udev urandom"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="^^ ( ${CRYPTO_BACKENDS//+/} )
-	static? ( !gcrypt !udev )" #496612
+	static? ( !gcrypt !ssh !udev )" # 496612, 832711
 
 LIB_DEPEND="
 	dev-libs/json-c:=[static-libs(+)]
