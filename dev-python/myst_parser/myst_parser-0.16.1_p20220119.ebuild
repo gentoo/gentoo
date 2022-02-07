@@ -21,7 +21,7 @@ S="${WORKDIR}/MyST-Parser-${COMMIT}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~ia64"
 
 RDEPEND="
 	<dev-python/docutils-0.18[${PYTHON_USEDEP}]
