@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paolo Pedroni <paolo.pedroni@iol.it> (2022-02-07)
+# Binary package linked to glibc
+sci-mathematics/gimps
+
 # Sam James <sam@gentoo.org> (2022-02-06)
 # Latest version doesn't build on musl
 # bug #831363
