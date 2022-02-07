@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -100,7 +100,7 @@ RDEPEND="${PYTHON_DEPS}
 	pulseaudio? ( media-sound/pulseaudio )
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
-	tbb? ( <dev-cpp/tbb-2021.4.0:= )
+	tbb? ( dev-cpp/tbb:= )
 	tiff? ( media-libs/tiff )
 	valgrind? ( dev-util/valgrind )
 "
