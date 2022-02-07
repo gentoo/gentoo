@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~x86"
 
 BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]"
 
