@@ -74,7 +74,7 @@ python_configure_all() {
 		$(use_enable zlib)
 	)
 
-	# setup.py sucks at adding the right toolchain paths but it does
+	# setup.py won't let us add the right toolchain paths but it does
 	# accept additional ones from INCLUDE and LIB so set these. You
 	# wouldn't normally need these at all as the toolchain should look
 	# here anyway but this setup.py does stupid things.
