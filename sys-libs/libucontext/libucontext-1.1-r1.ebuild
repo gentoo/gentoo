@@ -27,7 +27,7 @@ PATCHES=(
 src_compile() {
 	tc-export AR CC
 
-	local arch
+	arch=
 
 	# Override arch detection
 	# https://github.com/kaniini/libucontext/blob/master/Makefile#L3
@@ -43,13 +43,25 @@ src_compile() {
 		arch="$(uname -m)"
 	fi
 
-	emake ARCH="${arch}" LDFLAGS="${LDFLAGS}" all $(usev man 'docs')
+	emake \
+		ARCH="${arch}" \
+		LDFLAGS="${LDFLAGS}" \
+		LIBDIR="/usr/$(get_libdir)" \
+		all $(usev man 'docs')
 }
 
 src_test() {
-	emake LDFLAGS="${LDFLAGS}" check
+	emake \
+		ARCH="${arch}" \
+		LDFLAGS="${LDFLAGS}" \
+		LIBDIR="/usr/$(get_libdir)" \
+		check
 }
 
 src_install() {
-	emake DESTDIR="${ED}" LIBDIR="/usr/$(get_libdir)" install $(usev man 'install_docs')
+	emake \
+		ARCH="${arch}" \
+		DESTDIR="${ED}" \
+		LIBDIR="/usr/$(get_libdir)" \
+		install $(usev man 'install_docs')
 }
