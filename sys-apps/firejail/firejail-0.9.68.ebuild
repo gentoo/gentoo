@@ -1,15 +1,15 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit toolchain-funcs python-single-r1 linux-info
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="amd64 ~arm ~arm64 ~x86"
 	SRC_URI="https://github.com/netblue30/${PN}/releases/download/${PV}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/netblue30/firejail.git"
@@ -21,7 +21,7 @@ HOMEPAGE="https://firejail.wordpress.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="X apparmor +chroot contrib +dbusproxy +file-transfer +globalcfg +network +private-home +suid test +userns +whitelist"
+IUSE="apparmor +chroot contrib +dbusproxy +file-transfer +globalcfg +network +private-home test +userns +whitelist X"
 # Needs a lot of work to function within sandbox/portage
 # bug #769731
 RESTRICT="test"
@@ -37,16 +37,29 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="contrib? ( ${PYTHON_REQUIRED_USE} )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-envlimits.patch"
+	)
+
 pkg_setup() {
-	python-single-r1_pkg_setup
+	CONFIG_CHECK="~SQUASHFS"
+	local ERROR_SQUASHFS="CONFIG_SQUASHFS: required for firejail --appimage mode"
+	check_extra_config
+	use contrib && python-single-r1_pkg_setup
 }
 
 src_prepare() {
 	default
 
-	find -type f -name Makefile.in -exec sed -i -r -e '/^\tinstall .*COPYING /d; /CFLAGS/s: (-O2|-ggdb) : :g' {} + || die
+	find -type f -name Makefile.in -exec sed -i -r -e '/CFLAGS/s: (-O2|-ggdb) : :g' {} + || die
 
 	sed -i -r -e '/CFLAGS/s: (-O2|-ggdb) : :g' ./src/common.mk.in || die
+
+	# fix up hardcoded paths to templates and docs
+	local files=$(grep -E -l -r '/usr/share/doc/firejail([^-]|$)' ./RELNOTES ./src/man/ ./etc/profile*/ ./test/ || die)
+	for file in ${files[@]} ; do
+		sed -i -r -e "s:/usr/share/doc/firejail([^-]|\$):/usr/share/doc/${PF}\1:" "${file}" || die
+	done
 
 	# remove compression of man pages
 	sed -i -r -e '/rm -f \$\$man.gz; \\/d; /gzip -9n \$\$man; \\/d; s|\*\.([[:digit:]])\) install -m 0644 \$\$man\.gz|\*\.\1\) install -m 0644 \$\$man|g' Makefile.in || die
@@ -54,16 +67,12 @@ src_prepare() {
 	if use contrib; then
 		python_fix_shebang -f contrib/*.py
 	fi
-
-	# some tests were missing from this release's tarball
-	if use test; then
-		sed -i -r -e 's/^(test:.*) test-private-lib (.*)/\1 \2/; s/^(test:.*) test-fnetfilter (.*)/\1 \2/' Makefile.in || die
-	fi
 }
 
 src_configure() {
 	econf \
 		--disable-firetunnel \
+		--enable-suid \
 		$(use_enable apparmor) \
 		$(use_enable chroot) \
 		$(use_enable dbusproxy) \
@@ -71,10 +80,13 @@ src_configure() {
 		$(use_enable globalcfg) \
 		$(use_enable network) \
 		$(use_enable private-home) \
-		$(use_enable suid) \
 		$(use_enable userns) \
 		$(use_enable whitelist) \
 		$(use_enable X x11)
+
+	cat > 99firejail <<-EOF || die
+	SANDBOX_WRITE="/run/firejail"
+	EOF
 }
 
 src_compile() {
@@ -84,16 +96,23 @@ src_compile() {
 src_install() {
 	default
 
+	# Gentoo-specific profile customizations
+	insinto /etc/${PN}
+	local profile_local
+	for profile_local in "${FILESDIR}"/profile_*local ; do
+		newins "${profile_local}" "${profile_local/\/*profile_/}"
+	done
+
+	# Prevent sandbox violations when toolchain is firejailed
+	insinto /etc/sandbox.d
+	doins 99firejail
+
+	rm "${ED}"/usr/share/doc/${PF}/COPYING || die
+
 	if use contrib; then
 		python_scriptinto /usr/$(get_libdir)/firejail
 		python_doscript contrib/*.py
 		insinto /usr/$(get_libdir)/firejail
 		dobin contrib/*.sh
 	fi
-}
-
-pkg_postinst() {
-	CONFIG_CHECK="~SQUASHFS"
-	local ERROR_SQUASHFS="CONFIG_SQUASHFS: required for firejail --appimage mode"
-	check_extra_config
 }
