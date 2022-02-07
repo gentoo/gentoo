@@ -22,14 +22,3 @@ RDEPEND="
 PDEPEND="app-eselect/eselect-package-manager"
 
 distutils_enable_tests pytest
-
-python_test() {
-	if has_version ">=sys-apps/pkgcore-0.9.4[${PYTHON_USEDEP}]"; then
-		einfo "Testing against pkgcore ..."
-		PACKAGE_MANAGER=pkgcore epytest
-	fi
-	if has_version ">=sys-apps/portage-2.1.10.3[${PYTHON_USEDEP}]"; then
-		einfo "Testing against portage ..."
-		PACKAGE_MANAGER=portage epytest
-	fi
-}
