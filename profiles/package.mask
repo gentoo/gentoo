@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Zoltan Puskas <zoltan@sinustrom.info> (2022-02-07)
+# Fork of sci-libs/opencascade. Upstream unmaintained due to opencascade
+# becoming community friendly and making this fork obsolete. Recommends moving
+# to opencascade. See: https://github.com/tpaviot/oce/issues/745
+# Blocks deprecation of sci-libs/vtk-8.2.0.
+# Removal on 2022-03-01. Bug #832625.
+sci-libs/oce
+
 # Stephan Hartmann <sultan@gentoo.org> (2022-02-06)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
