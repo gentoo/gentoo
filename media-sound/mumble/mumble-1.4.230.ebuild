@@ -93,6 +93,7 @@ src_configure() {
 		-Dspeechd="$(usex speech)"
 		-Dtranslations="$(usex nls)"
 		-Dupdate="OFF"
+		-Dwarnings-as-errors="OFF"
 		-Dzeroconf="$(usex zeroconf)"
 	)
 
