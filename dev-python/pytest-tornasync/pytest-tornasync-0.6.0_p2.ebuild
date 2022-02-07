@@ -14,7 +14,7 @@ S="${WORKDIR}/${P//_p/.post}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 # TODO: fix this
 # E   ImportError: cannot import name 'MESSAGE' from 'test'
