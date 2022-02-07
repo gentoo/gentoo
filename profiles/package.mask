@@ -553,10 +553,6 @@ net-libs/libsoup:3.0
 # to a fresher gcc branch.
 <sys-devel/gcc-7
 
-# Eray Aslan <eras@gentoo.org> (2021-04-29)
-# Mask experimental software
-=mail-mta/postfix-3.7*
-
 # Ulrich Müller <ulm@gentoo.org> (2021-04-20)
 # Version 3.15 is broken with Emacs 27.2.
 =app-emacs/mic-paren-3.15-r0
