@@ -11,7 +11,7 @@ SRC_URI="https://github.com/SSilence/${PN}/releases/download/${PV}/${P}.zip"
 S="${WORKDIR}"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 BDEPEND="app-arch/unzip"
 RDEPEND="
