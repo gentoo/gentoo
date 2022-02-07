@@ -63,7 +63,7 @@ BDEPEND="dev-lang/python:2.7
 	virtual/pkgconfig
 	test? ( ${PYTHON_DEPS} )"
 
-DEPEND="dev-libs/icu
+DEPEND="dev-libs/icu:=
 	>=dev-libs/nspr-4.21
 	sys-libs/readline:0=
 	>=sys-libs/zlib-1.2.3"
