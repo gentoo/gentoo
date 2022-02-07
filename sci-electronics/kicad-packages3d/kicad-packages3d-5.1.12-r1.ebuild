@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,11 +12,9 @@ SRC_URI="https://gitlab.com/kicad/libraries/kicad-packages3D/-/archive/${PV}/kic
 LICENSE="CC-BY-SA-4.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="occ +oce"
+IUSE="+occ"
 
-REQUIRED_USE="|| ( occ oce )"
-
-RDEPEND=">=sci-electronics/kicad-5.1.0[occ=,oce(-)=]"
+RDEPEND=">=sci-electronics/kicad-5.1.0[occ=]"
 
 CHECKREQS_DISK_BUILD="11G"
 S="${WORKDIR}/${P/3d/3D}"
