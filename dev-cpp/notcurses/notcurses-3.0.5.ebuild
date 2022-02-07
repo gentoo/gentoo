@@ -37,8 +37,10 @@ src_compile() {
 	cmake-multilib_src_compile
 }
 
+# warning: these will fail if you don't have your (utf8) locale available,
+# or the proper terminfo database for your (hopefully correct) TERM.
 src_test() {
-	multilib_src_test
+	cmake-multilib_src_test
 }
 
 src_install() {
