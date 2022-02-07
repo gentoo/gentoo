@@ -1,0 +1,44 @@
+https://gitlab.com/cjwatson/man-db/-/commit/f4f94402834f20b9da730aeca5daa465be38efdf
+https://gitlab.com/cjwatson/man-db/-/issues/2
+
+From f4f94402834f20b9da730aeca5daa465be38efdf Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Sun, 6 Feb 2022 12:37:01 +0000
+Subject: [PATCH] Revert "Reduce indentation depth using C99"
+
+This reverts commit c4d20840f3487588c4a0da4397b1acb6dc83a1e5.  Even in
+C99, a declaration isn't valid immediately after a label; this didn't
+become valid until C2x, although gcc allows it as an extension.
+
+Fixes https://gitlab.com/cjwatson/man-db/-/issues/2.
+
+* src/man.c (parse_opt): Restore enclosing block for OPT_WARNINGS.
+--- a/src/man.c
++++ b/src/man.c
+@@ -383,15 +383,18 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state)
+ 
+ 		case OPT_WARNINGS:
+ #ifdef NROFF_WARNINGS
+-			char *s = xstrdup (arg ? arg : default_roff_warnings);
+-			const char *warning;
++			{
++				char *s = xstrdup
++					(arg ? arg : default_roff_warnings);
++				const char *warning;
+ 
+-			for (warning = strtok (s, ","); warning;
+-			     warning = strtok (NULL, ","))
+-				gl_list_add_last (roff_warnings,
+-						  xstrdup (warning));
++				for (warning = strtok (s, ","); warning;
++				     warning = strtok (NULL, ","))
++					gl_list_add_last (roff_warnings,
++							  xstrdup (warning));
+ 
+-			free (s);
++				free (s);
++			}
+ #endif /* NROFF_WARNINGS */
+ 			return 0;
+ 
+GitLab
