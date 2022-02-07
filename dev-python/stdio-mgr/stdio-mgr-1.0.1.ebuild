@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ HOMEPAGE="
 SRC_URI="https://github.com/bskinn/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 ~ia64 ppc ppc64 ~riscv sparc x86"
 SLOT="0"
 
 RDEPEND=">=dev-python/attrs-17.1[${PYTHON_USEDEP}]"
