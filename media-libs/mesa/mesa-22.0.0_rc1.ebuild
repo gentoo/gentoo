@@ -421,8 +421,8 @@ multilib_src_configure() {
 		-Dglx=$(usex X dri disabled)
 		-Dshared-glapi=enabled
 		-Ddri3=enabled
-		-Degl=true
-		-Dgbm=true
+		-Degl=enabled
+		-Dgbm=enabled
 		-Dglvnd=true
 		$(meson_feature gles1)
 		$(meson_feature gles2)
