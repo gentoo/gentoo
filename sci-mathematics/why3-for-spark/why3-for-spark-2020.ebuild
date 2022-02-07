@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,6 +29,7 @@ DEPEND=">=dev-lang/ocaml-4.09.0:=[ocamlopt=]
 	doc? (
 		dev-tex/rubber
 		dev-python/sphinx
+		dev-python/sphinxcontrib-bibtex
 		media-gfx/graphviz
 		dev-python/sphinxcontrib-bibtex
 	)
