@@ -71,7 +71,6 @@ src_configure() {
 		--without-python
 		--without-pythonmodule
 		$(use_enable emacs)
-		$(use_enable julia)
 		$(use_enable polymake polymake-module)
 		$(use_enable static-libs static)
 		$(use_with readline)
