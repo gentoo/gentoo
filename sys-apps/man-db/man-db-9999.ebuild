@@ -161,8 +161,8 @@ pkg_preinst() {
 	# see bug  #602588 comment 18
 	local _replacing_version=
 	local _setgid_vuln=0
-	for _replacing_version in ${REPLACING_VERSIONS}; do
-		if ver_test '2.7.6.1-r2' -le "${_replacing_version}"; then
+	for _replacing_version in ${REPLACING_VERSIONS} ; do
+		if ver_test '2.7.6.1-r2' -le "${_replacing_version}" ; then
 			debug-print "Skipping security bug #602588 ... existing installation (${_replacing_version}) should not be affected!"
 		else
 			_setgid_vuln=1
@@ -187,8 +187,17 @@ pkg_preinst() {
 pkg_postinst() {
 	tmpfiles_process man-db.conf
 
-	if [[ $(ver_cut 2 ${REPLACING_VERSIONS}) -lt 7 ]] ; then
-		einfo "Rebuilding man-db from scratch with new database format!"
-		su man -s /bin/sh -c 'mandb --quiet --create' 2>/dev/null
+	if [[ -n "${REPLACING_VERSIONS}" ]] ; then
+		local _replacing_version=
+
+		for _replacing_version in ${REPLACING_VERSIONS} ; do
+			if [[ $(ver_cut 2 ${_replacing_version}) -lt 7 ]] ; then
+				einfo "Rebuilding man-db from scratch with new database format!"
+				su man -s /bin/sh -c 'mandb --quiet --create' 2>/dev/null
+
+				# No need to run it again if we hit one
+				break
+			fi
+		done
 	fi
 }
