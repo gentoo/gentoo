@@ -60,9 +60,10 @@ IUSE="cpu_flags_arm_neon debug +jit test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="dev-lang/python:2.7
+	virtual/pkgconfig
 	test? ( ${PYTHON_DEPS} )"
 
-DEPEND="<dev-libs/icu-70:=
+DEPEND="dev-libs/icu
 	>=dev-libs/nspr-4.21
 	sys-libs/readline:0=
 	>=sys-libs/zlib-1.2.3"
