@@ -102,7 +102,7 @@ src_prepare() {
 
 			# disable using security framework (GCC barfs on those headers)
 			sed -i \
-				-e '/MAC_OS_X_VERSION_MIN_REQUIRED/_DISABLED_/' \
+				-e 's/MAC_OS_X_VERSION_MIN_REQUIRED/_DISABLED_/' \
 				random.c || die
 		fi
 	fi
