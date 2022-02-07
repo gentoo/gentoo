@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,11 +16,10 @@ SRC_URI="https://gitlab.com/kicad/code/${PN}/-/archive/${PV}/${P}.tar.bz2"
 LICENSE="GPL-2+ GPL-3+ Boost-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="doc examples github +ngspice occ +oce openmp +python"
+IUSE="doc examples github +ngspice +occ openmp +python"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
-	?? ( occ oce )
 "
 
 COMMON_DEPEND="
@@ -37,7 +36,6 @@ COMMON_DEPEND="
 		>sci-electronics/ngspice-27[shared]
 	)
 	occ? ( <sci-libs/opencascade-7.5.3:=[vtk(+)] )
-	oce? ( sci-libs/oce )
 	python? (
 		$(python_gen_cond_dep '
 			>=dev-libs/boost-1.61:=[context,nls,threads(+),python,${PYTHON_USEDEP}]
@@ -103,7 +101,6 @@ src_configure() {
 		-DKICAD_SCRIPTING_ACTION_MENU="$(usex python)"
 		-DKICAD_SPICE="$(usex ngspice)"
 		-DKICAD_USE_OCC="$(usex occ)"
-		-DKICAD_USE_OCE="$(usex oce)"
 		-DKICAD_INSTALL_DEMOS="$(usex examples)"
 		-DCMAKE_SKIP_RPATH="ON"
 	)
