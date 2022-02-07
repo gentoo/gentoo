@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~ia64"
 
 RDEPEND="
 	dev-python/markdown-it-py[${PYTHON_USEDEP}]
