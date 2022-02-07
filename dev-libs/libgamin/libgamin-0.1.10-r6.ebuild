@@ -59,6 +59,9 @@ src_prepare() {
 	# Fix possible server deadlock in ih_sub_cancel, upstream bug #667230
 	epatch "${FILESDIR}/${PN}-0.1.10-deadlock.patch"
 
+	# Fix musl build, upstream bug #588337
+	epatch "${FILESDIR}/${PN}-0.1.10-musl-pthread.patch"
+
 	# Drop DEPRECATED flags
 	sed -i -e 's:-DG_DISABLE_DEPRECATED:$(NULL):g' server/Makefile.am || die
 
