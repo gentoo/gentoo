@@ -73,3 +73,11 @@ src_configure() {
 
 	cmake_src_configure
 }
+
+src_install() {
+	cmake_src_install
+
+	newenvd - 99${PN}3 <<-EOF
+		LDPATH=${EPREFIX}/usr/$(get_libdir)/${MY_PN}-3
+	EOF
+}
