@@ -49,23 +49,25 @@ PATCHES=(
 )
 
 QA_FLAGS_IGNORED=(
-	/usr/lib64/why3/commands/why3shell
-	/usr/lib64/why3/commands/why3extract
-	/usr/lib64/why3/commands/why3execute
-	/usr/lib64/why3/commands/why3prove
-	/usr/lib64/why3/commands/why3wc
-	/usr/lib64/why3/commands/why3doc
-	/usr/lib64/why3/commands/why3replay
-	/usr/lib64/why3/commands/why3webserver
+	/usr/lib64/why3/commands/why3shell.cmxs
+	/usr/lib64/why3/commands/why3extract.cmxs
+	/usr/lib64/why3/commands/why3execute.cmxs
+	/usr/lib64/why3/commands/why3prove.cmxs
+	/usr/lib64/why3/commands/why3wc.cmxs
+	/usr/lib64/why3/commands/why3doc.cmxs
+	/usr/lib64/why3/commands/why3replay.cmxs
+	/usr/lib64/why3/commands/why3webserver.cmxs
+	/usr/lib64/why3/commands/why3pp.cmxs
+	/usr/lib64/why3/commands/why3show.cmxs
 	/usr/lib64/why3/plugins/'.*'.cmxs
 	/usr/lib64/ocaml/why3/why3.cmxs
 	/usr/lib64/ocaml/why3/why3extract.cmxs
 	/usr/bin/why3
-	/usr/bin/why3config
-	/usr/bin/why3session
+	/usr/bin/why3config.cmxs
+	/usr/bin/why3session.cmxs
 	/usr/bin/gnat_server
 	/usr/bin/gnatwhy3
-	/usr/bin/why3realize
+	/usr/bin/why3realize.cmxs
 )
 
 REQUIRED_USE="html? ( doc )"
@@ -107,7 +109,7 @@ src_install() {
 	local cmdPath=/usr/$(get_libdir)/why3/commands
 	dosym ../why3server ${cmdPath}/why3server
 	# Remove duplicated files
-	for filename in config ide realize server session; do
+	for filename in config.cmxs ide.cmxs realize.cmxs server session.cmxs; do
 		if [[ -e "${D}"${cmdPath}/why3${filename} ]]; then
 			rm "${D}"${cmdPath}/why3${filename}
 			dosym ../../../bin/why3${filename} ${cmdPath}/why3${filename}
