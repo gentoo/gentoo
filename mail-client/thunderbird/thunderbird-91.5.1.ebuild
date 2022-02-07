@@ -38,7 +38,7 @@ MOZ_PV_DISTFILES="${MOZ_PV}${MOZ_PV_SUFFIX}"
 MOZ_P_DISTFILES="${MOZ_PN}-${MOZ_PV_DISTFILES}"
 
 inherit autotools check-reqs desktop flag-o-matic gnome2-utils \
-	llvm multiprocessing pax-utils python-any-r1 toolchain-funcs \
+	llvm multiprocessing optfeature pax-utils python-any-r1 toolchain-funcs \
 	virtualx xdg
 
 MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${MOZ_PN}/releases/${MOZ_PV}"
@@ -1130,4 +1130,7 @@ pkg_postinst() {
 		elog "If you still want to be able to select between running Mozilla ${PN^}"
 		elog "on X11 or Wayland, you have to re-create these shortcuts on your own."
 	fi
+
+	optfeature_header "Optional runtime features:"
+	optfeature "encrypted chat support" net-libs/libotr
 }
