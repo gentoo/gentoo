@@ -3,8 +3,7 @@
 
 EAPI=8
 
-# TODO: py310 - blocked by <=dev-util/yamllint-1.26.3
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 inherit distutils-r1 optfeature
