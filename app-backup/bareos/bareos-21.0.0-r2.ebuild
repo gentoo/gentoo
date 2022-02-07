@@ -332,21 +332,16 @@ src_install() {
 	myscripts="bareos-fd"
 	if ! use clientonly; then
 		if use director; then
-			myscripts+=" bareos-dir-21"
+			myscripts+=" bareos-dir"
 		fi
 		if use storage-daemon; then
 			myscripts+=" bareos-sd"
 		fi
 	fi
 	for script in ${myscripts}; do
-		# copy over init script and config to a temporary location
-		# so we can modify them as needed
-		cp "${FILESDIR}/${script}".confd "${T}/${script}".confd || die "failed to copy ${script}.confd"
-		cp "${FILESDIR}/${script}".initd "${T}/${script}".initd || die "failed to copy ${script}.initd"
-
 		# install init script and config
-		newinitd "${T}/${script}".initd "${script/-21/}"
-		newconfd "${T}/${script}".confd "${script/-21/}"
+		newinitd "${FILESDIR}/${script}-21".initd "${script}"
+		newconfd "${FILESDIR}/${script}-21".confd "${script}"
 	done
 
 	# install systemd unit files
