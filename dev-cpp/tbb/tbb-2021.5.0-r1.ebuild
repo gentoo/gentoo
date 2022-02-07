@@ -30,6 +30,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2021.4.0-missing-TBB_machine_fetchadd4.patch
 	# need to verify this is in master
 	"${FILESDIR}"/${PN}-2021.5.0-musl-mallinfo.patch
+	# musl again, should be in.. 2022?
+	"${FILESDIR}"/${PN}-2021.5.0-musl-setcontext.patch
 )
 
 src_configure() {
