@@ -13,6 +13,6 @@ SRC_URI="https://github.com/hukkin/mdurl/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 distutils_enable_tests pytest
