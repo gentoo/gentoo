@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,6 +20,10 @@ BDEPEND="man? ( app-text/scdoc )"
 # segfault needs investigation
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1-respect-CFLAGS.patch
+)
+
 src_compile() {
 	tc-export AR CC
 
@@ -39,11 +43,11 @@ src_compile() {
 		arch="$(uname -m)"
 	fi
 
-	emake ARCH="${arch}" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" all $(usev man 'docs')
+	emake ARCH="${arch}" LDFLAGS="${LDFLAGS}" all $(usev man 'docs')
 }
 
 src_test() {
-	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" check
+	emake LDFLAGS="${LDFLAGS}" check
 }
 
 src_install() {
