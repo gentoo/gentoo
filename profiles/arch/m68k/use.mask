@@ -52,8 +52,9 @@ lua_targets_lua5-3
 lua_single_target_lua5-3
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-27)
-# MPI isn't very useful on an architecture that doesn't support SMP.
+# m68k simply doesn't support SMP.
 mpi
+smp
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-19)
 # I tried Mesa under qemu-system-m68k with VirtIO-GPU. It didn't work.
