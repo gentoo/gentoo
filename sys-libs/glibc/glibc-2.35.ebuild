@@ -898,21 +898,9 @@ glibc_do_configure() {
 	echo
 	local myconf=()
 
-	case ${CTARGET} in
-		m68k*)
-			# setjmp() is not compatible with stack protection:
-			# https://sourceware.org/PR24202
-			myconf+=( --enable-stack-protector=no )
-			;;
-		*)
-			# Use '=strong' instead of '=all' to protect only functions
-			# worth protecting from stack smashes.
-			# '=all' is also known to have a problem in IFUNC resolution
-			# tests: https://sourceware.org/PR25680, bug #712356.
-			myconf+=( --enable-stack-protector=$(usex ssp strong no) )
-			;;
-	esac
-	myconf+=( --enable-stackguard-randomization )
+	# Use '=strong' instead of '=all' to protect only functions
+	# worth protecting from stack smashes.
+	myconf+=( --enable-stack-protector=$(usex ssp strong no) )
 
 	# Keep a whitelist of targets supporing IFUNC. glibc's ./configure
 	# is not robust enough to detect proper support:
