@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,6 +27,16 @@ DOCS=( README.md COPYING CHANGELOG )
 PATCHES=( "${FILESDIR}/${PN}-1.10.3-disable-Werror.patch"
 	  "${FILESDIR}/${PN}-1.10.3-disable-strip.patch"
 	  "${FILESDIR}/${PN}-1.10.3-dont-call-toolchain-directly.patch" )
+
+pkg_setup() {
+	if tc-is-clang; then
+		eerror "tboot is a freestanding application that uses gcc"
+		eerror "extensions in fundemental ways, include VLAIS"
+		eerror "(Variable Length Arrays in Structs) and will not"
+		eerror "compile with clang witout upstream action"
+		die "Cannot compile with clang. See bug #832020"
+	fi
+}
 
 src_configure() {
 	tc-export AS LD CC CPP AR RANLIB NM OBJCOPY OBJDUMP STRIP
