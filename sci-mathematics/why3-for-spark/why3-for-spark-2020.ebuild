@@ -29,7 +29,6 @@ DEPEND=">=dev-lang/ocaml-4.09.0:=[ocamlopt=]
 	doc? (
 		dev-tex/rubber
 		dev-python/sphinx
-		dev-python/sphinxcontrib-bibtex
 		media-gfx/graphviz
 		dev-python/sphinxcontrib-bibtex
 	)
