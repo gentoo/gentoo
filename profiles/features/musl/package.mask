@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paolo Pedroni <paolo.pedroni@iol.it> (2022-02-09)
+# It doesn't build on musl
+# bug #832551
+net-misc/netkit-telnetd
+
 # Henning Schild <henning@hennsch.de> (2022-02-09)
 # Binary package linked to glibc
 net-im/telegram-desktop-bin
