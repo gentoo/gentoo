@@ -82,7 +82,7 @@ python_configure_all() {
 	# setup.py won't let us add the right toolchain paths but it does
 	# accept additional ones from INCLUDE and LIB so set these. You
 	# wouldn't normally need these at all as the toolchain should look
-	# here anyway but this setup.py does stupid things.
+	# here anyway but it doesn't for this setup.py.
 	export \
 		INCLUDE="${ESYSROOT}"/usr/include \
 		LIB="${ESYSROOT}"/usr/$(get_libdir)
