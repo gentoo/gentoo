@@ -33,4 +33,3 @@ RDEPEND="${DEPEND}"
 
 # https://mail.kde.org/pipermail/distributions/2022-February/001124.html
 PATCHES=( "${FILESDIR}/${PN}-21.08.3-fix-ProvidersUrl.patch" )
-
