@@ -101,5 +101,4 @@ src_configure() {
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
-	rm -f "${ED}/etc/grub.d/15_ostree"
 }
