@@ -24,6 +24,7 @@ KEYWORDS="-* ~amd64 ~x86"
 RDEPEND="
 	>=virtual/jre-1.8:*
 	media-libs/mesa
+	sys-libs/glibc
 	x11-libs/libdrm
 	x11-libs/libX11
 	x11-libs/libXrender
