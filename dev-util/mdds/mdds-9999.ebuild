@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ DESCRIPTION="Collection of multi-dimensional data structure and indexing algorit
 HOMEPAGE="https://gitlab.com/mdds/mdds"
 
 LICENSE="MIT"
-SLOT="1/${PV%.*}" # Check API version on version bumps!
+SLOT="1/2.0" # Check API version on version bumps!
 IUSE="doc openmp valgrind test"
 RESTRICT="!test? ( test )"
 
