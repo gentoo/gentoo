@@ -54,3 +54,7 @@ src_configure() {
 
 	cmake-multilib_src_configure
 }
+
+src_test() {
+	cmake-multilib_src_test -j1
+}
