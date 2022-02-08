@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2022-02-08)
+# Not maintained, open bugs, upstream outdated.
+# Removal after 2022-07-01.  Bug #832953.
+x11-misc/easystroke
+
 # Zoltan Puskas <zoltan@sinustrom.info> (2022-02-07)
 # Fork of sci-libs/opencascade. Upstream unmaintained due to opencascade
 # becoming community friendly and making this fork obsolete. Recommends moving
