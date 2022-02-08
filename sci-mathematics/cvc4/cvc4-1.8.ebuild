@@ -23,7 +23,11 @@ RDEPEND="dev-libs/antlr-c
 	cln? ( sci-libs/cln )
 	!cln? ( dev-libs/gmp:= )"
 DEPEND="${RDEPEND}"
-BDEPEND="${PYTHON_DEPS}"
+BDEPEND="${PYTHON_DEPS}
+	$(python_gen_any_dep '
+		dev-python/toml[${PYTHON_USEDEP}]
+	')
+"
 
 S="${WORKDIR}"/${PN^^}-archived-${PV}
 
