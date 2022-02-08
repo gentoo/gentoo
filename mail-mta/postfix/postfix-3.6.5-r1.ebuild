@@ -57,10 +57,6 @@ REQUIRED_USE="ldap-bind? ( ldap sasl )"
 
 S="${WORKDIR}/${MY_SRC}"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-glibc-2.34.patch"
-)
-
 src_prepare() {
 	default
 	sed -i -e "/^#define ALIAS_DB_MAP/s|:/etc/aliases|:/etc/mail/aliases|" \
