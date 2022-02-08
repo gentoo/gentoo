@@ -86,6 +86,7 @@ media-video/popcorntime-bin
 net-im/rocketchat-desktop-bin
 net-im/whatsapp-desktop-bin
 sci-misc/jupyterlab-desktop-bin
+sci-misc/netlogo-bin
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-04)
 # Emacs 23 does not support x86_64-gentoo-linux-musl systems
