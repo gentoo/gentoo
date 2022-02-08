@@ -98,6 +98,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.0.0-backend-default.patch
+	"${FILESDIR}"/${PN}-10.0.0-test-deps.patch
 )
 
 src_configure() {
