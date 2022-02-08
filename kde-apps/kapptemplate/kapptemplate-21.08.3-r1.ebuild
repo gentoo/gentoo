@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,3 +30,6 @@ DEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 "
 RDEPEND="${DEPEND}"
+
+# https://mail.kde.org/pipermail/distributions/2022-February/001124.html
+PATCHES=( "${FILESDIR}/${P}-fix-ProvidersUrl.patch" )
