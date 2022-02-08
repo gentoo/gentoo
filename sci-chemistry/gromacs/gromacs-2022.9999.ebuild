@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 DISTUTILS_USE_SETUPTOOLS=no
 DISTUTILS_SINGLE_IMPL=1
@@ -41,7 +41,7 @@ IUSE="blas cuda +custom-cflags +doc build-manual double-precision +fftw +gmxapi 
 
 CDEPEND="
 	blas? ( virtual/blas )
-	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.14[profiler] )
+	cuda? ( >=dev-util/nvidia-cuda-toolkit-11[profiler] )
 	opencl? ( virtual/opencl )
 	fftw? ( sci-libs/fftw:3.0= )
 	hwloc? ( sys-apps/hwloc:= )
@@ -51,7 +51,6 @@ CDEPEND="
 	sci-libs/lmfit:=
 	>=dev-cpp/muParser-2.3:=
 	${PYTHON_DEPS}
-	!sci-chemistry/gmxapi
 	"
 BDEPEND="${CDEPEND}
 	virtual/pkgconfig
@@ -235,7 +234,7 @@ src_configure() {
 		use opencl && gpu=( "-DGMX_GPU=OPENCL" )
 		mycmakeargs=(
 			${mycmakeargs_pre[@]} ${p}
-			-DGMX_MPI=OFF
+			-DGMX_MPI=$(usex mpi)
 			-DGMX_THREAD_MPI=$(usex threads)
 			-DGMXAPI=$(usex gmxapi)
 			-DGMX_INSTALL_LEGACY_API=$(usex gmxapi-legacy)
@@ -248,25 +247,6 @@ src_configure() {
 		BUILD_DIR="${WORKDIR}/${P}_${x}" cmake_src_configure
 		[[ ${CHOST} != *-darwin* ]] || \
 		  sed -i '/SET(CMAKE_INSTALL_NAME_DIR/s/^/#/' "${WORKDIR}/${P}_${x}/gentoo_rules.cmake" || die
-		use mpi || continue
-		einfo "Configuring for ${x} precision with mpi"
-		mycmakeargs=(
-			${mycmakeargs_pre[@]} ${p}
-			-DGMX_THREAD_MPI=OFF
-			-DGMX_MPI=ON
-			-DGMX_OPENMM=OFF
-			-DGMXAPI=OFF
-			"${opencl[@]}"
-			"${cuda[@]}"
-			-DGMX_BUILD_MDRUN_ONLY=ON
-			-DBUILD_SHARED_LIBS=OFF
-			-DGMX_BUILD_MANUAL=OFF
-			-DGMX_BINARY_SUFFIX="_mpi${suffix}"
-			-DGMX_LIBS_SUFFIX="_mpi${suffix}"
-			)
-		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi" CC="mpicc" cmake_src_configure
-		[[ ${CHOST} != *-darwin* ]] || \
-		  sed -i '/SET(CMAKE_INSTALL_NAME_DIR/s/^/#/' "${WORKDIR}/${P}_${x}_mpi/gentoo_rules.cmake" || die
 	done
 }
 
@@ -286,10 +266,6 @@ src_compile() {
 			BUILD_DIR="${WORKDIR}/${P}_${x}"\
 				cmake_src_compile manual
 		fi
-		use mpi || continue
-		einfo "Compiling for ${x} precision with mpi"
-		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi"\
-			cmake_src_compile
 	done
 }
 
@@ -317,10 +293,6 @@ src_install() {
 				newdoc "${DISTDIR}/manual-${PV}.pdf" "${PN}-manual-${PV}.pdf"
 			fi
 		fi
-
-		use mpi || continue
-		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi" \
-			cmake_src_install
 	done
 
 	if use tng; then
