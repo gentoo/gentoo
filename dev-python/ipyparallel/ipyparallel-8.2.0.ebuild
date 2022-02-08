@@ -49,6 +49,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.1.0-test-timeouts.patch
 )
 
+src_configure() {
+	export IPP_DISABLE_JS=1
+}
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# we don't run a mongo instance for tests
