@@ -12,6 +12,7 @@ StartupNotify=true
 Categories=Network;WebBrowser;
 Keywords=web;browser;internet;
 Actions=new-window;new-private-window;
+StartupWMClass=firefox
 
 [Desktop Action new-window]
 Name=Open a New Window
