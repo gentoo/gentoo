@@ -1,0 +1,211 @@
+Based on https://src.fedoraproject.org/rpms/blender/blob/rawhide/f/blender-openexr.patch
+
+The issue is that our dependencies are fragile and want to be linked againt OpenEXR 3
+usually, and we've had to give in and go with it. The patches needed to Blender to
+make it go with this (outside of issues related to slotting and adapting to it)
+are simple, and will hopefuly bring less pain / build errors / etc than before.
+diff --git a/build_files/cmake/Modules/FindOpenEXR.cmake b/build_files/cmake/Modules/FindOpenEXR.cmake
+index 09af546..dfe15cd 100644
+--- a/build_files/cmake/Modules/FindOpenEXR.cmake
++++ b/build_files/cmake/Modules/FindOpenEXR.cmake
+@@ -33,6 +33,17 @@ ENDIF()
+ # Old versions (before 2.0?) do not have any version string, just assuming this should be fine though.
+ SET(_openexr_libs_ver_init "2.0")
+ 
++find_package(Imath CONFIG QUIET)
++if(TARGET Imath::Imath)
++SET(_openexr_FIND_COMPONENTS
++  Imath
++  Iex
++  OpenEXR
++  IlmThread
++)
++
++else()
++
+ SET(_openexr_FIND_COMPONENTS
+   Half
+   Iex
+@@ -41,6 +52,8 @@ SET(_openexr_FIND_COMPONENTS
+   Imath
+ )
+ 
++endif()
++
+ SET(_openexr_SEARCH_DIRS
+   ${OPENEXR_ROOT_DIR}
+   /opt/lib/openexr
+@@ -48,7 +61,8 @@ SET(_openexr_SEARCH_DIRS
+ 
+ FIND_PATH(OPENEXR_INCLUDE_DIR
+   NAMES
+-    OpenEXR/ImfXdr.h
++    OpenEXR-3/ImfXdr.h
++    OpenEXR/ImfXdr.h
+   HINTS
+     ${_openexr_SEARCH_DIRS}
+   PATH_SUFFIXES
+@@ -65,6 +79,7 @@ IF(OPENEXR_INCLUDE_DIR)
+       PATHS
+         "${OPENEXR_INCLUDE_DIR}"
++        "${OPENEXR_INCLUDE_DIR}/OpenEXR-3"
+         "${OPENEXR_INCLUDE_DIR}/OpenEXR"
+       NO_DEFAULT_PATH
+     )
+ 
+@@ -120,7 +135,10 @@ FIND_PACKAGE_HANDLE_STANDARD_ARGS(OpenEXR  DEFAULT_MSG
+ IF(OPENEXR_FOUND)
+   SET(OPENEXR_LIBRARIES ${_openexr_LIBRARIES})
+   # Both include paths are needed because of dummy OSL headers mixing #include <OpenEXR/foo.h> and #include <foo.h> :(
+-  SET(OPENEXR_INCLUDE_DIRS ${OPENEXR_INCLUDE_DIR} ${OPENEXR_INCLUDE_DIR}/OpenEXR)
++  SET(OPENEXR_INCLUDE_DIRS ${OPENEXR_INCLUDE_DIR} ${OPENEXR_INCLUDE_DIR}/OpenEXR-3)
++  if(TARGET Imath::Imath)
++    list(APPEND OPENEXR_INCLUDE_DIRS ${OPENEXR_INCLUDE_DIR}/Imath-3)
++  endif()
+ ENDIF()
+ 
+ MARK_AS_ADVANCED(
+https://src.fedoraproject.org/rpms/blender/raw/rawhide/f/blender-openexr.patch
+--- blender-2.93.3.orig/source/blender/imbuf/intern/openexr/openexr_api.cpp
++++ blender-2.93.3/source/blender/imbuf/intern/openexr/openexr_api.cpp
+@@ -32,30 +32,31 @@
+ #include <stdexcept>
+ #include <string>
+ 
+-#include <Iex.h>
++#include <OpenEXR-3/Iex.h>
+ #include <ImathBox.h>
+-#include <ImfArray.h>
+-#include <ImfChannelList.h>
+-#include <ImfCompression.h>
+-#include <ImfCompressionAttribute.h>
+-#include <ImfIO.h>
+-#include <ImfInputFile.h>
+-#include <ImfOutputFile.h>
+-#include <ImfPixelType.h>
+-#include <ImfStandardAttributes.h>
+-#include <ImfStringAttribute.h>
+-#include <ImfVersion.h>
+-#include <half.h>
++#include <OpenEXR-3/ImfArray.h>
++#include <OpenEXR-3/ImfFrameBuffer.h>
++#include <OpenEXR-3/ImfChannelList.h>
++#include <OpenEXR-3/ImfCompression.h>
++#include <OpenEXR-3/ImfCompressionAttribute.h>
++#include <OpenEXR-3/ImfIO.h>
++#include <OpenEXR-3/ImfInputFile.h>
++#include <OpenEXR-3/ImfOutputFile.h>
++#include <OpenEXR-3/ImfPixelType.h>
++#include <OpenEXR-3/ImfStandardAttributes.h>
++#include <OpenEXR-3/ImfStringAttribute.h>
++#include <OpenEXR-3/ImfVersion.h>
++#include <Imath-3/half.h>
+ 
+ /* multiview/multipart */
+-#include <ImfInputPart.h>
+-#include <ImfMultiPartInputFile.h>
+-#include <ImfMultiPartOutputFile.h>
+-#include <ImfMultiView.h>
+-#include <ImfOutputPart.h>
+-#include <ImfPartHelper.h>
+-#include <ImfPartType.h>
+-#include <ImfTiledOutputPart.h>
++#include <OpenEXR-3/ImfInputPart.h>
++#include <OpenEXR-3/ImfMultiPartInputFile.h>
++#include <OpenEXR-3/ImfMultiPartOutputFile.h>
++#include <OpenEXR-3/ImfMultiView.h>
++#include <OpenEXR-3/ImfOutputPart.h>
++#include <OpenEXR-3/ImfPartHelper.h>
++#include <OpenEXR-3/ImfPartType.h>
++#include <OpenEXR-3/ImfTiledOutputPart.h>
+ 
+ #include "DNA_scene_types.h" /* For OpenEXR compression constants */
+ 
+@@ -131,12 +132,12 @@ class IMemStream : public Imf::IStream {
+     return false;
+   }
+ 
+-  Int64 tellg() override
++  uint64_t tellg() override
+   {
+     return _exrpos;
+   }
+ 
+-  void seekg(Int64 pos) override
++  void seekg(uint64_t pos) override
+   {
+     _exrpos = pos;
+   }
+@@ -146,8 +147,8 @@ class IMemStream : public Imf::IStream {
+   }
+ 
+  private:
+-  Int64 _exrpos;
+-  Int64 _exrsize;
++  uint64_t _exrpos;
++  uint64_t _exrsize;
+   unsigned char *_exrbuf;
+ };
+ 
+@@ -182,12 +183,12 @@ class IFileStream : public Imf::IStream
+     return check_error();
+   }
+ 
+-  Int64 tellg() override
++  uint64_t tellg() override
+   {
+     return std::streamoff(ifs.tellg());
+   }
+ 
+-  void seekg(Int64 pos) override
++  void seekg(uint64_t pos) override
+   {
+     ifs.seekg(pos);
+     check_error();
+@@ -231,19 +232,19 @@ class OMemStream : public OStream {
+     ibuf->encodedsize += n;
+   }
+ 
+-  Int64 tellp() override
++  uint64_t tellp() override
+   {
+     return offset;
+   }
+ 
+-  void seekp(Int64 pos) override
++  void seekp(uint64_t pos) override
+   {
+     offset = pos;
+     ensure_size(offset);
+   }
+ 
+  private:
+-  void ensure_size(Int64 size)
++  void ensure_size(uint64_t size)
+   {
+     /* if buffer is too small increase it. */
+     while (size > ibuf->encodedbuffersize) {
+@@ -254,7 +255,7 @@ class OMemStream : public OStream {
+   }
+ 
+   ImBuf *ibuf;
+-  Int64 offset;
++  uint64_t offset;
+ };
+ 
+ /* File Output Stream */
+@@ -284,12 +285,12 @@ class OFileStream : public OStream {
+     check_error();
+   }
+ 
+-  Int64 tellp() override
++  uint64_t tellp() override
+   {
+     return std::streamoff(ofs.tellp());
+   }
+ 
+-  void seekp(Int64 pos) override
++  void seekp(uint64_t pos) override
+   {
+     ofs.seekp(pos);
+     check_error();
