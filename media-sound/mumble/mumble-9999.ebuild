@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.mumble.info"
 if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mumble-voip/mumble.git"
-	EGIT_SUBMODULES=( '-*' celt-0.7.0-src celt-0.11.0-src themes/Mumble 3rdparty/rnnoise-src 3rdparty/FindPythonInterpreter )
+	EGIT_SUBMODULES=( '-*' celt-0.7.0-src celt-0.11.0-src themes/Mumble 3rdparty/rnnoise-src 3rdparty/FindPythonInterpreter 3rdparty/tracy )
 else
 	if [[ "${PV}" == *_pre* ]] ; then
 		SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${P}.tar.xz"
@@ -68,6 +68,8 @@ BDEPEND="
 "
 
 src_prepare() {
+	sed '/TRACY_ON_DEMAND/s@ ON @ OFF @' -i src/CMakeLists.txt || die
+
 	# required because of xdg.eclass also providing src_prepare
 	cmake_src_prepare
 }
@@ -76,7 +78,6 @@ src_configure() {
 
 	local mycmakeargs=(
 		-Dalsa="$(usex alsa)"
-		-Dtests="$(usex test)"
 		-Dbundled-celt="ON"
 		-Dbundled-opus="OFF"
 		-Dbundled-speex="OFF"
@@ -91,6 +92,8 @@ src_configure() {
 		-Drnnoise="$(usex rnnoise)"
 		-Dserver="OFF"
 		-Dspeechd="$(usex speech)"
+		-Dtests="$(usex test)"
+		-Dtracy="OFF"
 		-Dtranslations="$(usex nls)"
 		-Dupdate="OFF"
 		-Dwarnings-as-errors="OFF"
