@@ -111,23 +111,10 @@ src_configure() {
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 	)
 	if use occ; then
-		if has_version "~sci-libs/opencascade-7.5.2"; then
-			mycmakeargs+=(
-				-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade-7.5.2
-				-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/opencascade-7.5.2
-			)
-		elif has_version "~sci-libs/opencascade-7.5.1"; then
-			mycmakeargs+=(
-				-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade-7.5.1
-				-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/opencascade-7.5.1
-			)
-		else
-			# <occ-7.5 uses different layout
-			mycmakeargs+=(
-				-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
-				-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)
-			)
-		fi
+		mycmakeargs+=(
+			-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
+			-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/opencascade
+		)
 	fi
 
 	cmake_src_configure
