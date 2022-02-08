@@ -32,7 +32,7 @@ RDEPEND="${COMMON_DEPEND}"
 
 src_prepare() {
 	# Delete the lines in CMakeLists.txt that install the man page.
-	sed -i "31,42d" CMakeLists.txt || die
+	sed -i "45,56d" CMakeLists.txt || die
 	default
 	cmake_src_prepare
 }
