@@ -348,11 +348,6 @@ net-analyzer/jmx2munin
 # This is likely to cause issues in tests; Unmask if using for other purposes
 >=dev-php/PHP_Timer-5.0
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-01-07)
-# Unmaintained, cmake warnings, QA notices, weird build error, no revdeps.
-# Removal on 2022-02-06. Bug #830727
-net-libs/jreen
-
 # Florian Schmaus <flow@gentoo.org> (2022-01-02)
 # Unmaintained, upstream gone, only packaged by
 # Gentoo, and the whole idea to unlock based on
