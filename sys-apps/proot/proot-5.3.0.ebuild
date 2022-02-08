@@ -21,6 +21,7 @@ RDEPEND="care? ( app-arch/libarchive:0= )
 BDEPEND="dev-python/docutils"
 DEPEND="${RDEPEND}
 	care? ( dev-libs/uthash )
+	elibc_musl? ( sys-libs/queue-standalone )
 	test? ( dev-util/valgrind )"
 
 # Breaks sandbox
