@@ -54,6 +54,13 @@ x11-misc/i855crt
 # Removal after 2022-02-24.
 sys-apps/smc-sum-driver
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-02-09)
+# No longer maintained upstream.
+# Upstream recommends Airline 2 or Picocli as a replacement.
+# https://github.com/airlift/airline/#warning-deprecated-warning
+# Removal in 30 days.
+dev-java/airline
+
 # Jonas Stein <jstein@gentoo.org> (2022-02-09)
 # Upstream is 404, open bugs, not maintained.
 # Removal after 2022-05-01.  Bug #832954.
