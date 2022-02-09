@@ -29,6 +29,7 @@ RDEPEND="
 "
 BDEPEND="
 	app-text/yelp-tools
+	dev-util/glib-utils
 	dev-util/gtk-doc-am
 	sys-devel/flex
 	>=sys-devel/gettext-0.19.7
