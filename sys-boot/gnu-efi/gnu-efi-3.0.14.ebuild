@@ -1,4 +1,4 @@
-# Copyright 2004-2021 Gentoo Authors
+# Copyright 2004-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/gnu-efi/${P}.tar.bz2"
 # - GPL-2+ : setjmp_ia32.S
 LICENSE="GPL-2+ BSD BSD-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm ~arm64 ~ia64 ~x86"
+KEYWORDS="-* ~amd64 ~arm ~arm64 ~ia64 ~riscv ~x86"
 IUSE="abi_x86_32 abi_x86_64 custom-cflags"
 
 # These objects get run early boot (i.e. not inside of Linux),
@@ -38,6 +38,7 @@ efimake() {
 		aarch64*) arch=aarch64 ;;
 		ia64*) arch=ia64 ;;
 		i?86*) arch=ia32 ;;
+		riscv64*) arch=riscv64;;
 		x86_64*) arch=x86_64 ;;
 		*) die "Unknown CHOST" ;;
 	esac
