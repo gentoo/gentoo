@@ -1,14 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools xdg
 
-DESCRIPTION="A portable Nintendo Entertainment System emulator written in C++"
+DESCRIPTION="Portable Nintendo Entertainment System emulator written in C++"
 HOMEPAGE="http://0ldsk00l.ca/nestopia/"
 
-if [[ ${PV} == *9999 ]]; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/0ldsk00l/nestopia.git"
 else
@@ -22,15 +22,18 @@ IUSE="doc"
 
 RDEPEND="
 	app-arch/libarchive:=
-	media-libs/libepoxy
-	media-libs/libsdl2[sound,joystick,video]
-	sys-libs/zlib
-	x11-libs/gtk+:3"
+	media-libs/libglvnd
+	media-libs/libsdl2[joystick,sound]
+	sys-libs/zlib:=
+	x11-libs/fltk:1[opengl]"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	sys-devel/autoconf-archive
+	virtual/pkgconfig"
 
 src_prepare() {
 	default
+
 	eautoreconf
 }
 
