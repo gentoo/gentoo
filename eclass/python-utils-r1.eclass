@@ -1178,7 +1178,7 @@ python_export_utf8_locale() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	# If the locale program isn't available, just return.
-	type locale >/dev/null || return 0
+	type locale &>/dev/null || return 0
 
 	if [[ $(locale charmap) != UTF-8 ]]; then
 		# Try English first, then everything else.
