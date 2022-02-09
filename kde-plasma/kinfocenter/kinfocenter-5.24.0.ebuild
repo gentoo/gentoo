@@ -72,7 +72,7 @@ pkg_postinst() {
 	fi
 	optfeature "Wayland information module" app-misc/wayland-utils
 	optfeature "OpenGL information module" x11-apps/mesa-progs
-	optfeature "PCI devices information module" sys-apps/pciutil
+	optfeature "PCI devices information module" sys-apps/pciutils
 	optfeature "X Server information module" x11-apps/xdpyinfo
 	ecm_pkg_postinst
 }
