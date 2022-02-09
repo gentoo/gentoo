@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ CONFVER="1.9"
 DESCRIPTION="Enhanced version of the Berkeley C shell (csh)"
 HOMEPAGE="https://www.tcsh.org/"
 SRC_URI="
-	ftp://ftp.astron.com/pub/tcsh/${P}.tar.gz
+	ftp://ftp.astron.com/pub/tcsh/old/${P}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/tcsh-gentoo-patches-r${CONFVER}.tar.bz2"
 
 LICENSE="BSD"
