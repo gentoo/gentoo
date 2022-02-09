@@ -661,6 +661,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="gui"
 
+# Quite a few tests require Internet access
+PROPERTIES="test_network"
+RESTRICT="test"
+
 RDEPEND="app-crypt/libsecret"
 DEPEND="${RDEPEND}"
 
