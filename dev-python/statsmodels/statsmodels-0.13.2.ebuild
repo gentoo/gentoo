@@ -68,6 +68,7 @@ python_test() {
 import statsmodels
 statsmodels.test(extra_args=['-vv', '-n', '${jobs}'], exit=True)" \
 		|| die "tests fail with ${EPYTHON}"
+	rm -rf statsmodels/.pytest_cache || die
 	popd >/dev/null || die
 }
 
