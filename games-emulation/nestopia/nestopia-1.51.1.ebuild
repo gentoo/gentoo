@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools xdg
+inherit autotools flag-o-matic xdg
 
 DESCRIPTION="Portable Nintendo Entertainment System emulator written in C++"
 HOMEPAGE="http://0ldsk00l.ca/nestopia/"
@@ -38,5 +38,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# silence the narrowing warnings on clang (#830469)
+	append-cxxflags -Wno-narrowing
+
 	econf $(use_enable doc)
 }
