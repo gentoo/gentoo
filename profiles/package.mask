@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2022-02-09)
+# Upstream is 404, open bugs, not maintained.
+# Removal after 2022-05-01.  Bug #832954.
+x11-misc/sisctrl
+
 # Jonas Stein <jstein@gentoo.org> (2022-02-08)
 # Not maintained, open bugs, upstream outdated.
 # Removal after 2022-07-01.  Bug #832953.
