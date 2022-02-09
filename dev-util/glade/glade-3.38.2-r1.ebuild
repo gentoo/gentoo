@@ -25,6 +25,7 @@ DEPEND="
 	>=x11-libs/gtk+-3.22.0:3[introspection?]
 	x11-libs/pango[introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
+	gjs? ( >=dev-libs/gjs-1.64.0 )
 	python? (
 		${PYTHON_DEPS}
 		x11-libs/gtk+:3[introspection]
