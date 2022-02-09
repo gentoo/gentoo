@@ -22,6 +22,7 @@ QA_PREBUILT="usr/bin/telegram-desktop"
 QA_DESKTOP_FILE="usr/share/applications/telegramdesktop.desktop"
 
 RDEPEND="
+	sys-libs/glibc
 	dev-libs/glib:2
 	>=media-libs/fontconfig-2.13
 	media-libs/freetype:2
