@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>alicef@gentoo.org</email>
-		<name>Alice Ferrazzi</name>
-	</maintainer>
+<!-- maintainer-needed -->
 	<longdescription>
 		Epoch is an init system (analogous to systemd or upstart)
 		for Linux by Subsentient. It is intended as a lightweight
