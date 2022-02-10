@@ -12,7 +12,7 @@ if [[ "${PV}" == *_beta* ]] ; then
 	S="${WORKDIR}/${MY_P}"
 else
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
-	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-test-198-sysval.patch.bz2"
+	SRC_URI+=" https://dev.gentoo.org/~floppym/dist/${P}-test-198-sysval-r1.patch.gz"
 	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
@@ -33,7 +33,7 @@ BDEPEND="app-arch/xz-utils
 
 PATCHES=(
 	"${FILESDIR}"/ppc-musl.patch
-	#"${WORKDIR}"/${P}-test-198-sysval.patch
+	"${WORKDIR}"/${P}-test-198-sysval-r1.patch
 )
 
 src_configure() {
