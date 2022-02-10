@@ -257,7 +257,6 @@ sci-chemistry/povscript+
 # Removal on 2022-02-11. Bug #828706. Bug #828701.
 sci-biology/repeatmasker
 sci-biology/repeatmasker-libraries
-sci-biology/rmblast
 
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
