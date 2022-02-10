@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_BRANCH="5.1"
 ECM_HANDBOOK="optional"
@@ -80,6 +80,8 @@ DEPEND="${RDEPEND}
 	dev-libs/boost
 "
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}/${P}-akonadi-21.12.0.patch" )
 
 pkg_setup() {
 	ecm_pkg_setup
