@@ -17,7 +17,8 @@ LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
 
-RDEPEND="media-libs/libpng:0=
+RDEPEND="~dev-games/irrlicht-mt-headers-${PV}
+	media-libs/libpng:0=
 	sys-libs/zlib
 	virtual/jpeg:0
 	virtual/opengl
@@ -26,4 +27,11 @@ RDEPEND="media-libs/libpng:0=
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}"/${MY_P}
+
+src_install() {
+	cmake_src_install
+
+	# We package these separately
+	rm -r "${ED}"/usr/include/${PN/-/} || die "Failed to exclude header files from installation"
+}
