@@ -28,8 +28,8 @@ Note:
 
   3) Optional: You may have come here with an already defunct akonadi service.
      To manually fix the akonadi MariaDB backend:
-     $ mysql_upgrade -S /run/user/$(id -u)/akonadi/default/mysql.socket \
-         --defaults-file=~/.local/share/akonadi/mysql.conf
+     $ mysql_upgrade --defaults-file=~/.local/share/akonadi/mysql.conf \
+         -S /run/user/$(id -u)/akonadi/mysql.socket
 
      Don't forget to restart the akonadi service afterwards:
      $ akonadictl restart
