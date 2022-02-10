@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-FIREFOX_PATCHSET="firefox-97-patches-01j.tar.xz"
+FIREFOX_PATCHSET="firefox-97-patches-02j.tar.xz"
 
 LLVM_MAX_SLOT=13
 
@@ -579,9 +579,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Don't run pip check on the host that builds firefox.
-	eapply "${FILESDIR}"/firefox-skip-pip-check.patch
-
 	use lto && rm -v "${WORKDIR}"/firefox-patches/*-LTO-Only-enable-LTO-*.patch
 	eapply "${WORKDIR}/firefox-patches"
 
@@ -707,7 +704,6 @@ src_configure() {
 		--enable-new-pass-manager \
 		--enable-official-branding \
 		--enable-release \
-		--enable-sandbox \
 		--enable-system-ffi \
 		--enable-system-pixman \
 		--host="${CBUILD:-${CHOST}}" \
@@ -733,6 +729,15 @@ src_configure() {
 
 	if ! use x86 && [[ ${CHOST} != armv*h* ]] ; then
 		mozconfig_add_options_ac '' --enable-rust-simd
+	fi
+
+	# For future keywording: This is currently (97.0) only supported on:
+	# amd64, arm, arm64 & x86.
+	# Might want to flip the logic around if Firefox is to support more arches.
+	if use ppc64; then
+		mozconfig_add_options_ac '' --disable-sandbox
+	else
+		mozconfig_add_options_ac '' --enable-sandbox
 	fi
 
 	if [[ -s "${S}/api-google.key" ]] ; then
@@ -968,6 +973,7 @@ src_configure() {
 	# Use system's Python environment
 	export MACH_USE_SYSTEM_PYTHON=1
 	export MACH_SYSTEM_ASSERTED_COMPATIBLE_WITH_MACH_SITE=1
+	export MACH_SYSTEM_ASSERTED_COMPATIBLE_WITH_BUILD_SITE=1
 	export PIP_NO_CACHE_DIR=off
 
 	# Disable notification when build system has finished
