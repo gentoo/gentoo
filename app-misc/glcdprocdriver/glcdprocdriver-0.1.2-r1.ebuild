@@ -23,6 +23,13 @@ LICENSE="GPL-2"
 DEPEND="app-misc/graphlcd-base"
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	default
+
+	# Respect users CXX
+	sed -e 's/g++/$(CXX)/g' -i Makefile || die
+}
+
 src_compile() {
 	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)"
 }
