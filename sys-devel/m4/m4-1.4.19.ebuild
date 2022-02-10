@@ -33,7 +33,7 @@ BDEPEND="app-arch/xz-utils
 
 PATCHES=(
 	"${FILESDIR}"/ppc-musl.patch
-	"${WORKDIR}"/${P}-test-198-sysval.patch
+	#"${WORKDIR}"/${P}-test-198-sysval.patch
 )
 
 src_configure() {
