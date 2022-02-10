@@ -18,6 +18,8 @@ LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
 
+RDEPEND="!<dev-games/irrlicht-mt-1.9.0.4-r1"
+
 S="${WORKDIR}"/${MY_P}
 
 src_configure() { :; }
