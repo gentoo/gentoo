@@ -33,8 +33,8 @@ REQUIRED_USE="qt5? ( cxx ) python? ( ${PYTHON_REQUIRED_USE} )"
 do_python() {
 	if use python; then
 		pushd "lang/python" > /dev/null || die
-		top_builddir="../.." srcdir="." CPP=$(tc-getCPP) distutils-r1_src_${EBUILD_PHASE}
-		popd > /dev/null
+		top_builddir="../.." srcdir="." CPP="$(tc-getCPP)" distutils-r1_src_${EBUILD_PHASE}
+		popd > /dev/null || die
 	fi
 }
 
@@ -54,7 +54,7 @@ src_prepare() {
 
 	# Make best effort to allow longer PORTAGE_TMPDIR
 	# as usock limitation fails build/tests
-	ln -s "${P}" "${WORKDIR}/b"
+	ln -s "${P}" "${WORKDIR}/b" || die
 	S="${WORKDIR}/b"
 }
 
@@ -74,7 +74,7 @@ src_configure() {
 		--enable-languages="${languages[*]}" \
 		$(use_enable static-libs static)
 
-	use python && make -C lang/python prepare
+	use python && emake -C lang/python prepare
 
 	do_python
 }
