@@ -142,8 +142,15 @@ case ${PV} in
 			PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
 		)
 		;;
-	*)
+	14*)
 		ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY M68k )
+		ALL_LLVM_PRODUCTION_TARGETS=(
+			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
+			PowerPC RISCV Sparc SystemZ VE WebAssembly X86 XCore
+		)
+		;;
+	*)
+		ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY LoongArch M68k )
 		ALL_LLVM_PRODUCTION_TARGETS=(
 			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
 			PowerPC RISCV Sparc SystemZ VE WebAssembly X86 XCore
