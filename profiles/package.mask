@@ -279,12 +279,6 @@ dev-java/args4j
 # Removal on 2022-02-11. Bug #828682.
 sys-cluster/projections
 
-# Jakov Smolić <jsmolic@gentoo.org> (2022-01-12)
-# Dead upstream, unmaintained, uses EAPI 5,
-# numerous open bugs, fails to compile.
-# Removal on 2022-02-11. Bug #828692.
-sci-visualization/gri
-
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
 # This is likely to cause issues in tests; Unmask if using for other purposes
