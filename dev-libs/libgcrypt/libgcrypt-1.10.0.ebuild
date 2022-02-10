@@ -38,6 +38,8 @@ BDEPEND="doc? ( virtual/texi2dvi )
 PATCHES=(
 	"${FILESDIR}"/${PN}-multilib-syspath.patch
 	"${FILESDIR}"/${PN}-powerpc-darwin.patch
+
+	"${FILESDIR}"/${P}-musl-jitterentropy-includes.patch
 )
 
 MULTILIB_CHOST_TOOLS=(
