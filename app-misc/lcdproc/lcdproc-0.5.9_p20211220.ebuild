@@ -107,8 +107,6 @@ DEPEND="
 
 DOCS=( "CREDITS.md" "TODO" )
 
-PATCHES=( "${FILESDIR}/${PN}-0.5.9-use-freetype2-pkg-config.patch" )
-
 src_prepare() {
 	default
 
