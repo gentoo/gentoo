@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit optfeature python-single-r1 tmpfiles xdg-utils
 
@@ -66,4 +66,5 @@ pkg_postinst() {
 	optfeature_header
 	optfeature "Optimize for power saving by spinning-down rotational disks" sys-apps/hdparm
 	optfeature "Get hardware info" sys-apps/dmidecode
+	optfeature "Optimize network txqueuelen" sys-apps/iproute2
 }

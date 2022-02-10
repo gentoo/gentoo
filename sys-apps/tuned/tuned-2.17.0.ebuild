@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit python-single-r1 tmpfiles xdg-utils
+inherit optfeature python-single-r1 tmpfiles xdg-utils
 
 DESCRIPTION="Daemon for monitoring and adaptive tuning of system devices"
 HOMEPAGE="https://github.com/redhat-performance/tuned"
@@ -21,19 +21,21 @@ DEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/configobj[${PYTHON_USEDEP}]
-		dev-python/decorator[${PYTHON_USEDEP}]
-		dev-python/pyudev[${PYTHON_USEDEP}]
 		dev-python/dbus-python[${PYTHON_USEDEP}]
+		dev-python/decorator[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		dev-python/python-linux-procfs[${PYTHON_USEDEP}]
+		dev-python/pyudev[${PYTHON_USEDEP}]
 	')"
 
 RDEPEND="
 	${DEPEND}
+	app-emulation/virt-what
+	dev-util/systemtap
 	sys-apps/dbus
 	sys-apps/ethtool
 	sys-power/powertop
-	dev-util/systemtap"
+	"
 
 RESTRICT="test"
 
@@ -60,4 +62,8 @@ src_install() {
 pkg_postinst() {
 	tmpfiles_process ${PN}.conf
 	xdg_icon_cache_update
+
+	optfeature_header
+	optfeature "Optimize for power saving by spinning-down rotational disks" sys-apps/hdparm
+	optfeature "Get hardware info" sys-apps/dmidecode
 }
