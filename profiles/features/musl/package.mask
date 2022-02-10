@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Stephan Hartmann <sultan@gentoo.org> (2022-02-10)
+# Binary package linked to glibc
+www-plugins/chrome-binary-plugins
+
+# Stephan Hartmann <sultan@gentoo.org> (2022-02-10)
 # Binary packages linked to glibc
 www-client/opera
 www-client/opera-beta

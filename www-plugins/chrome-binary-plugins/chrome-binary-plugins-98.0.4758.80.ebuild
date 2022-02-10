@@ -40,6 +40,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
+	sys-libs/glibc
 "
 
 for x in 0 beta stable unstable; do
