@@ -291,12 +291,6 @@ sci-visualization/gri
 # Removal on 2022-02-10. Bug #826810.
 net-analyzer/jmx2munin
 
-# Eray Aslan <eras@gentoo.org> (2021-01-11)
-# New upstream with new versioning scheme
-# Please use version 2.1.53
-# Removal on 2021-02-10 bug #762958
-=app-misc/mime-types-9
-
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
 # This is likely to cause issues in tests; Unmask if using for other purposes
