@@ -5,7 +5,7 @@ AArch64 - AArch64 CPU target (arm64 in Gentoo)
 AMDGPU - AMDGPU target (supports R600 and GCN GPUs)
 ARC - ARC (Argonaut RISC Core) embedded CPU target [EXPERIMENTAL]
 ARM - ARM CPU target
-AVR - 8-bit Atmel AVR microcontroller target [EXPERIMENTAL]
+AVR - 8-bit Atmel AVR microcontroller target
 BPF - Berkeley Packet Filter target
 CSKY - C-SKY CPU target [EXPERIMENTAL]
 Hexagon - Qualcomm Hexagon DSP target
@@ -19,7 +19,7 @@ PowerPC - PowerPC CPU target (PPC32 and PPC64)
 RISCV - RISC-V CPU target
 Sparc - Sparc CPU target
 SystemZ - SystemZ (s390x) CPU target
-VE - NEC SX-Aurora TSUBASA vector engine target [EXPERIMENTAL]
+VE - NEC SX-Aurora TSUBASA vector engine target
 WebAssembly - WebAssembly backend
 X86 - X86 CPU target (includes amd64)
 XCore - XCore CPU target
