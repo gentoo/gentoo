@@ -30,11 +30,11 @@ IUSE="debug doc +gmp json libedit +modern-kernel python +readline static-libs xt
 RDEPEND="
 	>=net-libs/libmnl-1.0.4:0=
 	>=net-libs/libnftnl-1.2.1:0=
-	gmp? ( dev-libs/gmp:0= )
+	gmp? ( dev-libs/gmp:= )
 	json? ( dev-libs/jansson:= )
 	python? ( ${PYTHON_DEPS} )
-	readline? ( sys-libs/readline:0= )
-	xtables? ( >=net-firewall/iptables-1.6.1 )
+	readline? ( sys-libs/readline:= )
+	xtables? ( >=net-firewall/iptables-1.6.1:= )
 "
 
 DEPEND="${RDEPEND}"
