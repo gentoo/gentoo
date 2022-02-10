@@ -1,21 +1,23 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic systemd toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gnupg.asc
+inherit flag-o-matic systemd toolchain-funcs verify-sig
 
 MY_P="${P/_/-}"
 
 DESCRIPTION="The GNU Privacy Guard, a GPL OpenPGP implementation"
 HOMEPAGE="https://gnupg.org/"
 SRC_URI="mirror://gnupg/gnupg/${MY_P}.tar.bz2"
+SRC_URI+=" verify-sig? ( mirror://gnupg/gnupg/${P}.tar.bz2.sig )"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="bzip2 doc ldap nls readline selinux +smartcard ssl test +tofu tools usb user-socket wks-server"
+IUSE="bzip2 doc ldap nls readline selinux +smartcard ssl test +tofu tpm tools usb user-socket wks-server"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( tofu )"
 
@@ -32,6 +34,7 @@ DEPEND=">=dev-libs/libassuan-2.5.0
 	readline? ( sys-libs/readline:0= )
 	smartcard? ( usb? ( virtual/libusb:1 ) )
 	tofu? ( >=dev-db/sqlite-3.27 )
+	tpm? ( >=app-crypt/tpm2-tss-2.4.0 )
 	ssl? ( >=net-libs/gnutls-3.0:0= )
 	sys-libs/zlib
 "
@@ -44,7 +47,8 @@ RDEPEND="${DEPEND}
 
 BDEPEND="virtual/pkgconfig
 	doc? ( sys-apps/texinfo )
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-gnupg )"
 
 DOCS=(
 	ChangeLog NEWS README THANKS TODO VERSION
@@ -77,6 +81,7 @@ src_configure() {
 		$(use_enable tofu)
 		$(use_enable tofu keyboxd)
 		$(use_enable tofu sqlite)
+		$(usex tpm '--with-tss=intel' '--disable-tpm2d')
 		$(use smartcard && use_enable usb ccid-driver || echo '--disable-ccid-driver')
 		$(use_enable wks-server wks-tools)
 		$(use_with ldap)
