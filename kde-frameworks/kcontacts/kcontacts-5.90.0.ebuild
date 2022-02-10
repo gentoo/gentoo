@@ -11,7 +11,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Address book API based on KDE Frameworks"
 LICENSE="GPL-2+"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE=""
 
 DEPEND="
