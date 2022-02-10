@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>desktop-misc@gentoo.org</email>
-		<name>Gentoo Desktop Miscellaneous Project</name>
-	</maintainer>
+<!-- maintainer-needed -->
 <longdescription lang="en">
 If no user activity is detected after a set timeout, xautolock runs a program
 for you. If you want that program (with optional arguments) to be a screen
