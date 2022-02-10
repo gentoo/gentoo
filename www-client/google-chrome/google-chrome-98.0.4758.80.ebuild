@@ -44,6 +44,7 @@ RDEPEND="
 	net-misc/curl
 	net-print/cups
 	sys-apps/dbus
+	sys-libs/glibc
 	sys-libs/libcap
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
