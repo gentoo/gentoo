@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/vmc-project/geant4_vmc"
 
 LICENSE="GPL-3"
 SLOT="4"
-IUSE="doc examples geant3 +g4root +mtroot vgm test"
+IUSE="doc examples geant3 +g4root vgm test"
 
 RDEPEND="
 	sci-physics/geant[c++17,opengl,geant3?]
@@ -33,7 +33,6 @@ RESTRICT="
 	!examples? ( test )
 	!geant3? ( test )
 	!g4root? ( test )
-	!mtroot? ( test )
 	!test? ( test )
 	!vgm? ( test )"
 
@@ -44,7 +43,6 @@ src_configure() {
 		-DGeant4VMC_USE_VGM="$(usex vgm)"
 		-DGeant4VMC_USE_GEANT4_G3TOG4="$(usex geant3)"
 		-DGeant4VMC_USE_G4Root="$(usex g4root)"
-		-DGeant4VMC_BUILD_MTRoot="$(usex mtroot)"
 		-DGeant4VMC_BUILD_EXAMPLES="$(usex test)"
 		-DGeant4VMC_INSTALL_EXAMPLES="$(usex examples)"
 	)
@@ -57,14 +55,11 @@ src_compile() {
 		local dirs=(
 			source
 			$(usev g4root)
-			$(usev mtroot)
 			$(usev examples)
 		)
 		local d
 		for d in "${dirs[@]}"; do
-			pushd "${d}" > /dev/null || die
-			doxygen || die
-			popd > /dev/null || die
+			doxygen "${d}"/Doxyfile || die
 		done
 	fi
 }
