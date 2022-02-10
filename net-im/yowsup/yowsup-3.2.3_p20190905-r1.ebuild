@@ -34,7 +34,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${PF}-fix-install-path.patch" )
+PATCHES=( "${FILESDIR}/${PN}-3.2.3_p20190905-fix-install-path.patch" )
 
 src_prepare() {
 	default
