@@ -1,0 +1,12 @@
+diff -bru a/Mail/mimeDecode.php b/Mail/mimeDecode.php
+--- a/Mail/mimeDecode.php	2016-08-29 05:04:25.000000000 +0200
++++ b/Mail/mimeDecode.php	2022-02-10 12:25:54.140741592 +0200
+@@ -834,7 +834,7 @@
+ 
+         // Replace encoded characters
+ 		 
+-        $cb = create_function('$matches',  ' return chr(hexdec($matches[0]));');
++        $cb = function($matches) { return chr(hexdec($matches[0])); };
+          
+         $input = preg_replace_callback( '/=([a-f0-9]{2})/i', $cb, $input);
+ 
