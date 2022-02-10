@@ -268,7 +268,6 @@ sci-chemistry/molscript
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-12)
 # java-packages without consumers. Removal in 30 days.
 dev-java/myfaces-api
-dev-java/cdi-api
 
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
