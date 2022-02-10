@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Stephan Hartmann <sultan@gentoo.org> (2022-02-10)
+# Doesn't build on musl, bug #833028
+www-client/chromium
+
+# Stephan Hartmann <sultan@gentoo.org> (2022-02-10)
 # Binary package linked to glibc
 www-plugins/chrome-binary-plugins
 
