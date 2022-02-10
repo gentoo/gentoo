@@ -15,7 +15,9 @@ RESTRICT="bindist mirror strip"
 
 BDEPEND="app-arch/unzip"
 
-RDEPEND="!www-client/chromium
+RDEPEND="
+	sys-libs/glibc
+	!www-client/chromium
 	www-client/google-chrome"
 
 S="${WORKDIR}"
