@@ -285,12 +285,6 @@ sys-cluster/projections
 # Removal on 2022-02-11. Bug #828692.
 sci-visualization/gri
 
-# Jakov Smolić <jsmolic@gentoo.org> (2022-01-11)
-# Outdated java package, uses EAPI 5, no other distro
-# is packaging this.
-# Removal on 2022-02-10. Bug #826810.
-net-analyzer/jmx2munin
-
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
 # This is likely to cause issues in tests; Unmask if using for other purposes
