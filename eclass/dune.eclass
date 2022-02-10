@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dune.eclass
@@ -26,6 +26,8 @@ case ${EAPI:-0} in
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
 
+inherit multiprocessing
+
 # Do not complain about CFLAGS etc since ml projects do not use them.
 QA_FLAGS_IGNORED='.*'
 
@@ -44,13 +46,13 @@ esac
 
 dune_src_compile() {
 	ebegin "Building"
-	dune build @install --display short --profile release
+	dune build @install -j $(makeopts_jobs) --profile release
 	eend $? || die
 }
 
 dune_src_test() {
 	ebegin "Testing"
-	dune runtest --display short --profile release
+	dune runtest -j $(makeopts_jobs) --profile release
 	eend $? || die
 }
 
