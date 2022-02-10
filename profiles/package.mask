@@ -271,7 +271,6 @@ dev-java/myfaces-api
 dev-java/cdi-api
 dev-java/cofoja
 dev-java/laf-plugin
-dev-java/args4j
 
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
