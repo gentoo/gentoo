@@ -1,6 +1,12 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Stephan Hartmann <sultan@gentoo.org> (2022-02-10)
+# Binary packages linked to glibc
+www-client/microsoft-edge
+www-client/microsoft-edge-beta
+www-client/microsoft-edge-dev
+
 # Paolo Pedroni <paolo.pedroni@iol.it> (2022-02-09)
 # Binary package linked to glibc
 sci-mathematics/gimps
