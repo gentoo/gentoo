@@ -256,7 +256,6 @@ sci-chemistry/povscript+
 # and test failures. No other major distro is packaging this.
 # Removal on 2022-02-11. Bug #828706. Bug #828701.
 sci-biology/repeatmasker
-sci-biology/repeatmasker-libraries
 
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
