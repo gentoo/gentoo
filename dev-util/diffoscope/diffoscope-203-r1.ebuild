@@ -3,9 +3,9 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8,9,10} )
 PYTHON_REQ_USE="ncurses"
-
 inherit distutils-r1
 
 DESCRIPTION="Will try to get to the bottom of what makes files or directories different"
