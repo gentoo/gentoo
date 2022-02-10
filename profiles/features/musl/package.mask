@@ -3,6 +3,12 @@
 
 # Stephan Hartmann <sultan@gentoo.org> (2022-02-10)
 # Binary packages linked to glibc
+www-client/opera
+www-client/opera-beta
+www-client/opera-developer
+
+# Stephan Hartmann <sultan@gentoo.org> (2022-02-10)
+# Binary packages linked to glibc
 www-client/google-chrome
 www-client/google-chrome-beta
 www-client/google-chrome-unstable
