@@ -4,8 +4,8 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..10} )
-DISTUTILS_OPTIONAL=1
-inherit autotools linux-info distutils-r1 systemd
+
+inherit autotools linux-info python-r1 systemd
 
 DESCRIPTION="Linux kernel (3.13+) firewall, NAT and packet mangling tools"
 HOMEPAGE="https://netfilter.org/projects/nftables/"
@@ -20,7 +20,7 @@ if [[ ${PV} =~ ^[9]{4,}$ ]]; then
 	"
 else
 	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2"
-	KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
+	KEYWORDS="amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 fi
 
 LICENSE="GPL-2"
@@ -29,12 +29,12 @@ IUSE="debug doc +gmp json libedit +modern-kernel python +readline static-libs xt
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.4:0=
-	>=net-libs/libnftnl-1.2.1:0=
-	gmp? ( dev-libs/gmp:0= )
+	>=net-libs/libnftnl-1.2.0:0=
+	gmp? ( dev-libs/gmp:= )
 	json? ( dev-libs/jansson:= )
 	python? ( ${PYTHON_DEPS} )
-	readline? ( sys-libs/readline:0= )
-	xtables? ( >=net-firewall/iptables-1.6.1 )
+	readline? ( sys-libs/readline:= )
+	xtables? ( >=net-firewall/iptables-1.6.1:= )
 "
 
 DEPEND="${RDEPEND}"
@@ -55,6 +55,15 @@ REQUIRED_USE="
 PATCHES=(
 	"${FILESDIR}/${PN}-0.9.8-slibtool.patch"
 )
+
+python_make() {
+	emake \
+		-C py \
+		abs_builddir="${S}" \
+		DESTDIR="${D}" \
+		PYTHON_BIN="${PYTHON}" \
+		"${@}"
+}
 
 pkg_setup() {
 	if kernel_is ge 3 13; then
@@ -78,12 +87,6 @@ src_prepare() {
 		-i files/osf/Makefile.am || die
 
 	eautoreconf
-
-	if use python; then
-		pushd py >/dev/null || die
-		distutils-r1_src_prepare
-		popd >/dev/null || die
-	fi
 }
 
 src_configure() {
@@ -101,21 +104,13 @@ src_configure() {
 		$(use_with xtables)
 	)
 	econf "${myeconfargs[@]}"
-
-	if use python; then
-		pushd py >/dev/null || die
-		distutils-r1_src_configure
-		popd >/dev/null || die
-	fi
 }
 
 src_compile() {
 	default
 
 	if use python; then
-		pushd py >/dev/null || die
-		distutils-r1_src_compile
-		popd >/dev/null || die
+		python_foreach_impl python_make
 	fi
 }
 
@@ -139,9 +134,8 @@ src_install() {
 	systemd_dounit "${FILESDIR}"/systemd/${PN}-restore.service
 
 	if use python ; then
-		pushd py >/dev/null || die
-		distutils-r1_src_install
-		popd >/dev/null || die
+		python_foreach_impl python_make install
+		python_foreach_impl python_optimize
 	fi
 
 	find "${ED}" -type f -name "*.la" -delete || die
