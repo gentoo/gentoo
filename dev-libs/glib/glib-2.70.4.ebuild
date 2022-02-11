@@ -137,7 +137,6 @@ src_prepare() {
 	sed -i -e "s|'ld'|'${T}/glib-test-ld-wrapper'|g" gio/tests/meson.build || die
 
 	default
-	xdg_environment_reset
 	gnome2_environment_reset
 	# TODO: python_name sedding for correct python shebang? Might be relevant mainly for glib-utils only
 }
