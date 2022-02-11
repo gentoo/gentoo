@@ -12,7 +12,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="!>=sys-libs/ncurses-6.3"
+RDEPEND="!>=sys-libs/ncurses-6.3[-minimal]"
 BDEPEND="sys-libs/ncurses"
 
 src_prepare() {
