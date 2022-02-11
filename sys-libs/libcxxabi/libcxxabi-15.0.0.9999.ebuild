@@ -27,14 +27,18 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=sys-devel/llvm-6"
 BDEPEND="
-	test? ( >=sys-devel/clang-3.9.0
+	${PYTHON_DEPS}
+	test? (
+		>=sys-devel/clang-3.9.0
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 	)"
 
-LLVM_COMPONENTS=( libcxx{abi,} llvm/cmake cmake )
+LLVM_COMPONENTS=( runtimes libcxx{abi,} llvm/cmake cmake )
+LLVM_TEST_COMPONENTS=( llvm/utils/llvm-lit )
 llvm.org_set_globals
 
 python_check_deps() {
+	use test || return 0
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
@@ -44,14 +48,10 @@ pkg_setup() {
 	if [[ ${CHOST} != *-darwin* ]] || has_version dev-lang/llvm; then
 		llvm_pkg_setup
 	fi
-	use test && python-any-r1_pkg_setup
+	python-any-r1_pkg_setup
 }
 
 multilib_src_configure() {
-	# we need a configured libc++ for __config_site
-	wrap_libcxx cmake_src_configure
-	wrap_libcxx cmake_build generate-cxx-headers
-
 	# link against compiler-rt instead of libgcc if we are using clang with libunwind
 	local want_compiler_rt=OFF
 	if use libunwind && tc-is-clang; then
@@ -64,18 +64,33 @@ multilib_src_configure() {
 
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		-DLIBCXXABI_LIBDIR_SUFFIX=${libdir#lib}
+		-DPython3_EXECUTABLE="${PYTHON}"
+		-DLLVM_ENABLE_RUNTIMES="libcxxabi;libcxx"
+		-DLLVM_INCLUDE_TESTS=OFF
+		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 		-DLIBCXXABI_ENABLE_SHARED=ON
 		-DLIBCXXABI_ENABLE_STATIC=$(usex static-libs)
-		-DLIBCXXABI_USE_LLVM_UNWINDER=$(usex libunwind)
 		-DLIBCXXABI_INCLUDE_TESTS=$(usex test)
+		-DLIBCXXABI_USE_LLVM_UNWINDER=$(usex libunwind)
 		-DLIBCXXABI_USE_COMPILER_RT=${want_compiler_rt}
 
-		-DLIBCXXABI_LIBCXX_INCLUDES="${BUILD_DIR}"/libcxx/include/c++/v1
 		# upstream is omitting standard search path for this
 		# probably because gcc & clang are bundling their own unwind.h
 		-DLIBCXXABI_LIBUNWIND_INCLUDES="${EPREFIX}"/usr/include
 		-DLIBCXXABI_TARGET_TRIPLE="${CHOST}"
+
+		-DLIBCXX_LIBDIR_SUFFIX=
+		-DLIBCXX_ENABLE_SHARED=ON
+		-DLIBCXX_ENABLE_STATIC=OFF
+		-DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=OFF
+		-DLIBCXX_CXX_ABI=libcxxabi
+		-DLIBCXX_CXX_ABI_INCLUDE_PATHS="${WORKDIR}"/libcxxabi/include
+		-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
+		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
+		-DLIBCXX_HAS_GCC_S_LIB=OFF
+		-DLIBCXX_INCLUDE_BENCHMARKS=OFF
+		-DLIBCXX_INCLUDE_TESTS=OFF
+		-DLIBCXX_TARGET_TRIPLE="${CHOST}"
 	)
 	if use test; then
 		local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
@@ -90,35 +105,20 @@ multilib_src_configure() {
 	cmake_src_configure
 }
 
-wrap_libcxx() {
-	local CMAKE_USE_DIR=${WORKDIR}/libcxx
-	local BUILD_DIR=${BUILD_DIR}/libcxx
-	local mycmakeargs=(
-		-DLIBCXX_LIBDIR_SUFFIX=
-		-DLIBCXX_ENABLE_SHARED=OFF
-		-DLIBCXX_ENABLE_STATIC=ON
-		-DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=OFF
-		-DLIBCXX_CXX_ABI=libcxxabi
-		-DLIBCXX_CXX_ABI_INCLUDE_PATHS="${S}"/include
-		-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
-		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
-		-DLIBCXX_HAS_GCC_S_LIB=OFF
-		-DLIBCXX_INCLUDE_TESTS=OFF
-		-DLIBCXX_TARGET_TRIPLE="${CHOST}"
-	)
-
-	"${@}"
+multilib_src_compile() {
+	cmake_build cxxabi
 }
 
 multilib_src_test() {
-	wrap_libcxx cmake_src_compile
-	mv "${BUILD_DIR}"/libcxx/lib/libc++* "${BUILD_DIR}/lib/" || die
-
 	local -x LIT_PRESERVES_TMP=1
 	cmake_build check-cxxabi
 }
 
+multilib_src_install() {
+	DESTDIR="${D}" cmake_build install-cxxabi
+}
+
 multilib_src_install_all() {
 	insinto /usr/include/libcxxabi
-	doins -r include/.
+	doins -r "${WORKDIR}"/libcxxabi/include/.
 }
