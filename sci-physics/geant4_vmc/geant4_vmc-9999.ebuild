@@ -46,6 +46,7 @@ src_configure() {
 		-DGeant4VMC_USE_G4Root="$(usex g4root)"
 		-DGeant4VMC_BUILD_EXAMPLES="$(usex test)"
 		-DGeant4VMC_INSTALL_EXAMPLES="$(usex examples)"
+		-DGeant4VMC_BUILD_G4Root_TEST="$(usex test)"
 	)
 	cmake_src_configure
 }
