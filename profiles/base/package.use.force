@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-02-11)
+# Always build with PIE-default, just like GCC.
+sys-devel/clang pie
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-01-13)
 # Force to use installed openjdk{,-bin} for bootstrapping
 dev-java/openjdk:11 system-bootstrap
