@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ DEPEND="dev-libs/glib:2[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib[${MULTILIB_USEDEP}]
 	sdk? ( !media-sound/pulseaudio ) "
 RDEPEND="${DEPEND}
-	!!media-plugins/alsa-plugins[pulseaudio]"
+	!media-plugins/alsa-plugins[pulseaudio]"
 
 PATCHES=(
 	"${FILESDIR}/sdk.patch"
