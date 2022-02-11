@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -44,7 +44,6 @@ RDEPEND="
 	acct-user/gpsd
 	acct-group/dialout
 	>=net-misc/pps-tools-0.0.20120407
-	$(python_gen_any_dep 'dev-util/scons[${PYTHON_USEDEP}]')
 	bluetooth? ( net-wireless/bluez:= )
 	dbus? (
 		sys-apps/dbus
@@ -67,6 +66,7 @@ RDEPEND="
 	X? ( dev-python/pygobject:3[cairo,${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
+	$(python_gen_any_dep 'dev-util/scons[${PYTHON_USEDEP}]')
 	test? ( sys-devel/bc )"
 
 # asciidoctor package is for man page generation
