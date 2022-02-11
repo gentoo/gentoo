@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit desktop python-any-r1 scons-utils toolchain-funcs xdg
+inherit desktop flag-o-matic python-any-r1 scons-utils toolchain-funcs xdg
 
 if [[ "${PV}" = 9999 ]]; then
 	inherit git-r3
@@ -219,6 +219,7 @@ dxx_scons() {
 
 src_compile() {
 	tc-export CXX PKG_CONFIG
+	replace-flags -O3 -O2 #831896
 	dxx_scons register_install_target=0 build
 }
 
