@@ -15,7 +15,7 @@ SRC_URI="https://github.com/mikedh/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 # Almost 70 tests require rtree, which is currently unpackaged
 RESTRICT="test"
