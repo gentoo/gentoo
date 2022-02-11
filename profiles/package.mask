@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2022-02-11)
+# Not usable anymore
+# Removal after 2022-06-01.  Bug #833144.
+x11-misc/i855crt
+
 # Conrad Kostecki <conikost@gentoo.org> (2022-02-11)
 # Mask for last-rite, as source for kernel modules
 # is now provided directly with sys-apps/smc-sum.
