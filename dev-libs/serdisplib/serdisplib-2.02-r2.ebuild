@@ -47,6 +47,7 @@ DOCS=( "AUTHORS" "BUGS" "DOCS" "HISTORY" "PINOUTS" "README" "TODO" )
 PATCHES=(
 	"${FILESDIR}/${PN}-2.02-use-destdir.patch"
 	"${FILESDIR}/${PN}-2.02-disable-static-build.patch"
+	"${FILESDIR}/${PN}-2.02-musl.patch"
 )
 
 src_prepare() {
