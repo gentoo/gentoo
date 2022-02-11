@@ -1,9 +1,9 @@
-# Copyright 2017-2021 Gentoo Authors
+# Copyright 2017-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit desktop python-any-r1 scons-utils toolchain-funcs xdg
 
@@ -153,7 +153,9 @@ REQUIRED_USE='
 	sdl2? ( opengl )
 '
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	${PYTHON_DEPS}
+	virtual/pkgconfig"
 
 # As of this writing, IUSE_RUNTIME is a GLEP, but not an implemented
 # feature.  This variable is stored here to be ready to activate when
