@@ -60,6 +60,10 @@ RDEPEND="${DEPEND}
 
 DOCS=( {NEWS,README}.rst )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-restore-stream-do-not-crash-if-config.properties-is-.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		-Ddoc=disabled # Ebuild not wired up yet (Sphinx, Doxygen?)
@@ -76,6 +80,17 @@ src_configure() {
 	)
 
 	meson_src_configure
+}
+
+src_install() {
+	meson_src_install
+
+	# We copy the default config, so that Gentoo tools can pick up on any
+	# updates and /etc does not end up with stale overrides.
+	# If a reflinking CoW filesystem is used (e.g. Btrfs), then the files
+	# will not actually get stored twice until modified.
+	insinto /etc
+	doins -r ${ED}/usr/share/wireplumber
 }
 
 pkg_postinst() {
