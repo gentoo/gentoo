@@ -78,6 +78,17 @@ src_configure() {
 	meson_src_configure
 }
 
+src_install() {
+	meson_src_install
+
+	# We copy the default config, so that Gentoo tools can pick up on any
+	# updates and /etc does not end up with stale overrides.
+	# If a reflinking CoW filesystem is used (e.g. Btrfs), then the files
+	# will not actually get stored twice until modified.
+	insinto /etc
+	doins -r ${ED}/usr/share/wireplumber
+}
+
 pkg_postinst() {
 	if systemd_is_booted ; then
 		ewarn "pipewire-media-session.service is no longer installed. You must switch"
