@@ -6,7 +6,7 @@ EAPI=7
 inherit linux-info toolchain-funcs
 
 DESCRIPTION="A file-based build system"
-HOMEPAGE="http://gittup.org/tup"
+HOMEPAGE="https://gittup.org/tup https://github.com/gittup/tup"
 # Tup itself is GPLv2, but it bundles differently licensed software:
 # - lua: MIT
 # - sqlite (unused in this ebuild): public domain
@@ -25,11 +25,12 @@ else
 fi
 
 DEPEND="
-	dev-db/sqlite:=
-	dev-libs/libpcre:=
-	sys-fs/fuse:3=
+	dev-db/sqlite
+	dev-libs/libpcre
+	sys-fs/fuse:3
 "
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 CONFIG_CHECK="~FUSE_FS ~NAMESPACES"
 WARNING_FUSE_FS="CONFIG_FUSE_FS is required for tup to work"
@@ -79,36 +80,36 @@ src_test() {
 	# Skip tests which require namespacing or root privileges.
 	pushd test || die
 	rm -v t2150-lua-tupdefault.sh \
-	      t2172-lua-relativedir.sh \
-	      t2187-tupdefault.sh \
-	      t2197-tupdefault-ghost.sh \
-	      t2220-lua-open-external.sh \
-	      t4062-full-deps.sh \
-	      t4063-full-deps2.sh \
-	      t4064-full-deps3.sh \
-	      t4065-full-deps-proc.sh \
-	      t4067-full-deps5.sh \
-	      t4069-gcc-coverage.sh \
-	      t4072-proc-self.sh \
-	      t4074-getpwd.sh \
-	      t4131-proc-self-exe.sh \
-	      t4132-proc-meminfo.sh \
-	      t4171-dev-null.sh \
-	      t4200-ccache.sh \
-	      t4201-ccache2.sh \
-	      t4202-clang.sh \
-	      t4205-full-deps6.sh \
-	      t4206-full-deps7.sh \
-	      t4207-full-deps8.sh \
-	      t4208-full-deps-external.sh \
-	      t4209-full-deps-external2.sh \
-	      t4210-full-deps-getaddrinfo.sh \
-	      t4215-full-deps-get-nprocs.sh \
-	      t5083-symlink-fullpath.sh \
-	      t5084-symlink-fullpath2.sh \
-	      t5103-python-sh.sh \
-	      t7048-full-deps.sh \
-	      t8105-variant-parse-progress.sh || die
+		t2172-lua-relativedir.sh \
+		t2187-tupdefault.sh \
+		t2197-tupdefault-ghost.sh \
+		t2220-lua-open-external.sh \
+		t4062-full-deps.sh \
+		t4063-full-deps2.sh \
+		t4064-full-deps3.sh \
+		t4065-full-deps-proc.sh \
+		t4067-full-deps5.sh \
+		t4069-gcc-coverage.sh \
+		t4072-proc-self.sh \
+		t4074-getpwd.sh \
+		t4131-proc-self-exe.sh \
+		t4132-proc-meminfo.sh \
+		t4171-dev-null.sh \
+		t4200-ccache.sh \
+		t4201-ccache2.sh \
+		t4202-clang.sh \
+		t4205-full-deps6.sh \
+		t4206-full-deps7.sh \
+		t4207-full-deps8.sh \
+		t4208-full-deps-external.sh \
+		t4209-full-deps-external2.sh \
+		t4210-full-deps-getaddrinfo.sh \
+		t4215-full-deps-get-nprocs.sh \
+		t5083-symlink-fullpath.sh \
+		t5084-symlink-fullpath2.sh \
+		t5103-python-sh.sh \
+		t7048-full-deps.sh \
+		t8105-variant-parse-progress.sh || die
 	./test.sh || die
 	popd || die
 
