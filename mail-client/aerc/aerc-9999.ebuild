@@ -1,7 +1,7 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit go-module
 
@@ -10,7 +10,7 @@ HOMEPAGE="https://aerc-mail.org"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://git.sr.ht/~sircmpwn/aerc"
+	EGIT_REPO_URI="https://git.sr.ht/~rjarry/aerc"
 else
 	EGO_SUM=(
 		# to be filled on bumps
@@ -44,7 +44,7 @@ src_unpack() {
 
 src_compile() {
 	use notmuch && export GOFLAGS="-tags=notmuch"
-	emake PREFIX="${EPREFIX}/usr"
+	emake PREFIX="${EPREFIX}/usr" all
 }
 
 src_install() {
