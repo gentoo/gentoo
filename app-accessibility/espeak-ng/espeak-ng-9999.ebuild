@@ -16,7 +16,7 @@ else
 	KEYWORDS="~amd64 ~riscv"
 fi
 
-LICENSE="GPL-3+ Turkowski unicode"
+LICENSE="GPL-3+ unicode"
 SLOT="0"
 IUSE="+async +klatt l10n_ru l10n_zh man mbrola +sound"
 
