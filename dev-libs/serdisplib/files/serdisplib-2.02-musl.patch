@@ -1,0 +1,19 @@
+Include <sys/type.h> before defining "ushort" macro
+
+sys/types.h uses a typedef to define ushort. If ushort is defined as a macro,
+this will cause a compile failure.
+
+In file included from serdisp_control.c:43:
+../include/serdisplib/serdisp_gpevents.h:75:19: error: expected identifier or '(' before 'unsigned'
+   75 |   #define ushort (unsigned short)
+
+--- a/include/serdisplib/serdisp_gpevents.h
++++ b/include/serdisplib/serdisp_gpevents.h
+@@ -50,6 +50,7 @@
+ #include "serdisplib/serdisp_connect.h"
+ #include "serdisplib/serdisp_control.h"
+ #include <sys/time.h>
++#include <sys/types.h>
+ #include <stdint.h>
+ 
+ #include "../../config.h"
