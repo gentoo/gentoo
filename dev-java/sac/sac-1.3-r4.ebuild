@@ -14,7 +14,7 @@ SRC_URI="https://www.w3.org/2002/06/sacjava-${PV}.zip -> ${P}.zip"
 
 LICENSE="W3C"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 DEPEND="
 	app-arch/zip
