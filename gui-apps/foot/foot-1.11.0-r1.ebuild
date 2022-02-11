@@ -34,7 +34,7 @@ DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	|| (
-		>=sys-libs/ncurses-6.3
+		>=sys-libs/ncurses-6.3[-minimal]
 		~gui-apps/foot-terminfo-${PV}
 	)
 "
