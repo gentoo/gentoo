@@ -44,7 +44,6 @@ PDEPEND="manpager? ( app-text/manpager )"
 
 PATCHES=(
 	"${FILESDIR}"/man-db-2.9.3-sandbox-env-tests.patch
-	"${FILESDIR}"/man-db-2.9.3-darwin-libdb-intl.patch
 )
 
 src_unpack() {
