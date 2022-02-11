@@ -74,6 +74,8 @@ src_configure() {
 	local econfargs=(
 		--enable-man
 		--enable-shared
+		--with-grub2-mkconfig-path=grub-mkconfig
+		--with-modern-grub
 		$(use_with archive libarchive)
 		$(use_with curl)
 		$(use_with dracut dracut yesbutnoconf) #816867
