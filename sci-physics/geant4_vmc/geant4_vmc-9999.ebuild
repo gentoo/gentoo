@@ -27,7 +27,8 @@ RDEPEND="
 	sci-physics/root:=[c++17,-vmc]
 	sci-physics/vmc:=[c++17]
 	vgm? ( sci-physics/vgm:= )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( >=sci-physics/geant-4.11[gdml] )"
 BDEPEND="doc? ( app-doc/doxygen[dot] )"
 RESTRICT="
 	!examples? ( test )
