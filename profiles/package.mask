@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Conrad Kostecki <conikost@gentoo.org> (2022-02-11)
+# Mask for last-rite, as source for kernel modules
+# is now provided directly with sys-apps/smc-sum.
+# Removal after 2022-02-24.
+
 # Jonas Stein <jstein@gentoo.org> (2022-02-09)
 # Upstream is 404, open bugs, not maintained.
 # Removal after 2022-05-01.  Bug #832954.
