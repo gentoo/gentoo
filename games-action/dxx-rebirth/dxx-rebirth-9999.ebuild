@@ -153,9 +153,7 @@ REQUIRED_USE='
 	sdl2? ( opengl )
 '
 
-BDEPEND="
-	${PYTHON_DEPS}
-	virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 # As of this writing, IUSE_RUNTIME is a GLEP, but not an implemented
 # feature.  This variable is stored here to be ready to activate when
