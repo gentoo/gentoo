@@ -251,10 +251,6 @@ sci-astronomy/healpix
 # Pretest versions, masked for testing.
 <app-editors/emacs-28.0.9999:28-vcs
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-13)
-# java-package without consumers. Bug #831107. Removal in 30 days.
-dev-java/dnsjava
-
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
 # This is likely to cause issues in tests; Unmask if using for other purposes
