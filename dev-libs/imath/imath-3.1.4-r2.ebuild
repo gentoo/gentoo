@@ -25,6 +25,7 @@ RESTRICT="!test? ( test )"
 # blocker due to file collision #803347
 RDEPEND="
 	!dev-libs/imath:0
+	!media-libs/ilmbase
 	sys-libs/zlib
 	python? (
 		${PYTHON_DEPS}
@@ -41,7 +42,6 @@ BDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 
-PATCHES=( "${FILESDIR}"/${P}-Gentoo-specific-changes-needed-for-slotting.patch )
 DOCS=( CHANGES.md CONTRIBUTORS.md README.md SECURITY.md docs/PortingGuide2-3.md )
 
 pkg_setup() {
@@ -49,15 +49,12 @@ pkg_setup() {
 }
 
 src_configure() {
-	local majorver=$(ver_cut 1)
-
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=$(usex !static-libs)
 		-DDOCS=$(usex doc)
 		-DIMATH_ENABLE_LARGE_STACK=$(usex large-stack)
 		-DIMATH_HALF_USE_LOOKUP_TABLE=ON
 		-DIMATH_INSTALL_PKG_CONFIG=ON
-		-DIMATH_OUTPUT_SUBDIR="${MY_PN}-${majorver}"
 		-DIMATH_USE_CLANG_TIDY=OFF
 		-DIMATH_USE_NOEXCEPT=ON
 	)
@@ -72,12 +69,4 @@ src_configure() {
 	fi
 
 	cmake_src_configure
-}
-
-src_install() {
-	cmake_src_install
-
-	newenvd - 99${PN}3 <<-EOF
-		LDPATH=${EPREFIX}/usr/$(get_libdir)/${MY_PN}-3
-	EOF
 }
