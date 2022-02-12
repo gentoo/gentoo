@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # For released versions, we precompile the man/html pages and store
@@ -28,7 +28,7 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iputils"
 
 LICENSE="BSD GPL-2+ rdisc"
 SLOT="0"
-IUSE="+arping caps clockdiff doc gcrypt idn ipv6 nettle nls rarpd rdisc ssl static test tftpd tracepath traceroute6"
+IUSE="+arping caps clockdiff doc gcrypt idn nettle nls rarpd rdisc ssl static test tftpd tracepath traceroute6"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -91,7 +91,7 @@ src_configure() {
 		-DENABLE_RDISC_SERVER="$(usex rdisc true false)"
 		-DBUILD_TFTPD="$(usex tftpd true false)"
 		-DBUILD_TRACEPATH="$(usex tracepath true false)"
-		-DBUILD_TRACEROUTE6="$(usex ipv6 $(usex traceroute6 true false) false)"
+		-DBUILD_TRACEROUTE6="$(usex traceroute6 true false)"
 		-DBUILD_NINFOD="false"
 		-DNINFOD_MESSAGES="false"
 		-DNO_SETCAP_OR_SUID="true"
@@ -138,18 +138,12 @@ src_install() {
 		mv "${ED}"/usr/bin/${my_bin} "${ED}"/bin/ || die
 	done
 	dosym ping /bin/ping4
+	dosym ping /bin/ping6
 
 	if use tracepath ; then
 		dosym tracepath /usr/bin/tracepath4
-	fi
-
-	if use ipv6 ; then
-		dosym ping /bin/ping6
-
-		if use tracepath ; then
-			dosym tracepath /usr/bin/tracepath6
-			dosym tracepath.8 /usr/share/man/man8/tracepath6.8
-		fi
+		dosym tracepath /usr/bin/tracepath6
+		dosym tracepath.8 /usr/share/man/man8/tracepath6.8
 	fi
 
 	if [[ "${PV}" != 99999999 ]] ; then
