@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -102,12 +102,12 @@ RDEPEND="
 	)
 	ipv6? (
 		>=dev-perl/Socket6-0.230.0
-		>=net-firewall/iptables-1.4.20[ipv6]
-		>=sys-apps/iproute2-3.8.0[ipv6]
+		>=net-firewall/iptables-1.4.20[ipv6(+)]
+		>=sys-apps/iproute2-3.8.0[ipv6(+)]
 	)
 	lite6? (
-		>=net-firewall/iptables-1.4.20[ipv6]
-		>=sys-apps/iproute2-3.8.0[ipv6]
+		>=net-firewall/iptables-1.4.20[ipv6(+)]
+		>=sys-apps/iproute2-3.8.0[ipv6(+)]
 	)
 	init? ( >=sys-apps/coreutils-8.20 )
 	selinux? ( >=sec-policy/selinux-shorewall-2.20161023-r3 )
