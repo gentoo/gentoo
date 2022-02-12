@@ -239,7 +239,7 @@ net-proxy/haproxy device-atlas
 
 # Christoph Junghans <junghans@gentoo.org> (2017-02-05)
 # Mask some fabrics
-sys-cluster/openmpi java openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi java openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
 # Assembly optimisations are supported on arm since 0.0.0_pre20161213
@@ -413,7 +413,7 @@ dev-libs/xapian-bindings java
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-02-20)
 # Mask flags of calligra and dependencies due to lack of keywords
-app-office/calligra openexr spacenav
+app-office/calligra spacenav
 media-gfx/pstoedit emf
 
 # Rick Farina <zerochaos@gentoo.org> (2013-02-05)

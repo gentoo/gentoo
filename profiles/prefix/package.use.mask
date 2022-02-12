@@ -24,7 +24,7 @@ sys-devel/binutils gold default-gold
 dev-db/postgresql kerberos ldap llvm pam systemd
 net-libs/libsoup gssapi samba vala
 net-libs/glib-networking gnome libproxy
-net-misc/wget cookie_check metalink uuid
+net-misc/wget metalink uuid
 sys-apps/dbus selinux elogind systemd
 app-doc/doxygen clang doxysearch qt5
 app-text/ghostscript-gpl cups

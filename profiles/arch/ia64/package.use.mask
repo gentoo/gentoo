@@ -16,7 +16,6 @@ dev-libs/tree-sitter ts-cli
 # Michał Górny <mgorny@gentoo.org> (2021-11-26)
 # These package flags require dev-python/cryptography which -- due
 # to the dependency on Rust -- is no longer portable to ia64.
-dev-python/passlib totp
 dev-python/twisted conch crypt
 dev-python/urllib3 test
 net-fs/samba addc addns ads
@@ -461,7 +460,7 @@ x11-misc/xscreensaver new-login
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # Mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_fabrics_sctp openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Raúl Porcel <armin76@gentoo.org> (2011-11-05)
 # jit not supported on ia64

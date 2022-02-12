@@ -54,10 +54,6 @@ media-libs/mesa -vulkan -vulkan-overlay
 media-video/mpv -vulkan
 media-video/vlc -libplacebo
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
-# mask untested card for libva
-x11-libs/libva video_cards_nouveau
-
 # Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
 # PPS should work on all arches, but only keyworded on some arches
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks

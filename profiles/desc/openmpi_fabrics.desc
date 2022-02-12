@@ -5,8 +5,5 @@
 
 # Keep it sorted.
 
-dapl - Direct Access Provider Library
 ofed - OFED RDMA stack (InfiniBand and iWARP)
 knem - High-Performance Intra-Node MPI Communication
-open-mx - Myrinet Express over Generic Ethernet Hardware
-sctp - Stream Control Transmission Protocol

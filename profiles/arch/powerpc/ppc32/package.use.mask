@@ -10,9 +10,8 @@ app-crypt/gnupg tpm
 dev-libs/efl heif
 
 # Sam James <sam@gentoo.org> (2021-12-31)
-# dev-lang/julia not keyworded here
 # sci-mathematics/polymake not keyworded here
-sci-mathematics/singular julia polymake
+sci-mathematics/singular polymake
 
 # Sam James <sam@gentoo.org> (2021-12-08)
 # Masks involving webkit-gtk; webkit-gtk was dekeyworded on ppc for a while.

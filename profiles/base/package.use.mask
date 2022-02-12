@@ -189,7 +189,6 @@ net-misc/openssh debug
 
 # Michał Górny <mgorny@gentoo.org> (2021-03-06)
 # LLVM 9 has been removed.
-<dev-lang/julia-1.6.0 system-llvm
 <dev-util/perf-5.15 clang
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
@@ -328,10 +327,6 @@ sys-devel/gcc ada
 # and the package is confirmed to work with it.
 <=dev-util/rosinstall-0.7.8 test
 <=dev-util/wstool-0.1.18 test
-
-# Michał Górny <mgorny@gentoo.org> (2020-03-27)
-# Requires old version of dev-python/docutils.
-dev-util/buildbot doc
 
 # Guilherme Amadio <amadio@gentoo.org> (2020-03-16)
 # Requires dev-libs/cudnn which is only available on amd64
@@ -738,9 +733,6 @@ dev-lisp/clisp svm
 # Don't use system-wide mode unless you *really* know what you're doing.
 # Keep it masked here so that I don't need to manage two versions every time.
 media-sound/pulseaudio system-wide
-
-# These are for BSD only
-net-proxy/squid ipf-transparent pf-transparent
 
 # Alexis Ballier <aballier@gentoo.org> (2011-02-16)
 # Win32 specific useflag for vlc. Can be used for cross-compiling.

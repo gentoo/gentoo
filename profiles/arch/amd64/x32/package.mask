@@ -32,12 +32,8 @@ app-text/kchmviewer
 app-text/sigil
 dev-lang/typescript
 dev-python/spyder
-dev-python/spyder-line-profiler
-dev-python/spyder-memory-profiler
-dev-python/spyder-notebook
 dev-python/spyder-terminal
 dev-python/spyder-unittest
-dev-python/spyder-vim
 dev-util/kdevelop:5
 dev-util/kdevelop-php:5
 dev-util/kdevelop-python:5

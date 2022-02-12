@@ -25,7 +25,6 @@ ruby_targets_ruby25
 # PHP 7.2 is security vulnerable and end-of-life
 # Please upgrade to a newer slot
 php_targets_php7-2
-php7-2
 
 # Alexis Ballier <aballier@gentoo.org> (2020-10-13)
 # Nothing depends on those ROS messages. dev-ros/geneus

@@ -51,10 +51,6 @@ dev-python/argon2-cffi doc
 # bug #807616
 media-libs/libsdl2 pipewire
 
-# Sam James <sam@gentoo.org> (2021-10-16)
-# Avoid unkeyworded dependencies
-x11-libs/gtk+ cloudprint
-
 # Sam James <sam@gentoo.org> (2021-09-14)
 # fdk-aac, libfreeaptx not keyworded here
 # nor is jack2

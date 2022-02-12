@@ -98,11 +98,6 @@ sys-apps/iproute2 atm bpf iptables
 # dev-libs/libzip does not have stable keywords on hppa
 >=media-gfx/imagemagick-7 zip
 
-# Matt Turner <mattst88@gentoo.org> (2021-06-02)
-# dev-util/gi-docgen does not have stable keywords on hppa
-x11-libs/gdk-pixbuf gtk-doc
-x11-libs/pango gtk-doc
-
 # Sam James <sam@gentoo.org> (2021-06-01)
 # sys-apps/systemd is not stable on hppa
 sys-auth/pambase homed
@@ -235,7 +230,6 @@ dev-lang/php enchant
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-06-05)
 # sys-auth/polkit stable timeout, bug #661470
 sys-apps/pcsc-lite policykit
-x11-misc/colord policykit
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-03-17)
 # net-analyzer/nagios (or icinga) has no stable keywords, bug #676222

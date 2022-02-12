@@ -469,7 +469,7 @@ x11-misc/xscreensaver new-login
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Raúl Porcel <armin76@gentoo.org> (2011-10-08)
 # Needs media-sound/lilypond
@@ -482,8 +482,6 @@ media-video/x264-encoder ffmpegsource
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-08-31)
 # Mask numa use flag per bug #381313
 sys-apps/hwloc numa
-# This mask also implies masking the numa flag on openmpi
-sys-cluster/openmpi numa
 
 # Pacho Ramos <pacho@gentoo.org> (2011-06-30)
 # Needed plugins are not keyworded on this arch
