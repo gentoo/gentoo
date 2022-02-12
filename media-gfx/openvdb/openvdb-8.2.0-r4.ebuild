@@ -45,7 +45,7 @@ RDEPEND="
 	)
 	utils? (
 		dev-libs/imath:=
-		media-libs/openexr:3=
+		media-libs/openexr:=
 	)
 	zlib? ( sys-libs/zlib )
 "
@@ -72,7 +72,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-8.1.0-glfw-libdir.patch"
 	"${FILESDIR}/${PN}-8.2.0-fix-finding-ilmbase-if-imath-and-ilmbase-are-installed.patch"
 	"${FILESDIR}/${PN}-8.2.0-unconditionally-search-Python-interpreter.patch"
-	"${FILESDIR}/${PN}-8.2.0-openexr-3-imath.patch"
 )
 
 pkg_setup() {
