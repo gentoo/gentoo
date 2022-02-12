@@ -33,10 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Patrick Lauer <patrick@gentoo.org> (2022-02-12)
-# EOL upstream, please upgrade to newer version
-dev-db/postgresql:9.6
-
 # Jonas Stein <jstein@gentoo.org> (2022-02-11)
 # Blocks gtk2 removal, which is EOL
 # Removal after 2022-04-01.  Bug #833145.
