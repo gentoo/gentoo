@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,8 +33,7 @@ src_test() {
 src_install() {
 	perl-module_src_install
 	if use examples; then
+		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples
-		insinto /usr/share/doc/${PF}/examples/
-		doins -r examples/*
 	fi
 }
