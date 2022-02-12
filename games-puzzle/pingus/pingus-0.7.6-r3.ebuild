@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
 
+PYTHON_COMPAT=( python3_{8..10} )
 inherit desktop flag-o-matic python-any-r1 scons-utils toolchain-funcs xdg
 
 DESCRIPTION="Free Lemmings clone"
@@ -52,7 +52,7 @@ src_compile() {
 src_install() {
 	emake install-exec install-data \
 		DESTDIR="${D}" \
-		PREFIX="/usr"
+		PREFIX="${EPREFIX}"/usr
 	doman doc/man/pingus.6
 	doicon data/images/icons/pingus.svg
 	make_desktop_entry ${PN} Pingus
