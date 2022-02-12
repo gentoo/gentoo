@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -68,16 +68,12 @@ src_install() {
 	make_desktop_entry engauge "Engauge Digitizer" engauge-digitizer Graphics
 
 	# Install qt help files
-	insinto /usr/share/doc/${PF} # this must match sed expression in src_prepare
-	doins bin/documentation/engauge.{qch,qhc}
+	dodoc bin/documentation/engauge.{qch,qhc}
 	docompress -x "${EPREFIX}"/usr/share/doc/${PF}/engauge.{qch,qhc}
 
-	if use doc; then
-		pushd doc >/dev/null || die
-		doins -r .
-		popd >/dev/null || die
-	fi
+	use doc && dodoc -r doc/.
 	if use examples; then
-		doins -r samples
+		dodoc -r samples
+		docompress -x "${EPREFIX}"/usr/share/doc/${PF}/samples
 	fi
 }
