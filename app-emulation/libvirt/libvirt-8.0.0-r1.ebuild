@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit meson bash-completion-r1 linux-info python-any-r1 readme.gentoo-r1 tmpfiles verify-sig
 
@@ -16,7 +16,7 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="https://libvirt.org/sources/${P}.tar.xz
 		verify-sig? ( https://libvirt.org/sources/${P}.tar.xz.asc )"
-	KEYWORDS="amd64 arm64 ~ppc64 x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 	SLOT="0/${PV}"
 fi
 
@@ -109,13 +109,13 @@ RDEPEND="
 	sasl? ( dev-libs/cyrus-sasl )
 	selinux? ( >=sys-libs/libselinux-2.0.85 )
 	virt-network? (
-		net-dns/dnsmasq[dhcp,ipv6,script]
+		net-dns/dnsmasq[dhcp,ipv6(+),script]
 		net-firewall/ebtables
-		>=net-firewall/iptables-1.4.10[ipv6]
+		>=net-firewall/iptables-1.4.10[ipv6(+)]
 		net-misc/radvd
 		sys-apps/iproute2[-minimal]
 	)
-	wireshark-plugins? ( <net-analyzer/wireshark-3.6.0:= )
+	wireshark-plugins? ( net-analyzer/wireshark:= )
 	xen? (
 		>=app-emulation/xen-4.9.0
 		app-emulation/xen-tools:=
