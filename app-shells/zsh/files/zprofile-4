@@ -22,10 +22,10 @@ umask 022
 # It is intentional in the following line to use || instead of -o.
 # This way the evaluation can be short-circuited and calling whoami is
 # avoided.
-if [[ "$EUID" = "0" ]] || [[ "$USER" = "root" ]] ; then
+if [[ "${EUID}" = "0" ]] || [[ "${USER}" = "root" ]] ; then
 	# Check to make sure ROOTPATH is sane before we use it.
 	# https://bugs.gentoo.org/656400
-	if [[ :${ROOTPATH}: == *:/usr/sbin:* ]]; then
+	if [[ -n ${ROOTPATH} ]] && [[ :${ROOTPATH}: == *:/usr/sbin:* ]] ; then
 		PATH="${ROOTPATH}"
 	fi
 fi
