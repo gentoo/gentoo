@@ -1,79 +1,13 @@
-Based on https://src.fedoraproject.org/rpms/blender/blob/rawhide/f/blender-openexr.patch
+https://src.fedoraproject.org/rpms/blender/blob/rawhide/f/blender-openexr.patch
 
-The issue is that our dependencies are fragile and want to be linked againt OpenEXR 3
-usually, and we've had to give in and go with it. The patches needed to Blender to
-make it go with this (outside of issues related to slotting and adapting to it)
-are simple, and will hopefuly bring less pain / build errors / etc than before.
-diff --git a/build_files/cmake/Modules/FindOpenEXR.cmake b/build_files/cmake/Modules/FindOpenEXR.cmake
-index 09af546..dfe15cd 100644
---- a/build_files/cmake/Modules/FindOpenEXR.cmake
-+++ b/build_files/cmake/Modules/FindOpenEXR.cmake
-@@ -33,6 +33,17 @@ ENDIF()
- # Old versions (before 2.0?) do not have any version string, just assuming this should be fine though.
- SET(_openexr_libs_ver_init "2.0")
- 
-+find_package(Imath-3 CONFIG QUIET)
-+if(TARGET Imath-3::Imath)
-+SET(_openexr_FIND_COMPONENTS
-+  Imath
-+  Iex
-+  OpenEXR
-+  IlmThread
-+)
-+
-+else()
-+
- SET(_openexr_FIND_COMPONENTS
-   Half
-   Iex
-@@ -41,6 +52,8 @@ SET(_openexr_FIND_COMPONENTS
-   Imath
- )
- 
-+endif()
-+
- SET(_openexr_SEARCH_DIRS
-   ${OPENEXR_ROOT_DIR}
-   /opt/lib/openexr
-@@ -48,7 +61,8 @@ SET(_openexr_SEARCH_DIRS
- 
- FIND_PATH(OPENEXR_INCLUDE_DIR
-   NAMES
--    OpenEXR/ImfXdr.h
-+    OpenEXR-3/ImfXdr.h
-+    OpenEXR/ImfXdr.h
-   HINTS
-     ${_openexr_SEARCH_DIRS}
-   PATH_SUFFIXES
-@@ -65,6 +79,7 @@ IF(OPENEXR_INCLUDE_DIR)
-       PATHS
-         "${OPENEXR_INCLUDE_DIR}"
-+        "${OPENEXR_INCLUDE_DIR}/OpenEXR-3"
-         "${OPENEXR_INCLUDE_DIR}/OpenEXR"
-       NO_DEFAULT_PATH
-     )
- 
-@@ -120,7 +135,10 @@ FIND_PACKAGE_HANDLE_STANDARD_ARGS(OpenEXR  DEFAULT_MSG
- IF(OPENEXR_FOUND)
-   SET(OPENEXR_LIBRARIES ${_openexr_LIBRARIES})
-   # Both include paths are needed because of dummy OSL headers mixing #include <OpenEXR/foo.h> and #include <foo.h> :(
--  SET(OPENEXR_INCLUDE_DIRS ${OPENEXR_INCLUDE_DIR} ${OPENEXR_INCLUDE_DIR}/OpenEXR)
-+  SET(OPENEXR_INCLUDE_DIRS ${OPENEXR_INCLUDE_DIR} ${OPENEXR_INCLUDE_DIR}/OpenEXR-3)
-+  if(TARGET Imath::Imath)
-+    list(APPEND OPENEXR_INCLUDE_DIRS ${OPENEXR_INCLUDE_DIR}/Imath-3)
-+  endif()
- ENDIF()
- 
- MARK_AS_ADVANCED(
-https://src.fedoraproject.org/rpms/blender/raw/rawhide/f/blender-openexr.patch
---- blender-2.93.3.orig/source/blender/imbuf/intern/openexr/openexr_api.cpp
-+++ blender-2.93.3/source/blender/imbuf/intern/openexr/openexr_api.cpp
+--- a/source/blender/imbuf/intern/openexr/openexr_api.cpp
++++ b/source/blender/imbuf/intern/openexr/openexr_api.cpp
 @@ -32,30 +32,31 @@
  #include <stdexcept>
  #include <string>
  
 -#include <Iex.h>
-+#include <OpenEXR-3/Iex.h>
++#include <OpenEXR/Iex.h>
  #include <ImathBox.h>
 -#include <ImfArray.h>
 -#include <ImfChannelList.h>
@@ -87,19 +21,19 @@ https://src.fedoraproject.org/rpms/blender/raw/rawhide/f/blender-openexr.patch
 -#include <ImfStringAttribute.h>
 -#include <ImfVersion.h>
 -#include <half.h>
-+#include <OpenEXR-3/ImfArray.h>
-+#include <OpenEXR-3/ImfFrameBuffer.h>
-+#include <OpenEXR-3/ImfChannelList.h>
-+#include <OpenEXR-3/ImfCompression.h>
-+#include <OpenEXR-3/ImfCompressionAttribute.h>
-+#include <OpenEXR-3/ImfIO.h>
-+#include <OpenEXR-3/ImfInputFile.h>
-+#include <OpenEXR-3/ImfOutputFile.h>
-+#include <OpenEXR-3/ImfPixelType.h>
-+#include <OpenEXR-3/ImfStandardAttributes.h>
-+#include <OpenEXR-3/ImfStringAttribute.h>
-+#include <OpenEXR-3/ImfVersion.h>
-+#include <Imath-3/half.h>
++#include <OpenEXR/ImfArray.h>
++#include <OpenEXR/ImfFrameBuffer.h>
++#include <OpenEXR/ImfChannelList.h>
++#include <OpenEXR/ImfCompression.h>
++#include <OpenEXR/ImfCompressionAttribute.h>
++#include <OpenEXR/ImfIO.h>
++#include <OpenEXR/ImfInputFile.h>
++#include <OpenEXR/ImfOutputFile.h>
++#include <OpenEXR/ImfPixelType.h>
++#include <OpenEXR/ImfStandardAttributes.h>
++#include <OpenEXR/ImfStringAttribute.h>
++#include <OpenEXR/ImfVersion.h>
++#include <Imath/half.h>
  
  /* multiview/multipart */
 -#include <ImfInputPart.h>
@@ -110,14 +44,14 @@ https://src.fedoraproject.org/rpms/blender/raw/rawhide/f/blender-openexr.patch
 -#include <ImfPartHelper.h>
 -#include <ImfPartType.h>
 -#include <ImfTiledOutputPart.h>
-+#include <OpenEXR-3/ImfInputPart.h>
-+#include <OpenEXR-3/ImfMultiPartInputFile.h>
-+#include <OpenEXR-3/ImfMultiPartOutputFile.h>
-+#include <OpenEXR-3/ImfMultiView.h>
-+#include <OpenEXR-3/ImfOutputPart.h>
-+#include <OpenEXR-3/ImfPartHelper.h>
-+#include <OpenEXR-3/ImfPartType.h>
-+#include <OpenEXR-3/ImfTiledOutputPart.h>
++#include <OpenEXR/ImfInputPart.h>
++#include <OpenEXR/ImfMultiPartInputFile.h>
++#include <OpenEXR/ImfMultiPartOutputFile.h>
++#include <OpenEXR/ImfMultiView.h>
++#include <OpenEXR/ImfOutputPart.h>
++#include <OpenEXR/ImfPartHelper.h>
++#include <OpenEXR/ImfPartType.h>
++#include <OpenEXR/ImfTiledOutputPart.h>
  
  #include "DNA_scene_types.h" /* For OpenEXR compression constants */
  
@@ -209,3 +143,48 @@ https://src.fedoraproject.org/rpms/blender/raw/rawhide/f/blender-openexr.patch
    {
      ofs.seekp(pos);
      check_error();
+--- a/build_files/cmake/Modules/FindOpenEXR.cmake
++++ b/build_files/cmake/Modules/FindOpenEXR.cmake
+@@ -25,6 +25,7 @@
+ # see accompanying file BSD-3-Clause-license.txt for details.
+ #=============================================================================
+ 
++
+ # If OPENEXR_ROOT_DIR was defined in the environment, use it.
+ IF(NOT OPENEXR_ROOT_DIR AND NOT $ENV{OPENEXR_ROOT_DIR} STREQUAL "")
+   SET(OPENEXR_ROOT_DIR $ENV{OPENEXR_ROOT_DIR})
+@@ -33,6 +34,16 @@ ENDIF()
+ # Old versions (before 2.0?) do not have any version string, just assuming this should be fine though.
+ SET(_openexr_libs_ver_init "2.0")
+ 
++find_package(Imath CONFIG QUIET)
++if(TARGET Imath::Imath)
++SET(_openexr_FIND_COMPONENTS
++  Imath
++  Iex
++  OpenEXR
++  IlmThread
++)
++
++else()
+ SET(_openexr_FIND_COMPONENTS
+   Half
+   Iex
+@@ -40,6 +51,7 @@ SET(_openexr_FIND_COMPONENTS
+   IlmThread
+   Imath
+ )
++endif()
+ 
+ SET(_openexr_SEARCH_DIRS
+   ${OPENEXR_ROOT_DIR}
+@@ -121,6 +133,9 @@ IF(OPENEXR_FOUND)
+   SET(OPENEXR_LIBRARIES ${_openexr_LIBRARIES})
+   # Both include paths are needed because of dummy OSL headers mixing #include <OpenEXR/foo.h> and #include <foo.h> :(
+   SET(OPENEXR_INCLUDE_DIRS ${OPENEXR_INCLUDE_DIR} ${OPENEXR_INCLUDE_DIR}/OpenEXR)
++  if(TARGET Imath::Imath)
++	  list(APPEND OPENEXR_INCLUDE_DIRS ${OPENEXR_INCLUDE_DIR}/Imath)
++  endif()
+ ENDIF()
+ 
+ MARK_AS_ADVANCED(
