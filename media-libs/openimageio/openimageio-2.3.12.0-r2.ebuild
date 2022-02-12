@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 TEST_OIIO_IMAGE_COMMIT="b85d7a3a10a3256b50325ad310c33e7f7cf2c6cb"
 TEST_OEXR_IMAGE_COMMIT="f17e353fbfcde3406fe02675f4d92aeae422a560"
-inherit cmake font python-single-r1 flag-o-matic
+inherit cmake font python-single-r1
 
 DESCRIPTION="A library for reading and writing images"
 HOMEPAGE="https://sites.google.com/site/openimageio/ https://github.com/OpenImageIO"
@@ -56,8 +56,8 @@ RDEPEND="
 	media-libs/libpng:0=
 	>=media-libs/libwebp-0.2.1:=
 	dev-libs/imath:=
-	>=media-libs/opencolorio-2.1.1-r3:=
-	media-libs/openexr:3=
+	>=media-libs/opencolorio-2.1.1-r4:=
+	media-libs/openexr:=
 	media-libs/tiff:0=
 	sys-libs/zlib:=
 	virtual/jpeg:0
@@ -97,24 +97,11 @@ DEPEND="${RDEPEND}"
 
 DOCS=( CHANGES.md CREDITS.md README.md )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.3.11.0-imath-openexr-3.patch
-)
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	# Note: on bumps, please try again with OpenEXR 3 + ilmmath!
-	# Sabotage finding OpenEXR 3 for now to force usage of OpenEXR 2
-	# (because it mix and matches which version it uses; sed this to
-	# make sure it'll use OpenEXR 3 if it can, but it won't.)
-	# bug #821193
-	#sed -i \
-	#	-e 's/find_package(OpenEXR CONFIG)/find_package(OpenEXR-3 CONFIG)/' \
-	#	src/cmake/modules/FindOpenEXR.cmake || die
-
 	cmake_src_prepare
 	cmake_comment_add_subdirectory src/fonts
 
@@ -135,8 +122,6 @@ src_configure() {
 
 	# If no CPU SIMDs were used, completely disable them
 	[[ -z ${mysimd} ]] && mysimd=("0")
-
-	append-cppflags -DOIIO_USING_OPENEXR_3
 
 	local mycmakeargs=(
 		-DVERBOSE=ON
