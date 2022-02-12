@@ -341,10 +341,6 @@ dev-tex/pdfannotextractor
 # Bug #824558.
 =sys-kernel/gentoo-sources-5.14.19
 =sys-kernel/vanilla-sources-5.14.19
-~sys-kernel/gentoo-kernel-5.14.19
-~sys-kernel/gentoo-kernel-bin-5.14.19
-~sys-kernel/vanilla-kernel-5.14.19
-~virtual/dist-kernel-5.14.19
 
 # Mart Raudsepp <leio@gentoo.org> (2021-11-11)
 # Needs testing to ensure valac-0.54 works for existing packages

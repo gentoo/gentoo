@@ -37,7 +37,6 @@ sh4 - userspace emulation target
 sparc32plus - userspace emulation target
 sparc64 - userspace emulation target
 sparc - userspace emulation target
-tilegx - TILE-Gx 64-bit userspace emulation target
 x86_64 - userspace emulation target
 xtensaeb - userspace emulation target
 xtensa - userspace emulation target

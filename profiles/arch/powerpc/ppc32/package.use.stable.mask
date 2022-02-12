@@ -45,4 +45,3 @@ sci-libs/plplot ocaml
 gnome-base/gvfs google
 mail-client/balsa webkit
 net-libs/libproxy webkit
->=x11-libs/gtk+-3.12.2 cloudprint

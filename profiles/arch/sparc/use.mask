@@ -187,7 +187,6 @@ java
 lirc
 netbeans
 networkmanager
-pbs
 pcmcia
 rar
 valgrind
