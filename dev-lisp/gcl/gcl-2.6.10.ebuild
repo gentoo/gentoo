@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,6 +8,7 @@ inherit elisp-common epatch flag-o-matic
 DESCRIPTION="GNU Common Lisp"
 HOMEPAGE="https://www.gnu.org/software/gcl/gcl.html"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz https://dev.gentoo.org/~grozin/${P}-fedora.tar.bz2"
+S="${WORKDIR}"/${PN}
 
 LICENSE="LGPL-2 GPL-2"
 SLOT="0"
@@ -28,8 +29,6 @@ DEPEND="${RDEPEND}
 	virtual/texi2dvi
 	>=app-text/texi2html-1.64
 	>=sys-devel/autoconf-2.52"
-
-S="${WORKDIR}"/${PN}
 
 src_prepare() {
 	mv "${WORKDIR}"/fedora/info/* info/
@@ -135,11 +134,11 @@ src_install() {
 	fi
 
 	insinto /usr/share/doc/${PF}
-	doins *.dvi
+	docompress -x /usr/share/doc/${PF}/*.dvi
 	if use athena; then
 		pushd xgcl-2 > /dev/null
-		insinto /usr/share/doc/${PF}
-		doins *.pdf
+		dodoc *.pdf
+		docompress -x /usr/share/doc/${PF}/*.pdf
 		popd > /dev/null
 	fi
 }
