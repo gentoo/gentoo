@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	!!net-firewall/gshield
 	iptables? (
-		net-firewall/iptables[ipv6]
+		net-firewall/iptables[ipv6(+)]
 		net-firewall/ebtables
 		net-firewall/ipset
 		nftables? ( net-firewall/nftables[xtables(+)] )
