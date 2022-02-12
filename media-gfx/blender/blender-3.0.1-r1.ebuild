@@ -62,7 +62,7 @@ RDEPEND="${PYTHON_DEPS}
 	virtual/opengl
 	alembic? ( >=media-gfx/alembic-1.7.12[boost(+),hdf(+)] )
 	collada? ( >=media-libs/opencollada-1.6.68 )
-	color-management? ( >=media-libs/opencolorio-2.0.0 )
+	color-management? ( >=media-libs/opencolorio-2.1.1-r3:= )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	embree? ( >=media-libs/embree-3.10.0[raymask] )
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k,vpx,vorbis,opus,xvid] )
@@ -83,7 +83,7 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
 	oidn? ( >=media-libs/oidn-1.4.1 )
-	openimageio? ( >=media-libs/openimageio-2.2.13.1:= )
+	openimageio? ( >=media-libs/openimageio-2.3.12.0:= )
 	openexr? (
 		dev-libs/imath:=
 		media-libs/openexr:3=
@@ -93,7 +93,7 @@ RDEPEND="${PYTHON_DEPS}
 		>=media-gfx/openvdb-7.1.0
 		dev-libs/c-blosc:=
 	)
-	osl? ( >=media-libs/osl-1.11.10.0 )
+	osl? ( >=media-libs/osl-1.11.16.0-r3:= )
 	pdf? ( media-libs/libharu )
 	potrace? ( media-gfx/potrace )
 	pugixml? ( dev-libs/pugixml )
