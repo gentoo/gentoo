@@ -31,13 +31,12 @@ CPU_FEATURES=( ${X86_CPU_FEATURES[@]/#/cpu_flags_x86_} )
 
 IUSE="doc partio qt5 test ${CPU_FEATURES[@]%:*} python"
 
-# See bug #821202 for openimageio < dep
 RDEPEND="
 	dev-libs/boost:=
 	dev-libs/pugixml
 	media-libs/openexr:3=
 	dev-libs/imath:=
-	<media-libs/openimageio-2.3:=
+	>=media-libs/openimageio-2.3.12.0:=
 	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
 	sys-libs/zlib
 	partio? ( media-libs/partio )
