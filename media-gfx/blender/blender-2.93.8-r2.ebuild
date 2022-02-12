@@ -43,8 +43,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 # Library versions for official builds can be found in the blender source directory in:
 # build_files/build_environment/install_deps.sh
-# We can use a lower version of OIO but we need a version we know we've
-# switched to OpenEXR 3.
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=[nls?,threads(+)]
 	dev-libs/lzo:2=
@@ -88,7 +86,7 @@ RDEPEND="${PYTHON_DEPS}
 	openimageio? ( >=media-libs/openimageio-2.3.12.0:= )
 	openexr? (
 		dev-libs/imath:=
-		media-libs/openexr:3=
+		media-libs/openexr:=
 	)
 	opensubdiv? ( >=media-libs/opensubdiv-3.4.0[cuda=,opencl=] )
 	openvdb? (
