@@ -150,7 +150,7 @@
 # It's a read-only variable. It contains the extension of the kernel modules.
 
 case ${EAPI:-0} in
-	[678]) inherit eutils ;;
+	[67]) inherit eutils ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
