@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>matthew@gentoo.org</email>
+    <name>Matthew Smith</name>
+  </maintainer>
+  <use>
+    <flag name="pyside2">
+      Expose the QRenderdoc UI to Python scripting to allow for customisation
+    </flag>
+    <flag name="qt5">
+       Build and install the qrenderdoc GUI
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">baldurk/renderdoc</remote-id>
+  </upstream>
+</pkgmetadata>

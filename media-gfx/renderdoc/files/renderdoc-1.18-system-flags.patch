@@ -1,0 +1,26 @@
+From f83fea90e09d368cd3d8e119a2b3a6d7352d6de6 Mon Sep 17 00:00:00 2001
+From: Matthew Smith <matt@offtopica.uk>
+Date: Tue, 8 Feb 2022 18:42:02 +0000
+Subject: [PATCH] build: qrenderdoc: Respect CXX and LDFLAGS
+
+---
+ qrenderdoc/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/qrenderdoc/CMakeLists.txt b/qrenderdoc/CMakeLists.txt
+index 486832594..05ad8ba89 100644
+--- a/qrenderdoc/CMakeLists.txt
++++ b/qrenderdoc/CMakeLists.txt
+@@ -177,7 +177,9 @@ file(WRITE
+      "QMAKE_LINK=${CMAKE_CXX_COMPILER}\n"
+      "QMAKE_CXXFLAGS+=${warning_flags}\n"
+      "QMAKE_CXXFLAGS+=${QMAKE_CXXFLAGS}\n"
++     "QMAKE_CXXFLAGS+=${CMAKE_CXX_FLAGS}\n"
+      "QMAKE_LFLAGS+=${QMAKE_LDFLAGS}\n"
++     "QMAKE_LFLAGS+=${CMAKE_EXE_LINKER_FLAGS}\n"
+      "QMAKE_RPATHDIR+=${QMAKE_RPATHDIR}\n"
+      "\n"
+      "LIB_SUFFIX=${LIB_SUFFIX}\n"
+-- 
+2.35.1
+
