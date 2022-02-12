@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 # the last time.
 SLOT="0/1.8.3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="conntrack ipv6 netlink nftables pcap static-libs"
+IUSE="conntrack netlink nftables pcap static-libs"
 
 BUILD_DEPEND="
 	>=app-eselect/eselect-iptables-20200508
@@ -78,12 +78,12 @@ src_configure() {
 		--sbindir="${EPREFIX}/sbin"
 		--libexecdir="${EPREFIX}/$(get_libdir)"
 		--enable-devel
+		--enable-ipv6
 		--enable-shared
 		$(use_enable nftables)
 		$(use_enable pcap bpf-compiler)
 		$(use_enable pcap nfsynproxy)
 		$(use_enable static-libs static)
-		$(use_enable ipv6)
 	)
 	econf "${myeconfargs[@]}"
 }
@@ -104,18 +104,15 @@ src_install() {
 	doman iptables/iptables-apply.8
 
 	insinto /usr/include
-	doins include/iptables.h $(use ipv6 && echo include/ip6tables.h)
+	doins include/ip{,6}tables.h
 	insinto /usr/include/iptables
 	doins include/iptables/internal.h
 
-	keepdir /var/lib/iptables
+	keepdir /var/lib/ip{,6}tables
 	newinitd "${FILESDIR}"/${PN}-r2.init iptables
 	newconfd "${FILESDIR}"/${PN}-r1.confd iptables
-	if use ipv6 ; then
-		keepdir /var/lib/ip6tables
-		dosym iptables /etc/init.d/ip6tables
-		newconfd "${FILESDIR}"/ip6tables-r1.confd ip6tables
-	fi
+	dosym iptables /etc/init.d/ip6tables
+	newconfd "${FILESDIR}"/ip6tables-r1.confd ip6tables
 
 	if use nftables; then
 		# Bug 647458
@@ -125,10 +122,7 @@ src_install() {
 		rm "${ED}"/sbin/{arptables,ebtables}{,-{save,restore}} || die
 	fi
 
-	systemd_dounit "${FILESDIR}"/systemd/iptables-{re,}store.service
-	if use ipv6 ; then
-		systemd_dounit "${FILESDIR}"/systemd/ip6tables-{re,}store.service
-	fi
+	systemd_dounit "${FILESDIR}"/systemd/ip{,6}tables-{re,}store.service
 
 	# Move important libs to /lib #332175
 	gen_usr_ldscript -a ip{4,6}tc xtables
