@@ -23,13 +23,13 @@ DEPEND="acct-group/lxd
 	dev-libs/lzo
 	dev-libs/raft[lz4]
 	>=dev-util/xdelta-3.0[lzma(+)]
-	net-dns/dnsmasq[dhcp,ipv6?]
+	net-dns/dnsmasq[dhcp,ipv6(+)?]
 	sys-libs/libcap
 	virtual/udev"
 RDEPEND="${DEPEND}
 	net-firewall/ebtables
-	net-firewall/iptables[ipv6?]
-	sys-apps/iproute2[ipv6?]
+	net-firewall/iptables[ipv6(+)?]
+	sys-apps/iproute2[ipv6(+)?]
 	sys-fs/fuse:*
 	sys-fs/lxcfs
 	sys-fs/squashfs-tools[lzma]
