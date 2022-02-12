@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,7 +38,8 @@ src_install() {
 	gnome2_src_install
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins examples/{*.c,redhand.png}
+		docinto examples
+		dodoc examples/{*.c,redhand.png}
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }
