@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,8 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+bzip2 +lzma +zlib"
 
-DEPEND="app-arch/libarchive[bzip2?,lzma?]
-	zlib? ( app-arch/libarchive[zlib] )
+DEPEND="app-arch/libarchive[bzip2?,lzma?,zlib(+)?]
 	dev-libs/rremove"
 RDEPEND="${DEPEND}
 	app-misc/colordiff"
