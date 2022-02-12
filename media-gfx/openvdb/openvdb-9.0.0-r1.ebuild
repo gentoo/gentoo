@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,7 @@ RDEPEND="
 	dev-libs/imath:=
 	media-libs/glfw
 	media-libs/glu
-	media-libs/openexr:3=
+	media-libs/openexr:=
 	sys-libs/zlib:=
 	x11-libs/libXcursor
 	x11-libs/libXi
@@ -70,14 +70,6 @@ PATCHES=(
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
-}
-
-src_prepare() {
-	# Make sure we find our renamed Imath headers
-	# bug #820929
-	sed -i -e 's:#include <Imath/half.h>:#include <Imath-3/half.h>:' openvdb/openvdb/Types.h || die
-
-	cmake_src_prepare
 }
 
 src_configure() {
