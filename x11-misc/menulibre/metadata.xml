@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="launchpad">menulibre</remote-id>
+		<remote-id type="github">bluesabre/menulibre</remote-id>
 	</upstream>
 </pkgmetadata>
