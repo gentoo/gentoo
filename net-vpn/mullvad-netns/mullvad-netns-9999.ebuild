@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,12 +22,12 @@ IUSE=""
 RDEPEND="
 	app-misc/jq
 	app-shells/bash
-	net-misc/curl[ipv6,ssl]
+	net-misc/curl[ipv6(+),ssl]
 	net-vpn/wireguard-tools
 	sys-apps/baselayout
 	sys-apps/coreutils
 	sys-apps/grep
-	sys-apps/iproute2[ipv6]
+	sys-apps/iproute2[ipv6(+)]
 	sys-apps/util-linux
 "
 BDEPEND="
