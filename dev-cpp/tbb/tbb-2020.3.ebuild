@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -142,10 +142,9 @@ multilib_src_install_all() {
 	einstalldocs
 
 	if use examples ; then
-		insinto /usr/share/doc/${PF}/examples/build
-		doins build/*.inc
-		insinto /usr/share/doc/${PF}/examples
-		doins -r examples
-		docompress -x "/usr/share/doc/${PF}/examples"
+		dodoc -r examples
+		docinto examples/build
+		dodoc build/*.inc
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }
