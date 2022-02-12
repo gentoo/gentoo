@@ -12,8 +12,8 @@ index 09af546..dfe15cd 100644
  # Old versions (before 2.0?) do not have any version string, just assuming this should be fine though.
  SET(_openexr_libs_ver_init "2.0")
  
-+find_package(Imath CONFIG QUIET)
-+if(TARGET Imath::Imath)
++find_package(Imath-3 CONFIG QUIET)
++if(TARGET Imath-3::Imath)
 +SET(_openexr_FIND_COMPONENTS
 +  Imath
 +  Iex
