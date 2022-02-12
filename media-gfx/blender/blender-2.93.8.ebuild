@@ -272,12 +272,12 @@ src_configure() {
 	)
 	append-flags $(usex debug '-DDEBUG' '-DNDEBUG')
 
-        if tc-is-gcc ; then
-                # These options only exist when GCC is detected.
-                # We disable these to respect the user's choice of linker.
-                mycmakeargs+=(
-                        -DWITH_LINKER_GOLD=OFF
-                        -DWITH_LINKER_LLD=OFF
+	if tc-is-gcc ; then
+		# These options only exist when GCC is detected.
+		# We disable these to respect the user's choice of linker.
+		mycmakeargs+=(
+			-DWITH_LINKER_GOLD=OFF
+			-DWITH_LINKER_LLD=OFF
 		)
 	fi
 
