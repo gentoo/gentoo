@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs qmake-utils
+inherit desktop toolchain-funcs qmake-utils
 
 DESCRIPTION="Handles text files containing ANSI terminal escape codes"
 HOMEPAGE="http://www.andre-simon.de/"
@@ -55,8 +55,7 @@ src_install() {
 	dobin src/${PN}
 	if use qt5 ; then
 		dobin src/qt-gui/${PN}-gui
-		insinto /usr/share/applications
-		doins ${PN}.desktop
+		domenu ${PN}.desktop
 	fi
 
 	doman man/${PN}.1
