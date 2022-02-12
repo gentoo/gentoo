@@ -7,7 +7,7 @@
 # @AUTHOR:
 # John Mylchreest <johnm@gentoo.org>,
 # Stefan Schweizer <genstef@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @PROVIDES: linux-info
 # @BLURB: It provides the functionality required to install external modules against a kernel source tree.
 # @DESCRIPTION:
@@ -150,7 +150,7 @@
 # It's a read-only variable. It contains the extension of the kernel modules.
 
 case ${EAPI:-0} in
-	[567]) inherit eutils ;;
+	[678]) inherit eutils ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -603,11 +603,6 @@ linux-mod_pkg_setup() {
 	local is_bin="${MERGE_TYPE}"
 
 	# If we are installing a binpkg, take a different path.
-	# use MERGE_TYPE if available (eapi>=4); else use non-PMS EMERGE_FROM (eapi<4)
-	if has ${EAPI} 0 1 2 3; then
-		is_bin=${EMERGE_FROM}
-	fi
-
 	if [[ ${is_bin} == binary ]]; then
 		linux-mod_pkg_setup_binary
 		return
