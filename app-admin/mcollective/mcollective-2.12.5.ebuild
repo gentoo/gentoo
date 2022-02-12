@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -32,9 +32,10 @@ each_ruby_install() {
 	use client && dosbin bin/mco
 	dosbin bin/mcollectived
 	if use doc ; then
-		dohtml -r doc/*
-		insinto /usr/share/doc/${P}/ext
-		doins -r ext/*
+		dodoc -r ext
+		docinto html
+		dodoc -r doc/.
+		docompress -x /usr/share/doc/${PF}/{ext,html}
 	fi
 	newinitd "${FILESDIR}"/mcollectived.initd mcollectived
 	insinto /etc/mcollective
