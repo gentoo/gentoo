@@ -1,0 +1,302 @@
+diff --git a/src/dpx.imageio/dpxinput.cpp b/src/dpx.imageio/dpxinput.cpp
+index edfeb02..7890b46 100644
+--- a/src/dpx.imageio/dpxinput.cpp
++++ b/src/dpx.imageio/dpxinput.cpp
+@@ -6,7 +6,7 @@
+ #include <iomanip>
+ #include <memory>
+ 
+-#include <OpenEXR/ImfTimeCode.h>  //For TimeCode support
++#include <OpenEXR-3/ImfTimeCode.h>  //For TimeCode support
+ 
+ // Note: libdpx originally from: https://github.com/PatrickPalmer/dpx
+ // But that seems not to be actively maintained.
+diff --git a/src/field3d.imageio/field3d_pvt.h b/src/field3d.imageio/field3d_pvt.h
+index 066574f..19b4ac9 100644
+--- a/src/field3d.imageio/field3d_pvt.h
++++ b/src/field3d.imageio/field3d_pvt.h
+@@ -8,7 +8,7 @@
+ #include <OpenImageIO/Imath.h>
+ 
+ #if OIIO_USING_IMATH >= 3
+-#    include <Imath/ImathBox.h>
++#    include <Imath-3/ImathBox.h>
+ #else
+ #    include <OpenEXR/ImathBox.h>
+ #endif
+diff --git a/src/include/OpenImageIO/Imath.h.in b/src/include/OpenImageIO/Imath.h.in
+index 7f13fae..23afffc 100644
+--- a/src/include/OpenImageIO/Imath.h.in
++++ b/src/include/OpenImageIO/Imath.h.in
+@@ -13,10 +13,10 @@
+ #define OIIO_USING_IMATH @OIIO_USING_IMATH@
+ 
+ #if OIIO_USING_IMATH >= 3
+-#   include <Imath/ImathColor.h>
+-#   include <Imath/ImathMatrix.h>
+-#   include <Imath/ImathVec.h>
+-#   include <Imath/half.h>
++#   include <Imath-3/ImathColor.h>
++#   include <Imath-3/ImathMatrix.h>
++#   include <Imath-3/ImathVec.h>
++#   include <Imath-3/half.h>
+ #else
+ #   include <OpenEXR/ImathColor.h>
+ #   include <OpenEXR/ImathMatrix.h>
+diff --git a/src/libOpenImageIO/imagebufalgo_xform.cpp b/src/libOpenImageIO/imagebufalgo_xform.cpp
+index 496a055..6484ccc 100644
+--- a/src/libOpenImageIO/imagebufalgo_xform.cpp
++++ b/src/libOpenImageIO/imagebufalgo_xform.cpp
+@@ -18,7 +18,7 @@
+ #include <OpenImageIO/thread.h>
+ 
+ #if OIIO_USING_IMATH >= 3
+-#    include <Imath/ImathBox.h>
++#    include <Imath-3/ImathBox.h>
+ #else
+ #    include <OpenEXR/ImathBox.h>
+ #endif
+diff --git a/src/libutil/fmath_test.cpp b/src/libutil/fmath_test.cpp
+index ea4e708..ed7e1ff 100644
+--- a/src/libutil/fmath_test.cpp
++++ b/src/libutil/fmath_test.cpp
+@@ -18,7 +18,7 @@
+ #include <OpenImageIO/unittest.h>
+ 
+ #if OIIO_USING_IMATH >= 3
+-#    include <Imath/ImathFun.h>
++#    include <Imath-3/ImathFun.h>
+ #else
+ #    include <OpenEXR/ImathFun.h>
+ #endif
+diff --git a/src/libutil/typedesc_test.cpp b/src/libutil/typedesc_test.cpp
+index 6840738..58f6a64 100644
+--- a/src/libutil/typedesc_test.cpp
++++ b/src/libutil/typedesc_test.cpp
+@@ -9,12 +9,14 @@
+ #include <OpenImageIO/Imath.h>
+ 
+ #if OIIO_USING_IMATH >= 3
+-#    include <Imath/ImathBox.h>
++#    include <Imath-3/ImathBox.h>
++#    include <OpenEXR-3/ImfKeyCode.h>
++#    include <OpenEXR-3/ImfTimeCode.h>
+ #else
+ #    include <OpenEXR/ImathBox.h>
++#    include <OpenEXR/ImfKeyCode.h>
++#    include <OpenEXR/ImfTimeCode.h>
+ #endif
+-#include <OpenEXR/ImfKeyCode.h>
+-#include <OpenEXR/ImfTimeCode.h>
+ 
+ #include <OpenImageIO/typedesc.h>
+ #include <OpenImageIO/unittest.h>
+diff --git a/src/oiiotool/oiiotool.cpp b/src/oiiotool/oiiotool.cpp
+index 0f5e739..4292b50 100644
+--- a/src/oiiotool/oiiotool.cpp
++++ b/src/oiiotool/oiiotool.cpp
+@@ -17,7 +17,7 @@
+ #include <utility>
+ #include <vector>
+ 
+-#include <OpenEXR/ImfTimeCode.h>
++#include <OpenEXR-3/ImfTimeCode.h>
+ 
+ #include <OpenImageIO/argparse.h>
+ #include <OpenImageIO/color.h>
+diff --git a/src/openexr.imageio/exrinput.cpp b/src/openexr.imageio/exrinput.cpp
+index d9c51ab..8b86ad8 100644
+--- a/src/openexr.imageio/exrinput.cpp
++++ b/src/openexr.imageio/exrinput.cpp
+@@ -25,11 +25,11 @@ using boost::integer::gcd;
+ using boost::math::gcd;
+ #endif
+ 
+-#include <OpenEXR/ImfChannelList.h>
+-#include <OpenEXR/ImfEnvmap.h>
+-#include <OpenEXR/ImfInputFile.h>
+-#include <OpenEXR/ImfTestFile.h>
+-#include <OpenEXR/ImfTiledInputFile.h>
++#include <OpenEXR-3/ImfChannelList.h>
++#include <OpenEXR-3/ImfEnvmap.h>
++#include <OpenEXR-3/ImfInputFile.h>
++#include <OpenEXR-3/ImfTestFile.h>
++#include <OpenEXR-3/ImfTiledInputFile.h>
+ 
+ #ifdef OPENEXR_VERSION_MAJOR
+ #    define OPENEXR_CODED_VERSION                                    \
+@@ -40,7 +40,7 @@ using boost::math::gcd;
+ #endif
+ 
+ #if OPENEXR_CODED_VERSION >= 20400 \
+-    || __has_include(<OpenEXR/ImfFloatVectorAttribute.h>)
++    || __has_include(<OpenEXR-3/ImfFloatVectorAttribute.h>)
+ #    define OPENEXR_HAS_FLOATVECTOR 1
+ #else
+ #    define OPENEXR_HAS_FLOATVECTOR 0
+@@ -51,37 +51,37 @@ using boost::math::gcd;
+ OIIO_PRAGMA_VISIBILITY_PUSH
+ OIIO_PRAGMA_WARNING_PUSH
+ OIIO_GCC_PRAGMA(GCC diagnostic ignored "-Wunused-parameter")
+-#include <OpenEXR/IexBaseExc.h>
+-#include <OpenEXR/IexThrowErrnoExc.h>
+-#include <OpenEXR/ImfBoxAttribute.h>
+-#include <OpenEXR/ImfChromaticitiesAttribute.h>
+-#include <OpenEXR/ImfCompressionAttribute.h>
+-#include <OpenEXR/ImfDeepFrameBuffer.h>
+-#include <OpenEXR/ImfDeepScanLineInputPart.h>
+-#include <OpenEXR/ImfDeepTiledInputPart.h>
+-#include <OpenEXR/ImfDoubleAttribute.h>
+-#include <OpenEXR/ImfEnvmapAttribute.h>
+-#include <OpenEXR/ImfFloatAttribute.h>
+-#include <OpenEXR/ImfHeader.h>
++#include <OpenEXR-3/IexBaseExc.h>
++#include <OpenEXR-3/IexThrowErrnoExc.h>
++#include <OpenEXR-3/ImfBoxAttribute.h>
++#include <OpenEXR-3/ImfChromaticitiesAttribute.h>
++#include <OpenEXR-3/ImfCompressionAttribute.h>
++#include <OpenEXR-3/ImfDeepFrameBuffer.h>
++#include <OpenEXR-3/ImfDeepScanLineInputPart.h>
++#include <OpenEXR-3/ImfDeepTiledInputPart.h>
++#include <OpenEXR-3/ImfDoubleAttribute.h>
++#include <OpenEXR-3/ImfEnvmapAttribute.h>
++#include <OpenEXR-3/ImfFloatAttribute.h>
++#include <OpenEXR-3/ImfHeader.h>
+ #if OPENEXR_HAS_FLOATVECTOR
+-#    include <OpenEXR/ImfFloatVectorAttribute.h>
++#    include <OpenEXR-3/ImfFloatVectorAttribute.h>
+ #endif
+-#include <OpenEXR/ImfInputPart.h>
+-#include <OpenEXR/ImfIntAttribute.h>
+-#include <OpenEXR/ImfKeyCodeAttribute.h>
+-#include <OpenEXR/ImfMatrixAttribute.h>
+-#include <OpenEXR/ImfMultiPartInputFile.h>
+-#include <OpenEXR/ImfPartType.h>
+-#include <OpenEXR/ImfRationalAttribute.h>
+-#include <OpenEXR/ImfStringAttribute.h>
+-#include <OpenEXR/ImfStringVectorAttribute.h>
+-#include <OpenEXR/ImfTiledInputPart.h>
+-#include <OpenEXR/ImfTimeCodeAttribute.h>
+-#include <OpenEXR/ImfVecAttribute.h>
++#include <OpenEXR-3/ImfInputPart.h>
++#include <OpenEXR-3/ImfIntAttribute.h>
++#include <OpenEXR-3/ImfKeyCodeAttribute.h>
++#include <OpenEXR-3/ImfMatrixAttribute.h>
++#include <OpenEXR-3/ImfMultiPartInputFile.h>
++#include <OpenEXR-3/ImfPartType.h>
++#include <OpenEXR-3/ImfRationalAttribute.h>
++#include <OpenEXR-3/ImfStringAttribute.h>
++#include <OpenEXR-3/ImfStringVectorAttribute.h>
++#include <OpenEXR-3/ImfTiledInputPart.h>
++#include <OpenEXR-3/ImfTimeCodeAttribute.h>
++#include <OpenEXR-3/ImfVecAttribute.h>
+ OIIO_PRAGMA_WARNING_POP
+ OIIO_PRAGMA_VISIBILITY_POP
+ 
+-#include <OpenEXR/ImfCRgbaFile.h>
++#include <OpenEXR-3/ImfCRgbaFile.h>
+ 
+ #if OPENEXR_CODED_VERSION >= 30100 && defined(OIIO_USE_EXR_C_API)
+ #    define USE_OPENEXR_CORE
+diff --git a/src/openexr.imageio/exrinput_c.cpp b/src/openexr.imageio/exrinput_c.cpp
+index 4376333..1c566da 100644
+--- a/src/openexr.imageio/exrinput_c.cpp
++++ b/src/openexr.imageio/exrinput_c.cpp
+@@ -25,7 +25,7 @@ using boost::integer::gcd;
+ using boost::math::gcd;
+ #endif
+ 
+-#include <OpenEXR/openexr.h>
++#include <OpenEXR-3/openexr.h>
+ 
+ #ifdef OPENEXR_VERSION_MAJOR
+ #    define OPENEXR_CODED_VERSION                                    \
+diff --git a/src/openexr.imageio/exroutput.cpp b/src/openexr.imageio/exroutput.cpp
+index e11cf0c..0fd2295 100644
+--- a/src/openexr.imageio/exroutput.cpp
++++ b/src/openexr.imageio/exroutput.cpp
+@@ -13,10 +13,10 @@
+ 
+ #include <OpenImageIO/platform.h>
+ 
+-#include <OpenEXR/ImfChannelList.h>
+-#include <OpenEXR/ImfEnvmap.h>
+-#include <OpenEXR/ImfOutputFile.h>
+-#include <OpenEXR/ImfTiledOutputFile.h>
++#include <OpenEXR-3/ImfChannelList.h>
++#include <OpenEXR-3/ImfEnvmap.h>
++#include <OpenEXR-3/ImfOutputFile.h>
++#include <OpenEXR-3/ImfTiledOutputFile.h>
+ 
+ #ifdef OPENEXR_VERSION_MAJOR
+ #    define OPENEXR_CODED_VERSION                                    \
+@@ -27,7 +27,7 @@
+ #endif
+ 
+ #if OPENEXR_CODED_VERSION >= 20400 \
+-    || __has_include(<OpenEXR/ImfFloatVectorAttribute.h>)
++    || __has_include(<OpenEXR-3/ImfFloatVectorAttribute.h>)
+ #    define OPENEXR_HAS_FLOATVECTOR 1
+ #else
+ #    define OPENEXR_HAS_FLOATVECTOR 0
+@@ -38,34 +38,34 @@
+ OIIO_PRAGMA_VISIBILITY_PUSH
+ OIIO_PRAGMA_WARNING_PUSH
+ OIIO_GCC_PRAGMA(GCC diagnostic ignored "-Wunused-parameter")
+-#include <OpenEXR/IexBaseExc.h>
+-#include <OpenEXR/ImfBoxAttribute.h>
+-#include <OpenEXR/ImfCRgbaFile.h>  // JUST to get symbols to figure out version!
+-#include <OpenEXR/ImfChromaticitiesAttribute.h>
+-#include <OpenEXR/ImfCompressionAttribute.h>
+-#include <OpenEXR/ImfEnvmapAttribute.h>
+-#include <OpenEXR/ImfFloatAttribute.h>
++#include <OpenEXR-3/IexBaseExc.h>
++#include <OpenEXR-3/ImfBoxAttribute.h>
++#include <OpenEXR-3/ImfCRgbaFile.h>  // JUST to get symbols to figure out version!
++#include <OpenEXR-3/ImfChromaticitiesAttribute.h>
++#include <OpenEXR-3/ImfCompressionAttribute.h>
++#include <OpenEXR-3/ImfEnvmapAttribute.h>
++#include <OpenEXR-3/ImfFloatAttribute.h>
+ #if OPENEXR_HAS_FLOATVECTOR
+-#    include <OpenEXR/ImfFloatVectorAttribute.h>
++#    include <OpenEXR-3/ImfFloatVectorAttribute.h>
+ #endif
+-#include <OpenEXR/ImfHeader.h>
+-#include <OpenEXR/ImfIntAttribute.h>
+-#include <OpenEXR/ImfKeyCodeAttribute.h>
+-#include <OpenEXR/ImfMatrixAttribute.h>
+-#include <OpenEXR/ImfRationalAttribute.h>
+-#include <OpenEXR/ImfStringAttribute.h>
+-#include <OpenEXR/ImfTimeCodeAttribute.h>
+-#include <OpenEXR/ImfVecAttribute.h>
+-
+-#include <OpenEXR/ImfDeepFrameBuffer.h>
+-#include <OpenEXR/ImfDeepScanLineOutputPart.h>
+-#include <OpenEXR/ImfDeepTiledOutputPart.h>
+-#include <OpenEXR/ImfDoubleAttribute.h>
+-#include <OpenEXR/ImfMultiPartOutputFile.h>
+-#include <OpenEXR/ImfOutputPart.h>
+-#include <OpenEXR/ImfPartType.h>
+-#include <OpenEXR/ImfStringVectorAttribute.h>
+-#include <OpenEXR/ImfTiledOutputPart.h>
++#include <OpenEXR-3/ImfHeader.h>
++#include <OpenEXR-3/ImfIntAttribute.h>
++#include <OpenEXR-3/ImfKeyCodeAttribute.h>
++#include <OpenEXR-3/ImfMatrixAttribute.h>
++#include <OpenEXR-3/ImfRationalAttribute.h>
++#include <OpenEXR-3/ImfStringAttribute.h>
++#include <OpenEXR-3/ImfTimeCodeAttribute.h>
++#include <OpenEXR-3/ImfVecAttribute.h>
++
++#include <OpenEXR-3/ImfDeepFrameBuffer.h>
++#include <OpenEXR-3/ImfDeepScanLineOutputPart.h>
++#include <OpenEXR-3/ImfDeepTiledOutputPart.h>
++#include <OpenEXR-3/ImfDoubleAttribute.h>
++#include <OpenEXR-3/ImfMultiPartOutputFile.h>
++#include <OpenEXR-3/ImfOutputPart.h>
++#include <OpenEXR-3/ImfPartType.h>
++#include <OpenEXR-3/ImfStringVectorAttribute.h>
++#include <OpenEXR-3/ImfTiledOutputPart.h>
+ OIIO_PRAGMA_WARNING_POP
+ OIIO_PRAGMA_VISIBILITY_POP
+ 
