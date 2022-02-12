@@ -2,9 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 
 <pkgmetadata>
-  <maintainer type="person" proxied="yes">
-    <email>matt@offtopica.uk</email>
-    <name>Matt Smith</name>
+  <maintainer type="person">
+    <email>matthew@gentoo.org</email>
+    <name>Matthew Smith</name>
   </maintainer>
   <maintainer type="project">
     <email>scheme@gentoo.org</email>
