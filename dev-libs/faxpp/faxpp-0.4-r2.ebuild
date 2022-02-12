@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Small, fast and conformant XML pull parser written in C"
 HOMEPAGE="http://faxpp.sourceforge.net/"
@@ -24,8 +24,8 @@ src_install() {
 		dodoc -r docs/api/
 	fi
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
 
 	find "${ED}" -name '*.la' -delete || die
