@@ -1,19 +1,20 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit unpacker xdg-utils
+inherit desktop unpacker xdg-utils
 
 MY_PN="Bitwarden"
+
 DESCRIPTION="Bitwarden password manager desktop client"
 HOMEPAGE="https://bitwarden.com/"
 SRC_URI="https://github.com/bitwarden/desktop/releases/download/v${PV}/Bitwarden-${PV}-amd64.deb"
+S="${WORKDIR}"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 RDEPEND="
 	app-accessibility/at-spi2-atk:2
@@ -53,8 +54,6 @@ IDEPEND="
 	dev-util/gtk-update-icon-cache
 "
 
-S="${WORKDIR}"
-
 QA_PREBUILT="
 	opt/Bitwarden/*.so
 	opt/Bitwarden/bitwarden
@@ -67,11 +66,12 @@ src_install() {
 	fperms 755 /opt/Bitwarden/bitwarden
 	fperms 4755 /opt/Bitwarden/chrome-sandbox
 
-	insinto /usr/share/applications
-	doins usr/share/applications/bitwarden.desktop
+	domenu usr/share/applications/bitwarden.desktop
 
-	insinto /usr/share/icons
-	doins -r usr/share/icons/hicolor
+	local x
+	for x in 16 32 48 64 256 512; do
+		doicon -s ${x} data/icons/hicolor/${x}*/*
+	done
 }
 
 pkg_postinst() {
