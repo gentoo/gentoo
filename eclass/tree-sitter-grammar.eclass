@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: tree-sitter-grammar.eclass
 # @MAINTAINER:
-# Matthew Smith <matt@offtopica.uk>
+# Matthew Smith <matthew@gentoo.org>
 # Nick Sarnie <sarnex@gentoo.org>
 # @AUTHOR:
-# Matthew Smith <matt@offtopica.uk>
+# Matthew Smith <matthew@gentoo.org>
 # @SUPPORTED_EAPIS: 8
 # @BLURB: Common functions and variables for Tree Sitter grammars
 
