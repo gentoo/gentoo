@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic prefix
 
@@ -42,7 +42,7 @@ DEPEND="sys-apps/groff
 PDEPEND="
 	examples? ( app-doc/zsh-lovers )
 "
-if [[ ${PV} == 9999* ]] ; then
+if [[ ${PV} == *9999 ]] ; then
 	DEPEND+=" app-text/yodl
 		doc? (
 			sys-apps/texinfo
@@ -52,21 +52,21 @@ if [[ ${PV} == 9999* ]] ; then
 fi
 
 src_prepare() {
-	if [[ ${PV} != 9999* ]]; then
+	if [[ ${PV} != *9999 ]]; then
 		# fix zshall problem with soelim
 		ln -s Doc man1 || die
 		mv Doc/zshall.1 Doc/zshall.1.soelim || die
 		soelim Doc/zshall.1.soelim > Doc/zshall.1 || die
-
-		# add openrc specific options for init.d completion
-		eapply "${FILESDIR}"/${PN}-5.3-init.d-gentoo.diff
 	fi
+
+	# add openrc specific options for init.d completion
+	eapply "${FILESDIR}"/${PN}-5.3-init.d-gentoo.diff
 
 	default
 
 	hprefixify configure.ac
-	if [[ ${PV} == 9999* ]] ; then
-		sed -i "/^VERSION=/s/=.*/=${PV}/" Config/version.mk || die
+	if [[ ${PV} == *9999 ]] ; then
+		sed -i "/^VERSION=/s@=.*@=${PV}@" Config/version.mk || die
 	fi
 	eautoreconf
 }
@@ -127,7 +127,7 @@ src_configure() {
 src_compile() {
 	default
 
-	if [[ ${PV} == 9999* ]] && use doc ; then
+	if [[ ${PV} == *9999 ]] && use doc ; then
 		emake -C Doc everything
 	fi
 }
