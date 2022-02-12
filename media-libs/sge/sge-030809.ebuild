@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -59,8 +59,8 @@ src_install() {
 		dodoc docs/*
 	fi
 
-	if use examples ; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
+	if use examples; then
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }
