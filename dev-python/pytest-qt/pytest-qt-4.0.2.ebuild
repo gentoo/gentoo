@@ -50,10 +50,10 @@ src_test() {
 
 python_test() {
 	distutils_install_for_testing
-	PYTEST_QT_API="pyqt5" epytest
+	PYTEST_QT_API="pyqt5" epytest || die
 	if [[ "${EPYTHON}" == "python3.10" ]]; then
 		return
 	else
-		PYTEST_QT_API="pyside2" epytest
+		PYTEST_QT_API="pyside2" epytest || die
 	fi
 }
