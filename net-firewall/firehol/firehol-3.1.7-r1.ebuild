@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,12 +12,12 @@ SRC_URI="https://github.com/firehol/firehol/releases/download/v${PV}/${P}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc ipv6 ipset"
-KEYWORDS="amd64 arm ~arm64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 
 RDEPEND="net-firewall/iptables
-	sys-apps/iproute2[-minimal,ipv6?]
+	sys-apps/iproute2[-minimal,ipv6(+)?]
 	sys-apps/kmod[tools]
-	net-misc/iputils[ipv6?]
+	net-misc/iputils[ipv6(+)?]
 	net-misc/iprange
 	net-analyzer/traceroute
 	app-arch/gzip
