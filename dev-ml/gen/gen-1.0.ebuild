@@ -15,6 +15,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 RESTRICT="test"  # tests fail  > unused-open
 
-DEPEND="dev-ml/dune-configurator:="
+DEPEND="
+	dev-ml/dune-configurator:=
+	dev-ml/seq"
 RDEPEND="${DEPEND}"
 # BDEPEND="test? ( dev-ml/qtest )"
