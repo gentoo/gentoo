@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,7 +37,7 @@ SLOT="2"
 # Dropped keywords for now because it's a minor LDFLAGS fix, and it will ease upgrades
 # bug #802210
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="debug examples icu ipv6 lzma +python readline static-libs test"
+IUSE="debug examples icu lzma +python readline static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -148,11 +148,11 @@ multilib_src_configure() {
 
 	libxml2_configure() {
 		ECONF_SOURCE="${S}" econf \
+			--enable-ipv6 \
 			--with-html-subdir=${PF}/html \
 			$(use_with debug run-debug) \
 			$(use_with icu) \
 			$(use_with lzma) \
-			$(use_enable ipv6) \
 			$(use_enable static-libs static) \
 			$(multilib_native_use_with readline) \
 			$(multilib_native_use_with readline history) \
