@@ -588,11 +588,7 @@ src_compile() {
 	addpredict /dev/ati
 	addpredict /dev/nvidiactl
 
-	local target
-	use test && target="build" || target="build-nocheck"
-
-	# this is not a proper make script
-	make ${target} || die
+	default
 }
 
 src_test() {
