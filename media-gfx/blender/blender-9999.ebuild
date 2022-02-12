@@ -86,7 +86,7 @@ RDEPEND="${PYTHON_DEPS}
 	openimageio? ( >=media-libs/openimageio-2.3.12.0:= )
 	openexr? (
 		dev-libs/imath:=
-		media-libs/openexr:3=
+		>=media-libs/openexr-3:=
 	)
 	opensubdiv? ( >=media-libs/opensubdiv-3.4.0[cuda=] )
 	openvdb? (
