@@ -58,10 +58,15 @@ RDEPEND="${PYTHON_DEPS}
 RESTRICT="test"
 
 PATCHES=(
+	# git master
+	"${FILESDIR}/${P}-fix-incorrect-template-parameter-type.patch"
+	"${FILESDIR}/${P}-boost-python.patch"
+	"${FILESDIR}/${P}-python3.7.patch" # bug 701208
+	"${FILESDIR}/${P}-gcc-10.patch" # bug 723302
 	# TODO: upstream
-	"${FILESDIR}/${PN}-1.11.1-lib_suffix.patch"
-	"${FILESDIR}/${PN}-1.11.1-cmake-module-dir.patch"
-	"${FILESDIR}/${PN}-1.11.1-sphinx.ext.pngmath.patch" # thanks to Debian; bug 678308
+	"${FILESDIR}/${P}-lib_suffix.patch"
+	"${FILESDIR}/${P}-cmake-module-dir.patch"
+	"${FILESDIR}/${P}-sphinx.ext.pngmath.patch" # thanks to Debian; bug 678308
 )
 
 pkg_setup() {
