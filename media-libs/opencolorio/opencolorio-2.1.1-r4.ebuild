@@ -59,10 +59,6 @@ RESTRICT="test"
 
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.1.1-imath-openexr-3.patch
-)
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
