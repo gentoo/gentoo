@@ -34,7 +34,7 @@ IUSE="doc partio qt5 test ${CPU_FEATURES[@]%:*} python"
 RDEPEND="
 	dev-libs/boost:=
 	dev-libs/pugixml
-	media-libs/openexr:3=
+	media-libs/openexr:=
 	dev-libs/imath:=
 	>=media-libs/openimageio-2.3.12.0:=
 	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
@@ -63,10 +63,6 @@ BDEPEND="
 RESTRICT="test"
 
 S="${WORKDIR}/OpenShadingLanguage-Release-${PV}"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.11.16.0-openexr-3-imath.patch
-)
 
 llvm_check_deps() {
 	has_version -r "sys-devel/clang:${LLVM_SLOT}"
