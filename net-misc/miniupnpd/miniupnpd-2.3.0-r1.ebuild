@@ -21,7 +21,7 @@ RDEPEND="
 	sys-apps/util-linux:=
 	dev-libs/openssl:0=
 	!nftables? (
-		>=net-firewall/iptables-1.4.6:0=[ipv6?]
+		>=net-firewall/iptables-1.4.6:0=[ipv6(+)?]
 		net-libs/libnfnetlink:=
 		net-libs/libmnl:=
 	)
