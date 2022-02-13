@@ -13,7 +13,6 @@
 		<flag name="emacs">Install the mu4e mail client</flag>
 	</use>
 	<upstream>
-		<remote-id type="google-code">mu0</remote-id>
 		<remote-id type="github">djcb/mu</remote-id>
 	</upstream>
 </pkgmetadata>
