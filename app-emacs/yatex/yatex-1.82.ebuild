@@ -10,7 +10,7 @@ HOMEPAGE="http://www.yatex.org/"
 SRC_URI="http://www.${PN}.org/${P/-}.tar.gz"
 S="${WORKDIR}/${P/-}"
 
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ~ppc64 x86"
 SLOT="0"
 LICENSE="BSD-2"
 IUSE="l10n_ja"
