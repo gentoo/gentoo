@@ -222,11 +222,6 @@ dev-db/oracle-instantclient-jdbc
 dev-db/oracle-instantclient-odbc
 dev-db/oracle-instantclient-sqlplus
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-15)
-# Java-packages with no consumers and depending on virtual/{jdk,jre}-1.6
-# Removal in 30 days.
-app-emulation/edumips64
-
 # Ulrich Müller <ulm@gentoo.org> (2022-01-15)
 # Pretest versions, masked for testing.
 <app-editors/emacs-28.0.9999:28-vcs
