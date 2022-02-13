@@ -227,7 +227,6 @@ dev-db/oracle-instantclient-sqlplus
 # Removal in 30 days.
 app-emulation/edumips64
 dev-java/appframework
-dev-java/commons-jexl
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-15)
 # Pretest versions, masked for testing.
