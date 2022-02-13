@@ -1,16 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-EBO_EAUTORECONF=1
-
-inherit emboss-r2 readme.gentoo-r1
+inherit autotools emboss-r3 readme.gentoo-r1
 
 DESCRIPTION="The European Molecular Biology Open Software Suite - A sequence analysis package"
 SRC_URI="
 	ftp://emboss.open-bio.org/pub/${PN^^}/${P^^}.tar.gz
-	https://dev.gentoo.org/~soap/distfiles/${P}-patches.tar.xz"
+	https://dev.gentoo.org/~soap/distfiles/${P}-patches-r1.tar.xz"
 S="${WORKDIR}/${P^^}"
 
 LICENSE+=" Apache-2.0 GPL-3+ CC-BY-3.0"
@@ -39,13 +37,18 @@ PATCHES=(
 	"${WORKDIR}"/patches/${P}-Wimplicit-function-declaration.patch
 )
 
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_install() {
-	emboss-r2_src_install
+	emboss-r3_src_install
 
 	readme.gentoo_create_doc
 
 	# Install env file for setting libplplot and acd files path.
-	newenvd - 22emboss <<- EOF || die
+	newenvd - 22emboss <<- EOF
 		# ACD files location
 		EMBOSS_ACDROOT="${EPREFIX}/usr/share/EMBOSS/acd"
 		EMBOSS_DATA="${EPREFIX}/usr/share/EMBOSS/data"
