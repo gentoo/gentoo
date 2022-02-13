@@ -1,7 +1,6 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-inherit user
 EXPORT_FUNCTIONS pkg_setup
 
 # @ECLASS: postgres.eclass
@@ -116,32 +115,6 @@ postgres_check_slot() {
 		eerror "PostgreSQL slot must be set to one of: "
 		eerror "    ${POSTGRES_COMPAT[@]}"
 		die "Incompatible PostgreSQL slot eselected"
-	fi
-}
-
-# @FUNCTION: postgres_new_user
-# @USAGE: [user [(uid|-1) [(shell|-1) [(homedir|-1) [groups]]]]]
-# @DESCRIPTION:
-# Creates the "postgres" system group and user -- which is separate from
-# the database user -- and, optionally, the developer defined user. There
-# are no required parameters.
-#
-# When given a user to create, it'll be created with the next available
-# uid, default shell set to /bin/false, default homedir is /dev/null,
-# and added to the "postgres" system group. You can use "-1" to skip any
-# parameter except user or groups.
-postgres_new_user() {
-	enewgroup postgres 70
-	enewuser postgres 70 /bin/bash /var/lib/postgresql postgres
-
-	if [[ $# -gt 0 ]] ; then
-		if [[ "$1" = "postgres" ]] ; then
-			ewarn "Username 'postgres' implied, skipping"
-		else
-			local groups=$5
-			[[ -n "${groups}" ]] && groups+=",postgres" || groups="postgres"
-			enewuser "$1" "${2:--1}" "${3:--1}" "${4:--1}" "${groups}"
-		fi
 	fi
 }
 
