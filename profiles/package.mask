@@ -236,7 +236,6 @@ dev-java/jargs
 dev-java/junitperf
 dev-java/kunststoff
 dev-java/saxpath
-dev-java/sun-jaf
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-15)
 # Pretest versions, masked for testing.
