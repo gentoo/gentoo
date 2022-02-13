@@ -6,7 +6,8 @@
 		<name>Jason Zaman</name>
 	</maintainer>
 	<longdescription lang="en">
-		TensorFlow Keras is an implementation of the Keras API that uses TensorFlow as a backend.
+		A deep learning for humans. TensorFlow Keras is an implementation
+		of the Keras API that uses TensorFlow as a backend.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">keras-team/keras</remote-id>
