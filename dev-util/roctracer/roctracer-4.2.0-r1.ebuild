@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,6 +11,7 @@ DESCRIPTION="Callback/Activity Library for Performance tracing AMD GPU's"
 HOMEPAGE="https://github.com/ROCm-Developer-Tools/roctracer.git"
 SRC_URI="https://github.com/ROCm-Developer-Tools/roctracer/archive/rocm-${PV}.tar.gz -> rocm-tracer-${PV}.tar.gz
 		https://github.com/ROCm-Developer-Tools/rocprofiler/archive/rocm-${PV}.tar.gz -> rocprofiler-${PV}.tar.gz"
+S="${WORKDIR}/roctracer-rocm-${PV}"
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
@@ -20,9 +21,8 @@ RDEPEND="dev-libs/rocr-runtime:${SLOT}
 	dev-util/hip:${SLOT}"
 DEPEND="dev-python/CppHeaderParser
 	dev-python/ply
-	${RDEPEND}"
-
-S="${WORKDIR}/roctracer-rocm-${PV}"
+	${RDEPEND}
+	${PYTHON_DEPS}"
 
 src_prepare() {
 	mv "${WORKDIR}"/rocprofiler-rocm-${PV} "${WORKDIR}"/rocprofiler || die
