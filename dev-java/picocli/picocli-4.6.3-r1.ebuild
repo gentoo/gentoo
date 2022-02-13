@@ -13,8 +13,8 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Java command line parser with both an annotations API and a programmatic API"
-HOMEPAGE="http://picocli.info"
-SRC_URI="https://github.com/remkop/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}-sources.tar.gz"
+HOMEPAGE="https://picocli.info"
+SRC_URI="https://github.com/remkop/${PN}/archive/v${PV}.tar.gz -> ${P}-sources.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
@@ -42,3 +42,8 @@ JAVA_TEST_SRC_DIR="src/test/java"
 JAVA_TEST_RESOURCE_DIRS=(
 	"src/test/resources"
 )
+
+src_install() {
+	default # https://bugs.gentoo.org/789582
+	java-pkg-simple_src_install
+}
