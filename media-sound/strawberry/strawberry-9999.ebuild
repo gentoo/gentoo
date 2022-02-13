@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake flag-o-matic plocale xdg
 
-PLOCALES="ca cs de es fi fr hu id it ja ko nb nl pl pt_BR ru sv uk zh_CN"
+PLOCALES="ca cs de es es_AR es_ES es_MX fi fr hu id it ja ko nb nl pl pt_BR ru sv uk zh_CN"
 
 DESCRIPTION="Modern music player and library organizer based on Clementine and Qt"
 HOMEPAGE="https://www.strawberrymusicplayer.org/"
