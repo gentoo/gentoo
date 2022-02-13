@@ -16,9 +16,10 @@ IUSE_VIDEO_CARDS="video_cards_nvidia video_cards_r600 video_cards_radeonsi"
 IUSE="${IUSE_VIDEO_CARDS}"
 REQUIRED_USE="|| ( ${IUSE_VIDEO_CARDS} )"
 
-LLVM_MAX_SLOT=14
+LLVM_MAX_SLOT=15
 BDEPEND="
 	|| (
+		sys-devel/clang:15
 		sys-devel/clang:14
 		sys-devel/clang:13
 		sys-devel/clang:12
