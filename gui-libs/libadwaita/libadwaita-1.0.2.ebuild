@@ -14,7 +14,7 @@ SLOT="1"
 IUSE="+introspection test +vala"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 DEPEND="
 	>=dev-libs/glib-2.66:2
