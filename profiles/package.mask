@@ -230,7 +230,6 @@ dev-java/appframework
 dev-java/commons-jexl
 dev-java/cssparser
 dev-java/felix-bundlerepository
-dev-java/glassfish-servlet-api
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-15)
 # Pretest versions, masked for testing.
