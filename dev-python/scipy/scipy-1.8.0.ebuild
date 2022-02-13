@@ -125,7 +125,6 @@ python_prepare_all() {
 			-e 's:test_pdist_jensenshannon_iris:_&:' \
 			-e 's:test_align_vectors_single_vector:_&:' \
 			scipy/signal/tests/test_spectral.py \
-			scipy/sparse/linalg/isolve/tests/test_iterative.py \
 			scipy/spatial/tests/test_distance.py \
 			scipy/spatial/transform/tests/test_rotation.py || die
 	fi
