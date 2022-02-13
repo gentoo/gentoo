@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Fabian Groffen <grobian@gentoo.org> (2022-02-13)
+# needs unkeyworded virtual/gsasl
+mail-client/mutt gsasl
+
 # Fabian Groffen <grobian@gentoo.org> (2021-03-13)
 # nss-pem, bug #769578
 net-misc/curl curl_ssl_nss
