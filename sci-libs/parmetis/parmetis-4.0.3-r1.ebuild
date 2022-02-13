@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -103,8 +103,9 @@ src_install() {
 	newdoc metis/Changelog Changelog.metis}
 	use doc && dodoc "${WORKDIR}/${METISP}"/manual/manual.pdf
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples/metis
-		doins "${WORKDIR}/${METISP}"/{programs,graphs}/*
+		docinto examples/metis
+		dodoc -r "${WORKDIR}/${METISP}"/{programs,graphs}/.
+		docompress -x /usr/share/doc/${PF}/examples/metis
 	fi
 	# alternative stuff
 	cat > metis.pc <<-EOF
@@ -128,8 +129,9 @@ src_install() {
 		dodoc Changelog
 		use doc && dodoc manual/manual.pdf
 		if use examples; then
-			insinto /usr/share/doc/${PF}/examples/${PN}
-			doins {programs,Graphs}/*
+			docinto examples/${PN}
+			dodoc -r {programs,Graphs}/.
+			docompress -x /usr/share/doc/${PF}/examples/${PN}
 		fi
 		# alternative stuff
 		cat > ${PN}.pc <<-EOF
