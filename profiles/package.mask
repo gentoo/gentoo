@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthew Smith <matthew@gentoo.org> (2022-02-13)
+# Dead upstream, incompatible with newer versions of makeself.
+# Removal after 2022-03-15.  Bug #781947.
+app-arch/unmakeself
+
 # Jonas Stein <jstein@gentoo.org> (2022-02-11)
 # Blocks gtk2 removal, which is EOL
 # Removal after 2022-04-01.  Bug #833145.
