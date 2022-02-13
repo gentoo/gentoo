@@ -243,7 +243,6 @@ dev-java/touchgraph-graphlayout
 dev-java/trove
 dev-java/unkrig-nullanalysis
 dev-java/xmldb
-dev-util/appinventor
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-15)
 # Pretest versions, masked for testing.
