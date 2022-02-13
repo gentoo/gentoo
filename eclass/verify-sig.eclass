@@ -197,17 +197,27 @@ verify-sig_verify_message() {
 	esac
 }
 
-# @FUNCTION: _gpg_verify_signed_checksums
-# @INTERNAL
-# @USAGE: <checksum-file> <algo> <files> [<key-file>]
+# @FUNCTION: verify-sig_verify_unsigned_checksums
+# @USAGE: <checksum-file> <algo> <files>
 # @DESCRIPTION:
-# GnuPG-specific function to verify a signed checksums list.
-_gpg_verify_signed_checksums() {
+# Verify the checksums for all files listed in the space-separated list
+# <files> (akin to ${A}) using a <checksum-file>.  <algo> specifies
+# the checksum algorithm (e.g. sha256).  <checksum-file> can be "-"
+# for stdin.
+#
+# The function dies if one of the files does not match checksums or
+# is missing from the checksum file.
+#
+# Note that this function itself can only verify integrity of the files.
+# In order to verify their authenticity, the <checksum-file> must
+# be verified against a signature first, e.g. using
+# verify-sig_verify_detached.  If it contains inline signature, use
+# verify-sig_verify_signed_checksums instead.
+verify-sig_verify_unsigned_checksums() {
 	local checksum_file=${1}
 	local algo=${2}
 	local files=()
 	read -r -d '' -a files <<<"${3}"
-	local key=${4:-${VERIFY_SIG_OPENPGP_KEY_PATH}}
 	local chksum_prog chksum_len
 
 	case ${algo} in
@@ -220,8 +230,13 @@ _gpg_verify_signed_checksums() {
 			;;
 	esac
 
+	[[ ${checksum_file} == - ]] && checksum_file=/dev/stdin
 	local checksum filename junk ret=0 count=0
 	while read -r checksum filename junk; do
+		if [[ ${checksum} == "-----BEGIN" ]]; then
+			die "${FUNCNAME}: PGP armor found, use verify-sig_verify_signed_checksums instead"
+		fi
+
 		[[ ${#checksum} -eq ${chksum_len} ]] || continue
 		[[ -z ${checksum//[0-9a-f]} ]] || continue
 		has "${filename}" "${files[@]}" || continue
@@ -233,12 +248,28 @@ _gpg_verify_signed_checksums() {
 		else
 			ret=1
 		fi
-	done < <(verify-sig_verify_message "${checksum_file}" - "${key}")
+	done < "${checksum_file}"
 
 	[[ ${ret} -eq 0 ]] ||
 		die "${FUNCNAME}: at least one file did not verify successfully"
 	[[ ${count} -eq ${#files[@]} ]] ||
 		die "${FUNCNAME}: checksums for some of the specified files were missing"
+}
+
+# @FUNCTION: _gpg_verify_signed_checksums
+# @INTERNAL
+# @USAGE: <checksum-file> <algo> <files> [<key-file>]
+# @DESCRIPTION:
+# GnuPG-specific function to verify a signed checksums list.
+_gpg_verify_signed_checksums() {
+	local checksum_file=${1}
+	local algo=${2}
+	local files=${3}
+	local key=${4:-${VERIFY_SIG_OPENPGP_KEY_PATH}}
+
+	verify-sig_verify_unsigned_checksums - "${algo}" "${files}" < <(
+		verify-sig_verify_message "${checksum_file}" - "${key}"
+	)
 }
 
 # @FUNCTION: verify-sig_verify_signed_checksums
