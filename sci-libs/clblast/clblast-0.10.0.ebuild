@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,6 +10,7 @@ MYPN="CLBlast"
 DESCRIPTION="Tuned OpenCL BLAS"
 HOMEPAGE="https://github.com/CNugteren/CLBlast"
 SRC_URI="https://github.com/CNugteren/${MYPN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MYPN}-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -24,7 +25,6 @@ DEPEND="${RDEPEND}
 	  virtual/pkgconfig
 	)
 "
-S="${WORKDIR}/${MYPN}-${PV}"
 
 src_prepare() {
 	# no forced optimisation, libdir
@@ -61,8 +61,8 @@ src_install() {
 	dodoc README.md CONTRIBUTING.md CHANGELOG
 	use doc && dodoc -r doc
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins -r samples/*
+		docinto examples
+		dodoc -r samples/.
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }
