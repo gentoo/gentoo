@@ -133,13 +133,10 @@ src_install() {
 		elisp-install ${PN} elisp/*.el
 	fi
 
-	insinto /usr/share/doc/${PF}
 	docompress -x /usr/share/doc/${PF}/*.dvi
 	if use athena; then
-		pushd xgcl-2 > /dev/null
-		dodoc *.pdf
+		dodoc xgcl-2/*.pdf
 		docompress -x /usr/share/doc/${PF}/*.pdf
-		popd > /dev/null
 	fi
 }
 
