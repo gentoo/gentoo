@@ -12,12 +12,14 @@
 # @DESCRIPTION:
 # This eclass provides basic settings and functions needed by all software
 # written in the go programming language that uses modules.
+# If the software you are packaging has a file named go.mod in its top level
+# directory, it uses modules.
+# 
+# Modules have been the preferred method of tracking dependencies in software
+# written in Go since version 1.16,
+# so if the software isn't using modules, it should be updated.
 #
-# If the software you are packaging  has a file named go.mod in its top
-# level directory, it uses modules and  your ebuild should inherit this
-# eclass. If it does not, your ebuild should use the golang-* eclasses.
-#
-# If, besides go.mod, your software has a directory named vendor in its
+# If the software has a directory named vendor in its
 # top level directory, the only thing you need to do is inherit the
 # eclass. If there is no vendor directory, you need to also populate
 # EGO_SUM and call go-module_set_globals as discussed below.
@@ -56,7 +58,7 @@ if [[ -z ${_GO_MODULE} ]]; then
 _GO_MODULE=1
 
 if [[ ! ${GO_OPTIONAL} ]]; then
-	BDEPEND=">=dev-lang/go-1.12"
+	BDEPEND=">=dev-lang/go-1.16"
 
 	# Workaround for pkgcheck false positive: https://github.com/pkgcore/pkgcheck/issues/214
 	# MissingUnpackerDep: version ...: missing BDEPEND="app-arch/unzip"
