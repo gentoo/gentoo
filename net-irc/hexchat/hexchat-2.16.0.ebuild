@@ -24,6 +24,7 @@ LICENSE="GPL-2 plugin-fishlim? ( MIT )"
 SLOT="0"
 IUSE="dbus debug +gtk libcanberra lua perl plugin-checksum plugin-fishlim plugin-sysinfo python ssl theme-manager"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
+	plugin-fishlim? ( ssl )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
@@ -46,7 +47,10 @@ RDEPEND="
 	ssl? ( dev-libs/openssl:0= )
 	theme-manager? (
 		|| (
-			( dev-lang/mono[minimal] dev-dotnet/libgdiplus )
+			(
+				dev-lang/mono[minimal]
+				dev-dotnet/libgdiplus
+			)
 			dev-lang/mono[-minimal]
 		)
 	)"
