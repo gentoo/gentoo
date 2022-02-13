@@ -245,7 +245,6 @@ dev-java/unkrig-nullanalysis
 dev-java/xmldb
 dev-util/appinventor
 dev-util/scala-ide
-sci-astronomy/healpix
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-15)
 # Pretest versions, masked for testing.
