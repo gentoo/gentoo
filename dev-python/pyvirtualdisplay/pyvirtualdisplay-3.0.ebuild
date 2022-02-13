@@ -28,7 +28,7 @@ BDEPEND="
 		dev-python/easyprocess[${PYTHON_USEDEP}]
 		dev-python/entrypoint2[${PYTHON_USEDEP}]
 		dev-python/path-py[${PYTHON_USEDEP}]
-		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pillow[xcb,${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pyscreenshot[${PYTHON_USEDEP}]
 		~dev-python/vncdotool-0.13.0[${PYTHON_USEDEP}]
