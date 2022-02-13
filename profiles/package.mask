@@ -240,7 +240,6 @@ dev-java/sun-jaf
 dev-java/tijmp
 dev-java/tomcat-jstl-impl
 dev-java/touchgraph-graphlayout
-dev-java/trove
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-15)
 # Pretest versions, masked for testing.
