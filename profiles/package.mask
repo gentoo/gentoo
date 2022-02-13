@@ -226,7 +226,6 @@ dev-db/oracle-instantclient-sqlplus
 # Java-packages with no consumers and depending on virtual/{jdk,jre}-1.6
 # Removal in 30 days.
 app-emulation/edumips64
-dev-java/appframework
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-15)
 # Pretest versions, masked for testing.
