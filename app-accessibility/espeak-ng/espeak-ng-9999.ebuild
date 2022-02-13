@@ -72,6 +72,6 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" VIMDIR=/usr/share/vimfiles install
-	rm "${ED}"/usr/lib*/*.la || die
+	emake DESTDIR="${D}" VIMDIR=/usr/share/vim/vimfiles install
+	find "${ED}" -name '*.la' -delete  || die
 }
