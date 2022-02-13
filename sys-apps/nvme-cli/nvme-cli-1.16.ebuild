@@ -12,7 +12,7 @@ RESTRICT="test"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ppc64 ~riscv ~x86"
 IUSE="hugepages +json systemd +uuid"
 
 RDEPEND="json? ( dev-libs/json-c:= )
