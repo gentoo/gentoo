@@ -1,9 +1,10 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake
+CMAKE_ECLASS=cmake
+inherit cmake-multilib
 
 DESCRIPTION="LDAC codec library from AOSP"
 HOMEPAGE="https://android.googlesource.com/platform/external/libldac/"
@@ -15,11 +16,15 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86 ~amd64-
 
 S="${WORKDIR}/ldacBT"
 
-src_configure() {
+multilib_src_configure() {
 	local mycmakeargs=(
 		-DLDAC_SOFT_FLOAT=OFF
 		-DINSTALL_LIBDIR=/usr/$(get_libdir)
 	)
 
 	cmake_src_configure
+}
+
+src_install() {
+	cmake-multilib_src_install
 }
