@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-02-13)
+# Requires qtwebengine
+sci-electronics/eagle
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-09-09)
 # Jupyterlab and friends require net-libs/nodejs
 dev-python/jupyterlab
