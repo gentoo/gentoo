@@ -7,7 +7,7 @@
 # @SUPPORTED_EAPIS: 5 6 7
 # @PROVIDES: golang-base
 # @BLURB: eclass to unpack VCS snapshot tarballs for Go software
-# @DEPRECATED: Go packages should use the go-module eclass
+# @DEPRECATED: go-module.eclass
 # @DESCRIPTION:
 # This eclass provides a convenience src_unpack() which unpacks the
 # first tarball mentioned in SRC_URI to its appropriate location in

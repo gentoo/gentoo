@@ -7,7 +7,7 @@
 # @SUPPORTED_EAPIS: 5 6 7
 # @PROVIDES: golang-base
 # @BLURB: Eclass for compiling go packages.
-# @DEPRECATED: Go packages should use the go-module eclass
+# @DEPRECATED: go-module.eclass
 # @DESCRIPTION:
 # This eclass provides default  src_compile, src_test and src_install
 # functions for software written in the Go programming language.
