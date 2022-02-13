@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Fabian Groffen <grobian@gentoo.org> (2022-02-13)
+# needs unkeyworded virtual/gsasl
+mail-client/mutt gsasl
+
 # Joshua Kinard <kumba@gentoo.org> (2022-01-17)
 # Mask USE 'doc' for dev-libs/libcbor to avoid dragging in
 # a massive set of texlive dependencies.  This copies m68k.
