@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -69,7 +69,8 @@ src_install() {
 	find "${ED}" -name '*.la' -delete || die
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins src/tests/*.c
+		docinto examples
+		dodoc src/tests/*.c
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }
