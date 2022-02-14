@@ -13,8 +13,7 @@ NV_URI="https://download.nvidia.com/XFree86/"
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
 HOMEPAGE="https://www.nvidia.com/download/index.aspx"
 SRC_URI="
-	amd64? ( ${NV_URI}Linux-x86_64/${PV}/NVIDIA-Linux-x86_64-${PV}.run )
-	arm64? ( ${NV_URI}Linux-aarch64/${PV}/NVIDIA-Linux-aarch64-${PV}.run )
+	${NV_URI}Linux-x86_64/${PV}/NVIDIA-Linux-x86_64-${PV}.run
 	$(printf "${NV_URI}%s/%s-${PV}.tar.bz2 " \
 		nvidia-{installer,modprobe,persistenced,settings,xconfig}{,})"
 # nvidia-installer is unused but here for GPL-2's "distribute sources"
