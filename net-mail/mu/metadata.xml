@@ -5,6 +5,10 @@
 		<email>matthew@gentoo.org</email>
 		<name>Matthew Smith</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>gnu-emacs@gentoo.org</email>
+		<name>Gentoo GNU Emacs project</name>
+	</maintainer>
 	<longdescription lang="en">
 		'mu' is a set of command-line tools for Linux/Unix that enable you to quickly find the e-mails you
 		are looking for, assuming that you store your e-mails in Maildirs.  It also includes an emacs based mail client mu4e.
