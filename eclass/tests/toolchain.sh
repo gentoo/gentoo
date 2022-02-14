@@ -8,7 +8,7 @@ EAPI=5
 TOOLCHAIN_GCC_PV=7.3.0
 PR=r0
 
-source tests-common.sh
+source tests-common.sh || exit
 
 inherit toolchain
 

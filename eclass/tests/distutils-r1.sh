@@ -4,7 +4,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_8 )
-source tests-common.sh
+source tests-common.sh || exit
 
 test-phase_name_free() {
 	local ph=${1}
