@@ -21,7 +21,7 @@ BDEPEND="
 	>=dev-lang/go-1.16.6
 	dev-go/go-md2man"
 
-RESTRICT="installsources strip"
+RESTRICT="installsources strip test"
 
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
