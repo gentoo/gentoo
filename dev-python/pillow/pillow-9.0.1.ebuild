@@ -47,15 +47,6 @@ BDEPEND="
 	)
 "
 
-EPYTEST_DESELECT=(
-	# Fails because of ghostscript?
-	# https://github.com/python-pillow/Pillow/issues/6013
-	Tests/test_file_eps.py::test_showpage
-	Tests/test_file_eps.py::test_bytesio_object
-	Tests/test_file_eps.py::test_render_scale1
-	Tests/test_file_eps.py::test_render_scale2
-)
-
 python_configure_all() {
 	# It's important that these flags are also passed during the install phase
 	# as well. Make sure of that if you change the lines below. See bug 661308.
