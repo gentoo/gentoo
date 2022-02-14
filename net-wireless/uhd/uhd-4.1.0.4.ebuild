@@ -1,12 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-#not sure why, but eapi 7 fails
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8,9,10} )
 
-inherit eapi7-ver python-single-r1 gnome2-utils cmake-utils
+inherit python-single-r1 gnome2-utils cmake
 
 DESCRIPTION="Universal Software Radio Peripheral (USRP) Hardware Driver"
 HOMEPAGE="https://kb.ettus.com"
@@ -61,7 +60,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	gnome2_environment_reset #534582
 
@@ -92,10 +91,10 @@ src_configure() {
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DPKG_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	python_optimize
 	use utils && python_fix_shebang "${ED}"/usr/$(get_libdir)/${PN}/utils/
 	if [ "${PV}" != "9999" ]; then
@@ -143,5 +142,5 @@ src_install() {
 src_test() {
 	#we can disable the python tests
 	#ctest -E 'py*'
-	PYTHON_PATH=python/ cmake-utils_src_test
+	PYTHON_PATH=python/ cmake_src_test
 }
