@@ -1,11 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..3} )
-
-inherit autotools lua-single toolchain-funcs
+inherit cmake toolchain-funcs
 
 DESCRIPTION="Support for parallel scientific applications"
 HOMEPAGE="http://www.p4est.org/"
@@ -21,22 +19,20 @@ fi
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-IUSE="debug examples mpi openmp romio threads"
-REQUIRED_USE="
-	${LUA_REQUIRED_USE}
-	romio? ( mpi )"
+IUSE="debug examples mpi openmp threads"
 
 RDEPEND="
-	${LUA_DEPS}
 	sys-apps/util-linux
+	sys-libs/zlib
 	virtual/blas
 	virtual/lapack
-	mpi? ( virtual/mpi[romio?] )"
+	mpi? ( virtual/mpi[romio] )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999_20201220-autoconf_lua_version.patch
+	"${FILESDIR}"/${PN}-2.8.3-fix_build_system.patch
+	"${FILESDIR}"/${P}-set_version.patch
 )
 
 pkg_pretend() {
@@ -45,55 +41,25 @@ pkg_pretend() {
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
-	lua-single_pkg_setup
-}
-
-src_prepare() {
-	default
-
-	sed -i -e "s/@LUA_IMPL@/${ELUA}/" "${S}"/src/sc_lua.h || die
-
-	# Inject a version number into the build system
-	echo "${PV}" > ${S}/.tarball-version || die
-	eautoreconf
 }
 
 src_configure() {
-	local myeconfargs=(
-		--disable-static
-		$(use_enable debug)
-		$(use_enable mpi)
-		$(use_enable openmp openmp)
-		$(use_enable romio mpiio)
-		$(use_enable threads pthread)
-		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)"
-		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)"
+	local mycmakeargs=(
+		-Dmpi="$(usex mpi)"
+		-Dopenmp="$(usex openmp)"
+		-Dlibrary_reldir="$(get_libdir)"
 	)
-	econf LUA_IMPL="${ELUA}" "${myeconfargs[@]}"
+
+	cmake_src_configure
 }
 
 src_install() {
-	default
+	cmake_src_install
 
-	if use examples; then
-		docinto examples
-		dodoc -r example/*
-		docompress -x /usr/share/doc/${PF}/examples
-	else
-		# Remove compiled example binaries in case of -examples:
-		rm -r "${ED}"/usr/bin || die "rm failed"
-	fi
+	rm -r "${ED}"/usr/include/getopt.h \
+		"${ED}"/usr/include/getopt_int.h \
+		"${ED}"/usr/include/sc_builtin || die "rm failed"
 
-	# Remove ac files, bug #619806
-	rm -r "${ED}"/usr/share/aclocal || die "rm failed"
-
-	# Fix wrong installation paths:
-	dodir /usr/share/libsc
-	mv "${ED}"/etc/* "${ED}"/usr/share/libsc || die "mv failed"
-	rmdir "${ED}"/etc/ || die "rmdir failed"
-	mv "${ED}"/usr/share/ini/* "${ED}"/usr/share/libsc || die "mv failed"
-	rmdir "${ED}"/usr/share/ini || die "rmdir failed"
-
-	# no static archives
-	find "${ED}" -name '*.la' -delete || die
+	mv "${ED}"/usr/share/docs/SC/* "${ED}"/usr/share/doc/${P}/ || die "mv failed"
+	rm -r "${ED}"/usr/share/docs || die "rm failed"
 }
