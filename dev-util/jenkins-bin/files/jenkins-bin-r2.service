@@ -3,9 +3,18 @@ Description=Jenkins Daemon
 
 [Service]
 EnvironmentFile=/etc/conf.d/jenkins
-Type=forking
-ExecStart=/usr/bin/java ${JENKINS_JAVA_OPTIONS} -DJENKINS_HOME=${JENKINS_HOME} -jar ${JENKINS_WAR} --daemon --logfile=/var/log/jenkins/jenkins.log --httpPort=${JENKINS_PORT} --debug=${JENKINS_DEBUG_LEVEL} --handlerCountMax=100 --handlerCountMaxIdle=20 --accessLoggerClassName=winstone.accesslog.SimpleAccessLogger --simpleAccessLogger.format=combined --simpleAccessLogger.file=/var/log/jenkins/access_log ${JENKINS_ARGS}
 User=jenkins
+Type=simple
+ExecStart=/bin/sh -c 'eval ${JENKINS_COMMAND_LINE}'
+SyslogIdentifier=jenkins
+#MemoryLimit=768M
+OOMScoreAdjust=-1000
+LimitCPU=infinity
+LimitFSIZE=infinity
+LimitDATA=infinity
+LimitCORE=0
+LimitAS=infinity
+LimitLOCKS=infinity
 
 [Install]
 WantedBy=multi-user.target
