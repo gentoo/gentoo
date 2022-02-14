@@ -40,6 +40,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-set_version.patch
 )
 
+S="${WORKDIR}/${PN}-2.8"
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
@@ -62,6 +64,7 @@ src_install() {
 	cmake_src_install
 
 	rm "${ED}"/usr/lib/cmake/Modules/FindSC.cmake || die "rm failed"
+	mkdir -p "${ED}"/usr/share/doc/${P}
 	mv "${ED}"/usr/share/docs/P4EST/* "${ED}"/usr/share/doc/${P}/ || die "mv failed"
 	rm -r "${ED}"/usr/share/docs || die "rm failed"
 }
