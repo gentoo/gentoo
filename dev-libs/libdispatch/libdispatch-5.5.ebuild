@@ -29,7 +29,10 @@ BDEPEND="
 
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
-PATCHES=( "${FILESDIR}/remove-Werror.patch" )
+PATCHES=(
+	"${FILESDIR}/remove-Werror.patch"
+	"${FILESDIR}/libdispatch-5.3.3-musl.patch"
+)
 
 src_configure () {
 	if ! tc-is-clang ; then
