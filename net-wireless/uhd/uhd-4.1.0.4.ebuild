@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 #not sure why, but eapi 7 fails
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 
-inherit eapi7-ver python-single-r1 gnome2-utils cmake-utils multilib
+inherit eapi7-ver python-single-r1 gnome2-utils cmake-utils
 
 DESCRIPTION="Universal Software Radio Peripheral (USRP) Hardware Driver"
 HOMEPAGE="https://kb.ettus.com"
