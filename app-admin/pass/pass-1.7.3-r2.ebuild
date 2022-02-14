@@ -17,7 +17,7 @@ IUSE="+git X emacs dmenu importers"
 
 RDEPEND="
 	app-crypt/gnupg
-	media-gfx/qrencode
+	media-gfx/qrencode[png(+)]
 	>=app-text/tree-1.7.0
 	git? ( dev-vcs/git )
 	X? ( x11-misc/xclip )
