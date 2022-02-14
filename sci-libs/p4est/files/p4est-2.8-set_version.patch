@@ -41,4 +41,37 @@ index dd6009e..7c5c8f3 100644
 -endif()
 +set(PROJECT_VERSION 2.8.3)
 
-
+diff --git a/cmake/p4est_config.h.in b/cmake/p4est_config.h.in
+index 72645dd..7560dcc 100644
+--- a/cmake/p4est_config.h.in
++++ b/cmake/p4est_config.h.in
+@@ -135,7 +135,7 @@
+ #define P4EST_PACKAGE_NAME "p4est"
+ 
+ /* Define to the full name and version of this package. */
+-#define P4EST_PACKAGE_STRING "p4est 2.0.94-00da"
++#define P4EST_PACKAGE_STRING "p4est 2.8.0"
+ 
+ /* Define to the one symbol short name of this package. */
+ #define P4EST_PACKAGE_TARNAME "p4est"
+@@ -144,16 +144,16 @@
+ #define P4EST_PACKAGE_URL ""
+ 
+ /* Define to the version of this package. */
+-#define P4EST_PACKAGE_VERSION "2.0.94-00da"
++#define P4EST_PACKAGE_VERSION "2.8.0"
+ 
+ /* Version number of package */
+-#define P4EST_VERSION "2.0.94-00da"
++#define P4EST_VERSION "2.8.0"
+ 
+ /* Package major version */
+ #define P4EST_VERSION_MAJOR 2
+ 
+ /* Package minor version */
+-#define P4EST_VERSION_MINOR 0
++#define P4EST_VERSION_MINOR 8
+ 
+ /* Package point version */
+-#define P4EST_VERSION_POINT 94-00da
++#define P4EST_VERSION_POINT 0
