@@ -42,7 +42,7 @@ src_prepare() {
 		de/xzless.1
 		de/xzmore.1
 		# sys-apps/shadow
-		{de,es,nl,pl}/groups.1
+		{cs,de,es,hu,nl,pl}/groups.1
 		de/su.1
 		# sys-process/procps
 		{de,fr,pl}/free.1
