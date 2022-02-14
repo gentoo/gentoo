@@ -1,8 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -arm64
+
+# Ionen Wolkens <ionen@gentoo.org> (2022-02-17)
+# x11-drivers/nvidia-drivers' binary blob works here
+-video_cards_nvidia
 
 # Michał Górny <mgorny@gentoo.org> (2021-01-07)
 # Prebuilt kernels are supported here.
