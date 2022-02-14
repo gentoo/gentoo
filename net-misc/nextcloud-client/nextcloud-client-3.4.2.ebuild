@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake xdg
+inherit cmake virtualx xdg
 
 DESCRIPTION="Desktop Syncing Client for Nextcloud"
 HOMEPAGE="https://github.com/nextcloud/desktop"
@@ -76,10 +76,14 @@ src_configure() {
 		$(cmake_use_find_package webengine Qt5WebEngineWidgets)
 		-DBUILD_SHELL_INTEGRATION_DOLPHIN=$(usex dolphin)
 		-DBUILD_SHELL_INTEGRATION_NAUTILUS=$(usex nautilus)
-		-DUNIT_TESTING=$(usex test)
+		-DBUILD_TESTING=$(usex test)
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	virtx cmake_src_test
 }
 
 pkg_postinst() {
