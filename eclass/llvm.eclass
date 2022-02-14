@@ -6,7 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Utility functions to build against slotted LLVM
 # @DESCRIPTION:
 # The llvm.eclass provides utility functions that can be used to build
@@ -60,7 +60,7 @@ case "${EAPI:-0}" in
 	0|1|2|3|4|5)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	6|7)
+	6|7|8)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
