@@ -1,3 +1,5 @@
+https://github.com/rhboot/pesign/issues/78
+
 daemon.c:922:32: error: unknown option after ‘#pragma GCC diagnostic’ kind [-Werror=pragmas]
   922 | #pragma GCC diagnostic ignored "-Wanalyzer-use-of-uninitialized-value"
       |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
