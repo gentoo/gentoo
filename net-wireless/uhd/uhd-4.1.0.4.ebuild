@@ -63,9 +63,6 @@ src_prepare() {
 	cmake_src_prepare
 
 	gnome2_environment_reset #534582
-
-	#rpath is set for apple and no one else, just remove the conditional
-	sed -i -e '/if(APPLE)/d' -e '/endif(APPLE)/d' CMakeLists.txt || die
 }
 
 src_configure() {
