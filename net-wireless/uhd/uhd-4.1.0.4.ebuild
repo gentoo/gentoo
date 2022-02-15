@@ -49,7 +49,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.0.0.0-tinfo.patch"
 	"${FILESDIR}/${PN}-4.1.0.4-hidden-visibility-tests.patch"
 )
 
@@ -67,7 +66,9 @@ src_prepare() {
 }
 
 src_configure() {
+	#https://gitlab.kitware.com/cmake/cmake/-/issues/23236
 	local mycmakeargs=(
+		-DCURSES_NEED_NCURSES=ON
 		-DENABLE_LIBUHD=ON
 		-DENABLE_C_API=ON
 		-DENABLE_MAN_PAGES=ON
