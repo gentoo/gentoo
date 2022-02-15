@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-02-15)
+# Java libraries without consumers. Removal in 30 days.
+dev-java/upnplib
+dev-java/apple-java-extensions-bin
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-02-13)
 # This package is completely broken and some libraries existing only for
 # it cause unneeded workload for Java team. Removal in 30 days.
