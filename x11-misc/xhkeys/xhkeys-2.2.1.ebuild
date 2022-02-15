@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-DESCRIPTION="assign particular actions to any key or key combination"
+DESCRIPTION="Assign particular actions to any key or key combination"
 HOMEPAGE="http://wmalms.tripod.com/#XHKEYS"
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+SRC_URI="https://wmalms.tripod.com/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
