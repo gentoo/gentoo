@@ -65,7 +65,7 @@ python_test() {
 	local -x SDL_VIDEODRIVER=dummy
 	local -x SDL_AUDIODRIVER=disk
 	distutils_install_for_testing --via-root
-	script -eqc "${EPYTHON} -m pygame.tests" || die
+	script -eqc "${EPYTHON} -m pygame.tests -v" || die
 }
 
 python_install() {
