@@ -29,7 +29,7 @@ BDEPEND="
 	)
 "
 
-HTML_DOCS=( "doc/." )
+HTML_DOCS=( "docs/." )
 
 lua_src_test() {
 	busted --lua=${ELUA} || die
