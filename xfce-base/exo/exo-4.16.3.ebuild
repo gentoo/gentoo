@@ -32,6 +32,8 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoreconf
+	# needs to be executed after glib-gettextize, bug 829859
+	intltoolize --automake --copy --force || die "intltoolize failed"
 }
 
 src_install() {
