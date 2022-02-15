@@ -194,7 +194,6 @@ dev-java/colt
 # Removal in 30 days, bug #830999.
 sys-fabric/ibacm
 sys-fabric/infiniband-diags
-sys-fabric/infinipath-psm
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-15)
 # Last branch update happened ~ 12 month ago.
