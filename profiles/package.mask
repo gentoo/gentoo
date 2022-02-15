@@ -188,12 +188,6 @@ dev-java/colt
 # Masking for tracker/tinderbox.
 >=media-video/ffmpeg-5.0
 
-# David Seifert <soap@gentoo.org> (2022-01-16)
-# Most of these packages have been merged into sys-cluster/rdma-core and
-# have long been dead and unmaintained.
-# Removal in 30 days, bug #830999.
-sys-fabric/ibacm
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-15)
 # Last branch update happened ~ 12 month ago.
 # Maximum kernel supported is 5.9, which we no longer package.
