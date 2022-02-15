@@ -48,7 +48,10 @@ DEPEND="${RDEPEND}
 	app-arch/gzip
 "
 
-PATCHES=( "${FILESDIR}/${PN}-3.13.1.0-tinfo.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-3.13.1.0-tinfo.patch"
+	"${FILESDIR}/${PN}-3.15.0.0-hidden-visibility-tests.patch"
+)
 
 S="${WORKDIR}/${P}/host"
 

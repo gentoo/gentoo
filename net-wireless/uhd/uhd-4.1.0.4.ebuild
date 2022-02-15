@@ -50,6 +50,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.0.0-tinfo.patch"
+	"${FILESDIR}/${PN}-4.1.0.4-hidden-visibility-tests.patch"
 )
 
 S="${WORKDIR}/${P}/host"
