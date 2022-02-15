@@ -49,7 +49,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.1.0.4-hidden-visibility-tests.patch"
+	"${FILESDIR}/${PN}-4.1.0.5-hidden-visibility-tests.patch"
 )
 
 S="${WORKDIR}/${P}/host"
