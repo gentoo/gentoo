@@ -93,6 +93,13 @@ src_configure() {
 	)
 	cmake_src_configure
 }
+
+src_test() {
+	#we can disable the python tests
+	#ctest -E 'py*'
+	PYTHON_PATH=python/ cmake_src_test
+}
+
 src_install() {
 	cmake_src_install
 	python_optimize
@@ -137,10 +144,4 @@ src_install() {
 	fi
 	insinto /usr/share/${PN}
 	doins -r "${WORKDIR}/images"
-}
-
-src_test() {
-	#we can disable the python tests
-	#ctest -E 'py*'
-	PYTHON_PATH=python/ cmake_src_test
 }
