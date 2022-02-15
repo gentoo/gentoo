@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,11 @@ DEPEND="
 DOCS=( CHANGELOG.md README.md )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.18.0-second-entrypoint.patch  # bug 798648
+	# rename the entry point (note: old name is needed in tests)
+	# https://bugs.gentoo.org/798648
+	# also fix syntax since it doesn't seem to work anymore
+	# https://bugs.gentoo.org/833389
+	"${FILESDIR}"/python-dotenv-0.19.2-entry-points.patch
 )
 
 distutils_enable_tests --install pytest
