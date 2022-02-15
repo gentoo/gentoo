@@ -207,7 +207,6 @@ sys-fabric/libmlx4
 sys-fabric/libmlx5
 sys-fabric/libmthca
 sys-fabric/libnes
-sys-fabric/libocrdma
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-15)
 # Last branch update happened ~ 12 month ago.
