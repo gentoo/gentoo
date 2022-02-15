@@ -34,6 +34,9 @@ src_compile() {
 	# This allows those default flags to be overwritten by
 	# user-defined CFLAGS. Restore some of the defaults.
 	append-cflags '-fwrapv' '-fvisibility=hidden' '-fPIE'
+	# Optimizations are not allowed by upstream, which already
+	# overrides CFLAGS in Makefile. We need to handle CPPFLAGS here.
+	append-cppflags '-O0'
 	emake AR="$(tc-getAR)" CC="$(tc-getCC)"
 }
 
