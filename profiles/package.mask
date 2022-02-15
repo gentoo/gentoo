@@ -204,7 +204,6 @@ sys-fabric/libibumad
 sys-fabric/libibverbs
 sys-fabric/libipathverbs
 sys-fabric/libmlx4
-sys-fabric/libmlx5
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-15)
 # Last branch update happened ~ 12 month ago.
