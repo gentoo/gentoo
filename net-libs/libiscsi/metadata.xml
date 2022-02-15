@@ -6,6 +6,6 @@
 		<remote-id type="github">sahlberg/libiscsi</remote-id>
 	</upstream>
 	<use>
-		<flag name="rdma">Enable infiniband support via <pkg>sys-fabric/librdmacm</pkg></flag>
+		<flag name="rdma">Enable infiniband support via <pkg>sys-cluster/rdma-core</pkg></flag>
 	</use>
 </pkgmetadata>
