@@ -210,7 +210,6 @@ sys-fabric/libnes
 sys-fabric/libocrdma
 sys-fabric/librdmacm
 sys-fabric/ofed
-sys-fabric/rds-tools
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-15)
 # Last branch update happened ~ 12 month ago.
