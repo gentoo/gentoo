@@ -193,7 +193,6 @@ dev-java/colt
 # have long been dead and unmaintained.
 # Removal in 30 days, bug #830999.
 sys-fabric/ibacm
-sys-fabric/infiniband-diags
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-15)
 # Last branch update happened ~ 12 month ago.
