@@ -230,7 +230,6 @@ sys-fabric/srptools
 # Removed in favor of unified package dev-db/oracle-instantclient
 # Removal on 2022-02-15. Bug #589146
 dev-db/oracle-instantclient-basic
-dev-db/oracle-instantclient-jdbc
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-15)
 # Pretest versions, masked for testing.
