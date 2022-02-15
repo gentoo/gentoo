@@ -27,6 +27,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 			usrp2? ( usb )
 			|| ( b100 b200 e300 mpmd n230 usrp1 usrp2 x300 )"
 
+BDEPEND="
+	doc? ( app-doc/doxygen )
+	$(python_gen_cond_dep '
+	dev-python/mako[${PYTHON_USEDEP}]
+	')
+	app-arch/unzip
+	app-arch/gzip
+"
 RDEPEND="${PYTHON_DEPS}
 	e300? ( virtual/udev )
 	usb? ( virtual/libusb:1 )
@@ -37,15 +45,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/requests[${PYTHON_USEDEP}]
 	')
 "
-
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )
-	$(python_gen_cond_dep '
-	dev-python/mako[${PYTHON_USEDEP}]
-	')
-	app-arch/unzip
-	app-arch/gzip
-"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.0.0-tinfo.patch"
