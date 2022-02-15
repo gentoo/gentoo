@@ -66,7 +66,7 @@ src_prepare() {
 }
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DENABLE_LIBUHD=ON
 		-DENABLE_C_API=ON
 		-DENABLE_MAN_PAGES=ON
