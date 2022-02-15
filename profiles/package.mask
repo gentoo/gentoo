@@ -201,7 +201,6 @@ sys-fabric/libehca
 sys-fabric/libibcm
 sys-fabric/libibmad
 sys-fabric/libibumad
-sys-fabric/libibverbs
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-15)
 # Last branch update happened ~ 12 month ago.
