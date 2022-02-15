@@ -27,6 +27,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 			usrp2? ( usb )
 			|| ( b100 b200 e300 mpmd n230 usrp1 usrp2 x300 )"
 
+#zip an gzip are directly used by the build system
 BDEPEND="
 	doc? ( app-doc/doxygen )
 	$(python_gen_cond_dep '
