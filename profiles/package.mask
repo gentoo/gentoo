@@ -211,10 +211,6 @@ sys-fabric/libocrdma
 sys-fabric/librdmacm
 sys-fabric/ofed
 sys-fabric/rds-tools
-sys-fabric/srptools
-<sys-fabric/opensm-3.3.23
-<sys-fabric/perftest-4.4.0.37
-<sys-fabric/qperf-0.4.11
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-15)
 # Last branch update happened ~ 12 month ago.
