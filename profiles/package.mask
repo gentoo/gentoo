@@ -232,7 +232,6 @@ sys-fabric/srptools
 dev-db/oracle-instantclient-basic
 dev-db/oracle-instantclient-jdbc
 dev-db/oracle-instantclient-odbc
-dev-db/oracle-instantclient-sqlplus
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-15)
 # Pretest versions, masked for testing.
