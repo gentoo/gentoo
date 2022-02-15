@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2021-11-15)
@@ -298,10 +298,6 @@ dev-db/mariadb tokudb
 # Lars Wendler <polynomial-c@gentoo.org> (2014-04-23)
 # Not working on 64bit systems
 media-sound/lmms vst
-
-# Alexey Shvetsov <alexxy@gentoo.org> (2014-04-16)
-# libehca only works on ppc*
-sys-fabric/ofed ofed_drivers_ehca
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2014-01-04)
 # Mask until dependencies are keyworded (bug 497068)
