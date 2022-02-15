@@ -18,6 +18,7 @@ IUSE="large-stack static-libs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="!media-libs/openexr:3"
+DEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 DOCS=( README.md )
