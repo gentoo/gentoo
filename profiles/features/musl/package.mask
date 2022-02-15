@@ -123,10 +123,6 @@ sci-electronics/labone
 # dev-db/oracle-instantclient package linked against glibc,
 # and the other packages depends on it.
 dev-db/oracle-instantclient
-dev-db/oracle-instantclient-basic
-dev-db/oracle-instantclient-jdbc
-dev-db/oracle-instantclient-odbc
-dev-db/oracle-instantclient-sqlplus
 dev-db/ocp
 dev-db/sqlcl-bin
 
