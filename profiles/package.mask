@@ -196,7 +196,6 @@ sys-fabric/ibacm
 sys-fabric/infiniband-diags
 sys-fabric/infinipath-psm
 sys-fabric/libcxgb3
-sys-fabric/libcxgb4
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-15)
 # Last branch update happened ~ 12 month ago.
