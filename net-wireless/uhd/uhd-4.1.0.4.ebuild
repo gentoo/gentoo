@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8,9,10} )
 
-inherit python-single-r1 gnome2-utils cmake
+inherit cmake gnome2-utils python-single-r1
 
 DESCRIPTION="Universal Software Radio Peripheral (USRP) Hardware Driver"
 HOMEPAGE="https://kb.ettus.com"
@@ -91,19 +91,13 @@ src_configure() {
 	cmake_src_configure
 }
 
-src_test() {
-	#we can disable the python tests
-	#ctest -E 'py*'
-	PYTHON_PATH=python/ cmake_src_test
-}
-
 src_install() {
 	cmake_src_install
 	python_optimize
 	use utils && python_fix_shebang "${ED}"/usr/$(get_libdir)/${PN}/utils/
 	if [[ "${PV}" != "9999" ]]; then
-		rm -rf "${ED}/usr/bin/uhd_images_downloader"
-		rm -rf "${ED}/usr/share/man/man1/uhd_images_downloader.1"
+		rm -r "${ED}/usr/bin/uhd_images_downloader" || die
+		rm -r "${ED}/usr/share/man/man1/uhd_images_downloader.1" || die
 	fi
 
 	insinto /lib/udev/rules.d/
