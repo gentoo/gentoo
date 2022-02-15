@@ -23,10 +23,7 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
-# Not compatible with oiio 2.3
-# https://github.com/AcademySoftwareFoundation/OpenColorIO/issues/1509
-# bug #821073
-# 2.1.1 should be?
+# Works with older OIIO but need to force a version w/ OpenEXR 3
 RDEPEND="
 	dev-cpp/pystring
 	dev-python/pybind11
@@ -35,7 +32,7 @@ RDEPEND="
 	dev-libs/tinyxml
 	opengl? (
 		media-libs/lcms:2
-		media-libs/openimageio:=
+		>=media-libs/openimageio-2.1.1-r4:=
 		media-libs/glew:=
 		media-libs/freeglut
 		virtual/opengl
