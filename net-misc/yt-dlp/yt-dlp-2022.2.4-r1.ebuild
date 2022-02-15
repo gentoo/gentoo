@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
 
 RDEPEND="
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
-	!net-misc/youtube-dl"
+	!net-misc/youtube-dl[-yt-dlp(-)]"
 
 distutils_enable_tests pytest
 
@@ -31,13 +31,6 @@ python_prepare_all() {
 
 python_test() {
 	epytest -m 'not download' -p no:markdown
-}
-
-python_install() {
-	distutils-r1_python_install
-
-	local sitedir=$(python_get_sitedir)
-	dosym yt_dlp "${sitedir#${EPREFIX}}"/youtube_dl
 }
 
 python_install_all() {
