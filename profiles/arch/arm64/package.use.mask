@@ -13,10 +13,6 @@ sys-cluster/slurm ucx
 # Supports 64-bit NEON
 dev-libs/libgcrypt -cpu_flags_arm_neon
 
-# Sam James <sam@gentoo.org> (2022-01-02)
-# sys-fabric/ofed is not keyworded here
-sys-cluster/slurm ofed
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-16)
 # requires sys-apps/dbus-broker, which is keyworded here.
 sys-apps/systemd -hostnamed-fallback

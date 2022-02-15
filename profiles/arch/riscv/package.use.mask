@@ -187,8 +187,6 @@ mail-mta/courier fax
 media-libs/opencv contribsfm glog vtk
 #  - dev-util/aruba
 sys-block/thin-provisioning-tools test
-#  - sys-fabric/ofed
-sys-cluster/slurm ofed
 
 # This doesn't work for (any) riscv yet.
 dev-libs/libpcre2 jit
