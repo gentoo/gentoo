@@ -97,7 +97,7 @@ src_install() {
 	cmake_src_install
 	python_optimize
 	use utils && python_fix_shebang "${ED}"/usr/$(get_libdir)/${PN}/utils/
-	if [ "${PV}" != "9999" ]; then
+	if [[ "${PV}" != "9999" ]]; then
 		rm -rf "${ED}/usr/bin/uhd_images_downloader"
 		rm -rf "${ED}/usr/share/man/man1/uhd_images_downloader.1"
 	fi
@@ -105,7 +105,7 @@ src_install() {
 	insinto /lib/udev/rules.d/
 	doins "${S}/utils/uhd-usrp.rules"
 
-	rm -rf "${WORKDIR}/images/winusb_driver"
+	rm -r "${WORKDIR}/images/winusb_driver" || die
 	if ! use b100; then
 		rm "${WORKDIR}"/images/usrp_b100* || die
 	fi
