@@ -1,0 +1,76 @@
+commit acd0300485a49f2d5929252139011453e9611fe3
+Author: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+Date:   Tue Feb 8 15:22:39 2022 +0100
+
+    openaptx: Support libfreeaptx
+    
+    [libfreeaptx][1] is a fork of libopenapt 0.2.0, used by pipewire.
+    
+    [1]: https://github.com/iamthehorker/libfreeaptx
+    
+    Fixes: https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/issues/1642
+    Closes: https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/issues/1589
+    Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/1667>
+
+diff --git a/ext/openaptx/gstopenaptxdec.h b/ext/openaptx/gstopenaptxdec.h
+index 95b126c57e..081b194fb5 100644
+--- a/ext/openaptx/gstopenaptxdec.h
++++ b/ext/openaptx/gstopenaptxdec.h
+@@ -24,7 +24,11 @@
+ #include <gst/gst.h>
+ #include <gst/audio/audio.h>
+ 
++#ifdef USE_FREEAPTX
++#include <freeaptx.h>
++#else
+ #include <openaptx.h>
++#endif
+ 
+ G_BEGIN_DECLS
+ 
+diff --git a/ext/openaptx/gstopenaptxenc.h b/ext/openaptx/gstopenaptxenc.h
+index ab80b61b7c..4cf7e17b93 100644
+--- a/ext/openaptx/gstopenaptxenc.h
++++ b/ext/openaptx/gstopenaptxenc.h
+@@ -24,7 +24,11 @@
+ #include <gst/gst.h>
+ #include <gst/audio/audio.h>
+ 
++#ifdef USE_FREEAPTX
++#include <freeaptx.h>
++#else
+ #include <openaptx.h>
++#endif
+ 
+ G_BEGIN_DECLS
+ 
+diff --git a/ext/openaptx/meson.build b/ext/openaptx/meson.build
+index e361ef3b6c..4db8fdbb15 100644
+--- a/ext/openaptx/meson.build
++++ b/ext/openaptx/meson.build
+@@ -4,12 +4,23 @@ openaptx_sources = [
+   'gstopenaptxenc.c',
+ ]
+ 
+-openaptx_dep = dependency('libopenaptx', version : '== 0.2.0', required : get_option('openaptx'))
++if not get_option('openaptx').allowed()
++  subdir_done()
++endif
++
++openaptx_defines = []
++
++openaptx_dep = dependency('libfreeaptx', version : '>= 0.1.1', required : false)
++if openaptx_dep.found()
++  openaptx_defines += ['-DUSE_FREEAPTX']
++else
++  openaptx_dep = dependency('libopenaptx', version : '== 0.2.0', required : get_option('openaptx'))
++endif
+ 
+ if openaptx_dep.found()
+   gstopenaptx = library('gstopenaptx',
+     openaptx_sources,
+-    c_args : gst_plugins_bad_args,
++    c_args : gst_plugins_bad_args + openaptx_defines,
+     include_directories : [configinc],
+     dependencies : [gstaudio_dep, openaptx_dep],
+     install : true,
