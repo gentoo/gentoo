@@ -12,5 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">yt-dlp/yt-dlp</remote-id>
+		<remote-id type="pypi">yt-dlp</remote-id>
 	</upstream>
 </pkgmetadata>
