@@ -8,7 +8,7 @@ inherit meson xdg
 DESCRIPTION="A One Time Password and S/Key calculator for GTK+"
 HOMEPAGE="https://gitlab.com/otpcalc/otpcalc
 	http://www.killa.net/infosec/otpCalc/"
-SRC_URI="https://gitlab.com/ulm/${PN}/-/archive/${PV}/${P}.tar.bz2"
+SRC_URI="https://gitlab.com/otpcalc/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
