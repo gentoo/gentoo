@@ -3,6 +3,6 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
-    <remote-id type="sourceforge">jp2a</remote-id>
+    <remote-id type="github">Talinx/jp2a</remote-id>
   </upstream>
 </pkgmetadata>
