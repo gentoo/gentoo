@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ SLOT="5"
 IUSE=""
 
 DEPEND="
-	app-crypt/gpgme[cxx,qt5]
+	app-crypt/gpgme:=[cxx(+),qt5]
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=kde-frameworks/kauth-${KFMIN}:5
