@@ -20,7 +20,7 @@ IUSE="+gpg gtk-doc +introspection +man +pkcs7 test vala"
 RDEPEND="dev-libs/glib:2
 	dev-libs/json-glib:=
 	gpg? (
-		app-crypt/gpgme
+		app-crypt/gpgme:=
 		dev-libs/libgpg-error
 	)
 	introspection? ( dev-libs/gobject-introspection:= )
