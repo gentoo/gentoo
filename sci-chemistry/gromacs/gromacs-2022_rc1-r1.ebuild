@@ -246,7 +246,7 @@ src_configure() {
 		[[ ${x} = "double" ]] && p="-DGMX_DOUBLE=ON" || p="-DGMX_DOUBLE=OFF"
 		local gpu=( "-DGMX_GPU=OFF" )
 		[[ ${x} = "float" ]] && use cuda && gpu=( "-DGMX_GPU=CUDA" )
-		[[ ${x} = "float" ]] && use cuda-clang && gpu=( "-DGMX_GPU=CUDA" "-DGMX_CLANG_CUDA=ON" )
+		[[ ${x} = "float" ]] && use clang-cuda && gpu=( "-DGMX_GPU=CUDA" "-DGMX_CLANG_CUDA=ON" )
 		use opencl && gpu=( "-DGMX_GPU=OPENCL" )
 		mycmakeargs=(
 			${mycmakeargs_pre[@]} ${p}
