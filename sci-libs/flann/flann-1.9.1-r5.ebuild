@@ -17,6 +17,7 @@ IUSE="cuda doc examples mpi octave openmp"
 BDEPEND="
 	app-arch/unzip
 	doc? ( dev-tex/latex2html )
+	mpi? ( app-admin/chrpath )
 "
 DEPEND="
 	app-arch/lz4:=
@@ -85,4 +86,9 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	find "${D}" -name 'lib*.a' -delete || die
+
+	# bug 795828; mpicc volunterely adds some runpaths
+	if use mpi; then
+		chrpath -d "${ED}"/usr/bin/flann_mpi_{client,server} || die
+	fi
 }
