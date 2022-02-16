@@ -37,7 +37,7 @@ HOMEPAGE="http://www.gromacs.org/"
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
-IUSE="blas cuda +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack mkl mpi +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
+IUSE="blas clang clang-cuda cuda  +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack mkl mpi +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
 
 CDEPEND="
 	blas? ( virtual/blas )
@@ -54,6 +54,7 @@ CDEPEND="
 	"
 BDEPEND="${CDEPEND}
 	virtual/pkgconfig
+	clang? ( >=sys-devel/clang-6:* )
 	build-manual? (
 		app-doc/doxygen
 		$(python_gen_cond_dep '
@@ -73,6 +74,7 @@ REQUIRED_USE="
 	doc? ( !build-manual )
 	cuda? ( single-precision )
 	cuda? ( !opencl )
+	clang-cuda? ( clang cuda )
 	mkl? ( !blas !fftw !lapack )
 	${PYTHON_REQUIRED_USE}"
 
@@ -113,6 +115,19 @@ src_prepare() {
 	# -on apple: there is framework support
 
 	xdg_environment_reset #591952
+
+	# we can use clang as default
+	if use clang && ! tc-is-clang ; then
+		export CC=${CHOST}-clang
+		export CXX=${CHOST}-clang++
+	else
+		tc-export CXX CC
+	fi
+	# clang-cuda need to filter mfpmath
+	if use clang-cuda ; then
+		filter-mfpmath sse
+		filter-mfpmath i386
+	fi
 
 	cmake_src_prepare
 
@@ -231,6 +246,7 @@ src_configure() {
 		[[ ${x} = "double" ]] && p="-DGMX_DOUBLE=ON" || p="-DGMX_DOUBLE=OFF"
 		local gpu=( "-DGMX_GPU=OFF" )
 		[[ ${x} = "float" ]] && use cuda && gpu=( "-DGMX_GPU=CUDA" )
+		[[ ${x} = "float" ]] && use cuda-clang && gpu=( "-DGMX_GPU=CUDA" "-DGMX_CLANG_CUDA=ON" )
 		use opencl && gpu=( "-DGMX_GPU=OPENCL" )
 		mycmakeargs=(
 			${mycmakeargs_pre[@]} ${p}
