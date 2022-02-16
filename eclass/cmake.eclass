@@ -593,8 +593,11 @@ cmake_src_configure() {
 		"${mycmakeargs_local[@]}"
 		-DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}"
 		-DCMAKE_TOOLCHAIN_FILE="${toolchain_file}"
-		"${MYCMAKEARGS}"
 	)
+
+	if [[ -n ${MYCMAKEARGS} ]] ; then
+		cmakeargs+=( "${MYCMAKEARGS}" )
+	fi
 
 	if [[ -n "${CMAKE_EXTRA_CACHE_FILE}" ]] ; then
 		cmakeargs+=( -C "${CMAKE_EXTRA_CACHE_FILE}" )
