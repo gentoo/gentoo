@@ -21,7 +21,10 @@ RDEPEND="|| (
 		dev-python/markdown2
 		dev-python/markdown
 	)"
-BDEPEND="test? ( app-text/pandoc )"
+BDEPEND="test? (
+	app-text/pandoc
+	|| ( app-text/aspell[l10n_en] app-text/hunspell[l10n_en] )
+)"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.5-markdown-command.patch
