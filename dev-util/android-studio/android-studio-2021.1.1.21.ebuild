@@ -31,7 +31,7 @@ QA_PREBUILT="
 "
 
 DESCRIPTION="Android development environment based on IntelliJ IDEA"
-HOMEPAGE="http://developer.android.com/studio"
+HOMEPAGE="https://developer.android.com/studio"
 SRC_URI="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${PV}/${P}-linux.tar.gz"
 
 LICENSE="Apache-2.0"
