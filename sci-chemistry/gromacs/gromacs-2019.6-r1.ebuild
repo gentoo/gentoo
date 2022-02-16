@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit bash-completion-r1 cmake cuda multilib readme.gentoo-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 cmake cuda readme.gentoo-r1 toolchain-funcs xdg-utils
 
 SRC_URI="
 	http://ftp.gromacs.org/gromacs/${PN}-${PV/_/-}.tar.gz
