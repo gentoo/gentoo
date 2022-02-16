@@ -1,0 +1,44 @@
+From 2c04c9f665283e8480a65f4ac0accfe6a8e0539a Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Mon, 31 Jan 2022 23:45:12 +0100
+Subject: [PATCH] KCronHelper: Return error when things don't work out
+
+---
+ src/helper/kcronhelper.cpp | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/src/helper/kcronhelper.cpp b/src/helper/kcronhelper.cpp
+index c5d3df2..d610c00 100644
+--- a/src/helper/kcronhelper.cpp
++++ b/src/helper/kcronhelper.cpp
+@@ -33,11 +33,23 @@ ActionReply KcronHelper::save(const QVariantMap &args)
+     qCDebug(KCM_CRON_HELPER_LOG) << "running actions";
+     const QString source = args[QLatin1String("source")].toString();
+     const QString destination = args[QLatin1String("target")].toString();
+-    if (!QFile::remove(destination)) {
+-        qCWarning(KCM_CRON_HELPER_LOG) << "can't remove file, it doesn't exist";
++    {
++        QFile destinationFile(destination);
++        if (destinationFile.exists() && !destinationFile.remove()) {
++            ActionReply reply = ActionReply::HelperErrorReply();
++            qCWarning(KCM_CRON_HELPER_LOG) << "can't remove file" << destinationFile.errorString();
++            reply.setErrorDescription(destinationFile.errorString());
++            return reply;
++        }
+     }
+-    if (!QFile::copy(source, destination)) {
+-        qCWarning(KCM_CRON_HELPER_LOG) << "can't write into the system file, something went wrong";
++    {
++        QFile sourceFile(source);
++        if (!sourceFile.copy(destination)) {
++            qCWarning(KCM_CRON_HELPER_LOG) << "can't write into the system file" << sourceFile.errorString();
++            ActionReply reply = ActionReply::HelperErrorReply();
++            reply.setErrorDescription(sourceFile.errorString());
++            return reply;
++        }
+     }
+     return ActionReply::SuccessReply();
+ }
+-- 
+GitLab
+
