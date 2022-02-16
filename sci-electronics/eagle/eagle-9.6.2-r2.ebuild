@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop xdg
+inherit desktop optfeature xdg
 
 DESCRIPTION="Autodesk EAGLE schematic and printed circuit board (PCB) layout editor"
 HOMEPAGE="https://www.autodesk.com/"
@@ -63,11 +63,23 @@ RDEPEND="
 	x11-libs/libXtst
 "
 
+src_prepare() {
+	default
+	# drop bundled ngpsice
+	rm -r ngspice || die
+	# drop bundled qt and other libs
+	rm qt.conf || die
+	rm -r resources plugins libexec || die
+	# this libSuits.so(?) is not packaged anywhere in Gentoo so we keep it
+	mv lib lib.back || die
+	mkdir lib || die
+	mv lib.back/libSuits.so lib/ || die
+	rm -r lib.back || die
+}
+
 src_install() {
 	dodoc doc/*.txt doc/*.pdf doc/ulp/*.pdf
 	doman doc/eagle.1
-	dodoc ngspice/*.txt ngspice/*.pdf
-	doman ngspice/share/man/man1/*
 	dodir /opt/${PN}
 
 	# copy everything in
@@ -79,4 +91,10 @@ src_install() {
 	# Create desktop entry
 	doicon -s 128x128 bin/${PN}-logo.png
 	make_desktop_entry ${PN} "CadSoft EAGLE Layout Editor" ${PN}-logo "Graphics;Electronics"
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	optfeature 'SPICE circuit simulation support (set "Simulator Path" in Options -> Directories)' sci-electronics/ngspice
 }
