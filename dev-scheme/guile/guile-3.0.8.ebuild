@@ -35,6 +35,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.2.3-gentoo-sandbox.patch"
 )
 
+# guile generates ELF files without use of C or machine code
+# It's a portage's false positive. bug #677600
+QA_PREBUILT='*[.]go'
+
 DOCS=( GUILE-VERSION HACKING README )
 
 src_configure() {
