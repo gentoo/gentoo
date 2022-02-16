@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -71,8 +71,8 @@ src_configure() {
 		-DBUILD_TESTING="$(usex test)"
 		-DQTC_ENABLE_X11="$(usex X)"
 		-DQTC_INSTALL_PO="$(usex nls)"
-		-DQTC_QT5_ENABLE_KDE="$(usex plasma)"
 	)
+	use qt5 && mycmakeargs+=( -DQTC_QT5_ENABLE_KDE="$(usex plasma)" )
 
 	cmake_src_configure
 }
