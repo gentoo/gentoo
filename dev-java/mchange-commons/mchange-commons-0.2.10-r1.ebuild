@@ -15,7 +15,7 @@ SRC_URI="https://github.com/swaldman/${MY_PN}/archive/refs/tags/${MY_P}.tar.gz -
 
 LICENSE="CDDL"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="amd64 ppc64 x86"
 
 IUSE="doc source"
 
