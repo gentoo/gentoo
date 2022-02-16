@@ -14,7 +14,7 @@ HOMEPAGE="http://xmlunit.sourceforge.net/"
 
 LICENSE="BSD"
 SLOT="1"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="amd64 ppc64 x86"
 
 CDEPEND="dev-java/junit:0"
 
