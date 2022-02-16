@@ -10,7 +10,7 @@
     <email>scheme@gentoo.org</email>
     <name>Gentoo Scheme Project</name>
   </maintainer>
-  <longdescription lang="en">
+  <longdescription>
     Chez Scheme is both a programming language and an implementation
     of that language, with supporting tools and documentation.
 
