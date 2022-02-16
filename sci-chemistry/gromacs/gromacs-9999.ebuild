@@ -313,9 +313,8 @@ src_install() {
 
 pkg_postinst() {
 	einfo
-	einfo  "Please read and cite:"
-	einfo  "Gromacs 4, J. Chem. Theory Comput. 4, 435 (2008). "
-	einfo  "https://dx.doi.org/10.1021/ct700301q"
+	einfo  "Please read and cite gromacs related papers from list:"
+	einfo  "https://www.gromacs.org/Gromacs_papers"
 	einfo
 	readme.gentoo_print_elog
 }

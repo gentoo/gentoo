@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
@@ -347,9 +347,8 @@ src_install() {
 
 pkg_postinst() {
 	einfo
-	einfo  "Please read and cite:"
-	einfo  "Gromacs 4, J. Chem. Theory Comput. 4, 435 (2008). "
-	einfo  "https://dx.doi.org/10.1021/ct700301q"
+	einfo  "Please read and cite gromacs related papers from list:"
+	einfo  "https://www.gromacs.org/Gromacs_papers"
 	einfo
 	readme.gentoo_print_elog
 }
