@@ -11,6 +11,8 @@
 	</maintainer>
 	<use>
 		<flag name="build-manual">Build manual instead of downloading it</flag>
+		<flag name="clang">Build gromacs with Clang instead of default compiler</flag>
+		<flag name="clang-cuda">Use clang for cuda units compilation</flag>
 		<flag name="cuda">Enable cuda non-bonded kernels</flag>
 		<flag name="double-precision">More precise calculations at the expense of speed</flag>
 		<flag name="gmxapi">Add support for gmxapi library</flag>
