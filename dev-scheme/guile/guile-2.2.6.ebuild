@@ -37,6 +37,16 @@ QA_PREBUILT='*[.]go'
 
 DOCS=( GUILE-VERSION HACKING README )
 
+src_prepare() {
+	# Remove tests that require network
+	local bad_test
+	for bad_test in test-suite/tests/web-*.test ; do
+		echo "#t" > "${bad_test}" || die
+	done
+
+	default
+}
+
 src_configure() {
 	# see bug #676468
 	mv prebuilt/32-bit-big-endian{,.broken} || die
