@@ -23,7 +23,7 @@ src_compile() {
 
 src_test() {
 	${EMACS} ${EMACSFLAGS} -L . -l websocket-test \
-		-f ert-run-tests-batch-and-exit
+		-f ert-run-tests-batch-and-exit || die "tests failed"
 }
 
 src_install() {

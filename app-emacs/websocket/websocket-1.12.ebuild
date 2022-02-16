@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,7 @@ src_compile() {
 
 src_test() {
 	${EMACS} ${EMACSFLAGS} -L . -l websocket-test \
-		-f ert-run-tests-batch-and-exit
+		-f ert-run-tests-batch-and-exit || die "tests failed"
 }
 
 src_install() {
