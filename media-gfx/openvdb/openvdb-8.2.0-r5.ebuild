@@ -44,8 +44,8 @@ RDEPEND="
 		')
 	)
 	utils? (
-		dev-libs/imath:=
-		media-libs/openexr:=
+		>=dev-libs/imath-3.1.4-r2:=
+		>=media-libs/openexr-3:=
 	)
 	zlib? ( sys-libs/zlib )
 "
