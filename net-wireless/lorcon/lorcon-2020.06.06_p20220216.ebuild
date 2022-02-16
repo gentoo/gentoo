@@ -64,7 +64,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}" install
+	emake DESTDIR="${D}" install
 	if use python; then
 		cd pylorcon2 || die
 		distutils-r1_src_install
