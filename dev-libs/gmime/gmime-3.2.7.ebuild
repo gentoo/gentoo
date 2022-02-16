@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.32.0:2
 	sys-libs/zlib
-	crypt? ( >=app-crypt/gpgme-1.8.0:1= )
+	crypt? ( >=app-crypt/gpgme-1.8.0:= )
 	idn? ( net-dns/libidn2:= )
 	vala? (
 		$(vala_depend)
