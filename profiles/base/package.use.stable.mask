@@ -10,15 +10,6 @@
 # bug #806079
 sys-apps/nvme-cli hugepages
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-09)
-# virtual/{jdk,jre}:11 just got unmasked but are not yet stable
-# Having a masked gentoo-vm flag allows us to provide it without
-# it breaking Gentoo packages. Those who wish to experiment with it
-# as a fully recognised Gentoo JVM can unmask the flag.
-dev-java/openjdk-jre-bin:11 gentoo-vm
-dev-java/openjdk-bin:11 gentoo-vm
-dev-java/openjdk:11 gentoo-vm
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-12-24)
 # test deps are not stable
 >=sys-fs/zfs-2.0.7 test-suite
