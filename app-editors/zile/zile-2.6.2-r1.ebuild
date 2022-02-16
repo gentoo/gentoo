@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 VALA_MIN_API_VERSION=0.52
 
 inherit toolchain-funcs vala
@@ -30,10 +30,13 @@ DOCS="README THANKS"
 
 QA_AM_MAINTAINER_MODE=".*help2man.*" #450278
 
+pkg_setup() {
+	vala_setup
+}
+
 src_prepare() {
 	default
 	rm *_vala.stamp || die
-	vala_src_prepare
 }
 
 src_configure() {
