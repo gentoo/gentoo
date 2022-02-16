@@ -13,7 +13,7 @@ USE_PHP="php7-3 php7-4 php8-0"
 
 inherit php-ext-pecl-r3
 
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ~ppc64 x86"
 
 DESCRIPTION="PHP interface to the cracklib libraries"
 LICENSE="PHP-3 CRACKLIB"
