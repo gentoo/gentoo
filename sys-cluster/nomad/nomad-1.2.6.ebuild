@@ -13,6 +13,7 @@ SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-vendor.tar.xz"
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="ui"
 
 RESTRICT=" test"
 
@@ -27,6 +28,7 @@ src_compile() {
 	local go_ldflags go_tags
 	go_ldflags="-X github.com/hashicorp/nomad/version.GitCommit=${GIT_COMMIT}"
 	go_tags="codegen_generated"
+	go_tags+="$(usex ui ',ui' '' )"
 	CGO_ENABLED=1 \
 		go build \
 		-ldflags "${go_ldflags}" \
