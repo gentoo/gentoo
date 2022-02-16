@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_OPTIONAL=1
 
@@ -30,10 +31,11 @@ SLOT="0"
 IUSE="python"
 
 RDEPEND="
-	python? ( ${PYTHON_DEPS} )
 	dev-libs/libnl:3=
-	net-libs/libpcap"
+	net-libs/libpcap
+	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
+BDEPEND="python? ( ${DISTUTILS_DEPS} )"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
