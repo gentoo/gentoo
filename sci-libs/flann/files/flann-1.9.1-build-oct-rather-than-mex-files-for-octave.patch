@@ -1,0 +1,81 @@
+From 85d2acc120b0640d02d189089bf113d351c14bba Mon Sep 17 00:00:00 2001
+From: Alexander Golubev <fatzer2@gmail.com>
+Date: Wed, 16 Feb 2022 21:37:55 +0300
+Subject: [PATCH] build *.oct rather than *.mex files for octave
+
+ * build .oct filse rather than *.mex
+ * install the file to a sane location obtained from octave-config
+ * fix a build issue with a recent cmake doesn't like querying target
+   LOCATION
+
+Signed-off-by: Alexander Golubev <fatzer2@gmail.com>
+---
+ src/matlab/CMakeLists.txt | 28 ++++++++++++++++++----------
+ 1 file changed, 18 insertions(+), 10 deletions(-)
+
+diff --git a/src/matlab/CMakeLists.txt b/src/matlab/CMakeLists.txt
+index a89b6b8..ebacaea 100755
+--- a/src/matlab/CMakeLists.txt
++++ b/src/matlab/CMakeLists.txt
+@@ -16,9 +16,6 @@ endif()
+ 
+ find_program(OCT_CMD mkoctfile)
+ 
+-get_property(FLANN_LIB_LOCATION TARGET flann_s PROPERTY LOCATION)
+-get_filename_component(FLANN_LIB_PATH ${FLANN_LIB_LOCATION} PATH)
+-
+ if(MEX_CMD AND MEXEXT_CMD)
+ 
+     get_filename_component(MEX_REAL_CMD ${MEX_CMD} ABSOLUTE)
+@@ -48,7 +45,7 @@ if(MEX_CMD AND MEXEXT_CMD)
+         ADD_CUSTOM_COMMAND(
+             OUTPUT ${MEX_FILE}
+             COMMAND ${MEX_REAL_CMD}
+-            ARGS ${CMAKE_CURRENT_SOURCE_DIR}/${MEX_NAME}.cpp -I${PROJECT_SOURCE_DIR}/src/cpp -L${FLANN_LIB_PATH} -lflann_s ${MEX_BUILD_FLAGS}
++            ARGS ${CMAKE_CURRENT_SOURCE_DIR}/${MEX_NAME}.cpp -I${PROJECT_SOURCE_DIR}/src/cpp -L${PROJECT_BINARY_DIR}/lib -lflann_s ${MEX_BUILD_FLAGS}
+             DEPENDS flann_s ${CMAKE_CURRENT_SOURCE_DIR}/${MEX_NAME}.cpp
+             COMMENT "Building MEX extension ${MEX_FILE}"
+         )
+@@ -66,11 +63,11 @@ if(MEX_CMD AND MEXEXT_CMD)
+         set(BUILD_MATLAB_BINDINGS OFF) 
+     endif()
+ elseif(OCT_CMD)
+-  SET(MEX_FILE ${CMAKE_CURRENT_BINARY_DIR}/${MEX_NAME}.mex)
++  SET(MEX_FILE ${CMAKE_CURRENT_BINARY_DIR}/${MEX_NAME}.oct)
+   ADD_CUSTOM_COMMAND(
+     OUTPUT ${MEX_FILE}
+     COMMAND ${OCT_CMD}
+-    ARGS ${CMAKE_CURRENT_SOURCE_DIR}/${MEX_NAME}.cpp -I${PROJECT_SOURCE_DIR}/src/cpp -L${FLANN_LIB_PATH} -DFLANN_STATIC -lflann_s -lgomp --mex
++    ARGS ${CMAKE_CURRENT_SOURCE_DIR}/${MEX_NAME}.cpp -I${PROJECT_SOURCE_DIR}/src/cpp -L${PROJECT_BINARY_DIR}/lib -DFLANN_STATIC -lflann_s -lgomp
+     DEPENDS flann_s ${CMAKE_CURRENT_SOURCE_DIR}/${MEX_NAME}.cpp
+     COMMENT "Building MEX extension ${MEX_FILE}"
+     )
+@@ -79,10 +76,21 @@ elseif(OCT_CMD)
+ 
+   FILE(GLOB MATLAB_SOURCES *.m)
+ 
+-  INSTALL (
+-    FILES ${MEX_FILE} ${MATLAB_SOURCES}
+-    DESTINATION share/flann/octave
+-    )
++  find_program(OCTAVE_CONFIG_EXECUTABLE NAMES octave-config)
++
++  if (OCTAVE_CONFIG_EXECUTABLE)
++    execute_process (COMMAND ${OCTAVE_CONFIG_EXECUTABLE} --m-site-dir
++                     OUTPUT_VARIABLE OCTAVE_M_SITE_DIR
++                     OUTPUT_STRIP_TRAILING_WHITESPACE)
++
++    execute_process (COMMAND ${OCTAVE_CONFIG_EXECUTABLE} --oct-site-dir
++                      OUTPUT_VARIABLE OCTAVE_OCT_SITE_DIR
++                      OUTPUT_STRIP_TRAILING_WHITESPACE)
++
++  endif()
++
++  INSTALL (FILES ${MEX_FILE} DESTINATION ${OCTAVE_OCT_SITE_DIR})
++  INSTALL (FILES ${MATLAB_SOURCES} DESTINATION ${OCTAVE_M_SITE_DIR})
+ else()
+     message(WARNING "Cannot find MATLAB or Octave instalation. Make sure that the 'bin' directory from the MATLAB instalation or that mkoctfile is in PATH")
+     set(BUILD_MATLAB_BINDINGS OFF) 
+-- 
+2.34.1
+
