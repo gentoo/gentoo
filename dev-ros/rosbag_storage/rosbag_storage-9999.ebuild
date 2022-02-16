@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,7 @@ RDEPEND="
 	dev-libs/tinyxml2:=
 
 	dev-libs/openssl:0=
-	app-crypt/gpgme
+	app-crypt/gpgme:=
 "
 DEPEND="${RDEPEND}
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
