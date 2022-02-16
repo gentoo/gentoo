@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,12 +10,12 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Seahorse"
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="0"
 IUSE="ldap zeroconf"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
-	>=dev-libs/glib-2.58:2
+	>=dev-libs/glib-2.66:2
 	>=app-crypt/gcr-3.38:=
-	>=app-crypt/gpgme-1.14.0
+	>=app-crypt/gpgme-1.14.0:=
 	>=x11-libs/gtk+-3.24.0:3
 	>=app-crypt/gnupg-2.2
 	>=gui-libs/libhandy-1.1:1=
@@ -44,10 +44,6 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
-
-PATCHES=(
-	"${FILESDIR}"/${P}-fix-segfault-with-ldap-disabled.patch
-)
 
 src_prepare() {
 	xdg_src_prepare
