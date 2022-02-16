@@ -55,7 +55,6 @@ CDEPEND="
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi )
 	${PYTHON_DEPS}
-	!sci-chemistry/gmxapi
 	"
 BDEPEND="${CDEPEND}
 	virtual/pkgconfig
