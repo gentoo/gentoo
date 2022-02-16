@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ IUSE="gadu gpm gpg gtk minimal ncurses nls nntp openssl
 
 RDEPEND="dev-libs/glib:2
 	gadu? ( <net-libs/libgadu-1.12:0= )
-	gpg? ( app-crypt/gpgme:1= )
+	gpg? ( app-crypt/gpgme:= )
 	gtk? ( x11-libs/gtk+:2 )
 	nls? ( virtual/libintl:0= )
 	openssl? ( dev-libs/openssl:0= )
