@@ -1,32 +1,34 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
-inherit bash-completion-r1 distutils-r1 git-r3
+inherit bash-completion-r1 distutils-r1 git-r3 optfeature
 
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
-HOMEPAGE="https://youtube-dl.org/ https://github.com/ytdl-org/youtube-dl/"
+HOMEPAGE="https://youtube-dl.org/"
 EGIT_REPO_URI="https://github.com/ytdl-org/${PN}.git"
 
-LICENSE="public-domain"
+LICENSE="Unlicense"
 SLOT="0"
+IUSE="+yt-dlp"
 
 RDEPEND="
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
-"
+	yt-dlp? ( >=net-misc/yt-dlp-2022.2.4-r1 )
+	!yt-dlp? ( !net-misc/yt-dlp )"
 
 distutils_enable_tests nose
 
-src_prepare() {
-	sed -i -e '/flake8/d' Makefile || die
-	distutils-r1_src_prepare
+python_prepare_all() {
+	distutils-r1_python_prepare_all
+
+	sed -i '/flake8/d' Makefile || die
 }
 
-src_compile() {
-	distutils-r1_src_compile
-
+python_compile_all() {
 	emake youtube-dl.{bash-completion,fish,zsh}
 }
 
@@ -35,7 +37,8 @@ python_test() {
 }
 
 python_install_all() {
-	# no manpage because it requires pandoc to generate
+	dodoc AUTHORS ChangeLog README.md docs/supportedsites.md
+	#doman youtube-dl.1 # would require pandoc in live ebuild
 
 	newbashcomp youtube-dl.bash-completion youtube-dl
 
@@ -45,33 +48,19 @@ python_install_all() {
 	insinto /usr/share/fish/vendor_completions.d
 	doins youtube-dl.fish
 
-	distutils-r1_python_install_all
-
-	rm -r "${ED}"/usr/etc || die
-	rm -r "${ED}"/usr/share/doc/youtube_dl || die
+	# keep man pages / completions either way given they are useful
+	# for yt-dlp's compatibility wrapper which tries to mimic options
+	use !yt-dlp || rm -r "${ED}"/usr/{lib/python-exec,bin} || die
 }
 
 pkg_postinst() {
-	if ! has_version media-video/ffmpeg; then
-		elog "${PN} works fine on its own on most sites. However, if you want"
-		elog "to convert video/audio, you'll need media-video/ffmpeg."
-		elog "On some sites - most notably YouTube - videos can be retrieved in"
-		elog "a higher quality format without sound. ${PN} will detect whether"
-		elog "ffmpeg is present and automatically pick the best option."
-	fi
-	if ! has_version media-video/rtmpdump; then
-		elog
-		elog "Videos or video formats streamed via RTMP protocol can only be"
-		elog "downloaded when media-video/rtmpdump is installed."
-	fi
-	if ! has_version media-video/mplayer && ! has_version media-video/mpv; then
-		elog
-		elog "Downloading MMS and RTSP videos requires either media-video/mplayer"
-		elog "or media-video/mpv to be installed."
-	fi
-	if ! has_version media-video/atomicparsley; then
-		elog
-		elog "Install media-video/atomicparsley if you want ${PN} to embed thumbnails"
-		elog "from the metadata into the resulting MP4/M4A files."
-	fi
+	optfeature "converting and merging tracks on some sites" media-video/ffmpeg
+	optfeature "embedding metadata thumbnails in MP4/M4A files" media-video/atomicparsley
+	optfeature "downloading videos streamed via RTMP" media-video/rtmpdump
+	optfeature "downloading videos streamed via MMS/RTSP" media-video/mplayer media-video/mpv
+
+	ewarn "Note that it is preferable to use net-misc/yt-dlp over youtube-dl for"
+	ewarn "latest features and site support. youtube-dl is only kept maintained for"
+	ewarn "compatibility with older software (notably its python module, yt-dlp has"
+	ewarn "a 'bin/youtube-dl' compatibility wrapper but not for the module)."
 }
