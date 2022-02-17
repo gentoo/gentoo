@@ -56,13 +56,13 @@ src_prepare() {
 src_configure() {
 	# NOTE: You can make embree accept custom CXXFLAGS by turning off
 	# EMBREE_IGNORE_CMAKE_CXX_FLAGS. However, the linking will fail if you use
-	# any "march" compile flags. This is because embree builds modules for the
+	# any "m*" compile flags. This is because embree builds modules for the
 	# different supported ISAs and picks the correct one at runtime.
-	# "march" will pull in cpu instructions that shouldn't be in specific modules
+	# "m*" will pull in cpu instructions that shouldn't be in specific modules
 	# and it fails to link properly.
 	# https://github.com/embree/embree/issues/115
 
-	filter-flags -march=*
+	filter-flags -m*
 
 	local mycmakeargs=(
 		# Currently Intel only host their test files on their internal network.
