@@ -41,6 +41,7 @@ BDEPEND="
 		dev-python/sphinxcontrib-bibtex
 		dev-tex/latexmk
 		dev-texlive/texlive-latexextra
+		dev-texlive/texlive-xetex
 	)
 "
 
