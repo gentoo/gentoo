@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,8 +45,8 @@ COMMON_DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 "
 DEPEND="${COMMON_DEPEND}
-	app-crypt/gpgme
+	app-crypt/gpgme:=
 "
 RDEPEND="${COMMON_DEPEND}
-	app-crypt/gnupg
+	app-crypt/gnupg:=
 "
