@@ -192,7 +192,6 @@ dev-java/ecj-gcj
 dev-java/freehep-graphicsio-tests
 dev-java/freehep-graphicsio
 dev-java/freehep-graphics2d
-dev-java/colt
 
 # James Beddek <telans@posteo.de> (2022-01-19)
 # FFmpeg 5.0 ABI/API changes break many packages.
