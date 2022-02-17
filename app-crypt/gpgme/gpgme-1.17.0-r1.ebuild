@@ -13,7 +13,10 @@ HOMEPAGE="http://www.gnupg.org/related_software/gpgme"
 SRC_URI="mirror://gnupg/gpgme/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
-SLOT="1/11" # subslot = soname major version
+# Please check ABI on each bump, even if SONAMEs didn't change: bug #833355
+# Use e.g. app-portage/iwdevtools integration with dev-libs/libabigail's abidiff.
+# Subslot: SONAME of each: <libgpgme.libgpgmepp.libqgpgme>
+SLOT="1/11.6.7"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="common-lisp static-libs +cxx python qt5"
 
