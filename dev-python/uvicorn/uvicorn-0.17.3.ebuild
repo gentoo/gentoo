@@ -13,7 +13,7 @@ SRC_URI="https://github.com/encode/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 hppa ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	>=dev-python/asgiref-3.4.0[${PYTHON_USEDEP}]
