@@ -171,11 +171,6 @@ net-misc/npapi-sdk
 sys-devel/prelink
 app-crypt/hmaccalc
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-17)
-# Java-packages with no consumers and depending on virtual/{jdk,jre}-1.6
-# Removal in 30 days.
-dev-java/felix-shell
-
 # James Beddek <telans@posteo.de> (2022-01-19)
 # FFmpeg 5.0 ABI/API changes break many packages.
 # Masking for tracker/tinderbox.
