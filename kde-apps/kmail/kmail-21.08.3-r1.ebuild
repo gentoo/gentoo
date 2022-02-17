@@ -6,7 +6,7 @@ EAPI=8
 ECM_HANDBOOK="optional"
 ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-3)
-KFMIN=5.88.0
+KFMIN=5.84.0
 QTMIN=5.15.2
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org optfeature
@@ -17,13 +17,13 @@ https://kontact.kde.org/components/kmail.html"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE="pch telemetry"
 
 RESTRICT="test" # bug 616878
 
 COMMON_DEPEND="
-	>=app-crypt/gpgme-1.11.1[cxx,qt5]
+	>=app-crypt/gpgme-1.11.1:=[cxx,qt5]
 	>=dev-qt/qtcore-${QTMIN}:5
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
