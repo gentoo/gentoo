@@ -38,12 +38,16 @@ BDEPEND="
 
 # Skip problematic tests:
 #  - test_call_from_outside_venv doesn't play nicely with the sandbox
-#  - test_eco tests require Internet access
+#  - all test_eco and some test_prerun tests require Internet access
 #  - as of 5.4.0, test_cli_auto_detect fails even when run manually with tox
 EPYTEST_DESELECT=(
 	test/TestUtils.py::test_cli_auto_detect
-	test/test_eco
+	test/test_eco.py
 	test/test_main.py::test_call_from_outside_venv
+	test/test_prerun.py::test_install_collection
+	test/test_prerun.py::test_prerun_reqs_v1
+	test/test_prerun.py::test_prerun_reqs_v2
+	test/test_prerun.py::test_require_collection_wrong_version
 )
 
 distutils_enable_tests pytest
