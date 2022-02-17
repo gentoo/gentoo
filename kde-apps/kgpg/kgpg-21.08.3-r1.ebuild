@@ -45,8 +45,8 @@ COMMON_DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 "
 DEPEND="${COMMON_DEPEND}
-	app-crypt/gpgme:=
+	app-crypt/gpgme
 "
 RDEPEND="${COMMON_DEPEND}
-	app-crypt/gnupg:=
+	app-crypt/gnupg
 "
