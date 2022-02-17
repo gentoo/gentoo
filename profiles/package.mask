@@ -175,7 +175,6 @@ app-crypt/hmaccalc
 # Java-packages with no consumers and depending on virtual/{jdk,jre}-1.6
 # Removal in 30 days.
 dev-java/felix-shell
-dev-java/felix-utils
 
 # James Beddek <telans@posteo.de> (2022-01-19)
 # FFmpeg 5.0 ABI/API changes break many packages.
