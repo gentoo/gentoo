@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+),xml"
@@ -21,7 +21,7 @@ BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${MY_PV} == *9999* ]] && inherit git-r3
-inherit autotools bash-completion-r1 check-reqs eapi8-dosym flag-o-matic java-pkg-opt-2 multiprocessing python-single-r1 qmake-utils toolchain-funcs xdg-utils
+inherit autotools bash-completion-r1 check-reqs flag-o-matic java-pkg-opt-2 multiprocessing python-single-r1 qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="A full office productivity suite"
 HOMEPAGE="https://www.libreoffice.org"
@@ -44,13 +44,15 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
+	# not packaged in Gentoo, https://github.com/efficient/libcuckoo/
+	"${ADDONS_URI}/libcuckoo-93217f8d391718380c508a722ab9acd5e9081233.tar.gz"
 	# broken against latest upstream release, too many patches on top:
 	# https://github.com/tdf/libcmis/pull/43
 	"${ADDONS_URI}/libcmis-0.5.2.tar.xz"
 	# not packaged in Gentoo, https://www.netlib.org/fp/dtoa.c
 	"${ADDONS_URI}/dtoa-20180411.tgz"
 	# not packaged in Gentoo, https://skia.org/
-	"${ADDONS_URI}/skia-m90-45c57e116ee0ce214bdf78405a4762722e4507d9.tar.xz"
+	"${ADDONS_URI}/skia-m97-a7230803d64ae9d44f4e1282444801119a3ae967.tar.xz"
 	"base? (
 		${ADDONS_URI}/commons-logging-1.2-src.tar.gz
 		${ADDONS_URI}/ba2930200c9f019c2d93a8c88c651a0f-flow-engine-0.9.4.zip
@@ -102,13 +104,13 @@ RESTRICT="!test? ( test )"
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 
-[[ ${MY_PV} == *9999* ]] || \
-KEYWORDS="amd64 ~arm arm64 ~ppc64 x86 ~amd64-linux"
+#[[ ${MY_PV} == *9999* ]] || \
+#KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
-	app-crypt/gpgme[cxx]
+	app-crypt/gpgme:=[cxx]
 	app-text/hunspell:=
 	>=app-text/libabw-0.1.0
 	>=app-text/libebook-0.1
@@ -126,6 +128,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	app-text/libwpg:0.3
 	>=app-text/libwps-0.4
 	app-text/mythes
+	dev-cpp/abseil-cpp:=
 	>=dev-cpp/clucene-2.3.3.4-r2
 	>=dev-cpp/libcmis-0.5.2
 	dev-db/unixODBC
@@ -136,7 +139,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/icu:=
 	dev-libs/libassuan
 	dev-libs/libgpg-error
-	dev-libs/liborcus:0/0.16
+	>=dev-libs/liborcus-0.17.2:0/0.17
 	dev-libs/librevenge
 	dev-libs/libxml2
 	dev-libs/libxslt
@@ -158,6 +161,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-libs/libpng-1.4:0=
 	>=media-libs/libvisio-0.1.0
 	media-libs/libzmf
+	media-libs/openjpeg:=
 	media-libs/zxing-cpp
 	>=net-libs/neon-0.31.1:=
 	net-misc/curl
@@ -225,7 +229,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-perl/Archive-Zip
 	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3.1
-	dev-util/mdds:1/1.5
+	dev-util/mdds:1/2.0
 	media-libs/glm
 	sys-devel/ucpp
 	x11-base/xorg-proto
@@ -293,9 +297,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-7.2.0.4-qt5detect.patch"
-
-	# 7.3 branch
-	"${FILESDIR}/${PN}-7.2.2.2-makefile-gengal.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
@@ -489,6 +490,7 @@ src_configure() {
 		--disable-online-update
 		--disable-openssl
 		--disable-pdfium
+		--disable-qt6
 		--with-extra-buildid="${gentoo_buildid}"
 		--enable-extension-integration
 		--with-external-dict-dir="${EPREFIX}/usr/share/myspell"
@@ -497,6 +499,8 @@ src_configure() {
 		--with-external-tar="${DISTDIR}"
 		--with-lang=""
 		--with-parallelism=$(makeopts_jobs)
+		--with-system-abseil
+		--with-system-openjpeg
 		--with-system-ucpp
 		--with-tls=nss
 		--with-vendor="Gentoo Foundation"
@@ -507,6 +511,7 @@ src_configure() {
 		--with-help="html"
 		--without-helppack-integration
 		--with-system-gpgmepp
+		--without-system-cuckoo
 		--without-system-jfreereport
 		--without-system-libcmis
 		--without-system-sane
@@ -583,11 +588,7 @@ src_compile() {
 	addpredict /dev/ati
 	addpredict /dev/nvidiactl
 
-	local target
-	use test && target="build" || target="build-nocheck"
-
-	# this is not a proper make script
-	make ${target} || die
+	default
 }
 
 src_test() {
@@ -641,10 +642,10 @@ EOF
 	# link python bridge in site-packages, bug 667802
 	local py pyc loprogdir=/usr/$(get_libdir)/libreoffice/program
 	for py in uno.py unohelper.py officehelper.py; do
-		dosym8 -r ${loprogdir}/${py} $(python_get_sitedir)/${py}
+		dosym -r ${loprogdir}/${py} $(python_get_sitedir)/${py}
 		while IFS="" read -d $'\0' -r pyc; do
 			pyc=${pyc//*\/}
-			dosym8 -r ${loprogdir}/__pycache__/${pyc} $(python_get_sitedir)/__pycache__/${pyc}
+			dosym -r ${loprogdir}/__pycache__/${pyc} $(python_get_sitedir)/__pycache__/${pyc}
 		done < <(find "${D}"${lodir}/program -type f -name ${py/.py/*.pyc} -print0)
 	done
 }

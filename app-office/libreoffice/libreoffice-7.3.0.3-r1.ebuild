@@ -110,7 +110,7 @@ SLOT="0"
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
-	app-crypt/gpgme[cxx]
+	app-crypt/gpgme:=[cxx]
 	app-text/hunspell:=
 	>=app-text/libabw-0.1.0
 	>=app-text/libebook-0.1
