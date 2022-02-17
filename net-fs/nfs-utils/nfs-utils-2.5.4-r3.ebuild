@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,6 @@ RESTRICT="test" #315573
 # so don't depend on virtual/krb.
 # (04 Feb 2005 agriffis)
 COMMON_DEPEND="
-	dev-db/sqlite:3
 	dev-libs/libxml2
 	net-libs/libtirpc:=
 	>=net-nds/rpcbind-0.2.4
@@ -43,6 +42,7 @@ COMMON_DEPEND="
 	)
 	libmount? ( sys-apps/util-linux )
 	nfsv4? (
+		dev-db/sqlite:3
 		dev-libs/libevent:=
 		>=sys-apps/keyutils-1.5.9:=
 		kerberos? (
