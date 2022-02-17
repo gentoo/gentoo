@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-3)
-KFMIN=5.84.0
+KFMIN=5.88.0
 QTMIN=5.15.2
 inherit ecm kde.org
 
@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/kopete/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="ssl v4l"
 
 # Available plugins
@@ -63,7 +63,7 @@ PROTOCOLS="gadu groupwise meanwhile oscar testbed winpopup +xmpp zeroconf"
 IUSE="${IUSE} ${PLUGINS} ${PROTOCOLS}"
 
 COMMON_DEPEND="
-	app-crypt/gpgme[cxx,qt5]
+	app-crypt/gpgme:=[cxx,qt5]
 	dev-libs/libpcre
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtsql-${QTMIN}:5
