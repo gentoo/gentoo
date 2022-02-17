@@ -40,6 +40,7 @@ BDEPEND="
 		dev-python/sphinx_rtd_theme
 		dev-python/sphinxcontrib-bibtex
 		dev-tex/latexmk
+		dev-texlive/texlive-latexextra
 	)
 "
 
