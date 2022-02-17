@@ -4,7 +4,6 @@
 EAPI=8
 
 DIST_AUTHOR=ITUB
-DIST_VERSION=0.3500
 inherit perl-module
 
 DESCRIPTION="PerlMol - Perl modules for molecular chemistry"
@@ -20,5 +19,6 @@ RDEPEND="
 	virtual/perl-Scalar-List-Utils
 "
 BDEPEND="${RDEPEND}
+	dev-perl/Module-Install
 	virtual/perl-ExtUtils-MakeMaker
 "
