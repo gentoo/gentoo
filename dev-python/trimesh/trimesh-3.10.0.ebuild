@@ -43,6 +43,8 @@ distutils_enable_tests pytest
 pkg_postinst() {
 	optfeature_header "${PN} functionality can be extended by installing the following packages:"
 	optfeature "making GUI applications with 3D stuff" dev-python/glooey
+	optfeature "2D triangulations of polygons" dev-python/mapbox_earcut
+	optfeature "loading a number of additional mesh formats" dev-python/meshio
 	optfeature "figuring out how much memory we have" dev-python/psutil
 	optfeature "marching cubes and other nice stuff" sci-libs/scikit-image
 }
