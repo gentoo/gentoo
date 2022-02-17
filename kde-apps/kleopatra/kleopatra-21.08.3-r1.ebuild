@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE=""
 
 DEPEND="
-	>=app-crypt/gpgme-1.16.0[cxx,qt5]
+	>=app-crypt/gpgme-1.16.0:=[cxx,qt5]
 	dev-libs/boost:=
 	dev-libs/libassuan
 	dev-libs/libgpg-error
