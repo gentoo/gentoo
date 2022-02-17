@@ -22,8 +22,8 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="acl addc ads ceph client cluster cpu_flags_x86_aes cups debug dmapi fam
-glusterfs gpg iprint json ldap pam profiling-data python quota +regedit selinux
+IUSE="acl addc ads ceph client cluster cups debug dmapi fam glusterfs
+gpg iprint json ldap pam profiling-data python quota +regedit selinux
 snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test winbind
 zeroconf"
 
@@ -68,14 +68,14 @@ COMMON_DEPEND="
 		>=sys-fs/e2fsprogs-1.46.4-r51[${MULTILIB_USEDEP}]
 		sys-libs/e2fsprogs-libs[${MULTILIB_USEDEP}]
 	)
-	>=sys-libs/ldb-2.5.0[ldap(+)?,${MULTILIB_USEDEP}]
-	<sys-libs/ldb-2.6.0[ldap(+)?,${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-2.4.1[ldap(+)?,${MULTILIB_USEDEP}]
+	<sys-libs/ldb-2.5.0[ldap(+)?,${MULTILIB_USEDEP}]
 	sys-libs/libcap[${MULTILIB_USEDEP}]
 	sys-libs/liburing:=[${MULTILIB_USEDEP}]
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
 	>=sys-libs/talloc-2.3.3[${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.4.6[${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.4.4[${MULTILIB_USEDEP}]
 	>=sys-libs/tevent-0.11.0[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libcrypt:=[${MULTILIB_USEDEP}]
@@ -98,7 +98,7 @@ COMMON_DEPEND="
 	debug? ( dev-util/lttng-ust )
 	dmapi? ( sys-apps/dmapi )
 	fam? ( virtual/fam )
-	gpg? ( app-crypt/gpgme )
+	gpg? ( app-crypt/gpgme:= )
 	json? ( dev-libs/jansson:= )
 	ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	pam? ( sys-libs/pam )
@@ -144,6 +144,9 @@ BDEPEND="${PYTHON_DEPS}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
+
+	# https://bugs.gentoo.org/828063
+	"${FILESDIR}/${P}-winbindd_regression_fix.patch"
 )
 
 #CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
@@ -210,7 +213,6 @@ multilib_src_configure() {
 		--nopyc
 		--nopyo
 		--without-winexe
-		--accel-aes=$(usex cpu_flags_x86_aes intelaesni none)
 		$(multilib_native_use_with acl acl-support)
 		$(multilib_native_usex addc '' '--without-ad-dc')
 		$(multilib_native_use_with ads)
