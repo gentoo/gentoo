@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jopt-simple/jopt-simple/archive/refs/tags/jopt-simpl
 
 LICENSE="MIT"
 SLOT="4.6"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 RDEPEND=">=virtual/jre-1.8:*"
 DEPEND=">=virtual/jdk-1.8:*"
