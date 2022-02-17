@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -48,7 +48,7 @@ RDEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
 	bittorrent? ( >=net-libs/libktorrent-21.07.80:5 )
-	gpg? ( app-crypt/gpgme[qt5] )
+	gpg? ( app-crypt/gpgme:=[qt5] )
 	kde? ( kde-plasma/libkworkspace:5 )
 	mms? ( media-libs/libmms )
 	sqlite? ( dev-db/sqlite:3 )
