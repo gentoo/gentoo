@@ -14,7 +14,7 @@ SLOT="3"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 X86_CPU_FLAGS=( sse2:sse2 sse4_2:sse4_2 avx:avx avx2:avx2 avx512dq:avx512dq )
 CPU_FLAGS=( ${X86_CPU_FLAGS[@]/#/cpu_flags_x86_} )
-IUSE="+compact-polys ispc +raymask ssp +tbb tutorial static-libs ${CPU_FLAGS[@]%:*}"
+IUSE="+compact-polys ispc +raymask ssp +tbb tutorial ${CPU_FLAGS[@]%:*}"
 RESTRICT="mirror"
 
 BDEPEND="
@@ -93,7 +93,7 @@ src_configure() {
 		-DEMBREE_RAY_MASK=$(usex raymask)
 		-DEMBREE_RAY_PACKETS=ON				# default
 		-DEMBREE_STACK_PROTECTOR=$(usex ssp)
-		-DEMBREE_STATIC_LIB=$(usex static-libs)
+		-DEMBREE_STATIC_LIB=OFF
 		-DEMBREE_STAT_COUNTERS=OFF
 		-DEMBREE_TASKING_SYSTEM:STRING=$(usex tbb "TBB" "INTERNAL")
 		-DEMBREE_TUTORIALS=$(usex tutorial) )
