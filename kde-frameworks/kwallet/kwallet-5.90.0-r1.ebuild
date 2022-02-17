@@ -10,7 +10,7 @@ inherit ecm kde.org optfeature
 DESCRIPTION="Framework providing desktop-wide storage for passwords"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 IUSE="gpg +man"
 
 BDEPEND="
@@ -30,7 +30,7 @@ DEPEND="
 	=kde-frameworks/kservice-${PVCUT}*:5
 	=kde-frameworks/kwidgetsaddons-${PVCUT}*:5
 	=kde-frameworks/kwindowsystem-${PVCUT}*:5
-	gpg? ( >=app-crypt/gpgme-1.7.1[cxx,qt5] )
+	gpg? ( >=app-crypt/gpgme-1.7.1:=[cxx,qt5] )
 "
 RDEPEND="${DEPEND}"
 
