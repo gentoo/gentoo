@@ -14,7 +14,7 @@ SLOT="3"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 X86_CPU_FLAGS=( sse2:sse2 sse4_2:sse4_2 avx:avx avx2:avx2 avx512dq:avx512dq )
 CPU_FLAGS=( cpu_flags_arm_neon ${X86_CPU_FLAGS[@]/#/cpu_flags_x86_} )
-IUSE="+compact-polys ispc +raymask ssp +tbb tutorial static-libs ${CPU_FLAGS[@]%:*}"
+IUSE="+compact-polys ispc +raymask ssp +tbb tutorial ${CPU_FLAGS[@]%:*}"
 # Let's be explicit here even though we could simplify it.
 REQUIRED_USE="amd64? ( cpu_flags_x86_sse2 ) x86? ( cpu_flags_x86_sse2 )"
 
@@ -111,7 +111,7 @@ src_configure() {
 		# default
 		-DEMBREE_RAY_PACKETS=ON
 		-DEMBREE_STACK_PROTECTOR=$(usex ssp)
-		-DEMBREE_STATIC_LIB=$(usex static-libs)
+		-DEMBREE_STATIC_LIB=OFF
 		-DEMBREE_STAT_COUNTERS=OFF
 		-DEMBREE_TASKING_SYSTEM:STRING=$(usex tbb "TBB" "INTERNAL")
 		-DEMBREE_TUTORIALS=$(usex tutorial))
