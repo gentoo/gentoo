@@ -3,10 +3,10 @@
 
 EAPI=8
 
-inherit desktop dune
-
 MY_PV=${PV/_p/pl}
 MY_P=${PN}-${MY_PV}
+
+inherit desktop dune
 
 DESCRIPTION="Proof assistant written in O'Caml"
 HOMEPAGE="http://coq.inria.fr/"
@@ -15,8 +15,8 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="gtk debug +ocamlopt"  # doc add when antlr & antlr-python are ready
+KEYWORDS="~amd64"
+IUSE="doc gtk debug +ocamlopt"
 RESTRICT="test"  # fails
 
 RDEPEND="
@@ -31,15 +31,17 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
-# to build docs we needantlr >=4.7, not yet in the tree
-# BDEPEND="doc? (
-#	>=dev-java/antlr-4.7:4
-#	dev-python/antlr-python:4
-#	dev-python/beautifulsoup4
-#	dev-python/pexpect
-#	dev-python/sphinx_rtd_theme
-#	dev-python/sphinxcontrib-bibtex
-# )"
+BDEPEND="
+	doc? (
+		>=dev-java/antlr-4.7:4
+		dev-python/antlr4-python3-runtime
+		dev-python/beautifulsoup4
+		dev-python/pexpect
+		dev-python/sphinx_rtd_theme
+		dev-python/sphinxcontrib-bibtex
+		dev-tex/latexmk
+	)
+"
 
 DOCS=( CODE_OF_CONDUCT.md CONTRIBUTING.md CREDITS INSTALL.md README.md )
 
@@ -51,8 +53,7 @@ src_configure() {
 		-docdir /usr/share/doc/${PF}
 		-datadir /usr/share/coq
 		-configdir /etc/xdg/${PN}
-		# -with-doc $(usex doc)
-		-with-doc no
+		-with-doc $(usex doc)
 	)
 
 	use debug && myconf+=( -debug )
@@ -95,7 +96,7 @@ src_install() {
 		syms+=( coqide )
 	fi
 
-	# use doc && emake DESTDIR="${D}" install-doc-all
+	use doc && emake DESTDIR="${D}" install-doc-all
 	einstalldocs
 
 	# Dune installs into /usr/<libdir>/ocaml/<coq> but
