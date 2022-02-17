@@ -6,7 +6,7 @@ NEED_EMACS=26
 
 inherit elisp
 
-DESCRIPTION="Consulting complete-read"
+DESCRIPTION="Marginalia in the minibuffer"
 HOMEPAGE="https://github.com/minad/marginalia"
 SRC_URI="https://github.com/minad/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
