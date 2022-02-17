@@ -189,7 +189,6 @@ dev-java/tomcat-jstl-spec
 # and has no reverse dependencies.
 # Removal on 2022-02-18.
 dev-java/ecj-gcj
-dev-java/freehep-graphicsio-tests
 
 # James Beddek <telans@posteo.de> (2022-01-19)
 # FFmpeg 5.0 ABI/API changes break many packages.
