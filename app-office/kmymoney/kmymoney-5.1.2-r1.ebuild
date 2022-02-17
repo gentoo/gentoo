@@ -26,7 +26,7 @@ IUSE="activities addressbook calendar hbci holidays"
 [[ ${KDE_BUILD_TYPE} = live ]] && IUSE+=" experimental"
 
 RDEPEND="
-	>=app-crypt/gpgme-1.7.1-r1[cxx]
+	>=app-crypt/gpgme-1.7.1-r1:=[cxx]
 	>=app-office/libalkimia-7.0.0:=
 	dev-db/sqlcipher
 	dev-libs/gmp:0=[cxx(+)]
