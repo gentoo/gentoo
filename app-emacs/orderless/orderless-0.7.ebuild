@@ -6,7 +6,7 @@ NEED_EMACS=26
 
 inherit readme.gentoo-r1 elisp
 
-DESCRIPTION="Consulting complete-read"
+DESCRIPTION="Completion style that matches multiple regexps in any order"
 HOMEPAGE="https://github.com/oantolin/orderless"
 SRC_URI="https://github.com/oantolin/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
