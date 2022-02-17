@@ -14,7 +14,7 @@ IUSE="ipv6"
 DEPEND="x11-base/xorg-proto
 	x11-libs/xtrans"
 RDEPEND="${DEPEND}
-	elibc_glibc? ( dev-libs/libbsd )"
+	elibc_glibc? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )"
 
 src_configure() {
 	local XORG_CONFIGURE_OPTIONS=(
