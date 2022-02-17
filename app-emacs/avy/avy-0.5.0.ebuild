@@ -14,10 +14,13 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-ELISP_REMOVE="avy-test.el"
 SITEFILE="50${PN}-gentoo.el"
 
 src_test() {
 	${EMACS} ${EMACSFLAGS} -l avy.el -l avy-test.el \
 			 -f ert-run-tests-batch-and-exit || die "tests failed"
+}
+
+src_install() {
+	elisp-install ${PN} avy.{el,elc}
 }
