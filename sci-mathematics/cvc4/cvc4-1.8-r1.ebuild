@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR=emake
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake python-any-r1
 
 DESCRIPTION="Automatic theorem prover for satisfiability modulo theories (SMT) problems"
@@ -23,8 +23,7 @@ RDEPEND="dev-libs/antlr-c
 	cln? ( sci-libs/cln )
 	!cln? ( dev-libs/gmp:= )"
 DEPEND="${RDEPEND}"
-BDEPEND="${PYTHON_DEPS}
-	$(python_gen_any_dep '
+BDEPEND="$(python_gen_any_dep '
 		dev-python/toml[${PYTHON_USEDEP}]
 	')
 "
@@ -32,6 +31,10 @@ BDEPEND="${PYTHON_DEPS}
 S="${WORKDIR}"/${PN^^}-archived-${PV}
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+
+python_check_deps() {
+	has_version "dev-python/toml[${PYTHON_USEDEP}]"
+}
 
 src_configure() {
 	local mycmakeargs=(
