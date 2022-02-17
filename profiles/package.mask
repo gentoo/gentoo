@@ -181,7 +181,6 @@ dev-java/jnlp-api
 dev-java/kxml
 dev-java/myfaces-builder-annotations
 dev-java/nanoxml
-dev-java/osgi-obr
 
 # James Beddek <telans@posteo.de> (2022-01-19)
 # FFmpeg 5.0 ABI/API changes break many packages.
