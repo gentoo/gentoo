@@ -176,7 +176,6 @@ app-crypt/hmaccalc
 # Removal in 30 days.
 dev-java/felix-shell
 dev-java/felix-utils
-dev-java/glassfish-transaction-api
 
 # James Beddek <telans@posteo.de> (2022-01-19)
 # FFmpeg 5.0 ABI/API changes break many packages.
