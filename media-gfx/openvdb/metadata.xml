@@ -18,6 +18,9 @@
 		<flag name="blosc">
 			Allow using blosc compression via <pkg>dev-libs/c-blosc</pkg>
 		</flag>
+		<flag name="nanovdb">
+			A lightweight, header only, and GPU friendly version of VDB.
+		</flag>
 		<flag restrict="&gt;=media-gfx/openvdb-7.0.0" name="numpy">
 			Build pyopenvdb with support for <pkg>dev-python/numpy</pkg>
 		</flag>
