@@ -8,6 +8,7 @@
 <use>
 	<flag name="avif">Enable support for AVIF images via <pkg>media-libs/libavif</pkg></flag>
 	<flag name="egl">Enable EGL support</flag>
+	<flag name="eme-free">Disable EME (DRM plugin) cabability at build time</flag>
 	<flag name="examples">Install the MiniBrowser example application</flag>
 	<flag name="gamepad">Enable gamepad input support via <pkg>dev-libs/libmanette</pkg></flag>
 	<flag name="geolocation">Enable geolocation support through <pkg>app-misc/geoclue</pkg></flag>
