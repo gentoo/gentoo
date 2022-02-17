@@ -19,9 +19,13 @@
 # written in Go since version 1.16,
 # so if the software isn't using modules, it should be updated.
 #
+# Also, if the top level go.mod file contains a go directive that
+# specifies a version of go prior to 1.14, this should be reported
+# upstream and updated.
+#
 # If the software has a directory named vendor in its
 # top level directory, the only thing you need to do is inherit the
-# eclass. If there is no vendor directory, you need to also populate
+# eclass. Otherwise, you need to also populate
 # EGO_SUM and call go-module_set_globals as discussed below.
 #
 # Since Go programs are statically linked, it is important that your ebuild's
@@ -79,9 +83,10 @@ export GO111MODULE=on
 export GOCACHE="${T}/go-build"
 
 # The following go flags should be used for all builds.
+# -modcacherw makes the build cache read/write
 # -v prints the names of packages as they are compiled
 # -x prints commands as they are executed
-export GOFLAGS="-v -x -modcacherw"
+export GOFLAGS="-modcacherw -v -x"
 
 # Do not complain about CFLAGS etc since go projects do not use them.
 QA_FLAGS_IGNORED='.*'
@@ -91,12 +96,15 @@ RESTRICT+=" strip"
 
 # @ECLASS-VARIABLE: EGO_SUM
 # @DESCRIPTION:
-# This is an array based on the go.sum content from inside the target package.
-# Each array entry must be quoted and contain information from a single
-# line from go.sum.
+# This array is based on the contents of the go.sum file from the top
+# level directory of the software you are packaging. Each entry must be
+# quoted and contain the first two fields of a line from go.sum.
 #
+# You can use some combination of sed/awk/cut to extract the
+# contents of EGO_SUM or use the dev-go/get-ego-vendor tool.
+# 
 # The format of go.sum is described upstream here:
-# https://tip.golang.org/cmd/go/#hdr-Module_authentication_using_go_sum
+# https://go.dev/ref/mod#go-sum-files
 #
 # For inclusion in EGO_SUM, the h1: value and other future extensions SHOULD be
 # omitted at this time. The EGO_SUM parser will accept them for ease of ebuild
