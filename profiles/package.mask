@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (2022-02-17)
+# Ancient version which likely does not work with modern software
+# New upstream exists but php team does not want to maintain
+# No revdeps. Removal in 30 days. Bug 833537
+dev-php/php-codebrowser
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-02-15)
 # Java libraries without consumers. Removal in 30 days.
 dev-java/upnplib
