@@ -209,17 +209,12 @@ PATCHES=(
 distutils_enable_tests pytest
 
 src_prepare() {
-	# this is for upstream GitHub issue 4292
+	# https://github.com/389ds/389-ds-base/issues/4292
 	if use !systemd; then
 		sed -i \
 			-e 's|WITH_SYSTEMD = 1|WITH_SYSTEMD = 0|' \
 			Makefile.am || die
 	fi
-
-	# GH issue 4092
-	sed -i \
-		-e 's|@localstatedir@/run|/run|' \
-		ldap/admin/src/defaults.inf.in || die
 
 	default
 
