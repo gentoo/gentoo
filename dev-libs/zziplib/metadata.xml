@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>gentoo@pogatzki.net</email>
-		<name>Volkmar W. Pogatzki</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="github">gdraheim/zziplib</remote-id>
 		<remote-id type="sourceforge">zziplib</remote-id>
