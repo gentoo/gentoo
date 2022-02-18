@@ -83,7 +83,7 @@ RDEPEND="${PYTHON_DEPS}
 	openal? ( media-libs/openal )
 	opencl? ( virtual/opencl )
 	oidn? ( >=media-libs/oidn-1.3.0 )
-	openimageio? ( >=media-libs/openimageio-2.3.12.0:= )
+	openimageio? ( >=media-libs/openimageio-2.3.12.0-r2:= )
 	openexr? (
 		>=dev-libs/imath-3.1.4-r2:=
 		>=media-libs/openexr-3:=
