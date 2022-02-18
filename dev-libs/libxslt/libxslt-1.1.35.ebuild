@@ -40,6 +40,8 @@ src_prepare() {
 
 multilib_src_configure() {
 	# Python bindings were dropped as they were Python 2 only at the time
+	# Work in 1.1.35+ is occurring to add prelim. Python 3 support, so could
+	# restore if something needs them.
 	ECONF_SOURCE="${S}" econf \
 		--with-html-dir="${EPREFIX}"/usr/share/doc/${PF} \
 		--with-html-subdir=html \
