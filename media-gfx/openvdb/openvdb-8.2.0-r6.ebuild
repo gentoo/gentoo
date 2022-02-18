@@ -14,7 +14,7 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.g
 LICENSE="MPL-2.0"
 SLOT="0/8"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="cpu_flags_x86_avx cpu_flags_x86_sse4_2 +blosc doc numpy python static-libs test utils zlib abi6-compat abi7-compat +abi8-compat"
+IUSE="cpu_flags_x86_avx cpu_flags_x86_sse4_2 +blosc doc numpy python static-libs test zlib abi6-compat abi7-compat +abi8-compat"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -28,8 +28,10 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-libs/jemalloc:=
 	dev-libs/log4cplus:=
+	>=dev-libs/imath-3.1.4-r2:=
 	media-libs/glfw
 	media-libs/glu
+	>=media-libs/openexr-3:=
 	sys-libs/zlib:=
 	x11-libs/libXcursor
 	x11-libs/libXi
@@ -43,17 +45,12 @@ RDEPEND="
 			numpy? ( dev-python/numpy[${PYTHON_USEDEP}] )
 		')
 	)
-	utils? (
-		>=dev-libs/imath-3.1.4-r2:=
-		>=media-libs/openexr-3:=
-	)
 	zlib? ( sys-libs/zlib )
 "
 
 DEPEND="${RDEPEND}"
 
 BDEPEND="
-	>=dev-util/cmake-3.16.2-r1
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
@@ -79,7 +76,7 @@ pkg_setup() {
 }
 
 src_configure() {
-	local myprefix="${EPREFIX}/usr/"
+	local myprefix="${EPREFIX}"/usr/
 
 	local version
 	if use abi6-compat; then
@@ -95,7 +92,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}/"
 		-DOPENVDB_ABI_VERSION_NUMBER="${version}"
-		-DOPENVDB_BUILD_BINARIES=$(usex utils)
+		-DOPENVDB_BUILD_BINARIES=ON
 		-DOPENVDB_BUILD_DOCS=$(usex doc)
 		-DOPENVDB_BUILD_UNITTESTS=$(usex test)
 		-DOPENVDB_CORE_SHARED=ON
@@ -120,13 +117,11 @@ src_configure() {
 		)
 	fi
 
-	if use utils; then
-		mycmakeargs+=(
-			-DOPENVDB_BUILD_VDB_LOD=ON
-			-DOPENVDB_BUILD_VDB_RENDER=ON
-			-DOPENVDB_BUILD_VDB_VIEW=ON
-		)
-	fi
+	mycmakeargs+=(
+		-DOPENVDB_BUILD_VDB_LOD=ON
+		-DOPENVDB_BUILD_VDB_RENDER=ON
+		-DOPENVDB_BUILD_VDB_VIEW=ON
+	)
 
 	if use cpu_flags_x86_avx; then
 		mycmakeargs+=( -DOPENVDB_SIMD=AVX )
