@@ -26,7 +26,10 @@ DEPEND="
 	>=net-wireless/bluez-5
 	>=sys-apps/dbus-1.0.0
 	ofono-headset? ( >=net-misc/ofono-1.13 )
-	>=media-sound/pulseaudio-${PULSE_VER}[-bluetooth,daemon(+)]
+	|| (
+		>=media-sound/pulseaudio-daemon-${PULSE_VER}[-bluetooth]
+		>=media-sound/pulseaudio-${PULSE_VER}[-bluetooth,daemon(+)]
+	)
 	!media-sound/pulseaudio[bluetooth]
 "
 # Ordinarily media-libs/libldac should be in DEPEND too, but for now upstream repo is using a ldac submodule instead.

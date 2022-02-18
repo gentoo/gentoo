@@ -17,7 +17,7 @@ RDEPEND="dev-cpp/atkmm:0
 	dev-cpp/gtkmm:3.0
 	dev-libs/glib:2
 	dev-libs/libsigc++:2
-	media-sound/pulseaudio[glib]
+	|| ( media-sound/pulseaudio-daemon[glib] media-sound/pulseaudio[daemon(+),glib] )
 	x11-libs/gtk+:3
 	|| (
 		x11-themes/tango-icon-theme
