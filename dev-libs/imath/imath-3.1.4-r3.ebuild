@@ -28,6 +28,7 @@ RDEPEND="
 	!media-libs/ilmbase
 	sys-libs/zlib
 	python? (
+		!dev-python/pyilmbase
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
 			dev-libs/boost:=[python,${PYTHON_USEDEP}]
