@@ -108,7 +108,7 @@ DEPEND="
 # TODO: there are probably more atoms in DEPEND which should be in BDEPEND now
 BDEPEND="virtual/pkgconfig"
 
-DOCS=( "AUTHORS" "HACKING" "NEWS" "README" "README.i18n" )
+DOCS=( "AUTHORS" "devel-docs/CODING_STYLE.md" "devel-docs/HACKING.md" "NEWS" "README" "README.i18n" )
 
 # Bugs 685210 (and duplicate 691070)
 PATCHES=(
