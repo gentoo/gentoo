@@ -296,6 +296,9 @@ PATCHES=(
 
 	# 7.3 branch
 	"${FILESDIR}/${PN}-7.2.2.2-makefile-gengal.patch"
+
+	# master branch
+	"${FILESDIR}/${PN}-7.2.5.2-kf591.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
