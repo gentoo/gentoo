@@ -10,7 +10,7 @@ JAVA_PKG_IUSE="doc source"
 MAVEN_ID="commons-daemon:commons-daemon:1.2.4"
 # JAVA_TESTING_FRAMEWORKS="junit-4"
 
-inherit java-pkg-2 java-pkg-simple
+inherit java-pkg-2 java-pkg-simple toolchain-funcs
 
 DESCRIPTION="Tools to allow Java programs to run as UNIX daemons"
 HOMEPAGE="https://commons.apache.org/proper/commons-daemon/"
@@ -47,7 +47,7 @@ src_compile() {
 
 	pushd src/native/unix || die
 		./configure
-		emake
+		emake AR="$(tc-getAR)"
 	popd
 }
 
