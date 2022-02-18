@@ -116,7 +116,7 @@ PYTHON_COMPAT=( python3_{8,9,10} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit multilib flag-o-matic autotools distutils-r1 systemd tmpfiles db-use cargo
+inherit autotools distutils-r1 systemd tmpfiles db-use cargo
 
 DESCRIPTION="389 Directory Server (core libraries and daemons)"
 HOMEPAGE="https://directory.fedoraproject.org/"
@@ -136,11 +136,11 @@ RESTRICT="test"
 # always list newer first
 # Do not add any AGPL-3 BDB here!
 # See bug 525110, comment 15.
-BERKDB_SLOTS=( 5.3 4.8 )
+BERKDB_SLOTS=( 5.3 )
 
 DEPEND="
 	>=app-crypt/mit-krb5-1.7-r100[openldap]
-	>=dev-libs/cyrus-sasl-2.1.19[kerberos]
+	>=dev-libs/cyrus-sasl-2.1.19:2[kerberos]
 	>=dev-libs/icu-60.2:=
 	dev-libs/nspr
 	>=dev-libs/nss-3.22[utils]
@@ -153,8 +153,7 @@ DEPEND="
 		$(for slot in ${BERKDB_SLOTS[@]} ; do printf '%s\n' "sys-libs/db:${slot}" ; done)
 	)
 	sys-libs/cracklib
-	sys-fs/e2fsprogs
-	sys-libs/zlib
+	sys-libs/e2fsprogs-libs
 	pam-passthru? ( sys-libs/pam )
 	selinux? (
 		$(python_gen_cond_dep '
@@ -177,7 +176,6 @@ BDEPEND=">=sys-devel/autoconf-2.69-r5
 
 # perl dependencies are for logconv.pl
 RDEPEND="${DEPEND}
-	!dev-libs/svrcore
 	!net-nds/389-ds-base:0
 	acct-user/dirsrv
 	acct-group/dirsrv
