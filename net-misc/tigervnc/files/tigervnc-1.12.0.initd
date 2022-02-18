@@ -1,0 +1,75 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ -n "${DISPLAYS}" ]; then
+		if [ $1 = "start" ]; then
+			local user
+			for user in $DISPLAYS; do
+				if eval [ ! -f "~${user%%:*}/.vnc/passwd" ]; then
+					eerror "There are no passwords defined for user ${user%%:*}."
+					return 1
+				elif [ -e "/tmp/.X11-unix/X${user##*:}" ]; then
+					eerror "Display :${user##*:} appears to be already in use because of /tmp/.X11-unix/X${user##*:}"
+					eerror "Remove this file if there is no X server $HOSTNAME:${user##*:}"
+					return 1
+				elif [ -e "/tmp/.X${user##*:}-lock" ]; then
+					eerror "Display :${user##*:} appears to be already in use because of /tmp/.X${user##*:}-lock"
+					eerror "Remove this file if there is no X server $HOSTNAME:${user##*:}"
+					return 1
+				elif ! grep -E "^[^#]*:${user##*:}=${user%%:*}" /etc/tigervnc/vncserver.users > /dev/null 2>&1; then
+					eerror "User ${user%%:*} is not defined for display :${user##*:} in /etc/tigervnc/vncserver.users"
+					return 1
+				fi
+			done
+		fi
+		return 0
+	else
+		eerror 'Please define $DISPLAYS in /etc/conf.d/tigervnc'
+		return 1
+	fi
+}
+
+start() {
+	checkconfig start || return 1
+	ebegin "Starting TigerVNC server"
+	for user in $DISPLAYS; do
+		usrname=${user%%:*}
+		usropts=VNC_OPTS_${usrname}
+		usrdisp=${user##*:}
+		usrvar=$usropts"["$usrdisp"]"
+		[ -z ${!usrvar} ] && vnc_opts=$VNC_OPTS || vnc_opts=${!usrvar}
+
+		[ -n "${TIGERVNC_XSESSION_FILE}" ] && export TIGERVNC_XSESSION_FILE
+
+		/usr/libexec/vncsession-start :${user##*:} $vnc_opts &>/dev/null
+	done
+	eend $?
+}
+
+stop() {
+	checkconfig stop || return 2
+	ebegin "Stopping TigerVNC server"
+	for user in $DISPLAYS; do
+		# vncserver no longer provides a `-kill` option
+		# killing vncsession does not work, we have to kill Xvnc
+		# run pstree to see exactly what's going on
+		sessionpid=`cat /run/vncsession-\:${user##*:}.pid`
+		serverpid=`pstree -p $sessionpid | grep Xvnc | sed -e 's/^.*Xvnc(//
+			s/).*$//'`
+		kill $serverpid &>/dev/null
+	done
+	# Do not fail if a server is missing
+	/bin/true
+	eend $?
+}
+
+restart() {
+        svc_stop
+        svc_start
+}
