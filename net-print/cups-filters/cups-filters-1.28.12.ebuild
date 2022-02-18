@@ -5,17 +5,12 @@ EAPI=8
 
 GENTOO_DEPEND_ON_PERL=no
 
-inherit autotools perl-module systemd flag-o-matic
+inherit perl-module systemd flag-o-matic
 
-if [[ "${PV}" == "9999" ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/OpenPrinting/cups-filters.git"
-else
-	SRC_URI="http://www.openprinting.org/download/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-fi
 DESCRIPTION="Cups filters"
 HOMEPAGE="https://wiki.linuxfoundation.org/openprinting/cups-filters"
+SRC_URI="http://www.openprinting.org/download/${PN}/${P}.tar.xz"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 LICENSE="MIT GPL-2"
 SLOT="0"
@@ -52,21 +47,6 @@ BDEPEND="
 	virtual/pkgconfig
 	test? ( media-fonts/dejavu )
 "
-
-src_prepare() {
-	local need_eautoreconf=
-
-	default
-
-	if ! use test ; then
-		eapply "${FILESDIR}"/${PN}-1.28.2-make-missing-testfont-non-fatal.patch
-		need_eautoreconf=yes
-	elif [[ "${PV}" == "9999" ]] ; then
-		need_eautoreconf=yes
-	fi
-
-	[[ -n ${need_eautoreconf} ]] && eautoreconf
-}
 
 src_configure() {
 	# Bug #626800
