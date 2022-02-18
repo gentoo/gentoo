@@ -64,6 +64,8 @@ RDEPEND="${DEPEND}
 	policykit? ( sys-auth/polkit )
 	pulseaudio? (
 		|| (
+			media-sound/pulseaudio-daemon[bluetooth]
+			media-video/pipewire[bluetooth]
 			media-sound/pulseaudio[bluetooth]
 			media-sound/pulseaudio-modules-bt
 		)
