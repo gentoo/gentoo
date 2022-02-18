@@ -20,18 +20,19 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="jpeg jpeg2k mng openexr png raw static-libs tiff webp"
 
-# The tiff/ilmbase isn't a typo.  The TIFF plugin cheats and
+# The tiff/imath+openexr isn't a typo. The TIFF plugin cheats and
 # uses code from it to handle 16bit<->float conversions.
 RDEPEND="
 	sys-libs/zlib
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( media-libs/openjpeg:2= )
 	mng? ( media-libs/libmng:= )
-	openexr? ( media-libs/openexr:0= )
+	openexr? ( media-libs/openexr:= )
 	png? ( media-libs/libpng:0= )
 	raw? ( media-libs/libraw:= )
 	tiff? (
-		dev-libs/imath:=
+		>=dev-libs/imath-3.1.4-r2:=
+		>=media-libs/openexr-3:=
 		media-libs/tiff:0
 	)
 	webp? ( media-libs/libwebp:= )"
