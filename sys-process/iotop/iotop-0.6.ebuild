@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,3 +33,19 @@ PATCHES=(
 pkg_setup() {
 	linux-info_pkg_setup
 }
+
+pkg_postinst() {
+	cat << EOF | elog
+To enable the SWAPIN/IO columns, set the 'delayacct' kernel
+command-line parameter:
+https://www.kernel.org/doc/html/latest/accounting/delay-accounting.html
+
+For example, if using grub, set or append GRUB_CMDLINE_LINUX_DEFAULT
+with 'delayacct' in /etc/default/grub. If you hadn't already modified
+that line, it would go from
+GRUB_CMDLINE_LINUX_DEFAULT=""
+to
+GRUB_CMDLINE_LINUX_DEFAULT="delayacct"
+EOF
+}
+
