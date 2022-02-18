@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,7 +45,9 @@ src_configure() {
 		$(usex static-libs '--enable-shared --enable-static' '--enable-shared --disable-static' '' '')
 	)
 
-	econf "${myeconfargs[@]}"
+	# Bashism workaround for https://github.com/containers/crun/pull/880
+	# Drop once fixed in a release.
+	CONFIG_SHELL="${BROOT}/bin/bash" econf "${myeconfargs[@]}"
 }
 
 src_compile() {
