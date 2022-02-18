@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ IUSE=""
 
 # Optional runtime deps: dbus-send for KDE OSD, notify-send for libnotify
 # in both cases they should be already present if DE supports them
-RDEPEND="media-sound/pulseaudio"
+RDEPEND="|| ( media-sound/pulseaudio-daemon media-sound/pulseaudio[daemon(+)] )"
 
 src_install() {
 	emake install PREFIX="${EPREFIX}/usr" DESTDIR="${D}"
