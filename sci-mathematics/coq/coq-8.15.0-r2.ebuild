@@ -40,8 +40,10 @@ BDEPEND="
 		dev-python/sphinx_rtd_theme
 		dev-python/sphinxcontrib-bibtex
 		dev-tex/latexmk
+		dev-texlive/texlive-fontsextra
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-xetex
+		media-fonts/freefont
 	)
 "
 
