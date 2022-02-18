@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="dev-libs/glib:2[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib[${MULTILIB_USEDEP}]
-	sdk? ( !media-sound/pulseaudio ) "
+	sdk? ( !media-libs/libpulse !media-sound/pulseaudio ) "
 RDEPEND="${DEPEND}
 	!media-plugins/alsa-plugins[pulseaudio]"
 
