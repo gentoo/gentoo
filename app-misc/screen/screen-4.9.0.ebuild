@@ -3,21 +3,14 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic pam tmpfiles toolchain-funcs
+inherit autotools flag-o-matic pam tmpfiles
 
 DESCRIPTION="screen manager with VT100/ANSI terminal emulation"
 HOMEPAGE="https://www.gnu.org/software/screen/"
 
 if [[ ${PV} != 9999 ]] ; then
-	if [[ ${PV} == *_rc* ]] ; then
-		# See https://lists.gnu.org/archive/html/screen-devel/2022-01/msg00010.html
-		MY_COMMIT="d591a396c7e41d10191c1f5676032d9e261da2f7"
-		SRC_URI="https://git.savannah.gnu.org/cgit/screen.git/snapshot/${PN}-${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
-		S="${WORKDIR}"/${PN}-${MY_COMMIT}/src
-	else
-		SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-	fi
+	SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/screen.git"
@@ -29,15 +22,13 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug nethack pam selinux multiuser"
 
-CDEPEND="
-	>=sys-libs/ncurses-5.2:0=
+DEPEND=">=sys-libs/ncurses-5.2:=
 	virtual/libcrypt:=
 	pam? ( sys-libs/pam )"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	acct-group/utmp
 	selinux? ( sec-policy/selinux-screen )"
-DEPEND="${CDEPEND}
-	sys-apps/texinfo"
+BDEPEND="sys-apps/texinfo"
 
 PATCHES=(
 	# Don't use utempter even if it is found on the system.
@@ -52,7 +43,7 @@ src_prepare() {
 	mv sched.h _sched.h || die
 	sed -i '/include/ s:sched.h:_sched.h:' screen.h || die
 
-	# Fix manpage.
+	# Fix manpage
 	sed -i \
 		-e "s:/usr/local/etc/screenrc:${EPREFIX}/etc/screenrc:g" \
 		-e "s:/usr/local/screens:${EPREFIX}/tmp/screen:g" \
@@ -61,7 +52,7 @@ src_prepare() {
 		-e "s:/local/screens/S\\\-:${EPREFIX}/tmp/screen/S\\\-:g" \
 		doc/screen.1 || die
 
-	if [[ ${CHOST} == *-darwin* ]] || use elibc_musl ; then
+	if [[ ${CHOST} == *-darwin* ]] || use elibc_musl; then
 		sed -i -e '/^#define UTMPOK/s/define/undef/' acconfig.h || die
 	fi
 
@@ -75,7 +66,7 @@ src_prepare() {
 src_configure() {
 	append-cppflags "-DMAXWIN=${MAX_SCREEN_WINDOWS:-100}"
 
-	if [[ ${CHOST} == *-solaris* ]] ; then
+	if [[ ${CHOST} == *-solaris* ]]; then
 		# enable msg_header by upping the feature standard compatible
 		# with c99 mode
 		append-cppflags -D_XOPEN_SOURCE=600
@@ -142,8 +133,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ -z ${REPLACING_VERSIONS} ]]
-	then
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog "Some dangerous key bindings have been removed or changed to more safe values."
 		elog "We enable some xterm hacks in our default screenrc, which might break some"
 		elog "applications. Please check /etc/screenrc for information on these changes."
