@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # XXX: atm, libbz2.a is always PIC :(, so it is always built quickly
@@ -7,6 +7,10 @@
 EAPI=7
 
 inherit toolchain-funcs multilib-minimal usr-ldscript
+
+if [[ ${PVR} != 1.0.8-r1 ]]; then
+	die "Please remove libbz2.so.1.0 logic from multilib_src_install"
+fi
 
 DESCRIPTION="A high-quality data compressor used extensively by Gentoo Linux"
 HOMEPAGE="https://sourceware.org/bzip2/"
