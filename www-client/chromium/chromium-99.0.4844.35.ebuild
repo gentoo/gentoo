@@ -120,7 +120,6 @@ DEPEND="${COMMON_DEPEND}
 		!gtk4? ( x11-libs/gtk+:3[X,wayland?] )
 	)
 "
-# dev-vcs/git - https://bugs.gentoo.org/593476
 BDEPEND="
 	${COMMON_SNAPSHOT_DEPEND}
 	${PYTHON_DEPS}
@@ -131,7 +130,6 @@ BDEPEND="
 	libcxx? ( >=sys-devel/clang-12 )
 	dev-lang/perl
 	>=dev-util/gn-0.1807
-	dev-vcs/git
 	>=dev-util/gperf-3.0.3
 	>=dev-util/ninja-1.7.2
 	>=net-libs/nodejs-7.6.0[inspector]
