@@ -3,7 +3,7 @@
 
 EAPI=7
 
-VALA_MIN_API_VERSION="0.30"
+VALA_MIN_API_VERSION="0.42"
 VALA_USE_DEPEND="vapigen"
 
 inherit meson vala gnome2-utils
@@ -60,6 +60,10 @@ RDEPEND="${DEPEND}
 "
 
 S="${WORKDIR}/GPaste-${PV}"
+
+PATCHES=(
+	"${FILESDIR}"/fix-build-with-meson-0.60.patch
+)
 
 src_prepare() {
 	use vala && vala_src_prepare
