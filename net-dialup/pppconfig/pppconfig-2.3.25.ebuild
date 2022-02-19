@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/p/${PN}/${P/-/_}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="nls"
 
 RDEPEND="net-dialup/ppp
