@@ -47,7 +47,3 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	einstalldocs
 }
-
-multilib_src_test() {
-	emake -j1 check
-}
