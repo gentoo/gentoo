@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
-IUSE="+dbus enchant +hunspell screencast +spell wayland +X"
+IUSE="+dbus enchant +hunspell +jemalloc screencast +spell wayland +X"
 REQUIRED_USE="
 	spell? (
 		^^ ( enchant hunspell )
@@ -28,7 +28,6 @@ RDEPEND="
 	!net-im/telegram-desktop-bin
 	app-arch/lz4:=
 	dev-cpp/abseil-cpp:=
-	dev-libs/jemalloc:=[-lazy-lock]
 	dev-libs/libdispatch
 	dev-libs/openssl:=
 	dev-libs/xxhash
@@ -54,6 +53,7 @@ RDEPEND="
 	)
 	enchant? ( app-text/enchant:= )
 	hunspell? ( >=app-text/hunspell-1.7:= )
+	jemalloc? ( dev-libs/jemalloc:=[-lazy-lock] )
 	wayland? ( kde-frameworks/kwayland:= )
 	X? ( x11-libs/libxcb:= )
 "
@@ -71,6 +71,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/tdesktop-3.5.2-jemalloc-only-telegram.patch"
 	"${FILESDIR}/tdesktop-3.3.0-fix-enchant.patch"
+	"${FILESDIR}/tdesktop-3.5.2-musl.patch"
+	"${FILESDIR}/tdesktop-3.5.2-jemalloc-optional.patch"
 )
 
 # Current desktop-file-utils-0.26 does not understand Version=1.5
@@ -95,17 +97,20 @@ src_prepare() {
 }
 
 src_configure() {
-	# gtk is really needed for image copy-paste due to https://bugreports.qt.io/browse/QTBUG-56595
 	local mycmakeargs=(
 		-DTDESKTOP_LAUNCHER_BASENAME="${PN}"
 		-DCMAKE_DISABLE_FIND_PACKAGE_tl-expected=ON  # header only lib, some git version. prevents warnings.
 		-DDESKTOP_APP_QT6=OFF
 
-		-DDESKTOP_APP_DISABLE_X11_INTEGRATION=$(usex X no yes)
-		-DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=$(usex wayland no yes)
-		-DDESKTOP_APP_DISABLE_DBUS_INTEGRATION=$(usex dbus no yes)
-		-DDESKTOP_APP_DISABLE_SPELLCHECK=$(usex spell no yes)  # enables hunspell (recommended)
+		-DDESKTOP_APP_DISABLE_DBUS_INTEGRATION=$(usex !dbus)
+		-DDESKTOP_APP_DISABLE_X11_INTEGRATION=$(usex !X)
+		-DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=$(usex !wayland)
+		-DDESKTOP_APP_DISABLE_SPELLCHECK=$(usex !spell)  # enables hunspell (recommended)
 		-DDESKTOP_APP_USE_ENCHANT=$(usex enchant)  # enables enchant and disables hunspell
+
+		# This option is heavily discouraged by upstream.
+		# See files/tdesktop-*-jemalloc-optional.patch
+		-DDESKTOP_APP_DISABLE_JEMALLOC=$(usex !jemalloc)
 	)
 
 	if [[ -n ${MY_TDESKTOP_API_ID} && -n ${MY_TDESKTOP_API_HASH} ]]; then
@@ -131,10 +136,6 @@ src_configure() {
 		)
 	fi
 
-	# Fix for RISCV, as well as any other platforms that might generate libatomic calls
-	# Upstreamed in >3.4.3
-	append-ldflags '-pthread'
-
 	cmake_src_configure
 }
 
@@ -142,10 +143,17 @@ pkg_postinst() {
 	xdg_pkg_postinst
 	if ! use X && ! use screencast; then
 		elog "both the 'X' and 'screencast' useflags are disabled, screen sharing won't work!"
+		elog
 	fi
 	if has_version '<dev-qt/qtcore-5.15.2-r10'; then
 		ewarn "Versions of dev-qt/qtcore lower than 5.15.2-r10 might cause telegram"
 		ewarn "to crash when pasting big images from the clipboard."
+		ewarn
+	fi
+	if ! use jemalloc && use elibc_glibc; then
+		ewarn "Disabling USE=jemalloc on glibc systems may cause very high RAM usage!"
+		ewarn "Do NOT report issues about RAM usage without enabling this flag first."
+		ewarn
 	fi
 	optfeature_header
 	optfeature "shop payment support (requires USE=dbus enabled)" net-libs/webkit-gtk

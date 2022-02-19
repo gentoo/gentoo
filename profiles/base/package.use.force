@@ -1,6 +1,12 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Esteve Varela Colominas <esteve.varela@gmail.com> (2022-02-19)
+# Use the jemalloc allocator for telegram, as recommended by upstream,
+# to reduce memory usage, at least on glibc.
+# See the ebuild for more info.
+net-im/telegram-desktop jemalloc
+
 # Sam James <sam@gentoo.org> (2022-02-11)
 # Always build with PIE-default, just like GCC.
 sys-devel/clang pie
