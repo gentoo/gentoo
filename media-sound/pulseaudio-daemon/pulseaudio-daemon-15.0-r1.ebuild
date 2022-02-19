@@ -5,7 +5,7 @@ EAPI="7"
 
 MY_PV="${PV/_pre*}"
 MY_P="pulseaudio-${MY_PV}"
-
+MY_PATCHSET="${PN}-15.0-patchset-1"
 inherit bash-completion-r1 gnome2-utils meson optfeature systemd tmpfiles udev
 
 DESCRIPTION="A networked sound server with an advanced plugin system"
@@ -17,6 +17,7 @@ if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/pulseaudio/pulseaudio"
 else
 	SRC_URI="https://freedesktop.org/software/pulseaudio/releases/${MY_P}.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_PATCHSET}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
@@ -148,9 +149,9 @@ DOCS=( NEWS README )
 
 S="${WORKDIR}/${MY_P}"
 
+# patches merged upstream, to be removed with 16.0 bump
 PATCHES=(
-	"${FILESDIR}"/pulseaudio-15.0-xice-xsm-xtst-daemon-only.patch
-	"${FILESDIR}"/${PV}-daemon-only.patch
+	"${WORKDIR}"/${MY_PATCHSET}/
 )
 
 src_prepare() {
@@ -164,7 +165,7 @@ src_configure() {
 		--localstatedir="${EPREFIX}"/var
 
 		-Ddaemon=true
-		-Ddaemon-only=true
+		-Dclient=false
 		-Ddoxygen=false
 		-Dgcov=false
 		-Dman=true
@@ -222,8 +223,14 @@ src_configure() {
 src_install() {
 	meson_src_install
 
-	# Installed by media-libs/libpulse
+	# Upstream installs 'pactl' if client is built, with all symlinks except for
+	# 'pulseaudio', 'pacmd' and 'pasuspender' which are installed if server is built.
+	# This trips QA warning, workaround:
+	# - install missing aliases in media-libs/libpulse (client build)
+	# - remove corresponding symlinks in media-sound/pulseaudio-daemonclient (server build)
 	rm "${D}/$(get_bashcompdir)"/pulseaudio || die
+	rm "${D}/$(get_bashcompdir)"/pacmd || die
+	rm "${D}/$(get_bashcompdir)"/pasuspender || die
 
 	if use system-wide; then
 		newconfd "${FILESDIR}"/pulseaudio.conf.d pulseaudio
