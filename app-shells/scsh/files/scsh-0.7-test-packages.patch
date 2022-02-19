@@ -1,0 +1,9 @@
+--- a/test/test-packages.scm
++++ b/test/test-packages.scm
+@@ -112,6 +112,5 @@
+         file-name-maniplation-test
+         read-delimited-strings-test
+         bitwise-ops-test
+-        user-and-group-db-access-test
+         file-system-test))
+ 
