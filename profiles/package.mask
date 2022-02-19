@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Anton Fischl <github@fischl-online.de> (2022-02-23)
+# Version 2.5.* is not meant for production according to upstream
+=app-backup/burp-2.5*
+
 # Maciej Barć <xgqt@gentoo.org> (2022-02-20)
 # Masked for testing, builds and passes tests but randomly segfaults,
 # meaningless backtrace, debugging (flags, symbols) do not help
