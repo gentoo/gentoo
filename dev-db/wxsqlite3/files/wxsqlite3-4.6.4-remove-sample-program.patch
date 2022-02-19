@@ -1,0 +1,76 @@
+diff -Nudr wxsqlite3-4.6.4-orig/configure.ac wxsqlite3-4.6.4/configure.ac
+--- wxsqlite3-4.6.4-orig/configure.ac	2020-12-31 04:24:58.000000000 +0700
++++ wxsqlite3-4.6.4/configure.ac	2021-05-01 18:08:57.153588334 +0700
+@@ -115,20 +115,6 @@
+        test "x$with_rc4" = xno],
+        [AC_DEFINE([WXSQLITE3_HAVE_CODEC], [0], [All ciphers disabled so encryption is disabled])])
+ 
+-dnl We only need the libraries above for the main library itself, but the
+-dnl pdfdc sample has additional requirements, check for them too (notice that
+-dnl we can't use "--optional-libs" wx-config option to do it all in one check
+-dnl for as long as we support 2.8 in which wx-config doesn't have this option
+-dnl yet).
+-core_WX_LIBS=$WX_LIBS
+-WX_CONFIG_CHECK([2.8.0],
+-    [WX_LIBS_TREEVIEW_SAMPLE=$WX_LIBS],
+-    [AC_MSG_WARN([Some wxWidgets libraries not available, treeview sample won't be built])],
+-    [adv,base,core,xml]
+-)
+-WX_LIBS=$core_WX_LIBS
+-AM_CONDITIONAL([BUILD_TREEVIEW_SAMPLE], [test -n "$WX_LIBS_TREEVIEW_SAMPLE"])
+-
+ dnl This is needed by WX_LIKE_LIBNAME
+ WX_DETECT_STANDARD_OPTION_VALUES
+ dnl This macro is used to preserve the same name as was used with the previous
+@@ -136,19 +122,8 @@
+ WX_LIKE_LIBNAME([WXSQLITE3_LIBNAME], [wxcode], [wxsqlite3])
+ 
+ AC_SUBST(WXSQLITE3_LIBNAME)
+-AC_SUBST(WX_LIBS_TREEVIEW_SAMPLE)
+ AC_SUBST( LIBDIR, "lib" )
+ 
+-dnl Ensure that the samples can find the files they need when running from the
+-dnl build directory.
+-AC_CONFIG_LINKS([samples/sqlcipher-1.1.8-testkey.db:samples/sqlcipher-1.1.8-testkey.db
+-    samples/sqlcipher-2.0-beta-testkey.db:samples/sqlcipher-2.0-beta-testkey.db
+-    samples/sqlcipher-2.0-be-testkey.db:samples/sqlcipher-2.0-be-testkey.db
+-    samples/sqlcipher-2.0-le-testkey.db:samples/sqlcipher-2.0-le-testkey.db
+-    samples/sqlcipher-3.0-testkey.db:samples/sqlcipher-3.0-testkey.db
+-    samples/sqlcipher-4.0-testkey.db:samples/sqlcipher-4.0-testkey.db
+-])
+-
+ AC_CANONICAL_HOST
+ hostX86=false
+ hostARM=false
+diff -Nudr wxsqlite3-4.6.4-orig/Makefile.am wxsqlite3-4.6.4/Makefile.am
+--- wxsqlite3-4.6.4-orig/Makefile.am	2020-12-31 04:24:58.000000000 +0700
++++ wxsqlite3-4.6.4/Makefile.am	2021-05-01 18:15:59.241921768 +0700
+@@ -58,28 +58,3 @@
+ lib@WXSQLITE3_LIBNAME@_la_LIBADD = $(WX_LIBS)
+ 
+ 
+-# Samples (don't need to be installed).
+-noinst_PROGRAMS = samples/minimal
+-
+-if BUILD_TREEVIEW_SAMPLE
+-noinst_PROGRAMS += samples/treeview/treeview
+-endif
+-
+-samples_minimal_SOURCES = \
+-    samples/minimal.cpp
+-
+-samples_minimal_LDFLAGS = -no-install
+-
+-samples_treeview_treeview_SOURCES = \
+-    samples/treeview/foldertree.cpp \
+-    samples/treeview/projectlist.cpp \
+-    samples/treeview/treeviewapp.cpp \
+-    samples/treeview/treeviewsample.cpp \
+-    samples/treeview/foldertree.h \
+-    samples/treeview/projectlist.h \
+-    samples/treeview/treeviewapp.h \
+-    samples/treeview/treeviewsample.h
+-
+-samples_treeview_treeview_LDADD = $(WX_LIBS_TREEVIEW_SAMPLE) $(LDADD)
+-
+-samples_treeview_treeview_LDFLAGS = -no-install
