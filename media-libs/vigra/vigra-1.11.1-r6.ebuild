@@ -39,7 +39,7 @@ DEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	openexr? (
 		>=dev-libs/imath-3.1.4-r2:=
-		>=media-libs/openexr-3:=
+		>=media-libs/openexr-3:0=
 	)
 	png? ( media-libs/libpng:0= )
 	python? (
