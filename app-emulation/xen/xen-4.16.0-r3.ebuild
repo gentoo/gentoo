@@ -93,6 +93,8 @@ src_prepare() {
 	# Gentoo's patchset
 	[[ -n ${GENTOO_VER} ]] && eapply "${WORKDIR}"/patches-gentoo
 
+	eapply "${FILESDIR}"/${PN}-4.16-efi.patch
+
 	# Symlinks do not work on fat32 volumes # 829765
 	if ! use boot-symlinks || use efi; then
 		eapply "${FILESDIR}"/${PN}-4.16-no-symlink.patch
