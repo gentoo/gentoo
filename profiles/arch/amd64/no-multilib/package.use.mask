@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Nekun <nekokun@firemail.cc> (2021-04-23)
+# x86 arch only
+dev-lang/fasm libc tools
+
 # Sam James <sam@gentoo.org> (2020-12-27)
 # dev-embedded/libftd2xx unavailable here
 dev-embedded/urjtag ftd2xx
