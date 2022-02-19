@@ -25,7 +25,7 @@ DEPEND="
 	ctags? ( dev-util/ctags )
 	debugger? ( x11-libs/vte:2.91 )
 	enchant? ( app-text/enchant:= )
-	git? ( dev-libs/libgit2:= )
+	git? ( <dev-libs/libgit2-1.4.0:= )
 	gpg? ( app-crypt/gpgme:= )
 	gtkspell? ( app-text/gtkspell:3= )
 	lua? ( ${LUA_DEPS} )
