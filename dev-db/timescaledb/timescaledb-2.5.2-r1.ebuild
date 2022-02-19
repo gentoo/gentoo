@@ -4,6 +4,7 @@
 EAPI=7
 
 POSTGRES_COMPAT=( 12 13 14 )
+POSTGRES_USEDEP="ssl"
 
 inherit postgres-multi cmake
 
@@ -20,8 +21,7 @@ SLOT=0
 
 RESTRICT="test"
 
-DEPEND="${POSTGRES_DEP}
-	dev-libs/openssl:="
+DEPEND="${POSTGRES_DEP}"
 RDEPEND="${DEPEND}"
 
 CMAKE_IN_SOURCE_BUILD=yes
