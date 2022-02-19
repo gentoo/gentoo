@@ -1,0 +1,27 @@
+From 624ef213e50ae4712bfe2a254c5f444caaacfa22 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Mon, 7 Feb 2022 06:58:43 +0100
+Subject: [PATCH] Apply patch for disable sync contact as it don't ported yet.
+
+BUG:449024
+---
+ resources/google-groupware/googleresource.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/resources/google-groupware/googleresource.cpp b/resources/google-groupware/googleresource.cpp
+index 62b08fab0..a0d74e738 100644
+--- a/resources/google-groupware/googleresource.cpp
++++ b/resources/google-groupware/googleresource.cpp
+@@ -104,7 +104,9 @@ GoogleResource::GoogleResource(const QString &id)
+     m_freeBusyHandler = std::make_unique<FreeBusyHandler>(m_iface, m_settings);
+     m_handlers.clear();
+     m_handlers.push_back(GenericHandler::Ptr(new CalendarHandler(m_iface, m_settings)));
++#ifdef DISABLE_UNTIL_LIBKGAPI_PORTED
+     m_handlers.push_back(GenericHandler::Ptr(new ContactHandler(m_iface, m_settings)));
++#endif
+     m_handlers.push_back(GenericHandler::Ptr(new TaskHandler(m_iface, m_settings)));
+ 
+     new SettingsAdaptor(m_settings);
+-- 
+GitLab
+
