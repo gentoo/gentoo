@@ -52,8 +52,8 @@ COMMON_DEPEND="acct-group/squid
 	esi? ( dev-libs/expat dev-libs/libxml2 )
 	gnutls? ( >=net-libs/gnutls-3.1.5:= )
 	logrotate? ( app-admin/logrotate )
-	>=sys-libs/db-4:*
-	dev-libs/libltdl:0"
+	dev-libs/libltdl:0
+	sys-libs/tdb"
 
 DEPEND="${COMMON_DEPEND}
 	${BDEPEND}
