@@ -11,7 +11,7 @@ SRC_URI="https://github.com/JBlond/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 APACHE2_MOD_CONF="10_${PN}"
 APACHE2_MOD_DEFINE="LOG_ROTATE"
