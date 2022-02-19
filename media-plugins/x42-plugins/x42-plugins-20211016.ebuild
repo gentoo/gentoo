@@ -1,7 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Collection of LV2 plugins"
 HOMEPAGE="https://github.com/x42/x42-plugins"
@@ -38,7 +40,7 @@ DEPEND="${RDEPEND}
 	sys-apps/help2man"
 
 src_compile() {
-	emake STRIP="#" FONTFILE="/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf"
+	emake CC="$(tc-getCC)" STRIP="#" FONTFILE="/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf"
 }
 
 src_install() {
