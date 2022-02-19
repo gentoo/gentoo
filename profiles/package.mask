@@ -157,11 +157,6 @@ dev-java/felix-gogo-runtime
 # https://bugs.gentoo.org/831474
 =dev-util/meson-0.61*
 
-# Joonas Niilola <juippis@gentoo.org> (2022-01-22)
-# Served its purpose. Not supported or used by any browser anymore.
-# Bug #831819. Removal in ~30 days.
-net-misc/npapi-sdk
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-22)
 # Vulnerable versions of rust, along with ebuilds that
 # do not build with fixed rust verions
