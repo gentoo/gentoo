@@ -7,19 +7,19 @@ improve runtime memory use, it's unnecessary to use it for anything else.
 
 --- tdesktop-3.5.2-full.orig/Telegram/CMakeLists.txt
 +++ tdesktop-3.5.2-full/Telegram/CMakeLists.txt
-@@ -1335,6 +1335,12 @@
-         endif()
+@@ -1357,6 +1357,12 @@
+             desktop-app::external_kwayland
+         )
      endif()
- else()
++
 +    target_link_libraries(Telegram
 +    PRIVATE
 +        desktop-app::linux_jemalloc_helper
 +        $<TARGET_OBJECTS:desktop-app::linux_jemalloc_helper>
 +    )
-+
-     if (NOT DESKTOP_APP_DISABLE_DBUS_INTEGRATION)
-         target_link_libraries(Telegram
-         PRIVATE
+ endif()
+ 
+ if (build_macstore)
 --- tdesktop-3.5.2-full.orig/cmake/options_linux.cmake
 +++ tdesktop-3.5.2-full/cmake/options_linux.cmake
 @@ -64,8 +64,6 @@

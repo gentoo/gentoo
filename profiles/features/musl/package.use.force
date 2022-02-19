@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
+# Esteve Varela Colominas <esteve.varela@gmail.com> (2022-02-19)
+# The musl allocator works well with telegram
+net-im/telegram-desktop -jemalloc
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
 # Do not force system install for libxcrypt here
 >=sys-libs/libxcrypt-4.4.23-r1 -system -compat
