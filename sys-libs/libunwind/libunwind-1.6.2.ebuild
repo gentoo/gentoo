@@ -1,4 +1,4 @@
-# Copyright 2005-2021 Gentoo Authors
+# Copyright 2005-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0/8" # libunwind.so.8
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv -sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv -sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug debug-frame doc libatomic lzma static-libs test zlib"
 
 RESTRICT="test !test? ( test )" # some tests are broken (toolchain version dependent, rely on external binaries)
