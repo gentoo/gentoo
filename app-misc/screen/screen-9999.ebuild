@@ -32,8 +32,7 @@ BDEPEND="sys-apps/texinfo"
 
 PATCHES=(
 	# Don't use utempter even if it is found on the system.
-	"${FILESDIR}"/${PN}-4.3.0-no-utempter.patch
-	"${FILESDIR}"/${PN}-4.6.2-utmp-exit.patch
+	"${FILESDIR}"/${P}-no-utempter.patch
 )
 
 src_prepare() {
@@ -41,7 +40,9 @@ src_prepare() {
 
 	# sched.h is a system header and causes problems with some C libraries
 	mv sched.h _sched.h || die
-	sed -i '/include/ s:sched.h:_sched.h:' screen.h || die
+	sed -i '/include/ s:sched\.h:_sched.h:' \
+		screen.h winmsg.c window.h sched.c canvas.h || die
+	sed -i 's@[[:space:]]sched\.h@ _sched.h@' Makefile.in || die
 
 	# Fix manpage
 	sed -i \
@@ -76,13 +77,12 @@ src_configure() {
 	use debug && append-cppflags "-DDEBUG"
 
 	local myeconfargs=(
-		--with-socket-dir="${EPREFIX}/tmp/${PN}"
-		--with-sys-screenrc="${EPREFIX}/etc/screenrc"
+		--enable-socket-dir="${EPREFIX}/tmp/${PN}"
+		--with-system_screenrc="${EPREFIX}/etc/screenrc"
 		--with-pty-mode=0620
 		--with-pty-group=5
-		--enable-rxvt_osc
 		--enable-telnet
-		--enable-colors256
+		--enable-utmp
 		$(use_enable pam)
 	)
 	econf "${myeconfargs[@]}"
@@ -90,7 +90,6 @@ src_configure() {
 
 src_compile() {
 	LC_ALL=POSIX emake comm.h term.h
-	emake osdef.h
 
 	emake -C doc screen.info
 	default
@@ -98,7 +97,7 @@ src_compile() {
 
 src_install() {
 	local DOCS=(
-		README ChangeLog INSTALL TODO NEWS* patchlevel.h
+		README ChangeLog INSTALL TODO NEWS*
 		doc/{FAQ,README.DOTSCREEN,fdpat.ps,window_to_display.ps}
 	)
 
