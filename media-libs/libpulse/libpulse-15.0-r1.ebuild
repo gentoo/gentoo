@@ -71,9 +71,11 @@ BDEPEND="
 
 DOCS=( NEWS README )
 
+# patches merged upstream, to be removed with 16.0 bump
 PATCHES=(
 	"${FILESDIR}"/pulseaudio-15.0-xice-xsm-xtst-daemon-only.patch
-	"${FILESDIR}"/${PV}-no-aec.patch
+	"${FILESDIR}"/pulseaudio-15.0-move-systemd-socket-activation-code.patch
+	"${FILESDIR}"/pulseaudio-15.0-daemon-client-split-build.patch
 )
 
 src_prepare() {
@@ -87,6 +89,7 @@ multilib_src_configure() {
 		--localstatedir="${EPREFIX}"/var
 
 		-Ddaemon=false
+		-Dclient=true
 		$(meson_native_use_bool doc doxygen)
 		-Dgcov=false
 		# tests involve random modules, so just do them for the native # TODO: tests should run always
@@ -170,6 +173,15 @@ multilib_src_install() {
 	# The files referenced in the DOCS array do not exist in the multilib source directory,
 	# therefore clear the variable when calling the function that will access it.
 	DOCS= meson_src_install
+
+	# Upstream installs 'pactl' if client is built, with all symlinks except for
+	# 'pulseaudio', 'pacmd' and 'pasuspender' which are installed if server is built.
+	# This trips QA warning, workaround:
+	# - install missing aliases in media-libs/libpulse (client build)
+	# - remove corresponding symlinks in media-sound/pulseaudio-daemonclient (server build)
+	bashcomp_alias pactl pulseaudio
+	bashcomp_alias pactl pacmd
+	bashcomp_alias pactl pasuspender
 
 	if multilib_is_native_abi; then
 		if use doc; then

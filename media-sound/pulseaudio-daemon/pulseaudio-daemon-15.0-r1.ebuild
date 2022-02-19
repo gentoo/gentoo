@@ -148,9 +148,11 @@ DOCS=( NEWS README )
 
 S="${WORKDIR}/${MY_P}"
 
+# patches merged upstream, to be removed with 16.0 bump
 PATCHES=(
 	"${FILESDIR}"/pulseaudio-15.0-xice-xsm-xtst-daemon-only.patch
-	"${FILESDIR}"/${PV}-daemon-only.patch
+	"${FILESDIR}"/pulseaudio-15.0-move-systemd-socket-activation-code.patch
+	"${FILESDIR}"/pulseaudio-15.0-daemon-client-split-build.patch
 )
 
 src_prepare() {
@@ -164,7 +166,7 @@ src_configure() {
 		--localstatedir="${EPREFIX}"/var
 
 		-Ddaemon=true
-		-Ddaemon-only=true
+		-Dclient=false
 		-Ddoxygen=false
 		-Dgcov=false
 		-Dman=true
@@ -222,8 +224,14 @@ src_configure() {
 src_install() {
 	meson_src_install
 
-	# Installed by media-libs/libpulse
+	# Upstream installs 'pactl' if client is built, with all symlinks except for
+	# 'pulseaudio', 'pacmd' and 'pasuspender' which are installed if server is built.
+	# This trips QA warning, workaround:
+	# - install missing aliases in media-libs/libpulse (client build)
+	# - remove corresponding symlinks in media-sound/pulseaudio-daemonclient (server build)
 	rm "${D}/$(get_bashcompdir)"/pulseaudio || die
+	rm "${D}/$(get_bashcompdir)"/pacmd || die
+	rm "${D}/$(get_bashcompdir)"/pasuspender || die
 
 	if use system-wide; then
 		newconfd "${FILESDIR}"/pulseaudio.conf.d pulseaudio
