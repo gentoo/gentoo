@@ -21,12 +21,17 @@ fi
 DESCRIPTION="Vulkan Validation Layers"
 HOMEPAGE="https://github.com/KhronosGroup/Vulkan-ValidationLayers"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-Fix-dependency-detection.patch
+	"${FILESDIR}"/${P}-Dont-use-static-spirv-tools.patch
+)
+
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="wayland X"
 
 BDEPEND=">=dev-util/cmake-3.10.2"
-RDEPEND="~dev-util/spirv-tools-99999999:=[${MULTILIB_USEDEP}]"
+RDEPEND="~dev-util/spirv-tools-${PV}:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	>=dev-cpp/robin-hood-hashing-3.11.5
@@ -51,7 +56,6 @@ multilib_src_configure() {
 		-DBUILD_TESTS=OFF
 		-DGLSLANG_INSTALL_DIR="${ESYSROOT}/usr"
 		-DCMAKE_INSTALL_INCLUDEDIR="${EPREFIX}/usr/include/"
-		-DSPIRV_HEADERS_INSTALL_DIR="${ESYSROOT}/usr/include/spirv"
 	)
 	cmake_src_configure
 }
