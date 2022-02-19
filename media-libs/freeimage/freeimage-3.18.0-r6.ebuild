@@ -54,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.18.0-libjpeg9.patch
 	"${FILESDIR}"/${PN}-3.18.0-CVE-2019-12211-CVE-2019-12213.patch
 	"${FILESDIR}"/${PN}-3.18.0-openexr-3-imath.patch
+	"${FILESDIR}"/${PN}-3.18.0-libraw-0.20.0.patch
 )
 
 src_prepare() {
