@@ -1,0 +1,18 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -126,13 +126,13 @@ SCHEME = scheme/command-line.scm \
+ 	 rx/regress.scm
+ 
+ go: c/scsh-tramp.c
+-	$(CC) -o $@ $(CFLAGS) \
++	$(CC) -o $@ $(CFLAGS) $(CPPLAGS) $(LDFLAGS) \
+ 	-DVM=\"$(SCHEME48VM)\" \
+ 	-DIMAGE=\"scsh.image\" \
+ 	$(srcdir)/c/scsh-tramp.c
+ 
+ scsh: c/scsh-tramp.c
+-	$(CC) -o $@ $(CFLAGS) \
++	$(CC) -o $@ $(CFLAGS) $(CPPLAGS) $(LDFLAGS) \
+ 	-DVM=\"$(SCHEME48VM)\" \
+ 	-DIMAGE=\"$(LIB)/scsh.image\" \
+ 	$(srcdir)/c/scsh-tramp.c
