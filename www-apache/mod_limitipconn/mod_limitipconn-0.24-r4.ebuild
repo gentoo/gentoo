@@ -11,7 +11,7 @@ SRC_URI="https://dominia.org/djao/limit/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="~amd64 ppc ~x86"
+KEYWORDS="amd64 ppc ~x86"
 
 RDEPEND="www-servers/apache[apache2_modules_status]"
 
