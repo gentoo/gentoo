@@ -13,6 +13,7 @@ IUSE=""
 RDEPEND="
 	>=net-wireless/bluez-5[${MULTILIB_USEDEP}]
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/gdbus-codegen
 "

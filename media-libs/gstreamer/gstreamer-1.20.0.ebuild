@@ -23,12 +23,15 @@ RDEPEND="
 	)
 	!<media-libs/gst-plugins-bad-1.13.1:1.0
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.12
 	sys-devel/bison
 	sys-devel/flex
 "
+
+DOCS=( AUTHORS ChangeLog NEWS MAINTAINERS README RELEASE )
 
 multilib_src_configure() {
 	local emesonargs=(
@@ -61,7 +64,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	DOCS="AUTHORS ChangeLog NEWS MAINTAINERS README RELEASE"
 	einstalldocs
 	find "${ED}" -name '*.la' -delete || die
 

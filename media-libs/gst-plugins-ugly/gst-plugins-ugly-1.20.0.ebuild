@@ -23,7 +23,7 @@ BDEPEND="
 	>=dev-util/gtk-doc-am-1.12
 "
 
-DOCS="AUTHORS ChangeLog NEWS README RELEASE"
+DOCS=( AUTHORS ChangeLog NEWS README RELEASE )
 
 multilib_src_install_all() {
 	einstalldocs

@@ -43,6 +43,8 @@ BDEPEND="
 	>=dev-util/gtk-doc-am-1.12
 "
 
+DOCS=( AUTHORS ChangeLog NEWS README RELEASE )
+
 # FIXME: gstharness.c:889:gst_harness_new_with_padnames: assertion failed: (element != NULL)
 RESTRICT="test"
 
@@ -58,6 +60,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	GST_PLUGINS_NOAUTO="shm ipcpipeline librfb hls"
+
 	local emesonargs=(
 		-Dshm=enabled
 		-Dipcpipeline=enabled
@@ -82,7 +85,6 @@ multilib_src_test() {
 }
 
 multilib_src_install_all() {
-	DOCS="AUTHORS ChangeLog NEWS README RELEASE"
 	einstalldocs
 	find "${ED}" -name '*.la' -delete || die
 }

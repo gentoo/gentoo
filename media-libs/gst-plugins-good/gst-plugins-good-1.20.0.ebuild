@@ -19,11 +19,12 @@ RDEPEND="
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	orc? ( >=dev-lang/orc-0.4.17[${MULTILIB_USEDEP}] )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=dev-util/gtk-doc-am-1.12
 "
 
-DOCS="AUTHORS ChangeLog NEWS README RELEASE"
+DOCS=( AUTHORS ChangeLog NEWS README RELEASE )
 
 # Fixes backported to 1.20.0, to be removed in 1.20.1+
 PATCHES=(
@@ -32,6 +33,7 @@ PATCHES=(
 
 multilib_src_configure() {
 	GST_PLUGINS_NOAUTO="bz2"
+
 	local emesonargs=(
 		-Dbz2=enabled
 
