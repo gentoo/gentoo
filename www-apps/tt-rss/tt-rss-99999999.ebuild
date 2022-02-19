@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit git-r3 prefix webapp
+inherit git-r3 webapp
 
 DESCRIPTION="Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX"
 HOMEPAGE="https://tt-rss.org/"
@@ -50,13 +50,9 @@ DEPEND="
 
 need_httpd_cgi # From webapp.eclass
 
-src_configure() {
-	hprefixify config.php-dist
-
-	sed -i -r \
-		-e "/'DB_TYPE'/s:,.*:, '$(usex mysqli mysql pgsql)'); // mysql or pgsql:" \
-		config.php-dist || die
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-no-chmod.patch
+)
 
 src_install() {
 	webapp_src_preinst
@@ -74,10 +70,10 @@ src_install() {
 	done
 
 	if use daemon; then
-		webapp_hook_script "${FILESDIR}"/permissions
+		webapp_hook_script "${FILESDIR}"/permissions-r1
 		webapp_postinst_txt en "${FILESDIR}"/postinstall-en-with-daemon-r1.txt
 
-		newinitd "${FILESDIR}"/ttrssd.initd-r3 ttrssd
+		newinitd "${FILESDIR}"/ttrssd.initd-r4 ttrssd
 		newconfd "${FILESDIR}"/ttrssd.confd-r2 ttrssd
 
 		insinto /etc/logrotate.d
@@ -92,8 +88,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "You need to merge config.php-dist into config.php manually when upgrading."
-
 	if use vhosts && [[ -n ${REPLACING_VERSIONS} ]]; then
 		elog
 		elog "The live ebuild does not automatically upgrade your installations so"

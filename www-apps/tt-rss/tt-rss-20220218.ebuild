@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit prefix webapp
+inherit webapp
 
 DESCRIPTION="Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX"
 HOMEPAGE="https://tt-rss.org/"
@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~arm ~mips ~x86"
 IUSE="+acl daemon gd +mysqli postgres"
 REQUIRED_USE="|| ( mysqli postgres )"
 
-PHP_SLOTS="7.4 7.3"
+PHP_SLOTS="8.0 7.4 7.3"
 PHP_USE="gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml"
 
 php_rdepend() {
@@ -52,14 +52,9 @@ need_httpd_cgi # From webapp.eclass
 
 S="${WORKDIR}/${PN}"
 
-src_configure() {
-	hprefixify config.php-dist
-
-	sed -i -r \
-		-e "/'DB_TYPE'/s:,.*:, '$(usex mysqli mysql pgsql)'); // mysql or pgsql:" \
-		-e "/'CHECK_FOR_UPDATES'/s/true/false/" \
-		config.php-dist || die
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-no-chmod.patch
+)
 
 src_install() {
 	webapp_src_preinst
@@ -77,10 +72,10 @@ src_install() {
 	done
 
 	if use daemon; then
-		webapp_hook_script "${FILESDIR}"/permissions
+		webapp_hook_script "${FILESDIR}"/permissions-r1
 		webapp_postinst_txt en "${FILESDIR}"/postinstall-en-with-daemon-r1.txt
 
-		newinitd "${FILESDIR}"/ttrssd.initd-r3 ttrssd
+		newinitd "${FILESDIR}"/ttrssd.initd-r4 ttrssd
 		newconfd "${FILESDIR}"/ttrssd.confd-r2 ttrssd
 
 		insinto /etc/logrotate.d
