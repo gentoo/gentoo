@@ -17,7 +17,9 @@ src_prepare() {
 
 	sed -i -e '/^LDFLAGS/{s:-s::g; s:= :+= :g}' \
 		-e '/^CFLAGS/{s: -Os::g; s:= :+= :g}' \
-		-e 's|share/doc|share|' config.mk || die
+		-e 's|doc|doc/${PF}|' config.mk || die
+
+    sed -i -e 's|(DOCPREFIX)/ii|(DOCPREFIX)|' Makefile || die
 }
 
 src_compile() {
@@ -29,6 +31,4 @@ src_install() {
 		DESTDIR="${D}" \
 		PREFIX="${EPREFIX}"/usr \
 		install
-
-	dodoc CHANGES README FAQ
 }
