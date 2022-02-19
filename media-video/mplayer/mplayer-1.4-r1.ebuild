@@ -39,6 +39,7 @@ else
 	RELEASE_URI="mirror://gentoo/${P}.tar.xz"
 fi
 SRC_URI="${RELEASE_URI}
+	https://dev.gentoo.org/~aballier/distfiles/${P}-ffmpeg5.patch.bz2
 	!truetype? ( ${FONT_URI} )"
 
 DESCRIPTION="Media Player for Linux"
@@ -229,9 +230,11 @@ src_prepare() {
 		subversion_wc_info
 		printf "${ESVN_WC_REVISION}" > $svf
 	else
-		eapply "${FILESDIR}"/${PN}-1.3-CVE-2016-4352.patch
+		eapply "${FILESDIR}"/${PN}-1.3-CVE-2016-4352.patch \
+				"${FILESDIR}"/ffmpeg44.patch
+		has_version '>=media-video/ffmpeg-5' && eapply \
+				"${WORKDIR}"/${P}-ffmpeg5.patch
 	fi
-	eapply "${FILESDIR}"/ffmpeg44.patch
 	if [ ! -f VERSION ] ; then
 		[ -f "$svf" ] || die "Missing ${svf}. Did you generate your snapshot with prepare_mplayer.sh?"
 		local sv=$(<$svf)
