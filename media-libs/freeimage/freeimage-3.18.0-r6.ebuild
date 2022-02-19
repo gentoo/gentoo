@@ -32,7 +32,7 @@ RDEPEND="
 	raw? ( media-libs/libraw:= )
 	tiff? (
 		>=dev-libs/imath-3.1.4-r2:=
-		>=media-libs/openexr-3:=
+		>=media-libs/openexr-3:0=
 		media-libs/tiff:0
 	)
 	webp? ( media-libs/libwebp:= )"
