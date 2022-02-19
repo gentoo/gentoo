@@ -91,7 +91,7 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
 
-DOCS="AUTHORS NEWS README RELEASE"
+DOCS=( AUTHORS NEWS README RELEASE )
 
 # Fixes backported to 1.20.0, to be removed in 1.20.1
 PATCHES=(
@@ -102,6 +102,7 @@ multilib_src_configure() {
 
 	# opus: split to media-plugins/gst-plugins-opus
 	GST_PLUGINS_NOAUTO="alsa ogg pango theora vorbis x11 xshm xvideo"
+
 	local emesonargs=(
 		-Dtools=enabled
 

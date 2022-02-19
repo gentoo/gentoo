@@ -21,7 +21,8 @@ RDEPEND="
 		dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 	upnp? ( >=net-libs/gupnp-igd-0.2.4:=[${MULTILIB_USEDEP}] )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.10
 	virtual/pkgconfig

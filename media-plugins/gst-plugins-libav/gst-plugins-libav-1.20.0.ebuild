@@ -25,6 +25,7 @@ RDEPEND="
 	>=media-libs/gst-plugins-base-${MY_PV}:1.0[${MULTILIB_USEDEP}]
 	>=media-video/ffmpeg-4:0=[${MULTILIB_USEDEP}]
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=dev-util/gtk-doc-am-1.12
 "
