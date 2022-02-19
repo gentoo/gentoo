@@ -17,6 +17,7 @@ RDEPEND="sci-libs/htslib:="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${PN}-2.7.10a-fix-build-system.patch )
 DOCS=( README.md CHANGES.md RELEASEnotes.md doc/STARmanual.pdf )
 
 pkg_pretend() {
@@ -25,6 +26,13 @@ pkg_pretend() {
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+}
+
+src_prepare() {
+	default
+
+	# remove bundled htslib
+	rm -r source/htslib || die
 }
 
 src_configure() {
