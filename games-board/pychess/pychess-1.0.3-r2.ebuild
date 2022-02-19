@@ -24,7 +24,7 @@ RDEPEND="
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pycairo[${PYTHON_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP},cairo]
 		dev-python/sqlalchemy[${PYTHON_USEDEP},sqlite]
 		dev-python/websockets[${PYTHON_USEDEP}]
 		gstreamer? ( dev-python/gst-python:1.0[${PYTHON_USEDEP}] )')
