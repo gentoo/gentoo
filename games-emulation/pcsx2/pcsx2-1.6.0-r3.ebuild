@@ -46,6 +46,7 @@ FILECAPS=(
 
 PATCHES=(
 	"${FILESDIR}/${P}-disable-setcap.patch"
+	"${FILESDIR}/${P}-wx-config.patch"
 )
 
 pkg_setup() {
@@ -87,6 +88,9 @@ src_configure() {
 		# wxGTK must be built against same sdl version
 		-DSDL2_API=TRUE
 		-DUSE_VTUNE=FALSE
+
+		# mimic old toolchain file behavior (bug #833100 comment #20)
+		-DCMAKE_SYSTEM_IGNORE_PATH="${ESYSROOT}"/usr/lib64
 	)
 
 	setup-wxwidgets
