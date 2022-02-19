@@ -12,7 +12,7 @@ DESCRIPTION="A iterations per second enhancement to Benchmark"
 HOMEPAGE="https://github.com/evanphx/benchmark-ips"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~sparc ~x86"
 SLOT="0"
 IUSE=""
 
