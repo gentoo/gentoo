@@ -29,7 +29,7 @@ RDEPEND="
 	wayland? (
 		>=dev-libs/wayland-1.4.0[${MULTILIB_USEDEP}]
 		>=x11-libs/libdrm-2.4.55[${MULTILIB_USEDEP}]
-		>=dev-libs/wayland-protocols-1.4
+		>=dev-libs/wayland-protocols-1.15
 	)
 
 	orc? ( >=dev-lang/orc-0.4.17[${MULTILIB_USEDEP}] )

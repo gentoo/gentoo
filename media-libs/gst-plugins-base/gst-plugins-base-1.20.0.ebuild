@@ -64,7 +64,6 @@ GL_DEPS="
 
 RDEPEND="
 	app-text/iso-codes
-	>=dev-libs/glib-2.40.0:2[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-1.31.1:= )

@@ -15,6 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc 
 IUSE="+caps +introspection +orc unwind"
 
 RDEPEND="
+	>=dev-libs/glib-2.56.0:2[${MULTILIB_USEDEP}]
 	caps? ( sys-libs/libcap[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-1.31.1:= )
 	unwind? (
