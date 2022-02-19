@@ -9,7 +9,7 @@ SRC_URI="https://oss.oetiker.ch/mrtg/pub/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 sparc x86"
 IUSE="selinux"
 
 DEPEND="
