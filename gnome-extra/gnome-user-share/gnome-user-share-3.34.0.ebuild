@@ -33,6 +33,7 @@ PATCHES=(
 	# that is problematic for us (bug #551012)
 	# https://bugzilla.gnome.org/show_bug.cgi?id=750525#c2
 	"${FILESDIR}"/${PN}-3.18.1-no-prefork.patch
+	"${FILESDIR}"/fix-build-with-meson-0.61.patch
 )
 
 src_configure() {
