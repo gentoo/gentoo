@@ -43,6 +43,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	test? (
+		$(python_gen_any_dep 'dev-python/pygobject[${PYTHON_USEDEP}]')
 		$(python_gen_any_dep 'dev-python/tappy[${PYTHON_USEDEP}]')
 	)
 	${PYTHON_DEPS}
@@ -52,6 +53,7 @@ PDEPEND="miners? ( >=app-misc/tracker-miners-${PV_SERIES} )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.1-Fix-asciidoc-manpage.xsl-location.patch
 	"${FILESDIR}"/${PN}-3.2.1-Add-config-options-for-libsoup.patch
+	"${FILESDIR}"/${PN}-3.2.1-build-Add-an-option-to-control-building-tests.patch
 )
 
 function inotify_enabled() {
@@ -94,6 +96,7 @@ src_configure() {
 		-Dunicode_support=icu
 		-Dbash_completion_dir="$(get_bashcompdir)"
 		-Dsystemd_user_services_dir="$(systemd_get_userunitdir)"
+		$(meson_use test tests)
 		-Dintrospection=enabled
 		-Dlibsoup2=enabled
 		-Dlibsoup3=disabled
