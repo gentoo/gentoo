@@ -5,8 +5,6 @@ Requires=network-online.target lxcfs.service lxd.socket
 Documentation=man:lxd(1)
 
 [Service]
-Group=lxd
-User=root
 EnvironmentFile=-/etc/environment
 ExecStart=/usr/sbin/lxd --group lxd --syslog
 ExecStartPost=/usr/sbin/lxd waitready --timeout=600

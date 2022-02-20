@@ -99,7 +99,7 @@ src_prepare() {
 		lxd/apparmor/instance_qemu.go \
 		lxd/instance/drivers/driver_qemu.go || die "Failed to fix hardcoded ovmf paths."
 
-	cp "${FILESDIR}"/lxd-4.0.9.service "${T}"/lxd.service || die
+	cp "${FILESDIR}"/lxd-4.0.9-r1.service "${T}"/lxd.service || die
 	if use apparmor; then
 		sed -i \
 			'/^EnvironmentFile=.*/a ExecStartPre=\/usr\/libexec\/lxc\/lxc-apparmor-load' \
