@@ -6,7 +6,6 @@
 		<name>William Hubbs</name>
 	</maintainer>
 		<use>
-			<flag name="nvidia">build with nvidia integration</flag>
 			<flag name="ui">do not embed the ui in the binary</flag>
 	</use>
 </pkgmetadata>
