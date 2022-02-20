@@ -55,9 +55,9 @@ RDEPEND="
 	>=media-libs/libheif-1.7.0:=
 	media-libs/libpng:0=
 	>=media-libs/libwebp-0.2.1:=
-	dev-libs/imath:=
+	>=dev-libs/imath-3.1.2-r4:=
 	>=media-libs/opencolorio-2.1.1-r4:=
-	media-libs/openexr:=
+	>=media-libs/openexr-3:0=
 	media-libs/tiff:0=
 	sys-libs/zlib:=
 	virtual/jpeg:0
