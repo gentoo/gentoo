@@ -72,7 +72,7 @@ src_install() {
 
 	local x
 	for x in 16 32 48 64 256 512; do
-		doicon -s ${x} data/icons/hicolor/${x}*/*
+		doicon -s ${x} usr/share/icons/hicolor/${x}*/*
 	done
 }
 
