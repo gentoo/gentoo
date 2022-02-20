@@ -13,7 +13,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic ninja-utils pax-utils python-
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="2"
+PATCHSET="3"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz"
@@ -120,7 +120,6 @@ DEPEND="${COMMON_DEPEND}
 		!gtk4? ( x11-libs/gtk+:3[X,wayland?] )
 	)
 "
-# dev-vcs/git - https://bugs.gentoo.org/593476
 BDEPEND="
 	${COMMON_SNAPSHOT_DEPEND}
 	${PYTHON_DEPS}
@@ -131,7 +130,6 @@ BDEPEND="
 	libcxx? ( >=sys-devel/clang-12 )
 	dev-lang/perl
 	>=dev-util/gn-0.1807
-	dev-vcs/git
 	>=dev-util/gperf-3.0.3
 	>=dev-util/ninja-1.7.2
 	>=net-libs/nodejs-7.6.0[inspector]
@@ -248,6 +246,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-97-arm-tflite-cast.patch"
 		"${FILESDIR}/chromium-98-EnumTable-crash.patch"
 		"${FILESDIR}/chromium-98-gtk4-build.patch"
+		"${FILESDIR}/chromium-100-FindByDottedPath-nullptr.patch"
 		"${FILESDIR}/chromium-use-oauth2-client-switches-as-default.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
 		"${FILESDIR}/chromium-cross-compile.patch"
@@ -1000,7 +999,7 @@ pkg_postinst() {
 		if use screencast; then
 			elog "Screencast is disabled by default at runtime. Either enable it"
 			elog "by navigating to chrome://flags/#enable-webrtc-pipewire-capturer"
-			elog "inside Chromium or add --enable-webrtc-pipewire-capturer"
+			elog "inside Chromium or add --enable-features=WebRTCPipeWireCapturer"
 			elog "to CHROMIUM_FLAGS in /etc/chromium/default."
 		fi
 		if use gtk4; then
