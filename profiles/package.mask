@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Maciej Barć <xgqt@gentoo.org> (2022-02-20)
+# Masked for testing, builds and passes tests but randomly segfaults,
+# meaningless backtrace, debugging (flags, symbols) do not help
+>app-shells/scsh-0.6.9
+
 # Zoltan Puskas <zoltan@sinustrom.info> (2022-02-18)
 # Multiple vulnerabilities (CVE-2022-{23803,23804,23946,23947})
 # 5.X series is masked to avoid accidental use, but it's kept for
