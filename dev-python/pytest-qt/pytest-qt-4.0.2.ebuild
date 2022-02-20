@@ -49,6 +49,10 @@ src_test() {
 }
 
 python_test() {
+	# warnings from other plugins cause the test output matchers to fail
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	local -x PYTEST_PLUGINS=pytestqt.plugin
+
 	distutils_install_for_testing
 	PYTEST_QT_API="pyqt5" epytest || die
 	if [[ "${EPYTHON}" == "python3.10" ]]; then
