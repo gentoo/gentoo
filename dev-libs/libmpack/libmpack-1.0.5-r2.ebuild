@@ -26,7 +26,7 @@ src_prepare() {
 
 src_compile() {
 	local myemakeargs=(
-		"PREFIX=/usr"
+		"PREFIX=${EPREFIX}/usr"
 		"CC=$(tc-getCC)"
 		"config=release"
 		"LIBDIR=/usr/$(get_libdir)"
@@ -41,7 +41,7 @@ src_test() {
 
 src_install() {
 	local myemakeargs=(
-		"PREFIX=/usr"
+		"PREFIX=${EPREFIX}/usr"
 		"DESTDIR=${ED}"
 		"LIBDIR=/usr/$(get_libdir)"
 		"XLDFLAGS=-shared"
