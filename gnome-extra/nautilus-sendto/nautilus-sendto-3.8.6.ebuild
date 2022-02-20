@@ -19,6 +19,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/fix-build-with-meson-0.61.patch
+)
+
 pkg_postinst() {
 	if ! has_version "gnome-base/nautilus[sendto]"; then
 		einfo "Note that ${CATEGORY}/${PN} is meant to be used as a helper by gnome-base/nautilus[sendto]"
