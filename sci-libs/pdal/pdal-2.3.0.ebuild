@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,8 +30,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	${FILESDIR}/${P}-fix_cmake_install_location.patch
-	${FILESDIR}/${P}-upgrade_cmake_min.patch
+	"${FILESDIR}"/${P}-fix_cmake_install_location.patch
+	"${FILESDIR}"/${P}-upgrade_cmake_min.patch
 )
 
 S="${WORKDIR}/PDAL-${PV}-src"
