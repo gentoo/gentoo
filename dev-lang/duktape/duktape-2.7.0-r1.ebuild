@@ -22,10 +22,6 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# Edit pkgconfig
-	sed "s#VERSION#${PV}#" "${FILESDIR}/${PN}.pc" > "${S}/${PN}.pc" || die
-	sed -i "s#LIBDIR#$(get_libdir)#" "${S}/${PN}.pc" || die
-
 	mv Makefile.sharedlibrary Makefile || die "failed to rename makefile"
 }
 
@@ -37,7 +33,4 @@ src_install() {
 	dodir /usr/$(get_libdir)
 	dodir /usr/include
 	emake INSTALL_PREFIX="${ED}"/usr LIBDIR="/$(get_libdir)" install
-
-	insinto /usr/$(get_libdir)/pkgconfig/
-	doins ${S}/${PN}.pc
 }
