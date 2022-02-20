@@ -86,6 +86,10 @@ PATCHES=(
 	# selection to off, just in case.
 	"${FILESDIR}"/${PN}-1.18-analytics-off.patch
 
+	# Only search for PySide2 if pyside2 USE flag is set.
+	# Bug #833627
+	"${FILESDIR}"/${PN}-1.18-conditional-pyside.patch
+
 	# Pass CXXFLAGS and LDFLAGS through to qmake when qrenderdoc is
 	# built.
 	"${FILESDIR}"/${PN}-1.18-system-flags.patch
@@ -153,10 +157,11 @@ src_configure() {
 
 	use qt5 && mycmakeargs+=(
 		-DPython3_EXECUTABLE="${PYTHON}"
-		-DPYTHON_CONFIG_SUFFIX=-${EPYTHON}
 		-DRENDERDOC_SWIG_PACKAGE="${DISTDIR}"/${MY_SWIG}.tar.gz
 		-DQRENDERDOC_ENABLE_PYSIDE2=$(usex pyside2)
 	)
+
+	use pyside2 && mycmakeargs+=( -DPYTHON_CONFIG_SUFFIX=-${EPYTHON} )
 
 	cmake_src_configure
 }
