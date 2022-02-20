@@ -34,6 +34,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/gnome-todo-eds-libecal-2.0.patch
+	"${FILESDIR}"/fix-build-with-meson-0.61.patch
 )
 
 src_configure() {
