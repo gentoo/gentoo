@@ -17,7 +17,6 @@ IUSE="gui +nftables +iptables"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	!!net-firewall/gshield
 	iptables? (
 		net-firewall/iptables[ipv6(+)]
 		net-firewall/ebtables
