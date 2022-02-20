@@ -1,0 +1,42 @@
+Index: src/CMakeLists.txt
+===================================================================
+--- src.orig/CMakeLists.txt
++++ src/CMakeLists.txt
+@@ -286,35 +286,17 @@ if( NOT ${BUILD_SHARED_LIBS} )
+   install ( TARGETS ${CORE_RUNTIME_NAME} EXPORT ${CORE_RUNTIME_NAME}Targets )
+ endif()
+ 
+-## Create symlinks for legacy packaging and install
+-add_custom_target ( hsa_include_link ALL WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} COMMAND ${CMAKE_COMMAND} -E create_symlink ../../include/hsa hsa_include_link )
+-if ( ${BUILD_SHARED_LIBS} )
+-    add_custom_target ( hsa_lib_link ALL WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} COMMAND ${CMAKE_COMMAND} -E create_symlink ../../lib/${CORE_RUNTIME_LIBRARY}.so ${CORE_RUNTIME_LIBRARY}-link.so )
+-    add_custom_target ( hsa_lib_link2 ALL WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} COMMAND ${CMAKE_COMMAND} -E create_symlink ../../lib/${CORE_RUNTIME_LIBRARY}.so.${VERSION_MAJOR} ${CORE_RUNTIME_LIBRARY}-link.so.${VERSION_MAJOR} )
+-endif()
+-
+ ## Set install information
+ # Installs binaries and exports the library usage data to ${HSAKMT_TARGET}Targets
+ # TODO: Fix me for flat directory layout.  Should be ${CMAKE_INSTALL_LIBDIR}
+-install ( TARGETS ${CORE_RUNTIME_TARGET} EXPORT ${CORE_RUNTIME_NAME}Targets
+-  ARCHIVE DESTINATION lib COMPONENT binary
+-  LIBRARY DESTINATION lib COMPONENT binary )
++install ( TARGETS ${CORE_RUNTIME_TARGET} EXPORT ${CORE_RUNTIME_NAME}Targets LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} )
+ 
+ # Install license
+ install ( FILES ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.md DESTINATION ${CMAKE_INSTALL_DOCDIR} COMPONENT binary )
+ 
+ # Install public headers
+ # TODO: Fix me for flat directory layout.  Should be ${CMAKE_INSTALL_INCLUDEDIR}
+-install ( DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/inc/ DESTINATION include/hsa COMPONENT dev )
+-
+-# Legacy symlink - not packaged (CPack is bugged until ~3.18, see https://gitlab.kitware.com/cmake/cmake/-/merge_requests/4637)
+-install ( FILES ${CMAKE_CURRENT_BINARY_DIR}/hsa_include_link DESTINATION hsa/include PERMISSIONS OWNER_WRITE OWNER_READ RENAME hsa )
+-
+-# Legacy symlinks.
+-if ( ${BUILD_SHARED_LIBS} )
+-    install ( FILES ${CMAKE_CURRENT_BINARY_DIR}/${CORE_RUNTIME_LIBRARY}-link.so DESTINATION hsa/lib PERMISSIONS OWNER_WRITE OWNER_READ RENAME ${CORE_RUNTIME_LIBRARY}.so COMPONENT binary)
+-    install ( FILES ${CMAKE_CURRENT_BINARY_DIR}/${CORE_RUNTIME_LIBRARY}-link.so.${VERSION_MAJOR} DESTINATION hsa/lib PERMISSIONS OWNER_WRITE OWNER_READ RENAME ${CORE_RUNTIME_LIBRARY}.so.${VERSION_MAJOR} COMPONENT binary)
+-endif ()
++install ( DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/inc/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/hsa )
+ 
+ ## Configure and install package config file
+ # Record our usage data for clients find_package calls.
