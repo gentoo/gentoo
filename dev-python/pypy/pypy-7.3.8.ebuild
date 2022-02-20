@@ -41,9 +41,6 @@ src_prepare() {
 		"${WORKDIR}/${PATCHSET}"
 	)
 	default
-
-	sed -e "s^@EPREFIX@^${EPREFIX}^" \
-		-i lib-python/2.7/distutils/command/install.py || die
 }
 
 src_compile() {
