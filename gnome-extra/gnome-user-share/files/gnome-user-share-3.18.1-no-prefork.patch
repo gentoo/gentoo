@@ -1,5 +1,6 @@
---- gnome-user-share-3.14.2/data/dav_user_2.4.conf.orig 2015-06-03 20:21:27.512774376 -0600
-+++ gnome-user-share-3.14.2/data/dav_user_2.4.conf      2015-06-03 20:21:33.588774303 -0600
+https://bugs.gentoo.org/551012
+--- a/data/dav_user_2.4.conf
++++ b/data/dav_user_2.4.conf
 @@ -9,7 +9,6 @@
  LimitXMLRequestBody 100000
  
