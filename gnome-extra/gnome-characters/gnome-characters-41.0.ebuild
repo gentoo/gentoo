@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,6 +30,10 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/fix-build-with-meson-0.61.patch
+)
 
 pkg_postinst() {
 	xdg_pkg_postinst
