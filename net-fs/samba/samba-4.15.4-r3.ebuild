@@ -24,7 +24,7 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="acl addc ads ceph client cluster cpu_flags_x86_aes cups debug fam
 glusterfs gpg iprint json ldap pam profiling-data python quota +regedit selinux
-snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test winbind
+snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test unwind winbind
 zeroconf"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -87,7 +87,7 @@ COMMON_DEPEND="
 			net-dns/bind-tools[gssapi]
 		)
 	")
-	!alpha? ( !sparc? ( sys-libs/libunwind:= ) )
+	!alpha? ( !sparc? ( unwind? ( sys-libs/libunwind:= ) ) )
 	acl? ( virtual/acl )
 	ceph? ( sys-cluster/ceph )
 	cluster? ( net-libs/rpcsvc-proto )
