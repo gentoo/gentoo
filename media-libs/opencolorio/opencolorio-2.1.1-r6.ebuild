@@ -32,7 +32,7 @@ RDEPEND="
 	dev-libs/tinyxml
 	opengl? (
 		media-libs/lcms:2
-		>=media-libs/openimageio-2.1.1-r4:=
+		>=media-libs/openimageio-2.3.12.0-r3:=
 		media-libs/glew:=
 		media-libs/freeglut
 		virtual/opengl
@@ -41,7 +41,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>=dev-util/cmake-3.16.2-r1
 	virtual/pkgconfig
 	doc? (
 		$(python_gen_cond_dep '
