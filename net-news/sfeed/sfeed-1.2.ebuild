@@ -25,16 +25,16 @@ RDEPEND="${DEPEND}
 	x11-misc/xdg-utils"
 BDEPEND=""
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.2-ldflags.patch"
+)
+
 src_compile() {
-	if use ncurses; then
-		emake \
-			CC=$(tc-getCC) \
-			LDFLAGS="$LDFLAGS -lcurses -ltinfo"
-	else
-		emake \
-			CC=$(tc-getCC) \
-			SFEED_CURSES=""
-	fi
+	emake \
+		CC=$(tc-getCC) \
+		RANLIB=$(tc-getRANLIB) \
+		AR=$(tc-getAR) \
+		SFEED_CURSES=$(usex ncurses "sfeed_curses" "")
 }
 
 src_install() {
