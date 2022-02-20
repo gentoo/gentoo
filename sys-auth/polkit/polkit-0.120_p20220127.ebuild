@@ -17,7 +17,7 @@ fi
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86"
 IUSE="+duktape examples gtk +introspection kde pam selinux systemd test"
 #RESTRICT="!test? ( test )"
 # Tests currently don't work with meson. See
