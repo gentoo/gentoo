@@ -554,11 +554,6 @@ media-plugins/kodi-game-libretro-dosbox
 # bug #705554, bug #689408.
 >=dev-scheme/guile-3.0.4
 
-# Ulrich Müller <ulm@gentoo.org> (2020-10-04)
-# Version 1.11 introduced different startup conventions for the server
-# which breaks the OpenRC init script. Bug #746227.
->=net-misc/tigervnc-1.11.0
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
 # Mismatched version (bug #695022). Masked to force upgrade to 2.0.4_pre20200306162733.
 # (Mask should remain after ebuilds are deleted, until 2021-03-01 or
