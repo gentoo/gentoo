@@ -28,6 +28,9 @@ DEPEND="
 		dev-java/junit:4
 	)"
 
+BDEPEND="
+	app-arch/unzip"
+
 S="${WORKDIR}/${MY_P}/${PN}"
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
