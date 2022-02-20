@@ -9,7 +9,7 @@ MAVEN_ID="commons-httpclient:commons-httpclient:3.1"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="The Jakarta Commons HttpClient library"
-HOMEPAGE="https://hc.apache.org/"
+HOMEPAGE="https://hc.apache.org/httpclient-legacy/"
 SRC_URI="mirror://apache/httpcomponents/${PN}/source/${P}-src.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="3"
