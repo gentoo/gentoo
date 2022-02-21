@@ -144,6 +144,7 @@ BDEPEND="${PYTHON_DEPS}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
+	"${FILESDIR}/optional-unwind.patch"
 
 	# https://bugs.gentoo.org/828063
 	"${FILESDIR}/${P}-winbindd_regression_fix.patch"
@@ -234,6 +235,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with systemd)
 		--systemd-install-services
 		--with-systemddir="$(systemd_get_systemunitdir)"
+		$(multilib_native_use_with unwind)
 		$(multilib_native_use_with winbind)
 		$(multilib_native_usex python '' '--disable-python')
 		$(multilib_native_use_enable zeroconf avahi)

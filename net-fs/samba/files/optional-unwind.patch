@@ -1,0 +1,41 @@
+--- samba/lib/util/wscript_configure	2021-08-09 15:38:36.191379000 +0200
++++ samba/lib/util/wscript_configure	2022-02-21 19:46:20.807244847 +0100
+@@ -11,13 +11,14 @@
+ conf.CHECK_HEADERS('execinfo.h')
+ 
+ conf.SET_TARGET_TYPE('LIBUNWIND', 'EMPTY')
+-if conf.check_cfg(package='libunwind-generic',
+-                  args='--cflags --libs',
+-                  msg='Checking for libunwind',
+-                  uselib_store='LIBUNWIND',
+-                  mandatory=False):
+-    if conf.CHECK_HEADERS('libunwind.h'):
+-        conf.SET_TARGET_TYPE('LIBUNWIND', 'SYSLIB')
++if Options.options.enable_unwind != False:
++    if conf.check_cfg(package='libunwind-generic',
++                      args='--cflags --libs',
++                      msg='Checking for libunwind',
++                      uselib_store='LIBUNWIND',
++                      mandatory=False):
++        if conf.CHECK_HEADERS('libunwind.h'):
++            conf.SET_TARGET_TYPE('LIBUNWIND', 'SYSLIB')
+ 
+ conf.CHECK_STRUCTURE_MEMBER('struct statvfs', 'f_frsize', define='HAVE_FRSIZE', headers='sys/statvfs.h')
+ 
+--- samba/lib/util/wscript	2021-08-09 15:38:36.191379000 +0200
++++ samba/lib/util/wscript	2022-02-21 20:24:01.279613074 +0100
+@@ -10,6 +10,14 @@
+                    help=("Disable systemd integration"),
+                    action='store_false', dest='enable_systemd')
+ 
++    opt.add_option('--with-unwind',
++                   help=("Enable libunwind usage for backtraces"),
++                   action='store_true', dest='enable_unwind')
++
++    opt.add_option('--without-unwind',
++                   help=("Disable libunwind usage for backtraces"),
++                   action='store_false', dest='enable_unwind')
++
+     opt.add_option('--with-lttng',
+                    help=("Enable lttng integration"),
+                    action='store_true', dest='enable_lttng')
