@@ -99,6 +99,10 @@ PATCHES=(
 
 	"${FILESDIR}"/${PN}-1.18-system-glslang.patch
 	"${FILESDIR}"/${PN}-1.18-system-compress.patch
+
+	# Check physical device API version and supported extensions.  Fixes
+	# segfault on some GPU/driver combinations.  Will be in release 1.19
+	"${FILESDIR}"/${PN}-1.18-check-api-ver.patch
 )
 
 DOCS=( util/LINUX_DIST_README )
