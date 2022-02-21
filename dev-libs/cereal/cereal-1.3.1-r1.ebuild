@@ -38,7 +38,6 @@ src_configure() {
 		# Avoid Boost dependency
 		-DSKIP_PERFORMANCE_COMPARISON=ON
 
-		-DSKIP_PORTABILITY_TEST=ON
 		-DWITH_WERROR=OFF
 	)
 
