@@ -144,9 +144,19 @@ BUILD_OBJ_DIR="${S}/seamonk"
 
 pkg_setup() {
 	if [[ ${PV} == *_beta* ]] || [[ ${PV} == *_pre* ]] ; then
+		ewarn
 		ewarn "You're using an unofficial release of ${PN}. Don't file any bug in"
 		ewarn "Gentoo's Bugtracker against this package in case it breaks for you."
 		ewarn "Those belong to upstream: https://bugzilla.mozilla.org"
+	fi
+
+	if use crypt ; then
+		ewarn
+		ewarn "Enigmail has dropped support for Seamonkey in early 2019. If you are still"
+		ewarn "using it, consider yourself lucky, but also consider to start migrating away"
+		ewarn "from it. The crypt USE flag and its x11-plugins/enigmail dependency will be"
+		ewarn "removed in the near future."
+		ewarn
 	fi
 
 	moz_pkgsetup
