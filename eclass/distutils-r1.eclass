@@ -82,11 +82,16 @@ esac
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Enable experimental PEP 517 mode for the specified build system.
-# In this mode, the complete build and install is done
-# in python_compile(), venv-style install tree is provided
-# to python_test() and python_install() just merges the temporary
-# install tree into real fs.
+# Enable the PEP 517 mode for the specified build system.  In this mode,
+# the complete build and install is done in python_compile(),
+# a venv-style install tree is provided to python_test(),
+# and python_install() just merges the temporary install tree
+# into the real fs.
+#
+# This mode is recommended for Python packages.  However, some packages
+# using custom hacks on top of distutils/setuptools may not install
+# correctly in this mode.  Please verify the list of installed files
+# when using it.
 #
 # The variable specifies the build system used.  Currently,
 # the following values are supported:
