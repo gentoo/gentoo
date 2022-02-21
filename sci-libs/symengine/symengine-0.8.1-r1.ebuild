@@ -1,9 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-CMAKE_BUILD_TYPE=Release
 inherit cmake flag-o-matic toolchain-funcs
 
 DESCRIPTION="Fast symbolic manipulation library, written in C++"
@@ -11,8 +10,8 @@ HOMEPAGE="https://github.com/sympy/symengine"
 SRC_URI="https://github.com/sympy/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0/0.4"
-KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
+SLOT="0/$(ver_cut 1-2)"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE="arb benchmarks boost debug doc ecm flint llvm mpc mpfr openmp test tcmalloc threads"
 RESTRICT="!test? ( test )"
 
@@ -29,6 +28,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.7.0-cmake-build-type.patch"
+)
 
 pkg_pretend() {
 	use openmp && [[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
@@ -47,6 +50,7 @@ src_prepare() {
 src_configure() {
 	# not in portage yet: piranha
 	local int_class
+
 	if use arb || use flint; then
 		int_class=flint
 	elif use mpfr; then
@@ -56,6 +60,7 @@ src_configure() {
 	else
 		int_class=gmp
 	fi
+
 	local mycmakeargs=(
 		-DINTEGER_CLASS="${int_class}"
 		-DBUILD_BENCHMARKS="$(usex benchmarks)"
