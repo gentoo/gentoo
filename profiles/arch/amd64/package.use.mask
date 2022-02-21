@@ -47,10 +47,6 @@ dev-util/diffoscope -haskell
 x11-base/xwayland -video_cards_nvidia
 x11-wm/mutter -video_cards_nvidia
 
-# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
-# Unmask TPM on supported archs.
-sys-apps/systemd -tpm
-
 # Michael Orlitzky <mjo@gentoo.org> (2021-03-27)
 # Unmask the use of 64-bit dev-lisp/clozurecl on 64-bit arches.
 # Only maxima makes a distinction between the 32-bit and 64-bit

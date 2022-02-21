@@ -64,10 +64,6 @@ media-sound/easyeffects zamaudio
 # Note: libpng-compat 1.5.30 does NOT seem to.
 media-libs/libpng -cpu_flags_arm_neon
 
-# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
-# Unmask TPM on supported archs.
-sys-apps/systemd -tpm
-
 # Sam James <sam@gentoo.org> (2021-03-20)
 # Supports both 'neon32' and 'neon64'
 sys-libs/zlib-ng -cpu_flags_arm_neon

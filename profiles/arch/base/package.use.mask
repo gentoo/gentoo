@@ -39,10 +39,6 @@ x11-wm/mutter video_cards_nvidia
 # Has unpackaged depdencies, bug #795459
 >=media-libs/opencolorio-2.0.0 doc
 
-# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
-# TPM only exists on some archs.
-sys-apps/systemd tpm
-
 # Michael Orlitzky <mjo@gentoo.org> (2021-03-27)
 # The clozurecl and clozurecl64 flags are now arch-specific in maxima,
 # so we mask them both by default beginning with v5.44.0-r5 where

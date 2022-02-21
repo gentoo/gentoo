@@ -63,10 +63,6 @@ x11-wm/mutter video_cards_nvidia
 >=app-office/libreoffice-bin-7 java
 >=app-office/libreoffice-bin-debug-7 java
 
-# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
-# Unmask TPM on supported archs.
-sys-apps/systemd -tpm
-
 # Daniel Novomesky <dnovomesky@gmail.com> (2021-02-24)
 # Depends on media-libs/svt-av1, which is unavailable on x86
 media-libs/libavif svt-av1
