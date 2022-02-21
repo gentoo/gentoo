@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit cmake toolchain-funcs
+LLVM_MAX_SLOT=13
+inherit cmake llvm toolchain-funcs
 
 DESCRIPTION="Fast symbolic manipulation library, written in C++"
 HOMEPAGE="https://github.com/symengine/symengine"
@@ -13,7 +14,7 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm64 ~x86"
 # BUILD_FOR_DISTRIBUTION enables threads by default so do it here
-IUSE="arb benchmarks boost debug doc ecm flint llvm mpc mpfr openmp test tcmalloc +threads"
+IUSE="arb benchmarks boost debug doc ecm +flint llvm +mpc +mpfr openmp test tcmalloc +threads"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/gmp:=
@@ -23,6 +24,7 @@ RDEPEND="dev-libs/gmp:=
 	ecm? ( sci-mathematics/gmp-ecm )
 	flint? ( sci-mathematics/flint:= )
 	mpc? ( dev-libs/mpc:= )
+	llvm? ( <sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):= )
 	tcmalloc? ( dev-util/google-perftools )"
 DEPEND="${RDEPEND}
 	dev-libs/cereal"
@@ -34,6 +36,12 @@ PATCHES=(
 
 pkg_pretend() {
 	use openmp && [[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+}
+
+pkg_setup() {
+	use openmp && [[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+
+	use llvm && llvm_pkg_setup
 }
 
 src_prepare() {
