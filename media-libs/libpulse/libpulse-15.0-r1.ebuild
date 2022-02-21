@@ -5,7 +5,7 @@ EAPI="7"
 
 MY_PV="${PV/_pre*}"
 MY_P="pulseaudio-${MY_PV}"
-
+MY_PATCHSET="pulseaudio-daemon-15.0-patchset-1"
 inherit bash-completion-r1 gnome2-utils meson-multilib optfeature systemd tmpfiles udev
 
 DESCRIPTION="Libraries for PulseAudio clients"
@@ -17,6 +17,7 @@ if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/pulseaudio/pulseaudio"
 else
 	SRC_URI="https://freedesktop.org/software/pulseaudio/releases/${MY_P}.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/pulseaudio-daemon/${MY_PATCHSET}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
@@ -73,9 +74,7 @@ DOCS=( NEWS README )
 
 # patches merged upstream, to be removed with 16.0 bump
 PATCHES=(
-	"${FILESDIR}"/pulseaudio-15.0-xice-xsm-xtst-daemon-only.patch
-	"${FILESDIR}"/pulseaudio-15.0-move-systemd-socket-activation-code.patch
-	"${FILESDIR}"/pulseaudio-15.0-daemon-client-split-build.patch
+	"${WORKDIR}"/${MY_PATCHSET}/
 )
 
 src_prepare() {
