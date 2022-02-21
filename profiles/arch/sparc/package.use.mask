@@ -6,10 +6,6 @@
 # It is unusable, for now, in other arches
 media-video/ffmpeg amf
 
-# Sam James <sam@gentoo.org> (2022-02-10)
-# app-crypt/tpm2-tss is not keyworded here
-app-crypt/gnupg tpm
-
 # Vadim Misbakh-Soloviov <mva@gentoo.org> (2021-12-09)
 # ts-cli requires rust to be built, and rust is unavailable here ATM.
 dev-libs/tree-sitter ts-cli

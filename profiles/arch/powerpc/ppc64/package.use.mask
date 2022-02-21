@@ -38,10 +38,6 @@ sys-apps/exa man
 # dev-python/django is not keyworded here
 dev-python/diskcache test
 
-# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
-# Unmask TPM on supported archs.
-sys-apps/systemd -tpm
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-02-25)
 # depends on ring crate, which is not so portable
 # https://github.com/briansmith/ring/issues/389

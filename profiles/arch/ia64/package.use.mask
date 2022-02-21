@@ -6,10 +6,6 @@
 # It is unusable, for now, in other arches
 media-video/ffmpeg amf
 
-# Sam James <sam@gentoo.org> (2022-02-10)
-# app-crypt/tpm2-tss is not keyworded here
-app-crypt/gnupg tpm
-
 # Sam James <sam@gentoo.org> (2022-01-29)
 # app-text/ronn-ng not keyworded here, bug #801103
 app-accessibility/espeak-ng man
