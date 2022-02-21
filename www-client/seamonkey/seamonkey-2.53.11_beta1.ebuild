@@ -489,7 +489,7 @@ src_install() {
 	pax-mark m "${ED}"/${MOZILLA_FIVE_HOME}/{seamonkey,seamonkey-bin,plugin-container}
 
 	if use chatzilla ; then
-		emid='{59c81df5-4b7a-477b-912d-4e0fdf64e5f2}'
+		local emid='{59c81df5-4b7a-477b-912d-4e0fdf64e5f2}'
 
 		# remove the en_US-only xpi file so a version with all requested locales can be installed
 		if [[ -e "${ED}"/${MOZILLA_FIVE_HOME}/extensions/${emid}.xpi ]] ; then
@@ -513,11 +513,10 @@ src_install() {
 	insinto /etc/revdep-rebuild
 	echo "SEARCH_DIRS_MASK=${MOZILLA_FIVE_HOME}*" >> ${T}/11${PN} || die
 	doins "${T}"/11${PN}
-
 }
 
 pkg_preinst() {
-	SEAMONKEY_PLUGINS_DIR="${ROOT}/usr/$(get_libdir)/${PN}/plugins"
+	SEAMONKEY_PLUGINS_DIR="${EROOT}/usr/$(get_libdir)/${PN}/plugins"
 
 	if [[ -L "${SEAMONKEY_PLUGINS_DIR}" ]] ; then
 		rm "${SEAMONKEY_PLUGINS_DIR}" || die
@@ -532,7 +531,9 @@ pkg_postinst() {
 		elog "USE='-gmp-autoupdate' has disabled the following plugins from updating or"
 		elog "installing into new profiles:"
 		local plugin
-		for plugin in "${GMP_PLUGIN_LIST[@]}"; do elog "\t ${plugin}" ; done
+		for plugin in "${GMP_PLUGIN_LIST[@]}"; do 
+			elog "\t ${plugin}" ;
+		 done
 	fi
 
 	if use chatzilla ; then
