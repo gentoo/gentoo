@@ -34,6 +34,7 @@ BDEPEND="
 	dev-util/ignition-cmake:2"
 
 S="${WORKDIR}/ign-common-${PN}${IGN_MAJOR}_${PV}"
+PATCHES=( "${FILESDIR}/ffmpeg5.patch" )
 
 src_configure() {
 	local mycmakeargs=(
