@@ -21,6 +21,7 @@ MOZ_PV="${MOZ_PV/_beta/b}"
 MOZ_PV="${MOZ_PV/_rc/rc}"
 MOZ_P="${P}"
 MY_MOZ_P="${PN}-${MOZ_PV}"
+PATCH="${PN}-2.53.11-patches-01"
 
 if [[ ${PV} == *_pre* ]] ; then
 	MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/candidates/${MOZ_PV}-candidates/build${PV##*_pre}"
@@ -29,7 +30,9 @@ else
 fi
 
 SRC_URI="${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source.tar.xz -> ${P}.source.tar.xz
-	${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source-l10n.tar.xz -> ${P}.source-l10n.tar.xz"
+	${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source-l10n.tar.xz -> ${P}.source-l10n.tar.xz
+	https://github.com/BioMike/gentoo-${PN}-patches/archive/refs/tags/${PV}.tar.gz -> ${PATCH}.tar.gz"
+
 S="${WORKDIR}/${MY_MOZ_P}"
 
 MOZ_GENERATE_LANGPACKS=1
@@ -38,13 +41,6 @@ inherit autotools check-reqs desktop edos2unix flag-o-matic mozcoreconf-v6 mozli
 
 DESCRIPTION="Seamonkey Web Browser"
 HOMEPAGE="https://www.seamonkey-project.org/"
-
-PATCH="${PN}-2.53.10.2-patches-01"
-SRC_URI+="
-	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PATCH}.tar.gz
-	system-libvpx? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-2.53.3-system_libvpx-1.8.patch.gz )
-
-"
 
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
