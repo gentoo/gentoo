@@ -15,12 +15,14 @@ KEYWORDS="~amd64"
 IUSE="handy spell"
 
 BDEPEND="${MESON_DEPEND}
+	${PYTHON_DEPS}
 	sys-devel/gettext"
 RDEPEND="dev-libs/gjs
 	x11-libs/gtk+:3[introspection]
 	x11-libs/pango[introspection]
 	x11-libs/gdk-pixbuf:2[introspection]
 	net-libs/webkit-gtk:4[introspection]
+	sys-devel/gettext
 	handy? ( gui-libs/libhandy:=[introspection] )
 	spell? ( app-text/gspell[introspection] )"
 
