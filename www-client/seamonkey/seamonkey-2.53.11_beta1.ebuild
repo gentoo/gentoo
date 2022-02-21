@@ -47,7 +47,7 @@ LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
 SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,png,sqlite} )
 IUSE="+chatzilla cpu_flags_arm_neon +crypt dbus debug +gmp-autoupdate +ipc jack
-lto pulseaudio +roaming selinux startup-notification test wifi"
+lto pulseaudio selinux startup-notification test wifi"
 IUSE+=" ${SYSTEM_IUSE[@]}"
 KEYWORDS="amd64 ~ppc64 ~x86"
 
@@ -231,7 +231,6 @@ src_prepare() {
 }
 
 src_configure() {
-	MEXTENSIONS="default"
 	# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 	# Note: These are for Gentoo Linux use ONLY. For your own distribution, please
 	# get your own set of keys.
@@ -380,16 +379,11 @@ src_configure() {
 	# Linking fails without this due to memory exhaustion
 	use x86 && append-ldflags "-Wl,--no-keep-memory"
 
-	if ! use roaming ; then
-		MEXTENSIONS+=",-sroaming"
-	fi
-
 	# Setup api key for location services
 	printf '%s' "${_google_api_key}" > "${S}"/google-api-key
 	mozconfig_annotate '' --with-google-location-service-api-keyfile="${S}/google-api-key"
 	mozconfig_annotate '' --with-google-safebrowsing-api-keyfile="${S}/google-api-key"
 
-	mozconfig_annotate '' --enable-extensions="${MEXTENSIONS}"
 	mozconfig_use_enable chatzilla irc
 	mozconfig_annotate '' --enable-dominspector
 
