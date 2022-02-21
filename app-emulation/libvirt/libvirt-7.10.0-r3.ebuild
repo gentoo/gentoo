@@ -136,6 +136,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.7.0-fix-paths-for-apparmor.patch
 	"${FILESDIR}"/${PN}-7.9.0-fix_cgroupv2.patch
 	"${FILESDIR}"/${PN}-7.10.0-fix_soname.patch
+	"${FILESDIR}"/${PN}-8.1.0-docs-Fix-template-matching-in-page.xsl.patch
 )
 
 pkg_setup() {
