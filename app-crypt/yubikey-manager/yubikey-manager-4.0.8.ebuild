@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="ssl"
 
-# Tests require currently unpackaged makefun
+# Waiting for keyword parity on dev-python/makefun (Bug #833854)
 RESTRICT="test"
 
 # app-crypt/ccid required for
@@ -33,6 +33,11 @@ RDEPEND="
 	dev-python/fido2:0/0.9[${PYTHON_USEDEP}]
 	dev-python/pyscard[${PYTHON_USEDEP}]
 	ssl? ( >=dev-python/pyopenssl-0.15.1[${PYTHON_USEDEP}] )"
+#BDEPEND="test? (
+#	dev-python/makefun[${PYTHON_USEDEP}]
+#)"
+
+distutils_enable_tests pytest
 
 python_install_all() {
 	distutils-r1_python_install_all
