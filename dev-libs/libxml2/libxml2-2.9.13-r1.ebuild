@@ -31,8 +31,6 @@ S="${WORKDIR}/${PN}-${PV%_rc*}"
 
 LICENSE="MIT"
 SLOT="2"
-# Dropped keywords for now because it's a minor LDFLAGS fix, and it will ease upgrades
-# bug #802210
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug examples icu lzma +python readline static-libs test"
 RESTRICT="!test? ( test )"
@@ -72,8 +70,8 @@ PATCHES=(
 	# bug #745162
 	"${WORKDIR}"/${PN}-2.9.8-python3-unicode-errors.patch
 
-	# Avoid failure on missing fuzz.h when running tests
-	"${WORKDIR}"/${PN}-2.9.11-disable-fuzz-tests.patch
+	# Don't bother copying Python's libraries (bug #798942)
+	"${WORKDIR}"/${PN}-2.9.12-dont-copy-python-ldflags.patch
 )
 
 src_unpack() {
