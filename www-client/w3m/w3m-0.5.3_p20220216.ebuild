@@ -8,7 +8,7 @@ inherit autotools prefix toolchain-funcs
 COMMIT="53d323453d78a6d449f9957586c33dddfffa5616"
 DESCRIPTION="Text based WWW browser, supports tables and frames"
 HOMEPAGE="https://github.com/tats/w3m"
-SRC_URI="https://github.com/tats/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tats/w3m/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="w3m"
@@ -35,6 +35,7 @@ RDEPEND="
 	gpm? ( sys-libs/gpm )
 	ssl? ( dev-libs/openssl:0= )
 	X? (
+		x11-base/xorg-proto
 		x11-libs/libXdmcp
 		x11-libs/libXext
 	)
