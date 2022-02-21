@@ -406,6 +406,12 @@ cmake_src_prepare() {
 	_CMAKE_SRC_PREPARE_HAS_RUN=1
 }
 
+# @VARIABLE: MYCMAKEARGS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# User-controlled environment variable containing arguments to be passed to
+# cmake in cmake_src_configure.
+
 # @FUNCTION: cmake_src_configure
 # @DESCRIPTION:
 # General function for configuring with cmake. Default behaviour is to start an
