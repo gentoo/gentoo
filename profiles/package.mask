@@ -52,11 +52,6 @@
 <sci-electronics/kicad-templates-6.0.2
 <app-doc/kicad-doc-6.0.2
 
-# Sam James <sam@gentoo.org> (2022-02-18)
-# Breaks some reverse dependencies w/ stricter(?)
-# parsing. bug #833586.
-=dev-libs/libxslt-1.1.35
-
 # Brian Evans <grknight@gentoo.org> (2022-02-17)
 # Ancient version which likely does not work with modern software
 # New upstream exists but php team does not want to maintain
