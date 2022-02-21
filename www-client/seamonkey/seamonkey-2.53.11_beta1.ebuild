@@ -31,7 +31,8 @@ fi
 
 SRC_URI="${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source.tar.xz -> ${P}.source.tar.xz
 	${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source-l10n.tar.xz -> ${P}.source-l10n.tar.xz
-	https://github.com/BioMike/gentoo-${PN}-patches/archive/refs/tags/${PV}.tar.gz -> ${PATCH}.tar.gz"
+	https://github.com/BioMike/gentoo-${PN}-patches/archive/refs/tags/${PV}.tar.gz -> ${PATCH}.tar.gz
+	system-libvpx? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-2.53.3-system_libvpx-1.8.patch.gz )"
 
 S="${WORKDIR}/${MY_MOZ_P}"
 
