@@ -1,0 +1,47 @@
+change the default rocm tensile library search path
+Index: rocBLAS-rocm-5.0.1/library/src/tensile_host.cpp
+===================================================================
+--- rocBLAS-rocm-5.0.1.orig/library/src/tensile_host.cpp
++++ rocBLAS-rocm-5.0.1/library/src/tensile_host.cpp
+@@ -558,40 +558,8 @@ namespace
+                 // Find the location of librocblas.dll/.so
+                 // Fall back on hard-coded path if static library or not found
+ 
+-#ifndef ROCBLAS_STATIC_LIB
+-#ifdef WIN32
+-                // wchar_t wpath[MAX_PATH + 1] = {0};
+-                // if(GetModuleFileNameW(GetModuleHandle("rocblas.dll"), wpath, MAX_PATH + 1))
+-                // {
+-                //     std::wstring          wspath(wpath);
+-                //     std::string           tmp(wspath.begin(), wspath.end());
+ 
+-                std::vector<TCHAR> dll_path(MAX_PATH + 1);
+-                if(GetModuleFileNameA(
+-                       GetModuleHandleA("rocblas.dll"), dll_path.data(), MAX_PATH + 1))
+-                {
+-                    std::string           tmp(dll_path.begin(), dll_path.end());
+-                    std::filesystem::path exepath = tmp;
+-                    if(exepath.has_filename())
+-                    {
+-                        path = exepath.remove_filename().string();
+-                    }
+-                }
+-#else
+-                dl_iterate_phdr(rocblas_dl_iterate_phdr_callback, NULL);
+-                if(rocblas_so_path.size())
+-                    path = std::string{dirname(&rocblas_so_path[0])};
+-#endif
+-#endif // ifndef ROCBLAS_STATIC_LIB
+-
+-                // Find the location of the libraries
+-                if(TestPath(path + "/../../Tensile/library"))
+-                    path += "/../../Tensile/library";
+-                else
+-                    path += "/library";
+-
+-                if(TestPath(path + "/" + processor))
+-                    path += "/" + processor;
++				path="@GENTOO_PORTAGE_EPREFIX@/usr/lib64/rocblas/library";
+             }
+ 
+             // only load modules for the current architecture
