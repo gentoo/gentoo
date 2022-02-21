@@ -13,7 +13,7 @@ SRC_URI="https://github.com/aajanki/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -40,6 +40,15 @@ BDEPEND="test? (
 distutils_enable_tests setup.py
 
 DOCS=( COPYING ChangeLog README.fi README.md yledl.conf.sample )
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# https://github.com/aajanki/yle-dl/issues/297
+	sed -i -e \
+		"/def test_uutiset_headline_metadata():/i@pytest.mark.xfail(reason='Media file removed from Areena.')" \
+		tests/integration/test_uutiset_it.py || die
+}
 
 src_install() {
 	docompress -x "/usr/share/doc/${PF}/yledl.conf.sample"
