@@ -47,6 +47,11 @@ BDEPEND="
 
 distutils_enable_tests setup.py
 
+src_prepare() {
+	sed -i -e '/tree-sitter/s:~=:>=:' requirements/*.txt || die
+	distutils-r1_src_prepare
+}
+
 src_test() {
 	local -x PYTHONDONTWRITEBYTECODE=
 	distutils-r1_src_test
