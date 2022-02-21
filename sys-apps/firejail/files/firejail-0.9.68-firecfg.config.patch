@@ -1,6 +1,6 @@
---- firecfg.config.orig	2021-11-05 20:30:20.451017470 -0600
-+++ firecfg.config	2022-02-06 20:53:53.948407229 -0700
-@@ -207,7 +207,8 @@
+--- a/src/firecfg/firecfg.config	2022-02-03 07:53:47.000000000 -0700
++++ b/src/firecfg/firecfg.config	2022-02-21 11:56:00.267419833 -0700
+@@ -213,7 +213,8 @@
  electron-mail
  electrum
  element-desktop
@@ -10,17 +10,17 @@
  empathy
  enchant
  enchant-2
-@@ -254,7 +255,8 @@
+@@ -259,7 +260,8 @@
+ flameshot
  flashpeak-slimjet
  flowblade
- font-manager
 -fontforge
 +# Breaks emerge/portage on Gentoo
 +#fontforge
+ font-manager
  fossamail
  four-in-a-row
- fractal
-@@ -478,11 +480,16 @@
+@@ -490,11 +492,16 @@
  luminance-hdr
  lximage-qt
  lxmusic
@@ -39,7 +39,7 @@
  manaplus
  marker
  masterpdfeditor
-@@ -558,7 +565,8 @@
+@@ -571,7 +578,8 @@
  musictube
  musixmatch
  mutool
@@ -49,17 +49,17 @@
  mypaint
  mypaint-ora-thumbnailer
  natron
-@@ -616,7 +624,8 @@
+@@ -632,7 +640,8 @@
  palemoon
  #pandoc
  parole
 -patch
-+# Breaks emerge/portage on Gentoo: 'too many environment variables'
++# Breaks emerge/portage on Gentoo: 'too many environment variables', path issues
 +#patch
  pavucontrol
  pavucontrol-qt
  pcsxr
-@@ -736,7 +745,8 @@
+@@ -758,7 +767,8 @@
  stellarium
  strawberry
  straw-viewer
@@ -69,3 +69,13 @@
  studio.sh
  subdownloader
  supertux2
+@@ -877,7 +887,8 @@
+ weechat
+ weechat-curses
+ wesnoth
+-wget
++# Breaks emerge/portage on Gentoo: 'too many environment variables', path issues
++#wget
+ wget2
+ whalebird
+ whois
