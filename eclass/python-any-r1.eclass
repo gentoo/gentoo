@@ -302,9 +302,11 @@ python_setup() {
 	local epython_impl=${EPYTHON/./_}
 	if [[ ${epython_impl} ]]; then
 		if ! has "${epython_impl}" "${_PYTHON_SUPPORTED_IMPLS[@]}"; then
-			einfo "EPYTHON (${EPYTHON}) not supported by the package"
-		elif ! has "${epython_impl}" "${_PYTHON_ALL_IMPLS[@]}"; then
-			ewarn "Invalid EPYTHON: ${EPYTHON}"
+			if ! has "${epython_impl}" "${_PYTHON_ALL_IMPLS[@]}"; then
+				ewarn "Invalid EPYTHON: ${EPYTHON}"
+			else
+				einfo "EPYTHON (${EPYTHON}) not supported by the package"
+			fi
 		elif _python_run_check_deps "${epython_impl}"; then
 			_python_export EPYTHON PYTHON
 			_python_wrapper_setup
