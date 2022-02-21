@@ -395,8 +395,8 @@ src_configure() {
 	mozconfig_annotate '' --disable-elf-hack
 
 	# Use an objdir to keep things organized.
-	echo "mk_add_options MOZ_OBJDIR=${BUILD_OBJ_DIR}" >> "${S}"/.mozconfig
-	echo "mk_add_options XARGS=/usr/bin/xargs" >> "${S}"/.mozconfig
+	echo "mk_add_options MOZ_OBJDIR=${BUILD_OBJ_DIR}" >> "${S}"/.mozconfig || die
+	echo "mk_add_options XARGS=/usr/bin/xargs" >> "${S}"/.mozconfig || die
 
 	mozlinguas_mozconfig
 
@@ -511,7 +511,7 @@ src_install() {
 
 	# revdep-rebuild entry
 	insinto /etc/revdep-rebuild
-	echo "SEARCH_DIRS_MASK=${MOZILLA_FIVE_HOME}*" >> ${T}/11${PN}
+	echo "SEARCH_DIRS_MASK=${MOZILLA_FIVE_HOME}*" >> ${T}/11${PN} || die
 	doins "${T}"/11${PN}
 
 }
