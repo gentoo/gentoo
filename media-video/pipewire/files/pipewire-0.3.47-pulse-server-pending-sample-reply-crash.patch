@@ -1,0 +1,101 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/d7793501fd012de37fcc8bf09003c60bc4624341.patch
+
+From d7793501fd012de37fcc8bf09003c60bc4624341 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Sun, 20 Feb 2022 21:34:53 +0100
+Subject: [PATCH] pulse-server: free pending sample reply
+
+If the sample finished playing before we finished the roundtrip to
+get the sink_index, it will be destroyed. When the roundtrip completes,
+it will try to use invalid memoryy and crash.
+
+Make sure we destroy all pending replies before destroying the sample
+to avoid this problem.
+
+Fixes #2151
+---
+ src/modules/module-protocol-pulse/operation.c      | 10 ++++++++++
+ src/modules/module-protocol-pulse/operation.h      |  1 +
+ src/modules/module-protocol-pulse/pending-sample.c |  5 +++++
+ src/modules/module-protocol-pulse/pulse-server.c   |  4 ++++
+ 4 files changed, 20 insertions(+)
+
+diff --git a/src/modules/module-protocol-pulse/operation.c b/src/modules/module-protocol-pulse/operation.c
+index e0e67b374..b1e0eb08d 100644
+--- a/src/modules/module-protocol-pulse/operation.c
++++ b/src/modules/module-protocol-pulse/operation.c
+@@ -66,6 +66,16 @@ void operation_free(struct operation *o)
+ 	free(o);
+ }
+ 
++struct operation *operation_find(struct client *client, uint32_t tag)
++{
++	struct operation *o;
++	spa_list_for_each(o, &client->operations, link) {
++		if (o->tag == tag)
++			return o;
++	}
++	return NULL;
++}
++
+ void operation_complete(struct operation *o)
+ {
+ 	struct client *client = o->client;
+diff --git a/src/modules/module-protocol-pulse/operation.h b/src/modules/module-protocol-pulse/operation.h
+index d282ee5e5..1fa07cc7b 100644
+--- a/src/modules/module-protocol-pulse/operation.h
++++ b/src/modules/module-protocol-pulse/operation.h
+@@ -43,6 +43,7 @@ int operation_new(struct client *client, uint32_t tag);
+ int operation_new_cb(struct client *client, uint32_t tag,
+ 		void (*callback) (void *data, struct client *client, uint32_t tag),
+ 		void *data);
++struct operation *operation_find(struct client *client, uint32_t tag);
+ void operation_free(struct operation *o);
+ void operation_complete(struct operation *o);
+ 
+diff --git a/src/modules/module-protocol-pulse/pending-sample.c b/src/modules/module-protocol-pulse/pending-sample.c
+index 6e5d04fbb..399fc3b54 100644
+--- a/src/modules/module-protocol-pulse/pending-sample.c
++++ b/src/modules/module-protocol-pulse/pending-sample.c
+@@ -29,6 +29,7 @@
+ #include "client.h"
+ #include "internal.h"
+ #include "log.h"
++#include "operation.h"
+ #include "pending-sample.h"
+ #include "sample-play.h"
+ 
+@@ -36,10 +37,14 @@ void pending_sample_free(struct pending_sample *ps)
+ {
+ 	struct client * const client = ps->client;
+ 	struct impl * const impl = client->impl;
++	struct operation *o;
+ 
+ 	spa_list_remove(&ps->link);
+ 	spa_hook_remove(&ps->listener);
+ 	pw_work_queue_cancel(impl->work_queue, ps, SPA_ID_INVALID);
+ 
++	if ((o = operation_find(client, ps->tag)) != NULL)
++		operation_free(o);
++
+ 	sample_play_destroy(ps->play);
+ }
+diff --git a/src/modules/module-protocol-pulse/pulse-server.c b/src/modules/module-protocol-pulse/pulse-server.c
+index 182c3db99..c035840d1 100644
+--- a/src/modules/module-protocol-pulse/pulse-server.c
++++ b/src/modules/module-protocol-pulse/pulse-server.c
+@@ -2353,6 +2353,10 @@ static void on_sample_done(void *obj, void *data, int res, uint32_t id)
+ {
+ 	struct pending_sample *ps = obj;
+ 	struct client *client = ps->client;
++	struct operation *o;
++
++	if ((o = operation_find(client, ps->tag)) != NULL)
++		operation_complete(o);
+ 
+ 	pending_sample_free(ps);
+ 	client_unref(client);
+-- 
+GitLab
+
+

@@ -123,6 +123,9 @@ DOCS=( {README,INSTALL}.md NEWS )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
+
+	"${FILESDIR}"/${P}-revert-loop-remove-destroy-list-mpd.patch
+	"${FILESDIR}"/${P}-pulse-server-pending-sample-reply-crash.patch
 )
 
 # limitsdfile related code taken from =sys-auth/realtime-base-0.1
