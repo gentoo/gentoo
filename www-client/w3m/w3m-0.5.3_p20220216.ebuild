@@ -116,21 +116,15 @@ src_install() {
 	newdoc Bonus/README.eng README.Bonus
 	docinto html/en
 	dodoc doc/*.html
-	if use l10n_de ; then
-		docinto de
-		dodoc doc-de/README*
-		docinto html/de
-		dodoc doc-de/*.html
-	else
-		rm -rf "${ED}"/usr/share/man/de || die
-	fi
-	if use l10n_ja ; then
-		docinto ja
-		dodoc doc-jp/{HISTORY,README,keymap,menu}*
-		newdoc Bonus/README README.Bonus
-		docinto html/ja
-		dodoc doc-jp/*.html
-	else
-		rm -rf "${ED}"/usr/share/man/ja || die
-	fi
+
+	docinto de
+	dodoc doc-de/README*
+	docinto html/de
+	dodoc doc-de/*.html
+
+	docinto ja
+	dodoc doc-jp/{HISTORY,README,keymap,menu}*
+	newdoc Bonus/README README.Bonus
+	docinto html/ja
+	dodoc doc-jp/*.html
 }
