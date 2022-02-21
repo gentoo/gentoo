@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,14 +7,15 @@ inherit pam autotools
 DESCRIPTION="Toolkit for using one-time password authentication with HOTP/TOTP algorithms"
 HOMEPAGE="http://www.nongnu.org/oath-toolkit/"
 SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.gz"
-LICENSE="GPL-3 LGPL-2.1"
 
+LICENSE="GPL-3 LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86"
 IUSE="pam pskc static-libs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	dev-libs/icu:=
 	pam? ( sys-libs/pam )
 	pskc? ( dev-libs/xmlsec )"
 DEPEND="${RDEPEND}
@@ -57,6 +58,13 @@ src_configure() {
 		$(use_enable static-libs static)
 }
 
+src_test() {
+	# without keep-going, it will bail out after the first testsuite failure,
+	# skipping the other testsuites. as they are mostly independant, this sucks.
+	emake --keep-going check
+	[ $? -ne 0 ] && die "At least one testsuite failed"
+}
+
 src_install() {
 	default
 	find "${ED}" -name '*.la' -type f -delete || die
@@ -66,11 +74,4 @@ src_install() {
 	if use pskc; then
 		doman pskctool/pskctool.1
 	fi
-}
-
-src_test() {
-	# without keep-going, it will bail out after the first testsuite failure,
-	# skipping the other testsuites. as they are mostly independant, this sucks.
-	emake --keep-going check
-	[ $? -ne 0 ] && die "At least one testsuite failed"
 }
