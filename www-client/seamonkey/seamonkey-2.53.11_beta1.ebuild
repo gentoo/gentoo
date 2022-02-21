@@ -68,6 +68,7 @@ BDEPEND="
 	x86? ( ${ASM_DEPEND} )
 "
 COMMON_DEPEND="
+	app-arch/bzip2
 	>=app-text/hunspell-1.5.4:=
 	dev-libs/atk
 	>=dev-libs/glib-2.26:2
