@@ -183,9 +183,6 @@ src_prepare() {
 	# Apply our patches
 	eapply "${WORKDIR}"/mozilla
 
-	# https://bugzilla.mozilla.org/show_bug.cgi?id=1623054
-	eapply "${FILESDIR}/${PN}-2.53.10.2-ownertab.patch"
-
 	# Shell scripts sometimes contain DOS line endings; bug 391889
 	grep -rlZ --include="*.sh" $'\r$' . |
 	while read -r -d $'\0' file ; do
