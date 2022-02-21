@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/sympy/symengine"
 SRC_URI="https://github.com/sympy/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0/0.4"
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="amd64 ~arm ~arm64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE="arb benchmarks boost debug doc ecm flint llvm mpc mpfr openmp test tcmalloc threads"
 RESTRICT="!test? ( test )"
