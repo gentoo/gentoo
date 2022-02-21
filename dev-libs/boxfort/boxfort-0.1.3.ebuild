@@ -10,6 +10,7 @@ inherit meson python-any-r1
 DESCRIPTION="Convenient & cross-platform sandboxing C library"
 HOMEPAGE="https://github.com/Snaipe/BoxFort"
 SRC_URI="https://github.com/Snaipe/BoxFort/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/BoxFort-${PV}
 
 LICENSE="MIT"
 SLOT="0"
@@ -22,8 +23,6 @@ DEPEND="test? (
 	)"
 BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/BoxFort-${PV}"
-
 python_check_deps() {
 	use test && has_version "dev-util/cram[${PYTHON_USEDEP}]"
 }
@@ -34,8 +33,8 @@ pkg_setup() {
 
 src_configure() {
 	local emesonargs=(
-		-Dsamples=$(usex test true false)
-		-Dtests=$(usex test true false)
+		$(meson_use test samples)
+		$(meson_use test tests)
 	)
 
 	meson_src_configure
