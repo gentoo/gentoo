@@ -82,6 +82,8 @@ DOCS=( AUTHORS README )
 
 RESTRICT="!test? ( test )"
 
+PATCHES=( "${FILESDIR}/${PN}-2022-musl-stdint.patch" )
+
 if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
 fi
