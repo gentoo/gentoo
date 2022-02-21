@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 LICENSE="w3m"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="fbcon gdk-pixbuf gpm imlib l10n_de l10n_ja lynxkeymap nls nntp ssl unicode X xface"
+IUSE="fbcon gdk-pixbuf gpm imlib l10n_ja lynxkeymap nls nntp ssl unicode X xface"
 
 REQUIRED_USE="
 	fbcon? ( ?? ( gdk-pixbuf imlib ) )
