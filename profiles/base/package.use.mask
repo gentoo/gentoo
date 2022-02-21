@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2022-02-21)
+# Needs build system love to make LLVM support work.
+# bug #745915
+sci-libs/symengine llvm
+
 # Marek Szuba <marecki@gentoo.org> (2022-02-07)
 # Deprecated back-end with known stability and data-corruption issues,
 # likely to be removed in gramps-5.2.0.
