@@ -9,7 +9,7 @@ inherit toolchain-funcs python-single-r1 linux-info
 
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://github.com/netblue30/${PN}/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/netblue30/firejail.git"
