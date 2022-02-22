@@ -17,7 +17,7 @@ if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/pulseaudio/pulseaudio"
 else
 	SRC_URI="https://freedesktop.org/software/pulseaudio/releases/${MY_P}.tar.xz"
-	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/pulseaudio-daemon/${MY_PATCHSET}.tar.bz2"
+	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/media-sound/pulseaudio-daemon/${MY_PATCHSET}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
