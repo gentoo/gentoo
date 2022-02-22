@@ -30,3 +30,10 @@ distutils_enable_tests pytest
 PATCHES=(
 	"${FILESDIR}/${PN}-7.6.3-py310.patch"
 )
+
+src_prepare() {
+	# upstream hack to autoconfigure ipywidgets in jupyter
+	# we don't have jupyterlab_widgets packaged
+	sed -i -e '/jupyterlab_widgets/d' setup.py || die
+	distutils-r1_src_prepare
+}
