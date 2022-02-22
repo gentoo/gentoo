@@ -10,7 +10,8 @@ MY_P="${P/_/-}"
 DESCRIPTION="Type-inferring functional programming language descended from the ML family"
 HOMEPAGE="https://ocaml.org"
 SRC_URI="https://github.com/ocaml/ocaml/archive/${PV/_/+}.tar.gz -> ${MY_P}.tar.gz
-	mirror://gentoo/${PN}-patches-${PATCHLEVEL}.tar.bz2"
+	mirror://gentoo/${PN}-patches-${PATCHLEVEL}.tar.bz2
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-patches-1.tar.bz2"
 
 LICENSE="QPL-1.0 LGPL-2"
 # Everytime ocaml is updated to a new version, everything ocaml must be rebuilt,
@@ -36,9 +37,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.04.2-tinfo.patch #459512
-	"${FILESDIR}"/${P}-gcc10.patch
-	"${FILESDIR}"/${P}-CVE-2018-9838.patch
-	"${FILESDIR}"/${P}-glibc-2.34.patch
+	"${WORKDIR}"/${P}-patches-1/
 )
 
 pkg_setup() {

@@ -5,9 +5,10 @@ EAPI=7
 
 inherit flag-o-matic
 
-HOMEPAGE="https://ocaml.org/"
-SRC_URI="https://github.com/ocaml/ocaml/archive/${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="Programming language supporting functional, imperative & object-oriented styles"
+HOMEPAGE="https://ocaml.org/"
+SRC_URI="https://github.com/ocaml/ocaml/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-patches-1.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
@@ -24,8 +25,7 @@ PDEPEND="emacs? ( app-emacs/ocaml-mode )
 QA_FLAGS_IGNORED='usr/lib.*/ocaml/bigarray.cmxs'
 
 PATCHES=(
-	"${FILESDIR}"/${P}-cflags.patch
-	"${FILESDIR}"/${P}-glibc-2.34.patch
+	"${WORKDIR}"/${P}-patches-1/
 )
 
 src_prepare() {
@@ -64,7 +64,8 @@ src_configure() {
 		$(use_enable flambda)
 		$(use_enable spacetime)
 	)
-	econf ${opt[@]}
+
+	econf "${opt[@]}"
 }
 
 src_compile() {
