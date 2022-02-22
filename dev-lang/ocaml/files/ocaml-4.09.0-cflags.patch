@@ -1,5 +1,5 @@
---- a/runtime/Makefile	2022-01-22 19:49:32.914213696 +0100
-+++ b/runtime/Makefile	2022-01-22 19:50:03.765640701 +0100
+--- a/runtime/Makefile
++++ b/runtime/Makefile
 @@ -335,7 +335,7 @@
  # (without the extension, which is added by the macro)
  define COMPILE_C_FILE
@@ -9,24 +9,24 @@
  endef
  
  object_types := % %_b %_bd %_bi %_bpic %_n %_nd %_ni %_np %_npic
---- a/yacc/Makefile	2022-01-22 20:02:56.510340885 +0100
-+++ b/yacc/Makefile	2022-01-22 20:03:14.998000508 +0100
+--- a/yacc/Makefile
++++ b/yacc/Makefile
 @@ -63,4 +63,4 @@
  # also works for .obj files.
  
  %.$(O): %.c
 -	$(CC) -c $(OC_CFLAGS) $(OC_CPPFLAGS) $(OUTPUTOBJ)$@ $<
 +	$(CC) -c $(OC_CFLAGS) $(CFLAGS) $(OC_CPPFLAGS) $(OUTPUTOBJ)$@ $<
---- a/otherlibs/Makefile.otherlibs.common	2022-01-22 20:24:15.316779625 +0100
-+++ b/otherlibs/Makefile.otherlibs.common	2022-01-22 20:24:50.730126701 +0100
+--- a/otherlibs/Makefile.otherlibs.common
++++ b/otherlibs/Makefile.otherlibs.common
 @@ -138,4 +138,4 @@
  	$(CAMLOPT) -c $(COMPFLAGS) $(OPTCOMPFLAGS) $<
  
  .c.$(O):
 -	$(CC) -c $(OC_CFLAGS) $(OC_CPPFLAGS) $(OUTPUTOBJ)$@ $<
 +	$(CC) -c $(OC_CFLAGS) $(CFLAGS) $(OC_CPPFLAGS) $(OUTPUTOBJ)$@ $<
---- a/ocamltest/Makefile	2022-01-22 20:30:22.454009704 +0100
-+++ b/ocamltest/Makefile	2022-01-22 20:30:33.845799603 +0100
+--- a/ocamltest/Makefile
++++ b/ocamltest/Makefile
 @@ -221,7 +221,7 @@
  	$(ocamllex) -q $<
  
@@ -36,8 +36,8 @@
  
  ocamltest_config.ml: ocamltest_config.ml.in Makefile ../Makefile.config
  	sed \
---- a/otherlibs/systhreads/Makefile	2022-01-22 20:42:17.647349876 +0100
-+++ b/otherlibs/systhreads/Makefile	2022-01-22 20:43:29.766086103 +0100
+--- a/otherlibs/systhreads/Makefile
++++ b/otherlibs/systhreads/Makefile
 @@ -93,11 +93,11 @@
  # twice, each time with different options).
  
@@ -52,8 +52,8 @@
  	  -I$(ROOTDIR)/runtime $(SHAREDLIB_CFLAGS) -DNATIVE_CODE \
  	  -DTARGET_$(ARCH) -DMODEL_$(MODEL) -DSYS_$(SYSTEM) \
  	  $(OUTPUTOBJ)$@ -c $<
---- a/tools/Makefile	2022-01-23 09:57:00.788877931 +0100
-+++ b/tools/Makefile	2022-01-23 09:57:21.735516656 +0100
+--- a/tools/Makefile
++++ b/tools/Makefile
 @@ -322,7 +322,7 @@
  endif
  

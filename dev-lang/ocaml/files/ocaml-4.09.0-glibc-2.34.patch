@@ -18,15 +18,6 @@ The alternate signal stack is freed when the main OCaml code / an OCaml thread
 stops.
 
 (partial back-port of PR#10266 and PR#10726)
----
- runtime/fail_nat.c    |  7 ++++-
- runtime/signals_nat.c | 64 +++++++++++++++++++++++++++++++++++++------
- runtime/startup_nat.c |  7 ++++-
- runtime/sys.c         |  5 ++++
- 4 files changed, 72 insertions(+), 11 deletions(-)
-
-diff --git a/runtime/fail_nat.c b/runtime/fail_nat.c
-index e1f687d379e..cbf7633ee9e 100644
 --- a/runtime/fail_nat.c
 +++ b/runtime/fail_nat.c
 @@ -31,6 +31,8 @@
@@ -50,8 +41,6 @@ index e1f687d379e..cbf7633ee9e 100644
  
    while (caml_local_roots != NULL &&
           (char *) caml_local_roots < caml_exception_pointer) {
-diff --git a/runtime/signals_nat.c b/runtime/signals_nat.c
-index 29a5f49e625..351b575a08e 100644
 --- a/runtime/signals_nat.c
 +++ b/runtime/signals_nat.c
 @@ -182,7 +182,6 @@ DECLARE_SIGNAL_HANDLER(trap_handler)
@@ -132,8 +121,6 @@ index 29a5f49e625..351b575a08e 100644
    }
  #endif
  }
-diff --git a/runtime/startup_nat.c b/runtime/startup_nat.c
-index 7eca5fa5581..f52bec980b6 100644
 --- a/runtime/startup_nat.c
 +++ b/runtime/startup_nat.c
 @@ -92,6 +92,7 @@ void (*caml_termination_hook)(void *) = NULL;
@@ -167,8 +154,6 @@ index 7eca5fa5581..f52bec980b6 100644
  }
  
  value caml_startup_exn(char_os **argv)
-diff --git a/runtime/sys.c b/runtime/sys.c
-index 226d596cdff..9e201354e1e 100644
 --- a/runtime/sys.c
 +++ b/runtime/sys.c
 @@ -112,6 +112,8 @@ static void caml_sys_check_path(value name)
