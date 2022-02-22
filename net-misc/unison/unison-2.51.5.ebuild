@@ -14,7 +14,6 @@ SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="debug doc gtk +ocamlopt threads"
 
-# ocaml version so we are sure it has ocamlopt use flag
 BDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	doc? ( app-text/dvipsk
 		app-text/ghostscript-gpl
