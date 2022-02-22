@@ -939,11 +939,12 @@ _distutils-r1_get_backend() {
 		# if pyproject.toml exists, try getting the backend from it
 		# NB: this could fail if pyproject.toml doesn't list one
 		build_backend=$(
-			"${EPYTHON}" - 3>&1 &>/dev/null <<-EOF
+			"${EPYTHON}" - 3>&1 <<-EOF
 				import os
 				import tomli
 				print(tomli.load(open("pyproject.toml", "rb"))
-						["build-system"]["build-backend"],
+						.get("build-system", {})
+						.get("build-backend", ""),
 					file=os.fdopen(3, "w"))
 			EOF
 		)
