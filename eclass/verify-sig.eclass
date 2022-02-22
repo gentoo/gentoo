@@ -22,6 +22,10 @@
 #
 # If you need to use signify, you may want to copy distfiles into WORKDIR to
 # work around "Too many levels of symbolic links" error.
+#
+# A more complete guide can be found at:
+# https://mgorny.pl/articles/verify-sig-by-example.html
+#
 # @EXAMPLE:
 # Example use:
 #
