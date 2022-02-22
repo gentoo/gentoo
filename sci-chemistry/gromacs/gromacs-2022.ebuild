@@ -21,9 +21,9 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="
-		http://ftp.gromacs.org/gromacs/${PN}-${PV/_/-}.tar.gz
-		doc? ( https://ftp.gromacs.org/manual/manual-${PV/_/-}.pdf -> manual-${PV}.pdf )
-		test? ( http://ftp.gromacs.org/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
+		http://ftp.gromacs.org/gromacs/${P}.tar.gz
+		doc? ( https://ftp.gromacs.org/manual/manual-${PV}.pdf )
+		test? ( http://ftp.gromacs.org/regressiontests/regressiontests-${PV}.tar.gz )"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
@@ -81,8 +81,6 @@ REQUIRED_USE="
 DOCS=( AUTHORS README )
 
 RESTRICT="!test? ( test )"
-
-PATCHES=( "${FILESDIR}/${PN}-2022-musl-stdint.patch" )
 
 if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
