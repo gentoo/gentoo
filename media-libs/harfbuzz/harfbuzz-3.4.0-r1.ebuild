@@ -45,6 +45,10 @@ BDEPEND="
 	introspection? ( dev-util/glib-utils )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-multiple_icu_defs.patch" #833891
+)
+
 pkg_setup() {
 	python-any-r1_pkg_setup
 	if ! use debug ; then
