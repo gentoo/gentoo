@@ -10,8 +10,8 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/netdata/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/netdata/${PN}/releases/download/${PV}/${PN}-${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-${PV}"
+	SRC_URI="https://github.com/netdata/${PN}/releases/download/v${PV}/${PN}-v${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-v${PV}"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
