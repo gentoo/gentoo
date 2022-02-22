@@ -32,5 +32,6 @@ EPYTEST_DESELECT=(
 
 src_prepare() {
 	sed -i -e '/--cov/d' pytest.ini || die
+	sed -i -e '/jsonschema/s:,<4::' requirements.txt || die
 	distutils-r1_src_prepare
 }
