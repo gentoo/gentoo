@@ -36,7 +36,7 @@ BDEPEND="
 	test? (
 		dev-python/click[${PYTHON_USEDEP}]
 		dev-python/mkdocs-material[${PYTHON_USEDEP}]
-		dev-python/mkdocs-i18n
+		dev-python/mkdocs-i18n[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)
 	doc? ( dev-vcs/git )
