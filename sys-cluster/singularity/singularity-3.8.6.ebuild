@@ -6,7 +6,7 @@ EAPI=8
 inherit linux-info toolchain-funcs
 
 DESCRIPTION="Application containers for Linux"
-HOMEPAGE="https://sylabs.io"
+HOMEPAGE="https://github.com/apptainer/singularity"
 SRC_URI="https://github.com/apptainer/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 SLOT="0"
