@@ -32,6 +32,17 @@ RDEPEND=">=dev-cpp/tbb-2021.4.0:=
 # TODO: restore SYSTEM_XXHASH upstream?
 DEPEND="${RDEPEND}"
 
+pkg_pretend() {
+	# Requires a c++20 compiler, see #831473
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		if tc-is-gcc && [[ $(gcc-major-version) -lt 10 ]]; then
+			die "${PN} needs at least gcc 10"
+		elif tc-is-clang && [[ $(clang-major-version) -lt 12 ]]; then
+			die "${PN} needs at least clang 12"
+		fi
+	fi
+}
+
 src_prepare() {
 	default
 
