@@ -6,7 +6,7 @@
 # Akinori Hattori <hattya@gentoo.org>
 # @AUTHOR:
 # Original Author: Akinori Hattori <hattya@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Fetch software sources from subversion repositories
 # @DESCRIPTION:
 # The subversion eclass provides functions to fetch software sources
@@ -15,7 +15,7 @@
 ESVN="${ECLASS}"
 
 case ${EAPI} in
-	6|7) inherit estack ;;
+	6|7|8) inherit estack ;;
 	*) die "${ESVN}: EAPI ${EAPI:-0} is not supported" ;;
 esac
 
