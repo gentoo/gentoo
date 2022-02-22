@@ -4,6 +4,7 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="javax.inject:javax.inject:1"
 
 inherit java-pkg-2 java-pkg-simple
 
