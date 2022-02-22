@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 MAJOR=$(ver_cut 1)
 CMAKE_IN_SOURCE_BUILD="ON"
 
-inherit cmake optfeature readme.gentoo-r1
+inherit cmake readme.gentoo-r1
 
 DESCRIPTION="The Lean Theorem Prover"
 HOMEPAGE="https://leanprover-community.github.io/"
@@ -22,7 +22,7 @@ S="${WORKDIR}/lean-${PV}/src"
 
 LICENSE="Apache-2.0"
 SLOT="0/${MAJOR}"
-IUSE="debug +json +threads"
+IUSE="debug +threads"
 
 RDEPEND="dev-libs/gmp:="
 DEPEND="${RDEPEND}"
@@ -40,7 +40,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DALPHA=ON
 		-DAUTO_THREAD_FINALIZATION=ON
-		-DJSON=$(usex json)
+		-DJSON=ON  # bug 833900
 		-DLEAN_EXTRA_CXX_FLAGS="${CXXFLAGS}"
 		-DMULTI_THREAD=$(usex threads)
 		-DUSE_GITHASH=OFF
