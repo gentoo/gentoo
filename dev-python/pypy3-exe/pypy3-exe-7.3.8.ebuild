@@ -139,9 +139,8 @@ src_configure() {
 
 	if [[ ${EPYTHON} != pypy ]]; then
 		# reuse bundled pycparser to avoid external dep
-		mkdir -p "${T}"/pymod/cffi || die
-		: > "${T}"/pymod/cffi/__init__.py || die
-		cp -r lib_pypy/cffi/_pycparser "${T}"/pymod/cffi/ || die
+		mkdir -p "${T}"/pymod || die
+		cp -r lib_pypy/cffi/_pycparser "${T}"/pymod/pycparser || die
 		local -x PYTHONPATH=${T}/pymod:${PYTHONPATH}
 	fi
 
