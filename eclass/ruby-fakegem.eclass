@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-fakegem.eclass
@@ -8,7 +8,7 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7 8
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @PROVIDES: ruby-ng
 # @BLURB: An eclass for installing Ruby packages to behave like RubyGems.
 # @DESCRIPTION:
