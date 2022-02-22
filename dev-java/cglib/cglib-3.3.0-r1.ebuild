@@ -57,7 +57,7 @@ src_test() {
 	# throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @42bb2aee
 
 	local vm_version="$(java-config -g PROVIDES_VERSION)"
-	if [[ "${vm_version}" -ge "17" ]] ; then
+	if ver_test "${vm_version}" -ge "17" ; then
 		JAVA_TEST_EXTRA_ARGS+=( --add-opens=java.base/java.lang=ALL-UNNAMED )
 	fi
 
