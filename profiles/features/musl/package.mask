@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# João Santos <joaompssantos@gmail.com> (2022-02-22)
+# Binary package linked to glibc
+app-text/master-pdf-editor
+
 # Sam James <sam@gentoo.org> (2022-02-20)
 # Binary package linked to glibc
 app-admin/bitwarden-desktop-bin
