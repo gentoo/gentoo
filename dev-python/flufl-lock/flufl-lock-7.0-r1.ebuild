@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-python/atpublic[${PYTHON_USEDEP}]
-	dev-python/psutil[${PYTHON_USEDEP}]"
+	>=dev-python/psutil-5.9.0[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? ( dev-python/sybil[${PYTHON_USEDEP}] )"
 
