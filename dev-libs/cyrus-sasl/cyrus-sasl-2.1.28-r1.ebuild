@@ -49,6 +49,7 @@ src_prepare() {
 	default
 
 	# Use plugindir for sasldir
+	# https://github.com/cyrusimap/cyrus-sasl/issues/339 (I think)
 	sed -i '/^sasldir =/s:=.*:= $(plugindir):' \
 		"${S}"/plugins/Makefile.{am,in} || die "sed failed"
 
