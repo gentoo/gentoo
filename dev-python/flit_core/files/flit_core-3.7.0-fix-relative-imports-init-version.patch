@@ -1,0 +1,107 @@
+https://github.com/pypa/flit/issues/530
+https://github.com/pypa/flit/pull/531
+
+From c7c79459b61fe11ff0179d0ca7a72e8a90c0ee7b Mon Sep 17 00:00:00 2001
+From: Thomas Kluyver <thomas@kluyver.me.uk>
+Date: Tue, 22 Feb 2022 16:21:11 +0000
+Subject: [PATCH 1/2] Add failing test for issue gh-530
+
+---
+ .../samples/imported_version/package1/__init__.py      |  3 +++
+ .../samples/imported_version/package1/_version.py      |  1 +
+ .../tests/samples/imported_version/pyproject.toml      | 10 ++++++++++
+ flit_core/flit_core/tests/test_common.py               |  5 +++++
+ 4 files changed, 19 insertions(+)
+ create mode 100644 flit_core/flit_core/tests/samples/imported_version/package1/__init__.py
+ create mode 100644 flit_core/flit_core/tests/samples/imported_version/package1/_version.py
+ create mode 100644 flit_core/flit_core/tests/samples/imported_version/pyproject.toml
+
+diff --git a/flit_core/tests/samples/imported_version/package1/__init__.py b/flit_core/tests/samples/imported_version/package1/__init__.py
+new file mode 100644
+index 0000000..49adc42
+--- /dev/null
++++ b/flit_core/tests/samples/imported_version/package1/__init__.py
+@@ -0,0 +1,3 @@
++"""This module has a __version__ that requires a relative import"""
++
++from ._version import __version__
+diff --git a/flit_core/tests/samples/imported_version/package1/_version.py b/flit_core/tests/samples/imported_version/package1/_version.py
+new file mode 100644
+index 0000000..91201fc
+--- /dev/null
++++ b/flit_core/tests/samples/imported_version/package1/_version.py
+@@ -0,0 +1 @@
++__version__ = '0.5.8'
+diff --git a/flit_core/tests/samples/imported_version/pyproject.toml b/flit_core/tests/samples/imported_version/pyproject.toml
+new file mode 100644
+index 0000000..b6d44e1
+--- /dev/null
++++ b/flit_core/tests/samples/imported_version/pyproject.toml
+@@ -0,0 +1,10 @@
++[build-system]
++requires = ["flit_core >=3.2,<4"]
++build-backend = "flit_core.buildapi"
++
++[project]
++name = "package1"
++authors = [
++    {name = "Sir Röbin", email = "robin@camelot.uk"}
++]
++dynamic = ["version", "description"]
+diff --git a/flit_core/tests/test_common.py b/flit_core/tests/test_common.py
+index 02cfab7..bd0995b 100644
+--- a/flit_core/tests/test_common.py
++++ b/flit_core/tests/test_common.py
+@@ -75,6 +75,11 @@ def test_get_info_from_module(self):
+                                 'version': '1.2.3'}
+                          )
+ 
++        info = get_info_from_module(Module('package1', samples_dir / 'imported_version'))
++        self.assertEqual(info, {'summary': 'This module has a __version__ that requires a relative import',
++                                'version': '0.5.8'}
++                         )
++
+         with self.assertRaises(InvalidVersion):
+             get_info_from_module(Module('invalid_version1', samples_dir))
+ 
+
+From 8a0ce8897a743dde3b82cca02f1d82516ad393fd Mon Sep 17 00:00:00 2001
+From: Thomas Kluyver <thomas@kluyver.me.uk>
+Date: Tue, 22 Feb 2022 16:49:46 +0000
+Subject: [PATCH 2/2] Fix relative imports in __init__.py when exec-ing to get
+ __version__
+
+---
+ flit_core/flit_core/common.py | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/flit_core/common.py b/flit_core/common.py
+index 0d6716c..ce69c95 100644
+--- a/flit_core/common.py
++++ b/flit_core/common.py
+@@ -3,6 +3,7 @@
+ import hashlib
+ import logging
+ import os
++import sys
+ 
+ from pathlib import Path
+ import re
+@@ -168,7 +169,15 @@ def get_docstring_and_version_via_import(target):
+     spec = spec_from_file_location(mod_name, target.file)
+     with _module_load_ctx():
+         m = module_from_spec(spec)
+-        spec.loader.exec_module(m)
++        # Add the module to sys.modules to allow relative imports to work.
++        # importlib has more code around this to handle the case where two
++        # threads are trying to load the same module at the same time, but Flit
++        # should always be running a single thread, so we won't duplicate that.
++        sys.modules[mod_name] = m
++        try:
++            spec.loader.exec_module(m)
++        finally:
++            sys.modules.pop(mod_name, None)
+ 
+     docstring = m.__dict__.get('__doc__', None)
+     version = m.__dict__.get('__version__', None)
+
