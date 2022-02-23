@@ -27,6 +27,10 @@ RDEPEND="
 	>=dev-python/python-dateutil-2.6.0[${PYTHON_USEDEP}]
 	>=dev-python/pyjwt-2.3.0[${PYTHON_USEDEP}]
 "
+# via PyJWT[crypto]
+RDEPEND+="
+	>=dev-python/cryptography-3.3.1[${PYTHON_USEDEP}]
+"
 BDEPEND="
 	test? (
 		>=dev-python/betamax-0.8.0[${PYTHON_USEDEP}]
