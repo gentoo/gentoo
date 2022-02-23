@@ -163,7 +163,6 @@ dev-java/jsr223
 # Java-libraries with no consumers and depending on virtual/{jdk,jre}-1.6
 # Removal in 30 days.
 dev-java/yanfs
-dev-java/xp
 
 # Eray Aslan <eras@gentoo.org> (2022-01-24)
 # Mask experimental software
