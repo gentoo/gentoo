@@ -26,9 +26,12 @@ BDEPEND="
 	test? (
 		dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-vcs/git
-	)"
+	)
+"
 
 distutils_enable_tests pytest
 
