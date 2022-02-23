@@ -49,9 +49,12 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# See bug #833887 (and similar); eautoreconf means .pc file gets wrong version.
 	sed -i \
 	"s/m4_esyscmd_s(\[git describe --tags --always --dirty\])/${PV}/" \
 		"configure.ac" || die
+
 	eautoreconf
 }
 
@@ -77,6 +80,12 @@ src_configure() {
 
 src_install() {
 	default
+
+	if [[ ${PV} != $(sed -n -e 's/^Version: //p' "${ED}/usr/$(get_libdir)/pkgconfig/tss2-sys.pc" || die) ]] ; then
+		# Safeguard for bug #833887
+		die "pkg-config file version doesn't match ${PV}! Please report a bug!"
+	fi
+
 	find "${D}" -name '*.la' -delete || die
 }
 
