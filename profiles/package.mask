@@ -175,13 +175,6 @@ dev-java/felix-gogo-runtime
 # https://bugs.gentoo.org/831474
 =dev-util/meson-0.61*
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-01-22)
-# Prelink support is being removed from glibc and was
-# already somewhat broken for a while...
-# hmaccalc hard-depends on it (?).
-# Removal in 30 days.
-app-crypt/hmaccalc
-
 # James Beddek <telans@posteo.de> (2022-01-19)
 # FFmpeg 5.0 ABI/API changes break many packages.
 # Masking for tracker/tinderbox.
