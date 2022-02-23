@@ -18,6 +18,7 @@ IUSE="cpu_flags_x86_avx cpu_flags_x86_sse4_2 +blosc doc numpy python static-libs
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
+	blosc? ( zlib )
 	numpy? ( python )
 	^^ ( abi6-compat abi7-compat abi8-compat )
 	python? ( ${PYTHON_REQUIRED_USE} )
