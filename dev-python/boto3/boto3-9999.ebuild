@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
-inherit distutils-r1
+inherit distutils-r1 multiprocessing
 
 DESCRIPTION="The AWS SDK for Python"
 HOMEPAGE="https://github.com/boto/boto3"
@@ -32,6 +32,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)
 "
 
@@ -56,5 +57,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	epytest tests/{functional,unit}
+	epytest tests/{functional,unit} \
+		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
 }
