@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
-inherit distutils-r1
+inherit distutils-r1 multiprocessing
 
 DESCRIPTION="Low-level, data-driven core of boto 3"
 HOMEPAGE="https://github.com/boto/botocore"
@@ -29,6 +29,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/jsonschema[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)
 "
 
@@ -61,5 +62,6 @@ python_test() {
 		tests/functional/test_six_threading.py::test_six_thread_safety
 	)
 
-	epytest tests/{functional,unit}
+	epytest tests/{functional,unit} \
+		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
 }
