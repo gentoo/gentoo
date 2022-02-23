@@ -46,5 +46,5 @@ src_install() {
 
 	newbashcomp contrib/completions/bash/grim.bash grim
 	insinto /usr/share/fish/vendor_completions.d/
-	doins contrib/completions/grim.fish
+	doins contrib/completions/fish/grim.fish
 }
