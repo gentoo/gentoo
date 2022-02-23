@@ -16,8 +16,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 RESTRICT="test"
 
 BDEPEND="dev-lang/perl"
-RDEPEND="${DEPEND}
-	!<sys-apps/less-483-r1"
+RDEPEND="${DEPEND}"
 
 src_configure() {
 	# Not an autoconf script.
