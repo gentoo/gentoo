@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
-inherit bash-completion-r1 distutils-r1
+inherit bash-completion-r1 distutils-r1 multiprocessing
 
 DESCRIPTION="Universal Command Line Environment for AWS"
 HOMEPAGE="https://pypi.org/project/awscli/"
@@ -28,6 +28,11 @@ RDEPEND="
 	>=dev-python/s3transfer-0.4.0[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
@@ -44,7 +49,8 @@ src_prepare() {
 
 python_test() {
 	# integration tests require AWS credentials and Internet access
-	epytest tests/{functional,unit}
+	epytest tests/{functional,unit} \
+		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
 }
 
 python_install_all() {
