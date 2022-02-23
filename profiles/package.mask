@@ -180,7 +180,6 @@ dev-java/felix-gogo-runtime
 # already somewhat broken for a while...
 # hmaccalc hard-depends on it (?).
 # Removal in 30 days.
-sys-devel/prelink
 app-crypt/hmaccalc
 
 # James Beddek <telans@posteo.de> (2022-01-19)
