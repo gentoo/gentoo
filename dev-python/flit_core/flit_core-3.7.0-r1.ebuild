@@ -25,6 +25,10 @@ BDEPEND="
 	test? ( dev-python/testpath[${PYTHON_USEDEP}] )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-relative-imports-init-version.patch
+)
+
 distutils_enable_tests pytest
 
 src_prepare() {
