@@ -5,7 +5,6 @@ EAPI="7"
 
 MY_PV="${PV/_pre*}"
 MY_P="pulseaudio-${MY_PV}"
-MY_PATCHSET="${PN}-15.0-patchset-1"
 inherit bash-completion-r1 gnome2-utils meson optfeature systemd tmpfiles udev
 
 DESCRIPTION="A networked sound server with an advanced plugin system"
@@ -17,7 +16,6 @@ if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/pulseaudio/pulseaudio"
 else
 	SRC_URI="https://freedesktop.org/software/pulseaudio/releases/${MY_P}.tar.xz"
-	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_PATCHSET}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
@@ -151,7 +149,6 @@ S="${WORKDIR}/${MY_P}"
 
 # patches merged upstream, to be removed with 16.0 bump
 PATCHES=(
-	"${WORKDIR}"/${MY_PATCHSET}/
 )
 
 src_prepare() {
