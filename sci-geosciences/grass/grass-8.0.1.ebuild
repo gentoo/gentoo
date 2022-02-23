@@ -13,7 +13,7 @@ DESCRIPTION="A free GIS with raster and vector functionality, as well as 3D vizu
 HOMEPAGE="https://grass.osgeo.org/"
 
 LICENSE="GPL-2"
-SLOT="0/8.1"
+SLOT="0/8.0"
 
 GVERSION=${SLOT#*/}
 MY_PM="${PN}${GVERSION}"
@@ -89,6 +89,11 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 	X? ( dev-lang/swig )"
+
+PATCHES=(
+	# bug 746590
+	"${FILESDIR}/${PN}-flock.patch"
+)
 
 pkg_setup() {
 	if use lapack; then
