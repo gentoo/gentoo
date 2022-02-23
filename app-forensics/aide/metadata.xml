@@ -6,7 +6,6 @@
 		<flag name="e2fs">Enable support for checking file attributes on ext2/ext3/ext4 filesystems</flag>
 		<flag name="curl">Use curl for http,https and ftp backends</flag>
 		<flag name="postgres">Use postgresql library for storing databases</flag>
-		<flag name="prelink">Bypass prelinking when calculating checksums</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">aide/aide</remote-id>
