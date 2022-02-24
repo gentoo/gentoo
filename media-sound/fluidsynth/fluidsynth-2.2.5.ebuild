@@ -4,7 +4,7 @@
 EAPI=8
 
 CMAKE_ECLASS=cmake
-inherit cmake-multilib systemd
+inherit cmake-multilib systemd toolchain-funcs
 
 DESCRIPTION="Software real-time synthesizer based on the Soundfont 2 specifications"
 HOMEPAGE="https://www.fluidsynth.org"
@@ -42,6 +42,7 @@ DOCS=( AUTHORS ChangeLog README.md THANKS TODO doc/fluidsynth-v20-devdoc.txt )
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_C_COMPILER="$(tc-getCC)"
 		-Denable-alsa=$(usex alsa)
 		-Denable-aufile=ON
 		-Denable-dbus=$(usex dbus)
