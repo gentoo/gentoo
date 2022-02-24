@@ -13,12 +13,13 @@ QMAIL_BIGTODO_F=notqmail-1.08-big-todo.patch
 
 QMAIL_LARGE_DNS="qmail-103.patch"
 
-inherit qmail systemd verify-sig
+inherit qmail systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/notqmail/notqmail.git"
 	inherit git-r3
 else
+	inherit verify-sig
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 	SRC_URI="
 		https://github.com/notqmail/notqmail/releases/download/${P}/${P}.tar.xz
@@ -63,13 +64,13 @@ VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/notqmail.asc
 
 LICENSE="public-domain"
 SLOT="0"
-IUSE="authcram gencertdaily highvolume pop3 qmail-spp ssl test vanilla verify-sig"
+IUSE="authcram gencertdaily highvolume pop3 qmail-spp ssl test vanilla"
 REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume !authcram !gencertdaily ) gencertdaily? ( ssl )"
 RESTRICT="!test? ( test )"
 
-BDEPEND="
-	verify-sig? ( sec-keys/openpgp-keys-notqmail )
-"
+if [[ ${PV} != 9999 ]] ; then
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-notqmail )"
+fi
 DEPEND="
 	net-dns/libidn2
 	net-mail/queue-repair
