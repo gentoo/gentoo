@@ -1001,7 +1001,7 @@ pkg_postinst() {
 		if use screencast; then
 			elog "Screencast is disabled by default at runtime. Either enable it"
 			elog "by navigating to chrome://flags/#enable-webrtc-pipewire-capturer"
-			elog "inside Chromium or add --enable-webrtc-pipewire-capturer"
+			elog "inside Chromium or add --enable-features=WebRTCPipeWireCapturer"
 			elog "to CHROMIUM_FLAGS in /etc/chromium/default."
 		fi
 		if use gtk4; then
