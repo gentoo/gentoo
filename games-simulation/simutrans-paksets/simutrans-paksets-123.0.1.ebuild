@@ -29,7 +29,7 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="128 comic192 cs128 excentrique48 german128 nippon64"
+IUSE="+128 comic192 cs128 excentrique48 german128 nippon64"
 REQUIRED_USE="|| ( 128 comic192 cs128 excentrique48 german128 nippon64 )"
 
 RDEPEND="!<games-simulation/simutrans-123.0"
