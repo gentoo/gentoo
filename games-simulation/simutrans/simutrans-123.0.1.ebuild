@@ -15,10 +15,13 @@ HOMEPAGE="https://www.simutrans.com/"
 SRC_URI="
 	mirror://sourceforge/simutrans/simutrans-src-${MY_PV}.zip
 	!minimal? ( mirror://sourceforge/simutrans/${MY_PAK_64} -> simutrans_${MY_PAK_64} )
-	https://simutrans-germany.com/translator/data/tab/language_pack-Base+texts.zip -> simutrans_language_pack-Base+texts-${PV}.zip
+	https://tastytea.de/files/simutrans_language_pack-Base+texts-${PV}.zip
 	https://github.com/aburch/simutrans/raw/9c84822/simutrans.svg
 "
 S=${WORKDIR}
+
+# NOTE: Get the latest language pack from:
+# https://simutrans-germany.com/translator/data/tab/language_pack-Base+texts.zip
 
 LICENSE="Artistic"
 SLOT="0"
