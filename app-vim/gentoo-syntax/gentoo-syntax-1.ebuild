@@ -5,11 +5,9 @@ EAPI=7
 
 inherit vim-plugin
 
-MY_P=${P/0.}
 DESCRIPTION="vim plugin: Gentoo and Portage syntax highlighting"
 HOMEPAGE="https://github.com/gentoo/gentoo-syntax"
-SRC_URI="https://gitweb.gentoo.org/proj/gentoo-syntax.git/snapshot/${MY_P}.tar.bz2"
-S=${WORKDIR}/${MY_P}
+SRC_URI="https://gitweb.gentoo.org/proj/gentoo-syntax.git/snapshot/${P}.tar.bz2"
 
 LICENSE="vim"
 SLOT="0"
