@@ -64,6 +64,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-font-size.patch
+	"${FILESDIR}"/${P}-free_font.patch
 )
 
 DOCS=( DEDICATION HACKING README.md ROADMAP )
