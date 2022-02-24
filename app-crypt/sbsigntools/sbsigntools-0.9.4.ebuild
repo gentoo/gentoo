@@ -14,7 +14,7 @@ SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/${PN}.git/snapshot
 
 LICENSE="GPL-3 LGPL-3 LGPL-2.1 CC0-1.0"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~x86"
+KEYWORDS="amd64 arm64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND="
@@ -35,6 +35,7 @@ src_prepare() {
 		amd64) iarch=x86_64 ;;
 		arm64) iarch=aarch64 ;;
 		ia64)  iarch=ia64 ;;
+		riscv) iarch=riscv64 ;;
 		x86)   iarch=ia32 ;;
 		*)     die "unsupported architecture: ${ARCH}" ;;
 	esac
