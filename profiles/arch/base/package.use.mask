@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2022-02-24)
+# These GRUB platforms are only for MIPS.
+sys-boot/grub grub_platforms_loongson grub_platforms_qemu-mips
+
 # Sam James <sam@gentoo.org> (2021-11-15)
 # Only available on PPC*.
 sys-apps/util-linux rtas
