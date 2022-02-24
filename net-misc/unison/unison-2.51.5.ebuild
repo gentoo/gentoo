@@ -17,7 +17,10 @@ IUSE="debug doc gtk +ocamlopt threads"
 BDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	doc? ( app-text/dvipsk
 		app-text/ghostscript-gpl
-		dev-texlive/texlive-latex )"
+		dev-texlive/texlive-latex
+		dev-tex/hevea
+		www-client/lynx
+		)"
 DEPEND="gtk? ( dev-ml/lablgtk:2=[ocamlopt?] )"
 RDEPEND="gtk? ( dev-ml/lablgtk:2=[ocamlopt?]
 	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) )
@@ -53,7 +56,7 @@ src_compile() {
 	use ocamlopt || myconf+=( NATIVE=false )
 
 	if use doc; then
-		VARTEXFONTS="${T}/fonts" emake "${myconf[@]}" CFLAGS="" HEVEA=false docs
+		VARTEXFONTS="${T}/fonts" emake "${myconf[@]}" CFLAGS="" HEVEA=true docs
 	fi
 
 	# Discard cflags as it will try to pass them to ocamlc...
@@ -80,7 +83,7 @@ src_install() {
 
 	if use doc; then
 		DOCS+=( ../doc/unison-manual.pdf )
-		HTML_DOCS=( "${DISTDIR}/${P}-manual.html" )
+		HTML_DOCS=( "../doc/unison-manual.html" )
 	fi
 
 	einstalldocs
