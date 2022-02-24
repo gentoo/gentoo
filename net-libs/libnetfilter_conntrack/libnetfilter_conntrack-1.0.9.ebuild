@@ -20,6 +20,10 @@ BDEPEND="virtual/pkgconfig"
 
 DOCS=( README )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-musl.patch
+)
+
 pkg_setup() {
 	linux-info_pkg_setup
 
