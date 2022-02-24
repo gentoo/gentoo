@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop toolchain-funcs
+inherit desktop
 
 DESCRIPTION="Tool for adjusting EXIF tags of your photos with a recorded GPS trace"
 HOMEPAGE="https://dfandrich.github.io/gpscorrelate/"
@@ -28,12 +28,12 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-desktop-pass-validation.patch"
+	"${FILESDIR}/${P}-respect-users-flags.patch"
 )
 
 src_compile() {
-	tc-export CC CXX PKG_CONFIG
-	emake gpscorrelate CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" LDFLAGS="${LDFLAGS}"
-	use gtk && emake gpscorrelate-gui CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" LDFLAGS="${LDFLAGS}"
+	emake gpscorrelate
+	use gtk && emake gpscorrelate-gui
 
 }
 
