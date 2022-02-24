@@ -49,6 +49,10 @@ DEPEND="${RDEPEND}
 	media-libs/qhull[static-libs]
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-fix-build-with-cereal-1.3.1.patch
+)
+
 S="${WORKDIR}/${MY_PN}-version_${PV}"
 
 src_prepare() {
