@@ -34,7 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-02-24)
-# No release since 2013, partly depends on stale dev-python/evenlet;
+# Obsolete, ex-dependency of xfsprogs. Fails to build on 32-bit arches.
+# No reverse dependencies. Discontinued upstream. Removal on 2022-03-24.
+# bug #811891
+sys-apps/dmapi
+
+# Sam James <sam@gentoo.org> (2022-02-24)
+# No release since 2013, partly depends on stale dev-python/eventlet;
 # no reverse dependencies. Removal on 2022-03-24.
 dev-python/socketpool
 
