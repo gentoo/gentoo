@@ -12,7 +12,7 @@ SRC_URI="https://www.nih.at/libzip/${P}.tar.xz"
 LICENSE="BSD"
 SLOT="0/5"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
-IUSE="bzip2 gnutls lzma mbedtls ssl static-libs test tools"
+IUSE="bzip2 gnutls lzma mbedtls ssl static-libs test tools zstd"
 REQUIRED_USE="test? ( tools )"
 
 RESTRICT="!test? ( test )"
@@ -31,6 +31,7 @@ DEPEND="
 			!mbedtls? ( dev-libs/openssl:0= )
 		)
 	)
+	zstd? ( app-arch/zstd )
 "
 RDEPEND="${DEPEND}"
 
@@ -48,6 +49,7 @@ src_configure() {
 			-DENABLE_COMMONCRYPTO=OFF # not in tree
 			-DENABLE_BZIP2=$(usex bzip2)
 			-DENABLE_LZMA=$(usex lzma)
+			-DENABLE_ZSTD=$(usex zstd)
 		)
 		if [[ ${MULTIBUILD_VARIANT} = static-libs ]]; then
 			mycmakeargs+=(
