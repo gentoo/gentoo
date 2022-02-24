@@ -4,7 +4,7 @@
 EAPI=8
 
 WX_GTK_VER="3.0-gtk3"
-inherit desktop optfeature toolchain-funcs wxwidgets
+inherit desktop optfeature wxwidgets xdg
 
 MY_P="${PN}-v${PV}"
 
@@ -50,7 +50,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake CXX="$(tc-getCXX)"
+	emake
 }
 
 src_install() {
@@ -70,6 +70,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
 	if use examples ; then
 		elog "If you want to use the examples, copy and extract from"
 		elog "${EROOT}/usr/share/doc/${PF} the sch and lib directory"

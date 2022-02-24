@@ -1,7 +1,18 @@
 diff --git a/src/Makefile b/src/Makefile
-index 50736fd..22a1328 100644
+index 50736fd..8dbfcfa 100644
 --- a/src/Makefile
 +++ b/src/Makefile
+@@ -39,8 +39,8 @@ DESTDIR = /usr/local/bin
+ #***************************************************************************************************
+ 
+ # Which compiler and linker (eg. g++ or clang++)
+-CXX = g++
+-LD  = g++
++CXX ?= g++
++LD  ?= g++
+ ifneq ($(GSPICEUI_MSWIN),0)
+   LD += -static-libstdc++ -static-libgcc
+   WINDRES = windres
 @@ -91,13 +91,7 @@ BINDIR = $(ROOT)/bin
  #  -Os           Optimize for size
  #  -Og           Optimize debugging experience but don't break debugging
@@ -17,12 +28,29 @@ index 50736fd..22a1328 100644
  
  # I like to compile using the option "-Wall" etc., tests that break wxWidgets are turned off below
  ifeq ($(GSPICEUI_DEBUG),1)
-@@ -181,7 +175,7 @@ $(OBJDIR)/%.o : %.cpp
+@@ -117,6 +111,7 @@ INCLUDES = -I.
+ 
+ # Libraries
+ LIBS := $(shell $(WXCFG) --libs core,base,html)
++LIBS += -lm -lstdc++
+ # (The pkg-config stuff was requested by a user, somehow pangox was missing) 2019-08-07 ???
+ #ifeq ($(GSPICEUI_MSWIN),0)
+ #LIBS := $(shell $(WXCFG) --libs core,base,html) # $(shell pkg-config --libs-only-l pangox)
+@@ -181,7 +176,7 @@ $(OBJDIR)/%.o : %.cpp
  #   -o     specify the output file name
  
  $(BINDIR)/$(PROG) : $(OBJS)
 -	$(LD) -pipe -o $(BINDIR)/$(PROG) obj/*.o $(LIBS)
-+	$(LD) -pipe -o $(BINDIR)/$(PROG) obj/*.o $(LDFLAGS) $(LIBS)
++	$(CXX) -o $(BINDIR)/$(PROG) obj/*.o $(LDFLAGS) $(LIBS)
  ifeq ($(ROOT)/GSpiceUI.app,$(wildcard $(ROOT)/GSpiceUI.app))
  	cp $(BINDIR)/$(PROG) $(ROOT)/GSpiceUI.app/Contents/MacOS/gspiceui
+ endif
+@@ -223,7 +218,7 @@ tests : test_Component test_NetList test_CnvtType test_CmdNgSpiceOPT test_CmdNgS
+ 
+ # Compiler options
+ 
+-test_% : CXXFLAGS  = -Wall -g -pipe $(shell $(WXCFG) --cxxflags)
++test_% : CXXFLAGS  += $(shell $(WXCFG) --cxxflags)
+ ifeq ($(GSPICEUI_WXLIB),2.8)  # This suppresses spurious warnings from gcc with wxWidgets v2.8.12
+   test_% : CXXFLAGS += -Wno-unused-local-typedefs
  endif
