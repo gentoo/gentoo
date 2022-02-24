@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -58,4 +58,8 @@ EPYTEST_DESELECT=(
 python_compile() {
 	distutils-r1_python_compile
 	find "${BUILD_DIR}" -name '*.pth' -delete || die
+}
+
+python_test() {
+	epytest -p no:aiohttp -p no:trio
 }
