@@ -25,3 +25,16 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+python_test() {
+	local script="${BUILD_DIR}/install${EPREFIX}/usr/bin/pytest"
+	cat > "${script}" <<-EOF
+		#!/usr/bin/env python
+		import pytest
+		import sys
+		sys.exit(pytest.console_main())
+	EOF
+	chmod +x "${script}" || die
+	epytest -x
+	rm "${script}" || die
+}
