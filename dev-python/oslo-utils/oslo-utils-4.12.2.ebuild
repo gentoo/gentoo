@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -30,8 +30,10 @@ RDEPEND="
 "
 BDEPEND="
 	>=dev-python/pbr-2.2.0[${PYTHON_USEDEP}]
-	>dev-python/eventlet-0.23.0[${PYTHON_USEDEP}]
 	test? (
+		$(python_gen_cond_dep '
+			>=dev-python/eventlet-0.23.0[${PYTHON_USEDEP}]
+		' python3_{8..9})
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
@@ -46,4 +48,16 @@ src_prepare() {
 	# spurious rdep
 	sed -i -e '/pbr/d' requirements.txt || die
 	distutils-r1_src_prepare
+}
+
+python_compile() {
+	distutils-r1_python_compile
+	if ! has "${EPYTHON}" python3.{8..9}; then
+		find "${BUILD_DIR}"/install -name '*eventletutils*.py' -delete || die
+	fi
+}
+
+python_test() {
+	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
+	eunittest
 }
