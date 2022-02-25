@@ -49,6 +49,14 @@ PATCHES=(
 
 distutils_enable_tests pytest
 
+EPYTEST_DESELECT=(
+	# TODO
+	ipykernel/tests/test_debugger.py::test_attach_debug
+	ipykernel/tests/test_debugger.py::test_set_breakpoints
+	ipykernel/tests/test_debugger.py::test_rich_inspect_not_at_breakpoint
+	ipykernel/tests/test_debugger.py::test_rich_inspect_at_breakpoint
+)
+
 src_prepare() {
 	sed -i -e 's:^TIMEOUT = .*:TIMEOUT = 120:' ipykernel/tests/*.py || die
 	distutils-r1_src_prepare
