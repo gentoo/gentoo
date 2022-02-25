@@ -1,0 +1,18 @@
+diff --git a/src/mumble/CMakeLists.txt b/src/mumble/CMakeLists.txt
+index bb8df1671..51f83850e 100644
+--- a/src/mumble/CMakeLists.txt
++++ b/src/mumble/CMakeLists.txt
+@@ -472,12 +472,7 @@ else()
+ endif()
+ 
+ 
+-set(JSON_BuildTests OFF CACHE INTERNAL "")
+-set(JSON_ImplicitConversions OFF CACHE INTERNAL "")
+-add_subdirectory("${3RDPARTY_DIR}/nlohmann_json/" "${CMAKE_CURRENT_BINARY_DIR}/nlohmann_json/")
+-
+-target_link_libraries(mumble_client_object_lib PUBLIC nlohmann_json::nlohmann_json)
+-
++find_pkg("nlohmann_json" REQUIRED)
+ find_pkg("SndFile;LibSndFile;sndfile" REQUIRED)
+ 
+ # Check if sndfile version supports opus
