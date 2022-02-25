@@ -14,7 +14,6 @@ HOMEPAGE="
 SRC_URI="
 	https://github.com/pekdon/${PN}/releases/download/release-${PV}/pekwm-${PV}.tar.gz
 "
-S="${WORKDIR}"/${PN}\-${PV}
 
 LICENSE="GPL-2"
 SLOT="0"
