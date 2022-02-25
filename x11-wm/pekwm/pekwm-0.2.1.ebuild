@@ -17,7 +17,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~mips ~ppc ~x86"
-IUSE="contrib debug +jpeg +png themes truetype +xft xinerama +xpm"
+IUSE="debug +jpeg +png themes truetype +xft xinerama +xpm"
 
 RDEPEND="
 	png? ( media-libs/libpng:0 )
@@ -50,10 +50,8 @@ multilib_src_install() {
 	cmake_src_install
 
 	# Install contributor scripts into doc folder
-	if use contrib; then
-		docinto contrib
-		dodoc "${S}"/contrib/lobo/*.{pl,vars,png} "${S}"/contrib/lobo/README
-	fi
+	docinto contrib
+	dodoc "${S}"/contrib/lobo/*.{pl,vars,png} "${S}"/contrib/lobo/README
 
 	# Insert an Xsession
 exeinto /etc/X11/Sessions
@@ -74,10 +72,10 @@ pkg_postinst() {
 		elog "Check https://www.pekwm.se/themes/ for details."
 	fi
 
-	if use contrib ; then
-		elog "User contributed scripts have been installed into:"
-		elog "${EROOT}/usr/share/doc/${PF}/contrib"
-	fi
+	
+	elog "User contributed scripts have been installed into:"
+	elog "${EROOT}/usr/share/doc/${PF}/contrib"
+	
 
 	elog "If update from older version, the menu configuration 'Exec' needs to "
 	elog "remove '&': Exec no longer use sh -c to run commands which will "
