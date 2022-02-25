@@ -56,9 +56,11 @@ multilib_src_install() {
 	fi
 
 	# Insert an Xsession
-	echo -e "#!/bin/sh\n\n/usr/bin/${PN}" > "${T}"/"${PN}" || die
-	exeinto /etc/X11/Sessions
-	doexe "${T}"/"${PN}"
+exeinto /etc/X11/Sessions
+newexe - pekwm <<- _EOF_
+	#!/bin/sh
+	/usr/bin/pekwm
+_EOF_
 
 	# Insert a GDM/KDM xsession file
 	make_session_desktop ${PN} ${PN}
