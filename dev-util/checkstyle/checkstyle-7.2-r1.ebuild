@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/checkstyle/checkstyle"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 CP_DEPEND="
 	dev-java/ant-core:0
