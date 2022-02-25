@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPTION="H.265 decoder plugin for GStreamer"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	>=media-libs/libde265-0.9[${MULTILIB_USEDEP}]

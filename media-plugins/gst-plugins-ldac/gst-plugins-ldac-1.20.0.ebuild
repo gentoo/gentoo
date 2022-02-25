@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPTION="LDAC plugin for GStreamer"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="media-libs/libldac[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"

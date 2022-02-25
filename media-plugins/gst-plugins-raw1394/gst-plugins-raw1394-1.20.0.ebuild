@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPTION="Fiwewire DV/HDV capture plugin for GStreamer"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE=""
 
 RDEPEND="
 	>=media-libs/libiec61883-1.2.0-r1[${MULTILIB_USEDEP}]

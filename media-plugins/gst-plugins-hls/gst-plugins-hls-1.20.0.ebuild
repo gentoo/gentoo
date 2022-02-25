@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPTION="HTTP live streaming plugin for GStreamer"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	dev-libs/nettle:0=[${MULTILIB_USEDEP}]

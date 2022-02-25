@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPTION="SCTP plugins for GStreamer"
 KEYWORDS="~amd64"
-IUSE=""
 
 RDEPEND="
 	>=media-libs/gst-plugins-base-${PV}:1.0[${MULTILIB_USEDEP}]

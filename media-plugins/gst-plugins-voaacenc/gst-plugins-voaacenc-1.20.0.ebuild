@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPTION="AAC encoder plugin for GStreamer"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND=">=media-libs/vo-aacenc-0.1.3[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"

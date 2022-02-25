@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPTION="Sid decoder plugin for GStreamer"
 KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE=""
 
 RDEPEND=">=media-libs/libsidplay-1.36.59-r1:1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"

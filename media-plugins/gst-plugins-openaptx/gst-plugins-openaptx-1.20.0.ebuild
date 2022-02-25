@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPTION="openaptx plugin for GStreamer"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	|| (

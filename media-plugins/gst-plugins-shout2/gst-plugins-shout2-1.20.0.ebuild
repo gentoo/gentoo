@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPTION="Icecast server sink plugin for GStreamer"
 KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~x86"
-IUSE=""
 
 RDEPEND=">=media-libs/libshout-2.3.1-r1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
