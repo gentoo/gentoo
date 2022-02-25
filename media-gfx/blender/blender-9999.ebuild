@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_9 )
+PYTHON_COMPAT=( python3_10 )
 
 inherit check-reqs cmake flag-o-matic pax-utils python-single-r1 toolchain-funcs xdg-utils
 
@@ -377,11 +377,11 @@ pkg_postinst() {
 	ewarn "  https://developer.blender.org/"
 	ewarn
 
-	if ! use python_single_target_python3_9; then
+	if ! use python_single_target_python3_10; then
 		elog "You are building Blender with a newer python version than"
 		elog "supported by this version upstream."
 		elog "If you experience breakages with e.g. plugins, please switch to"
-		elog "python_single_target_python3_9 instead."
+		elog "python_single_target_python3_10 instead."
 		elog "Bug: https://bugs.gentoo.org/737388"
 		elog
 	fi
