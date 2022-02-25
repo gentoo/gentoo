@@ -25,6 +25,4 @@ RDEPEND="
 	>=media-video/ffmpeg-4:0=[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
-	>=dev-util/gtk-doc-am-1.12
-"
+BDEPEND=""

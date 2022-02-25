@@ -18,10 +18,7 @@ RDEPEND="
 	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
-	${PYTHON_DEPS}
-	>=dev-util/gtk-doc-am-1.12
-"
+BDEPEND="${PYTHON_DEPS}"
 
 DOCS=( AUTHORS ChangeLog NEWS README RELEASE )
 

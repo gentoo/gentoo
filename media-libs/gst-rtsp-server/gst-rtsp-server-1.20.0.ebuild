@@ -23,9 +23,7 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.31.1:= )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
-	>=dev-util/gtk-doc-am-1.12
-"
+BDEPEND=""
 
 multilib_src_configure() {
 	local emesonargs=(

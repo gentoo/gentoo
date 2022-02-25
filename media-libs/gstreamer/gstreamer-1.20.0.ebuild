@@ -27,7 +27,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/glib-utils
-	>=dev-util/gtk-doc-am-1.12
 	sys-devel/bison
 	sys-devel/flex
 "

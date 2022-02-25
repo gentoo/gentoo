@@ -20,9 +20,7 @@ RDEPEND="
 	orc? ( >=dev-lang/orc-0.4.17[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
-	>=dev-util/gtk-doc-am-1.12
-"
+BDEPEND=""
 
 DOCS=( AUTHORS ChangeLog NEWS README RELEASE )
 
