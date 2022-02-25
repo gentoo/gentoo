@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/google/guava"
 SRC_URI="https://codeload.github.com/google/guava/tar.gz/v${PV} -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 # Common dependencies
 # POM: pom.xml
