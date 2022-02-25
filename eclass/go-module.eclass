@@ -184,6 +184,19 @@ declare -A -g _GOMODULE_GOSUM_REVERSE_MAP
 # If you enable GO_OPTIONAL, you have to set BDEPEND on >=dev-lang/go-1.12
 # for your package and call go-module_src_unpack manually.
 
+# @FUNCTION: ego
+# @USAGE: [<args>...]
+# @DESCRIPTION:
+# Call go, passing the supplied arguments.
+# This function dies if go fails. It also supports being called via 'nonfatal'.
+# If you need to call go directly in your ebuilds, this is the way it
+# should be done.
+ego() {
+	set -- go "$@"
+	echo "$@" >&2
+	"$@" || die -n "${*} failed"
+}
+
 # @FUNCTION: go-module_set_globals
 # @DESCRIPTION:
 # Convert the information in EGO_SUM for other usage in the ebuild.
