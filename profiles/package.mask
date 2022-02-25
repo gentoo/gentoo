@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2022-02-25)
+# Has issues on non-amd64, but mask everywhere as a precaution
+# until further investigation (bug #834019, bug #834037)
+=net-misc/openssh-8.9_p1
+
 # Sam James <sam@gentoo.org> (2022-02-24)
 # Obsolete, ex-dependency of xfsprogs. Fails to build on 32-bit arches.
 # No reverse dependencies. Discontinued upstream. Removal on 2022-03-24.
