@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPTION="WebRTC plugins for GStreamer"
 KEYWORDS="~amd64"
-IUSE=""
 
 # == ext/webrtc/meson.build
 # dev-libs/glib (eclass): gio_dep

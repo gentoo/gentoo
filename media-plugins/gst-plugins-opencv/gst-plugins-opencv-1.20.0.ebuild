@@ -8,7 +8,6 @@ inherit gstreamer-meson python-any-r1
 
 DESCRIPTION="OpenCV elements for GStreamer"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 # >=opencv-4.1.2-r3 to help testing removal of older being fine
 RDEPEND="

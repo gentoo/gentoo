@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPION="JACK audio server source/sink plugin for GStreamer"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE=""
 
 # >=jack-1.9.7 is provided by pipewire[jack-sdk] as well
 RDEPEND="|| (

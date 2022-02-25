@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPTION="X11 video capture stream plugin for GStreamer"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE=""
 
 RDEPEND="
 	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP}]

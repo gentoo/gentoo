@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPTION="Visualization elements for GStreamer"
 KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE=""
 
 RDEPEND="
 	>=media-libs/libvisual-0.4.0-r3[${MULTILIB_USEDEP}]

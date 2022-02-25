@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPTION="Kate overlay codec suppport plugin for GStreamer"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	>=media-libs/libkate-0.1.7[${MULTILIB_USEDEP}]

@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPTION="AVDTP source/sink and A2DP sink plugin for GStreamer"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	>=net-wireless/bluez-5[${MULTILIB_USEDEP}]

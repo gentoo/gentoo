@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPTION="AMR-WB audio encoder plugin for GStreamer"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND=">=media-libs/vo-amrwbenc-0.1.2-r1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"

@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPTION="Lv2 elements for Gstreamer"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE=""
 
 RDEPEND="
 	>=media-libs/lv2-1.14.0-r1[${MULTILIB_USEDEP}]

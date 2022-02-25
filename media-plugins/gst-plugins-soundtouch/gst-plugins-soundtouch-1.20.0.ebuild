@@ -8,7 +8,6 @@ inherit gstreamer-meson
 
 DESCRIPTION="Beats-per-minute detection and pitch controlling plugin for GStreamer"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND=">=media-libs/libsoundtouch-1.7.1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
