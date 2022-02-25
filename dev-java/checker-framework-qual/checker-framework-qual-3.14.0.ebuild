@@ -16,7 +16,7 @@ HOMEPAGE="https://checkerframework.org/"
 SRC_URI="https://codeload.github.com/typetools/${MY_PN}/tar.gz/refs/tags/${MY_P} -> ${MY_P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
