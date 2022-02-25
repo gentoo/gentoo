@@ -23,7 +23,8 @@ RDEPEND="
 	png? ( media-libs/libpng:0 )
 	jpeg? ( virtual/jpeg:0 )
 	xpm? ( x11-libs/libXpm )
-	x11-libs/libXrender
+	x11-libs/libX11
+	x11-libs/libXext
 	truetype? ( x11-libs/libXft )
 	xinerama? ( x11-libs/libXinerama )
 	themes? ( dev-vcs/git )"
