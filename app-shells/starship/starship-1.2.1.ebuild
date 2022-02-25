@@ -263,7 +263,7 @@ LICENSE="
 	MPL-2.0
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND=">=virtual/rust-1.56"
 DEPEND=">=dev-libs/libgit2-1.2.0:="
