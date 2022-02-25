@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CMAKE_ECLASS=cmake
 inherit cmake-multilib desktop
 
 DESCRIPTION="A lightweight window manager initially based on aewm++"
