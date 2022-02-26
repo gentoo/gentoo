@@ -32,9 +32,20 @@ RDEPEND="
 		dev-python/passlib[${PYTHON_USEDEP}]
 	)"
 
+distutils_enable_tests --install pytest
+
 S="${WORKDIR}/${MY_P}"
 
 RDIR=/var/lib/${PN}
+
+src_prepare() {
+	sed -i '/^addopts =/d' setup.cfg || die
+	distutils-r1_src_prepare
+}
+
+python_test() {
+	epytest radicale/tests/
+}
 
 python_install_all() {
 	rm README* || die
