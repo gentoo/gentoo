@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/xournalpp/xournalpp"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+IUSE="elibc_musl"
 
 COMMONDEPEND="
 	app-text/poppler[cairo]
@@ -39,6 +39,7 @@ DEPEND="${COMMONDEPEND}
 BDEPEND="
 	virtual/pkgconfig
 	sys-apps/lsb-release
+	elibc_musl? ( sys-libs/libbacktrace )
 "
 
 PATCHES=(
