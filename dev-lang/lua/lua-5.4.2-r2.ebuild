@@ -6,7 +6,7 @@ inherit autotools multilib multilib-minimal portability toolchain-funcs
 
 DESCRIPTION="A powerful light-weight programming language designed for extending applications"
 HOMEPAGE="https://www.lua.org/"
-TEST_PV="5.4.4"
+TEST_PV="5.4.2"
 TEST_P="${PN}-${TEST_PV}-tests"
 SRC_URI="
 	https://www.lua.org/ftp/${P}.tar.gz
