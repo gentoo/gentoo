@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit cmake-utils
+inherit cmake
 
 MY_PN="OpenMesh"
 MY_PV="${PV/_rc/-RC}"
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Fix libdir and remove rpath.
 	sed -i \
@@ -57,10 +57,10 @@ src_configure() {
 		-DOPENMESH_BUILD_UNIT_TESTS=$(usex test)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
 	cd "${BUILD_DIR}" || die
-	LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${BUILD_DIR}/Build/$(get_libdir) ctest --verbose
+	LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${BUILD_DIR}/Build/$(get_libdir)" cmake_src_test --verbose
 }
