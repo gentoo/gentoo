@@ -64,6 +64,10 @@ src_prepare() {
 
 	sed -i -e "s|LIBRARY DESTINATION lib|LIBRARY DESTINATION $(get_libdir)|g" {,src/bindings/python/,src/OpenColorIO/,src/libutils/oiiohelpers/,src/libutils/oglapphelpers/}CMakeLists.txt || die
 	sed -i -e "s|ARCHIVE DESTINATION lib|ARCHIVE DESTINATION $(get_libdir)|g" {,src/bindings/python/,src/OpenColorIO/,src/libutils/oiiohelpers/,src/libutils/oglapphelpers/}CMakeLists.txt || die
+
+	# Avoid automagic test dependency on OSL, bug #833933
+	# Can cause problems during e.g. OpenEXR unsplitting migration
+	cmake_run_in tests cmake_comment_add_subdirectory osl
 }
 
 src_configure() {
