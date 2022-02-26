@@ -65,10 +65,6 @@ PATCHES=(
 src_prepare() {
 	default
 
-	if has_version ">=sys-libs/binutils-libs-2.34"; then
-		eapply "${FILESDIR}"/${PN}-1.16.0-binutils-2.34.patch
-	fi
-
 	# tests and perf tools require X, bug #483574
 	if ! use X; then
 		sed -e '/^SUBDIRS/ s#boilerplate test perf# #' -i Makefile.am || die
