@@ -33,3 +33,10 @@ python_check_deps() {
 src_configure() {
 	econf --without-gimp
 }
+
+src_compile() {
+	# See bug: 833566
+	python_export_utf8_locale
+	# If affected with bug: 677198 then set "emake -j1"
+	emake
+}
