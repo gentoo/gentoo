@@ -37,10 +37,11 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	default
 	gnome2_environment_reset
-	use vala && vala_src_prepare
 }
 
 src_configure() {
+	use vala && vala_setup
+
 	# Automagic rsvg support is just for website generation we do not call,
 	#     so we don't need to fix it
 	# w3m is used for dist target thus no issue for us that it is automagically
