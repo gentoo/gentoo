@@ -20,7 +20,7 @@ index 669dd81f..50fde2c4 100644
  #endif
  
 -#if defined(cray) || defined(__SVR4) || defined(_WIN32)
-+#if defined(cray) || defined(__SVR4) || defined(_WIN32) || defined(__MUSL__)
++#if defined(cray) || defined(__SVR4) || defined(_WIN32) || !defined(__GLIBC__)
  #include <fcntl.h>
  #else
  #include <sys/file.h>
