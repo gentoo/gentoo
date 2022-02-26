@@ -28,6 +28,8 @@ RDEPEND="gtk? ( dev-ml/lablgtk:2=[ocamlopt?]
 
 DOCS=( CONTRIB INSTALL NEWS README ROADMAP.txt TODO.txt )
 
+QA_FLAGS_IGNORED="usr/bin/${PN}-fsmonitor-${SLOT}"
+
 src_prepare() {
 	default
 	# https://github.com/bcpierce00/unison/issues/416
