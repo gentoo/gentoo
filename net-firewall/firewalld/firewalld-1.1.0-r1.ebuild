@@ -45,7 +45,7 @@ RESTRICT="test" # bug 650760
 # Needs more investigation: https://www.gnu.org/software/autoconf/manual/autoconf-2.67/html_node/autom4te-Invocation.html
 QA_AM_MAINTAINER_MODE=".*--run autom4te --language=autotest.*"
 
-PLOCALES="ar as ast bg bn_IN ca cs da de el en_GB en_US es et eu fa fi fr gl gu hi hu ia id it ja ka kn ko lt ml mr nl or pa pl pt pt_BR ru si sk sq sr sr@latin sv ta te tr uk zh_CN zh_TW"
+PLOCALES="ar as ast bg bn_IN ca cs da de el en_GB en_US es et eu fa fi fr gl gu hi hr hu ia id it ja ka kn ko lt ml mr nl or pa pl pt pt_BR ru si sk sq sr sr@latin sv ta te tr uk zh_CN zh_TW"
 
 pkg_setup() {
 	# See bug #830132 for the huge list
@@ -149,7 +149,7 @@ src_prepare() {
 
 	eautoreconf
 
-	plocale_find_changes "po" "" ".po"
+	plocale_find_changes "po" "" ".po" || die
 	plocale_get_locales | sed -e 's/ /\n/g' > po/LINGUAS
 }
 
