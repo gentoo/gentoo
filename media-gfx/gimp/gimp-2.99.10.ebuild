@@ -130,8 +130,6 @@ src_prepare() {
 
 	gnome2_src_prepare  # calls eautoreconf
 
-	use vala && vala_src_prepare
-
 	sed 's:-DGIMP_protect_DISABLE_DEPRECATED:-DGIMP_DISABLE_DEPRECATED:g' -i configure || die #615144
 	fgrep -q GIMP_DISABLE_DEPRECATED configure || die #615144, self-test
 
@@ -154,6 +152,8 @@ _adjust_sandbox() {
 
 src_configure() {
 	_adjust_sandbox
+
+	use vala && vala_setup
 
 	local myconf=(
 		GEGL="${EPREFIX}"/usr/bin/gegl-0.4
