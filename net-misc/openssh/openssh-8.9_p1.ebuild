@@ -128,6 +128,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-8.0_p1-deny-shmget-shmat-shmdt-in-preauth-privsep-child.patch
 	eapply "${FILESDIR}"/${PN}-8.9_p1-allow-ppoll_time64.patch #834019
 	eapply "${FILESDIR}"/${PN}-8.9_p1-fzero-call-used-regs.patch #834037
+	eapply "${FILESDIR}"/${PN}-8.9_p1-gss-use-HOST_NAME_MAX.patch #834044
 
 	[[ -d ${WORKDIR}/patches ]] && eapply "${WORKDIR}"/patches
 

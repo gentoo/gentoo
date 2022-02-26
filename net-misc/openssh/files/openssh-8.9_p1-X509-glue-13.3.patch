@@ -1,6 +1,6 @@
 diff -ur '--exclude=.*.un~' a/openssh-8.9p1+x509-13.3.diff b/openssh-8.9p1+x509-13.3.diff
 --- a/openssh-8.9p1+x509-13.3.diff	2022-02-24 17:19:30.830285922 -0800
-+++ b/openssh-8.9p1+x509-13.3.diff	2022-02-25 16:56:00.750829460 -0800
++++ b/openssh-8.9p1+x509-13.3.diff	2022-02-25 17:35:40.885492007 -0800
 @@ -993,15 +993,16 @@
   	char b[512];
  -	size_t len = ssh_digest_bytes(SSH_DIGEST_SHA512);
@@ -21,6 +21,17 @@ diff -ur '--exclude=.*.un~' a/openssh-8.9p1+x509-13.3.diff b/openssh-8.9p1+x509-
   	(void)snprintf(b, sizeof b, "%llu%s",
   	    (unsigned long long)options.timing_secret, user);
  -	if (ssh_digest_memory(SSH_DIGEST_SHA512, b, strlen(b), hash, len) != 0)
+@@ -44573,8 +44574,8 @@
+  		gss_create_empty_oid_set(&status, &oidset);
+  		gss_add_oid_set_member(&status, ctx->oid, &oidset);
+  
+--		if (gethostname(lname, MAXHOSTNAMELEN)) {
+-+		if (gethostname(lname, MAXHOSTNAMELEN) == -1) {
++-		if (gethostname(lname, HOST_NAME_MAX)) {
+++		if (gethostname(lname, HOST_NAME_MAX) == -1) {
+  			gss_release_oid_set(&status, &oidset);
+  			return (-1);
+  		}
 @@ -51970,7 +51971,7 @@
  diff -ruN openssh-8.9p1/m4/openssh.m4 openssh-8.9p1+x509-13.3/m4/openssh.m4
  --- openssh-8.9p1/m4/openssh.m4	2022-02-23 13:31:11.000000000 +0200
