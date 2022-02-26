@@ -111,11 +111,6 @@ multilib_src_configure() {
 		--enable-png \
 		--enable-ps \
 		--enable-script \
-		--disable-drm \
-		--disable-directfb \
-		--disable-gallium \
-		--disable-qt \
-		--disable-vg \
 		--disable-xlib-xcb \
 		${myopts}
 }
