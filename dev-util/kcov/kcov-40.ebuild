@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit cmake
+PYTHON_COMPAT=( python3_{8,9,10} )
+inherit cmake python-any-r1
 
 DESCRIPTION="Kcov is a code coverage tester for compiled languages, Python and Bash"
 HOMEPAGE="https://github.com/SimonKagstrom/kcov"
@@ -24,6 +25,7 @@ RDEPEND="dev-libs/elfutils
 	sys-libs/zlib
 	binutils? ( sys-libs/binutils-libs:= )"
 DEPEND="${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}"
 
 src_configure() {
 	local mycmakeargs=(
