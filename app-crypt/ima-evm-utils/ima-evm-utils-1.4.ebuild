@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.4-configure-remove-automagic-TSS-dependencies.patch"
 	"${FILESDIR}/${PN}-1.4-test-Rename-bash-variable-WORKDIR-to-MYWORKDIR.patch"
 	"${FILESDIR}/${PN}-1.4-test-remove-boot_aggregate.patch"
-	)
+)
 
 src_prepare() {
 	default
