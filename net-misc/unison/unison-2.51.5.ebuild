@@ -6,7 +6,7 @@ EAPI=8
 inherit desktop xdg-utils
 
 DESCRIPTION="Two-way cross-platform file synchronizer"
-HOMEPAGE="https://www.seas.upenn.edu/~bcpierce/unison/"
+HOMEPAGE="https://www.seas.upenn.edu/~bcpierce/unison/ https://github.com/bcpierce00/unison"
 SRC_URI="https://github.com/bcpierce00/unison/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
