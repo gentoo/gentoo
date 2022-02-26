@@ -95,11 +95,6 @@ src_prepare() {
 		sed -i -e 's/#ifdef __APPLE__/#if 0/' gegl/opencl/* || die
 	fi
 
-	# commit 7c78497b : tests that use gegl.png are broken on non-amd64
-	sed -e '/clones.xml/d' \
-		-e '/composite-transform.xml/d' \
-		-i tests/compositions/meson.build || die
-
 	# fix 'build'headers from *.cl on gentoo-hardened, bug 739816
 	pushd "${S}/opencl/" || die
 	for file in *.cl; do
@@ -108,11 +103,11 @@ src_prepare() {
 		fi
 	done
 	popd || die
-
-	use vala && vala_src_prepare
 }
 
 src_configure() {
+	use vala && vala_setup
+
 	local emesonargs=(
 		#  - Disable documentation as the generating is bit automagic
 		#    if anyone wants to work on it just create bug with patch
