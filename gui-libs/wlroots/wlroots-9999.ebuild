@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson
 
@@ -13,9 +13,9 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	SLOT="0/9999"
 else
-	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-	SLOT="0/16"
+	SLOT="0/$(ver_cut 2)"
 fi
 
 LICENSE="MIT"

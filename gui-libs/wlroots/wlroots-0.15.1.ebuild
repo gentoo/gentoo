@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-	SLOT="0/15"
+	SLOT="0/$(ver_cut 2)"
 fi
 
 LICENSE="MIT"
