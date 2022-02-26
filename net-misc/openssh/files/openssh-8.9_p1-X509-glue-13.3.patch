@@ -1,6 +1,6 @@
 diff -ur '--exclude=.*.un~' a/openssh-8.9p1+x509-13.3.diff b/openssh-8.9p1+x509-13.3.diff
 --- a/openssh-8.9p1+x509-13.3.diff	2022-02-24 17:19:30.830285922 -0800
-+++ b/openssh-8.9p1+x509-13.3.diff	2022-02-24 17:22:12.374625809 -0800
++++ b/openssh-8.9p1+x509-13.3.diff	2022-02-25 16:56:00.750829460 -0800
 @@ -993,15 +993,16 @@
   	char b[512];
  -	size_t len = ssh_digest_bytes(SSH_DIGEST_SHA512);
@@ -21,7 +21,33 @@ diff -ur '--exclude=.*.un~' a/openssh-8.9p1+x509-13.3.diff b/openssh-8.9p1+x509-
   	(void)snprintf(b, sizeof b, "%llu%s",
   	    (unsigned long long)options.timing_secret, user);
  -	if (ssh_digest_memory(SSH_DIGEST_SHA512, b, strlen(b), hash, len) != 0)
-@@ -52711,12 +52712,11 @@
+@@ -51970,7 +51971,7 @@
+ diff -ruN openssh-8.9p1/m4/openssh.m4 openssh-8.9p1+x509-13.3/m4/openssh.m4
+ --- openssh-8.9p1/m4/openssh.m4	2022-02-23 13:31:11.000000000 +0200
+ +++ openssh-8.9p1+x509-13.3/m4/openssh.m4	1970-01-01 02:00:00.000000000 +0200
+-@@ -1,200 +0,0 @@
++@@ -1,203 +0,0 @@
+ -dnl OpenSSH-specific autoconf macros
+ -dnl
+ -
+@@ -51987,6 +51988,8 @@
+ -	AC_COMPILE_IFELSE([AC_LANG_SOURCE([[
+ -#include <stdlib.h>
+ -#include <stdio.h>
++-/* Trivial function to help test for -fzero-call-used-regs */
++-void f(int n) {}
+ -int main(int argc, char **argv) {
+ -	(void)argv;
+ -	/* Some math to catch -ftrapv problems in the toolchain */
+@@ -51994,6 +51997,7 @@
+ -	float l = i * 2.1;
+ -	double m = l / 0.5;
+ -	long long int n = argc * 12345LL, o = 12345LL * (long long int)argc;
++-	f(0);
+ -	printf("%d %d %d %f %f %lld %lld\n", i, j, k, l, m, n, o);
+ -	/*
+ -	 * Test fallthrough behaviour.  clang 10's -Wimplicit-fallthrough does
+@@ -52711,12 +52715,11 @@
   
   install-files:
   	$(MKDIR_P) $(DESTDIR)$(bindir)
@@ -35,7 +61,7 @@ diff -ur '--exclude=.*.un~' a/openssh-8.9p1+x509-13.3.diff b/openssh-8.9p1+x509-
   	$(MKDIR_P) -m 0755 $(DESTDIR)$(PRIVSEP_PATH)
   	$(INSTALL) -m 0755 $(STRIP_OPT) ssh$(EXEEXT) $(DESTDIR)$(bindir)/ssh$(EXEEXT)
   	$(INSTALL) -m 0755 $(STRIP_OPT) scp$(EXEEXT) $(DESTDIR)$(bindir)/scp$(EXEEXT)
-@@ -73508,7 +73508,7 @@
+@@ -73508,7 +73511,7 @@
  +if test "$sshd_type" = "pkix" ; then
  +  unset_arg=''
  +else
@@ -44,7 +70,7 @@ diff -ur '--exclude=.*.un~' a/openssh-8.9p1+x509-13.3.diff b/openssh-8.9p1+x509-
  +fi
  +
   cat > $OBJ/sshd_config.i << _EOF
-@@ -137555,16 +137555,6 @@
+@@ -137555,16 +137558,6 @@
  +int	 asnmprintf(char **, size_t, int *, const char *, ...)
   	    __attribute__((format(printf, 4, 5)));
   void	 msetlocale(void);
