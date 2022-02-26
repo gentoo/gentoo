@@ -36,5 +36,6 @@ BDEPEND="
 python_test() {
 	local -x PYTHONPATH=test:${PYTHONPATH}
 	local -x DJANGO_SETTINGS_MODULE=test_project.settings
-	django-admin test -v 2 django_otp || die "Tests fail with ${EPYTHON}"
+	"${EPYTHON}" -m django test -v 2 django_otp ||
+		die "Tests fail with ${EPYTHON}"
 }
