@@ -27,6 +27,7 @@ DOCS=( AUTHORS ChangeLog NEWS README RELEASE )
 # Fixes backported to 1.20.0, to be removed in 1.20.1+
 PATCHES=(
 	"${FILESDIR}/gst-plugins-good-1.20.0-lame-feature-option.patch"
+	"${FILESDIR}/gst-plugins-good-1.20.0-ldac-rtp-header.patch"
 )
 
 multilib_src_configure() {
