@@ -204,7 +204,7 @@ pkg_postinst() {
 	gnome2_schemas_update
 
 	# bug #833569
-	optfeature "Change zones with NetworkManager" gnome-extra/nm-applet
+	optfeature "changing zones with NetworkManager" gnome-extra/nm-applet
 }
 
 pkg_postrm() {
