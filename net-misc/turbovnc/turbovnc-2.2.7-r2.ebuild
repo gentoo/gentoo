@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake desktop java-pkg-opt-2
 
@@ -18,8 +18,8 @@ DEPEND="
 	app-arch/bzip2
 	media-libs/freetype
 	>=media-libs/libjpeg-turbo-2.0.0:=[java?]
+	sys-libs/pam
 	sys-libs/zlib
-	>=virtual/jdk-1.8:*
 	virtual/opengl
 	x11-libs/libfontenc
 	x11-libs/libX11
@@ -29,6 +29,10 @@ DEPEND="
 	x11-libs/libXfont2
 	x11-libs/libxkbfile
 	x11-libs/pixman
+	java? (
+		>=virtual/jdk-1.8:*
+		x11-libs/libXi
+	)
 	ssl? (
 		!gnutls? ( dev-libs/openssl:= )
 		gnutls? ( net-libs/gnutls:= )
@@ -40,10 +44,6 @@ RDEPEND="
 	x11-apps/xkbcomp
 "
 
-# net-misc/turbovnc does not build this file, it merely copies it
-# from media-libs/libjpeg-turbo
-QA_PREBUILT="usr/share/turbovnc/classes/libturbojpeg.so"
-
 src_prepare() {
 	use java && java-pkg-opt-2_src_prepare
 	cmake_src_prepare
@@ -54,7 +54,7 @@ src_configure() {
 		-DTVNC_SYSTEMX11=ON
 		-DTVNC_SYSTEMLIBS=ON
 		-DTVNC_BUILDJAVA=$(usex java)
-		-DTVNC_BUILDNATIVE=ON
+		-DTVNC_BUILDNATIVE=$(usex java)
 		-DXKB_BIN_DIRECTORY=/usr/bin
 		-DXKB_DFLT_RULES=base
 	)
@@ -95,6 +95,11 @@ src_install() {
 	if use java ; then
 		java-pkg_dojar "${BUILD_DIR}"/java/VncViewer.jar
 		make_desktop_entry vncviewer "TurboVNC Viewer" /usr/share/icons/hicolor/48x48/apps/${PN}.png
+
+		# turbovnc does not build this file, it merely copies it from media-libs/libjpeg-turbo
+		# so let's replace it by a symlink
+		rm "${ED}/"usr/share/turbovnc/classes/libturbojpeg.so || die
+		dosym -r "/usr/$(get_libdir)/libturbojpeg.so" /usr/share/turbovnc/classes/libturbojpeg.so
 	fi
 
 	# Don't install incompatible init script
