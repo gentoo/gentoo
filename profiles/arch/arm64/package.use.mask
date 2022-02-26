@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-02-26)
+# Supports 64-bit NEON
+>=media-libs/libjpeg-turbo-2.1.3 -cpu_flags_arm_neon
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-01-11)
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
