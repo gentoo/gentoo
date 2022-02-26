@@ -28,7 +28,7 @@ LICENSE="
 	nippon64? ( MIT )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+128 comic192 cs128 excentrique48 german128 nippon64"
 REQUIRED_USE="|| ( 128 comic192 cs128 excentrique48 german128 nippon64 )"
 
