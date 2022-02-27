@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ IUSE="libnotify zeroconf"
 
 RDEPEND="
 	dev-libs/glib
-	media-sound/pulseaudio[glib,zeroconf?]
+	|| ( media-sound/pulseaudio-daemon[glib,zeroconf?] <media-sound/pulseaudio-15.99.1[glib,zeroconf?] )
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	zeroconf? ( net-dns/avahi )
