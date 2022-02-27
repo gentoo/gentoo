@@ -32,7 +32,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	gtk-doc? ( dev-util/gtk-doc )
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? (
+		dev-libs/gobject-introspection
+		dev-libs/libgusb[introspection]
+	)
 "
 
 PATCHES=(
