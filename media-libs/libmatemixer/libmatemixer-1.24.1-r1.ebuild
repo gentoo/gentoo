@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.50:2
 	>=sys-devel/gettext-0.19.8:*
 	alsa? ( >=media-libs/alsa-lib-1.0.5 )
-	pulseaudio? ( >=media-sound/pulseaudio-5.0.0:0[alsa?,glib] )
+	pulseaudio? ( >=media-sound/pulseaudio-5.0.0:0[glib] )
 "
 
 RDEPEND="${COMMON_DEPEND}
