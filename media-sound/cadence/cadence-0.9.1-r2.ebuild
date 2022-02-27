@@ -34,7 +34,7 @@ CDEPEND="
 	media-sound/jack_capture
 	virtual/jack
 	a2jmidid? ( media-sound/a2jmidid[dbus] )
-	pulseaudio? ( || ( media-sound/pulseaudio-daemon[jack] media-sound/pulseaudio[daemon(+),jack] ) )
+	pulseaudio? ( || ( media-sound/pulseaudio-daemon[jack] <media-sound/pulseaudio-15.99.1[daemon(+),jack] ) )
 "
 RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}"
