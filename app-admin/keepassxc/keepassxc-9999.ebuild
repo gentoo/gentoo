@@ -92,8 +92,5 @@ src_configure() {
 	if [[ "${PV}" == *_beta* ]] ; then
 		mycmakeargs+=( -DOVERRIDE_VERSION="${PV/_/-}" )
 	fi
-	if [[ "${PV}" != 9999 ]] ; then
-		mycmakeargs+=( -DWITH_XC_KEESHARE_SECURE="$(usex keeshare)" )
-	fi
 	cmake_src_configure
 }
