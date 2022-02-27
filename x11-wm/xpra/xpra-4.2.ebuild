@@ -161,6 +161,9 @@ python_install_all() {
 	local dir=$(get_udevdir)
 	dodir "${dir%/*}"
 	mv -vnT "${ED}"/usr/lib/udev "${ED}${dir}" || die
+
+	# TODO: Write a Gentoo init script.
+	rm -r "${ED}"/etc/{init.d,sysconfig}/ || die
 }
 
 pkg_postinst() {
