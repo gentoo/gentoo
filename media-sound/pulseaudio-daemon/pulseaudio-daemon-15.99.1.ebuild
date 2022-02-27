@@ -183,7 +183,7 @@ src_configure() {
 		$(meson_feature asyncns)
 		$(meson_feature zeroconf avahi)
 		$(meson_feature bluetooth bluez5)
-		-Dbluez5-gstreamer=disabled # no ldacenc/rtpldacpay gst elements packaged yet
+		$(meson_feature gstreamer bluez5-gstreamer)
 		$(meson_use native-headset bluez5-native-headset)
 		$(meson_use ofono-headset bluez5-ofono-headset)
 		$(meson_feature dbus)
