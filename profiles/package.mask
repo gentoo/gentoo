@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (2022-02-27)
+# Appears broken, e.g. bug #834136
+=dev-libs/gnulib-2022.02.12.16.27.05
+
 # Michał Górny <mgorny@gentoo.org> (2022-02-26)
 # The original Midori browser has been discontinued, and the new
 # Electron-based "Midori" (sic!) does not seem worth the effort
