@@ -10,10 +10,10 @@ MY_P="${PN}-v${PV}"
 DESCRIPTION="An open-source Chinese font derived from Fontworks' Klee One"
 HOMEPAGE="https://github.com/lxgw/LxgwWenKai"
 SRC_URI="https://github.com/lxgw/LxgwWenKai/releases/download/v${PV}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64"
 
 FONT_SUFFIX="ttf"
