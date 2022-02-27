@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit cmake-utils
+inherit cmake
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -19,10 +19,17 @@ HOMEPAGE="https://github.com/i-rinat/fragview"
 LICENSE="MIT"
 SLOT="0"
 
-DEPEND="
+COMMON_DEPEND="
+	dev-cpp/atkmm:0
+	dev-cpp/cairomm:0
 	dev-cpp/glibmm:2
 	dev-cpp/gtkmm:3.0
 	dev-db/sqlite:3
-	dev-libs/boost:=
+	dev-libs/glib:2
+	dev-libs/libsigc++:2
 "
-RDEPEND="${DEPEND}"
+DEPEND="
+	${COMMON_DEPEND}
+	dev-libs/boost
+"
+RDEPEND="${COMMON_DEPEND}"
