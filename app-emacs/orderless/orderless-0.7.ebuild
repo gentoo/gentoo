@@ -14,6 +14,8 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+BDEPEND="sys-apps/texinfo"
+
 SITEFILE="50${PN}-gentoo.el"
 DOC_CONTENTS="Enable orderless completion by placing
 	\"(setq completion-styles '(orderless))\" in your .emacs file."
