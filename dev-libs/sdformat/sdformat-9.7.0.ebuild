@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Simulation Description Format (SDF) parser"
 HOMEPAGE="http://sdformat.org/"
@@ -13,7 +13,6 @@ LICENSE="Apache-2.0"
 # subslot = libsdformat major
 SLOT="0/9"
 KEYWORDS="~amd64"
-IUSE=""
 
 RDEPEND="
 	>=dev-libs/urdfdom-1:=
@@ -26,14 +25,18 @@ BDEPEND="
 	dev-lang/ruby:*
 	virtual/pkgconfig
 "
-CMAKE_BUILD_TYPE=RelWithDebInfo
+
+src_prepare() {
+	cmake_src_prepare
+
+	# get rid of default flags
+	sed -i -e '/_FLAGS_RELWITHDEBINFO/d' cmake/DefaultCFlags.cmake || die
+}
 
 src_configure() {
-	echo "set (CMAKE_C_FLAGS_ALL \"${CXXFLAGS} \${CMAKE_C_FLAGS_ALL}\")" > "${S}/cmake/HostCFlags.cmake"
-	sed -i -e "s/LINK_FLAGS_RELWITHDEBINFO \" \"/LINK_FLAGS_RELWITHDEBINFO \" ${LDFLAGS} \"/" cmake/DefaultCFlags.cmake || die
 	local mycmakeargs=(
-		"-DUSE_INTERNAL_URDF=OFF"
-		"-DUSE_EXTERNAL_TINYXML=ON"
+		-DUSE_INTERNAL_URDF=OFF
+		-DUSE_EXTERNAL_TINYXML=ON
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
