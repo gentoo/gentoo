@@ -280,11 +280,6 @@ x11-plugins/purple-facebook
 # Blender compatibility (no mixed LLVM versions).
 =media-libs/osl-1.12*
 
-# Hans de Graaff <graaff@gentoo.org> (2021-11-26)
-# Mask new rubygems version for testing. This version uses a new
-# gentoo-defaults profile, bug #789957
->=dev-ruby/rubygems-3.2.31
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-23)
 # Does not support updated dev-java/pdfbox-2.0.24, Bug #803488
 # Blocks (CVE-2018-11797, CVE-2021-{27807,27906,31811,31812})
