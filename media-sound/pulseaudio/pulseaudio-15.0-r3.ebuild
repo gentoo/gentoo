@@ -31,7 +31,7 @@ SLOT="0"
 # +alsa-plugin as discussed in bug #519530
 # TODO: Find out why webrtc-aec is + prefixed - there's already the always available speexdsp-aec
 # NOTE: The current ebuild sets +X almost certainly just for the pulseaudio.desktop file
-IUSE="+alsa +alsa-plugin +asyncns bluetooth dbus +daemon doc elogind equalizer +gdbm
+IUSE="+alsa +alsa-plugin aptx +asyncns bluetooth dbus +daemon doc elogind equalizer +gdbm
 gstreamer +glib gtk ipv6 jack ldac lirc native-headset ofono-headset +orc oss selinux sox ssl systemd
 system-wide tcpd test +udev +webrtc-aec +X zeroconf"
 
@@ -162,6 +162,7 @@ RDEPEND="
 		bluetooth? (
 			gstreamer? (
 				ldac? ( media-plugins/gst-plugins-ldac )
+				aptx? ( media-plugins/gst-plugins-openaptx )
 			)
 		)
 	)
