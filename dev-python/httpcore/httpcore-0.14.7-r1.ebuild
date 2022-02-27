@@ -5,6 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
+
 inherit distutils-r1 optfeature
 
 DESCRIPTION="A minimal low-level HTTP client"
@@ -20,7 +21,7 @@ KEYWORDS="amd64 arm arm64 hppa ppc ppc64 ~riscv sparc x86"
 RDEPEND="
 	=dev-python/anyio-3*[${PYTHON_USEDEP}]
 	dev-python/certifi[${PYTHON_USEDEP}]
-	<dev-python/h11-0.13[${PYTHON_USEDEP}]
+	<dev-python/h11-0.14[${PYTHON_USEDEP}]
 	<dev-python/h2-5[${PYTHON_USEDEP}]
 	=dev-python/sniffio-1*[${PYTHON_USEDEP}]
 "
@@ -36,6 +37,11 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	sed -i -e '/h11/s:,<0.13::' setup.py || die
+	distutils-r1_src_prepare
+}
 
 pkg_postinst() {
 	optfeature "SOCKS support" dev-python/socksio
