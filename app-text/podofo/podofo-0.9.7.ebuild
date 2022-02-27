@@ -29,8 +29,7 @@ RDEPEND="${LUA_DEPS}
 	media-libs/tiff:0=
 	sys-libs/zlib:="
 DEPEND="${RDEPEND}
-	dev-util/cppunit
-	net-dns/libidn
+	test? ( dev-util/cppunit )
 "
 
 BDEPEND="virtual/pkgconfig
