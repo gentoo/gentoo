@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="https://github.com/blueman-project/${PN}/releases/download/${PV/_/.}/${P/_/.}.tar.xz"
 	S=${WORKDIR}/${P/_/.}
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"
 fi
 
 # icons are GPL-2
@@ -65,8 +65,7 @@ RDEPEND="${DEPEND}
 	pulseaudio? (
 		|| (
 			media-sound/pulseaudio-daemon[bluetooth]
-			media-video/pipewire[bluetooth]
-			media-sound/pulseaudio[bluetooth]
+			<media-sound/pulseaudio-15.99.1[bluetooth]
 			media-sound/pulseaudio-modules-bt
 		)
 	)
