@@ -202,17 +202,6 @@ media-video/atomicparsley-wez
 # Removal on 2022-03-01.  Bug #832366.
 dev-python/python-slip
 
-# Fabian Groffen <grobian@gentoo.org> (2022-01-29)
-# Fails to compile with GCC on macOS.  No revdeps.
-# Removal on 2022-02-28.  Bug #832309.
-dev-perl/Mac-Pasteboard
-
-# Michał Górny <mgorny@gentoo.org> (2022-01-29)
-# No maintainer.  No upstream activity since Dec 2019.
-# Tests not enabled.  No revdeps.
-# Removal on 2022-02-28.  Bug #832318.
-dev-python/django-pglocks
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-27)
 # Java-library + java-virtual with no consumers.
 # Removal in 30 days.
