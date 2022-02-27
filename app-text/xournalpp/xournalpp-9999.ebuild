@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/xournalpp/xournalpp"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="elibc_musl"
+IUSE=""
 
 COMMONDEPEND="
 	app-text/poppler[cairo]
