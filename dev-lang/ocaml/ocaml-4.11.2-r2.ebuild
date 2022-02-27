@@ -25,7 +25,7 @@ QA_FLAGS_IGNORED='/usr/lib.*/ocaml/bigarray.cmxs'
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.11.2-glibc-2.34.patch
-	"${FILESDIR}"/${PN}-4.10.2-cflags.patch
+	"${FILESDIR}"/${PN}-4.11.2-cflags.patch
 )
 
 src_prepare() {
