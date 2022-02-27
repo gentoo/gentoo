@@ -420,14 +420,6 @@ net-libs/libsoup:3.0
 # is resolved.  Bug #791259.
 >=media-libs/libopenaptx-0.2.1
 
-# Sam James <sam@gentoo.org> (2021-06-12)
-# Masked until all reverse dependencies support
-# OCaml 4.13.
-# bug #816498
->=dev-lang/ocaml-4.13
->=dev-ml/camlp4-4.13
->=dev-ml/labltk-8.06.11
-
 # Bernard Cafarelli <voyageur@gentoo.org> (2021-06-04)
 # Alpha versions of fetchmail 7
 # Add support for OAUTH2 for those needing it
