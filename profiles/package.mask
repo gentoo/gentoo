@@ -57,7 +57,7 @@ x11-libs/libyui-qt
 # Masked for removal, needs updates, significant amount of work, no
 # Clang toolchain available to test with
 # Removal on 2022-03-29.  Bug #834306
-sys-apps/tapi
+sys-libs/tapi
 
 # Michał Górny <mgorny@gentoo.org> (2022-02-26)
 # The original Midori browser has been discontinued, and the new
