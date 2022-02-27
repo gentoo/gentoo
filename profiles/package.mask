@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-02-27)
+# No revdeps since begin of gentoo.git history, outdated and unmaintained.
+# Bug #834307. Removal on 2022-03-29.
+x11-libs/libyui
+x11-libs/libyui-gtk
+x11-libs/libyui-ncurses
+x11-libs/libyui-qt
+
 # Fabian Groffen <grobian@gentoo.org> (2022-02-27)
 # Masked for removal, needs updates, significant amount of work, no
 # Clang toolchain available to test with
