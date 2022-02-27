@@ -25,6 +25,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.1-libatomic.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_OPENSSL=$(usex ssl)
