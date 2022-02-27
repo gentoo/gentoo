@@ -1,7 +1,8 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit toolchain-funcs
 
 DESCRIPTION="A minimalist FIFO and filesystem-based IRC client"
@@ -19,7 +20,7 @@ src_prepare() {
 		-e '/^CFLAGS/{s: -Os::g; s:= :+= :g}' \
 		-e 's|doc|doc/${PF}|' config.mk || die
 
-    sed -i -e 's|(DOCPREFIX)/ii|(DOCPREFIX)|' Makefile || die
+	sed -i -e 's|(DOCPREFIX)/ii|(DOCPREFIX)|' Makefile || die
 }
 
 src_compile() {
