@@ -1,7 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
+inherit cmake
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -10,7 +12,6 @@ else
 	SRC_URI="https://github.com/zeromq/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
-inherit cmake-utils
 
 DESCRIPTION="ZeroMQ 'highlevel' C++ bindings"
 HOMEPAGE="https://github.com/zeromq/zmqpp"
@@ -31,5 +32,5 @@ src_configure() {
 		-DZMQPP_BUILD_STATIC=$(usex static-libs)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
