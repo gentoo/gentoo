@@ -30,10 +30,9 @@ LICENSE="!gdbm? ( LGPL-2.1 ) gdbm? ( GPL-2 )"
 SLOT="0"
 
 # +alsa-plugin as discussed in bug #519530
-# TODO: Deal with bluez5-gstreamer - requires ldacenc and rtpldacpay gstreamer elements
 # TODO: Find out why webrtc-aec is + prefixed - there's already the always available speexdsp-aec
 # NOTE: The current ebuild sets +X almost certainly just for the pulseaudio.desktop file
-IUSE="+alsa +alsa-plugin +asyncns bluetooth dbus elogind equalizer +gdbm gstreamer +glib gtk ipv6 jack lirc
+IUSE="+alsa +alsa-plugin +asyncns bluetooth dbus elogind equalizer +gdbm gstreamer +glib gtk ipv6 jack ldac lirc
 native-headset ofono-headset +orc oss selinux sox ssl systemd system-wide tcpd test +udev +webrtc-aec +X zeroconf"
 
 RESTRICT="!test? ( test )"
@@ -124,6 +123,11 @@ RDEPEND="
 		acct-user/pulse
 		acct-group/audio
 		acct-group/pulse-access
+	)
+	bluetooth? (
+		gstreamer? (
+			ldac? ( media-plugins/gst-plugins-ldac )
+		)
 	)
 "
 
