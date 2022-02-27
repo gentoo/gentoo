@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-02-27)
+# Last release 10 years ago, no other distro packages this,
+# stuck on cmake-utils.eclass and QA issues.
+# Bug #711880, #774519, removal on 2022-03-27.
+net-fs/smbtad
+
 # Sam James <sam@gentoo.org> (2022-02-27)
 # EAPI=6 consumer of deprecated cmake-utils.eclass. No reverse
 # dependencies and will soon be unbuildable with new CMake.
