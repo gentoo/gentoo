@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="RPC/Serialization system with capabilities support"
 HOMEPAGE="https://capnproto.org"
@@ -25,11 +25,11 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.9.1-libatomic.patch
-)
-
 src_configure() {
+	if use arm || use ppc || use mips || [[ ${CHOST} == *i486* ]] ; then
+		append-libs -latomic
+	fi
+
 	local mycmakeargs=(
 		-DWITH_OPENSSL=$(usex ssl)
 		-DBUILD_TESTING=$(usex test)
