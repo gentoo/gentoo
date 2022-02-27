@@ -223,11 +223,6 @@ dev-java/jsr223
 # Mask experimental software
 =mail-mta/postfix-3.8*
 
-# Mike Gilbert <floppym@gentoo.org> (2022-01-22)
-# Breaks many GNOME packages.
-# https://bugs.gentoo.org/831474
-=dev-util/meson-0.61*
-
 # James Beddek <telans@posteo.de> (2022-01-19)
 # FFmpeg 5.0 ABI/API changes break many packages.
 # Masking for tracker/tinderbox.
