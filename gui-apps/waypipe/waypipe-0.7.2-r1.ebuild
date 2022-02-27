@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ WAYPIPE_FLAG_MAP=(
 	"${WAYPIPE_FLAG_MAP_ARM[@]/#/cpu_flags_arm_}"
 )
 
-IUSE="dmabuf ffmpeg lz4 man neon systemtap test vaapi zstd ${WAYPIPE_FLAG_MAP[@]%:*}"
+IUSE="dmabuf ffmpeg lz4 man systemtap test vaapi zstd ${WAYPIPE_FLAG_MAP[@]%:*}"
 REQUIRED_USE="vaapi? ( ffmpeg )"
 RESTRICT="!test? ( test )"
 
