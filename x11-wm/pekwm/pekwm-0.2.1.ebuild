@@ -34,13 +34,11 @@ BDEPEND="virtual/pkgconfig"
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DENABLE_XSHAPE="yes"
-		-DENABLE_XRANDR="yes"
-		-DENABLE_JPEG=$(usex jpeg)
-		-DENABLE_PNG=$(usex png)
+		-DENABLE_IMAGE_JPEG=$(usex jpeg)
+		-DENABLE_IMAGE_PNG=$(usex png)
+		-DENABLE_IMAGE_XPM=$(usex xpm)
 		-DENABLE_XINERAMA=$(usex xinerama)
 		-DENABLE_XFT=$(usex truetype)
-		-DENABLE_XPM=$(usex xpm)
 	)
 
 	cmake_src_configure
