@@ -5,7 +5,7 @@
 		<email>sci-mathematics@gentoo.org</email>
 		<name>Gentoo Mathematics Project</name>
 	</maintainer>
-	<longdescription lang="en">
+	<longdescription>
 	Developed in the LogiCal project, the Coq tool is a formal proof
 	management system: a proof done with Coq is mechanically checked
 	by the machine.
@@ -21,6 +21,8 @@
 	theories.
 	</longdescription>
 	<upstream>
+		<changelog>https://github.com/coq/coq/releases/</changelog>
+		<bugs-to>https://github.com/coq/coq/issues/</bugs-to>
 		<remote-id type="github">coq/coq</remote-id>
 	</upstream>
 </pkgmetadata>
