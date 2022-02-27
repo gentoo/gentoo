@@ -27,7 +27,7 @@ BDEPEND="
 PATCHES=( "${FILESDIR}/${P}-python3.patch" )
 
 python_check_deps() {
-	has_version "dev-libs/libxml2[${PYTHON_USEDEP}]"
+	has_version -b "dev-libs/libxml2[python,${PYTHON_USEDEP}]"
 }
 
 src_configure() {
