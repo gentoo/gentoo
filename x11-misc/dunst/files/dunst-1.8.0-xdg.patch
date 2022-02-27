@@ -1,0 +1,23 @@
+From 50743754de28da6d474c001e6b7e04ada789c04a Mon Sep 17 00:00:00 2001
+From: Aleksei Bavshin <alebastr89@gmail.com>
+Date: Sun, 27 Feb 2022 08:49:41 -0800
+Subject: [PATCH] Use correct variable for the configuration file paths
+
+Fixes #1041
+---
+ src/utils.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/utils.c b/src/utils.c
+index 380dac26..90c47a9a 100644
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -448,7 +448,7 @@ FILE *fopen_verbose(const char * const path)
+ 
+ /* see utils.h */
+ void add_paths_from_env(GPtrArray *arr, char *env_name, char *subdir, char *alternative) {
+-        const char *xdg_data_dirs = g_getenv("XDG_DATA_DIRS");
++        const char *xdg_data_dirs = g_getenv(env_name);
+         if (!xdg_data_dirs)
+                 xdg_data_dirs = alternative;
+ 

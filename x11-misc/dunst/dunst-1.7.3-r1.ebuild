@@ -1,18 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit git-r3 systemd toolchain-funcs
-
-EGIT_REPO_URI="https://github.com/dunst-project/dunst"
+inherit systemd toolchain-funcs
 
 DESCRIPTION="Lightweight replacement for common notification daemons"
 HOMEPAGE="https://dunst-project.org/ https://github.com/dunst-project/dunst"
+SRC_URI="https://github.com/dunst-project/dunst/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
 IUSE="wayland"
 
 DEPEND="
@@ -39,16 +38,15 @@ BDEPEND="
 	wayland? ( dev-libs/wayland-protocols )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-1.8.0-xdg.patch" )
-
 src_prepare() {
 	default
 
 	# Respect users CFLAGS
 	sed -e 's/-Os//' -i config.mk || die
 
-	# Use correct path for system unit
+	# Use correct path for dbus and system unit
 	sed -e "s|##PREFIX##|${EPREFIX}/usr|" -i dunst.systemd.service.in || die
+	sed -e "s|##PREFIX##|${EPREFIX}/usr|" -i org.knopwob.dunst.service.in || die
 }
 
 src_configure() {
@@ -59,6 +57,7 @@ src_configure() {
 
 src_compile() {
 	local myemakeargs=(
+		SYSCONFDIR="${EPREFIX}/etc/xdg"
 		SYSTEMD="0"
 		WAYLAND="$(usex wayland 1 0)"
 	)
@@ -69,7 +68,7 @@ src_compile() {
 src_install() {
 	local myemakeargs=(
 		PREFIX="${ED}/usr"
-		SYSCONFDIR="${ED}/etc"
+		SYSCONFDIR="${ED}/etc/xdg"
 		SYSTEMD="0"
 		WAYLAND="$(usex wayland 1 0)"
 	)
