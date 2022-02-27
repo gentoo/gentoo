@@ -14,9 +14,10 @@ SRC_URI="https://git.louiz.org/biboumi/snapshot/biboumi-${MY_PV}.tar.xz"
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+idn postgres +sqlite +ssl systemd udns"
+IUSE="+idn postgres +sqlite +ssl systemd test udns"
+RESTRICT="!test? ( test )"
 
-DEPEND="
+COMMON_DEPEND="
 	dev-libs/expat
 	virtual/libiconv
 	sys-apps/util-linux
@@ -28,9 +29,13 @@ DEPEND="
 	!ssl? ( dev-libs/libgcrypt )
 	systemd? ( sys-apps/systemd:= )
 "
+DEPEND="
+	${COMMON_DEPEND}
+	test? ( dev-cpp/catch:0 )
+"
 BDEPEND="dev-python/sphinx"
 RDEPEND="
-	${DEPEND}
+	${COMMON_DEPEND}
 	acct-user/biboumi
 "
 
@@ -40,6 +45,7 @@ DOCS=( README.rst CHANGELOG.rst doc/user.rst )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-9.0-fix-namespace-separator.patch"
+	"${FILESDIR}/${PN}-9.0-use-system-catch2.patch"
 )
 
 src_configure() {
@@ -92,6 +98,10 @@ src_compile() {
 	cmake_src_compile
 
 	cmake_build man
+}
+
+src_test() {
+	cmake_build check
 }
 
 src_install() {
