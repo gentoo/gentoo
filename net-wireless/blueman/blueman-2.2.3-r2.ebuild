@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="https://github.com/blueman-project/${PN}/releases/download/${PV/_/.}/${P/_/.}.tar.xz"
 	S=${WORKDIR}/${P/_/.}
-	KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 # icons are GPL-2
@@ -64,7 +64,9 @@ RDEPEND="${DEPEND}
 	policykit? ( sys-auth/polkit )
 	pulseaudio? (
 		|| (
-			media-sound/pulseaudio[bluetooth]
+			media-sound/pulseaudio-daemon[bluetooth]
+			media-video/pipewire[bluetooth]
+			<media-sound/pulseaudio-15.99.1[bluetooth]
 			media-sound/pulseaudio-modules-bt
 		)
 	)
