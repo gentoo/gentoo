@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="libedit readline"
 
-RDEPEND="readline? ( sys-libs/readline:0 )
+RDEPEND="readline? ( sys-libs/readline:= )
 	libedit? ( dev-libs/libedit )"
 DEPEND="${RDEPEND}"
 
