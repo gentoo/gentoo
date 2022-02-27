@@ -13,6 +13,10 @@
 		<email>mva@gentoo.org</email>
 		<name>Vadim Misbakh-Soloviov</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>matthew@gentoo.org</email>
+		<name>Matthew Smith</name>
+	</maintainer>
 	<use>
 		<flag name="ts-cli">Build Tree-sitter CLI tool (for developing, testing, and using Tree-sitter parsers)</flag>
 	</use>
