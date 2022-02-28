@@ -120,7 +120,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_icon_cache_update
+	xdg_pkg_postinst
 
 	optfeature "in-terminal image display with kitty icat" media-gfx/imagemagick
 	optfeature "audio-based terminal bell support" media-libs/libcanberra
