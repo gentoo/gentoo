@@ -22,11 +22,6 @@ RDEPEND="
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 
-BDEPEND="
-	test? (
-		dev-python/tox[${PYTHON_USEDEP}]
-	)"
-
 distutils_enable_tests pytest
 distutils_enable_sphinx doc dev-python/sphinx_rtd_theme
 
