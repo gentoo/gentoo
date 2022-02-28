@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -19,14 +19,26 @@ REQUIRED_USE="guionly? ( gtk )"
 
 RDEPEND="dev-lang/perl
 	dev-ml/camlp4:=
-	gd? ( media-libs/gd[truetype] )
+	gd? ( media-libs/gd:2=[truetype] )
 	gtk? (
-		gnome-base/librsvg
+		dev-libs/glib:2
 		dev-ml/lablgtk:2=[svg]
+		gnome-base/librsvg:2
+		media-libs/libpng:=
+		x11-libs/gdk-pixbuf:2
+		x11-libs/gtk+:2
+		x11-libs/libX11
+		x11-libs/pango
 	)
 	guionly? (
-		gnome-base/librsvg
+		dev-libs/glib:2
 		dev-ml/lablgtk:2=[svg]
+		gnome-base/librsvg:2
+		media-libs/libpng:=
+		x11-libs/gdk-pixbuf:2
+		x11-libs/gtk+:2
+		x11-libs/libX11
+		x11-libs/pango
 	)
 	magic? ( sys-apps/file )
 	upnp? (
@@ -34,6 +46,8 @@ RDEPEND="dev-lang/perl
 		net-libs/miniupnpc:=
 	)
 	!guionly? ( acct-user/p2p )
+	app-arch/bzip2
+	sys-libs/zlib
 "
 # Can't yet use newer OCaml
 # -unsafe-string usage:
