@@ -45,7 +45,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+ada +bootstrap"
 RESTRICT="test"
 
-RDEPEND="!~sys-devel/gcc-${GCCMAJOR}"
+RDEPEND="!=sys-devel/gcc-${TOOLCHAIN_GCC_PV}*"
 BDEPEND=sys-devel/binutils
 
 S="${WORKDIR}"/${MYP}
