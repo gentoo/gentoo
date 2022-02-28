@@ -24,7 +24,6 @@ RDEPEND="
 
 BDEPEND="
 	test? (
-		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/tox[${PYTHON_USEDEP}]
 	)"
 
@@ -37,6 +36,11 @@ python_test() {
 	if ! has_version "dev-python/matplotlib[${PYTHON_USEDEP}]"; then
 		EPYTEST_DESELECT+=(
 			tests/test_image_regression.py::test_image_regression
+		)
+	fi
+	if ! has_version "dev-python/numpy[${PYTHON_USEDEP}]"; then
+		EPYTEST_IGNORE+=(
+			tests/test_ndarrays_regression.py
 		)
 	fi
 	if ! has_version "dev-python/pandas[${PYTHON_USEDEP}]"; then
