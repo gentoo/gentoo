@@ -12,7 +12,10 @@ DESCRIPTION="Anonymizing overlay network for TCP"
 HOMEPAGE="https://www.torproject.org/"
 SRC_URI="https://www.torproject.org/dist/${MY_PF}.tar.gz
 	https://archive.torproject.org/tor-package-archive/${MY_PF}.tar.gz
-	verify-sig? ( https://dist.torproject.org/${MY_PF}.tar.gz.asc )"
+	verify-sig? (
+		https://dist.torproject.org/${MY_PF}.tar.gz.sha256sum
+		https://dist.torproject.org/${MY_PF}.tar.gz.sha256sum.asc
+	)"
 S="${WORKDIR}/${MY_PF}"
 
 LICENSE="BSD GPL-2"
@@ -23,7 +26,7 @@ fi
 IUSE="caps doc lzma +man scrypt seccomp selinux +server systemd tor-hardening test zstd"
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/torproject.org.asc
 
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-tor )"
+BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-tor-20220216 )"
 DEPEND="
 	dev-libs/libevent:=[ssl]
 	sys-libs/zlib
@@ -58,6 +61,18 @@ RESTRICT="!test? ( test )"
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
+}
+
+src_unpack() {
+	if use verify-sig; then
+		cd "${DISTDIR}" || die
+		verify-sig_verify_detached ${MY_PF}.tar.gz.sha256sum{,.asc}
+		verify-sig_verify_unsigned_checksums \
+			${MY_PF}.tar.gz.sha256sum sha256 ${MY_PF}.tar.gz
+		cd "${WORKDIR}" || die
+	fi
+
+	default
 }
 
 src_configure() {
