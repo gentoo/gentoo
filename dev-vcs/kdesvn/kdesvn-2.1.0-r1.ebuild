@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/kdesvn/"
 if [[ ${PV} != 9999* ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz
 		https://dev.gentoo.org/~asturm/distfiles/${P}-patchset-1.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 x86"
 fi
 
 LICENSE="GPL-2"
