@@ -1,6 +1,11 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alex Fan <alex.fan.q@gmail.com> (2022-02-28)
+# dev-libs/vc is a dummy implementation on this arch
+# krita fails to build with it
+media-gfx/krita vc
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
