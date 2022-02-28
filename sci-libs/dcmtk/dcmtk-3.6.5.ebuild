@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ HOMEPAGE="https://dicom.offis.de/dcmtk.php.en"
 SRC_URI="https://dicom.offis.de/download/dcmtk/release/${P}.tar.gz"
 
 LICENSE="OFFIS"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 SLOT="0"
 IUSE="doc png ssl tcpd tiff +threads xml zlib"
 
