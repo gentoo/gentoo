@@ -21,10 +21,6 @@ sys-fs/multipath-tools rbd
 # requires sys-apps/dbus-broker, which is keyworded here.
 sys-apps/systemd -hostnamed-fallback
 
-# Andrey Grozin <grozin@gentoo.org> (2022-01-03)
-# dev-libs/utfcpp is not keyworded yet
-media-gfx/asymptote lsp
-
 # Yongxinag Liang <tanekliang@gmail.com> (2021-12-30)
 # untested.
 net-misc/vinagre spice
