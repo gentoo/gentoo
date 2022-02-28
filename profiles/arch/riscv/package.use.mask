@@ -190,6 +190,7 @@ mail-mta/courier fax
 # Dependencies not keyworded here yet:
 #  - dev-cpp/glog, sci-libs/vtk
 media-libs/opencv contribsfm glog vtk
+sci-libs/opencascade vtk
 #  - dev-util/aruba
 sys-block/thin-provisioning-tools test
 
