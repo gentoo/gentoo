@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-02-28)
+# No revdeps since 2020-11-28, still EAPI-6 and uses cmake-utils.eclass.
+# Bug #834317. Removal on 2022-03-30.
+dev-libs/injeqt
+
 # Sam James <sam@gentoo.org> (2022-02-27)
 # Fails to build with modern GCC, stuck on cmake-utils.eclass too.
 # bug #723194, bug #834301. Removal on 2022-03-27.
