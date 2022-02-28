@@ -96,6 +96,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.2_ignore-gentoo-no-compile.patch
 	"${FILESDIR}"/${PN}-3.0.2-ldconfig.patch
 	"${FILESDIR}"/${PN}-4.2-suid-warning.patch
+	"${FILESDIR}"/${PN}-4.2-no-service.patch
 )
 
 python_prepare_all() {
@@ -161,9 +162,6 @@ python_install_all() {
 	local dir=$(get_udevdir)
 	dodir "${dir%/*}"
 	mv -vnT "${ED}"/usr/lib/udev "${ED}${dir}" || die
-
-	# TODO: Write a Gentoo init script.
-	rm -r "${ED}"/etc/{init.d,sysconfig}/ || die
 }
 
 pkg_postinst() {

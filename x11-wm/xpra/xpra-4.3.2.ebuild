@@ -110,6 +110,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.2_ignore-gentoo-no-compile.patch
 	"${FILESDIR}"/${PN}-4.2-suid-warning.patch
+	"${FILESDIR}"/${PN}-4.3-no-service.patch
 	"${DISTDIR}"/${PN}-4.3.1-tests.patch
 )
 
@@ -188,9 +189,6 @@ python_install_all() {
 	local dir=$(get_udevdir)
 	dodir "${dir%/*}"
 	mv -vnT "${ED}"/usr/lib/udev "${ED}${dir}" || die
-
-	# TODO: Write a Gentoo init script.
-	rm -r "${ED}"/etc/{init.d,sysconfig}/ || die
 }
 
 pkg_postinst() {
