@@ -196,11 +196,6 @@ media-video/atomicparsley-wez
 # Removal on 2022-03-01.  Bug #832366.
 dev-python/python-slip
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-27)
-# Java-library + java-virtual with no consumers.
-# Removal in 30 days.
-java-virtuals/script-api
-
 # Eray Aslan <eras@gentoo.org> (2022-01-24)
 # Mask experimental software
 =mail-mta/postfix-3.8*
