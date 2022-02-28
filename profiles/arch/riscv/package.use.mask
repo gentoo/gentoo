@@ -6,10 +6,6 @@
 # It is unusable, for now, in other arches
 media-video/ffmpeg amf
 
-# Sam James <sam@gentoo.org> (2022-01-29)
-# app-text/ronn-ng not keyworded here, bug #801103
-app-accessibility/espeak-ng man
-
 # Yongxinag Liang <tanekliang@gmail.com> (2022-01-09)
 # app-emulation/xen-tools doesn't support riscv yet
 app-emulation/qemu xen
