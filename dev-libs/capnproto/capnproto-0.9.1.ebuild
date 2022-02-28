@@ -27,7 +27,9 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	if use arm || use ppc || use mips || [[ ${CHOST} == *i486* ]] ; then
-		append-libs -latomic
+		# append-libs won't work here, cmake doesn't respect it
+		# ... and ldflags gets missed once
+		append-flags -latomic
 	fi
 
 	local mycmakeargs=(
