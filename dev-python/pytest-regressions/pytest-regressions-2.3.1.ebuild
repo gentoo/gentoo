@@ -26,10 +26,27 @@ BDEPEND="
 	test? (
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/tox[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx doc dev-python/sphinx_rtd_theme
+
+python_test() {
+	local EPYTEST_DESELECT=()
+	local EPYTEST_IGNORE=()
+	if ! has_version "dev-python/pandas[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			tests/test_filenames.py::test_foo
+			tests/test_filenames.py::TestClass::test_foo
+			tests/test_filenames.py::TestClassWithIgnoredName::test_foo
+		)
+		EPYTEST_IGNORE+=(
+			tests/test_dataframe_regression.py
+			tests/test_num_regression.py
+		)
+	fi
+
+	epytest
+}
