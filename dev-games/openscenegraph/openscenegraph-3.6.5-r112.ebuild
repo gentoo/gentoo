@@ -64,8 +64,6 @@ RDEPEND="
 	las? ( >=sci-geosciences/liblas-1.8.0 )
 	lua? ( ${LUA_DEPS} )
 	openexr? (
-		media-libs/ilmbase:=
-		media-libs/openexr:=
 		dev-libs/imath:=
 		>=media-libs/openexr-3:=
 	)
