@@ -15,13 +15,16 @@ KEYWORDS="~amd64 ~arm64 ~x86 ~x64-macos"
 IUSE="+client debug libssh"
 
 RDEPEND="
-	client? ( sys-libs/ncurses:= )
-	client? ( sys-libs/readline:= )
+	client? (
+		sys-libs/ncurses:=
+		sys-libs/readline:=
+	)
 	filecaps? (
 		acct-group/bird
 		acct-user/bird
 	)
 	libssh? ( net-libs/libssh:= )"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
