@@ -20,7 +20,8 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="=dev-libs/efl-$(ver_cut 1-2)*
-	dev-python/dbus-python[${PYTHON_USEDEP}]"
+	dev-python/dbus-python[${PYTHON_USEDEP}]
+	sys-apps/dbus"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/cython[${PYTHON_USEDEP}]
 	virtual/pkgconfig
@@ -33,6 +34,9 @@ PATCHES=( "${FILESDIR}/python-efl-1.25-clang-crosscompile.patch" )
 
 src_prepare() {
 	default
+
+	# Generate our own C files, discard the bundled ones.
+	export ENABLE_CYTHON=1
 
 	# Tries to download a file under /tmp
 	rm tests/ecore/test_09_file_download.py || die
