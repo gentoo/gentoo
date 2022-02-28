@@ -200,7 +200,6 @@ dev-python/python-slip
 # Java-library + java-virtual with no consumers.
 # Removal in 30 days.
 java-virtuals/script-api
-dev-java/jsr223
 
 # Eray Aslan <eras@gentoo.org> (2022-01-24)
 # Mask experimental software
