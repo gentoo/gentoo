@@ -51,8 +51,8 @@ src_install() {
 
 pkg_postinst() {
 	elog "Please visit the website for product changes:"
-  elog "https://docs.graylog.org/docs/changelog"
-  elog
+	elog "https://docs.graylog.org/docs/changelog"
+	elog
 	ewarn "Graylog does not depend on need.net any more (#439092)."
 	ewarn
 	ewarn "Please configure rc_need according to your binding address in:"
