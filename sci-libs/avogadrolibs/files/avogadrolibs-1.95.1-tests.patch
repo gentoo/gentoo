@@ -1,0 +1,13 @@
+exclude test that unconditionally requires sci-libs/spglib
+* https://bugs.gentoo.org/765811
+
+--- a/tests/core/CMakeLists.txt
++++ b/tests/core/CMakeLists.txt
+@@ -15,7 +15,6 @@
+   Molecule
+   Mutex
+   RingPerceiver
+-  Spacegroup
+   Utilities
+   UnitCell
+   Variant
