@@ -17,7 +17,7 @@ LICENSE="BSD"
 SLOT="0/30" # based on SONAME
 # -ppc -sparc because broken on big endian, bug #818424
 KEYWORDS="amd64 ~arm arm64 ~ia64 -ppc ~ppc64 ~riscv -sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
-IUSE="cpu_flags_x86_avx doc examples large-stack static-libs utils test threads"
+IUSE="cpu_flags_x86_avx doc examples large-stack utils test threads"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -50,7 +50,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=$(usex !static-libs)
 		-DBUILD_TESTING=$(usex test)
 		-DDOCS=$(usex doc)
 		-DOPENEXR_BUILD_TOOLS=$(usex utils)
