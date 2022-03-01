@@ -16,7 +16,7 @@ SRC_URI="
 LICENSE="BSD GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="archive doc hdf5 qt5 static-plugins test vtk"
+IUSE="archive doc hdf5 qt5 test vtk"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="vtk? ( qt5 )"
 
@@ -63,7 +63,7 @@ src_unpack() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_GPL_PLUGINS=ON
-		-DBUILD_STATIC_PLUGINS=$(usex static-plugins)
+		-DBUILD_STATIC_PLUGINS=ON
 		-DUSE_LIBARCHIVE=$(usex archive)
 		-DBUILD_DOCUMENTATION=$(usex doc)
 		-DUSE_HDF5=$(usex hdf5)
