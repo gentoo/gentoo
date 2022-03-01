@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,7 +36,7 @@ RDEPEND="
 	media-libs/glew:=
 	media-libs/libpng:=
 	media-libs/libsdl2[joystick]
-	media-video/ffmpeg:=
+	media-video/ffmpeg:0/56.58.58
 	sys-libs/zlib:=
 	virtual/opengl
 	qt5? (
