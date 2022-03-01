@@ -33,9 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-02-28)
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-03-01)
+# Dead upstream, blocks cleanup of dependencies.
+# Bug #773175. Removal on 2022-03-31.
+sci-chemistry/votca-ctp
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-03-01)
 # No revdeps since 2020-11-28, still EAPI-6 and uses cmake-utils.eclass.
-# Bug #834317. Removal on 2022-03-30.
+# Bug #834317. Removal on 2022-03-31.
 dev-libs/injeqt
 
 # Sam James <sam@gentoo.org> (2022-02-27)
