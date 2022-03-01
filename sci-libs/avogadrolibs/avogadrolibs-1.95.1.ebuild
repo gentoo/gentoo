@@ -40,7 +40,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
 	test? ( dev-cpp/gtest )"
-BDEPEND="qt5? ( dev-qt/linguist-tools:5 )"
+BDEPEND="
+	doc? ( app-doc/doxygen )
+	qt5? ( dev-qt/linguist-tools:5 )"
 
 PATCHES=(
 	"${FILESDIR}/"${PN}-1.91.0_pre20180406-bundled-genxrdpattern.patch
@@ -62,14 +64,11 @@ src_unpack() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_GPL_PLUGINS=ON
-		-DBUILD_STATIC_PLUGINS=ON
 		-DUSE_LIBARCHIVE=$(usex archive)
 		-DBUILD_DOCUMENTATION=$(usex doc)
 		-DUSE_HDF5=$(usex hdf5)
 		-DENABLE_TRANSLATIONS=$(usex qt5)
 		-DUSE_OPENGL=$(usex qt5)
-		-DOpenGL_GL_PREFERENCE=GLVND
 		-DUSE_QT=$(usex qt5)
 		-DENABLE_TESTING=$(usex test)
 		-DUSE_VTK=$(usex vtk)
@@ -80,6 +79,11 @@ src_configure() {
 		-DUSE_LIBMSYM=OFF
 		# find_package(Spglib) completely broken
 		-DUSE_SPGLIB=OFF
+	)
+	use qt5 && mycmakeargs+=(
+		-DBUILD_GPL_PLUGINS=ON
+		-DBUILD_STATIC_PLUGINS=ON
+		-DOpenGL_GL_PREFERENCE=GLVND
 	)
 	use vtk && mycmakeargs+=(
 		-DBUNDLED_GENXRDPATTERN="${WORKDIR}/genXrdPattern"
