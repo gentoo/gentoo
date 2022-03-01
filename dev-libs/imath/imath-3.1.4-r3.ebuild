@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD"
 SLOT="3/29"
-IUSE="doc large-stack python static-libs test"
+IUSE="doc large-stack python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
@@ -51,7 +51,6 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=$(usex !static-libs)
 		-DDOCS=$(usex doc)
 		-DIMATH_ENABLE_LARGE_STACK=$(usex large-stack)
 		-DIMATH_HALF_USE_LOOKUP_TABLE=ON
