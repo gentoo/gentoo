@@ -71,10 +71,6 @@ BDEPEND="
 src_prepare() {
 	sed '/TRACY_ON_DEMAND/s@ ON @ OFF @' -i src/CMakeLists.txt || die
 
-	if [[ "${PV}" == *9999 ]] ; then
-		PATCHES+=( "${FILESDIR}/${P}-system_json.patch" )
-	fi
-
 	# required because of xdg.eclass also providing src_prepare
 	cmake_src_prepare
 }
