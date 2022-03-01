@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <upstream>
+    <changelog>
+      https://gitlab.com/technomancy/fennel-mode/-/blob/main/changelog.md
+    </changelog>
+    <bugs-to>https://gitlab.com/technomancy/fennel-mode/-/issues/</bugs-to>
+    <remote-id type="gitlab">technomancy/fennel-mode</remote-id>
+  </upstream>
+</pkgmetadata>
