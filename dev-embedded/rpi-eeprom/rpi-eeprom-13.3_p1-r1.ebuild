@@ -3,20 +3,20 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit python-r1 systemd
 
-DESCRIPTION="Updater for Raspberry Pi 4 bootloader and the VL805 USB controller"
-HOMEPAGE="https://github.com/raspberrypi/rpi-eeprom/"
 MY_P="${PN}-$(ver_cut 1-2)"
 MY_BASE_URL="https://archive.raspberrypi.org/debian/pool/main/r/${PN}/${PN}_$(ver_cut 1-2)"
+DESCRIPTION="Updater for Raspberry Pi 4 bootloader and the VL805 USB controller"
+HOMEPAGE="https://github.com/raspberrypi/rpi-eeprom/"
 SRC_URI="${MY_BASE_URL}-$(ver_cut 4).debian.tar.xz
 	${MY_BASE_URL}.orig.tar.gz"
 S="${WORKDIR}"
 
-SLOT="0"
 LICENSE="BSD rpi-eeprom"
+SLOT="0"
 KEYWORDS="~arm ~arm64"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -46,7 +46,7 @@ src_install() {
 	python_scriptinto /usr/sbin
 	python_foreach_impl python_newscript rpi-eeprom-config rpi-eeprom-config
 
-	dosbin rpi-eeprom-update
+	dosbin rpi-eeprom-update rpi-eeprom-digest
 	keepdir /var/lib/raspberrypi/bootloader/backup
 
 	for dir in critical stable beta; do
