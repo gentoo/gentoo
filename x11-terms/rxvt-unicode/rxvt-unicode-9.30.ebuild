@@ -10,7 +10,7 @@ COLOUR_PATCH_NAME="${PN}-9.29_24-bit-color_aur-9.26-20210712.patch"
 DESCRIPTION="rxvt clone with xft and unicode support"
 HOMEPAGE="http://software.schmorp.de/pkg/rxvt-unicode.html"
 SRC_URI="http://dist.schmorp.de/rxvt-unicode/Attic/${P}.tar.bz2
-	https://dev.gentoo.org/~marecki/dists/${PN}/${COLOUR_PATCH_NAME}.xz"
+	https://dev.gentoo.org/~marecki/dists/${CATEGORY}/${PN}/${COLOUR_PATCH_NAME}.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
