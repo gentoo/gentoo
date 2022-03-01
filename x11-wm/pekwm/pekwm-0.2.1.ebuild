@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib desktop
+inherit cmake-multilib desktop optfeature
 
 DESCRIPTION="A lightweight window manager initially based on aewm++"
 HOMEPAGE="
@@ -17,7 +17,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~mips ~ppc ~x86"
-IUSE="debug +jpeg +png themes truetype +xft xinerama +xpm"
+IUSE="debug +jpeg +png truetype +xft xinerama +xpm"
 
 RDEPEND="
 	png? ( media-libs/libpng:0 )
@@ -26,8 +26,7 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
 	truetype? ( x11-libs/libXft )
-	xinerama? ( x11-libs/libXinerama )
-	themes? ( dev-vcs/git )"
+	xinerama? ( x11-libs/libXinerama )"
 
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
@@ -65,20 +64,23 @@ _EOF_
 
 pkg_postinst() {
 
-	if use themes; then
-		elog "Since pekwm 0.2.0 themes can be installed and maintained using "
-		elog "pekwm_theme [install|uninstall|show|search|new|update]."
-		elog "Check https://www.pekwm.se/themes/ for details."
-	fi
-
+	elog "Since pekwm 0.2.0 themes can be installed and maintained using "
+	elog "pekwm_theme [install|uninstall|show|search|new|update]."
+	elog "Check https://www.pekwm.se/themes/ for details."
+	
+	elog
+	
+	optfeature "themes management (pekwm_theme) support" dev-vcs/git
+	
+	elog
 	
 	elog "User contributed scripts have been installed into:"
 	elog "${EROOT}/usr/share/doc/${PF}/contrib"
 	
-
-	elog "If update from older version, the menu configuration 'Exec' needs to "
-	elog "remove '&': Exec no longer use sh -c to run commands which will "
-	elog "cause incompatabilites depending on /bin/sh configuration, if shell "
+	elog "If updated from previous versions remove '&' from the "
+	elog "'Exec ... &' in the menu configuration. Quote: "
+	elog "\"Exec no longer use sh -c to run commands which will cause "
+	elog "incompatabilites depending on /bin/sh configuration, if shell "
 	elog "variables have been used or the command ends with &. ShellExec has "
-	elog "been added implementing the legacy behaviour. "
+	elog "been added implementing the legacy behaviour.\""
 }
