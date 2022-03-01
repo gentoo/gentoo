@@ -147,7 +147,6 @@ src_configure() {
 		-DUSE_WEBP=$(usex webp)
 		-DWANT_JSON_VALIDATION=$(usex test)
 	)
-	CMAKE_BUILD_TYPE="RELWITHDEBINFO"
 	cmake_src_configure
 }
 
