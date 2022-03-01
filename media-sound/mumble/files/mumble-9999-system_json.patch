@@ -1,18 +1,60 @@
+From a239ccf62369880a0b08faf01021e7961ec1cc5a Mon Sep 17 00:00:00 2001
+From: Robert Adam <dev@robert-adam.de>
+Date: Fri, 25 Feb 2022 18:37:51 +0100
+Subject: [PATCH] BUILD(client): Add option to use system JSON lib
+
+This commit introduces an option that toggles between using a bundled
+version of nlohmann_json (default) and looking for a version installed
+on the system instead.
+
+Fixes #5584
+---
+ docs/dev/build-instructions/cmake_options.md |  5 +++++
+ src/mumble/CMakeLists.txt                    | 11 ++++++++---
+ 2 files changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/docs/dev/build-instructions/cmake_options.md b/docs/dev/build-instructions/cmake_options.md
+index 2a02b200b7..b395251069 100644
+--- a/docs/dev/build-instructions/cmake_options.md
++++ b/docs/dev/build-instructions/cmake_options.md
+@@ -34,6 +34,11 @@ Bundle Qt's translations as well
+ Build the included version of CELT instead of looking for one on the system.
+ (Default: ON)
+ 
++### bundled-json
++
++Build the included version of nlohmann_json instead of looking for one on the system
++(Default: ON)
++
+ ### bundled-opus
+ 
+ Build the included version of Opus instead of looking for one on the system.
 diff --git a/src/mumble/CMakeLists.txt b/src/mumble/CMakeLists.txt
-index bb8df1671..51f83850e 100644
+index bb8df16714..5f1c14ba97 100644
 --- a/src/mumble/CMakeLists.txt
 +++ b/src/mumble/CMakeLists.txt
-@@ -472,12 +472,7 @@ else()
+@@ -27,6 +27,7 @@ option(bundled-celt "Build the included version of CELT instead of looking for o
+ option(bundled-speex "Build the included version of Speex instead of looking for one on the system." ON)
+ option(rnnoise "Use RNNoise for machine learning noise reduction." ON)
+ option(bundled-rnnoise "Build the included version of RNNoise instead of looking for one on the system." ${rnnoise})
++option(bundled-json "Build the included version of nlohmann_json instead of looking for one on the system" ON)
+ 
+ option(manual-plugin "Include the built-in \"manual\" positional audio plugin." ON)
+ 
+@@ -472,9 +473,13 @@ else()
  endif()
  
  
 -set(JSON_BuildTests OFF CACHE INTERNAL "")
 -set(JSON_ImplicitConversions OFF CACHE INTERNAL "")
 -add_subdirectory("${3RDPARTY_DIR}/nlohmann_json/" "${CMAKE_CURRENT_BINARY_DIR}/nlohmann_json/")
--
--target_link_libraries(mumble_client_object_lib PUBLIC nlohmann_json::nlohmann_json)
--
-+find_pkg("nlohmann_json" REQUIRED)
- find_pkg("SndFile;LibSndFile;sndfile" REQUIRED)
++if(bundled-json)
++	set(JSON_BuildTests OFF CACHE INTERNAL "")
++	set(JSON_ImplicitConversions OFF CACHE INTERNAL "")
++	add_subdirectory("${3RDPARTY_DIR}/nlohmann_json/" "${CMAKE_CURRENT_BINARY_DIR}/nlohmann_json/")
++else()
++	find_pkg("nlohmann_json" REQUIRED)
++endif()
  
- # Check if sndfile version supports opus
+ target_link_libraries(mumble_client_object_lib PUBLIC nlohmann_json::nlohmann_json)
+ 

@@ -84,6 +84,7 @@ src_configure() {
 	local mycmakeargs=(
 		-Dalsa="$(usex alsa)"
 		-Dbundled-celt="ON"
+		-Dbundled-json="OFF"
 		-Dbundled-opus="OFF"
 		-Dbundled-speex="OFF"
 		-Ddbus="$(usex dbus)"
