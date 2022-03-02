@@ -32,6 +32,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	${PYTHON_DEPS}
 	app-text/dvipng
+	dev-cpp/glibmm:2
 	dev-db/sqlite:3=
 	dev-libs/boost:=
 	dev-libs/gmp:=[cxx]
@@ -44,11 +45,7 @@ RDEPEND="
 		dev-python/sympy[${PYTHON_USEDEP}]
 		jupyter? ( dev-python/jupyter[${PYTHON_USEDEP}] )
 	')
-	gtk? (
-		dev-cpp/glibmm:2
-		dev-cpp/gtkmm:3.0
-		dev-libs/glib:2
-	)
+	gtk? ( dev-cpp/gtkmm:3.0 )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="$(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]')"
