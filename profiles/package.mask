@@ -236,11 +236,6 @@ dev-python/python-slip
 # Removal after 2022-03-01.
 sys-auth/pam_blue
 
-# Jonas Stein <jstein@gentoo.org> (2022-01-02)
-# Unmaintained and broken.
-# Removal after 2022-03-01.  Bug #830428.
-www-servers/bozohttpd
-
 # Jonas Stein <jstein@gentoo.org> (2021-12-24)
 # Alpha version
 =app-editors/ghex-4.0.0_alpha
