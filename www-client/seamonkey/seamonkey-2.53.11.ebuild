@@ -21,7 +21,7 @@ MOZ_PV="${MOZ_PV/_beta/b}"
 MOZ_PV="${MOZ_PV/_rc/rc}"
 MOZ_P="${P}"
 MY_MOZ_P="${PN}-${MOZ_PV}"
-PATCH="${PN}-2.53.11-patches-01"
+PATCH="${PN}-2.53.11-patches-02"
 
 if [[ ${PV} == *_pre* ]] ; then
 	MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/candidates/${MOZ_PV}-candidates/build${PV##*_pre}"
@@ -31,8 +31,7 @@ fi
 
 SRC_URI="${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source.tar.xz -> ${P}.source.tar.xz
 	${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source-l10n.tar.xz -> ${P}.source-l10n.tar.xz
-	https://github.com/BioMike/gentoo-${PN}-patches/archive/refs/tags/${PV}.tar.gz -> ${PATCH}.tar.gz
-	system-libvpx? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-2.53.3-system_libvpx-1.8.patch.gz )"
+	https://github.com/BioMike/gentoo-${PN}-patches/archive/refs/tags/${PV}-r1.tar.gz -> ${PATCH}.tar.gz"
 
 S="${WORKDIR}/${MY_MOZ_P}"
 
@@ -53,8 +52,6 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 
 RESTRICT="!test? ( test )"
 
-ASM_DEPEND=">=dev-lang/yasm-1.1"
-
 BDEPEND="
 	app-arch/unzip
 	app-arch/zip
@@ -63,9 +60,9 @@ BDEPEND="
 	>=sys-devel/binutils-2.16.1
 	virtual/pkgconfig
 	>=virtual/rust-1.58.1
-	amd64? ( ${ASM_DEPEND} )
+	amd64? ( >=dev-lang/yasm-1.1 )
 	lto? ( sys-devel/binutils[gold] )
-	x86? ( ${ASM_DEPEND} )
+	x86? ( >=dev-lang/yasm-1.1 )
 "
 COMMON_DEPEND="
 	app-arch/bzip2
@@ -81,7 +78,6 @@ COMMON_DEPEND="
 	>=sys-libs/zlib-1.2.3
 	>=x11-libs/cairo-1.10[X]
 	x11-libs/gdk-pixbuf
-	>=x11-libs/gtk+-2.18:2
 	>=x11-libs/gtk+-3.4.0:3
 	x11-libs/libX11
 	x11-libs/libXcomposite
@@ -90,6 +86,7 @@ COMMON_DEPEND="
 	x11-libs/libXfixes
 	x11-libs/libXrender
 	x11-libs/libXt
+	x11-libs/libxcb:=
 	>=x11-libs/pango-1.22.0
 	>=x11-libs/pixman-0.19.2
 	media-video/ffmpeg
@@ -192,37 +189,8 @@ src_unpack() {
 }
 
 src_prepare() {
-	SM_PATCHDIR="${WORKDIR}/mozilla"
 	# Apply our patches
-	eapply "${SM_PATCHDIR}/1000_fix-preferences-gentoo.patch"
-	eapply "${SM_PATCHDIR}/1001_gentoo_prefs.patch"
-	eapply "${SM_PATCHDIR}/1002_drop_build_id.patch"
-	eapply "${SM_PATCHDIR}/1003_gentoo_specific_pgo.patch"
-	eapply "${SM_PATCHDIR}/1004_fix_pie_detection.patch"
-	eapply "${SM_PATCHDIR}/1005_fix_fortify_sources.patch"
-	eapply "${SM_PATCHDIR}/1007_re-add_system_sqlite.patch"
-	eapply "${SM_PATCHDIR}/2000_system_harfbuzz.patch"
-	eapply "${SM_PATCHDIR}/2001_system_graphite2.patch"
-	eapply "${SM_PATCHDIR}/2002_bmo-1559213-Support-system-av1.patch"
-	eapply "${SM_PATCHDIR}/2003_nICER_implicit_decls.patch"
-	eapply "${SM_PATCHDIR}/2004_fix_lto_builds.patch"
-	eapply "${SM_PATCHDIR}/2006_musl_sys_auxv.patch"
-	eapply "${SM_PATCHDIR}/2009_upstream-bug_1461221.patch"
-	eapply "${SM_PATCHDIR}/2010_blessings-TERM.patch"
-	eapply "${SM_PATCHDIR}/2011_missing-errno_h-in-SandboxOpenedFiles_cpp.patch"
-	eapply "${SM_PATCHDIR}/2012_make-MOZ_SIGNAL_TRAMPOLINE-Android-only_bug1434526.patch"
-	eapply "${SM_PATCHDIR}/2014_dont_use_gconf_service_mozilla_bug1526243.patch"
-	eapply "${SM_PATCHDIR}/2015_dont_use_gconf_for_proxy_configuration_bug1540145.patch"
-	eapply "${SM_PATCHDIR}/2018_audio_device_backends.patch"
-	eapply "${SM_PATCHDIR}/6001_add_missing_header_for_basename.patch"
-	eapply "${SM_PATCHDIR}/6002_add_alternate_name_for_private_siginfo_struct_member.patch"
-	eapply "${SM_PATCHDIR}/6003_fix_syscall_wrappers_on_musl.patch"
-	eapply "${SM_PATCHDIR}/6004_musl_drop_alloc_hooks.patch"
-	eapply "${SM_PATCHDIR}/6005_musl_memory_report.patch"
-	eapply "${SM_PATCHDIR}/6006_musl_pthread_setname.patch"
-	eapply "${SM_PATCHDIR}/6007_musl_fix_tools.patch"
-	eapply "${SM_PATCHDIR}/6008_musl_fix_toolkit.patch"
-	eapply "${SM_PATCHDIR}/6018_audio_backend_update_generated_files.patch"
+	eapply "${WORKDIR}"/gentoo-${PN}-patches-${PV}-r1/${PN}
 
 	# Shell scripts sometimes contain DOS line endings; bug 391889
 	grep -rlZ --include="*.sh" $'\r$' . |
@@ -232,8 +200,7 @@ src_prepare() {
 	done
 
 	use system-libvpx \
-		&& eapply -p2 "${WORKDIR}/${PN}-2.53.3-system_libvpx-1.8.patch"
-		#&& eapply -p2 "${SM_PATCHDIR}/1009_seamonkey-2.53.3-system_libvpx-1.8.patch"
+		&& eapply -p2 ""${WORKDIR}"/gentoo-${PN}-patches-${PV}-r1/USE_flag/1009_seamonkey-2.53.3-system_libvpx-1.8.patch"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
