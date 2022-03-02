@@ -476,6 +476,8 @@ app-office/texmacs
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-10-07)
 # Masked for more testing especially of reverse-deps.
+# ogre 1.11/1.12 breakage: bug #834468
+# ogre 2.x breakage: bug #740424
 >=dev-games/ogre-1.11.2
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
