@@ -3,9 +3,10 @@
 
 EAPI=8
 
+PYTHON_COMPAT=( python3_{8..10} )
 DOCS_BUILDER="doxygen"
 DOCS_DEPEND="media-gfx/graphviz"
-inherit autotools docs xdg
+inherit autotools docs python-single-r1 xdg
 
 MY_PN=${PN}-gaf
 MY_P=${MY_PN}-${PV}
@@ -19,8 +20,12 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="debug examples fam nls stroke threads"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="
+# The Xorn python bindings aren't quite working
+RESTRICT="test"
+
+RDEPEND="${PYTHON_DEPS}
 	dev-libs/glib:2
 	dev-scheme/guile
 	sci-electronics/electronics-menu
