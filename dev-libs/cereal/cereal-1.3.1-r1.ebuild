@@ -40,6 +40,11 @@ src_configure() {
 
 		-DWITH_WERROR=OFF
 	)
+	# bug 833866, disable tests requiring -m32
+	# conditional on USE=test to avoid unused variable warning
+	if use test ; then
+		( use riscv || use arm || use arm64 ) && mycmakeargs+=( -DSKIP_PORTABILITY_TEST=ON )
+	fi
 
 	cmake_src_configure
 }
