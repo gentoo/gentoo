@@ -31,8 +31,7 @@ fi
 
 SRC_URI="${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source.tar.xz -> ${P}.source.tar.xz
 	${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source-l10n.tar.xz -> ${P}.source-l10n.tar.xz
-	https://github.com/BioMike/gentoo-${PN}-patches/archive/refs/tags/${PV}.tar.gz -> ${PATCH}.tar.gz
-	system-libvpx? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-2.53.3-system_libvpx-1.8.patch.gz )"
+	https://github.com/BioMike/gentoo-${PN}-patches/archive/refs/tags/${PV}.tar.gz -> ${PATCH}.tar.gz"
 
 S="${WORKDIR}/${MY_MOZ_P}"
 
@@ -192,7 +191,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	SM_PATCHDIR="${WORKDIR}/mozilla"
+	SM_PATCHDIR="${WORKDIR}/gentoo-${PN}-patches-${PV}/${PN}"
 	# Apply our patches
 	eapply "${SM_PATCHDIR}/1000_fix-preferences-gentoo.patch"
 	eapply "${SM_PATCHDIR}/1001_gentoo_prefs.patch"
@@ -232,8 +231,7 @@ src_prepare() {
 	done
 
 	use system-libvpx \
-		&& eapply -p2 "${WORKDIR}/${PN}-2.53.3-system_libvpx-1.8.patch"
-		#&& eapply -p2 "${SM_PATCHDIR}/1009_seamonkey-2.53.3-system_libvpx-1.8.patch"
+		&& eapply -p2 "${SM_PATCHDIR}/1009_seamonkey-2.53.3-system_libvpx-1.8.patch"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
