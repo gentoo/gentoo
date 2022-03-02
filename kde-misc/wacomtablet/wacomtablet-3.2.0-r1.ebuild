@@ -17,7 +17,7 @@ https://dev.gentoo.org/~asturm/distfiles/${P}-patchset-1.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=dev-libs/libwacom-0.30
