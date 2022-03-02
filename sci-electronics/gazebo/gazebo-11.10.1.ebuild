@@ -66,6 +66,7 @@ PATCHES=(
 	"${FILESDIR}/qwt.patch"
 	"${FILESDIR}/cmake.patch"
 	"${FILESDIR}/ffmpeg5.patch"
+	"${FILESDIR}/ffmpeg4.patch"
 )
 
 src_configure() {
