@@ -28,7 +28,8 @@ IUSE="nls acl minimal"
 
 BDEPEND="sys-devel/autoconf"
 # Avoid icon file collision, bug #673880
-RDEPEND="!!<app-editors/gvim-8.1.0648"
+RDEPEND="!!<app-editors/gvim-8.1.0648
+	!<app-editors/vim-8.2.4328-r1"
 PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 
 pkg_setup() {
@@ -205,13 +206,6 @@ src_install() {
 		sed -i '/skip_defaults_vim/d' "${ED}"/etc/vim/vimrc || die "sed failed"
 
 		eshopts_pop
-	fi
-
-	# Delete defaults.vim to avoid conflicts with one from vim.
-	# If defaults.vim already exists in files installed from vim,
-	# do not install defaults.vim.
-	if [[ -f "${vimfiles}/defaults.vim" ]]; then
-		rm -v "${ED}${vimfiles}"/defaults.vim || die "rm failed"
 	fi
 
 	newbashcomp "${FILESDIR}"/xxd-completion xxd
