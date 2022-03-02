@@ -241,11 +241,6 @@ sys-auth/pam_blue
 # Removal after 2022-03-01.  Bug #830428.
 www-servers/bozohttpd
 
-# Jonas Stein <jstein@gentoo.org> (2021-12-31)
-# Removal after 2022-05-01.  Bug #830331.
-# Broken and upstream needs new maintainer.
-x11-plugins/purple-facebook
-
 # Jonas Stein <jstein@gentoo.org> (2021-12-24)
 # Alpha version
 =app-editors/ghex-4.0.0_alpha
