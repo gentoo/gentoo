@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,8 +39,6 @@ BDEPEND="
 	wayland? ( dev-libs/wayland-protocols )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-1.8.0-xdg.patch" )
-
 src_prepare() {
 	default
 
@@ -59,6 +57,7 @@ src_configure() {
 
 src_compile() {
 	local myemakeargs=(
+		SYSCONFDIR="${EPREFIX}/etc/xdg"
 		SYSTEMD="0"
 		WAYLAND="$(usex wayland 1 0)"
 	)
@@ -69,7 +68,7 @@ src_compile() {
 src_install() {
 	local myemakeargs=(
 		PREFIX="${ED}/usr"
-		SYSCONFDIR="${ED}/etc"
+		SYSCONFDIR="${ED}/etc/xdg"
 		SYSTEMD="0"
 		WAYLAND="$(usex wayland 1 0)"
 	)
