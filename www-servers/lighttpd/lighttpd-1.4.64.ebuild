@@ -65,7 +65,8 @@ BDEPEND="
 		virtual/perl-Test-Harness
 	)"
 
-DEPEND="${COMMON_DEPEND}"
+DEPEND="${COMMON_DEPEND}
+	elibc_musl? ( sys-libs/queue-standalone )"
 
 RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-apache )
