@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib desktop optfeature
+inherit cmake desktop optfeature
 
 DESCRIPTION="A lightweight window manager initially based on aewm++"
 HOMEPAGE="
@@ -31,7 +31,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-multilib_src_configure() {
+src_configure() {
 	local mycmakeargs=(
 		-DENABLE_IMAGE_JPEG=$(usex jpeg)
 		-DENABLE_IMAGE_PNG=$(usex png)
@@ -43,7 +43,7 @@ multilib_src_configure() {
 	cmake_src_configure
 }
 
-multilib_src_install() {
+src_install() {
 
 	cmake_src_install
 
