@@ -75,6 +75,7 @@ src_prepare() {
 	# unbundle, use sed over patch for less chances to break -9999
 	sed -e '/add_subdir.*cubeb/c\find_package(cubeb REQUIRED)' \
 		-e '/add_subdir.*libchdr/c\pkg_check_modules(chdr REQUIRED IMPORTED_TARGET libchdr)' \
+		-e '/compile_options(\(cubeb\|chdr-static\|speex\)/d' \
 		-i cmake/SearchForStuff.cmake || die
 	sed -i 's/chdr-static/PkgConfig::chdr/' pcsx2/CMakeLists.txt || die
 
