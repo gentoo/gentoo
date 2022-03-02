@@ -1,0 +1,140 @@
+From afcb8e32343d662d74ccb7b6596ddf03104c8e41 Mon Sep 17 00:00:00 2001
+Message-Id: <afcb8e32343d662d74ccb7b6596ddf03104c8e41.1646212419.git.mprivozn@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Wed, 2 Mar 2022 10:12:44 +0100
+Subject: [PATCH] libvirt-8.2.0-fix-paths-for-apparmor.patch
+
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ src/security/apparmor/libvirt-qemu            |  1 +
+ src/security/apparmor/meson.build             |  6 +-
+ .../usr.lib.libvirt.virt-aa-helper.in         | 75 -------------------
+ .../usr.lib.libvirt.virt-aa-helper.local      |  1 -
+ 4 files changed, 4 insertions(+), 79 deletions(-)
+ delete mode 100644 src/security/apparmor/usr.lib.libvirt.virt-aa-helper.in
+ delete mode 100644 src/security/apparmor/usr.lib.libvirt.virt-aa-helper.local
+
+diff --git a/src/security/apparmor/libvirt-qemu b/src/security/apparmor/libvirt-qemu
+index 8cd76d48ec..39f8f04c03 100644
+--- a/src/security/apparmor/libvirt-qemu
++++ b/src/security/apparmor/libvirt-qemu
+@@ -95,6 +95,7 @@
+   /usr/share/sgabios/** r,
+   /usr/share/slof/** r,
+   /usr/share/vgabios/** r,
++  /usr/share/seavgabios/** r,
+ 
+   # pki for libvirt-vnc and libvirt-spice (LP: #901272, #1690140)
+   /etc/pki/CA/ r,
+diff --git a/src/security/apparmor/meson.build b/src/security/apparmor/meson.build
+index 990f00b4f3..2a2235c89a 100644
+--- a/src/security/apparmor/meson.build
++++ b/src/security/apparmor/meson.build
+@@ -1,5 +1,5 @@
+ apparmor_gen_profiles = [
+-  'usr.lib.libvirt.virt-aa-helper',
++  'usr.libexec.libvirt.virt-aa-helper',
+   'usr.sbin.libvirtd',
+   'usr.sbin.virtqemud',
+   'usr.sbin.virtxend',
+@@ -34,7 +34,7 @@ install_data(
+ )
+ 
+ install_data(
+-  'usr.lib.libvirt.virt-aa-helper.local',
++  'usr.libexec.libvirt.virt-aa-helper.local',
+   install_dir: apparmor_dir / 'local',
+-  rename: 'usr.lib.libvirt.virt-aa-helper',
++  rename: 'usr.libexec.libvirt.virt-aa-helper',
+ )
+diff --git a/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.in b/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.in
+deleted file mode 100644
+index ff1d46bebe..0000000000
+--- a/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.in
++++ /dev/null
+@@ -1,75 +0,0 @@
+-#include <tunables/global>
+-
+-profile virt-aa-helper @libexecdir@/virt-aa-helper {
+-  #include <abstractions/base>
+-  #include <abstractions/openssl>
+-
+-  # needed for searching directories
+-  capability dac_override,
+-  capability dac_read_search,
+-
+-  # needed for when disk is on a network filesystem
+-  network inet,
+-  network inet6,
+-
+-  deny @{PROC}/[0-9]*/mounts r,
+-  @{PROC}/[0-9]*/net/psched r,
+-  owner @{PROC}/[0-9]*/status r,
+-  @{PROC}/filesystems r,
+-
+-  # Used when internally running another command (namely apparmor_parser)
+-  @{PROC}/@{pid}/fd/ r,
+-
+-  # allow reading libnl's classid file
+-  @sysconfdir@/libnl{,-3}/classid r,
+-
+-  # for gl enabled graphics
+-  /dev/dri/{,*} r,
+-
+-  # for hostdev
+-  /sys/devices/ r,
+-  /sys/devices/** r,
+-  /sys/bus/usb/devices/ r,
+-  deny /dev/sd* r,
+-  deny /dev/vd* r,
+-  deny /dev/dm-* r,
+-  deny /dev/drbd[0-9]* r,
+-  deny /dev/dasd* r,
+-  deny /dev/nvme* r,
+-  deny /dev/zd[0-9]* r,
+-  deny /dev/mapper/ r,
+-  deny /dev/mapper/* r,
+-
+-  @libexecdir@/virt-aa-helper mr,
+-  /{usr/,}sbin/apparmor_parser Ux,
+-
+-  @sysconfdir@/apparmor.d/libvirt/* r,
+-  @sysconfdir@/apparmor.d/libvirt/libvirt-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]* rw,
+-
+-  # for backingstore -- allow access to non-hidden files in @{HOME} as well
+-  # as storage pools
+-  audit deny @{HOME}/.* mrwkl,
+-  audit deny @{HOME}/.*/ rw,
+-  audit deny @{HOME}/.*/** mrwkl,
+-  audit deny @{HOME}/bin/ rw,
+-  audit deny @{HOME}/bin/** mrwkl,
+-  @{HOME}/ r,
+-  @{HOME}/** r,
+-  /var/lib/libvirt/images/ r,
+-  /var/lib/libvirt/images/** r,
+-  /var/lib/nova/instances/_base/* r,
+-  /{media,mnt,opt,srv}/** r,
+-  # For virt-sandbox
+-  /{,var/}run/libvirt/**/[sv]d[a-z] r,
+-
+-  /**.img r,
+-  /**.raw r,
+-  /**.qcow{,2} r,
+-  /**.qed r,
+-  /**.vmdk r,
+-  /**.vhd r,
+-  /**.[iI][sS][oO] r,
+-  /**/disk{,.*} r,
+-
+-  #include <local/usr.lib.libvirt.virt-aa-helper>
+-}
+diff --git a/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.local b/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.local
+deleted file mode 100644
+index c0990e51d0..0000000000
+--- a/src/security/apparmor/usr.lib.libvirt.virt-aa-helper.local
++++ /dev/null
+@@ -1 +0,0 @@
+-# Site-specific additions and overrides for 'usr.lib.libvirt.virt-aa-helper'
+-- 
+2.34.1
+
