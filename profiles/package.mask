@@ -195,12 +195,6 @@ app-misc/emelfm2
 # Removal on 2022-02-31. bug #668708.
 media-video/atomicparsley-wez
 
-# Michał Górny <mgorny@gentoo.org> (2022-01-30)
-# NIH package with no revdeps and an awful build system that can't work
-# with PEP 517 builders.  Last release in 2017.
-# Removal on 2022-03-01.  Bug #832366.
-dev-python/python-slip
-
 # Eray Aslan <eras@gentoo.org> (2022-01-24)
 # Mask experimental software
 =mail-mta/postfix-3.8*
