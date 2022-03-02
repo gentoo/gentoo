@@ -14,10 +14,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 RESTRICT="test" # tries to install an old version of dash from the network
 
+DOCS=( README.org )
+ELISP_REMOVE="csharp-mode-tests.el"  # useless since we can not run tests
 SITEFILE="50${PN}-gentoo.el"
-
-src_install() {
-	elisp-install ${PN} csharp-mode.el{,c}
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
-	dodoc README.org
-}
