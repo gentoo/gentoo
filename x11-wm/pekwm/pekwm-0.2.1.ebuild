@@ -54,11 +54,11 @@ src_install() {
 	dodoc "${S}"/contrib/lobo/*.{pl,vars,png} "${S}"/contrib/lobo/README
 
 	# Insert an Xsession
-exeinto /etc/X11/Sessions
-newexe - pekwm <<- _EOF_
-	#!/bin/sh
-	/usr/bin/pekwm
-_EOF_
+	exeinto /etc/X11/Sessions
+	newexe - pekwm <<- _EOF_
+		#!/bin/sh
+		/usr/bin/pekwm
+	_EOF_
 
 	# Insert a GDM/KDM xsession file
 	make_session_desktop ${PN} ${PN}
