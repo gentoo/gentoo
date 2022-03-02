@@ -17,7 +17,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~mips ~ppc ~x86"
-IUSE="debug +jpeg +png truetype +xft xinerama +xpm"
+IUSE="debug +jpeg +png truetype xinerama +xpm"
 
 RDEPEND="
 	png? ( media-libs/libpng:0 )
@@ -39,6 +39,8 @@ src_configure() {
 		-DENABLE_XINERAMA=$(usex xinerama)
 		-DENABLE_XFT=$(usex truetype)
 	)
+	
+	CMAKE_BUILD_TYPE=$(usex debug Debug)
 
 	cmake_src_configure
 }
