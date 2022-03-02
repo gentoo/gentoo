@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="expat jpeg lua openexr php perl png ruby swig tiff truetype X"
-REQUIRED_USE="lua? ( swig )"
+REQUIRED_USE="lua? ( swig ) perl? ( swig ) php? ( swig ) ruby? ( swig )"
 
 RDEPEND="
 	x11-libs/agg[truetype]
@@ -23,7 +23,7 @@ RDEPEND="
 	expat? ( dev-libs/expat )
 	jpeg? ( virtual/jpeg )
 	lua? ( ${LUA_DEPS} )
-	openexr? ( <media-libs/openexr-3.0.0:0= )
+	openexr? ( media-libs/openexr:= )
 	php? ( dev-lang/php:* )
 	perl? ( dev-lang/perl )
 	png? ( >=media-libs/libpng-1.2.43 )
@@ -35,8 +35,7 @@ RDEPEND="
 		x11-libs/libXt
 		x11-libs/libICE
 		x11-libs/libSM
-	)
-"
+	)"
 DEPEND="
 	${RDEPEND}
 	swig? ( dev-lang/swig )
@@ -72,6 +71,11 @@ src_prepare() {
 	sed -i \
 		-e 's/strcpy(\([^,]*\)\(,["a-zA-Z -]*\))/memcpy(\1\2, sizeof(\1))/' \
 		codecs/tga.cc || die
+
+	# openexr vers 3
+	sed -i \
+		-e 's:Int64:uint64_t:g' \
+		codecs/openexr.cc || die
 }
 
 src_configure() {
@@ -97,7 +101,6 @@ src_configure() {
 		--without-bardecode \
 		$(use_with lua) \
 		$(use_with swig) \
-		--without-python \
 		$(use_with perl) \
 		--without-python \
 		$(use_with php) \
