@@ -1,0 +1,28 @@
+From 855e7727c06d6e61d0b1e3e34629de2cf0142a91 Mon Sep 17 00:00:00 2001
+From: Thomas Bracht Laumann Jespersen <t@laumann.xyz>
+Date: Wed, 2 Mar 2022 22:24:30 +0100
+Subject: [PATCH] doc: Replace CC_FOR_BUILD and EXEEXT_FOR_BUILD for building
+ docs
+
+---
+ doc/Makefile.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/doc/Makefile.in b/doc/Makefile.in
+index d94736f..d565359 100644
+--- a/doc/Makefile.in
++++ b/doc/Makefile.in
+@@ -37,8 +37,8 @@ INSTALL_INFO= @INSTALL_INFO@
+ CC          = @CC@
+ CPPFLAGS    = @CPPFLAGS@
+ CFLAGS      = @CFLAGS@
+-CC_FOR_BUILD     = @CC_FOR_BUILD@
+-EXEEXT_FOR_BUILD = @EXEEXT_FOR_BUILD@
++CC_FOR_BUILD     = $(CC)
++EXEEXT_FOR_BUILD =
+ 
+ all: info dvi
+ 
+-- 
+2.34.1
+
