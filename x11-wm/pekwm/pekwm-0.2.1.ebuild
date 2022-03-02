@@ -20,13 +20,13 @@ KEYWORDS="~amd64 ~mips ~ppc ~x86"
 IUSE="debug +jpeg +png truetype xinerama +xpm"
 
 RDEPEND="
-	png? ( media-libs/libpng:0 )
-	jpeg? ( virtual/jpeg:0 )
-	xpm? ( x11-libs/libXpm )
 	x11-libs/libX11
 	x11-libs/libXext
+	jpeg? ( virtual/jpeg:0 )
+	png? ( media-libs/libpng:0 )
 	truetype? ( x11-libs/libXft )
-	xinerama? ( x11-libs/libXinerama )"
+	xinerama? ( x11-libs/libXinerama )
+	xpm? ( x11-libs/libXpm )"
 
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
