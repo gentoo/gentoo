@@ -30,5 +30,5 @@ distutils_enable_tests --install unittest
 
 python_test() {
 	distutils_install_for_testing --via-venv
-	virtx distutils-r1_python_test
+	virtx eunittest
 }
