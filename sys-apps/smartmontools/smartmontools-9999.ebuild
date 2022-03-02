@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit autotools flag-o-matic systemd
 if [[ ${PV} == "9999" ]] ; then
@@ -22,13 +22,15 @@ IUSE="caps +daemon selinux static systemd +update-drivedb"
 
 DEPEND="
 	caps? (
-		static? ( sys-libs/libcap-ng[static-libs] )
-		!static? ( sys-libs/libcap-ng )
+		static? ( sys-libs/libcap-ng:=[static-libs] )
+		!static? ( sys-libs/libcap-ng:= )
 	)
 	selinux? (
-		sys-libs/libselinux
-	)"
-RDEPEND="${DEPEND}
+		sys-libs/libselinux:=
+	)
+"
+RDEPEND="
+	${DEPEND}
 	daemon? ( virtual/mailx )
 	selinux? ( sec-policy/selinux-smartmon )
 	systemd? ( sys-apps/systemd )
@@ -110,16 +112,16 @@ src_install() {
 	# Make sure we never install drivedb.h into the db location
 	# of the acutal image so we don't record hashes because user
 	# can modify that file
-	rm -f "${ED%/}${db_path}/drivedb.h" || die
+	rm -f "${ED}${db_path}/drivedb.h" || die
 
 	# Bug #622072
-	find "${ED%/}"/usr/share/doc -type f -exec chmod a-x '{}' \; || die
+	find "${ED}"/usr/share/doc -type f -exec chmod a-x '{}' \; || die
 }
 
 pkg_postinst() {
 	if use daemon || use update-drivedb; then
-		local initial_db_file="${EROOT}usr/share/${PN}/drivedb.h"
-		local db_path="${EROOT}var/db/${PN}"
+		local initial_db_file="${EROOT}/usr/share/${PN}/drivedb.h"
+		local db_path="${EROOT}/var/db/${PN}"
 
 		if [[ ! -f "${db_path}/drivedb.h" ]] ; then
 			# No initial database found
