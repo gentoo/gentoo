@@ -14,7 +14,7 @@ HOMEPAGE="https://choqok.kde.org/ https://apps.kde.org/choqok/"
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV%.0}/src/${P}.tar.xz
 	https://dev.gentoo.org/~asturm/distfiles/${P}-patchset-1.tar.xz"
-	KEYWORDS="~amd64 x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2+"
