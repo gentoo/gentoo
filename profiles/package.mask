@@ -208,7 +208,10 @@ media-video/atomicparsley-wez
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-15)
 # Pretest versions, masked for testing.
-<app-editors/emacs-28.0.9999:28-vcs
+=app-editors/emacs-28.0.90:28-vcs
+=app-editors/emacs-28.0.91:28-vcs
+=app-editors/emacs-28.0.92:28-vcs
+=app-editors/emacs-28.0.93:28-vcs
 
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
