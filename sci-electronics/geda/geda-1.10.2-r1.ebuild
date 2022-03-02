@@ -3,10 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
 DOCS_BUILDER="doxygen"
 DOCS_DEPEND="media-gfx/graphviz"
-inherit autotools docs python-single-r1 xdg
+inherit autotools docs xdg
 
 MY_PN=${PN}-gaf
 MY_P=${MY_PN}-${PV}
@@ -19,11 +18,8 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="debug examples fam nls stroke threads"
+IUSE="debug examples fam nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
-# The Xorn python bindings aren't quite working
-RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/glib:2
@@ -34,7 +30,6 @@ RDEPEND="${PYTHON_DEPS}
 	x11-libs/gtk+:2
 	x11-libs/pango
 	nls? ( virtual/libintl )
-	stroke? ( dev-libs/libstroke )
 	fam? ( app-admin/gamin )
 "
 
@@ -47,8 +42,14 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
+# Xorn requires python2
+PATCHES=(
+	"${FILESDIR}/${P}-drop-xorn.patch"
+)
+
 src_prepare() {
 	default
+	rm -r xorn || die
 
 	if ! use doc ; then
 		sed -i -e '/^SUBDIRS = /s/docs//' Makefile.in || die
@@ -85,8 +86,6 @@ src_configure() {
 		$(use_enable doc doxygen)
 		$(use_enable debug assert)
 		$(use_enable nls)
-		$(use_enable threads threads posix)
-		$(use_with stroke libstroke)
 		$(use_with fam libfam)
 	)
 
