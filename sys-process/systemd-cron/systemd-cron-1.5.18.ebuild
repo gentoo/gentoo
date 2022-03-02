@@ -2,12 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( pypy3 python3_{7,8,9,10} )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 inherit python-single-r1 systemd
 
 DESCRIPTION="systemd units to create timers for cron directories and crontab"
 HOMEPAGE="https://github.com/systemd-cron/systemd-cron/"
-SRC_URI="https://github.com/systemd-cron/systemd-cron/archive/refs/tags/v${PV}.tar.gz -> systemd-cron-${PV}.tar.gz"
+MY_PV="1.15.18"
+SRC_URI="https://github.com/systemd-cron/${PN}/archive/v${MY_PV}.tar.gz -> systemd-cron-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -26,6 +27,8 @@ DEPEND="sys-process/cronbase
 	test? ( sys-apps/man-db dev-python/pyflakes )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_prepare() {
 	python_fix_shebang --force "${S}/src/bin"
