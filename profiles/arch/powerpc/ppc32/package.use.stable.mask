@@ -18,6 +18,10 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-03-03)
+# net-nds/openldap / dev-libs/cyrus-sasl not stable here
+dev-lang/php ldap-sasl
+
+# Sam James <sam@gentoo.org> (2022-03-03)
 # No kerberos provider is marked stable here
 net-fs/samba ads system-heimdal system-mitkrb5
 net-fs/cifs-utils ads
