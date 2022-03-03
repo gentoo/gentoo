@@ -7,6 +7,7 @@ DOCS_BUILDER="doxygen"
 DOCS_DEPEND="
 	media-gfx/graphviz
 	media-gfx/imagemagick
+	virtual/latex-base
 "
 inherit autotools docs xdg
 
