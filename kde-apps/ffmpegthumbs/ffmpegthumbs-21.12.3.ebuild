@@ -27,3 +27,7 @@ DEPEND="
 	media-video/ffmpeg:0=
 "
 RDEPEND="${DEPEND}"
+
+# Upstream pending MR:
+# https://invent.kde.org/multimedia/ffmpegthumbs/-/merge_requests/16
+PATCHES=( "${FILESDIR}/${P}-ffmpeg5.patch" ) # bug #831480
