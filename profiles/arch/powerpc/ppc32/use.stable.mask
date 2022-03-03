@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-03-03)
+# dev-libs/cyrus-sasl is not marked stable here
+sasl
+
+# Sam James <sam@gentoo.org> (2022-03-03)
 # net-nds/openldap is not marked stable here
 ldap
 
