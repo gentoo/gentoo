@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (2022-03-03)
+# PHP 7.3 is end-of-life
+# Please upgrade to a newer slot
+# Guide at https://www.php.net/manual/en/migration74.incompatible.php
+# Removal in 30 days
+dev-lang/php:7.3
+virtual/httpd-php:7.3
+<www-apps/icingaweb2-module-director-1.8.1
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-03-01)
 # Dead upstream, blocks cleanup of dependencies.
 # Bug #773175. Removal on 2022-03-31.
