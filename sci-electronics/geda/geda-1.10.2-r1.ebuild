@@ -4,7 +4,10 @@
 EAPI=8
 
 DOCS_BUILDER="doxygen"
-DOCS_DEPEND="media-gfx/graphviz"
+DOCS_DEPEND="
+	media-gfx/graphviz
+	media-gfx/imagemagick
+"
 inherit autotools docs xdg
 
 MY_PN=${PN}-gaf
