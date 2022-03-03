@@ -18,6 +18,10 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-03-03)
+# sys-cluster/rdma-core is not marked stable here
+net-libs/libpcap rdma
+
+# Sam James <sam@gentoo.org> (2022-03-03)
 # sys-cluster/sanlock is not marked stable here
 sys-fs/lvm2 sanlock
 
