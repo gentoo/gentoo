@@ -124,10 +124,6 @@ net-proxy/haproxy device-atlas
 # media-libs/liblastfm fails to build with tests Bug #758896
 media-sound/clementine lastfm
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-08)
-# dev-util/kdevelop-php is not keyworded, bug #751337
->=kde-apps/umbrello-20.08.3 php
-
 # Sam James <sam@gentoo.org> (2020-10-03)
 # Builds & tests pass on arm64.
 # Available on: amd64, x86, arm{,64}.
