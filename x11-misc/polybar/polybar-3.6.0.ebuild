@@ -43,6 +43,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	sed -e '/set/s/cxx_linker_flags_str/CMAKE_EXE_LINKER_FLAGS_INIT/' -i cmake/cxx.cmake || die
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_ALSA="$(usex alsa)"
