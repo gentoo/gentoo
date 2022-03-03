@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ DEPEND="${RDEPEND}
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ~mips ~ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~mips ppc ppc64 ~sparc x86"
 IUSE=""
 
 S="${WORKDIR}/${P}/Src"
