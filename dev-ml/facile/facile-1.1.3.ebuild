@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="http://opti.recherche.enac.fr/facile/distrib/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 
-KEYWORDS="~alpha amd64 arm64 ~hppa ~ia64 ppc ppc64 x86"
+KEYWORDS="~alpha amd64 arm64 ~hppa ~ia64 ~ppc ppc64 x86"
 IUSE="+ocamlopt"
 
 RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt?]"
