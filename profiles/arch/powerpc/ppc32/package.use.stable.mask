@@ -20,6 +20,7 @@
 # Sam James <sam@gentoo.org> (2022-03-03)
 # No kerberos provider is marked stable here
 net-fs/samba system-heimdal system-mitkrb5
+net-fs/cifs-utils ads
 
 # Sam James <sam@gentoo.org> (2022-03-03)
 # sys-cluster/rdma-core is not marked stable here
