@@ -3,6 +3,7 @@
 
 # Sam James <sam@gentoo.org> (2022-03-03)
 # No kerberos provider is marked stable here
+gssapi
 kerberos
 
 # Sam James <sam@gentoo.org> (2022-03-03)
