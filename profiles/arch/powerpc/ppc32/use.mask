@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -ppc
 
+# Sam James <sam@gentoo.org> (2022-03-03)
+# dev-db/mysql doesn't work well on PPC, especially 8.x, but should be fine on PPC64
+-mysql
+
 # Matt Turner <mattst88@gentoo.org> (2022-02-21)
 # app-crypt/tpm2-tss is not keyworded here
 tpm
