@@ -36,6 +36,7 @@ S="${WORKDIR}/${PN}-src-${PV}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.9.0-Unbundle-miniupnpc.patch"
+	"${FILESDIR}/${PN}-10.0.0-musl.patch"
 )
 
 src_prepare() {
