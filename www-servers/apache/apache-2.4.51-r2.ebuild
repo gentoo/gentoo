@@ -120,6 +120,7 @@ MODULE_DEFINES="
 	ssl:SSL
 	status:STATUS
 	suexec:SUEXEC
+	systemd:SYSTEMD
 	userdir:USERDIR
 "
 
