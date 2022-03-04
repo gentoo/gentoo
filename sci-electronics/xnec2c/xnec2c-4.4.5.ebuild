@@ -21,10 +21,13 @@ RDEPEND="dev-libs/glib:2
 DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
+PATCHES=( "${FILESDIR}/$PN-4.4.5-musl.patch" )
+
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	eapply_user
+	eapply ${PATCHES[@]}
 	eautoreconf
 }
 

@@ -24,6 +24,7 @@ QA_FLAGS_IGNORED='/usr/lib.*/ocaml/bigarray.cmxs'
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.12.0-glibc-2.34.patch
+	"${FILESDIR}"/${P}-fix-textrel-riscv.patch
 )
 
 src_prepare() {

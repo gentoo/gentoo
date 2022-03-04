@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,13 +31,15 @@ RESTRICT="!test? ( test ) test"
 
 # Upstream build scripts invoke the Lua interpreter
 BDEPEND="${LUA_DEPS}
-	dev-util/gperf
+	>=dev-util/gperf-3.1
 	virtual/libiconv
 	virtual/libintl
 	virtual/pkgconfig
 "
+# Check https://github.com/neovim/neovim/blob/master/third-party/CMakeLists.txt for
+# new dependency bounds and so on on bumps (obviously adjust for right branch/tag).
 DEPEND="${LUA_DEPS}
-	dev-lua/luv[${LUA_SINGLE_USEDEP}]
+	>=dev-lua/luv-1.43.0[${LUA_SINGLE_USEDEP}]
 	$(lua_gen_cond_dep '
 		dev-lua/lpeg[${LUA_USEDEP}]
 		dev-lua/mpack[${LUA_USEDEP}]
@@ -45,12 +47,12 @@ DEPEND="${LUA_DEPS}
 	$(lua_gen_cond_dep '
 		dev-lua/LuaBitOp[${LUA_USEDEP}]
 	' lua5-{1,2})
-	dev-libs/libuv:0=
-	>=dev-libs/libvterm-0.1.2
-	dev-libs/msgpack:0=
-	dev-libs/tree-sitter:=
+	>=dev-libs/libuv-1.43.0:=
+	>=dev-libs/libvterm-0.1.4
+	>=dev-libs/msgpack-3.0.0:=
+	>=dev-libs/tree-sitter-0.20.1:=
 	tui? (
-		dev-libs/libtermkey
+		>=dev-libs/libtermkey-0.22
 		>=dev-libs/unibilium-2.0.0:0=
 	)
 "

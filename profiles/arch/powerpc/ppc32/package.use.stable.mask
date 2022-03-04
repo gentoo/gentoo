@@ -17,6 +17,25 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-03-03)
+# net-nds/openldap / dev-libs/cyrus-sasl not stable here
+dev-lang/php ldap-sasl
+mail-mta/postfix ldap-bind
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# No kerberos provider is marked stable here
+net-fs/samba addns ads system-heimdal system-mitkrb5
+net-fs/cifs-utils ads
+sys-auth/pambase pam_krb5
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# sys-cluster/rdma-core is not marked stable here
+net-libs/libpcap rdma
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# sys-cluster/sanlock is not marked stable here
+sys-fs/lvm2 sanlock
+
 # Marek Szuba <marecki@gentoo.org> (2021-12-31)
 # No stable dev-ruby/{thor,tty-editor} on this arch yet
 # and there are many dependencies to go through before there are

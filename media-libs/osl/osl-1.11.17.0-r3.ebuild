@@ -20,7 +20,7 @@ LICENSE="BSD"
 # TODO: drop .1 on next SONAME change (probably 1.11 -> 1.12), we needed
 # a nudge to force rebuilds due to openexr 2 -> openexr 3 change.
 SLOT="0/$(ver_cut 2).1"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 X86_CPU_FEATURES=(

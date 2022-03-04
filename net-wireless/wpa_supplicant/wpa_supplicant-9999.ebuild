@@ -23,7 +23,7 @@ IUSE="ap +crda broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec 
 
 # CONFIG_PRIVSEP=y does not have sufficient support for the new driver
 # interface functions used for MACsec, so this combination cannot be used
-# at least for now.
+# at least for now. bug #684442
 REQUIRED_USE="
 	macsec? ( !privsep )
 	privsep? ( !macsec )
@@ -299,6 +299,10 @@ src_configure() {
 			#Kconfig_style_config DRIVER_MACSEC_QCA
 			Kconfig_style_config DRIVER_MACSEC_LINUX
 			Kconfig_style_config MACSEC
+		else
+			# bug #831369 and bug #684442
+			Kconfig_style_config DRIVER_MACSEC_LINUX n
+			Kconfig_style_config MACSEC n
 		fi
 
 		if use ps3 ; then

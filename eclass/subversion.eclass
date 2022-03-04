@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: subversion.eclass
@@ -6,17 +6,16 @@
 # Akinori Hattori <hattya@gentoo.org>
 # @AUTHOR:
 # Original Author: Akinori Hattori <hattya@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Fetch software sources from subversion repositories
 # @DESCRIPTION:
-# The subversion eclass provides functions to fetch, patch and bootstrap
-# software sources from subversion repositories.
+# The subversion eclass provides functions to fetch software sources
+# from subversion repositories.
 
 ESVN="${ECLASS}"
 
 case ${EAPI} in
-	4|5) inherit eutils ;;
-	6|7) inherit estack ;;
+	6|7|8) inherit estack ;;
 	*) die "${ESVN}: EAPI ${EAPI:-0} is not supported" ;;
 esac
 
@@ -27,7 +26,7 @@ DEPEND="
 	net-misc/rsync"
 
 case ${EAPI} in
-	4|5|6) ;;
+	6) ;;
 	*) BDEPEND="${DEPEND}"; DEPEND="" ;;
 esac
 
@@ -116,24 +115,6 @@ ESVN_PASSWORD="${ESVN_PASSWORD:-}"
 #
 # default: ${PN/-svn}.
 ESVN_PROJECT="${ESVN_PROJECT:-${PN/-svn}}"
-
-# @ECLASS-VARIABLE: ESVN_BOOTSTRAP
-# @DESCRIPTION:
-# Bootstrap script or command like autogen.sh or etc..
-# Removed in EAPI 6 and later.
-ESVN_BOOTSTRAP="${ESVN_BOOTSTRAP:-}"
-
-# @ECLASS-VARIABLE: ESVN_PATCHES
-# @DESCRIPTION:
-# subversion eclass can apply patches in subversion_bootstrap().
-# you can use regexp in this variable like *.diff or *.patch or etc.
-# NOTE: patches will be applied before ESVN_BOOTSTRAP is processed.
-#
-# Patches are searched both in ${PWD} and ${FILESDIR}, if not found in either
-# location, the installation dies.
-#
-# Removed in EAPI 6 and later, use PATCHES instead.
-ESVN_PATCHES="${ESVN_PATCHES:-}"
 
 # @ECLASS-VARIABLE: ESVN_RESTRICT
 # @DESCRIPTION:
@@ -363,50 +344,6 @@ subversion_fetch() {
 	echo
 }
 
-# @FUNCTION: subversion_bootstrap
-# @DESCRIPTION:
-# Apply patches in ${ESVN_PATCHES} and run ${ESVN_BOOTSTRAP} if specified.
-# Removed in EAPI 6 and later.
-subversion_bootstrap() {
-	[[ ${EAPI} == [012345] ]] || die "${FUNCNAME} is removed from subversion.eclass in EAPI 6 and later"
-
-	if has "export" ${ESVN_RESTRICT}; then
-		return
-	fi
-
-	cd "${S}"
-
-	if [[ -n ${ESVN_PATCHES} ]]; then
-		local patch fpatch
-		einfo "apply patches -->"
-		for patch in ${ESVN_PATCHES}; do
-			if [[ -f ${patch} ]]; then
-				epatch "${patch}"
-			else
-				for fpatch in ${FILESDIR}/${patch}; do
-					if [[ -f ${fpatch} ]]; then
-						epatch "${fpatch}"
-					else
-						die "${ESVN}: ${patch} not found"
-					fi
-				done
-			fi
-		done
-		echo
-	fi
-
-	if [[ -n ${ESVN_BOOTSTRAP} ]]; then
-		einfo "begin bootstrap -->"
-		if [[ -f ${ESVN_BOOTSTRAP} && -x ${ESVN_BOOTSTRAP} ]]; then
-			einfo "   bootstrap with a file: ${ESVN_BOOTSTRAP}"
-			eval "./${ESVN_BOOTSTRAP}" || die "${ESVN}: can't execute ESVN_BOOTSTRAP."
-		else
-			einfo "   bootstrap with command: ${ESVN_BOOTSTRAP}"
-			eval "${ESVN_BOOTSTRAP}" || die "${ESVN}: can't eval ESVN_BOOTSTRAP."
-		fi
-	fi
-}
-
 # @FUNCTION: subversion_wc_info
 # @USAGE: [repo_uri]
 # @RETURN: ESVN_WC_URL, ESVN_WC_ROOT, ESVN_WC_UUID, ESVN_WC_REVISION and ESVN_WC_PATH
@@ -438,15 +375,6 @@ subversion_wc_info() {
 # Default src_unpack. Fetch.
 subversion_src_unpack() {
 	subversion_fetch || die "${ESVN}: unknown problem occurred in subversion_fetch."
-}
-
-# @FUNCTION: subversion_src_prepare
-# @DESCRIPTION:
-# Default src_prepare. Bootstrap.
-# Removed in EAPI 6 and later.
-subversion_src_prepare() {
-	[[ ${EAPI} == [012345] ]] || die "${FUNCNAME} is removed from subversion.eclass in EAPI 6 and later"
-	subversion_bootstrap || die "${ESVN}: unknown problem occurred in subversion_bootstrap."
 }
 
 # @FUNCTION: subversion_pkg_preinst
@@ -537,6 +465,3 @@ subversion__get_peg_revision() {
 }
 
 EXPORT_FUNCTIONS src_unpack pkg_preinst
-if [[ ${EAPI} == [45] ]]; then
-	EXPORT_FUNCTIONS src_prepare
-fi

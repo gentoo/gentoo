@@ -3,21 +3,35 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite"  # bug 572440
 WX_GTK_VER="3.0-gtk3"
 
-inherit autotools desktop git-r3 python-single-r1 toolchain-funcs wxwidgets xdg
+inherit autotools desktop python-single-r1 toolchain-funcs wxwidgets xdg
 
 DESCRIPTION="A free GIS with raster and vector functionality, as well as 3D vizualization"
 HOMEPAGE="https://grass.osgeo.org/"
-EGIT_REPO_URI="https://github.com/OSGeo/grass.git"
 
 LICENSE="GPL-2"
 SLOT="0/8.1"
+
 GVERSION=${SLOT#*/}
-MY_P="${PN}${GVERSION}"
-MY_PM="${MY_P/.}"
+MY_PM="${PN}${GVERSION}"
+MY_PM="${MY_PM/.}"
+
+if [[ ${PV} =~ "9999" ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/OSGeo/grass.git"
+else
+	MY_P="${P/_rc/RC}"
+	SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
+	if [[ ${PV} != *_rc* ]] ; then
+		KEYWORDS="~amd64 ~ppc ~x86"
+	fi
+
+	S="${WORKDIR}/${MY_P}"
+fi
+
 IUSE="blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype X zstd"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}

@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2022-03-02)
+# Needs masked version of ogre (>=1.12), bug #825330
+>=dev-games/mygui-3.4.1 ogre
+
 # Sam James <sam@gentoo.org> (2022-02-21)
 # Needs build system love to make LLVM support work.
 # bug #745915
@@ -481,10 +485,8 @@ sys-block/fio static
 sci-libs/ipopt hsl
 
 # Lars Wendler <polynomial-c@gentoo.org> (2018-03-14)
-# Broken on all 32bit arches. Globally masked because of sys-apps/dmapi having
-# no active upstream anymore.
 # sys-cluster/ceph is only available on amd64 & x86, unmask per arch
-net-fs/samba dmapi ceph
+net-fs/samba ceph
 
 # Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (2018-03-14)
 # Mask local USE flag to satisfy repoman

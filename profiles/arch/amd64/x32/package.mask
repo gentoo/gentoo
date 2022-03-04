@@ -10,6 +10,11 @@ sci-electronics/eagle
 dev-python/jupyterlab
 dev-python/jupyterlab-lsp
 sci-misc/jupyterlab-desktop-bin
+dev-python/plotly
+dev-python/plotly-geo
+dev-python/chart-studio
+sci-visualization/dash
+sci-visualization/jupyter-dash
 
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-13)
 # Is reverse-dependency of dev-qt/qtwebengine

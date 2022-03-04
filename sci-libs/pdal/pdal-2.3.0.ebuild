@@ -12,7 +12,8 @@ SRC_URI="https://github.com/PDAL/PDAL/releases/download/${PV}/PDAL-${PV}-src.tar
 LICENSE="BSD"
 SLOT="0/13"
 KEYWORDS="~amd64 ~x86"
-IUSE="postgres"
+IUSE="postgres test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -26,12 +27,14 @@ DEPEND="
 	sys-libs/libunwind
 	sys-libs/zlib
 	postgres? ( dev-db/postgresql:*[xml] )
+	test? ( sci-libs/gdal[geos,jpeg,png] )
 "
 RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix_cmake_install_location.patch
 	"${FILESDIR}"/${P}-upgrade_cmake_min.patch
+	"${FILESDIR}"/${P}-fix_tests_for_proj811.patch
 )
 
 S="${WORKDIR}/PDAL-${PV}-src"
@@ -45,4 +48,13 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	local myctestargs=(
+		--exclude-regex '(pgpointcloudtest|pdal_io_bpf_base_test|pdal_io_bpf_zlib_test|pdal_filters_overlay_test|pdal_filters_stats_test|pdal_app_plugin_test|pdal_merge_test)'
+		--output-on-failure
+	)
+
+	cmake_src_test
 }

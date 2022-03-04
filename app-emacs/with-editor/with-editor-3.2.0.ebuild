@@ -19,4 +19,4 @@ SITEFILE="50${PN}-gentoo.el"
 ELISP_TEXINFO="../docs/*.texi"
 DOCS="../README.md ../docs/with-editor.org"
 
-DEPEND="sys-apps/texinfo"
+BDEPEND="sys-apps/texinfo"

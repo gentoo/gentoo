@@ -11,27 +11,27 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2/8"
-KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
 IUSE="hyperspec X berkdb dbus fastcgi gdbm gtk +pcre postgres +readline svm threads +unicode +zlib"
 # "jit" disabled ATM
 
 RDEPEND=">=dev-lisp/asdf-2.33-r3
-         virtual/libcrypt:=
-		 virtual/libiconv
-		 >=dev-libs/libsigsegv-2.10
-		 >=dev-libs/ffcall-1.10
-		 dbus? ( sys-apps/dbus )
-		 fastcgi? ( dev-libs/fcgi )
-		 gdbm? ( sys-libs/gdbm:0= )
-		 gtk? ( >=x11-libs/gtk+-2.10:2 >=gnome-base/libglade-2.6 )
-		 postgres? ( >=dev-db/postgresql-8.0:* )
-		 readline? ( >=sys-libs/readline-7.0:0= )
-		 pcre? ( dev-libs/libpcre:3 )
-		 svm? ( sci-libs/libsvm )
-		 zlib? ( sys-libs/zlib )
-		 X? ( x11-libs/libXpm )
-		 hyperspec? ( dev-lisp/hyperspec )
-		 berkdb? ( sys-libs/db:4.8 )"
+	virtual/libcrypt:=
+	virtual/libiconv
+	>=dev-libs/libsigsegv-2.10
+	>=dev-libs/ffcall-1.10
+	dbus? ( sys-apps/dbus )
+	fastcgi? ( dev-libs/fcgi )
+	gdbm? ( sys-libs/gdbm:0= )
+	gtk? ( >=x11-libs/gtk+-2.10:2 >=gnome-base/libglade-2.6 )
+	postgres? ( >=dev-db/postgresql-8.0:* )
+	readline? ( >=sys-libs/readline-7.0:0= )
+	pcre? ( dev-libs/libpcre:3 )
+	svm? ( sci-libs/libsvm )
+	zlib? ( sys-libs/zlib )
+	X? ( x11-libs/libXpm )
+	hyperspec? ( dev-lisp/hyperspec )
+	berkdb? ( sys-libs/db:4.8 )"
 
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto x11-misc/imake )"

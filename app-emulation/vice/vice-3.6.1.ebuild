@@ -22,6 +22,7 @@ REQUIRED_USE="
 	gtk? ( zlib )"
 
 # ffmpeg/lame are loaded by dlopen(), keeping := to rebuild with same headers
+# see bug #834359 for the ffmpeg upper bound
 RDEPEND="
 	virtual/libintl
 	alsa? ( media-libs/alsa-lib )
@@ -29,7 +30,7 @@ RDEPEND="
 		net-libs/libpcap
 		sys-libs/libcap
 	)
-	ffmpeg? ( media-video/ffmpeg:= )
+	ffmpeg? ( <media-video/ffmpeg-5:= )
 	flac? ( media-libs/flac )
 	gif? ( media-libs/giflib:= )
 	gtk? (

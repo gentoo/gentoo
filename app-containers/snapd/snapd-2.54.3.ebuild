@@ -4,7 +4,7 @@
 EAPI=7
 
 EGO_PN="github.com/snapcore/${PN}"
-inherit autotools bash-completion-r1 golang-vcs-snapshot linux-info readme.gentoo-r1 systemd xdg-utils
+inherit autotools bash-completion-r1 flag-o-matic golang-vcs-snapshot linux-info readme.gentoo-r1 systemd xdg-utils
 
 DESCRIPTION="Service and tools for management of snap packages"
 HOMEPAGE="http://snapcraft.io/"
@@ -61,6 +61,9 @@ pkg_setup() {
 		CONFIG_CHECK+=" ~SECURITY_APPARMOR"
 	fi
 	linux-info_pkg_setup
+
+	# Seems to have issues building with -O3, switch to -O2
+	replace-flags -O3 -O2
 }
 
 src_prepare() {

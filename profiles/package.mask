@@ -33,6 +33,84 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (2022-03-03)
+# PHP 7.3 is end-of-life
+# Please upgrade to a newer slot
+# Guide at https://www.php.net/manual/en/migration74.incompatible.php
+# Removal in 30 days
+dev-lang/php:7.3
+virtual/httpd-php:7.3
+<www-apps/icingaweb2-module-director-1.8.1
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-03-01)
+# Dead upstream, blocks cleanup of dependencies.
+# Bug #773175. Removal on 2022-03-31.
+sci-chemistry/votca-ctp
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-03-01)
+# No revdeps since 2020-11-28, still EAPI-6 and uses cmake-utils.eclass.
+# Bug #834317. Removal on 2022-03-31.
+dev-libs/injeqt
+
+# Sam James <sam@gentoo.org> (2022-02-27)
+# Fails to build with modern GCC, stuck on cmake-utils.eclass too.
+# bug #723194, bug #834301. Removal on 2022-03-27.
+sci-chemistry/mm-align
+
+# David Seifert <soap@gentoo.org> (2022-02-27)
+# Last release 10 years ago, no other distro packages this,
+# stuck on cmake-utils.eclass and QA issues.
+# Bug #711880, #774519, removal on 2022-03-27.
+net-fs/smbtad
+
+# Sam James <sam@gentoo.org> (2022-02-27)
+# EAPI=6 consumer of deprecated cmake-utils.eclass. No reverse
+# dependencies and will soon be unbuildable with new CMake.
+# bug #774495. Dead HOMEPAGE. Removal on 2022-03-27.
+dev-libs/smack
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-02-27)
+# Outdated, fails to build with glibc-2.34, bug 806755
+# Has been integrated into net-fs/nfs-utils, please use that instead.
+# Removal in 30 days.
+net-libs/libnfsidmap
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-02-27)
+# No revdeps since begin of gentoo.git history, outdated and unmaintained.
+# Bug #834307. Removal on 2022-03-29.
+x11-libs/libyui
+x11-libs/libyui-gtk
+x11-libs/libyui-ncurses
+x11-libs/libyui-qt
+
+# Fabian Groffen <grobian@gentoo.org> (2022-02-27)
+# Masked for removal, needs updates, significant amount of work, no
+# Clang toolchain available to test with
+# Removal on 2022-03-29.  Bug #834306
+sys-libs/tapi
+
+# Michał Górny <mgorny@gentoo.org> (2022-02-26)
+# The original Midori browser has been discontinued, and the new
+# Electron-based "Midori" (sic!) does not seem worth the effort
+# of packaging it.
+# Removal on 2022-03-28.  Bug #834120.
+www-client/midori
+
+# Sam James <sam@gentoo.org> (2022-02-24)
+# Obsolete, ex-dependency of xfsprogs. Fails to build on 32-bit arches.
+# No reverse dependencies. Discontinued upstream. Removal on 2022-03-24.
+# bug #811891
+sys-apps/dmapi
+
+# Sam James <sam@gentoo.org> (2022-02-24)
+# No release since 2013, partly depends on stale dev-python/eventlet;
+# no reverse dependencies. Removal on 2022-03-24.
+dev-python/socketpool
+
+# Anton Fischl <github@fischl-online.de> (2022-02-23)
+# Version 2.5.* is not meant for production according to upstream
+=app-backup/burp-2.5*
+
 # Maciej Barć <xgqt@gentoo.org> (2022-02-20)
 # Masked for testing, builds and passes tests but randomly segfaults,
 # meaningless backtrace, debugging (flags, symbols) do not help
@@ -51,11 +129,6 @@
 <sci-electronics/kicad-symbols-6.0.2
 <sci-electronics/kicad-templates-6.0.2
 <app-doc/kicad-doc-6.0.2
-
-# Sam James <sam@gentoo.org> (2022-02-18)
-# Breaks some reverse dependencies w/ stricter(?)
-# parsing. bug #833586.
-=dev-libs/libxslt-1.1.35
 
 # Brian Evans <grknight@gentoo.org> (2022-02-17)
 # Ancient version which likely does not work with modern software
@@ -89,12 +162,6 @@ x11-misc/gtk2fontsel
 # Removal after 2022-06-01.  Bug #833144.
 x11-misc/i855crt
 
-# Conrad Kostecki <conikost@gentoo.org> (2022-02-11)
-# Mask for last-rite, as source for kernel modules
-# is now provided directly with sys-apps/smc-sum.
-# Removal after 2022-02-24.
-sys-apps/smc-sum-driver
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-02-09)
 # No longer maintained upstream.
 # Upstream recommends Airline 2 or Picocli as a replacement.
@@ -111,14 +178,6 @@ x11-misc/sisctrl
 # Not maintained, open bugs, upstream outdated.
 # Removal after 2022-07-01.  Bug #832953.
 x11-misc/easystroke
-
-# Zoltan Puskas <zoltan@sinustrom.info> (2022-02-07)
-# Fork of sci-libs/opencascade. Upstream unmaintained due to opencascade
-# becoming community friendly and making this fork obsolete. Recommends moving
-# to opencascade. See: https://github.com/tpaviot/oce/issues/745
-# Blocks deprecation of sci-libs/vtk-8.2.0.
-# Removal on 2022-03-01. Bug #832625.
-sci-libs/oce
 
 # Stephan Hartmann <sultan@gentoo.org> (2022-02-06)
 # Dev channel releases are only for people who
@@ -137,52 +196,9 @@ app-misc/emelfm2
 # Removal on 2022-02-31. bug #668708.
 media-video/atomicparsley-wez
 
-# Michał Górny <mgorny@gentoo.org> (2022-01-30)
-# NIH package with no revdeps and an awful build system that can't work
-# with PEP 517 builders.  Last release in 2017.
-# Removal on 2022-03-01.  Bug #832366.
-dev-python/python-slip
-
-# Fabian Groffen <grobian@gentoo.org> (2022-01-29)
-# Fails to compile with GCC on macOS.  No revdeps.
-# Removal on 2022-02-28.  Bug #832309.
-dev-perl/Mac-Pasteboard
-
-# Michał Górny <mgorny@gentoo.org> (2022-01-29)
-# No maintainer.  No upstream activity since Dec 2019.
-# Tests not enabled.  No revdeps.
-# Removal on 2022-02-28.  Bug #832318.
-dev-python/django-pglocks
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-27)
-# Java-library + java-virtual with no consumers.
-# Removal in 30 days.
-java-virtuals/script-api
-dev-java/jsr223
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-23)
-# Java-libraries with no consumers and depending on virtual/{jdk,jre}-1.6
-# Removal in 30 days.
-dev-java/yanfs
-dev-java/xp
-dev-java/felix-gogo-runtime
-
 # Eray Aslan <eras@gentoo.org> (2022-01-24)
 # Mask experimental software
 =mail-mta/postfix-3.8*
-
-# Mike Gilbert <floppym@gentoo.org> (2022-01-22)
-# Breaks many GNOME packages.
-# https://bugs.gentoo.org/831474
-=dev-util/meson-0.61*
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-01-22)
-# Prelink support is being removed from glibc and was
-# already somewhat broken for a while...
-# hmaccalc hard-depends on it (?).
-# Removal in 30 days.
-sys-devel/prelink
-app-crypt/hmaccalc
 
 # James Beddek <telans@posteo.de> (2022-01-19)
 # FFmpeg 5.0 ABI/API changes break many packages.
@@ -201,29 +217,15 @@ app-crypt/hmaccalc
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-15)
 # Pretest versions, masked for testing.
-<app-editors/emacs-28.0.9999:28-vcs
+~app-editors/emacs-28.0.90
+~app-editors/emacs-28.0.91
+~app-editors/emacs-28.0.92
+~app-editors/emacs-28.0.93
 
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
 # This is likely to cause issues in tests; Unmask if using for other purposes
 >=dev-php/PHP_Timer-5.0
-
-# Florian Schmaus <flow@gentoo.org> (2022-01-02)
-# Unmaintained, upstream gone, only packaged by
-# Gentoo, and the whole idea to unlock based on
-# bluetooth appears to be insecure. Bug #830448
-# Removal after 2022-03-01.
-sys-auth/pam_blue
-
-# Jonas Stein <jstein@gentoo.org> (2022-01-02)
-# Unmaintained and broken.
-# Removal after 2022-03-01.  Bug #830428.
-www-servers/bozohttpd
-
-# Jonas Stein <jstein@gentoo.org> (2021-12-31)
-# Removal after 2022-05-01.  Bug #830331.
-# Broken and upstream needs new maintainer.
-x11-plugins/purple-facebook
 
 # Jonas Stein <jstein@gentoo.org> (2021-12-24)
 # Alpha version
@@ -260,10 +262,6 @@ x11-plugins/purple-facebook
 # Masked for testing
 ~sci-libs/vtk-9.1.0
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-12)
-# Needs masked >=virtual/{jdk,jre}-11
->=dev-java/log4j-api-java9-2.15.0
-
 # Conrad Kostecki <conikost@gentoo.org> (2021-12-04)
 # Masking newer versions for both packages,
 # as they cannot be compiled due upstream change.
@@ -276,11 +274,6 @@ x11-plugins/purple-facebook
 # Doesn't work with LLVM 13 yet; mask to help
 # Blender compatibility (no mixed LLVM versions).
 =media-libs/osl-1.12*
-
-# Hans de Graaff <graaff@gentoo.org> (2021-11-26)
-# Mask new rubygems version for testing. This version uses a new
-# gentoo-defaults profile, bug #789957
->=dev-ruby/rubygems-3.2.31
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-23)
 # Does not support updated dev-java/pdfbox-2.0.24, Bug #803488
@@ -385,14 +378,6 @@ net-libs/libsoup:3.0
 # is resolved.  Bug #791259.
 >=media-libs/libopenaptx-0.2.1
 
-# Sam James <sam@gentoo.org> (2021-06-12)
-# Masked until all reverse dependencies support
-# OCaml 4.13.
-# bug #816498
->=dev-lang/ocaml-4.13
->=dev-ml/camlp4-4.13
->=dev-ml/labltk-8.06.11
-
 # Bernard Cafarelli <voyageur@gentoo.org> (2021-06-04)
 # Alpha versions of fetchmail 7
 # Add support for OAUTH2 for those needing it
@@ -470,13 +455,10 @@ media-plugins/kodi-game-libretro-dosbox
 app-office/texmacs
 <dev-scheme/guile-2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-11-25)
-# Masked per security vulnerability CVE-2018-14345, bug #661510
-# Keeping it masked while users have unsolved issues with >0.15.0.
-<x11-misc/sddm-0.18.0
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-10-07)
 # Masked for more testing especially of reverse-deps.
+# ogre 1.11/1.12 breakage: bug #834468
+# ogre 2.x breakage: bug #740424
 >=dev-games/ogre-1.11.2
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)

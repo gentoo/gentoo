@@ -57,6 +57,7 @@ RDEPEND="
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 "
 DEPEND="${RDEPEND}
+	dev-cpp/nlohmann_json
 	dev-qt/qtconcurrent:5
 	dev-qt/qttest:5
 	>=dev-libs/boost-1.41.0
@@ -79,6 +80,7 @@ src_configure() {
 	local mycmakeargs=(
 		-Dalsa="$(usex alsa)"
 		-Dbundled-celt="ON"
+		-Dbundled-json="OFF"
 		-Dbundled-opus="OFF"
 		-Dbundled-speex="OFF"
 		-Ddbus="$(usex dbus)"

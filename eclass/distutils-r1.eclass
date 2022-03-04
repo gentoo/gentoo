@@ -82,11 +82,16 @@ esac
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Enable experimental PEP 517 mode for the specified build system.
-# In this mode, the complete build and install is done
-# in python_compile(), venv-style install tree is provided
-# to python_test() and python_install() just merges the temporary
-# install tree into real fs.
+# Enable the PEP 517 mode for the specified build system.  In this mode,
+# the complete build and install is done in python_compile(),
+# a venv-style install tree is provided to python_test(),
+# and python_install() just merges the temporary install tree
+# into the real fs.
+#
+# This mode is recommended for Python packages.  However, some packages
+# using custom hacks on top of distutils/setuptools may not install
+# correctly in this mode.  Please verify the list of installed files
+# when using it.
 #
 # The variable specifies the build system used.  Currently,
 # the following values are supported:
@@ -934,10 +939,13 @@ _distutils-r1_get_backend() {
 		# if pyproject.toml exists, try getting the backend from it
 		# NB: this could fail if pyproject.toml doesn't list one
 		build_backend=$(
-			"${EPYTHON}" - <<-EOF 2>/dev/null
+			"${EPYTHON}" - 3>&1 <<-EOF
+				import os
 				import tomli
 				print(tomli.load(open("pyproject.toml", "rb"))
-					["build-system"]["build-backend"])
+						.get("build-system", {})
+						.get("build-backend", ""),
+					file=os.fdopen(3, "w"))
 			EOF
 		)
 	fi

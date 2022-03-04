@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="4"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86 ~amd64-linux ~x86-linux ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 CP_DEPEND="
 	dev-java/antlr-runtime:3.5
@@ -66,6 +66,29 @@ src_prepare() {
 	java-pkg-2_src_prepare
 	# Some of these tests requires a graphical display.
 	rm -v "${JAVA_TEST_SRC_DIR}/org/stringtemplate/v4/test/TestEarlyEvaluation.java" || die
+}
+
+src_test() {
+	# Make sure no older versions of this slot are present in the classpath
+	# https://bugs.gentoo.org/834138#c4
+	local old_ver_cp="$(nonfatal java-pkg_getjars "${PN}-${SLOT}")"
+	local new_test_cp="$(\
+		java-pkg_getjars --with-dependencies "${JAVA_TEST_GENTOO_CLASSPATH}")"
+	new_test_cp="${new_test_cp//"${old_ver_cp}"/}"
+
+	# Some of the test cases require an absolute path to the JAR being tested
+	# against to be in the classpath, due to the fact that they call the 'java'
+	# command outside ${S} and reuse the classpath for the tests:
+	# https://github.com/antlr/stringtemplate4/blob/4.3.1/test/org/stringtemplate/v4/test/TestImports.java#L103
+	# https://github.com/antlr/stringtemplate4/blob/4.3.1/test/org/stringtemplate/v4/test/BaseTest.java#L174
+	new_test_cp="${S}/${JAVA_JAR_FILENAME}:${new_test_cp}"
+
+	# Use JAVA_GENTOO_CLASSPATH_EXTRA to set test classpath
+	local JAVA_TEST_GENTOO_CLASSPATH=""
+	[[ -n "${JAVA_GENTOO_CLASSPATH_EXTRA}" ]] &&
+		JAVA_GENTOO_CLASSPATH_EXTRA+=":"
+	JAVA_GENTOO_CLASSPATH_EXTRA+="${new_test_cp}"
+	java-pkg-simple_src_test
 }
 
 src_install() {

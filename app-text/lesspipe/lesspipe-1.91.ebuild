@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,8 +19,7 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s
 RESTRICT="test"
 
 DEPEND="dev-lang/perl"
-RDEPEND="${DEPEND}
-	!<sys-apps/less-483-r1"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default

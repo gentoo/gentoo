@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit multilib
-
 MY_P="${PN#nagios-}_v$(ver_cut 1)-${PV}"
 
 DESCRIPTION="IPMI Sensor Monitoring Plugin for Nagios/Icinga"

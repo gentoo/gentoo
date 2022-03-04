@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-02-26)
+# Supports 64-bit NEON
+>=media-libs/libjpeg-turbo-2.1.3 -cpu_flags_arm_neon
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-01-11)
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
@@ -64,10 +68,6 @@ media-sound/easyeffects zamaudio
 # Note: libpng-compat 1.5.30 does NOT seem to.
 media-libs/libpng -cpu_flags_arm_neon
 
-# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
-# Unmask TPM on supported archs.
-sys-apps/systemd -tpm
-
 # Sam James <sam@gentoo.org> (2021-03-20)
 # Supports both 'neon32' and 'neon64'
 sys-libs/zlib-ng -cpu_flags_arm_neon
@@ -123,10 +123,6 @@ net-proxy/haproxy device-atlas
 # Roy Bamford <neddyseagoon@gentoo.org< (2020-12-07)
 # media-libs/liblastfm fails to build with tests Bug #758896
 media-sound/clementine lastfm
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-08)
-# dev-util/kdevelop-php is not keyworded, bug #751337
->=kde-apps/umbrello-20.08.3 php
 
 # Sam James <sam@gentoo.org> (2020-10-03)
 # Builds & tests pass on arm64.
@@ -307,7 +303,6 @@ dev-cpp/eigen test
 mate-base/mate help
 mate-base/mate-applets-meta appindicator sensors
 mate-extra/caja-extensions gajim
-net-fs/samba dmapi
 sci-libs/gdal armadillo netcdf
 sys-fs/btrfs-progs reiserfs
 www-client/chromium widevine

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    This is a collection of rigorously verified Metamath databases that
+    specify mathematical axioms and formal proofs of theorems derived from
+    those axioms.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/metamath/set.mm/issues/</bugs-to>
+    <remote-id type="github">metamath/set.mm</remote-id>
+  </upstream>
+</pkgmetadata>

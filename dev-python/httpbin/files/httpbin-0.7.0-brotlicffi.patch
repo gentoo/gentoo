@@ -35,7 +35,7 @@ index 7f9956b..8e17ef3 100644
      install_requires=[
 -        'Flask', 'MarkupSafe', 'decorator', 'itsdangerous', 'six', 'brotlipy',
 +        'Flask', 'MarkupSafe', 'decorator', 'itsdangerous', 'six', 'brotlicffi',
-         'raven[flask]', 'werkzeug>=0.14.1'
+         'werkzeug>=0.14.1'
      ],
  )
 -- 
