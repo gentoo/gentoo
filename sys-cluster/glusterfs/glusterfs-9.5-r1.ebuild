@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..10} )
 
-inherit autotools elisp-common python-single-r1 tmpfiles
+inherit autotools elisp-common python-single-r1 tmpfiles systemd
 
 DESCRIPTION="GlusterFS is a powerful network/cluster filesystem"
 HOMEPAGE="https://www.gluster.org/ https://github.com/gluster/glusterfs/"
@@ -153,6 +153,8 @@ src_install() {
 
 	keepdir /var/log/${PN}
 	keepdir /var/lib/glusterd/{events,glusterfind/.keys}
+
+	systemd_dounit extras/systemd/{glusterd,glustereventsd,glusterfssharedstorage,gluster-ta-volume}.service
 
 	# QA
 	rm -r "${ED}/var/run/" || die
