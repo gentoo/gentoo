@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ IUSE_MPMS_THREAD="event worker"
 # socache_shmcb: shared object cache provider. Default config with ssl needs it
 # unixd: fixes startup error: Invalid command 'User'
 IUSE_MODULES="access_compat actions alias asis auth_basic auth_digest auth_form
-authn_alias authn_anon authn_core authn_dbd authn_dbm authn_file authn_socache authz_core
+authn_anon authn_core authn_dbd authn_dbm authn_file authn_socache authz_core
 authz_dbd authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex
 brotli cache cache_disk cache_socache cern_meta charset_lite cgi cgid dav dav_fs dav_lock
 dbd deflate dir dumpio env expires ext_filter file_cache filter headers http2
@@ -39,8 +39,8 @@ ident imagemap include info lbmethod_byrequests lbmethod_bytraffic lbmethod_bybu
 lbmethod_heartbeat log_config log_forensic logio lua macro md mime mime_magic negotiation
 proxy proxy_ajp proxy_balancer proxy_connect proxy_ftp proxy_html proxy_http proxy_scgi
 proxy_http2 proxy_fcgi proxy_uwsgi proxy_wstunnel rewrite ratelimit remoteip reqtimeout
-session session_cookie session_crypto session_dbd setenvif slotmem_shm speling
-socache_memcache socache_shmcb status substitute unique_id userdir usertrack
+session session_cookie session_crypto session_dbd setenvif slotmem_shm socache_memcache
+socache_shmcb speling status substitute systemd unique_id userdir usertrack
 unixd version vhost_alias watchdog xml2enc"
 # The following are also in the source as of this version, but are not available
 # for user selection:
@@ -140,7 +140,7 @@ HOMEPAGE="https://httpd.apache.org/"
 # some helper scripts are Apache-1.1, thus both are here
 LICENSE="Apache-2.0 Apache-1.1"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ppc ~ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
 
 # FIXME! Move this to eclass once all ebuilds are EAPI-7
 RDEPEND+=" apache2_modules_lua? ( ${LUA_DEPS} )"
