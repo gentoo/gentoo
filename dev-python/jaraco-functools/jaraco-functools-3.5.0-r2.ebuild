@@ -48,3 +48,10 @@ src_configure() {
 		description = "Functools like those found in stdlib"
 	EOF
 }
+
+python_install() {
+	distutils-r1_python_install
+	# rename to workaround a bug in pkg_resources
+	# https://bugs.gentoo.org/834522
+	mv "${D}$(python_get_sitedir)"/jaraco{_,.}functools-${PV}.dist-info || die
+}
