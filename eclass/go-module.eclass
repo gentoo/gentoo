@@ -83,10 +83,8 @@ export GO111MODULE=on
 export GOCACHE="${T}/go-build"
 
 # Set the default for the go module cache
-# This could potentially be shared so that all go packages put the
-# modules they download in a shared location.
 # See "go help environment" for information on this setting
-export GOMODCACHE="${T}/go-mod"
+export GOMODCACHE="${WORKDIR}/go-mod"
 
 # The following go flags should be used for all builds.
 # -modcacherw makes the build cache read/write
