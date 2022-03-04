@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+PYTHON_COMPAT=( python3_{8..10} )
 
-inherit bash-completion-r1 cmake
+inherit bash-completion-r1 cmake python-single-r1
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -25,12 +26,14 @@ HOMEPAGE="https://www.votca.org/"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+gromacs test"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!sci-libs/votca-tools
 	!sci-chemistry/votca-csg
 	!sci-chemistry/votca-xtp
+	${PYTHON_DEPS}
 	app-shells/bash:*
 	>=dev-cpp/eigen-3.3
 	dev-libs/boost:=
@@ -46,6 +49,13 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 DOCS=( README.rst NOTICE.rst CHANGELOG.rst )
+
+src_prepare() {
+	# espressopp was removed from gentoo
+	rm -r ./csg-tutorials/spce/ibi_espressopp || die
+	python_fix_shebang .
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(

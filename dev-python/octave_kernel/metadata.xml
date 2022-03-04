@@ -9,4 +9,5 @@
     <remote-id type="pypi">octave_kernel</remote-id>
     <remote-id type="github">Calysto/octave_kernel</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>

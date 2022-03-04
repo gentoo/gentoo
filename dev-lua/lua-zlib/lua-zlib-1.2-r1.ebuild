@@ -26,6 +26,7 @@ DEPEND="${RDEPEND}"
 lua_src_configure() {
 	local mycmakeargs=(
 		-DINSTALL_CMOD="$(lua_get_cmod_dir)"
+		-DLUA_INCLUDE_DIR="$(lua_get_include_dir)"
 		-DUSE_LUA_VERSION="$(lua_get_version)"
 	)
 

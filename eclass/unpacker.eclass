@@ -212,7 +212,7 @@ unpack_makeself() {
 				skip=`grep -a ^offset= "${src}" | awk '{print $3}'`
 				(( skip++ ))
 				;;
-			2.1.4|2.1.5|2.1.6|2.2.0|2.4.0)
+			2.1.4|2.1.5|2.1.6|2.2.0|2.3.0|2.4.0)
 				skip=$(grep -a offset=.*head.*wc "${src}" | awk '{print $3}' | head -n 1)
 				skip=$(head -n ${skip} "${src}" | wc -c)
 				exe="dd"

@@ -17,3 +17,15 @@ diff -dupr a/httpbin/core.py b/httpbin/core.py
      sentry = Sentry(app, dsn=os.environ['SENTRY_DSN'])
  
  # Set up Bugsnag exception tracking, if desired. To use Bugsnag, install the
+diff --git a/setup.py b/setup.py
+index 7f9956b..3cab2ae 100644
+--- a/setup.py
++++ b/setup.py
+@@ -35,6 +35,6 @@ setup(
+     include_package_data = True, # include files listed in MANIFEST.in
+     install_requires=[
+         'Flask', 'MarkupSafe', 'decorator', 'itsdangerous', 'six', 'brotlipy',
+-        'raven[flask]', 'werkzeug>=0.14.1'
++        'werkzeug>=0.14.1'
+     ],
+ )

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/bcpierce00/unison/archive/${MY_COMMIT}.tar.gz -> ${P
 
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="amd64 ~arm ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="debug doc gtk +ocamlopt threads"
 RESTRICT="!ocamlopt? ( strip )" # https://bugs.gentoo.org/685776#c0
 

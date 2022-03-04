@@ -37,7 +37,7 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/lua-5.4.2-make.patch
+	"${FILESDIR}"/lua-5.4.2-r2-make.patch
 )
 
 src_prepare() {

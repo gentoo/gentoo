@@ -1,0 +1,42 @@
+--- a/runtime/Makefile
++++ b/runtime/Makefile
+@@ -335,7 +335,7 @@
+ # (without the extension, which is added by the macro)
+ define COMPILE_C_FILE
+ $(1).$(O): %.c
+-	$$(CC) -c $$(OC_CFLAGS) $$(OC_CPPFLAGS) $$(OUTPUTOBJ)$$@ $$<
++	$$(CC) -c $$(OC_CFLAGS) $(CFLAGS) $$(OC_CPPFLAGS) $$(OUTPUTOBJ)$$@ $$<
+ endef
+ 
+ object_types := % %_b %_bd %_bi %_bpic %_n %_nd %_ni %_np %_npic
+--- a/otherlibs/Makefile.otherlibs.common
++++ b/otherlibs/Makefile.otherlibs.common
+@@ -138,4 +138,4 @@
+ 	$(CAMLOPT) -c $(COMPFLAGS) $(OPTCOMPFLAGS) $<
+ 
+ .c.$(O):
+-	$(CC) -c $(OC_CFLAGS) $(OC_CPPFLAGS) $(OUTPUTOBJ)$@ $<
++	$(CC) -c $(OC_CFLAGS) $(CFLAGS) $(OC_CPPFLAGS) $(OUTPUTOBJ)$@ $<
+--- a/otherlibs/systhreads/Makefile
++++ b/otherlibs/systhreads/Makefile
+@@ -102,10 +102,10 @@
+ st_stubs_n.$(O): OC_CPPFLAGS += $(NATIVE_CPPFLAGS)
+ 
+ st_stubs_b.$(O): st_stubs.c $(HEADER)
+-	$(CC) -c $(OC_CFLAGS) $(OC_CPPFLAGS) $(OUTPUTOBJ)$@ $<
++	$(CC) -c $(OC_CFLAGS) $(CFLAGS) $(OC_CPPFLAGS) $(OUTPUTOBJ)$@ $<
+ 
+ st_stubs_n.$(O): st_stubs.c $(HEADER)
+-	$(CC) -c $(OC_CFLAGS) $(OC_CPPFLAGS) $(OUTPUTOBJ)$@ $<
++	$(CC) -c $(OC_CFLAGS) $(CFLAGS) $(OC_CPPFLAGS) $(OUTPUTOBJ)$@ $<
+ 
+ partialclean:
+ 	rm -f *.cm*
+--- a/Makefile.common.in
++++ b/Makefile.common.in
+@@ -79,4 +79,4 @@
+ # general (it supports both .o and .obj)
+ 
+ %.$(O): %.c
+-	$(CC) -c $(OC_CFLAGS) $(OC_CPPFLAGS) $(OUTPUTOBJ)$@ $<
++	$(CC) -c $(OC_CFLAGS) $(CFLAGS) $(OC_CPPFLAGS) $(OUTPUTOBJ)$@ $<

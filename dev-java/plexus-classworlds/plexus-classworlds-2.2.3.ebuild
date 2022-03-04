@@ -15,7 +15,7 @@ SRC_URI="https://dev.gentoo.org/~ercpe/distfiles/${CATEGORY}/${PN}/${P}.tar.bz2"
 LICENSE="codehaus-classworlds"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 IUSE=""
 
 DEPEND=">=virtual/jdk-1.8"

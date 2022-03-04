@@ -31,8 +31,6 @@ This variant of the Wine packaging includes the Wine-Staging patchset.
 		<flag name="pcap">Support packet capture software (e.g. wireshark)</flag>
 		<flag name="perl">Install helpers written in perl (winedump/winemaker)</flag>
 		<flag name="pipelight">Apply Wine-Staging patches for Pipelight/Silverlight support</flag>
-		<flag name="prelink">Run prelink on DLLs during build;
-			For Gentoo hardened, do not disable if you do not know what this means as it can break things at runtime</flag>
 		<flag name="realtime">Pull in <pkg>sys-auth/rtkit</pkg> for low-latency pulseaudio support</flag>
 		<flag name="run-exes">Use Wine to open and run .EXE and .MSI files</flag>
 		<flag name="samba">Add support for NTLM auth. See:

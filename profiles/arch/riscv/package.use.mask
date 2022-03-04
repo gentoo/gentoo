@@ -1,14 +1,15 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alex Fan <alex.fan.q@gmail.com> (2022-02-28)
+# dev-libs/vc is a dummy implementation on this arch
+# krita fails to build with it
+media-gfx/krita vc
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
 media-video/ffmpeg amf
-
-# Sam James <sam@gentoo.org> (2022-01-29)
-# app-text/ronn-ng not keyworded here, bug #801103
-app-accessibility/espeak-ng man
 
 # Yongxinag Liang <tanekliang@gmail.com> (2022-01-09)
 # app-emulation/xen-tools doesn't support riscv yet
@@ -20,10 +21,6 @@ sys-fs/multipath-tools rbd
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-16)
 # requires sys-apps/dbus-broker, which is keyworded here.
 sys-apps/systemd -hostnamed-fallback
-
-# Andrey Grozin <grozin@gentoo.org> (2022-01-03)
-# dev-libs/utfcpp is not keyworded yet
-media-gfx/asymptote lsp
 
 # Yongxinag Liang <tanekliang@gmail.com> (2021-12-30)
 # untested.
@@ -41,10 +38,6 @@ dev-python/anyio test
 # Alex Fan <alex.fan.q@gmail.com> (2021-11-19)
 # depends on dev-lang/ocaml
 app-accessibility/brltty ocaml ocamlopt
-
-# Alex Fan <alex.fan.q@gmail.com> (2021-11-19)
-# opengl -> dev-python/pygame is not keyworded yet
-dev-python/sympy opengl
 
 # Sam James <sam@gentoo.org> (2021-10-26)
 # sys-libs/libhugetlbfs is not keyworded on ~riscv right now
@@ -190,6 +183,7 @@ mail-mta/courier fax
 # Dependencies not keyworded here yet:
 #  - dev-cpp/glog, sci-libs/vtk
 media-libs/opencv contribsfm glog vtk
+sci-libs/opencascade vtk
 #  - dev-util/aruba
 sys-block/thin-provisioning-tools test
 

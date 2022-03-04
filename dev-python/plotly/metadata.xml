@@ -13,4 +13,5 @@
     <remote-id type="pypi">plotly</remote-id>
     <remote-id type="github">plotly/plotly.py</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>

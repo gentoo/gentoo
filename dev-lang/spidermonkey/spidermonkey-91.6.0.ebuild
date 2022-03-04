@@ -71,7 +71,7 @@ IUSE="clang cpu_flags_arm_neon debug +jit lto test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
-	virtual/rust
+	>=virtual/rust-1.51.0
 	virtual/pkgconfig
 	test? (
 		$(python_gen_any_dep 'dev-python/six[${PYTHON_USEDEP}]')
@@ -163,19 +163,9 @@ pkg_setup() {
 			[[ -n ${version_lld} ]] && version_lld=$(ver_cut 1 "${version_lld}")
 			[[ -z ${version_lld} ]] && die "Failed to read ld.lld version!"
 
-			# temp fix for https://bugs.gentoo.org/768543
-			# we can assume that rust 1.{49,50}.0 always uses llvm 11
-			local version_rust=$(rustc -Vv 2>/dev/null | grep -F -- 'release:' | awk '{ print $2 }')
-			[[ -n ${version_rust} ]] && version_rust=$(ver_cut 1-2 "${version_rust}")
-			[[ -z ${version_rust} ]] && die "Failed to read version from rustc!"
-
-			if ver_test "${version_rust}" -ge "1.49" && ver_test "${version_rust}" -le "1.50" ; then
-				local version_llvm_rust="11"
-			else
-				local version_llvm_rust=$(rustc -Vv 2>/dev/null | grep -F -- 'LLVM version:' | awk '{ print $3 }')
-				[[ -n ${version_llvm_rust} ]] && version_llvm_rust=$(ver_cut 1 "${version_llvm_rust}")
-				[[ -z ${version_llvm_rust} ]] && die "Failed to read used LLVM version from rustc!"
-			fi
+			local version_llvm_rust=$(rustc -Vv 2>/dev/null | grep -F -- 'LLVM version:' | awk '{ print $3 }')
+			[[ -n ${version_llvm_rust} ]] && version_llvm_rust=$(ver_cut 1 "${version_llvm_rust}")
+			[[ -z ${version_llvm_rust} ]] && die "Failed to read used LLVM version from rustc!"
 
 			if ver_test "${version_lld}" -ne "${version_llvm_rust}" ; then
 				eerror "Rust is using LLVM version ${version_llvm_rust} but ld.lld version belongs to LLVM version ${version_lld}."

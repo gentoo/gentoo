@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_9 )
+PYTHON_COMPAT=( python3_9 python3_10 )
 
 inherit check-reqs cmake flag-o-matic pax-utils python-single-r1 toolchain-funcs xdg-utils
 
@@ -18,7 +18,7 @@ else
 	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
 	TEST_TARBALL_VERSION=2.93.0
 	SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.bz2 )"
-	KEYWORDS="~amd64 ~arm ~arm64"
+	KEYWORDS="amd64 ~arm ~arm64"
 fi
 
 SLOT="${PV%.*}"

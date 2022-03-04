@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{8..10} )
@@ -39,11 +39,11 @@ COMMON_DEPEND="
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.40.21:2
 	>=media-gfx/mypaint-brushes-2.0.2:=
-	>=media-libs/babl-0.1.88[introspection,lcms,vala?]
+	>=media-libs/babl-0.1.90[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
-	>=media-libs/gegl-0.4.34:0.4[cairo,introspection,lcms,vala?]
-	>=media-libs/gexiv2-0.10.10
+	>=media-libs/gegl-0.4.36:0.4[cairo,introspection,lcms,vala?]
+	>=media-libs/gexiv2-0.12.2
 	>=media-libs/harfbuzz-2.6.5:=
 	>=media-libs/lcms-2.9:2
 	>=media-libs/libmypaint-1.6.1:=
@@ -131,8 +131,6 @@ src_prepare() {
 
 	gnome2_src_prepare  # calls eautoreconf
 
-	use vala && vala_src_prepare
-
 	sed 's:-DGIMP_protect_DISABLE_DEPRECATED:-DGIMP_DISABLE_DEPRECATED:g' -i configure || die #615144
 	fgrep -q GIMP_DISABLE_DEPRECATED configure || die #615144, self-test
 
@@ -155,6 +153,8 @@ _adjust_sandbox() {
 
 src_configure() {
 	_adjust_sandbox
+
+	use vala && vala_setup
 
 	local myconf=(
 		GEGL="${EPREFIX}"/usr/bin/gegl-0.4

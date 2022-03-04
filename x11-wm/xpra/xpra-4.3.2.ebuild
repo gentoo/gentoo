@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 DISTUTILS_SINGLE_IMPL=yes
 DISTUTILS_USE_SETUPTOOLS=no
 inherit xdg xdg-utils distutils-r1 tmpfiles udev
@@ -110,6 +110,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.2_ignore-gentoo-no-compile.patch
 	"${FILESDIR}"/${PN}-4.2-suid-warning.patch
+	"${FILESDIR}"/${PN}-4.3-no-service.patch
 	"${DISTDIR}"/${PN}-4.3.1-tests.patch
 )
 

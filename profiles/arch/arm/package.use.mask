@@ -49,10 +49,6 @@ media-sound/easyeffects zamaudio
 # no stable virtual/jdk on this arch
 media-libs/rubberband jni
 
-# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
-# Unmask TPM on supported archs.
-sys-apps/systemd -tpm
-
 # Sam James <sam@gentoo.org> (2021-02-17)
 # Unmask dev-libs/libpcre2[jit] support on PHP
 # where available

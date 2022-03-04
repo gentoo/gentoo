@@ -36,7 +36,7 @@ BDEPEND="
 DOCS=( CREDITS.TXT )
 
 LLVM_COMPONENTS=( libcxx{,abi} llvm/{cmake,utils/llvm-lit} cmake )
-LLVM_PATCHSET=9999-1
+LLVM_PATCHSET=9999-r3
 llvm.org_set_globals
 
 python_check_deps() {

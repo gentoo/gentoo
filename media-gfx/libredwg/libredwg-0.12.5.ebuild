@@ -55,6 +55,8 @@ src_unpack() {
 
 src_prepare() {
 	default
+	# Fix variable references itself error, fails in src_install otherwise.
+	sed -i -e 's/TEXINPUTS="$(TEXINPUTS)$(PATH_SEPARATOR)$(TEXINFO_TEX_DIR)"/TEXINPUTS="$(PATH_SEPARATOR)$(TEXINFO_TEX_DIR)"/g' doc/Makefile.am || die
 	# https://github.com/LibreDWG/libredwg/issues/404
 	# Workaround: release tarball does not include dwg2ps.1.
 	# Upstream autotools stuff has to be run in git repo
@@ -89,11 +91,6 @@ src_configure() {
 	fi
 
 	econf ${myconf[@]}
-
-	# Fix variable references itself error, fails in src_install otherwise.
-	# Can't put this in src_prepare and use eautoreconf because eautoreconf
-	# only works inside a git repository for this package.
-	sed -i -e 's/TEXINPUTS = "$(TEXINPUTS)$(PATH_SEPARATOR)$(TEXINFO_TEX_DIR)"/TEXINPUTS += "$(PATH_SEPARATOR)$(TEXINFO_TEX_DIR)"/g' doc/Makefile || die
 }
 
 src_compile() {
@@ -106,5 +103,4 @@ src_install() {
 	perl_set_version
 	default
 	use python && python_optimize
-	use perl && perl_domodule bindings/perl/LibreDWG.pm
 }

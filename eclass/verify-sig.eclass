@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: verify-sig.eclass
@@ -22,6 +22,10 @@
 #
 # If you need to use signify, you may want to copy distfiles into WORKDIR to
 # work around "Too many levels of symbolic links" error.
+#
+# A more complete guide can be found at:
+# https://mgorny.pl/articles/verify-sig-by-example.html
+#
 # @EXAMPLE:
 # Example use:
 #

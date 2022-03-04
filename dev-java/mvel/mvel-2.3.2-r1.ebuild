@@ -20,7 +20,7 @@ SRC_URI="https://github.com/mvel/mvel/archive/refs/tags/mvel2-${PV}.Final.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="2.3"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 DEPEND="
 	>=virtual/jdk-1.8:*

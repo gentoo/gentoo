@@ -18,9 +18,9 @@ LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
-IUSE="debug icu kerberos ldap llvm lz4
+IUSE="debug icu kerberos ldap llvm +lz4
 	nls pam perl python +readline selinux server systemd
-	ssl static-libs tcl threads uuid xml zlib"
+	ssl static-libs tcl threads uuid xml zlib zstd"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -48,6 +48,7 @@ tcl? ( >=dev-lang/tcl-8:0= )
 uuid? ( dev-libs/ossp-uuid )
 xml? ( dev-libs/libxml2 dev-libs/libxslt )
 zlib? ( sys-libs/zlib )
+zstd? ( app-arch/zstd )
 "
 
 # uuid flags -- depend on sys-apps/util-linux for Linux libcs, or if no
@@ -173,6 +174,7 @@ src_configure() {
 		$(use_with xml libxml) \
 		$(use_with xml libxslt) \
 		$(use_with zlib) \
+		$(use_with zstd ) \
 		$(use_with systemd) \
 		${uuid_config}"
 	if use alpha; then
