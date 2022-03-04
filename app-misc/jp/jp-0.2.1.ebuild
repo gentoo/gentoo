@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,6 +41,11 @@ RESTRICT+=" test"
 # The jpp flag is deprecated (see jpipe for jpp).
 REQUIRED_USE="!jpp"
 RDEPEND="!app-misc/jpipe[jp-symlink]"
+
+# Workaround https://bugs.gentoo.org/834594
+ego() {
+	go "${@}"
+}
 
 src_compile() {
 	go build -mod=readonly -o ./jp ./jp.go || die
