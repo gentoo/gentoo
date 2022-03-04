@@ -52,8 +52,6 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 
 RESTRICT="!test? ( test )"
 
-ASM_DEPEND=">=dev-lang/yasm-1.1"
-
 BDEPEND="
 	app-arch/unzip
 	app-arch/zip
@@ -62,9 +60,9 @@ BDEPEND="
 	>=sys-devel/binutils-2.16.1
 	virtual/pkgconfig
 	>=virtual/rust-1.58.1
-	amd64? ( ${ASM_DEPEND} )
+	amd64? ( >=dev-lang/yasm-1.1 )
 	lto? ( sys-devel/binutils[gold] )
-	x86? ( ${ASM_DEPEND} )
+	x86? ( >=dev-lang/yasm-1.1 )
 "
 COMMON_DEPEND="
 	app-arch/bzip2
@@ -88,6 +86,7 @@ COMMON_DEPEND="
 	x11-libs/libXfixes
 	x11-libs/libXrender
 	x11-libs/libXt
+	x11-libs/libxcb:=
 	>=x11-libs/pango-1.22.0
 	>=x11-libs/pixman-0.19.2
 	media-video/ffmpeg
