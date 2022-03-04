@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
-inherit autotools elisp-common python-single-r1 tmpfiles
+inherit autotools elisp-common python-single-r1 tmpfiles systemd
 
 DESCRIPTION="GlusterFS is a powerful network/cluster filesystem"
 HOMEPAGE="https://www.gluster.org/ https://github.com/gluster/glusterfs/"
@@ -31,6 +31,7 @@ RDEPEND="
 	dev-libs/userspace-rcu:=
 	net-libs/rpcsvc-proto
 	sys-apps/util-linux
+	sys-libs/liburing:=
 	sys-libs/readline:=
 	emacs? ( >=app-editors/emacs-23.1:* )
 	fuse? ( >=sys-fs/fuse-2.7.0:0 )
@@ -153,6 +154,8 @@ src_install() {
 	keepdir /var/log/${PN}
 	keepdir /var/lib/glusterd/{events,glusterfind/.keys}
 
+	systemd_dounit extras/systemd/{glusterd,glustereventsd,glusterfssharedstorage,gluster-ta-volume}.service
+
 	# QA
 	rm -r "${ED}/var/run/" || die
 	if ! use static-libs; then
@@ -187,7 +190,6 @@ pkg_postinst() {
 	elog "  http://docs.gluster.org/en/latest/Upgrade-Guide/upgrade_to_$(ver_cut '1-2')/"
 
 	use emacs && elisp-site-regen
-
 }
 
 pkg_postrm() {
