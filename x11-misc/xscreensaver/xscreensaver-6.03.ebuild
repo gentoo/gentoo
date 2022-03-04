@@ -91,6 +91,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.01-non-gtk-install.patch
 	"${FILESDIR}"/${PN}-6.01-gtk-detection.patch
 	"${FILESDIR}"/${PN}-6.01-configure-install_sh.patch
+	"${FILESDIR}"/${PN}-6.03-without-gl-configure.patch
 )
 
 DOCS=( README{,.hacking} )
