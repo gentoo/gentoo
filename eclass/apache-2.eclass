@@ -150,6 +150,7 @@ RDEPEND="
 		>=net-libs/nghttp2-1.2.1
 		kernel_linux? ( sys-apps/util-linux )
 	)
+	apache2_modules_lua? ( ${LUA_DEPS} )
 	apache2_modules_md? ( >=dev-libs/jansson-2.10 )
 	apache2_modules_mime? ( app-misc/mime-types )
 	apache2_modules_proxy_http2? (
@@ -181,6 +182,7 @@ PDEPEND="~app-admin/apache-tools-${PV}"
 
 REQUIRED_USE+="
 	apache2_modules_http2? ( ssl )
+	apache2_modules_lua? ( ${LUA_REQUIRED_USE} )
 	apache2_modules_md? ( ssl )
 "
 
