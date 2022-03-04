@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="client">Build client target</flag>
+		<flag name="hidpi">Use bundled FLTK 1.4, which has better support for HiDPI screens</flag>
 		<flag name="master">Build master server target (advertises odamex server list)</flag>
 		<flag name="odalaunch">Build the wxWidgets based launcher</flag>
 		<flag name="portmidi">Enable PortMidi support</flag>
@@ -25,6 +26,6 @@
 		broader expanse of security features, personal configuration, gameplay
 		options, and editing features. Odamex can run on a wide range of
 		operating systems and hardware, so players should be able to play
-		on almost any platform. 
+		on almost any platform.
 	</longdescription>
 </pkgmetadata>
