@@ -101,6 +101,9 @@ for module in ${IUSE_MODULES} ; do
 		http2)
 			IUSE+=" +apache2_modules_${module}"
 		;;
+		systemd)
+			IUSE+=" systemd"
+		;;
 		*)
 			IUSE+=" apache2_modules_${module}"
 		;;
@@ -163,6 +166,7 @@ RDEPEND="
 		>=dev-libs/openssl-1.0.2:0=
 		kernel_linux? ( sys-apps/util-linux )
 	)
+	systemd? ( sys-apps/systemd )
 "
 
 DEPEND="${RDEPEND}"
@@ -347,7 +351,12 @@ setup_modules() {
 		MY_CONF+=( --disable-suexec )
 	fi
 
-	for x in ${IUSE_MODULES} ; do
+	if use systemd ; then
+		MY_CONF+=( --enable-systemd=${mod_type} )
+		MY_MODS+=( systemd )
+	fi
+
+	for x in ${IUSE_MODULES/ systemd} ; do
 		if use apache2_modules_${x} ; then
 			MY_CONF+=( --enable-${x}=${mod_type} )
 			MY_MODS+=( ${x} )
