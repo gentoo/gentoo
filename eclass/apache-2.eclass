@@ -10,21 +10,15 @@
 # This eclass handles apache-2.x ebuild functions such as LoadModule generation
 # and inter-module dependency checking.
 
-inherit autotools flag-o-matic multilib ssl-cert user toolchain-funcs
+LUA_COMPAT=( lua5-{1..4} )
+inherit autotools flag-o-matic lua-single multilib ssl-cert user toolchain-funcs
 
 [[ ${CATEGORY}/${PN} != www-servers/apache ]] \
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5)
-		die "This eclass is banned for EAPI<6"
-	;;
-	6)
-		inherit eapi7-ver
-	;;
-	*)
-		LUA_COMPAT=( lua5-{1..4} )
-		inherit lua-single
+	0|1|2|3|4|5|6)
+		die "This eclass is banned for EAPI<7"
 	;;
 esac
 
@@ -175,9 +169,6 @@ BDEPEND="
 	virtual/pkgconfig
 	suexec? ( suexec-caps? ( sys-libs/libcap ) )
 "
-if [[ ${EAPI} == 6 ]] ; then
-	DEPEND+=" ${BDEPEND}"
-fi
 PDEPEND="~app-admin/apache-tools-${PV}"
 
 REQUIRED_USE+="
@@ -461,7 +452,7 @@ apache-2_pkg_setup() {
 	elog "Make sure CONFIG_SYSVIPC=y is set."
 	elog
 
-	if [[ ${EAPI} != 6 ]] && use apache2_modules_lua ; then
+	if use apache2_modules_lua ; then
 		lua-single_pkg_setup
 	fi
 }
