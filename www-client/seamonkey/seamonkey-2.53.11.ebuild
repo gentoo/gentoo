@@ -80,7 +80,6 @@ COMMON_DEPEND="
 	>=sys-libs/zlib-1.2.3
 	>=x11-libs/cairo-1.10[X]
 	x11-libs/gdk-pixbuf
-	>=x11-libs/gtk+-2.18:2
 	>=x11-libs/gtk+-3.4.0:3
 	x11-libs/libX11
 	x11-libs/libXcomposite
@@ -200,6 +199,7 @@ src_prepare() {
 	eapply "${SM_PATCHDIR}/1004_fix_pie_detection.patch"
 	eapply "${SM_PATCHDIR}/1005_fix_fortify_sources.patch"
 	eapply "${SM_PATCHDIR}/1007_re-add_system_sqlite.patch"
+	eapply "${SM_PATCHDIR}/1008_seamonkey-2.53.10.2-remove_gtk2.patch"
 	eapply "${SM_PATCHDIR}/2000_system_harfbuzz.patch"
 	eapply "${SM_PATCHDIR}/2001_system_graphite2.patch"
 	eapply "${SM_PATCHDIR}/2002_bmo-1559213-Support-system-av1.patch"
