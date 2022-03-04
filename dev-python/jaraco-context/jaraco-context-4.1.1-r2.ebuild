@@ -36,3 +36,10 @@ src_configure() {
 		description = "Context managers by jaraco"
 	EOF
 }
+
+python_install() {
+	distutils-r1_python_install
+	# rename to workaround a bug in pkg_resources
+	# https://bugs.gentoo.org/834522
+	mv "${D}$(python_get_sitedir)"/jaraco{_,.}context-${PV}.dist-info || die
+}
