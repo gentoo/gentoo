@@ -435,7 +435,7 @@ _go-module_src_unpack_verify_gosum() {
 	# This will print 'downloading' messages, but it's accessing content from
 	# the $GOPROXY file:/// URL!
 	einfo "Tidying go.mod/go.sum"
-	go mod tidy >/dev/null
+	ego mod tidy >/dev/null
 
 	# This used to call 'go get' to verify by fetching everything from the main
 	# go.mod. However 'go get' also turns out to recursively try to fetch
@@ -461,7 +461,7 @@ go-module_live_vendor() {
 		die "${FUNCNAME} only allowed when upstream isn't vendoring"
 
 	pushd "${S}" >& /dev/null || die
-	go mod vendor || die
+	ego mod vendor
 	popd >& /dev/null || die
 }
 
