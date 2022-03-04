@@ -129,13 +129,13 @@ qt5-build_src_prepare() {
 	qt5_prepare_env
 
 	if [[ ${QT5_BUILD_TYPE} == live ]] || [[ -n ${KDE_ORG_COMMIT} ]]; then
-		# Upstream bumped version in 5.15 branch after 5.15.2 release but their
-		# 5.15.3 release is closed and this will never be more than a Qt 5.15.2
-		# with patches on top.
 		if [[ -n ${KDE_ORG_COMMIT} ]]; then
 			einfo "Preparing KDE Qt5PatchCollection snapshot at ${KDE_ORG_COMMIT}"
 			mkdir -p .git || die # need to fake a git repository for configure
 		fi
+		# Ensure our ${QT5_PV} is not contradicted by any upstream (Qt) commit
+		# bumping version in 5.15 branch after release (probably can be dropped
+		# after 5.15.2_p* are gone)
 		sed -e "/^MODULE_VERSION/s/5\.15\.[3456789]/${QT5_PV}/" -i .qmake.conf || die
 	fi
 
