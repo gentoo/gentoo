@@ -47,3 +47,10 @@ src_configure() {
 		description = "Module for text manipulation"
 	EOF
 }
+
+python_install() {
+	distutils-r1_python_install
+	# rename to workaround a bug in pkg_resources
+	# https://bugs.gentoo.org/834522
+	mv "${D}$(python_get_sitedir)"/jaraco{_,.}text-${PV}.dist-info || die
+}
