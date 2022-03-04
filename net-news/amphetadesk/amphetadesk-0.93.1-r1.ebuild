@@ -1,35 +1,36 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=6
 
 DESCRIPTION="AmphetaDesk is a free syndicated news aggregator"
 HOMEPAGE="http://www.disobey.com/amphetadesk/"
 SRC_URI="mirror://sourceforge/sourceforge/amphetadesk/${PN}-src-v${PV}.tar.gz"
-S="${WORKDIR}"/${PN}-src-v${PV}
-
 LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
-
-RDEPEND="dev-lang/perl
-	dev-libs/expat
+IUSE=""
+DEPEND="dev-lang/perl
 	dev-perl/libwww-perl
+	dev-libs/expat
 	dev-perl/XML-Parser
 	virtual/perl-IO-Compress"
+S=${WORKDIR}/${PN}-src-v${PV}
 
 src_install() {
-	insinto /usr/share/amphetadesk
-	doins "${S}"/AmphetaDesk.pl
-	doins -R "${S}"/{data,docs,lib,templates}
-
+	dodir /usr/share/amphetadesk
+	cp "${S}"/AmphetaDesk.pl "${D}"/usr/share/amphetadesk/AmphetaDesk.pl
 	dodoc README.txt
+	cp -R "${S}"/data "${D}"/usr/share/amphetadesk
+	cp -R "${S}"/docs "${D}"/usr/share/amphetadesk
+	cp -R "${S}"/lib "${D}"/usr/share/amphetadesk
+	cp -R "${S}"/templates "${D}"/usr/share/amphetadesk
 	newinitd "${FILESDIR}"/amphetadesk.initd amphetadesk
 }
 
 pkg_postinst() {
 	# fixes bug #25066 thanks to kloeri
-	[[ -x /etc/init.d/depscan.sh ]] && /etc/init.d/depscan.sh
+	/etc/init.d/depscan.sh
 
 	einfo "AmphetaDesk should be started and stopped with the runscript located at "
 	einfo "'/etc/init.d/amphetadesk'. You can access AmphetaDesk after it has been"
