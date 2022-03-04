@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="ipv6 socks5 ssl"
 
 DEPEND=">=sys-libs/ncurses-5.1
+	dev-libs/libedit
 	socks5? ( net-proxy/dante )
 	ssl? ( dev-libs/openssl:= )"
 RDEPEND="${DEPEND}"
@@ -23,6 +24,7 @@ DOCS=( ChangeLog README THANKS )
 src_configure() {
 	econf \
 		--enable-editcomplete \
+		--without-local-libedit \
 		$(use_enable ipv6) \
 		$(use_enable ssl) \
 		$(use_with socks5 socks)
