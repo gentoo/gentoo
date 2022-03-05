@@ -1,24 +1,24 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit cmake-utils
+inherit cmake
 
 MYP=HepMC-${PV}
 
 DESCRIPTION="Event Record for Monte Carlo Generators"
 HOMEPAGE="https://hepmc.web.cern.ch/hepmc/"
 SRC_URI="http://lcgapp.cern.ch/project/simu/HepMC/download/${MYP}.tar.gz"
+S="${WORKDIR}/${MYP}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-IUSE="cm doc examples gev static-libs test"
+IUSE="cm doc examples gev test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=""
-DEPEND="${RDEPEND}
+BDEPEND="
 	doc? (
 		app-doc/doxygen
 		dev-texlive/texlive-latex
@@ -26,12 +26,8 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-latexrecommended
 	)"
 
-S="${WORKDIR}/${MYP}"
-
-DOCS=( ChangeLog AUTHORS )
-
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i -e '/add_subdirectory(doc)/d' CMakeLists.txt || die
 	# CMake doc building broken
@@ -62,12 +58,12 @@ src_prepare() {
 	if ! use test; then
 		sed -i -e '/add_subdirectory(test)/d' CMakeLists.txt || die
 	fi
-	if ! use static-libs; then
-		sed -i \
-			-e '/(HepMC\(fio\|\)S/d' \
-			-e '/TARGETS/s/HepMC\(fio\|\)S//' \
-			{src,fio}/CMakeLists.txt || die
-	fi
+
+	# remove static libs
+	sed -i \
+		-e '/(HepMC\(fio\|\)S/d' \
+		-e '/TARGETS/s/HepMC\(fio\|\)S//' \
+		{src,fio}/CMakeLists.txt || die
 }
 
 src_configure() {
@@ -76,20 +72,21 @@ src_configure() {
 		-Dlength=$(usex cm CM MM)
 		-Dmomentum=$(usex gev GEV MEV)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
+
 	if use doc; then
-		cd doc
+		cd doc || die
 		./buildDoc.sh || die
 		./buildDoxygen.sh || die
+		HTML_DOCS=( doc/html/. )
 	fi
 }
 
 src_install() {
-	use doc && HTML_DOCS=( doc/html/. )
+	cmake_src_install
 	use doc && dodoc doc/*.pdf
-	cmake-utils_src_install
 }
