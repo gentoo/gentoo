@@ -457,7 +457,10 @@ src_configure() {
 	fi
 
 	if use qt5; then
-		mycmakeargs+=( -DVTK_MODULE_ENABLE_VTK_GUISupportQt="WANT" )
+		mycmakeargs+=(
+			-DVTK_MODULE_ENABLE_VTK_GUISupportQt="WANT"
+			-DVTK_QT_VERSION="5"
+		)
 		if use mysql || use postgres; then
 			mycmakeargs+=( -DVTK_MODULE_ENABLE_VTK_GUISupportQtSQL="WANT" )
 		fi
