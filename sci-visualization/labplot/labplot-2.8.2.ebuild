@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="5"
-IUSE="cantor fftw fits hdf5 libcerf netcdf root serial telemetry"
+IUSE="cantor fftw fits hdf5 libcerf netcdf root serial telemetry test"
 
 # not packaged: dev-qt/qtmqtt, bug 683994
 BDEPEND="
@@ -59,6 +59,7 @@ DEPEND="
 	hdf5? ( sci-libs/hdf5:= )
 	libcerf? ( sci-libs/libcerf )
 	netcdf? ( sci-libs/netcdf:= )
+	test? ( >=kde-frameworks/kparts-${KFMIN}:5 )
 	root? (
 		app-arch/lz4
 		sys-libs/zlib
