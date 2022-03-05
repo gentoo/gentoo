@@ -11,7 +11,7 @@ DESCRIPTION="GTK configuration application for libratbag"
 HOMEPAGE="https://github.com/libratbag/piper"
 SRC_URI="https://github.com/libratbag/piper/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="MIT"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -32,6 +32,7 @@ RDEPEND="
 		dev-python/pycairo[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 		dev-python/python-evdev[${PYTHON_USEDEP}]
+		dev-python/flake8[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="
@@ -39,10 +40,6 @@ DEPEND="
 	dev-libs/libevdev
 	virtual/libudev
 "
-
-PATCHES=(
-	"${FILESDIR}"/${P}-disable-flake8-linting.patch
-)
 
 src_configure() {
 	python_setup
