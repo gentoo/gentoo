@@ -56,8 +56,8 @@ src_compile() {
 
 src_install() {
 	if use doc; then
-		DOCS+=( doc/build/text/ )
-		HTML_DOCS+=( doc/build/html/ )
+		DOCS+=( doc/build/text/. )
+		HTML_DOCS+=( doc/build/html/. )
 
 		doman doc/build/man/*
 		doinfo doc/build/texinfo/*.info
