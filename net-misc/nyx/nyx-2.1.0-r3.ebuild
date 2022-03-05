@@ -22,7 +22,7 @@ LICENSE="GPL-3"
 SLOT="0"
 
 RDEPEND="
-	net-libs/stem[${PYTHON_USEDEP}]
+	<net-libs/stem-1.8.0_p20211118[${PYTHON_USEDEP}]
 	net-vpn/tor"
 
 distutils_enable_tests unittest
