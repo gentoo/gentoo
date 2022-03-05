@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit python-any-r1
+inherit python-single-r1
 
 DESCRIPTION="Optional tools to help manage data in a mergerfs pool"
 HOMEPAGE="https://github.com/trapexit/mergerfs-tools"
