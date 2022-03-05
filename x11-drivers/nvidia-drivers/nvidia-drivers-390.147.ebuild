@@ -219,6 +219,7 @@ src_install() {
 	)
 
 	local skip_files=(
+		# nvidia_icd(vulkan): skip with -X too as it uses libGLX_nvidia
 		$(usex X '' '
 			libGLX_nvidia libglx
 			libnvidia-ifr

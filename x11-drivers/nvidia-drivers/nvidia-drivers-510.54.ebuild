@@ -217,6 +217,7 @@ src_install() {
 	)
 
 	local skip_files=(
+		# nvidia_icd/layers(vulkan): skip with -X too as it uses libGLX_nvidia
 		$(usev !X "
 			libGLX_nvidia libglxserver_nvidia
 			nvidia_icd.json nvidia_layers.json")
