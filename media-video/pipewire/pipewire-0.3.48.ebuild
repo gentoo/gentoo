@@ -108,7 +108,7 @@ DEPEND="${RDEPEND}"
 
 # TODO: Consider use cases where pipewire is not used for driving audio
 # Doing so with WirePlumber currently involves editing Lua scripts
-PDEPEND="media-video/wireplumber"
+PDEPEND=">=media-video/wireplumber-0.4.8-r3"
 
 # Present RDEPEND that are currently always disabled due to the PW
 # code using them being required to be disabled by Gentoo guidelines
