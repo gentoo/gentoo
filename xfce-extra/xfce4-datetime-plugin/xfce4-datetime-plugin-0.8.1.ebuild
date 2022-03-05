@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-DESCRIPTION="A panel plug-in with date, time and embedded calender"
+DESCRIPTION="A panel plug-in with date, time and embedded calendar"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-datetime-plugin"
 SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
