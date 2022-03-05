@@ -60,7 +60,6 @@ src_configure() {
 		--sharedstatedir=/var/lib/courier/com \
 		--with-authdaemonvar=/var/lib/courier/authdaemon \
 		--with-authshadow \
-		--without-redhat \
 		--with-mailuser=mail \
 		--with-mailgroup=mail \
 		--cache-file="${S}/configuring.cache" \
