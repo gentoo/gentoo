@@ -32,7 +32,7 @@ BDEPEND="${PYTHON_DEPS}
 	)"
 
 DEPEND="${PYTHON_DEPS}
-	~dev-libs/libarcus-${PV}:=[python,${PYTHON_SINGLE_USEDEP}]
+	>=dev-libs/libarcus-${PV}:=[python,${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/cryptography[${PYTHON_USEDEP}]
 		dev-python/PyQt5[${PYTHON_USEDEP},declarative,network,svg]
