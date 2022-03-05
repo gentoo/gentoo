@@ -19,4 +19,5 @@
     <flag name="latin">Install additional latin fonts</flag>
     <flag name="ms">Install (free) fonts for the "ms" preset</flag>
   </use>
+  <stabilize-allarches/>
 </pkgmetadata>
