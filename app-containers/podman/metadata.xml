@@ -26,6 +26,9 @@
 			Enables fuse dependencies (fuse-overlayfs is especially useful
 			for rootless mode).
 		</flag>
+		<flag name="init">
+			Enables catatonit dependency required for podman run --init.
+		</flag>
 		<flag name="rootless">
 			Enables dependencies for running in rootless mode.
 		</flag>
