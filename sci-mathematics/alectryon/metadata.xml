@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    A library to process Coq and Lean snippets embedded in text documents,
+    showing goals and messages for each input sentence. Also a literate
+    programming toolkit. The goal of Alectryon is to make it easy to write
+    textbooks, blog posts, and other documents that mix interactive proofs and
+    prose.
+    Alectryon originally supported Coq only. Support for Lean is preliminary
+    and restricted to Lean 3.
+  </longdescription>
+  <upstream>
+    <changelog>https://github.com/cpitclaudel/alectryon/releases/</changelog>
+    <bugs-to>https://github.com/cpitclaudel/alectryon/issues/</bugs-to>
+    <remote-id type="github">cpitclaudel/alectryon</remote-id>
+  </upstream>
+</pkgmetadata>
