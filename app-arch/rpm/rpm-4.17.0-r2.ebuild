@@ -21,7 +21,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 ~sparc
 # Tests are broken. See bug 657500
 RESTRICT="test"
 
-IUSE="acl audit caps +berkdb doc dbus nls openmp python readline selinux +sqlite test +zstd"
+IUSE="acl audit caps +berkdb doc dbus nls openmp python selinux +sqlite test +zstd"
 REQUIRED_USE="${LUA_REQUIRED_USE}
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -43,7 +43,6 @@ DEPEND="!app-arch/rpm5
 	caps? ( >=sys-libs/libcap-2.0 )
 	dbus? ( sys-apps/dbus )
 	sqlite? ( dev-db/sqlite:3 )
-	readline? ( sys-libs/readline:= )
 	python? ( ${PYTHON_DEPS} )
 	nls? ( virtual/libintl )
 	zstd? ( app-arch/zstd:= )
@@ -103,7 +102,6 @@ src_configure() {
 		$(use_with caps cap) \
 		$(use_with acl) \
 		$(use_with audit) \
-		$(use_with readline) \
 		$(use_enable zstd zstd $(usex zstd yes no))
 }
 
