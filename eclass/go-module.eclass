@@ -25,8 +25,20 @@
 #
 # If the software has a directory named vendor in its
 # top level directory, the only thing you need to do is inherit the
-# eclass. Otherwise, you need to also populate
-# EGO_SUM and call go-module_set_globals as discussed below.
+# eclass. If it doesn't, you need to also create a dependency tarball and
+# host it somewhere, for example in your dev space.
+#
+# Here is an example of how to create a dependency tarball.
+# The base directory in the GOMODCACHE setting must be go-mod in order
+# to match the settings in this eclass.
+#
+# @CODE
+#
+# $ cd /path/to/project
+# $ GOMODCACHE="${PWD}"/go-mod go mod download -modcacherw
+# $ tar -acf project-1.0-deps.tar.xz go-mod
+#
+# @CODE
 #
 # Since Go programs are statically linked, it is important that your ebuild's
 # LICENSE= setting includes the licenses of all statically linked
@@ -40,15 +52,9 @@
 #
 # inherit go-module
 #
-# EGO_SUM=(
-#   "github.com/aybabtme/rgbterm v0.0.0-20170906152045-cc83f3b3ce59/go.mod"
-#   "github.com/aybabtme/rgbterm v0.0.0-20170906152045-cc83f3b3ce59"
-# )
-#
-# go-module_set_globals
-#
-# SRC_URI="https://github.com/example/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-#		   ${EGO_SUM_SRC_URI}"
+# SRC_URI="https://github.com/example/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+# Add this line if you have a dependency tarball.
+# SRC_URI+=" ${P}-deps.tar.xz"
 #
 # @CODE
 
@@ -99,7 +105,11 @@ QA_FLAGS_IGNORED='.*'
 RESTRICT+=" strip"
 
 # @ECLASS-VARIABLE: EGO_SUM
+# @DEPRECATED:
 # @DESCRIPTION:
+# This is replaced by a dependency tarball, see above for how to create
+# one.
+#
 # This array is based on the contents of the go.sum file from the top
 # level directory of the software you are packaging. Each entry must be
 # quoted and contain the first two fields of a line from go.sum.
@@ -143,6 +153,7 @@ RESTRICT+=" strip"
 # go.sum copy of the Hash1 values during building of the package.
 
 # @ECLASS-VARIABLE: _GOMODULE_GOPROXY_BASEURI
+# @DEPRECATED:
 # @DESCRIPTION:
 # Golang module proxy service to fetch module files from. Note that the module
 # proxy generally verifies modules via the Hash1 code.
@@ -165,6 +176,7 @@ RESTRICT+=" strip"
 : "${_GOMODULE_GOPROXY_BASEURI:=mirror://goproxy/}"
 
 # @ECLASS-VARIABLE: _GOMODULE_GOSUM_REVERSE_MAP
+# @DEPRECATED:
 # @DESCRIPTION:
 # Mapping back from Gentoo distfile name to upstream distfile path.
 # Associative array to avoid O(N*M) performance when populating the GOPROXY
@@ -194,6 +206,7 @@ ego() {
 }
 
 # @FUNCTION: go-module_set_globals
+# @DEPRECATED:
 # @DESCRIPTION:
 # Convert the information in EGO_SUM for other usage in the ebuild.
 # - Populates EGO_SUM_SRC_URI that can be added to SRC_URI
@@ -284,6 +297,7 @@ go-module_set_globals() {
 }
 
 # @FUNCTION: go-module_setup_proxy
+# @DEPRECATED:
 # @DESCRIPTION:
 # If your ebuild redefines src_unpack and uses EGO_SUM you need to call
 # this function in src_unpack.
@@ -327,11 +341,14 @@ go-module_setup_proxy() {
 # @FUNCTION: go-module_src_unpack
 # @DESCRIPTION:
 # If EGO_SUM is set, unpack the base tarball(s) and set up the
-#   local go proxy.
+#   local go proxy. Also warn that this usage is deprecated.
 # - Otherwise, if EGO_VENDOR is set, bail out.
 # - Otherwise do a normal unpack.
 go-module_src_unpack() {
 	if [[ "${#EGO_SUM[@]}" -gt 0 ]]; then
+		eqawarn "This ebuild uses EGO_SUM which is deprecated"
+		eqawarn "Please migrate to a dependency tarball"
+		eqawarn "This will become a fatal error in the future"
 		_go-module_src_unpack_gosum
 	elif [[ "${#EGO_VENDOR[@]}" -gt 0 ]]; then
 		eerror "${EBUILD} is using EGO_VENDOR which is no longer supported"
@@ -342,6 +359,7 @@ go-module_src_unpack() {
 }
 
 # @FUNCTION: _go-module_src_unpack_gosum
+# @DEPRECATED:
 # @DESCRIPTION:
 # Populate a GOPROXY directory hierarchy with distfiles from EGO_SUM and
 # unpack the base distfiles.
@@ -387,6 +405,7 @@ _go-module_src_unpack_gosum() {
 }
 
 # @FUNCTION: _go-module_gosum_synthesize_files
+# @DEPRECATED:
 # @DESCRIPTION:
 # Given a path &  version, populate all Goproxy metadata files which aren't
 # needed to be downloaded directly.
@@ -414,6 +433,7 @@ _go-module_gosum_synthesize_files() {
 }
 
 # @FUNCTION: _go-module_src_unpack_verify_gosum
+# @DEPRECATED:
 # @DESCRIPTION:
 # Validate the Go modules declared by EGO_SUM are sufficient to cover building
 # the package, without actually building it yet.
@@ -462,6 +482,7 @@ go-module_live_vendor() {
 }
 
 # @FUNCTION: _go-module_gomod_encode
+# @DEPRECATED:
 # @DESCRIPTION:
 # Encode the name(path) of a Golang module in the format expected by Goproxy.
 #
