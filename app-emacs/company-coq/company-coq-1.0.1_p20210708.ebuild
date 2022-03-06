@@ -1,0 +1,43 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+H=382db93374380e5db56f02934ee32bbe39159019
+
+inherit elisp
+
+DESCRIPTION="Collection of extensions for Proof General's Coq mode"
+HOMEPAGE="https://github.com/cpitclaudel/company-coq/"
+SRC_URI="https://github.com/cpitclaudel/${PN}/archive/${H}.tar.gz
+		-> ${P}.tar.gz"
+S="${WORKDIR}"/${PN}-${H}
+
+LICENSE="GPL-3+"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+
+RDEPEND="
+	app-emacs/company-math
+	app-emacs/company-mode
+	app-emacs/dash
+	app-emacs/yasnippet
+"
+BDEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${PN}-refman-path.patch )
+SITEFILE="50${PN}-gentoo.el"
+
+src_prepare(){
+	default
+
+	sed -i "s|@SITEETC@|${EPREFIX}${SITEETC}|" ./company-coq.el || die
+}
+
+src_install() {
+	elisp_src_install
+	einstalldocs
+
+	insinto "${SITEETC}"
+	doins -r ./refman
+}
