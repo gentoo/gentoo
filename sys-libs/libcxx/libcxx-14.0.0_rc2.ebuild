@@ -26,6 +26,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=sys-devel/llvm-6"
 BDEPEND="
+	${PYTHON_DEPS}
 	test? (
 		>=dev-util/cmake-3.16
 		>=sys-devel/clang-3.9.0
@@ -33,13 +34,12 @@ BDEPEND="
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 	)"
 
-DOCS=( CREDITS.TXT )
-
-LLVM_COMPONENTS=( libcxx{,abi} llvm/{cmake,utils/llvm-lit} cmake )
+LLVM_COMPONENTS=( runtimes libcxx{,abi} llvm/{cmake,utils/llvm-lit} cmake )
 LLVM_PATCHSET=9999-1
 llvm.org_set_globals
 
 python_check_deps() {
+	use test || return 0
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
@@ -50,7 +50,7 @@ pkg_setup() {
 	if [[ ${CHOST} != *-darwin* ]] || has_version dev-lang/llvm; then
 		llvm_pkg_setup
 	fi
-	use test && python-any-r1_pkg_setup
+	python-any-r1_pkg_setup
 
 	if ! use libcxxabi && ! tc-is-gcc ; then
 		eerror "To build ${PN} against libsupc++, you have to use gcc. Other"
@@ -70,7 +70,7 @@ src_configure() {
 	# alter the CHOST
 	local cxxabi cxxabi_incs
 	if use libcxxabi; then
-		cxxabi=libcxxabi
+		cxxabi=system-libcxxabi
 		cxxabi_incs="${EPREFIX}/usr/include/libcxxabi"
 	else
 		local gcc_inc="${EPREFIX}/usr/lib/gcc/${CHOST}/$(gcc-fullversion)/include/g++-v$(gcc-major-version)"
@@ -121,7 +121,11 @@ multilib_src_configure() {
 
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		-DLIBCXX_LIBDIR_SUFFIX=${libdir#lib}
+		-DPython3_EXECUTABLE="${PYTHON}"
+		-DLLVM_ENABLE_RUNTIMES=libcxx
+		-DLLVM_INCLUDE_TESTS=OFF
+		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
+
 		-DLIBCXX_ENABLE_SHARED=ON
 		-DLIBCXX_ENABLE_STATIC=$(usex static-libs)
 		-DLIBCXX_CXX_ABI=${cxxabi}
@@ -130,6 +134,7 @@ multilib_src_configure() {
 		-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
 		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
 		-DLIBCXX_HAS_GCC_S_LIB=${want_gcc_s}
+		-DLIBCXX_INCLUDE_BENCHMARKS=OFF
 		-DLIBCXX_INCLUDE_TESTS=$(usex test)
 		-DLIBCXX_USE_COMPILER_RT=${want_compiler_rt}
 		-DLIBCXX_HAS_ATOMIC_LIB=${want_gcc_s}
