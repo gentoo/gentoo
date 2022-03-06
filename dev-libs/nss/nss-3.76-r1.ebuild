@@ -335,12 +335,6 @@ multilib_src_install() {
 		done
 		popd >/dev/null || die
 	fi
-
-	# Prelink breaks the CHK files. We don't have any reliable way to run
-	# shlibsign after prelink.
-	dodir /etc/prelink.conf.d
-	printf -- "-b ${EPREFIX}/usr/$(get_libdir)/lib%s.so\n" ${NSS_CHK_SIGN_LIBS} \
-		> "${ED}"/etc/prelink.conf.d/nss.conf
 }
 
 pkg_postinst() {
