@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -66,6 +66,8 @@ src_configure() {
 		--enable-buggy-build
 		# Do not use bundled version of dev-python/lark-parser.
 		--disable-bundled-lark
+		# Use correct shebang.
+		--with-python=${PYTHON}
 	)
 	econf "${econf_args[@]}"
 }
