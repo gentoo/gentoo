@@ -30,6 +30,20 @@ if [[ ${PV} == *9999* ]]; then
 fi
 readonly QT5_BUILD_TYPE
 
+# @ECLASS-VARIABLE: QT5_KDEPATCHSET_REV
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Downstream generated patchset revision pulled from KDE's Qt5PatchCollection,
+# with the patchset having been generated in the following way from upstream's
+# qt module git repository:
+# @CODE
+# git format-patch v${PV}-lts-lgpl..origin/gentoo-kde/${PV} \
+#	-o ${QT5_MODULE}-${PV}-gentoo-kde-${QT5_KDEPATCHSET_REV}
+# @CODE
+# Used for SRC_URI and applied in src_prepare.
+# Must be set before inheriting the eclass.
+
 # @ECLASS-VARIABLE: QT5_MODULE
 # @PRE_INHERIT
 # @DESCRIPTION:
@@ -48,7 +62,6 @@ readonly QT5_PV
 # @DESCRIPTION:
 # The upstream package name of the module this package belongs to.
 # Used for SRC_URI and S.
-_QT5_P=${QT5_MODULE}-everywhere-src-${PV}
 
 # @ECLASS-VARIABLE: QT5_TARGET_SUBDIRS
 # @DEFAULT_UNSET
@@ -83,15 +96,25 @@ _QT5_P=${QT5_MODULE}-everywhere-src-${PV}
 inherit estack flag-o-matic toolchain-funcs virtualx
 
 if [[ ${PN} != qtwebengine ]]; then
-	if [[ ${QT5_BUILD_TYPE} == live ]] || [[ -n ${KDE_ORG_COMMIT} ]]; then
-		# KDE Qt5PatchCollection
-		inherit kde.org
-	else
-		# official stable release
-		HOMEPAGE="https://www.qt.io/"
-		SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${_QT5_P}.tar.xz"
-		S=${WORKDIR}/${_QT5_P}
-	fi
+	case ${PV} in
+		5.15.2* | *9999 )
+			# kde/5.15 branch or Qt5PatchCollection based on Qt 5.15.2
+			# (using KDE_ORG_COMMIT)
+			inherit kde.org
+			;;
+		5.15.[3-9]* )
+			# official stable release
+			_QT5_P=${QT5_MODULE}-everywhere-opensource-src-${PV}
+			HOMEPAGE="https://www.qt.io/"
+			SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${_QT5_P}.tar.xz"
+			# KDE Qt5PatchCollection on top of tag v${PV}-lts-lgpl
+			if [[ -n ${QT5_KDEPATCHSET_REV} ]]; then
+				HOMEPAGE+=" https://invent.kde.org/qt/qt/${QT5_MODULE} https://community.kde.org/Qt5PatchCollection"
+				SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${QT5_MODULE}-${PV}-gentoo-kde-${QT5_KDEPATCHSET_REV}.tar.xz"
+			fi
+			S="${WORKDIR}"/${_QT5_P/opensource-}
+			;;
+	esac
 fi
 
 # @ECLASS-VARIABLE: QT5_BUILD_DIR
@@ -162,6 +185,8 @@ qt5-build_src_prepare() {
 		# Respect build variables in configure tests (bug #639494)
 		sed -i -e "s|\"\$outpath/bin/qmake\" \"\$relpathMangled\" -- \"\$@\"|& $(qt5_qmake_args) |" configure || die
 	fi
+
+	[[ -n ${QT5_KDEPATCHSET_REV} ]] && eapply "${WORKDIR}/${QT5_MODULE}-${PV}-gentoo-kde-${QT5_KDEPATCHSET_REV}"
 
 	default
 }
