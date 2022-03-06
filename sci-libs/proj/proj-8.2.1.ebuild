@@ -19,7 +19,7 @@ LICENSE="MIT"
 # going to correspond...
 # It's far less confusing to just increment it again here (so N+1)
 SLOT="0/24"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="curl test +tiff"
 
 RESTRICT="!test? ( test )"
