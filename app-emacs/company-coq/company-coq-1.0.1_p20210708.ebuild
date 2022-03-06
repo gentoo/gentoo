@@ -17,13 +17,16 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="
+BDEPEND="
 	app-emacs/company-math
 	app-emacs/company-mode
 	app-emacs/dash
 	app-emacs/yasnippet
 "
-BDEPEND="${RDEPEND}"
+RDEPEND="
+	${BDEPEND}
+	app-emacs/proofgeneral
+"
 
 PATCHES=( "${FILESDIR}"/${PN}-refman-path.patch )
 SITEFILE="50${PN}-gentoo.el"
