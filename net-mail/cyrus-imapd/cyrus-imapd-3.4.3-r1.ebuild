@@ -3,6 +3,7 @@
 
 EAPI=8
 
+# Keep an eye on https://www.cyrusimap.org/imap/developer/compiling.html!
 inherit autotools flag-o-matic pam ssl-cert
 
 DESCRIPTION="The Cyrus IMAP Server"
@@ -17,21 +18,24 @@ IUSE="afs backup calalarm caps clamav http kerberos ldap \
 	sqlite ssl static-libs tcpd test xapian"
 RESTRICT="!test? ( test )"
 
-CDEPEND="
-	sys-libs/zlib:=
-	dev-libs/libpcre:3
+DEPEND="dev-libs/libpcre:3
 	>=dev-libs/cyrus-sasl-2.1.13:2
 	dev-libs/jansson:=
 	dev-libs/icu:=
-	sys-fs/e2fsprogs
+	sys-apps/util-linux
+	sys-fs/e2fsprogs:=
+	sys-libs/zlib:=
 	afs? ( net-fs/openafs )
 	calalarm? ( dev-libs/libical:= )
 	caps? ( sys-libs/libcap )
 	clamav? ( app-antivirus/clamav )
 	http? (
-		dev-libs/libxml2:2
+		app-arch/brotli:=
+		app-arch/zstd:=
+		dev-libs/libxml2
 		dev-libs/libical:=
-		net-libs/nghttp2
+		net-libs/nghttp2:=
+		sci-libs/shapelib:=
 	)
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap )
@@ -41,18 +45,18 @@ CDEPEND="
 		>=net-mail/mailbase-1
 		sys-libs/pam
 	)
-	perl? ( dev-lang/perl:= )
+	perl? (
+		dev-lang/perl:=
+		virtual/perl-Term-ReadLine
+	)
 	postgres? ( dev-db/postgresql:* )
 	ssl? ( >=dev-libs/openssl-1.0.1e:=[-bindist(-)] )
 	sqlite? ( dev-db/sqlite:3 )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 	xapian? ( >=dev-libs/xapian-1.4.0:= )"
-DEPEND="${CDEPEND}
-	test? ( dev-util/cunit )"
-
 # all blockers really needed?
 # file collision with app-arch/dump - bug 619584
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	acct-group/mail
 	acct-user/cyrus
 	!mail-mta/courier
@@ -60,6 +64,10 @@ RDEPEND="${CDEPEND}
 	!net-mail/courier-imap
 	!net-mail/uw-imap
 	!app-arch/dump"
+DEPEND+=" test? ( dev-util/cunit )"
+BDEPEND="sys-devel/flex
+	virtual/pkgconfig
+	virtual/yacc"
 
 REQUIRED_USE="afs? ( kerberos )
 	backup? ( sqlite )
@@ -100,6 +108,10 @@ src_configure() {
 	# bug #604466
 	append-ldflags $(no-as-needed)
 
+	# Workaround runtime crash
+	# bug #834573
+	append-flags -fno-toplevel-reorder
+
 	if use afs ; then
 		myconf+=" --with-afs-libdir=/usr/$(get_libdir)"
 		myconf+=" --with-afs-incdir=/usr/include/afs"
@@ -121,6 +133,10 @@ src_configure() {
 		--without-krbdes \
 		--enable-squat \
 		--with-zlib \
+		--without-wslay \
+		--without-chardet \
+		--without-cld2 \
+		--disable-srs \
 		$(use_enable afs) \
 		$(use_enable afs krb5afspts) \
 		$(use_enable backup) \
