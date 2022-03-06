@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Stephan Hartmann <sultan@gentoo.org> (2022-03-06)
+# Dev channel releases are only for people who
+# are developers or want more experimental features
+# and accept a more unstable release.
+>=www-client/chromium-101
+
 # Brian Evans <grknight@gentoo.org> (2022-03-03)
 # PHP 7.3 is end-of-life
 # Please upgrade to a newer slot
