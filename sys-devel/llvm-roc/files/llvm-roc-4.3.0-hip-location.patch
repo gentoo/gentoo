@@ -143,6 +143,15 @@ Author: Yiyang Wu <xgreenlandforwyy@gmail.com>
  }
  
  RocmInstallationDetector::RocmInstallationDetector(
+@@ -397,7 +272,7 @@ void RocmInstallationDetector::detectDev
+     // - ${ROCM_ROOT}/lib/bitcode/*
+     // so try to detect these layouts.
+     static constexpr std::array<const char *, 2> SubDirsList[] = {
+-        {"amdgcn", "bitcode"},
++        {"lib/amdgcn", "bitcode"},
+         {"lib", ""},
+         {"lib", "bitcode"},
+     };
 @@ -423,42 +298,7 @@ void RocmInstallationDetector::detectDev
  }
  
