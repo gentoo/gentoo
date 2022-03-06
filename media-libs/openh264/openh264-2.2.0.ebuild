@@ -13,7 +13,7 @@ SRC_URI="https://github.com/cisco/openh264/archive/refs/tags/v${PV}.tar.gz -> ${
 	https://github.com/mozilla/gmp-api/archive/${MY_GMP_COMMIT}.tar.gz -> gmp-api-Firefox${MOZVER}-${MY_GMP_COMMIT}.tar.gz"
 LICENSE="BSD"
 SLOT="0/6.1" # subslot = openh264 soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="cpu_flags_arm_neon cpu_flags_x86_avx2 +plugin utils"
 
 RESTRICT="bindist test"
