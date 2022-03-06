@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 ~sparc
 # Tests are broken. See bug 657500
 RESTRICT="test"
 
-IUSE="acl caps +berkdb doc dbus nls openmp python selinux +sqlite test +zstd"
+IUSE="acl audit caps +berkdb doc dbus nls openmp python readline selinux +sqlite test +zstd"
 REQUIRED_USE="${LUA_REQUIRED_USE}
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -38,12 +38,14 @@ DEPEND="!app-arch/rpm5
 	>=sys-libs/zlib-1.2.3-r1
 	virtual/libintl
 	${LUA_DEPS}
+	acl? ( virtual/acl )
+	audit? ( sys-process/audit )
+	caps? ( >=sys-libs/libcap-2.0 )
 	dbus? ( sys-apps/dbus )
 	sqlite? ( dev-db/sqlite:3 )
+	readline? ( sys-libs/readline:= )
 	python? ( ${PYTHON_DEPS} )
 	nls? ( virtual/libintl )
-	acl? ( virtual/acl )
-	caps? ( >=sys-libs/libcap-2.0 )
 	zstd? ( app-arch/zstd:= )
 "
 BDEPEND="
@@ -90,6 +92,7 @@ src_configure() {
 	# https://github.com/rpm-software-management/rpm/commit/4290300e24c5ab17c615b6108f38438e31eeb1d0
 	econf \
 		--without-selinux \
+		--disable-inhibit-plugin \
 		--with-crypto=libgcrypt \
 		$(use_enable berkdb bdb-ro) \
 		$(use_enable python) \
@@ -99,6 +102,8 @@ src_configure() {
 		$(use_enable sqlite) \
 		$(use_with caps cap) \
 		$(use_with acl) \
+		$(use_with audit) \
+		$(use_with readline) \
 		$(use_enable zstd zstd $(usex zstd yes no))
 }
 
@@ -109,7 +114,7 @@ src_install() {
 	find "${ED}" -name '*.la' -delete || die
 
 	# fix symlinks to /bin/rpm (#349840)
-	for binary in rpmquery rpmverify;do
+	for binary in rpmquery rpmverify; do
 		ln -sf rpm "${ED}"/usr/bin/${binary} || die
 	done
 
