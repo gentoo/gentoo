@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_OPTIONAL=1
 
-inherit distutils-r1 flag-o-matic libtool qmake-utils toolchain-funcs
+inherit distutils-r1 libtool qmake-utils toolchain-funcs
 
 DESCRIPTION="GnuPG Made Easy is a library for making GnuPG easier to use"
 HOMEPAGE="http://www.gnupg.org/related_software/gpgme"
@@ -41,7 +41,12 @@ do_python() {
 	fi
 }
 
-pkg_setup() {
+src_prepare() {
+	default
+
+	elibtoolize
+
+	# bug #697456
 	addpredict /run/user/$(id -u)/gnupg
 
 	local MAX_WORKDIR=66
@@ -49,11 +54,6 @@ pkg_setup() {
 		ewarn "Disabling tests as WORKDIR '${WORKDIR}' is longer than ${MAX_WORKDIR} which will fail tests"
 		SKIP_TESTS=1
 	fi
-}
-
-src_prepare() {
-	default
-	elibtoolize
 
 	# Make best effort to allow longer PORTAGE_TMPDIR
 	# as usock limitation fails build/tests
