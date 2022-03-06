@@ -5,7 +5,6 @@
 		<email>slashbeast@gentoo.org</email>
 		<name>Piotr Karbowski</name>
 	</maintainer>
-	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">libfuse/pyfuse3</remote-id>
 		<remote-id type="pypi">pyfuse3</remote-id>
