@@ -135,13 +135,6 @@ src_test() {
 src_install() {
 	cmake_src_install
 
-	# Problems with prelink:
-	# https://bugzilla.gnome.org/show_bug.cgi?id=731680
-	# https://bugzilla.gnome.org/show_bug.cgi?id=732148
-	# https://bugzilla.redhat.com/show_bug.cgi?id=1114538
-	echo PRELINK_PATH_MASK=/usr/bin/evolution > ${T}/99${PN}
-	doenvd "${T}"/99${PN}
-
 	readme.gentoo_create_doc
 }
 
