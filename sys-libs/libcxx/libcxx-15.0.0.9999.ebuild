@@ -70,7 +70,7 @@ src_configure() {
 	# alter the CHOST
 	local cxxabi cxxabi_incs
 	if use libcxxabi; then
-		cxxabi=libcxxabi
+		cxxabi=system-libcxxabi
 		cxxabi_incs="${EPREFIX}/usr/include/libcxxabi"
 	else
 		local gcc_inc="${EPREFIX}/usr/lib/gcc/${CHOST}/$(gcc-fullversion)/include/g++-v$(gcc-major-version)"
