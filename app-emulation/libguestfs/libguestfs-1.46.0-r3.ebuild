@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,6 @@ REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 # Failures - doc
-# FIXME: selinux support is automagic
 COMMON_DEPEND="
 	>=app-admin/augeas-1.8.0
 	app-arch/cpio
@@ -83,7 +82,7 @@ COMMON_DEPEND="
 	lua? ( ${LUA_DEPS} )
 	ocaml? ( >=dev-lang/ocaml-4.03:=[ocamlopt] )
 	selinux? (
-		sys-libs/libselinux
+		sys-libs/libselinux:=
 		sys-libs/libsemanage
 	)
 	systemtap? ( dev-util/systemtap )
@@ -153,6 +152,9 @@ src_configure() {
 		append-ldflags "-L${ESYSROOT}/usr/$(get_libdir)/xcrypt"
 		append-ldflags "-Wl,-R${ESYSROOT}/usr/$(get_libdir)/xcrypt"
 	fi
+
+	# Avoid automagic SELinux dependency
+	export ac_cv_header_selinux_selinux_h=$(usex selinux)
 
 	econf \
 		--disable-appliance \
