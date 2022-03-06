@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 DESCRIPTION="Multi-target universal programming language"
 HOMEPAGE="https://haxe.org/"
 
-if [[ "${PV}" == *9999* ]]; then
+if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/HaxeFoundation/haxe.git"
 else
@@ -56,18 +56,11 @@ src_configure() {
 }
 
 src_compile() {
-	local mymakeargs=(
-		BRANCH=""
-		COMMIT_DATE=""
-		COMMIT_SHA=""
-		OCAMLOPT=${OCAMLOPT}
-		INSTALL_DIR=/usr
-	)
-	emake -j1
+	emake -j1 BRANCH="" COMMIT_DATE="" COMMIT_SHA=""  \
+		  OCAMLOPT="${OCAMLOPT}" INSTALL_DIR=/usr
 }
 
 src_install() {
 	emake DESTDIR="${D}" INSTALL_DIR=/usr install
-
 	dodoc *.md
 }
