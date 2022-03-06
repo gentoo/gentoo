@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,20 +21,19 @@ RDEPEND="!sys-libs/libunwind"
 DEPEND="
 	>=sys-devel/llvm-6"
 BDEPEND="
-	test? ( >=sys-devel/clang-3.9.0
+	${PYTHON_DEPS}
+	test? (
+		>=sys-devel/clang-3.9.0
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 	)"
 
-LLVM_COMPONENTS=( libunwind libcxx llvm/cmake cmake )
-LLVM_TEST_COMPONENTS=( libcxxabi )
+LLVM_COMPONENTS=( runtimes libunwind libcxx llvm/cmake cmake )
+LLVM_TEST_COMPONENTS=( libcxxabi llvm/utils/llvm-lit )
 llvm.org_set_globals
 
 python_check_deps() {
+	use test || return 0
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
-}
-
-pkg_setup() {
-	use test && python-any-r1_pkg_setup
 }
 
 multilib_src_configure() {
@@ -52,12 +51,15 @@ multilib_src_configure() {
 	fi
 
 	local mycmakeargs=(
+		-DPython3_EXECUTABLE="${PYTHON}"
+		-DLLVM_ENABLE_RUNTIMES="libunwind"
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
+		-DLLVM_INCLUDE_TESTS=OFF
 		-DLIBUNWIND_ENABLE_ASSERTIONS=$(usex debug)
 		-DLIBUNWIND_ENABLE_STATIC=$(usex static-libs)
+		-DLIBUNWIND_INCLUDE_TESTS=$(usex test)
 		-DLIBUNWIND_INSTALL_HEADERS=ON
 		-DLIBUNWIND_TARGET_TRIPLE="${CHOST}"
-		-DLLVM_INCLUDE_TESTS=$(usex test)
 
 		# support non-native unwinding; given it's small enough,
 		# enable it unconditionally
@@ -68,9 +70,27 @@ multilib_src_configure() {
 	)
 	if use test; then
 		mycmakeargs+=(
+			-DLLVM_ENABLE_RUNTIMES="libunwind;libcxxabi;libcxx"
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 			-DLLVM_LIT_ARGS="$(get_lit_flags)"
 			-DLIBUNWIND_LIBCXX_PATH="${WORKDIR}/libcxx"
+
+			-DLIBCXXABI_LIBDIR_SUFFIX=
+			-DLIBCXXABI_ENABLE_SHARED=OFF
+			-DLIBCXXABI_ENABLE_STATIC=ON
+			-DLIBCXXABI_USE_LLVM_UNWINDER=ON
+			-DLIBCXXABI_INCLUDE_TESTS=OFF
+
+			-DLIBCXX_LIBDIR_SUFFIX=
+			-DLIBCXX_ENABLE_SHARED=OFF
+			-DLIBCXX_ENABLE_STATIC=ON
+			-DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=OFF
+			-DLIBCXX_CXX_ABI=libcxxabi
+			-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
+			-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
+			-DLIBCXX_HAS_GCC_S_LIB=OFF
+			-DLIBCXX_INCLUDE_TESTS=OFF
+			-DLIBCXX_INCLUDE_BENCHMARKS=OFF
 		)
 	fi
 
@@ -82,60 +102,15 @@ multilib_src_configure() {
 
 		# meh, we need to override the compiler explicitly
 		sed -e "/%{cxx}/s@, '.*'@, '${clang_path}'@" \
-			-i "${BUILD_DIR}"/test/lit.site.cfg || die
+			-i "${BUILD_DIR}"/libunwind/test/lit.site.cfg || die
 	fi
 }
 
-wrap_libcxxabi() {
-	local mycmakeargs=(
-		-DLIBCXXABI_LIBDIR_SUFFIX=
-		-DLIBCXXABI_ENABLE_SHARED=OFF
-		-DLIBCXXABI_ENABLE_STATIC=ON
-		-DLIBCXXABI_USE_LLVM_UNWINDER=ON
-		-DLIBCXXABI_INCLUDE_TESTS=OFF
-
-		-DLIBCXXABI_LIBCXX_INCLUDES="${BUILD_DIR}"/libcxx/include/c++/v1
-		-DLIBCXXABI_LIBUNWIND_INCLUDES="${S}"/include
-	)
-
-	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/$(get_libdir)"
-	local CMAKE_USE_DIR=${WORKDIR}/libcxxabi
-	local BUILD_DIR=${BUILD_DIR}/libcxxabi
-
-	"${@}"
-}
-
-wrap_libcxx() {
-	local mycmakeargs=(
-		-DLIBCXX_LIBDIR_SUFFIX=
-		-DLIBCXX_ENABLE_SHARED=OFF
-		-DLIBCXX_ENABLE_STATIC=ON
-		-DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=OFF
-		-DLIBCXX_CXX_ABI=libcxxabi
-		-DLIBCXX_CXX_ABI_INCLUDE_PATHS="${WORKDIR}"/libcxxabi/include
-		-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
-		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
-		-DLIBCXX_HAS_GCC_S_LIB=OFF
-		-DLIBCXX_INCLUDE_TESTS=OFF
-		-DLIBCXX_INCLUDE_BENCHMARKS=OFF
-	)
-
-	local CMAKE_USE_DIR=${WORKDIR}/libcxx
-	local BUILD_DIR=${BUILD_DIR}/libcxx
-
-	"${@}"
-}
-
 multilib_src_test() {
-	# build local copies of libc++ & libc++abi for testing to avoid
-	# circular deps
-	wrap_libcxx cmake_src_configure
-	wrap_libcxx cmake_build generate-cxx-headers
-	wrap_libcxxabi cmake_src_configure
-	wrap_libcxxabi cmake_src_compile
-	wrap_libcxx cmake_src_compile
-	mv "${BUILD_DIR}"/libcxx*/lib/libc++* "${BUILD_DIR}/lib/" || die
-
 	local -x LIT_PRESERVES_TMP=1
 	cmake_build check-unwind
+}
+
+multilib_src_install() {
+	DESTDIR=${D} cmake_build install-unwind
 }
