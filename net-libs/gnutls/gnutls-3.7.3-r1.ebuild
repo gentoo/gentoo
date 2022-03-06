@@ -14,8 +14,7 @@ SLOT="0/30" # libgnutls.so number
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~riscv ~s390 sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+cxx dane doc examples guile +idn nls +openssl pkcs11 seccomp sslv2 sslv3 static-libs test test-full +tls-heartbeat tools valgrind"
 
-REQUIRED_USE="
-	test-full? ( cxx dane doc examples guile idn nls openssl pkcs11 seccomp tls-heartbeat tools )"
+REQUIRED_USE="test-full? ( cxx dane doc examples guile idn nls openssl pkcs11 seccomp tls-heartbeat tools )"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-libs/libtasn1-4.9:=[${MULTILIB_USEDEP}]
@@ -43,10 +42,7 @@ BDEPEND=">=virtual/pkgconfig-0-r1
 		net-misc/socat
 	)"
 
-DOCS=(
-	README.md
-	doc/certtool.cfg
-)
+DOCS=( README.md doc/certtool.cfg )
 
 HTML_DOCS=()
 
@@ -77,9 +73,12 @@ multilib_src_configure() {
 	local libconf=()
 
 	# TPM needs to be tested before being enabled
-	libconf+=( --without-tpm )
+	libconf+=(
+		--without-tpm
+		--without-tpm2
+	)
 
-	# hardware-accell is disabled on OSX because the asm files force
+	# hardware-accel is disabled on OSX because the asm files force
 	#   GNU-stack (as doesn't support that) and when that's removed ld
 	#   complains about duplicate symbols
 	[[ ${CHOST} == *-darwin* ]] && libconf+=( --disable-hardware-acceleration )
@@ -108,8 +107,8 @@ multilib_src_configure() {
 		$(use_with idn)
 		$(use_with pkcs11 p11-kit)
 		--disable-rpath
-		--with-default-trust-store-file="${EPREFIX}/etc/ssl/certs/ca-certificates.crt"
-		--with-unbound-root-key-file="${EPREFIX}/etc/dnssec/root-anchors.txt"
+		--with-default-trust-store-file="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt
+		--with-unbound-root-key-file="${EPREFIX}"/etc/dnssec/root-anchors.txt
 		--without-included-libtasn1
 		$("${S}/configure" --help | grep -o -- '--without-.*-prefix')
 	)
