@@ -66,6 +66,8 @@ src_configure() {
 		--enable-buggy-build
 		# Do not use bundled version of dev-python/lark-parser.
 		--disable-bundled-lark
+		# Use correct shebang.
+		--with-python=${PYTHON}
 	)
 	econf "${econf_args[@]}"
 }
