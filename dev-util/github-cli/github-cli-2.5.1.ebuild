@@ -886,7 +886,7 @@ EGO_SUM=(
 go-module_set_globals
 	SRC_URI="https://github.com/cli/cli/archive/v${PV}.tar.gz -> ${P}.tar.gz
 			${EGO_SUM_SRC_URI}"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~riscv"
 	S="${WORKDIR}/cli-${PV}"
 fi
 
