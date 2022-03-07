@@ -36,6 +36,7 @@ RDEPEND="app-arch/bzip2
 # libiberty is linked statically
 DEPEND="${RDEPEND}
 	sys-libs/binutils-libs"
+BDEPEND="test? ( sys-devel/clang )"
 
 pkg_setup() {
 	if use test && [[ ${BUILD_TYPE} != "binary" ]] && ! tc-is-clang ; then
