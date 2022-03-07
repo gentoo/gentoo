@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-03-07)
+# Python 3.6 was declared end-of-life by upstream on 2021-11-04.
+# Please migrate to a newer Python version/slot or use a virtualenv
+# if still needed. Removal on 2022-04-07.
+dev-lang/python:3.6
+
 # Conrad Kostecki <conikost@gentoo.org> (2022-03-06)
 # Since prelink has been already last-rited,
 # this package has no more use and can be removed.
