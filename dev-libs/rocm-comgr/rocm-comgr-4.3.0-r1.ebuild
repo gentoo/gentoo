@@ -29,6 +29,12 @@ RDEPEND=">=dev-libs/rocm-device-libs-${PV}
 	>=sys-devel/llvm-roc-${PV}:="
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+	sed '/sys::path::append(HIPPath/s,"hip","lib/hip",' -i src/comgr-env.cpp || die
+	sed '/sys::path::append(LLVMPath/s,"llvm","lib/llvm/roc",' -i src/comgr-env.cpp || die
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DLLD_DIR="${EPREFIX}/usr/lib/llvm/roc/lib/cmake/lld"
