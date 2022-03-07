@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,6 +30,7 @@ BDEPEND="
 	dev-python/wheel[${PYTHON_USEDEP}]
 "
 RDEPEND="
+	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject[${PYTHON_USEDEP}]
 	media-fonts/fontawesome
