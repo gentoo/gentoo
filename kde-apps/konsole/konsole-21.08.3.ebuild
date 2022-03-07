@@ -16,7 +16,7 @@ HOMEPAGE="https://apps.kde.org/konsole/ https://konsole.kde.org"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
-IUSE="X"
+IUSE="X plugin-ssh-manager"
 
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
@@ -53,6 +53,7 @@ RDEPEND="${DEPEND}"
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package X X11)
+		-DENABLE_PLUGIN_SSHMANAGER=$(usex plugin-ssh-manager)
 	)
 
 	ecm_src_configure
