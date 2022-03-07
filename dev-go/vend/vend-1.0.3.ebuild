@@ -10,7 +10,7 @@ SRC_URI="https://github.com/nomad-software/vend/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~riscv ~x86"
 src_compile() {
 	ego build .
 }
