@@ -4,4 +4,13 @@
 	<maintainer type="person">
 		<email>cedk@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<bugs-to>mailto:hiltjo@codemadness.org</bugs-to>
+	</upstream>
+	<use>
+		<flag name="theme-mono">Use mono theme</flag>
+		<flag name="theme-mono-highlight">Use mono_highlight theme</flag>
+		<flag name="theme-newsboat">Use newsboat theme</flag>
+		<flag name="theme-templeos">Use templeos theme</flag>
+	</use>
 </pkgmetadata>
