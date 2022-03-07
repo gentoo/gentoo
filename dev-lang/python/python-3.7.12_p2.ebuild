@@ -206,7 +206,7 @@ src_test() {
 		# bug #788022
 		skipped_tests+=" multiprocessing_fork"
 		skipped_tests+=" multiprocessing_forkserver"
-        fi
+	fi
 
 	for test in ${skipped_tests}; do
 		mv "${S}"/Lib/test/test_${test}.py "${T}"
