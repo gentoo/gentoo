@@ -72,9 +72,11 @@ src_configure() {
 		export MOC="$(qt5_get_bindir)/moc"
 	fi
 
+	# bug #811933 for libassuan prefix
 	econf \
 		$([[ -n "${SKIP_TESTS}" ]] && echo "--disable-gpg-test --disable-gpgsm-test") \
 		--enable-languages="${languages[*]}" \
+		--with-libassuan-prefix="${ESYSROOT}"/usr \
 		$(use_enable static-libs static)
 
 	use python && emake -C lang/python prepare
