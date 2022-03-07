@@ -509,6 +509,7 @@ src_configure() {
 		export LUAJIT_INC=$(lua_get_include_dir)
 		myconf+=( --add-module=${DEVEL_KIT_MODULE_WD} )
 		myconf+=( --add-module=${HTTP_LUA_MODULE_WD} )
+		myconf+=( --with-ld-opt='-lpcre' )
 	fi
 
 	if use nginx_modules_http_auth_pam; then
