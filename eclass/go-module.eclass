@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: go-module.eclass
@@ -451,7 +451,7 @@ _go-module_src_unpack_verify_gosum() {
 	# This will print 'downloading' messages, but it's accessing content from
 	# the $GOPROXY file:/// URL!
 	einfo "Tidying go.mod/go.sum"
-	ego mod tidy >/dev/null
+	nonfatal ego mod tidy >/dev/null
 
 	# This used to call 'go get' to verify by fetching everything from the main
 	# go.mod. However 'go get' also turns out to recursively try to fetch
