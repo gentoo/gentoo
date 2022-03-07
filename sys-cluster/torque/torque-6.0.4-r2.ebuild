@@ -54,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-no-openssl.patch
 	"${FILESDIR}"/${P}-error_buf_overflow_prevent.patch
 	"${WORKDIR}"/${P}-glibc-2.34-pthread.patch
+	"${FILESDIR}"/${P}-pthreads-deux.patch
 )
 
 pkg_setup() {
@@ -98,7 +99,8 @@ src_prepare() {
 src_configure() {
 	append-cflags "-fpermissive"
 
-	econf \
+	# Force Bash for configure as there's a lot of issues with configure.ac and such here
+	CONFIG_SHELL="${BROOT}/bin/bash" econf \
 		$(use_enable tk gui) \
 		$(use_enable tk tcl-qstat) \
 		$(use_enable syslog) \
