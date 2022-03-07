@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-03-07)
+# Obsolete by >=sci-chemistry/openbabel-3[perl].
+# Bug #834261. Removal on 2022-04-06.
+sci-chemistry/openbabel-perl
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-03-07)
 # Proprietary, requires login to download, no maintainer, blocks cleanup.
 # Bug #770499. Removal on 2022-04-06.
 dev-libs/device-atlas-api-c
