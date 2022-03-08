@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthew Smith <matthew@gentoo.org> (2022-03-08)
+# Dead upstream, multiple vulnerabilities.
+# Try the fork media-gfx/prusaslicer instead.
+# Bug #834739. Removal on 2022-04-07.
+media-gfx/slic3r
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-03-07)
 # Obsolete by >=sci-chemistry/openbabel-3[perl].
 # Bug #834261. Removal on 2022-04-06.
