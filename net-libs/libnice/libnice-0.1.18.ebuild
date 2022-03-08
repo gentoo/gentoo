@@ -14,7 +14,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~
 IUSE="+gnutls +introspection +upnp"
 
 RDEPEND="
-	>=dev-libs/glib-2.48:2[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.54:2[${MULTILIB_USEDEP}]
 	introspection? ( >=dev-libs/gobject-introspection-1.30.0:= )
 	gnutls? ( >=net-libs/gnutls-2.12.0:0=[${MULTILIB_USEDEP}] )
 	!gnutls? (
