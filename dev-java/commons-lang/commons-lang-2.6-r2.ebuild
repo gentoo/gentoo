@@ -16,7 +16,7 @@ SRC_URI="mirror://apache/commons/lang/source/${P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="2.1"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
 
 DEPEND="virtual/jdk:1.8
 	test? (
