@@ -135,6 +135,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.7.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-6.7.0-fix-paths-for-apparmor.patch
 	"${FILESDIR}"/${PN}-8.1.0-docs-Fix-template-matching-in-page.xsl.patch
+	"${FILESDIR}"/${PN}-8.1.0-libxl-Fix-libvirtd-crash-on-domain-restore.patch
 )
 
 pkg_setup() {
