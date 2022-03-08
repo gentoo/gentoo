@@ -18,10 +18,6 @@ fi
 LICENSE="AGPL-3"
 SLOT="0"
 
-# Try again after 1.0 (nearly there, but path-related issues)
-# https://github.com/rui314/mold/issues/137
-RESTRICT="test"
-
 RDEPEND=">=dev-cpp/tbb-2021.4.0:=
 	sys-libs/zlib
 	!kernel_Darwin? (
@@ -48,6 +44,16 @@ src_prepare() {
 
 	# Needs unpackaged dwarfdump
 	rm test/elf/{compress-debug-sections,compressed-debug-info}.sh || die
+
+	# Sandbox sadness
+	rm test/elf/run.sh || die
+	sed -i 's|$mold-wrapper.so|"& ${LD_PRELOAD}"|' \
+		test/elf/mold-wrapper{,2}.sh || die
+
+	# static-pie tests require glibc built with static-pie support
+	if ! has_version -d 'sys-libs/glibc[static-pie(+)]'; then
+		rm test/elf/{hello,ifunc}-static-pie.sh || die
+	fi
 }
 
 src_compile() {
