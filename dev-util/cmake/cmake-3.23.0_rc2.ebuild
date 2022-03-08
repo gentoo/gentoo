@@ -5,7 +5,8 @@ EAPI=8
 
 # TODO RunCMake.LinkWhatYouUse fails consistently w/ ninja
 # ... but seems fine as of 3.22.3?
-#CMAKE_MAKEFILE_GENERATOR="emake"
+# TODO ... but bootstrap sometimes(?) fails with ninja now. bug #834759.
+CMAKE_MAKEFILE_GENERATOR="emake"
 CMAKE_REMOVE_MODULES_LIST=( none )
 inherit bash-completion-r1 cmake elisp-common flag-o-matic multiprocessing \
 	toolchain-funcs virtualx xdg-utils
