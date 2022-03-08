@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ MY_PV="${MY_PV/_/-}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="High-performance production grade DHCPv4 & DHCPv6 server"
-HOMEPAGE="http://www.isc.org/kea/"
+HOMEPAGE="https://www.isc.org/kea/"
 if [[ ${PV} = 9999* ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/isc-projects/kea.git"
