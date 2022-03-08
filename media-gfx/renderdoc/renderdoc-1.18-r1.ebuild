@@ -175,16 +175,8 @@ src_compile() {
 	docs_compile
 }
 
-pkg_preinst() {
-	use qt5 && xdg_pkg_preinst
-}
-
 pkg_postinst() {
-	use qt5 && xdg_pkg_postinst
+	xdg_pkg_postinst
 	optfeature "android remote contexts" dev-util/android-tools
 	optfeature "vulkan contexts" media-libs/vulkan-loader
-}
-
-pkg_postrm() {
-	use qt5 && xdg_pkg_postrm
 }
