@@ -10,7 +10,7 @@ HOMEPAGE="https://freetype.org/ttfautohint"
 SRC_URI="https://download.savannah.gnu.org/releases/freetype/${P}.tar.gz"
 
 LICENSE="|| ( FTL GPL-2+ )"
-SLOT="0"
+SLOT="0/1.0.3"
 KEYWORDS="~amd64"
 IUSE="qt5"
 
