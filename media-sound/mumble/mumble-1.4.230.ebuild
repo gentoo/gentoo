@@ -23,6 +23,8 @@ else
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
+SRC_URI+=" https://dev.gentoo.org/~polynomial-c/${PN}-1.4-openssl3.patch.xz"
+
 LICENSE="BSD MIT"
 SLOT="0"
 IUSE="+alsa +dbus debug g15 jack pipewire portaudio pulseaudio multilib nls +rnnoise speech test zeroconf"
@@ -66,6 +68,10 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${WORKDIR}/${PN}-1.4-openssl3.patch"
+)
 
 src_prepare() {
 	# required because of xdg.eclass also providing src_prepare
