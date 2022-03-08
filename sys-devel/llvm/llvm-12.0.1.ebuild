@@ -507,7 +507,35 @@ multilib_src_install_all() {
 	llvm_install_manpages
 }
 
+pkg_preinst() {
+	HAD_LLVM_TARGETS=()
+	if has_version 'sys-devel/llvm'; then
+		HAD_LLVM=1
+
+		local target
+		for target in "${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" \
+						  "${ALL_LLVM_PRODUCTION_TARGETS[@]}"; do
+			has_version "sys-devel/llvm[llvm_targets_${target}]" &&
+				HAD_LLVM_TARGETS+=( "${target}" )
+		done
+	fi
+
+	# Sort so that targets can be compared with != operator.
+	HAD_LLVM_TARGETS=( $(printf '%s\n' "${HAD_LLVM_TARGETS[@]}" | sort) )
+}
+
 pkg_postinst() {
+	local CURR_LLVM_TARGETS=( $(echo ${LLVM_TARGETS} | tr ' ' '\n' | sort) )
+	if [[ ${HAD_LLVM} -eq 1 ]] &&
+		   [[ "${HAD_LLVM_TARGETS[@]}" != "${CURR_LLVM_TARGETS[@]}" ]]; then
+		ewarn
+		ewarn "It looks like LLVM_TARGETS has changed."
+		ewarn
+		ewarn "Rebuild reverse dependencies such as sys-devel/lld to"
+		ewarn "avoid issues. See bug #767700 for more info."
+		ewarn
+	fi
+
 	elog "You can find additional opt-viewer utility scripts in:"
 	elog "  ${EROOT}/usr/lib/llvm/${SLOT}/share/opt-viewer"
 	elog "To use these scripts, you will need Python along with the following"
