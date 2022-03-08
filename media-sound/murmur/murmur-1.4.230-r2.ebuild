@@ -80,8 +80,6 @@ DOC_CONTENTS="
 "
 
 src_prepare() {
-	default
-
 	if [[ "${PV}" == *9999 ]] ; then
 		pushd scripts &>/dev/null || die
 		./mkini.sh || die
