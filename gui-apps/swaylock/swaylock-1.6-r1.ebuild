@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/swaywm/${PN}.git"
 else
 	SRC_URI="https://github.com/swaywm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="MIT"
@@ -29,7 +29,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	>=dev-libs/wayland-protocols-1.14
+	>=dev-libs/wayland-protocols-1.25
+	>=dev-util/wayland-scanner-1.15
 	virtual/pkgconfig
 	man? ( app-text/scdoc )
 "

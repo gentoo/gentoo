@@ -29,7 +29,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	>=dev-libs/wayland-protocols-1.14
+	>=dev-libs/wayland-protocols-1.25
+	>=dev-util/wayland-scanner-1.15
 	virtual/pkgconfig
 	man? ( app-text/scdoc )
 "
