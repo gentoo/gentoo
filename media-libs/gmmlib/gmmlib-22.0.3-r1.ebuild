@@ -12,7 +12,10 @@ S="${WORKDIR}/${PN}-intel-${P}"
 
 KEYWORDS="~amd64"
 LICENSE="MIT"
-SLOT="0/12"
+# gmmlib version 22.0.3 made breaking ABI changes without changing the
+# soname, so the "_1" subslot suffix was added. There is no need to keep
+# this suffix after the next soname version bump.
+SLOT="0/12_1"
 IUSE="+custom-cflags test"
 RESTRICT="!test? ( test )"
 
