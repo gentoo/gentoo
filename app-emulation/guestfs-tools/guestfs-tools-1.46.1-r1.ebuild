@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -120,6 +120,9 @@ src_configure() {
 		append-ldflags "-L${ESYSROOT}/usr/$(get_libdir)/xcrypt"
 		append-ldflags "-Wl,-R${ESYSROOT}/usr/$(get_libdir)/xcrypt"
 	fi
+
+	# Disable a warning which aborts the build
+	sed -i 's|CDEFLMPSUVYZX+52-3|+C+D+E+F+L+M+P+S+U+V+Y+Z+X+52-3-6 -w -6|' configure
 
 	econf \
 		$(usex doc '' PO4A=no) \
