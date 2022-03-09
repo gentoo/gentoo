@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTICE:
@@ -9,7 +9,7 @@ EAPI=8
 MY_PN="melonDS"
 MY_P="${MY_PN}-${PV}"
 
-inherit cmake flag-o-matic readme.gentoo-r1 toolchain-funcs xdg
+inherit cmake readme.gentoo-r1 toolchain-funcs xdg
 
 DESCRIPTION="Nintendo DS emulator, sorta"
 HOMEPAGE="
