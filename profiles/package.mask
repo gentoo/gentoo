@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-03-09)
+# EAPI 5, out-of-date. Not packaged by any other distributions.
+# Removal on 2022-04-09.
+dev-java/edtftpj
+
+# Sam James <sam@gentoo.org> (2022-03-09)
 # Depends on very-old slot of SpiderMonkey which shouldn't be
 # used with untrusted input (vulnerable to lots of security bugs).
 # No reverse dependencies and no updates upstream for a long while.
