@@ -3,8 +3,6 @@
 
 EAPI="8"
 
-inherit autotools
-
 MY_P="${PN^g}-${PV}"
 
 DESCRIPTION="GTK2 binding for Gauche"
