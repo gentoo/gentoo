@@ -139,7 +139,10 @@ src_install() {
 	make_wrapper zoom /opt/zoom{/zoom,} $(usev bundled-qt /opt/zoom)
 	make_desktop_entry "zoom %U" Zoom videoconference-zoom \
 		"Network;VideoConference;" \
-		"MimeType=x-scheme-handler/zoommtg;application/x-zoom;"
+		"MimeType=$(printf '%s;' \
+			x-scheme-handler/zoommtg \
+			x-scheme-handler/zoomus \
+			application/x-zoom)"
 	doicon videoconference-zoom.svg
 	doicon -s scalable videoconference-zoom.svg
 	readme.gentoo_create_doc
