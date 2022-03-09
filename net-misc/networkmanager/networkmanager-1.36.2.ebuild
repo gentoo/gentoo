@@ -232,7 +232,7 @@ multilib_src_configure() {
 		$(meson_native_use_bool bluetooth bluez5_dun)
 		-Debpf=true
 
-		-Dconfig_wifi_backend_default=$(usex iwd iwd default)
+		-Dconfig_wifi_backend_default=$(multilib_native_usex iwd iwd default)
 		-Dconfig_plugins_default=keyfile
 		-Difcfg_rh=false
 		-Difupdown=false
