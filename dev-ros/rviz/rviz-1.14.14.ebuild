@@ -38,7 +38,6 @@ RDEPEND="
 	dev-ros/pluginlib
 	>=dev-ros/python_qt_binding-0.3.0[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/resource_retriever
-	dev-ros/rosbag[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rosconsole
 	dev-libs/console_bridge:=
 	dev-ros/roscpp
