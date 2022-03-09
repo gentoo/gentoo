@@ -15,7 +15,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/gst-plugins-bad-${PV}-use-system-libs-hls.patch
+	"${FILESDIR}"/gst-plugins-bad-1.18.4-use-system-libs-hls.patch
 )
 
 src_prepare() {
