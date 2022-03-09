@@ -297,9 +297,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-7.2.0.4-qt5detect.patch"
-
-	# master branch
-	"${FILESDIR}/${PN}-7.2.5.2-kf591.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
