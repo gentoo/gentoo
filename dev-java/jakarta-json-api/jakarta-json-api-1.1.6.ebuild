@@ -19,7 +19,7 @@ SRC_URI="https://github.com/eclipse-ee4j/jsonp/archive/refs/tags/${MY_PV}.tar.gz
 LICENSE="|| ( EPL-2.0 GPL-2-with-classpath-exception )"
 # Since version 2.0.0, the namespace has changed to jakarta.json
 SLOT="1"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 
 DEPEND="
 	>=virtual/jdk-1.8:*
