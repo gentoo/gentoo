@@ -361,6 +361,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.18-modulepathfix.patch"
 	"${FILESDIR}/${PN}-3.0.30-security-disable-PidFile.patch"
+	"${FILESDIR}/${P}-fix-server-crash.patch"
 )
 
 S=${WORKDIR}/${MY_P}
