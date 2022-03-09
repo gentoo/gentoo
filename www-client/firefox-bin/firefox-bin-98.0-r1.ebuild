@@ -64,6 +64,7 @@ RDEPEND="${COMMON_DEPEND}
 	dev-libs/atk
 	dev-libs/dbus-glib
 	>=dev-libs/glib-2.26:2
+	media-libs/alsa-lib
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.10
 	sys-apps/dbus
@@ -83,7 +84,9 @@ RDEPEND="${COMMON_DEPEND}
 	x11-libs/libXtst
 	x11-libs/libxcb
 	>=x11-libs/pango-1.22.0
-	alsa? ( media-libs/alsa-lib )
+	alsa? (
+		!pulseaudio? ( media-sound/apulse )
+	)
 	ffmpeg? ( media-video/ffmpeg )
 	pulseaudio? ( media-sound/pulseaudio )
 	selinux? ( sec-policy/selinux-mozilla )
@@ -325,15 +328,6 @@ pkg_postinst() {
 	fi
 
 	use ffmpeg || ewarn "USE=-ffmpeg : HTML5 video will not render without media-video/ffmpeg installed"
-
-	local HAS_AUDIO=0
-	if use alsa || use pulseaudio; then
-		HAS_AUDIO=1
-	fi
-
-	if [[ ${HAS_AUDIO} -eq 0 ]] ; then
-		ewarn "USE=-pulseaudio & USE=-alsa : For audio please either set USE=pulseaudio or USE=alsa!"
-	fi
 
 	local show_doh_information show_normandy_information show_shortcut_information
 
