@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Adel KARA SLIMANE <adel.ks@zegrapher.com> (2022-03-09)
+# Binary packages linked to glibc
+app-editors/vscode
+app-editors/vscodium
+
 # João Santos <joaompssantos@gmail.com> (2022-02-22)
 # Binary package linked to glibc
 app-text/master-pdf-editor
