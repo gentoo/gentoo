@@ -5,6 +5,8 @@ EAPI=8
 
 MY_P=${PN}_5.6
 
+inherit autotools
+
 DESCRIPTION="Utilities for configuring and debugging the Linux floppy driver"
 HOMEPAGE="https://fdutils.linux.lu"
 SRC_URI="
@@ -23,6 +25,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	sys-apps/texinfo
+	sys-devel/autoconf-archive
 	doc? ( virtual/texi2dvi )
 "
 
@@ -37,10 +40,15 @@ src_prepare() {
 		"${FILESDIR}"/fdutils-5.6_p2-parallel.patch
 		"${FILESDIR}"/fdutils-5.6_p2-docs-build.patch
 	)
+
 	default
+
+	eautoreconf
 }
 
 src_configure() {
+	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
+
 	econf --enable-fdmount-floppy-only
 }
 
