@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="CLI program to play and record audiofiles"
 HOMEPAGE="http://rawrec.sourceforge.net"
