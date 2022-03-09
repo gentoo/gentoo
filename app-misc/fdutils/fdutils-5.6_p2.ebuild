@@ -5,7 +5,7 @@ EAPI=8
 
 MY_P=${PN}_5.6
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Utilities for configuring and debugging the Linux floppy driver"
 HOMEPAGE="https://fdutils.linux.lu"
