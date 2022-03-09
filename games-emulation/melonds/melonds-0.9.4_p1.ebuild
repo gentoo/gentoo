@@ -9,7 +9,7 @@ EAPI=8
 MY_PN="melonDS"
 MY_P="${MY_PN}-${PV}"
 
-inherit cmake flag-o-matic readme.gentoo-r1 toolchain-funcs xdg
+inherit cmake readme.gentoo-r1 toolchain-funcs xdg
 
 DESCRIPTION="Nintendo DS emulator, sorta"
 HOMEPAGE="
@@ -21,9 +21,9 @@ if [[ "${PV}" == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Arisotura/${MY_PN}.git"
 else
-	SRC_URI="https://github.com/Arisotura/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+	SRC_URI="https://github.com/Arisotura/${MY_PN}/archive/0.9.4.tar.gz -> ${MY_P}.tar.gz"
 	KEYWORDS="~amd64"
-	S="${WORKDIR}/${MY_P}"
+	S="${WORKDIR}"/${MY_PN}-0.9.4
 fi
 
 IUSE="+jit +opengl"
