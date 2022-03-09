@@ -65,6 +65,7 @@ RDEPEND="
 	x11-libs/libXrandr
 	x11-libs/libxshmfence
 	x11-libs/pango
+	!>=gui-libs/wlroots-0.15
 "
 
 QA_PREBUILT="
