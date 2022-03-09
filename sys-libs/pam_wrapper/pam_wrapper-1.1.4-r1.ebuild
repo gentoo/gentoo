@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,9 +22,10 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+# Require newer PAM so we know where it's located, bug #825078
 RDEPEND="
 	${PYTHON_DEPS}
-	sys-libs/pam:0=[${MULTILIB_USEDEP}]
+	>=sys-libs/pam-1.5.2-r1:0=[${MULTILIB_USEDEP}]
 "
 DEPEND="
 	${RDEPEND}
