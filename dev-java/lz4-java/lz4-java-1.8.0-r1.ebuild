@@ -14,7 +14,7 @@ SRC_URI="https://github.com/lz4/lz4-java/archive/refs/tags/${PV}.tar.gz -> ${P}.
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ppc64 ~x86"
 
 # Tests require com.carrotsearch.randomizedtesting:junit4-ant, which is yet to
 # be packaged.  Some extra steps are required before running the tests:
