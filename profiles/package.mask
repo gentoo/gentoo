@@ -34,12 +34,6 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-03-09)
-# Fails to build, stuck on EAPI 5.
-# bug #690606, bug #830937, bug #833397.
-# Removal on 2022-04-09.
-dev-java/cortado
-
-# Sam James <sam@gentoo.org> (2022-03-09)
 # EAPI 5, out-of-date. Not packaged by any other distributions.
 # Removal on 2022-04-09.
 dev-java/edtftpj
