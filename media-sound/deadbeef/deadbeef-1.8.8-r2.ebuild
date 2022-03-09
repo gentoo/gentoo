@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools xdg flag-o-matic plocale
+inherit autotools xdg flag-o-matic toolchain-funcs plocale
 
 DESCRIPTION="DeaDBeeF is a modular audio player similar to foobar2000"
 HOMEPAGE="https://deadbeef.sourceforge.io/"
