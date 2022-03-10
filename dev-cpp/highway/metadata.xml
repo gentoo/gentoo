@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>dnovomesky@gmail.com</email>
+    <name>Daniel Novomesky</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    Highway is a C++ library for SIMD (Single Instruction, Multiple Data),
+    i.e. applying the same operation to multiple 'lanes' using a single CPU instruction.
+  </longdescription>
+</pkgmetadata>
