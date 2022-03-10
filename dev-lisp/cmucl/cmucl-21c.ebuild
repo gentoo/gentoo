@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs multilib
+inherit toolchain-funcs
 
 MY_PV=${PV:0:3}
 
