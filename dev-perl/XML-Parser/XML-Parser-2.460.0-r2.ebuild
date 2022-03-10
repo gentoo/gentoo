@@ -5,7 +5,7 @@ EAPI=7
 
 DIST_AUTHOR=TODDR
 DIST_VERSION=2.46
-inherit perl-module multilib
+inherit perl-module
 
 DESCRIPTION="A perl module for parsing XML documents"
 
