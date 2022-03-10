@@ -23,7 +23,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-Respect-LDFLAGS.patch
 )
 
-
 src_configure() {
 	PLUGIN_SO=( src20/gkrellsun$(get_modname) )
 	default
