@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -54,8 +54,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-proper_homedir.patch
 )
 
-MULTILIB_CHOST_TOOLS=( /usr/bin/fc-cache$(get_exeext) )
-
 pkg_setup() {
 	DOC_CONTENTS="Please make fontconfig configuration changes using
 	\`eselect fontconfig\`. Any changes made to /etc/fonts/fonts.conf will be
@@ -102,6 +100,8 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
+	MULTILIB_CHOST_TOOLS=( /usr/bin/fc-cache$(get_exeext) )
+
 	default
 
 	# avoid calling this multiple times, bug #459210
