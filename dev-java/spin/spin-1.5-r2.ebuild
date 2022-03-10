@@ -18,7 +18,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}/v${PV}/${P}-all.zip"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 # Common dependencies
 # POM: pom.xml
