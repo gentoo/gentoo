@@ -27,3 +27,6 @@ RDEPEND="app-emulation/qemu
 		sys-boot/grub:2[grub_platforms_pc]
 	)
 "
+DEPEND="test? ( dev-python/parameterized[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests pytest
