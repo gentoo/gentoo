@@ -13,7 +13,7 @@ Index: cv_bridge/CMakeLists.txt
 -  set(_opencv_version 3)
 -endif()
 -
--find_package(OpenCV ${_opencv_version4} REQUIRED
+-find_package(OpenCV ${_opencv_version} REQUIRED
 +find_package(OpenCV 4 REQUIRED
    COMPONENTS
      opencv_core

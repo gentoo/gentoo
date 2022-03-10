@@ -6,8 +6,8 @@
 		<name>Arfrever Frehtes Taifersar Arahesis</name>
 	</maintainer>
 	<maintainer type="person" proxied="proxy">
-		<email>floppym@gentoo.org</email>
-		<name>Mike Gilbert</name>
+		<email>jsmolic@gentoo.org</email>
+		<name>Jakov Smolić</name>
 	</maintainer>
 	<use>
 		<flag name="dcc-video">Support video connections over DCC protocol</flag>

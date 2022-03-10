@@ -4,8 +4,17 @@
 # @ECLASS: toolchain.eclass
 # @MAINTAINER:
 # Toolchain Ninjas <toolchain@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Common code for sys-devel/gcc ebuilds
+
+case ${EAPI} in
+	7) inherit eutils ;;
+	8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ ! ${_TOOLCHAIN_ECLASS} ]]; then
+_TOOLCHAIN_ECLASS=1
 
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
@@ -29,16 +38,6 @@ if tc_is_live ; then
 fi
 
 FEATURES=${FEATURES/multilib-strict/}
-
-case ${EAPI} in
-	5|6) inherit eapi7-ver eutils ;;
-	7) inherit eutils ;;
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
-EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure \
-	src_compile src_test src_install pkg_postinst pkg_postrm
 
 #---->> globals <<----
 
@@ -129,16 +128,6 @@ LICENSE="GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ gcc-runtime-library-excepti
 IUSE="test vanilla +nls"
 RESTRICT="!test? ( test )"
 
-tc_supports_dostrip() {
-	case ${EAPI} in
-		5|6) return 1 ;;
-		7|8) return 0 ;;
-		*) die "Update apply_patches() for ${EAPI}." ;;
-	esac
-}
-
-tc_supports_dostrip || RESTRICT+=" strip" # cross-compilers need controlled stripping
-
 TC_FEATURES=()
 
 tc_has_feature() {
@@ -146,21 +135,21 @@ tc_has_feature() {
 }
 
 if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
-	IUSE+=" debug +cxx +nptl" TC_FEATURES+=(nptl)
+	IUSE+=" debug +cxx +nptl" TC_FEATURES+=( nptl )
 	[[ -n ${PIE_VER} ]] && IUSE+=" nopie"
 	[[ -n ${SPECS_VER} ]] && IUSE+=" nossp"
-	IUSE+=" +fortran" TC_FEATURES+=(fortran)
+	IUSE+=" +fortran" TC_FEATURES+=( fortran )
 	IUSE+=" doc hardened multilib objc"
-	tc_version_is_between 3 7 && IUSE+=" awt gcj" TC_FEATURES+=(gcj)
+	tc_version_is_between 3 7 && IUSE+=" awt gcj" TC_FEATURES+=( gcj )
 	IUSE+=" pgo"
-	IUSE+=" objc-gc" TC_FEATURES+=(objc-gc)
+	IUSE+=" objc-gc" TC_FEATURES+=( objc-gc )
 	IUSE+=" libssp objc++"
 	IUSE+=" +openmp"
 	tc_version_is_at_least 4.3 && IUSE+=" fixed-point"
 	tc_version_is_at_least 4.7 && IUSE+=" go"
 	# sanitizer support appeared in gcc-4.8, but <gcc-5 does not
 	# support modern glibc.
-	tc_version_is_at_least 5 && IUSE+=" +sanitize"  TC_FEATURES+=(sanitize)
+	tc_version_is_at_least 5 && IUSE+=" +sanitize"  TC_FEATURES+=( sanitize )
 	# Note:
 	#   <gcc-4.8 supported graphite, it required forked ppl
 	#     versions which we dropped.  Since graphite was also experimental in
@@ -168,7 +157,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	#   <gcc-5 supported graphite, it required cloog
 	#   <gcc-6.5 supported graphite, it required old incompatible isl
 	tc_version_is_at_least 6.5 &&
-		IUSE+=" graphite" TC_FEATURES+=(graphite)
+		IUSE+=" graphite" TC_FEATURES+=( graphite )
 	tc_version_is_between 4.9 8 && IUSE+=" cilk"
 	tc_version_is_at_least 4.9 && IUSE+=" ada"
 	tc_version_is_at_least 4.9 && IUSE+=" vtv"
@@ -177,12 +166,12 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 6.0 && IUSE+=" +pie +ssp +pch"
 	# systemtap is a gentoo-specific switch: bug #654748
 	tc_version_is_at_least 8.0 &&
-		IUSE+=" systemtap" TC_FEATURES+=(systemtap)
+		IUSE+=" systemtap" TC_FEATURES+=( systemtap )
 	tc_version_is_at_least 9.0 && IUSE+=" d"
 	tc_version_is_at_least 9.1 && IUSE+=" lto"
 	tc_version_is_at_least 10 && IUSE+=" cet"
-	tc_version_is_at_least 10 && IUSE+=" zstd" TC_FEATURES+=(zstd)
-	tc_version_is_at_least 11 && IUSE+=" valgrind" TC_FEATURES+=(valgrind)
+	tc_version_is_at_least 10 && IUSE+=" zstd" TC_FEATURES+=( zstd )
+	tc_version_is_at_least 11 && IUSE+=" valgrind" TC_FEATURES+=( valgrind )
 	tc_version_is_at_least 11 && IUSE+=" custom-cflags"
 fi
 
@@ -268,10 +257,6 @@ fi
 if tc_has_feature valgrind; then
 	BDEPEND+=" valgrind? ( dev-util/valgrind )"
 fi
-
-case ${EAPI} in
-	5|6) DEPEND+=" ${BDEPEND}" ;;
-esac
 
 PDEPEND=">=sys-devel/gcc-config-2.3"
 
@@ -447,25 +432,9 @@ toolchain_src_unpack() {
 
 #---->> src_prepare <<----
 
-# 'epatch' is not available in EAPI=7. Abstract away patchset application
-# until we eventually get all gcc ebuilds on EAPI=7 or later.
-tc_apply_patches() {
-	[[ ${#@} -lt 2 ]] && die "usage: tc_apply_patches <message> <patches...>"
-
-	einfo "$1"; shift
-
-	case ${EAPI} in
-		# Note: even for EAPI=6 we used 'epatch' semantics. To avoid
-		# breaking existing ebuilds use 'eapply' only in EAPI=7 or later.
-		5|6) epatch "$@" ;;
-		7|8) eapply "$@" ;;
-		*) die "Update apply_patches() for ${EAPI}." ;;
-	esac
-}
-
 toolchain_src_prepare() {
 	export BRANDING_GCC_PKGVERSION="Gentoo ${GCC_PVR}"
-	cd "${S}"
+	cd "${S}" || die
 
 	do_gcc_gentoo_patches
 	do_gcc_PIE_patches
@@ -475,11 +444,7 @@ toolchain_src_prepare() {
 		BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, commit ${EGIT_VERSION}"
 	fi
 
-	case ${EAPI} in
-		5) epatch_user;;
-		6|7|8) eapply_user ;;
-		*) die "Update toolchain_src_prepare() for ${EAPI}." ;;
-	esac
+	eapply_user
 
 	if ( tc_version_is_at_least 4.8.2 || _tc_use_if_iuse hardened ) \
 		   && ! use vanilla ; then
@@ -490,7 +455,7 @@ toolchain_src_prepare() {
 	# since we configure with just one --libdir, we can't use that
 	# (as gcc itself takes care of building multilibs).  #435728
 	find "${S}" -name Makefile.in \
-		-exec sed -i '/^pkgconfigdir/s:=.*:=$(toolexeclibdir)/pkgconfig:' {} +
+		-exec sed -i '/^pkgconfigdir/s:=.*:=$(toolexeclibdir)/pkgconfig:' {} + || die
 
 	setup_multilib_osdirnames
 	gcc_version_patch
@@ -532,10 +497,11 @@ toolchain_src_prepare() {
 			|| eerror "Please file a bug about this"
 		eend $?
 	done
-	sed -i 's|A-Za-z0-9|[:alnum:]|g' "${S}"/gcc/*.awk #215828
+	sed -i 's|A-Za-z0-9|[:alnum:]|g' "${S}"/gcc/*.awk || die #215828
 
 	# Prevent new texinfo from breaking old versions (see #198182, #464008)
-	tc_apply_patches "Remove texinfo (bug #198182, bug #464008)" "${FILESDIR}"/gcc-configure-texinfo.patch
+	einfo "Remove texinfo (bug #198182, bug #464008)"
+	eapply "${FILESDIR}"/gcc-configure-texinfo.patch
 
 	# >=gcc-4
 	if [[ -x contrib/gcc_update ]] ; then
@@ -550,7 +516,8 @@ toolchain_src_prepare() {
 do_gcc_gentoo_patches() {
 	if ! use vanilla ; then
 		if [[ -n ${PATCH_VER} ]] ; then
-			tc_apply_patches "Applying Gentoo patches ..." "${WORKDIR}"/patch/*.patch
+			einfo "Applying Gentoo patches ..."
+			eapply "${WORKDIR}"/patch/*.patch
 			BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION} p${PATCH_VER}"
 		fi
 
@@ -567,7 +534,8 @@ do_gcc_gentoo_patches() {
 
 			local shopt_save=$(shopt -p nullglob)
 			shopt -s nullglob
-			tc_apply_patches "Applying musl patches ..." "${WORKDIR}"/musl/{,nocross/}*.patch
+			einfo "Applying musl patches ..."
+			eapply "${WORKDIR}"/musl/{,nocross/}*.patch
 			${shopt_save}
 		fi
 	fi
@@ -577,7 +545,8 @@ do_gcc_PIE_patches() {
 	want_pie || return 0
 	use vanilla && return 0
 
-	tc_apply_patches "Applying pie patches ..." "${WORKDIR}"/piepatch/*.patch
+	einfo "Applying pie patches ..."
+	eapply "${WORKDIR}"/piepatch/*.patch
 
 	BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, pie-${PIE_VER}"
 }
@@ -595,7 +564,8 @@ do_gcc_CYGWINPORTS_patches() {
 			echo "${d}/${p}"
 		done
 	) )
-	tc_apply_patches "Applying cygwin port patches ..." ${patches[*]}
+	einfo "Applying cygwin port patches ..."
+	eapply -- "${patches[@]}"
 }
 
 # configure to build with the hardened GCC specs as the default
@@ -663,12 +633,12 @@ make_gcc_hard() {
 	# than ALL_CFLAGS...
 	sed -e '/^ALL_CFLAGS/iHARD_CFLAGS = ' \
 		-e 's|^ALL_CFLAGS = |ALL_CFLAGS = $(HARD_CFLAGS) |' \
-		-i "${S}"/gcc/Makefile.in
+		-i "${S}"/gcc/Makefile.in || die
 	# Need to add HARD_CFLAGS to ALL_CXXFLAGS on >= 4.7
 	if tc_version_is_at_least 4.7 ; then
 		sed -e '/^ALL_CXXFLAGS/iHARD_CFLAGS = ' \
 			-e 's|^ALL_CXXFLAGS = |ALL_CXXFLAGS = $(HARD_CFLAGS) |' \
-			-i "${S}"/gcc/Makefile.in
+			-i "${S}"/gcc/Makefile.in || die
 	fi
 
 	sed -i \
@@ -1744,9 +1714,9 @@ toolchain_src_install() {
 	#  - "${D}${LIBPATH}"
 	# As dostrip does not specify host to override ${CHOST} tools just skip
 	# non-native binary stripping.
-	is_crosscompile && tc_supports_dostrip && dostrip -x "${LIBPATH}"
+	is_crosscompile && dostrip -x "${LIBPATH}"
 
-	cd "${S}"
+	cd "${S}" || die
 	if is_crosscompile; then
 		rm -rf "${ED}"/usr/share/{man,info}
 		rm -rf "${D}"${DATAPATH}/{man,info}
@@ -2061,40 +2031,40 @@ gcc_slot_java() {
 
 toolchain_pkg_postinst() {
 	do_gcc_config
-	if [[ ! ${ROOT%/} && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+	if [[ ! ${ROOT} && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
 		eselect compiler-shadow update all
 	fi
 
 	if ! is_crosscompile && [[ ${PN} != "kgcc64" ]] ; then
 		# gcc stopped installing .la files fixer in June 2020.
 		# Cleaning can be removed in June 2022.
-		rm -f "${EROOT%/}"/sbin/fix_libtool_files.sh
-		rm -f "${EROOT%/}"/usr/sbin/fix_libtool_files.sh
-		rm -f "${EROOT%/}"/usr/share/gcc-data/fixlafiles.awk
+		rm -f "${EROOT}"/sbin/fix_libtool_files.sh
+		rm -f "${EROOT}"/usr/sbin/fix_libtool_files.sh
+		rm -f "${EROOT}"/usr/share/gcc-data/fixlafiles.awk
 	fi
 }
 
 toolchain_pkg_postrm() {
 	do_gcc_config
-	if [[ ! ${ROOT%/} && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+	if [[ ! ${ROOT} && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
 		eselect compiler-shadow clean all
 	fi
 
 	# clean up the cruft left behind by cross-compilers
 	if is_crosscompile ; then
-		if [[ -z $(ls "${EROOT%/}"/etc/env.d/gcc/${CTARGET}* 2>/dev/null) ]] ; then
+		if [[ -z $(ls "${EROOT}"/etc/env.d/gcc/${CTARGET}* 2>/dev/null) ]] ; then
 			einfo "Removing last cross-compiler instance. Deleting dangling symlinks."
-			rm -f "${EROOT%/}"/etc/env.d/gcc/config-${CTARGET}
-			rm -f "${EROOT%/}"/etc/env.d/??gcc-${CTARGET}
-			rm -f "${EROOT%/}"/usr/bin/${CTARGET}-{gcc,{g,c}++}{,32,64}
+			rm -f "${EROOT}"/etc/env.d/gcc/config-${CTARGET}
+			rm -f "${EROOT}"/etc/env.d/??gcc-${CTARGET}
+			rm -f "${EROOT}"/usr/bin/${CTARGET}-{gcc,{g,c}++}{,32,64}
 		fi
 		return 0
 	fi
 
 	# gcc stopped installing .la files fixer in June 2020.
 	# Cleaning can be removed in June 2022.
-	rm -f "${EROOT%/}"/sbin/fix_libtool_files.sh
-	rm -f "${EROOT%/}"/usr/share/gcc-data/fixlafiles.awk
+	rm -f "${EROOT}"/sbin/fix_libtool_files.sh
+	rm -f "${EROOT}"/usr/share/gcc-data/fixlafiles.awk
 }
 
 do_gcc_config() {
@@ -2113,7 +2083,7 @@ do_gcc_config() {
 		[[ -n ${current_specs} ]] && use_specs=-${current_specs}
 
 		if [[ -n ${use_specs} ]] && \
-		   [[ ! -e ${EROOT%/}/etc/env.d/gcc/${CTARGET}-${GCC_CONFIG_VER}${use_specs} ]]
+		   [[ ! -e ${EROOT}/etc/env.d/gcc/${CTARGET}-${GCC_CONFIG_VER}${use_specs} ]]
 		then
 			ewarn "The currently selected specs-specific gcc config,"
 			ewarn "${current_specs}, doesn't exist anymore. This is usually"
@@ -2351,6 +2321,11 @@ toolchain_death_notice() {
 		popd >/dev/null
 	fi
 }
+
+fi
+
+EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure \
+	src_compile src_test src_install pkg_postinst pkg_postrm
 
 # Note [implicitly enabled flags]
 # -------------------------------

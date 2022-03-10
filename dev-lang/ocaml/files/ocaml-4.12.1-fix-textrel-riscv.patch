@@ -1,0 +1,46 @@
+From ddf99786f8229c8282905af5c7c74360d4f2fbd0 Mon Sep 17 00:00:00 2001
+From: Alex Fan <alex.fan.q@gmail.com>
+Date: Tue, 22 Feb 2022 19:28:30 +1100
+Subject: [PATCH] riscv: Generate frametable in data section to improve code
+ relocatability (#11042)
+
+Similar to what PowerPC and System-Z have done in commit 24980d3fd9848e281761ef2b8fe383e71261789b
+
+With this commit ocamlopt produces .so shared libraries and PIE relocatable
+executables that contain no relocations in the text segment.
+
+Upstream status: merged in 4.14 and 5.x
+---
+ Changes                | 5 +++++
+ asmcomp/riscv/emit.mlp | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/Changes b/Changes
+index 4898e9d69fc..2bec76daac6 100644
+--- a/Changes
++++ b/Changes
+@@ -477,6 +477,11 @@ OCaml 4.14.0
+ - #10907, #10959: Wrong type inferred from existential types
+   (Jacques Garrigue and Gabriel Scherer, report by @dyzsr, review by Leo White)
+ 
++- #10688: Move frame descriptor table from `rodata` to `data` section on
++  RISC-V.  Improves support for building DLLs and PIEs. In particular, this
++  applies to all binaries in distributions that build PIEs by default (eg
++  Gentoo and Alpine).
++  (Alex Fan, review by Gabriel Scherer)
+ 
+ OCaml 4.13 maintenance branch
+ -----------------------------
+diff --git a/asmcomp/riscv/emit.mlp b/asmcomp/riscv/emit.mlp
+index 474a3c6857a..b36aa0ea38c 100644
+--- a/asmcomp/riscv/emit.mlp
++++ b/asmcomp/riscv/emit.mlp
+@@ -645,7 +645,7 @@ let end_assembly() =
+   `{emit_symbol lbl_end}:\n`;
+   `	.quad	0\n`;
+   (* Emit the frame descriptors *)
+-  `	{emit_string rodata_space}\n`;
++  `	{emit_string data_space}\n`; (* not rodata because relocations inside *)
+   let lbl = Compilenv.make_symbol (Some "frametable") in
+   declare_global_data lbl;
+   `{emit_symbol lbl}:\n`;

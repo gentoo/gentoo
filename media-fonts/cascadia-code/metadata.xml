@@ -14,6 +14,7 @@
 		and is designed to enhance the modern look and feel of the Windows 
 		Terminal. 
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">microsoft/cascadia-code</remote-id>
 	</upstream>

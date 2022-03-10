@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ else
 		SRC_URI="https://github.com/${PN}/${PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 		S="${WORKDIR}/${PN}-${MY_P}"
 	fi
-	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
 SRC_URI="${SRC_URI}

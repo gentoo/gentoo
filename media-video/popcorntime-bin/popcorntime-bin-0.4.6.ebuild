@@ -25,6 +25,7 @@ RDEPEND="
 	media-libs/alsa-lib
 	net-print/cups
 	sys-apps/dbus
+	sys-libs/glibc
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:3

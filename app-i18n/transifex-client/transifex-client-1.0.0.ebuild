@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -214,11 +214,13 @@ SRC_URI="https://github.com/transifex/cli/archive/refs/tags/v${PV}.tar.gz -> ${P
 	${EGO_SUM_SRC_URI}"
 S="${WORKDIR}"/cli-${PV}
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 ISC LGPL-3 MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 
 src_test() {
+	# Skip tests depending on a network connection. Bug #831772
+	rm internal/txlib/update_test.go || die
 	go test ./... || die
 }
 

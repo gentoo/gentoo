@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ REQUIRED_USE="test? ( samba )"
 RESTRICT="test"
 
 RDEPEND="
-	net-libs/libpcap
+	>=net-libs/libpcap-1.10.1
 	drop-root? (
 		acct-group/pcap
 		acct-user/pcap
@@ -49,7 +49,6 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	test? (
-		>=net-libs/libpcap-1.9.1
 		dev-lang/perl
 	)
 "

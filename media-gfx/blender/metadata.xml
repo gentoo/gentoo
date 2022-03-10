@@ -49,6 +49,9 @@
 		<flag name="headless">
 			Build without graphical support (renderfarm, server mode only).
 		</flag>
+		<flag name="nanovdb">
+			Enable nanoVDB support in Cycles. Uses less memory than regular openVDB when rendering.
+		</flag>
 		<flag name="ndof">
 			Enable NDOF input devices (SpaceNavigator and friends).
 		</flag>

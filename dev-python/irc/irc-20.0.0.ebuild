@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
@@ -29,7 +29,6 @@ RDEPEND="
 "
 BDEPEND="
 	>=dev-python/setuptools_scm-3.4.1[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
 "
 
 distutils_enable_sphinx docs '>=dev-python/jaraco-packaging-3.2' \

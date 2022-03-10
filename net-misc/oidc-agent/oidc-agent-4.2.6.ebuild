@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit xdg-utils
+inherit flag-o-matic xdg-utils
 
 DESCRIPTION="Agent and tools for managing OpenID Connect tokens on the command line"
 HOMEPAGE="https://github.com/indigo-dc/oidc-agent"
@@ -11,14 +11,15 @@ SRC_URI="https://github.com/indigo-dc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 IUSE="test"
 
 DEPEND="app-crypt/libsecret
 	dev-libs/libsodium:=
 	media-gfx/qrencode
 	net-libs/libmicrohttpd:=
-	sys-libs/libseccomp"
+	sys-libs/libseccomp
+	elibc_musl? ( sys-libs/argp-standalone )"
 RDEPEND="${DEPEND}"
 BDEPEND="test? ( dev-libs/check )"
 
@@ -27,11 +28,16 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.2_makefile-liblist-automagic.patch
 	"${FILESDIR}"/${PN}-4.1.0_install-perms.patch
+	"${FILESDIR}"/${PN}-4.2.6_sighandler_t.patch
 )
 
 src_prepare() {
 	default
 	sed -i -e 's|^\(\s\+\)@|\1|' Makefile || die "Failed to increase verbosity in Makefile"
+
+	# Bug #832552
+	append-cflags -D_GNU_SOURCE
+	use elibc_musl && append-ldflags -largp
 }
 
 src_install() {

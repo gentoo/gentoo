@@ -24,13 +24,6 @@
 		<flag name="nettle">
 			Use <pkg>dev-libs/nettle</pkg> as crypto backend
 		</flag>
-		<flag name="zlib">
-			Allow accessing gzip-compressed archives through
-			<pkg>sys-libs/zlib</pkg>. This only affects libarchive's native
-			support: bsdtar will keep using gunzip as a filter if that's not
-			built-in. It's also needed for supporting extraction of ZIP
-			files.
-		</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:libarchive:libarchive</remote-id>

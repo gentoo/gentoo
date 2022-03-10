@@ -34,7 +34,7 @@ LICENSE="Apache-1.1 Apache-2.0 JDOM BSD-2 CC-PD Boost-1.0 MIT CPL-1.0 HPND Exola
 	|| ( BSD GPL-2+ ) gSOAP libpng tsm"
 
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE="acl java +tsm-cit +tsm-hw"
 QA_PREBUILT="*"
 
@@ -59,7 +59,7 @@ RDEPEND="
 	dev-libs/libxml2
 	sys-fs/fuse:0
 	acl? ( sys-apps/acl )
-	java? ( >=virtual/jre-1.7 )
+	java? ( virtual/jre:1.8 )
 	|| (
 		sys-libs/libxcrypt[compat]
 		sys-libs/glibc[crypt(+)]

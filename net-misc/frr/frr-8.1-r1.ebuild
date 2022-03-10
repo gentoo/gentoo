@@ -41,6 +41,7 @@ BDEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
+	elibc_musl? ( sys-libs/queue-standalone )
 	test? ( $(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]') )
 "
 RDEPEND="

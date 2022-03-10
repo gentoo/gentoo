@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 RDEPEND="dev-python/QtPy[gui,testlib,widgets(+),${PYTHON_USEDEP}]"
 BDEPEND="
@@ -30,30 +30,31 @@ BDEPEND="
 distutils_enable_tests --install pytest
 distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
 
-python_prepare_all() {
-	# This show window test does not work inside the emerge env, as we cannot show windows.
-	# pytestqt.exceptions.TimeoutError: widget <PyQt5.QtWidgets.QWidget object at 0x7f57d8527af8> not activated in 1000 ms.
-	sed -i -e 's:test_wait_window:_&:' tests/test_basics.py || die
-
-	# This is not going to work since we want to test both implementations
-	# and therefore pull in both and explicitly set PYTEST_QT_API
-	sed -i -e 's:test_qt_api_ini_config_with_envvar:_&:' \
-		-e 's:test_qt_api_ini_config:_&:' \
-		tests/test_basics.py || die
-
-	distutils-r1_python_prepare_all
-}
-
 src_test() {
-	virtx python_foreach_impl python_test
+	virtx distutils-r1_src_test
 }
 
 python_test() {
+	# warnings from other plugins cause the test output matchers to fail
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	local -x PYTEST_PLUGINS=pytestqt.plugin
+
+	local EPYTEST_DESELECT=(
+		# requires the window to be activated; that doesn't seem
+		# to be possible inside Xvfb
+		"tests/test_basics.py::test_wait_window[waitActive-True]"
+
+		# we are forcing a specific module via envvar, effectively
+		# overriding the config
+		tests/test_basics.py::test_qt_api_ini_config
+		tests/test_basics.py::test_qt_api_ini_config_with_envvar
+	)
+
 	distutils_install_for_testing
-	PYTEST_QT_API="pyqt5" epytest
+	PYTEST_QT_API="pyqt5" epytest || die
 	if [[ "${EPYTHON}" == "python3.10" ]]; then
 		return
 	else
-		PYTEST_QT_API="pyside2" epytest
+		PYTEST_QT_API="pyside2" epytest || die
 	fi
 }

@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2021-12-31)
@@ -53,10 +53,6 @@ dev-qt/qtwayland -vulkan
 media-libs/mesa -vulkan -vulkan-overlay
 media-video/mpv -vulkan
 media-video/vlc -libplacebo
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
-# mask untested card for libva
-x11-libs/libva video_cards_nouveau
 
 # Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
 # PPS should work on all arches, but only keyworded on some arches

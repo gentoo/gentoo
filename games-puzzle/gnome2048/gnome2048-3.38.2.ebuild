@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,6 +30,10 @@ BDEPEND="
 	virtual/pkgconfig
 	$(vala_depend)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.38.2-meson-0.61.patch
+)
 
 src_prepare() {
 	xdg_src_prepare

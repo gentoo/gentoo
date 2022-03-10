@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Tetravex"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 IUSE="cli +gui"
 REQUIRED_USE="|| ( cli gui )"
 
@@ -28,6 +28,10 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.38.2-meson-0.61.patch
+)
 
 src_prepare() {
 	xdg_src_prepare

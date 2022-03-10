@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit cmake-utils
+EAPI=8
+inherit cmake
 
 DESCRIPTION="A simple CLI tool that display file system usage, with colors"
 HOMEPAGE="https://projects.gw-computing.net/projects/dfc"
@@ -30,5 +30,5 @@ src_configure() {
 		-DLFS_ENABLED=ON
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

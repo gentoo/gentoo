@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,14 +11,14 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gmime http://spruce.sourceforge.net/gmi
 
 SLOT="3.0"
 LICENSE="LGPL-2.1+"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 IUSE="crypt doc idn static-libs test +vala"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.32.0:2
 	sys-libs/zlib
-	crypt? ( >=app-crypt/gpgme-1.8.0:1= )
+	crypt? ( >=app-crypt/gpgme-1.8.0:= )
 	idn? ( net-dns/libidn2:= )
 	vala? (
 		$(vala_depend)

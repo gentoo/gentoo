@@ -33,8 +33,8 @@ RDEPEND="emacs? ( app-editors/emacs:* )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.17.0-disable_no-warning-test.patch"
-	"${FILESDIR}/${PN}-3.17.0-system_libraries.patch"
+	"${FILESDIR}/${PN}-3.19.0-disable_no-warning-test.patch"
+	"${FILESDIR}/${PN}-3.19.0-system_libraries.patch"
 	"${FILESDIR}/${PN}-3.16.0-protoc_input_output_files.patch"
 )
 
@@ -52,7 +52,6 @@ src_configure() {
 
 multilib_src_configure() {
 	local options=(
-		OBJC="$(tc-getBUILD_CC)"
 		$(use_enable static-libs static)
 		$(use_with zlib)
 	)

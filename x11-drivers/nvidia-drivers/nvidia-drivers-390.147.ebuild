@@ -27,6 +27,7 @@ IUSE="+X abi_x86_32 abi_x86_64 +driver persistenced static-libs +tools"
 
 COMMON_DEPEND="
 	acct-group/video
+	sys-libs/glibc
 	persistenced? (
 		acct-user/nvpd
 		net-libs/libtirpc:=
@@ -218,6 +219,7 @@ src_install() {
 	)
 
 	local skip_files=(
+		# nvidia_icd(vulkan): skip with -X too as it uses libGLX_nvidia
 		$(usex X '' '
 			libGLX_nvidia libglx
 			libnvidia-ifr

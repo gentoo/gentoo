@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit libtool multilib-minimal
+
+inherit multilib-minimal
 
 DESCRIPTION="a portable, high level programming interface to various calling conventions"
 HOMEPAGE="https://sourceware.org/libffi/"

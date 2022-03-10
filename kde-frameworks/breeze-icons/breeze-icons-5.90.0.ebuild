@@ -10,7 +10,7 @@ inherit cmake kde.org python-any-r1 xdg-utils
 DESCRIPTION="Breeze SVG icon theme"
 
 LICENSE="LGPL-3"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
@@ -22,6 +22,8 @@ BDEPEND="${PYTHON_DEPS}
 	>=kde-frameworks/extra-cmake-modules-${PVCUT}:5
 	test? ( app-misc/fdupes )
 "
+
+PATCHES=( "${FILESDIR}/${P}-fix-dupe-tests.patch" )
 
 python_check_deps() {
 	has_version "dev-python/lxml[${PYTHON_USEDEP}]"

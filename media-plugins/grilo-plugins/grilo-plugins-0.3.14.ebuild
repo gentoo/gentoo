@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Grilo"
 
 LICENSE="LGPL-2.1+"
 SLOT="0.3"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="daap chromaprint flickr freebox gnome-online-accounts lua test thetvdb tracker upnp-av +youtube"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
@@ -63,6 +63,14 @@ BDEPEND="
 	lua? ( dev-util/gperf )
 "
 
+pkg_pretend() {
+	if use gnome-online-accounts; then
+		if ! use flickr && ! use lua; then
+			ewarn "Ignoring USE=gnome-online-accounts USE does not contain flickr or lua"
+		fi
+	fi
+}
+
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 }
@@ -101,8 +109,12 @@ src_configure() {
 		-Denable-tracker=no
 		-Denable-tracker3=$(usex tracker yes no)
 		-Denable-youtube=$(usex youtube yes no)
-		$(meson_feature gnome-online-accounts goa)
 		-Dhelp=no
 	)
+	if use flickr || use lua; then
+		emesonargs+=($(meson_feature gnome-online-accounts goa))
+	else
+		emesonargs+=(-Dgoa=disabled)
+	fi
 	meson_src_configure
 }

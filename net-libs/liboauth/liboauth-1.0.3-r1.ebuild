@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="C library implementing the OAuth secure authentication protocol"
-HOMEPAGE="http://liboauth.sourceforge.net/"
+HOMEPAGE="https://liboauth.sourceforge.io/"
 SRC_URI="mirror://sourceforge/project/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 MIT )"

@@ -9,7 +9,4 @@
 		<remote-id type="github">google/leveldb</remote-id>
 		<bugs-to>https://github.com/google/leveldb/issues</bugs-to>
 	</upstream>
-	<use>
-		<flag name="crc32c">Link against <pkg>dev-libs/crc32c</pkg> for accelerated CRC32C calculation</flag>
-	</use>
 </pkgmetadata>

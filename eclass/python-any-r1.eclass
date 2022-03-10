@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-any-r1.eclass
@@ -36,7 +36,7 @@
 # both.
 #
 # For more information, please see the Python Guide:
-# https://dev.gentoo.org/~mgorny/python-guide/
+# https://projects.gentoo.org/python/guide/
 
 case "${EAPI:-0}" in
 	[0-5]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
@@ -271,44 +271,6 @@ python_gen_any_dep() {
 	echo "|| ( ${out})"
 }
 
-# @FUNCTION: _python_EPYTHON_supported
-# @USAGE: <epython>
-# @INTERNAL
-# @DESCRIPTION:
-# Check whether the specified implementation is supported by package
-# (specified in PYTHON_COMPAT). Calls python_check_deps() if declared.
-_python_EPYTHON_supported() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	local EPYTHON=${1}
-	local i=${EPYTHON/./_}
-
-	case "${i}" in
-		python*|jython*|pypy*)
-			;;
-		*)
-			ewarn "Invalid EPYTHON: ${EPYTHON}"
-			return 1
-			;;
-	esac
-
-	if has "${i}" "${_PYTHON_SUPPORTED_IMPLS[@]}"; then
-		if python_is_installed "${i}"; then
-			if declare -f python_check_deps >/dev/null; then
-				local PYTHON_USEDEP="python_targets_${i}(-)"
-				local PYTHON_SINGLE_USEDEP="python_single_target_${i}(-)"
-				python_check_deps
-				return ${?}
-			fi
-
-			return 0
-		fi
-	elif ! has "${i}" "${_PYTHON_ALL_IMPLS[@]}"; then
-		ewarn "Invalid EPYTHON: ${EPYTHON}"
-	fi
-	return 1
-}
-
 # @FUNCTION: python_setup
 # @DESCRIPTION:
 # Determine what the best installed (and supported) Python
@@ -332,27 +294,37 @@ python_setup() {
 
 		_python_export "${impls[0]}" EPYTHON PYTHON
 		_python_wrapper_setup
-		einfo "Using ${EPYTHON} to build"
+		einfo "Using ${EPYTHON} to build (via PYTHON_COMPAT_OVERRIDE)"
 		return
 	fi
 
 	# first, try ${EPYTHON}... maybe it's good enough for us.
-	if [[ ${EPYTHON} ]]; then
-		if _python_EPYTHON_supported "${EPYTHON}"; then
+	local epython_impl=${EPYTHON/./_}
+	if [[ ${epython_impl} ]]; then
+		if ! has "${epython_impl}" "${_PYTHON_SUPPORTED_IMPLS[@]}"; then
+			if ! has "${epython_impl}" "${_PYTHON_ALL_IMPLS[@]}"; then
+				ewarn "Invalid EPYTHON: ${EPYTHON}"
+			else
+				einfo "EPYTHON (${EPYTHON}) not supported by the package"
+			fi
+		elif _python_run_check_deps "${epython_impl}"; then
 			_python_export EPYTHON PYTHON
 			_python_wrapper_setup
-			einfo "Using ${EPYTHON} to build"
+			einfo "Using ${EPYTHON} to build (via EPYTHON)"
 			return
 		fi
 	fi
 
-	# fallback to best installed impl.
+	# fallback to the best installed impl.
 	# (reverse iteration over _PYTHON_SUPPORTED_IMPLS)
 	for (( i = ${#_PYTHON_SUPPORTED_IMPLS[@]} - 1; i >= 0; i-- )); do
-		_python_export "${_PYTHON_SUPPORTED_IMPLS[i]}" EPYTHON PYTHON
-		if _python_EPYTHON_supported "${EPYTHON}"; then
+		local impl=${_PYTHON_SUPPORTED_IMPLS[i]}
+		# avoid checking EPYTHON twice
+		[[ ${impl} == ${epython_impl} ]] && continue
+		_python_export "${impl}" EPYTHON PYTHON
+		if _python_run_check_deps "${impl}"; then
 			_python_wrapper_setup
-			einfo "Using ${EPYTHON} to build"
+			einfo "Using ${EPYTHON} to build (via PYTHON_COMPAT iteration)"
 			return
 		fi
 	done

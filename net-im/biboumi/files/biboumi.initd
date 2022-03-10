@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="XMPP gateway to IRC"
+pidfile="/var/run/biboumi.pid"
+command="/usr/bin/biboumi"
+command_args="${BIBOUMI_CONFIG:-/etc/biboumi/biboumi.cfg}"
+command_user="${BIBOUMI_USER:-biboumi}"
+command_background="true"
+extra_commands="reload"
+
+depend() {
+	use jabber-server
+}
+
+reload() {
+	ebegin "Reloading configuration of Biboumi"
+	start-stop-daemon --pidfile ${pidfile} --signal USR1
+	eend $?
+}

@@ -14,7 +14,7 @@ LICENSE="LGPL-2+ CC-BY-2.0"
 SLOT="0"
 
 IUSE="rdp"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # FIXME: qemu probably needs to depend on spice[smartcard] directly with USE=spice
 # FIXME: Check over libvirt USE=libvirtd,qemu and the smartcard/usbredir requirements
@@ -75,6 +75,10 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}/${PV}"-fix-build-with-meson-0.61.1.patch
+)
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="Before running gnome-boxes for local VMs, you will need to load the KVM modules.

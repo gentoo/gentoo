@@ -46,6 +46,10 @@ https://extensions.gnome.org/ web interface, or modify the
 org.gnome.shell enabled-extensions gsettings key from the command
 line or a script."
 
+PATCHES=(
+	"${FILESDIR}"/${P}-meson-0.61.patch
+)
+
 src_configure() {
 	meson_src_configure \
 		-Dextension_set=all \

@@ -1,10 +1,9 @@
-# Copyright 2014-2021 Gentoo Authors
+# Copyright 2014-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-PYTHON_COMPAT=( python3_{8,9} )
+EAPI="8"
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_OPTIONAL="1"
-DISTUTILS_USE_SETUPTOOLS="no"
 
 inherit autotools distutils-r1 toolchain-funcs
 
@@ -24,7 +23,7 @@ fi
 
 LICENSE="|| ( BSD-2 LGPL-2.1+ )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 IUSE="python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -40,7 +39,7 @@ if [[ "${PV}" != "9999" ]]; then
 fi
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.2.6-riscv_word_size.patch
+	"${FILESDIR}/${PN}-0.2.6-riscv_word_size.patch"
 )
 
 src_prepare() {

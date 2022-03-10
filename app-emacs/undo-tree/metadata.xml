@@ -28,4 +28,7 @@
   best ideas from their competitors!
 </longdescription>
 <stabilize-allarches/>
+<upstream>
+  <remote-id type="gitlab">tsc25/undo-tree</remote-id>
+</upstream>
 </pkgmetadata>

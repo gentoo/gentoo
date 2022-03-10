@@ -12,7 +12,7 @@ SRC_URI="https://github.com/jaraco/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="PSF-2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ppc ppc64 ~riscv sparc x86 ~x64-macos"
 
 RDEPEND="
 	dev-python/secretstorage[${PYTHON_USEDEP}]
@@ -22,7 +22,6 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
@@ -44,3 +43,10 @@ EPYTEST_IGNORE=(
 	# hangs
 	tests/backends/test_kwallet.py
 )
+
+src_prepare() {
+	# remove jaraco.tidelift dependency from docs, quite useless
+	sed -e '/tidelift/d' -i docs/conf.py docs/index.rst || die
+
+	distutils-r1_src_prepare
+}

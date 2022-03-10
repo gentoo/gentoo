@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,13 +17,14 @@ if [[ "${PV}" == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 else
 	SRC_URI="https://dl.hexchat.net/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux"
 fi
 
 LICENSE="GPL-2 plugin-fishlim? ( MIT )"
 SLOT="0"
 IUSE="dbus debug +gtk libcanberra lua perl plugin-checksum plugin-fishlim plugin-sysinfo python ssl theme-manager"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
+	plugin-fishlim? ( ssl )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
@@ -46,7 +47,10 @@ RDEPEND="
 	ssl? ( dev-libs/openssl:0= )
 	theme-manager? (
 		|| (
-			( dev-lang/mono[minimal] dev-dotnet/libgdiplus )
+			(
+				dev-lang/mono[minimal]
+				dev-dotnet/libgdiplus
+			)
 			dev-lang/mono[-minimal]
 		)
 	)"

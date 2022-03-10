@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,22 @@ BDEPEND="
 	sys-devel/gettext"
 
 PATCHES=( "${FILESDIR}/${PN}-2.2.3-gentoo-sandbox.patch" )
+
+# guile generates ELF files without use of C or machine code
+# It's a portage's false positive. bug #677600
+QA_PREBUILT='*[.]go'
+
 DOCS=( GUILE-VERSION HACKING README )
+
+src_prepare() {
+	# Remove tests that require network
+	local bad_test
+	for bad_test in test-suite/tests/web-*.test ; do
+		echo "#t" > "${bad_test}" || die
+	done
+
+	default
+}
 
 src_configure() {
 	# see bug #676468
@@ -60,7 +75,7 @@ src_install() {
 	default
 
 	# From Novell
-	# 	https://bugzilla.novell.com/show_bug.cgi?id=874028#c0
+	#	https://bugzilla.novell.com/show_bug.cgi?id=874028#c0
 	dodir /usr/share/gdb/auto-load/$(get_libdir)
 	mv "${ED}"/usr/$(get_libdir)/libguile-*-gdb.scm "${ED}"/usr/share/gdb/auto-load/$(get_libdir) || die
 

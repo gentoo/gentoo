@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,6 +18,10 @@ DEPEND="${RDEPEND}
 	dev-libs/appstream-glib
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/fix-build-with-meson-0.61.patch
+)
 
 pkg_postinst() {
 	if ! has_version "gnome-base/nautilus[sendto]"; then

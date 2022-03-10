@@ -11,7 +11,7 @@ SRC_URI="https://github.com/bcl/digitemp/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="ds9097 ds9097u ds2490"
 
 DEPEND="ds2490? ( virtual/libusb:0 )"

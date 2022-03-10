@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python3_{8,9} )
 DISTUTILS_USE_SETUPTOOLS=no
 DISTUTILS_SINGLE_IMPL=1
 
-inherit bash-completion-r1 cmake cuda distutils-r1 flag-o-matic multilib readme.gentoo-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 cmake cuda distutils-r1 flag-o-matic readme.gentoo-r1 toolchain-funcs xdg-utils
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="
@@ -55,7 +55,6 @@ CDEPEND="
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi )
 	${PYTHON_DEPS}
-	!sci-chemistry/gmxapi
 	"
 BDEPEND="${CDEPEND}
 	virtual/pkgconfig
@@ -345,9 +344,8 @@ src_install() {
 
 pkg_postinst() {
 	einfo
-	einfo  "Please read and cite:"
-	einfo  "Gromacs 4, J. Chem. Theory Comput. 4, 435 (2008). "
-	einfo  "https://dx.doi.org/10.1021/ct700301q"
+	einfo  "Please read and cite gromacs related papers from list:"
+	einfo  "https://www.gromacs.org/Gromacs_papers"
 	einfo
 	readme.gentoo_print_elog
 }

@@ -1,5 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# @DEAD
+# Removal on 2022-03-15.
 
 # @ECLASS: emboss-r2.eclass
 # @MAINTAINER:

@@ -2,7 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="launchpad">menulibre</remote-id>
+		<remote-id type="github">bluesabre/menulibre</remote-id>
 	</upstream>
 </pkgmetadata>

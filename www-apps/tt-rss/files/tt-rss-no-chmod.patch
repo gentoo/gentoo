@@ -1,0 +1,26 @@
+These files may be written and then updated by the web interface user or the
+update daemon user, so they need to be group writeable. We enforce this with
+ACLs rather than chmod though.
+
+diff --color -Naur a/classes/pref/feeds.php b/classes/pref/feeds.php
+--- a/classes/pref/feeds.php	2022-02-18 13:44:03.000000000 +0000
++++ b/classes/pref/feeds.php	2022-02-19 15:37:55.000723992 +0000
+@@ -490,7 +490,6 @@
+
+ 				if (file_exists($new_filename)) unlink($new_filename);
+ 					if (rename($tmp_file, $new_filename)) {
+-						chmod($new_filename, 0644);
+
+ 						$feed->set([
+ 							'favicon_avg_color' => null,
+diff --color -Naur a/classes/rssutils.php b/classes/rssutils.php
+--- a/classes/rssutils.php	2022-02-18 13:44:03.000000000 +0000
++++ b/classes/rssutils.php	2022-02-19 15:37:40.393312123 +0000
+@@ -1728,7 +1728,6 @@
+
+ 		fwrite($fp, $contents);
+ 		fclose($fp);
+-		chmod($icon_file, 0644);
+ 		clearstatcache();
+
+ 		return $icon_file;

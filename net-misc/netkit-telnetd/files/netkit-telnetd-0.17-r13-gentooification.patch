@@ -1,0 +1,43 @@
+diff -Naur a/telnetd/CMakeLists.txt b/telnetd/CMakeLists.txt
+--- a/telnetd/CMakeLists.txt	2022-02-07 17:37:04.831149960 +0100
++++ b/telnetd/CMakeLists.txt	2022-02-07 17:42:48.482998276 +0100
+@@ -6,11 +6,11 @@
+     -DNO_REVOKE \
+     -DKLUDGELINEMODE \
+     -DDIAGNOSTICS \
+-    -DLOGIN_WRAPPER='\"/usr/lib/telnetlogin\"' \
++    -DLOGIN_WRAPPER='\"/usr/sbin/telnetlogin\"' \
+ ")
+ 
+ add_executable(
+-    in.telnetd
++    telnetd
+     global.c
+     setproctitle.c
+     slc.c
+@@ -21,19 +21,22 @@
+     utility.c
+ )
+ target_link_libraries(
+-    in.telnetd
++    telnetd
+     ncurses
+     util
+ )
+ install(
+-    TARGETS in.telnetd
++    TARGETS telnetd
+     DESTINATION ${SBIN_DIR}
+ )
+ 
+ install(
+     FILES telnetd.8
+     DESTINATION ${MAN_DIR}/man8/
+-    RENAME in.telnetd.8
++)
++install(
++    FILES issue.net.5
++    DESTINATION ${MAN_DIR}/man5/
+ )
+ install(
+     CODE "execute_process( \

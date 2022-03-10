@@ -5,6 +5,7 @@
     <email>gienah@gentoo.org</email>
     <name>Mark Wright</name>
   </maintainer>
+  <stabilize-allarches/>
   <longdescription lang="en">
   MathJax is an open-source JavaScript display engine for LaTeX and
   MathML that works in all modern browsers. It was designed with the

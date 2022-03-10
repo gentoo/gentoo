@@ -84,6 +84,13 @@ RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
 
+pkg_pretend() {
+	if use su && ! use suid ; then
+		elog "su will be installed as suid despite USE=-suid (bug #832092)"
+		elog "To use su without suid, see e.g. Portage's suidctl feature."
+	fi
+}
+
 src_prepare() {
 	default
 
@@ -289,6 +296,15 @@ multilib_src_install_all() {
 		newpamd "${FILESDIR}/runuser-l.pamd" runuser-l
 
 		newpamd "${FILESDIR}/su-l.pamd" su-l
+	fi
+
+	if use su && ! use suid ; then
+		# Always force suid su, even when USE=-suid, as su is useless
+		# for the overwhelming-majority case without suid.
+		# Users who wish to truly have a no-suid su can strip it out
+		# via e.g. Portage's suidctl or some other hook.
+		# See bug #832092
+		fperms u+s /bin/su
 	fi
 
 	# Note:

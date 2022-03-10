@@ -155,7 +155,3 @@ media-libs/gegl umfpack
 # Pacho Ramos <pacho@gentoo.org> (2015-06-02)
 # Missing stable
 net-misc/connman l2tp pptp
-
-# Pacho Ramos <pacho@gentoo.org> (2014-07-02)
-# net-libs/rest is not stable on arm yet
->=x11-libs/gtk+-3.12.2 cloudprint

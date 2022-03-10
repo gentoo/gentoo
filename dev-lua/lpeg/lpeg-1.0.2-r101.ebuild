@@ -50,7 +50,7 @@ src_prepare() {
 lua_src_compile() {
 	cd "${S}.${ELUA}/" || die
 	emake CC="$(tc-getCC)" \
-		LUADIR="${EPREFIX}/$(lua_get_include_dir)"
+		LUADIR="${ESYSROOT}/$(lua_get_include_dir)"
 }
 
 src_compile() {

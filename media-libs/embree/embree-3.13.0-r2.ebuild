@@ -14,7 +14,7 @@ SLOT="3"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 X86_CPU_FLAGS=( sse2:sse2 sse4_2:sse4_2 avx:avx avx2:avx2 avx512dq:avx512dq )
 CPU_FLAGS=( ${X86_CPU_FLAGS[@]/#/cpu_flags_x86_} )
-IUSE="+compact-polys ispc +raymask ssp +tbb tutorial static-libs ${CPU_FLAGS[@]%:*}"
+IUSE="+compact-polys ispc +raymask ssp +tbb tutorial ${CPU_FLAGS[@]%:*}"
 RESTRICT="mirror"
 
 BDEPEND="
@@ -56,13 +56,13 @@ src_prepare() {
 src_configure() {
 	# NOTE: You can make embree accept custom CXXFLAGS by turning off
 	# EMBREE_IGNORE_CMAKE_CXX_FLAGS. However, the linking will fail if you use
-	# any "march" compile flags. This is because embree builds modules for the
+	# any "m*" compile flags. This is because embree builds modules for the
 	# different supported ISAs and picks the correct one at runtime.
-	# "march" will pull in cpu instructions that shouldn't be in specific modules
+	# "m*" will pull in cpu instructions that shouldn't be in specific modules
 	# and it fails to link properly.
 	# https://github.com/embree/embree/issues/115
 
-	filter-flags -march=*
+	filter-flags -m*
 
 	local mycmakeargs=(
 		# Currently Intel only host their test files on their internal network.
@@ -93,7 +93,7 @@ src_configure() {
 		-DEMBREE_RAY_MASK=$(usex raymask)
 		-DEMBREE_RAY_PACKETS=ON				# default
 		-DEMBREE_STACK_PROTECTOR=$(usex ssp)
-		-DEMBREE_STATIC_LIB=$(usex static-libs)
+		-DEMBREE_STATIC_LIB=OFF
 		-DEMBREE_STAT_COUNTERS=OFF
 		-DEMBREE_TASKING_SYSTEM:STRING=$(usex tbb "TBB" "INTERNAL")
 		-DEMBREE_TUTORIALS=$(usex tutorial) )

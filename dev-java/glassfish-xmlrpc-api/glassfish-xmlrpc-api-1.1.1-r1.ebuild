@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~tomwij/files/dist/${P}.tar.xz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CP_DEPEND="
 	dev-java/jakarta-xml-soap-api:1

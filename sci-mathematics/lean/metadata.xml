@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 
 <pkgmetadata>
   <maintainer type="project">
@@ -14,7 +14,4 @@
     <bugs-to>https://github.com/leanprover-community/lean/issues</bugs-to>
     <remote-id type="github">leanprover-community/lean</remote-id>
   </upstream>
-  <use>
-    <flag name="json"> Enable JSON support</flag>
-  </use>
 </pkgmetadata>

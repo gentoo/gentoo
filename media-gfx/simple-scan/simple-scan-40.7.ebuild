@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/simple-scan"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 IUSE="colord webp"
 
 DEPEND="
@@ -47,6 +47,7 @@ BDEPEND="
 PATCHES=(
 	# Add control for optional dependencies
 	"${FILESDIR}"/40.0-add-control-optional-deps.patch
+	"${FILESDIR}/${PV}"-fix-build-with-meson-0.61.1.patch
 )
 
 src_prepare() {

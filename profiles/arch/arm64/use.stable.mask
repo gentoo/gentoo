@@ -1,8 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
+
+# Ionen Wolkens <ionen@gentoo.org> (2022-02-17)
+# x11-drivers/nvidia-drivers is not stable yet
+video_cards_nvidia
 
 # Sam James <sam@gentoo.org> (2020-12-23)
 # dev-lang/luajit is not yet stable

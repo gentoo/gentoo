@@ -2,7 +2,7 @@
 sys-devel/llvm -gold
 
 # use all defaults
-sys-devel/clang compiler-rt default-compiler-rt default-lld default-libcxx llvm-libunwind
+sys-devel/clang default-compiler-rt default-lld default-libcxx llvm-libunwind
 sys-libs/compiler-rt clang
 
 # disable sanitizers for now
@@ -11,7 +11,6 @@ sys-devel/clang-runtime compiler-rt libcxx -sanitize
 
 sys-libs/libcxx libunwind libcxxabi
 sys-libs/libcxxabi libunwind
-sys-libs/llvm-libunwind compiler-rt
 
 # libgcrypt doesn't like optimizations
 dev-libs/libgcrypt o-flag-munging

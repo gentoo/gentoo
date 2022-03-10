@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="bindist ipv6 readline ssl tcpd"
 
 DEPEND="ssl? ( dev-libs/openssl:0= )
@@ -42,6 +42,12 @@ src_configure() {
 	filter-flags '-Wno-error*'
 
 	tc-export AR
+
+	# getprotobynumber_r doesn't exist on musl, so avoid probing for it
+	# and possibly getting it wrong. TODO: fix configure?
+	# (Grabbed from Alpine Linux: https://git.alpinelinux.org/aports/commit/main/socat/APKBUILD?id=5edc9195355ced3db991c1a7cda5648d52019b11)
+	# bug #831016
+	use elibc_musl && export sc_cv_getprotobynumber_r=2
 
 	econf \
 		$(use_enable ssl openssl) \

@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
@@ -48,6 +48,14 @@ PATCHES=(
 )
 
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# TODO
+	ipykernel/tests/test_debugger.py::test_attach_debug
+	ipykernel/tests/test_debugger.py::test_set_breakpoints
+	ipykernel/tests/test_debugger.py::test_rich_inspect_not_at_breakpoint
+	ipykernel/tests/test_debugger.py::test_rich_inspect_at_breakpoint
+)
 
 src_prepare() {
 	sed -i -e 's:^TIMEOUT = .*:TIMEOUT = 120:' ipykernel/tests/*.py || die

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-fakegem.eclass
@@ -8,7 +8,7 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7 8
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @PROVIDES: ruby-ng
 # @BLURB: An eclass for installing Ruby packages to behave like RubyGems.
 # @DESCRIPTION:
@@ -561,7 +561,10 @@ ruby_fakegem_extensions_installed() {
 # The directory where rubygems expects extensions for this package
 # version.
 ruby_fakegem_extensionsdir() {
-	echo "$(ruby_fakegem_gemsdir)/extensions/$(ruby_rbconfig_value 'arch')/$(ruby_rbconfig_value 'ruby_version')/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}"
+	# Using formula from ruby src/lib/rubygems/basic_specification.
+	extensions_dir=$(${RUBY} --disable=did_you_mean -e "puts File.join('extensions', Gem::Platform.local.to_s, Gem.extension_api_version)")
+
+	echo "$(ruby_fakegem_gemsdir)/${extensions_dir}/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}"
 }
 
 # @FUNCTION: each_fakegem_install

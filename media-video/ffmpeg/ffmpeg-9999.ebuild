@@ -98,7 +98,7 @@ FFMPEG_ENCODER_FLAG_MAP=(
 	amrenc:libvo-amrwbenc mp3:libmp3lame
 	kvazaar:libkvazaar libaom
 	openh264:libopenh264 rav1e:librav1e snappy:libsnappy svt-av1:libsvtav1 theora:libtheora twolame:libtwolame
-	webp:libwebp x264:libx264 x265:libx265 xvid:libxvid
+	webp:libwebp x264:libx264 x265:libx265 xvid:libxvid amf:amf
 )
 
 IUSE="
@@ -290,6 +290,7 @@ BDEPEND="
 	cuda? ( >=sys-devel/clang-7[llvm_targets_NVPTX] )
 	doc? ( sys-apps/texinfo )
 	test? ( net-misc/wget sys-devel/bc )
+	amf? ( media-libs/amf-headers )
 "
 
 # Code requiring FFmpeg to be built under gpl license
@@ -456,7 +457,7 @@ multilib_src_configure() {
 	)
 
 	local extra_libs
-	if use arm || use ppc ; then
+	if use arm || use ppc || use mips || [[ ${CHOST} == *i486* ]] ; then
 		# bug #782811
 		# bug #790590
 		extra_libs+="$(test-flags-CCLD -latomic) "

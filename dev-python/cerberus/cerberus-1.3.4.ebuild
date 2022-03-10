@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/pyeve/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.t
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.2_no-pytest-runner.patch

@@ -1,0 +1,15 @@
+diff -Naur a/data/extra/templates/meson.build b/data/extra/templates/meson.build
+--- a/data/extra/templates/meson.build	2020-04-29 16:40:58.000000000 +0300
++++ b/data/extra/templates/meson.build	2022-02-23 11:27:30.271380219 +0200
+@@ -6,10 +6,9 @@
+ foreach skeleton_name : skeleton_names
+ 
+   custom_target('skeleton ' + skeleton_name,
+-    command : [tar, 'zcf', '@OUTPUT@', '-C', 
++    command : [tar, 'zcf', '@OUTPUT@', '-C',
+       join_paths(meson.source_root(), 'data', 'extra', 'templates', 'skeletons'),
+       skeleton_name],
+-    input : join_paths('skeletons', skeleton_name),
+     output : skeleton_name + '.tar.gz',
+     install_dir: join_paths(get_option('prefix'), get_option('datadir'), 'edi', 'templates'),
+     install : true,

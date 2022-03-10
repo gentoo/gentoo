@@ -1,0 +1,44 @@
+https://gitlab.freedesktop.org/pipewire/wireplumber/-/commit/afbc0ce57aac7aee8dc1651de4620f15c73dbace
+
+From afbc0ce57aac7aee8dc1651de4620f15c73dbace Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Mon, 21 Feb 2022 15:21:36 +0100
+Subject: [PATCH] si-audio-adapter: relax format parsing
+
+Some nodes can omit the format/rate/channels to indicate that they can
+deal with all possibilities and adapt to what they are linked to.
+
+See pipewire#876
+---
+ modules/module-si-audio-adapter.c | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
+
+diff --git a/modules/module-si-audio-adapter.c b/modules/module-si-audio-adapter.c
+index f1f6218..84e393f 100644
+--- a/modules/module-si-audio-adapter.c
++++ b/modules/module-si-audio-adapter.c
+@@ -158,19 +158,12 @@ si_audio_adapter_find_format (WpSiAudioAdapter * self, WpNode * node)
+       struct spa_pod *position = NULL;
+       wp_spa_pod_fixate (pod);
+ 
+-      /* defaults */
+       spa_zero(raw_format);
+-      raw_format.format = SPA_AUDIO_FORMAT_F32;
+-      raw_format.rate = si_audio_adapter_get_default_clock_rate (self);
+-      raw_format.channels = 2;
+-      raw_format.position[0] = SPA_AUDIO_CHANNEL_FL;
+-      raw_format.position[1] = SPA_AUDIO_CHANNEL_FR;
+-
+       if (spa_pod_parse_object(wp_spa_pod_get_spa_pod (pod),
+                                SPA_TYPE_OBJECT_Format, NULL,
+-                               SPA_FORMAT_AUDIO_format,   SPA_POD_Id(&raw_format.format),
++                               SPA_FORMAT_AUDIO_format,   SPA_POD_OPT_Id(&raw_format.format),
+                                SPA_FORMAT_AUDIO_rate,     SPA_POD_OPT_Int(&raw_format.rate),
+-                               SPA_FORMAT_AUDIO_channels, SPA_POD_Int(&raw_format.channels),
++                               SPA_FORMAT_AUDIO_channels, SPA_POD_OPT_Int(&raw_format.channels),
+                                SPA_FORMAT_AUDIO_position, SPA_POD_OPT_Pod(&position)) < 0)
+         continue;
+ 
+-- 
+2.35.1
+

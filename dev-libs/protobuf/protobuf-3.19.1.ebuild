@@ -19,7 +19,8 @@ HOMEPAGE="https://developers.google.com/protocol-buffers/ https://github.com/pro
 
 LICENSE="BSD"
 SLOT="0/30"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+# -hppa for bug #831728
+KEYWORDS="~alpha amd64 arm arm64 -hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
 
@@ -55,6 +56,9 @@ src_prepare() {
 	# https://github.com/protocolbuffers/protobuf/issues/8460
 	sed -e "/^TEST(AnyTest, TestPackFromSerializationExceedsSizeLimit) {$/a\\  if (sizeof(void*) == 4) {\n    GTEST_SKIP();\n  }" -i src/google/protobuf/any_test.cc || die
 
+	# https://github.com/protocolbuffers/protobuf/issues/9392
+	sed -e "s/^AC_PROG_OBJC$/AS_CASE([\$target_os], [darwin*], [AC_PROG_OBJC], [AM_CONDITIONAL([am__fastdepOBJC], [false])])/" -i configure.ac || die
+
 	eautoreconf
 }
 
@@ -71,7 +75,6 @@ src_configure() {
 
 multilib_src_configure() {
 	local options=(
-		OBJC="$(tc-getBUILD_CC)"
 		$(use_enable static-libs static)
 		$(use_with zlib)
 	)

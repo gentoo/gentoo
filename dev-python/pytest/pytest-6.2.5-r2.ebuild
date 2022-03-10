@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} pypy3 )
-inherit distutils-r1
+inherit distutils-r1 multiprocessing
 
 DESCRIPTION="Simple powerful testing with Python"
 HOMEPAGE="https://pytest.org/"
@@ -33,9 +33,15 @@ BDEPEND="
 		>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/xmlschema[${PYTHON_USEDEP}]
 	)"
+
+PATCHES=(
+	# backport fixes for py3.10 test regressions
+	"${FILESDIR}"/${P}-py310.patch
+)
 
 src_test() {
 	# workaround new readline defaults
@@ -47,6 +53,25 @@ src_test() {
 python_test() {
 	distutils_install_for_testing --via-root
 
-	"${EPYTHON}" -m pytest -vv --lsof -rfsxX -p no:pkgcore -p no:flaky ||
-		die "Tests failed with ${EPYTHON}"
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+
+	local EPYTEST_DESELECT=(
+		# broken by epytest args
+		testing/test_warnings.py::test_works_with_filterwarnings
+
+		# tend to be broken by random pytest plugins
+		# (these tests patch PYTEST_DISABLE_PLUGIN_AUTOLOAD out)
+		testing/test_helpconfig.py::test_version_less_verbose
+		testing/test_helpconfig.py::test_version_verbose
+		testing/test_junitxml.py::test_random_report_log_xdist
+		testing/test_junitxml.py::test_runs_twice_xdist
+		testing/test_terminal.py::TestProgressOutputStyle::test_xdist_normal
+		testing/test_terminal.py::TestProgressOutputStyle::test_xdist_normal_count
+		testing/test_terminal.py::TestProgressOutputStyle::test_xdist_verbose
+		testing/test_terminal.py::TestProgressWithTeardown::test_xdist_normal
+		testing/test_terminal.py::TestTerminalFunctional::test_header_trailer_info
+		testing/test_terminal.py::TestTerminalFunctional::test_no_header_trailer_info
+	)
+
+	epytest -p xdist -n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
 }

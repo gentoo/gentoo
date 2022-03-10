@@ -5,6 +5,7 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<use>
 		<flag name="symlink">Actually replace /etc/resolv.conf with a
 			symlink. Without this flag, the ebuild is a no-op.</flag>

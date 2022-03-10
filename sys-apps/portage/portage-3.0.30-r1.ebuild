@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 SRC_URI="https://gitweb.gentoo.org/proj/portage.git/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 SLOT="0"
 IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux test xattr"
 RESTRICT="!test? ( test )"
@@ -228,24 +228,26 @@ python_install_all() {
 }
 
 pkg_preinst() {
-	python_setup
-	local sitedir=$(python_get_sitedir)
-	[[ -d ${D}${sitedir} ]] || die "${D}${sitedir}: No such directory"
-	env -u DISTDIR \
-		-u PORTAGE_OVERRIDE_EPREFIX \
-		-u PORTAGE_REPOSITORIES \
-		-u PORTDIR \
-		-u PORTDIR_OVERLAY \
-		PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
-		"${PYTHON}" -m portage._compat_upgrade.default_locations || die
+	if ! use build; then
+		python_setup
+		local sitedir=$(python_get_sitedir)
+		[[ -d ${D}${sitedir} ]] || die "${D}${sitedir}: No such directory"
+		env -u DISTDIR \
+			-u PORTAGE_OVERRIDE_EPREFIX \
+			-u PORTAGE_REPOSITORIES \
+			-u PORTDIR \
+			-u PORTDIR_OVERLAY \
+			PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
+			"${PYTHON}" -m portage._compat_upgrade.default_locations || die
 
-	env -u BINPKG_COMPRESS -u PORTAGE_REPOSITORIES \
-		PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
-		"${PYTHON}" -m portage._compat_upgrade.binpkg_compression || die
+		env -u BINPKG_COMPRESS -u PORTAGE_REPOSITORIES \
+			PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
+			"${PYTHON}" -m portage._compat_upgrade.binpkg_compression || die
 
-	env -u FEATURES -u PORTAGE_REPOSITORIES \
-		PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
-		"${PYTHON}" -m portage._compat_upgrade.binpkg_multi_instance || die
+		env -u FEATURES -u PORTAGE_REPOSITORIES \
+			PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
+			"${PYTHON}" -m portage._compat_upgrade.binpkg_multi_instance || die
+	fi
 
 	# elog dir must exist to avoid logrotate error for bug #415911.
 	# This code runs in preinst in order to bypass the mapping of

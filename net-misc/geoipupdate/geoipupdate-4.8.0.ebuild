@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,7 +47,7 @@ SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="ISC BSD BSD-2 MIT Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="amd64 arm ppc64 x86"
 
 DOCS=( README.md CHANGELOG.md doc/GeoIP.conf.md doc/geoipupdate.md )
 

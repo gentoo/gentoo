@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<use>
-		<flag name="7z">Enable support for 7zip compression</flag>
-		<flag name="zopfli">Enable support for Zopfli compression</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">apngasm</remote-id>
 	</upstream>

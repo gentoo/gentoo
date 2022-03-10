@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 VALA_USE_DEPEND="vapigen"
-VALA_MIN_API_VERSION="0.32"
+VALA_MIN_API_VERSION="0.48"
 
 inherit gnome.org meson python-any-r1 vala xdg
 
@@ -15,7 +15,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/VTE https://gitlab.gnome.org/GNOM
 LICENSE="LGPL-3+ GPL-3+"
 SLOT="2.91"
 IUSE="+crypt debug gtk-doc +icu +introspection systemd +vala vanilla"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 REQUIRED_USE="vala? ( introspection )"
 
 # Upstream is hostile and refuses to upload tarballs.

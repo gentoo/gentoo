@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit toolchain-funcs
+
 DESCRIPTION="Collection of LV2 plugins"
 HOMEPAGE="https://github.com/x42/x42-plugins"
 
@@ -11,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/x42/x42-plugins.git"
 else
 	SRC_URI="http://gareus.org/misc/x42-plugins/${P}.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="GPL-2"
@@ -38,7 +40,7 @@ DEPEND="${RDEPEND}
 	sys-apps/help2man"
 
 src_compile() {
-	emake STRIP="#" FONTFILE="/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf"
+	emake CC="$(tc-getCC)" STRIP="#" FONTFILE="/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf"
 }
 
 src_install() {

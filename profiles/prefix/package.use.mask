@@ -1,5 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2022-02-13)
+# needs unkeyworded virtual/gsasl
+mail-client/mutt gsasl
 
 # Fabian Groffen <grobian@gentoo.org> (2021-03-13)
 # nss-pem, bug #769578
@@ -24,7 +28,7 @@ sys-devel/binutils gold default-gold
 dev-db/postgresql kerberos ldap llvm pam systemd
 net-libs/libsoup gssapi samba vala
 net-libs/glib-networking gnome libproxy
-net-misc/wget cookie_check metalink uuid
+net-misc/wget metalink uuid
 sys-apps/dbus selinux elogind systemd
 app-doc/doxygen clang doxysearch qt5
 app-text/ghostscript-gpl cups

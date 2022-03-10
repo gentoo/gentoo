@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=(python3_{8,9,10})
+PYTHON_COMPAT=( python3_{8..10} )
 
 # This is the commit that the CI for the release commit used
 BINS_COMMIT="aa6a88dcdfaad54335e3935c16ce21a124ff861d"
@@ -15,7 +15,7 @@ HOMEPAGE="https://rizin.re/"
 
 SRC_URI="mirror+https://github.com/rizinorg/rizin/releases/download/v${PV}/rizin-src-v${PV}.tar.xz
 	test? ( https://github.com/rizinorg/rizin-testbins/archive/${BINS_COMMIT}.tar.gz -> rizin-testbins-${BINS_COMMIT}.tar.gz )"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 LICENSE="Apache-2.0 BSD LGPL-3 MIT"
 SLOT="0/${PV}"

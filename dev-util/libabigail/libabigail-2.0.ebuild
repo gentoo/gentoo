@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit autotools python-any-r1 out-of-source
 
@@ -19,15 +19,19 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/elfutils
-	dev-libs/libxml2:2"
+	dev-libs/libxml2:2
+	elibc_musl? ( sys-libs/fts-standalone )"
 DEPEND="${RDEPEND}"
 BDEPEND="
+	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
 		dev-python/sphinx
 		sys-apps/texinfo
 	)
 	test? ( ${PYTHON_DEPS} )"
+
+PATCHES=( "${FILESDIR}"/${P}-musl.patch )
 
 src_prepare() {
 	default

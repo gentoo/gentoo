@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,5 +10,5 @@ DESCRIPTION="MPEG-1/2 video encoding plugin for GStreamer"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND=">=media-video/mjpegtools-2.1.0-r1[${MULTILIB_USEDEP}]"
+RDEPEND=">=media-video/mjpegtools-2.1.0-r1:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"

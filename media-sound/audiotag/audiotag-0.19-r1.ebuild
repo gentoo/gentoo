@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	optfeature "for m4a/mp4 support" media-video/atomicparsley media-video/atomicparsley-wez
+	optfeature "for m4a/mp4 support" media-video/atomicparsley
 	optfeature "for flac support" media-libs/flac
 	optfeature "for mp3 support" media-libs/id3lib
 	optfeature "for vorbis support" media-sound/vorbis-tools

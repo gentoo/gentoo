@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ HOMEPAGE="https://www.gradle.org/"
 
 LICENSE="Apache-2.0"
 SLOT="${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="app-eselect/eselect-gradle"
 BDEPEND="app-arch/unzip"

@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GUPnP https://gitlab.gnome.org/GNOME/g
 
 LICENSE="LGPL-2+"
 SLOT="0/1.2-0" # <API version>-<soname>
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv ~sparc x86"
 IUSE="gtk-doc +introspection gtk vala"
 REQUIRED_USE="vala? ( introspection )"
 
@@ -55,7 +55,8 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	if use gtk-doc ; then
-		mv "${ED}"/usr/share/doc/{gssdp-1.2/reference,${PF}/html} || die
+		mv "${ED}"/usr/share/doc/{gssdp-1.2,${PF}} || die
+		mv "${ED}"/usr/share/doc/${PF}/{reference,html} || die
 		rmdir "${ED}"/usr/share/doc/gssdp-1.2
 	fi
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -10,13 +10,12 @@ MY_P="${P^^[crf]}"
 DESCRIPTION="Yet Another CRF toolkit for segmenting/labelling sequential data"
 HOMEPAGE="https://taku910.github.io/crfpp/"
 SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="|| ( BSD LGPL-2.1 )"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="examples static-libs"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=( "${FILESDIR}"/${PN}-automake-1.13.patch )
 HTML_DOCS=( doc/. )
@@ -50,9 +49,8 @@ src_install() {
 	einstalldocs
 
 	if use examples; then
+		dodoc -r example
 		docompress -x /usr/share/doc/${PF}/example
-		insinto /usr/share/doc/${PF}
-		doins -r example
 	fi
 
 	if ! use static-libs; then

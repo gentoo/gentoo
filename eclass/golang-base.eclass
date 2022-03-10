@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
+# @DEPRECATED: go-module.eclass
 # @BLURB: Eclass that provides base functions for Go packages.
 # @DESCRIPTION:
 # This eclass provides base functions for software written in the Go

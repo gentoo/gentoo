@@ -10,7 +10,7 @@ SRC_URI="https://download.strongswan.org/${P}.tar.bz2"
 
 LICENSE="GPL-2 RSA DES"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ppc ~ppc64 x86"
+KEYWORDS="amd64 arm ~arm64 ~ppc ~ppc64 x86"
 IUSE="+caps curl +constraints debug dhcp eap farp gcrypt +gmp ldap mysql networkmanager +non-root +openssl selinux sqlite systemd pam pkcs11"
 
 STRONGSWAN_PLUGINS_STD="led lookip systime-fix unity vici"
@@ -276,18 +276,13 @@ pkg_postinst() {
 	if use non-root; then
 		elog
 		elog "${PN} has been installed without superuser privileges (USE=non-root)."
-		elog "This imposes several limitations mainly to the IKEv1 daemon 'pluto'"
-		elog "but also a few to the IKEv2 daemon 'charon'."
+		elog "This imposes a few limitations mainly to the daemon 'charon' in"
+		elog "regards of the use of iptables."
 		elog
-		elog "Please carefully read: http://wiki.strongswan.org/wiki/nonRoot"
+		elog "Please carefully read: https://wiki.strongswan.org/projects/strongswan/wiki/ReducedPrivileges"
 		elog
-		elog "pluto uses a helper script by default to insert/remove routing and"
-		elog "policy rules upon connection start/stop which requires superuser"
-		elog "privileges. charon in contrast does this internally and can do so"
-		elog "even with reduced (user) privileges."
-		elog
-		elog "Thus if you require IKEv1 (pluto) or need to specify a custom updown"
-		elog "script to pluto or charon which requires superuser privileges, you"
+		elog "Thus if you require to specify a custom updown"
+		elog "script to charon which requires superuser privileges, you"
 		elog "can work around this limitation by using sudo to grant the"
 		elog "user \"ipsec\" the appropriate rights."
 		elog "For example (the default case):"

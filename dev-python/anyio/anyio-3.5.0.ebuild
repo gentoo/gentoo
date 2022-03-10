@@ -15,20 +15,21 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
 	>=dev-python/idna-2.8[${PYTHON_USEDEP}]
 	>=dev-python/sniffio-1.1[${PYTHON_USEDEP}]
 "
-
+# On amd64, let's get more test coverage by dragging in uvloop, but let's
+# not bother on other arches where uvloop may not be supported.
 BDEPEND="
 	test? (
 		>=dev-python/hypothesis-4.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-6.2[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-3.6.1[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
-		>=dev-python/uvloop-0.15[${PYTHON_USEDEP}]
+		amd64? ( >=dev-python/uvloop-0.15[${PYTHON_USEDEP}] )
 	)
 "
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,7 @@ CDEPEND="
 	media-libs/libpng:0=
 	media-libs/openexr:=
 	media-libs/tiff:0
-	>=media-libs/vigra-1.11.0[openexr]
+	>=media-libs/vigra-1.11.1-r5[openexr]
 	sci-libs/fftw:3.0=
 	sci-libs/flann
 	sys-libs/zlib

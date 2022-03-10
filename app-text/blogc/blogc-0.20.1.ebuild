@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ else
 fi
 
 if [[ ${PV} = *9999* ]]; then
-	BDEPEND="app-text/ronn"
+	BDEPEND="|| ( app-text/ronn-ng app-text/ronn )"
 else
 	KEYWORDS="~amd64 ~x86"
 fi

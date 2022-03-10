@@ -1,16 +1,16 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="ncurses"
 DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1
 
 DESCRIPTION="A frontend for several cd-rippers and mp3 encoders"
-HOMEPAGE="https://github.com/jack-cli-cd-ripper/jack http://www.home.unix-ag.org/arne/jack/"
+HOMEPAGE="https://github.com/jack-cli-cd-ripper/jack https://www.home.unix-ag.org/arne/jack/"
 GIT_COMMIT_HASH="5f3e5f43f476b0d506144c103eb8d4edf76fc5de" # branch "python3-mb"
 SRC_URI="https://github.com/jack-cli-cd-ripper/jack/archive/${GIT_COMMIT_HASH}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${GIT_COMMIT_HASH}"

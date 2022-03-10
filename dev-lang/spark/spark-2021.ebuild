@@ -1,12 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 ADA_COMPAT=( gnat_2021 )
-PYTHON_COMPAT=( python3_{7..9} )
 
-inherit ada python-any-r1
+inherit ada
 
 ADA_MIRROR=https://community.download.adacore.com/v1
 ID=969ce28e217bd5aa4db549a544d20846408a5229
@@ -29,7 +28,6 @@ RDEPEND="
 	sci-mathematics/alt-ergo
 	sci-mathematics/why3-for-spark"
 DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 
 REQUIRED_USE="${ADA_REQUIRED_USE}"
@@ -37,11 +35,6 @@ REQUIRED_USE="${ADA_REQUIRED_USE}"
 S="${WORKDIR}"/${MYP}
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
-
-pkg_setup() {
-	ada_pkg_setup
-	python-any-r1_pkg_setup
-}
 
 src_prepare() {
 	ln -sf "${WORKDIR}"/${GNATDIR}/src/ada gnat2why/gnat_src || die

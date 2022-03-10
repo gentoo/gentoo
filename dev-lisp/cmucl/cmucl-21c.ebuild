@@ -9,8 +9,11 @@ MY_PV=${PV:0:3}
 
 DESCRIPTION="CMU Common Lisp is an implementation of ANSI Common Lisp"
 HOMEPAGE="http://www.cons.org/cmucl/"
-SRC_URI="http://common-lisp.net/project/cmucl/downloads/release/${MY_PV}/cmucl-src-${MY_PV}.tar.bz2
-	http://common-lisp.net/project/cmucl/downloads/release/${MY_PV}/cmucl-${MY_PV}-x86-linux.tar.bz2"
+SRC_URI="
+	http://common-lisp.net/project/cmucl/downloads/release/${MY_PV}/cmucl-src-${MY_PV}.tar.bz2
+	http://common-lisp.net/project/cmucl/downloads/release/${MY_PV}/cmucl-${MY_PV}-x86-linux.tar.bz2
+"
+S="${WORKDIR}"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -23,8 +26,6 @@ DEPEND="${CDEPEND}
 	sys-devel/bc
 	doc? ( virtual/latex-base )"
 RDEPEND="${CDEPEND}"
-
-S="${WORKDIR}"
 
 TARGET=linux-4
 
@@ -103,7 +104,7 @@ src_install() {
 	# Documentation
 	dodoc doc/cmucl/README
 	if use doc; then
-		insinto /usr/share/doc/${PF}
-		doins src/docs/cmu-user/cmu-user.pdf src/docs/internals/design.pdf
+		dodoc src/docs/cmu-user/cmu-user.pdf src/docs/internals/design.pdf
+		docompress -x /usr/share/doc/${PF}/{cmu-user,design}.pdf
 	fi
 }

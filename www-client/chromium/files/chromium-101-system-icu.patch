@@ -1,0 +1,26 @@
+From f5dc3a38095d2d303284c9fd97de5606c782294f Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Fri, 4 Mar 2022 21:27:55 +0000
+Subject: [PATCH] unbundle: fix function name in character_emoji
+
+GetFreezePatternMutex was defined but GetFreezePatternLock is called.
+---
+ third_party/blink/renderer/platform/text/character_emoji.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/third_party/blink/renderer/platform/text/character_emoji.cc b/third_party/blink/renderer/platform/text/character_emoji.cc
+index 9516966..6cb50dc 100644
+--- a/third_party/blink/renderer/platform/text/character_emoji.cc
++++ b/third_party/blink/renderer/platform/text/character_emoji.cc
+@@ -13,7 +13,7 @@
+ #include <unicode/uniset.h>
+ 
+ namespace {
+-base::Lock& GetFreezePatternMutex() {
++base::Lock& GetFreezePatternLock() {
+   DEFINE_THREAD_SAFE_STATIC_LOCAL(base::Lock, lock, ());
+   return lock;
+ }
+-- 
+2.34.1
+

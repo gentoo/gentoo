@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 WX_GTK_VER="3.0-gtk3"
 inherit cmake desktop prefix wxwidgets xdg
@@ -36,6 +36,7 @@ S="${WORKDIR}/${PN}-src-${PV}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.9.0-Unbundle-miniupnpc.patch"
+	"${FILESDIR}/${PN}-10.0.0-musl.patch"
 )
 
 src_prepare() {
@@ -49,7 +50,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_DISABLE_FIND_PACKAGE_X11=$(usex !X)
 		-DUSE_INTERNAL_LIBS=0
 		-DBUILD_CLIENT=$(usex client)
 		-DBUILD_LAUNCHER=$(usex odalaunch)
@@ -59,6 +59,7 @@ src_configure() {
 		-DENABLE_PORTMIDI=$(usex portmidi)
 		-DUSE_MINIUPNP=$(usex upnp)
 	)
+	use client && mycmakeargs+=(-DCMAKE_DISABLE_FIND_PACKAGE_X11=$(usex !X))
 
 	cmake_src_configure
 }

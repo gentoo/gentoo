@@ -120,6 +120,7 @@ src_prepare() {
 	cd -
 	sed -i \
 		-e 's:-fcf-protection":":' \
+		libiberty/configure \
 		lto-plugin/configure || die
 	sed -i \
 		-e 's:$(P) ::g' \

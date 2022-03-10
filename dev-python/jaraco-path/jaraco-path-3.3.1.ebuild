@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,11 +15,10 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
 "
 
 distutils_enable_sphinx docs \
@@ -36,5 +35,5 @@ src_prepare() {
 }
 
 python_test() {
-	pytest -vv tests || die "Tests failed with ${EPYTHON}"
+	epytest tests
 }

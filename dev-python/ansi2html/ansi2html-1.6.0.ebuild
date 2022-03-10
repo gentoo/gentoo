@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,6 @@ RDEPEND=">=dev-python/six-1.7.3[${PYTHON_USEDEP}]"
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
 	doc? (
 		app-text/asciidoc
 	)

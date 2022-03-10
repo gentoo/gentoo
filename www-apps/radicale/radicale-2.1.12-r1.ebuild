@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit distutils-r1 systemd
 
@@ -25,15 +25,27 @@ RDEPEND="
 	acct-group/radicale
 	>=dev-python/vobject-0.9.6[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.7.3[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	sys-apps/util-linux
 	bcrypt? (
 		dev-python/bcrypt[${PYTHON_USEDEP}]
 		dev-python/passlib[${PYTHON_USEDEP}]
 	)"
 
+distutils_enable_tests --install pytest
+
 S="${WORKDIR}/${MY_P}"
 
 RDIR=/var/lib/${PN}
+
+src_prepare() {
+	sed -i '/^addopts =/d' setup.cfg || die
+	distutils-r1_src_prepare
+}
+
+python_test() {
+	epytest radicale/tests/
+}
 
 python_install_all() {
 	rm README* || die

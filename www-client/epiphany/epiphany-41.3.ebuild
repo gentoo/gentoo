@@ -12,7 +12,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 
 DEPEND="
 	>=dev-libs/glib-2.67.1:2
@@ -50,6 +50,7 @@ BDEPEND="
 PATCHES=(
 	# Allow /var/tmp prefixed recursive delete (due to package manager setting TMPDIR)
 	"${FILESDIR}"/var-tmp-tests.patch
+	"${FILESDIR}/${PV}"-fix-build-with-meson-0.61.1.patch
 )
 
 src_configure() {

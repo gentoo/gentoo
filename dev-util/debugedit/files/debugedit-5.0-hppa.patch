@@ -1,0 +1,25 @@
+https://sourceware.org/git/?p=debugedit.git;a=commitdiff;h=86130f41d05584581530fc65aa119badb400f4d4
+
+From: Mark Wielaard <mark@klomp.org>
+Date: Thu, 18 Nov 2021 14:14:28 +0100
+Subject: [PATCH] debugedit: Handle hppa EM_PARISC and R_PARISC_DIR32
+
+	* tools/debugedit.c (setup_relbuf): Handle EM_PARISC
+
+https://sourceware.org/bugzilla/show_bug.cgi?id=28598
+
+Patch-provided-by: dave.anglin@bell.net
+Signed-off-by: Mark Wielaard <mark@klomp.org>
+--- a/tools/debugedit.c
++++ b/tools/debugedit.c
+@@ -590,6 +590,10 @@ setup_relbuf (DSO *dso, debug_section *sec, int *reltype)
+ 	  if (rtype != R_390_32)
+ 	    goto fail;
+ 	  break;
++	case EM_PARISC:
++	  if (rtype != R_PARISC_DIR32)
++	    goto fail;
++	  break;
+ 	case EM_IA_64:
+ 	  if (rtype != R_IA64_SECREL32LSB)
+ 	    goto fail;

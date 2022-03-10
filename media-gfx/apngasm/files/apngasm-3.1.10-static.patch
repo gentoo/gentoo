@@ -1,3 +1,14 @@
+--- a/cli/CMakeLists.txt
++++ b/cli/CMakeLists.txt
+@@ -51,7 +51,7 @@ set_target_properties(apngasm-cli
+ 
+ # Link to built apngasm library
+ target_link_libraries(apngasm-cli
+-  apngasm
++  apngasm-dynamic
+   ${Boost_LIBRARIES}
+ )
+ 
 --- a/lib/CMakeLists.txt
 +++ b/lib/CMakeLists.txt
 @@ -55,18 +55,6 @@ set_target_properties(${APNGASM_DYNAMIC_LIB_TARGET}

@@ -27,6 +27,7 @@ RDEPEND="
 	sys-libs/zlib:0/1
 	dotnet-symlink? (
 		!dev-dotnet/dotnet-sdk[dotnet-symlink(+)]
+		!dev-dotnet/dotnet-sdk-bin:3.1[dotnet-symlink(+)]
 		!dev-dotnet/dotnet-sdk-bin:5.0[dotnet-symlink(+)]
 	)
 "

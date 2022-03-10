@@ -104,8 +104,8 @@ src_install() {
 	insinto /etc/ikiwiki
 	doins wikilist
 
-	#insinto /usr/share/doc/${PF}/examples
-	#doins -r doc/examples/*
+	#dodoc -r doc/examples
+	#docompress -x /usr/share/doc/${PF}/examples
 	dodoc -r html/.
 	dodoc debian/{NEWS,changelog}
 }

@@ -12,7 +12,7 @@ inherit ecm kde.org python-single-r1
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Free digital painting application. Digital Painting, Creative Freedom!"
@@ -86,7 +86,10 @@ BDEPEND="
 	sys-devel/gettext
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-4.3.1-tests-optional.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.3.1-tests-optional.patch
+	"${FILESDIR}"/${PN}-5.0.0-clang.patch # bug 830225
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,15 +7,14 @@ inherit toolchain-funcs
 
 DESCRIPTION="collect network traffic statistics and store them in pcap format"
 HOMEPAGE="https://sourceforge.net/projects/sancp/"
-SRC_URI="
-	http://www.metre.net/files/${P}.tar.gz
+SRC_URI="http://www.metre.net/files/${P}.tar.gz
 	http://sancp.sourceforge.net/${PN}-1.6.1.fix200511.a.patch
 	http://sancp.sourceforge.net/${PN}-1.6.1.fix200511.b.patch
 	http://sancp.sourceforge.net/${PN}-1.6.1.fix200601.c.patch
 	http://sancp.sourceforge.net/${PN}-1.6.1.fix200606.d.patch
-"
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-1.6.1-musl.patch.bz2"
 
-LICENSE="QPL-1.0 GPL-2"     # GPL-2 for init script
+LICENSE="QPL-1.0 GPL-2" # GPL-2 for init script
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="sguil"
@@ -27,19 +26,16 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
+	"${DISTDIR}"/${PN}-1.6.1.fix200511.a.patch
+	"${DISTDIR}"/${PN}-1.6.1.fix200511.b.patch
+	# bug 138337
+	"${DISTDIR}"/${PN}-1.6.1.fix200601.c.patch
+	"${DISTDIR}"/${PN}-1.6.1.fix200606.d.patch
 	"${FILESDIR}"/${PN}-1.6.1-compiler.patch
 	"${FILESDIR}"/${PN}-1.6.1-gcc6.patch
 	"${FILESDIR}"/${PN}-1.6.1-extern.patch
+	"${WORKDIR}"/${PN}-1.6.1-musl.patch
 )
-
-src_prepare() {
-	eapply "${DISTDIR}"/${PN}-1.6.1.fix200511.a.patch
-	eapply "${DISTDIR}"/${PN}-1.6.1.fix200511.b.patch
-	# bug 138337
-	eapply "${DISTDIR}"/${PN}-1.6.1.fix200601.c.patch
-	eapply "${DISTDIR}"/${PN}-1.6.1.fix200606.d.patch
-	default
-}
 
 src_compile() {
 	tc-export CC CXX

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/phodav"
 
 LICENSE="LGPL-2.1+"
 SLOT="2.0"
-KEYWORDS="~alpha amd64 arm ~arm64 ppc ppc64 x86"
+KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 x86"
 IUSE="gtk-doc systemd test zeroconf"
 RESTRICT="!test? ( test )"
 

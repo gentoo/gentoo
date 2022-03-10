@@ -1,9 +1,0 @@
-https://bugs.gentoo.org/761541
---- a/src/libslic3r/miniz_extension.hpp	2021-01-11 08:01:51.000000000 -0500
-+++ b/src/libslic3r/miniz_extension.hpp	2021-01-12 01:16:10.503404521 -0500
-@@ -4,4 +4,5 @@
- #include <string>
- #include <miniz.h>
-+#include <miniz_zip.h>
- 
- namespace Slic3r {

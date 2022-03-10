@@ -19,7 +19,7 @@ REQUIRED_USE="
 "
 RESTRICT="!test? ( test )"
 
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv x86"
 
 DEPEND="
 	>=dev-libs/glib-2.56.0:2
@@ -74,6 +74,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/3.38.0-gst-inspect-sandbox.patch # Allow disabling calls to gst-inspect (sandbox issue)
+	"${FILESDIR}/${PV}"-fix-build-with-meson-0.61.1.patch
 )
 
 pkg_setup() {

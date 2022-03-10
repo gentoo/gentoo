@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <longdescription>
+    NYACC, for Not Yet Another Compiler Compiler, is set of guile modules for
+    generating parsers and lexical analyzers. It also provides sample parsers
+    and pretty-printers using SXML trees as an intermediate representation.
+    It provides a decent C parser and a `FFI Helper' tool to help create Guile
+    Scheme bindings for C-based libraries.
+    It provides (partially implemented) compilers based on above mentioned
+    parsers to allow execution with Guile as extension languages.
+  </longdescription>
+</pkgmetadata>

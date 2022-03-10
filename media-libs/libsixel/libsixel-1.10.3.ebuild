@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -34,6 +34,7 @@ BDEPEND="virtual/pkgconfig
 PATCHES=(
 	"${FILESDIR}"/${PN}-meson.patch
 	"${FILESDIR}"/${PN}-static-libs.patch
+	"${FILESDIR}"/${PN}-musl.patch
 )
 
 src_prepare() {

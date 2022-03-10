@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Sudoku"
 
 LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.40:2
@@ -32,6 +32,10 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}/${PV}"-fix-build-with-meson-0.61.1.patch
+)
 
 src_prepare() {
 	xdg_src_prepare

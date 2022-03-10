@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_9 )
+PYTHON_COMPAT=( python3_10 )
 
 inherit check-reqs cmake flag-o-matic pax-utils python-single-r1 toolchain-funcs xdg-utils
 
@@ -17,7 +17,7 @@ if [[ ${PV} = *9999* ]] ; then
 else
 	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
 	# Update these between major releases.
-	#TEST_TARBALL_VERSION=SLOT_NUMBER
+	#TEST_TARBALL_VERSION="3.0.0"
 	#SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.bz2 )"
 	KEYWORDS="~amd64 ~arm ~arm64"
 fi
@@ -27,7 +27,7 @@ LICENSE="|| ( GPL-3 BL )"
 IUSE="+bullet +dds +fluid +openexr +system-python +system-numpy +tbb \
 	alembic collada +color-management cuda +cycles \
 	debug doc +embree +ffmpeg +fftw +gmp headless jack jemalloc jpeg2k \
-	man ndof nls openal +oidn +openimageio +openmp +opensubdiv \
+	man +nanovdb ndof nls openal +oidn +openimageio +openmp +opensubdiv \
 	+openvdb +osl +pdf +potrace +pugixml pulseaudio sdl +sndfile standalone test +tiff valgrind"
 RESTRICT="!test? ( test )"
 
@@ -60,12 +60,12 @@ RDEPEND="${PYTHON_DEPS}
 	virtual/jpeg
 	virtual/libintl
 	virtual/opengl
-	alembic? ( >=media-gfx/alembic-1.7.12[boost(+),hdf(+)] )
+	alembic? ( >=media-gfx/alembic-1.8.3-r2[boost(+),hdf(+)] )
 	collada? ( >=media-libs/opencollada-1.6.68 )
-	color-management? ( >=media-libs/opencolorio-2.0.0 )
+	color-management? ( >=media-libs/opencolorio-2.1.1-r7:= )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	embree? ( >=media-libs/embree-3.10.0[raymask] )
-	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k,vpx,vorbis,opus,xvid] )
+	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?,vpx,vorbis,opus,xvid] )
 	fftw? ( sci-libs/fftw:3.0= )
 	gmp? ( dev-libs/gmp )
 	!headless? (
@@ -83,24 +83,24 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
 	oidn? ( >=media-libs/oidn-1.4.1 )
-	openimageio? ( >=media-libs/openimageio-2.2.13.1:= )
+	openimageio? ( >=media-libs/openimageio-2.3.12.0-r3:= )
 	openexr? (
-		media-libs/ilmbase:=
-		media-libs/openexr:=
+		>=dev-libs/imath-3.1.4-r2:=
+		>=media-libs/openexr-3:0=
 	)
 	opensubdiv? ( >=media-libs/opensubdiv-3.4.0[cuda=] )
 	openvdb? (
-		>=media-gfx/openvdb-7.1.0
+		>=media-gfx/openvdb-9.0.0:=[nanovdb?]
 		dev-libs/c-blosc:=
 	)
-	osl? ( >=media-libs/osl-1.11.10.0 )
+	osl? ( >=media-libs/osl-1.11.16.0-r3:= )
 	pdf? ( media-libs/libharu )
 	potrace? ( media-gfx/potrace )
 	pugixml? ( dev-libs/pugixml )
 	pulseaudio? ( media-sound/pulseaudio )
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
-	tbb? ( <dev-cpp/tbb-2021.4.0:= )
+	tbb? ( dev-cpp/tbb:= )
 	tiff? ( media-libs/tiff )
 	valgrind? ( dev-util/valgrind )
 "
@@ -239,7 +239,7 @@ src_configure() {
 		-DWITH_MEM_VALGRIND=$(usex valgrind)
 		-DWITH_MOD_FLUID=$(usex fluid)
 		-DWITH_MOD_OCEANSIM=$(usex fftw)
-		-DWITH_NANOVDB=OFF
+		-DWITH_NANOVDB=$(usex nanovdb)
 		-DWITH_OPENAL=$(usex openal)
 		-DWITH_OPENCOLLADA=$(usex collada)
 		-DWITH_OPENCOLORIO=$(usex color-management)
@@ -257,6 +257,7 @@ src_configure() {
 		-DWITH_SDL=$(usex sdl)
 		-DWITH_STATIC_LIBS=OFF
 		-DWITH_SYSTEM_EIGEN3=ON
+		-DWITH_SYSTEM_FREETYPE=ON
 		-DWITH_SYSTEM_GLEW=ON
 		-DWITH_SYSTEM_LZO=ON
 		-DWITH_TBB=$(usex tbb)
@@ -376,11 +377,11 @@ pkg_postinst() {
 	ewarn "  https://developer.blender.org/"
 	ewarn
 
-	if ! use python_single_target_python3_9; then
+	if ! use python_single_target_python3_10; then
 		elog "You are building Blender with a newer python version than"
 		elog "supported by this version upstream."
 		elog "If you experience breakages with e.g. plugins, please switch to"
-		elog "python_single_target_python3_9 instead."
+		elog "python_single_target_python3_10 instead."
 		elog "Bug: https://bugs.gentoo.org/737388"
 		elog
 	fi

@@ -19,7 +19,7 @@ S="${WORKDIR}/${P/_/}"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="doc full-support minimal test X"
 RESTRICT="!test? ( test )"
 
@@ -140,6 +140,10 @@ python_compile_all() {
 	fi
 }
 
+src_test() {
+	virtx distutils-r1_src_test
+}
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# test for rounding errors, fails if we have better precision
@@ -155,8 +159,9 @@ python_test() {
 	local -x LC_ALL=C.UTF-8
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
 	"${EPYTHON}" -c "import pandas; pandas.show_versions()" || die
-	virtx epytest pandas --skip-slow --skip-network -m "not single" \
-		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
+	epytest pandas --skip-slow --skip-network -m "not single" \
+		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" ||
+		die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {

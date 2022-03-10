@@ -5,6 +5,10 @@
     <email>klausman@gentoo.org</email>
     <name>Tobias Klausman</name>
   </maintainer>
+  <maintainer type="person">
+    <email>mschiff@gentoo.org</email>
+    <name>Marc Schiffbauer</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">klausman/lib_users</remote-id>
   </upstream>

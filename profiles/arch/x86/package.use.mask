@@ -1,6 +1,15 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-03-10)
+# dev-util/hip and its rocm dependencies not keyworded here
+sci-physics/lammps hip
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2021-02-17)
+# Mask AMF keyword on non-amd64 arches
+# It is unusable, for now, in other arches
+media-video/ffmpeg amf
+
 # Sam James <sam@gentoo.org> (2022-01-20)
 # Only supports cpu_flags_x86_aes in 64-bit mode
 net-fs/samba cpu_flags_x86_aes
@@ -57,10 +66,6 @@ x11-wm/mutter video_cards_nvidia
 >=app-office/libreoffice-7 base java
 >=app-office/libreoffice-bin-7 java
 >=app-office/libreoffice-bin-debug-7 java
-
-# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
-# Unmask TPM on supported archs.
-sys-apps/systemd -tpm
 
 # Daniel Novomesky <dnovomesky@gmail.com> (2021-02-24)
 # Depends on media-libs/svt-av1, which is unavailable on x86

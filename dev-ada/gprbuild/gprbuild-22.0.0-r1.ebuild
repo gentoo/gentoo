@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-ADA_COMPAT=( gnat_2021 )
+ADA_COMPAT=( gnat_202{0,1} )
 
 inherit ada multiprocessing
 
@@ -53,6 +53,18 @@ src_prepare() {
 		-e "s:@GNATBIND@:${GNATBIND}:g" \
 		src/gprlib.adb \
 		|| die
+	if use ada_target_gnat_2020; then
+		sed -i \
+			-e "s:Append_Vector:Append:g" \
+			-e "s:Insert_Vector:Insert:g" \
+			src/gprbuild-link.adb \
+			src/gprinstall-install.adb \
+			src/gprlib.adb \
+			src/gprlib-build_shared_lib.adb \
+			src/gprbind.adb \
+			|| die
+		eapply "${FILESDIR}"/${P}-2020.patch
+	fi
 }
 
 bin_progs="gprbuild gprconfig gprclean gprinstall gprname gprls"

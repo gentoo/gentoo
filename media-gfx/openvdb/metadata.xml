@@ -18,6 +18,12 @@
 		<flag name="blosc">
 			Allow using blosc compression via <pkg>dev-libs/c-blosc</pkg>
 		</flag>
+		<flag name="cuda">
+			Enable support for CUDA in NanoVDB.
+		</flag>
+		<flag name="nanovdb">
+			A lightweight, header only, and GPU friendly version of VDB.
+		</flag>
 		<flag restrict="&gt;=media-gfx/openvdb-7.0.0" name="numpy">
 			Build pyopenvdb with support for <pkg>dev-python/numpy</pkg>
 		</flag>
@@ -32,6 +38,9 @@
 		</flag>
 		<flag restrict="&gt;=media-gfx/openvdb-8.0.0" name="abi8-compat">
 			Disables newer features to maintain compatibility with ABI8.
+		</flag>
+		<flag restrict="&gt;=media-gfx/openvdb-9.0.0" name="abi9-compat">
+			Disables newer features to maintain compatibility with ABI9.
 		</flag>
 		<flag restrict="&gt;=media-gfx/openvdb-7.0.0" name="utils">
 			Build utility binaries

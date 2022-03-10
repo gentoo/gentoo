@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: unbundle libsdl-2
@@ -9,7 +9,7 @@ inherit desktop unpacker wrapper xdg
 
 TIMESTAMP=${PV:0:4}-${PV:4:2}-${PV:6:2}
 DESCRIPTION="Unleash the power of Heavy Metal to reign down fire from the sky"
-HOMEPAGE="https://www.ea.com/de/brutal-legend"
+HOMEPAGE="https://www.doublefine.com/games/brutal-legend"
 SRC_URI="BrutalLegend-Linux-${TIMESTAMP}-setup.bin"
 
 LICENSE="all-rights-reserved"

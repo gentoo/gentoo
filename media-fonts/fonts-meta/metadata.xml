@@ -14,8 +14,10 @@
     <name>Fonts</name>
   </maintainer>
   <use>
+    <flag name="emoji">Install a font supporting emojis</flag>
     <flag name="free">Install fonts for the "free" preset</flag>
     <flag name="latin">Install additional latin fonts</flag>
     <flag name="ms">Install (free) fonts for the "ms" preset</flag>
   </use>
+  <stabilize-allarches/>
 </pkgmetadata>

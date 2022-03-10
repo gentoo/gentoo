@@ -1,8 +1,8 @@
 # Copyright 2010-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-PYTHON_COMPAT=( python3_{8,9} )
+EAPI="8"
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake python-any-r1
 
@@ -22,7 +22,7 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0/1.1"
-KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 

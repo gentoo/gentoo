@@ -13,7 +13,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 
 DEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.50:2
@@ -52,6 +52,10 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}/${PV}"-fix-build-with-meson-0.61.1.patch
+)
 
 RESTRICT="test" # only does desktop and appdata validation, and latter needs network to validate screenshot from https
 

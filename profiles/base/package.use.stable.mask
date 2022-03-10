@@ -1,17 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-01-09)
-# virtual/{jdk,jre}:11 just got unmasked but are not yet stable
-# Having a masked gentoo-vm flag allows us to provide it without
-# it breaking Gentoo packages. Those who wish to experiment with it
-# as a fully recognised Gentoo JVM can unmask the flag.
-dev-java/openjdk-jre-bin:11 gentoo-vm
-dev-java/openjdk-bin:11 gentoo-vm
-dev-java/openjdk:11 gentoo-vm
+# Sam James <sam@gentoo.org> (2022-02-11)
+# Needs glibc-2.35(?) (or <2.34) which is not yet even keyworded but
+# won't be stable for a while. Can be unmasked then.
+# bug #806079
+sys-apps/nvme-cli hugepages
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-12-24)
 # test deps are not stable

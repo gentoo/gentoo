@@ -1,11 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python{3_7,3_8,3_9} )
 DISTUTILS_OPTIONAL="1"
-DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 flag-o-matic toolchain-funcs
 
@@ -15,7 +14,7 @@ SRC_URI="https://www.kernel.org/pub/software/utils/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="perl python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools epatch
+inherit autotools
 
 MY_P="${PN}${PV}"
 DESCRIPTION="tool for automating interactive applications"
@@ -28,15 +28,15 @@ src_prepare() {
 	default
 	sed -i "s:/usr/local/bin:${EPREFIX}/usr/bin:" expect.man || die
 
-	epatch "${FILESDIR}"/${PN}-5.45-gfbsd.patch
-	epatch "${FILESDIR}"/${PN}-5.44.1.15-ldflags.patch
-	epatch "${FILESDIR}"/${PN}-5.45-headers.patch #337943
-	epatch "${FILESDIR}"/${PN}-5.45-format-security.patch
+	eapply "${FILESDIR}"/${PN}-5.45-gfbsd.patch
+	eapply "${FILESDIR}"/${PN}-5.44.1.15-ldflags.patch
+	eapply "${FILESDIR}"/${PN}-5.45-headers.patch #337943
+	eapply "${FILESDIR}"/${PN}-5.45-format-security.patch
 	sed -i 's:ifdef HAVE_SYS_WAIT_H:ifndef NO_SYS_WAIT_H:' *.c
 
 	# fix install_name on darwin
 	[[ ${CHOST} == *-darwin* ]] && \
-		epatch "${FILESDIR}"/${P}-darwin-install_name.patch
+		eapply "${FILESDIR}"/${P}-darwin-install_name.patch
 
 	mv configure.{in,ac} || die
 

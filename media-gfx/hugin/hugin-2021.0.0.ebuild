@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ BSD BSD-2 MIT wxWinLL-3 ZLIB FDL-1.2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 
 LANGS=" ca ca-valencia cs da de en-GB es eu fi fr hu it ja nl pl pt-BR ro ru sk sv zh-CN zh-TW"
 IUSE="debug lapack python raw sift $(echo ${LANGS//\ /\ l10n_})"
@@ -32,7 +32,7 @@ CDEPEND="
 	media-libs/libpng:0=
 	media-libs/openexr:0=
 	media-libs/tiff:0
-	>=media-libs/vigra-1.11.0[openexr]
+	>=media-libs/vigra-1.11.1-r5[openexr]
 	sci-libs/fftw:3.0=
 	sci-libs/flann
 	sys-libs/zlib

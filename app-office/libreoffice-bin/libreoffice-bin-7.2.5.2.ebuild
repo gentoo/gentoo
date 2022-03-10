@@ -46,7 +46,7 @@ SRC_URI="
 IUSE="gnome java kde"
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 
 BIN_COMMON_DEPEND="
 	app-text/hunspell:0/1.7
@@ -171,11 +171,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/openoffice
 	media-fonts/liberation-fonts
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
-	java? ( || (
-		dev-java/openjdk:11
-		dev-java/openjdk-jre-bin:11
-		>=virtual/jre-1.8
-	) )
+	java? ( virtual/jre:11 )
 	kde? ( kde-frameworks/breeze-icons:* )
 "
 

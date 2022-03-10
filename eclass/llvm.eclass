@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm.eclass
@@ -6,7 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Utility functions to build against slotted LLVM
 # @DESCRIPTION:
 # The llvm.eclass provides utility functions that can be used to build
@@ -60,7 +60,7 @@ case "${EAPI:-0}" in
 	0|1|2|3|4|5)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	6|7)
+	6|7|8)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -85,7 +85,7 @@ DEPEND="!!sys-devel/llvm:0"
 # @INTERNAL
 # @DESCRIPTION:
 # Correct values of LLVM slots, newest first.
-declare -g -r _LLVM_KNOWN_SLOTS=( {14..8} )
+declare -g -r _LLVM_KNOWN_SLOTS=( {15..8} )
 
 # @FUNCTION: get_llvm_prefix
 # @USAGE: [-b|-d] [<max_slot>]

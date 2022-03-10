@@ -1,10 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-DISTUTILS_USE_SETUPTOOLS=manual
 NEED_EMACS="24.1"
 PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
@@ -19,7 +18,7 @@ LICENSE="GPL-3"
 # Sub-slot corresponds to major wersion of libnotmuch.so.X.Y. Bump of Y is
 # meant to be binary backward compatible.
 SLOT="0/5"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~x64-macos"
 REQUIRED_USE="
 	apidoc? ( doc )
 	nmbug? ( python )

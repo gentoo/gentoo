@@ -9,4 +9,12 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>arkamar@atlas.cz</email>
+		<name>Petr Vaněk</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 </pkgmetadata>

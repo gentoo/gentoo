@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,8 +12,8 @@ LICENSE="LGPL-3+"
 IUSE="debug debug-malloc +deprecated +networking +nls +regex +threads" # upstream recommended +networking +nls
 # emacs useflag removal not working
 
-# workaround for bug 596322
-REQUIRED_USE="regex"
+REQUIRED_USE="regex"  # workaround for bug 596322
+RESTRICT="strip"
 
 RDEPEND="
 	>=dev-libs/boehm-gc-7.0:=[threads?]
@@ -33,13 +33,17 @@ DEPEND="${RDEPEND}
 SLOT="12/22" # subslot is soname version
 MAJOR="2.0"
 
-DOCS=( GUILE-VERSION HACKING README )
-
 PATCHES=(
 	"${FILESDIR}/${PN}-2-snarf.patch"
 	"${FILESDIR}/${P}-darwin.patch"
 	"${FILESDIR}/${P}-ia64-fix-crash-thread-context-switch.patch"
 )
+
+# guile generates ELF files without use of C or machine code
+# It's a portage's false positive. bug #677600
+QA_PREBUILT='*[.]go'
+
+DOCS=( GUILE-VERSION HACKING README )
 
 src_prepare() {
 	default
@@ -75,7 +79,7 @@ src_install() {
 	find "${ED}" -name '*.la' -delete || die
 
 	# From Novell
-	# 	https://bugzilla.novell.com/show_bug.cgi?id=874028#c0
+	#	https://bugzilla.novell.com/show_bug.cgi?id=874028#c0
 	dodir /usr/share/gdb/auto-load/$(get_libdir)
 	mv "${ED}"/usr/$(get_libdir)/libguile-*-gdb.scm "${ED}"/usr/share/gdb/auto-load/$(get_libdir) || die
 

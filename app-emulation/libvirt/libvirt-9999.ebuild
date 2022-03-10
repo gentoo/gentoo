@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -109,9 +109,9 @@ RDEPEND="
 	sasl? ( dev-libs/cyrus-sasl )
 	selinux? ( >=sys-libs/libselinux-2.0.85 )
 	virt-network? (
-		net-dns/dnsmasq[dhcp,ipv6,script]
+		net-dns/dnsmasq[dhcp,ipv6(+),script]
 		net-firewall/ebtables
-		>=net-firewall/iptables-1.4.10[ipv6]
+		>=net-firewall/iptables-1.4.10[ipv6(+)]
 		net-misc/radvd
 		sys-apps/iproute2[-minimal]
 	)
@@ -132,8 +132,8 @@ DEPEND="${BDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
-	"${FILESDIR}"/${PN}-6.7.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-6.7.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-8.1.0-do-not-use-sysconfig.patch
 )
 
 pkg_setup() {

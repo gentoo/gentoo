@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,7 @@ COMMON_DEPEND="
 	lua? ( ${LUA_DEPS} )
 "
 DEPEND="${COMMON_DEPEND}
-	dev-libs/boost
+	dev-libs/boost:=
 "
 RDEPEND="${COMMON_DEPEND}
 	dev-db/postgis

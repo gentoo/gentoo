@@ -7,7 +7,7 @@ exit 0
 
 EAPI=7
 
-source tests-common.sh
+source tests-common.sh || exit
 
 inherit git-r3
 

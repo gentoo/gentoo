@@ -1,21 +1,28 @@
 # Copyright 2001-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="8"
 
 inherit autotools libtool multilib-minimal
 
 DESCRIPTION="HTTP and WebDAV client library"
-HOMEPAGE="https://notroj.github.io/neon/"
+HOMEPAGE="https://notroj.github.io/neon/ https://github.com/notroj/neon"
 SRC_URI="https://notroj.github.io/neon/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/27"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc expat gnutls kerberos libproxy nls pkcs11 ssl static-libs zlib"
-RESTRICT="test"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="doc +expat gnutls kerberos libproxy nls pkcs11 ssl test zlib"
+RESTRICT="!test? ( test )"
 
-RDEPEND="expat? ( dev-libs/expat:0=[${MULTILIB_USEDEP}] )
+BDEPEND="virtual/pkgconfig
+	test? (
+		ssl? (
+			dev-libs/openssl:0
+			pkcs11? ( dev-libs/nss )
+		)
+	)"
+DEPEND="expat? ( dev-libs/expat:0=[${MULTILIB_USEDEP}] )
 	!expat? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	kerberos? ( virtual/krb5:0=[${MULTILIB_USEDEP}] )
 	libproxy? ( net-libs/libproxy:0=[${MULTILIB_USEDEP}] )
@@ -25,29 +32,24 @@ RDEPEND="expat? ( dev-libs/expat:0=[${MULTILIB_USEDEP}] )
 			app-misc/ca-certificates
 			net-libs/gnutls:0=[${MULTILIB_USEDEP}]
 		)
-		!gnutls? (
-			dev-libs/openssl:0=[${MULTILIB_USEDEP}]
-		)
+		!gnutls? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 		pkcs11? ( dev-libs/pakchois:0=[${MULTILIB_USEDEP}] )
 	)
 	zlib? ( sys-libs/zlib:0=[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}"
-BDEPEND="
-	app-text/docbook-xml-dtd:4.5
-	app-text/xmlto
-	virtual/pkgconfig
-"
+RDEPEND="${DEPEND}"
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/neon-config
 )
 
-src_prepare() {
-	# Use CHOST-prefixed version of xml2-config for cross-compilation.
-	sed -e "s/AC_CHECK_PROG(XML2_CONFIG,/AC_CHECK_TOOL(XML2_CONFIG,/" -i macros/neon-xml-parser.m4 || die "sed failed"
+DOCS=( AUTHORS BUGS NEWS README.md THANKS TODO )
 
-	# Fix compatibility with OpenSSL >=1.1.
-	sed -e "s/RSA_F_RSA_PRIVATE_ENCRYPT/RSA_F_RSA_OSSL_PRIVATE_ENCRYPT/" -i src/ne_pkcs11.c || die "sed failed"
+src_prepare() {
+	if use gnutls; then
+		# Ignore failure of test pkcs11.
+		# https://github.com/notroj/neon/issues/72
+		sed -e "s/T(pkcs11)/T_XFAIL(pkcs11)/" -i test/ssl.c || die
+	fi
 
 	eapply_user
 
@@ -86,7 +88,6 @@ multilib_src_configure() {
 		$(use_with libproxy) \
 		$(use_enable nls) \
 		$(use_with pkcs11 pakchois) \
-		$(use_enable static-libs static) \
 		$(use_with zlib) \
 		"${myconf[@]}"
 }
@@ -95,15 +96,12 @@ multilib_src_install() {
 	emake DESTDIR="${D}" install-{config,headers,lib,man,nls}
 
 	if multilib_is_native_abi && use doc; then
-		(
-			docinto html
-			dodoc -r doc/html/*
-		)
+		dodoc -r doc/html
 	fi
 }
 
 multilib_src_install_all() {
-	find "${D}" -name "*.la" -type f -delete || die
+	find "${ED}" -name "*.la" -delete || die
 
-	dodoc AUTHORS BUGS NEWS README.md THANKS TODO
+	einstalldocs
 }

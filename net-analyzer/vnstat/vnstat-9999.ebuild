@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit systemd tmpfiles
 
@@ -18,7 +18,7 @@ else
 	SRC_URI="https://humdi.net/vnstat/${P}.tar.gz"
 	SRC_URI+=" verify-sig? ( https://humdi.net/vnstat/${P}.tar.gz.asc )"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-teemutoivola )"
 fi
@@ -41,9 +41,7 @@ DEPEND="
 RDEPEND+=" selinux? ( sec-policy/selinux-vnstatd )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.2-conf.patch
-	"${FILESDIR}"/${PN}-2.2-drop-root.patch
-	"${FILESDIR}"/${PN}-2.2-run.patch
+	"${FILESDIR}"/${PN}-2.9-conf.patch
 )
 
 src_compile() {

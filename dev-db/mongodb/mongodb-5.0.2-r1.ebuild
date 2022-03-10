@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -79,7 +79,7 @@ python_check_deps() {
 
 pkg_pretend() {
 	# Bug 809692
-	if ! use cpu_flags_x86_avx; then
+	if use amd64 && ! use cpu_flags_x86_avx; then
 		eerror "MongoDB 5.0 requires use of the AVX instruction set"
 		eerror "https://docs.mongodb.com/v5.0/administration/production-notes/"
 		die "MongoDB requires AVX"

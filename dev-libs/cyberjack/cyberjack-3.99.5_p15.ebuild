@@ -14,7 +14,7 @@ HOMEPAGE="https://www.reiner-sct.de/"
 SRC_URI="https://support.reiner-sct.de/downloads/LINUX/V${PV/_p/_SP}/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P/_/-}"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 IUSE="static-libs threads tools +udev xml"

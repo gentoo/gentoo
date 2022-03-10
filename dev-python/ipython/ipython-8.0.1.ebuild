@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ia64 ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~riscv ~sparc"
 IUSE="doc examples matplotlib notebook nbconvert qt5 +smp test"
 RESTRICT="!test? ( test )"
 
@@ -99,6 +99,10 @@ python_compile_all() {
 	fi
 }
 
+src_test() {
+	virtx distutils-r1_src_test
+}
+
 python_test() {
 	local -x IPYTHON_TESTING_TIMEOUT_SCALE=20
 	local EPYTEST_DESELECT=(
@@ -113,7 +117,7 @@ python_test() {
 		IPython/core/tests/test_completer.py::TestCompleter::test_all_completions_dups
 		IPython/core/tests/test_completer.py::TestCompleter::test_deduplicate_completions
 	)
-	virtx epytest
+	epytest || die "Tests failed with ${EPYTHON}"
 }
 
 python_install() {

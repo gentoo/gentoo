@@ -24,3 +24,23 @@
  
  ifneq ($(MAKECMDGOALS), clean)
    -include $(DEPEND)
+--- a/src/py.c	2022-02-06 10:20:03.352580186 +0100
++++ b/src/py.c	2022-02-06 11:16:49.504796684 +0100
+@@ -24,7 +24,6 @@
+             // First time initializing Python
+             Py_NoSiteFlag = 1;
+             Py_Initialize();
+-            PyEval_InitThreads();
+             GlobalThread = PyEval_SaveThread();
+         }
+         
+@@ -60,7 +59,8 @@
+     #ifdef WITH_THREAD
+         PyEval_RestoreThread(interp->thread_state);
+         Py_EndInterpreter(interp->thread_state);
+-        PyEval_ReleaseLock();
++        PyThreadState_Swap(GlobalThread);
++        PyEval_SaveThread();
+     #endif
+     
+     free(interp);

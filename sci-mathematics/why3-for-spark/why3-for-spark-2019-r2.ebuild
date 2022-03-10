@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,13 +12,13 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf915d31e87a8f1c967d54
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="coq doc emacs gtk html hypothesis-selection +ocamlopt zarith zip"
 RESTRICT="strip"
 
 DEPEND=">=dev-lang/ocaml-4.09.0:=[ocamlopt=]
 	>=dev-ml/ocamlbuild-0.14.0
-	dev-ml/menhir:=
+	<=dev-ml/menhir-20190924:=
 	dev-ml/num:=
 	coq? ( >=sci-mathematics/coq-8.9.1 )
 	doc? ( dev-tex/rubber )

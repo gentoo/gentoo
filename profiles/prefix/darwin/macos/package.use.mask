@@ -1,5 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2022-02-13)
+# we have virtual/gsasl keyworded
+mail-client/mutt -gsasl
 
 # Fabian Groffen <grobian@gentoo.org> (2020-06-08)
 # Do NOT enable tinfo, it breaks ANYTHING existing, and it also breaks

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,8 +33,7 @@ DOCS=(README.md History)
 src_compile() {
 	cmake_src_compile
 	if use doc; then
-		# TRAVIS_BUILD_DIR hardcoded in Doxyfile by upstream.
-		TRAVIS_BUILD_DIR="${S}" doxygen doc/doxygen/Doxyfile || die
+		doxygen doc/doxygen/Doxyfile || die
 	fi
 }
 

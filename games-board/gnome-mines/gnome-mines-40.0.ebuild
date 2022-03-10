@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Mines"
 
 LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.40:2
@@ -30,6 +30,10 @@ BDEPEND="
 	virtual/pkgconfig
 	gnome-base/librsvg:2[vala]
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-40.0-meson-0.61.patch
+)
 
 src_prepare() {
 	xdg_src_prepare

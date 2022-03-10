@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,13 +17,9 @@ RESTRICT="!test? ( test )"
 
 DEPEND="sys-apps/hwloc:="
 RDEPEND="${DEPEND}"
-BDEPEND=""
 
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary ]] && \
-		use openmp && ! tc-has-openmp ; then
-			die "Need an OpenMP capable compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_configure() {

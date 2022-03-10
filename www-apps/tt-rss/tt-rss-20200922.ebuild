@@ -93,8 +93,3 @@ src_install() {
 
 	webapp_src_install
 }
-
-pkg_postinst() {
-	elog "You need to merge config.php-dist into config.php manually when upgrading."
-	webapp_pkg_postinst
-}

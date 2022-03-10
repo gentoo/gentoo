@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: scons-utils.eclass
@@ -128,9 +128,9 @@ if [[ ${_PYTHON_ANY_R1} ]]; then
 	}
 	python_check_deps() { scons-utils_python_check_deps; }
 elif [[ ${_PYTHON_SINGLE_R1} ]]; then
-	# when using python-single-r1, use PYTHON_MULTI_USEDEP API
+	# when using python-single-r1, use PYTHON_USEDEP API
 	BDEPEND="
-		$(python_gen_cond_dep "${SCONS_DEPEND}[\${PYTHON_MULTI_USEDEP}]")
+		$(python_gen_cond_dep "${SCONS_DEPEND}[\${PYTHON_USEDEP}]")
 		${PYTHON_DEPS}"
 elif [[ ${EAPI:-0} == [0123456] ]]; then
 	# in older EAPIs, just force Python 2.7

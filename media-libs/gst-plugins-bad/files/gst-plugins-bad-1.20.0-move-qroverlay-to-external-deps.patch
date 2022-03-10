@@ -1,0 +1,26 @@
+commit e30ce28b1f4b0373390499f49317f8fa12b02155
+Author: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+Date:   Sat Feb 5 17:36:41 2022 +0300
+
+    gst-plugins-bad-1.20.0-move-qroverlay-to-external-deps
+
+diff --git a/subprojects/gst-plugins-bad/meson_options.txt b/subprojects/gst-plugins-bad/meson_options.txt
+index 4686492244..b347dcb27b 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -48,7 +48,6 @@ option('onvif', type : 'feature', value : 'auto')
+ option('pcapparse', type : 'feature', value : 'auto')
+ option('pnm', type : 'feature', value : 'auto')
+ option('proxy', type : 'feature', value : 'auto')
+-option('qroverlay', type : 'feature', value : 'auto')
+ option('rawparse', type : 'feature', value : 'auto')
+ option('removesilence', type : 'feature', value : 'auto')
+ option('rist', type : 'feature', value : 'auto')
+@@ -140,6 +139,7 @@ option('openmpt', type : 'feature', value : 'auto', description : 'OpenMPT modul
+ option('openni2', type : 'feature', value : 'auto', description : 'OpenNI2 library plugin')
+ option('opensles', type : 'feature', value : 'auto', description : 'OpenSL ES audio source/sink plugin')
+ option('opus', type : 'feature', value : 'auto', description : 'OPUS audio parser plugin')
++option('qroverlay', type : 'feature', value : 'auto', description : 'Element to set random data on a qroverlay')
+ option('resindvd', type : 'feature', value : 'auto', description : 'Resin DVD playback plugin (GPL - only built if gpl option is also enabled!)')
+ option('rsvg', type : 'feature', value : 'auto', description : 'SVG overlayer and image decoder plugin')
+ option('rtmp', type : 'feature', value : 'auto', description : 'RTMP video network source and sink plugin')

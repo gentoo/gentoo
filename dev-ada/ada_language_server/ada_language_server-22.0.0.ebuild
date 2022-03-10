@@ -15,7 +15,7 @@ RESTRICT="!test? ( test )"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="${ADA_DEPS}
 	dev-ada/ada_libfswatch[${ADA_USEDEP}]

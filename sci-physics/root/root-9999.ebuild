@@ -188,6 +188,7 @@ src_configure() {
 		-Dbuiltin_openui5=ON
 		-Dbuiltin_afterimage=OFF
 		-Dbuiltin_cfitsio=OFF
+		-Dbuiltin_cppzmq=OFF
 		-Dbuiltin_davix=OFF
 		-Dbuiltin_fftw3=OFF
 		-Dbuiltin_freetype=OFF
@@ -207,6 +208,7 @@ src_configure() {
 		-Dbuiltin_veccore=OFF
 		-Dbuiltin_xrootd=OFF
 		-Dbuiltin_xxhash=OFF
+		-Dbuiltin_zeromq=OFF
 		-Dbuiltin_zlib=OFF
 		-Dbuiltin_zstd=OFF
 		-Dalien=OFF
@@ -254,8 +256,10 @@ src_configure() {
 		#-Dpyroot_experimental=OFF # set to ON to use new PyROOT (6.20 and earlier)
 		-Dpythia8=$(usex pythia8)
 		-Dqt5web=$(usex qt5)
+		-Dqt6web=OFF
 		-Dr=$(usex R)
 		-Droofit=$(usex roofit)
+		-Droofit_multiprocess=OFF
 		-Droot7=$(usex root7)
 		-Drootbench=OFF
 		-Droottest=OFF
@@ -266,6 +270,7 @@ src_configure() {
 		-Dsqlite=$(usex sqlite)
 		-Dssl=$(usex ssl)
 		-Dtcmalloc=OFF
+		-Dtest_distrdf_dask=OFF
 		-Dtest_distrdf_pyspark=OFF
 		-Dtesting=$(usex test)
 		-Dtmva=$(usex tmva)
@@ -273,6 +278,7 @@ src_configure() {
 		-Dtmva-gpu=$(usex cuda)
 		-Dtmva-pymva=$(usex tmva)
 		-Dtmva-rmva=$(usex R)
+		-Dtmva-sofie=OFF
 		-Dunuran=$(usex unuran)
 		-During=$(usex uring)
 		-Dvc=$(usex vc)

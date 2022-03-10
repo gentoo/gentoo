@@ -75,6 +75,7 @@ src_prepare() {
 	# unbundle, use sed over patch for less chances to break -9999
 	sed -e '/add_subdir.*cubeb/c\find_package(cubeb REQUIRED)' \
 		-e '/add_subdir.*libchdr/c\pkg_check_modules(chdr REQUIRED IMPORTED_TARGET libchdr)' \
+		-e '/compile_options(\(cubeb\|chdr-static\|speex\)/d' \
 		-i cmake/SearchForStuff.cmake || die
 	sed -i 's/chdr-static/PkgConfig::chdr/' pcsx2/CMakeLists.txt || die
 
@@ -96,13 +97,12 @@ src_configure() {
 		-DDISABLE_BUILD_DATE=TRUE
 		-DDISABLE_PCSX2_WRAPPER=TRUE
 		-DDISABLE_SETCAP=TRUE
-		-DENABLE_TESTS="$(usex test)"
+		-DENABLE_TESTS=$(usex test)
 		-DPACKAGE_MODE=TRUE
-		-DXDG_STD=TRUE
-
-		-DCMAKE_LIBRARY_PATH="/usr/$(get_libdir)/${PN}"
+		-DSDL2_API=TRUE # uses SDL2 either way but option is needed if wxGTK[sdl]
 		-DUSE_SYSTEM_YAML=TRUE
 		-DUSE_VTUNE=FALSE
+		-DXDG_STD=TRUE
 	)
 
 	setup-wxwidgets

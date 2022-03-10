@@ -11,7 +11,7 @@
     Python, Julia, Ruby, Haskell.
   </longdescription>
   <upstream>
-    <remote-id type="github">sympy/symengine</remote-id>
+    <remote-id type="github">symengine/symengine</remote-id>
   </upstream>
   <use>
     <flag name="arb">Add support for arb (<pkg>sci-mathematics/arb</pkg>)</flag>

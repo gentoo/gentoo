@@ -18,8 +18,8 @@ SLOT="0"
 RDEPEND="
 	>=app-misc/openrgb-0.7:=
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
+	dev-qt/qtgui:5[-gles2-only]
+	dev-qt/qtwidgets:5[-gles2-only]
 	media-libs/openal
 "
 DEPEND="

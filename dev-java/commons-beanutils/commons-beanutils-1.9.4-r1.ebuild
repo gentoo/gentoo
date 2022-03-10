@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -18,7 +18,7 @@ SRC_URI="mirror://apache/commons/beanutils/source/${P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="1.7"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 # Common dependencies
 # POM: pom.xml

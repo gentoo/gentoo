@@ -5,6 +5,10 @@
 		<email>monsieurp@gentoo.org</email>
 		<name>Patrice Clement</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
 	<maintainer type="person" proxied="yes">
 		<email>adrian@planetcoding.net</email>
 		<name>Adrian Moennich</name>

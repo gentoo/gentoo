@@ -1,17 +1,17 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-vm-2.eclass
 # @MAINTAINER:
 # java@gentoo.org
-# @SUPPORTED_EAPIS: 6 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Java Virtual Machine eclass
 # @DESCRIPTION:
 # This eclass provides functionality which assists with installing
 # virtual machines, and ensures that they are recognized by java-config.
 
 case ${EAPI:-0} in
-	[68]) ;;
+	[678]) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 

@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit elisp-common eutils toolchain-funcs
+inherit elisp-common toolchain-funcs
 
 DESCRIPTION="window manager without mouse dependency"
 HOMEPAGE="http://www.nongnu.org/ratpoison/"

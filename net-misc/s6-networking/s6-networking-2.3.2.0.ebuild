@@ -1,7 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Suite of small networking utilities for Unix systems"
 HOMEPAGE="https://www.skarnet.org/software/s6-networking/"
@@ -14,15 +16,15 @@ IUSE="static static-libs"
 
 REQUIRED_USE="static? ( static-libs )"
 
-RDEPEND=">=dev-lang/execline-2.6.1.1:=[static-libs?]
-	>=dev-libs/skalibs-2.9.3.0:=[static-libs?]
-	>=sys-apps/s6-2.9.2.0:=[execline,static-libs?]
+RDEPEND="<dev-lang/execline-2.7.0.0:=[static-libs?]
+	<dev-libs/skalibs-2.10.0.0:=[static-libs?]
+	<sys-apps/s6-2.10.0.0:=[execline,static-libs?]
 	!static? (
-		>=net-dns/s6-dns-2.3.3.0:=
+		<net-dns/s6-dns-2.3.4.0:=
 	)
 "
 DEPEND="${RDEPEND}
-	>=net-dns/s6-dns-2.3.3.0[static-libs?]
+	<net-dns/s6-dns-2.3.4.0[static-libs?]
 "
 
 HTML_DOCS=( doc/. )
@@ -33,9 +35,13 @@ src_prepare() {
 	# Avoid QA warning for LDFLAGS addition; avoid overriding -fstack-protector
 	sed -i -e 's/.*-Wl,--hash-style=both$/:/' -e '/-fno-stack-protector$/d' \
 		configure || die
+
+	sed -i -e '/AR := /d' -e '/RANLIB := /d' Makefile || die
 }
 
 src_configure() {
+	tc-export AR CC RANLIB
+
 	econf \
 		--bindir=/bin \
 		--dynlibdir=/usr/$(get_libdir) \

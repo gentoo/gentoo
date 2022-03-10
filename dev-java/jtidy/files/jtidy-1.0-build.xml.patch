@@ -1,5 +1,5 @@
---- build.xml.orig	2015-12-01 21:10:36.689000000 +0000
-+++ build.xml	2015-12-01 21:11:05.642000000 +0000
+--- a/build.xml.orig	2015-12-01 21:10:36.689000000 +0000
++++ b/build.xml	2015-12-01 21:11:05.642000000 +0000
 @@ -9,11 +9,7 @@
  	<property name="srczip" value="jtidy-${version}-sources.zip"/>
  	<property name="allzip" value="jtidy-${version}.zip"/>

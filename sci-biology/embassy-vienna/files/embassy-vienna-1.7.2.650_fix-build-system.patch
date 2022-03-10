@@ -1,5 +1,5 @@
---- a/configure.ac
-+++ b/configure.ac
+--- a/configure.in
++++ b/configure.in
 @@ -649,33 +649,6 @@
  
  

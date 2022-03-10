@@ -59,10 +59,4 @@ pkg_postinst() {
 		elog
 		elog "See ${EROOT}/usr/share/doc/${PF}/README.rst* for information on tools."
 	fi
-
-	if [[ ${REPLACING_VERSIONS} ]] &&
-		ver_test ${REPLACING_VERSIONS} -le 0.7.0; then
-		elog "qa-* bashrcs now use \`eqawarn\` for portage output. If no longer"
-		elog "seeing messages post-emerge, ensure 'qa' is in PORTAGE_ELOG_CLASSES."
-	fi
 }

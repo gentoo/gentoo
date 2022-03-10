@@ -1,0 +1,33 @@
+https://gitlab.gnome.org/GNOME/gnome-mines/-/merge_requests/31.patch
+https://bugs.gentoo.org/831454
+
+From 0a10c3a8ae4395c8059875bcea74be5c17ef9a21 Mon Sep 17 00:00:00 2001
+From: Jan Beich <jbeich@FreeBSD.org>
+Date: Mon, 24 Jan 2022 13:28:56 +0000
+Subject: [PATCH] meson: drop unused argument for i18n.merge_file()
+
+Ignored in Meson < 0.60.0, deprecated since 0.60.1 and fatal since 0.61.0.
+
+data/meson.build:18:0: ERROR: Function does not take positional arguments.
+data/meson.build:38:0: ERROR: Function does not take positional arguments.
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -15,7 +15,7 @@ foreach theme: [ 'default', 'bgcolors', 'classic' ]
+     endforeach
+ endforeach
+ 
+-desktop_file = i18n.merge_file ('desktop-file',
++desktop_file = i18n.merge_file (
+                  input: '@0@.desktop.in'.format(app_id),
+                  output: '@0@.desktop'.format(app_id),
+                  install: true,
+@@ -35,7 +35,7 @@ if desktop_file_validate.found()
+ endif
+ 
+ 
+-appdata_file = i18n.merge_file ('appdata-file',
++appdata_file = i18n.merge_file (
+                  input: '@0@.appdata.xml.in'.format(app_id),
+                  output: '@0@.appdata.xml'.format(app_id),
+                  install: true,
+GitLab

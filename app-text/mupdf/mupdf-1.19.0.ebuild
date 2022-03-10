@@ -15,7 +15,7 @@ S="${WORKDIR}"/${P}-source
 
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 x86"
 IUSE="+javascript opengl ssl X"
 REQUIRED_USE="opengl? ( javascript )"
 
@@ -39,7 +39,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="x11-base/xorg-proto
+BDEPEND="X? ( x11-base/xorg-proto )
 	virtual/pkgconfig"
 
 PATCHES=(

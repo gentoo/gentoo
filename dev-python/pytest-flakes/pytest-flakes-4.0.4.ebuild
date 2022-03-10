@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,3 +19,7 @@ RDEPEND="
 	dev-python/pytest[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
+
+python_test() {
+	epytest -p flakes
+}

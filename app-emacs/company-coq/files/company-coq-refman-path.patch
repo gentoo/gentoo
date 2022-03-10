@@ -1,0 +1,13 @@
+index 3a984878..9a42fed9 100644
+--- a/company-coq.el
++++ b/company-coq.el
+@@ -762,8 +762,7 @@ Useful as a value for `company-coq-completion-predicate'."
+   "Full path of this script.")
+ 
+ (defconst company-coq-refman-path
+-  (when company-coq-script-full-path
+-    (expand-file-name "refman/" (file-name-directory company-coq-script-full-path)))
++  (expand-file-name "@SITEETC@/refman/")
+   "Refman (and other assets)'s directory.")
+ 
+ (defface company-coq-doc-header-face-docs-and-sources

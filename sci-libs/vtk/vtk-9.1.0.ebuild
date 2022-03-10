@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -142,6 +142,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.0.1-0001-fix-kepler-compute_arch-if-CUDA-toolkit-11-is-used.patch
 	"${FILESDIR}"/${PN}-8.2.0-freetype-2.10.3-provide-FT_CALLBACK_DEF.patch
+	"${FILESDIR}"/${PN}-9.0.3-IO-FFMPEG-support-FFmpeg-5.0-API-changes.patch
 )
 
 DOCS=( CONTRIBUTING.md README.md )
@@ -456,7 +457,10 @@ src_configure() {
 	fi
 
 	if use qt5; then
-		mycmakeargs+=( -DVTK_MODULE_ENABLE_VTK_GUISupportQt="WANT" )
+		mycmakeargs+=(
+			-DVTK_MODULE_ENABLE_VTK_GUISupportQt="WANT"
+			-DVTK_QT_VERSION="5"
+		)
 		if use mysql || use postgres; then
 			mycmakeargs+=( -DVTK_MODULE_ENABLE_VTK_GUISupportQtSQL="WANT" )
 		fi

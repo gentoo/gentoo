@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/aide/aide/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE="acl audit curl e2fs mhash postgres prelink selinux xattr zlib"
+IUSE="acl audit curl e2fs mhash postgres selinux xattr zlib"
 
 REQUIRED_USE="
 	postgres? ( !mhash )
@@ -32,7 +32,6 @@ COMMON_DEPEND="
 	)
 	mhash? ( app-crypt/mhash )
 	postgres? ( dev-db/postgresql:= )
-	prelink? ( dev-libs/elfutils )
 	selinux? ( sys-libs/libselinux )
 	xattr? ( sys-apps/attr )
 	zlib? ( sys-libs/zlib )"
@@ -47,7 +46,7 @@ BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
-	prelink? ( sys-devel/prelink )"
+"
 
 HTML_DOCS=( doc/manual.html )
 
@@ -96,12 +95,12 @@ src_configure() {
 		# Disable broken l10n support: https://sourceforge.net/p/aide/bugs/98/
 		# This doesn't affect anything because there are no localizations yet.
 		--without-locale
+		--without-prelink
 		--disable-static
 		$(use_with zlib)
 		$(use_with curl)
 		$(use_with acl posix-acl)
 		$(use_with selinux)
-		$(use_with prelink prelink "${EPREFIX}/usr/sbin/prelink")
 		$(use_with xattr)
 		$(use_with e2fs e2fsattrs)
 		$(use_with mhash mhash)
