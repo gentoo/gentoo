@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gkrellm-plugin.eclass
@@ -8,6 +8,7 @@
 # Original author: Jim Ramsay <lack@gentoo.org>
 # EAPI 6 author: David Seifert <soap@gentoo.org>
 # @SUPPORTED_EAPIS: 6
+# @PROVIDES: multilib
 # @BLURB: Provides src_install used by (almost) all gkrellm plugins
 # @DESCRIPTION:
 # - Sets up default dependencies
