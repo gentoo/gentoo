@@ -23,11 +23,13 @@ DEPEND="${RDEPEND}"
 S=${WORKDIR}/${P}.orig
 PATCHES=( "${FILESDIR}"/${PN}-2.2.13-fix-build-system.patch )
 
-PLUGIN_SERVER_SO=( gkrelltopd$(get_modname) )
-PLUGIN_SO=( gkrelltop$(get_modname) )
-
 src_configure() {
 	tc-export CC
+
+	PLUGIN_SERVER_SO=( gkrelltopd$(get_modname) )
+	PLUGIN_SO=( gkrelltop$(get_modname) )
+
+	default
 }
 
 src_compile() {
