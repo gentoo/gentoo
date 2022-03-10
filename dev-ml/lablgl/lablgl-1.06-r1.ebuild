@@ -48,6 +48,9 @@ src_configure() {
 }
 
 src_compile() {
+	# Workaround for bug #834870
+	MAKEOPTS+=" -j1"
+
 	if use tk; then
 		emake togl
 		if use ocamlopt; then
