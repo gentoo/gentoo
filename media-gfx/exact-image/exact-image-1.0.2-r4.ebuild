@@ -21,6 +21,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="expat jpeg lua openexr php perl png ruby swig tiff truetype X"
 REQUIRED_USE="lua? ( swig ) perl? ( swig ) php? ( swig ) ruby? ( swig )"
+# Tests are broken; 'make check' fails and referenced testsuite dir not found
+RESTRICT="test"
 
 RDEPEND="
 	x11-libs/agg[truetype]
