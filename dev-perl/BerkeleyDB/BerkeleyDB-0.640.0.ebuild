@@ -5,7 +5,7 @@ EAPI=7
 
 DIST_AUTHOR=PMQS
 DIST_VERSION=0.64
-inherit perl-module db-use multilib
+inherit perl-module db-use
 
 DESCRIPTION="This module provides Berkeley DB interface for Perl"
 
