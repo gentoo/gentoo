@@ -35,6 +35,7 @@ PERL_RM_FILES=(
 )
 # parallel really broken
 DIST_TEST="do"
+
 src_prepare() {
 	local DB_SUPPORTED=(
 		6 5 4 3 2
@@ -57,6 +58,7 @@ src_prepare() {
 
 	perl-module_src_prepare
 }
+
 src_compile() {
 	mymake=(
 		"OPTIMIZE=${CFLAGS}"
