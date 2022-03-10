@@ -39,11 +39,13 @@ src_prepare() {
 		"${FILESDIR}"/fdutils-5.5.20060227-r1-parallel.patch # bug 315577
 		"${FILESDIR}"/fdutils-5.6_p2-parallel.patch
 		"${FILESDIR}"/fdutils-5.6_p2-docs-build.patch
+		"${FILESDIR}"/fdutils-5.6_p2-variable-ar.patch
 	)
 
 	default
 
 	eautoreconf
+	touch ar-lib || die # bug 834874
 }
 
 src_configure() {
