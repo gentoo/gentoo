@@ -23,7 +23,11 @@ PATCHES=(
 	"${FILESDIR}"/${P}-Respect-LDFLAGS.patch
 )
 
-PLUGIN_SO=( src20/gkrellsun$(get_modname) )
+
+src_configure() {
+	PLUGIN_SO=( src20/gkrellsun$(get_modname) )
+	default
+}
 
 src_compile() {
 	use nls && local myconf="enable_nls=1"
