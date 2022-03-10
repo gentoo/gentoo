@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 FORTRAN_NEEDED="mumps"
 
-inherit autotools fortran-2 toolchain-funcs
+inherit fortran-2 toolchain-funcs
 
 MY_PN=${PN^}
 MY_P=${MY_PN}-${PV}
