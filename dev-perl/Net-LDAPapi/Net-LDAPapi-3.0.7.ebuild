@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DIST_AUTHOR=MISHIKAL
 DIST_EXAMPLES=( "examples/*" )
-inherit multilib perl-module
+inherit perl-module
 
 DESCRIPTION="Perl5 Module Supporting LDAP API"
 HOMEPAGE="https://sourceforge.net/projects/net-ldapapi/
