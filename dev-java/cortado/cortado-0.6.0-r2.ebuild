@@ -20,6 +20,7 @@ BDEPEND="app-arch/unzip"
 EANT_BUILD_TARGET="stripped"
 
 src_prepare() {
+	default
 	echo "#!/bin/sh" > scripts/get-revision || die
 	echo "echo ${PV}" >> scripts/get-revision || die
 }
