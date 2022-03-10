@@ -19,7 +19,10 @@ DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-ldflags.patch )
 
-PLUGIN_SO=( trayicons$(get_modname) )
+src_configure() {
+	PLUGIN_SO=( trayicons$(get_modname) )
+	default
+}
 
 src_compile() {
 	emake CC="$(tc-getCC)" LDFLAGS="${LDFLAGS}"
