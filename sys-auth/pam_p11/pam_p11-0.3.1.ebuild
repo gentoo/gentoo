@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic pam
+inherit flag-o-matic pam
 
 DESCRIPTION="PAM module for authenticating against PKCS#11 tokens"
 HOMEPAGE="https://github.com/opensc/pam_p11/wiki"
