@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,10 @@ DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-makefile.patch )
 
-PLUGIN_SO=( xkb$(get_modname) )
+src_configure() {
+	PLUGIN_SO=( xkb$(get_modname) )
+	default
+}
 
 src_compile() {
 	emake CC="$(tc-getCC)" LDFLAGS="${LDFLAGS}"
