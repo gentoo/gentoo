@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -181,7 +181,7 @@ src_configure() {
 	)
 
 	if use test; then
-		# Help cmake find the python interpreter when dev-lang/python-exec is built 
+		# Help cmake find the python interpreter when dev-lang/python-exec is built
 		# without native-symlinks support.
 		python_setup
 		mycmakeargs+=( -DPYTHON_EXECUTABLE="${PYTHON}" )

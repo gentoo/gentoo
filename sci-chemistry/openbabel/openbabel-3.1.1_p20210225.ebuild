@@ -181,7 +181,7 @@ src_configure() {
 	)
 
 	if use test; then
-		# Help cmake find the python interpreter when dev-lang/python-exec is built 
+		# Help cmake find the python interpreter when dev-lang/python-exec is built
 		# without native-symlinks support.
 		python_setup
 		mycmakeargs+=( -DPYTHON_EXECUTABLE="${PYTHON}" )
