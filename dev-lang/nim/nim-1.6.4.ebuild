@@ -16,7 +16,7 @@ IUSE="debug +readline"
 RESTRICT="test"  # need to sort out depends and numerous failures
 
 RDEPEND="readline? ( sys-libs/readline:0= )"
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 # BDEPEND="test? ( net-libs/nodejs )"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.20.0-paths.patch )
