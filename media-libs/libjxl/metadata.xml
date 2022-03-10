@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>dnovomesky@gmail.com</email>
+    <name>Daniel Novomesky</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    JPEG XL reference implementation
+    (encoder and decoder), called libjxl.
+    Contains command line utilities: cjxl, djxl, jxlinfo.
+  </longdescription>
+  <use>
+    <flag name="gdk-pixbuf">Build a gdk-pixbuf loader</flag>
+    <flag name="gimp210">Enable plugin for GIMP 2.10.x series</flag>
+  </use>
+</pkgmetadata>
