@@ -6,7 +6,10 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="sqlite"
 
-inherit python-single-r1 desktop optfeature
+DOCS_BUILDER=mkdocs
+DOCS_DEPEND="dev-python/mkdocs-material"
+
+inherit python-single-r1 desktop docs optfeature
 
 DESCRIPTION="A booru-like media organizer for the desktop"
 HOMEPAGE="https://hydrusnetwork.github.io/hydrus/ https://github.com/hydrusnetwork/hydrus"
@@ -82,14 +85,13 @@ src_prepare() {
 	rm -r bin/ || die
 	# Build files used for CI, not actually needed
 	rm -r static/build_files || die
-	# Duplicate license file, not needed
-	rm license.txt || die
 	# Python requirements files, not needed
 	rm requirements_*.txt || die
 }
 
 src_compile() {
 	python_optimize "${S}"
+	docs_compile
 }
 
 src_test() {
@@ -107,18 +109,20 @@ src_install() {
 
 	mv "help my client will not boot.txt" "help_my_client_will_not_boot.txt" || die
 
-	local DOCS=(COPYING README.md Readme.txt help_my_client_will_not_boot.txt db/)
-	local HTML_DOCS=("${S}"/help/)
+	local DOCS=(COPYING README.md help_my_client_will_not_boot.txt db/)
 	einstalldocs
 
 	# Files only needed for testing
 	rm test.py hydrus/hydrus_test.py || die
 	rm -r hydrus/test/ static/testing/ || die
 
-	# These files are copied into doc
-	rm -r "${DOCS[@]}" "${HTML_DOCS[@]}" || die
+	# ${S}/_build = ${DOCS_OUTDIR}/.. and these have already been copied, remove it before installation
+	# ${DOCS[@]} files are copied into doc
+	# ${S}/docs/ is the markdown source code for documentation
+	# .gitignore/.github files aren't needed for the program to work, same with mkdocs files
+	rm -r "${S}/_build" "${DOCS[@]}" "${S}/docs/" .gitignore .github/ mkdocs.yml mkdocs-gh-pages.yml || die
 	# The program expects to find documentation here, so add a symlink to doc
-	dosym "${doc}/html/help" /opt/hydrus/help
+	dosym "${doc}/html" /opt/hydrus/help
 
 	insinto /opt/hydrus
 	doins -r "${S}"/.
