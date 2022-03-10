@@ -23,7 +23,7 @@ BDEPEND="dev-util/gengetopt"
 DEPEND="double-double? ( sci-libs/qd:= )
 	quad-double? ( sci-libs/qd:= )
 	pari? ( sci-mathematics/pari:= )"
-REPEND="${DEPEND}"
+RDEPEND="${DEPEND}"
 
 src_configure() {
 	econf $(use_with pari) \
