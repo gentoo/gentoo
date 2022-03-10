@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{8,9,10} )
 
-inherit autotools linux-info python-any-r1
+inherit linux-info python-any-r1
 
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz"
 DESCRIPTION="Linux application sandboxing and distribution framework"
