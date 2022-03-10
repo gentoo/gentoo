@@ -15,11 +15,14 @@ LICENSE="metapackage"
 
 SLOT="0"
 
-IUSE="+daemon +glib"
+# NOTE: bluetooth, native-headset and ofono-headset are passed through to
+# pulseaudio-daemon dependency to make sure users who have bluetooth enabled
+# just for pulseaudio package will also get these enabled via metapackage.
+IUSE="bluetooth +daemon +glib jack native-headset ofono-headset"
 
 RDEPEND="
 	>=media-libs/libpulse-${PV}[glib?,${MULTILIB_USEDEP}]
-	daemon? ( >=media-sound/pulseaudio-daemon-${PV} )
+	daemon? ( >=media-sound/pulseaudio-daemon-${PV}[bluetooth?,glib?,jack?,native-headset?,ofono-headset?] )
 "
 DEPEND="${RDEPEND}"
 
