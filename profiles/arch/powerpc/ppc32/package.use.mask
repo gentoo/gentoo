@@ -1,6 +1,12 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Maciej Barć <xgqt@gentoo.org> (2022-03-10)
+# Java and Tex dependencies required to build documentation are not keyworded,
+# notably dev-java/antlr-tool and dev-python/sphinxcontrib-bibtex.
+# Reference: bug 750956
+>=sci-mathematics/coq-8.15.0 doc
+
 # Sam James <sam@gentoo.org> (2022-03-10)
 # Boost has support for PPC32
 # https://www.boost.org/doc/libs/1_78_0/libs/context/doc/html/context/architectures.html
