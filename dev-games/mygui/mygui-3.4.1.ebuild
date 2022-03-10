@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_REMOVE_MODULES_LIST="FindFreetype"
-inherit cmake flag-o-matic multilib
+inherit cmake flag-o-matic
 
 MY_PN=MyGUI
 MY_P=${MY_PN}${PV}
