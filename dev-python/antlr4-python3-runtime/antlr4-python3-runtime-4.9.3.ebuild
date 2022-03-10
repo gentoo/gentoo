@@ -14,7 +14,7 @@ S="${WORKDIR}/antlr4-${PV}/runtime/Python3"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 python_test() {
 	"${EPYTHON}" tests/run.py -v || die "Tests failed with ${EPYTHON}"
