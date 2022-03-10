@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic multilib systemd
+inherit autotools flag-o-matic systemd
 
 DESCRIPTION="Simple relay-only local mail transport agent"
 HOMEPAGE="http://untroubled.org/nullmailer/ https://github.com/bruceg/nullmailer"
