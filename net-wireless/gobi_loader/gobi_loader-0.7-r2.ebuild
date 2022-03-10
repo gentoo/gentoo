@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit multilib udev
+inherit udev
 
 DESCRIPTION="gobi_loader is a firmware loader for Qualcomm Gobi USB chipsets"
 HOMEPAGE="https://www.codon.org.uk/~mjg59/gobi_loader/"
