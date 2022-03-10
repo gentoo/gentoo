@@ -30,7 +30,7 @@ S="${WORKDIR}/${MY_P}/cmake"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="cuda examples gzip hip lammps-memalign mpi opencl python test"
 # Requires write access to /dev/dri/renderD...
 RESTRICT="test"
