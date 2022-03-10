@@ -1,10 +1,10 @@
-# Copyright 2018-2021 Gentoo Authors
+# Copyright 2018-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 PYTHON_COMPAT=( python3_8 )
 PYTHON_REQ_USE="sqlite"
-inherit git-r3 multilib multiprocessing python-utils-r1 python-single-r1
+inherit git-r3 multiprocessing python-utils-r1 python-single-r1
 
 DESCRIPTION="Smaller, easier, more powerful, and more reliable than make"
 HOMEPAGE="https://github.com/apenwarr/redo"
