@@ -311,7 +311,7 @@ dev-vcs/git -mediawiki -mediawiki-experimental
 
 # Sergey Popov <pinkbyte@gentoo.org> (2013-12-27)
 # Boost.Context can be built on amd64
-dev-libs/boost	-context
+dev-libs/boost -context
 
 # Michał Górny <mgorny@gentoo.org> (2013-12-15)
 # mupen64plus' 2.0 new dynamic recompiler is supported on x86 and arm
