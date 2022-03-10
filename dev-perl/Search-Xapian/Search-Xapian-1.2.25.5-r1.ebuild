@@ -23,7 +23,10 @@ DEPEND="${RDEPEND}
 DIST_TEST=do
 # parallel fails sometimes...
 
-myconf="CXX=$(tc-getCXX) CXXFLAGS=${CXXFLAGS}"
+src_configure() {
+	myconf="CXX=$(tc-getCXX) CXXFLAGS=${CXXFLAGS}"
+	perl-module_src_configure
+}
 
 src_install() {
 	perl-module_src_install
