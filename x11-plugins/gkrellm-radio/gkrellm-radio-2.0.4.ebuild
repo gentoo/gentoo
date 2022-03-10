@@ -22,7 +22,10 @@ DEPEND="${RDEPEND}"
 S=${WORKDIR}/${PN}
 PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
-PLUGIN_SO=( radio$(get_modname) )
+src_configure() {
+	PLUGIN_SO=( radio$(get_modname) )
+	default
+}
 
 src_compile() {
 	use lirc && myconf="${myconf} WITH_LIRC=1"
