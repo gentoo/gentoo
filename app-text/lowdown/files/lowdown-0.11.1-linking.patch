@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index 7705432..4208e47 100644
+index ccc163d..d148da6 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -173,8 +173,8 @@ installwww: www
@@ -9,11 +9,11 @@ index 7705432..4208e47 100644
 -lowdown: liblowdown.a main.o
 -	$(CC) -o $@ main.o liblowdown.a $(LDFLAGS) $(LDADD_MD5) -lm
 +lowdown: liblowdown.so main.o
-+	$(CC) -o $@ main.o $(LDADD_MD5) -lm -llowdown $(LDFLAGS)
++	$(CC) -o $@ main.o $(LDADD_MD5) -lm -L. -llowdown $(LDFLAGS)
  
  lowdown-diff: lowdown
  	ln -f lowdown lowdown-diff
-@@ -183,7 +183,7 @@ liblowdown.a: $(OBJS) $(COMPAT_OBJS)
+@@ -183,10 +183,10 @@ liblowdown.a: $(OBJS) $(COMPAT_OBJS)
  	$(AR) rs $@ $(OBJS) $(COMPAT_OBJS)
  
  liblowdown.so: $(OBJS) $(COMPAT_OBJS)
@@ -21,7 +21,11 @@ index 7705432..4208e47 100644
 +	$(CC) -shared -o $@.$(LIBVER) $(OBJS) $(COMPAT_OBJS) $(LDFLAGS) $(LDADD_MD5) -lm  -Wl,-soname,$@.$(LIBVER)
  	ln -sf $@.$(LIBVER) $@
  
- install: bins
+-install: bins
++install: bins install_libs
+ 	mkdir -p $(DESTDIR)$(BINDIR)
+ 	mkdir -p $(DESTDIR)$(MANDIR)/man1
+ 	mkdir -p $(DESTDIR)$(MANDIR)/man5
 @@ -218,7 +218,7 @@ install_shared: liblowdown.so install_lib_common
  install_static: liblowdown.a install_lib_common
  	$(INSTALL_LIB) liblowdown.a $(DESTDIR)$(LIBDIR)
