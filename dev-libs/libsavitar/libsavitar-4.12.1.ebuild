@@ -15,7 +15,7 @@ SRC_URI="https://github.com/Ultimaker/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="LGPL-3"
 SLOT="0/3"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 IUSE="+python static-libs test"
 RESTRICT="!test? ( test )"
