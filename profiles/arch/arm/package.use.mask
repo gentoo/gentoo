@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-03-10)
+# Boost has support for ARM32
+# https://www.boost.org/doc/libs/1_78_0/libs/context/doc/html/context/architectures.html
+dev-libs/boost -context
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-01-17)
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
@@ -114,10 +119,6 @@ x11-themes/arc-theme cinnamon
 # armv5 and older has no virtual/rust support yet, needed by newer
 # gnome-base/librsvg, et al
 >=media-gfx/eog-3.33.1 svg
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-28)
-# Requires dev-libs/boost[context] which is masked on arm, bug #727138
-dev-libs/msgpack boost
 
 # Sam James <sam@gentoo.org> (2020-07-11)
 # Don't drag in qtwebengine for Plasma right now
