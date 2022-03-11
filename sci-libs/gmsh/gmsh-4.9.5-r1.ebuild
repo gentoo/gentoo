@@ -21,7 +21,7 @@ REQUIRED_USE="med? ( mpi )"
 
 RDEPEND="
 	virtual/fortran
-	X? ( x11-libs/fltk:1 )
+	X? ( x11-libs/fltk:1[xft] )
 	blas? ( virtual/blas virtual/lapack sci-libs/fftw:3.0 )
 	cgns? ( sci-libs/cgnslib )
 	jpeg? ( virtual/jpeg:0 )
