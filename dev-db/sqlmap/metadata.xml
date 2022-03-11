@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>mario.haustein@hrz.tu-chemnitz.de</email>
+		<name>Mario Haustein</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		sqlmap is an open source penetration testing tool that automates the
+		process of detecting and exploiting SQL injection flaws and taking over
+		of database servers.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">sqlmapproject/sqlmap</remote-id>
+	</upstream>
+</pkgmetadata>
