@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-03-11)
+# Significant number of open bugs including unaddressed security issues;
+# out of date; stuck on deprecated (and soon-to-stop-working) cmake-utils
+# eclass. See bug #834113. Removal on 2022-04-11.
+dev-db/mysql-cluster
+
 # Sam James <sam@gentoo.org> (2022-03-09)
 # EAPI 5, out-of-date. Not packaged by any other distributions.
 # Removal on 2022-04-09.
