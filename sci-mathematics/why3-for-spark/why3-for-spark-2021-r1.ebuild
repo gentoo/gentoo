@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools findlib
 
 ADAMIRROR=https://community.download.adacore.com/v1
 ID=dd74ae7ecfd7d56aff7b17cee7a35559384a600f
@@ -16,29 +16,36 @@ SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="coq doc emacs gtk html hypothesis-selection +ocamlopt zarith zip"
+IUSE="coq doc emacs gtk html hypothesis-selection +ocamlopt sexp zarith zip"
 RESTRICT="strip"
 
-DEPEND=">=dev-lang/ocaml-4.11:=[ocamlopt?]
+RDEPEND="
+	>=dev-lang/ocaml-4.11:=[ocamlopt?]
 	dev-ml/menhir:=
 	dev-ml/num:=
 	dev-ml/yojson:=
-	coq? (
-		sci-mathematics/coq
-	)
-	doc? (
-		dev-tex/rubber
-		dev-python/sphinx
-		media-gfx/graphviz
-		dev-python/sphinxcontrib-bibtex
-	)
-	gtk? ( dev-ml/lablgtk:=[sourceview] )
+	coq? ( sci-mathematics/coq )
 	emacs? ( app-editors/emacs:* )
+	gtk? ( dev-ml/lablgtk:=[sourceview] )
 	html? ( dev-tex/hevea:= )
 	hypothesis-selection? ( dev-ml/ocamlgraph:= )
+	sexp? (
+		dev-ml/ppx_deriving:=[ocamlopt?]
+		dev-ml/ppx_sexp_conv:=[ocamlopt?]
+		dev-ml/sexplib:=[ocamlopt?]
+	)
 	zarith? ( dev-ml/zarith:= )
-	zip? ( dev-ml/camlzip:= )"
-RDEPEND="${DEPEND}"
+	zip? ( dev-ml/camlzip:= )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	doc? (
+		dev-python/sphinx
+		dev-python/sphinxcontrib-bibtex
+		dev-tex/rubber
+		media-gfx/graphviz
+	)
+"
 
 S="${WORKDIR}"/${MYP}
 
@@ -68,30 +75,34 @@ QA_FLAGS_IGNORED=(
 	/usr/bin/gnat_server
 	/usr/bin/gnatwhy3
 	/usr/bin/why3realize.cmxs
+	/usr/bin/why3ide.cmxs
 )
 
 REQUIRED_USE="html? ( doc )"
 
 src_prepare() {
 	find examples -name \*gz | xargs gunzip
-	default
 	eautoreconf
+	default
 }
 
 src_configure() {
-	econf \
-		--disable-pvs-libs \
-		--disable-isabelle-libs \
-		--enable-verbose-make \
-		$(use_enable coq coq-libs) \
-		$(use_enable doc) \
-		$(use_enable emacs emacs-compilation) \
-		$(use_enable gtk ide) \
-		$(use_enable html html-pdf) \
-		$(use_enable hypothesis-selection) \
-		$(use_enable ocamlopt native-code) \
-		$(use_enable zarith) \
+	local myconf=(
+		--disable-pvs-libs
+		--disable-isabelle-libs
+		--enable-verbose-make
+		$(use_enable coq coq-libs)
+		$(use_enable doc)
+		$(use_enable emacs emacs-compilation)
+		$(use_enable gtk ide)
+		$(use_enable html html-pdf)
+		$(use_enable hypothesis-selection)
+		$(use_enable ocamlopt native-code)
+		$(use_enable sexp pp-sexp)
+		$(use_enable zarith)
 		$(use_enable zip)
+	)
+	econf "${myconf[@]}"
 }
 
 src_compile() {

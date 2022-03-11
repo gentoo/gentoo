@@ -21,7 +21,8 @@
 		<flag name="coq">Add <pkg>sci-mathematics/coq</pkg> support</flag>
 		<flag name="html">Build HTML documentation</flag>
 		<flag name="hypothesis-selection">Enable hypothesis selection</flag>
-		<flag name="zarith">Use <pkg>dev-ml/zarith</pkg></flag>
+		<flag name="sexp">Add support for outputting S-expressions with <pkg>dev-ml/ppx_sexp_conv</pkg></flag>
+		<flag name="zarith">Use Zarith (<pkg>dev-ml/zarith</pkg>) instead of Nums (<pkg>dev-ml/num</pkg>) for computations</flag>
 		<flag name="zip">Enable compression of session files</flag>
 	</use>
 </pkgmetadata>
