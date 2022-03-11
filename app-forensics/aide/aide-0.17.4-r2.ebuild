@@ -91,10 +91,10 @@ src_install() {
 
 	insinto /etc/${PN}
 	insopts -m0600
-	newins "${FILESDIR}"/aide.conf-r1 aide.conf
+	newins "${FILESDIR}"/aide.conf-r2 aide.conf
 
 	dosbin "${FILESDIR}"/aideinit
-	dodoc -r contrib/ "${FILESDIR}"/aide.cron
+	dodoc -r contrib/ "${FILESDIR}"/aide.cron-r2
 
 	keepdir /var/{lib,log}/${PN}
 }
