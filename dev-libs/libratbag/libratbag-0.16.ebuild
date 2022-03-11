@@ -25,7 +25,12 @@ BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/swig
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? (
+		$(python_gen_cond_dep '
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+		')
+	)
 	test? (
 		dev-libs/check
 		dev-libs/gobject-introspection
