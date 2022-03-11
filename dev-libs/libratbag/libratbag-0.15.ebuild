@@ -44,9 +44,11 @@ BDEPEND="
 RDEPEND="
 	${PYTHON_DEPS}
 	acct-group/plugdev
+	dev-libs/glib:2
 	dev-libs/json-glib
 	dev-libs/libevdev
-	virtual/libudev
+	dev-libs/libunistring:=
+	virtual/libudev:=
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		dev-python/python-evdev[${PYTHON_USEDEP}]
