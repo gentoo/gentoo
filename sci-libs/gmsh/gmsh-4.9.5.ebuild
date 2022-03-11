@@ -1,11 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 
-inherit cmake-utils flag-o-matic fortran-2 python-any-r1 toolchain-funcs
+inherit cmake fortran-2 python-any-r1 toolchain-funcs
 
 DESCRIPTION="A three-dimensional finite element mesh generator"
 HOMEPAGE="http://www.geuz.org/gmsh/"
@@ -41,7 +41,6 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${P}-source
 
 PATCHES=(
-	"${FILESDIR}"/${P}-gcc11.patch
 )
 
 pkg_setup() {
@@ -54,7 +53,7 @@ src_configure() {
 	use blas && \
 		mycmakeargs+=(-DCMAKE_Fortran_COMPILER=$(tc-getF77))
 
-	mycmakeargs+=(
+	local mycmakeargs+=(
 		-DENABLE_BLAS_LAPACK="$(usex blas)"
 		-DENABLE_BUILD_DYNAMIC="$(usex shared)"
 		-DENABLE_CGNS="$(usex cgns)"
@@ -68,11 +67,11 @@ src_configure() {
 		-DENABLE_PETSC="$(usex petsc)"
 		-DENABLE_WRAP_PYTHON="$(usex python)")
 
-	cmake-utils_src_configure mycmakeargs
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use examples ; then
 		dodoc -r demos tutorial
