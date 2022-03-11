@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,9 +19,15 @@ SRC_URI="https://github.com/solvespace/solvespace/archive/v${PV}.tar.gz -> ${P}.
 	https://github.com/solvespace/libdxfrw/archive/${DXFRW_COMMIT}.tar.gz -> ${DXFRW_P}.tar.gz
 	https://github.com/microsoft/mimalloc/archive/${MIMALLOC_COMMIT}.tar.gz -> ${MIMALLOC_P}.tar.gz"
 
+# licenses
+# + SolveSpace (GPL-3+)
+# |- Bitstream Vera (BitstreamVera)
+# + libdxfrw (GPL-2+)
+# + mimalloc (MIT)
+
 IUSE="openmp"
 KEYWORDS="~amd64 ~x86"
-LICENSE="GPL-3"
+LICENSE="BitstreamVera GPL-2+ GPL-3+ MIT"
 SLOT="0"
 
 RDEPEND="dev-cpp/atkmm:=
