@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,28 +7,8 @@ inherit go-module
 
 DESCRIPTION="a simple FUSE filesystem for mounting Android devices as a MTP device"
 HOMEPAGE="https://github.com/hanwen/go-mtpfs"
-
-EGO_SUM=(
-	"github.com/hanwen/go-fuse v0.0.0-20190726130028-2f298055551b"
-	"github.com/hanwen/go-fuse v0.0.0-20190726130028-2f298055551b/go.mod"
-	"github.com/hanwen/go-fuse v1.0.0"
-	"github.com/hanwen/go-fuse v1.0.0/go.mod"
-	"github.com/hanwen/go-fuse/v2 v2.0.1"
-	"github.com/hanwen/go-fuse/v2 v2.0.1/go.mod"
-	"github.com/hanwen/go-fuse/v2 v2.0.2"
-	"github.com/hanwen/go-fuse/v2 v2.0.2/go.mod"
-	"github.com/hanwen/usb v0.0.0-20141217151552-69aee4530ac7"
-	"github.com/hanwen/usb v0.0.0-20141217151552-69aee4530ac7/go.mod"
-	"github.com/kylelemons/godebug v0.0.0-20170820004349-d65d576e9348/go.mod"
-	"github.com/kylelemons/godebug v1.1.0/go.mod"
-	"golang.org/x/sys v0.0.0-20180830151530-49385e6e1522"
-	"golang.org/x/sys v0.0.0-20180830151530-49385e6e1522/go.mod"
-	"golang.org/x/sys v0.0.0-20190826190057-c7b8b68b1456"
-	"golang.org/x/sys v0.0.0-20190826190057-c7b8b68b1456/go.mod"
-	)
-go-module_set_globals
-SRC_URI="https://github.com/hanwen/go-mtpfs/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	${EGO_SUM_SRC_URI}"
+SRC_URI="https://github.com/hanwen/go-mtpfs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -44,13 +24,13 @@ RDEPEND="${COMMON_DEPEND}"
 RESTRICT+=" test"
 
 src_compile() {
-	go build -ldflags '-extldflags=-fno-PIC' . || die
+	ego build -ldflags '-extldflags=-fno-PIC' .
 }
 
 src_test() {
-	go test -ldflags '-extldflags=-fno-PIC' fs || die
-	go test -ldflags '-extldflags=-fno-PIC' usb || die
-	go test -ldflags '-extldflags=-fno-PIC' mtp || die
+	ego test -ldflags '-extldflags=-fno-PIC' fs
+	ego test -ldflags '-extldflags=-fno-PIC' usb
+	ego test -ldflags '-extldflags=-fno-PIC' mtp
 }
 
 src_install() {
