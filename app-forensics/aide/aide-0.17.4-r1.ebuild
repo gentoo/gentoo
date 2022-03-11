@@ -43,7 +43,8 @@ A helper script, aideinit, was installed and can be used to make AIDE
 management easier. Please run 'aideinit --help' for more information."
 
 PATCHES=(
-	"${FILESDIR}"/aide-0.17.4-bashism.patch
+	"${FILESDIR}"/${PN}-0.16-fix-acl-configure-option.patch
+	"${FILESDIR}"/${PN}-0.17.4-bashism.patch
 )
 
 src_prepare() {

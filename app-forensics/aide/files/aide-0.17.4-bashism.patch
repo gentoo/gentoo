@@ -1,6 +1,8 @@
 Fixed upstream, so backport to 0.17.4 of
 https://github.com/aide/aide/commit/5161886c49060228811eee6da319844ef62dff6d
 https://github.com/aide/aide/commit/007eb4f32e8874ce457b4f15d9789c2a9d61731b
+
+Fixed in master but not 0.17.x.
 --- a/configure.ac
 +++ b/configure.ac
 @@ -329,7 +329,7 @@ fi
