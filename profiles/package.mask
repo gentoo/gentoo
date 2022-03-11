@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-03-11)
+# No maintainer, out of date, stuck on deprecated
+# (and soon-to-stop-working) cmake-utils. bug #774480.
+# Removal on 2022-04-11.
+dev-libs/processor-trace
+
+# Sam James <sam@gentoo.org> (2022-03-11)
 # Significant number of open bugs including unaddressed security issues;
 # out of date; stuck on deprecated (and soon-to-stop-working) cmake-utils
 # eclass. See bug #834113. Removal on 2022-04-11.
