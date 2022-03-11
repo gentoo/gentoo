@@ -21,6 +21,11 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/flake8[${PYTHON_USEDEP}]
+		')
+	)
 "
 RDEPEND="
 	${PYTHON_DEPS}
