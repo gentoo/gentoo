@@ -116,13 +116,16 @@ src_install() {
 	rm test.py hydrus/hydrus_test.py || die
 	rm -r hydrus/test/ static/testing/ || die
 
-	# ${S}/_build = ${DOCS_OUTDIR}/.. and these have already been copied, remove it before installation
 	# ${DOCS[@]} files are copied into doc
 	# ${S}/docs/ is the markdown source code for documentation
 	# .gitignore/.github files aren't needed for the program to work, same with mkdocs files
-	rm -r "${S}/_build" "${DOCS[@]}" "${S}/docs/" .gitignore .github/ mkdocs.yml mkdocs-gh-pages.yml || die
-	# The program expects to find documentation here, so add a symlink to doc
-	dosym "${doc}/html" /opt/hydrus/help
+	rm -r "${DOCS[@]}" "${S}/docs/" .gitignore .github/ mkdocs.yml mkdocs-gh-pages.yml || die
+	if use doc; then
+		# ${S}/_build = ${DOCS_OUTDIR}/.. , these have already been copied, remove before installation
+		rm -r "${S}/_build" || die
+		# The program expects to find documentation here, so add a symlink to doc
+		dosym "${doc}/html" /opt/hydrus/help
+	fi
 
 	insinto /opt/hydrus
 	doins -r "${S}"/.
