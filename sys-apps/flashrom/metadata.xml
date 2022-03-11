@@ -24,7 +24,6 @@
 		<flag name="jlink-spi">Support for SEGGER J-Link and compatible devices</flag>
 		<flag name="linux-mtd">Enable support for Linux mtd SPI flash devices</flag>
 		<flag name="linux-spi">Enable support for Linux userspace spidev interface</flag>
-		<flag name="lspcon-i2c-spi">Enable support for Parade lspcon USB-C to HDMI protocol translator</flag>
 		<flag name="mstarddc-spi">Support for SPI flash ROMs accessible through DDC in MSTAR-equipped displays</flag>
 		<flag name="nic3com">Enable 3Com NIC programmer</flag>
 		<flag name="nicintel">Support for Intel NICs</flag>
@@ -35,11 +34,9 @@
 		<flag name="ogp-spi">Enable support for OGP (Open Graphics Project) SPI flashing</flag>
 		<flag name="pickit2-spi">SUpport for SPI flash ROMs accessible via Microchip PICkit2</flag>
 		<flag name="pony-spi">Enable support for SI-Prog like hardware by Lancos</flag>
-		<flag name="raiden-debug-spi">Enable ChromiumOS Servo DUT debug board</flag>
 		<flag name="rayer-spi">RayeR SPIPGM hardware support</flag>
-		<flag name="realtek-mst-i2c-spi">Enable support for Realtek MultiStream Transport (MST)</flag>
-		<flag name="satasii">Enable programmer for SiI SATA controllers</flag>
 		<flag name="satamv">Enable programmer for Marvell SATA controllers</flag>
+		<flag name="satasii">Enable programmer for SiI SATA controllers</flag>
 		<flag name="stlinkv3-spi">Enable SPI programmer using STLINK-V3</flag>
 		<flag name="serprog">Enable Serial Flasher programmer</flag>
 		<flag name="tools">Install ich_descriptor_tool, a tool for reading descriptor-mode SPI-flash images for Intel chipsets</flag>
