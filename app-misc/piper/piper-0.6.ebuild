@@ -14,11 +14,18 @@ SRC_URI="https://github.com/libratbag/piper/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/flake8[${PYTHON_USEDEP}]
+		')
+	)
 "
 RDEPEND="
 	${PYTHON_DEPS}
@@ -32,7 +39,6 @@ RDEPEND="
 		dev-python/pycairo[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 		dev-python/python-evdev[${PYTHON_USEDEP}]
-		dev-python/flake8[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="
@@ -43,6 +49,11 @@ DEPEND="
 
 src_configure() {
 	python_setup
+
+	local emesonargs=(
+		$(meson_use test tests)
+	)
+
 	meson_src_configure
 }
 
