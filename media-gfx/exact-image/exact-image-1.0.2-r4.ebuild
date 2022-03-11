@@ -13,7 +13,7 @@ LUA_COMPAT=( lua5-{1..4} luajit )
 inherit php-ext-source-r3 lua-single toolchain-funcs
 
 DESCRIPTION="A fast, modern and generic image processing library"
-HOMEPAGE="http://www.exactcode.de/site/open_source/exactimage/"
+HOMEPAGE="https://exactcode.com/opensource/exactimage/"
 SRC_URI="http://dl.exactcode.de/oss/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
