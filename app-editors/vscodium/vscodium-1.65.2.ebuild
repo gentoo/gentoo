@@ -65,7 +65,6 @@ RDEPEND="
 	x11-libs/libXrandr
 	x11-libs/libxshmfence
 	x11-libs/pango
-	!>=gui-libs/wlroots-0.15
 "
 
 QA_PREBUILT="
@@ -111,4 +110,12 @@ pkg_postinst() {
 	xdg_pkg_postinst
 	elog "When compared to the regular VSCode, VSCodium has a few quirks"
 	elog "More information at: https://github.com/VSCodium/vscodium/blob/master/DOCS.md"
+
+	if has_version -r ">=gui-libs/wlroots-0.15"; then
+		elog
+		elog "The wayland backend of vscodium crashes with >=gui-libs/wlroots-0.15"
+		elog "This will be fixed upstream in a later release"
+		elog "Please run the xwayland version for now, on wlroots based DEs."
+		elog "For more information, see https://bugs.gentoo.org/834082"
+	fi
 }
