@@ -25,10 +25,9 @@ else
 	ZFS_KERNEL_DEP="${ZFS_KERNEL_COMPAT_OVERRIDE:-${ZFS_KERNEL_COMPAT}}"
 	ZFS_KERNEL_DEP="${ZFS_KERNEL_DEP%%.*}.$(( ${ZFS_KERNEL_DEP##*.} + 1))"
 
-	# 2.1.3 unkeyworded briefly for some testing
-	#if [[ ${PV} != *_rc* ]]; then
-	#	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
-	#fi
+	if [[ ${PV} != *_rc* ]]; then
+		KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+	fi
 fi
 
 LICENSE="CDDL MIT debug? ( GPL-2+ )"
