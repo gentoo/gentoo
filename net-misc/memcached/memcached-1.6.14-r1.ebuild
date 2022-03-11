@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,16 +16,17 @@ SRC_URI="https://www.memcached.org/files/${MY_P}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="debug sasl seccomp selinux slabs-reassign test" # hugetlbfs later
+IUSE="debug sasl seccomp selinux slabs-reassign ssl test" # hugetlbfs later
 
 RDEPEND=">=dev-libs/libevent-1.4:=
 	dev-lang/perl
 	sasl? ( dev-libs/cyrus-sasl )
 	seccomp? ( sys-libs/libseccomp )
-	selinux? ( sec-policy/selinux-memcached )"
+	selinux? ( sec-policy/selinux-memcached )
+	ssl? ( >=dev-libs/openssl-1.1.0g:= )"
 DEPEND="${RDEPEND}
 	acct-user/memcached
-	test? ( virtual/perl-Test-Harness >=dev-perl/Cache-Memcached-1.24 )"
+	test? ( virtual/perl-Test-Harness >=dev-perl/Cache-Memcached-1.24 ssl? ( dev-perl/IO-Socket-SSL ) )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -64,7 +65,8 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-docs \
-		$(use_enable sasl)
+		$(use_enable sasl) \
+		$(use_enable ssl tls)
 	# The xml2rfc tool to build the additional docs requires TCL :-(
 	# `use_enable doc docs`
 }
