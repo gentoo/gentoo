@@ -65,7 +65,6 @@ RDEPEND="
 	x11-libs/libXrandr
 	x11-libs/libxshmfence
 	x11-libs/pango
-	!>=gui-libs/wlroots-0.15
 "
 
 QA_PREBUILT="
@@ -119,4 +118,12 @@ pkg_postinst() {
 	xdg_pkg_postinst
 	elog "You may want to install some additional utils, check in:"
 	elog "https://code.visualstudio.com/Docs/setup#_additional-tools"
+
+	if has_version -r ">=gui-libs/wlroots-0.15"; then
+		elog
+		elog "The wayland backend of vscode crashes with >=gui-libs/wlroots-0.15"
+		elog "This will be fixed upstream in a later release"
+		elog "Please run the xwayland version for now, on wlroots based DEs."
+		elog "For more information, see https://bugs.gentoo.org/834082"
+	fi
 }
