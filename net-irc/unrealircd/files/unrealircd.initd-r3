@@ -32,8 +32,9 @@ else
 fi
 
 checkconfig() {
-	# command_args weirdness because We want to preserve the chroot arguments if it's set
-	su -s /bin/sh ${command_user:=root} -c "${command} ${command_args%${UNREALIRCD_COMMAND_ARGS}}" configtest
+	# command_args weirdness because we want to preserve the chroot arguments if it's set
+	# Only run the configtest for the main instance; it can't work right now for others (no way to specify config file)
+	[ ${SVCNAME} = unrealircd ] && su -s /bin/sh ${command_user:=root} -c "${command} ${command_args%${UNREALIRCD_COMMAND_ARGS}}" configtest
 }
 
 depend() {
