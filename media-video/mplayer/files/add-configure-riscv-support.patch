@@ -1,0 +1,10 @@
+--- MPlayer-1.4/configure       2018-12-15 16:38:24.000000000 +0100
++++ MPlayer-1.4-mod/configure   2021-06-19 20:41:00.735402324 +0200
+@@ -1761,6 +1761,7 @@
+       nios2) host_arch=nios2 ;;
+       vax) host_arch=vax ;;
+       xtensa*) host_arch=xtensa ;;
++      riscv*) host_arch=generic ;;
+       *) host_arch=UNKNOWN ;;
+   esac
+   }

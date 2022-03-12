@@ -147,6 +147,10 @@ RDEPEND+="
 	selinux? ( sec-policy/selinux-mplayer )
 "
 
+PATCHES=(
+	"${FILESDIR}/add-configure-riscv-support.patch" #bug 812855
+)
+
 SLOT="0"
 LICENSE="GPL-2"
 if [[ ${PV} != *9999* ]]; then
