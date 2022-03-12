@@ -1,0 +1,24 @@
+--- a/demo/simple.cpp
++++ b/demo/simple.cpp
+@@ -105,14 +105,14 @@
+     float t2 = sin(n / 50 + 1);
+     float t3 = sin(n / 30 + 2);
+ 
+-    float ambient[4]  = { (t1 + 2.0) / 3,
+-                          (t2 + 2.0) / 3,
+-                          (t3 + 2.0) / 3, 0.3 };
+-    float diffuse[4]  = { 1.0, 0.9, 0.9, 1.0 };
+-    float specular[4] = { 1.0, 0.7, 0.7, 1.0 };
+-    float position[4] = { 100.0, 100.0, 0.0, 1.0 };
++    float ambient[4]  = { (t1 + 2.0f) / 3,
++                          (t2 + 2.0f) / 3,
++                          (t3 + 2.0f) / 3, 0.3 };
++    float diffuse[4]  = { 1.0f, 0.9f, 0.9f, 1.0f };
++    float specular[4] = { 1.0f, 0.7f, 0.7f, 1.0f };
++    float position[4] = { 100.0f, 100.0f, 0.0f, 1.0f };
+ 
+-    float front_ambient[4]  = { 0.7, 0.7, 0.7, 0.0 };
++    float front_ambient[4]  = { 0.7f, 0.7f, 0.7f, 0.0f };
+ 
+     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+ 
