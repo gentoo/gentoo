@@ -17,13 +17,10 @@
 		<email>matthew@gentoo.org</email>
 		<name>Matthew Smith</name>
 	</maintainer>
-	<use>
-		<flag name="ts-cli">Build Tree-sitter CLI tool (for developing, testing, and using Tree-sitter parsers)</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">tree-sitter/tree-sitter</remote-id>
 	</upstream>
 	<longdescription>
-		Tree-sitter is a parser generator tool and an incremental parsing library. It can build a concrete syntax tree for a source file and efficiently update the syntax tree as the source file is edited. 
+		Tree-sitter is a parser generator tool and an incremental parsing library. It can build a concrete syntax tree for a source file and efficiently update the syntax tree as the source file is edited.
 	</longdescription>
 </pkgmetadata>
