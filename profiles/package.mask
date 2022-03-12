@@ -372,7 +372,6 @@ app-misc/emelfm2
 # Requires GCC 8, security vulnerabilities, switch to CUDA 11,
 # consider using clang+NVPTX backend for sm_30 cards.
 # Removal in 90 days, bug #721808, #760708.
-<dev-util/nvidia-cuda-sdk-11
 <dev-util/nvidia-cuda-toolkit-11
 
 # Mart Raudsepp <leio@gentoo.org> (2021-12-18)
