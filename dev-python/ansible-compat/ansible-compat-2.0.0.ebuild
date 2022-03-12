@@ -1,11 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-# TODO: 0.6.0+ support py3.10 upstream but as of 2021-11-18 we are still missing
-# support for it in app-admin/ansible-base, add when ready
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 inherit distutils-r1
 
@@ -47,7 +46,6 @@ EPYTEST_DESELECT=(
 	test/test_runtime_example.py::test_runtime
 )
 
-# Requires currently unpackaged Sphinx extension myst_parser
-#distutils_enable_sphinx docs 'dev-python/sphinx_ansible_theme'
+distutils_enable_sphinx docs dev-python/ansible-pygments dev-python/myst_parser dev-python/sphinx_ansible_theme
 
 distutils_enable_tests pytest
