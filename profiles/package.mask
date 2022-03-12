@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-03-12)
+# Unmaintained, no revdeps in tree, no other distro packages this,
+# wrong dependencies, out of date, stuck on deprecated
+# (and soon-to-stop-working) cmake-utils. bug #702980, #834121.
+# Removal on 2022-04-11.
+net-wireless/rtl_power_fftw
+
 # Sam James <sam@gentoo.org> (2022-03-11)
 # No maintainer, out of date, stuck on deprecated
 # (and soon-to-stop-working) cmake-utils. bug #774480.
