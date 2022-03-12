@@ -294,6 +294,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-7.2.0.4-qt5detect.patch"
 
+	# TODO upstream
+	"${FILESDIR}/${P}-poppler-22.03.0.patch" # by Archlinux
+
 	# 7.3 branch
 	"${FILESDIR}/${PN}-7.2.2.2-makefile-gengal.patch"
 )
