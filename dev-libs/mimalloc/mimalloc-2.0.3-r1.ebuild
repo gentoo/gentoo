@@ -1,11 +1,11 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit cmake
 
-DESCRIPTION="mimalloc is a compact general purpose allocator with excellent performance"
+DESCRIPTION="A compact general purpose allocator with excellent performance"
 HOMEPAGE="https://github.com/microsoft/mimalloc"
 SRC_URI="https://github.com/microsoft/mimalloc/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
