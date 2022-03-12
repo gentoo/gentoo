@@ -41,7 +41,6 @@
 		<flag name="serprog">Enable Serial Flasher programmer</flag>
 		<flag name="tools">Install ich_descriptor_tool, a tool for reading descriptor-mode SPI-flash images for Intel chipsets</flag>
 		<flag name="usbblaster-spi">Enable support for Altera USB-Blaster dongles</flag>
-		<flag name="wiki">Enable wiki informations, like supported devices etc.</flag>
 	</use>
 	<longdescription lang="en">
 		flashrom is a utility for identifying, reading, writing, verifying and erasing flash chips. It is designed to flash BIOS/EFI/coreboot/firmware/optionROM images on mainboards, network/graphics/storage controller cards, and various other programmer devices.
