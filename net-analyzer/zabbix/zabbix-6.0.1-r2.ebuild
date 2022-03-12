@@ -13,6 +13,8 @@ EGO_SUM=(
 	"github.com/BurntSushi/locker v0.0.0-20171006230638-a6e239ea1c69 h1:+tu3HOoMXB7RXEINRVIpxJCT+KdYiI7LAEAUrOw3dIU="
 	"github.com/BurntSushi/locker v0.0.0-20171006230638-a6e239ea1c69/go.mod h1:L1AbZdiDllfyYH5l5OkAaZtk7VkWe89bPJFmnDBNHxg="
 	"github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU="
+	"github.com/cakturk/go-netstat v0.0.0-20200220111822-e5b49efee7a5 h1:BjkPE3785EwPhhyuFkbINB+2a1xATwk8SNDWnJiD41g="
+	"github.com/cakturk/go-netstat v0.0.0-20200220111822-e5b49efee7a5/go.mod h1:jtAfVaU/2cu1+wdSRPWE2c1N2qeAA3K4RH9pYgqwets="
 	"github.com/chromedp/cdproto v0.0.0-20210104223854-2cc87dae3ee3 h1:XeGYLuu3Yu3/2/FLDXyObe6lBYtUFDTJgjjNPcfcU40="
 	"github.com/chromedp/cdproto v0.0.0-20210104223854-2cc87dae3ee3/go.mod h1:55pim6Ht4LJKdVLlyFJV/g++HsEA1hQxPbB5JyNdZC0="
 	"github.com/chromedp/chromedp v0.6.0 h1:jjzHzXW5pNdKt1D9cEDAKZM/yZ2EwL/hLyGbCUFldBI="
@@ -146,6 +148,8 @@ EGO_SUM=(
 	"github.com/mediocregopher/radix/v3 v3.5.0/go.mod h1:8FL3F6UQRXHXIBSPUs5h0RybMF8i4n7wVopoX3x7Bv8="
 	"github.com/memcachier/mc/v3 v3.0.1 h1:Os/fUl/8c+hc1qWgjv5hNK0JI6GxKUOuehzB/UmjLP0="
 	"github.com/memcachier/mc/v3 v3.0.1/go.mod h1:GzjocBahcXPxt2cmqzknrgqCOmMxiSzhVKPOe90Tpug="
+	"github.com/miekg/dns v1.1.43 h1:JKfpVSCB84vrAmHzyrsxB5NAr5kLoMXZArPSw7Qlgyg="
+	"github.com/miekg/dns v1.1.43/go.mod h1:+evo5L0630/F6ca/Z9+GAqzhjGyn8/c+TBaOyfEl0V4="
 	"github.com/natefinch/npipe v0.0.0-20160621034901-c1b8fa8bdcce h1:TqjP/BTDrwN7zP9xyXVuLsMBXYMt6LLYi55PlrIcq8U="
 	"github.com/natefinch/npipe v0.0.0-20160621034901-c1b8fa8bdcce/go.mod h1:ifHPsLndGGzvgzcaXUvzmt6LxKT4pJ+uzEhtnMt+f7A="
 	"github.com/omeid/go-yarn v0.0.1 h1:mUQExNwUrYn7tZRwQdsUuoQWHIujtjjpjb/PAtUj9dk="
@@ -197,9 +201,12 @@ EGO_SUM=(
 	"golang.org/x/net v0.0.0-20190620200207-3b0461eec859/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s="
 	"golang.org/x/net v0.0.0-20190813141303-74dc4d7220e7 h1:fHDIZ2oxGnUZRN6WgWFCbYBjH9uqVPRCUVUDhs0wnbA="
 	"golang.org/x/net v0.0.0-20190813141303-74dc4d7220e7/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s="
+	"golang.org/x/net v0.0.0-20210226172049-e18ecbb05110 h1:qWPm9rbaAMKs8Bq/9LRpbMqxWRVUAQwMI9fVrssnTfw="
+	"golang.org/x/net v0.0.0-20210226172049-e18ecbb05110/go.mod h1:m0MpNAwzfU5UDzcl9v0D8zg8gWTRqZa9RBIspLL5mdg="
 	"golang.org/x/sync v0.0.0-20190423024810-112230192c58/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM="
-	"golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e h1:vcxGaoTs7kV8m5Np9uUNQin4BrLOthgV7252N8V+FwY="
 	"golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM="
+	"golang.org/x/sync v0.0.0-20210220032951-036812b2e83c h1:5KslGYwFpkhGh+Q16bwMP3cOontH8FOep7tGV86Y7SQ="
+	"golang.org/x/sync v0.0.0-20210220032951-036812b2e83c/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM="
 	"golang.org/x/sys v0.0.0-20180905080454-ebe1bf3edb33/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY="
 	"golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY="
 	"golang.org/x/sys v0.0.0-20190222072716-a9d3bda3a223/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY="
@@ -213,6 +220,10 @@ EGO_SUM=(
 	"golang.org/x/sys v0.0.0-20200223170610-d5e6a3e2c0ae/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs="
 	"golang.org/x/sys v0.0.0-20210104204734-6f8348627aad h1:MCsdmFSdEd4UEa5TKS5JztCRHK/WtvNei1edOj5RSRo="
 	"golang.org/x/sys v0.0.0-20210104204734-6f8348627aad/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs="
+	"golang.org/x/sys v0.0.0-20201119102817-f84b799fce68/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs="
+	"golang.org/x/sys v0.0.0-20210303074136-134d130e1a04 h1:cEhElsAv9LUt9ZUUocxzWe05oFLVd+AA2nstydTeI8g="
+	"golang.org/x/sys v0.0.0-20210303074136-134d130e1a04/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs="
+	"golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo="
 	"golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ="
 	"golang.org/x/text v0.3.2/go.mod h1:bEr9sfX3Q8Zfm5fL9x+3itogRgK3+ptLWKqgva+5dAk="
 	"golang.org/x/text v0.3.3 h1:cokOdA+Jmi5PJGXLlLllQSgYigAEfHXJAERHVMaCc2k="
@@ -245,8 +256,7 @@ EGO_SUM=(
 	"gopkg.in/yaml.v2 v2.2.2/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI="
 	"gopkg.in/yaml.v2 v2.2.8 h1:obN1ZagJSUGI0Ek/LBmuj4SNLPfIny3KsKFopxRdj10="
 	"gopkg.in/yaml.v2 v2.2.8/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI="
-	"honnef.co/go/tools v0.0.1-2019.2.3/go.mod h1:a3bituU0lyd329TUQxRnasdCoJDkEUEAqEt0JzvZhAg="
-)
+	"honnef.co/go/tools v0.0.1-2019.2.3/go.mod h1:a3bituU0lyd329TUQxRnasdCoJDkEUEAqEt0JzvZhAg=")
 go-module_set_globals
 
 DESCRIPTION="ZABBIX is software for monitoring of your applications, network and servers"
@@ -261,7 +271,7 @@ LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
 KEYWORDS="~amd64 ~x86"
-IUSE="+agent +agent2 curl frontend gnutls ipv6 java ldap libxml2 mysql odbc openipmi +openssl oracle +postgres proxy server snmp sqlite ssh ssl static"
+IUSE="agent +agent2 curl frontend gnutls ipv6 java ldap libxml2 mysql odbc openipmi +openssl oracle +pcre2 +postgres proxy server snmp sqlite ssh ssl static"
 REQUIRED_USE="|| ( agent agent2 frontend proxy server )
 	proxy? ( ^^ ( mysql oracle postgres sqlite ) )
 	server? ( ^^ ( mysql oracle postgres ) !sqlite )
@@ -287,7 +297,7 @@ COMMON_DEPEND="
 		dev-libs/libevent
 		sys-libs/zlib
 	)
-	snmp? ( net-analyzer/net-snmp )
+	snmp? ( net-analyzer/net-snmp:= )
 	sqlite? ( dev-db/sqlite )
 	ssh? ( net-libs/libssh2 )
 	ssl? (
@@ -305,7 +315,8 @@ RDEPEND="${COMMON_DEPEND}
 	server? (
 		app-admin/webapp-config
 		dev-libs/libevent
-		dev-libs/libpcre
+		!pcre2? ( dev-libs/libpcre )
+		pcre2? ( dev-libs/libpcre2:= )
 		net-analyzer/fping[suid]
 	)
 	frontend? (
@@ -350,6 +361,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.18-modulepathfix.patch"
 	"${FILESDIR}/${PN}-3.0.30-security-disable-PidFile.patch"
+	"${FILESDIR}/${P}-fix-server-crash.patch"
 )
 
 S=${WORKDIR}/${MY_P}
@@ -382,28 +394,42 @@ src_unpack() {
 	fi
 }
 
+src_prepare() {
+	default
+}
+
 src_configure() {
-	econf \
-		"$(use_enable agent)" \
-		"$(use_enable agent2)" \
-		"$(use_enable ipv6)" \
-		"$(use_enable java)" \
-		"$(use_enable proxy)" \
-		"$(use_enable server)" \
-		"$(use_enable static)" \
-		"$(use_with curl libcurl)" \
-		"$(use_with gnutls)" \
-		"$(use_with ldap)" \
-		"$(use_with libxml2)" \
-		"$(use_with mysql)" \
-		"$(use_with odbc unixodbc)" \
-		"$(use_with openipmi openipmi)" \
-		"$(use_with openssl)" \
-		"$(use_with oracle)" \
-		"$(use_with postgres postgresql)" \
-		"$(use_with snmp net-snmp)" \
-		"$(use_with sqlite sqlite3)" \
+	local econf_args=(
+		"$(use_enable agent)"
+		"$(use_enable agent2)"
+		"$(use_enable ipv6)"
+		"$(use_enable java)"
+		"$(use_enable proxy)"
+		"$(use_enable server)"
+		"$(use_enable static)"
+		"$(use_with curl libcurl)"
+		"$(use_with gnutls)"
+		"$(use_with ldap)"
+		"$(use_with libxml2)"
+		"$(use_with mysql)"
+		"$(use_with odbc unixodbc)"
+		"$(use_with openipmi openipmi)"
+		"$(use_with openssl)"
+		"$(use_with oracle)"
+		"$(use_with postgres postgresql)"
+		"$(use_with snmp net-snmp)"
+		"$(use_with sqlite sqlite3)"
 		"$(use_with ssh ssh2)"
+	)
+
+	if use pcre2; then
+		econf_args+=( --with-libpcre2 )
+	else
+		# If pcre2 is not enabled, then use the old pcre library.
+		econf_args+=( --with-libpcre )
+	fi
+
+	econf ${econf_args[@]}
 }
 
 src_compile() {
@@ -581,6 +607,12 @@ pkg_postinst() {
 		elog "This will convert database data for use with Node ID"
 		elog "and also adds a local node."
 		elog
+
+		if ! use pcre2; then
+			ewarn "You are using zabbix with dev-libs/libpcre which is deprecated."
+			ewarn "Consider switching to dev-libs/libpcre2 (USE=pcre2) as soon as possible."
+			ewarn "See https://www.zabbix.com/documentation/6.0/en/manual/installation/upgrade_notes_600#pcre2-support"
+		fi
 	fi
 
 	if use proxy; then
