@@ -17,12 +17,14 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="hdf5 netcdf"
 
-# Only some of the hdf5 tests are skipped if h5py is not found
-REQUIRED_USE="test? ( hdf5 )"
-
-RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
+RDEPEND="
+	>=dev-python/numpy-1.20.0[${PYTHON_USEDEP}]
 	dev-python/rich[${PYTHON_USEDEP}]
 	hdf5? ( dev-python/h5py[${PYTHON_USEDEP}] )
-	netcdf? ( dev-python/netcdf4-python[${PYTHON_USEDEP}] )"
+	netcdf? ( dev-python/netcdf4-python[${PYTHON_USEDEP}] )
+"
+BDEPEND="
+	test? ( dev-python/h5py[${PYTHON_USEDEP}] )
+"
 
 distutils_enable_tests pytest
