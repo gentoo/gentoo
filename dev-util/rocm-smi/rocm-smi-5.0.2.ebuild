@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit cmake multilib prefix python-r1 python-utils-r1
+inherit cmake python-r1
 
 DESCRIPTION="ROCm System Management Interface Library"
 HOMEPAGE="https://github.com/RadeonOpenCompute/rocm_smi_lib"
@@ -20,7 +20,7 @@ else
 	S="${WORKDIR}/rocm_smi_lib-rocm-${PV}"
 fi
 
-LICENSE="NCSA-AMD"
+LICENSE="MIT NCSA-AMD"
 SLOT="0/$(ver_cut 1-2)"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -45,6 +45,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
+		-DCMAKE_DISABLE_FIND_PACKAGE_LATEX=ON
 	)
 	cmake_src_configure
 }
