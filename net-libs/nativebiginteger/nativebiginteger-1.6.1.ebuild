@@ -11,7 +11,7 @@ SRC_URI="https://files.i2p-projekt.de/${PV}/i2psource_${PV}.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
