@@ -120,6 +120,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-{openexr-3,imath-{1,2}}.patch
 	"${FILESDIR}"/${P}-cxx17-for-poppler-22.patch
 	"${FILESDIR}"/${P}-cxx17-fixes.patch
+	"${FILESDIR}"/${P}-poppler-22.03.0.patch # by Archlinux, TODO upstream
 )
 
 pkg_pretend() {
