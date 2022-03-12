@@ -175,6 +175,8 @@ REQUIRED_USE="
 	xv? ( X )"
 RESTRICT="faac? ( bindist )"
 
+PATCHES=( "${FILESDIR}/${P}-riscv-support.patch" )
+
 pkg_setup() {
 	if [[ ${PV} == *9999* ]]; then
 		elog
