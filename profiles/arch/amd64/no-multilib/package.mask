@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Haonan Chen <chn@chn.moe> (2022-03-12)
+# Proton-ge-custom requires amd64 multilib. These are touchfish-os overlay packages.
+app-emulation/proton-ge-custom-bin
+app-emulation/proton-ge-custom-meta
+
 # James Le Cuirot <chewi@gentoo.org> (2021-09-04)
 # This code assumes 32-bit longs and must therefore be built as a 32-bit binary.
 sys-fs/atari-fdisk
