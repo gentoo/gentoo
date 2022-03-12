@@ -510,6 +510,14 @@ pkg_postinst() {
 		eerror "systemd again."
 		eerror
 	fi
+
+	if use hostnamed-fallback; then
+		if ! systemctl --root="${ROOT:-/}" is-enabled --quiet dbus-broker.service 2>/dev/null; then
+			ewarn "dbus-broker.service is not enabled, systemd-hostnamed will fail to run."
+			ewarn "To enable dbus-broker.service run the next command as root:"
+			ewarn "systemctl enable dbus-broker.service"
+		fi
+	fi
 }
 
 pkg_prerm() {
