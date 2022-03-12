@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-utils.eclass
@@ -36,7 +36,7 @@ if [[ ! ${_RUBY_UTILS} ]]; then
 RUBY_TARGETS_PREFERENCE="ruby26 "
 
 # All other active ruby targets
-RUBY_TARGETS_PREFERENCE+="ruby27 ruby30"
+RUBY_TARGETS_PREFERENCE+="ruby27 ruby30 ruby31"
 
 
 _ruby_implementation_depend() {
@@ -87,6 +87,10 @@ _ruby_implementation_depend() {
 		ruby30)
 			rubypn="dev-lang/ruby"
 			rubyslot=":3.0"
+			;;
+		ruby31)
+			rubypn="dev-lang/ruby"
+			rubyslot=":3.1"
 			;;
 		ree18)
 			rubypn="dev-lang/ruby-enterprise"
