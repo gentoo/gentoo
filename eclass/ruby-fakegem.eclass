@@ -200,9 +200,7 @@ esac
 
 SRC_URI="https://rubygems.org/gems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}${RUBY_FAKEGEM_SUFFIX:+-${RUBY_FAKEGEM_SUFFIX}}.gem"
 
-# dev-ruby/psych is no longer installed and is incompatible with modern
-# ruby versions.
-ruby_add_bdepend "virtual/rubygems !!dev-ruby/psych"
+ruby_add_bdepend "virtual/rubygems"
 ruby_add_rdepend virtual/rubygems
 case ${EAPI} in
 	5|6)
