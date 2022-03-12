@@ -14,7 +14,7 @@ SRC_URI="https://archive.apache.org/dist/kafka/${PV}/kafka-${PV}-src.tgz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 CP_DEPEND="
 	>=dev-java/lz4-java-1.4.1:0
