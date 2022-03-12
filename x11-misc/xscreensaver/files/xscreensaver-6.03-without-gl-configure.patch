@@ -1,4 +1,5 @@
-diff -urP xscreensaver-6.03.orig/configure.ac xscreensaver-6.03/configure.ac
+Upstream don't support this anymore (https://github.com/gentoo/gentoo/pull/24404#issuecomment-1061128526)
+but it's a trivial patch so let's keep it going for now.
 --- xscreensaver-6.03.orig/configure.ac	2022-03-04 11:23:24.415172769 -0700
 +++ xscreensaver-6.03/configure.ac	2022-03-04 11:27:40.419205257 -0700
 @@ -4737,7 +4737,6 @@
