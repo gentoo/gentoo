@@ -35,6 +35,13 @@
 
 # David Seifert <soap@gentoo.org> (2022-03-12)
 # Unmaintained, no revdeps in tree, no other distro packages this,
+# HOMEPAGE gone, stuck on deprecated (and soon-to-stop-working)
+# cmake-utils. bug #725610, #732056, #834117.
+# Removal on 2022-04-11.
+sys-apps/rtl-entropy
+
+# David Seifert <soap@gentoo.org> (2022-03-12)
+# Unmaintained, no revdeps in tree, no other distro packages this,
 # wrong dependencies, out of date, stuck on deprecated
 # (and soon-to-stop-working) cmake-utils. bug #702980, #834121.
 # Removal on 2022-04-11.
