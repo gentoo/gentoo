@@ -23,7 +23,7 @@ fi
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-LICENSE="GPL-2"
+LICENSE="BSD-2 GPL-2 LGPL-2.1"
 SLOT="0/2"
 IUSE="python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
