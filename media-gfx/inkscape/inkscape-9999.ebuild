@@ -135,6 +135,7 @@ src_configure() {
 		-DENABLE_POPPLER=ON
 		-DENABLE_POPPLER_CAIRO=ON
 		-DWITH_PROFILING=OFF
+		-DWITH_INTERNAL_2GEOM=ON
 		-DBUILD_TESTING=$(usex test)
 		-DWITH_LIBCDR=$(usex cdr)
 		-DWITH_DBUS=$(usex dbus)
