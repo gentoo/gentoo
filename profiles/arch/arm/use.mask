@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -85,7 +85,6 @@ anthy
 # Unmask ARM-only video-cards
 -video_cards_exynos
 -video_cards_freedreno
--video_cards_imx
 -video_cards_lima
 -video_cards_omap
 -video_cards_panfrost

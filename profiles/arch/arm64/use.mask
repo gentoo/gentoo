@@ -118,7 +118,6 @@ anthy
 -video_cards_exynos
 -video_cards_freedreno
 -video_cards_lima
--video_cards_imx
 -video_cards_nouveau
 -video_cards_panfrost
 -video_cards_tegra

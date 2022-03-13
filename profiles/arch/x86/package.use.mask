@@ -123,11 +123,6 @@ dev-python/influxdb test
 # clisp is keyworded on x86
 app-text/texlive-core -xindy
 
-# Christoph Junghans <junghans@gentoo.org> (2020-05-16)
-# restrict USE=kokkos for x86 as kokkos doesn't support 32-bit archs
-# https://github.com/kokkos/kokkos/issues/2312
-sci-physics/lammps kokkos
-
 # Joonas Niilola <juippis@gentoo.org> (2020-05-14)
 # sys-apps/apparmor not keyworded on x86.
 app-containers/lxc apparmor
