@@ -26,7 +26,7 @@ DEPEND="
 	>=x11-libs/gtk+-3.22.0:3[cups?,introspection?]
 	gnome-base/gsettings-desktop-schemas
 	>=x11-libs/cairo-1.10:=
-	>=app-text/poppler-0.76.0[cairo]
+	>=app-text/poppler-0.86.0[cairo]
 	>=app-arch/libarchive-3.2.0
 	djvu? ( >=app-text/djvu-3.5.22:= )
 	dvi? (
@@ -43,7 +43,7 @@ DEPEND="
 	nautilus? ( >=gnome-base/nautilus-3.28.0 )
 	postscript? ( >=app-text/libspectre-0.2:= )
 	spell? ( >=app-text/gspell-1.6.0:= )
-	tiff? ( >=media-libs/tiff-3.6:0= )
+	tiff? ( >=media-libs/tiff-4.0:0= )
 	xps? ( >=app-text/libgxps-0.2.1:= )
 "
 RDEPEND="${DEPEND}
