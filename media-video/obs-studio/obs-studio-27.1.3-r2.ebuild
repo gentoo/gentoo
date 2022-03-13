@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake lua-single python-single-r1 xdg
 
-OBS_BROWSER_COMMIT="915761778ec1eae99e740ad4bf63b40db3142ee2"
-CEF_DIR="cef_binary_4638_linux64"
+OBS_BROWSER_COMMIT="aee43000bd994022cd73e32dc50938ab777d4a06"
+CEF_DIR="cef_binary_4280_linux64"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -58,10 +58,9 @@ DEPEND="
 	dev-qt/qtxml:5
 	media-libs/libglvnd
 	media-libs/x264:=
-	media-video/ffmpeg:=[x264]
+	media-video/ffmpeg:=[nvenc?,x264]
 	net-misc/curl
 	sys-apps/dbus
-	sys-apps/pciutils
 	sys-libs/zlib:=
 	virtual/udev
 	x11-libs/libX11
@@ -83,7 +82,6 @@ DEPEND="
 		media-libs/fontconfig
 		media-libs/mesa[gbm(+)]
 		net-print/cups
-		x11-libs/cairo
 		x11-libs/libdrm
 		x11-libs/libXScrnSaver
 		x11-libs/libXcursor
@@ -96,7 +94,6 @@ DEPEND="
 	fdk? ( media-libs/fdk-aac:= )
 	jack? ( virtual/jack )
 	lua? ( ${LUA_DEPS} )
-	nvenc? ( >=media-video/ffmpeg-4[video_cards_nvidia] )
 	pipewire? ( media-video/pipewire:= )
 	pulseaudio? ( media-sound/pulseaudio )
 	python? ( ${PYTHON_DEPS} )
@@ -114,14 +111,17 @@ RDEPEND="${DEPEND}"
 
 QA_PREBUILT="
 	usr/lib*/obs-plugins/chrome-sandbox
-	usr/lib*/obs-plugins/libcef.so
 	usr/lib*/obs-plugins/libEGL.so
 	usr/lib*/obs-plugins/libGLESv2.so
-	usr/lib*/obs-plugins/libvk_swiftshader.so
-	usr/lib*/obs-plugins/libvulkan.so.1
+	usr/lib*/obs-plugins/libcef.so
 	usr/lib*/obs-plugins/swiftshader/libEGL.so
 	usr/lib*/obs-plugins/swiftshader/libGLESv2.so
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-26.1.2-python-3.8.patch"
+	"${FILESDIR}/${PN}-27.1.3-ffmpeg-5.0.patch"
+)
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
@@ -153,6 +153,7 @@ src_configure() {
 		-DDISABLE_LIBFDK=$(usex !fdk)
 		-DENABLE_PIPEWIRE=$(usex pipewire)
 		-DDISABLE_PULSEAUDIO=$(usex !pulseaudio)
+		$(cmake_use_find_package pulseaudio PulseAudio)
 		-DDISABLE_SPEEXDSP=$(usex !speex)
 		-DDISABLE_V4L2=$(usex !v4l)
 		-DDISABLE_VLC=$(usex !vlc)
@@ -201,5 +202,13 @@ pkg_postinst() {
 		elog "either the 'alsa' or the 'pulseaudio' USE-flag needs to"
 		elog "be enabled."
 		elog
+	fi
+
+	if use python; then
+		ewarn "This ebuild applies a patch that is not yet accepted upstream,"
+		ewarn "and while it fixes Python support at least to some extent, it"
+		ewarn "may cause other issues."
+		ewarn ""
+		ewarn "Please report any such issues to the Gentoo maintainer."
 	fi
 }
