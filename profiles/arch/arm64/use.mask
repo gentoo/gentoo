@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -arm64
 
+# David Seifert <soap@gentoo.org> (2022-03-13)
+# NVENC works here
+-nvenc
+
 # Ionen Wolkens <ionen@gentoo.org> (2022-02-17)
 # x11-drivers/nvidia-drivers' binary blob works here
 -video_cards_nvidia

@@ -7,6 +7,7 @@
 # Ionen Wolkens <ionen@gentoo.org> (2022-02-17)
 # x11-drivers/nvidia-drivers is not stable yet
 video_cards_nvidia
+nvenc
 
 # Sam James <sam@gentoo.org> (2020-12-23)
 # dev-lang/luajit is not yet stable
