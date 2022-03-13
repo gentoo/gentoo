@@ -1,9 +1,6 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# NOTICE:
-# melonds bundles teakra, its upstream haven't had a release since 2020
-
 EAPI=8
 
 MY_PN="melonDS"
@@ -32,6 +29,7 @@ SLOT="0"
 
 DEPEND="
 	app-arch/libarchive
+	dev-libs/teakra
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -55,7 +53,11 @@ DOC_CONTENTS="You need the following files in order to run melonDS:
 Place them in ~/.config/melonDS
 Those files can be found somewhere on the Internet ;-)"
 
+PATCHES=( "${FILESDIR}"/melonds-system-teakra.patch )
+
 src_prepare() {
+	rm -r ./src/teakra || die
+
 	cmake_src_prepare
 }
 
@@ -73,16 +75,11 @@ src_compile() {
 }
 
 src_install() {
-	# install teakra
-	dolib.so "${BUILD_DIR}/src/teakra/src/libteakra.so"
-
 	cmake_src_install
-
 	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
 	xdg_pkg_postinst
-
 	readme.gentoo_print_elog
 }
