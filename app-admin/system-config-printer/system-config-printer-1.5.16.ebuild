@@ -72,6 +72,7 @@ src_configure() {
 
 src_install() {
 	default
+	python_domodule cupshelpers
 	python_fix_shebang "${ED}"
 	python_optimize
 }
