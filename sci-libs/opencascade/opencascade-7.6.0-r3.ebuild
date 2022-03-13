@@ -24,6 +24,7 @@ REQUIRED_USE="?? ( optimize tbb )"
 # properly set up.
 RESTRICT="test"
 
+# sys-libs/glibc see bug #832742
 RDEPEND="
 	!app-eselect/eselect-opencascade
 	dev-lang/tcl:=
@@ -34,6 +35,7 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/ftgl
+	sys-libs/glibc
 	virtual/glu
 	virtual/opengl
 	x11-libs/libXmu
@@ -44,7 +46,7 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
 	)
-	ffmpeg? ( media-video/ffmpeg:= )
+	ffmpeg? ( <media-video/ffmpeg-5:= )
 	freeimage? ( media-libs/freeimage )
 	tbb? ( <dev-cpp/tbb-2021.4 )
 	vtk? ( sci-libs/vtk:=[rendering] )
