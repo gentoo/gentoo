@@ -18,7 +18,7 @@ HOMEPAGE="https://www.videolan.org/developers/libbluray.html"
 
 LICENSE="LGPL-2.1"
 SLOT="0/2"
-IUSE="aacs bdplus +fontconfig java static-libs +truetype utils +xml"
+IUSE="aacs bdplus +fontconfig java +truetype utils +xml"
 
 RDEPEND="
 	dev-libs/libudfread[${MULTILIB_USEDEP}]
@@ -63,7 +63,6 @@ multilib_src_configure() {
 		$(multilib_native_use_enable java bdjava-jar) \
 		$(use_with fontconfig) \
 		$(use_with truetype freetype) \
-		$(use_enable static-libs static) \
 		$(use_with xml libxml2)
 }
 
