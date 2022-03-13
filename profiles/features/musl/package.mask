@@ -5,6 +5,10 @@
 # Binary package linked to glibc
 sys-power/dptfxtract
 
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2022-03-14)
+# Doesn't build with musl, bug #832742
+sci-libs/opencascade
+
 # Adel KARA SLIMANE <adel.ks@zegrapher.com> (2022-03-09)
 # Binary packages linked to glibc
 app-editors/vscode
