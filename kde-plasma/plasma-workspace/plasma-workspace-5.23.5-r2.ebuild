@@ -125,7 +125,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	app-text/iso-codes
-	>=dev-qt/qdbus-${QTMIN}:5
+	>=dev-qt/qdbus-${QTMIN}:*
 	>=dev-qt/qtgraphicaleffects-${QTMIN}:5
 	>=dev-qt/qtpaths-${QTMIN}:5
 	>=dev-qt/qtquickcontrols-${QTMIN}:5[widgets]
