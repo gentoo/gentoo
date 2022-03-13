@@ -20,7 +20,6 @@ IUSE="+annotate share"
 
 # TODO: Qt5Svg leaking from media-libs/kimageannotator
 DEPEND="
-	>=dev-qt/qdbus-${QTMIN}:5
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -49,7 +48,9 @@ DEPEND="
 	annotate? ( >=media-libs/kimageannotator-0.5.0 )
 	share? ( >=kde-frameworks/purpose-${KFMIN}:5 )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	>=dev-qt/qdbus-${QTMIN}:*
+"
 
 src_prepare() {
 	ecm_src_prepare
