@@ -4,6 +4,11 @@
 # Unmask the flag which corresponds to ARCH.
 -amd64
 
+# David Seifert <soap@gentoo.org> (2022-03-13)
+# Cuda/NVENC works here
+-cuda
+-nvenc
+
 # Michał Górny <mgorny@gentoo.org> (2021-01-07)
 # Prebuilt kernels are supported here.
 -dist-kernel
@@ -36,10 +41,6 @@
 # Mike Gilbert <floppym@gentoo.org> (2014-10-19)
 # sys-libs/libapparmor
 -apparmor
-
-# Alexey Shvetsov <alexxy@gentoo.org> (2014-04-08)
-# Cuda works here
--cuda
 
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # PyPy is keyworded on this arch.

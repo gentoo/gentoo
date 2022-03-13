@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask armv5 specific USE flags
@@ -9,6 +9,6 @@
 -cpu_flags_arm_thumb
 -cpu_flags_arm_vfp
 
-# Matt Turner <mattst88@gentoo.org> (07-25-2021)
+# Matt Turner <mattst88@gentoo.org> (2021-07-25)
 # gnome-shell requires rustified librsvg.
 gnome-shell

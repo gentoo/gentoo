@@ -50,10 +50,6 @@ php_targets_php5-6
 # app-office/texmacs is package.mask'd. Bug #436400
 texmacs
 
-# Hans de Graaff <graaff@gentoo.org> (2019-04-07)
-# Mask Ruby 2.3 as EOL
-ruby_targets_ruby23
-
 # Brian Evans <grknight@gentoo.org> (2019-01-11)
 # Mask PHP 7.0 target as EOL
 php_targets_php7-0
