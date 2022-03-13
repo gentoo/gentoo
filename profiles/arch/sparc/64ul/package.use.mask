@@ -9,3 +9,7 @@ dev-libs/libpcre jit
 # Matt Turner <mattst88@gentoo.org> (2019-08-26)
 # jit not supported on sparc64
 dev-libs/libpcre2 jit
+
+# Anna Vyalkova <cyber+gentoo@sysrq.in> (2022-03-13)
+# depends on dev-lisp/sbcl
+dev-lisp/alexandria doc
