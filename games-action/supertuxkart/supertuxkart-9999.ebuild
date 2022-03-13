@@ -91,6 +91,9 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
+	insinto "/usr/share/${PN}/data"
+	SVNDIR="${ESVN_STORE_DIR}/${PN}/stk-assets"
+	doins -r "${SVNDIR}/editor" "${SVNDIR}/karts" "${SVNDIR}/library" "${SVNDIR}/models" "${SVNDIR}/music" "${SVNDIR}/sfx" "${SVNDIR}/textures" "${SVNDIR}/tracks"
 	dodoc CHANGELOG.md
 
 	doicon -s 64 "${DISTDIR}"/${PN}.png
