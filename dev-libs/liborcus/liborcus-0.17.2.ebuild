@@ -44,7 +44,7 @@ pkg_setup() {
 
 src_prepare() {
 	# bug 713586
-	use test && eapply "${FILESDIR}/${P}-test-fix.patch"
+	use test && eapply "${FILESDIR}/${PN}-0.17.0-test-fix.patch"
 
 	default
 	eautoreconf

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,7 +44,7 @@ pkg_setup() {
 
 src_prepare() {
 	# bug 713586
-	use test && eapply "${FILESDIR}/${P}-test-fix.patch"
+	use test && eapply "${FILESDIR}/${PN}-0.17.0-test-fix.patch"
 
 	default
 	eautoreconf
