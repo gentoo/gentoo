@@ -16,7 +16,7 @@ KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-lin
 
 DEPEND="
 	>=dev-libs/glib-2.67.1:2
-	>=media-libs/gexiv2-0.10.0
+	>=media-libs/gexiv2-0.12.2
 	gstreamer? ( media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0 )
 	>=app-arch/gnome-autoar-0.4.0
