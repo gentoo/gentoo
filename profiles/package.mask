@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# John Helmert III <ajak@gentoo.org> (2022-03-13)
+# Arti is not a production-ready Tor client. According to upstream, "do
+# not use this program yet if you seriously need anonymity, privacy,
+# security, or stability." Feel free to unmask if this is not a
+# necessity.
+net-p2p/arti
+
 # Alfredo Tupone <tupone@gentoo.org> (2022-03-13)
 # No revdeps, last update on 2011
 # Removal on 2022-04-13.
