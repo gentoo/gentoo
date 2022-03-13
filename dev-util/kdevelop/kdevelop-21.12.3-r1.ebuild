@@ -86,7 +86,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 "
 RDEPEND="${COMMON_DEPEND}
-	>=dev-qt/qdbus-${QTMIN}:5
+	>=dev-qt/qdbus-${QTMIN}:*
 	>=dev-qt/qtquickcontrols-${QTMIN}:5
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 	dev-util/ninja
