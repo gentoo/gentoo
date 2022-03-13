@@ -12,7 +12,6 @@ SRC_URI="mirror://gentoo/${PN}.png"
 EGIT_REPO_URI="https://github.com/${PN}/stk-code.git"
 EGIT_BRANCH="master"
 ESVN_REPO_URI="https://svn.code.sf.net/p/${PN}/code/stk-assets"
-#ESVN_STORE_DIR="${WORKDIR}/stk-assets"
 
 LICENSE="GPL-2 GPL-3 CC-BY-SA-3.0 CC-BY-SA-4.0 CC0-1.0 public-domain ZLIB"
 SLOT="0"
@@ -92,9 +91,6 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-#	insinto "/usr/share/${PN}/data"
-#	SVNDIR="${ESVN_STORE_DIR}/${PN}/stk-assets"
-#	doins -r "${SVNDIR}/editor" "${SVNDIR}/karts" "${SVNDIR}/library" "${SVNDIR}/models" "${SVNDIR}/music" "${SVNDIR}/sfx" "${SVNDIR}/textures" "${SVNDIR}/tracks"
 	dodoc CHANGELOG.md
 
 	doicon -s 64 "${DISTDIR}"/${PN}.png
