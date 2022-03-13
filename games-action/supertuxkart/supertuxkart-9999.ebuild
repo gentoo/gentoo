@@ -27,7 +27,6 @@ RDEPEND="
 	sqlite? ( dev-db/sqlite:3 )
 	dev-libs/angelscript:=
 	media-libs/freetype:2
-	media-libs/glew:0=
 	media-libs/harfbuzz:=
 	media-libs/libpng:0=
 	media-libs/libsdl2
@@ -73,7 +72,6 @@ src_configure() {
 		-DUSE_SQLITE3=$(usex sqlite)
 		-DUSE_SYSTEM_ANGELSCRIPT=ON
 		-DUSE_SYSTEM_ENET=ON
-		-DUSE_SYSTEM_GLEW=ON
 		-DUSE_SYSTEM_SQUISH=OFF
 		-DUSE_SYSTEM_WIIUSE=OFF
 		-DUSE_IPV6=OFF # not supported by system enet
