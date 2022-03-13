@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/alexbarton.asc"
-inherit verify-sig
+inherit tmpfiles verify-sig
 
 DESCRIPTION="An IRC server written from scratch"
 HOMEPAGE="https://ngircd.barton.de/"
@@ -101,6 +101,7 @@ src_install() {
 	fowners ngircd:ngircd /etc/ngircd/ngircd.conf
 	newinitd "${FILESDIR}"/ngircd.init-r2.d ngircd
 	newconfd "${FILESDIR}"/ngircd.conf.d ngircd
+	dotmpfiles "${FILESDIR}"/ngircd.conf
 }
 
 pkg_postinst() {
@@ -108,4 +109,6 @@ pkg_postinst() {
 		elog "ngircd will use PAMIsOptionalPAM by default, please change this option."
 		elog "You may not be able to login until you change this."
 	fi
+
+	tmpfiles_process ngircd.conf
 }
