@@ -27,8 +27,9 @@ oci8
 # cilk has been ported only to x86 systems
 cilk
 
-# cuda only works on amd64/x86
+# cuda/NVENC only works on amd64/arm64
 cuda
+nvenc
 
 # masking here, and unmasking in arch/x86/use.mask
 vidix
