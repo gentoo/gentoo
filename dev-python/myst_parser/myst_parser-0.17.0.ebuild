@@ -38,10 +38,14 @@ BDEPEND="
 	)
 "
 
-distutils_enable_tests pytest
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.17.0-32-bit-test-fix.patch
+)
 
 EPYTEST_DESELECT=(
 	# Unimportant tests needing a new dep linkify
 	tests/test_renderers/test_myst_config.py::test_cmdline
 	tests/test_sphinx/test_sphinx_builds.py::test_extended_syntaxes
 )
+
+distutils_enable_tests pytest
