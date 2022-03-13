@@ -88,6 +88,7 @@ src_install() {
 
 src_test() {
 	gnome2_environment_reset # Avoid dconf that looks at XDG_DATA_DIRS, which can sandbox fail if flatpak is installed
+	# TODO: Tests require tracker testutils (e.g. tracker-sandbox), which may need some sorting out with tracker use flag deps
 	virtx meson_src_test
 }
 
