@@ -40,8 +40,8 @@ RESTRICT="
 DOCS=(history README.md)
 
 PATCHES=(
-	# https://github.com/vmc-project/geant4_vmc/pull/28
 	"${FILESDIR}"/${PN}-6.0-cmake-g4root-tests.patch
+	"${FILESDIR}"/${PN}-6.0-geant-4.11.0.1-fix.patch
 )
 
 src_configure() {
