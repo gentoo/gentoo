@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-03-13)
+# Not yet keyworded. Bug #835037
+kde-frameworks/kfilemetadata mobi
+
 # Sam James <sam@gentoo.org> (2022-03-10)
 # Boost has support for ARM32
 # https://www.boost.org/doc/libs/1_78_0/libs/context/doc/html/context/architectures.html
