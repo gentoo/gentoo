@@ -8,6 +8,7 @@ inherit git-r3 subversion
 
 DESCRIPTION="A kart racing game starring Tux, the linux penguin (TuxKart fork)"
 HOMEPAGE="https://supertuxkart.net/"
+SRC_URI="mirror://gentoo/${PN}.png"
 EGIT_REPO_URI="https://github.com/${PN}/stk-code.git"
 EGIT_BRANCH="master"
 ESVN_REPO_URI="https://svn.code.sf.net/p/${PN}/code/stk-assets"
