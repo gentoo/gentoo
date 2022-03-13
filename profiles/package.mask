@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2022-03-13)
+# No revdeps, last update on 2011
+# Removal on 2022-04-13.
+www-apps/rocketwiki-lqfb
+
 # David Seifert <soap@gentoo.org> (2022-03-12)
 # Unmaintained, no revdeps in tree, no other distro packages this,
 # HOMEPAGE gone, stuck on deprecated (and soon-to-stop-working)
