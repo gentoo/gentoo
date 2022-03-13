@@ -19,10 +19,6 @@ media-video/ffmpeg svt-av1
 # impl there anyway. Please keep this in sync with use.mask.
 dev-lang/python-exec -python_targets_python3_10
 
-# Vadim Misbakh-Soloviov <mva@gentoo.org> (2021-12-09)
-# ts-cli requires rust to be built, and rust is unavailable here ATM.
-dev-libs/tree-sitter ts-cli
-
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Avoid keywording unnecessary depenencies for now, bug #804115
 dev-python/scipy pythran
