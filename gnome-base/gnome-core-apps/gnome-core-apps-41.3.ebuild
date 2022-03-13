@@ -14,7 +14,6 @@ IUSE="+bluetooth cups"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 
 # gnome-color-manager min version enforced here due to control-center pulling it in
-# tepl min version for gedit deptree
 RDEPEND="
 	>=gnome-base/gnome-core-libs-${PV}[cups?]
 
