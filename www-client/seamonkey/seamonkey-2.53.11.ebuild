@@ -199,8 +199,7 @@ src_prepare() {
 		edos2unix "${file}"
 	done
 
-	use system-libvpx \
-		&& eapply -p2 ""${WORKDIR}"/gentoo-${PN}-patches-${PV}-r1/USE_flag/1009_seamonkey-2.53.3-system_libvpx-1.8.patch"
+	use system-libvpx && eapply -p2 "${WORKDIR}"/gentoo-${PN}-patches-${PV}-r1/USE_flag/1009_seamonkey-2.53.3-system_libvpx-1.8.patch
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
