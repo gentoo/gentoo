@@ -64,7 +64,7 @@ RDEPEND="${PYTHON_DEPS}
 	color-management? ( >=media-libs/opencolorio-2.1.1-r7:= )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	embree? ( >=media-libs/embree-3.10.0[raymask] )
-	ffmpeg? ( <media-video/ffmpeg-5.0:=[x264,mp3,encode,theora,jpeg2k?,vpx,vorbis,opus,xvid] )
+	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?,vpx,vorbis,opus,xvid] )
 	fftw? ( sci-libs/fftw:3.0= )
 	gmp? ( dev-libs/gmp )
 	!headless? (
@@ -127,6 +127,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.0-intern-ghost-fix-typo-in-finding-XF86VMODE.patch
 	"${FILESDIR}"/${PN}-3.0.1-openexr.patch
 	"${FILESDIR}"/${PN}-3.0.1-openimageio-2.3.patch
+	"${FILESDIR}"/${PN}-3.0.1-ffmpeg-5.0.patch
 )
 
 blender_check_requirements() {

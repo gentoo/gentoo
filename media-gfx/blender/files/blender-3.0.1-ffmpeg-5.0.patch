@@ -1,0 +1,1045 @@
+commit af6a1b08e3f0d0070ac9423868d2d3f81057717a
+Author: Sebastian Parborg <darkdefende@gmail.com>
+Date:   Fri Feb 18 18:20:06 2022 +0100
+
+    VSE: Refactor our code to be compatible with ffmpeg 5.0
+    
+    In ffmpeg 5.0, several variables were made const to try to prevent bad API usage.
+    Removed some dead code that wasn't used anymore as well.
+    
+    Reviewed By: Richard Antalik
+    
+    Differential Revision: http://developer.blender.org/D14063
+
+diff --git a/extern/audaspace/plugins/ffmpeg/FFMPEGReader.cpp b/extern/audaspace/plugins/ffmpeg/FFMPEGReader.cpp
+index de3ca099696..69bb45119a6 100644
+--- a/extern/audaspace/plugins/ffmpeg/FFMPEGReader.cpp
++++ b/extern/audaspace/plugins/ffmpeg/FFMPEGReader.cpp
+@@ -177,7 +177,7 @@ void FFMPEGReader::init(int stream)
+ 
+ 	// get a decoder and open it
+ #ifndef FFMPEG_OLD_CODE
+-	AVCodec* aCodec = avcodec_find_decoder(m_formatCtx->streams[m_stream]->codecpar->codec_id);
++	const AVCodec* aCodec = avcodec_find_decoder(m_formatCtx->streams[m_stream]->codecpar->codec_id);
+ 
+ 	if(!aCodec)
+ 		AUD_THROW(FileException, "File couldn't be read, no decoder found with ffmpeg.");
+diff --git a/extern/audaspace/plugins/ffmpeg/FFMPEGWriter.cpp b/extern/audaspace/plugins/ffmpeg/FFMPEGWriter.cpp
+index 10517d1d596..32eb2330594 100644
+--- a/extern/audaspace/plugins/ffmpeg/FFMPEGWriter.cpp
++++ b/extern/audaspace/plugins/ffmpeg/FFMPEGWriter.cpp
+@@ -23,6 +23,7 @@
+ extern "C" {
+ #include <libavcodec/avcodec.h>
+ #include <libavformat/avio.h>
++#include <libavutil/channel_layout.h>
+ }
+ 
+ AUD_NAMESPACE_BEGIN
+@@ -171,66 +172,66 @@ FFMPEGWriter::FFMPEGWriter(std::string filename, DeviceSpecs specs, Container fo
+ 	if(avformat_alloc_output_context2(&m_formatCtx, nullptr, formats[format], filename.c_str()) < 0)
+ 		AUD_THROW(FileException, "File couldn't be written, format couldn't be found with ffmpeg.");
+ 
+-	AVOutputFormat* outputFmt = m_formatCtx->oformat;
++	const AVOutputFormat* outputFmt = m_formatCtx->oformat;
+ 
+ 	if(!outputFmt) {
+ 		avformat_free_context(m_formatCtx);
+ 		AUD_THROW(FileException, "File couldn't be written, output format couldn't be found with ffmpeg.");
+ 	}
+ 
+-	outputFmt->audio_codec = AV_CODEC_ID_NONE;
++	AVCodecID audio_codec = AV_CODEC_ID_NONE;
+ 
+ 	switch(codec)
+ 	{
+ 	case CODEC_AAC:
+-		outputFmt->audio_codec = AV_CODEC_ID_AAC;
++		audio_codec = AV_CODEC_ID_AAC;
+ 		break;
+ 	case CODEC_AC3:
+-		outputFmt->audio_codec = AV_CODEC_ID_AC3;
++		audio_codec = AV_CODEC_ID_AC3;
+ 		break;
+ 	case CODEC_FLAC:
+-		outputFmt->audio_codec = AV_CODEC_ID_FLAC;
++		audio_codec = AV_CODEC_ID_FLAC;
+ 		break;
+ 	case CODEC_MP2:
+-		outputFmt->audio_codec = AV_CODEC_ID_MP2;
++		audio_codec = AV_CODEC_ID_MP2;
+ 		break;
+ 	case CODEC_MP3:
+-		outputFmt->audio_codec = AV_CODEC_ID_MP3;
++		audio_codec = AV_CODEC_ID_MP3;
+ 		break;
+ 	case CODEC_OPUS:
+-		outputFmt->audio_codec = AV_CODEC_ID_OPUS;
++		audio_codec = AV_CODEC_ID_OPUS;
+ 		break;
+ 	case CODEC_PCM:
+ 		switch(specs.format)
+ 		{
+ 		case FORMAT_U8:
+-			outputFmt->audio_codec = AV_CODEC_ID_PCM_U8;
++			audio_codec = AV_CODEC_ID_PCM_U8;
+ 			break;
+ 		case FORMAT_S16:
+-			outputFmt->audio_codec = AV_CODEC_ID_PCM_S16LE;
++			audio_codec = AV_CODEC_ID_PCM_S16LE;
+ 			break;
+ 		case FORMAT_S24:
+-			outputFmt->audio_codec = AV_CODEC_ID_PCM_S24LE;
++			audio_codec = AV_CODEC_ID_PCM_S24LE;
+ 			break;
+ 		case FORMAT_S32:
+-			outputFmt->audio_codec = AV_CODEC_ID_PCM_S32LE;
++			audio_codec = AV_CODEC_ID_PCM_S32LE;
+ 			break;
+ 		case FORMAT_FLOAT32:
+-			outputFmt->audio_codec = AV_CODEC_ID_PCM_F32LE;
++			audio_codec = AV_CODEC_ID_PCM_F32LE;
+ 			break;
+ 		case FORMAT_FLOAT64:
+-			outputFmt->audio_codec = AV_CODEC_ID_PCM_F64LE;
++			audio_codec = AV_CODEC_ID_PCM_F64LE;
+ 			break;
+ 		default:
+-			outputFmt->audio_codec = AV_CODEC_ID_NONE;
++			audio_codec = AV_CODEC_ID_NONE;
+ 			break;
+ 		}
+ 		break;
+ 	case CODEC_VORBIS:
+-		outputFmt->audio_codec = AV_CODEC_ID_VORBIS;
++		audio_codec = AV_CODEC_ID_VORBIS;
+ 		break;
+ 	default:
+-		outputFmt->audio_codec = AV_CODEC_ID_NONE;
++		audio_codec = AV_CODEC_ID_NONE;
+ 		break;
+ 	}
+ 
+@@ -268,10 +269,10 @@ FFMPEGWriter::FFMPEGWriter(std::string filename, DeviceSpecs specs, Container fo
+ 
+ 	try
+ 	{
+-		if(outputFmt->audio_codec == AV_CODEC_ID_NONE)
++		if(audio_codec == AV_CODEC_ID_NONE)
+ 			AUD_THROW(FileException, "File couldn't be written, audio codec not found with ffmpeg.");
+ 
+-		AVCodec* codec = avcodec_find_encoder(outputFmt->audio_codec);
++		const AVCodec* codec = avcodec_find_encoder(audio_codec);
+ 		if(!codec)
+ 			AUD_THROW(FileException, "File couldn't be written, audio encoder couldn't be found with ffmpeg.");
+ 
+diff --git a/source/blender/blenkernel/BKE_writeffmpeg.h b/source/blender/blenkernel/BKE_writeffmpeg.h
+index 4c966c55e41..d959bb85c81 100644
+--- a/source/blender/blenkernel/BKE_writeffmpeg.h
++++ b/source/blender/blenkernel/BKE_writeffmpeg.h
+@@ -85,12 +85,8 @@ void BKE_ffmpeg_filepath_get(char *string,
+ 
+ void BKE_ffmpeg_preset_set(struct RenderData *rd, int preset);
+ void BKE_ffmpeg_image_type_verify(struct RenderData *rd, struct ImageFormatData *imf);
+-void BKE_ffmpeg_codec_settings_verify(struct RenderData *rd);
+ bool BKE_ffmpeg_alpha_channel_is_supported(const struct RenderData *rd);
+ 
+-int BKE_ffmpeg_property_add_string(struct RenderData *rd, const char *type, const char *str);
+-void BKE_ffmpeg_property_del(struct RenderData *rd, void *type, void *prop_);
+-
+ void *BKE_ffmpeg_context_create(void);
+ void BKE_ffmpeg_context_free(void *context_v);
+ 
+diff --git a/source/blender/blenkernel/intern/scene.c b/source/blender/blenkernel/intern/scene.c
+index 203676d0dd8..6d5abbd90d3 100644
+--- a/source/blender/blenkernel/intern/scene.c
++++ b/source/blender/blenkernel/intern/scene.c
+@@ -333,12 +333,6 @@ static void scene_copy_data(Main *bmain, ID *id_dst, const ID *id_src, const int
+     scene_dst->r.avicodecdata->lpParms = MEM_dupallocN(scene_dst->r.avicodecdata->lpParms);
+   }
+ 
+-  if (scene_src->r.ffcodecdata.properties) {
+-    /* intentionally check sce_dst not sce_src. */ /* XXX ??? comment outdated... */
+-    scene_dst->r.ffcodecdata.properties = IDP_CopyProperty_ex(scene_src->r.ffcodecdata.properties,
+-                                                              flag_subdata);
+-  }
+-
+   if (scene_src->display.shading.prop) {
+     scene_dst->display.shading.prop = IDP_CopyProperty(scene_src->display.shading.prop);
+   }
+@@ -409,10 +403,6 @@ static void scene_free_data(ID *id)
+     MEM_freeN(scene->r.avicodecdata);
+     scene->r.avicodecdata = NULL;
+   }
+-  if (scene->r.ffcodecdata.properties) {
+-    IDP_FreeProperty(scene->r.ffcodecdata.properties);
+-    scene->r.ffcodecdata.properties = NULL;
+-  }
+ 
+   scene_free_markers(scene, do_id_user);
+   BLI_freelistN(&scene->transform_spaces);
+@@ -1030,9 +1020,6 @@ static void scene_blend_write(BlendWriter *writer, ID *id, const void *id_addres
+       BLO_write_raw(writer, (size_t)sce->r.avicodecdata->cbParms, sce->r.avicodecdata->lpParms);
+     }
+   }
+-  if (sce->r.ffcodecdata.properties) {
+-    IDP_BlendWrite(writer, sce->r.ffcodecdata.properties);
+-  }
+ 
+   /* writing dynamic list of TimeMarkers to the blend file */
+   LISTBASE_FOREACH (TimeMarker *, marker, &sce->markers) {
+@@ -1272,11 +1259,6 @@ static void scene_blend_read_data(BlendDataReader *reader, ID *id)
+     BLO_read_data_address(reader, &sce->r.avicodecdata->lpFormat);
+     BLO_read_data_address(reader, &sce->r.avicodecdata->lpParms);
+   }
+-  if (sce->r.ffcodecdata.properties) {
+-    BLO_read_data_address(reader, &sce->r.ffcodecdata.properties);
+-    IDP_BlendDataRead(reader, &sce->r.ffcodecdata.properties);
+-  }
+-
+   BLO_read_list(reader, &(sce->markers));
+   LISTBASE_FOREACH (TimeMarker *, marker, &sce->markers) {
+     BLO_read_data_address(reader, &marker->prop);
+@@ -1889,10 +1871,6 @@ Scene *BKE_scene_duplicate(Main *bmain, Scene *sce, eSceneCopyMethod type)
+       sce_copy->r.avicodecdata->lpParms = MEM_dupallocN(sce_copy->r.avicodecdata->lpParms);
+     }
+ 
+-    if (sce->r.ffcodecdata.properties) { /* intentionally check scen not sce. */
+-      sce_copy->r.ffcodecdata.properties = IDP_CopyProperty(sce->r.ffcodecdata.properties);
+-    }
+-
+     BKE_sound_reset_scene_runtime(sce_copy);
+ 
+     /* grease pencil */
+diff --git a/source/blender/blenkernel/intern/writeffmpeg.c b/source/blender/blenkernel/intern/writeffmpeg.c
+index 9effeb831b6..45bd977c109 100644
+--- a/source/blender/blenkernel/intern/writeffmpeg.c
++++ b/source/blender/blenkernel/intern/writeffmpeg.c
+@@ -56,6 +56,7 @@
+  * like M_SQRT1_2 leading to warnings with MSVC */
+ #  include <libavcodec/avcodec.h>
+ #  include <libavformat/avformat.h>
++#  include <libavutil/channel_layout.h>
+ #  include <libavutil/imgutils.h>
+ #  include <libavutil/opt.h>
+ #  include <libavutil/rational.h>
+@@ -115,8 +116,6 @@ typedef struct FFMpegContext {
+     printf
+ 
+ static void ffmpeg_dict_set_int(AVDictionary **dict, const char *key, int value);
+-static void ffmpeg_dict_set_float(AVDictionary **dict, const char *key, float value);
+-static void ffmpeg_set_expert_options(RenderData *rd);
+ static void ffmpeg_filepath_get(FFMpegContext *context,
+                                 char *string,
+                                 const struct RenderData *rd,
+@@ -428,99 +427,6 @@ static AVFrame *generate_video_frame(FFMpegContext *context, const uint8_t *pixe
+   return context->current_frame;
+ }
+ 
+-static void set_ffmpeg_property_option(IDProperty *prop, AVDictionary **dictionary)
+-{
+-  char name[128];
+-  char *param;
+-
+-  PRINT("FFMPEG expert option: %s: ", prop->name);
+-
+-  BLI_strncpy(name, prop->name, sizeof(name));
+-
+-  param = strchr(name, ':');
+-
+-  if (param) {
+-    *param++ = '\0';
+-  }
+-
+-  switch (prop->type) {
+-    case IDP_STRING:
+-      PRINT("%s.\n", IDP_String(prop));
+-      av_dict_set(dictionary, name, IDP_String(prop), 0);
+-      break;
+-    case IDP_FLOAT:
+-      PRINT("%g.\n", IDP_Float(prop));
+-      ffmpeg_dict_set_float(dictionary, prop->name, IDP_Float(prop));
+-      break;
+-    case IDP_INT:
+-      PRINT("%d.\n", IDP_Int(prop));
+-
+-      if (param) {
+-        if (IDP_Int(prop)) {
+-          av_dict_set(dictionary, name, param, 0);
+-        }
+-        else {
+-          return;
+-        }
+-      }
+-      else {
+-        ffmpeg_dict_set_int(dictionary, prop->name, IDP_Int(prop));
+-      }
+-      break;
+-  }
+-}
+-
+-static int ffmpeg_proprty_valid(AVCodecContext *c, const char *prop_name, IDProperty *curr)
+-{
+-  int valid = 1;
+-
+-  if (STREQ(prop_name, "video")) {
+-    if (STREQ(curr->name, "bf")) {
+-      /* flash codec doesn't support b frames */
+-      valid &= c->codec_id != AV_CODEC_ID_FLV1;
+-    }
+-  }
+-
+-  return valid;
+-}
+-
+-static void set_ffmpeg_properties(RenderData *rd,
+-                                  AVCodecContext *c,
+-                                  const char *prop_name,
+-                                  AVDictionary **dictionary)
+-{
+-  IDProperty *prop;
+-  IDProperty *curr;
+-
+-  /* TODO(sergey): This is actually rather stupid, because changing
+-   * codec settings in render panel would also set expert options.
+-   *
+-   * But we need ti here in order to get rid of deprecated settings
+-   * when opening old files in new blender.
+-   *
+-   * For as long we don't allow editing properties in the interface
+-   * it's all good. bug if we allow editing them, we'll need to
+-   * replace it with some smarter code which would port settings
+-   * from deprecated to new one.
+-   */
+-  ffmpeg_set_expert_options(rd);
+-
+-  if (!rd->ffcodecdata.properties) {
+-    return;
+-  }
+-
+-  prop = IDP_GetPropertyFromGroup(rd->ffcodecdata.properties, prop_name);
+-  if (!prop) {
+-    return;
+-  }
+-
+-  for (curr = prop->data.group.first; curr; curr = curr->next) {
+-    if (ffmpeg_proprty_valid(c, prop_name, curr)) {
+-      set_ffmpeg_property_option(curr, dictionary);
+-    }
+-  }
+-}
+-
+ static AVRational calc_time_base(uint den, double num, int codec_id)
+ {
+   /* Convert the input 'num' to an integer. Simply shift the decimal places until we get an integer
+@@ -575,7 +481,7 @@ static AVStream *alloc_video_stream(FFMpegContext *context,
+                                     int error_size)
+ {
+   AVStream *st;
+-  AVCodec *codec;
++  const AVCodec *codec;
+   AVDictionary *opts = NULL;
+ 
+   error[0] = '\0';
+@@ -588,21 +494,15 @@ static AVStream *alloc_video_stream(FFMpegContext *context,
+ 
+   /* Set up the codec context */
+ 
+-  context->video_codec = avcodec_alloc_context3(NULL);
+-  AVCodecContext *c = context->video_codec;
+-  c->codec_id = codec_id;
+-  c->codec_type = AVMEDIA_TYPE_VIDEO;
+-
+-  codec = avcodec_find_encoder(c->codec_id);
++  codec = avcodec_find_encoder(codec_id);
+   if (!codec) {
+     fprintf(stderr, "Couldn't find valid video codec\n");
+-    avcodec_free_context(&c);
+     context->video_codec = NULL;
+     return NULL;
+   }
+ 
+-  /* Load codec defaults into 'c'. */
+-  avcodec_get_context_defaults3(c, codec);
++  context->video_codec = avcodec_alloc_context3(codec);
++  AVCodecContext *c = context->video_codec;
+ 
+   /* Get some values from the current render settings */
+ 
+@@ -716,6 +616,13 @@ static AVStream *alloc_video_stream(FFMpegContext *context,
+     }
+   }
+ 
++  if (codec_id == AV_CODEC_ID_DNXHD) {
++    if (rd->ffcodecdata.flags & FFMPEG_LOSSLESS_OUTPUT) {
++      /* Set the block decision algorithm to be of the highest quality ("rd" == 2). */
++      c->mb_decision = 2;
++    }
++  }
++
+   if (codec_id == AV_CODEC_ID_FFV1) {
+     c->pix_fmt = AV_PIX_FMT_RGB32;
+   }
+@@ -752,8 +659,6 @@ static AVStream *alloc_video_stream(FFMpegContext *context,
+                                                             255);
+   st->avg_frame_rate = av_inv_q(c->time_base);
+ 
+-  set_ffmpeg_properties(rd, c, "video", &opts);
+-
+   if (codec->capabilities & AV_CODEC_CAP_AUTO_THREADS) {
+     c->thread_count = 0;
+   }
+@@ -818,8 +723,7 @@ static AVStream *alloc_audio_stream(FFMpegContext *context,
+                                     int error_size)
+ {
+   AVStream *st;
+-  AVCodec *codec;
+-  AVDictionary *opts = NULL;
++  const AVCodec *codec;
+ 
+   error[0] = '\0';
+ 
+@@ -829,24 +733,17 @@ static AVStream *alloc_audio_stream(FFMpegContext *context,
+   }
+   st->id = 1;
+ 
+-  context->audio_codec = avcodec_alloc_context3(NULL);
+-  AVCodecContext *c = context->audio_codec;
+-  c->thread_count = BLI_system_thread_count();
+-  c->thread_type = FF_THREAD_SLICE;
+-
+-  c->codec_id = codec_id;
+-  c->codec_type = AVMEDIA_TYPE_AUDIO;
+-
+-  codec = avcodec_find_encoder(c->codec_id);
++  codec = avcodec_find_encoder(codec_id);
+   if (!codec) {
+     fprintf(stderr, "Couldn't find valid audio codec\n");
+-    avcodec_free_context(&c);
+     context->audio_codec = NULL;
+     return NULL;
+   }
+ 
+-  /* Load codec defaults into 'c'. */
+-  avcodec_get_context_defaults3(c, codec);
++  context->audio_codec = avcodec_alloc_context3(codec);
++  AVCodecContext *c = context->audio_codec;
++  c->thread_count = BLI_system_thread_count();
++  c->thread_type = FF_THREAD_SLICE;
+ 
+   c->sample_rate = rd->ffcodecdata.audio_mixrate;
+   c->bit_rate = context->ffmpeg_audio_bitrate * 1000;
+@@ -914,19 +811,15 @@ static AVStream *alloc_audio_stream(FFMpegContext *context,
+     c->flags |= AV_CODEC_FLAG_GLOBAL_HEADER;
+   }
+ 
+-  set_ffmpeg_properties(rd, c, "audio", &opts);
+-
+-  int ret = avcodec_open2(c, codec, &opts);
++  int ret = avcodec_open2(c, codec, NULL);
+ 
+   if (ret < 0) {
+     fprintf(stderr, "Couldn't initialize audio codec: %s\n", av_err2str(ret));
+     BLI_strncpy(error, IMB_ffmpeg_last_error(), error_size);
+-    av_dict_free(&opts);
+     avcodec_free_context(&c);
+     context->audio_codec = NULL;
+     return NULL;
+   }
+-  av_dict_free(&opts);
+ 
+   /* need to prevent floating point exception when using vorbis audio codec,
+    * initialize this value in the same way as it's done in FFmpeg itself (sergey) */
+@@ -972,15 +865,6 @@ static void ffmpeg_dict_set_int(AVDictionary **dict, const char *key, int value)
+   av_dict_set(dict, key, buffer, 0);
+ }
+ 
+-static void ffmpeg_dict_set_float(AVDictionary **dict, const char *key, float value)
+-{
+-  char buffer[32];
+-
+-  BLI_snprintf(buffer, sizeof(buffer), "%.8f", value);
+-
+-  av_dict_set(dict, key, buffer, 0);
+-}
+-
+ static void ffmpeg_add_metadata_callback(void *data,
+                                          const char *propname,
+                                          char *propvalue,
+@@ -999,8 +883,7 @@ static int start_ffmpeg_impl(FFMpegContext *context,
+ {
+   /* Handle to the output file */
+   AVFormatContext *of;
+-  AVOutputFormat *fmt;
+-  AVDictionary *opts = NULL;
++  const AVOutputFormat *fmt;
+   char name[FILE_MAX], error[1024];
+   const char **exts;
+ 
+@@ -1037,11 +920,13 @@ static int start_ffmpeg_impl(FFMpegContext *context,
+       rectx,
+       recty);
+ 
++  /* Sanity checks for the output file extensions. */
+   exts = get_file_extensions(context->ffmpeg_type);
+   if (!exts) {
+     BKE_report(reports, RPT_ERROR, "No valid formats found");
+     return 0;
+   }
++
+   fmt = av_guess_format(NULL, exts[0], NULL);
+   if (!fmt) {
+     BKE_report(reports, RPT_ERROR, "No valid formats found");
+@@ -1050,66 +935,50 @@ static int start_ffmpeg_impl(FFMpegContext *context,
+ 
+   of = avformat_alloc_context();
+   if (!of) {
+-    BKE_report(reports, RPT_ERROR, "Error opening output file");
++    BKE_report(reports, RPT_ERROR, "Can't allocate ffmpeg format context");
+     return 0;
+   }
+ 
+-  /* Returns after this must 'goto fail;' */
+-
+-  of->oformat = fmt;
+-
+-  /* Only bother with setting packet size & mux rate when CRF is not used. */
+-  if (context->ffmpeg_crf == 0) {
+-    of->packet_size = rd->ffcodecdata.mux_packet_size;
+-    if (context->ffmpeg_audio_codec != AV_CODEC_ID_NONE) {
+-      ffmpeg_dict_set_int(&opts, "muxrate", rd->ffcodecdata.mux_rate);
+-    }
+-    else {
+-      av_dict_set(&opts, "muxrate", "0", 0);
+-    }
+-  }
+-
+-  ffmpeg_dict_set_int(&opts, "preload", (int)(0.5 * AV_TIME_BASE));
+-
+-  of->max_delay = (int)(0.7 * AV_TIME_BASE);
+-
+-  fmt->audio_codec = context->ffmpeg_audio_codec;
++  enum AVCodecID audio_codec = context->ffmpeg_audio_codec;
++  enum AVCodecID video_codec = context->ffmpeg_codec;
+ 
+   of->url = av_strdup(name);
+-  /* set the codec to the user's selection */
++  /* Check if we need to force change the codec because of file type codec restrictions */
+   switch (context->ffmpeg_type) {
+-    case FFMPEG_AVI:
+-    case FFMPEG_MOV:
+-    case FFMPEG_MKV:
+-      fmt->video_codec = context->ffmpeg_codec;
+-      break;
+     case FFMPEG_OGG:
+-      fmt->video_codec = AV_CODEC_ID_THEORA;
++      video_codec = AV_CODEC_ID_THEORA;
+       break;
+     case FFMPEG_DV:
+-      fmt->video_codec = AV_CODEC_ID_DVVIDEO;
++      video_codec = AV_CODEC_ID_DVVIDEO;
+       break;
+     case FFMPEG_MPEG1:
+-      fmt->video_codec = AV_CODEC_ID_MPEG1VIDEO;
++      video_codec = AV_CODEC_ID_MPEG1VIDEO;
+       break;
+     case FFMPEG_MPEG2:
+-      fmt->video_codec = AV_CODEC_ID_MPEG2VIDEO;
++      video_codec = AV_CODEC_ID_MPEG2VIDEO;
+       break;
+     case FFMPEG_H264:
+-      fmt->video_codec = AV_CODEC_ID_H264;
++      video_codec = AV_CODEC_ID_H264;
+       break;
+     case FFMPEG_XVID:
+-      fmt->video_codec = AV_CODEC_ID_MPEG4;
++      video_codec = AV_CODEC_ID_MPEG4;
+       break;
+     case FFMPEG_FLV:
+-      fmt->video_codec = AV_CODEC_ID_FLV1;
++      video_codec = AV_CODEC_ID_FLV1;
+       break;
+-    case FFMPEG_MPEG4:
+     default:
+-      fmt->video_codec = context->ffmpeg_codec;
++      /* These containers are not restricted to any specific codec types.
++       * Currently we expect these to be .avi, .mov, .mkv, and .mp4.
++       */
++      video_codec = context->ffmpeg_codec;
+       break;
+   }
+-  if (fmt->video_codec == AV_CODEC_ID_DVVIDEO) {
++
++  /* Returns after this must 'goto fail;' */
++
++  of->oformat = fmt;
++
++  if (video_codec == AV_CODEC_ID_DVVIDEO) {
+     if (rectx != 720) {
+       BKE_report(reports, RPT_ERROR, "Render width has to be 720 pixels for DV!");
+       goto fail;
+@@ -1125,7 +994,7 @@ static int start_ffmpeg_impl(FFMpegContext *context,
+   }
+ 
+   if (context->ffmpeg_type == FFMPEG_DV) {
+-    fmt->audio_codec = AV_CODEC_ID_PCM_S16LE;
++    audio_codec = AV_CODEC_ID_PCM_S16LE;
+     if (context->ffmpeg_audio_codec != AV_CODEC_ID_NONE &&
+         rd->ffcodecdata.audio_mixrate != 48000 && rd->ffcodecdata.audio_channels != 2) {
+       BKE_report(reports, RPT_ERROR, "FFMPEG only supports 48khz / stereo audio for DV!");
+@@ -1133,9 +1002,9 @@ static int start_ffmpeg_impl(FFMpegContext *context,
+     }
+   }
+ 
+-  if (fmt->video_codec != AV_CODEC_ID_NONE) {
++  if (video_codec != AV_CODEC_ID_NONE) {
+     context->video_stream = alloc_video_stream(
+-        context, rd, fmt->video_codec, of, rectx, recty, error, sizeof(error));
++        context, rd, video_codec, of, rectx, recty, error, sizeof(error));
+     PRINT("alloc video stream %p\n", context->video_stream);
+     if (!context->video_stream) {
+       if (error[0]) {
+@@ -1151,8 +1020,7 @@ static int start_ffmpeg_impl(FFMpegContext *context,
+   }
+ 
+   if (context->ffmpeg_audio_codec != AV_CODEC_ID_NONE) {
+-    context->audio_stream = alloc_audio_stream(
+-        context, rd, fmt->audio_codec, of, error, sizeof(error));
++    context->audio_stream = alloc_audio_stream(context, rd, audio_codec, of, error, sizeof(error));
+     if (!context->audio_stream) {
+       if (error[0]) {
+         BKE_report(reports, RPT_ERROR, error);
+@@ -1189,7 +1057,6 @@ static int start_ffmpeg_impl(FFMpegContext *context,
+ 
+   context->outfile = of;
+   av_dump_format(of, 0, name, 1);
+-  av_dict_free(&opts);
+ 
+   return 1;
+ 
+@@ -1206,7 +1073,6 @@ fail:
+     context->audio_stream = NULL;
+   }
+ 
+-  av_dict_free(&opts);
+   avformat_free_context(of);
+   return 0;
+ }
+@@ -1540,198 +1406,17 @@ void BKE_ffmpeg_end(void *context_v)
+   end_ffmpeg_impl(context, false);
+ }
+ 
+-/* properties */
+-
+-void BKE_ffmpeg_property_del(RenderData *rd, void *type, void *prop_)
+-{
+-  struct IDProperty *prop = (struct IDProperty *)prop_;
+-  IDProperty *group;
+-
+-  if (!rd->ffcodecdata.properties) {
+-    return;
+-  }
+-
+-  group = IDP_GetPropertyFromGroup(rd->ffcodecdata.properties, type);
+-  if (group && prop) {
+-    IDP_FreeFromGroup(group, prop);
+-  }
+-}
+-
+-static IDProperty *BKE_ffmpeg_property_add(RenderData *rd,
+-                                           const char *type,
+-                                           const AVOption *o,
+-                                           const AVOption *parent)
+-{
+-  AVCodecContext c;
+-  IDProperty *group;
+-  IDProperty *prop;
+-  IDPropertyTemplate val;
+-  int idp_type;
+-  char name[256];
+-
+-  val.i = 0;
+-
+-  avcodec_get_context_defaults3(&c, NULL);
+-
+-  if (!rd->ffcodecdata.properties) {
+-    rd->ffcodecdata.properties = IDP_New(IDP_GROUP, &val, "ffmpeg");
+-  }
+-
+-  group = IDP_GetPropertyFromGroup(rd->ffcodecdata.properties, type);
+-
+-  if (!group) {
+-    group = IDP_New(IDP_GROUP, &val, type);
+-    IDP_AddToGroup(rd->ffcodecdata.properties, group);
+-  }
+-
+-  if (parent) {
+-    BLI_snprintf(name, sizeof(name), "%s:%s", parent->name, o->name);
+-  }
+-  else {
+-    BLI_strncpy(name, o->name, sizeof(name));
+-  }
+-
+-  PRINT("ffmpeg_property_add: %s %s\n", type, name);
+-
+-  prop = IDP_GetPropertyFromGroup(group, name);
+-  if (prop) {
+-    return prop;
+-  }
+-
+-  switch (o->type) {
+-    case AV_OPT_TYPE_INT:
+-    case AV_OPT_TYPE_INT64:
+-      val.i = o->default_val.i64;
+-      idp_type = IDP_INT;
+-      break;
+-    case AV_OPT_TYPE_DOUBLE:
+-    case AV_OPT_TYPE_FLOAT:
+-      val.f = o->default_val.dbl;
+-      idp_type = IDP_FLOAT;
+-      break;
+-    case AV_OPT_TYPE_STRING:
+-      val.string.str =
+-          (char
+-               *)"                                                                               ";
+-      val.string.len = 80;
+-      idp_type = IDP_STRING;
+-      break;
+-    case AV_OPT_TYPE_CONST:
+-      val.i = 1;
+-      idp_type = IDP_INT;
+-      break;
+-    default:
+-      return NULL;
+-  }
+-  prop = IDP_New(idp_type, &val, name);
+-  IDP_AddToGroup(group, prop);
+-  return prop;
+-}
+-
+-/* not all versions of ffmpeg include that, so here we go ... */
+-
+-int BKE_ffmpeg_property_add_string(RenderData *rd, const char *type, const char *str)
+-{
+-  AVCodecContext c;
+-  const AVOption *o = NULL;
+-  const AVOption *p = NULL;
+-  char name_[128];
+-  char *name;
+-  char *param;
+-  IDProperty *prop = NULL;
+-
+-  avcodec_get_context_defaults3(&c, NULL);
+-
+-  BLI_strncpy(name_, str, sizeof(name_));
+-
+-  name = name_;
+-  while (*name == ' ') {
+-    name++;
+-  }
+-
+-  param = strchr(name, ':');
+-
+-  if (!param) {
+-    param = strchr(name, ' ');
+-  }
+-  if (param) {
+-    *param++ = '\0';
+-    while (*param == ' ') {
+-      param++;
+-    }
+-  }
+-
+-  o = av_opt_find(&c, name, NULL, 0, AV_OPT_SEARCH_CHILDREN | AV_OPT_SEARCH_FAKE_OBJ);
+-  if (!o) {
+-    PRINT("Ignoring unknown expert option %s\n", str);
+-    return 0;
+-  }
+-  if (param && o->type == AV_OPT_TYPE_CONST) {
+-    return 0;
+-  }
+-  if (param && o->type != AV_OPT_TYPE_CONST && o->unit) {
+-    p = av_opt_find(&c, param, o->unit, 0, AV_OPT_SEARCH_CHILDREN | AV_OPT_SEARCH_FAKE_OBJ);
+-    if (p) {
+-      prop = BKE_ffmpeg_property_add(rd, (char *)type, p, o);
+-    }
+-    else {
+-      PRINT("Ignoring unknown expert option %s\n", str);
+-    }
+-  }
+-  else {
+-    prop = BKE_ffmpeg_property_add(rd, (char *)type, o, NULL);
+-  }
+-
+-  if (!prop) {
+-    return 0;
+-  }
+-
+-  if (param && !p) {
+-    switch (prop->type) {
+-      case IDP_INT:
+-        IDP_Int(prop) = atoi(param);
+-        break;
+-      case IDP_FLOAT:
+-        IDP_Float(prop) = atof(param);
+-        break;
+-      case IDP_STRING:
+-        strncpy(IDP_String(prop), param, prop->len);
+-        break;
+-    }
+-  }
+-  return 1;
+-}
+-
+-static void ffmpeg_set_expert_options(RenderData *rd)
+-{
+-  int codec_id = rd->ffcodecdata.codec;
+-
+-  if (rd->ffcodecdata.properties) {
+-    IDP_FreePropertyContent(rd->ffcodecdata.properties);
+-  }
+-
+-  if (codec_id == AV_CODEC_ID_DNXHD) {
+-    if (rd->ffcodecdata.flags & FFMPEG_LOSSLESS_OUTPUT) {
+-      BKE_ffmpeg_property_add_string(rd, "video", "mbd:rd");
+-    }
+-  }
+-}
+-
+ void BKE_ffmpeg_preset_set(RenderData *rd, int preset)
+ {
+-  int isntsc = (rd->frs_sec != 25);
+-
+-  if (rd->ffcodecdata.properties) {
+-    IDP_FreePropertyContent(rd->ffcodecdata.properties);
+-  }
++  bool is_ntsc = (rd->frs_sec != 25);
+ 
+   switch (preset) {
+     case FFMPEG_PRESET_VCD:
+       rd->ffcodecdata.type = FFMPEG_MPEG1;
+       rd->ffcodecdata.video_bitrate = 1150;
+       rd->xsch = 352;
+-      rd->ysch = isntsc ? 240 : 288;
+-      rd->ffcodecdata.gop_size = isntsc ? 18 : 15;
++      rd->ysch = is_ntsc ? 240 : 288;
++      rd->ffcodecdata.gop_size = is_ntsc ? 18 : 15;
+       rd->ffcodecdata.rc_max_rate = 1150;
+       rd->ffcodecdata.rc_min_rate = 1150;
+       rd->ffcodecdata.rc_buffer_size = 40 * 8;
+@@ -1743,8 +1428,8 @@ void BKE_ffmpeg_preset_set(RenderData *rd, int preset)
+       rd->ffcodecdata.type = FFMPEG_MPEG2;
+       rd->ffcodecdata.video_bitrate = 2040;
+       rd->xsch = 480;
+-      rd->ysch = isntsc ? 480 : 576;
+-      rd->ffcodecdata.gop_size = isntsc ? 18 : 15;
++      rd->ysch = is_ntsc ? 480 : 576;
++      rd->ffcodecdata.gop_size = is_ntsc ? 18 : 15;
+       rd->ffcodecdata.rc_max_rate = 2516;
+       rd->ffcodecdata.rc_min_rate = 0;
+       rd->ffcodecdata.rc_buffer_size = 224 * 8;
+@@ -1761,7 +1446,7 @@ void BKE_ffmpeg_preset_set(RenderData *rd, int preset)
+       rd->ysch = isntsc ? 480 : 576;
+ #  endif
+ 
+-      rd->ffcodecdata.gop_size = isntsc ? 18 : 15;
++      rd->ffcodecdata.gop_size = is_ntsc ? 18 : 15;
+       rd->ffcodecdata.rc_max_rate = 9000;
+       rd->ffcodecdata.rc_min_rate = 0;
+       rd->ffcodecdata.rc_buffer_size = 224 * 8;
+@@ -1772,14 +1457,14 @@ void BKE_ffmpeg_preset_set(RenderData *rd, int preset)
+     case FFMPEG_PRESET_DV:
+       rd->ffcodecdata.type = FFMPEG_DV;
+       rd->xsch = 720;
+-      rd->ysch = isntsc ? 480 : 576;
++      rd->ysch = is_ntsc ? 480 : 576;
+       break;
+ 
+     case FFMPEG_PRESET_H264:
+       rd->ffcodecdata.type = FFMPEG_AVI;
+       rd->ffcodecdata.codec = AV_CODEC_ID_H264;
+       rd->ffcodecdata.video_bitrate = 6000;
+-      rd->ffcodecdata.gop_size = isntsc ? 18 : 15;
++      rd->ffcodecdata.gop_size = is_ntsc ? 18 : 15;
+       rd->ffcodecdata.rc_max_rate = 9000;
+       rd->ffcodecdata.rc_min_rate = 0;
+       rd->ffcodecdata.rc_buffer_size = 224 * 8;
+@@ -1800,7 +1485,7 @@ void BKE_ffmpeg_preset_set(RenderData *rd, int preset)
+       }
+ 
+       rd->ffcodecdata.video_bitrate = 6000;
+-      rd->ffcodecdata.gop_size = isntsc ? 18 : 15;
++      rd->ffcodecdata.gop_size = is_ntsc ? 18 : 15;
+       rd->ffcodecdata.rc_max_rate = 9000;
+       rd->ffcodecdata.rc_min_rate = 0;
+       rd->ffcodecdata.rc_buffer_size = 224 * 8;
+@@ -1808,8 +1493,6 @@ void BKE_ffmpeg_preset_set(RenderData *rd, int preset)
+       rd->ffcodecdata.mux_rate = 10080000;
+       break;
+   }
+-
+-  ffmpeg_set_expert_options(rd);
+ }
+ 
+ void BKE_ffmpeg_image_type_verify(RenderData *rd, ImageFormatData *imf)
+@@ -1855,11 +1538,6 @@ void BKE_ffmpeg_image_type_verify(RenderData *rd, ImageFormatData *imf)
+   }
+ }
+ 
+-void BKE_ffmpeg_codec_settings_verify(RenderData *rd)
+-{
+-  ffmpeg_set_expert_options(rd);
+-}
+-
+ bool BKE_ffmpeg_alpha_channel_is_supported(const RenderData *rd)
+ {
+   int codec = rd->ffcodecdata.codec;
+diff --git a/source/blender/imbuf/intern/IMB_anim.h b/source/blender/imbuf/intern/IMB_anim.h
+index c4e2ad9da7f..67fdb841317 100644
+--- a/source/blender/imbuf/intern/IMB_anim.h
++++ b/source/blender/imbuf/intern/IMB_anim.h
+@@ -124,7 +124,7 @@ struct anim {
+ #ifdef WITH_FFMPEG
+   AVFormatContext *pFormatCtx;
+   AVCodecContext *pCodecCtx;
+-  AVCodec *pCodec;
++  const AVCodec *pCodec;
+   AVFrame *pFrame;
+   int pFrameComplete;
+   AVFrame *pFrameRGB;
+diff --git a/source/blender/imbuf/intern/anim_movie.c b/source/blender/imbuf/intern/anim_movie.c
+index 38dbb9bfc47..0d0ac798d3a 100644
+--- a/source/blender/imbuf/intern/anim_movie.c
++++ b/source/blender/imbuf/intern/anim_movie.c
+@@ -508,7 +508,7 @@ static int startffmpeg(struct anim *anim)
+ {
+   int i, video_stream_index;
+ 
+-  AVCodec *pCodec;
++  const AVCodec *pCodec;
+   AVFormatContext *pFormatCtx = NULL;
+   AVCodecContext *pCodecCtx;
+   AVRational frame_rate;
+diff --git a/source/blender/imbuf/intern/indexer.c b/source/blender/imbuf/intern/indexer.c
+index 00e96e7840b..55f1eced70f 100644
+--- a/source/blender/imbuf/intern/indexer.c
++++ b/source/blender/imbuf/intern/indexer.c
+@@ -493,7 +493,7 @@ struct proxy_output_ctx {
+   AVFormatContext *of;
+   AVStream *st;
+   AVCodecContext *c;
+-  AVCodec *codec;
++  const AVCodec *codec;
+   struct SwsContext *sws_ctx;
+   AVFrame *frame;
+   int cfra;
+@@ -525,12 +525,9 @@ static struct proxy_output_ctx *alloc_proxy_output_ffmpeg(
+   rv->st = avformat_new_stream(rv->of, NULL);
+   rv->st->id = 0;
+ 
+-  rv->c = avcodec_alloc_context3(NULL);
+-  rv->c->codec_type = AVMEDIA_TYPE_VIDEO;
+-  rv->c->codec_id = AV_CODEC_ID_H264;
++  rv->codec = avcodec_find_encoder(AV_CODEC_ID_H264);
+ 
+-  rv->of->oformat->video_codec = rv->c->codec_id;
+-  rv->codec = avcodec_find_encoder(rv->c->codec_id);
++  rv->c = avcodec_alloc_context3(rv->codec);
+ 
+   if (!rv->codec) {
+     fprintf(stderr,
+@@ -542,8 +539,6 @@ static struct proxy_output_ctx *alloc_proxy_output_ffmpeg(
+     return NULL;
+   }
+ 
+-  avcodec_get_context_defaults3(rv->c, rv->codec);
+-
+   rv->c->width = width;
+   rv->c->height = height;
+   rv->c->gop_size = 10;
+@@ -794,7 +789,7 @@ typedef struct FFmpegIndexBuilderContext {
+ 
+   AVFormatContext *iFormatCtx;
+   AVCodecContext *iCodecCtx;
+-  AVCodec *iCodec;
++  const AVCodec *iCodec;
+   AVStream *iStream;
+   int videoStream;
+ 
+diff --git a/source/blender/imbuf/intern/util.c b/source/blender/imbuf/intern/util.c
+index 18ed4710e78..96005ed0a0d 100644
+--- a/source/blender/imbuf/intern/util.c
++++ b/source/blender/imbuf/intern/util.c
+@@ -267,7 +267,7 @@ static int isffmpeg(const char *filepath)
+   AVFormatContext *pFormatCtx = NULL;
+   unsigned int i;
+   int videoStream;
+-  AVCodec *pCodec;
++  const AVCodec *pCodec;
+ 
+   if (BLI_path_extension_check_n(filepath,
+                                  ".swf",
+diff --git a/source/blender/makesdna/DNA_scene_types.h b/source/blender/makesdna/DNA_scene_types.h
+index 864358e040c..45fd4895f77 100644
+--- a/source/blender/makesdna/DNA_scene_types.h
++++ b/source/blender/makesdna/DNA_scene_types.h
+@@ -157,7 +157,6 @@ typedef struct FFMpegCodecData {
+   int audio_bitrate;
+   int audio_mixrate;
+   int audio_channels;
+-  char _pad0[4];
+   float audio_volume;
+   int gop_size;
+   /** Only used if FFMPEG_USE_MAX_B_FRAMES flag is set. */
+@@ -172,9 +171,7 @@ typedef struct FFMpegCodecData {
+   int rc_buffer_size;
+   int mux_packet_size;
+   int mux_rate;
+-  char _pad1[4];
+-
+-  IDProperty *properties;
++  void *_pad1;
+ } FFMpegCodecData;
+ 
+ /* ************************************************************* */
+diff --git a/source/blender/makesrna/intern/rna_scene.c b/source/blender/makesrna/intern/rna_scene.c
+index 201ea5469cc..e9b9b43422c 100644
+--- a/source/blender/makesrna/intern/rna_scene.c
++++ b/source/blender/makesrna/intern/rna_scene.c
+@@ -1480,18 +1480,6 @@ static void rna_FFmpegSettings_lossless_output_set(PointerRNA *ptr, bool value)
+   else {
+     rd->ffcodecdata.flags &= ~FFMPEG_LOSSLESS_OUTPUT;
+   }
+-
+-  BKE_ffmpeg_codec_settings_verify(rd);
+-}
+-
+-static void rna_FFmpegSettings_codec_settings_update(Main *UNUSED(bmain),
+-                                                     Scene *UNUSED(scene_unused),
+-                                                     PointerRNA *ptr)
+-{
+-  Scene *scene = (Scene *)ptr->owner_id;
+-  RenderData *rd = &scene->r;
+-
+-  BKE_ffmpeg_codec_settings_verify(rd);
+ }
+ #  endif
+ 
+@@ -5715,8 +5703,6 @@ static void rna_def_scene_ffmpeg_settings(BlenderRNA *brna)
+   RNA_def_property_enum_items(prop, ffmpeg_format_items);
+   RNA_def_property_enum_default(prop, FFMPEG_MKV);
+   RNA_def_property_ui_text(prop, "Container", "Output file container");
+-  RNA_def_property_update(
+-      prop, NC_SCENE | ND_RENDER_OPTIONS, "rna_FFmpegSettings_codec_settings_update");
+ 
+   prop = RNA_def_property(srna, "codec", PROP_ENUM, PROP_NONE);
+   RNA_def_property_enum_bitflag_sdna(prop, NULL, "codec");
+@@ -5724,8 +5710,6 @@ static void rna_def_scene_ffmpeg_settings(BlenderRNA *brna)
+   RNA_def_property_enum_items(prop, ffmpeg_codec_items);
+   RNA_def_property_enum_default(prop, AV_CODEC_ID_H264);
+   RNA_def_property_ui_text(prop, "Video Codec", "FFmpeg codec to use for video output");
+-  RNA_def_property_update(
+-      prop, NC_SCENE | ND_RENDER_OPTIONS, "rna_FFmpegSettings_codec_settings_update");
+ 
+   prop = RNA_def_property(srna, "video_bitrate", PROP_INT, PROP_NONE);
+   RNA_def_property_int_sdna(prop, NULL, "video_bitrate");
