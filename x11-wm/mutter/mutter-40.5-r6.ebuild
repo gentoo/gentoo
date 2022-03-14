@@ -140,7 +140,7 @@ src_configure() {
 			-Dwayland_eglstream=true
 		)
 	else
-		emsonargs+=(
+		emesonargs+=(
 			-Degl_device=false
 			-Dwayland_eglstream=false
 		)
