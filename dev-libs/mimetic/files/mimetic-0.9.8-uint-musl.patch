@@ -1,0 +1,36 @@
+From 6afcd2f85332bdb25e38718cb9db6e3040797a8f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@atlas.cz>
+Date: Sat, 12 Mar 2022 21:20:50 +0100
+Subject: [PATCH] Use unsigned int where uint is not defined
+
+Upstream-PR: https://github.com/tat/mimetic/pull/27
+
+diff --git a/mimetic/codec/other_codecs.h b/mimetic/codec/other_codecs.h
+index c4ccf3f..3e68dd9 100644
+--- a/mimetic/codec/other_codecs.h
++++ b/mimetic/codec/other_codecs.h
+@@ -109,7 +109,7 @@ struct MaxLineLen: public unbuffered_codec, public chainable_codec<MaxLineLen>
+     : m_max(0), m_written(0)
+     {
+     }
+-    MaxLineLen(uint m)
++    MaxLineLen(unsigned int m)
+     : m_max(m), m_written(0)
+     {
+     }
+diff --git a/mimetic/contenttype.cxx b/mimetic/contenttype.cxx
+index 81c36c0..0cb75e7 100644
+--- a/mimetic/contenttype.cxx
++++ b/mimetic/contenttype.cxx
+@@ -34,7 +34,7 @@ ContentType::Boundary::Boundary()
+         stringstream ss;
+         srand(time(0));
+         short tbSize = sizeof(tb)-1;
+-        for(uint i=0; i < 48; ++i)
++        for(unsigned int i=0; i < 48; ++i)
+         {
+             unsigned int r = rand();
+             ss << tb[r % tbSize];
+-- 
+2.34.1
+
