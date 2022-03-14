@@ -28,6 +28,7 @@ BDEPEND="
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytest-toolbox[${PYTHON_USEDEP}]
+		dev-python/trio[${PYTHON_USEDEP}]
 	)
 "
 
