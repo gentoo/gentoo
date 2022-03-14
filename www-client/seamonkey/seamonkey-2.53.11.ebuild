@@ -537,7 +537,7 @@ pkg_postinst() {
 		elog "USE='-gmp-autoupdate' has disabled the following plugins from updating or"
 		elog "installing into new profiles:"
 		local plugin
-		for plugin in "${GMP_PLUGIN_LIST[@]}"; do 
+		for plugin in "${GMP_PLUGIN_LIST[@]}"; do
 			elog "\t ${plugin}" ;
 		 done
 	fi
