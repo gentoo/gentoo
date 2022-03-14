@@ -50,7 +50,7 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-fix-build-with-cereal-1.3.1.patch
+	"${FILESDIR}"/${PN}-2.4.0-fix-build-with-cereal-1.3.1.patch
 )
 
 S="${WORKDIR}/${MY_PN}-version_${PV}"
