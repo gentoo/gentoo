@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Bernard Cafarelli <voyageur@gentoo.org> (2022-03-14)
+# Now requires dev-java/rhino which is not keyworded
+net-misc/plowshare javascript
+
 # Maciej Barć <xgqt@gentoo.org> (2022-03-10)
 # Java and Tex dependencies required to build documentation are not keyworded,
 # notably dev-java/antlr-tool and dev-python/sphinxcontrib-bibtex.
