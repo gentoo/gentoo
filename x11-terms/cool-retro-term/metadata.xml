@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+        <maintainer type="person">
+                <email>contact@thamognya.com</email>
+                <name>Thamognya Kodi</name>
+        </maintainer>
+        <longdescription lang="en">
+                cool-retro-term is a terminal emulator which mimics the look and feel of the old cathode tube screens.
+                It has been designed to be eye-candy, customizable, and reasonably lightweight.
+        </longdescription>
 	<upstream>
 		<remote-id type="github">Swordfish90/cool-retro-term</remote-id>
 	</upstream>
