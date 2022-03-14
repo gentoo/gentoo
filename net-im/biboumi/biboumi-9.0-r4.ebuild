@@ -44,7 +44,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 DOCS=( README.rst CHANGELOG.rst doc/user.rst )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-9.0-fix-namespace-separator.patch"
+	"${FILESDIR}/${PN}-9.0-do-not-use-as-a-namespace-separator-with-expat.patch"
 	"${FILESDIR}/${PN}-9.0-use-system-catch2.patch"
 )
 
