@@ -402,6 +402,7 @@ meson_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local mesontestargs=(
+		--print-errorlogs
 		-C "${BUILD_DIR}"
 		--num-processes "$(makeopts_jobs "${MAKEOPTS}")"
 		"$@"
