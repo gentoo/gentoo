@@ -16,6 +16,8 @@ if [[ ${PV} = *9999* ]] ; then
 	EGIT_REPO_URI="https://git.blender.org/blender.git"
 else
 	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
+        SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-3.0.1-ffmpeg-5.0.patch.bz2"
+
 	# Update these between major releases.
 	TEST_TARBALL_VERSION="3.0.0"
 	SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.bz2 )"
@@ -127,7 +129,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.0-intern-ghost-fix-typo-in-finding-XF86VMODE.patch
 	"${FILESDIR}"/${PN}-3.0.1-openexr.patch
 	"${FILESDIR}"/${PN}-3.0.1-openimageio-2.3.patch
-	"${FILESDIR}"/${PN}-3.0.1-ffmpeg-5.0.patch
+	"${WORKDIR}"/${PN}-3.0.1-ffmpeg-5.0.patch
 )
 
 blender_check_requirements() {
