@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# needs stabilizing
+media-video/ffmpeg vmaf
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
 # needs stabilizing
 media-video/ffmpeg amf
