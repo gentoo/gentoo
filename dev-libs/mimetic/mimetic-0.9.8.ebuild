@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,7 @@ BDEPEND="doc? ( app-doc/doxygen )"
 PATCHES=(
 	"${FILESDIR}/signed-char.patch"
 	"${FILESDIR}/${P}-build-mmap.patch"
+	"${FILESDIR}/${P}-uint-musl.patch"
 )
 
 src_prepare() {
