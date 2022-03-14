@@ -387,6 +387,8 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+QA_FLAGS_IGNORED="usr/bin/arti"
+
 src_compile() {
 	cd crates/arti || die
 	cargo_src_compile
