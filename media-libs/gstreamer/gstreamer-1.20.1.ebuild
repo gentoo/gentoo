@@ -31,7 +31,7 @@ BDEPEND="
 	sys-devel/flex
 "
 
-DOCS=( AUTHORS ChangeLog NEWS MAINTAINERS README RELEASE )
+DOCS=( AUTHORS ChangeLog NEWS MAINTAINERS README.md RELEASE )
 
 multilib_src_configure() {
 	local emesonargs=(

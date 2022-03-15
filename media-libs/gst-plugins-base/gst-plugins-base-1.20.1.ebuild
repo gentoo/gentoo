@@ -89,9 +89,9 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
 
-DOCS=( AUTHORS NEWS README RELEASE )
+DOCS=( AUTHORS NEWS README.md RELEASE )
 
-# Fixes backported to 1.20.0, to be removed in 1.20.1
+# Fixes backported to 1.20.1, to be removed in 1.20.2+
 PATCHES=(
 )
 

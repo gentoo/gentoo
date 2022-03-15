@@ -42,14 +42,13 @@ BDEPEND="
 	dev-util/glib-utils
 "
 
-DOCS=( AUTHORS ChangeLog NEWS README RELEASE )
+DOCS=( AUTHORS ChangeLog NEWS README.md RELEASE )
 
 # FIXME: gstharness.c:889:gst_harness_new_with_padnames: assertion failed: (element != NULL)
 RESTRICT="test"
 
-# Fixes backported to 1.20.0, to be removed in 1.20.1
+# Fixes backported to 1.20.1, to be removed in 1.20.2+
 PATCHES=(
-	"${FILESDIR}/gst-plugins-bad-1.20.0-move-qroverlay-to-external-deps.patch"
 )
 
 src_prepare() {
