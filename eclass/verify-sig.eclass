@@ -229,6 +229,10 @@ verify-sig_verify_unsigned_checksums() {
 			chksum_prog=sha256sum
 			chksum_len=64
 			;;
+		sha512)
+			chksum_prog=sha512sum
+			chksum_len=128
+			;;
 		*)
 			die "${FUNCNAME}: unknown checksum algo ${algo}"
 			;;
