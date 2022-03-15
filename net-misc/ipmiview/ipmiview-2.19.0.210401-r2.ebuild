@@ -20,7 +20,7 @@ KEYWORDS="-* ~amd64"
 RDEPEND="
 	net-misc/stunnel
 	sys-libs/ncurses-compat:5
-	>=virtual/jre-1.8:*
+	virtual/jre:1.8
 "
 
 BDEPEND="app-arch/unzip"
@@ -55,9 +55,9 @@ src_install() {
 
 	local pre=$(prefixify_ro "${FILESDIR}"/launcher-pre.bash)
 	java-pkg_dolauncher ipmiview --jar IPMIView20.jar -pre "${pre}"
-	java-pkg_dolauncher ipmiview-ikvm --jar iKVM.jar -pre "${pre}"
-	java-pkg_dolauncher ipmiview-ikvmmicroblade --jar iKVMMicroBlade.jar -pre "${pre}"
-	java-pkg_dolauncher ipmiview-jviewerx9 --jar JViewerX9.jar -pre "${pre}"
+	java-pkg_dolauncher ikvm --jar iKVM.jar -pre "${pre}"
+	java-pkg_dolauncher ikvmmicroblade --jar iKVMMicroBlade.jar -pre "${pre}"
+	java-pkg_dolauncher jviewerx9 --jar JViewerX9.jar -pre "${pre}"
 	java-pkg_dolauncher trapreceiver --jar TrapView.jar -pre "${pre}"
 
 	exeinto ${DIR}/jre/bin
