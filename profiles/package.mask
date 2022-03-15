@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-03-15)
+# No maintainer.  This package is repeatedly non-bumpable due to missing
+# upstream tags.  No revdeps.
+# Removal on 2022-04-14.  Bug #835352.
+dev-python/sphinx-jinja
+
 # Sam James <sam@gentoo.org> (2022-03-15)
 # No reverse dependencies, stuck on deprecated EAPI 5.
 # Removal on 2022-04-15. bug #835350.
