@@ -17,7 +17,7 @@ HOMEPAGE="http://rxtx.qbang.org/"
 SRC_URI="ftp://ftp.qbang.org/pub/rxtx/${MY_P}.zip"
 LICENSE="LGPL-2.1+"
 SLOT="2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="lfd"
 
 RDEPEND=">=virtual/jre-1.8:*
