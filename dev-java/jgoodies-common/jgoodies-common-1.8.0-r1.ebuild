@@ -17,7 +17,7 @@ SRC_URI="http://www.jgoodies.com/download/libraries/${MY_PN}/${MY_P}.zip"
 
 LICENSE="BSD"
 SLOT="1.8"
-KEYWORDS="~amd64 ~ppc64 x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE=""
 
 RESTRICT="test"
