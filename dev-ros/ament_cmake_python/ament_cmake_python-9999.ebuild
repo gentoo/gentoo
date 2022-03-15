@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,7 +39,7 @@ BDEPEND="
 	$(python_gen_any_dep 'dev-python/ament_package[${PYTHON_USEDEP}] dev-python/catkin_pkg[${PYTHON_USEDEP}]')
 	${PYTHON_DEPS}
 "
-PATCHES=( "${FILESDIR}/destdir.patch" )
+PATCHES=( "${FILESDIR}/destdir2.patch" )
 
 python_check_deps() {
 	has_version "dev-python/ament_package[${PYTHON_USEDEP}]" && \
