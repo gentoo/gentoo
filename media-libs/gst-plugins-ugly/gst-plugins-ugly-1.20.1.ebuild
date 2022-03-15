@@ -20,7 +20,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}"
 
-DOCS=( AUTHORS ChangeLog NEWS README RELEASE )
+DOCS=( AUTHORS ChangeLog NEWS README.md RELEASE )
 
 multilib_src_install_all() {
 	einstalldocs
