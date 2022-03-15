@@ -18,8 +18,7 @@
 			<email>sebastian+dev@ramacher.at</email>
 		<name>Sebastian Ramacher</name>
 		</maintainer>
-		<changelog>http://pwmt.org/projects/zathura/download/</changelog>
-		<doc lang="en">http://pwmt.org/projects/zathura/</doc>
-		<bugs-to>http://bugs.pwmt.org/</bugs-to>
+		<doc lang="en">https://git.pwmt.org/pwmt/zathura-pdf-mupdf/-/blob/master/README.md</doc>
+		<bugs-to>https://git.pwmt.org/pwmt/zathura-pdf-mupdf/-/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
