@@ -12,7 +12,7 @@
 	</longdescription>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">solokeys/solo-python</remote-id>
-		<remote-id type="pypi">solo-python</remote-id>
+		<remote-id type="github">solokeys/solo1-cli</remote-id>
+		<remote-id type="pypi">solo1</remote-id>
 	</upstream>
 </pkgmetadata>
