@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -30,7 +30,7 @@ BDEPEND=">=sys-apps/iucode_tool-2.3"
 # !<sys-apps/microcode-ctl-1.17-r2 due to bug #268586
 RDEPEND="hostonly? ( sys-apps/iucode_tool )"
 
-RESTRICT="binchecks bindist mirror strip"
+RESTRICT="binchecks bindist strip"
 
 S=${WORKDIR}
 
