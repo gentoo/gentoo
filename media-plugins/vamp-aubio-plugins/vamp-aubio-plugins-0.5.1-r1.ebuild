@@ -16,7 +16,8 @@ SRC_URI="https://aubio.org/pub/vamp-aubio-plugins/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
+# bug #748057, configure script only allows amd64/x86
+KEYWORDS="-* amd64 ~x86"
 IUSE=""
 
 DEPEND=">=media-libs/aubio-0.4.1
