@@ -229,11 +229,11 @@ _fortran_test_function() {
 	: ${FORTRAN_STANDARD:=77}
 	for dialect in ${FORTRAN_STANDARD}; do
 		case ${dialect} in
-			77) _fortran_compile_test $(tc-getF77) || \
+			77) _fortran_compile_test "$(tc-getF77)" || \
 				_fortran_die_msg ;;
-			90|95) _fortran_compile_test $(tc-getFC) 90 || \
+			90|95) _fortran_compile_test "$(tc-getFC)" 90 || \
 				_fortran_die_msg ;;
-			2003) _fortran_compile_test $(tc-getFC) 03 || \
+			2003) _fortran_compile_test "$(tc-getFC)" 03 || \
 				_fortran_die_msg ;;
 			2008) die "Future" ;;
 			*) die "${dialect} is not a Fortran dialect." ;;
