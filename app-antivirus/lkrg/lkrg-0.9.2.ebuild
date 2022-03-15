@@ -22,7 +22,8 @@ MODULE_NAMES="p_lkrg(misc:${S}:${S})"
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/openwall.asc"
 
 pkg_setup() {
-	local CONFIG_CHECK="MODULE_UNLOAD KALLSYMS_ALL JUMP_LABEL"
+	CONFIG_CHECK="HAVE_KRETPROBES KALLSYMS_ALL KPROBES JUMP_LABEL"
+	CONFIG_CHECK+=" MODULE_UNLOAD !PREEMPT_RT ~STACKTRACE"
 	linux-mod_pkg_setup
 
 	# compile against selected (not running) target
