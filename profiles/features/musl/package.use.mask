@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Petr Vaněk <arkamar@atlas.cz> (2022-03-15)
+# musl package does not currently provide gencat binary, which is needed for
+# nls support, see bug #712828
+x11-wm/fluxbox nls
+
 # Marco Genasci <fedeliallalinea@gmail.com> (2022-01-06)
 # Pulls dev-db/oracle-instantclient which doesn't work on musl
 app-metrics/collectd collectd_plugins_oracle
