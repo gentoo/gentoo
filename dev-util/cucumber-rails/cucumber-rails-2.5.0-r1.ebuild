@@ -47,5 +47,5 @@ ruby_add_rdepend "
 all_ruby_prepare() {
 	rm Gemfile || die
 	sed -i -e '/[Bb]undler/d' Rakefile || die
-	sed -i -e '/files/ s:^:#:' ${RUBY_FAKEGEM_GEMSPEC} || die
+	sed -i -e 's/2.4.0/2.5.0/' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
