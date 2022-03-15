@@ -230,6 +230,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
 	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
 	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
+	"${FILESDIR}"/${PN}-3.0.17.3-fix-getConnectionEndpointAddress.patch
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
