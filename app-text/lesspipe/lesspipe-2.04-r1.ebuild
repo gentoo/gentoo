@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit bash-completion-r1
+
 DESCRIPTION="A preprocessor for less"
 HOMEPAGE="https://github.com/wofr06/lesspipe"
 SRC_URI="https://github.com/wofr06/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -31,6 +33,9 @@ src_compile() {
 src_install() {
 	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" install
 	einstalldocs
+
+	rm -r "${ED}"/etc/bash_completion.d || die
+	newbashcomp less_completion less
 }
 
 pkg_preinst() {
