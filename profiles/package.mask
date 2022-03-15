@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-03-15)
+# No reverse dependencies, stuck on deprecated EAPI 5.
+# Removal on 2022-04-15. bug #835350.
+dev-java/headius-options
+
 # Matthew Smith <matthew@gentoo.org> (2022-03-14)
 # Dead upstream, multiple open bugs.
 # Bug #835162. Removal on 2022-04-13.
