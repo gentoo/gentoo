@@ -37,9 +37,9 @@ src_prepare() {
 
 src_compile() {
 	if use xinerama; then
-		emake CC=$(tc-getCC) dwm
+		emake CC="$(tc-getCC)" dwm
 	else
-		emake CC=$(tc-getCC) XINERAMAFLAGS="" XINERAMALIBS="" dwm
+		emake CC="$(tc-getCC)" XINERAMAFLAGS="" XINERAMALIBS="" dwm
 	fi
 }
 
