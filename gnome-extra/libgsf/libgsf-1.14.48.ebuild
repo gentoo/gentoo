@@ -10,7 +10,8 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libgsf"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/114" # libgsf-1.so version
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="bzip2 gtk +introspection"
+IUSE="bzip2 gtk +introspection test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.36:2
@@ -28,6 +29,7 @@ DEPEND="${RDEPEND}
 	dev-libs/gobject-introspection-common
 	>=sys-devel/gettext-0.19.6
 	virtual/pkgconfig
+	test? ( dev-perl/XML-Parser )
 "
 
 src_configure() {
