@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (2022-03-16)
+# little activity upstream, doesn't work with PHP 8.0
+# Removal in 30 days
+www-apps/agendav
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-03-16)
 # Java library without consumers.
 # Removal in 30 days. Bug #835389.
