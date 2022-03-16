@@ -24,7 +24,6 @@ REQUIRED_USE="?? ( optimize tbb )"
 # properly set up.
 RESTRICT="test"
 
-# sys-libs/glibc see bug #832742
 RDEPEND="
 	!app-eselect/eselect-opencascade
 	dev-lang/tcl:=
@@ -35,7 +34,6 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/ftgl
-	sys-libs/glibc
 	virtual/glu
 	virtual/opengl
 	x11-libs/libXmu
