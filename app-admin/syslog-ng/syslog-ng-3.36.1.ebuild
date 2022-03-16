@@ -43,7 +43,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-libs/criterion )"
 BDEPEND="
-	sys-devel/bison
+	>=sys-devel/bison-3.7.6
 	sys-devel/flex
 	virtual/pkgconfig"
 
