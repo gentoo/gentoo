@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 DEPEND="
 	>=dev-libs/glib-2.66:2
-	>=gui-libs/gtk-4.5.0:4
+	>=gui-libs/gtk-4.5.0:4[introspection?]
 	dev-libs/fribidi
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
