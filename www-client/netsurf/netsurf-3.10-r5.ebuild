@@ -3,9 +3,9 @@
 
 EAPI=7
 
-inherit netsurf desktop
+inherit netsurf desktop toolchain-funcs
 
-DESCRIPTION="a free, open source web browser"
+DESCRIPTION="A free, open source web browser"
 HOMEPAGE="https://www.netsurf-browser.org/"
 SRC_URI="http://download.netsurf-browser.org/netsurf/releases/source/${P}-src.tar.gz"
 
