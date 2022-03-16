@@ -8,4 +8,4 @@ if [ ! -d "${cachedir}" ]; then
 	chmod 0755 "${cachedir}"
 fi
 
-exec su man -s /bin/sh -c 'nice mandb --quiet' 2>/dev/null
+exec su-exec man nice mandb --quiet 2>/dev/null
