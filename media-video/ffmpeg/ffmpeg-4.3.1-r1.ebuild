@@ -321,6 +321,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.3-fix-build-without-SSSE3.patch
 	"${FILESDIR}"/${PN}-4.3-altivec-novsx-yuv2rgb.patch
 	"${FILESDIR}"/${PN}-4.3.1-srt-1.4.2-build.patch
+	"${FILESDIR}"/ffmpeg-5.0-backport-ranlib-build-fix.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
