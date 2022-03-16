@@ -34,6 +34,7 @@ KEYWORDS="-* ~amd64"
 RDEPEND="
 	media-libs/libglvnd
 	x11-libs/libX11
+	x11-libs/libdrm
 "
 
 QA_PREBUILT="
