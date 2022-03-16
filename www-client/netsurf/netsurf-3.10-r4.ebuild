@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ REQUIRED_USE="|| ( fbcon gtk gtk2 )
 
 RDEPEND="
 	>=dev-libs/libcss-0.9
-	>=net-libs/libdom-0.3
+	>=net-libs/libdom-0.4.1-r1
 	>=net-libs/libhubbub-0.3
 	>=dev-libs/libnsutils-0.1.0
 	>=dev-libs/libutf8proc-2.4
@@ -49,6 +49,7 @@ RDEPEND="
 	svg? ( svgtiny? ( >=media-libs/libsvgtiny-0.1.3-r1 )
 		!svgtiny? ( gnome-base/librsvg:2 ) )
 	webp? ( >=media-libs/libwebp-0.3.0 )"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	duktape? ( app-editors/vim-core )
 	dev-libs/check
