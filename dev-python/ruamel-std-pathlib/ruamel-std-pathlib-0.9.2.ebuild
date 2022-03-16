@@ -10,16 +10,21 @@ inherit distutils-r1
 
 MY_P="${PN//-/.}-${PV}"
 DESCRIPTION="Ruamel enhancements to pathlib and pathlib2"
-HOMEPAGE="https://pypi.org/project/ruamel.std.pathlib/ https://sourceforge.net/p/ruamel-std-pathlib/"
+HOMEPAGE="
+	https://pypi.org/project/ruamel.std.pathlib/
+	https://sourceforge.net/projects/ruamel-std-pathlib/
+"
 # PyPI tarballs do not include tests
 SRC_URI="mirror://sourceforge/ruamel-dl-tagged-releases/${MY_P}.tar.xz -> ${P}.tar.xz"
-S="${WORKDIR}"/${MY_P}
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 
-RDEPEND="dev-python/namespace-ruamel[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/namespace-ruamel[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
 
