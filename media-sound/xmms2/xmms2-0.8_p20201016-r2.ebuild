@@ -30,8 +30,8 @@ XMMS2_OPTIONALS=(
 	# disabled: et,mdns,migrate-collections,ruby,sqlite2s4,vistest,xmmsclient-cf,xmmsclient-ecore
 )
 XMMS2_PLUGINS=(
-	aac:faad airplay alsa ao asf :asx cdda :cue curl :diskwrite :equalizer
-	ffmpeg:apefile,avcodec,flv,tta :file flac fluidsynth:fluidsynth,mid1,midsquash
+	aac:faad airplay alsa ao :asx cdda :cue curl :diskwrite :equalizer
+	ffmpeg:apefile,asf,avcodec,flv,tta :file flac fluidsynth:fluidsynth,mid1,midsquash
 	gme :html ices :icymetaint :id3v2 jack :karaoke :m3u mac +mad mms modplug
 	mp3:mpg123 :mp4 musepack :normalize :null :nulstripper ofa opus oss :pls
 	pulseaudio:pulse :replaygain samba sid sndfile speex tremor vocoder +vorbis
