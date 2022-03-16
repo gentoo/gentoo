@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolić <jsmolic@gentoo.org> (2022-03-16)
+# Python packages with no revdeps, tests are not
+# enabled, not ported to python 3.10
+# Removal on 2022-04-15.
+net-wireless/soapy_power
+dev-python/simplesoapy
+dev-python/simplespectral
+
 # Fabian Groffen <grobian@gentoo.org> (2022-03-16)
 # little activity upstream, doesn't work with PHP 8.0
 # Removal in 30 days
