@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-03-16)
+# Unmaintaned, broken library with no revdeps.
+# Removal on 2022-04-16. Bug #643444. Bug #749639. Bug #684758.
+net-libs/libosmocore
+
+# Jakov Smolić <jsmolic@gentoo.org> (2022-03-16)
 # 9999-only ebuilds, various other QA issues (no python
 # 3.10, using deprecated EAPI, ...)
 # Removal on 2022-04-15.
