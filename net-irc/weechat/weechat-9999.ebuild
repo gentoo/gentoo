@@ -68,7 +68,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cpputest )
 "
 
-BDEPEND="
+BDEPEND+="
 	virtual/pkgconfig
 	doc? ( >=dev-ruby/asciidoctor-1.5.4 )
 	man? ( >=dev-ruby/asciidoctor-1.5.4 )
