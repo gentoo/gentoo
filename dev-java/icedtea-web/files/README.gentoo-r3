@@ -1,0 +1,16 @@
+Browser plugin
+--------------
+
+The IcedTea browser plugin (NPPlugin) is no longer available,
+as modern browsers no longer support this plugin format.
+
+JVM selection
+-------------
+
+By default, Web Start uses the JVM
+selected via eselect environment variable.
+Note that this doesn't have to be an IcedTea. Openjdk will also work.
+Also note that the selected JVM must have been installed with the
+'headless-awt' USE flag *disabled*.
+The choice can be overridden using the itweb-settings program.
+Simply blank out the field to restore the default behaviour.
