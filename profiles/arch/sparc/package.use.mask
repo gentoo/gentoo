@@ -10,10 +10,6 @@ net-mail/cyrus-imapd http
 # It is unusable, for now, in other arches
 media-video/ffmpeg amf
 
-# Vadim Misbakh-Soloviov <mva@gentoo.org> (2021-12-09)
-# ts-cli requires rust to be built, and rust is unavailable here ATM.
-dev-libs/tree-sitter ts-cli
-
 # Daniel Pielmeier <billie@gentoo.org> (2021-11-07)
 # gnome-base/librsvg is not keyworded here, bug #807130
 app-admin/conky lua-rsvg
@@ -538,7 +534,6 @@ media-video/x264-encoder ffmpegsource
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-08-31)
 # Mask numa use flag per bug #381313
 sys-apps/hwloc numa
-sys-cluster/openmpi numa
 
 # Pacho Ramos <pacho@gentoo.org> (2011-01-27)
 # missing keywords on needed plugins

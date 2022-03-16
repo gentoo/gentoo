@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )"
 DEPEND="${RDEPEND}"

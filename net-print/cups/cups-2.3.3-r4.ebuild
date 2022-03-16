@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -91,11 +91,6 @@ MULTILIB_CHOST_TOOLS=(
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	#enewgroup lp -> acct-group/lp
-	# user lp already provided by baselayout
-	#enewuser lp -1 -1 -1 lp
-	#enewgroup lpadmin 106
-
 	if use kernel_linux; then
 		linux-info_pkg_setup
 		if  ! linux_config_exists; then

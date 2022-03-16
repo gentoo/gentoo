@@ -22,17 +22,13 @@ gnome-online-accounts
 openexr
 osg
 
-# Matt Turner <mattst88@gentoo.org> (07-25-2021)
+# Matt Turner <mattst88@gentoo.org> (2021-07-25)
 # gnome-shell requires rustified librsvg.
 gnome-shell
 
 # James Le Cuirot <chewi@gentoo.org> (2015-01-12)
 # Java is no longer supported on ppc.
 java
-
-# Michał Górny <mgorny@gentoo.org> (2014-06-27)
-# Unmask multilib flag for the ABI.
--abi_ppc_32
 
 # Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # keyworded on ppc

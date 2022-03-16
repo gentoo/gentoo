@@ -343,10 +343,6 @@ sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_slurm o
 # missing keywords on dependencies
 media-video/x264-encoder ffmpegsource
 
-# Kacper Kowalik <xarthisius@gentoo.org> (2011-08-10)
-# mask cuda dep for opencv bug 365451
-media-libs/opencv cuda
-
 # Doug Goldstein <cardoe@gentoo.org> (2011-05-27)
 # app-emulation/spice, app-emulation/xen, and sys-cluster/ceph
 # are not keyworded. bug #368959

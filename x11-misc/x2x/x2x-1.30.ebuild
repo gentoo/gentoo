@@ -11,7 +11,7 @@ SRC_URI="https://github.com/dottedmag/x2x/archive/refs/tags/debian/${PV}-10.tar.
 
 LICENSE="MIT BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~mips ppc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11

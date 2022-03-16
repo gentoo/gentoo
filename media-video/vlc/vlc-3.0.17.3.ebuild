@@ -230,6 +230,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
 	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
 	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
+	"${FILESDIR}"/${PN}-3.0.14-fix-live-address-api.patch # bug 835072
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )

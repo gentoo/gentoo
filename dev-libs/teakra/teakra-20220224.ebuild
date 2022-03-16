@@ -23,11 +23,15 @@ src_configure() {
 	cmake_src_configure
 }
 
-src_install() {
-	einstalldocs
+src_test() {
+	LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:"${BUILD_DIR}"/src/ cmake_src_test
+}
 
-	dolib.so "${BUILD_DIR}/src/lib${PN}.so" "${BUILD_DIR}/src/lib${PN}_c.so"
+src_install() {
+	dolib.so "${BUILD_DIR}"/src/lib${PN}.so "${BUILD_DIR}"/src/lib${PN}_c.so
 
 	insinto /usr/include
 	doins -r include/${PN}
+
+	einstalldocs
 }

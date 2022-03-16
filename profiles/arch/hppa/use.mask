@@ -147,10 +147,6 @@ prelude
 # Lots of untested dependencies (bug #365451)
 facedetect
 
-# Jeroen Roovers <jer@gentoo.org> (2011-05-02)
-# No support for CUDA on HPPA
-cuda
-
 # Samuli Suominen <ssuominen@gentoo.org> (2010-12-25)
 # This will need stable gnome-base/gvfs.
 thunar

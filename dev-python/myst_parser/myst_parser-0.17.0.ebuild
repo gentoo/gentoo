@@ -19,7 +19,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~s390 sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ppc ~ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	<dev-python/docutils-0.18[${PYTHON_USEDEP}]
@@ -38,10 +38,14 @@ BDEPEND="
 	)
 "
 
-distutils_enable_tests pytest
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.17.0-32-bit-test-fix.patch
+)
 
 EPYTEST_DESELECT=(
 	# Unimportant tests needing a new dep linkify
 	tests/test_renderers/test_myst_config.py::test_cmdline
 	tests/test_sphinx/test_sphinx_builds.py::test_extended_syntaxes
 )
+
+distutils_enable_tests pytest

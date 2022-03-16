@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~robbat2/distfiles/${P}.tgz"
 
 LICENSE="ITS4"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 S="${WORKDIR}/${PN}"
 

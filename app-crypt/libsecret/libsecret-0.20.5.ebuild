@@ -20,7 +20,7 @@ REQUIRED_USE="
 	gtk-doc? ( crypt )
 "
 
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 
 DEPEND="
 	>=dev-libs/glib-2.44:2[${MULTILIB_USEDEP}]
@@ -83,5 +83,5 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	virtx meson_src_test
+	virtx dbus-run-session meson test -C "${BUILD_DIR}"
 }

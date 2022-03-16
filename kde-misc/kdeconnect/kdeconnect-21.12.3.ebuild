@@ -67,6 +67,13 @@ RDEPEND="${DEPEND}
 	>=kde-frameworks/kdeclarative-${KFMIN}:5
 	net-fs/sshfs
 "
+BDEPEND="
+	|| (
+		>=dev-qt/qtwaylandscanner-${QTMIN}:5
+		<dev-qt/qtwayland-5.15.3:5
+	)
+	dev-util/wayland-scanner
+"
 
 PATCHES=( "${FILESDIR}/${PN}-21.07.80-revert-disable-kpeople.patch" )
 

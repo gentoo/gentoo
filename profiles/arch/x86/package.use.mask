@@ -111,10 +111,6 @@ media-video/ffmpeg -rav1e
 # Mask io-uring & zbc pending keywording
 sys-block/fio -io-uring -zbc
 
-# Thomas Deutschmann <whissi@gentoo.org> (2020-06-20)
-# media-libs/nv-codec-headers is not available for x86
->=media-video/ffmpeg-4.3 video_cards_nvidia
-
 # Marek Szuba <marecki@gentoo.org> (2020-06-17)
 # Unmask globally-masked flashrom drivers and tools which do work on x86
 sys-apps/flashrom -atahpt -atapromise -atavia -drkaiser -gfxnvidia -internal -it8212 -nic3com -nicintel -nicintel-eeprom -nicintel-spi -nicnatsemi -nicrealtek -ogp-spi -rayer-spi -satamv -satasii -tools
@@ -126,11 +122,6 @@ dev-python/influxdb test
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on x86
 app-text/texlive-core -xindy
-
-# Christoph Junghans <junghans@gentoo.org> (2020-05-16)
-# restrict USE=kokkos for x86 as kokkos doesn't support 32-bit archs
-# https://github.com/kokkos/kokkos/issues/2312
-sci-physics/lammps kokkos
 
 # Joonas Niilola <juippis@gentoo.org> (2020-05-14)
 # sys-apps/apparmor not keyworded on x86.

@@ -94,10 +94,6 @@ app-emulation/xen-tools doc
 # dev-util/shellcheck (dev-lang/ghc) has no stable keywords.
 app-emulation/winetricks test
 
-# Adam Feldman <NP-Hardass@gentoo.org> (2020-04-12)
-# Dependency (net-wireless/blueman) has no stable keywords
-mate-base/mate bluetooth
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-21)
 # For bleeding edge features and testing, not generally suitable
 # for stable systems

@@ -33,6 +33,34 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-03-16)
+# Java library without consumers.
+# Removal in 30 days. Bug #835389.
+dev-java/android-util
+
+# Michał Górny <mgorny@gentoo.org> (2022-03-15)
+# No maintainer.  This package is repeatedly non-bumpable due to missing
+# upstream tags.  No revdeps.
+# Removal on 2022-04-14.  Bug #835352.
+dev-python/sphinx-jinja
+
+# Sam James <sam@gentoo.org> (2022-03-15)
+# No reverse dependencies, stuck on deprecated EAPI 5.
+# Removal on 2022-04-15. bug #835350.
+dev-java/headius-options
+
+# Matthew Smith <matthew@gentoo.org> (2022-03-14)
+# Dead upstream, multiple open bugs.
+# Bug #835162. Removal on 2022-04-13.
+net-im/corebird
+
+# John Helmert III <ajak@gentoo.org> (2022-03-13)
+# Arti is not a production-ready Tor client. According to upstream, "do
+# not use this program yet if you seriously need anonymity, privacy,
+# security, or stability." Feel free to unmask if this is not a
+# necessity.
+net-p2p/arti
+
 # Alfredo Tupone <tupone@gentoo.org> (2022-03-13)
 # No revdeps, last update on 2011
 # Removal on 2022-04-13.
@@ -307,11 +335,6 @@ dev-java/apple-java-extensions-bin
 # it cause unneeded workload for Java team. Removal in 30 days.
 # Bug #831106, bug #784107.
 games-strategy/triplea
-
-# Matthew Smith <matthew@gentoo.org> (2022-02-13)
-# Dead upstream, incompatible with newer versions of makeself.
-# Removal after 2022-03-15.  Bug #781947.
-app-arch/unmakeself
 
 # Jonas Stein <jstein@gentoo.org> (2022-02-11)
 # Blocks gtk2 removal, which is EOL

@@ -10,22 +10,25 @@ MY_P="${P/-/.}"
 DESCRIPTION="YAML parser/emitter that supports roundtrip comment preservation"
 HOMEPAGE="
 	https://pypi.org/project/ruamel.yaml/
-	https://sourceforge.net/p/ruamel-yaml/"
+	https://sourceforge.net/projects/ruamel-yaml/
+"
 # PyPI tarballs do not include tests
 SRC_URI="mirror://sourceforge/ruamel-dl-tagged-releases/${MY_P}.tar.xz"
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	dev-python/namespace-ruamel[${PYTHON_USEDEP}]
-	dev-python/ruamel-yaml-clib[${PYTHON_USEDEP}]"
+	dev-python/ruamel-yaml-clib[${PYTHON_USEDEP}]
+"
 BDEPEND="
 	test? (
 		dev-python/ruamel-std-pathlib[${PYTHON_USEDEP}]
-	)"
+	)
+"
 
 distutils_enable_tests pytest
 

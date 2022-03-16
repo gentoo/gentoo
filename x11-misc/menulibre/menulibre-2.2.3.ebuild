@@ -15,7 +15,7 @@ SRC_URI="https://github.com/bluesabre/menulibre/releases/download/${P}/${P}.tar.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
