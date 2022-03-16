@@ -12,11 +12,10 @@ SRC_URI="http://download.netsurf-browser.org/netsurf/releases/source/${P}-src.ta
 LICENSE="GPL-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="bmp +duktape fbcon truetype +gif +gtk gtk2 +javascript +jpeg mng
+IUSE="bmp fbcon truetype +gif +gtk gtk2 +javascript +jpeg mng
 	+png +psl rosprite +svg +svgtiny +webp"
 
-REQUIRED_USE="|| ( fbcon gtk gtk2 )
-	duktape? ( javascript )"
+REQUIRED_USE="|| ( fbcon gtk gtk2 )"
 
 RDEPEND="
 	>=dev-libs/libcss-0.9
@@ -50,7 +49,7 @@ RDEPEND="
 	webp? ( >=media-libs/libwebp-0.3.0 )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	duktape? ( app-editors/vim-core )
+	javascript? ( app-editors/vim-core )
 	dev-libs/check
 	dev-perl/HTML-Parser
 	>=dev-util/netsurf-buildsystem-1.7-r1
