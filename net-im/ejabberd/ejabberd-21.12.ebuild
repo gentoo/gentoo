@@ -3,12 +3,14 @@
 
 EAPI=7
 
-inherit pam rebar systemd
+inherit pam rebar systemd verify-sig
 
 DESCRIPTION="Robust, scalable and extensible XMPP server"
 HOMEPAGE="https://www.ejabberd.im/ https://github.com/processone/ejabberd/"
 SRC_URI="https://static.process-one.net/${PN}/downloads/${PV}/${P}.tgz
-	-> ${P}.tar.gz"
+	-> ${P}.tar.gz
+	verify-sig? ( https://static.process-one.net/${PN}/downloads/${PV}/${P}.tgz.asc -> ${P}.tar.gz.asc )"
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/process-one.net.asc
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -58,6 +60,7 @@ RDEPEND="${DEPEND}
 	captcha? ( media-gfx/imagemagick[truetype,png] )
 	selinux? ( sec-policy/selinux-jabber )
 "
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-processone )"
 
 DOCS=( CHANGELOG.md README.md )
 PATCHES=(
