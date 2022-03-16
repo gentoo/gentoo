@@ -408,8 +408,9 @@ app-misc/emelfm2
 <dev-util/nvidia-cuda-toolkit-11
 
 # Mart Raudsepp <leio@gentoo.org> (2021-12-18)
-# GNOME 42 mask
+# GNOME 42 mask, bug #835448
 >=gui-libs/libhandy-1.5.0
+>=gui-libs/gtksourceview-5.3
 
 # Michał Górny <mgorny@gentoo.org> (2021-12-18)
 # EOL kernel with known vulnerabilities.  Please move to one of the LTS
