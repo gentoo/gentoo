@@ -21,7 +21,6 @@ COMMON_DEPEND="
 	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtprintsupport-${QTMIN}:5[cups]
-	>=dev-qt/qtwayland-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/kdeclarative-${KFMIN}:5
@@ -39,4 +38,10 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/xdg-desktop-portal
+"
+BDEPEND="
+	|| (
+		>=dev-qt/qtwaylandscanner-${QTMIN}:5
+		<dev-qt/qtwayland-5.15.3:5
+	)
 "
