@@ -144,7 +144,13 @@ RDEPEND="${COMMON_DEPEND}
 	!<kde-plasma/breeze-5.22.90:5
 	!<kde-plasma/plasma-desktop-5.21.90:5
 "
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	|| (
+		>=dev-qt/qtwaylandscanner-${QTMIN}:5
+		<dev-qt/qtwayland-5.15.3:5
+	)
+	virtual/pkgconfig
+"
 PDEPEND=">=kde-plasma/kde-cli-tools-${PVCUT}:5"
 
 PATCHES=(

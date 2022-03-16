@@ -145,7 +145,13 @@ RDEPEND="${COMMON_DEPEND}
 	!<kde-plasma/plasma-desktop-5.23.90:5
 	policykit? ( sys-apps/accountsservice )
 "
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	|| (
+		>=dev-qt/qtwaylandscanner-${QTMIN}:5
+		<dev-qt/qtwayland-5.15.3:5
+	)
+	virtual/pkgconfig
+"
 PDEPEND=">=kde-plasma/kde-cli-tools-${PVCUT}:5"
 
 PATCHES=(
