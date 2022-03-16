@@ -92,9 +92,15 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 	x11-base/xorg-proto
 	test? (
+		dev-libs/plasma-wayland-protocols
 		>=dev-libs/wayland-protocols-1.19
-		>=dev-qt/qtwayland-${QTMIN}:5
 	)
+"
+BDEPEND="
+	test? ( || (
+		>=dev-qt/qtwaylandscanner-${QTMIN}:5
+		<dev-qt/qtwayland-5.15.3:5
+	) )
 "
 PDEPEND=">=kde-plasma/kde-cli-tools-${PVCUT}:5"
 
