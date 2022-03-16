@@ -22,7 +22,7 @@ HOMEPAGE="https://code.videolan.org/videolan/libplacebo"
 
 LICENSE="LGPL-2.1+"
 # Please add a sub-slot for releases depending on libplacebo.so version
-SLOT="0"
+SLOT="0/9999"
 IUSE="glslang lcms +opengl +shaderc test +vulkan"
 REQUIRED_USE="vulkan? ( || ( glslang shaderc ) )"
 RESTRICT="!test? ( test )"
