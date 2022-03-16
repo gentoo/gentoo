@@ -20,6 +20,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="
+	app-crypt/gpgme:=[cxx,qt5]
 	dev-libs/qtkeychain:=
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
