@@ -38,8 +38,7 @@ RDEPEND="
 		x11-libs/gtk+:2 )
 	javascript? (
 		>=dev-libs/nsgenbind-0.7
-		duktape? ( dev-lang/duktape:= )
-		!duktape? ( dev-lang/spidermonkey:0= )
+		dev-lang/duktape:=
 	)
 	jpeg? ( >=virtual/jpeg-0-r2:0 )
 	mng? ( >=media-libs/libmng-1.0.10-r2 )
@@ -84,9 +83,8 @@ _emake() {
 		NETSURF_USE_NSPSL=$(usex psl YES NO)
 		NETSURF_USE_MNG=$(usex mng YES NO)
 		NETSURF_USE_WEBP=$(usex webp YES NO)
-		NETSURF_USE_MOZJS=$(usex javascript $(usex duktape NO YES) NO)
 		NETSURF_USE_JS=NO
-		NETSURF_USE_DUKTAPE=$(usex javascript $(usex duktape YES NO) NO)
+		NETSURF_USE_DUKTAPE=$(usex javascript YES NO)
 		NETSURF_USE_NSSVG=$(usex svg $(usex svgtiny YES NO) NO)
 		NETSURF_USE_RSVG=$(usex svg $(usex svgtiny NO YES) NO)
 		NETSURF_USE_ROSPRITE=$(usex rosprite YES NO)
