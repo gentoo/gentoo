@@ -1,15 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 PYTHON_COMPAT=( python3_{8,9,10} )
 
-inherit autotools flag-o-matic multilib-minimal python-single-r1 systemd
+inherit autotools flag-o-matic multilib-minimal python-single-r1 systemd verify-sig
 
 MY_P=${PN}-${PV/_/}
 DESCRIPTION="A validating, recursive and caching DNS resolver"
 HOMEPAGE="https://unbound.net/ https://nlnetlabs.nl/projects/unbound/about/"
-SRC_URI="https://nlnetlabs.nl/downloads/unbound/${MY_P}.tar.gz"
+SRC_URI="https://nlnetlabs.nl/downloads/unbound/${MY_P}.tar.gz
+	verify-sig? ( https://nlnetlabs.nl/downloads/unbound/${MY_P}.tar.gz.asc )"
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/unbound.net.asc
 
 LICENSE="BSD GPL-2"
 SLOT="0/8" # ABI version of libunbound.so
@@ -52,6 +54,7 @@ BDEPEND="virtual/pkgconfig
 		dev-util/splint
 		app-text/wdiff
 	)
+	verify-sig? ( sec-keys/openpgp-keys-unbound )
 "
 
 DEPEND="${CDEPEND}"
