@@ -270,7 +270,7 @@ LICENSE="
 SLOT="0"
 KEYWORDS="~amd64"
 
-BDEPEND=">=virtual/rust-1.56"
+BDEPEND=">=virtual/rust-1.59"
 DEPEND=">=dev-libs/libgit2-1.2.0:="
 RDEPEND="${DEPEND}"
 
