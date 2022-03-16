@@ -29,6 +29,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-ldpath-regression.patch
+	"${FILESDIR}"/${P}-diff-off-by-one.patch
 )
 
 src_configure() {
