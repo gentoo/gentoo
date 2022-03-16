@@ -143,9 +143,96 @@ pkg_postinst() {
 	tmpfiles_process named.conf
 
 	if [[ ! -f '/etc/bind/rndc.key' && ! -f '/etc/bind/rndc.conf' ]]; then
-		einfo "Using /dev/urandom for generating rndc.key"
+		einfo "Generating rndc.key"
 		/usr/sbin/rndc-confgen -a
 		chown root:named /etc/bind/rndc.key || die
 		chmod 0640 /etc/bind/rndc.key || die
 	fi
+
+	einfo
+	einfo "You can edit /etc/conf.d/named to customize named settings"
+	einfo
+
+	use mysql || use postgres || use ldap && {
+		elog "If your named depends on MySQL/PostgreSQL or LDAP,"
+		elog "uncomment the specified rc_named_* lines in your"
+		elog "/etc/conf.d/named config to ensure they'll start before bind"
+		einfo
+	}
+
+	einfo "If you'd like to run bind in a chroot AND this is a new"
+	einfo "install OR your bind doesn't already run in a chroot:"
+	einfo "1) Uncomment and set the CHROOT variable in /etc/conf.d/named."
+	einfo "2) Run \`emerge --config '=${CATEGORY}/${PF}'\`"
+	einfo
+
+	CHROOT=$(source /etc/conf.d/named 2>/dev/null; echo ${CHROOT})
+	if [[ -n ${CHROOT} ]]; then
+		elog "NOTE: As of net-dns/bind-9.4.3_p5-r1 the chroot part of the init-script got some major changes!"
+		elog "To enable the old behaviour (without using mount) uncomment the"
+		elog "CHROOT_NOMOUNT option in your /etc/conf.d/named config."
+		elog "If you decide to use the new/default method, ensure to make backup"
+		elog "first and merge your existing configs/zones to /etc/bind and"
+		elog "/var/bind because bind will now mount the needed directories into"
+		elog "the chroot dir."
+	fi
+}
+
+pkg_config() {
+	CHROOT=$(source /etc/conf.d/named; echo ${CHROOT})
+	CHROOT_NOMOUNT=$(source /etc/conf.d/named; echo ${CHROOT_NOMOUNT})
+	CHROOT_GEOIP=$(source /etc/conf.d/named; echo ${CHROOT_GEOIP})
+
+	if [[ -z "${CHROOT}" ]]; then
+		eerror "This config script is designed to automate setting up"
+		eerror "a chrooted bind/named. To do so, please first uncomment"
+		eerror "and set the CHROOT variable in '/etc/conf.d/named'."
+		die "Unset CHROOT"
+	fi
+
+	if [[ -d "${CHROOT}" ]]; then
+		ewarn "NOTE: As of net-dns/bind-9.4.3_p5-r1 the chroot part of the init-script got some major changes!"
+		ewarn "To enable the old behaviour (without using mount) uncomment the"
+		ewarn "CHROOT_NOMOUNT option in your /etc/conf.d/named config."
+		ewarn
+		ewarn "${CHROOT} already exists... some things might become overridden"
+		ewarn "press CTRL+C if you don't want to continue"
+		sleep 10
+	fi
+
+	echo; einfo "Setting up the chroot directory..."
+
+	mkdir -m 0750 -p ${CHROOT} || die
+	mkdir -m 0755 -p ${CHROOT}/{dev,etc,var/log,run} || die
+	mkdir -m 0750 -p ${CHROOT}/etc/bind || die
+	mkdir -m 0770 -p ${CHROOT}/var/{bind,log/named} ${CHROOT}/run/named/ || die
+
+	chown root:named \
+		${CHROOT} \
+		${CHROOT}/var/{bind,log/named} \
+		${CHROOT}/run/named/ \
+		${CHROOT}/etc/bind \
+		|| die
+
+	mknod ${CHROOT}/dev/null c 1 3 || die
+	chmod 0666 ${CHROOT}/dev/null || die
+
+	mknod ${CHROOT}/dev/zero c 1 5 || die
+	chmod 0666 ${CHROOT}/dev/zero || die
+
+	if [[ "${CHROOT_NOMOUNT:-0}" -ne 0 ]]; then
+		cp -a /etc/bind ${CHROOT}/etc/ || die
+		cp -a /var/bind ${CHROOT}/var/ || die
+	fi
+
+	if [[ "${CHROOT_GEOIP:-0}" -eq 1 ]]; then
+		if use geoip; then
+			mkdir -m 0755 -p ${CHROOT}/usr/share/GeoIP || die
+		elif use geoip2; then
+			mkdir -m 0755 -p ${CHROOT}/usr/share/GeoIP2 || die
+		fi
+	fi
+
+	elog "You may need to add the following line to your syslog-ng.conf:"
+	elog "source jail { unix-stream(\"${CHROOT}/dev/log\"); };"
 }
