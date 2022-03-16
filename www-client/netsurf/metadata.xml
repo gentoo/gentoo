@@ -16,7 +16,6 @@
   </upstream>
   <use>
     <flag name="bmp">BMP bitmap image support (media-libs/libnsbmp)</flag>
-    <flag name="duktape">Use duktape.org javascript engine</flag>
     <flag name="gtk">Build GTK3 GUI</flag>
     <flag name="gtk2">Build GTK2 GUI</flag>
     <flag name="psl">Use public suffix list via media-libs/libnspsl</flag>
