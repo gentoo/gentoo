@@ -27,6 +27,10 @@ RDEPEND="${DEPEND}"
 # https://github.com/merbanan/rtl_433/issues/2010
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}/${P}-CVE.patch"
+)
+
 src_configure() {
 	mycmakeargs=(
 		-DENABLE_RTLSDR="$(usex rtlsdr)"
