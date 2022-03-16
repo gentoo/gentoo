@@ -25,7 +25,6 @@ RDEPEND="
 	dev-libs/wayland
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtwayland-${QTMIN}:5
 	>=dev-qt/qtx11extras-${QTMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/kwayland-${KFMIN}:5
@@ -34,4 +33,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=dev-libs/plasma-wayland-protocols-1.6.0
 "
-BDEPEND="dev-util/wayland-scanner"
+BDEPEND="
+	|| (
+		>=dev-qt/qtwaylandscanner-${QTMIN}:5
+		<dev-qt/qtwayland-5.15.3:5
+	)
+	dev-util/wayland-scanner
+"
