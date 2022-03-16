@@ -115,6 +115,13 @@ pkg_pretend() {
 	fi
 }
 
+src_unpack() {
+	default
+
+	# We don't have signatures for HPN, X509, so we have to write this ourselves
+	verify-sig_verify_detached "${DISTDIR}"/${PARCH}.tar.gz{,.asc}
+}
+
 src_prepare() {
 	sed -i \
 		-e "/_PATH_XAUTH/s:/usr/X11R6/bin/xauth:${EPREFIX}/usr/bin/xauth:" \
