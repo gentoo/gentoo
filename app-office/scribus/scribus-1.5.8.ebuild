@@ -9,7 +9,7 @@ inherit cmake desktop flag-o-matic python-single-r1 xdg
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="https://www.scribus.net/"
-SRC_URI="https://pilotfiber.dl.sourceforge.net/project/${PN}/${PN}-devel/${PV}/${P}.tar.xz"
+SRC_URI="mirror://sourceforge/project/${PN}/${PN}-devel/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
