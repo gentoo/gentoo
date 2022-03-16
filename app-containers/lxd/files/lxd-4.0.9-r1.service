@@ -18,6 +18,7 @@ Restart=on-failure
 LimitNOFILE=1048576
 LimitNPROC=infinity
 TasksMax=infinity
+BindReadOnlyPaths=/sys
 
 [Install]
 Also=lxd-containers.service lxd.socket
