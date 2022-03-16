@@ -26,6 +26,10 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	doc? ( app-doc/doxygen )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-libatomic.patch" #bug 835003
+)
+
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
 src_prepare() {
