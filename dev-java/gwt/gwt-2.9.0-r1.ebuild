@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 JAVA_PKG_IUSE="source"
 
@@ -28,7 +28,7 @@ CDEPEND="
 	dev-java/guava:20
 	dev-java/rhino:1.6
 	dev-java/asm:9
-	dev-java/eclipse-ecj:4.5
+	dev-java/eclipse-ecj:4.15
 	dev-java/validation-api:1.0
 "
 
@@ -47,7 +47,7 @@ EANT_GENTOO_CLASSPATH="
 		asm-9
 		guava-20
 		rhino-1.6
-		eclipse-ecj-4.5
+		eclipse-ecj-4.15
 		validation-api-1.0
 "
 
