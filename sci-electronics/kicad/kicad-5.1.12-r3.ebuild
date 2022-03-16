@@ -21,7 +21,7 @@ IUSE="doc examples github +ngspice +occ openmp +python"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
-
+# Depend on opencascade:0 to get unslotted variant (so we know path to it), bug #833301
 COMMON_DEPEND="
 	>=dev-libs/boost-1.61:=[context,nls,threads(+)]
 	media-libs/freeglut
@@ -35,7 +35,7 @@ COMMON_DEPEND="
 	ngspice? (
 		>sci-electronics/ngspice-27[shared]
 	)
-	occ? ( <sci-libs/opencascade-7.5.3:=[vtk(+)] )
+	occ? ( <sci-libs/opencascade-7.5.3:0=[vtk(+)] )
 	python? (
 		$(python_gen_cond_dep '
 			>=dev-libs/boost-1.61:=[context,nls,threads(+),python,${PYTHON_USEDEP}]
