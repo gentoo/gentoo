@@ -237,6 +237,7 @@ BDEPEND=">=virtual/rust-1.59"
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
 src_configure() {
+	export RUSTFLAGS="-Cstrip=none ${RUSTFLAGS}" #835400
 	local myfeatures=( $(usev X clipboard) )
 
 	cargo_src_configure --no-default-features
