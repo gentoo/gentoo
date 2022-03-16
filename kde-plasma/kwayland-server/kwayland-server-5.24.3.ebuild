@@ -33,4 +33,10 @@ DEPEND="${RDEPEND}
 	>=dev-libs/plasma-wayland-protocols-1.6.0
 	>=dev-libs/wayland-protocols-1.24
 "
-BDEPEND="dev-util/wayland-scanner"
+BDEPEND="
+	|| (
+		>=dev-qt/qtwaylandscanner-${QTMIN}:5
+		<dev-qt/qtwayland-5.15.3:5
+	)
+	dev-util/wayland-scanner
+"
