@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mschiff@gentoo.org</email>
+		<name>Marc Schiffbauer</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
+	</maintainer>
+	<stabilize-allarches/>
+</pkgmetadata>
