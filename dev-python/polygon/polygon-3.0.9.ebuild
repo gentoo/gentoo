@@ -20,7 +20,7 @@ S="${WORKDIR}/Polygon3-${COMMIT}"
 
 LICENSE="LGPL-2"
 SLOT="3"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="examples"
 
 DOCS=( doc/{Polygon.txt,Polygon.pdf} )
