@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit elisp-common toolchain-funcs
 
@@ -14,10 +14,8 @@ if [[ "${PV}" == *9999* ]]; then
 	EGIT_BRANCH="develop"
 	EGIT_REPO_URI="https://github.com/rvirding/${PN}.git"
 else
-	COMMIT_SHA="e5f20c459a13b35ed1e71b1d2667363af168e958"
-	SRC_URI="https://github.com/rvirding/${PN}/archive/${COMMIT_SHA}.zip -> ${P}.zip"
+	SRC_URI="https://github.com/rvirding/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PN}-${COMMIT_SHA}"
 fi
 
 RESTRICT="mirror test"
