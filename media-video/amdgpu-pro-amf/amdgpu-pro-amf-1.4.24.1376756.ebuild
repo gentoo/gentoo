@@ -33,6 +33,7 @@ KEYWORDS="-* ~amd64"
 
 RDEPEND="
 	media-libs/libglvnd
+	x11-libs/libdrm
 	x11-libs/libX11
 "
 
