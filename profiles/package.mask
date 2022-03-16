@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-03-16)
+# Java library without consumers.
+# Removal in 30 days. Bug #835389.
+dev-java/android-util
+
 # Michał Górny <mgorny@gentoo.org> (2022-03-15)
 # No maintainer.  This package is repeatedly non-bumpable due to missing
 # upstream tags.  No revdeps.
