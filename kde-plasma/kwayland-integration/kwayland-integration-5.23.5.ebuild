@@ -39,4 +39,10 @@ DEPEND="
 	x11-libs/libxkbcommon
 "
 RDEPEND="${DEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	|| (
+		>=dev-qt/qtwaylandscanner-${QTMIN}:5
+		<dev-qt/qtwayland-5.15.3:5
+	)
+	virtual/pkgconfig
+"
