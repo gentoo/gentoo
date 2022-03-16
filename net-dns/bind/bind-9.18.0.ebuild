@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..10} )
 
+PYTHON_COMPAT=( python3_{8..10} )
 inherit python-any-r1 systemd tmpfiles
 
 MY_PV="${PV/_p/-P}"
@@ -19,7 +19,8 @@ SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz"
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+caps dnsrps dnstap doc doh fixed-rrset idn geoip gssapi lmdb selinux static-libs test-extra xml"
+IUSE="+caps dnsrps dnstap doc doh fixed-rrset idn geoip gssapi lmdb selinux static-libs test xml"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	acct-group/named
@@ -39,7 +40,7 @@ DEPEND="
 	xml? ( dev-libs/libxml2 )
 "
 BDEPEND="
-	test-extra? (
+	test? (
 		${PYTHON_DEPS}
 		dev-python/pytest
 		dev-perl/Net-DNS-SEC
