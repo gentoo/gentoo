@@ -411,6 +411,7 @@ app-misc/emelfm2
 # GNOME 42 mask, bug #835448
 >=gui-libs/libhandy-1.5.0
 >=gui-libs/gtksourceview-5.3
+>=app-editors/gnome-text-editor-42_alpha
 
 # Michał Górny <mgorny@gentoo.org> (2021-12-18)
 # EOL kernel with known vulnerabilities.  Please move to one of the LTS
