@@ -18,14 +18,13 @@ SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="+caps dnsrps dnstap doc doh fixed-rrset idn geoip gssapi lmdb selinux static-libs test xml"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	acct-group/named
 	acct-user/named
-	dev-libs/jemalloc
 	dev-libs/json-c:=
 	dev-libs/libuv:=
 	sys-libs/zlib
@@ -36,6 +35,7 @@ DEPEND="
 	geoip? ( dev-libs/libmaxminddb )
 	gssapi? ( virtual/krb5 )
 	idn? ( net-dns/libidn2 )
+	jemalloc? ( dev-libs/jemalloc:= )
 	lmdb? ( dev-db/lmdb )
 	xml? ( dev-libs/libxml2 )
 "
@@ -63,7 +63,6 @@ src_configure() {
 		--enable-full-report
 		--without-readline
 		--with-openssl="${ESYSROOT}"/usr
-		--with-jemalloc
 		--with-json-c
 		--with-zlib
 		$(use_enable caps linux-caps)
@@ -77,9 +76,9 @@ src_configure() {
 		$(use_with geoip maxminddb)
 		$(use_with gssapi)
 		$(use_with idn libidn2)
+		$(use_with jemalloc)
 		$(use_with lmdb)
 		$(use_with xml libxml2)
-		"${@}"
 	)
 
 	econf "${myeconfargs[@]}"
