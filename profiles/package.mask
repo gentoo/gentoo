@@ -34,6 +34,14 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-03-16)
+# 9999-only ebuilds, various other QA issues (no python
+# 3.10, using deprecated EAPI, ...)
+# Removal on 2022-04-15.
+net-libs/libmirisdr
+media-sound/deinvert
+net-wireless/gr-m2k
+
+# Jakov Smolić <jsmolic@gentoo.org> (2022-03-16)
 # Python packages with no revdeps, tests are not
 # enabled, not ported to python 3.10
 # Removal on 2022-04-15.
