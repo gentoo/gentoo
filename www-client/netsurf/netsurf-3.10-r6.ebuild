@@ -60,6 +60,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.9-conditionally-include-image-headers.patch"
 	"${FILESDIR}/${PN}-3.10-julia-libutf8proc-header-location.patch"
 	"${FILESDIR}/${PN}-3.10-disable-failing-tests.patch"
+	"${FILESDIR}/${PN}-3.10-gcc10-fno-common.patch"
 )
 
 DOCS=( README docs/using-framebuffer.md
