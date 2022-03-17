@@ -339,8 +339,6 @@ src_prepare() {
 		export revision=git-N-${FFMPEG_REVISION}
 	fi
 
-	eapply "${FILESDIR}/vmaf-models-default-path.patch"
-
 	default
 	echo 'include $(SRC_PATH)/ffbuild/libffmpeg.mak' >> Makefile || die
 }
