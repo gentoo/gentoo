@@ -66,6 +66,26 @@ multilib_src_configure() {
 		-DENABLE_AVX2=$(usex cpu_flags_x86_avx2 ON OFF)
 	)
 
+	# For 32-bit multilib builds, force some intrinsics on to work around
+	# bug #816027. libaom seems to do runtime detection for some targets
+	# at least, so this isn't an issue.
+	if ! multilib_is_native_abi && use amd64 ; then
+		mycmakeargs+=(
+			-DENABLE_SSE3=ON
+			-DENABLE_SSSE3=ON
+		)
+	fi
+
+	# On ARM32-on-ARM64, things end up failing if NEON is off, bug #835456
+	# Just force generic, given it's a niche situation.
+	# TODO: could try forcing armv7 or similar?
+	if use arm && ! use cpu_flags_arm_neon && [[ $(uname -p) == "aarch64" ]] ; then
+		ewarn "Forcing generic for arm32-on-arm64 build (bug #835456)"
+		mycmakeargs+=(
+			-DAOM_TARGET_CPU=generic
+		)
+	fi
+
 	cmake_src_configure
 }
 
