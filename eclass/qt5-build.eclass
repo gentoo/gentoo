@@ -97,10 +97,21 @@ inherit estack flag-o-matic toolchain-funcs virtualx
 
 if [[ ${PN} != qtwebengine ]]; then
 	case ${PV} in
-		5.15.2* | *9999 )
-			# kde/5.15 branch or Qt5PatchCollection based on Qt 5.15.2
-			# (using KDE_ORG_COMMIT)
+		*9999 )
+			# kde/5.15 branch on invent.kde.org
 			inherit kde.org
+			;;
+		5.15.2* )
+			if [[ -n ${KDE_ORG_COMMIT} ]]; then
+				# KDE Qt5PatchCollection snapshot based on Qt 5.15.2
+				inherit kde.org
+			else
+				# official stable release
+				_QT5_P=${QT5_MODULE}-everywhere-src-${PV}
+				HOMEPAGE="https://www.qt.io/"
+				SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${_QT5_P}.tar.xz"
+				S=${WORKDIR}/${_QT5_P}
+			fi
 			;;
 		5.15.[3-9]* )
 			# official stable release
