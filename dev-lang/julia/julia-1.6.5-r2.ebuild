@@ -8,16 +8,15 @@ inherit llvm pax-utils toolchain-funcs
 # correct versions for stdlibs are in deps/checksums
 # for everything else, run with network-sandbox and wait for the crash
 
-MY_LLVM_V="13.0.0"
+#MY_LIBUV_V="fb3e3364c33ae48c827f6b103e05c3f0e78b79a9"
+#MY_LIBWHICH_V="81e9723c0273d78493dc8c8ed570f68d9ce7e89e"
+MY_LLVM_V="13.0.1"
 
 DESCRIPTION="High-performance programming language for technical computing"
 HOMEPAGE="https://julialang.org/"
 
 SRC_URI="
 	https://github.com/JuliaLang/julia/releases/download/v${PV}/${P}-full.tar.gz
-	https://github.com/JuliaLang/julia/commit/1eb063f1.patch -> ${PN}-1.7.1-llvm_13_compat_part_3.patch
-	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/f8c918b0.patch -> ${PN}-1.7.1-llvm_13_compat_part_4.patch
-	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/63303980.patch -> ${PN}-1.7.1-llvm_13_compat_part_5.patch
 "
 
 LICENSE="MIT"
@@ -36,10 +35,10 @@ RDEPEND+="
 	dev-libs/libgit2:0
 	>=dev-libs/libpcre2-10.23:0=[jit,unicode]
 	dev-libs/mpfr:0=
-	>=dev-libs/libutf8proc-2.6.1:0=[-cjk]
-	>=dev-util/patchelf-0.13
+	dev-libs/libutf8proc:0=[-cjk]
+	dev-util/patchelf
 	>=net-libs/mbedtls-2.2
-	net-misc/curl[http2,ssh]
+	<net-misc/curl-7.81.0[http2,ssh]
 	sci-libs/amd:0=
 	sci-libs/arpack:0=
 	sci-libs/camd:0=
@@ -57,21 +56,24 @@ RDEPEND+="
 	virtual/lapack"
 
 DEPEND="${RDEPEND}
+	dev-util/patchelf
 	virtual/pkgconfig
 	!system-llvm? ( dev-util/cmake )"
 
 PATCHES=(
+	"${FILESDIR}/${PN}"-1.1.0-fix_llvm_install.patch
 	"${FILESDIR}/${PN}"-1.4.0-no_symlink_llvm.patch
+	"${FILESDIR}/${PN}"-1.6.5-llvm_bad_perf_fix.patch
 	"${FILESDIR}/${PN}"-1.6.5-llvm_13_compat_part_1.patch
 	"${FILESDIR}/${PN}"-1.6.5-llvm_13_compat_part_2.patch
-	"${DISTDIR}/${PN}"-1.7.1-llvm_13_compat_part_3.patch
-	"${DISTDIR}/${PN}"-1.7.1-llvm_13_compat_part_4.patch
-	"${DISTDIR}/${PN}"-1.7.1-llvm_13_compat_part_5.patch
+	"${FILESDIR}/${PN}"-1.6.5-llvm_13_compat_part_3.patch
+	"${FILESDIR}/${PN}"-1.6.5-llvm_13_compat_part_4.patch
 	"${FILESDIR}/${PN}"-1.6.5-libgit-1.2.patch
 	"${FILESDIR}/${PN}"-1.6.5-libgit-1.4.patch
 	"${FILESDIR}/${PN}"-1.6.5-make-install-no-build.patch
-	"${FILESDIR}/${PN}"-1.7.1-hardcoded-libs.patch
-	"${FILESDIR}/${PN}"-1.7.1-do_not_set_rpath.patch
+	"${FILESDIR}/${PN}"-1.6.5-hardcoded-libs.patch
+	"${FILESDIR}/${PN}"-1.6.5-do_not_set_rpath.patch
+	"${FILESDIR}/${PN}"-1.6.5-lazy_artifacts_fix.patch
 )
 
 pkg_setup() {
@@ -133,10 +135,9 @@ src_configure() {
 		USE_SYSTEM_DSFMT:=1
 		USE_SYSTEM_BLAS:=1
 		USE_SYSTEM_LAPACK:=1
-		USE_SYSTEM_LIBBLASTRAMPOLINE:=0
 		USE_SYSTEM_GMP:=1
 		USE_SYSTEM_MPFR:=1
-		USE_SYSTEM_LIBSUITESPARSE:=1
+		USE_SYSTEM_SUITESPARSE:=1
 		USE_SYSTEM_LIBUV:=0
 		USE_SYSTEM_UTF8PROC:=1
 		USE_SYSTEM_MBEDTLS:=1
