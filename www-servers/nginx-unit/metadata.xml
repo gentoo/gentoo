@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
+	<maintainer type="person">
 		<email>mpagano@gentoo.org</email>
 		<name>Mike Pagano</name>
-	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>gentoo@seichter.de</email>
-		<name>Ralph Seichter</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 		NGINX Unit is a dynamic web and application server, designed to run
