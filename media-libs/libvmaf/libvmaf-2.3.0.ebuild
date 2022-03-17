@@ -34,6 +34,11 @@ multilib_src_configure() {
 	meson_src_configure
 }
 
+multilib_src_install() {
+	meson_src_install
+	find "${D}" -name '*.la' -delete -o -name '*.a' -delete || die
+}
+
 multilib_src_install_all() {
 	einstalldocs
 
