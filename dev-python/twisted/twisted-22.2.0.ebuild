@@ -134,17 +134,8 @@ python_postinst() {
 }
 
 pkg_postinst() {
-	python_foreach_impl python_postinst
-
-	einfo "Install complete"
-	if use test ; then
-		einfo ""
-		einfo "Some tests have been disabled during testing due to"
-		einfo "known incompatibilities with the emerge sandboxes and/or"
-		einfo "not runnable as the root user."
-		einfo "For a complete test suite run on the code."
-		einfo "Run the tests as a normal user for each python it is installed to."
-		einfo "  ie:  $ python3.6 /usr/bin/trial twisted"
+	if [[ -z ${ROOT} ]]; then
+		python_foreach_impl python_postinst
 	fi
 }
 
