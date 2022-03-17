@@ -32,6 +32,11 @@ RDEPEND="
 		>=dev-python/importlib_metadata-4.11.2[${PYTHON_USEDEP}]
 	' 3.8 3.9)
 "
+BDEPEND="
+	test? (
+		dev-python/pip[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
