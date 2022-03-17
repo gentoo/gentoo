@@ -19,7 +19,8 @@ fi
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1)"
-IUSE="+drm wayland X"
+IUSE="+drm opengl wayland X"
+REQUIRED_USE="opengl? ( X )"
 
 RDEPEND="
 	>=x11-libs/libdrm-2.4.60[${MULTILIB_USEDEP}]
