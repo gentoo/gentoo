@@ -397,7 +397,7 @@ src_prepare() {
 	#		"https://bugs.debian.org/869122" "https://bugs.gentoo.org/634162"
 
 	if use prefix ; then
-		add_patch "${FILESDIR}/${P}"-fallback-getcwd-pwd.patch "0102-5.34.0-fallback-get-cwd-pwd.patch"\
+		add_patch "${FILESDIR}/${PN}"-5.34.0-fallback-getcwd-pwd.patch "0102-5.34.0-fallback-get-cwd-pwd.patch"\
 			"Fix installation during Prefix bootstrap (finding 'pwd' from coreutils)"\
 			"https://bugs.gentoo.org/818172"
 	fi
