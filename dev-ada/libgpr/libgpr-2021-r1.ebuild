@@ -1,24 +1,24 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-ADA_COMPAT=( gnat_2021 )
+ADA_COMPAT=( gnat_202{0..1} )
 inherit ada multiprocessing
 
-MYPN=gprbuild
-MYP=${MYPN}-${PV}
+MYP=gprbuild-${PV}-${PV}0519-19A34-src
+ID=23a77a37247ff811609e23a0a271f445c299fc8f
+ADAMIRROR=https://community.download.adacore.com/v1
 
 DESCRIPTION="Ada library to handle GPRbuild project files"
 HOMEPAGE="http://libre.adacore.com/"
-SRC_URI="https://github.com/AdaCore/${MYPN}/archive/refs/tags/v${PV}.tar.gz
-		-> ${MYP}.tar.gz"
+SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz"
 LICENSE="GPL-3"
-SLOT="0/${PV}"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+shared static-libs static-pic"
 
-RDEPEND="dev-ada/xmlada:=[shared?,static-libs?,static-pic?,${ADA_USEDEP}]
+RDEPEND="dev-ada/xmlada[shared?,static-libs?,static-pic?,${ADA_USEDEP}]
 	!net-libs/grpc"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
@@ -28,6 +28,11 @@ REQUIRED_USE="${ADA_REQUIRED_USE}
 S="${WORKDIR}"/${MYP}
 
 PATCHES=( "${FILESDIR}"/${PN}-2020-gentoo.patch )
+
+src_prepare() {
+	default
+	sed -i -e '/Library_Name/s|gpr|gnatgpr|' gpr/gpr.gpr || die
+}
 
 src_configure() {
 	emake setup
