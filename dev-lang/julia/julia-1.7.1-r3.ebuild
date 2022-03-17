@@ -68,6 +68,7 @@ PATCHES=(
 	"${DISTDIR}/${PN}"-1.7.1-llvm_13_compat_part_4.patch
 	"${DISTDIR}/${PN}"-1.7.1-llvm_13_compat_part_5.patch
 	"${FILESDIR}/${PN}"-1.6.5-libgit-1.2.patch
+	"${FILESDIR}/${PN}"-1.6.5-libgit-1.4.patch
 	"${FILESDIR}/${PN}"-1.6.5-make-install-no-build.patch
 	"${FILESDIR}/${PN}"-1.7.1-hardcoded-libs.patch
 	"${FILESDIR}/${PN}"-1.7.1-do_not_set_rpath.patch
