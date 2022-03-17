@@ -19,7 +19,7 @@ else
 fi
 
 SLOT="0"
-IUSE="ap +crda broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps"
+IUSE="ap +crda broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls tkip uncommon-eap-types wep wimax wps"
 
 # CONFIG_PRIVSEP=y does not have sufficient support for the new driver
 # interface functions used for MACsec, so this combination cannot be used
@@ -271,8 +271,22 @@ src_configure() {
 	Kconfig_style_config OWE
 	Kconfig_style_config SAE
 	Kconfig_style_config DPP
+	Kconfig_style_config DPP2
 	Kconfig_style_config SUITEB192
 	Kconfig_style_config SUITEB
+
+	if use wep ; then
+		Kconfig_style_config WEP
+	else
+		Kconfig_style_config WEP n
+	fi
+
+	# Watch out, reversed logic
+	if use tkip ; then
+		Kconfig_style_config NO_TKIP n
+	else
+		Kconfig_style_config NO_TKIP
+	fi
 
 	if use smartcard ; then
 		Kconfig_style_config SMARTCARD
