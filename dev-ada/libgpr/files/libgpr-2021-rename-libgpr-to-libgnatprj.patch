@@ -1,0 +1,142 @@
+--- a/gpr/gpr.gpr
++++ b/gpr/gpr.gpr
+@@ -34,7 +34,7 @@
+ 
+    for Source_Dirs use ("src");
+ 
+-   for Library_Name use "gpr";
++   for Library_Name use "gnatprj";
+    for Object_Dir use "libobj/" & Bld & "/" & Gnat_Lib_Type;
+    for Library_Dir use "lib/" & Bld & "/" & Gnat_Lib_Type;
+ 
+--- a/Makefile
++++ b/Makefile
+@@ -6,9 +6,9 @@
+ # Install gprbuild:        make install
+ # Create gprbuild package: make distall
+ # Build tool <TOOL>:       make <TOOL>
+-# Build libgpr:            make libgpr.build
+-# Install libgpr:          make libgpr.install
+-# (for libgpr you can add ".type" where type is static, static-pic or shared
++# Build libgnatprj:            make libgnatprj.build
++# Install libgnatprj:          make libgnatprj.install
++# (for libgnatprj you can add ".type" where type is static, static-pic or shared
+ #  build a specific version of the lib. by default all supported variants are
+ #  built).
+ 
+@@ -65,9 +65,9 @@
+ 	-P$(MAKEPREFIX)config/test_shared 2>/dev/null && echo "yes")
+ 
+ ifeq ($(ENABLE_SHARED), yes)
+-   LIBGPR_TYPES=static shared static-pic
++   libgnatprj_TYPES=static shared static-pic
+ else
+-   LIBGPR_TYPES=static
++   libgnatprj_TYPES=static
+ endif
+ 
+ # Used to pass extra options to GPRBUILD, like -d for instance
+@@ -79,11 +79,11 @@
+ 
+ GPRBUILD_BUILDER=$(BUILDER) $(GPRBUILD_GPR) \
+ 	-XLIBRARY_TYPE=static -XXMLADA_BUILD=static
+-LIBGPR_BUILDER=$(BUILDER) $(GPR_GPR)
+-LIBGPR_INSTALLER=$(LIB_INSTALLER) $(GPR_GPR) -XBUILD=${BUILD} \
++libgnatprj_BUILDER=$(BUILDER) $(GPR_GPR)
++libgnatprj_INSTALLER=$(LIB_INSTALLER) $(GPR_GPR) -XBUILD=${BUILD} \
+ 	--install-name=gpr \
+ 	--build-var=LIBRARY_TYPE --build-var=GPR_BUILD $(GTARGET)
+-LIBGPR_UNINSTALLER=$(LIB_INSTALLER) $(GPR_GPR) --install-name=gpr --uninstall
++libgnatprj_UNINSTALLER=$(LIB_INSTALLER) $(GPR_GPR) --install-name=gpr --uninstall
+ 
+ #########
+ # build #
+@@ -126,57 +126,57 @@
+ 	$(EXEC_INSTALLER) --target=$(TARGET) --mode=usage  --install-name=gprbuild \
+ 		-XINSTALL_MODE=internal $(GPRBUILD_GPR)
+ 
+-complete: all install libgpr.install.static
++complete: all install libgnatprj.install.static
+ 
+ ##########
+-# Libgpr #
++# libgnatprj #
+ ##########
+ 
+-.PHONY: libgpr.build libgpr.build.static libgpr.build.shared libgpr.build.static-pic
+-.PHONY: libgpr.install libgpr.install.static libgpr.install.shared libgpr.install.static-pic
+-.PHONY: libgpr.uninstall
++.PHONY: libgnatprj.build libgnatprj.build.static libgnatprj.build.shared libgnatprj.build.static-pic
++.PHONY: libgnatprj.install libgnatprj.install.static libgnatprj.install.shared libgnatprj.install.static-pic
++.PHONY: libgnatprj.uninstall
+ 
+-libgpr.build: $(foreach t, $(LIBGPR_TYPES), libgpr.build.$(t))
++libgnatprj.build: $(foreach t, $(libgnatprj_TYPES), libgnatprj.build.$(t))
+ 
+-libgpr.build.shared:
+-	${LIBGPR_BUILDER} -XLIBRARY_TYPE=relocatable \
++libgnatprj.build.shared:
++	${libgnatprj_BUILDER} -XLIBRARY_TYPE=relocatable \
+ 		-XXMLADA_BUILD=relocatable
+ 
+-libgpr.build.static:
+-	${LIBGPR_BUILDER} -XLIBRARY_TYPE=static \
++libgnatprj.build.static:
++	${libgnatprj_BUILDER} -XLIBRARY_TYPE=static \
+ 		-XXMLADA_BUILD=static
+ 
+-libgpr.build.static-pic:
+-	${LIBGPR_BUILDER} -XLIBRARY_TYPE=static-pic \
++libgnatprj.build.static-pic:
++	${libgnatprj_BUILDER} -XLIBRARY_TYPE=static-pic \
+ 		-XXMLADA_BUILD=static-pic
+ 
+-libgpr.install: libgpr.uninstall $(foreach t, $(LIBGPR_TYPES), libgpr.install.$(t))
++libgnatprj.install: libgnatprj.uninstall $(foreach t, $(libgnatprj_TYPES), libgnatprj.install.$(t))
+ 
+-libgpr.install.static:
+-	$(LIBGPR_INSTALLER) \
++libgnatprj.install.static:
++	$(libgnatprj_INSTALLER) \
+ 	   -XLIBRARY_TYPE=static \
+ 	   -XXMLADA_BUILD=static \
+ 	   --lib-subdir=${LIB_DIR}/gpr/static \
+ 	   --build-name=static
+ 
+-libgpr.install.static-pic:
+-	$(LIBGPR_INSTALLER) \
++libgnatprj.install.static-pic:
++	$(libgnatprj_INSTALLER) \
+ 	   -XLIBRARY_TYPE=static-pic \
+ 	   -XXMLADA_BUILD=static-pic \
+ 	   --lib-subdir=${LIB_DIR}/gpr/static-pic \
+ 	   --build-name=static-pic
+ 
+-libgpr.install.shared:
+-	$(LIBGPR_INSTALLER) \
++libgnatprj.install.shared:
++	$(libgnatprj_INSTALLER) \
+ 	   -XLIBRARY_TYPE=relocatable \
+ 	   -XXMLADA_BUILD=relocatable \
+ 	   --lib-subdir=${LIB_DIR}/gpr/relocatable \
+ 	   --build-name=relocatable
+ 
+-libgpr.uninstall:
+-	-$(LIBGPR_UNINSTALLER)
++libgnatprj.uninstall:
++	-$(libgnatprj_UNINSTALLER)
+ 
+-libgpr.clean:
++libgnatprj.clean:
+ 	-$(CLEANER) -XLIBRARY_TYPE=relocatable $(GPR_GPR)
+ 	-$(CLEANER) -XLIBRARY_TYPE=static $(GPR_GPR)
+ 	-$(CLEANER) -XLIBRARY_TYPE=static-pic $(GPR_GPR)
+@@ -200,7 +200,7 @@
+ ###################
+ 
+ .PHONY: clean
+-clean: libgpr.clean
++clean: libgnatprj.clean
+ 	-$(CLEANER) -r -Pgprbuild -XBUILD=$(BUILD)
+ 	-$(CLEANER) -r -XBUILD=${BUILD} \
+ 		-XLIBRARY_TYPE=static-pic $(GPR_GPR)
