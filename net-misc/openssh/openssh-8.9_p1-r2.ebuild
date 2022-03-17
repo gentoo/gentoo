@@ -119,7 +119,7 @@ src_unpack() {
 	default
 
 	# We don't have signatures for HPN, X509, so we have to write this ourselves
-	verify-sig_verify_detached "${DISTDIR}"/${PARCH}.tar.gz{,.asc}
+	use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${PARCH}.tar.gz{,.asc}
 }
 
 src_prepare() {
