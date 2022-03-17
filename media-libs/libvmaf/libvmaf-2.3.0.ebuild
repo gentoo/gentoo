@@ -21,6 +21,9 @@ fi
 LICENSE="BSD-2-with-patent"
 SLOT="0"
 
+# upstream issue, see bug #835471
+RESTRICT="test"
+
 BDEPEND="
 	dev-lang/nasm
 "
