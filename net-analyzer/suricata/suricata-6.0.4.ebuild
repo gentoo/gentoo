@@ -6,11 +6,13 @@ EAPI=7
 LUA_COMPAT=( lua5-1 luajit )
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit autotools linux-info lua-single python-single-r1 systemd tmpfiles
+inherit autotools linux-info lua-single python-single-r1 systemd tmpfiles verify-sig
 
 DESCRIPTION="High performance Network IDS, IPS and Network Security Monitoring engine"
 HOMEPAGE="https://suricata.io/"
-SRC_URI="https://www.openinfosecfoundation.org/download/${P}.tar.gz"
+SRC_URI="https://www.openinfosecfoundation.org/download/${P}.tar.gz
+	verify-sig? ( https://www.openinfosecfoundation.org/download/${P}.tar.gz.sig )"
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/oisf.net.asc
 
 LICENSE="GPL-2"
 SLOT="0/6"
@@ -52,6 +54,7 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-2.69-r5
 	virtual/rust"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-oisf )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.0.1_configure-no-lz4-automagic.patch"
