@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
 MY_P="uuid-${PV}"
 
@@ -15,27 +15,25 @@ SRC_URI="ftp://ftp.ossp.org/pkg/lib/uuid/${MY_P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
-IUSE="+cxx perl static-libs"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+IUSE="+cxx perl static-libs test"
 
-DEPEND="perl? ( dev-lang/perl:= )"
-RDEPEND="${DEPEND}"
+DEPEND="perl? ( dev-lang/perl test? ( virtual/perl-Test-Simple ) )"
+RDEPEND="perl? ( dev-lang/perl:= )"
+BDEPEND="perl? ( dev-lang/perl )"
+RESTRICT="perl? ( !test? ( test ) )"
 
 S="${WORKDIR}/${MY_P}"
 
-src_prepare() {
-
-	eapply \
-		"${FILESDIR}/${P}-gentoo-r1.patch" \
-		"${FILESDIR}/${P}-gentoo-perl.patch" \
-		"${FILESDIR}/${P}-hwaddr.patch" \
-		"${FILESDIR}/${P}-manfix.patch" \
-		"${FILESDIR}/${P}-uuid-preserve-m-option-status-in-v-option-handling.patch" \
-		"${FILESDIR}/${P}-fix-whatis-entries.patch" \
-		"${FILESDIR}/${P}-fix-data-uuid-from-string.patch"
-
-	eapply_user
-}
+PATCHES=(
+	"${FILESDIR}/${P}-gentoo-r1.patch"
+	"${FILESDIR}/${P}-gentoo-perl.patch"
+	"${FILESDIR}/${P}-hwaddr.patch"
+	"${FILESDIR}/${P}-manfix.patch"
+	"${FILESDIR}/${P}-uuid-preserve-m-option-status-in-v-option-handling.patch"
+	"${FILESDIR}/${P}-fix-whatis-entries.patch"
+	"${FILESDIR}/${P}-fix-data-uuid-from-string.patch"
+)
 
 src_configure() {
 	# Notes:
