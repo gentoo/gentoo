@@ -15,12 +15,11 @@ LICENSE="GPL-2-with-linking-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
-IUSE="+doc test"
-RESTRICT="!test? ( test )"
+IUSE="+doc"
 
 COMMON_DEP="
 	virtual/jdk:1.8
-	>=media-sound/pulseaudio-0.9.11:="
+	>=media-sound/pulseaudio-0.9.11"
 RDEPEND="${COMMON_DEP}"
 DEPEND="${COMMON_DEP}"
 BDEPEND="app-arch/zip"
