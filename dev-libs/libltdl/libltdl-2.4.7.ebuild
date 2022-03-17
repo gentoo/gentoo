@@ -3,6 +3,8 @@
 
 EAPI=7
 
+# Please bump with sys-devel/libtool.
+
 inherit multilib-minimal
 
 MY_P="libtool-${PV}"
