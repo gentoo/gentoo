@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 ELISP_REMOVE="install-package.el lpath.el"
 SITEFILE="50${PN}-gentoo.el"
