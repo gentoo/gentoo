@@ -6,6 +6,9 @@
 		<name>Java</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="bitbucket">asomov/snakeyaml</remote-id>
+		<remote-id type="bitbucket">snakeyaml/snakeyaml</remote-id>
+		<changelog>https://bitbucket.org/snakeyaml/snakeyaml/wiki/Changes</changelog>
+		<bugs-to>https://bitbucket.org/snakeyaml/snakeyaml/issues</bugs-to>
+		<doc>https://bitbucket.org/snakeyaml/snakeyaml/wiki/Documentation</doc>
 	</upstream>
 </pkgmetadata>
