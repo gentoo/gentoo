@@ -19,7 +19,7 @@ esac
 
 EXPORT_FUNCTIONS src_unpack src_install
 
-# @ECLASS-VARIABLE: OFFICE_REQ_USE
+# @ECLASS_VARIABLE: OFFICE_REQ_USE
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Useflags required on office implementation for the extension.
@@ -33,7 +33,7 @@ if [[ ${OFFICE_REQ_USE} ]]; then
 	OFFICE_REQ_USE="[${OFFICE_REQ_USE}]"
 fi
 
-# @ECLASS-VARIABLE: OFFICE_IMPLEMENTATIONS
+# @ECLASS_VARIABLE: OFFICE_IMPLEMENTATIONS
 # @DESCRIPTION:
 # List of implementations supported by the extension.
 # Some work only for libreoffice and vice versa.
@@ -45,7 +45,7 @@ fi
 # @CODE
 [[ -z ${OFFICE_IMPLEMENTATIONS} ]] && OFFICE_IMPLEMENTATIONS=( "libreoffice" )
 
-# @ECLASS-VARIABLE: OFFICE_EXTENSIONS
+# @ECLASS_VARIABLE: OFFICE_EXTENSIONS
 # @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
@@ -60,7 +60,7 @@ if [[ "$(declare -p OFFICE_EXTENSIONS 2>/dev/null 2>&1)" != "declare -a"* ]]; th
 	die "OFFICE_EXTENSIONS variable is not an array."
 fi
 
-# @ECLASS-VARIABLE: OFFICE_EXTENSIONS_LOCATION
+# @ECLASS_VARIABLE: OFFICE_EXTENSIONS_LOCATION
 # @DESCRIPTION:
 # Path to the extensions location. Defaults to ${DISTDIR}.
 #

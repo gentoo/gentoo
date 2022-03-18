@@ -30,13 +30,13 @@ if [[ -z ${_CUDA_ECLASS} ]]; then
 inherit flag-o-matic toolchain-funcs
 [[ ${EAPI} == [56] ]] && inherit eapi7-ver
 
-# @ECLASS-VARIABLE: NVCCFLAGS
+# @ECLASS_VARIABLE: NVCCFLAGS
 # @DESCRIPTION:
 # nvcc compiler flags (see nvcc --help), which should be used like
 # CFLAGS for c compiler
 : ${NVCCFLAGS:=-O2}
 
-# @ECLASS-VARIABLE: CUDA_VERBOSE
+# @ECLASS_VARIABLE: CUDA_VERBOSE
 # @DESCRIPTION:
 # Being verbose during compilation to see underlying commands
 : ${CUDA_VERBOSE:=true}

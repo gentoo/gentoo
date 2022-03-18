@@ -25,7 +25,7 @@
 #  * each_ruby_configure
 #  * all_ruby_configure
 
-# @ECLASS-VARIABLE: USE_RUBY
+# @ECLASS_VARIABLE: USE_RUBY
 # @DEFAULT_UNSET
 # @REQUIRED
 # @DESCRIPTION:
@@ -33,19 +33,19 @@
 # is compatible to. It must be set before the `inherit' call. There is no
 # default. All ebuilds are expected to set this variable.
 
-# @ECLASS-VARIABLE: RUBY_PATCHES
+# @ECLASS_VARIABLE: RUBY_PATCHES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A String or Array of filenames of patches to apply to all implementations.
 
-# @ECLASS-VARIABLE: RUBY_OPTIONAL
+# @ECLASS_VARIABLE: RUBY_OPTIONAL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set the value to "yes" to make the dependency on a Ruby interpreter
 # optional and then ruby_implementations_depend() to help populate
 # BDEPEND, DEPEND and RDEPEND.
 
-# @ECLASS-VARIABLE: RUBY_S
+# @ECLASS_VARIABLE: RUBY_S
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If defined this variable determines the source directory name after
@@ -53,7 +53,7 @@
 # variable supports a wildcard mechanism to help with github tarballs
 # that contain the commit hash as part of the directory name.
 
-# @ECLASS-VARIABLE: RUBY_QA_ALLOWED_LIBS
+# @ECLASS_VARIABLE: RUBY_QA_ALLOWED_LIBS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If defined this variable contains a whitelist of shared objects that

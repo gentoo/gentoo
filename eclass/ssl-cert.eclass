@@ -22,19 +22,19 @@ esac
 if [[ ! ${_SSL_CERT_ECLASS} ]]; then
 _SSL_CERT_ECLASS=1
 
-# @ECLASS-VARIABLE: SSL_CERT_MANDATORY
+# @ECLASS_VARIABLE: SSL_CERT_MANDATORY
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Set to non zero if ssl-cert is mandatory for ebuild.
 : ${SSL_CERT_MANDATORY:=0}
 
-# @ECLASS-VARIABLE: SSL_CERT_USE
+# @ECLASS_VARIABLE: SSL_CERT_USE
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Use flag to append dependency to.
 : ${SSL_CERT_USE:=ssl}
 
-# @ECLASS-VARIABLE: SSL_DEPS_SKIP
+# @ECLASS_VARIABLE: SSL_DEPS_SKIP
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Set to non zero to skip adding to DEPEND and IUSE.

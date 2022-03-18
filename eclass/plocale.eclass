@@ -59,7 +59,7 @@ esac
 if [[ -z ${_PLOCALE_ECLASS} ]]; then
 _PLOCALE_ECLASS=1
 
-# @ECLASS-VARIABLE: PLOCALES
+# @ECLASS_VARIABLE: PLOCALES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Variable listing the locales for which localizations are offered by
@@ -67,7 +67,7 @@ _PLOCALE_ECLASS=1
 #
 # Example: PLOCALES="cy de el_GR en_US pt_BR vi zh_CN"
 
-# @ECLASS-VARIABLE: PLOCALE_BACKUP
+# @ECLASS_VARIABLE: PLOCALE_BACKUP
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # In some cases the package fails when none of the offered PLOCALES are

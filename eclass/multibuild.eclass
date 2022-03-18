@@ -21,7 +21,7 @@ esac
 if [[ ! ${_MULTIBUILD_ECLASS} ]]; then
 _MULTIBUILD_ECLASS=1
 
-# @ECLASS-VARIABLE: MULTIBUILD_VARIANTS
+# @ECLASS_VARIABLE: MULTIBUILD_VARIANTS
 # @REQUIRED
 # @DESCRIPTION:
 # An array specifying all enabled variants which multibuild_foreach*
@@ -38,7 +38,7 @@ _MULTIBUILD_ECLASS=1
 # }
 # @CODE
 
-# @ECLASS-VARIABLE: MULTIBUILD_VARIANT
+# @ECLASS_VARIABLE: MULTIBUILD_VARIANT
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The current variant which the function was executed for.
@@ -48,7 +48,7 @@ _MULTIBUILD_ECLASS=1
 # python2_6
 # @CODE
 
-# @ECLASS-VARIABLE: MULTIBUILD_ID
+# @ECLASS_VARIABLE: MULTIBUILD_ID
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The unique identifier for a multibuild run. In a simple run, it is
@@ -62,7 +62,7 @@ _MULTIBUILD_ECLASS=1
 # amd64-double
 # @CODE
 
-# @ECLASS-VARIABLE: BUILD_DIR
+# @ECLASS_VARIABLE: BUILD_DIR
 # @OUTPUT_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:

@@ -36,7 +36,7 @@ esac
 # INTERNAL VARIABLES
 # ==============================================================================
 
-# @ECLASS-VARIABLE: GENTOO_PATCHNAME
+# @ECLASS_VARIABLE: GENTOO_PATCHNAME
 # @DESCRIPTION:
 # This internal variable contains the prefix for the patch tarball.
 # Defaults to the full name and version (including revision) of the package.
@@ -45,7 +45,7 @@ esac
 # GENTOO_PATCHNAME="gentoo-${PN}-${PV}${ORIG_PR:+-${ORIG_PR}}"
 [[ -n "${GENTOO_PATCHNAME}" ]] || GENTOO_PATCHNAME="gentoo-${PF}"
 
-# @ECLASS-VARIABLE: GENTOO_PATCHDIR
+# @ECLASS_VARIABLE: GENTOO_PATCHDIR
 # @DESCRIPTION:
 # This internal variable contains the working directory where patches and config
 # files are located.
@@ -200,7 +200,7 @@ unset -f _apache2_set_module_depends
 # INTERNAL FUNCTIONS
 # ==============================================================================
 
-# @ECLASS-VARIABLE: MY_MPM
+# @ECLASS_VARIABLE: MY_MPM
 # @DESCRIPTION:
 # This internal variable contains the selected MPM after a call to setup_mpm()
 
@@ -266,12 +266,12 @@ check_module_critical() {
 	fi
 }
 
-# @ECLASS-VARIABLE: MY_CONF
+# @ECLASS_VARIABLE: MY_CONF
 # @DESCRIPTION:
 # This internal variable contains the econf options for the current module
 # selection after a call to setup_modules()
 
-# @ECLASS-VARIABLE: MY_MODS
+# @ECLASS_VARIABLE: MY_MODS
 # @DESCRIPTION:
 # This internal variable contains a sorted, space separated list of currently
 # selected modules after a call to setup_modules()

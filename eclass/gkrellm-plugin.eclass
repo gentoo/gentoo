@@ -26,18 +26,18 @@
 #     - Initial commit
 #
 
-# @ECLASS-VARIABLE: PLUGIN_SO
+# @ECLASS_VARIABLE: PLUGIN_SO
 # @DESCRIPTION:
 # The name of the plugin's .so file which will be installed in
 # the plugin dir. Defaults to "${PN}$(get_modname)". Has to be a bash array.
 
-# @ECLASS-VARIABLE: PLUGIN_SERVER_SO
+# @ECLASS_VARIABLE: PLUGIN_SERVER_SO
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The name of the plugin's server plugin $(get_modname) portion.
 # Unset by default. Has to be a bash array.
 
-# @ECLASS-VARIABLE: PLUGIN_DOCS
+# @ECLASS_VARIABLE: PLUGIN_DOCS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An optional list of docs to be installed, in addition to the default

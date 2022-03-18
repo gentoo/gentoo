@@ -35,11 +35,11 @@ esac
 
 BDEPEND="dev-vcs/mercurial"
 
-# @ECLASS-VARIABLE: EHG_REPO_URI
+# @ECLASS_VARIABLE: EHG_REPO_URI
 # @DESCRIPTION:
 # Mercurial repository URI.
 
-# @ECLASS-VARIABLE: EHG_REVISION
+# @ECLASS_VARIABLE: EHG_REVISION
 # @DESCRIPTION:
 # Create working directory for specified revision, defaults to default.
 #
@@ -47,13 +47,13 @@ BDEPEND="dev-vcs/mercurial"
 # than just a revision, please consult `hg help revisions' for more details.
 : ${EHG_REVISION:="default"}
 
-# @ECLASS-VARIABLE: EHG_STORE_DIR
+# @ECLASS_VARIABLE: EHG_STORE_DIR
 # @USER_VARIABLE
 # @DESCRIPTION:
 # Mercurial sources store directory. Users may override this in /etc/portage/make.conf
 [[ -z "${EHG_STORE_DIR}" ]] && EHG_STORE_DIR="${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}/hg-src"
 
-# @ECLASS-VARIABLE: EHG_PROJECT
+# @ECLASS_VARIABLE: EHG_PROJECT
 # @DESCRIPTION:
 # Project name.
 #
@@ -61,33 +61,33 @@ BDEPEND="dev-vcs/mercurial"
 # between several ebuilds.
 [[ -z "${EHG_PROJECT}" ]] && EHG_PROJECT="${PN}"
 
-# @ECLASS-VARIABLE: EHG_CHECKOUT_DIR
+# @ECLASS_VARIABLE: EHG_CHECKOUT_DIR
 # @DESCRIPTION:
 # The directory to check the hg sources out to.
 #
 # EHG_CHECKOUT_DIR=${S}
 
-# @ECLASS-VARIABLE: EHG_QUIET
+# @ECLASS_VARIABLE: EHG_QUIET
 # @DESCRIPTION:
 # Suppress some extra noise from mercurial, set it to 'ON' to be quiet.
 : ${EHG_QUIET:="OFF"}
 [[ "${EHG_QUIET}" == "ON" ]] && EHG_QUIET_CMD_OPT="--quiet"
 
-# @ECLASS-VARIABLE: EHG_CONFIG
+# @ECLASS_VARIABLE: EHG_CONFIG
 # @DESCRIPTION:
 # Extra config option to hand to hg clone/pull
 
-# @ECLASS-VARIABLE: EHG_CLONE_CMD
+# @ECLASS_VARIABLE: EHG_CLONE_CMD
 # @DESCRIPTION:
 # Command used to perform initial repository clone.
 [[ -z "${EHG_CLONE_CMD}" ]] && EHG_CLONE_CMD="hg clone ${EHG_CONFIG:+--config ${EHG_CONFIG}} ${EHG_QUIET_CMD_OPT} --pull --noupdate"
 
-# @ECLASS-VARIABLE: EHG_PULL_CMD
+# @ECLASS_VARIABLE: EHG_PULL_CMD
 # @DESCRIPTION:
 # Command used to update repository.
 [[ -z "${EHG_PULL_CMD}" ]] && EHG_PULL_CMD="hg pull ${EHG_CONFIG:+--config ${EHG_CONFIG}} ${EHG_QUIET_CMD_OPT}"
 
-# @ECLASS-VARIABLE: EHG_OFFLINE
+# @ECLASS_VARIABLE: EHG_OFFLINE
 # @DESCRIPTION:
 # Set this variable to a non-empty value to disable the automatic updating of
 # a mercurial source tree. This is intended to be set outside the ebuild by
@@ -173,7 +173,7 @@ mercurial_fetch() {
 mercurial_bootstrap() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	# @ECLASS-VARIABLE: EHG_BOOTSTRAP
+	# @ECLASS_VARIABLE: EHG_BOOTSTRAP
 	# @DESCRIPTION:
 	# Command to be executed after checkout and clone of the specified
 	# repository.

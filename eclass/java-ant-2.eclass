@@ -31,7 +31,7 @@ _JAVA_ANT_2_ECLASS=1
 # ant to build. In particular, it will attempt to fix build.xml files, so that
 # they use the appropriate 'target' and 'source' attributes.
 
-# @ECLASS-VARIABLE: WANT_ANT_TASKS
+# @ECLASS_VARIABLE: WANT_ANT_TASKS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An $IFS separated list of ant tasks.
@@ -50,7 +50,7 @@ _JAVA_ANT_2_ECLASS=1
 #The implementation of dependencies is handled by java-utils-2.eclass
 #WANT_ANT_TASKS
 
-# @ECLASS-VARIABLE: JAVA_ANT_DISABLE_ANT_CORE_DEP
+# @ECLASS_VARIABLE: JAVA_ANT_DISABLE_ANT_CORE_DEP
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Setting this variable non-empty before inheriting java-ant-2 disables adding
@@ -85,38 +85,38 @@ fi
 
 DEPEND="${JAVA_ANT_E_DEPEND}"
 
-# @ECLASS-VARIABLE: JAVA_PKG_BSFIX
+# @ECLASS_VARIABLE: JAVA_PKG_BSFIX
 # @DESCRIPTION:
 # Should we attempt to 'fix' ant build files to include the source/target
 # attributes when calling javac?
 JAVA_PKG_BSFIX=${JAVA_PKG_BSFIX:-"on"}
 
-# @ECLASS-VARIABLE: JAVA_PKG_BSFIX_ALL
+# @ECLASS_VARIABLE: JAVA_PKG_BSFIX_ALL
 # @DESCRIPTION:
 # If we're fixing build files, should we try to fix all the ones we can find?
 JAVA_PKG_BSFIX_ALL=${JAVA_PKG_BSFIX_ALL:-"yes"}
 
-# @ECLASS-VARIABLE: JAVA_PKG_BSFIX_NAME
+# @ECLASS_VARIABLE: JAVA_PKG_BSFIX_NAME
 # @DESCRIPTION:
 # Filename of build files to fix/search for
 JAVA_PKG_BSFIX_NAME=${JAVA_PKG_BSFIX_NAME:-"build.xml"}
 
-# @ECLASS-VARIABLE: JAVA_PKG_BSFIX_TARGET_TAGS
+# @ECLASS_VARIABLE: JAVA_PKG_BSFIX_TARGET_TAGS
 # @DESCRIPTION:
 # Targets to fix the 'source' attribute in
 JAVA_PKG_BSFIX_TARGET_TAGS=${JAVA_PKG_BSFIX_TARGET_TAGS:-"javac xjavac javac.preset"}
 
-# @ECLASS-VARIABLE: JAVA_PKG_BSFIX_SOURCE_TAGS
+# @ECLASS_VARIABLE: JAVA_PKG_BSFIX_SOURCE_TAGS
 # @DESCRIPTION:
 # Targets to fix the 'target' attribute in
 JAVA_PKG_BSFIX_SOURCE_TAGS=${JAVA_PKG_BSFIX_SOURCE_TAGS:-"javadoc javac xjavac javac.preset"}
 
-# @ECLASS-VARIABLE: JAVA_ANT_CLASSPATH_TAGS
+# @ECLASS_VARIABLE: JAVA_ANT_CLASSPATH_TAGS
 # @DESCRIPTION:
 # Targets to add the classpath attribute to
 JAVA_ANT_CLASSPATH_TAGS="javac xjavac"
 
-# @ECLASS-VARIABLE: JAVA_ANT_IGNORE_SYSTEM_CLASSES
+# @ECLASS_VARIABLE: JAVA_ANT_IGNORE_SYSTEM_CLASSES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # When set, <available> Ant tasks are rewritten to ignore Ant's runtime classpath.

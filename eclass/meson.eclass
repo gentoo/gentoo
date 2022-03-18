@@ -58,18 +58,18 @@ else
 	BDEPEND=${_MESON_DEPEND}
 fi
 
-# @ECLASS-VARIABLE: BUILD_DIR
+# @ECLASS_VARIABLE: BUILD_DIR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Build directory, location where all generated files should be placed.
 # If this isn't set, it defaults to ${WORKDIR}/${P}-build.
 
-# @ECLASS-VARIABLE: EMESON_BUILDTYPE
+# @ECLASS_VARIABLE: EMESON_BUILDTYPE
 # @DESCRIPTION:
 # The buildtype value to pass to meson setup.
 : ${EMESON_BUILDTYPE=plain}
 
-# @ECLASS-VARIABLE: EMESON_SOURCE
+# @ECLASS_VARIABLE: EMESON_SOURCE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The location of the source files for the project; this is the source

@@ -17,12 +17,12 @@
 # added functionality:
 # unipatch		- a flexible, singular method to extract, add and remove patches.
 
-# @ECLASS-VARIABLE: CTARGET
+# @ECLASS_VARIABLE: CTARGET
 # @INTERNAL
 # @DESCRIPTION:
 # Utilized for 32-bit userland on ppc64.
 
-# @ECLASS-VARIABLE: CKV 
+# @ECLASS_VARIABLE: CKV 
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Used as a comparison kernel version, which is used when
@@ -30,131 +30,131 @@
 # This gets set to the portage style versioning. ie:
 # CKV=2.6.11_rc4
 
-# @ECLASS-VARIABLE: EXTRAVERSION
+# @ECLASS_VARIABLE: EXTRAVERSION
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The additional version appended to OKV (-gentoo/-gentoo-r1)
 
-# @ECLASS-VARIABLE: H_SUPPORTEDARCH
+# @ECLASS_VARIABLE: H_SUPPORTEDARCH
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # this should be a space separated list of ARCH's which
 # can be supported by the headers ebuild
 
-# @ECLASS-VARIABLE: K_BASE_VER
+# @ECLASS_VARIABLE: K_BASE_VER
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # for git-sources, declare the base version this patch is
 # based off of.
 
-# @ECLASS-VARIABLE: K_DEBLOB_AVAILABLE
+# @ECLASS_VARIABLE: K_DEBLOB_AVAILABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A value of "0" will disable all of the optional deblob
 # code. If empty, will be set to "1" if deblobbing is
 # possible. Test ONLY for "1".
 
-# @ECLASS-VARIABLE: K_DEBLOB_TAG
+# @ECLASS_VARIABLE: K_DEBLOB_TAG
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # This will be the version of deblob script. It's a upstream SVN tag
 # such asw -gnu or -gnu1.
 
-# @ECLASS-VARIABLE: K_DEFCONFIG
+# @ECLASS_VARIABLE: K_DEFCONFIG
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Allow specifying a different defconfig target.
 # If length zero, defaults to "defconfig".
 
-# @ECLASS-VARIABLE: K_EXP_GENPATCHES_PULL
+# @ECLASS_VARIABLE: K_EXP_GENPATCHES_PULL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set, we pull "experimental" regardless of the USE FLAG
 # but expect the ebuild maintainer to use K_EXP_GENPATCHES_LIST.
 
-# @ECLASS-VARIABLE: K_EXP_GENPATCHES_NOUSE
+# @ECLASS_VARIABLE: K_EXP_GENPATCHES_NOUSE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set, no USE flag will be provided for "experimental";
 # as a result the user cannot choose to apply those patches.
 
-# @ECLASS-VARIABLE: K_EXP_GENPATCHES_LIST
+# @ECLASS_VARIABLE: K_EXP_GENPATCHES_LIST
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A list of patches to pick from "experimental" to apply when
 # the USE flag is unset and K_EXP_GENPATCHES_PULL is set.
 
-# @ECLASS-VARIABLE: K_EXTRAEINFO
+# @ECLASS_VARIABLE: K_EXTRAEINFO
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # this is a new-line seperated list of einfo displays in
 # postinst and can be used to carry additional postinst
 # messages
 
-# @ECLASS-VARIABLE: K_EXTRAELOG
+# @ECLASS_VARIABLE: K_EXTRAELOG
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # same as K_EXTRAEINFO except using elog instead of einfo
 
-# @ECLASS-VARIABLE: K_EXTRAEWARN
+# @ECLASS_VARIABLE: K_EXTRAEWARN
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # same as K_EXTRAEINFO except using ewarn instead of einfo
 
-# @ECLASS-VARIABLE: K_FROM_GIT
+# @ECLASS_VARIABLE: K_FROM_GIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set, this variable signals that the kernel sources derives
 # from a git tree and special handling will be applied so that
 # any patches that are applied will actually apply.
 
-# @ECLASS-VARIABLE: K_GENPATCHES_VER
+# @ECLASS_VARIABLE: K_GENPATCHES_VER
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The version of the genpatches tarball(s) to apply.
 # A value of "5" would apply genpatches-2.6.12-5 to
 # my-sources-2.6.12.ebuild
 
-# @ECLASS-VARIABLE: K_LONGTERM
+# @ECLASS_VARIABLE: K_LONGTERM
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set, the eclass will search for the kernel source
 # in the long term directories on the upstream servers
 # as the location has been changed by upstream
 
-# @ECLASS-VARIABLE: K_NODRYRUN
+# @ECLASS_VARIABLE: K_NODRYRUN
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # if this is set then patch --dry-run will not
 # be run. Certain patches will fail with this parameter
 # See bug #507656
 
-# @ECLASS-VARIABLE: K_NOSETEXTRAVERSION
+# @ECLASS_VARIABLE: K_NOSETEXTRAVERSION
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # if this is set then EXTRAVERSION will not be
 # automatically set within the kernel Makefile
 
-# @ECLASS-VARIABLE: K_NOUSENAME
+# @ECLASS_VARIABLE: K_NOUSENAME
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # if this is set then EXTRAVERSION will not include the
 # first part of ${PN} in EXTRAVERSION
 
-# @ECLASS-VARIABLE: K_NOUSEPR
+# @ECLASS_VARIABLE: K_NOUSEPR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # if this is set then EXTRAVERSION will not include the
 # anything based on ${PR}.
 
-# @ECLASS-VARIABLE: K_PREDEBLOBBED
+# @ECLASS_VARIABLE: K_PREDEBLOBBED
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # This kernel was already deblobbed elsewhere.
 # If false, either optional deblobbing will be available
 # or the license will note the inclusion of linux-firmware code.
 
-# @ECLASS-VARIABLE: K_PREPATCHED
+# @ECLASS_VARIABLE: K_PREPATCHED
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # if the patchset is prepatched (ie: pf-sources,
@@ -162,18 +162,18 @@
 # patchset version for and not use it as a true package
 # revision
 
-# @ECLASS-VARIABLE: K_SECURITY_UNSUPPORTED
+# @ECLASS_VARIABLE: K_SECURITY_UNSUPPORTED
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set, this kernel is unsupported by Gentoo Security
 # to the current eclass maintainer :)
 
-# @ECLASS-VARIABLE: K_SYMLINK
+# @ECLASS_VARIABLE: K_SYMLINK
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # if this is set, then forcably create symlink anyway
 
-# @ECLASS-VARIABLE: K_USEPV
+# @ECLASS_VARIABLE: K_USEPV
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # When setting the EXTRAVERSION variable, it should
@@ -181,74 +181,74 @@
 # this is useful for things like wolk. IE:
 # EXTRAVERSION would be something like : -wolk-4.19-r1
 
-# @ECLASS-VARIABLE: K_WANT_GENPATCHES
+# @ECLASS_VARIABLE: K_WANT_GENPATCHES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Apply genpatches to kernel source. Provide any
 # combination of "base", "extras" or "experimental".
 
-# @ECLASS-VARIABLE: KERNEL_URI 
+# @ECLASS_VARIABLE: KERNEL_URI 
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Upstream kernel src URI
 
-# @ECLASS-VARIABLE: KV 
+# @ECLASS_VARIABLE: KV 
 # @DEFAULT_UNSET
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Kernel Version (2.6.0-gentoo/2.6.0-test11-gentoo-r1)
 
-# @ECLASS-VARIABLE: KV_FULL 
+# @ECLASS_VARIABLE: KV_FULL 
 # @DEFAULT_UNSET
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Kernel full version
 
-# @ECLASS-VARIABLE: KV_MAJOR 
+# @ECLASS_VARIABLE: KV_MAJOR 
 # @DEFAULT_UNSET
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Kernel major version from <KV_MAJOR>.<KV_MINOR>.<KV_PATCH
 
-# @ECLASS-VARIABLE: KV_MINOR 
+# @ECLASS_VARIABLE: KV_MINOR 
 # @DEFAULT_UNSET
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Kernel minor version from <KV_MAJOR>.<KV_MINOR>.<KV_PATCH
 
-# @ECLASS-VARIABLE: KV_PATCH 
+# @ECLASS_VARIABLE: KV_PATCH 
 # @DEFAULT_UNSET
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Kernel patch version from <KV_MAJOR>.<KV_MINOR>.<KV_PATCH
 
-# @ECLASS-VARIABLE: LINUX_HOSTCFLAGS
+# @ECLASS_VARIABLE: LINUX_HOSTCFLAGS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Default cflags if not already set
 
-# @ECLASS-VARIABLE: OKV  
+# @ECLASS_VARIABLE: OKV  
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Original Kernel Version (2.6.0/2.6.0-test11)
 
-# @ECLASS-VARIABLE: RELEASE 
+# @ECLASS_VARIABLE: RELEASE 
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Representative of the kernel release tag (-rc3/-git3)
 
-# @ECLASS-VARIABLE: RELEASETYPE
+# @ECLASS_VARIABLE: RELEASETYPE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The same as RELEASE but with its numerics stripped (-rc/-git)
 
-# @ECLASS-VARIABLE: UNIPATCH_DOCS
+# @ECLASS_VARIABLE: UNIPATCH_DOCS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # space delimemeted list of docs to be installed to
 # the doc dir
 
-# @ECLASS-VARIABLE: UNIPATCH_EXCLUDE
+# @ECLASS_VARIABLE: UNIPATCH_EXCLUDE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An addition var to support exlusion based completely
@@ -256,22 +256,22 @@
 # this should _NOT_ be used from the ebuild as this is
 # reserved for end users passing excludes from the cli
 
-# @ECLASS-VARIABLE: UNIPATCH_LIST
+# @ECLASS_VARIABLE: UNIPATCH_LIST
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # space delimetered list of patches to be applied to the kernel
 
-# @ECLASS-VARIABLE: UNIPATCH_LIST_DEFAULT 
+# @ECLASS_VARIABLE: UNIPATCH_LIST_DEFAULT 
 # @INTERNAL
 # @DESCRIPTION:
 # Upstream kernel patch archive
 
-# @ECLASS-VARIABLE: UNIPATCH_LIST_GENPATCHES 
+# @ECLASS_VARIABLE: UNIPATCH_LIST_GENPATCHES 
 # @INTERNAL
 # @DESCRIPTION:
 # List of genpatches archives to apply to the kernel 
 
-# @ECLASS-VARIABLE: UNIPATCH_STRICTORDER
+# @ECLASS_VARIABLE: UNIPATCH_STRICTORDER
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # if this is set places patches into directories of

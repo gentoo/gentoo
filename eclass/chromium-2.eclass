@@ -46,7 +46,7 @@ chromium_suid_sandbox_check_kernel_config() {
 	fi
 }
 
-# @ECLASS-VARIABLE: CHROMIUM_LANGS
+# @ECLASS_VARIABLE: CHROMIUM_LANGS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # List of language packs available for this package.

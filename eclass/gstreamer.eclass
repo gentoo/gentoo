@@ -37,20 +37,20 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-# @ECLASS-VARIABLE: GST_PLUGINS_BUILD
+# @ECLASS_VARIABLE: GST_PLUGINS_BUILD
 # @DESCRIPTION:
 # Defines the plugins to be built.
 # May be set by an ebuild and contain more than one indentifier, space
 # seperated (only src_configure can handle mutiple plugins at this time).
 : ${GST_PLUGINS_BUILD:=${PN/gst-plugins-/}}
 
-# @ECLASS-VARIABLE: GST_PLUGINS_BUILD_DIR
+# @ECLASS_VARIABLE: GST_PLUGINS_BUILD_DIR
 # @DESCRIPTION:
 # Actual build directory of the plugin.
 # Most often the same as the configure switch name.
 : ${GST_PLUGINS_BUILD_DIR:=${PN/gst-plugins-/}}
 
-# @ECLASS-VARIABLE: GST_TARBALL_SUFFIX
+# @ECLASS_VARIABLE: GST_TARBALL_SUFFIX
 # @DESCRIPTION:
 # Most projects hosted on gstreamer.freedesktop.org mirrors provide
 # tarballs as tar.bz2 or tar.xz. This eclass defaults to xz. This is
@@ -64,13 +64,13 @@ if [[ ${GST_TARBALL_SUFFIX} == "xz" ]]; then
 	DEPEND="${DEPEND} app-arch/xz-utils"
 fi
 
-# @ECLASS-VARIABLE: GST_ORG_MODULE
+# @ECLASS_VARIABLE: GST_ORG_MODULE
 # @DESCRIPTION:
 # Name of the module as hosted on gstreamer.freedesktop.org mirrors.
 # Leave unset if package name matches module name.
 : ${GST_ORG_MODULE:=$PN}
 
-# @ECLASS-VARIABLE: GST_ORG_PVP
+# @ECLASS_VARIABLE: GST_ORG_PVP
 # @INTERNAL
 # @DESCRIPTION:
 # Major and minor numbers of the version number.

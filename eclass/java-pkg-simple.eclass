@@ -52,7 +52,7 @@ if has test ${JAVA_PKG_IUSE}; then
 	[[ ${test_deps} ]] && DEPEND="test? ( ${test_deps} )"
 fi
 
-# @ECLASS-VARIABLE: JAVA_GENTOO_CLASSPATH
+# @ECLASS_VARIABLE: JAVA_GENTOO_CLASSPATH
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Comma or space separated list of java packages to include in the
@@ -64,26 +64,26 @@ fi
 #	JAVA_GENTOO_CLASSPATH="foo,bar-2"
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_GENTOO_CLASSPATH_EXTRA
+# @ECLASS_VARIABLE: JAVA_GENTOO_CLASSPATH_EXTRA
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Extra list of colon separated path elements to be put on the
 # classpath when compiling sources.
 
-# @ECLASS-VARIABLE: JAVA_CLASSPATH_EXTRA
+# @ECLASS_VARIABLE: JAVA_CLASSPATH_EXTRA
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An extra comma or space separated list of java packages
 # that are needed only during compiling sources.
 
-# @ECLASS-VARIABLE: JAVA_NEEDS_TOOLS
+# @ECLASS_VARIABLE: JAVA_NEEDS_TOOLS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Add tools.jar to the gentoo.classpath. Should only be used
 # for build-time purposes, the dependency is not recorded to
 # package.env.
 
-# @ECLASS-VARIABLE: JAVA_SRC_DIR
+# @ECLASS_VARIABLE: JAVA_SRC_DIR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of directories relative to ${S} which contain the sources
@@ -101,7 +101,7 @@ fi
 # @CODE
 
 # @DESCRIPTION:
-# @ECLASS-VARIABLE: JAVA_RESOURCE_DIRS
+# @ECLASS_VARIABLE: JAVA_RESOURCE_DIRS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of directories relative to ${S} which contain the
@@ -112,17 +112,17 @@ fi
 #	JAVA_RESOURCE_DIRS=("src/java/resources/")
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_ENCODING
+# @ECLASS_VARIABLE: JAVA_ENCODING
 # @DESCRIPTION:
 # The character encoding used in the source files.
 : ${JAVA_ENCODING:=UTF-8}
 
-# @ECLASS-VARIABLE: JAVAC_ARGS
+# @ECLASS_VARIABLE: JAVAC_ARGS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Additional arguments to be passed to javac.
 
-# @ECLASS-VARIABLE: JAVA_MAIN_CLASS
+# @ECLASS_VARIABLE: JAVA_MAIN_CLASS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If the java has a main class, you are going to set the
@@ -133,30 +133,30 @@ fi
 #	JAVA_MAIN_CLASS="org.gentoo.java.ebuilder.Main"
 # @CODE
 
-# @ECLASS-VARIABLE: JAVADOC_ARGS
+# @ECLASS_VARIABLE: JAVADOC_ARGS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Additional arguments to be passed to javadoc.
 
-# @ECLASS-VARIABLE: JAVA_JAR_FILENAME
+# @ECLASS_VARIABLE: JAVA_JAR_FILENAME
 # @DESCRIPTION:
 # The name of the jar file to create and install.
 : ${JAVA_JAR_FILENAME:=${PN}.jar}
 
-# @ECLASS-VARIABLE: JAVA_BINJAR_FILENAME
+# @ECLASS_VARIABLE: JAVA_BINJAR_FILENAME
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The name of the binary jar file to be installed if
 # USE FLAG 'binary' is set.
 
-# @ECLASS-VARIABLE: JAVA_LAUNCHER_FILENAME
+# @ECLASS_VARIABLE: JAVA_LAUNCHER_FILENAME
 # @DESCRIPTION:
 # If ${JAVA_MAIN_CLASS} is set, we will create a launcher to
 # execute the jar, and ${JAVA_LAUNCHER_FILENAME} will be the
 # name of the script.
 : ${JAVA_LAUNCHER_FILENAME:=${PN}-${SLOT}}
 
-# @ECLASS-VARIABLE: JAVA_TESTING_FRAMEWORKS
+# @ECLASS_VARIABLE: JAVA_TESTING_FRAMEWORKS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A space separated list that defines which tests it should launch
@@ -166,7 +166,7 @@ fi
 # JAVA_TESTING_FRAMEWORKS="junit pkgdiff"
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_TEST_RUN_ONLY
+# @ECLASS_VARIABLE: JAVA_TEST_RUN_ONLY
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A array of classes that should be executed during src_test(). This variable
@@ -177,7 +177,7 @@ fi
 # JAVA_TEST_RUN_ONLY=( "net.sf.cglib.AllTests" "net.sf.cglib.TestAll" )
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_TEST_EXCLUDES
+# @ECLASS_VARIABLE: JAVA_TEST_EXCLUDES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A array of classes that should not be executed during src_test().
@@ -186,20 +186,20 @@ fi
 # JAVA_TEST_EXCLUDES=( "net.sf.cglib.CodeGenTestCase" "net.sf.cglib.TestAll" )
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_TEST_GENTOO_CLASSPATH
+# @ECLASS_VARIABLE: JAVA_TEST_GENTOO_CLASSPATH
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The extra classpath we need while compiling and running the
 # source code for testing.
 
-# @ECLASS-VARIABLE: JAVA_TEST_SRC_DIR
+# @ECLASS_VARIABLE: JAVA_TEST_SRC_DIR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of directories relative to ${S} which contain the
 # sources for testing. It is almost equivalent to
 # ${JAVA_SRC_DIR} in src_test.
 
-# @ECLASS-VARIABLE: JAVA_TEST_RESOURCE_DIRS
+# @ECLASS_VARIABLE: JAVA_TEST_RESOURCE_DIRS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # It is almost equivalent to ${JAVA_RESOURCE_DIRS} in src_test.

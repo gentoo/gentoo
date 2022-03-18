@@ -14,7 +14,7 @@
 # Provides dependencies on dDne and OCaml and default src_compile, src_test and
 # src_install for Dune-based packages.
 
-# @ECLASS-VARIABLE: DUNE_PKG_NAME
+# @ECLASS_VARIABLE: DUNE_PKG_NAME
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Sets the actual Dune package name, if different from Gentoo package name.
