@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multilib.eclass
@@ -299,8 +299,13 @@ get_modname() {
 	echo ".${modname}"
 }
 
+# @FUNCTION: multilib_env
+# @USAGE:
+# @DESCRIPTION:
 # This is for the toolchain to setup profile variables when pulling in
 # a crosscompiler (and thus they aren't set in the profile).
+#
+# This must only be used by toolchain packages.
 multilib_env() {
 	local CTARGET=${1:-${CTARGET}}
 	local cpu=${CTARGET%%*-}
