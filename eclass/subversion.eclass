@@ -12,11 +12,9 @@
 # The subversion eclass provides functions to fetch software sources
 # from subversion repositories.
 
-ESVN="${ECLASS}"
-
 case ${EAPI} in
 	6|7|8) inherit estack ;;
-	*) die "${ESVN}: EAPI ${EAPI:-0} is not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} is not supported" ;;
 esac
 
 PROPERTIES+=" live"
@@ -176,7 +174,7 @@ subversion_fetch() {
 	local S_dest="${2}"
 
 	if [[ -z ${repo_uri} ]]; then
-		die "${ESVN}: ESVN_REPO_URI (or specified URI) is empty."
+		die "${ECLASS}: ESVN_REPO_URI (or specified URI) is empty."
 	fi
 
 	[[ -n "${ESVN_REVISION}" ]] && revision="${ESVN_REVISION}"
@@ -191,7 +189,7 @@ subversion_fetch() {
 		file)
 			;;
 		*)
-			die "${ESVN}: fetch from '${scheme}' is not yet implemented."
+			die "${ECLASS}: fetch from '${scheme}' is not yet implemented."
 			;;
 	esac
 
@@ -204,10 +202,10 @@ subversion_fetch() {
 
 	if [[ ! -d ${ESVN_STORE_DIR} ]]; then
 		debug-print "${FUNCNAME}: initial checkout. creating subversion directory"
-		mkdir -m 775 -p "${ESVN_STORE_DIR}" || die "${ESVN}: can't mkdir ${ESVN_STORE_DIR}."
+		mkdir -m 775 -p "${ESVN_STORE_DIR}" || die "${ECLASS}: can't mkdir ${ESVN_STORE_DIR}."
 	fi
 
-	pushd "${ESVN_STORE_DIR}" >/dev/null || die "${ESVN}: can't chdir to ${ESVN_STORE_DIR}"
+	pushd "${ESVN_STORE_DIR}" >/dev/null || die "${ECLASS}: can't chdir to ${ESVN_STORE_DIR}"
 
 	local wc_path="$(subversion__get_wc_path "${repo_uri}")"
 	local options="${ESVN_OPTIONS} --config-dir ${ESVN_STORE_DIR}/.subversion"
@@ -237,32 +235,32 @@ subversion_fetch() {
 
 		debug-print "${FUNCNAME}: ${ESVN_FETCH_CMD} ${options} ${repo_uri}"
 
-		mkdir -m 775 -p "${ESVN_PROJECT}" || die "${ESVN}: can't mkdir ${ESVN_PROJECT}."
-		cd "${ESVN_PROJECT}" || die "${ESVN}: can't chdir to ${ESVN_PROJECT}"
+		mkdir -m 775 -p "${ESVN_PROJECT}" || die "${ECLASS}: can't mkdir ${ESVN_PROJECT}."
+		cd "${ESVN_PROJECT}" || die "${ECLASS}: can't chdir to ${ESVN_PROJECT}"
 		if [[ -n "${ESVN_USER}" ]]; then
-			${ESVN_FETCH_CMD} ${options} --username "${ESVN_USER}" --password "${ESVN_PASSWORD}" "${repo_uri}" || die "${ESVN}: can't fetch to ${wc_path} from ${repo_uri}."
+			${ESVN_FETCH_CMD} ${options} --username "${ESVN_USER}" --password "${ESVN_PASSWORD}" "${repo_uri}" || die "${ECLASS}: can't fetch to ${wc_path} from ${repo_uri}."
 		else
-			${ESVN_FETCH_CMD} ${options} "${repo_uri}" || die "${ESVN}: can't fetch to ${wc_path} from ${repo_uri}."
+			${ESVN_FETCH_CMD} ${options} "${repo_uri}" || die "${ECLASS}: can't fetch to ${wc_path} from ${repo_uri}."
 		fi
 
 	elif [[ -n ${ESVN_OFFLINE} ]]; then
 		svn upgrade "${wc_path}" &>/dev/null
 		svn cleanup "${wc_path}" &>/dev/null
-		subversion_wc_info "${repo_uri}" || die "${ESVN}: unknown problem occurred while accessing working copy."
+		subversion_wc_info "${repo_uri}" || die "${ECLASS}: unknown problem occurred while accessing working copy."
 
 		if [[ -n ${ESVN_REVISION} && ${ESVN_REVISION} != ${ESVN_WC_REVISION} ]]; then
-			die "${ESVN}: You requested off-line updating and revision ${ESVN_REVISION} but only revision ${ESVN_WC_REVISION} is available locally."
+			die "${ECLASS}: You requested off-line updating and revision ${ESVN_REVISION} but only revision ${ESVN_WC_REVISION} is available locally."
 		fi
 		einfo "Fetching disabled: Using existing repository copy at revision ${ESVN_WC_REVISION}."
 	else
 		svn upgrade "${wc_path}" &>/dev/null
 		svn cleanup "${wc_path}" &>/dev/null
-		subversion_wc_info "${repo_uri}" || die "${ESVN}: unknown problem occurred while accessing working copy."
+		subversion_wc_info "${repo_uri}" || die "${ECLASS}: unknown problem occurred while accessing working copy."
 
 		local esvn_up_freq=
 		if [[ -n ${ESVN_UP_FREQ} ]]; then
 			if [[ -n ${ESVN_UP_FREQ//[[:digit:]]} ]]; then
-				die "${ESVN}: ESVN_UP_FREQ must be an integer value corresponding to the minimum number of hours between svn up."
+				die "${ECLASS}: ESVN_UP_FREQ must be an integer value corresponding to the minimum number of hours between svn up."
 			elif [[ -z $(find "${wc_path}/.svn/entries" -mmin "+$((ESVN_UP_FREQ*60))") ]]; then
 				einfo "Fetching disabled since ${ESVN_UP_FREQ} hours has not passed since last update."
 				einfo "Using existing repository copy at revision ${ESVN_WC_REVISION}."
@@ -282,12 +280,12 @@ subversion_fetch() {
 
 				debug-print "${FUNCNAME}: ${ESVN_FETCH_CMD} ${options} ${repo_uri}"
 
-				mkdir -m 775 -p "${ESVN_PROJECT}" || die "${ESVN}: can't mkdir ${ESVN_PROJECT}."
-				cd "${ESVN_PROJECT}" || die "${ESVN}: can't chdir to ${ESVN_PROJECT}"
+				mkdir -m 775 -p "${ESVN_PROJECT}" || die "${ECLASS}: can't mkdir ${ESVN_PROJECT}."
+				cd "${ESVN_PROJECT}" || die "${ECLASS}: can't chdir to ${ESVN_PROJECT}"
 				if [[ -n "${ESVN_USER}" ]]; then
-					${ESVN_FETCH_CMD} ${options} --username "${ESVN_USER}" --password "${ESVN_PASSWORD}" "${repo_uri}" || die "${ESVN}: can't fetch to ${wc_path} from ${repo_uri}."
+					${ESVN_FETCH_CMD} ${options} --username "${ESVN_USER}" --password "${ESVN_PASSWORD}" "${repo_uri}" || die "${ECLASS}: can't fetch to ${wc_path} from ${repo_uri}."
 				else
-					${ESVN_FETCH_CMD} ${options} "${repo_uri}" || die "${ESVN}: can't fetch to ${wc_path} from ${repo_uri}."
+					${ESVN_FETCH_CMD} ${options} "${repo_uri}" || die "${ECLASS}: can't fetch to ${wc_path} from ${repo_uri}."
 				fi
 			elif [[ ${ESVN_WC_URL} != $(subversion__get_repository_uri "${repo_uri}") ]]; then
 				einfo "subversion switch start -->"
@@ -296,11 +294,11 @@ subversion_fetch() {
 
 				debug-print "${FUNCNAME}: ${ESVN_SWITCH_CMD} ${options} ${repo_uri}"
 
-				cd "${wc_path}" || die "${ESVN}: can't chdir to ${wc_path}"
+				cd "${wc_path}" || die "${ECLASS}: can't chdir to ${wc_path}"
 				if [[ -n "${ESVN_USER}" ]]; then
-					${ESVN_SWITCH_CMD} ${options} --username "${ESVN_USER}" --password "${ESVN_PASSWORD}" ${repo_uri} || die "${ESVN}: can't update ${wc_path} from ${repo_uri}."
+					${ESVN_SWITCH_CMD} ${options} --username "${ESVN_USER}" --password "${ESVN_PASSWORD}" ${repo_uri} || die "${ECLASS}: can't update ${wc_path} from ${repo_uri}."
 				else
-					${ESVN_SWITCH_CMD} ${options} ${repo_uri} || die "${ESVN}: can't update ${wc_path} from ${repo_uri}."
+					${ESVN_SWITCH_CMD} ${options} ${repo_uri} || die "${ECLASS}: can't update ${wc_path} from ${repo_uri}."
 				fi
 			else
 				# update working copy
@@ -309,16 +307,16 @@ subversion_fetch() {
 
 				debug-print "${FUNCNAME}: ${ESVN_UPDATE_CMD} ${options}"
 
-				cd "${wc_path}" || die "${ESVN}: can't chdir to ${wc_path}"
+				cd "${wc_path}" || die "${ECLASS}: can't chdir to ${wc_path}"
 				if [[ -n "${ESVN_USER}" ]]; then
-					${ESVN_UPDATE_CMD} ${options} --username "${ESVN_USER}" --password "${ESVN_PASSWORD}" || die "${ESVN}: can't update ${wc_path} from ${repo_uri}."
+					${ESVN_UPDATE_CMD} ${options} --username "${ESVN_USER}" --password "${ESVN_PASSWORD}" || die "${ECLASS}: can't update ${wc_path} from ${repo_uri}."
 				else
-					${ESVN_UPDATE_CMD} ${options} || die "${ESVN}: can't update ${wc_path} from ${repo_uri}."
+					${ESVN_UPDATE_CMD} ${options} || die "${ECLASS}: can't update ${wc_path} from ${repo_uri}."
 				fi
 			fi
 
 			# export updated information for the working copy
-			subversion_wc_info "${repo_uri}" || die "${ESVN}: unknown problem occurred while accessing working copy."
+			subversion_wc_info "${repo_uri}" || die "${ECLASS}: unknown problem occurred while accessing working copy."
 		fi
 	fi
 
@@ -329,15 +327,15 @@ subversion_fetch() {
 	einfo "   working copy: ${wc_path}"
 
 	if ! has "export" ${ESVN_RESTRICT}; then
-		cd "${wc_path}" || die "${ESVN}: can't chdir to ${wc_path}"
+		cd "${wc_path}" || die "${ECLASS}: can't chdir to ${wc_path}"
 
 		local S="${S}/${S_dest}"
 		mkdir -p "${S}"
 
 		# export to the ${WORKDIR}
 		#*  "svn export" has a bug.  see https://bugs.gentoo.org/119236
-		#* svn export . "${S}" || die "${ESVN}: can't export to ${S}."
-		rsync -rlpgo --exclude=".svn/" . "${S}" || die "${ESVN}: can't export to ${S}."
+		#* svn export . "${S}" || die "${ECLASS}: can't export to ${S}."
+		rsync -rlpgo --exclude=".svn/" . "${S}" || die "${ECLASS}: can't export to ${S}."
 	fi
 
 	popd >/dev/null
@@ -374,7 +372,7 @@ subversion_wc_info() {
 # @DESCRIPTION:
 # Default src_unpack. Fetch.
 subversion_src_unpack() {
-	subversion_fetch || die "${ESVN}: unknown problem occurred in subversion_fetch."
+	subversion_fetch || die "${ECLASS}: unknown problem occurred in subversion_fetch."
 }
 
 # @FUNCTION: subversion_pkg_preinst
@@ -423,7 +421,7 @@ subversion__get_repository_uri() {
 
 	debug-print "${FUNCNAME}: repo_uri = ${repo_uri}"
 	if [[ -z ${repo_uri} ]]; then
-		die "${ESVN}: ESVN_REPO_URI (or specified URI) is empty."
+		die "${ECLASS}: ESVN_REPO_URI (or specified URI) is empty."
 	fi
 	# delete trailing slash
 	if [[ -z ${repo_uri##*/} ]]; then
