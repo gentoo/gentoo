@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,6 +33,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/ament_cmake_core
 	dev-ros/ament_cmake_libraries
+	dev-ros/ament_cmake_gen_version_h
 "
 DEPEND="${RDEPEND}"
 # Deps here are transitive from ament_cmake_core to have matching python support

@@ -33,6 +33,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/ament_cmake_core
 	dev-ros/ament_cmake_libraries
+	dev-ros/ament_cmake_gen_version_h
 "
 DEPEND="${RDEPEND}"
 # Deps here are transitive from ament_cmake_core to have matching python support
