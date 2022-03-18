@@ -63,7 +63,7 @@ COMMON_SNAPSHOT_DEPEND="
 		>=media-libs/alsa-lib-1.0.19:=
 		pulseaudio? ( media-sound/pulseaudio:= )
 		kerberos? ( virtual/krb5 )
-		vaapi? ( >=x11-libs/libva-2.7:=[X,drm] )
+		vaapi? ( >=x11-libs/libva-2.7:=[X] )
 		x11-libs/libX11:=
 		x11-libs/libXext:=
 		x11-libs/libxcb:=
