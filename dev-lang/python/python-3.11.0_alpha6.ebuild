@@ -226,6 +226,11 @@ src_compile() {
 	export SETUPTOOLS_USE_DISTUTILS=stdlib
 	export PYTHONSTRICTEXTENSIONBUILD=1
 
+	# Save PYTHONDONTWRITEBYTECODE so that 'has_version' doesn't
+	# end up writing bytecode & violating sandbox.
+	# bug #831897
+	local -x _PYTHONDONTWRITEBYTECODE=${PYTHONDONTWRITEBYTECODE}
+
 	if use pgo ; then
 		# bug 660358
 		local -x COLUMNS=80
@@ -237,6 +242,9 @@ src_compile() {
 	# also need to clear the flags explicitly here or they end up
 	# in _sysconfigdata*
 	emake CPPFLAGS= CFLAGS= LDFLAGS=
+
+	# Restore saved value from above.
+	local -x PYTHONDONTWRITEBYTECODE=${_PYTHONDONTWRITEBYTECODE}
 
 	# Work around bug 329499. See also bug 413751 and 457194.
 	if has_version dev-libs/libffi[pax-kernel]; then
