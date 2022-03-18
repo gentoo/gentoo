@@ -111,6 +111,9 @@ src_prepare() {
 	eapply "${WORKDIR}/inkscape-1.1-musl/"*.patch
 	eapply "${FILESDIR}"/${P}-poppler-21.11.0.patch
 
+	# Not yet accepted upstream but rather trivial
+	eapply "${FILESDIR}/${PN}-1.1.2-poppler-22.03.0.patch"  # bug 835424
+
 	cmake_src_prepare
 	sed -i "/install.*COPYING/d" CMakeScripts/ConfigCPack.cmake || die
 }
