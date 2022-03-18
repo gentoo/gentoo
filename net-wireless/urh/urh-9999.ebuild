@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Universal Radio Hacker: investigate wireless protocols like a boss"
@@ -41,7 +41,7 @@ RDEPEND="${DEPEND}
 		net-wireless/gr-osmosdr"
 
 python_configure_all() {
-	mydistutilsargs=(
+	DISTUTILS_ARGS=(
 			$(use_with airspy)
 			$(use_with bladerf)
 			$(use_with hackrf)
