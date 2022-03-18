@@ -47,7 +47,7 @@ case ${EAPI:-0} in
 		;;
 esac
 
-# @ECLASS-VARIABLE: SWORD_MINIMUM_VERSION
+# @ECLASS_VARIABLE: SWORD_MINIMUM_VERSION
 # @DEFAULT_UNSET
 # @PRE_INHERIT
 # @DESCRIPTION:
@@ -56,7 +56,7 @@ esac
 # the dependency will be unversioned.
 # Needs to be set before the inherit line.
 
-# @ECLASS-VARIABLE: SWORD_MODULE
+# @ECLASS_VARIABLE: SWORD_MODULE
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Case-sensitive name of the SWORD-Project module to install. If unset

@@ -51,7 +51,7 @@ if [[ ! ${_VERIFY_SIG_ECLASS} ]]; then
 
 IUSE="verify-sig"
 
-# @ECLASS-VARIABLE: VERIFY_SIG_METHOD
+# @ECLASS_VARIABLE: VERIFY_SIG_METHOD
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Signature verification method to use.  The allowed value are:
@@ -76,7 +76,7 @@ case ${VERIFY_SIG_METHOD} in
 		;;
 esac
 
-# @ECLASS-VARIABLE: VERIFY_SIG_OPENPGP_KEY_PATH
+# @ECLASS_VARIABLE: VERIFY_SIG_OPENPGP_KEY_PATH
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Path to key bundle used to perform the verification.  This is required
@@ -86,7 +86,7 @@ esac
 # NB: this variable is also used for non-OpenPGP signatures.  The name
 # contains "OPENPGP" for historical reasons.
 
-# @ECLASS-VARIABLE: VERIFY_SIG_OPENPGP_KEYSERVER
+# @ECLASS_VARIABLE: VERIFY_SIG_OPENPGP_KEYSERVER
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Keyserver used to refresh keys.  If not specified, the keyserver
@@ -95,7 +95,7 @@ esac
 #
 # Supported for OpenPGP only.
 
-# @ECLASS-VARIABLE: VERIFY_SIG_OPENPGP_KEY_REFRESH
+# @ECLASS_VARIABLE: VERIFY_SIG_OPENPGP_KEY_REFRESH
 # @USER_VARIABLE
 # @DESCRIPTION:
 # Attempt to refresh keys via WKD/keyserver.  Set it to "yes"

@@ -18,20 +18,20 @@ case "${EAPI:-0}" in
 	*) die "EAPI='${EAPI}' is not supported" ;;
 esac
 
-# @ECLASS-VARIABLE: ROS_REPO_URI
+# @ECLASS_VARIABLE: ROS_REPO_URI
 # @DESCRIPTION:
 # URL of the upstream repository. Usually on github.
 # Serves for fetching tarballs, live ebuilds and inferring the meta-package name.
 EGIT_REPO_URI="${ROS_REPO_URI}"
 
-# @ECLASS-VARIABLE: ROS_SUBDIR
+# @ECLASS_VARIABLE: ROS_SUBDIR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Subdir in which current packages is located.
 # Usually, a repository contains several packages, hence a typical value is:
 # ROS_SUBDIR=${PN}
 
-# @ECLASS-VARIABLE: CATKIN_IN_SOURCE_BUILD
+# @ECLASS_VARIABLE: CATKIN_IN_SOURCE_BUILD
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set to enable in-source build.
@@ -58,13 +58,13 @@ DEPEND="${RDEPEND}
 	$(python_gen_cond_dep "dev-python/empy[\${PYTHON_USEDEP}]")
 "
 
-# @ECLASS-VARIABLE: CATKIN_HAS_MESSAGES
+# @ECLASS_VARIABLE: CATKIN_HAS_MESSAGES
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Set it to a non-empty value before inherit to tell the eclass the package has messages to build.
 # Messages will be built based on ROS_MESSAGES USE_EXPANDed variable.
 
-# @ECLASS-VARIABLE: CATKIN_MESSAGES_TRANSITIVE_DEPS
+# @ECLASS_VARIABLE: CATKIN_MESSAGES_TRANSITIVE_DEPS
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Some messages have dependencies on other messages.
@@ -93,27 +93,27 @@ if [ -n "${CATKIN_HAS_MESSAGES}" ] ; then
 	fi
 fi
 
-# @ECLASS-VARIABLE: CATKIN_MESSAGES_CXX_USEDEP
+# @ECLASS_VARIABLE: CATKIN_MESSAGES_CXX_USEDEP
 # @DESCRIPTION:
 # Use it as cat/pkg[${CATKIN_MESSAGES_CXX_USEDEP}] to indicate a dependency on the C++ messages of cat/pkg.
 CATKIN_MESSAGES_CXX_USEDEP="ros_messages_cxx(-)"
 
-# @ECLASS-VARIABLE: CATKIN_MESSAGES_PYTHON_USEDEP
+# @ECLASS_VARIABLE: CATKIN_MESSAGES_PYTHON_USEDEP
 # @DESCRIPTION:
 # Use it as cat/pkg[${CATKIN_MESSAGES_PYTHON_USEDEP}] to indicate a dependency on the Python messages of cat/pkg.
 CATKIN_MESSAGES_PYTHON_USEDEP="ros_messages_python(-),${PYTHON_SINGLE_USEDEP}"
 
-# @ECLASS-VARIABLE: CATKIN_MESSAGES_LISP_USEDEP
+# @ECLASS_VARIABLE: CATKIN_MESSAGES_LISP_USEDEP
 # @DESCRIPTION:
 # Use it as cat/pkg[${CATKIN_MESSAGES_LISP_USEDEP}] to indicate a dependency on the Common-Lisp messages of cat/pkg.
 CATKIN_MESSAGES_LISP_USEDEP="ros_messages_lisp(-)"
 
-# @ECLASS-VARIABLE: CATKIN_MESSAGES_EUS_USEDEP
+# @ECLASS_VARIABLE: CATKIN_MESSAGES_EUS_USEDEP
 # @DESCRIPTION:
 # Use it as cat/pkg[${CATKIN_MESSAGES_EUS_USEDEP}] to indicate a dependency on the EusLisp messages of cat/pkg.
 CATKIN_MESSAGES_EUS_USEDEP="ros_messages_eus(-)"
 
-# @ECLASS-VARIABLE: CATKIN_MESSAGES_NODEJS_USEDEP
+# @ECLASS_VARIABLE: CATKIN_MESSAGES_NODEJS_USEDEP
 # @DESCRIPTION:
 # Use it as cat/pkg[${CATKIN_MESSAGES_NODEJS_USEDEP}] to indicate a dependency on the nodejs messages of cat/pkg.
 CATKIN_MESSAGES_NODEJS_USEDEP="ros_messages_nodejs(-)"

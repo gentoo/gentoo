@@ -22,13 +22,13 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-# @ECLASS-VARIABLE: DESKTOP_DATABASE_DIR
+# @ECLASS_VARIABLE: DESKTOP_DATABASE_DIR
 # @INTERNAL
 # @DESCRIPTION:
 # Directory where .desktop files database is stored
 : ${DESKTOP_DATABASE_DIR="/usr/share/applications"}
 
-# @ECLASS-VARIABLE: MIMEINFO_DATABASE_DIR
+# @ECLASS_VARIABLE: MIMEINFO_DATABASE_DIR
 # @INTERNAL
 # @DESCRIPTION:
 # Directory where .desktop files database is stored

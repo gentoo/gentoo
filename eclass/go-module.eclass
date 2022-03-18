@@ -104,7 +104,7 @@ QA_FLAGS_IGNORED='.*'
 # Go packages should not be stripped with strip(1).
 RESTRICT+=" strip"
 
-# @ECLASS-VARIABLE: EGO_SUM
+# @ECLASS_VARIABLE: EGO_SUM
 # @DEPRECATED
 # @DESCRIPTION:
 # This is replaced by a dependency tarball, see above for how to create
@@ -152,7 +152,7 @@ RESTRICT+=" strip"
 # This decision  does NOT weaken Go module security, as Go will verify the
 # go.sum copy of the Hash1 values during building of the package.
 
-# @ECLASS-VARIABLE: _GOMODULE_GOPROXY_BASEURI
+# @ECLASS_VARIABLE: _GOMODULE_GOPROXY_BASEURI
 # @DEPRECATED
 # @DESCRIPTION:
 # Golang module proxy service to fetch module files from. Note that the module
@@ -175,7 +175,7 @@ RESTRICT+=" strip"
 # below, so please do not rely on it.
 : "${_GOMODULE_GOPROXY_BASEURI:=mirror://goproxy/}"
 
-# @ECLASS-VARIABLE: _GOMODULE_GOSUM_REVERSE_MAP
+# @ECLASS_VARIABLE: _GOMODULE_GOSUM_REVERSE_MAP
 # @DEPRECATED
 # @DESCRIPTION:
 # Mapping back from Gentoo distfile name to upstream distfile path.
@@ -183,7 +183,7 @@ RESTRICT+=" strip"
 # directory structure.
 declare -A -g _GOMODULE_GOSUM_REVERSE_MAP
 
-# @ECLASS-VARIABLE: GO_OPTIONAL
+# @ECLASS_VARIABLE: GO_OPTIONAL
 # @DEFAULT_UNSET
 # @PRE_INHERIT
 # @DESCRIPTION:

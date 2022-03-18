@@ -28,7 +28,7 @@ _CMAKE_ECLASS=1
 
 inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 
-# @ECLASS-VARIABLE: BUILD_DIR
+# @ECLASS_VARIABLE: BUILD_DIR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Build directory where all cmake processed files should be generated.
@@ -38,13 +38,13 @@ inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 [[ ${EAPI} == 7 ]] && : ${BUILD_DIR:=${WORKDIR}/${P}_build}
 # EAPI-8: set inside _cmake_check_build_dir
 
-# @ECLASS-VARIABLE: CMAKE_BINARY
+# @ECLASS_VARIABLE: CMAKE_BINARY
 # @DESCRIPTION:
 # Eclass can use different cmake binary than the one provided in by system.
 : ${CMAKE_BINARY:=cmake}
 
 [[ ${EAPI} == 7 ]] && : ${CMAKE_BUILD_TYPE:=Gentoo}
-# @ECLASS-VARIABLE: CMAKE_BUILD_TYPE
+# @ECLASS_VARIABLE: CMAKE_BUILD_TYPE
 # @DESCRIPTION:
 # Set to override default CMAKE_BUILD_TYPE. Only useful for packages
 # known to make use of "if (CMAKE_BUILD_TYPE MATCHES xxx)".
@@ -57,12 +57,12 @@ inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 # In EAPI 7, the default was non-standard build type of Gentoo.
 : ${CMAKE_BUILD_TYPE:=RelWithDebInfo}
 
-# @ECLASS-VARIABLE: CMAKE_IN_SOURCE_BUILD
+# @ECLASS_VARIABLE: CMAKE_IN_SOURCE_BUILD
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set to enable in-source build.
 
-# @ECLASS-VARIABLE: CMAKE_MAKEFILE_GENERATOR
+# @ECLASS_VARIABLE: CMAKE_MAKEFILE_GENERATOR
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -71,7 +71,7 @@ inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 # The default is set to "ninja".
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 
-# @ECLASS-VARIABLE: CMAKE_REMOVE_MODULES_LIST
+# @ECLASS_VARIABLE: CMAKE_REMOVE_MODULES_LIST
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -90,25 +90,25 @@ else
 	fi
 fi
 
-# @ECLASS-VARIABLE: CMAKE_USE_DIR
+# @ECLASS_VARIABLE: CMAKE_USE_DIR
 # @DESCRIPTION:
 # Sets the directory where we are working with cmake, for example when
 # application uses autotools and only one plugin needs to be done by cmake.
 # By default it uses current working directory (in EAPI-7: ${S}).
 
-# @ECLASS-VARIABLE: CMAKE_VERBOSE
+# @ECLASS_VARIABLE: CMAKE_VERBOSE
 # @DESCRIPTION:
 # Set to OFF to disable verbose messages during compilation
 : ${CMAKE_VERBOSE:=ON}
 
-# @ECLASS-VARIABLE: CMAKE_WARN_UNUSED_CLI
+# @ECLASS_VARIABLE: CMAKE_WARN_UNUSED_CLI
 # @DESCRIPTION:
 # Warn about variables that are declared on the command line
 # but not used. Might give false-positives.
 # "no" to disable (default) or anything else to enable.
 : ${CMAKE_WARN_UNUSED_CLI:=yes}
 
-# @ECLASS-VARIABLE: CMAKE_EXTRA_CACHE_FILE
+# @ECLASS_VARIABLE: CMAKE_EXTRA_CACHE_FILE
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -116,7 +116,7 @@ fi
 # for econf and is needed to pass TRY_RUN results when cross-compiling.
 # Should be set by user in a per-package basis in /etc/portage/package.env.
 
-# @ECLASS-VARIABLE: CMAKE_QA_SRC_DIR_READONLY
+# @ECLASS_VARIABLE: CMAKE_QA_SRC_DIR_READONLY
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:

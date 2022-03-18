@@ -14,7 +14,7 @@
 # the new Aspell dictionaries (from gnu.org) which support aspell-0.60.
 # Support for aspell-0.60 has been added by Sergey Ulanov.
 
-# @ECLASS-VARIABLE: ASPELL_LANG
+# @ECLASS_VARIABLE: ASPELL_LANG
 # @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
@@ -22,13 +22,13 @@
 # This is the name of the language, for instance "Hungarian".
 # Needs to be defined before inheriting the eclass.
 
-# @ECLASS-VARIABLE: ASPELL_SPELLANG
+# @ECLASS_VARIABLE: ASPELL_SPELLANG
 # @DESCRIPTION:
 # Short (readonly) form of the language code, generated from ${PN}
 # For instance, 'aspell-hu' yields the value 'hu'.
 readonly ASPELL_SPELLANG=${PN/aspell-/}
 
-# @ECLASS-VARIABLE: ASPELL_VERSION
+# @ECLASS_VARIABLE: ASPELL_VERSION
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
