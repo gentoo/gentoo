@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -46,7 +46,6 @@ RDEPEND="!savedconfig? (
 			!sys-firmware/iwl1000-ucode
 			!sys-firmware/iwl6005-ucode
 			!sys-firmware/iwl6030-ucode
-			!sys-firmware/iwl6050-ucode
 			!sys-firmware/iwl3160-ucode
 			!sys-firmware/iwl7260-ucode
 			!sys-firmware/iwl3160-7260-bt-ucode
