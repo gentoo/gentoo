@@ -60,6 +60,7 @@ net-libs/libosmocore
 net-libs/libmirisdr
 media-sound/deinvert
 net-wireless/gr-m2k
+net-wireless/libm2k
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-03-16)
 # Python packages with no revdeps, tests are not
