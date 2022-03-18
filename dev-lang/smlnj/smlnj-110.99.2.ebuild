@@ -90,6 +90,7 @@ src_prepare() {
 		-e "/^CFLAGS/{s|-O[0123s]|| ; s|=|= ${CFLAGS}|}" \
 		-i base/runtime/objs/mk.* || die
 
+	sed -i "/^AR/s|ar|$(tc-getAR)|" base/runtime/objs/makefile || die
 	sed -i "s|nm |$(tc-getNM) |g" config/chk-global-names.sh || die
 }
 
