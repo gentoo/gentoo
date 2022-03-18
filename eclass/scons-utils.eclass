@@ -124,7 +124,7 @@ if [[ ${_PYTHON_ANY_R1} ]]; then
 	BDEPEND="$(python_gen_any_dep "${SCONS_DEPEND}[\${PYTHON_USEDEP}]")"
 
 	scons-utils_python_check_deps() {
-		has_version "${SCONS_DEPEND}[${PYTHON_USEDEP}]"
+		python_has_version "${SCONS_DEPEND}[${PYTHON_USEDEP}]"
 	}
 	python_check_deps() { scons-utils_python_check_deps; }
 elif [[ ${_PYTHON_SINGLE_R1} ]]; then
