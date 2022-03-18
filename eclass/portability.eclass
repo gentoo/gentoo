@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: portability.eclass
@@ -152,8 +152,5 @@ get_mounts() {
 		echo "${point// /\040} ${node// /\040} ${fs%% *} ${opts// /\040}"
 	done
 }
-
-_dead_portability_user_funcs() { die "if you really need this, please file a bug for base-system@gentoo.org"; }
-is-login-disabled() { _dead_portability_user_funcs; }
 
 fi
