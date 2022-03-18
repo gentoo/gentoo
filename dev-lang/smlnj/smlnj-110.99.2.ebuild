@@ -89,8 +89,13 @@ src_prepare() {
 		-e "/^CPP/s|gcc|$(tc-getCC)|" \
 		-e "/^CFLAGS/{s|-O[0123s]|| ; s|=|= ${CFLAGS}|}" \
 		-i base/runtime/objs/mk.* || die
+	sed -e "/^AS/s|as|$(tc-getAS)|" \
+		-e "/^AR/s|ar|$(tc-getAR)|" \
+		-e "/^CC/s|cc|$(tc-getCC)|" \
+		-e "/^CPP/s|/lib/cpp|$(tc-getCPP)|" \
+		-e "/^RANLIB/s|ranlib|$(tc-getRANLIB)|" \
+		-i base/runtime/objs/makefile || die
 
-	sed -i "/^AR/s|ar|$(tc-getAR)|" base/runtime/objs/makefile || die
 	sed -i "s|nm |$(tc-getNM) |g" config/chk-global-names.sh || die
 }
 
