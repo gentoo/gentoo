@@ -51,17 +51,14 @@ BOOTSTRAP_USE="${BOOTSTRAP_USE} python_single_target_python3_9"
 # sys-devel/llvm
 BOOTSTRAP_USE="${BOOTSTRAP_USE} -gold"
 
-# sys-devel/clang, sys-devel/clang-runtime, sys-libs/llvm-libunwind, sys-libs/libcxx, sys-libs/libcxxabi
+# sys-devel/clang, sys-devel/clang-runtime, sys-libs/llvm-libunwind
 BOOTSTRAP_USE="${BOOTSTRAP_USE} compiler-rt clang libunwind"
 
 # sys-devel/clang
-BOOTSTRAP_USE="${BOOTSTRAP_USE} default-compiler-rt default-lld default-libcxx llvm-libunwind"
+BOOTSTRAP_USE="${BOOTSTRAP_USE} default-compiler-rt default-lld llvm-libunwind"
 
 # sys-devel/clang-runtime
-BOOTSTRAP_USE="${BOOTSTRAP_USE} libcxx -sanitize"
-
-# sys-libs/libcxxabi
-BOOTSTRAP_USE="${BOOTSTRAP_USE} libcxxabi"
+BOOTSTRAP_USE="${BOOTSTRAP_USE} -sanitize"
 
 # llvm & clang: explicitly disable all extra targets, otherwise linking stage2 fails
 BOOTSTRAP_USE="${BOOTSTRAP_USE} -llvm_targets_BPF -llvm_targets_AMDGPU -llvm_targets_NVPTX -llvm_targets_BPF"

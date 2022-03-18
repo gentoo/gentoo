@@ -6,6 +6,13 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2022-03-18)
+# (on behalf of Jannik Glückert <jannik.glueckert@gmail.com>)
+# libstdc++ and libc++ have different public ABI that can cause fatal
+# incompatibilities unless all C++ packages are built with the same
+# stdlib.  Mask the flag by default to prevent accidental damage.
+sys-devel/clang default-libcxx
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-03-07)
 # Requires PMASKED dev-libs/device-atlas-api-c, bug #770499
 net-proxy/haproxy device-atlas

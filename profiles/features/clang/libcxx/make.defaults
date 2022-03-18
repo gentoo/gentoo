@@ -1,0 +1,8 @@
+# sys-devel/clang
+BOOTSTRAP_USE="${BOOTSTRAP_USE} default-libcxx"
+
+# sys-devel/clang-runtime
+BOOTSTRAP_USE="${BOOTSTRAP_USE} libcxx -sanitize"
+
+# sys-libs/libcxxabi
+BOOTSTRAP_USE="${BOOTSTRAP_USE} libcxxabi"
