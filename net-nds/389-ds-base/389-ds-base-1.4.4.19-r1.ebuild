@@ -176,7 +176,7 @@ BDEPEND=">=sys-devel/autoconf-2.69-r5
 
 # perl dependencies are for logconv.pl
 RDEPEND="${DEPEND}
-	!net-nds/389-ds-base:0
+	!net-nds/389-ds-base:2.1
 	acct-user/dirsrv
 	acct-group/dirsrv
 	${PYTHON_DEPS}
