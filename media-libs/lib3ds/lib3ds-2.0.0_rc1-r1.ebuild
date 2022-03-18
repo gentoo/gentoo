@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 MY_PV="20080909"
 MY_P="${PN}-${MY_PV}"
 
@@ -18,9 +20,12 @@ BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-underlinking-no-autoreconf.patch
-)
+src_prepare() {
+	default
+
+	# Always eautoreconf to renew libtool (e.g. Clang)
+	eautoreconf
+}
 
 src_configure() {
 	econf $(use_enable static-libs static)

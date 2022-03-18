@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="library for managing 3D-Studio Release 3 and 4 .3DS files"
 HOMEPAGE="https://code.google.com/p/lib3ds/"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.zip"
@@ -17,6 +19,13 @@ PATCHES=(
 	"${FILESDIR}"/${P}-pkgconfig.patch
 	"${FILESDIR}"/${P}-mesh.c.patch
 )
+
+src_prepare() {
+	default
+
+	# Always eautoreconf to renew libtool (e.g. Clang)
+	eautoreconf
+}
 
 src_configure() {
 	econf $(use_enable static-libs static)
