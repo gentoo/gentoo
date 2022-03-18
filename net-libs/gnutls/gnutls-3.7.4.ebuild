@@ -10,7 +10,7 @@ EAPI=7
 # https://gitlab.com/gnutls/web-pages/-/issues/3
 #VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gnutls.asc
 
-inherit autotools libtool multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="A secure communications library implementing the SSL, TLS and DTLS protocols"
 HOMEPAGE="https://www.gnutls.org/"
