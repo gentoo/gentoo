@@ -31,6 +31,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	>=gnome-base/nautilus-3.1.90
+	media-plugins/gst-plugins-gtk:1.0[wayland?,X?]
 	office? ( app-office/libreoffice )
 "
 BDEPEND="
