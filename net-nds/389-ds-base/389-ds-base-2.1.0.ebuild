@@ -148,7 +148,7 @@ DEPEND="
 	dev-libs/libpcre:3
 	dev-libs/openssl:0=
 	>=net-analyzer/net-snmp-5.1.2:=
-	>=net-nds/openldap-2.5.0[sasl]
+	>=net-nds/openldap[sasl]
 	|| (
 		$(for slot in ${BERKDB_SLOTS[@]} ; do printf '%s\n' "sys-libs/db:${slot}" ; done)
 	)
