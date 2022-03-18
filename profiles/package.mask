@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-03-18)
+# The new version breaks building docs w/o Internet access (because it
+# tries to fetch and install all dependencies locally).
+~dev-python/jaraco-packaging-9.0.0
+
 # Jakov Smolić <jsmolic@gentoo.org> (2022-03-16)
 # Unmaintaned, broken packages, no revdeps.
 # Bugs 822234, 809539, 809536, 832618, 731720, 713684,
