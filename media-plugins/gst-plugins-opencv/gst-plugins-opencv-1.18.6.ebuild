@@ -19,7 +19,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}"
 
 PATCHES=(
-	"${FILESDIR}"/gst-plugins-bad-${PV}-use-system-libs-opencv.patch
+	"${FILESDIR}"/gst-plugins-bad-1.18.4-use-system-libs-opencv.patch
 )
 
 src_prepare() {
