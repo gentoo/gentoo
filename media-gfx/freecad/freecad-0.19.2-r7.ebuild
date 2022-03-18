@@ -273,8 +273,6 @@ src_install() {
 	python_optimize "${ED}"/usr/share/${PN}/data/Mod/Start/StartPage "${ED}"/usr/$(get_libdir)/${PN}{/Ext,/Mod}/
 	# compile main package in python site-packages as well
 	python_optimize
-
-	doenvd "${FILESDIR}/99${PN}"
 }
 
 pkg_postinst() {
