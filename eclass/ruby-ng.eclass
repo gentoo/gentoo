@@ -66,20 +66,19 @@
 # (e.g. selenium's firefox driver extension). When set this argument is
 # passed to "grep -E" to remove reporting of these shared objects.
 
-local inherits=""
 case ${EAPI} in
 	5)
-		inherits="eutils toolchain-funcs"
+		inherit eutils toolchain-funcs
 		;;
 	6)
-		inherits="estack toolchain-funcs"
+		inherit estack toolchain-funcs
 		;;
 	*)
-		inherits="estack"
+		inherit estack
 		;;
 esac
 
-inherit ${inherits} multilib ruby-utils
+inherit multilib ruby-utils
 
 EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_test src_install pkg_setup
 
