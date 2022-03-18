@@ -1,4 +1,4 @@
-# Copyright 2016-2021 Gentoo Authors
+# Copyright 2016-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: tmpfiles.eclass
@@ -52,8 +52,8 @@
 #
 # @CODE
 
-if [[ -z ${TMPFILES_ECLASS} ]]; then
-TMPFILES_ECLASS=1
+if [[ -z ${_TMPFILES_ECLASS} ]]; then
+_TMPFILES_ECLASS=1
 
 case "${EAPI}" in
 5|6|7|8) ;;
