@@ -399,11 +399,9 @@ subversion_pkg_preinst() {
 
 ## -- Private Functions
 
-## -- subversion__svn_info() ------------------------------------------------- #
-#
-# param $1 - a target.
-# param $2 - a key name.
-#
+# @FUNCTION: subversion__svn_info
+# @USAGE: <target> <key name>
+# @INTERNAL
 subversion__svn_info() {
 	local target="${1}"
 	local key="${2}"
@@ -413,9 +411,9 @@ subversion__svn_info() {
 		| cut -d" " -f2-
 }
 
-## -- subversion__get_repository_uri() --------------------------------------- #
-#
-# param $1 - a repository URI.
+# @FUNCTION: subversion__get_repository_uri
+# @USAGE: <repository URI>
+# @INTERNAL
 subversion__get_repository_uri() {
 	local repo_uri="${1}"
 
@@ -432,9 +430,9 @@ subversion__get_repository_uri() {
 	echo "${repo_uri}"
 }
 
-## -- subversion__get_wc_path() ---------------------------------------------- #
-#
-# param $1 - a repository URI.
+# @FUNCTION: subversion__get_wc_path
+# @USAGE: <repository URI>
+# @INTERNAL
 subversion__get_wc_path() {
 	local repo_uri="$(subversion__get_repository_uri "${1}")"
 
@@ -443,9 +441,9 @@ subversion__get_wc_path() {
 	echo "${ESVN_STORE_DIR}/${ESVN_PROJECT}/${repo_uri##*/}"
 }
 
-## -- subversion__get_peg_revision() ----------------------------------------- #
-#
-# param $1 - a repository URI.
+# @FUNCTION: subversion__get_peg_revision
+# @USAGE: <repository URI>
+# @INTERNAL
 subversion__get_peg_revision() {
 	local repo_uri="${1}"
 	local peg_rev=
