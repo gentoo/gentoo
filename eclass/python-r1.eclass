@@ -163,7 +163,7 @@ fi
 # Example use:
 # @CODE
 # python_check_deps() {
-# 	has_version "dev-python/bar[${PYTHON_SINGLE_USEDEP}]"
+# 	python_has_version "dev-python/bar[${PYTHON_SINGLE_USEDEP}]"
 # }
 # @CODE
 #
@@ -483,9 +483,9 @@ python_gen_impl_dep() {
 #		dev-python/baz[${PYTHON_USEDEP}] )' -2)"
 #
 # python_check_deps() {
-#	has_version "dev-python/foo[${PYTHON_SINGLE_USEDEP}]" \
-#		&& { has_version "dev-python/bar[${PYTHON_USEDEP}]" \
-#			|| has_version "dev-python/baz[${PYTHON_USEDEP}]"; }
+# 	python_has_version "dev-python/foo[${PYTHON_SINGLE_USEDEP}]" &&
+# 		{ python_has_version "dev-python/bar[${PYTHON_USEDEP}]" ||
+# 			python_has_version "dev-python/baz[${PYTHON_USEDEP}]"; }
 # }
 #
 # src_compile() {
@@ -683,7 +683,7 @@ python_foreach_impl() {
 #	$(python_gen_any_dep 'dev-python/epydoc[${PYTHON_USEDEP}]' 'python2*') )"
 #
 # python_check_deps() {
-#	has_version "dev-python/epydoc[${PYTHON_USEDEP}]"
+# 	use !doc || python_has_version "dev-python/epydoc[${PYTHON_USEDEP}]"
 # }
 #
 # src_compile() {
