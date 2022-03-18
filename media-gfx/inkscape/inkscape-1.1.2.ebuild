@@ -5,18 +5,24 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml"
-
+MY_P="${P/_/}"
 inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1
+
+if [[ ${PV} = 9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://gitlab.com/inkscape/inkscape.git"
+else
+	SRC_URI="https://media.inkscape.org/dl/resources/file/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+fi
 
 DESCRIPTION="SVG based generic vector-drawing program"
 HOMEPAGE="https://inkscape.org/"
-SRC_URI="https://media.inkscape.org/dl/resources/file/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg
-openmp postscript readline spell svg2 visio wpg"
+openmp postscript readline spell svg2 test visio wpg"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -91,16 +97,27 @@ RDEPEND="${COMMON_DEPEND}
 	dia? ( app-office/dia )
 	postscript? ( app-text/ghostscript-gpl )
 "
-DEPEND="${COMMON_DEPEND}"
+DEPEND="${COMMON_DEPEND}
+	test? ( dev-cpp/gtest )
+"
 
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
-S="${WORKDIR}/${P}_2022-02-04_0a00cf5339"
+S="${WORKDIR}/${MY_P}"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
 	fi
+}
+
+src_unpack() {
+	if [[ ${PV} = 9999* ]]; then
+		git-r3_src_unpack
+	else
+		default
+	fi
+	[[ -d "${S}" ]] || mv -v "${WORKDIR}/${P}_202"?-??-* "${S}" || die
 }
 
 src_prepare() {
@@ -119,7 +136,7 @@ src_configure() {
 		-DENABLE_POPPLER_CAIRO=ON
 		-DWITH_PROFILING=OFF
 		-DWITH_INTERNAL_2GEOM=ON
-		-DBUILD_TESTING=OFF
+		-DBUILD_TESTING=$(usex test)
 		-DWITH_LIBCDR=$(usex cdr)
 		-DWITH_DBUS=$(usex dbus)
 		-DWITH_IMAGE_MAGICK=$(usex imagemagick $(usex !graphicsmagick)) # requires ImageMagick 6, only IM must be enabled
@@ -136,6 +153,10 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	cmake_build -j1 check
 }
 
 src_install() {
