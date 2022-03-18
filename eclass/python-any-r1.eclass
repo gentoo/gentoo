@@ -221,9 +221,9 @@ unset -f _python_any_set_globals
 #		dev-python/baz[${PYTHON_USEDEP}] )')"
 #
 # python_check_deps() {
-#	python_has_version "dev-python/foo[${PYTHON_SINGLE_USEDEP}]" \
-#		&& { python_has_version "dev-python/bar[${PYTHON_USEDEP}]" \
-#			|| python_has_version "dev-python/baz[${PYTHON_USEDEP}]"; }
+# 	python_has_version "dev-python/foo[${PYTHON_SINGLE_USEDEP}]" &&
+# 		{ python_has_version "dev-python/bar[${PYTHON_USEDEP}]" ||
+# 			python_has_version "dev-python/baz[${PYTHON_USEDEP}]"; }
 # }
 # @CODE
 #
