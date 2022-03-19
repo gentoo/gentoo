@@ -144,7 +144,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.1-cloak.patch
 	"${FILESDIR}"/${PN}-2.6.1-flags.patch
 	"${FILESDIR}"/${PN}-2.6.1-fix-missing-mapping.patch
-	"${FILESDIR}"/${PN}-2.6.1-make-flags.patch
 )
 
 openldap_filecount() {
@@ -515,7 +514,7 @@ src_configure_cxx() {
 
 multilib_src_compile() {
 	tc-export AR CC CXX
-	emake CC=$(tc-getCC) SHELL="${EPREFIX}"/bin/sh
+	emake CC="$(tc-getCC)" SHELL="${EPREFIX}"/bin/sh
 
 	if ! use minimal && multilib_is_native_abi ; then
 		if use cxx ; then
@@ -554,7 +553,7 @@ multilib_src_compile() {
 
 			emake \
 				LDAP_BUILD="${BUILD_DIR}" \
-				CC=$(tc-getCC) libexecdir="${EPREFIX}"/usr/$(get_libdir)/openldap
+				CC="$(tc-getCC)" libexecdir="${EPREFIX}/usr/$(get_libdir)/openldap"
 			popd &>/dev/null || die
 		fi
 
@@ -616,7 +615,7 @@ multilib_src_test() {
 }
 
 multilib_src_install() {
-	emake CC=$(tc-getCC) \
+	emake CC="$(tc-getCC)" \
 		DESTDIR="${D}" SHELL="${EPREFIX}"/bin/sh install
 
 	if ! use minimal && multilib_is_native_abi; then
