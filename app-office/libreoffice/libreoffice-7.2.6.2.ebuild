@@ -210,7 +210,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	ldap? ( net-nds/openldap )
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
-	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
+	libreoffice_extensions_scripting-javascript? ( >=dev-java/rhino-1.7.14:1.6 )
 	mariadb? ( dev-db/mariadb-connector-c )
 	!mariadb? ( dev-db/mysql-connector-c )
 	pdfimport? ( app-text/poppler:=[cxx] )
@@ -570,7 +570,7 @@ src_configure() {
 			myeconfargs+=( --with-beanshell-jar=$(java-pkg_getjar bsh bsh.jar) )
 
 		use libreoffice_extensions_scripting-javascript && \
-			myeconfargs+=( --with-rhino-jar=$(java-pkg_getjar rhino-1.6 js.jar) )
+			myeconfargs+=( --with-rhino-jar=$(java-pkg_getjar rhino-1.6 rhino.jar) )
 	fi
 
 	is-flagq "-flto*" && myeconfargs+=( --enable-lto )
