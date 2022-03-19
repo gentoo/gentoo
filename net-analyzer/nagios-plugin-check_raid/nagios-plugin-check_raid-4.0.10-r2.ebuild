@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/glensc/nagios-plugin-check_raid/archive/${MY_PV}.tar
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
-IUSE="3ware aacraid dmraid hpa hpsa megaraid-sas megaraid-scsi mpt mpt-sas2"
+IUSE="3ware aacraid dmraid hpa hpsa megaraid-sas mpt mpt-sas2"
 
 DEPEND="dev-perl/Monitoring-Plugin
 		dev-perl/Module-Pluggable"
@@ -28,7 +28,6 @@ RDEPEND="${DEPEND}
 		hpa? ( sys-block/hpacucli )
 		hpsa? ( sys-apps/cciss_vol_status )
 		megaraid-sas? ( sys-block/megacli )
-		megaraid-scsi? ( sys-block/megarc )
 		mpt-sas2? ( sys-block/sas2ircu )
 		mpt? ( sys-block/mpt-status )
 "

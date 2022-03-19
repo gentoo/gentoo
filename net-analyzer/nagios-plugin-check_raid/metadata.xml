@@ -20,7 +20,6 @@
 		<flag name="hpa">Support HP Array controllers</flag>
 		<flag name="hpsa">Support HP SmartArray (CCISS) controllers</flag>
 		<flag name="megaraid-sas">Support LSI MegaRAID SAS controllers</flag>
-		<flag name="megaraid-scsi">Support LSI MegaRAID SCSI controllers</flag>
 		<flag name="mpt-sas2">Support LSI SAS-2 controllers</flag>
 		<flag name="mpt">Support LSI MPT Fusion controllers</flag>
 	</use>
