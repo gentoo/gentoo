@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-nm.patch
 	"${FILESDIR}"/${P}-ar.patch
+	"${FILESDIR}"/${PN}-2021-runpath.patch
 )
 
 src_prepare() {

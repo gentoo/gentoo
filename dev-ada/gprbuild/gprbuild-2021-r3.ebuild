@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-nm.patch
 	"${FILESDIR}"/${PN}-22.0.0-ar.patch
+	"${FILESDIR}"/${P}-runpath.patch
 )
 
 src_prepare() {
