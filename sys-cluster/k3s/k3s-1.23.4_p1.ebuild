@@ -54,6 +54,10 @@ src_prepare() {
 	local CONTAINERD_DIR=build/src/github.com/containerd/containerd
 	mkdir -p "${CONTAINERD_DIR}" || die
 	tar -x --strip-components=1 -f "${DISTDIR}/k3s-containerd-${K3S_CONTAINERD_VERSION}.tar.gz" -C "${CONTAINERD_DIR}" || die
+	if has_version -b ">=dev-lang/go-1.18"; then
+		# https://bugs.gentoo.org/835601
+		sed -i -e "/github.com\/containerd\/containerd => .\/.empty-mod/d" "${CONTAINERD_DIR}"/{go.mod,vendor/modules.txt} || die
+	fi
 
 	local RUNC_DIR=build/src/github.com/opencontainers/runc
 	mkdir -p "${RUNC_DIR}" || die
