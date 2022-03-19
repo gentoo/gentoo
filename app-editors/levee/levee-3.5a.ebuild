@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,7 @@ PATCHES=(
 )
 
 src_configure() {
-	export AC_CPP_PROG=$(tc-getCPP)
+	export AC_CPP_PROG="$(tc-getCPP)"
 	export AC_PATH="${PATH}"
 	export AC_LIBDIR="$($(tc-getPKG_CONFIG) --libs ncurses)"
 
@@ -38,7 +38,7 @@ src_configure() {
 src_compile() {
 	emake \
 		CFLAGS="${CFLAGS} -Wall -Wextra ${LDFLAGS}" \
-		CC=$(tc-getCC)
+		CC="$(tc-getCC)"
 }
 
 src_install() {
