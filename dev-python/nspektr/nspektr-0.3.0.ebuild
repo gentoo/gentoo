@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~ppc ~ppc64 ~sparc"
 
 RDEPEND="
 	>=dev-python/jaraco-context-4.1.1-r2[${PYTHON_USEDEP}]
