@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_RECIPE_TEST="test"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
@@ -41,6 +41,9 @@ all_ruby_prepare() {
 
 each_ruby_test() {
 	case ${RUBY} in
+		*ruby30)
+			versions="7.0"
+			;;
 		*ruby27)
 			versions="6.0 6.1 7.0"
 			;;
