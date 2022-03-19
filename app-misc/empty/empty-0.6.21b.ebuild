@@ -20,7 +20,7 @@ PATCHES=( "${FILESDIR}/${PN}-respect-LDFLAGS.patch" )
 S="${WORKDIR}"
 
 src_compile() {
-	emake CC=$(tc-getCC)
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
