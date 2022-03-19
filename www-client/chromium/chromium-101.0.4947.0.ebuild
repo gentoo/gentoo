@@ -5,15 +5,15 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml"
 
-CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
+CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
-	sv sw ta te th tr uk vi zh-CN zh-TW"
+	sv sw ta te th tr uk ur vi zh-CN zh-TW"
 
 inherit check-reqs chromium-2 desktop flag-o-matic ninja-utils pax-utils python-any-r1 readme.gentoo-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="2"
+PATCHSET="3"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz"
@@ -62,8 +62,9 @@ COMMON_SNAPSHOT_DEPEND="
 		dev-libs/glib:2
 		>=media-libs/alsa-lib-1.0.19:=
 		pulseaudio? ( media-sound/pulseaudio:= )
+		sys-apps/pciutils:=
 		kerberos? ( virtual/krb5 )
-		vaapi? ( >=x11-libs/libva-2.7:=[X,drm] )
+		vaapi? ( >=x11-libs/libva-2.7:=[X] )
 		x11-libs/libX11:=
 		x11-libs/libXext:=
 		x11-libs/libxcb:=
@@ -97,7 +98,6 @@ COMMON_DEPEND="
 		>=app-accessibility/at-spi2-core-2.26:2
 		>=dev-libs/atk-2.26
 		cups? ( >=net-print/cups-1.3.11:= )
-		sys-apps/pciutils:=
 		virtual/udev
 		x11-libs/cairo:=
 		x11-libs/pango:=
@@ -200,8 +200,8 @@ pre_build_checks() {
 
 	# Check build requirements, bug #541816 and bug #471810 .
 	CHECKREQS_MEMORY="4G"
-	CHECKREQS_DISK_BUILD="9G"
-	tc-is-cross-compiler && CHECKREQS_DISK_BUILD="12G"
+	CHECKREQS_DISK_BUILD="10G"
+	tc-is-cross-compiler && CHECKREQS_DISK_BUILD="13G"
 	if ( shopt -s extglob; is-flagq '-g?(gdb)?([1-9])' ); then
 		if use custom-cflags || use component-build; then
 			CHECKREQS_DISK_BUILD="25G"
