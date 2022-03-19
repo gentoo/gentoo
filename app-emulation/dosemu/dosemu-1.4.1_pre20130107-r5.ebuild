@@ -1,4 +1,4 @@
-# Copyright 2002-2021 Gentoo Authors
+# Copyright 2002-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -109,7 +109,7 @@ src_configure() {
 
 src_compile() {
 	# src/makefile.common is written manually, uses AR=ar
-	emake AR=$(tc-getAR)
+	emake AR="$(tc-getAR)"
 }
 
 src_install() {
