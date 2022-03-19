@@ -19,11 +19,11 @@ src_configure() {
 }
 
 src_compile() {
-	export CC=$(tc-getCC)
+	export CC="$(tc-getCC)"
 	default
 }
 
 src_test() {
-	export CC=$(tc-getCC)
+	export CC="$(tc-getCC)"
 	default
 }
