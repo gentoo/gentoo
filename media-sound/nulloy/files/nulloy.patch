@@ -1,0 +1,12 @@
+index 4ddee63..5f02c60 100644
+--- a/src/skins/skins.pri
++++ b/src/skins/skins.pri
+@@ -12,7 +12,7 @@ win32 {
+     ZIP_DEL_CMD = 7z d -tzip
+ }
+
+-unix:SKINS =  metro silver slim
++unix:SKINS =  metro silver slim night
+ win32:SKINS = Metro Silver Slim
+ for(skin, SKINS) {
+     _depends = $$SRC_DIR/skins/$$lower($${skin})/*
