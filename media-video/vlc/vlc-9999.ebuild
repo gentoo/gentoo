@@ -281,7 +281,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local -x BUILDCC=$(tc-getBUILD_CC)
+	local -x BUILDCC="$(tc-getBUILD_CC)"
 
 	local myeconfargs=(
 		--disable-optimizations
