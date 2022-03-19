@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,12 +40,12 @@ pkg_setup() {
 src_compile() {
 	emake -C gui-wx -f makefile-gtk \
 		\
-		CC=$(tc-getCC) \
-		CXX=$(tc-getCXX) \
-		CXXC=$(tc-getCXX) \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
+		CXXC="$(tc-getCXX)" \
 		\
-		AR=$(tc-getAR) \
-		RANLIB=$(tc-getRANLIB) \
+		AR="$(tc-getAR)" \
+		RANLIB="$(tc-getRANLIB)" \
 		\
 		PYTHON=${EPYTHON} \
 		WX_CONFIG=${WX_CONFIG} \
