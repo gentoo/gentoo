@@ -9,8 +9,8 @@ MY_P="${MY_PN}-${PV}"
 
 inherit lua toolchain-funcs
 
-DESCRIPTION="A simple interface to the readline and history libraries"
-HOMEPAGE="https://pjb.com.au/comp/lua/readline.html"
+DESCRIPTION="A binding to libunbound for Lua"
+HOMEPAGE="https://www.zash.se/luaunbound.html"
 SRC_URI="https://code.zash.se/dl/${MY_PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
