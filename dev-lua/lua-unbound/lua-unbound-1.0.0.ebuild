@@ -19,7 +19,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-RDEPEND="net-dns/unbound"
+RDEPEND="
+	${LUA_DEPS}
+	net-dns/unbound
+"
 DEPEND="${RDEPEND}"
 
 DOCS=( "README.markdown" )
