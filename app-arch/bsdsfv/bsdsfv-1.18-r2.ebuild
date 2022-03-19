@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ S=${WORKDIR}/${PN}
 PATCHES=( "${FILESDIR}"/${P}-64bit.patch )
 
 src_compile() {
-	emake STRIP=true CC=$(tc-getCC)
+	emake STRIP=true CC="$(tc-getCC)"
 }
 
 src_install() {
