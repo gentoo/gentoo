@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_8 python3_9 python3_10 )
 inherit distutils-r1
 
 DESCRIPTION="Secure backup system using gnupg to encrypt data"
-HOMEPAGE="https://www.nongnu.org/duplicity/"
+HOMEPAGE="https://duplicity.gitlab.io/"
 SRC_URI="https://code.launchpad.net/${PN}/$(ver_cut 1-2)-series/$(ver_cut 1-3)/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
