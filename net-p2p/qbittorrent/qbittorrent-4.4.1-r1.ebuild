@@ -67,3 +67,4 @@ pkg_postrm() {
 	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
+
