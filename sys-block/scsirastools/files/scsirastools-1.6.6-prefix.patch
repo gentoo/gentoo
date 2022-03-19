@@ -1,0 +1,24 @@
+* binaries get installed into /usr/sbin
+
+--- a/src/sgdiskmon.c
++++ b/src/sgdiskmon.c
+@@ -80,7 +80,7 @@
+ //////////////////////////////////////////////////////////////////////
+ char *progver  = "1.66";         /* program version */
+ char *progname    = "sgdiskmon";   /* program name */
+-char sgevtcmd[]   = "/sbin/sgevt";
++char sgevtcmd[]   = "/usr/sbin/sgevt";
+ char initscript[] = "/etc/init.d/sgdisk";
+ char logfile[]    = "/var/log/sgdiskmon.log";     /* log filename */   
+ FILE *fdlog = NULL;             /* log file descriptor */
+--- a/src/sgraidmon.c
++++ b/src/sgraidmon.c
+@@ -152,7 +152,7 @@
+ //////////////////////////////////////////////////////////////////////
+ char *progver  = "1.66";        /* program version */
+ char *progname    = "sgraidmon";   /* program name */
+-char mdevtcmd[]   = "/sbin/mdevt";
++char mdevtcmd[]   = "/usr/sbin/mdevt";
+ char initscript[] = "/etc/init.d/sgraid";
+ char logfile[]    = "/var/log/sgraidmon.log";     /* log filename */   
+ FILE *fdlog = NULL;             /* log file descriptor */
