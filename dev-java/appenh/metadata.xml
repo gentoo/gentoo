@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Cross-platform access of java application properties, such as application icon, mac os about box, theme and quit listener
+	</longdescription>
+	<upstream>
+		<remote-id type="github">teras/appenh</remote-id>
+	</upstream>
+</pkgmetadata>
