@@ -11,7 +11,7 @@ SRC_URI="https://downloads.xiph.org/releases/cortado/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc64 ~x86"
+KEYWORDS="amd64 ppc64 ~x86"
 
 # Package 'sun.audio' seems to have moved to 'javax.sound'.
 # More work would be needed.  Presently we restrict to jdk:1.8
