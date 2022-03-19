@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ledger/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 SITEFILE="50${PN}-gentoo.el"
 ELISP_TEXINFO="doc/ledger-mode.texi"
