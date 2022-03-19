@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,7 +37,7 @@ src_test() {
 		-e '\<([us](8|16|32|64))\>' \
 		.
 
-	emake ARCH=$(tc-arch-kernel) headers_check
+	emake ARCH="$(tc-arch-kernel)" headers_check
 }
 
 src_install() {
