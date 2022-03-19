@@ -78,6 +78,9 @@ src_unpack() {
 
 	mkdir base || die  # without this unpacking runtime will fail
 	./config/unpack "${S}" runtime || die
+
+	# Unpack asdl to fix autoconf linker check
+	unpack "${S}"/asdl.tgz
 }
 
 src_prepare() {
@@ -97,6 +100,7 @@ src_prepare() {
 		-i base/runtime/objs/makefile || die
 
 	sed -i "s|nm |$(tc-getNM) |g" config/chk-global-names.sh || die
+	sed -i "/^AC_PATH_PROG/s|\[ld\]|\[$(tc-getLD)\]|" asdl/configure.ac || die
 }
 
 src_compile() {
