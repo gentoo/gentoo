@@ -29,6 +29,7 @@ BDEPEND="
 "
 
 HTML_DOCS=( "docs/." )
+PATCHES=( "${FILESDIR}/${PN}-1.3.0-lua5-4.patch" )
 
 src_prepare() {
 	default
