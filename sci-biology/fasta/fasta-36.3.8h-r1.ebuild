@@ -77,5 +77,5 @@ src_install() {
 	doins -r conf/. data seq
 
 	doman doc/{prss3.1,fasta36.1,fasts3.1,fastf3.1,ps_lav.1,map_db.1}
-	dodoc  FASTA_LIST README doc/{README.versions,readme*,fasta*,changes*}
+	dodoc FASTA_LIST README* doc/{README*,readme*,fasta*,changes*}
 }
