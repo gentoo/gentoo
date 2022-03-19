@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,7 +39,7 @@ src_compile() {
 	tc-export PKG_CONFIG
 	local msg=""
 	use savedconfig && msg=", please check the configfile"
-	emake CC=$(tc-getCC) ${PN}
+	emake CC="$(tc-getCC)" ${PN}
 }
 
 src_install() {
