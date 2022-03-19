@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="8"
 
 inherit multilib
 
@@ -15,10 +15,11 @@ DESCRIPTION="LSI Logic MegaRAID Text User Interface management tool"
 # two or more download pages, and while one of the pages has a generic
 # click-through download form, the file-specific download page only requires
 # click-through on some items. See also sys-block/lsiutil, sys-block/megarc
+# 2022/03/19: robbat2 confirms the SRC_URI links work AND the files have not changed upstream
 HOMEPAGE="http://www.avagotech.com/cs/Satellite?q=megacli&pagename=AVG2%2FsearchLayout&locale=avg_en&within=megacli&Search=megarc&srch-radio=new&Submit=Search"
 SRC_URI="
-	http://www.avagotech.com/docs-and-downloads/legacy-raid-controllers/legacy-raid-controllers-common-files/${MY_P}.zip
-	http://www.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/README_FOR_${MY_P}-zip.txt"
+	https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${MY_P}.zip
+	https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/README_FOR_${MY_P}-zip.txt"
 
 LICENSE="LSI"
 SLOT="0"
