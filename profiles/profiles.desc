@@ -155,6 +155,7 @@ mips		default/linux/mips/17.0/multilib/n64		exp
 mips		default/linux/mips/17.0/mipsel/o32		exp
 mips		default/linux/mips/17.0/mipsel/n32		exp
 mips		default/linux/mips/17.0/mipsel/n64		exp
+mips		default/linux/mips/17.0/mipsel/n64/systemd	exp
 mips		default/linux/mips/17.0/mipsel/multilib/o32	exp
 mips		default/linux/mips/17.0/mipsel/multilib/n32	exp
 mips		default/linux/mips/17.0/mipsel/multilib/n64	exp
