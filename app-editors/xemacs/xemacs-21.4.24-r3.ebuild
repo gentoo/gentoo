@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: xemacs currently does not work with position independent code
@@ -184,7 +184,7 @@ src_configure() {
 		$(use_with ldap ) \
 		$(use_with eolconv file-coding ) \
 		$(use_with pop ) \
-		--compiler=$(tc-getCC) \
+		--compiler="$(tc-getCC)" \
 		--prefix=/usr \
 		--without-canna \
 		--with-ncurses \
