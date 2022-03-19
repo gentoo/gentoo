@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -85,7 +85,7 @@ src_configure() {
 src_compile() {
 	# Uses default LD=$(CC) but if the user's set LD, it'll call it
 	# bug #729432.
-	emake LD=$(tc-getCC) -C src
+	emake LD="$(tc-getCC)" -C src
 }
 
 src_test() {
