@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,16 +39,16 @@ PATCHES=(
 )
 
 myhlopts=(
-	"CXX=$(tc-getCXX)"
-	"AR=$(tc-getAR)"
-	"LDFLAGS=${LDFLAGS}"
-	"CFLAGS=${CXXFLAGS} -DNDEBUG"
-	"DESTDIR=${D}"
-	"PREFIX=${EPREFIX}/usr"
-	"HL_CONFIG_DIR=${EPREFIX}/etc/highlight/"
-	"HL_DATA_DIR=${EPREFIX}/usr/share/highlight/"
-	"doc_dir=${EPREFIX}/usr/share/doc/${PF}/"
-	"conf_dir=${EPREFIX}/etc/highlight/"
+	CXX="$(tc-getCXX)"
+	AR="$(tc-getAR)"
+	LDFLAGS="${LDFLAGS}"
+	CFLAGS="${CXXFLAGS} -DNDEBUG"
+	DESTDIR="${D}"
+	PREFIX="${EPREFIX}/usr"
+	HL_CONFIG_DIR="${EPREFIX}/etc/highlight/"
+	HL_DATA_DIR="${EPREFIX}/usr/share/highlight/"
+	doc_dir="${EPREFIX}/usr/share/doc/${PF}/"
+	conf_dir="${EPREFIX}/etc/highlight/"
 )
 
 src_prepare() {
