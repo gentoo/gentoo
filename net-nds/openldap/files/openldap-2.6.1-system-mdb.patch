@@ -74,7 +74,7 @@ index 9012d0b28..52dd72eb6 100644
 +dnl ----------------------------------------------------------------
 +ol_link_mdb=no
 +
-+if test $ol_enable_mdb != no; then
++AS_IF([test x$ol_enable_mdb != xno], [
 +	OL_MDB
 +
 +	if test $ol_cv_mdb = no ; then
@@ -93,7 +93,7 @@ index 9012d0b28..52dd72eb6 100644
 +	SLAPD_LIBS="$SLAPD_LIBS \$(MDB_LIBS)"
 +
 +	ol_link_mdb=yes
-+fi
++])
 +
 +dnl ----------------------------------------------------------------
 +
