@@ -1,25 +1,25 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=8
 
-MY_PN=BioPerl
-MODULE_AUTHOR=CJFIELDS
-MODULE_VERSION=1.6.901
+DIST_AUTHOR=CJFIELDS
+DIST_NAME=BioPerl
+DIST_VERSION=1.6.901
 inherit perl-module
 
 SUBPROJECTS="+db +network +run"
-MIN_PV=${PV}
+MIN_PV="${PV}"
 
 DESCRIPTION="Perl tools for bioinformatics - Core modules"
 HOMEPAGE="http://www.bioperl.org/"
+
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="minimal graphviz sqlite ${SUBPROJECTS}"
-
 REQUIRED_USE="minimal? ( !graphviz )"
 
-CDEPEND="
+RDEPEND="
 	dev-perl/libwww-perl
 	!minimal? (
 		dev-perl/Algorithm-Munkres
@@ -54,14 +54,11 @@ CDEPEND="
 	)
 	graphviz? ( dev-perl/GraphViz )
 	sqlite? ( dev-perl/DBD-SQLite )"
-DEPEND="dev-perl/Module-Build
-	${CDEPEND}"
-RDEPEND="${CDEPEND}"
-PDEPEND="db? ( >=sci-biology/bioperl-db-${MIN_PV} )
+DEPEND="${RDEPEND}"
+PDEPEND="
+	db? ( >=sci-biology/bioperl-db-${MIN_PV} )
 	network? ( >=sci-biology/bioperl-network-${MIN_PV} )
 	run? ( >=sci-biology/bioperl-run-${MIN_PV} )"
+BDEPEND="dev-perl/Module-Build"
 
-src_install() {
-	mydoc="AUTHORS BUGS FAQ"
-	perl-module_src_install
-}
+mydoc="AUTHORS BUGS FAQ"
