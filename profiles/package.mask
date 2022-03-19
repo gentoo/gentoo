@@ -33,10 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2022-03-19)
-# Hangs in configure, bug #835639
-=net-nds/openldap-2.6.1
-
 # David Seifert <soap@gentoo.org> (2022-03-19)
 # Unmaintained, no revdeps in tree, not even on latest version, EAPI 5,
 # typical 'webapp' smell, last upstream release more than 9 years ago.
