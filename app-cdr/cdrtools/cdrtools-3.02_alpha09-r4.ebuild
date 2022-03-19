@@ -78,8 +78,8 @@ src_prepare() {
 
 	# Respect CC/CXX variables.
 	cd "${S}"/RULES || die
-	local tcCC=$(tc-getCC)
-	local tcCXX=$(tc-getCXX)
+	local tcCC="$(tc-getCC)"
+	local tcCXX="$(tc-getCXX)"
 	# fix RISC-V build err, bug 811375
 	ln -s i586-linux-cc.rul riscv-linux-cc.rul || die
 	ln -s i586-linux-cc.rul riscv64-linux-cc.rul || die
