@@ -109,9 +109,9 @@ src_unpack() {
 src_compile() {
 	local myemakeopts=(
 		ALLOCACHE_AS_MALLOC=0
-		AS=$(tc-getAS)
-		CC=$(tc-getCC)
-		CXX=$(tc-getCXX)
+		AS="$(tc-getAS)"
+		CC="$(tc-getCC)"
+		CXX="$(tc-getCXX)"
 		CLANG=0
 		CPLUSPLUS=1
 		CUSTOMOPT=""
