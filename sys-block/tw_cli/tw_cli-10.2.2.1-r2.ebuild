@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=8
 
 DESCRIPTION="3ware SATA/PATA/SAS RAID controller Command Line Interface tool"
 HOMEPAGE="http://www.lsi.com/products/raid-controllers/pages/3ware-sas-9750-8i.aspx"
@@ -16,11 +16,12 @@ SRC_URI_A_linux="CLI_linux-from_the_${PV}_${ThreeDM2_PV}_codesets.zip"
 # https://www.broadcom.com/support/knowledgebase/1211161501805/debian-8-twcli-causes-fault-segment-failure
 EXTRA_linux="https://docs.broadcom.com/docs-and-downloads/kb-documents/lsi/368_tw_cli_debian8_beta.tgz"
 EXTRA_fbsd=""
-[ -n "${SRC_URI_A_linux}${EXTRA_linux}" ] && SRC_URI+=" kernel_linux? ( ${SRC_URI_A_linux:+${SRC_URI_BASE}/}${SRC_URI_A_linux} ${EXTRA_linux} )"
+[[ -n "${SRC_URI_A_linux}${EXTRA_linux}" ]] && SRC_URI+=" kernel_linux? ( ${SRC_URI_A_linux:+${SRC_URI_BASE}/}${SRC_URI_A_linux} ${EXTRA_linux} )"
 # The license is not available easily from upstream (embedded in a textbox),
 # nor in the upstream tarball, but needs to be installed, and can't be
 # referenced via PORTDIR per bug #373349.
 SRC_URI+=" https://gitweb.gentoo.org/repo/gentoo.git/plain/licenses/LSI-tw_cli"
+S="${WORKDIR}"
 
 # the minor ver on the end changes...
 RELNOTES="${SRC_URI_BASE}/${PV}_Release_Notes.pdf"
@@ -55,16 +56,12 @@ SLOT="0"
 # This package can never enter stable, it can't be mirrored and upstream
 # can remove the distfiles from their mirror anytime.
 KEYWORDS="-* amd64 x86"
-IUSE=""
-
 RESTRICT="strip"
-QA_PREBUILT="/opt/tw_cli/tw_cli"
 
 # binary packages
-DEPEND="app-arch/unzip"
-RDEPEND=""
+BDEPEND="app-arch/unzip"
 
-S=${WORKDIR}
+QA_PREBUILT="/opt/tw_cli/tw_cli"
 
 # If you want to fetch it yourself (not from the mirrors), there is an IP-based
 # clickthrough to accept the EULA.
@@ -75,26 +72,26 @@ pkg_nofetch() {
 }
 
 src_install() {
+	local cli_bin
 	case ${ARCH} in
 		# Special case per 10.2.2.1 segfault
-		amd64) CLI_BIN=debian8/x86_64/tw_cli ;;
-		x86) CLI_BIN=debian8/x86/tw_cli ;;
-		#amd64) CLI_BIN=x86_64/tw_cli;;
-		#x86) CLI_BIN=x86/tw_cli;;
-		*) die "unsupported ARCH";;
+		amd64) cli_bin=debian8/x86_64/tw_cli ;;
+		x86)   cli_bin=debian8/x86/tw_cli ;;
+		*)     die "unsupported ARCH";;
 	esac
 	exeinto /opt/tw_cli
 	# The names have varied in the past, sometimes there is a suffix
-	newexe ${CLI_BIN} tw_cli
+	newexe ${cli_bin} tw_cli
 	dosym ../../opt/tw_cli/tw_cli /usr/sbin/tw_cli
 
 	newman ${PN}.8.nroff ${PN}.8
-	dohtml *.html
 	dodoc *.txt
+	docinto html
+	dodoc *.html
 
 	# to comply with license requirement 3.1.b, per upstream request.
 	insinto /opt/tw_cli
-	newins "${DISTDIR}"/"${LICENSE}" LICENSE
+	newins "${DISTDIR}/${LICENSE}" LICENSE
 }
 
 pkg_postinst() {
