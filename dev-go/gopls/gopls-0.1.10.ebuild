@@ -12,6 +12,7 @@ DESCRIPTION="\"Go please\" is the official Go language server"
 HOMEPAGE="https://github.com/golang/tools/blob/master/gopls/README.md"
 SLOT="0"
 LICENSE="BSD"
+BDEPEND=">=dev-lang/go-1.18"
 
 EGO_SUM=(
 "github.com/BurntSushi/toml v0.3.1/go.mod"

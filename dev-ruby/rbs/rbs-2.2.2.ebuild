@@ -24,7 +24,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc 
 SLOT="0"
 IUSE="test"
 
-ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/test-unit )"
+ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/rdoc dev-ruby/test-unit )"
 
 all_ruby_prepare() {
 	sed -i -e 's/git ls-files -z/find * -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die

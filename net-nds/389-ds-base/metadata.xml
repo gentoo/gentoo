@@ -30,6 +30,8 @@
 		<flag name="ldapi">Enable LDAP over unix domain socket (LDAPI) support</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/389ds/389-ds-base/issues</bugs-to>
 		<remote-id type="cpe">cpe:/a:fedoraproject:389_directory_server</remote-id>
+		<remote-id type="github">389ds/389-ds-base</remote-id>
 	</upstream>
 </pkgmetadata>

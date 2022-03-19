@@ -23,27 +23,21 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 # packaged.  Some extra steps are required before running the tests:
 # 1. Download hadoop-common 2.7.x from https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-common
 # 2. Set EANT_GENTOO_CLASSPATH_EXTRA to the path to hadoop-common-2.7.*.jar
-# 3. arm, arm64 and ppc64 only: Install test dependencies that are unkeyworded
-# 4. Set ALLOW_TEST="all"
+# 3. Set ALLOW_TEST="all"
 RESTRICT="test"
 
 CDEPEND="dev-java/osgi-core-api:0
 	app-arch/snappy
 	dev-libs/bitshuffle"
 
-# Some test dependencies are unsatisfied on arm, arm64, and ppc64
 DEPEND=">=virtual/jdk-1.8:*
 	${CDEPEND}
 	test? (
 		dev-java/ant-junit4:0
 		dev-java/commons-io:1
-		!arm? (
-			dev-java/commons-lang:2.1
-		)
-		!arm? ( !arm64? ( !ppc64? (
-			dev-java/plexus-classworlds:0
-			dev-java/xerial-core:0
-		) ) )
+		dev-java/commons-lang:2.1
+		dev-java/plexus-classworlds:0
+		dev-java/xerial-core:0
 	)"
 
 RDEPEND=">=virtual/jre-1.8:*

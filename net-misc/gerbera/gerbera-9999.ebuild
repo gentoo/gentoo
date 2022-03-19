@@ -35,7 +35,7 @@ RDEPEND="
 	curl? ( net-misc/curl )
 	exif? ( media-libs/libexif )
 	exiv2? ( media-gfx/exiv2 )
-	ffmpeg? (  media-video/ffmpeg:= )
+	ffmpeg? ( media-video/ffmpeg:= )
 	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
 	javascript? ( dev-lang/duktape:= )
 	lastfm? ( media-libs/lastfmlib )

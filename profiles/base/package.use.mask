@@ -358,11 +358,6 @@ dev-python/pyzmq doc
 # Gromacs python module install br0ken
 sci-chemistry/gromacs python
 
-# Brian Evans <grknight@gentoo.org> (2019-12-19)
-# PHP 7.1 is end of life and has security issues, bug #703326
-# Associated packages are not ready for new versions tracked in bug #702110
-dev-libs/ossp-uuid php
-
 # Michał Górny <mgorny@gentoo.org> (2019-12-16)
 # Requires old x11-libs/fox:1.6 slot.
 dev-games/openscenegraph fox

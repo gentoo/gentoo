@@ -27,8 +27,7 @@ DEPEND="rtlsdr? ( net-wireless/rtl-sdr:=
 	soapysdr? ( net-wireless/soapysdr:= )
 	dev-libs/openssl:="
 RDEPEND="${DEPEND}"
-# https://github.com/merbanan/rtl_433/issues/2010
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 src_configure() {
 	mycmakeargs=(

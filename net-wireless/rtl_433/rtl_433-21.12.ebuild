@@ -24,11 +24,11 @@ DEPEND="rtlsdr? ( net-wireless/rtl-sdr:=
 	soapysdr? ( net-wireless/soapysdr:= )
 	dev-libs/openssl:="
 RDEPEND="${DEPEND}"
-# https://github.com/merbanan/rtl_433/issues/2010
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-CVE.patch"
+	"${FILESDIR}/${P}-test-visibility.patch"
 )
 
 src_configure() {

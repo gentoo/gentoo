@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -1590,6 +1590,7 @@ RDEPEND="
 	acct-user/http
 	acct-group/http"
 DEPEND="${RDEPEND}"
+BDEPEND="<dev-lang/go-1.18"
 
 RESTRICT+=" test"
 
