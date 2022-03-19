@@ -32,5 +32,5 @@ pkg_setup() {
 
 src_compile() {
 	emake \
-		CC=$(tc-getCC)
+		CC="$(tc-getCC)"
 }
