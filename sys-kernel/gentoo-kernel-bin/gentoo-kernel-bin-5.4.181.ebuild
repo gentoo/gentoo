@@ -99,7 +99,7 @@ src_configure() {
 		OBJDUMP="$(tc-getOBJDUMP)"
 
 		# we need to pass it to override colliding Gentoo envvar
-		ARCH=$(tc-arch-kernel)
+		ARCH="$(tc-arch-kernel)"
 
 		O="${WORKDIR}"/modprep
 	)
