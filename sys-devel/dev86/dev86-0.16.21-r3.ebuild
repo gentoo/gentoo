@@ -22,6 +22,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.16.19-fortify.patch"
 	"${FILESDIR}/${P}-non-void-return-clang.patch"
 	"${FILESDIR}/${PN}-0.16.21-make.patch"
+	"${FILESDIR}/${P}-void-return-check-msdos-clang-fix.patch"
 )
 
 src_prepare() {
