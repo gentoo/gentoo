@@ -1,24 +1,23 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit toolchain-funcs
 
 DESCRIPTION="Large collection of LV2 audio plugins/effects"
 HOMEPAGE="http://plugin.org.uk/"
 SRC_URI="https://github.com/swh/lv2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/lv2-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
-RDEPEND="sci-libs/fftw:3.0"
-DEPEND="${RDEPEND}
-	dev-libs/libxslt
+RDEPEND="sci-libs/fftw:3.0="
+DEPEND="${RDEPEND}"
+BDEPEND="dev-libs/libxslt
 	virtual/pkgconfig"
-
-S="${WORKDIR}/lv2-${PV}"
 
 src_prepare() {
 	sed -e 's:-O3 -fomit-frame-pointer -fstrength-reduce -funroll-loops::g' \
@@ -27,7 +26,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC=$(tc-getCC)
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
