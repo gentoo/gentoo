@@ -30,7 +30,9 @@ RESTRICT="bindist mirror"
 LICENSE="AMD-GPU-PRO-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="abi_x86_32 abi_x86_64"
+IUSE="abi_x86_32 abi_x86_64 video_cards_amdgpu"
+
+REQUIRED_USE="video_cards_amdgpu"
 
 BDEPEND="dev-util/patchelf"
 
