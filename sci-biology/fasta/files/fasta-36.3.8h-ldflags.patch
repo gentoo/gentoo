@@ -1,0 +1,63 @@
+--- a/make/Makefile.pcom
++++ b/make/Makefile.pcom
+@@ -216,14 +216,14 @@
+ 	$(CC) -o print_pssm $(CFLAGS) print_pssm.c getseq.c karlin.c apam.c pssm_asn_subs.c $(LIB_M) $(LIB_DB)
+ 
+ map_db : map_db.c uascii.h ncbl2_head.h
+-	$(CC) $(CFLAGS) -o $(BIN)/map_db map_db.c
++	$(CC) $(CFLAGS) $(HFLAGS) $(BIN)/map_db map_db.c
+ 
+ list_db : list_db.c
+-	$(CC) $(CFLAGS) -o $(BIN)/list_db list_db.c
++	$(CC) $(CFLAGS) $(HFLAGS) $(BIN)/list_db list_db.c
+ 
+ 
+ lav2ps : lav2plt.o lavplt_ps.o
+-	$(CC) -DUNIX -o $(BIN)/lav2ps lav2plt.o lavplt_ps.o -lm
++	$(CC) -DUNIX $(HFLAGS) $(BIN)/lav2ps lav2plt.o lavplt_ps.o -lm
+ 
+ lav2svg : lav2plt.o lavplt_svg.o
+-	$(CC) -DUNIX -o $(BIN)/lav2svg  lav2plt.o lavplt_svg.o -lm
++	$(CC) -DUNIX $(HFLAGS) $(BIN)/lav2svg  lav2plt.o lavplt_svg.o -lm
+--- a/make/Makefile.pcom_s
++++ b/make/Makefile.pcom_s
+@@ -149,14 +149,14 @@
+ 	$(CC) -o print_pssm $(CFLAGS) print_pssm.c getseq.c karlin.c apam.c pssm_asn_subs.c $(LIB_M) $(LIB_DB)
+ 
+ map_db : map_db.c uascii.h ncbl2_head.h
+-	$(CC) $(CFLAGS) -o $(BIN)/map_db map_db.c
++	$(CC) $(CFLAGS) $(HFLAGS) $(BIN)/map_db map_db.c
+ 
+ list_db : list_db.c
+-	$(CC) $(CFLAGS) -o $(BIN)/list_db list_db.c
++	$(CC) $(CFLAGS) $(HFLAGS) $(BIN)/list_db list_db.c
+ 
+ 
+ lav2ps : lav2plt.o lavplt_ps.o
+-	$(CC) -DUNIX -o $(BIN)/lav2ps lav2plt.o lavplt_ps.o -lm
++	$(CC) -DUNIX $(HFLAGS) $(BIN)/lav2ps lav2plt.o lavplt_ps.o -lm
+ 
+ lav2svg : lav2plt.o lavplt_svg.o
+-	$(CC) -DUNIX -o $(BIN)/lav2svg  lav2plt.o lavplt_svg.o -lm
++	$(CC) -DUNIX $(HFLAGS) $(BIN)/lav2svg  lav2plt.o lavplt_svg.o -lm
+--- a/make/Makefile.pcom_t
++++ b/make/Makefile.pcom_t
+@@ -171,14 +171,14 @@
+ 	$(CC) -o print_pssm $(CFLAGS) print_pssm.c getseq.c karlin.c apam.c pssm_asn_subs.c $(LIB_M) $(LIB_DB)
+ 
+ map_db : map_db.c uascii.h ncbl2_head.h
+-	$(CC) $(CFLAGS) -o $(BIN)/map_db map_db.c
++	$(CC) $(CFLAGS) $(HFLAGS) $(BIN)/map_db map_db.c
+ 
+ list_db : list_db.c
+-	$(CC) $(CFLAGS) -o $(BIN)/list_db list_db.c
++	$(CC) $(CFLAGS) $(HFLAGS) $(BIN)/list_db list_db.c
+ 
+ 
+ lav2ps : lav2plt.o lavplt_ps.o
+-	$(CC) -DUNIX -o $(BIN)/lav2ps lav2plt.o lavplt_ps.o -lm
++	$(CC) -DUNIX $(HFLAGS) $(BIN)/lav2ps lav2plt.o lavplt_ps.o -lm
+ 
+ lav2svg : lav2plt.o lavplt_svg.o
+-	$(CC) -DUNIX -o $(BIN)/lav2svg  lav2plt.o lavplt_svg.o -lm
++	$(CC) -DUNIX $(HFLAGS) $(BIN)/lav2svg  lav2plt.o lavplt_svg.o -lm
