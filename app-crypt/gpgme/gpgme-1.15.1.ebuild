@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,7 +33,7 @@ REQUIRED_USE="qt5? ( cxx ) python? ( ${PYTHON_REQUIRED_USE} )"
 do_python() {
 	if use python; then
 		pushd "lang/python" > /dev/null || die
-		top_builddir="../.." srcdir="." CPP=$(tc-getCPP) distutils-r1_src_${EBUILD_PHASE}
+		top_builddir="../.." srcdir="." CPP="$(tc-getCPP)" distutils-r1_src_${EBUILD_PHASE}
 		popd > /dev/null
 	fi
 }

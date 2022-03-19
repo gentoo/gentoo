@@ -38,7 +38,7 @@ PATCHES=(
 do_python() {
 	if use python; then
 		pushd "lang/python" > /dev/null || die
-		top_builddir="../.." srcdir="." CPP=$(tc-getCPP) distutils-r1_src_${EBUILD_PHASE}
+		top_builddir="../.." srcdir="." CPP="$(tc-getCPP)" distutils-r1_src_${EBUILD_PHASE}
 		popd > /dev/null
 	fi
 }
