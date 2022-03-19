@@ -60,9 +60,9 @@ multilib_src_configure() {
 	)
 	if multilib_is_native_abi ; then
 		myconf+=(
-			--enable-bsdcat=$(tc-is-static-only && echo static || echo shared)
-			--enable-bsdcpio=$(tc-is-static-only && echo static || echo shared)
-			--enable-bsdtar=$(tc-is-static-only && echo static || echo shared)
+			--enable-bsdcat="$(tc-is-static-only && echo static || echo shared)"
+			--enable-bsdcpio="$(tc-is-static-only && echo static || echo shared)"
+			--enable-bsdtar="$(tc-is-static-only && echo static || echo shared)"
 		)
 	else
 		myconf+=(
