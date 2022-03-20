@@ -28,8 +28,8 @@ RDEPEND="
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/pango
-	gstreamer? ( media-libs/gstreamer:1.0 )
-	spell? ( app-text/gspell:= )
+	gstreamer? ( media-plugins/gst-plugins-meta[ffmpeg,http,X] )
+	spell? ( app-text/gspell:=[vala] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -57,8 +57,10 @@ src_configure() {
 
 pkg_postinst() {
 	gnome2_schemas_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
 	gnome2_schemas_update
+	xdg_pkg_postrm
 }
