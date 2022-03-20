@@ -54,6 +54,8 @@ PATCHES=(
 	# The upstream testsuite copies .lib and the binaries for each parallel test
 	# core, ~300MB each. This patch uses links instead, saves a lot of space.
 	"${FILESDIR}"/${PN}-6.0.20-test-link.patch
+
+	"${FILESDIR}"/${PN}-6.2.38-bashism-configure.patch
 )
 
 src_prepare() {
