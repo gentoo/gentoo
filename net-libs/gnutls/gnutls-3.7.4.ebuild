@@ -3,19 +3,13 @@
 
 EAPI=7
 
-# 3.7.4 has an additional signature from a non-listed maintainer on gnutls.org
-# and verify-sig.eclass dies on it. It does have a legitimate signature from
-# a listed maintainer though, it's just that the eclass dislikes an extra signature
-# from someone it doesn't recognise.
-# https://gitlab.com/gnutls/web-pages/-/issues/3
-#VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gnutls.asc
-
-inherit autotools multilib-minimal
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gnutls.asc
+inherit autotools multilib-minimal verify-sig
 
 DESCRIPTION="A secure communications library implementing the SSL, TLS and DTLS protocols"
 HOMEPAGE="https://www.gnutls.org/"
 SRC_URI="mirror://gnupg/gnutls/v$(ver_cut 1-2)/${P}.tar.xz"
-#SRC_URI+=" verify-sig? ( mirror://gnupg/gnutls/v$(ver_cut 1-2)/${P}.tar.xz.sig )"
+SRC_URI+=" verify-sig? ( mirror://gnupg/gnutls/v$(ver_cut 1-2)/${P}.tar.xz.sig )"
 
 LICENSE="GPL-3 LGPL-2.1+"
 SLOT="0/30" # libgnutls.so number
@@ -55,8 +49,8 @@ BDEPEND="
 		dev-libs/softhsm:2[-bindist(-)]
 		net-dialup/ppp
 		net-misc/socat
-	)"
-#	verify-sig? ( sec-keys/openpgp-keys-gnutls )"
+	)
+	verify-sig? ( >=sec-keys/openpgp-keys-gnutls-20220320 )"
 
 DOCS=( README.md doc/certtool.cfg )
 
