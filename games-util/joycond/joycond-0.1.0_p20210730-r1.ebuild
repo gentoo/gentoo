@@ -31,9 +31,12 @@ CONFIG_CHECK="
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-systemd.patch
+)
+
 src_install() {
 	cmake_src_install
-	rm -r "${ED}"/etc/modules-load.d/ || die
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	doman doc/${PN}.1
 }
