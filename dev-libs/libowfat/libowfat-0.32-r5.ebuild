@@ -39,9 +39,9 @@ src_prepare() {
 
 src_compile() {
 	emake \
-		CC=$(tc-getCC) \
-		AR=$(tc-getAR) \
-		RANLIB=$(tc-getRANLIB) \
+		CC="$(tc-getCC)" \
+		AR="$(tc-getAR)" \
+		RANLIB="$(tc-getRANLIB)" \
 		CFLAGS="-I. ${CFLAGS}" \
 		DIET="${EPREFIX}/usr/bin/diet -Os" \
 		prefix="${EPREFIX}/usr" \
