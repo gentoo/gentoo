@@ -1387,14 +1387,22 @@ _python_run_check_deps() {
 	_python_export "${impl}" PYTHON_PKG_DEP
 	ebegin "  ${PYTHON_PKG_DEP}"
 	has_version "${hasv_args[@]}" "${PYTHON_PKG_DEP}"
-	eend ${?} || return 1
-	declare -f python_check_deps >/dev/null || return 0
+	eend ${?} || return
 
 	local PYTHON_USEDEP="python_targets_${impl}(-)"
 	local PYTHON_SINGLE_USEDEP="python_single_target_${impl}(-)"
-	ebegin "  python_check_deps"
-	python_check_deps
-	eend ${?}
+
+	if declare -f python_get_any_deps >/dev/null ; then
+		ebegin '  python_get_any_deps'
+		_python_check_deps $(python_get_any_deps)
+		eend ${?} || return
+	fi
+
+	if declare -f python_check_deps >/dev/null ; then
+		ebegin '  python_check_deps'
+		python_check_deps
+		eend ${?} || return
+	fi
 }
 
 # @FUNCTION: python_has_version
@@ -1437,6 +1445,88 @@ python_has_version() {
 	done
 
 	return 0
+}
+
+# @FUNCTION: _python_check_dep
+# @INTERNAL
+# @USAGE: <dep-spec> [<ignored-arg>...]
+# @DESCRIPTION:
+# Verifies that <dep-spec> is satisfied. <dep-spec> may be: a single dependency
+# atom, a USE-conditional dependency block, a parenthesized dependency block,
+# or an any-of-many dependency block. These are all specified using the same
+# syntax as in the *DEPEND variables.
+# Calls python_has_version to check each atom, passing "${_phv_opts[@]}" as
+# initial argument(s).
+# Emits to stdout the number of positional arguments spanned by <dep-spec> and
+# thus consumed by this function. Any remaining arguments are ignored.
+# The return code is 0 if <dep-spec> is satisfied, non-zero otherwise.
+_python_check_dep() {
+	debug-print-function ${FUNCNAME} "${@}"
+	local -i n r _sc=${_sc}
+	case "${1}" in
+		*\?)
+			[[ ${2} == '(' ]] || die "Illegal USE-conditional dependency spec: ${1} ${2}"
+			(( _sc )) || _sc=$(usex "${1%\?}" 0 -1)
+			shift 2 ; let n+=3
+			while [[ ${1} != ')' ]] ; do
+				(( ${#} )) || die 'Unterminated USE-conditional dependency spec'
+				let r=$(_python_check_dep "${@}") _sc\|=${?}
+				shift "${r}" ; let n+=r
+			done
+			if (( _sc < 0 )) ; then
+				let r=0  # USE-conditional was false; pass
+			else
+				let r=_sc  # return 0 if none failed
+			fi
+			;;
+		'(')
+			shift ; let n+=2
+			while [[ ${1} != ')' ]] ; do
+				(( ${#} )) || die 'Unterminated all-of dependency spec'
+				let r=$(_python_check_dep "${@}") _sc\|=${?}
+				shift "${r}" ; let n+=r
+			done
+			let r=_sc  # return 0 if none failed
+			;;
+		'||')
+			[[ ${2} == '(' ]] || die "Illegal any-of-many dependency spec: ${1} ${2}"
+			shift 2 ; let n+=3
+			while [[ ${1} != ')' ]] ; do
+				(( ${#} )) || die 'Unterminated any-of-many dependency spec'
+				let r=$(_python_check_dep "${@}") _sc\|=\!${?}
+				shift "${r}" ; let n+=r
+			done
+			let r=\!_sc  # return 0 if any passed
+			;;
+		*)
+			(( _sc )) || python_has_version "${_phv_opts[@]}" "${1}" ; r=${?}
+			let ++n
+			;;
+	esac
+	echo "${n}"
+	return "${r}"
+}
+
+# @FUNCTION: _python_check_deps
+# @INTERNAL
+# @USAGE: [[-b|-d|-r] <dep-spec>]...
+# @DESCRIPTION:
+# Verifies that the given <dep-spec>s are satisfied by passing each in turn to
+# _python_check_dep. The return code is 0 if all of the specs are satisfied or
+# non-zero otherwise. A -b/-d/-r option may be given, to be passed to
+# python_has_version, and will remain in effect for all subsequent <dep-spec>s
+# until/unless another such option is given.
+_python_check_deps() {
+	local _phv_opts=( )
+	while (( ${#} )) ; do
+		if [[ ${1} == -[bdr] ]] ; then
+			_phv_opts=( "${1}" ) ; shift
+		else
+			local -i _sc=0 r
+			r=$(_python_check_dep "${@}") || return
+			shift "${r}"
+		fi
+	done
 }
 
 _PYTHON_UTILS_R1=1

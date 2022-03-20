@@ -30,6 +30,13 @@
 # implementation fulfills the requirements, a false value (non-zero)
 # otherwise.
 #
+# As an alternative to (or in addition to) python_check_deps(), you can
+# define a python_get_any_deps() function, which should print to stdout
+# a dependency specification using the same syntax as in the *DEPEND
+# variables. The eclass will call python_get_any_deps() with EPYTHON set
+# to each matching Python implementation and with PYTHON_USEDEP and
+# PYTHON_SINGLE_USEDEP defined appropriately.
+#
 # Please note that python-any-r1 will always inherit python-utils-r1
 # as well. Thus, all the functions defined there can be used in the
 # packages using python-any-r1, and there is no need ever to inherit
@@ -130,7 +137,8 @@ EXPORT_FUNCTIONS pkg_setup
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # An eclass-generated USE-dependency string for the currently tested
-# implementation. It is set locally for python_check_deps() call.
+# implementation. It is set locally for python_check_deps() and
+# python_get_any_deps() calls.
 #
 # The generated USE-flag list is compatible with packages using
 # python-r1 eclass. For python-single-r1 dependencies,
@@ -138,8 +146,8 @@ EXPORT_FUNCTIONS pkg_setup
 #
 # Example use:
 # @CODE
-# python_check_deps() {
-# 	has_version "dev-python/foo[${PYTHON_USEDEP}]"
+# python_get_any_deps() {
+# 	echo "dev-python/foo[${PYTHON_USEDEP}]"
 # }
 # @CODE
 #
@@ -152,7 +160,8 @@ EXPORT_FUNCTIONS pkg_setup
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # An eclass-generated USE-dependency string for the currently tested
-# implementation. It is set locally for python_check_deps() call.
+# implementation. It is set locally for python_check_deps() and
+# python_get_any_deps() calls.
 #
 # The generated USE-flag list is compatible with packages using
 # python-single-r1 eclass. For python-r1 dependencies,
@@ -160,8 +169,8 @@ EXPORT_FUNCTIONS pkg_setup
 #
 # Example use:
 # @CODE
-# python_check_deps() {
-# 	has_version "dev-python/bar[${PYTHON_SINGLE_USEDEP}]"
+# python_get_any_deps() {
+# 	echo "dev-python/bar[${PYTHON_SINGLE_USEDEP}]"
 # }
 # @CODE
 #
@@ -217,38 +226,39 @@ if [[ ! ${_PYTHON_ANY_R1} ]]; then
 # or '${PYTHON_SINGLE_USEDEP}' references (quoted!) that will get
 # expanded inside the function.
 #
-# This should be used along with an appropriate python_check_deps()
-# that checks which of the any-of blocks were matched.
+# This should be used along with an appropriate python_get_any_deps()
+# that prints the same dependency block with PYTHON_USEDEP and
+# PYTHON_SINGLE_USEDEP substituted where appropriate.
 #
 # Example use:
 # @CODE
 # BDEPEND="$(python_gen_any_dep '
-#	dev-python/foo[${PYTHON_SINGLE_USEDEP}]
-#	|| ( dev-python/bar[${PYTHON_USEDEP}]
-#		dev-python/baz[${PYTHON_USEDEP}] )')"
+# 	dev-python/foo[${PYTHON_SINGLE_USEDEP}]
+# 	|| ( dev-python/bar[${PYTHON_USEDEP}]
+# 		dev-python/baz[${PYTHON_USEDEP}] )')"
 #
-# python_check_deps() {
-#	has_version "dev-python/foo[${PYTHON_SINGLE_USEDEP}]" \
-#		&& { has_version "dev-python/bar[${PYTHON_USEDEP}]" \
-#			|| has_version "dev-python/baz[${PYTHON_USEDEP}]"; }
+# python_get_any_deps() {
+# 	echo "dev-python/foo[${PYTHON_SINGLE_USEDEP}]
+# 		|| ( dev-python/bar[${PYTHON_USEDEP}]
+# 			dev-python/baz[${PYTHON_USEDEP}] )"
 # }
 # @CODE
 #
 # Example value:
 # @CODE
 # || (
-#	(
-#		dev-lang/python:3.7
-#		dev-python/foo[python_single_target_python3_7(-)]
-#		|| ( dev-python/bar[python_targets_python3_7(-)
-#			dev-python/baz[python_targets_python3_7(-) )
-#	)
-#	(
-#		dev-lang/python:3.8
-#		dev-python/foo[python_single_target_python3_8(-)]
-#		|| ( dev-python/bar[python_targets_python3_8(-)]
-#			dev-python/baz[python_targets_python3_8(-)] )
-#	)
+# 	(
+# 		dev-lang/python:3.7
+# 		dev-python/foo[python_single_target_python3_7(-)]
+# 		|| ( dev-python/bar[python_targets_python3_7(-)
+# 			dev-python/baz[python_targets_python3_7(-) )
+# 	)
+# 	(
+# 		dev-lang/python:3.8
+# 		dev-python/foo[python_single_target_python3_8(-)]
+# 		|| ( dev-python/bar[python_targets_python3_8(-)]
+# 			dev-python/baz[python_targets_python3_8(-)] )
+# 	)
 # )
 # @CODE
 python_gen_any_dep() {
@@ -276,7 +286,8 @@ python_gen_any_dep() {
 # Determine what the best installed (and supported) Python
 # implementation is, and set the Python build environment up for it.
 #
-# This function will call python_check_deps() if defined.
+# This function will call python_check_deps() and/or
+# python_get_any_deps() if defined.
 python_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 

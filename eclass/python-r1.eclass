@@ -154,7 +154,8 @@ fi
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # An eclass-generated USE-dependency string for the currently tested
-# implementation. It is set locally for python_check_deps() call.
+# implementation. It is set locally for python_check_deps() and
+# python_get_any_deps() calls.
 #
 # The generated USE-flag list is compatible with packages using
 # python-single-r1 eclass. For python-r1 dependencies,
@@ -162,8 +163,8 @@ fi
 #
 # Example use:
 # @CODE
-# python_check_deps() {
-# 	has_version "dev-python/bar[${PYTHON_SINGLE_USEDEP}]"
+# python_get_any_deps() {
+# 	echo "dev-python/bar[${PYTHON_SINGLE_USEDEP}]"
 # }
 # @CODE
 #
@@ -471,21 +472,21 @@ python_gen_impl_dep() {
 # For the pattern syntax, please see _python_impl_matches
 # in python-utils-r1.eclass.
 #
-# This should be used along with an appropriate python_check_deps()
-# that checks which of the any-of blocks were matched, and python_setup
-# call that enables use of the matched implementation.
+# This should be used along with an appropriate python_get_any_deps()
+# that prints the same dependency block with PYTHON_USEDEP and
+# PYTHON_SINGLE_USEDEP substituted where appropriate.
 #
 # Example use:
 # @CODE
 # BDEPEND="$(python_gen_any_dep '
-#	dev-python/foo[${PYTHON_SINGLE_USEDEP}]
-#	|| ( dev-python/bar[${PYTHON_USEDEP}]
-#		dev-python/baz[${PYTHON_USEDEP}] )' -2)"
+# 	dev-python/foo[${PYTHON_SINGLE_USEDEP}]
+# 	|| ( dev-python/bar[${PYTHON_USEDEP}]
+# 		dev-python/baz[${PYTHON_USEDEP}] )' -2)"
 #
-# python_check_deps() {
-#	has_version "dev-python/foo[${PYTHON_SINGLE_USEDEP}]" \
-#		&& { has_version "dev-python/bar[${PYTHON_USEDEP}]" \
-#			|| has_version "dev-python/baz[${PYTHON_USEDEP}]"; }
+# python_get_any_deps() {
+# 	echo "dev-python/foo[${PYTHON_SINGLE_USEDEP}]
+# 		|| ( dev-python/bar[${PYTHON_USEDEP}]
+# 			dev-python/baz[${PYTHON_USEDEP}] )"
 # }
 #
 # src_compile() {
@@ -639,7 +640,8 @@ python_foreach_impl() {
 # for that implementation. This function has two modes of operation:
 # pure and any-of dep.
 #
-# The pure mode is used if python_check_deps() function is not declared.
+# The pure mode is used if neither python_check_deps() nor
+# python_get_any_deps() is defined.
 # In this case, an implementation is considered suitable if it is
 # supported (in PYTHON_COMPAT), enabled (via USE flags) and matches
 # at least one of the patterns passed (or '*' if no patterns passed).
@@ -648,13 +650,14 @@ python_foreach_impl() {
 # by appropriate REQUIRED_USE constraints. Otherwise, the eclass may
 # fail at build time due to unsatisfied dependencies.
 #
-# The any-of dep mode is used if python_check_deps() is declared.
-# In this mode, an implementation is considered suitable if it is
-# supported, matches at least one of the patterns and python_check_deps()
+# The any-of dep mode is used if python_check_deps() or python_get_any_deps()
+# is defined. In this mode, an implementation is considered suitable if it is
+# supported and matches at least one of the patterns, the dependencies emitted
+# by python_get_any_deps() are satisfied, and python_check_deps()
 # has successful return code. USE flags are not considered.
 #
-# The python_check_deps() function in the any-of mode needs to be
-# accompanied by appropriate any-of dependencies.
+# The python_check_deps() and python_get_any_deps() functions in the any-of
+# mode need to be accompanied by appropriate any-of dependencies.
 #
 # For the pattern syntax, please see _python_impl_matches
 # in python-utils-r1.eclass.
@@ -680,10 +683,10 @@ python_foreach_impl() {
 # Any-of mode example:
 # @CODE
 # BDEPEND="doc? (
-#	$(python_gen_any_dep 'dev-python/epydoc[${PYTHON_USEDEP}]' 'python2*') )"
+# 	$(python_gen_any_dep 'dev-python/epydoc[${PYTHON_USEDEP}]' 'python2*') )"
 #
-# python_check_deps() {
-#	has_version "dev-python/epydoc[${PYTHON_USEDEP}]"
+# python_get_any_deps() {
+# 	echo "doc? ( dev-python/epydoc[${PYTHON_USEDEP}] )"
 # }
 #
 # src_compile() {
@@ -698,7 +701,8 @@ python_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local has_check_deps
-	declare -f python_check_deps >/dev/null && has_check_deps=1
+	{ declare -f python_get_any_deps ||
+		declare -f python_check_deps ; } >/dev/null && has_check_deps=1
 
 	if [[ ! ${has_check_deps} ]]; then
 		_python_validate_useflags
