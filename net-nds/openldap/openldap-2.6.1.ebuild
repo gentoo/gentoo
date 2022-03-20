@@ -23,7 +23,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
 IUSE_DAEMON="argon2 +cleartext crypt experimental minimal samba tcpd"
-IUSE_OVERLAY="overlays perl"
+IUSE_OVERLAY="overlays perl autoca"
 IUSE_OPTIONAL="debug gnutls iodbc ipv6 odbc sasl ssl selinux static-libs +syslog test"
 IUSE_CONTRIB="kerberos kinit pbkdf2 sha2 smbkrb5passwd"
 IUSE_CONTRIB="${IUSE_CONTRIB} cxx"
@@ -34,6 +34,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="cxx? ( sasl )
 	pbkdf2? ( ssl )
 	test? ( cleartext sasl )
+	autoca? ( !gnutls )
 	?? ( test minimal )"
 
 S=${WORKDIR}/${PN}-OPENLDAP_REL_ENG_${MY_PV}
@@ -416,6 +417,7 @@ multilib_src_configure() {
 		fi
 
 		use overlays && myconf+=( --enable-overlays=mod )
+		use autoca && myconf+=( --enable-autoca=mod ) || myconf+=( --enable-autoca=no )
 		# compile-in the syncprov
 		myconf+=( --enable-syncprov=yes )
 
@@ -435,6 +437,7 @@ multilib_src_configure() {
 			--disable-slapd
 			--disable-mdb
 			--disable-overlays
+			--disable-autoca
 			--disable-syslog
 			--without-systemd
 		)
