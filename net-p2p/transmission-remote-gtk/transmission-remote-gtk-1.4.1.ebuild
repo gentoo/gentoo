@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc64 x86"
-IUSE="ayatana debug geoip libnotify libproxy rss"
+IUSE="appindicator debug geoip libnotify libproxy rss"
 
 # RESTRICT="test"
 
@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-libs/json-glib-0.12.6
 	net-misc/curl
 	>=x11-libs/gtk+-3.16:3
-	ayatana? ( dev-libs/libappindicator:3 )
+	appindicator? ( dev-libs/libappindicator:3 )
 	geoip? ( dev-libs/geoip )
 	libnotify? ( >=x11-libs/libnotify-0.7 )
 	libproxy? ( net-libs/libproxy )
@@ -45,7 +45,7 @@ src_configure() {
 		$(use_with geoip libgeoip) \
 		$(use_with libnotify) \
 		$(use_with libproxy) \
-		$(use_with ayatana libappindicator) \
+		$(use_with appindicator libappindicator) \
 		$(use_with rss libmrss) \
 		APPSTREAM_UTIL="$(type -P true)"
 }
