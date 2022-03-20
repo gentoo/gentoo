@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,6 @@ IUSE="altivec doc jack nls phonehome pulseaudio cpu_flags_x86_sse cpu_flags_x86_
 RDEPEND="
 	dev-cpp/glibmm:2
 	dev-cpp/gtkmm:2.4
-	dev-cpp/libgnomecanvasmm:2.6
 	dev-libs/boost:=
 	dev-libs/glib:2
 	dev-libs/libsigc++:2
