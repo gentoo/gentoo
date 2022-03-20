@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,7 +39,7 @@ src_prepare() {
 	use chappa && eapply "${WORKDIR}/${CHAPPA_PATCH_NAME}"
 	eautoreconf
 	tc-export CC RANLIB AR
-	export CC_FOR_BUILD=$(tc-getBUILD_CC)
+	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
 }
 
 src_configure() {
@@ -69,7 +69,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake -j1 AR=$(tc-getAR)
+	emake -j1 AR="$(tc-getAR)"
 }
 
 src_install() {
