@@ -81,7 +81,7 @@ src_prepare() {
 		-e '/^AC_PATH_TOOL/s/ sh, none/ bash, none/' \
 		aclocal/programs.m4 || die
 	AT_M4DIR="aclocal" eautoreconf
-	# Upstream sucks - they do autoconf and THEN replace the version variables.
+	# They do autoconf and THEN replace the version variables :(
 	. ./RELEASE
 	for v in \
 		DB_VERSION_{FAMILY,LETTER,RELEASE,MAJOR,MINOR} \
