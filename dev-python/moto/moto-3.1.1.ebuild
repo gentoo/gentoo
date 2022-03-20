@@ -63,7 +63,6 @@ python_test() {
 		# TODO
 		tests/test_firehose/test_firehose_put.py::test_put_record_http_destination
 		tests/test_firehose/test_firehose_put.py::test_put_record_batch_http_destination
-		tests/test_sqs/test_sqs_cloudformation.py::test_describe_stack_subresources
 		tests/test_swf/responses/test_decision_tasks.py::test_respond_decision_task_completed_with_schedule_activity_task_boto3
 		tests/test_swf/responses/test_timeouts.py::test_activity_task_heartbeat_timeout_boto3
 		tests/test_swf/responses/test_timeouts.py::test_decision_task_start_to_close_timeout_boto3
@@ -80,12 +79,6 @@ python_test() {
 		tests/test_cloudformation/test_cloudformation_stack_integration.py::test_lambda_function
 		tests/test_sqs/test_integration.py::test_invoke_function_from_sqs_exception
 		tests/test_sqs/test_sqs_integration.py::test_invoke_function_from_sqs_exception
-		# broken by new expat
-		tests/test_sts/test_sts.py::test_assume_role_with_saml
-		tests/test_sts/test_sts.py::test_assume_role_with_saml_should_not_rely_on_attribute_order
-		tests/test_sts/test_sts.py::test_assume_role_with_saml_should_respect_xml_namespaces
-		tests/test_sts/test_sts.py::test_assume_role_with_saml_should_retrieve_attribute_value_from_text_when_xml_tag_contains_xmlns_attributes
-		tests/test_sts/test_sts.py::test_assume_role_with_saml_should_default_session_duration_to_3600_seconds_when_saml_attribute_not_provided
 	)
 
 	# pytest-django causes freezegun try to mangle stuff inside django
