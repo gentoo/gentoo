@@ -367,7 +367,6 @@ app-misc/emelfm2
 
 # Mart Raudsepp <leio@gentoo.org> (2021-12-18)
 # GNOME 42 mask, bug #835448
->=gui-libs/libhandy-1.5.0
 >=gui-libs/gtksourceview-5.3
 >=app-editors/gnome-text-editor-42_alpha
 
