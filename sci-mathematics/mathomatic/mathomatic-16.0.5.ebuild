@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,8 +22,8 @@ S="${WORKDIR}/${PN}-${P}"
 
 src_compile() {
 	append-cflags -DBOLD_COLOR=1
-	emake READLINE=1 CC=$(tc-getCC)
-	emake CC=$(tc-getCC) -C primes
+	emake READLINE=1 CC="$(tc-getCC)"
+	emake CC="$(tc-getCC)" -C primes
 }
 
 src_test() {
