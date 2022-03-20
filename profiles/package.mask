@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2022-03-20)
+# Added and then left unmaintained by author, no revdeps in tree,
+# stuck on kernel 4.19, distribution model unlikely a good fit for
+# Gentoo, QA issues, blocks automake-1.15 removal, build issues.
+# Bug #725746, #728154, #835693, removal on 2022-04-19.
+sys-cluster/lustre
+
+# David Seifert <soap@gentoo.org> (2022-03-20)
 # Mask gcc-8 branch (ended upstream support). Please switch
 # to a fresher gcc branch.
 <sys-devel/gcc-9
