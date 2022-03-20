@@ -3,12 +3,6 @@ From: Simon Pichugin <spichugi@redhat.com>
 Date: Wed, 3 Nov 2021 19:03:40 -0700
 Subject: [PATCH] Fix missing mapping
 
----
- libraries/liblber/lber.map | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/libraries/liblber/lber.map b/libraries/liblber/lber.map
-index 9a4094b0f..083cd1f32 100644
 --- a/libraries/liblber/lber.map
 +++ b/libraries/liblber/lber.map
 @@ -121,6 +121,7 @@ OPENLDAP_2.200

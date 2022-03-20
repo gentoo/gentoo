@@ -1,5 +1,3 @@
-diff --git a/build/openldap.m4 b/build/openldap.m4
-index 91e2608b8..493f85ae8 100644
 --- a/build/openldap.m4
 +++ b/build/openldap.m4
 @@ -243,6 +243,40 @@ OL_RESOLVER_TRY(ol_cv_resolver_none)
@@ -43,8 +41,6 @@ index 91e2608b8..493f85ae8 100644
  dnl
  dnl ====================================================================
  dnl Check POSIX Thread version 
-diff --git a/build/top.mk b/build/top.mk
-index 67873d9f3..8d8787ecb 100644
 --- a/build/top.mk
 +++ b/build/top.mk
 @@ -164,6 +164,7 @@ CLIENT_LIBS = @CLIENT_LIBS@
@@ -55,8 +51,6 @@ index 67873d9f3..8d8787ecb 100644
  SLAPD_NDB_LIBS = @SLAPD_NDB_LIBS@
  WT_LIBS = @WT_LIBS@
  
-diff --git a/configure.ac b/configure.ac
-index 9012d0b28..52dd72eb6 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -547,6 +547,7 @@ AC_MSG_RESULT(done)
@@ -108,8 +102,6 @@ index 9012d0b28..52dd72eb6 100644
  AC_SUBST(BALANCER_LIBS)
  AC_SUBST(SLAPD_NDB_LIBS)
  AC_SUBST(SLAPD_NDB_INCS)
-diff --git a/servers/slapd/back-mdb/Makefile.in b/servers/slapd/back-mdb/Makefile.in
-index ad3804898..f9319e227 100644
 --- a/servers/slapd/back-mdb/Makefile.in
 +++ b/servers/slapd/back-mdb/Makefile.in
 @@ -25,11 +25,10 @@ OBJS = init.lo tools.lo config.lo \

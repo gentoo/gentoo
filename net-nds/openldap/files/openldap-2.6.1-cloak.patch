@@ -1,5 +1,3 @@
-diff --git a/contrib/slapd-modules/cloak/cloak.c b/contrib/slapd-modules/cloak/cloak.c
-index ced7a8024..dffce3614 100644
 --- a/contrib/slapd-modules/cloak/cloak.c
 +++ b/contrib/slapd-modules/cloak/cloak.c
 @@ -29,6 +29,7 @@
@@ -10,8 +8,6 @@ index ced7a8024..dffce3614 100644
  #include "slap.h"
  #include "slap-config.h"
  
-diff --git a/servers/slapd/attr.h b/servers/slapd/attr.h
-index e69de29bb..73949f60c 100644
 --- a/servers/slapd/attr.h
 +++ b/servers/slapd/attr.h
 @@ -0,0 +1,8 @@
