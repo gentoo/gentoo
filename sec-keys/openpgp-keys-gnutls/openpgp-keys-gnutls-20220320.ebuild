@@ -5,18 +5,12 @@ EAPI=8
 
 DESCRIPTION="OpenPGP keys used by GnuTLS"
 HOMEPAGE="https://www.gnutls.org/download.html"
-# Mirrored Dmitry's key b/c only on keyservers
-SRC_URI="
-	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-dmitry.asc
-	https://www.gnutls.org/pgpkey-tim.txt -> ${P}-tim.asc
-	https://www.gnutls.org/pgpkey-ueno.txt -> ${P}-ueno.asc
-"
+SRC_URI="https://gnutls.org/gnutls-release-keyring.gpg -> ${P}-release-keyring.gpg"
+S="${WORKDIR}"
 
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-
-S=${WORKDIR}
 
 src_install() {
 	local files=( ${A} )
