@@ -29,7 +29,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-doc/doxygen[dot] )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-8.60-buildsystem.patch"
