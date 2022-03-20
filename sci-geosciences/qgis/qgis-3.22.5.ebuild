@@ -114,6 +114,10 @@ BDEPEND="
 	sys-devel/flex
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-install-grass8-scripts.patch
+)
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 }
