@@ -27,11 +27,11 @@ src_prepare() {
 
 	use debug && append-flags -DDEBUG
 
-	if [[ $(tc-getCC) == *icc* ]]; then
+	if [[ "$(tc-getCC)" == *icc* ]]; then
 		CC_ALT=icc
 		ALT="${ALT}_icc"
 	else
-		CC_ALT=$(tc-getCC)
+		CC_ALT="$(tc-getCC)"
 		use x86 && ALT="32"
 		use amd64 && ALT="64"
 	fi
@@ -39,7 +39,7 @@ src_prepare() {
 	if use cpu_flags_x86_sse2 ; then
 		ALT="${ALT}_sse2"
 		append-flags -msse2
-		[[ $(tc-getCC) == *icc* ]] || append-flags -ffast-math
+		[[ "$(tc-getCC)" == *icc* ]] || append-flags -ffast-math
 	fi
 
 	export CC_ALT="${CC_ALT}"
