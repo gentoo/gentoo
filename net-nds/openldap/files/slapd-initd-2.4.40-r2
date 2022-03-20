@@ -57,7 +57,7 @@ checkconfig() {
 		if [ $? -ne 0 ]; then
 			ewarn "You have files in $d not owned by the ldap user, you must ensure they are accessible to the slapd instance!"
 		fi
-		[ ! -e $d/DB_CONFIG ] && ewarn "$d/DB_CONFIG does not exist, slapd performance may be sub-optimal" 
+		[ ! -e $d/DB_CONFIG ] && ewarn "$d/DB_CONFIG does not exist, slapd performance may be sub-optimal"
 	done
 	# now test the config fully
 	/usr/sbin/slaptest -u "$@" ${OPTS_CONF}

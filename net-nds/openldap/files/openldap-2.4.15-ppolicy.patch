@@ -1,5 +1,5 @@
---- openldap-2.4.15/clients/tools/common.c.orig	2009-02-05 15:05:03.000000000 -0800
-+++ openldap-2.4.15/clients/tools/common.c	2009-03-21 01:45:14.000000000 -0700
+--- a/clients/tools/common.c
++++ b/clients/tools/common.c
 @@ -1315,8 +1315,8 @@
  	int		nsctrls = 0;
  

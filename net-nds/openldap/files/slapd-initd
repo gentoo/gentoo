@@ -8,7 +8,7 @@ depend() {
 }
 
 start() {
-        checkpath -q -d /var/run/openldap/ -o ldap:ldap 
+        checkpath -q -d /var/run/openldap/ -o ldap:ldap
         if ! checkconfig ; then
                 eerror "There is a problem with your slapd.conf!"
                 return 1
@@ -20,10 +20,10 @@ start() {
 
 stop() {
 	ebegin "Stopping ldap-server"
-	start-stop-daemon --stop --signal 2 --quiet --pidfile /var/run/openldap/slapd.pid 
+	start-stop-daemon --stop --signal 2 --quiet --pidfile /var/run/openldap/slapd.pid
 	eend $?
 }
 
-checkconfig() {                                                                                                                                                                                                                              
-        /usr/sbin/slaptest -u "$@" ${OPTS_CONF}                                                                                                                                                                                              
+checkconfig() {
+        /usr/sbin/slaptest -u "$@" ${OPTS_CONF}
 }
