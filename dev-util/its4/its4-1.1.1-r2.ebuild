@@ -24,7 +24,7 @@ src_configure() {
 	# WARNING
 	# non-standard configure
 	# do NOT use econf
-	./configure --with-cpp=$(tc-getCXX) --prefix=/usr --mandir=/usr/share/man --datadir=/usr/share/its4 || die "configure failed"
+	./configure --with-cpp="$(tc-getCXX)" --prefix=/usr --mandir=/usr/share/man --datadir=/usr/share/its4 || die "configure failed"
 }
 
 src_compile() {
