@@ -102,7 +102,7 @@ src_prepare() {
 	default
 
 	strip-linguas -u bfd/po opcodes/po
-	export CC_FOR_BUILD=$(tc-getBUILD_CC)
+	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
 
 	# avoid using ancient termcap from host on Prefix systems
 	sed -i -e 's/termcap tinfow/tinfow/g' \
