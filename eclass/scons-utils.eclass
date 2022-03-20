@@ -123,10 +123,10 @@ if [[ ${_PYTHON_ANY_R1} ]]; then
 	# when using python-any-r1, use any-of dep API
 	BDEPEND="$(python_gen_any_dep "${SCONS_DEPEND}[\${PYTHON_USEDEP}]")"
 
-	scons-utils_python_check_deps() {
-		has_version "${SCONS_DEPEND}[${PYTHON_USEDEP}]"
+	scons-utils_python_get_any_deps() {
+		echo "${SCONS_DEPEND}[${PYTHON_USEDEP}]"
 	}
-	python_check_deps() { scons-utils_python_check_deps; }
+	python_get_any_deps() { scons-utils_python_get_any_deps; }
 elif [[ ${_PYTHON_SINGLE_R1} ]]; then
 	# when using python-single-r1, use PYTHON_USEDEP API
 	BDEPEND="
