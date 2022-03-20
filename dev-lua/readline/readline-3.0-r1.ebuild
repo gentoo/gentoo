@@ -21,9 +21,10 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-lua/luaposix
-	sys-libs/readline
+	sys-libs/readline:=
 "
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
@@ -65,8 +66,8 @@ src_compile() {
 
 lua_src_test() {
 	pushd "${BUILD_DIR}" || die
-	LUA_CPATH="./?.so;${EROOT}/usr/$(get_libdir)/lua/$(ver_cut 1-2 $(lua_get_version))/?.so" ${ELUA} test/test_rl.lua
-	popd
+	LUA_CPATH="./?.so;${ESYSROOT}/usr/$(get_libdir)/lua/$(ver_cut 1-2 $(lua_get_version))/?.so" ${ELUA} test/test_rl.lua || die
+	popd || die
 }
 
 src_test() {
@@ -82,7 +83,7 @@ lua_src_install() {
 	insinto "$(lua_get_lmod_dir)"
 	doins readline.lua
 
-	popd
+	popd || die
 }
 
 src_install() {
