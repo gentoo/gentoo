@@ -31,7 +31,7 @@ src_prepare() {
 		src/optipng/ioutil.c || die
 
 	tc-export CC AR RANLIB
-	export LD=$(tc-getCC)
+	export LD="$(tc-getCC)"
 
 	eapply_user
 }
