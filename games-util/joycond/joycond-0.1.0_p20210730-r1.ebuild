@@ -32,7 +32,8 @@ CONFIG_CHECK="
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-systemd.patch
+	"${FILESDIR}"/${PN}-systemd-paths.patch
+	"${FILESDIR}"/${PN}-systemd-paranoia.patch
 )
 
 src_install() {
