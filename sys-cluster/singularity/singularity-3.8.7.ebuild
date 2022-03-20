@@ -26,7 +26,8 @@ DEPEND="${COMMON}
 	sys-apps/util-linux
 	sys-fs/cryptsetup"
 RDEPEND="${COMMON}
-	sys-fs/squashfs-tools"
+	sys-fs/squashfs-tools
+	!app-containers/apptainer"
 
 CONFIG_CHECK="~SQUASHFS"
 
