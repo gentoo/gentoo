@@ -55,6 +55,10 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/moto-3.1.1-32bit-time_t.patch
+)
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# TODO
