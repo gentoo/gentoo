@@ -17,7 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 IUSE="conntrack netlink nftables pcap static-libs"
 
 BUILD_DEPEND="
-	>=app-eselect/eselect-iptables-20200508
+	>=app-eselect/eselect-iptables-20220320
 "
 COMMON_DEPEND="
 	conntrack? ( >=net-libs/libnetfilter_conntrack-1.0.6 )
@@ -33,7 +33,6 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-4.4:0
 "
 BDEPEND="${BUILD_DEPEND}
-	app-eselect/eselect-iptables
 	virtual/pkgconfig
 	nftables? (
 		sys-devel/flex
