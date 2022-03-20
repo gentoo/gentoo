@@ -608,7 +608,15 @@ multilib_src_compile() {
 
 multilib_src_test() {
 	if multilib_is_native_abi; then
-		emake test
+		cd "tests"
+		pwd
+		# emake test => runs only lloadd & mdb, in serial; skips ldif,sql,wt,regression
+		# emake partests => runs ALL of the tests in parallel
+		# wt/WiredTiger is not supported in Gentoo
+		TESTS=( plloadd pmdb )
+		#TESTS+=( pldif ) # not done by default, so also exclude here
+		#use odbc && TESTS+=( psql ) # not done by default, so also exclude here
+		emake "${TESTS[@]}"
 	fi
 }
 
