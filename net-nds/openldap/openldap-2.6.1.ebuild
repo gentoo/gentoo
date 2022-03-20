@@ -144,6 +144,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.1-cloak.patch
 	"${FILESDIR}"/${PN}-2.6.1-flags.patch
 	"${FILESDIR}"/${PN}-2.6.1-fix-missing-mapping.patch
+	"${FILESDIR}"/${PN}-2.6.1-make-flags.patch
 )
 
 openldap_filecount() {
