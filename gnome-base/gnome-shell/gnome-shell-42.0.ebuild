@@ -34,7 +34,7 @@ DEPEND="
 	>=x11-libs/startup-notification-0.11
 	>=app-i18n/ibus-1.5.19
 	>=gnome-base/gnome-desktop-3.35.90:3=[introspection]
-	bluetooth? ( >=net-wireless/gnome-bluetooth-3.9[introspection] )
+	bluetooth? ( net-wireless/gnome-bluetooth:3=[introspection] )
 	>=media-libs/gstreamer-0.11.92:1.0
 	media-libs/gst-plugins-base:1.0
 	>=media-video/pipewire-0.3.0:=
