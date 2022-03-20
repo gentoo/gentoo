@@ -37,13 +37,6 @@ media-video/wireplumber system-service
 # isn't the same as it is for just glibc specifically.
 sys-libs/glibc custom-cflags
 
-# Sam James <sam@gentoo.org> (2022-01-23)
-# Java bindings are broken with OpenJDK 11+ and we're not
-# aware of any consumers. bug #713866
-# The bindings will be removed on 2022-02-23 due to their state
-# of disrepair.
-sys-libs/db java
-
 # Sam James <sam@gentoo.org> (2022-01-12)
 # Unmask PCH for now for GCC to avoid unnecessary rebuilds
 # (USE=pch is now use.mask-ed globally)

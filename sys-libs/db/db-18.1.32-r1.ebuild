@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit db flag-o-matic java-pkg-opt-2 autotools multilib multilib-minimal eapi7-ver toolchain-funcs
+inherit db flag-o-matic autotools multilib multilib-minimal eapi7-ver toolchain-funcs
 
 #Number of official patches
 #PATCHNO=`echo ${PV}|sed -e "s,\(.*_p\)\([0-9]*\),\2,"`
@@ -31,30 +31,21 @@ done
 LICENSE="AGPL-3"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="doc java cxx tcl test"
+IUSE="doc cxx tcl test"
 
 REQUIRED_USE="test? ( tcl )"
 
 # the entire testsuite needs the TCL functionality
 DEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )
 	test? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )
-	java? ( >=virtual/jdk-1.8 )
 	>=sys-devel/binutils-2.16.1"
-RDEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )
-	java? ( >=virtual/jre-1.8 )"
+RDEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/db$(ver_cut 1-2)/db.h
 )
 
 PATCHES=(
-	# bug #510506
-	"${FILESDIR}"/${PN}-4.8.24-java-manifest-location.patch
-
-	# use the includes from the prefix
-	"${FILESDIR}"/${PN}-6.2.32-jni-check-prefix-first.patch
-	"${FILESDIR}"/${PN}-4.2-listen-to-java-options.patch
-
 	# sqlite configure call has an extra leading ..
 	# upstreamed:5.2.36, missing in 5.3.x/6.x
 	# still needs to be patched in 6.0.20
@@ -83,12 +74,6 @@ src_prepare() {
 		-e "/^DB_RELEASE_DATE=/s~=.*~='${REAL_DB_RELEASE_DATE}'~g" \
 		"${S_BASE}"/dist/RELEASE || die
 
-	# Include the SLOT for Java JAR files
-	# This supersedes the unused jarlocation patches.
-	sed -r -i \
-		-e '/jarfile=.*\.jar$/s,(.jar$),-$(LIBVERSION)\1,g' \
-		"${S_BASE}"/dist/Makefile.in || die
-
 	cd "${S_BASE}"/dist || die
 	rm -f aclocal/libtool.m4
 	sed -i \
@@ -97,7 +82,7 @@ src_prepare() {
 	sed -i \
 		-e '/^AC_PATH_TOOL/s/ sh, none/ bash, none/' \
 		aclocal/programs.m4 || die
-	AT_M4DIR="aclocal aclocal_java" eautoreconf
+	AT_M4DIR="aclocal" eautoreconf
 	# Upstream sucks - they do autoconf and THEN replace the version variables.
 	. ./RELEASE
 	for v in \
@@ -131,11 +116,11 @@ multilib_src_configure() {
 		--disable-sql
 		--disable-sql_codegen
 		--disable-sql_compat
+		--disable-java
 		$([[ ${ABI} == arm ]] && echo --with-mutex=ARM/gcc-assembly)
 		$([[ ${ABI} == amd64 ]] && echo --with-mutex=x86/gcc-assembly)
 		$(use_enable cxx)
 		$(use_enable cxx stl)
-		$(multilib_native_use_enable java)
 		$(use_enable test)
 	)
 
@@ -151,14 +136,6 @@ multilib_src_configure() {
 	# Add linker versions to the symbols. Easier to do, and safer than header file
 	# mumbo jumbo.
 	append-ldflags -Wl,--default-symver
-
-	# use `set` here since the java opts will contain whitespace
-	if multilib_is_native_abi && use java ; then
-		myconf+=(
-			--with-java-prefix="${JAVA_HOME}"
-			--with-javac-flags="$(java-pkg_javac-args)"
-		)
-	fi
 
 	# Bug #270851: test needs TCL support
 	if use tcl || use test ; then
@@ -181,12 +158,6 @@ multilib_src_install() {
 	db_src_install_headerslot
 
 	db_src_install_usrlibcleanup
-
-	if multilib_is_native_abi && use java; then
-		java-pkg_regso "${ED%/}"/usr/"$(get_libdir)"/libdb_java*.so
-		java-pkg_dojar "${ED%/}"/usr/"$(get_libdir)"/*.jar
-		rm -f "${ED%/}"/usr/"$(get_libdir)"/*.jar
-	fi
 }
 
 multilib_src_install_all() {

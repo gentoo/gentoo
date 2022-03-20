@@ -436,7 +436,6 @@ media-libs/libjpeg-turbo java
 net-dns/libidn java
 net-misc/tigervnc java
 sys-devel/gettext java
-sys-libs/db java
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-22)
 # remove mask if/when media-gfx/argyllcms is keywored here.
