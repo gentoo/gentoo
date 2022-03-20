@@ -44,6 +44,10 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 QA_MULTILIB_PATHS="usr/lib/${PN}/.*"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-meson-Don-t-search-for-gtk-doc-if-disabled.patch
+)
+
 src_prepare() {
 	default
 	xdg_environment_reset
