@@ -67,7 +67,7 @@ src_prepare() {
 
 	AT_M4DIR="aclocal" eautoreconf
 
-	# Upstream sucks - they do autoconf and THEN replace the version variables.
+	# They do autoconf and THEN replace the version variables :(
 	. ./RELEASE
 	sed \
 		-e "s/__EDIT_DB_VERSION_MAJOR__/$DB_VERSION_MAJOR/g" \

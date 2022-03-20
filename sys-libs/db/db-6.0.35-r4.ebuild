@@ -83,7 +83,7 @@ src_prepare() {
 
 	AT_M4DIR="aclocal" eautoreconf
 
-	# Upstream sucks - they do autoconf and THEN replace the version variables.
+	# They do autoconf and THEN replace the version variables :(
 	. ./RELEASE
 	local v ev
 	for v in \
