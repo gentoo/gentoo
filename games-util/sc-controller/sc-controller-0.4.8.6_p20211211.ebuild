@@ -39,3 +39,8 @@ pkg_setup() {
 	linux-info_pkg_setup
 	python-single-r1_pkg_setup
 }
+
+src_install() {
+	distutils-r1_src_install
+	rm -r "${ED}"/usr/lib/udev/ || die
+}
