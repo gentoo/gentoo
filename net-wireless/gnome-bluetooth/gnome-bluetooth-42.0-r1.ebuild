@@ -9,7 +9,7 @@ DESCRIPTION="Bluetooth graphical utilities integrated with GNOME"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeBluetooth"
 
 LICENSE="GPL-2+ LGPL-2.1+ FDL-1.1+"
-SLOT="2/13" # subslot = libgnome-bluetooth soname version
+SLOT="3/13" # subslot = libgnome-bluetooth-3 soname version
 IUSE="gtk-doc +introspection test"
 RESTRICT="!test? ( test )"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
