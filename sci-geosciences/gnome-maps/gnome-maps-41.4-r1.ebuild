@@ -29,7 +29,7 @@ RDEPEND="
 	>=net-libs/rest-0.7.90:0.7[introspection]
 
 	app-crypt/libsecret[introspection]
-	dev-libs/libgweather[introspection]
+	dev-libs/libgweather:2=[introspection]
 	media-libs/clutter-gtk:1.0[introspection]
 	media-libs/clutter:1.0[introspection]
 	net-libs/gnome-online-accounts[introspection]
