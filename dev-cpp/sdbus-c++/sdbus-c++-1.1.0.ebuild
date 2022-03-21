@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit meson cmake
+PYTHON_COMPAT=( python3_{8..10} )
+inherit python-any-r1 meson cmake
 
 SDP="systemd-stable-250.4"
 DESCRIPTION="High-level C++ D-Bus library"
@@ -34,7 +35,15 @@ DEPEND="
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen[dot] )
+	!systemd? (
+		${PYTHON_DEPS}
+		$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
+	)
 "
+
+python_check_deps() {
+	has_version -b "dev-python/jinja[${PYTHON_USEDEP}]"
+}
 
 S="${WORKDIR}/sdbus-cpp-${PV}"
 SDS="${WORKDIR}/${SDP}"
@@ -43,6 +52,10 @@ SDB="${WORKDIR}/systemd-build"
 PATCHES=(
 	"${FILESDIR}"/${PN}-gtest-1.11.patch
 )
+
+pkg_setup() {
+	use systemd || python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	if ! use systemd; then
