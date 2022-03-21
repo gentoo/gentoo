@@ -76,6 +76,10 @@ PDEPEND="
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
 
+	if use native-extensions && tc-is-cross-compiler; then
+		einfo "Disabling USE=native-extensions for cross-compilation (bug #612158)"
+	fi
+
 	check_extra_config
 }
 
@@ -93,7 +97,7 @@ python_prepare_all() {
 			>> cnf/make.globals || die
 	fi
 
-	if use native-extensions; then
+	if use native-extensions && ! tc-is-cross-compiler; then
 		printf "[build_ext]\nportage_ext_modules=true\n" >> \
 			setup.cfg || die
 	fi
