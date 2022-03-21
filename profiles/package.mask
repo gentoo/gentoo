@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-03-21)
+# EAPI 5, last release 15 years ago, QA permission issues, no other
+# distro packages this.
+# Bug #553404, #835364, removal on 2022-04-20.
+media-video/mplayer-sh
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-03-21)
 # Masked for testing until at least 2022-03-28.
 # Please test your packages and adapt to changes:
