@@ -23,7 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	>=dev-python/arpeggio-2.0.0[${PYTHON_USEDEP}]
+	>=dev-python/Arpeggio-2.0.0[${PYTHON_USEDEP}]
 	dev-python/future[${PYTHON_USEDEP}]
 "
 BDEPEND="
