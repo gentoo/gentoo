@@ -34,6 +34,19 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2022-03-21)
+# Unmaintained, EAPI 5, no revdeps in tree.
+# Bug #786093, removal on 2022-04-20.
+dev-java/freehep-graphicsbase
+dev-java/freehep-io
+dev-java/glassfish-interceptor-api
+dev-java/gnu-classpath
+dev-java/invokebinder
+dev-java/java-apicheck
+dev-java/jboss-marshalling-river
+dev-java/jboss-marshalling-serial
+dev-java/jrobin
+
+# David Seifert <soap@gentoo.org> (2022-03-21)
 # EAPI 5, last release 15 years ago, QA permission issues, no other
 # distro packages this.
 # Bug #553404, #835364, removal on 2022-04-20.
