@@ -10,4 +10,9 @@
 		<name>Hans de Graaff</name>
 		<description>lts versions</description>
 	</maintainer>
+	<maintainer type="person">
+		<email>samuelbernardo.mail@gmail.com</email>
+		<name>Samuel Bernardo</name>
+		<description>contribution to Jenkins service configuration</description>
+	</maintainer>
 </pkgmetadata>

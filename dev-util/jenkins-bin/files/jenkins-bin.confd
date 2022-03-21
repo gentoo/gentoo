@@ -60,3 +60,15 @@ JENKINS_PIDFILE="/var/run/jenkins.pid"
 # War File
 #
 JENKINS_WAR="/opt/jenkins/jenkins.war"
+
+#
+# Java customization
+#
+JAVA_HOME=/usr/lib64/openjdk-11
+JDK_HOME=/usr/lib64/openjdk-11
+PATH=${JAVA_HOME}/bin/:${PATH}
+
+#
+# Command Line
+#
+JENKINS_COMMAND_LINE="/usr/lib64/openjdk-11/bin/java ${JENKINS_JAVA_OPTIONS} -DJENKINS_HOME=${JENKINS_HOME} -jar ${JENKINS_WAR} --daemon --logfile=/var/log/jenkins/jenkins.log --httpPort=${JENKINS_PORT} --debug=${JENKINS_DEBUG_LEVEL} --handlerCountMax=100 --handlerCountMaxIdle=20 --accessLoggerClassName=winstone.accesslog.SimpleAccessLogger --simpleAccessLogger.format=combined --simpleAccessLogger.file=/var/log/jenkins/access_log ${JENKINS_ARGS}"
