@@ -6,6 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">textX</remote-id>
-		<remote-id type="github">igordejanovic/textX</remote-id>
+		<remote-id type="github">textX/textX</remote-id>
 	</upstream>
 </pkgmetadata>
