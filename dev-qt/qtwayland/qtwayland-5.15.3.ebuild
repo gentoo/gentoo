@@ -33,7 +33,7 @@ BDEPEND="
 	dev-util/wayland-scanner
 "
 
-PATCHES=( "${FILESDIR}/${P}-QTBUG-90037-QTBUG-91264.patch" ) # upstream pending
+PATCHES=( "${FILESDIR}/${PN}-5.15.2-QTBUG-90037-QTBUG-91264.patch" ) # upstream pending
 
 src_configure() {
 	local myqmakeargs=(
