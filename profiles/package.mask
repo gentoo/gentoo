@@ -56,6 +56,7 @@ media-video/mplayer-sh
 ~dev-qt/qt3d-5.15.3
 ~dev-qt/qtbluetooth-5.15.3
 ~dev-qt/qtcharts-5.15.3
+=dev-qt/qtchooser-66-r2
 ~dev-qt/qtconcurrent-5.15.3
 ~dev-qt/qtcore-5.15.3
 ~dev-qt/qtdatavis3d-5.15.3
