@@ -16,6 +16,7 @@ IUSE="+ocamlopt"
 
 DEPEND="dev-ml/gsl-ocaml:=
 	dev-ml/curses:=
+	dev-ml/num:=
 	dev-ml/camlp5":=
 RDEPEND="${DEPEND}"
 
