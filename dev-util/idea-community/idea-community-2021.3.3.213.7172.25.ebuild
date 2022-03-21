@@ -42,9 +42,10 @@ DEPEND="
 		>=dev-java/openjdk-bin-11.0.13_p8-r1:11
 	)"
 RDEPEND="${DEPEND}
+	sys-libs/glibc
+	media-libs/harfbuzz
 	dev-java/jansi-native
-	dev-libs/libdbusmenu
-	media-libs/harfbuzz"
+	dev-libs/libdbusmenu"
 
 BDEPEND="dev-util/patchelf"
 RESTRICT="splitdebug"
