@@ -99,6 +99,11 @@ src_prepare() {
 		lxd/apparmor/instance_qemu.go \
 		lxd/instance/drivers/driver_qemu.go || die "Failed to fix hardcoded ovmf paths."
 
+	# Fix hardcoded virtfs-proxy-helper file path, see bug 798924
+	sed -i \
+		-e "s:/usr/lib/qemu/virtfs-proxy-helper:/usr/libexec/virtfs-proxy-helper:g" \
+		lxd/device/device_utils_disk.go || die "Failed to fix virtfs-proxy-helper path."
+
 	cp "${FILESDIR}"/lxd-4.0.9-r1.service "${T}"/lxd.service || die
 	if use apparmor; then
 		sed -i \
