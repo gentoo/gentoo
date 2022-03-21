@@ -756,7 +756,7 @@ sanity_prechecks() {
 			eerror "This is known to break glibc's build."
 			eerror "Please backup its contents then remove the directory."
 			die "Found directory (${ESYSROOT}/usr/lib/include) which will break build (bug #833620)!"
-                fi
+		fi
 
 		if [[ ${CTARGET} == *-linux* ]] ; then
 			local run_kv build_kv want_kv
