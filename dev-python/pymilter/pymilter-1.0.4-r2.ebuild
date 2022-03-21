@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -17,9 +17,19 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64"
 
-RDEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )"
-DEPEND="${RDEPEND}"
+RDEPEND="
+	|| (
+		mail-filter/libmilter
+		mail-mta/sendmail
+	)
+"
+DEPEND="
+	${RDEPEND}
+"
 BDEPEND="
-	test? ( $(python_gen_impl_dep sqlite) )"
+	test? (
+		$(python_gen_impl_dep sqlite)
+	)
+"
 
 distutils_enable_tests unittest
