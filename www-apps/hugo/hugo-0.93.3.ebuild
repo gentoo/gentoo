@@ -5,7 +5,7 @@ EAPI=8
 
 inherit go-module bash-completion-r1
 
-DESCRIPTION="The world's fastest framework for building websites"
+DESCRIPTION="Fast static HTML and CSS website generator"
 HOMEPAGE="https://gohugo.io https://github.com/gohugoio/hugo"
 SRC_URI="
 	https://github.com/gohugoio/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
