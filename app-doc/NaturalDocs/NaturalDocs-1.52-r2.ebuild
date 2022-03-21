@@ -1,32 +1,27 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=8
 
 inherit perl-module
 
 DESCRIPTION="Extensible, multi-language source code documentation generator"
 HOMEPAGE="http://www.naturaldocs.org/"
 SRC_URI="mirror://sourceforge/naturaldocs/${P}.zip"
+S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 
-IUSE=""
-
-RDEPEND="dev-lang/perl"
-DEPEND="${RDEPEND}
-		app-arch/unzip"
-
-S="${WORKDIR}"
+BDEPEND="app-arch/unzip"
 
 src_install() {
 	insinto /usr/share/${PN}
 	doins -r Styles Info JavaScript
 
 	insinto /etc/${PN}
-	doins -r Config/*
+	doins -r Config/.
 	dosym ../../../etc/${PN} /usr/share/${PN}/Config
 
 	perl_set_version
@@ -43,7 +38,7 @@ src_install() {
 	dosym ../share/${PN}/${PN} /usr/bin/${PN}
 
 	# Documentation
-	dohtml -r Help/*
+	dodoc -r Help/.
 	dosym ../doc/${PF}/html /usr/share/${PN}/Help
 }
 
