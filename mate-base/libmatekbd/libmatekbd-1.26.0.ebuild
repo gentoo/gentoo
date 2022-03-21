@@ -32,7 +32,9 @@ COMMON_DEPEND="
 
 RDEPEND="${COMMON_DEPEND}"
 
-BDEPEND="${COMMON_DEPEND}
+DEPEND="${COMMON_DEPEND}"
+
+BDEPEND="
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
