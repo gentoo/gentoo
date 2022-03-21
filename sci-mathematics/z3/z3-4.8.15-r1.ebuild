@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{8..10} )
@@ -15,7 +15,7 @@ S=${WORKDIR}/z3-${P}
 
 SLOT="0/4.8"
 LICENSE="MIT"
-KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc examples gmp isabelle java python"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -24,11 +24,7 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	java? ( >=virtual/jdk-1.8 )"
 BDEPEND="
-	doc? ( app-doc/doxygen )"
-
-PATCHES=(
-	"${FILESDIR}/${P}-libatomic.patch" #bug 835003
-)
+	doc? ( app-doc/doxygen[dot] )"
 
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
@@ -39,7 +35,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${P}"
+		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DZ3_USE_LIB_GMP=$(usex gmp)
 		-DZ3_ENABLE_EXAMPLE_TARGETS=OFF
 		-DZ3_BUILD_DOCUMENTATION=$(multilib_native_usex doc)
