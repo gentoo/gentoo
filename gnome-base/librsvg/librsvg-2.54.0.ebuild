@@ -30,7 +30,7 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.10.8:= )
 "
 DEPEND="${RDEPEND}
-	>=virtual/rust-1.54[${MULTILIB_USEDEP}]
+	>=virtual/rust-1.56[${MULTILIB_USEDEP}]
 	${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')
 	dev-util/gi-docgen
