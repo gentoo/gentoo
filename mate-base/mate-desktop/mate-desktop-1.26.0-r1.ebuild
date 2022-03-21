@@ -28,6 +28,8 @@ COMMON_DEPEND="
 	startup-notification? ( >=x11-libs/startup-notification-0.5:0 )
 "
 
+RDEPEND="${COMMON_DEPEND}"
+
 BDEPEND="
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/iso-codes
