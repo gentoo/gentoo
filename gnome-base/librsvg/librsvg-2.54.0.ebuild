@@ -47,6 +47,11 @@ QA_FLAGS_IGNORED="
 RESTRICT="test" # Lots of issues on 32bit builds, 64bit build seems to get into an infinite compilation sometimes, etc.
 
 src_prepare() {
+	# Documentation is built unconditionally and depends on introspection,
+	# but introspection is only built for the primary ABI.
+	# Disable documentation and manually build the doc subdirectory separately.
+	sed -i -e '/SUBDIRS =/s/ doc//' Makefile.in Makefile.am || die
+
 	use vala && vala_src_prepare
 	gnome2_src_prepare
 }
@@ -80,10 +85,18 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	gnome2_src_compile
+
+	if multilib_is_native_abi; then
+		emake -C doc
+	fi
 }
 
 multilib_src_install() {
 	gnome2_src_install
+
+	if multilib_is_native_abi; then
+		emake DESTDIR="${D}" install -C doc
+	fi
 }
 
 multilib_src_install_all() {
