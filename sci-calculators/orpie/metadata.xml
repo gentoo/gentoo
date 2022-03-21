@@ -5,6 +5,10 @@
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>ml@gentoo.org</email>
+		<name>ML</name>
+	</maintainer>
 	<longdescription lang="en">
 		Orpie is a fullscreen RPN calculator for the console. Its operation is
 		similar to that of modern HP calculators, but data entry has been
