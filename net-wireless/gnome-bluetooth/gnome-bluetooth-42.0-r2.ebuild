@@ -3,14 +3,14 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
-inherit gnome.org meson python-any-r1 udev xdg
+inherit gnome.org meson python-any-r1 xdg
 
 DESCRIPTION="Bluetooth graphical utilities integrated with GNOME"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeBluetooth"
 
 LICENSE="GPL-2+ LGPL-2.1+ FDL-1.1+"
 SLOT="3/13" # subslot = libgnome-bluetooth-3 soname version
-IUSE="gtk-doc +introspection test"
+IUSE="gtk-doc +introspection sendto test"
 RESTRICT="!test? ( test )"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
@@ -28,6 +28,7 @@ RDEPEND="${DEPEND}
 	acct-group/plugdev
 	virtual/udev
 	>=net-wireless/bluez-5
+	sendto? ( !net-wireless/gnome-bluetooth:2 )
 "
 BDEPEND="
 	dev-libs/libxml2:2
@@ -56,22 +57,13 @@ pkg_setup() {
 
 src_configure() {
 	local emesonargs=(
-		-Dsendto=true
+		$(meson_use sendto)
 		$(meson_use gtk-doc gtk_doc)
 		$(meson_use introspection)
 	)
 	meson_src_configure
 }
 
-src_install() {
-	meson_src_install
-	udev_dorules "${FILESDIR}"/61-${PN}.rules
-}
-
 pkg_postinst() {
 	xdg_pkg_postinst
-	if ! has_version 'sys-apps/systemd[acl]' ; then
-		elog "Don't forget to add yourself to the plugdev group "
-		elog "if you want to be able to control bluetooth transmitter."
-	fi
 }
