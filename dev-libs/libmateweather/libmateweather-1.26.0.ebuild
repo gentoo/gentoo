@@ -29,7 +29,9 @@ RDEPEND="${COMMON_DEPEND}
 	virtual/libintl
 "
 
-BDEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}"
+
+BDEPEND="
 	dev-util/gtk-doc
 	dev-util/gtk-doc-am
 	>=sys-devel/gettext-0.19.8
