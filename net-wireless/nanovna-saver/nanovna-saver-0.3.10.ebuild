@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="tool for reading, displaying and saving data from the NanoVNA"
@@ -24,14 +24,16 @@ DEPEND=""
 RDEPEND="${DEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/pyserial[${PYTHON_USEDEP}]
-	dev-python/PyQt5[${PYTHON_USEDEP}]
+	dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]"
 BDEPEND=""
 
 PATCHES=( "${FILESDIR}"/no-newline-in-description.patch )
 
-src_prepare() {
-	rm "${S}"/test -R || die
-	distutils-r1_src_prepare
+distutils_enable_tests pytest
+
+python_install() {
+	rm -r "${BUILD_DIR}"/lib/test || die
+	distutils-r1_python_install
 }
