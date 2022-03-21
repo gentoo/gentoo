@@ -5,7 +5,7 @@ EAPI="7"
 
 # Patch version
 FIREFOX_PATCHSET="firefox-91esr-patches-05j.tar.xz"
-SPIDERMONKEY_PATCHSET="spidermonkey-91-patches-02j.tar.xz"
+SPIDERMONKEY_PATCHSET="spidermonkey-91-patches-03j.tar.xz"
 
 LLVM_MAX_SLOT=13
 
@@ -61,7 +61,7 @@ SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}
 DESCRIPTION="SpiderMonkey is Mozilla's JavaScript engine written in C and C++"
 HOMEPAGE="https://spidermonkey.dev https://firefox-source-docs.mozilla.org/js/index.html "
 
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86"
 
 SLOT="91"
 LICENSE="MPL-2.0"
