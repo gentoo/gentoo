@@ -59,7 +59,7 @@ python_prepare_all() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	dodoc docs/devices.md
+	dodoc docs/devices.md ChangeLog.md
 	if use doc; then
 		dodoc -r docs/*
 	else
