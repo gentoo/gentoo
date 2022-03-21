@@ -871,6 +871,11 @@ src_prepare() {
 		einfo "Done."
 	fi
 
+	# Contained within our next patchset version but build-time only fix
+	# (pretty much, anyway) so just apply manually here for now until
+	# next patchset version rolled.
+	eapply "${FILESDIR}"/2.34/${P}-hppa-asm-getcontext-fixes.patch
+
 	# TODO: We can drop this once patch is gone from our patchset
 	append-cppflags -DGENTOO_USE_CLONE3
 
