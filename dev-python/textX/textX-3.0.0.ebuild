@@ -8,7 +8,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
-MY_P=textX-${PV}
 DESCRIPTION="Meta-language for DSL implementation inspired by Xtext"
 HOMEPAGE="
 	https://pypi.org/project/textX/
@@ -16,9 +15,8 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/textX/textX/archive/${PV}.tar.gz
-		-> ${MY_P}.gh.tar.gz
+		-> ${P}.gh.tar.gz
 "
-S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
