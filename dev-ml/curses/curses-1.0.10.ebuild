@@ -17,3 +17,5 @@ IUSE="+ocamlopt"
 DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND="dev-ml/dune-configurator"
+
+PATCHES=( "${FILESDIR}"/${P}-CC.patch )
