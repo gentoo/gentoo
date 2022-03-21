@@ -44,7 +44,6 @@ dev-java/invokebinder
 dev-java/java-apicheck
 dev-java/jboss-marshalling-river
 dev-java/jboss-marshalling-serial
-dev-java/jrobin
 
 # David Seifert <soap@gentoo.org> (2022-03-21)
 # EAPI 5, last release 15 years ago, QA permission issues, no other
