@@ -19,17 +19,17 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		>=dev-python/aiofiles-0.8.0[${PYTHON_USEDEP}]
+		<dev-python/aiofiles-0.9[${PYTHON_USEDEP}]
 		dev-python/ajsonrpc[${PYTHON_USEDEP}]
 		<dev-python/bottle-0.13[${PYTHON_USEDEP}]
-		>=dev-python/click-7.1.2[${PYTHON_USEDEP}]
+		>=dev-python/click-8[${PYTHON_USEDEP}]
 		<dev-python/click-9[${PYTHON_USEDEP}]
 		dev-python/colorama[${PYTHON_USEDEP}]
 		>=dev-python/pyserial-3[${PYTHON_USEDEP}]
 		<dev-python/pyserial-4[${PYTHON_USEDEP}]
 		>=dev-python/requests-2.4[${PYTHON_USEDEP}]
 		<dev-python/requests-3[${PYTHON_USEDEP}]
-		>=dev-python/semantic_version-2.8.1[${PYTHON_USEDEP}]
+		>=dev-python/semantic_version-2.9[${PYTHON_USEDEP}]
 		<dev-python/semantic_version-3[${PYTHON_USEDEP}]
 		>=dev-python/tabulate-0.8.3[${PYTHON_USEDEP}]
 		<dev-python/tabulate-1[${PYTHON_USEDEP}]
@@ -37,9 +37,9 @@ RDEPEND="
 		>=dev-python/pyelftools-0.25[${PYTHON_USEDEP}]
 		<dev-python/pyelftools-1[${PYTHON_USEDEP}]
 		>=dev-python/marshmallow-2.20.5[${PYTHON_USEDEP}]
-		>=dev-python/starlette-0.17[${PYTHON_USEDEP}]
-		>=dev-python/uvicorn-0.16[${PYTHON_USEDEP}]
-		dev-python/wsproto[${PYTHON_USEDEP}]
+		=dev-python/starlette-0.18*[${PYTHON_USEDEP}]
+		=dev-python/uvicorn-0.17*[${PYTHON_USEDEP}]
+		=dev-python/wsproto-1.0*[${PYTHON_USEDEP}]
 		>=dev-python/zeroconf-0.37[${PYTHON_USEDEP}]
 	')
 	virtual/udev"
