@@ -21,7 +21,9 @@ COMMON_DEPEND="virtual/libintl"
 RDEPEND="${COMMON_DEPEND}
 	gnome-extra/yelp"
 
-BDEPEND="${COMMON_DEPEND}
+DEPEND="${COMMON_DEPEND}"
+
+BDEPEND="
 	app-text/yelp-tools
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
