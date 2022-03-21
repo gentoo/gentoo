@@ -30,7 +30,7 @@ DEPEND="
 	>=kde-apps/akonadi-notes-20.12.2:5
 	>=kde-apps/kmime-20.12.2:5
 	>=kde-apps/kontactinterface-20.12.2:5
-	>=kde-apps/kpimtextedit-20.12.2:5[speech=]
+	>=kde-apps/kpimtextedit-20.12.2:5[speech(+)=]
 	>=kde-frameworks/kbookmarks-${KFMIN}:5
 	>=kde-frameworks/kcmutils-${KFMIN}:5
 	>=kde-frameworks/kconfig-${KFMIN}:5
