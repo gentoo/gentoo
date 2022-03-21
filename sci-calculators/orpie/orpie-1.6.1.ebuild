@@ -27,6 +27,10 @@ PATCHES=(
 	"${FILESDIR}"/${P}-rcfile.patch
 )
 
+src_compile() {
+	PREFIX=/usr dune_src_compile
+}
+
 src_install() {
 	dune_src_install
 	mv "${D}"/{/usr,}/etc || die
