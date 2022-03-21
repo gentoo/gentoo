@@ -7,7 +7,7 @@ inherit go-module
 DESCRIPTION="k3d creates k3s clusters in docker"
 HOMEPAGE="https://github.com/rancher/k3d"
 
-K3D_K3S_TAG=v1.22.6+k3s1
+K3D_K3S_TAG=v1.22.6-k3s1
 EGO_SUM=(
 "bazil.org/fuse v0.0.0-20160811212531-371fbbdaa898/go.mod"
 "bazil.org/fuse v0.0.0-20200407214033-5883e5a4b512/go.mod"
