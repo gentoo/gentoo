@@ -33,8 +33,6 @@ BDEPEND="app-text/tesseract
 	media-libs/leptonica
 	dev-lang/mujs"
 
-src_prepare() {
-	sed -i -e '/mupdfthird/d' meson.build || die "Failed removing mupdfthird from meson.build"
-
-	default
-}
+PATCHES=(
+	"${FILESDIR}/zathura-pdf-mupdf-0.3.8-meson-mupdfthird.patch"
+)
