@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,11 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/weechat/weechat.git"
 else
-	SRC_URI="https://weechat.org/files/src/${P}.tar.xz"
+	inherit verify-sig
+	SRC_URI="https://weechat.org/files/src/${P}.tar.xz
+		verify-sig? ( https://weechat.org/files/src/${P}.tar.xz.asc )"
+	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/weechat.org.asc
+	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-weechat )"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~x64-macos"
 fi
 
@@ -64,7 +68,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cpputest )
 "
 
-BDEPEND="
+BDEPEND+="
 	virtual/pkgconfig
 	doc? ( >=dev-ruby/asciidoctor-1.5.4 )
 	man? ( >=dev-ruby/asciidoctor-1.5.4 )

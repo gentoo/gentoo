@@ -15,14 +15,14 @@ RESTRICT="!test? ( test )"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="${ADA_DEPS}
 	dev-ada/ada_libfswatch[${ADA_USEDEP}]
 	dev-ada/gnatcoll-core[${ADA_USEDEP},shared]
 	dev-ada/libadalang[${ADA_USEDEP}]
 	dev-ada/libadalang-tools[${ADA_USEDEP},shared]
-	dev-ada/spawn[${ADA_USEDEP},shared]
+	dev-ada/spawn[${ADA_USEDEP},shared,glib]
 	dev-ada/VSS[${ADA_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]

@@ -13,6 +13,7 @@
     - https://leanprover-community.github.io/leanproject.html
   </longdescription>
   <upstream>
+    <changelog>https://github.com/leanprover-community/mathlib-tools/blob/master/CHANGELOG.md</changelog>
     <bugs-to>https://github.com/leanprover-community/mathlib-tools/issues</bugs-to>
     <remote-id type="github">leanprover-community/mathlib-tools</remote-id>
   </upstream>

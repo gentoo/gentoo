@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake-multilib python-any-r1
 
@@ -12,12 +11,11 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://aomedia.googlesource.com/aom"
 else
 	SRC_URI="https://storage.googleapis.com/aom-releases/${P}.tar.gz"
-	S="${WORKDIR}"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="Alliance for Open Media AV1 Codec SDK"
-HOMEPAGE="https://aomedia.org"
+HOMEPAGE="https://aomedia.org https://aomedia.googlesource.com/aom/"
 
 LICENSE="BSD-2"
 SLOT="0/3"
@@ -38,7 +36,7 @@ BDEPEND="${PYTHON_DEPS}
 	doc? ( app-doc/doxygen )
 "
 
-# the PATENTS file is required to be distributed with this package bug #682214
+# the PATENTS file is required to be distributed with this package, bug #682214
 DOCS=( PATENTS )
 
 multilib_src_configure() {

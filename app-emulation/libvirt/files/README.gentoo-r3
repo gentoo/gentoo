@@ -5,7 +5,7 @@ host. In order to reenable client handling, edit /etc/conf.d/libvirt-guests
 and enable the service and start it:
 
 	$ rc-update add libvirt-guests
-	$ service libvirt-guests start
+	$ rc-service libvirt-guests start
 
 
 For the basic networking support (bridged and routed networks) you don't

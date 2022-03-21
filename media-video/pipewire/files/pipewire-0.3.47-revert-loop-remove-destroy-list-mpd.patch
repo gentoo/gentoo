@@ -1,0 +1,187 @@
+Fixes mpd crash.
+
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/16f63a3c8fa227625bade5a9edea22354b347d18.patch
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/d1f7e96f821089224ddcacf8e8f506f99c54eb5c.patch
+
+From 16f63a3c8fa227625bade5a9edea22354b347d18 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Barnab=C3=A1s=20P=C5=91cze?= <pobrn@protonmail.com>
+Date: Fri, 18 Feb 2022 18:36:36 +0100
+Subject: [PATCH] Revert "loop: remove destroy list"
+
+This reverts commit c474846c42967c44db069a23b76a29da6f496f33.
+In addition, `s->loop` is also checked before dispatching a source.
+
+The destroy list is needed in the presence of threads. The
+issue is that a source may be destroyed between `epoll_wait()`
+returning and thread loop lock being acquired. If this
+source is active, then a use-after-free will be triggered
+when the thread loop acquires the lock and starts dispatching
+the sources.
+
+  thread 1                       thread 2
+ ----------                     ----------
+                                loop_iterate
+                                  spa_loop_control_hook_before
+                                    // release lock
+
+ pw_thread_loop_lock
+
+                                  spa_system_pollfd_wait
+                                    // assume it returns with source A
+
+ pw_loop_destroy_source(..., A)
+  // frees storage of A
+
+ pw_thread_loop_unlock
+                                  spa_loop_control_hook_after
+                                    // acquire the lock
+
+                                  for (...) {
+                                    struct spa_source *s = ep[i].data;
+                                    s->rmask = ep[i].events;
+                                      // use-after-free if `s` refers to
+                                      // the previously freed `A`
+
+Fixes #2147
+---
+ spa/plugins/support/loop.c | 19 +++++++++++++++++--
+ 1 file changed, 17 insertions(+), 2 deletions(-)
+
+diff --git a/spa/plugins/support/loop.c b/spa/plugins/support/loop.c
+index 0588ce770..04739eb2a 100644
+--- a/spa/plugins/support/loop.c
++++ b/spa/plugins/support/loop.c
+@@ -75,6 +75,7 @@ struct impl {
+         struct spa_system *system;
+ 
+ 	struct spa_list source_list;
++	struct spa_list destroy_list;
+ 	struct spa_hook_list hooks_list;
+ 
+ 	int poll_fd;
+@@ -325,6 +326,14 @@ static void loop_leave(void *object)
+ 		impl->thread = 0;
+ }
+ 
++static inline void process_destroy(struct impl *impl)
++{
++	struct source_impl *source, *tmp;
++	spa_list_for_each_safe(source, tmp, &impl->destroy_list, link)
++		free(source);
++	spa_list_init(&impl->destroy_list);
++}
++
+ static int loop_iterate(void *object, int timeout)
+ {
+ 	struct impl *impl = object;
+@@ -354,11 +363,14 @@ static int loop_iterate(void *object, int timeout)
+ 	}
+ 	for (i = 0; i < nfds; i++) {
+ 		struct spa_source *s = ep[i].data;
+-		if (SPA_LIKELY(s && s->rmask)) {
++		if (SPA_LIKELY(s && s->rmask && s->loop)) {
+ 			s->priv = NULL;
+ 			s->func(s);
+ 		}
+ 	}
++	if (SPA_UNLIKELY(!spa_list_is_empty(&impl->destroy_list)))
++		process_destroy(impl);
++
+ 	return nfds;
+ }
+ 
+@@ -712,7 +724,7 @@ static void loop_destroy_source(void *object, struct spa_source *source)
+ 		spa_system_close(impl->impl->system, source->fd);
+ 		source->fd = -1;
+ 	}
+-	free(source);
++	spa_list_insert(&impl->impl->destroy_list, &impl->link);
+ }
+ 
+ static const struct spa_loop_methods impl_loop = {
+@@ -783,6 +795,8 @@ static int impl_clear(struct spa_handle *handle)
+ 	spa_list_consume(source, &impl->source_list, link)
+ 		loop_destroy_source(impl, &source->source);
+ 
++	process_destroy(impl);
++
+ 	spa_system_close(impl->system, impl->ack_fd);
+ 	spa_system_close(impl->system, impl->poll_fd);
+ 
+@@ -844,6 +858,7 @@ impl_init(const struct spa_handle_factory *factory,
+ 	impl->poll_fd = res;
+ 
+ 	spa_list_init(&impl->source_list);
++	spa_list_init(&impl->destroy_list);
+ 	spa_hook_list_init(&impl->hooks_list);
+ 
+ 	impl->buffer_data = SPA_PTR_ALIGN(impl->buffer_mem, MAX_ALIGN, uint8_t);
+-- 
+GitLab
+
+
+From d1f7e96f821089224ddcacf8e8f506f99c54eb5c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Barnab=C3=A1s=20P=C5=91cze?= <pobrn@protonmail.com>
+Date: Fri, 18 Feb 2022 19:27:13 +0100
+Subject: [PATCH] test: loop: add test for destroying source of thread loop
+
+Add test which tries to destroy an active source precisely
+after the loop has returned from polling but has not yet
+acquired the thread loop lock.
+---
+ test/test-loop.c | 34 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
+
+diff --git a/test/test-loop.c b/test/test-loop.c
+index 98b2add09..81f7a117c 100644
+--- a/test/test-loop.c
++++ b/test/test-loop.c
+@@ -227,11 +227,45 @@ PWTEST(pwtest_loop_recurse2)
+ 	return PWTEST_PASS;
+ }
+ 
++PWTEST(thread_loop_destroy_between_poll_and_lock)
++{
++	pw_init(NULL, NULL);
++
++	struct pw_thread_loop *thread_loop = pw_thread_loop_new("uaf", NULL);
++	pwtest_ptr_notnull(thread_loop);
++
++	struct pw_loop *loop = pw_thread_loop_get_loop(thread_loop);
++	pwtest_ptr_notnull(loop);
++
++	int evfd = eventfd(0, 0);
++	pwtest_errno_ok(evfd);
++
++	struct spa_source *source = pw_loop_add_io(loop, evfd, SPA_IO_IN, true, NULL, NULL);
++	pwtest_ptr_notnull(source);
++
++	pw_thread_loop_start(thread_loop);
++
++	pw_thread_loop_lock(thread_loop);
++	{
++		write(evfd, &(uint64_t){1}, sizeof(uint64_t));
++		sleep(1);
++		pw_loop_destroy_source(loop, source);
++	}
++	pw_thread_loop_unlock(thread_loop);
++
++	pw_thread_loop_destroy(thread_loop);
++
++	pw_deinit();
++
++	return PWTEST_PASS;
++}
++
+ PWTEST_SUITE(support)
+ {
+ 	pwtest_add(pwtest_loop_destroy2, PWTEST_NOARG);
+ 	pwtest_add(pwtest_loop_recurse1, PWTEST_NOARG);
+ 	pwtest_add(pwtest_loop_recurse2, PWTEST_NOARG);
++	pwtest_add(thread_loop_destroy_between_poll_and_lock, PWTEST_NOARG);
+ 
+ 	return PWTEST_PASS;
+ }
+-- 
+GitLab
+

@@ -1,0 +1,30 @@
+diff --git a/Makefile b/Makefile
+index 7634553..9bfd025 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,12 +2,12 @@
+ 
+ PACKAGE_VERSION = 2.0
+ 
+-CC = gcc
+-CXX = g++
++CC ?= gcc
++CXX ?= g++
+ EXEEXT =
+-PKG_CONFIG=pkg-config
+-CFLAGS   = -Wall -O2
+-LDFLAGS  = -Wall -O2 -lm
++PKG_CONFIG?=pkg-config
++CFLAGS   ?= -Wall -O2
++LDFLAGS  ?= -Wall -O2
+ GTK      = 3
+ 
+ COBJS    = main-command.o unixtime.o gpx-read.o correlate.o exif-gps.o latlong.o
+@@ -20,6 +20,7 @@ CFLAGSINC = `$(PKG_CONFIG) --cflags libxml-2.0 exiv2`
+ GTKFLAGS  = `$(PKG_CONFIG) --cflags gtk+-$(GTK).0`
+ LIBS      = `$(PKG_CONFIG) --libs libxml-2.0 exiv2`
+ LIBSGUI   = `$(PKG_CONFIG) --libs gtk+-$(GTK).0`
++LIBS      += -lm -lstdc++
+ 
+ CFLAGSINC += $(GTKFLAGS)
+ 

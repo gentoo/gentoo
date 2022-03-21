@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This package is a collection of tools for writing verified programs in
+    languages of the Boogie family. Dafny and Boogie are the two currently
+    supported languages, besides Z3.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/boogie-org/boogie-friends/issues/</bugs-to>
+    <remote-id type="github">boogie-org/boogie-friends</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -17,11 +17,10 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ppc ppc64 ~riscv sparc x86 ~x6
 
 RDEPEND="
 	dev-python/path-py[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/contextlib2[${PYTHON_USEDEP}]' 'python3_[67]')"
-# toml is required by setuptools_scm
+"
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]"
+"
 
 # there are no actual tests, just flake8 etc
 RESTRICT="test"

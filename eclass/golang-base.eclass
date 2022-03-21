@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: golang-base.eclass
@@ -6,6 +6,7 @@
 # William Hubbs <williamh@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Eclass that provides base functions for Go packages.
+# @DEPRECATED: go-module.eclass
 # @DESCRIPTION:
 # This eclass provides base functions for software written in the Go
 # programming language; it also provides the build-time dependency on

@@ -1,0 +1,5 @@
+# Needed so that portage can wget into the distfile dir.
+writable-var
+whitelist /var/cache/distfiles
+
+private-bin /usr/bin/wget

@@ -25,11 +25,11 @@ RDEPEND="${LUA_DEPS}
 	$(lua_gen_impl_dep 'deprecated' lua5-1)
 	app-arch/zstd
 	dev-db/sqlite:3
-	>=dev-games/irrlicht-mt-1.9.0.4
 	dev-libs/gmp:0=
 	dev-libs/jsoncpp:=
 	sys-libs/zlib
 	client? (
+		>=dev-games/irrlicht-mt-1.9.0.4
 		media-libs/freetype:2
 		media-libs/libpng:0=
 		virtual/jpeg:0
@@ -51,6 +51,7 @@ RDEPEND="${LUA_DEPS}
 	server? (
 		acct-group/minetest
 		acct-user/minetest
+		>=dev-games/irrlicht-mt-headers-1.9.0.4
 	)
 	spatial? ( sci-libs/libspatialindex:= )"
 DEPEND="${RDEPEND}"

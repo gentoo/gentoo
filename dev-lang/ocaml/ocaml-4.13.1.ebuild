@@ -22,6 +22,10 @@ PDEPEND="emacs? ( app-emacs/ocaml-mode )
 
 QA_FLAGS_IGNORED='/usr/lib.*/ocaml/bigarray.cmxs'
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.12.1-fix-textrel-riscv.patch
+)
+
 src_prepare() {
 	default
 

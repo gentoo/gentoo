@@ -18,7 +18,7 @@ SRC_URI="mirror://apache/commons/digester/source/commons-digester-2.1-src.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="2.1"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 # Common dependencies
 # POM: pom.xml

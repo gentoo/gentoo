@@ -1,0 +1,18 @@
+Upstream-issue: https://github.com/s3fs-fuse/s3fs-fuse/pull/1888
+Upstream-commit: 4dfe2bfdd742 ("Include climits to support musl libc")
+
+diff --git a/src/fdcache.cpp b/src/fdcache.cpp
+index 3ececd3..3ad876d 100644
+--- a/src/fdcache.cpp
++++ b/src/fdcache.cpp
+@@ -21,6 +21,7 @@
+ #include <cstdio>
+ #include <cstdlib>
+ #include <cerrno>
++#include <climits>
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <dirent.h>
+-- 
+2.34.1
+

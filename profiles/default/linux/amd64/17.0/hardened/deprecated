@@ -53,7 +53,7 @@ The following steps can be used to upgrade your system:
  required!]
 
 10. Rebuild the toolchain:
-      # emerge -1v sys-devel/gcc:9.3.0
+      # emerge -1v sys-devel/gcc:11
       [ repeat for other slots you will be using ]
       [ if you are upgrading from 13.0 profile, also: ]
       # emerge -1v sys-devel/binutils

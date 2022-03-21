@@ -1,8 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -arm64
+
+# David Seifert <soap@gentoo.org> (2022-03-13)
+# NVENC works here
+-nvenc
+
+# Ionen Wolkens <ionen@gentoo.org> (2022-02-17)
+# x11-drivers/nvidia-drivers' binary blob works here
+-video_cards_nvidia
 
 # Michał Górny <mgorny@gentoo.org> (2021-01-07)
 # Prebuilt kernels are supported here.
@@ -110,7 +118,6 @@ anthy
 -video_cards_exynos
 -video_cards_freedreno
 -video_cards_lima
--video_cards_imx
 -video_cards_nouveau
 -video_cards_panfrost
 -video_cards_tegra

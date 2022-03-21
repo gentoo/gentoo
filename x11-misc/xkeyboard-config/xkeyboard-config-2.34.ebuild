@@ -25,6 +25,7 @@ DEPEND=""
 RDEPEND=""
 BDEPEND="
 	${PYTHON_DEPS}
+	dev-lang/perl
 	dev-libs/libxslt
 	sys-devel/gettext
 "

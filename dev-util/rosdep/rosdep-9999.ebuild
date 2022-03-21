@@ -1,22 +1,18 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
-
-SCM=""
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SCM="git-r3"
-	EGIT_REPO_URI="https://github.com/ros-infrastructure/rosdep"
-fi
-
-inherit ${SCM} distutils-r1
+inherit distutils-r1
 
 DESCRIPTION="Command-line tool for installing ROS system dependencies"
 HOMEPAGE="https://wiki.ros.org/rosdep"
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SRC_URI=""
+
+if [[ ${PV} = *9999 ]]; then
+	EGIT_REPO_URI="https://github.com/ros-infrastructure/rosdep"
+	inherit git-r3
 else
 	SRC_URI="http://download.ros.org/downloads/${PN}/${P}.tar.gz
 		https://github.com/ros-infrastructure/rosdep/archive/${PV}.tar.gz -> ${P}.tar.gz
@@ -29,7 +25,7 @@ SLOT="0"
 
 # Tests need network
 RESTRICT="test"
-PROPERTIES+=" test_network"
+PROPERTIES="test_network"
 
 RDEPEND="
 	dev-python/catkin_pkg[${PYTHON_USEDEP}]
@@ -44,7 +40,7 @@ BDEPEND="
 "
 PATCHES=( "${FILESDIR}/tests.patch" )
 
-distutils_enable_tests nose
+distutils_enable_tests pytest
 
 src_test() {
 	unset ROS_DISTRO

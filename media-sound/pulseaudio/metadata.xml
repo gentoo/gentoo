@@ -74,5 +74,15 @@
     <flag name="ofono-headset">
       Build with oFono HFP backend for bluez 5, requires <pkg>net-misc/ofono</pkg>.
     </flag>
+    <flag name="gstreamer">
+      Build with support for gstreamer including ability to use bluetooth codecs.
+      For bluetooth codecs see USE ldac and aptx.
+    </flag>
+    <flag name="aptx">
+      aptX (HD) over Bluetooth (many Android compatible headphones), requires <pkg>media-plugins/gst-plugins-openaptx</pkg>.
+    </flag>
+    <flag name="ldac">
+      LDAC over Bluetooth (primarily Sony headphones), requires <pkg>media-plugins/gst-plugins-ldac</pkg>.
+    </flag>
   </use>
 </pkgmetadata>

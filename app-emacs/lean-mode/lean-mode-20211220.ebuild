@@ -29,10 +29,5 @@ RDEPEND="
 "
 
 DOCS=( README.md )
+ELISP_REMOVE="company-lean.el helm-lean.el"
 SITEFILE="50${PN}-gentoo.el"
-
-src_prepare() {
-	rm {company,helm}-lean.el || die
-
-	elisp_src_prepare
-}

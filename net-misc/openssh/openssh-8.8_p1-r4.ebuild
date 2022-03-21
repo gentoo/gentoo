@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit user-info flag-o-matic autotools pam systemd toolchain-funcs
+inherit user-info flag-o-matic autotools pam systemd toolchain-funcs verify-sig
 
 # Make it more portable between straight releases
 # and _p? releases.
@@ -29,7 +29,9 @@ SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	${SCTP_PATCH:+sctp? ( https://dev.gentoo.org/~chutzpah/dist/openssh/${SCTP_PATCH} )}
 	${HPN_VER:+hpn? ( $(printf "mirror://sourceforge/project/hpnssh/Patches/HPN-SSH%%20${HPN_VER/./v}%%20${HPN_PV/_P/p}/%s\n" "${HPN_PATCHES[@]}") )}
 	${X509_PATCH:+X509? ( https://roumenpetrov.info/openssh/x509-${X509_VER}/${X509_PATCH} )}
+	verify-sig? ( mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz.asc )
 "
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/openssh.org.asc
 S="${WORKDIR}/${PARCH}"
 
 LICENSE="BSD GPL-2"
@@ -87,6 +89,7 @@ RDEPEND="${RDEPEND}
 BDEPEND="
 	virtual/pkgconfig
 	sys-devel/autoconf
+	verify-sig? ( sec-keys/openpgp-keys-openssh )
 "
 
 pkg_pretend() {
@@ -110,6 +113,13 @@ pkg_pretend() {
 		ewarn "Sorry, but openssh no longer supports tcp-wrappers, and it seems like"
 		ewarn "you're trying to use it.  Update your ${EROOT}/etc/hosts.{allow,deny} please."
 	fi
+}
+
+src_unpack() {
+	default
+
+	# We don't have signatures for HPN, X509, so we have to write this ourselves
+	use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${PARCH}.tar.gz{,.asc}
 }
 
 src_prepare() {

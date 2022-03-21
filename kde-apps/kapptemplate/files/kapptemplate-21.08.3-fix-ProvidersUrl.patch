@@ -1,0 +1,25 @@
+From 14c554ba403fded7a22b1c231e02f552da344670 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heiko.becker@kde.org>
+Date: Tue, 8 Feb 2022 11:55:58 +0100
+Subject: [PATCH] Use the CDN based endpoint rather than the legacy endpoint
+
+---
+ src/application/kapptemplate.knsrc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/application/kapptemplate.knsrc b/src/application/kapptemplate.knsrc
+index 76bcc7f..9ddd3a7 100644
+--- a/src/application/kapptemplate.knsrc
++++ b/src/application/kapptemplate.knsrc
+@@ -33,7 +33,7 @@ Name[x-test]=xxApplication Templates (SDK)xx
+ Name[zh_CN]=应用程序模板 (SDK)
+ Name[zh_TW]=應用程式範本 (SDK)
+ 
+-ProvidersUrl=http://download.kde.org/ocs/providers.xml
++ProvidersUrl=https://autoconfig.kde.org/ocs/providers.xml
+ Categories=KDE App Template
+ TargetDir=kdevappwizard/templates
+ Uncompress=never
+-- 
+GitLab
+

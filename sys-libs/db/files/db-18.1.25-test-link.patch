@@ -1,5 +1,5 @@
---- db-18.1.25/test/tcl/parallel.tcl
-+++ db-18.1.25/test/tcl/parallel.tcl
+--- a/test/tcl/parallel.tcl
++++ b/test/tcl/parallel.tcl
 @@ -296,17 +296,26 @@
  			    [eval glob -nocomplain {$dir/$buildpath/db_{reptest,repsite,replicate}$EXE}] \
  			    $destdir/$buildpath}

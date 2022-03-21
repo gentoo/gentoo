@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-source tests-common.sh
+source tests-common.sh || exit
 
 eqawarn() {
 	: # stub
@@ -155,11 +155,6 @@ if [[ -x /usr/bin/pypy3 ]]; then
 fi
 test_var PYTHON_PKG_DEP pypy3 '*dev-python/pypy3*:0='
 test_var PYTHON_SCRIPTDIR pypy3 /usr/lib/python-exec/pypy3
-
-test_is "python_is_python3 python2.7" 1
-test_is "python_is_python3 python3.2" 0
-test_is "python_is_python3 pypy" 1
-test_is "python_is_python3 pypy3" 0
 
 # generic shebangs
 test_fix_shebang '#!/usr/bin/python' python3.6 '#!/usr/bin/python3.6'

@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-jupyter-${PV}"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-python/autobahn-18.8.2[${PYTHON_USEDEP}]

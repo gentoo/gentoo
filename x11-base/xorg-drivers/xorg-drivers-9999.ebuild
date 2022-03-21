@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI=""
 LICENSE="metapackage"
 SLOT="0"
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 else
 	PROPERTIES+=" live"
 fi
@@ -34,7 +34,6 @@ IUSE_VIDEO_CARDS="
 	video_cards_geode
 	video_cards_glint
 	video_cards_i915
-	video_cards_i965
 	video_cards_intel
 	video_cards_mga
 	video_cards_nouveau
@@ -80,8 +79,7 @@ PDEPEND="
 	video_cards_geode?         ( x11-drivers/xf86-video-geode )
 	video_cards_glint?         ( >=x11-drivers/xf86-video-glint-1.2.9 )
 	video_cards_i915?          ( x11-drivers/xf86-video-intel )
-	video_cards_i965?          ( >=x11-base/xorg-server-${PV}[-minimal] )
-	video_cards_intel?         ( !video_cards_i965? ( >=x11-drivers/xf86-video-intel-2.99.917_p20180214-r1 ) )
+	video_cards_intel?         ( >=x11-base/xorg-server-${PV}[-minimal] )
 	video_cards_mga?           ( >=x11-drivers/xf86-video-mga-1.6.5 )
 	video_cards_nouveau?       ( >=x11-drivers/xf86-video-nouveau-1.0.13 )
 	video_cards_nv?            ( >=x11-drivers/xf86-video-nv-2.1.21 )

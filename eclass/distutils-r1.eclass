@@ -82,11 +82,16 @@ esac
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Enable experimental PEP 517 mode for the specified build system.
-# In this mode, the complete build and install is done
-# in python_compile(), venv-style install tree is provided
-# to python_test() and python_install() just merges the temporary
-# install tree into real fs.
+# Enable the PEP 517 mode for the specified build system.  In this mode,
+# the complete build and install is done in python_compile(),
+# a venv-style install tree is provided to python_test(),
+# and python_install() just merges the temporary install tree
+# into the real fs.
+#
+# This mode is recommended for Python packages.  However, some packages
+# using custom hacks on top of distutils/setuptools may not install
+# correctly in this mode.  Please verify the list of installed files
+# when using it.
 #
 # The variable specifies the build system used.  Currently,
 # the following values are supported:
@@ -176,7 +181,7 @@ _distutils_set_globals() {
 		# tomli is used to read build-backend from pyproject.toml
 		bdep='
 			>=dev-python/installer-0.4.0_p20220124[${PYTHON_USEDEP}]
-			dev-python/tomli[${PYTHON_USEDEP}]'
+			>=dev-python/tomli-1.2.3[${PYTHON_USEDEP}]'
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
 				bdep+='
@@ -333,11 +338,8 @@ unset -f _distutils_set_globals
 # (allowing any implementation). If multiple values are specified,
 # implementations matching any of the patterns will be accepted.
 #
-# The patterns can be either fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
-# appropriately all enabled Python 2/3 implementations (alike
-# python_is_python3). Remember to escape or quote the fnmatch patterns
-# to prevent accidental shell filename expansion.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # If the restriction needs to apply conditionally to a USE flag,
 # the variable should be set conditionally as well (e.g. in an early
@@ -426,9 +428,11 @@ distutils_enable_sphinx() {
 
 		python_check_deps() {
 			use doc || return 0
+
 			local p
 			for p in dev-python/sphinx "${_DISTUTILS_SPHINX_PLUGINS[@]}"; do
-				has_version "${p}[${PYTHON_USEDEP}]" || return 1
+				python_has_version "${p}[${PYTHON_USEDEP}]" ||
+					return 1
 			done
 		}
 	else
@@ -922,6 +926,130 @@ _distutils-r1_backend_to_key() {
 	esac
 }
 
+# @FUNCTION: _distutils-r1_get_backend
+# @INTERNAL
+# @DESCRIPTION:
+# Read (or guess, in case of setuptools) the build-backend
+# for the package in the current directory.
+_distutils-r1_get_backend() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local build_backend
+	if [[ -f pyproject.toml ]]; then
+		# if pyproject.toml exists, try getting the backend from it
+		# NB: this could fail if pyproject.toml doesn't list one
+		build_backend=$(
+			"${EPYTHON}" - 3>&1 <<-EOF
+				import os
+				import tomli
+				print(tomli.load(open("pyproject.toml", "rb"))
+						.get("build-system", {})
+						.get("build-backend", ""),
+					file=os.fdopen(3, "w"))
+			EOF
+		)
+	fi
+	if [[ -z ${build_backend} && ${DISTUTILS_USE_PEP517} == setuptools &&
+		-f setup.py ]]
+	then
+		# use the legacy setuptools backend as a fallback
+		build_backend=setuptools.build_meta:__legacy__
+	fi
+	if [[ -z ${build_backend} ]]; then
+		die "Unable to obtain build-backend from pyproject.toml"
+	fi
+
+	if [[ ${DISTUTILS_USE_PEP517} != standalone ]]; then
+		# verify whether DISTUTILS_USE_PEP517 was set correctly
+		local expected_value=$(_distutils-r1_backend_to_key "${build_backend}")
+		if [[ ${DISTUTILS_USE_PEP517} != ${expected_value} ]]; then
+			eerror "DISTUTILS_USE_PEP517 does not match pyproject.toml!"
+			eerror "    have: DISTUTILS_USE_PEP517=${DISTUTILS_USE_PEP517}"
+			eerror "expected: DISTUTILS_USE_PEP517=${expected_value}"
+			eerror "(backend: ${build_backend})"
+			die "DISTUTILS_USE_PEP517 value incorrect"
+		fi
+
+		# fix deprecated backends up
+		local new_backend=
+		case ${build_backend} in
+			flit.buildapi)
+				new_backend=flit_core.buildapi
+				;;
+			poetry.masonry.api)
+				new_backend=poetry.core.masonry.api
+				;;
+		esac
+
+		if [[ -n ${new_backend} ]]; then
+			if [[ ! -f ${T}/.distutils_deprecated_backend_warned ]]; then
+				eqawarn "${build_backend} backend is deprecated.  Please see:"
+				eqawarn "https://projects.gentoo.org/python/guide/distutils.html#deprecated-pep-517-backends"
+				eqawarn "The eclass will be using ${new_backend} instead."
+				> "${T}"/.distutils_deprecated_backend_warned || die
+			fi
+			build_backend=${new_backend}
+		fi
+	fi
+
+	echo "${build_backend}"
+}
+
+# @FUNCTION: distutils_pep517_install
+# @USAGE: <root>
+# @DESCRIPTION:
+# Build the wheel for the package in the current directory using PEP 517
+# backend and install it into <root>.
+#
+# This function is intended for expert use only.  It does not handle
+# wrapping executables.
+distutils_pep517_install() {
+	debug-print-function ${FUNCNAME} "${@}"
+	[[ ${#} -eq 1 ]] || die "${FUNCNAME} takes exactly one argument: root"
+
+	local root=${1}
+	local -x WHEEL_BUILD_DIR=${BUILD_DIR}/wheel
+	mkdir -p "${WHEEL_BUILD_DIR}" || die
+
+	local build_backend=$(_distutils-r1_get_backend)
+	einfo "  Building the wheel for ${PWD#${WORKDIR}/} via ${build_backend}"
+	local wheel=$(
+		"${EPYTHON}" - 3>&1 >&2 <<-EOF || die "Wheel build failed"
+			import ${build_backend%:*}
+			import os
+			print(${build_backend/:/.}.build_wheel(os.environ['WHEEL_BUILD_DIR']),
+				file=os.fdopen(3, 'w'))
+		EOF
+	)
+	[[ -n ${wheel} ]] || die "No wheel name returned"
+
+	einfo "  Installing the wheel to ${root}"
+	# NB: --compile-bytecode does not produce the correct paths,
+	# and python_optimize doesn't handle being called outside D,
+	# so we just defer compiling until the final merge
+	# NB: we override sys.prefix & sys.exec_prefix because otherwise
+	# installer would use virtualenv's prefix
+	local -x PYTHON_PREFIX=${EPREFIX}/usr
+	"${EPYTHON}" - -d "${root}" "${WHEEL_BUILD_DIR}/${wheel}" --no-compile-bytecode \
+			<<-EOF || die "installer failed"
+		import os, sys
+		sys.prefix = sys.exec_prefix = os.environ["PYTHON_PREFIX"]
+		from installer.__main__ import main
+		main(sys.argv[1:])
+	EOF
+
+	# remove installed licenses
+	find "${root}$(python_get_sitedir)" \
+		'(' -path '*.dist-info/COPYING*' -o \
+		-path '*.dist-info/LICENSE*' ')' -delete || die
+
+	# clean the build tree; otherwise we may end up with PyPy3
+	# extensions duplicated into CPython dists
+	if [[ ${DISTUTILS_USE_PEP517:-setuptools} == setuptools ]]; then
+		esetup.py clean -a
+	fi
+}
+
 # @FUNCTION: distutils-r1_python_compile
 # @USAGE: [additional-args...]
 # @DESCRIPTION:
@@ -965,86 +1093,8 @@ distutils-r1_python_compile() {
 		addpredict /usr/lib/portage/pym
 		addpredict /usr/local # bug 498232
 
-		local -x WHEEL_BUILD_DIR=${BUILD_DIR}/wheel
-		mkdir -p "${WHEEL_BUILD_DIR}" || die
-
-		local build_backend
-		if [[ -f pyproject.toml ]]; then
-			build_backend=$("${EPYTHON}" -c 'import tomli; \
-				print(tomli.load(open("pyproject.toml", "rb")) \
-					["build-system"]["build-backend"])' 2>/dev/null)
-		fi
-		if [[ -z ${build_backend} && ${DISTUTILS_USE_PEP517} == setuptools &&
-			-f setup.py ]]
-		then
-			# use the legacy setuptools backend
-			build_backend=setuptools.build_meta:__legacy__
-		fi
-		[[ -z ${build_backend} ]] &&
-			die "Unable to obtain build-backend from pyproject.toml"
-
-		if [[ ${DISTUTILS_USE_PEP517} != standalone ]]; then
-			local expected_value=$(_distutils-r1_backend_to_key "${build_backend}")
-			if [[ ${DISTUTILS_USE_PEP517} != ${expected_value} ]]; then
-				eerror "DISTUTILS_USE_PEP517 does not match pyproject.toml!"
-				eerror "    have: DISTUTILS_USE_PEP517=${DISTUTILS_USE_PEP517}"
-				eerror "expected: DISTUTILS_USE_PEP517=${expected_value}"
-				eerror "(backend: ${build_backend})"
-				die "DISTUTILS_USE_PEP517 value incorrect"
-			fi
-
-			# fix deprecated backends up
-			local new_backend=
-			case ${build_backend} in
-				flit.buildapi)
-					new_backend=flit_core.buildapi
-					;;
-				poetry.masonry.api)
-					new_backend=poetry.core.masonry.api
-					;;
-			esac
-
-			if [[ -n ${new_backend} ]]; then
-				if [[ ! ${_DISTUTILS_DEPRECATED_BACKEND_WARNED} ]]; then
-					eqawarn "${build_backend} backend is deprecated.  Please see:"
-					eqawarn "https://projects.gentoo.org/python/guide/distutils.html#deprecated-pep-517-backends"
-					eqawarn "The eclass will be using ${new_backend} instead."
-					_DISTUTILS_DEPRECATED_BACKEND_WARNED=1
-				fi
-				build_backend=${new_backend}
-			fi
-		fi
-
-		einfo "  Building the wheel via ${build_backend}"
-		"${EPYTHON}" -c "import ${build_backend%:*}; \
-			import os; \
-			${build_backend/:/.}.build_wheel(os.environ['WHEEL_BUILD_DIR'])" ||
-			die "Wheel build failed"
-
-		local wheel=( "${WHEEL_BUILD_DIR}"/*.whl )
-		if [[ ${#wheel[@]} -ne 1 ]]; then
-			die "Incorrect number of wheels created (${#wheel[@]}): ${wheel[*]}"
-		fi
-
 		local root=${BUILD_DIR}/install
-		einfo "  Installing the wheel to ${root}"
-		# NB: --compile-bytecode does not produce the correct paths,
-		# and python_optimize doesn't handle being called outside D,
-		# so we just defer compiling until the final merge
-		"${EPYTHON}" -m installer -d "${root}" "${wheel}" \
-			--no-compile-bytecode ||
-			die "installer failed"
-
-		# remove installed licenses
-		find "${root}$(python_get_sitedir)" \
-			'(' -path '*.dist-info/COPYING*' -o \
-			-path '*.dist-info/LICENSE*' ')' -delete || die
-
-		# clean the build tree; otherwise we may end up with PyPy3
-		# extensions duplicated into CPython dists
-		if [[ ${DISTUTILS_USE_PEP517:-setuptools} == setuptools ]]; then
-			esetup.py clean -a
-		fi
+		distutils_pep517_install "${root}"
 
 		# copy executables to python-exec directory
 		# we do it early so that we can alter bindir recklessly

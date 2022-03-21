@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -10,10 +10,10 @@ inherit eutils systemd flag-o-matic prefix toolchain-funcs \
 	multiprocessing java-pkg-opt-2 cmake
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/${PN}/${PN}-10.6.5-patches-03.tar.xz"
+PATCH_SET=( https://dev.gentoo.org/~{whissi,dlan}/dist/${PN}/${PN}-10.6.5-patches-04.tar.xz )
 
 SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
-	${PATCH_SET}"
+	${PATCH_SET[@]}"
 
 HOMEPAGE="https://mariadb.org/"
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"

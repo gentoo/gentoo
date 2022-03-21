@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -60,7 +60,7 @@ src_compile() {
 	emake
 
 	cd "${S}"
-	emake OBJS="iaxmodem.o" CC=$(tc-getCC) \
+	emake OBJS="iaxmodem.o" CC="$(tc-getCC)" \
 		LDFLAGS="${LDFLAGS} -Wl,-rpath,/usr/$(get_libdir)/iaxmodem \
 			-Llib/spandsp/src/.libs -Llib/libiax2/src/.libs -lm -lutil -ltiff -lspandsp -liax"
 }

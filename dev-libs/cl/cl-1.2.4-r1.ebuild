@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit multilib
-
 DESCRIPTION="OpenCL bindings for Erlang"
 HOMEPAGE="https://github.com/tonyrog/cl"
 SRC_URI="https://github.com/tonyrog/cl/archive/${P}.tar.gz"

@@ -87,7 +87,7 @@ RDEPEND="
 		dev-python/numpy[${PYTHON_USEDEP}]
 		>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
 		dev-python/pybind11[${PYTHON_USEDEP}]
-		dev-python/pyside2[gui,svg,${PYTHON_USEDEP}]
+		dev-python/pyside2[gui,svg,webchannel,webengine,${PYTHON_USEDEP}]
 		dev-python/shiboken2[${PYTHON_USEDEP}]
 		addonmgr? ( dev-python/GitPython[${PYTHON_USEDEP}] )
 		fem? ( dev-python/ply[${PYTHON_USEDEP}] )
@@ -270,8 +270,6 @@ src_install() {
 	python_optimize "${ED}"/usr/share/${PN}/data/Mod/Start/StartPage "${ED}"/usr/$(get_libdir)/${PN}{/Ext,/Mod}/
 	# compile main package in python site-packages as well
 	python_optimize
-
-	doenvd "${FILESDIR}/99${PN}"
 }
 
 pkg_postinst() {

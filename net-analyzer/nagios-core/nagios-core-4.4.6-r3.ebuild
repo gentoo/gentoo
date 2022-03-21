@@ -132,11 +132,11 @@ src_configure() {
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) nagios
+	emake CC="$(tc-getCC)" nagios
 
 	if use web; then
 		# Only compile the CGIs/HTML when USE=web is set.
-		emake CC=$(tc-getCC) cgis html
+		emake CC="$(tc-getCC)" cgis html
 	fi
 }
 

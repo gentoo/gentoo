@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="examples midi opengl test X"
 RESTRICT="!test? ( test )"
 
@@ -30,7 +30,7 @@ RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	!X? ( >=media-libs/libsdl2-1.2.5[threads] )"
 DEPEND="${RDEPEND}
 	test? (
-		media-libs/sdl2-image[gif,jpeg,png]
+		media-libs/sdl2-image[gif,jpeg,png,tiff]
 		media-libs/sdl2-mixer[mp3,vorbis,wav]
 	)"
 # fontconfig used for fc-list
@@ -65,7 +65,7 @@ python_test() {
 	local -x SDL_VIDEODRIVER=dummy
 	local -x SDL_AUDIODRIVER=disk
 	distutils_install_for_testing --via-root
-	script -eqc "${EPYTHON} -m pygame.tests" || die
+	script -eqc "${EPYTHON} -m pygame.tests -v" || die
 }
 
 python_install() {

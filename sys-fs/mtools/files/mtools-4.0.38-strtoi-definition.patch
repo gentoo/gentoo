@@ -1,0 +1,94 @@
+https://lists.gnu.org/archive/html/info-mtools/2022-03/msg00001.html
+
+From d36dea2ea7f246f28719dcb01b7a8ad7ad8ed1f6 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 6 Mar 2022 02:36:03 +0000
+Subject: [PATCH] Use own definition of strtoi
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Before this change, build resulted in implicit function declarations like:
+```
+* config.c:269:57: warning: implicit declaration of function ‘strtoi’; did you mean ‘strtoui’? [-Wimplicit-function-declaration]
+* floppyd_io.c:473:20: warning: implicit declaration of function ‘strtoi’; did you mean ‘strtoui’? [-Wimplicit-function-declaration]
+```
+
+The include(s) for inttypes.h are guarded by HAVE_INTTYPES_H
+(normal autoconf pattern) but we're not checking for inttypes.h
+in configure. But adding this doesn't solve the issue.
+
+If libbsd is installed, configure discovers the strtoi
+provided by libbsd  although the included version may still
+end up being glibc's as the include path doesn't change
+(glibc has its own which doesn't feature strtoi).
+
+If trying to use libbsd's, we end up with a build failure:
+```
+config.c: In function ‘get_env_conf’:
+config.c:269:57: error: too few arguments to function ‘strtoi’
+  269 |                 * ((int *)global_switches[i].address) = strtoi(s,0,0);
+      |                                                         ^~~~~~
+In file included from sysincludes.h:174,
+                 from config.c:18:
+/usr/include/bsd/inttypes.h:43:10: note: declared here
+   43 | intmax_t strtoi(const char *__restrict nptr, char **__restrict endptr,
+      |          ^~~~~~
+```
+
+So, it seems best to just always use our own definition of strtoi,
+given our definition doesn't match libbsd's anyway. This avoids
+the build failure as well as the implicit declaration warnings.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ configure.in  | 2 +-
+ mtools.h      | 2 --
+ sysincludes.h | 4 ----
+ 3 files changed, 1 insertions(+), 7 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index 72cf205..eb1c754 100644
+--- a/configure.in
++++ b/configure.in
+@@ -218,7 +218,7 @@ dnl Checks for library functions.
+ AC_TYPE_SIGNAL
+ AC_CHECK_FUNCS(strerror random srandom strchr strrchr lockf flock \
+ strcasecmp strncasecmp strnlen atexit on_exit getpass memmove \
+-strdup strndup strcspn strspn strtoul strtol strtoll strtoi strtoui \
++strdup strndup strcspn strspn strtoul strtol strtoll strtoui \
+ memcpy strpbrk memset setenv seteuid setresuid setpgrp \
+ tcsetattr tcflush basename fchdir media_oldaliases  \
+ snprintf setlocale toupper_l strncasecmp_l \
+diff --git a/mtools.h b/mtools.h
+index b3fd3c8..190ddf8 100644
+--- a/mtools.h
++++ b/mtools.h
+@@ -188,9 +188,7 @@ off_t str_to_offset(char *str);
+ uint32_t parseSize(char *sizeStr);
+ unsigned int strtoui(const char *nptr, char **endptr, int base);
+ unsigned int atoui(const char *nptr);
+-#ifndef HAVE_STRTOI
+ int strtoi(const char *nptr, char **endptr, int base);
+-#endif
+ unsigned long atoul(const char *nptr);
+ uint8_t strtou8(const char *nptr, char **endptr, int base);
+ uint8_t atou8(const char *str);
+diff --git a/sysincludes.h b/sysincludes.h
+index 6dccded..0c17fb5 100644
+--- a/sysincludes.h
++++ b/sysincludes.h
+@@ -169,10 +169,6 @@ typedef unsigned char _Bool;
+ # define __bool_true_false_are_defined 1
+ #endif
+ 
+-#ifdef HAVE_INTTYPES_H
+-# include <inttypes.h>
+-#endif
+-
+ #ifdef HAVE_STDLIB_H
+ # include <stdlib.h>
+ #endif
+-- 
+2.35.1
+

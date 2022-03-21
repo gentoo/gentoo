@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vala.eclass
@@ -6,22 +6,19 @@
 # gnome@gentoo.org
 # @AUTHOR:
 # Alexandre Rostovtsev <tetromino@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Sets up the environment for using a specific version of vala.
 # @DESCRIPTION:
 # This eclass sets up commonly used environment variables for using a specific
-# version of dev-lang/vala to configure and build a package. It is needed for
+# version of dev-lang/vala to configure and build a package.  It is needed for
 # packages whose build systems assume the existence of certain unversioned vala
 # executables, pkgconfig files, etc., which Gentoo does not provide.
-#
-# This eclass provides one phase function: src_prepare.
 
-case ${EAPI:-0} in
-	[67]) inherit eutils multilib ;;
+case ${EAPI} in
+	6|7) inherit eutils multilib ;;
+	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-EXPORT_FUNCTIONS src_prepare
 
 if [[ -z ${_VALA_ECLASS} ]] ; then
 _VALA_ECLASS=1
@@ -103,14 +100,17 @@ vala_depend() {
 # VALA_MAX_API_VERSION, VALA_MIN_API_VERSION, and VALA_USE_DEPEND.
 vala_best_api_version() {
 	local u v
+	local hv_opt="-b"
+	[[ ${EAPI} == 6 ]] && hv_opt=""
+
 	u=$(_vala_use_depend)
 
 	for v in $(vala_api_versions); do
-		has_version $([[ $EAPI == [1-6] ]] || echo -b) "dev-lang/vala:${v}${u}" && echo "${v}" && return
+		has_version ${hv_opt} "dev-lang/vala:${v}${u}" && echo "${v}" && return
 	done
 }
 
-# @FUNCTION: vala_src_prepare
+# @FUNCTION: vala_setup
 # @USAGE: [--ignore-use] [--vala-api-version api_version]
 # @DESCRIPTION:
 # Sets up the environment variables and pkgconfig files for the
@@ -120,8 +120,10 @@ vala_best_api_version() {
 # Is a no-op if called without --ignore-use when USE=-vala.
 # Dies if the USE check is passed (or ignored) and a suitable vala
 # version is not available.
-vala_src_prepare() {
+vala_setup() {
 	local p d valafoo version ignore_use
+	local hv_opt="-b"
+	[[ ${EAPI} == 6 ]] && hv_opt=""
 
 	while [[ $1 ]]; do
 		case $1 in
@@ -140,7 +142,7 @@ vala_src_prepare() {
 	fi
 
 	if [[ ${version} ]]; then
-		has_version $([[ $EAPI == [1-6] ]] || echo -b) "dev-lang/vala:${version}" || die "No installed vala:${version}"
+		has_version ${hv_opt} "dev-lang/vala:${version}" || die "No installed vala:${version}"
 	else
 		version=$(vala_best_api_version)
 		[[ ${version} ]] || die "No installed vala in $(vala_depend)"
@@ -174,5 +176,12 @@ vala_src_prepare() {
 	: ${PKG_CONFIG_PATH:="${EPREFIX}/usr/$(get_libdir)/pkgconfig:${EPREFIX}/usr/share/pkgconfig"}
 	export PKG_CONFIG_PATH="${T}/pkgconfig:${PKG_CONFIG_PATH}"
 }
+
+# @FUNCTION: vala_src_prepare
+# @DESCRIPTION:
+# For backwards compatibility in EAPIs 6 and 7.  Calls vala_setup.
+if [[ ${EAPI} == [67] ]]; then
+	vala_src_prepare() { vala_setup "$@"; }
+fi
 
 fi

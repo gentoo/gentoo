@@ -8,6 +8,11 @@ app-text/poppler nss boost
 # Required by sys-apps/fwupd, a dependency of kde-plasma/discover
 dev-libs/libjcat gpg pkcs7
 
+# Required by www-client/falkon[python] and dev-python/pyside2[location],
+# in addition fix REQUIRED_USE conflict caused if "webengine" is enabled.
+dev-python/pyside2 designer location positioning quick
+dev-python/pyside2 printsupport webchannel
+
 # Required by sys-apps/flatpak, a dependency of kde-plasma/discover
 dev-util/ostree curl
 

@@ -22,4 +22,8 @@ RDEPEND="
 	>=dev-python/black-19[${PYTHON_USEDEP}]
 "
 
+BDEPEND="test? (
+	dev-python/toml[${PYTHON_USEDEP}]
+)"
+
 distutils_enable_tests pytest

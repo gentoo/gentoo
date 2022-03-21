@@ -1,8 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -sparc
+
+# Matt Turner <mattst88@gentoo.org> (2022-02-21)
+# app-crypt/tpm2-tss is not keyworded here
+tpm
 
 # Sam James <sam@gentoo.org> (2021-10-16)
 # media-libs/openexr doesn't work on BE.
@@ -187,7 +191,6 @@ java
 lirc
 netbeans
 networkmanager
-pbs
 pcmcia
 rar
 valgrind

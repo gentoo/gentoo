@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit meson
+inherit bash-completion-r1 meson
 
 DESCRIPTION="Grab images from a Wayland compositor"
 HOMEPAGE="https://github.com/emersion/grim"
@@ -23,22 +23,28 @@ IUSE="+man jpeg"
 DEPEND="
 	>=dev-libs/wayland-protocols-1.14
 	dev-libs/wayland
-	jpeg? ( virtual/jpeg )
-	x11-libs/cairo"
+	media-libs/libpng
+	x11-libs/pixman
+	jpeg? ( virtual/jpeg )"
 
 RDEPEND="${DEPEND}"
-
-if [[ ${PV} == 9999 ]]; then
-	BDEPEND+="man? ( ~app-text/scdoc-9999 )"
-else
-	BDEPEND+="man? ( app-text/scdoc )"
-fi
+BDEPEND="man? ( app-text/scdoc )"
 
 src_configure() {
 	local emesonargs=(
 		$(meson_feature jpeg)
 		$(meson_feature man man-pages)
+		"-Dbash-completions=false"
+		"-Dfish-completions=false"
 		"-Dwerror=false"
 	)
 	meson_src_configure
+}
+
+src_install() {
+	meson_src_install
+
+	newbashcomp contrib/completions/bash/grim.bash grim
+	insinto /usr/share/fish/vendor_completions.d/
+	doins contrib/completions/grim.fish
 }

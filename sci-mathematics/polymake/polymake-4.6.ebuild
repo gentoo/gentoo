@@ -18,7 +18,7 @@ HOMEPAGE="https://polymake.org/"
 # closer look at how (or even if) the corresponding code is being used.
 LICENSE="BSD GPL-2 GPL-2+ MIT WTFPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="bliss +cdd +flint +normaliz libpolymake lrs nauty ppl singular"
 
 REQUIRED_USE="^^ ( bliss nauty )"

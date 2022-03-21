@@ -1,11 +1,11 @@
-# Copyright 2017-2021 Gentoo Authors
+# Copyright 2017-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
-inherit desktop python-any-r1 scons-utils toolchain-funcs xdg
+inherit desktop flag-o-matic python-any-r1 scons-utils toolchain-funcs xdg
 
 if [[ "${PV}" = 9999 ]]; then
 	inherit git-r3
@@ -25,7 +25,7 @@ else
 	# fixes are merged into the main source by upstream.
 	#
 	# Cross-compilation to Windows is also supported.
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 DESCRIPTION="Descent Rebirth - enhanced Descent 1 & 2 engine"
@@ -217,6 +217,7 @@ dxx_scons() {
 
 src_compile() {
 	tc-export CXX PKG_CONFIG
+	replace-flags -O3 -O2 #831896
 	dxx_scons register_install_target=0 build
 }
 

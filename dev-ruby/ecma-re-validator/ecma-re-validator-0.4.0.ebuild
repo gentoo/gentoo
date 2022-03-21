@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/gjtorikian/ecma-re-validator"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/regexp_parser:2"

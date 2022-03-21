@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -132,8 +132,9 @@ src_install() {
 	dodoc lib/{AUTHORS,ChangeLog,README}
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/dict
-		doins dict/doc/stardict-textual-dict*
+		docinto dict
+		dodoc dict/doc/stardict-textual-dict*
+		docompress -x /usr/share/doc/${PF}/dict
 	fi
 
 	if use qqwry; then
@@ -178,8 +179,9 @@ src_install() {
 		dodoc tools/{AUTHORS,ChangeLog,README}
 
 		if use examples; then
-			insinto /usr/share/doc/${PF}/tools
-			doins tools/src/{dictbuilder.{example,readme},example.ifo,example_treedict.tar.bz2}
+			docinto tools
+			dodoc tools/src/{dictbuilder.{example,readme},example.ifo,example_treedict.tar.bz2}
+			docompress -x /usr/share/doc/${PF}/tools
 		fi
 	fi
 }

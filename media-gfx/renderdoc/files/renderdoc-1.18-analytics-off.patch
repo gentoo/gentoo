@@ -1,0 +1,52 @@
+From 03d5a1f515bee326933e163eb3bd300deb4a5753 Mon Sep 17 00:00:00 2001
+From: Matthew Smith <matt@offtopica.uk>
+Date: Sun, 6 Feb 2022 09:54:17 +0000
+Subject: [PATCH 3/5] analytics: Default selection to off
+
+---
+ qrenderdoc/Code/Interface/PersistantConfig.h        | 4 ++--
+ qrenderdoc/Windows/Dialogs/AnalyticsPromptDialog.ui | 6 +++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/qrenderdoc/Code/Interface/PersistantConfig.h b/qrenderdoc/Code/Interface/PersistantConfig.h
+index 5c074d27d..e37ecb3ce 100644
+--- a/qrenderdoc/Code/Interface/PersistantConfig.h
++++ b/qrenderdoc/Code/Interface/PersistantConfig.h
+@@ -588,8 +588,8 @@ DECLARE_REFLECTION_STRUCT(BugReport);
+       "``True`` if the user has selected to completely opt-out from and disable all analytics "    \
+       "collection and reporting.\n"                                                                \
+       "\n"                                                                                         \
+-      "Defaults to ``False``.");                                                                   \
+-  CONFIG_SETTING_VAL(public, bool, bool, Analytics_TotalOptOut, false)                             \
++      "Defaults to ``True``.");                                                                    \
++  CONFIG_SETTING_VAL(public, bool, bool, Analytics_TotalOptOut, true)                              \
+                                                                                                    \
+   DOCUMENT(                                                                                        \
+       "``True`` if the user has remained with analytics turned on, but has chosen to manually "    \
+diff --git a/qrenderdoc/Windows/Dialogs/AnalyticsPromptDialog.ui b/qrenderdoc/Windows/Dialogs/AnalyticsPromptDialog.ui
+index 5ec558161..e43574165 100644
+--- a/qrenderdoc/Windows/Dialogs/AnalyticsPromptDialog.ui
++++ b/qrenderdoc/Windows/Dialogs/AnalyticsPromptDialog.ui
+@@ -38,9 +38,6 @@
+         <property name="text">
+          <string>Gather anonymous low-detail statistics and submit automatically.</string>
+         </property>
+-        <property name="checked">
+-         <bool>true</bool>
+-        </property>
+        </widget>
+       </item>
+       <item>
+@@ -55,6 +52,9 @@
+         <property name="text">
+          <string>Do not gather or submit any statistics.</string>
+         </property>
++        <property name="checked">
++         <bool>true</bool>
++        </property>
+        </widget>
+       </item>
+      </layout>
+-- 
+2.35.1
+

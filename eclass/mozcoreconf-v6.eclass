@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # @ECLASS: mozcoreconf-v6.eclass
@@ -74,18 +74,6 @@ mozconfig_use_enable() {
 mozconfig_use_with() {
 	declare flag=$(use_with "$@")
 	mozconfig_annotate "$(use $1 && echo +$1 || echo -$1)" "${flag}"
-}
-
-# @FUNCTION: mozconfig_use_extension
-# @DESCRIPTION:
-# enable or disable an extension based on a USE-flag
-#
-# Example:
-# mozconfig_use_extension gnome gnomevfs
-# => ac_add_options --enable-extensions=gnomevfs
-mozconfig_use_extension() {
-	declare minus=$(use $1 || echo -)
-	mozconfig_annotate "${minus:-+}$1" --enable-extensions=${minus}${2}
 }
 
 moz_pkgsetup() {
@@ -289,12 +277,6 @@ mozconfig_final() {
 	done
 	echo "=========================================================="
 	echo
-
-	# Resolve multiple --enable-extensions down to one
-	declare exts=$(sed -n 's/^ac_add_options --enable-extensions=\([^ ]*\).*/\1/p' \
-		.mozconfig | xargs)
-	sed -i '/^ac_add_options --enable-extensions/d' .mozconfig
-	echo "ac_add_options --enable-extensions=${exts// /,}" >> .mozconfig
 }
 
 _MOZCORECONF=1

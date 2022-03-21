@@ -51,6 +51,7 @@ PYTHON_SRC_DIR="${S}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.9-docdir.patch
+	"${FILESDIR}"/ffmpeg5.patch
 )
 
 src_prepare() {

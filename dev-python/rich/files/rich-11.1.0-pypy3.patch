@@ -11,30 +11,6 @@ to fix test failure on PyPy3.
  tests/test_syntax.py | 2 +-
  3 files changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/CHANGELOG.md b/CHANGELOG.md
-index 4997ae3..17f3028 100644
---- a/CHANGELOG.md
-+++ b/CHANGELOG.md
-@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
- 
- - Add support for US spelling of "gray" in ANSI color names https://github.com/Textualize/rich/issues/1890
- 
-+### Fixed
-+
-+- Fixed `test_syntax.py::test_from_path_lexer_override` test failure on PyPy3 https://github.com/Textualize/rich/pull/1904
-+
- ## [11.1.0] - 2022-01-28
- 
- ### Added
-diff --git a/CONTRIBUTORS.md b/CONTRIBUTORS.md
-index c29cd79..06e0618 100644
---- a/CONTRIBUTORS.md
-+++ b/CONTRIBUTORS.md
-@@ -27,3 +27,4 @@ The following people have contributed to the development of Rich:
- - [Nicolas Simonds](https://github.com/0xDEC0DE)
- - [Gabriele N. Tornetta](https://github.com/p403n1x87)
- - [Patrick Arminio](https://github.com/patrick91)
-+- [Michał Górny](https://github.com/mgorny)
 diff --git a/tests/test_syntax.py b/tests/test_syntax.py
 index 46d0126..e5d904f 100644
 --- a/tests/test_syntax.py
@@ -63,19 +39,6 @@ to be skipped appropriately.
  tests/test_inspect.py | 9 +++++++++
  2 files changed, 10 insertions(+), 1 deletion(-)
 
-diff --git a/CHANGELOG.md b/CHANGELOG.md
-index 17f3028..1a75bf3 100644
---- a/CHANGELOG.md
-+++ b/CHANGELOG.md
-@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
- 
- ### Fixed
- 
--- Fixed `test_syntax.py::test_from_path_lexer_override` test failure on PyPy3 https://github.com/Textualize/rich/pull/1904
-+- Fixed test failures on PyPy3 https://github.com/Textualize/rich/pull/1904
- 
- ## [11.1.0] - 2022-01-28
- 
 diff --git a/tests/test_inspect.py b/tests/test_inspect.py
 index 63c5f06..b4c1d2a 100644
 --- a/tests/test_inspect.py

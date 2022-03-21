@@ -47,7 +47,7 @@ LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 
 if [[ ${PV} != 9999* ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 IUSE="cet guile lzma multitarget nls +python +server source-highlight test vanilla xml xxhash"
@@ -102,7 +102,7 @@ src_prepare() {
 	default
 
 	strip-linguas -u bfd/po opcodes/po
-	export CC_FOR_BUILD=$(tc-getBUILD_CC)
+	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
 
 	# avoid using ancient termcap from host on Prefix systems
 	sed -i -e 's/termcap tinfow/tinfow/g' \

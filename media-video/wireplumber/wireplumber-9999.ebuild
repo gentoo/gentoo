@@ -21,11 +21,12 @@ HOMEPAGE="https://gitlab.freedesktop.org/pipewire/wireplumber"
 
 LICENSE="MIT"
 SLOT="0/0.4"
-IUSE="elogind systemd test"
+IUSE="elogind system-service systemd test"
 
 REQUIRED_USE="
 	${LUA_REQUIRED_USE}
 	?? ( elogind systemd )
+	system-service? ( systemd )
 "
 
 RESTRICT="!test? ( test )"
@@ -40,7 +41,7 @@ BDEPEND="
 DEPEND="
 	${LUA_DEPS}
 	>=dev-libs/glib-2.62
-	>=media-video/pipewire-0.3.43:=
+	>=media-video/pipewire-0.3.45:=
 	virtual/libc
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd )
@@ -50,7 +51,12 @@ DEPEND="
 #	$(lua_gen_cond_dep '
 #		dev-lua/<NAME>[${LUA_USEDEP}]
 #	')
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	system-service? (
+		acct-user/pipewire
+		acct-group/pipewire
+	)
+"
 
 DOCS=( {NEWS,README}.rst )
 
@@ -62,7 +68,7 @@ src_configure() {
 		-Dsystem-lua-version=$(ver_cut 1-2 $(lua_get_version))
 		$(meson_feature elogind)
 		$(meson_feature systemd)
-		-Dsystemd-system-service=false # Matches upstream
+		$(meson_use system-service systemd-system-service)
 		$(meson_use systemd systemd-user-service)
 		-Dsystemd-system-unit-dir=$(systemd_get_systemunitdir)
 		-Dsystemd-user-unit-dir=$(systemd_get_userunitdir)
@@ -70,6 +76,17 @@ src_configure() {
 	)
 
 	meson_src_configure
+}
+
+src_install() {
+	meson_src_install
+
+	# We copy the default config, so that Gentoo tools can pick up on any
+	# updates and /etc does not end up with stale overrides.
+	# If a reflinking CoW filesystem is used (e.g. Btrfs), then the files
+	# will not actually get stored twice until modified.
+	insinto /etc
+	doins -r ${ED}/usr/share/wireplumber
 }
 
 pkg_postinst() {
@@ -86,5 +103,14 @@ pkg_postinst() {
 		ewarn "or, if it does exist, that any reference to"
 		ewarn "${EROOT}/usr/bin/pipewire-media-session is commented out (begins with a #)."
 	fi
-	ewarn
+	if use system-service; then
+		ewarn
+		ewarn "WARNING: you have enabled the system-service USE flag, which installs"
+		ewarn "the system-wide systemd units that enable WirePlumber to run as a system"
+		ewarn "service. This is more than likely NOT what you want. You are strongly"
+		ewarn "advised not to enable this mode and instead stick with systemd user"
+		ewarn "units. The default configuration files will likely not work out of"
+		ewarn "box, and you are on your own with configuration."
+		ewarn
+	fi
 }

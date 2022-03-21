@@ -12,7 +12,7 @@ SRC_URI="https://github.com/kakulukia/pypugjs/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 
 RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]

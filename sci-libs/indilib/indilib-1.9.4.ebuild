@@ -12,7 +12,7 @@ S="${WORKDIR}/${P/lib/}"
 
 LICENSE="BSD GPL-2+ LGPL-2+ LGPL-2.1+"
 SLOT="0/1"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ppc ppc64 ~riscv ~x86"
 IUSE="ogg rtlsdr test websocket"
 
 RESTRICT="!test? ( test )"
@@ -38,6 +38,10 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-cpp/gtest-1.8.0 )
 	websocket? ( dev-cpp/websocketpp )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.9.4-musl-stdint.patch
+)
 
 src_configure() {
 	local mycmakeargs=(

@@ -6,7 +6,7 @@
 # Jason Zaman <perfinion@gentoo.org>
 # @AUTHOR:
 # Jason Zaman <perfinion@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Utility functions for packages using Bazel Build
 # @DESCRIPTION:
 # A utility eclass providing functions to run the Bazel Build system.

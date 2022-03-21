@@ -97,6 +97,10 @@ RESTRICT="test"
 
 S="${WORKDIR}/${P}_2021-09-20_3bf5ae0d25"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.1.2-poppler-22.03.0.patch"  # bug 835424
+)
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
@@ -120,6 +124,7 @@ src_configure() {
 		-DENABLE_POPPLER=ON
 		-DENABLE_POPPLER_CAIRO=ON
 		-DWITH_PROFILING=OFF
+		-DWITH_INTERNAL_2GEOM=ON
 		-DBUILD_TESTING=OFF
 		-DWITH_LIBCDR=$(usex cdr)
 		-DWITH_DBUS=$(usex dbus)

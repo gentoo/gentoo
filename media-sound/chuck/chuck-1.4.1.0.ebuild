@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,7 @@ compile_backend() {
 	backend=$1
 	pushd "${S}/src" &>/dev/null || die
 	einfo "Compiling against ${backend}"
-	emake CC=$(tc-getCC) CXX=$(tc-getCXX) linux-${backend}
+	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" linux-${backend}
 	mv chuck{,-${backend}} || die
 	emake clean
 	popd &>/dev/null || die

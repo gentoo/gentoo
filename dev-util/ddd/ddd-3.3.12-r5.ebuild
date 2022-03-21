@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 inherit autotools desktop optfeature
 
@@ -10,9 +10,11 @@ HOMEPAGE="https://www.gnu.org/software/ddd"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-3 FDL-1.1"
-KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 SLOT="0"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="readline"
+
+RESTRICT="test"
 
 COMMON_DEPEND="
 	sys-devel/gdb
@@ -33,8 +35,6 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	x11-apps/xfontsel
 "
-
-RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/${P}-gcc44.patch"
@@ -58,13 +58,12 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-static \
 		$(use_with readline)
 }
 
 src_install() {
 	# Remove app defaults
-	rm -f "${S}"/ddd/Ddd
+	rm -f "${S}"/ddd/Ddd || die
 
 	# Install ddd distribution
 	default
@@ -79,10 +78,8 @@ pkg_postinst() {
 	optfeature "Bash debugging" app-shells/bashdb
 	optfeature "Perl debugging" dev-lang/perl
 	optfeature "Python debugging" dev-python/pydb
-
-	echo
+	elog
 	elog "Important notice: if you encounter DDD crashes during visualization, you might"
 	elog "have hit bug #459324. Try switching to plotting in external window:"
 	elog "Select Edit|Preferences|Helpers and switch 'plot window' to 'external'"
-	echo
 }

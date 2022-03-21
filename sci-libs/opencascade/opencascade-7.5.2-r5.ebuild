@@ -24,6 +24,7 @@ REQUIRED_USE="?? ( optimize tbb )"
 # properly set up.
 RESTRICT="test"
 
+# ffmpeg: https://dev.opencascade.org/content/build-error-when-compiling-against-ffmpeg-5
 RDEPEND="
 	!app-eselect/eselect-opencascade
 	dev-lang/tcl:=

@@ -1,10 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor"
-HOMEPAGE="http://www.gimphelp.org/index.html"
+HOMEPAGE="https://www.gimphelp.org/"
+
 # http://www.gimphelp.org/DL/ refuses wget without user-agent
 SRC_URI="
 	https://dev.gentoo.org/~pacho/${PN}/arrow_brushes_color_1.tar.bz2

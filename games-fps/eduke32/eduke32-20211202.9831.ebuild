@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -108,9 +108,9 @@ src_unpack() {
 src_compile() {
 	local myemakeopts=(
 		ALLOCACHE_AS_MALLOC=0
-		AS=$(tc-getAS)
-		CC=$(tc-getCC)
-		CXX=$(tc-getCXX)
+		AS="$(tc-getAS)"
+		CC="$(tc-getCC)"
+		CXX="$(tc-getCXX)"
 		CLANG=0
 		CPLUSPLUS=1
 		CUSTOMOPT=""

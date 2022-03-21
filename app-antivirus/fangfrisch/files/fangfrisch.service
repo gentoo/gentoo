@@ -1,0 +1,14 @@
+[Unit]
+Description=Download unofficial ClamAV virus definition files
+ConditionPathExists=/var/lib/fangfrisch/db.sqlite
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=clamav
+WorkingDirectory=/var/lib/fangfrisch
+ExecStart=/usr/bin/fangfrisch -c /etc/fangfrisch.conf refresh
+
+[Install]
+WantedBy=multi-user.target

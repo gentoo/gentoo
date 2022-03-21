@@ -1,4 +1,5 @@
-Please read https://tt-rss.org/wiki/InstallationNotes.
+Please read https://tt-rss.org/wiki/GlobalConfig. Note that the configuration
+syntax changed in 2021.
 
 Once you have configured TT-RSS, tweak /etc/conf.d/ttrssd to your
 needs if you have not already done so. If ACLs are unavailable on the

@@ -1,0 +1,58 @@
+* configure.in change from Debian to fix autoreconf: https://sources.debian.org/src/lineakd/1%253A0.9-6/debian/patches/005_configure_in.diff/#L19
+* Rest is to fix libdl linkage (and general LDFLAGS issues): https://bugs.gentoo.org/722372
+--- a/configure.in
++++ b/configure.in
+@@ -28,10 +28,12 @@
+ 
+ dnl Process this file with autoconf to produce a configure script.
+ 
+-AC_INIT(acinclude.m4) dnl a source file from your sub dir
+-
++AC_INIT
+ dnl This is so we can use kde-common
+ AC_CONFIG_AUX_DIR(admin)
++AC_CONFIG_MACRO_DIR([m4])
++
++LT_INIT
+ 
+ dnl This ksh/zsh feature conflicts with `cd blah ; pwd`
+ unset CDPATH
+
+--- a/configure.in
++++ b/configure.in
+@@ -81,7 +81,7 @@ KDE_PROG_LIBTOOL
+ 
+ dnl activate the next macro call for DLOPEN tests and setting LIBDL
+ dnl   (n.b. KDE_MISC_TESTS does the same to you, so use either this or the next one)
+-dnl KDE_CHECK_DLOPEN
++KDE_CHECK_DLOPEN
+ 
+ dnl activate the next macro call for some additional tests
+ dnl   (compat, crypt, socket, nsl, dlopen, ...)
+
+--- a/lineak/Makefile.am
++++ b/lineak/Makefile.am
+@@ -19,8 +19,8 @@ liblineak_la_SOURCES = pluginmanager.cpp globals.cpp displayctrl.cpp xmgr.cpp cd
+ #   liblineak_la_LDFLAGS = -version-info 8:0:8 $(all_libraries); \
+ #fi;
+ 
+-liblineak_la_LIBADD  = -lX11 -lXext $(X_LIBS)  -lXt -lSM -lICE -L/usr/X11R6/lib
+-liblineak_la_LDFLAGS = -version-info 8:0:8 $(all_libraries) -L/usr/X11R6/lib @X_LIBS@ @X_PRE_LIBS@  -lpthread
++liblineak_la_LIBADD  = -lX11 -lXext $(X_LIBS) -lXt -lSM -lICE -L/usr/X11R6/lib $(all_libraries) @X_LIBS@ @X_PRE_LIBS@ $(PTHREAD_LIBS) @LIBDL@
++liblineak_la_LDFLAGS = -version-info 8:0:8
+   
+ lineak_HEADERS = configdirectives.h configloader.h definitions.h defloader.h lconfig.h lconfigdata.h ldef.h lobject.h lkbd.h lkey.h lbutton.h loader.h msgpasser.h saver.h lcommand.h lockctrl.h lineak_util_functions.h lineak_core_functions.h cdromctrl.h xmgr.h displayctrl.h plugin_definitions.h commandexec.h pluginmanager.h
+   
+--- a/lineakd/Makefile.am
++++ b/lineakd/Makefile.am
+@@ -1,8 +1,8 @@
+ bin_PROGRAMS = lineakd
+ 
+ lineakd_SOURCES = lineakd_core_functions.cpp cmdprefs.cpp main.cpp 
+-lineakd_LDADD   = -lpthread -llineak -lXext -lX11 -ldl
+-lineakd_LDFLAGS = -rdynamic -L../lineak $(all_libraries) @X_LIBS@ @X_PRE_LIBS@
++lineakd_LDADD   = -llineak -lXext -lX11 $(PTHREAD_LIBS) @LIBDL@ $(all_libraries) @X_LIBS@ @X_PRE_LIBS@
++lineakd_LDFLAGS = -rdynamic -L../lineak
+ 
+ EXTRA_DIST = main.cpp eakprocs.h cmdprefs.cpp cmdprefs.h lineakkb.def lineakd.1.bz2 OLDCODE lineakd_core_functions.h lineakd_core_functions.cpp 
+ 

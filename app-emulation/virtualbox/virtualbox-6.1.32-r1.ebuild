@@ -265,7 +265,7 @@ src_configure() {
 		myconf+=( --disable-vmmraw )
 	fi
 	# not an autoconf script
-	doecho ./configure ${myconf[@]}
+	doecho ./configure "${myconf[@]}"
 }
 
 src_compile() {

@@ -15,7 +15,7 @@ HOMEPAGE="https://calligra.org/"
 
 if [[ ${KDE_BUILD_TYPE} == release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~ppc64 ~riscv x86"
 fi
 
 CAL_FTS=( karbon sheets stage words )
@@ -120,6 +120,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-{openexr-3,imath-{1,2}}.patch
 	"${FILESDIR}"/${P}-cxx17-for-poppler-22.patch
 	"${FILESDIR}"/${P}-cxx17-fixes.patch
+	"${FILESDIR}"/${P}-poppler-22.03.0.patch # by Archlinux, TODO upstream
 )
 
 pkg_pretend() {

@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools git-r3
 
@@ -11,11 +11,12 @@ EGIT_REPO_URI="https://git.code.sf.net/p/linux-ima/ima-evm-utils"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug test"
+IUSE="debug test tpm"
 
 RDEPEND="
 	dev-libs/openssl:0=
-	sys-apps/keyutils:="
+	sys-apps/keyutils:=
+	tpm? ( app-crypt/tpm2-tss )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/asciidoc
@@ -25,18 +26,23 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.4-configure-remove-automagic-TSS-dependencies.patch"
+	"${FILESDIR}/${PN}-1.4-test-Rename-bash-variable-WORKDIR-to-MYWORKDIR.patch"
+	"${FILESDIR}/${PN}-1.4-test-remove-boot_aggregate.patch"
+)
+
 src_prepare() {
 	default
 
 	sed -i '/^MANPAGE_DOCBOOK_XSL/s:/usr/share/xml/docbook/stylesheet/docbook-xsl/manpages/docbook.xsl:/usr/share/sgml/docbook/xsl-stylesheets/manpages/docbook.xsl:' Makefile.am || die
-
 	eautoreconf
 }
 
 src_configure() {
 	econf \
 		$(use_enable debug) \
-		--disable-static
+		$(use_with tpm pcrtss)
 }
 
 src_install() {

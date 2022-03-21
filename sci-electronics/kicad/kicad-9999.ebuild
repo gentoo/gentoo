@@ -34,6 +34,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Contains bundled pybind but it's patched for wx
 # See https://gitlab.com/kicad/code/kicad/-/commit/74e4370a9b146b21883d6a2d1df46c7a10bd0424
+# Depend on opencascade:0 to get unslotted variant (so we know path to it), bug #833301
 COMMON_DEPEND="
 	!sci-electronics/kicad-i18n
 	>=dev-libs/boost-1.61:=[context,nls]
@@ -56,7 +57,7 @@ COMMON_DEPEND="
 		sys-devel/gettext
 	)
 	occ? (
-		>=sci-libs/opencascade-7.3.0:=
+		>=sci-libs/opencascade-7.3.0:0=
 	)
 "
 DEPEND="${COMMON_DEPEND}"

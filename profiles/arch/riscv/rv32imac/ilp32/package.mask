@@ -3,3 +3,6 @@
 
 # sys-libs/libseccomp has not been ported to rv32 yet
 sys-libs/libseccomp
+
+# does not support rv32
+sys-libs/musl

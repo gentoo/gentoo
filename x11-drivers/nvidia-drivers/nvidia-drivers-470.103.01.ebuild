@@ -13,8 +13,7 @@ NV_URI="https://download.nvidia.com/XFree86/"
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
 HOMEPAGE="https://www.nvidia.com/download/index.aspx"
 SRC_URI="
-	amd64? ( ${NV_URI}Linux-x86_64/${PV}/NVIDIA-Linux-x86_64-${PV}.run )
-	arm64? ( ${NV_URI}Linux-aarch64/${PV}/NVIDIA-Linux-aarch64-${PV}.run )
+	${NV_URI}Linux-x86_64/${PV}/NVIDIA-Linux-x86_64-${PV}.run
 	$(printf "${NV_URI}%s/%s-${PV}.tar.bz2 " \
 		nvidia-{installer,modprobe,persistenced,settings,xconfig}{,})"
 # nvidia-installer is unused but here for GPL-2's "distribute sources"
@@ -22,11 +21,12 @@ S="${WORKDIR}"
 
 LICENSE="NVIDIA-r2 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
 SLOT="0/${PV%%.*}"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE="+X abi_x86_32 abi_x86_64 +driver persistenced static-libs +tools wayland"
 
 COMMON_DEPEND="
 	acct-group/video
+	sys-libs/glibc
 	persistenced? (
 		acct-user/nvpd
 		net-libs/libtirpc:=
@@ -211,6 +211,7 @@ src_install() {
 	)
 
 	local skip_files=(
+		# nvidia_icd/layers(vulkan): skip with -X too as it uses libGLX_nvidia
 		$(usex X '' '
 			libGLX_nvidia libglxserver_nvidia
 			libnvidia-ifr

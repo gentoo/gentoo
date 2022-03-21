@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,7 @@ CDEPEND="
 	media-sound/jack_capture
 	virtual/jack
 	a2jmidid? ( media-sound/a2jmidid[dbus] )
-	pulseaudio? ( media-sound/pulseaudio[jack] )
+	pulseaudio? ( || ( media-sound/pulseaudio-daemon[jack] <media-sound/pulseaudio-15.99.1[daemon(+),jack] ) )
 "
 RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}"

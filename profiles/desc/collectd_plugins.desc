@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of COLLECTD_PLUGINS USE_EXPAND flags.
@@ -56,7 +56,6 @@ logfile - Build the logfile output plugin (receives log messages from collectd a
 logparser - Build the logparser plugin (allows for filtering and parsing log messages)
 log_logstash - Build the Logstash output plugin (writes collectd logs and events as Logstash JSON formatted events)
 lua - Build the LUA language binding plugin (uses dev-lang/lua) for writing plugins
-lvm - Build the LVM input plugin (collects the size of logical volumes (LV) and free space inside a volume group (VG) from Linux' Logical Volume Manager (LVM))
 madwifi - Build the madwifi input plugin (collects information about Atheros wireless LAN chipsets from the MadWifi driver)
 match_empty_counter - Build the match_empty_counter filter plugin
 match_hashed - Build the match_hashed filter plugin

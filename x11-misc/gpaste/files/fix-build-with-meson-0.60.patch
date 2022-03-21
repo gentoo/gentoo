@@ -1,0 +1,62 @@
+From 1ec2699daa600e34d73b8d200dd7bb22f4eace27 Mon Sep 17 00:00:00 2001
+From: Marc-Antoine Perennou <Marc-Antoine@Perennou.com>
+Date: Fri, 7 Jan 2022 10:42:41 +0100
+Subject: fix build with meson 0.60
+
+Fixes #385
+
+Signed-off-by: Marc-Antoine Perennou <Marc-Antoine@Perennou.com>
+---
+ data/appstream/meson.build | 3 +--
+ data/desktop/meson.build   | 3 +--
+ meson.build                | 2 +-
+ 3 files changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/data/appstream/meson.build b/data/appstream/meson.build
+index 8f5fe29a463c..f279be6616f3 100644
+--- a/data/appstream/meson.build
++++ b/data/appstream/meson.build
+@@ -1,8 +1,7 @@
+ i18n.merge_file(
+-  'gpaste-appdata',
+   input: 'org.gnome.GPaste.Ui.appdata.xml.in',
+   po_dir: gpaste_po_dir,
+   output: 'org.gnome.GPaste.Ui.appdata.xml',
+   install: true,
+   install_dir: join_paths(get_option('datadir'), 'metainfo'),
+-)
+\ No newline at end of file
++)
+diff --git a/data/desktop/meson.build b/data/desktop/meson.build
+index 6268765c3285..18be1b69a86c 100644
+--- a/data/desktop/meson.build
++++ b/data/desktop/meson.build
+@@ -5,11 +5,10 @@ untranslated_desktop_file = configure_file(
+ )
+ 
+ i18n.merge_file(
+-  'gpaste-desktop-file',
+   input: untranslated_desktop_file,
+   po_dir: gpaste_po_dir,
+   type: 'desktop',
+   output: 'org.gnome.GPaste.Ui.desktop',
+   install: true,
+   install_dir: join_paths(get_option('datadir'), 'applications'),
+-)
+\ No newline at end of file
++)
+diff --git a/meson.build b/meson.build
+index 1b0095f3f92c..676ad4e3032f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1,6 +1,6 @@
+ project('GPaste',
+   'c',
+-  version: '3.42.1',
++  version: '3.42.2',
+   meson_version: '>=0.50.0',
+ )
+ 
+-- 
+2.34.1
+

@@ -59,7 +59,7 @@ RDEPEND="
 	dev-libs/libxml2
 	sys-fs/fuse:0
 	acl? ( sys-apps/acl )
-	java? ( >=virtual/jre-1.7 )
+	java? ( virtual/jre:1.8 )
 	|| (
 		sys-libs/libxcrypt[compat]
 		sys-libs/glibc[crypt(+)]

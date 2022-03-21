@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="Extension Library for Tox"
 HOMEPAGE="https://github.com/toxext/toxext"
@@ -22,4 +22,8 @@ src_prepare() {
 
 	sed -i 's/-Werror//' CMakeLists.txt || die
 	sed -i '/-fsanitize=/d' test/CMakeLists.txt || die
+
+	# Fix build with CLANG and LLD.
+	# https://bugs.gentoo.org/831338
+	append-flags -fPIC
 }

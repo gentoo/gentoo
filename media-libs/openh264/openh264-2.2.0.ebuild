@@ -7,13 +7,18 @@ inherit toolchain-funcs multilib-minimal
 
 MOZVER=39
 MY_GMP_COMMIT="e3935759360861812d33cbd3b713e25f1de1ecb5"
+
 DESCRIPTION="Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages"
 HOMEPAGE="https://www.openh264.org/ https://github.com/cisco/openh264"
 SRC_URI="https://github.com/cisco/openh264/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/mozilla/gmp-api/archive/${MY_GMP_COMMIT}.tar.gz -> gmp-api-Firefox${MOZVER}-${MY_GMP_COMMIT}.tar.gz"
 LICENSE="BSD"
-SLOT="0/6.1" # subslot = openh264 soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+
+# openh264 soname version.
+# (2.2.0 needed a minor bump due to undocumented but breaking ABI changes, just to be sure.
+#  https://github.com/cisco/openh264/issues/3459 )
+SLOT="0/6.1"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="cpu_flags_arm_neon cpu_flags_x86_avx2 +plugin utils"
 
 RESTRICT="bindist test"

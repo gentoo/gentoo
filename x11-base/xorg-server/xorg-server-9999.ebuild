@@ -54,8 +54,11 @@ CDEPEND="
 		>=media-libs/libepoxy-1.5.4[X,egl(+)]
 	)
 	udev? ( virtual/libudev:= )
-	unwind? ( sys-libs/libunwind )
-	selinux? ( sys-libs/libselinux )
+	unwind? ( sys-libs/libunwind:= )
+	selinux? (
+		sys-process/audit
+		sys-libs/libselinux:=
+	)
 	systemd? (
 		sys-apps/dbus
 		sys-apps/systemd
@@ -118,6 +121,7 @@ src_configure() {
 		$(meson_use udev udev_kms)
 		$(meson_use unwind libunwind)
 		$(meson_use xcsecurity)
+		$(meson_use selinux xselinux)
 		$(meson_use xephyr)
 		$(meson_use xnest)
 		$(meson_use xorg)

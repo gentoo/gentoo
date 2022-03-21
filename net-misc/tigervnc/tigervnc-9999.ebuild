@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -47,10 +47,7 @@ CDEPEND="
 	xinerama? ( x11-libs/libXinerama )
 	"
 
-RDEPEND="${CDEPEND}
-	!net-misc/tightvnc
-	!net-misc/vnc
-	!net-misc/xf4vnc"
+RDEPEND="${CDEPEND}"
 
 DEPEND="${CDEPEND}
 	nls? ( sys-devel/gettext )

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,6 +34,13 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
+
+PATCHES=( "${FILESDIR}/${PN}-4.1.20-musl.patch" )
+
+src_prepare() {
+	eapply ${PATCHES[@]}
+	eapply_user
+}
 
 src_configure() {
 	append-cxxflags $(test-flags-CXX -std=c++14)

@@ -4,6 +4,14 @@
 # Unmask the flag which corresponds to ARCH.
 -m68k
 
+# James Le Cuirot <chewi@gentoo.org> (2021-01-30)
+# GTK is not keyworded or tested.
+gtk
+gtk2
+gtk3
+gtk4
+wxwidgets
+
 # James Le Cuirot <chewi@gentoo.org> (2022-01-30)
 # The app-shells/fish tests fail on m68k, so it remains unkeyworded.
 fish-completion
@@ -52,8 +60,9 @@ lua_targets_lua5-3
 lua_single_target_lua5-3
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-27)
-# MPI isn't very useful on an architecture that doesn't support SMP.
+# m68k simply doesn't support SMP.
 mpi
+smp
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-19)
 # I tried Mesa under qemu-system-m68k with VirtIO-GPU. It didn't work.
@@ -139,7 +148,6 @@ emacs
 emf
 gnome-keyring
 graphite
-gtk
 guile
 hardened
 heif

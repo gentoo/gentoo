@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit elisp multilib desktop xdg-utils
+inherit elisp desktop xdg-utils
 
 DESCRIPTION="Attach to an already running Emacs"
 HOMEPAGE="http://meltin.net/hacks/emacs/"

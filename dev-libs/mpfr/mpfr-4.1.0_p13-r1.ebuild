@@ -12,6 +12,7 @@ inherit multilib-minimal
 # https://archives.gentoo.org/gentoo-releng-autobuilds/message/c2dd39fc4ebc849db6bb0f551739e2ed
 MY_PV=$(ver_cut 1-3)
 MY_PATCH=$(ver_cut 5-)
+MY_PATCHES=()
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="Library for multiple-precision floating-point computations with exact rounding"
@@ -21,12 +22,11 @@ if [[ ${PV} == *_p* ]] ; then
 	# If this is a patch release, we have to download each of the patches:
 	# -_pN = N patches
 	# - patch file names are like: patch01, patch02, ..., patch10, patch12, ..
+	#
 	# => name the ebuild _pN where N is the number of patches on the 'bugs' page.
-	my_patch_index=1
-	while [[ ${my_patch_index} -le ${MY_PATCH} ]] ; do
-		SRC_URI+=" "
-		SRC_URI+=$(printf "https://www.mpfr.org/${MY_P}/patch%02d -> ${MY_P}-patch%02d.patch " ${my_patch_index} ${my_patch_index})
-		my_patch_index=$((my_patch_index+1))
+	for ((my_patch_index=1; my_patch_index <= MY_PATCH; my_patch_index++)); do
+		SRC_URI+=" $(printf "https://www.mpfr.org/${MY_P}/patch%02d -> ${MY_P}-patch%02d.patch " ${my_patch_index}{,})"
+		MY_PATCHES+=( "${DISTDIR}"/$(printf ${MY_P}-patch%02d.patch ${my_patch_index}) )
 	done
 	unset my_patch_index
 fi
@@ -42,14 +42,19 @@ IUSE="static-libs"
 RDEPEND=">=dev-libs/gmp-5.0.0:=[${MULTILIB_USEDEP},static-libs?]"
 DEPEND="${RDEPEND}"
 
-PATCHES=()
+PATCHES=(
+	# Apply the upstream patches released out-of-band; generated above
+	"${MY_PATCHES[@]}"
 
-if [[ ${PV} == *_p* ]] ; then
-	# Apply the upstream patches released out of band
-	PATCHES+=( "${DISTDIR}"/ )
-fi
+	# Additional patches
+)
 
 HTML_DOCS=( doc/FAQ.html )
+
+src_unpack() {
+	# Avoid src_unpack noise from patches
+	unpack ${MY_P}.tar.xz
+}
 
 src_prepare() {
 	default
@@ -61,9 +66,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	# bug 476336#19
+	# bug #476336#19
 	# Make sure mpfr doesn't go probing toolchains it shouldn't
-	ECONF_SOURCE=${S} \
+	ECONF_SOURCE="${S}" \
 		user_redefine_cc=yes \
 		econf $(use_enable static-libs static)
 }

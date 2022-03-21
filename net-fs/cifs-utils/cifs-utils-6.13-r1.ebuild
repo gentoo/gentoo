@@ -16,10 +16,9 @@ SRC_URI+=" https://dev.gentoo.org/~polynomial-c/${P}-kerberos_mount_regression_f
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x86-linux"
-IUSE="+acl +ads +caps creds pam systemd"
+IUSE="+acl +ads +caps creds pam +python systemd"
 
 RDEPEND="
-	${PYTHON_DEPS}
 	!net-fs/mount-cifs
 	sys-apps/keyutils:=
 	ads? (
@@ -28,6 +27,7 @@ RDEPEND="
 	)
 	caps? ( sys-libs/libcap-ng )
 	pam? ( sys-libs/pam )
+	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/docutils"
@@ -37,7 +37,7 @@ PDEPEND="
 
 REQUIRED_USE="
 	acl? ( ads )
-	${PYTHON_REQUIRED_USE}
+	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
 DOCS="doc/linux-cifs-client-guide.odt"
@@ -85,6 +85,7 @@ src_configure() {
 		$(use_enable creds cifscreds)
 		$(use_enable pam)
 		$(use_with pam pamdir $(getpam_mod_dir))
+		$(use_enable python pythontools)
 		# mount.cifs can get passwords from systemd
 		$(use_enable systemd)
 	)

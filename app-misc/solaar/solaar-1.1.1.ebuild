@@ -15,7 +15,7 @@ if [[ ${PV} =~ 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/pwr-Solaar/Solaar"
 else
 	SRC_URI="https://github.com/pwr-Solaar/Solaar/archive/${PV/_rc/rc}.tar.gz -> ${P/_rc/rc}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm ~x86"
 	S="${WORKDIR}"/Solaar-${PV/_rc/rc}
 fi
 
@@ -59,7 +59,7 @@ python_prepare_all() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	dodoc docs/devices.md
+	dodoc docs/devices.md ChangeLog.md
 	if use doc; then
 		dodoc -r docs/*
 	else

@@ -13,7 +13,6 @@
 		<flag name="github">Add github support into PCB editor</flag>
 		<flag name="ngspice">Enable circuit simulation</flag>
 		<flag name="occ">Enable viewing 3D rendering of designs via <pkg>sci-libs/opencascade</pkg></flag>
-		<flag name="oce">Enable viewing 3D rendering of designs via <pkg>sci-libs/oce</pkg></flag>
 		<flag name="python">Enable python scripting support</flag>
 		<flag name="pcm">Enable plugin content manager</flag>
 	</use>

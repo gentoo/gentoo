@@ -21,6 +21,10 @@ DEPEND="${RDEPEND}
 	!udev? ( virtual/os-headers )"
 BDEPEND="doc? ( app-doc/doxygen )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-O3-warning.patch
+)
+
 multilib_src_configure() {
 	local myeconfargs=(
 		$(use_enable static-libs static)

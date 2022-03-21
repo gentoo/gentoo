@@ -8,7 +8,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Framework for network service discovery using Zeroconf"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 IUSE="nls zeroconf"
 
 BDEPEND="
@@ -25,9 +25,9 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_DISABLE_FIND_PACKAGE_DNSSD=ON
 		$(cmake_use_find_package zeroconf Avahi)
 	)
+	use zeroconf || mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_DNSSD=ON )
 
 	ecm_src_configure
 }

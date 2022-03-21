@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info tmpfiles
+inherit linux-info tmpfiles
 
 DESCRIPTION="SPICE VD Linux Guest Agent"
 HOMEPAGE="https://www.spice-space.org/"

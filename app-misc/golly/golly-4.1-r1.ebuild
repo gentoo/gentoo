@@ -39,11 +39,11 @@ src_compile() {
 		GOLLYDIR="${EPREFIX}/usr/share/${PN}"
 		PYTHON=${EPYTHON}
 		WX_CONFIG=${WX_CONFIG}
-		AR=$(tc-getAR)
-		CC=$(tc-getCC)
-		CXX=$(tc-getCXX)
-		CXXC=$(tc-getCXX)
-		RANLIB=$(tc-getRANLIB)
+		AR="$(tc-getAR)"
+		CC="$(tc-getCC)"
+		CXX="$(tc-getCXX)"
+		CXXC="$(tc-getCXX)"
+		RANLIB="$(tc-getRANLIB)"
 	)
 	emake -C gui-wx -f makefile-gtk "${mymakeopts[@]}"
 }

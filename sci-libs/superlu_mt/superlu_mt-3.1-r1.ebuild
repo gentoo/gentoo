@@ -33,12 +33,12 @@ PATCHES=(
 
 pkg_setup() {
 	if use openmp && ! use threads; then
-		if [[ $(tc-getCC) == *gcc ]] && ! tc-has-openmp; then
+		if [[ "$(tc-getCC)" == *gcc ]] && ! tc-has-openmp; then
 			ewarn "OpenMP is not available in your current selected gcc"
 			die "need openmp capable gcc"
 		fi
 		CTHREADS="-D__OPENMP"
-		[[ $(tc-getCC) == *gcc ]] && LDTHREADS="-fopenmp"
+		[[ "$(tc-getCC)" == *gcc ]] && LDTHREADS="-fopenmp"
 	else
 		CTHREADS="-D__PTHREAD"
 		LDTHREADS="-pthread"

@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ REQUIRED_USE="|| ( shared static-libs static-pic )
 
 RDEPEND="${ADA_DEPS}
 	glib? (
-	dev-ada/gtkada[${ADA_USEDEP},shared?,static-libs?,static-pic?]
+	dev-ada/gtkada[${ADA_USEDEP},shared?,static-libs?,static-pic(-)?]
 	dev-libs/glib
 )"
 DEPEND="${RDEPEND}"

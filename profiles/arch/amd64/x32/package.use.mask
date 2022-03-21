@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-02-09)
@@ -46,7 +46,6 @@ dev-ruby/rails asset-pipeline
 dev-ruby/sprockets test
 dev-ruby/tilt test
 net-analyzer/netdata nodejs
-www-apps/gitea build-client
 www-apps/jekyll test
 www-apps/xpra-html5 minify
 dev-python/QtPy test

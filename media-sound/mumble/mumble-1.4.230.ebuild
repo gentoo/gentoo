@@ -20,8 +20,10 @@ else
 		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/v${MY_PV}/${MY_P}.tar.gz"
 		S="${WORKDIR}/${P/_*}.src"
 	fi
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
+
+SRC_URI+=" https://dev.gentoo.org/~polynomial-c/${PN}-1.4-openssl3.patch.xz"
 
 LICENSE="BSD MIT"
 SLOT="0"
@@ -67,6 +69,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${WORKDIR}/${PN}-1.4-openssl3.patch"
+)
+
 src_prepare() {
 	# required because of xdg.eclass also providing src_prepare
 	cmake_src_prepare
@@ -93,6 +99,7 @@ src_configure() {
 		-Dspeechd="$(usex speech)"
 		-Dtranslations="$(usex nls)"
 		-Dupdate="OFF"
+		-Dwarnings-as-errors="OFF"
 		-Dzeroconf="$(usex zeroconf)"
 	)
 

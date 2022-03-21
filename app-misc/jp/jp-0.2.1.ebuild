@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,14 +6,15 @@ inherit go-module
 
 EGO_SUM=(
 "github.com/BurntSushi/toml v0.3.1/go.mod"
-"github.com/codegangsta/cli v1.4.2-0.20150131031259-6086d7927ec3/go.mod"
 "github.com/cpuguy83/go-md2man/v2 v2.0.0-20190314233015-f79a8a8ca69d"
 "github.com/cpuguy83/go-md2man/v2 v2.0.0-20190314233015-f79a8a8ca69d/go.mod"
+"github.com/davecgh/go-spew v1.1.0"
 "github.com/davecgh/go-spew v1.1.0/go.mod"
-"github.com/jmespath/go-jmespath v0.0.0-20160803190731-bd40a432e4c7/go.mod"
 "github.com/jmespath/go-jmespath v0.4.0"
 "github.com/jmespath/go-jmespath v0.4.0/go.mod"
+"github.com/jmespath/go-jmespath/internal/testify v1.5.1"
 "github.com/jmespath/go-jmespath/internal/testify v1.5.1/go.mod"
+"github.com/pmezard/go-difflib v1.0.0"
 "github.com/pmezard/go-difflib v1.0.0/go.mod"
 "github.com/russross/blackfriday/v2 v2.0.1"
 "github.com/russross/blackfriday/v2 v2.0.1/go.mod"
@@ -24,6 +25,7 @@ EGO_SUM=(
 "github.com/urfave/cli v1.22.5/go.mod"
 "gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod"
 "gopkg.in/yaml.v2 v2.2.2/go.mod"
+"gopkg.in/yaml.v2 v2.2.8"
 "gopkg.in/yaml.v2 v2.2.8/go.mod"
 )
 go-module_set_globals
@@ -41,6 +43,13 @@ RESTRICT+=" test"
 # The jpp flag is deprecated (see jpipe for jpp).
 REQUIRED_USE="!jpp"
 RDEPEND="!app-misc/jpipe[jp-symlink]"
+
+src_unpack() {
+	unpack ${P}.tar.gz
+	cd "${S}" || die
+	eapply "${FILESDIR}/${P}-tidy.patch"
+	go-module_setup_proxy
+}
 
 src_compile() {
 	go build -mod=readonly -o ./jp ./jp.go || die

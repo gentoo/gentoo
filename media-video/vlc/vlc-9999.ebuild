@@ -1,4 +1,4 @@
-# Copyright 2000-2021 Gentoo Authors
+# Copyright 2000-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -281,7 +281,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local -x BUILDCC=$(tc-getBUILD_CC)
+	local -x BUILDCC="$(tc-getBUILD_CC)"
 
 	local myeconfargs=(
 		--disable-optimizations
@@ -451,7 +451,12 @@ src_configure() {
 	fi
 
 	# FIXME: Needs libresid-builder from libsidplay:2 which is in another directory...
-	append-ldflags "-L/usr/$(get_libdir)/sidplay/builders/"
+	append-ldflags "-L${ESYSROOT}/usr/$(get_libdir)/sidplay/builders/"
+
+	if use riscv; then
+		# bug #803473
+		append-libs -latomic
+	fi
 
 	if use truetype || use bidi; then
 		myeconfargs+=( --enable-freetype )
@@ -487,12 +492,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ -z "${ROOT}" ]] && [[ -x "${EROOT}/usr/libexec/vlc/vlc-cache-gen" ]] ; then
-		einfo "Running ${EROOT}/usr/libexec/vlc/vlc-cache-gen on ${EROOT}/usr/libexec/vlc/plugins/"
-		"${EROOT}/usr/libexec/vlc/vlc-cache-gen" "${EROOT}/usr/libexec/vlc/plugins/"
+	if [[ -z "${ROOT}" ]] && [[ -x "${EROOT}/usr/$(get_libdir)/vlc/vlc-cache-gen" ]] ; then
+		einfo "Running ${EPREFIX}/usr/$(get_libdir)/vlc/vlc-cache-gen on ${EROOT}/usr/$(get_libdir)/vlc/plugins/"
+		"${EPREFIX}/usr/$(get_libdir)/vlc/vlc-cache-gen" "${EROOT}/usr/$(get_libdir)/vlc/plugins/"
 	else
 		ewarn "We cannot run vlc-cache-gen (most likely ROOT != /)"
-		ewarn "Please run ${EROOT}/usr/libexec/vlc/vlc-cache-gen manually"
+		ewarn "Please run ${EPREFIX}/usr/$(get_libdir)/vlc/vlc-cache-gen manually"
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
 
@@ -500,8 +505,8 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if [[ -e "${EROOT}"/usr/libexec/vlc/plugins/plugins.dat ]]; then
-		rm "${EROOT}"/usr/libexec/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
+	if [[ -e "${EROOT}"/usr/$(get_libdir)/vlc/plugins/plugins.dat ]]; then
+		rm "${EROOT}"/usr/$(get_libdir)/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
 	fi
 
 	xdg_pkg_postrm

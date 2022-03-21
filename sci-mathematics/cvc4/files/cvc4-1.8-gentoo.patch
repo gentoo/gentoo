@@ -1,5 +1,14 @@
 --- a/CMakeLists.txt	2019-07-09 14:47:12.552425226 +0200
 +++ b/CMakeLists.txt	2019-07-09 14:50:02.595001358 +0200
+@@ -83,7 +83,7 @@
+ #-----------------------------------------------------------------------------#
+ 
+ set(INCLUDE_INSTALL_DIR include)
+-set(LIBRARY_INSTALL_DIR lib)
++set(LIBRARY_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR})
+ set(RUNTIME_INSTALL_DIR bin)
+ 
+ #-----------------------------------------------------------------------------#
 @@ -143,7 +143,7 @@
  
  # Note: Module CodeCoverage requires the name of the debug build to conform

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -68,8 +68,8 @@ src_install() {
 
 	# man pages can not go into standard locations
 	# as they would then overwrite libc man pages
-	insinto /usr/share/doc/${PF}/man/man3
-	doins "${WORKDIR}"/man/man3/*
+	docinto man/man3
+	dodoc -r "${WORKDIR}"/man/man3/.
 
 	use doc	&& dohtml "${WORKDIR}"/${PN}-user-manual-${PV}/*
 

@@ -7,8 +7,8 @@ X-Gentoo-Bug: http://bugs.gentoo.org/show_bug.cgi?id=233633
 X-Upstream-Bug: http://www.openldap.org/its/index.cgi/Software%20Enhancements?id=4997
 X-Debian-Bug: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=245341
 
---- openldap-2.4.17.orig/libraries/liblutil/passwd.c	2009-07-27 18:59:19.635995474 -0700
-+++ openldap-2.4.17/libraries/liblutil/passwd.c	2009-07-27 19:01:13.588069010 -0700
+--- a/libraries/liblutil/passwd.c
++++ b/libraries/liblutil/passwd.c
 @@ -51,6 +51,26 @@ typedef unsigned char des_data_block[8];
  typedef PK11Context *des_context[1];
  #define DES_ENCRYPT CKA_ENCRYPT

@@ -39,7 +39,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="x11-base/xorg-proto
+BDEPEND="X? ( x11-base/xorg-proto )
 	virtual/pkgconfig"
 
 PATCHES=(

@@ -13,10 +13,10 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/espeak-ng/espeak-ng/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
-LICENSE="GPL-3+ Turkowski unicode"
+LICENSE="GPL-3+ unicode"
 SLOT="0"
 IUSE="+async +klatt l10n_ru l10n_zh man mbrola +sound"
 
@@ -72,6 +72,6 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" VIMDIR=/usr/share/vimfiles install
-	rm "${ED}"/usr/lib*/*.la || die
+	emake DESTDIR="${D}" VIMDIR=/usr/share/vim/vimfiles install
+	find "${ED}" -name '*.la' -delete  || die
 }

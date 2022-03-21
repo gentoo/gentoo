@@ -19,9 +19,6 @@
 		<flag name="occ">
 			Use <pkg>sci-libs/opencascade</pkg> for data exchange
 		</flag>
-		<flag name="oce">
-			Use <pkg>sci-libs/oce</pkg> for data exchange
-		</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">kicad/kicad-packages3d</remote-id>

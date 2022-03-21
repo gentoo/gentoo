@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit toolchain-funcs
+
 DESCRIPTION="Collection of LV2 plugins"
 HOMEPAGE="https://github.com/x42/x42-plugins"
 
@@ -38,7 +40,7 @@ DEPEND="${RDEPEND}
 	sys-apps/help2man"
 
 src_compile() {
-	emake STRIP="#" FONTFILE="/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf"
+	emake CC="$(tc-getCC)" STRIP="#" FONTFILE="/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf"
 }
 
 src_install() {

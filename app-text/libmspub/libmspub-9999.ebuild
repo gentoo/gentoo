@@ -1,13 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/libmspub.git"
-	inherit autotools git-r3
+	inherit git-r3
 else
 	SRC_URI="https://dev-www.libreoffice.org/src/libmspub/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
@@ -36,7 +36,9 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	default
 	[[ -d m4 ]] || mkdir "m4"
-	[[ ${PV} == *9999 ]] && eautoreconf
+
+	# Needed for Clang: stale libtool. bug #832764
+	eautoreconf
 }
 
 src_configure() {

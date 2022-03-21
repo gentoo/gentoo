@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,7 +45,6 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PV}-0001-remove-non-working-test.patch"
-	"${FILESDIR}/${PV}-0002-update-reference-to-envelope-body.patch"
 )
 
 distutils_enable_tests setup.py

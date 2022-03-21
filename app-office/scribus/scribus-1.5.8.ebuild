@@ -9,11 +9,11 @@ inherit cmake desktop flag-o-matic python-single-r1 xdg
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="https://www.scribus.net/"
-SRC_URI="https://pilotfiber.dl.sourceforge.net/project/${PN}/${PN}-devel/${PV}/${P}.tar.xz"
+SRC_URI="mirror://sourceforge/project/${PN}/${PN}-devel/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ~ppc64 x86"
 IUSE="+boost debug examples graphicsmagick hunspell +minimal osg +pdf scripts +templates tk"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -76,6 +76,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.6-docdir.patch
 	"${FILESDIR}"/${PN}-1.5.8-findhyphen-1.patch
 	"${FILESDIR}"/${PN}-1.5.6-findhyphen.patch
+	"${FILESDIR}"/${PN}-1.5.8-poppler-22.2.0-1.patch
+	"${FILESDIR}"/${PN}-1.5.8-poppler-22.2.0-2.patch
+	"${FILESDIR}"/${PN}-1.5.8-poppler-22.03.0.patch # bug 834537
 )
 
 CMAKE_BUILD_TYPE="Release"

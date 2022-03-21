@@ -1,10 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit toolchain-funcs
 
-if [[ "${PV}" == "9999" ]]; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/tomszilagyi/${PN}.git"
 	EGIT_PROJECT="${PN}.git"
@@ -15,16 +16,17 @@ fi
 
 DESCRIPTION="Tom's audio processing (TAP) LADSPA plugins"
 HOMEPAGE="https://github.com/tomszilagyi/tap-plugins http://tap-plugins.sourceforge.net/"
+
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 DEPEND="media-libs/ladspa-sdk"
 RDEPEND="${DEPEND}"
+
 DOCS=( README CREDITS )
 PATCHES=( "${FILESDIR}/${PN}-1.0.1-makefile.patch" )
 
 src_compile() {
-	emake CC=$(tc-getCC) OPT_CFLAGS="${CFLAGS}" EXTRA_LDFLAGS="${LDFLAGS}"
+	emake CC="$(tc-getCC)" OPT_CFLAGS="${CFLAGS}" EXTRA_LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {

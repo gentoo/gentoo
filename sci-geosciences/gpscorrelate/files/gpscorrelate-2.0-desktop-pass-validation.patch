@@ -1,0 +1,10 @@
+diff --git a/gpscorrelate.desktop b/gpscorrelate.desktop
+index b4db0d6..0885ca4 100644
+--- a/gpscorrelate.desktop
++++ b/gpscorrelate.desktop
+@@ -1,4 +1,4 @@
+-[Desktop Entry] 
++[Desktop Entry]
+ Type=Application
+ Version=1.0
+ Name=GPSCorrelate

@@ -1,5 +1,31 @@
-# Copyright 2014-2021 Gentoo Authors
+# Copyright 2014-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# dev-lang/ocaml and dev-ml/* not marked stable here
+ocaml
+ocamlopt
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# No kerberos provider is marked stable here
+gssapi
+kerberos
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# No MPI provider is marked stable here
+mpi
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# dev-libs/cyrus-sasl is not marked stable here
+sasl
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# net-nds/openldap is not marked stable here
+ldap
+
+# Sam James <sam@gentoo.org> (2022-02-03)
+# sys-libs/llvm-libunwind isn't marked stable here
+llvm-libunwind
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-08-13)
 # media-gfx/gimp is not stable

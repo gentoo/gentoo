@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Company-Coq is a new Emacs package that extends Proof General with a
+    contextual auto-completion engine for Coq proofs and many additional
+    facilities to make writing proofs easier and more efficient. Beyond fuzzy
+    auto-completion of tactics, options, module names, and local definitions,
+    company-coq offers offline in-editor documentation, convenient snippets,
+    and multiple other Coq-specific IDE features.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/cpitclaudel/company-coq/issues/</bugs-to>
+    <remote-id type="github">cpitclaudel/company-coq</remote-id>
+  </upstream>
+</pkgmetadata>

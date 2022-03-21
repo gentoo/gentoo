@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs flag-o-matic
+inherit toolchain-funcs
 
 DESCRIPTION="LV2 convolver plugin especially for creating reverb effects"
 HOMEPAGE="https://tomszilagyi.github.io/plugins/ir.lv2/"
