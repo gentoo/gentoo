@@ -18,7 +18,4 @@
 		<bugs-to>https://github.com/nextcloud/server/issues</bugs-to>
 		<remote-id type="github">nextcloud/server</remote-id>
 	</upstream>
-	<use>
-		<flag name="samba">Enable connect to Windows file servers or other SMB-compatible servers with the SMB/CIFS backend.</flag>
-	</use>
 </pkgmetadata>

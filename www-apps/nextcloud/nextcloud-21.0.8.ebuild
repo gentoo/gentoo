@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit webapp
+inherit optfeature webapp
 
 DESCRIPTION="Personal cloud that runs on your own server"
 HOMEPAGE="https://nextcloud.com/"
@@ -11,12 +11,11 @@ SRC_URI="https://download.nextcloud.com/server/releases/${P}.tar.bz2"
 LICENSE="AGPL-3"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="+curl +imagemagick mysql postgres samba +sqlite"
+IUSE="+curl +imagemagick mysql postgres +sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 DEPEND=""
 RDEPEND="dev-lang/php[curl?,filter,gd,hash(+),intl,json(+),mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,truetype,xmlreader,xmlwriter,zip]
-	samba? ( dev-php/pecl-smbclient )
 	imagemagick? ( dev-php/pecl-imagick )
 	virtual/httpd-php"
 
@@ -41,4 +40,8 @@ src_install() {
 	webapp_postinst_txt en "${FILESDIR}"/php-argon2-en.txt
 
 	webapp_src_install
+}
+
+pkg_postinst() {
+	optfeature "Connecting to Windows file servers or other SMB-compatible servers with the SMB/CIFS backend support." dev-php/pecl-smbclient
 }
