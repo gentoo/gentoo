@@ -42,6 +42,10 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		# This path gets embedded into cronie and is used for pidfile
+		# bug #835814
+		--runstatedir="${EPREFIX}"/run
+
 		$(use_with inotify)
 		$(use_with pam)
 		$(use_with selinux)
