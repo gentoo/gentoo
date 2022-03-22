@@ -16,10 +16,6 @@
 			Add support for command line editing to pcretest, through
 			<pkg>sys-libs/readline</pkg>.
 		</flag>
-		<flag name="recursion-limit">
-			Limit match recursion to 8192; if disabled, the default limit is
-			used, which is the same as the match limit.
-		</flag>
 		<flag name="zlib">
 			Add support for pcregrep command to search within
 			gzip-compressed files (via <pkg>sys-libs/zlib</pkg>).
