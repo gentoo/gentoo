@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,6 +22,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${P}-gsl-ocaml.patch"
+	"${FILESDIR}"/${P}-Makefile.patch
 	"${FILESDIR}"/${P}-ocaml-4.09.patch
 )
 
@@ -29,6 +30,27 @@ src_prepare() {
 	default
 	MAKEOPTS+=" -j1 VERSION=${PV}"
 	use ocamlopt || MAKEOPTS+=" TARGETS=flashdot_bytecode BYTECODENAME=flashdot"
+	sed -i \
+		-e 's:Gsl_matrix:Gsl.Matrix:g' \
+		-e 's:Gsl_rng:Gsl.Rng:g' \
+		-e 's:Gsl_randist:Gsl.Randist:g' \
+		-e 's:Gsl_sf:Gsl.Sf:g' \
+		-e 's:Gsl_math:Gsl.Math:g' \
+		-e 's:Gsl_vector:Gsl.Vector:g' \
+		-e 's:Gsl_permut:Gsl.Permut:g' \
+		-e 's:Gsl_linalg:Gsl.Linalg:g' \
+		-e 's:Gsl_cdf:Gsl.Cdf:g' \
+		mathexpr/mathexpr.ml \
+		mathexpr/mathexpr.mli \
+		mathexpr/random_rng.ml \
+		mathexpr/sequences.ml \
+		mathexpr/multibin.ml \
+		flashdot.ml \
+		|| die
+}
+
+src_configure() {
+	./configure --prefix=/usr || die
 }
 
 src_install() {
