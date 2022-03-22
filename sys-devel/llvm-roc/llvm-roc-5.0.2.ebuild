@@ -30,10 +30,11 @@ PATCHES=(
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
 src_prepare() {
-	cd "${WORKDIR}/llvm-project-rocm-${PV}" || die
+	pushd "${WORKDIR}/llvm-project-rocm-${PV}" || die
 	eapply "${FILESDIR}/${PN}-4.0.0-remove-isystem-usr-include.patch"
 	eapply "${FILESDIR}/${PN}-5.0.0-hip-location.patch"
 	eapply "${FILESDIR}/${PN}-5.0.0-add_GNU-stack.patch"
+	popd || die
 
 	if [[ -n ${EPREFIX} ]]; then
 		pushd "${S}"/../clang >/dev/null || die
