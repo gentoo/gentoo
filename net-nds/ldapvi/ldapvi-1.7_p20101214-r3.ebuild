@@ -17,7 +17,7 @@ IUSE="gnutls sasl"
 
 RDEPEND="dev-libs/popt
 	dev-libs/glib:2
-	net-nds/openldap
+	net-nds/openldap:=
 	sys-libs/readline:=
 	sys-libs/ncurses:0=
 	virtual/libcrypt:=
