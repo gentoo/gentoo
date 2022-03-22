@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI="7"
 
 inherit autotools prefix multilib-minimal
 
@@ -32,7 +32,7 @@ REQUIRED_USE="
 # lead to lots of false negatives, bug #285669
 RESTRICT="!test? ( test )"
 
-RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
+RDEPEND="ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
 	brotli? ( app-arch/brotli:=[${MULTILIB_USEDEP}] )
 	ssl? (
 		gnutls? (
@@ -122,7 +122,7 @@ multilib_src_configure() {
 		fi
 		if use nss || use curl_ssl_nss; then
 			einfo "SSL provided by nss"
-			myconf+=( --with-nss --with-nss-deprecated )
+			myconf+=( --with-nss )
 		fi
 		if use openssl || use curl_ssl_openssl; then
 			einfo "SSL provided by openssl"

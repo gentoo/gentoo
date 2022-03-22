@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 inherit autotools prefix multilib-minimal
 
@@ -11,15 +11,14 @@ SRC_URI="https://curl.haxx.se/download/${P}.tar.xz"
 
 LICENSE="curl"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="adns alt-svc brotli +ftp gnutls gopher hsts +http2 idn +imap ipv6 kerberos ldap mbedtls nss +openssl +pop3 +progress-meter rtmp samba +smtp ssh ssl sslv3 static-libs test telnet +tftp threads winssl zstd"
-IUSE+=" curl_ssl_gnutls curl_ssl_mbedtls curl_ssl_nss +curl_ssl_openssl curl_ssl_winssl"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="adns alt-svc brotli +ftp gnutls gopher hsts +http2 idn +imap ipv6 kerberos ldap mbedtls nss +openssl +pop3 +progress-meter rtmp samba +smtp ssh ssl sslv3 static-libs test telnet +tftp threads zstd"
+IUSE+=" curl_ssl_gnutls curl_ssl_mbedtls curl_ssl_nss +curl_ssl_openssl"
 IUSE+=" nghttp3 quiche"
 
 # c-ares must be disabled for threads
 # only one default ssl provider can be enabled
 REQUIRED_USE="
-	winssl? ( elibc_Winnt )
 	threads? ( !adns )
 	ssl? (
 		^^ (
@@ -27,14 +26,13 @@ REQUIRED_USE="
 			curl_ssl_mbedtls
 			curl_ssl_nss
 			curl_ssl_openssl
-			curl_ssl_winssl
 		)
 	)"
 
 # lead to lots of false negatives, bug #285669
 RESTRICT="!test? ( test )"
 
-RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
+RDEPEND="ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
 	brotli? ( app-arch/brotli:=[${MULTILIB_USEDEP}] )
 	ssl? (
 		gnutls? (
@@ -75,15 +73,11 @@ RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 #		curl_ssl_openssl? ( media-video/rtmpdump[-gnutls,ssl] )
 #	)
 
-# ssl providers to be added:
-# fbopenssl  $(use_with spnego)
-
 DEPEND="${RDEPEND}"
 BDEPEND="dev-lang/perl
 	virtual/pkgconfig
 	test? (
 		sys-apps/diffutils
-		dev-lang/perl
 	)"
 
 DOCS=( CHANGES README docs/{FEATURES.md,INTERNALS.md,FAQ,BUGS.md,CONTRIBUTE.md} )
@@ -114,7 +108,7 @@ multilib_src_configure() {
 	# TODO: in the future, we may want to add wolfssl (https://www.wolfssl.com/)
 	local myconf=()
 
-	myconf+=( --without-gnutls --without-mbedtls --without-nss --without-polarssl --without-ssl --without-winssl )
+	myconf+=( --without-gnutls --without-mbedtls --without-nss --without-ssl )
 	myconf+=( --without-ca-fallback --with-ca-bundle="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt  )
 	#myconf+=( --without-default-ssl-backend )
 	if use ssl ; then
@@ -128,15 +122,11 @@ multilib_src_configure() {
 		fi
 		if use nss || use curl_ssl_nss; then
 			einfo "SSL provided by nss"
-			myconf+=( --with-nss )
+			myconf+=( --with-nss --with-nss-deprecated )
 		fi
 		if use openssl || use curl_ssl_openssl; then
 			einfo "SSL provided by openssl"
 			myconf+=( --with-ssl --with-ca-path="${EPREFIX}"/etc/ssl/certs )
-		fi
-		if use winssl || use curl_ssl_winssl; then
-			einfo "SSL provided by Windows"
-			myconf+=( --with-winssl )
 		fi
 
 		if use curl_ssl_gnutls; then
@@ -151,9 +141,6 @@ multilib_src_configure() {
 		elif use curl_ssl_openssl; then
 			einfo "Default SSL provided by openssl"
 			myconf+=( --with-default-ssl-backend=openssl )
-		elif use curl_ssl_winssl; then
-			einfo "Default SSL provided by Windows"
-			myconf+=( --with-default-ssl-backend=winssl )
 		else
 			eerror "We can't be here because of REQUIRED_USE."
 		fi
@@ -201,7 +188,7 @@ multilib_src_configure() {
 		--enable-dateparse
 		--enable-dnsshuffle
 		--enable-doh
-		--enable-hidden-symbols
+		--enable-symbol-hiding
 		--enable-http-auth
 		$(use_enable ipv6)
 		--enable-largefile
@@ -218,7 +205,6 @@ multilib_src_configure() {
 		--without-amissl
 		--without-bearssl
 		$(use_with brotli)
-		--without-cyassl
 		--without-fish-functions-dir
 		$(use_with http2 nghttp2)
 		--without-hyper
@@ -233,7 +219,6 @@ multilib_src_configure() {
 		--without-rustls
 		--without-schannel
 		--without-secure-transport
-		--without-spnego
 		--without-winidn
 		--without-wolfssl
 		--with-zlib

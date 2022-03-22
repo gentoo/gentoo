@@ -32,7 +32,7 @@ REQUIRED_USE="
 # lead to lots of false negatives, bug #285669
 RESTRICT="!test? ( test )"
 
-RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
+RDEPEND="ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
 	brotli? ( app-arch/brotli:=[${MULTILIB_USEDEP}] )
 	ssl? (
 		gnutls? (
