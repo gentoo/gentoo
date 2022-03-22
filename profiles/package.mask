@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-03-22)
+# Abandoned upstream (archived many years ago), fails
+# to build with modern versions of gnupg, and is
+# stuck on EAPI 5. No reverse dependencies.
+# bug #835388, bug #828948, bug #733010.
+# Maintainers welcome to take over.
+# Removal on 2022-04-22.
+app-crypt/seahorse-sharing
+
 # David Seifert <soap@gentoo.org> (2022-03-21)
 # Unmaintained, EAPI 5, no revdeps in tree.
 # Bug #786093, removal on 2022-04-20.
