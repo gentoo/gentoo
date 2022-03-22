@@ -79,6 +79,7 @@ pkg_pretend() {
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-4.3-gentoo.patch"
+	eapply "${FILESDIR}/${PN}-4.17-use-system-libltdl.patch"
 
 	sed -i -e 's:/usr/local/squid/etc:/etc/squid:' \
 		INSTALL QUICKSTART \
@@ -197,8 +198,9 @@ src_configure() {
 		--with-build-environment=default \
 		--disable-strict-error-checking \
 		--disable-arch-native \
-		--with-included-ltdl=/usr/include \
-		--with-ltdl-libdir=/usr/$(get_libdir) \
+		--without-included-ltdl \
+		--with-ltdl-include="${ESYSROOT}"/usr/include \
+		--with-ltdl-lib="${ESYSROOT}"/usr/$(get_libdir) \
 		$(use_with caps libcap) \
 		$(use_enable ipv6) \
 		$(use_enable snmp) \
