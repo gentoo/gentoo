@@ -1,0 +1,21 @@
+diff --git a/Tensile/ClientExecutable.py b/Tensile/ClientExecutable.py
+index ca3809f..2d1d83b 100644
+--- a/Tensile/ClientExecutable.py
++++ b/Tensile/ClientExecutable.py
+@@ -36,6 +36,7 @@ class CMakeEnvironment:
+ 
+         args = ['cmake']
+         args += itertools.chain.from_iterable([ ['-D', '{}={}'.format(key, value)] for key,value in self.options.items()])
++        args += itertools.chain.from_iterable([ ['-G', 'Ninja'], [ '-D', 'CMAKE_EXPORT_COMPILE_COMMANDS=ON' ] ])
+         args += [self.sourceDir]
+ 
+         Common.print2(' '.join(args))
+@@ -43,7 +44,7 @@ class CMakeEnvironment:
+             subprocess.check_call(args, cwd=Common.ensurePath(self.buildDir))
+ 
+     def build(self):
+-        args = ['make', '-j']
++        args = ['ninja']
+         Common.print2(' '.join(args))
+         with Common.ClientExecutionLock():
+             subprocess.check_call(args, cwd=self.buildDir)
