@@ -1,19 +1,18 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-LUA_COMPAT=( lua5-{1..3} )
-
+LUA_COMPAT=( lua5-1 lua5-3 )
 # do not add a ssl USE flag.  ssl is mandatory
 SSL_DEPS_SKIP=1
-inherit autotools lua-single ssl-cert systemd toolchain-funcs
+inherit autotools flag-o-matic lua-single ssl-cert systemd toolchain-funcs
 
 MY_P="${P/_/.}"
 #MY_S="${PN}-ce-${PV}"
 major_minor="$(ver_cut 1-2)"
-sieve_version="0.5.14"
-if [[ ${PV} == *_rc* ]] ; then
+sieve_version="0.5.17.1"
+if [[ ${PV} == *_rc* ]]; then
 	rc_dir="rc/"
 else
 	rc_dir=""
@@ -30,24 +29,30 @@ HOMEPAGE="https://www.dovecot.org/"
 
 SLOT="0"
 LICENSE="LGPL-2.1 MIT"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 IUSE_DOVECOT_AUTH="kerberos ldap lua mysql pam postgres sqlite"
-IUSE_DOVECOT_COMPRESS="bzip2 lzma lz4 zlib zstd"
-IUSE_DOVECOT_OTHER="argon2 caps doc ipv6 lucene managesieve rpc selinux sieve solr static-libs suid tcpd textcat unwind"
+IUSE_DOVECOT_COMPRESS="lz4 zstd"
+IUSE_DOVECOT_OTHER="argon2 caps doc ipv6 lucene managesieve rpc
+	selinux sieve solr static-libs stemmer suid systemd tcpd textcat unwind"
 
 IUSE="${IUSE_DOVECOT_AUTH} ${IUSE_DOVECOT_COMPRESS} ${IUSE_DOVECOT_OTHER}"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
-DEPEND="argon2? ( dev-libs/libsodium:= )
-	bzip2? ( app-arch/bzip2 )
+DEPEND="
+	app-arch/bzip2
+	app-arch/xz-utils
+	dev-libs/icu:=
+	dev-libs/openssl:0=
+	sys-libs/zlib:=
+	virtual/libiconv
+	argon2? ( dev-libs/libsodium:= )
 	caps? ( sys-libs/libcap )
 	kerberos? ( virtual/krb5 )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	lua? ( ${LUA_DEPS} )
 	lucene? ( >=dev-cpp/clucene-2.3 )
-	lzma? ( app-arch/xz-utils )
 	lz4? ( app-arch/lz4 )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	pam? ( sys-libs/pam:= )
@@ -56,28 +61,29 @@ DEPEND="argon2? ( dev-libs/libsodium:= )
 	selinux? ( sec-policy/selinux-dovecot )
 	solr? ( net-misc/curl dev-libs/expat )
 	sqlite? ( dev-db/sqlite:* )
-	dev-libs/openssl:0=
+	stemmer? ( dev-libs/snowball-stemmer:= )
 	suid? ( acct-group/mail )
+	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	textcat? ( app-text/libexttextcat )
 	unwind? ( sys-libs/libunwind:= )
-	zlib? ( sys-libs/zlib:= )
 	zstd? ( app-arch/zstd:= )
 	virtual/libcrypt:=
-	virtual/libiconv
-	dev-libs/icu:="
+	"
 
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	acct-group/dovecot
 	acct-group/dovenull
 	acct-user/dovecot
 	acct-user/dovenull
-	net-mail/mailbase"
+	net-mail/mailbase
+	"
 
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}"-autoconf-lua-version.patch
+	"${FILESDIR}/${PN}"-autoconf-lua-version-v2.patch
 	"${FILESDIR}/${PN}"-socket-name-too-long.patch
 )
 
@@ -94,6 +100,9 @@ src_prepare() {
 	# bug 657108
 	#elibtoolize
 	eautoreconf
+
+	# Bug #727244
+	append-cflags -fasynchronous-unwind-tables
 }
 
 src_configure() {
@@ -104,39 +113,42 @@ src_configure() {
 	fi
 
 	# turn valgrind tests off. Bug #340791
-	VALGRIND=no LUAPC="${ELUA}" econf \
+	VALGRIND=no \
+	LUAPC="${ELUA}" \
+	systemdsystemunitdir="$(systemd_get_systemunitdir)" \
+	econf \
 		--with-rundir="${EPREFIX}/run/dovecot" \
 		--with-statedir="${EPREFIX}/var/lib/dovecot" \
 		--with-moduledir="${EPREFIX}/usr/$(get_libdir)/dovecot" \
-		--without-stemmer \
 		--disable-rpath \
+		--with-bzlib \
 		--without-libbsd \
+		--with-lzma \
 		--with-icu \
 		--with-ssl \
-		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
+		--with-zlib \
 		$( use_with argon2 sodium ) \
-		$( use_with bzip2 bzlib ) \
 		$( use_with caps libcap ) \
 		$( use_with kerberos gssapi ) \
 		$( use_with lua ) \
 		$( use_with ldap ) \
 		$( use_with lucene ) \
 		$( use_with lz4 ) \
-		$( use_with lzma ) \
 		$( use_with mysql ) \
 		$( use_with pam ) \
 		$( use_with postgres pgsql ) \
 		$( use_with sqlite ) \
 		$( use_with solr ) \
+		$( use_with stemmer ) \
+		$( use_with systemd ) \
 		$( use_with tcpd libwrap ) \
 		$( use_with textcat ) \
 		$( use_with unwind libunwind ) \
-		$( use_with zlib ) \
 		$( use_with zstd ) \
 		$( use_enable static-libs static ) \
 		${conf}
 
-	if use sieve || use managesieve ; then
+	if use sieve || use managesieve; then
 		# The sieve plugin needs this file to be build to determine the plugin
 		# directory and the list of libraries to link to.
 		emake dovecot-config
@@ -146,13 +158,14 @@ src_configure() {
 			--localstatedir="${EPREFIX}/var" \
 			--enable-shared \
 			--with-dovecot="${S}" \
+			$( use_with ldap ) \
 			$( use_with managesieve )
 	fi
 }
 
 src_compile() {
 	default
-	if use sieve || use managesieve ; then
+	if use sieve || use managesieve; then
 		cd "../dovecot-${major_minor}-pigeonhole-${sieve_version}" || die "cd failed"
 		emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
 	fi
@@ -160,7 +173,7 @@ src_compile() {
 
 src_test() {
 	default
-	if use sieve || use managesieve ; then
+	if use sieve || use managesieve; then
 		cd "../dovecot-${major_minor}-pigeonhole-${sieve_version}" || die "cd failed"
 		default
 	fi
@@ -172,7 +185,7 @@ src_install() {
 	# insecure:
 	# use suid && fperms u+s /usr/libexec/dovecot/deliver
 	# better:
-	if use suid;then
+	if use suid; then
 		einfo "Changing perms to allow deliver to be suided"
 		fowners root:mail "/usr/libexec/dovecot/dovecot-lda"
 		fperms 4750 "/usr/libexec/dovecot/dovecot-lda"
@@ -253,7 +266,7 @@ src_install() {
 			|| die "failed to update ldap settings in 10-auth.conf"
 	fi
 
-	if use sieve || use managesieve ; then
+	if use sieve || use managesieve; then
 		cd "../dovecot-${major_minor}-pigeonhole-${sieve_version}" || die "cd failed"
 		emake DESTDIR="${ED}" install
 		sed -i -e \

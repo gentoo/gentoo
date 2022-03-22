@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ inherit autotools flag-o-matic lua-single ssl-cert systemd toolchain-funcs
 MY_P="${P/_/.}"
 #MY_S="${PN}-ce-${PV}"
 major_minor="$(ver_cut 1-2)"
-sieve_version="0.5.17.1"
+sieve_version="0.5.18"
 if [[ ${PV} == *_rc* ]]; then
 	rc_dir="rc/"
 else
@@ -29,7 +29,7 @@ HOMEPAGE="https://www.dovecot.org/"
 
 SLOT="0"
 LICENSE="LGPL-2.1 MIT"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 
 IUSE_DOVECOT_AUTH="kerberos ldap lua mysql pam postgres sqlite"
 IUSE_DOVECOT_COMPRESS="lz4 zstd"
@@ -50,7 +50,7 @@ DEPEND="
 	argon2? ( dev-libs/libsodium:= )
 	caps? ( sys-libs/libcap )
 	kerberos? ( virtual/krb5 )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	lua? ( ${LUA_DEPS} )
 	lucene? ( >=dev-cpp/clucene-2.3 )
 	lz4? ( app-arch/lz4 )
