@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+dbus gui webui"
+IUSE="+dbus +gui webui"
 REQUIRED_USE="dbus? ( gui )"
 
 RDEPEND="
