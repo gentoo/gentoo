@@ -42,6 +42,7 @@ S=${WORKDIR}/${PN}-OPENLDAP_REL_ENG_${MY_PV}
 
 # openssl is needed to generate lanman-passwords required by samba
 COMMON_DEPEND="
+	kernel_linux? ( sys-apps/util-linux )
 	ssl? (
 		!gnutls? (
 			>=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}]
@@ -72,7 +73,7 @@ COMMON_DEPEND="
 		kerberos? (
 			virtual/krb5
 			kinit? ( !app-crypt/heimdal )
-			)
+		)
 	)
 "
 DEPEND="${COMMON_DEPEND}
