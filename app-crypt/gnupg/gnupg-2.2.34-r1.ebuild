@@ -3,13 +3,16 @@
 
 EAPI=7
 
-inherit flag-o-matic systemd toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gnupg.asc
+inherit flag-o-matic systemd toolchain-funcs verify-sig
 
 MY_P="${P/_/-}"
 
 DESCRIPTION="The GNU Privacy Guard, a GPL OpenPGP implementation"
 HOMEPAGE="https://gnupg.org/"
 SRC_URI="mirror://gnupg/gnupg/${MY_P}.tar.bz2"
+SRC_URI+=" verify-sig? ( mirror://gnupg/gnupg/${P}.tar.bz2.sig )"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -25,7 +28,7 @@ DEPEND=">=dev-libs/libassuan-2.5.0
 	>=dev-libs/npth-1.2
 	>=net-misc/curl-7.10
 	bzip2? ( app-arch/bzip2 )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	readline? ( sys-libs/readline:0= )
 	smartcard? ( usb? ( virtual/libusb:1 ) )
 	ssl? ( >=net-libs/gnutls-3.0:0= )
@@ -40,9 +43,8 @@ RDEPEND="${DEPEND}
 
 BDEPEND="virtual/pkgconfig
 	doc? ( sys-apps/texinfo )
-	nls? ( sys-devel/gettext )"
-
-S="${WORKDIR}/${MY_P}"
+	nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-gnupg )"
 
 DOCS=(
 	ChangeLog NEWS README THANKS TODO VERSION

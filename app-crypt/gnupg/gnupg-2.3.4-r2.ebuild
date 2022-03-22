@@ -1,36 +1,43 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic systemd toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gnupg.asc
+inherit flag-o-matic systemd toolchain-funcs verify-sig
 
 MY_P="${P/_/-}"
 
 DESCRIPTION="The GNU Privacy Guard, a GPL OpenPGP implementation"
 HOMEPAGE="https://gnupg.org/"
 SRC_URI="mirror://gnupg/gnupg/${MY_P}.tar.bz2"
+SRC_URI+=" verify-sig? ( mirror://gnupg/gnupg/${P}.tar.bz2.sig )"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="bzip2 doc ldap nls readline selinux +smartcard ssl tofu tools usb user-socket wks-server"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="bzip2 doc ldap nls readline selinux +smartcard ssl test +tofu tpm tools usb user-socket wks-server"
+RESTRICT="!test? ( test )"
+REQUIRED_USE="test? ( tofu )"
 
 # Existence of executables is checked during configuration.
 # Note: On each bump, update dep bounds on each version from configure.ac!
 DEPEND=">=dev-libs/libassuan-2.5.0
-	>=dev-libs/libgcrypt-1.8.0:=
-	>=dev-libs/libgpg-error-1.29
-	>=dev-libs/libksba-1.3.5
+	>=dev-libs/libgcrypt-1.9.1:=
+	>=dev-libs/libgpg-error-1.41
+	>=dev-libs/libksba-1.3.4
 	>=dev-libs/npth-1.2
 	>=net-misc/curl-7.10
 	bzip2? ( app-arch/bzip2 )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	readline? ( sys-libs/readline:0= )
 	smartcard? ( usb? ( virtual/libusb:1 ) )
+	tofu? ( >=dev-db/sqlite-3.27 )
+	tpm? ( >=app-crypt/tpm2-tss-2.4.0 )
 	ssl? ( >=net-libs/gnutls-3.0:0= )
 	sys-libs/zlib
-	tofu? ( >=dev-db/sqlite-3.7 )"
+"
 
 RDEPEND="${DEPEND}
 	app-crypt/pinentry
@@ -40,9 +47,8 @@ RDEPEND="${DEPEND}
 
 BDEPEND="virtual/pkgconfig
 	doc? ( sys-apps/texinfo )
-	nls? ( sys-devel/gettext )"
-
-S="${WORKDIR}/${MY_P}"
+	nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-gnupg )"
 
 DOCS=(
 	ChangeLog NEWS README THANKS TODO VERSION
@@ -73,6 +79,9 @@ src_configure() {
 		$(use_enable smartcard scdaemon)
 		$(use_enable ssl gnutls)
 		$(use_enable tofu)
+		$(use_enable tofu keyboxd)
+		$(use_enable tofu sqlite)
+		$(usex tpm '--with-tss=intel' '--disable-tpm2d')
 		$(use smartcard && use_enable usb ccid-driver || echo '--disable-ccid-driver')
 		$(use_enable wks-server wks-tools)
 		$(use_with ldap)
@@ -80,7 +89,6 @@ src_configure() {
 		--with-mailprog=/usr/libexec/sendmail
 		--disable-ntbtls
 		--enable-all-tests
-		--enable-gpg
 		--enable-gpgsm
 		--enable-large-secmem
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
@@ -136,7 +144,7 @@ src_install() {
 	use tools &&
 		dobin \
 			tools/{convert-from-106,gpg-check-pattern} \
-			tools/{gpg-zip,gpgconf,gpgsplit,lspgpot,mail-signed-keys} \
+			tools/{gpgconf,gpgsplit,lspgpot,mail-signed-keys} \
 			tools/make-dns-cert
 
 	dosym gpg /usr/bin/gpg2
