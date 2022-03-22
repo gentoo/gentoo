@@ -28,8 +28,12 @@ PATCHES=(
 
 src_prepare() {
 	default
-	MAKEOPTS+=" -j1 VERSION=${PV}"
+	MAKEOPTS="-j1"
 	use ocamlopt || MAKEOPTS+=" TARGETS=flashdot_bytecode BYTECODENAME=flashdot"
+	sed -i \
+		-e "s|^VERSION.*|VERSION := ${PV}|" \
+		Makefile \
+		|| die
 	sed -i \
 		-e 's:Gsl_matrix:Gsl.Matrix:g' \
 		-e 's:Gsl_rng:Gsl.Rng:g' \
