@@ -133,10 +133,6 @@ sys-block/fio -io-uring -zbc
 # Requires dev-python/networkx.
 app-portage/nattka depgraph-order
 
-# Michał Górny <mgorny@gentoo.org> (2020-05-03)
-# Requires unsupported dev-python/gevent.
-dev-python/socketpool eventlet gevent
-
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-25)
 # dependencies not yet keyworded
 dev-ruby/activemodel test

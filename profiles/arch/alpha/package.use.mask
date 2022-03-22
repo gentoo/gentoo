@@ -157,10 +157,6 @@ xfce-extra/tumbler epub
 # Requires dev-python/networkx.
 app-portage/nattka depgraph-order
 
-# Matt Turner <mattst88@gentoo.org> (2020-06-09)
-# Requires unsupported dev-python/eventlet and fails tests with gevent
-dev-python/socketpool eventlet gevent
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on alpha
 app-text/texlive-core -xindy
