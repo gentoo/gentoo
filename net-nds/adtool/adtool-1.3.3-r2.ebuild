@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-RDEPEND="net-nds/openldap"
+# Older OpenLDAP for bug #835649 (ldap_r)
+RDEPEND="<net-nds/openldap-2.6:="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
