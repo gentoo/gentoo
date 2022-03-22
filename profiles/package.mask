@@ -507,6 +507,7 @@ dev-tex/pdfannotextractor
 # Needs testing to ensure valac-0.54 works for existing packages
 >=dev-libs/vala-common-0.53
 dev-lang/vala:0.54
+dev-lang/vala:0.56
 
 # Sam James <sam@gentoo.org> (2021-11-03)
 # Known issues with YAMA (kernel.yama.ptrace_scope=1) which is on by default
