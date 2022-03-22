@@ -12,7 +12,7 @@ HOMEPAGE="https://www.asterisk.org/"
 SRC_URI="https://downloads.asterisk.org/pub/telephony/asterisk/releases/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/${PV%%.*}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 
 IUSE_VOICEMAIL_STORAGE=(
 	+voicemail_storage_file
@@ -63,7 +63,7 @@ DEPEND="acct-user/asterisk
 	http? ( dev-libs/gmime:2.6 )
 	iconv? ( virtual/libiconv )
 	ilbc? ( media-libs/libilbc )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	lua? ( ${LUA_DEPS} )
 	mysql? ( dev-db/mysql-connector-c:= )
 	newt? ( dev-libs/newt )
