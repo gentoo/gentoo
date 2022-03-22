@@ -148,8 +148,6 @@ src_compile() {
 	emake all
 
 	if use doc; then
-		# Avoid sandbox violation in epstopdf/ghostscript
-		addpredict /var/cache/fontconfig
 		if use cairo; then
 			emake -C docs pdf
 		else
