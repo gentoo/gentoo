@@ -99,7 +99,7 @@ COMMON_DEPEND="
 	fam? ( virtual/fam )
 	gpg? ( app-crypt/gpgme:= )
 	json? ( dev-libs/jansson:= )
-	ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
+	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
 	pam? ( sys-libs/pam )
 	python? (
 		sys-libs/ldb[python,${PYTHON_SINGLE_USEDEP}]
