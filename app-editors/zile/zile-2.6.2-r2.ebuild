@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/zile/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 
 RDEPEND="dev-libs/glib:2
 	dev-libs/libgee:0.8=
@@ -30,12 +30,9 @@ DOCS="README THANKS"
 
 QA_AM_MAINTAINER_MODE=".*help2man.*" #450278
 
-pkg_setup() {
-	vala_setup
-}
-
 src_prepare() {
 	default
+	vala_setup
 	rm *_vala.stamp || die
 }
 
