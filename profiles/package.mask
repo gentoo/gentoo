@@ -380,12 +380,6 @@ dev-python/socketpool
 dev-java/upnplib
 dev-java/apple-java-extensions-bin
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-02-13)
-# This package is completely broken and some libraries existing only for
-# it cause unneeded workload for Java team. Removal in 30 days.
-# Bug #831106, bug #784107.
-games-strategy/triplea
-
 # Jonas Stein <jstein@gentoo.org> (2022-02-11)
 # Blocks gtk2 removal, which is EOL
 # Removal after 2022-04-01.  Bug #833145.
