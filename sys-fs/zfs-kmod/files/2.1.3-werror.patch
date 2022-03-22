@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/835646
+https://github.com/openzfs/zfs/commit/7b215d93bcc0a72d7020ccc050c64f39aa7f2be8.patch
+
+From: Ryan Moeller <freqlabs@FreeBSD.org>
+Date: Thu, 17 Mar 2022 13:18:23 -0400
+Subject: [PATCH] Fix module build with -Werror
+
+This is a direct commit to zfs-2.1-release to fix release builds that
+error out on an unused variable.  The issue is avoided on master by a
+huge series of commits that change how the ASSERT macros work, but that
+is not feasible to backport.
+
+Reviewed-by: Tony Hutter <hutter2@llnl.gov>
+Reviewed-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Reviewed-by: Igor Kozhukhov <igor@dilos.org>
+Signed-off-by: Ryan Moeller <freqlabs@FreeBSD.org>
+Closes #13194
+Closes #13196
+--- a/module/zfs/arc.c
++++ b/module/zfs/arc.c
+@@ -1205,7 +1205,7 @@ static void
+ hdr_l2only_dest(void *vbuf, void *unused)
+ {
+ 	(void) unused;
+-	arc_buf_hdr_t *hdr = vbuf;
++	arc_buf_hdr_t *hdr __maybe_unused = vbuf;
+ 
+ 	ASSERT(HDR_EMPTY(hdr));
+ 	arc_space_return(HDR_L2ONLY_SIZE, ARC_SPACE_L2HDRS);
+

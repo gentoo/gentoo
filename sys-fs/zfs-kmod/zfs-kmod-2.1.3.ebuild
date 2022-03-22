@@ -62,6 +62,10 @@ RESTRICT="debug? ( strip ) test"
 
 DOCS=( AUTHORS COPYRIGHT META README.md )
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-werror.patch
+)
+
 pkg_pretend() {
 	use rootfs || return 0
 
