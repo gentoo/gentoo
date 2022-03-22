@@ -14,13 +14,21 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit mercurial
 	EHG_REPO_URI="https://www.sudo.ws/repos/sudo"
 else
+	inherit verify-sig
+	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/sudo.ws.asc
+	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-sudo )"
+
 	uri_prefix=
 	case ${P} in
 		*_beta*|*_rc*) uri_prefix=beta/ ;;
 	esac
 
 	SRC_URI="https://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
-		ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz"
+		ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz
+		verify-sig? (
+			https://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz.sig
+			ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz.sig
+		)"
 	if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
 		KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~sparc-solaris"
 	fi
@@ -58,7 +66,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-sudo )
 	sendmail? ( virtual/mta )
 "
-BDEPEND="
+BDEPEND+="
 	sys-devel/bison
 	virtual/pkgconfig
 "
