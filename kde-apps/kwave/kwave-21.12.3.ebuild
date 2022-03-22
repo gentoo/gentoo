@@ -69,6 +69,11 @@ BDEPEND="
 
 DOCS=( AUTHORS CHANGES LICENSES README TODO )
 
+PATCHES=(
+	"${FILESDIR}/${P}-unused-dep.patch"
+	"${FILESDIR}/${P}-missing-link.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DDEBUG=$(usex debug)
