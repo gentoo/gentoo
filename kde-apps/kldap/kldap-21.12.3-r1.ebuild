@@ -26,6 +26,6 @@ DEPEND="
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
-	net-nds/openldap
+	net-nds/openldap:=
 "
 RDEPEND="${DEPEND}"
