@@ -50,9 +50,7 @@ BDEPEND="
 		>=dev-python/pymysql-0.9.3[${PYTHON_USEDEP}]
 		>=dev-python/pyqrcode-1.2[${PYTHON_USEDEP}]
 		>=dev-python/zxcvbn-4.4.28[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			>=dev-python/pony-0.7.11[${PYTHON_USEDEP}]
-		' python3_8 python3_9)
+		>=dev-python/pony-0.7.11[${PYTHON_USEDEP}]
 	)
 "
 
