@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 inherit autotools flag-o-matic pam ssl-cert
 
 DESCRIPTION="The Cyrus IMAP Server"
@@ -28,24 +27,25 @@ CDEPEND="
 	calalarm? ( dev-libs/libical:0= )
 	caps? ( sys-libs/libcap )
 	clamav? ( app-antivirus/clamav )
-	http? ( dev-libs/libxml2:2 dev-libs/libical:0= net-libs/nghttp2 )
+	http? ( dev-libs/libxml2:2 dev-libs/libical:0= net-libs/nghttp2:= )
 	kerberos? ( virtual/krb5 )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	lmdb? ( dev-db/lmdb:0= )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	nntp? ( !net-nntp/leafnode )
 	pam? (
-			sys-libs/pam
-			>=net-mail/mailbase-1
-		)
+		sys-libs/pam
+		>=net-mail/mailbase-1
+	)
 	perl? ( dev-lang/perl:= )
 	postgres? ( dev-db/postgresql:* )
 	snmp? ( >=net-analyzer/net-snmp-5.2.2-r1:0= )
 	ssl? ( >=dev-libs/openssl-1.0.1e:0=[-bindist(-)] )
 	sqlite? ( dev-db/sqlite:3 )
-	tcpd? ( >=sys-apps/tcp-wrappers-7.6
+	tcpd? (
+		>=sys-apps/tcp-wrappers-7.6
 		snmp? ( net-analyzer/net-snmp:0=[tcpd=] )
-		)
+	)
 	xapian? ( >=dev-libs/xapian-1.4.0:0= )
 "
 DEPEND="${CDEPEND}
@@ -75,7 +75,12 @@ REQUIRED_USE="
 # TODO: check underlinking for other libraries
 PATCHES=(
 	"${FILESDIR}/cyrus-imapd-libcap-libs-r1.patch"
-)
+	)
+
+pkg_setup() {
+	# https://bugs.gentoo.org/604466
+	append-ldflags $(no-as-needed)
+}
 
 src_prepare() {
 	default
@@ -100,15 +105,10 @@ src_prepare() {
 
 src_configure() {
 	local myconf
-
-	# https://bugs.gentoo.org/604466
-	append-ldflags $(no-as-needed)
-
 	if use afs ; then
 		myconf+=" --with-afs-libdir=/usr/$(get_libdir)"
 		myconf+=" --with-afs-incdir=/usr/include/afs"
 	fi
-
 	# sphinx is unmaintained and dead, bug #662944
 	econf \
 		--enable-unit-tests \

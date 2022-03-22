@@ -28,24 +28,25 @@ CDEPEND="
 	calalarm? ( dev-libs/libical:0= )
 	caps? ( sys-libs/libcap )
 	clamav? ( app-antivirus/clamav )
-	http? ( dev-libs/libxml2:2 dev-libs/libical:0= net-libs/nghttp2 )
+	http? ( dev-libs/libxml2:2 dev-libs/libical:0= net-libs/nghttp2:= )
 	kerberos? ( virtual/krb5 )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	lmdb? ( dev-db/lmdb:0= )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	nntp? ( !net-nntp/leafnode )
 	pam? (
-			sys-libs/pam
-			>=net-mail/mailbase-1
-		)
+		sys-libs/pam
+		>=net-mail/mailbase-1
+	)
 	perl? ( dev-lang/perl:= )
 	postgres? ( dev-db/postgresql:* )
 	snmp? ( >=net-analyzer/net-snmp-5.2.2-r1:0= )
 	ssl? ( >=dev-libs/openssl-1.0.1e:0=[-bindist(-)] )
 	sqlite? ( dev-db/sqlite:3 )
-	tcpd? ( >=sys-apps/tcp-wrappers-7.6
+	tcpd? (
+		>=sys-apps/tcp-wrappers-7.6
 		snmp? ( net-analyzer/net-snmp:0=[tcpd=] )
-		)
+	)
 	xapian? ( >=dev-libs/xapian-1.4.0:0= )
 "
 DEPEND="${CDEPEND}
