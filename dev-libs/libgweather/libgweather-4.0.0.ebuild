@@ -54,6 +54,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
 	gnome2_environment_reset
 	use vala && vala_setup
 }
