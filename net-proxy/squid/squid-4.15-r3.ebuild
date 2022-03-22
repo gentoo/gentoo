@@ -36,7 +36,7 @@ COMMON_DEPEND="acct-group/squid
 	virtual/libcrypt:=
 	caps? ( >=sys-libs/libcap-2.16 )
 	pam? ( sys-libs/pam )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	kerberos? ( virtual/krb5 )
 	qos? ( net-libs/libnetfilter_conntrack )
 	ssl? (

@@ -1,27 +1,26 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=7
 
 inherit autotools flag-o-matic linux-info pam systemd toolchain-funcs
 
 DESCRIPTION="A full-featured web proxy cache"
 HOMEPAGE="http://www.squid-cache.org/"
 
-MY_PV_MAJOR=$(ver_cut 1)
 # Upstream patch ID for the most recent bug-fixed update to the formal release.
 r=
 #r=-20181117-r0022167
 if [ -z "$r" ]; then
-	SRC_URI="http://www.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}.tar.xz"
+	SRC_URI="http://www.squid-cache.org/Versions/v${PV%.*}/${P}.tar.xz"
 else
-	SRC_URI="http://www.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}${r}.tar.bz2"
+	SRC_URI="http://www.squid-cache.org/Versions/v${PV%.*}/${P}${r}.tar.bz2"
 	S="${S}${r}"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ppc64 ~sparc ~x86"
 IUSE="caps gnutls ipv6 pam ldap samba sasl kerberos nis radius ssl snmp selinux logrotate test \
 	ecap esi ssl-crtd \
 	mysql postgres sqlite systemd \
@@ -37,7 +36,7 @@ COMMON_DEPEND="acct-group/squid
 	virtual/libcrypt:=
 	caps? ( >=sys-libs/libcap-2.16 )
 	pam? ( sys-libs/pam )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	kerberos? ( virtual/krb5 )
 	qos? ( net-libs/libnetfilter_conntrack )
 	ssl? (
@@ -52,16 +51,15 @@ COMMON_DEPEND="acct-group/squid
 	esi? ( dev-libs/expat dev-libs/libxml2 )
 	gnutls? ( >=net-libs/gnutls-3.1.5:= )
 	logrotate? ( app-admin/logrotate )
-	dev-libs/libltdl:0
-	sys-libs/tdb"
+	>=sys-libs/db-4:*
+	dev-libs/libltdl:0"
 
 DEPEND="${COMMON_DEPEND}
 	${BDEPEND}
 	ecap? ( virtual/pkgconfig )
 	test? ( dev-util/cppunit )"
 
-RDEPEND="!!<net-proxy/squid-5
-	${COMMON_DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	samba? ( net-fs/samba )
 	perl? ( dev-lang/perl )
 	mysql? ( dev-perl/DBD-mysql )
@@ -80,7 +78,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	eapply "${FILESDIR}/${PN}-5.3-gentoo.patch"
+	eapply "${FILESDIR}/${PN}-4.3-gentoo.patch"
 	eapply "${FILESDIR}/${PN}-4.17-use-system-libltdl.patch"
 
 	sed -i -e 's:/usr/local/squid/etc:/etc/squid:' \
