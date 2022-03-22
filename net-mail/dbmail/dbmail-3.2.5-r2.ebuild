@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,8 +16,8 @@ IUSE="+doc jemalloc ldap sieve ssl static systemd"
 
 DEPEND="dev-db/libzdb
 	sieve? ( >=mail-filter/libsieve-2.2.1 )
-	ldap? ( >=net-nds/openldap-2.3.33 )
-	jemalloc? ( dev-libs/jemalloc )
+	ldap? ( >=net-nds/openldap-2.3.33:= )
+	jemalloc? ( dev-libs/jemalloc:= )
 	app-text/asciidoc
 	app-text/xmlto
 	app-crypt/mhash
@@ -27,7 +27,7 @@ DEPEND="dev-db/libzdb
 	dev-libs/libevent:=
 	virtual/libcrypt:=
 	ssl? (
-		dev-libs/openssl:0=
+		dev-libs/openssl:=
 	)"
 RDEPEND="${DEPEND}
 	acct-group/dbmail
