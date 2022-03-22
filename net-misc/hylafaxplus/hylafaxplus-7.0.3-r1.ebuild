@@ -28,7 +28,7 @@ DEPEND="
 	virtual/mta
 	jbig? ( media-libs/jbigkit )
 	lcms? ( media-libs/lcms )
-	ldap? (  net-nds/openldap )
+	ldap? (  net-nds/openldap:= )
 	mgetty? ( net-dialup/mgetty[-fax] )
 	pam? ( sys-libs/pam )
 "
