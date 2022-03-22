@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,7 @@ COMMON_DEPEND="dev-qt/qtcore:5
 	>=net-libs/libssh-0.7.5-r2
 	net-print/cups
 	x11-libs/libXpm
-	ldap? ( net-nds/openldap )"
+	ldap? ( net-nds/openldap:= )"
 DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5"
 RDEPEND="${COMMON_DEPEND}
