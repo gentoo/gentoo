@@ -50,6 +50,12 @@ src_configure() {
 	econf \
 		$myconf \
 		$(use_enable truetype sdl-ttf)
+	if ! use opengl; then
+		sed -i \
+			-e 's:LABLGLDIR:FALSE:' \
+			src/Makefile \
+			|| die
+	fi
 }
 
 src_install() {
