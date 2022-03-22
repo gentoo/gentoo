@@ -22,7 +22,7 @@ DEPEND="media-libs/libpng[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/jpeg[${MULTILIB_USEDEP}]
 	aom? ( >=media-libs/libaom-3.1.2:=[${MULTILIB_USEDEP}] )
-	dav1d? ( media-libs/dav1d[${MULTILIB_USEDEP}] )
+	dav1d? ( media-libs/dav1d:=[${MULTILIB_USEDEP}] )
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}] )
 	rav1e? ( media-video/rav1e[capi] )
 	svt-av1? ( >=media-libs/svt-av1-0.8.6 )"
