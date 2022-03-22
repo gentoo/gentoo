@@ -53,8 +53,6 @@ BDEPEND="
 		$(python_gen_cond_dep '
 			>=dev-python/pony-0.7.11[${PYTHON_USEDEP}]
 		' python3_8 python3_9)
-		amd64? ( >=dev-python/flask-mongoengine-0.9.5[${PYTHON_USEDEP}] )
-		arm64? ( >=dev-python/flask-mongoengine-0.9.5[${PYTHON_USEDEP}] )
 	)
 "
 
