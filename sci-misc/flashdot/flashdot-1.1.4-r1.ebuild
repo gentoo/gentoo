@@ -14,10 +14,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 DEPEND="
-	>=dev-lang/ocaml-3.10[ocamlopt?]
-	dev-ml/gsl-ocaml
-	dev-ml/lablgl[glut]
-	dev-ml/ocamlsdl
+	>=dev-lang/ocaml-3.10:=[ocamlopt?]
+	dev-ml/gsl-ocaml:=
+	dev-ml/lablgl:=[glut]
+	dev-ml/ocamlsdl:=[opengl]
 	x11-apps/xdpyinfo"
 RDEPEND="${DEPEND}"
 PATCHES=(
