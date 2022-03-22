@@ -1,8 +1,8 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{7,8,9} )
+EAPI=8
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="tool for reading, displaying and saving data from the NanoVNA"
@@ -24,12 +24,16 @@ DEPEND=""
 RDEPEND="${DEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/pyserial[${PYTHON_USEDEP}]
-	dev-python/PyQt5[${PYTHON_USEDEP}]
+	dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]"
 BDEPEND=""
 
-src_prepare() {
-	sed -i "s#find_packages()#find_packages(exclude=['test'])#" setup.py
-	distutils-r1_src_prepare
+PATCHES=( "${FILESDIR}"/no-newline-in-description.patch )
+
+distutils_enable_tests pytest
+
+python_install() {
+	rm -r "${BUILD_DIR}"/lib/test || die
+	distutils-r1_python_install
 }
