@@ -378,7 +378,6 @@ dev-python/socketpool
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-02-15)
 # Java libraries without consumers. Removal in 30 days.
 dev-java/upnplib
-dev-java/apple-java-extensions-bin
 
 # Jonas Stein <jstein@gentoo.org> (2022-02-11)
 # Blocks gtk2 removal, which is EOL
