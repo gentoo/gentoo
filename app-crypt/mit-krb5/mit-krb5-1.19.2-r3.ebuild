@@ -31,9 +31,9 @@ DEPEND="
 		>=dev-libs/libverto-0.2.5[libevent,${MULTILIB_USEDEP}]
 	)
 	keyutils? ( >=sys-apps/keyutils-1.5.8:=[${MULTILIB_USEDEP}] )
-	lmdb? ( dev-db/lmdb )
+	lmdb? ( dev-db/lmdb:= )
 	nls? ( sys-devel/gettext[${MULTILIB_USEDEP}] )
-	openldap? ( >=net-nds/openldap-2.4.38-r1[${MULTILIB_USEDEP}] )
+	openldap? ( >=net-nds/openldap-2.4.38-r1:=[${MULTILIB_USEDEP}] )
 	pkinit? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
 	xinetd? ( sys-apps/xinetd )
 	"
