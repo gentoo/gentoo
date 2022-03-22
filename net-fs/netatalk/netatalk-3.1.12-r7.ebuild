@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,17 +29,18 @@ CDEPEND="
 	cracklib? ( sys-libs/cracklib )
 	dbus? ( sys-apps/dbus dev-libs/dbus-glib )
 	kerberos? ( virtual/krb5 )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	pam? ( sys-libs/pam )
 	ssl? ( dev-libs/openssl:0= )
 	tcpd? ( sys-apps/tcp-wrappers )
-	tracker? ( app-misc/tracker:0= )
+	tracker? ( app-misc/tracker:3= )
 	zeroconf? ( net-dns/avahi[dbus] )
 "
 RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}
 	virtual/yacc
-	sys-devel/flex"
+	sys-devel/flex
+"
 
 RESTRICT="test"
 
@@ -52,6 +53,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.8-disable-ld-library-path.patch #564350
 	"${FILESDIR}"/${PN}-3.1.12-my_bool.patch #692560
 	"${FILESDIR}"/${PN}-3.1.12-fno-common.patch #706852
+	# https://sourceforge.net/p/netatalk/patches/147/
+	"${FILESDIR}"/${PN}-3.1.12-tracker3.patch
 )
 
 src_prepare() {
@@ -61,6 +64,7 @@ src_prepare() {
 	sed \
 		-e "s:shell_utils::g" \
 		-i contrib/Makefile.am || die
+
 	eautoreconf
 }
 
