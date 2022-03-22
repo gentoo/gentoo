@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -17,7 +17,7 @@ MY_MAJOR_PV=$(ver_cut 1-2)
 MY_RELEASE_NOTES_URI="https://www.percona.com/doc/percona-server/${MY_MAJOR_PV}/"
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/percona-server/${PN}-8.0.25.15-patches-01.tar.xz"
+PATCH_SET="https://dev.gentoo.org/~whissi/dist/percona-server/${PN}-8.0.26.16-patches-01.tar.xz"
 
 SRC_URI="https://www.percona.com/downloads/${MY_PN}-${MY_MAJOR_PV}/${MY_PN}-${MY_PV}/source/tarball/${PN}-${MY_PV}.tar.gz
 	https://dl.bintray.com/boostorg/release/${MY_BOOST_VERSION}/source/boost_$(ver_rs 1- _ ${MY_BOOST_VERSION}).tar.bz2
@@ -49,6 +49,7 @@ S="${WORKDIR}/mysql"
 
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
+# openldap < dep for bug #835647 (we need ldap_r)
 COMMON_DEPEND="
 	>=app-arch/lz4-0_p131:=
 	app-arch/zstd:=
@@ -64,7 +65,7 @@ COMMON_DEPEND="
 		cjk? ( app-text/mecab:= )
 		ldap? (
 			dev-libs/cyrus-sasl
-			net-nds/openldap
+			<net-nds/openldap-2.6:=
 		)
 		jemalloc? ( dev-libs/jemalloc:0= )
 		kernel_linux? (
@@ -366,12 +367,12 @@ src_test() {
 	}
 
 	local TESTDIR="${BUILD_DIR}/mysql-test"
-	local retstatus_unit
 	local retstatus_tests
 
-	# Run CTest (test-units)
-	cmake_src_test
-	retstatus_unit=$?
+	if ! use server ; then
+		einfo "Skipping server tests due to minimal build."
+		return 0
+	fi
 
 	# Ensure that parallel runs don't die
 	export MTR_BUILD_THREAD="$((${RANDOM} % 100))"
@@ -427,6 +428,8 @@ src_test() {
 	disabled_tests+=( "main.coredump;0;Known test failure" )
 	disabled_tests+=( "main.derived_limit;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
 	disabled_tests+=( "main.explain_tree;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
+	disabled_tests+=( "main.gis-precise;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
+	disabled_tests+=( "main.mtr_unit_tests;7975;Known test failure (PS)" )
 	disabled_tests+=( "main.myisam-blob;0;Sporadic failing test" )
 	disabled_tests+=( "main.mysql_load_data_local_dir;7416;Known test failure" )
 	disabled_tests+=( "main.mysqlpump_basic_lz4;6042;Extra tool output causes false positive" )
@@ -521,6 +524,7 @@ src_test() {
 		local impossible_test
 		for impossible_test in \
 			encryption.default_table_encryption_var \
+			encryption.innodb-redo-nokeys2_release \
 			keyring_vault.innodb_online_alter_encryption \
 			keyring_vault.innodb_row_log_encryption \
 			keyring_vault.install_keyring_vault \
@@ -575,10 +579,9 @@ src_test() {
 	pkill -9 -f "${S}/sql" 2>/dev/null
 
 	local failures=""
-	[[ $retstatus_unit -eq 0 ]] || failures="${failures} test-unit"
-	[[ $retstatus_tests -eq 0 ]] || failures="${failures} tests"
+	[[ ${retstatus_tests} -eq 0 ]] || failures="${failures} tests"
 
-	[[ -z "$failures" ]] || die "Test failures: $failures"
+	[[ -z "${failures}" ]] || die "Test failures: ${failures}"
 	einfo "Tests successfully completed"
 }
 
