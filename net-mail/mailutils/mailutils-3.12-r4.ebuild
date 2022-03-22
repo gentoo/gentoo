@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/mailutils/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~ppc-macos ~x64-macos"
 IUSE="berkdb bidi +clients emacs gdbm sasl guile ipv6 kerberos kyotocabinet \
 	ldap mysql nls pam postgres python servers split-usr ssl static-libs +threads tcpd \
 	tokyocabinet"
@@ -32,8 +32,8 @@ RDEPEND="
 	guile? ( dev-scheme/guile:12/2.2-1 )
 	kerberos? ( virtual/krb5 )
 	kyotocabinet? ( dev-db/kyotocabinet )
-	ldap? ( net-nds/openldap )
-	mysql? ( dev-db/mysql-connector-c )
+	ldap? ( net-nds/openldap:= )
+	mysql? ( dev-db/mysql-connector-c:= )
 	nls? ( sys-devel/gettext )
 	pam? ( sys-libs/pam:= )
 	postgres? ( dev-db/postgresql:= )
@@ -55,6 +55,9 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 DOCS=( ABOUT-NLS AUTHORS COPYING COPYING.LESSER ChangeLog INSTALL NEWS README THANKS TODO )
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-add-include.patch
+	"${FILESDIR}"/${P}-misssing-endif.patch
+	"${FILESDIR}"/${P}-fix-big-endians.patch
+	"${FILESDIR}"/${P}-disable_escapes.patch
 )
 
 pkg_setup() {
