@@ -18,7 +18,7 @@ SRC_URI="ftp://ftp.isc.org/isc/dhcp/${MY_P}.tar.gz
 
 LICENSE="MPL-2.0 BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="+client ipv6 ldap selinux +server ssl vim-syntax"
 
 DEPEND="
@@ -31,8 +31,8 @@ DEPEND="
 		)
 	)
 	ldap? (
-		net-nds/openldap
-		ssl? ( dev-libs/openssl:0= )
+		net-nds/openldap:=
+		ssl? ( dev-libs/openssl:= )
 	)"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-dhcp )
@@ -58,16 +58,20 @@ PATCHES=(
 
 	# Enable dhclient to get extra configuration from stdin
 	"${FILESDIR}/${PN}-4.2.2-dhclient-stdin-conf.patch"
-	"${FILESDIR}/${PN}-4.3.6-nogateway.patch" #265531
-	"${FILESDIR}/${PN}-4.3.6-quieter-ping.patch" #296921
-	"${FILESDIR}/${PN}-4.4.0-always-accept-4.patch" #437108
-	"${FILESDIR}/${PN}-4.3.6-iproute2-path.patch" #480636
-	"${FILESDIR}/${PN}-4.2.5-bindtodevice-inet6.patch" #471142
-	"${FILESDIR}/${PN}-4.3.3-ldap-ipv6-client-id.patch" #559832
+	# bug #265531
+	"${FILESDIR}/${PN}-4.3.6-nogateway.patch"
+	# bug #296921
+	"${FILESDIR}/${PN}-4.3.6-quieter-ping.patch"
+	# bug #437108
+	"${FILESDIR}/${PN}-4.4.0-always-accept-4.patch"
+	# bug #480636
+	"${FILESDIR}/${PN}-4.3.6-iproute2-path.patch"
+	# bug #471142
+	"${FILESDIR}/${PN}-4.2.5-bindtodevice-inet6.patch"
+	# bug #559832
+	"${FILESDIR}/${PN}-4.3.3-ldap-ipv6-client-id.patch"
 
 	# Possible upstream candidates
-	"${FILESDIR}/${PN}-4.4.2-fno-common.patch" #710194
-	"${FILESDIR}/${PN}-4.4.2-variable-name.patch" #752402
 )
 
 src_prepare() {
@@ -124,7 +128,7 @@ src_prepare() {
 	binddir=${binddir}
 	GMAKE=${MAKE:-gmake}
 	EOF
-	eapply -p2 "${FILESDIR}"/${PN}-4.4.0-bind-disable.patch
+	eapply -p2 "${FILESDIR}"/${PN}-4.4.3-bind-disable.patch
 	# Only use the relevant subdirs now that ISC
 	#removed the lib/export structure in bind.
 	sed '/^SUBDIRS/s@=.*$@= isc dns isccfg irs samples@' \
@@ -181,7 +185,7 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 
 	# configure local bind cruft.  symtable option requires
-	# perl and we don't want to require that #383837.
+	# perl and we don't want to require that. bug #383837.
 	cd bind/bind-*/ || die
 	local el
 	eval econf \
@@ -192,7 +196,7 @@ src_configure() {
 }
 
 src_compile() {
-	# build local bind cruft first
+	# Build local bind cruft first
 	emake -C bind/bind-*/lib install
 	# then build standard dhcp code
 	emake AR="$(tc-getAR)"
@@ -206,7 +210,7 @@ src_install() {
 	dodoc doc/References.html
 
 	if [[ -e client/dhclient ]] ; then
-		# move the client to /
+		# Move the client to /
 		dodir /sbin
 		mv "${ED}"/usr/sbin/dhclient "${ED}"/sbin/ || die
 
@@ -275,7 +279,12 @@ pkg_postinst() {
 		tmpfiles_process dhcpd.conf
 	fi
 
-	if [[ -e "${ROOT}"/etc/init.d/dhcp ]] ; then
+	if use client ; then
+		ewarn "The client and relay functionality will be removed in the next release!"
+		ewarn "Upstream have decided to discontinue this functionality."
+	fi
+
+	if [[ -e "${EROOT}"/etc/init.d/dhcp ]] ; then
 		ewarn
 		ewarn "WARNING: The dhcp init script has been renamed to dhcpd"
 		ewarn "/etc/init.d/dhcp and /etc/conf.d/dhcp need to be removed and"
