@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	sys-fs/e2fsprogs
 	caps? ( sys-libs/libcap )
 	ldap? (
-		net-nds/openldap
+		net-nds/openldap:=
 		sasl? (
 			app-crypt/mit-krb5
 			dev-libs/cyrus-sasl:2
