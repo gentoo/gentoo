@@ -3,18 +3,23 @@
 
 EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7,8,9} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{8,9,10} )
 
 inherit distutils-r1
 
 DESCRIPTION="Experimental terminal UI for net-mail/notmuch written in Python"
 HOMEPAGE="https://github.com/pazz/alot"
-SRC_URI="https://github.com/pazz/alot/archive/${PV}.tar.gz -> ${P}.tar.gz"
+if [[ ${PV} == "9999" ]]; then
+	EGIT_REPO_URI="https://github.com/pazz/alot/"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/pazz/alot/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND="
@@ -36,6 +41,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/0.9-0001-remove-non-working-test.patch"
+	"${FILESDIR}/${PN}-0.10-no-intersphinx-docs.patch"
 )
 
 distutils_enable_tests unittest
