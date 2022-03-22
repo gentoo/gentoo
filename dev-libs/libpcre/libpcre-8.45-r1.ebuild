@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="BSD"
 SLOT="3"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
-IUSE="bzip2 +cxx +jit libedit pcre16 pcre32 +readline +recursion-limit static-libs unicode zlib"
+IUSE="bzip2 +cxx +jit libedit pcre16 pcre32 +readline static-libs unicode zlib"
 REQUIRED_USE="readline? ( !libedit )
 	libedit? ( !readline )"
 
@@ -52,7 +52,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
-		--with-match-limit-recursion=$(usex recursion-limit 8192 MATCH_LIMIT)
 		$(multilib_native_use_enable bzip2 pcregrep-libbz2)
 		$(use_enable cxx cpp)
 		$(use_enable jit)
