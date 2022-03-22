@@ -139,12 +139,11 @@ sci-biology/GBrowse
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-03-16)
 # Unmaintaned, broken packages, no revdeps.
-# Bugs 822234, 809539, 809536, 832618, 731720, 713684,
+# Bugs 832618, 731720, 713684,
 # 733662, 741082, and many others.
 # Removal on 2022-04-16.
 net-wireless/yatebts
 net-wireless/srslte
-net-wireless/nanovna-saver
 net-wireless/gr-scan
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-03-16)
