@@ -37,10 +37,10 @@ DEPEND="
 	virtual/libcrypt:=
 	gcrypt? ( dev-libs/libgcrypt:= )
 	ldap? (
-		>=net-nds/openldap-2.1.30-r1
+		>=net-nds/openldap-2.1.30-r1:=
 		sasl? (
 			dev-libs/cyrus-sasl
-			net-nds/openldap[sasl]
+			net-nds/openldap:=[sasl]
 		)
 	)
 	pam? ( sys-libs/pam )
