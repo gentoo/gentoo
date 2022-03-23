@@ -34,7 +34,7 @@ sys-apps/less
 virtual/libintl
 icu? ( dev-libs/icu:= )
 kerberos? ( virtual/krb5 )
-ldap? ( net-nds/openldap )
+ldap? ( net-nds/openldap:= )
 llvm? (
 	sys-devel/llvm:=
 	sys-devel/clang:=
@@ -98,7 +98,7 @@ src_prepare() {
 	# hardened and non-hardened environments. (Bug #528786)
 	sed 's/@install_bin@/install -c/' -i src/Makefile.global.in || die
 
-	use server || eapply "${FILESDIR}/${PN}-12.1-no-server.patch"
+	use server || eapply "${FILESDIR}/${PN}-11_beta1-no-server.patch"
 
 	if use pam ; then
 		sed "s/\(#define PGSQL_PAM_SERVICE \"postgresql\)/\1-${SLOT}/" \
@@ -166,7 +166,7 @@ src_install() {
 	emake DESTDIR="${D}" install
 	emake DESTDIR="${D}" install -C contrib
 
-	dodoc README HISTORY
+	dodoc README HISTORY doc/{TODO,bug.template}
 
 	# man pages are already built, but if we have the target make them,
 	# they'll be generated from source before being installed so we

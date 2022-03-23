@@ -34,7 +34,7 @@ sys-apps/less
 virtual/libcrypt:=
 virtual/libintl
 kerberos? ( virtual/krb5 )
-ldap? ( net-nds/openldap )
+ldap? ( net-nds/openldap:= )
 pam? ( sys-libs/pam )
 perl? ( >=dev-lang/perl-5.8:= )
 python? ( ${PYTHON_DEPS} )

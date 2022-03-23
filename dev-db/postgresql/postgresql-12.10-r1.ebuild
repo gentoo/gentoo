@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8,9,10} )
 
 inherit flag-o-matic linux-info multilib pam prefix python-single-r1 systemd tmpfiles
 
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 SLOT=$(ver_cut 1)
 
@@ -34,7 +34,7 @@ sys-apps/less
 virtual/libintl
 icu? ( dev-libs/icu:= )
 kerberos? ( virtual/krb5 )
-ldap? ( net-nds/openldap )
+ldap? ( net-nds/openldap:= )
 llvm? (
 	sys-devel/llvm:=
 	sys-devel/clang:=
@@ -89,8 +89,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply "${FILESDIR}"/${PN}-13.3-riscv-spinlocks.patch
-
 	# Set proper run directory
 	sed "s|\(PGSOCKET_DIR\s\+\)\"/tmp\"|\1\"${EPREFIX}/run/postgresql\"|" \
 		-i src/include/pg_config_manual.h || die
@@ -100,7 +98,7 @@ src_prepare() {
 	# hardened and non-hardened environments. (Bug #528786)
 	sed 's/@install_bin@/install -c/' -i src/Makefile.global.in || die
 
-	use server || eapply "${FILESDIR}/${PN}-13_beta1-no-server.patch"
+	use server || eapply "${FILESDIR}/${PN}-12.1-no-server.patch"
 
 	if use pam ; then
 		sed "s/\(#define PGSQL_PAM_SERVICE \"postgresql\)/\1-${SLOT}/" \
@@ -131,13 +129,14 @@ src_configure() {
 		[[ -z $uuid_config ]] && uuid_config="--with-uuid=ossp"
 	fi
 
-	local myconf="\
+	econf \
 		--prefix="${PO}/usr/$(get_libdir)/postgresql-${SLOT}" \
 		--datadir="${PO}/usr/share/postgresql-${SLOT}" \
 		--includedir="${PO}/usr/include/postgresql-${SLOT}" \
 		--mandir="${PO}/usr/share/postgresql-${SLOT}/man" \
 		--sysconfdir="${PO}/etc/postgresql-${SLOT}" \
 		--with-system-tzdata="${PO}/usr/share/zoneinfo" \
+		$(use_enable !alpha spinlocks) \
 		$(use_enable debug) \
 		$(use_enable threads thread-safety) \
 		$(use_with icu) \
@@ -155,14 +154,7 @@ src_configure() {
 		$(use_with xml libxml) \
 		$(use_with xml libxslt) \
 		$(use_with zlib) \
-		$(use_enable nls)"
-	if use alpha; then
-		myconf+=" --disable-spinlocks"
-	else
-		# Should be the default but just in case
-		myconf+=" --enable-spinlocks"
-	fi
-	econf ${myconf}
+		$(use_enable nls)
 }
 
 src_compile() {
@@ -443,12 +435,8 @@ pkg_config() {
 
 src_test() {
 	if use server && [[ ${UID} -ne 0 ]] ; then
-		# Some ICU tests fail if LC_CTYPE and LC_COLLATE aren't the same. We set
-		# LC_CTYPE to be equal to LC_COLLATE since LC_COLLATE is set by Portage.
-		local old_ctype=${LC_CTYPE}
-		export LC_CTYPE=${LC_COLLATE}
 		emake check
-		export LC_CTYPE=${old_ctype}
+
 		einfo "If you think other tests besides the regression tests are necessary, please"
 		einfo "submit a bug including a patch for this ebuild to enable them."
 	else
