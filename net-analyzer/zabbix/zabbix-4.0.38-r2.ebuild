@@ -28,21 +28,21 @@ COMMON_DEPEND="
 	java? ( >=virtual/jdk-1.8:* )
 	ldap? (
 		=dev-libs/cyrus-sasl-2*
-		net-libs/gnutls
-		net-nds/openldap
+		net-libs/gnutls:=
+		net-nds/openldap:=
 	)
 	libxml2? ( dev-libs/libxml2 )
-	mysql? ( dev-db/mysql-connector-c )
+	mysql? ( dev-db/mysql-connector-c:= )
 	odbc? ( dev-db/unixODBC )
 	openipmi? ( sys-libs/openipmi )
 	oracle? ( dev-db/oracle-instantclient[odbc,sdk] )
 	postgres? ( dev-db/postgresql:* )
 	proxy?  ( sys-libs/zlib )
 	server? (
-		dev-libs/libevent
+		dev-libs/libevent:=
 		sys-libs/zlib
 	)
-	snmp? ( net-analyzer/net-snmp )
+	snmp? ( net-analyzer/net-snmp:= )
 	sqlite? ( dev-db/sqlite )
 	ssh? ( net-libs/libssh2 )
 	ssl? (
