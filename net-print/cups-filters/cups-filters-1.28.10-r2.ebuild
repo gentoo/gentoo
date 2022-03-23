@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 GENTOO_DEPEND_ON_PERL=no
 
@@ -12,7 +12,7 @@ if [[ "${PV}" == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/OpenPrinting/cups-filters.git"
 else
 	SRC_URI="http://www.openprinting.org/download/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 DESCRIPTION="Cups filters"
 HOMEPAGE="https://wiki.linuxfoundation.org/openprinting/cups-filters"
@@ -24,7 +24,7 @@ IUSE="dbus +foomatic jpeg ldap pclm pdf perl png +postscript test tiff zeroconf"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=app-text/poppler-0.32[cxx,jpeg?,lcms,tiff?,utils]
+	>=app-text/poppler-0.32:=[cxx,jpeg?,lcms,tiff?,utils]
 	>=app-text/qpdf-8.3.0:=
 	dev-libs/glib:2
 	media-libs/fontconfig
@@ -37,7 +37,7 @@ RDEPEND="
 	dbus? ( sys-apps/dbus )
 	foomatic? ( !net-print/foomatic-filters )
 	jpeg? ( virtual/jpeg:0 )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	pdf? ( app-text/mupdf )
 	perl? ( dev-lang/perl:= )
 	png? ( media-libs/libpng:0= )
@@ -130,7 +130,7 @@ src_install() {
 
 	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 
-	cp "${FILESDIR}"/cups-browsed.init.d-r2 "${T}"/cups-browsed || die
+	cp "${FILESDIR}"/cups-browsed.init.d-r1 "${T}"/cups-browsed || die
 
 	if ! use zeroconf ; then
 		sed -i -e 's:need cupsd avahi-daemon:need cupsd:g' "${T}"/cups-browsed || die

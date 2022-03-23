@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ if [[ "${PV}" == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/OpenPrinting/cups-filters.git"
 else
 	SRC_URI="http://www.openprinting.org/download/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 fi
 DESCRIPTION="Cups filters"
 HOMEPAGE="https://wiki.linuxfoundation.org/openprinting/cups-filters"
@@ -37,7 +37,7 @@ RDEPEND="
 	dbus? ( sys-apps/dbus )
 	foomatic? ( !net-print/foomatic-filters )
 	jpeg? ( virtual/jpeg:0 )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	pdf? ( app-text/mupdf )
 	perl? ( dev-lang/perl:= )
 	png? ( media-libs/libpng:0= )
@@ -66,12 +66,12 @@ src_prepare() {
 	fi
 
 	[[ -n ${need_eautoreconf} ]] && eautoreconf
+
+	# Bug #626800
+	append-cxxflags -std=c++11
 }
 
 src_configure() {
-	# Bug #626800
-	append-cxxflags -std=c++11
-
 	local myeconfargs=(
 		--enable-imagefilters
 		--localstatedir="${EPREFIX}"/var
@@ -93,7 +93,6 @@ src_configure() {
 		$(use_with png)
 		$(use_with tiff)
 	)
-
 	econf "${myeconfargs[@]}"
 }
 
@@ -138,12 +137,12 @@ src_install() {
 	fi
 
 	doinitd "${T}"/cups-browsed
-	systemd_dounit "${S}"/utils/cups-browsed.service
+	systemd_dounit "${S}/utils/cups-browsed.service"
 }
 
 pkg_postinst() {
 	if ! use foomatic ; then
-		ewarn "You are disabling the foomatic code in cups-filters. Please do that ONLY if absolutely"
-		ewarn "necessary. net-print/foomatic-filters as a replacement is deprecated and unmaintained."
+		ewarn "You are disabling the foomatic code in cups-filters. Please do that ONLY if absolutely."
+		ewarn "necessary. net-print/foomatic-filters as replacement is deprecated and unmaintained."
 	fi
 }
