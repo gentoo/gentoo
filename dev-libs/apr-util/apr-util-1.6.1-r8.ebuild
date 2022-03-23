@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ RDEPEND="
 	virtual/libcrypt:=
 	berkdb? ( >=sys-libs/db-4:= )
 	gdbm? ( sys-libs/gdbm:= )
-	ldap? ( =net-nds/openldap-2* )
+	ldap? ( net-nds/openldap:= )
 	mysql? ( || (
 		dev-db/mariadb-connector-c
 		>=dev-db/mysql-connector-c-8
