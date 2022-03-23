@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,14 +14,14 @@ SLOT="0"
 KEYWORDS="amd64 arm ~arm64 x86"
 IUSE="mongo redis"
 
-RDEPEND="dev-libs/gmp:0
+RDEPEND="dev-libs/gmp:=
 	net-libs/libpcap
 	dev-libs/json-c:=
 	mongo? (
 		dev-db/mongodb
 		dev-libs/mongo-c-driver
 	)
-	redis? ( dev-libs/hiredis )"
+	redis? ( dev-libs/hiredis:= )"
 DEPEND="${RDEPEND}
 	dev-util/gengetopt
 	sys-devel/flex
