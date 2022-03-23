@@ -17,7 +17,7 @@ IUSE="crypt ipv6 ldap nls oniguruma spell ssl xface"
 CDEPEND="net-libs/liblockfile
 	x11-libs/gtk+:2
 	crypt? ( app-crypt/gpgme:= )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	nls? ( sys-devel/gettext )
 	oniguruma? ( dev-libs/oniguruma:= )
 	spell? (
