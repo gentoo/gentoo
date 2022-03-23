@@ -101,7 +101,7 @@ CDEPEND="
 	uwsgi_plugins_curl_cron? ( net-misc/curl )
 	uwsgi_plugins_emperor_pg? ( dev-db/postgresql:= )
 	uwsgi_plugins_geoip? ( dev-libs/geoip )
-	uwsgi_plugins_ldap? ( net-nds/openldap )
+	uwsgi_plugins_ldap? ( net-nds/openldap:= )
 	uwsgi_plugins_pam? ( sys-libs/pam )
 	uwsgi_plugins_sqlite? ( dev-db/sqlite:3 )
 	uwsgi_plugins_rados? ( sys-cluster/ceph )
