@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.sendmail.org/pub/${PN}/${PN}.${PV}.tar.gz"
 
 LICENSE="Sendmail GPL-2" # GPL-2 is here for initscript
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="ipv6 ldap mbox nis sasl sockets ssl tcpd"
 
 BDEPEND="
@@ -24,14 +24,14 @@ DEPEND="
 	>=acct-user/smmsp-0-r2
 	net-mail/mailbase
 	>=sys-libs/db-3.2:=
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	nis? ( net-libs/libnsl:= )
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.10 )
 	ssl? ( dev-libs/openssl:0= )
 	tcpd? ( sys-apps/tcp-wrappers )"
 RDEPEND="
 	${DEPEND}
-	>=mail-filter/libmilter-1.0.2_p2
+	>=mail-filter/libmilter-1.0.2_p1-r1
 	!mail-mta/courier
 	!mail-mta/esmtp
 	!mail-mta/exim
@@ -52,8 +52,7 @@ src_prepare() {
 	eapply_user
 
 	local confCCOPTS="${CFLAGS}"
-	# See bug #808954 for FLOCK
-	local confENVDEF="-DMAXDAEMONS=64 -DHAS_GETHOSTBYNAME2=1 -DHASFLOCK=1"
+	local confENVDEF="-DMAXDAEMONS=64 -DHAS_GETHOSTBYNAME2=1"
 	local confLDOPTS="${LDFLAGS}"
 	local confLIBS=
 	local confMAPDEF="-DMAP_REGEX"
