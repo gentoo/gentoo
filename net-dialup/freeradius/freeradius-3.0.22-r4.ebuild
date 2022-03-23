@@ -15,7 +15,7 @@ SRC_URI="
 "
 HOMEPAGE="http://www.freeradius.org/"
 
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 
@@ -41,9 +41,9 @@ RDEPEND="acct-group/radius
 	firebird? ( dev-db/firebird )
 	iodbc? ( dev-db/libiodbc )
 	kerberos? ( virtual/krb5 )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	memcached? ( dev-libs/libmemcached )
-	mysql? ( dev-db/mysql-connector-c )
+	mysql? ( dev-db/mysql-connector-c:= )
 	mongodb? ( >=dev-libs/mongo-c-driver-1.13.0-r1 )
 	odbc? ( dev-db/unixODBC )
 	oracle? ( dev-db/oracle-instantclient[sdk] )
