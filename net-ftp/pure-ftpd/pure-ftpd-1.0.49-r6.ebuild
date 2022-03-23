@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,7 @@ BDEPEND="sys-devel/autoconf-archive"
 DEPEND="dev-libs/libsodium:=
 	virtual/libcrypt:=
 	caps? ( sys-libs/libcap )
-	ldap? ( >=net-nds/openldap-2.0.25 )
+	ldap? ( >=net-nds/openldap-2.0.25:= )
 	mysql? ( || (
 		dev-db/mariadb-connector-c
 		dev-db/mysql-connector-c
