@@ -1,31 +1,73 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit autotools linux-info multilib-minimal python-single-r1 pam systemd toolchain-funcs optfeature
+inherit autotools linux-info multilib-minimal python-single-r1 pam systemd toolchain-funcs
 
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
 HOMEPAGE="https://github.com/SSSD/sssd"
-SRC_URI="https://github.com/SSSD/sssd/releases/download/${PV}/${P}.tar.gz"
-SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-CVE-2021-3621.patch.bz2"
+SRC_URI="https://github.com/SSSD/sssd/releases/download/${PN}-${PV//./_}/${P}.tar.gz"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="acl doc +locator +netlink nfsv4 nls +man pac python samba selinux sudo systemd systemtap test valgrind"
+IUSE="acl doc +locator +netlink nfsv4 nls +man pac python samba selinux sudo systemd test valgrind"
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	pac? ( samba )
-	test? ( sudo )
-	valgrind? ( test )"
+REQUIRED_USE="pac? ( samba )
+	python? ( ${PYTHON_REQUIRED_USE} )"
 
+DEPEND="
+	>=app-crypt/mit-krb5-1.10.3
+	app-crypt/p11-kit
+	>=dev-libs/ding-libs-0.2
+	dev-libs/glib:2
+	>=dev-libs/cyrus-sasl-2.1.25-r3[kerberos]
+	>=dev-libs/libpcre-8.30:=
+	>=dev-libs/popt-1.16
+	>=dev-libs/openssl-1.0.2:0=
+	>=net-dns/bind-tools-9.9[gssapi]
+	>=net-dns/c-ares-1.7.4:=
+	>=net-nds/openldap-2.4.30:=[sasl]
+	>=sys-apps/dbus-1.6
+	>=sys-apps/keyutils-1.5:=
+	>=sys-libs/pam-0-r1[${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.0.7
+	>=sys-libs/tdb-1.2.9
+	>=sys-libs/tevent-0.9.16
+	>=sys-libs/ldb-1.1.17-r1:=
+	virtual/libintl
+	locator? (
+		>=app-crypt/mit-krb5-1.12.2[${MULTILIB_USEDEP}]
+		>=net-dns/c-ares-1.10.0-r1:=[${MULTILIB_USEDEP}]
+	)
+	acl? ( net-fs/cifs-utils[acl] )
+	netlink? ( dev-libs/libnl:3 )
+	nfsv4? ( || ( >=net-fs/nfs-utils-2.3.1-r2 net-libs/libnfsidmap ) )
+	nls? ( >=sys-devel/gettext-0.18 )
+	pac? (
+		app-crypt/mit-krb5[${MULTILIB_USEDEP}]
+		net-fs/samba
+	)
+	python? ( ${PYTHON_DEPS} )
+	samba? ( >=net-fs/samba-4.10.2[winbind] )
+	selinux? (
+		>=sys-libs/libselinux-2.1.9
+		>=sys-libs/libsemanage-2.1
+	)
+	systemd? (
+		dev-libs/jansson:0=
+		net-libs/http-parser:0=
+		net-misc/curl:0=
+	)"
+RDEPEND="${DEPEND}
+	>=sys-libs/glibc-2.17[nscd]
+	selinux? ( >=sec-policy/selinux-sssd-2.20120725-r9 )"
 BDEPEND=">=sys-devel/autoconf-2.69-r5
 	virtual/pkgconfig
-	${PYTHON_DEPS}
 	doc? ( app-doc/doxygen )
 	test? (
 		dev-libs/check
@@ -44,51 +86,6 @@ BDEPEND=">=sys-devel/autoconf-2.69-r5
 		nls? ( app-text/po4a )
 	)"
 
-DEPEND=">=app-crypt/mit-krb5-1.19.1[${MULTILIB_USEDEP}]
-	app-crypt/p11-kit
-	>=dev-libs/ding-libs-0.2
-	dev-libs/glib:2
-	>=dev-libs/cyrus-sasl-2.1.25-r3[kerberos]
-	>=dev-libs/libpcre-8.30:=
-	>=dev-libs/popt-1.16
-	>=dev-libs/openssl-1.0.2:0=
-	>=net-dns/bind-tools-9.9[gssapi]
-	>=net-dns/c-ares-1.7.4
-	>=net-nds/openldap-2.4.30[sasl]
-	>=sys-apps/dbus-1.6
-	>=sys-apps/keyutils-1.5:=
-	>=sys-libs/pam-0-r1[${MULTILIB_USEDEP}]
-	>=sys-libs/talloc-2.0.7
-	>=sys-libs/tdb-1.2.9
-	>=sys-libs/tevent-0.9.16
-	>=sys-libs/ldb-1.1.17-r1:=
-	virtual/libintl
-	locator? (
-		>=net-dns/c-ares-1.10.0-r1[${MULTILIB_USEDEP}]
-	)
-	acl? ( net-fs/cifs-utils[acl] )
-	netlink? ( dev-libs/libnl:3 )
-	nfsv4? ( || ( >=net-fs/nfs-utils-2.3.1-r2 net-libs/libnfsidmap ) )
-	nls? ( >=sys-devel/gettext-0.18 )
-	pac? (
-		net-fs/samba
-	)
-	python? ( ${PYTHON_DEPS} )
-	samba? ( >=net-fs/samba-4.10.2[winbind] )
-	selinux? (
-		>=sys-libs/libselinux-2.1.9
-		>=sys-libs/libsemanage-2.1
-	)
-	systemd? (
-		dev-libs/jansson:0=
-		net-libs/http-parser:0=
-		net-misc/curl:0=
-	)
-	systemtap? ( dev-util/systemtap )"
-RDEPEND="${DEPEND}
-	>=sys-libs/glibc-2.17[nscd]
-	selinux? ( >=sec-policy/selinux-sssd-2.20120725-r9 )"
-
 CONFIG_CHECK="~KEYS"
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -103,31 +100,23 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 PATCHES=(
-	"${WORKDIR}"/${P}-CVE-2021-3621.patch
+	"${FILESDIR}"/${P}-test_ca-Look-for-libsofthsm2.so-in-usr-libdir-sofths.patch
 )
 
 pkg_setup() {
 	linux-info_pkg_setup
-	python-single-r1_pkg_setup
 }
 
 src_prepare() {
+	sed -i 's:/var/run:/run:' \
+		"${S}"/src/examples/logrotate || die
+
 	default
-
-	sed -i \
-		-e 's:/var/run:/run:' \
-		"${S}"/src/examples/logrotate \
-		|| die
-
-	# disable flaky test, see https://github.com/SSSD/sssd/issues/5631
-	sed -i \
-		-e '/^\s*pam-srv-tests[ \\]*$/d' \
-		"${S}"/Makefile.am \
-		|| die
-
 	eautoreconf
-
 	multilib_copy_sources
+	if use python && multilib_is_native_abi; then
+		python_setup
+	fi
 }
 
 src_configure() {
@@ -157,8 +146,8 @@ multilib_src_configure() {
 		--with-nscd="${EPREFIX}"/usr/sbin/nscd
 		--with-unicode-lib="glib2"
 		--disable-rpath
-		--disable-static
 		--sbindir=/usr/sbin
+		--with-crypto="libcrypto"
 		--enable-local-provider
 		$(multilib_native_use_with systemd kcm)
 		$(multilib_native_use_with systemd secrets)
@@ -176,7 +165,6 @@ multilib_src_configure() {
 		$(multilib_native_use_with sudo)
 		$(multilib_native_with autofs)
 		$(multilib_native_with ssh)
-		$(use_enable systemtap)
 		$(use_enable valgrind)
 		--without-python2-bindings
 		$(multilib_native_use_with python python3-bindings)
@@ -229,13 +217,6 @@ multilib_src_compile() {
 	fi
 }
 
-multilib_src_test() {
-	if multilib_is_native_abi; then
-		local -x CK_TIMEOUT_MULTIPLIER=10
-		emake check VERBOSE=yes
-	fi
-}
-
 multilib_src_install() {
 	if multilib_is_native_abi; then
 		emake -j1 DESTDIR="${D}" "${_at_args[@]}" install
@@ -243,6 +224,7 @@ multilib_src_install() {
 			python_optimize
 			python_fix_shebang "${ED}"
 		fi
+
 	else
 		# easier than playing with automake...
 		dopammod .libs/pam_sss.so
@@ -287,7 +269,7 @@ multilib_src_install_all() {
 	keepdir /var/log/sssd
 
 	# strip empty dirs
-	if ! use doc; then
+	if ! use doc ; then
 		rm -r "${ED}"/usr/share/doc/"${PF}"/doc || die
 		rm -r "${ED}"/usr/share/doc/"${PF}"/{hbac,idmap,nss_idmap,sss_simpleifp}_doc || die
 	fi
@@ -295,9 +277,12 @@ multilib_src_install_all() {
 	rm -r "${ED}"/run || die
 }
 
+multilib_src_test() {
+	multilib_is_native_abi && emake check
+}
+
 pkg_postinst() {
 	elog "You must set up sssd.conf (default installed into /etc/sssd)"
 	elog "and (optionally) configuration in /etc/pam.d in order to use SSSD"
 	elog "features. Please see howto in	https://sssd.io/docs/design_pages/smartcard_authentication_require.html"
-	optfeature "Kerberos keytab renew (see krb5_renew_interval)" app-crypt/adcli
 }
