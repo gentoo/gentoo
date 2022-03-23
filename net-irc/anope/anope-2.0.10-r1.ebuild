@@ -24,7 +24,7 @@ DEPEND="
 		net-libs/gnutls:0=
 		dev-libs/libgcrypt:0=
 	)
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	pcre? ( dev-libs/libpcre )
 	sqlite? ( dev-db/sqlite:3 )
 	tre? ( dev-libs/tre )
