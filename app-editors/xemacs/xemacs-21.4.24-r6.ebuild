@@ -12,30 +12,30 @@ inherit autotools flag-o-matic toolchain-funcs xdg-utils desktop
 DESCRIPTION="highly customizable open source text editor and application development system"
 HOMEPAGE="http://www.xemacs.org/"
 SRC_URI="http://ftp.xemacs.org/xemacs-21.4/${P}.tar.gz
-	http://www.malfunction.de/afterstep/files/NeXT_XEmacs.tar.gz"
+	neXt? ( http://www.malfunction.de/afterstep/files/NeXT_XEmacs.tar.gz )"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm64 ~hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="eolconv gif gpm pop postgres ldap xface nas dnd X jpeg tiff png mule motif freewnn xim athena neXt Xaw3d gdbm berkdb"
 
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
-	gdbm? ( >=sys-libs/gdbm-1.8.3[berkdb] )
+	gdbm? ( >=sys-libs/gdbm-1.8.3:=[berkdb] )
 	>=sys-libs/zlib-1.1.4
-	>=dev-libs/openssl-0.9.6:0
+	>=dev-libs/openssl-0.9.6:0=
 	>=media-libs/audiofile-0.2.3
 	gpm? ( >=sys-libs/gpm-1.19.6 )
 	postgres? ( dev-db/postgresql:= )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	nas? ( media-libs/nas )
 	X? ( $X_DEPEND !Xaw3d? ( !neXt? ( x11-libs/libXaw ) ) )
 	dnd? ( x11-libs/dnd )
 	motif? ( >=x11-libs/motif-2.3:0 )
 	athena? ( x11-libs/libXaw )
-	Xaw3d? ( x11-libs/libXaw3d )
+	Xaw3d? ( x11-libs/libXaw3d[unicode] )
 	neXt? ( x11-libs/neXtaw )
 	xface? ( media-libs/compface )
 	tiff? ( media-libs/tiff:0 )
