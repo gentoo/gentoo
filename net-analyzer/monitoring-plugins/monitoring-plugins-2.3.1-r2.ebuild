@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=7
 
 inherit flag-o-matic
 
@@ -11,7 +11,7 @@ SRC_URI="https://www.monitoring-plugins.org/download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 sparc x86"
 IUSE="curl gnutls ipv6 ldap mysql dns fping game postgres radius samba snmp ssh +ssl"
 
 # Most of the plugins use automagic dependencies, i.e. the plugin will
@@ -28,7 +28,7 @@ REAL_DEPEND="dev-lang/perl
 		dev-libs/uriparser
 		net-misc/curl
 	)
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	mysql? ( || ( dev-db/mysql-connector-c dev-db/mariadb-connector-c ) )
 	postgres? ( dev-db/postgresql:= )
 	ssl? (
@@ -57,9 +57,7 @@ RDEPEND="${DEPEND}
 # At least one test is interactive.
 RESTRICT="test"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-fix-check-disk-on-btrfs.patch" #830249
-)
+PATCHES=( "${FILESDIR}/define-own-mysql-port-constant.patch" )
 
 src_configure() {
 	append-flags -fno-strict-aliasing
