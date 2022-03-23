@@ -9,7 +9,7 @@ SRC_URI="http://nagios-plugins.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="ipv6 ldap mysql nagios-dns nagios-ping nagios-game postgres radius samba selinux snmp ssh +ssl"
 
 # Most of the plugins use automagic dependencies, i.e. the plugin will
@@ -31,8 +31,8 @@ BDEPEND="${AUTOMAGIC_DEPEND}
 	dev-lang/perl"
 
 DEPEND="
-	ldap? ( net-nds/openldap )
-	mysql? ( dev-db/mysql-connector-c )
+	ldap? ( net-nds/openldap:= )
+	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:* )
 	ssl? (
 		dev-libs/openssl:0=
@@ -62,7 +62,10 @@ DOCS=(
 	THANKS
 )
 
-PATCHES=( "${FILESDIR}/define-own-mysql-port-constant.patch" )
+PATCHES=(
+	"${FILESDIR}/define-own-mysql-port-constant.patch"
+	"${FILESDIR}/check_smtp-implicit-tls.patch"
+)
 
 src_prepare() {
 	default
