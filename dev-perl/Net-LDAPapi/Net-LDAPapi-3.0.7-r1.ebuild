@@ -16,7 +16,7 @@ IUSE=""
 # LICENSE is given on the corresponding sourceforge project and matches the
 # default cpan/perl license
 
-RDEPEND="net-nds/openldap[sasl]
+RDEPEND="net-nds/openldap:=[sasl]
 	dev-libs/cyrus-sasl
 	>=dev-perl/Convert-ASN1-0.190.0"
 DEPEND="${RDEPEND}
