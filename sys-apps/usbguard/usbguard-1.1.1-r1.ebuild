@@ -32,7 +32,7 @@ CDEPEND="
 		sys-apps/dbus
 		sys-auth/polkit[introspection]
 	)
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	systemd? ( sys-apps/systemd )
 	umockdev? ( dev-util/umockdev )
 	"
