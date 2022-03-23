@@ -15,10 +15,10 @@ KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ppc64 sparc x86 ~amd64-linux"
 IUSE="debug kerberos ssl sasl split-usr"
 
 DEPEND="
-	>=net-nds/openldap-2.4.38-r1[${MULTILIB_USEDEP}]
+	>=net-nds/openldap-2.4.38-r1:=[${MULTILIB_USEDEP}]
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.26-r3[${MULTILIB_USEDEP}] )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
-	ssl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
+	ssl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
 	${DEPEND}
