@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,8 +15,8 @@ IUSE="gnutls http icp idn priority smtp ssl tos postgres ldap"
 RESTRICT="test"
 
 RDEPEND="
-	idn? ( net-dns/libidn )
-	ldap? ( net-nds/openldap )
+	idn? ( net-dns/libidn:= )
+	ldap? ( net-nds/openldap:= )
 	postgres? ( dev-db/postgresql:* )
 	ssl? (
 		gnutls? ( >=net-libs/gnutls-3.3:= )
