@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,13 +42,13 @@ RDEPEND="${PYTHON_DEPS}
 	sys-libs/libcap-ng
 	bpf?        ( >=dev-libs/libbpf-0.1.0 )
 	cuda?       ( dev-util/nvidia-cuda-toolkit )
-	geoip?      ( dev-libs/libmaxminddb )
+	geoip?      ( dev-libs/libmaxminddb:= )
 	hyperscan?  ( dev-libs/hyperscan )
 	lua?        ( ${LUA_DEPS} )
 	lz4?        ( app-arch/lz4 )
 	nflog?      ( net-libs/libnetfilter_log )
 	nfqueue?    ( net-libs/libnetfilter_queue )
-	redis?      ( dev-libs/hiredis )"
+	redis?      ( dev-libs/hiredis:= )"
 DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-2.69-r5
 	virtual/rust"
