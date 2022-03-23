@@ -19,7 +19,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="test"
 
 RDEPEND="
-	net-nds/openldap
+	net-nds/openldap:=
 	${LUA_DEPS}
 "
 DEPEND="${RDEPEND}"
