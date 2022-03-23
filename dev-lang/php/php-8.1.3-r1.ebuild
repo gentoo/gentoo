@@ -1,13 +1,13 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 WANT_AUTOMAKE="none"
 
 inherit flag-o-matic systemd autotools
 
-MY_PV=${PV/_rc/rc}
+MY_PV=${PV/_rc/RC}
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://www.php.net/"
 SRC_URI="https://www.php.net/distributions/${P}.tar.xz"
@@ -97,7 +97,7 @@ COMMON_DEPEND="
 	imap? ( >=virtual/imap-c-client-2[kerberos=,ssl=] )
 	intl? ( dev-libs/icu:= )
 	kerberos? ( virtual/krb5 )
-	ldap? ( >=net-nds/openldap-1.2.11 )
+	ldap? ( >=net-nds/openldap-1.2.11:= )
 	ldap-sasl? ( dev-libs/cyrus-sasl )
 	libedit? ( dev-libs/libedit )
 	lmdb? ( dev-db/lmdb:= )
@@ -113,7 +113,7 @@ COMMON_DEPEND="
 	sodium? ( dev-libs/libsodium:=[-minimal] )
 	spell? ( >=app-text/aspell-0.50 )
 	sqlite? ( >=dev-db/sqlite-3.7.6.3 )
-	ssl? ( >=dev-libs/openssl-1.0.1:0= )
+	ssl? ( >=dev-libs/openssl-1.0.2:0= )
 	tidy? ( app-text/htmltidy )
 	tokyocabinet? ( dev-db/tokyocabinet )
 	truetype? ( =media-libs/freetype-2* )
@@ -125,6 +125,8 @@ COMMON_DEPEND="
 	zip? ( >=dev-libs/libzip-1.2.0:= )
 	zlib? ( >=sys-libs/zlib-1.2.0.4:0= )
 "
+
+IDEPEND=">=app-eselect/eselect-php-0.9.7[apache2?,fpm?]"
 
 RDEPEND="${COMMON_DEPEND}
 	virtual/mta
@@ -145,7 +147,6 @@ PHP_MV="$(ver_cut 1)"
 
 PATCHES=(
 	"${FILESDIR}/php-iodbc-header-location.patch"
-	"${FILESDIR}/php80-firebird-warnings.patch"
 )
 
 php_install_ini() {
@@ -647,7 +648,7 @@ src_test() {
 		export TEST_PHPDBG_EXECUTABLE="${WORKDIR}/sapis-build/phpdbg/sapi/phpdbg/phpdbg"
 	fi
 
-	SKIP_ONLINE_TESTS=1 REPORT_EXIT_STATUS=1 "${TEST_PHP_EXECUTABLE}" -n  -d \
+	REPORT_EXIT_STATUS=1 "${TEST_PHP_EXECUTABLE}" -n  -d \
 					  "session.save_path=${T}" \
 					  "${WORKDIR}/sapis-build/cli/run-tests.php" -n -q -d \
 					  "session.save_path=${T}"
