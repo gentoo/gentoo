@@ -29,12 +29,8 @@ checkconfig() {
 	fi
 	checkpath -q -f -m 0600 -o root:root "${X11VNC_RFBAUTH}"
 
-	# Attempt to find SDDM
-	if [ -d /var/run/sddm/ ]; then
-		# If SDDM is found
-		X11VNC_AUTH_OPTS="-auth /var/run/sddm/*"
 	# Attempt to find X-Auth file
-	elif ! type xauth > /dev/null 2>&1 ||
+	if ! type xauth > /dev/null 2>&1 ||
 			! xauth -f /root/.Xauthority extract - "${X11VNC_DISPLAY}" > "${X11VNC_AUTH}" 2>/dev/null ||
 			[ ! -s "${X11VNC_AUTH}" ]; then
 		# Let x11vnc guess at auth
@@ -42,6 +38,12 @@ checkconfig() {
 	else
 		# We found the proper auth
 		X11VNC_AUTH_OPTS="-auth ${X11VNC_AUTH}"
+	fi
+
+	# Attempt to find SDDM
+	if [ -d /var/run/sddm/ ]; then
+		# If SDDM is found
+		X11VNC_AUTH_OPTS="-auth $(find /var/run/sddm/ -type f)"
 	fi
 
 	if [ ! -f "${X11VNC_AUTH}" ]; then
