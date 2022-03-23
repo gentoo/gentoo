@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ IUSE="bzip2 doublecheck +gd +glob ldap lzma pcre zlib"
 RDEPEND="
 	bzip2? ( app-arch/bzip2 )
 	gd? ( media-libs/gd[png,truetype] )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	lzma? ( app-arch/xz-utils )
 	pcre? ( dev-libs/libpcre )
 	zlib? ( sys-libs/zlib )
