@@ -4,9 +4,9 @@
 EAPI=8
 inherit pam systemd toolchain-funcs
 
-MY_PV="${PV/_rc/-RC}"
+MY_PV="${PV/_pre/-}"
 MY_SRC="${PN}-${MY_PV}"
-MY_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/official"
+MY_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/experimental"
 RC_VER="2.7"
 
 DESCRIPTION="A fast and secure drop-in replacement for sendmail"
@@ -27,8 +27,8 @@ DEPEND="
 	berkdb? ( >=sys-libs/db-3.2:* )
 	cdb? ( || ( >=dev-db/tinycdb-0.76 >=dev-db/cdb-0.75-r4 ) )
 	eai? ( dev-libs/icu:= )
-	ldap? ( net-nds/openldap )
-	ldap-bind? ( net-nds/openldap[sasl] )
+	ldap? ( net-nds/openldap:= )
+	ldap-bind? ( net-nds/openldap:=[sasl] )
 	lmdb? ( >=dev-db/lmdb-0.9.11:= )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	nis? ( net-libs/libnsl:= )
