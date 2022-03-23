@@ -68,7 +68,7 @@ src_prepare() {
 	default
 
 	# The tarball doesn't contain an icon, so extract it from the binary
-	bbe -s -b '/<svg width="32"/:/<\x2fsvg>\n/' -e 'J 1;D' zoom \
+	bbe -s -b '/<svg width="32" height="32"/:/<\x2fsvg>\n/' -e 'J 1;D' zoom \
 		>videoconference-zoom.svg && [[ -s videoconference-zoom.svg ]] \
 		|| die "Extraction of icon failed"
 
