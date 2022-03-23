@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ DEPEND="
 	acct-user/gvm
 	app-crypt/gpgme:=
 	dev-libs/glib
-	dev-libs/hiredis
+	dev-libs/hiredis:=
 	dev-libs/libgcrypt:=
 	dev-libs/libxml2:=
 	dev-perl/UUID
@@ -29,7 +29,7 @@ DEPEND="
 	net-libs/libssh:=
 	net-libs/libpcap:=
 	sys-libs/zlib
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	radius? ( net-dialup/freeradius-client )"
 
 RDEPEND="
