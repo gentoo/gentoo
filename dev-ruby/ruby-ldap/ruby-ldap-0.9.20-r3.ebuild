@@ -16,9 +16,9 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="ssl"
-DEPEND=">=net-nds/openldap-2
+DEPEND=">=net-nds/openldap-2:=
 	dev-libs/cyrus-sasl
-	ssl? ( dev-libs/openssl:0 )"
+	ssl? ( dev-libs/openssl:0= )"
 RDEPEND="${DEPEND}"
 
 # Current test set is interactive due to certificate generation and requires
