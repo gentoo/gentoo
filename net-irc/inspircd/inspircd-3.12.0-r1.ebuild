@@ -20,8 +20,8 @@ RDEPEND="
 	acct-user/inspircd
 	dev-lang/perl
 	gnutls? ( net-libs/gnutls:= dev-libs/libgcrypt:0 )
-	ldap? ( net-nds/openldap )
-	maxminddb? ( dev-libs/libmaxminddb )
+	ldap? ( net-nds/openldap:= )
+	maxminddb? ( dev-libs/libmaxminddb:= )
 	mbedtls? ( net-libs/mbedtls:= )
 	mysql? ( dev-db/mysql-connector-c:= )
 	pcre? ( dev-libs/libpcre )
