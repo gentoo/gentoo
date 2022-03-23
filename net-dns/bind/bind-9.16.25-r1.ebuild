@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Re dlz/mysql and threads, needs to be verified..
@@ -12,7 +12,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit python-r1 autotools toolchain-funcs flag-o-matic  db-use systemd tmpfiles
 
@@ -59,17 +59,17 @@ DEPEND="
 	dev-libs/openssl:=[-bindist(-)]
 	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( >=dev-db/unixODBC-2.2.6 )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	postgres? ( dev-db/postgresql:= )
 	caps? ( >=sys-libs/libcap-2.1.0 )
 	xml? ( dev-libs/libxml2 )
-	geoip? ( dev-libs/libmaxminddb )
-	geoip2? ( dev-libs/libmaxminddb )
+	geoip? ( dev-libs/libmaxminddb:= )
+	geoip2? ( dev-libs/libmaxminddb:= )
 	gssapi? ( virtual/krb5 )
 	json? ( dev-libs/json-c:= )
-	lmdb? ( dev-db/lmdb )
+	lmdb? ( dev-db/lmdb:= )
 	zlib? ( sys-libs/zlib )
-	dnstap? ( dev-libs/fstrm dev-libs/protobuf-c )
+	dnstap? ( dev-libs/fstrm dev-libs/protobuf-c:= )
 	python? (
 		${PYTHON_DEPS}
 		dev-python/ply[${PYTHON_USEDEP}]
@@ -122,14 +122,16 @@ bind_configure() {
 		--with-libtool
 		--enable-full-report
 		--without-readline
-		--with-openssl="${EPREFIX}"/usr
+		--with-openssl="${ESYSROOT}"/usr
 		--without-cmocka
+		# Removed in 9.17, drags in libunwind dependency too
+		--disable-backtrace
 		$(use_enable caps linux-caps)
 		$(use_enable dnsrps)
 		$(use_enable dnstap)
 		$(use_enable fixed-rrset)
 		# $(use_enable static-libs static)
-		$(use_with berkdb dlz-bdb)
+		$(use_with berkdb dlz-bdb "${ESYSROOT}"/usr)
 		$(use_with dlz dlopen)
 		$(use_with dlz dlz-filesystem)
 		$(use_with dlz dlz-stub)

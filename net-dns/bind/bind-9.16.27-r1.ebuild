@@ -12,9 +12,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
-inherit python-r1 autotools toolchain-funcs flag-o-matic  db-use systemd tmpfiles
+inherit python-r1 autotools toolchain-funcs flag-o-matic db-use systemd tmpfiles
 
 MY_PV="${PV/_p/-P}"
 MY_PV="${MY_PV/_rc/rc}"
@@ -59,17 +59,17 @@ DEPEND="
 	dev-libs/openssl:=[-bindist(-)]
 	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( >=dev-db/unixODBC-2.2.6 )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	postgres? ( dev-db/postgresql:= )
 	caps? ( >=sys-libs/libcap-2.1.0 )
 	xml? ( dev-libs/libxml2 )
-	geoip? ( dev-libs/libmaxminddb )
-	geoip2? ( dev-libs/libmaxminddb )
+	geoip? ( dev-libs/libmaxminddb:= )
+	geoip2? ( dev-libs/libmaxminddb:= )
 	gssapi? ( virtual/krb5 )
 	json? ( dev-libs/json-c:= )
-	lmdb? ( dev-db/lmdb )
+	lmdb? ( dev-db/lmdb:= )
 	zlib? ( sys-libs/zlib )
-	dnstap? ( dev-libs/fstrm dev-libs/protobuf-c )
+	dnstap? ( dev-libs/fstrm dev-libs/protobuf-c:= )
 	python? (
 		${PYTHON_DEPS}
 		dev-python/ply[${PYTHON_USEDEP}]

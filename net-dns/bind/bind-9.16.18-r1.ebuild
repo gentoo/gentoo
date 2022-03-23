@@ -12,9 +12,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..9} )
 
-inherit python-r1 autotools toolchain-funcs flag-o-matic db-use systemd tmpfiles
+inherit python-r1 autotools toolchain-funcs flag-o-matic  db-use systemd tmpfiles
 
 MY_PV="${PV/_p/-P}"
 MY_PV="${MY_PV/_rc/rc}"
@@ -33,7 +33,7 @@ SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 # -berkdb by default re bug 602682
 IUSE="berkdb +caps +dlz dnstap doc dnsrps fixed-rrset geoip geoip2 gssapi
 json ldap lmdb mysql odbc postgres python selinux static-libs xml +zlib"
@@ -59,17 +59,17 @@ DEPEND="
 	dev-libs/openssl:=[-bindist(-)]
 	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( >=dev-db/unixODBC-2.2.6 )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	postgres? ( dev-db/postgresql:= )
 	caps? ( >=sys-libs/libcap-2.1.0 )
 	xml? ( dev-libs/libxml2 )
-	geoip? ( dev-libs/libmaxminddb )
-	geoip2? ( dev-libs/libmaxminddb )
+	geoip? ( dev-libs/libmaxminddb:= )
+	geoip2? ( dev-libs/libmaxminddb:= )
 	gssapi? ( virtual/krb5 )
 	json? ( dev-libs/json-c:= )
-	lmdb? ( dev-db/lmdb )
+	lmdb? ( dev-db/lmdb:= )
 	zlib? ( sys-libs/zlib )
-	dnstap? ( dev-libs/fstrm dev-libs/protobuf-c )
+	dnstap? ( dev-libs/fstrm dev-libs/protobuf-c:= )
 	python? (
 		${PYTHON_DEPS}
 		dev-python/ply[${PYTHON_USEDEP}]
@@ -122,16 +122,14 @@ bind_configure() {
 		--with-libtool
 		--enable-full-report
 		--without-readline
-		--with-openssl="${ESYSROOT}"/usr
+		--with-openssl="${EPREFIX}"/usr
 		--without-cmocka
-		# Removed in 9.17, drags in libunwind dependency too
-		--disable-backtrace
 		$(use_enable caps linux-caps)
 		$(use_enable dnsrps)
 		$(use_enable dnstap)
 		$(use_enable fixed-rrset)
 		# $(use_enable static-libs static)
-		$(use_with berkdb dlz-bdb "${ESYSROOT}"/usr)
+		$(use_with berkdb dlz-bdb)
 		$(use_with dlz dlopen)
 		$(use_with dlz dlz-filesystem)
 		$(use_with dlz dlz-stub)
