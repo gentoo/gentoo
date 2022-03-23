@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ RDEPEND="
 	sys-auth/libyubikey
 	>=sys-auth/ykclient-2.15
 	>=sys-auth/ykpers-1.6
-	ldap? ( net-nds/openldap )"
+	ldap? ( net-nds/openldap:= )"
 DEPEND="${RDEPEND}
 	app-text/asciidoc
 	test? ( dev-perl/Net-LDAP-Server )"
