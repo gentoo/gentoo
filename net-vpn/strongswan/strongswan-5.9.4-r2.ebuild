@@ -10,7 +10,7 @@ SRC_URI="https://download.strongswan.org/${P}.tar.bz2"
 
 LICENSE="GPL-2 RSA DES"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+caps curl +constraints debug dhcp eap farp gcrypt +gmp ldap mysql networkmanager +non-root +openssl selinux sqlite systemd pam pkcs11"
 
 STRONGSWAN_PLUGINS_STD="led lookip systime-fix unity vici"
@@ -30,10 +30,10 @@ COMMON_DEPEND="non-root? (
 		acct-group/ipsec
 	)
 	gmp? ( >=dev-libs/gmp-4.1.5:= )
-	gcrypt? ( dev-libs/libgcrypt:0 )
+	gcrypt? ( dev-libs/libgcrypt:= )
 	caps? ( sys-libs/libcap )
 	curl? ( net-misc/curl )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	openssl? ( >=dev-libs/openssl-0.9.8:=[-bindist(-)] )
 	mysql? ( dev-db/mysql-connector-c:= )
 	sqlite? ( >=dev-db/sqlite-3.3.1 )
@@ -279,8 +279,8 @@ pkg_postinst() {
 	if use non-root; then
 		elog
 		elog "${PN} has been installed without superuser privileges (USE=non-root)."
-		elog "This imposes a few limitations mainly to the daemon 'charon' in"
-		elog "regards of the use of iptables."
+		elog "This imposes several limitations mainly to the IKEv1 daemon 'pluto'"
+		elog "but also a few to the IKEv2 daemon 'charon'."
 		elog
 		elog "Please carefully read: http://wiki.strongswan.org/projects/strongswan/wiki/ReducedPrivileges"
 		elog

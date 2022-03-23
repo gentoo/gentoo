@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI="7"
 inherit linux-info systemd
 
 DESCRIPTION="IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE"
@@ -10,13 +10,11 @@ SRC_URI="https://download.strongswan.org/${P}.tar.bz2"
 
 LICENSE="GPL-2 RSA DES"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm ~arm64 ~ppc ~ppc64 x86"
 IUSE="+caps curl +constraints debug dhcp eap farp gcrypt +gmp ldap mysql networkmanager +non-root +openssl selinux sqlite systemd pam pkcs11"
 
 STRONGSWAN_PLUGINS_STD="led lookip systime-fix unity vici"
-STRONGSWAN_PLUGINS_OPT="aesni blowfish bypass-lan ccm chapoly ctr forecast gcm
-ha ipseckey newhope ntru padlock rdrand save-keys unbound whitelist
-xauth-noauth"
+STRONGSWAN_PLUGINS_OPT="aesni blowfish bypass-lan ccm chapoly ctr forecast gcm ha ipseckey newhope ntru padlock rdrand save-keys unbound whitelist"
 for mod in $STRONGSWAN_PLUGINS_STD; do
 	IUSE="${IUSE} +strongswan_plugins_${mod}"
 done
@@ -30,11 +28,11 @@ COMMON_DEPEND="non-root? (
 		acct-group/ipsec
 	)
 	gmp? ( >=dev-libs/gmp-4.1.5:= )
-	gcrypt? ( dev-libs/libgcrypt:0 )
+	gcrypt? ( dev-libs/libgcrypt:= )
 	caps? ( sys-libs/libcap )
 	curl? ( net-misc/curl )
-	ldap? ( net-nds/openldap )
-	openssl? ( >=dev-libs/openssl-0.9.8:=[-bindist(-)] )
+	ldap? ( net-nds/openldap:= )
+	openssl? ( >=dev-libs/openssl-0.9.8:=[-bindist(-)] <dev-libs/openssl-3:= )
 	mysql? ( dev-db/mysql-connector-c:= )
 	sqlite? ( >=dev-db/sqlite-3.3.1 )
 	systemd? ( sys-apps/systemd )
@@ -140,7 +138,6 @@ src_configure() {
 		--enable-ikev2 \
 		--enable-swanctl \
 		--enable-socket-dynamic \
-		--enable-cmd \
 		$(use_enable curl) \
 		$(use_enable constraints) \
 		$(use_enable ldap) \
@@ -182,7 +179,7 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	if ! use systemd; then
-		rm -rf "${ED}"/lib/systemd || die "Failed removing systemd lib."
+		rm -rf "${ED}"/lib/systemd || die
 	fi
 
 	doinitd "${FILESDIR}"/ipsec
@@ -279,10 +276,10 @@ pkg_postinst() {
 	if use non-root; then
 		elog
 		elog "${PN} has been installed without superuser privileges (USE=non-root)."
-		elog "This imposes several limitations mainly to the IKEv1 daemon 'pluto'"
-		elog "but also a few to the IKEv2 daemon 'charon'."
+		elog "This imposes a few limitations mainly to the daemon 'charon' in"
+		elog "regards of the use of iptables."
 		elog
-		elog "Please carefully read: http://wiki.strongswan.org/projects/strongswan/wiki/ReducedPrivileges"
+		elog "Please carefully read: https://wiki.strongswan.org/projects/strongswan/wiki/ReducedPrivileges"
 		elog
 		elog "Thus if you require to specify a custom updown"
 		elog "script to charon which requires superuser privileges, you"
