@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
 inherit python-single-r1 waf-utils multilib-minimal
 
@@ -25,11 +25,11 @@ RDEPEND="
 	dev-libs/libbsd[${MULTILIB_USEDEP}]
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	>=dev-util/cmocka-1.1.3[${MULTILIB_USEDEP}]
-	>=sys-libs/talloc-2.3.2[${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.4.3[${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.10.2[${MULTILIB_USEDEP}]
-	ldap? ( net-nds/openldap )
-	lmdb? ( >=dev-db/lmdb-0.9.16[${MULTILIB_USEDEP}] )
+	>=sys-libs/talloc-2.3.3[${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.4.4[${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.11.0[${MULTILIB_USEDEP}]
+	ldap? ( net-nds/openldap:= )
+	lmdb? ( >=dev-db/lmdb-0.9.16:=[${MULTILIB_USEDEP}] )
 	python? (
 		${PYTHON_DEPS}
 		sys-libs/talloc[python,${PYTHON_SINGLE_USEDEP}]
