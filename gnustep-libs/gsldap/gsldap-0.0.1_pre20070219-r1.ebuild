@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit gnustep-2
 
-DESCRIPTION="GNUstep LDAP library for open ldap C libraries"
+DESCRIPTION="GNUstep LDAP library for openldap C libraries"
 HOMEPAGE="http://www.gnustep.org/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="net-nds/openldap"
+DEPEND="net-nds/openldap:="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
