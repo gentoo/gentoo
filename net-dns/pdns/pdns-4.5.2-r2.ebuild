@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,7 @@ DEPEND="${LUA_DEPS}
 	lua-records? ( >=net-misc/curl-7.21.3 )
 	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
-	ldap? ( >=net-nds/openldap-2.0.27-r4 app-crypt/mit-krb5 )
+	ldap? ( >=net-nds/openldap-2.0.27-r4:= app-crypt/mit-krb5 )
 	sqlite? ( dev-db/sqlite:3 )
 	geoip? ( >=dev-cpp/yaml-cpp-0.5.1:= dev-libs/geoip )
 	sodium? ( dev-libs/libsodium:= )

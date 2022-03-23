@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit autotools lua-single
+inherit flag-o-matic lua-single
 
 DESCRIPTION="The PowerDNS Daemon"
 HOMEPAGE="https://www.powerdns.com/"
@@ -13,14 +13,14 @@ SRC_URI="https://downloads.powerdns.com/releases/${P/_/-}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 # other possible flags:
 # db2: we lack the dep
 # oracle: dito (need Oracle Client Libraries)
 # xdb: (almost) dead, surely not supported
 
-IUSE="debug doc geoip ldap lua-records mydns mysql postgres protobuf remote sodium sqlite systemd tools tinydns test"
+IUSE="debug doc geoip ldap lua-records mydns mysql postgres remote sodium sqlite systemd tools tinydns test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}
@@ -32,12 +32,11 @@ DEPEND="${LUA_DEPS}
 	lua-records? ( >=net-misc/curl-7.21.3 )
 	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
-	ldap? ( >=net-nds/openldap-2.0.27-r4 app-crypt/mit-krb5 )
+	ldap? ( >=net-nds/openldap-2.0.27-r4:= app-crypt/mit-krb5 )
 	sqlite? ( dev-db/sqlite:3 )
 	geoip? ( >=dev-cpp/yaml-cpp-0.5.1:= dev-libs/geoip )
 	sodium? ( dev-libs/libsodium:= )
-	tinydns? ( >=dev-db/tinycdb-0.77 )
-	protobuf? ( dev-libs/protobuf )"
+	tinydns? ( >=dev-db/tinycdb-0.77 )"
 RDEPEND="${DEPEND}
 	acct-user/pdns
 	acct-group/pdns"
@@ -47,13 +46,10 @@ BDEPEND="virtual/pkgconfig
 
 S="${WORKDIR}"/${P/_/-}
 
-PATCHES=(
-	"${FILESDIR}"/${P}-boost-1.76.patch
-)
-
-src_prepare() {
-	default
-	eautoreconf
+pkg_setup() {
+	lua-single_pkg_setup
+	append-lfs-flags
+	append-cppflags -D_TIME_BITS=64
 }
 
 src_configure() {
@@ -87,7 +83,6 @@ src_configure() {
 		$(use_enable tools) \
 		$(use_enable systemd) \
 		$(use_with sodium libsodium) \
-		$(use_with protobuf) \
 		${myconf}
 }
 
