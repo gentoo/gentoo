@@ -1,2 +1,2 @@
 MANPATH="/usr/lib/php5/man/"
-CONFIG_PROTECT_MASK="/etc/php/cli-php5/ext-active/ /etc/php/cgi-php5/ext-active/ /etc/php/apache2-php5/ext-active/"
+CONFIG_PROTECT_MASK="/etc/php/cli-php5/ext-active/ /etc/php/cgi-php5/ext-active/ /etc/php/apache2-php5/ext-active/ /etc/php/fpm-php5/ext-active/ /etc/php/phpdbg-php5/ext-active/"
