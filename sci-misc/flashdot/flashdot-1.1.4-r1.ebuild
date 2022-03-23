@@ -59,4 +59,6 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" CALLMODE=script install
+	rm "${D}"/usr/share/doc/${PN}/copyright* || die
+	mv "${D}"/usr/share/doc/{${PN},${PF}} || die
 }
