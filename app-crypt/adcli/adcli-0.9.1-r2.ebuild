@@ -16,7 +16,7 @@ IUSE="doc"
 
 DEPEND="
 	app-crypt/mit-krb5
-	net-nds/openldap[sasl]"
+	net-nds/openldap:=[sasl]"
 RDEPEND="${DEPEND}"
 BDEPEND="
 	doc? (
