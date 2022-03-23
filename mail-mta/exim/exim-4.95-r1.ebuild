@@ -76,7 +76,7 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.26-r2 )
-	redis? ( dev-libs/hiredis )
+	redis? ( dev-libs/hiredis:= )
 	spf? ( >=mail-filter/libspf2-1.2.5-r1 )
 	dmarc? ( mail-filter/opendmarc:= )
 	srs? ( srs-alt? ( mail-filter/libsrs_alt ) )
