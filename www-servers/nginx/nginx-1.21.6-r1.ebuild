@@ -157,7 +157,7 @@ GEOIP2_MODULE_URI="https://github.com/leev/ngx_http_geoip2_module/archive/${GEOI
 GEOIP2_MODULE_WD="${WORKDIR}/ngx_http_geoip2_module-${GEOIP2_MODULE_PV}"
 
 # njs-module (https://github.com/nginx/njs, as-is)
-NJS_MODULE_PV="0.6.0"
+NJS_MODULE_PV="0.7.2"
 NJS_MODULE_P="njs-${NJS_MODULE_PV}"
 NJS_MODULE_URI="https://github.com/nginx/njs/archive/${NJS_MODULE_PV}.tar.gz"
 NJS_MODULE_WD="${WORKDIR}/njs-${NJS_MODULE_PV}"
@@ -203,7 +203,7 @@ LICENSE="BSD-2 BSD SSLeay MIT GPL-2 GPL-2+
 	nginx_modules_http_push_stream? ( GPL-3 )"
 
 SLOT="mainline"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
 # Package doesn't provide a real test suite
 RESTRICT="test"
@@ -313,7 +313,7 @@ CDEPEND="
 		net-misc/curl
 		www-servers/apache
 	)
-	nginx_modules_http_auth_ldap? ( net-nds/openldap[ssl?] )
+	nginx_modules_http_auth_ldap? ( net-nds/openldap:=[ssl?] )
 	nginx_modules_stream_geoip? ( dev-libs/geoip )
 	nginx_modules_stream_geoip2? ( dev-libs/libmaxminddb:= )"
 RDEPEND="${CDEPEND}
