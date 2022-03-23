@@ -39,11 +39,11 @@ RDEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
 	media-gfx/qrencode:=
 	sys-libs/readline:0=
 	sys-libs/zlib:=
 	autotype? (
-		dev-qt/qtx11extras:5
 		x11-libs/libX11
 		x11-libs/libXtst
 	)
