@@ -65,11 +65,11 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 			dev-libs/openssl:0=
 		)
 	)
-	ldap? ( >=net-nds/openldap-2.0.7 )
+	ldap? ( >=net-nds/openldap-2.0.7:= )
 	elibc_glibc? (
-		net-libs/libnsl
+		net-libs/libnsl:=
 		nis? (
-			net-libs/libtirpc
+			net-libs/libtirpc:=
 			>=net-libs/libnsl-1:=
 		)
 	)

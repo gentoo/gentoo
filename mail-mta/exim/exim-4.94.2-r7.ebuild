@@ -57,17 +57,17 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 			dev-libs/openssl:0=
 		)
 	)
-	ldap? ( >=net-nds/openldap-2.0.7 )
+	ldap? ( >=net-nds/openldap-2.0.7:= )
 	nis? (
 		elibc_glibc? (
-			net-libs/libtirpc
+			net-libs/libtirpc:=
 			>=net-libs/libnsl-1:=
 		)
 	)
 	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.26-r2 )
-	redis? ( dev-libs/hiredis )
+	redis? ( dev-libs/hiredis:= )
 	spf? ( >=mail-filter/libspf2-1.2.5-r1 )
 	dmarc? ( mail-filter/opendmarc:= )
 	srs? ( srs-alt? ( mail-filter/libsrs_alt ) )
