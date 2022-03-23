@@ -17,7 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~
 RDEPEND="
 	>=dev-libs/glib-2.69.0:2[${MULTILIB_USEDEP}]
 	libproxy? ( >=net-libs/libproxy-0.4.11-r1:=[${MULTILIB_USEDEP}] )
-	>=net-libs/gnutls-3.7.2:=[${MULTILIB_USEDEP}]
+	>=net-libs/gnutls-3.7.2:=[pkcs11,${MULTILIB_USEDEP}]
 	ssl? ( app-misc/ca-certificates )
 	gnome? ( gnome-base/gsettings-desktop-schemas )
 "
