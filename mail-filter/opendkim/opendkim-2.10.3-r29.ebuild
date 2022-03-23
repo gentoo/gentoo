@@ -29,12 +29,12 @@ COMMON_DEPEND="mail-filter/libmilter:=
 	berkdb? ( >=sys-libs/db-3.2:* )
 	opendbx? ( >=dev-db/opendbx-1.4.0 )
 	lua? ( ${LUA_DEPS} )
-	ldap? ( net-nds/openldap )
-	lmdb? ( dev-db/lmdb )
+	ldap? ( net-nds/openldap:= )
+	lmdb? ( dev-db/lmdb:= )
 	memcached? ( dev-libs/libmemcached )
 	sasl? ( dev-libs/cyrus-sasl )
 	unbound? ( >=net-dns/unbound-1.4.1:= net-dns/dnssec-root )
-	!unbound? ( net-libs/ldns )"
+	!unbound? ( net-libs/ldns:= )"
 
 DEPEND="${COMMON_DEPEND}"
 
