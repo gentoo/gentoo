@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mbacarella/${PN}/releases/download/${PV}/${P}.tbz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 DEPEND=""
