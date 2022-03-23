@@ -206,6 +206,13 @@ pkg_postinst() {
 	# its own user. This increase isolation and hence robustness and
 	# security.
 	if $migrate_to_ejabberd_user; then
+		ewarn "Newer versions of the ejabberd Gentoo package use /etc/ejabberd"
+		ewarn "(just as upstream) and *not* /etc/jabber."
+		ewarn "The files from /etc/jabber will now be copied to /etc/ejabberd."
+		ewarn "Also ejabberd's spool directory became /var/lib/ejabberd (was /var/spool/jabber)."
+		ewarn "Please check your configuration, and finish the migration by stopping ejabberd"
+		ewarn "followed by rsync'ing /var/spool/jabber to /var/lib/ejabberd."
+
 		local -A dirs_to_migrate=(
 			[/etc/jabber]=/etc/ejabberd
 			[/var/spool/jabber]=/var/lib/ejabberd
@@ -224,11 +231,5 @@ pkg_postinst() {
 				chown --recursive ejabberd:ejabberd "${eroot_dst_dir}" || die
 			fi
 		done
-
-		ewarn "Newer versions of the ejabberd Gentoo package use /etc/ejabberd"
-		ewarn "(just as upstream) and *not* /etc/jabber."
-		ewarn "The files from /etc/jabber where copied to /etc/ejabberd."
-		ewarn "Also ejabberd's spool directory became /var/lib/ejabberd (was /var/spool/jabber)."
-		ewarn "Please check your configuration."
 	fi
 }
