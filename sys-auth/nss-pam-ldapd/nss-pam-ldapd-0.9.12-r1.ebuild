@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEP="
 	acct-group/nslcd
 	acct-user/nslcd
-	net-nds/openldap[${MULTILIB_USEDEP}]
+	net-nds/openldap:=[${MULTILIB_USEDEP}]
 	sasl? ( dev-libs/cyrus-sasl[${MULTILIB_USEDEP}] )
 	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	sys-libs/pam[${MULTILIB_USEDEP}]
