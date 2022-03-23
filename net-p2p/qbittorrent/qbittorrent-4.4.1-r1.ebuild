@@ -24,12 +24,13 @@ IUSE="+dbus +gui webui"
 REQUIRED_USE="dbus? ( gui )"
 
 RDEPEND="
-	>=dev-libs/boost-1.62.0-r1:=
+	>=dev-libs/boost-1.65.0-r1:=
+	dev-libs/openssl:=
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtsql:5
 	dev-qt/qtxml:5
-	>=net-libs/libtorrent-rasterbar-1.2.12:=
+	>=net-libs/libtorrent-rasterbar-1.2.14:=
 	sys-libs/zlib
 	dbus? ( dev-qt/qtdbus:5 )
 	gui? (
