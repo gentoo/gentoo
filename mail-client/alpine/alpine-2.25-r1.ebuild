@@ -23,7 +23,7 @@ REQUIRED_USE="chappa? ( ssl )"
 DEPEND="sys-libs/ncurses:=
 	virtual/libcrypt:=
 	kerberos? ( app-crypt/mit-krb5 )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	spell? ( app-text/aspell )
 	ssl? ( dev-libs/openssl:0= )
 "
