@@ -180,7 +180,7 @@ vala_setup() {
 # @FUNCTION: vala_src_prepare
 # @DESCRIPTION:
 # For backwards compatibility in EAPIs 6 and 7.  Calls vala_setup.
-if [[ ${EAPI} == [67] ]]; then
+if [[ ${EAPI} == [678] ]]; then
 	vala_src_prepare() { vala_setup "$@"; }
 fi
 
