@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,9 +25,9 @@ DEPEND="
 	dev-libs/libpcre
 	dev-libs/libyaml
 	geoip? ( dev-libs/geoip )
-	redis? ( dev-libs/hiredis )
+	redis? ( dev-libs/hiredis:= )
 	pcap? ( net-libs/libpcap )
-	smtp? ( net-libs/libesmtp )
+	smtp? ( net-libs/libesmtp:= )
 "
 
 # Package no longer logs directly to a database
