@@ -212,11 +212,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		kde-frameworks/kio:5
 		kde-frameworks/kwindowsystem:5
 	)
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( >=dev-java/rhino-1.7.14:1.6 )
-	mariadb? ( dev-db/mariadb-connector-c )
-	!mariadb? ( dev-db/mysql-connector-c )
+	mariadb? ( dev-db/mariadb-connector-c:= )
+	!mariadb? ( dev-db/mysql-connector-c:= )
 	pdfimport? ( app-text/poppler:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
 "
