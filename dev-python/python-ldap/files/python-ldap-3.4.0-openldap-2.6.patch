@@ -1,0 +1,33 @@
+From 536a7671151e3070481736e5d6159987df920d8b Mon Sep 17 00:00:00 2001
+From: Simon Pichugin <spichugi@redhat.com>
+Date: Wed, 9 Feb 2022 16:06:14 -0800
+Subject: [PATCH] Always use 'ldap' library
+
+---
+ setup.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 119b571..851223e 100644
+--- a/setup.py
++++ b/setup.py
+@@ -37,6 +37,8 @@ if cfg.has_section('_ldap'):
+   for name in dir(LDAP_CLASS):
+     if cfg.has_option('_ldap', name):
+       setattr(LDAP_CLASS, name, cfg.get('_ldap', name).split())
++#-- Overwrite it as 'ldap' is the always correct library we have in Fedora 34+
++LDAP_CLASS.libs = ['ldap', 'lber']
+
+ for i in range(len(LDAP_CLASS.defines)):
+   LDAP_CLASS.defines[i]=((LDAP_CLASS.defines[i],None))
+@@ -132,7 +134,7 @@ setup(
+       extra_objects = LDAP_CLASS.extra_objects,
+       runtime_library_dirs = (not sys.platform.startswith("win"))*LDAP_CLASS.library_dirs,
+       define_macros = LDAP_CLASS.defines + \
+-        ('ldap_r' in LDAP_CLASS.libs or 'oldap_r' in LDAP_CLASS.libs)*[('HAVE_LIBLDAP_R',None)] + \
++        ('ldap' in LDAP_CLASS.libs or 'oldap' in LDAP_CLASS.libs)*[('HAVE_LIBLDAP_R',None)] + \
+         ('sasl' in LDAP_CLASS.libs or 'sasl2' in LDAP_CLASS.libs or 'libsasl' in LDAP_CLASS.libs)*[('HAVE_SASL',None)] + \
+         ('ssl' in LDAP_CLASS.libs and 'crypto' in LDAP_CLASS.libs)*[('HAVE_TLS',None)] + \
+         [
+--
+2.31.1
