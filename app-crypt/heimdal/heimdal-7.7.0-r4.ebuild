@@ -26,7 +26,7 @@ CDEPEND="
 	)
 	berkdb? ( >=sys-libs/db-4.8.30-r1:*[${MULTILIB_USEDEP}] )
 	gdbm? ( >=sys-libs/gdbm-1.10-r1:=[${MULTILIB_USEDEP}] )
-	lmdb? ( dev-db/lmdb )
+	lmdb? ( dev-db/lmdb:= )
 	caps? ( sys-libs/libcap-ng )
 	>=dev-db/sqlite-3.8.2[${MULTILIB_USEDEP}]
 	|| (
@@ -36,7 +36,7 @@ CDEPEND="
 	sys-libs/ncurses:0=
 	>=sys-libs/readline-6.2_p5-r1:0=[${MULTILIB_USEDEP}]
 	afs? ( net-fs/openafs )
-	hdb-ldap? ( >=net-nds/openldap-2.3.0 )
+	hdb-ldap? ( >=net-nds/openldap-2.3.0:= )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXau
