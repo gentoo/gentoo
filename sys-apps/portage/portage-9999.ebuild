@@ -7,7 +7,7 @@ PYTHON_COMPAT=( pypy3 python3_{8..10} )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 TMPFILES_OPTIONAL=1
 
-inherit distutils-r1 git-r3 linux-info tmpfiles prefix
+inherit distutils-r1 git-r3 linux-info toolchain-funcs tmpfiles prefix
 
 DESCRIPTION="The package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
