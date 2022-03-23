@@ -12,7 +12,6 @@
 		<flag name="captcha">Support for CAPTCHA Forms (XEP-158) on registration</flag>
 		<flag name="full-xml">Use XML features in XMPP stream (ex: CDATA),
 			requires XML compliant clients</flag>
-		<flag name="hipe">Compile natively with HiPE, not recommended</flag>
 		<flag name="mssql">Enable Microsoft SQL Server support (via ODBC) for
 			data storage</flag>
 		<flag name="mysql">Enable MySQL support for data storage</flag>
