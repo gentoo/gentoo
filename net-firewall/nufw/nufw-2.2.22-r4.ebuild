@@ -19,12 +19,12 @@ REQUIRED_USE="pam_nuauth? ( plaintext )"
 DEPEND="
 	dev-libs/cyrus-sasl
 	dev-libs/glib:2
-	dev-libs/libgcrypt:0
+	dev-libs/libgcrypt:=
 	dev-python/ipy
 	net-firewall/iptables
-	net-libs/gnutls
-	ldap? ( >=net-nds/openldap-2 )
-	mysql? ( dev-db/mysql-connector-c )
+	net-libs/gnutls:=
+	ldap? ( >=net-nds/openldap-2:= )
+	mysql? ( dev-db/mysql-connector-c:= )
 	nfconntrack? ( net-libs/libnetfilter_conntrack )
 	nfqueue? ( net-libs/libnfnetlink net-libs/libnetfilter_queue )
 	pam? ( sys-libs/pam )
