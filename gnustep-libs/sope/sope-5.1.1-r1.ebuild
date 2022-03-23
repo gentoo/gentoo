@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ IUSE="gnutls ldap mysql postgres +ssl +xml"
 
 RDEPEND="
 	sys-libs/zlib
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	gnutls? ( net-libs/gnutls:= )
 	!gnutls? (
 		dev-libs/openssl:0=
