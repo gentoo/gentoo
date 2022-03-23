@@ -16,7 +16,7 @@ IUSE="ldap netlink nls rpc tcpd"
 
 RDEPEND="
 	sys-fs/e2fsprogs
-	ldap? ( >=net-nds/openldap-2.3.35 )
+	ldap? ( >=net-nds/openldap-2.3.35:= )
 	netlink? (
 		sys-apps/dbus
 		dev-libs/libnl:3
