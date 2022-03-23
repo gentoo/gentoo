@@ -34,7 +34,7 @@ DEPEND=">=dev-lang/erlang-19.3[odbc?,ssl]
 	>=dev-erlang/fast_yaml-1.0.32
 	>=dev-erlang/yconf-1.0.12
 	>=dev-erlang/jiffy-1.0.5
-	>=dev-erlang/jose-1.11.1
+	>=dev-erlang/jose-1.11.2
 	>=dev-erlang/lager-3.9.1
 	>=dev-erlang/p1_oauth2-0.6.10
 	>=dev-erlang/p1_utils-1.0.23
