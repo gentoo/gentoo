@@ -29,7 +29,7 @@ DEPEND="
 	fax? ( >=media-libs/netpbm-9.12 app-text/ghostscript-gpl >=net-dialup/mgetty-1.1.28 )
 	pam? ( sys-libs/pam )
 	mysql? ( dev-db/mysql-connector-c )
-	ldap? ( >=net-nds/openldap-1.2.11 )
+	ldap? ( >=net-nds/openldap-1.2.11:= )
 	postgres? ( dev-db/postgresql:= )
 	spell? ( app-text/aspell )
 	fam? ( virtual/fam )
