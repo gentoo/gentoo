@@ -33,7 +33,6 @@ checkconfig() {
 	if [ -d /var/run/sddm/ ]; then
 		# If SDDM is found
 		X11VNC_AUTH_OPTS="-auth /var/run/sddm/*"
-		X11VNC_OPTS="-xkb -noxrecord"
 	# Attempt to find X-Auth file
 	elif ! type xauth > /dev/null 2>&1 ||
 			! xauth -f /root/.Xauthority extract - "${X11VNC_DISPLAY}" > "${X11VNC_AUTH}" 2>/dev/null ||
