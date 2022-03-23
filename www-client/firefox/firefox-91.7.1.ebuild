@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-FIREFOX_PATCHSET="firefox-91esr-patches-05j.tar.xz"
+FIREFOX_PATCHSET="firefox-91esr-patches-06j.tar.xz"
 
 LLVM_MAX_SLOT=13
 
@@ -566,7 +566,15 @@ src_unpack() {
 }
 
 src_prepare() {
-	use lto && rm -v "${WORKDIR}"/firefox-patches/*-LTO-Only-enable-LTO-*.patch
+	if use lto; then
+		rm -v "${WORKDIR}"/firefox-patches/*-LTO-Only-enable-LTO-*.patch || die
+	fi
+
+	if use system-av1 && has_version "<media-libs/dav1d-1.0.0"; then
+		rm -v "${WORKDIR}"/firefox-patches/0033-bgo-835788-dav1d-1.0.0-support.patch || die
+		elog "<media-libs/dav1d-1.0.0 detected, removing 1.0.0 compat patch."
+	fi
+
 	eapply "${WORKDIR}/firefox-patches"
 
 	# Allow user to apply any additional patches without modifing ebuild
