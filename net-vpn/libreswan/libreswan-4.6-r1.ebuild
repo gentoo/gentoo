@@ -25,7 +25,7 @@ DEPEND="
 	caps? ( sys-libs/libcap-ng )
 	curl? ( net-misc/curl )
 	dnssec? ( >=net-dns/unbound-1.9.1-r1:= net-libs/ldns:= )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	pam? ( sys-libs/pam )
 	seccomp? ( sys-libs/libseccomp )
 	selinux? ( sys-libs/libselinux )
