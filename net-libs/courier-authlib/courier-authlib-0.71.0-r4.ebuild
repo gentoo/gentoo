@@ -22,7 +22,7 @@ DEPEND="net-mail/mailbase
 	gdbm? ( sys-libs/gdbm:= )
 	!gdbm? ( sys-libs/db:= )
 	dev-libs/openssl:0=
-	ldap? ( >=net-nds/openldap-1.2.11 )
+	ldap? ( >=net-nds/openldap-1.2.11:= )
 	mysql? ( dev-db/mysql-connector-c:= )
 	pam? ( sys-libs/pam )
 	postgres? ( dev-db/postgresql:= )
