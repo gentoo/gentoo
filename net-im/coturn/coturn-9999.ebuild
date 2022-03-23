@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,11 +21,11 @@ SLOT="0"
 IUSE="mongodb mysql postgres redis sqlite"
 RDEPEND="acct-group/turnserver
 	 acct-user/turnserver
-	 >dev-libs/libevent-2.1.8
+	 >dev-libs/libevent-2.1.8:=
 	 mongodb? ( dev-libs/mongo-c-driver )
-	 mysql?  ( dev-db/mysql-connector-c )
+	 mysql?  ( dev-db/mysql-connector-c:= )
 	 postgres? ( dev-db/postgresql:* )
-	 redis? ( dev-libs/hiredis )
+	 redis? ( dev-libs/hiredis:= )
 	 sqlite? ( dev-db/sqlite )"
 
 DEPEND="${RDEPEND}"
