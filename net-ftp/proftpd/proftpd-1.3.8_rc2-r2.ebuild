@@ -47,7 +47,7 @@ CDEPEND="virtual/libcrypt:=
 	caps? ( sys-libs/libcap )
 	clamav? ( app-antivirus/clamav )
 	kerberos? ( virtual/krb5 )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	memcache? ( >=dev-libs/libmemcached-0.41 )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	nls? ( virtual/libiconv )
@@ -69,9 +69,6 @@ S="${WORKDIR}/${P/_/}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.6-use-trace.patch
-	"${FILESDIR}"/${P}-tinfow-segv.patch
-	"${FILESDIR}"/${P}-no-ncurses.patch
-	"${FILESDIR}"/${P}-slibtool.patch
 )
 
 RESTRICT=test # Some tests are ran in chroot. Confuse sandbox.
