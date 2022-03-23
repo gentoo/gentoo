@@ -81,7 +81,7 @@ RESTRICT="test !test? ( test )"
 
 # global scope PATCHES or DOCS array mustn't be used due to double default_src_prepare call
 src_prepare() {
-	use vala && vala_src_prepare
+	use vala && vala_setup
 	cmake_src_prepare
 	gnome2_src_prepare
 
