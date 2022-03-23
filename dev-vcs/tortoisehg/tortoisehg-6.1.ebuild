@@ -9,12 +9,15 @@ DISTUTILS_USE_SETUPTOOLS=no
 
 inherit desktop distutils-r1 optfeature xdg-utils
 
+# Tag isn't provided this time
+COMMIT_SHA="cdfdf8c593f98863b4034b38001c71bc9fb970c3"
+
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~arm64 ~x86"
-	SRC_URI="https://foss.heptapod.net/mercurial/${PN}/thg/-/archive/${PV}/thg-${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://foss.heptapod.net/mercurial/${PN}/thg/-/archive/${COMMIT_SHA}/thg-${COMMIT_SHA}.tar.gz -> ${P}.tar.gz"
 	HG_DEPEND=">=dev-vcs/mercurial-5.9[${PYTHON_USEDEP}]
 		<dev-vcs/mercurial-6.2[${PYTHON_USEDEP}]"
-	S="${WORKDIR}/thg-${PV}"
+	S="${WORKDIR}/thg-${COMMIT_SHA}"
 else
 	inherit mercurial
 	EHG_REPO_URI="https://foss.heptapod.net/mercurial/${PN}/thg"
