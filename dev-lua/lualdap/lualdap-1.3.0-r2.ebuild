@@ -50,7 +50,7 @@ lua_src_compile() {
 
 	emake "${myemakeargs[@]}"
 
-	popd
+	popd || die
 }
 
 src_compile() {
@@ -59,11 +59,11 @@ src_compile() {
 
 lua_src_test() {
 	pushd "${BUILD_DIR}" || die
-	LUA_CPATH="./src/?.so" ${ELUA} tests/test.lua
-	popd
+	LUA_CPATH="./src/?.so" ${ELUA} tests/test.lua || die
+	popd || die
 }
 
-src_install() {
+src_test() {
 	lua_foreach_impl lua_src_test
 }
 
@@ -80,7 +80,7 @@ lua_src_install() {
 
 	emake "${myemakeargs[@]}" install
 
-	popd
+	popd || die
 }
 
 src_install() {
