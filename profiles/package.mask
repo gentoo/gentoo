@@ -513,7 +513,7 @@ x11-drivers/nvidia-drivers:0/vulkan
 # Fabian Groffen <grobian@gentoo.org> (2021-10-03)
 # Masked for erratic behaviour
 # https://bugs.exim.org/show_bug.cgi?id=2813
-=mail-mta/exim-4.95
+=mail-mta/exim-4.95-r1
 
 # Mart Raudsepp <leio@gentoo.org> (2021-09-24)
 # Experimental split media-sound/pulseaudio packages, bug #536780.
