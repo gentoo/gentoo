@@ -2,16 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit multilib-minimal toolchain-funcs
+inherit multilib-minimal toolchain-funcs verify-sig
 
 DESCRIPTION="Multi-format archive and compression library"
 HOMEPAGE="https://www.libarchive.org/"
-SRC_URI="https://www.libarchive.org/downloads/${P}.tar.gz"
+SRC_URI="
+	https://www.libarchive.org/downloads/${P}.tar.gz
+	verify-sig? ( https://www.libarchive.org/downloads/${P}.tar.gz.asc )
+"
 
 LICENSE="BSD BSD-2 BSD-4 public-domain"
 SLOT="0/13"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="acl blake2 +bzip2 +e2fsprogs expat +iconv lz4 +lzma lzo nettle static-libs xattr zstd"
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/libarchive.org.asc
 
 RDEPEND="
 	sys-libs/zlib[${MULTILIB_USEDEP}]
@@ -29,12 +33,17 @@ RDEPEND="
 	lzma? ( >=app-arch/xz-utils-5.2.5-r1[${MULTILIB_USEDEP}] )
 	lzo? ( >=dev-libs/lzo-2[${MULTILIB_USEDEP}] )
 	nettle? ( dev-libs/nettle:0=[${MULTILIB_USEDEP}] )
-	zstd? ( app-arch/zstd[${MULTILIB_USEDEP}] )"
+	zstd? ( app-arch/zstd[${MULTILIB_USEDEP}] )
+"
 DEPEND="${RDEPEND}
 	kernel_linux? (
 		virtual/os-headers
 		e2fsprogs? ( sys-fs/e2fsprogs )
-	)"
+	)
+"
+BDEPEND="
+	verify-sig? ( sec-keys/openpgp-keys-libarchive )
+"
 
 multilib_src_configure() {
 	export ac_cv_header_ext2fs_ext2_fs_h=$(usex e2fsprogs) #354923
