@@ -47,6 +47,8 @@ src_configure() {
 		$(use_with selinux)
 		$(use_enable anacron)
 		--enable-syscrontab
+		# Required for correct pidfile location #835814
+		--runstatedir="/run"
 		--with-daemon_username=cron
 		--with-daemon_groupname=cron
 	)
