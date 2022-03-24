@@ -25,6 +25,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=app-text/evince-3.22.1-r1:=
+	dev-libs/glib:2
 	dev-libs/libxml2:2
 	>=dev-scheme/guile-2:12=
 	gnome-base/librsvg:2
@@ -33,8 +34,11 @@ RDEPEND="
 	>=media-libs/libsndfile-1.0.28-r1
 	>=media-sound/fluidsynth-1.1.6-r1:=
 	>=media-sound/lilypond-2.19.54
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/gtksourceview:3.0=
+	x11-libs/pango
 	alsa? ( >=media-libs/alsa-lib-1.1.2 )
 	aubio? ( >=media-libs/aubio-0.4.1-r1:= )
 	jack? ( virtual/jack )
