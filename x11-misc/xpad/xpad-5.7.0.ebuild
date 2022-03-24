@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit autotools
 
 DESCRIPTION="A sticky note application for GTK"
@@ -16,7 +17,6 @@ RDEPEND="
 	app-accessibility/at-spi2-atk
 	dev-libs/atk
 	>=dev-libs/glib-2.58:2
-	sys-devel/gettext
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:3[X]
 	x11-libs/gtksourceview:4
@@ -24,12 +24,10 @@ RDEPEND="
 	x11-libs/libSM
 	x11-libs/pango
 "
-DEPEND="
-	${RDEPEND}
-	>=dev-util/intltool-0.31
+DEPEND="${RDEPEND}"
+BDEPEND=">=dev-util/intltool-0.31
 	sys-devel/gettext
-	virtual/pkgconfig
-"
+	virtual/pkgconfig"
 
 src_prepare() {
 	default
