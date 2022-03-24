@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~sparc ~x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 hppa ~mips ~sparc x86 ~x64-macos"
 
 RDEPEND="
 	|| (
