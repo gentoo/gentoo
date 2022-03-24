@@ -40,7 +40,7 @@ else
 	MY_PN=${PN}
 fi
 
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 FFMPEG_VERSION="99.0.4818.2"
 
